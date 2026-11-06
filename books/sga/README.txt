@@ -37,5 +37,5 @@ build.py 从工程根目录调用 latexmk 的 XeLaTeX 模式，自动完成目�
 此入口依次生成12个分册、总本及缺失内容报告；编译日志位于 work/delivery-logs/，交付文件清单位于 output/deliverables.json。
 总本包含大量位置锚点，build.py 会仅在总本编译进程中调高 XeLaTeX 的内存、字符串池和哈希容量。建议使用上述脚本入口编译总本。
 
-2026-11-06 合并状态：十二个分册 PDF 均在 output/pdf；总本最终交付与缺失报告 PDF 尚未生成。中断时生成的总本 PDF 仅留本地归档，不列为正式交付。reports/missing-content.json 保留75条补源记录。
+2026-11-06 合并记录：十二个分册 PDF 位于 output/pdf；总本入口为 main-all.tex。reports/missing-content.json 保留75条补源记录。
 清理后 work、逐页文字缓存和可下载补源扫描本已移除，正文与分块报告仍可直接用于编译。原 PDF 读取由 SGA_SOURCE_DIR 指定；普通中文译本编译不需要原 PDF，带原图的缺失报告和重新提取文本需要原 PDF。

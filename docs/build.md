@@ -20,9 +20,9 @@
 
 SGA 带原页图的缺失报告需要 PyMuPDF（`fitz`）和原 PDF；文本缓存的重提取还使用 `pdftotext`。沿用已有 Python / Conda 环境即可，不需本地 OCR 模型。
 
-## SGA 后续交付
+## SGA 构建
 
-现有 12 个分册 PDF 已保留。生成总本：
+生成总本：
 
 ```sh
 python3 tools/build.py sga all
