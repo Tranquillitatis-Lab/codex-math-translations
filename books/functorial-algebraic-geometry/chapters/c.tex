@@ -1,0 +1,518 @@
+% PDF 54
+\sourcepage{50}{54}
+我们用理想 $\mathfrak j$ 代替 $S$，再用 $A\in\Ob\G_k$ 代替 $\mathfrak j$，其中 $A=P_I/\mathfrak j$，从而摆脱了仿射嵌入；于是将这样的函子与可表函子
+\[
+ Z=\mathfrak X_A=V_A:\quad k'\longmapsto\mathfrak X_A(k')\qquad(k'\in\Ob\G_k)
+\]
+等同起来，而 $A$ 就是“表示 $Z$ 的 $k$-代数”。
+
+听课者要求先从纯范畴论的角度，回顾逆极限、归纳极限的基本概念，以及把它们归结为若干简单特例的方法；这些内容先在第1、2、3节中讨论。如今，交换代数以及点集拓扑、代数拓扑的研究生教学越来越多地采用范畴语言，因此熟悉这些知识的读者很可能略过第一部分的纯范畴论准备。这部分所占的篇幅，远多于随后对互为对偶的 $\Aff_k$ 和 $\G_k$ 两个范畴的实际应用。不过，通过 Grothendieck 这种十分具体的讲解（以 Tôhoku 为基础）来熟悉这些概念，仍然很有收获。我自己读过这份讲义后，再读 Mac Lane 的研究生范畴论教材，就觉得容易多了。
+
+\PartTitle{第一部分}{范畴论准备}
+\textbf{参考文献。}进一步的细节见 EGA，Springer 版，第0章第1节，第19页；另见 Tôhoku，1.7d，以及 SGA 3，I。Dieudonné 的 \textit{Advances}，II，给出了不附证明的简要介绍。更具技术性的论述见 Mac Lane 的范畴论教材。
+
+\Section{1}{积、核与纤维积}
+［我们先从纯集合论出发回顾这些范畴概念，再考察若干简单的拓扑背景或经典代数几何背景。最后，Grothendieck 将说明：如何只用箭头（映射、态射）刻画这些原本属于集合论的概念，并重新给出定义，使同样的定义在任意范畴 $C$ 中都有意义。这些积构造都是逆极限的特例（见第2节），有助于我们理解一般定义。利用可表函子的概念（见第一章第1节），可以把一般定义归结为集合论的情形。\footnote{范畴 $C$ 的对象常常是一个集合 $X$ 连同某种附加结构，例如群、环或拓扑结构，因此有其底集；但并非总是如此。这里不使用底集中的点——它们也没有出现在范畴公理中——定义必须完全用范畴语言表述。作为反例，任何预序集都可看作范畴，而其中的对象并非带附加结构的集合。}必须牢记，这种归结是借助 $C$ 中的态射集完成的。具体来说，我们使用嵌入
+\begin{equation}\tag{1.1}
+ i:C\hookrightarrow\widehat C=\Hom(C^{\op},\Sets),
+\end{equation}
+把每个对象 $X\in\Ob C$ 替换为可表函子 $i(X)=h_X:C^{\op}\to\Sets$。
+
+因此，只要知道集合的积 $A\times B$ 或一对集合映射 $A\rightrightarrows B$ 的核 $\ker(u,v)$ 的含义，就能作如下定义：对 $C$ 中的对象 $X,Y,Z$ 和箭头 $u,v:X\rightrightarrows Y$，$Z=X\times Y$ 或 $Z=\ker(u,v)$，当且仅当对每个 $T\in\Ob C$，分别有
+\begin{equation}\tag{1.2}
+ \Hom_C(T,Z)=\Hom_C(T,X)\times\Hom_C(T,Y),
+\end{equation}
+或
+\begin{equation}\tag{1.3}
+ \Hom_C(T,Z)=\ker(u_*,v_*),
+\end{equation}
+其中 $u_*,v_*:\Hom_C(T,X)\rightrightarrows\Hom_C(T,Y)$ 是诱导映射。当然，式(1.2)、(1.3)之所以有意义，是因为 $\Hom_C(\ ,\ )$ 都是集合。
+
+重要的纤维积构造可以归结为普通积与 $\ker(\ ,\ )$。］
+
+% PDF 55
+\sourcepage{51}{55}
+\textbf{积。}先回顾两个集合 $X,Y$ 的通常笛卡儿积 $X\times Y$ 的定义，它是由有序对 $(x,y)$ 组成的集合：
+\begin{equation}\tag{1.4}
+ X\times Y=\{(x,y)\mid x\in X,\ y\in Y\}.
+\end{equation}
+有两个映射 $p:X\times Y\to X$ 和 $q:X\times Y\to Y$，通常分别称为到第一因子和第二因子的投影，定义为
+\begin{equation}\tag{1.5}
+ p(x,y)=x,\qquad q(x,y)=y\qquad\bigl((x,y)\in X\times Y\bigr).
+\end{equation}
+
+\textbf{核。}设 $u,v:X\rightrightarrows Y$ 是两个映射。这对映射 $(u,v)$ 的核定义为
+\begin{equation}\tag{1.6}
+ \ker(u,v)=\{x\in X\mid u(x)=v(x)\}.
+\end{equation}
+\footnote{译注：原式右端误排为 $u(x)=v(y)$，此处据定义改正。}显然，映射 $f:X\to X$ 的不动点集就是 $\ker(f,1_X)$。
+
+\textbf{注。}同调代数中常见的通常意义下的核，其实是第二个映射 $v$ 为“零”的特例，具体含义如下。把集合范畴替换为带基点集合范畴 $\Sets_0$：对象是带有指定基点 $0_X$ 的非空集合，态射是保持基点的集合映射 $X\to Y$，即把 $0_X$ 映到 $0_Y$。阿贝尔群、模和环的底集上诱导的映射，都保持所指定的零元素。在 $\Sets_0$ 中，总可以定义零映射 $X\to Y$，并且按前面的定义，有 $\ker f=\ker(f,0)$。
+
+\textbf{纤维积。}另一个相关的重要概念，是两个集合映射的纤维积。设 $A\xrightarrow f C$、$B\xrightarrow g C$ 是集合范畴中的两个映射。纤维积 $f\times_C g$ 通常简记为 $A\times_C B$（尽管 $f,g$ 起着不可缺少的作用），它是通常的积 $A\times B$ 的如下子集：
+
+% PDF 56
+\sourcepage{52}{56}
+\begin{equation}\tag{1.7}
+ A\times_C B=\{(a,b)\in A\times B\mid f(a)=g(b)\}.
+\end{equation}
+纤维积的一个重要特例是 $C$ 的两个子集之交 $A\cap B$；此时 $f,g$ 就是典范单射 $A\hookrightarrow C$、$B\hookrightarrow C$。
+
+令 $\Delta=\{(x,y)\in C\times C\mid x=y\}$ 为 $C\times C$ 的对角线。显然有
+\begin{equation}\tag{1.8}
+ \Delta=\ker(p_1,p_2),
+\end{equation}
+其中 $p_1,p_2:C\times C\rightrightarrows C$ 是两个投影。上述对角线情形也可理解为交的一个特例：取 $A=B=C$，$f=g=1_C$。存在自然的双射——对角映射 $\delta:C\to\Delta$，$x\mapsto(x,x)$。于是交 $A\cap B$ 可写成
+\begin{equation}\tag{1.9}
+ \delta(A\cap B)=(A\times B)\cap\Delta.
+\end{equation}
+\footnote{在经典代数几何中，当 $\Delta$ 是 $C\times C$ 的线性子空间（例如 $C$ 为仿射空间时），这种构造很有用。这种“归结到对角线”的方法，或称“对角线技巧”，广泛用于经典代数簇的相交理论。}
+两个集合的笛卡儿积 $X\times Y$ 显然可与 $X\times_{\{e\}}Y$ 等同，其中 $\{e\}$ 是单点集。\footnote{这一点在更一般的范畴中也有对应的表述，其依据是：$\{e\}$ 是集合范畴的终对象。见第一章第1节。}
+
+% PDF 57
+\sourcepage{53}{57}
+当然，当集合带有某种附加结构时，这些纯集合论概念就有了更丰富的内涵。例如，若 $X,Y$ 是拓扑空间，$X\times Y$ 通常指底集的笛卡儿积，并赋予积拓扑。若 $X,Y$ 是域 $k$ 上维数分别为 $m,n$ 的有限维向量空间，则 $X\times Y$ 自然地等同于 $X\oplus Y$。在经典代数几何中，若 $X,Y$ 是 $\mathbb C$ 上的不可约射影代数簇，则 $X\times Y$ 也是如此；按定义，$X\times Y$ 的不可约子簇称为 $X$ 与 $Y$ 之间的不可约对应。
+
+纤维积 $X\times_S Y$ 还有一种解释，即基变换；Grothendieck 广泛使用这种观点，我们也需要讨论它。设 $E=(X\xrightarrow p S)$ 是某种纤维空间，其中 $X$ 为全空间，$S$ 为底空间，$p$ 为投影。
+\begin{center}
+\begin{tikzpicture}[scale=.8,>=stealth]
+ \draw (-4,0) .. controls (-5,-1.2) and (-3,-1) .. (-1,-.5);
+ \node at (-4.6,-.7) {$S'$}; \fill (-3.5,-.2) circle (1.5pt); \node[above] at (-3.5,-.2) {$x'$};
+ \draw (0,-.4) .. controls (-1,-1.3) and (1,-1) .. (2.8,-.55);
+ \node at (-.2,-.8) {$S$}; \fill (1.1,-.15) circle (1.5pt); \node[below right] at (1.1,-.15) {$x=f(x')$};
+ \draw[->] (-2.7,.15) to[bend left=15] node[above] {$f$} (-.7,.15);
+ \draw (.9,0) .. controls (.6,1) .. (.5,2.3);
+ \draw (1.3,0) -- (1.3,2.3); \draw (1.8,.1) .. controls (2.05,1.1) .. (2,2.3);
+ \node[above] at (1.2,2.3) {$X$};
+\end{tikzpicture}
+\end{center}
+设 $f:S'\to S$ 是连续映射，即一次基变换。我们希望如下构造逆像（或拉回）$f^{-1}(E)$：对每个 $x'\in S'$，把 $E$ 在 $f(x')=x$ 上的纤维作为 $x'$ 上的纤维，也就是“把纤维拉回来”。为了使这一说法严格化，并在 $E'=f^{-1}(E)$ 上引入拓扑结构，先构造拓扑积 $X\times S'$，再限制到 $X\times_S S'$。反过来，任意 $A\times_C B$ 都可解释为
+
+% PDF 58
+\sourcepage{54}{58}
+沿基变换 $A\to C$ 对 $B\to C$ 作的拉回。现在看看如何在任意范畴 $C$ 中引入上述各种构造。考虑 $\Ob C$ 中的两个对象 $X,Y$，看看对于可能并不存在的积 $X\times Y$ 能作怎样的表述。
+
+如果 $X\times Y$ 存在，它就是 $\Ob C$ 中的一个新对象。为了用公理在同构意义下定义它，先考察集合的积。若 $X,Y$ 是集合范畴中的对象，$X\times Y$ 最主要的范畴性质就是存在式(1.5)中的两个投影，使得对任意另一个集合 $Z$，给出映射 $u:Z\to X\times Y$，本质上等同于给出两个映射 $Z\to X$、$Z\to Y$，并使图
+\begin{equation}\tag{1.10}
+\begin{tikzcd}[row sep=large,column sep=large,ampersand replacement=\&]
+ \& X\times Y\arrow[dl,"p"']\arrow[dr,"q"] \&\\
+ X \& Z\arrow[u,"u"]\arrow[l,dashed]\arrow[r,dashed] \&Y
+\end{tikzcd}
+\end{equation}
+交换。换言之，存在双射 $u\mapsto(p\circ u,q\circ u)$：
+\begin{equation}\tag{1.11}
+ \Hom(Z,X\times Y)\xrightarrow\sim\Hom(Z,X)\times\Hom(Z,Y),
+\end{equation}
+参见式(1.2)。它把态射 $u$ 对应到态射的有序对 $p\circ u,q\circ u$。\footnote{顺便说，若 $Z$ 是单点集 $\{e\}$，这正好意味着 $X\times Y$ 由全部有序对 $(x,y)$（$x\in X,y\in Y$）组成：给出映射 $\{e\}\to Z$ 就是选定 $Z$ 中的一点；特别地，给出 $\{e\}\to X\times Y$ 就是选定一个有序对 $(x,y)$。}我们记作 $u=(p\circ u)\times(q\circ u)=(p\circ u,q\circ u)$。
+
+对任意范畴 $C$，我们以性质(1.11)作为积 $X\times Y$ 的定义。准确地说，对象 $X\times Y\in\Ob C$ 连同两个箭头 $p:X\times Y\to X$、$q:X\times Y\to Y$，称为对象 $X,Y\in\Ob C$ 的一个积，如果 $p,q$ 对任意对象 $Z\in\Ob C$ 向 $X,Y$ 的映射方式具有泛性质，
+
+% PDF 59
+\sourcepage{55}{59}
+即映射 $u\mapsto(p\circ u,q\circ u)$ 给出 $\Hom(Z,X\times Y)$ 与 $\Hom(Z,X)\times\Hom(Z,Y)$ 之间的双射。
+
+\textbf{注。}由于 $\Hom(Z,X\times Y)$、$\Hom(Z,X)$、$\Hom(Z,Y)$ 本身都是集合，把积定义为一个泛问题的解，实际上就归结到了集合范畴这一特例。这个解在同构意义下确定：若 $(X\times Y)'$ 是另一个积，就能找到与投影相容的箭头 $u:(X\times Y)'\to X\times Y$；交换 $X\times Y$ 与 $(X\times Y)'$ 的角色，便知它确实是同构。
+
+对于任意范畴，一个值得研究的问题是：$\Ob C$ 中每对对象 $X,Y$ 是否都存在这样的范畴积 $X\times Y$？积可能存在，也可能不存在；只要存在，它就在同构意义下唯一。\footnote{这种积构造是范畴中所谓逆极限构造的特例。一般定义见第2节。}
+
+上面考虑的是两个对象的情形；也可以取一族由指标 $i\in I$ 标记的对象 $X_i\in\Ob C$，尝试定义它们的积 $\prod_{i\in I}X_i$。这个积应带有一族到各个 $X_i$ 的态射 $p_i$：
+\begin{equation}\tag{$1.5'$}
+ p_i:\prod_{i\in I}X_i\longrightarrow X_i,
+\end{equation}
+并满足如下泛性质：对每个 $Z\in\Ob C$，把态射 $u:Z\to\prod_{i\in I}X_i$ 对应到所有复合 $p_i\circ u$ 组成的族，所得映射为双射。用符号表示，即
+\begin{equation}\tag{$1.11'$}
+ \Hom\left(Z,\prod_{i\in I}X_i\right)\xrightarrow\sim
+ \prod_{i\in I}\Hom(Z,X_i).
+\end{equation}
+
+% PDF 60
+\sourcepage{56}{60}
+这就是任意一族对象的积！可以问，这个积在 $C$ 中是否存在；只要存在，它就在唯一同构的意义下确定。
+
+顺便说，当对象族为空，即 $I=\varnothing$ 时，也可以问：是否存在仍使式$(1.11')$成立的“空族的积”？反过来，很容易证明这样的积就是终对象（见第一章第1节）。
+
+因此，积构造所得到的对象也包括终对象！当然，当 $I$ 只有一个元素时，以 $I$ 为指标集的积在任何范畴 $C$ 中总是存在；但 $|I|>1$ 时就未必如此。如果任意两个对象的积都存在，那么单凭结合性，就能证明任意有限个（$n$ 个）对象的积存在。
+
+现在看看如何把一对平行箭头的核推广到任意范畴 $C$。设 $C$ 中有两个同源、同靶的箭头 $p,q:X\rightrightarrows Y$。我们希望仅用箭头，把问题归结到集合论情形，来定义这两个箭头的核 $K\in\Ob C$。一个核应当由对象 $K\in\Ob C$ 和作为附加结构的态射 $i:K\to X$ 组成。把 $i$ 与两个给定箭头复合，就得到两个 $K\to Y$ 的态射，满足 $p\circ i=q\circ i$。我们要求：在所有以 $X$ 为靶、且与 $p,q$ 复合后相等的箭头中，$i$ 具有泛性质。具体说，对任意 $Z\in\Ob C$，考察从 $Z$ 到 $K$ 的全部态射组成的集合 $\Hom(Z,K)$；
+
+% PDF 61
+\sourcepage{57}{61}
+与 $i$ 复合，得到到 $\Hom(Z,X)$ 的映射 $f\mapsto i\circ f$；再分别与 $p,q$ 复合，就得到两个从 $Z$ 到 $Y$ 的映射 $p\circ i\circ f$、$q\circ i\circ f$。于是，$(K,i)$ 是一对箭头 $p,q:X\rightrightarrows Y$ 的核，当且仅当对每个 $Z\in\Ob C$，序列
+\[
+\begin{tikzcd}[ampersand replacement=\&]
+ \Hom(Z,K)\arrow[r,"i_*"] \& \Hom(Z,X)\arrow[r,shift left=.6ex,"p_*"]\arrow[r,shift right=.6ex,"q_*"'] \& \Hom(Z,Y)
+\end{tikzcd}
+\]
+正合；也就是说，第一个箭头是单射，其像恰好由那些与 $p,q$ 复合后相等的 $Z\to X$ 的态射组成。
+
+\textbf{重要说明。}前面通过求解泛问题来构造 $X\times Y$ 和 $\ker(X\rightrightarrows Y)$ 时，我们把对象 $X\in\Ob C$ 换成集合 $\Hom_C(Y,X)$（$Y\in\Ob C$ 任意），从而把任意范畴 $C$ 中的情形归结到了集合范畴。换言之，仅仅进行替换 $X\mapsto\Hom(\ ,X)$，就能把任意 $C$ 中的问题归结到集合范畴！
+
+现在给出两个具体例子。以群范畴为例，其中存在积，就是通常的群直积；也存在核，因为若 $p,q:X\rightrightarrows Y$ 是两个群同态，集合 $\{x\in X\mid px=qx\}$ 就是子群 $K=\ker(p,q)$，而且它确实是范畴意义下的核！
+
+再给出第三个重要构造。
+
+\textbf{$C$ 中的纤维积。}设两个对象 $X,Y$ 都在第三个对象 $S$ 之上，也就是说，有两个结构态射 $f,g$（见第一章第1节）：
+
+% PDF 62
+\sourcepage{58}{62}
+\begin{equation}\tag{1.12}
+\begin{tikzcd}[column sep=small,ampersand replacement=\&]
+ X\arrow[dr,"f"'] \&\&Y\arrow[dl,"g"]\\ \&S\&
+\end{tikzcd}
+\end{equation}
+我们希望定义 $C$ 中同样在 $S$ 之上的第三个对象，称为 $X,Y$ 关于 $S$ 的纤维积，记作 $X\times_S Y$。\footnote{这种说法省略了部分信息，记号 $X\times_S Y$ 也是如此；$f,g$ 是不可缺少的。}在集合范畴中，$X\times_S Y$ 应是通常集合积 $X\times Y$ 的子集，由经 $f,g$ 投影后相等的全部有序对组成，见式(1.7)。$X\times_S Y$ 无非就是范畴 $C/S$ 中的普通积。换言之，通常简记为 $X\times_S Y$ 的纤维积，实际上是 $C$ 中的一个态射 $X\times_S Y\to S$，使下面左图交换：
+\begin{equation}\tag{1.13}
+\begin{tikzcd}[column sep=small,ampersand replacement=\&]
+ X\arrow[dr] \& X\times_S Y\arrow[l]\arrow[r]\arrow[d] \&Y\arrow[dl]\\ \&S\&
+\end{tikzcd}
+\qquad
+\begin{tikzcd}[column sep=small,ampersand replacement=\&]
+ X\arrow[dr] \&Z\arrow[l]\arrow[r]\arrow[d] \&Y\arrow[dl]\\ \&S\&
+\end{tikzcd}
+\end{equation}
+并且，对 $C$ 中使右图交换的每个 $Z\to S$，都能唯一地补出下面的虚线箭头，使全图交换：
+\begin{equation}\tag{1.14}
+\begin{tikzcd}[column sep=small,ampersand replacement=\&]
+ \& Z\arrow[dl]\arrow[dr]\arrow[d,dashed] \&\\
+ X\arrow[dr] \&X\times_S Y\arrow[l]\arrow[r]\arrow[d] \&Y\arrow[dl]\\ \&S\&
+\end{tikzcd}
+\end{equation}
+
+\textbf{注。}1）纤维积 $X\times_S Y$ 可以用积和核来定义。若有 $f:X\to S$、$g:Y\to S$，先在 $C$ 中构造 $X\times Y$（假如它存在），
+
+% PDF 63
+\sourcepage{59}{63}
+再构造核（假如能够构造）
+\[
+ \ker\left(X\times Y
+ \mathrel{\substack{\xrightarrow{\ (f\times f)\circ p\ }\\[-.6ex]\xrightarrow[\ (g\times g)\circ q\ ]{}}}
+ S\times S\right).
+\]
+\footnote{译注：原式如此，箭头的类型不相容。正确的通常构造是 $\ker(f\circ p,g\circ q)$，其中 $p:X\times Y\to X$、$q:X\times Y\to Y$，两个平行箭头的靶均为 $S$。}
+因此，积与核的存在蕴含纤维积的存在。
+
+1）反过来，若 $C$ 中存在任意纤维积，则存在终对象 $e$（即 $C$ 中空对象族的积，见原书第56页），而 $X\times Y=X\times_eY$。类似地，还可以看出任意积都存在。\footnote{译注：原文这里有缺漏。仅有所有二元纤维积，并不能推出终对象或任意积的存在；若另有终对象，则可由纤维积构造有限积。任意无限积仍须另行假设。原文的序号再次印作“1）”。}如果 $C$ 中存在任意有限积和纤维积，\footnote{译注：原文此处把“有限积”重复写了两次；依下文所用构造，第二处应指纤维积。}就可以定义对角对象 $\Delta_X=X\times_X X$ 及对角态射 $\delta_X:X\to\Delta_X$。下面这个简单的交换图
+\begin{equation}\tag{1.15}
+\begin{tikzcd}[column sep=small,ampersand replacement=\&]
+ \&X\times_X X\arrow[dl]\arrow[dr]\arrow[dd]\&\\
+ X\arrow[dr,"1_X"'] \&\&X\arrow[dl,"1_X"]\\ \&X\&
+\end{tikzcd}
+\end{equation}
+说明 $\delta_X$ 是双射，而且有两个互逆的典范映射 $X\rightleftarrows\Delta_X$。现在把一对箭头 $u,v:X\rightrightarrows Y$ 化为唯一的箭头 $(u,v):X\to Y\times Y$，再补出虚线箭头，得到交换图
+\begin{equation}\tag{1.16}
+\begin{tikzcd}[ampersand replacement=\&]
+ K\arrow[r]\arrow[d,dashed] \&Y\arrow[d,"{(1_Y,1_Y)}"]\\
+ X\arrow[r,"{(u,v)}"'] \&Y\times Y.
+\end{tikzcd}
+\end{equation}
+于是，对态射 $(u,v)$ 与 $(1_Y,1_Y)$，有 $K=\ker(u,v)=X\times_{Y\times Y}Y$。这就是对角线技巧的抽象形式，即 $(u,v)$ 的图像与对角线相交。］
+
+［现在沿用 Grothendieck 本人的话，看看如何把纤维积解释为任意范畴中的基变换：］
+
+% PDF 64
+\sourcepage{60}{64}
+换一个角度，可以把纤维积解释为一种基变换操作。考虑两个在 $S$ 之上的对象 $X,S'$，它们的角色并不相同。［也就是说，考虑图中的两个态射：
+\[
+\begin{tikzcd}[ampersand replacement=\&]
+ \&X\arrow[d]\\S'\arrow[r]\&S.
+\end{tikzcd}
+\]
+其中 $X$ 可看作某种“$S$ 上的纤维空间”，$S'$ 则看作“新的底空间”（参见拉回的集合论解释）。令 $X'=X\times_S S'$ 为 $X,S'$ 在 $S$ 上的纤维积。存在 $X'$ 到 $X$ 及 $S'$ 的自然箭头，［使图
+\begin{equation}\tag{1.17}
+\begin{tikzcd}[ampersand replacement=\&]
+ \&X'=X\times_S S'\arrow[r]\arrow[d]\&X\arrow[d]\\
+ Z'\arrow[r,dashed]\&S'\arrow[r]\&S
+\end{tikzcd}
+\end{equation}
+交换。］箭头 $X'\to S'$ 将 $X'$ 定义为一个“$S'$ 上的对象”。\footnote{即对应于 $X'$ 上纤维空间这一种直观的对象。［译注：原注写“$X'$ 上”，结合正文似应为“$S'$ 上”。］}在这种观点下，我希望刻画 $S'$ 上的 $X'$，［这里固定 $S'\to S$，而让 $X$ 变化］。只要略微改变观察的角度，答案就是对 $X\times_S S'$ 定义的一种同义改写。
+
+考察两个范畴 $C/S$ 和 $C/S'$，［见第一章第1节］；它们之间有两个方向相反的自然函子 $\varphi,\psi$：
+\begin{equation}\tag{1.18}
+\begin{tikzcd}[ampersand replacement=\&]
+ C/S'\arrow[r,shift left=.6ex,"\varphi"] \&C/S\arrow[l,shift left=.6ex,"\psi"]
+\end{tikzcd}
+\qquad(X\overset{\psi}{\mapsto}X',\quad Z'\overset{\varphi}{\mapsto}Z).
+\end{equation}
+其中 $\varphi:C/S'\to C/S$ 是复合函子：给定 $S'$ 上的对象 $Z'\to S'$，就把它映为复合 $\varphi(Z')\to S$，
+
+% PDF 65
+\sourcepage{61}{65}
+如下图所示，即把 $Z'\to S'$ 变为 $Z'\to S$，记作 $\varphi(Z')$。\footnote{图 $S'\to S\leftarrow X$ 的这种处理方式是不对称的。}
+\[
+\begin{tikzcd}[ampersand replacement=\&]
+ Z'\arrow[d]\arrow[dr,"\varphi"]\&\\S'\arrow[r]\&S
+\end{tikzcd}
+\]
+现在，构造 $X\times_S S'$ 可以看作 $\varphi$ 的右伴随。准确地说，有伴随关系
+\[
+ \Hom_{C/S}(\varphi(Z'),X)\xrightarrow\sim
+ \Hom_{C/S'}(Z',\psi(X)).
+\]
+\footnote{因此 $\varphi$ 是一种遗忘函子：为保留 $S$，而忘掉 $S'$。}
+这个关系的直接验证留给读者。Grothendieck 要强调的要点是：
+
+设 $S'\to S$ 是固定态射，即任意范畴 $C$ 中的一次“基变换”。那么复合函子 $\varphi:C/S'\to C/S$，$Z'\mapsto\varphi(Z')$，有右伴随\footnote{［读者应记住，$X,Z'$ 是简化的记号；$C/S,C/S'$ 的对象实际上分别是结构箭头 $X\to S$、$Z'\to S'$。］}
+\[
+ \psi:X\longmapsto\psi(X)=X'=X\times_S S',
+\]
+它就是纤维积或拉回。换言之，在任意范畴 $C$ 中，任何纤维积总可以解释为一次基变换。\footnote{［这里回顾一下（按说应当熟知的）伴随概念。设 $F,G$ 是固定范畴 $\mathcal B,\mathcal E$ 之间方向相反的两个函子，$F:\mathcal B\to\mathcal E$，$G:\mathcal E\to\mathcal B$。如果对每对对象 $B\in\Ob\mathcal B,E\in\Ob\mathcal E$，有函子性的双射（称为伴随）$\varphi_{B,E}:\Hom_{\mathcal B}(B,G(E))\xrightarrow\sim\Hom_{\mathcal E}(F(B),E)$，原文称 $F$（$G$）为 $G$（$F$）的右（左）伴随。通常 $\varphi_{B,E}$ 如正文中那样已很清楚，故不再显式写出。见 Mac Lane 的范畴论教材，第IV章“Adjoints”，第77页。］［译注：原注的“右（左）”次序写反；按所列双射，$F$ 是左伴随，$G$ 是右伴随。正文对此处基变换函子的左右伴随称法是正确的。］}
+
+\Section{2}{将任意逆极限归结为前面的特例}
+\textbf{概要。}我们将定义范畴 $C$ 中任意图式的逆极限。\footnote{原注：在美国的范畴论用语中称作 pull-backs。［译注：pullback 通常专指纤维积，而非一般逆极限；此处保留原注。］}这样的图式是一个由顶点和箭头组成的抽象图式 $D$ 在 $C$ 中的具体实现。前面构造的 $X\times Y$、$X\times_S Y$、$\ker(u,v)$ 都是特例。$C$ 中任意图式 $D$ 的逆极限 $F=\varprojlim D$，总存在于
+
+% PDF 66
+\sourcepage{62}{66}
+扩大的范畴 $\widehat C$ 中，但未必是 $C$ 的对象。它只是从 $C$ 到 $\Sets$ 的反变函子。如果 $F$ 属于嵌入 $i:C\hookrightarrow\widehat C$ 的本质像，也就是说 $F$ 可表，例如 $F\simeq h_X$（$X\in\Ob C$），那么记 $X=\varprojlim D$；此时 $X$ 是 $C$ 中在同构意义下确定的对象。
+
+我们将说明，如何把 $C$ 中的一般逆极限归结为第1节中的情形。
+
+\textbf{抽象图式。}先取一个图式 $D$：它只是一个顶点集 $D_0$ 和一个箭头集 $D_1$，这些箭头“连接 $D_0$ 中某些成对的顶点”（是很抽象的东西！），另有两个从 $D_1$ 到 $D_0$ 的映射：
+\begin{equation}\tag{2.1}
+ D_1\rightrightarrows D_0,
+\end{equation}
+分别把每个箭头对应到两个顶点，即它的起点与终点，也常称为箭头的源与靶。这就是我们所谓图式的模型！\footnote{进一步阅读可参看 Mac Lane 的范畴论教材，第III章“Universals and Limits”，第55页。Grothendieck 在课上使用 inverse limit（逆极限）、direct limit（归纳极限）的术语。以下对照或许有用：inverse limit = projective limit = limit = left roots = $\varprojlim$；direct limit = inductive limit = colimit = right roots = $\varinjlim$。Grothendieck 在原始论文中使用法语术语“射影极限”“归纳极限”。例如见 SGA 4，I，报告 I“Préfaisceaux”。}
+
+现在考虑范畴 $C$。$C$ 中一个 $D$ 型图式，就是一对映射：第一个把 $D$ 的每个顶点对应到 $C$ 的一个对象，即 $D_0\to\Ob C$；第二个把 $D$ 的每个抽象箭头对应到 $\operatorname{Arr}C=C_1$ 中的一个态射，\footnote{这样的抽象图式就是 Mac Lane 所说的图（同上，第II章第7节，第48页）。“忘掉哪些箭头是复合箭头、哪些箭头是恒等箭头，每个范畴就确定了一个图（即图式）。”反过来，也有方法通过以某种方式自由复合箭头，从图式“生成”范畴。细节见所引文献。}并保持源和靶，
+
+% PDF 67
+\sourcepage{63}{67}
+也就是说，使下列方图交换：
+\begin{equation}\tag{2.2}
+\begin{tikzcd}[column sep=large,ampersand replacement=\&]
+ C_1=\operatorname{Arr}C\arrow[d,shift left=.5ex]\arrow[d,shift right=.5ex] \&D_1\arrow[l]\arrow[d,shift left=.5ex]\arrow[d,shift right=.5ex]\\
+ C_0=\Ob C \&D_0\arrow[l]
+\end{tikzcd}
+\end{equation}
+
+\textbf{例。}1）先考虑仅含两个点、没有箭头的情形 $\bullet\quad\bullet$。$C$ 中这种类型的图式，只需给出范畴 $C$ 中的两个对象 $X,Y$。
+
+2）考虑含有两个点和两个同向箭头的图式 $\bullet\rightrightarrows\bullet$。它对应于一对对象 $X,Y$，以及两个从 $X$ 到 $Y$ 的态射 $X\rightrightarrows Y$。
+
+3）为了定义纤维积 $X\times_S Y$，考虑三个顶点 $1,2,3$ 和两个同靶的箭头 $1\to3$、$2\to3$：
+\begin{equation}\tag{2.3}
+\begin{tikzcd}[column sep=small,ampersand replacement=\&]
+1\arrow[dr]\&\&2\arrow[dl]\\\&3\&
+\end{tikzcd}
+\qquad
+\begin{tikzcd}[column sep=small,ampersand replacement=\&]
+X\arrow[dr]\&\&Y\arrow[dl]\\\&S\&
+\end{tikzcd}
+\end{equation}
+它对应于 $C$ 中的三个对象 $X,Y,S$。
+
+［这里把第1节的例子汇总如下：
+\begin{center}
+\begin{tabular}{llll}
+\toprule
+ &积&核&纤维积\\
+\midrule
+图式类型 &$\bullet\quad\bullet$ &$\bullet\rightrightarrows\bullet$ &$\bullet\to\bullet\leftarrow\bullet$\\
+$C$ 中的图式 &$X\quad Y$ &$X\rightrightarrows Y$ &$X\to S\leftarrow Y$\\
+逆极限 &$X\times Y$ &$K=\ker(X\rightrightarrows Y)$ &$X\times_S Y$\\
+\bottomrule
+\end{tabular}
+\end{center}
+］
+
+% PDF 68
+\sourcepage{64}{68}
+现在定义范畴 $C$ 中任意类型图式的逆极限，这些类型就是抽象图式。以下用小写字母 $d,d_0,d_1$ 表示图式类型，大写字母 $D,D_0,D_1$ 表示实际的图式。
+
+设 $D$ 是范畴 $C$ 中的一个 $d$ 型图式。给每个 $i\in d_0$ 指定一个对象 $D(i)\in\Ob C$，给每个箭头 $\varphi\in d_1$ 指定一个态射 $D(\varphi)\in\operatorname{Arr}C$，并满足交换性质(2.2)，就定义了 $D$。
+
+所谓这种图式 $D$ 的逆极限 $\varprojlim D$，是指对象 $L\in\Ob C$ 连同一族从 $L$ 到各个 $D(i)$ 的态射
+\begin{equation}\tag{2.4}
+ u(i):L\longrightarrow D(i),\qquad i\in d_0,
+\end{equation}
+满足如下公理：对范畴中的每个对象 $Z\in\Ob C$，利用每个态射 $Z\to L$ 与箭头的复合定义映射
+\begin{equation}\tag{2.5}
+ \Hom(Z,L)\longrightarrow\prod_{i\in d_0}\Hom(Z,D(i)),
+\end{equation}
+\footnote{译注：原式右端第一变量误印为 $D$，此处依上下文改为 $Z$。}
+其复合方式为
+\begin{equation}\tag{2.6}
+\begin{tikzcd}[ampersand replacement=\&]
+ L\arrow[r,"u(i)"]\&D(i)\\Z\arrow[u]\arrow[ur]\&
+\end{tikzcd}
+\end{equation}
+我们要求式(2.5)为单射，而且其像恰由与图式中全部箭头相容的那些态射族 $Z\to D(i)$ 组成。也就是说，若 $D(i)\to D(j)$ 是 $D$ 中的箭头，则三角图
+
+% PDF 69
+\sourcepage{65}{69}
+\begin{equation}\tag{2.7}
+\begin{tikzcd}[ampersand replacement=\&]
+ D(i)\arrow[r,"D(\varphi)"]\&D(j)\\ Z\arrow[u]\arrow[ur]\&
+\end{tikzcd}
+\end{equation}
+交换。一族态射 $Z\to D(i)$，如果对每个 $D(\varphi)\in D_1$ 都满足上述交换条件，就称为一个相容态射族。
+
+于是，前面的性质可以表述为：式(2.5)给出了 $\Hom(Z,L)$ 与 $D$ 中全部相容态射族所成集合之间的双射，即
+\begin{equation}\tag{2.8}
+ \Hom(Z,L)\xrightarrow\sim
+ \left\{(f_i)\in\prod_{i\in d_0}\Hom(Z,D(i))\;\middle|\;(f_i)\text{ 相容}\right\}.
+\end{equation}
+也可以如下把一般情形归结到集合范畴，以另一种方式表述这一点。
+
+假设 $C=\Sets$，那么所有 $D(i)$ 都是集合，态射 $D(i)\xrightarrow\varphi D(j)$ 是相应集合间的映射。考察 $\Hom(Z,D(i))$ 的积中那个子集，它由与 $D$ 的箭头相容的态射族组成，即对图式中的每个 $D(\varphi)$，相应的图都交换。于是，定义范畴 $C$ 中任意 $d$ 型图式 $D$ 的逆极限的泛性质，可表述为：
+
+对象 $L\in\Ob C$ 是 $d$ 型图式 $D$ 的逆极限，当且仅当对每个 $Z\in\Ob C$，存在到集合范畴中 $\Hom(Z,D(i))$ 的相应图式之极限的双射：
+
+% PDF 70
+\sourcepage{66}{70}
+\begin{equation}\tag{2.9}
+ \Hom(Z,L)\xrightarrow\sim\varprojlim_i\Hom(Z,D(i)).
+\end{equation}
+
+现在证明归约定理。\footnote{这种归约的显式描述引自 SGA 4，I，报告 I，第11页。应当照例有所保留地理解此处的表述，因为这里并不讨论范畴论基础、宇宙等问题。此外，可以用适当的“小”范畴 $\mathcal D$ 代替抽象图式 $d$，用函子 $\mathcal D\to C$ 代替具体图式。}
+
+\textbf{定理。}设 $C$ 为任意范畴，下列性质等价：
+\begin{enumerate}
+\item $C$ 中存在任意逆极限；
+\item $C$ 中存在任意积，且每对平行箭头都有核；
+\item $C$ 中存在任意积和任意纤维积。
+\end{enumerate}
+\textit{证明。}只需注意，对图式 $D$ 有函子性的同构
+\begin{equation}\tag{2.10}
+ \varprojlim D\simeq
+ \ker\left(\prod_{i\in d_0}D(i)
+ \mathrel{\substack{\xrightarrow{u}\\[-.6ex]\xrightarrow[v]{}}}
+ \prod_{j\in d_1}D(\operatorname{target}j)\right).
+\end{equation}
+这里两个积分别以顶点集 $d_0$ 和箭头集 $d_1$ 为指标。式(2.10)中的两个箭头 $u,v$ 分别由下面两族箭头唯一确定：一族是投影
+\[
+ \prod_{i\in d_0}D(i)\xrightarrow{\operatorname{pr}_{\operatorname{target}j}}
+ D(\operatorname{target}j),
+\]
+另一族是复合
+\[
+ \prod_{i\in d_0}D(i)\xrightarrow{\operatorname{pr}_{\operatorname{source}j}}
+ D(\operatorname{source}j)\xrightarrow{D(j)}D(\operatorname{target}j).
+\]
+\textbf{注。}集合范畴中满足条件2）、3），因此
+
+% PDF 71
+\sourcepage{67}{71}
+集合范畴中存在任意逆极限。
+
+有了这些准备，容易看出，对任意给定范畴 $C$，$\varprojlim D$ 在范畴 $\widehat C$ 中总是存在，因为此构造可逐点归结到集合范畴。我们说 $\varprojlim D$ 在 $C$ 中存在，当且仅当 $D$ 在 $\widehat C$ 中的极限可表，也就是说，当且仅当 $\varprojlim D$ 属于 $i:C\hookrightarrow\widehat C$ 的本质像。设 $\varprojlim D\simeq h_L$，其中 $L\in\Ob C$。那么对象 $L$（在 $C$ 中按同构确定）就称为 $D$ 在 $C$ 中的逆极限，并简写为 $L=\varprojlim D$。
+
+\Section{3}{归纳极限}
+范畴 $C$ 中的归纳极限（见原书第62页脚注1）与反范畴 $C^{\op}$ 中的逆极限一一对应。这种对偶的考虑尤为重要，因为第一卷的主要结果正是：仿射代数空间范畴 $\Aff$（第三章中将与仿射概形范畴等同）同构于含幺交换环范畴 $\G$ 的反范畴 $\G^{\op}$。
+
+因此，虽然完全可以把有关归纳极限的主要事实留给读者自行推导，我们仍将明确地对偶化第二章第1、2节中的构造，稍加讨论几个基本概念。也就是说，先把积、核、纤维积分别对偶化为和（即余积）、余核、纤维和。
+
+\textbf{和，即余积。}最基本的集合论事实，是先驱们发现的如下性质：两个集合 $A,B$ 的不交和（两个互不相交的副本之并）$A+B$，也记作 $A\amalg B$，具有与 $A\times B$ 对偶的性质。即与投影 $A\times B\to A$、$A\times B\to B$ 对应的是典范单射：
+
+% PDF 72
+\sourcepage{68}{72}
+$A\hookrightarrow A+B$、$B\hookrightarrow A+B$；等式(1.2)则替换为
+\begin{equation}\tag{$3.1=1.2'$}
+ \Hom_C(A+B,C)=\Hom_C(A,C)\times\Hom_C(B,C).
+\end{equation}
+它由唯一补出下面的虚线箭头、使图交换来定义：
+\begin{equation}\tag{3.2}
+\begin{tikzcd}[column sep=large,ampersand replacement=\&]
+ \&A\arrow[dl]\arrow[dr]\&\\
+ A+B\arrow[rr,dashed]\&\&C\\
+ \&B\arrow[ul]\arrow[ur]\&
+\end{tikzcd}
+\end{equation}
+这是第二章式(1.10)或(1.11)的对偶。我们用性质(3.1)定义任意范畴 $C$ 中两个对象 $A,B$ 的和（即余积）$A+B$，也记作 $A\amalg B$。
+
+对偶化式$(1.11')$，就可相应地推广到 $C$ 中任意对象族 $\{X_i\}_{i\in I}$：
+\begin{equation}\tag{3.3}
+ \Hom_C\left(\coprod_{i\in I}X_i,Z\right)\xrightarrow\sim
+ \prod_{i\in I}\Hom_C(X_i,Z).
+\end{equation}
+与积一样，可以问这样的和在 $C$ 中是否存在；只要存在，它就在唯一同构的意义下确定。
+
+\textbf{核的对偶化：余核，亦称余等化子。}其记号为 $\operatorname{coker}(Y\rightrightarrows X)$。原先的泛单射箭头 $K\xrightarrow i X\rightrightarrows Y$ 满足 $f\circ i=g\circ i$。将箭头方向反转后，对一对箭头 $f,g:Y\rightrightarrows X$，相应的是对象 $Q$ 连同箭头 $p:X\to Q$，满足 $p\circ f=p\circ g$；并且，对使图交换的任意 $p':X\to Z$，都应存在唯一的态射 $\varphi:Q\to Z$，使 $p'=\varphi\circ p$。换言之，$Q$ 类似一个泛商对象。两对互为对偶的图式，清楚地说明了专门研究范畴的人为何把核与余核称为等化子（equalizer）与余等化子（coequalizer）。从几何上说，$\ker(f,g)$ 来自考虑集合 $\{x\in X\mid f(x)=g(x)\}$。我们希望交换 $X,Y$ 的角色。
+
+% PDF 73
+\sourcepage{69}{73}
+这无法照字面进行。得到的不是 $X$ 的子集 $K$ 及单射 $K\hookrightarrow X$，而是一个商对象 $Q$ 及 $p:Y\to Q$，使两个箭头 $f,g:X\rightrightarrows Y$ 与 $p$ 的复合相同，即图式 $X\rightrightarrows Y\to Q$ 交换。］
+
+\textbf{纤维积的对偶化：纤维和。}纤维积 $X\times_S Y$，即范畴 $C/S$ 中两个对象的积，其对偶就是范畴 $S/C$ 中的和，通常称为 $C$ 中的纤维和（amalgamated sum）。最好的例子是集合 $S$ 的两个子集 $A\hookrightarrow S$、$B\hookrightarrow S$ 的通常并 $A\cup B$。把 $A\amalg B$ 对如下等价关系取商，就得到 $A\cup B$：对于 $a\in A,b\in B$，当且仅当 $a=b$ 时令 $a\sim b$。\footnote{译注：这里的并是 $A\leftarrow A\cap B\to B$ 的纤维和；原文略去了共同源对象 $A\cap B$。}
+
+直接对偶化式$(1.5')$、$(1.11')$（见原书第55页），就可把这些概念推广到任意对象族 $\{X_i\}_{i\in I}$：
+\[
+ X_i\longrightarrow\coprod_{i\in I}X_i,\qquad
+ \Hom_C\left(\coprod_{i\in I}X_i,Z\right)\xrightarrow\sim
+ \prod_{i\in I}\Hom_C(X_i,Z).
+\]
+$C$ 中空对象族的和就是始对象 $\varnothing_C$（见第一章第1节）。
+
+一个很好的练习是：说明任意有限和及余核的存在，如何蕴含纤维和等构造的存在；最后再把任意归纳极限归结为上述特例。
+
+将任意范畴 $C$ 中的逆极限归结到集合范畴的方法，是把 $C$ 扩大为反变函子 $C\to\Sets$ 的范畴 $\widehat C$，并把每个 $X\in\Ob C$ 与由 $X$ 表示的函子 $h_X$ 等同起来。在 $\widehat{C^{\op}}$ 中采用类似的方法，就能把归纳极限的研究归结到集合的情形。\footnote{译注：原文最后写 $\widehat C^{\op}$；若要作与逆极限相同的可表函子归约，准确的扩大范畴是 $\widehat{C^{\op}}$，即 $C$ 到集合的协变函子范畴。}
+
+% PDF 74
+\sourcepage{70}{74}
+\PartTitle{第二部分}{范畴 $\Aff_k$ 中的极限}
+\textbf{概要。}$\Aff_k$ 中的逆极限构造，可由其反范畴 $\G_k$ 中的归纳极限通过对偶性得到。关键性质是 $\G_k$ 中存在任意和，即余积；这本质上来自张量积 $A\otimes_kB$，它就是 $A,B\in\Ob\G_k$ 的范畴和，见第6节。$\G_k$ 中每对平行箭头也都有余核，见第3节。因此，$\Aff_k$ 中存在任意积，每对平行箭头 $X\rightrightarrows Y$ 也都有核；再由第2节的归约定理，即可证明仿射代数空间范畴 $\Aff_k$ 中存在任意逆极限。
+
+至于 $C=\Aff_k$ 中的归纳极限 $\varinjlim_iX_i$，它对应于反范畴 $\G_k$ 中的逆极限 $\varprojlim_i A_i$，其中 $X_i=\mathfrak X_{A_i}$，$A_i\in\Ob\G_k$，$i\in I$。这些逆极限在 $\G_k$ 中总是存在，因为 $A_i$ 的底集总有集合论意义的极限，代数结构也可以传递过去。困难在于，如何在反范畴 $C$ 中解释它们：对偶得到的 $C$ 中的归纳极限，未必十分合理！例如，在 $\Aff_k$ 中取商会产生病态的结果，因为它不同于在更一般的概形范畴中取商（见第二卷）。
+
+只有一种操作总是合理的：$k$ 上仿射代数空间范畴中的有限和 $\coprod_{i\in I}X_i$，其中 $I=\{1,2,\ldots,n\}$ 是有限指标集。下面将详细描述这一操作。
+
+\Section{4}{仿射代数空间的范畴论一般性质}
+［第一章已通过典范地等同于含幺交换环范畴 $\G$（或 $k$-代数范畴 $\G_k$，$k\in\Ob\G$）的反范畴 $\G^{\op}$（或 $\G_k^{\op}$），定义了仿射代数空间范畴 $\Aff$（或 $k$ 上仿射代数空间范畴 $\Aff_k$）。更确切地说，$\G^{\op}$ 和 $\G_k^{\op}$ 分别与协变可表函子所成的范畴等同（见第一章第1节）：
+\begin{equation}\tag{4.1}
+ \mathfrak X_A:\G\longrightarrow\Sets
+ \qquad\text{或}\qquad\mathfrak X_A:\G_k\longrightarrow\Sets,
+\end{equation}
+其中 $A\in\Ob\G$ 或 $A\in\Ob\G_k$。此外，$\Aff=\Aff_{\mathbb Z}$。
+
+% PDF 75
+\sourcepage{71}{75}
+从这些定义可以推出许多纯属范畴性质的简单结论，人们称之为“一般的抽象废话”（general abstract nonsense）。这里汇总其中几个，只是想说明：单靠“反转箭头”，就能轻易推出如此多的性质。不过，我很清楚，有些守旧的读者会问：为什么这也叫几何？最漂亮的回答，是引入仿射概形（见第三章）：用与 $\mathfrak X_A$ 一一对应的几何对象——仿射概形 $\operatorname{Sch}A=(\Spec A,\widetilde A)$——赋予 $\mathfrak X_A$ 另一种解释。它由一个拓扑空间，即 $A$ 的谱 $\Spec A$，连同一个局部环的结构层 $\widetilde A$ 构成。但即使暂不这样做，仅在可表函子的框架内，也可以指出 $\G,\G_k$ 的种种特有性质都具有其他范畴中所没有的几何解释，以此回应所有质疑。
+
+1）\textbf{一般的抽象废话。}映射 $A\mapsto\mathfrak X_A$ 是双射 $\Ob\G\to\Ob\Aff$。若 $f:A\to B$ 是 $\G$ 中的态射，则 $f^*:\mathfrak X_B\to\mathfrak X_A$ 是 $\Aff$ 中的态射。$1_A:A\to A$ 对应于 $\mathfrak X_A$ 的恒等态射。复合的次序反转：
+\[
+ A\xrightarrow f B\xrightarrow g C
+ \quad\Longrightarrow\quad
+ \mathfrak X_C\xrightarrow{g^*}\mathfrak X_B\xrightarrow{f^*}\mathfrak X_A.
+\]
+换言之，有反变函子 $\G\to\Aff$，它实际上给出 $\Aff$ 与反范畴 $\G^{\op}$ 之间的同构。对任意 $k\in\Ob\G$，$\G_k$ 与 $\Aff_k$ 之间的情形类似。
+
+$\G$ 与 $\G_k$ 之间的关系，是第1节中对任意范畴 $C$ 所述情形的特例。具体来说，$\G_k$ 就是范畴 $k/\G$，其对象是环同态 $k\to A$，其中靶 $A\in\Ob\G$ 可变。因此，$k$ 上的代数空间可
+
+% PDF 76
+\sourcepage{72}{76}
+与 $\Aff/\mathfrak X_k$ 的相对对象等同。准确地说，把 $u:k\to A$ 对偶化，便得到 $u^*:\mathfrak X_A\to\mathfrak X_k$，反之亦然。换言之，$\mathfrak X_k$ 是范畴 $\Aff_k$ 的终对象，因为它对偶于 $\G_k$ 的始对象（见第一章第1节）。
+
+2）\textbf{几何。}为了确定空间 $\mathfrak X_A$ 的点究竟是什么，我们诉诸几何直观（我仍然喜欢这样做！）。回顾第一章第3节：
+
+$\mathfrak X_A$ 的一个 $R$ 值点 $x$（$R\in\Ob\G$）就是环同态 $x:A\to R$，反之亦然（见第1节）。任意 $f\in A$ 在点 $x$ 处的“值”，由这个简单到近乎废话的公式给出：$f(x)=x(f)$。为了让应用数学家更满意，不妨取 $R=\mathbb R$ 或 $\mathbb C$。函子 $\mathfrak X_A$ 给每个环 $R$ 指定空间 $\mathfrak X_A$ 的 $R$ 值点集：
+\[
+ R\longmapsto\mathfrak X_A(R)=\Hom_{\G}(A,R),
+\]
+而且这一对应关于 $R$ 是函子性的。\footnote{若在 $R$ 中选取一组生成元 $\{r_i\}_{i\in I}$，则 $x$ 在仿射空间 $\mathbb E^I$ 中的坐标是 $r_i(x)=x(r_i)$（又一个简单到近乎废话的公式）。Grothendieck 出于技术原因，不愿预设 $I$ 有限；但他也很宽容：如果 $I=\{1,2\}$ 或 $\{1,2,3\}$，我们就会发现 $\mathfrak X_A$ 的点可以有取值于 $\mathbb R^2$ 或 $\mathbb R^3$ 的坐标。［译注：本注原文写在 $R$ 中选生成元，但 $x$ 的定义域为 $A$，因此这里的生成元应选在 $A$ 中。］}
+
+［恐怕这仍未说服那位假想的（？）守旧读者：在任意范畴 $C$ 中，我都可以固定一个对象 $A\in\Ob C$，也没有人禁止我把箭头 $A\to R$ 称为“空间”$\mathfrak X_A$ 的 $R$ 值点。的确如此！但我还希望有局部坐标；每个 $\mathfrak X_A$ 都应该能嵌入某个仿射空间
+\[
+ \mathbb E^I=\mathfrak X_{k[T_i]_{i\in I}}
+\]
+中，这对应于存在一个满射 $R\twoheadrightarrow A$。\footnote{译注：此处 $R$ 指前面出现的多项式环 $k[T_i]_{i\in I}$，并非上段作为值域的任意环。}而要有坐标，它们在每一点处都应是某个环的元素……简言之，我们将使用范畴 $\G$ 的特有性质：第二章第5节从 $\mathfrak X_A$ 恢复 $A$ 时如此，第6节构造基本逆极限——笛卡儿积、纤维积、交、
+
+% PDF 77
+\sourcepage{73}{77}
+核——时也是如此。每次，我们都反转箭头，把范畴 $\Aff$ 换成它的对偶，从而把 $\Aff$ 中的问题转化为环 $A$ 中的问题；\footnote{译注：原文此处写作“a problem in $A$”，应理解为相应的环或代数范畴中的问题。}这就用到 Bourbaki 的交换代数。然后把解对偶化，回到 $\Aff_k$……在这一过程中，我们使用几何直观……
+
+这一构造的第一个例子，就是从仿射代数空间 $\mathfrak X_A$ 恢复环 $A$。Grothendieck 将使我们相信，从空间 $\mathfrak X_A$ 到仿射直线 $\mathbb E^1=\mathfrak X_{k[T]}$ 的态射集 $\Hom_{\Aff_k}(\mathfrak X_A,\mathbb E^1)$，具有自然的环结构，而且存在典范同构
+\begin{equation}\tag{4.2}
+ \Hom_{\Aff_k}(\mathfrak X_A,\mathbb E^1)\xrightarrow\sim A.
+\end{equation}
+\footnote{这与经典情形已经尽可能接近了。经典情形有那些通常的限制（见第一章第0、1节）：$A=k[\xi_1,\ldots,\xi_n]$，$\operatorname{Nil}A=0$，$k$ 为代数闭域。此时 $A$ 就是代数簇 $\Max A$ 的多项式函数环，而多项式函数就是映射 $\Max A\to\mathbb E^1(k)$……Grothendieck 在 $A$ 是任意含幺交换环时也恢复了这一情形：$A$ 可以没有子域 $k$，$\operatorname{Nil}A$ 也可以不为零，等等。当然，在绝对情形下，$\Aff=\Aff_{\mathbb Z}$，$\mathbb E^1=\mathfrak X_{\mathbb Z[T]}$。}
+下面沿用 Grothendieck 本人的话：……］
+
+\Section{5}{从 $\mathfrak X_A$ 恢复 $A$}
+……我们想用 $k$ 上的仿射代数空间 $\mathfrak X_A$ 来解释环 $A$，也就是说，用如下定义的可表函子 $\mathfrak X_A$（$A\in\Ob\G_k$）来解释它：
+\begin{equation}\tag{5.1}
+ k'\longmapsto\mathfrak X_A(k')=\Hom_{k\text{-}\mathrm{alg}}(A,k').
+\end{equation}
+这实际上可以通过一种十分内在而形式化的方法做到！考察集合
+\begin{equation}\tag{5.2}
+ \Hom_{\Aff_k}(\mathfrak X_A,\mathbb E^1),
+ \qquad\mathbb E^1=\mathfrak X_{k[T]}\quad\text{为 $k$ 上的仿射直线}.
+\end{equation}

@@ -1,0 +1,469 @@
+\SGAchapter{X}{固有代数概形上的相交形式体系}{Formalisme des intersections sur les schémas algébriques propres}
+\begin{center}O. Jussila\\（附 A. Grothendieck 所作附录）\end{center}
+\SourcePage{529}
+\SGAsection{1}{滤过与合成律的相容性}
+本节讨论\Term{composition-law}{合成律} $K^\bullet(X)\times K_\bullet(X)\longrightarrow K_\bullet(X)$。
+
+\textbf{1.1.} 先考虑一个 \Term{noetherian}{Noether} \Term{scheme}{概形} $X$，以及\Term{coherent}{凝聚} $\mathcal O_X$-\Term{module}{模}的类所成的群 $K_\bullet(X)$。对于每个\Term{coherent}{凝聚} $\mathcal O_X$-\Term{module}{模} $F$，以 $\operatorname{cl}_\bullet(F)$ 表示它在 $K_\bullet(X)$ 中的类。
+\begin{SGAresult}{定义}{1.1.1}
+对每个整数 $n\in\mathbb Z$，以 $\operatorname{Filt}_n(X)$ 表示 $K_\bullet(X)$ 中由满足
+\[\dim(\operatorname{Supp}(F))\leq n\]
+的\Term{coherent}{凝聚} $\mathcal O_X$-\Term{module}{模} $F$ 的类 $\operatorname{cl}_\bullet(F)$ 生成的\Term{subgroup}{子群}。
+\end{SGAresult}
+这样就定义了 $K_\bullet(X)$ 的递增\Term{filtration}{滤过} $(\operatorname{Filt}_n(X))_{n\in\mathbb Z}$，其中 $n<0$ 时 $\operatorname{Filt}_n(X)=0$。
+\begin{SGAresult}{命题}{1.1.2}
+设 $X$ 是 \Term{noetherian}{Noether} \Term{scheme}{概形}，$F$ 是满足 $\dim(\operatorname{Supp}(F))\leq n$ 的\Term{coherent}{凝聚} $\mathcal O_X$-\Term{module}{模}，并令 $X(n)=\{x\in X;\ \dim(\overline{\{x\}})=n\}$，其中 $n\in\mathbb Z$。对每个 $x\in X$，以 $Z(x)$ 表示与 $\overline{\{x\}}$ 对应的\Term{integral-scheme}{整闭子概形}。则对每个 $x\in X(n)$，$\mathcal O_{X,x}$-\Term{module}{模} $F_x$ 的\Term{length}{长度}\Term{finite}{有限}，并且仅对\Term{finite}{有限}多个 $x\in X(n)$ 非零；此外有
+\SourcePage{530}
+\[\operatorname{cl}_\bullet(F)=\sum_{x\in X(n)}\operatorname{long}(F_x)\operatorname{cl}_\bullet(\mathcal O_{Z(x)})+w,\qquad w\in\operatorname{Filt}_{n-1}(X).\tag{1.1.3}\]
+\end{SGAresult}
+对 $n$ 立即归纳，得到：
+\begin{SGAresult}{推论}{1.1.4}
+对于每个 \Term{noetherian}{Noether} \Term{scheme}{概形} $X$ 和每个整数 $n$，$\operatorname{Filt}_n(X)$ 是 $K_\bullet(X)$ 中由所有 $\operatorname{cl}_\bullet(\mathcal O_Z)$ 生成的\Term{subgroup}{子群}，其中 $Z$ 遍历 $X$ 的\Term{dimension}{维数} $\leq n$ 的\Term{integral-scheme}{整闭子概形}。
+\end{SGAresult}
+\begin{proof}[1.1.2 的证明]
+令 $X'=\operatorname{Supp}(F)$。因为 $X'$ 是\Term{dimension}{维数} $\leq n$ 的 \Term{noetherian}{Noether} \Term{space}{空间}，$X'\cap X(n)$ 中的元素是 $X'$ 的\Term{maximal-point}{极大点}，故只有\Term{finite}{有限}多个，而且对每个 $x\in X'\cap X(n)$，$\operatorname{long}(F_x)$ \Term{finite}{有限}。这就证明了第一个断言。
+
+令 $\mathcal K=\operatorname{Coh}(X)$ 为\Term{coherent}{凝聚} $\mathcal O_X$-\Term{module}{模}的\Term{category}{范畴}，并令 $\mathcal K'$ 为 $\operatorname{Ob}(\mathcal K)$ 中由集中在 $X'$ 上且满足条件 (1.1.3) 的\Term{coherent}{凝聚} $\mathcal O_X$-\Term{module}{模}组成的\Term{subset}{子集}。显然，$\mathcal K'$ 包含 $x\in X'$ 时的\Term{sheaf}{层} $\mathcal O_{Z(x)}$。因此只需证明 $\mathcal K'$ 是 $\operatorname{Ob}(\mathcal K)$ 的一个“\Term{exact}{正合}”\Term{subset}{子集}；此时\Term{resolution}{分解}\Term{lemma}{引理}（EGA III 3.1.2）就给出 $F\in\mathcal K'$。
+
+为此，设
+\[0\longrightarrow G'\longrightarrow G\longrightarrow G''\longrightarrow0\tag{1.1.5}\]
+是一个 $\mathcal O_X$-\Term{module}{模}\Term{exact-sequence}{正合列}，其中两个项属于 $\mathcal K'$。则\Term{sheaf}{层} $G',G,G''$ 都集中在 $X'$ 上，因此，对每个 $x\in X(n)$，$\mathcal O_{X,x}$-\Term{module}{模} $G'_x,G_x,G''_x$ 的\Term{length}{长度} $\ell'_x,\ell_x,\ell''_x$ 均\Term{finite}{有限}，
+\SourcePage{531}
+而且
+\[\ell_x=\ell'_x+\ell''_x\qquad(x\in X(n)).\tag{1.1.6}\]
+于是，由假设以及等式
+\[\operatorname{cl}_\bullet(G)=\operatorname{cl}_\bullet(G')+\operatorname{cl}_\bullet(G'')\tag{1.1.7}\]
+立即得到 (1.1.5) 中所有项都满足断言 (1.1.3)。
+\end{proof}
+已知，对于\Term{proper}{固有态射}，$K_\bullet$ 是\Term{local-scheme}{局部} \Term{noetherian}{Noether} \Term{scheme}{概形}\Term{category}{范畴}上的\Term{covariant}{协变}\Term{functor}{函子}。下面的命题说明上述\Term{filtration}{滤过}具有\Term{functorial}{函子性}。
+\begin{SGAresult}{命题}{1.1.8}
+设 $f:X'\longrightarrow X$ 是\Term{local-scheme}{局部} \Term{noetherian}{Noether} \Term{scheme}{概形}之间的\Term{proper}{固有态射}，并设
+\[f_*:K_\bullet(X')\longrightarrow K_\bullet(X)\]
+是 $f$ 诱导的\Term{morphism}{态射}。则对每个整数 $n$，有
+\[f_*(\operatorname{Filt}_n(X'))\subset\operatorname{Filt}_n(X).\tag{1.1.9}\]
+\end{SGAresult}
+\begin{proof}
+若 $F$ 是\Term{coherent}{凝聚} $\mathcal O_{X'}$-\Term{module}{模}，则由定义（IV 2.11），
+\[f_*(\operatorname{cl}_\bullet(F))=\sum_{i\in\mathbb N}(-1)^i\operatorname{cl}_\bullet(R^if_*(F)).\]
+而 $\mathcal O_X$-\Term{module}{模} $R^if_*(F)$ 集中在 $f(\operatorname{Supp}(F))$ 上，且由 EGA IV 5.4.1 (ii)，
+\[\dim(\operatorname{Supp}(F))\geq\dim(f(\operatorname{Supp}(F))),\]
+断言由此得出。
+\end{proof}
+\SourcePage{532}
+\textbf{1.2.} 现在设 $X$ 是任意\Term{scheme}{概形}，考虑\Term{locally-free}{局部自由} $\mathcal O_X$-\Term{module}{模}（下文均默认\Term{finite-type}{有限型}）的类所成的群 $K^\bullet(X)$。这是环 $H^0(X,\mathbb Z)$ 上的一个带\Term{augmentation}{增广}的预 $\lambda$-\Term{algebra}{代数}（V 3.9.1）。映射 $f\longmapsto f\cdot1\in K^\bullet(X)$ 使我们可以在下文把 $H^0(X,\mathbb Z)$ 看作 $K^\bullet(X)$ 的\Term{subring}{子环}。若 $E$ 是\Term{locally-free}{局部自由} $\mathcal O_X$-\Term{module}{模}，以 $\operatorname{cl}^\bullet(E)$ 表示它在 $K^\bullet(X)$ 中的类。\Term{operator}{算子} $\lambda^k$（$k\in\mathbb N$）由
+\[\lambda^k(\operatorname{cl}^\bullet(E))=\operatorname{cl}^\bullet(\mathop{\bigwedge}\nolimits^k_{\mathcal O}E)\tag{1.2.1}\]
+以及
+\[\lambda^k(x+y)=\sum_{\substack{i+j=k\\i,j\in\mathbb N}}\lambda^i(x)\lambda^j(y)\tag{1.2.2}\]
+定义（V 2.2）。回忆 $K^\bullet(X)$ 的 $\lambda$-\Term{filtration}{滤过} $(\operatorname{Filt}^i(X))_{i\in\mathbb Z}$：当 $i\leq0$ 时，$\operatorname{Filt}^i(X)=K^\bullet(X)$；当 $i\geq1$ 时，$\operatorname{Filt}^i(X)$ 是由乘积
+\[P=\gamma^{i_1}(x_1)\cdots\gamma^{i_k}(x_k)\tag{1.2.3}\]
+生成的\Term{ideal}{理想}，其中 $1\leq i_1,\ldots,i_k$，$i_1+\cdots+i_k\geq i$，且 $x_1,\ldots,x_k\in I=\operatorname{Ker}(\varepsilon)$（$\varepsilon$ 是\Term{augmentation}{增广}\Term{homomorphism}{同态}，参见第 V 讲 3.10）。在 V 3.10 中已证明，$\operatorname{Filt}^i(X)$ 甚至是由这些乘积 (1.2.3) 生成的 $H^0(X,\mathbb Z)$-\Term{submodule}{子模}（所以当 $X$ \Term{connected}{连通}时，就是它们生成的阿贝尔\Term{subgroup}{子群}）；并且还可以要求各元素 $x_p$（$p=1,\ldots,k$）具有\Term{form}{形式}
+\[x_p=\operatorname{cl}^\bullet(E_p)-n_p,\tag{1.2.4}\]
+其中 $E_p$ 是\Term{rank}{秩}为 $n_p\in H^0(X,\mathbb Z)$ 的\Term{locally-free}{局部自由} $\mathcal O_X$-\Term{module}{模}。
+\SourcePage{533}
+\textbf{1.3.} 回忆（IV 2.10），双\Term{functor}{函子}
+\[(E,F)\longmapsto E\otimes_{\mathcal O_X}F,\]
+其中 $E$ 是\Term{locally-free}{局部自由} $\mathcal O_X$-\Term{module}{模}、$F$ 是\Term{coherent}{凝聚} $\mathcal O_X$-\Term{module}{模}，诱导\Term{composition-law}{合成律}
+\[K^\bullet(X)\times K_\bullet(X)\longrightarrow K_\bullet(X),\tag{1.3.1}\]
+使 $K_\bullet(X)$ 成为幺 $K^\bullet(X)$-\Term{module}{模}。本讲的关键结果是：
+\begin{SGAresult}{\Term{theorem}{定理}}{1.3.2}
+设 $X$ 是 \Term{noetherian}{Noether} \Term{scheme}{概形}。对于所有 $i,j\in\mathbb Z$，\Term{composition-law}{合成律} (1.3.1) \Term{restriction}{限制}后诱导\Term{composition-law}{合成律}
+\[\operatorname{Filt}^i(X)\times\operatorname{Filt}_j(X)\longrightarrow\operatorname{Filt}_{j-i}(X).\tag{1.3.3}\]
+\end{SGAresult}
+\begin{SGAresult}{推论}{1.3.3}
+若 $X$ 是\Term{dimension}{维数} $\leq j$ 的 \Term{noetherian}{Noether} \Term{scheme}{概形}，则由 $\theta_X(x)=x\operatorname{cl}_\bullet(\mathcal O_X)$（$x\in K^\bullet(X)$）定义的\Term{canonical}{典范}\Term{homomorphism}{同态}
+\[\theta_X:K^\bullet(X)\longrightarrow K_\bullet(X)\]
+对每个 $i\in\mathbb Z$ 诱导\Term{homomorphism}{同态}
+\[\operatorname{Filt}^i(X)\longrightarrow\operatorname{Filt}_{j-i}(X).\]
+\end{SGAresult}
+\begin{proof}
+先证明：若对 $i+j\leq k\in\mathbb Z$ 及每个\Term{dimension}{维数} $\leq j$ 的\Term{integral-scheme}{整闭子概形}均成立 (1.3.3)，则对 $i+j\leq k$ 成立 (1.3.2)。由 (1.1.4)，只需证明对每个 $x\in\operatorname{Filt}^i(X)$ 及每个\Term{dimension}{维数} $\leq j$ 的\Term{integral-scheme}{整闭子概形} $Z$，有
+\SourcePage{534}
+\[x\operatorname{cl}_\bullet(\mathcal O_Z)\in\operatorname{Filt}_{j-i}(X).\]
+为避免混淆，以 $1_Z$ 表示 $\mathcal O_Z$ 在 $K_\bullet(Z)$ 中的类。设 $\alpha:Z\longrightarrow X$ 是\Term{canonical}{典范}\Term{immersion}{浸入}，则\Term{projection-formula}{投影公式}（IV \SGAsourcegap{原文此处引注仅作“IV \ldots”，未给出条目编号}）给出
+\[x\operatorname{cl}_\bullet(\mathcal O_Z)=x\alpha_*(1_Z)=\alpha_*(\alpha^*(x)1_Z).\]
+有 $\alpha^*(x)\in\operatorname{Filt}^i(Z)$，因此由 (1.1.8) 和 $X=Z$、$i+j\leq k$ 时的 (1.3.3)，可得
+\[\alpha_*(\alpha^*(x)1_Z)\in\operatorname{Filt}_{j-i}(X),\]
+这就证明了断言。
+
+当 $i+j\leq0$ 时，\Term{theorem}{定理} 1.3.2 是显然的。归纳假设它对 $i+j<k$ 和每个 \Term{noetherian}{Noether} \Term{scheme}{概形} $X$ 都已成立。根据以上说明，剩下只需证明：对于每个\Term{dimension}{维数}为 $j$ 的整 \Term{noetherian}{Noether} \Term{scheme}{概形} $X$ 及每个满足 (1.2.4) 的乘积 (1.2.3)，有
+\[P\operatorname{cl}_\bullet(\mathcal O_X)\in\operatorname{Filt}_{j-i}(X).\tag{1.3.4}\]
+若 (1.2.3) 中 $k>1$，则由归纳假设及\Term{composition-law}{合成律} (1.3.1) 的\Term{associativity}{结合性}，结论已经成立。因此可以假设（由于 $X$ \Term{connected}{连通}）
+\[x=P=\gamma^m(\operatorname{cl}^\bullet(E)-n),\tag{1.3.5}\]
+其中 $m\geq i$，$E$ 是\Term{rank}{秩} $n>0$ 的\Term{locally-free}{局部自由} $\mathcal O_X$-\Term{module}{模}。分两种情况。
+
+I. 假设可以找到\Term{invertible-module}{可逆} $\mathcal O_X$-\Term{module}{模} $L_1,\ldots,L_n$，使得
+\[\operatorname{cl}^\bullet(E)=\operatorname{cl}^\bullet(L_1)+\cdots+\operatorname{cl}^\bullet(L_n)\in K^\bullet(X).\]
+\SourcePage{535}
+由此可知（V），$x$ 是各 $\operatorname{cl}^\bullet(L_r)-1$（$r=1,\ldots,n$）的第 $m$ 个\Term{elementary-symmetric-function}{初等对称函数}，因而是这些变量的整系数 $m$ 次\Term{homogeneous-polynomial}{齐次多项式}。再次使用归纳假设及\Term{composition-law}{合成律} (1.3.1) 的\Term{associativity}{结合性}，便归结为证明：对每个\Term{invertible-module}{可逆} $\mathcal O_X$-\Term{module}{模} $L$，有
+\[(\operatorname{cl}^\bullet(L)-1)\operatorname{cl}_\bullet(\mathcal O_X)\in\operatorname{Filt}_{j-1}(X).\tag{1.3.6}\]
+由于\Term{scheme}{概形} $X$ 为\Term{integral}{整}的，$L$ 和 $\mathcal O_X$ 都\Term{isomorphism}{同构}于 $X$ 上\Term{rational-function}{有理函数}的\Term{constant}{常值} $\mathcal O_X$-\Term{module}{模} $R_X$ 的\Term{submodule}{子模}。和 $F=\mathcal O_X+L$ 是\Term{coherent}{凝聚} $\mathcal O_X$-\Term{module}{模}，并且
+\[\begin{aligned}
+(\operatorname{cl}^\bullet(L)-1)\operatorname{cl}_\bullet(\mathcal O_X)
+&=\operatorname{cl}_\bullet(L)-\operatorname{cl}_\bullet(\mathcal O_X)\\
+&=(\operatorname{cl}_\bullet(F)-\operatorname{cl}_\bullet(\mathcal O_X))-(\operatorname{cl}_\bullet(F)-\operatorname{cl}_\bullet(L))\\
+&=\operatorname{cl}_\bullet(F/\mathcal O_X)-\operatorname{cl}_\bullet(F/L).
+\end{aligned}\]
+而\Term{sheaf}{层} $F/\mathcal O_X$ 和 $F/L$ 在\Term{generic-point}{泛点}处的\Term{fibre}{纤维}均为零，故它们在 $X$ 中的\Term{support}{支集}是\Term{rare}{稀疏}的（因为 $X$ \Term{irreducible}{不可约}），因此\Term{dimension}{维数} $\leq j-1$。断言 (1.3.6) 随即得证。
+
+II. 还需证明\Term{generic}{一般}情形。引入 $X$ 上 $E$ 的\Term{flag-bundle}{旗丛}
+\[g:D\longrightarrow X;\]
+在 $D$ 上可以找到\Term{invertible-module}{可逆} $\mathcal O_D$-\Term{module}{模} $L'_1,\ldots,L'_n$，使得
+\[g^*(\operatorname{cl}^\bullet(E))=\operatorname{cl}^\bullet(L'_1)+\cdots+\operatorname{cl}^\bullet(L'_n)\in K^\bullet(D).\tag{1.3.7}\]
+设 $e$ 是 $X$ 的\Term{generic-point}{泛点}，$k(e)$ 是 $e$ 的\Term{residue-field}{剩余域}。在 $D$ 的\Term{generic-fiber}{泛纤维} $D_e$ 中可以找到一个 $k(e)$-\Term{rational-point}{有理点} $u$，
+\SourcePage{536}
+因为这些点与 $k(e)$ 上 $n>0$ 维\Term{vector-space}{向量空间} $E_e$ 的类型 $(1,\ldots,1)$（$n$ 项）的旗一一对应。另一方面，这些\Term{rational-point}{有理点}也与 $g$ 在 $e$ 附近的\Term{germ-of-section}{截面芽}对应，所以可以在 $X$ 的一个\Term{open-subset}{开集} $U$ 上找到这样的\Term{section}{截面} $s:U\longrightarrow D$。令 $X'=\overline{s(U)}$ 为 $s(U)$ 的\Term{closure}{闭包}，赋予诱导的\Term{reduced}{约化}结构，并令 $f:X'\longrightarrow X$ 为 $g$ 在 $X'$ 上的\Term{restriction}{限制}。\Term{morphism}{态射} $f$ 是\Term{projective}{射影}的，且它在 $s(U)$ 上是\Term{isomorphism}{同构}，故为\Term{birational}{双有理}\Term{morphism}{态射}。因此 $\dim(X')\leq\dim(X)$（EGA IV 5.6.6.1）。另一方面，$f(X')=g(X')$ 是\Term{closed-subset}{闭集}并包含 $U$，所以 $f$ 是\Term{surjective}{满射}，且 $\dim(X')\geq\dim(X)$（EGA IV 5.4.1 (ii)）。
+
+故 $X'$ 与 $x'=f^*(x)\in\operatorname{Filt}^i(X')$ 满足情形 I 的假设，从而
+\[f^*(x)\operatorname{cl}_\bullet(\mathcal O_{X'})\in\operatorname{Filt}_{j-i}(X').\tag{1.3.7'}\]
+结合\Term{projection-formula}{投影公式}及 (1.1.8)，得出
+\[x f_*(\operatorname{cl}_\bullet(\mathcal O_{X'}))\in\operatorname{Filt}_{j-i}(X).\tag{1.3.8}\]
+另一方面，\Term{canonical}{典范}\Term{homomorphism}{同态} $\mathcal O_X\longrightarrow f_*(\mathcal O_{X'})$ 在\Term{dense-open-set}{稠密开集} $U$ 上是\Term{isomorphism}{同构}，而 $\mathcal O_X$-\Term{module}{模} $R^if_*(\mathcal O_{X'})$（$i\geq1$）集中在\Term{rare}{稀疏}\Term{closed-subset}{闭子集} $X-U$ 上。因此
+\[f_*(\operatorname{cl}_\bullet(\mathcal O_{X'}))=\operatorname{cl}_\bullet(\mathcal O_X)+w,\tag{1.3.9}\]
+\SourcePage{537}
+其中 $w\in\operatorname{Filt}_{j-1}(X)$。由归纳假设有 $xw\in\operatorname{Filt}_{j-i-1}(X)$；结合 (1.3.8)、(1.3.9)，便得出所需断言
+\[x\operatorname{cl}_\bullet(\mathcal O_X)\in\operatorname{Filt}_{j-i}(X).\]
+\end{proof}
+\textbf{注记 1.4。} 设 $X$ 是\Term{local-scheme}{局部} \Term{noetherian}{Noether} \Term{scheme}{概形}。注意，在本节中，对于\Term{proper}{固有} $X$-\Term{scheme}{概形} $Y$ 上的“\Term{dimension}{维数}函数” $D(x)=D_Y(x)=\dim(\overline{\{x\}})$，我们只用了下述性质：
+\begin{enumerate}
+\item[(i)] 对每个\Term{proper}{固有} $X$-\Term{scheme}{概形} $Y$ 及每个 $x\in Y$，有 $D_Y(x)\in\mathbb Z$。
+\item[(ii)] 若 $y\ne x$ 是 $x$ 的\Term{specialization}{特殊化}，则 $D(y)<D(x)$。
+\item[(iii)] 对于\Term{proper}{固有} $X$-\Term{scheme}{概形}间每个 $X$-\Term{morphism}{态射} $f:Y_1\longrightarrow Y_2$ 及每个 $y\in Y_1$，有
+\[D_{Y_2}(f(y))\leq D_{Y_1}(y).\]
+\item[(iv)] 若 $f$ 为\Term{immersion}{浸入}，或若 $Y_1$ \Term{irreducible}{不可约}、$f$ 为满的\Term{birational}{双有理}\Term{morphism}{态射}且 $y$ 为 $Y_1$ 的\Term{generic-point}{泛点}，则 (iii) 中取等号。
+\end{enumerate}
+这意味着：若将“\Term{dimension}{维数}”替换为满足上述 (i)--(iv) 的函数 $D$，并按这个 $D$ 定义 $K_\bullet(X)$ 的\Term{filtration}{滤过}，则本节所有结果，特别是 (1.3.2)、(1.3.3)，均原样成立。
+\SourcePage{538}
+\textbf{例 1.5。} 设 $S$ 是\Term{local-scheme}{局部} \Term{noetherian}{Noether} 的\Term{universally-catenary}{普遍链状}\Term{scheme}{概形}（例如一个 Cohen--Macaulay \Term{scheme}{概形}的\Term{subscheme}{子概形}）。令
+\[D_S(x)=n-\operatorname{codim}(\overline{\{x\}},S)=n-\dim\mathcal O_{S,x}\qquad(x\in S),\tag{1.5.1}\]
+并对每个\Term{proper}{固有} $S$-\Term{scheme}{概形} $s_Y:Y\longrightarrow S$ 及每个 $y\in Y$，令
+\[D_Y(y)=D_S(s_Y(y))+\operatorname{trdeg}_{k(s_Y(y))}k(y).\tag{1.5.2}\]
+若 $f:Y_1\longrightarrow Y_2$ 是\Term{proper}{固有} $S$-\Term{scheme}{概形}间的 $S$-\Term{morphism}{态射}，由\Term{transcendence-degree}{超越次数}的可\Term{additive}{加性}和 (1.5.2) 立即得到
+\[D_{Y_1}(y)=D_{Y_2}(f(y))+\operatorname{trdeg}_{k(f(y))}k(y)\qquad(y\in Y_1).\tag{1.5.3}\]
+证明如此定义的函数 $D_Y$ 满足 1.4 的 (i)--(iv)。根据 (1.5.3)，只有 (ii) 并非显然。由 (iv)，显然可以假设 $Y=\overline{\{x\}}$。把 $Y$ 的结构\Term{morphism}{态射} $s_Y$ 经它的像 $s_Y(Y)=Z\hookrightarrow S$ \Term{resolution}{分解}，即 $s_Y=g\circ f$：
+\[\begin{tikzcd}Y\arrow[r,"f"]&Z\arrow[r,hook,"g"]&S.\end{tikzcd}\]
+这里 $Y,Z$ 均\Term{irreducible}{不可约}，$f$ 为\Term{proper}{固有}\Term{surjective}{满射}，$g$ 为\Term{closed-immersion}{闭浸入}。令 $x'=s_Y(x)$，$y'=s_Y(y)$。由 (1.5.2)、(1.5.1) 得
+\[\begin{aligned}D_Y(x)-D_Y(y)={}&\dim\mathcal O_{S,y'}-\dim\mathcal O_{S,x'}\\&+\operatorname{trdeg}_{k(x')}k(x)-\operatorname{trdeg}_{k(y')}k(y).
+\end{aligned}\]
+由于 $S$ 是\Term{catenary}{链状}的，有
+\SourcePage{539}
+\[\dim\mathcal O_{S,y'}-\dim\mathcal O_{S,x'}=\dim\mathcal O_{Z,y'}-\dim\mathcal O_{Z,x'}\]
+（EGA $0_{\mathrm{IV}}$ 14.3.2.1），于是
+\[\begin{aligned}D_Y(x)-D_Y(y)={}&[\dim\mathcal O_{Z,y'}-\operatorname{trdeg}_{k(y')}k(y)]\\&-[\dim\mathcal O_{Z,x'}-\operatorname{trdeg}_{k(x')}k(x)].\end{aligned}\tag{1.5.4}\]
+由于 $Z$ 是\Term{universally-catenary}{普遍链状}的，可以应用 EGA IV 5.6.5.1，得到
+\[C_1=\dim\mathcal O_{Y,y}-c,\qquad C_2=\dim\mathcal O_{Y,x}-c,\]
+其中 $C_1,C_2$ 是 (1.5.4) 右端的两项。因此由 (1.5.4) 立即得到
+\[D_Y(x)-D_Y(y)=\dim\mathcal O_{Y,y}-\dim\mathcal O_{Y,x}>0.\]
+证毕。
+
+可见，对于\Term{dimension}{维数}为 $n$ 的 \Term{noetherian}{Noether} \Term{universally-catenary}{普遍链状}\Term{scheme}{概形} $X$，若按\Term{support}{支集}的\Term{codimension}{余维}用 (1.5.1) 定义 $K_\bullet(X)$ 的\Term{filtration}{滤过}，则 (1.3.2)、(1.3.3) 仍然成立。注意，当 $X$ 还具有\Term{biequidimensional}{双等维}性时，这一\Term{filtration}{滤过}与 (1.1.1) 的\Term{filtration}{滤过}一致。
+
+\textbf{1.6.} 可以问：对于\Term{finite-dimensional}{有限维} \Term{noetherian}{Noether} \Term{scheme}{概形} $X$，是否总能定义一个函数 $D$，使它具有 1.4 的性质 (i)，并且具有比 (ii) 更强的下述性质：
+\begin{enumerate}
+\item[(ii bis)] 若 $x\in X$，且 $y\ne x$ 是 $x$ 的直接\Term{specialization}{特殊化}，则 $D(x)=D(y)+1$。
+\end{enumerate}
+\SourcePage{540}
+显然，为此 $X$ 必须是\Term{catenary}{链状}的，而 $X$ 为\Term{biequidimensional}{双等维}则已足够（EGA $0_{\mathrm{IV}}$ 14.3.3）。然而，存在\Term{finite-dimensional}{有限维}、\Term{catenary}{链状}且\Term{equidimensional}{等维}的 \Term{noetherian}{Noether} \Term{scheme}{概形}，不具有这样的函数 $D$。为看出这一点，可将 EGA IV 5.6.11 的例子作如下修改：取该处环 $E$ 的谱的两个副本 $Y_1,Y_2$，以 $y_i,z_i$（$i=1,2$）表示 $Y_i$ 中分别对应于 $E$ 的极大\Term{ideal}{理想} $\mathfrak m,\mathfrak m'$ 的\Term{closed-point}{闭点}；这两个\Term{ideal}{理想}的\Term{height}{高度}分别为 $2,1$。回忆 $\mathfrak m$ 与 $\mathfrak m'$ 的\Term{residue-field}{剩余域}\Term{isomorphism}{同构}。因此可将 $y_1$ 与 $z_2$、$y_2$ 与 $z_1$ 分别识别，由 $Y_1,Y_2$ \Term{gluing}{黏合}构造出\Term{scheme}{概形} $X$。此时可以把 $Y_1,Y_2$ 看成 $X$ 的两个\Term{irreducible-component}{不可约分支}，而且在 $Z$ 中，$Y_1\cap Y_2=\{y_1,y_2\}$ 为零维。于是 $X$ 是 \Term{noetherian}{Noether}、\Term{catenary}{链状}且\Term{equidimensional}{等维}的\Term{scheme}{概形}（\Term{dimension}{维数}为 $2$）。若 $X$ 满足 (ii bis)，便有
+\[D(y_1)=D(z_1)-1=D(y_2)-1,\]
+另一方面又有
+\[D(y_1)=D(z_2)=D(y_2)+1,\]
+从而矛盾。
+\SourcePage{541}
+\SGAsection{2}{Snapper 多项式}
+\textbf{2.1.} 先回忆\Term{polynomial-map}{多项式映射}的定义及几个初等性质。
+\begin{SGAresult}{定义}{2.1.1}
+设 $f$ 是\Term{abelian-group}{阿贝尔群} $A$ 到\Term{abelian-group}{阿贝尔群} $B$ 的映射。若对 $A$ 中任意\Term{finite}{有限}列 $x_1,\ldots,x_r$（$r\geq1$），存在 $B$ 中一个几乎处处为零的元素族
+\[\bigl(y(x_1,\ldots,x_r;k_1,\ldots,k_r)\bigr)_{k_1,\ldots,k_r\geq0},\]
+使对任意整数列 $n_1,\ldots,n_r$，有
+\[f(n_1x_1+\cdots+n_rx_r)=\sum_{k_1,\ldots,k_r\geq0}n_1^{k_1}\cdots n_r^{k_r}y(x_1,\ldots,x_r;k_1,\ldots,k_r),\]
+则称 $f$ 为\Term{polynomial-map}{多项式映射}。若无论 $r\in\mathbb Z$ 及 $x_1,\ldots,x_r\in A$ 如何选取，当 $k_1+\cdots+k_r>m$ 时，总有
+\[y(x_1,\ldots,x_r;k_1,\ldots,k_r)=0,\]
+则称 $f$ 的\Term{degree}{次数} $\leq m$。
+\end{SGAresult}
+\begin{SGAresult}{\Term{lemma}{引理}}{2.1.2}
+每个\Term{abelian-group}{阿贝尔群}\Term{homomorphism}{同态}都是\Term{degree}{次数} $\leq1$ 的\Term{polynomial-map}{多项式映射}。若 $h=f\circ g$，其中 $f$ 是\Term{degree}{次数}为 $p$ 的\Term{polynomial-map}{多项式映射}，$g$ 是\Term{degree}{次数}为 $q$ 的\Term{polynomial-map}{多项式映射}，则 $h$ 是\Term{degree}{次数} $\leq pq$ 的\Term{polynomial-map}{多项式映射}。
+\end{SGAresult}
+证明显然。
+\begin{SGAresult}{\Term{lemma}{引理}}{2.1.3}
+设
+\[0\longrightarrow G'\longrightarrow G\xrightarrow{j}G''\longrightarrow0\]
+是\Term{abelian-group}{阿贝尔群}的\Term{exact-sequence}{正合列}，其中 $G'$ 对某个\Term{prime-number}{素数} $p$ \Term{divisible}{可除}，
+\SourcePage{542}
+$G''$ 是\Term{torsion-group}{挠群}。则每个经 $\mathbb Z$ \Term{resolution}{分解}的\Term{polynomial-map}{多项式映射} $f:G\longrightarrow\mathbb Q$ 都是\Term{constant}{常值}映射。
+\end{SGAresult}
+\begin{proof}
+须证明，对每个 $x\in G$ 都有 $f(x)=f(0)$。
+
+(a) 先假设 $x$ 为\Term{torsion}{挠元}，设 $mx=0$（$m\in\mathbb Z$，$m\ne0$）。则\Term{polynomial}{多项式} $P_x(n)=f(nx)-f(0)$ 有无穷多个根，即所有被 $m$ 整除的整数。因此 $P_x$ 恒为零，从而 $f(x)=f(0)$。
+
+(b) 现在假设 $x$ 是 $G$ 中的自由元素，并对所有 $p^k$（$k\in\mathbb Z$）\Term{divisible}{可除}。考虑\Term{polynomial}{多项式} $P_k$，定义为
+\[P_k(n)=f(nx/p^k)=\sum_{i\in\mathbb N}n^iy(x/p^k;i)\in\mathbb Z\qquad(n\in\mathbb Z;\ y(x/p^k;i)\in\mathbb Q).\]
+对每个 $n\in\mathbb Z$，有恒等式 $P_k(n)=P_{k+1}(pn)$，亦即
+\[\sum_{i\in\mathbb N}n^iy(x/p^k;i)=\sum_{i\in\mathbb N}p^in^iy(x/p^{k+1};i).\]
+比较系数，得到
+\[y(x/p^k;i)=p^iy(x/p^{k+1};i)\qquad(i\in\mathbb N).\]
+\SourcePage{543}
+而每个\Term{polynomial}{多项式} $P:\mathbb Q\longrightarrow\mathbb Q$ 对 $\mathbb R$ 诱导的\Term{topology}{拓扑}都是\Term{continuous}{连续}的。因此，$k$ \Term{large-relative-to-cardinal}{足够大}时有
+\[|P_x(n/p^k)-P_x(0)|<1.\]
+但由定义，对每个 $n,k\in\mathbb Z$，$P_x(n/p^k)$ 都是整数。故 $k$ \Term{large-relative-to-cardinal}{足够大}时，$P_x(n/p^k)-P_x(0)=0$。所以\Term{polynomial}{多项式} $P_x$ 为常数，特别地 $P_x(1)=P_x(0)$，即 $f(x)=f(0)$。
+
+上述 (a)、(b) 表明 $f$ 在 $G'$ 上的\Term{restriction}{限制}为常数。现在证明 $f$ 在 $G$ 模 $G'$ 的每个\Term{coset}{陪集}上都是常数。对每个 $b\in G$，令 $g_b:G'\longrightarrow\mathbb Q$ 为 $g_b(y)=f(b+y)$（$y\in G'$）。映射 $g_b$ 是经 $\mathbb Z$ \Term{resolution}{分解}的\Term{polynomial-map}{多项式映射}，所以根据刚才的证明，它为常数，故 $f$ 在 $G$ 模 $G'$ 的各\Term{coset}{陪集}上均为常数。因此可以写成 $f=h\circ j$，其中 $h:G''\longrightarrow\mathbb Q$ 是经 $\mathbb Z$ \Term{resolution}{分解}的\Term{polynomial-map}{多项式映射}。由假设，$G''$ 是\Term{torsion-group}{挠群}，所以 $h$ 为常数。因此 $f$ 为常数。
+\end{proof}
+\begin{SGAresult}{\Term{lemma}{引理}}{2.1.4}
+设 $A$ 是\Term{commutative-unital-ring}{交换幺环}，$I$ 是 $A$ 的\Term{nilpotent-ideal}{幂零理想}。令 $P$ 为\Term{multiplicative-group}{乘法群} $A^*$ 中由形如 $x=1+y$、$y\in I$ 的\Term{invertible-element}{可逆元}素组成的\Term{subgroup}{子群}，并令 $i:P\longrightarrow A$ 为自然\Term{embedding}{嵌入}。则复合映射
+\SourcePage{544}
+\[\alpha:P\xrightarrow{i}A\xrightarrow{j}A\otimes_{\mathbb Z}\mathbb Q\]
+（其中 $j(x)=x\otimes1$）是\Term{polynomial-map}{多项式映射}。若 $I^{m+1}=0$，则 $\alpha$ 的\Term{degree}{次数} $\leq m$。
+\end{SGAresult}
+\begin{proof}
+设 $x_1,\ldots,x_r$ 是 $P$ 中的一列元素，$x_i=1+y_i$（$i=1,\ldots,r$）。二项式公式给出，对每个 $n_1,\ldots,n_r\in\mathbb Z$，
+\[x_1^{n_1}\cdots x_r^{n_r}=\sum_{k_1,\ldots,k_r\geq0}\binom{n_1}{k_1}\cdots\binom{n_r}{k_r}y_1^{k_1}\cdots y_r^{k_r}.\tag{2.1.5}\]
+因为 $y_1,\ldots,y_r$ 均\Term{nilpotent}{幂零}，右端的和是\Term{finite}{有限}和。而系数 $\binom{n_1}{k_1}\cdots\binom{n_r}{k_r}$ 是变量 $n_1,\ldots,n_r$ 的有理系数\Term{polynomial}{多项式}，\Term{degree}{次数}为 $k_1+\cdots+k_r$，所以 $\alpha$ 确为\Term{polynomial-map}{多项式映射}。若 $I^{m+1}=0$，则当 $k_1+\cdots+k_r>m$ 时，$y_1^{k_1}\cdots y_r^{k_r}=0$。因此 $\alpha$ 的\Term{degree}{次数} $\leq m$。
+\end{proof}
+\textbf{2.2.} 现在考虑一个 \Term{noetherian}{Noether} \Term{scheme}{概形} $X$ 及 $\operatorname{Filt}_j(X)$ 中的元素 $y$（1.1.1）。将每个 $x\in K^\bullet(X)$ 映到 $K_\bullet(X)$ 中的 $xy$，就得到一个 $K^\bullet(X)$-\Term{module}{模}\Term{homomorphism}{同态}
+\[\theta_y:K^\bullet(X)\longrightarrow K_\bullet(X).\]
+根据 (1.3.2)，它经\Term{canonical}{典范}满\Term{homomorphism}{同态}
+\[j:K^\bullet(X)\longrightarrow K^\bullet(X)/\operatorname{Filt}^{j+1}(X)=A\]
+\Term{resolution}{分解}。
+\SourcePage{545}
+以 $\beta_y:A\longrightarrow K_\bullet(X)$ 表示如此定义的\Term{homomorphism}{同态}。若以 $I$ 表示 $A$ 的\Term{ideal}{理想} $\operatorname{Filt}^1(X)/\operatorname{Filt}^{j+1}(X)$，则有 $I^{j+1}=0$。沿用\Term{lemma}{引理} 2.1.4 的记号，得到\Term{abelian-group}{阿贝尔群}\Term{homomorphism}{同态}
+\[\gamma:\operatorname{Pic}(X)\longrightarrow P,\]
+它将每个\Term{invertible-module}{可逆} $\mathcal O_X$-\Term{module}{模} $L$ 在 $\operatorname{Pic}(X)$ 中的类映到 $P$ 中的元素 $j(\operatorname{cl}^\bullet(L))$。
+由\Term{lemma}{引理} 2.1.2、2.1.4 立即得到：
+\begin{SGAresult}{命题}{2.2.1}
+对于每个 \Term{noetherian}{Noether} \Term{scheme}{概形} $X$ 及每个 $y\in\operatorname{Filt}_j(X)$（$j\in\mathbb Z$），复合映射
+\[\operatorname{Pic}(X)\longrightarrow K_\bullet(X)\otimes_{\mathbb Z}\mathbb Q,\qquad\operatorname{cl}_{\mathrm P}(L)\longmapsto(\operatorname{cl}^\bullet(L)y)\otimes1\]
+是\Term{degree}{次数} $\leq j$ 的\Term{polynomial-map}{多项式映射}。
+\end{SGAresult}
+\textbf{2.3.} 若 $X$ 是域 $k$ 上的\Term{proper}{固有}\Term{scheme}{概形}，$g:X\longrightarrow\operatorname{Spec}(k)$ 是结构\Term{morphism}{态射}，则\Term{homomorphism}{同态}
+\[g_*:K_\bullet(X)\longrightarrow K_\bullet(\operatorname{Spec}(k))\simeq\mathbb Z\]
+将每个\Term{coherent}{凝聚} $\mathcal O_X$-\Term{module}{模} $F$ 的类 $\operatorname{cl}_\bullet(F)$ 映到 $F$ 在 $X$ 上的 Euler--Poincaré \Term{euler-characteristic}{特征数} $\chi(F)\in\mathbb Z$。从 2.2.1 立即得出：
+\SourcePage{546}
+\begin{SGAresult}{命题}{2.3.1}
+对于 $k$ 上每个\Term{proper}{固有}\Term{scheme}{概形} $X$ 及每个 $y\in\operatorname{Filt}_j(X)$，由
+\[\operatorname{cl}_{\mathrm P}(L)\longmapsto g_*(\operatorname{cl}^\bullet(L)y)=\chi(\operatorname{cl}^\bullet(L)y)\]
+定义的映射 $S_y:\operatorname{Pic}(X)\longrightarrow\mathbb Z\hookrightarrow\mathbb Q$ 是\Term{degree}{次数} $\leq j$ 的\Term{polynomial-map}{多项式映射}。
+\end{SGAresult}
+当 $L_1,\ldots,L_n$ 是\Term{invertible-module}{可逆} $\mathcal O_X$-\Term{module}{模}，$F$ 是满足 $\dim(\operatorname{Supp}(F))=j$ 的\Term{coherent}{凝聚} $\mathcal O_X$-\Term{module}{模}时，2.3.1 特别说明 Euler--Poincaré \Term{euler-characteristic}{特征数}
+\[\chi(L_1^{\otimes m_1}\otimes\cdots\otimes L_n^{\otimes m_n}\otimes F)\tag{2.3.2}\]
+是变量 $m_1,\ldots,m_n\in\mathbb Z$ 的\Term{numerical-polynomial}{数值多项式}，其\Term{degree}{次数} $\leq\dim\operatorname{Supp}(F)$，有时称为 $F$ 和序列 $L_1,\ldots,L_n$ 的 \Term{snapper-polynomial}{Snapper 多项式}。
+
+\textbf{2.4.} 回忆 [2]，$X$ 在 $k$ 上的 \Term{picard-functor}{Picard 函子} $\operatorname{Pic}^{\circ}_{X/k}$ 是与\Term{presheaf}{预层}
+\[T\longmapsto\operatorname{Pic}(X\times_kT)\qquad(T\in\operatorname{Ob}(\operatorname{Sch}/k))\]
+相伴的 $k$ 上 fpqc \Term{topology}{拓扑}中的群\Term{sheaf}{层}。当 $k$ \Term{algebraically-closed}{代数闭}时，\Term{canonical}{典范}\Term{homomorphism}{同态}
+\[\operatorname{Pic}(X)\longrightarrow\operatorname{Pic}^{\circ}_{X/k}(\operatorname{Spec}(k))\]
+是\Term{isomorphism}{同构}。
+\SourcePage{547}
+当 $X$ 在 $k$ 上\Term{proper}{固有}时，已知 [4]，$\operatorname{Pic}^{\circ}_{X/k}$ 可由 $k$ 上一个\Term{local-scheme}{局部}\Term{finite-type}{有限型}群\Term{scheme}{概形} $\operatorname{Pic}_{X/k}$ 表示。$\operatorname{Pic}_{X/k}$ 的\Term{neutral-component}{中性分支} $\operatorname{Pic}^0_{X/k}$ 是 $k$ 上的\Term{connected}{连通}交换\Term{algebraic-group}{代数群}。
+\begin{SGAresult}{定义}{2.4.1}
+设 $X$ 是域 $k$ 上的\Term{proper}{固有}\Term{scheme}{概形}，$L$ 是\Term{invertible-module}{可逆} $\mathcal O_X$-\Term{module}{模}（相应地，$x$ 是 $\operatorname{Pic}(X)$ 中的元素）。若存在整数 $n\ne0$ 使 $L^{\otimes n}$（相应地，$nx$）\Term{algebraic-equivalence}{代数等价}于零，则称 $L$（相应地，$x$）\Term{tau-equivalence}{$\tau$-等价}于零。$\operatorname{Pic}(X)$ 中\Term{algebraic-equivalence}{代数等价}于零（相应地，\Term{tau-equivalence}{$\tau$-等价}于零）的元素组成 $\operatorname{Pic}(X)$ 的\Term{subgroup}{子群} $\operatorname{Pic}^0(X)$（相应地，$\operatorname{Pic}^\tau(X)$）。
+\end{SGAresult}
+\begin{SGAresult}{\Term{lemma}{引理}}{2.4.3}
+对于\Term{algebraically-closed-field}{代数闭域} $k$ 上每个\Term{proper}{固有}\Term{scheme}{概形} $X$，群 $\operatorname{Pic}^0(X)$ 对每个与 $k$ 的\Term{characteristic}{特征}互素的整数 $n$ 都\Term{divisible}{可除}。
+\end{SGAresult}
+\begin{proof}
+因为 $k$ \Term{algebraically-closed}{代数闭}，有 $\operatorname{Pic}^0(X)\simeq\operatorname{Pic}^0_{X/k}(k)$。由于 $\operatorname{Pic}^0_{X/k}$ \Term{connected}{连通}且为\Term{finite-type}{有限型}，当 $n$ 与 $k$ 的\Term{characteristic}{特征}互素时，$n$ 次幂自\Term{homomorphism}{同态}为\Term{surjective}{满射}（SGA 3 XV 1.3 及 VI 1.3.2）。而 $k$ \Term{algebraically-closed}{代数闭}，因此 $\operatorname{Pic}^0_{X/k}(k)$ 上对应的自\Term{homomorphism}{同态}也是\Term{surjective}{满射}。
+\end{proof}
+由 2.4.3 可知，在\Term{exact-sequence}{正合列}
+\[0\longrightarrow\operatorname{Pic}^0(X)\longrightarrow\operatorname{Pic}^\tau(X)\longrightarrow T\longrightarrow0\]
+中，$\operatorname{Pic}^0(X)$ 对某个\Term{prime-number}{素数} $p$ \Term{divisible}{可除}，$T$ 是\Term{torsion-group}{挠群}，所以可以将 2.1.3 用于\Term{polynomial-map}{多项式映射} (2.3.1) 在 $\operatorname{Pic}^\tau(X)$ 上的\Term{restriction}{限制}。于是得到：
+\SourcePage{548}
+\begin{SGAresult}{命题}{2.4.4}
+\Term{polynomial-map}{多项式映射} $S_y$（2.3.1）在模 $\operatorname{Pic}^\tau(X)$ 的各\Term{coset}{陪集}上为常数。
+\end{SGAresult}
+\begin{proof}
+若 $K$ 是 $k$ 的一个\Term{algebraically-closed}{代数闭}\Term{group-extension}{扩张}，则有\Term{commutative-diagram}{交换图}
+\[\begin{tikzcd}[column sep=large]
+\operatorname{Pic}(X)\arrow[r,"S_y"]\arrow[d]&K_\bullet(\operatorname{Spec}(k))\arrow[dr,"\sim"]&\\
+\operatorname{Pic}(X_K)\arrow[r,"\overline S_y"']&K_\bullet(\operatorname{Spec}(K))\arrow[r,"\sim"']&\mathbb Z\hookrightarrow\mathbb Q,
+\end{tikzcd}\]
+其中 $\overline S_y$ 是 $\operatorname{Pic}(X_K)$ 上与 $S_y$ 对应的\Term{polynomial-map}{多项式映射}。故可假设 $k$ \Term{algebraically-closed}{代数闭}。此时断言立即由 2.1.3、2.4.3 得出。
+\end{proof}
+\textbf{注记 2.4.5。} 在第 XIII 讲中，将不使用\Term{picard-functor}{Picard 函子} $\operatorname{Pic}_{X/k}$ 的\Term{representability}{可表性}来证明这一结果。
+
+\SGAsection{3}{相伴分次对象的投影公式}
+\textbf{3.1.} 考虑一个 \Term{noetherian}{Noether} \Term{scheme}{概形} $X$。以 $\operatorname{Gr}^\bullet(X)$ 表示与 $K^\bullet(X)$ 的 $\lambda$-\Term{filtration}{滤过}相伴的\Term{graded-object}{分次对象}，以 $\operatorname{Gr}_\bullet(X)$ 表示与 $K_\bullet(X)$ 的\Term{filtration}{滤过} 1.1.1 相伴的\Term{graded-object}{分次对象}。由 1.3.2，\Term{composition-law}{合成律} (1.3.1)
+\[K^\bullet(X)\times K_\bullet(X)\longrightarrow K_\bullet(X)\]
+在取\Term{associated-graded}{相伴分次对象}后诱导\Term{composition-law}{合成律}
+\[\operatorname{Gr}^i(X)\times\operatorname{Gr}_j(X)\longrightarrow\operatorname{Gr}_{j-i}(X)\qquad(i,j\in\mathbb Z).\tag{3.1.1}\]
+\SourcePage{549}
+这样 $\operatorname{Gr}_\bullet(X)$ 就成为环 $\operatorname{Gr}^\bullet(X)$ 上的模（若把 $\operatorname{Gr}_\bullet(X)$ 的\Term{graded}{分次}变号，令 $\operatorname{Gr}_\bullet^i(X)=\operatorname{Gr}_{-i}(X)$，$i\in\mathbb Z$，它甚至成为\Term{graded-ring}{分次环} $\operatorname{Gr}^\bullet(X)$ 上的\Term{graded-module}{分次模}）。现在考虑 \Term{noetherian}{Noether} \Term{scheme}{概形}之间的\Term{proper}{固有态射} $f:X'\longrightarrow X$。则 $f$ 诱导\Term{graded-ring}{分次环}\Term{homomorphism}{同态}
+\[f^*: \operatorname{Gr}^\bullet(X)\longrightarrow\operatorname{Gr}^\bullet(X')\]
+（V），并且由 1.1.8 诱导\Term{graded}{分次}\Term{abelian-group}{阿贝尔群}\Term{homomorphism}{同态}
+\[f_*:\operatorname{Gr}_\bullet(X')\longrightarrow\operatorname{Gr}_\bullet(X).\]
+于是\Term{projection-formula}{投影公式}（IV 2.11）与 (3.1.1) 在取\Term{associated-graded}{相伴分次对象}后，给出\Term{graded}{分次}\Term{projection-formula}{投影公式}
+\[x f_*(y)=f_*(f^*(x)y)\qquad(x\in\operatorname{Gr}^\bullet(X),\ y\in\operatorname{Gr}_\bullet(X')).\tag{3.1.2}\]
+\textbf{3.2.} 设 $f:X'\longrightarrow X$ 是 \Term{noetherian}{Noether} \Term{scheme}{概形}之间的\Term{projective}{射影}\Term{complete-intersection}{完全交}\Term{morphism}{态射}（第 VIII 讲），\Term{virtual-dimension}{虚维数}为 $r$，且 $X$ 有一个\Term{ample}{丰沛}\Term{invertible-module}{可逆} $\mathcal O_X$-\Term{module}{模}。在第 VIII 讲中已经证明，$f$ 诱导\Term{homomorphism}{同态}
+\[f_*:\operatorname{Filt}^k(X')_{\mathbb Q}\longrightarrow\operatorname{Filt}^{k-r}(X)_{\mathbb Q}\qquad(k\in\mathbb Z),\tag{3.2.1}\]
+而且它满足\Term{projection-formula}{投影公式}（第 IV 讲）：
+\[f_*(f^*(x)y)=x f_*(y)\qquad(x\in K^\bullet(X)_{\mathbb Q},\ y\in K^\bullet(X')_{\mathbb Q}).\tag{3.2.2}\]
+\SourcePage{550}
+对 (3.2.1)、(3.2.2) 取\Term{associated-graded}{相伴分次对象}，得到一个\Term{degree}{次数}为 $-r$ 的\Term{homomorphism}{同态}
+\[f_*:\operatorname{Gr}^\bullet(X')_{\mathbb Q}\longrightarrow\operatorname{Gr}^\bullet(X)_{\mathbb Q},\tag{3.2.3}\]
+以及由 (1.3.2) 得到的\Term{graded}{分次}\Term{projection-formula}{投影公式}
+\[f_*(f^*(x)y)=x f_*(y)\qquad(x\in\operatorname{Gr}^\bullet(X)_{\mathbb Q},\ y\in\operatorname{Gr}^\bullet(X')_{\mathbb Q}).\]
+\textbf{3.3.} 最后考虑 \Term{noetherian}{Noether} \Term{scheme}{概形}间一个具有\Term{finite}{有限} \Term{tor-dimension}{Tor 维数}的\Term{morphism}{态射} $f:X'\longrightarrow X$。已知（第 IV 讲）$f$ 诱导\Term{homomorphism}{同态}
+\[f^*:K_\bullet(X)\longrightarrow K_\bullet(X'),\]
+使得对每个\Term{coherent}{凝聚} $\mathcal O_X$-\Term{module}{模} $F$，有
+\[f^*(\operatorname{cl}_\bullet(F))=\sum_i(-1)^i\operatorname{cl}_\bullet\bigl(\operatorname{Tor}^{\mathcal O_X}_i(F,\mathcal O_{X'})\bigr).\]
+$\mathcal O_{X'}$-\Term{module}{模} $\operatorname{Tor}^{\mathcal O_X}_i(F,\mathcal O_{X'})$ 集中在 $f^{-1}(\operatorname{Supp}(F))$ 上。当 $f$ 的\Term{fibre}{纤维}处处\Term{dimension}{维数} $\leq d$ 时，已知（EGA IV 5.6.7）
+\[\dim(f^{-1}(\operatorname{Supp}(F)))\leq\dim(\operatorname{Supp}(F))+d.\]
+因此，对每个 $k\in\mathbb Z$，$f$ 诱导\Term{homomorphism}{同态}
+\[f^*:\operatorname{Filt}_k(X)\longrightarrow\operatorname{Filt}_{k+d}(X'),\]
+从而得到一个\Term{degree}{次数}为 $d$ 的\Term{graded}{分次}\Term{abelian-group}{阿贝尔群}\Term{homomorphism}{同态}
+\SourcePage{551}
+\[f^*:\operatorname{Gr}_\bullet(X)\longrightarrow\operatorname{Gr}_\bullet(X').\tag{3.3.1}\]
+\textbf{3.4.} 最后，假设对一个 $r=d$ 的\Term{morphism}{态射} $f:X'\longrightarrow X$，(3.2.3) 和 (3.3.1) 都有定义。例如，若 $X$ \Term{quasi-compact}{拟紧}并有\Term{ample}{丰沛} $\mathcal O_X$-\Term{module}{模}，而 $X'=\mathbb P_X(E)$，其中 $E$ 是\Term{rank}{秩} $r+1$ 的\Term{locally-free}{局部自由} $\mathcal O_X$-\Term{module}{模}，就属于这种情形。此时，\Term{derived-category}{导出范畴}中的\Term{projection-formula}{投影公式}对每个 $x\in\operatorname{Filt}^i(X')_{\mathbb Q}$ 及 $y\in\operatorname{Filt}_j(X)_{\mathbb Q}$ 给出\Term{projection-formula}{投影公式}
+\[f_*(x f^*(y))=f_*(x)y\in\operatorname{Filt}_{j+r}(X)_{\mathbb Q}.\]
+当 $X$ 为 \Term{noetherian}{Noether} 时，由 1.3.2 可以\Term{pushout}{推出}相应的\Term{graded}{分次}公式。
+
+\SGAsection{4}{相交数}
+\textbf{4.1.} 考虑域 $k$ 上的一个\Term{proper}{固有}\Term{scheme}{概形} $X$。将乘积 (3.1.1)
+\[\operatorname{Gr}^i(X)\times\operatorname{Gr}_i(X)\longrightarrow\operatorname{Gr}_0(X)=\operatorname{Filt}_0(X)\qquad(i\in\mathbb Z)\]
+与 Euler--Poincaré \Term{euler-characteristic}{特征数} $\chi:\operatorname{Filt}_0(X)\longrightarrow\mathbb Z$ 复合，得到称为“\Term{intersection-number}{相交数}”的\Term{pairing}{配对}
+\[\operatorname{Gr}^i(X)\times\operatorname{Gr}_i(X)\longrightarrow\mathbb Z,\tag{4.1.1}\]
+\SourcePage{552}
+记为
+\[(x,y)\longmapsto\langle x,y\rangle\in\mathbb Z\qquad(i\in\mathbb Z,\ x\in\operatorname{Gr}^i(X),\ y\in\operatorname{Gr}_i(X)).\]
+\textbf{例 4.2。} 假设\Term{scheme}{概形} $X$ 的\Term{dimension}{维数}为 $n$。取 $y\in\operatorname{Gr}_n(X)$，例如 $y=\operatorname{cl}_\bullet(\mathcal O_Z)$，其中 $Z$ 是 $X$ 的一个 $n$ 维\Term{integral}{整}\Term{subscheme}{子概形}。再取一个权为 $n$ 的\Term{homogeneous-polynomial}{齐次多项式}
+\[P\in\mathbb Z[T_1,\ldots,T_n],\]
+其中 $T_i$ 的权为 $i$（$i=1,\ldots,n$），例如一个\Term{monomial}{单项式} $T_{i_1}T_{i_2}\cdots T_{i_k}$，其中 $i_1+i_2+\cdots+i_k=n$。在 $P$ 中，对每个变量 $T_i$（$i=1,\ldots,n$）代入\Term{chern-class}{Chern 类}
+\[c_i(x)=\operatorname{cl}^i(\gamma^i(x-\varepsilon(x)))\in\operatorname{Gr}^i(X)\qquad(x\in K^\bullet(X)),\]
+就得到元素 $P(c_1(x),\ldots,c_n(x))\in\operatorname{Gr}^n(X)$。称整数
+\[P_y(x)=\langle P(c_1(x),\ldots,c_n(x)),y\rangle\]
+为 $x$ 相对于 $y$ 的 \Term{chern-number}{Chern 数}。当 $y=\operatorname{cl}_\bullet(\mathcal O_X)$ 时，在上述称谓中省去 $y$。
+
+\textbf{4.3.} 不对 $X$ 的\Term{dimension}{维数}作假设，考虑一列\Term{invertible-module}{可逆} $\mathcal O_X$-\Term{module}{模} $L_1,\ldots,L_d$，以及满足 $\dim(\operatorname{Supp}(F))\leq d$ 的\Term{coherent}{凝聚} $\mathcal O_X$-\Term{module}{模} $F$。令 $L_i=\operatorname{cl}^\bullet(L_i)$（$i=1,\ldots,d$），并令 $F=\operatorname{cl}_\bullet(F)$。
+\SourcePage{553}
+\begin{SGAresult}{命题}{4.3.1}
+沿用上述记号，对于任意一列满足 $\sum_{i=1}^d\alpha_i=d$ 的非负整数 $\alpha_1,\ldots,\alpha_d$，\Term{snapper-polynomial}{Snapper 多项式} $\chi(L_1^{n_1}\cdots L_d^{n_d}F)$ 中
+\[\binom{n_1}{\alpha_1}\cdots\binom{n_d}{\alpha_d}\]
+的系数等于
+\[\langle c_1(L_1)^{\alpha_1}\cdots c_d(L_d)^{\alpha_d},[F]\rangle,\tag{4.3.2}\]
+其中 $[F]$ 是 $F$ 在 $\operatorname{Gr}_d(X)$ 中的类。因此，将此\Term{polynomial}{多项式}按 $n_i$（$i=1,\ldots,d$）的\Term{monomial}{单项式}作通常的展开时，\Term{monomial}{单项式} $n_1^{\alpha_1}\cdots n_d^{\alpha_d}$ 的系数为
+\[\frac1{\alpha_1!\cdots\alpha_d!}\langle c_1(L_1)^{\alpha_1}\cdots c_1(L_d)^{\alpha_d},[F]\rangle.\]
+\end{SGAresult}
+特别地，立即得到：
+\begin{SGAresult}{推论}{4.3.3}
+\Term{snapper-polynomial}{Snapper 多项式} $\chi(L_1^{\alpha_1}\cdots L_d^{\alpha_d}F)$ 中\Term{monomial}{单项式} $n_1n_2\cdots n_d$ 的系数等于
+\[\langle c_1(L_1)\cdots c_1(L_d),[F]\rangle=(c_1(L_1)\cdots c_1(L_d),[F]).\tag{4.3.4}\]
+\end{SGAresult}
+\begin{proof}
+对每个 $i=1,\ldots,d$，令 $L_i=1+M_i$。由定义立即可知，整数 (4.3.2) 等于 $\chi(M_1^{\alpha_1}\cdots M_d^{\alpha_d}F)$。在 (2.1.4) 中代入
+\[A=K^\bullet(X)/\operatorname{Filt}^{d+1}(X),\qquad I=\operatorname{Filt}^1(X)/\operatorname{Filt}^{d+1}(X),\]
+由于每个 $i=1,\ldots,d$ 都有 $M_i\in\operatorname{Filt}^1(X)$，由 (2.1.5) 得到同余式
+\[L_1^{n_1}\cdots L_d^{n_d}\equiv\sum_{\substack{\alpha_1,\ldots,\alpha_d\geq0\\\alpha_1+\cdots+\alpha_d=d}}\binom{n_1}{\alpha_1}\cdots\binom{n_d}{\alpha_d}M_1^{\alpha_1}\cdots M_d^{\alpha_d}\pmod{\operatorname{Filt}^{d+1}(X)}.\tag{4.3.5}\]
+因此，\Term{polynomial}{多项式} $\chi(L_1^{n_1}\cdots L_d^{n_d}F)$ 中 $\binom{n_1}{\alpha_1}\cdots\binom{n_d}{\alpha_d}$ 的系数等于 $\chi(M_1^{\alpha_1}\cdots M_d^{\alpha_d}F)$。
+\end{proof}
+\SourcePage{554}
+\textbf{4.4.} 整数 (4.3.4) 有时称为\Term{invertible-module}{可逆} $\mathcal O_X$-\Term{module}{模} $L_1,\ldots,L_d$ 与 $F$ 的\Term{intersection-number}{相交数}，记作 $(L_1,\ldots,L_d;F)$（参见 [3]）。由这个数的表达式 (4.3.4)，立即得到以下性质：
+\begin{enumerate}
+\item[1)] 整数 (4.3.4) 是变量 $L_1,\ldots,L_d\in\operatorname{Pic}(X)$ 的\Term{symmetric}{对称} $d$ 重\Term{linear}{线性}函数；若 $\dim(\operatorname{Supp}(F))<d$，则它为零；而且它对 $F$ “可加”，即对 $\operatorname{cl}_\bullet(F)=F$ 可加。
+\item[2)] 使用 2.1.2，立即得出（采用 1.1.2 的记号）：
+\[(L_1,\ldots,L_d;F)=\sum_{x\in X(d)}\operatorname{long}_{\mathcal O_{X,x}}(F_x)(L_1,\ldots,L_d;\mathcal O_{Z(x)}).\tag{4.4.1}\]
+\item[3)] 设 $Y$ 是 $X$ 的闭\Term{subscheme}{子概形}，$G$ 是\Term{coherent}{凝聚} $\mathcal O_Y$-\Term{module}{模}，使得 $F=f_*(G)$，其中 $f:Y\longrightarrow X$ 为\Term{canonical}{典范}\Term{immersion}{浸入}。则
+\[(f^*L_1,\ldots,f^*L_d;G)=(L_1,\ldots,L_d;F).\]
+更\Term{generic}{一般}地，对于\Term{proper}{固有} $k$-\Term{scheme}{概形}之间的每个 $k$-\Term{morphism}{态射} $f:Y\longrightarrow X$，\Term{projection-formula}{投影公式}实际上给出
+\[\chi(f^*(x)y)=\chi(f_*(f^*(x)y))=\chi(xf_*(y))\qquad(x\in K^\bullet(X),\ y\in K_\bullet(Y)).\tag{4.4.2}\]
+\item[4)] 假设上述\Term{morphism}{态射} $f:Y\longrightarrow X$ 中的 $X,Y$ 均\Term{irreducible}{不可约}，\Term{dimension}{维数} $\leq d$。若 $f$ 的\Term{degree}{次数}为 $n$，则
+\SourcePage{555}
+\[(f^*L_1,\ldots,f^*L_d;\mathcal O_Y)=n(L_1,\ldots,L_d;\mathcal O_X).\tag{4.4.3}\]
+\end{enumerate}
+回忆 $f$ 的\Term{degree}{次数} $n$ 的定义 [3]：除 $\dim(X)=\dim(Y)=\dim(f(Y))$ 的情形外，它为零。在后一种情形中，令
+\[n=\frac{\operatorname{long}_{\mathcal O_{X,x}}(\mathcal O_{Y,y})}{\operatorname{long}_{\mathcal O_{X,x}}(\mathcal O_{X,x})},\tag{4.4.4}\]
+其中 $x$ 是 $X$ 的\Term{generic-point}{泛点}，$y$ 是 $Y$ 的\Term{generic-point}{泛点}。
+
+在 (4.4.3) 的证明中，只有 $\dim(X)=\dim(Y)$ 的情形并非显然。若 $\dim(f(Y))<d$，则在 $x$ 的一个\Term{neighborhood}{邻域}中，对 $i>0$ 有
+\[R^if_*(\mathcal O_Y)=0.\tag{4.4.5}\]
+但当 $\dim(f(Y))=d$ 时，条件 (4.4.5) 也成立，因为此时\Term{generic-fiber}{泛纤维}的\Term{dimension}{维数}为零（EGA III 4.2.2 及 EGA IV 5.5.6）。于是 1.1.2 给出模 $\operatorname{Filt}_{d-1}(X)$ 的同余式
+\[f_*(\operatorname{cl}_\bullet(\mathcal O_Y))\equiv\operatorname{cl}_\bullet(f_*(\mathcal O_Y))\equiv\operatorname{long}_{\mathcal O_{X,x}}(\mathcal O_{Y,y})\operatorname{cl}_\bullet(\mathcal O_{X_{\mathrm{red}}}).\]
+由 (4.4.2)，得出
+\[(f^*L_1,\ldots,f^*L_d;\mathcal O_Y)=\operatorname{long}_{\mathcal O_{X,x}}(\mathcal O_{Y,y})(L_1,\ldots,L_d;\mathcal O_{X_{\mathrm{red}}}).\]
+另一方面，2) 给出
+\[(L_1,\ldots,L_d;\mathcal O_X)=\operatorname{long}_{\mathcal O_{X,x}}(\mathcal O_{X,x})(L_1,\ldots,L_d;\mathcal O_{X_{\mathrm{red}}}),\]
+断言由此得证。
+\SourcePage{556}
+\textbf{4.5.} 由相交乘积 $\langle\ ,\ \rangle$ 定义的\Term{equivalence-relation}{等价关系}称为\Term{numerical-equivalence}{数值等价}：
+\begin{SGAresult}{定义}{4.5.1}
+若 $\operatorname{Gr}^i(X)$（$i\in\mathbb Z$）中的两个元素 $x,y$（相应地，$\operatorname{Gr}_i(X)$ 中的两个元素）定义相同的\Term{homomorphism}{同态} $\operatorname{Gr}_i(X)\longrightarrow\mathbb Z$（相应地，$\operatorname{Gr}^i(X)\longrightarrow\mathbb Z$），则称它们\Term{numerical-equivalence}{数值等价}。若两个\Term{invertible-module}{可逆} $\mathcal O_X$-\Term{module}{模} $L_1,L_2$ 的第一 \Term{chern-class}{Chern 类} $x,y\in\operatorname{Gr}^1(X)$ \Term{numerical-equivalence}{数值等价}，则称 $L_1,L_2$ \Term{numerical-equivalence}{数值等价}。
+\end{SGAresult}
+\begin{SGAresult}{命题}{4.5.2}
+\Term{invertible-module}{可逆} $\mathcal O_X$-\Term{module}{模} $L$ \Term{numerical-equivalence}{数值等价}于零，当且仅当对每个 $n\in\mathbb Z$ 及每条\Term{integral-curve}{整闭曲线} $Z\subset X$，有
+\[\chi(L^{\otimes n}\otimes_{\mathcal O_X}\mathcal O_Z)=\chi(\mathcal O_Z).\tag{4.5.3}\]
+\end{SGAresult}
+这由 1.1.2 和 4.3.1 得出。
+以 $\operatorname{Pic}^N(X)$ 表示 $\operatorname{Pic}(X)$ 中由\Term{numerical-equivalence}{数值等价}于零的\Term{invertible-module}{可逆} $\mathcal O_X$-\Term{module}{模}的类组成的\Term{subgroup}{子群}。由 2.3.4 得出：
+\begin{SGAresult}{推论}{4.5.3}
+$\operatorname{Pic}^\tau(X)\subset\operatorname{Pic}^N(X)$。
+\end{SGAresult}
+在第 XIII 讲中将证明，甚至有 $\operatorname{Pic}^N(X)=\operatorname{Pic}^\tau(X)$。
+
+\SGAsection{5}{同构 $\operatorname{Pic}(X)\simeq\operatorname{Gr}^1(X)$}
+\textbf{5.1.} 设 $X$ 是任意\Term{ringed-topos}{赋环拓扑斯}。则可以完全仿照\Term{scheme}{概形}的情形定义环 $K^\bullet(X)$ 及\Term{filtration}{滤过} $(\operatorname{Filt}^i(X))_{i\in\mathbb Z}$。同样，将群 $\operatorname{Pic}(X)$ 定义为\Term{invertible-module}{可逆} $\mathcal O_X$-\Term{module}{模}的\Term{isomorphism}{同构}类所成的群。令
+\SourcePage{557}
+\[i:\operatorname{Pic}(X)\longrightarrow K^\bullet(X)\tag{5.1.1}\]
+表示把\Term{invertible-module}{可逆} $\mathcal O_X$-\Term{module}{模} $L$ 的类 $\operatorname{cl}_{\mathrm P}(L)\in\operatorname{Pic}(X)$ 映到 $K^\bullet(X)$ 中的 $\operatorname{cl}^\bullet(L)$ 的映射。显然，这是 $\operatorname{Pic}(X)$ 到 $K^\bullet(X)$ 的\Term{invertible-element}{可逆元}\Term{multiplicative-group}{乘法群} $K^\bullet(X)^*$ 的\Term{homomorphism}{同态}。下文用\Term{multiplication}{乘法}记号表示 $\operatorname{Pic}(X)$ 的\Term{group-law}{群运算}。
+
+映射 $i$ 有一个由\Term{functor}{函子}“$\det$”定义的\Term{left-inverse}{左逆}：若 $E$ 是\Term{rank}{秩}为 $n$ 的\Term{locally-free}{局部自由} $\mathcal O_X$-\Term{module}{模}，则 $\det(E)=\bigwedge^nE$。若
+\[0\longrightarrow E'\longrightarrow E\longrightarrow E''\longrightarrow0\tag{5.1.2}\]
+是\Term{locally-free}{局部自由} $\mathcal O_X$-\Term{module}{模}的\Term{exact-sequence}{正合列}，则由 (6.2.9) 及 (5.1.2) \Term{locally-split}{局部分裂}这一事实，得到\Term{canonical}{典范}\Term{isomorphism}{同构}
+\[\det(E)\xrightarrow{\sim}\det(E')\otimes_{\mathcal O_X}\det(E'').\]
+因而得到\Term{abelian-group}{阿贝尔群}\Term{homomorphism}{同态}
+\[\det:K^\bullet(X)\longrightarrow\operatorname{Pic}(X),\tag{5.1.3}\]
+这就是所求的 $i$ 的\Term{left-inverse}{左逆}。特别地，$i$ 是\Term{injective}{单射}，今后把 $\operatorname{Pic}(X)$ 与它在 $K^\bullet(X)^*$ 中的像相识别。
+
+\textbf{5.2.} 定义另一个映射
+\[\delta:\operatorname{Pic}(X)\longrightarrow\operatorname{Filt}^1(X),\tag{5.2.1}\]
+\SourcePage{558}
+对每个 $L\in\operatorname{Pic}(X)$ 令 $\delta(L)=1-L^{-1}$。
+
+\textbf{注记 5.2.2。} (a) 假设 $X$ 是\Term{scheme}{概形} $S$ 上 Zariski \Term{sheaf}{层}组成的\Term{locally-ringed-topos}{局部赋环拓扑斯}。若 $D$ 是 $X$ 上的 \Term{cartier-divisor}{Cartier 除子}，$D\geq0$，并且 $L=\operatorname{cl}^\bullet(\mathcal O_S(D))$，则
+\[\theta_S(\delta(L))=\operatorname{cl}_\bullet(\mathcal O_D),\tag{5.2.3}\]
+其中 $\theta_S:K^\bullet(S)\longrightarrow K_\bullet(S)$ 是 1.2.3 的\Term{canonical}{典范}\Term{homomorphism}{同态}。这立即由\Term{exact-sequence}{正合列}
+\[0\longrightarrow\mathcal O_S(-D)\longrightarrow\mathcal O_S\longrightarrow\mathcal O_D\longrightarrow0\]
+得出。
+
+(b) 在 5.1、5.2 的假设下，对每个 $L\in\operatorname{Pic}(X)$，有
+\[\delta(L)\equiv L-1\pmod{\operatorname{Filt}^2(X)},\tag{5.2.4}\]
+这说明下文引入的记号 $c_1(L)$ 是合理的。事实上，
+\[(L-1)-(1-L^{-1})=(L-1)(1-L^{-1})\in\operatorname{Filt}^2(X).\]
+\textbf{5.3.} 将 $\delta$ 与\Term{canonical}{典范}满\Term{homomorphism}{同态} $\operatorname{Filt}^1(X)\longrightarrow\operatorname{Gr}^1(X)$ 复合，得到 $\operatorname{Pic}(X)$ 上的“第一 \Term{chern-class}{Chern 类}”
+\[c_1:\operatorname{Pic}(X)\longrightarrow\operatorname{Gr}^1(X).\tag{5.3.1}\]
+\SourcePage{559}
+\begin{SGAresult}{\Term{theorem}{定理}}{5.3.2}
+映射 $c_1$（5.3.1）是单\Term{homomorphism}{同态}；\Term{homomorphism}{同态} $\det:\operatorname{Filt}^1(X)\longrightarrow\operatorname{Pic}(X)$ 通过取商诱导 $c_1$ 的一个\Term{left-inverse}{左逆}\Term{homomorphism}{同态}
+\[\alpha:\operatorname{Gr}^1(X)\longrightarrow\operatorname{Pic}(X).\]
+若\Term{constant}{常值}\Term{sheaf}{层} $\mathbb Z_X$ 的每个\Term{section}{截面} $n$ 都\Term{bounded}{有界}（例如，若 $X$“\Term{quasi-compact}{拟紧}”，或 $X$ 的\Term{final-object}{终对象} $e$ 为\Term{finite}{有限}个\Term{connected}{连通}\Term{object}{对象}之和），则 $c_1$ 是\Term{isomorphism}{同构}，$\alpha$ 是它的逆。
+\end{SGAresult}
+\begin{proof}
+$c_1$ 是\Term{homomorphism}{同态}，因为对每个 $L,L'\in\operatorname{Pic}(X)$，有等式
+\[(1-(LL')^{-1})-(1-L^{-1})-(1-L'^{-1})=-(1-L^{-1})(1-L'^{-1})\in\operatorname{Filt}^2(X).\]
+暂且承认 $\det(\operatorname{Filt}^2(X))=\{1\}\in\operatorname{Pic}(X)$，即 $\alpha$ 确实有定义。由 5.2.2 (b)，对每个 $L\in\operatorname{Pic}(X)$ 都有
+\[\det(1-L^{-1})=\det(L-1)=L,\]
+故 $\alpha\circ c_1=\operatorname{id}_{\operatorname{Pic}(X)}$。再证明：若 $\mathbb Z_X$ 的每个\Term{section}{截面} $n$ 都\Term{bounded}{有界}，则 $c_1\circ\alpha=\operatorname{id}_{\operatorname{Gr}^1(X)}$。由于 $\operatorname{Filt}^1(X)$ 是由元素 $\operatorname{cl}^\bullet(E)-n$ 生成的\Term{abelian-group}{阿贝尔群}，其中 $E$ 是
+\SourcePage{560}
+\Term{rank}{秩}为 $n$ 的\Term{locally-free}{局部自由} $\mathcal O_X$-\Term{module}{模}，根据 5.2.2 (b)，只需证明
+\[\det(\operatorname{cl}^\bullet(E))-\operatorname{cl}^\bullet(E)+n-1\in\operatorname{Filt}^2(X).\tag{5.3.3}\]
+因为 $n$ \Term{bounded}{有界}，$X$ 的\Term{final-object}{终对象} $e$ \Term{resolution}{分解}为\Term{finite-disjoint-sum}{有限不交直和} $\coprod_{i=1}^p e_i$，使 $n$ 在每个子\Term{topos}{拓扑斯} $X/e_i$（$i=1,\ldots,p$）上为常数。由于\Term{functor}{函子} $Y\longmapsto K^\bullet(X/Y)$（$Y\in\operatorname{Ob}(X)$）将\Term{finite}{有限}\Term{direct-sum}{直和}变为\Term{finite}{有限}\Term{direct-product}{直积}，可以假设 $n$ 在 $X$ 上为常数，即 $n\in\mathbb Z$。令 $E=\operatorname{cl}^\bullet(E)$，得到（参见第 V 讲）
+\[\det(E)=\lambda^n(E)=\gamma^n((E-n)+1)=\sum_{0\leq i\leq n}\gamma^i(E-n).\]
+这就证明了 (5.3.3)，因为它的左端等于 $\sum_{2\leq i\leq n}\gamma^i(E-n)$。
+
+还需证明下述\Term{lemma}{引理}。
+\end{proof}
+\begin{SGAresult}{\Term{lemma}{引理}}{5.3.4}
+对于每个\Term{ringed-topos}{赋环拓扑斯} $X$ 及每个 $x\in\operatorname{Filt}^2(X)$，有 $\det(x)=1$。
+\end{SGAresult}
+\begin{proof}
+设 $\varepsilon:K^\bullet(X)\longrightarrow\Gamma(\mathbb Z)$ 是\Term{augmentation}{增广}\Term{homomorphism}{同态}。由下文 (6.2.8)、(6.5.8)，利用\Term{linear}{线性}得到公式
+\[\det(xy)=\det(x)^{\varepsilon(y)}\det(y)^{\varepsilon(x)}\qquad(x,y\in K^\bullet(X)).\tag{5.3.5}\]
+\SourcePage{561}
+因此只需证明，对每个 $k>1$，有 $\det(\gamma^k(E-n))=1$，其中如前 $E=\operatorname{cl}^\bullet(E)$，$n=\varepsilon(E)$。而对每个 $x\in K^\bullet(X)$，有 $\gamma^k(x)=\lambda^k(x+k-1)$，所以
+\[\begin{aligned}
+\det(\gamma^k(E-n))&=\det(\lambda^k(E-n+k-1))\\
+&=\det\left(\sum_{p+q=k}\binom{n+k-1}{p}\lambda^q(E)\right).
+\end{aligned}\]
+而 (6.2.10)、(6.5.3) 对每个 $q>0$ 给出
+\[\det(\lambda^q(E))=\det(E)^{\binom{n-1}{q-1}},\]
+故 $\det(\gamma^k(E-n))=\det(E)^r$，其中
+\[r=\sum_{\substack{p+q=k\\q\geq1}}\binom{-n+k-1}{p}\binom{n-1}{q-1}.\]
+$r$ 是 $\mathbb Z$ 的一个\Term{section}{截面}，处处等于 $(1+t)^{k-2}$ 中 $t^{k-1}$ 的系数，因而为零。所需结论得证。
+\end{proof}

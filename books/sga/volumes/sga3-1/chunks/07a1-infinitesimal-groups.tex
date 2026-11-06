@@ -1,0 +1,1055 @@
+\SourcePage{447}
+\SGAchapter{VII A}{群概形的无穷小研究}{Étude infinitésimale des schémas en groupes}
+\begin{center}P. Gabriel\end{center}
+第 II 讲只研究了一阶\Term{differential}{微分}\Term{invariants}{不变量}，尚未涉及正\Term{characteristic}{特征} $p>0$ 或\Term{characteristic}{特征} $0$ 所特有的某些现象。本讲 A 部分旨在补上这一缺环。
+
+此外，\Term{group-scheme}{群概形}任意阶的\Term{infinitesimal-study}{无穷小研究}，与其相伴的\Term{formal-group}{形式群}的研究相联系；本讲第二部分将介绍\Term{formal-group}{形式群}的初步定义和性质。
+
+\begin{center}\textbf{A）\Term{differential-operator}{微分算子}与 $p$-\Term{lie-algebra}{Lie 代数}}\end{center}
+\footnote{原注（*）：本讲 A 部分在口头报告中未曾得到认真处理。}
+\SGAsection{1}{微分算子}
+本节及第 2、3 节中，$S$ 表示一个固定的\Term{scheme}{概形}，所考虑的积都是 $S$-\Term{scheme}{概形}\Term{category}{范畴}中的\Term{cartesian-product}{笛卡尔积}。\footnote{编者注（1）：特别地，若 $X,Y$ 是两个 $S$-\Term{scheme}{概形}，则将 $X\times_S Y$ 简记为 $X\times Y$。另请注意，第 1、2 节的内容可参看 [DG70]，§ II.4，第 5–6 号；亦见 [Ja03]，§ I.7。}若 $X$ 是 $S$-\Term{scheme}{概形}，则将 $X$ 到 $S$ 的\Term{structure-morphism}{结构态射}记为 $p_{X/S}$、$p_X$，或简记为 $p$。
+
+\textbf{1.1。}设 $u:Y\to X$ 是 $S$-\Term{scheme}{概形}的\Term{morphism}{态射}，在 $Y$ 的\Term{structure-sheaf}{结构层}的\Term{direct-image}{正像} $u_*(\mathcal O_Y)$ 上赋予由 $u$ 诱导的 $\mathcal O_X$-\Term{module}{模}结构。从 $\mathcal O_X$ 到 $u_*(\mathcal O_Y)$ 的 $p_X^{-1}(\mathcal O_S)$-\Term{module}{模}\Term{homomorphism}{同态}组成的\Term{sheaf}{层}
+\[
+\mathcal H=\mathcal Hom_{p_X^{-1}(\mathcal O_S)}(\mathcal O_X,u_*(\mathcal O_Y))
+\]
+因而自然具有 $\mathcal O_X$-\Term{bimodule}{双模}结构：若 $U$ 是 $X$ 的\Term{open-subset}{开集}，$f,d$ 分别是 $\mathcal O_X,\mathcal H$ 在 $U$ 上的\Term{section}{截面}，则 $fd$ 和 $df$ 分别是从 $\mathcal O_X$ 到 $u_*(\mathcal O_Y)$ 的\Term{morphism}{态射} $g\mapsto f d(g)$ 和 $g\mapsto d(fg)$。以下用 $(\operatorname{ad}f)(d)$ 表示 $fd-df$。
+
+\SourcePage{448}
+\begin{SGAresult}{定义}{1.1.1}
+一个阶数 $\leq n$ 的 $S$-\Term{deviation}{偏差（déviation）}，依定义是一个二元组 $D=(u,d)$，其中 $u:Y\to X$ 是 $S$-\Term{scheme}{概形}的\Term{morphism}{态射}，$d:\mathcal O_X\to u_*(\mathcal O_Y)$ 是 $p_X^{-1}(\mathcal O_S)$-\Term{module}{模}\Term{morphism}{态射}，并且对 $X$ 的每个\Term{open-subset}{开集} $U$ 和每列 $n+1$ 个\Term{section}{截面} $f_0,\ldots,f_n\in\mathcal O_X(U)$，在 $\operatorname{Hom}_{p_U^{-1}(\mathcal O_S)}(\mathcal O_U,u_*(\mathcal O_Y)|_U)$ 中有等式
+\[
+(\operatorname{ad}f_0)(\operatorname{ad}f_1)\cdots(\operatorname{ad}f_n)(d)=0.\tag{$*_n$}
+\]
+\footnote{编者注（2）：容易看出，这\Term{equivalence}{等价}于说，对每个 $x\in X$ 及 $f_0,\ldots,f_n,g\in\mathcal O_{X,x}$，有 $(\operatorname{ad}f_0)\cdots(\operatorname{ad}f_n)(d_x)(g)=0$。另回顾\Term{adjunction-isomorphism}{伴随同构}
+\[
+\theta:\operatorname{Hom}_{p_X^{-1}(\mathcal O_S)}(\mathcal O_X,u_*\mathcal O_Y)\xrightarrow{\sim}\operatorname{Hom}_{p_Y^{-1}(\mathcal O_S)}(u^{-1}\mathcal O_X,\mathcal O_Y),
+\]
+它将 $p_X^{-1}(\mathcal O_S)$-\Term{module}{模}\Term{morphism}{态射} $d$ 对应到 $d'=\epsilon\circ u^{-1}(d)$，其中 $\epsilon:u^{-1}u_*\mathcal O_Y\to\mathcal O_Y$ 是\Term{canonical}{典范}\Term{morphism}{态射}。反之，对每个 $p_Y^{-1}(\mathcal O_S)$-\Term{morphism}{态射} $d':u^{-1}\mathcal O_X\to\mathcal O_Y$，有 $\theta^{-1}(d')=u_*(d')\circ\eta$，其中 $\eta:\mathcal O_X\to u_*u^{-1}\mathcal O_X$ 是\Term{canonical}{典范}\Term{morphism}{态射}。因此，$d$ 满足 $(*_n)$，当且仅当对 $Y$ 的每个\Term{open-subset}{开集} $V$ 及 $f_0,\ldots,f_n,g\in(u^{-1}\mathcal O_X)(V)$，$d'$ 满足
+\[
+(\operatorname{ad}f_0)\cdots(\operatorname{ad}f_n)(d')(g)=0.\tag{$*'_n$}
+\]}
+这时也称 $d$ 为 $u$ 的阶数 $\leq n$ 的 $S$-\Term{deviation}{偏差}。特别地，$u$ 的阶数 $\leq0$ 的 $S$-\Term{deviation}{偏差}，就是从 $\mathcal O_X$ 到 $u_*(\mathcal O_Y)$ 的 $\mathcal O_X$-\Term{module}{模}\Term{morphism}{态射}，也就是 $\Gamma(Y,\mathcal O_Y)$ 的一个元素。
+\end{SGAresult}
+\begin{SGAresult}{定义}{1.1.2}
+一个 $p^{-1}(\mathcal O_S)$-\Term{module}{模}\Term{morphism}{态射} $d:\mathcal O_X\to u_*(\mathcal O_Y)$ 称为 $u$ 的一个 $S$-\Term{deviation}{偏差}，如果对 $Y$ 的每个点 $y$，存在 $u(y)$ 在 $X$ 中的\Term{open-neighborhood}{开邻域} $U$ 及 $y$ 在 $Y$ 中的\Term{open-neighborhood}{开邻域} $V$，满足：
+
+ a）$u(V)\subset U$；
+
+ b）若 $v:V\to U$ 是 $u$ 诱导的\Term{morphism}{态射}，则存在整数 $n$，使 $d$ 诱导的\Term{morphism}{态射} $\mathcal O_U\to v_*(\mathcal O_V)$ 是 $v$ 的阶数 $\leq n$ 的 $S$-\Term{deviation}{偏差}。\footnote{编者注（3）：若 $X$ 和 $u$ 都\Term{quasi-compact}{拟紧}，则 $u$ 的每个 $S$-\Term{deviation}{偏差}都具有阶数 $\leq n$，其中 $n$ 为某个整数。}
+\end{SGAresult}
+若 $d$ 是 $u$ 的 $S$-\Term{deviation}{偏差}，也称二元组 $D=(u,d)$ 为一个 $S$-\Term{deviation}{偏差}，有时写成 $Y\xrightarrow{D}X$，或
+$\begin{tikzcd}[cramped,column sep=small]Y\arrow[r,"d","u"']&X.\end{tikzcd}$
+若 $d$ 就是与\Term{morphism}{态射} $u:Y\to X$ 对应的\Term{algebra}{代数}\Term{homomorphism}{同态} $u^\flat:\mathcal O_X\to u_*(\mathcal O_Y)$，也用 $u$ 表示 $D$。
+
+\textbf{注记 1.1.3。}\footnote{编者注（4）：增加了这些注记；1.3、1.4 和 2.1 将用到它们。}以 $\operatorname{D\text{é}v}(u)$（相应地，$\operatorname{D\text{é}v}^{\leq n}(u)$）表示 $u$ 的 $S$-\Term{deviation}{偏差}（相应地，阶数 $\leq n$ 的 $S$-\Term{deviation}{偏差}）的\Term{set}{集合}。它自然具有 $\mathcal O_Y(Y)$-\Term{module}{模}结构：若 $\lambda\in\mathcal O_Y(Y)$，则 $\lambda d$ 是将 $\mathcal O_X$ 在任意\Term{open-subset}{开集} $U$ 上的\Term{section}{截面} $f$ 送到 $\lambda d(f)$ 的\Term{deviation}{偏差}。
+
+对 $Y$ 的每个\Term{open-subset}{开集} $V$，令 $\mathscr{D\!ev}(u)(V)=\operatorname{D\text{é}v}(u|_V)$，也就是说，$\mathscr{D\!ev}(u)(V)$ 是满足下述条件的所有元素
+\[
+\begin{aligned}
+d_V&\in\operatorname{Hom}_{p^{-1}(\mathcal O_S)}(\mathcal O_X,(u|_V)_*\mathcal O_V)\\
+&\simeq\operatorname{Hom}_{p^{-1}(\mathcal O_S)}((u|_V)^{-1}\mathcal O_X,\mathcal O_V)\\
+&\simeq\mathcal Hom_{p^{-1}(\mathcal O_S)}(u^{-1}\mathcal O_X,\mathcal O_Y)(V)
+\end{aligned}
+\]
+\SourcePage{449}
+组成的\Term{set}{集合}：对 $X$ 的每个\Term{open-subset}{开集} $U$，映射 $d_V(U):\mathcal O_X(U)\to\mathcal O_Y(u^{-1}(U)\cap V)$ 满足 $(*_n)$。这定义了 $Y$ 上一个 $\mathcal O_Y$-\Term{module}{模}\Term{presheaf}{预层}，而且容易看出它是一个\Term{sheaf}{层}（更确切地说，是 $\mathcal Hom_{p^{-1}(\mathcal O_S)}(u^{-1}\mathcal O_X,\mathcal O_Y)$ 的\Term{subsheaf}{子层}）。
+
+\textbf{1.2。}现在考虑两个 $S$-\Term{deviation}{偏差} $D=(u,d)$ 和 $E=(v,e)$：
+\[
+\begin{tikzcd}Z\arrow[r,"v","e"']&Y\arrow[r,"u","d"']&X.\end{tikzcd}
+\]
+当 $U$ 遍历 $X$ 的\Term{open-subset}{开集}时，复合映射
+\[
+\Gamma(U,\mathcal O_X)\xrightarrow{d(U)}\Gamma(u^{-1}U,\mathcal O_Y)\xrightarrow{e(u^{-1}U)}\Gamma(v^{-1}u^{-1}U,\mathcal O_Z)
+\]
+定义了 $uv$ 的一个 $S$-\Term{deviation}{偏差}，记为 $de$；若 $d$ 的阶数 $\leq m$，$e$ 的阶数 $\leq n$，则 $de$ 的阶数 $\leq m+n$。也写作
+\[
+D\circ E=(uv,de),\tag{$\dagger$}
+\]
+\footnote{编者注（5）：注意，在此记号下，$de$ 表示“先 $d$ 后 $e$”的复合。}
+并称 $D\circ E$ 或 $DE$ 为复合 $S$-\Term{deviation}{偏差}。若 $d=u^\flat$（即按 1.1 的约定 $D=u$），也称 $DE$ 为 $E$ 经 $u$ 的像。
+
+刚定义的映射 $(D,E)\mapsto D\circ E$ 使我们可以谈论 $S$-\Term{deviation}{偏差}\Term{category}{范畴}：它的\Term{object}{对象}是 $S$-\Term{scheme}{概形}，\Term{morphism}{态射}是 $S$-\Term{deviation}{偏差}。\footnote{编者注（6）：通常只考虑\Term{identity-morphism}{恒等态射} $\operatorname{id}_X$ 的 $S$-\Term{deviation}{偏差}；它们构成 $X$ 的 $S$-\Term{differential-operator}{微分算子}\Term{algebra}{代数}，见下文 1.4。但 $S$-\Term{deviation}{偏差}这一较一般的框架，提供了方便的“\Term{functorial}{函子性}”语言，以证明诸如以下的命题：“若 $G$ 是一个 $S$-\Term{group}{群}，则 $G$ 上\Term{left-invariant}{左不变} $S$-\Term{differential-operator}{微分算子}的\Term{algebra}{代数}，与\Term{unit-section}{单位截面} $\epsilon:S\to G$ 的 $S$-\Term{deviation}{偏差}\Term{algebra}{代数}\Term{isomorphism}{同构}”；见下文 2.1、2.4。}
+
+\begin{SGAresult}{定义}{1.2.0}
+\footnote{编者注（7）：本段作了展开，并给这个定义及其后的\Term{lemma}{引理}分别加上编号 1.2.0 和 1.2.1。}设 $w:Z\to X$ 是一个 $S$-\Term{morphism}{态射}。$w$ 的一个 $S$-\Term{derivation}{导子}，或从 $\mathcal O_X$ 到 $w_*(\mathcal O_Z)$ 的一个 $S$-\Term{derivation}{导子}，是一个 $p^{-1}(\mathcal O_S)$-\Term{module}{模}\Term{morphism}{态射} $d:\mathcal O_X\to w_*(\mathcal O_Z)$，使对 $X$ 的每个\Term{open-subset}{开集} $U$ 及 $f,g\in\mathcal O_X(U)$，有
+\[
+d(fg)=w^\flat(f)d(g)+w^\flat(g)d(f).
+\]
+于是 $d$ 是 $w$ 的阶数 $\leq1$ 的\Term{deviation}{偏差}，且在 $\mathcal O_X$ 的\Term{unit-section}{单位截面}上为零。以 $\operatorname{D\text{é}r}_S(w)$ 表示 $w$ 的所有 $S$-\Term{derivation}{导子}的\Term{set}{集合}；它是一个 $\mathcal O(Z)$-\Term{module}{模}。
+\end{SGAresult}
+沿用 1.2 的记号，取 $Y=I_Z=\operatorname{Spec}\mathcal O_Z[t]$，其中 $t^2=0$，并取 $v$ 为\Term{zero-section}{零截面} $\tau:Z\to I_Z$，它由将 $t$ 送到 $0$ 的 $\mathcal O_Z$-\Term{algebra}{代数}\Term{morphism}{态射} $\mathcal O_Z[t]\to\mathcal O_Z$ 定义；又取 $e$ 为由 $\sigma(1)=0$、$\sigma(t)=1$ 定义的 $\mathcal O_Z$-\Term{module}{模}\Term{morphism}{态射} $\sigma:\mathcal O_Z[t]$，\footnote{编者注（8）：增加了下文，即引入记号 $\partial_t$。}将它记为 $\partial_t$ 很方便。
+
+若 $u:I_Z\to X$ 是满足 $w=u\circ s$ 的\Term{morphism}{态射}，则 $\sigma\circ u^\flat$ 是从 $\mathcal O_X$ 到 $w_*(\mathcal O_Z)$ 的 $S$-\Term{derivation}{导子}。反之，每个 $S$-\Term{derivation}{导子} $d$ 对应一个\Term{morphism}{态射} $u:I_Z\to X$，它在底\Term{space}{空间}上等于 $w$，并且对 $\mathcal O_X$ 在任意\Term{open-subset}{开集} $U$ 上的\Term{section}{截面} $f$，有
+\[
+u^\flat(f)=w^\flat(f)+d(f)t.
+\]
+\SourcePage{450}
+由此得到：
+\begin{SGAresult}{\Term{lemma}{引理}}{1.2.1}
+设 $E=(\tau,\partial_t)$ 是以上定义的 $\tau:Z\to I_Z$ 的\Term{deviation}{偏差}。对每个 $S$-\Term{morphism}{态射} $w:Z\to X$，映射 $u\mapsto u\circ E$ 给出满足 $u\circ s=w$ 的 $S$-\Term{morphism}{态射} $u:I_Z\to X$ 与 $w$ 的 $S$-\Term{derivation}{导子}之间的\Term{bijection}{双射}。
+\end{SGAresult}
+\textbf{1.2.2。}设 $d$ 是 $u:Y\to X$ 的一个 $S$-\Term{deviation}{偏差}。一方面，对于每个\Term{morphism}{态射} $s:S\to S'$，$d$ 显然也是 $u$ 的 $S'$-\Term{deviation}{偏差}。
+
+另一方面，设 $t:T\to S$ 是终点为 $S$ 的\Term{morphism}{态射}，$u_T:Y_T\to X_T$ 是 $u$ 经\Term{base-change}{基变换}得到的\Term{morphism}{态射}，$t_Y:Y_T\to Y$ 和 $t_X:X_T\to X$ 是\Term{canonical}{典范}\Term{projection}{投影}。则存在唯一的 $u_T$ 的 $T$-\Term{deviation}{偏差}，记为 $d_T$ 或 $d\times T$，使按上文 $(\dagger)$ 的意义有 $t_Xd_T=dt_Y$；即对 $X$ 的每个\Term{open-subset}{开集} $U$，下图交换：\footnote{编者注（9）：明确地，若 $V$ 是 $S$ 的\Term{affine}{仿射}\Term{open-subset}{开集}，$U,U'$ 分别是 $X,T$ 中位于 $V$ 上方的\Term{affine}{仿射}\Term{open-subset}{开集}，从而 $\mathcal O_{X\times T}(U\times U')=\mathcal O_X(U)\otimes_{\mathcal O_S(V)}\mathcal O_T(U')$，则 $d_T(U\times U')$ 是复合
+\[
+\begin{aligned}
+\mathcal O_X(U)\otimes_{\mathcal O_S(V)}\mathcal O_T(U')&\xrightarrow{d(U)\otimes\operatorname{id}}\mathcal O_Y(u^{-1}U)\otimes_{\mathcal O_S(V)}\mathcal O_T(U')\\
+&\longrightarrow\mathcal O_{Y\times T}(u^{-1}U\times U').
+\end{aligned}
+\]
+作者将 $d_T$ 良定义的核对留给读者，编者也同样处理。}
+\[
+\begin{tikzcd}
+\mathcal O(U)\arrow[r,"t_X^\flat"]\arrow[d,"d(U)"']&\mathcal O(U\times T)\arrow[d,"d_T(U\times T)"]\\
+\mathcal O(u^{-1}U)\arrow[r,"t_Y^\flat"']&\mathcal O(u^{-1}U\times T).
+\end{tikzcd}
+\]
+若令 $D=(u,d)$，也写 $D_T=(u_T,d_T)$，并称 $d_T,D_T$ 由 $d,D$ 经\Term{base-change}{基变换}得到。
+
+\textbf{1.2.3。}例如，设 $u:Y\to X$、$v:Z\to T$ 是两个 $S$-\Term{morphism}{态射}，$d,e$ 分别是 $u,v$ 的 $S$-\Term{deviation}{偏差}。有\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}
+X\times T&Y\times T\arrow[l,"u_T"']\\
+X\times Z\arrow[u,"v_X"]&Y\times Z\arrow[l,"u_Z"]\arrow[u,"v_Y"']\arrow[ul,"u\times v"']
+\end{tikzcd}
+\]
+将等于 $d_Te_Y=e_Xd_Z$（按上文 $(\dagger)$ 的约定）的 $u\times v$ 的 $S$-\Term{deviation}{偏差}记为 $d\times e$，称为 $d$ 与 $e$ 的积。也就是说，对 $X\times T$ 的每个\Term{open-subset}{开集} $U$，若以 $W$ 表示\Term{open-subset}{开集} $v_Y^{-1}u_T^{-1}U=u_Z^{-1}v_X^{-1}U$，则有\Term{commutative-diagram}{交换图}
+\SourcePage{451}
+\[
+\begin{tikzcd}
+\mathcal O(U)\arrow[r,"d_T(U)"]\arrow[d,"e_X(U)"']\arrow[dr,dashed,"(d\times e)(U)"]&\mathcal O(u_T^{-1}U)\arrow[d,"e_Y(u_T^{-1}U)"]\\
+\mathcal O(v_X^{-1}U)\arrow[r,"d_Z(v_X^{-1}U)"']&\mathcal O(W).
+\end{tikzcd}
+\]
+若令 $D=(u,d)$、$E=(v,d)$，也写 $D\times E=(u\times v,d\times e)$。
+
+\textbf{1.3。}\footnote{编者注（10）：本段对原文作了展开；亦见 1.1.1 的编者注（2）。}设 $u:Y\to X$ 是 $S$-\Term{scheme}{概形}的\Term{morphism}{态射}。回顾\Term{adjunction-isomorphism}{伴随同构}
+\[
+\operatorname{Hom}_{p_X^{-1}(\mathcal O_S)}(\mathcal O_X,u_*(\mathcal O_Y))\xrightarrow{\sim}\operatorname{Hom}_{p_Y^{-1}(\mathcal O_S)}(u^{-1}\mathcal O_X,\mathcal O_Y),
+\]
+它将每个 $p^{-1}(\mathcal O_S)$-\Term{module}{模}\Term{morphism}{态射} $d:\mathcal O_X\to u_*(\mathcal O_Y)$ 对应到 $d'=\epsilon\circ u^{-1}(d)$，其中 $\epsilon:u^{-1}u_*\mathcal O_Y\to\mathcal O_Y$ 是\Term{canonical}{典范}\Term{morphism}{态射}。
+
+以 $\mathcal J_u$（相应地，$\mathcal I_u$）表示\Term{algebra}{代数}\Term{homomorphism}{同态} $u^\flat:\mathcal O_X\to u_*(\mathcal O_Y)$（相应地，$u^{\flat\prime}:u^{-1}\mathcal O_X\to\mathcal O_Y$）的\Term{kernel}{核}，并设 $d:\mathcal O_X\to u_*(\mathcal O_Y)$ 是 $p^{-1}(\mathcal O_S)$-\Term{module}{模}\Term{morphism}{态射}。若 $U$ 是 $X$ 的\Term{open-subset}{开集}，$f_0,\ldots,f_n,g\in\mathcal O_X(U)$，则对 $n$ 归纳容易看出，条件 $(*_n)$ \Term{equivalence}{等价}于下述等式（参看 EGA IV$_4$，16.8.8.2）：
+\[
+0=\sum_{I\subset[\![0,n]\!]}(-1)^{|I|}u^\flat(f_{[\![0,n]\!]\setminus I})\,d(f_Ig),\tag{$**_n$}
+\]
+其中 $f_I$ 表示所有 $i\in I$ 的 $f_i$ 的积。因此，若 $d$ 满足 $(*_n)$，则 $d$ 在\Term{ideal}{理想} $\mathcal J_u^{n+1}$ 上为零。
+
+现在假设 $Y=S$；于是 $u:S\to X$ 是 $p:X\to S$ 的\Term{section}{截面}，故为\Term{immersion}{浸入}（见 EGA I，5.3.13）。于是，一方面，$\epsilon:u^{-1}u_*\mathcal O_S\to\mathcal O_S$ 是\Term{isomorphism}{同构}，从而 $u^{-1}(\mathcal J_u)=\mathcal I_u$；另一方面，有\Term{isomorphism}{同构}
+\[
+u^{-1}(\mathcal O_X)\simeq\mathcal O_S\oplus\mathcal I_u.\tag{$\star$}
+\]
+假设 $d$ 在 $\mathcal J_u^{n+1}$ 上为零。则 $d'=\epsilon\circ u^{-1}(d)$ 在 $\mathcal I_u^{n+1}$ 上为零，所以当 $f_0,\ldots,f_n\in\mathcal I_u(u^{-1}U)$ 时，$d'$ 满足 $({**}'_n)$ 和 $(*'_n)$，即 $(**_n)$ 和 $(*_n)$ 的相应\Term{form}{形式}。此外，对任意 $a\in\mathcal O_S(u^{-1}U)$ 及任意 $\mathcal O_{u^{-1}U}$-\Term{module}{模}\Term{morphism}{态射} $\phi:u^{-1}\mathcal O_U\to\mathcal O_{u^{-1}U}$，有 $(\operatorname{ad}a)(\phi)=0$，故由 $(\star)$ 可知 $d'$ 满足 $(*_n)$ 的相应\Term{form}{形式} $(*'_n)$。因而 $d$ 满足 $(*_n)$。由此得到：
+\begin{SGAresult}{\Term{lemma}{引理}}{}
+若 $u:S\to X$ 是 $p:X\to S$ 的\Term{section}{截面}，则 $d$ 是 $u$ 的阶数 $\leq n$ 的 $S$-\Term{deviation}{偏差}，当且仅当 $d'$ 在 $\mathcal I_u^{n+1}$ 上为零。
+\end{SGAresult}
+这一解释可推广如下。设 $u:Y\to X$ 是任意 $S$-\Term{morphism}{态射}，$\Gamma_u$ 是 $u$ 的\Term{graph}{图}，即以 $\operatorname{id}_Y,u$ 为\Term{set-component}{分量}的\Term{morphism}{态射} $Y\to Y\times X$。
+\SourcePage{452}
+对 $u$ 的每个阶数 $\leq n$ 的 $S$-\Term{deviation}{偏差} $d$，通过复合
+\[
+\begin{tikzcd}Y\arrow[r,"\mathrm{diag.}"]&Y\times Y\arrow[r,"d_Y","u_Y"']&Y\times X\end{tikzcd}
+\]
+得到 $\Gamma_u$ 的一个阶数 $\leq n$ 的 $Y$-\Term{deviation}{偏差}，记为 $\Gamma_d$（$d$ 的\Term{graph}{图}）。反之，对 $\Gamma_u$ 的每个 $Y$-\Term{deviation}{偏差} $e$，对应复合 $S$-\Term{deviation}{偏差} $e_X=\operatorname{pr}_2\circ e$：
+\[
+\begin{tikzcd}Y\arrow[r,"e","\Gamma_u"']&Y\times X\arrow[r,"\operatorname{pr}_2"]&X.\end{tikzcd}
+\]
+立即可见 $(\Gamma_d)_X=d$；而 $\Gamma_{e_X}=e$ 来自 $e$ 的 $\mathcal O_Y$-\Term{linear}{线性}。\footnote{编者注（11）：若 $\lambda,f$ 分别是 $\mathcal O_Y,\mathcal O_X$ 的\Term{local-scheme}{局部}\Term{section}{截面}，有 $(\Gamma_{e_X})(\lambda\otimes f)=\lambda\cdot e(1\otimes g)$，而由 $e$ 的 $\mathcal O_Y$-\Term{linear}{线性}，它等于 $e(\lambda\otimes g)$。}因而得到 $\mathcal O_Y(Y)$-\Term{module}{模}\Term{isomorphism}{同构}
+\[
+\begin{aligned}
+\{u\text{ 的阶数 }\leq n\text{ 的 }S\text{-偏差}\}&\xrightarrow{\sim}\{\Gamma_u\text{ 的阶数 }\leq n\text{ 的 }Y\text{-偏差}\},\\
+d&\longmapsto\Gamma_d.
+\end{aligned}
+\]
+而且容易看出，$d$ 是 $u$ 的 $S$-\Term{derivation}{导子}，当且仅当 $\Gamma_d$ 是 $\Gamma_u$ 的 $Y$-\Term{derivation}{导子}。
+
+以 $\mathcal I_{\Gamma_u}$ 表示对应于 $\Gamma_u$ 的\Term{algebra}{代数}\Term{homomorphism}{同态} $(\Gamma_u)^{-1}(\mathcal O_{Y\times X})\to\mathcal O_Y$ 的\Term{kernel}{核}。结合前面的\Term{lemma}{引理}，得到：
+\begin{SGAresult}{命题}{}
+设 $u:Y\to X$ 是 $S$-\Term{morphism}{态射}，$\Gamma_u:Y\to Y\times X$ 是它的\Term{graph}{图}。$u$ 的阶数 $\leq n$ 的 $S$-\Term{deviation}{偏差}可与 $\Gamma_u$ 的阶数 $\leq n$ 的 $Y$-\Term{deviation}{偏差}等同，后者与\Term{set}{集合}
+\[
+\operatorname{Hom}_{\mathcal O_Y}\bigl((\Gamma_u)^{-1}(\mathcal O_{Y\times X})/\mathcal I_{\Gamma_u}^{n+1},\mathcal O_Y\bigr)
+\]
+之间存在\Term{bijection}{双射}。
+\end{SGAresult}
+\textbf{1.3.1。}\footnote{编者注（12）：本段为新增。}回到 $u:S\to X$ 是 $p:X\to S$ 的\Term{section}{截面}的情形。此时\Term{homomorphism}{同态} $\phi:u^{-1}(\mathcal O_X)\to\mathcal O_S$ 有一个\Term{section}{截面}，简记为 $g\mapsto g\cdot1$；于是沿用 1.3 的记号，有 $\mathcal O_S$-\Term{module}{模}\Term{isomorphism}{同构}
+\[
+u^{-1}(\mathcal O_X)\simeq\mathcal O_S\oplus\mathcal I_u,\tag{$\star$}
+\]
+而且对 $u^{-1}(\mathcal O_X)$ 的每个\Term{section}{截面} $f$，$f-\phi(f)\cdot1$ 是 $\mathcal I_u$ 的\Term{section}{截面}。
+
+设 $d$ 是 $u$ 的阶数 $\leq1$ 的 $S$-\Term{deviation}{偏差}，$d':u^{-1}\mathcal O_X\to\mathcal O_S$ 是与 $d$ 对应的 $\mathcal O_S$-\Term{morphism}{态射}。若 $a,b$ 是 $u^{-1}\mathcal O_X$ 的\Term{section}{截面}，则
+\[
+\begin{aligned}
+0&=d'\bigl((a-\phi(a)\cdot1)(b-\phi(b)\cdot1)\bigr)\\
+ &=d'(ab)-\phi(a)d'(b)-\phi(b)d'(a)+\phi(ab)d'(1).
+\end{aligned}
+\]
+因此可见，$d$ 是 $u$ 的 $S$-\Term{derivation}{导子}（见 1.2.1 及编者注（2）），当且仅当 $d'(1)=0$。所以得到：
+\SourcePage{453}
+\begin{SGAresult}{\Term{lemma}{引理}}{}
+$u$ 的 $S$-\Term{derivation}{导子}恰是 $u$ 的在 $\mathcal O_X$ 的\Term{unit-section}{单位截面}上为零的一阶 $S$-\Term{deviation}{偏差}；它们对应于 $\mathcal O_S(S)$-\Term{module}{模}
+\[
+\operatorname{Hom}_{\mathcal O_S}(\mathcal I_u/\mathcal I_u^2,\mathcal O_S),
+\]
+且有 $\mathcal O_S(S)$-\Term{module}{模}\Term{isomorphism}{同构}
+$\operatorname{D\text{é}v}^{\leq1}(u)\simeq\mathcal O_S(S)\oplus\operatorname{D\text{é}r}_S(u)$。
+\end{SGAresult}
+回到一般情形，沿用 1.3 的记号，得到：
+\begin{SGAresult}{推论}{}
+设 $u:Y\to X$ 是 $S$-\Term{morphism}{态射}，$\Gamma_u:Y\to Y\times X$ 是它的\Term{graph}{图}。存在\Term{canonical}{典范} $\mathcal O_Y(Y)$-\Term{module}{模}\Term{isomorphism}{同构}
+\[
+\operatorname{D\text{é}r}_S(u)\simeq\operatorname{D\text{é}r}_Y(\Gamma_u)\simeq\operatorname{Hom}_{\mathcal O_Y}(\mathcal I_{\Gamma_u}/\mathcal I_{\Gamma_u}^2,\mathcal O_Y).
+\]
+\end{SGAresult}
+\begin{SGAresult}{定义}{1.4}
+设 $X$ 是 $S$-\Term{scheme}{概形}。$X$ 上的一个 $S$-\Term{differential-operator}{微分算子}（相应地，阶数 $\leq n$ 的 $S$-\Term{differential-operator}{微分算子}），是 $X$ 的\Term{identity-morphism}{恒等态射}的任意一个 $S$-\Term{deviation}{偏差}（相应地，阶数 $\leq n$ 的 $S$-\Term{deviation}{偏差}）。
+\end{SGAresult}
+因此由 1.1，阶数 $\leq n$ 的 $S$-\Term{differential-operator}{微分算子}就是 $\mathcal O_X$ 的一个满足 1.1 中各等式 $(*_n)$ 的 $p^{-1}(\mathcal O_S)$-\Term{module}{模}\Term{endomorphism}{自同态}。用 $\operatorname{Dif}_{X/S}^n$ 表示所有阶数 $\leq n$ 的 $S$-\Term{differential-operator}{微分算子}组成的 $\Gamma(\mathcal O_S)$-\Term{module}{模}，\footnote{编者注（13）：本讲将\Term{ring}{环} $\Gamma(S,\mathcal O_S)=\mathcal O_S(S)$ 记为 $\Gamma(\mathcal O_S)$。}用 $\operatorname{Dif}_{X/S}$ 表示所有 $S$-\Term{differential-operator}{微分算子}组成的\Term{module}{模}。
+
+如 1.2 所见，$\operatorname{id}_X$ 的 $S$-\Term{deviation}{偏差}可以复合，这使 $\operatorname{Dif}_{X/S}$ 成为一个 $\Gamma(\mathcal O_S)$-\Term{algebra}{代数}；称之为 $X/S$ 的\Term{differential-operator-algebra}{微分算子代数}。
+
+同样，对 $X$ 的每个\Term{open-subset}{开集} $V$，令 $\mathscr{D}\mathrm{if}_{X/S}(V)=\operatorname{Dif}_{V/S}=\operatorname{D\text{é}v}(\operatorname{id}_V)$；由 1.1.3，这定义一个 $\mathcal O_X$-\Term{module}{模}\Term{sheaf}{层}，称为 $X$ 上的 $S$-\Term{differential-operator-sheaf}{微分算子层}。\footnote{编者注（14）：此处修改了原文。原文提到的是\Term{sheaf}{层} $U\mapsto\operatorname{Dif}_{X_U/U}$，其中 $U$ 遍历 $S$ 的\Term{open-subset}{开集}；它是 $\mathscr{D}\mathrm{if}_{X/S}$ 经\Term{morphism}{态射} $p_X:X\to S$ 的\Term{direct-image}{正像}。}
+
+\textbf{1.4.1。}如 1.3 所见，可以通过 $X$ 的\Term{identity-morphism}{恒等态射}的\Term{graph}{图}，即从 $X$ 到 $X\times X$ 的\Term{diagonal-morphism}{对角态射} $\Delta=\Delta_{X/S}$，来解释 $X/S$ 的\Term{differential-operator}{微分算子}。现将 1.3 的结论移述到这里。
+
+在 $\mathcal O_{X\times X}$ 上赋予由 $\operatorname{pr}_1$ 定义的 $\operatorname{pr}_1^{-1}(\mathcal O_X)$-\Term{algebra}{代数}结构，于是 $\Delta^{-1}(\mathcal O_{X\times X})$ 成为 $\mathcal O_X=\Delta^{-1}\operatorname{pr}_1^{-1}(\mathcal O_X)$ 上的\Term{algebra}{代数}。以 $\mathcal I_{X/S}$ 表示\Term{homomorphism}{同态}
+\[
+\Delta^{-1}(\mathcal O_{X\times X})\longrightarrow\mathcal O_X
+\]
+的\Term{kernel}{核}；该\Term{homomorphism}{同态}与\Term{homomorphism}{同态} $\mathcal O_{X\times X}\to\Delta_*(\mathcal O_X)$ \Term{adjunction}{伴随}。以 $\mathcal P_{X/S}^m$ 表示 $\mathcal O_X$-\Term{algebra}{代数}
+\[
+\Delta^{-1}(\mathcal O_{X\times X})/\mathcal I_{X/S}^{m+1}.
+\]
+若 $V$ 是 $S$ 的\Term{affine}{仿射}\Term{open-subset}{开集}，$U$ 是 $X$ 中位于 $V$ 上方的\Term{affine}{仿射}\Term{open-subset}{开集}，并令 $k=\Gamma(V,\mathcal O_S)$、$A=\Gamma(U,\mathcal O_X)$，则
+\[
+\Gamma(U,\mathcal P_{X/S}^m)=(A\otimes_k A)/I^{m+1},
+\]
+\SourcePage{454}
+其中 $I$ 是由所有 $a\in A$ 的元素 $a\otimes1-1\otimes a$ 生成的\Term{ideal}{理想}。在此条件下，由 1.3 有 $\mathcal O_X(X)$-\Term{module}{模}\Term{isomorphism}{同构}
+\[
+j_X:\operatorname{Dif}_{X/S}^m\xrightarrow{\sim}\operatorname{Hom}_{\mathcal O_X}(\mathcal P_{X/S}^m,\mathcal O_X),
+\]
+它可定义如下：若 $d\in\operatorname{Dif}_{X/S}^m$，$c$ 是 $\mathcal P_{X/S}^m$ 在 $U$ 上形如 $a\otimes b+I^{m+1}$ 的\Term{section}{截面}，则 $j_X(d)(c)=a\cdot d(b)$。\footnote{编者注（15）：由 1.3.1，在这个\Term{isomorphism}{同构}下，$\Delta_{X/S}$ 的 $X$-\Term{derivation}{导子}对应于 $\operatorname{id}_X$ 的 $S$-\Term{derivation}{导子}，也就是 $\mathcal O_X$ 的 $p^{-1}(\mathcal O_S)$-\Term{derivation}{导子}。}
+
+\textbf{1.4.2。}设 $d$ 是一个\Term{differential-operator}{微分算子}，$u$ 是 $X$ 在 $S$ 上的\Term{section}{截面}。称复合 $S$-\Term{deviation}{偏差}
+\[
+\begin{tikzcd}S\arrow[r,"u"]&X\arrow[r,"d","\operatorname{id}_X"']&X\end{tikzcd}
+\]
+为 $d$ 在 $u$ 处的\Term{differential-operator-value}{值}。
+
+由 1.3、1.4.1，若 $d$ 是阶数 $\leq m$ 的\Term{differential-operator}{微分算子}，则 $du$（相应地，$d$）\Term{canonical}{典范}地对应于一个 $\mathcal O_S$-\Term{module}{模}\Term{morphism}{态射} $d':u^{-1}(\mathcal O_X)/\mathcal I_u^{m+1}\to\mathcal O_S$（相应地，一个 $\mathcal O_X$-\Term{module}{模}\Term{morphism}{态射} $d'':\mathcal P_{X/S}^m\to\mathcal O_X$）。
+
+显然可从 $d''$ 如下构造 $d'$：方图
+\[
+\begin{tikzcd}
+X\simeq S\times X\arrow[r,"u\times X"]\arrow[d,"p"']&X\times X\arrow[d,"\operatorname{pr}_1"]\\
+S\arrow[r,"u"']&X
+\end{tikzcd}
+\]
+是\Term{cartesian-diagram}{笛卡尔图}，因此可将 $X$ 与 $S\times_X(X\times X)$ 等同，将 $u$ 与 $S\times_X\Delta$ 等同，因而将 $u^*(\mathcal P_{X/S}^m)$ 与 $u^{-1}(\mathcal O_X)/\mathcal I_u^{m+1}$ 等同。这样就将 $u^*(d'')$ 等同于一个\Term{morphism}{态射} $u^{-1}(\mathcal O_X)/\mathcal I_u^{m+1}\to\mathcal O_S$；这正是 $d'$。
+
+\textbf{1.5。}照常令 $I_S=\operatorname{Spec}\mathcal O_S[T]/(T^2)$。设 $\tau:S\to I_S$ 是\Term{zero-section}{零截面}，$\sigma$ 是 1.2.0 中定义的 $\tau$ 的\Term{canonical}{典范}\Term{deviation}{偏差}，即在 $\mathcal O_S[T]/(T^2)$ 的\Term{unit-section}{单位截面}上为零、并将 $T$ 模 $T^2$ 的类 $t$ 送到 $\mathcal O_S$ 的\Term{unit-section}{单位截面}的 $\mathcal O_S$-\Term{module}{模}\Term{homomorphism}{同态}。
+
+设 $X$ 是一个 $S$-\Term{scheme}{概形}。对 $I_S\times X$ 的每个在 $X$ 上诱导恒等的 $I_S$-\Term{automorphism}{自同构} $u$，通过复合得到 $X$ 的一个\Term{differential-operator}{微分算子} $D_u$：
+\[
+\begin{tikzcd}[column sep=small]
+X\simeq S\times X\arrow[r,"\sigma\times X"]&I_S\times X\arrow[r,"u"]&I_S\times X\arrow[r,"\operatorname{pr}_2"]&X.
+\end{tikzcd}
+\]
+由第 II 讲 3.14，映射 $u\mapsto D_u$ 是从 $\Gamma(\mathcal O_S)$-\Term{lie-algebra}{Lie 代数}
+\[
+\operatorname{Lie}(\underline{\operatorname{Aut}}X):=\underline{\operatorname{Lie}}(\underline{\operatorname{Aut}}X)(S)
+\]
+到 $\mathcal O_X$ 的 $p^{-1}(\mathcal O_S)$-\Term{derivation}{导子}组成的 $\Gamma(\mathcal O_S)$-\Term{lie-algebra}{Lie 代数}的\Term{isomorphism}{同构}。其逆\Term{isomorphism}{同构}将每个\Term{derivation}{导子} $D$ 对应到 $I_S\times X$ 的\Term{automorphism}{自同构}，后者对应于 $\mathcal O_X[T]/(T^2)$ 的\Term{automorphism}{自同构} $a+bt\mapsto a+(Da+b)t$。
+
+\SourcePage{455}
+\SGAsection{2}{群概形上的不变微分算子}
+\textbf{2.1。}设 $G$ 是 $S$-\Term{group-scheme}{群概形}；以 $\epsilon$ 或 $\epsilon_G:S\to G$ 表示 $G$ 的\Term{unit-section}{单位截面}。
+\begin{SGAresult}{定义}{}
+设 $U(G)$ 是 $\epsilon_G$ 的 $S$-\Term{deviation}{偏差}（或称原点的 $S$-\Term{deviation}{偏差}）组成的 $\Gamma(\mathcal O_S)$-\Term{module}{模}（见 1.1）。
+
+若 $d,e$ 是 $U(G)$ 的两个元素，则 $d\times e$ 是 $\epsilon\times\epsilon:S\simeq S\times S\to G\times G$ 的 $S$-\Term{deviation}{偏差}。称 $d\times e$ 经\Term{multiplication}{乘法}\Term{morphism}{态射} $m:G\times G\to G$ 的像（见 1.2）为 $d$ 与 $e$ 的积，记为 $d\cdot e$。
+
+这样，$\Gamma(\mathcal O_S)$-\Term{module}{模} $U(G)$ 成为结合 $\Gamma(\mathcal O_S)$-\Term{algebra}{代数}，其\Term{identity-element}{单位元}是 $\epsilon_G$（1.1）。称 $U(G)$ 为 $G$ 的\Term{infinitesimal-algebra}{无穷小代数}。\footnote{编者注（16）：现今称它为 $G$（在原点处）的“\Term{distribution-algebra}{分布代数}”，见 [DG70]，§ II.4，6.1，及 [Ja03]，I 7.7。}
+\end{SGAresult}
+当 $T$ 遍历 $S$ 上方的\Term{scheme}{概形}时，$T$-\Term{group}{群} $G\times T$ 的\Term{infinitesimal-algebra}{无穷小代数} $U(G_T)$ 显然随 $T$ \Term{contravariant}{反变}，因此可谈论\Term{infinitesimal-algebra-functor}{无穷小代数函子}。
+
+当 $T$ 遍历 $S$ 的\Term{open-subset}{开集}时，因而得到 $\mathcal O_S$-\Term{algebra}{代数}\Term{presheaf}{预层} $T\mapsto U(G_T)$；而由 1.1.3，这又是一个\Term{sheaf}{层}。将它记为 $\mathcal U(G)$，称为 $G$ 的\Term{infinitesimal-algebra-sheaf}{无穷小代数层}。
+
+\Term{algebra}{代数} $U(G)$ 对 $G$ 也是一个\Term{covariant-functor}{协变函子}。事实上，若 $u:G\to H$ 是 $S$-\Term{group}{群}的\Term{homomorphism}{同态}，$d$ 是 $\epsilon_G$ 的 $S$-\Term{deviation}{偏差}，则 $d$ 经 $u$ 的像是 $U(H)$ 中的元素 $U(u)(d)=ud$。这样定义的映射 $U(u):U(G)\to U(H)$ 显然是 $\Gamma(\mathcal O_S)$-\Term{algebra}{代数}\Term{homomorphism}{同态}。同样可定义从 $\mathcal U(G)$ 到 $\mathcal U(H)$ 的\Term{homomorphism}{同态} $\mathcal U(u)$。
+
+\textbf{2.2。}设 $d\in U(G)$，即 $d$ 是 $G$ 的原点的一个 $S$-\Term{deviation}{偏差}。考虑通过\Term{base-change}{基变换}（1.2.2）从 $d$ 得到的、$\epsilon\times G:G\simeq S\times G\to G\times G$ 的 $S$-\Term{deviation}{偏差} $d\times G$；$d\times G$ 经\Term{multiplication}{乘法}\Term{morphism}{态射} $m:G\times G\to G$ 的像是 $m\circ(\epsilon\times\operatorname{id}_G)=\operatorname{id}_G$ 的 $S$-\Term{deviation}{偏差}，即 $\operatorname{Dif}_{G/S}$ 的一个元素，记为 $d^G$。
+
+映射 $d\mapsto d^G$ 显然是 $\Gamma(\mathcal O_S)$-\Term{linear}{线性}的，且下面的“交换”图表明 $(e\cdot d)^G=d^G\cdot e^G$：\footnote{编者注（17）：修正了原文，将图中的 $d\times G\times G$ 改为 $G\times d\times G$，使三角形左边的复合为 $(e\times d)\times G$，并使映射 $d\mapsto d^G$ 是从 $U(G)$ 到\Term{right-invariant}{右不变}\Term{differential-operator}{微分算子}的\Term{anti-isomorphism}{反同构}（见下文 2.3、2.4）。另一方面，若将 ${}^Gd$ 定义为 $G\times d$ 经 $m$ 的像，则同样得到从 $U(G)$ 到\Term{left-invariant}{左不变}\Term{differential-operator}{微分算子}的\Term{isomorphism}{同构}（见 [DG70]，§ II.4，\Term{theorem}{定理} 6.5）。2.4 和 2.5 也据此作了修正。}
+\SourcePage{456}
+\[
+\begin{tikzcd}[column sep=small,row sep=large]
+&&G\times G\times G\arrow[rr,"m\times G"]\arrow[dr,"G\times m"]&&G\times G\arrow[dd,"m"]\\
+&G\times G\arrow[ur,"G\times d\times G","\epsilon\times G\times G"']\arrow[dr,"m"']&&G\times G\arrow[dr,"m"]&\\
+G\arrow[ur,"e\times G","\epsilon\times G"']\arrow[rr,"e^G","\operatorname{id}_G"']&&G\arrow[ur,"d\times G","\epsilon\times G"']\arrow[rr,"d^G","\operatorname{id}_G"']&&G.
+\end{tikzcd}
+\]
+下面两个三角形的\Term{commutativity}{交换性}直接来自 $d^G,e^G$ 的定义；另一方面，$e\times G$ 与 $G\times d\times G$ 的复合 $S$-\Term{deviation}{偏差}为 $(e\times d)\times G$（见 1.2.2），它经 $m\times G$ 的像为 $(e\cdot d)\times G$，而后者经 $m$ 的像因而等于 $(e\cdot d)^G$。
+
+由此得到一个 $\Gamma(\mathcal O_S)$-\Term{algebra}{代数}\Term{anti-homomorphism}{反同态} $U(G)\to\operatorname{Dif}_{G/S}$，称为\Term{right-translation}{右平移}。\footnote{编者注（18）：称它为“\Term{left-action}{左作用}”更合适。例如，设 $d$ 是原点处的 $S$-\Term{derivation}{导子}；由 1.2.1，$d$ 是 $S$-\Term{derivation}{导子} $(\tau,\partial_t):S\to I_S$ 与某个满足 $x\circ\tau=\epsilon$ 的\Term{morphism}{态射} $x:I_S\to G$（即 $x\in\underline{\operatorname{Lie}}(G/S)(S)$）的复合，于是 $d^G$ 就是 $\mathcal O_G$ 的\Term{derivation}{导子}，将\Term{local-scheme}{局部}\Term{section}{截面} $\phi$ 送到\Term{section}{截面} $g\mapsto\partial_t\phi(xg)$。采用这一术语后，还可以说：“\Term{left-action}{左作用}与\Term{right-translation}{右平移}交换”。}
+若 $\mathscr{D}\mathrm{if}_{G/S}$ 表示 $G$ 上的 $S$-\Term{differential-operator-sheaf}{微分算子层}（见 1.4），$p:G\to S$ 是\Term{structure-morphism}{结构态射}，则同样定义“\Term{right-translation}{右平移}”
+$\mathcal U(G)\to p_*(\mathscr{D}\mathrm{if}_{G/S})$。
+
+\textbf{2.3。}现在刻画 $G$ 在 $S$ 上形如 $d^G$ 的\Term{differential-operator}{微分算子}。设 $g:S\to G$ 是 $G$ 的\Term{structure-morphism}{结构态射}的\Term{section}{截面}，$g_G$ 是 $G$ 由 $g$ 给出的\Term{right-translation}{右平移}，即复合\Term{morphism}{态射}
+\[
+g_G:G\simeq G\times S\xrightarrow{G\times g}G\times G\xrightarrow{m}G.
+\]
+对 $G$ 在 $S$ 上的每个\Term{differential-operator}{微分算子} $D$，复合 $g_G^{-1}Dg_G$（见 1.2）仍是 $\operatorname{id}_G$ 的 $S$-\Term{deviation}{偏差}，即 $\operatorname{Dif}_{X/S}$ 的一个元素；记为
+\[
+D^g=g_G^{-1}Dg_G.
+\]
+若对每个\Term{base-change}{基变换} $t:T\to S$ 及每个\Term{section}{截面} $g:T\to G\times T$，有 $(D_T)^g=D_T$，则称 $D$ \Term{right-invariant}{右不变}。
+\begin{SGAresult}{\Term{lemma}{引理}}{}
+对于 $G$ 在 $S$ 上的每个\Term{differential-operator}{微分算子} $D$，下列断言\Term{equivalence}{等价}（其中 $m$ 是 $G$ 的\Term{multiplication}{乘法}\Term{morphism}{态射}）：
+
+（i）$D$ \Term{right-invariant}{右不变}。
+
+（ii）$m$ 的下列两个\Term{deviation}{偏差}相等：$Dm=m(D\times G)$。
+\end{SGAresult}
+\SourcePage{457}
+\begin{proof}
+（ii）$\Rightarrow$（i）：由于条件（ii）在\Term{base-change}{基变换}下\Term{stable}{稳定}，只需证明（ii）蕴涵对每个\Term{section}{截面} $g:S\to G$ 有 $D^g=D$。设 $h$ 是\Term{morphism}{态射} $G\times g:G\simeq G\times S\to G\times G$，于是 $m\circ h$ 是\Term{right-translation}{右平移} $g_G$。等式 $D^g=D$ \Term{equivalence}{等价}于 $g_G\circ D=D\circ g_G$，而后者来自\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}
+G\arrow[d,"D","\operatorname{id}_G"']&G\times G\arrow[l,"m"']\arrow[d,"D\times G","\operatorname{id}_{G\times G}"']&G\arrow[l,"h"']\arrow[d,"D","\operatorname{id}_G"']\\
+G&G\times G\arrow[l,"m"]&G\arrow[l,"h"] .
+\end{tikzcd}
+\]
+（i）$\Rightarrow$（ii）：取 $t:T\to S$ 为\Term{structure-morphism}{结构态射} $p:G\to S$，取\Term{section}{截面} $g:T\to G\times T$ 为\Term{diagonal-morphism}{对角态射} $\Delta:G\to G\times G$。于是\Term{right-translation}{右平移}
+\[
+\Delta_{G\times G}:G\times G\longrightarrow G\times G
+\]
+就是以 $m,\operatorname{pr}_2$ 为\Term{set-component}{分量}的 $G\times G$ 到自身的\Term{morphism}{态射}。等式 $(D_G)^\Delta=D_G$ \Term{equivalence}{等价}于下图第一个方块交换：
+\[
+\begin{tikzcd}
+G\times G\arrow[r,"\Delta_{G\times G}"]\arrow[d,"D_G","\operatorname{id}_{G\times G}"']&G\times G\arrow[r,"\operatorname{pr}_1"]\arrow[d,"D_G","\operatorname{id}_{G\times G}"']&G\arrow[d,"D","\operatorname{id}_G"']\\
+G\times G\arrow[r,"\Delta_{G\times G}"']&G\times G\arrow[r,"\operatorname{pr}_1"']&G.
+\end{tikzcd}
+\]
+因为 $m=\operatorname{pr}_1\circ\Delta_{G\times G}$，所以得到（ii）。
+\end{proof}
+例如，考虑\Term{infinitesimal-algebra}{无穷小代数} $U(G)$ 的元素 $d$。图
+\[
+\begin{tikzcd}[column sep=small]
+G\times G\arrow[r,equal]\arrow[d,"m"']&S\times G\times G\arrow[r,"d\times G\times G","\epsilon\times G\times G"']\arrow[d,"S\times m"']&G\times G\times G\arrow[r,"m\times G"]\arrow[d,"G\times m"]&G\times G\arrow[d,"m"]\\
+G\arrow[r,equal]&S\times G\arrow[r,"d\times G","\epsilon\times G"']&G\times G\arrow[r,"m"']&G
+\end{tikzcd}
+\]
+的各方块均交换。由于
+\[
+m\circ(d\times G)=d^G,\qquad(m\times G)\circ(d\times G\times G)=d^G\times G,
+\]
+也有 $d^G\circ m=m\circ(d^G\times G)$。因此，对原点的每个 $S$-\Term{deviation}{偏差} $d$，$d^G$ 都是\Term{right-invariant}{右不变}\Term{differential-operator}{微分算子}。
+
+\SourcePage{458}
+\begin{SGAresult}{\Term{theorem}{定理}}{2.4}
+（i）映射 $d\mapsto d^G$ 是从\Term{infinitesimal-algebra}{无穷小代数} $U(G)$ 到 $\operatorname{Dif}_{G/S}$ 中由\Term{right-invariant}{右不变}\Term{differential-operator}{微分算子}组成的子\Term{algebra}{代数} $\operatorname{Dif}_{G/S}^G$ 的\Term{anti-isomorphism}{反同构}。\footnote{编者注（19）：将“\Term{isomorphism}{同构}”改为“\Term{anti-isomorphism}{反同构}”，并增加了断言（ii），见编者注（17）。}
+
+（ii）同样，映射 $d\mapsto{}^Gd$ 是从 $U(G)$ 到 $\operatorname{Dif}_{G/S}$ 中由\Term{left-invariant}{左不变}\Term{differential-operator}{微分算子}组成的子\Term{algebra}{代数}的\Term{isomorphism}{同构}。
+\end{SGAresult}
+\begin{proof}
+设 $D$ 是 $G$ 在 $S$ 上的任意\Term{differential-operator}{微分算子}，以 $D_0$ 表示它在原点的\Term{differential-operator-value}{值}，即复合\Term{deviation}{偏差}
+$\begin{tikzcd}[cramped,column sep=small]S\arrow[r,"\epsilon"]&G\arrow[r,"D","\operatorname{id}_G"']&G.\end{tikzcd}$
+于是\Term{right-invariant}{右不变}\Term{differential-operator}{微分算子} $(D_0)^G$ 是下述复合：
+\[
+\begin{tikzcd}[column sep=small]
+G\simeq S\times G\arrow[r,"\epsilon\times G"]&G\times G\arrow[r,"D\times G","\operatorname{id}_{G\times G}"']&G\times G\arrow[r,"m"]&G.
+\end{tikzcd}
+\]
+若 $D$ \Term{right-invariant}{右不变}，则 $Dm=m(D\times G)$，所以
+\[
+D=Dm(\epsilon\times G)=m(D\times G)(\epsilon\times G)=(D_0)^G.
+\]
+特别地，映射 $d\mapsto d^G$ 是\Term{surjection}{满射}。
+
+反之，设 $d$ 是原点的 $S$-\Term{deviation}{偏差}。有交换方图
+\[
+\begin{tikzcd}
+G\times G&G\arrow[l,"d\times G"']\\
+G\times S\simeq G\arrow[u,"G\times\epsilon"]&S\arrow[l,"d"]\arrow[u,"\epsilon"']
+\end{tikzcd}
+\]
+因而 $d=m(G\times\epsilon)d=m(d\times G)\epsilon=(d^G)_0$。所以映射 $d\mapsto d^G$ 尤其是\Term{injectivity}{单射}。这就证明了\Term{theorem}{定理}。
+\end{proof}
+当 $S$ 变化时，\Term{theorem}{定理} 2.4 显然说明\Term{right-translation}{右平移} $\mathcal U(G)\to p_*(\mathscr{D}\mathrm{if}_{G/S})$ 是一个 $\mathcal O_S$-\Term{algebra}{代数}\Term{anti-isomorphism}{反同构}，将 $\mathcal U(G)$ 映到 $\mathcal O_S$-\Term{algebra}{代数}\Term{sheaf}{层} $p_*(\mathscr{D}\mathrm{if}_{G/S})^G$；后者把 $S$ 的每个\Term{open-subset}{开集} $U$ 对应到 $\operatorname{Dif}_{G_U/U}^{G_U}$。
+
+\textbf{注记 2.4.1。}考虑\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}
+G\arrow[d,"p",shift right=1.2ex]&G\times G\arrow[l,"\eta"']\arrow[d,"\operatorname{pr}_1",shift right=1.2ex]\\
+S\arrow[u,"\epsilon",shift right=1.2ex]\arrow[ur,phantom,"\ "]&G\arrow[l,"p"]\arrow[u,"\Delta",shift right=1.2ex]
+\end{tikzcd}
+\]
+其中 $\eta$ 表示\Term{morphism}{态射}“$(x,y)\mapsto yx^{-1}$”。\footnote{编者注（20）：即 $G$ 通过\Term{right-translation}{右平移}在自身上作\Term{left-action}{左作用}。}它诱导\Term{morphism}{态射}
+\[
+\eta':\eta^{-1}(\mathcal O_G)\to\mathcal O_{G\times G},\qquad
+\Delta^{-1}(\eta'):p^{-1}\epsilon^{-1}(\mathcal O_G)\to\Delta^{-1}(\mathcal O_{G\times G}).
+\]
+\SourcePage{459}
+对每个整数 $n\geq1$，令 $\mathfrak p_{G/S}^n=\epsilon^{-1}(\mathcal O_G)/\mathcal I_\epsilon^{n+1}$（记号见 1.3、1.4）。\footnote{编者注（21）：以下修正了原文；原文提到的是由\Term{morphism}{态射} $p,p,\eta,\operatorname{pr}_1$ 组成的方图，应为 $\epsilon,\eta,\Delta,p$。}由于由 $\epsilon,\eta,\Delta,p$ 组成的方图是\Term{cartesian-diagram}{笛卡尔图}，$\Delta^{-1}(\eta')$ 诱导 $\mathcal O_G$-\Term{module}{模}\Term{isomorphism}{同构}
+\[
+p^*(\mathfrak p_{G/S}^n)\xrightarrow{\sim}\mathcal P_{G/S}^n.
+\]
+所以 $G$ 在 $S$ 上的阶数 $\leq n$ 的\Term{differential-operator}{微分算子}，与 $\mathcal O_G$-\Term{module}{模}\Term{morphism}{态射} $p^*(\mathfrak p_{G/S}^n)\to\mathcal O_G$ 一一对应，也就是与 $\mathcal O_S$-\Term{module}{模}\Term{morphism}{态射}
+\[
+\mathfrak p_{G/S}^n\longrightarrow p_*(\mathcal O_G)
+\]
+一一对应。在这个\Term{bijection}{双射}下，\Term{right-invariant}{右不变}\Term{differential-operator}{微分算子}对应于复合\Term{arrow}{箭头}
+\[
+\mathfrak p_{G/S}^n\longrightarrow\mathcal O_S\xrightarrow{\mathrm{can.}}p_*(\mathcal O_G).
+\]
+这就重新得到了\Term{theorem}{定理} 2.4 的\Term{isomorphism}{同构}。
+
+\textbf{2.5。}\footnote{编者注（22）：本段改变了叙述顺序，先定义映射 $\alpha:\operatorname{Lie}(G)\to U(G)$，并按编者注（17）所述修正了原文。}设 $\operatorname{Lie}(G)$ 是 $G$ 的\Term{lie-algebra}{Lie 代数}；\footnote{编者注（23）：本讲中，若 $G$ 是 $S$-\Term{group-scheme}{群概形}（相应地，$X$ 是 $S$-\Term{scheme}{概形}），则“\Term{lie-algebra}{Lie 代数}”$\operatorname{Lie}(G)$（相应地，$\operatorname{Lie}(\underline{\operatorname{Aut}}X)$）按第 II 讲的记号是指 $\underline{\operatorname{Lie}}(G/S)(S)$（相应地，$\underline{\operatorname{Lie}}(\underline{\operatorname{Aut}}_S(X)/S)(S)$）；由第 II 讲 4.11、3.14，它是 $\Gamma(\mathcal O_S)$-\Term{lie-algebra}{Lie 代数}。}将定义一个 $\Gamma(\mathcal O_S)$-\Term{lie-algebra}{Lie 代数}\Term{morphism}{态射} $\alpha:\operatorname{Lie}(G)\to U(G)$。
+
+设 $s:S\to I_S$ 是 $I_S\to S$ 的\Term{zero-section}{零截面}，$\sigma$ 是 1.2.0 中定义的 $s$ 的\Term{deviation}{偏差}。回顾（见第 II 讲 4.1），$\operatorname{Lie}(G)$ 是所有满足 $x\circ s=\epsilon_G$ 的\Term{morphism}{态射} $x:I_S\to G$ 的\Term{set}{集合}。于是复合
+\[
+\begin{tikzcd}S\arrow[r,"\sigma","s"']&I_S\arrow[r,"x"]&G\end{tikzcd}
+\]
+是 $\epsilon_G$ 的 $S$-\Term{deviation}{偏差}，即 $U(G)$ 的元素；按 1.2 $(\dagger)$ 的记号，记为 $\sigma x$。此外，由 1.2.1，映射 $\alpha:x\mapsto\sigma x$ 是一个 $\mathcal O_S(S)$-\Term{module}{模}\Term{isomorphism}{同构}，将 $\operatorname{Lie}(G)$ 映到 $U(G)$ 中由 $\epsilon_G$ 的 $S$-\Term{derivation}{导子}组成的子\Term{module}{模} $\operatorname{D\text{é}r}(\epsilon_G)$。下面证明 $\alpha$ 是\Term{lie-algebra}{Lie 代数}\Term{morphism}{态射}。\footnote{编者注（24）：亦见第 II 讲 4.11。}设
+\[
+\rho':U(G)\longrightarrow\operatorname{Dif}_{G/S}
+\]
+是将 $\epsilon_G$ 的 $S$-\Term{deviation}{偏差} $d$ 对应到\Term{left-invariant}{左不变}\Term{differential-operator}{微分算子} ${}^Gd\in\operatorname{Dif}_{G/S}$ 的\Term{algebra}{代数}\Term{morphism}{态射}，见 2.2 编者注（17）。
+
+设 $\rho:G\to\underline{\operatorname{Aut}}_S(G)$ 是\Term{group-functor}{群函子}的\Term{homomorphism}{同态}，将 $S$-\Term{morphism}{态射} $g:T\to G$ 对应到 $G_T$ 由 $g$ 给出的\Term{right-translation}{右平移}，即\Term{morphism}{态射}
+\[
+G_T\simeq T\times_T G_T\xrightarrow{G_T\times g}G_T\times_T G_T\xrightarrow{m_T}G_T.
+\]
+再回顾（见 1.5 和第 II 讲 3.14），$\operatorname{Lie}(\underline{\operatorname{Aut}}G)=\underline{\operatorname{Lie}}(\underline{\operatorname{Aut}}_S(G)/S)(S)$ 可与 $G$ 的\Term{infinitesimal-automorphism}{无穷小自同构}等同，即与在 $G$ 上诱导恒等的 $I_S\times G$ 的\Term{automorphism}{自同构}等同。
+\SourcePage{460}
+由于 $\rho$ 是\Term{monomorphism}{单态射}，\Term{morphism}{态射} $\underline{\operatorname{Lie}}(\rho):\underline{\operatorname{Lie}}(G/S)\to\underline{\operatorname{Lie}}(\underline{\operatorname{Aut}}_S(G)/S)$ 也是\Term{monomorphism}{单态射}（例如参看第 II 讲编者注（50）），所以 $\operatorname{Lie}(\rho):\operatorname{Lie}(G)\to\operatorname{Lie}(\underline{\operatorname{Aut}}G)$ 是\Term{injectivity}{单射}。
+
+另一方面，由 1.5，将 $G$ 的每个\Term{infinitesimal-automorphism}{无穷小自同构} $u$ 对应到 $G$ 的\Term{differential-operator}{微分算子} $D_u$ 的映射 $\beta$：
+\[
+\begin{tikzcd}[column sep=small]
+G\simeq S\times G\arrow[r,"\sigma\times G"]&I_S\times G\arrow[r,"u"]&I_S\times G\arrow[r,"\operatorname{pr}_2"]&G
+\end{tikzcd}
+\]
+是一个\Term{isomorphism}{同构}，将 $\operatorname{Lie}(\underline{\operatorname{Aut}}G)$ 映到 $\operatorname{Dif}_{G/S}$ 中由 $\mathcal O_G$ 的 $p^{-1}(\mathcal O_S)$-\Term{derivation}{导子}组成的子\Term{lie-algebra}{Lie 代数}。
+
+对每个 $x\in\operatorname{Lie}(G)$，有下述交换方图，它确定了 $x$ 经 $\operatorname{Lie}(\rho)$ 的像：
+\[
+\begin{tikzcd}
+I_S\times G\arrow[r,"\operatorname{Lie}(\rho)(x)"]\arrow[d,"x\times G"']&I_S\times G\arrow[d,"\operatorname{pr}_2"]\\
+G\times G\arrow[r,"m"']&G.
+\end{tikzcd}
+\]
+由此图，$\operatorname{Lie}(\rho)(x)$ 经 $\beta$ 的像是复合\Term{deviation}{偏差}
+\[
+\begin{tikzcd}[column sep=small]
+G\simeq S\times G\arrow[r,"\sigma\times G","s\times G"']&I_S\times G\arrow[r,"G\times x"]&G\times G\arrow[r,"m"]&G,
+\end{tikzcd}
+\]
+按 2.2 编者注（17），这正是 ${}^G(\sigma x)=\rho'(\alpha(x))$。所以得到\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}
+\operatorname{Lie}(G)\arrow[r,hook,"\operatorname{Lie}(\rho)"]\arrow[d,hook,"\alpha"']&\operatorname{Lie}(\underline{\operatorname{Aut}}G)\arrow[d,hook,"\beta"]\\
+U(G)\arrow[r,hook,"\rho'"']&\operatorname{Dif}_{G/S},
+\end{tikzcd}
+\]
+其中 $\operatorname{Lie}(\rho),\beta,\rho'$ 都是\Term{lie-algebra}{Lie 代数}\Term{morphism}{态射}。因为 $\rho'$ 是\Term{injectivity}{单射}，所以 $\alpha$ 也是\Term{lie-algebra}{Lie 代数}\Term{morphism}{态射}。由此得到：
+\begin{SGAresult}{命题}{}
+$\alpha$ 是一个 $\mathcal O_S(S)$-\Term{lie-algebra}{Lie 代数}\Term{isomorphism}{同构}，将 $\operatorname{Lie}(G)$ 映到 $\epsilon_G$ 的 $S$-\Term{derivation}{导子}组成的\Term{lie-algebra}{Lie 代数}；后者又经 $\operatorname{Lie}(\rho)$ 与 $G$ 的\Term{left-invariant}{左不变} $S$-\Term{derivation}{导子}的\Term{lie-algebra}{Lie 代数}\Term{isomorphism}{同构}。\footnote{编者注（25）：存在\Term{ring}{环} $A$ 上的\Term{lie-algebra}{Lie 代数} $\mathfrak g$，使映射 $\mathfrak g\to U(\mathfrak g)$ 不是\Term{injectivity}{单射}，见 [BLie]，§ I.2，习题 9。上述结果表明（因为 $\alpha$ \Term{resolution}{分解}为 $\operatorname{Lie}(G)\to U(\operatorname{Lie}(G))\to U(G)$），这种现象不会发生于“\Term{algebraic-lie-algebra}{代数型 Lie 代数}”，即形如 $\operatorname{Lie}(G)$ 的\Term{lie-algebra}{Lie 代数}，其中 $G$ 为 $A$-\Term{group-scheme}{群概形}。}
+\end{SGAresult}
+\SGAsection{3}{余代数与 Cartier 对偶}
+
+\SourcePage{461}
+\textbf{3.1。}设 $S$ 是\Term{scheme}{概形}（或更一般地，是一个\Term{ringed-space}{赋环空间}）。一个 $\mathcal O_S$-\Term{coalgebra}{余代数}\footnote{编者注（26）：法文亦称“cogèbre”，见 [BAlg]，III § 11.1。还应注意，本讲（以及第 VII B 讲）始终处于\Term{cocommutative}{余交换}的\Term{coalgebra}{余代数}\Term{category}{范畴}中，即满足条件（i）；这一点对积及\Term{group-coalgebra}{群余代数}概念的定义至关重要（见 3.1.0、3.2）。}是一个二元组 $(\mathcal U,\Delta_{\mathcal U})$，其中 $\mathcal U$ 是 $\mathcal O_S$-\Term{module}{模}，$\Delta_{\mathcal U}:\mathcal U\to\mathcal U\otimes_{\mathcal O_S}\mathcal U$ 是 $\mathcal O_S$-\Term{module}{模}\Term{morphism}{态射}（称为\Term{diagonal-morphism}{对角态射}或\Term{comultiplication}{余乘法}），满足：
+
+（i）$\sigma\circ\Delta_{\mathcal U}=\Delta_{\mathcal U}$，其中 $\sigma(a\otimes b)=b\otimes a$。
+
+（ii）方图
+\[
+\begin{tikzcd}
+\mathcal U\arrow[r,"\Delta_{\mathcal U}"]\arrow[d,"\Delta_{\mathcal U}"']&\mathcal U\otimes_{\mathcal O_S}\mathcal U\arrow[d,"\operatorname{id}_{\mathcal U}\otimes\Delta_{\mathcal U}"]\\
+\mathcal U\otimes_{\mathcal O_S}\mathcal U\arrow[r,"\Delta_{\mathcal U}\otimes\operatorname{id}_{\mathcal U}"']&\mathcal U\otimes_{\mathcal O_S}\mathcal U\otimes_{\mathcal O_S}\mathcal U
+\end{tikzcd}
+\]
+交换。
+
+（iii）存在称为\Term{augmentation}{增广}的 $\mathcal O_S$-\Term{module}{模}\Term{morphism}{态射} $\epsilon_{\mathcal U}:\mathcal U\to\mathcal O_S$，使下述复合\Term{morphism}{态射}
+\[
+\begin{aligned}
+\mathcal U&\xrightarrow{\Delta_{\mathcal U}}\mathcal U\otimes_{\mathcal O_S}\mathcal U\xrightarrow{\operatorname{id}_{\mathcal U}\otimes\epsilon_{\mathcal U}}\mathcal U\otimes_{\mathcal O_S}\mathcal O_S\simeq\mathcal U,\\
+\mathcal U&\xrightarrow{\Delta_{\mathcal U}}\mathcal U\otimes_{\mathcal O_S}\mathcal U\xrightarrow{\epsilon_{\mathcal U}\otimes\operatorname{id}_{\mathcal U}}\mathcal O_S\otimes_{\mathcal O_S}\mathcal U\simeq\mathcal U
+\end{aligned}
+\]
+都是 $\mathcal U$ 的\Term{identity-morphism}{恒等态射}。
+
+若 $\epsilon_{\mathcal U},\epsilon'_{\mathcal U}$ 是两个\Term{augmentation}{增广}，则 $\epsilon_{\mathcal U}=(\epsilon_{\mathcal U}\otimes\epsilon'_{\mathcal U})\circ\Delta_{\mathcal U}=\epsilon'_{\mathcal U}$；所以\Term{augmentation}{增广}由（iii）唯一确定。
+
+若 $(\mathcal U,\Delta_{\mathcal U})$、$(\mathcal V,\Delta_{\mathcal V})$ 是两个 $\mathcal O_S$-\Term{coalgebra}{余代数}，则从前者到后者的一个\Term{morphism}{态射}，是使下列各图交换的 $\mathcal O_S$-\Term{module}{模}\Term{morphism}{态射} $f:\mathcal U\to\mathcal V$：
+\[
+\begin{tikzcd}
+\mathcal U\arrow[r,"f"]\arrow[d,"\Delta_{\mathcal U}"']&\mathcal V\arrow[d,"\Delta_{\mathcal V}"]\\
+\mathcal U\otimes\mathcal U\arrow[r,"f\otimes f"']&\mathcal V\otimes\mathcal V
+\end{tikzcd}
+\qquad
+\begin{tikzcd}
+\mathcal U\arrow[rr,"f"]\arrow[dr,"\epsilon_{\mathcal U}"']&&\mathcal V\arrow[dl,"\epsilon_{\mathcal V}"]\\
+&\mathcal O_S&
+\end{tikzcd}
+\]
+\Term{coalgebra}{余代数}\Term{morphism}{态射}按 $\mathcal O_S$-\Term{module}{模}\Term{morphism}{态射}的方式复合，因此可以谈论 $\mathcal O_S$-\Term{coalgebra}{余代数}\Term{category}{范畴}。
+
+\textbf{3.1.0。}\footnote{编者注（27）：增加了编号 3.1.0，供后文引用。}这个\Term{category}{范畴}具有\Term{finite-products}{有限积}：\Term{final-object}{终对象}是 $\mathcal O_S$-\Term{module}{模} $\mathcal O_S$，\Term{comultiplication}{余乘法}为恒等；两个\Term{coalgebra}{余代数} $(\mathcal U,\Delta_{\mathcal U})$、$(\mathcal V,\Delta_{\mathcal V})$ 的积是\Term{tensor-product}{张量积} $\mathcal U\otimes_{\mathcal O_S}\mathcal V$，\Term{comultiplication}{余乘法}为复合\Term{morphism}{态射}
+\[
+\begin{aligned}
+\mathcal U\otimes\mathcal V&\xrightarrow{\Delta_{\mathcal U}\otimes\Delta_{\mathcal V}}\mathcal U\otimes\mathcal U\otimes\mathcal V\otimes\mathcal V\\
+&\xrightarrow{\operatorname{id}_{\mathcal U}\otimes\sigma\otimes\operatorname{id}_{\mathcal V}}\mathcal U\otimes\mathcal V\otimes\mathcal U\otimes\mathcal V,
+\end{aligned}
+\]
+\SourcePage{462}
+其中 $\sigma(a\otimes b)=b\otimes a$；$\mathcal U\otimes\mathcal V$ 到因子 $\mathcal U,\mathcal V$ 的\Term{canonical}{典范}\Term{projection}{投影}是\Term{morphism}{态射} $\operatorname{id}_{\mathcal U}\otimes\epsilon_{\mathcal V}$、$\epsilon_{\mathcal U}\otimes\operatorname{id}_{\mathcal V}$。\footnote{编者注（28）：增加了以下内容。还请回顾，为证明 $\mathcal U\otimes\mathcal V$ 确是 $\mathcal U,\mathcal V$ 在\Term{cocommutative}{余交换} $\mathcal O_S$-\Term{coalgebra}{余代数}\Term{category}{范畴}中的积，要核对：对任意 $\mathcal O_S$-\Term{coalgebra}{余代数} $\mathcal E$ 及\Term{coalgebra}{余代数}\Term{morphism}{态射} $f:\mathcal E\to\mathcal U$、$g:\mathcal E\to\mathcal V$，任意满足 $\operatorname{pr}_{\mathcal U}\circ\phi=f$、$\operatorname{pr}_{\mathcal V}\circ\phi=g$ 的\Term{coalgebra}{余代数}\Term{morphism}{态射} $\phi:\mathcal E\to\mathcal U\otimes\mathcal V$ 必等于 $(f\otimes g)\circ\Delta_{\mathcal E}$，且后者是\Term{coalgebra}{余代数}\Term{morphism}{态射}当且仅当它等于 $(g\otimes f)\circ\Delta_{\mathcal E}$。}而“\Term{diagonal-morphism}{对角态射}”$\mathcal U\to\mathcal U\otimes\mathcal U$（对应于\Term{morphism}{态射}对 $(\operatorname{id}_{\mathcal U},\operatorname{id}_{\mathcal U})$）正是\Term{comultiplication}{余乘法} $\Delta_{\mathcal U}$。
+
+\textbf{3.1.1。}设 $\mathcal A$ 是交换 $\mathcal O_S$-\Term{algebra}{代数}，作为 $\mathcal O_S$-\Term{module}{模}是\Term{locally-free}{局部自由}且\Term{finite-type}{有限型}的。若令
+\[
+\mathcal A^*=\mathcal Hom_{\mathcal O_S\text{-}\mathrm{Mod.}}(\mathcal A,\mathcal O_S),
+\]
+则从 $\mathcal A^*\otimes_{\mathcal O_S}\mathcal A^*$ 到 $(\mathcal A\otimes_{\mathcal O_S}\mathcal A)^*$ 的\Term{canonical}{典范}\Term{morphism}{态射} $\varphi$ \Term{invertible}{可逆}。若 $m:\mathcal A\otimes\mathcal A\to\mathcal A$ 是定义 $\mathcal A$ 的\Term{multiplication}{乘法}的\Term{morphism}{态射}，则复合得到\Term{diagonal-morphism}{对角态射}
+\[
+\Delta_{\mathcal A^*}:\mathcal A^*\xrightarrow{m^*}(\mathcal A\otimes\mathcal A)^*\xrightarrow{\varphi^{-1}}\mathcal A^*\otimes\mathcal A^*.
+\]
+此\Term{diagonal-morphism}{对角态射}显然使 $\mathcal A^*$ 成为一个 $\mathcal O_S$-\Term{coalgebra}{余代数}，其\Term{augmentation}{增广}为由 $\mathcal A$ 的\Term{unit-section}{单位截面}定义的\Term{morphism}{态射} $\mathcal O_S\to\mathcal A$ 的\Term{transpose}{转置}。此外，显然有：
+
+\emph{\Term{functor}{函子} $\mathcal A\mapsto\mathcal A^*$ 给出一个\Term{anti-equivalence}{反等价}，从作为 $\mathcal O_S$-\Term{module}{模}\Term{locally-free}{局部自由}且\Term{finite-type}{有限型}的 $\mathcal O_S$-\Term{algebra}{代数}\Term{category}{范畴}，到作为 $\mathcal O_S$-\Term{module}{模}\Term{locally-free}{局部自由}且\Term{finite-type}{有限型}的 $\mathcal O_S$-\Term{coalgebra}{余代数}\Term{category}{范畴}。}
+
+\textbf{3.1.2。}每个 $\mathcal O_S$-\Term{coalgebra}{余代数} $\mathcal U$ 都\Term{canonical}{典范}地对应一个 $S$-\Term{functor}{函子}
+\[
+\operatorname{Spec}^*\mathcal U:(\mathrm{Sch}/S)^\circ\longrightarrow(\mathrm{Ens}).
+\]
+事实上，对每个 $S$-\Term{scheme}{概形} $q:T\to S$，$q^*(\mathcal U\otimes_{\mathcal O_S}\mathcal U)$ 与 $q^*(\mathcal U)\otimes_{\mathcal O_T}q^*(\mathcal U)$ 等同，因此 $q^*(\Delta_{\mathcal U})$ 使 $\mathcal U_T=q^*(\mathcal U)$ 成为 $\mathcal O_T$-\Term{coalgebra}{余代数}；于是可定义（略微滥用记号）\footnote{编者注（29）：对每个 $x\otimes y\in\Gamma(T,\mathcal U_T)\otimes_{\mathcal O(T)}\Gamma(T,\mathcal U_T)$，其在 $\Gamma(T,\mathcal U_T\otimes_{\mathcal O_T}\mathcal U_T)$ 中的像仍记为 $x\otimes y$。}
+\[
+(\operatorname{Spec}^*\mathcal U)(T)=\{x\in\Gamma(T,\mathcal U_T)\mid\epsilon_{\mathcal U_T}(x)=1,\quad\Delta_{\mathcal U_T}(x)=x\otimes x\}.
+\]
+$\mathcal U_T$ 的\Term{section}{截面} $x$ 显然对应于 $\mathcal O_T$-\Term{module}{模}\Term{morphism}{态射} $\xi:\mathcal O_T\to\mathcal U_T$；条件 $\epsilon(x)=1$、$\Delta(x)=x\otimes x$ 正表示 $\xi$ 是\Term{coalgebra}{余代数}\Term{morphism}{态射}。所以也有
+\[
+(\operatorname{Spec}^*\mathcal U)(T)=\operatorname{Hom}_{\mathcal O_T\text{-coalg.}}(\mathcal O_T,\mathcal U_T).
+\]
+特别地，有下述命题：\footnote{编者注（30）：增加了编号 3.1.2.1，供后文引用。此外请注意，$S$-\Term{functor}{函子} $\operatorname{Spec}^*\mathcal U$ 是 Zariski \Term{topology}{拓扑}下的\Term{sheaf}{层}（若 $\mathcal U$ 是\Term{quasi-coherent}{拟凝聚} $\mathcal O_S$-\Term{module}{模}，则它甚至是 fpqc \Term{topology}{拓扑}下的\Term{sheaf}{层}）。}
+\SourcePage{463}
+\begin{SGAresult}{命题}{3.1.2.1}
+设 $\mathcal A$ 是交换 $\mathcal O_S$-\Term{algebra}{代数}，作为 $\mathcal O_S$-\Term{module}{模}\Term{locally-free}{局部自由}且\Term{finite-type}{有限型}。则 $S$-\Term{functor}{函子} $\operatorname{Spec}^*\mathcal A^*$ 由 $\operatorname{Spec}\mathcal A$ \Term{representable}{表示}。
+\end{SGAresult}
+\begin{proof}
+事实上，对每个 $S$-\Term{scheme}{概形} $T$，有\Term{canonical}{典范}\Term{isomorphism}{同构}
+\[
+\begin{aligned}
+(\operatorname{Spec}^*\mathcal A^*)(T)&=\operatorname{Hom}_{\mathcal O_T\text{-coalg.}}(\mathcal O_T,\mathcal A_T^*)\\
+&\simeq\operatorname{Hom}_{\mathcal O_T\text{-alg.}}(\mathcal A_T,\mathcal O_T)\simeq(\operatorname{Spec}\mathcal A)(T).
+\end{aligned}
+\]
+\end{proof}
+\textbf{3.2。}一个 $\mathcal O_S$-\Term{group-coalgebra}{群余代数（coalgèbre en groupes）}，即 $\mathcal O_S$-\Term{coalgebra}{余代数}\Term{category}{范畴}中的\Term{group-object}{群对象}，由一个 $\mathcal O_S$-\Term{coalgebra}{余代数} $(\mathcal U,\Delta_{\mathcal U})$ 及三个 $\mathcal O_S$-\Term{coalgebra}{余代数}\Term{morphism}{态射} $m_{\mathcal U}:\mathcal U\otimes\mathcal U\to\mathcal U$、$\eta_{\mathcal U}:\mathcal O_S\to\mathcal U$、$c_{\mathcal U}:\mathcal U\to\mathcal U$ 构成，它们满足下述条件（ii）$^*$、（iii）$^*$、（vi）；另一方面，$m_{\mathcal U}$ 是\Term{coalgebra}{余代数}\Term{morphism}{态射}这一事实，\Term{equivalence}{等价}于下图（iv）、（v）交换：
+\[
+\tag{iv}
+\begin{tikzcd}
+\mathcal U\otimes\mathcal U\arrow[r,"m_{\mathcal U}"]\arrow[d,"\Delta_{\mathcal U}\otimes\Delta_{\mathcal U}"']&\mathcal U\arrow[dd,"\Delta_{\mathcal U}"]\\
+\mathcal U\otimes\mathcal U\otimes\mathcal U\otimes\mathcal U\arrow[d,"\operatorname{id}_{\mathcal U}\otimes\sigma\otimes\operatorname{id}_{\mathcal U}"']&\\
+\mathcal U\otimes\mathcal U\otimes\mathcal U\otimes\mathcal U\arrow[r,"m_{\mathcal U}\otimes m_{\mathcal U}"']&\mathcal U\otimes\mathcal U
+\end{tikzcd}
+\]
+\[
+\tag{v}
+\begin{tikzcd}
+\mathcal U\otimes\mathcal U\arrow[rr,"m_{\mathcal U}"]\arrow[dr,"\epsilon_{\mathcal U}\otimes\epsilon_{\mathcal U}"']&&\mathcal U\arrow[dl,"\epsilon_{\mathcal U}"]\\
+&\mathcal O_S&
+\end{tikzcd}
+\]
+（ii）$^*$ 方图
+\[
+\begin{tikzcd}
+\mathcal U\otimes\mathcal U\otimes\mathcal U\arrow[r,"\operatorname{id}_{\mathcal U}\otimes m_{\mathcal U}"]\arrow[d,"m_{\mathcal U}\otimes\operatorname{id}_{\mathcal U}"']&\mathcal U\otimes\mathcal U\arrow[d,"m_{\mathcal U}"]\\
+\mathcal U\otimes\mathcal U\arrow[r,"m_{\mathcal U}"']&\mathcal U
+\end{tikzcd}
+\]
+交换。
+
+（iii）$^*$ 下述两个复合都等于 $\mathcal U$ 的\Term{identity-morphism}{恒等态射}：
+\[
+\begin{aligned}
+\mathcal U\simeq\mathcal U\otimes\mathcal O_S&\xrightarrow{\operatorname{id}_{\mathcal U}\otimes\eta_{\mathcal U}}\mathcal U\otimes\mathcal U\xrightarrow{m_{\mathcal U}}\mathcal U,\\
+\mathcal U\simeq\mathcal O_S\otimes\mathcal U&\xrightarrow{\eta_{\mathcal U}\otimes\operatorname{id}_{\mathcal U}}\mathcal U\otimes\mathcal U\xrightarrow{m_{\mathcal U}}\mathcal U.
+\end{aligned}
+\]
+（vi）下述复合\Term{morphism}{态射}等于 $\eta_{\mathcal U}\circ\epsilon_{\mathcal U}$：
+\[
+\mathcal U\xrightarrow{\Delta_{\mathcal U}}\mathcal U\otimes\mathcal U\xrightarrow{c_{\mathcal U}\otimes\operatorname{id}_{\mathcal U}}\mathcal U\otimes\mathcal U\xrightarrow{m_{\mathcal U}}\mathcal U.
+\]
+\SourcePage{464}
+\textbf{3.2.1。}\Term{morphism}{态射} $\eta_{\mathcal U},c_{\mathcal U}$ 由 $m_{\mathcal U}$ 唯一确定。另一方面，条件（ii）$^*$、（iii）$^*$ 只是说 $m_{\mathcal U}$ 使 $\mathcal U$ 成为 $\mathcal O_S$-\Term{algebra}{代数}，其\Term{unit-section}{单位截面}是 $\mathcal O_S$ 的\Term{unit-section}{单位截面}经 $\eta_{\mathcal U}$ 的像。条件（iv）也表示\Term{diagonal-morphism}{对角态射} $\Delta_{\mathcal U}$ 与\Term{multiplication}{乘法}相容；事实上，$\Delta_{\mathcal U}:\mathcal U\to\mathcal U\otimes\mathcal U$ 必须是\Term{group-coalgebra}{群余代数}\Term{homomorphism}{同态}，这也蕴涵三角形
+\[
+\tag{$\mathrm v^*$}
+\begin{tikzcd}
+&\mathcal O_S\arrow[dl,"\eta_{\mathcal U}"']\arrow[dr,"\eta_{\mathcal U}\otimes\eta_{\mathcal U}"]&\\
+\mathcal U\arrow[rr,"\Delta_{\mathcal U}"']&&\mathcal U\otimes\mathcal U
+\end{tikzcd}
+\]
+交换。
+
+另一方面，如在任意\Term{category}{范畴}中一样，\Term{antipode}{对极映射（antipodisme）} $c_{\mathcal U}$ 是 $\mathcal U$ 到“相反”\Term{group-object}{群对象}的\Term{isomorphism}{同构}；\footnote{编者注（31）：即赋予\Term{multiplication}{乘法} $m'_{\mathcal U}=m_{\mathcal U}\circ\sigma$。}特别地，$c_{\mathcal U}$ 诱导 $\mathcal U$ 到\Term{opposite-algebra}{相反代数} $\mathcal U^\circ$ 的\Term{algebra}{代数}\Term{isomorphism}{同构}。
+
+\textbf{3.2.2。}由于\Term{functor}{函子} $\mathcal U\mapsto\operatorname{Spec}^*\mathcal U$ 与\Term{finite-products}{有限积}交换，它将\Term{group-coalgebra}{群余代数}变成 $S$-\Term{group-functor}{群函子}；事实上，对每个 $S$-\Term{scheme}{概形} $T$，属于 $(\operatorname{Spec}^*\mathcal U)(T)$ 的元素 $x\in\Gamma(T,\mathcal U_T)$ 对\Term{algebra}{代数} $\Gamma(T,\mathcal U_T)$ 的\Term{multiplication}{乘法}构成一个\Term{group}{群}；$x$ 的逆正是 $c_{\mathcal U}(x)$。由 3.1.2.1，有：
+\begin{SGAresult}{附论}{3.2.2.1}
+\footnote{编者注（32）：增加了这条附论，其内容已隐含于原文。}设 $\mathcal U$ 是 $\mathcal O_S$-\Term{group-coalgebra}{群余代数}，作为 $\mathcal O_S$-\Term{module}{模}\Term{finite}{有限}且\Term{locally-free}{局部自由}。则 $S$-\Term{group-functor}{群函子} $\operatorname{Spec}^*\mathcal U$ 由\Term{finite}{有限}且\Term{locally-free}{局部自由}的 $S$-\Term{group}{群} $\operatorname{Spec}\mathcal U^*$ \Term{representable}{表示}。
+\end{SGAresult}
+\textbf{注记 3.2.2.2。}设 $\mathcal L$ 是 $\mathcal O_S$-\Term{lie-algebra}{Lie 代数}，$\mathcal U(\mathcal L)$ 是 $\mathcal L$ 的\Term{universal-enveloping-algebra}{包络代数}，也就是 $S$ 上的\Term{presheaf}{预层} $V\mapsto U(\Gamma(V,\mathcal L))$ 的相伴\Term{sheaf}{层}，其中 $U(\Gamma(V,\mathcal L))$ 是\Term{lie-algebra}{Lie 代数} $\Gamma(V,\mathcal L)$ 的\Term{universal-enveloping-algebra}{包络代数}。
+
+从 $\mathcal L$ 到任意结合 $\mathcal O_S$-\Term{algebra}{代数}的底\Term{lie-algebra}{Lie 代数}的每个\Term{homomorphism}{同态}，都以唯一方式通过从 $\mathcal L$ 到 $\mathcal U(\mathcal L)$ 的\Term{canonical}{典范}\Term{morphism}{态射}\Term{resolution}{分解}；此外，这个\Term{universal-property}{泛性质}除了给出 $\mathcal U(\mathcal L)$ 对 $\mathcal L$ 的\Term{functorial}{函子性}，还说明\Term{lie-algebra}{Lie 代数}之积的\Term{universal-enveloping-algebra}{包络代数}可与各\Term{universal-enveloping-algebra}{包络代数}的\Term{tensor-product}{张量积}等同。
+
+特别地，\Term{diagonal-morphism}{对角态射} $\delta:\mathcal L\to\mathcal L\times\mathcal L$ 诱导\Term{algebra}{代数}\Term{homomorphism}{同态} $\Delta:\mathcal U(\mathcal L)\to\mathcal U(\mathcal L\times\mathcal L)\simeq\mathcal U(\mathcal L)\otimes\mathcal U(\mathcal L)$。零\Term{morphism}{态射} $\mathcal L\to0$ 诱导\Term{algebra}{代数}\Term{homomorphism}{同态} $\epsilon:\mathcal U(\mathcal L)\to\mathcal U(0)\simeq\mathcal O_S$。从 $\mathcal L$ 到相反\Term{lie-algebra}{Lie 代数} $\mathcal L^\circ$ 的\Term{isomorphism}{同构} $x\mapsto-x$，诱导\Term{algebra}{代数} $\mathcal U(\mathcal L)$ 的\Term{anti-isomorphism}{反同构} $c$。于是容易核对，\Term{algebra}{代数} $\mathcal U(\mathcal L)$ 的\Term{multiplication}{乘法} $m$ 使 $(\mathcal U(\mathcal L),\Delta)$ 成为一个 $\mathcal O_S$-\Term{group-coalgebra}{群余代数}，以 $\epsilon$ 为\Term{augmentation}{增广}，以 $c$ 为\Term{antipode}{对极映射}。\footnote{编者注（33）：$S$-\Term{group-functor}{群函子} $\operatorname{Spec}^*\mathcal U(\mathcal L)$ 一般不\Term{representable}{可表示}；但下文（5.5）将证明，若 $S$ 是\Term{characteristic}{特征} $p$ 的\Term{scheme}{概形}，$\mathcal L$ 在 $\mathcal O_S$ 上\Term{finite}{有限}且\Term{locally-free}{局部自由}，且 $\mathcal U_p(\mathcal L)$ 是它的\Term{restricted-enveloping-algebra}{限制包络代数}（见 5.3），则 $\operatorname{Spec}^*\mathcal U_p(\mathcal L)$ 由一个\Term{finite}{有限}且\Term{locally-free}{局部自由}的 $S$-\Term{group}{群}\Term{representable}{表示}。}
+
+\SourcePage{465}
+\textbf{3.2.3。}\footnote{编者注（34）：本段作了展开。}设 $\mathcal U$ 是 $\mathcal O_S$-\Term{group-coalgebra}{群余代数}。下面证明 $S$-\Term{group-functor}{群函子} $G=\operatorname{Spec}^*\mathcal U$ 在第 II 讲 4.6、4.10 的意义下是\Term{very-good-group}{很好的}。
+
+设 $\mathcal M$ 是秩为 $r$ 的\Term{free-module}{自由} $\mathcal O_S$-\Term{module}{模}，$T\to S$ 是 $S$-\Term{scheme}{概形}。由于 $I_T(\mathcal M)=\operatorname{Spec}(\mathcal O_T\oplus\mathcal M_T)$，从而 $\pi:I_T(\mathcal M)\to T$ 是\Term{affine}{仿射}的，有
+\[
+\pi_*(\mathcal U_{I_T(\mathcal M)})=\mathcal U_T\otimes_{\mathcal O_T}\pi_*(\mathcal O_{I_T(\mathcal M)})=\mathcal U_T\otimes_{\mathcal O_T}(\mathcal O_T\oplus\mathcal M_T),
+\]
+因而
+\[
+\Gamma(I_T(\mathcal M),\mathcal U_{I_T(\mathcal M)})\simeq\Gamma(T,\mathcal U_T)\otimes_{\mathcal O(T)}\bigl(\mathcal O(T)\oplus\Gamma(T,\mathcal M_T)\bigr).\tag{1}
+\]
+设 $(d_1,\ldots,d_r)$ 是 $\mathcal M$ 的一组基。那么 $\Gamma(I_T(\mathcal M),\mathcal U_{I_T(\mathcal M)})$ 的一个元素 $u_0+\sum_i u_id_i$ 属于 $G(I_T(\mathcal M))$，当且仅当
+\[
+1=\epsilon\Bigl(u_0+\sum_i u_id_i\Bigr)=\epsilon(u_0)+\sum_i\epsilon(u_i)d_i,
+\]
+以及
+\[
+\Bigl(u_0+\sum_i u_id_i\Bigr)\otimes\Bigl(u_0+\sum_i u_id_i\Bigr)
+=\Delta\Bigl(u_0+\sum_i u_id_i\Bigr)=\Delta(u_0)+\sum_i\Delta(u_i)d_i,
+\]
+也就是说：
+\[
+\begin{cases}
+\epsilon(u_0)=1,\quad\Delta u_0=u_0\otimes u_0,&\text{即 }u_0\in G(T),\\
+\epsilon(u_i)=0,\quad\Delta(u_i)=u_i\otimes u_0+u_0\otimes u_i,&i=1,\ldots,r.
+\end{cases}\tag{2}
+\]
+此外，与 $I_T(\mathcal M)\to T$ 的\Term{zero-section}{零截面}对应的\Term{morphism}{态射} $G(I_T(\mathcal M))\to G(T)$ 为 $u_0+\sum_i u_id_i\mapsto u_0$。由此结合（1）、（2）可知，若 $\mathcal N$ 是另一个\Term{finite-rank}{有限秩}\Term{free-module}{自由} $\mathcal O_S$-\Term{module}{模}，则\Term{set}{集合}图
+\[
+\begin{tikzcd}
+G(I_T(\mathcal M\oplus\mathcal N))\arrow[r]\arrow[d]&G(I_T(\mathcal N))\arrow[d]\\
+G(I_T(\mathcal M))\arrow[r]&G(T)
+\end{tikzcd}
+\]
+是\Term{cartesian-diagram}{笛卡尔图}，即 $G$ 满足第 II 讲 3.5 的\Term{condition-e}{条件（E）}。
+
+以 $\operatorname{Prim}\Gamma(T,\mathcal U_T)$ 表示 $\Gamma(T,\mathcal U_T)$ 中由\Term{primitive-element}{本原元素}组成的 $\mathcal O(T)$-子\Term{module}{模}，即由满足下列条件的元素 $u$ 组成（沿用 3.1.2 指出的记号滥用）：
+\[
+\Delta u=u\otimes1+1\otimes u,\qquad\epsilon(u)=0.
+\]
+\footnote{编者注（35）：注意，第二个条件是第一个条件的结果，因为后者蕴涵 $u=(\operatorname{id}\otimes\epsilon)\Delta(u)=u+\epsilon(u)$，故 $\epsilon(u)=0$。}
+由于 $(\underline{\operatorname{Lie}}G)(T)$ 是 $G(T)$ 的\Term{identity-element}{单位元} $u_0=1$ 上方的元素 $u_0+ud\in G(I_T)$ 的\Term{set}{集合}，故得到对 $T$ 具有\Term{functorial}{函子性}的 $\mathcal O(T)$-\Term{module}{模}\Term{isomorphism}{同构}：\footnote{编者注（36）：$\underline{\operatorname{Lie}}G$ 上的 $\mathcal O_S$-\Term{module}{模}结构定义于第 II 讲命题 3.6。}
+\[
+(\underline{\operatorname{Lie}}G)(T)\simeq\operatorname{Prim}\Gamma(T,\mathcal U_T).
+\]
+另一方面，由（1）\Term{pushout}{推出}
+\[
+\operatorname{Prim}\Gamma(I_T(\mathcal M),\mathcal U_{I_T(\mathcal M)})\simeq\operatorname{Prim}\Gamma(T,\mathcal U_T)\otimes_{\mathcal O(T)}\mathcal O(I_T(\mathcal M)),
+\]
+\SourcePage{466}
+因此自然的 $\mathcal O(I_T(\mathcal M))$-\Term{module}{模}\Term{morphism}{态射}
+\[
+(\underline{\operatorname{Lie}}G)(T)\otimes_{\mathcal O(T)}\mathcal O(I_T(\mathcal M))\longrightarrow(\underline{\operatorname{Lie}}G)(I_T(\mathcal M))
+\]
+是\Term{isomorphism}{同构}，即 $\underline{\operatorname{Lie}}G$ 是一个\Term{good-module}{良好的} $\mathcal O_S$-\Term{module}{模}（见第 II 讲定义 4.4）。
+
+所以 $G$ 是\Term{good-group}{良好的} $S$-\Term{group-functor}{群函子}（见第 II 讲定义 4.6），且由第 II 讲 4.7.2，$\underline{\operatorname{Lie}}G$ 具有一个 $\mathcal O_S$-\Term{bilinear}{双线性}且满足 Jacobi 恒等式的“\Term{lie-bracket}{Lie 括号}”。还需证明 $G$ 是\Term{very-good-group}{很好的}，即 $(\underline{\operatorname{Lie}}G)(T)$ 上的“\Term{lie-bracket}{括号}”对每个 $u\in(\underline{\operatorname{Lie}}G)(T)$ 都满足 $[u,u]=0$（见第 II 讲 4.10）。
+
+设 $u,v$ 是 $(\underline{\operatorname{Lie}}G)(T)$ 的两个元素，即 $\Gamma(T,\mathcal U_T)$ 的两个\Term{primitive-element}{本原元素}。令 $I=\operatorname{Spec}\mathcal O_S[d]/(d^2)$、$I'=\operatorname{Spec}\mathcal O_S[d']/(d'^2)$。由于 $G(I\times I')$ 的复合律由\Term{algebra}{代数} $\mathcal U_{I\times I'}$ 的\Term{multiplication}{乘法}诱导，故在 $G(I\times I')$ 中有等式
+\[
+\begin{aligned}
+{}&(1+ud)(1+vd')(1+ud)^{-1}(1+vd')^{-1}\\
+&\qquad=(1+ud)(1+vd')(1-ud)(1-vd)\\
+&\qquad=1+(uv-vu)dd'.
+\end{aligned}
+\]
+由第 II 讲命题 4.8 之前给出的\Term{lie-bracket}{括号} $[u,v]$ 的描述，得到
+\[
+[u,v]=uv-vu,
+\]
+其中右边是 $u,v$ 在\Term{algebra}{代数} $\Gamma(T,\mathcal U_T)$ 中的\Term{commutator}{交换子}，从而 $[u,u]=0$。所以得到下述命题：\footnote{编者注（37）：增加了这条命题，以概括前面的讨论。}
+\begin{SGAresult}{命题}{}
+设 $\mathcal U$ 是 $\mathcal O_S$-\Term{group-coalgebra}{群余代数}。$S$-\Term{group-functor}{群函子} $G=\operatorname{Spec}^*\mathcal U$ 是\Term{very-good-group}{很好的}，且有 $\mathcal O_S$-\Term{lie-algebra}{Lie 代数}\Term{isomorphism}{同构} $\underline{\operatorname{Lie}}G\simeq\operatorname{Prim}\mathbf W(\mathcal U)$，其中 $\operatorname{Prim}\mathbf W(\mathcal U)$ 表示将每个 $T\to S$ 对应到 $\mathbf W(\mathcal U)(T)=\Gamma(T,\mathcal U_T)$ 的\Term{primitive-element}{本原元素}组成的 $\mathcal O(T)$-\Term{lie-algebra}{Lie 代数}的\Term{functor}{函子}。
+\end{SGAresult}
+\textbf{3.3。}最后假设 $\mathcal U$ 是交换 $\mathcal O_S$-\Term{group-coalgebra}{群余代数}，即三角形
+\[
+\tag{$\mathrm i^*$}
+\begin{tikzcd}
+\mathcal U\otimes\mathcal U\arrow[rr,"\sigma"]\arrow[dr,"m_{\mathcal U}"']&&\mathcal U\otimes\mathcal U\arrow[dl,"m_{\mathcal U}"]\\
+&\mathcal U&
+\end{tikzcd}
+\]
+交换，或者说，$m_{\mathcal U}$ 使 $\mathcal U$ 成为一个交换 $\mathcal O_S$-\Term{algebra}{代数}。这时，条件（i）、（ii）、（iii）、（iv）、（v）、（vi）、（i）$^*$、（ii）$^*$、（iii）$^*$、（v）$^*$ 也表示 $\mathcal U$ 是交换 $\mathcal O_S$-\Term{algebra}{代数}\Term{category}{范畴}中的一个\Term{cogroup-object}{余群对象}。所以，若 $\mathcal U$ 还是\Term{quasi-coherent}{拟凝聚} $\mathcal O_S$-\Term{module}{模}，则\Term{affine}{仿射} $S$-\Term{scheme}{概形} $\operatorname{Spec}\mathcal U$ 是交换 $S$-\Term{group-scheme}{群概形}。
+
+在这种情形，由于 $\mathcal O_S[T,T^{-1}]$ 的\Term{diagonal-morphism}{对角态射} $\Delta'$ 将 $T$ 送到 $T\otimes T$，从 $\operatorname{Spec}\mathcal U$ 到 $\mathbf G_{m,S}$ 的 $S$-\Term{group}{群}\Term{morphism}{态射}（I 4.3.2）与满足 $(\varphi\otimes\varphi)\circ\Delta'=\Delta_{\mathcal U}\circ\varphi$ 的保单位 $\mathcal O_S$-\Term{algebra}{代数}\Term{morphism}{态射}
+\[
+\varphi:\mathcal O_S[T,T^{-1}]\longrightarrow\mathcal U
+\]
+\SourcePage{467}
+一一对应（此时 $\epsilon_{\mathcal U}\circ\varphi$ 是 $\mathbf G_{m,S}(S)$ 的\Term{identity-element}{单位元}，即\Term{augmentation}{增广} $\epsilon'$）。这样的\Term{morphism}{态射} $\varphi$ 由像 $\varphi(T)$ 确定，后者必须是 $\mathcal U$ 的\Term{invertible-element}{可逆元}素 $x$，满足 $\Delta_{\mathcal U}x=x\otimes x$ 和 $\epsilon_{\mathcal U}(x)=\epsilon'(T)=1$。因此有
+\[
+\operatorname{Hom}_{S\text{-gr.}}(\operatorname{Spec}\mathcal U,\mathbf G_{m,S})\simeq(\operatorname{Spec}^*\mathcal U)(S),
+\]
+而此公式在任意\Term{base-change}{基变换}之后仍然成立，所以得到
+\[
+\operatorname{Spec}^*\mathcal U\simeq\underline{\operatorname{Hom}}_{S\text{-gr.}}(\operatorname{Spec}\mathcal U,\mathbf G_{m,S}).
+\]
+由此得到：
+\begin{SGAresult}{命题}{3.3.0}
+若 $\mathcal U$ 是交换 $\mathcal O_S$-\Term{group-coalgebra}{群余代数}，作为 $\mathcal O_S$-\Term{module}{模}是\Term{quasi-coherent}{拟凝聚}的，则\Term{affine}{仿射} $S$-\Term{scheme}{概形} $G=\operatorname{Spec}\mathcal U$ 是交换 $S$-\Term{group-scheme}{群概形}，且有 $S$-\Term{group-functor}{群函子}的\Term{isomorphism}{同构}
+$\operatorname{Spec}^*\mathcal U\simeq\underline{\operatorname{Hom}}_{S\text{-gr.}}(G,\mathbf G_{m,S})$。
+\end{SGAresult}
+若还假设 $\mathcal U$ 是\Term{locally-free}{局部自由}\Term{finite-type}{有限型} $\mathcal O_S$-\Term{module}{模}，则由 3.1.2.1，$S$-\Term{group-functor}{群函子} $\operatorname{Spec}^*\mathcal U$ 由 $\operatorname{Spec}\mathcal U^*$ \Term{representable}{表示}。因此得到：
+\begin{SGAresult}{命题（\Term{cartier-dual}{Cartier 对偶}）}{3.3.1}
+\Term{functor}{函子}
+\[
+\mathcal A(G)\longmapsto\mathcal A(G)^*=\mathcal Hom_{\mathcal O_S\text{-}\mathrm{Mod.}}(\mathcal A(G),\mathcal O_S)
+\]
+在交换、\Term{finite}{有限}且\Term{locally-free}{局部自由}的 $S$-\Term{group-scheme}{群概形}\Term{category}{范畴}中诱导一个\Term{duality}{对偶}，\footnote{原注（*）：\Term{category}{范畴} $\mathscr C$ 的一个\Term{duality}{对偶}，是由一个从 $\mathscr C$ 到 $\mathscr C$ 的\Term{contravariant-functor}{反变函子} $D$ 及一个\Term{functorial-isomorphism}{函子同构} $\varphi:\operatorname{Id}_{\mathscr C}\to DD$ 组成的二元组 $(D,\varphi)$，使\Term{isomorphism}{同构} $\varphi D:D\to DDD$ 与 $D\varphi^{-1}:DDD\to D$ 互逆。编者注（38）：将 $D\varphi$ 改为 $D\varphi^{-1}$。}它将 $G$ 对应到 $S$-\Term{group}{群} $\underline{\operatorname{Hom}}_{S\text{-gr.}}(G,\mathbf G_{m,S})$。
+\end{SGAresult}
+
+\SGAsection{4}{“Frobenius 种种”}
+设 $p$ 是固定的素数，$(\mathrm{Sch}/\mathbf F_p)$ 是\Term{characteristic}{特征} $p$ 的\Term{scheme}{概形}\Term{category}{范畴}，即素\Term{field}{域} $\mathbf F_p$ 上的\Term{scheme}{概形}\Term{category}{范畴}。按照本讨论班的一般约定，通过 I 1.1 的\Term{functor}{函子} $h$，将 $(\mathrm{Sch}/\mathbf F_p)$ 与 $\widehat{(\mathrm{Sch}/\mathbf F_p)}$ 的一个子\Term{category}{范畴}等同。同样，借助 I 1.1 中定义的从 $\operatorname{Hom}(h_X,F)$ 到 $F(X)$ 的\Term{isomorphism}{同构}，当 $X$ 是 $\mathbf F_p$-\Term{scheme}{概形}、$F$ 是 $\widehat{(\mathrm{Sch}/\mathbf F_p)}$ 的\Term{object}{对象}时，总将这两个\Term{set}{集合}等同。
+
+\textbf{记号 4.0。}\footnote{编者注（39）：增加了编号 4.0，供后文引用。}若 $T$ 是 $\mathbf F_p$-\Term{scheme}{概形}，则 $T$-\Term{functor}{函子}是 $\widehat{(\mathrm{Sch}/\mathbf F_p)}$ 中终点为 $T$ 的一个\Term{morphism}{态射} $q:F\to T$。对每个 $T$-\Term{scheme}{概形} $r:X\to T$，所有 $T$-\Term{morphism}{态射} $X\to F$ 的\Term{set}{集合}，即所有满足 $q\circ s=r$ 的 $\mathbf F_p$-\Term{morphism}{态射} $s:X\to F$ 的\Term{set}{集合}，记为 $q(r)$、$q(X/T)$、$F(r)$ 或 $F(X/T)$（当不会与 $\operatorname{Hom}(h_X,F)$ 混淆时，甚至记为 $F(X)$）。
+
+\SourcePage{468}
+\textbf{4.1。}对每个\Term{characteristic}{特征} $p$ 的\Term{scheme}{概形} $S$，以 $\operatorname{fr}(S)$ 或简记 $\operatorname{fr}$，表示 $S$ 的\Term{endomorphism}{自同态}：它在 $S$ 的底\Term{topological-space}{拓扑空间}上诱导恒等，并将 $\mathcal O_S$ 在\Term{open-subset}{开集} $U$ 上的\Term{section}{截面} $x$ 送到 $x^p$。
+
+于是 $\operatorname{fr}:S\mapsto\operatorname{fr}(S)$ 是 $(\mathrm{Sch}/\mathbf F_p)$ 的\Term{identity-functor}{恒等函子}的\Term{endomorphism}{自同态}，\footnote{编者注（40）：即对每个 $\mathbf F_p$-\Term{scheme}{概形}的\Term{morphism}{态射} $f:Y\to X$，下图交换：
+\[
+\begin{tikzcd}[ampersand replacement=\&,cramped]
+Y\arrow[r,"f"]\arrow[d,"\operatorname{fr}(Y)"']\&X\arrow[d,"\operatorname{fr}(X)"]\\
+Y\arrow[r,"f"']\&X.
+\end{tikzcd}
+\]}
+由此得到以下结果。设 $E$ 是 $\mathbf F_p$-\Term{functor}{函子}，即 $\widehat{(\mathrm{Sch}/\mathbf F_p)}$ 的\Term{object}{对象}；将每个 $\mathbf F_p$-\Term{scheme}{概形} $S$ 对应到 $E(S)$ 的\Term{endomorphism}{自同态} $E(\operatorname{fr}(S))$ 的映射，是 $E$ 的一个\Term{functorial}{函子性}\Term{endomorphism}{自同态}，记为 $\operatorname{fr}(E)$ 或 $\operatorname{fr}$；这个记号与将 $(\mathrm{Sch}/\mathbf F_p)$ 等同于 $\widehat{(\mathrm{Sch}/\mathbf F_p)}$ 的一个子\Term{category}{范畴}的做法相容。此外，映射 $E\mapsto\operatorname{fr}(E)$ 是 $\widehat{(\mathrm{Sch}/\mathbf F_p)}$ 的\Term{identity-functor}{恒等函子}的\Term{endomorphism}{自同态}（仍记为 $\operatorname{fr}$）。\footnote{编者注（41）：称 $\operatorname{fr}(X)$ 为 $X$ 的“\Term{absolute-frobenius}{绝对 Frobenius 态射}”，以区别于下文引入的“\Term{relative-frobenius}{相对 Frobenius 态射}”$\operatorname{Fr}(X/S)$。}
+
+对每个 $\mathbf F_p$-\Term{scheme}{概形} $S$ 及每个 $S$-\Term{functor}{函子} $q:X\to S$，以 $X^{(p/S)}$ 或 $X^{(p)}$ 表示 $X$ 经\Term{base-change}{基变换} $\operatorname{fr}(S)$ 的\Term{inverse-image}{逆像}：
+\[
+\begin{tikzcd}
+X^{(p/S)}\arrow[r,"\operatorname{pr}_X"]\arrow[d]&X\arrow[d,"q"]\\
+S\arrow[r,"\operatorname{fr}(S)"']&S.
+\end{tikzcd}
+\]
+交换方图
+\[
+\begin{tikzcd}
+X\arrow[r,"\operatorname{fr}(X)"]\arrow[d,"q"']&X\arrow[d,"q"]\\
+S\arrow[r,"\operatorname{fr}(S)"']&S
+\end{tikzcd}
+\]
+因而诱导一个 $S$-\Term{morphism}{态射} $X\to X^{(p/S)}$，记为 $\operatorname{Fr}(X/S)$（或简记为 $\operatorname{Fr}$），满足 $\operatorname{fr}(X)=\operatorname{pr}_X\circ\operatorname{Fr}(X/S)$：
+\[
+\begin{tikzcd}
+X\arrow[dr,"\operatorname{Fr}(X/S)"]\arrow[drr,bend left=20,"\operatorname{fr}(X)"]\arrow[ddr,bend right=20,"q"']&&\\
+&X^{(p/S)}\arrow[r,"\operatorname{pr}_X"]\arrow[d]&X\arrow[d,"q"]\\
+&S\arrow[r,"\operatorname{fr}(S)"']&S.
+\end{tikzcd}
+\]
+\SourcePage{469}
+称 $\operatorname{Fr}(X/S)$ 为 $X$ 相对于 $S$ 的\Term{relative-frobenius}{Frobenius 态射}；显然，映射 $\operatorname{Fr}:X\mapsto\operatorname{Fr}(X/S)$ 是一个\Term{natural-transformation}{自然变换}。
+
+\footnote{编者注（42）：以下对原文作了展开。}设 $r:T\to S$ 是 $S$-\Term{scheme}{概形}。对每个 $\phi\in X(r)=\operatorname{Hom}_S(T,X)$（见 4.0），有\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}
+X\arrow[r,"\operatorname{Fr}(X/S)"]\arrow[dr,"q"']&X^{(p/S)}\arrow[r,"\operatorname{pr}_X"]\arrow[d,"q^{(p/S)}"]&X\arrow[d,"q"]\\
+T\arrow[u,"\phi"]\arrow[r,"r"']&S\arrow[r,"\operatorname{fr}(S)"']&S.
+\end{tikzcd}
+\]
+根据 $X^{(p/S)}$ 作为\Term{fiber-product}{纤维积}的定义，$\operatorname{pr}_X$ 诱导\Term{bijection}{双射}
+\[
+\begin{aligned}
+X^{(p/S)}(r)=\operatorname{Hom}_S(T,X^{(p/S)})&\xrightarrow{\sim}\operatorname{Hom}_S(T,X)\\
+&=X(\operatorname{fr}(S)\circ r).
+\end{aligned}
+\]
+另一方面，因为 $\operatorname{fr}$ 是\Term{identity-functor}{恒等函子}的\Term{endomorphism}{自同态}，有 $r\circ\operatorname{fr}(T)=\operatorname{fr}(S)\circ r$。因此，映射 $\operatorname{Fr}(X/S)(r):X(r)\to X^{(p/S)}(r)$ 可由下述方图的\Term{commutativity}{交换性}刻画：
+\[
+\tag{$\dagger$}
+\begin{tikzcd}
+X(r)\arrow[r,"\operatorname{Fr}(X/S)(r)"]\arrow[d,"X(\operatorname{fr}(T))"']&X^{(p/S)}(r)\arrow[d,"\sim"]\\
+X(r\circ\operatorname{fr}(T))\arrow[r,equal]&X(\operatorname{fr}(S)\circ r).
+\end{tikzcd}
+\]
+例如，若 $X$ 是由\Term{quasi-coherent}{拟凝聚}\Term{ideal}{理想} $\mathcal I$ 定义的 $S$ 的\Term{subscheme}{子概形}，则 $X^{(p)}$ 是由\Term{ideal}{理想} $\mathcal I^{\{p\}}$ 定义的 $S$ 的\Term{subscheme}{子概形}，其中 $\mathcal I^{\{p\}}$ 由 $\mathcal I$ 的\Term{section}{截面}的 $p$ 次幂生成；而此时 $\operatorname{Fr}(X/S)$ 是从 $\operatorname{Spec}(\mathcal O_X/\mathcal I)$ 到 $\operatorname{Spec}(\mathcal O/\mathcal I^{\{p\}})$ 的\Term{canonical}{典范}\Term{immersion}{浸入}。
+
+\textbf{4.1.1。}\footnote{编者注（43）：以下对原文作了展开。}设 $t:T\to S$ 是一个\Term{base-change}{基变换}，$X_T=X\mathbin{\mathop\times\limits_{q,t}}T$。考虑 $X_T$ 经 $\operatorname{fr}(T)$ 的\Term{inverse-image}{逆像}：
+\[
+\begin{tikzcd}
+(X_T)^{(p/T)}\arrow[r]\arrow[d]&X_T\arrow[r]\arrow[d]&X\arrow[d,"q"]\\
+T\arrow[r,"\operatorname{fr}(T)"']&T\arrow[r,"t"']&S.
+\end{tikzcd}
+\]
+由于 $t\circ\operatorname{fr}(T)=\operatorname{fr}(S)\circ t$，$(X_T)^{(p/T)}$ 可与 $X^{(p/S)}$ 经 $t$ 的\Term{inverse-image}{逆像}等同；换言之，有\Term{canonical}{典范}\Term{isomorphism}{同构}
+\[
+X_T^{(p/T)}\xrightarrow{\sim}(X^{(p/S)})_T.
+\]
+显然，在这一等同下，$\operatorname{Fr}(X_T/T)$ 与 $\operatorname{Fr}(X/S)$ 的\Term{inverse-image}{逆像} $\operatorname{Fr}(X/S)_T$ 等同。
+
+\SourcePage{470}
+\textbf{4.1.1.1。}特别地，若 $S$ 是素\Term{field}{域} $\mathbf F_p$ 的谱，则 $X^{(p/S)}=X$，且 $\operatorname{Fr}(X/S)=\operatorname{fr}(X)$。所以 $X_T^{(p/T)}$ 与 $X_T$ 等同，$\operatorname{Fr}(X_T/T)$ 与 $\operatorname{fr}(X)_T$ 等同。
+
+例如，若 $E$ 是\Term{set}{集合}，$E_T$ 是类型为 $E$ 的\Term{constant-scheme}{常值} $T$-\Term{scheme}{概形}，则 $E_T^{(p/T)}\simeq E_T$ 且 $\operatorname{Fr}(E_T/T)\simeq\operatorname{id}_{E_T}$。
+
+\textbf{4.1.2。}\Term{functor}{函子} $X\mapsto X^{(p/S)}$ 显然与积交换；因此它将 $S$-\Term{group}{群} $G$ 变成一个 $S$-\Term{group}{群} $G^{(p/S)}$；此外，因为 $\operatorname{Fr}$ 是\Term{natural-transformation}{自然变换}，所以
+\[
+\operatorname{Fr}(G/S):G\longrightarrow G^{(p/S)}
+\]
+是 $S$-\Term{group}{群}\Term{homomorphism}{同态}。以 $\operatorname{Fr}G$ 表示它的\Term{kernel}{核}。
+
+若 $r:T\to S$ 是 $S$ 上方的\Term{scheme}{概形}，则由 4.1 的图 $(\dagger)$，$\operatorname{Fr}G$ 在 $r$ 处的值是\Term{homomorphism}{同态}
+\[
+G(\operatorname{fr}(T)):G(r)\longrightarrow G(r\circ\operatorname{fr}(T))
+\]
+的\Term{kernel}{核}。现在，若 $T$ 是某个 $S$-\Term{scheme}{概形} $R$ 上的\Term{dual-number-scheme}{对偶数概形} $I_R$，则 $\operatorname{fr}(I_R)$ \Term{resolution}{分解}为
+\[
+I_R\xrightarrow{\mathrm{can.}}R\xrightarrow{\operatorname{fr}(R)}R\xrightarrow{s}I_R,
+\]
+其中 $s$ 为\Term{zero-section}{零截面}。因此，$(\operatorname{Fr}G)(I_R)$ 包含\Term{morphism}{态射} $G(s):G(I_R)\to G(R)$ 的\Term{kernel}{核} $\underline{\operatorname{Lie}}(G/S)(R)$，从而有
+$\underline{\operatorname{Lie}}(G/S)=\underline{\operatorname{Lie}}(\operatorname{Fr}G/S)$。
+
+\textbf{4.1.3。}更一般地，对每个 $S$-\Term{functor}{函子} $X$，用公式
+\[
+X^{(p)}=X^{(p/S)},\qquad X^{(p^n)}=(X^{(p^{n-1})})^{(p)}
+\]
+对 $n$ 递归定义 $S$-\Term{functor}{函子} $X^{(p^n)}$。同样，以 $\operatorname{Fr}^n(X/S)$ 或 $\operatorname{Fr}^n$ 表示复合\Term{natural-transformation}{自然变换}
+\[
+\begin{aligned}
+X&\xrightarrow{\operatorname{Fr}(X/S)}X^{(p)}\xrightarrow{\operatorname{Fr}(X^{(p)}/S)}X^{(p^2)}\longrightarrow\cdots\\
+&\hspace{35mm}\longrightarrow X^{(p^{n-1})}\xrightarrow{\operatorname{Fr}(X^{(p^{n-1})}/S)}X^{(p^n)}.
+\end{aligned}
+\]
+注意，由 4.1.1，$\operatorname{Fr}(X^{(p)}/S)$ 等于 $\operatorname{Fr}(X/S)^{(p)}$，即下图交换：
+\[
+\begin{tikzcd}
+X^{(p)}\arrow[r]\arrow[d,"\operatorname{Fr}(X^{(p)}/S)"']&X\arrow[d,"\operatorname{Fr}(X/S)"]\\
+X^{(p^2)}\arrow[r]&X^{(p)}.
+\end{tikzcd}
+\]
+若 $G$ 是 $S$-\Term{group-functor}{群函子}，则 $G^{(p^n)}$ 也是，且 $\operatorname{Fr}^n(G/S)$ 是 $S$-\Term{group-functor}{群函子}的\Term{homomorphism}{同态}。
+\begin{SGAresult}{定义}{}
+以 $\operatorname{Fr}^nG$ 表示 $\operatorname{Fr}^n(G/S)$ 的\Term{kernel}{核}；若 $\operatorname{Fr}^n(G/S)$ 为零，即 $\operatorname{Fr}^nG=G$，则称 $G$ 的\Term{height}{高度} $\leq n$。
+\end{SGAresult}
+\begin{SGAresult}{\Term{lemma}{引理}}{}
+$G$ 的子\Term{group-functor}{群函子} $\operatorname{Fr}^nG$ 是\Term{characteristic-subgroup}{特征的}，即对每个 $S$-\Term{scheme}{概形} $T$，$T$-\Term{group-functor}{群函子} $G_T$ 的每个\Term{endomorphism}{自同态} $\phi$ 都诱导 $(\operatorname{Fr}^nG)_T$ 的\Term{endomorphism}{自同态}。
+\end{SGAresult}
+\SourcePage{471}
+\begin{proof}
+事实上，由 4.1.1，$G^{(p^n)}$ 和 $\operatorname{Fr}^n(G/S)$ 的构造与\Term{base-change}{基变换}交换，故可假设 $T=S$；此时断言来自 $\operatorname{Fr}^n(G/S)$ 是\Term{natural-transformation}{自然变换}。
+\end{proof}
+\textbf{4.1.4。}下面给出一些例子。
+
+ a）先考虑一个“抽象”\Term{abelian-group}{交换群} $M$ 及类型为 $M$ 的\Term{diagonalizable-group}{可对角化群} $G=D_S(M)$（I 4.4）：对每个 $S$-\Term{scheme}{概形} $T$，$G(T)$ 因而是\Term{abelian-group}{交换群} $\operatorname{Hom}_{(\mathrm{Ab})}(M,\Gamma(T,\mathcal O_T)^\times)$。由于 $G$ 是 $\mathbf F_p$ 上的\Term{diagonalizable-group}{可对角化群} $D(M)$ 的\Term{inverse-image}{逆像}，$G^{(p)}$ 与 $G$ 等同，而 $\operatorname{Fr}(G/S)(T)$ 与 $G(T)$ 的\Term{endomorphism}{自同态} $x\mapsto x^p$ 等同（4.1.1）。特别地，当 $M=\mathbf Z$ 时，$D_S(M)=\mathbf G_{m,S}$，所以：
+
+\emph{$\operatorname{Fr}\mathbf G_{m,S}$ 是 $S$-\Term{group}{群} $\boldsymbol\mu_{p,S}$，它将每个 $S$-\Term{scheme}{概形} $T$ 对应到 $\Gamma(T,\mathcal O_T)^*$ 中的 $p$ 次\Term{root-of-unity}{单位根}组成的\Term{group}{群}。}
+
+ b）现在考虑\Term{characteristic}{特征} $p$ 的\Term{scheme}{概形} $S$ 及 $S$ 上的\Term{module}{模}\Term{sheaf}{层} $\mathcal E$。由 I 4.6.2，有\Term{canonical}{典范}\Term{isomorphism}{同构}
+\[
+\mathbf W(\mathcal E)^{(p)}\simeq\mathbf W(\mathcal E^{(p)}),
+\]
+其中 $\mathcal E^{(p)}$ 是 $\mathcal E$ 经 $\operatorname{fr}(S)$ 的\Term{inverse-image}{逆像}。对每个 $S$-\Term{scheme}{概形} $\pi:T\to S$，由 4.1 $(\dagger)$，映射 $\operatorname{Fr}(\mathbf W(\mathcal E))(\pi)$ 由\Term{commutative-triangle}{交换三角形}
+\[
+\begin{tikzcd}
+\Gamma(T,\pi^*\operatorname{fr}(S)^*\mathcal E)\arrow[rr,"\sim","\mathrm{can.}"']&&\Gamma(T,\operatorname{fr}(T)^*\pi^*\mathcal E)\\
+&\Gamma(T,\pi^*\mathcal E)\arrow[ul,"\operatorname{Fr}(\mathbf W(\mathcal E)/S)(\pi)"]\arrow[ur,"f'"']&
+\end{tikzcd}
+\]
+确定，其中 $f'$ 是 $\operatorname{fr}(T)$ 诱导的映射。
+
+特别地，若 $\mathcal E=\mathcal O_S$，则 $\mathbf W(\mathcal E)$ 与\Term{additive-group}{加法群} $\mathbf G_{a,S}$ 等同。此时 $\mathcal E^{(p)}=\mathcal E=\mathcal O_S$，\Term{relative-frobenius}{Frobenius 态射} $\operatorname{Fr}(\mathbf G_{a,S}/S)$ 将 $x\in\Gamma(T,\mathcal O_T)$ 送到 $x^p$。所以：
+
+\emph{$\operatorname{Fr}\mathbf G_{a,S}$ 是 $S$-\Term{group}{群} $\boldsymbol\alpha_{p,S}$，它将每个 $S$-\Term{scheme}{概形} $T$ 对应到\Term{group}{群} $\{x\in\Gamma(T,\mathcal O_T)\mid x^p=0\}$。}
+
+ c）同样可见，对每个\Term{quasi-coherent}{拟凝聚} $\mathcal O_S$-\Term{algebra}{代数} $\mathcal A$，$(\operatorname{Spec}\mathcal A)^{(p)}$ 可与 $\mathcal A$ 经 $\operatorname{fr}(S)$ 的\Term{inverse-image}{逆像} $\mathcal A^{(p)}$ 的谱 $\operatorname{Spec}\mathcal A^{(p)}$ 等同。若 $\pi$ 表示\Term{sheaf-of-rings}{环层} $\mathcal O_S$ 的\Term{endomorphism}{自同态} $x\mapsto x^p$，则有
+\[
+\mathcal A^{(p)}=\mathcal A\otimes_\pi\mathcal O_S,
+\]
+\footnote{编者注（44）：$\mathcal A\otimes_\pi\mathcal O_S$ 表示经\Term{scalar-extension}{标量扩张} $\pi:\mathcal O_S\to\mathcal O_S$ 得到的 $\mathcal O_S$-\Term{algebra}{代数}，即有 $ax\otimes_\pi1=a\otimes_\pi x^p$ 及 $x\cdot(a\otimes_\pi1)=a\otimes_\pi x$。}
+且 $\operatorname{Fr}((\operatorname{Spec}\mathcal A)/S)$ 由 $a\otimes_\pi x\mapsto a^px$ 定义的 $\mathcal O_S$-\Term{algebra}{代数}\Term{morphism}{态射} $\mathcal A\otimes_\pi\mathcal O_S\to\mathcal A$ 诱导。
+
+\SourcePage{472}
+最后，对每个\Term{quasi-coherent}{拟凝聚} $\mathcal O_S$-\Term{module}{模} $\mathcal E$，有\Term{canonical}{典范}\Term{isomorphism}{同构}
+\[
+\mathbf V(\mathcal E)^{(p)}\simeq\mathbf V(\mathcal E^{(p)}),\qquad
+\mathrm S(\mathcal E)^{(p)}\simeq\mathrm S(\mathcal E^{(p)}),
+\]
+其中 $\mathrm S(\mathcal E)$ 表示 $\mathcal O_S$-\Term{module}{模} $\mathcal E$ 的\Term{symmetric-algebra}{对称代数}。
+
+ d）设 $\mathcal U$ 是 $\mathcal O_S$-\Term{coalgebra}{余代数}（3.1），$T$ 是\Term{characteristic}{特征} $p$ 的\Term{scheme}{概形}。若以 $\mathcal U^{(p/S)}$ 或 $\mathcal U^{(p)}$ 表示\Term{coalgebra}{余代数} $\mathcal U$ 经 $\operatorname{fr}(S)$ 的\Term{inverse-image}{逆像}，则如 b）中一样有\Term{canonical}{典范}\Term{isomorphism}{同构}
+\[
+(\operatorname{Spec}^*\mathcal U)^{(p)}\simeq\operatorname{Spec}^*\mathcal U^{(p)}.
+\]
+若 $\mathcal U$ 是\Term{group-coalgebra}{群余代数}，则 $\operatorname{Fr}(\operatorname{Spec}^*\mathcal U)$，即\Term{relative-frobenius}{Frobenius 态射} $\operatorname{Spec}^*\mathcal U\to(\operatorname{Spec}^*\mathcal U)^{(p)}$ 的\Term{kernel}{核}，在一个 $S$-\Term{scheme}{概形} $T$ 处的值，是下列\Term{set}{集合}
+\[
+(\operatorname{Spec}^*\mathcal U)(T)=\{x\in\Gamma(T,\mathcal U_T)\mid\epsilon_{\mathcal U_T}(x)=1,\quad\Delta_{\mathcal U_T}x=x\otimes x\}
+\]
+中满足以下条件的元素 $\gamma$ 的\Term{set}{集合}：$\Gamma(T,\mathcal U_T)\otimes_{\operatorname{fr}(T)}\mathcal O(T)$ 的元素 $\gamma\otimes_{\operatorname{fr}(T)}1$ 在 $\Gamma(T,\mathcal U_T\otimes_{\operatorname{fr}(T)}\mathcal O_T)$ 中的像等于 $1$。
+
+\textbf{4.2。}\footnote{编者注（45）：第 4.2、4.3 号的内容亦可参看 [DG70]，§ IV.3，第 4–6 号。}现在讨论一个与前面相近的构造。设 $S$ 是\Term{characteristic}{特征} $p$ 的\Term{scheme}{概形}，$X$ 是 $S$-\Term{scheme}{概形}，$X_S^p$ 是 $(\mathrm{Sch}/S)$ \Term{category}{范畴}中 $p$ 个 $X$ 的积。
+
+以 $U^p(X)$ 表示 $X_S^p$ 的开子\Term{scheme}{概形}，它是所有 $U_S^p$ 的并，其中 $U$ 遍历 $X$ 的\Term{affine}{仿射}\Term{open-subset}{开集}。因此，$X_S^p$ 的一个点 $x$ 属于 $U^p(X)$，当且仅当 $x$ 在 $X_S^p$ 的各因子上的\Term{projection}{投影} $\operatorname{pr}_i x$ 都属于 $X$ 的同一个\Term{affine}{仿射}\Term{open-subset}{开集}。例如，若 $X$ 的每个\Term{finite}{有限}\Term{subset}{子集}都包含于一个\Term{affine}{仿射}\Term{open-subset}{开集}中，则 $U^p(X)=X_S^p$。
+
+$p$ 次\Term{symmetric-group}{对称群} $\mathfrak S_p$ 通过置换因子\Term{action}{作用}于 $X_S^p$，并保持\Term{open-subset}{开集} $U^p(X)$ \Term{stable}{稳定}。称 $X_S^p$ 对 $\mathfrak S_p$ 在\Term{ringed-space}{赋环空间}\Term{category}{范畴}中的\Term{quotient}{商}为 $X$ 的\Term{symmetric-product}{ $p$ 重对称积}，记为 $\Sigma^p X$。设 $q(X)$ 或简记 $q$ 为\Term{canonical}{典范}\Term{projection}{投影} $X_S^p\to\Sigma^p X$。
+
+于是 $q$ 将 $U^p(X)$ 映到\Term{symmetric-product}{对称积}中的一个\Term{open-subset}{开集} $V^p(X)$，它可描述如下（见 V 4.1）。$\Sigma^p X$ 的\Term{structure-sheaf}{结构层}在 $V^p(X)$ 上诱导一个\Term{scheme}{概形}结构；$q(X)$ 诱导的\Term{morphism}{态射} $q'(X):U^p(X)\to V^p(X)$ 是\Term{affine}{仿射}的，甚至是\Term{integral-morphism}{整}的；当 $U$ 遍历 $X$ 中映到 $S$ 的某个可变\Term{affine}{仿射}\Term{open-subset}{开集} $V$ 内的\Term{affine}{仿射}\Term{open-subset}{开集}时，各 $\Sigma^pU$ 构成 $V^p(X)$ 的\Term{affine-covering}{仿射覆盖}；若 $R$ 是 $V$ 的\Term{affine-algebra}{仿射代数}，$A$ 是 $U$ 的\Term{affine-algebra}{仿射代数}，则 $\Sigma^pU$ 的\Term{affine-algebra}{仿射代数}是 $\bigotimes_R^p A$ 中由\Term{symmetric-tensor}{对称张量}组成的子\Term{algebra}{代数} $\Sigma^p A$。
+
+现在考虑从 $X$ 到 $U^p(X)$ 的\Term{diagonal-morphism}{对角态射} $\delta$。若 $V=\operatorname{Spec}R$ 是 $S$ 的\Term{affine}{仿射}\Term{open-subset}{开集}，$U=\operatorname{Spec}A$ 是 $X$ 中位于 $V$ 上方的\Term{affine}{仿射}\Term{open-subset}{开集}，则 $\delta$ 在 $U$ 上的\Term{restriction}{限制}由\Term{algebra}{代数}\Term{morphism}{态射}
+\[
+\eta:\bigotimes_R^p A\longrightarrow A,\qquad a_1\otimes\cdots\otimes a_p\longmapsto a_1a_2\cdots a_p
+\]
+定义。
+
+\SourcePage{473}
+因此，若 $N$ 是\Term{symmetrization}{对称化}\Term{operator}{算子}，则
+\[
+\begin{aligned}
+\eta\bigl(N(a_1\otimes\cdots\otimes a_p)\bigr)
+&=\eta\Bigl(\sum_{\sigma\in\mathfrak S_p}a_{\sigma(1)}\otimes\cdots\otimes a_{\sigma(p)}\Bigr)\\
+&=p!\,a_1\cdots a_p=0.
+\end{aligned}
+\]
+换言之，$\eta$ 在 $\Sigma^p A$ 中由经\Term{symmetrization}{对称化}的张量组成的子\Term{space}{空间} $N(\bigotimes_R^p A)$ 上为零。此外，若 $f$ 是\Term{symmetric-tensor}{对称张量}，显然有 $N(fa)=fN(a)$，这说明 $N(\bigotimes_R^p A)$ 是 $\Sigma^p A$ 的\Term{ideal}{理想}。以下记
+\[
+U^{[p/S]}=\operatorname{Spec}\Bigl(\Sigma^p A/N\bigl(\bigotimes_R^p A\bigr)\Bigr);
+\]
+它是 $\Sigma^p(U)=V^p(U)$ 的\Term{closed-subscheme}{闭子概形}。当 $U$ 遍历 $X$ 中映到 $S$ 的某个可变\Term{affine}{仿射}\Term{open-subset}{开集} $V$ 内的\Term{affine}{仿射}\Term{open-subset}{开集}时，各 $U^{[p/S]}$ 的并是 $V^p(X)$ 的一个\Term{closed-subscheme}{闭子概形}，记为 $X^{[p/S]}$。
+
+此外，若 $i(X)$ 表示 $X^{[p/S]}$ 到 $V^p(X)$ 的包含\Term{morphism}{态射}，则刚才已经证明 $q'(X)\circ\delta$ 通过 $X^{[p/S]}$ \Term{resolution}{分解}，从而得到\Term{morphism}{态射} $F^{[p]}(X/S):X\to X^{[p/S]}$：\footnote{编者注（46）：原文将这个\Term{morphism}{态射}记为 $F_0$，而将\Term{relative-frobenius}{相对 Frobenius 态射}记为 $F$。}
+\[
+\begin{tikzcd}
+X_S^p\arrow[d,"q(X)"']&U^p(X)\arrow[l,phantom,"\subset"]\arrow[d,"q'(X)"]&X\arrow[l,"\delta(X)"']\arrow[d,"{F^{[p]}(X/S)}"]\\
+\Sigma^p(X)&V^p(X)\arrow[l,phantom,"\subset"]&X^{[p/S]}\arrow[l,"i(X)"] .
+\end{tikzcd}
+\]
+显然，$X^{[p/S]}$ 对 $X$ 具有\Term{functorial}{函子性}，且映射 $F^{[p]}:X\mapsto F^{[p]}(X/S)$ 是一个\Term{natural-transformation}{自然变换}。
+
+\textbf{4.2.1。}\Term{scheme}{概形} $X^{[p/S]}$ 与 $X^{(p/S)}$ 显然相互关联。设 $V$ 是 $S$ 的\Term{affine}{仿射}\Term{open-subset}{开集}，其\Term{affine-ring}{仿射环}为 $R$；$U$ 是 $X$ 中位于 $V$ 上方的\Term{affine}{仿射}\Term{open-subset}{开集}，其\Term{affine-algebra}{仿射代数}为 $A$。若 $\pi$ 表示 $R$ 的\Term{endomorphism}{自同态} $x\mapsto x^p$，则 $U^{(p/S)}$ 的\Term{affine-algebra}{仿射代数}为 $A\otimes_\pi R$。还可核对，映射
+\[
+a\otimes_\pi\lambda\longmapsto
+\lambda a\otimes\cdots\otimes a\pmod{N\bigl(\bigotimes_R^p A\bigr)}
+\]
+定义了从 $A\otimes_\pi R$ 到 $\Sigma^p A/N(\bigotimes_R^p A)$ 的 $R$-\Term{algebra}{代数}\Term{morphism}{态射}，它诱导\Term{morphism}{态射} $\varphi(U):U^{[p/S]}\to U^{(p/S)}$，满足 $\varphi(U)\circ F^{[p]}(U/S)=\operatorname{Fr}(U/S)$。
+
+“将各片\Term{gluing}{粘合}”，便得到\Term{commutative-triangle}{交换三角形}
+\[
+\begin{tikzcd}
+&X\arrow[dl,"{F^{[p]}(X/S)}"']\arrow[dr,"\operatorname{Fr}(X/S)"]&\\
+X^{[p/S]}\arrow[rr,"\varphi(X)"']&&X^{(p/S)}.
+\end{tikzcd}
+\]
+例如，若 $X$ 是由\Term{quasi-coherent}{拟凝聚}\Term{ideal}{理想} $\mathcal I$ 定义的 $S$ 的\Term{subscheme}{子概形}，则 $F^{[p]}(X/S)$ 与 $X$ 的\Term{identity-morphism}{恒等态射}等同，所以 $\varphi(X)$ 是从 $\operatorname{Spec}(\mathcal O_S/\mathcal I)$ 到 $\operatorname{Spec}(\mathcal O_S/\mathcal I^{\{p\}})$ 的\Term{canonical}{典范}\Term{immersion}{浸入}。
+\SourcePage{474}
+由此可见，$\varphi(X)$ 一般不是\Term{isomorphism}{同构}。
+
+不过，当 $M$ 是\Term{free-module}{自由} $R$-\Term{module}{模}时，映射
+\[
+\begin{aligned}
+M\otimes_\pi R&\longrightarrow\Sigma^p M/N\bigl(\bigotimes_R^p M\bigr),\\
+m\otimes_\pi\lambda&\longmapsto\lambda m\otimes\cdots\otimes m\pmod{N\bigl(\bigotimes_R^p M\bigr)}
+\end{aligned}
+\]
+显然是\Term{bijection}{双射}；所以当 $M$ 在 $R$ 上\Term{flat}{平坦}时，这一映射仍是\Term{bijection}{双射}，因为每个\Term{flat-module}{平坦模}都是\Term{free-module}{自由模}的\Term{filtered-inductive-limit}{滤过归纳极限}（Lazard\footnote{原注（*）：D. Lazard，\emph{C. R. Acad. Sc. Paris} \textbf{258}，1964，6313–6316 页。}\footnote{编者注（47）：亦见 D. Lazard，\emph{Bull. Soc. Math. France} \textbf{97}（1969），81–128 页；或 [BAlg]，X § 1.6，\Term{theorem}{定理} 1。}）。由此可知：
+
+\emph{若 $X$ 是\Term{flat}{平坦} $S$-\Term{scheme}{概形}，则 $\varphi(X):X^{[p/S]}\to X^{(p/S)}$ 是\Term{isomorphism}{同构}。}
+
+\textbf{4.3。}最后考虑交换 $S$-\Term{group-scheme}{群概形} $G$。由\Term{multiplication}{乘法}定义的复合\Term{morphism}{态射} $\mu(G):U^p(G)\hookrightarrow G_S^p\to G$ 通过 $V^p(G)$ \Term{resolution}{分解}，即存在\Term{morphism}{态射} $\nu(G):V^p(G)\to G$ 满足 $\nu(G)\circ q'(G)=\mu(G)$，从而有下述\Term{commutative-diagram}{交换图}：
+\[
+\begin{tikzcd}[column sep=large,row sep=large]
+G&U^p(G)\arrow[l,"\mu(G)"']\arrow[d,"q'(G)"']&G\arrow[l,"\delta(G)"']\arrow[d,"{F^{[p]}(G/S)}"]\arrow[ddl,bend left=35,"\operatorname{Fr}(G/S)"]\\
+&V^p(G)\arrow[ul,"\nu(G)"]&G^{[p/S]}\arrow[l,"i(G)"]\arrow[dl,"\varphi(G)"]\\
+&G^{(p/S)}\arrow[uul,dotted,bend left=25,"\operatorname{Ver}(G/S)"']&
+\end{tikzcd}
+\]
+当 $G$ 在 $S$ 上\Term{flat}{平坦}时，$\varphi(G)$ 是\Term{isomorphism}{同构}，可以用公式
+\[
+\operatorname{Ver}(G/S)=\nu(G)\circ i(G)\circ\varphi(G)^{-1}
+\]
+定义一个\Term{morphism}{态射}
+\[
+\operatorname{Ver}(G/S):G^{(p/S)}\longrightarrow G,
+\]
+称为\Term{verschiebung}{Verschiebung}。当 $G$ 遍历\Term{flat}{平坦}交换 $S$-\Term{group-scheme}{群概形}时，映射 $\operatorname{Ver}:G\mapsto\operatorname{Ver}(G/S)$ 显然是一个\Term{natural-transformation}{自然变换}；所以 $\operatorname{Ver}(G/S)$ 是\Term{group}{群}\Term{homomorphism}{同态}。最后，对每个 $S$-\Term{scheme}{概形} $T$，复合映射
+\[
+G(T)\xrightarrow{\delta(G)(T)}U^p(G)(T)\xrightarrow{\mu(G)(T)}G(T)
+\]
+将 $x\in G(T)$ 送到 $p\cdot x$。可用 $p\cdot\operatorname{id}_G$ 表示 $\mu(G)\circ\delta(G)$，于是得到经典公式
+\[
+\operatorname{Ver}(G/S)\circ\operatorname{Fr}(G/S)=p\cdot\operatorname{id}_G.\tag{$*$}
+\]
+\SourcePage{475}
+\textbf{例 4.3.1。}（a）若 $G$ 是常值交换 $S$-\Term{group-scheme}{群概形}，已知 $\operatorname{Fr}(G/S)$ 与 $G$ 的\Term{identity-morphism}{恒等态射}等同（见 4.1.1.1）。因此 $\operatorname{Ver}(G/S)=p\operatorname{id}_G$。
+
+（b）若 $G$ 是类型为 $M$ 的\Term{diagonalizable-group}{可对角化} $S$-\Term{group}{群}，则由 4.1.4 a），$\operatorname{Fr}(G/S)=p\operatorname{id}_G$；容易看出，此时 $\operatorname{Ver}(G/S)$ 是 $G$ 的\Term{identity-morphism}{恒等态射}。
+
+（c）若 $\mathcal E$ 是\Term{flat}{平坦} $\mathcal O_S$-\Term{module}{模}，$G$ 是 $S$-\Term{group}{群} $\mathbf V(\mathcal E)$，则\Term{morphism}{态射} $\operatorname{Ver}(G/S)$ 与 $p\cdot\operatorname{id}_G$ 一样为零。在第 VII B 讲将看到，\Term{field}{域} $k$ 上的交换\Term{algebraic-group}{代数群} $G$ 是“\Term{unipotent}{幺幂}的”，当且仅当存在某个 $n$，使复合\Term{homomorphism}{同态}
+\[
+\begin{aligned}
+G^{(p^n)}&\xrightarrow{\operatorname{Ver}(G^{(p^{n-1})}/S)}G^{(p^{n-1})}\longrightarrow\cdots\\
+&\hspace{35mm}\longrightarrow G^{(p)}\xrightarrow{\operatorname{Ver}(G/S)}G
+\end{aligned}
+\]
+为零（这里令 $G^{(p^n)}=(G^{(p^{n-1})})^{(p)}$，见 4.1.3）。\footnote{编者注（48）：这一点没有在第 VII B 讲明确写出，可参看 [DG70]，§ IV.3，命题 4.11。}
+
+\textbf{4.3.2。}由于当 $G$ 遍历\Term{flat}{平坦}交换 $S$-\Term{group-scheme}{群概形}时，映射 $\operatorname{Ver}:G\mapsto\operatorname{Ver}(G/S)$ 是\Term{natural-transformation}{自然变换}，所以方图
+\[
+\begin{tikzcd}
+G^{(p)}\arrow[r,"\operatorname{Ver}(G/S)"]\arrow[d,"\operatorname{Fr}(G/S)^{(p)}"']&G\arrow[d,"\operatorname{Fr}(G/S)"]\\
+G^{(p^2)}\arrow[r,"\operatorname{Ver}(G^{(p)}/S)"']&G^{(p)}
+\end{tikzcd}
+\]
+交换，其中 $\operatorname{Fr}(G/S)^{(p)}$ 表示 $\operatorname{Fr}(G/S)$ 经\Term{base-change}{基变换} $\operatorname{fr}(S)$ 的\Term{inverse-image}{逆像}。由 4.1.1，有 $\operatorname{Fr}(G/S)^{(p)}=\operatorname{Fr}(G^{(p)}/S)$，故将 4.3 $(*)$ 应用于 $G^{(p)}$，得到
+\[
+\begin{aligned}
+\operatorname{Fr}(G/S)\circ\operatorname{Ver}(G/S)
+&=\operatorname{Ver}(G^{(p)}/S)\circ\operatorname{Fr}(G^{(p)}/S)\\
+&=p\cdot\operatorname{id}_{G^{(p)}}.
+\end{aligned}\tag{$**$}
+\]
+\textbf{4.3.3。}最后假设 $G$ 是交换、\Term{finite}{有限}且\Term{locally-free}{局部自由}的 $S$-\Term{group}{群}；设 $\mathcal A$ 是 $G$ 的\Term{affine-algebra}{仿射} $\mathcal O_S$-\Term{algebra}{代数}，$\pi$ 是将 $\mathcal O_S$ 的\Term{section}{截面} $x$ 送到 $x^p$ 的\Term{sheaf-of-rings}{环层} $\mathcal O_S$ 的\Term{endomorphism}{自同态}。
+
+\footnote{编者注（49）：改变了叙述顺序，先引入后面图中涉及的\Term{object}{对象}。}以 $\Sigma^p\mathcal A$ 表示 $\bigotimes_{\mathcal O_S}^p\mathcal A$ 中由在\Term{symmetric-group}{对称群}\Term{action}{作用}下\Term{invariant}{不变}的\Term{section}{截面}组成的子\Term{algebra}{代数}，以 $i(\mathcal A)$ 表示 $\Sigma^p\mathcal A$ 到该\Term{tensor-product}{张量积}的包含\Term{morphism}{态射}。设 $\Delta^p(\mathcal A):\mathcal A\to\bigotimes_{\mathcal O_S}^p\mathcal A$ 是将\Term{coalgebra}{余代数} $\mathcal A$ 的\Term{diagonal-morphism}{对角态射}迭代得到的\Term{morphism}{态射}（它对应于从 $U^p(G)=G_S^p$ 到 $G$ 的\Term{multiplication}{乘法}\Term{morphism}{态射}）；由 4.3 开头，$\Delta^p(\mathcal A)$ 通过 $\Sigma^p\mathcal A$ \Term{resolution}{分解}，即诱导\Term{morphism}{态射}
+\[
+a(\mathcal A):\mathcal A\longrightarrow\Sigma^p\mathcal A,
+\]
+满足 $i(\mathcal A)\circ a(\mathcal A)=\Delta^p(\mathcal A)$。
+
+\SourcePage{476}
+另一方面，设 $\mathrm S^p(\mathcal A)$ 是 $\mathcal A$ 的\Term{symmetric-algebra}{对称代数}的 $p$ 次\Term{homogeneous-component}{齐次部分}，$q(\mathcal A):\bigotimes_{\mathcal O_S}^p\mathcal A\to\mathrm S^p(\mathcal A)$ 是\Term{canonical}{典范}\Term{projection}{投影}。\Term{multiplication}{乘法} $m^p(\mathcal A):\bigotimes_{\mathcal O_S}^p\mathcal A\to\mathcal A$ 通过 $\mathrm S^p(\mathcal A)$ \Term{resolution}{分解}，即诱导映射
+\[
+b(\mathcal A):\mathrm S^p(\mathcal A)\longrightarrow\mathcal A,
+\]
+满足 $b(\mathcal A)\circ q(\mathcal A)=m^p(\mathcal A)$。
+
+因为 $\Sigma^p\mathcal A$ 是 $V^p(\mathcal A)$ 的\Term{affine-algebra}{仿射代数}，再次由 4.3 的开头，复合\Term{morphism}{态射} $i(G)\circ\varphi(G)^{-1}$ 诱导\Term{algebra}{代数}\Term{homomorphism}{同态}
+\[
+r(\mathcal A):\Sigma^p\mathcal A\longrightarrow\mathcal A\otimes_\pi\mathcal O_S;
+\]
+此\Term{homomorphism}{同态}在形如
+\[
+\sum_{\sigma\in\mathfrak S_p}a_{\sigma(1)}\otimes\cdots\otimes a_{\sigma(p)}
+\]
+的\Term{section}{截面}上为零，并将 $a\otimes\cdots\otimes a$ 送到 $a\otimes_\pi1$。同样，$j(\mathcal A)$ 是 $\mathcal O_S$-\Term{module}{模}\Term{morphism}{态射} $a\otimes_\pi1\mapsto q(a\otimes\cdots\otimes a)$。因而得到\Term{commutative-diagram}{交换图}
+\[
+\tag{$\mathcal A$}
+\begin{tikzcd}[column sep=large,row sep=large]
+\mathcal A\arrow[rr,"\Delta^p(\mathcal A)"]\arrow[dr,"a(\mathcal A)"']&&\displaystyle\bigotimes_{\mathcal O_S}^p\mathcal A\arrow[rr,"m^p(\mathcal A)"]\arrow[dr,"q(\mathcal A)"]&&\mathcal A\\
+&\Sigma^p\mathcal A\arrow[ur,"i(\mathcal A)"]\arrow[dr,"r(\mathcal A)"']&&\mathrm S^p(\mathcal A)\arrow[ur,"b(\mathcal A)"']&\\
+&&\mathcal A\otimes_\pi\mathcal O_S\arrow[ur,"j(\mathcal A)"']&&
+\end{tikzcd}
+\]
+复合 $r(\mathcal A)\circ a(\mathcal A)$ 对应于\Term{verschiebung}{Verschiebung}\Term{morphism}{态射} $\operatorname{Ver}(G/S)$，而 $b(\mathcal A)\circ j(\mathcal A)$ 对应于\Term{relative-frobenius}{Frobenius 态射} $\operatorname{Fr}(G/S)$。
+
+上面的\Term{commutative-diagram}{交换图} $(\mathcal A)$ 是\Term{self-dual}{自对偶}的。事实上，设 $D$ 是将每个 $\mathcal O_S$-\Term{module}{模} $\mathcal M$ 对应到\Term{dual-module}{对偶模} $\mathcal Hom_{\mathcal O_S}(\mathcal M,\mathcal O_S)$ 的\Term{functor}{函子}；显然，图 $(\mathcal A)$ 经\Term{functor}{函子} $D$ 的像正是图 $(D\mathcal A)$，而\Term{morphism}{态射} $Dr(\mathcal A)$、$Da(\mathcal A)$、$Dj(\mathcal A)$、$Db(\mathcal A)$ 分别与 $j(D\mathcal A)$、$b(D\mathcal A)$、$r(D\mathcal A)$、$a(D\mathcal A)$ 等同。由 3.3.1 可见：
+
+\emph{在交换、\Term{finite}{有限}且\Term{locally-free}{局部自由}的 $S$-\Term{group}{群}\Term{category}{范畴}中，\Term{cartier-duality}{Cartier 对偶}互换\Term{relative-frobenius}{Frobenius 态射}与\Term{verschiebung}{Verschiebung}。}\footnote{编者注（50）：亦见 [DG70]，§ IV.3，4.9。}

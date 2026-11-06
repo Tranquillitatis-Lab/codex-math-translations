@@ -1,0 +1,486 @@
+\SGAchapter{VII}{正则浸入与爆破概形的 $K'$ 的计算}{Immersions régulières et calcul du $K'$ d'un schéma éclaté}
+\begin{center}Pierre Berthelot\end{center}
+\SourcePage{426}
+\SGAsection{1}{正则浸入的一般性质}
+经典的\Term{regular-immersion}{正则浸入}概念（EGA IV 16.9.2）在非\Term{noetherian}{诺特}情形下并不适用，因此我们将定义一个较弱的概念；它具有所需的性质，并在\Term{noetherian}{诺特}情形下与通常定义\Term{equivalence}{等价}。
+
+\begin{SGAresult}{定义}{1.1}
+设 $A$ 为\Term{commutative-ring}{交换环}，$E$ 为\Term{finite-projective-module}{有限生成投射 $A$-模}，$u:E\to A$ 为 $A$-\Term{linear-map}{线性同态}。若由 $u$ 定义的\Term{koszul-complex}{Koszul 复形} $K_\bullet(u)$ 在正\Term{dimension}{维数}\Term{homologically-acyclic}{无同调}，从而是 $B=A/u(E)$ 的一个\Term{resolution}{解消}，则称 $u$ 为\Term{regular-homomorphism}{正则同态}。
+\end{SGAresult}
+回顾与 $u$ 相伴的\Term{koszul-complex}{Koszul 复形}的定义：\Term{graded-module}{分次 $A$-模} $K_\bullet(u)$ 为\Term{exterior-algebra}{外代数} $\bigwedge(E)$，\Term{boundary-operator}{边界算子}为将 $u$ 看作\Term{dual-module}{对偶模} $\check E$ 的元素所得到的内乘；它是 $\bigwedge(E)$ 上\Term{degree}{次数}为 $-1$ 的\Term{antiderivation}{反导子}，在 $E$ 上等于 $u$。
+
+\begin{SGAresult}{\Term{lemma}{引理}}{1.2}
+设 $u:E\to A$ 为\Term{regular-homomorphism}{正则同态}，$A'$ 为 $A$-\Term{algebra}{代数}，$u':E'\to A'$ 为由 $u$ 经\Term{base-change}{基变换}得到的\Term{homomorphism}{同态}；假定 $u'$ 也\Term{regular-homomorphism}{正则}。置 $J=u(E)$，$J'=JA'=u(E')$。则对每个整数 $n\geq0$，都有
+\begin{align}
+ (J^n/J^{n+1})\otimes_A A'&\xrightarrow{\sim}J'^n/J'^{n+1},\tag{1.2.1}\\
+ \operatorname{Tor}_i^A(J^n/J^{n+1},A')&=0\quad(i\geq1),\tag{1.2.2}\\
+ J^n\otimes_A A'&\xrightarrow{\sim}J'^n,\tag{1.2.3}\\
+ \operatorname{Tor}_i^A(J^n,A')&=0\quad(i\geq1).\tag{1.2.4}
+\end{align}
+\end{SGAresult}
+\begin{proof}
+a) 先假定各 $J^n/J^{n+1}$ 都是 $B=A/J$ 上的\Term{projective-module}{投射模}；由于 $J$ \Term{finite-type}{有限生成}，它们都是 $B$ 上\Term{finite-locally-free}{有限秩局部自由}的。
+\SourcePage{427}
+待证关系可以在 $\operatorname{Spec}(A)$ 上逐点检验，因而可归结到 $A$ 为\Term{local-ring}{局部环}且 $u(E)\subset\operatorname{rad}(A)$ 的情形。此时各 $J^n/J^{n+1}$ 在 $B$ 上\Term{free-module}{自由}，而关系 $\operatorname{Tor}_i^A(J^n/J^{n+1},A')=0$（$i\geq1$）\Term{equivalence}{等价}于关系 $\operatorname{Tor}_i^A(B,A')=0$（$i\geq1$）。我们可以用 $B$ 的\Term{projective-resolution}{投射解消} $K_\bullet(u)$ 来计算 $\operatorname{Tor}_i^A(B,A')$：它们是\Term{complex}{复形} $K_\bullet(u)\otimes_A A'=K_\bullet(u')$ 的\Term{homology-group}{同调群}。由于假定 $u'$ \Term{regular-homomorphism}{正则}，后一\Term{complex}{复形}在正\Term{degree}{次数}\Term{homologically-acyclic}{无同调}，由此得到 $\operatorname{Tor}_i^A(J^n/J^{n+1},A')=0$（$i\geq1$）。
+
+利用\Term{exact-sequence}{正合列}
+\[
+0\longrightarrow J^n/J^{n+1}\longrightarrow A/J^{n+1}\longrightarrow A/J^n\longrightarrow0
+\]
+所\Term{adjunction}{伴随}的 Tor \Term{exact-sequence}{正合列}，对 $n$ 作归纳，得到 $\operatorname{Tor}_i^A(A/J^n,A')=0$（$i\geq1$）。因每个 $k$ 都有 $J^kA'=J'^k$，从上述\Term{exact-sequence}{正合列}以及 $\operatorname{Tor}_1^A(A/J^n,A')=0$ 可\Term{pushout}{推出}关系 $(J^n/J^{n+1})\otimes_A A'\xrightarrow{\sim}J'^n/J'^{n+1}$。再由\Term{exact-sequence}{正合列}
+\[
+0\longrightarrow J^n\longrightarrow A\longrightarrow A/J^n\longrightarrow0
+\]
+以及 $\operatorname{Tor}_1^A(A/J^n,A')=0$，得到关系 $J^n\otimes_A A'\xrightarrow{\sim}J'^n$。最后，由\Term{exact-sequence}{正合列}
+\[
+0\longrightarrow J^{n+1}\longrightarrow J^n\longrightarrow J^n/J^{n+1}\longrightarrow0
+\]
+\Term{adjunction}{伴随}的 Tor \Term{exact-sequence}{正合列}，对 $n$ 归纳可得 $\operatorname{Tor}_i^A(J^n,A')=0$（$i\geq1$）；$n=0$ 的情形是显然的。
+
+b) 现在证明各 $J^n/J^{n+1}$ 是 $B=A/J$ 上的\Term{projective-module}{投射模}。这个问题在 $\operatorname{Spec}(A)$ 上是\Term{local-scheme}{局部}的，故可设 $E$ \Term{free-module}{自由}，即 $E=A^d$；于是 $u$ 由 $A$ 中的序列 $f_1,\ldots,f_d$ 定义。置 $A_0=\mathbb Z[T_1,\ldots,T_d]$，令 $A_0\to A$ 为将
+\SourcePage{428}
+$T_i$ 映到 $f_i$ 的\Term{homomorphism}{同态}；以 $u_0:E_0=A_0^d\to A_0$ 表示由序列 $(T_1,\ldots,T_d)$ 定义的\Term{homomorphism}{同态}，于是 $u$ 由 $u_0$ 经从 $A_0$ 到 $A$ 的\Term{base-change}{基变换}得到。由于 $(T_1,\ldots,T_d)$ 是（经典意义下的）\Term{regular-sequence}{正则序列}，$u_0$ 是\Term{regular-homomorphism}{正则同态}；对于\Term{base-change}{基变换} $A_0\to A$，\Term{lemma}{引理}的条件得到满足。各 $J_0^n/J_0^{n+1}$ 是 $\mathbb Z$ 上的\Term{finite-free}{有限秩自由模}，故可应用 a) 的结果。因此 $J^n/J^{n+1}\simeq(J_0^n/J_0^{n+1})\otimes_{A_0}A$，从而 $J^n/J^{n+1}$ 是\Term{finite-free}{有限秩自由模}。
+\end{proof}
+
+\begin{SGAresult}{命题}{1.3}
+设 $A$ 为\Term{ring}{环}，$E$ 为\Term{finite-projective-module}{有限生成投射 $A$-模}，$u:E\to A$ 为\Term{regular-homomorphism}{正则同态}，$J=u(E)$。则\Term{ideal}{理想} $J$ 是\Term{quasiregular-ideal}{拟正则}的（EGA IV 16.9.7），也就是说（EGA IV 16.9.8）：
+
+ i) $J$ \Term{finite-type}{有限生成}；
+
+ ii) $J/J^2$ 是\Term{finite-projective-module}{有限生成投射 $A/J$-模}；
+
+ iii) \Term{canonical-map}{典范同态}
+\[
+\operatorname{Sym}_{A/J}(J/J^2)\longrightarrow\operatorname{gr}_J(A)=\bigoplus_{n\geq0}J^n/J^{n+1}\tag{1.3.1}
+\]
+是\Term{isomorphism}{同构}。
+\end{SGAresult}
+\begin{proof}
+在 1.2 b) 的证明中已经看到，$J/J^2$ 是\Term{finite-projective-module}{有限生成投射模}。沿用 1.2 b) 的记号（问题在 $\operatorname{Spec}(A)$ 上是\Term{local-scheme}{局部}的，仍可设 $E$ 为\Term{finite-free}{有限秩自由模}）。由关系 1.2，\Term{canonical-map}{典范同态} (1.3.1) 是由 $J_0$ 的相应\Term{homomorphism}{同态}经\Term{base-change}{基变换} $A_0\to A$ 得到的。后者为\Term{isomorphism}{同构}，所以 (1.3.1) 也是\Term{isomorphism}{同构}。
+\end{proof}
+
+\begin{SGAresult}{定义}{1.4}
+设 $(X,\mathcal A)$ 为\Term{locally-ringed-site}{交换局部赋环景}，$E$ 为\Term{finite-locally-free}{有限秩局部自由} $\mathcal A$-\Term{module}{模}，$u:E\to\mathcal A$ 为 $\mathcal A$-\Term{linear-map}{线性同态}。若由 $u$ 定义的\Term{koszul-complex}{Koszul 复形} $K_\bullet(u)$ 在正\Term{degree}{次数}\Term{homologically-acyclic}{无同调}，就称 $u$ \Term{regular-homomorphism}{正则}。设 $\mathcal J$ 为 $\mathcal A$ 的一个\Term{ideal}{理想}；若在 $X$ 上\Term{local-scheme}{局部}存在\Term{finite-free}{有限秩自由} $\mathcal A$-\Term{module}{模}
+\SourcePage{429}
+$E$ 和\Term{regular-homomorphism}{正则满同态} $E\to\mathcal J$，则称 $\mathcal J$ 为\Term{regular-ideal}{正则理想}。
+
+设 $i:Y\to X$ 为\Term{prescheme}{预概形}的一个\Term{immersion}{浸入}，$U$ 为 $X$ 的一个\Term{open-subset}{开集}，使 $i(Y)\subset U$ 且 $i$ 是 $Y$ 到 $U$ 的\Term{closed-immersion}{闭浸入}。若定义 $i(Y)$ 的 $\mathcal O_U$ 的\Term{ideal}{理想}为\Term{regular-ideal}{正则理想}，则称 $i$ 为\Term{regular-immersion}{正则浸入}（此条件与 $U$ 无关）。若 $y\in Y$，并且存在 $i(y)$ 的一个\Term{neighborhood}{邻域} $V$，使\Term{immersion}{浸入} $i^{-1}(V)\to V$ \Term{regular-immersion}{正则}，就称 $i$ 在 $y$ 处\Term{regular-immersion}{正则}。因而，一个\Term{immersion}{浸入}为\Term{regular-immersion}{正则浸入}，当且仅当它在每一点附近\Term{regular-immersion}{正则}。
+\end{SGAresult}
+此定义与 EGA IV 16.9.2 不同，并取代后一定义。不过在\Term{noetherian}{诺特}情形下，两者\Term{equivalence}{等价}（EGA IV 19.5.1）。\Term{local-scheme}{局部}可由一个\Term{regular-sequence}{正则序列}定义的\Term{immersion}{浸入}是\Term{regular-immersion}{正则浸入}；\Term{regular-immersion}{正则浸入}是\Term{quasiregular-immersion}{拟正则浸入}（1.3）。
+
+\textbf{1.4.1.} 设 $X$ 为\Term{scheme}{概形}，$\mathcal J$ 为 $\mathcal O_X$ 的一个\Term{finite-type}{有限生成}\Term{ideal}{理想}，$x$ 为 $\operatorname{Supp}(\mathcal O_X/\mathcal J)$ 中的一点。若 $x$ 的某\Term{neighborhood}{邻域}上 $\mathcal J$ 的一族\Term{section}{截面} $f_1,\ldots,f_d$ 的芽 $(f_i)_x$ 是 $\mathcal J_x$ 的一个元\Term{prime-number}{素数}目最少的\Term{generating-family}{生成族}，即其在 $\mathcal J_x\otimes k(x)$ 中的像构成这个 $k(x)$-\Term{vector-space}{向量空间}的一组\Term{basis}{基}，就称这族\Term{section}{截面}构成 $\mathcal J$ 在 $x$ 附近的一个\Term{minimal-generators}{极小生成系}。注意，$f_i$ 在 $x$ 的某\Term{neighborhood}{邻域}上生成 $\mathcal J$。
+
+\textbf{1.4.2.} 说一个\Term{immersion}{浸入}是\Term{regular-immersion}{正则浸入}，也就是说，它在 $X$ 的某个\Term{open-subset}{开集}中由一个\Term{finite-type}{有限生成}\Term{ideal}{理想} $\mathcal J$ 定义，且对于每一点 $x\in\operatorname{Supp}(\mathcal O_X/\mathcal J)$ 以及 $\mathcal J$ 在 $x$ 附近的每个\Term{minimal-generators}{极小生成系}，与此序列相伴的\Term{koszul-complex}{Koszul 复形}在 $x$ 附近\Term{homologically-acyclic}{无同调}。事实上，设 $f_1,\ldots,f_d$ 是 $\mathcal J$ 在 $x$ 附近的一个\Term{minimal-generators}{极小生成系}，且相伴的\Term{koszul-complex}{Koszul 复形}\Term{homologically-acyclic}{无同调}（若假定此\Term{immersion}{浸入}\Term{regular-immersion}{正则}，这样的生成系存在）；
+\SourcePage{430}
+设 $g_1,\ldots,g_d$ 是 $\mathcal J$ 的另一个\Term{minimal-generators}{极小生成系}。存在 $x$ 的一个\Term{neighborhood}{邻域}，使 $\mathcal J$ 既由 $f_i$ 生成，也由 $g_j$ 生成；从而在这个\Term{neighborhood}{邻域}上存在一个系数属于 $\mathcal O_X$ 的矩阵，将 $g_j$ 表成 $f_i$ 的\Term{linear-combination}{线性组合}。$f_i$（相应地 $g_j$）在 $\mathcal J/\mathcal J^2$ 中的像在点 $x$ 处成\Term{basis}{基}，因而在 $x$ 的一个\Term{neighborhood}{邻域}上成\Term{basis}{基}，故此矩阵在 $x$ 的某\Term{neighborhood}{邻域}上\Term{invertible}{可逆}。于是它给出由 $g_j$ 定义的\Term{koszul-complex}{Koszul 复形}到由 $f_i$ 定义的\Term{koszul-complex}{Koszul 复形}的\Term{isomorphism}{同构}，这就说明前一\Term{complex}{复形}\Term{homologically-acyclic}{无同调}。
+
+\textbf{1.4.3.} 仅假定 $\mathcal J$ \Term{finite-type}{有限生成}且 $\mathcal J/\mathcal J^2$ \Term{finite-locally-free}{有限秩局部自由}。注意，$\mathcal J$ 在 $Y$ 的一点 $y$ 附近的每个\Term{minimal-generators}{极小生成系}，都给出 $\mathcal J/\mathcal J^2$ 在 $y$ 附近的一组\Term{basis}{基}。反之，若在 $y$ 附近给定 $\mathcal J/\mathcal J^2$ 的一组\Term{basis}{基}，可将其\Term{lifting}{提升}为 $\mathcal J$ 在 $y$ 附近的一族\Term{section}{截面}；由 \Term{nakayama-lemma}{Nakayama 引理}，它们生成 $\mathcal J_y$，由于 $\mathcal J$ \Term{finite-type}{有限生成}，也就在 $y$ 的某\Term{neighborhood}{邻域}上生成 $\mathcal J$。此外，这些\Term{generator}{生成元}的数目最少，因为它们给出了 $\mathcal J/\mathcal J^2$ 的一组\Term{basis}{基}。
+
+\begin{SGAresult}{命题}{1.5}
+（比较 EGA IV 19.1.5 (ii)。）设 $i:Y\to X$ 为\Term{immersion}{浸入}。若 $i$ \Term{regular-immersion}{正则}，则由 $i$ 经\Term{flat}{平坦}\Term{base-change}{基变换}得到的每个\Term{immersion}{浸入}也\Term{regular-immersion}{正则}。$i$ \Term{regular-immersion}{正则}的充要条件是它对于\Term{fpqc-topology}{忠实平坦拟紧拓扑}\Term{local-scheme}{局部}地\Term{regular-immersion}{正则}。
+\end{SGAresult}
+\begin{proof}
+在\Term{flat}{平坦}\Term{base-change}{基变换}下的\Term{stable}{稳定}性是显然的。反之，设 $i'$ 由 $i$ 经\Term{faithfully-flat}{忠实平坦}\Term{quasi-compact}{拟紧}\Term{base-change}{基变换}得到。
+\SourcePage{431}
+若 $i'$ \Term{regular-immersion}{正则}，则定义 $i$ 的\Term{ideal}{理想} $\mathcal J$ \Term{finite-type}{有限生成}，且 $\mathcal J/\mathcal J^2$ \Term{finite-locally-free}{有限秩局部自由}，因为这些性质可沿\Term{faithfully-flat}{忠实平坦}\Term{quasi-compact}{拟紧}\Term{morphism}{态射}\Term{descent}{下降}。若 $f_1,\ldots,f_d$ 是 $\mathcal J$ 的一族\Term{section}{截面}，\Term{lifting}{提升} $\mathcal J/\mathcal J^2$ 的一组\Term{basis}{基}，则由 1.4，与 $f_i$ 的\Term{inverse-image}{逆像}相伴的\Term{koszul-complex}{Koszul 复形}在正\Term{degree}{次数}\Term{homologically-acyclic}{无同调}。由于这是与 $f_i$ 相伴的\Term{koszul-complex}{Koszul 复形}的\Term{inverse-image}{逆像}，后者在正\Term{degree}{次数}\Term{homologically-acyclic}{无同调}，故 $i$ \Term{regular-immersion}{正则}。
+\end{proof}
+
+\begin{SGAresult}{定义}{1.6}
+设 $i:Y\to X$ 为\Term{immersion}{浸入}，在 $X$ 的一个\Term{open-subset}{开集} $U$ 内由 $\mathcal O_X$ 的\Term{ideal}{理想} $\mathcal J$ 定义。称 $\mathcal O_Y$-\Term{module}{模} $\mathcal J/\mathcal J^2$（与 $U$ 无关）为 $Y$ 在 $X$ 中的\Term{conormal-sheaf}{余法层}，记作 $\mathcal N_{X/Y}$。若 $i$ \Term{regular-immersion}{正则}，则 $\mathcal J/\mathcal J^2$ \Term{finite-locally-free}{有限秩局部自由}，其\Term{rank}{秩}称为 $Y$ 在 $X$ 中的\Term{codimension}{余维数}，也称为 $i$ 的\Term{codimension}{余维数}。
+\end{SGAresult}
+若有两个\Term{closed-immersion}{闭浸入} $Z\xrightarrow{j}Y\xrightarrow{i}X$，则\Term{conormal-sheaf}{余法层}构成\Term{exact-sequence}{正合列}
+\[
+j^*(\mathcal N_{X/Y})\longrightarrow\mathcal N_{X/Z}\longrightarrow\mathcal N_{Y/Z}\longrightarrow0.\tag{1.6.1}
+\]
+事实上，设 $\mathcal I$ 为 $Y$ 在 $X$ 中的\Term{ideal}{理想}，$\mathcal J$ 为 $Z$ 在 $X$ 中的\Term{ideal}{理想}，$\mathcal K$ 为 $Z$ 在 $Y$ 中的\Term{ideal}{理想}。有\Term{exact-sequence}{正合列}
+\[
+0\longrightarrow\mathcal I\longrightarrow\mathcal J\longrightarrow\mathcal K\longrightarrow0;
+\]
+与 $\mathcal O_X/\mathcal I=\mathcal O_Y$ 作\Term{tensor-product}{张量积}，得到\Term{exact-sequence}{正合列}
+\[
+\mathcal I/\mathcal I^2\longrightarrow\mathcal J\otimes_{\mathcal O_X}\mathcal O_Y\longrightarrow\mathcal K\otimes_{\mathcal O_X}\mathcal O_Y\longrightarrow0.
+\]
+再与 $\mathcal O_Z=\mathcal O_X/\mathcal J=\mathcal O_Y/\mathcal K$ 作\Term{tensor-product}{张量积}，得到\Term{exact-sequence}{正合列}
+\[
+j^*(\mathcal I/\mathcal I^2)\longrightarrow\mathcal J\otimes_{\mathcal O_X}\mathcal O_Z\longrightarrow\mathcal K\otimes_{\mathcal O_Y}\mathcal O_Z\longrightarrow0,
+\]
+这就是所求的\Term{exact-sequence}{正合列}。
+\SourcePage{432}
+\begin{SGAresult}{命题}{1.7}
+（比较 EGA IV 19.1.5 (iv)。）设 $i:Y\to X$ 和 $j:Z\to Y$ 为两个\Term{immersion}{浸入}。
+
+ i) 若 $i$ 和 $j$ 都\Term{regular-immersion}{正则}，则 $i\circ j$ \Term{regular-immersion}{正则}，并且下列序列\Term{exact-sequence}{正合}：
+\[
+0\longrightarrow j^*(\mathcal N_{X/Y})\longrightarrow\mathcal N_{X/Z}\longrightarrow\mathcal N_{Y/Z}\longrightarrow0;
+\]
+特别地，$\operatorname{codim}(i\circ j)=\operatorname{codim}(i)+\operatorname{codim}(j)$。
+
+ ii) 若 $i\circ j$ 和 $i$ 都\Term{regular-immersion}{正则}，而且序列
+\[
+0\longrightarrow j^*(\mathcal N_{X/Y})\longrightarrow\mathcal N_{X/Z}\longrightarrow\mathcal N_{Y/Z}\longrightarrow0
+\]
+\Term{exact-sequence}{正合}且\Term{locally-split}{局部分裂}，则 $j$ \Term{regular-immersion}{正则}。
+
+ iii) 若 $X$ \Term{noetherian}{诺特}，而且 $i\circ j$ 和 $j$ 都\Term{regular-immersion}{正则}，则 $i$ 在 $Z$ 的各点处\Term{regular-immersion}{正则}。
+\end{SGAresult}
+\begin{proof}
+问题在 $X$ 上是\Term{local-scheme}{局部}的，故可设 $X$ \Term{affine}{仿射}，且这些\Term{immersion}{浸入}均为\Term{closed-immersion}{闭浸入}。设 $X=\operatorname{Spec}(A)$，$Y=\operatorname{Spec}(B)$，$Z=\operatorname{Spec}(C)$，其中 $B=A/I$，$C=A/J=B/K$。
+
+ i) 作适当\Term{localization}{局部化}后，可设 $I/I^2$ 在 $B$ 上\Term{free-module}{自由}，$K/K^2$ 在 $C$ 上\Term{free-module}{自由}（1.3）。取 $A$ 中的元素 $f_1,\ldots,f_n$，\Term{lifting}{提升} $I/I^2$ 的一组\Term{basis}{基}；取 $A$ 中的元素 $g_1,\ldots,g_m$，\Term{lifting}{提升} $K/K^2$ 的一组\Term{basis}{基}。进一步\Term{localization}{局部化}后，可设 $f_1,\ldots,f_n$ 生成 $I$，$f_1,\ldots,f_n,g_1,\ldots,g_m$ 生成 $J$，且 $\bar g_1,\ldots,\bar g_m$ 生成 $K$；这里 $\bar g_j$ 是 $g_j$ 在 $B$ 中的像（1.4）。此外，$f_1,\ldots,f_n$ 构成 $I$ 的一个\Term{minimal-generators}{极小生成系}，$\bar g_1,\ldots,\bar g_m$ 构成 $K$ 的一个\Term{minimal-generators}{极小生成系}。
+
+考虑图
+\[
+\begin{tikzcd}
+A_0=\mathbb Z[T_1,\ldots,T_{n+m}]\arrow[r]\arrow[d]&A\arrow[d]\\
+B_0=\mathbb Z[T_1,\ldots,T_m]\arrow[r]\arrow[d]&B\arrow[d]\\
+C_0=\mathbb Z\arrow[r]&C.
+\end{tikzcd}\tag{1.7.1}
+\]
+\SourcePage{433}
+其中水平\Term{arrow}{箭头}在 $1\leq i\leq n$ 时将 $T_i$ 映到 $f_i$，在 $1\leq j\leq m$ 时将 $T_{n+j}$ 映到 $g_j$；\Term{homomorphism}{同态} $A_0\to B_0$ 在 $1\leq i\leq n$ 时将 $T_i$ 映到 $0$，在 $1\leq j\leq m$ 时将 $T_{n+j}$ 映到 $T_j$；\Term{homomorphism}{同态} $B_0\to C_0$ 则将 $T_j$（$1\leq j\leq m$）置零。于是
+\[
+B=A\otimes_{A_0}B_0,\qquad C=A\otimes_{A_0}C_0=B\otimes_{B_0}C_0.
+\]
+所研究的情形因此由 $(A_0,B_0,C_0)$ 经\Term{base-change}{基变换} $A_0\to A$ 得到。相应的\Term{immersion}{浸入} $i_0,j_0$ 和 $i_0\circ j_0$ 都\Term{regular-immersion}{正则}，故与序列 $(f_1,\ldots,f_n)$、$(f_1,\ldots,f_n,g_1,\ldots,g_m)$ 和 $(\bar g_1,\ldots,\bar g_m)$ 相伴的\Term{koszul-complex}{Koszul 复形}的\Term{homology-group}{同调群}分别为 $\operatorname{Tor}_i^{A_0}(B_0,A)$、$\operatorname{Tor}_i^{A_0}(C_0,A)$、$\operatorname{Tor}_i^{B_0}(C_0,B)$。因此
+\[
+\begin{aligned}
+i\text{ 正则}&\ \Longleftrightarrow\ \forall i\geq1,\quad\operatorname{Tor}_i^{A_0}(B_0,A)=0;\\
+i\circ j\text{ 正则}&\ \Longleftrightarrow\ \forall i\geq1,\quad\operatorname{Tor}_i^{A_0}(C_0,A)=0;\\
+j\text{ 正则}&\ \Longleftrightarrow\ \forall i\geq1,\quad\operatorname{Tor}_i^{B_0}(C_0,B)=0.
+\end{aligned}\tag{1.7.2}
+\]
+使用\Term{transitivity-spectral-sequence}{传递性谱序列}（[1]，XVI 5）
+\[
+E^2_{pq}=\operatorname{Tor}_p^{B_0}\bigl(C_0,\operatorname{Tor}_q^{A_0}(B_0,A)\bigr)\Longrightarrow\operatorname{Tor}_n^{A_0}(C_0,A).\tag{1.7.3}
+\]
+由 i) 的假设，只要 $p$ 或 $q$ 不为 $0$，就有 $E^2_{pq}=0$。因此此\Term{spectral-sequence}{谱序列}\Term{degeneration}{退化}，由 (1.7.2)，$i\circ j$ \Term{regular-immersion}{正则}。
+
+由 (1.6.1)，序列
+\[
+j^*(\mathcal N_{X/Y})\longrightarrow\mathcal N_{X/Z}\longrightarrow\mathcal N_{Y/Z}\longrightarrow0
+\]
+\Term{exact-sequence}{正合}。由于 $i\circ j$ \Term{regular-immersion}{正则}，这三个\Term{conormal-sheaf}{余法层}都\Term{finite-locally-free}{有限秩局部自由}；而且它们在一点处的\Term{rank}{秩}，就是相应\Term{ideal}{理想}的一个\Term{minimal-generators}{极小生成系}的元素个数。
+\SourcePage{434}
+由以上证明，
+\[
+\operatorname{rank}(\mathcal N_{X/Z})=\operatorname{rank}(\mathcal N_{X/Y})+\operatorname{rank}(\mathcal N_{Y/Z}).
+\]
+因此 $j^*(\mathcal N_{X/Y})\to\mathcal N_{X/Z}$ 的\Term{kernel}{核}为\Term{rank}{秩}零的\Term{locally-free}{局部自由模}，故序列 (1.8.1) \Term{exact-sequence}{正合}。
+
+ ii) 可设 $J/J^2$ 在 $C$ 上\Term{free-module}{自由}，$I/I^2$ 在 $B$ 上\Term{free-module}{自由}；对\Term{conormal-sheaf}{余法层}序列所作的假设还使我们可以设 $I/I^2\otimes_A A/J$ 是 $J/J^2$ 的一个\Term{direct-summand}{直和因子}。因而可取 $A$ 中的元素 $f_1,\ldots,f_n$，\Term{lifting}{提升} $I/I^2$ 的一组\Term{basis}{基}，以及 $A$ 中的元素 $g_1,\ldots,g_m$，使 $f_1,\ldots,f_n,g_1,\ldots,g_m$ \Term{lifting}{提升} $J/J^2$ 的一组\Term{basis}{基}，且 $g_1,\ldots,g_m$ 的像生成 $K/K^2$。进一步\Term{localization}{局部化}后，可设 $f_1,\ldots,f_n$ 构成 $I$ 的一个\Term{minimal-generators}{极小生成系}，$f_1,\ldots,f_n,g_1,\ldots,g_m$ 构成 $J$ 的一个\Term{minimal-generators}{极小生成系}，$\bar g_1,\ldots,\bar g_m$ 生成 $K$。于是\Term{constructible}{可构造}图 (1.7.1)，并使用\Term{spectral-sequence}{谱序列} (1.7.3)。
+
+由 (1.7.2)，因为 $i$ \Term{regular-immersion}{正则}，当 $q\geq1$ 时 $E^2_{pq}=0$；从而得到\Term{edge-isomorphism}{边缘同构}
+\[
+E^2_{p,0}\xrightarrow{\sim}\operatorname{Tor}_p^{A_0}(C_0,A).
+\]
+又因 $i\circ j$ \Term{regular-immersion}{正则}，由 (1.7.2) 可知 $p\geq1$ 时 $E^2_{p,0}=0$，再用 (1.7.2) 即得 $j$ \Term{regular-immersion}{正则}。
+
+ iii) 这最后一个性质已在 EGA IV 19.1.5 (iv) 中证明，因为在\Term{noetherian}{诺特}情形下，EGA IV 的定义与此处采用的定义一致。
+\end{proof}
+
+\begin{SGAresult}{命题}{1.8}
+设 $X$ 为\Term{scheme}{概形}，$E$ 为\Term{finite-locally-free}{有限秩局部自由} $\mathcal O_X$-\Term{module}{模}，$u:E\to\mathcal O_X$ 为\Term{regular-homomorphism}{正则同态}，$\mathcal J=u(E)$。以 $Y$ 表示由 $\mathcal J$ 定义的 $X$ 的\Term{closed-subscheme}{闭子概形}，
+\SourcePage{435}
+$X'$ 表示沿 $Y$ \Term{blowup}{爆破}得到的\Term{scheme}{概形}，$P$ 表示与 $E$ 相伴的\Term{projective-bundle}{射影丛}，$p:P\to X$ 为\Term{structure-morphism}{结构态射}。在 $P$ 上考虑\Term{canonical-map}{典范}\Term{exact-sequence}{正合列}
+\[
+0\longrightarrow F\longrightarrow p^*(E)\longrightarrow\mathcal O_P(1)\longrightarrow0
+\]
+以及复合\Term{morphism}{态射}
+\[
+v:F\longrightarrow p^*(E)\xrightarrow{p^*(u)}\mathcal O_P.
+\]
+则有：
+
+ i) $X'$ 的形成与每个使 $f^*(u)$ \Term{regular-homomorphism}{正则}的\Term{base-change}{基变换} $f:T\to X$ 交换。
+
+ ii) 由 $u$ 在一次部分所定义的\Term{surjective-map}{满同态} $S(E)\to\bigoplus_{n\geq0}\mathcal J^n$ 所定义的\Term{closed-immersion}{闭浸入} $j:X'\to P$ 是\Term{regular-immersion}{正则浸入}；其\Term{ideal}{理想}为\Term{regular-homomorphism}{正则同态} $v$ 的像。特别地，若 $\operatorname{codim}(i)$ 为常数，则 $\operatorname{codim}(j)=\operatorname{codim}(i)-1$。
+
+ iii) $S(E)$-\Term{module}{模} $\bigoplus_{n\geq0}\mathcal J^n$ 作为\Term{graded-module}{分次 $S(E)$-模}是\Term{perfect-module}{完美}的，即\Term{local-scheme}{局部}存在它的一个\Term{finite}{有限}\Term{graded-resolution}{分次解消}，其各项是\Term{finite-locally-free}{有限秩局部自由}的\Term{graded-module}{分次 $S(E)$-模}（第 VI 讲 1.2）。
+\end{SGAresult}
+\begin{proof}
+ i) 因 $X'=\operatorname{Proj}(\bigoplus_{n\geq0}\mathcal J^n)$，结论直接来自关系 (1.2.3) 和 EGA II。
+
+ ii) 所述性质在 $X$ 上都是\Term{local-scheme}{局部}的，因此可设 $X$ \Term{affine}{仿射}且 $E$ 在 $X$ 上\Term{free-module}{自由}。置 $X=\operatorname{Spec}(A)$。
+
+先在标准情形下证明：$A=\mathbb Z[T_1,\ldots,T_d]$，$E$ 配有一组\Term{basis}{基} $e_1,\ldots,e_d$，且 $u(e_i)=T_i$。此时
+\[
+P=\operatorname{Proj}\bigl(\mathbb Z[T_1,\ldots,T_d,X_1,\ldots,X_d]\bigr),
+\]
+\Term{grading}{分次}按 $X_i$ 计算。要证明 $v$ 为\Term{regular-homomorphism}{正则同态}且其像为 $j$ 的\Term{ideal}{理想}，只须在 $P$ 上\Term{local-scheme}{局部}证明，即在各 $D^+(X_i)$ 上证明。
+\SourcePage{436}
+例如在 $D^+(X_1)$ 上，$p^*(E)$ 由\Term{module}{模}
+\[
+\mathbb Z[T_1,\ldots,T_d,X_2/X_1,\ldots,X_d/X_1]\otimes E
+\]
+定义，而 $\mathcal O_P(1)$ 由 $\mathbb Z[T_1,\ldots,T_d,X_2/X_1,\ldots,X_d/X_1]$ 定义，\Term{canonical-map}{典范同态}对每个 $i$ 将 $e_i$ 映到 $X_i/X_1$。于是 $F$ 的一组\Term{basis}{基}为 $e_i-e_1X_i/X_1$（$i>1$）。
+
+有 $v(e_i-e_1X_i/X_1)=T_i-T_1X_i/X_1$。置 $T'_i=T_i-T_1X_i/X_1$。由于序列 $T_i$ 在 $\mathbb Z[T_1,\ldots,T_d,X_2/X_1,\ldots,X_d/X_1]$ 中\Term{regular-sequence}{正则}，用\Term{invertible}{可逆}矩阵变换得到的序列 $T_1,T'_2,\ldots,T'_d$ 也\Term{regular-sequence}{正则}，因此从中抽出的序列 $T'_2,\ldots,T'_d$ 也\Term{regular-sequence}{正则}（此处是\Term{noetherian}{诺特}情形）。故 $v$ 为\Term{regular-homomorphism}{正则同态}。
+
+还须证明 $T'_i$ 生成 $j$ 的\Term{ideal}{理想}。在 $\bigoplus_{n\geq0}J^n$ 中，对于 $m\leq p$，以 $x^{(m)}$ 表示 $J^p$ 中的元素 $x$ 被视作\Term{degree}{次数}为 $m$ 的元素。在 $D^+(X_1)$ 上有
+\[
+X'=\operatorname{Spec}\left(\left(\bigoplus_{n\geq0}J^n\right)_{(T_1^{(1)})}\right),
+\]
+且 $j$ 由将 $X_i$ 映到 $T_i^{(1)}$ 的\Term{morphism}{态射}定义。在此\Term{morphism}{态射}下，$T'_i$ 的像为
+\[
+T_i^{(0)}-T_1^{(0)}T_i^{(1)}/T_1^{(1)}
+=\bigl((T_iT_1)^{(1)}-(T_1T_i)^{(1)}\bigr)/T_1^{(1)}=0.
+\]
+故各 $T'_i$ 属于 $j$ 的\Term{ideal}{理想}。
+
+由于 $\mathbb Z[T_1,\ldots,T_d,X_2/X_1,\ldots,X_d/X_1]$ 的每个元素都能表成关于 $T_1,T'_2,\ldots,T'_d,X_2/X_1,\ldots,X_d/X_1$ 的\Term{polynomial}{多项式}，要证明 $T'_i$ 生成 $j$ 的\Term{ideal}{理想}，只须证明 $\mathbb Z[T_1,X_2/X_1,\ldots,X_d/X_1]$ 中没有非零元素属于这个\Term{ideal}{理想}。由于 $T_1^{(1)}$ 在 $\bigoplus_{n\geq0}J^n$ 中不是\Term{zero-divisor}{零因子}，这又归结为证明\Term{homomorphism}{同态}
+\[
+\mathbb Z[T_1,X_1,\ldots,X_d]\longrightarrow\bigoplus_{n\geq0}J^n
+\]
+是\Term{injective-map}{单射}。令 $T_1$ 的\Term{degree}{次数}为 $0$，各 $X_i$ 的\Term{degree}{次数}为 $1$，以此给 $\mathbb Z[T_1,X_1,\ldots,X_d]$ \Term{grading}{分次}，则所考察\Term{homomorphism}{同态}的\Term{kernel}{核}是一个\Term{graded-ideal}{分次理想}。这个\Term{kernel}{核}显然包含在\Term{composite-homomorphism}{复合同态}
+\SourcePage{437}
+\[
+\mathbb Z[T_1,X_1,\ldots,X_d]\longrightarrow\bigoplus_{n\geq0}J^n\longrightarrow A
+\]
+的\Term{kernel}{核}中，其中最后一个\Term{homomorphism}{同态}在\Term{degree}{次数} $n$ 上由 $J^n$ 到 $A$ 的包含定义。\Term{composite-homomorphism}{复合同态}的\Term{kernel}{核}为由 $(X_1-T_1)$ 生成的\Term{principal-ideal}{主理想}；由\Term{integrality}{整性}，它不包含非零的\Term{homogeneous-element}{齐次元素}。所以第一个\Term{homomorphism}{同态}是\Term{injective-map}{单射}，这就完成了上述情形的证明。
+
+回到 $A$ 任意的\Term{generic}{一般}情形，仍可设 $E$ 在 $X$ 上\Term{free-module}{自由}。对刚才处理的特殊情形加上下标 $0$。由本命题 i)，所考察的情形由先前情形经\Term{base-change}{基变换} $A_0\to A$ 得到；该\Term{homomorphism}{同态}的定义为：取 $E$ 的一组\Term{basis}{基}及其在 $J$ 中的像 $f_1,\ldots,f_d$，并将 $T_i$ 映到 $f_i$。置
+\[
+B_0=\left(\bigoplus_{n\geq0}J_0^n\right)_{(T_1^{(1)})},\qquad
+B=\left(\bigoplus_{n\geq0}J^n\right)_{(f_1^{(1)})}.
+\]
+则 $B=B_0\otimes_{A_0}A$；由 $v:F\to\mathcal O_P$ 定义的\Term{koszul-complex}{Koszul 复形}是由 $v_0$ 定义的\Term{koszul-complex}{Koszul 复形}经\Term{base-change}{基变换}得到的。后者是 $B_0$ 的一个\Term{projective-resolution}{投射解消}（\Term{restriction}{限制}在适当的\Term{open-subset}{开集}上），故在这个\Term{open-subset}{开集}上，$K_\bullet(v)$ 的\Term{homology-group}{同调群}为 $\operatorname{Tor}_i^{A_0}(A,B_0)$。它们是
+\[
+\operatorname{Tor}_i^{A_0}\left(A,\left(\bigoplus_{n\geq0}J_0^n\right)_{T_1^{(1)}}\right)
+=\left(\bigoplus_{n\geq0}\operatorname{Tor}_i^{A_0}(A,J_0^n)\right)_{T_1^{(1)}}
+\]
+的零次部分。而由关系 1.2，$i\geq1$ 时 $\operatorname{Tor}_i^{A_0}(A,J_0^n)=0$，故 $K_\bullet(v)$ 是 $B$ 的一个\Term{resolution}{解消}，这说明 $j$ \Term{regular-immersion}{正则}。
+
+ iii) 此性质在 $X$ 上是\Term{local-scheme}{局部}的，仍可设 $X$ \Term{affine}{仿射}，$E$ 为\Term{finite-free}{有限秩自由模}。沿用 ii) 的记号。
+
+先考虑 ii) 的标准情形。此时 $A_0$ 是\Term{noetherian}{诺特}\Term{ring}{环}，并有\Term{finite}{有限}\Term{cohomological-dimension}{上同调维数}，\Term{algebra}{代数} $S(E_0)$ 也是如此。
+\SourcePage{438}
+于是可逐步用\Term{finite-free}{有限秩自由}的\Term{graded-module}{分次 $S(E_0)$-模}构造 $\bigoplus J_0^n$ 的一个部分\Term{graded-resolution}{分次解消}，其\Term{length}{长度}大于 $A_0$ 的\Term{cohomological-dimension}{上同调维数}。最后一个\Term{kernel}{核}是一个\Term{graded-module}{分次 $S(E_0)$-模}，作为不\Term{graded-module}{分次}的 $S(E_0)$-\Term{module}{模}是\Term{finite-projective-module}{有限生成投射模}，故由第 VI 讲 1.5.1，作为\Term{graded-module}{分次 $S(E_0)$-模}在 $\operatorname{Spec}(A_0)$ 上\Term{finite-locally-free}{有限秩局部自由}。以相应的\Term{kernel}{核}替换部分\Term{resolution}{解消}的最后一项，便得到所述的\Term{finite}{有限}\Term{resolution}{解消}。
+
+将如此构造的\Term{resolution}{解消}与 $A$ 作\Term{tensor-product}{张量积}，得到一个\Term{graded-complex}{分次复形}，其各项是\Term{finite-locally-free}{有限秩局部自由}的\Term{graded-module}{分次 $S(E)$-模}；现在要说明它是 $\bigoplus_{n\geq0}J^n$ 的一个\Term{resolution}{解消}。所得\Term{complex}{复形}的第 $i$ 个\Term{homology-module}{同调模}是一个\Term{graded-module}{分次 $S(E)$-模}，其第 $n$ 个\Term{set-component}{分量}为 $\operatorname{Tor}_i^{A_0}(A,J_0^n)$，由 (1.2.4)，当 $i\geq1$ 时为零。因此，结合 (1.2.3)，我们确已构造出所需类型的\Term{resolution}{解消}。
+\end{proof}
+
+\begin{SGAresult}{命题}{1.9}
+设 $i:Y\to X$ 为\Term{regular-closed-immersion}{正则闭浸入}，$X'$ 为沿 $Y$ \Term{blowup}{爆破}所得的 $X$-\Term{scheme}{概形}，$f:X'\to X$ 为\Term{structure-morphism}{结构态射}。则 $i$ 和 $f$ 都是\Term{perfect-morphism}{完美态射}（第 III 讲 4.1）。
+\end{SGAresult}
+\begin{proof}
+此性质在 $X$ 上是\Term{local-scheme}{局部}的，故可设给定了\Term{finite-locally-free}{有限秩局部自由} $\mathcal O_X$-\Term{module}{模} $E$ 以及\Term{regular-homomorphism}{正则同态} $u:E\to\mathcal O_X$，其像为 $Y$ 的\Term{ideal}{理想} $\mathcal J$。于是\Term{koszul-complex}{Koszul 复形} $K_\bullet(u)$ 是 $\mathcal O_Y$ 的一个\Term{finite}{有限}\Term{resolution}{解消}，各项为\Term{finite-locally-free}{有限秩局部自由} $\mathcal O_X$-\Term{module}{模}；因此，$\mathcal O_Y$ 是\Term{perfect-module}{完美 $\mathcal O_X$-模}。由此，每个\Term{regular-immersion}{正则浸入}都是\Term{perfect-morphism}{完美态射}。由 1.8，$f$ 可写成\Term{regular-immersion}{正则浸入} $X'\to\mathbb P(E)$ 与\Term{structure-morphism}{结构态射} $\mathbb P(E)\to X$ 的复合，后者是\Term{smooth-morphism}{光滑态射}，因而\Term{perfect-morphism}{完美}。
+\SourcePage{439}
+所以 $f$ 为两个\Term{perfect-morphism}{完美态射}的复合，从而也是\Term{perfect-morphism}{完美态射}。
+\end{proof}
+
+\begin{SGAresult}{命题}{1.10}
+设 $X,Y$ 为 $S$ 上的两个\Term{smooth-scheme}{光滑概形}。则从 $X$ 到 $Y$ 的每个 $S$-\Term{immersion}{浸入}都\Term{regular-immersion}{正则}。特别地，\Term{smooth-morphism}{光滑态射}的每个\Term{section}{截面}都是\Term{regular-immersion}{正则浸入}。
+\end{SGAresult}
+\begin{proof}
+命题直接来自 EGA IV 17.12.1，因为 EGA IV 意义下的\Term{regular-immersion}{正则浸入}也是 1.4 意义下的\Term{regular-immersion}{正则浸入}。
+\end{proof}
+
+\SGAsection{2}{正则浸入上的计算}
+\textbf{2.1.} 设 $A$ 为\Term{ring}{环}，$B,C$ 为两个 $A$-\Term{algebra}{代数}。我们要赋予 $\bigoplus_{i\geq0}\operatorname{Tor}_i^A(B,C)$ 一个\Term{graded-algebra}{分次 $A$-代数}结构，也就是定义\Term{homomorphism}{同态}
+\[
+\operatorname{Tor}_i^A(B,C)\otimes_A\operatorname{Tor}_j^A(B,C)\longrightarrow\operatorname{Tor}_{i+j}^A(B,C).\tag{2.1.1}
+\]
+设 $P_\bullet$ 是 $B$ 的一个由\Term{projective-module}{投射 $A$-模}构成的\Term{resolution}{解消}；$\operatorname{Tor}_i^A(B,C)$ 是\Term{complex}{复形} $P_\bullet\otimes_A C$ 的\Term{homology-group}{同调群}。我们知道可以定义\Term{canonical-map}{典范同态}（[1]，IV 6）
+\[
+\begin{split}
+H_i(P_\bullet\otimes_A C)\otimes_A H_j(P_\bullet\otimes_A C)
+\longrightarrow H_{i+j}\bigl((P_\bullet\otimes_A C)\otimes_A(P_\bullet\otimes_A C)\bigr).
+\end{split}\tag{2.1.2}
+\]
+另一方面，$P_\bullet\otimes_A P_\bullet$ 是由\Term{projective-module}{投射 $A$-模}构成的\Term{complex}{复形}，集中于非负\Term{degree}{次数}，且 $H_0(P_\bullet\otimes_A P_\bullet)=B\otimes_A B$；此外 $P_\bullet$ 是 $B$ 的\Term{resolution}{解消}。因此\Term{augmentation-morphism}{增广态射} $B\otimes_A B\to B$ 可延拓成\Term{complex-morphism}{复形态射} $P_\bullet\otimes_A P_\bullet\to P_\bullet$。结合由 $C$ 的\Term{algebra}{代数}结构得到的\Term{homomorphism}{同态} $C\otimes_A C\to C$，便定义了\Term{homomorphism}{同态}
+\[
+H_{i+j}\bigl((P_\bullet\otimes_A C)\otimes_A(P_\bullet\otimes_A C)\bigr)
+\longrightarrow H_{i+j}(P_\bullet\otimes_A C).\tag{2.1.3}
+\]
+\SourcePage{440}
+复合 (2.1.2) 和 (2.1.3)，即得到\Term{homomorphism}{同态} (2.1.1)。
+
+由\Term{homomorphism}{同态} (2.1.1) 定义的\Term{algebra}{代数}结构满足\Term{associative-law}{结合律}（参见 [1]，XI 2）。另一方面，$A$-\Term{module}{模} $H_i(P_\bullet\otimes_A C)$ 按标准方式具有 $B\otimes_A C$-\Term{module}{模}结构：$C$ 以显然的方式\Term{action}{作用}，$B$ 则由\Term{functorial}{函子性}\Term{action}{作用}。同样，各 $H_j((P_\bullet\otimes_A C)\otimes_A(P_\bullet\otimes_A C))$ 具有两个 $B\otimes_A C$-\Term{module}{模}结构。\Term{homomorphism}{同态} (2.1.2) 和 (2.1.3) 显然都与这两个结构相容：对于 (2.1.2)，这是\Term{functorial}{函子性}的结果（在 $A$-\Term{module}{模}\Term{category}{范畴}中考虑）；对于 (2.1.3)，则用关于从一个\Term{acyclic-complex}{无同调复形}出发的\Term{morphism}{态射}的经典结果。因此我们已赋予 $\bigoplus_{i\geq0}\operatorname{Tor}_i^A(B,C)$ 一个满足\Term{associative-law}{结合律}的 $B\otimes_A C$-\Term{algebra}{代数}结构。
+
+\textbf{2.2.} 假定 $B$ 有一个由\Term{projective-module}{投射 $A$-模}构成的\Term{resolution}{解消} $P_\bullet$，使 $P_\bullet=\bigoplus_{i\geq0}P_i$ 为\Term{graded-algebra}{分次 $A$-代数}，且其\Term{differential}{微分}满足：
+
+ a) $P_0\to B$ 是\Term{ring-homomorphism}{环同态}；\footnote{可以证明这样的\Term{resolution}{解消}总存在。}
+
+ b) 对所有 $x\in P_i$、$y\in P_j$，$d(xy)=d(x)y+(-1)^ixd(y)$。
+
+于是对 $i,j\geq0$，各个“乘积”映射给出\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}[column sep=large]
+P_i\otimes_A P_j\arrow[r]\arrow[d]&
+(P_{i-1}\otimes_A P_j)\oplus(P_i\otimes_A P_{j-1})\arrow[d]\\
+P_{i+j}\arrow[r]&P_{i+j-1},
+\end{tikzcd}
+\]
+因而给出延拓\Term{augmentation-morphism}{增广态射} $B\otimes_A B\to B$ 的\Term{complex-morphism}{复形同态} $P_\bullet\otimes_A P_\bullet\to P_\bullet$。这说明 $\bigoplus_{i\geq0}\operatorname{Tor}_i^A(B,C)$ 的\Term{algebra}{代数}结构可以从 $P_\bullet$ 的结构计算出来。特别地，若 $P_\bullet$ 为\Term{alternating-algebra}{交错 $A$-代数}（即对每个 $x\in P_\bullet$ 都有 $x^2=0$），
+\SourcePage{441}
+则 $\bigoplus_{i\geq0}\operatorname{Tor}_i^A(B,C)$ 也如此。
+
+最后这一点适用于 $B$ 为 $A$ 模去一个\Term{regular-ideal}{正则理想}的商的情形，因为此时可以取定义 $B$ 的\Term{ideal}{理想}的某个\Term{regular-homomorphism}{正则同态}所\Term{adjunction}{伴随}的\Term{koszul-complex}{Koszul 复形}作为 $P_\bullet$。
+
+\textbf{2.3.} 在 2.1 中赋予 $\bigoplus_{i\geq0}\operatorname{Tor}_i^A(B,C)$ 的 $B\otimes_A C$-\Term{algebra}{代数}结构对 $B,C$ 具有\Term{functorial}{函子性}。因此可以将上述构造整体化：设 $X$ 为\Term{scheme}{概形}，$X',X''$ 为两个 $X$-\Term{scheme}{概形}；则可以在 $X'\times_X X''$ 上\Term{local-scheme}{局部}地定义\Term{morphism}{态射} (2.1.1)，它们由\Term{functorial}{函子性}\Term{gluing}{黏合}，并在 $\bigoplus_{i\geq0}\mathcal{T}or_i^{\mathcal O_X}(\mathcal O_{X'},\mathcal O_{X''})$ 上定义一个满足\Term{associative-law}{结合律}的\Term{graded-algebra}{分次 $\mathcal O_{X'\times_X X''}$-代数}结构。
+
+\begin{SGAresult}{\Term{lemma}{引理}}{2.4}
+设 $X',X''$ 为两个 $X$-\Term{scheme}{概形}，$M$ 为\Term{flat-module}{平坦 $\mathcal O_{X'}$-模}。则对每个 $i\geq0$，都有\Term{canonical-isomorphism}{典范同构}
+\[
+\mathcal{T}or_i^{\mathcal O_X}(M,\mathcal O_{X''})
+\xrightarrow{\sim}M\otimes_{\mathcal O_{X'}}\mathcal{T}or_i^{\mathcal O_X}(\mathcal O_{X'},\mathcal O_{X''}).
+\]
+\end{SGAresult}
+\begin{proof}
+只须在\Term{affine}{仿射}情形下定义一个具有\Term{functorial}{函子性}的\Term{isomorphism}{同构}，随后即可通过\Term{gluing}{黏合}在\Term{generic}{一般}情形下整体定义它。
+
+设 $X=\operatorname{Spec}(A)$，$X'=\operatorname{Spec}(A')$，$X''=\operatorname{Spec}(A'')$；$M$ 由\Term{flat-module}{平坦 $A'$-模} $M$ 定义。设 $P_\bullet$ 是 $A''$ 在 $A$ 上的一个\Term{projective-resolution}{投射解消}；各 $\operatorname{Tor}_i^A(A',A'')$ 是 $A'\otimes_A P_\bullet$ 的\Term{homology-group}{同调群}。因 $M$ 在 $A'$ 上\Term{flat-module}{平坦}，有\Term{canonical-isomorphism}{典范同构}
+\[
+M\otimes_{A'}\operatorname{Tor}_i^A(A',A'')\xrightarrow{\sim}H_i\bigl(M\otimes_{A'}(A'\otimes_A P_\bullet)\bigr).
+\]
+另一方面，\Term{canonical-isomorphism}{典范同构} $M\otimes_{A'}(A'\otimes_A P_\bullet)\xrightarrow{\sim}M\otimes_A P_\bullet$ 给出\Term{canonical-isomorphism}{典范同构}
+\[
+H_i\bigl(M\otimes_{A'}(A'\otimes_A P_\bullet)\bigr)\xrightarrow{\sim}\operatorname{Tor}_i^A(M,A''),
+\]
+结论随之得到。
+\end{proof}
+
+\begin{SGAresult}{命题}{2.5}
+设 $X$ 为\Term{scheme}{概形}，$Y,Z$ 为 $X$ 的两个\Term{closed-subscheme}{闭子概形}，$T=Y\times_X Z$。假定对于每个 $x\in T$，存在 $x$ 的一个\Term{open-neighbourhood}{开邻域}
+\SourcePage{442}
+$U$ 以及 $\mathcal O_U$ 的一族\Term{section}{截面} $f_1,\ldots,f_p,g_1,\ldots,g_r,h_1,\ldots,h_s$，使与 $f_1,\ldots,f_p,g_1,\ldots,g_r$ 相伴的\Term{koszul-complex}{Koszul 复形}是 $\mathcal O_{Y\cap U}$ 的一个\Term{resolution}{解消}，与 $f_1,\ldots,f_p,h_1,\ldots,h_s$ 相伴的\Term{koszul-complex}{Koszul 复形}是 $\mathcal O_{Z\cap U}$ 的一个\Term{resolution}{解消}，而与 $f_1,\ldots,f_p,g_1,\ldots,g_r,h_1,\ldots,h_s$ 相伴的\Term{koszul-complex}{Koszul 复形}是 $\mathcal O_{T\cap U}$ 的一个\Term{resolution}{解消}。（特别地，在\Term{noetherian}{诺特}情形下，若序列 $f_1,\ldots,f_p,g_1,\ldots,g_r,h_1,\ldots,h_s$ \Term{regular-sequence}{正则}，且 $Y=V(f_1,\ldots,f_p,g_1,\ldots,g_r)$、$Z=V(f_1,\ldots,f_p,h_1,\ldots,h_s)$，这些条件成立。）设 $\mathcal I,\mathcal J$ 为 $Y,Z$ 的\Term{ideal}{理想}。则有以下\Term{isomorphism}{同构}：
+\[
+\begin{aligned}
+\text{i)}\quad&\forall i\geq0,\quad
+\mathcal{T}or_i^{\mathcal O_X}(\mathcal O_Y,\mathcal O_Z)
+\xrightarrow{\sim}\bigwedge^i\mathcal{T}or_1^{\mathcal O_X}(\mathcal O_Y,\mathcal O_Z);\\
+\text{ii)}\quad&\mathcal{T}or_1^{\mathcal O_X}(\mathcal O_Y,\mathcal O_Z)
+\simeq\mathcal I\cap\mathcal J/\mathcal I\mathcal J\\
+&\hspace{1em}\simeq\operatorname{Ker}\bigl(i^*(\mathcal N_{Y/X})\times j^*(\mathcal N_{Z/X})\longrightarrow\mathcal N_{T/X}\bigr),
+\end{aligned}
+\]
+其中 $i$ 表示 $T$ 到 $Y$ 的\Term{immersion}{浸入}，$j$ 表示 $T$ 到 $Z$ 的\Term{immersion}{浸入}。
+
+特别地，对每个\Term{regular-closed-immersion}{正则闭浸入} $Y\to X$，有
+\[
+\begin{aligned}
+\text{i')}\quad&\forall i\geq0,\quad\mathcal{T}or_i^{\mathcal O_X}(\mathcal O_Y,\mathcal O_Y)
+\xrightarrow{\sim}\bigwedge^i\mathcal{T}or_1^{\mathcal O_X}(\mathcal O_Y,\mathcal O_Y);\\
+\text{ii')}\quad&\mathcal{T}or_1^{\mathcal O_X}(\mathcal O_Y,\mathcal O_Y)\simeq\mathcal N_{Y/X}.
+\end{aligned}
+\]
+\end{SGAresult}
+\begin{proof}
+ i) 在 2.3 中已看到，可以赋予 $\bigoplus_{i\geq0}\mathcal{T}or_i^{\mathcal O_X}(\mathcal O_Y,\mathcal O_Z)$ 一个 $\mathcal O_T$-\Term{algebra}{代数}结构；由 2.2，这个\Term{algebra}{代数}为\Term{alternating-algebra}{交错代数}，因为 $Y$（或 $Z$）到 $X$ 的\Term{immersion}{浸入}\Term{regular-immersion}{正则}。因此存在唯一一个\Term{algebra-homomorphism}{代数同态}
+\[
+\bigwedge\mathcal{T}or_1^{\mathcal O_X}(\mathcal O_Y,\mathcal O_Z)
+\longrightarrow\bigoplus_{i\geq0}\mathcal{T}or_i^{\mathcal O_X}(\mathcal O_Y,\mathcal O_Z)\tag{2.5.1}
+\]
+在一次部分延拓\Term{identity-map}{恒等映射}。
+
+要证明它是\Term{isomorphism}{同构}，可\Term{local-scheme}{局部}考察。取 $T$ 的一点附近的 $\mathcal O_X$ 的\Term{section}{截面} $f_1,\ldots,f_p,g_1,\ldots,g_r,h_1,\ldots,h_s$，使其具有 2.5 中所述的性质。置 $E=\mathcal O_X^p$，$E'=\mathcal O_X^r$，令 $u:E\to\mathcal O_X$ 为由 $f_i$ 定义的\Term{homomorphism}{同态}，$v:E'\to\mathcal O_X$ 为由 $g_j$ 定义的\Term{homomorphism}{同态}，$K_\bullet(u)$ 和 $K_\bullet(v)$ 为相伴的\Term{koszul-complex}{Koszul 复形}。
+\SourcePage{443}
+与序列 $f_1,\ldots,f_p,g_1,\ldots,g_r$ 相伴的\Term{koszul-complex}{Koszul 复形}\Term{isomorphism}{同构}于\Term{tensor-product-complex}{张量积复形} $K_\bullet(u)\otimes_{\mathcal O_X}K_\bullet(v)$。由于这是 $\mathcal O_Y$ 的一个由\Term{finite-free}{有限秩自由} $\mathcal O_X$-\Term{module}{模}构成的\Term{resolution}{解消}，各 $\mathcal{T}or_i^{\mathcal O_X}(\mathcal O_Y,\mathcal O_Z)$ 就是\Term{complex}{复形} $K_\bullet(u)\otimes_{\mathcal O_X}K_\bullet(v)\otimes_{\mathcal O_X}\mathcal O_Z$ 的\Term{homology-sheaf}{同调层}。可将它看作\Term{complex}{复形} $K_\bullet(u)$ 与 $K_\bullet(v)\otimes_{\mathcal O_X}\mathcal O_Z$ 的\Term{tensor-product}{张量积}，并利用\Term{bicomplex}{双复形}所\Term{adjunction}{伴随}的\Term{spectral-sequence}{谱序列}（EGA $0_{\mathrm{III}}$ (11.3.5)）计算其\Term{homology}{同调}；这些\Term{spectral-sequence}{谱序列}的\Term{limit}{极限}项是相伴\Term{simple-complex}{单复形}的\Term{homology}{同调}。
+
+采用 EGA $0_{\mathrm{III}}$ (11.3.5) 的记号，考虑满足
+\[
+{}'E^2_{pq}=H_p^{\mathrm I}\bigl(H_q^{\mathrm{II}}(K_{\bullet\bullet})\bigr)
+\]
+的\Term{spectral-sequence}{谱序列}；其中第一个指标对应\Term{complex}{复形} $K_\bullet(u)$，第二个指标对应\Term{complex}{复形} $K_\bullet(v)\otimes_{\mathcal O_X}\mathcal O_Z$。后者为 $\mathcal O_Z$ 上与\Term{section}{截面}序列 $\bar g_1,\ldots,\bar g_r$ 相伴的\Term{koszul-complex}{Koszul 复形}，其中 $\bar g_i$ 是 $g_i$ 在 $\mathcal O_Z$ 中的像；此\Term{complex}{复形}是 $\mathcal O_T$ 在 $\mathcal O_Z$ 上的一个\Term{resolution}{解消}，因为\Term{immersion}{浸入} $Z\to X$ 及 $T\to Z\to X$ 都\Term{regular-immersion}{正则}（参见 1.7 ii) 的证明）。由于 $\bigwedge^p E$ 在 $\mathcal O_X$ 上\Term{free-module}{自由}，\Term{complex}{复形}
+\[
+\bigwedge^p E\otimes_{\mathcal O_X}\bigl(K_\bullet(v)\otimes_{\mathcal O_X}\mathcal O_Z\bigr)
+\]
+是 $\bigwedge^p E\otimes_{\mathcal O_X}\mathcal O_T$ 的一个\Term{resolution}{解消}。因而此\Term{spectral-sequence}{谱序列}\Term{degeneration}{退化}，各 $\mathcal{T}or_i^{\mathcal O_X}(\mathcal O_Y,\mathcal O_Z)$ 就是 $K_\bullet(u)\otimes_{\mathcal O_X}\mathcal O_T$ 的\Term{homology-sheaf}{同调层}。$K_\bullet(u)$ 的\Term{differential}{微分}用 $f_i$ 表示，而 $f_i$ \Term{annihilate}{零化} $\mathcal O_T$；所以 $K_\bullet(u)\otimes_{\mathcal O_X}\mathcal O_T$ 的\Term{differential}{微分}为零，从而得到\Term{isomorphism}{同构}
+\[
+\mathcal{T}or_i^{\mathcal O_X}(\mathcal O_Y,\mathcal O_Z)
+\xrightarrow{\sim}\mathcal O_T\otimes_{\mathcal O_X}\bigwedge^i E
+\xrightarrow{\sim}\bigwedge^i(\mathcal O_T)^p.\tag{2.5.2}
+\]
+特别地，$i=1$ 时得到
+\[
+\mathcal{T}or_1^{\mathcal O_X}(\mathcal O_Y,\mathcal O_Z)\xrightarrow{\sim}(\mathcal O_T)^n,
+\]
+从而对每个 $i$，
+\[
+\mathcal{T}or_i^{\mathcal O_X}(\mathcal O_Y,\mathcal O_Z)
+\xrightarrow{\sim}\bigwedge^i\mathcal{T}or_1^{\mathcal O_X}(\mathcal O_Y,\mathcal O_Z).\tag{2.5.3}
+\]
+\SourcePage{444}
+由 2.2，\Term{isomorphism}{同构} (2.5.2) 所定义的\Term{isomorphism}{同构}
+\[
+\bigwedge(\mathcal O_T)^n\xrightarrow{\sim}\bigoplus_{i\geq0}\mathcal{T}or_i^{\mathcal O_X}(\mathcal O_Y,\mathcal O_Z)
+\]
+与两边的\Term{algebra}{代数}结构相容；故由 (2.5.3) 定义的\Term{isomorphism}{同构}
+\[
+\bigwedge\mathcal{T}or_1^{\mathcal O_X}(\mathcal O_Y,\mathcal O_Z)
+\xrightarrow{\sim}\bigoplus_{i\geq0}\mathcal{T}or_i^{\mathcal O_X}(\mathcal O_Y,\mathcal O_Z)
+\]
+也与\Term{algebra}{代数}结构相容。由唯一性，它就是先前整体定义的\Term{homomorphism}{同态} (2.5.1) 的\Term{restriction}{限制}。因此 (2.5.1) 为\Term{isomorphism}{同构}。
+
+ ii) 考虑\Term{exact-sequence}{正合列}
+\[
+0\longrightarrow\mathcal I\longrightarrow\mathcal O_X\longrightarrow\mathcal O_Y\longrightarrow0
+\]
+以及由此得到的 Tor \Term{exact-sequence}{正合列}
+\[
+0\longrightarrow\mathcal{T}or_1^{\mathcal O_X}(\mathcal O_Y,\mathcal O_Z)
+\longrightarrow\mathcal I\otimes_{\mathcal O_X}\mathcal O_Z\longrightarrow\mathcal O_Z.
+\]
+因此 $\mathcal{T}or_1^{\mathcal O_X}(\mathcal O_Y,\mathcal O_Z)$ 是\Term{homomorphism}{同态}
+\[
+\mathcal I\otimes_{\mathcal O_X}(\mathcal O_X/\mathcal J)\longrightarrow\mathcal O_X/\mathcal J
+\]
+的\Term{kernel}{核}，即 $\mathcal I\cap\mathcal J/\mathcal I\mathcal J$。
+
+为证明最后一个关系，我们将证明存在一个\Term{exact-sequence}{正合列}
+\[
+0\longrightarrow\mathcal I\cap\mathcal J/\mathcal I\mathcal J
+\longrightarrow i^*(\mathcal N_{Y/X})\times j^*(\mathcal N_{Z/X})
+\longrightarrow\mathcal N_{T/X}\longrightarrow0.
+\]
+\Term{homomorphism}{同态} $i^*(\mathcal N_{Y/X})\to\mathcal N_{T/X}$ 及 $j^*(\mathcal N_{Z/X})\to\mathcal N_{T/X}$ 已在 (1.6.1) 中定义；这里取二者之差。另一方面，$\mathcal I\cap\mathcal J$ 自然映到 $\mathcal I/\mathcal I^2$，从而映到 $i^*(\mathcal I/\mathcal I^2)$；同样也映到 $j^*(\mathcal J/\mathcal J^2)$。这些\Term{homomorphism}{同态}在 $\mathcal I\mathcal J$ 上为零，因为 $\mathcal I,\mathcal J\subset\mathcal K$（这里 $\mathcal K$ 表示 $T$ 的\Term{ideal}{理想}），这就定义了左侧的\Term{arrow}{箭头}。
+\SourcePage{445}
+要检验这个序列\Term{exact-sequence}{正合}，可以在 $T$ 上\Term{local-scheme}{局部}考察，并使用 2.5 陈述中定义的\Term{section}{截面}。于是 $\mathcal N_{T/X}$ 有一组由 $f_i,g_j,h_k$ 的像组成的\Term{basis}{基}，$i^*(\mathcal N_{Y/X})$ 有一组由 $f_i,g_j$ 的像组成的\Term{basis}{基}，而 $j^*(\mathcal N_{Z/X})$ 有一组由 $f_i,h_k$ 的像组成的\Term{basis}{基}。显然，
+\[
+i^*(\mathcal N_{Y/X})\times j^*(\mathcal N_{Z/X})\longrightarrow\mathcal N_{T/X}
+\]
+为\Term{surjective-map}{满射}，其\Term{kernel}{核}由满足以下条件的元素组成：在 $(g_j,0)$ 和 $(0,h_k)$ 上的坐标为零，并且对每个 $i$，在 $(f_i,0)$ 和 $(0,f_i)$ 上的坐标相等。因此，序列在中间也\Term{exact-sequence}{正合}。所涉及的三个 $\mathcal O_T$-\Term{module}{模}都\Term{finite-locally-free}{有限秩局部自由}；而由 i) 的证明，$\mathcal{T}or_1^{\mathcal O_X}(\mathcal O_Y,\mathcal O_Z)$ 的\Term{rank}{秩}为 $p$，故立即可见整个序列\Term{exact-sequence}{正合}。
+\end{proof}
+
+\textbf{2.6.} 现在假定 $X$ 为具有一个\Term{ample-sheaf}{丰沛层}的\Term{scheme}{概形}。于是 $X$ 的每个\Term{closed-subscheme}{闭子概形} $Y$ 也具有一个\Term{ample-sheaf}{丰沛层}。已知此时“存在整体\Term{resolution}{解消}”，分别用\Term{finite-locally-free}{有限秩局部自由}\Term{sheaf}{层}和\Term{perfect-complex}{完美复形}构成的 $K'$ 是相同的（第 II 讲 2.2.9）。若\Term{immersion}{浸入} $i:Y\to X$ 还\Term{regular-immersion}{正则}，则它是\Term{perfect-morphism}{完美态射}，可定义一个\Term{additive-homomorphism}{加性同态} $i_*:K'(Y)\to K'(X)$（第 IV 讲 2.12）：将\Term{perfect-complex}{完美复形} $L^\bullet$ 的类映到\Term{complex}{复形} $\mathbf R i_*(L^\bullet)=i_*(L^\bullet)$ 的类（$i_*$ 是\Term{exact-functor}{正合函子}）。
+
+\begin{SGAresult}{命题}{2.7}
+设 $X$ 为具有一个\Term{ample-sheaf}{丰沛层}的\Term{scheme}{概形}，$i:Y\to X$ 为\Term{regular-closed-immersion}{正则闭浸入}，$\mathcal N$ 为 $Y$ 在 $X$ 中的\Term{conormal-sheaf}{余法层}。则对每个 $x\in K'(Y)$，有关系
+\[
+i^*(i_*(x))=x\cdot\lambda_{-1}(N),
+\]
+其中 $N$ 是 $\mathcal N$ 在 $K'(Y)$ 中的类，且 $\lambda_{-1}(N)=\sum_{i\geq0}(-1)^i\lambda^i(N)$。
+\end{SGAresult}
+\SourcePage{446}
+\begin{proof}
+由于待证关系的两边均为\Term{additive}{加性}的，可设 $x$ 为\Term{finite-locally-free}{有限秩局部自由} $\mathcal O_Y$-\Term{module}{模} $M$ 的类。于是 $i^*(i_*(x))$ 是\Term{complex}{复形} $\mathbf L i^*(\mathbf R i_*(M))$ 的类；该\Term{complex}{复形}是取 $\mathbf R i_*(M)=i_*(M)$ 的一个\Term{projective-resolution}{投射解消}，再与 $\mathcal O_Y$ 作\Term{tensor-product}{张量积}而得到的。因此其\Term{homology-sheaf}{同调层}为各 $\mathcal{T}or_i^{\mathcal O_X}(M,\mathcal O_Y)$。由 2.4，有\Term{isomorphism}{同构}
+\[
+\mathcal{T}or_i^{\mathcal O_X}(M,\mathcal O_Y)
+\xrightarrow{\sim}M\otimes_{\mathcal O_Y}\mathcal{T}or_i^{\mathcal O_X}(\mathcal O_Y,\mathcal O_Y).
+\]
+由 2.5，有\Term{isomorphism}{同构}
+\[
+\mathcal{T}or_i^{\mathcal O_X}(\mathcal O_Y,\mathcal O_Y)\xrightarrow{\sim}\bigwedge^i\mathcal N.
+\]
+所以各 $\mathcal{T}or_i^{\mathcal O_X}(M,\mathcal O_Y)$ 为\Term{finite-locally-free}{有限秩局部自由} $\mathcal O_Y$-\Term{module}{模}，而\Term{complex}{复形} $\mathbf L i^*(\mathbf R i_*(M))$ 在 $K'(Y)$ 中的类是其\Term{homology-sheaf}{同调层}的类的\Term{alternating-sum}{交错和}，即
+\[
+\begin{aligned}
+i^*(i_*(x))
+&=\sum_{i\geq0}(-1)^i\operatorname{cl}\bigl(M\otimes_{\mathcal O_Y}\mathcal{T}or_i^{\mathcal O_X}(\mathcal O_Y,\mathcal O_Y)\bigr)\\
+&=\sum_{i\geq0}(-1)^i x\cdot\lambda^i(N).
+\end{aligned}
+\]
+\end{proof}
+
+\begin{SGAresult}{推论}{2.8}
+在 2.7 的假设下，设 $x,y\in K'(Y)$，则有关系
+\[
+i_*(xy\lambda_{-1}(N))=i_*(x)\cdot i_*(y).
+\]
+\end{SGAresult}
+\begin{proof}
+由 2.7，$y\lambda_{-1}(N)=i^*(i_*(y))$。于是应用\Term{projection-formula}{投影公式}得到
+\[
+i_*(xy\lambda_{-1}(N))=i_*\bigl(x\cdot i^*(i_*(y))\bigr)=i_*(x)\cdot i_*(y).
+\]
+\end{proof}

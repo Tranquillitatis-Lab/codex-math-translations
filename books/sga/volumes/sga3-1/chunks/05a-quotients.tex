@@ -1,0 +1,634 @@
+\SGAchapter{V}{商概形的构造}{Construction de schémas quotients}
+\begin{center}P. Gabriel\end{center}
+\SourcePage{255}
+本讲旨在证明 TDTE III 中陈述的诸\Term{theorem}{定理}。\footnote{编者注：即 TDTE III 的\Term{theorem}{定理} 5.1、5.3、6.1、6.2 和 7.2。前两个（分别后两个）对应于本讲的\Term{theorem}{定理} 4.1（分别\Term{theorem}{定理} 7.1 和 8.1）。TDTE III 的\Term{theorem}{定理} 7.2 在第 VI$_A$ 讲 3.2 和 3.3 中证明。}若 $X$、$T$ 是\Term{category}{范畴} $\mathcal C$ 的两个\Term{object}{对象}，我们用 $X(T)$ 表示 $\operatorname{Hom}_{\mathcal C}(T,X)$。同样，若 $\varphi:Y\to X$（分别 $T$）是 $\mathcal C$ 的一个\Term{arrow}{箭头}（分别一个\Term{object}{对象}），则 $\varphi(T)$ 表示从 $Y(T)$ 到 $X(T)$ 的映射 $g\mapsto\varphi\circ g$：
+\[
+\begin{tikzcd}
+T\arrow[d,"g"']\arrow[dr,dashed,"\varphi\circ g"]&\\
+Y\arrow[r,"\varphi"']&X,
+\end{tikzcd}
+\]
+而 $T(\varphi)$ 表示从 $T(X)$ 到 $T(Y)$ 的映射 $g\mapsto g\circ\varphi$：
+\[
+\begin{tikzcd}
+Y\arrow[r,"\varphi"]\arrow[dr,dashed,"g\circ\varphi"']&X\arrow[d,"g"]\\
+&T.
+\end{tikzcd}
+\]
+最后，若 $P$ 是一个\Term{scheme}{概形}，则用 $\underline P$ 表示 $P$ 的底层\Term{set}{集合}。
+
+本讲破例不遵循第 IV 讲 4.6.15 关于\Term{quotient}{商}的记号约定（见该处原版第 227 页上部），因为我们希望在此给出一种同样适用于并非\Term{equivalence-relation}{等价关系}的“\Term{pre-equivalence-relation}{预等价关系}”的\Term{quotient}{商}构造。\footnote{编者注：即以 $X$ 为底的\Term{groupoid}{群胚}，参见第 1 节末的术语。当 $\mathcal C$ 为\Term{scheme}{概形}\Term{category}{范畴}时，以 $X$ 为底的\Term{groupoid}{群胚} $X_*$ 的\Term{quotient}{商} $p:X\to Y$ 在某些假设下存在（参见 4.1、6.1、7.1）；若 $X_*$ 还是一个\Term{equivalence-relation}{等价关系}，则在同样的假设下，$p$ 是\Term{faithfully-flat}{忠实平坦}且\Term{quasi-compact}{拟紧}的，因而是\Term{universal-epimorphism}{普遍满态射}，参见上述各处。}
+
+\SourcePage{256}
+\SGAsection{1}{$\mathcal C$-群胚}
+a) 设 $\mathcal C$ 是存在\Term{product}{积}和\Term{fiber-product}{纤维积}的\Term{category}{范畴}。先回顾，$\mathcal C$ 中的图式
+\[
+\begin{tikzcd}
+X_1\arrow[r,shift left=.5ex,"d_1"]\arrow[r,shift right=.5ex,"d_0"']&X_0\arrow[r,"p"]&Y
+\end{tikzcd}
+\]
+称为\Term{exact}{正合}的，是指 $pd_0=pd_1$，并且对每个 $T\in\mathcal C$，$T(p)$ 是从 $T(Y)$ 到 $T(X_0)$ 中由满足 $fd_0=fd_1$ 的\Term{arrow}{箭头} $f:X_0\to T$ 组成的\Term{subset}{子集}的\Term{bijection}{双射}。也称 $(Y,p)$ 为 $(d_0,d_1)$ 的\Term{coequalizer}{余核}，并记作
+\[(Y,p)=\operatorname{Coker}(d_0,d_1).\]
+
+b) 例如，取 $\mathcal C$ 为\Term{ringed-space}{赋环空间}的\Term{category}{范畴} $(\mathrm{Esp.An})$。此时\Term{coequalizer}{余核} $(Y,p)$ 总是存在，并可如下描述：将 $X_0$ 中的点 $d_0(x)$ 与 $d_1(x)$ 等同，再赋予\Term{quotient-topology}{商拓扑}，就得到 $Y$ 的底层\Term{topological-space}{拓扑空间}。\Term{canonical}{典范}映射 $\pi:X_0\to Y$ 以及 $d_0,d_1$ 在 $Y$ 上诱导一个\Term{sheaf}{环层}双\Term{arrow}{箭头}：
+\[
+\begin{tikzcd}
+\pi_*(\mathcal O_0)\arrow[r,shift left=.5ex,"\delta_0"]\arrow[r,shift right=.5ex,"\delta_1"']&\pi_*(d_{0*}\mathcal O_1)=\pi_*(d_{1*}\mathcal O_1),
+\end{tikzcd}
+\]
+其中 $\mathcal O_i$ 是 $X_i$ 的\Term{structure-sheaf}{结构层}。取 $\pi_*(\mathcal O_0)$ 中由满足 $\delta_0(s)=\delta_1(s)$ 的\Term{section}{截面} $s$ 组成的\Term{subsheaf}{子层}，作为 $Y$ 上的\Term{sheaf}{环层}。\Term{arrow}{箭头} $p$ 的定义是显然的。
+
+\footnote{编者注：这里增添了\Term{lemma}{引理} 1.1 和 1.2，第 5 至第 9 节多次用到它们。}设 $X_1\mathrel{\substack{\xrightarrow{d_1}\\[-.6ex]\xrightarrow[d_0]{}}}X_0$ 是 $(\mathrm{Esp.An})$ 中的一个图式，$(Y,p)$ 为其\Term{coequalizer}{余核}。称 $X_0$ 的\Term{open-subset}{开子集} $U$ 是\Term{saturated}{饱和}的，若 $d_0^{-1}(U)=d_1^{-1}(U)$；这\Term{equivalence}{等价}于 $U=p^{-1}(p(U))$。此时，由于 $Y$ 赋有\Term{quotient-topology}{商拓扑}，$p(U)$ 是 $Y$ 的一个\Term{open-subset}{开子集}。
+\begin{SGAresult}{\Term{lemma}{引理}}{1.1}
+设 $U$ 是 $X$ 的一个\Term{saturated}{饱和}\Term{open-subset}{开子集}，$V=p(U)$。用 $U_1$ 表示 $X_1$ 的\Term{open-subset}{开子集} $d_0^{-1}(U)=d_1^{-1}(U)$，用 $\widetilde d_0,\widetilde d_1$ 及 $\widetilde p$ 表示 $d_0,d_1$ 在 $U_1$ 上和 $p$ 在 $U$ 上的\Term{restriction}{限制}，则 $(V,\widetilde p)$ 是 $(\mathrm{Esp.An})$ 中的一个\Term{coequalizer}{余核}：\footnote{编者注：在\Term{scheme}{概形}\Term{category}{范畴}中并非如此。例如，设 $S=\operatorname{Spec}(\mathbb C)$，$X_0=\mathbb A^2_S=\operatorname{Spec}(\mathbb C[x_1,x_2])$，$d_1:\mathbb G_{m,S}\times_S\mathbb A^2_S\to\mathbb A^2_S$ 是 $\mathbb G_{m,S}$ 在 $\mathbb A^2_S$ 上的\Term{homothety}{位似}\Term{action}{作用}，$d_0$ 为向第二因子的\Term{projection}{投影}，$U=\mathbb A^2_S-\{\mathfrak m\}$，其中 $\mathfrak m$ 是点 $(0,0)$。那么，\Term{projective-space}{射影空间} $\mathbb P^1_S$ 在 $(\mathrm{Esp.An})$ 和 $(\mathrm{Sch})$ 中都是 $(\widetilde d_0,\widetilde d_1)$ 的\Term{coequalizer}{余核}；而 $(d_0,d_1)$ 在 $(\mathrm{Esp.An})$ 中的\Term{coequalizer}{余核} $Y$ 是 $\mathbb P^1_S$ 与点 $y_0=\{p(\mathfrak m)\}$ 的并，包含 $y_0$ 的唯一\Term{open-subset}{开子集}是 $Y$，且 $\Gamma(Y,\mathcal O_Y)=\mathbb C$。若 $f:\mathbb A^2_S\to T$ 是满足 $fd_0=fd_1$ 的 $S$-\Term{scheme}{概形}\Term{morphism}{态射}，$V=\operatorname{Spec}(A)$ 是 $T$ 中包含 $t_0=f(y_0)$ 的\Term{affine-open}{仿射开子集}，则 $f^{-1}(V)=\mathbb A^2$，\Term{ring-homomorphism}{环同态} $A\to\mathbb C[x_1,x_2]$ 经由 $\mathbb C$ \Term{resolution}{分解}；这表明 $S=\operatorname{Spec}(\mathbb C)$ 是 $(d_0,d_1)$ 在\Term{category}{范畴} $(\mathrm{Sch}/S)$ 中的\Term{coequalizer}{余核}。}
+\[
+\begin{tikzcd}
+U_1\arrow[r,shift left=.5ex,"\widetilde d_1"]\arrow[r,shift right=.5ex,"\widetilde d_0"']&U\arrow[r,"\widetilde p"]&V.
+\end{tikzcd}
+\]
+\end{SGAresult}
+\SourcePage{257}
+验证很容易。
+\begin{SGAresult}{\Term{lemma}{引理}}{1.2}
+设 $X_1\mathrel{\substack{\xrightarrow{d_1}\\[-.6ex]\xrightarrow[d_0]{}}}X_0$ 是 $(\mathrm{Sch})$ 中的一个图式，$(Y,p)$ 为它在 $(\mathrm{Esp.An})$ 中的\Term{coequalizer}{余核}。
+
+(i) 若 $Y$ 是\Term{scheme}{概形}，$p$ 是\Term{scheme}{概形}\Term{morphism}{态射}，则 $(Y,p)$ 是 $(d_0,d_1)$ 在 $(\mathrm{Sch})$ 中的\Term{coequalizer}{余核}。
+
+(ii) 假设 $X_0$ 的每一点都有一个\Term{saturated}{饱和}\Term{open-neighborhood}{开邻域} $U$，使得若以 $\widetilde d_0,\widetilde d_1$ 表示 $d_0,d_1$ 在 $d_0^{-1}(U)=d_1^{-1}(U)$ 上的\Term{restriction}{限制}，以 $(Q,q)$ 表示 $(\widetilde d_0,\widetilde d_1)$ 在 $(\mathrm{Esp.An})$ 中的\Term{coequalizer}{余核}，则 $Q$ 是\Term{scheme}{概形}，$q$ 是\Term{scheme}{概形}\Term{morphism}{态射}。那么 $(Y,p)$ 是 $(d_0,d_1)$ 在 $(\mathrm{Sch})$ 中的\Term{coequalizer}{余核}。
+\end{SGAresult}
+\begin{proof}
+(i) 已在第 4 节 c) 中证明；证明很短，这里重复一次。设 $f:X_0\to Z$ 是满足 $fd_0=fd_1$ 的\Term{scheme}{概形}\Term{morphism}{态射}。由假设，存在唯一的\Term{ringed-space}{赋环空间}\Term{morphism}{态射} $r:Y\to Z$ 使 $f=rp$。须证明，对每个 $y\in Y$，$r$ 诱导的\Term{homomorphism}{同态} $\mathcal O_{r(y)}\to\mathcal O_y$ 是\Term{local-homomorphism}{局部同态}。这是因为 $p$ 是\Term{surjectivity}{满射}，故 $y$ 可写成 $p(x)$，且由 $f$ 诱导的\Term{homomorphism}{同态} $\mathcal O_{f(x)}\to\mathcal O_x$ 是\Term{local-homomorphism}{局部同态}。
+
+(ii) 由 (i) 和前一\Term{lemma}{引理}得到。
+\end{proof}
+c) 本讲研究双\Term{arrow}{箭头} $(d_0,d_1)$ 处在更丰富的背景中时 $\operatorname{Coker}(d_0,d_1)$ 的存在性。确切地说，令 $X_2=X_1\times_{d_1,d_0}X_1$ 为图式
+\[
+\begin{tikzcd}
+&X_1\arrow[d,"d_1"]\\
+X_1\arrow[r,"d_0"']&X_0
+\end{tikzcd}\tag{*}
+\]
+的\Term{fiber-product}{纤维积}，以 $d'_0,d'_2$ 表示 $X_2$ 到 $X_1$ 的两个\Term{canonical}{典范}\Term{projection}{投影}。依定义，我们有\Term{cartesian-square}{笛卡尔方块}
+\[
+\begin{tikzcd}
+X_2\arrow[r,"d'_0"]\arrow[d,"d'_2"']&X_1\arrow[d,"d_1"]\\
+X_1\arrow[r,"d_0"']&X_0.
+\end{tikzcd}\tag{0}
+\]
+再给定第三个\Term{arrow}{箭头} $d'_1:X_2\to X_1$。若对 $\mathcal C$ 的每个\Term{object}{对象} $T$，$X_1(T)$ 都是某个\Term{groupoid}{群胚} $X_*(T)$ 的\Term{arrow}{箭头}\Term{set}{集合}，其\Term{object}{对象}\Term{set}{集合}为 $X_0(T)$，源映射为 $d_1(T)$，目标映射为 $d_0(T)$，复合映射为 $d'_1(T)$，则称 $(d_0,d_1:X_1\rightrightarrows X_0,d'_1)$ 为一个 $\mathcal C$-\Term{groupoid}{群胚}。这里如通常一样，将 $(X_1\times_{d_1,d_0}X_1)(T)$ 与 $X_1(T)\times_{d_1(T),d_0(T)}X_1(T)$ 等同；\SourcePage{258}并回顾，\Term{groupoid}{群胚}就是所有\Term{arrow}{箭头}都\Term{invertible}{可逆}的\Term{category}{范畴}。\footnote{编者注：于是，在此情形下，$X_2(T)$ 是可复合\Term{arrow}{箭头}对 $(f_2,f_1)$ 的\Term{set}{集合}，即满足 $d_0(f_1)=d_1(f_2)$；$d'_0,d'_1,d'_2$ 分别将 $(f_2,f_1)$ 映到 $f_2,f_2\circ f_1,f_1$。}
+
+若 $\varphi$ 是\Term{groupoid}{群胚} $X_*(T)$ 的一个\Term{arrow}{箭头}，则映射 $f\mapsto\varphi\circ f$ 是从目标等于 $\varphi$ 的源的\Term{arrow}{箭头} $f$ 的\Term{set}{集合}，到与 $\varphi$ 具有相同目标的\Term{arrow}{箭头}\Term{set}{集合}的\Term{bijection}{双射}。不难看出，这一事实\Term{equivalence}{等价}于方块
+\[
+\begin{tikzcd}
+X_2\arrow[r,"d'_1"]\arrow[d,"d'_0"']&X_1\arrow[d,"d_0"]\\
+X_1\arrow[r,"d_0"']&X_0
+\end{tikzcd}\tag{1}
+\]
+是\Term{cartesian}{笛卡尔}的。
+
+同样，映射 $g\mapsto g\circ\varphi$ 是从 $X_*(T)$ 中源为 $\varphi$ 的目标的\Term{arrow}{箭头} $g$ 的\Term{set}{集合}，到与 $\varphi$ 具有相\Term{isogenous}{同源}的\Term{arrow}{箭头}\Term{set}{集合}的\Term{bijection}{双射}。这又\Term{equivalence}{等价}于方块
+\[
+\begin{tikzcd}
+X_2\arrow[r,"d'_1"]\arrow[d,"d'_2"']&X_1\arrow[d,"d_1"]\\
+X_1\arrow[r,"d_1"']&X_0
+\end{tikzcd}\tag{2}
+\]
+是\Term{cartesian}{笛卡尔}的。
+
+另一方面，设 $s:X_0\to X_1$ 是 $\mathcal C$ 中唯一的\Term{arrow}{箭头}，使得对每个 $T$，$s(T):X_0(T)\to X_1(T)$ 将 $X_*(T)$ 的每个\Term{object}{对象}映到该\Term{object}{对象}的恒等\Term{arrow}{箭头}。\footnote{编者注：$T\mapsto s(T)$ 定义了 $\operatorname{Hom}(h_{X_0},h_{X_1})$ 的一个元素，而由 Yoneda \Term{lemma}{引理}，后者等于 $\operatorname{Hom}(X_0,X_1)$。}\Term{arrow}{箭头} $s$ 满足等式
+\[d_1s=\operatorname{id}_{X_0},\tag{3}\]
+以及
+\[d_0s=\operatorname{id}_{X_0}.\tag{3 bis}\]
+最后，复合映射 $d'_1(T)$ 的\Term{associative-law}{结合律}\Term{equivalence}{等价}于下图交换：
+\[
+\begin{tikzcd}[column sep=large]
+X_1\times_{d_1,d_0}X_1\times_{d_1,d_0}X_1\arrow[r,"d'_1\times X_1"]\arrow[d,"X_1\times d'_1"']&X_1\times_{d_1,d_0}X_1\arrow[d,"d'_1"]\\
+X_1\times_{d_1,d_0}X_1\arrow[r,"d'_1"']&X_1.
+\end{tikzcd}\tag{4}
+\]
+\SourcePage{259}
+反过来，条件 (1)、(2)、(4)，以及满足 (3) 的\Term{arrow}{箭头} $s$ 的存在性，蕴含 $(X_1\rightrightarrows X_0,d'_1)$ 是一个 $\mathcal C$-\Term{groupoid}{群胚}。条件 (3) 很温和；它仅保证，对每个 $T\in\mathcal C$，映射 $d_1(T):X_1(T)\to X_0(T)$ 是\Term{surjectivity}{满射}。本讲以下主要使用\Term{cartesian-square}{笛卡尔方块} (0)、(1)、(2)，将它们汇总为图式
+\[
+\begin{tikzcd}
+X_2\arrow[r,shift left=.6ex,"d'_1"]\arrow[r,shift right=.6ex,"d'_0"']\arrow[d,"d'_2"']&X_1\arrow[r,"d_0"]\arrow[d,"d_1"]&X_0\\
+X_1\arrow[r,shift left=.6ex,"d_1"]\arrow[r,shift right=.6ex,"d_0"']&X_0.&
+\end{tikzcd}\tag{0,1,2}
+\]
+图中左边两个方块（即 (0) 和 (2)）是\Term{cartesian}{笛卡尔}的；第一行\Term{exact}{正合}，且 $X_2$ 与\Term{fiber-product}{纤维积} $X_1\times_{d_0,d_0}X_1$ 等同。
+
+我们只间接使用\Term{associative-law}{结合律}，例如用它来保证存在满足 (3) 和 (3 bis) 的\Term{arrow}{箭头} $s$，或者保证存在\Term{arrow}{箭头}
+\[\sigma:X_1\to X_1,\qquad d_0\sigma=d_1,\quad d_1\sigma=d_0\tag{$\dagger$}\]
+（选取 $\sigma$，使 $\sigma(T):X_1(T)\to X_1(T)$ 将 $X_*(T)$ 的每个\Term{arrow}{箭头}映到其逆\Term{arrow}{箭头}）。\footnote{编者注：由 Yoneda \Term{lemma}{引理}，$\sigma$ 是 $X_1$ 的一个\Term{involutive-automorphism}{对合自同构}；例如在 3.e) 和\Term{theorem}{定理} 4.1 中将用到这一点。}
+
+我们有时也略微滥用术语，将满足下述条件的图式
+\[
+\begin{tikzcd}
+X_2\arrow[r,shift left=1ex,"d'_0"]\arrow[r,"d'_1" description]\arrow[r,shift right=1ex,"d'_2"']&X_1\arrow[r,shift left=.5ex,"d_0"]\arrow[r,shift right=.5ex,"d_1"']&X_0
+\end{tikzcd}
+\]
+称为 $\mathcal C$-\Term{groupoid}{群胚}：方块 (0)、(1)、(2) 为\Term{cartesian}{笛卡尔}的，图式 (4) 交换，且存在满足 (3) 的 $s$。因此，\Term{object}{对象} $X_2$ 可以是 (*) 的“某个”\Term{fiber-product}{纤维积}，而不必是“所选定的那个”\Term{fiber-product}{纤维积}。\footnote{编者注：见下面的例 2.a)。}
+
+\textbf{术语。}我们也将 $\mathcal C$-\Term{groupoid}{群胚} $X_*$ 称为以 $X_0$ 为底的\Term{groupoid}{群胚} $X_*$，或 $X_0$ 中的\Term{pre-equivalence-relation}{预等价关系} $X_*$。
+
+\SGAsection{2}{$\mathcal C$-群胚的例子}
+a) 设 $X$ 是 $\mathcal C$ 的一个\Term{object}{对象}，$G$ 是在 $X$ 上作左\Term{action}{作用}的 $\mathcal C$-\Term{group}{群}。用 $d_0:G\times X\to X$ 表示定义 $G$ 在 $X$ 上的\Term{action}{作用}的\Term{arrow}{箭头}，用 $d_1:G\times X\to X$ 表示向第二因子的\Term{projection}{投影}，用 $\mu:G\times G\to G$ \SourcePage{260}表示定义 $G$ 的 $\mathcal C$-\Term{group}{群}结构的\Term{arrow}{箭头}，最后用 $\operatorname{pr}_{2,3}$ 表示 $G\times G\times X=G\times(G\times X)$ 向第二因子的\Term{projection}{投影}。那么
+\[
+\begin{tikzcd}
+G\times G\times X\arrow[r,shift left=1.4ex,"{\operatorname{pr}_{2,3}}"]\arrow[r,"\mu\times X" description]\arrow[r,shift right=1.4ex,"G\times d_0"']&G\times X\arrow[r,shift left=.5ex,"d_1"]\arrow[r,shift right=.5ex,"d_0"']&X
+\end{tikzcd}
+\]
+是一个 $\mathcal C$-\Term{groupoid}{群胚}。
+
+b) 设 $d_0,d_1:X_1\to X_0$ 是一个\Term{equivalence-pair}{等价对}，也就是说，以 $d_0\boxtimes d_1:X_1\to X_0\times X_0$ 表示\Term{set-component}{分量}为 $d_0,d_1$ 的\Term{arrow}{箭头}，我们假定对 $\mathcal C$ 的每个\Term{object}{对象} $T$，$(d_0\boxtimes d_1)(T)$ 是从 $X_1(T)$ 到 $X_0(T)$ 上某个\Term{equivalence-relation}{等价关系}的图的\Term{bijection}{双射}。因此，\Term{set}{集合} $X_1(T)$ 与由满足 $x\sim y$ 的 $X_0(T)$ 中元素组成的对 $(x,y)$ 的\Term{set}{集合}等同；同样，\Term{set}{集合} $X_2(T)=(X_1\times_{d_1,d_0}X_1)(T)$ 与由满足 $x\sim y$ 及 $y\sim z$ 的 $X_0(T)$ 中元素组成的三元组 $(x,y,z)$ 的\Term{set}{集合}等同。于是，存在唯一的\Term{arrow}{箭头} $d'_1:X_2\to X_1$ 使方块 (1)、(2) 交换：$d'_1(T)$ 必须将 $(x,y,z)\in X_2(T)$ 映到 $(x,z)\in X_1(T)$。这样选取 $d'_1$ 后，$(d_0,d_1:X_1\rightrightarrows X_0,d'_1)$ 就是一个 $\mathcal C$-\Term{groupoid}{群胚}。
+
+反之，考虑一个 $\mathcal C$-\Term{groupoid}{群胚} $X_*$，且 $d_0\boxtimes d_1:X_1\to X_0\times X_0$ 是\Term{monomorphism}{单态射}。那么 $(d_0,d_1)$ 是一个\Term{equivalence-pair}{等价对}，而且可以按上面的方法由 $(d_0,d_1)$ 重建 $X_*$。\footnote{编者注：特别地，若 $G$ 是在 $\mathcal C$ 的\Term{object}{对象} $X$ 上作左\Term{action}{作用}的 $\mathcal C$-\Term{group}{群}，$X_*$ 是 a) 中定义的 $\mathcal C$-\Term{groupoid}{群胚}，则 $(d_0,d_1)$ 是\Term{equivalence-pair}{等价对}，当且仅当 $G$ 在 $X$ 上的\Term{action}{作用}是\Term{free-action}{自由的}，参见第 III 讲 3.2.1。}
+
+c) 若 $p:X\to Y$ 是 $\mathcal C$ 中任意\Term{arrow}{箭头}，$\operatorname{pr}_1,\operatorname{pr}_2$ 是 $X\times_{p,p}X$ 到 $X$ 的两个\Term{projection}{投影}，则 $(\operatorname{pr}_1,\operatorname{pr}_2):X\times_{p,p}X\rightrightarrows X$ 是一个\Term{equivalence-pair}{等价对}。若图式
+\[
+\begin{tikzcd}
+X\times_{p,p}X\arrow[r,shift left=.5ex,"\operatorname{pr}_1"]\arrow[r,shift right=.5ex,"\operatorname{pr}_2"']&X\arrow[r,"p"]&Y
+\end{tikzcd}
+\]
+\Term{exact}{正合}，即 $(Y,p)=\operatorname{Coker}(\operatorname{pr}_1,\operatorname{pr}_2)$，则称 $p$ 为\Term{effective-epimorphism}{有效满态射}。
+
+例如，设 $S$ 是\Term{noetherian}{诺特}\Term{scheme}{概形}，$\mathcal C$ 为 $S$ 上\Term{finite-morphism}{有限}\Term{scheme}{概形}的\Term{category}{范畴}。我们说明 $\mathcal C$ 中的\Term{epimorphism}{满态射}未必\Term{effective}{有效}：取 $S=\operatorname{Spec}k[T^3,T^5]$，其中 $k$ 是交换域，取 $Y=S$，$X=\operatorname{Spec}k[T]$。若 $i$ 为 $B=k[T^3,T^5]$ 到 $A=k[T]$ 的包含\Term{homomorphism}{同态}，则取 $p=\operatorname{Spec}i$。此时 $X\times_{p,p}X$ 与 $\operatorname{Spec}(A\otimes_B A)$ 等同，$\operatorname{Coker}(\operatorname{pr}_1,\operatorname{pr}_2)$ 与 $\operatorname{Spec}B'$ 等同，其中 $B'$ 是 $A$ 中由满足 $a\otimes_B1=1\otimes_Ba$ 的 $a$ 组成的\Term{subring}{子环}。然而
+\[
+\begin{aligned}
+T^7\otimes_B1&=(T^2T^5)\otimes_B1=T^2\otimes_BT^5\\
+&=T^2\otimes_B(T^3T^2)=T^5\otimes_BT^2=1\otimes_BT^7.
+\end{aligned}
+\]
+所以 $T^7\in B'$，但 $T^7\notin B$，因而 $\operatorname{Spec}B'$ 与 $\operatorname{Spec}B$ 不同，反例即得。\footnote{编者注：同一论证适用于 $B=k[T^3,T^4]$ 和 $T^5\otimes_B1$；更一般地，只要 $n$ 不整除 $2r$，就适用于 $B=k[T^n,T^{n+r}]$ 和元素 $T^{n+2r}\otimes_B1$。}
+
+\SourcePage{261}
+\SGAsection{3}{关于 $\mathcal C$-群胚的若干基本事实}
+下面不拘次序地列出以后要用到的若干注记。
+
+a) 设
+\[
+\begin{tikzcd}
+X_2\arrow[r,shift left=1ex,"{d'_0,d'_1,d'_2}"]\arrow[r]\arrow[r,shift right=1ex]&X_1\arrow[r,shift left=.5ex,"{d_0,d_1}"]\arrow[r,shift right=.5ex]&X_0
+\end{tikzcd}
+\]
+是一个 $\mathcal C$-\Term{groupoid}{群胚}，$f_0:Y_0\to X_0$ 是 $\mathcal C$ 中的一个\Term{arrow}{箭头}。我们将定义一个以 $Y_0$ 为底的 $\mathcal C$-\Term{groupoid}{群胚}
+\[
+\begin{tikzcd}
+Y_2\arrow[r,shift left=1ex,"{e'_0,e'_1,e'_2}"]\arrow[r]\arrow[r,shift right=1ex]&Y_1\arrow[r,shift left=.5ex,"{e_0,e_1}"]\arrow[r,shift right=.5ex]&Y_0,
+\end{tikzcd}
+\]
+称其为由 $X_*$ 和 $f_0$ 诱导的\Term{groupoid}{群胚}。也称 $Y_*$ 为 $X_*$ 经\Term{base-change}{基变换} $f_0$ 的\Term{inverse-image}{逆像}。
+
+取 $Y_1$ 为下图的\Term{fiber-product}{纤维积}：
+\[
+\begin{tikzcd}
+Y_1\arrow[r,dashed,"f_1"]\arrow[d,dashed]&X_1\arrow[d,"d_0\boxtimes d_1"]\\
+Y_0\times Y_0\arrow[r,"f_0\times f_0"']&X_0\times X_0,
+\end{tikzcd}
+\]
+取 $e_0,e_1$ 为\Term{canonical}{典范}\Term{arrow}{箭头} $Y_1\to Y_0\times Y_0$ 分别与 $Y_0\times Y_0$ 的第一、第二\Term{projection}{投影}的复合。这样，\Term{morphism}{态射} $Y_1\to Y_0\times Y_0$ 就是 $e_0\boxtimes e_1$，且对于 $i=0,1$，有 $f_0\circ e_i=d_i\circ f_1$，其中 $f_1$ 表示 $Y_1$ 到 $X_1$ 的\Term{projection}{投影}。
+
+置 $Y_2=Y_1\times_{e_0,e_1}Y_1$，参见 1.c)。也可以说，\Term{duality}{对偶} $(e_0,e_1)$ 的定义使得对每个 $T\in\mathcal C$ 和 $Y_0(T)$ 中的每对元素 $(y,x)$，在 $X_*(T)$ 中以 $f_0(x)$ 为源、以 $f_0(y)$ 为目标的\Term{arrow}{箭头} $\psi$，与 $Y_*(T)$ 中以 $x$ 为源、以 $y$ 为目标的\Term{arrow}{箭头} ${}_y\psi_x$ 之间，存在某个一一对应 $\psi\mapsto{}_y\psi_x$。于是，对于每个 $T\in\mathcal C$，利用公式
+\[{}_z\psi_y\circ{}_y\varphi_x={}_z(\psi\circ\varphi)_x\]
+定义 $Y_*(T)$ 中\Term{arrow}{箭头}的复合，从而确定 $e'_1:Y_2\to Y_1$。显然，这个定义使每个 $Y_*(T)$ 成为\Term{groupoid}{群胚}。
+
+b) 已知 $\mathcal C$-\Term{groupoid}{群胚} $X_*$ 和\Term{base-change}{基变换} $f_0:Y_0\to X_0$，还可以用另一种方式重建\Term{duality}{对偶} $(e_0,e_1):Y_1\rightrightarrows Y_0$。\footnote{编者注：第二种观点将在 3.f) 和 6.1 的证明中使用。}构造 $Y_0\times_{X_0}X_1$、$\operatorname{pr}_1$、$\operatorname{pr}_2$，使方块
+\[
+\begin{tikzcd}
+Y_0\times_{X_0}X_1\arrow[r,"\operatorname{pr}_2"]\arrow[d,"\operatorname{pr}_1"']&X_1\arrow[d,"d_0"]\\
+Y_0\arrow[r,"f_0"']&X_0
+\end{tikzcd}
+\]
+\SourcePage{262}
+为\Term{cartesian}{笛卡尔}的。归约到\Term{set}{集合}的情形后，很容易得到如下\Term{cartesian-square}{笛卡尔方块}：
+\[
+\begin{tikzcd}
+Y_1\arrow[r,"e_0\boxtimes f_1"]\arrow[d,"e_1"']&Y_0\times_{X_0}X_1\arrow[d,"d_1\circ\operatorname{pr}_2"]\\
+Y_0\arrow[r,"f_0"']&X_0,
+\end{tikzcd}
+\]
+其中 $f_1$ 表示 $Y_1=(Y_0\times Y_0)\times_{(X_0\times X_0)}X_1$ 到 $X_1$ 的\Term{canonical}{典范}\Term{projection}{投影}。
+
+c) 我们给出 $\mathcal C$-\Term{groupoid}{群胚}的\Term{inverse-image}{逆像}的两个例子。取 $Y_0=X_1$，$f_0=d_0$。对 $\mathcal C$ 的每个\Term{object}{对象} $T$，$Y_1(T)$ 与 $X_*(T)$ 中形如
+\[
+\begin{tikzcd}
+b\arrow[r,"\varphi"]&d\\
+a\arrow[u,"f"]&c\arrow[u,"g"']
+\end{tikzcd}
+\]
+的图式的\Term{set}{集合}等同。这样的图式以\Term{arrow}{箭头} $f$ 为源，以\Term{arrow}{箭头} $g$ 为目标；其复合的定义是显然的。
+
+现在置 $Y'_0=X_1$，$f'_0=d_1$（加上撇号\footnote{编者注：原文写的是“重音号”。}是为避免与前例混淆）。此时，对每个 $T\in\mathcal C$，$Y'_1(T)$ 与\Term{groupoid}{群胚} $X_*(T)$ 中形如
+\[
+\begin{tikzcd}
+b&d\\
+a\arrow[u,"f"]\arrow[r,"\psi"']&c\arrow[u,"g"']
+\end{tikzcd}
+\]
+的图式的\Term{set}{集合}等同。这样的图式以 $f$ 为源，以 $g$ 为目标；其复合的定义是显然的。
+
+于是，$Y_0(T)$ 上的\Term{identity-map}{恒等映射}以及从 $Y_1(T)$ 到 $Y'_1(T)$ 的映射
+\[
+\begin{tikzcd}[column sep=small]
+b\arrow[r,"\varphi"]&d&&b&d\\
+a\arrow[u,"f"]&c\arrow[u,"g"']&\longmapsto&a\arrow[u,"f"]\arrow[r,"g^{-1}\varphi f"']&c\arrow[u,"g"']
+\end{tikzcd}
+\]
+显然定义了\Term{groupoid}{群胚} $Y_*(T)$ 到 $Y'_*(T)$ 的\Term{isomorphism}{同构}。而且，这个\Term{isomorphism}{同构}对 $T$ 的依赖是\Term{functorial}{函子性}的，因此 $\mathcal C$-\Term{groupoid}{群胚} $Y_*$ 与 $Y'_*$ \Term{isomorphism}{同构}。\footnote{编者注：这一点将在\Term{lemma}{引理} 6.1 的证明中起关键\Term{action}{作用}。}
+
+\SourcePage{263}
+d) \begin{SGAresult}{命题}{3.1}
+沿用 a) 的记号，并假定 $f_0$ 是\Term{universal-effective-epimorphism}{普遍有效满态射}。则 $\operatorname{Coker}(d_0,d_1)$ 存在，当且仅当 $\operatorname{Coker}(e_0,e_1)$ 存在。\footnote{编者注：这里修改了原文，以突出下面的\Term{isomorphism}{同构}。}而且，此时 $f_0$ 诱导\Term{isomorphism}{同构}
+\[\operatorname{Coker}(d_0,d_1)\xrightarrow{\sim}\operatorname{Coker}(e_0,e_1).\]
+\end{SGAresult}
+\begin{proof}
+先回顾，\Term{epimorphism}{满态射} $f_0:Y_0\to X_0$ 称为\Term{universal-epimorphism}{普遍}的，是指对每个\Term{cartesian-square}{笛卡尔方块}
+\[
+\begin{tikzcd}
+Y'\arrow[r]\arrow[d,"f'"']&Y_0\arrow[d,"f_0"]\\
+X'\arrow[r]&X_0,
+\end{tikzcd}
+\]
+$f'$ 都是\Term{epimorphism}{满态射}。现在，以 $C(d_0,d_1)$ 表示从 $\mathcal C$ 到\Term{set}{集合}的\Term{covariant-functor}{协变函子}，它将每个 $T\in\mathcal C$ 映到\Term{duality}{对偶} $T(d_0),T(d_1):T(X_0)\rightrightarrows T(X_1)$ 的\Term{equalizer}{核}。类似地定义 $C(e_0,e_1)$。于是对每个 $T\in\mathcal C$，都有\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}[column sep=large]
+C(d_0,d_1)(T)\arrow[r]\arrow[d,"T(f)"']&T(X_0)\arrow[r,shift left=.5ex,"T(d_1)"]\arrow[r,shift right=.5ex,"T(d_0)"']\arrow[d,"T(f_0)"]&T(X_1)\arrow[d,"T(f_1)"]\\
+C(e_0,e_1)(T)\arrow[r]&T(Y_0)\arrow[r,shift left=.5ex,"T(e_1)"]\arrow[r,shift right=.5ex,"T(e_0)"']&T(Y_1),
+\end{tikzcd}
+\]
+其中 $T(f)$ 为\Term{injectivity}{单射} $T(f_0)$ 诱导的\Term{injectivity}{单射}。只要证明对每个 $T$，$T(f)$ 都是\Term{surjectivity}{满射}，就得到\Term{functor}{函子}\Term{isomorphism}{同构} $f:C(d_0,d_1)\xrightarrow{\sim}C(e_0,e_1)$，从而这两个\Term{functor}{函子}之一的\Term{representability}{可表性}\Term{equivalence}{等价}于另一个的\Term{representability}{可表性}；这就证明了命题。
+
+为证明 $T(f)$ 的\Term{surjectivity}{满射}性，考虑图式
+\[
+\begin{tikzcd}[column sep=large]
+&Y_1\arrow[r,"f_1"]\arrow[d,shift left=.5ex,"e_0"]\arrow[d,shift right=.5ex,"e_1"']&X_1\arrow[d,shift left=.5ex,"d_0"]\arrow[d,shift right=.5ex,"d_1"']\\
+Y_0\times_{X_0}Y_0\arrow[ur,"\Delta"]\arrow[r,shift left=.5ex,"\operatorname{pr}_2"]\arrow[r,shift right=.5ex,"\operatorname{pr}_1"']&Y_0\arrow[r,"f_0"']&X_0,
+\end{tikzcd}
+\]
+其中 $\Delta$ 是 $Y_1\to Y_0\times Y_0$ 的\Term{section}{截面}，由\Term{morphism}{态射} $s\circ f_0\circ\operatorname{pr}_1:Y_0\times Y_0\to X_1$ 定义；\Term{arrow}{箭头} $s:X_0\to X_1$ 满足第 1 节的等式 (3) 和 (3 bis)。
+
+若\Term{arrow}{箭头} $g:Y_0\to T$ 满足 $g\circ e_0=g\circ e_1$，则 $g\circ e_0\circ\Delta=g\circ e_1\circ\Delta$，故 $g\circ\operatorname{pr}_1=g\circ\operatorname{pr}_2$。因为 $f_0$ 是\Term{effective-epimorphism}{有效满态射}，$g$ 是 $f_0$ \SourcePage{264}与某个\Term{arrow}{箭头} $h:X_0\to T$ 的复合，即 $g=T(f_0)(h)$。还须证明 $h\in C(d_0,d_1)(T)$，也就是 $hd_0=hd_1$。但有
+\[hd_0f_1=hf_0e_0=ge_0=ge_1=hf_0e_1=hd_1f_1,\]
+而 $f_1$ 是\Term{epimorphism}{满态射}（因为 $f_0$ 是\Term{universal-epimorphism}{普遍满态射}），故所需等式成立。
+\end{proof}
+e) 现在考虑一个\Term{scheme}{概形} $S$，取 $\mathcal C=(\mathrm{Sch}/S)$。给定一个 $\mathcal C$-\Term{groupoid}{群胚}
+\[
+\begin{tikzcd}
+X_2\arrow[r,shift left=1ex,"d'_2"]\arrow[r,"d'_1" description]\arrow[r,shift right=1ex,"d'_0"']&X_1\arrow[r,shift left=.5ex,"d_1"]\arrow[r,shift right=.5ex,"d_0"']&X_0,
+\end{tikzcd}
+\]
+便可在\Term{scheme}{概形} $X_0$ 的底层\Term{set}{集合} $\underline X_0$ 上定义一个\Term{equivalence-relation}{等价关系}：若 $x,y\in\underline X_0$，当存在 $z\in\underline X_1$ 使 $x=d_1z$、$y=d_0z$ 时，记 $x\sim y$。这一关系的\Term{reflexive}{自反}性和对称性显然成立；\footnote{编者注：\Term{reflexive}{自反}性来自 $s:X_0\to X_1$ 的存在性，它同时是 $d_0$ 和 $d_1$ 的\Term{section}{截面}；对称性来自 $X_1$ 上“交换 $d_0$ 与 $d_1$”的\Term{involution}{对合} $\sigma$ 的存在性，即 $d_0\sigma=d_1$、$d_1\sigma=d_0$，参见第 1 节 (3)、(3 bis) 和 ($\dagger$)。}下面证明\Term{transitivity}{传递性}：若 $x\sim y$ 且 $y\sim z$，则存在 $u,v\in\underline X_1$ 使 $x=d_1u$、$y=d_0u$、$y=d_1v$、$z=d_0v$。所以 $(v,u)$ 属于\Term{set}{集合}的\Term{fiber-product}{纤维积} $\underline X_1\times_{d_1,d_0}\underline X_1$。由于从\Term{fiber-product}{纤维积}的底层\Term{set}{集合}到各底层\Term{set}{集合}的\Term{fiber-product}{纤维积}的\Term{canonical}{典范}映射
+\[\underline{X_1\times_{d_1,d_0}X_1}\longrightarrow\underline X_1\times_{d_1,d_0}\underline X_1\]
+是\Term{surjectivity}{满射}，$(v,u)$ 是某个 $w\in\underline X_2$ 的像。于是 $x=d_1d'_1w$、$z=d_0d'_1w$，故 $x\sim z$。
+
+f) 沿用 a)、b) 的记号，仍取 $\mathcal C=(\mathrm{Sch}/S)$。若 $x,y$ 是 $Y_0$ 的点，我们将证明 $x\sim y$ 当且仅当 $f_0(x)\sim f_0(y)$（由\Term{groupoid}{群胚}定义的\Term{equivalence-relation}{等价关系}的\Term{inverse-image}{逆像}，就是该\Term{groupoid}{群胚}的\Term{inverse-image}{逆像}定义的\Term{equivalence-relation}{等价关系}）。
+
+事实上，设 $x\sim y$，则存在 $z\in Y_1$ 使 $x=e_1(z)$、$y=e_0(z)$。因 $f_0\circ e_i=d_i\circ f_1$（$i=0,1$），有 $f_0(x)=d_1f_1(z)$、$f_0(y)=d_0f_1(z)$，从而 $f_0(x)\sim f_0(y)$。
+
+反之，设 $f_0(x)\sim f_0(y)$，取 $z\in X_1$ 使 $f_0(y)=d_1(z)$、$f_0(x)=d_0(z)$。使用 b) 的构造及记号，可取 $Y_0\times_{X_0}X_1$ 中的一点 $t$，使 $\operatorname{pr}_1(t)=x$、$\operatorname{pr}_2(t)=z$。同样，由于 $f_0(y)=d_1\operatorname{pr}_2(t)$，可取 $s\in Y_1$ 使 $y=e_1(s)$、$(e_0\boxtimes f_1)(s)=t$。于是 $e_0(s)=\operatorname{pr}_1(e_0\boxtimes f_1)(s)=\operatorname{pr}_1(t)=x$，故 $x\sim y$。
+
+\SourcePage{265}
+\SGAsection{4}{有限平坦群胚的取商（一个特殊情形的证明）}
+\begin{SGAresult}{\Term{theorem}{定理}}{4.1}
+考虑一个 $(\mathrm{Sch}/S)$-\Term{groupoid}{群胚}
+\[
+\begin{tikzcd}
+X_2\arrow[r,shift left=1ex,"d'_2"]\arrow[r,"d'_1" description]\arrow[r,shift right=1ex,"d'_0"']&X_1\arrow[r,shift left=.5ex,"d_1"]\arrow[r,shift right=.5ex,"d_0"']&X_0.
+\end{tikzcd}
+\]
+假定下列条件成立：\footnote{编者注：由于 $d_0=d_1\sigma$，其中 $\sigma$ 是 $X_1$ 的一个\Term{involutive-automorphism}{对合自同构}，这两个条件关于 $d_1$ 和 $d_0$ 对称；此外，有 $d_0d_1^{-1}(x)=d_1d_0^{-1}(x)$。}
+
+a) $d_1$ 是\Term{finite-locally-free}{有限局部自由}的；
+
+b) 对每个 $x\in X_0$，\Term{set}{集合} $d_0d_1^{-1}(x)$ 包含在 $X_0$ 的某个\Term{affine-open}{仿射开子集}中。\footnote{编者注：不能省略假设 b)。事实上，H. Hironaka 给出了一个\Term{finite-group}{有限群} $G=\mathbb Z/2\mathbb Z$ 在\Term{proper}{固有}的 $\mathbb C$-\Term{variety}{簇} $X_0$ 上的\Term{action}{作用}的例子，使得\Term{quotient}{商} $X_0/G$ 是一个并非\Term{scheme}{概形}的\Term{algebraic-space}{代数空间}（[Hi62]，另见 [Mum65]，第 4 章第 3 节）。}
+
+那么：
+
+(i) $(d_0,d_1)$ 在 $(\mathrm{Sch}/S)$ 中存在\Term{coequalizer}{余核} $(Y,p)$；而且，这样的 $(Y,p)$ 也是 $(d_0,d_1)$ 在全体\Term{ringed-space}{赋环空间}的\Term{category}{范畴}中的\Term{coequalizer}{余核}。
+
+(ii) $p$ 是\Term{integral-morphism}{整}的且为\Term{open-morphism}{开态射}；若 $X_0$ 是\Term{affine}{仿射}的，则 $Y$ 也是\Term{affine}{仿射}的。\footnote{编者注：这里增添了 $p$ 是\Term{open-morphism}{开态射}这一点，采用了与 6.1 中相同的论证。}
+
+(iii) \Term{set-component}{分量}为 $d_0,d_1$ 的\Term{morphism}{态射} $X_1\to X_0\times_YX_0$ 是\Term{surjectivity}{满射}。
+
+(iv) 若 $(d_0,d_1)$ 是\Term{equivalence-pair}{等价对}，则 $X_1\to X_0\times_YX_0$ 是\Term{isomorphism}{同构}，\footnote{编者注：注意，此时 $X_1\to X_0\times_SX_0$ 因而是一个\Term{immersion}{浸入}（EGA I，5.3.10）；另见第 VI$_B$ 讲 9.2.1。另一方面，在较弱的假设 $d_0,d_1$ 为\Term{finite-morphism}{有限}\Term{morphism}{态射}（但未必\Term{flat}{平坦}）下，关于\Term{quotient}{商}在\Term{scheme}{概形}\Term{category}{范畴}或\Term{algebraic-space}{代数空间}\Term{category}{范畴}中的存在性，见 [An73]，§1.1，[Fe03]，[Ko08] 等。}且 $p:X_0\to Y$ 是\Term{finite-locally-free}{有限局部自由}的。\footnote{编者注：这里明确列出以下推论；见 [Ray67a]，\Term{theorem}{定理} 1 (iii)，以及下文第 5 节末给出的证明。}此外，$(Y,p)$ 是 $(d_0,d_1)$ 在 $(\mathrm{fppf})$ \Term{topology}{拓扑}的\Term{sheaf}{层}\Term{category}{范畴}中的\Term{coequalizer}{余核}；对于每个\Term{base-change}{基变换} $Y'\to Y$，$Y'$ 是由 $X_*$ 经\Term{base-change}{基变换} $X_0\times_YY'\to X_0$ 得到的\Term{groupoid}{群胚} $X_*\times_YY'$ 的\Term{coequalizer}{余核}。
+
+特别地，对于每个\Term{base-change}{基变换} $S'\to S$，$Y'=Y\times_SS'$ 是 $S'$-\Term{groupoid}{群胚} $X'_*=X_*\times_SS'$ 的\Term{coequalizer}{余核}。因此，此时“\Term{quotient}{商}的形成与\Term{base-change}{基变换}交换”。
+\end{SGAresult}
+由 (i) 显然可知，$Y$ 的底层\Term{topological-space}{拓扑空间}，是 $X_0$ 的底层\Term{topological-space}{拓扑空间}按 $(\mathrm{Sch}/S)$-\Term{groupoid}{群胚} $X_*$ 所定义的\Term{equivalence-relation}{等价关系}所得的\Term{quotient}{商}。
+
+我们先在 $X_0$ 为\Term{affine}{仿射}、$d_1$ 为常秩 $n$ 的\Term{locally-free}{局部自由}\Term{morphism}{态射}时证明本\Term{theorem}{定理}，再说明怎样归约到这一特殊情形。
+
+\SourcePage{266}
+在所考虑的情形中，$X_0,X_1,X_2$ 都是\Term{affine}{仿射}的。因此可以假设
+\[X_i=\operatorname{Spec}A_i,\qquad d_j=\operatorname{Spec}\delta_j,\qquad d'_k=\operatorname{Spec}\delta'_k,\]
+其中 $A_i$ 是\Term{commutative-ring}{交换环}，$\delta_j,\delta'_k$ 是\Term{ring-homomorphism}{环同态}。于是可将图式 (0,1,2) 替换为
+\[
+\begin{tikzcd}
+A_2&A_1\arrow[l,shift left=.5ex,"\delta'_1"]\arrow[l,shift right=.5ex,"\delta'_0"']&A_0\arrow[l,"\delta_0"']\\
+A_1\arrow[u,"\delta'_2"]&A_0\arrow[u,"\delta_1"']\arrow[l,shift left=.5ex,"\delta_1"]\arrow[l,shift right=.5ex,"\delta_0"']&
+\end{tikzcd}\tag{(0,1,2)$^*$}
+\]
+其中左边两个方块是\Term{cocartesian}{余笛卡尔}的。
+
+用 $B$ 表示 $A_0$ 中由满足 $\delta_0(a)=\delta_1(a)$ 的 $a\in A_0$ 组成的\Term{subring}{子环}。
+
+a) 证明 $A_0$ 在 $B$ 上\Term{integral}{整}。若 $a\in A_0$，设
+\[P_{\delta_1}(T,\delta_0(a))=T^n-\sigma_1T^{n-1}+\cdots+(-1)^n\sigma_n\]
+是通过\Term{homomorphism}{同态} $\delta_1$ 将 $A_1$ 看成 $A_0$-\Term{algebra}{代数}时，$\delta_0(a)$ 的\Term{characteristic-polynomial}{特征多项式}（参见 Bourbaki，《\Term{algebra}{代数}》VIII，§12，以及《\Term{commutative-algebra}{交换代数}》II，§5，习题 9）。由于 $(0,1,2)^*$ 左边的方块为\Term{cocartesian}{余笛卡尔}的，有
+\[
+\begin{aligned}
+\delta_0(P_{\delta_1}(T,\delta_0(a)))&=P_{\delta'_2}(T,\delta'_0\delta_0(a)),\\
+\delta_1(P_{\delta_1}(T,\delta_0(a)))&=P_{\delta'_2}(T,\delta'_1\delta_0(a)).
+\end{aligned}
+\]
+由于 $\delta'_0\delta_0=\delta'_1\delta_0$，有
+\[\delta_0(P_{\delta_1}(T,\delta_0(a)))=\delta_1(P_{\delta_1}(T,\delta_0(a))),\]
+即对每个 $i$，都有 $\delta_0(\sigma_i)=\delta_1(\sigma_i)$。另一方面，由 Hamilton--Cayley \Term{theorem}{定理}，
+\[\delta_0(a)^n-\delta_1(\sigma_1)\delta_0(a)^{n-1}+\cdots+(-1)^n\delta_1(\sigma_n)=0.\]
+因 $\delta_1(\sigma_i)=\delta_0(\sigma_i)$，亦有
+\[\delta_0(a)^n-\delta_0(\sigma_1)\delta_0(a)^{n-1}+\cdots+(-1)^n\delta_0(\sigma_n)=0,\]
+从而
+\[a^n-\sigma_1a^{n-1}+\cdots+(-1)^n\sigma_n=0,\]
+因为存在\Term{homomorphism}{同态} $\tau:A_1\to A_0$ 使 $\tau\delta_0=\operatorname{id}_{A_0}$，所以 $\delta_0$ 是\Term{injectivity}{单射}。于是 $A_0$ 在 $B$ 上\Term{integral}{整}。
+
+b) 现在考虑 $A_0$ 的两个\Term{prime-ideal}{素理想} $x,y$。我们将证明，等式 $x\cap B=y\cap B$ 蕴含存在 $A_1$ 的一个\Term{prime-ideal}{素理想} $z$，使 $x=d_0(z)$、$y=d_1(z)$。
+
+事实上，若此断言不成立，则对于每个满足 $\delta_1^{-1}(t)=y$ 的 $A_1$ 的\Term{prime-ideal}{素理想} $t$，都有 $x\ne\delta_0^{-1}(t)$。对这样的 $t$，有 $\delta_0^{-1}(t)\cap B=\delta_1^{-1}(t)\cap B=y\cap B=x\cap B$，由 Cohen--Seidenberg \Term{theorem}{定理}（参见 Bourbaki，《\Term{commutative-algebra}{交换代数}》\SourcePage{267}V，§2，命题 1 的推论 1），可知 $x$ 不包含于任何 $\delta_0^{-1}(t)$。\footnote{编者注：以下对原文作了展开；特别地，增添了\Term{lemma}{引理} 4.1.1，它取自 [DG70]，III，§2.4，\Term{lemma}{引理} 4.3。}而满足 $\delta_1^{-1}(t)=y$ 的 $A_1$ 的\Term{prime-ideal}{素理想} $t$ 至多有 $n$ 个（同上，命题 3），所以由“\Term{prime-avoidance}{素理想回避引理}”（同上，II，§1，命题 3），存在 $a\in x$ 不属于任何 $\delta_0^{-1}(t)$。因此，$\delta_0(a)$ 不属于这些\Term{ideal}{理想} $t$ 中的任何一个；由下面的\Term{lemma}{引理}，\Term{norm}{范数} $N_{\delta_1}(\delta_0(a))$ 不属于 $y$（计算这一\Term{norm}{范数}时，通过\Term{homomorphism}{同态} $\delta_1$ 将 $A_1$ 看成 $A_0$-\Term{algebra}{代数}；用 a) 的记号，有 $N_{\delta_1}(\delta_0(a))=\sigma_n$）。但由于
+\[(-1)^{n-1}\sigma_n=a^n+\sum_{i=1}^{n-1}(-1)^i\sigma_i a^{n-i},\]
+这一\Term{norm}{范数}属于 $B\cap x=B\cap y$，矛盾。
+\begin{SGAresult}{\Term{lemma}{引理}}{4.1.1}
+设 $A\to A'$ 是\Term{commutative-ring}{交换环}的\Term{morphism}{态射}，使 $A'$ 成为秩 $n$ 的\Term{projective-module}{投射} $A$-\Term{module}{模}。设 $\mathfrak p\in\operatorname{Spec}(A)$，$\mathfrak q_1,\ldots,\mathfrak q_r$ 是 $\operatorname{Spec}(A')$ 中位于 $\mathfrak p$ 之上的元素，$a\in A'$。则 $a\in\mathfrak q_1\cup\cdots\cup\mathfrak q_r$，当且仅当其\Term{norm}{范数} $N(a)\in\mathfrak p$。
+\end{SGAresult}
+\begin{proof}
+用\Term{localization}{局部化} $A_{\mathfrak p},A'_{\mathfrak p}$ 替换 $A,A'$，便归约到 $(A,\mathfrak p)$ 为\Term{local-ring}{局部环}、$A'$ 为\Term{semilocal-ring}{半局部环}且 $\operatorname{Spec}(A')^0=\{\mathfrak q_1,\ldots,\mathfrak q_r\}$ 的情形。此时 $A'$ 是秩 $n$ 的\Term{free-module}{自由} $A$-\Term{module}{模}（参见 Bourbaki，《\Term{commutative-algebra}{交换代数}》II，§3.2，命题 5 的推论 2），而 $N(a)$ 是 $A'$ 的\Term{endomorphism}{自同态} $\ell_a:a'\mapsto aa'$ 的\Term{determinant}{行列式}，因而有\Term{equivalence-relation}{等价关系}
+\[N(a)\notin\mathfrak p\iff N(a)\text{ 可逆}\iff\ell_a\text{ 可逆}\iff a\notin\mathfrak q_1\cup\cdots\cup\mathfrak q_r.\]
+\end{proof}
+c) (i) 的证明。置 $Y=\operatorname{Spec}B$，$p=\operatorname{Spec}i$，其中 $i$ 是 $B$ 到 $A_0$ 的包含\Term{homomorphism}{同态}。由 a)，\Term{morphism}{态射} $p:X_0\to Y$ 是\Term{surjectivity}{满射}。先证明 $(Y,p)$ 是 $(d_0,d_1)$ 在全体\Term{ringed-space}{赋环空间}的\Term{category}{范畴}中的\Term{coequalizer}{余核}：由 b)，将 $X_0$ 的底层\Term{set}{集合}中满足存在 $z\in X_1$ 使 $d_1z=y$、$d_0z=x$ 的点 $x,y$ 等同，就得到 $\operatorname{Spec}B$ 的底层\Term{set}{集合}。又因 $i$ 是\Term{integral}{整}的，$p=\operatorname{Spec}i$ 是\Term{closed-morphism}{闭态射}，故 $Y$ 赋有来自 $X_0$ 的\Term{quotient-topology}{商拓扑}。由此 $p$ 是\Term{open-morphism}{开态射}。事实上，设 $U'$ 为 $X_0$ 的任意\Term{open-subset}{开子集}；由于 $d_1$ 是\Term{surjectivity}{满射}且\Term{finite-locally-free}{有限局部自由}，因而\Term{faithfully-flat}{忠实平坦}且\Term{finite-presentation}{有限呈示}，所以是\Term{open-morphism}{开态射}，于是 $U'$ 对 $X_*$ 所定义的\Term{equivalence-relation}{等价关系}的\Term{saturation}{饱和化} $U=d_1(d_0^{-1}(U'))$ 是\Term{open-subset}{开子集}。故 $p(U')=p(U)$ 是\Term{open-subset}{开子集}，因为 $Y$ 赋有\Term{quotient-topology}{商拓扑}。
+
+最后，由 $B$ 的选取，以及 $p,d_0,d_1$ 都是\Term{affine-morphism}{仿射态射}，可知\Term{canonical}{典范}的\Term{sheaf}{环层}序列
+\[
+\begin{tikzcd}[column sep=small]
+\mathcal O_Y\arrow[r]&p_*(\mathcal O_{X_0})\arrow[r,shift left=.6ex,"p_*(\delta_1)"]\arrow[r,shift right=.6ex,"p_*(\delta_0)"']&p_*(d_{0*}(\mathcal O_{X_1}))=p_*(d_{1*}(\mathcal O_{X_1}))
+\end{tikzcd}
+\]
+是\Term{exact}{正合}的。
+
+还须证明 $(Y,p)$ 也是 $(d_0,d_1)$ 在\Term{scheme}{概形}\Term{category}{范畴}中（更一般地，在\Term{locally-ringed-space}{局部赋环空间}\Term{category}{范畴}中）的\Term{coequalizer}{余核}。\SourcePage{268}设 $q:X_0\to Z$ 是满足 $qd_0=qd_1$ 的\Term{scheme}{概形}\Term{morphism}{态射}。由上所述，存在唯一的\Term{ringed-space}{赋环空间}\Term{morphism}{态射} $r:Y\to Z$ 使 $q=rp$。须证明，对每个 $y\in Y$，由 $r$ 诱导的\Term{homomorphism}{同态} $\mathcal O_{r(y)}\to\mathcal O_y$ 是\Term{local-homomorphism}{局部同态}。这是因为 $p$ 是\Term{surjectivity}{满射}，故 $y$ 可写成 $p(x)$，且由 $q$ 诱导的\Term{homomorphism}{同态} $\mathcal O_{q(x)}\to\mathcal O_x$ 是\Term{local-homomorphism}{局部同态}。
+
+d) (ii) 的证明。由 a)、c) 得到。
+
+e) (iii) 的证明。回顾，以 $\underline P$ 表示\Term{scheme}{概形} $P$ 的底层\Term{set}{集合}，以 $\underline d:\underline P\to\underline Q$ 表示\Term{morphism}{态射} $d:P\to Q$ 诱导的映射。
+\begin{SGAresult}{\Term{lemma}{引理}}{4.1.2}
+\footnote{编者注：这里插入了这一\Term{lemma}{引理}；本讲和以后各讲（VI$_A$、VI$_B$）多次用到它。在 SGAD 初版（1965）中，它列作第 VI$_B$ 讲\Term{lemma}{引理} 4.5.1。}设 $(A,\mathfrak m)$ 为\Term{local-ring}{局部环}，$k$ 为其\Term{residue-field}{剩余域}，$K$ 为 $k$ 的一个\Term{field-extension}{扩域}。则存在一个\Term{local-ring}{局部}且\Term{flat}{平坦}的 $A$-\Term{algebra}{代数} $B$，使 $B/\mathfrak mB$ 与 $K$ 为 $k$-\Term{isomorphism}{同构}；此外，若 $K$ 在 $k$ 上为\Term{finite}{有限}次，则可取 $B$ 在 $A$ 上\Term{finite-module}{有限}且\Term{free-module}{自由}。
+\end{SGAresult}
+\begin{proof}
+这已在 EGA $0_{\mathrm{III}}$，10.3.1 中证明，那里还说明：若 $A$ 是\Term{noetherian}{诺特}的，则可取 $B$ 也是\Term{noetherian}{诺特}的。为方便读者，简述证明如下。
+
+置 $A'=A[T]$，其中 $T$ 为一个不定元。若 $K=k(T)$，令 $\mathfrak p=\mathfrak mA'$、$B=A'_{\mathfrak p}$。则 $B/\mathfrak mB\simeq k[T]_{(0)}=k(T)$，而 $B$ 在 $A'$ 上\Term{flat}{平坦}，$A'$ 是\Term{free-module}{自由} $A$-\Term{module}{模}，故 $B$ 在 $A$ 上\Term{flat}{平坦}。
+
+若 $K=k(t)=k[t]$，其中 $t$ 在 $k$ 上\Term{algebra}{代数}，则置 $B=A'/(F)$，其中 $F\in A'$ 为\Term{monic-polynomial}{首一多项式}，其在 $k[T]$ 中的像是 $t$ 在 $k$ 上的\Term{minimal-polynomial}{极小多项式} $f$。于是 $B$ 是\Term{finite-rank}{有限秩} $\deg(F)=\deg(f)$ 的\Term{free-module}{自由} $A$-\Term{module}{模}。特别地，$B$ 在 $A$ 上\Term{integral}{整}，故 $B$ 的每个\Term{maximal-ideal}{极大理想}都包含 $\mathfrak m$。因 $B/\mathfrak mB\simeq k[T]/(f)\simeq K$，可知 $B$ 是\Term{local-ring}{局部环}，\Term{maximal-ideal}{极大理想}为 $\mathfrak mB$。这已说明，当 $[K:k]<\infty$ 时，可取 $B$ 在 $A$ 上\Term{finite-module}{有限}且\Term{free-module}{自由}。
+
+一般地，取 $K$ 在 $k$ 上的一个生成系 $(t_i)_{i\in I}$，在 $I$ 上赋予一个\Term{well-order}{良序}（即\Term{totally-ordered}{全序} $\leqslant$，使 $I$ 的每个\Term{nonempty}{非空}\Term{subset}{子集}都有最小元）。对每个 $i\in I$，以 $k_i$（分别 $k_{<i}$）表示 $K$ 中由 $j\leqslant i$（分别 $j<i$）的各 $t_j$ 生成的子域。必要时增添一个元素，可假定 $I$ 有最大元 $\xi$，从而 $K=k_\xi$。考虑 $I$ 的\Term{subset}{子集} $J$，它由满足下述条件的指标 $i$ 组成：存在\Term{local-ring}{局部}且\Term{flat}{平坦}的 $A$-\Term{algebra}{代数}的\Term{inductive-system}{归纳系} $(A_j)_{j\leqslant i}$，使 $A_j/\mathfrak mA_j\simeq k_j$，且对每个 $\ell<j$，$A_j$ 在 $A_\ell$ 上\Term{flat}{平坦}。若 $I-J$ \Term{nonempty}{非空}，令 $i$ 为其最小元，$A'=\varinjlim_{j<i}A_j$。因为\Term{tensor-product}{张量积}与\Term{inductive-limit}{归纳极限}交换，$A'$ 在 $A$ 和每个 $A_j$（$j<i$）上都\Term{flat}{平坦}，且
+\[A'/\mathfrak mA'\simeq A'\otimes_A(A/\mathfrak m)\simeq k_{<i}.\]
+此外，$A'$ 为\Term{local-ring}{局部环}，\Term{maximal-ideal}{极大理想}为 $\mathfrak mA'$。事实上，若 $x=f_j(x_j)$ 不\Term{invertible}{可逆}，则 $x_j$ 不\Term{invertible}{可逆}，故属于 $A_j$ 的\Term{maximal-ideal}{极大理想} $\mathfrak mA_j$，从而 $x\in\mathfrak mA'$。由前面处理的单生成情形，存在\Term{local-ring}{局部}且\Term{flat}{平坦}的 $A'$-\Term{algebra}{代数} $A_i$，使 $A_i/\mathfrak mA_i\simeq k_{<i}(t_i)=k_i$；于是对每个 $j<i$，$A_i$ 在 $A_j$ 上\Term{flat}{平坦}，故 $i\in J$，与假设矛盾。因此 $J=I$，$A_\xi$ 满足要求。\Term{lemma}{引理} 4.1.2 得证。
+\end{proof}
+
+\SourcePage{269}
+现在证明 4.1 (iii)。回顾，以 $\underline P$ 表示\Term{scheme}{概形} $P$ 的底层\Term{set}{集合}，以 $\underline d:\underline P\to\underline Q$ 表示\Term{morphism}{态射} $d:P\to Q$ 诱导的映射。于是 b) 可以表述为：\Term{set-component}{分量}为 $\underline d_0,\underline d_1$ 的映射
+\[\underline d_0\boxtimes\underline d_1:\underline X_1\longrightarrow\underline X_0\times_{\underline Y}\underline X_0\]
+是\Term{surjectivity}{满射}。但此映射\Term{resolution}{分解}为
+\[\underline X_1\xrightarrow{\,\underline{d_0\boxtimes d_1}\,}\underline{X_0\times_YX_0}\xrightarrow{\ q\ }\underline X_0\times_{\underline Y}\underline X_0,\]
+其中 $q$ 是\Term{canonical}{典范}映射。因此，$\underline{d_0\boxtimes d_1}$ 的像包含 $X_0\times_YX_0$ 中所有满足 $\{v\}=q^{-1}(q(v))$ 的点 $v$。特别地，若 $v$ 在 $Y$ 上是\Term{rational-point}{有理的}，即 $v$ 的\Term{residue-field}{剩余域} $\kappa(v)$ 与其在 $Y$ 中的像 $w$ 的\Term{residue-field}{剩余域} $\kappa(w)$ 等同，则此条件成立。\footnote{编者注：注意 Lecture Notes 151 中各页的错置，实际顺序为 265--266--268--269--267--270--271。}
+
+若 $v\in X_0\times_YX_0$ 在 $Y$ 上不是\Term{rational-point}{有理的}，仍以 $w$ 表示它在 $Y$ 中的像。由\Term{lemma}{引理} 4.1.2，存在\Term{radical}{根基}为 $\mathfrak m$ 的\Term{local-ring}{局部环} $C$，以及\Term{flat}{平坦}的\Term{local-homomorphism}{局部同态} $f:\mathcal O_w\to C$，使 $C/\mathfrak m$ 作为 $\kappa(w)$-\Term{algebra}{代数}与 $\kappa(v)$ \Term{isomorphism}{同构}。若置 $Y'=\operatorname{Spec}C$，以 $\pi:Y'\to Y$ 表示由 $f$ 诱导的\Term{morphism}{态射}，则显然，$(X_0\times_YX_0)\times_YY'$ 到 $X_0\times_YX_0$ 的\Term{canonical}{典范}\Term{projection}{投影}将 $(X_0\times_YX_0)\times_YY'$ 中一个在 $Y'$ 上\Term{rational-point}{有理的}点 $v'$ 映到 $v$。由于
+\[(X_0\times_YX_0)\times_YY'\simeq(X_0\times_YY')\times_{Y'}(X_0\times_YY'),\]
+且\Term{theorem}{定理} 4.1 的假设和前述结果，特别是 b)，在\Term{base-change}{基变换} $\pi:Y'\to Y$ 后仍然成立，故 $v'$ 是某个元素 $u'\in X_1\times_YY'$ 在由 $d_0\boxtimes d_1$ 经\Term{base-change}{基变换}得到的\Term{morphism}{态射}下的像。若 $u$ 为 $u'$ 在 $X_1$ 中的像，则有 $v=(d_0\boxtimes d_1)(u)$。
+
+f) (iv) 的证明。\footnote{编者注：这里增添了下面的\Term{lemma}{引理}，取自 [DG70]，I，§5，命题 1.5（亦见 EGA IV$_3$，8.11.5 的证明）；原文隐含地使用了它，[DG70]，III，§2，4.6 则明确使用了它。它对下文的\Term{theorem}{定理} 7.1 也有用。}
+\begin{SGAresult}{\Term{lemma}{引理}}{4.1.3}
+若\Term{scheme}{概形}的\Term{monomorphism}{单态射} $f:T\to Z$ 是\Term{finite-morphism}{有限}\Term{morphism}{态射}，则它是\Term{closed-immersion}{闭浸入}。
+\end{SGAresult}
+\begin{proof}
+用\Term{affine-open}{仿射开子集} $Z_i$ \Term{covering}{覆盖} $Z$，并用诱导的\Term{morphism}{态射} $f^{-1}(Z_i)\to Z_i$ 替换 $f$，便可归约到 $Z=\operatorname{Spec}B$、$T=\operatorname{Spec}A$ 的情形，因为 $f$ 是\Term{finite-morphism}{有限}的，故为\Term{affine-morphism}{仿射态射}。由于 $f$ 是\Term{monomorphism}{单态射}，\Term{diagonal-morphism}{对角态射} $T\to T\times_ZT$ 是\Term{isomorphism}{同构}（EGA I，5.3.8），即 $A\otimes_BA\to A$ 是\Term{isomorphism}{同构}。故对 $B$ 的每个\Term{maximal-ideal}{极大理想} $\mathfrak m$，都有\Term{isomorphism}{同构}
+\[(A/\mathfrak mA)\otimes_k(A/\mathfrak mA)\simeq A/\mathfrak mA,\]
+其中 $k=B/\mathfrak m$。因 $A$ 在 $B$ 上\Term{finite-module}{有限}，$A/\mathfrak mA$ 是\Term{finite-dimensional}{有限维} $d$ 的 $k$-\Term{vector-space}{向量空间}；上述\Term{isomorphism}{同构}蕴含 $d=0$ 或 $1$，故\Term{morphism}{态射} $k=B/\mathfrak m\to A/\mathfrak mA$ 是\Term{surjectivity}{满射}。由 \Term{nakayama-lemma}{Nakayama 引理}（$A$ \SourcePage{270}在 $B$ 上\Term{finite-module}{有限}），\Term{morphism}{态射} $B_{\mathfrak m}\to A_{\mathfrak m}$ 是\Term{surjectivity}{满射}。于是 $B$-\Term{module}{模}\Term{morphism}{态射} $B\to A$ 是\Term{surjectivity}{满射}，因为其\Term{cokernel}{余核} $C$ 对每个 $\mathfrak m$ 满足 $C_{\mathfrak m}=0$，故为零。\Term{lemma}{引理}得证。
+\end{proof}
+现在证明 (iv)。由假设，$X_0=\operatorname{Spec}A_0$、$X_1=\operatorname{Spec}A_1$，且对 $i=0,1$，\Term{morphism}{态射} $\delta_i:A_0\to A_1$ 使 $A_1$ 成为\Term{finite-type-module}{有限型} $A_0$-\Term{module}{模}；所以\Term{morphism}{态射} $A_0\otimes_BA_0\to A_1$ 更是\Term{finite-morphism}{有限}的。
+
+又假设 $d=d_0\boxtimes d_1:X_1\to X_0\times_YX_0$ 是\Term{monomorphism}{单态射}，故由前一\Term{lemma}{引理}，\Term{morphism}{态射} $A_0\otimes_BA_0\to A_1$ 是\Term{surjectivity}{满射}。
+
+将证明它是\Term{isomorphism}{同构}，并在证明中同时得到 $p:X_0\to Y$ 是\Term{finite-locally-free}{有限局部自由}的。只须证明，对 $B$ 的每个\Term{prime-ideal}{素理想} $\mathfrak p$，\Term{set-component}{分量}为 $\delta_{0\mathfrak p},\delta_{1\mathfrak p}$ 的\Term{homomorphism}{同态}
+\[(A_0)_{\mathfrak p}\otimes_{B_{\mathfrak p}}(A_0)_{\mathfrak p}\longrightarrow(A_1)_{\mathfrak p}\]
+是\Term{bijection}{双射}。换言之，可以假设 $B$ 为\Term{local-ring}{局部环}。由 b)，$(A_0)_{\mathfrak p}$ 为\Term{semilocal-ring}{半局部环}：事实上，若 $\mathfrak m$ 是 $(A_0)_{\mathfrak p}$ 的一个\Term{maximal-ideal}{极大理想}，则其余\Term{maximal-ideal}{极大理想}均形如 $\delta_0^{-1}(\mathfrak n)$，其中 $\mathfrak n$ 遍历满足 $\delta_1^{-1}(\mathfrak n)=\mathfrak m$ 的 $A_1$ 的\Term{prime-ideal}{素理想}；而这样的\Term{prime-ideal}{素理想} $\mathfrak n$ 至多有 $n=[A_1:A_0]$ 个，故断言成立。经过一次\Term{faithfully-flat}{忠实平坦}\Term{base-change}{基变换}，\footnote{编者注：参见\Term{lemma}{引理} 4.1.2。}还可以假设 $B$ 的\Term{residue-field}{剩余域}无限，从而可使用下面的\Term{lemma}{引理}。
+\begin{SGAresult}{\Term{lemma}{引理}}{4.2}
+设 $B$ 是\Term{residue-field}{剩余域}无限的\Term{local-ring}{局部环}，$A$ 是\Term{semilocal-ring}{半局部环}，$i:B\to A$ 是将 $B$ 的\Term{maximal-ideal}{极大理想} $\mathfrak n$ 映入 $A$ 的\Term{radical}{根基} $\mathfrak r$ 的\Term{homomorphism}{同态}。设 $M$ 是秩 $n$ 的\Term{free-module}{自由} $A$-\Term{module}{模}，$N$ 是 $M$ 的一个 $B$-\Term{submodule}{子模}，且 $N$ 作为 $A$-\Term{module}{模}生成 $M$。则 $N$ 包含 $M$ 的一组 $A$-基。
+\end{SGAresult}
+\begin{proof}
+回顾，$M$ 中的元素列 $m_1,\ldots,m_n$ 是 $M$ 的一组 $A$-基，当且仅当 $m_1,\ldots,m_n$ 在 $M/\mathfrak rM$ 中的\Term{canonical}{典范}像构成 $M/\mathfrak rM$ 的一组 $A/\mathfrak r$-基。因此\Term{separable}{可分}别用 $M/\mathfrak rM$、$N/(N\cap\mathfrak rM)$、$A/\mathfrak r$、$B/\mathfrak m$ 替换 $M,N,A,B$。此时\Term{lemma}{引理}容易证明：若 $A$ 是域的\Term{product}{积} $K_1\times\cdots\times K_r$，则可将 $M$ 与\Term{module}{模} $K_1^n\times\cdots\times K_r^n$ 等同；若 $x_j$ 是 $N$ 中第 $j$ 个\Term{set-component}{分量}非零的元素，证明存在各 $x_j$ 的某个 $B$-系数\Term{linear}{线性}组合 $x$，其所有\Term{set-component}{分量}均非零；然后用 $M/Ax$ 替换 $M$，对 $n$ 作归纳即可。
+\end{proof}
+将前一\Term{lemma}{引理}应用于如下情形：$B=B$、$A=A_0$、$i$ 为 $B$ 到 $A_0$ 的包含\Term{homomorphism}{同态}，$M=A_1$ 通过\Term{homomorphism}{同态} $\delta_1$ 看成 $A_0$-\Term{module}{模}，$N=\delta_0(A_0)$。事实上，由于 $d_0\boxtimes d_1:X_1\to X_0\times_YX_0$ 为\Term{closed-immersion}{闭浸入}，\Term{set-component}{分量}为 $\delta_0,\delta_1$ 的\Term{homomorphism}{同态} $A_0\otimes_BA_0\to A_1$ 是\Term{surjectivity}{满射}，这恰好意味着 $\delta_0(A_0)$ 生成 $A_0$-\Term{module}{模} $A_1$。
+
+于是，取 $A_0$ 的元素 $a_1,\ldots,a_n$，使 $\delta_0(a_1),\ldots,\delta_0(a_n)$ 构成 $A_1$ 的一组 $A_0$-基。若能证明 $a_1,\ldots,a_n$ 是 $A_0$ 的一组 $B$-基，则\Term{homomorphism}{同态} $A_0\otimes_BA_0\to A_1$ 将基 $(1\otimes a_i)_{1\leqslant i\leqslant n}$ 映到基 $(\delta_0(a_i))_{1\leqslant i\leqslant n}$，因而是\Term{bijection}{双射}。所以，若 $\varepsilon:\mathbb Z^n\to A_0$ 是将 $\mathbb Z^n$ 的自然基映到 $a_1,\ldots,a_n$ 的\Term{abelian-group}{阿贝尔群}\Term{homomorphism}{同态}，则只须证明\Term{set-component}{分量}为 $i,\varepsilon$ 的映射 $B\otimes_{\mathbb Z}\mathbb Z^n\to A_0$ 为\Term{bijection}{双射}。
+
+\SourcePage{271}
+而本证明开头考虑的图式 $(0,1,2)^*$ 诱导以下\Term{commutative-diagram}{交换图}：
+\[
+\begin{tikzcd}[column sep=large]
+A_2&A_1\arrow[l,shift left=.6ex,"\delta'_1"]\arrow[l,shift right=.6ex,"\delta'_0"']&A_0\arrow[l,"\delta_0"']\\
+A_1\otimes_{\mathbb Z}\mathbb Z^n\arrow[u,"u_2"]&A_0\otimes_{\mathbb Z}\mathbb Z^n\arrow[u,"u_1\;\simeq"']\arrow[l,shift left=.6ex,"\delta_1\otimes\mathbb Z^n"]\arrow[l,shift right=.6ex,"\delta_0\otimes\mathbb Z^n"']&B\otimes_{\mathbb Z}\mathbb Z^n\arrow[u,"u_0"']\arrow[l,"i\otimes\mathbb Z^n"'] ,
+\end{tikzcd}
+\]
+其中 $u_0,u_1,u_2$ 的\Term{set-component}{分量}分别是 $i,\varepsilon$；$\delta_1,\delta_0\varepsilon$；$\delta'_2,\delta'_0\delta_0\varepsilon$。我们知道 $u_1$ 是\Term{isomorphism}{同构}。由于 $(0,1,2)^*$ 左边两个方块是\Term{cocartesian}{余笛卡尔}的，$u_2$ 是\Term{bijection}{双射}。上述\Term{commutative-diagram}{交换图}的两横行都\Term{exact}{正合}，故 $u_0$ 是\Term{bijection}{双射}。\footnote{编者注：这里增添了以下文字。}这表明 $A_0$ 是秩 $n$ 的\Term{locally-free}{局部自由} $B$-\Term{module}{模}，由此前的归约，这又蕴含 $\delta_0\otimes\delta_1:A_0\otimes_BA_0\to A_1$ 是\Term{isomorphism}{同构}。至此，所考虑的特殊情形（$X_0$ 为\Term{affine}{仿射}，$d_1$ 为常秩 $n$ 的\Term{locally-free}{局部自由}\Term{morphism}{态射}）下的\Term{theorem}{定理} 4.1 得证。
+
+\SGAsection{5}{有限平坦群胚的取商（一般情形）}
+a) 以 $U^{(n)}$ 表示 $X_0$ 的最大\Term{open-subset}{开子集}，使得 $d_1$ 在其上为秩 $n$ 的\Term{finite-locally-free}{有限局部自由}\Term{morphism}{态射}。已知 $X_0$ 是各 $U^{(n)}$ 的\Term{direct-sum}{直和}。另一方面，由两个\Term{cartesian-square}{笛卡尔方块}
+\[
+\begin{tikzcd}
+X_2\arrow[r,"d'_0"]\arrow[d,"d'_2"']&X_1\arrow[d,"d_1"]\\
+X_1\arrow[r,"d_0"']&X_0
+\end{tikzcd}
+\qquad\text{和}\qquad
+\begin{tikzcd}
+X_2\arrow[r,"d'_1"]\arrow[d,"d'_2"']&X_1\arrow[d,"d_1"]\\
+X_1\arrow[r,"d_1"']&X_0
+\end{tikzcd}
+\]
+可知，$U^{(n)}$ 对 $d_0$ 和 $d_1$ 的\Term{inverse-image}{逆像}都等于 $X_1$ 的最大\Term{open-subset}{开子集}，使得 $d'_2$ 在其上为秩 $n$ 的\Term{locally-free}{局部自由}\Term{morphism}{态射}。\footnote{编者注：事实上，由于 $d_0$（分别 $d_1$）是\Term{surjectivity}{满射}、\Term{flat}{平坦}且\Term{finite-morphism}{有限}，因而\Term{faithfully-flat}{忠实平坦}且为\Term{affine-morphism}{仿射态射}，所以 $d'_2$ 在 $X_1$ 的一点 $x$ 的某个\Term{neighborhood}{邻域}上秩为 $n$，当且仅当 $d_1$ 在 $d_0(x)$（分别 $d_1(x)$）的某个\Term{neighborhood}{邻域}上秩为 $n$。}因此
+\[d_0^{-1}(U^{(n)})=d_1^{-1}(U^{(n)}),\]
+从而\Term{groupoid}{群胚} $X_*$ 是 $X_*$ 在各\Term{open-and-closed}{开闭}\Term{subset}{子集} $U^{(n)}$ 上诱导的\Term{groupoid}{群胚} $X_*^{(n)}$ 的\Term{direct-sum}{直和}。容易看出，只须对每个 $X_*^{(n)}$ 证明\Term{theorem}{定理} 4.1。因此归约到 $d_1$ 为秩 $n$ 的\Term{finite-locally-free}{有限局部自由}\Term{morphism}{态射}的情形。
+
+b) 现在可以在一般情形下证明我们的\Term{theorem}{定理}了。
+
+\SourcePage{272}
+由 a)，可假设 $d_1$ 是秩 $n$ 的\Term{locally-free}{局部自由}\Term{morphism}{态射}。设 $(Y,p)$ 是 $(d_0,d_1)$ 在全体\Term{ringed-space}{赋环空间}的\Term{category}{范畴}中的\Term{coequalizer}{余核}。第 4 节 c) 末尾的论证表明，为证明 4.1 (i)，只须证明 $Y$ 是\Term{scheme}{概形}，$p:X_0\to Y$ 是\Term{scheme}{概形}\Term{morphism}{态射}。由\Term{lemma}{引理} 1.2，问题在 $Y$ 上是\Term{local-scheme}{局部}的：取 $y\in Y$，以及满足 $p(x)=y$ 的 $x\in X_0$；若 $x$ 有一个\Term{affine}{仿射}且\Term{saturated}{饱和}的\Term{open-neighborhood}{开邻域} $U$，则由第 4 节，$p(U)$ 是 $Y$ 的\Term{affine-open}{仿射开子集}，且 $p|_U$ 是\Term{scheme}{概形}\Term{morphism}{态射}。因此，只须证明每个 $x\in X_0$ 都有一个\Term{affine}{仿射}且\Term{saturated}{饱和}的\Term{open-neighborhood}{开邻域} $U$。方法如下（证明取自 SGA 1，VIII，推论 7.6）。
+\[
+\begin{tikzcd}[column sep=small,row sep=large,font=\scriptsize]
+d_1(d_0^{-1}(x))\subset U=(V_f)'\arrow[d,phantom,"\substack{V_f\text{ 的最大}\\\text{饱和开子集}}"]&\subset&V_f\arrow[d,phantom,"V\text{ 的主仿射开子集}"]&\subset&V'\arrow[d,phantom,"\substack{V\text{ 的最大}\\\text{饱和开子集}}"]&\subset&V\arrow[d,phantom,"\text{仿射开子集}"]&\subset&X_0\\
+\phantom{X}&\phantom{X}&\phantom{X}&\phantom{X}&\phantom{X}&\phantom{X}&\phantom{X}&\phantom{X}&\phantom{X}
+\end{tikzcd}
+\]
+由 4.1 的条件 b)，$X_0$ 有一个包含 $d_1(d_0^{-1}(x))$ 的\Term{affine-open}{仿射开子集} $V$。\footnote{编者注：有 $d_1(d_0^{-1}(x))=d_0(d_1^{-1}(x))$，参见\Term{theorem}{定理} 4.1 的编者注 (16)。}若 $F=X_0-V$，则 $d_1(d_0^{-1}(F))$ 是闭集，因为 $d_1$ 是\Term{integral-morphism}{整态射}；而 $V'=X_0-d_1(d_0^{-1}(F))$ 是包含于 $V$ 的最大\Term{saturated}{饱和}\Term{open-subset}{开子集}。因 $V'$ 是\Term{finite}{有限}集 $d_1(d_0^{-1}(x))$ 的\Term{neighborhood}{邻域}，故存在 $V$ 的\Term{structure-sheaf}{结构层}的一个\Term{section}{截面} $f$，它在 $V-V'$ 上为零，并使 $d_1(d_0^{-1}(x))$ 包含于 $V$ 中由 $f$ 不为零的点组成的\Term{open-subset}{开子集} $V_f$。我们将证明 $V_f$ 的最大\Term{saturated}{饱和}\Term{open-subset}{开子集} $(V_f)'$ 是\Term{affine}{仿射}的，因而满足要求。
+
+事实上，设 $Z(f)=V'-V_f$。则 $d_0^{-1}(Z(f))$ 是 $d_0^{-1}(V')=d_1^{-1}(V')$ 中由 $d_0$ 诱导的映射下 $f$ 的像 $d_0^*(f)$ 为零的点集。另一方面，因为 $d_1$ 从 $d_0^{-1}(V')=d_1^{-1}(V')$ 到 $V'$ 诱导秩 $n$ 的\Term{locally-free}{局部自由}\Term{morphism}{态射}，\footnote{编者注：这里增添了\Term{lemma}{引理} 4.1.1 的引用，参见 [DG70]，III，§5.2，第 313 页。}由\Term{lemma}{引理} 4.1.1，$d_1(d_0^{-1}(Z(f)))$ 是 $d_0^*(f)$ 相对于\Term{morphism}{态射} $d_1$ 的\Term{norm}{范数} $N$ 为零的点集。于是，$(V_f)'=V'-d_1(d_0^{-1}(Z(f)))$ 就是 $V_f$ 中 $N$ 不为零的点集；故 $(V_f)'$ 是\Term{affine}{仿射}的。
+
+这就证明了 4.1 (i)；此时 (ii)、(iii) 以及 (iv) 的第一部分均已清楚。最后证明 (iv) 末尾指出的推论（参见 [Ray67a]，\Term{theorem}{定理} 1 (iii)）。
+
+由假设，\Term{groupoid}{群胚} $X_*$ 来自某个\Term{equivalence-relation}{等价关系} $i:R\to X_0\times X_0$（故 $i$ 是\Term{immersion}{浸入}，参见编者注 (19)），我们已证明 $R$ 是\Term{effective}{有效}的（参见第 IV 讲 3.3.2），并且 $p:X_0\to Y=X_0/R$ 是\Term{surjectivity}{满射}且\Term{finite-locally-free}{有限局部自由}的\Term{morphism}{态射}，特别地，它是\Term{faithfully-flat}{忠实平坦}且\Term{finite-presentation}{有限呈示}的。
+\SourcePage{273}
+因此，以 $(\mathrm M)$ 表示\Term{faithfully-flat}{忠实平坦}且\Term{locally-finite-presentation}{局部有限呈示}的\Term{morphism}{态射}族，则 $R$ 是 $(\mathrm M)$-\Term{effective}{有效}的。故由第 IV 讲 6.3.3，$(Y,p)$ 表示 $X_0$ 对 $R$ 的 $(\mathrm{fppf})$ \Term{topology}{拓扑}的\Term{quotient-sheaf}{商层}，而关于\Term{base-change}{基变换}的断言由第 IV 讲 3.4.3.1 得到。
+
+\begin{SGAresult}{注记}{5.1}
+\footnote{编者注：这一段为增补。}沿用 4.1 的假设和记号，并进一步假设 $S$ 是\Term{locally-noetherian}{局部诺特}的，$\pi_0:X_0\to S$ 是\Term{quasi-projective}{拟射影}的。下面证明 $\pi:Y\to S$ 是\Term{quasi-projective}{拟射影}的。
+\end{SGAresult}
+上述假设蕴含 $Y\to S$ 是\Term{finite-type}{有限型}的，见 6.1 (ii) 的证明。设 $\mathcal A$ 是一个对 $\pi_0$ \Term{ample}{丰沛}的\Term{invertible-module}{可逆} $\mathcal O_{X_0}$-\Term{module}{模}。由 EGA II，6.1.12，$p_*(\mathcal A)$ 是\Term{invertible-module}{可逆} $p_*(\mathcal O_{X_0})$-\Term{module}{模}。因此，$Y$ 存在一个由\Term{affine-open}{仿射开子集}组成的\Term{covering}{覆盖} $(V_i)_{i\in I}$，使 $\mathcal A$ 在每个\Term{saturated}{饱和}\Term{affine-open}{仿射开子集} $U_i=p^{-1}(V_i)$ 上\Term{trivial-module}{平凡}。
+
+对每个指标 $i$，记 $A_{i,0}=\mathcal O_{X_0}(U_i)$，$A_{i,1}$ 为 $X_1$ 的\Term{affine-open}{仿射开子集} $d_0^{-1}(U_i)=d_1^{-1}(U_i)$ 的环；记 $\delta_{i,0}$（分别 $\delta_{i,1}$）为 $d_0$（分别 $d_1$）诱导的\Term{morphism}{态射} $A_{i,0}\to A_{i,1}$，并记
+\[B_i=\mathcal O_Y(V_i)=\{b\in A_{i,0}\mid\delta_{i,0}(b)=\delta_{i,1}(b)\}.\]
+依照 EGA II，§6.5，考虑\Term{invertible-module}{可逆} $\mathcal O_{X_0}$-\Term{module}{模} $N_{d_1}(d_0^*(\mathcal A))$，即\Term{invertible-module}{可逆} $\mathcal O_{X_1}$-\Term{module}{模} $d_0^*(\mathcal A)$ 相对于\Term{finite-locally-free}{有限局部自由}\Term{morphism}{态射} $d_1:X_1\to X_0$ 的\Term{norm}{范数}。若 $\mathcal A$ 相对于\Term{covering}{覆盖} $(U_i)_{i\in I}$ 由\Term{transition-function}{转移函数} $c_{ij}\in\mathcal O_{X_0}(U_i\cap U_j)^\times$ 给出，则 $N_{\delta_1}(d_0^*(\mathcal A))$ 由\Term{transition-function}{转移函数}
+\[N_{d_1}(\delta_0(c_{ij}))\in\mathcal O_{X_0}(U_i\cap U_j)^\times\]
+给出。由第 4 节 a)，这些元素属于 $\mathcal O_Y(V_i\cap V_j)^\times$，故定义了一个\Term{invertible-module}{可逆} $\mathcal O_Y$-\Term{module}{模} $\mathcal L$，使 $p^*(\mathcal L)=N_{d_1}(d_0^*(\mathcal A))$。又注意，对每个 $n\in\mathbb N^*$，有 $p^*(\mathcal L^n)=N_{d_1}(d_0^*(\mathcal A^n))$，见上述文献 (6.5.2.1)。
+
+证明 $\mathcal L$ 对\Term{morphism}{态射} $\pi:Y\to S$ \Term{ample}{丰沛}。为此，用 $S$ 的一个\Term{affine-open}{仿射开子集}替换 $S$，可假设 $S$ 为\Term{affine}{仿射}。取 $y\in Y$，满足 $p(x)=y$ 的 $x\in X_0$，$Y$ 中包含 $y$ 的一个\Term{affine-open}{仿射开子集} $V$，并置 $U=p^{-1}(V)$。因 $\mathcal A$ 为 $\pi_0$-\Term{ample}{丰沛}，存在 $n\in\mathbb N^*$ 和\Term{section}{截面} $s\in\Gamma(X_0,\mathcal A^n)$，使\Term{open-subset}{开子集} $(X_0)_s$ 满足 $x\in(X_0)_s\subset U$。使用前面的记号，$s$ 由\Term{section}{截面} $a_i\in A_{i,0}=\mathcal O_{X_0}(U_i)$ 给出，在 $U_i\cap U_j$ 上有 $a_i=c_{ij}a_j$，而 $(X_0)_s$ 为各\Term{open-subset}{开子集}
+\[U'_i=\{\mathfrak p\in\operatorname{Spec}(A_{i,0})\mid a_i\notin\mathfrak p\}\]
+的并。
+
+对每个指标 $i$，置 $N(a_i)=N_{\delta_1}(\delta_0(a_i))\in B_i$。由 4.1 (i) 和\Term{lemma}{引理} 4.1.1，有
+\[
+\begin{aligned}
+p(U'_i)&=pd_1d_0^{-1}(U'_i)\\
+&=pd_1\bigl(\{\mathfrak q\in\operatorname{Spec}(A_{i,1})\mid\delta_{i,0}(a_i)\notin\mathfrak q\}\bigr),
+\end{aligned}
+\]
+以及
+\[
+\begin{aligned}
+d_1\bigl(\{\mathfrak q\in\operatorname{Spec}(A_{i,1})\mid\delta_{i,0}(a_i)\notin\mathfrak q\}\bigr)
+=\{\mathfrak p\in\operatorname{Spec}(A_{i,0})\mid N_{\delta_1}(\delta_{i,0}(a_i))\notin\mathfrak p\},
+\end{aligned}
+\]
+从而
+\[p(U'_i)=\{\mathfrak p\in\operatorname{Spec}(B_i)\mid N(a_i)\notin\mathfrak p\}.\]
+由此，$p((X_0)_s)=Y_{N(s)}$，其中 $N(s)$ 表示由各\Term{section}{截面} $N(a_i)\in\mathcal O_Y(V_i)$ 定义的 $\mathcal L^n$ 在 $Y$ 上的\Term{section}{截面}。于是
+\[y\in p((X_0)_s)=Y_{N(s)}\subset p(U)=V.\tag{*}\]
+这表明 $\mathcal L$ 对 $\pi:Y\to S$ \Term{ample}{丰沛}，从而 $\pi:Y\to S$ 为\Term{quasi-projective}{拟射影}。
+
+\SourcePage{274}
+\SGAsection{6}{存在拟截面时的取商}
+现在证明一个技术性的\Term{lemma}{引理}，它将用于证明我们所要得到的两个\Term{theorem}{定理}。设 $S$ 是\Term{scheme}{概形}，
+\[
+\begin{tikzcd}
+X_2\arrow[r,shift left=1ex,"{d'_0,d'_1,d'_2}"]\arrow[r]\arrow[r,shift right=1ex]&X_1\arrow[r,shift left=.5ex,"{d_0,d_1}"]\arrow[r,shift right=.5ex]&X_0
+\end{tikzcd}
+\]
+是一个 $(\mathrm{Sch}/S)$-\Term{groupoid}{群胚}。若 $X_0$ 的一个\Term{subscheme}{子概形} $U$ 满足 (1)、(2)，则称它为\Term{groupoid}{群胚} $X_*$ 的一个\Term{quasi-section}{拟截面}：
+
+(1) $d_1$ 在 $d_0^{-1}(U)$ 上的\Term{restriction}{限制} $v:d_0^{-1}(U)\to X_0$ 是\Term{finite-morphism}{有限}、\Term{locally-free}{局部自由}且\Term{surjectivity}{满射}的\Term{morphism}{态射}。
+
+(2) $U$ 中由对于 $X_*$ 所定义的\Term{equivalence-relation}{等价关系}（第 3 节 e)）两两\Term{equivalence}{等价}的点组成的每个\Term{subset}{子集} $E$，都包含于 $U$ 的某个\Term{affine-open}{仿射开子集}中。\footnote{编者注：若 $x,y\in E$，则存在 $z\in X_1$ 使 $d_1(x)=x$、$d_0(z)=y$，即 $z$ 属于由 (1) 知为\Term{finite}{有限}的\Term{set}{集合} $v^{-1}(x)$。所以 $E$ 包含于\Term{finite}{有限}集 $d_0(v^{-1}(x))=d_0d_1^{-1}(x)\cap U$。}
+
+若 $U$ 是 $X_*$ 的一个\Term{quasi-section}{拟截面}，则由 $X_*$ 及 $U$ 到 $X_0$ 的包含\Term{morphism}{态射}诱导的 $(\mathrm{Sch}/S)$-\Term{groupoid}{群胚}（参见第 3 节 a)）
+\[
+\begin{tikzcd}
+U_2\arrow[r,shift left=1ex,"{u'_0,u'_1,u'_2}"]\arrow[r]\arrow[r,shift right=1ex]&U_1\arrow[r,shift left=.5ex,"{u_0,u_1}"]\arrow[r,shift right=.5ex]&U
+\end{tikzcd}
+\]
+满足\Term{theorem}{定理} 4.1 的假设。事实上，置 $V=d_0^{-1}(U)$，以 $u,v$ 分别表示 $d_0,d_1$ 诱导的、以 $V$ 为源的\Term{morphism}{态射}：
+\[\begin{tikzcd}X_0&V\arrow[l,"v"']\arrow[r,"u"]&U.\end{tikzcd}\]
+由第 3 节 b)，有\Term{cartesian-square}{笛卡尔方块}
+\[
+\begin{tikzcd}
+U_1\arrow[r]\arrow[d,"u_1"']&V\arrow[d,"v"]\\
+U\arrow[r,"\text{包含}"']&X_0,
+\end{tikzcd}
+\]
+所以由 (1)，$u_1$ 为\Term{surjectivity}{满射}且\Term{finite-locally-free}{有限局部自由}。条件 (1) 与 (2) 一起，保证\Term{groupoid}{群胚} $U_*$ 满足\Term{theorem}{定理} 4.1 的假设。特别地，$\operatorname{Coker}(u_0,u_1)$ 在 $(\mathrm{Sch}/S)$ 中存在。又因 $d_0$ 有一个\Term{section}{截面}，所以 $u$ 是\Term{universal-effective-epimorphism}{普遍有效满态射}（参见第 III 讲 1.12）；由命题 3.1，$\operatorname{Coker}(u_0,u_1)$ 与\Term{groupoid}{群胚} $V_*$ 的\Term{coequalizer}{余核} $\operatorname{Coker}(v_0,v_1)$ 相同：
+\[
+\begin{tikzcd}
+V_2\arrow[r,shift left=1ex,"v'_2"]\arrow[r,"v'_1" description]\arrow[r,shift right=1ex,"v'_0"']&V_1\arrow[r,shift left=.5ex,"v_1"]\arrow[r,shift right=.5ex,"v_0"']&V.
+\end{tikzcd}
+\]
+\SourcePage{275}
+这里 $V_*$ 是 $U_*$ 经\Term{base-change}{基变换} $u:V\to U$ 的\Term{inverse-image}{逆像}，也就是 $X_*$ 经\Term{base-change}{基变换}
+\[\begin{tikzcd}V\arrow[r,"\text{包含}"]&X_1\arrow[r,"d_0"]&X_0\end{tikzcd}\]
+的\Term{inverse-image}{逆像}。\footnote{编者注：以下略作了修改；特别地，在\Term{lemma}{引理} 6.1 中，将 $d_0$ \Term{flat}{平坦}这一附加假设移至 (iv)，并将 (ii) 分成 (i') 与 (ii)，且增添了 (i') 的第二个断言。}由第 3 节 c)，$V_*$ 与\Term{groupoid}{群胚} $V'_*$ \Term{isomorphism}{同构}，其中 $V'_*$ 是 $X_*$ 经\Term{base-change}{基变换}
+\[\begin{tikzcd}v:\quad V\arrow[r,"\text{包含}"]&X_1\arrow[r,"d_1"]&X_0\end{tikzcd}\]
+的\Term{inverse-image}{逆像}。故 $V'_*$ 在 $(\mathrm{Sch}/S)$ 中有\Term{coequalizer}{余核}。而 $v:V\to X_0$ 是\Term{flat}{平坦}、\Term{surjectivity}{满射}且\Term{finite-morphism}{有限}的，因而\Term{faithfully-flat}{忠实平坦}且\Term{quasi-compact}{拟紧}；由第 III 讲 6.3.2，它是\Term{universal-effective-epimorphism}{普遍有效满态射}。所以由命题 3.1，\Term{groupoid}{群胚} $X_*$ 在 $(\mathrm{Sch}/S)$ 中有\Term{coequalizer}{余核} $\operatorname{Coker}(d_0,d_1)$。这样我们就证明了下面\Term{lemma}{引理} (i) 的第一个断言。
+
+\begin{SGAresult}{\Term{lemma}{引理}}{6.1}
+假设 $(\mathrm{Sch}/S)$-\Term{groupoid}{群胚} $X_*$ 有一个\Term{quasi-section}{拟截面}。那么：
+
+(i) $(d_0,d_1)$ 在 $(\mathrm{Sch}/S)$ 中存在\Term{coequalizer}{余核} $(Y,p)$；而且，这样的 $(Y,p)$ 也是 $(d_0,d_1)$ 在全体\Term{ringed-space}{赋环空间}的\Term{category}{范畴}中的\Term{coequalizer}{余核}。
+
+(i') $p$ 为\Term{surjectivity}{满射}；若 $d_0$ 是\Term{open-morphism}{开态射}（分别\Term{universally-closed}{普遍闭}的），则 $p$ 也是。
+
+(ii) 假设 $S$ 是\Term{locally-noetherian}{局部诺特}的，$X_0$ 在 $S$ 上是\Term{locally-finite-type}{局部有限型}（分别\Term{finite-type}{有限型}）的。则 $p$ 和 $Y\to S$ 都是\Term{locally-finite-presentation}{局部有限呈示}（分别\Term{finite-presentation}{有限呈示}）的。
+
+(iii) \Term{set-component}{分量}为 $d_0,d_1$ 的\Term{morphism}{态射} $X_1\to X_0\times_YX_0$ 是\Term{surjectivity}{满射}。
+
+(iv) 若 $(d_0,d_1)$ 是\Term{equivalence-pair}{等价对}，则 $X_1\to X_0\times_YX_0$ 是\Term{isomorphism}{同构}。此外，若 $d_0:X_1\to X_0$ 是\Term{flat}{平坦}的，则 $p$ 是\Term{faithfully-flat}{忠实平坦}的。
+\end{SGAresult}
+在证明 (i) 的第二个断言之前，先证明 (i')、(ii) 和 (iii)。
+
+a) (i') 和 (ii) 的证明。我们已经看到，$(Y,p)$ 与 $\operatorname{Coker}(v_0,v_1)$ 和 $\operatorname{Coker}(u_0,u_1)$ 等同。设 $q,r$ 分别是 $U,V$ 到 $Y$ 的\Term{canonical}{典范}\Term{epimorphism}{满态射}：
+\[
+\begin{tikzcd}
+X_0\arrow[dr,"p"']&V\arrow[l,"v"']\arrow[r,"u"]\arrow[d,"r"]&U\arrow[dl,"q"]\\
+&Y.&
+\end{tikzcd}
+\]
+由假设，$v$ 为\Term{surjectivity}{满射}且\Term{finite-locally-free}{有限局部自由}，故为\Term{open-morphism}{开态射}。另一方面，若 $d_0:X_1\to X_0$ 是\Term{open-morphism}{开态射}（分别\Term{universally-closed}{普遍闭}的），则由其经\Term{base-change}{基变换}得到的 $u$ \SourcePage{276}亦然。由\Term{theorem}{定理} 4.1，$q$ 为\Term{surjectivity}{满射}、\Term{integral-morphism}{整}且为\Term{open-morphism}{开态射}，故 $r$ 为\Term{surjectivity}{满射}，而且若 $d_0$ 是\Term{open-morphism}{开态射}（分别\Term{universally-closed}{普遍闭}的），$r$ 也是。由于 $v$ 为\Term{surjectivity}{满射}，$p$ 同样如此。这就证明了 (i')。
+
+现在假设 $S$ 是\Term{locally-noetherian}{局部诺特}的，$X_0$ 在 $S$ 上是\Term{locally-finite-type}{局部有限型}的，从而 $X_0$ 是\Term{locally-noetherian}{局部诺特}的。
+
+证明 $Y$ 在 $S$ 上\Term{locally-finite-presentation}{局部有限呈示}。设 $S'=\operatorname{Spec}R$ 是 $S$ 的\Term{affine-open}{仿射开子集}，$Y'=\operatorname{Spec}B$ 是 $Y$ 中映入 $S'$ 的\Term{affine-open}{仿射开子集}，$U'=\operatorname{Spec}A$ 是 $Y'$ 在 $U$ 中的\Term{inverse-image}{逆像}。因为 $R$ 是\Term{noetherian}{诺特}的，只须证明 $B$ 是\Term{finite-type}{有限型} $R$-\Term{algebra}{代数}。由第 4、5 节，$B$ 包含于\Term{finite-type}{有限型} $R$-\Term{algebra}{代数} $A$ 中；而 $R$ 是\Term{noetherian}{诺特}的，$A$ 在 $B$ 上\Term{integral}{整}，故断言成立。
+
+最后，因 $X_0\to S$ 是\Term{locally-finite-type}{局部有限型}的，$p$ 也是（EGA I，6.6.6）；又因 $Y$ 是\Term{locally-noetherian}{局部诺特}的，$p$ 为\Term{locally-finite-presentation}{局部有限呈示}。
+
+还须证明 (ii) 的最后一个断言。进一步假设 $X_0$ 在 $S$ 上为\Term{finite-type}{有限型}。由于 $p$ 是\Term{surjectivity}{满射}，$Y$ 在 $S$ 上还是\Term{quasi-compact}{拟紧}的，故在 $S$ 上为\Term{finite-type}{有限型}。因 $S$ 是\Term{locally-noetherian}{局部诺特}的，$X_0\to S$ 和 $Y\to S$ 都是\Term{finite-presentation}{有限呈示}的，故 $p:X_0\to Y$ 也是\Term{finite-presentation}{有限呈示}的（EGA IV$_1$，1.6.2 (v)）。
+
+b) (iii) 的证明。以 $V$ 为底的\Term{groupoid}{群胚} $V_*$ 同时\Term{isomorphism}{同构}于 $U_*$ 经\Term{base-change}{基变换} $u$ 的\Term{inverse-image}{逆像}和 $X_*$ 经\Term{base-change}{基变换} $v$ 的\Term{inverse-image}{逆像}，故有双重\Term{cartesian-square}{笛卡尔方块}
+\[
+\begin{tikzcd}[column sep=large]
+X_1\arrow[d,"d_0\boxtimes d_1"']&V_1\arrow[l]\arrow[r]\arrow[d,"v_0\boxtimes v_1"]&U_1\arrow[d,"u_0\boxtimes u_1"]\\
+X_0\times_YX_0&V\times_YV\arrow[l,"v\times v"]\arrow[r,"u\times u"']&U\times_YU.
+\end{tikzcd}
+\]
+由于 $u_0\boxtimes u_1$ 是\Term{surjectivity}{满射}，$v_0\boxtimes v_1$ 也是。因为 $v\times v$ 是\Term{surjectivity}{满射}，复合\Term{morphism}{态射} $V_1\to X_0\times_YX_0$ 也是\Term{surjectivity}{满射}，从而 $d_0\boxtimes d_1$ 是\Term{surjectivity}{满射}。
+
+c) (i) 的证明。还须证明，$(Y,p)$ 是 $(d_0,d_1)$ 在全体\Term{ringed-space}{赋环空间}的\Term{category}{范畴}中的\Term{coequalizer}{余核}。先证明，$Y$ 是由 $X_0$ 中满足存在 $z\in X_1$ 使 $d_0(z)=x$、$d_1(z)=y$ 的点 $x,y$ 等同而得到的。事实上，$p$ 为\Term{surjectivity}{满射}，且 $pd_0=pd_1$；此外，若 $p(x)=p(y)$，则存在 $X_0\times_YX_0$ 的一点 $z'$，其第一\Term{projection}{投影}为 $x$，第二\Term{projection}{投影}为 $y$。若 $z$ 为 $X_1$ 中满足 $(d_0\boxtimes d_1)(z)=z'$ 的一点，就有 $d_0(z)=x$、$d_1(z)=y$。
+
+另一方面，若 $W$ 是 $X_0$ 的一个\Term{saturated}{饱和}\Term{open-subset}{开子集}，则 $W\cap U$ 是 $U$ 的\Term{saturated}{饱和}\Term{open-subset}{开子集}；由 4.1，$q(W\cap U)$ 是 $Y$ 的\Term{open-subset}{开子集}。因 $q(W\cap U)$ 恰为 $p(W)$，可知 $Y$ 赋有来自 $X_0$ 的\Term{quotient-topology}{商拓扑}。
+
+还须证明\Term{canonical}{典范}的\Term{sheaf}{环层}序列
+\[\mathcal O_Y\longrightarrow p_*(\mathcal O_{X_0})\rightrightarrows p_*d_{0*}(\mathcal O_{X_1})=p_*d_{1*}(\mathcal O_{X_1})\]
+是\Term{exact}{正合}的。
+
+\SourcePage{277}
+取 $Y$ 的一个\Term{open-subset}{开子集} $Y'$，置 $U'=q^{-1}(Y')$、$X'_0=p^{-1}(Y')$，等等。\footnote{编者注：这里展开了以下论证，特别说明了 $U'$ 是在 $X'_0$ 上诱导的\Term{groupoid}{群胚}的一个\Term{quasi-section}{拟截面}。}则 $U'$ 是 $U$ 对\Term{groupoid}{群胚} $U_*$ 所定义的\Term{equivalence-relation}{等价关系}的\Term{saturated}{饱和}\Term{open-subset}{开子集}，由\Term{lemma}{引理} 1.1 和 1.2，$Y'$ 在 $(\mathrm{Sch}/S)$ 和 $(\mathrm{Esp.An})$ 中都是 $U_*$ 在 $U'$ 上诱导的\Term{groupoid}{群胚}的\Term{coequalizer}{余核}。同样，$X'_0$ 是 $X_0$ 对 $X_*$ 所定义的\Term{equivalence-relation}{等价关系}的\Term{saturated}{饱和}\Term{open-subset}{开子集}，并有如下\Term{commutative-diagram}{交换图}，其中两个方块都是\Term{cartesian}{笛卡尔}的：
+\[
+\begin{tikzcd}[column sep=large]
+X'_0\arrow[d]&V'=d_0^{-1}(U')\arrow[l,"\widetilde d_1"']\arrow[r,"\widetilde d_0"]\arrow[d]&U'\arrow[d]\\
+X_0&V=d_0^{-1}(U)\arrow[l,"d_1"]\arrow[r,"d_0"']&U'.
+\end{tikzcd}
+\]
+于是 $\widetilde d_1$ 为\Term{surjectivity}{满射}且\Term{finite-locally-free}{有限局部自由}。另一方面，取 $x\in U'$。因 $U$ 为\Term{quasi-section}{拟截面}，\Term{set}{集合} $E:=d_0d_1^{-1}(x)\cap U$ 为\Term{finite}{有限}集，并包含于 $U$ 的某个\Term{affine-open}{仿射开子集} $W$ 中。那么 $E'=E\cap U'$ 为\Term{finite}{有限}集，且包含于\Term{quasi-affine}{拟仿射}\Term{open-subset}{开子集} $W\cap U'$ 中。因此，$W\cap U'$ 有一个包含 $E'$ 的\Term{affine-open}{仿射开子集} $W'$。这表明，$U'$ 是 $X_*$ 在 $X'_0$ 上诱导的\Term{groupoid}{群胚} $X'_*$ 的一个\Term{quasi-section}{拟截面}。将 (i) 的第一个断言应用于 $X'_*$ 和 $U'$，便知 $Y'$ 是 $X'_*$ 在 $(\mathrm{Sch}/S)$ 中的\Term{coequalizer}{余核}。
+
+特别地，对每个 $S$-\Term{scheme}{概形} $T$，都有\Term{exact}{正合}序列
+\[
+\begin{tikzcd}[column sep=large]
+T(Y')\arrow[r,"T(p|_{X'_0})"]&T(X'_0)\arrow[r,shift left=.6ex,"T(d_1|_{X'_1})"]\arrow[r,shift right=.6ex,"T(d_0|_{X'_1})"']&T(X'_1).
+\end{tikzcd}
+\]
+若 $T$ 为“\Term{affine-line}{仿射直线}” $\mathbb G_{a,S}$（第 I 讲 4.3），这一序列就与下列序列等同：
+\[
+\begin{gathered}
+\Gamma(Y',\mathcal O_Y)\longrightarrow\Gamma(p^{-1}(Y'),\mathcal O_{X_0})
+\mathrel{\substack{\xrightarrow{\delta_1}\\[-.6ex]\xrightarrow[\delta_0]{}}}
+\Gamma(d_0^{-1}p^{-1}(Y'),\mathcal O_{X_1})\\
+=\Gamma(d_1^{-1}p^{-1}(Y'),\mathcal O_{X_1}),
+\end{gathered}
+\]
+故它对每个\Term{open-subset}{开子集} $Y'$ 都\Term{exact}{正合}。\Term{lemma}{引理} 6.1 (i) 的证明至此完成。
+
+d) (iv) 的证明。若 $(d_0,d_1)$ 为\Term{equivalence-pair}{等价对}，则 $(u_0,u_1)$ 也是。因此 $u_0\boxtimes u_1:U_1\to U\times_YU$ 是\Term{isomorphism}{同构}（\Term{theorem}{定理} 4.1），故 $v_0\boxtimes v_1$ 也是\Term{isomorphism}{同构}（参见 b) 中的\Term{cartesian-square}{笛卡尔方块}）；由于 $v\times v$ 是\Term{faithfully-flat}{忠实平坦}且\Term{quasi-compact}{拟紧}的，$d_0\boxtimes d_1$ 是\Term{isomorphism}{同构}（SGA 1，VIII，5.4）。
+
+此外，若 $d_0$ 是\Term{flat}{平坦}的，$u$ 也是。由\Term{theorem}{定理} 4.1，$q$ 是\Term{flat}{平坦}的，故 $r$ 也是。由于 $v$ 是\Term{faithfully-flat}{忠实平坦}的，$p$ 是\Term{flat}{平坦}的；又因 $p$ 为\Term{surjectivity}{满射}，它是\Term{faithfully-flat}{忠实平坦}的。

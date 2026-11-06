@@ -1,0 +1,612 @@
+% 第5章；原PDF物理页129--154。
+\SourcePage{129}
+本节用一些更具算术性质的结果补充第4节中的几何结果。我们只考虑有限域或有限域的代数闭包上的分离\term{finite-type}{有限型}\term{scheme}{概形}，并且只考虑\term{self-dual}{自对偶}\term{perversity}{反常度} $p_{1/2}$。
+
+\par\medskip\noindent\textbf{5.0. 记号。} 设 $p$ 是不等于 $\ell$ 的素数，$q$ 是 $p$ 的一个幂，$\F_q$ 是含 $q$ 个元素的有限域，$\F$ 是 $\F_q$ 的一个代数闭包。
+与文献[1]（0.7）一样，定义在 $\F_q$ 上的对象（\term{scheme}{概形}，或\term{scheme}{概形}上的\term{sheaf}{层}）用下标 $0$ 表示；去掉这个下标，则表示把基域从 $\F_q$ \term{extension}{扩张}到 $\F$。
+
+\section*{5.1. 文献[1]中的若干结果回顾}
+\addcontentsline{toc}{section}{5.1. 文献[1]中的若干结果回顾}
+\par\medskip\noindent\textbf{5.1.1.} 设 $X_0$ 是 $\F_q$ 上的\term{finite-type}{有限型}\term{scheme}{概形}，$F_0$ 是 $X_0$ 上的一个 $\overline\Q_\ell$-\term{sheaf}{层}。在 $\F$ 上，我们有 \term{frobenius}{Frobenius} 态射 $\mathrm{Fr}_q:X\to X$（把坐标取 $q$ 次幂），以及同构
+\[
+F_q^*:\mathrm{Fr}_q^*F\xrightarrow{\sim}F.
+\]
+可以把 $F_0$ 看成 $X_0$ 上的\term{etale}{平展}空间；由此得到下面的交换笛卡尔图，其中两条水平箭头都是 $\mathrm{Fr}_q$：
+\[
+\begin{tikzcd}[ampersand replacement=\&]
+F\arrow[r]\arrow[d]\&F\arrow[d]\\
+X\arrow[r]\&X.
+\end{tikzcd}
+\]
+对每个整数 $n$，令 $\mathrm{Fr}_{q^n}=(\mathrm{Fr}_q)^n$，并以 $F_{q^n}^*:\mathrm{Fr}_{q^n}^*F\to F$ 表示迭代 $F_q^*$ 得到的同构。若 $X_1/\F_{q^n}$ 由 $X_0$ \term{extension}{扩张}标量至 $\F_{q^n}$ 得到，则 $X_1\otimes_{\F_{q^n}}\F=X$，上述态射正是相对于 $X_1/\F_{q^n}$ 的 \term{frobenius}{Frobenius} 态射。
+$\mathrm{Fr}_{q^n}$ 的不动点恰好是定义在 $\F_{q^n}$ 上的点 $x\in X(\F)$。在每个这样的不动点上，$F_{q^n}^*$ 是 $F_x$ 的一个自同构。
+同样，对 $K_0\in \D_c^b(X_0,\overline\Q_\ell)$，$K$ 带有
+\SourcePage{130}
+同构 $F_q^*:\mathrm{Fr}_q^*K\xrightarrow{\sim}K$。特别地，$X_0$ 上的\term{perverse-sheaf}{反常层} $F_0$ 经由 $\F_q$ 到 $\F$ 的标量\term{extension}{扩张}，给出 $X$ 上的\term{perverse-sheaf}{反常层} $F$，并带有同构 $F_q^*:\mathrm{Fr}_q^*F\xrightarrow{\sim}F$。
+
+\par\medskip\noindent\textbf{命题5.1.2。} 函子 $F_0\mapsto(F,F_q^*)$ 从 $X_0$ 上\term{perverse-sheaf}{反常层}的范畴到 $X$ 上带有同构 $\mathrm{Fr}_q^*F\xrightarrow{\sim}F$ 的\term{perverse-sheaf}{反常层}的范畴，是\term{fully-faithful}{全忠实}的；其\term{essential-image}{本质像}构成的范畴对\term{extension}{扩张}及\term{subquotient}{子商}封闭。
+
+\par\noindent\textbf{注。} 对 $\Z_\ell$-\term{perverse-sheaf}{反常层}，可以证明相应函子是范畴\term{equivalence}{等价}。系数为 $\Q_\ell$ 或 $\overline\Q_\ell$ 时，它并非本质满。甚至在 $X_0=\Spec(\F_q)$（一个点）的情形，下述对象就不在\term{essential-image}{本质像}中：取 $F=\Q_\ell$，令 $\sigma:\mathrm{Fr}_q^*\Q_\ell=\Q_\ell\to\Q_\ell$ 为乘以 $u$，其中 $u$ 不是 \term{l-adic}{$\ell$-进}单位。
+
+\par\noindent\textbf{证明。} 设 $a:X_0\to\Spec(\F_q)$ 为投影，$\Gamma$ 是 $\Spec(\F_q)$ 上的整体截面函子。对 $K_0,L_0\in\D_c^b(X_0,\overline\Q_\ell)$，有
+\begin{equation*}
+\Hom(K_0,L_0)=H^0\RHom(K_0,L_0),\tag{5.1.2.1}
+\end{equation*}
+以及
+\begin{equation*}
+\RHom(K_0,L_0)=R\Gamma\cdot Ra_*\,R\mathcal Hom(K_0,L_0).\tag{5.1.2.2}
+\end{equation*}
+对 $M_0\in\D_c^b(\Spec(\F_q),\overline\Q_\ell)$，函子 $R\Gamma$ 给出\term{spectral-sequence}{谱序列}
+\begin{equation*}
+E_2^{pq}=H^p(\Spec\F_q,H^qM_0)
+=H^p(\Gal(\F/\F_q),H^qM)
+\Longrightarrow H^{p+q}R\Gamma M_0.\tag{5.1.2.3}
+\end{equation*}
+这条\term{spectral-sequence}{谱序列}通过取极限得到。这里使用的 Galois \term{cohomology}{上同调} $H^p(\Gal(\F/\F_q),-)$ 是连续\term{cohomology}{上同调}。
+由于 $\Gal(\F/\F_q)=\widehat\Z$，且由几何 \term{frobenius}{Frobenius} $F$ 在拓扑意义下生成（$F$ 是算术 \term{frobenius}{Frobenius} $\varphi:x\mapsto x^q:\F\to\F$ 的逆），所考虑的 Galois \term{cohomology}{上同调}群在 $p\ne0,1$ 时为零；$p=0$ 时得到 $F$ 的不变部分，$p=1$ 时得到余不变部分。因此（5.1.2.3）化为短\term{exact-sequence}{正合列}
+\SourcePage{131}
+\begin{equation*}
+0\longrightarrow(H^{n-1}M)_F\longrightarrow H^nR\Gamma M_0\longrightarrow(H^nM)^F\longrightarrow0.\tag{5.1.2.4}
+\end{equation*}
+$H^iRa_*R\mathcal Hom(K_0,L_0)$ 的底\term{sheaf}{层} $\overline\Q_\ell$-向量空间就是在 $X$ 上计算的 $H^i\RHom(K,L)=\Hom^i(K,L)$。合并（5.1.2.1）至（5.1.2.4），得到短\term{exact-sequence}{正合列}
+\begin{equation*}
+0\longrightarrow(\Hom^{i-1}(K,L))_F\longrightarrow\Hom^i(K_0,L_0)\longrightarrow\Hom^i(K,L)^F\longrightarrow0.\tag{5.1.2.5}
+\end{equation*}
+取 $i=0$。若 $K_0,L_0$ 为\term{perverse-sheaf}{反常层}，则 $\Hom^{-1}=0$，因而得到所断言的\term{fully-faithful}{全忠实}性：
+\[
+\Hom(K_0,L_0)\xrightarrow{\sim}\Hom(K,L)^F.
+\]
+取 $i=1$，仍假设 $K_0,L_0$ 为\term{perverse-sheaf}{反常层}。由3.1.17（ii），$\Hom^1(K_0,L_0)$（分别为 $\Hom^1(K,L)$）可与相应\term{perverse-sheaf}{反常层}范畴中 $K_0$ 被 $L_0$ 的\term{extension}{扩张}群（分别为 $K$ 被 $L$ 的\term{extension}{扩张}群）相同一。因此有短\term{exact-sequence}{正合列}
+\[
+0\longrightarrow\Hom(K,L)_F\longrightarrow\Ext^1(K_0,L_0)\longrightarrow\Ext^1(K,L)^F\longrightarrow0.
+\]
+在 $X$ 上带有同构 $\phi:\mathrm{Fr}_q^*F\xrightarrow{\sim}F$ 的\term{perverse-sheaf}{反常层}范畴中，$\Ext^1$ 也满足类似的短\term{exact-sequence}{正合列}。忘掉 $\phi$ 给出映射
+\[
+\Ext^1((F,\phi),(G,\phi))\longrightarrow\Ext^1(F,G),
+\]
+\term{extension}{扩张} $E$ 的类在像中，当且仅当它在 $\phi$ 作用下不变，也就是下面的图可以补全：
+\[
+\begin{tikzcd}[ampersand replacement=\&,column sep=small]
+0\arrow[r]\&\mathrm{Fr}_q^*G\arrow[r]\arrow[d,"{\phi}"]\&\mathrm{Fr}_q^*E\arrow[r]\arrow[d,dashed]\&\mathrm{Fr}_q^*F\arrow[r]\arrow[d,"{\phi}"]\&0\\
+0\arrow[r]\&G\arrow[r]\&E\arrow[r]\&F\arrow[r]\&0.
+\end{tikzcd}
+\]
+核由形如 $\bigl(G\oplus F,\left(\begin{smallmatrix}\phi&U\phi\\0&\phi\end{smallmatrix}\right)\bigr)$ 的\term{extension}{扩张}给出；它的类由 $U$ 模去形如 $\phi\,\mathrm{Fr}_q^*(V)\phi^{-1}-V$ 的元素确定，其中 $V:F\to G$。
+本来可以比较这两条\term{exact-sequence}{正合列}。这里不做这一步，而只利用它们表明 $\Ext^1(F_0,G_0)$ 与 $\Ext^1((F,\phi),(G,\phi))$ 维数相同。\term{fully-faithful}{全忠实}性保证
+\[
+\Ext^1(F_0,G_0)\longrightarrow\Ext^1((F,\phi),(G,\phi))
+\]
+为单射，所以这实际上是双射，\term{essential-image}{本质像}因而对\term{extension}{扩张}封闭。对\term{subquotient}{子商}的封闭性来自下述引理。
+
+\par\medskip\noindent\textbf{引理5.1.3。} 对 $X_0$ 的每个子\term{scheme}{概形} $Y_0$，设 $P(Y_0)$ 是二元组 $(F,\phi)$（$F$ 是 $Y$ 上的\term{perverse-sheaf}{反常层}，$\phi:\mathrm{Fr}_q^*F\xrightarrow{\sim}F$）所成范畴的一个全子范畴，并对核、余核及\term{extension}{扩张}封闭。
+\SourcePage{132}
+假设：
+\begin{enumerate}[label=(\alph*)]
+\item 对开浸入 $j:Y_0\hookrightarrow Z_0$，这些范畴在 ${}^pj_!$、${}^pj_*$（因而也在 ${}^pj_{!*}$）及 ${}^pj^*$ 下封闭。
+\item 对闭浸入 $i:Y_0\hookrightarrow Z_0$，$i_*$ 给出 $P(Y_0)$ 与 $P(Z_0)$ 中\term{support}{支撑}在 $Y_0$ 上的对象构成的子范畴之间的\term{equivalence}{等价}。
+\item 若 $Y_0$ \term{smooth}{光滑}且\term{pure}{纯}维数为 $d$，$F$ 形如 $L[d]$，其中 $L$ \term{smooth}{光滑}，则对 $L$ 的每个在 $\phi$ 下稳定的\term{smooth}{光滑}\term{subquotient}{子商} $L'$，$(L'[d],\phi)$ 都属于 $P(Y_0)$。
+\end{enumerate}
+那么各个 $P(Y_0)$ 都对\term{subquotient}{子商}封闭。
+
+我们对 $\overline Y_0$ 作\term{noetherian}{诺特}归纳，证明 $P(Y_0)$ 对子对象和商对象封闭。设 $B\in P(Y_0)$，$A$ 是 $B$ 的子对象。须证明 $A\in P(Y_0)$；随后由对余核的封闭性可知 $B/A\in P(Y_0)$。
+可以假设 $Y_0\ne\varnothing$。此时 $Y_0$ 有一个非空开子\term{scheme}{概形} $j:U_0\hookrightarrow Y_0$，它\term{smooth}{光滑}且\term{pure}{纯}维数为某个 $d$，并且 $B,A$ 在其上的限制都形如 $(L[d],\phi)$，其中 $L$ \term{smooth}{光滑}。由（a）、（c），${}^pj_!j^*A$ 及 ${}^pj_*j^*(B/A)$ 属于 $P(Y_0)$，因而
+\[
+I=\im({}^pj_!j^*A\to A\hookrightarrow B),\qquad
+J=\Ker(B\to{}^pj_*j^*(B/A))
+\]
+也属于 $P(Y_0)$。有 $I\subset A\subset J\subset B$，而 $J/I$ 的\term{support}{支撑}包含在 $Z_0=Y_0-U_0$ 中。由（b）及应用于 $Z_0$ 的归纳假设，$J/I$ 的子对象 $A/I$ 属于 $P(Y_0)$；$A$ 是 $A/I$ 被 $I$ 的\term{extension}{扩张}，所以也属于 $P(Y_0)$。
+
+\par\medskip\noindent\textbf{注5.1.4。} 假如对 $X_0$ 的每个子\term{scheme}{概形} $Y_0$，给定 $Y_0$ 上\term{perverse-sheaf}{反常层}范畴的一个全子范畴 $P(Y_0)$，而这些子范畴满足5.1.3中的条件，那么各个 $P(Y_0)$ 都对\term{subquotient}{子商}封闭。同样的证明仍然适用，也可以由5.1.2、5.1.3推出。在这种形式下，只要\term{perverse-sheaf}{反常层}有定义（参见2.2.12），结论就对任意基域成立，而且适用于2.2.1中的任意\term{perversity}{反常度}，而不只限于 $p_{1/2}$。
+
+\par\medskip\noindent\textbf{5.1.5.} 回顾（[1] 1.2.1、1.2.2），$X_0$ 上的 $\overline\Q_\ell$-\term{sheaf}{层} $F_0$
+\SourcePage{133}
+称为\term{pointwise-pure}{逐点纯}的、\term{weight}{权}为 $w$（$w\in\Z$）的\term{sheaf}{层}，如果对每个 $n$ 及 $\mathrm{Fr}_{q^n}:=\mathrm{Fr}_q^n$ 的每个不动点 $x\in X_0(\F)$（即每个 $x\in X_0(\F_{q^n})$），自同构 $F_{q^n}^*$ 在 $F_x$ 上的特征值都是代数数，且其所有复共轭的绝对值均为 $(q^n)^{w/2}$。再回顾（[1] 1.2.2），若 $F_0$ 有一个有限\term{filtration}{滤过}，其各相继商都\term{pointwise-pure}{逐点纯}，就称 $F_0$ 为\term{mixed}{混合}\term{sheaf}{层}。其中非零相继商的\term{weight}{权}称为 $F_0$ 的逐点\term{weight}{权}。
+\term{mixed}{混合}\term{complex}{复形}范畴 $\D_m^b(X_0,\overline\Q_\ell)$ 定义为 $\D_c^b(X_0,\overline\Q_\ell)$ 中由\term{cohomology}{上同调}\term{sheaf}{层} $H^iK$ 均为\term{mixed}{混合}\term{sheaf}{层}的对象 $K$ 构成的子范畴。
+
+\par\medskip\noindent\textbf{5.1.6.} 由[1] 6.1，$\D_c^b(X_0,\overline\Q_\ell)$ 的三角子范畴 $\D_m^b(X_0,\overline\Q_\ell)$ 在所有通常运算下封闭：$Rf_*,Rf_!,f^*,Rf^!,\otimes,R\mathcal Hom$、Verdier \term{duality}{对偶}，以及适当意义下的\term{vanishing-cycles}{消失轮换}。由于\term{mixed}{混合}性可以在\term{cohomology}{上同调}\term{sheaf}{层}上检验，它在 $\tau_{\le i}$ 与 $\tau_{\ge i}$ 下也封闭。对于任意\term{perversity}{反常度} $p$，构造 ${}^p\tau_{\le i}$ 和 ${}^p\tau_{\ge i}$ 时，只用到了这些运算。
+
+\par\medskip\noindent\textbf{封闭性5.1.7。} （i）$\D_c^b(X_0,\overline\Q_\ell)$ 上由\term{perversity}{反常度} $p_{1/2}$ 定义的 \term{t-structure}{$t$-结构}，在 $\D_m^b(X_0,\overline\Q_\ell)$ 上诱导一个 \term{t-structure}{$t$-结构}。
+
+（ii）\term{mixed}{混合}\term{perverse-sheaf}{反常层}的任意\term{subquotient}{子商}仍然是\term{mixed}{混合}的。
+
+断言（i）来自5.1.6：$\D_m^b$ 在 ${}^p\tau_{\le i}$、${}^p\tau_{\ge i}$ 下封闭。这表明\term{mixed}{混合}\term{perverse-sheaf}{反常层}构成全体\term{perverse-sheaf}{反常层}范畴的一个阿贝尔全子范畴，并对核、余核及\term{extension}{扩张}封闭。由5.1.6，5.1.3的各项假设均成立，故断言（ii）由5.1.4得出。
+以下我们只考虑\term{mixed}{混合}\term{complex}{复形}；除非刻意构造，否则也不会遇到其他\term{complex}{复形}。
+
+\par\medskip\noindent\textbf{5.1.8.} 对 $K\in\D_m^b(X_0,\overline\Q_\ell)$，若每个 $i$ 都满足 $H^iK$ 的逐点\term{weight}{权} $\le w+i$，就称 $K$ 的\term{weight}{权} $\le w$。相应子范畴记作 $\D_{\le w}^b(X_0,\overline\Q_\ell)$。注意定义中随 $i$ 发生的偏移；其理由是下面将引用的[1] 6.2.3。由此得到
+\SourcePage{134}
+\[
+(\D_{\le w}^b)[1]=\D_{\le w+1}^b
+\]
+（特别地，$\D_{\le w}^b[1]\supset\D_{\le w}^b$，这里的包含方向与 \term{t-structure}{$t$-结构}公理1.3.1（ii）中的方向相反）。
+若 $K$ 的 Verdier \term{duality}{对偶} $DK$ 的\term{weight}{权} $\le-w$，就称 $K$ 的\term{weight}{权} $\ge w$；相应子范畴记作 $\D_{\ge w}^b(X_0,\overline\Q_\ell)$。若 $K$ 同时满足\term{weight}{权} $\le w$ 与\term{weight}{权} $\ge w$，就称它是\term{weight}{权}为 $w$ 的\term{pure}{纯}\term{complex}{复形}。如果 $X_0$ \term{smooth}{光滑}且\term{pure}{纯}维数为 $d$，而各 $\overline\Q_\ell$-\term{sheaf}{层} $H^iK$ 都\term{smooth}{光滑}，则
+\[
+H^iDK=(H^{-2d-i}K)^\vee(d),
+\]
+因此 $K$ \term{pure}{纯}且\term{weight}{权}为 $w$，当且仅当每个 $H^iK$ 都\term{pointwise-pure}{逐点纯}且\term{weight}{权}为 $w+i$。
+由下面的5.1.15（iii），$\D_{\le w}^b\cap\D_{\ge w+1}^b$ 只包含零对象（把 $K$ 的恒等映射看成 $K$ 到 $K[-1]$ 的次数为 $1$ 的态射，再应用5.1.15（iii））。
+
+\par\medskip\noindent\textbf{命题5.1.9。} 设 $K\in\D_m^b(X_0,\overline\Q_\ell)$。$K$ 的\term{weight}{权} $\le w$（分别为 $\ge w$），当且仅当对每个闭点 $x_0$，以 $i$ 表示它到 $X_0$ 的嵌入，都有 $i^*K$ 的\term{weight}{权} $\le w$（分别为 $i^!K$ 的\term{weight}{权} $\ge w$）。
+
+第一个断言是显然的，第二个是它的\term{duality}{对偶}。
+
+\par\medskip\noindent\textbf{注5.1.10。} 若 $X_1$ 由 $X_0$ 将标量从 $\F_q$ \term{extension}{扩张}到 $\F_{q^n}$ 得到，$K_1$ 是 $K_0$ 在 $X_1$ 上的\term{inverse-image}{逆像}，则 $K_1$ \term{mixed}{混合}（分别再满足\term{weight}{权} $\le w$、$\ge w$），当且仅当 $K_0$ 如此。因此，要讨论\term{weight}{权}，只须给定 $(X,K)$，并能在 $n$ 具有充分可除性时，把定义域下降至 $\F_{q^n}$。
+
+\par\medskip\noindent\textbf{注5.1.11。} $\Spec(\F_q)$ 上\term{constructible}{可构造} $\overline\Q_\ell$-\term{sheaf}{层}在 $\F$ 处的纤维，通过结构搬运带有 $\Gal(\F/\F_q)$ 的作用。这一构造给出范畴\term{equivalence}{等价}
+\[
+\begin{gathered}
+\{\Spec(\F_q)\text{ 上的\term{constructible}{可构造} }\overline\Q_\ell\text{-\term{sheaf}{层}}\}\\
+\xrightarrow{\sim}\{\text{带有 }\Gal(\F/\F_q)\text{ 的连续作用的有限维 }\overline\Q_\ell\text{-向量空间}\}.
+\end{gathered}
+\]
+\term{frobenius}{Frobenius} $F_q^*$ 就是几何 \term{frobenius}{Frobenius} 元素的作用，
+\SourcePage{135}
+即 $F=\varphi^{-1}$，其中 $\varphi:\F\to\F:x\mapsto x^q$ 是算术 \term{frobenius}{Frobenius}。我们将借助这一对应，把有关\term{weight}{权}的术语推广到带有 $\Gal(\F/\F_q)$ 作用的向量空间。
+
+\par\medskip\noindent\textbf{5.1.12.} 可以结合使用5.1.10和5.1.11。例如，给定定义在 $\F_q$ 上的 $(X_0,K_0)$ 及\term{finite-type}{有限型}态射 $u:Y\to X$，谈论 $H^i(Y,K)$ 的\term{weight}{权}就有了意义（记号见4.0.3）：当 $n$ 具有充分可除性时，$u,Y$ 都定义在 $\F_{q^n}$ 上，从而 $H^i(Y,u^*K)$ 带有 $\Gal(\F/\F_{q^n})$ 的作用。把 $u,Y$ 定义在 $\F_{q^n}$ 上的两种方式，在 $m$ 是 $n$ 的一个具有充分可除性的倍数时，都在 $\F_{q^m}$ 上相同。因此得到的两个 Galois 作用在有限指数子群 $\Gal(\F/\F_{q^m})\subset\Gal(\F/\F_{q^n})$ 上相同。\term{weight}{权}只依赖于这个限制。
+
+\par\medskip\noindent\textbf{5.1.13.} 文献[1]的主要定理（[1] 3.3.1、6.2.3）指出，若 $f:X_0\to Y_0$ 是 $\F_q$ 上\term{finite-type}{有限型}\term{scheme}{概形}的分离态射，则 $Rf_!$ 把 $\D_{\le w}^b(X_0,\overline\Q_\ell)$ 映入 $\D_{\le w}^b(Y_0,\overline\Q_\ell)$。显然，$f^*$ 保持 $\D_{\le w}^b$，而 $\otimes$ 把 $\D_{\le w}^b,\D_{\le w'}^b$ 映入 $\D_{\le w+w'}^b$。结合\term{duality}{对偶}，得到下面的封闭性表（以 $f_!,f^!$ 代表 $Rf_!,Rf^!$）。
+
+\par\medskip\noindent\textbf{封闭性5.1.14。}
+\begin{align*}
+\text{（i）}\quad &f_!,\ f^*\text{ 保持 }\D_{\le w}^b;\\
+\text{（i${}^*$）}\quad &f^!,\ f_*\text{ 保持 }\D_{\ge w}^b;\\
+\text{（ii）}\quad &\otimes:\D_{\le w}^b\times\D_{\le w'}^b\longrightarrow\D_{\le w+w'}^b;\\
+\text{（ii${}^*$）}\quad &R\mathcal Hom:\D_{\le w}^b\times\D_{\ge w'}^b\longrightarrow\D_{\ge-w+w'}^b;\\
+\text{（iii）}\quad &D\text{ 交换 }\D_{\le w}^b\text{ 与 }\D_{\ge-w}^b.
+\end{align*}
+由（i${}^*$）、（ii），\term{external-tensor-product}{外张量积}
+\[
+\boxtimes:=\operatorname{pr}_1^*\otimes\operatorname{pr}_2^*:
+\D_m^b(X_0,\overline\Q_\ell)\times\D_m^b(Y_0,\overline\Q_\ell)
+\longrightarrow\D_m^b(X_0\times Y_0,\overline\Q_\ell)
+\]
+把 $\D_{\le w}^b\times\D_{\le w'}^b$ 映入 $\D_{\le w+w'}^b$。借助5.1.9，容易验证如下逆向结论：
+\begin{equation*}
+\begin{split}
+\inf\{w\mid K_0\boxtimes L_0\in\D_{\le w}^b\}
+={}&\inf\{w'\mid K_0\in\D_{\le w'}^b\}\\
+&+\inf\{w''\mid L_0\in\D_{\le w''}^b\}.
+\end{split}\tag{5.1.14.1}
+\end{equation*}
+已知 $\boxtimes$ 与\term{duality}{对偶}可交换：SGA 5 III 1.1.7 表明
+\SourcePage{136}
+$X_0\times Y_0$ 的\term{dualizing-complex}{对偶化复形}是 $X_0$、$Y_0$ 各自的\term{dualizing-complex}{对偶化复形}的\term{external-tensor-product}{外张量积}，而 SGA 5 III 2.2.4（$R\mathcal Hom$ 与 $\boxtimes$ 的可交换性）由此推出它与\term{duality}{对偶}的可交换性。对（5.1.14.1）取\term{duality}{对偶}，得到
+\begin{equation*}
+\begin{split}
+\sup\{w\mid K_0\boxtimes L_0\in\D_{\ge w}^b\}
+={}&\sup\{w'\mid K_0\in\D_{\ge w'}^b\}\\
+&+\sup\{w''\mid L_0\in\D_{\ge w''}^b\}.
+\end{split}\tag{5.1.14.1$^*$}
+\end{equation*}
+
+\par\medskip\noindent\textbf{命题5.1.15。} 设 $K_0,L_0\in\D_m^b(X_0,\overline\Q_\ell)$。假定存在整数 $w$，使 $K_0\in\D_{\le w}^b$ 而 $L_0\in\D_{>w}^b$。则：
+
+（i）$Ra_*R\mathcal Hom(K_0,L_0)\in\D_{>0}^b(\Spec(\F_q))$；
+
+（ii）$i>0$ 时，$\Hom^i(K_0,L_0)=0$。
+
+若 $K_0\in\D_{\le w}^b$ 而 $L_0\in\D_{\ge w}^b$，从而 $Ra_*R\mathcal Hom(K_0,L_0)\in\D_{\ge0}^b$，则还有：
+
+（iii）$i>0$ 时，$\Hom^i(K,L)^F=0$。特别地，$i>0$ 时，态射 $\Hom^i(K_0,L_0)\to\Hom^i(K,L)$ 为零。
+
+断言（i）来自5.1.14。它表明 $\Hom^i(K,L)$ 的\term{weight}{权} $>i$，因此当 $i\ge0$ 时，其\term{weight}{权} $>0$。于是 $i\ge0$ 时，$\Hom^i(K,L)^F=\Hom^i(K,L)_F=0$，再应用（5.1.2.5）即可。（iii）同理。
+
+\section*{5.2. 一个逆命题}
+\addcontentsline{toc}{section}{5.2. 一个逆命题}
+\par\medskip\noindent\textbf{定理5.2.1。} $X_0$ 上的\term{mixed}{混合}\term{perverse-sheaf}{反常层} $F_0$ 的\term{weight}{权} $\ge w$，当且仅当对每个在 $X_0$ 上\term{etale}{平展}的\term{affine}{仿射}\term{scheme}{概形} $U_0$，$H^0(U,F)$（记号见4.0.3）的\term{weight}{权}都 $\ge w$。
+
+必要性来自（5.1.14.1${}^*$）：若 $u:U_0\to X_0$ \term{etale}{平展}，$a$ 是到 $\Spec(\F_q)$ 的投影，则 $u^!=u^*$ 与 $a_*$ 都保持 $\D_{\ge w}^b$。下面证明充分性。首先，这一条件意味着：对\term{affine}{仿射}\term{etale}{平展}态射 $u:U\to X$，$H^0(U,F)$ 的\term{weight}{权} $\ge w$（按5.1.12的意义理解）。事实上，$U,u$ 定义在某个合适的 $\F_{q^n}$ 上：$U=U_1\otimes_{\F_{q^n}}\F$。把 $U_1$ 的标量按 Grothendieck 的意义从 $\F_{q^n}$ 限制到 $\F_q$，得到 $\F_q$ 上的\term{scheme}{概形} $V_0$，即复合
+\[
+U_1\longrightarrow\Spec(\F_{q^n})\longrightarrow\Spec(\F_q).
+\]
+有态射 $v_0:V_0\to X_0$，而 $V_0$ \term{extension}{扩张}标量到 $\F_{q^n}$ 后得到的 $V_1$，是 $U_1$ 的所有 $\Gal(\F_{q^n}/\F_q)$-共轭的和。特别地，$H^0(U,u^*F)$ 连同
+\SourcePage{137}
+$\Gal(\F/\F_{q^n})$ 的作用，是 $H^0(V,v^*F)$ 的一个直和因子。
+
+\par\medskip\noindent\textbf{5.2.2. $X_0$ \term{smooth}{光滑}、连通且维数为 $1$ 时的证明。}
+把 $F_0$ 写成单\term{perverse-sheaf}{反常层}的相继\term{extension}{扩张}：$F_0$ 有一个有限递减\term{filtration}{滤过} $F$，每个 $\gr_F^p$ 均属于下列两种类型之一：
+
+（a）形如 $({}^0j_*L_0)[1]$，其中 $L_0$ 是某个稠密开集 $j:Y_0\hookrightarrow X_0$ 上的不可约\term{smooth}{光滑}\term{sheaf}{层}；此时 $({}^0j_*L_0)[1]=j_{!*}(L_0[1])$。
+
+（b）\term{support}{支撑}为点的不可约\term{sheaf}{层}。
+
+（a）、（b）两类\term{sheaf}{层}都是\term{mixed}{混合}的；（a）中的 $L_0$ 由于不可约，甚至是\term{pure}{纯}的（至少可在缩小开集后如此，参见5.1.8）。由[1]例6.2.5（c），${}^0j_*L_0[1]=j_{!*}(L_0[1])$ 也是\term{pure}{纯}的，且\term{weight}{权}相同。同样，（b）中的点\term{support}{支撑}\term{sheaf}{层}由于不可约，也是\term{pure}{纯}的。
+\term{filtration}{滤过} $F$ 给出\term{spectral-sequence}{谱序列}
+\[
+E_1^{pq}=H^{p+q}(U,\gr_F^pF)\Longrightarrow H^{p+q}(U,F).
+\]
+这里的 $H^i$ 在 $i\ne-1,0$ 时为零。若 $r$ 是 $H^{-1}F$ 在一般点处的秩（即上述（a）中各\term{smooth}{光滑}\term{sheaf}{层} $L_0$ 的秩之和），则在 $U$ 连通时有
+\[
+\sum_p\dim H^{-1}(U,\gr_F^pF)\le r.
+\]
+因此，无论 $U$ 是怎样的连通\term{affine}{仿射}\term{scheme}{概形}，只要它在 $X$ 上\term{etale}{平展}，每个 $H^0(U,\gr_F^pF)$ 都有一个自然商：所除去的子空间维数 $\le r$，所得商是 $H^0(U,F)$ 的\term{subquotient}{子商}，因而\term{weight}{权} $\ge w$。
+若 $\gr_F^pF_0$ 的\term{support}{支撑}是闭点 $x_0$，取 $U$ 使得对 $x_0$ 上方的 $x\in X$ 有 $|u^{-1}(x)|>r$。此时 $H^0(U,\gr_F^pF)$ 包含 $|u^{-1}(x)|$ 个 $(\gr_F^pF)_x$ 的直和。因为 $|u^{-1}(x)|>r$，其中一个副本单射地映入上述\term{weight}{权} $\ge w$ 的商，所以 $\gr_F^pF_0$ 本身的\term{weight}{权}也
+\SourcePage{138}
+$\ge w$。
+设 $\overline X_0$ 是以 $X_0$ 为稠密开集的\term{smooth}{光滑}连通射影曲线；同样，对 $X$ 上的连通\term{affine}{仿射}\term{etale}{平展}态射 $u:U\to X$，以 $\overline U$ 表示 $U$ 的射影完备化。为研究（a）型的 $\gr_F^pF_0$，取 $U$ 在 $Y\subset X$ 上。设 $k:U\hookrightarrow\overline U$ 为嵌入。有
+\[
+H^1(\overline U,{}^0k_*u^*L)\hookrightarrow H^1(U,u^*L),
+\]
+所以 $H^1(\overline U,{}^0k_*u^*L)=H^0(\overline U,k_{!*}u^*L[1])$ 有一个商，所除去的子空间维数 $\le r$，且这个商的\term{weight}{权} $\ge w$。另一方面，这个 $H^0$ 是\term{pure}{纯}的，其\term{weight}{权}等于 $L_0[1]$ 的\term{weight}{权}（[1] 3.2.3）。对合适的 $U$，例如取 $\overline U$ 的亏格 $g$ 满足 $2g-2>r$，该空间维数 $>r$（应用4.5.1中引用的 Euler--Poincaré 公式），因而 $L_0[1]$ 的\term{weight}{权} $\ge w$。这就完成了 $X_0$ \term{smooth}{光滑}、连通且维数为 $1$ 时的证明。
+
+\par\medskip\noindent\textbf{注5.2.3。} 从 $F$ 转到 $\gr_F^pF$ 的论证可形式化如下。设 $S$ 为由 $u:U\to X$ 构成的范畴，其中 $U$ \term{affine}{仿射}且连通，$u$ \term{etale}{平展}。对 $X$ 上每个\term{perverse-sheaf}{反常层} $F$，令 $\int F$ 为 $S$ 上的预\term{sheaf}{层} $U\mapsto H^0(U,F)$。再令 $N$ 为 $S$ 上满足 $\dim h(U)$ 有界的 $\overline\Q_\ell$-向量空间预\term{sheaf}{层} $h$ 构成的范畴。它是 $S$ 上 $\overline\Q_\ell$-向量空间预\term{sheaf}{层}范畴 $\operatorname{pf}(S)$ 的\term{thick-subcategory}{厚子范畴}。在这些记号下，若 $X$ \term{smooth}{光滑}且维数 $\le1$，则函子 $F\mapsto\int F\pmod N$ 是\term{exact-functor}{正合函子}
+\[
+\{X\text{ 上的\term{perverse-sheaf}{反常层}}\}\longrightarrow\operatorname{pf}(S)/N.
+\]
+
+\par\medskip\noindent\textbf{注5.2.4。} 5.2.2的证明方法还能证明下述结论。设 $F_0$ 是 $X_0$ 上的\term{mixed}{混合}\term{perverse-sheaf}{反常层}，$X_0$ \term{smooth}{光滑}、连通且维数为 $1$。假设对每个 $U$ \term{affine}{仿射}且连通的\term{etale}{平展}态射 $u:U\to X$，$H^0(U,F)$ 中\term{weight}{权} $<w$ 的子空间 $W^{w-1}H^0(U,F)$ 的维数为 $o(\deg(U/X))$。则 $F_0$ 的\term{weight}{权} $\ge w$。为说明这一点，只须在5.2.2的证明末尾这样选取 $U$：先取 $U_1$ 使 $\overline U_1$ 的亏格 $>1$，再取 $U$ 为 $U_1$ 的一个覆盖，且它可延拓为 $\overline U_1$ 的\term{etale}{平展}覆盖。
+\SourcePage{139}
+\par\medskip\noindent\textbf{5.2.5.} 假设“对每个在 $X_0$ 上\term{etale}{平展}的\term{affine}{仿射}\term{scheme}{概形} $U_0$，$H^0(U,F)$ 的\term{weight}{权} $\ge w$”可从 $X_0$ 传递到其上\term{etale}{平展}的 $V_0$。它也从 $F_0$ 传递到 $F_0$ 的任何商 $F'_0$，因为函子 $H^0(U,-)$ 右正合（4.1.1）。若 $\varphi:X_0\to Y_0$ 是\term{affine}{仿射}态射，它还可从 $(X_0,F_0)$ 传递到 $(Y_0,{}^p\varphi_*F_0)$，其中 ${}^p\varphi_*F_0={}^pH^0\varphi_*F_0$。事实上，对 $Y_0$ 上的每个\term{affine}{仿射}\term{etale}{平展}\term{scheme}{概形} $V_0$，令 $U_0=X_0\times_{Y_0}V_0$，则有（参见4.1.2下面的注，取 $U_0\to V_0\to\text{点}$）
+\[
+H^0(V,{}^p\varphi_*F_0)=H^0(U,F_0).
+\]
+至于结论“$F_0$ 的\term{weight}{权} $\ge w$”，只须局部检验（可用\term{etale}{平展}拓扑，而这里 Zariski 拓扑就够了）。若 $\varphi:X_0\to Y_0$ 为有限态射（这里闭浸入就够了），则结论对 $(X_0,F_0)$ 成立，当且仅当它对 $(Y_0,\varphi_*F_0)$ 成立。
+由此可推出只须在 $X_0$ 是\term{affine}{仿射}空间 $\mathbb A_0^n$ 时证明5.2.1，这一步留给读者。我们对 $n$ 归纳。$n=0$ 显然，$n=1$ 已在5.2.2中处理。
+
+\par\medskip\noindent\textbf{5.2.6.} 先证明：若 $G_0$ 是 $F_0$ 的一个点\term{support}{支撑}子\term{sheaf}{层}，则其\term{weight}{权} $\ge w$。\term{extension}{扩张}标量后，可设 $G_0$ 的\term{support}{支撑}只有 $\{0\}$。取覆盖 $0$ 的\term{etale}{平展}态射 $u:U\to\mathbb A^1$，其中 $U$ \term{smooth}{光滑}且连通，其\term{smooth}{光滑}射影完备化 $\overline U$ 的亏格 $>1$。取 $\overline U$ 的一族连通\term{etale}{平展}覆盖 $\overline U_\alpha$，其次数 $d_\alpha$ 趋于无穷；以 $U_\alpha$ 表示 $U$ 在 $\overline U_\alpha$ 中的\term{inverse-image}{逆像}。有 $U_\alpha^n\to\mathbb A^n$，并且已知（4.5.4）
+\[
+\dim H^{-1}(U_\alpha^n,F/G)\le O(d_\alpha^{n-1}).
+\]
+由于 $H^0(U_\alpha^n,G)$ 是 $G$ 在 $0$ 处的纤维的 $(|u^{-1}(0)|\cdot d_\alpha)^n$ 个副本之和，\term{exact-sequence}{正合列}
+\[
+H^{-1}(U_\alpha^n,F/G)\longrightarrow H^0(U_\alpha^n,G)\longrightarrow H^0(U_\alpha^n,F)
+\]
+表明 $d_\alpha$ 充分大时，至少有一个这样的副本单射地映入
+\SourcePage{140}
+$H^0(U_\alpha^n,F)$，结论随即得出。
+
+\par\medskip\noindent\textbf{5.2.7.} 再证明：若 $F$ 没有非零的点\term{support}{支撑}反常子\term{sheaf}{层}，则 $F_0$ 的\term{weight}{权} $\ge w$。设 $x$ 是 $\mathbb A^n$ 的一个闭点，$i_x:x\hookrightarrow\mathbb A^n$ 为嵌入。由5.1.9，只须证明 $i_x^!F$ 的\term{weight}{权} $\ge w$。取经过 $x$ 的超平面 $H$。若 $H$ 充分一般，它不包含 $F$ 的任何单反常子\term{sheaf}{层}的\term{support}{支撑}（这类子\term{sheaf}{层}只有有限多个同构类）。因此，若 $u:H\hookrightarrow\mathbb A^n$ 为嵌入，则 ${}^pu^!F=0$。由于 $H$ 是一个除子，当 $i\ne0,1$ 时 ${}^pH^iu^!F=0$（4.1.11（ii））。这里于是有 $i\ne1$ 时 ${}^pH^iu^!F=0$，即 $u^!F[1]$ 是\term{perverse-sheaf}{反常层}。
+变换坐标后（必要时将 $\F_q$ 换成一个有限\term{extension}{扩张}），可设 $H_0=\mathbb A_0^{n-1}\times\{0\}\subset\mathbb A_0^n$。令 $\operatorname{pr}$ 为到最后一个因子的投影：
+\[
+\begin{tikzcd}[ampersand replacement=\&]
+x\arrow[r]\&H_0\arrow[r,hook,"{u}"]\arrow[d]\&\mathbb A_0^n\arrow[d,"{\operatorname{pr}}"]\\
+\&\{0\}\arrow[r,hook]\&\mathbb A_0^1.
+\end{tikzcd}
+\]
+以 $i_{x,H}$ 表示 $x$ 到 $H$ 的嵌入，则 $i_x^!=i_{x,H}^!u^!$。所以只须证明 $u^!F_0$ 的\term{weight}{权} $\ge w$。对 $u^!F_0[1]$ 及 $H_0\simeq\mathbb A_0^{n-1}$ 应用归纳假设；所需验证的是：对每个在 $\mathbb A_0^{n-1}$ 上\term{etale}{平展}的\term{affine}{仿射}\term{scheme}{概形} $V_0$，$H^1(V,u^!F)$ 的\term{weight}{权} $\ge w+1$。
+令 $U_0=V_0\times\mathbb A_0^1$，有笛卡尔方块
+\[
+\begin{tikzcd}[ampersand replacement=\&]
+V_0\arrow[r,hook,"{v}"]\arrow[d,"{p}"]\&U_0\arrow[d,"{\operatorname{pr}}"]\\
+\{0\}\arrow[r,hook,"{i}"]\&\mathbb A_0^1.
+\end{tikzcd}
+\]
+仍以 $F_0$ 表示 $F_0$ 在 $U_0$ 上的\term{inverse-image}{逆像}，则 $v^!F_0$ 是 $u^!F_0$ 在 $V_0$ 上的\term{inverse-image}{逆像}；$v^!F_0[1]$ 为\term{perverse-sheaf}{反常层}，而须证明的是 $H^1(V,v^!F)$ 的\term{weight}{权} $\ge w+1$。
+\SourcePage{141}
+有 $i^!\operatorname{pr}_*=p_*v^!$。将其改写为 $i^![1]\circ\operatorname{pr}_*=p_*\circ v^![1]$。这时各函子均右 \term{t-exact}{$t$-正合}（4.1.11（ii）及4.1.1），取 $H^0$（1.3.17（iii））得到
+\begin{equation*}
+H^0(V,v^!F[1])=H^0\bigl(i^!({}^p\operatorname{pr}_*F)[1]\bigr).\tag{5.2.7.1}
+\end{equation*}
+因为 $\mathbb A_0^1$ 上的 ${}^p\operatorname{pr}_*F_0$ 仍满足定理的假设（5.2.5），由5.2.2可知 ${}^p\operatorname{pr}_*F$ 的\term{weight}{权} $\ge w$。所以（5.2.7.1）右端的\term{weight}{权} $\ge w+1$，$H^1(V,v^!F)$ 亦然。
+
+\par\medskip\noindent\textbf{5.2.8. 定理5.2.1证明的完成。} 设 $G$ 是 $F$ 中\term{support}{支撑}维数为 $0$ 的最大反常子\term{sheaf}{层}。它在 $F_q^*$ 下稳定，所以来自 $F_0$ 的一个反常子\term{sheaf}{层} $G_0$。由5.2.7与5.2.5，$F_0/G_0$ 的\term{weight}{权} $\ge w$；由5.2.6，$G_0$ 的\term{weight}{权} $\ge w$。作为 $F_0/G_0$ 被 $G_0$ 的\term{extension}{扩张}，\term{perverse-sheaf}{反常层} $F_0$ 的\term{weight}{权}也 $\ge w$。
+
+\section*{5.3. 权滤过}
+\addcontentsline{toc}{section}{5.3. 权滤过}
+\par\medskip\noindent\textbf{命题5.3.1。} 若 $X_0$ 上的\term{perverse-sheaf}{反常层} $F_0$ \term{mixed}{混合}且\term{weight}{权} $\ge w$（分别为 $\le w$），则 $F_0$ 的任意\term{subquotient}{子商}仍然\term{mixed}{混合}且\term{weight}{权} $\ge w$（分别为 $\le w$）。
+
+通过扭转，可归结为 $w=0$ 的情形。设 $F_0$ 的\term{weight}{权} $\ge0$。若 $G_0$ 是 $F_0$ 的商，则对每个 $X_0$ 上的\term{affine}{仿射}\term{etale}{平展}\term{scheme}{概形} $U_0$，$H^0(U,G)$ 是 $H^0(U,F)$ 的商，因此\term{weight}{权} $\ge0$；再应用5.2.1即可。若 $G_0$ 是 $F_0$ 的反常子\term{sheaf}{层}，\term{exact-sequence}{正合列}
+\[
+H^{-1}(U,F/G)\longrightarrow H^0(U,G)\longrightarrow H^0(U,F)
+\]
+同样表明 $G_0$ 的\term{weight}{权} $\ge-1$。转到 $X_0\times X_0$ 可改进这一估计：$G_0\boxtimes G_0$ 是 $F_0\boxtimes F_0$ 的子\term{sheaf}{层}，所以\term{weight}{权} $\ge-1$；由（5.1.14.1${}^*$），$G_0$ 的\term{weight}{权} $\ge-1/2$。\term{weight}{权}都是整数，因此其\term{weight}{权}实际上 $\ge0$。
+\SourcePage{142}
+括号中的相应断言由\term{duality}{对偶}得到。
+
+\par\medskip\noindent\textbf{推论5.3.2。} 设 $j:U_0\hookrightarrow X_0$ 是\term{affine}{仿射}浸入。若 $F_0$ 是 $U_0$ 上\term{weight}{权} $\le w$（分别为 $\ge w$）的\term{mixed}{混合}\term{perverse-sheaf}{反常层}，则\term{perverse-sheaf}{反常层} $j_{!*}F_0$ 仍然\term{mixed}{混合}且\term{weight}{权} $\le w$（分别为 $\ge w$）。特别地，若 $F_0$ \term{pure}{纯}，则 $j_{!*}F_0$ 也\term{pure}{纯}，且\term{weight}{权}相同。
+
+\par\noindent\textbf{第一种证明。} 设 $F_0$ 的\term{weight}{权} $\le w$。因 $j$ \term{affine}{仿射}，$j_!F_0$ 是\term{perverse-sheaf}{反常层}（4.1.3），且\term{weight}{权} $\le w$（5.1.14（i））。由5.3.1，作为 $j_!F_0$ 的商，\term{perverse-sheaf}{反常层} $j_{!*}F_0$ 的\term{weight}{权} $\le w$。再结合\term{duality}{对偶}，即证得5.3.2。
+
+\par\noindent\textbf{第二种证明。} 下面的另一种证明，还把5.3.2推广到浸入不一定\term{affine}{仿射}的情形。只须证明若 $F_0$ 的\term{weight}{权} $\ge w$，则 $j_{!*}F_0$ 亦然。此外，只须处理开浸入的情形。
+
+（a）\textbf{$X_0-U_0$ 有限时的证明。} 设 $v:V_0\to X_0$ \term{etale}{平展}：
+\[
+\begin{tikzcd}[ampersand replacement=\&]
+v^{-1}(U_0)\arrow[r,hook,"{j}"]\arrow[d,"{v}"]\&V_0\arrow[d,"{v}"]\\
+U_0\arrow[r,hook,"{j}"]\&X_0.
+\end{tikzcd}
+\]
+有 $v^*j_{!*}F_0=j_{!*}v^*F_0={}^0\tau_{\le-1}j_*v^*F_0$，因而
+\[
+H^0(V,v^*j_{!*}F)\hookrightarrow H^0(V,j_*v^*F)=H^0(v^{-1}(U),v^*F).
+\]
+最后这个群的\term{weight}{权} $\ge w$（5.1.14（i${}^*$）），所以逆命题5.2.1表明 $j_{!*}F_0$ 的\term{weight}{权} $\ge w$。
+
+（b）\textbf{化归为（a）（证明略述）。} 问题是局部的，故可设 $X_0$ \term{affine}{仿射}。对其维数归纳。对任一投影 $f:X_0\to\mathbb A_0^1$，存在非空开集 $V_0\subset\mathbb A_0^1$，使对每个闭点 $v_0\in V_0$，在图
+\SourcePage{143}
+\[
+\begin{tikzcd}[ampersand replacement=\&]
+f^{-1}(v_0)\cap U_0\arrow[r,hook,"{i}"]\arrow[d,"{j}"]\&U_0\arrow[d,"{j}"]\\
+f^{-1}(v_0)\arrow[r,hook,"{i}"]\&X_0
+\end{tikzcd}
+\]
+中，$i^*F_0[-1]$ 是\term{perverse-sheaf}{反常层}，且
+\[
+i^*(j_{!*}F_0)[-1]=j_{!*}(i^*F_0[-1]).
+\]
+进一步缩小 $V_0$ 后，还有 $i^*(j_{!*}F_0)[-2](-1)\xrightarrow{\sim}i^!(j_{!*}F_0)$。将归纳假设用于 $f^{-1}(v_0)\cap U_0\hookrightarrow f^{-1}(v_0)$ 及 $i^*F_0[-1]$，便知 $j_{!*}F_0$ 在 $f^{-1}(v_0)$ 上的\term{weight}{权} $\ge w$。这对任意 $f$ 都成立，因而 $j_{!*}F_0$ 在 $X_0$ 的某个有限子集 $Y_0$ 之外\term{weight}{权} $\ge w$，从而归结为（a）的情形。
+
+\par\medskip\noindent\textbf{注5.3.3。} 对任意拟有限态射 $f$，$f_{!*}$ 把\term{weight}{权} $\ge w$（分别为 $\le w$）的\term{perverse-sheaf}{反常层}变成\term{weight}{权} $\ge w$（分别为 $\le w$）的\term{perverse-sheaf}{反常层}，因而把\term{pure}{纯}\term{perverse-sheaf}{反常层}变成相同\term{weight}{权}的\term{pure}{纯}\term{perverse-sheaf}{反常层}。把 $f$ 分解成“有限态射$\circ$开浸入”，即可由5.3.2的第二种证明推出。5.4.3还给出了另一种证明，与5.3.2的第一种证明平行。
+
+\par\medskip\noindent\textbf{推论5.3.4。} 每个\term{mixed}{混合}单\term{perverse-sheaf}{反常层} $F_0$ 都是\term{pure}{纯}的。
+
+存在\term{smooth}{光滑}、连通、维数为 $d$ 的 $U_0$ 及浸入 $j:U_0\hookrightarrow X_0$，并存在 $U_0$ 上的\term{smooth}{光滑}\term{sheaf}{层} $L_0$，使 $F_0=j_{!*}(L_0[d])$（4.3.1）。可以缩小 $U_0$（4.3.2）。由于\term{smooth}{光滑}\term{sheaf}{层} $L_0$ 不可约，由定义可知，能把 $L_0$ 取成\term{pure}{纯}\term{sheaf}{层}（在这里\term{equivalence}{等价}于\term{pointwise-pure}{逐点纯}，见5.1.8）。还可以取 $U_0$ \term{affine}{仿射}，于是应用5.3.2即可。
+
+\par\medskip\noindent\textbf{定理5.3.5。} \term{mixed}{混合}\term{perverse-sheaf}{反常层}有唯一一个有限递增\term{filtration}{滤过} $W$，称为\term{weight-filtration}{权滤过}，使 $\gr_i^WF_0$ \term{pure}{纯}且\term{weight}{权}为 $i$。每个态射 $f:F_0\to G_0$ 都与 $F_0,G_0$ 的\term{weight-filtration}{权滤过}严格相容。
+
+若\term{mixed}{混合}（因而\term{pure}{纯}）的单\term{perverse-sheaf}{反常层} $U_0,V_0$ 的\term{weight}{权}分别为 $u,v$，且 $u>v$，则 $\Ext^1(V_0,U_0)=0$（在5.1.15（ii）中取 $i=1$；回顾 $\Ext^1=\Hom_\D^1$）。设 $S^+$（分别为 $S^-$）是\term{weight}{权}
+\SourcePage{144}
+$>i$（分别为 $\le i$）的\term{mixed}{混合}单\term{perverse-sheaf}{反常层}的同构类集合。把下面的引理应用于 $S^+,S^-$，即可得到 $F_0$ 的子\term{sheaf}{层} $W_iF_0$。结合5.3.1，该引理也给出唯一性及严格函子性。
+
+\par\medskip\noindent\textbf{引理5.3.6。} 设 $A$ 是每个对象均为有限长度的\term{abelian-category}{阿贝尔范畴}。把 $A$ 中\term{simple-object}{单对象}的同构类集合划分为两类 $(S^+,S^-)$，并以 $A^+$（分别为 $A^-$）表示由所有单\term{subquotient}{子商}均在 $S^+$（分别为 $S^-$）中的对象 $X$ 构成的全子范畴。假设对 $U\in S^+,V\in S^-$，都有 $\Ext^1(V,U)=0$。则每个对象 $F\in A$ 都有唯一的子对象 $WF\in A^-$，使 $F/WF\in A^+$。对每个态射 $f:F\to G$，有 $f(WF)=f(F)\cap WG$。
+
+若 $X\in A^+,Y\in A^-$，$\Ext$ 的\term{exact-sequence}{正合列}表明 $\Ext^1(Y,X)=0$。由于 $S^+$ 与 $S^-$ 不交，还有 $\Hom(X,Y)=\Hom(Y,X)=0$。
+对 $F$ 的长度 $\ell$ 归纳，证明 $WF$ 存在。$\ell=0$ 时 $F=0$，结论显然。若 $\ell>0$，取 $F$ 的一个单子对象 $S$。归纳假设适用于 $F/S$，所以存在 $W(F/S)$。设 $E$ 为它在 $F$ 中的\term{inverse-image}{逆像}，这是 $W(F/S)$ 被 $S$ 的\term{extension}{扩张}。若 $S\in S^-$，取 $WF=E$。若 $S\in S^+$，由于 $\Ext^1(W(F/S),S)=0$，\term{extension}{扩张} $E$ 平凡，取 $WF$ 为 $W(F/S)$ 在 $E$ 中的一个提升。
+再证唯一性。若 $F$ 的两个子对象 $W',W''$ 都在 $A^-$ 中，且 $F/W',F/W''$ 都在 $A^+$ 中，则 $\Hom(W',F/W'')=\Hom(W'',F/W')=0$，表明态射 $W'\to F\to F/W''$ 及 $W''\to F\to F/W'$ 均为零，即 $W'=W''$。
+最后，对任意 $f:F\to G$，$f(WF)$ 及 $f(F)\cap WG$ 都满足 $W(f(F))$ 的刻画性质，因此
+\[
+W(f(F))=f(WF)=f(F)\cap WG.
+\]
+
+\par\medskip\noindent\textbf{推论5.3.7。} $X_0$ 上的\term{mixed}{混合}\term{perverse-sheaf}{反常层} $F_0$ 的\term{weight}{权} $\le w$，当且仅当 $X_0$ 的每个不可约子簇 $Y_0$（记其维数为 $d$）都有一个稠密开集 $U_0$，
+\SourcePage{145}
+使 $H^{-d}(F_0)|_{U_0}$ 的逐点\term{weight}{权} $\le w-d$。
+
+\par\noindent\textbf{证明。} 必要性显然。证明充分性：若 $F_0$ 的\term{weight}{权}并非 $\le w$，由5.3.5，它有一个\term{weight}{权}为 $w_1>w$ 的单商 $G_0$。存在\term{smooth}{光滑}、连通、维数为 $d$ 的 $Y_0$ 及浸入 $j:Y_0\hookrightarrow X_0$，还有 $Y_0$ 上的\term{smooth}{光滑}\term{sheaf}{层} $L_0$，使 $G_0\simeq j_{!*}(L_0[d])$。可取 $Y_0$ \term{affine}{仿射}，$L_0$ \term{pointwise-pure}{逐点纯}且\term{weight}{权}为 $w_1-d$。短\term{exact-sequence}{正合列}
+\[
+0\longrightarrow\Ker(F_0\to G_0)\longrightarrow F_0\longrightarrow G_0\longrightarrow0
+\]
+对应的\term{cohomology}{上同调}长\term{exact-sequence}{正合列}，在 $Y_0$ 的某个稠密开集 $V_0$ 上给出满射
+\[
+H^{-d}(F_0)|_{V_0}\twoheadrightarrow H^{-d}(G_0)|_{V_0}=L_0|_{V_0}.
+\]
+假设保证 $V_0$ 充分小时，$H^{-d}(F_0)|_{V_0}$ 的逐点\term{weight}{权} $\le w-d$。所以 $L_0$ 的逐点\term{weight}{权}亦然，从而 $w_1\le w$，矛盾。
+
+\par\medskip\noindent\textbf{定理5.3.8。} 若 $F_0/X_0$ 是\term{pure}{纯}\term{perverse-sheaf}{反常层}，则 $X$ 上的\term{perverse-sheaf}{反常层} $F$ 是单\term{perverse-sheaf}{反常层}的直和。这些单\term{perverse-sheaf}{反常层}因而形如 $j_{!*}L[d]$，其中 $j:U\hookrightarrow X$ 是\term{smooth}{光滑}、连通、\term{pure}{纯}维数为 $d$ 的 $U$ 的嵌入，$L$ 是 $U$ 上不可约的\term{smooth}{光滑} $\overline\Q_\ell$-\term{sheaf}{层}。
+
+照搬[1]（3.4.1（iii））的论证即可。设 $F'$ 是 $F$ 内所有单反常子\term{sheaf}{层}之和；这是 $F$ 的最大\term{semisimple}{半单}子对象，只须验证 $F'=F$。子\term{sheaf}{层} $F'\subset F$ 在 \term{frobenius}{Frobenius} 下稳定，因此来自 $F'_0\subset F_0$（5.1.2）。令 $F''_0=F_0/F'_0$。由于 $F'_0,F''_0$ \term{pure}{纯}且\term{weight}{权}相同（5.3.1），\term{extension}{扩张}
+\[
+0\longrightarrow F'_0\longrightarrow F_0\longrightarrow F''_0\longrightarrow0
+\]
+的类在 $\Ext^1(F'',F')$ 中的像为零（5.1.15（iii））。所以 $F\simeq F'\oplus F''$。若 $F''\ne0$，它就有一个单子对象；该对象可提升到 $F$ 中，与 $F'$ 的最大性矛盾。所以 $F''=0$，$F'=F$。
+设 $E_n$ 为 $\Spec(\F_q)$ 上的 $\overline\Q_\ell$-\term{sheaf}{层}，其纤维为 $\overline\Q_\ell^n$，基为 $(e_i)_{1\le i\le n}$，\term{frobenius}{Frobenius} $F$ 在其上的作用幺幂，
+\SourcePage{146}
+只有一个 Jordan 块：$Fe_n=e_n$，且 $i<n$ 时 $Fe_i=e_i+e_{i+1}$。这是\term{weight}{权}为 $0$ 的不可分解\term{pure}{纯}\term{sheaf}{层}；$n>1$ 时它不是\term{semisimple}{半单}的。仍以 $E_n$ 表示其在 $X_0$ 上的\term{inverse-image}{逆像}。
+
+\par\medskip\noindent\textbf{命题5.3.9。} （i）不可分解的\term{pure}{纯}\term{perverse-sheaf}{反常层}恰好是形如 $S_0\otimes E_n$ 的对象，其中 $S_0$ 为\term{simple-object}{单对象}。
+
+（ii）若 $S_0$ 是\term{simple-object}{单对象}，则存在 $d$ 及 $X_1:=X_0\otimes\F_{q^d}$ 上的 $S_1$，使 $S_0$ 是 $S_1$ 沿 $\pi:X_1\to X_0$ 的\term{direct-image}{正像}，$S_1$ 在 $X$ 上仍为\term{simple-object}{单对象}，并且与它在 $\operatorname{Aut}(\F_{q^d}/\F_q)$ 下的其余各共轭均不同构。
+
+设 $F_0$ 是一个\term{perverse-sheaf}{反常层}，且 $F$ \term{semisimple}{半单}。$F_0$ \term{pure}{纯}时（5.3.8）以及 $F_0$ 为\term{simple-object}{单对象}时，都满足这一条件。设 $A$ 是 $F$ 的单成分的同构类集合，把 $F$ 按等型分量写成 $F=\bigoplus_{a\in A}F_a$。$A$ 的轨道分解给出在 $F_q^*$ 下稳定的 $F$ 的分解，因而给出 $F_0$ 的分解（5.1.2）：
+\[
+F_0=\bigoplus_CF_{0C}\qquad(C\text{ 为 }A\text{ 中的 }\mathrm{Fr}_q^*\text{-轨道}).
+\]
+若 $C$ 有 $d$ 个元素，$a\in C$，则 $F_a\subset F_C\subset F$ 在 $F_{q^d}^*=(F_q^*)^d$ 下稳定，因而给出\term{perverse-sheaf}{反常层} $F_{1C}$ 的一个反常子\term{sheaf}{层} $F_{1a}$，其中 $F_{1C}$ 是 $F_{0C}$ 在 $X_1=X_0\otimes\F_{q^d}$ 上的\term{inverse-image}{逆像}。对投影 $\pi:X_1\to X_0$，有 $F_{0C}\simeq\pi_*F_{1a}$。取同构类为 $a$ 的\term{simple-object}{单对象} $G_a$，并选同构 $\phi:\mathrm{Fr}_{q^d}^*G_a\xrightarrow{\sim}G_a$。由此在
+\[
+V_a:=\Hom(G_a,F_a)=\Hom(G_a,F)
+\]
+上得到 \term{frobenius}{Frobenius} 作用 $F_{q^d}^*$，且同构 $F_a\simeq G_a\otimes V_a$ 与 $F_{q^d}^*$ 作用相容。
+若 $F_0$ 不可分解，则只有一个轨道，而且 $(V_a,F_{q^d}^*)$ 不可分解：$F_{q^d}^*$ 在 $V_a$ 上只有一个 Jordan 块。改变同构 $\phi:\mathrm{Fr}_{q^d}^*G_a\xrightarrow{\sim}G_a$，可使 $F_{q^d}^*$ 在 $V_a$ 上幺幂。此时 $(G_a,\phi)$ 同构于 $(F_a,F_{q^d}^*)$ 的一个子对象，因而对应于 $X_1$ 上的一个\term{perverse-sheaf}{反常层} $G_1$，并有
+\[
+F_{1a}\simeq G_1\otimes E_{\dim V_a}.
+\]
+这里用到了：$E_n$ 在 $\Spec(\F_{q^d})$ 上的\term{inverse-image}{逆像}，与直接在 $\Spec(\F_{q^d})$ 上构造的相应\term{sheaf}{层}同构。于是
+\[
+F_0\simeq\pi_*(G_1\otimes E_n)\simeq(\pi_*G_1)\otimes E_n,
+\]
+\SourcePage{147}
+且 $\pi_*G_1$ 为\term{simple-object}{单对象}。这证明了（i）。
+若 $F_0$ 为\term{simple-object}{单对象}，则只有一个轨道，而且 $F_{q^d}^*$ 在 $V_a$ 上的作用不可约：$V_a$ 是一维的，由此得到（ii）。
+
+\par\medskip\noindent\textbf{注5.3.10。} 直到5.3.8（含该条）为止，所得结果及其证明同样适用于 $\Q_\ell$-（或 $E_\lambda$-）\term{cohomology}{上同调}。断言5.3.9（i）在 $\Q_\ell$-（或 $E_\lambda$-）\term{cohomology}{上同调}中仍成立，但要从5.3.8及5.1.2推出它，所需的线性代数更复杂。断言5.3.9（ii）则不能原样成立。
+
+\par\medskip\noindent\textbf{推论5.3.11。} 设 $F_0$ 是 $X_0$ 上的\term{pure}{纯}\term{perverse-sheaf}{反常层}，$j:U_0\hookrightarrow X_0$ 是开集的嵌入，$i:F_0^{\mathrm{cl}}\hookrightarrow X_0$ 是其闭补集的嵌入。\term{perverse-sheaf}{反常层} $F_0$ 有唯一分解
+\[
+F_0=j_{!*}F'_0\oplus i_*F''_0:
+\]
+（i）\term{adjunction-morphism}{伴随态射} ${}^pj_!j^*F_0\to F_0$ 通过 ${}^pj_!j^*F_0$ 的商 $j_{!*}j^*F_0$ 分解；而 $F_0\to{}^pj_*j^*F_0$ 通过 ${}^pj_*j^*F_0$ 的子对象 $j_{!*}j^*F_0$ 分解。
+
+（ii）\term{adjunction-morphism}{伴随态射}的复合
+\[
+i_*{}^pi^!F_0\longrightarrow F_0\longrightarrow i_*{}^pi^*F_0
+\]
+是同构。
+
+唯一性来自 $\Hom(j_{!*}F'_0,i_*F''_0)=\Hom(i_*F''_0,j_{!*}F'_0)=0$。由5.1.2，要验证（i）、（ii），以及其中各箭头确实是上述类型分解的嵌入及投影，只须在 $X$ 上验证。再由5.3.8，只须对 $F$ 的各单成分 $G$ 验证。每个 $G$ 都形如 $j_{!*}G'$ 或 $i_*G''$，结论便显然成立。\footnote{译注：原文以 $F_0$ 同时表示\term{perverse-sheaf}{反常层}及闭补集。这里把闭补集记作 $F_0^{\mathrm{cl}}$，仅为避免符号混淆。}
+
+\section*{5.4. 纯复形}
+\addcontentsline{toc}{section}{5.4. 纯复形}
+设 $X_0/\F_q$ 如5.1所述，$K_0\in\D_m^b(X_0,\overline\Q_\ell)$。
+\SourcePage{148}
+\par\medskip\noindent\textbf{定理5.4.1。} $K_0$ 的\term{weight}{权} $\le w$（分别为 $\ge w$），当且仅当每个 ${}^pH^iK_0$ 的\term{weight}{权} $\le w+i$（分别为 $\ge w+i$）。
+
+括号中的断言是另一个断言的\term{duality}{对偶}，所以只证后者。
+若 $(A_0,B_0,C_0)$ 是\term{distinguished-triangle}{区别三角}，而 $A_0,C_0$ 的\term{weight}{权} $\le w$，则 $B_0$ 的\term{weight}{权}也 $\le w$。由此可见条件充分，只须使用\term{distinguished-triangle}{区别三角}
+\[
+({}^p\tau_{\le i-1}K_0,{}^p\tau_{\le i}K_0,{}^pH^iK_0[-i]).
+\]
+现设 $K_0$ 的\term{weight}{权} $\le w$，对 $i$ 作下降归纳，证明 ${}^pH^iK_0$ 的\term{weight}{权} $\le w+i$。$i$ 充分大时，${}^pH^iK_0=0$，结论显然。于是设对 $i>n$，${}^pH^iK_0$ 的\term{weight}{权} $\le w+i$，从而\term{truncation}{截断} ${}^p\tau_{>n}K_0$ 的\term{weight}{权} $\le w$。要证明 ${}^pH^nK_0$ 的\term{weight}{权} $\le w+n$。
+为简化记号，设 $w=n=0$；通过扭转和平移，可以归结为这种情形。
+\term{distinguished-triangle}{区别三角} $({}^p\tau_{\le0}K_0,K_0,{}^p\tau_{>0}K_0)$ 表明 ${}^p\tau_{\le0}K_0$ 的\term{weight}{权} $\le0$。三角 $({}^p\tau_{<0}K_0,{}^p\tau_{\le0}K_0,{}^pH^0K_0)$ 给出\term{exact-sequence}{正合列}
+\begin{equation*}
+H^{-d}({}^p\tau_{\le0}K_0)\longrightarrow H^{-d}({}^pH^0K_0)\longrightarrow H^{-d+1}({}^p\tau_{<0}K_0).\tag{5.4.1.1}
+\end{equation*}
+对 $X_0$ 的每个维数为 $d$ 的不可约子簇 $Y_0$，存在 $Y_0$ 的稠密开集 $U_0$，使 $H^{-d+1}({}^p\tau_{<0}K_0)$ 在 $U_0$ 上的限制为零。由（5.4.1.1），$H^{-d}({}^pH^0K_0)$ 在 $U_0$ 上的逐点\term{weight}{权} $\le-d$。由5.3.7，${}^pH^0K_0$ 的\term{weight}{权} $\le0$，证明完成。
+
+\par\medskip\noindent\textbf{推论5.4.2。} 若 $f:X_0\to Y_0$ 为\term{finite-type}{有限型}态射，则函子 ${}^pH^0f_!$ 及 ${}^pH^0f^*$（分别为 ${}^pH^0f_*$ 及 ${}^pH^0f^!$）把\term{weight}{权} $\le w$（分别为 $\ge w$）的\term{perverse-sheaf}{反常层}变为\term{weight}{权} $\le w$（分别为 $\ge w$）的\term{perverse-sheaf}{反常层}。
+
+由5.4.1及5.1.14即得。
+\SourcePage{149}
+\par\medskip\noindent\textbf{推论5.4.3。} 若 $f$ 拟有限，则
+\[
+f_{!*}=\im({}^pf_!\longrightarrow{}^pf_*)
+\]
+把 $X_0$ 上\term{weight}{权} $\ge w$（分别为 $\le w$）的\term{perverse-sheaf}{反常层}变为 $Y_0$ 上\term{weight}{权} $\ge w$（分别为 $\le w$）的\term{perverse-sheaf}{反常层}。特别地，它把\term{pure}{纯}\term{perverse-sheaf}{反常层}变为相同\term{weight}{权}的\term{pure}{纯}\term{perverse-sheaf}{反常层}。
+
+借助5.4.2，5.3.2的第一种证明仍然适用。
+
+\par\medskip\noindent\textbf{推论5.4.4。} $K_0\in\D_m^b(X_0,\overline\Q_\ell)$ \term{pure}{纯}且\term{weight}{权}为 $w$，当且仅当每个\term{perverse-sheaf}{反常层} ${}^pH^iK_0$ 都\term{pure}{纯}且\term{weight}{权}为 $w+i$。
+
+\par\medskip\noindent\textbf{定理5.4.5。} 若 $K_0\in\D_m^b(X_0,\overline\Q_\ell)$ \term{pure}{纯}，则在 $X$ 上，$K$ 是各 ${}^pH^iK[-i]$ 的直和。
+
+由5.4.4及5.1.15（iii），\term{distinguished-triangle}{区别三角}
+\[
+({}^p\tau_{<i}K_0,{}^p\tau_{\le i}K_0,({}^pH^iK_0)[-i])
+\]
+中次数为 $1$ 的箭头，在 $\Ext^1({}^pH^iK[-i],{}^p\tau_{<i}K)$ 中的像为零。于是
+\[
+{}^p\tau_{\le i}K\simeq{}^p\tau_{<i}K\oplus{}^pH^iK[-i],
+\]
+由此得出5.4.5。
+结合5.4.4、5.4.5与5.3.7，得到：
+
+\par\medskip\noindent\textbf{推论5.4.6。} 若 $K_0$ \term{pure}{纯}，则在 $X$ 上，$K$ 是形如 $(j_{!*}L[d])[n]$ 的对象的直和，其中 $j:U\hookrightarrow X$ 是\term{smooth}{光滑}、连通、维数为 $d$ 的 $U$ 的嵌入，$L$ 是 $U$ 上不可约的\term{smooth}{光滑}\term{sheaf}{层}，$n$ 为整数。
+
+下面两个由5.4.6得出的推论，分别推广了整体\term{invariant-cycles}{不变轮换}定理和局部\term{invariant-cycles}{不变轮换}定理。
+
+\par\medskip\noindent\textbf{推论5.4.7。} 在 $X$ 的每个不可约分支中选取一个几何一般点 $\overline\eta$，其所对应的点为一般点 $\eta$。若 $K_0$ \term{pure}{纯}，则对每个 $i$，有
+\begin{equation*}
+H^i(X,K)\twoheadrightarrow\prod_\eta(H^iK)_{\overline\eta}^{\Gal(\overline\eta/\eta)}.\tag{5.4.7.1}
+\end{equation*}
+在（5.4.7.1）中，左边的 $H^i$ 表示\term{hypercohomology}{超上同调}群；右边的 $H^i$ 表示通常的\term{cohomology}{上同调}\term{sheaf}{层}。
+\SourcePage{150}
+只须对5.4.6中形如 $(j_{!*}L[d])[n]$ 的 $K$ 验证（5.4.7.1）。至多有一个 $\eta$ 属于 $U$。若没有这样的 $\eta$，或 $i\ne-d-n$，则右边为零。若 $\eta\in U$ 且 $i=-d-n$，则
+\[
+H^i(j_{!*}L[d][n])={}^0j_*L,
+\]
+而 $j<i$ 时 $H^j=0$。于是5.4.7归结为
+\[
+H^0(X,{}^0j_*L)\twoheadrightarrow L_{\overline\eta}^{\Gal(\overline\eta/\eta)}.
+\]
+左边可与 $H^0(U,L)$ 相同一，上述箭头甚至是同构。
+
+\par\medskip\noindent\textbf{推论5.4.8。} 设 $x$ 是 $X$ 的一个几何点（其对应的点不必是闭点），$X_x$ 是 $X$ 在 $x$ 处的\term{strictly-henselian}{严格 Hensel} 化。在 $X_x$ 的每个不可约分支中选取几何一般点 $\overline\eta$，其对应的点为 $\eta$。若 $K_0$ \term{pure}{纯}，则对每个 $i$，就通常的\term{cohomology}{上同调}\term{sheaf}{层}而言，有
+\[
+H^i(X_x,K)=(H^iK)_x\twoheadrightarrow\prod_\eta(H^iK)_{\overline\eta}^{\Gal(\overline\eta/\eta)}.
+\]
+如5.4.7那样，可归结为 $K=j_{!*}L[d][n]$ 的情形。以 $U_x$ 表示 $U$ 在 $X_x$ 中的\term{inverse-image}{逆像}，只须验证：对 $U_x$ 的每个连通分支 $U'_x$ 及其中的 $\eta$，
+\[
+H^0(U'_x,L)\twoheadrightarrow L_{\overline\eta}^{\Gal(\overline\eta/\eta)}.
+\]
+这个箭头是同构。
+
+\par\medskip\noindent\textbf{注5.4.9。} 设 $f:Y_0\to X_0$ 为\term{proper}{固有}态射，$L_0\in\D_c^b(Y_0,\overline\Q_\ell)$。若 $L_0$ \term{pure}{纯}，则 $X_0$ 上的 $f_*L_0$ 也\term{pure}{纯}。把5.4.7和5.4.8用于 $f_*L_0$，得到：
+
+（a）设 $x$ 是 $X$ 的某个开集 $U$ 的几何点，且各 $H^if_*L_0$ 在 $U$ 上\term{smooth}{光滑}，则 $H^*(Y,L)$ 满射到 $H^*(Y_x,L)$ 中在\term{monodromy}{单值作用}下不变的部分，即在 $\pi_1(U,x)$ 作用下不变的部分；这里 $Y_x=f^{-1}(x)$。
+
+（b）对 $x\in X$，设 $\widetilde x$ 是
+\SourcePage{151}
+严格\term{localization}{局部化} $X_{(x)}$ 的一个几何一般点，则 $H^*(Y_x,L)$ 满射到 $H^*(Y_{\widetilde x},L)$ 中在局部\term{monodromy}{单值作用}下不变的部分。
+
+\par\medskip\noindent\textbf{5.4.10.} 设 $f:X_0\to Y_0$ 为射影态射，$\ell\in H^2(X_0,\Q_\ell(1))$ 是某个相对丰沛可逆\term{sheaf}{层}的第一 Chern 类。对任意 $K_0\in\D_c^b(X_0,\overline\Q_\ell)$，$\ell$ 定义态射 $K_0\to K_0[2](1)$。迭代得到 $\ell^n:K_0\to K_0[2n](n)$。应用 $f_*$，得到 $\ell^n:f_*K_0\to f_*K_0[2n](n)$，以及态射
+\[
+{}^pH^if_*K_0\longrightarrow{}^pH^{i+2n}f_*K_0(n).
+\]
+下述定理把[1]（6.2.13）推广到相对情形。
+
+\par\medskip\noindent\textbf{定理5.4.10（相对\term{hard-lefschetz}{强Lefschetz定理}）。} 若 $F_0$ 是 $X_0$ 上的\term{pure}{纯}\term{perverse-sheaf}{反常层}，则对每个 $i\ge0$，态射
+\[
+\ell^i:{}^pH^{-i}f_*F_0\longrightarrow{}^pH^if_*F_0(i)
+\]
+是同构。
+
+问题在 $Y_0$ 上是局部的。缩小 $Y_0$ 并把 $\ell$ 换成一个倍数后，可假设且以下就假设：对某个 $d\ge0$，$f$ 可分解为 $X_0\hookrightarrow\mathbb P^d\times Y_0\to Y_0$，且 $\ell$ 是 $\mathcal O(1)$ 的第一 Chern 类。
+
+\par\noindent\textbf{$i=1$ 时的证明。} 若 $Y_0$ 为一点，[1]中的证明是取 $X$ 的一个充分一般的超平面截面 $H$，把 $\ell$ 看作限制态射与 Gysin 态射的复合：
+\[
+H^{-1}(X,F)\xrightarrow{v^*}H^{-1}(H,F)\xrightarrow{v_!}H^1(X,F)(1).
+\]
+先证明 $v^*$ 把 $H^{-1}(X,F)$ 与 $H^{-1}(H,F)$ 中在\term{monodromy}{单值作用}下不变的部分相同一（这里让 $H$ 变动）；\term{duality}{对偶}地，$v_!$ 把 $H^1(X,F)(1)$ 与\term{monodromy}{单值作用}的余不变部分相同一。再利用单值表示的\term{semisimple}{半单}性，得出 $v_!v^*$ 为同构。这里采用相同策略，不过使用的将是超平面截面的泛族。
+\SourcePage{152}
+设 $\check{\mathbb P}_0^d$ 为 $\mathbb P_0^d$ 的\term{duality}{对偶}射影空间，$Y'_0=\check{\mathbb P}_0^d\times Y_0$，$X'_0=\check{\mathbb P}_0^d\times X_0$。设 $H_0\subset X'_0$ 是以 $Y'_0$ 为参数空间的 $X_0$ 的超平面截面泛族：$H/Y'$ 在 $(a,y)\in Y'$ 处的纤维，是 $X/Y$ 在 $y$ 处纤维 $X_y$ 的超平面截面 $X_y\cap\text{“}a\text{”}$：
+\[
+\begin{tikzcd}[ampersand replacement=\&]
+X_0\arrow[d,"{f}"]\&X'_0\arrow[l,"{u}"']\arrow[d,"{f}"]\&H_0\arrow[l,"{v}"']\arrow[dl,"{h}"]\\
+Y_0\&Y'_0\arrow[l,"{u}"']\&{}
+\end{tikzcd}
+\]
+注意，同一个符号表示了不同箭头；根据上下文不会混淆。
+
+\par\medskip\noindent\textbf{引理5.4.11。} 设 $K\in{}^p\D_c^{\ge0}(X,\overline\Q_\ell)$。
+
+（i）有 $u^*f_*K\xrightarrow{\sim}f_*u^*K$，从而
+\[
+(u^*{}^pH^if_*K)[d]\xrightarrow{\sim}{}^pH^{i+d}f_*u^*K.
+\]
+（ii）若 $i<d-1$，则 ${}^pH^if_*u^*K\xrightarrow{\sim}{}^pH^ih_*(uv)^*K$。
+
+（iii）有单射 ${}^pH^{d-1}f_*u^*K\hookrightarrow{}^pH^{d-1}h_*(uv)^*K$；而 ${}^pH^{d-1}f_*u^*K$ 可与 ${}^pH^{d-1}h_*(uv)^*K$ 中来自 $Y$ 的最大反常子\term{sheaf}{层}相同一（这一子\term{sheaf}{层}见4.2.6）。
+
+态射 $u$ \term{smooth}{光滑}且\term{pure}{纯}相对维数为 $d$。由此得出 $u^*[d]$ 的 \term{t-exact}{$t$-正合}性（4.2.4）及（i）。令 $g$ 为 $U=X'-H$ 到 $Y'$ 的投影。这是\term{affine}{仿射}态射，$u^*K\in{}^p\D^{\ge d}(X')$，所以 $g_!(u^*K|_U)\in{}^p\D^{\ge d}(Y')$（4.1.2）。三角
+\[
+(g_!(u^*K|_U),f_*u^*K,h_*(uv)^*K)
+\]
+于是给出（ii）及（iii）中的单射断言。要验证（iii），还须证明（参见4.2.6）
+\begin{equation*}
+{}^pH^{-d}u_*{}^pH^{d-1}f_*u^*K\xrightarrow{\sim}{}^pH^{-d}u_*{}^pH^{d-1}h_*(uv)^*K.\tag{5.4.11.1}
+\end{equation*}
+$d=0$ 时，$f$ 为闭浸入，$H=\varnothing$，等式两端均为零。以下假设 $d\ge1$。
+
+\par\medskip\noindent\textbf{引理5.4.12。} 设 $q:Q\to X$ 是相对维数为 $d$ 的\term{projective-bundle}{射影丛}，$\eta$ 是 $\mathcal O(1)$ 的第一 Chern 类，而 $K$ 属于
+\SourcePage{153}
+$\D_c^b(X,\overline\Q_\ell)$。则有
+\[
+\sum_i\eta^i:\bigoplus_{i=0}^dK[-2i](-i)\xrightarrow{\sim}q_*q^*K.
+\]
+取纤维后，可归结为 $X$ 是一点的情形；再经逐次分解，归结为 $K=\overline\Q_\ell[0]$。此时引理正是射影空间\term{cohomology}{上同调}的已知结构。
+
+\par\medskip\noindent\textbf{5.4.13. （5.4.11.1）的证明（$d\ge1$）。} 对 $u$ 及 $uv$ 应用5.4.12，有
+\begin{align*}
+u_*f_*u^*K&=f_*u_*u^*K=\bigoplus_{i=0}^df_*K[-2i](-i),\\
+u_*h_*(uv)^*K&=f_*(uv)_*(uv)^*K=\bigoplus_{i=0}^{d-1}f_*K[-2i](-i).
+\end{align*}
+二者只相差一个直和因子 $f_*K[-2d](-d)$。
+$f$ 的纤维维数 $\le d$，所以 $f_*K\in{}^p\D_c^{\ge-d}(Y,\overline\Q_\ell)$（4.2.4）；因此当 $i\le d-1$，特别是当 $i\le0$ 时，有
+\[
+{}^pH^iu_*f_*u^*K\xrightarrow{\sim}{}^pH^iu_*h_*(uv)^*K.
+\]
+分别取 $L=f_*u^*K$ 及 $L=h_*(uv)^*K$，将 $u_*$ 应用于三角
+\[
+({}^p\tau_{<d-1}L,L,{}^p\tau_{\ge d-1}L),
+\]
+得到两个三角及它们之间的态射：
+\[
+\begin{gathered}
+\bigl(u_*{}^p\tau_{<d-1}f_*u^*K,\ u_*f_*u^*K,\ u_*{}^p\tau_{\ge d-1}f_*u^*K\bigr)\\
+\longrightarrow\\
+\bigl(u_*{}^p\tau_{<d-1}h_*(uv)^*K,\ u_*h_*(uv)^*K,\ u_*{}^p\tau_{\ge d-1}h_*(uv)^*K\bigr).
+\end{gathered}
+\]
+由（ii），有 ${}^p\tau_{<d-1}f_*u^*K\xrightarrow{\sim}{}^p\tau_{<d-1}h_*(uv)^*K$。比较上述两三角的\term{perverse-cohomology}{反常上同调}长\term{exact-sequence}{正合列}，得到
+\[
+{}^pH^{-1}u_*{}^p\tau_{\ge d-1}f_*u^*K\xrightarrow{\sim}{}^pH^{-1}u_*{}^p\tau_{\ge d-1}h_*(uv)^*K.
+\]
+因为 $u_*$ 的\term{cohomology}{上同调}振幅 $\ge-d$，有
+\[
+{}^pH^{-1}u_*{}^p\tau_{\ge d-1}={}^pH^{-d}u_*{}^pH^{d-1},
+\]
+由此得到（5.4.11.1）。
+\SourcePage{154}
+\par\medskip\noindent\textbf{5.4.14. 定理5.4.10的证明（$i=1$）。}
+与限制态射
+\[
+(u^*{}^pH^{-i}f_*F)[d]={}^pH^{-i}f_*(u^*F[d])
+\longrightarrow{}^pH^{-i+1}h_*((uv)^*F[d-1])
+\]
+\term{duality}{对偶}，有 Gysin 态射
+\[
+{}^pH^jh_*((uv)^*F[d-1])\longrightarrow u^*({}^pH^{j+1}f_*F)[d](1).
+\]
+当 $j=-i+1$ 时，它们的复合就是映射 $\ell$ 经 $u^*[d]$ 的像。
+$i=1$ 时，由5.4.11，$(u^*{}^pH^{-1}f_*F)[d]$ 是 ${}^pH^0h_*((uv)^*F[d-1])$ 中来自 $Y$ 的最大子对象。\term{duality}{对偶}地，$(u^*{}^pH^1f_*F)[d](1)$ 是 ${}^pH^0h_*((uv)^*F[d-1])$ 中来自 $Y$ 的最大商对象。由于 $F_0$ \term{pure}{纯}，$(uv)^*F_0$、$h_*((uv)^*F_0)$ 也\term{pure}{纯}（5.1.14），因而 ${}^pH^0h_*((uv)^*F_0)$ 也\term{pure}{纯}（5.4.1）。于是 ${}^pH^0h_*((uv)^*F[d-1])$ \term{semisimple}{半单}（5.3.7），它来自 $Y$ 的最大子对象同构地映到它来自 $Y$ 的最大商对象。所以 $\ell$（此处 $i=1$）经 $u^*[d]$ 的像是同构，$\ell$ 本身也就是同构。
+
+\par\medskip\noindent\textbf{5.4.15. 定理5.4.10证明的完成。} 对 $i$ 归纳。$i=0$ 显然，$i=1$ 刚刚证得。对 $i\ge1$，把 $\ell^{i+1}$ 经 $u^*[d]$ 的像写成复合
+\[
+\begin{aligned}
+(u^*{}^pH^{-i-1}f_*F)[d]
+&\longrightarrow{}^pH^{-i}h_*((uv)^*F[d-1])\\
+&\xrightarrow{\ell^i}{}^pH^ih_*((uv)^*F[d-1])(i)\\
+&\xrightarrow{\mathrm{Gysin}}(u^*{}^pH^{i+1}f_*F)[d](i+1).
+\end{aligned}
+\]
+第一个箭头由5.4.11（i）、（ii）知为同构，最后一个箭头是它的\term{duality}{对偶}。中间箭头则由对 $h$ 及 $(uv)^*F_0[d-1]$ 应用归纳假设知为同构。

@@ -1,0 +1,842 @@
+\chapter{挠代数闭链与代数 \texorpdfstring{$K$}{K} 理论}
+\chapterauthor{Jean-Louis Colliot-Thélène}
+\begin{center}
+1991 年 6 月 C.I.M.E. 讲习班讲义\\
+C.N.R.S.，巴黎南大学数学系\\
+91405 Orsay Cedex
+\end{center}
+\origpage{6}{1}
+本课程旨在介绍\term{代数 $K$ 理论}{algebraic $K$-theory}{$K$-théorie algébrique}在研究代数簇上的\term{挠闭链}{torsion cycle}{cycle de torsion}时的一些应用，尤其是在对基域的算术性质作出不同假设的条件下，如何得到有限性定理。这一研究方向由 Spencer Bloch 于 1974 年开创，Merkur'ev 和 Suslin 在 1982 年取得的突破又推动了它的发展；W. Raskind 于 1989 年就此撰写过一篇综述（[R1]）。
+
+近来的一系列工作表明，这一课题远未穷尽，因此我认为有必要重新梳理目前的进展。
+
+我在 C.I.M.E. 所作报告的第一部分介绍经典结果，对应本文第 1 至第 5 节。第 1 节回顾\term{Picard 群}{Picard group}{groupe de Picard}已知的有限性结果；第 2 节定义\term{Chow 群}{Chow group}{groupe de Chow}；第 3 节介绍 Spencer Bloch 用来控制这些 Chow 群中挠元的纲领。第 4 节在基域\term{代数闭}{algebraically closed}{algébriquement clos}的情形下，给出 Roitman 关于挠零闭链定理的一个简单证明，不需要归约到曲面的情形。转到\term{有限域}{finite field}{corps fini}上的情形，第 5 节概述 Raskind 与笔者对 Kato--Saito 定理的简化证明；该定理涉及有限域上光滑射影簇的\term{非分歧扩张}{unramified extension}{extension non ramifiée}及其零维 Chow 群。我们还将说明 Sansuc、Soulé 与笔者关于余维二挠元的有限性定理。
+
+第 6 至第 9 节扩展了我在 C.I.M.E. 的最后两次报告，介绍 Raskind 与笔者 [CR3]、Salberger [Sb2] 以及 S.~Saito [S4] 在 1989--1991 年间得到的新结果。这些结果讨论：当\term{光滑射影簇}{smooth projective variety}{variété projective et lisse} $X$ 定义在算术域 $k$（\term{局部域}{local field}{corps local}或\term{整体域}{global field}{corps global}）上，且第二个\term{凝聚上同调群}{coherent cohomology group}{groupe de cohomologie cohérente} $H^2(X,\mathcal O_X)$ 为零时，其余维二 Chow 群中挠元的有限性。最初的有限性结果还附加了 $H^1(X,\mathcal O_X)=0$ 这一假设。Salberger 证明，当 $k$ 是\term{数域}{number field}{corps de nombres}时，可以去掉这个附加假设。
+
+第 6 节介绍 Raskind 与笔者处理数域上情形的方法。我在该节还简述了\term{Galois 方法}{Galois method}{méthode galoisienne}：此前，人们已经用这一方法对某些簇得到了有限性结果（在整体域上，有 Bloch [B4]、笔者 [C1]、Gros [G]、Ōkōchi 以及较近的 Coombes [Cb] 的工作；在局部域上，有 Raskind 与笔者 [CR1] 的工作）。第 7 节介绍 S.~Saito [S4] 较新的方法。我着意将其中在任意域上成立的陈述清楚地提炼出来；这样便能对有理数域上有限生成的域得到某些有限性结果。第 8 节说明同一方法在局部域上能够得到的结果。最后，第 9 节简要介绍 Salberger 的方法，更详细的论述请参阅他最近的预印本 [Sb2]。
+
+本文对挠闭链的介绍就到这里。以下几个课题虽未涉及，却值得读者关注：
+\begin{itemize}
+\item 数域上有理曲面的零闭链 Chow 群的精确猜想与结果（Sansuc 与笔者 [CS]、Salberger [Sb1] 的工作）。我们希望把这些结果推广到更广的一些簇，哪怕先只是提出猜想。眼下尤其希望处理满足
+\origpage{7}{2}
+$H^2(X,\mathcal O_X)=0$ 和 $H^1(X,\mathcal O_X)=0$ 的曲面；在这种情形下，Coombes [Cb] 的精细方法（本文不予介绍）及 Saito [S4] 的方法也许会有帮助。
+\item Bloch 及其学生正在开展的工作：研究数域上某些满足 $H^2(X,\mathcal O_X)\ne0$ 的曲面 $X$ 的 Chow 群中的挠元（局部域上的情形见 [R2]）。
+\item C.~Schoen [Sc] 构造的\term{Griffiths 群}{Griffiths group}{groupe de Griffiths}中挠元的例子。
+\end{itemize}
+
+\paragraph{内容安排}
+\begin{enumerate}[label=\S\arabic*.]
+\item 簇的 Picard 群。
+\item Chow 群。
+\item $K$ 理论、平展上同调与 Chow 群中的挠元（Bloch 纲领）。
+\item 可分闭域上的簇。
+\item 有限域上的簇。
+\item 数域上的簇，I。
+\item 数域上的簇，II。
+\item 局部域上的簇。
+\item 数域上的簇，III。
+\end{enumerate}
+
+\paragraph{致谢}
+Spencer Bloch 的工作对整个课题的影响显而易见。感谢 S.~Bloch、S.~Saito、P.~Salberger、J.-J.~Sansuc、C.~Soulé，特别是 W.~Raskind，感谢他们在远近不同的时期与我的讨论。
+
+感谢 Fondazione Centro Internazionale Matematico Estivo，让我有机会进一步澄清自己的想法，也有机会漫步于 Trento 和 Verona 的街头。
+
+本课程的初稿曾于 1989 年 9 月在 Delphi 的 Centre Culturel Européen 作过报告，我也要感谢该中心的邀请。
+
+\paragraph{记号}
+给定一个\term{Abel 群}{abelian group}{groupe abélien} $A$ 和正整数 $n$，以 ${}_nA$ 表示 $A$ 中被 $n$ 零化的元素组成的子群，以 $A/n$ 表示商群 $A/nA$。以 $A_{\mathrm{tors}}$ 表示 $A$ 的\term{挠子群}{torsion subgroup}{sous-groupe de torsion}；对素数 $l$，以 $A_{l\text{-}\mathrm{tors}}$ 表示其 $l$ 准素挠子群，即被 $l$ 的某个幂零化的元素组成的子群。
+
+给定一个含幺环 $R$，以 $R^*$ 表示由 $R$ 的可逆元组成的乘法子群。
+
+给定在\term{概形}{scheme}{schéma} $X$ 上可逆的整数 $n$，以 $\mu_n$ 表示由 $n$ 次单位根\term{群概形}{group scheme}{schéma en groupes}定义的 $X$ 上\term{平展层}{étale sheaf}{faisceau étale}。当 $j$ 为正整数时，以 $\mu_n^{\otimes j}$ 表示 $\mu_n$ 与自身的 $j$ 重张量积，并规定 $\mu_n^{\otimes0}=\mathbb Z/n$。当 $j<0$ 时，以 $\mu_n^{\otimes j}$ 表示平展层 $\mathcal Hom_X(\mu_n^{\otimes(-j)},\mathbb Z/n)$。最后，给定在 $X$ 上可逆的素数 $l$ 和整数 $j\in\mathbb Z$，以 $\mathbb Q_l/\mathbb Z_l(j)$ 表示当 $n$ 趋于无穷时层 $\mu_{l^n}^{\otimes j}$ 的归纳极限。
+
+以 $H^i(X,\mathcal F)$（不带下标）表示概形 $X$ 上取值于层 $\mathcal F$ 的第 $i$ 个 \term{Zariski 上同调群}{Zariski cohomology group}{groupe de cohomologie de Zariski}。不过有时也作例外，以 $H^i(k,M)$ 表示绝对 Galois 群 $G=\Gal(\bar k/k)$ 取值于离散连续 $G$ 模 $M$ 的第 $i$ 个\term{Galois 上同调群}{Galois cohomology group}{groupe de cohomologie galoisienne}；等价地，它是域 $k$ 的谱 $\Spec(k)$ 上取值于平展层 $M$ 的第 $i$ 个\term{平展上同调群}{étale cohomology group}{groupe de cohomologie étale}。
+
+\origpage{8}{3}
+\section*{§1. 簇的 Picard 群}
+\addcontentsline{toc}{section}{§1. 簇的 Picard 群}
+本节回顾\term{除子}{divisor}{diviseur}的\term{线性等价}{linear equivalence}{équivalence linéaire}的一些经典结果。在后续各节中，我们将把它们与余维大于 $1$ 的闭链复杂得多的情形作比较。
+
+设 $k$ 是一个域，$X$ 是 $k$ 上的\term{光滑不可约代数簇}{smooth irreducible algebraic variety}{variété algébrique lisse et irréductible}。以 $k(X)$ 表示它的\term{有理函数域}{rational function field}{corps des fonctions rationnelles}，以 $\operatorname{Div}(X)$ 表示 $X$ 的除子群，即以 $X$ 的余维 $1$ 点为生成元的自由 Abel 群：
+\[
+\operatorname{Div}(X)=\bigoplus_{P\in X^{(1)}}\mathbb Z.
+\]
+对这样的每一点 $P$，$X$ 在 $P$ 处的局部环都是分式域为 $k(X)$ 的\term{离散赋值环}{discrete valuation ring}{anneau de valuation discrète}，因而给出同态
+\[
+v_P:k(X)^*\longrightarrow\mathbb Z.
+\]
+定义簇 $X$ 的\term{Picard 群}{Picard group}{groupe de Picard} $\Pic(X)$ 为除子映射
+\[
+\operatorname{div}=\bigoplus_{P\in X^{(1)}}v_P:k(X)^*\longrightarrow\operatorname{Div}(X)
+\]
+的\term{余核}{cokernel}{conoyau}，也就是说，有如下\term{正合列}{exact sequence}{suite exacte}：
+\[
+k(X)^*\longrightarrow\operatorname{Div}(X)\longrightarrow\Pic(X)\longrightarrow0.
+\]
+
+Picard 群有几种不同的描述。在光滑簇上（因而它是\term{局部析因}{locally factorial}{localement factorielle}的），\term{Weil 除子}{Weil divisor}{diviseur de Weil}（余维 $1$ 子簇的整数系数线性组合）与\term{Cartier 除子}{Cartier divisor}{diviseur de Cartier}（在 Zariski 拓扑下局部由一个函数的除子定义）可以等同。由上述描述很容易得到
+\[
+\Pic(X)\simeq H^1_{\mathrm{Zar}}(X,\mathcal O_X^*)=H^1_{\mathrm{Zar}}(X,\mathbb G_m),
+\]
+这里取的是 Zariski 上同调。
+
+另一方面，Grothendieck 给出的 Hilbert 第 90 定理的一个版本表明，在任意概形上都有同构
+\[
+H^1_{\mathrm{Zar}}(X,\mathbb G_m)\simeq H^1_{\et}(X,\mathbb G_m)\simeq H^1_{\mathrm{fppf}}(X,\mathbb G_m),
+\]
+即它还可以用由\term{乘法群}{multiplicative group}{groupe multiplicatif} $\mathbb G_m$ 定义的层的平展上同调（或 fppf 上同调）来描述。
+
+当 $X$ 是一条光滑射影曲线 $C$ 时，$C$ 的余维 $1$ 点就是零维点，此时有\term{次数映射}{degree map}{application degré}
+\[
+\deg:\bigoplus_{P\in C^{(1)}}\mathbb ZP\longrightarrow\mathbb Z,
+\]
+它由将闭点 $P$ 映至其相对于 $k$ 的次数 $[k(P):k]$ 的映射线性延拓而得。一个经典公式表明，此映射在函数的除子上为零，因而诱导出次数映射 $\Pic(C)\longrightarrow\mathbb Z$。
+
+以下陈述汇集了 Picard 群最重要的一些性质。
+\begin{statement}{命题 1.1}
+设光滑簇 $X$ 绝对不可约且完备（例如为射影簇）。设 $k\subset F$ 为域的包含，令 $X_F=X\times_kF$。则自然映射 $\Pic(X)\longrightarrow\Pic(X_F)$ 是单射。
+\end{statement}
+\origpage{9}{4}
+当 $F/k$ 是 Galois 扩张时（可设它为有限扩张），证明依赖于 Hilbert 第 90 定理：$H^1(\Gal(F/k),F^*)=0$。设 $\bar k$ 是 $k$ 的一个代数闭包，令 $G=\Gal(\bar k/k)$、$\bar X=X\times_k\bar k$。事实上，可以证明存在函子性正合列
+\[
+0\longrightarrow\Pic(X)\longrightarrow\Pic(\bar X)^G\longrightarrow\Br(k),
+\]
+其中 $\Br(k)=H^2(G,\bar k^*)$。如果有限扩张 $E/k$ 使 $X$ 获得一个有理点，则 $\Pic(\bar X)^G\longrightarrow\Br(k)$ 的像被整数 $[E:k]$ 零化。特别地，只要 $X$ 有一个 $k$ 有理点，映射 $\Pic(X)\longrightarrow\Pic(\bar X)^G$ 就是同构。\translatornote{1}\hfill$\square$
+
+\begin{statement}{定理 1.2}
+设光滑簇 $X$ 绝对不可约且完备（例如为射影簇）。设 $\bar k$ 是 $k$ 的一个代数闭包，令 $G=\Gal(\bar k/k)$、$\bar X=X\times_k\bar k$。存在一个\term{Abel 簇}{abelian variety}{variété abélienne} $J/k$（即 $X$ 的\term{Picard 簇}{Picard variety}{variété de Picard} $\underline{\Pic}^{\,0}_{X/k}$）和一个有限生成 Abel 群，即 $\bar X$ 的\term{Néron--Severi 群}{Néron--Severi group}{groupe de Néron--Severi} $\NS(\bar X)$，使得有正合列
+\begin{equation*}
+0\longrightarrow J(\bar k)\longrightarrow\Pic(\bar X)\longrightarrow\NS(\bar X)\longrightarrow0.\tag{1.1}
+\end{equation*}
+此正合列是 $G$ 等变的。当 $X$ 为曲线时，$\NS(\bar X)=\mathbb Z$，映射 $\Pic(\bar X)\longrightarrow\NS(\bar X)=\mathbb Z$ 由次数映射诱导。
+\end{statement}
+
+\begin{statement}{命题 1.3}
+设 $X$ 是域 $k$ 上的光滑不可约簇。对于在 $k$ 中可逆的任意整数 $n$，有单射
+\begin{equation*}
+\Pic(X)/n\Pic(X)\lhook\joinrel\longrightarrow H^2_{\et}(X,\mu_n).\tag{1.2}
+\end{equation*}
+\end{statement}
+取 \term{Kummer 正合列}{Kummer exact sequence}{suite de Kummer}
+\[
+1\longrightarrow\mu_n\longrightarrow\mathbb G_m\xrightarrow{x\mapsto x^n}\mathbb G_m\longrightarrow1
+\]
+所对应的平展上同调长正合列，即得此单射。注意，其中一段正合列为
+\begin{equation*}
+k[X]^*/k[X]^{*n}\longrightarrow H^1_{\et}(X,\mu_n)\longrightarrow{}_n\Pic(X)\longrightarrow0.\tag{1.3}
+\end{equation*}
+\hfill$\square$
+
+\begin{statement}{命题 1.4}
+设 $X$ 是光滑不可约的 $k$ 簇，$U$ 是 $X$ 的一个非空开子集。则有正合列
+\begin{equation*}
+\begin{split}
+k[X]^* &\longrightarrow k[U]^*\longrightarrow\operatorname{Div}_{X\setminus U}(X)\\
+&\longrightarrow\Pic(X)\longrightarrow\Pic(U)\longrightarrow0.
+\end{split}\tag{1.4}
+\end{equation*}
+\end{statement}
+这里 $k[X]^*$、$k[U]^*$ 分别表示 $X$、$U$ 上可逆函数组成的群；$\operatorname{Div}_{X\setminus U}(X)$ 是支集落在 $U$ 之外的除子组成的群，它是有限生成自由群。
+
+这一局部化命题的证明是初等的。\hfill$\square$
+
+以上陈述是 Picard 群的各种有限性定理的基础。
+
+\origpage{10}{5}
+\begin{statement}{命题 1.5}
+对于域 $k$ 上任意光滑、固有、不可约簇 $X$ 及任意整数 $n>0$，$n$ 挠点组成的群 ${}_n\Pic(X)$ 是有限群。对这种簇的任意开子集 $U$，结论仍然成立。
+\end{statement}
+（根据 Hironaka 的结果，在特征零时，任意光滑 $k$ 簇都是某个光滑固有 $k$ 簇的开子集。）
+\begin{proof}
+由局部化正合列 (1.4) 及 $\operatorname{Div}_{X\setminus U}(X)$ 的有限生成性可知，$U$ 的结论由 $X$ 的结论推出。由命题 1.1，${}_n\Pic(X)$ 单射到 ${}_n\Pic(\bar X)$。后者的有限性来自结构定理 1.2、Néron--Severi 群的有限生成性，以及代数闭域上 Abel 簇的 $n$ 挠点只有有限多个这一事实。
+\end{proof}
+\paragraph{注 1.5.1}
+当 $n$ 在 $k$ 中可逆时，由正合列 (1.3)，对任意 $k$ 簇 $X$ 都得到满射
+\[
+H^1_{\et}(X,\mu_n)/H^1_{\et}(\Spec(k),\mu_n)\longrightarrow{}_n\Pic(X).
+\]
+若 $X$ 绝对整，则左边的群可视为 $H^1_{\et}(\bar X,\mu_n)$ 的一个子群。而一般而言，群 $H^1_{\et}(\bar X,\mu_n)$ 是有限的（特征 $0$ 时见 SGA~4 XIX，Springer LNM 305；一般情形见 Deligne 在 [SGA4~1/2] 中的《有限性定理》）。
+
+\begin{statement}{命题 1.6}
+若 $k$ 为有限域，$X$ 是 $k$ 上光滑、固有、\term{几何整}{geometrically integral}{géométriquement intègre}的簇，则 $\Pic(X)$ 是有限生成群。特别地，其挠子群 $\Pic(X)_{\mathrm{tors}}\subset\Pic(X)$ 是有限群。
+\end{statement}
+\begin{proof}
+命题 1.1 给出单射 $\Pic(X)\subset\Pic(\bar X)^G$，其中 $G=\Gal(\bar k/k)$（这里此包含实际上为同构）。再结合定理 1.2（$G$ 等变正合列 (1.1) 及 $\NS(\bar X)$ 的有限生成性），以及 $J(\bar k)^G=J(k)$ 的有限性，即得结论；最后这个群是有限域 $k$ 上一个代数簇的 $k$ 有理点群。
+\end{proof}
+
+\begin{statement}{命题 1.7}
+设 $k$ 是 $p$ 进域（即某个 $\mathbb Q_p$ 的有限扩张），$X$ 是 $k$ 上光滑、固有、几何整的簇。则 $\Pic(X)_{\mathrm{tors}}$ 是有限群。
+\end{statement}
+\begin{proof}
+如上应用 1.1 和 1.2，归结为证明 $J(k)_{\mathrm{tors}}$ 有限。由于 $J$ 是 $k$ 上的 Abel 簇，$k$ 是 $p$ 进域，其 $k$ 有理点群 $J(k)$ 是交换紧 $p$ 进解析群。因此，它包含一个有限指数开子群 $U$，同构于 $R^q$，其中 $R$ 为 $k$ 的整数环的加法群，$q=\dim J$。所以 $J(k)$ 的挠子群单射到有限商群 $J(k)/U$ 中。
+\end{proof}
+\paragraph{注 1.7.1}
+由此命题可推出：若 $X$ 是有理数域 $\mathbb Q$ 上有限生成的域 $k$ 上光滑、固有、几何整的簇，则 $\Pic(X)_{\mathrm{tors}}$ 有限（所谓有限生成，是指作为域由有限多个元素生成）。确实，选定一个素数 $p$。由于 $p$ 进域 $\mathbb Q_p$ 在 $\mathbb Q$ 上的超越次数无穷大，可以找到 $\mathbb Q_p$ 的有限扩张 $L$ 和域嵌入 $\mathbb Q\subset k\subset L$。命题 1.1 给出包含 $\Pic(X)\subset\Pic(X_L)$，从而也有 $\Pic(X)_{\mathrm{tors}}\subset\Pic(X_L)_{\mathrm{tors}}$。上一个命题说明后者有限，因此前者也有限。
+
+\origpage{11}{6}
+\begin{statement}{命题 1.8}
+设 $k$ 是 $p$ 进域（即某个 $\mathbb Q_p$ 的有限扩张），$X$ 是 $k$ 上光滑、固有、几何整的簇。那么对于任意整数 $n>0$，商群 $\Pic(X)/n$ 都是有限群。
+\end{statement}
+\begin{proof}
+由定理 1.2，群 $\Pic(\bar X)^G/n$ 处于正合列
+\[
+J(k)/n\longrightarrow\Pic(\bar X)^G/n\longrightarrow T/n
+\]
+中，其中 $T$ 是有限生成 Abel 群。前一证明中回顾的 $J(k)$ 的结构立即给出 $J(k)/n$ 的有限性，因而 $\Pic(\bar X)^G/n$ 也有限。已知局部域的\term{Brauer 群}{Brauer group}{groupe de Brauer} $\Br(k)$ 同构于 $\mathbb Q/\mathbb Z$。于是由 $\Pic(\bar X)^G/n$ 的有限性和正合列
+\[
+0\longrightarrow\Pic(X)\longrightarrow\Pic(\bar X)^G\longrightarrow{}_m\Br(k),
+\]
+便得到 $\Pic(X)/n$ 的有限性；这里 $m>0$ 是使 $X$ 获得一个有理点的某个 $k$ 的扩张的次数。
+\end{proof}
+\paragraph{注 1.8.1}
+还可以给出另一个更一般的证明。设 $k$ 如上，$X$ 为任意 $k$ 簇。由 (1.2) 有单射
+\[
+\Pic(X)/n\Pic(X)\lhook\joinrel\longrightarrow H^2_{\et}(X,\mu_n).
+\]
+上文提到的所有上同调群 $H^i_{\et}(\bar X,\mu_n)$ 的有限性，结合 \term{Hochschild--Serre 谱序列}{Hochschild--Serre spectral sequence}{suite spectrale de Hochschild--Serre}
+\[
+H^p(\Gal(\bar k/k),H^q_{\et}(\bar X,\mu_n))\Longrightarrow H^*_{\et}(X,\mu_n),
+\]
+以及 $\Gal(\bar k/k)$ 取值于有限模的 Galois 上同调群的有限性（Serre，\emph{Cohomologie Galoisienne}，Springer LNM~5），保证了 $p$ 进域 $k$ 上的簇 $X$ 的所有群 $H^i_{\et}(X,\mu_n)$ 均有限。
+
+\begin{statement}{定理 1.9}
+设域 $k$ 在其\term{素域}{prime field}{corps premier}上有限生成，$X$ 是光滑固有整 $k$ 簇，$U$ 为 $X$ 的一个开子集。那么 $\Pic(X)$ 和 $\Pic(U)$ 都是有限生成群。特别地，它们的挠子群都是有限群，且对任意整数 $n>0$，商群 $\Pic(X)/n\Pic(X)$ 都有限。
+\end{statement}
+\begin{proof}[“证明”]
+局部化正合列 (1.4) 使我们只需考虑 $X$。根据命题 1.1，只需知道对任意 $k$ 上 Abel 簇 $J$，群 $J(k)$ 都有限生成。当 $k$ 为数域时，这恰是 \term{Mordell--Weil 定理}{Mordell--Weil theorem}{théorème de Mordell--Weil}的内容。素域上有限生成域 $k$ 的更一般情形，例如可参阅 Lang 的 \emph{Diophantine Geometry}。
+\end{proof}
+\paragraph{注 1.9.1}
+上述定理的完整证明是 20 世纪 30 至 50 年代\term{丢番图几何}{Diophantine geometry}{géométrie diophantienne}的一项重大成就，上面的提纲远未充分展现这一点。事实上，先有\term{弱 Mordell--Weil 定理}{weak Mordell--Weil theorem}{théorème de Mordell--Weil faible}，它断言：对整数 $n>0$ 以及素域上有限生成的域 $k$，商群 $J(k)/n$ 有限。随后发展 Abel 簇上的\term{高度理论}{height theory}{théorie de la hauteur}，从弱定理推出 $J(k)$ 有限生成的强定理。至少当 $k$ 为数域时，证明按此进行。要处理素域上有限生成的域，还需要别的论证；要证明 Néron--Severi 群有限生成的 Néron--Severi 定理，也同样如此。鉴于 Mordell--Weil 论证与 Néron--Severi 论证之间众所周知的类似性，人们不禁会问：即使只在数域上，是否也能用恰当的高度理论，从 $\Pic(X)/n$ 的有限性直接推出 $\Pic(X)$ 有限生成，而无需对 $\Pic(X)$ 进行逐层分解？
+
+\origpage{12}{7}
+\paragraph{注 1.9.2}
+至少在数域上，弱 Mordell--Weil 定理的证明原理如下。使用单射
+\[
+J(k)/nJ(k)\lhook\joinrel\longrightarrow H^1_{\et}(k,{}_nJ),
+\]
+并利用 $J/k$ 的固有性，证明其像由在 $J$ 的\term{坏约化}{bad reduction}{mauvaise réduction}素位和整除 $n$ 的素位以外均非分歧的上同调类组成。另一方面，再证明这些非分歧类组成一个有限群。
+
+至少当 $n$ 在有限生成域 $k$ 中可逆时，还有另一种看法：把 (1.2) 中的箭头嵌入下述交换图，其中水平箭头都是单射：
+\[
+\begin{tikzcd}[ampersand replacement=\&,column sep=large]
+\Pic(\mathsf X)/n\Pic(\mathsf X) \arrow[r,hook] \arrow[d] \& H^2_{\et}(\mathsf X,\mu_n) \arrow[d]\\
+\Pic(X)/n\Pic(X) \arrow[r,hook] \& H^2_{\et}(X,\mu_n).
+\end{tikzcd}
+\]
+这里 $\mathsf X$ 是光滑 $k$ 簇 $X$ 的一个\term{正则模型}{regular model}{modèle régulier}。当 $\operatorname{char}(k)>0$ 时，该模型在某个有限域上有限型；当 $\operatorname{char}(k)=0$ 时，它在 $\Spec(\mathbb Z)$ 的某个使 $n$ 可逆的非空开子集上有限型。$\mathsf X$ 的正则性保证左边竖直箭头满射，而仅凭 $\mathsf X$ 在 $S$ 上有限型，便能保证 $H^i_{\et}(\mathsf X,\mu_n)$ 有限（见 [M2]，II，7.1；它一方面使用 [SGA4~1/2] 中 Deligne 的有限性定理，另一方面使用数域整数环的平展上同调的计算）。应注意，上述证明不需要假设 $X/k$ 固有。
+
+正如 S.~Saito（[S4]）所指出的，这个证明的优点在于，它可以部分地推广到更高余维闭链的研究中（见后文第 7 节定理 7.5）。
+
+\origpage{13}{8}
+\section*{§2. Chow 群}
+\addcontentsline{toc}{section}{§2. Chow 群}
+（参考文献：Fulton [F] 第一章。）
+
+前一节给出的 Picard 群定义自然地推广到任意维数或余维的闭链。
+
+我们沿用 Fulton 的处理，给出基本定义和性质。\term{同调理论}{homological theory}{théorie homologique}的定义对可能有奇点的概形也适用，比旧式的\term{有理等价}{rational equivalence}{équivalence rationnelle}理论更自然。
+
+设 $k$ 是一个域，$X$ 是代数 $k$ 簇，即 $k$ 上\term{有限型}{of finite type}{de type fini}且\term{分离}{separated}{séparé}的概形。回顾，概形 $X$ 的点（概形意义下）与 $X$ 的整闭子概形之间有自然双射：点 $P$ 对应于它的概形闭包 $V(P)$，后者的\term{泛点}{generic point}{point générique}正是 $P$。点 $P$ 的维数按定义就是 $V(P)$ 的维数，也就是 $X$ 在 $P$ 处的局部环的\term{剩余域}{residue field}{corps résiduel} $k(P)$ 在 $k$ 上的超越次数。用概形点的语言代替旧的闭子簇语言，将会更方便。
+
+定义 $X$ 上 $i$ 维闭链群 $Z_i(X)$ 为以 $X$ 的所有 $i$ 维点为基的自由群。
+
+对这样的概形之间的任意\term{固有态射}{proper morphism}{morphisme propre} $f:X\longrightarrow Y$，都有诱导映射 $f_*:Z_i(X)\longrightarrow Z_i(Y)$。该映射由如下规则线性延拓：对 $X$ 的一个 $i$ 维点 $P$，若 $\dim f(P)<i$，则令其像为零闭链；若 $\dim f(P)=i$，则令其像为 $[k(P):k(f(P))]f(P)\in Z_i(Y)$，其中 $[k(P):k(f(P))]$ 为剩余域的有限扩张 $k(P)/k(f(P))$ 的次数。\footnote{译注：原文将这里的推前闭链写成 $[k(P):k(f(P))]P\in Z_i(Y)$；按推前的定义，$Y$ 上的点应为 $f(P)$，此处据此改正。}
+
+给定一个 $d$ 维整 $k$ 簇 $Y$ 及其有理函数域中的元素 $f\in k(Y)^*$，可以将 $f$ 的除子 $\operatorname{div}(f)$ 定义为 $Z_{d-1}(Y)$ 的元素。当 $Y$ 为\term{正规}{normal}{normale}簇时，其余维 $1$ 点 $P$ 处的正则局部环都是离散赋值环，定义赋值 $v_P:k(Y)^*\longrightarrow\mathbb Z$。依 Weil 的定义，令
+\[
+\operatorname{div}(f)=\sum_{P\in Y^{(1)}}v_P(f)P.
+\]
+对任意整簇 $Y$，仍然可以定义 $\operatorname{div}(f)\in Z_{d-1}(Y)$：或者借助 Artin 环的长度，或者使用 $Y$ 的\term{正规化}{normalization}{normalisation} $r:Y_n\longrightarrow Y$，定义 $\operatorname{div}_Y(f)=r_*\operatorname{div}_{Y_n}(f)$。
+
+一个很有用的公式是：若 $p:X\longrightarrow Y$ 为同维整簇（即不可约且约化的簇）之间的固有满 $k$ 态射，因而域扩张 $k(X)/k(Y)$ 有限，则对 $f\in k(X)^*$ 有
+\[
+p_*(\operatorname{div}(f))=\operatorname{div}(N_{k(X)/k(Y)}(f)),
+\]
+其中 $N$ 表示\term{范数}{norm}{norme}。
+
+给定代数 $k$ 簇 $X$ 及整数 $i\ge0$，定义 $i$ 维\term{Chow 群}{Chow group}{groupe de Chow} $\CH_i(X)$ 为 $Z_i(X)$ 对下述子群的商：该子群由所有 $p_*(\operatorname{div}(f))$ 生成，其中 $p:Z\longrightarrow X$ 遍历从 $(i+1)$ 维整 $k$ 簇 $Z$ 到 $X$ 的固有 $k$ 态射，$f$ 遍历每个这样的 $Z$ 上的非零有理函数。在这一定义中，只需考虑在其像上双有理的 $k$ 态射即可。此外，可以只考虑正规的 $Z$，也可以只考虑未必正规的闭子簇 $Z\subset X$。
+
+当 $k$ 簇 $X$ 为 $d$ 维\term{等维}{equidimensional}{équidimensionnelle}簇时，还考虑 Chow 群 $\CH^i(X)=\CH_{d-i}(X)$。
+
+\paragraph{Chow 群的基本性质}
+\begin{enumerate}[label=\arabic*)]
+\item \textbf{关于固有 $k$ 态射的协变函子性。}整 $k$ 簇之间的任意 $k$ 态射 $f:X\longrightarrow Y$ 诱导同态 $f_*:\CH_i(X)\longrightarrow\CH_i(Y)$。这一点可由上面的公式看出。
+\item \textbf{关于平坦态射的反变函子性。}若 $f:X\longrightarrow Y$ 是相对维数为 $n$ 的\term{平坦态射}{flat morphism}{morphisme plat}，则自然地定义映射 $f^*:\CH_i(Y)\longrightarrow\CH_{i+n}(X)$。若 $X$、$Y$ 等维，则也可写成 $f^*:\CH^i(Y)\longrightarrow\CH^i(X)$。
+\origpage{14}{9}
+\item 若 $f:X\longrightarrow Y$ 是次数为 $d$ 的有限平坦态射，则复合映射
+\[
+\CH_i(Y)\xrightarrow{f^*}\CH_i(X)\xrightarrow{f_*}\CH_i(Y)
+\]
+就是乘以 $d$ 的映射。
+\item \textbf{局部化正合列。}设 $i:Y\subset X$ 为闭子簇的包含，$j:U\hookrightarrow X$ 为其补开子集的包含，$i\ge0$ 为整数，则有正合列
+\[
+\CH_i(Y)\xrightarrow{i_*}\CH_i(X)\xrightarrow{j^*}\CH_i(U)\longrightarrow0.
+\]
+\item \textbf{零闭链。}设 $X$ 为固有 $k$ 簇。结构态射 $X\longrightarrow\Spec(k)$ 诱导同态 $\CH_0(X)\longrightarrow\CH_0(\Spec(k))=\mathbb Z$，称为次数映射，它将零闭链 $\sum n_PP$ 的类映为整数 $\sum n_P[k(P):k]$。以 $A_0(X)$ 表示这一同态的核。
+\end{enumerate}
+群 $A_0(X)$ 是光滑固有整 $k$ 簇的 $k$ \term{双有理不变量}{birational invariant}{invariant birationnel}；利用对应和\term{移动引理}{moving lemma}{lemme de déplacement}（它对任意光滑簇上的零闭链成立）即可看出这一点（[F]，16.1.11）。
+
+在代数闭域 $k$ 上，对任意不可约射影 $k$ 簇，群 $A_0(X)$ 都是\term{可除群}{divisible group}{groupe divisible}（归约到光滑射影曲线的情形即可）。
+
+若 $X$ 是域 $k$ 上的光滑射影几何整簇，其\term{Albanese 簇}{Albanese variety}{variété d'Albanese}为 $\underline{\Alb}_X$（它是 Picard 簇 $\underline{\Pic}^{\,0}_{X/k}$ 的对偶），则有典范映射
+\[
+\operatorname{alb}:A_0(X)\longrightarrow\underline{\Alb}_X(k),
+\]
+取值于 Albanese 簇的 $k$ 有理点群。\footnote{译注：原文此处写作“$X$ 的 $k$ 有理点群”，与所列映射的靶 $\underline{\Alb}_X(k)$ 不符；这里按该靶群改为 Albanese 簇的有理点群。}此映射的余核为挠群；当 $k$ 为代数闭域时，它是满射。事实上，只需将它限制到合适的光滑射影 $k$ 曲线 $C\subset X$ 所诱导的映射 $A_0(C)\longrightarrow\underline{\Alb}_X(k)$ 即可看出。
+
+本节最后指出，在研究余维大于 $1$ 的 Chow 群时，会遇到两个根本困难。设 $X$ 是域 $k$ 上的光滑射影几何整簇。
+
+\paragraph{第一个困难}
+若 $F$ 为包含 $k$ 的域，$j\ge2$ 为整数，则自然映射 $\CH^j(X)\longrightarrow\CH^j(X_F)$ 未必是单射，这与 $j=1$ 的情形不同（第 1 节，命题 1.1）。此映射的核为挠群，但当 $k$ 非代数闭时，它可能非零。此外，若 $F/k$ 是 Galois 群为 $G$ 的扩张，即使假设 $X$ 有一个 $k$ 有理点，映射 $\CH^j(X)\longrightarrow\CH^j(X_F)^G$ 也未必满射（只能断言其余核为挠群）。
+
+因此，第 1 节中的论证在这里不能直接使用。
+
+\paragraph{第二个困难}
+Mumford 首先证明，对于 $j\ge2$，即使去掉其离散部分，即例如在 $k=\mathbb C$ 时去掉它在 $X$ 的整系数上同调中的像，$\CH^j(X)$ 一般也远非一个代数簇所能表示。S.~Bloch [B2]，第 1.19 页给出了完全不同的证明（另见 [BS]）。例如，若 $k$ 代数闭且不可数，$X$ 是一张曲面，上述自然映射 $\operatorname{alb}:A_0(X)\longrightarrow\underline{\Alb}_X(k)$ 的核可能十分庞大（不能用支集落在 $X$ 中一条曲线上的闭链将其覆盖）。更多讨论请见 Jannsen 的学位论文（\emph{Mixed Motives and Algebraic K-Theory}，Springer LNM~1400，第 9、10 节）。
+
+\origpage{15}{10}
+\section*{§3. $K$ 理论、平展上同调与 Chow 群中的挠元（Bloch 纲领）}
+\addcontentsline{toc}{section}{§3. $K$ 理论、平展上同调与 Chow 群中的挠元}
+\subsection*{3.1. 域与离散赋值环}
+给定一个域 $F$，定义群 $K_2F$ 为 $F^*\otimes F^*$ 对由满足 $a+b=1$ 的元素 $a\otimes b$ 生成的子群的商。若 $F$ 是某个离散赋值环的分式域，赋值为 $v:F^*\longrightarrow\mathbb Z$，剩余域为 $\kappa$，则有\term{温和符号}{tame symbol}{symbole modéré}
+\[
+\begin{aligned}
+T:K_2F&\longrightarrow\kappa^*=K_1\kappa,\\
+\{a,b\}&\longmapsto(-1)^{v(a)v(b)}\operatorname{cl}(a^{v(b)}/b^{v(a)}),
+\end{aligned}
+\]
+其中 $\operatorname{cl}(c)$ 表示单位 $c\in A^*$ 在 $\kappa^*$ 中的类。它类似于由赋值 $v$ 定义的箭头 $K_1F=F^*\longrightarrow K_0\kappa=\mathbb Z$。
+
+我们假定读者熟悉 Galois 上同调的初等内容。设域 $k$ 的一个\term{可分闭包}{separable closure}{clôture séparable}为 $k_s$，$G=\Gal(k_s/k)$。对离散连续 $G$ 模 $M$，以 $H^i_{\et}(k,M)$，有时简记 $H^i(k,M)$，表示 Galois 上同调群 $H^i(G,M)$。当 $n$ 在 $k$ 中可逆时，以 $\mu_n$ 表示 $k_s^*$ 中的 $n$ 次单位根群；当整数 $j>0$ 时，以 $\mu_n^{\otimes j}$ 表示 $G$ 模 $\mu_n\otimes\cdots\otimes\mu_n$（$j$ 个因子）。约定 $\mu_n^{\otimes0}=\mathbb Z/n$，$G$ 在其上平凡作用。
+
+\term{Kummer 理论}{Kummer theory}{théorie de Kummer}，即正合列
+\[
+1\longrightarrow\mu_n\longrightarrow k_s^*\xrightarrow{x\mapsto x^n}k_s^*\longrightarrow1
+\]
+的 Galois 上同调长正合列，结合 Hilbert 第 90 定理 $H^1(k,k_s^*)=0$，给出同构
+\[
+k^*/k^{*n}\simeq H^1(k,\mu_n).
+\]
+由此通过\term{杯积}{cup product}{cup-produit}得到映射
+\[
+\begin{aligned}
+(k^*\otimes_{\mathbb Z}k^*)/n
+&\longrightarrow k^*/k^{*n}\otimes_{\mathbb Z}k^*/k^{*n}\\
+&\simeq H^1(k,\mu_n)\otimes_{\mathbb Z}H^1(k,\mu_n)
+\longrightarrow H^2(k,\mu_n^{\otimes2}).
+\end{aligned}
+\]
+一个基于范数的纯代数计算（见 [S]）表明，此同态将所有满足 $x+y=1$ 的元素 $x\otimes y$ 映为零，因此诱导同态
+\[
+K_2k/nK_2k\longrightarrow H^2(k,\mu_n^{\otimes2}).
+\]
+\term{Merkur'ev--Suslin 定理}{Merkur'ev--Suslin theorem}{théorème de Merkur'ev--Suslin}（[MS]、[S]）保证这个同态实际上是同构。若如前所述，$k$ 是某个离散赋值环的分式域，剩余域为 $\kappa$，则有交换图
+\[
+\begin{tikzcd}[ampersand replacement=\&,column sep=large]
+K_2k \arrow[r] \arrow[d] \& H^2(k,\mu_n^{\otimes2}) \arrow[d]\\
+\kappa^* \arrow[r] \& H^1(\kappa,\mu_n),
+\end{tikzcd}
+\]
+其中左边竖直箭头为温和符号，右边竖直箭头为 Galois 上同调中的\term{留数}{residue}{résidu}。后者是显然的箭头 $H^1(k,\mu_n)\longrightarrow H^0(\kappa,\mathbb Z/n)$（即赋值所诱导的 $k^*/k^{*n}\longrightarrow\mathbb Z/n$）在更高次数的类似物。
+
+\origpage{16}{11}
+\subsection*{3.2. Bloch 方法}
+设 $X$ 是整代数 $k$ 簇，$n>0$ 是在 $k$ 中可逆的整数。考虑以下复形的交换图，其中 $X^i$ 表示 $X$ 的余维 $i$ 点的集合：
+\begin{center}
+\resizebox{\linewidth}{!}{$\begin{tikzcd}[ampersand replacement=\&,column sep=small,row sep=large]
+\text{（次数）}\&2\&1\&0\&\\
+\mathcal C \& \displaystyle\bigoplus_{x\in X^{i-2}}K_2k(x) \arrow[r] \arrow[d,"{\times n}"] \& \displaystyle\bigoplus_{x\in X^{i-1}}k(x)^* \arrow[r] \arrow[d,"{\times n}"] \& \displaystyle\bigoplus_{x\in X^i}\mathbb Z \arrow[r] \arrow[d,"{\times n}"] \& 0\\
+\mathcal C \& \displaystyle\bigoplus_{x\in X^{i-2}}K_2k(x) \arrow[r] \arrow[d] \& \displaystyle\bigoplus_{x\in X^{i-1}}k(x)^* \arrow[r] \arrow[d] \& \displaystyle\bigoplus_{x\in X^i}\mathbb Z \arrow[r] \arrow[d] \& 0\\
+\mathcal D \& \displaystyle\bigoplus_{x\in X^{i-2}}H^2(k(x),\mu_n^{\otimes2}) \arrow[r] \arrow[d] \& \displaystyle\bigoplus_{x\in X^{i-1}}H^1(k(x),\mu_n) \arrow[r] \arrow[d] \& \displaystyle\bigoplus_{x\in X^i}H^0(k(x),\mathbb Z/n) \arrow[r] \arrow[d] \& 0\\
+\&0\&0\&0\&
+\end{tikzcd}$}
+\end{center}
+在此图中，复形 $\mathcal C$ 的水平箭头依次为温和符号和除子映射（更精确地说，先将有关簇正规化，再取温和符号、除子映射并求和）。复形 $\mathcal D$ 的箭头是 Galois 上同调中的留数映射。从 $\mathcal C$ 到 $\mathcal D$ 的箭头已在第 3.1 节中说明。各竖直复形正合：中间一列的正合性来自 Kummer 理论，左边一列的正合性由 Merkur'ev--Suslin 定理保证。同调群 $H_0(\mathcal C)$ 就是 $\CH^i(X)$。作一次\term{图追踪}{diagram chase}{chasse au diagramme}，只用到 Merkur'ev--Suslin 定理中的满射性（甚至可以略去图中左上角），便得到正合列
+\[
+0\longrightarrow H_1(\mathcal C)/n\longrightarrow H_1(\mathcal D)\longrightarrow{}_nH_0(\mathcal C)\longrightarrow0,
+\]
+即
+\begin{equation*}
+0\longrightarrow H_1(\mathcal C)/n\longrightarrow H_1(\mathcal D)\longrightarrow{}_n\CH^i(X)\longrightarrow0.\tag{3.1}
+\end{equation*}
+（这种对 Bloch 原始论证的简化表述见 [CSS]；它是 T.~Ekedahl 向我们指出的。）
+
+\textit{问题：如何控制群 $H_1(\mathcal C)$ 和 $H_1(\mathcal D)$？}
+
+实际上，复形 $\mathcal C$ 是\term{Gersten 复形}{Gersten complex}{complexe de Gersten}的一部分：
+\[
+\bigoplus_{x\in X^0}K_i k(x)\longrightarrow\cdots\longrightarrow\bigoplus_{x\in X^{i-j}}K_j k(x)\longrightarrow\cdots\longrightarrow\bigoplus_{x\in X^i}\mathbb Z\longrightarrow0,
+\]
+其中各项由域的\term{高阶 $K$ 理论}{higher $K$-theory}{$K$-théorie supérieure}定义。当 $X$ 在某个域上光滑时，Quillen [Q] 证明的 \term{Gersten 猜想}{Gersten conjecture}{conjecture de Gersten}保证：此复形是 $X$ 上 Zariski 层 $\mathcal K_i$ 的一个\term{松弛消解}{flasque resolution}{résolution flasque}的整体截面复形。这里 $\mathcal K_i$ 是预层 $U\longmapsto K_i(H^0(U,\mathcal O_X))$ 的层化，而 $K_i(A)$ 是 Quillen 与环 $A$ 相联系的群。因此，上面记作 $H_1(\mathcal C)$ 的群就是 Zariski 上同调群 $H^{i-1}(X,\mathcal K_i)$。
+
+\origpage{17}{12}
+同样，复形 $\mathcal D$ 实际上是下述平展上同调群复形的一部分：\footnote{译注：原式将余维 $i-j$ 点处的中间项误写为 $H^{i-j}(k(x),\mu_n^{\otimes(i-j)})$。按照上一页复形中“余维加上上同调次数等于 $i$”的规律，这一项应为 $H^j(k(x),\mu_n^{\otimes j})$；此处据此改正。}
+\[
+\begin{split}
+\bigoplus_{x\in X^0}H^i(k(x),\mu_n^{\otimes i})\longrightarrow\cdots
+\longrightarrow\bigoplus_{x\in X^{i-j}}H^j(k(x),\mu_n^{\otimes j})\\
+\longrightarrow\cdots\longrightarrow\bigoplus_{x\in X^i}H^0(k(x),\mathbb Z/n)\longrightarrow0.
+\end{split}
+\]
+箭头由高阶留数映射定义。当 $X$ 光滑时，Bloch 与 Ogus [BO] 证明的 Gersten 猜想的类似结果保证：此复形是 Zariski 层 $\mathcal H^i(\mu_n^{\otimes i})$ 在 $X$ 的 Zariski 拓扑下的一个松弛消解的整体截面复形；该层由预层 $U\longmapsto H^i_{\et}(U,\mu_n^{\otimes i})$ 所伴随得到。对于任意 $i,j$ 的层 $\mathcal H^i(\mu_n^{\otimes j})$ 也有类似结论。因此，上面考虑的群 $H_1(\mathcal D)$ 就是 Zariski 上同调群 $H^{i-1}(X,\mathcal H^i(\mu_n^{\otimes i}))$。
+
+结合这两个结果可知，在光滑情形下，正合列 (3.1) 可以写成
+\begin{equation*}
+0\longrightarrow H^{i-1}(X,\mathcal K_i)/n\longrightarrow H^{i-1}(X,\mathcal H^i(\mu_n^{\otimes i}))\longrightarrow{}_n\CH^i(X)\longrightarrow0.\tag{3.2}
+\end{equation*}
+注意，Bloch--Ogus 的结果也表明 $H^i(X,\mathcal H^i(\mu_n^{\otimes i}))$ 可与 $H_0(\mathcal D)$ 等同，而后者正是商群 $\CH^i(X)/n$。
+
+Bloch 研究 Chow 群挠元的方法中，最后一个要素是由局部到整体的\term{谱序列}{spectral sequence}{suite spectrale}（参见 [BO]）
+\begin{equation*}
+E_2^{pq}=H^p(X,\mathcal H^q(\mu_n^{\otimes j}))\Longrightarrow H^n_{\et}(X,\mu_n^{\otimes j}).\tag{3.3}
+\end{equation*}
+如 Zariski 上同调所应有的那样，$E_2^{pq}$ 集中在区域 $0\le p\le d=\dim(X)$；当 $X$ 光滑时，还集中在锥形区域 $p\le q$ 中。后一点较不平凡，它来自光滑情形下上述松弛消解的存在性：$\mathcal H^q(\mu_n^{\otimes j})$ 的消解长度为 $q$。以下常把 (3.3) 称为 \term{Bloch--Ogus 谱序列}{Bloch--Ogus spectral sequence}{suite spectrale de Bloch--Ogus}。
+
+特别地，有自然映射
+\begin{equation*}
+\gamma_i:H^{i-1}(X,\mathcal H^i(\mu_n^{\otimes i}))\longrightarrow H^{2i-1}_{\et}(X,\mu_n^{\otimes i}),\tag{3.4}
+\end{equation*}
+从而得到下图（$X$ 光滑）：
+\begin{equation*}
+\begin{tikzcd}[ampersand replacement=\&,column sep=small]
+0 \arrow[r] \& H^{i-1}(X,\mathcal K_i)/n \arrow[r] \& H^{i-1}(X,\mathcal H^i(\mu_n^{\otimes i})) \arrow[r] \arrow[d,"{\gamma_i}"] \& {}_n\CH^i(X) \arrow[r] \&0\\
+\&\& H^{2i-1}_{\et}(X,\mu_n^{\otimes i}).\&\&
+\end{tikzcd}\tag{3.5}
+\end{equation*}
+令 $n$ 遍历一个固定的、在 $k$ 中可逆的素数 $l$ 的所有幂，取归纳极限，得到下图：
+\begin{center}
+\resizebox{\linewidth}{!}{$\begin{tikzcd}[ampersand replacement=\&,column sep=small]
+0 \arrow[r] \& H^{i-1}(X,\mathcal K_i)\otimes\mathbb Q_l/\mathbb Z_l \arrow[r] \& H^{i-1}(X,\mathcal H^i(\mathbb Q_l/\mathbb Z_l(i))) \arrow[r] \arrow[d,"{\gamma_i}"] \& \CH^i(X)_{l\text{-}\mathrm{tors}} \arrow[r] \&0\\
+\&\& H^{2i-1}_{\et}(X,\mathbb Q_l/\mathbb Z_l(i)).\&\&
+\end{tikzcd}$}\hfill\textup{(3.6)}
+\end{center}
+
+\origpage{18}{13}
+还可以如下补充这些图。对于任意在 $k$ 中可逆的整数 $m$，光滑 $k$ 簇 $X$ 上存在 Grothendieck 的\term{闭链类映射}{cycle class map}{application cycle}
+\[
+\rho:\CH^i(X)\longrightarrow H^{2i}_{\et}(X,\mu_m^{\otimes i}),
+\]
+Deligne 在 [SGA4~1/2] 中描述了此映射。
+
+另一方面，由 $X$ 上平展层的正合列
+\[
+1\longrightarrow\mu_m^{\otimes i}\longrightarrow\mu_{mn}^{\otimes i}\longrightarrow\mu_n^{\otimes i}\longrightarrow1
+\]
+得到边缘映射（\term{Bockstein 映射}{Bockstein map}{application de Bockstein}）
+\[
+\beta:H^{2i-1}_{\et}(X,\mu_n^{\otimes i})\longrightarrow H^{2i}_{\et}(X,\mu_m^{\otimes i}).
+\]
+[CSS] 中进行的一项非平凡核算表明，除可能相差一个符号外，下图交换：
+\begin{equation*}
+\begin{tikzcd}[ampersand replacement=\&,column sep=large,row sep=large]
+{}_n\CH^i(X) \arrow[r,"{\rho}"] \& H^{2i}_{\et}(X,\mu_m^{\otimes i})\\
+H^{i-1}(X,\mathcal H^i(\mu_n^{\otimes i})) \arrow[u,"{\alpha_i}"] \arrow[r,"{\gamma_i}"] \& H^{2i-1}_{\et}(X,\mu_n^{\otimes i}) \arrow[u,"{\beta}"']
+\end{tikzcd}\tag{3.7}
+\end{equation*}
+将 $n,m$ 限制为在 $k$ 中可逆的素数 $l$ 的幂，对 $n$ 取归纳极限、对 $m$ 取投射极限，得到除可能相差一个符号外交换的图：
+\begin{equation*}
+\begin{tikzcd}[ampersand replacement=\&,column sep=large,row sep=large]
+\CH^i(X)_{l\text{-}\mathrm{tors}} \arrow[r,"{\rho}"] \& H^{2i}_{\et}(X,\mathbb Z_l(i))\\
+H^{i-1}(X,\mathcal H^i(\mathbb Q_l/\mathbb Z_l(i))) \arrow[u,"{\alpha_i}"] \arrow[r,"{\gamma_i}"] \& H^{2i-1}_{\et}(X,\mathbb Q_l/\mathbb Z_l(i)) \arrow[u,"{\beta}"']
+\end{tikzcd}\tag{3.8}
+\end{equation*}
+
+\subsection*{3.3. 余维 $1$ 与 $2$ 的闭链}
+\subsubsection*{3.3.1. 余维 $1$ 的闭链}
+这里 (3.2) 成为\footnote{译注：原文在本式及紧接着的同构中，将 $H^0(X,\mathcal H^1(\mu_n))$ 的第一个上标误印为 $1$；依照 (3.2) 及 Bloch--Ogus 谱序列，应为 $0$，此处据此改正。}
+\[
+0\longrightarrow H^0(X,\mathcal K_1)/n\longrightarrow H^0(X,\mathcal H^1(\mu_n))\longrightarrow{}_n\CH^1(X)\longrightarrow0,
+\]
+而 Bloch--Ogus 谱序列给出同构
+\[
+H^0(X,\mathcal H^1(\mu_n))\simeq H^1_{\et}(X,\mu_n),
+\]
+因而得到正合列
+\[
+0\longrightarrow H^0(X,\mathbb G_m)/n\longrightarrow H^1_{\et}(X,\mu_n)\longrightarrow{}_n\CH^1(X)\longrightarrow0.
+\]
+可以验证，除可能相差一个符号外，这就是 Kummer 正合列（[B1]，命题 3.6）。
+
+\origpage{19}{14}
+从系数为 $\mu_n$ 的 Bloch--Ogus 谱序列还得到下述本质上熟知的正合列：
+\begin{equation*}
+0\longrightarrow\CH^1(X)/n\longrightarrow H^2_{\et}(X,\mu_n)\longrightarrow H^0(X,\mathcal H^2(\mu_n))\longrightarrow0,\tag{3.9}
+\end{equation*}
+其中 $H^0(X,\mathcal H^2(\mu_n))$ 可与 $X$ 的 Brauer 群的 $n$ 挠子群 ${}_nH^2_{\et}(X,\mathbb G_m)$ 等同。
+
+\subsubsection*{3.3.2. 余维二的闭链}
+在 Bloch--Ogus 谱序列中，箭头 $\gamma_2$ 总是单射。由 (3.5)、(3.6) 得到下述重要结果（Bloch 加上 Merkur'ev--Suslin，参见 [CSS]）：
+\begin{statement}{定理 3.3.2}
+若 $X$ 在域 $k$ 上光滑，$n$ 在 $k$ 中可逆，则群 ${}_n\CH^2(X)$ 是平展上同调群 $H^3_{\et}(X,\mu_n^{\otimes2})$ 的\term{子商}{subquotient}{sous-quotient}。若素数 $l$ 与 $k$ 的特征互素，则群 $\CH^2(X)_{l\text{-}\mathrm{tors}}$ 是 $H^3_{\et}(X,\mathbb Q_l/\mathbb Z_l(2))$ 的子商。
+\end{statement}
+仔细分析上面的论证可知，对 (3.2) 只需保留满射 $H^{i-1}(X,\mathcal H^i(\mu_n^{\otimes i}))\longrightarrow{}_n\CH^i(X)\longrightarrow0$；而它仅由 Merkur'ev--Suslin 定理中的满射性得到（该定理的陈述不使用 Quillen 的 $K$ 理论）。
+
+从系数为 $\mu_n^{\otimes2}$ 的 Bloch--Ogus 谱序列得到长正合列
+\begin{equation*}
+\begin{split}
+0\longrightarrow H^1(X,\mathcal H^2(\mu_n^{\otimes2}))\xrightarrow{\gamma_2}H^3_{\et}(X,\mu_n^{\otimes2})\longrightarrow H^0(X,\mathcal H^3(\mu_n^{\otimes2}))\\
+\longrightarrow\CH^2(X)/n\longrightarrow H^4_{\et}(X,\mu_n^{\otimes2}).
+\end{split}\tag{3.10}
+\end{equation*}
+为后文第 7 节的应用，先指出：结合 (3.5) 与此列的开头，可以得到正合列
+\begin{equation*}
+0\longrightarrow H^1(X,\mathcal K_2)/n\longrightarrow NH^3_{\et}(X,\mu_n^{\otimes2})\longrightarrow{}_n\CH^2(X)\longrightarrow0.\tag{3.11}
+\end{equation*}
+另一方面，我们希望找出映射
+\[
+H^3_{\et}(X,\mu_n^{\otimes2})\longrightarrow H^0(X,\mathcal H^3(\mu_n^{\otimes2}))
+\]
+为满射的情形；也就是说，$X$ 的函数域上的一个上同调类，如果处处局部来自上同调类，那么是否自动来自一个整体上同调类？若如此，便可通过单射 $\CH^2(X)/n\lhook\joinrel\longrightarrow H^4_{\et}(X,\mu_n^{\otimes2})$ 控制商群 $\CH^2(X)/n$。遗憾的是，正如 V.~Srinivas 向我们指出的，后一个映射并不总是单射。只需考虑复射影空间 $\mathbb P^3$ 中一张一般四次曲面（其 Picard 群由超平面截面生成）的补集所构成的光滑簇 $X$，便能看出这一点。对于光滑射影且有 $k$ 有理点的 $X$，此映射是否为单射，当时仍是一个未解决的问题。\footnote{原书后补勘误指出，Chad Schoen（\emph{J. Algebraic Geom.} \textbf{11} (2002)，41--100）证明了此映射一般并非单射。参见\hyperref[errata-ct]{第一篇勘误与评论}。}
+
+\origpage{20}{15}
+\section*{§4. 可分闭域上的簇}
+\addcontentsline{toc}{section}{§4. 可分闭域上的簇}
+当基域\term{可分闭}{separably closed}{séparablement clos}，且 $X$ 为 $d$ 维光滑连通簇时，对 $X$ 中任意一点 $x$，域 $k(x)$ 的\term{上同调维数}{cohomological dimension}{dimension cohomologique}至多为 $d$。因此，Bloch--Ogus 谱序列中所有 $q>d$ 的项都为零。正如较晚才被注意到的那样（参见 [BV]、[S3]），由此便可简便地推出本节中主要由 Roitman 和 Bloch 得到的定理，而无需预先归约到维数 $2$。
+
+\begin{statement}{定理 4.1}
+设 $X$ 是可分闭域 $k$ 上的 $d$ 维光滑连通簇，$n$ 在 $k$ 中可逆。则：
+\begin{enumerate}[label=(\roman*)]
+\item 群 ${}_n\CH^d(X)$ 是平展上同调群 $H^{2d-1}_{\et}(X,\mu_n^{\otimes d})$ 的商群。
+\item 群 ${}_n\CH^d(X)$ 有限。
+\item 若 $X$ 为光滑\term{仿射簇}{affine variety}{variété affine}且 $d>1$，则 $\CH^d(X)$ 没有阶与 $\operatorname{char}(k)$ 互素的挠元。
+\end{enumerate}
+\end{statement}
+\begin{proof}
+此时系数为 $\mu_n^{\otimes d}$ 的谱序列确实给出同构
+\[
+\gamma_d:H^{d-1}(X,\mathcal H^d(\mu_n^{\otimes d}))\simeq H^{2d-1}_{\et}(X,\mu_n^{\otimes d}),
+\]
+而图 (3.5) 给出正合列
+\begin{equation*}
+0\longrightarrow H^{d-1}(X,\mathcal K_d)/n\longrightarrow H^{d-1}(X,\mathcal H^d(\mu_n^{\otimes d}))\longrightarrow{}_n\CH^d(X)\longrightarrow0.\tag{4.1}
+\end{equation*}
+平展上同调群 $H^p_{\et}(X,\mu_n^{\otimes j})$ 的有限性，是在代数闭域上任意簇上都成立的一般现象。最后，可分闭域上任意仿射簇 $X$ 的群 $H^p_{\et}(X,\mu_n^{\otimes j})$ 在 $p>\dim X$ 时为零。
+\end{proof}
+
+\begin{statement}{定理 4.2（Roitman 定理）}
+设 $k$ 为可分闭域，$X$ 为光滑射影连通 $k$ 簇。Albanese 映射
+\[
+\operatorname{alb}:A_0(X)\longrightarrow\underline{\Alb}_X(k)
+\]
+在阶与 $k$ 的特征互素的挠子群上诱导同构。
+\end{statement}
+\begin{proof}
+(i) 取足够一般的超平面截面，可以找到光滑射影连通曲线 $C\subset X$，使诱导映射 $\underline{\Alb}_C\longrightarrow\underline{\Alb}_X$ 为 Abel 簇的满同态。更精确地说，对任意素数 $l$ 及整数 $n>0$，它都在 $l^n$ 挠点上诱导满射
+\[
+{}_{l^n}\underline{\Alb}_C(k)\longrightarrow{}_{l^n}\underline{\Alb}_X(k).
+\]
+这归结为证明 $H^1_{\et}(X,\mathbb Z/l^n)\longrightarrow H^1_{\et}(C,\mathbb Z/l^n)$ 是单射，而这是 Zariski 连通性定理的推论，见 [B1] 或 [B2]。
+
+在自然交换图
+\[
+\begin{tikzcd}[ampersand replacement=\&,column sep=large]
+A_0(C) \arrow[r] \arrow[d] \& \underline{\Alb}_C(k) \arrow[d]\\
+A_0(X) \arrow[r] \& \underline{\Alb}_X(k)
+\end{tikzcd}
+\]
+\origpage{21}{16}
+中，上方水平箭头是同构。因此映射 ${}_{l^n}A_0(X)\longrightarrow{}_{l^n}\underline{\Alb}_X(k)$ 为满射。
+
+(ii) \textbf{引理。}存在同构
+\[
+H^{2d-1}_{\et}(X,\mathbb Q_l/\mathbb Z_l(d))\simeq\underline{\Alb}_X(k)_{l\text{-}\mathrm{tors}}.
+\]
+
+\textit{引理的证明。}\term{Poincaré 对偶}{Poincaré duality}{dualité de Poincaré}保证配对
+\[
+H^{2d-1}_{\et}(X,\mu_{l^n}^{\otimes d})\times H^1_{\et}(X,\mu_{l^n})\longrightarrow H^{2d}_{\et}(X,\mu_{l^n}^{\otimes(d+1)})\simeq\mu_{l^n}
+\]
+是完美对偶。由此得到同构
+\[
+H^{2d-1}_{\et}(X,\mu_{l^n}^{\otimes d})\simeq\Hom({}_{l^n}\Pic(X),\mathbb Q_l/\mathbb Z_l(1)).
+\]
+取归纳极限便得到
+\[
+\begin{aligned}
+H^{2d-1}_{\et}(X,\mathbb Q_l/\mathbb Z_l(d))
+&\simeq\Hom\left(\varprojlim_{n>0}{}_{l^n}\Pic(X),\mathbb Q_l/\mathbb Z_l(1)\right)\\
+&\simeq\Hom\left(\varprojlim_{n>0}{}_{l^n}\Pic^0(X),\mathbb Q_l/\mathbb Z_l(1)\right).
+\end{aligned}
+\]
+最后一个同构来自对正合列
+\[
+0\longrightarrow{}_{l^n}\Pic^0(X)\longrightarrow{}_{l^n}\Pic(X)\longrightarrow{}_{l^n}\NS(X)\longrightarrow0
+\]
+关于 $n$ 取投射极限。该正合列又由
+\[
+0\longrightarrow\Pic^0(X)\longrightarrow\Pic(X)\longrightarrow\NS(X)\longrightarrow0
+\]
+得到，其中 $\NS(X)$ 为有限生成群（见第 1 节），而 $\Pic^0(X)$ 是 $X$ 的 Picard 簇的 $k$ 有理点组成的可除群（对有限生成 Abel 群 $A$，总有 $\varprojlim_{n>0}{}_{l^n}A=0$）。
+
+已知 Picard 簇是 Albanese 簇的对偶 Abel 簇。更精确地说，\term{Weil 配对}{Weil pairing}{accouplement de Weil}
+\[
+{}_{l^n}\Pic^0(X)\times{}_{l^n}\underline{\Alb}_X(k)\longrightarrow\mu_{l^n}
+\]
+是完美对偶。通过此配对，上述同构便诱导同构
+\[
+H^{2d-1}_{\et}(X,\mathbb Q_l/\mathbb Z_l(d))\simeq\underline{\Alb}_X(k)_{l\text{-}\mathrm{tors}}.
+\]
+引理得证。\hfill$\square$
+
+(iii) 在图 (3.6) 中取 $i=d$，已知箭头 $\gamma_d$ 是同构（见定理 4.1 的证明）。结合以上引理，该图给出正合列
+\[
+0\longrightarrow H^{d-1}(X,\mathcal K_d)\otimes\mathbb Q_l/\mathbb Z_l\longrightarrow\underline{\Alb}_X(k)_{l\text{-}\mathrm{tors}}\longrightarrow\CH^d(X)_{l\text{-}\mathrm{tors}}\longrightarrow0.
+\]
+由此正合列及 $H^{d-1}(X,\mathcal K_d)\otimes\mathbb Q_l/\mathbb Z_l$ 的可除性可知，对任意整数 $n$，诱导映射 ${}_{l^n}\underline{\Alb}_X(k)\longrightarrow{}_{l^n}\CH^d(X)$ 为满射。然而，$\CH^d(X)=\CH_0(X)$ 的挠子群恰好就是 $A_0(X)$（即 $\CH_0(X)$ 上次数映射的核）的挠子群。因此，由 (i) 已知，还存在从 ${}_{l^n}\CH^d(X)$ 到 ${}_{l^n}\underline{\Alb}_X(k)$ 的满射。这两个群都是有限群（前者由第一个满射或定理 4.1 得知，后者的有限性显然）。比较它们的阶便知，这两个满射都必为双射。于是 Roitman 定理得证，同时还说明 $H^{d-1}(X,\mathcal K_d)\otimes\mathbb Q_l/\mathbb Z_l=0$。
+\end{proof}
+
+\origpage{22}{17}
+\begin{statement}{定理 4.3}
+设 $X$ 是可分闭域 $k$ 上的光滑射影连通簇，$l$ 为不同于 $\operatorname{char}(k)$ 的素数。
+\begin{enumerate}[label=(\roman*)]
+\item 在图 (3.6)
+\begin{center}
+\resizebox{\linewidth}{!}{$\begin{tikzcd}[ampersand replacement=\&,column sep=small]
+0 \arrow[r] \& H^{i-1}(X,\mathcal K_i)\otimes\mathbb Q_l/\mathbb Z_l \arrow[r] \& H^{i-1}(X,\mathcal H^i(\mathbb Q_l/\mathbb Z_l(i))) \arrow[r] \arrow[d,"{\gamma_i}"] \& \CH^i(X)_{l\text{-}\mathrm{tors}} \arrow[r] \&0\\
+\&\& H^{2i-1}_{\et}(X,\mathbb Q_l/\mathbb Z_l(i))\&\&
+\end{tikzcd}$}
+\end{center}
+中，箭头 $\gamma_i$ 通过一个同态
+\[
+\lambda_i:\CH^i(X)_{l\text{-}\mathrm{tors}}\longrightarrow H^{2i-1}_{\et}(X,\mathbb Q_l/\mathbb Z_l(i))
+\]
+分解。
+\item 此同态在 $i=1$ 时为双射，在 $i=2$ 时为单射。
+\item 当 $d=\dim(X)$ 时，同态 $\lambda_d$ 为同构。
+\end{enumerate}
+\end{statement}
+\begin{proof}
+我们需要证明复合映射
+\[
+\begin{split}
+H^{i-1}(X,\mathcal K_i)\otimes\mathbb Q_l/\mathbb Z_l\longrightarrow H^{i-1}(X,\mathcal H^i(\mathbb Q_l/\mathbb Z_l(i)))\\
+\longrightarrow H^{2i-1}_{\et}(X,\mathbb Q_l/\mathbb Z_l(i))
+\end{split}
+\]
+为零。对每个 $\zeta\in H^{i-1}(X,\mathcal K_i)\otimes\mathbb Q_l/\mathbb Z_l$，存在 $k$ 的一个在素域上有限生成的子域 $F$ 和光滑射影 $F$ 簇 $X_0$，使 $X$ 由 $X_0$ 沿 $F\longrightarrow k$ 作\term{基变换}{base change}{changement de base}而得，且 $\zeta$ 来自元素 $\zeta_0\in H^{i-1}(X_0,\mathcal K_i)\otimes\mathbb Q_l/\mathbb Z_l$（$X$ 上 $\mathcal K_i$ 的 Gersten 复形，是所有可能的 $X_0$ 上 Gersten 复形的归纳极限）。由于图 (3.6) 在任意域上成立，且对基域变换具有函子性，得到交换方块
+\[
+\begin{tikzcd}[ampersand replacement=\&,column sep=large]
+H^{i-1}(X_0,\mathcal K_i)\otimes\mathbb Q_l/\mathbb Z_l \arrow[r] \arrow[d] \& H^{2i-1}_{\et}(X_0,\mathbb Q_l/\mathbb Z_l(i)) \arrow[d]\\
+H^{i-1}(X,\mathcal K_i)\otimes\mathbb Q_l/\mathbb Z_l \arrow[r] \& H^{2i-1}_{\et}(X,\mathbb Q_l/\mathbb Z_l(i)).
+\end{tikzcd}
+\]
+设 $F_s$ 是 $F$ 在 $k$ 中的可分闭包，$G=\Gal(F_s/F)$，并令 $X_{0,s}=X_0\times_FF_s$。映射
+\[
+H^{2i-1}_{\et}(X_0,\mathbb Q_l/\mathbb Z_l(i))\longrightarrow H^{2i-1}_{\et}(X,\mathbb Q_l/\mathbb Z_l(i))
+\]
+分解为
+\[
+\begin{split}
+H^{2i-1}_{\et}(X_0,\mathbb Q_l/\mathbb Z_l(i))\longrightarrow H^{2i-1}_{\et}(X_{0,s},\mathbb Q_l/\mathbb Z_l(i))^G\\
+\subset H^{2i-1}_{\et}(X_{0,s},\mathbb Q_l/\mathbb Z_l(i))\longrightarrow H^{2i-1}_{\et}(X,\mathbb Q_l/\mathbb Z_l(i)),
+\end{split}
+\]
+而最后一个箭头其实是同构。
+
+由 Deligne 证明的广义 Weil 猜想可知，在素域上有限生成的域 $F$ 上，当 $n\ne2i$ 时，群 $H^n_{\et}(X_{0,s},\mathbb Q_l/\mathbb Z_l(i))^G$ 有限（见 [CR1]，定理 1.5）。所以 $H^{i-1}(X_0,\mathcal K_i)\otimes\mathbb Q_l/\mathbb Z_l$ 在 $H^{2i-1}_{\et}(X,\mathbb Q_l/\mathbb Z_l(i))$ 中的像有限。由于前一个群可除，此像必为零，这就证明了 (i)。当 $i=1,2$ 时 $\gamma_i$ 为单射，是在任意域上都成立的一般性质（第 3 节）；由此得到这两种情形下 $\lambda_i$ 的单射性。当 $k$ 可分闭时，由于 $X$ 固有且整，$H^0(X,\mathbb G_m)=k^*$，因此 $H^0(X,\mathbb G_m)/l^n=0$，Kummer 正合列表明 $\lambda_1$ 为同构。
+\origpage{23}{18}
+当 $k$ 可分闭时，$\gamma_d$ 是同构（见定理 4.1 的证明），所以 $\lambda_d$ 也是同构。
+\end{proof}
+\paragraph{注}
+我们本可在 Roitman 定理的证明中使用 (iii)，但为了使该定理的证明避免依赖 Deligne 的结果，采用了上面的处理。
+
+\begin{statement}{命题 4.4}
+设 $X$ 是特征 $p\ge0$ 的可分闭域上的 $d$ 维光滑射影连通簇。则群 $H^{d-1}(X,\mathcal K_d)$ 是有限群
+\[
+\bigoplus_{l\ne p}H^{2d-1}_{\et}(X,\mathbb Z_l(d))_{\mathrm{tors}}
+\]
+被一个对 $k$ 中所有非零整数都可除的群所作的扩张。
+\end{statement}
+\begin{proof}
+对任意素数 $l\ne\operatorname{char}(k)$ 及整数 $m>0$，有正合列 (4.1)：\footnote{译注：此处原式中间项误排为 $H^{2d-1}(X,\mathcal H^d(\mu_{l^m}^{\otimes d}))$。根据 (4.1) 及定理 4.1 证明中的同构 $\gamma_d$，这里应为 $H^{2d-1}_{\et}(X,\mu_{l^m}^{\otimes d})$；也可以写作 $H^{d-1}(X,\mathcal H^d(\mu_{l^m}^{\otimes d}))$。}
+\[
+0\longrightarrow H^{d-1}(X,\mathcal K_d)/l^m\longrightarrow H^{2d-1}_{\et}(X,\mu_{l^m}^{\otimes d})\longrightarrow{}_{l^m}\CH^d(X)\longrightarrow0.
+\]
+取投射极限得到一条正合列（各群均有限），并得到映射 $\theta_l:H^{d-1}(X,\mathcal K_d)\longrightarrow H^{2d-1}_{\et}(X,\mathbb Z_l(d))$。一个与上面证明类似的权论证表明，其像落在 $H^{2d-1}_{\et}(X,\mathbb Z_l(d))$ 的挠子群中。仿照 [CR1] 定理 1.5 的处理，先可推出 $\theta_l$ 的核为 $l$ 可除群，再利用 \term{Tate 模}{Tate module}{module de Tate} $T_l(\CH^d(X))$ 无挠，推出 $\theta_l$ 的像恰好为 $H^{2d-1}_{\et}(X,\mathbb Z_l(d))_{\mathrm{tors}}$。另一方面，Gabber 已证明，对给定的 $i,j$，除有限多个 $l$ 外，群 $H^i_{\et}(X,\mathbb Z_l(j))$ 均无挠。这足以得到结论。
+\end{proof}
+
+\paragraph{出处与补充}
+映射 $\lambda_i$ 由 Bloch [B1] 定义。Suwa [Sw] 将其称作 \term{Bloch 的 Abel--Jacobi 映射}{Bloch's Abel--Jacobi map}{application d'Abel--Jacobi de Bloch}，并给出了 $\lambda_2$ 为满射的必要条件（它并不总是满射）。借助 Merkur'ev--Suslin 定理（[MS]，1982），上面对 $\lambda_i$ 的构造比 Bloch 原来的构造有所简化。
+
+定理 4.2、4.3 证明中的主要思想都来自 Bloch。在 [B1] 中，Bloch 用一套相当精细的几何论证证明 Roitman 定理，还使用了借助 Deligne 定理构造的映射 $\lambda_i$。在 [B2] 中，Bloch 证明了后来 Merkur'ev--Suslin 定理的一个特例：当 $k$ 是代数闭域上的二元函数域时，\term{互反映射}{reciprocity map}{application de réciprocité} $K_2k/nK_2k\longrightarrow H^2(k,\mu_n^{\otimes2})$ 为满射。由此，他不依赖 Deligne 定理便推出曲面上的 Roitman 定理（其中一个小困难是某个图的交换性；我们通过定理 4.2 证明末尾的计数论证绕过了这一困难）。随后用一个几何论证，便可推出更高维簇的 Roitman 定理。可见 4.2 中的证明与 [B2] 十分接近，只是我们避免了归约到曲面的步骤。但读者可以核实（参见 (3.1)、(3.5)），即使对任意维数的簇，我们也只用到了 Bloch 在 [B2] 中已证明的 Merkur'ev--Suslin 定理的那个特例。
+
+$H^{d-1}(X,\mathcal K_d)$ 满射到 $H^{2d-1}_{\et}(X,\mathbb Z_l(d))_{\mathrm{tors}}$，这一观察来自 Bloch [B1]，但上述命题 4.4 是新的。[CR1] 中还给出了
+\origpage{24}{19}
+$H^0(X,\mathcal K_2)$ 和 $H^1(X,\mathcal K_2)$ 的类似结构定理。我们可以追问：这种描述究竟具有多大的普遍性？对于 $K$ 理论群 $K_i(X)$（$i\ge1$），是否也有类似的可除性结果？
+
+Roitman 定理的一个引人注目的推论是：在代数闭域扩张下，$A_0(X)$ 中阶与 $\operatorname{char}(k)$ 互素的挠子群保持不变。F.~Lecomte [L] 推广 Suslin 的一种方法，证明了：对代数闭域 $k$ 上的任意光滑簇，以及与 $\operatorname{char}(k)$ 互素的任意整数 $n$，群 ${}_nH^i(X,\mathcal K_j)$ 和 $H^i(X,\mathcal K_j)/n$ 在代数闭域扩张下保持不变。
+
+这里讨论的大多数定理，对于 $p$ 挠元（$p=\operatorname{char}(k)$）也有适当形式的对应结果（Milne、Gros、Gros--Suwa）。请读者参阅 Gros--Suwa 的文章 [GS] 及其中的参考文献。
+
+还应指出，人们对奇异簇也给出了 Roitman 定理的相应版本（Collino、Levine、Srinivas，参见 [Sr] 及其参考文献；Barbieri-Viale [BV]；Saito [S3]）。
+
+\origpage{25}{20}
+\section*{§5. 有限域上的簇}
+\addcontentsline{toc}{section}{§5. 有限域上的簇}
+\begin{statement}{定理 5.1 [CSS]}
+设 $X$ 是有限域 $F$ 上的光滑簇。那么对任意与 $F$ 的特征互素的整数 $n$，$n$ 挠子群 ${}_n\CH^2(X)$ 有限。
+\end{statement}
+\begin{proof}
+这是定理 3.3.2 的直接推论：该定理指出，在任意域上，群 ${}_n\CH^2(X)$ 都是平展上同调群 $H^3_{\et}(X,\mu_n^{\otimes2})$ 的子商。事实上，平展上同调的 Hochschild--Serre 谱序列
+\[
+H^p(F,H^q_{\et}(\bar X,\mu_n^{\otimes j}))\Longrightarrow H^n_{\et}(X,\mu_n^{\otimes j})
+\]
+（其中 $\bar X=X\times_F\bar F$）保证所有 $H^n_{\et}(X,\mu_n^{\otimes j})$ 均有限，因为 $H^q_{\et}(\bar X,\mu_n^{\otimes j})$ 有限（可分闭域上的平展上同调），而有限域取值于有限模的 Galois 上同调群也有限。
+\end{proof}
+（相同结果和相同证明对 $p$ 进局部域或实数域也成立，见 8.1。）
+
+\begin{statement}{定理 5.2 [CSS]}
+设 $X$ 是有限域 $F$ 上的光滑射影几何连通簇。则 $\CH^2(X)$ 的挠子群有限。
+\end{statement}
+\begin{proof}[证明提纲]
+根据定理 3.3.2，群 $\CH^2(X)_{l\text{-}\mathrm{tors}}$ 是平展上同调群 $H^3_{\et}(X,\mathbb Q_l/\mathbb Z_l(2))$ 的子商。而利用 Hochschild--Serre 谱序列，从 Deligne 定理（带扭系数的 Weil 猜想）可推出：对有限域 $F$ 上的光滑射影簇 $X$，若 $j\ne2i,2i+1$，则 $H^j_{\et}(X,\mathbb Q_l(i))=0$，且 $H^j_{\et}(X,\mathbb Q_l/\mathbb Z_l(i))$ 有限（[CSS]，定理 2，第 780 页）。因此 $H^3_{\et}(X,\mathbb Q_l/\mathbb Z_l(2))$ 有限，故 $\CH^2(X)_{l\text{-}\mathrm{tors}}$ 有限。
+
+另一方面，可以证明，除有限多个素数 $l$ 外，$H^3_{\et}(X,\mathbb Q_l/\mathbb Z_l(2))$ 实际上为零。因此，$\CH^2(X)$ 中阶与 $p=\operatorname{char}(F)$ 互素的挠元组成有限群。$p$ 准素部分需要更精细的论证，[CSS] 对此有详细论述，主要思想来自 O.~Gabber。
+\end{proof}
+\paragraph{注 5.2.1}
+使用交换图 (3.8)（其建立相当细致），甚至可以证明闭链类映射诱导单射
+\[
+\rho:\CH^2(X)_{l\text{-}\mathrm{tors}}\longrightarrow H^4_{\et}(X,\mathbb Z_l(2))_{\mathrm{tors}}.
+\]
+[CSS] 对曲面上 Kato--Saito 非分歧类域论的处理，正是建立在此单射之上（见下面的定理 5.3）。
+
+以 $\pi_1^{\mathrm{ab}}(X)$ 表示 $X$ 的\term{基本群}{fundamental group}{groupe fondamental}的最大 Abel 商。也可以将它定义为
+\[
+\pi_1^{\mathrm{ab}}(X)=\Hom(H^1_{\et}(X,\mathbb Q/\mathbb Z),\mathbb Q/\mathbb Z).
+\]
+\term{几何 Abel 基本群}{geometric abelian fundamental group}{groupe fondamental abélien géométrique} $\pi_1^{\mathrm{ab,geom}}(X)$ 按定义是结构态射诱导映射
+\[
+\pi_1^{\mathrm{ab}}(X)\longrightarrow\pi_1^{\mathrm{ab}}(\Spec(F))=\widehat{\mathbb Z}
+\]
+的核（最后的等式因为 $F$ 为有限域而成立）。它也是群
+\[
+\coker[H^1(F,\mathbb Q/\mathbb Z)\longrightarrow H^1_{\et}(X,\mathbb Q/\mathbb Z)]
+\]
+取值于 $\mathbb Q/\mathbb Z$ 的对偶；这里的箭头也由结构态射定义。
+
+Weil 猜想（Weil 的结果）蕴含 $\pi_1^{\mathrm{ab,geom}}(X)$ 为有限群。
+
+\origpage{26}{21}
+\begin{statement}{定理 5.3（Kato--Saito [KS]）}
+设 $X$ 是有限域 $F$ 上的光滑射影几何连通簇，$d=\dim(X)$。则次数为零的零闭链模有理等价所成的群 $A_0(X)$ 是有限群，并同构于 $X$ 的几何 Abel 基本群 $\pi_1^{\mathrm{ab,geom}}(X)$。
+\end{statement}
+\begin{proof}[证明提纲（[CR2]）]
+首先观察，$A_0(X)$ 是挠群（用 Bertini 型论证归约到曲线的情形）。依照经典构造（Lang），可以定义一个具有函子性的满同态（满射性是一个 Chebotarev 型定理）
+\[
+\theta:A_0(X)\longrightarrow\pi_1^{\mathrm{ab,geom}}(X).
+\]
+我们要证明该映射为双射。Lefschetz 型论证将这一断言归约到曲面（$\dim(X)=2$）的情形。设素数 $l\ne\operatorname{char}(F)$。这里图 (3.6) 写成
+\begin{center}
+\resizebox{\linewidth}{!}{$\begin{tikzcd}[ampersand replacement=\&,column sep=small]
+0 \arrow[r] \& H^1(X,\mathcal K_2)\otimes\mathbb Q_l/\mathbb Z_l \arrow[r] \& H^1_{\mathrm{Zar}}(X,\mathcal H^2(\mathbb Q_l/\mathbb Z_l(2))) \arrow[r] \arrow[d,"{\gamma_2}"] \& A_0(X)_{l\text{-}\mathrm{tors}} \arrow[r] \& 0\\
+\&\& H^3_{\et}(X,\mathbb Q_l/\mathbb Z_l(2)),\&\&
+\end{tikzcd}$}
+\end{center}
+其中 $\gamma_2$ 是单射。由 Deligne 的结果（参见定理 5.2 的证明），群 $H^3_{\et}(X,\mathbb Q_l/\mathbb Z_l(2))$ 有限。因为 $H^1(X,\mathcal K_2)\otimes\mathbb Q_l/\mathbb Z_l$ 可除，可知单射 $\gamma_2$ 通过单射 $A_0(X)_{l\text{-}\mathrm{tors}}\lhook\joinrel\longrightarrow H^3_{\et}(X,\mathbb Q_l/\mathbb Z_l(2))$ 分解。这已经说明 $A_0(X)_{l\text{-}\mathrm{tors}}$ 有限，并且除有限多个 $l$ 外均为零（此结果由 Parshin 猜想、Kato--Saito 证明）。应用对偶性论证（在 $F$ 的代数闭包上用 Poincaré 对偶，再结合有限域上同调的对偶性），可将有限群 $H^3_{\et}(X,\mathbb Q_l/\mathbb Z_l(2))$ 与 $\pi_1^{\mathrm{ab,geom}}(X)$ 的 $l$ 准素部分等同。因此有单射
+\[
+\sigma:A_0(X)_{l\text{-}\mathrm{tors}}\lhook\joinrel\longrightarrow\pi_1^{\mathrm{ab,geom}}(X)_{l\text{-}\mathrm{tors}}.
+\]
+若要将此单射与 Lang 的映射 $\theta$ 比较，会相当繁琐，但我们不必这样做。因为 $\theta$ 满射、$\sigma$ 单射，且有关群都有限，所以 $\sigma$ 与 $\theta$ 都必为双射。
+
+$p$ 准素挠子群的情形可用适当的 $p$ 进方法处理 [CR2]。
+\end{proof}
+\paragraph{注 5.4}
+结合上述定理及图 (3.5)、(3.6)、(3.8)，可以进一步分析有限域上光滑射影簇的 Bloch--Ogus 谱序列。有兴趣的读者可参阅 [K]、[C2]。
+
+\origpage{27}{22}
+\section*{§6. 数域上的簇，I}
+\addcontentsline{toc}{section}{§6. 数域上的簇，I}
+对数域 $k$（更一般地，素域上有限生成的域）上的光滑簇 $X$，可以问：Chow 群 $\CH^i(X)$ 是否有限生成？这是 H.~Bass 的一个猜想的变体。第 1 节已说明，当 $i=1$ 时确实如此。当 $i\ge2$ 时，已知结果很少。近些年来，人们对数域上光滑射影簇的 $\CH^i(X)\otimes\mathbb Q$ 的维数提出了雄心勃勃的猜想，这些猜想预期维数有限（例如，Bloch 与 Beilinson 猜想同构 $A_0(X)\otimes\mathbb Q\simeq\underline{\Alb}_X(k)\otimes\mathbb Q$）；然而，即便只是维数的有限性，也尚未在任何非平凡情形中得到证明。
+
+1981 年，Bloch [B4] 借助 $K$ 理论，对定义在数域上的一整类有理曲面，得到了其挠群 $A_0(X)$ 的有限性结果。此后的一系列工作将这种挠子群的有限性推广到了其他簇。本节将介绍目前所得的最一般结果：
+\begin{statement}{定理 6.1（Colliot-Thélène--Raskind [CR3]；Salberger [Sb2]）}
+设 $X$ 是数域 $k$ 上的光滑射影几何连通簇。若 $H^2(X,\mathcal O_X)=0$，则挠子群 $\CH^2(X)_{\mathrm{tors}}$ 有限。
+\end{statement}
+\paragraph{成果归属}
+此前各个特殊结果的详细说明见 [CR3]。简言之，直到不久以前，在数域上得到的结果都要求簇的几何 Néron--Severi 群无挠。K.~Coombes [Cb] 首次对 Néron--Severi 群含有挠元的某些曲面（例如 \term{Enriques 曲面}{Enriques surface}{surface d'Enriques}）证明了有限性结果。Coombes 的方法独具特色，建议读者阅读 [Cb]。上述一般形式的定理于 1989 年底得到，它结合了 Raskind 与笔者的工作以及 Salberger 的一个想法（下面的定理 6.7）。在我们之后不久，Salberger 得到了一个独立于我们的方法的证明，但直到 1991 年 8 月，我才得以完整了解他的证明（不过参见第 9 节）。如第 7 节所述，1990--1991 年，S.~Saito [S4] 部分依据 Salberger 与笔者的提示，又给出了此定理的第三种证明。
+
+我们的证明需要若干预备结果。它使用簇 $X$ 在 $k$ 的整数环的某个开子集上的光滑射影模型，并且需要在比第 1 节所述更一般的背景下使用 Chow 群概念（例如见 [F]，第 20 章）。
+
+以下结果在 [CR3] 中得到证明，Gillet 在 1985 年就已宣布过。
+\begin{statement}{定理 6.2}
+设 $k$ 为数域，$R$ 为其整数环，$f\in R$、$f\ne0$，$A$ 为\term{局部化环}{localization}{anneau localisé} $R_f$。设 $\mathsf X$ 为光滑 $A$ 概形，$n$ 为在 $A$ 中可逆的自然数。则 $n$ 挠子群 ${}_n\CH^2(\mathsf X)$ 有限。
+\end{statement}
+\begin{proof}[证明提纲]
+a) 对 \term{Dedekind 环}{Dedekind ring}{anneau de Dedekind} $A$ 上的光滑概形 $\pi:\mathsf X\longrightarrow\Spec(A)$，Bloch--Ogus 理论中层 $\mathcal H^i(\mathsf X,\mu_n^{\otimes j})$ 的 Gersten 猜想有相应的类似结论（Gillet，未发表）。第 3 节中在域上利用复形所作的形式论证（参见 (3.2)）给出满射
+\[
+H^1_{\mathrm{Zar}}(\mathsf X,\mathcal H^2(\mathsf X,\mu_n^{\otimes2}))\longrightarrow{}_n\CH^2(\mathsf X).
+\]
+\origpage{28}{23}
+同样，Bloch--Ogus 谱序列与层 $\mathcal H^i(\mathsf X,\mu_n^{\otimes j})$ 的 Gersten 猜想给出单射
+\[
+H^1_{\mathrm{Zar}}(\mathsf X,\mathcal H^2(\mathsf X,\mu_n^{\otimes2}))\lhook\joinrel\longrightarrow H^3_{\et}(\mathsf X,\mu_n^{\otimes2}).
+\]
+b) 一般地，若 $\mathsf X$ 在 $A=R_f$ 上有限型，其中 $R$ 为数域整数环，则群 $H^i_{\et}(\mathsf X,\mu_n^{\otimes j})$ 有限。为此，使用谱序列
+\[
+H^p_{\et}(\Spec(A),R^q\pi_*\mu_n^{\otimes j})\Longrightarrow H^*_{\et}(\mathsf X,\mu_n^{\otimes j}),
+\]
+层 $R^q\pi_*\mu_n^{\otimes j}$ 的\term{可构造性}{constructibility}{constructibilité}（对任意有限型 $\pi$ 及 Dedekind 环 $A$ 成立，见 [SGA4~1/2]，《有限性定理》），以及数域整数环的开子集上可构造层的平展上同调的有限性定理（[M2]，II，7.1），即可看出。
+\end{proof}
+
+我先证明定理 6.1 的一些特殊情形，以便清楚呈现共同促成一般结果的各种技巧。以下定理的证明（始于 1989 年 7 月）将展示\term{局部化方法}{localization method}{méthode de localisation}。
+\begin{statement}{定理 6.3（Colliot-Thélène--Raskind）}
+设 $X$ 是数域 $k$ 上的光滑射影几何连通簇，且 $H^2(X,\mathcal O_X)=H^1(X,\mathcal O_X)=0$。设自然数 $n>0$。则 $n$ 挠子群 ${}_n\CH^2(X)$ 有限。
+\end{statement}
+\begin{proof}
+a) 已知向量空间 $H^1(X,\mathcal O_X)$ 的维数等于 $X$ 的 Picard 簇的维数。因此，假设 $H^1(X,\mathcal O_X)=0$ 保证 Picard 群 $\Pic(\bar X)$ 与 Néron--Severi 群 $\NS(\bar X)$ 相等（定理 1.2）。由于后者有限生成，存在有限域扩张 $L/k$，使 $\Pic(X_L)=\Pic(\bar X)$。令 $m=[L:k]$。
+
+b) 设 $R$ 为 $k$ 的整数环。可以找到 $R$ 的一个局部化 $A=R_f$（$f\in R$、$f\ne0$）及一个光滑射影 $A$ 概形 $\mathsf X$，其\term{泛纤维}{generic fibre}{fibre générique}为 $X/k$。缩小 $\Spec(A)$，即再使一个新的 $f$ 可逆，可以假设 $m,n$ 在 $A$ 中可逆，$A$ 在 $L$ 中的整闭包 $B$ 在 $A$ 上有限平展，且\term{理想类群}{ideal class group}{groupe des classes} $\Pic(B)$ 为零。最后，借助 Grothendieck 的半连续性定理，再稍稍缩小 $\Spec(A)$，由 $H^2(X,\mathcal O_X)=0$ 可以假设：对每个闭点 $p\in\Spec(A)$，纤维 $\mathsf X_p$ 都满足 $H^2(\mathsf X_p,\mathcal O_{\mathsf X_p})=0$。对于 $\mathsf X_B/\Spec(B)$ 在各闭点 $q\in\Spec(B)$ 上的纤维，同一断言也成立。
+
+仍由 Grothendieck 的结果，$H^2(\mathsf X_q,\mathcal O_{\mathsf X_q})=0$ 蕴含：在 $B$ 于闭点 $q$ 处的局部环的完备化上，限制映射 $\Pic(\mathsf X_{\widehat B_q})\longrightarrow\Pic(\mathsf X_q)$ 为满射（这是我们证明的关键一点）。最后，等式 $\Pic(X_L)=\Pic(\bar X)$ 保证在 $B$ 上 Picard 群局部常值。特别地，自然映射 $\Pic(\mathsf X_{B_q})\longrightarrow\Pic(\mathsf X_{\widehat B_q})$ 为满射，所以映射 $\Pic(\mathsf X_{\widehat B_q})\longrightarrow\Pic(\mathsf X_q)$ 也为满射。
+
+c) 有局部化正合列
+\[
+\bigoplus_{q\in\Spec(B)^{(1)}}\Pic(\mathsf X_q)\longrightarrow\CH^2(\mathsf X_B)\longrightarrow\CH^2(X_L)\longrightarrow0.
+\]
+纯粹形式地，对任意定义 $\Spec(B)$ 上一个主除子的闭点 $q\in\Spec(B)^{(1)}$（即它由某个 $\pi\in B$ 定义），以及 $\Pic(\mathsf X_B)$ 的任意类 $\mathcal L$，
+\origpage{29}{24}
+复合映射
+\[
+\Pic(\mathsf X_B)\longrightarrow\Pic(\mathsf X_q)\longrightarrow\CH^2(\mathsf X_B)
+\]
+为零。事实上，用一个不包含主除子 $\mathsf X_q\subset\mathsf X_B$ 的除子 $D$ 表示 $\mathcal L$，则有等式
+\[
+(D|_{\mathsf X_q})|_{\mathsf X_B}=\operatorname{div}(\pi|_D).
+\]
+（该复合箭头将 $D$ 映至除子 $D$ 与主除子 $\mathsf X_q$ 相交所得的余维二闭链的类。因此此类为零。）
+
+在上述条件下，$B$ 为主理想环，每个映射 $\Pic(\mathsf X_B)\longrightarrow\Pic(\mathsf X_q)$ 都为满射。因此局部化正合列中左边的箭头为零，从而限制映射
+\[
+\CH^2(\mathsf X_B)\longrightarrow\CH^2(X_L)
+\]
+为同构。
+
+c) 考虑由限制箭头构成的交换图：
+\[
+\begin{tikzcd}[ampersand replacement=\&,column sep=large,row sep=large]
+\CH^2(\mathsf X_B) \arrow[r] \& \CH^2(X_L)\\
+\CH^2(\mathsf X) \arrow[u] \arrow[r] \& \CH^2(X) \arrow[u]
+\end{tikzcd}
+\]
+其中水平箭头都是满射。由前面的论证，上方箭头为同构。最后，由范数论证，$\CH^2(\mathsf X)\longrightarrow\CH^2(\mathsf X_B)$ 的核被次数 $m=[B:A]=[L:k]$ 零化，因此它包含于 $m$ 挠子群 ${}_m\CH^2(\mathsf X)$ 中，而由定理 6.2 此群有限。同一定理还说明，$n$ 挠子群 ${}_n\CH^2(\mathsf X_B)$ 也有限。作一次留给读者的图追踪，即可得到 ${}_n\CH^2(X)$ 的有限性。
+\end{proof}
+\paragraph{注 6.3.1}
+实际上，在定理 6.3 的假设下，可以断言整个挠子群 $\CH^2(X)_{\mathrm{tors}}$ 都有限。只需将前一个定理与下述更一般的结果结合；其证明将展示 Galois 方法。
+
+\begin{statement}{定理 6.4}
+设 $X$ 是在素域上有限生成的域 $k$ 上的光滑射影几何连通簇。假设 $H^2(X,\mathcal O_X)=H^1(X,\mathcal O_X)=0$。则挠群 $\CH^2(X)_{\mathrm{tors}}$ 的\term{指数有界}{finite exponent}{exposant fini}。\translatornote{2}
+\end{statement}
+\paragraph{证明}
+设 $\bar k$ 为 $k$ 的一个代数闭包，令 $\bar X=X\times_k\bar k$、$G=\Gal(\bar k/k)$。
+
+a) 根据定理 3.3.2，有自然包含
+\[
+\CH^2(\bar X)_{\mathrm{tors}}\lhook\joinrel\longrightarrow H^3_{\et}(\bar X,\mathbb Q/\mathbb Z(2)).
+\]
+取 Galois 作用下的不动点，得到包含
+\[
+[\CH^2(\bar X)_{\mathrm{tors}}]^G\lhook\joinrel\longrightarrow H^3_{\et}(\bar X,\mathbb Q/\mathbb Z(2))^G.
+\]
+由于 $k$ 在素域上有限生成，归约到有限域的情形，再利用 Deligne 关于 Weil 猜想的定理，可知右边的群有限（见 [CR1]，定理 1.5）。

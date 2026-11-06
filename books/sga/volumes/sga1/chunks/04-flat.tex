@@ -1,0 +1,518 @@
+\SGAchapter{IV}{平坦态射}{Morphismes plats}
+\SourcePage{87}
+
+本讲主要介绍前面各讲已经用到的\Term{flatness}{平坦性}的性质。正在编写的《代数几何基础》第 IV 章将作更详细的讨论\footnote{参见 EGA IV 11、12。}。那里将系统研究以下情形：$Y$ 是\Term{locally-noetherian}{局部诺特}的，$X$ 在 $Y$ 上\Term{locally-finite-type}{局部有限型}，$\mathcal F$ 是 $X$ 上的\Term{coherent}{凝聚层}，且在 $Y$ 上\Term{flat}{平坦}；我们希望建立 $Y$ 的性质、$\mathcal F$ 的性质，以及 $\mathcal F$ 在 $X\to Y$ 的各条\Term{fiber}{纤维}上所诱导的\Term{coherent}{凝聚层}的性质之间的联系，尤其是关于维数、\Term{cohomological-dimension}{上同调维数}和\Term{depth}{深度}等的联系。这也给出了一种系统的方法，用以得到 Seidenberg 型或 Bertini 型的定理（关于超平面\Term{section}{截面}）。在这一背景下应用\Term{flatness}{平坦性}方法，关键在于下面这个结果，稍后将予以证明：若 $Y$ \Term{integral}{整}，$X$ 在 $Y$ 上\Term{finite-type}{有限型}，$\mathcal F$ 是 $X$ 上的\Term{coherent}{凝聚层}，则 $Y$ 中存在一个非空开集 $U$，使 $\mathcal F$ 在 $U$ 上方的 $X$ 的各点处都在 $Y$ 上\Term{flat}{平坦}。\Term{flatness}{平坦性}进入代数几何的另一条途径是\Term{descent}{下降理论}，这一途径无疑更为重要；例如可参见 Grothendieck 在 Bourbaki 讨论班中关于这一主题的两次报告\footnote{更详细的论述见后面的第 VIII、IX 讲。}。因此，\Term{flatness}{平坦性}看来是代数几何中几个核心的技术概念之一。
+
+回顾一下，\Term{flatness}{平坦性}与\Term{faithfully-flat}{忠实平坦性}由 Serre 在 GAGA 中引入。下文第 1、2 节的内容，也将在 Bourbaki 的《交换代数》中讲述；当然，正如书名所示，该书的讨论并不局限于基环交换的情形\footnote{N. Bourbaki，\emph{Algèbre Commutative}，第 I 章（\Term{flat-module}{平坦模}），Act. Sc. Ind. 1290，Paris，Hermann（1961）。}。
+
+与前几讲不同，本讲不再一概假定所考虑的环都是\Term{noetherian}{诺特环}。
+
+\SourcePage{88}
+\SGAsection{1}{平坦模的基本性质}
+
+设 $M$ 是环 $A$ 上的模。如果\Term{functor}{函子}
+\[
+T_M:N\longmapsto M\otimes_A N
+\]
+是\Term{exact}{正合}的，也就是说，它把\Term{monomorphism}{单态射}变成\Term{monomorphism}{单态射}，就称 $M$ 是\Term{flat-module}{平坦模}；需要指明 $A$ 时，也称它是 $A$-\Term{flat}{平坦}的。这个\Term{functor}{函子}本来总是\Term{right-exact}{右正合}的。上述条件也等价于它的第一个右\Term{derived-functor}{导出函子}为零，或所有右\Term{derived-functor}{导出函子}均为零，即对所有 $N$ 有
+\[
+\operatorname{Tor}_1^A(M,N)=0,
+\]
+或分别地，对所有 $i>0$ 和所有 $N$ 有
+\[
+\operatorname{Tor}_i^A(M,N)=0.
+\]
+由于 $\operatorname{Tor}_i$ 与\Term{inductive-limit}{归纳极限}交换，只需对\Term{finitely-generated}{有限生成}的 $N$ 检验这些条件；再取 $N$ 的一个各商均为\Term{cyclic-module}{循环模}的合成列，甚至只需对\Term{cyclic-module}{循环模} $N$ 检验
+\[
+\operatorname{Tor}_1^A(M,N)=0.
+\]
+也就是说，只需考虑 $N=A/I$，其中 $I$ 是 $A$ 的理想。此外，由 $\operatorname{Tor}$ 的\Term{exact-sequence}{正合列}以及 $\operatorname{Tor}_1^A(M,A)=0$ 可知
+\[
+\operatorname{Tor}_1^A(M,A/I)=0
+\quad\Longleftrightarrow\quad
+I\otimes_A M\longrightarrow M=A\otimes_A M\text{ 为单射}.
+\]
+因此，$M$ \Term{flat}{平坦}，等价于对每个理想 $I$，自然\Term{homomorphism}{同态}
+\[
+I\otimes_A M\longrightarrow IM
+\]
+都是\Term{isomorphism}{同构}。事实上，只对\Term{finitely-generated}{有限生成}理想 $I$ 检验即可；因而，只需检验\Term{functor}{函子} $M\otimes$ 在\Term{finitely-generated}{有限生成模}上\Term{exact}{正合}。
+
+与任何\Term{exact}{正合函子} $T$ 的情形相同：若对 $N$ 的\Term{subobject}{子对象} $N'$，将 $T(N')$ 视为 $T(N)$ 的\Term{subobject}{子对象}，那么对 $N$ 的任意两个\Term{subobject}{子对象} $N',N''$，有
+\[
+\begin{aligned}
+T(N'\cap N'')&=T(N')\cap T(N''),\\
+T(N'+N'')&=T(N')+T(N'').
+\end{aligned}
+\]
+\Term{flat-module}{平坦模}的\Term{direct-sum}{直和}仍\Term{flat}{平坦}，\Term{flat-module}{平坦模}的\Term{direct-summand}{直和因子}也\Term{flat}{平坦}。特别地，$A$ \Term{flat}{平坦}，所以\Term{free-module}{自由模}，进而\Term{projective-module}{投射模}，都是\Term{flat}{平坦}的。两个\Term{flat-module}{平坦模}的\Term{tensor-product}{张量积}仍\Term{flat}{平坦}；若 $M$ 在 $A$ 上\Term{flat}{平坦}，则对任意\Term{base-change}{基变换} $A\to B$，$M\otimes_A B$ 在 $B$ 上\Term{flat}{平坦}。这是因为\Term{tensor-product}{张量积}满足结合律，而\Term{exact}{正合函子}的复合仍\Term{exact}{正合}。同理，若 $M$ 在 $B$ 上\Term{flat}{平坦}，$B$ 在 $A$ 上\Term{flat}{平坦}，则 $M$ 在 $A$ 上\Term{flat}{平坦}。
+
+$\operatorname{Tor}$ 的\Term{exact-sequence}{正合列}及其“交换性”给出：
+\begin{SGAresult}{命题}{1.1}
+设 $0\to M'\to M\to M''\to0$ 是 $A$-模的\Term{exact-sequence}{正合列}，且 $M''$ \Term{flat}{平坦}。那么：
+\begin{enumerate}
+\item[(i)] 此列与任意 $A$-模 $N$ 作\Term{tensor-product}{张量积}后仍\Term{exact}{正合}；
+\item[(ii)] $M$ \Term{flat}{平坦}当且仅当 $M'$ \Term{flat}{平坦}。
+\end{enumerate}
+\end{SGAresult}
+
+\SourcePage{89}
+因此，就\Term{tensor-product}{张量积}下的表现而言，可以说\Term{flat-module}{平坦模}与\Term{free-module}{自由模}或\Term{projective-module}{投射模}“一样好”；特别地，1.1 中的\Term{exact-sequence}{正合列}“好得就像它是\Term{split-exact}{分裂的}一样”。
+
+设 $S$ 是 $A$ 的\Term{multiplicative-set}{乘法封闭子集}。那么 $S^{-1}A$ 在 $A$ 上\Term{flat}{平坦}，因为 $S^{-1}A\otimes N=S^{-1}N$ 是关于 $N$ 的\Term{exact}{正合函子}。若 $M$ 在 $A$ 上\Term{flat}{平坦}，则 $S^{-1}M=S^{-1}A\otimes M$ 在 $S^{-1}A$ 上\Term{flat}{平坦}。当 $M\to S^{-1}M$ 是\Term{isomorphism}{同构}，也就是说每个 $s\in S$ 在 $M$ 上的乘法作用都是\Term{bijection}{双射}时，逆命题也成立；这是因为\Term{flatness}{平坦性}具有传递性，而 $S^{-1}A$ 在 $A$ 上\Term{flat}{平坦}。更一般地，若要研究一个\Term{prescheme}{预概形}\Term{morphism}{态射} $X\to Y$ 以及 $X$ 上的\Term{quasi-coherent}{拟凝聚层} $\mathcal F$ 相对于 $Y$ 的\Term{flatness}{平坦性}，便会遇到下面这种涉及两个环的情形。
+
+\begin{SGAresult}{命题}{1.2}
+设 $A\to B$ 是环\Term{homomorphism}{同态}，$M$ 是 $B$-模，$T$ 是 $B$ 的\Term{multiplicative-set}{乘法封闭子集}。
+\begin{enumerate}
+\item[(i)] 若 $M$ 在 $A$ 上\Term{flat}{平坦}，则 $T^{-1}M$ 在 $A$ 上\Term{flat}{平坦}；因而，对任意映入 $T$ 的 $A$ 的\Term{multiplicative-set}{乘法封闭子集} $S$，它也在 $S^{-1}A$ 上\Term{flat}{平坦}。
+\item[(ii)] 反之，若对 $B$ 的每个\Term{maximal-ideal}{极大理想} $\mathfrak n$，$M_{\mathfrak n}$ 在 $A$ 上\Term{flat}{平坦}，或等价地，在 $A_{\mathfrak m}$ 上\Term{flat}{平坦}，其中 $\mathfrak m$ 是 $\mathfrak n$ 在 $A$ 中的\Term{inverse-image}{逆像}，那么 $M$ 在 $A$ 上\Term{flat}{平坦}\footnote{译注：所据重排本此句在 $M_{\mathfrak n}$ 后有重复残文，并出现未定义的 $A_{\mathfrak n}$；这里按紧接着的“在 $A$ 上，或等价地，在 $A_{\mathfrak m}$ 上”整理句法，原页为 PDF 第 89 页。}。
+\end{enumerate}
+\end{SGAresult}
+\begin{proof}
+对 $A$-模 $N$，有关于 $N$ \Term{functorial}{函子性}的公式
+\[
+T^{-1}M\otimes_A N=T^{-1}(M\otimes_A N).
+\]
+因为根据 $\otimes$ 的结合律，两边都\Term{functorial}{函子性}地\Term{isomorphism}{同构}于
+$T^{-1}B\otimes_B M\otimes_B N_{(B)}$，其中 $N_{(B)}=N\otimes_A B$。
+因此，若 $M\otimes_A N$ 关于 $N$ \Term{exact}{正合}，则 $T^{-1}M\otimes_A N$ 也\Term{exact}{正合}，因为它是两个\Term{exact}{正合函子}的复合；这就证明了 (i)。同样可得 (ii)，因为要检验一个 $B$-模序列的\Term{exactness}{正合性}，只需检验它在 $B$ 的所有\Term{maximal-ideal}{极大理想}处的\Term{localization}{局部化}均\Term{exact}{正合}。
+\end{proof}
+
+\begin{SGAresult}{命题}{1.3}
+\begin{enumerate}
+\item[(i)] 设 $M$ 是\Term{flat}{平坦}的 $A$-模。若 $x\in A$ 在 $A$ 中不是\Term{zero-divisor}{零因子}，则它在 $M$ 中也不是\Term{zero-divisor}{零因子}。特别地，若 $A$ \Term{integral}{整}，则 $M$ \Term{torsion-free}{无挠}。
+\item[(ii)] 设 $A$ \Term{integral}{整}，且对 $A$ 的每个\Term{maximal-ideal}{极大理想} $\mathfrak m$，$A_{\mathfrak m}$ 都是\Term{principal-ideal-ring}{主理想环}，例如 $A$ 是 Dedekind 环，或者本身就是\Term{principal-ideal-ring}{主理想环}。则 $A$-模 $M$ \Term{flat}{平坦}当且仅当它\Term{torsion-free}{无挠}。
+\end{enumerate}
+\end{SGAresult}
+\begin{proof}
+注意到 $x$ 在 $M$ 上的乘法\Term{homomorphism}{同态}，是把 $x$ 在 $A$ 上的乘法\Term{homomorphism}{同态}与 $M$ 作\Term{tensor-product}{张量积}得到的，即得 (i)。对于 (ii)，由 1.2(ii) 可先假定 $A$ 是\Term{principal-ideal-ring}{主理想环}。需要证明：若 $M$ \Term{torsion-free}{无挠}，则对 $A$ 的每个理想 $I$，嵌入 $I\to A$ 与 $M$ 作\Term{tensor-product}{张量积}后仍为\Term{injectivity}{单射}。这恰好是说，$I$ 的生成元 $x$ 在 $M$ 中不是\Term{zero-divisor}{零因子}，于是结论成立。
+\end{proof}
+
+\SourcePage{90}
+\SGAsection{2}{忠实平坦模}
+
+从一个\Term{category}{范畴}到另一个\Term{category}{范畴}的\Term{functor}{函子} $F$ 称为\Term{faithful-functor}{忠实函子}，是指对所有 $X,Y$，映射
+$\operatorname{Hom}(X,Y)\to\operatorname{Hom}(F(X),F(Y))$ 都是\Term{injectivity}{单射}。对加性\Term{category}{范畴}之间的\Term{additive-functor}{加性函子}，这等价于：$F(u)=0$ 蕴含 $u=0$；这个条件又蕴含 $F(X)=0$ 时 $X=0$。$F$ \Term{faithful-functor}{忠实}且\Term{exact}{正合}，当且仅当它满足以下条件：对 $\mathcal C$ 中的任意\Term{morphism}{态射}列 $M'\to M\to M''$，变换后的序列 $F(M')\to F(M)\to F(M'')$ \Term{exact}{正合}当且仅当原序列\Term{exact}{正合}。也等价于：$F$ \Term{exact}{正合}，且 $F(X)=0$ 蕴含 $X=0$。（当然，要谈\Term{exactness}{正合性}，须假定有关\Term{category}{范畴}是\Term{abelian-category}{阿贝尔范畴}。）
+
+设有 $\mathcal C$ 的一族非零对象 $(M_i)$，使 $\mathcal C$ 的每个非零对象都有一个\Term{subobject}{子对象}，而这个\Term{subobject}{子对象}又有一个商\Term{isomorphism}{同构}于某个 $M_i$。那么，$F$ \Term{faithful-functor}{忠实}且\Term{exact}{正合}，等价于：$F$ \Term{exact}{正合}，且对每个 $i$ 有 $F(M_i)\ne0$。若 $\mathcal C$ 是环 $A$ 上的模\Term{category}{范畴}，例如可取 $(M_i)$ 为 $A/\mathfrak m$ 组成的族，其中 $\mathfrak m$ 遍历 $A$ 的\Term{maximal-ideal}{极大理想}。事实上，每个非零模都有一个非零\Term{cyclic-module}{循环子模}，从而\Term{isomorphism}{同构}于某个 $A/I$，其中理想 $I\ne A$；根据 Krull 定理，它又有一个商 $A/\mathfrak m$。由这些基本事实，特别得到：
+
+\begin{SGAresult}{命题}{2.1}
+设 $M$ 是 $A$-模。以下条件等价：
+\begin{enumerate}
+\item[(i)] \Term{functor}{函子} $M\otimes_A$ \Term{faithful-functor}{忠实}且\Term{exact}{正合}；
+\item[(i bis)] $M$ \Term{flat}{平坦}，且 $M\otimes_A N=0$ 蕴含 $N=0$；
+\item[(i ter)] $M$ \Term{flat}{平坦}，且对 $A$ 的每个\Term{maximal-ideal}{极大理想} $\mathfrak m$，$M\otimes_A A/\mathfrak m\ne0$；
+\item[(ii)] 对任意\Term{homomorphism}{同态}列 $N'\to N\to N''$，它与 $M$ 作\Term{tensor-product}{张量积}所得的序列\Term{exact}{正合}，当且仅当原序列\Term{exact}{正合}。
+\end{enumerate}
+\end{SGAresult}
+这时称 $M$ 是\Term{faithfully-flat-module}{忠实平坦}的 $A$-模。特别地，若 $M$ \Term{faithfully-flat}{忠实平坦}，则 $N\to N'$ 是\Term{monomorphism}{单态射}、\Term{epimorphism}{满态射}或\Term{isomorphism}{同构}，当且仅当它与 $M$ 作\Term{tensor-product}{张量积}后也分别具有相同性质。\Term{faithfully-flat-module}{忠实平坦模}是\Term{faithful-module}{忠实模}，因为 $f$ 在 $M$ 上的乘法\Term{homomorphism}{同态}，是把 $f$ 在 $A$ 上的乘法\Term{homomorphism}{同态}与 $M$ 作\Term{tensor-product}{张量积}得到的。
+
+如第 1 节那样，可以得到通常的传递性质：两个\Term{faithfully-flat-module}{忠实平坦模}的\Term{tensor-product}{张量积}仍\Term{faithfully-flat}{忠实平坦}；若 $M$ 在 $A$ 上\Term{faithfully-flat}{忠实平坦}，则对任意\Term{base-change}{基扩张} $A\to B$，$M\otimes_A B$ 在 $B$ 上\Term{faithfully-flat}{忠实平坦}；若 $B$ 是在 $A$ 上\Term{faithfully-flat}{忠实平坦}的 $A$-代数，而 $M$ 是\Term{faithfully-flat}{忠实平坦}的 $B$-模，则 $M$ 也是\Term{faithfully-flat}{忠实平坦}的 $A$-模。
+
+\begin{SGAresult}{推论}{2.2}
+设 $A\to B$ 是\Term{local-ring}{局部环}之间的\Term{local-homomorphism}{局部同态}，$M$ 是\Term{finitely-generated}{有限生成}的 $B$-模。则 $M$ 在 $A$ 上\Term{faithfully-flat}{忠实平坦}，当且仅当它在 $A$ 上\Term{flat}{平坦}且非零。
+\end{SGAresult}
+\begin{proof}
+由判别准则 (i ter) 和 Nakayama 引理即得。特别地，$B$ 在 $A$ 上\Term{flat}{平坦}，当且仅当它在 $A$ 上\Term{faithfully-flat}{忠实平坦}。
+\end{proof}
+
+\SourcePage{91}
+\begin{SGAresult}{命题}{2.3}
+设 $A\to B$ 是环\Term{homomorphism}{同态}，$M$ 是在 $A$ 上\Term{faithfully-flat}{忠实平坦}的 $B$-模。则对 $A$ 的每个\Term{prime-ideal}{素理想} $\mathfrak p$，都存在 $B$ 的\Term{prime-ideal}{素理想} $\mathfrak q$，其在 $A$ 中的\Term{inverse-image}{逆像}为 $\mathfrak p$。
+\end{SGAresult}
+\begin{proof}
+先模去 $\mathfrak p$，便归结到 $\mathfrak p=0$ 的情形；再在\Term{prime-ideal}{素理想} $0$ 处\Term{localization}{局部化}，便归结到 $A$ 是域的情形。由于 $M$ 在 $A$ 上\Term{faithfully-flat}{忠实平坦}，所以 $M\ne0$，更有 $B\ne0$。因此 $B$ 有\Term{prime-ideal}{素理想}，其在 $A$ 中的\Term{inverse-image}{逆像}只能是 $A$ 的唯一\Term{prime-ideal}{素理想}！从几何上说，若 $X=\operatorname{Spec}(B)$ 上存在相对于 $A$“\Term{faithfully-flat}{忠实平坦}”的\Term{quasi-coherent}{拟凝聚层} $\mathcal F$，则 $X\to Y=\operatorname{Spec}(A)$ 是\Term{surjectivity}{满射}。
+\end{proof}
+
+\begin{SGAresult}{推论}{2.4}
+假设 $M$ 在 $A$ 上\Term{flat}{平坦}、在 $B$ 上\Term{finitely-generated}{有限生成}，且 $\operatorname{Supp}M=\operatorname{Spec}(B)$，即对 $B$ 的每个\Term{prime-ideal}{素理想} $\mathfrak q$，$M_{\mathfrak q}\ne0$。那么，在包含 $\mathfrak pB$ 的\Term{prime-ideal}{素理想}中极小的 $B$ 的\Term{prime-ideal}{素理想} $\mathfrak q$，其在 $A$ 中的\Term{inverse-image}{逆像}都是 $\mathfrak p$。
+\end{SGAresult}
+由于取商后所有假设仍成立，仍可归结到 $\mathfrak p=0$，于是 $A$ \Term{integral}{整}。因此，只需证明下面的陈述。
+
+\begin{SGAresult}{推论}{2.5}
+设 $M$ 如上。则 $B$ 的任意\Term{minimal-prime}{极小素理想} $\mathfrak q$ 在 $A$ 中的\Term{inverse-image}{逆像} $\mathfrak p$ 也是\Term{minimal-prime}{极小素理想}。
+\end{SGAresult}
+\begin{proof}
+分别在 $\mathfrak p$ 和 $\mathfrak q$ 处\Term{localization}{局部化}，只需证明：若 $A,B$ 是\Term{local-ring}{局部环}，$A\to B$ 是\Term{local-homomorphism}{局部同态}，$M$ 是在 $A$ 上\Term{flat}{平坦}的非零 $B$-模，且 $\dim B=0$，则 $\dim A=0$。由 2.2 和 2.3，$A$ 的每个\Term{prime-ideal}{素理想}都是 $B$ 的某个\Term{prime-ideal}{素理想}的\Term{inverse-image}{逆像}，因而都是 $B$ 的\Term{maximal-ideal}{极大理想}的\Term{inverse-image}{逆像}，也就是 $A$ 的\Term{maximal-ideal}{极大理想}。证毕。
+\end{proof}
+从几何上说，2.5 表明：$X=\operatorname{Spec}(B)$ 的每个\Term{irreducible-component}{不可约分支}都\Term{dominant}{支配} $Y=\operatorname{Spec}(A)$ 的某个\Term{irreducible-component}{不可约分支}；前提是 $X$ 上存在一个\Term{finitely-generated}{有限型}的\Term{quasi-coherent}{拟凝聚层}，它的\Term{support}{支集}为 $X$，并且相对于 $Y$ \Term{flat}{平坦}。
+
+注意，2.4 并未假设 $M$ 在 $A$ 上\Term{faithfully-flat}{忠实平坦}；但这样一来，也就不能保证存在包含 $\mathfrak pB$ 的\Term{prime-ideal}{素理想}，当然更不能保证其中有极小者。
+
+\begin{SGAresult}{命题}{2.6}
+设 $i:A\to B$ 是环\Term{homomorphism}{同态}。以下条件等价：
+\begin{enumerate}
+\item[(i)] $B$ 是\Term{faithfully-flat}{忠实平坦}的 $A$-模；
+\item[(ii)] $B$ 在 $A$ 上\Term{flat}{平坦}，且 $\operatorname{Spec}(B)\to\operatorname{Spec}(A)$ 为\Term{surjectivity}{满射}；
+\item[(ii bis)] $B$ 在 $A$ 上\Term{flat}{平坦}，且 $A$ 的每个\Term{maximal-ideal}{极大理想}都是 $B$ 中某个理想的\Term{inverse-image}{逆像}；
+\item[(iii)] $i$ 为\Term{injectivity}{单射}，且 $\operatorname{Coker}i$ 是\Term{flat}{平坦}的 $A$-模；
+\item[(iv)] 关于 $A$-模 $M$ 的\Term{functor}{函子} $M_{(B)}=M\otimes_A B$ \Term{exact}{正合}，且典范的\Term{functorial}{函子性}\Term{homomorphism}{同态} $M\to M_{(B)}$ 为\Term{injectivity}{单射}；
+\item[(iv bis)] 对 $A$ 的每个理想 $I$，$I\otimes_A B\to IB$ 是\Term{isomorphism}{同构}，且 $IB$ 在 $A$ 中的\Term{inverse-image}{逆像}等于 $I$。
+\end{enumerate}
+\end{SGAresult}
+
+\SourcePage{92}
+\begin{proof}
+由 2.3 得 (i)$\Rightarrow$(ii)；(ii)$\Rightarrow$(ii bis) 显然；由 2.1 的判别准则 (i ter) 得 (ii bis)$\Rightarrow$(i)。由 1.1 得 (iii)$\Rightarrow$(iv)；(iv)$\Rightarrow$(iv bis) 显然，只需在 (iv bis) 的第二个条件中取 $M=A/I$。由第 1 节开头用理想表述的\Term{flatness}{平坦性}判别准则及 2.1(i ter)，得 (iv bis)$\Rightarrow$(i)。最后，由 1.1 的一个容易得到的逆命题可知 (iv)$\Rightarrow$(iii)。为证明 (i)$\Rightarrow$(iv)，设 $N$ 是 $M\to M\otimes_A B=T(M)$ 的核；因为 $T$ \Term{exact}{正合}，而 $N\to T(N)$ 为零，所以 $T(N)=N\otimes_A B=0$，进而 $N=0$。证毕。
+\end{proof}
+
+\SGAsection{3}{与完备化的关系}
+设 $A$ 是\Term{noetherian}{诺特环}，$I$ 是 $A$ 的理想，$\widehat A$ 是 $A$ 关于 $I$-预进拓扑的\Term{separated-completion}{分离完备化}。对任意 $A$-模 $M$，记 $\widehat M$ 为它关于 $I$-预进拓扑的\Term{completion}{完备化}。它是 $\widehat A$-模，因而有典范\Term{homomorphism}{同态}
+\[
+M\otimes_A\widehat A\longrightarrow\widehat M.
+\]
+当 $M$ 遍历\Term{finitely-generated}{有限生成模}时，\Term{functor}{函子} $M\mapsto\widehat M$ 是\Term{exact}{正合}的。这很容易由 Krull 定理推出：若 $N\subset M$，则 $N$ 上的拓扑是 $M$ 的拓扑所诱导的拓扑。又因 $M\otimes_A\widehat A$ \Term{right-exact}{右正合}，用\Term{finitely-generated}{有限生成}\Term{free-module}{自由模} $L,L'$ 构成的 $L'\to L\to M$ 来分解 $M$，便容易推出上述\Term{functorial}{函子性}\Term{homomorphism}{同态}是\Term{isomorphism}{同构}；这里也用到 $M\mapsto\widehat M$ 是\Term{right-exact}{右正合}的。因此，$M\otimes_A\widehat A$ 关于 $M$ 也是\Term{exact}{正合函子}。所以：
+
+\begin{SGAresult}{命题}{3.1}
+设 $A$ 是\Term{noetherian}{诺特环}，$I$ 是 $A$ 的理想，则 $A$ 关于 $I$-预进拓扑的\Term{separated-completion}{分离完备化} $\widehat A$ 在 $A$ 上\Term{flat}{平坦}。
+\end{SGAresult}
+\begin{SGAresult}{推论}{3.2}
+$\widehat A$ 在 $A$ 上\Term{faithfully-flat}{忠实平坦}，当且仅当 $I$ 包含在 $A$ 的\Term{jacobson-radical}{根基}中。
+\end{SGAresult}
+\begin{proof}
+只需应用 2.1 的判别准则 (i ter)。
+\end{proof}
+就线性代数而言，以上结果概括了关于 $A$ 与 $\widehat A$ 之间关系所能作出的全部陈述。推论 3.2 主要用于 $A$ 是\Term{noetherian-local-ring}{诺特局部环}、$I$ 包含在\Term{maximal-ideal}{极大理想} $\mathfrak m$ 中的情形；最常见的情况是 $I=\mathfrak m$。
+
+\SGAsection{4}{与自由模的关系}
+\begin{SGAresult}{命题}{4.1}
+设 $A$ 是环，$I$ 是 $A$ 的理想，$M$ 是 $A$-模。假定以下两个条件之一成立：
+\begin{enumerate}
+\item[(a)] $I$ \Term{nilpotent}{幂零}；
+\item[(b)] $A$ \Term{noetherian}{诺特}，$I$ 包含在 $A$ 的\Term{jacobson-radical}{根基}中，且 $M$ \Term{finitely-generated}{有限生成}。
+\end{enumerate}
+那么 $M$ 在 $A$ 上\Term{free-module}{自由}，当且仅当 $M\otimes_A A/I$ 在 $A/I$ 上\Term{free-module}{自由}，且 $\operatorname{Tor}_1^A(M,A/I)=0$。
+\end{SGAresult}
+
+\SourcePage{93}
+\begin{proof}
+必要性显然。证明充分性。取 $M$ 的一族元素 $(e_i)$，使它们在 $M\otimes_A A/I=M/IM$ 中的像构成一个 $A/I$-基；在情形 (b) 中，这是一个\Term{finite}{有限}族。令 $L$ 为以同一指标集为基的\Term{free-module}{自由} $A$-模。于是得到一个\Term{homomorphism}{同态} $L\to M$，与 $A/I$ 作\Term{tensor-product}{张量积}的\Term{functor}{函子} $T$ 将其变成\Term{isomorphism}{同构} $T(L)\xrightarrow{\sim}T(M)$。若 $Q$ 为 $L\to M$ 的\Term{cokernel}{余核}，则 $T(Q)=0$，由 Nakayama 引理得 $Q=0$；在 (a)、(b) 两种情形下都可使用该引理。因此 $L\to M$ 为\Term{surjectivity}{满射}。设其核为 $R$，则有\Term{exact-sequence}{正合列}
+\[
+0\longrightarrow R\longrightarrow L\longrightarrow M\longrightarrow0.
+\]
+由于 $\operatorname{Tor}_1^A(M,A/I)=0$，得到\Term{exact-sequence}{正合列}
+$0\to T(R)\to T(L)\to T(M)\to0$，于是 $T(R)=0$。再由 Nakayama 引理得 $R=0$；注意，在 (b) 中，$A$ \Term{noetherian}{诺特}，所以 $R$ \Term{finitely-generated}{有限生成}。
+\end{proof}
+
+\begin{SGAresult}{推论}{4.2}
+可以把条件 $\operatorname{Tor}_1^A(M,A/I)=0$ 替换为：典范满\Term{homomorphism}{同态}
+\[
+\operatorname{gr}_I^0(M)\otimes_{A/I}\operatorname{gr}_I(A)
+\longrightarrow\operatorname{gr}_I(M)\tag{$*$}
+\]
+是\Term{isomorphism}{同构}。
+\end{SGAresult}
+\begin{proof}
+若 $M$ \Term{free-module}{自由}，这个条件当然成立。因此只需证明：若 $M\otimes_A A/I$ 在 $A/I$ 上\Term{free-module}{自由}，且关于 $\operatorname{gr}$ 的条件成立，则 $M$ \Term{free-module}{自由}。沿用上面的证明，构造 $L\to M$。由假设，此\Term{homomorphism}{同态}在\Term{associated-graded}{伴随分次模}上诱导\Term{isomorphism}{同构}，所以它的核包含在所有 $I^nL$ 的交中，因而为零；这一点在 (a) 中显然，在 (b) 中也是熟知的。证毕。
+\end{proof}
+
+\begin{SGAresult}{推论}{4.3}
+假设 $A/I$ 是域。则关于 $M$ 的以下条件等价：
+\begin{enumerate}
+\item[(i)] $M$ \Term{free-module}{自由}；
+\item[(ii)] $M$ \Term{projective-module}{投射}；
+\item[(iii)] $M$ \Term{flat}{平坦}；
+\item[(iv)] $\operatorname{Tor}_1^A(M,A/I)=0$；
+\item[(v)] 典范\Term{homomorphism}{同态} $(*)$ 为\Term{bijection}{双射}。
+\end{enumerate}
+\end{SGAresult}
+事实上，此时 $M\otimes_A A/I$ 自动\Term{free-module}{自由}。
+
+上述结果在以下两种情形中都适用：
+\begin{enumerate}
+\item[(a)] $M$ 是\Term{local-ring}{局部环} $A$ 上的任意模，而 $A$ 的\Term{maximal-ideal}{极大理想} $I$ \Term{nilpotent}{幂零}，例如 $A$ 是\Term{artinian-local-ring}{阿廷局部环}；
+\item[(b)] $M$ 是\Term{noetherian-local-ring}{诺特局部环}上的\Term{finitely-generated}{有限生成模}。
+\end{enumerate}
+再记录一个熟知的事实：
+\begin{SGAresult}{推论}{4.4}
+假设 $A$ 是\Term{integral}{整}的\Term{noetherian-local-ring}{诺特局部环}，其\Term{maximal-ideal}{极大理想}为 $\mathfrak m=I$，\Term{residue-field}{剩余域}为 $k=A/I$，\Term{fraction-field}{分式域}为 $K$。设 $M$ 是 $A$ 上的\Term{finitely-generated}{有限生成模}。那么前面的等价条件 (i)—(v) 还等价于：
+\SourcePage{94}
+\begin{enumerate}
+\item[(vi)] $M\otimes_A K$ 与 $M\otimes_A k$ 是维数相同的向量空间；也就是说，$M$ 在 $A$ 上的\Term{rank}{秩}，等于 $A$-模 $M$ 的生成元最少数目。
+\end{enumerate}
+\end{SGAresult}
+证明直接可得。推广到仅假定 $A$ 不含非零\Term{nilpotent}{幂零}元素的情形，留给读者：这时应要求 $M$ 在 $A$ 的各个\Term{minimal-prime}{极小素理想}处的\Term{rank}{秩}，均等于向量空间 $M\otimes_A k$ 的维数。
+
+\SGAsection{5}{平坦性的局部判别准则}
+\begin{SGAresult}{命题}{5.1}
+设 $A$ 是环，$I$ 是其理想，$M$ 是 $A$-模。假设对 $n>0$ 有
+\[
+\operatorname{Tor}_1^A(M,A/I^n)=0.
+\]
+那么典范满\Term{homomorphism}{同态}
+\[
+\operatorname{gr}_I^0(M)\otimes_{A/I}\operatorname{gr}_I(A)
+\longrightarrow\operatorname{gr}_I(M)\tag{$*$}
+\]
+是\Term{isomorphism}{同构}。若 $I$ \Term{nilpotent}{幂零}，则逆命题也成立。
+\end{SGAresult}
+\begin{proof}
+假设表明各\Term{homomorphism}{同态}
+\[
+I^n\otimes_A M\longrightarrow I^nM
+\]
+均为\Term{isomorphism}{同构}，由此立即得到各\Term{homomorphism}{同态}
+\[
+(I^n/I^{n+1})\otimes_A M\longrightarrow I^nM/I^{n+1}M
+\]
+均为\Term{isomorphism}{同构}。反之，假设这一条件成立，且 $I$ \Term{nilpotent}{幂零}。我们证明对所有 $n$，$\operatorname{Tor}_1^A(M,A/I^n)=0$。当 $n$ 足够大时结论成立，下面对 $n$ 作递降归纳，假设已对 $n+1$ 证明。考虑\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}[column sep=small]
+{} & M\otimes I^{n+1}\arrow[r]\arrow[d] & M\otimes I^n\arrow[r]\arrow[d] & M\otimes(I^n/I^{n+1})\arrow[r]\arrow[d] & 0\\
+0\arrow[r] & MI^{n+1}\arrow[r] & MI^n\arrow[r] & MI^n/MI^{n+1}\arrow[r] & 0
+\end{tikzcd}
+\]
+两行均\Term{exact}{正合}。由假设，最后一条竖直箭头是\Term{isomorphism}{同构}；由归纳假设，第一条竖直箭头也是\Term{isomorphism}{同构}。因此，中间一条竖直箭头同样是\Term{isomorphism}{同构}，证明完毕。
+\end{proof}
+
+以下命题是 Serre 在讨论班期间提炼出来的，它使本节的处理大为简化。
+\begin{SGAresult}{命题}{5.2}
+设 $A\to B$ 是环\Term{homomorphism}{同态}，$M$ 是 $A$-模。以下条件等价：
+\begin{enumerate}
+\item[(i)] 对每个 $B$-模 $N$，有 $\operatorname{Tor}_1^A(M,N)=0$；
+\item[(ii)] $\operatorname{Tor}_1^A(M,B)=0$，且 $M_{(B)}=M\otimes_A B$ 在 $B$ 上\Term{flat}{平坦}。
+\end{enumerate}
+\end{SGAresult}
+
+\SourcePage{95}
+\begin{proof}
+有\Term{functorial}{函子性}\Term{isomorphism}{同构}
+\[
+M\otimes_A N=(M\otimes_A B)\otimes_B N.
+\]
+将左边视为关于 $M$ 的\Term{functor}{函子}，这个公式把它表示为两个\Term{functor}{函子} $M\mapsto M\otimes_A B$ 和 $P\mapsto P\otimes_B N$ 的复合。前一个\Term{functor}{函子}把 $A$ 上的\Term{free-module}{自由模}变成 $B$ 上的\Term{free-module}{自由模}，从而把\Term{projective-module}{投射模}变成\Term{projective-module}{投射模}。因此，有复合\Term{functor}{函子}的\Term{spectral-sequence}{谱序列}
+\[
+\operatorname{Tor}_n^A(M,N)
+\quad\Longleftarrow\quad
+\operatorname{Tor}_p^B\bigl(\operatorname{Tor}_q^A(M,B),N\bigr),
+\]
+由此得到低次项的\Term{exact-sequence}{正合列}
+\[
+\begin{aligned}
+0\longleftarrow\operatorname{Tor}_1^B(M\otimes_A B,N)
+&\longleftarrow\operatorname{Tor}_1^A(M,N)\\
+&\longleftarrow\operatorname{Tor}_1^A(M,B)\otimes_A N.
+\end{aligned}
+\]
+若 (i) 成立，从该\Term{exact-sequence}{正合列}可知，对所有 $N$ 有 $\operatorname{Tor}_1^B(M\otimes_A B,N)=0$，也就是说 $M\otimes_A B$ 在 $B$ 上\Term{flat}{平坦}，从而得到 (ii)。反之，若 (ii) 成立，则该\Term{exact-sequence}{正合列}中位于 $\operatorname{Tor}_1^A(M,N)$ 两侧的项均为零，于是得到 (i)。
+\end{proof}
+
+\begin{SGAresult}{推论}{5.3}
+假设 $B=A/I$。那么上述条件还等价于：
+\begin{enumerate}
+\item[(iii)] 对每个被 $I$ 的某个幂消去的 $A$-模 $N$，都有 $\operatorname{Tor}_1^A(M,N)=0$。
+\end{enumerate}
+\end{SGAresult}
+\begin{proof}
+条件 (i) 表明，被 $I$ 消去的 $N$ 满足上述关系。将假设应用于各 $I^nN/I^{n+1}N$，便得到 (iii)。
+\end{proof}
+
+\begin{SGAresult}{推论}{5.4}
+在 5.3 的条件下，所考虑的条件蕴含\Term{functorial}{函子性}\Term{homomorphism}{同态}
+\[
+\operatorname{gr}_I^0(M)\otimes_{A/I}\operatorname{gr}_I(A)
+\longrightarrow\operatorname{gr}_I(M)\tag{$*$}
+\]
+为\Term{isomorphism}{同构}，且 $M\otimes_A A/I$ 在 $A/I$ 上\Term{flat}{平坦}。
+\end{SGAresult}
+只需应用 (iii) 和 5.1。在 $I$ \Term{nilpotent}{幂零}时，利用 5.1 的逆命题，得到：
+
+\begin{SGAresult}{推论}{5.5}
+设 $A$ 是环，$I$ 是其\Term{nilpotent}{幂零}理想，$M$ 是 $A$-模。以下条件等价：
+\begin{enumerate}
+\item[(i)] $M$ 在 $A$ 上\Term{flat}{平坦}；
+\item[(ii)] $M\otimes_A A/I$ 在 $A/I$ 上\Term{flat}{平坦}，且 $\operatorname{Tor}_1^A(M,A/I)=0$；
+\item[(iii)] $M\otimes_A A/I$ 在 $A/I$ 上\Term{flat}{平坦}，且\Term{grading}{分次}模上的典范\Term{homomorphism}{同态} $(*)$ 是\Term{isomorphism}{同构}。
+\end{enumerate}
+\end{SGAresult}
+事实上，这些分别是前面的条件 (iii)、(ii) 以及推论 5.4 中的条件。
+
+现在不再假设 $I$ \Term{nilpotent}{幂零}，则在 5.5 中，事先只能得到 (i)$\Rightarrow$(ii)$\Rightarrow$(iii)。另一方面，因为条件 (iii) 在模去 $I$ 的一个幂后仍成立，由 5.5 可知它蕴含：
+\begin{enumerate}
+\item[(iv)] 对每个整数 $n$，$M\otimes_A A/I^n$ 在 $A/I^n$ 上\Term{flat}{平坦}。
+\end{enumerate}
+
+\SourcePage{96}
+下面要给出一些条件，使我们能由此推出 (i)，即 $M$ 在 $A$ 上\Term{flat}{平坦}。我们断言，只需 $A$ \Term{noetherian}{诺特}，并且 $M$ 满足以下\Term{finite}{有限}性条件：对每个\Term{finitely-generated}{有限生成}的 $A$-模 $N$，$M\otimes_A N$ 关于 $I$-预进拓扑是\Term{separated}{分离}的。（事实上，只对 $A$ 中\Term{finitely-generated}{有限生成}理想 $N$ 检验即可。）
+
+证明在这些条件下，若 $N'\to N$ 是\Term{finitely-generated}{有限生成模}之间的\Term{monomorphism}{单态射}，则 $M\otimes_A N'\to M\otimes_A N$ 也是\Term{monomorphism}{单态射}。只需证明它的核包含在所有
+\[
+I^n(M\otimes_A N')
+=\operatorname{Im}(M\otimes_A I^nN'\longrightarrow M\otimes_A N')
+\]
+之中，或者说，包含在所有
+\[
+\begin{aligned}
+\operatorname{Im}(M\otimes_A V_n'\longrightarrow M\otimes_A N')
+=\operatorname{Ker}\bigl(M\otimes_A N'\longrightarrow M\otimes_A(N'/V_n')\bigr)
+\end{aligned}
+\]
+之中；这里 $V_n'$ 遍历赋有 $I$-进拓扑的 $N'$ 中零点的一个可数基本邻域系。根据 Krull 定理，$N'$ 的 $I$-进拓扑由 $N$ 的拓扑诱导，因此可以取 $V_n'=N'\cap I^nN$。考虑\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}
+M\otimes_A N'\arrow[r]\arrow[d] & M\otimes_A(N'/V_n')\arrow[d]\\
+M\otimes_A N\arrow[r] & M\otimes_A(N/I^nN).
+\end{tikzcd}
+\]
+由于 $N'/V_n'$ 和 $N/I^nN$ 都被 $I^n$ 消去，第二条竖直\Term{homomorphism}{同态}可视为：将\Term{injectivity}{单射} $N'/V_n'\to N/I^nN$ 在 $A/I^n$ 上与\Term{flat}{平坦}的 $A/I^n$-模 $M\otimes_A A/I^n$ 作\Term{tensor-product}{张量积}所得的\Term{homomorphism}{同态}。因此它为\Term{injectivity}{单射}。于是 $M\otimes_A N'\to M\otimes_A N$ 的核包含在 $M\otimes_A N'\to M\otimes_A(N'/V_n')$ 的核中，正是所要证明的。
+
+特别地，若 $M$ 是一个\Term{noetherian}{诺特} $A$-代数 $B$ 上的\Term{finitely-generated}{有限生成模}，且 $IB$ 包含在 $B$ 的\Term{jacobson-radical}{根基}中，那么 $M$ 满足上述“\Term{finite}{有限}性”条件。事实上，对每个\Term{finitely-generated}{有限生成}的 $A$-模 $N$，$M\otimes_A N$ 是\Term{finitely-generated}{有限生成}的 $B$-模，故由 Krull 定理，它关于 $I$-进拓扑，即它的 $IB$-进拓扑，是\Term{separated}{分离}的。于是得到：
+
+\begin{SGAresult}{定理}{5.6}
+设 $A\to B$ 是\Term{noetherian}{诺特环}之间的\Term{homomorphism}{同态}，$I$ 是 $A$ 的理想，且 $IB$ 包含在 $B$ 的\Term{jacobson-radical}{根基}中。设 $M$ 是\Term{finitely-generated}{有限生成}的 $B$-模。以下条件等价：
+\begin{enumerate}
+\item[(i)] $M$ 在 $A$ 上\Term{flat}{平坦}；
+\item[(ii)] $M\otimes_A A/I$ 在 $A/I$ 上\Term{flat}{平坦}，且 $\operatorname{Tor}_1^A(M,A/I)=0$；
+\item[(iii)] $M\otimes_A A/I$ 在 $A/I$ 上\Term{flat}{平坦}，且典范\Term{homomorphism}{同态}
+\[
+\operatorname{gr}_I^0(M)\otimes_{A/I}\operatorname{gr}_I(A)
+\longrightarrow\operatorname{gr}_I(M)
+\]
+为\Term{isomorphism}{同构}；
+\item[(iv)] 对每个整数 $n$，$M\otimes_A A/I^n$ 在 $A/I^n$ 上\Term{flat}{平坦}。
+\end{enumerate}
+\end{SGAresult}
+这一结果主要用于以下情形：$A,B$ 都是\Term{noetherian-local-ring}{诺特局部环}，$A\to B$ 是\Term{local-homomorphism}{局部同态}，而 $I$ 是 $A$ 中包含于其\Term{maximal-ideal}{极大理想}的理想；事实上，5.6 可以立即归结到这一情形。一个值得注意的特例是 $A/I$ 为域，即 $I$ 为\Term{maximal-ideal}{极大理想}。
+
+\SourcePage{97}
+在这一特例中，$M\otimes_A A/I$ 在 $A/I$ 上\Term{flat}{平坦}的条件便是多余的；又因为各 $A/I^n$ 都是\Term{artinian-local-ring}{阿廷局部环}，条件 (iv) 就是说各 $M\otimes_A A/I^n$ 在 $A/I^n$ 上\Term{free-module}{自由}。
+
+\begin{SGAresult}{推论}{5.7}
+设 $A\to B$ 是\Term{noetherian-local-ring}{诺特局部环}之间的\Term{local-homomorphism}{局部同态}，$u:M'\to M$ 是\Term{finitely-generated}{有限生成} $B$-模之间的\Term{homomorphism}{同态}，假定 $M$ 在 $A$ 上\Term{flat}{平坦}。则以下条件等价：
+\begin{enumerate}
+\item[(i)] $u$ 为\Term{injectivity}{单射}，且 $\operatorname{Coker}u$ 在 $A$ 上\Term{flat}{平坦}；
+\item[(ii)] $u\otimes_A k:M'\otimes_A k\to M\otimes_A k$ 为\Term{injectivity}{单射}，其中 $k$ 表示 $A$ 的\Term{residue-field}{剩余域}。
+\end{enumerate}
+\end{SGAresult}
+\begin{proof}
+由 1.1 得 (i)$\Rightarrow$(ii)。证明逆命题。首先，$u$ 为\Term{injectivity}{单射}，因为只需在\Term{associated-graded}{伴随分次模}上检验这一点，而这可由一个\Term{commutative-diagram}{交换方图}推出，图的具体写法留给读者。令 $M''$ 为 $u$ 的\Term{cokernel}{余核}，于是有\Term{exact-sequence}{正合列}
+\[
+0\longrightarrow M'\longrightarrow M\longrightarrow M''\longrightarrow0.
+\]
+利用 $\operatorname{Tor}$ 的\Term{exact-sequence}{正合列}，结合假设 (ii) 和 $\operatorname{Tor}_1^A(M,k)=0$，得到 $\operatorname{Tor}_1^A(M'',k)=0$。由定理 5.6，$M''$ 在 $A$ 上\Term{flat}{平坦}。
+\end{proof}
+
+\begin{SGAresult}{推论}{5.8}
+在 5.6 的条件下，设 $J$ 是 $B$ 的理想，包含 $IB$ 且包含在\Term{jacobson-radical}{根基}中。记 $\widehat A$ 为 $A$ 的 $I$-进\Term{completion}{完备化}，$\widehat B$ 和 $\widehat M$ 分别为 $B$ 与 $M$ 的 $J$-进\Term{completion}{完备化}。那么 $M$ 在 $A$ 上\Term{flat}{平坦}，当且仅当 $\widehat M$ 在 $\widehat A$ 上\Term{flat}{平坦}。
+\end{SGAresult}
+\begin{proof}
+注意，充分性其实很容易由 3.2 推出。在 $(A,B,I,M)$ 和 $(\widehat A,\widehat B,I\widehat A,\widehat M)$ 两种情形下分别使用 5.6 的判别准则 (iii)。利用 3.2 可知，这两种情形所得的条件彼此等价。
+\end{proof}
+
+\begin{SGAresult}{推论}{5.9}
+设 $A\to B\to C$ 是\Term{noetherian-local-ring}{诺特局部环}之间的\Term{local-homomorphism}{局部同态}，$M$ 是\Term{finitely-generated}{有限生成}的 $C$-模；这里引入 $C$，仅仅是为了能对 $M$ 施加\Term{finite}{有限}性条件。假定 $B$ 在 $A$ 上\Term{flat}{平坦}。设 $k$ 是 $A$ 的\Term{residue-field}{剩余域}。以下条件等价：
+\begin{enumerate}
+\item[(i)] $M$ 在 $B$ 上\Term{flat}{平坦}；
+\item[(ii)] $M$ 在 $A$ 上\Term{flat}{平坦}，且 $M\otimes_A k$ 在 $B\otimes_A k$ 上\Term{flat}{平坦}。
+\end{enumerate}
+\end{SGAresult}
+\begin{proof}
+(i)$\Rightarrow$(ii) 显然。证明 (ii)$\Rightarrow$(i)。将 5.6 的判别准则 (iii) 应用于 $(B,C,I=\mathfrak mB,M)$。因为
+\[
+M\otimes_B(B/I)=M\otimes_B(B\otimes_A k)=M\otimes_A k,
+\]
+该准则的第一个条件恰好是 $M\otimes_A k$ 在 $B\otimes_A k$ 上\Term{flat}{平坦}，这\Term{exact}{正合}所需。第二个条件由 $M$ 在 $A$ 上\Term{flat}{平坦}、$B$ 在 $A$ 上\Term{flat}{平坦}以及\Term{tensor-product}{张量积}的结合律得到。当然，若使用 5.5 而非 5.6，只要改为假定 $A$ 的理想 $\mathfrak m$ \Term{nilpotent}{幂零}，就能得到不需要\Term{noetherian}{诺特}性和\Term{finite}{有限}性条件的类似陈述。事实上，论证并未用到 $\mathfrak m$ 是\Term{maximal-ideal}{极大理想}；但从某种意义上说，“$\mathfrak m$ 为\Term{maximal-ideal}{极大理想}”的情形是“尽可能好的”。
+\end{proof}
+
+\SourcePage{98}
+\SGAsection{6}{平坦态射与开集}
+先回顾关于\Term{constructible-set}{可构造集}的一些结果。Dieudonné–Rosenlicht 关于\Term{scheme}{概形}的讨论班流传的讲义中，已经证明了这些结果\footnote{参见 EGA $0_{\mathrm{III}}$ 9，EGA IV 1.8、1.10。}。
+
+设 $X$ 是\Term{topological-space}{拓扑空间}。遵循 Chevalley 的用法，若 $X$ 的一个子集是\Term{finite}{有限}个\Term{locally-closed}{局部闭}子集的并，就称它是\Term{constructible-set}{可构造的}。
+
+\begin{SGAresult}{引理}{6.1}
+设 $X$ 是\Term{noetherian-space}{诺特拓扑空间}，$Z$ 是 $X$ 的子集。则 $Z$ \Term{constructible-set}{可构造}，当且仅当对 $X$ 的每个\Term{irreducible}{不可约}闭子集 $Y$，$Z\cap Y$ 或者在 $Y$ 中不稠密，或者包含空间 $Y$ 的一个非空开子集。
+\end{SGAresult}
+利用交换代数中一个熟知的引理，由此得到：
+\begin{SGAresult}{引理}{6.2（Chevalley）}
+设 $f:X\to Y$ 是\Term{prescheme}{预概形}之间的\Term{finite-type}{有限型}\Term{morphism}{态射}，且 $Y$ \Term{noetherian}{诺特}。则 $f(X)$ 是\Term{constructible-set}{可构造集}。
+\end{SGAresult}
+
+\begin{SGAresult}{引理}{6.3}
+设 $X$ 是\Term{noetherian-space}{诺特拓扑空间}，其中每个\Term{irreducible}{不可约}闭子集都有\Term{generic-point}{泛点}；设 $U$ 是 $X$ 的\Term{constructible-set}{可构造子集}，$x\in X$。则 $U$ 是 $x$ 的一个邻域，当且仅当 $x$ 的每个\Term{generalization}{泛化点} $y$，即每个满足 $x\in\overline{\{y\}}$ 的 $y\in X$，都属于 $U$。
+\end{SGAresult}
+特别地：
+\begin{SGAresult}{推论}{6.4}
+设 $X$ 是\Term{noetherian-space}{诺特拓扑空间}，其中每个\Term{irreducible}{不可约}闭子集都有\Term{generic-point}{泛点}，$U$ 是 $X$ 的子集。则 $U$ 为开集，当且仅当它满足以下两个条件：
+\begin{enumerate}
+\item[(a)] $U$ 包含其每一点的所有\Term{generalization}{泛化点}；
+\item[(b)] 若 $x\in U$，则 $U\cap\overline{\{x\}}$ 包含空间 $\overline{\{x\}}$ 的一个非空开子集。
+\end{enumerate}
+\end{SGAresult}
+\begin{proof}
+由 6.1，$U$ 必为\Term{constructible-set}{可构造集}。再用判别准则 6.2，便可证明 $U$ 是其每一点的邻域。
+\end{proof}
+
+\begin{SGAresult}{推论}{6.5}
+设 $f:X\to Y$ 是\Term{prescheme}{预概形}之间的\Term{finite-type}{有限型}\Term{morphism}{态射}，$Y$ \Term{locally-noetherian}{局部诺特}，$x\in X$，$y=f(x)$。则 $f$ 将 $x$ 的每个邻域都变成 $y$ 的邻域，当且仅当对 $y$ 的每个\Term{generalization}{泛化点} $y'$，都存在 $x$ 的一个\Term{generalization}{泛化点} $x'$，使得 $f(x')=y'$。
+\end{SGAresult}
+\begin{proof}
+显然可以假定 $X,Y$ 均\Term{affine}{仿射}，从而均\Term{noetherian}{诺特}。充分性如下：只需证明 $f(X)$ 是 $y$ 的邻域。由 6.1，$f(X)$ \Term{constructible-set}{可构造}，于是应用判别准则 6.3 即可。证明必要性：设 $Y'=\overline{\{y'\}}$，令 $F$ 为 $f^{-1}(Y')$ 中不包含 $x$ 的各个\Term{irreducible-component}{不可约分支}的并。则 $X-F$ 是 $x$ 的\Term{open-neighborhood}{开邻域}，故其像是 $y$ 的邻域。
+\SourcePage{99}
+因此该像包含 $y'$，从而存在 $x_1'\in X-F$，使 $f(x_1')=y'$。取 $f^{-1}(Y')$ 的一个包含 $x_1'$ 的\Term{irreducible-component}{不可约分支}，它必包含 $x$，否则它就包含在 $F$ 中。设 $x'$ 为它的\Term{generic-point}{泛点}，则 $x'$ 是 $x$ 的\Term{generalization}{泛化点}，而 $f(x')$ 是 $f(x_1')=y'$ 的一个\Term{generalization}{泛化点}，同时又属于 $Y'$，所以 $f(x')=y'$。证毕。
+\end{proof}
+
+\begin{SGAresult}{定理}{6.6}
+设 $f:X\to Y$ 是\Term{locally-finite-type}{局部有限型}\Term{morphism}{态射}，$Y$ \Term{locally-noetherian}{局部诺特}，$\mathcal F$ 是 $X$ 上的\Term{coherent}{凝聚层}，其\Term{support}{支集}为 $X$，且相对于 $Y$ \Term{flat}{平坦}。那么 $f$ 是\Term{open-morphism}{开态射}，即把开集映为开集。
+\end{SGAresult}
+\begin{proof}
+只需对每个 $x\in X$ 检验判别准则 6.5。$x$ 的\Term{generalization}{泛化点} $x'$ 对应于 $\mathcal O_x$ 的\Term{prime-ideal}{素理想}，$y$ 的\Term{generalization}{泛化点} $y'$ 对应于 $\mathcal O_y$ 的\Term{prime-ideal}{素理想}；因此，需要检验 $\mathcal O_y$ 的每个\Term{prime-ideal}{素理想}都是 $\mathcal O_x$ 的某个\Term{prime-ideal}{素理想}的\Term{inverse-image}{逆像}。而 $\mathcal F_x$ 是一个非零的 $\mathcal O_x$-模，并且在 $\mathcal O_y$ 上\Term{flat}{平坦}，所以由 2.2，它在 $\mathcal O_y$ 上\Term{faithfully-flat}{忠实平坦}。应用 2.3 即完成证明。
+\end{proof}
+
+\textbf{注记。}
+由于\Term{flatness}{平坦性}在\Term{base-change}{基扩张}后保持，可以看出，在 6.5 的条件下，$f$ 甚至是\Term{universally-open}{普遍开的}。然而，若 $Y$ \Term{integral}{整}，$X$ 在 $Y$ 上\Term{finite-type}{有限型}，我不知道 $f$ 在 $X$ 的每个\Term{irreducible-component}{不可约分支} $X_i$ 上所诱导的\Term{morphism}{态射}是否为\Term{open-morphism}{开态射}，甚至不知道它是否至少\Term{equidimensional}{等维}\footnote{第二个问题的答案是肯定的，第一个问题的答案则是否定的，即使 $f$ \Term{etale}{平展}也是如此；参见 EGA IV 12.1.1.5 和 EGA ErrIV 33。}，也就是说，各\Term{fiber}{纤维}的所有\Term{irreducible-component}{不可约分支}是否具有相同维数。我们只知道 $X_i$ \Term{dominant}{支配} $Y$。这个问题与以下问题有关：设 $A\to B$ 是\Term{noetherian-local-ring}{诺特局部环}之间的\Term{local-homomorphism}{局部同态}，$B$ 在 $A$ 上\Term{flat}{平坦}，且 $\mathfrak mB$ 是 $B$ 的一个\Term{ideal-of-definition}{定义理想}；顺便说，这也蕴含 $\dim B=\dim A$。那么，对 $B$ 的每个\Term{minimal-prime}{极小素理想} $\mathfrak p_i$，是否都有 $\dim B/\mathfrak p_i=\dim B$？这里只指出，若把 6.5 中的\Term{flatness}{平坦性}假设替换为仅仅假设 $f$ \Term{universally-open}{普遍开}，那么第一个问题的答案是否定的。
+
+\begin{SGAresult}{引理}{6.7}
+设 $A$ 是\Term{integral}{整}的\Term{noetherian}{诺特环}，$B$ 是\Term{finite-type}{有限型} $A$-代数，$M$ 是\Term{finitely-generated}{有限生成}的 $B$-模。则存在 $A$ 的非零元素 $f$，使 $M_f$ 在 $A_f$ 上\Term{free-module}{自由}，因而也\Term{flat}{平坦}。
+\end{SGAresult}
+\begin{proof}
+设 $K$ 是 $A$ 的\Term{fraction-field}{分式域}。那么 $B\otimes_A K$ 是\Term{finite-type}{有限型} $K$-代数，$M\otimes_A K$ 是其上的\Term{finitely-generated}{有限生成模}。设该模的\Term{support}{支集}的维数为 $n$，对 $n$ 作归纳。若 $n<0$，即 $M\otimes_A K=0$，则取 $M$ 在 $B$ 上的\Term{finite}{有限}个生成元，可知存在 $A$ 的一个非零元素 $f$，将这些生成元全部消去，从而消去 $M$。于是 $M_f=0$，结论成立。设 $n\ge0$。我们知道，$B$-模 $M$ 有一个合成列，其各个相继商\Term{isomorphism}{同构}于 $B/\mathfrak p_i$，其中 $\mathfrak p_i$ 为 $B$ 的\Term{prime-ideal}{素理想}。由于\Term{free-module}{自由模}的\Term{group-extension}{扩张}仍\Term{free-module}{自由}，可归结到 $M$ 本身形如 $B/\mathfrak p$ 的情形；或者进一步，归结到 $M=B$、$B$ 为\Term{integral}{整} $A$-代数的情形。
+\SourcePage{100}
+对 $K$-代数 $B\otimes_A K$ 应用 Noether \Term{normalization}{正规化}引理，容易看出，$A$ 中存在非零元素 $f$，使 $B_f$ 在子环 $A_f[t_1,\ldots,t_n]$ 上\Term{integral-extension}{整}，其中 $t_i$ 为不定元。因此可先假定 $B$ 在 $C=A[t_1,\ldots,t_n]$ 上\Term{integral-extension}{整}，于是它是\Term{finitely-generated}{有限生成}且\Term{torsion-free}{无挠}的 $C$-模。设其\Term{rank}{秩}为 $m$，则有 $C$-模的\Term{exact-sequence}{正合列}
+\[
+0\longrightarrow C^m\longrightarrow B\longrightarrow M'\longrightarrow0,
+\]
+其中 $M'$ 是\Term{torsion-module}{挠} $C$-模。因此，$C\otimes_A K$-模 $M'\otimes_A K$ 的\Term{krull-dimension}{Krull 维数}严格小于 $C\otimes_A K$ 的维数 $n$。由归纳假设，在 $A$ 的某个适当非零元素 $f$ 处\Term{localization}{局部化}后，可以假定 $M'$ 是\Term{free-module}{自由} $A$-模。另一方面，$C^m$ 也是\Term{free-module}{自由} $A$-模。因此 $B$ 是\Term{free-module}{自由} $A$-模，证明完毕。
+\end{proof}
+
+\begin{SGAresult}{引理}{6.8}
+设 $A$ 是\Term{noetherian}{诺特环}，$B$ 是 $A$ 上的\Term{finite-type}{有限型}代数，$M$ 是\Term{finitely-generated}{有限生成}的 $B$-模，$\mathfrak p$ 是 $B$ 的\Term{prime-ideal}{素理想}，$\mathfrak q$ 是它在 $A$ 中的\Term{inverse-image}{逆像}。假定 $M_{\mathfrak p}$ 在 $A_{\mathfrak q}$ 上\Term{flat}{平坦}，或者等价地，在 $A$ 上\Term{flat}{平坦}。则存在 $g\in B-\mathfrak p$，使得：
+\begin{enumerate}
+\item[(a)] $(M/\mathfrak qM)_g$ 在 $A/\mathfrak q$ 上\Term{flat}{平坦}；
+\item[(b)] $\operatorname{Tor}_1^A(M,A/\mathfrak q)_g=0$。
+\end{enumerate}
+\end{SGAresult}
+\begin{proof}
+对 $(A/\mathfrak q,B/\mathfrak qB,M/\mathfrak qM)$ 应用 6.7，首先可知存在 $f\in A-\mathfrak q$，使 $(M/\mathfrak qM)_f$ 在 $A/\mathfrak q$ 上\Term{flat}{平坦}。另一方面，由于 $M_{\mathfrak p}$ 在 $A$ 上\Term{flat}{平坦}，有
+\[
+\operatorname{Tor}_1^A(M,A/\mathfrak q)_{\mathfrak p}
+=\operatorname{Tor}_1^A(M_{\mathfrak p},A/\mathfrak q)=0.
+\]
+而 $\operatorname{Tor}_1^A(M,A/\mathfrak q)$ 是\Term{finitely-generated}{有限生成}的 $B$-模，所以存在 $g\in B-\mathfrak p$，使 (b) 成立。将 $g$ 替换为 $gf$，即可同时满足 (a)，从而得到结论。
+\end{proof}
+
+\begin{SGAresult}{推论}{6.9}
+沿用 6.8 的记号。对 $B$ 中每个包含 $\mathfrak p$ 而不包含 $g$ 的\Term{prime-ideal}{素理想} $\mathfrak p'$，$M_{\mathfrak p'}$ 在 $A$ 上\Term{flat}{平坦}；或者等价地，在 $A_{\mathfrak q'}$ 上\Term{flat}{平坦}，其中 $\mathfrak q'$ 是 $\mathfrak p'$ 在 $A$ 中的\Term{inverse-image}{逆像}。
+\end{SGAresult}
+\begin{proof}
+只需将判别准则 5.6(ii) 应用于系统 $(A,B_{\mathfrak q'},\mathfrak q,M_{\mathfrak q'})$，并利用 $\operatorname{Tor}$ 的\Term{localization}{局部化}性质。
+\end{proof}
+
+\begin{SGAresult}{定理}{6.10}
+设 $f:X\to Y$ 是\Term{finite-type}{有限型}\Term{morphism}{态射}，$Y$ \Term{locally-noetherian}{局部诺特}，$\mathcal F$ 是 $X$ 上的\Term{coherent}{凝聚层}。令 $U$ 为所有满足 $\mathcal F_x$ 在 $\mathcal O_{f(x)}$ 上\Term{flat}{平坦}的 $x\in X$ 所组成的集合。则 $U$ 为开集。
+\end{SGAresult}
+\begin{proof}
+可假定 $X,Y$ 均\Term{affine}{仿射}，其环分别为 $B,A$，而 $\mathcal F$ 由\Term{finitely-generated}{有限生成}的 $B$-模 $M$ 定义。应用判别准则 6.4。条件 (a) 由 1.2(i) 显然成立；还需检验 6.4 的条件 (b)，而引理 6.8 及推论 6.9 已经完成了这一工作。
+\end{proof}
+在许多问题中，定理 6.10 的以下较弱形式已经足够。它直接由引理 6.7 推出，因而既不需要\Term{constructible-set}{可构造集}的技巧，也不需要定理 5.6。
+
+\SourcePage{101}
+\begin{SGAresult}{推论}{6.11}
+在 6.10 的条件下，若再假设 $Y$ \Term{integral}{整}，则 $Y$ 中存在一个非空开集 $V$，使 $\mathcal F$ 在 $f^{-1}(V)$ 的每一点处都相对于 $Y$ \Term{flat}{平坦}。
+\end{SGAresult}
+\begin{proof}
+开集 $U$ 包含 $Y$ 的\Term{generic-point}{泛点}的\Term{fiber}{纤维}，因为该点的\Term{local-ring}{局部环}是域。由于 $X$ 在 $Y$ 上\Term{finite-type}{有限型}，$U$ 因而包含形如 $f^{-1}(V)$ 的开集。
+\end{proof}
+由 6.11 还容易推出以下结果，这里假设 $Y$ \Term{noetherian}{诺特}，但不一定\Term{integral}{整}：存在将 $Y$ 分成若干\Term{locally-closed}{局部闭}子集 $Y_i$ 的一个划分，使得赋予每个 $Y_i$ 所诱导的\Term{reduced-structure}{约化结构}后，$\mathcal F$ 在各 $X_i=X\times_Y Y_i$ 上诱导的层都相对于 $Y_i$ \Term{flat}{平坦}。
+\SourcePage{102}
+% 原 PDF 第 102 页为空白页，无待译文字。

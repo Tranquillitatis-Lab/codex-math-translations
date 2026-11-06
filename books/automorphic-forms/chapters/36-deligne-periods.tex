@@ -1,0 +1,1442 @@
+\article{$L$ 函数的值与积分的周期}{Valeurs de fonctions $L$ et périodes d'intégrales}{P. Deligne}{2}{313--343；共同书目见附录后345--346}
+
+本文提出一个猜想（1.8、2.8），把某些 $L$ 函数在某些整数点的值与积分的周期（period）联系起来。
+
+所考虑的 $L$ 函数是动机（motive）的 $L$ 函数；这里不给“动机”一词规定精确含义。这特别包括 Artin $L$ 函数、代数 Hecke 特征（algebraic Hecke character，即 $A_0$ 型 Grössencharakter）的 $L$ 函数，以及 Poincaré 半平面上全纯模形式（holomorphic modular form）的 $L$ 函数，其中模形式假设为本原的（primitive，即新形式 new form；我们考虑相应 $l$ 进表示（$l$-adic representation）的各个对称幂（symmetric power）$\operatorname{Sym}^k$ 所附带的全部 $L$ 函数 $L_k$）。
+
+本文的写作得益于 D. Zagier 的推动：他不断敦促我提出一个猜想；猜想一经提出，他便对 $\Delta=\sum\tau(n)q^n$ 所附带的 $L_3$、$L_4$ 给出了数值验证（见[18]）。这一验证使我有信心进一步证明，猜想与 Shimura [13] 关于代数 Hecke 特征的 $L$ 函数值的结果相容。\footnote{AMS（MOS）主题分类（1970）：主要 10D25、14K10。}
+
+\origsection{0}{动机（Motives）}
+本节回顾 Grothendieck 动机形式体系中将要用到的部分内容，读者可在需要时查阅；证明参见[8]。
+
+\paragraph*{0.1.} Grothendieck 对域 $k$ 上动机的定义可分为以下几步。
+
+(a) 设 $\mathcal V(k)$ 为 $k$ 上射影光滑簇（projective smooth variety）的范畴（category）。构造一个加性范畴（additive category）$\mathcal M'(k)$，其中 $\Hom(M,N)$ 是 $\Q$ 向量空间，且配备：
+
+$\alpha$. 张量积（tensor product）$\otimes$，它满足结合律、交换律，并对对象的加法满足分配律。这里“结合”与“交换”并非函子（functor）$\otimes$ 的性质，而是须满足某些相容条件的附加数据，参见 Saavedra [19]。
+
+$\beta$. 从 $\mathcal V(k)$ 到 $\mathcal M'(k)$ 的反变函子（contravariant functor）$H^*$，它在对象上为双射，将不交并变为和，将积变为张量积；即给定与结合律、交换律相容的函子同构
+\[
+ H^*(X\times Y)\simeq H^*(X)\otimes H^*(Y).
+\]
+关键在于定义 $\Hom(H^*(X),H^*(Y))$。Grothendieck 将这个群定义为 $X,Y$ 之间对应（correspondence）的类构成的群，见0.6。
+
+(b) 回忆（SGA 4 IV 7.5），如果每个投影子（projector，即幂等自同态 idempotent endomorphism）均由一个直和分解（direct sum decomposition）给出，则称加性范畴是 Karoubi 范畴（Karoubian category）。每个加性范畴都有 Karoubi 包络（Karoubian envelope），它由形式地添入各个投影子的像得到。$k$ 上有效动机（effective motive）的范畴 $\mathcal M_{\mathrm{eff}}(k)$ 是 $\mathcal M'(k)$ 的 Karoubi 包络。
+
+(c) 把 Tate 动机（Tate motive）$\Z(-1)$ 定义为 $H^*(\mathbb P^1)$ 的某个适当直和因子（direct factor）$H^2(\mathbb P^1)$。可以证明，由 $\otimes$ 的交换性导出的对称映射
+\[
+ \Z(-1)\otimes\Z(-1)\longrightarrow\Z(-1)\otimes\Z(-1)
+\]
+为恒等映射，而且函子 $M\mapsto M\otimes\Z(-1)$ 充分忠实（fully faithful）。
+
+(d) 将函子 $M\mapsto M\otimes\Z(-1)$ 形式地变为可逆函子，便由 $\mathcal M_{\mathrm{eff}}(k)$ 得到 $k$ 上动机的范畴 $\mathcal M(k)$。
+
+用 $(n)$ 表示自等价（autoequivalence）$M\mapsto M\otimes\Z(-1)$ 的第 $(-n)$ 次迭代。$\mathcal M_{\mathrm{eff}}(k)$ 为 $\mathcal M(k)$ 的满子范畴（full subcategory），后者的每个对象均形如 $M(n)$，其中 $M\in\mathcal M_{\mathrm{eff}}(k)$，$n$ 为整数。
+
+由定义，从 $\mathcal M'(k)$ 到 Karoubi 范畴 $\mathcal A$ 的加性函子 $F$ 可扩张到 $\mathcal M_{\mathrm{eff}}(k)$。若 $\mathcal A$ 配有自等价 $A\mapsto A(-1)$，且扩张后的 $F$ 配有函子同构 $F(M(-1))\simeq F(M)(-1)$，则可继续扩张到 $\mathcal M(k)$。
+
+\paragraph*{例 0.1.1（Example 0.1.1）.}
+若 $k'/k$ 为扩张，而 $F$ 为 $\mathcal M'(k)$ 到 $\mathcal M(k')$ 的函子
+$H^*(X)\mapsto H^*(X\otimes_k k')$，便得到从 $\mathcal M(k)$ 到 $\mathcal M(k')$ 的标量扩张（extension of scalars）函子。若 $k'/k$ 有限，则有 Grothendieck 意义的标量限制（restriction of scalars）函子
+\[
+ \coprod_{k'/k}:\mathcal V(k')\longrightarrow\mathcal V(k):
+ (X\longrightarrow\Spec k')\longmapsto
+ (X\longrightarrow\Spec k'\longrightarrow\Spec k).
+\]
+将其扩张为 $F:H^*(X)\mapsto H^*(\coprod_{k'/k}X)$，便得到标量限制函子
+$R_{k'/k}:\mathcal M(k')\longrightarrow\mathcal M(k)$。
+
+\paragraph*{例 0.1.2.}
+设 $\mathcal H$ 为取值于 Karoubi 范畴 $\mathcal A$、对于 $\mathcal M'(k)$ 中态射具有函子性的一个“上同调理论”（cohomology theory）。函子 $\mathcal H$ 可扩张到 $\mathcal M_{\mathrm{eff}}(k)$。若 $\mathcal A$ 配有张量积，$\mathcal H$ 满足 Künneth 公式（Künneth formula），且与 $\mathcal H(\Z(-1))$ 作张量积为 $\mathcal A$ 的一个自等价，则它可扩张到 $\mathcal M(k)$。此扩张就是“动机在理论 $\mathcal H$ 中的实现”（realization）函子。
+
+同样，用 $(n)$ 表示与 $\mathcal H(\Z(-1))$ 作张量积所得自等价的第 $(-n)$ 次迭代。各个理论 $\mathcal H$ 中 $\mathcal H(\Z(-1))$ 的确定见3.1。
+
+\paragraph*{0.2.} 我们将使用下列实现。
+
+\paragraph*{0.2.1. Betti 实现（Betti realization）$H_B$.}
+对应于 $k=\C$、$\mathcal A$ 为 $\Q$ 向量空间范畴、$\mathcal H$ 为有理上同调（rational cohomology）$X\mapsto H^*(X(\C),\Q)$。
+
+\paragraph*{0.2.2. de Rham 实现（de Rham realization）$H_{\mathrm{DR}}$.}
+对应于 $k$ 的特征为零、$\mathcal A$ 为 $k$ 向量空间范畴、$\mathcal H$ 为 de Rham 上同调 $X\mapsto H^*(X,\Omega_X^*)$。
+
+\paragraph*{0.2.3. $l$ 进实现（$l$-adic realization）$H_l$.}
+对应于 $k$ 代数闭、特征不等于 $l$、$\mathcal A$ 为 $\Q_l$ 向量空间范畴、$\mathcal H$ 为 $l$ 进上同调 $X\mapsto H^*(X,\Q_l)$。
+
+此外，还要使用下列变体。
+
+\paragraph*{0.2.4. Hodge 实现（Hodge realization）.}
+这里 $k$ 为 $\R$ 的一个代数闭包，$\mathcal A$ 为如下 $\Q$ 向量空间的范畴：其复化（complexification）$V\otimes k$ 配有双分次（bigrading）
+\[
+ V\otimes k=\bigoplus V^{p,q},
+\]
+使得 $V^{q,p}$ 是 $V^{p,q}$ 的复共轭。上同调理论取函子 $X\mapsto H^*(X(k),\Q)$，其复化 $H^*(X(k),k)$ 配备 Hodge 理论给出的双分次。Betti 实现为 Hodge 实现的底层实现。
+
+\paragraph*{0.2.5.}
+对任意 $k$ 及 $k$ 的复嵌入（complex embedding）$\sigma$，用 $H_\sigma(M)$ 表示由标量扩张 $\sigma:k\longrightarrow\C$ 从 $M$ 得到的 $\C$ 上动机的 Betti 实现。用 $c$ 表示复共轭。通过结构搬运（transport of structure）得到同构
+\[
+ F_\infty:H_\sigma(M)\xrightarrow{\sim}H_{c\sigma}(M),
+\]
+且 $F_\infty\otimes c$ 将 $H_\sigma^{p,q}$ 映到 $H_{c\sigma}^{q,p}$。\footnote{\textbf{译者注（本次校订）：}这里交换 $p,q$ 的应是复线性映射 $F_\infty\otimes1$。系数上的复共轭 $c$ 也交换 Hodge 指标，因此反线性映射 $F_\infty\otimes c$ 将 $H_\sigma^{p,q}$ 映到 $H_{c\sigma}^{p,q}$。这与后文1.4、1.6对 de Rham 实结构的描述一致。}当 $\sigma$ 为实嵌入时，$F_\infty$ 是 $H_\sigma(M)$ 上的对合（involution），其复化交换 $H_\sigma^{p,q}(M)$ 与 $H_\sigma^{q,p}(M)$。
+
+$\sigma$-Hodge 实现就是 $H_\sigma(M)$ 配以 Hodge 双分次，并在 $\sigma$ 为实时再配以对合 $F_\infty$。若 $k=\Q$，或 $k=\R$ 且 $\sigma$ 为恒等嵌入，则将下标 $\sigma$ 改为 $B$。当 $k=\R$ 且 $M=H^*(X)$ 时，$H_B^*(M)=H^*(X(\C),\Q)$ 上的对合 $F_\infty$ 是由复共轭 $F_\infty:X(\C)\longrightarrow X(\C)$ 诱导的对合。
+
+\paragraph*{0.2.6. de Rham 实现.}
+de Rham 上同调具有自然滤过（filtration），称为 Hodge 滤过（Hodge filtration），它由超上同调谱序列（hypercohomology spectral sequence）
+\[
+ E_1^{p,q}=H^q(X,\Omega^p)\Longrightarrow H_{\mathrm{DR}}^{p+q}(X)
+\]
+在极限项上诱导。由此在 $H_{\mathrm{DR}}(M)$ 上得到滤过 $F$。
+
+\paragraph*{0.2.7. $l$ 进实现.}
+若 $X$ 为域 $k$ 上的簇，而 $\overline k$ 为 $k$ 的代数闭包，则 Galois 群（Galois group）$\Gal(\overline k/k)$ 通过结构搬运作用于 $H^*(X_{\overline k},\Q_l)$。若 $M$ 为 $k$ 上动机，并将 $H_l(M)$ 定义为由标量扩张得到的 $\overline k$ 上动机的 $l$ 进实现，则得到 $\Gal(\overline k/k)$ 在 $H_l(M)$ 上的作用。
+
+\paragraph*{0.2.8. 有限阿代尔实现（finite adelic realization）.}
+当 $k$ 代数闭且特征为零时，可将各个 $l$ 进上同调合成一个阿代尔上同调：
+\[
+ H^*(X,\A^f)=\left(\prod_l H^*(X,\Z_l)\right)\otimes_{\Z}\Q.
+\]
+可以同时采用0.2.7与0.2.8两种变体。
+
+\paragraph*{0.2.9.}
+在例0.2.1、0.2.2、0.2.3及其变体中，可将范畴 $\mathcal A$ 替换为其分次对象（graded object）的范畴 $\mathcal A^*$，使用 $H^*$ 的自然分次。为使 Künneth 公式给出与结合性及交换性相容的函子同构
+$\mathcal H(M\otimes N)\xrightarrow{\sim}\mathcal H(M)\otimes\mathcal H(N)$，必须在 $\mathcal A^*$ 中采用 Koszul 规则（Koszul rule）给出的交换性数据。
+
+\paragraph*{0.3.}
+当 $k=\C$ 时，经典上同调与平展上同调（étale cohomology）之间的比较定理（comparison theorem）给出同构
+\[
+ H^*(X(\C),\Q)\otimes\Q_l\xrightarrow{\sim}H^*(X,\Q_l).
+\]
+若 $X$ 定义在 $\R$ 上，则该同构将 $F_\infty$（0.2.5）变为复共轭的作用（0.2.7）。对动机也同样有
+$H_B(M)\otimes\Q_l\xrightarrow{\sim}H_l(M)$。
+
+\paragraph*{0.4.}
+当 $k=\C$ 时，$X^{\mathrm{an}}$ 上的全纯 de Rham 复形（holomorphic de Rham complex）为常值层（constant sheaf）$\C$ 的消解（resolution）。由 GAGA，得到同构
+\[
+ H^*(X(\C),\Q)\otimes\C=H^*(X(\C),\C)
+ \xrightarrow{\sim}\mathbb H^*(X^{\mathrm{an}},\Omega^{*\mathrm{an}})
+ \xrightarrow{\sim}H^*(X,\Omega^*).
+\]
+对于动机，得到同构 $H_B(M)\otimes\C\xrightarrow{\sim}H_{\mathrm{DR}}(M)$，它与0.2.4中的 Hodge 滤过 $F^p=\bigoplus_{p'\geq p}V^{p',q'}$ 及0.2.6中的 Hodge 滤过相容。
+
+更一般地，设 $M$ 为域 $k$ 上的动机，$\sigma$ 为 $k$ 的复嵌入。将上述结果用于由标量扩张从 $M$ 得到的 $\C$ 上动机，得到同构
+\[
+ I:H_\sigma(M)\otimes\C\xrightarrow{\sim}
+ H_{\mathrm{DR}}(M)\otimes_{k,\sigma}\C.\tag{0.4.1}
+\]
+特别考虑 $k=\Q$ 的情形：$M$ 在复上同调中的实现具有两个自然的 $\Q$ 结构，一个是 $H_B(M)$，与用闭链（cycle）描述上同调有关；另一个是 $H_{\mathrm{DR}}(M)$，与用代数微分形式（algebraic differential form）描述上同调有关。
+
+\paragraph*{0.5.}
+上述实现及其比较同构都与基域扩张相容。对于基域的标量限制，则有以下结果。设 $k'/k$ 为有限扩张，$M'$ 为 $k'$ 上动机，$M=R_{k'/k}(M')$。则
+\[
+ H_\sigma(M)=\bigoplus_{\tau\in J(\sigma)}H_\tau(M'),\tag{0.5.1}
+\]
+其中 $J(\sigma)$ 为 $k'$ 的延拓 $\sigma$ 的全部复嵌入组成的集合。该同构与 Hodge 双分次以及 $F_\infty$ 相容。又有
+\[
+ H_{\mathrm{DR}}(M)=H_{\mathrm{DR}}(M')
+ \quad\text{（从 $k'$ 到 $k$ 限制标量）},\tag{0.5.2}
+\]
+此同构与 Hodge 滤过相容；以及
+\[
+ H_l(M)=\Ind H_l(M')
+ \quad\text{（从 $\Gal(\overline k/k')$ 到 $\Gal(\overline k/k)$ 的诱导表示）}.\tag{0.5.3}
+\]
+
+\paragraph*{0.5.4.}
+由同构 $k'\otimes_{k,\sigma}\C=\C^{J(\sigma)}$ 及其导出的同构
+\[
+ H_{\mathrm{DR}}(M')\otimes_{k,\sigma}\C
+ =\bigoplus_{\tau\in J(\sigma)}H_{\mathrm{DR}}(M')\otimes_{k',\tau}\C,
+\]
+$M,\sigma$ 的同构(0.4.1)为 $M',\tau$（$\tau\in J(\sigma)$）的同构(0.4.1)之和，即下图交换：
+\[
+\begin{tikzcd}[column sep=large,row sep=large]
+ H_\sigma(M)\otimes\C \arrow[r,"{(0.4.1)}","\sim"'] \arrow[d,"{(0.5.1)}","\sim"'] &
+ H_{\mathrm{DR}}(M)\otimes_{k,\sigma}\C \arrow[d,"{(0.5.2)}","\sim"']\\
+ \bigoplus_\tau H_\tau(M')\otimes\C \arrow[r,"{(0.4.1)}","\sim"'] &
+ \bigoplus_\tau H_{\mathrm{DR}}(M')\otimes_{k',\tau}\C
+\end{tikzcd}
+\]
+
+\paragraph*{0.6.}
+对 $k$ 上射影光滑的 $X$，用 $Z^d(X)$ 表示以 $X$ 中余维（codimension）$d$ 的不可约闭子概形（closed subscheme）为基的 $\Q$ 向量空间，用 $Z_R^d(X)$ 表示模去等价关系 $R$ 的商。对于特征为零的 $k$，Grothendieck 的一种动机定义是，令（当 $X,Y$ 连通时）
+\[
+ \Hom(H^*(Y),H^*(X))=Z_R^{\dim Y}(X\times Y),
+\]
+其中 $R$ 为上同调等价（cohomological equivalence）。
+
+在特征 $p$ 的情形，这里只指出两个困难：尚不知道 $l$ 进上同调（$l\ne p$）中的上同调等价是否与 $l$ 无关；而在晶体上同调（crystalline cohomology）中，闭链的类的定义也存在问题。
+
+\paragraph*{0.7.}
+设 $X$ 为光滑射影复簇。我们将 $H^{2d}(X(\C),\Q)$ 中类型为 $(d,d)$ 的元素称为 $X$ 上余维 $d$ 的 Hodge 闭链（Hodge cycle）；等价地，它是 $H^{2d}(X(\C),\Q)(d)$ 中类型为 $(0,0)$ 的元素。
+
+设 $k$ 代数闭，$X$ 为 $k$ 上射影光滑簇。令
+\[
+ H^{2d}(X,k\times\A^f)(d)=H_{\mathrm{DR}}^{2d}(X)(d)
+ \times H^{2d}(X,\A^f)(d).
+\]
+当 $k=\C$ 时，Hodge 闭链在
+\[
+ H^{2d}(X,k\times\A^f)(d)
+ =H^{2d}(X(\C),\Q)(d)\otimes(k\times\A^f)
+\]
+中的像也称为 Hodge 闭链。当代数闭域 $k$ 存在复嵌入时，$X$ 上余维 $d$ 的绝对 Hodge 闭链（absolute Hodge cycle）指 $H^{2d}(X,k\times\A^f)(d)$ 中的一个元素，使得对 $k$ 的每个复嵌入 $\sigma$，它在 $H^{2d}(X\otimes_k\C,\C\times\A^f)(d)$ 中的像均为 Hodge 闭链。可以证明：
+
+\begin{originaltheorem}{命题 0.8（Proposition 0.8）}
+(i) 绝对 Hodge 闭链的 $\Q$ 向量空间 $Z_{\mathrm{ha}}^d(X)$，在从 $k$ 扩张标量到代数闭域 $k'$（仍存在复嵌入）时不变。
+
+(ii) 设 $k$ 为特征零的代数闭域，而 $X$ 定义在 $k$ 的一个存在复嵌入的代数闭子域 $k_0$ 上，即 $X=X_0\otimes_{k_0}k$。令
+\[
+ Z_{\mathrm{ha}}^d(X)=Z_{\mathrm{ha}}^d(X_0)
+ \subset H^{2d}(X_0,k_0\times\A^f)(d)
+ \subset H^{2d}(X,k\times\A^f)(d).
+\]
+由(i)，此定义与 $X_0,k_0$ 的选取无关。
+
+(iii) 若 $X$ 定义在 $k$ 的子域 $k_0$ 上，即 $X=X_0\otimes_{k_0}k$，则在 $H^{2d}(X,k\times\A^f)(d)$ 上作用的群 $\Aut(k/k_0)$ 保持 $Z_{\mathrm{ha}}^d(X)$。它通过一个有限群作用于 $Z_{\mathrm{ha}}^d(X)$，该有限群对应于 $k_0$ 的有限扩张 $k'_0$。令
+\[
+ Z_{\mathrm{ha}}^d(X_0)=Z_{\mathrm{ha}}^d(X)^{\Aut(k/k_0)}.
+\]
+\end{originaltheorem}
+
+\paragraph*{0.9.}
+令（当 $X,Y$ 连通时）
+\[
+ \Hom(H^*(Y),H^*(X))=Z_{\mathrm{ha}}^{\dim Y}(X\times Y),
+\]
+便得到一种有用的动机定义。$X\times X$ 的对角线的 Künneth 分量都是绝对 Hodge 的。由此可将 $H^*(X)$ 分解为各动机 $H^i(X)$ 的直和，并在动机范畴上赋予分次（其中 $H^i(X)$ 的权（weight）为 $i$），并如[19, VI, 4.2.1.4]那样修改 $\otimes$ 的交换约束（commutativity constraint）。可以证明，作此修改后，$k$ 上动机的 $\otimes$ 范畴是 Tannaka 范畴（Tannakian category），同构于一个约化前代数群（reductive proalgebraic group）的表示范畴。
+
+当 $k=\C$ 时，下面这个比 Hodge 猜想更弱的猜想等价于：函子“Hodge 实现”为0.9的动机范畴与下述 Hodge 结构（Hodge structure）范畴之间的等价，即代数簇上同调的直和因子（或对此类直和因子作 Tate 扭转（Tate twist）所得者）。
+
+\begin{originaltheorem}{期望 0.10（Espoir 0.10）}
+每个 Hodge 闭链都是绝对 Hodge 闭链。
+\end{originaltheorem}
+
+若 $X$ 为带有虚二次域（imaginary quadratic field）$K$ 的复乘（complex multiplication）的阿贝尔簇（abelian variety），且 $\Lie(X)$ 在 $k\otimes K$ 上自由，则 B. Gross [7] 的方法证明，某些非平凡 Hodge 闭链是绝对 Hodge 的。
+
+\emph{校样补记：}从这一特殊情形出发，我已经能够对阿贝尔簇证明0.10。我还证明，由阿贝尔簇 $X$ 的 $H^\wedge(X)$ 所生成的动机 $\otimes$ 范畴（0.9），包含 $X$ 为 K3 曲面或 Fermat 超曲面（Fermat hypersurface）时的动机 $H^*(X)$。
+
+\paragraph*{0.11.}
+动机定义0.9的主要缺点，是它不适用于模 $p$ 约化（reduction modulo $p$）。尚不知道数域（number field）$F$ 上的0.9意义下的动机是否给出 $\Gal(\overline F/F)$ 的一个相容 $l$ 进表示系统（compatible system）。
+
+\paragraph*{0.12.}
+下文在较宽泛的意义上使用“动机”一词。所需的核心数据是：对0.2所列的各个理论 $\mathcal H$，都有实现 $\mathcal H(M)$，且这些实现满足与 $\mathcal H^*(X)$ 相同的形式性质。
+
+\origsection{1}{猜想的表述：有理情形（Statement of the conjecture: rational case）}
+\paragraph*{1.1.}
+设 $M$ 为 $\Q$ 上的动机。我们假定，$M$ 的 $l$ 进实现 $H_l(M)$ 构成 Serre [11, I.11] 意义下的严格相容 $l$ 进表示系统（strictly compatible system）。即存在有限素数集 $S$，使每个 $H_l(M)$ 在 $S\cup\{l\}$ 外非分歧（unramified），且若 $F_p\in\Gal(\overline\Q/\Q)$ 为 $p$ 处的几何 Frobenius（geometric Frobenius，即 Frobenius 置换 $\varphi_p$ 的逆），则多项式
+\[
+ \det(1-F_pt,H_l(M))\in\Q_l[t],\qquad p\notin S\cup\{l\},
+\]
+具有有理系数，并与 $l$ 无关。记其倒数为 $Z_p(M,t)$，令 $L_p(M,s)=Z_p(M,p^{-s})$。
+
+由 Euler 乘积（Euler product）$L_S(M,s)=\prod_{p\notin S}L_p(M,s)$ 给出的有理系数 Dirichlet 级数（Dirichlet series），当 $\Re s$ 足够大时收敛。对任意 $s$，通过解析延拓（analytic continuation，期望它存在）定义 $L_S(M,s)$。
+
+我们的目标是提出一个猜想，在允许相差有理数因子的意义下描述 $L_S(M,s)$ 在某些整数点的值。由于整数 $s$ 对应的 $p^{-s}$ 为有理数，$S$ 的选取无关紧要，不过，扩大 $S$ 时可能额外引入零点。
+
+\paragraph*{1.2.}
+为准确表述 $L$ 函数的猜想性函数方程（functional equation），需要用 $p\in S$ 及无穷远处的局部因子（local factor）补全 Euler 乘积 $L_S(M,s)$。定义 $p\in S$ 的局部因子需要额外假设，以下假定这一条件成立：
+
+\paragraph*{1.2.1.}
+设 $p$ 为素数，$D_p\subset\Gal(\overline\Q/\Q)$ 为 $p$ 处的分解群（decomposition group），$I_p\subset D_p$ 为惯性子群（inertia subgroup），$F_p\in D_p$ 为几何 Frobenius。则多项式
+\[
+ \det(1-F_pt,H_l(M)^{I_p})\in\Q_l[t],\qquad l\ne p,
+\]
+具有有理系数，并与 $l$ 无关。
+
+令 $Z_p(M,t)=\det(1-F_pt,H_l(M)^{I_p})^{-1}\in\Q(t)$，$L_p(M,s)=Z_p(M,p^{-s})$，并定义
+\[
+ L(M,s)=\prod_p L_p(M,s).\tag{1.2.2}
+\]
+无穷远因子（archimedean factor）$L_\infty(M,s)$ 实质上为若干 Gamma 函数的乘积，它依赖于 $M$ 的 Hodge 实现，确切说只依赖于配有 Hodge 分解和对合 $F_\infty$ 的复向量空间 $H_B(M)\otimes\C$ 的同构类。5.2将回顾其定义。
+
+令 $\Lambda(M,s)=L_\infty(M,s)L(M,s)$，则 $L$ 函数的猜想性函数方程写作
+\[
+ \Lambda(M,s)=\varepsilon(M,s)\Lambda(\widetilde M,1-s),\tag{1.2.3}
+\]
+其中 $\widetilde M$ 是 $M$ 的对偶（dual），它的各个实现为 $M$ 的对应实现的对偶；$\varepsilon(M,s)$ 作为 $s$ 的函数，是常数与指数函数的乘积。5.2回顾其定义，该定义还依赖一个额外假设。
+
+\begin{originaltheorem}{定义 1.3（Definition 1.3）}
+若 $L_\infty(M,s)$ 与 $L_\infty(\widetilde M,1-s)$ 在 $s=n$ 处均无极点（pole），则称整数 $n$ 对 $M$ 是临界的（critical）。
+\end{originaltheorem}
+
+我们的目标是猜测临界整数 $n$ 处的 $L(M,n)$，精确到一个有理数因子。有 $L(M(n),s)=L(M,n+s)$（3.1.2），$L_\infty$ 也如此。因此只须考虑 $L(M)\mathrel{\mathop:}=L(M,0)$。若 $0$ 对 $M$ 临界，则称 $M$ 临界。可以证明，$M$ 临界的充要条件为：对 $p\ne q$，$M$ 的 Hodge 数（Hodge number）$h^{p,q}\mathrel{\mathop:}=\dim H^{p,q}(M)$ 只能在下图阴影区域中的 $(p,q)$ 处非零；并且 $F_\infty$ 在 $H^{p,p}$ 上的作用，当 $p<0$ 时为恒等，当 $p\geq0$ 时为 $-1$。
+
+\begin{center}
+\begin{tikzpicture}[scale=.7]
+ \begin{scope}\clip (-4,0) rectangle (-.65,3);
+  \foreach \j in {-10,...,10}\draw[gray,thin] (\j,-4)--++(4,8);
+ \end{scope}
+ \begin{scope}\clip (0,-3) rectangle (4,-.65);
+  \foreach \j in {-10,...,10}\draw[gray,thin] (\j,-4)--++(4,8);
+ \end{scope}
+ \draw[->](-4.4,0)--(4.4,0) node[right]{$p$};
+ \draw[->](0,-3.4)--(0,3.4) node[above]{$q$};
+ \draw[dashed](-.65,0)--(-.65,3);
+ \draw[dashed](0,-.65)--(4,-.65);
+ \foreach \j in {1,2,3}{\node at (-.65*\j,-.65*\j){$+$};\node at (.65*\j,.65*\j){$-$};}
+ \node[anchor=north east] at (-.8,-.5){$(-1,-1)$};
+\end{tikzpicture}\qquad(1.3.1)
+\end{center}
+
+假设 $M$ 为权 $w$ 的齐次动机（homogeneous motive），即 $p+q\ne w$ 时 $h^{p,q}=0$，令 $\mathfrak R(M)=-w/2$。由 Weil 猜想，当 $S$ 足够大时，Dirichlet 级数 $L_S(M,s)$ 在 $\mathfrak R(M)+\Re(s)>1$ 时绝对收敛（absolutely convergent）。当 $\mathfrak R(M)+\Re(s)=1$ 时，处于收敛半平面的边界；猜想：
+
+(a) $L_S(M,s)$ 不为零；
+
+(b) $L_S(M,s)$ 全纯（holomorphic），除非 $M$ 的权为偶数 $-2n$，且含有因子 $\Z(n)$，此时预期在 $s=1-n$ 处有极点，此点非临界。
+
+与函数域情形的类比及已知情形使人相信，各个局部因子 $L_p(M,s)$（任意 $p$，包括 $\infty$）只有在 $\mathfrak R(M)+\Re(s)\leq0$ 时才有极点。若如此，则(a)、(b)及猜想性函数方程(1.2.3)推出，对临界且 $\mathfrak R(M)\ne\tfrac12$ 的 $M$，有 $L(M)\ne0,\infty$。当 $\mathfrak R(M)=\tfrac12$ 时，$L(M)$ 有时为零，此时我们的猜想1.8没有内容。
+
+\begin{originaltheorem}{命题 1.4（Proposition 1.4）}
+设 $M$ 为 $\R$ 上的动机。经同构(0.4.1)
+\[
+ H_B(M)\otimes\C\xrightarrow{\sim}H_{\mathrm{DR}}(M)\otimes_\R\C,
+\]
+$H_{\mathrm{DR}}(M)$ 与 $H_B(M)\otimes\C$ 中在 $c\mapsto F_\infty\overline c$ 下不变的子空间等同。
+\end{originaltheorem}
+取 $M=H^*(X)$。$H_{\mathrm{DR}}(M)_\C=H^*(X_\C,\Omega^*)$ 上的复共轭由概形 $X_\C$ 的反线性自同构（antilinear automorphism）$F_\infty$ 的函子性得到。逆着定义 $I$ 的复合箭头（0.4）追溯，可将其识别为由 $(X(\C),\Omega^{*\mathrm{an}})$ 的自同构 $(F_\infty,\overline F_\infty^*)$ 导出的对合，进而识别为
+$F_\infty^*:H^*(X(\C),\C)\longrightarrow H^*(X(\C),\C)$ 与系数上复共轭的复合。这证明了1.4。
+
+\paragraph*{1.5.}
+对于 $\R$ 上的动机 $M$，用 $H_B^+(M)$ 与 $H_B^-(M)$ 分别表示 $H_B(M)$ 中 $F_\infty$ 的 $+1$ 与 $-1$ 特征子空间。令 $d(M)=\dim H_B(M)$，$d^\pm(M)=\dim H_B^\pm(M)$。对于 $k$ 上动机 $M$ 及经由 $\R$ 分解的 $k$ 的复嵌入 $\sigma$，用 $H_\sigma^\pm(M)$、$d_\sigma^\pm(M)$、$d(M)$ 表示由 $\sigma$ 从 $M$ 得到的 $\R$ 上动机的这些对象。当 $k=\Q$ 时，省去 $\sigma$。
+
+下述推论直接来自1.4，以及 $F_\infty$ 和复共轭均交换 $H^{p,q}$ 与 $H^{q,p}$ 这一事实。
+\begin{originaltheorem}{推论 1.6（Corollary 1.6）}
+设 $M$ 为 $\R$ 上动机。对于 $H_B(M)\otimes\C$ 的实结构（real structure）$H_{\mathrm{DR}}(M)$，子空间 $H^{p,q}$ 定义在 $\R$ 上；子空间 $H_B^+(M)\otimes\R$ 是实的，而 $H_B^-(M)\otimes\R$ 是纯虚的。
+\end{originaltheorem}
+
+\paragraph*{1.7.}
+本节余下部分只考虑 $\Q$ 上的动机；除非明确另行说明，均假设其齐次。若权 $w$ 为偶数，还假设 $F_\infty$ 在 $H^{p,p}(M)$（$w=2p$）上的作用为标量 $+1$ 或 $-1$。临界动机满足此假设。因为 $F_\infty$ 交换 $H^{p,q}$ 与 $H^{q,p}$，这一假设保证 $d^+(M),d^-(M)$ 中一个等于 $\sum_{p>q}h^{p,q}$，另一个等于 $\sum_{p\geq q}h^{p,q}$。特别地，可在 Hodge 滤过中分别选取维数为 $d^+(M)$、$d^-(M)$ 的子空间，记为 $F^+$、$F^-$。令
+\[
+ H_{\mathrm{DR}}^\pm(M)=H_{\mathrm{DR}}(M)/F^\mp,
+\]
+仍有 $\dim H_{\mathrm{DR}}^\pm(M)=d^\pm(M)$。
+
+由 $F_\infty$ 交换 $H^{p,q}$ 与 $H^{q,p}$，复合映射
+\[
+ I^\pm:H_B^\pm(M)_\C\longrightarrow H_B(M)_\C
+ \xrightarrow[\sim]{I}H_{\mathrm{DR}}(M)_\C
+ \longrightarrow H_{\mathrm{DR}}^\pm(M)_\C\tag{1.7.1}
+\]
+均为同构。令
+\[
+ c^\pm(M)=\det(I^\pm),\tag{1.7.2}
+\]
+\[
+ \delta(M)=\det(I),\tag{1.7.3}
+\]
+其中行列式（determinant）在 $H_B^\pm$ 与 $H_{\mathrm{DR}}^\pm$（分别地，$H_B$ 与 $H_{\mathrm{DR}}$）的有理基下计算。$\delta(M)$ 的定义不需要对 $M$ 所作的那些假设。
+
+由1.6，$I^+$ 是实的，即诱导 $I^+:H_B^+(M)_\R\longrightarrow H_{\mathrm{DR}}^+(M)_\R$，而 $I^-$ 为纯虚的。因此
+$c^+(M)$、$i^{d^-(M)}c^-(M)$ 与 $i^{d^-(M)}\delta(M)$ 均为非零实数；在相差有理数乘因子的意义下，它们只依赖于 $M$。
+
+通常所说的 $M$ 的周期，是指 $\omega\in H_{\mathrm{DR}}(M)$、$c\in H_B(M)^\vee$ 的配对 $\langle\omega,c\rangle$。例如，若 $X$ 为 $\Q$ 上代数簇，$\omega$ 为 $X$ 上定义在 $\Q$ 上的 $n$ 形式，$c$ 为 $X(\C)$ 上的 $n$ 维闭链，则
+$\langle\omega,c\rangle=\int_c\omega$ 是 $H^n(X)$ 的一个周期。也可将 $c^\pm(M)$ 写成周期的行列式：$H_{\mathrm{DR}}^\pm(M)$ 的对偶为 $H_{\mathrm{DR}}(M^\vee)$ 的子空间 $F^\pm$，其中 $M^\vee$ 为 $M$ 的对偶动机。若所选 $H_{\mathrm{DR}}^\pm(M)$ 的基的对偶基是 $F^\pm(H_{\mathrm{DR}}(M^\vee))$ 的基 $(\omega_i)$，而 $(c_j)$ 为所选 $H_B^\pm(M)$ 的基，则 $I^\pm$ 的矩阵为 $(\langle\omega_i,c_j\rangle)$，从而
+\[
+ c^\pm(M)=\det(\langle\omega_i,c_j\rangle).
+\]
+
+\begin{originaltheorem}{猜想 1.8（Conjecture 1.8）}
+若 $M$ 临界，则 $L(M)$ 为 $c^+(M)$ 的有理数倍。
+\end{originaltheorem}
+
+\origsection{2}{猜想的表述：一般情形（Statement of the conjecture: general case）}
+\paragraph*{2.1.}
+到目前为止，我们只考虑了由有理系数 Dirichlet 级数给出的 $L$ 函数。为处理更一般的系数，需要引入系数在数域中的动机。
+
+下面给出两种等价方法，从 $k$ 上动机范畴构造 $k$ 上、系数在数域 $E$ 中的动机范畴。这一构造适用于任何 $\Hom(X,Y)$ 为 $\Q$ 向量空间的加性 Karoubi 范畴（0.1(b)）。
+
+A. $k$ 上、系数在 $E$ 中的动机，是配有 $E$ 模（$E$-module）结构 $E\longrightarrow\End(M)$ 的 $k$ 上动机 $M$。
+
+B. $k$ 上、系数在 $E$ 中的动机范畴 $\mathcal M_{k,E}$，是下述范畴的 Karoubi 包络（0.1(b)）：对象为 $k$ 上动机（将动机 $M$ 看作 $\mathcal M_{k,E}$ 的对象时记为 $M_E$），态射由
+$\Hom(X_E,Y_E)=\Hom(X,Y)\otimes E$ 给出。
+
+\emph{由 B 到 A。} 对于动机 $X$ 及有限维 $\Q$ 向量空间 $V$，用 $X\otimes V$ 表示如下动机：它同构于 $\dim V$ 个 $X$ 的和，并由
+\[
+ \Hom(Y,X\otimes V)=\Hom(Y,X)\otimes V
+\]
+（或 $\Hom(X\otimes V,Y)=\Hom(V,\Hom(X,Y))$）刻画。将 $M_E$ 对应到配有自然 $E$ 模结构的动机 $M\otimes E$，便由 B 得到 A。
+
+\emph{由 A 到 B。} 若 $M$ 配有 $E$ 模结构，则在 $M_E$ 上得到两个 $E$ 模结构：一个由 $M$ 的结构导出，另一个是 $\mathcal M_{k,E}$ 每个对象都具有的结构。对应于 $M$ 的 $\mathcal M_{k,E}$ 对象，就是 $M_E$ 上这两个结构相同的最大直和因子。具体地，代数 $E\otimes E$ 为若干域的积，其中有一份 $E$，使 $x\otimes1$ 与 $1\otimes x$ 都投影为 $x$。相应的幂等元 $e$ 作用于 $M_E$（后者为 $E\otimes E$ 模），其像就是对应于 $M$ 的 $\mathcal M_{k,E}$ 对象。
+
+系数在 $E$ 中的动机通常以形式 A 给出。形式 B 也适用于 $E$ 在 $\Q$ 上维数无限的情形，并且便于描述张量运算：对于系数在 $E$ 中的动机，可由函子性及公式
+\[
+ X_E\otimes_E Y_E=(X\otimes Y)_E,\qquad (X_E)^\vee=(X^\vee)_E
+\]
+定义张量积和对偶。用 A 的语言，$X\otimes_EY$ 为 $X\otimes Y$ 上两个 $E$ 模结构相同的最大直和因子；$X^\vee$ 为通常的对偶，配以转置的（transposed）$E$ 模结构。若将这些说明用于 $\Q$ 向量空间范畴，而不是动机范畴，就得到 $E$ 向量空间的 $E$ 对偶与其 $\Q$ 对偶之间的同构，其定义为
+\[
+ \omega\longmapsto\bigl(v\longmapsto\Tr_{E/\Q}\langle\omega,v\rangle\bigr).
+\]
+
+0.1.1定义了标量域 $k$ 的限制与扩张函子。它们将系数在 $E$ 中的动机变为系数仍在 $E$ 中的动机。也有系数限制和系数扩张的函子：设 $F/E$ 为有限扩张。
+
+\emph{系数扩张（extension of coefficients）。} 用 A 的语言，为 $X\mapsto X\otimes_EF$；用 B 的语言，为 $X_E\mapsto X_F$。
+
+\emph{系数限制（restriction of coefficients）。} 用 A 的语言，就是将 $F$ 模结构限制到 $E$。
+
+这里 $k$ 是基域，$E$ 是系数域，两者扮演不同的角色。典型例子是一个定义于 $k$、具有 $E$ 中某个整环的复乘作用的阿贝尔簇的 $H_1$。用阿贝尔簇（视为相差同源（isogeny）者等同）的语言，上述函子分别变为：基域扩张；Weil 意义的标量限制；使维数乘以 $[F:E]$ 的构造 $\otimes_EF$；将 $F$ 模结构限制到 $E$。
+
+\paragraph*{2.2.}
+设 $M$ 为 $\Q$ 上、系数在数域 $E$ 中的动机。对每个素数 $l$，$M$ 的 $l$ 进实现 $H_l(M)$ 是 $E$ 的 $l$ 进完备化 $E_l$ 上的模。该完备化为 $l$ 上方各素理想 $\lambda$ 处完备化 $E_\lambda$ 的积，从而 $H_l(M)$ 分解为 $E_\lambda$ 模 $H_\lambda(M)$ 的积。
+
+猜想 $H_\lambda(M)$ 满足类似1.2.1的相容性。若此相容性成立，则对 $E$ 的每个复嵌入 $\sigma$，可定义 $\sigma E$ 中系数的 Dirichlet 级数，它在 $\Re s$ 足够大时收敛：
+\begin{equation}
+\begin{split}
+ L(\sigma,M,s)&=\prod_pL_p(\sigma,M,s),\\
+ L_p(\sigma,M,s)&=\sigma Z_p(M,p^{-s}),\\
+ Z_p(M,t)&=\det(1-F_pt,H_\lambda(M)^{I_p})^{-1}\in E(t)\subset E_\lambda(t),
+ \qquad\lambda\nmid p.
+\end{split}\tag{2.2.1}
+\end{equation}
+当 $\sigma$ 变化时，这些 Dirichlet 级数通过系数的共轭相互得到。将整族 $L(\sigma,M,s)$ 看成一个取值于 $\C$ 代数 $E\otimes\C$ 的函数 $L^*(M,s)$；通过
+\[
+ E\otimes\C\xrightarrow{\sim}\C^{\Hom(E,\C)},\qquad
+ e\otimes z\longmapsto(z\sigma(e))_\sigma\tag{2.2.2}
+\]
+将该代数识别为 $\C^{\Hom(E,\C)}$。这个函数也可直接由 Euler 乘积定义；与1.1一样，期望它关于 $s$ 有解析延拓。
+
+需要用依赖于 $M$ 的 Hodge 实现的无穷远因子 $L_\infty(\sigma,M,s)$ 补全 $L(\sigma,M,s)$。令
+$\Lambda(\sigma,M,s)=L_\infty(\sigma,M,s)L(\sigma,M,s)$，则猜想性函数方程为
+\[
+ \Lambda(\sigma,M,s)=\varepsilon(\sigma,M,s)
+ \Lambda(\sigma,\widetilde M,1-s).\tag{2.2.3}
+\]
+$\varepsilon(\sigma,M,s)$ 作为 $s$ 的函数，为常数与指数函数的乘积。$L_\infty$ 与 $\varepsilon$ 的定义见5.2。与上面一样，将 $\sigma$ 变化时的 $\Lambda$ 与 $\varepsilon$ 两族看成取值于 $E\otimes\C$ 的函数 $\Lambda^*$ 与 $\varepsilon^*$。
+
+由下面2.5，$L_\infty(\sigma,M,s)$ 与 $\sigma$ 无关，且由系数域限制（2.1）从 $M$ 得到的动机 $R_{E/\Q}M$ 的 $L_\infty$ 函数，为 $L_\infty(\sigma,M,s)$ 的 $[E:\Q]$ 次幂。这使下述定义合理。
+
+\begin{originaltheorem}{命题--定义 2.3（Proposition--Definition 2.3）}
+设 $M$ 为 $\Q$ 上、系数在 $E$ 中的动机。若下述等价条件成立，则称整数 $n$ 对 $M$ 临界：
+
+(i) 整数 $n$ 对 $R_{E/\Q}M$ 临界；
+
+(ii) $L_\infty(\sigma,M,s)$ 与 $L_\infty(\sigma,\widetilde M(1),s)$ 在 $s=n$ 处均无极点。\footnote{\textbf{译者注（本次校订）：}对一般整数 $n$，第二个因子应为 $L_\infty(\sigma,\widetilde M,1-s)$。按 Tate 扭曲的约定，原式的第二个因子等于 $L_\infty(\sigma,\widetilde M,s+1)$，只有在所考察的点为 $n=0$ 时才与所需因子取相同的值。正确条件与1.3一致。}
+
+若 $0$ 对 $M$ 临界，则称 $M$ 临界。
+\end{originaltheorem}
+
+我们的目的是猜测临界动机 $M$ 的 $L^*(M)\mathrel{\mathop:}=L^*(M,0)$，精确到 $E$ 中元素的乘因子。换言之，要同时猜测 $L(\sigma,M)\mathrel{\mathop:}=L(\sigma,M,0)$ 的值，允许乘上同一元素 $e\in E$ 的各个共轭 $\sigma(e)$。
+
+\paragraph*{2.4.}
+$M$ 在有理上同调中的实现 $H_B(M)$ 配有 $E$ 向量空间结构。它的维数为 $M$ 在 $E$ 上的秩。对合 $F_\infty$ 为 $E$ 线性的；故其 $+$ 部分与 $-$ 部分都是 $E$ 向量子空间，分别记维数为 $d^+(M)$ 与 $d^-(M)$。
+
+$H_B(M)$ 的复化是自由 $E\otimes\C$ 模。通过(2.2.2)把 $E\otimes\C$ 识别为 $\C^{\Hom(E,\C)}$，得到分解
+\[
+ H_B(M)\otimes\C=\bigoplus_\sigma H_B(\sigma,M),
+\]
+其中
+\[
+ H_B(\sigma,M)=(H_B(M)\otimes\C)\otimes_{E\otimes\C,\sigma}\C
+ =H_B(M)\otimes_{E,\sigma}\C.
+\]
+Hodge 分解的各个 $H_B^{p,q}(M)$ 在 $E$ 下稳定，因而每个 $H_B(\sigma,M)$ 继承 Hodge 分解
+$H_B(\sigma,M)=\bigoplus H_B^{p,q}(\sigma,M)$。对合 $F_\infty$ 交换 $H^{p,q}$ 与 $H^{q,p}$；特别地，它保持 $H^{p,p}$，并将其分成 $+$、$-$ 两部分。记 $H_B^{p,q}(\sigma,M)$ 的维数为 $h^{p,q}(\sigma,M)$，$H_B^{p,p,\pm}(\sigma,M)$ 的维数为 $h^{p,p,\pm}(\sigma,M)$。下述命题使我们可以在记号中省略 $\sigma$。
+
+\begin{originaltheorem}{命题 2.5（Proposition 2.5）}
+数 $h^{p,q}(\sigma,M)$ 与 $h^{p,p,\pm}(\sigma,M)$ 均与 $\sigma$ 无关。
+\end{originaltheorem}
+将 $M$ 分解为各权的分量后，只须考虑 $M$ 齐次的情形。此时 $H^{p,q}(M)$ 可识别为 $E$ 向量空间 $\operatorname{Gr}_F^p(H_{\mathrm{DR}}(M))$ 的复化，它为自由 $E\otimes\C$ 模，第一断言由此得出。至于第二断言，只须注意，$h^{p,p,\pm}(\sigma,M)$ 等于 $d^\pm(M)$ 减去 $\sum_{p>q}h^{p,q}(\sigma,M)$。
+
+\paragraph*{2.6.}
+设 $M$ 为 $\Q$ 上、系数在 $E$ 中的动机。本节余下部分，除非明确另行说明，均假设 $R_{E/\Q}M$ 满足1.7的假设。此时空间 $F^\pm$ 与 $H_{\mathrm{DR}}^\pm$ 为 $E$ 向量空间。同构(0.4.1)、(1.7.1)
+\[
+ I:H_B(M)\otimes\C\xrightarrow{\sim}H_{\mathrm{DR}}(M)\otimes\C,\tag{2.6.1}
+\]
+\[
+ I^\pm:H_B^\pm(M)\otimes\C\xrightarrow{\sim}H_{\mathrm{DR}}^\pm(M)\otimes\C\tag{2.6.2}
+\]
+是 $E$ 向量空间的复化之间的 $E\otimes\C$ 模同构。令
+\[
+ c^\pm(M)=\det(I^\pm)\in(E\otimes\C)^*,\qquad
+ \delta(M)=\det(I)\in(E\otimes\C)^*,
+\]
+其中行列式在 $H_B^\pm(M)$ 与 $H_{\mathrm{DR}}^\pm(M)$（分别地，$H_B(M)$ 与 $H_{\mathrm{DR}}(M)$）的 $E$ 有理基下计算。$\delta(M)$ 的定义不需要对 $M$ 所作的那些假设。在相差 $E^*$ 元素乘因子的意义下，这些数只依赖于 $M$。由1.6同样可知，
+$c^+(M)$、$i^{d^-(M)}c^-(M)$ 与 $i^{d^-(M)}\delta(M)$ 均属于 $(E\otimes\R)^*$。
+
+\begin{originaltheorem}{猜想 2.7（Conjecture 2.7）}
+令 $\mathfrak R(M)=-\tfrac12w$。若 $M$ 临界，则：
+
+(i) $L(\sigma,M,s)$ 在 $s=0$ 处没有极点，且只有在 $\mathfrak R(M)=\tfrac12$ 时才可能在 $s=0$ 处为零；
+
+(ii) $L(\sigma,M,s)$ 在 $s=0$ 处零点的重数（multiplicity）与 $\sigma$ 无关。
+\end{originaltheorem}
+关于(i)，参见1.3末的讨论。B. Gross 提醒我，(ii)也是一个合理的预期。
+
+\begin{originaltheorem}{猜想 2.8（Conjecture 2.8）}
+对于临界且 $L(\sigma,M)\ne0$ 的 $M$，$L^*(M)$ 是 $c^+(M)$ 与 $E^*$ 中一个元素的乘积。
+\end{originaltheorem}
+
+\paragraph*{注 2.9（Remark 2.9）.}
+数域 $k$ 上、系数在 $E$ 中的动机 $M$ 也定义一个函数 $L^*(M,s)$。这些函数已包含在我们的猜想内，因为由(0.5.3)有恒等式
+\[
+ L^*(M,s)=L^*(R_{k/\Q}M,s),
+\]
+其中 $R_{k/\Q}$ 为从 $k$ 到 $\Q$ 的标量限制。
+
+函数 $L(\sigma,M,s)$ 是以 $k$ 的有限素点为指标的 Euler 乘积。须用以无穷素点为指标的无穷远因子 $L_v(\sigma,M,s)$ 补全，定义将在5.2回顾。这些局部因子一般依赖于 $\sigma$；各无穷素点 $v$ 的 $L_v(\sigma,M,s)$ 乘积 $L_\infty(\sigma,R_{k/\Q}M,s)$ 则与 $\sigma$ 无关。
+
+\paragraph*{注 2.10.}
+设 $F/E$ 为扩张，$\iota:E\longrightarrow F$ 为结构态射，$\iota_\C:E\otimes\C\hookrightarrow F\otimes\C$ 为其复化。有
+\[
+ L^*(M\otimes_EF,s)=\iota_\C L^*(M,s),\qquad
+ c^\pm(M\otimes_EF)=\iota_\C c^\pm(M).
+\]
+因此猜想与系数域扩张相容。若 $F/E$ 为 Galois 扩张，Galois 群为 $G$，Hilbert 第90定理（Hilbert's Theorem 90）$H^1(G,F^*)=0$ 保证
+\[
+ \bigl((F\otimes\C)^*/F^*\bigr)^G=(E\otimes\C)^*/E^*;
+\]
+猜想在系数域扩张下不变。
+
+\paragraph*{注 2.11.}
+若 $E/F$ 为扩张，则
+$L^*(R_{E/F}M,s)=N_{E/F}L^*(M,s)$。周期 $c^\pm$ 也满足同一恒等式，故猜想与系数限制相容。
+
+\paragraph*{注 2.12.}
+设 $D$ 为 $E$ 上秩为 $d^2$ 的除代数（division algebra）。$\Q$ 上配有 $D$ 模结构、在 $D$ 上秩为 $n$ 的动机 $M$，定义一个系数在 $E$ 中的 Dirichlet 级数，其 Euler 因子几乎全为 $nd$ 次：对 $E$ 的有限素点 $\lambda$，$H_\lambda(M)$ 是完备化 $D_\lambda=D\otimes_EE_\lambda$ 上的自由模，在定义(2.2.1)中改令
+\[
+ Z_p(M,t)=\operatorname{detred}(1-F_pt,H_\lambda(M)^{I_p})^{-1}.
+\]
+若 $D_\lambda$ 为 $E_\lambda$ 上矩阵代数，$e$ 为不可分解幂等元（indecomposable idempotent），则 $D_\lambda$ 模 $H$ 的自同态 $A$ 的约化行列式（reduced determinant），就是 $A$ 限制到 $eH$ 后在 $E$ 上计算的行列式；\footnote{\textbf{译者注（本次校订）：}此处应在 $E_\lambda$ 上计算行列式。$eH$ 是有限维 $E_\lambda$ 向量空间，一般不是有限维 $E$ 向量空间。}一般情形的定义通过下降（descent）得到。
+
+由2.10，可以先扩张系数域，因此这些 $L$ 函数也属于2.8的讨论范围：选取使 $D$ 分裂的扩张 $\iota:E\hookrightarrow F$，及 $D\otimes_EF$ 中不可分解幂等元 $e$，则
+\[
+ \iota_\C L^*(M,s)=L^*(e(M\otimes_EF),s).
+\]
+也可以在此框架中直接定义 $c^+(M)$，如下2.13所述。
+
+\emph{本节余下部分不为后文所需。}
+
+\paragraph*{2.13.}
+设 $D$ 为域 $E$ 上的单代数（simple algebra），甚至可为环上的 Azumaya 代数（Azumaya algebra）。在讨论张量运算时，可以方便地将 $D$ 模看作一种“虚拟的 $E$ 向量空间”。
+
+(a) 给定 $E$ 向量空间 $V$，等价于对 $E$ 的每个平展扩张（étale extension）$F$ 给定 $F$ 向量空间 $V_F$，并对 $F$ 的扩张 $G$ 给定相容同构 $V_G=V_F\otimes_FG$。取 $V_F=V\otimes_EF$。由下降，只对足够大的 $F$ 给定 $V_F$ 即可。
+
+(b) 设 $W$ 为 $D$ 模。对于 $E$ 的每个平展扩张 $F$ 及每个 $F$ 同构 $D\otimes F\xrightarrow{\sim}\End_F(L)$，其中 $L$ 自由，令
+\[
+ W_{F,L}=\Hom_{D\otimes F}(L,W\otimes F)
+\]
+（未标明的张量积均在 $E$ 上）。有 $D\otimes F$ 模同构
+\[
+ W\otimes_EF=L\otimes_FW_{F,L}.
+\]
+若 $F$ 足够大而使 $D$ 分裂，则 $L$ 的同构类唯一，但同构本身并不唯一；这种不唯一性来自伸缩变换（homothety），它在 $\End(L)$ 上平凡作用。因此，$W_{F,L}$ 这一族数据不属于(a)的类型，而是一个上述意义的“虚拟的 $E$ 向量空间”。
+
+设 $(W^\alpha)$ 为一族 $D$ 模，$T$ 为张量运算（tensor operation）。若 $L$ 的伸缩变换在 $T(W_{F,L}^\alpha)$ 上平凡作用，则 $F$ 向量空间 $T(W_{F,L}^\alpha)$ 与 $L$ 的选取无关；从而得到(a)型系统，进而得到 $E$ 向量空间 $T(W^\alpha)$。
+
+\paragraph*{例.}
+若 $W',W''$ 为两个在 $E$ 上秩为 $n[D:E]^{1/2}$ 的 $D$ 模，可取
+\[
+ T=\Hom\left(\bigwedge^nW'_{F,L},\bigwedge^nW''_{F,L}\right);
+\]
+于是得到秩一的 $E$ 向量空间 $\delta(W',W'')$，且每个同态 $f:W'\longrightarrow W''$ 均有约化行列式 $\operatorname{detred}(f)\in\delta(W',W'')$。
+
+为定义 $c^+(M)$，对 $D$ 模 $H_B^+(M)$、$H_{\mathrm{DR}}^+(M)$ 使用这一构造。令 $\delta=\delta(H_B^+(M),H_{\mathrm{DR}}^+(M))$。$D\otimes\C$ 模同构
+$I^+:H_B^+(M)_\C\xrightarrow{\sim}H_{\mathrm{DR}}^+(M)_\C$ 的约化行列式属于自由秩一 $E\otimes\C$ 模 $\delta\otimes\C$。对 $\delta$ 的一个基 $e$，令
+$\operatorname{detred}(I^+)=c^+(M)e$。
+
+\origsection{3}{例：zeta 函数（Example: the zeta function）}
+\paragraph*{3.1.}
+要理解 Tate 动机 $\Z(1)$ 的各个实现，最直接的办法是将其写成 $\Z(1)=H_1(\Gm)$。乘法群（multiplicative group）不是射影簇，因此这不属于 Grothendieck 的框架；该框架要求将 $\Z(1)$ 定义为 $H^*(\mathbb P^1)$ 的直和因子 $H^2(\mathbb P^1)$ 的对偶。
+
+$\Z(1)$ 在 $\Z_l$ 上同调中的实现是 $\Gm$ 的 Tate 模（Tate module）$T_l(\Gm)$：
+\[
+ \Z_l(1)=\varprojlim\mu_{l^n}.
+\]
+在 Hodge 实现中，$H_B(\Z(1))=H_1(\C^*)$ 同构于 $\Z$（在有理同调中更确切地说同构于 $\Q$）。此群纯为 $(-1,-1)$ 型，且 $F_\infty=-1$。
+
+在 de Rham 实现中，$H_{\mathrm{DR}}(\Z(1))$ 为 $H_{\mathrm{DR}}^1(\Gm)$ 的对偶；后者同构于 $\Q$，由 $dz/z$ 的类生成。$H^1(\Gm)$ 的唯一周期为
+\[
+ \oint\frac{dz}{z}=2\pi i.\tag{3.1.1}
+\]
+在 $\Z_l(1)$ 上，算术 Frobenius（arithmetic Frobenius）$\varphi_p$（$p\ne l$）以乘 $p$ 作用。因此几何 Frobenius 以乘 $p^{-1}$ 作用，说明了1.3引用的恒等式
+\[
+ L(M(n),s)=L(M,n+s).\tag{3.1.2}
+\]
+因为 $F_\infty$ 在 $H_B(\Z(n))$ 上以 $(-1)^n$ 作用，当 $\epsilon=-(-1)^n$ 时 $H_B^\epsilon(\Z(n))=0$，且 $c^\epsilon(\Z(n))=1$。当 $\epsilon=(-1)^n$ 时，由(3.1.1)，有 $c^\epsilon(\Z(n))=\delta(\Z(n))=(2\pi i)^n$。即
+\[
+\begin{aligned}
+ c^\epsilon(\Z(n))&=(2\pi i)^n &&\text{当 }\epsilon=(-1)^n,\\
+ c^\epsilon(\Z(n))&=1,\qquad\delta(\Z(n))=(2\pi i)^n
+ &&\text{当 }\epsilon=-(-1)^n.
+\end{aligned}\tag{3.1.3}
+\]
+
+\paragraph*{3.2.}
+$\zeta(s)$ 为单位动机（unit motive）$\Z(0)=H^*(\mathrm{Point})$ 的 $L$ 函数。$\Z(0)$ 的临界整数为正偶数及非正奇数。由于 $\zeta(s)$ 在 $s=1$ 处有极点，$0$ 并非平凡零点（trivial zero）；把 $0$ 也纳入临界整数的定义会是合理的。公式(3.1.3)及临界 $n$ 处 $\zeta(n)=L(\Z(n))$ 的已知值验证了1.8：当 $n$ 为非正奇数时，$\zeta(n)$ 为有理数；当 $n$ 为非负偶数时，它为 $(2\pi i)^n$ 的有理数倍。
+
+\origsection{4}{与 Birch--Swinnerton-Dyer 猜想的相容性（Compatibility with the Birch and Swinnerton-Dyer conjecture）}
+\paragraph*{4.1.}
+设 $A$ 为 $\Q$ 上阿贝尔簇，维数为 $d$。Birch--Swinnerton-Dyer 猜想[15]特别断言：
+
+(a) $L(H^1(A),1)$ 非零，当且仅当 $A(\Q)$ 有限；
+
+(b) 若 $\omega$ 为 $H^0(A,\Omega^d)$ 的一个生成元，则 $L(H^1(A),1)$ 是 $\int_{A(\R)}|\omega|$ 与某个有理数的乘积。
+
+动机 $H^1(A)(1)$ 同构于 $H^1(A)$ 的对偶 $H_1(A)$，这反映了极化（polarization）的存在，即 $H^1(A)$ 的取值于 $\Z(-1)$ 的自对偶性。由1.7，$c^+(H^1(A)(1))$ 可如下计算：设 $\omega_1,\ldots,\omega_d$ 为 $H^0(A,\Omega^1)=F^+H_{\mathrm{DR}}^1(A)$ 的一个基，$e_1,\ldots,e_d$ 为 $H_1(A(\C),\Q)^+$ 的一个基，则
+\[
+ c^+(H^1(A)(1))=\det\langle\omega_i,e_j\rangle.\tag{4.1.1}
+\]
+仍用 $e_j$ 表示相应的代表闭链，有 $\langle\omega_i,e_j\rangle=\int_{e_j}\omega_i$。
+
+取 $(e_i)$ 为 $H_1(A(\R)^\circ,\Z)\subset H_1(A(\C),\Z)$ 的一个 $\Z$ 基。在适当定向下，$e_i$ 的 Pontryagin 积（Pontryagin product）由 $A(\C)$ 中的 $d$ 维闭链 $A(\R)^\circ$ 代表；若 $\omega$ 为各 $\omega_i$ 的外积（exterior product），则行列式(4.1.1)为积分 $\int_{A(\R)^\circ}\omega$。有
+\[
+ \int_{A(\R)}|\omega|
+ =[A(\R):A(\R)^\circ]\left|\int_{A(\R)^\circ}\omega\right|,
+\]
+所以，$H^1(A)(1)$ 的猜想1.8等价于上面的4.1(b)。
+
+\paragraph*{4.2.}
+Birch--Swinnerton-Dyer 猜想给出了 $L(H^1(A),1)$ 的精确值。用动机 $H^1(A)(1)$ 来描述4.1(b)中的有理因子，可按以下步骤进行：
+
+(a) 给定 $M=H^1(A)(1)$ 等价于给定相差同源的 $A$。首先须选定 $A$；这相当于在 $H_B(M)$ 中选取一个整格（integral lattice），使它在每个 $l$ 处的 $l$ 进完备化均在 $\Gal(\overline\Q/\Q)$ 的作用下稳定。
+
+(b) 然后选取 $\omega$，例如取 $H_{\mathrm{DR}}(M)$ 中某个整格的基元素的外积。这个 $\omega$ 决定周期 $c^+(M)$，并为每个素数 $p$ 决定一个有理因子 $c_p(M)$。几乎所有 $c_p(M)$ 都等于1，乘积公式（product formula）保证 $c^+(M)\prod_pc_p(M)$ 与 $\omega$ 无关。
+
+(c) 另一个有理数 $h(M)$ 由 $A$ 的上同调不变量定义；所求有理数为\footnote{\textbf{译者注（本次校订）：}这里的逆号与(b)的归一化不相容。若按(b)使 $c^+(M)\prod_pc_p(M)$ 与 $\omega$ 无关，则4.1(b)中乘在 $c^+(M)$ 上的有理因子应为 $h(M)\prod_pc_p(M)$。否则把 $\omega$ 乘以正有理数 $a$ 时，$c^+$ 乘以 $a$，$\prod_pc_p$ 乘以 $a^{-1}$，所写的 $c^+h\prod_pc_p^{-1}$ 反而乘以 $a^2$。} $h(M)\prod_pc_p(M)^{-1}$。
+
+此外，该猜想在同源下的不变性是一个非平凡定理。
+
+\paragraph*{4.3.}
+要将4.1(a)推广到任意权为 $-1$ 的动机 $M$，就需要 $A(\Q)$ 的类似物。群 $A(\Q)$ 可解释为 $\Q$ 上1-动机（1-motive）范畴[6, §10]中，$\Z(0)$ 被 $H_1(A)$ 扩张的群。这提示我们，可以在与混合 Hodge 结构（mixed Hodge structure）平行的混合动机（mixed motive）范畴中，考虑 $\Z(0)$ 被 $M$ 扩张的群；然而目前甚至没有这样一个范畴的猜想性定义！
+
+这里只指出，在所有通常上同调理论中，光滑固有代数簇（proper smooth algebraic variety）$X$ 上一个维数为 $d$、上同调同于零的闭链 $Y$\footnote{\textbf{译者注（本次校订）：}这里的 $d$ 应为闭链的余维。余维 $d$ 的代数闭链的类属于 $H^{2d}(X)(d)$，其 Abel--Jacobi 构造才涉及下文的 $H^{2d-1}(X)(d)$。}，决定 $H^{2d-1}(X)(d)$ 下的一个挠子（torsor）。确有上同调正合列（exact sequence）
+\[
+ 0\longrightarrow H^{2d-1}(X)(d)
+ \longrightarrow H^{2d-1}(X-Y)(d)
+ \xrightarrow{\partial} H_Y^{2d}(X)(d)
+ \longrightarrow H^{2d}(X)(d).
+\]
+$Y$ 决定上同调类 $\operatorname{cl}(Y)\in H_Y^{2d}(X)(d)$，其在 $H^{2d}(X)(d)$ 中的像为零，取 $\partial^{-1}\operatorname{cl}(Y)$ 即可。这一构造对应于将曲线上的零次除子对应到其 Jacobian 簇（Jacobian）上一个点的构造。
+
+\origsection{5}{与函数方程的相容性（Compatibility with the functional equation）}
+设 $E$ 为数域。在 $(E\otimes\C)^*$ 中，用 $\sim$ 表示由子群 $E^*$ 定义的等价关系。
+
+\begin{originaltheorem}{命题 5.1（Proposition 5.1）}
+设 $M$ 为 $\Q$ 上、系数在 $E$ 中的动机，并满足1.7的假设。则
+\[
+ c^+(M)\sim(2\pi i)^{-d^-(M)}\delta(M)c^+(\widetilde M(1)).
+\]
+\end{originaltheorem}
+
+对于交换环 $A$（这里 $A$ 为 $E$ 或 $E\otimes\C$）上的秩 $n$ 自由模 $L$，令 $\det L=\bigwedge^nL$。通过局部化（localization），可将此定义扩张到有限生成射影模（finitely generated projective module）的情形；证明5.1不需要这一推广。有典范同构
+\[
+ \det(L^\vee)=\det(L)^{-1},\tag{5.1.1}
+\]
+且对 $L$ 的任意直和因子 $P$，有
+\[
+ \det(L)=\det(P)\cdot\det(L/P).\tag{5.1.2}
+\]
+这里用 $\cdot$ 表示张量积，用 $-1$ 表示对偶。这些同构涉及符号约定，可将 $\det(L)$ 看成置于 $\operatorname{rank}L$ 次的可逆分次模（invertible graded module）以统一处理符号。最终结果均在等价关系 $\sim$ 下陈述，故这些符号不影响结论。
+
+对同秩的 $X,Y$，令
+\[
+ \delta(X,Y)=\Hom(\det X,\det Y)=\det(X)^{-1}\cdot\det(Y).
+\]
+$f:X\longrightarrow Y$ 的行列式属于 $\delta(X,Y)$。由(5.1.1)、(5.1.2)得到同构
+\[
+ \delta(X,Y)=\delta(Y^\vee,X^\vee),\tag{5.1.3}
+\]
+而对 $F\subset X$、$G\subset Y$，有
+\[
+ \delta(X,Y)=\delta(F,Y/G)\cdot\delta(G,X/F)^{-1}.\tag{5.1.4}
+\]
+
+\begin{originaltheorem}{引理 5.1.5（Lemma 5.1.5）}
+经同构(5.1.3)，有 $\det(u)=\det({}^tu)$。
+\end{originaltheorem}
+\begin{originaltheorem}{引理 5.1.6（Lemma 5.1.6）}
+设 $F,G$ 分别为 $X,Y$ 的直和因子。假设同构 $f:X\longrightarrow Y$ 诱导同构 $f_F:F\longrightarrow Y/G$ 与 $f_G^{-1}:G\longrightarrow X/F$。则经同构(5.1.4)，有
+\[
+ \det(f)=\det(f_F)\det(f_G^{-1})^{-1}.
+\]
+\end{originaltheorem}
+
+这些引理的验证留给读者。对于5.1.6，只须指出，令 $G^1=f^{-1}(G)$、$F^1=f(F)$，则 $X=F\oplus G^1$、$Y=G\oplus F^1$，且 $f$ 分别将 $F$、$G^1$ 映到 $F^1$、$G$。
+
+将引理5.1.6用于 $H_B^+(M)\subset H_B(M)$ 及 $F^-\subset H_{\mathrm{DR}}(M)$ 的复化。经同构(5.1.4)，
+$I:H_B(M)\otimes\C\longrightarrow H_{\mathrm{DR}}(M)\otimes\C$ 的行列式，等于
+$I^+:H_B^+(M)\otimes\C\longrightarrow(H_{\mathrm{DR}}(M)/F^-)\otimes\C$
+的行列式与由 $I$ 的逆诱导的态射
+\[
+ J^-:F^-\otimes\C\longrightarrow(H_B(M)/H_B^+(M))\otimes\C
+\]
+的行列式的逆之积。态射 $J^-$ 为对偶动机 $\widetilde M$ 的态射 $I^-$ 的转置。应用5.1.5，并在涉及的各个 $\delta(X,Y)$ 中选取 $E$ 基，最终得到
+\[
+ \delta(M)\sim c^+(M)c^-(\widetilde M)^{-1}.\tag{5.1.7}
+\]
+对动机 $\widetilde M$ 应用下面由3.1得出的公式，即推出5.1：
+\[
+ c^\pm(M)=(2\pi i)^{-d^\pm(M)n}
+ c^{\pm(-1)^n}(M(n)).\tag{5.1.8}
+\]
+还记下类似公式以备后用：
+\[
+ \delta(M)=(2\pi i)^{-d(M)n}\delta(M(n)).\tag{5.1.9}
+\]
+
+\paragraph*{5.2.}
+回顾动机 $L$ 函数的猜想性函数方程的准确形式（[12]、[4]）。下面考虑数域 $k$ 上、系数在数域 $E$ 中的动机，并固定 $E$ 的一个复嵌入 $\sigma$（参见2.9）。先给出一般形式。
+
+(a) 对 $k$ 的每个素点（place）$v$，定义局部因子 $L_v(\sigma,M,s)$。当 $v$ 有限时，定义
+\[
+ L_v(\sigma,M,s)=\sigma Z_v(M,Nv^{-s}),\qquad Z_v(M,t)\in E(t),
+\]
+需要类似(1.2.1)的相容性假设。有
+$Z_v(M,t)=\det(1-F_vt,H_\lambda(M)^{I_v})^{-1}$。当无穷素点 $v$ 由复嵌入 $\tau$ 诱导时，将 $H_\tau(M)\otimes_{E,\sigma}\C$ 分解成在给出 Hodge 分解的投影子下稳定（当 $v$ 为实时还须在 $F_\infty$ 下稳定）的极小子空间的直和；对每个子空间赋予表5.3的“Gamma 因子”，并将它们相乘，即得 $L_v(\sigma,M,s)$。对于复素点 $v$，极小子空间是一维的，类型为 $(p,q)$。对于实素点 $v$，它们或为二维的、类型为 $\{(p,q),(q,p)\}$（$p\ne q$），或为一维的、类型为 $(p,p)$ 且 $F_\infty=\pm1$。用 $\Lambda(\sigma,M,s)$ 表示各 $L_v(\sigma,M,s)$ 的乘积。
+
+(b) 设 $\psi$ 为 $k$ 的阿代尔类群（adele class group）$\A\otimes k/k$ 的非平凡特征，$\psi_v$ 为其各分量。对 $k$ 的每个素点 $v$，还在 $k_v$ 上取 Haar 测度 $dx_v$。假设对几乎所有 $v$，$dx_v$ 给 $k_v$ 的整数环质量1，而且这些测度的乘积 $\bigotimes dx_v$ 是 Tamagawa 测度（Tamagawa measure），给阿代尔类群质量1。
+
+定义局部常数（local constant）$\varepsilon_v(\sigma,M,s,\psi_v,dx_v)$；它们几乎全等于1，而且作为 $s$ 的函数，全都为常数与指数函数之积。令 $\varepsilon(\sigma,M,s)$ 为其乘积，此乘积与 $\psi$ 及 $dx_v$ 无关。
+
+(c) 猜想性函数方程为
+\[
+ \Lambda(\sigma,M,s)=\varepsilon(\sigma,M,s)
+ \Lambda(\sigma,\widetilde M,1-s).
+\]
+为定义 $\varepsilon_v$，需要各 $H_\lambda(M)$ 之间的额外相容性假设。借此可以为每组 $v,\sigma,M$ 指定一个复表示的同构类：当 $v$ 无穷时为 Weil 群 $W(\overline k_v/k_v)$ 的表示，当 $v$ 有限时为增厚 Weil 群（thickened Weil group）${}'W(\overline k_v/k_v)$ 的表示；然后取[4, 8.12.4]中的 $\varepsilon$，其中 $t=p^{-s}$。
+
+对于无穷素点，像(a)那样分解 $H_\tau(M)\otimes_{E,\sigma}\C$，对每个子空间赋予因子 $\varepsilon'_v$，再取乘积。对特定 $\psi_v,dx_v$ 的 $\varepsilon'_v$ 表见5.3。
+
+对于有限素点，先将表示 $H_\lambda(M)$ 限制到分解群 $\Gal(\overline k_v/k_v)\subset\Gal(\overline k/k)$，再限制到 Weil 群 $W(\overline k_v/k_v)$。应用[4, 8.3、8.4]，由 $H_\lambda(M)$ 得到 ${}'W(\overline k_v/k_v)$ 的 $E_\lambda$ 表示的同构类 $\rho_\lambda$。可以将其替换为 Frobenius 半单化（$F$-semisimplification）[4, 8.6]。要求当 $\lambda$ 变化时这些表示相容：即经由延拓 $\sigma$ 的 $\overline\sigma:E_\lambda\longrightarrow\C$ 扩张标量后，所得表示的同构类与 $\lambda$ 及 $\overline\sigma$ 的选取无关。这就是所要的同构类。
+
+下面展开[4]中所引用的相关定义。${}'W$ 的一个表示由 Weil 群的表示 $\rho:W\longrightarrow\GL(V)$ 及 $V$ 的幂零自同态（nilpotent endomorphism）$N$ 给出。用 $\rho$ 的局部常数[4, 4.1]，$(\rho,N)$ 的局部常数为
+\[
+ \varepsilon((\rho,N),s,\psi,dx)
+ =\varepsilon(\rho\otimes\omega_s,\psi\,dx)
+ \det\bigl(-FNv^{-s},V^{\rho(I)}/\ker(N)^{\rho(I)}\bigr).
+\]
+
+\paragraph*{注 5.2.1.}
+关于 $s$ 的函数
+\[
+ \varepsilon((\rho,N),s,\psi,dx)
+ L((\rho,N)^\vee,1-s)L((\rho,N),s)^{-1}
+\]
+对于 $(\rho,N)$ 与 $(\rho,0)$ 相同。因此，只假设各 $H_\lambda(M)$ 限制到分解群后的半单化相容，也能表述 $L$ 函数的猜想性函数方程。
+
+\paragraph*{5.3.}
+下表给出 Hodge 实现的各类极小子空间所对应的局部因子和常数。\footnote{\textbf{译者注（本次校订）：}表5.3最后一行的类型应为 $(p,p)$，与5.2(a)列举的一维实素点情形一致；$p\ne q$ 时必须连同 $(q,p)$ 分量一起处理。}计算常数时，假定 $\psi_v$ 与 $dx_v$ 如下选取：实素点时，$\psi_v(x)=\exp(2\pi ix)$，测度为 $dx$；复素点时，$\psi_v(z)=\exp(2\pi i\Tr_{\C/\R}(z))$，测度为 $|dz\wedge d\overline z|$，即对 $z=x+iy$，分别为 $\exp(4\pi ix)$ 与 $2dx\,dy$。使用记号
+\[
+ \Gamma_\R(s)=\pi^{-s/2}\Gamma(s/2),\qquad
+ \Gamma_\C(s)=2(2\pi)^{-s}\Gamma(s).
+\]
+\begin{center}\small
+\begin{tabular}{llll}
+\toprule
+素点 & 类型 & Gamma 因子 & 常数（上述 $\psi,dx$）\\
+\midrule
+复 & $(p,q)$ 或 $(q,p)$，$p\leq q$ & $\Gamma_\C(s-p)$ & $i^{q-p}$\\
+实 & $\{(p,q),(q,p)\}$，$p<q$ & $\Gamma_\C(s-p)$ & $i^{q-p+1}$\\
+实 & $(p,q)$，$F_\infty=(-1)^{p+\epsilon}$，$\epsilon=0,1$ & $\Gamma_\R(s+\epsilon-p)$ & $i^\epsilon$\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+
+我们关心的是 $k=\Q$。此时可取 $\psi_\infty(x)=\exp(2\pi ix)$、$\psi_p(x)=\exp(-2\pi ix)$（通过 $\Q_p/\Z_p\simeq\Q/\Z$ 的 $p$-准素部分），$dx_\infty$ 为 Lebesgue 测度（Lebesgue measure）$dx$，$dx_p$ 为给 $\Z_p$ 质量1的 $\Q_p$ 上 Haar 测度。
+
+\begin{originaltheorem}{命题 5.4（Proposition 5.4）}
+若 $M$ 临界且权为 $w$，则在相差与 $\sigma$ 无关的有理数乘因子的意义下，
+\[
+ L_\infty(\sigma,\widetilde M(1))L_\infty(\sigma,M)^{-1}
+ \sim(2\pi)^{-d^-(M)}(2\pi)^{-wd(M)/2}.
+\]
+\end{originaltheorem}
+
+由2.5，$L_\infty(\sigma,\cdot)$ 与 $\sigma$ 无关，因此只须固定 $\sigma$ 证明5.4。此公式与替换 $M\mapsto\widetilde M(1)$ 相容：$\widetilde M(1)$ 的权为 $-2-w$，其 $d^-$ 为 $d^+(M)$；将 $d(M),d^\pm(M)$ 简记为 $d,d^\pm$，有 $d=d^++d^-$，且
+\[
+ \left(-d^--\frac{wd}{2}\right)
+ +\left(-d^+-\frac{(-2-w)d}{2}\right)=0.
+\]
+因此只须在 $w\geq-1$ 时验证5.4。
+
+对于整数 $s$，模去 $\Q^*$，有
+\[
+\begin{aligned}
+ \Gamma_\R(s)&\sim(2\pi)^{-s/2}&&\text{当 $s$ 为正偶数},\\
+ \Gamma_\R(s)&\sim(2\pi)^{(1-s)/2}&&\text{当 $s$ 为奇数},\\
+ \Gamma_\C(s)&\sim(2\pi)^{-s}&&\text{当 $s>0$}.
+\end{aligned}\tag{5.4.1}
+\]
+故在 $w\geq-1$ 时，$H_B(M)\otimes\C$ 中如5.2(a)的每个子空间所贡献的 $2\pi$ 的幂次如下：\footnote{\textbf{译者注（本次校订）：}下表第一行的 $L_\infty(\widetilde M(1))$ 一栏应为 $-1-q$，而非 $-1-p$。对偶再作 Tate 扭曲后，两个 Hodge 指标变为 $-q-1,-p-1$，故该因子为 $\Gamma_\C(q+1)$；减去第一栏的指数 $p$，才得到最后一栏的 $-1-(p+q)=-1-w$。该行讨论的是 $p<q$ 的二维分量。}
+\begin{center}\small
+\begin{tabular}{lccc}
+\toprule
+类型 & $L_\infty(M)$ & $L_\infty(\widetilde M(1))$ & $L_\infty(\widetilde M(1))L_\infty(M)^{-1}$\\
+\midrule
+$\{(p,q),(q,p)\},\ p\leq q$ & $p$ & $-1-p$ & $-1-w$\\
+$(p,p),\ p\geq0$ 偶，$F_\infty=-1$ & $p/2$ & $-1-p/2$ & $-1-w/2$\\
+$(p,p),\ p\geq0$ 奇，$F_\infty=-1$ & $(1+p)/2$ & $(-1-p)/2$ & $-1-w/2$\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+命题随即得出。令 $\det M=\bigwedge^{d(M)}M$，外幂（exterior power）在 $E$ 上取。
+
+\begin{originaltheorem}{命题 5.5（Proposition 5.5）}
+$\varepsilon^*(M)\sim\varepsilon^*(\det M)$。
+\end{originaltheorem}
+对于如5.4所建议选取的 $dx_v$，我们更精确地证明等价关系
+\[
+ \varepsilon_v^*(M,\psi_v,dx_v)
+ \sim\varepsilon_v^*(\det M,\psi_v,dx_v).\tag{5.5.1}
+\]
+令
+$\eta_v(\sigma,M,\psi_v)=\varepsilon_v(\sigma,M,\psi_v,dx_v)
+\varepsilon_v(\sigma,\det M,\psi_v,dx_v)^{-1}$，这等价于对 $\C$ 的每个自同构 $\tau$，有
+\[
+ \tau\eta_v(\sigma,M,\psi_v)=\eta_v(\tau\sigma,M,\psi_v).\tag{5.5.2}
+\]
+由[4, 5.4]，若 $a\in\Q_v^*$ 的绝对值为1，并令 $(\psi_v\cdot a)(x)=\psi_v(ax)$，则
+\[
+ \eta_v(\sigma,M,\psi_v)=\eta_v(\sigma,M,\psi_v\cdot a)
+ \quad(\|a\|_v=1).\tag{5.5.3}
+\]
+对于 $\C$ 的自同构 $\tau$ 及有限素点 $v$，$\tau\psi_v$ 具有 $\psi_v\cdot a$ 的形式，其中 $\|a\|_v=1$；类似地，$\overline\psi_\infty=\psi_\infty\cdot(-1)$。
+
+当 $v$ 有限时，$\varepsilon_v$ 的定义纯粹是代数性的，因而
+$\tau\eta_v(\sigma,M,\psi_v)=\eta_v(\tau\sigma,M,\tau\psi_v)$，由(5.5.3)得到(5.5.2)。当 $v=\infty$ 时，还有
+\[
+ \overline\eta_\infty(\sigma,M,\overline\psi_\infty)
+ =\eta_\infty(\sigma,M,\overline\psi_\infty)
+ =\eta_\infty(\sigma,M,\psi_\infty).
+\]
+若如5.3选取 $\psi_\infty$，则 $\eta_\infty$ 为与 $\sigma$ 无关的 $i$ 的幂，故 $\eta_\infty(\sigma,M,\psi_\infty)=\pm1$ 且与 $\sigma$ 无关，从而验证(5.5.2)。
+
+\begin{originaltheorem}{定理 5.6（Theorem 5.6）}
+在承认关于秩一动机性质的猜想6.6的前提下，猜想2.8与 $L$ 函数的猜想性函数方程相容，即
+\[
+ L_\infty^*(M)c^+(M)
+ \sim\varepsilon^*(M)L_\infty^*(\widetilde M(1))c^+(\widetilde M(1)).
+\]
+\end{originaltheorem}
+由5.1、5.3、5.5，此式等价于
+\[
+ (2\pi i)^{-d^-(M)}\delta(M)
+ \sim(2\pi)^{-d^-(M)}(2\pi)^{-wd(M)/2}\varepsilon^*(\det M).
+\]
+令 $D=\det M$，$\epsilon=d^-(D)$。有 $\delta(M)=\delta(D)$、$d^-(M)\equiv\epsilon\pmod2$，且 $wd(M)$ 为 $D$ 的权 $w(D)$，故上述公式又等价于
+\[
+ \varepsilon^*(D)\sim(2\pi)^{w(D)/2}i^\epsilon\delta(D).\tag{5.6.1}
+\]
+6.5将证明(5.6.1)对一类秩一动机成立；猜想6.6断言所有秩一动机都属于这一类。
+
+\origsection{6}{例：Artin $L$ 函数（Example: Artin $L$-functions）}
+\begin{originaltheorem}{定义 6.1（Definition 6.1）}
+Artin 动机（Artin motive）范畴，是如下范畴的对偶范畴的 Karoubi 包络：对象为 $\Q$ 上零维簇，态射为定义在 $\Q$ 上的对应。
+\end{originaltheorem}
+由定义，每个零维簇 $X$ 定义一个 Artin 动机 $H(X)$，函子
+\[
+ H:(\text{零维簇，对应})\longrightarrow(\text{Artin 动机})
+\]
+为充分忠实反变函子，且每个 Artin 动机都是某个 $H(X)$ 的直和因子。
+
+\paragraph*{6.2.}
+下面给出这一定义的具体描述。设 $\overline\Q$ 为 $\Q$ 的代数闭包，$G=\Gal(\overline\Q/\Q)$。零维簇为有限个数域的积 $A$ 的谱（spectrum）。Grothendieck 形式的 Galois 理论断言，函子
+\[
+ X=\Spec A\longmapsto X(\overline\Q)=\Hom(A,\overline\Q)
+\]
+是“$\Q$ 上零维簇及概形态射”的范畴到“配有连续 $G$ 作用的有限集合”的范畴之间的范畴等价。逆函子将 $I$ 映到从 $I$ 到 $\overline\Q$ 的 $G$ 不变函数所成环的谱。
+
+零维簇 $X$ 到另一零维簇 $Y$ 的对应，是 $X\times Y$ 的连通分支的有理系数形式线性组合。映射
+\[
+ \sum_i a_iZ_i\longmapsto\sum_i a_i\,\boldsymbol1_{Z_i(\overline\Q)\subset(X\times Y)(\overline\Q)}
+\]
+把对应识别为 $(X\times Y)(\overline\Q)=X(\overline\Q)\times Y(\overline\Q)$ 上取有理值的 $G$ 不变函数；在这一识别下，对应的复合就是矩阵乘法。这里 $\boldsymbol1$ 表示示性函数（characteristic function）。
+
+用 $H$ 表示如下反变函子：将 $X$ 映到配有自然 $G$ 作用的向量空间 $\Q^{X(\overline\Q)}$，将对应 $F:X\longrightarrow Y$ 映到矩阵为 ${}^tF$ 的态射 $F^*:\Q^{Y(\overline\Q)}\longrightarrow\Q^{X(\overline\Q)}$。它充分忠实，将 Artin 动机范畴与 $G$ 的有理表示范畴等同。
+
+\paragraph*{6.3.}
+在这个模型中，若 $\overline\Q$ 为 $\Q$ 在 $\C$ 中的代数闭包，则“Betti 实现”函子 $H_B$ 就是“底层向量空间”函子。Hodge 结构纯为 $(0,0)$ 型，对合 $F_\infty$ 就是复共轭 $F_\infty\in G$ 的作用。事实上，有与对应的作用相容的同构
+\[
+ H^*(X(\C),\Q)=\Q^{X(\C)}=\Q^{X(\overline\Q)}=H(X).
+\]
+“$l$ 进实现”函子为 $H_l(V)=V\otimes\Q_l$。事实上，有与对应的作用相容的同构
+\[
+ H^*(X(\overline\Q),\Q_l)=\Q_l^{X(\overline\Q)}
+ =\Q^{X(\overline\Q)}\otimes\Q_l.
+\]
+同样计算 de Rham 实现。对于 $X=\Spec A$，有 $H_{\mathrm{DR}}^*(X)=A$。写成
+$A=\Hom_G(X(\overline\Q),\overline\Q)=(\Q^{X(\overline\Q)}\otimes\overline\Q)^G$，得到
+\[
+ H_{\mathrm{DR}}(V)=(V\otimes\overline\Q)^G.\tag{6.3.1}
+\]
+式(6.3.1)将 $H_{\mathrm{DR}}(V)$ 实现为 $V\otimes\overline\Q$ 的子空间。该子空间是一个 $\Q$ 结构，即
+$(V\otimes\overline\Q)^G\otimes\overline\Q\xrightarrow{\sim}V\otimes\overline\Q$。所以扩张标量到 $\overline\Q$ 后，$H_B(V)$ 与 $H_{\mathrm{DR}}(V)$ 典范同构；再扩张标量到 $\C$，便得到同构(0.4.1)，可对 $V=H(X)$ 验证。
+
+\paragraph*{6.4.}
+设 $E/\Q$ 有限。系数在 $E$ 中的 Artin 动机范畴，按2.1从 Artin 动机范畴导出。将其与配有 $G$ 作用的有限维 $E$ 向量空间的范畴等同。
+
+在 $E$ 上秩为一的此类 Artin 动机，对应于特征 $\epsilon:G\longrightarrow E^*$。现在计算它们的周期。设 $\epsilon:G\longrightarrow E^*$，$f$ 为 $\epsilon$ 的导子（conductor）；$\epsilon$ 经由 $G$ 的商
+$(\Z/f\Z)^*=\Gal(\Q(\exp(2\pi i/f))/\Q)$ 的一个特征分解，仍记其为 $\epsilon$。用 $[\epsilon]$ 表示一维 $E$ 向量空间 $E_\epsilon$，其上 $G$ 以 $\epsilon$ 作用。Gauss 和（Gauss sum）
+\[
+ g=\sum_u\epsilon(u)\otimes\exp(2\pi iu/f)\in[\epsilon]\otimes\overline\Q
+\]
+非零且为 $G$ 不变，因此是 $H_{\mathrm{DR}}([\epsilon])$ 的一个 $E$ 基。
+$I:H_B([\epsilon])\otimes\C\xrightarrow{\sim}H_{\mathrm{DR}}([\epsilon])\otimes\C$ 在基 $1,g$ 中的行列式为 $g^{-1}$。已知对 $E$ 的每个复嵌入 $\sigma$，有 $\sigma g\cdot\overline{\sigma g}=f$，为与 $\sigma$ 无关的有理数，故
+\[
+ \delta([\epsilon])\sim\sum_u\epsilon^{-1}(u)\otimes
+ \exp(-2\pi iu/f)\in(E\otimes\C)^*.\tag{6.4.1}
+\]
+
+\begin{originaltheorem}{命题 6.5（Proposition 6.5）}
+设 $D$ 为动机 $[\epsilon](n)$。它是 $\Q$ 上、系数在 $E$ 中、秩一且权为 $-2n$ 的动机。令 $\epsilon(-1)=(-1)^\eta$，其中 $\eta=0$ 或1，则
+\[
+ \varepsilon^*(D)\sim(2\pi)^{-n}i^{\eta-n}\delta(D).
+\]
+\end{originaltheorem}
+已知 Dirichlet $L$ 函数
+$L(\sigma,[\epsilon],s)=\sum_n\sigma\epsilon^{-1}(n)n^{-s}$（$\sigma$ 为 $E$ 的复嵌入）的函数方程常数为\footnote{\textbf{译者注（本次校订）：}在本篇 $\Lambda=L_\infty L$ 的归一化下，下式的导子因子应为 $f^{-s}$。令 $\chi=\sigma\epsilon^{-1}$，通常的函数方程给出 $\varepsilon(\chi,s)=i^{-\eta}\tau(\chi)f^{-s}$，其中 $\tau(\chi)=\sum_u\chi(u)e^{2\pi iu/f}$；利用 $\chi(-1)=(-1)^\eta$ 即得到本式所用的负指数 Gauss 和。整数 $s=n$ 时，$f^n$ 与 $f^{-n}$ 都是有理数，故此处关于 $\sim$ 的结论仍然成立。}
+\[
+ \varepsilon(\sigma,[\epsilon],s)
+ =i^\eta f^s\sum_u\sigma\epsilon(u)^{-1}\exp(-2\pi iu/f).
+\]
+
+另一方面，由(5.1.9)，$\delta(D)=(2\pi i)^n\delta([\epsilon])$。应用(6.4.1)，并注意整数 $s=n$ 时 $f^n$ 为与 $\sigma$ 无关的有理数，即得结论。
+
+此命题对动机 $[\epsilon](n)$ 验证了(5.6.1)。为完成5.6的证明，只须提出：
+\begin{originaltheorem}{猜想 6.6（Conjecture 6.6）}
+每个 $\Q$ 上、系数在 $E$ 中的秩一动机均形如 $[\epsilon](n)$，其中 $\epsilon$ 为 $G=\Gal(\overline\Q/\Q)$ 的一个取值于 $E$ 的单位根（root of unity）的特征，$n$ 为整数。
+\end{originaltheorem}
+
+\begin{originaltheorem}{命题 6.7（Proposition 6.7）}
+猜想2.8对于 Artin $L$ 函数成立。
+\end{originaltheorem}
+对于 Artin 动机，$L$ 函数的函数方程已知。此外，Artin 动机的行列式作 Tate 扭转后，属于6.6所预言的类型。因此，第5、6节的论证表明2.8与函数方程相容；只须对 $V(n)$ 证明2.8，其中 $V$ 为 Artin 动机，$n$ 为非正整数。若 $V(n)$ 临界，则 $F_\infty$ 在 $V$ 上以 $-(-1)^n$ 作用，且 $c^+=1$（参见3.1）；所需证明的是，对于每个 $E\hookrightarrow\C$ 的嵌入 $\sigma$ 及 $\C$ 的每个自同构 $\tau$，有
+\[
+ \tau L(\sigma,V(n))=L(\tau\sigma,V(n)).
+\]
+这由 Siegel [14] 的结果得出，见[2, 1.2]。
+
+\origsection{7}{模形式的 $L$ 函数（$L$-functions attached to modular forms）}
+\paragraph*{7.1.}
+令 $q=e^{2\pi iz}$，设 $f=\sum a_nq^n$ 为权 $k\geq2$、导子 $N$、特征 $\epsilon$ 的全纯尖点本原模形式（即新形式）。Dirichlet 级数 $\sum a_nn^{-s}$ 有 Euler 乘积展开，其在 $p\nmid N$ 处的局部因子为
+\[
+ (1-a_pp^{-s}+\epsilon(p)p^{k-1}p^{-2s})^{-1}.
+\]
+设 $E$ 为所有 $a_n$ 生成的 $\C$ 的子域。模形式 $f$ 应对应于一个系数在 $E$ 中的秩二动机 $M(f)$，Hodge 类型为 $\{(k-1,0),(0,k-1)\}$，行列式为 $[\epsilon^{-1}](1-k)$（6.4的记号），$L$ 函数为 Dirichlet 级数 $\sum a_nn^{-s}$。
+
+这里直接描述 $M(f)$ 的各个实现。要将它构造为 Grothendieck 意义的动机，一个困难在于：$M(f)$ 自然出现为非紧簇上同调的直和因子，或出现为完整模曲线（complete modular curve）上同调的直和因子，其中的系数来自该模曲线非紧部分上局部常值层（更确切地说，一个动机局部系统 local system of motives！）的直像（direct image）。这超出了 Grothendieck 的形式体系，却能定义动机 $M(f)$ 的各个实现。
+
+\paragraph*{7.2.}
+先假设 $k=2$，$\epsilon$ 平凡。设 $X$ 为 Poincaré 半平面，$N$ 为 $f$ 的导子，$\Gamma_0(N)$ 为 $\SL(2,\Z)$ 中模 $N$ 形如 $\left(\begin{smallmatrix}*&*\\0&*\end{smallmatrix}\right)$ 的矩阵构成的子群，令
+\[
+ \omega_f=\sum a_nq^n\frac{dq}{q}=\sum a_nq^n\,2\pi i\,dz.
+\]
+$\omega_f$ 是曲线 $M(\Gamma_0(N))=X/\Gamma_0(N)$ 的完备化 $\overline M(\Gamma_0(N))$ 上的全纯微分形式。它是 Hecke 对应（Hecke correspondence）的特征向量：
+\[
+ T_n^*\omega_f=a_n\omega_f\qquad(n\text{ 与 }N\text{ 互素}),\tag{7.2.1}
+\]
+且由(7.2.1)确定到相差一个非零常数因子。此事实来自强重数一定理（strong multiplicity one theorem）与本原形式理论。读者也可对不与 $N$ 互素的 $n$ 补充类似条件，下文亦如此；这样断言就成为初等的，因为补全后的条件(7.2.1)确定了 $\omega_f$ 在尖点（cusp）$i\infty$ 处的 Taylor 展开，精确到一个因子。
+
+将 $M(\Gamma_0(N))$、$\overline M(\Gamma_0(N))$ 简记为 $M$、$\overline M$。这些曲线具有自然 $\Q$ 结构，Hecke 对应定义在 $\Q$ 上。$\omega_f$ 定义在 $E$ 上，其在 $\C$ 的自同构 $\sigma$ 下的共轭为 $\omega_{\sigma f}$，其中 $\sigma$ 作用于系数。
+
+用2.1(B)的语言，将 $M(f)$ 定义为 $H^1(\overline M)_E$ 中各自同态 $T_n^*-a_n$ 的核所成的子动机（submotive）。若只想考虑投影子的核，则对适当多项式 $P$ 将 $T_n^*-a_n$ 替换为 $P(T_n-a_n\Delta)^*$。已知 $M(f)$ 满足7.1所列性质。
+
+在我们关心的每种上同调理论 $\mathcal H$ 中，映射
+\[
+ \mathcal H_c^1(M)\longrightarrow\mathcal H^1(\overline M)\tag{7.2.2}
+\]
+为满射，而且核上 $T_n^*$ 的特征值系统不出现在 $\mathcal H^1(\overline M)$ 中。因此，$M(f)$ 的 $\mathcal H$ 实现仍是 $\mathcal H_c^1(M)\otimes E$ 中各 $T_n^*-a_n$ 的共同核。
+
+上同调群 $H_c^1(M,\Q)$ 配有类型为 $\{(0,0),(0,1),(1,0)\}$ 的混合 Hodge 结构，其商 $H^1(\overline M,\Q)$ 的类型为 $\{(0,1),(1,0)\}$。特别地，(7.2.2)在 Hodge 滤过的 $F^1$ 子空间上诱导同构；因此 $\overline M$ 上的每个全纯微分形式 $\omega$ 都定义 $M$ 上的一个固有支集上同调类。也可直接看出这一点：若 $\mathcal I\subset\mathcal O$ 为尖点的理想，则 de Rham 上同调中的 $\mathcal H_c^*(M)$ 是 $\overline M$ 上复形 $\mathcal I\longrightarrow\Omega^1$ 的超上同调（解析上，此复形为 $M$ 上常值层 $\C$ 延零到 $\overline M$ 后的消解），因此有从 $H^0(\overline M,\Omega^1)$ 到其 $H^1$ 的自然映射。
+
+为简化记号，先假设 $E=\Q$，计算 $c^+(M(f)(1))$。动机 $M(f)(1)$ 是 $M(f)$ 的对偶，因此 $c^+$ 是 $M(f)$ 的一个周期（1.7）：须沿 $\overline M$ 上被 $F_\infty$ 固定的有理同调类积分 $\omega_f$。将 $M(f)$ 提升到 $\mathcal H_c^1(M)$，可见也可沿 $M$ 上被 $F_\infty$ 固定的无支集限制的同调类积分 $\omega_f$。这些非零积分彼此只相差有理数因子，即彼此可公度（commensurable）。
+
+为计算 $F_\infty$，将 $M$ 写成 $X^\pm=\C-\R$ 对 $\GL(2,\Z)$ 中模 $N$ 形如 $\left(\begin{smallmatrix}*&*\\0&*\end{smallmatrix}\right)$ 的子群的商很有用。复共轭由 $z\mapsto\overline z$ 诱导，$i\R^+$ 在 $M(\C)$ 中的像为被 $F_\infty$ 固定的无支集限制的闭链。公式
+\[
+ L(M(f),1)=-\int_0^{i\infty}\omega_f
+\]
+由此可对 $M(f)(1)$ 验证1.8：右边或者为零，或者与 $c^+(M(f)(1))$ 等价。
+
+\paragraph*{注 7.3.}
+还有\footnote{\textbf{译者注（本次校订）：}注7.3的等价关系须选取使相应积分组合非零的 $a/b$。例如 $a/b=0$ 时，负号对应的两项相消，而 $c^-$ 非零。一般地，各非零的正号或负号组合分别生成相应的一维有理周期空间。}
+\[
+ c^\pm(M(f)(1))\sim\int_{a/b}^{i\infty}\omega_f
+ \ \pm\int_{-a/b}^{i\infty}\omega_f.
+\]
+
+
+\paragraph*{7.4.}
+对任意 $\epsilon$（及 $E$），须将 $\Gamma_0(N)$ 换成 $\Gamma_1(N)$，即 $\SL(2,\Z)$ 中模 $N$ 形如 $\left(\begin{smallmatrix}1&*\\0&1\end{smallmatrix}\right)$ 的矩阵所成子群。与上面一样，为计算 $F_\infty$，更方便的是使用 $X^\pm$ 及 $\GL(2,\Z)$ 中模 $N$ 形如 $\left(\begin{smallmatrix}1&*\\0&*\end{smallmatrix}\right)$ 的子群。此外，还须注意对偶化（dualization）的作用；在7.2中，因对应 $T_n$ 具有对称性，这一步没有显现出来。适当定义 $T_n$ 后，有：
+
+(a) $M(f)$ 为 $H^1(\overline M)$ 中各 $T_n^*-a_n$ 的共同核，其中 $\overline M=\overline{X/\Gamma_1(N)}$；
+
+(b) 有 ${}^tT_n^*\omega_f=a_n\omega_f$，以及 $T_n^*\omega_f=\overline a_n\omega_f$（注意 $\overline a_n=\epsilon(n)^{-1}a_n$），因而 $\omega_f$ 属于 $M(\overline f)=M(f)^\vee(-1)$ 的 de Rham 实现。
+
+可得 $c^+(M(f)(1))\in(E\otimes\C)^*/E^*\subset(\C^*)^{\Hom(E,\C)}/E^*$ 由下列周期系统给出，只要其非零：
+\[
+ c^+(M(f)(1))\sim\left(\int_0^{i\infty}\omega_{\sigma f}\right)_\sigma.
+\]
+注意，若其中一个积分为零，则它们全为零。这等价于：由闭链 $i\R^+$ 及其在各 $T_n$ 下的变换张成的无支集限制同调部分中，不出现 $T_n$ 的特征值系统 $a_n$。这就对 $M(f)(1)$ 验证了2.8，也给出了对2.7的部分验证。
+
+\paragraph*{注 7.5.}
+$T_n$ 在 $\ker(\mathcal H_c^1(M)\longrightarrow\mathcal H^1(\overline M))$ 中的特征值系统与 Eisenstein 级数（Eisenstein series）有关，而出现在 $\mathcal H^1(\overline M)$ 中的系统与尖点形式有关，因此这两类特征值系统互不相交。由此，$H_c^1(M,\Q)$ 的混合 Hodge 结构为 Hodge 结构之和：$H^1(\overline M,\Q)$ 被 $\ker(H_c^1(M,\Q)\longrightarrow H^1(\overline M,\Q))$ 扩张所得的扩张分裂（split）。将其推广到 $\SL(2,\Z)$ 的任意同余子群（congruence subgroup）时，它等价于 Manin [9] 的定理：任意两尖点之差在 Jacobian 簇中总是有限阶的（参见[6, 10.3.4、10.3.8、10.1.3]）。这里给出的证明在实质上也与 Manin 的证明无异。
+
+\paragraph*{7.6.}
+对任意权 $k$，须将 $\overline M$ 的上同调换成 $\overline M$ 上某个适当层中的系数上同调。为说明这一点，将 $M,\overline M$ 换成对应于同余群 $\Gamma(n)$ 的 $M_n,\overline M_n$，其中 $n$ 为 $N$ 的倍数且 $n\geq3$。然后通过对适当有限群取不变量，下降回 $M,\overline M$。设 $g:\mathcal E\longrightarrow M_n$ 为泛椭圆曲线（universal elliptic curve），$j:M_n\hookrightarrow\overline M_n$ 为嵌入。须考虑的上同调为
+\[
+ H^1(\overline M_n,j_*\operatorname{Sym}^{k-2}(R^1g_*\Q)).
+\]
+$M(f)$ 的各个实现为相应上同调理论中计算的此群的直和因子。与前面一样，可将其提升到
+$H_c^1(M_n,\operatorname{Sym}^{k-2}(R^1g_*\Q))$。为计算 $M(f)$ 的对偶的 $c^\pm$，须将 $f$ 定义的 $H_c^1$ 中的类，与系数在局部系统 $\operatorname{Sym}^{k-2}(R^1g_*\Q)$ 的对偶中的无支集限制同调类配对积分。取闭链 $i\R^+$ 的像，再为对偶局部系统选取一组截面基，便得到 Eichler 积分（Eichler integral）
+\[
+ \int_0^{i\infty}f(q)\frac{dq}{q}(2\pi iz)^l,
+ \qquad 0\leq l\leq k-2.
+\]
+$l$ 为偶数时是偶周期，$l$ 为奇数时是奇周期；已知如何用这些周期写出临界整数 $n$ 处的 $L(M(f),n)$。
+
+\begin{originaltheorem}{命题 7.7（Proposition 7.7）}
+设 $M$ 为系数在 $E$ 中、Hodge 类型为 $\{(a,b),(b,a)\}$（$a\ne b$）的秩二动机。则 $d^\pm\operatorname{Sym}^n(M)$ 及 $c^\pm\operatorname{Sym}^nM$ 由下列公式给出：
+
+(1) 若 $n=2l+1$，则 $d^\pm=l+1$，且
+\[
+ c^\pm\operatorname{Sym}^nM
+ =c^\pm(M)^{(l+1)(l+2)/2}
+ c^\mp(M)^{l(l+1)/2}\delta(M)^{l(l+1)/2};
+\]
+
+(2) 若 $n=2l$，则 $d^+=l+1$、$d^-=l$，且
+\[
+\begin{aligned}
+ c^+\operatorname{Sym}^nM
+ &=(c^+(M)c^-(M))^{l(l+1)/2}\delta(M)^{l(l+1)/2},\\
+ c^-\operatorname{Sym}^nM
+ &=(c^+(M)c^-(M))^{l(l+1)/2}\delta(M)^{l(l-1)/2}.
+\end{aligned}
+\]
+\end{originaltheorem}
+
+这是一个线性代数计算；以下用“量纲分析”（dimensional analysis），即追踪各基向量缩放后的幂次，求出公式。
+
+(a) $H_B(M)$ 为秩二的 $E$ 向量空间，配有对合 $F_\infty$，它在适当基 $e^+,e^-$ 下的矩阵为 $\left(\begin{smallmatrix}1&0\\0&-1\end{smallmatrix}\right)$。$d^\pm\operatorname{Sym}^nM$ 是 $n$ 次对称幂的 $+$、$-$ 两部分的维数，其基分别为
+\[
+ \{(e^+)^n,(e^+)^{n-2}(e^-)^2,\ldots\},\qquad
+ \{(e^+)^{n-1}e^-,(e^+)^{n-3}(e^-)^3,\ldots\},
+\]
+从而得到所列维数。
+
+(b) 设 $\omega,\eta$ 为 $H_{\mathrm{DR}}(M)$ 的对偶的一个基，$\omega$ 在 $F^+H_{\mathrm{DR}}(M)$ 上为零。
+$H_{\mathrm{DR}}(\operatorname{Sym}^nM)^\vee\simeq\operatorname{Sym}^nH_{\mathrm{DR}}(M)^\vee$ 的子空间 $F^\pm$ 的基为
+$\omega^n,\omega^{n-1}\eta,\ldots,\omega^{n-d^\pm+1}\eta^{d^\pm-1}$，并且
+\begin{equation}
+ c^+\operatorname{Sym}^nM
+ =\left\langle\omega^n\wedge(\omega^{n-1}\eta)\wedge\cdots,
+ (e^+)^n\wedge((e^+)^{n-2}(e^-)^2)\wedge\cdots\right\rangle.
+ \tag{$7.7.1$+}
+\end{equation}
+\begin{equation}
+ c^-\operatorname{Sym}^nM
+ =\left\langle\omega^n\wedge(\omega^{n-1}\eta)\wedge\cdots,
+ ((e^+)^{n-1}e^-)\wedge((e^+)^{n-3}(e^-)^3)\wedge\cdots\right\rangle.
+ \tag{$7.7.1$-}
+\end{equation}
+
+(c) 令 $V=H_B(M)\otimes\C\simeq H_{\mathrm{DR}}(M)\otimes\C$；这是一个 $E\otimes\C$ 模。上述公式表明，$c^\pm\operatorname{Sym}^nM$ 只依赖于 $E\otimes\C$ 模 $V$、其基 $e^+,e^-$、$\omega\in V^*$ 以及 $\eta$ 在 $V^*/\langle\omega\rangle$ 中的像 $\overline\eta$：将 $\eta$ 换成 $\eta+\lambda\omega$，不会改变配对(7.7.1)左边的 $d^\pm$ 重外积。此外，$\langle\omega,e^+\rangle$ 与 $\langle\omega,e^-\rangle$ 可逆，$\overline\eta$ 为 $V^*/\langle\omega\rangle$ 的一个基。因此，系统 $(V,e^+,e^-,\omega,\overline\eta)$ 的同构类由 $(E\otimes\C)^*$ 中的量
+\[
+ c^+=\langle\omega,e^+\rangle,\quad
+ c^-=\langle\omega,e^-\rangle,\quad
+ \delta=\langle\omega\wedge\eta,e^+\wedge e^-\rangle
+\]
+描述。将 $e^+,e^-,\omega,\overline\eta$ 分别换成
+$\lambda e^+,\mu e^-,\omega,\nu\overline\eta/(\lambda\mu)$，就将 $c^+,c^-,\delta$ 分别换成 $\lambda c^+,\mu c^-,\nu\delta$。当 $c^+=c^-=\delta=1$ 时，(7.7.1)$^\pm$ 的右边属于 $\Q^*$。因此一般情形的 $c^\pm\operatorname{Sym}^nM$ 为下列乘积的有理数倍：$c^+(M)$、$c^-(M)$、$\delta(M)/(c^+(M)c^-(M))$，分别取(7.7.1)中 $e^+$、$e^-$、$\eta$ 出现的次数为幂。
+
+还可省去一半计算：将 $F_\infty$ 换成 $-F_\infty$，就交换 $e^+,e^-$，从而交换 $c^+,c^-$，保持 $\delta$；当 $n$ 奇时交换(7.7.1)$^\pm$，$n$ 偶时保持它们。
+
+当 $n=2l+1$ 时，$d^+=d^-=l+1$，
+\begin{align*}
+ \deg_\eta(7.7.1)^\pm&=0+1+\cdots+l=l(l+1)/2,\\
+ \deg_{e^+}(7.7.1)^+&=(2l+1)+(2l-1)+\cdots+1=(l+1)^2
+ =\deg_{e^-}(7.7.1)^-,\\
+ \deg_{e^+}(7.7.1)^-&=2l+(2l-2)+\cdots+0=l(l+1)
+ =\deg_{e^-}(7.7.1)^+.
+\end{align*}
+当 $n=2l$ 时，$d^+=l+1$、$d^-=l$，
+\begin{align*}
+ \deg_\eta(7.7.1)^+&=0+1+\cdots+l=l(l+1)/2,\\
+ \deg_\eta(7.7.1)^-&=0+1+\cdots+(l-1)=l(l-1)/2,\\
+ \deg_{e^\pm}(7.7.1)^+&=2l+(2l-2)+\cdots+0=l(l+1),\\
+ \deg_{e^\pm}(7.7.1)^-&=(2l-1)+(2l-3)+\cdots+1=l^2.
+\end{align*}
+
+\paragraph*{7.8.}
+这一命题给出了关于 $L(\operatorname{Sym}^nM(f),s)$ 在临界整数处的值的猜想。公式如下：
+\[
+ L(\sigma,M(f),s)=\sum\sigma a_nn^{-s}
+ =\prod_pL_p(\sigma,M(f),s),\tag{7.8.1}
+\]
+其中对于几乎所有 $p$，
+\[
+ L_p(M(f),s)=(1-a_pp^{-s}+\epsilon(p)p^{k-1-2s})^{-1}
+ =((1-\alpha'_pp^{-s})(1-\alpha''_pp^{-s}))^{-1},
+\]
+$\epsilon$ 为 Dirichlet 特征（Dirichlet character）。有 $\bigwedge^2M(f)=[\epsilon^{-1}](1-k)$，因此，若 $\epsilon$ 的导子为 $F$，则
+\[
+ \delta(M(f))\sim(2\pi i)^{1-k}
+ \sum_u\epsilon(u)\otimes\exp(-2\pi iu/F),\tag{7.8.2}
+\]
+并且
+\[
+ L^*(M(f),m)\sim(2\pi i)^m c^\pm(M(f)),\qquad
+ \pm=(-1)^m,\quad1\leq m\leq k-1.\tag{7.8.3}
+\]
+还有
+\[
+ L(\sigma,\operatorname{Sym}^nM(f),s)
+ =\prod_pL_p(\sigma,\operatorname{Sym}^nM(f),s),\tag{7.8.4}
+\]
+其中对几乎所有 $p$，
+\[
+ L_p(\operatorname{Sym}^nM(f),s)^{-1}
+ =\prod_{i=0}^n(1-(\alpha'_p)^i(\alpha''_p)^{n-i}p^{-s}).
+\]
+猜想对临界整数 $m$，有
+\[
+ L^*(\operatorname{Sym}^nM(f),m)
+ \sim(2\pi i)^{m\,d^\pm\operatorname{Sym}^nM(f)}
+ c^\pm\operatorname{Sym}^nM(f),\qquad\pm=(-1)^m,
+\]
+其中 $c^\pm,d^\pm$ 由7.7的公式，使用由(7.8.2)、(7.8.3)刻画的 $c^\pm(M)$ 与 $\delta(M)$ 给出。支持此猜想的数值证据见[18]。
+
+\origsection{8}{代数 Hecke 特征（Algebraic Hecke characters）}
+代数 Hecke 特征（即 $A_0$ 型 Grössencharakter）的基本定义见[3, 第5节]，我们采用其记号。
+
+\begin{originaltheorem}{猜想 8.1（Conjecture 8.1）}
+设 $k,E$ 为 $\Q$ 的两个有限扩张，$\chi$ 为 $k$ 的取值于 $E$ 的代数 Hecke 特征。
+
+(i) 存在 $k$ 上、系数在 $E$ 中的秩一动机 $M(\chi)$，使得对 $E$ 的每个素点 $\lambda$，$\lambda$ 进表示 $H_\lambda M(\chi)$ 为 $\chi$ 所定义的表示：在与 $\chi$ 的导子及 $\lambda$ 的剩余特征 $l$ 互素的素理想 $\mathfrak P$ 处，几何 Frobenius 以乘 $\chi(\mathfrak P)$ 作用。
+
+(ii) 这个动机由此性质唯一确定到同构。
+
+(iii) 每个秩一动机都形如 $M(\chi)$。
+
+(iv) 将 $k\otimes E$ 分解为域的积 $k\otimes E=\prod K_i$，将 $\chi$ 的代数部分写为
+\[
+ \chi_{\mathrm{alg}}:k^*\longrightarrow E^*,\qquad
+ \chi_{\mathrm{alg}}(x)=\prod_i N_{K_i/E}(x)^{n_i}.
+\]
+$k\otimes E$ 的分解诱导 $H_{\mathrm{DR}}(M(\chi))$ 分解为
+$H_{\mathrm{DR}}(M(\chi))_i=H_{\mathrm{DR}}(M(\chi))\otimes_{k\otimes E}K_i$。
+用此记号，Hodge 滤过由 $\bigoplus_{n_i\geq p}H_{\mathrm{DR}}(M(\chi))_i$ 给出。
+\end{originaltheorem}
+唯一性8.1(ii)迫使 $M(\chi)$ 满足以下形式规则：
+\[
+ M(\chi'\chi'')\sim M(\chi')\otimes M(\chi'),\tag{8.1.1}
+\]\footnote{译注：原书右端两个因子均印为 $M(\chi')$；按张量乘法规则，第二个因子通常应为 $M(\chi'')$。此处保留原式。}
+\paragraph*{8.1.2.} 若 $\iota:E\hookrightarrow E'$ 为有限扩张，则 $M(\iota\chi)$ 由 $M(\chi)$ 扩张系数到 $E'$ 得到。
+\paragraph*{8.1.3.} 若 $k'/k$ 为有限扩张，则 $M(\chi\circ N_{k'/k})$ 由 $M(\chi)$ 扩张标量到 $k'$ 得到。
+
+\paragraph*{注 8.2.}
+约定记号：$c$ 为复共轭，$\overline\Q$ 为 $\Q$ 在 $\C$ 中的代数闭包，
+$S=\Hom(k,\overline\Q)=\Hom(k,\C)$，$J=\Hom(E,\overline\Q)=\Hom(E,\C)$。
+$k\otimes E$ 分解成各 $K_i$，对应于 $S\times J$ 分解成 $\Gal(\overline\Q/\Q)$ 轨道。
+
+每个代数同态 $\eta:k^*\longrightarrow E^*$ 均写成 $\prod_iN_{K_i/E}(x)^{n_i}$。若 $(\sigma,\tau)\in S\times J$ 的 $\Gal(\overline\Q/\Q)$ 轨道对应于 $K_i$，即 $\sigma\otimes\tau:k\otimes E\longrightarrow\C$ 经由 $K_i$ 分解，则用 $n(\eta;\sigma,\tau)$，或简记 $n(\sigma,\tau)$，表示整数 $n_i$。函数 $n(\sigma,\tau)$ 在各 $\Gal(\overline\Q/\Q)$ 轨道上为常数。若 $\eta$ 为某个 Hecke 特征 $\chi$ 的代数部分，还有：
+\[
+ \text{整数 }w=n(\eta;\sigma,\tau)+n(\eta;c\sigma,\tau)
+ \text{ 与 }\sigma,\tau\text{ 无关。}\tag{8.2.1}
+\]
+这就是 $\chi$（及 $M(\chi)$）的权。有时将 $n(\chi_{\mathrm{alg}};\sigma,\tau)$ 写作 $n(\chi;\sigma,\tau)$。
+
+反过来，满足(8.2.1)的同态 $\eta$ 在作如下适当调整后，都可实现为某个 Hecke 特征 $\chi$ 的代数部分 $\chi_{\mathrm{alg}}$：
+
+(a) 它的某个幂具有此形式；
+
+(b) 存在 $E$ 的有限扩张 $\iota:E\longrightarrow E'$，使得 $\iota\eta$ 具有此形式；
+
+(c) 存在 $k$ 的有限扩张 $k'$，使得 $\eta\circ N_{k'/k}$ 具有此形式。
+
+规则8.1(iv)使我们能从 $H_\sigma M(\chi)$ 的 $E$ 模结构导出其 Hodge 双分次：$H_\sigma M(\chi)\otimes\C$ 的直和因子 $H_\sigma M(\chi)\otimes_{E,\tau}\C$ 具有 Hodge 类型 $(p,q)$，其中
+$p=n(\chi;\sigma,\tau)$、$q=w-p=n(\chi;\sigma,c\tau)$。
+
+\paragraph*{例 8.3.}
+设 $A$ 为 $k$ 上带有 $E$ 的复乘的阿贝尔簇，假设 $H_1(A)$ 在 $E$ 上秩一，即 CM 型（CM type）。由 Shimura--Taniyama 理论，$H_1(A)$ 对某个 $k$ 上取值于 $E$ 的代数 Hecke 特征 $\chi$ 满足8.1(i)，且 $\chi$ 的代数部分由 $k\otimes E$ 模 $\Lie(A)$ 读出：
+\[
+ \chi_{\mathrm{alg}}(x)=\det_E(x\otimes1,\Lie(A))^{-1}.
+\]
+
+\paragraph*{例 8.4.}
+取 $k$ 为 $n$ 次单位根域，设 $V$ 为射影方程 $\sum_{i=0}^mX_i^n=0$ 定义的 Fermat 超曲面，$M$ 为动机“$V$ 的中间维本原上同调”（primitive middle cohomology）。设 $G$ 为 $\mu_n^{m+1}$ 模去对角子群所得的商群。此群以 $(\alpha_i)*(X_i)=(\alpha_iX_i)$ 作用于 $V$，并通过结构搬运作用于 $M$。利用群代数（group algebra）$\Q[G]$ 作为若干域之积的分解来分解 $M$，便得到对适当代数 Hecke 特征满足8.1(i)的动机；这些特征就是 Weil 研究 Jacobi 和（Jacobi sum）时引入的特征。
+
+\paragraph*{例 8.5.}
+动机 $\Z(-1)$ 对 $\chi=$ 范数满足8.1(i)。对于有限阶 $\chi$，适当的 Artin 动机满足8.1(i)。
+
+\paragraph*{8.6.}
+对每个 $\sigma\in S$，$H_\sigma(M(\chi))$ 在 $E$ 上秩一。为每个 $H_\sigma(M(\chi))$ 选取基 $e_\sigma$。各 $H_\sigma(M(\chi))\otimes\C$ 的和除了 $E$ 模结构外，还有自然的 $k\otimes\C=\C^S$ 模结构；合起来，它是秩一自由 $k\otimes E\otimes\C$ 模，$e=\sum e_\sigma$ 是其一个基。
+
+\paragraph*{8.7.}
+de Rham 实现 $H_{\mathrm{DR}}(M(\chi))$ 为秩一自由 $k\otimes E$ 模，选取其基 $\omega$。各
+$I_\sigma:H_\sigma(M(\chi))\otimes\C\xrightarrow{\sim}H_{\mathrm{DR}}(M(\chi))\otimes_{k,\sigma}\C$ 的和，就是 $k\otimes E\otimes\C$ 模同构（0.4）
+\[
+ I:\bigoplus_\sigma H_\sigma(M(\chi))\otimes\C
+ \xrightarrow{\sim}H_{\mathrm{DR}}(M(\chi))\otimes_\Q\C.
+\]
+设 $\omega$ 为 $k\otimes E$ 模 $H_{\mathrm{DR}}(M(\chi))$ 的基，令
+$p'(\chi)=\omega/I(e)\in(k\otimes E\otimes\C)^*$。这一周期依赖于 $\chi,\omega,e$。模去 $(E\otimes F)^*$ 及 $(E^*)^S$ 后，它只依赖于 $\chi$。\footnote{译注：原书此处及紧接的同构记作 $E\otimes F$；本段此前使用的标量域记号为 $k$。这里保留原书记号，所指的张量积由上下文为 $k\otimes E$。}用 $p'(\chi;\sigma,\tau)$，或简记 $p'(\sigma,\tau)$，表示它经同构 $E\otimes F\otimes\C\xrightarrow{\sim}\C^{S\times J}$ 后的 $(\sigma,\tau)$ 分量。
+
+\paragraph*{8.8.}
+设 $A$ 如8.3，计算动机 $H^1(A)$ 的周期 $p'(\sigma,\tau)$，模去 $\overline\Q^*$。先通过 $\sigma$ 将标量从 $k$ 扩张到 $\overline\Q$。若 $n(\sigma,\tau)=1$，则存在定义在 $\overline\Q$ 上的全纯1形式 $\omega$，满足对 $u\in E$ 有 $u^*\omega=\tau(u)\omega$；对于 $Z\in H_1(A(\C))$，有
+$p'(\sigma,\tau)\sim\int_Z\omega$。利用公式
+$p'(\sigma,\tau)p'(\sigma,c\tau)\sim2\pi i$，即可推广到一般情形。
+
+\paragraph*{8.9.}
+猜想8.1(ii)特别断言，若两个动机满足8.1(i)，则它们具有相同周期 $p$。对于8.4的动机，周期可用 Gamma 函数值表示；若模去 $\overline\Q^*$，8.1提示了 B. Gross [7] 关于某些周期与 Gamma 函数值的乘积之间关系的猜想。
+
+比较8.4与8.5便得到下面的猜想8.11、8.13。0.10后宣布的结果使我们能够证明它。
+
+\paragraph*{8.10.}
+设 $N$ 为整数，$k=\Q(\exp(2\pi i/N))$，$\mathfrak P$ 为 $k$ 的与 $N$ 互素的素理想，$k_{\mathfrak P}$ 为其剩余域，$q=N\mathfrak P=|k_{\mathfrak P}|$。用 $t$ 表示模 $\mathfrak P$ 约化的逆，它将 $k_{\mathfrak P}$ 中的 $N$ 次单位根提升到 $k$ 中的单位根。
+
+对 $a\in N^{-1}\Z/\Z$、$a\ne0$，考虑 Gauss 和
+\[
+ g(\mathfrak P,a,\psi)=-\sum_{x\in k_{\mathfrak P}^*}
+ t(x^{-a(q-1)})\psi(x),
+\]
+其中 $\psi:k_{\mathfrak P}\longrightarrow\C^*$ 为非平凡加法特征（additive character）。设 $\boldsymbol a=\sum n(a)\delta_a$ 属于以 $N^{-1}\Z/\Z-\{0\}$ 为基的自由阿贝尔群。若 $\sum n(a)a=0$，则各 $g(\mathfrak P,a,\psi)^{n(a)}$ 的乘积与 $\psi$ 无关，令
+\[
+ g(\mathfrak P,\boldsymbol a)=\prod_a g(\mathfrak P,a,\psi)^{n(a)}.
+\]
+Weil [16] 证明，作为 $\mathfrak P$ 的函数，$g(\mathfrak P,\boldsymbol a)$ 是 $k$ 的取值于 $k$ 的代数 Hecke 特征 $\chi_{\boldsymbol a}$。用 $\langle a\rangle$ 表示 $a$ 在0与1之间的代表元。若 $\boldsymbol a=\sum n(a)\delta_a$ 满足
+\[
+ \text{对每个 }u\in(\Z/N\Z)^*,\qquad
+ \sum_an(a)\langle ua\rangle=0,\tag{*}
+\]
+则由 Weil 对 $\chi_{\boldsymbol a}$ 的代数部分的确定可知，$\chi_{\boldsymbol a}$ 为有限阶；仍用 $\chi_{\boldsymbol a}$ 表示 $\Gal(\overline\Q/k)$ 的相应特征，它在 $\mathfrak P$ 处几何 Frobenius 上取值 $\chi_{\boldsymbol a}(\mathfrak P)$。
+
+令 $\Gamma(\boldsymbol a)=\prod_a\Gamma(\langle a\rangle)^{n(a)}$。猜想的第一部分，即当 $\boldsymbol a$ 满足(*)时 $\Gamma(\boldsymbol a)$ 的代数性，已经由 Koblitz、Ogus 证明，见附录。更精确地，预期下述结论成立：
+
+\begin{originaltheorem}{猜想 8.11（Conjecture 8.11）}
+若 $\boldsymbol a$ 满足(*)，则对每个 $\sigma\in\Gal(\overline\Q/k)$，
+\[
+ \sigma\Gamma(\boldsymbol a)=\chi_{\boldsymbol a}(\sigma)\Gamma(\boldsymbol a).
+\]
+\end{originaltheorem}
+若 $\boldsymbol a$ 在 $(\Z/N\Z)^*$ 的子群 $H$ 下不变，可将 $\Gal(\overline\Q/k)$ 换成 $\Gal(\overline\Q/k^H)$，并使用 SGA $4\frac12$ 6.5 定义该群的一个取值于 $k^H$ 的单位根的特征，从而精化8.11。下面就这样做。
+
+\paragraph*{8.12.}
+设 $H\subset(\Z/N\Z)^*$ 为子群，$\mathfrak P$ 为 $k^H$ 中与 $N$ 互素的素理想，$\kappa$ 为其剩余域，$\psi:\kappa\longrightarrow\C^*$ 为非平凡加法特征。对 $a\in N^{-1}\Z/\Z-\{0\}$，设 $\mathfrak P_{a,i}$ 为 $k^H(\exp(2\pi ia))$ 中 $\mathfrak P$ 上方的素理想。若 $\kappa'$ 为 $\mathfrak P_{a,i}$ 处剩余域，$|\kappa'|=q'$，则记 Gauss 和为
+\[
+ g(\mathfrak P_{a,i},a,\psi)
+ =-\sum_{x\in(\kappa')^*}t(x^{-a(q'-1)})\psi(\Tr_{\kappa'/\kappa}x).
+\]
+乘积 $g(\mathfrak P,a,\psi)=\prod_i g(\mathfrak P_{a,i},a,\psi)$ 只依赖于 $a$ 的 $H$ 轨道。
+
+设 $\boldsymbol a=\sum n(a)\delta_a$ 在 $H$ 下不变，且满足 $\sum n(a)a=0$。对 $H$ 在 $N^{-1}\Z/\Z-\{0\}$ 中的每个轨道 $O$，用 $n(O)$ 表示 $n(a)$ 在 $O$ 上的常值。令
+\[
+ g(\mathfrak P,\boldsymbol a)
+ =\prod_{a\bmod H}g(\mathfrak P,a,\psi)^{n(a)}.
+\]
+作为 $\mathfrak P$ 的函数，它为 $k^H$ 的取值于 $k^H$ 的代数 Hecke 特征 $\chi_{\boldsymbol a}$。为证明这一点，由加性可归约到 $n(a)\geq0$。应用[3, 6.5]，其中取 $F=k^H$、$\overline F=\overline\Q$、$k=$ 这里的 $k$，$I$ 为若干 $H$ 轨道副本的不交并，即每个 $O$ 取 $n(O)$ 份。对像为 $a/N\in N^{-1}\Z/\Z$ 的 $i\in I$，取 $\lambda_i$ 为复合
+\[
+ \widehat\Z(1)_{\overline F}\longrightarrow(\Z/N\Z)(1)_{\overline F}
+ =\mu_N(k)\xrightarrow{x\mapsto x^a}k^*.
+\]
+所得 Hecke 特征为 $\chi_{\boldsymbol a}$ 乘以“$H$ 在 $I$ 上的置换表示（permutation representation）的符号”特征。Weil [17] 已包含这一结果的一个特例。8.10的 $\chi_{\boldsymbol a}$ 为上面 $\chi_{\boldsymbol a}$ 与范数 $N_{k/k^H}$ 的复合。
+
+\begin{originaltheorem}{猜想 8.13（Conjecture 8.13）}
+设 $\mathfrak P$ 为 $k^H$ 中与 $N$ 互素的素理想，$F_{\mathfrak P}$ 为 $\mathfrak P$ 处几何 Frobenius。若 $H$ 不变的 $\boldsymbol a$ 满足(*)，则
+\[
+ F_{\mathfrak P}\Gamma(\boldsymbol a)
+ =g(\mathfrak P,\boldsymbol a)\Gamma(\boldsymbol a).
+\]
+特别地，若 $k^H$ 的单位根群的阶为 $N'$，则 $\Gamma(\boldsymbol a)^{N'}\in k^H$。
+\end{originaltheorem}
+
+由8.13可推出下述看似更一般的变体。将(*)换成
+\[
+ \sum_an(a)\langle ua\rangle=k
+ \quad\text{为与 }u\in(\Z/N\Z)^*\text{ 无关的整数。}\tag{*'}
+\]
+此时 Hecke 特征 $N\mathfrak P^{-k}g(\mathfrak P,\boldsymbol a)$ 为有限阶。将其识别为 $\Gal(\overline\Q/k^H)$ 的特征 $\chi$，期望有
+\[
+ \sigma((2\pi i)^{-k}\Gamma(\boldsymbol a))
+ =\chi(\sigma)((2\pi i)^{-k}\Gamma(\boldsymbol a)).
+\]
+
+\paragraph*{8.14.}
+若 $k$ 为全实域（totally real field）的全虚二次扩张（totally imaginary quadratic extension），即我们所称的 CM 型域（CM field），Shimura [13] 已确定 $k$ 的代数 Hecke 特征的 $L$ 函数的临界值，精确到代数数乘因子。他用带有 $k$ 的复乘的 CM 型阿贝尔簇的周期表示它们。本节余下部分将说明，他的定理与猜想2.8相容；该猜想用 $k$ 上秩一动机的周期来表示这些值。
+
+\paragraph*{8.15.}
+设 $\chi,M(\chi)$ 如8.1。排除8.5的情形，并假设 $R_{k/\Q}M(\chi)$ 满足1.7。此时 $k$ 全虚，Hodge 数 $h^{p,p}$ 为零；用8.1、8.2的记号，即没有 $n_i$ 等于 $w/2$。首先要用周期 $p'(\chi;\sigma,\tau)$ 计算 $c^+R_{k/\Q}M(\chi)$。回忆，它为 $E\otimes\C$ 模同构
+\[
+ I^+:H_B^+R_{k/\Q}M(\chi)\otimes\C\xrightarrow{\sim}
+ H_{\mathrm{DR}}^+R_{k/\Q}M(\chi)\otimes\C
+\]
+在 $E$ 上定义的基中计算的行列式。
+
+选取8.6的各 $e_\sigma$，使 $F_\infty e_\sigma=e_{c\sigma}$。各 $e_\sigma\pm e_{c\sigma}$ 构成
+\[
+ H_B^\pm R_{k/\Q}M(\chi)\subset H_BR_{k/\Q}M(\chi)
+ =\bigoplus_{\sigma\in S}H_\sigma M(\chi)
+\]
+的基。同时有 $d^+=d^-=\tfrac12[k:\Q]$。设 $\overline S=S/\Gal(\C/\R)$。为计算 $c^+=\det(I^+)$，使用 $H_B^+$ 的基 $(e_\sigma+e_{c\sigma})$，以 $\overline S$ 为指标。
+
+由8.1(iv)，$H_{\mathrm{DR}}R_{k/\Q}M(\chi)=H_{\mathrm{DR}}M(\chi)$ 的 Hodge 滤过由其 $k\otimes E$ 模结构读出。记 $(k\otimes E)^+$ 为 $k\otimes E$ 中由满足 $n_i<w/2$ 的 $K_i$ 的积构成的直和因子，则商 $H_{\mathrm{DR}}^+R_{k/\Q}M(\chi)$ 是相应直和因子：
+\[
+ H_{\mathrm{DR}}^+R_{k/\Q}M(\chi)
+ =H_{\mathrm{DR}}M(\chi)\otimes_{k\otimes E}(k\otimes E)^+.
+\]
+取8.7的 $\omega$，利用 $H_{\mathrm{DR}}M(\chi)$ 的 $k\otimes E\otimes\C=\C^{S\times J}$ 模结构，将其分解为 $\omega=\sum\omega_{\sigma,\tau}$。由定义，$I(e_\sigma)=\sum_\tau p'(\sigma,\tau)^{-1}\omega_{\sigma,\tau}$，故
+\[
+ I^+(e_\sigma+e_{c\sigma})
+ =\sum_{n(\sigma,\tau)<w/2}p'(\sigma,\tau)^{-1}\omega_{\sigma,\tau}
+ +\sum_{n(c\sigma,\tau)<w/2}p'(c\sigma,\tau)^{-1}\omega_{c\sigma,\tau}.
+\]
+这是以 $\tau\in J$ 为指标的和，当 $n(\sigma,\tau)<w/2$ 时，其项为 $p'(\sigma,\tau)^{-1}\omega_{\sigma,\tau}$；当 $n(\sigma,\tau)>w/2$ 时，其项为 $p'(c\sigma,\tau)^{-1}\omega_{c\sigma,\tau}$。对代表元为 $\sigma$ 的 $\overline\sigma\in\overline S$，令
+\[
+ \omega_{\overline\sigma}
+ =\sum_{n(\sigma,\tau)<w/2}\omega_{\sigma,\tau}
+ +\sum_{n(c\sigma,\tau)<w/2}\omega_{c\sigma,\tau}.
+\]
+$I^+(e_\sigma+e_{c\sigma})$ 是 $\omega_{\overline\sigma}$ 的 $E\otimes\C$ 中元素倍；所以各 $\omega_{\overline\sigma}$ 构成 $H_{\mathrm{DR}}^+$ 的基。在基 $e_\sigma+e_{c\sigma}$ 与 $\omega_{\overline\sigma}$ 下，$I^+$ 的矩阵为对角矩阵，其行列式 $\det'(I^+)\in(E\otimes\C)^*=(\C^*)^J$ 的分量为
+\[
+ \det'(I^+)_\tau=\prod_{n(\sigma,\tau)<w/2}p'(\sigma,\tau)^{-1}.
+\]
+
+考虑映射 $E^{\overline S}\longrightarrow E^S$，它将 $\boldsymbol1_{\overline\sigma}$ 映到 $\boldsymbol1_\sigma+\boldsymbol1_{c\sigma}$；再考虑由 $k\otimes\C\simeq\C^S$ 导出的映射 $E^S\otimes\C\xrightarrow{\sim}k\otimes E\otimes\C$，以及 $k\otimes E$ 到 $(k\otimes E)^+$ 的投影。复合后得到 $E\otimes\C$ 模同构
+\[
+ E^{\overline S}\otimes\C\xrightarrow{\sim}(k\otimes E)^+\otimes\C.
+\]
+用 $D(\chi)$ 表示在两边 $E$ 上定义的基中计算的行列式。利用基 $\omega$ 将 $H_{\mathrm{DR}}$ 与 $k\otimes E$ 等同，可见这是 $H_{\mathrm{DR}}^+\otimes\C$ 的恒等映射，在源空间取基 $\omega_{\overline\sigma}$、在目标空间取一个定义于 $E$ 的基时所得的行列式。记它在 $\C^J$ 中的分量为 $D_\tau(\chi)$，由 $c^+=\det'(I^+)D(\chi)$ 得到：
+
+\begin{originaltheorem}{命题 8.16（Proposition 8.16）}
+有
+\[
+ c^+R_{k/\Q}M(\chi)
+ =\left(\prod_{n(\sigma,\tau)<w/2}p'(\sigma,\tau)^{-1}
+ \cdot D_\tau(\chi)\right)_{\tau\in J}.
+\]
+\end{originaltheorem}
+
+\paragraph*{注 8.17.}
+假设 $k$ 为 CM 型域，是全实域 $k_0$ 的二次扩张。则 $S$ 的商 $\overline S$ 可识别为 $k_0$ 的复嵌入集合，且下图交换：
+\[
+\begin{tikzcd}[column sep=large,row sep=large]
+ E^{\overline S}\otimes\C \arrow[r,"\sim"] \arrow[d,hook] & k_0\otimes E\otimes\C \arrow[d,hook] & \\
+ E^S\otimes\C \arrow[r] & k\otimes E\otimes\C \arrow[r] & (k\otimes E)^+\otimes\C
+\end{tikzcd}
+\]
+因此复合映射 $k_0\otimes E\longrightarrow(k\otimes E)^+$ 为同构；$D(\chi)$ 也是 $E^{\overline S}\otimes\C\xrightarrow{\sim}k_0\otimes E\otimes\C$ 的行列式，该同构由 $\C^{\overline S}\xrightarrow{\sim}k_0\otimes\C$ 从 $\Q$ 扩张标量到 $E$ 得到。这为模 $E^*$ 良定义的 $D(\chi)$ 给出了 $(\Q\otimes\C)^*=\C^*\subset(E\otimes\C)^*$ 中的代表元，即矩阵 $(\sigma a)$ 的逆的行列式，其中 $\sigma\in\overline S$，$a$ 遍历 $k_0/\Q$ 的一个基。同构 $\C^{\overline S}\xrightarrow{\sim}k_0\otimes\C$ 将二次型（quadratic form）$\sum x_i^2$ 变为 $\Tr(xy)$，因而可将 $(\det(\sigma a))^2$ 识别为 $k_0$ 的判别式（discriminant）：
+\[
+ D(\chi)\sim\text{$k_0$ 的判别式的平方根}.
+\]
+
+\paragraph*{8.18.}
+用 $p''(\chi;\sigma,\tau)$ 表示 $p'(\chi;\sigma,\tau)$ 在 $\C^*/\overline\Q^*$ 中的像。它只依赖于 $\chi,\sigma,\tau$。若代数同态 $\eta:k^*\longrightarrow E^*$ 满足(8.2.1)，则其某个幂是一个 Hecke 特征的代数部分：$\eta^N=\chi_{\mathrm{alg}}$。此外，若 $\chi'_{\mathrm{alg}}=\chi''_{\mathrm{alg}}$，则 $\chi',\chi''$ 仅相差一个有限阶特征，且对适当 $M$ 有 $(\chi')^M=(\chi'')^M$。由(8.1.1)得到
+$p''(\chi^M;\sigma,\tau)=p''(\chi;\sigma,\tau)^M$，这使我们能无歧义地令\footnote{\textbf{译者注（本次校订）：}此定义右端应使用刚定义的 $p''(\chi;\sigma,\tau)$，即 $p(\eta;\sigma,\tau)=p''(\chi;\sigma,\tau)^{1/N}$。根的选取在 $\C^*/\overline\Q^*$ 中没有歧义，因为不同的 $N$ 次根只相差一个代数单位根。}
+\[
+ p(\eta;\sigma,\tau)=p(\chi;\sigma,\tau)^{1/N},
+ \qquad\eta^N=\chi_{\mathrm{alg}}.
+\]
+
+这些周期满足下列形式规则：
+\[
+ p(\eta'\eta'';\sigma,\tau)
+ =p(\eta';\sigma,\tau)p(\eta'';\sigma,\tau).\tag{8.18.1}
+\]
+\paragraph*{8.18.2.}
+将 $E$ 换成其扩张 $E'$，并将 $\tau$ 换成它到 $E'$ 的一个延拓，不改变 $p(\eta;\sigma,\tau)$。
+\paragraph*{8.18.3.}
+将 $k$ 换成其扩张 $k'$，$\sigma$ 换成它到 $k'$ 的一个延拓，并将 $\chi$ 换成 $\chi\circ N_{k'/k}$，不改变 $p(\eta;\sigma,\tau)$。
+\paragraph*{8.18.4.}
+若 $\alpha$ 为 $k$ 的自同构，$\beta$ 为 $E$ 的自同构，则
+\[
+ p(\eta;\sigma,\tau)=p(\beta\eta\alpha^{-1};\sigma\alpha^{-1},\tau\beta^{-1}).
+\]
+\paragraph*{8.18.5.}
+$p(\eta;\sigma,\tau)$ 的复共轭为 $p(\eta;\overline\sigma,\overline\tau)$。
+\paragraph*{8.18.6.}
+当 $k=F=\Q$ 时，$p(\operatorname{Id};\operatorname{Id},\operatorname{Id})=2\pi i$。
+
+公式(8.15.1)--(8.15.3)来自(8.1.1)--(8.1.3)；\footnote{译注：此处原书的编号为8.15.1--8.15.3，按本段内容应指8.18.1--8.18.3。} (8.18.4)、(8.18.5)可由结构搬运看出，(8.18.6)来自8.5。
+
+\paragraph*{8.19.}
+设 $\eta:k^*\longrightarrow E^*$ 为满足(8.2.1)的同态。还假设 $n(\eta;\sigma,\tau)$ 从不等于 $w/2$，这使我们能如8.15定义 $(k\otimes E)^+$。定义 $\eta^*:E^*\longrightarrow k^*$ 为
+\[
+ \eta^*(y)=\det_k(1\otimes y,(k\otimes E)^+).
+\]
+此同态仍满足(8.2.1)，且\footnote{\textbf{译者注（本次校订）：}下式左边的指标应交换为 $n(\eta^*;\tau,\sigma)$。同态 $\eta^*:E^*\to k^*$ 的第一个嵌入指标属于 $E$，第二个属于 $k$；右边 $n(\eta;\sigma,\tau)$ 的指标次序则保持不变。}
+\[
+ n(\eta^*;\sigma,\tau)=
+ \begin{cases}1,&n(\eta;\sigma,\tau)<w/2,\\0,&n(\eta;\sigma,\tau)>w/2.\end{cases}
+\]
+
+若 $\eta^*$ 是 Hecke 特征 $\chi^*$ 的代数部分，则 $M(\chi^*)$ 为 $E$ 上带有 $k$ 的复乘的某个阿贝尔簇的 $H^1$，其 Lie 代数作为 $k\otimes E$ 模同构于 $(k\otimes E)^+$。
+
+\begin{originaltheorem}{命题 8.20（Proposition 8.20）}
+在8.19的假设和记号下，取 $E$ 为 $\C$ 的子域，用 $1$ 表示 $E$ 到 $\C$ 的恒等嵌入。则
+\[
+ \prod_{n(\sigma,1)<w/2}p(\eta;\sigma,1)
+ =\prod_\sigma p(\eta^*;1,\sigma)^{n(\eta;\sigma,1)}.
+\]
+\end{originaltheorem}
+
+若 $\iota:E\longrightarrow E'\subset\C$ 为 $E$ 的有限扩张，将 $\eta$ 换成 $\iota\eta$ 时，左边不变（8.18.2）。有 $(\iota\eta)^*=\eta^*\circ N_{E'/E}$，故由8.18.3右边亦不变。
+
+若 $\iota:k\longrightarrow k'$ 为次数 $d$ 的有限扩张，将 $k$ 换成 $k'$、$\eta$ 换成 $\eta\circ N_{k'/k}$，则左边变成其 $d$ 次幂：$k$ 的一个复嵌入由 $k'$ 的 $d$ 个嵌入诱导，应用8.18.3即可。由8.18.2及等式 $(\eta\circ N_{k'/k})^*=\iota\eta^*$，右边亦如此。
+
+利用这些相容性，可归约到 $E$ 为 Galois 扩张且 $k\simeq E$ 的情形。对每个同构 $\omega:k\longrightarrow E$，令 $n(\omega)=n(\eta;1\circ\omega,\omega)$。\footnote{\textbf{译者注（本次校订）：}这里应为 $n(\omega)=n(\eta;1\circ\omega,1)$：第二个指标须是 $E\hookrightarrow\C$ 的嵌入，而 $\omega$ 的定义域是 $k$。后文各式使用的也是这一次序。}将 $k^*$ 到 $E^*$ 的同态群用加法记号表示，则 $\eta=\sum n(\omega)\omega$。因为
+$p(\eta;1\circ\omega,1)=p(\eta\circ\omega^{-1};1,1)$（8.15.4），有
+\begin{equation}
+\begin{split}
+ \prod_{n(\sigma,1)<w/2}p(\eta;\sigma,1)
+ &=\prod_{n(\omega)<w/2}p(\eta\circ\omega^{-1};1,1)\\
+ &=p\left(\sum_{n(\omega)<w/2}\eta\circ\omega^{-1};1,1\right).
+\end{split}\tag{8.20.1}
+\end{equation}
+另一方面，
+\begin{align*}
+ \sum_{n(\omega)<w/2}\eta\circ\omega^{-1}
+ &=\sum_{\substack{n(\omega_1)<w/2\\\omega_2}}
+ n(\omega_2)\omega_2\circ\omega_1^{-1}\\
+ &=\sum_{\omega_2}n(\omega_2)
+ \sum_{n(\omega_1)<w/2}\omega_2\circ\omega_1^{-1}\\
+ &=\sum_{\omega_2}n(\omega_2)\omega_2\circ\eta^*.
+\end{align*}
+因此，(8.20.1)可继续计算为
+\begin{align*}
+ &=\prod_\omega p(\omega\circ\eta^*;1,1)^{n(\omega)}\\
+ &=\prod_\omega p(\eta^*;1,1\circ\omega)^{n(\omega)}
+ =\prod_\sigma p(\eta^*;1,\sigma)^{n(\eta;\sigma,1)}.
+\end{align*}
+再次应用8.15.4，便证明8.20。\footnote{译注：本证明中引用8.15.4，原书如此；对应的形式规则实际列在8.18.4。}
+
+\paragraph*{8.21.}
+结合8.16与8.20，对
+$c^+R_{k/\Q}M(\chi)\in(E\otimes\C)^*/E^*=(\C^*)^J/E^*$ 的指标 $1$ 分量，得到模 $\overline\Q^*$ 的表达式
+\[
+ c_1^+R_{k/\Q}M(\chi)
+ \sim\prod_\sigma p(\chi_{\mathrm{alg}}^*;1,\sigma)^{-n(\chi;\sigma,1)}.
+\]
+若 $\chi$（即 $M(\chi)$）临界，则猜想2.8断言
+\[
+ L(1\circ\chi,0)\sim
+ \prod_\sigma p(\chi_{\mathrm{alg}}^*;1,\sigma)^{-n(\chi;\sigma,1)}
+ \qquad(\bmod\overline\Q^*).
+\]
+当 $E$ 足够大时，$\chi_{\mathrm{alg}}^*$ 为 Hecke 特征 $\chi^*$ 的代数部分，而这些周期可解释为阿贝尔积分（abelian integral）的周期（8.19、8.3）。所得命题正是 Shimura 在 $k$ 为 CM 型、或为 CM 型域上的阿贝尔扩张时证明的命题，其中对权还需施加一个限制。
+
+\paragraph*{注 8.22.}
+若 $\eta:k^*\longrightarrow E^*$ 满足(8.2.1)，则存在 $k$ 的子域 $k'$ 及 $E$ 的子域 $\iota:E'\longrightarrow E$，它们或为 CM 型，或等于 $\Q$，并有分解 $\eta=\iota\eta'N_{k/k'}$。于是\footnote{\textbf{译者注（本次校订）：}下式第二个限制应为 $\tau|_{E'}$（更准确地说是 $\tau\circ\iota$），因为 $\tau$ 是系数域 $E$ 的嵌入；第一个限制仍为 $\sigma|_{k'}$。}
+\[
+ p(\eta;\sigma,\tau)=p(\eta';\sigma|_{k'},\tau|_{k'}).
+\]
+
+若 $k,E$ 都为 CM 型（或 $\Q$），并仍用 $c$ 表示各自的复共轭，则 $c\sigma=\sigma c$、$c\tau=\tau c$，且 $\eta c=c\eta$，故
+\[
+ \overline{p(\eta;\sigma,\tau)}
+ =p(\eta;c\sigma,c\tau)=p(\eta;\sigma c,\tau c)
+ =p(c\eta c^{-1};\sigma,\tau)=p(\eta;\sigma,\tau).
+\]
+所以这些先验地属于 $\C^*/\overline\Q^*$ 的周期实际上为实的，即属于
+$\R^*/(\overline\Q^*\cap\R^*)$。
+
+\paragraph*{注 8.23.}
+设 $G$ 为 $\overline\Q\subset\C$ 中所有 $\Q$ 的 CM 型扩张之并的 Galois 群，$c\in G$ 为复共轭。它是 $G$ 的中心元素。若 $\varphi$ 为 $G$ 上取整数值的局部常值函数，令 $\varphi^*(x)=\varphi(xc)$。假设 $\varphi+\varphi^*$ 为常数。设 $G_1$ 为 $G$ 的一个有限商，使 $\varphi$ 经由 $G_1$ 上函数 $\varphi_1$ 分解，并令 $k$ 为相应的域。所作假设意味着 $k^*$ 的自同态 $\sum\varphi_1(\sigma)\sigma$ 满足(8.2.1)。周期
+$p(\sum\varphi_1(\sigma)\sigma;1,1)$ 与 $G_1$ 的选取无关，令
+\[
+ P(\varphi)=p\left(\sum\varphi_1(\sigma)\sigma;1,1\right).
+\]
+泛函 $P$ 是由满足 $\varphi+\varphi^*=$ 常数的 $G$ 上整数值局部常值函数构成的群到 $\C^*/\overline\Q^*$ 的同态。
+
+\medskip
+\noindent\textit{本篇的共同参考文献接排于下列 Koblitz--Ogus 附录之后，沿用原书顺序。}

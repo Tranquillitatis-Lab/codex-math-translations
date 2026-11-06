@@ -1,0 +1,560 @@
+\SGAchapter{VIII}{Riemann--Roch 定理}{Le théorème de Riemann--Roch}
+\begin{center}Pierre Berthelot\end{center}
+\SourcePage{476}
+\SGAsection{1}{完全交态射}
+\begin{SGAresult}{定义}{1.1}
+设 $f:X\to Y$ 是\Term{scheme}{概形}\Term{morphism}{态射}。若对 $X$ 的每一点 $x$，存在 $x$ 的\Term{open-neighborhood}{开邻域} $U$ 和一个\Term{smooth}{光滑} $Y$-\Term{scheme}{概形} $V$，使 $f$ 在 $U$ 上的\Term{restriction}{限制}\Term{resolution}{分解}为
+\[
+\begin{tikzcd}U\arrow[r,"i"]\arrow[dr]&V\arrow[d]\\&Y\end{tikzcd}
+\]
+且 $i$ 是\Term{regular-immersion}{正则浸入}（第 VII 讲 1.4），则称 $f$ 是\Term{complete-intersection-morphism}{完全交态射}。
+\end{SGAresult}
+将 $V$ 换成一个\Term{open-subset}{开集}后，可假设 $i$ 是\Term{regular-closed-immersion}{正则闭浸入}。
+在此定义中，可以把 $V$ 换成\Term{vector-bundle}{向量丛} $Y[T_1,\ldots,T_n]$。事实上，这个概念是\Term{local-scheme}{局部}的，故可假设 $V$ 是\Term{affine}{仿射}的，且它在 $Y$ 中的像包含在 $Y$ 的一个\Term{affine-open}{仿射开集} $W$ 内。于是存在整数 $n$ 和一个 $W$-\Term{closed-immersion}{闭浸入} $V\to W[T_1,\ldots,T_n]$，从而得到 $Y$-\Term{immersion}{浸入} $V\to Y[T_1,\ldots,T_n]$；由第 VII 讲 1.10，它是\Term{regular-immersion}{正则浸入}。两个\Term{regular-immersion}{正则浸入}的复合仍是\Term{regular-immersion}{正则浸入}，故得到一个使 $f$ \Term{resolution}{分解}的 $Y$-\Term{regular-immersion}{正则浸入} $U\to Y[T_1,\ldots,T_n]$。
+\begin{SGAresult}{命题}{1.2}
+设 $f:X\to Y$ 是\Term{complete-intersection-morphism}{完全交态射}。则 $X$ 到任一\Term{smooth}{光滑} $Y$-\Term{scheme}{概形}中的每个 $Y$-\Term{immersion}{浸入} $i:X\to Z$ 都是\Term{regular-immersion}{正则浸入}。
+\end{SGAresult}
+我们先证明如下推论。
+\begin{SGAresult}{推论}{1.3}
+设有\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}&V'\arrow[d,"p"]\\X\arrow[ur,"j"]\arrow[r,"i"]&V,\end{tikzcd}
+\]
+\SourcePage{477}
+其中 $i,j$ 是\Term{immersion}{浸入}，$p$ 是\Term{smooth-morphism}{光滑态射}。则 $i$ 是\Term{regular-immersion}{正则浸入}，当且仅当 $j$ 是\Term{regular-immersion}{正则浸入}。
+\end{SGAresult}
+\begin{proof}
+i) 假设 $i$ \Term{regular}{正则}。置 $X'=V'\times_VX$。$j$ 给出 $X'$ 在 $X$ 上的一个\Term{section}{截面} $j'$，满足 $j=i'\circ j'$：
+\[
+\begin{tikzcd}X'\arrow[r,"i'"]\arrow[d,"p'",shift right]&V'\arrow[d,"p"]\\X\arrow[u,"j'",shift right]\arrow[ur,"j"]\arrow[r,"i"]&V.\end{tikzcd}
+\]
+$j'$ 是\Term{smooth-morphism}{光滑态射}的\Term{section}{截面}，故为\Term{regular-immersion}{正则浸入}（第 VII 讲 1.10）；$i'$ 由 $i$ 经\Term{smooth}{光滑}、从而\Term{flat}{平坦}的\Term{base-change}{基变换}得到，故也是\Term{regular-immersion}{正则浸入}（第 VII 讲 1.5）。所以 $j$ 是\Term{regular-immersion}{正则浸入}（第 VII 讲 1.7）。
+
+ii) 假设 $j$ \Term{regular}{正则}，且 $p$ \Term{etale}{平展}。则 $j'$ 是\Term{open-immersion}{开浸入}（EGA IV 17.9.3），因而把 $X$ \Term{isomorphism}{同构}到 $j'(X)$ 上；置 $U=j'(X)$。记 $i'$ 在 $U$ 上的\Term{restriction}{限制}为 $i''$，并取 $V'$ 的\Term{open-subset}{开集} $U'$，使 $U=U'\cap X'$。于是 $i''=j\circ(j')^{-1}$，故 $i''$ 是 $U$ 到 $U'$ 的\Term{regular-immersion}{正则浸入}。\Term{morphism}{态射} $U'\to V$ 是\Term{smooth}{光滑}的，因而\Term{flat}{平坦}且\Term{finite-presentation}{有限表示}，所以是开映射。因此，它是从 $U'$ 到 $V$ 中 $X$ 的某个\Term{open-neighborhood}{开邻域}的\Term{faithfully-flat}{忠实平坦}、\Term{quasi-compact}{拟紧}\Term{morphism}{态射}。由此（第 VII 讲 1.5）可知 $i$ 是\Term{regular-immersion}{正则浸入}。
+
+iii) 假设 $j$ \Term{regular}{正则}，且 $V'$ 是 $V$ 上的\Term{vector-bundle}{向量丛}。所要证明的性质（$i$ \Term{regular}{正则}）在 $V$ 上是\Term{local-scheme}{局部}的，故可假设 $V$ \Term{affine}{仿射}，$i$ 是\Term{closed-immersion}{闭浸入}，且 $V'=V[T_1,\ldots,T_n]$。置 $V=\operatorname{Spec}(A)$，
+\SourcePage{478}
+$X=\operatorname{Spec}(B)$；有\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}&A[T_1,\ldots,T_n]\arrow[dl,"v"]\\B&A\arrow[l,"u"]\arrow[u]\end{tikzcd}
+\]
+其中 $u,v$ 均\Term{surjectivity}{满射}。取 $A$ 中的元素 $t_i$（$i=1,\ldots,n$），使对每个 $i$ 都有 $u(t_i)=v(T_i)$。令 $w(T_i)=t_i$，便定义了\Term{homomorphism}{同态} $w:A[T_1,\ldots,T_n]\to A$。由此得到一个\Term{closed-immersion}{闭浸入} $s:V\to V'$，它是 $p$ 的\Term{section}{截面}，且 $j=s\circ i$。此外，它是\Term{smooth-morphism}{光滑态射}的\Term{section}{截面}，故为\Term{regular-immersion}{正则浸入}（第 VII 讲 1.10）。已知 $s$ 与 $s\circ i$ \Term{regular}{正则}，因此只要证明序列
+\[
+0\longrightarrow i^*(K/K^2)\longrightarrow J/J^2\longrightarrow I/I^2\longrightarrow0
+\]
+\Term{exact}{正合}且\Term{locally-split}{局部分裂}，就能\Term{pushout}{推出} $i$ \Term{regular}{正则}；这里 $I,J,K$ 分别表示定义 $i,j,s$ 的\Term{ideal}{理想}（第 VII 讲 1.7）。为此，只需证明 $i^*(K/K^2)$ 是 $J/J^2$ 的\Term{direct-summand}{直和因子}。立即可见，$j'$ 是由 $s$ 经\Term{base-change}{基变换} $i':X'\to V'$ 得到的。此外，\Term{immersion}{浸入} $j',s$ 都\Term{regular}{正则}（第 VII 讲 1.10）。因此（第 VII 讲 1.2），定义 $j'$ 的\Term{ideal}{理想}是 $i'^*(K)$，$j'$ 的\Term{conormal-sheaf}{余法层}是 $i^*(K/K^2)$。\Term{resolution}{分解} $j=i'\circ j'$ 对应的\Term{conormal-sheaf}{余法层}\Term{exact-sequence}{正合列}特别给出一个\Term{homomorphism}{同态}
+\[J/J^2\longrightarrow i^*(K/K^2).\]
+容易验证，复合
+\[i^*(K/K^2)\longrightarrow J/J^2\longrightarrow i^*(K/K^2)\]
+是\Term{identity-map}{恒等映射}（在\Term{affine}{仿射}情形中，这对应于把 $J$ \Term{resolution}{分解}为 $A$ 的一个\Term{ideal}{理想}与由 $T_i-t_i$ 生成的\Term{ideal}{理想}的\Term{direct-sum}{直和}）。这就给出了所求的\Term{splitting}{分裂}。
+\SourcePage{479}
+iv) 最后假设 $j$ \Term{regular}{正则}，$p$ \Term{smooth}{光滑}。对每个 $x\in X$，可找到 $i(x)$ 的\Term{open-neighborhood}{开邻域} $W$、$j(x)$ 的一个位于 $W$ 上方的\Term{open-neighborhood}{开邻域} $W'$，以及\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}W'\arrow[r,"q"]\arrow[d,"p"]&W[T_1,\ldots,T_n]\arrow[dl,"p_0"]\\W,\end{tikzcd}
+\]
+其中 $p_0$ 是\Term{structural-morphism}{结构态射}，$q$ 是\Term{etale-morphism}{平展态射}（EGA IV 17.11.4）。于是可假设 $V=W,V'=W'$。引入\Term{fiber-product}{纤维积} $X[T_1,\ldots,T_n]$，容易看出 $q\circ j$ 是\Term{immersion}{浸入}。应用 ii) 和 iii)，先得 $q\circ j$ \Term{regular}{正则}，再得 $i$ \Term{regular}{正则}。
+\end{proof}
+现在证明 1.2。
+\begin{proof}
+此性质在 $Z$ 上是\Term{local-scheme}{局部}的，因此可在 $X$ 的一点 $x$ 附近证明。可找到 $x$ 在 $X$ 中的\Term{open-neighborhood}{开邻域} $U$、\Term{smooth}{光滑} $Y$-\Term{scheme}{概形} $V$ 以及 $Y$-\Term{regular-immersion}{正则浸入} $i':U\to V$。于是有\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}&U\arrow[dl,"i"']\arrow[dr,"i'"]\\Z\arrow[dr]&&V\arrow[dl]\\&Y.\end{tikzcd}
+\]
+由此得到\Term{closed-immersion}{闭浸入} $i'':U\to Z\times_YV$，以及\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}&U\arrow[dl,"i"']\arrow[d,"i''"]\arrow[dr,"i'"]\\Z&Z\times_YV\arrow[l,"p"]\arrow[r,"p'"']&V.\end{tikzcd}
+\]
+\SourcePage{480}
+由于 $i'$ \Term{regular}{正则}，且 $p,p'$ \Term{smooth}{光滑}，由 1.3 可知 $i'',i$ \Term{regular}{正则}。
+\end{proof}
+下面的命题在本讨论班后文中不会使用。
+\begin{SGAresult}{命题}{1.4}
+设 $f:X\to Y$ 是\Term{flat}{平坦}且\Term{locally-finite-presentation}{局部有限表示}的\Term{morphism}{态射}。则 $f$ 是 1.1 意义下的\Term{complete-intersection-morphism}{完全交态射}，当且仅当它是 EGA IV 19.3.6 意义下的\Term{complete-intersection-morphism}{完全交态射}。
+\end{SGAresult}
+\begin{proof}
+假设 $f$ 是 1.1 意义下的\Term{complete-intersection-morphism}{完全交态射}，取 $x\in X$。存在 $x$ 的\Term{open-neighborhood}{开邻域} $U$ 及\Term{resolution}{分解}
+\[
+\begin{tikzcd}U\arrow[r,"i"]\arrow[dr,"f"']&V\arrow[d,"g"]\\&Y,\end{tikzcd}
+\]
+其中 $i$ 是\Term{regular-immersion}{正则浸入}，$g$ 是\Term{smooth-morphism}{光滑态射}。令 $y=f(x)$；则\Term{immersion}{浸入} $i_y:U_y\to V_y$ 在 $x$ 处\Term{regular}{正则}。事实上，缩小 $V$ 后可假设存在\Term{finite-type}{有限型}\Term{free-module}{自由} $\mathscr O_V$-\Term{module}{模} $E$ 及\Term{regular-homomorphism}{正则同态} $u:E\to\mathscr O_V$，使与 $u$ 关联的 Koszul \Term{complex}{复形}是 $\mathscr O_U$ 的一个\Term{resolution}{解消}。考虑在 $y$ 的\Term{fiber}{纤维}上诱导的\Term{homomorphism}{同态} $u_y$，以及相应的 Koszul \Term{complex}{复形} $K_\bullet(u_y)=K_\bullet(u)_y$。由于 $g$ \Term{smooth}{光滑}，从而\Term{flat}{平坦}，$K_\bullet(u)$ 是 $\mathscr O_U$ 的一个 $Y$-\Term{flat}{平坦}\Term{resolution}{解消}。因此 $K_\bullet(u)_y$ 的\Term{homology}{同调}群是 $\operatorname{Tor}^{\mathscr O_Y}_q(\mathscr O_U,k(y))$，其中 $k(y)$ 是 $\mathscr O_{Y,y}$ 的\Term{residue-field}{剩余域}。由于 $f$ \Term{flat}{平坦}，这些群为零，所以 $i_y$ 在 $x$ 处\Term{regular}{正则}。另一方面，由于 $g_y$ \Term{smooth}{光滑}，$V_y$ 在 $x$ 处的\Term{local-ring}{局部环}\Term{regular}{正则}。$U_y$ 在 $y$ 处的\Term{local-ring}{局部环}是一个\Term{regular-ring}{正则环}模去\Term{regular-ideal}{正则理想}的商，
+\SourcePage{481}
+所以是\Term{complete-intersection-ring}{完全交环}（EGA IV 19.3.2），因此 $f$ 在 $x$ 处是 EGA IV 19.3.6 意义下的\Term{complete-intersection-morphism}{完全交态射}。
+反过来，假设 $f$ 是 EGA IV 19.3.6 意义下的\Term{complete-intersection-morphism}{完全交态射}，取 $x\in X$。取 $x$ 的\Term{affine-neighborhood}{仿射邻域} $U$，位于 $y=f(x)$ 的\Term{affine-neighborhood}{仿射邻域} $U'$ 上方。可找到\Term{smooth}{光滑} $U'$-\Term{scheme}{概形} $V$ 及\Term{closed-immersion}{闭浸入} $i:U\to V$（例如可取 $V$ 为 $U'$ 上的\Term{vector-bundle}{向量丛}）。我们将证明 $i$ \Term{regular}{正则}。由 EGA IV 19.3.7，$i$ 在 $x$ 处\Term{transversally-regular}{横截正则}，因为 $V$ 在 $Y$ 上\Term{smooth}{光滑}，故 $V_y$ 在 $x$ 处\Term{regular}{正则}，且 $U'$ 在 $Y$ 上\Term{flat}{平坦}。由 EGA IV 19.2.4，a)$\Rightarrow$c)，$i$ 在 $x$ 处\Term{regular}{正则}。因此 $f$ 是 1.1 意义下的\Term{complete-intersection-morphism}{完全交态射}。
+\end{proof}
+\begin{SGAresult}{命题}{1.5}
+设 $f:X\to Y$ 与 $g:Y\to Z$ 是两个\Term{locally-complete-intersection}{局部完全交态射}。则 $g\circ f$ 也是\Term{locally-complete-intersection}{局部完全交态射}。
+\end{SGAresult}
+\begin{proof}
+取 $x\in X$。可找到 $x,f(x)$ 的\Term{open-neighborhood}{开邻域} $U,V$ 及\Term{regular-immersion}{正则浸入} $i,j$，使有\Term{resolution}{分解}
+\[
+\begin{tikzcd}U\arrow[r,"i"]\arrow[dr,"f"']&V[T_1,\ldots,T_n]\arrow[d]\\&V\arrow[r,"j"]\arrow[dr,"g"']&Z[T'_1,\ldots,T'_m]\arrow[d]\\&&Z.\end{tikzcd}
+\]
+可用下面的\Term{commutative-square}{交换方块}补全此图：
+\SourcePage{482}
+\[
+\begin{tikzcd}V[T_1,\ldots,T_n]\arrow[r,"j'"]\arrow[d]&Z[T'_1,\ldots,T'_m,T_1,\ldots,T_n]\arrow[d]\\V\arrow[r,"j"]&Z[T'_1,\ldots,T'_m].\end{tikzcd}
+\]
+$j'$ 由 $j$ 经\Term{base-change}{基变换}得到；该\Term{base-change}{基变换}\Term{flat}{平坦}，所以 $j'$ 是\Term{regular-immersion}{正则浸入}。于是 $j'\circ i$ 是 $U$ 到一个在 $W$ 上\Term{smooth}{光滑}的\Term{scheme}{概形}中的\Term{regular-immersion}{正则浸入}，结论随之成立。
+\end{proof}
+\begin{SGAresult}{命题}{1.6}
+设 $f:X\to Y$ 是\Term{morphism}{态射}，$g:Y'\to Y$ 是\Term{flat}{平坦}\Term{base-change}{基变换}。若 $f$ 是\Term{complete-intersection-morphism}{完全交态射}，则由 $f$ \Term{derive}{导出}的\Term{morphism}{态射} $f':X\times_YY'\to Y'$ 也是如此。若 $g$ 还\Term{quasi-compact}{拟紧}且\Term{surjectivity}{满射}，则逆命题也成立。
+\end{SGAresult}
+\begin{proof}
+可取 $X$ 的\Term{open-covering}{开覆盖} $(U_i)$，使每个 $f|_{U_i}$ 都\Term{resolution}{分解}为 $U_i\to V_i\to Y$，其中 $U_i\to V_i$ 是\Term{regular-immersion}{正则浸入}，$V_i\to Y$ 是\Term{smooth-morphism}{光滑态射}。各 $U_i\times_YY'$ 构成 $X\times_YY'$ 的\Term{open-covering}{开覆盖}；由第 VII 讲 1.5，\Term{immersion}{浸入} $U_i\times_YY'\to V_i\times_YY'$ \Term{regular}{正则}，而\Term{morphism}{态射} $V_i\times_YY'\to Y'$ \Term{smooth}{光滑}，所以第一个结论成立。对于逆命题，先由 EGA IV 2.7.1 (iv) 得 $f$ \Term{locally-finite-presentation}{局部有限表示}，再借助 1.2 容易归约到 $f$ 是\Term{closed-immersion}{闭浸入}的情形，此时结论正是第 VII 讲 1.5。
+\end{proof}
+\begin{SGAresult}{命题}{1.7}
+设 $f:X\to Y$ 是\Term{complete-intersection-morphism}{完全交态射}。则 $f$ 是\Term{perfect-morphism}{完美态射}。
+\end{SGAresult}
+\begin{proof}
+此性质在 $X$ 上是\Term{local-scheme}{局部}的，故可在 $X$ 的一点 $x$ 附近考虑，假设存在包含 $x$ 的\Term{open-subset}{开集} $U$ 及\Term{resolution}{分解}
+\SourcePage{483}
+\[
+\begin{tikzcd}U\arrow[r,"i"]\arrow[dr,"f"']&V\arrow[d,"g"]\\&Y,\end{tikzcd}
+\]
+其中 $i$ 是\Term{regular-immersion}{正则浸入}，$g$ 是\Term{smooth-morphism}{光滑态射}。$g$ \Term{smooth}{光滑}，故为\Term{perfect-morphism}{完美态射}（第 III 讲 4.1）。由第 VII 讲 1.9，$i$ 也是\Term{perfect-morphism}{完美态射}。两个\Term{perfect-morphism}{完美态射}的复合仍是\Term{perfect-morphism}{完美态射}（第 III 讲 4.5），故得命题。
+\end{proof}
+\begin{SGAresult}{命题}{1.8}
+设 $f:X\to Y$ 是\Term{complete-intersection-morphism}{完全交态射}，$x$ 是 $X$ 的一点，并给定\Term{resolution}{分解}
+\[
+\begin{tikzcd}U\arrow[r,"i"]\arrow[dr,"f"']&V\arrow[d,"g"]\\&Y,\end{tikzcd}
+\]
+其中 $U$ 是 $x$ 的\Term{open-neighborhood}{开邻域}，$i$ 是\Term{regular-immersion}{正则浸入}，$g$ 是\Term{smooth-morphism}{光滑态射}。记定义 $U$ 的 $\mathscr O_V$-\Term{ideal}{理想}为 $J$。则整数
+\[d_x=\operatorname{rank}((\Omega^1_{V/Y})_{i(x)})-\operatorname{rank}((J/J^2)_x)\]
+不依赖于所选的 $f$ 的\Term{resolution}{分解}。
+\end{SGAresult}
+\begin{proof}
+假设 $f|_U$ 经两个\Term{smooth}{光滑} $Y$-\Term{scheme}{概形} $V,V'$ \Term{resolution}{分解}，并置 $V''=V\times_YV'$。则 $V''$ 在 $Y$ 上\Term{smooth}{光滑}，在 $V,V'$ 上也\Term{smooth}{光滑}。此外，\Term{immersion}{浸入} $X\to V$ 与 $X\to V'$ 定义一个\Term{immersion}{浸入} $X\to V''$，由 1.2 它\Term{regular}{正则}。因此可归约为比较 $f$ 经两个\Term{smooth}{光滑} $Y$-\Term{scheme}{概形} $V,V'$ 的\Term{resolution}{分解}所对应的整数 $d_x$，且在 $Y$ 上有\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}&V'\arrow[d,"p"]\\X\arrow[ur,"j"]\arrow[r,"i"]&V,\end{tikzcd}
+\]
+\SourcePage{484}
+其中 $p$ 是\Term{smooth-morphism}{光滑态射}。还可假设 $\Omega^1_{V/Y},\Omega^1_{V'/Y},\Omega^1_{V'/V}$ 以及 $i,j$ 的\Term{conormal-sheaf}{余法层}都具有常\Term{rank}{秩}。
+由其中所有\Term{morphism}{态射}均\Term{smooth}{光滑}的\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}V\arrow[r,"p"]\arrow[dr]&V'\arrow[d]\\&Y\end{tikzcd}
+\]
+得到
+\[\operatorname{rank}(\Omega^1_{V'/Y})=\operatorname{rank}(\Omega^1_{V/Y})+\operatorname{rank}(\Omega^1_{V'/V}).\tag{1.8.1}\]
+置 $X'=V'\times_VX$，则 $\Omega^1_{V'/V}$ 与 $\Omega^1_{X'/X}$ 的\Term{rank}{秩}相同。另一方面，$j$ 定义一个\Term{section}{截面} $j':X\to X'$，它是\Term{regular-immersion}{正则浸入}，\Term{codimension}{余维数}等于 $\Omega^1_{X'/X}$ 的\Term{rank}{秩}（EGA IV 17.10.4）。若 $i'$ 是由 $i$ 经\Term{base-change}{基变换} $V'\to V$ \Term{derive}{导出}的\Term{immersion}{浸入}，则 $j=i'\circ j'$，故（第 VII 讲 1.7）
+\[\operatorname{rank}(N_{V'/X})=\operatorname{rank}(N_{V/X})+\operatorname{rank}(\Omega^1_{V'/V}).\tag{1.8.2}\]
+比较 (1.8.1) 与 (1.8.2)，即得命题。
+\end{proof}
+\begin{SGAresult}{定义}{1.9}
+命题 1.8 中的整数 $d_x$ 称为 $X$ 在 $Y$ 上（或 $f$）在点 $x$ 处的\Term{virtual-relative-dimension}{虚相对维数}。
+\end{SGAresult}
+因此，$X$ 在 $Y$ 上的\Term{virtual-relative-dimension}{虚相对维数}是 $X$ 上取整数值（可正可负）的\Term{locally-constant}{局部常值}函数。若 $f$ 是\Term{relative-dimension}{相对维数}为 $n$ 的\Term{smooth-morphism}{光滑态射}，则其\Term{virtual-relative-dimension}{虚相对维数}为 $n$。若 $f$ 是\Term{codimension}{余维数}为 $n$ 的\Term{regular-immersion}{正则浸入}，则其\Term{virtual-relative-dimension}{虚相对维数}为 $-n$。
+\begin{SGAresult}{命题}{1.10}
+设 $f:X\to Y$、$g:Y\to Z$ 是两个\Term{complete-intersection-morphism}{完全交态射}，$x$ 是 $X$ 的一点。则
+\[\operatorname{dim.rel.virt.}_x(g\circ f)=\operatorname{dim.rel.virt.}_x(f)+\operatorname{dim.rel.virt.}_{f(x)}(g).\]
+\end{SGAresult}
+\SourcePage{485}
+\begin{proof}这直接由 1.9 及 1.5 的证明得到。\end{proof}
+\SGAsection{2}{相对余切复形}
+\textbf{2.1.} 这里给出\Term{cotangent-complex}{余切复形}的一个定义。它虽未达到全部可能的\Term{generic}{一般}性（见第 0 讲 4.4），但已足以满足 \Term{riemann-roch-theorem}{Riemann--Roch 定理}的需要；当然，在这里考虑的情形下，第 0 讲的定义与此定义一致。
+设 $f:X\to Y$ 是\Term{smoothable-morphism}{可光滑化态射}，即它容许\Term{resolution}{分解}
+\[
+\begin{tikzcd}X\arrow[r,"i"]\arrow[dr,"f"']&V\arrow[d,"g"]\\&Y,\end{tikzcd}
+\]
+其中 $g$ 是\Term{smooth-morphism}{光滑态射}，$i$ 是\Term{immersion}{浸入}，并可假设为\Term{closed-immersion}{闭浸入}。设 $J$ 是 $X$ 在 $V$ 中的\Term{ideal}{理想}。\Term{canonical}{典范}\Term{derivation}{导子}
+\[d:\mathscr O_V\longrightarrow\Omega^1_{V/X}\]
+定义一个\Term{homomorphism}{同态}
+\[J\longrightarrow\mathscr O_V\xrightarrow{d}\Omega^1_{V/Y}\longrightarrow\Omega^1_{V/Y}\otimes_{\mathscr O_V}\mathscr O_X,\]
+它在 $J^2$ 上为零，因此定义一个仍记为 $d$ 的\Term{homomorphism}{同态}
+\[J/J^2\xrightarrow{d}i^*(\Omega^1_{V/Y}).\tag{2.1.1}\]
+容易验证此\Term{homomorphism}{同态}是 $\mathscr O_X$-\Term{linear}{线性}的。定义\Term{chain-complex}{链复形} $L^{X/Y}_\bullet$，令
+\[L^{X/Y}_0=i^*(\Omega^1_{V/Y}),\qquad L^{X/Y}_1=J/J^2;\qquad L^{X/Y}_i=0\quad(i\ne0,1),\]
+并取 (1.5.1) 中的\Term{homomorphism}{同态}为 $L^{X/Y}_1\to L^{X/Y}_0$。
+\SourcePage{486}
+\begin{SGAresult}{命题}{2.2}
+\Term{complex}{复形} $L^{X/Y}_\bullet$ 在\Term{derived-category}{导出范畴} $D(X)$ 中相差一个\Term{canonical-isomorphism}{典范同构}的意义下，不依赖于所选的经\Term{smooth}{光滑} $Y$-\Term{scheme}{概形}的\Term{resolution}{分解}。
+\end{SGAresult}
+\begin{proof}
+设 $V,V'$ 是 $f$ 经其\Term{resolution}{分解}的两个\Term{smooth}{光滑} $Y$-\Term{scheme}{概形}。置 $V''=V\times_YV'$；则 $V''$ 在 $Y$ 上\Term{smooth}{光滑}，在 $V,V'$ 上也\Term{smooth}{光滑}。此外，\Term{immersion}{浸入} $X\to V$、$X\to V'$ 定义一个使 $f$ \Term{resolution}{分解}的\Term{immersion}{浸入} $X\to V''$。因而只需比较经两个\Term{smooth}{光滑} $Y$-\Term{scheme}{概形} $V,V'$ 的\Term{resolution}{分解}所对应的\Term{complex}{复形} $L^{X/Y}_\bullet$，其中在 $Y$ 上存在\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}&V'\arrow[d,"p"]\\X\arrow[ur,"j"]\arrow[r,"i"]&V,\end{tikzcd}
+\]
+$i,j$ 是\Term{closed-immersion}{闭浸入}，$p$ 是\Term{smooth-morphism}{光滑态射}。
+由\Term{functoriality}{函子性}，有\Term{homomorphism}{同态}
+\[I/I^2\longrightarrow J/J^2;\qquad p^*(\Omega^1_{V/Y})\longrightarrow\Omega^1_{V'/Y},\]
+从而有图
+\[
+\begin{tikzcd}I/I^2\arrow[r]\arrow[d,"d"']&J/J^2\arrow[d,"d"]\\i^*(\Omega^1_{V/Y})\arrow[r]&j^*(\Omega^1_{V'/Y}).\end{tikzcd}\tag{2.2.1}
+\]
+$V,V'$ 在 $Y$ 上\Term{smooth}{光滑}，故有\Term{exact-sequence}{正合列}
+\[0\longrightarrow p^*(\Omega^1_{V/Y})\longrightarrow\Omega^1_{V'/Y}\longrightarrow\Omega^1_{V'/V}\longrightarrow0.\]
+这些\Term{differential-module}{微分模}都是\Term{locally-free}{局部自由} $\mathscr O_{V'}$-\Term{module}{模}；应用\Term{functor}{函子} $j^*$，得到\Term{exact-sequence}{正合列}
+\[0\longrightarrow i^*(\Omega^1_{V/Y})\longrightarrow j^*(\Omega^1_{V'/Y})\longrightarrow j^*(\Omega^1_{V'/V})\longrightarrow0.\tag{2.2.2}\]
+\SourcePage{487}
+另一方面，$j$ 定义 $X'=V'\times_VX$ 的一个\Term{section}{截面} $j'$：
+\[
+\begin{tikzcd}X'\arrow[r,"i'"]\arrow[d,"p'",shift right]&V'\arrow[d,"p"]\\X\arrow[u,"j'",shift right]\arrow[r,"i"]\arrow[ur,"j"]&V.\end{tikzcd}
+\]
+设 $I,J,K$ 是分别定义 $i,j,j'$ 的\Term{ideal}{理想}；有 $j=i'\circ j'$，且\Term{immersion}{浸入} $i',j,j'$ \Term{regular}{正则}；又因为 $p$ \Term{flat}{平坦}，$i'$ 由\Term{ideal}{理想} $p^*(I)$ 定义，其\Term{conormal-sheaf}{余法层}因而为 $i'^*(p^*(I))=p'^*(I/I^2)$。于是有\Term{exact-sequence}{正合列}
+\[0\longrightarrow I/I^2\longrightarrow J/J^2\longrightarrow K/K^2\longrightarrow0.\tag{2.2.3}\]
+我们将证明：
+a) 图 (2.2.1) 交换；因此得到从由 $V$ 定义的\Term{complex}{复形} $L^{X/Y}_\bullet$ 到由 $V'$ 定义的\Term{complex}{复形} $L^{X/Y}_\bullet$ 的\Term{complex-morphism}{复形态射} $\theta$；
+b) 由 (2.2.2)、(2.2.3) 和 (2.2.1) 定义的\Term{homomorphism}{同态} $K/K^2\to j^*(\Omega^1_{V'/V})$ 是\Term{isomorphism}{同构}；于是 $\theta$ 的\Term{mapping-cylinder}{映射柱}（mapping cylinder）\Term{acyclic}{无同调}，故 $\theta$ 是\Term{quasi-isomorphism}{拟同构}，从而在\Term{derived-category}{导出范畴}中定义一个\Term{isomorphism}{同构}。
+a)、b) 都是 $X$ 上的\Term{local-nature}{局部性质}。故可假设 $X,Y,V,V'$ 均\Term{affine}{仿射}。置 $Y=\operatorname{Spec}(A)$、$V=\operatorname{Spec}(B)$、$V'=\operatorname{Spec}(B')$、$X=\operatorname{Spec}(C)$，仍用相同字母表示对应的\Term{homomorphism}{同态}和\Term{ideal}{理想}。有图
+\SourcePage{488}
+\[
+\begin{tikzcd}[column sep=large]
+B\otimes_AB\arrow[r,"p\otimes p"]\arrow[d,"\Delta"']&B'\otimes_AB'\arrow[d,"\Delta"]\\
+B\arrow[r,"p"]\arrow[dr,"i"']&B'\arrow[d,"j"]\arrow[dr,"i'"]&B'\otimes_BB'\arrow[l,"\Delta"']\arrow[d]\\
+&C\arrow[r,"j'",shift left]\arrow[r,"p'"',shift right]&B'\otimes_BC=B'/IB'.
+\end{tikzcd}
+\]
+左上方块记为 (1)，右下方块记为 (2)。\Term{homomorphism}{同态} $I/I^2\to J/J^2$ 由\Term{homomorphism}{同态} $IB'\to J$ \Term{derive}{导出}，且与 $p:I\to J$ \Term{derive}{导出}的\Term{homomorphism}{同态}一致；\Term{homomorphism}{同态} $i^*(\Omega^1_{V/Y})\to j^*(\Omega^1_{V'/Y})$ 则由\Term{commutative-square}{交换方块} (1) \Term{derive}{导出}。因此性质 a) 显然成立。
+b) 中的\Term{homomorphism}{同态} $K/K^2\to j^*(\Omega^1_{V'/V})$ 可如下定义：取 $\bar x\in K/K^2$，再取\Term{lifting}{提升} $\bar x$ 的元素 $x\in J$（因 $K=J/(IB')$，这样的元素存在）。把 $\bar x$ 映到 $x$ 在复合\Term{homomorphism}{同态}
+\[J\xrightarrow{d}\Omega^1_{B'/A}\otimes_{B'}C\longrightarrow\Omega^1_{B'/B}\otimes_{B'}C\]
+下的像。另一方面，设 $H$ 是\Term{augmentation}{增广} $B'\otimes_BB'\to B'$ 的\Term{ideal}{理想}；\Term{commutative-square}{交换方块} (2) 给出\Term{homomorphism}{同态} $H\to K$，从而给出\Term{homomorphism}{同态}
+\[H/H^2\otimes_{B'}C\longrightarrow K/K^2.\]
+而 $H/H^2=\Omega^1_{B'/B}$；因此只需验证这样构造的两个\Term{homomorphism}{同态}互为逆映射，这并不困难。
+\end{proof}
+\begin{SGAresult}{定义}{2.3}
+设 $f:X\to Y$ 是\Term{smoothable-morphism}{可光滑化态射}。在\Term{derived-category}{导出范畴} $D(X)$ 中相差一个\Term{canonical-isomorphism}{典范同构}的意义下定义的\Term{complex}{复形} $L^{X/Y}_\bullet$，称为 $X$ 在 $Y$ 上（或 $f$）的\Term{relative-cotangent-complex}{相对余切复形}。
+\end{SGAresult}
+\begin{SGAresult}{命题}{2.4}
+设 $f:X\to Y$ 是\Term{smoothable-morphism}{可光滑化}的\Term{complete-intersection-morphism}{完全交态射}（1.1）。则 $L^{X/Y}_\bullet$ 是\Term{perfect-complex}{完美复形}。更确切地说，对于 $f$ 的每个作为\Term{immersion}{浸入}与\Term{smooth-morphism}{光滑态射}之复合的\Term{resolution}{分解}，
+\SourcePage{489}
+2.1 所定义的\Term{complex}{复形} $L^{X/Y}_\bullet$ 都是\Term{strictly-perfect}{严格完美}的。
+\end{SGAresult}
+\begin{proof}
+设 $f=g\circ i$，其中 $g$ 是\Term{smooth-morphism}{光滑态射}，$i$ 是\Term{immersion}{浸入}。由 1.2，$i$ 是\Term{regular-immersion}{正则浸入}。若 $J$ 是定义 $i$ 的\Term{ideal}{理想}，则 $J/J^2$ 是\Term{finite-type}{有限型}\Term{locally-free}{局部自由} $\mathscr O_X$-\Term{module}{模}。同样，由于 $g:V\to Y$ \Term{smooth}{光滑}，$i^*(\Omega^1_{V/Y})$ 也是\Term{finite-type}{有限型}\Term{locally-free}{局部自由}的，故得 2.4。
+\end{proof}
+\begin{SGAresult}{推论}{2.5}
+设 $f:X\to Y$ 是\Term{smoothable-morphism}{可光滑化}的\Term{complete-intersection-morphism}{完全交态射}，$f=g\circ i$ 是经\Term{smooth}{光滑} $Y$-\Term{scheme}{概形} $V$ 的一个\Term{resolution}{分解}。设 $J$ 是定义 $i$ 的 $\mathscr O_V$-\Term{ideal}{理想}。若 $K'(X)$ 表示\Term{finite-type}{有限型}\Term{locally-free}{局部自由} $\mathscr O_X$-\Term{module}{模}的 Grothendieck 群（相应地，$X$ 上\Term{perfect-complex}{完美复形}的 Grothendieck 群），则由
+\[T_f=\operatorname{cl}(i^*(\Omega^1_{V/Y}))-\operatorname{cl}(J/J^2)\]
+（相应地，$T_f=\operatorname{cl}(L^{X/Y}_\bullet)$）定义的元素 $T_f\in K'(X)$ 不依赖于所选的 $f$ 的\Term{resolution}{分解}。$T_f$ 的\Term{augmentation}{增广}在 $X$ 的一点 $x$ 处的值，正是 $X$ 在 $Y$ 上于 $x$ 处的\Term{virtual-relative-dimension}{虚相对维数}（1.9）。
+\end{SGAresult}
+\begin{proof}
+由 2.4，$T_f$ 在上述两种情形中都有定义；在\Term{lie-bracket}{括号}中的情形，由 2.2，在\Term{lie-bracket}{括号}外的情形，由 2.2 的证明，它在 $K'(X)$ 中的类均不依赖于\Term{resolution}{分解}。2.5 的最后一个断言显然成立。
+\end{proof}
+\begin{SGAresult}{命题}{2.6}
+设 $f:X\to Y$、$g:Y\to Z$ 是两个\Term{smoothable-morphism}{可光滑化}的\Term{complete-intersection-morphism}{完全交态射}，并假设还满足下面的条件：
+\SourcePage{490}
+\textup{(G)} 存在使 $f$ \Term{resolution}{分解}的\Term{smooth}{光滑} $Y$-\Term{scheme}{概形} $V$，使对每个\Term{closed-immersion}{闭浸入} $Y\to V'$，都能找到\Term{smooth}{光滑} $V'$-\Term{scheme}{概形} $V''$，满足 $V\simeq V''\times_{V'}Y$（特别地，若 $f$ \Term{quasi-projective}{拟射影}，且 $Y$ 有\Term{ample-sheaf}{丰沛层}，则取 $V=\mathbf P^r_Y$ 即满足此条件）。
+则 $g\circ f$ 是\Term{smoothable-morphism}{可光滑化}的\Term{complete-intersection-morphism}{完全交态射}，并有\Term{distinguished-triangle}{可区别三角}
+\[
+\begin{tikzcd}&L^{X/Y}_\bullet\arrow[dl]\\\mathbf Lf^*(L^{Y/Z}_\bullet)\arrow[rr]&&L^{X/Z}_\bullet\arrow[ul].\end{tikzcd}
+\]
+\end{SGAresult}
+\begin{proof}
+设 $V'$ 是使 $g$ \Term{resolution}{分解}的\Term{smooth}{光滑} $Z$-\Term{scheme}{概形}。考虑\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}X\arrow[r,"i"]\arrow[dr,"f"']&V\arrow[r,"j'"]\arrow[d,"p"]&V''\arrow[d,"p''"]\\&Y\arrow[r,"j"]\arrow[dr,"g"']&V'\arrow[d,"p'"]\\&&Z.\end{tikzcd}
+\]
+\Term{immersion}{浸入} $j'$ 由 $j$ 经\Term{flat}{平坦}\Term{base-change}{基变换}\Term{derive}{导出}，故\Term{regular}{正则}。于是 $j'\circ i$ 是使 $g\circ f$ \Term{resolution}{分解}的\Term{regular-immersion}{正则浸入}，因此 $g\circ f$ \Term{smoothable-morphism}{可光滑化}且为\Term{complete-intersection-morphism}{完全交态射}。此外，有\Term{conormal-sheaf}{余法层}的\Term{exact-sequence}{正合列}
+\[0\longrightarrow i^*(J'/J'^2)\longrightarrow K/K^2\longrightarrow I/I^2\longrightarrow0,\]
+其中 $I,J,J',K$ 分别是定义\Term{immersion}{浸入} $i,j,j',j'\circ i$ 的\Term{sheaf}{层}。$p''$ \Term{flat}{平坦}，故 $J'=p''{}^*(J)$。上列因而写为
+\[0\longrightarrow f^*(J/J^2)\longrightarrow K/K^2\longrightarrow I/I^2\longrightarrow0.\tag{2.6.1}\]
+另一方面，$V',V''$ 在 $Z$ 上\Term{smooth}{光滑}，故有\Term{exact-sequence}{正合列}
+\[0\longrightarrow p''{}^*(\Omega^1_{V'/Z})\longrightarrow\Omega^1_{V''/Z}\longrightarrow\Omega^1_{V''/V'}\longrightarrow0.\]
+\SourcePage{491}
+应用 $i^*\circ j'^*$，得到\Term{exact-sequence}{正合列}
+\[0\longrightarrow(p''\circ j'\circ i)^*(\Omega^1_{V'/Z})\longrightarrow(j'\circ i)^*(\Omega^1_{V''/Z})\longrightarrow(j'\circ i)^*(\Omega^1_{V''/V'})\longrightarrow0.\]
+由假设 (G)，$j'^*(\Omega^1_{V''/V'})=\Omega^1_{V/Y}$，故得到
+\[0\longrightarrow f^*(j^*(\Omega^1_{V'/Z}))\longrightarrow(j'\circ i)^*(\Omega^1_{V''/Z})\longrightarrow i^*(\Omega^1_{V/Y})\longrightarrow0.\tag{2.6.2}\]
+结合 (2.6.1) 和 (2.6.2)，只需证明图
+\[
+\begin{tikzcd}[column sep=small]
+0\arrow[r]&f^*(J/J^2)\arrow[r]\arrow[d,"f^*(d)"']&K/K^2\arrow[r]\arrow[d,"d"]&I/I^2\arrow[r]\arrow[d,"d"]&0\\
+0\arrow[r]&f^*(j^*(\Omega^1_{V'/Z}))\arrow[r]&(j'\circ i)^*(\Omega^1_{V''/Z})\arrow[r]&i^*(\Omega^1_{V/Y})\arrow[r]&0
+\end{tikzcd}
+\]
+交换。回到其中各\Term{morphism}{态射}的定义，在\Term{local-scheme}{局部}容易验证这一点。
+由这样得到的\Term{complex}{复形}\Term{exact-sequence}{正合列}，便在\Term{derived-category}{导出范畴}中得到所述\Term{distinguished-triangle}{可区别三角}。
+\end{proof}
+\begin{SGAresult}{推论}{2.7}
+沿用 2.6 的记号与假设，$K'(X)$ 中有等式
+\[T_{g\circ f}=T_f+f^*(T_g).\]
+\end{SGAresult}
+\SGAsection{3}{Riemann--Roch 定理：陈述}
+\textbf{3.1.} 在第 3 节中，$Y$ 是有\Term{ample-sheaf}{丰沛层}的\Term{quasi-compact}{拟紧}\Term{scheme}{概形}。
+设 $f:X\to Y$ 是\Term{projective-morphism}{射影态射}，且为\Term{complete-intersection-morphism}{完全交态射}（1.1）；还假设 $f$ 的\Term{virtual-relative-dimension}{虚相对维数}（1.9）
+\SourcePage{492}
+在 $X$ 上恒定。由于 $f$ \Term{projective}{射影}，存在\Term{closed-immersion}{闭浸入} $X\to P$，其中 $P$ 是 $Y$ 上的\Term{projective-bundle}{射影丛}；又由于 $Y$ 有\Term{ample-sheaf}{丰沛层}，可假设 $P=\mathbf P^r_Y$。于是有\Term{resolution}{分解}
+\[
+\begin{tikzcd}X\arrow[r,"i"]\arrow[dr,"f"']&\mathbf P^r_Y\arrow[d,"g"]\\&Y.\end{tikzcd}
+\]
+$f$ 是\Term{complete-intersection-morphism}{完全交态射}，故\Term{immersion}{浸入} $i$ \Term{regular}{正则}（1.2）。
+由 1.7，$f$ 是\Term{perfect-morphism}{完美态射}。此外 $Y$ 有\Term{ample-sheaf}{丰沛层}，所以 $X,P$ 也都有。因而可以定义\Term{additive-homomorphism}{加性同态}
+\[f_*:K'(X)\longrightarrow K'(Y)\]
+（第 IV 讲 2.12）；用\Term{finite-type}{有限型}\Term{locally-free}{局部自由}\Term{sheaf}{层}和用\Term{perfect-complex}{完美复形}定义的 $K'$ 相同。同样可以定义\Term{additive-homomorphism}{加性同态}
+\[i_*:K'(X)\longrightarrow K'(P);\qquad g_*:K'(P)\longrightarrow K'(Y),\]
+并有 $f_*=g_*\circ i_*$。
+设 $d$ 是 $X$ 在 $Y$ 上的\Term{virtual-relative-dimension}{虚相对维数}，则 $i$ 的\Term{codimension}{余维数}为 $r-d$。由第 VII 讲 4.6，将\Term{homomorphism}{同态} $i_*$ 与 $\mathbf Q$ 作\Term{tensor-product}{张量积}后，有包含关系
+\[i_*(\operatorname{Fil}^kK'(X)_{\mathbf Q})\subset\operatorname{Fil}^{k+r-d}K'(P)_{\mathbf Q}.\]
+由第 VI 讲 5.8，\Term{homomorphism}{同态} $g_*$ 给出包含关系
+\[g_*(\operatorname{Fil}^{k'}K'(P))\subset\operatorname{Fil}^{k'-r}K'(Y).\]
+复合两者，得到
+\SourcePage{493}
+\begin{SGAresult}{命题}{3.2}
+设 $f:X\to Y$ 是\Term{projective-morphism}{射影态射}，且为\Term{complete-intersection-morphism}{完全交态射}，其\Term{virtual-relative-dimension}{虚相对维数} $d$ 恒定。假设 $Y$ \Term{quasi-compact}{拟紧}且有\Term{ample-sheaf}{丰沛层}。则对每个 $k\in\mathbf Z$，有
+\[f_*(\operatorname{Fil}^kK'(X)_{\mathbf Q})\subset\operatorname{Fil}^{k-d}K'(Y)_{\mathbf Q}.\]
+\end{SGAresult}
+特别地，得到\Term{additive-homomorphism}{加性同态}
+\[f_{\mathrm{gr}}:\operatorname{Gr}K'(X)_{\mathbf Q}\longrightarrow\operatorname{Gr}K'(Y)_{\mathbf Q},\]
+它把 $\operatorname{Gr}^kK'(X)_{\mathbf Q}$ 映入 $\operatorname{Gr}^{k-d}K'(Y)_{\mathbf Q}$。
+\textbf{3.3.} 回忆第 V 讲 6.1 中定义了从\Term{graded-algebra}{分次} $K$-\Term{algebra}{代数}\Term{category}{范畴}到\Term{augmented-algebra}{增广} $K$-$\lambda$-\Term{algebra}{代数}\Term{category}{范畴}的\Term{functor}{函子} $A\mapsto\operatorname{Ch}(A)$，其中 $K$ 为\Term{binomial-ring}{二项式环}（第 V 讲 2.7）。若 $A$ 是\Term{graded-algebra}{分次} $K$-\Term{algebra}{代数}，则
+\[\operatorname{Ch}(A)=K\times(1+\widehat A^+).\]
+对每个\Term{augmented-algebra}{增广} $K$-$\lambda$-\Term{algebra}{代数} $\Lambda$，我们定义了称为“\Term{completed-chern-class}{完备 Chern 类}”的 $K$-$\lambda$-\Term{homomorphism}{同态}（第 V 讲 6.7）：
+\[\widetilde c=(\varepsilon,c):\Lambda\longrightarrow\operatorname{Ch}(\operatorname{Gr}_\gamma\Lambda).\]
+最后，我们定义了关于 $A$ 具有\Term{functoriality}{函子性}的\Term{ring-homomorphism}{环同态}，称为\Term{chern-character}{Chern 特征}（第 V 讲 6.4）：
+\[\operatorname{ch}:\operatorname{Ch}(A)\longrightarrow K\oplus\widehat A^+_{\mathbf Q},\]
+以及称为\Term{todd-character}{Todd 特征}的群\Term{endomorphism}{自同态}（第 V 讲 1.16）：
+\[\operatorname{Todd}:1+\widehat A^+\longrightarrow1+\widehat A^+_{\mathbf Q}.\]
+\SourcePage{494}
+我们将把这些定义应用于\Term{augmented-lambda-ring}{增广 $\lambda$-环} $K'(X),K'(Y)$；它们的\Term{augmentation-ring}{增广环} $H^0(X,\mathbf Z)$、$H^0(Y,\mathbf Z)$ 都是\Term{binomial-ring}{二项式环}（第 V 讲 2.8）。为简化记号，对每个\Term{scheme}{概形} $Z$ 和每个 $z\in K'(Z)$，置
+\[\operatorname{ch}(z)=\operatorname{ch}(\widetilde c(z));\qquad\operatorname{Todd}(z)=\operatorname{Todd}(c(z)).\]
+对每个\Term{graded-algebra}{分次代数} $A$，都把群 $1+\widehat A^+$ 看作包含在 $\widehat A$ 中。最后，若有\Term{additive-homomorphism}{加性同态} $f:A\to B$，与\Term{graded}{分次}相容至多相差一个位移，则仍用 $f$ 表示其\Term{derive}{导出}的\Term{homomorphism}{同态} $\widehat A\to\widehat B$。
+\textbf{3.4.} 设 $X$ 是\Term{scheme}{概形}。对每个\Term{finite-type}{有限型}\Term{locally-free}{局部自由} $\mathscr O_X$-\Term{module}{模} $E$，记 $E$ 的\Term{dual}{对偶} $E^\vee$ 在 $K'(X)$ 中的类为 $E^\vee$。将 $E$ 映为 $E^\vee$ 的函数在\Term{finite-type}{有限型}\Term{locally-free}{局部自由} $\mathscr O_X$-\Term{module}{模}的\Term{category}{范畴}上显然可加，因而定义 $K'(X)$ 的一个\Term{endomorphism}{自同态}，记为 $x\mapsto x^\vee$。
+\begin{SGAresult}{命题}{3.5}
+设 $X$ 是\Term{quasi-compact}{拟紧}\Term{scheme}{概形}。则对每个 $x\in K'(X)$ 和每个 $i\geq0$，有
+\[c^i(x^\vee)=(-1)^ic^i(x).\]
+\end{SGAresult}
+\begin{proof}
+令 $c_t(x)=\sum_{i\geq0}c^i(x)t^i$，所要证明的关系也可写为
+\[c_t(x^\vee)=c_{-t}(x).\]
+由\Term{additive}{加性}，可假设 $x$ 是\Term{finite-type}{有限型}\Term{locally-free}{局部自由} $\mathscr O_X$-\Term{module}{模} $E$ 的类。再以 $E$ 的\Term{flag-scheme}{旗概形}替换 $X$；这在 $\operatorname{Gr}K'$ 上给出\Term{injectivity}{单射}
+\SourcePage{495}
+（第 VI 讲 5.5），从而可假设 $E$ 是\Term{invertible-sheaf}{可逆层}。于是 $E^\vee=E^{-1}$，故 $x^\vee=x^{-1}$。
+$i,j\geq2$ 时，$c^i(x^\vee),c^j(x)$ 都为零。因此只需证明 $c^1(x^{-1})=-c^1(x)$。$c^1(x)$ 是 $x-1$ 在 $\operatorname{Gr}^1K'(X)$ 中的类，$c^1(x^{-1})$ 是 $x^{-1}-1$ 的类。等式
+\[x^{-1}-1=1-x+(x-1)(1-x^{-1})\]
+给出
+\[x^{-1}-1\equiv1-x\pmod{\operatorname{Fil}^2K'(X)},\]
+所求结论随之得到。
+\end{proof}
+\begin{SGAresult}{\Term{theorem}{定理}（Riemann--Roch）}{3.6}
+设 $f:X\to Y$ 是\Term{projective-morphism}{射影态射}，且为\Term{complete-intersection-morphism}{完全交态射}（1.1），其\Term{virtual-relative-dimension}{虚相对维数} $d$ 恒定（1.9）。假设 $Y$ \Term{quasi-compact}{拟紧}且有\Term{ample-sheaf}{丰沛层}。沿用 3.3 的记号，则对每个 $x\in K'(X)$，有
+\[\operatorname{ch}(f_*(x))=f_{\mathrm{gr}}\bigl(\operatorname{ch}(x)\cdot\operatorname{Todd}(T_f^\vee)\bigr),\]
+其中 $T_f^\vee$ 表示\Term{relative-cotangent-complex}{相对余切复形} $L^{X/Y}_\bullet$ 的类的\Term{dual}{对偶}元素（2.5 和 2.3）。
+\end{SGAresult}
+换言之，下图交换：
+\[
+\begin{tikzcd}[column sep=huge]
+K'(X)\arrow[r,"\operatorname{ch}\circ\widetilde c"]\arrow[d,"f_*"']&\operatorname{Gr}K'(X)_{\mathbf Q}\arrow[d,"{x\mapsto f_{\mathrm{gr}}(x\cdot\operatorname{Todd}(T_f^\vee))}"]\\
+K'(Y)\arrow[r,"\operatorname{ch}\circ\widetilde c"]&\operatorname{Gr}K'(Y)_{\mathbf Q}.
+\end{tikzcd}
+\]
+\SourcePage{496}
+\Term{theorem}{定理} 3.6 的证明将占据本讲的剩余部分。先给出若干预备结果。
+\begin{SGAresult}{命题}{3.7}
+对任意 $x\in\operatorname{Gr}K'(X)_{\mathbf Q}$、$y\in\operatorname{Gr}K'(Y)_{\mathbf Q}$，有
+\[f_{\mathrm{gr}}(x\cdot f^{\mathrm{gr}}(y))=f_{\mathrm{gr}}(x)\cdot y.\]
+\end{SGAresult}
+\begin{proof}
+由\Term{additive}{加性}，可假设 $x,y$ \Term{homogeneous}{齐次}；设 $x\in\operatorname{Gr}^iK'(X)_{\mathbf Q}$、$y\in\operatorname{Gr}^jK'(Y)_{\mathbf Q}$。取分别\Term{lifting}{提升} $x,y$ 的元素 $x'\in\operatorname{Fil}^iK'(X)_{\mathbf Q}$、$y'\in\operatorname{Fil}^jK'(Y)_{\mathbf Q}$。\Term{projection-formula}{投影公式}给出
+\[f_*(x'\cdot f^*(y'))=f_*(x')\cdot y'.\]
+由 3.2，此等式位于 $\operatorname{Fil}^{i+j-d}K'(Y)_{\mathbf Q}$ 中。从而得到 $\operatorname{Gr}^{i+j-d}K'(Y)_{\mathbf Q}$ 中的等式，立即可验证这正是所求等式。
+\end{proof}
+\begin{SGAresult}{\Term{lemma}{引理}}{3.8}
+设 $f:X\to Y$、$g:Y\to Z$ 是两个满足 3.6 假设的\Term{morphism}{态射}。则 $g\circ f$ 也满足这些假设。若 $x\in K'(X)$，且 3.6 对 $f$ 和元素 $x$ 成立、对 $g$ 和元素 $f_*(x)$ 成立，则它对 $g\circ f$ 和元素 $x$ 也成立。
+\end{SGAresult}
+\begin{proof}
+由假设有
+\[\operatorname{ch}(f_*(x))=f_{\mathrm{gr}}(\operatorname{ch}(x)\cdot\operatorname{Todd}(T_f^\vee)),\tag{3.8.1}\]
+以及
+\[\operatorname{ch}(g_*(f_*(x)))=g_{\mathrm{gr}}(\operatorname{ch}(f_*(x))\cdot\operatorname{Todd}(T_g^\vee)).\tag{3.8.2}\]
+结合 (3.8.1)、(3.8.2)，得到
+\[\operatorname{ch}(g_*(f_*(x)))=g_{\mathrm{gr}}\bigl(f_{\mathrm{gr}}(\operatorname{ch}(x)\operatorname{Todd}(T_f^\vee))\cdot\operatorname{Todd}(T_g^\vee)\bigr).\]
+\SourcePage{497}
+应用 3.7，得到
+\[\operatorname{ch}(g_*(f_*(x)))=g_{\mathrm{gr}}\bigl(f_{\mathrm{gr}}(\operatorname{ch}(x)\cdot\operatorname{Todd}(T_f^\vee)\cdot f^{\mathrm{gr}}(\operatorname{Todd}(T_g^\vee)))\bigr).\]
+$c$ 与 $\operatorname{Todd}$ 的\Term{functoriality}{函子性}给出
+\[f^{\mathrm{gr}}(\operatorname{Todd}(T_g^\vee))=\operatorname{Todd}(f^*(T_g^\vee)).\]
+由 2.7，有
+\[T_{g\circ f}^\vee=T_f^\vee+f^*(T_g^\vee).\]
+因此，由\Term{todd-character}{Todd 特征}的\Term{multiplication}{乘法}性，
+\[\operatorname{Todd}(T_f^\vee)\cdot f^{\mathrm{gr}}(\operatorname{Todd}(T_g^\vee))=\operatorname{Todd}(T_{g\circ f}^\vee).\]
+最终得到
+\[\operatorname{ch}(g_*(f_*(x)))=g_{\mathrm{gr}}\bigl(f_{\mathrm{gr}}(\operatorname{ch}(x)\cdot\operatorname{Todd}(T_{g\circ f}^\vee))\bigr),\]
+即所述结论。
+\end{proof}
+\textbf{3.9.} 将 3.8 应用于 3.1 给出的 $f$ 的\Term{resolution}{分解}，可见为证明 \Term{riemann-roch-theorem}{Riemann--Roch 定理}，只需在\Term{codimension}{余维数}恒定的\Term{regular-immersion}{正则浸入}情形，以及\Term{structural-morphism}{结构态射} $\mathbf P^r_Y\to Y$ 的情形中证明。
+此外，可假设\Term{immersion}{浸入} $i$ 满足第 VII 讲 4.1 的条件。事实上，令 $s$ 为第 VII 讲 4.2 引入的 $\mathbf P^2_{\mathbf P^r_Y}$ 的\Term{section}{截面}。则 $s\circ i$ 是满足第 VII 讲 4.1 条件的\Term{regular-immersion}{正则浸入}（第 VII 讲 4.2）；由 3.8，只需对 $s\circ i$、$\mathbf P^2_{\mathbf P^r_Y}\to\mathbf P^r_Y$ 和 $\mathbf P^r_Y\to Y$ 证明 3.6。
+因此，我们将通过证明下面两种特殊情形来证明 3.6：
+i) $f$ 是\Term{codimension}{余维数}恒定、满足第 VII 讲 4.1 条件的\Term{regular-immersion}{正则浸入}；
+\SourcePage{498}
+ii) $f$ 是\Term{structural-morphism}{结构态射} $\mathbf P^r_Y\to Y$。
+\SGAsection{4}{Riemann--Roch 定理：正则闭浸入的情形}
+\textbf{4.1.} 设 $i:Y\to X$ 是\Term{regular-closed-immersion}{正则闭浸入}。$i$ 的 \Term{riemann-roch-theorem}{Riemann--Roch 定理}实质上就是第 VII 讲 4.4 的关系式，它使我们能够由 $\gamma^p(N,x)$ 计算 $i_*(x)$ 的\Term{chern-class}{Chern 类}。更确切地说，引入第 V 讲 5.5 定义的\Term{lambda-ring}{$\lambda$-环} $K'(Y)_{\mathbf QN}$，则由 $i_*$ \Term{derive}{导出}的从 $K'(Y)_{\mathbf QN}$ 到 $K'(X)_{\mathbf Q}$ 的\Term{homomorphism}{同态}，由第 VII 讲 2.8 和第 VII 讲 4.3 是一个 $\lambda$-\Term{homomorphism}{同态}。于是 \Term{riemann-roch-theorem}{Riemann--Roch 定理}归约为关于由 $y\mapsto(0,y)$ 定义的（\Term{additive-homomorphism}{加性}）\Term{homomorphism}{同态} $K'(Y)\to K'(Y)_{\mathbf QN}$ 的类似公式，即一个对任意\Term{lambda-ring}{$\lambda$-环}均成立的\Term{form}{形式}关系。为避免再展开\Term{lambda-ring}{$\lambda$-环}的\Term{form}{形式}论（参见 RRR I 1.5），这里不详述此证明，而重新采用 [1] 中使用\Term{blow-up}{爆破概形}的方法（此方法已用于第 VII 讲 4.3 的证明，也是 RRR 末尾采用的方法）。
+如 3.9 所述，可限于\Term{codimension}{余维数}恒为 $d$、满足第 VII 讲 4.1 条件的\Term{regular-immersion}{正则浸入}；\Term{generic}{一般}\Term{regular-immersion}{正则浸入}的情形随后由 3.8 \Term{pushout}{推出}。本节沿用第 VII 讲 3.1 的记号。因而有\Term{cartesian-square}{笛卡儿方块}
+\[
+\begin{tikzcd}Y'\arrow[r,"j"]\arrow[d,"g"']&X'\arrow[d,"f"]\\Y\arrow[r,"i"]&X,\end{tikzcd}
+\]
+\SourcePage{499}
+其中 $X'$ 是把 $Y$ \Term{blow-up}{爆破}后得到的 $X$-\Term{scheme}{概形}。还假设 $X$ \Term{quasi-compact}{拟紧}且有\Term{ample-sheaf}{丰沛层}。
+\begin{SGAresult}{命题}{4.2}
+\Term{morphism}{态射} $f$ \Term{projective}{射影}，且为\Term{complete-intersection-morphism}{完全交态射}，\Term{virtual-relative-dimension}{虚相对维数}为零。此外，有关系式
+\[f_{\mathrm{gr}}\circ f^{\mathrm{gr}}=\operatorname{Id}_{\operatorname{Gr}K'(X)_{\mathbf Q}}.\]
+\end{SGAresult}
+\begin{proof}
+第一个断言直接由第 VII 讲 1.8 得到。第二个关系是第 VII 讲 3.6 所证关系
+\[f_*\circ f^*=\operatorname{Id}_{K'(X)}\]
+的推论。
+\end{proof}
+\begin{SGAresult}{命题}{4.3}
+对每个 $y\in K'(Y)_{\mathbf Q}$，有关系式
+\[f^{\mathrm{gr}}\circ i_{\mathrm{gr}}(y)=j_{\mathrm{gr}}\bigl(g^{\mathrm{gr}}(y)\cdot c^{d-1}(F^\vee)\bigr),\]
+其中 $c^{d-1}$ 表示第 $(d-1)$ 个\Term{chern-class}{Chern 类}。
+\end{SGAresult}
+\begin{proof}
+此关系包含在第 VII 讲 4.8 中，因为它无非就是 $v^{\mathrm{gr}}\circ u^{\mathrm{gr}}=0$。
+\end{proof}
+\begin{SGAresult}{命题}{4.4}
+设 $X$ 是\Term{quasi-compact}{拟紧}\Term{scheme}{概形}。若 $E$ 是 $X$ 上的\Term{finite-type}{有限型}\Term{locally-free}{局部自由}\Term{sheaf}{层}，在 $K'(X)$ 中的类为 $E$，\Term{rank}{秩}为 $n$，则
+\[\operatorname{ch}(\lambda_{-1}(E))=c^n(E^\vee)(\operatorname{Todd}(E^\vee))^{-1}.\]
+\end{SGAresult}
+\begin{proof}
+所要证明的关系两边都具有\Term{multiplication}{乘法}性：$\operatorname{ch}\circ\lambda_{-1}$ 和 $\operatorname{Todd}$ 显然如此；$c^n$ 也如此，因为它是 $(-1)^{\varepsilon(E)}\lambda_{-1}(E)$ 的类。因此，转到 $E$ 的\Term{flag-bundle}{旗丛}后，可假设 $E$ 是若干\Term{invertible-sheaf}{可逆层}的类之和，从而归约为对一个\Term{invertible-sheaf}{可逆层}证明公式。
+\SourcePage{500}
+设 $\xi$ 为这样一个\Term{sheaf}{层}的类。于是
+\[\operatorname{ch}(\lambda_{-1}(\xi))=\operatorname{ch}(1-\xi)=1-\operatorname{ch}(\xi).\]
+由于 $\widetilde c(\xi)=(1,1+c^1(\xi))$，由 $\operatorname{ch}$ 的定义，得到
+\[\operatorname{ch}(\lambda_{-1}(\xi))=1-\exp(c^1(\xi)).\]
+另一方面，$\xi$ 的\Term{augmentation}{增广}为 $1$；所以与 $\xi$ 对应的公式 4.4 中出现的\Term{chern-class}{Chern 类}是 $c^1$。由 $\operatorname{Todd}$ 的定义及 3.5，所要证明的关系写为
+\[1-\exp(c^1(\xi))=-c^1(\xi)\cdot\left(\frac{-c^1(\xi)}{1-\exp(c^1(\xi))}\right)^{-1},\]
+因而成立。
+\end{proof}
+\textbf{注记 4.4.1。} 也可以从一个相应的纯\Term{algebra}{代数}命题\Term{pushout}{推出} 4.4，参见 RRR I 1.3。
+\textbf{4.5.} 下面证明，为在本节考虑的情形中证明 \Term{riemann-roch-theorem}{Riemann--Roch 定理}，可以归约到 $Y$ 是 $X$ 的\Term{divisor}{除子}，且应用公式的元素是 $K'(X)$ 中某元素的\Term{inverse-image}{逆像}的情形。
+由 3.2，所要证明的公式
+\[\operatorname{ch}(i_*(x))=i_{\mathrm{gr}}(\operatorname{ch}(x)\cdot\operatorname{Todd}(T_i^\vee))\]
+\Term{equivalence}{等价}于公式
+\[f^{\mathrm{gr}}(\operatorname{ch}(i_*(x)))=f^{\mathrm{gr}}\circ i_{\mathrm{gr}}(\operatorname{ch}(x)\cdot\operatorname{Todd}(T_i^\vee)).\]
+由 $\operatorname{ch}$ 的\Term{functoriality}{函子性}及 4.3，也可写为
+\[\operatorname{ch}(f^*(i_*(x)))=j_{\mathrm{gr}}\bigl(g^{\mathrm{gr}}(\operatorname{ch}(x)\cdot\operatorname{Todd}(T_i^\vee))\cdot c^{d-1}(F^\vee)\bigr),\]
+即由第 VII 讲 3.4，
+\[\operatorname{ch}(j_*(g^*(x)\cdot\lambda_{-1}(F)))=j_{\mathrm{gr}}\bigl(\operatorname{ch}(g^*(y))\cdot\operatorname{Todd}(g^*(T_i^\vee))\cdot c^{d-1}(F^\vee)\bigr).\]
+\SourcePage{501}
+而按定义，有
+\[T_i=-\operatorname{cl}(J/J^2)=-N;\qquad T_j=-\operatorname{cl}(J'/J'^2)=-L.\]
+另一方面，\Term{exact-sequence}{正合列}
+\[0\longrightarrow F\longrightarrow g^*(N)\longrightarrow\mathscr O_{Y'}(1)\longrightarrow0\]
+给出关系
+\[g^*(T_i)=-(F+L),\]
+从而得
+\[\operatorname{Todd}(g^*(T_i^\vee))=\operatorname{Todd}(T_j^\vee)\cdot(\operatorname{Todd}(F^\vee))^{-1}.\]
+由 4.4，所要证明的关系因而写为
+\[\operatorname{ch}(j_*(g^*(x)\cdot\lambda_{-1}(F)))=j_{\mathrm{gr}}\bigl(\operatorname{ch}(g^*(x)\cdot\lambda_{-1}(F))\cdot\operatorname{Todd}(T_j^\vee)\bigr).\]
+置 $z=g^*(x)\cdot\lambda_{-1}(F)$，此关系正是将 \Term{riemann-roch-theorem}{Riemann--Roch 定理}应用于\Term{codimension}{余维数}为 $1$ 的\Term{regular-immersion}{正则浸入} $j$ 及 $K'(Y')$ 中的元素 $z$ 所得。
+又因为我们已假设 $i$ 满足第 VII 讲 4.1 的假设，$\lambda_{-1}(F)$ 可被 $1-L$ 整除。因此可找到 $z'$，使 $z=z'(1-L)$，亦即 $z=j^*(j_*(z'))$（第 VII 讲 2.7）。故已归约到 $Y$ 是\Term{divisor}{除子}，且所取元素 $x$ 满足存在 $y$ 使 $x=i^*(y)$ 的情形。
+\textbf{4.6.} 因此须证明关系
+\[\operatorname{ch}(i_*(i^*(y)))=i_{\mathrm{gr}}\bigl(\operatorname{ch}(i^*(y))\cdot\operatorname{Todd}(T_i^\vee)\bigr).\]
+\Term{projection-formula}{投影公式}给出
+\[i_*(i^*(y))=y\cdot i_*(1).\]
+由\Term{exact-sequence}{正合列}
+\[0\longrightarrow J\longrightarrow\mathscr O_X\longrightarrow\mathscr O_Y\longrightarrow0,\]
+其中 $J$ 在此\Term{invertible}{可逆}，得到 $i_*(1)=1-J$，从而
+\SourcePage{502}
+\[\operatorname{ch}(i_*(i^*(y)))=\operatorname{ch}(y)\cdot\operatorname{ch}(1-J).\]
+$J$ \Term{invertible}{可逆}，所以 $\widetilde c(J)=(1,1+c^1(J))$，从而 $\operatorname{ch}(J)=\exp(c^1(J))$。因此
+\[\operatorname{ch}(i_*(i^*(y)))=\operatorname{ch}(y)\cdot(1-\exp(c^1(J))).\]
+另一方面，$\operatorname{ch}$ 的\Term{functoriality}{函子性}及\Term{projection-formula}{投影公式} 3.7 给出
+\[i_{\mathrm{gr}}\bigl(\operatorname{ch}(i^*(y))\cdot\operatorname{Todd}(T_i^\vee)\bigr)=\operatorname{ch}(y)\cdot i_{\mathrm{gr}}(\operatorname{Todd}(T_i^\vee)).\]
+又 $T_i=-\operatorname{cl}(J/J^2)=-i^*(J)$，故
+\[\begin{aligned}
+i_{\mathrm{gr}}(\operatorname{Todd}(T_i^\vee))
+&=i_{\mathrm{gr}}\bigl(i^{\mathrm{gr}}(\operatorname{Todd}(-J^\vee))\bigr)\\
+&=i_{\mathrm{gr}}(1)\cdot\operatorname{Todd}(-J^\vee).
+\end{aligned}\]
+$i_*(1)=1-J$，故 $i_{\mathrm{gr}}(1)$ 是 $1-J$ 在 $\operatorname{Gr}^1K'(X)$ 中的像，即 $-c(J)$。此外，
+\[\operatorname{Todd}(-J^\vee)=(\operatorname{Todd}(J^\vee))^{-1}=\frac{1-\exp(c^1(J))}{-c^1(J)}.\]
+最终得到
+\[i_{\mathrm{gr}}\bigl(\operatorname{ch}(i^*(y))\cdot\operatorname{Todd}(T_i^\vee)\bigr)=\operatorname{ch}(y)\cdot(1-\exp(c^1(J))),\]
+这就证明了所求关系。
+\SGAsection{5}{Riemann--Roch 定理：射影丛结构态射的情形}
+\textbf{5.1.} 由 3.9，为证明 \Term{riemann-roch-theorem}{Riemann--Roch 定理}，只剩对\Term{structural-morphism}{结构态射} $f:\mathbf P^r_Y\to Y$ 证明它，其中 $Y$ 是\Term{quasi-compact}{拟紧}、有\Term{ample-sheaf}{丰沛层}的\Term{scheme}{概形}。置 $P=\mathbf P^r_Y$、$\xi=\operatorname{cl}(\mathscr O_P(1))$，以及 $E=(\mathscr O_Y)^{r+1}$。
+\SourcePage{503}
+\begin{SGAresult}{命题}{5.2}
+在 $P$ 上有\Term{exact-sequence}{正合列}
+\[0\longrightarrow\Omega^1_{P/Y}\longrightarrow f^*(E)(-1)\longrightarrow\mathscr O_P\longrightarrow0,\]
+即有\Term{isomorphism}{同构}
+\[\Omega^1_{P/Y}\simeq F(-1),\qquad F=\operatorname{Ker}(f^*(E)\longrightarrow\mathscr O_P(1)).\]
+\end{SGAresult}
+\begin{proof}
+考虑 $E$ 所定义的 $Y$ 上\Term{vector-bundle}{向量丛}，记其\Term{zero-section}{零截面}的补集为 $Z$。有\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}P\arrow[dr,"f"']&Z\arrow[l,"h"']\arrow[d,"g"]\\&Y.\end{tikzcd}
+\]
+\Term{morphism}{态射} $h$ 将 $Z$ 与\Term{algebra-sheaf}{代数层} $B=\bigoplus_{n\in\mathbf Z}\mathscr O_P(n)$ 所定义的\Term{affine}{仿射} $P$-\Term{scheme}{概形}相认；$B$ 是\Term{graded-algebra}{分次} $\mathscr O_P$-\Term{algebra}{代数}。
+$f,g,h$ 都是\Term{smooth-morphism}{光滑态射}，故可写出\Term{relative-differential-sheaf}{相对微分层}的\Term{exact-sequence}{正合列}；$Z$ 在 $P$ 上\Term{affine}{仿射}，故可以用 $B$-\Term{module}{模}来书写此列，得到
+\[0\longrightarrow\Omega^1_{P/Y}\otimes_{\mathscr O_P}B\longrightarrow\Omega^1_{B/Y}\longrightarrow\Omega^1_{B/\mathscr O_P}\longrightarrow0.\tag{5.2.1}\]
+这实际是\Term{graded-module}{分次} $B$-\Term{module}{模}的\Term{graded-exact-sequence}{分次正合列}。事实上，它来自\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}S(E)\arrow[r]&\displaystyle\bigoplus_{n\in\mathbf Z}S(E)(n)\simeq S(E)[T,T^{-1}]\\&\mathscr O_X\arrow[ul]\arrow[u],\end{tikzcd}
+\]
+其中\Term{arrow}{箭头}是\Term{algebra-homomorphism}{代数同态}，与 $S(E)[T,T^{-1}]$ 的\Term{graded}{分次}（由\Term{indeterminate}{不定元} $T$ 的\Term{degree}{次数}定义的\Term{graded}{分次}）相容，而另外两个\Term{algebra}{代数}均视为集中于
+\SourcePage{504}
+\Term{degree}{次数} $0$。
+\Term{differential-module}{微分模} $\Omega^1_{B/\mathscr O_P}$ \Term{isomorphism}{同构}于 $B(-1)\otimes_{\mathscr O_P}\mathscr O_P(1)$，因为可以定义一个 $S(E)$-\Term{derivation}{导子}
+\[d:S(E)[T,T^{-1}]\longrightarrow S(E)[T,T^{-1}]\otimes_{S(E)}S(E)\cdot dT,\]
+令 $d(aT^n)=naT^{n-1}\otimes dT$，使之满足定义 $\Omega^1_{B/\mathscr O_P}$ 的\Term{universal-property}{泛性质}；又若赋予因子 $S(E)\cdot dT$ \Term{degree}{次数} $1$，则 $d$ 与\Term{graded}{分次}相容。
+设 $V$ 是由 $E$ 定义的 $Y$-\Term{vector-bundle}{向量丛}。则 $\Omega^1_{Z/Y}$ 是 $\Omega^1_{V/Y}$ 在 $Z$ 上的\Term{restriction}{限制}。$V$ 是由 $S(E)$ 定义的\Term{affine}{仿射} $Y$-\Term{scheme}{概形}，所以 $\Omega^1_{V/Y}$ 由 $S(E)\otimes_{\mathscr O_Y}E$ 定义（因为 $E$ \Term{finite-type}{有限型}且\Term{locally-free}{局部自由}）；故 $\Omega^1_{V/Y}$ 等于 $g^*(E)$，从而 $\Omega^1_{B/Y}=f^*(E)\otimes_{\mathscr O_P}B$。至于它的\Term{graded}{分次}，在\Term{local-scheme}{局部}考察便立刻看出，应把 $f^*(E)$ 看作\Term{degree}{次数} $1$。
+在\Term{exact-sequence}{正合列} (5.2.1) 中取\Term{degree}{次数} $0$ 的项，就得到所述\Term{exact-sequence}{正合列}。
+\end{proof}
+\textbf{注记 5.2.1。} 利用关于 Hilbert \Term{functor}{函子}的\Term{differential}{微分}研究的\Term{generic}{一般}结果（[2]，5），根据对每个 $Y$-\Term{morphism}{态射} $g:Y'\to P$ 所给出的 $g^*(\Omega^1_{P/Y})$ 的\Term{functorial-characterization}{函子刻画}，可直接得到\Term{isomorphism}{同构} $\Omega^1_{P/Y}\simeq F(-1)$。
+\textbf{5.3.} 由 5.2，有
+\[T_f=\operatorname{cl}(\Omega^1_{P/Y})=g^*(E)\cdot\xi^{-1}-1.\]
+所以
+\[\widetilde c(T_f)=\widetilde c(E)\cdot\widetilde c(\xi^{-1})-\widetilde c(1).\]
+\SourcePage{505}
+由于 $E=(\mathscr O_Y)^{r+1}$，有 $E=r+1$，从而
+\[\widetilde c(E)=(r+1,1).\]
+置
+\[x=\operatorname{cl}_{\operatorname{Gr}^1K'(P)}(\xi-1)=\operatorname{cl}_{\operatorname{Gr}^1K'(P)}(1-\xi^{-1})=c^1(\xi).\]
+由于 $(\xi^{-1})^\vee=\xi$，有
+\[\widetilde c(\xi^{-1})=(1,1-x).\]
+由第 V 讲 (6.2.1)，得到
+\[\widetilde c(T_f)=(r,(1-x)^{r+1}).\]
+再由 3.5，最终得到
+\[\widetilde c(T_f^\vee)=(r,(1+x)^{r+1}).\]
+因此，由 $\operatorname{Todd}$ 的定义，有
+\[\operatorname{Todd}(T_f^\vee)=\left(\frac{x}{1-\exp(-x)}\right)^{r+1}.\tag{5.3.1}\]
+\textbf{5.4.} 利用 $K'(P)$ 在 $K'(Y)$ 上由元素 $\xi^k$（$-r\leq k\leq0$）组成的\Term{basis}{基}，由\Term{additive}{加性}可见，只需对形如 $f^*(a)\cdot\xi^k$ 的元素证明\Term{theorem}{定理}。此时
+\[\operatorname{ch}(f_*(f^*(a)\xi^k))=\operatorname{ch}(a f_*(\xi^k))=\operatorname{ch}(a)\cdot\operatorname{ch}(f_*(\xi^k)).\]
+另一方面，
+\[\begin{aligned}
+f_{\mathrm{gr}}(\operatorname{ch}(f^*(a)\xi^k)\operatorname{Todd}(T_f^\vee))
+&=f_{\mathrm{gr}}(f^{\mathrm{gr}}(\operatorname{ch}(a))\operatorname{ch}(\xi^k)\operatorname{Todd}(T_f^\vee))\\
+&=\operatorname{ch}(a)\cdot f_{\mathrm{gr}}(\operatorname{ch}(\xi^k)\operatorname{Todd}(T_f^\vee)).
+\end{aligned}\]
+可见只需对 $\xi^k$（$-r\leq k\leq0$）证明\Term{theorem}{定理}。由第 VI 讲 (5.2.3)，有
+\[f_*(\xi^k)=0\quad(-r\leq k<0);\qquad f_*(1)=1.\]
+故
+\[\operatorname{ch}(f_*(\xi^k))=0\quad(-r\leq k<0);\qquad\operatorname{ch}(f_*(1))=1.\tag{5.4.1}\]
+\SourcePage{506}
+现在计算 \Term{riemann-roch-formula}{Riemann--Roch 公式}的右边。由第 V 讲 (6.2.1)，对每个 $k$，有
+\[\widetilde c(\xi^k)=(\widetilde c(\xi))^k=(1,1+x)^k=(1,1+kx).\]
+故
+\[\operatorname{ch}(\xi^k)=\exp(kx).\tag{5.4.2}\]
+因此，\Term{riemann-roch-formula}{Riemann--Roch 公式}的右边为
+\[f_{\mathrm{gr}}\left(\exp(kx)\cdot\frac{x^{r+1}}{(1-\exp(-x))^{r+1}}\right).\tag{5.4.3}\]
+$x$ 是 $1-\xi^{-1}$ 在 $\operatorname{Gr}^1K'(P)$ 中的类，因此对 $0\leq n\leq r$，$f_{\mathrm{gr}}(x^n)$ 是 $f_*((1-\xi^{-1})^n)=1$ 在 $\operatorname{Gr}^{n-r}K'(Y)$ 中的类。因而
+\[f_{\mathrm{gr}}(x^n)=0\quad(0\leq n<r);\qquad f_{\mathrm{gr}}(x^r)=1.\tag{5.4.4}\]
+最后回忆，元素 $1,x,\ldots,x^{r+1}$ 在 $\operatorname{Gr}K'(Y)$ 上\Term{linearly-dependent}{线性相关}（第 VI 讲 5.6），并满足方程
+\[x^{r+1}=0,\tag{5.4.5}\]
+而 $1,\ldots,x^r$ 在 $\operatorname{Gr}K'(Y)$ 上\Term{linearly-independent}{线性无关}。
+于是可将级数
+\[\varphi_k=\exp(kx)\cdot\frac{x^{r+1}}{(1-\exp(-x))^{r+1}}\]
+唯一地写为元素 $1,\ldots,x^r$ 的\Term{linear-combination}{线性组合}，系数在 $\operatorname{Gr}K'(Y)_{\mathbf Q}$ 中。由 (5.4.4) 和 3.7，$\varphi_k$ 在 $f_{\mathrm{gr}}$ 下的像就是其中 $x^r$ 的系数。结合 (5.4.1)，$f$ 的 \Term{riemann-roch-theorem}{Riemann--Roch 定理}因此\Term{equivalence}{等价}于
+\[
+\left\{\begin{array}{ll}
+-r\leq k<0\text{ 时，}&\varphi_k\text{ 中 }x^r\text{ 的系数为 }0;\\
+k=0\text{ 时，}&\varphi_k\text{ 中 }x^r\text{ 的系数为 }1.
+\end{array}\right.\tag{RR}
+\]
+这个系数就是\Term{differential-form}{微分形式}
+\[\frac{\exp(kx)\,dx}{(1-\exp(-x))^{r+1}}\]
+的\Term{residue}{留数}。
+\SourcePage{507}
+置 $y=1-\exp(-x)$，便归结为计算
+\[\frac{(1-y)^{-k-1}\,dy}{y^{r+1}}\]
+的\Term{residue}{留数}，即 $(1-y)^{-k-1}$ 中 $y^r$ 的系数。$-r\leq k<0$ 时，它为零；$k=0$ 时，它为 $1$。
+\Term{riemann-roch-theorem}{Riemann--Roch 定理}的证明至此完成。
+\bigskip
+\textbf{参考文献}
+\begin{enumerate}
+\item[{[1]}] A. Borel 与 J. P. Serre，\emph{\Term{riemann-roch-theorem}{Riemann--Roch 定理}}（Le théorème de Riemann--Roch），Bull. Soc. Math. de France，第 86 卷，1958 年。
+\item[{[2]}] A. Grothendieck，\emph{\Term{algebraic-geometry}{代数几何}中的构造技术与\Term{existence-theorem}{存在定理}}（Techniques de construction et théorèmes d'existence en Géométrie Algébrique），Sém. Bourbaki，1960--61 年。
+\end{enumerate}

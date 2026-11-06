@@ -1,0 +1,1044 @@
+% SGA 2，原 PDF 页 13--40；第 I--III 讲完整译文。
+% 下划线保留原书区分层值函子与群值函子的记号。
+\SGAchapter{I}{相对于闭子空间的整体与局部上同调不变量}{Les invariants cohomologiques globaux et locaux relatifs à un sous-espace fermé}
+\SourcePage{13}
+\SGAsection{1}{函子 $\Gamma_Z$ 与 $\underline{\Gamma}_Z$}
+设 $X$ 为\Term{topological-space}{拓扑空间}，$\underline C_X$ 为 $X$ 上\Term{abelian-sheaf}{阿贝尔层}构成的\Term{category}{范畴}。设 $\Phi$ 为 Cartan 意义下的一个\Term{family-of-supports}{支撑族}，在 $\underline C_X$ 上定义\Term{functor}{函子} $\Gamma_\Phi$：
+\[
+\Gamma_\Phi(F)=\Gamma(F)\text{ 中由满足 }\operatorname{supp}f\in\Phi
+\text{ 的截面 }f\text{ 组成的子群}。\tag{1}
+\]
+若 $Z$ 为 $X$ 的一个\Term{closed-subset}{闭子集}，我们略微滥用记号，以 $\Gamma_Z$ 表示 $\Gamma_\Phi$，其中 $\Phi$ 为包含在 $Z$ 中的所有\Term{closed-subset}{闭子集}构成的\Term{set}{集合}。因此
+\[
+\Gamma_Z(F)=\Gamma(F)\text{ 中由满足 }\operatorname{supp}f\subset Z
+\text{ 的截面 }f\text{ 组成的子群}。\tag{2}
+\]
+我们希望把这一定义推广到 $Z$ 为 $X$ 的\Term{locally-closed}{局部闭}\Term{subset}{子集}的情形。此时 $Z$ 在 $X$ 的某个适当\Term{open-subset}{开子集} $V$ 中闭，定义
+\[
+\Gamma_Z(F)=\Gamma_Z(F|_V)。\tag{3}
+\]
+需要证明 $\Gamma_Z(F)$“不依赖于”所选的\Term{open-subset}{开集}。只须证明：若 $V'$ 为\Term{open-subset}{开集}且 $V\supset V'\supset Z$，则映射
+$\rho^V_{V'}:F(V)\to F(V')$ 将 $\Gamma_Z(F|_V)$ \Term{isomorphism}{同构}地映到 $\Gamma_Z(F|_{V'})$。事实上，
+\[
+\Gamma_Z(F|_V)=\ker\rho^V_{V-Z}，\tag{4}
+\]
+所以，若 $f\in\Gamma_Z(F|_V)$ 且 $\rho^V_{V'}(f)=\rho^V_{V-Z}(f)=0$，则 $f=0$，因为 $(V',V-Z)$ 是 $V$ 的一个\Term{covering}{覆盖}。同样，若 $f'\in\Gamma_Z(F|_{V'})$，则 $f'\in F(V')$ 与 $0\in F(V-Z)$ \Term{gluing}{粘合}成一个 $f\in F(V)$，满足 $\rho^V_{V'}(f)=f'$ 且 $f\in\Gamma_Z(F|_V)$。因此 $\rho^V_{V'}$ 诱导\Term{isomorphism}{同构}
+$\Gamma_Z(F|_V)\to\Gamma_Z(F|_{V'})$。
+
+注意，$Z$ 的任一\Term{open-subset}{开集} $W$ 都可以由 $X$ 的某个\Term{open-subset}{开集} $U$ 诱导，并使 $W$ 在 $U$ 中闭。因此 $W\mapsto\Gamma_W(F)$ 定义了 $Z$ 上的一个\Term{presheaf}{预层}；容易证明它是一个\Term{sheaf}{层}，记为 $i^!(F)$，其中 $i:Z\to X$ 为\Term{canonical}{典范}\Term{immersion}{浸入}。于是
+\[
+\Gamma_Z(F)=\Gamma(i^!(F))。\tag{5}
+\]
+
+\SourcePage{14}
+\Term{sheaf}{层} $i^!(F)$ 是 $i^*(F)$ 的一个\Term{subsheaf}{子层}。事实上，\Term{canonical}{典范}\Term{homomorphism}{同态}
+\[
+\Gamma(F|_U)=\Gamma(U,F)\longrightarrow\Gamma(U\cap Z,i^*(F))
+\]
+在 $\Gamma_{U\cap Z}(F|_U)\subset\Gamma(F|_U)$ 上是\Term{injectivity}{单射}。概括起来，有以下结果。
+\begin{SGAresult}{命题}{1.1}
+存在 $i^*(F)$ 的唯一\Term{subsheaf}{子层} $i^!(F)$，使得对 $X$ 的每个满足 $U\cap Z$ 在 $U$ 中闭的\Term{open-subset}{开集} $U$，
+\[
+\Gamma(F|_U)=\Gamma(U,F)\longrightarrow\Gamma(U\cap Z,i^*(F))
+\]
+诱导一个\Term{isomorphism}{同构}
+$\Gamma_{U\cap Z}(F|_U)\to\Gamma(U\cap Z,i^!(F))$。
+\end{SGAresult}
+注意，当 $Z$ 为\Term{open-subset}{开集}时，直接有
+\[
+i^!(F)=i^*(F)=F|_Z,\qquad \Gamma_Z(F)=\Gamma(Z,F)。\tag{6}
+\]
+再设 $Z$ 为任意的\Term{locally-closed}{局部闭}\Term{subset}{子集}。让\Term{open-subset}{开集} $U\subset X$ 变化，可以看出
+\[
+U\longmapsto\Gamma_{U\cap Z}(F|_U)=\Gamma(U\cap Z,i^!(F))
+\]
+是 $X$ 上的一个\Term{sheaf}{层}，记为 $\underline{\Gamma}_Z(F)$。确切地说，由前面的公式（它表示 $i^!$ 与对\Term{open-subset}{开集}的限制可交换），可得\Term{isomorphism}{同构}
+\[
+\underline{\Gamma}_Z(F)=i_*(i^!(F))。\tag{7}
+\]
+根据定义，对每个\Term{open-subset}{开集} $U\subset X$，
+\[
+\Gamma(U,\underline{\Gamma}_Z(F))=\Gamma_{U\cap Z}(F|_U)。\tag{8}
+\]
+这里应注意 $Z$ 为闭集与 $Z$ 为\Term{open-subset}{开集}这两种情形之间的一个\Term{characteristic}{特征}性差别。前一种情形下，公式 (8) 表明 $\underline{\Gamma}_Z(F)$ 可以看成 $F$ 的一个\Term{subsheaf}{子层}，因而有\Term{canonical}{典范}\Term{immersion}{浸入}
+\[
+\underline{\Gamma}_Z(F)\lhook\joinrel\longrightarrow F。\tag{$8'$}
+\]
+反之，当 $Z$ 为\Term{open-subset}{开集}时，由 (6) 可知 (8) 的右边等于 $\Gamma(U\cap Z,F)$，它接收来自 $\Gamma(U,F)$ 的映射，因而有方向相反的\Term{canonical}{典范}\Term{homomorphism}{同态}
+\[
+F\longrightarrow\underline{\Gamma}_Z(F)。\tag{$8''$}
+\]
+\footnote{编者注：原版在这里引用的是 (8)。}
+结合由 (6)、(7) 得到的\Term{isomorphism}{同构}
+\[
+\underline{\Gamma}_Z(F)\simeq i_*i^*(F)，\tag{6 bis}
+\]
+这也正是\Term{canonical}{典范}\Term{homomorphism}{同态} $F\to i_*i^*(F)$。
+
+\SourcePage{15}
+当然，让 $F$ 变化时，$\Gamma_Z(F)$、$\underline{\Gamma}_Z(F)$、$i^!(F)$ 可以看成关于 $F$ 的\Term{functor}{函子}，其值分别属于\Term{abelian-group}{阿贝尔群}\Term{category}{范畴}、$X$ 上的\Term{abelian-sheaf}{阿贝尔层}\Term{category}{范畴}、$Z$ 上的\Term{abelian-sheaf}{阿贝尔层}\Term{category}{范畴}。有时，把\Term{functor}{函子}
+\[
+i^!:\underline C_X\longrightarrow\underline C_Z
+\]
+解释为一个熟知\Term{functor}{函子}的\Term{adjoint-functor}{伴随函子}，会很方便。后一个\Term{functor}{函子}
+\[
+i_!:\underline C_Z\longrightarrow\underline C_X
+\]
+由下面的命题定义。
+\begin{SGAresult}{命题}{1.2}
+设 $G$ 为 $Z$ 上的\Term{abelian-sheaf}{阿贝尔层}。则 $i_*(G)$ 有唯一\Term{subsheaf}{子层} $i_!(G)$，使得对 $X$ 的每个\Term{open-subset}{开集} $U$，同一性\Term{isomorphism}{同构}
+\[
+\Gamma(U\cap Z,G)=\Gamma(U,i_*(G))
+\]
+给出\Term{isomorphism}{同构}
+\[
+\Gamma_{\Phi_{U\cap Z,U}}(U\cap Z,G)=\Gamma(U,i_!(G))，
+\]
+其中 $\Phi_{U\cap Z,U}$ 表示 $U\cap Z$ 中在 $U$ 内闭的所有\Term{subset}{子集}构成的\Term{set}{集合}。
+\end{SGAresult}
+只须注意，左边随 $U$ 的变化构成一个\Term{sheaf}{层}，便完成了验证。换言之，把 $i_*(G)$ 在 $U$ 上的一个\Term{section}{截面}看成 $G$ 在 $U\cap Z$ 上的\Term{section}{截面}时，“其\Term{support}{支撑}在 $U$ 中闭”这一性质是 $U$ 上的\Term{local-scheme}{局部}性质。刚定义的\Term{sheaf}{层} $i_!(G)$ 也称为将 $G$ 在 $Z$ 外\Term{extension-by-zero}{延拓为零}所得的\Term{sheaf}{层}，参见 [Godement]。特别地，若 $Z$ 闭，则
+\[
+i_!(G)=i_*(G)；\tag{9}
+\]
+但在一般情形下，\Term{canonical}{典范}\Term{injectivity}{单射} $i_!(G)\to i_*(G)$ 并不是\Term{isomorphism}{同构}，这一点在 $Z$ 为\Term{open-subset}{开集}时就已熟知。显然，$i_!(G)$ \Term{functorial}{函子性}地依赖于 $G$，而且还是关于 $G$ 的\Term{exact-functor}{正合函子}。由此有：
+\begin{SGAresult}{命题}{1.3}
+关于 $G,F$（其中 $G$ 是 $Z$ 上的\Term{abelian-sheaf}{阿贝尔层}，$F$ 是 $X$ 上的\Term{abelian-sheaf}{阿贝尔层}），存在\Term{bifunctor}{双函子}的\Term{isomorphism}{同构}
+\[
+\operatorname{Hom}(i_!(G),F)=\operatorname{Hom}(G,i^!(F))。\tag{10}
+\]
+\end{SGAresult}
+定义这样一个\Term{isomorphism}{同构}，\Term{equivalence}{等价}于定义满足熟知相容条件的\Term{functorial}{函子性}\Term{homomorphism}{同态}
+\[
+i_!i^!(F)\longrightarrow F,\qquad G\longrightarrow i^!i_!(G)；
+\]
+例如可参见 Shih 在 Cartan 关于\Term{cohomology}{上同调}运算的讨论班上的报告。
+
+由于 $i_!$ \Term{exact-functor}{正合}，从而把\Term{monomorphism}{单态射}变成\Term{monomorphism}{单态射}，可推出：
+\SourcePage{16}
+\begin{SGAresult}{推论}{1.4}
+若 $F$ \Term{injective-object}{内射}，则 $i^!(F)$ \Term{injective-object}{内射}，所以 $\underline{\Gamma}_Z(F)=i_*i^!(F)$ 也\Term{injective-object}{内射}。
+\end{SGAresult}
+将 $X$ 换成它的可变\Term{open-subset}{开集} $U$，由 1.3 还可推出：
+\begin{SGAresult}{推论}{1.5}
+存在关于 $F,G$ 的\Term{functorial}{函子性}\Term{isomorphism}{同构}
+\[
+\underline{\operatorname{Hom}}(i_!(G),F)
+=i_*\bigl(\underline{\operatorname{Hom}}(G,i^!(F))\bigr)。\tag{11}
+\]
+\end{SGAresult}
+取 $G$ 为 $Z$ 上由 $\mathbb Z$ 定义的\Term{constant-sheaf}{常值层} $\mathbb Z_Z$，1.3 和 1.5 \Term{specialization}{特化}为：
+\begin{SGAresult}{推论}{1.6}
+存在关于 $F$ 的\Term{functorial}{函子性}\Term{isomorphism}{同构}
+\[
+\begin{aligned}
+\Gamma_Z(F)&=\operatorname{Hom}(\mathbb Z_{Z,X},F),\\
+\underline{\Gamma}_Z(F)&=\underline{\operatorname{Hom}}(\mathbb Z_{Z,X},F),
+\end{aligned}\tag{12}
+\]
+其中 $\mathbb Z_{Z,X}=i_!(\mathbb Z_Z)$ 是将 $Z$ 上由 $\mathbb Z$ 定义的\Term{constant-sheaf}{常值层}在 $Z$ 外\Term{extension-by-zero}{延拓为零}所得的 $X$ 上的\Term{abelian-sheaf}{阿贝尔层}。
+\end{SGAresult}
+\textbf{注记 1.7。}
+设 $X$ 为\Term{ringed-space}{赋环空间}，在 $Z$ 上赋予环\Term{sheaf}{层} $\mathcal O_Z=i^{-1}(\mathcal O_X)$，再以 $\underline C_X$、$\underline C_Z$ 分别表示 $X$、$Z$ 上的\Term{module-sheaf}{模层}\Term{category}{范畴}。这样，前面的讨论可以逐字推广：令 $F$ 为 $X$ 上的\Term{module-sheaf}{模层}，$G$ 为 $Z$ 上的\Term{module-sheaf}{模层}，并相应地解释 1.3 至 1.6 的陈述即可。
+
+为结束这些一般性的讨论，考察改变\Term{locally-closed}{局部闭}\Term{subset}{子集} $Z$ 时会发生什么。设 $Z'\subset Z$ 为另一个\Term{locally-closed}{局部闭}\Term{subset}{子集}，记\Term{canonical}{典范}包含映射为
+\[
+j:Z'\longrightarrow Z,\qquad i':Z'\longrightarrow X,\qquad i'=ij。
+\]
+有\Term{functorial}{函子性}\Term{isomorphism}{同构}
+\[
+(ij)^!=j^!i^!,\qquad (ij)_!=i_!j_!。\tag{13}
+\]
+第一个\Term{isomorphism}{同构} (13) 给出\Term{functorial}{函子性}\Term{isomorphism}{同构}
+\[
+\Gamma_{Z'}(F)
+=\Gamma(Z',(ij)^!(F))
+\simeq\Gamma(Z',j^!(i^!(F)))
+=\Gamma_{Z'}(i^!(F))。\tag{14}
+\]
+现在设 $Z'$ 在 $Z$ 中闭，记其在 $Z$ 中的补集为 $Z''=Z-Z'$。它在 $Z$ 中开，因而在 $X$ 中\Term{locally-closed}{局部闭}。将\Term{canonical}{典范}包含映射 $(8')$ 应用于带有\Term{closed-subset}{闭子集} $Z'$ 的 $Z$ 上的 $i^!(F)$，借助 (14) 得到\Term{canonical}{典范}的\Term{functorial}{函子性}单\Term{homomorphism}{同态}
+\[
+\Gamma_{Z'}(F)\longrightarrow\Gamma_Z(F)。\tag{15}
+\]
+若在 (14) 中将 $Z'$ 换成 $Z''$，并使用 $(8'')$，便得到\Term{canonical}{典范}的\Term{functorial}{函子性}\Term{homomorphism}{同态}
+\[
+\Gamma_Z(F)\longrightarrow\Gamma_{Z''}(F)。\tag{$15'$}
+\]
+
+\SourcePage{17}
+\begin{SGAresult}{命题}{1.8}
+在上述条件下，\Term{functorial}{函子性}\Term{homomorphism}{同态}序列
+\[
+0\longrightarrow\Gamma_{Z'}(F)\longrightarrow\Gamma_Z(F)
+\longrightarrow\Gamma_{Z''}(F)\tag{16}
+\]
+\Term{exact-sequence}{正合}。若 $F$ 为\Term{flasque-sheaf}{松弛层}，则在右端补上一个零后，序列仍然\Term{exactness}{正合}。
+\end{SGAresult}
+\begin{proof}
+将 $X$ 换成一个使 $Z$ 在其中闭的\Term{open-subset}{开集} $V$，便归结到 $Z$ 闭、从而 $Z'$ 也闭的情形。此时 $Z''$ 在\Term{open-subset}{开集} $X-Z'$ 中闭，有\Term{canonical}{典范}包含映射
+\[
+\Gamma_{Z''}(F)\longrightarrow\Gamma(X-Z',F)。
+\]
+(16) 的\Term{exactness}{正合}性只是在说：$F$ 中\Term{support}{支撑}包含在 $Z'$ 内的\Term{section}{截面}，恰好是限制到 $X-Z'$ 后为零的那些\Term{section}{截面}。
+
+当 $F$ \Term{flasque-sheaf}{松弛}时，$\Gamma_{Z''}(F)$ 的任一元素看成 $F$ 在 $X-Z'$ 上的\Term{section}{截面}，均可延拓成 $F$ 在 $X$ 上的\Term{section}{截面}；后者的\Term{support}{支撑}显然包含在 $Z$ 中。这证明了此时 (16) 的最后一个\Term{homomorphism}{同态}是\Term{surjectivity}{满射}。
+\end{proof}
+\begin{SGAresult}{推论}{1.9}
+存在\Term{functorial}{函子性}的\Term{exact-sequence}{正合列}
+\[
+0\longrightarrow\underline{\Gamma}_{Z'}(F)
+\longrightarrow\underline{\Gamma}_Z(F)
+\longrightarrow\underline{\Gamma}_{Z''}(F)；\tag{16 bis}
+\]
+若 $F$ \Term{flasque-sheaf}{松弛}，则在右端补上一个零后，序列仍然\Term{exactness}{正合}。
+\end{SGAresult}
+利用 1.6，可以把 1.8 解释为关于\Term{functor}{函子} $\operatorname{Hom}$ 和 $\underline{\operatorname{Hom}}$ 的结果，具体如下。先注意，若 $G$ 为 $Z$ 上的一个\Term{abelian-sheaf}{阿贝尔层}，在 $Z'$、$Z''$ 上分别诱导\Term{sheaf}{层} $j^*(G)$、$k^*(G)$（其中 $j:Z'\to Z$、$k:Z''\to Z$ 为\Term{canonical}{典范}包含映射），则有 $X$ 上\Term{sheaf}{层}的\Term{canonical}{典范}\Term{exact-sequence}{正合列}
+\[
+0\longrightarrow k^*(G)_X\longrightarrow G_X
+\longrightarrow j^*(G)_X\longrightarrow0。\tag{17}
+\]
+为简化记号，下标 $X$ 表示将所考虑的\Term{sheaf}{层}在其定义空间之外\Term{extension-by-zero}{延拓为零}所得的 $X$ 上的\Term{sheaf}{层}。\Term{exact-sequence}{正合列} (17) 推广了 $Z=X$ 时一个熟知的\Term{exact-sequence}{正合列}（参见 [Godement]）；事实上，只须在 $Z$ 上写出那个\Term{exact-sequence}{正合列}，再施以\Term{functor}{函子} $i_!$，便得到 (17)。特别地，取 $G=\mathbb Z_Z$，可推出：
+\begin{SGAresult}{命题}{1.10}
+在上述条件下，存在 $X$ 上\Term{abelian-sheaf}{阿贝尔层}的\Term{exact-sequence}{正合列}
+\[
+0\longrightarrow\mathbb Z_{Z'',X}\longrightarrow\mathbb Z_{Z,X}
+\longrightarrow\mathbb Z_{Z',X}\longrightarrow0。\tag{18}
+\]
+\end{SGAresult}
+于是，1.8 和 1.9 中的两个\Term{exact-sequence}{正合列}，正是分别对 (18) 应用\Term{functor}{函子} $\operatorname{Hom}(-,F)$、$\underline{\operatorname{Hom}}(-,F)$ 得到的\Term{exact-sequence}{正合列}。
+
+这也再次给出一个显然的证明：只要 $F$ \Term{injective-object}{内射}，就在 (16)、(16 bis) 的右端补零之后仍然\Term{exactness}{正合}。
+
+\SourcePage{18}
+\SGAsection{2}{函子 $H_Z^*(X,F)$ 与 $\underline H_Z^*(F)$}
+\begin{SGAresult}{定义}{2.1}
+以 $H_Z^*(X,F)$ 和 $\underline H_Z^*(F)$ 分别表示\Term{functor}{函子} $\Gamma_Z(F)$ 和 $\underline{\Gamma}_Z(F)$ 关于 $F$ 的\Term{derived-functor}{导出函子}。
+\end{SGAresult}
+它们是\Term{cohomological-functor}{上同调函子}，分别取值于\Term{abelian-group}{阿贝尔群}\Term{category}{范畴}和 $X$ 上\Term{abelian-sheaf}{阿贝尔层}\Term{category}{范畴}。当 $Z$ 闭时，按定义 $H_Z^*(X,F)$ 就是 $H_\Phi^*(X,F)$，其中 $\Phi$ 为 $X$ 中包含在 $Z$ 内的所有\Term{closed-subset}{闭子集}构成的族。当 $Z$ 开时，由以下命题可知，$H_Z^*(X,F)$ 就是 $H^*(Z,F)=H^*(Z,F|_Z)$。
+\begin{SGAresult}{命题}{2.2（切除定理）}
+设 $V$ 为 $X$ 中包含 $Z$ 的\Term{open-subset}{开子集}。则存在关于 $F$ 的\Term{cohomological-functor}{上同调函子}的\Term{isomorphism}{同构}
+\[
+H_Z^*(X,F)\longrightarrow H_Z^*(V,F|_V)。\tag{19}
+\]
+\end{SGAresult}
+事实上，有\Term{functorial}{函子性}\Term{isomorphism}{同构} $\Gamma_Z^X\simeq\Gamma_Z^Vj^!$，其中 $j:V\to X$ 为包含映射，而 $j^!$ 就是限制\Term{functor}{函子}，参见 (14)。它\Term{exact-functor}{正合}，又由 1.4 将\Term{injective-object}{内射对象}变成\Term{injective-object}{内射对象}，因而立即得到\Term{isomorphism}{同构} (19)。
+
+当 $Z$ 开时，可以取 $V=Z$，于是有：
+\begin{SGAresult}{推论}{2.3}
+设 $Z$ 开，则存在\Term{cohomological-functor}{上同调函子}的\Term{isomorphism}{同构}
+\[
+H_Z^*(X,F)=H^*(Z,F)。\tag{20}
+\]
+\end{SGAresult}
+由\Term{isomorphism}{同构} 1.6 以及定义（参见 [Tôhoku]），可推出：
+\begin{SGAresult}{命题}{2.3 bis}
+存在\Term{cohomological-functor}{上同调函子}的\Term{isomorphism}{同构}
+\[
+H_Z^*(X,F)\simeq\operatorname{Ext}^*(X;\mathbb Z_{Z,X},F)，\tag{21}
+\]
+\[
+\underline H_Z^*(F)\simeq\underline{\operatorname{Ext}}^*(\mathbb Z_{Z,X},F)。\tag{21 bis}
+\]
+\end{SGAresult}
+\footnote{编者注：这个命题在原版中的编号是 2.3。}
+因此可以应用 [Tôhoku] 中关于\Term{module-sheaf}{模层}的 $\operatorname{Ext}$ 的结果。首先指出，可以借助整体群 $H_Z^*(X,F)$，对\Term{sheaf}{层} $\underline H_Z^*(F)$ 作如下解释。
+\begin{SGAresult}{推论}{2.4}
+$\underline H_Z^*(F)$ \Term{canonical}{典范}\Term{isomorphism}{同构}于\Term{presheaf}{预层}
+\[
+U\longmapsto H_{Z\cap U}^*(U,F|_U)
+\]
+所对应的\Term{sheaf}{层}。
+\end{SGAresult}
+特别地，结合推论 2.3，得到：
+
+\SourcePage{19}
+\begin{SGAresult}{推论}{2.5}
+设 $Z$ 开，则存在\Term{cohomological-functor}{上同调函子}的\Term{isomorphism}{同构}
+\[
+\underline H_Z^*(F)=R^*i_*i^*(F)，\tag{22}
+\]
+其中 $i:Z\to X$ 为包含映射。
+\end{SGAresult}
+$\operatorname{Ext}$ 的\Term{spectral-sequence}{谱序列}给出以下重要的\Term{spectral-sequence}{谱序列}。
+\begin{SGAresult}{定理}{2.6}
+存在关于 $F$ \Term{functorial}{函子性}的\Term{spectral-sequence}{谱序列}，收敛到 $H_Z^*(X,F)$，其初始项为
+\[
+E_2^{p,q}(F)=H^p(X,\underline H_Z^q(F))。\tag{23}
+\]
+\end{SGAresult}
+\textbf{注记 2.7。}
+由 2.4 立即可知，\Term{sheaf}{层} $\underline H_Z^q(F)$ 在 $X-\overline Z$ 上为零；当 $q\ne0$ 时，在 $Z$ 的内部也为零。因此，对这样的 $q$，$\underline H_Z^q(F)$ 甚至\Term{support}{支撑}在 $Z$ 的\Term{boundary}{边界}上。
+
+于是，(23) 的右边可以解释为 $\overline Z$ 上的一个\Term{cohomology}{上同调}群。我们将会在 $Z$ 于 $X$ 中闭的情形下使用 2.6；这时右边可以解释为在 $Z$ 上计算的\Term{cohomology}{上同调}群：
+\[
+E_2^{p,q}(F)=H^p(Z,\underline H_Z^q(F))。\tag{23 bis}
+\]
+\footnote{编者注：这个公式在原版中的编号是 (23)。}
+还应注意，当 $Z$ 开时，根据解释 2.5 计算 \Term{leray-spectral-sequence}{Leray 谱序列}的初始项，就会发现\Term{spectral-sequence}{谱序列} 2.6 正是连续映射 $i:Z\to X$ 的\Term{leray-spectral-sequence}{Leray 谱序列}。
+
+再看\Term{exact-sequence}{正合列} (18)\footnote{编者注：原版在这里引用的是 (1.10)。}；它产生一个 $\operatorname{Ext}$ 的\Term{exact-sequence}{正合列}（参见 [Tôhoku]）。
+\begin{SGAresult}{定理}{2.8}
+设 $Z$ 为 $X$ 的一个\Term{locally-closed}{局部闭}\Term{subset}{子集}，$Z'$ 为 $Z$ 的\Term{closed-subset}{闭子集}，$Z''=Z-Z'$。则有关于 $F$ \Term{functorial}{函子性}的\Term{exact-sequence}{正合列}
+\[
+\begin{aligned}
+0&\longrightarrow H_{Z'}^0(X,F)\longrightarrow H_Z^0(X,F)
+\longrightarrow H_{Z''}^0(X,F)
+\xrightarrow{\partial} H_{Z'}^1(X,F)\longrightarrow H_Z^1(X,F)
+\longrightarrow\cdots\\
+\cdots&\longrightarrow H_{Z'}^i(X,F)\longrightarrow H_Z^i(X,F)
+\longrightarrow H_{Z''}^i(X,F)
+\xrightarrow{\partial}H_{Z'}^{i+1}(X,F)\longrightarrow\cdots。
+\end{aligned}\tag{24}
+\]
+\end{SGAresult}
+回顾一下如何得到这个\Term{exact-sequence}{正合列}。设 $C(F)$ 为 $F$ 的一个\Term{injective-resolution}{内射消解}，则\Term{exact-sequence}{正合列} (18)\footnote{编者注：参见上一条注。} 给出\Term{exact-sequence}{正合列}
+\[
+0\longrightarrow\Gamma_{Z'}(C(F))\longrightarrow\Gamma(C(F))
+\longrightarrow\Gamma_{Z''}(C(F))\longrightarrow0，\tag{25}
+\]
+这正是 1.8 中定义的\Term{exact-sequence}{正合列}。由此推出的\Term{cohomology}{上同调}\Term{exact-sequence}{正合列}就是 (24)。
+
+\SourcePage{20}
+对我们而言，最重要的是 $Z$ 闭的情形；事实上，将 $X$ 换成一个使 $Z$ 在其中闭的\Term{open-subset}{开集} $V$，总可以归结到这种情形。此时 $Z'$ 闭，$Z''$ 在\Term{open-subset}{开集} $X-Z'$ 中闭，且有
+\[
+H_{Z''}^i(X,F)=H_{Z''}^i(X-Z',F|_{X-Z'})。\tag{26}
+\]
+这使我们可以把\Term{exact-sequence}{正合列} (24) 写成\Term{support}{支撑}在给定闭集上的\Term{cohomology}{上同调}之间的\Term{exact-sequence}{正合列}。最常见的情形是 $Z=X$。为简化记号，此时令 $Z'=A$，得到：
+\begin{SGAresult}{推论}{2.9}
+设 $A$ 为 $X$ 的\Term{closed-subset}{闭子集}。则有关于 $F$ \Term{functorial}{函子性}的\Term{exact-sequence}{正合列}
+\[
+\begin{aligned}
+0&\longrightarrow H_A^0(X,F)\longrightarrow H^0(X,F)
+\longrightarrow H^0(X-A,F)\xrightarrow{\partial}H_A^1(X,F)
+\longrightarrow\cdots\\
+\cdots&\longrightarrow H_A^i(X,F)\longrightarrow H^i(X,F)
+\longrightarrow H^i(X-A,F)\xrightarrow{\partial}H_A^{i+1}(X,F)
+\longrightarrow\cdots。
+\end{aligned}\tag{27}
+\]
+\end{SGAresult}
+这个\Term{exact-sequence}{正合列}表明，\Term{cohomology}{上同调}群 $H_A^i(X,F)$ 起着 $X$ 模 $X-A$、以 $F$ 为系数的\Term{relative-cohomology}{相对上同调}群的\Term{action}{作用}。正是以这一身份，它在应用中自然出现。对 (24)、(27) 进行“\Term{sheafification}{层化}”，或直接进行计算，并注意 $i>0$ 时\Term{presheaf}{预层} $U\mapsto H^i(U,F)$ 所对应的\Term{sheaf}{层}为零，就得到：
+\begin{SGAresult}{推论}{2.10}
+在 2.8 的条件下，有关于 $F$ \Term{functorial}{函子性}的\Term{exact-sequence}{正合列}
+\[
+\cdots\longrightarrow\underline H_{Z'}^i(F)
+\longrightarrow\underline H_Z^i(F)
+\longrightarrow\underline H_{Z''}^i(F)
+\xrightarrow{\partial}\underline H_{Z'}^{i+1}(F)\longrightarrow\cdots。\tag{24 bis}
+\]
+\end{SGAresult}
+\begin{SGAresult}{推论}{2.11}
+设 $A$ 为 $X$ 的\Term{closed-subset}{闭子集}。则有关于 $F$ \Term{functorial}{函子性}的\Term{exact-sequence}{正合列}
+\[
+0\longrightarrow\underline H_A^0(F)\longrightarrow F
+\longrightarrow f_*(F|_{X-A})
+\xrightarrow{\partial}\underline H_A^1\longrightarrow0，\tag{28}
+\]
+并且当 $i\ge2$ 时，有\Term{canonical}{典范}\Term{isomorphism}{同构}
+\[
+\underline H_A^i(F)=\underline H_{X-A}^{i-1}(F)
+=R^{i-1}f_*(F|_{X-A})，\tag{29}
+\]
+其中 $f:(X-A)\to X$ 为包含映射。
+\end{SGAresult}
+这样，$\underline H_A^0(F)$、$\underline H_A^1(F)$ 分别被定义为\Term{canonical}{典范}\Term{homomorphism}{同态}
+\[
+F\longrightarrow f_*f^*(F)=f_*(F|_{X-A})
+\]
+的核与\Term{cokernel}{余核}，而 $\underline H_A^i(F)$（$i\ge2$）则由 $f_*$ 的\Term{derived-functor}{导出函子}描述。
+\begin{SGAresult}{推论}{2.12}
+设 $F$ 为 $X$ 上的\Term{abelian-sheaf}{阿贝尔层}。若 $F$ \Term{flasque-sheaf}{松弛}，则对 $X$ 的任意\Term{locally-closed}{局部闭}\Term{subset}{子集} $Z$ 及任意整数 $i\ne0$，均有
+$H_Z^i(X,F)=0$、$\underline H_Z^i(F)=0$。
+反之，若对 $X$ 的任意\Term{closed-subset}{闭子集} $Z$ 都有 $H_Z^1(X,F)=0$，则 $F$ \Term{flasque-sheaf}{松弛}。
+\end{SGAresult}
+
+\SourcePage{21}
+设 $F$ \Term{flasque-sheaf}{松弛}，则 $F$ 在任意\Term{open-subset}{开集}上诱导的\Term{sheaf}{层}仍然\Term{flasque-sheaf}{松弛}。因此，为证明 $i>0$ 时 $H_Z^i(X,F)=0$，可以假设 $Z$ 闭；此时结论由\Term{exact-sequence}{正合列} (27) 得到。\footnote{编者注：原版在这里引用的是 (2.9)。}
+再对任意\Term{locally-closed}{局部闭}\Term{subset}{子集} $Z$“\Term{sheafification}{层化}”，也就是应用 2.4，便有 $i>0$ 时 $\underline H_Z^i(F)=0$。反之，假设对每个闭集 $Z$ 都有 $H_Z^1(X,F)=0$，则\Term{exact-sequence}{正合列} (27)\footnote{编者注：原版在这里引用的是 (2.9)。} 表明，对每个这样的 $Z$，$H^0(X,F)\to H^0(X-Z,F)$ 都是\Term{surjectivity}{满射}；这就是说 $F$ \Term{flasque-sheaf}{松弛}。
+
+结合 2.6 和 2.8，可以推出：
+\begin{SGAresult}{命题}{2.13}
+设 $F$ 为 $X$ 上的\Term{abelian-sheaf}{阿贝尔层}，$Z$ 为 $X$ 的\Term{closed-subset}{闭子集}，$U=X-Z$，$N$ 为整数。下列条件\Term{equivalence}{等价}：
+
+\textnormal{(i)} 当 $i\le N$ 时，$\underline H_Z^i(F)=0$。
+
+\textnormal{(ii)} 对 $X$ 的每个\Term{open-subset}{开集} $V$，\Term{canonical}{典范}\Term{homomorphism}{同态}
+\[
+H^i(V,F)\longrightarrow H^i(V\cap U,F)
+\]
+满足：a) 当 $i<N$ 时为\Term{bijection}{双射}；b) 当 $i=N$ 时为\Term{injectivity}{单射}。
+
+当 $N>0$ 时，(ii) 中只要求 a) 即可。
+\end{SGAresult}
+为证明 (i)$\Rightarrow$(ii)，利用 $\underline H_Z^i(F)$ 的\Term{local-scheme}{局部}性，只须证明：
+\begin{SGAresult}{推论}{2.14}
+若条件 2.13 (i) 成立，则
+\[
+H^i(X,F)\longrightarrow H^i(U,F)
+\]
+在 $i<N$ 时为\Term{bijection}{双射}，在 $i=N$ 时为\Term{injectivity}{单射}。
+\end{SGAresult}
+事实上，根据\Term{exact-sequence}{正合列} (27)，这也\Term{equivalence}{等价}于 $i\le N$ 时 $H_Z^i(X,F)=0$，而后一关系是\Term{spectral-sequence}{谱序列} (23 bis) 的直接推论。\footnote{编者注：参见上一条注。}
+
+反过来，假设 2.13 (ii) 的意思是，对 $X$ 的每个\Term{open-subset}{开集} $V$，均有
+\[
+H_{Z\cap V}^i(V,F|_V)=0\qquad(i\le N)，
+\]
+借助 2.4 可知，这蕴含 2.13 (i)。此外，若 $N>0$，则条件 b) 是多余的。事实上，若 $N=1$，则由 a) 和 (28) 保证 $i\le N$ 时 $\underline H_Z^i(F)=0$；若 $N>1$，则在 $i=N-1>0$ 时使用 a)，再结合 (29)，便保证 $i\le N$ 时 $\underline H_Z^i(F)$ 为零。
+
+结合 2.11，这再次证明了 2.13 (i)……
+
+\SourcePage{22}
+\textbf{注记。}
+设 $Y\to X$ 为\Term{closed-immersion}{闭浸入}，并假设它\Term{local-scheme}{局部}具有 $\{0\}\times Y\subset\mathbb R^n\times Y$ 的形式。设 $F$ 为 $X$ 上的\Term{locally-constant-sheaf}{局部常值层}，则有
+\[
+\underline H_Y^i(F)\simeq
+\begin{cases}
+0,&i\ne n,\\
+F\otimes T_{Y,X},&i=n,
+\end{cases}
+\qquad T_{Y,X}\simeq\underline H_Y^n(\mathbb Z_X)，\tag{30}
+\]
+其中 $T_{Y,X}$ 是由 $Y$ 上一个\Term{local-scheme}{局部}\Term{isomorphism}{同构}于 $\mathbb Z_Y$ 的\Term{sheaf}{层}延拓到 $X$ 所得的\Term{sheaf}{层}，称为“$Y$ 在 $X$ 中的\Term{normal-orientation-sheaf}{法向定向层}”。
+
+利用\Term{spectral-sequence}{谱序列} (23 bis)\footnote{编者注：原版在这里引用的是 2.6。}，在这种情形下得到
+\[
+H_Y^i(X,F)\simeq H^{i-n}(Y,F\otimes T_{Y,X})，\tag{31}
+\]
+并重新得到“\Term{gysin-homomorphism}{Gysin 同态}”
+\[
+H^j(Y,F\otimes T_{Y,X})\longrightarrow H^{j+n}(X,F)。\tag{32}
+\]
+
+\SGAsection{}{参考文献}
+\noindent [Godement]\quad R. Godement，\emph{Topologie algébrique et théorie des faisceaux}
+（《\Term{algebra}{代数}\Term{topology}{拓扑}与\Term{sheaf}{层}论》），Act. Scient. et Ind.，第 1252 卷，Hermann，Paris。
+
+\noindent [Tôhoku]\quad A. Grothendieck，“Sur quelques points d'algèbre homologique”
+（《关于\Term{homology}{同调}\Term{algebra}{代数}的若干问题》），\emph{Tôhoku Math. J.} \textbf{9}（1957），119--221 页。
+
+\SGAchapter{II}{在预概形上的拟凝聚层中的应用}{Application aux faisceaux quasi-cohérents sur les préschémas}
+\SourcePage{23}
+\begin{SGAresult}{命题}{1}
+设 $X$ 为\Term{prescheme}{预概形}，$Z$ 为形如 $Z=U-V$ 的\Term{locally-closed}{局部闭}\Term{subset}{子集}，其中 $U,V$ 为 $X$ 的两个\Term{open-subset}{开子集}，满足 $V\subset U$，且\Term{canonical}{典范}\Term{immersion}{浸入} $U\to X$、$V\to X$ 均\Term{quasi-compact}{拟紧}。则对 $X$ 上任意\Term{quasi-coherent}{拟凝聚}\Term{module-sheaf}{模层} $F$，\Term{sheaf}{层} $\underline H_Z^i(F)$ 均\Term{quasi-coherent}{拟凝聚}。
+\end{SGAresult}
+由第 I 讲 (24)，存在\Term{relative-cohomology}{相对上同调}\Term{exact-sequence}{正合列}
+\[
+\longrightarrow\underline H_U^{i-1}(F)\longrightarrow\underline H_V^i(F)
+\longrightarrow\underline H_Z^i(F)\longrightarrow\underline H_U^i(F)
+\longrightarrow\underline H_V^{i+1}(F)\longrightarrow。
+\]
+根据 EGA III 1.4.17，要使 $\underline H_Z^i(F)$ \Term{quasi-coherent}{拟凝聚}，只须 $\underline H_U^i(F)$ 和 $\underline H_V^i(F)$ \Term{quasi-coherent}{拟凝聚}。因此，可以假设 $Z$ 为\Term{open-subset}{开集}，且\Term{canonical}{典范}\Term{immersion}{浸入} $j:Z\to X$ \Term{quasi-compact}{拟紧}。
+
+由于 $Z$ 开，由第 I 讲 (22) 有\Term{canonical}{典范}\Term{isomorphism}{同构}
+\[
+\underline H_Z^i(F)\simeq R^ij_*(F|_Z)。
+\]
+而 $j$ \Term{separated}{分离}（EGA I 5.5.1）且\Term{quasi-compact}{拟紧}，因此由 EGA III 1.4.10 可知，
+$R^ij_*(F|_Z)=\underline H_Z^i(F)$ \Term{quasi-coherent}{拟凝聚}，证明完毕。
+\begin{SGAresult}{推论}{2}
+设 $Z$ 为 $X$ 的\Term{closed-subset}{闭子集}，且\Term{canonical}{典范}\Term{immersion}{浸入} $X-Z\to X$ \Term{quasi-compact}{拟紧}，则\Term{module-sheaf}{模层} $\underline H_Z^i(F)$ 均\Term{quasi-coherent}{拟凝聚}。
+\end{SGAresult}
+\begin{SGAresult}{推论}{3}
+若 $X$ \Term{locally-noetherian}{局部诺特}，则对 $X$ 的任意\Term{locally-closed}{局部闭}\Term{subset}{子集} $Z$ 及 $X$ 上任意\Term{quasi-coherent}{拟凝聚}\Term{module-sheaf}{模层} $F$，$\underline H_Z^i(F)$ 均\Term{quasi-coherent}{拟凝聚}。
+\end{SGAresult}
+这是推论 2 与 EGA I 6.6.4 的直接结果。
+\begin{SGAresult}{推论}{4}
+设 $X$ 是一个环 $A$ 的\Term{spectrum}{谱}，$U$ 为 $X$ 的\Term{quasi-compact}{拟紧}\Term{open-subset}{开集}，$Y=X-U$，$F$ 为 $X$ 上的\Term{quasi-coherent}{拟凝聚}\Term{module-sheaf}{模层}。则存在关于 $F$ 的\Term{cohomological-functor}{上同调函子}的\Term{isomorphism}{同构}
+\[
+\underline H_Y^i(F)=\widetilde{H_Y^i(X,F)}。\tag{4.1}
+\]
+\SourcePage{24}
+此外，还有关于 $F$ \Term{functorial}{函子性}的\Term{exact-sequence}{正合列}
+\[
+0\longrightarrow H_Y^0(X,F)\longrightarrow H^0(X,F)
+\longrightarrow H^0(U,F)\longrightarrow H_Y^1(X,F)\longrightarrow0，\tag{4.2}
+\]
+以及关于 $F$ 的\Term{functorial}{函子性}\Term{isomorphism}{同构}
+\[
+H_Y^i(X,F)\simeq H^{i-1}(U,F),\qquad i\ge2。\tag{4.3}
+\]
+\end{SGAresult}
+由推论 2，$\underline H_Y^i(F)$ \Term{quasi-coherent}{拟凝聚}；由于 $X$ \Term{affine}{仿射}，当 $p>0$ 时有 $H^p(X,\underline H_Y^i(F))=0$。\Term{spectral-sequence}{谱序列} I (23) \Term{degeneration}{退化}，因而
+\[
+H_Y^i(X,F)=\Gamma(\underline H_Y^i(F))。
+\]
+于是等式 (4.1) 由 EGA I 1.1.3.7 得到；(4.2)、(4.3) 则由\Term{cohomology}{上同调}\Term{exact-sequence}{正合列} I (27)，以及 $X$ \Term{affine}{仿射}所蕴含的 $i>0$ 时 $H^i(X,F)=0$ 得到。
+
+在推论 4 的假设下\footnote{编者注：为保持一致与清晰，只有公式的编号放在圆括号中。}，$U$ 是\Term{finite}{有限}个\Term{affine}{仿射}\Term{open-subset}{开集} $X_f$ 的并。因此，可以找到一个由\Term{finite}{有限}多个元素 $f_\alpha$ 生成、且定义 $Y$ 的\Term{ideal}{理想} $I$，记 $\mathbf f=(f_\alpha)$。采用 EGA III 1 的记号\footnote{编者注：回顾一下，$H^\bullet(\mathbf f,M)$ 是 $\mathbf f$ 取值于 $M$ 的 Koszul \Term{cohomology}{上同调}
+$H^\bullet(\operatorname{Hom}(K_\bullet(\mathbf f),M))$（EGA III 1.1.2）；而 $H^\bullet((\mathbf f),M)$ 是\Term{limit}{极限}
+$\varinjlim_n H^\bullet(\mathbf f^n,M)$（同上，1.1.6.5），转移\Term{morphism}{态射}由自然\Term{morphism}{态射}
+$K_\bullet(\mathbf f^{n+1})\to K_\bullet(\mathbf f^n)$ 诱导（同上，1.1.6）。}，有：
+\begin{SGAresult}{命题}{5}
+设 $X$ 是一个环 $A$ 的\Term{spectrum}{谱}，$\mathbf f=(f_\alpha)$ 为 $A$ 中的一个\Term{finite}{有限}元素族，$Y$ 为它们在 $X$ 中定义的\Term{closed-subset}{闭子集}，$M$ 为一个 $A$-模，$F$ 为 $M$ 所对应的\Term{sheaf}{层}。则存在关于 $M$ 的 $\partial$-\Term{functor}{函子}的\Term{isomorphism}{同构}
+\[
+H^i((\mathbf f),M)\simeq H_Y^i(X,F)。\tag{5.1}
+\]
+若 $Y$ 为\Term{ideal}{理想} $J\subset A$ 在 $X=\operatorname{Spec}A$ 中定义的\Term{closed-subset}{闭子集}，我们也记
+$H_J^i(M)=H_Y^i(X,F)$。
+\end{SGAresult}
+当 $i=0$ 或 $i=1$ 时，使用\Term{exact-sequence}{正合列} (4.2) 和 EGA III 1.4.3.2；当 $i\ge2$ 时，使用 (4.3) 和 EGA III 1.4.3.1。这样得到关于 $M$ 的\Term{functorial}{函子性}\Term{isomorphism}{同构}。可以证明，这些\Term{isomorphism}{同构}与边缘算子相容，至多相差一个只依赖于 $i$ 的符号，因而得到 $\partial$-\Term{functor}{函子}的\Term{isomorphism}{同构} (5.1)。
+
+现在设 $X$ 为\Term{prescheme}{预概形}，$Y$ 为 $X$ 的\Term{closed-subset}{闭子集}，$f:Y\to X$ 为包含映射，$I$ 为在 $X$ 中定义 $Y$ 的一个\Term{quasi-coherent}{拟凝聚}\Term{ideal-sheaf}{理想层}。设 $F$ 为 $X$ 上的一个\Term{sheaf}{层}。
+
+前面已经看到，存在关于 $F$ 的 $\partial$-\Term{functor}{函子}的\Term{isomorphism}{同构}
+\[
+\operatorname{Ext}_{\mathcal O_X}^i(X;f_*f^{-1}(\mathcal O_X),F)
+\longrightarrow H_Y^i(X,F)，\tag{$*$}
+\]
+\[
+\underline{\operatorname{Ext}}_{\mathcal O_X}^i(f_*f^{-1}(\mathcal O_X),F)
+\longrightarrow\underline H_Y^i(F)。\tag{$**$}
+\]
+设整数 $m\ge n\ge0$。以 $i_{n,m}$ 表示\Term{canonical}{典范}映射
+\[
+\mathcal O_{Y_m}=\mathcal O_X/I^{m+1}
+\longrightarrow\mathcal O_X/I^{n+1}=\mathcal O_{Y_n}，
+\]
+\SourcePage{25}
+并以 $j_n$ 表示映射 $f_*f^{-1}(\mathcal O_X)\to\mathcal O_{Y_n}$。
+$(\mathcal O_{Y_n},i_{n,m})$ 构成一个\Term{projective-system}{逆系}，且 $j_n$ 与 $i_{n,m}$ 相容。
+
+应用\Term{functor}{函子} $\operatorname{Ext}_{\mathcal O_X}^i(X;\,\cdot\,,F)$，得到\Term{morphism}{态射}
+\[
+\varphi':\varinjlim_n\operatorname{Ext}_{\mathcal O_X}^i(X;\mathcal O_{Y_n},F)
+\longrightarrow\operatorname{Ext}_{\mathcal O_X}^i
+(X;f_*f^{-1}(\mathcal O_X),F)。
+\]
+容易证明，这是关于 $F$ 的\Term{cohomological-functor}{上同调函子}的\Term{morphism}{态射}。因此，$\varphi'$ 与 $(*)$ 的复合
+\[
+\varphi:\varinjlim_n\operatorname{Ext}_{\mathcal O_X}^i(X;\mathcal O_{Y_n},F)
+\longrightarrow H_Y^i(X,F)
+\]
+也是关于 $F$ 的\Term{cohomological-functor}{上同调函子}的\Term{morphism}{态射}。同样定义
+\[
+\underline\varphi:\varinjlim_n
+\underline{\operatorname{Ext}}_{\mathcal O_X}^i(\mathcal O_{Y_n},F)
+\longrightarrow\underline H_Y^i(F)。
+\]
+我们的目标是以下定理。
+\begin{SGAresult}{定理}{6}
+a) 设 $X$ 为\Term{locally-noetherian}{局部诺特}\Term{prescheme}{预概形}，$Y$ 为由\Term{coherent}{凝聚}\Term{ideal-sheaf}{理想层} $I$ 定义的 $X$ 的\Term{closed-subset}{闭子集}，$F$ 为\Term{quasi-coherent}{拟凝聚}\Term{module-sheaf}{模层}。则 $\underline\varphi$ 是\Term{isomorphism}{同构}。
+
+b) 若 $X$ \Term{noetherian}{诺特}，则 $\varphi$ 是\Term{isomorphism}{同构}。
+\end{SGAresult}
+定理 6 将由 6.a) 及以下引理推出。
+\begin{SGAresult}{引理}{7}
+若 $X$ 的底\Term{topological-space}{拓扑空间}\Term{noetherian}{诺特}，且 $\underline\varphi$ 是\Term{isomorphism}{同构}，则 $\varphi$ 也是\Term{isomorphism}{同构}。
+\end{SGAresult}
+先证明引理 7。已知存在\Term{spectral-sequence}{谱序列}
+\[
+H^p(X,\underline H_Y^q(F))\Longrightarrow H_Y^*(X,F)。\tag{7.1}
+\]
+另一方面，还有\Term{spectral-sequence}{谱序列}的一个\Term{inductive-system}{顺系}
+\[
+H^p\bigl(X,\underline{\operatorname{Ext}}_{\mathcal O_X}^q
+(\mathcal O_{Y_n},F)\bigr)
+\Longrightarrow\operatorname{Ext}_{\mathcal O_X}^*(X;\mathcal O_{Y_n},F)。\tag{$7.2_n$}
+\]
+由 $\varphi$、$\underline\varphi$ 的定义，它们对应于一个从 $(7.2_n)$ 的\Term{direct-limit}{归纳极限}到 (7.1) 的\Term{spectral-sequence}{谱序列}\Term{homomorphism}{同态} $\Phi$。若 $X$ 的底空间\Term{noetherian}{诺特}，则由 Godement 4.12.1\footnote{参见第 I 讲末的第一条参考文献。}，
+\[
+\varinjlim_n H^p\bigl(X,\underline{\operatorname{Ext}}_{\mathcal O_X}^q
+(\mathcal O_{Y_n},F)\bigr)
+\xrightarrow{\sim}
+H^p\bigl(X,\varinjlim_n
+\underline{\operatorname{Ext}}_{\mathcal O_X}^q(\mathcal O_{Y_n},F)\bigr)。
+\]
+于是 $\Phi_2$ 可以写成\Term{morphism}{态射}
+\[
+H^p\bigl(X,\varinjlim_n
+\underline{\operatorname{Ext}}_{\mathcal O_X}^q(\mathcal O_{Y_n},F)\bigr)
+\longrightarrow H^p(X,\underline H_Y^q(F))，
+\]
+它正是由 $\underline\varphi$ 导出的\Term{morphism}{态射}。
+
+若 $\underline\varphi$ 是\Term{isomorphism}{同构}，则 $\Phi_2$ 也是\Term{isomorphism}{同构}，从而由 EGA $0_{\mathrm{III}}$ 11.1.5，$\varphi$ 也是\Term{isomorphism}{同构}。引理 7 得证。
+
+\SourcePage{26}
+现在证明 6.a)。这是 $X$ 上的\Term{local-scheme}{局部}问题。由推论 4 及 EGA I 1.3.9、1.3.12，可以假设 $X$ 是一个环 $A$ 的\Term{spectrum}{谱}。因此只须证明，在定理 6.a) 的假设下，\Term{canonical}{典范}\Term{homomorphism}{同态}
+\[
+\varinjlim_n\operatorname{Ext}_A^i(A/I^n,M)
+\longrightarrow H_Y^i(X,M)\tag{7.3}
+\]
+是\Term{isomorphism}{同构}。
+
+设 $f_\alpha$ 为\Term{finite}{有限}多个生成 $I$ 的 $A$ 中元素，记 $\mathbf f=(f_\alpha)$。则\Term{ideal}{理想}序列 $(\mathbf f^n)$ 递减，且与 $I^n$ 的序列共尾，所以 (7.3) \Term{equivalence}{等价}于关于 $M$ 的 $\partial$-\Term{functor}{函子}\Term{morphism}{态射}
+\[
+\varinjlim_n\operatorname{Ext}_A^i(A/(\mathbf f^n),M)
+\longrightarrow H_Y^i(X,M)。\tag{7.4}
+\]
+另一方面，有\Term{canonical}{典范}\Term{isomorphism}{同构}
+\[
+\varinjlim_n\operatorname{Hom}_A(A/(\mathbf f^n),M)
+\simeq\varinjlim_n\{m\in M\mid(\mathbf f^n)m=0\}
+\simeq H^0((\mathbf f),M)。\tag{7.5}
+\]
+由于 $\varinjlim_n\operatorname{Ext}_A^i(A/(\mathbf f^n),M)$ 是关于 $M$ 的\Term{universal-delta-functor}{泛 $\partial$-函子}，存在唯一的 $\partial$-\Term{functor}{函子}\Term{morphism}{态射}
+\[
+\varinjlim_n\operatorname{Ext}_A^i(A/(\mathbf f^n),M)
+\longrightarrow H^i((\mathbf f),M)，\tag{7.6}
+\]
+使其在零次与 (7.5) 一致。
+
+由于 (7.3) 与 (5.1) 的复合是关于 $M$ 的 $\partial$-\Term{functor}{函子}\Term{morphism}{态射}，并且在零次与 (7.6) 一致，所以它在每一次都与 (7.6) 一致。于是，定理 6.a) 是以下引理的直接推论。
+\begin{SGAresult}{引理}{8}
+设 $A$ 为\Term{noetherian}{诺特环}，$I$ 为由\Term{finite}{有限}元素组 $\mathbf f=(f_\alpha)$ 生成的\Term{ideal}{理想}，$M$ 为一个 $A$-模。则\Term{homomorphism}{同态} (7.6) 均为\Term{isomorphism}{同构}。
+\end{SGAresult}
+\begin{SGAresult}{引理}{9}
+设 $A$ 为一个环，$\mathbf f=(f_\alpha)$ 为 $A$ 中的一个\Term{finite}{有限}元素组，$I$ 为 $\mathbf f$ 生成的\Term{ideal}{理想}，$i$ 为正整数。下列条件\Term{equivalence}{等价}：
+
+a) \Term{homomorphism}{同态} (7.6) 对每个 $M$ 都是\Term{isomorphism}{同构}。
+
+b) 当 $M$ \Term{injective-object}{内射}时，$H^i((\mathbf f),M)=0$。
+
+c) \Term{projective-system}{逆系} $(H_i(\mathbf f^n,A))=H_{i,n}$ \Term{essentially-zero}{本质为零}，即对每个 $n$，存在 $n'>n$ 使 $H_{i,n'}\to H_{i,n}$ 为零。
+\end{SGAresult}
+a) 蕴含 b) 是显然的。
+
+b) 蕴含 a)：事实上，由 b) 可知 $M\mapsto H^i((\mathbf f),M)$ 为泛\Term{cohomological-functor}{上同调函子}，因而 (7.6) 是泛\Term{cohomological-functor}{上同调函子}之间的\Term{morphism}{态射}。它在零次是\Term{isomorphism}{同构}，所以在每一次都是\Term{isomorphism}{同构}。
+
+c) 蕴含 b)：事实上，若 $M$ \Term{injective-object}{内射}，则对每个 $n$，
+\[
+H^i(\mathbf f^n,M)=\operatorname{Hom}(H_i(\mathbf f^n,A),M)
+=\operatorname{Hom}(H_{i,n},M)。
+\]
+\SourcePage{27}
+因此 c) 蕴含：对每个 $i$，\Term{inductive-system}{顺系} $(H^i(\mathbf f^n,M))_{n\in\mathbb Z}$ \Term{essentially-zero}{本质为零}，从而得到 b)。
+
+b) 蕴含 c)：设 $n>0$，$j$ 为 $H_{i,n}$ 到某个\Term{injective-object}{内射}模 $M$ 的\Term{monomorphism}{单态射}。设 $n'\ge n$，以
+$j_{n'}\in\operatorname{Hom}(H_{i,n'},M)$ 表示 $j$ 与转移\Term{homomorphism}{同态}
+$t_{n',n}:H_{i,n'}\to H_{i,n}$ 的复合。各 $j_{n'}$ 定义 $H^i((\mathbf f),M)$ 的一个元素，依假设它为零。因此存在 $n_0$，使 $n'>n_0$ 时 $j_{n'}=0$。而 $j$ 是\Term{monomorphism}{单态射}，所以 $j_{n'}=0$ 蕴含 $t_{n',n}=0$，结论得证。
+\begin{SGAresult}{推论}{10}
+设 $X=\operatorname{Spec}(A)$ 的底空间\Term{noetherian}{诺特}。要使上述条件对 $A$ 中的每个\Term{finite}{有限}元素族以及每个 $i>0$ 都成立（或者只要求对 $i=1$ 成立），充要条件是：对每个\Term{injective-object}{内射} $A$-模 $M$，$M$ 所对应的\Term{sheaf}{层} $F$ 都\Term{flasque-sheaf}{松弛}。
+\end{SGAresult}
+必要性：设 $\mathbf f=(f_\alpha)$ 为 $A$ 中的一个\Term{finite}{有限}元素组，$Y$ 为 $\mathbf f$ 定义的闭集，$U=X-Y$，则有\Term{exact-sequence}{正合列}
+\[
+H^0(X,F)\longrightarrow H^0(U,F)\longrightarrow H^1((\mathbf f),M)\longrightarrow0。
+\]
+由 9.b)，$H^0(X,F)\to H^0(U,F)$ 为\Term{surjectivity}{满射}。
+
+充分性由 (5.1)，以及对 $X$ 的任意\Term{closed-subset}{闭子集} $Y$ 和任意\Term{flasque-sheaf}{松弛层} $F$，当 $i>0$ 时 $H_Y^i(X,F)=0$ 得到。
+\begin{SGAresult}{引理}{11}
+在引理 9 的假设下，对每个\Term{noetherian}{诺特} $A$-模 $N$ 和每个 $i>0$，\Term{projective-system}{逆系} $(H_{i,n}(N))_{n\in\mathbb Z}$ 均\Term{essentially-zero}{本质为零}，其中 $H_{i,n}(N)=H_i(\mathbf f^n,N)$。
+\end{SGAresult}
+\begin{proof}
+对 $\mathbf f$ 中元素的个数 $m$ 作归纳。
+
+若 $m=1$，则 $\mathbf f$ 只有一个元素，记为 $f$。当 $i>1$ 时 $H_{i,n}(N)=0$，而 $H_{1,n}(N)$ \Term{canonical}{典范}\Term{isomorphism}{同构}于 $f^n$ 在 $N$ 中的\Term{annihilator}{零化子} $N(n)$。转移\Term{homomorphism}{同态} $N(n')\to N(n)$（$n'\ge n$）为乘以 $f^{n'-n}$。各 $N(n)$ 组成 $N$ 的\Term{submodule}{子模}的递增序列；由于 $N$ \Term{noetherian}{诺特}，存在 $n_0$，使 $n\ge n_0$ 时 $N(n)=N(n_0)$。于是所有 $N(n)$ 都被 $f^{n_0}$ 零化，而当 $n'\ge n+n_0$ 时，转移\Term{homomorphism}{同态} $N(n')\to N(n)$ 全为零。因此引理在 $m=1$ 时成立。
+
+现在设 $m>1$，且引理已对所有 $m'<m$ 成立。令 $\mathbf g=(f_1,\ldots,f_{m-1})$，$h=f_m$。
+
+对每个 $n>0$，有\Term{exact-sequence}{正合列}（EGA III 1.1.4.1）
+\[
+0\longrightarrow H_0(h^n,H_i(\mathbf g^n,N))
+\longrightarrow H_i(\mathbf f^n,N)
+\longrightarrow H_1(h^n,H_{i-1}(\mathbf g^n,N))
+\longrightarrow0，
+\]
+而当 $n$ 变化时，它们组成\Term{exact-sequence}{正合列}的一个\Term{projective-system}{逆系}。由归纳假设，当 $i>0$ 时，各 $H_i(\mathbf g^n,N)$ 组成一个\Term{essentially-zero}{本质为零}的\Term{projective-system}{逆系}，因而各 $H_0(h^n,H_i(\mathbf g^n,N))$ 也是如此，因为它们可以看成 $H_i(\mathbf g^n,N)$ 的商。对于右端各项，把从 $n'$ 到 $n$ 的转移\Term{morphism}{态射}\Term{resolution}{分解}为
+\[
+\begin{aligned}
+H_1(h^{n'},H_{i-1}(\mathbf g^{n'},N))
+&\longrightarrow H_1(h^{n'},H_{i-1}(\mathbf g^n,N))\\
+&\longrightarrow H_1(h^n,H_{i-1}(\mathbf g^n,N))。
+\end{aligned}
+\]
+\SourcePage{28}
+由于 $H_{i-1}(\mathbf g^n,N)$ 是\Term{noetherian}{诺特}模，应用 $m=1$ 的情形可知，对给定的 $n$，存在 $n'>n$ 使第二个\Term{arrow}{箭头}为零。因此，在这个\Term{exact-sequence}{正合列}\Term{projective-system}{逆系}中，两端的\Term{projective-system}{逆系}都\Term{essentially-zero}{本质为零}，中间的\Term{projective-system}{逆系}也就\Term{essentially-zero}{本质为零}。
+\end{proof}
+这样，引理 11 得证，因而引理 8 以及定理 6 也都得证。
+
+\textbf{注记。}
+利用\Term{noetherian}{诺特环}上\Term{injective-object}{内射}模的结构定理（Matlis、Gabriel），证明推论 10 中的条件，也可以得到定理 6。
+
+\SGAchapter{III}{上同调不变量与深度}{Invariants cohomologiques et profondeur}
+\SourcePage{29}
+\SGAsection{1}{回顾}
+先陈述一些定义和结果，读者可在 J.-P. Serre 1957—1958 年在法兰西学院讲授的课程第一章中找到它们。\footnote{编者注：Serre 课程的重印本（J.-P. Serre，\emph{Algèbre locale. Multiplicités}，《\Term{local-scheme}{局部}\Term{algebra}{代数}·\Term{multiplicity}{重数}》，1957—1958 年法兰西学院课程，由 Pierre Gabriel 整理，第二版，Lecture Notes in Mathematics，第 11 卷，Springer-Verlag，1965）已不再包含这些命题的证明。可按 Serre 本人的建议，参见 N. Bourbaki 的 \emph{Algèbre commutative}（《交换\Term{algebra}{代数}》），Masson。}
+\begin{SGAresult}{定义}{1.1}
+设 $A$ 为一个环，$M$ 为一个 $A$-模；这里及下文中，环都交换且有单位元，模都为酉模。定义：
+
+--- $M$ 的\Term{annihilator}{零化子}，记为 $\operatorname{Ann}M$，是满足对每个 $m\in M$ 都有 $am=0$ 的所有 $a\in A$ 构成的\Term{set}{集合}。
+
+--- $M$ 的\Term{support}{支撑}，记为 $\operatorname{Supp}M$，是使\Term{localization}{局部化} $M_{\mathfrak p}$ 非零的所有\Term{prime-ideal}{素理想} $\mathfrak p\subset A$ 构成的\Term{set}{集合}。
+
+--- “$M$ 的 assassin”，也就是“$M$ 的\Term{associated-prime}{相伴素理想}\Term{set}{集合}”，记为 $\operatorname{Ass}M$，是满足下述条件的所有\Term{prime-ideal}{素理想} $\mathfrak p\subset A$ 构成的\Term{set}{集合}：存在 $M$ 的某个非零元素，其\Term{annihilator}{零化子}恰为 $\mathfrak p$。
+\end{SGAresult}
+若 $\mathfrak a$ 是 $A$ 的一个\Term{ideal}{理想}，以 $r(\mathfrak a)$ 表示 $\mathfrak a$ 在 $A$ 中的\Term{radical-ideal}{根理想}，即 $A$ 中某个幂属于 $\mathfrak a$ 的所有元素构成的\Term{set}{集合}。
+
+以下结果在 $A$ \Term{noetherian}{诺特}、$M$ \Term{finitely-generated}{有限生成}的假设下成立。
+\begin{SGAresult}{命题}{1.1}
+\textnormal{(i)} $\operatorname{Ass}M$ 是\Term{finite}{有限}集。
+
+\textnormal{(ii)} $A$ 的一个元素零化 $M$ 的某个非零元素，当且仅当它属于 $M$ 的某个\Term{associated-prime}{相伴素理想}。
+
+\SourcePage{30}
+\textnormal{(iii)} $M$ 的\Term{annihilator}{零化子}的根 $r(\operatorname{Ann}M)$，等于 $M$ 的各个极小\Term{associated-prime}{相伴素理想}之交；这里的极小是指在 $\operatorname{Ass}M$ 中关于包含关系极小。
+\end{SGAresult}
+\begin{SGAresult}{命题}{1.2}
+设 $\mathfrak p$ 为 $A$ 的\Term{prime-ideal}{素理想}。下列断言\Term{equivalence}{等价}：
+
+\textnormal{(i)} $\mathfrak p\in\operatorname{Supp}M$。
+
+\textnormal{(ii)} 存在 $\mathfrak q\in\operatorname{Ass}M$，使 $\mathfrak q\subset\mathfrak p$。
+
+\textnormal{(iii)} $\mathfrak p\supset\operatorname{Ann}M$。
+
+\textnormal{(iii bis)} $\mathfrak p\supset r(\operatorname{Ann}M)$。
+\end{SGAresult}
+\begin{SGAresult}{命题}{1.3}
+设 $N$ 为\Term{finitely-generated}{有限生成} $A$-模，则有公式
+\[
+\operatorname{Ass}\operatorname{Hom}_A(N,M)
+=\operatorname{Supp}N\cap\operatorname{Ass}M。
+\]
+\end{SGAresult}
+
+\SGAsection{2}{深度}
+本节中，$A$ 为一个交换环，$I$ 为 $A$ 的一个\Term{ideal}{理想}，$M,N$ 为两个 $A$-模。以 $X$ 表示 $A$ 的\Term{prime-spectrum}{素谱}（本节不使用它的\Term{structure-sheaf}{结构层}），以 $Y$ 表示 $I$ 的零点集：
+\[
+Y=\operatorname{Supp}(A/I)=\{\mathfrak p\in X\mid\mathfrak p\supset I\}。
+\]
+\begin{SGAresult}{引理}{2.1}
+设 $A$ \Term{noetherian}{诺特}，模 $M,N$ 均\Term{finitely-generated}{有限生成}，并且 $\operatorname{Supp}N=Y$。则下列断言\Term{equivalence}{等价}：
+
+\textnormal{(i)} $\operatorname{Hom}_A(N,M)=0$。
+
+\textnormal{(ii)} $\operatorname{Supp}N\cap\operatorname{Ass}M=\varnothing$。
+
+\textnormal{(iii)} \Term{ideal}{理想} $I$ 在 $M$ 中不是\Term{zero-divisor}{零因子}，即对每个 $m\in M$，$Im=0$ 蕴含 $m=0$。
+
+\textnormal{(iv)} $I$ 中存在一个 $M$-\Term{regular-element}{正则元素}。若 $A$ 的一个元素 $a$ 在 $M$ 中诱导的倍乘映射为\Term{injectivity}{单射}，就称 $a$ 为 $M$-\Term{regular-element}{正则元素}。
+
+\textnormal{(v)} 对每个 $\mathfrak p\in Y$，\Term{local-ring}{局部环} $A_{\mathfrak p}$ 的\Term{maximal-ideal}{极大理想} $\mathfrak pA_{\mathfrak p}$ 不是 $M_{\mathfrak p}$ 的\Term{associated-prime}{相伴素理想}，即
+$\mathfrak pA_{\mathfrak p}\notin\operatorname{Ass}M_{\mathfrak p}$。
+\end{SGAresult}
+\begin{proof}
+(i)$\Leftrightarrow$(ii)：由命题 1.3，$\operatorname{Ass}\operatorname{Hom}_A(N,M)=\varnothing$ \Term{equivalence}{等价}于 (ii)；又由命题 1.2 的一个简单推论，它也\Term{equivalence}{等价}于 (i)。
+
+(iii)$\Rightarrow$(ii)：用反证法。若存在 $\mathfrak p\in\operatorname{Supp}N\cap\operatorname{Ass}M$，则 $\mathfrak p\supset I$，且存在\Term{annihilator}{零化子}为 $\mathfrak p$ 的 $m\in M$，于是 $Im\subset\mathfrak pm=0$，与 (iii) 矛盾。
+
+(iv)$\Rightarrow$(iii) 显然。
+
+(ii)$\Leftrightarrow$(iv)：由于 $\operatorname{Supp}N=Y$，(ii) 意味着 $I$ 不包含在 $M$ 的任何\Term{associated-prime}{相伴素理想}中。又因 $M$ 的相伴\Term{ideal}{理想}都是\Term{prime-ideal}{素理想}，且只有\Term{finite}{有限}多个，这也就是说，$I$ 不包含在这些\Term{associated-prime}{相伴素理想}的并中。由命题 1.1 (ii)，这个并集正是 $A$ 中所有非 $M$-\Term{regular-element}{正则元素}构成的\Term{set}{集合}。
+
+\SourcePage{31}
+(i)$\Rightarrow$(v)：若 $\operatorname{Hom}_A(N,M)=0$ 且 $\mathfrak p\in Y$，由公式
+\[
+\bigl(\operatorname{Hom}_A(N,M)\bigr)_{\mathfrak p}
+=\operatorname{Hom}_{A_{\mathfrak p}}(N_{\mathfrak p},M_{\mathfrak p})
+\]
+可知 $\operatorname{Hom}_{A_{\mathfrak p}}(N_{\mathfrak p},M_{\mathfrak p})=0$，所以由命题 1.3，
+\[
+\operatorname{Supp}N_{\mathfrak p}\cap\operatorname{Ass}M_{\mathfrak p}
+=\varnothing。
+\]
+而 $\mathfrak pA_{\mathfrak p}\in\operatorname{Supp}N_{\mathfrak p}$，故 $\mathfrak pA_{\mathfrak p}\notin\operatorname{Ass}M_{\mathfrak p}$。
+
+(v)$\Rightarrow$(i)：若 $\mathfrak p\in\operatorname{Ass}M$，则存在\Term{annihilator}{零化子}为 $\mathfrak p$ 的 $m\in M$。$m$ 在 $M_{\mathfrak p}$ 中的\Term{canonical}{典范}像非零，其\Term{annihilator}{零化子}包含 $\mathfrak p$，从而包含 $\mathfrak pA_{\mathfrak p}$，故等于这个\Term{maximal-ideal}{极大理想}。因此，$\mathfrak pA_{\mathfrak p}$ 是 $M_{\mathfrak p}$ 的\Term{associated-prime}{相伴素理想}；由 (v)，$\mathfrak p\notin Y$，从而得到 (i)。
+\end{proof}
+我们将把\Term{functor}{函子} $\operatorname{Hom}$ 换成它的\Term{derived-functor}{导出函子}，以研究这些条件。
+\begin{SGAresult}{定理}{2.2}
+设 $A$ 为交换环，$I$ 为 $A$ 的\Term{ideal}{理想}，$M$ 为一个 $A$-模，$n$ 为整数。
+
+a) 若 $I$ 中存在元素序列 $f_1,\ldots,f_{n+1}$，构成 $M$-\Term{regular-sequence}{正则序列}（即 $f_1$ 为 $M$-\Term{regular-element}{正则元素}，而对 $i\le n$，$f_{i+1}$ 在 $M/(f_1,\ldots,f_i)M$ 中\Term{regular}{正则}），则对每个被 $I$ 的某个\Term{nilpotent}{幂零}化的 $A$-模 $N$，有
+\[
+\operatorname{Ext}_A^i(N,M)=0\qquad(i\le n)。
+\]
+b) 若再假设 $A$ \Term{noetherian}{诺特}，$M$ \Term{finitely-generated}{有限生成}，且存在\Term{finitely-generated}{有限生成} $A$-模 $N$，使 $\operatorname{Supp}N=V(I)$，并且 $i\le n$ 时 $\operatorname{Ext}_A^i(N,M)=0$，则 $I$ 中存在一个 $M$-\Term{regular-sequence}{正则序列} $f_1,\ldots,f_{n+1}$。
+\end{SGAresult}
+先用归纳法证明 a)。若 $n<0$，断言为空。
+
+若 $n\ge0$，假设 a) 已对所有 $n'<n$ 成立。依假设，存在一个 $M$-\Term{regular-element}{正则元素} $f_1\in I$。以 $f_1^i$ 表示在 $\operatorname{Ext}_A^i(N,M)$ 中乘以 $f_1$ 的映射，以 $f_1^M$ 表示在 $M$ 中乘以 $f_1$ 的映射。序列
+\[
+0\longrightarrow M\xrightarrow{f_1^M}M
+\longrightarrow M/f_1M\longrightarrow0\tag{2.1}
+\]
+\Term{exactness}{正合}，因此以下序列也\Term{exactness}{正合}：
+\[
+\operatorname{Ext}_A^{i-1}(N,M/f_1M)
+\xrightarrow{\delta}\operatorname{Ext}_A^i(N,M)
+\xrightarrow{f_1^i}\operatorname{Ext}_A^i(N,M)。
+\]
+依假设 $I^rN=0$，故 $f_1^0$ \Term{nilpotent}{幂零}；由于 $\operatorname{Ext}^i$ 是泛\Term{functor}{函子}，对每个 $i$，$f_1^i$ 都同样\Term{nilpotent}{幂零}。另一方面，$M/f_1M$ 中存在一个有 $n$ 个元素的\Term{regular-sequence}{正则序列}，所以由归纳假设，
+\[
+\operatorname{Ext}_A^{i-1}(N,M)=0\qquad(i\le n-1)。
+\]
+于是，当 $i\le n$ 时，$f_1^i$ 既\Term{nilpotent}{幂零}又\Term{injectivity}{单射}，所以 $\operatorname{Ext}_A^i(N,M)=0$。
+
+再用归纳法证明 b)。若 $n<0$，断言为空。若 $n=0$，由引理 2.1 的 (i)$\Rightarrow$(iv) 得到 b)。
+
+\SourcePage{32}
+若 $n>0$，由 $n=0$ 时的 b)，存在一个 $M$-\Term{regular-element}{正则元素} $f_1\in I$。由\Term{exact-sequence}{正合列} (2.1) 得到\Term{exact-sequence}{正合列}
+\[
+\operatorname{Ext}_A^{i-1}(N,M)
+\longrightarrow\operatorname{Ext}_A^{i-1}(N,M/f_1M)
+\longrightarrow\operatorname{Ext}_A^i(N,M)。\tag{2.2}
+\]
+因此，模 $M/f_1M$ 和整数 $n-1$ 满足 b) 的假设。由归纳假设，$I$ 中存在一个有 $n$ 个元素、关于 $M/f_1M$ \Term{regular}{正则}的序列。这就意味着，$I$ 中存在一个以 $f_1$ 开始、具有 $n+1$ 个元素的 $M$-\Term{regular-sequence}{正则序列}。
+
+这个定理提示我们，可以按如下方式推广\Term{noetherian}{诺特环}上\Term{finitely-generated}{有限生成}模的经典\Term{depth}{深度}定义。
+\begin{SGAresult}{定义}{2.3}
+设 $A$ 为有单位元的交换环，$M$ 为一个 $A$-模，$I$ 为 $A$ 的一个\Term{ideal}{理想}。$M$ 的 $I$-\Term{depth}{深度}，记为 $\operatorname{prof}_I M$，定义为以下自然数 $n$ 构成的\Term{set}{集合}在 $\mathbb N\cup\{+\infty\}$ 中的\Term{supremum}{上确界}：对每个被 $I$ 的某个\Term{nilpotent}{幂零}化的\Term{finitely-generated}{有限生成} $A$-模 $N$，都有
+\[
+\operatorname{Ext}_A^i(N,M)=0\qquad\text{对所有 }i<n。
+\]
+\end{SGAresult}
+由上一定理可知，若 $n$ 是由 $I$ 中元素组成的各个 $M$-\Term{regular-sequence}{正则序列}的长度的\Term{supremum}{上确界}，则 $n\le\operatorname{prof}_IM$。更确切地说：
+\begin{SGAresult}{命题}{2.4}
+设 $A$ 为交换环，$I$ 为 $A$ 的\Term{ideal}{理想}，$M$ 为一个 $A$-模，$n\in\mathbb N$。考虑以下断言：
+
+\textnormal{(1)} $n\le\operatorname{prof}_IM$。
+
+\textnormal{(2)} 对每个被 $I$ 的某个\Term{nilpotent}{幂零}化的\Term{finitely-generated}{有限生成} $A$-模 $N$，有
+\[
+\operatorname{Ext}_A^i(N,M)=0\qquad(i<n)。
+\]
+\textnormal{(3)} 存在\Term{finitely-generated}{有限生成} $A$-模 $N$，使 $\operatorname{Supp}N=V(I)$，且当 $i<n$ 时 $\operatorname{Ext}_A^i(N,M)=0$。
+
+\textnormal{(4)} 存在由 $I$ 中元素组成、长度为 $n$ 的 $M$-\Term{regular-sequence}{正则序列}。
+
+它们之间有以下逻辑蕴含关系：
+\[
+\begin{tikzcd}[column sep=large,row sep=small]
+(1)\arrow[r,Leftrightarrow] & (2)\arrow[d,Rightarrow] & (4)\arrow[l,Rightarrow]\\
+& (3) &
+\end{tikzcd}
+\]
+此外，若 $A$ \Term{noetherian}{诺特}、$M$ \Term{finitely-generated}{有限生成}，则这些条件\Term{equivalence}{等价}。
+\end{SGAresult}
+\begin{proof}
+(1)$\Leftrightarrow$(2) 由定义得到；取 $N=A/I$ 就得到 (2)$\Rightarrow$(3)。由定理 2.2 a)，还有 (4)$\Rightarrow$(2)。最后，若 $A$ \Term{noetherian}{诺特}、$M$ \Term{finitely-generated}{有限生成}，则由定理 2.2 b) 得到 (3)$\Rightarrow$(4)。
+\end{proof}
+在本节余下部分，均假设 $A$ \Term{noetherian}{诺特}、$M$ \Term{finitely-generated}{有限生成}。
+
+\SourcePage{33}
+\begin{SGAresult}{推论}{2.5}
+若 $f\in I$ 为 $M$-\Term{regular-element}{正则元素}，则
+\[
+\operatorname{prof}_IM=\operatorname{prof}_I(M/fM)+1。
+\]
+\end{SGAresult}
+事实上，若 $n\le\operatorname{prof}_I(M/fM)$，则 $I$ 中存在一个 $(M/fM)$-\Term{regular-sequence}{正则序列} $f_1,\ldots,f_n$；于是 $f,f_1,\ldots,f_n$ 是 $M$-\Term{regular-sequence}{正则序列}，故 $n+1\le\operatorname{prof}_IM$。因此 $\operatorname{prof}_IM\ge\operatorname{prof}_I(M/fM)+1$。另一方面，由\Term{exact-sequence}{正合列} (2.2)，若 $i\le\operatorname{prof}_IM$，则 $\operatorname{Ext}_A^{i-1}(N,M/fM)=0$，所以 $\operatorname{prof}_IM-1\le\operatorname{prof}_I(M/fM)$。
+\begin{SGAresult}{推论}{2.6}
+每个由 $I$ 中元素组成的\Term{finite}{有限} $M$-\Term{regular-sequence}{正则序列}，都可以延长为一个极大 $M$-\Term{regular-sequence}{正则序列}，其长度必等于 $M$ 的 $I$-\Term{depth}{深度}。
+\end{SGAresult}
+\textbf{注记 2.7。}
+我们几乎忍不住要说，一个 $A$-模的\Term{depth}{深度}越大，它就越漂亮。\Term{support}{支撑}不与 $V(I)$ 相交的模，堪称最漂亮的一类；事实上，可以证明，$\operatorname{prof}_IM$ \Term{finite}{有限}的充要条件是
+$\operatorname{Supp}M\cap V(I)\ne\varnothing$。
+
+\textbf{注记 2.8。}
+若 $A$ 为\Term{semilocal-ring}{半局部环}，记其根为 $r(A)$，其剩余环为 $k=A/r(A)$。此时最值得关注的\Term{depth}{深度}概念，是取 $I$ 为 $A$ 的根所得的\Term{depth}{深度}。因此，我们约定把 $A$-模 $M$ 的 $r(A)$-\Term{depth}{深度}简记为 $\operatorname{prof}M$。这样便重新得到“\Term{homological-codimension}{同调余维数}”的概念（参见 Serre，前引文献；见本讲注 1，原书第 21 页）。它原先记作 $\operatorname{codh}_AM$，定义为使 $\operatorname{Ext}_A^i(k,M)\ne0$ 的整数 $i$ 的\Term{infimum}{下确界}；事实上，$\operatorname{Supp}k=V(r(A))$。
+\begin{SGAresult}{命题}{2.9}
+若 $A$ \Term{noetherian}{诺特}、$M$ \Term{finitely-generated}{有限生成}，则
+\[
+\operatorname{prof}_IM=\inf_{\mathfrak p\in V(I)}
+\operatorname{prof}M_{\mathfrak p}。
+\]
+\end{SGAresult}
+\begin{SGAresult}{推论}{2.10}
+若 $A$ 为\Term{noetherian}{诺特}\Term{semilocal-ring}{半局部环}，$M$ 为\Term{finitely-generated}{有限生成} $A$-模，则
+\[
+\operatorname{prof}M=\inf_{\mathfrak m}\operatorname{prof}M_{\mathfrak m}，
+\]
+其中 $\mathfrak m$ 遍历 $A$ 的全部\Term{maximal-ideal}{极大理想}。
+\end{SGAresult}
+推论直接由命题 2.9 得到，因为包含根的\Term{prime-ideal}{素理想}恰好就是\Term{maximal-ideal}{极大理想}。
+
+另一方面，设 $f\in I$。若 $f$ 为 $M$-\Term{regular-element}{正则元素}，$\mathfrak p\in X$ 且 $\mathfrak p\supset I$，则 $f$ 在 $A_{\mathfrak p}$ 中的像 $g$ 属于 $A_{\mathfrak p}$ 的\Term{maximal-ideal}{极大理想} $\mathfrak pA_{\mathfrak p}$；此外，由\Term{exact-sequence}{正合列}
+\[
+0\longrightarrow M_{\mathfrak p}\xrightarrow{g'}M_{\mathfrak p}
+\longrightarrow(M/fM)_{\mathfrak p}\longrightarrow0，\tag{2.3}
+\]
+可知 $g$ 为 $M_{\mathfrak p}$-\Term{regular-element}{正则元素}，其中 $g'$ 表示 $M_{\mathfrak p}$ 中乘以 $g$ 的映射。这个\Term{exact-sequence}{正合列}还表明，$(M/fM)_{\mathfrak p}$ \Term{isomorphism}{同构}于 $M_{\mathfrak p}/gM_{\mathfrak p}$。分别对 $M$、$M_{\mathfrak p}$ 应用推论 2.5，再作归纳，便得到 $\operatorname{prof}_IM\le\nu(M)$，其中对任意 $M$ 定义
+\[
+\nu(M)=\inf_{\mathfrak p\in V(I)}\operatorname{prof}M_{\mathfrak p}。
+\]
+\SourcePage{34}
+更确切地说，仍由归纳法可知，若 $f$ 为 $M$-\Term{regular-element}{正则元素}，则 $\nu(M)=\nu(M/fM)+1$；所以只须证明：若 $\nu(M)\ge1$，则 $I$ 中存在一个 $M$-\Term{regular-element}{正则元素}。对每个 $\mathfrak p\in V(I)$，将引理 2.1 应用于 $M_{\mathfrak p}$、$A_{\mathfrak p}$、$\mathfrak pA_{\mathfrak p}$，可知 $\mathfrak pA_{\mathfrak p}\notin\operatorname{Ass}M_{\mathfrak p}$；再对 $A,M,I$ 应用引理 2.1，即得所需结论。
+\begin{SGAresult}{命题}{2.11}
+设 $u:A\to B$ 为\Term{noetherian}{诺特环}的\Term{homomorphism}{同态}，$I$ 为 $A$ 的一个\Term{ideal}{理想}，$M$ 为\Term{finitely-generated}{有限生成} $A$-模。令 $I_B=I\otimes_AB$、$M_B=M\otimes_AB$。若 $B$ 在 $A$ 上\Term{flat}{平坦}，则
+\[
+\operatorname{prof}_{I_B}M_B\ge\operatorname{prof}_IM；
+\]
+此外，若 $B$ 在 $A$ 上\Term{faithfully-flat}{忠实平坦}，则等号成立。
+\end{SGAresult}
+事实上，令 $N=A/I$，由\Term{flat}{平坦}性有 $N\otimes_AB=B/I_B$，记 $N_B=N\otimes_AB$。仍由\Term{flat}{平坦}性及\Term{noetherian}{诺特}假设，
+\[
+\operatorname{Ext}_B^i(N_B,M_B)=\operatorname{Ext}_A^i(N,M)\otimes_AB，
+\]
+所以 $\operatorname{Ext}_A^i(N,M)=0$ 蕴含 $\operatorname{Ext}_B^i(N_B,M_B)=0$；若 $B$ 在 $A$ 上\Term{faithfully-flat}{忠实平坦}，反过来也成立。
+
+\SGAsection{3}{深度与拓扑性质}
+\begin{SGAresult}{引理}{3.1}
+设 $X$ 为\Term{topological-space}{拓扑空间}，$Y$ 为\Term{closed-subspace}{闭子空间}，$F$ 为 $X$ 上的\Term{abelian-sheaf}{阿贝尔群层}。令 $U=X-Y$。若 $n$ 为整数，则下列条件\Term{equivalence}{等价}：
+
+\textnormal{(i)} 当 $i<n$ 时，$\underline H_Y^i(X,F)=0$。
+
+\textnormal{(ii)} 对 $X$ 的每个\Term{open-subset}{开集} $V$，群\Term{homomorphism}{同态}
+\[
+H^i(V,F)\longrightarrow H^i(V\cap U,F)
+\]
+当 $i<n-1$ 时为\Term{bijection}{双射}，当 $i=n-1$ 时为\Term{injectivity}{单射}。
+
+\textnormal{(iii)} 对 $X$ 的每个\Term{open-subset}{开集} $V$，当 $i<n$ 时，
+\[
+H_{Y\cap V}^i(V,F|_V)=0。
+\]
+\end{SGAresult}
+\begin{proof}
+(ii)$\Leftrightarrow$(iii)：设 $V$ 为 $X$ 的\Term{open-subset}{开集}，令 $X'=V$、$Y'=Y\cap V$、$F'=F|_V$、$U'=X'-Y'$。由于 $Y'$ 在 $X'$ 中闭，有\Term{exact-sequence}{正合列}
+\[
+H_{Y'}^i(X',F')\longrightarrow H^i(X',F')
+\xrightarrow{\rho_i}H^i(U',F')\longrightarrow H_{Y'}^{i+1}(X',F')。
+\]
+若两端为零，则 $\rho_i$ 为\Term{bijection}{双射}；若左端为零，则 $\rho_i$ 为\Term{injectivity}{单射}。因此 (iii)$\Rightarrow$(ii)。反之，若 $i<n$，则因 $\rho_i$ 为\Term{injectivity}{单射}、$\rho_{i-1}$ 为\Term{surjectivity}{满射}，$H_{Y'}^i(X',F')=0$。
+
+(i)$\Rightarrow$(iii)：事实上，“从\Term{local-scheme}{局部}到整体”的\Term{spectral-sequence}{谱序列}给出
+\[
+H^p(X,\underline H_Y^q(X,F))\Longrightarrow H_Y^*(X,F)。
+\]
+而依假设，$q<n$ 时 $\underline H_Y^q(X,F)=0$，所以 $p+q<n$ 时 $H_Y^{p+q}(X,F)=0$。
+
+\SourcePage{35}
+(iii)$\Rightarrow$(i)：事实上，(iii) 表示\Term{presheaf}{预层}
+\[
+V\longmapsto H_{Y\cap V}^i(V,F|_V)
+\]
+为零，所以其对应的\Term{sheaf}{层}也为零；由于 $Y$ 闭，这个\Term{sheaf}{层}就是 $\underline H_Y^i(X,F)$。
+\end{proof}
+\textbf{注记 3.2。}
+(i) 与 (ii) 的\Term{equivalence}{等价}性已在命题 I 2.13 中证明。如当时所指出的，若 $n\ge2$，可以省去 $\rho_{n-1}$ 为\Term{injectivity}{单射}这一条件。\footnote{编者注：原版在这里又给出一个证明，但不完全正确。}
+\begin{SGAresult}{命题}{3.3}
+设 $X$ 为\Term{locally-noetherian}{局部诺特}\Term{prescheme}{预概形}，$Y$ 为 $X$ 的闭子\Term{prescheme}{预概形}，$F$ 为\Term{coherent}{凝聚} $\mathcal O_X$-\Term{module-sheaf}{模层}。引理 3.1 的条件\Term{equivalence}{等价}于下列每一个条件：
+
+\textnormal{(iv)} 对每个 $x\in Y$，$\operatorname{prof}F_x\ge n$。
+
+\textnormal{(v)} 对 $X$ 上每个\Term{support}{支撑}包含在 $Y$ 中的\Term{coherent}{凝聚} $\mathcal O_X$-\Term{module-sheaf}{模层} $G$，
+\[
+\underline{\operatorname{Ext}}_{\mathcal O_X}^i(G,F)=0\qquad(i<n)。
+\]
+\textnormal{(vi)} 存在一个\Term{support}{支撑}恰为 $Y$ 的\Term{coherent}{凝聚} $\mathcal O_X$-\Term{module-sheaf}{模层} $G$，使
+\[
+\underline{\operatorname{Ext}}_{\mathcal O_X}^i(G,F)=0\qquad(i<n)。
+\]
+\end{SGAresult}
+若 $X$ \Term{affine}{仿射}，我们已经有了证明命题 3.3 中三个条件\Term{equivalence}{等价}所需的一切（参见命题 2.4）。这些条件都是\Term{local-scheme}{局部}的，只有蕴含 (v)$\Rightarrow$(vi) 例外；但此时可以取 $G=\mathcal O_Y$，再应用命题 2.4。因此只须证明 (i)$\Rightarrow$(vi) 及 (v)$\Rightarrow$(i)。
+
+设 $J$ 为 $Y$ 的\Term{ideal-sheaf}{理想层}，它是一个\Term{coherent}{凝聚}\Term{ideal-sheaf}{理想层}。令 $\mathcal O_{Y_m}=\mathcal O_X/J^{m+1}$，这是一个\Term{support}{支撑}恰为 $Y$ 的\Term{coherent}{凝聚} $\mathcal O_X$-\Term{module-sheaf}{模层}。已知（定理 II 6.b)）
+\[
+\underline H_Y^i(X,F)=\varinjlim_m
+\underline{\operatorname{Ext}}_{\mathcal O_X}^i(\mathcal O_{Y_m},F)，
+\]
+所以 (v)$\Rightarrow$(i)。另一方面，在各 $\mathcal O_{Y_m}$ 组成的\Term{projective-system}{逆系}中，转移\Term{morphism}{态射}都是\Term{epimorphism}{满态射}。
+
+如果\Term{functor}{函子} $\underline{\operatorname{Ext}}^i$ 关于第一个变量\Term{left-exact}{左正合}，至少当这个变量属于\Term{support}{支撑}包含在 $Y$ 中的\Term{coherent}{凝聚} $\mathcal O_X$-\Term{module-sheaf}{模层}\Term{category}{范畴}时如此，那么对各 $\mathcal O_{Y_m}$ 应用 $\underline{\operatorname{Ext}}^i$ 得到的\Term{inductive-system}{顺系}，其转移\Term{morphism}{态射}就是\Term{injectivity}{单射}。由 (i)，这个\Term{inductive-system}{顺系}的\Term{limit}{极限}为零，因此 (i) 将蕴含：对所有 $m$，\Term{module-sheaf}{模层} $\underline{\operatorname{Ext}}_{\mathcal O_X}^i(\mathcal O_{Y_m},F)$ 都为零。下面作归纳。$n<0$ 时断言显然。设对 $n<q$ 已有 (i)$\Rightarrow$(vi)，于是 (i)$\Rightarrow$(v)；再由 $\underline{\operatorname{Ext}}$ 的\Term{exact-sequence}{正合列}，$\underline{\operatorname{Ext}}^q$ 关于第一个变量\Term{left-exact}{左正合}，因此对所有 $m$，\Term{module-sheaf}{模层} $\underline{\operatorname{Ext}}_{\mathcal O_X}^q(\mathcal O_{Y_m},F)$ 都为零。故当 $n\le q$ 时也有 (i)$\Rightarrow$(vi)。证毕。
+
+\SourcePage{36}
+\textbf{例 3.4。}
+设 $A$ 为\Term{noetherian}{诺特}\Term{local-ring}{局部环}，$\mathfrak m$ 为其\Term{maximal-ideal}{极大理想}，$M$ 为\Term{finitely-generated}{有限生成} $A$-模，$n$ 为整数。令 $X=\operatorname{Spec}(A)$、$Y=\{\mathfrak m\}$、$U=X-Y$，$F$ 为 $M$ 所对应的\Term{sheaf}{层}。下列条件\Term{equivalence}{等价}：
+
+1) $\operatorname{prof}M\ge n$；
+
+2) 自然\Term{homomorphism}{同态}
+\[
+H^i(X,F)\longrightarrow H^i(U,F)
+\]
+当 $i=n-1$ 时为\Term{injectivity}{单射}，当 $i<n-1$ 时为\Term{bijection}{双射}；
+
+3) 当 $i<n$ 时，$\operatorname{Ext}_A^i(k,M)=0$，其中 $k=A/\mathfrak m$；
+
+4) 当 $i<n$ 时，$H_Y^i(X,F)=0$。
+
+结合注记 3.2，得到：
+\begin{SGAresult}{推论}{3.5}
+设 $X$ 为\Term{locally-noetherian}{局部诺特}\Term{prescheme}{预概形}，$Y$ 为 $X$ 的闭子\Term{prescheme}{预概形}，$F$ 为\Term{coherent}{凝聚} $\mathcal O_X$-\Term{module-sheaf}{模层}。下列条件\Term{equivalence}{等价}：
+
+1) 对每个 $x\in Y$，$\operatorname{prof}F_x\ge2$；
+
+2) 对 $X$ 的每个\Term{open-subset}{开集} $V$，自然\Term{homomorphism}{同态}
+\[
+H^0(V,F)\longrightarrow H^0(V\cap(X-Y),F)
+\]
+均为\Term{bijection}{双射}。
+\end{SGAresult}
+\begin{SGAresult}{定理}{3.6（Hartshorne）}
+设 $X$ 为\Term{locally-noetherian}{局部诺特}\Term{prescheme}{预概形}，$Y$ 为 $X$ 的闭子\Term{prescheme}{预概形}。假设对每个 $x\in Y$，都有 $\operatorname{prof}\mathcal O_{X,x}\ge2$，则自然映射
+\[
+\pi_0(X)\longrightarrow\pi_0(X-Y)
+\]
+为\Term{bijection}{双射}。
+\end{SGAresult}
+\begin{proof}
+由于 $X$ \Term{locally-noetherian}{局部诺特}，$X$ \Term{locally-connected}{局部连通}；因此只须证明：$X$ \Term{connected}{连通}的充要条件是 $X-Y$ \Term{connected}{连通}。而一个由\Term{local-ring}{局部环}构成的\Term{ringed-space}{赋环空间} $(X,\mathcal O_X)$ \Term{connected}{连通}，当且仅当 $H^0(X,\mathcal O_X)$ 不是两个非零环的直积。把推论 3.5 应用于 $F=\mathcal O_X$，由假设可知，\Term{homomorphism}{同态}
+\[
+H^0(X,\mathcal O_X)\longrightarrow H^0(X-Y,\mathcal O_X)
+\]
+是\Term{isomorphism}{同构}，结论随即得到。
+\end{proof}
+\begin{SGAresult}{推论}{3.7}
+设 $X$ 为\Term{locally-noetherian}{局部诺特}\Term{prescheme}{预概形}。设整数 $d$ 满足：$\dim\mathcal O_{X,x}\ge d$ 蕴含 $\operatorname{prof}\mathcal O_{X,x}\ge2$。则若 $X$ \Term{connected}{连通}，$X$ 就在\Term{connected-in-codimension}{余维数 $d-1$ 上连通}。也就是说，若 $X',X''$ 是 $X$ 的两个\Term{irreducible-component}{不可约分支}，则存在 $X$ 的\Term{irreducible-component}{不可约分支}序列
+\[
+X'=X_0,X_1,\ldots,X_n=X''，
+\]
+使得对每个 $0\le i<n$，$X_i\cap X_{i+1}$ 在 $X$ 中的\Term{codimension}{余维数}都不大于 $d-1$。
+\end{SGAresult}
+\SourcePage{37}
+先指出，若 $X$ 为 \Term{cohen-macaulay}{Cohen–Macaulay}，则 $d=2$ 满足上述性质。顺便回顾，$Y$ 在 $X$ 中的\Term{codimension}{余维数}，定义为 $Y$ 中各点在 $X$ 中的\Term{local-ring}{局部环}的\Term{dimension}{维数}的\Term{infimum}{下确界}。
+\begin{proof}
+设 $\mathcal F$ 为 $X$ 中\Term{codimension}{余维数}不小于 $d$ 的所有\Term{closed-subset}{闭子集}构成的\Term{set}{集合}。注意，$\mathcal F$ 是 $X$ 的\Term{closed-subset}{闭子集}的一个\Term{antifilter}{反滤子}。另一方面，$X$ 的一个\Term{closed-subset}{闭子集} $Y$ 属于 $\mathcal F$，当且仅当对每个 $y\in Y$，都存在 $X$ 中的\Term{open-neighborhood}{开邻域} $V$，使 $Y\cap V$ 在 $V$ 中的\Term{codimension}{余维数}不小于 $d$。最后，若 $X$ \Term{connected}{连通}且 $Y\in\mathcal F$，则由 Hartshorne 定理，$X-Y$ \Term{connected}{连通}。因此，这个推论可由下面的纯\Term{topology}{拓扑}引理推出。
+\end{proof}
+\begin{SGAresult}{引理}{3.8}
+设 $X$ 为\Term{connected}{连通}的\Term{locally-noetherian}{局部诺特}\Term{topological-space}{拓扑空间}，$\mathcal F$ 为 $X$ 的\Term{closed-subset}{闭子集}的一个\Term{antifilter}{反滤子}。假设 $X$ 中每个\Term{local-scheme}{局部}属于 $\mathcal F$ 的闭集 $Y$ 都属于 $\mathcal F$；这里“\Term{local-scheme}{局部}属于”指的是，对每个 $x\in X$，都存在 $x$ 在 $X$ 中的\Term{open-neighborhood}{开邻域} $V$ 以及某个 $Y'\in\mathcal F$，使 $V\cap Y=V\cap Y'$。则下列条件\Term{equivalence}{等价}：
+
+\textnormal{(i)} 对每个 $Y\in\mathcal F$，$X-Y$ \Term{connected}{连通}。
+
+\textnormal{(ii)} 若 $X',X''$ 为 $X$ 的两个不同的\Term{irreducible-component}{不可约分支}，则存在 $X$ 的\Term{irreducible-component}{不可约分支}序列 $X_0,X_1,\ldots,X_n$，使 $X'=X_0$、$X''=X_n$，并且对每个 $1\le i<n$，$X_i\cap X_{i+1}\notin\mathcal F$。
+\end{SGAresult}
+\begin{proof}
+(ii)$\Rightarrow$(i)。设 $Y\in\mathcal F$，需证明\Term{open-subset}{开集} $U=X-Y$ \Term{connected}{连通}。若 $U',U''$ 是 $U$ 的两个\Term{irreducible-component}{不可约分支}，则存在 $X$ 的两个\Term{irreducible-component}{不可约分支} $X',X''$，使 $X''\cap U=U''$、$X'\cap U=U'$。设 $X_0,\ldots,X_n$ 为满足上述性质的\Term{irreducible-component}{不可约分支}序列。令 $U_i=X_i\cap U$，$0\le i\le n$，则 $U_i$ 是 $U$ 的\Term{irreducible-component}{不可约分支}，而且当 $0\le i<n$ 时 $U_i\cap U_{i+1}$ \Term{nonempty}{非空}；否则 $X_i\cap X_{i+1}\subset Y$ 就属于 $\mathcal F$，与 $X_i$ 序列的选择矛盾。这蕴含 $U$ \Term{connected}{连通}。
+
+(i)$\Rightarrow$(ii)。令
+\[
+Y=\bigcup_{X',X''}X'\cap X''，
+\]
+其中只取满足 $X'\cap X''\in\mathcal F$ 的不同\Term{irreducible-component}{不可约分支}对 $X',X''$。由于 $X$ \Term{locally-noetherian}{局部诺特}，族 $(X'\cap X'')$ \Term{local-scheme}{局部}\Term{finite}{有限}；又因各 $X'\cap X''$ 闭，故 $Y$ 闭。此外，$Y$ \Term{local-scheme}{局部}属于 $\mathcal F$，因而 $Y\in\mathcal F$。所以 $U=X-Y$ \Term{connected}{连通}。设 $X',X''$ 为 $X$ 的两个不同\Term{irreducible-component}{不可约分支}，$U',U''$ 为它们在 $U$ 上的迹；由 $Y$ 的构造，这两个迹\Term{nonempty}{非空}，且是 $U$ 的\Term{irreducible-component}{不可约分支}。$U$ \Term{connected}{连通}且\Term{locally-noetherian}{局部诺特}，因此存在 $U$ 的\Term{irreducible-component}{不可约分支}序列 $U_0,\ldots,U_n$，使 $U_0=U'$、$U_n=U''$，且当 $0\le i<n$ 时，$U_i\cap U_{i+1}\ne\varnothing$，并且 $U_i\cap U_{i+1}\ne U_i$。设 $X_0,\ldots,X_n$ 为满足 $X_i\cap U=U_i$ 的 $X$ 的\Term{irreducible-component}{不可约分支}序列。若 $X_i\cap X_{i+1}\in\mathcal F$，则由 $\mathcal F$ 的构造，$U_i\cap U_{i+1}=\varnothing$ 或 $U_i=U_{i+1}$，这与 $U_i$ 的选择矛盾。
+\end{proof}
+
+\SourcePage{38}
+\begin{SGAresult}{推论}{3.9}
+设 $A$ 为\Term{noetherian}{诺特}\Term{local-ring}{局部环}，并假设对 $A$ 的每个\Term{prime-ideal}{素理想} $\mathfrak p$，都有
+\[
+(\dim A_{\mathfrak p}\ge2)\Longrightarrow
+(\operatorname{prof}A_{\mathfrak p}\ge2)。
+\]
+再假设 $A$ 满足\Term{chain-condition}{链条件}。则对 $A$ 的每个极小\Term{prime-ideal}{素理想} $\mathfrak p$，都有 $\dim A/\mathfrak p=\dim A$；换言之，$\operatorname{Spec}A$ 的所有\Term{irreducible-component}{不可约分支}都具有相同的\Term{dimension}{维数}，即 $A$ 的\Term{dimension}{维数}。
+\end{SGAresult}
+\footnote{参见 EGA $0_{\mathrm{IV}}$ 14.3.2。}
+若 $X',X''$ 为 $X$ 的两个\Term{irreducible-component}{不可约分支}，用一个满足推论 3.7 中所列性质的分支链将它们连接起来。只须证明每两个相邻分支具有相同\Term{dimension}{维数}，这由第二个假设得到。
+
+\textbf{例 3.10。}
+设 $X$ 是一个五维\Term{vector-space}{向量空间}中两个互补向量子空间的并，这两个子空间的\Term{dimension}{维数}分别为 $2$ 和 $3$。更确切地说，令 $X=\operatorname{Spec}A$，其中 $A=B/(\mathfrak p\cap\mathfrak q)$、$B=k[X_1,\ldots,X_5]$，$\mathfrak p$ 为 $X_1,X_2,X_3$ 生成的\Term{ideal}{理想}，$\mathfrak q$ 为 $X_4,X_5$ 生成的\Term{ideal}{理想}。去掉两个向量子空间的交点 $x$，即可使 $X$ 不\Term{connected}{连通}，因此 $\mathcal O_{X,x}$ 的\Term{depth}{深度}为 $1$：根据定理 3.6，它不可能不小于 $2$。另一个理由是，上一个推论的\Term{equidimensional}{等维}性结论在这里不成立。
+
+更一般地，在一个 $p+q$ 维\Term{vector-space}{向量空间}中，取两个\Term{dimension}{维数}分别为 $p,q\ge2$ 的向量子空间之并 $X$。无论把 $X$ 嵌入哪个\Term{regular-scheme}{正则概形}，$X$ 在原点都甚至不是\Term{set}{集合}意义下的\Term{complete-intersection}{完全交}。因为否则（必要时在原点邻域内修改 $X$，但不改变其底\Term{topological-space}{拓扑空间}），$X$ 就会是 Cohen–Macaulay 的，从而在原点\Term{depth}{深度}不小于 $2$，而实际并非如此。
+
+\textbf{注记 3.11。}
+设 $X$ 为\Term{locally-noetherian}{局部诺特}\Term{prescheme}{预概形}，$Y$ 为 $X$ 的闭子\Term{prescheme}{预概形}，$F$ 为一个 $\mathcal O_X$-\Term{module-sheaf}{模层}。\Term{depth}{深度}是一个纯\Term{topology}{拓扑}概念，可以用 $i<n$ 时 $\underline H_Y^i(X,F)$ 的消失来表述。我们还希望研究给定 $i$ 或 $i>n$ 时的这些\Term{sheaf}{层}。关于这一点，可以证明以下结果。
+\begin{SGAresult}{引理}{3.12}
+设 $m$ 为整数。要使对每个\Term{coherent}{凝聚层} $F$ 和每个 $i>m$，均有 $\underline H_Y^i(X,F)=0$，充要条件是该结论对 $F=\mathcal O_X$ 成立。
+\end{SGAresult}
+再取\Term{direct-limit}{归纳极限}，就可知此时对每个\Term{quasi-coherent}{拟凝聚层}结论也成立。例如，若 $Y$ \Term{local-scheme}{局部}可由 $m$ 个方程描述，或者如通常所说，若 $Y$ \Term{local-scheme}{局部}在\Term{set}{集合}意义下是一个\Term{complete-intersection}{完全交}（例如 $X,Y$ 都\Term{nonsingular}{非奇异}时便如此），则用\Term{koszul-complex}{Koszul 复形}计算 $\underline H_Y^i(X,F)$ 可知，当 $i>m$ 时这些\Term{sheaf}{层}为零。我们在例 3.10 中其实已经隐含地使用了这一事实。
+\SourcePage{39}
+不过，这个\Term{cohomology}{上同调}条件并不充分，下面的例子就说明了这一点。
+
+\textbf{例 3.13。}
+设 $X=\operatorname{Spec}(A)$，其中 $A$ 是一个二维\Term{noetherian}{诺特}\Term{normal-ring}{正规}\Term{local-ring}{局部环}。设 $Y$ 为 $X$ 中的一条曲线。可以证明，曲线的补集为\Term{affine}{仿射}\Term{open-subset}{开集}，因此\footnote{编者注：原版这里有一处排印错误。}，当 $i>1$ 时，
+\[
+\underline H_Y^i(\mathcal O_X)\simeq
+\underline H_{X-Y}^{i-1}(\mathcal O_X)=0，
+\]
+因为 $H^{i-1}(X-Y,\mathcal O_X)=0$。但是，可以构造一条无法用一个方程描述的曲线。
+
+我们将寻找条件\footnote{参见第 VIII 讲。}，使给定 $i$ 时的 $\underline H_Y^i(X,F)$ \Term{coherent}{凝聚}。一般而言它们并不\Term{coherent}{凝聚}，这可以由显然的例子看出：例如，当 $A$ 为\Term{dimension}{维数} $n>0$ 的\Term{noetherian}{诺特}\Term{local-ring}{局部环}时的 $H_{\mathfrak m}^n(A)$；再如，当 $A$ 为\Term{field-of-fractions}{分式域}为 $K$ 的\Term{discrete-valuation-ring}{离散赋值环}时，
+$H_{\mathfrak m}^1(A)\simeq K/A$，它不是\Term{finitely-generated}{有限生成} $A$-模。为使读者看清问题，我们指出，这个问题\Term{equivalence}{等价}于：设 $f:U\to X$ 为开\Term{immersion}{浸入}，$G$ 为 $U$ 上的\Term{coherent}{凝聚层}，寻找判别准则，使给定 $i$ 时的\Term{higher-direct-image}{高阶直像} $R^if_*G$ 是 $X$ 上的\Term{coherent}{凝聚层}。这些条件是应用我们在第 IX 讲及以后各讲中看到的\Term{formal-geometry}{形式几何}所必需的。
+\SourcePage{40}
+% 原 PDF 第40页为空白页；第 III 讲正文止于第39页。

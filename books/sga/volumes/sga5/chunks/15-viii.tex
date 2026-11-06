@@ -1,0 +1,570 @@
+\SourcePage{363}
+\SGAchapter{VIII}{Abel 范畴与三角范畴的类群；完美复形}{Groupes de classes des catégories abéliennes et triangulées. Complexes parfaits}
+\begin{center}A.~Grothendieck 著，I.~Bucur 整理\end{center}
+
+本讲简要介绍以后各讲不可缺少的一些概念和结果，特别是关于\Term{pseudo-coherent}{伪凝聚}\Term{complex}{复形}与\Term{perfect-complex}{完美复形}的概念和结果。关于后两者的较完整论述及较详细的证明，将见于本研讨班之后关于\Term{scheme}{概形}的 \Term{riemann-roch-theorem}{Riemann--Roch 定理}研讨班的前几讲。\footnote{SGA~6，第 I 讲。}
+
+\SGAsection{1}{Abel 范畴的情形}
+设 $C$ 为\Term{abelian-category}{Abel 范畴}，$D$ 为 $C$ 的\Term{full-subcategory}{满子范畴}。称从 $D$ 到\Term{abelian-group}{Abel 群} $C$ 的函数 $f$ 为\Term{additive-function}{加性函数}，如果对 $C$ 中每个\Term{exact-sequence}{正合列}
+\[
+0\longrightarrow E'\longrightarrow E\longrightarrow E''\longrightarrow0,
+\]
+只要 $E',E'',E$ 都是 $D$ 的\Term{object}{对象}，就有
+\[
+f(E)=f(E')+f(E'').
+\]
+设 $f$ 为从 $D$ 到\Term{abelian-group}{Abel 群} $G$ 的\Term{additive-function}{加性函数}。下列性质容易由定义\Term{pushout}{推出}：
+
+$\alpha)$ $f(0)=0$。
+
+$\beta)$ 若 $X$ 与 $Y$ \Term{isomorphism}{同构}，则 $f(X)=f(Y)$。
+
+\SourcePage{364}
+$\gamma)$ $f(X\oplus Y)=f(X)+f(Y)$。
+
+$\delta)$ 设 $E=(E^i,d^i)$ 为 $D$ 的\Term{finite}{有限}\Term{complex}{复形}，并且\Term{object}{对象}
+\[
+B^{i+1}=\operatorname{Im}(d^i),\qquad Z^i=\operatorname{Ker}(d^i),\qquad
+H^i(E)=Z^i/B^i
+\]
+都在 $D$ 中。则
+\[
+\sum_i(-1)^if(E^i)=\sum_i(-1)^if(H^i(E)).
+\]
+
+$\varepsilon)$ 若 $F\in\operatorname{Ob}D$ 具有\Term{finite}{有限}\Term{filtration}{滤过}
+\[
+0=F_0\subset F_1\subset\cdots\subset F_n=F,
+\]
+并且对 $0<i\leq n$，$F_i$ 和 $F_i/F_{i-1}$ 都是 $D$ 的\Term{object}{对象}，则
+\[
+f(F)=\sum_{i=1}^nf(F_i/F_{i-1}).
+\]
+
+$\varphi)$ 若 $D$ 对无穷\Term{direct-sum}{直和}\Term{stable}{稳定}，则 $f=0$。
+
+证明 $\delta)$ 时，使用\Term{exact-sequence}{正合列}
+\[
+0\longrightarrow Z^i\longrightarrow E^i\longrightarrow B^{i+1}\longrightarrow0,
+\qquad
+0\longrightarrow B^i\longrightarrow Z^i\longrightarrow H^i(E)\longrightarrow0.
+\]
+证明 $\varepsilon)$ 时，使用\Term{exact-sequence}{正合列}
+\[
+0\longrightarrow F_{n-1}\longrightarrow F\longrightarrow F/F_{n-1}\longrightarrow0
+\]
+对 $n$ 作归纳。为证明 $\varphi)$，取 $E\in\operatorname{Ob}D$，令
+\[
+F=\bigoplus_{n\in\mathbb Z^+}E_n,\qquad E_n=E\quad(n\in\mathbb Z^+).
+\]
+于是 $E\oplus F\simeq F$，应用 $\gamma)$ 得 $f(F)=f(F)+f(E)$，所以 $f(E)=0$。
+
+对每个\Term{abelian-group}{Abel 群} $G$，考虑从 $D$ 到 $G$ 的\Term{additive-function}{加性函数}组成的\Term{abelian-group}{Abel 群} $A_D(G)$，便显然得到一个\Term{covariant-functor}{协变函子}
+\[
+A_D:\mathrm{Ab}\longrightarrow\mathrm{Ab}.
+\]
+\Term{functor}{函子} $A_D$ 是\Term{representable-functor}{可表的}。一个表示对 $(K_D(C),\varphi)$ 可按如下方式构造。
+
+\SourcePage{365}
+以 $L$ 表示由 $D$ 的\Term{object}{对象}生成的\Term{free-abelian-group}{自由 Abel 群}；令 $R$ 为 $L$ 中由形如 $E-E'-E''$ 的元素\Term{generated-subgroup}{生成的子群}，这里每个元素对应于 $C$ 中的一个\Term{exact-sequence}{正合列}
+\[
+0\longrightarrow E'\longrightarrow E\longrightarrow E''\longrightarrow0.
+\]
+置 $K_D(C)=L/R$。映射 $\varphi$ 由两个\Term{canonical-map}{典范映射}
+\[
+\operatorname{Ob}D\longrightarrow L\longrightarrow L/R
+\]
+复合而成。在不会混淆时，可以简写为 $K_D(C)=K(D)$。
+
+\SGAsection{2}{三角范畴的情形}
+设 $C$ 为\Term{triangulated-category}{三角范畴}，$G$ 为\Term{abelian-group}{Abel 群}。称从 $C$ 到 $G$ 的函数 $f$ 为\Term{additive-function}{加性函数}，如果对每个\Term{distinguished-triangle}{可区别三角形}
+\[
+\begin{tikzcd}[column sep=small]
+& Z\arrow[dl,"w"] &\\
+X\arrow[rr,"u"] &&Y\arrow[ul,"v"]
+\end{tikzcd}
+\]
+都有 $f(Y)=f(X)+f(Z)$。
+
+给定\Term{additive-function}{加性函数} $f$，下列关系直接由定义\Term{pushout}{推出}：
+
+$a)$ $f(0)=0$。
+
+$b)$ $f(X[n])=(-1)^nf(X)$。
+
+$c)$ 若 $X$ 与 $Y$ \Term{isomorphism}{同构}，则 $f(X)=f(Y)$。
+
+$d)$ $f(X\oplus Y)=f(X)+f(Y)$。
+
+\SourcePage{366}
+事实上，下列三角形都是\Term{distinguished-triangle}{可区别三角形}：
+\[
+\begin{tikzcd}[column sep=tiny]
+&0\arrow[dl]&\\
+X\arrow[rr,"1_X"]&&X\arrow[ul]
+\end{tikzcd}
+\qquad
+\begin{tikzcd}[column sep=tiny]
+&X[1]\arrow[dl]&\\
+X\arrow[rr]&&0\arrow[ul]
+\end{tikzcd}
+\qquad
+\begin{tikzcd}[column sep=tiny]
+&0\arrow[dl]&\\
+X\arrow[rr,"u"]&&Y\arrow[ul]
+\end{tikzcd}
+\qquad
+\begin{tikzcd}[column sep=tiny]
+&Y[1]\arrow[dl]&\\
+X\oplus Y\arrow[rr]&&X\arrow[ul]
+\end{tikzcd}
+\]
+（$u$ 为\Term{isomorphism}{同构}）。构造最后一个三角形时，使用了两个\Term{distinguished-triangle}{可区别三角形}的和仍是\Term{distinguished-triangle}{可区别三角形}这一事实。与\Term{abelian-category}{Abel 范畴}的情形一样，显然得到\Term{functor}{函子} $A:\mathrm{Ab}\to\mathrm{Ab}$，它给每个\Term{abelian-group}{Abel 群} $G$ 配上 $C$ 上取值于 $G$ 的\Term{additive-function}{加性函数}组成的\Term{abelian-group}{Abel 群} $A(G)$。这个\Term{functor}{函子}是\Term{representable-functor}{可表的}，而且容易构造一个表示对 $(K(C),\operatorname{cl}_C)$。事实上，先考虑由 $C$ 的\Term{object}{对象}生成的\Term{free-abelian-group}{自由 Abel 群} $\mathbb Z^{(\operatorname{Ob}C)}$，再考虑由形如 $X-Y-Z$ 的元素\Term{generated-subgroup}{生成的子群} $R$，其中
+\[
+\begin{tikzcd}[column sep=small]
+&Z\arrow[dl]&\\
+Y\arrow[rr]&&X\arrow[ul]
+\end{tikzcd}
+\]
+是\Term{distinguished-triangle}{可区别三角形}。\Term{quotient-group}{商群} $\mathbb Z^{(\operatorname{Ob}C)}/R$ 就是 $K(C)$，而 $\operatorname{cl}_C$ 是两个\Term{canonical-map}{典范映射}
+\[
+\operatorname{Ob}C\longrightarrow\mathbb Z^{(\operatorname{Ob}C)}\longrightarrow K(C)
+\]
+的复合。
+
+\SGAsection{3}{函子性}
+设 $C,C'$ 为两个\Term{triangulated-category}{三角范畴}，$T:C\to C'$ 为从 $C$ 到 $C'$ 的\Term{exact-functor}{正合函子}，即一个\Term{additive}{加性}的、“\Term{graded}{分次}的”、将\Term{distinguished-triangle}{可区别三角形}变为\Term{distinguished-triangle}{可区别三角形}的\Term{functor}{函子}。
+\SourcePage{367}
+如上，以 $A,A':\mathrm{Ab}\to\mathrm{Ab}$ 表示与 $C,C'$ 关联的\Term{functor}{函子}。由“与 $T$ 复合”得到一个\Term{natural-transformation}{函子态射} $A'\to A$，从而得到唯一的\Term{homomorphism}{同态}
+\[
+K(T):K(C)\longrightarrow K(C'),
+\]
+使下图交换：
+\[
+\begin{tikzcd}
+\operatorname{Ob}C\arrow[r,"T"]\arrow[d,"\operatorname{cl}_C"']&\operatorname{Ob}C'\arrow[d,"\operatorname{cl}_{C'}"]\\
+K(C)\arrow[r,"K(T)"']&K(C').
+\end{tikzcd}
+\]
+由此可见，若\Term{functor}{函子} $T,T_1:C\to C'$ \Term{isomorphism}{同构}，则 $K(T)=K(T_1)$。特别地，若 $T$ 为\Term{equivalence-of-categories}{范畴等价}，则 $K(T)$ 为\Term{isomorphism}{同构}。
+
+若 $C''$ 为第三个\Term{triangulated-category}{三角范畴}，而 $F:C\times C'\to C''$ 为对每个变量都\Term{exact}{正合}的\Term{bifunctor}{双函子}，则显然得到一个\Term{bilinear-map}{双线性映射}
+\[
+K(F):K(C)\times K(C')\longrightarrow K(C''),
+\]
+满足关系
+\[
+K(F)(\operatorname{cl}_C(X),\operatorname{cl}_{C'}(X'))
+=\operatorname{cl}_{C''}(F(X,X')).
+\]
+
+\begin{SGAresult}{命题}{3.1}
+设 $A$ 为\Term{triangulated-category}{三角范畴}，$B$ 为 $A$ 的\Term{thick-subcategory}{厚}\Term{triangulated-subcategory}{三角子范畴}，$A/B$ 为 $A$ 模 $B$ 的\Term{quotient-category}{商范畴}，$Q:A\to A/B$ 为\Term{canonical}{典范}的取商\Term{functor}{函子}，$i:B\to A$ 为包含\Term{functor}{函子}。则下列序列\Term{exact}{正合}：
+\SourcePage{368}
+\[
+K(B)\xrightarrow{K(i)}K(A)\xrightarrow{K(Q)}K(A/B)\longrightarrow0.
+\]
+\end{SGAresult}
+\begin{proof}
+显然存在自然\Term{homomorphism}{同态}
+\[
+\alpha:\operatorname{Coker}(K(i))\longrightarrow K(A/B).
+\]
+另一方面，由于 $\operatorname{Ob}(A/B)=\operatorname{Ob}(A)$，存在显然的映射
+\[
+\gamma:\operatorname{Ob}(A/B)\longrightarrow\operatorname{Coker}(K(i)).
+\]
+设 $X,Y\in\operatorname{Ob}(A/B)$ 且二者\Term{isomorphism}{同构}。我们要证明 $\gamma(X)=\gamma(Y)$。\Term{quotient-category}{商范畴} $A/B$ 可用右或左\Term{calculus-of-fractions}{分式演算}得到，其中\Term{multiplicative-system}{乘法系} $S$ 由所有包含于\Term{distinguished-triangle}{可区别三角形} $(X',Y',Z',f,g,h)$ 中、且 $Z'$ 为 $B$ 的\Term{object}{对象}的\Term{morphism}{态射} $f$ 组成（$S$ 是\Term{saturated-multiplicative-system}{饱和乘法系}）。因而存在 $X_1$ 及\Term{morphism}{态射}
+\[
+X_1\xrightarrow{s}X,\qquad X_1\xrightarrow{t}Y,\qquad s,t\in S.
+\]
+因此只须证明 $\gamma(X)=\gamma(X_1)$；而这由存在形如 $(X_1,X,Z,s,\ldots)$ 的\Term{distinguished-triangle}{可区别三角形}且 $Z\in\operatorname{Ob}B$ 得出。
+
+映射 $\gamma$ 是\Term{additive-function}{加性函数}。事实上，若 $(X,Y,Z,f,g,h)$ 为 $A/B$ 的\Term{distinguished-triangle}{可区别三角形}，就须证明 $\gamma(X)+\gamma(Z)=\gamma(Y)$。但现在这个关系成立，因为三角形 $(X,Y,Z,f,g,h)$ \Term{isomorphism}{同构}于 $A$ 的一个\Term{distinguished-triangle}{可区别三角形}。因而得到
+\[
+\beta:K(A/B)\longrightarrow\operatorname{Coker}(K(i)),
+\]
+并立即可见 $\beta$ 为 $\alpha$ 的逆。
+\end{proof}
+
+\SGAsection{4}{与 Abel 范畴情形的比较}
+设 $C$ 为\Term{abelian-category}{Abel 范畴}，$D(C)$ 为 $C$ 的\Term{derived-category}{导出范畴}。按惯例，以 $D^b(C)$ 表示 $D(C)$ 中由\Term{bounded-complex}{有界复形}生成的\Term{full-subcategory}{满子范畴}。
+\SourcePage{369}
+给 $C$ 的每个\Term{object}{对象} $X$ 配上除零次\Term{set-component}{分量}为 $X$ 外、其他\Term{set-component}{分量}均为零的\Term{complex}{复形}，得到\Term{homomorphism}{同态}
+\[
+\mu:K(C)\longrightarrow K(D^b(C)).
+\]
+这个\Term{homomorphism}{同态}实际上是\Term{isomorphism}{同构}。事实上，可用命题 3.1 构造 $\mu$ 的逆；注意到
+\[
+D^b(C)\simeq K^{b,b}(C)/K^{b,\phi}(C),
+\]
+其中 $K^{b,\phi}(C)$ 是 $K^{b,b}(C)$ 中由\Term{acyclic-complex}{无环复形}组成的\Term{thick-subcategory}{厚子范畴}。设 $X^\bullet=(X_i)\in\operatorname{Ob}(K^{b,b}(C))$。令
+\[
+f(X^\bullet)=\sum_i(-1)^i\operatorname{cl}_C(X_i),
+\]
+便得到 $K^{b,b}(C)$ 上取值于 $K(C)$ 的\Term{additive-function}{加性函数}。事实上，首先注意到，若 $X^\bullet$ 与 $Y^\bullet$ \Term{homotopy}{同伦}，则 $f(X^\bullet)=f(Y^\bullet)$，因为 $f(X^\bullet)=f(H(X^\bullet))$。于是得到\Term{homomorphism}{同态}
+\[
+\nu:K(D^b(C))\longrightarrow K(C),
+\]
+并立即可见它为 $\mu$ 的逆。
+
+当 $C$ “太大”时，\Term{invariants}{不变量} $K(C)$ 往往没有多少意义，因此有必要将它相对于 $C$ 的一个\Term{subcategory}{子范畴} $C_0$ 相对化。设 $C_0$ 为 $C$ 的\Term{full-subcategory}{满子范畴}。一方面，可以定义群 $K_0(C)=K_{C_0}(C)$。另一方面，假设满足下列条件：
+
+\textbf{(A)} $C_0$ 对\Term{finite}{有限}\Term{direct-sum}{直和}\Term{stable}{稳定}。
+
+此时容易定义\Term{triangulated-category}{三角范畴} $D_0^b(C)$：取 $C$ 中以\Term{subcategory}{子范畴} $C_0$ 的\Term{object}{对象}为\Term{set-component}{分量}的（\Term{cohomology}{上同调}\Term{bounded}{有界}的）\Term{complex}{复形}，再对这些\Term{complex}{复形}之间的\Term{quasi-isomorphism}{拟同构}取商。
+\SourcePage{370}
+与上面一样，得到\Term{homomorphism}{同态}
+\[
+K_0(C)\longrightarrow K(D_0^b(C)).\tag{$*$}
+\]
+再假设\Term{subcategory}{子范畴} $C_0$ 满足下列条件 (B)：
+
+\textbf{(B)} 若 $X,Y\in\operatorname{Ob}C_0$，且 $X\xrightarrow{u}Y$ 为\Term{epimorphism}{满态射}（当然是在 $C$ 中），则 $\operatorname{Ker}u\in\operatorname{Ob}C_0$。
+
+与上面同样推理，可以证明\Term{homomorphism}{同态} $(*)$ 为\Term{isomorphism}{同构}。
+
+\Term{canonical}{典范}包含\Term{functor}{函子} $D_0^b(C)\to D^b(C)$ 一般并非\Term{fully-faithful}{全忠实}。不过有：
+
+\begin{SGAresult}{命题}{4.1}
+假设\Term{subcategory}{子范畴} $C_0$ 满足条件 (A)、(B) 以及下列条件 (C)：
+
+\textbf{(C)} 对每个图
+\[
+\begin{tikzcd}
+A\arrow[r,"u"]&B\\
+&L\arrow[u,"v"']
+\end{tikzcd}
+\]
+其中 $u$ 为\Term{epimorphism}{满态射}且 $L\in\operatorname{Ob}C_0$，都能将其补成\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}
+A\arrow[r,"u"]&B\\
+L_1\arrow[u]\arrow[r,"w"']&L\arrow[u,"v"']
+\end{tikzcd}
+\]
+\SourcePage{371}
+使 $L_1\in\operatorname{Ob}C_0$ 且 $w$ 为\Term{epimorphism}{满态射}。
+
+在这些条件下，\Term{canonical}{典范}\Term{functor}{函子}
+\[
+D_0^b(C)\longrightarrow D^b(C),\qquad
+D_0^-(C)\longrightarrow D^-(C)
+\]
+是\Term{fully-faithful}{全忠实}的。此外，$D_0^b(C)$（相应地 $D_0^-(C)$）的\Term{essential-image}{本质像}对\Term{direct-factor}{直因子}\Term{stable}{稳定}。
+\end{SGAresult}
+
+本命题的证明主要使用 Verdier 的一个判据（[2]，4-2，\Term{theorem}{定理}），将在 Riemann--Roch 研讨班第一讲中给出（SGA~6，第 I 讲 2.7）。
+
+\begin{SGAresult}{推论}{}
+再假设\Term{subcategory}{子范畴} $C_0$ 对 $\operatorname{Ker}$ 和 $\operatorname{Coker}$ \Term{stable}{稳定}，因而为\Term{abelian-category}{Abel 范畴}。以 $D^b(C)_0$ 表示 $D^b(C)$ 中由那些\Term{cohomology}{上同调}\Term{object}{对象}\Term{isomorphism}{同构}于 $C_0$ 的\Term{object}{对象}的\Term{complex}{复形}生成的满\Term{triangulated-subcategory}{三角子范畴}。则包含\Term{functor}{函子}
+\[
+D^b(C_0)\longrightarrow D^b(C)_0
+\]
+为这两个\Term{category}{范畴}之间的\Term{equivalence-of-categories}{等价}，从而得到一串\Term{isomorphism}{同构}
+\[
+K(C_0)\simeq K_0(C)\simeq K(D^b(C_0))\simeq K(D^b(C)_0).
+\]\footnote{参见 SGA~6，第 IV 讲 1.6。}
+\end{SGAresult}
+
+\textbf{说明。} 假设\Term{subcategory}{子范畴} $C_0$ 满足条件 (A)、(B)，且 $C$ 的每个\Term{object}{对象}都具有由 $C_0$ 的\Term{object}{对象}组成的\Term{finite}{有限}左\Term{resolution}{消解}。此时 $C_0$ 满足条件 (C)，而\Term{canonical}{典范}\Term{functor}{函子} $D_0^b(C)\to D^b(C)$ 实际上为\Term{equivalence-of-categories}{范畴等价}。因而有\Term{isomorphism}{同构} $K_{C_0}(C)\simeq K(C)$。
+
+\SourcePage{372}
+\SGAsection{5}{伪凝聚复形}
+设 $C$ 为\Term{abelian-category}{Abel 范畴}，$C_0$ 为 $C$ 的\Term{full-subcategory}{满子范畴}，满足条件 (A)、(B)、(C)。以 $D_0^-(C)_{\mathrm{coh}}$ 表示 $D_0^-(C)$ 在\Term{canonical}{典范}\Term{functor}{函子} $D_0^-(C)\to D(C)$ 下的\Term{essential-image}{本质像}。称 $D_0^-(C)_{\mathrm{coh}}$ 的\Term{object}{对象}为 $C_0$-\Term{pseudo-coherent}{伪凝聚}\Term{complex}{复形}。因此，$C$ 的一个\Term{complex}{复形}是 $C_0$-\Term{pseudo-coherent}{伪凝聚}的，当且仅当它在 $D(C)$ 中\Term{isomorphism}{同构}于一个\Term{bounded-above-complex}{上有界复形}，且该\Term{complex}{复形}的各\Term{set-component}{分量}都是 $C_0$ 的\Term{object}{对象}。
+
+\Term{category}{范畴} $D_0^-(C)_{\mathrm{coh}}$ 是 $D(C)$ 的\Term{triangulated-subcategory}{三角子范畴}，其意义如下：$D(C)$ 中任一有两个顶点是\Term{subcategory}{子范畴} $D_0^-(C)_{\mathrm{coh}}$ 的\Term{object}{对象}的\Term{distinguished-triangle}{可区别三角形}，都\Term{isomorphism}{同构}于一个三个\Term{object}{对象}均属于 $D_0^-(C)_{\mathrm{coh}}$ 的三角形。
+
+首先，\Term{subcategory}{子范畴} $D_0^-(C)_{\mathrm{coh}}$ 显然对\Term{translation-functor}{平移}\Term{automorphism}{自同构} $T:D(C)\to D(C)$ \Term{stable}{稳定}。为证明 $D_0^-(C)_{\mathrm{coh}}$ 是 $D(C)$ 的\Term{triangulated-subcategory}{三角子范畴}，只须验证：若 $U^\bullet,V^\bullet$ 为 $D_0^-(C)_{\mathrm{coh}}$ 的\Term{object}{对象}，且三角形
+\[
+\begin{tikzcd}[column sep=small]
+&W^\bullet\arrow[dl,"w"]&\\
+U^\bullet\arrow[rr,"u"]&&V^\bullet\arrow[ul,"v"]
+\end{tikzcd}
+\]
+是\Term{distinguished-triangle}{可区别的}（相对于 $D(C)$ 的\Term{triangulated-category}{三角范畴}结构），则 $W^\bullet$ 也是 $D_0^-(C)_{\mathrm{coh}}$ 的\Term{object}{对象}。由假设，存在\Term{complex}{复形} $X^\bullet,Y^\bullet$，它们在 $D(C)$ 中分别\Term{isomorphism}{同构}于 $U^\bullet,V^\bullet$，且各\Term{set-component}{分量}都是 $C_0$ 的\Term{object}{对象}。由此得到\Term{commutative-diagram}{交换方形}（在 $D(C)$ 中）：
+\SourcePage{373}
+\[
+\begin{tikzcd}
+U^\bullet\arrow[r,"u"]\arrow[d,"\sim"']&V^\bullet\arrow[d,"\sim"]\\
+X^\bullet\arrow[r,"f"']&Y^\bullet.
+\end{tikzcd}
+\]
+由于包含\Term{functor}{函子} $D_0^-(C)\to D^-(C)$ 为\Term{fully-faithful}{全忠实}（命题 4.1），将 $X^\bullet$ 换成一个\Term{isomorphism}{同构}的\Term{complex}{复形}后，可以假设 $f$ 是真正的\Term{complex}{复形}\Term{morphism}{态射}。设 $Z^\bullet$ 为 $f$ 的“\Term{mapping-cylinder}{映射柱}”（mapping cylinder），$g:Y^\bullet\to Z^\bullet$ 为\Term{canonical-morphism}{典范态射}。由构造本身，$Z^\bullet$ 的\Term{set-component}{分量}是 $C_0$ 的\Term{object}{对象}（条件 (A)）。另一方面，
+\[
+\begin{tikzcd}[column sep=small]
+&Z^\bullet\arrow[dl,"h"]&\\
+X^\bullet\arrow[rr,"f"]&&Y^\bullet\arrow[ul,"g"]
+\end{tikzcd}
+\]
+为 $D(C)$ 中的\Term{distinguished-triangle}{可区别三角形}，故 $Z^\bullet$ \Term{isomorphism}{同构}于 $W^\bullet$。
+
+因此，\Term{category}{范畴} $D_0^-(C)_{\mathrm{coh}}$ 带有\Term{triangulated-category}{三角范畴}结构：$D_0^-(C)_{\mathrm{coh}}$ 中的三角形为\Term{distinguished-triangle}{可区别的}，当且仅当它在\Term{triangulated-category}{三角范畴} $D(C)$ 中为\Term{distinguished-triangle}{可区别的}。
+
+$D_0^-(C)_{\mathrm{coh}}$ 与 $D^b(C)_{\mathrm{coh}}$ 的交记为 $D_0^b(C)_{\mathrm{coh}}$。
+
+若 $C$ 的\Term{object}{对象} $M$ 作为集中在零次的\Term{complex}{复形}是\Term{pseudo-coherent}{伪凝聚}的，就称 $M$ 为\Term{pseudo-coherent}{伪凝聚}\Term{object}{对象}。可以证明，这\Term{equivalence}{等价}于 $M$ 具有一个各\Term{set-component}{分量}均为 $C_0$ 的\Term{object}{对象}的左\Term{resolution}{消解}。
+\SourcePage{374}
+
+\begin{SGAresult}{命题}{5.1}
+一个\Term{complex}{复形} $X$ 为 $C_0$-\Term{pseudo-coherent}{伪凝聚}的，当且仅当它\Term{isomorphism}{同构}于一个向右\Term{bounded}{有界}、且各\Term{set-component}{分量}都为 $C_0$-\Term{pseudo-coherent}{伪凝聚}的\Term{complex}{复形}。
+\end{SGAresult}
+
+本命题的证明将见于 Riemann--Roch 研讨班第一讲（SGA~6，第 I 讲 2.7）。
+
+\SGAsection{6}{完美复形}
+称\Term{category}{范畴} $D(C)$ 的一个\Term{object}{对象}为 $C_0$-\Term{perfect-complex}{完美复形}，如果它\Term{isomorphism}{同构}于 $D_0^b(C)$ 的一个\Term{object}{对象}，即\Term{isomorphism}{同构}于一个各\Term{set-component}{分量}均在 $C_0$ 中的\Term{bounded-complex}{有界复形}。以 $D_0(C)_{\mathrm{parf}}$ 表示 $D(C)$ 中由\Term{perfect-complex}{完美复形}生成的\Term{full-subcategory}{满子范畴}。
+
+因此，\Term{category}{范畴} $D_0(C)_{\mathrm{parf}}$ 正是 $D_0^b(C)$ 在包含\Term{functor}{函子} $D_0^b(C)\to D(C)$ 下的\Term{essential-image}{本质像}。容易看出，$D_0(C)_{\mathrm{parf}}$ 是 $D(C)$ 的\Term{triangulated-subcategory}{三角子范畴}，因而带有\Term{triangulated-category}{三角范畴}结构。
+
+\SGAsection{7}{一个重要的特殊情形}
+设 $A$ 为环，$C$ 为 $A$-模（例如左模）的\Term{category}{范畴}。以 $C_0$ 表示 $C$ 中由\Term{finite-type}{有限型}\Term{projective-module}{投射} $A$-模生成的\Term{full-subcategory}{满子范畴}。\Term{subcategory}{子范畴} $C_0$ 满足条件 (A)、(B)、(C)。
+\SourcePage{375}
+此时使用下列记号：
+\[
+\begin{aligned}
+D^-(A)_{\mathrm{coh}}&=D_0^-(C)_{\mathrm{coh}},\\
+D^b(A)_{\mathrm{coh}}&=D_0^b(C)_{\mathrm{coh}},\\
+D(A)_{\mathrm{parf}}&=D_0(C)_{\mathrm{parf}}.
+\end{aligned}
+\]
+$D(C)$ 中的 $C_0$-\Term{pseudo-coherent}{伪凝聚}（相应地 $C_0$-\Term{perfect-complex}{完美}）\Term{complex}{复形}，简称\Term{pseudo-coherent}{伪凝聚}\Term{complex}{复形}（相应地\Term{perfect-complex}{完美复形}）。
+
+考虑以下群会很有用：
+\[
+K_\bullet(A)=K(D^b(A)_{\mathrm{coh}}),\qquad
+K^\bullet(A)=K(D(A)_{\mathrm{parf}}).
+\]
+对于群 $K^\bullet(A)$，有（命题 4.1 的推论）
+\[
+K^\bullet(A)=K(D(A)_{\mathrm{parf}})\simeq K(D_0^b(C))\simeq K_{C_0}(C),
+\]
+这表明它也就是 $A$ 的经典的“\Term{finite-type}{有限型}\Term{projective-module}{投射模}的类群”。
+
+当环 $A$ 为 \Term{noetherian}{Noether} 环时，群 $K_\bullet(A)$ 也有经典描述。为此，设 $C_1$ 为\Term{finite-type}{有限型}模的\Term{abelian-category}{Abel 范畴}。于是有
+\[
+K_\bullet(A)\simeq K(C_1).
+\]
+事实上，由命题 4.1，
+\[
+K(C_1)\simeq K(D^b(C_1))\simeq K(D_{C_1}^b(C)),
+\]
+\SourcePage{376}
+因为立即可见 $D^b(C_1)\simeq D_{C_1}^b(C)$。实际上，若 $A$ 为 \Term{noetherian}{Noether} 环且 $L^\bullet\in D^-(A)$，则由命题 5.1，$L^\bullet$ 为\Term{pseudo-coherent}{伪凝聚}的，当且仅当各 $H^i(L^\bullet)$ 都是\Term{finite-type}{有限型}的。
+
+对任意环 $A$，有\Term{homomorphism}{同态}
+\[
+\gamma_A:K^\bullet(A)\longrightarrow K_\bullet(A),
+\]
+它来自包含\Term{functor}{函子}
+\[
+D(A)_{\mathrm{parf}}\longrightarrow D^b(A)_{\mathrm{coh}}.\tag{$*$}
+\]
+一般说来，\Term{homomorphism}{同态} $\gamma_A$ 既非\Term{injectivity}{单射}也非\Term{surjectivity}{满射}。当环 $A$ 为\Term{regular-ring}{正则环}时，每个\Term{finite-type}{有限型} $A$-模 $M$ 都有\Term{finite}{有限}\Term{projective-dimension}{投射维数}；由 5.1，包含\Term{functor}{函子} $(*)$ 实际上为这两个\Term{category}{范畴}之间的\Term{equivalence-of-categories}{等价}。因此，此时\Term{homomorphism}{同态} $\gamma_A$ 为\Term{isomorphism}{同构}。
+
+\SGAsection{8}{复形的 Tor}
+设 $A$ 为环（不一定交换），${}_AC$（相应地 $C_A$）为左（相应地右）$A$-模的\Term{abelian-category}{Abel 范畴}。以 $K^-({}_AC)$ 表示 ${}_AC$ 中\Term{bounded-above-complex}{上有界复形}的\Term{triangulated-category}{三角范畴}，以 ${}_AD$ 表示 $K^-({}_AC)$ 中由各\Term{set-component}{分量}为\Term{flat}{平坦}（左）$A$-模的\Term{complex}{复形}组成的满\Term{triangulated-subcategory}{三角子范畴}。
+
+设 $X^\bullet$ 为 $K^-(C_A)$ 的\Term{object}{对象}，考虑\Term{functor}{函子}
+\[
+\Phi_{X^\bullet}=X^\bullet\otimes_A-:
+K^-({}_AC)\longrightarrow K^-(\mathrm{Ab}).
+\]
+在这些条件下，下列命题成立：
+\SourcePage{377}
+
+1) ${}_AD$ 中的每个\Term{acyclic-complex}{无环}\Term{object}{对象}都由 $\Phi_{X^\bullet}$ 变为 $K^-(\mathrm{Ab})$ 的\Term{acyclic-complex}{无环}\Term{object}{对象}。
+
+事实上，若 $N^\bullet$ 为 ${}_AD$ 的\Term{object}{对象}，且 $Z^i(N^\bullet)$、$B^i(N^\bullet)$、$H^i(N^\bullet)$ 都\Term{flat}{平坦}，则有经典\Term{isomorphism}{同构}
+\[
+\sum_{p+q=n}H_p(X^\bullet)\otimes H_q(N^\bullet)
+\xrightarrow{\sim}H_n(X^\bullet\otimes_A N^\bullet).
+\]
+
+2) $K^-({}_AC)$ 的每个\Term{object}{对象} $Y^\bullet$ 都是一个\Term{quasi-isomorphism}{拟同构}的终点，其起点为 ${}_AD$ 的一个\Term{object}{对象}。
+
+为此只须取一个 Cartan--Eilenberg \Term{resolution}{消解}。因此可以应用 [2] 第 2 节第 2 款\Term{theorem}{定理} 2，断定 $\Phi_{X^\bullet}$ 有\Term{left-derived-functor}{左导出函子}
+\[
+\mathbf L^-\Phi_{X^\bullet}:D^-({}_AC)\longrightarrow D^-(\mathrm{Ab}).
+\]
+\Term{object}{对象} $\mathbf L^-\Phi_{X^\bullet}(Y^\bullet)$ 可按下述方式求得，精确到\Term{isomorphism}{同构}：
+
+设 $P^\bullet$ 为 ${}_AD$ 的\Term{object}{对象}，$P^\bullet\to Y^\bullet$ 为\Term{quasi-isomorphism}{拟同构}。则 $\mathbf L^-\Phi_{X^\bullet}(Y^\bullet)$ \Term{isomorphism}{同构}于 $Q(X^\bullet\otimes P)$；这里按惯例以 $Q$ 表示\Term{canonical}{典范}\Term{functor}{函子} $K^-(\mathrm{Ab})\to D^-(\mathrm{Ab})$。因而，对 $D^-({}_AC)$ 的每个\Term{object}{对象} $Y^\bullet$，\Term{functor}{函子}
+\[
+\begin{aligned}
+K^-(C_A)&\longrightarrow D^-(\mathrm{Ab}),\\
+X^\bullet&\longmapsto\mathbf L^-\Phi_{X^\bullet}(Y^\bullet)
+\end{aligned}
+\]
+是\Term{exact}{正合}的，并且在\Term{acyclic-complex}{无环复形}上为零，从而得到一个\Term{exact}{正合}\Term{bifunctor}{双函子}
+\SourcePage{378}
+\[
+\begin{aligned}
+D^-(C_A)\times D^-({}_AC)&\longrightarrow D^-(\mathrm{Ab}),\\
+(X^\bullet,Y^\bullet)&\longmapsto X^\bullet\mathbin{\overset{\mathbf L}{\otimes}}_A Y^\bullet.
+\end{aligned}
+\]
+取\Term{homology}{同调}，便定义了 $\operatorname{Tor}_i^A(X^\bullet,Y^\bullet)$（亦参见 [1]，6.3）。当环 $A$ 交换时，实际上得到\Term{exact}{正合}\Term{bifunctor}{双函子}
+\[
+D^-(C)\times D^-(C)\longrightarrow D^-(C),
+\]
+即\Term{derived-category}{导出范畴}意义下的\Term{tensor-product}{张量积}（$C=C_A={}_AC$）。
+
+\begin{SGAresult}{定义}{}
+称 $D(C_A)$ 的\Term{complex}{复形} $X$ 具有\Term{finite}{有限} \Term{tor-dimension}{Tor 维数}，如果它属于 $D^-$，且存在 $n_0\in\mathbb Z^+$，使得对任意 $Y\in\operatorname{Ob}({}_AC)$ 及 $n>n_0$，都有
+\[
+\operatorname{Tor}_n^A(X,Y)=0.
+\]
+\end{SGAresult}
+
+我们将用 \Term{tor-dimension}{Tor 维数}的概念给出\Term{perfect-complex}{完美复形}的一个刻画：
+
+\begin{SGAresult}{命题}{8.1}
+设 $A$ 为环（不一定交换），$L^\bullet$ 为一个 $A$-模\Term{complex}{复形}。下列条件\Term{equivalence}{等价}：
+
+$a)$ $L^\bullet$ 是\Term{perfect-complex}{完美}的。
+
+$b)$ $L^\bullet$ 是\Term{pseudo-coherent}{伪凝聚}的，\Term{cohomology}{上同调}\Term{bounded}{有界}，并且具有\Term{finite}{有限} \Term{tor-dimension}{Tor 维数}。\footnote{参见 SGA~6，第 I 讲 5.8.1。}
+\end{SGAresult}
+
+证明时使用下列\Term{lemma}{引理}：
+
+\SourcePage{379}
+\begin{SGAresult}{\Term{lemma}{引理}}{}
+（Bourbaki，《\Term{commutative-algebra}{交换代数}》I，第 2 节，习题 15。）每个\Term{flat}{平坦}且\Term{finite-presentation}{有限表现}的 $A$-模 $E$ 都是\Term{projective-module}{投射}的。
+\end{SGAresult}
+\begin{proof}[\Term{lemma}{引理}的证明]
+设 $u:F\to F'$ 为\Term{epimorphism}{满态射}。须证明
+\[
+\operatorname{Hom}_A(E,F)\longrightarrow\operatorname{Hom}_A(E,F')
+\]
+为\Term{epimorphism}{满态射}。只须证明，对每个\Term{divisible-group}{可除群} $G$，
+\[
+\operatorname{Hom}_{\mathbb Z}(\operatorname{Hom}_A(E,F'),G)
+\longrightarrow\operatorname{Hom}_{\mathbb Z}(\operatorname{Hom}_A(E,F),G)
+\]
+为\Term{monomorphism}{单态射}。而图
+\[
+\begin{tikzcd}[column sep=large,row sep=large]
+\operatorname{Hom}_{\mathbb Z}(\operatorname{Hom}_A(E,F'),G)
+\arrow[r]&
+\operatorname{Hom}_{\mathbb Z}(\operatorname{Hom}_A(E,F),G)\\
+\operatorname{Hom}_{\mathbb Z}(F',G)\otimes_A E\arrow[r]\arrow[u,"\sim"]&
+\operatorname{Hom}_{\mathbb Z}(F,G)\otimes_A E\arrow[u,"\sim"']
+\end{tikzcd}
+\]
+是交换的，且由关于 $E$ 的假设，两条竖\Term{arrow}{箭头}均为\Term{isomorphism}{同构}。
+\end{proof}
+
+\begin{proof}[命题 5.2 的证明]
+蕴涵 $a)\Rightarrow b)$ 是直接的。为证明 $b)\Rightarrow a)$，取在 $D(C)$ 中\Term{isomorphism}{同构}于 $L^\bullet$ 的\Term{complex}{复形}
+\[
+\cdots\longrightarrow P_n\xrightarrow{d_n}\cdots\longrightarrow P_i\longrightarrow0\longrightarrow\cdots,
+\]
+其中各 $P_j$ 为\Term{finite-type}{有限型}\Term{projective-module}{投射} $A$-模。由于\Term{complex}{复形} $L^\bullet$ 具有\Term{finite}{有限} \Term{tor-dimension}{Tor 维数}且其\Term{cohomology}{上同调}\Term{bounded}{有界}，存在 $n_0\in\mathbb Z$，使得：
+
+I) 序列
+\[
+\cdots\longrightarrow P_{n_0-p}\xrightarrow{d_{n_0-p}}\cdots
+\longrightarrow P_{n_0}\longrightarrow\operatorname{Ker}d_{n_0+1}\longrightarrow0
+\]
+\Term{exact}{正合}。
+
+\SourcePage{380}
+II) $\operatorname{Ker}d_{n_0+1}$ 是\Term{flat}{平坦}的。
+
+III) \Term{complex}{复形}
+\[
+0\longrightarrow\operatorname{Ker}d_{n_0+1}\longrightarrow P_{n_0+1}
+\longrightarrow\cdots\longrightarrow P_i\longrightarrow0\longrightarrow\cdots
+\]
+在 $D(C)$ 中\Term{isomorphism}{同构}于 $L^\bullet$。
+
+而 $\operatorname{Ker}d_{n_0+1}$ 是\Term{finite-presentation}{有限表现}的，故由\Term{lemma}{引理}为\Term{finite-type}{有限型}\Term{projective-module}{投射}模。这就证明了 8.1。
+\end{proof}
+
+若 $A$ 为\Term{commutative-ring}{交换环}，$X^\bullet,Y^\bullet$ 为两个\Term{perfect-complex}{完美复形}，则其\Term{tensor-product}{张量积} $X^\bullet\mathbin{\overset{\mathbf L}{\otimes}}_A Y^\bullet$（在\Term{derived-category}{导出范畴}中）仍为\Term{perfect-complex}{完美复形}。由此得到对每个变量都\Term{exact}{正合}的\Term{bifunctor}{双函子}
+\[
+D(A)_{\mathrm{parf}}\times D(A)_{\mathrm{parf}}\longrightarrow D(A)_{\mathrm{parf}}.
+\]
+因而在 $K^\bullet(A)$ 上定义了乘积，容易看出，$K^\bullet(A)$ 由此带有有\Term{identity-element}{单位元}的\Term{commutative-ring}{交换环}结构。实际上，$K^\bullet(A)$ 可以带有 $\lambda$-环结构（详见接续本研讨班的 Riemann--Roch 研讨班\footnote{SGA~6，第 V 讲 2。}）。
+
+一个\Term{perfect-complex}{完美复形} $X^\bullet$ 与一个\Term{bounded}{有界}\Term{pseudo-coherent}{伪凝聚}\Term{complex}{复形} $Y^\bullet$ 的\Term{tensor-product}{张量积} $X^\bullet\mathbin{\overset{\mathbf L}{\otimes}}_A Y^\bullet$ 是\Term{bounded}{有界}\Term{pseudo-coherent}{伪凝聚}\Term{complex}{复形}（$A$ 仍为\Term{commutative-ring}{交换环}）。因此，可以在 $K_\bullet(A)$ 上引入 $K^\bullet(A)$-模结构。
+
+\SourcePage{381}
+\SGAsection{9}{函子性质}
+$a)$ 设 $A,B$ 为两个环（不一定交换），$u:A\to B$ 为\Term{homomorphism}{同态}。任一左（相应地右）$B$-模 $M$ 都可赋予左（相应地右）$A$-模结构，记为 $M_{[u]}$。特别地，$B_{[u]}$ 为右 $A$-模。\Term{functor}{函子}
+\[
+E\longmapsto B_{[u]}\otimes_A E
+\]
+使我们能够定义\Term{exact-functor}{正合函子}
+\[
+D(A)_{\mathrm{parf}}\longrightarrow D(B)_{\mathrm{parf}},
+\]
+从而得到\Term{homomorphism}{同态}
+\[
+u^*:K^\bullet(A)\longrightarrow K^\bullet(B).
+\]
+实际上得到从环（相应地\Term{commutative-ring}{交换环}）的\Term{category}{范畴}到\Term{abelian-group}{Abel 群}（相应地\Term{commutative-ring}{交换环}）的\Term{category}{范畴}的\Term{covariant-functor}{协变函子}。
+
+$b)$ 现在假设左 $A$-模 $B_{[u]}$ 为\Term{pseudo-coherent}{伪凝聚}的。于是\Term{functor}{函子}
+\[
+F\longmapsto F_{[u]}
+\]
+把\Term{finite-type}{有限型}自由 $B$-模变为\Term{pseudo-coherent}{伪凝聚} $A$-模。由命题 5.1 得到\Term{exact-functor}{正合函子}
+\[
+D^b(B)_{\mathrm{coh}}\longrightarrow D^b(A)_{\mathrm{coh}},
+\]
+\SourcePage{382}
+从而得到\Term{canonical-homomorphism}{典范同态}
+\[
+u_*:K_\bullet(B)\longrightarrow K_\bullet(A).
+\]
+\Term{homomorphism}{同态} $u_*,u^*$ 满足下列恒等式（“\Term{projection-formula}{投影公式}”）：
+\[
+u_*(u^*(\alpha)\cdot\beta)=\alpha\bigl(u_*(\beta)\bigr)
+\quad\text{对 }\alpha\in K^\bullet(A),\ \beta\in K_\bullet(B).
+\]
+这个容易的公式将在 Riemann--Roch 研讨班中以更一般的\Term{form}{形式}证明（SGA~6，第 IV 讲 2.11.i.2）。
+
+\SGAsection{10}{相对构造}
+\footnote{参见 SGA~6，第 III、IV 讲。}
+设 $u:A\to B$ 为\Term{ring-homomorphism}{环同态}，
+\[
+D(B)\longrightarrow D(A)
+\]
+为相应的\Term{exact-functor}{正合函子}。可以在 $D(B)$ 中考虑相对于 $A$ 的\Term{pseudo-coherent}{伪凝聚}\Term{complex}{复形}、相对于 $A$ 具有\Term{finite}{有限} \Term{tor-dimension}{Tor 维数}的\Term{complex}{复形}，以及相对于 $A$ 的\Term{perfect-complex}{完美复形}。特别地，应考虑 $D(B)$ 的\Term{triangulated-subcategory}{三角子范畴}
+\[
+D(B)_{A\text{-}\mathrm{parf}},\qquad D^b(B)_{A\text{-}\mathrm{coh}},
+\]
+它们分别由相对于 $A$ 的\Term{perfect-complex}{完美复形}和相对于 $A$ 的\Term{bounded}{有界}\Term{pseudo-coherent}{伪凝聚}\Term{complex}{复形}生成。这两个\Term{triangulated-category}{三角范畴}可用来定义以下群：
+\[
+\begin{aligned}
+K^\bullet(B\ \mathrm{rel}\ A)&=K(D(B)_{A\text{-}\mathrm{parf}}),\\
+K_\bullet(B\ \mathrm{rel}\ A)&=K(D^b(B)_{A\text{-}\mathrm{coh}}).
+\end{aligned}
+\]
+
+\SourcePage{383}
+\textbf{例。} 设 $G$ 为群，$\Lambda$ 为\Term{commutative-ring}{交换环}。\Term{homomorphism}{同态} $\Lambda\xrightarrow{\varepsilon}\Lambda[G]$ 因而使我们可以定义群
+\[
+K^\bullet(\Lambda[G]\ \mathrm{rel}\ \Lambda),\qquad
+K_\bullet(\Lambda[G]\ \mathrm{rel}\ \Lambda),
+\]
+分别记为 $R^\bullet_\Lambda(G)$、$R^\Lambda_\bullet(G)$。实际上，$R^\bullet_\Lambda(G)$ 是\Term{commutative-ring}{交换环}，$R^\Lambda_\bullet(G)$ 是其上的模。
+
+\textbf{注记。}
+
+$a)$ 若环 $\Lambda$ 不一定交换，可以定义
+\[
+\Lambda[G]=\Lambda\otimes_{\mathbb Z}\mathbb ZG,
+\]
+从而得到\Term{homomorphism}{同态} $\Lambda\xrightarrow{\varepsilon}\Lambda[G]$。这样，即使环 $\Lambda$ 不交换，也可以赋予群 $R^\bullet_\Lambda(G)$、$R^\Lambda_\bullet(G)$ 以意义。
+
+$b)$ 上述构造可以推广到 $\operatorname{Spec}\Lambda$ 上的\Term{group-prescheme}{群预概形}（或\Term{pro-group-prescheme}{pro-群预概形}）$G$ 的情形：从带有 $G$ \Term{action}{作用}的 $\Lambda$-模组成的\Term{abelian-category}{Abel 范畴}出发，连同它到 $\Lambda$-\Term{module-category}{模范畴}的自然包含\Term{functor}{函子}来作构造；这个\Term{abelian-category}{Abel 范畴}不再能用某个环上的模来明确描述。（若 $\Lambda$ 为域，可以用某个 pro-环上的模来明确描述；一般情形则可用\Term{comodule}{余模}来描述，至少在 $G$ 在 $\Lambda$ 上\Term{affine}{仿射}时如此，参见 SGA~3，第 I 讲 4.7.2。）
+
+\textbf{参考文献。}
+
+\noindent [1]\quad A.~Grothendieck 与 J.~Dieudonné，《\Term{algebraic-geometry}{代数几何}基础》（Éléments de Géométrie Algébrique），Publ. Math. I.H.E.S. IV（第二部分）。
+
+\noindent [2]\quad J.~L.~Verdier，《\Term{derived-category}{导出范畴}》（Catégories Dérivées），I.H.E.S.，1963。\footnote{发表于 SGA~$4\frac12$。}

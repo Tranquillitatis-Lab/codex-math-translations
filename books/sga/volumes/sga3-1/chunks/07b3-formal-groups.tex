@@ -1,0 +1,893 @@
+\SourcePage{549}
+\SGAsection{2}{形式群的一般性质}
+\textbf{2.1。} 设 $k$ 是\Term{pseudocompact-ring}{伪紧环}，$G$ 是一个 $k$-\Term{formal-group}{形式群}，即 $k$ 上\Term{formal-variety}{形式簇}的\Term{category}{范畴} $\mathrm{Vaf}_{/k}$ 中的群。设 $A$ 为 $G$ 的\Term{affine-algebra}{仿射代数}。$G$ 的\Term{composition-law}{合成律}显然定义一个\Term{diagonal-morphism}{对角态射}，即\Term{profinite-algebra}{预有限} $k$-\Term{algebra}{代数}的\Term{homomorphism}{同态} $\Delta_A:A\to A\widehat\otimes_k A$；此\Term{homomorphism}{同态}满足下列条件：
+
+(i) 图
+\[
+\begin{tikzcd}
+A\arrow[r,"\Delta_A"]\arrow[d,"\Delta_A"']&A\widehat\otimes_k A\arrow[d,"\Delta_A\widehat\otimes\mathrm{id}_A"]\\
+A\widehat\otimes_k A\arrow[r,"\mathrm{id}_A\widehat\otimes\Delta_A"']&A\widehat\otimes_k A\widehat\otimes_k A
+\end{tikzcd}
+\]
+交换。
+
+(ii) 存在一个（必然唯一的）\Term{augmentation}{增广}，即\Term{profinite-algebra}{预有限} $k$-\Term{algebra}{代数}的\Term{homomorphism}{同态} $\varepsilon_A:A\to k$，使得复合映射
+\[
+A\xrightarrow{\Delta_A}A\widehat\otimes_k A\xrightarrow{\varepsilon_A\widehat\otimes\mathrm{id}_A}k\widehat\otimes_k A\simeq A,
+\qquad
+A\xrightarrow{\Delta_A}A\widehat\otimes_k A\xrightarrow{\mathrm{id}_A\widehat\otimes\varepsilon_A}A\widehat\otimes_k k\simeq A
+\]
+均为 $A$ 的\Term{identity-map}{恒等映射}。
+
+\SourcePage{550}
+(iii) 存在一个（必然唯一的）\Term{antipode}{对极映射}，即\Term{profinite-algebra}{预有限} $k$-\Term{algebra}{代数}的\Term{homomorphism}{同态} $c_A:A\to A$，使复合映射
+\[
+A\xrightarrow{\Delta_A}A\widehat\otimes_k A\xrightarrow{c_A\widehat\otimes\mathrm{id}_A}A\widehat\otimes_k A\xrightarrow{m_A}A
+\]
+等于 $\eta_A\circ\varepsilon_A$，这里 $m_A$ 表示将 $a\widehat\otimes b$ 送至 $ab$ 的\Term{linear}{线性}映射，而 $\eta_A:k\to A$ 是映射 $\lambda\mapsto\lambda1_A$。
+
+反之，给定满足 (i)--(iii) 的 $(\Delta_A,\varepsilon_A,c_A)$，便赋予 $G$ 一个 $k$-\Term{formal-group}{形式群}结构。\footnote{编者注（76）：也称 $A$ 为\Term{profinite-algebra}{预有限} $k$-\Term{algebra}{代数}\Term{category}{范畴}中的\Term{cogroup}{余群}。此外，我们详细展开了以下论述；特别明确说明了\Term{formal-group}{形式群}\Term{morphism}{态射} $K\to G$ 的含义，参见命题 2.3.1。}具体地，对任一\Term{profinite-algebra}{预有限} $k$-\Term{algebra}{代数} $B$，\Term{continuous}{连续} $k$-\Term{module-morphism}{模态射} $\phi:A\to B$ 的\Term{set}{集合} $\operatorname{Hom}_c(A,B)$ 由
+\[
+\phi\cdot\phi'=m_B\circ(\phi\widehat\otimes\phi')\circ\Delta_A
+\]
+获得一个关于 $B$ \Term{functorial}{函子性}的\Term{group-structure}{群结构}，其\Term{identity-element}{单位元}为 $\eta_B\circ\varepsilon_A$（其中 $m_B$ 是 $B$ 的\Term{multiplication}{乘法}，$\eta_B$ 是从 $k$ 到 $B$ 的映射 $\lambda\mapsto\lambda1_B$），而 $\phi\circ c_A$ 是 $\phi$ 的逆元；\Term{continuous}{连续} $k$-\Term{algebra}{代数}\Term{morphism}{态射} $A\to B$ 的\Term{set}{集合} $\operatorname{Hom}_{\mathrm{Alp}/k}(A,B)$ 则是其中一个\Term{subgroup}{子群}（因为\Term{algebra}{代数} $B$ 交换）。
+
+\begin{SGAresult}{定义}{}
+$k$-\Term{formal-group}{形式群}\Term{morphism}{态射} $\theta:K\to G$，按定义是保持\Term{group-structure}{群结构}的 $k$-\Term{formal-variety}{形式簇}\Term{morphism}{态射}。若 $B$（相应地 $A$）为 $K$（相应地 $G$）的\Term{affine-algebra}{仿射代数}，$f:A\to B$ 是对应于 $\theta$ 的\Term{morphism}{态射}，则此条件\Term{equivalence}{等价}于 $f$ 与\Term{comultiplication}{余乘法}相容，即
+\[
+(f\widehat\otimes f)\circ\Delta_A=\Delta_B\circ f
+\]
+（条件 $\varepsilon_B\circ f=\varepsilon_A$ 及 $c_B\circ f=f\circ c_A$ 随之自动成立）。$k$-\Term{formal-group}{形式群}\Term{category}{范畴}记作 $\mathrm{Grf}_{/k}$。
+\end{SGAresult}
+
+\textbf{记号。} 下文称\Term{ideal}{理想} $I_A=\operatorname{Ker}(\varepsilon_A)$ 为 $A$ 的\Term{augmentation-ideal}{增广理想}，并以 $\omega_{G/k}$ 表示\Term{pseudocompact-module}{伪紧} $k$-模 $I_A/\overline{I_A^2}$，即 $I_A$ 对由 $x,y\in I_A$ 的乘积 $xy$ 生成的\Term{closed-ideal}{闭理想}之商。
+
+\textbf{2.2。} 设 $H$ 是 $\mathscr O_k$ 上\Term{coalgebra}{余代数}\Term{category}{范畴}中的一个群，即对 $\mathrm{Alf}_{/k}$ 的每个\Term{object}{对象} $C$，$H(C)$ 都带有 $C$-\Term{group-coalgebra}{群余代数}结构（参见第 VII\textsubscript{A} 讲 3.2；沿用 Manin 的用语，我们称之为\Term{bialgebra}{双代数}，\footnote{编者注（77）：也用法文「bigèbre」一词（参见 [BAlg]，III §11.4）；提醒读者（参见第 VII\textsubscript{A} 讲 3.1，编者注（26）），这里所有的「\Term{bialgebra}{双代数}」都假定是\Term{cocommutative}{余交换}并带有\Term{antipode}{对极映射}的，即它们实际上都是\Term{cocommutative}{余交换} \Term{Hopf-algebra}{Hopf 代数}。}不再称为\Term{group-coalgebra}{群余代数}）；此外，若 $\varphi:C\to D$ 是 $\mathrm{Alf}_{/k}$ 中的\Term{morphism}{态射}，则映射 $D\otimes_C H(C)\to H(D)$ 是 $D$-\Term{bialgebra}{双代数}\Term{homomorphism}{同态}。
+
+\begin{SGAresult}{定义}{}
+我们将上述性质概括为：$H$ 是 $\mathscr O_k$ 上的一个\Term{bialgebra}{双代数}。
+\end{SGAresult}
+
+\SourcePage{551}
+显然，1.3.5 中的\Term{functor}{函子} $H\mapsto\operatorname{Spf}^*(H)$ 与\Term{finite}{有限}乘积交换。因此，它将 $\mathscr O_k$ 上的\Term{bialgebra}{双代数}变为一个 $k$-\Term{group-functor}{群函子}，即从 $\mathrm{Alf}_{/k}$ 到群\Term{category}{范畴}的（\Term{covariant}{协变}）\Term{functor}{函子}。
+
+事实上，对任一\Term{finite-length-algebra}{有限长} $k$-\Term{algebra}{代数} $C$，
+\[
+\operatorname{Spf}^*(H)(C)=\operatorname{Spf}^*(H(C))=\{x\in H(C)\mid\varepsilon(x)=1\text{ 且 }\Delta(x)=x\otimes x\}
+\]
+中的元素，对\Term{algebra}{代数} $H(C)$ 的\Term{multiplication}{乘法}构成一个群（参见第 VII\textsubscript{A} 讲 3.2.2）。另请注意，条件 $\Delta(x)=x\otimes x$ 蕴涵等式 $\varepsilon(x)=\varepsilon(x)^2$，所以若 $C$ 为\Term{local-ring}{局部环}且 $x\ne0$，便也有 $\varepsilon(x)=1$。\footnote{编者注（78）：由 $\Delta(x)=x\otimes x$ 得 $x=\varepsilon(x)x$，所以 $\varepsilon(x)=0$ 只有在 $x=0$ 时才能发生。}
+
+\textbf{2.2.1。} $\mathscr O_k$ 上的\Term{bialgebra}{双代数} $H$ 称为\Term{flat}{平坦}的，若其底层模为\Term{flat}{平坦}模（参见 1.2.1）。\footnote{编者注（79）：以下我们详细展开了原文。}若 $H$ \Term{flat}{平坦}，则由 1.3.5，$A=\Gamma^*(H)$ 是\Term{topologically-flat}{拓扑平坦}的\Term{profinite-algebra}{预有限} $k$-\Term{algebra}{代数}；将 $\operatorname{Spf}^*(H)$ 看成从 $(\mathrm{Alf}_{/k})^0=\mathrm{Vaf}_{/k}$ 到 $(\mathrm{Ens})$ 的\Term{functor}{函子}，它与\Term{functor}{函子}
+\[
+\operatorname{Spf}(A):C\longmapsto\operatorname{Hom}_{\mathrm{Vaf}_{/k}}(\operatorname{Spf}(C),\operatorname{Spf}(A))
+\]
+\Term{isomorphism}{同构}。因此 $\operatorname{Spf}^*(H)$ 的\Term{group-structure}{群结构}赋予 $\mathscr G(H)=\operatorname{Spf}(A)$ 一个\Term{formal-group}{形式群}结构，其显式描述如下。
+
+对 $\mathrm{Alf}_{/k}$ 的每个\Term{object}{对象} $C$，因 $H(C)$ 的底层 $C$-模为\Term{projective-module}{投射模}，由\Term{lemma}{引理} 1.2.3.A 对 $n$ 归纳可得自然\Term{isomorphism}{同构}：
+\[
+\begin{aligned}
+\bigl(H(C)^*\bigr)^{\widehat\otimes(n+1)}
+&\simeq\operatorname{Hom}_C\bigl(H(C),(H(C)^*)^{\widehat\otimes n}\bigr)\\
+&\simeq\operatorname{Hom}_C\bigl(H(C),(H(C)^{\otimes n})^*\bigr)
+\simeq\bigl(H(C)^{\otimes(n+1)}\bigr)^*.
+\end{aligned}
+\]
+由此（取 $n=1,2$）得，$H(C)$ 的 $C$-\Term{algebraic-structure}{代数结构}赋予 $H(C)^*$ 一个满足 2.1 (i)--(iii) 的\Term{diagonal-map}{对角映射}，且以上一切均关于 $C$ \Term{functorial}{函子性}。
+
+因此，$A=\Gamma^*(H)=\varprojlim H(k/\mathfrak l)^*$ 带有 $\mathrm{Alp}_{/k}$ 中的\Term{cogroup}{余群}结构，这便在 $\mathscr G(H)$ 上定义了所说的\Term{formal-group}{形式群}结构。
+
+反之，设 $G$ 是\Term{topologically-flat}{拓扑平坦}的 $k$-\Term{formal-group}{形式群}，其\Term{affine-algebra}{仿射代数}为 $A$；以 $H(G)$ 表示 $\mathscr O_k$-\Term{coalgebra}{余代数} $V_k^f(A)$（参见 1.2.3）。\Term{diagonal-morphism}{对角态射} $\Delta_A:A\to A\widehat\otimes_k A$ 对每个\Term{finite-length-algebra}{有限长} $k$-\Term{algebra}{代数} $C$ 诱导一个 $C$-\Term{linear}{线性}映射
+\[
+V_k^f(A)(C)\otimes_C V_k^f(A)(C)\longrightarrow V_k^f(A)(C),
+\]
+使\Term{coalgebra}{余代数} $V_k^f(A)(C)$ 成为 $C$-\Term{bialgebra}{双代数}。我们称 $H(G)$ 为\Term{formal-group}{形式群} $G$ 的\Term{covariant-bialgebra}{协变双代数}。\footnote{编者注（80）：加入「\Term{covariant}{协变}」一词是为了表明\Term{functor}{函子} $G\mapsto H(G)$ 为\Term{covariant-functor}{协变函子}；[Di73]，I §2.14 使用了这一术语。}因此，由命题 1.3.5.D 得：
+\begin{SGAresult}{命题}{}
+(i) \Term{functor}{函子} $G\mapsto H(G)$ 与 $H\mapsto\mathscr G(H)$ 定义了\Term{topologically-flat}{拓扑平坦} $k$-\Term{formal-group}{形式群}\Term{category}{范畴}和\Term{flat}{平坦} $\mathscr O_k$-\Term{bialgebra}{双代数}\Term{category}{范畴}之间的\Term{equivalence-of-categories}{范畴等价}。\footnote{编者注（81）：再提醒一次，本讲中的「\Term{bialgebra}{双代数}」是指「\Term{cocommutative}{余交换} \Term{Hopf-algebra}{Hopf 代数}」。}
+\SourcePage{552}
+
+(ii) 这一\Term{equivalence}{等价}「与\Term{base-change}{基变换}交换」：若 $k\to K$ 是\Term{pseudocompact-ring}{伪紧环}的\Term{morphism}{态射}，则
+\[
+H(G\widehat\otimes_k K)=H(G)\otimes_k K,
+\qquad \mathscr G(H\otimes_k K)=\mathscr G(H)\widehat\otimes_k K.
+\]
+\end{SGAresult}
+当 $k$ 为\Term{artinian-ring}{Artin 环}，$G$ 为\Term{topologically-flat}{拓扑平坦} $k$-\Term{formal-group}{形式群}时，\Term{functor}{函子} $H(G)$ 显然由其在 $k$ 处的值 $H(G)=H(G)(k)$ 决定。我们也称 $H(G)$ 为 $G$ 的（\Term{covariant-bialgebra}{协变}）\Term{bialgebra}{双代数}。\footnote{编者注（82）：这里引入了记号 $\mathscr H^{\mathrm{cocom}}_{\mathrm{plat}/k}$，下文将用到它。}因此，以 $\mathscr H_k$ 表示 $k$-\Term{Hopf-algebra}{Hopf 代数}\Term{category}{范畴}，以 $\mathscr H^{\mathrm{cocom}}_{\mathrm{plat}/k}$ 表示其中由 $k$ 上\Term{flat}{平坦}且\Term{cocommutative}{余交换}的 $k$-\Term{Hopf-algebra}{Hopf 代数}构成的\Term{full-subcategory}{满子范畴}，便得到：
+\begin{SGAresult}{推论}{}
+设 $k$ 是\Term{artinian-ring}{Artin 环}。
+
+(i) \Term{functor}{函子} $G\mapsto H(G)$ 与 $H\mapsto\mathscr G(H)=\operatorname{Spf}^*H(G)$ 定义\Term{topologically-flat}{拓扑平坦} $k$-\Term{formal-group}{形式群}\Term{category}{范畴}和 $\mathscr H^{\mathrm{cocom}}_{\mathrm{plat}/k}$ 之间的\Term{equivalence-of-categories}{等价}。
+
+(ii) 这一\Term{equivalence}{等价}「与\Term{base-change}{基变换}交换」：若 $k\to K$ 为\Term{artinian-ring}{Artin 环}的\Term{morphism}{态射}，则
+\[
+H(G\widehat\otimes_k K)=H(G)\otimes_k K,
+\qquad\mathscr G(H\otimes_k K)=\mathscr G(H)\widehat\otimes_k K.
+\]
+\end{SGAresult}
+另一方面，也以 $\mathscr H^{\mathrm{com}}_{\mathrm{plat}/k}$ 表示 $\mathscr H_k$ 中由 $k$ 上\Term{flat}{平坦}且交换的 $k$-\Term{Hopf-algebra}{Hopf 代数}构成的\Term{full-subcategory}{满子范畴}；回顾\Term{functor}{函子} $K\mapsto\mathscr O(K)$ 是从\Term{affine-group-scheme}{仿射 $k$-群概形}\Term{category}{范畴}到 $\mathscr H^{\mathrm{com}}_{\mathrm{plat}/k}$ 的\Term{anti-equivalence}{反等价}。
+
+\textbf{2.2.2。} 为简单起见，假设 $k$ 为\Term{artinian-ring}{Artin 环}，设 $G$ 是\Term{topologically-flat}{拓扑平坦}的 $k$-\Term{formal-group}{形式群}。\footnote{编者注（83）：以下我们详细展开原文，以引入记号 $D'(G)$ 和 $D(K)$，参见 [Ca62]，§14。}那么 $G$ 交换当且仅当其\Term{affine-algebra}{仿射代数} $\mathscr A(G)$ 的\Term{comultiplication}{余乘法}为\Term{cocommutative}{余交换}的，也即\Term{bialgebra}{双代数} $H(G)$ 的\Term{multiplication}{乘法}交换。此时 $H(G)$ 是 $k$ 上\Term{flat}{平坦}的、交换且\Term{cocommutative}{余交换}的\Term{Hopf-algebra}{Hopf 代数}，所以若置 $D'(G)=\operatorname{Spec}H(G)$，则 $D'(G)$ 是 $k$ 上\Term{affine}{仿射}且\Term{flat}{平坦}的交换 $k$-\Term{group-scheme}{群概形}。反之，若 $T$ 是这样的 $k$-\Term{group-scheme}{群概形}，则其\Term{affine-algebra}{仿射代数} $\mathscr O(T)$ 是 $k$ 上\Term{flat}{平坦}的\Term{cocommutative}{余交换} $k$-\Term{coalgebra}{余代数}\Term{category}{范畴}中的\Term{abelian-group}{交换群}，因而由 1.3.5.C，置
+\[
+D(T)=\operatorname{Spf}^*\mathscr O(T)=\operatorname{Spf}(\mathscr A),
+\qquad\mathscr A=\mathscr O(T)^*,
+\]
+便得到一个\Term{topologically-flat}{拓扑平坦}的 $k$-\Term{formal-group}{形式群} $D(T)$。
+由 1.3.5.D 有\Term{canonical-isomorphism}{典范同构} $G=\operatorname{Spf}^*H(G)$ 和 $H(D(T))=\mathscr O(T)$，从而得到\Term{canonical-isomorphism}{典范同构}：
+\[
+D(D'(G))=\operatorname{Spf}^*\mathscr O(D'(G))=\operatorname{Spf}^*H(G)=G,
+\]
+\[
+D'(D(T))=\operatorname{Spec}H(D(T))=\operatorname{Spec}\mathscr O(T)=T.
+\]
+此外，以 $k\text{-}\mathrm{Gr.}$ 表示 $k$-\Term{group-scheme}{群概形}\Term{category}{范畴}，由推论 2.2.1 有\Term{functorial-isomorphism}{函子性同构}
+\[
+\operatorname{Hom}_{\mathrm{Grf}/k}(G,D(T))\simeq\operatorname{Hom}_{\mathscr H_k}(H(G),\mathscr O(T))\simeq\operatorname{Hom}_{k\text{-}\mathrm{Gr.}}(T,D'(G)).
+\]
+故得：
+
+\SourcePage{553}
+\begin{SGAresult}{命题（\Term{cartier-dual}{Cartier 对偶}）}{}
+设 $k$ 是\Term{artinian-ring}{Artin 环}。
+
+(i) \Term{functor}{函子} $G\mapsto D'(G)=\operatorname{Spec}H(G)$ 与 $T\mapsto D(T)=\operatorname{Spf}^*\mathscr O(T)$ 诱导 $k$ 上\Term{topologically-flat}{拓扑平坦}的交换 $k$-\Term{formal-group}{形式群}\Term{category}{范畴} $\mathscr{FC}_k$ 和\Term{affine}{仿射}\Term{flat}{平坦}交换 $k$-\Term{group-scheme}{群概形}\Term{category}{范畴} $\mathscr{AC}_k$ 之间的\Term{anti-equivalence}{反等价}，即 $G$ 与 $D'(G)$（相应地 $T$ 与 $D(T)$）满足等式：\footnote{编者注（84）：若以 $\mathscr{FC}_k^f$（相应地 $\mathscr{AC}_k^f$）表示 $\mathscr{FC}_k$（相应地 $\mathscr{AC}_k$）中由满足 $H(G)$（相应地 $\mathscr O(T)$）是\Term{finite}{有限} $k$-模（因而\Term{finite-locally-free}{有限局部自由}）的\Term{object}{对象} $G$（相应地 $T$）构成的\Term{full-subcategory}{满子范畴}，则 $\mathscr{FC}_k^f$ 和 $\mathscr{AC}_k^f$ 与 $k$ 上\Term{finite}{有限}\Term{flat}{平坦}、交换且\Term{cocommutative}{余交换}的 $k$-\Term{Hopf-algebra}{Hopf 代数}\Term{category}{范畴} $\mathscr C$，三者的\Term{object}{对象}都相同，对应 $G\mapsto H(G)$（相应地 $T\mapsto\mathscr O(T)$）为\Term{covariant}{协变}（相应地\Term{contravariant}{反变}）的；于是重新得到第 VII\textsubscript{A} 讲 3.3.1 已见过的\Term{category}{范畴} $\mathscr{AC}_k$ 的「\Term{Cartier-duality}{Cartier 对偶}」。}
+\[
+H(G)=\mathscr O(D'(G)),\qquad \mathscr O(T)=H(D(T)).
+\]
+(ii) 此\Term{anti-equivalence}{反等价}「与\Term{base-change}{基变换}交换」：若 $k\to K$ 为\Term{artinian-ring}{Artin 环}的\Term{morphism}{态射}，则
+\[
+D'(G\widehat\otimes_k K)=D'(G)\otimes_k K,
+\qquad D(T\otimes_k K)=D(T)\widehat\otimes_k K.
+\]
+(iii) 特别地，若 $k$ 为域，便得到交换 $k$-\Term{formal-group}{形式群}\Term{category}{范畴}和\Term{affine}{仿射}交换 $k$-\Term{group-scheme}{群概形}\Term{category}{范畴}之间的\Term{anti-equivalence}{反等价}，它与\Term{base-field-extension}{基域扩张}交换。
+\end{SGAresult}
+
+\textbf{2.3。} 现在考虑任意 $k$-\Term{formal-group}{形式群} $G$，\footnote{编者注（85）：即不必在 $k$ 上\Term{topologically-flat}{拓扑平坦}。}其\Term{affine-algebra}{仿射代数}为 $A$。仍以 $H(G)$ 表示 $A$ 的\Term{duality}{对偶} $\mathscr O_k$-模 $V_k^f(A)$，并以 $\varphi_G$ 表示\Term{functorial}{函子性}\Term{homomorphism}{同态}
+\[
+\varphi_G:H(G)\otimes_k H(G)\longrightarrow H(G\times G),
+\]
+它由对 $\mathrm{Alf}_{/k}$ 的每个\Term{object}{对象} $C$ 的自然映射（0.3.6）
+\[
+(A\widehat\otimes_k C)^\dagger\otimes_C(A\widehat\otimes_k C)^\dagger\longrightarrow
+\bigl((A\widehat\otimes_k C)\widehat\otimes_C(A\widehat\otimes_k C)\bigr)^\dagger
+\]
+诱导。若 $m:G\times G\to G$ 为 $G$ 的\Term{multiplication}{乘法}，则复合映射
+\[
+H(G)\otimes_k H(G)\xrightarrow{\varphi_G}H(G\times G)\xrightarrow{H(m)}H(G)
+\]
+使 $H(G)$ 成为 $\mathscr O_k$ 上的\Term{algebra}{代数}；对每个 $C\in\mathrm{Alf}_{/k}$，$H(G)(C)=(A\widehat\otimes_k C)^\dagger$ 的\Term{identity-element}{单位元}就是 $A\widehat\otimes_k C$ 的\Term{augmentation}{增广}（参见 2.1）。\footnote{编者注（86）：以下调整了原文的句序。}若 $G$ 在 $k$ 上不\Term{topologically-flat}{拓扑平坦}，$\varphi_G$ 未必是\Term{isomorphism}{同构}，因此由 $G$ 到 $G\times G$ 的\Term{diagonal-morphism}{对角态射}「$x\mapsto(x,x)$」诱导的\Term{morphism}{态射} $\delta_G:H(G)\to H(G\times G)$ 未必能通过 $H(G)\otimes_k H(G)$ \Term{resolution}{分解}，亦即 $H(G)$ 未必是 $\mathscr O_k$-\Term{bialgebra}{双代数}。
+
+因此，一般情形下只称 $H(G)$ 为\Term{formal-group}{形式群} $G$ 的「\Term{covariant-algebra}{协变代数}」。当然，当 $G$ 在 $k$ 上\Term{topologically-flat}{拓扑平坦}时，$\varphi_G$ 为\Term{isomorphism}{同构}，且恢复 2.2.1 中定义的 $H(G)$ 的 $\mathscr O_k$-\Term{bialgebra}{双代数}结构。
+
+\SourcePage{554}
+\begin{SGAresult}{命题}{2.3.1}
+设 $K,G$ 是两个 $k$-\Term{formal-group}{形式群}，其\Term{affine-algebra}{仿射代数}分别为 $B,A$。假设 $K$ 在 $k$ 上\Term{topologically-flat}{拓扑平坦}。则从 $\operatorname{Hom}_{\mathrm{Grf}/k}(K,G)$ 到使图
+\[
+\begin{tikzcd}[column sep=large]
+H(K)\otimes_k H(K)\arrow[r,"h\otimes h"]&H(G)\otimes_k H(G)\arrow[dr,"\varphi_G"]&\\
+&&H(G\times G)\\
+H(K)\arrow[uu,"\Delta_{H(K)}"]\arrow[r,"h"']&H(G)\arrow[ur,"\delta_G"']&
+\end{tikzcd}\tag{*}
+\]
+交换的保单位 $\mathscr O_k$-\Term{algebra}{代数}\Term{homomorphism}{同态} $h:H(K)\to H(G)$ 的\Term{set}{集合}，存在一个\Term{canonical}{典范}\Term{bijection}{双射}。
+\end{SGAresult}
+\begin{proof}
+因 $K$ \Term{topologically-flat}{拓扑平坦}，$H(K)$ 带有\Term{bialgebra}{双代数}结构（参见 2.2），$\Delta_{H(K)}$ 为其\Term{diagonal-morphism}{对角态射}；换言之，用 2.3 的记号，$\Delta_{H(K)}=\varphi_K^{-1}\circ\delta_K$。若 $G$ 也在 $k$ 上\Term{topologically-flat}{拓扑平坦}，本命题就是 2.2.1 所建立的\Term{equivalence-of-categories}{范畴等价}的结果。
+
+一般情形下，可假定 $k$ 为\Term{artinian-ring}{Artin 环}，在\Term{algebra}{代数} $H(K)=B^\dagger$ 和 $H(G)=A^\dagger$ 上论证。设 $\operatorname{Hom}_c(A,B)$ 为从 $A$ 到 $B$ 的\Term{continuous}{连续} $k$-\Term{linear}{线性}映射的\Term{set}{集合}，$\operatorname{Hom}_k(B^\dagger,A^\dagger)$ 为从 $B^\dagger$ 到 $A^\dagger$ 的 $k$-\Term{linear}{线性}映射的\Term{set}{集合}。
+
+由 0.3.6.A 知，\footnote{编者注（87）：我们详细展开了证明的下半部分。}若 $M,P$ 为\Term{pseudocompact-module}{伪紧} $k$-模，且 $P$ 为\Term{projective-module}{投射模}，则\Term{canonical}{典范}映射
+\[
+\operatorname{Hom}_c(M,P)\longrightarrow\operatorname{Hom}_k(P^\dagger,M^\dagger),\qquad f\longmapsto{}^tf
+\]
+为\Term{bijection}{双射}（这里 ${}^tf$ 表示 $f$ 的\Term{transpose}{转置}）。（我们将取 $M=A\widehat\otimes A$、$P=B$，或 $M=A$、$P=B\widehat\otimes B$ 应用此结论。）
+
+设 $f\in\operatorname{Hom}_c(A,B)$。考虑下列图，其中方块 (0) 交换，且两个未标名称的竖\Term{arrow}{箭头}均为 ${}^t(f\widehat\otimes f)$：
+\[
+\begin{tikzcd}
+A\widehat\otimes A\arrow[r,"m_A"]\arrow[d,"f\widehat\otimes f"']&A\arrow[r,"\Delta_A"]\arrow[d,"f" description]&A\widehat\otimes A\arrow[d,"f\widehat\otimes f"]\\
+B\widehat\otimes B\arrow[r,"m_B"']&B\arrow[r,"\Delta_B"']&B\widehat\otimes B
+\end{tikzcd}
+\]
+上图的左右两个方块分别记作 (1)、(2)。
+\[
+\begin{tikzcd}[column sep=small]
+A^\dagger\otimes A^\dagger\arrow[r,"\varphi_G"]&(A\widehat\otimes A)^\dagger&A^\dagger\arrow[l,"\delta_G={}^tm_A"']&(A\widehat\otimes A)^\dagger\arrow[l,"{}^t\Delta_A"']&A^\dagger\otimes A^\dagger\arrow[l,"\varphi_G"']\\
+B^\dagger\otimes B^\dagger\arrow[u,"{}^tf\otimes{}^tf"]\arrow[r,equal]&(B\widehat\otimes B)^\dagger\arrow[u]&B^\dagger\arrow[u,"{}^tf"]\arrow[l,"\delta_K={}^tm_B"]&(B\widehat\otimes B)^\dagger\arrow[u]\arrow[l,"{}^t\Delta_B"]&B^\dagger\otimes B^\dagger\arrow[u,"{}^tf\otimes{}^tf"']\arrow[l,equal]
+\end{tikzcd}
+\]
+下图从左至右的四个方块分别记为 $(0),(1'),(2'),(0)$。
+\SourcePage{555}
+若 $f:A\to B$ 对应一个\Term{formal-group}{形式群}\Term{morphism}{态射} $K\to G$，则方块 (1)、(2) 交换，且 $\varepsilon_B\circ f=\varepsilon_A$；因此方块 $(1')$、$(2')$ 交换，且 ${}^tf$ 将 $B^\dagger=H(K)$ 的\Term{identity-element}{单位元}送到 $A^\dagger=H(G)$ 的\Term{identity-element}{单位元}，即 ${}^tf$ 是保单位的 $k$-\Term{algebra}{代数}\Term{morphism}{态射} $H(K)\to H(G)$，并使命题中的图 $(*)$ 交换。
+
+反之，若 ${}^tf$ 满足这些条件，则 $\varepsilon_B\circ f=\varepsilon_A$，且方块 $(1')$、$(2')$ 交换。对 $M=A\widehat\otimes A$、$P=B$（相应地 $M=A$、$P=B\widehat\otimes B$），映射 $g\mapsto{}^tg$ 为\Term{injectivity}{单射}，所以方块 (1)、(2) 交换，即 $f$ 与 $A,B$ 的\Term{multiplication}{乘法}和\Term{diagonal-morphism}{对角态射}相容。尚须说明 $f(1_A)=1_B$。由上可得 $\varepsilon_Bf(1)=1$、$\Delta_Bf(1)=f(1)\widehat\otimes f(1)$ 以及 $f(1)f(1)=f(1)$。前两个条件由 2.1 (iii) 蕴涵 $f(1)$ 在 $B$ 中有逆元 $c_Bf(1)$；因此 $f(1)f(1)=f(1)$ 蕴涵 $f(1)=1$。故 $f:A\to B$ 是 $\mathrm{Alp}_{/k}$ 的\Term{morphism}{态射}，且与 $A,B$ 的\Term{comultiplication}{余乘法}相容。
+\end{proof}
+
+\textbf{2.3.2。} 为简单起见，现在假设环 $k$ 为\Term{artinian-ring}{Artin 环}。当 $G$ 在 $k$ 上\Term{topologically-flat}{拓扑平坦}时，\Term{algebra}{代数} $H(G)=H(G)(k)$ 可用一个（归于 Cartier 的）\Term{universal-property}{泛性质}来刻画。回顾（参见 1.2.1），若 $U$ 为 $k$-模，以 $W(U)$ 表示将每个\Term{finite-length-algebra}{有限长} $k$-\Term{algebra}{代数} $C$ 送到 $C$-模 $U\otimes_k C$ 的\Term{functor}{函子}。\footnote{编者注（88）：加入了前一句，下文也用 $W(U)^\times$ 代替原来的 $U_m$。另请回顾（参见 1.2.1），「$k$-\Term{functor}{函子}」是指\Term{covariant-functor}{协变函子} $\mathrm{Alf}_{/k}\to(\mathrm{Ens})$。}若 $U$ 为（结合、有\Term{identity-element}{单位元}的）$k$-\Term{algebra}{代数}，则 $U\otimes_k C$ 亦然；我们以 $W(U)^\times$ 表示将每个 $C\in\operatorname{Ob}\mathrm{Alf}_{/k}$ 送到\Term{algebra}{代数} $U\otimes_k C$ 的\Term{invertible-element}{可逆元}\Term{multiplicative-group}{乘法群}的 $k$-\Term{group-functor}{群函子}：
+\[
+W(U)^\times(C)=(U\otimes_k C)^\times.
+\]
+此外，将 $G$ 等同于 $k$-\Term{group-functor}{群函子} $C\mapsto\operatorname{Hom}_{\mathrm{Vaf}/k}(\operatorname{Spf}(C),G)$，并以 $\operatorname{Hom}_{k\text{-}\mathrm{Gr.}}(G,W(U)^\times)$ 表示从 $G$ 到 $W(U)^\times$ 的 $k$-\Term{group-functor}{群函子}\Term{homomorphism}{同态}的\Term{set}{集合}。于是有：
+\begin{SGAresult}{命题}{}
+设 $k$ 是\Term{artinian-ring}{Artin 环}。对每个 $k$ 上\Term{topologically-flat}{拓扑平坦}的\Term{formal-group}{形式群} $G$ 和每个 $k$-\Term{algebra}{代数} $U$，有\Term{canonical-isomorphism}{典范同构}
+\[
+\operatorname{Hom}_{k\text{-}\mathrm{Gr.}}(G,W(U)^\times)\xrightarrow{\sim}\operatorname{Hom}_{k\text{-}\mathrm{Alg.}}(H(G),U).
+\]
+\end{SGAresult}
+\begin{proof}
+以 $A$ 表示 $G$ 的\Term{affine-algebra}{仿射代数}；由假设它是 $\mathrm{PC}(k)$ 的\Term{projective-module}{投射对象}，且 $H(G)=A^\dagger$。对 $\mathrm{PC}(k)$ 的每个\Term{object}{对象} $P$，以 $U\widehat\otimes_k P$ 表示 $k$-模 $U\otimes_k(P/N)$ 的\Term{projective-limit}{射影极限}，其中 $N$ 遍历 $P$ 的开\Term{submodule}{子模}。有\Term{linear}{线性}映射
+\[
+U\otimes_k(P/N)\longrightarrow\operatorname{Hom}_k((P/N)^*,U),
+\]
+将 $u\otimes x$ 送到 $k$-\Term{linear}{线性}映射 $f\mapsto f(x)u$；这些映射组成一个\Term{filtered-projective-system}{滤过射影系}统。因此取\Term{projective-limit}{射影极限}，得到\Term{morphism}{态射}
+\[
+U\widehat\otimes_k P\xrightarrow{\psi_P}\operatorname{Hom}_k(P^\dagger,U).\tag{1}
+\]
+\SourcePage{556}
+当 $P=k$ 时，$\psi_k$ 显然为\Term{isomorphism}{同构}；此外，(1) 两端作为关于 $P$ 的\Term{functor}{函子}，都与无限乘积交换（任意乘积都是\Term{finite}{有限}乘积的\Term{filtered}{滤过}\Term{projective-limit}{射影极限}）。故当 $P$ 为若干个 $k$ 的乘积时，(1) 为\Term{isomorphism}{同构}；继而当 $P$ 为 $\mathrm{PC}(k)$ 的\Term{projective-module}{投射对象}时亦然（(1) 两端都与\Term{finite}{有限}\Term{direct-sum}{直和}交换）。
+
+现在以 $\operatorname{Hom}_{\mathscr F}(G,W(U))$ 表示从 $G$ 到 $W(U)$ 的 $k$-\Term{morphism-of-functors}{函子态射}的\Term{set}{集合}。因为 $G=\operatorname{Spf}(A)=\varinjlim\operatorname{Spf}(A/\mathfrak l)$，其中 $\mathfrak l$ 遍历 $A$ 的开\Term{ideal}{理想}，故有\Term{canonical-isomorphism}{典范同构}
+\[
+\begin{aligned}
+\operatorname{Hom}_{\mathscr F}(G,W(U))
+&=\varprojlim\operatorname{Hom}_{\mathscr F}(\operatorname{Spf}(A/\mathfrak l),W(U))\\
+&=\varprojlim U\otimes_k(A/\mathfrak l)=U\widehat\otimes_k A.
+\end{aligned}
+\]
+由上所述，得到\Term{canonical-isomorphism}{典范同构}
+\[
+\operatorname{Hom}_{\mathscr F}(G,W(U))=U\widehat\otimes_k A\xrightarrow{\psi_A}\operatorname{Hom}_k(H(G),U).\tag{2}
+\]
+对每个\Term{finite-length-algebra}{有限长} $k$-\Term{algebra}{代数} $C$，\Term{multiplication}{乘法}使 $U\otimes_k C$ 成为有\Term{identity-element}{单位元}的\Term{monoid}{幺半群}，而任一保单位的\Term{monoid}{幺半群}\Term{morphism}{态射} $G(C)\to U\otimes_k C$ 必然是\Term{group-morphism}{群态射} $G(C)\to(U\otimes_k C)^\times$。因此，$\operatorname{Hom}_{k\text{-}\mathrm{Gr.}}(G,W(U)^\times)$ 就是 $\operatorname{Hom}_{\mathscr F}(G,W(U))$ 中由保单位 $k$-\Term{monoid-functor}{幺半群函子}\Term{morphism}{态射}构成的\Term{subset}{子集}。
+
+尚须说明这些\Term{morphism}{态射}对应于保持\Term{multiplication}{乘法}和\Term{identity-element}{单位元}的、从 $H(G)$ 到 $U$ 的 $k$-\Term{linear}{线性}映射。\footnote{编者注（89）：原文说「（这）由 $\psi_A$ 的\Term{functorial}{函子性}得出」。以下详细说明了这一点。}为简化书写，将 $H(G)=A^\dagger$ 记为 $H$，并写 $\widehat\otimes$ 代替 $\widehat\otimes_k$。以 $\Delta_A,m_A,\varepsilon_A$（相应地 $\Delta_H,m_H,\varepsilon_H$）表示 $A$（相应地 $H$）的\Term{comultiplication}{余乘法}、\Term{multiplication}{乘法}和\Term{augmentation}{增广}。设 $\theta\in\operatorname{Hom}_{\mathscr F}(G,W(U))$，以 $\gamma$ 表示它在 $U\widehat\otimes A$ 中的像，$\phi:H\to U$ 表示相应的 $k$-\Term{linear}{线性}映射。$\theta$ 将\Term{unit-section}{单位截面} $s\in G(k)$ 送到 $U$ 的一个元素 $u$；因 $s$ 对应\Term{augmentation}{增广} $\varepsilon:A\to k$，也就是 $H$ 的\Term{identity-element}{单位元} $1_H$，可见 $\theta(s)=1_U$ 当且仅当 $\phi(1_H)=1_U$。
+
+另一方面，\Term{morphism}{态射} $\theta\circ m_G:G\times G\to W(U)$ 对应于元素 $(\mathrm{id}_U\widehat\otimes\Delta_A)(\gamma)$，后者经\Term{duality}{对偶}又对应于映射 $\phi\circ m_H:H\otimes H\to U$。
+
+\Term{morphism}{态射} $\theta\circ\operatorname{pr}_1:G\times G\to W(U)$ 则对应于 $U\widehat\otimes A\widehat\otimes A$ 中的元素 $\gamma\widehat\otimes1_A$，它经\Term{dual-correspondence}{对偶对应}于 $\phi\circ(\mathrm{id}_H\otimes\varepsilon):H\otimes H\to U$。同样，$\theta\circ\operatorname{pr}_2$ 对应于 $U\widehat\otimes A\widehat\otimes A$ 中的元素 $\tau(\gamma\widehat\otimes1_A)$（其中 $\tau(u\widehat\otimes a\widehat\otimes b)=u\widehat\otimes b\widehat\otimes a$），后者经\Term{dual-correspondence}{对偶对应}于 $\phi\circ(\varepsilon\otimes\mathrm{id}_H):H\otimes H\to U$。最后，下列\Term{multiplication}{乘法}映射 $\mu=m_{U\widehat\otimes A\widehat\otimes A}$：
+\[
+\begin{aligned}
+{}&(U\widehat\otimes A\widehat\otimes A)\times(U\widehat\otimes A\widehat\otimes A),\\
+&(u\widehat\otimes a_1\widehat\otimes a_2,u'\widehat\otimes a_3\widehat\otimes a_4)
+\longmapsto uu'\widehat\otimes a_1a_3\widehat\otimes a_2a_4
+\end{aligned}
+\]
+可看成 $(U\otimes U)\widehat\otimes A^{\widehat\otimes4}$ 的「交换因子 $a_2$ 与 $a_3$」的\Term{endomorphism}{自同态} $\sigma_{23}$，与映射
+\[
+(U\otimes U)\widehat\otimes A^{\widehat\otimes2}\widehat\otimes A^{\widehat\otimes2}
+\xrightarrow{m_U\widehat\otimes m_A\widehat\otimes m_A}U\widehat\otimes A\widehat\otimes A
+\]
+的复合。
+\SourcePage{557}
+由此得到，映射 $\mu\circ(\phi\circ\operatorname{pr}_1,\phi\circ\operatorname{pr}_2):G\times G\to W(U)$ 对应于下图的复合映射 $\beta$：
+\[
+\begin{tikzcd}[column sep=large]
+&H\otimes H\arrow[dr,"\beta"]\arrow[dl,"\mathrm{id}_H\circ\sigma_{23}\circ\mathrm{id}_H"']&\\
+H\otimes H\otimes H\otimes H\arrow[dr,"{(\mathrm{id}_H\otimes\varepsilon_H)\otimes(\varepsilon_H\otimes\mathrm{id}_H)}"']&&U\\
+&H\otimes H\arrow[r,"\phi\otimes\phi"']&U\otimes U\arrow[u,"m_U"']
+\end{tikzcd}
+\]
+最后，$\theta$ 与 $G$ 及 $W(U)^\times$ 的运算相容，当且仅当 $\theta\circ m_G$ 等于 $\mu\circ(\phi\circ\operatorname{pr}_1,\phi\circ\operatorname{pr}_2)$；由上所述，这\Term{equivalence}{等价}于 $\phi\circ m_H=\beta$。而显然 $(\phi\circ m_H)(x\otimes y)=\phi(xy)$，也容易看出 $\beta(x\otimes y)=\phi(x)\phi(y)$。
+\end{proof}
+
+\textbf{2.4。} 现在回到任意\Term{pseudocompact-ring}{伪紧环} $k$，将 1.4--1.5 中关于对\Term{topologically-flat}{拓扑平坦}\Term{equivalence-relation}{等价关系}取商的结果用于\Term{formal-group}{形式群}。
+
+设 $u:H\to G$ 是 $k$-\Term{formal-group}{形式群}的\Term{monomorphism}{单态射}，\footnote{编者注（90）：以下详细展开了原文。}$\mu:G\times G\to G$ 是 $G$ 的「\Term{multiplication}{乘法}」\Term{morphism}{态射}，$\lambda$ 是\Term{composition-morphism}{复合态射}
+\[
+\lambda:G\times H\xrightarrow{\mathrm{id}_G\times u}G\times G\xrightarrow{\mu}G.
+\]
+由于 $u$ 是\Term{monomorphism}{单态射}，\Term{morphism}{态射}对
+\[
+G\times H\mathrel{\substack{\xrightarrow{\operatorname{pr}_1}\\[-.6ex]\xrightarrow[\lambda]{}}}G
+\]
+是 $\mathrm{Vaf}_{/k}$ 中的\Term{equivalence-pair}{等价对}（参见第 V 讲 2.b)）。回顾（参见 1.2.C），这对\Term{morphism}{态射}的\Term{cokernel}{余核} $G/H$ 定义如下。
+
+设 $\mathscr O(G),\mathscr O(H)$ 为 $G,H$ 的\Term{affine-algebra}{仿射代数}，$\Delta:\mathscr O(G)\to\mathscr O(G)\widehat\otimes_k\mathscr O(G)$ 为 $\mathscr O(G)$ 的\Term{diagonal-morphism}{对角态射}，$I$ 为\Term{morphism}{态射} $u^\natural:\mathscr O(G)\to\mathscr O(H)$ 的核。（由命题 1.3 知，$u^\natural$ \Term{induction-isomorphism}{诱导同构} $\mathscr O(G)/I\xrightarrow\sim\mathscr O(H)$。）于是 $G/H$ 的\Term{affine-algebra}{仿射代数} $\mathscr O(G/H)$ 为\Term{morphism}{态射}对
+\[
+\mathscr O(G)\mathrel{\substack{\xrightarrow{\tau_1}\\[-.6ex]\xrightarrow[(\mathrm{id}\widehat\otimes u^\natural)\Delta]{}}}\mathscr O(G)\widehat\otimes_k\mathscr O(H)
+\]
+的核，其中 $\tau_1(x)=x\widehat\otimes1$，即
+\[
+\mathscr O(G/H)=\{x\in\mathscr O(G)\mid\Delta(x)-x\widehat\otimes1\in\mathscr O(G)\widehat\otimes I\}.
+\]
+若 $H$ 此外在 $k$ 上\Term{topologically-flat}{拓扑平坦}，则 $\operatorname{pr}_1$ \Term{topologically-flat}{拓扑平坦}，由\Term{theorem}{定理} 1.4 得以下\Term{theorem}{定理}。
+
+\SourcePage{558}
+\begin{SGAresult}{\Term{theorem}{定理}}{}
+设 $u:H\to G$ 为 $k$-\Term{formal-group}{形式群}的\Term{monomorphism}{单态射}。假设 $H$ 在 $k$ 上\Term{topologically-flat}{拓扑平坦}。则\Term{projection}{投影} $p:G\to G/H$ 为\Term{surjectivity}{满射}且\Term{topologically-flat}{拓扑平坦}，有\Term{isomorphism}{同构}
+\[
+G\times H\xrightarrow{\sim}G\times_{G/H}G,\tag{*}
+\]
+并且 $G/H$ 表示\Term{flat-topology}{平坦拓扑}的\Term{quotient-sheaf}{商层}。
+
+因此，$G/H$ 带有一个以 $G$ 为\Term{operator-group}{算子群}的\Term{canonical}{典范}\Term{object}{对象}结构，使 $p:G\to G/H$ 为带\Term{operator}{算子}\Term{object}{对象}的\Term{morphism}{态射}。若 $u$ 还将 $H$ 等同于 $G$ 的\Term{normal-subgroup}{正规子群}，则 $G/H$ 带有\Term{canonical}{典范}的 $k$-\Term{formal-group}{形式群}结构，使 $p:G\to G/H$ 为 $k$-\Term{formal-group}{形式群}\Term{morphism}{态射}，并且 $H$ 为 $p$ 的核。
+\end{SGAresult}
+\begin{proof}
+第一条断言来自 1.4；后两条来自第 IV 讲推论 5.2.2 和 5.2.4。
+\end{proof}
+\begin{SGAresult}{推论}{}
+设 $G$ 为 $k$-\Term{formal-group}{形式群}，$H$ 为 $G$ 的\Term{formal-subgroup}{形式子群}，\footnote{编者注（91）：这里明确写出了这一推论，例如 5.2.1/5.2.3 会用到它。}$A$（相应地 $A/J,B$）为 $G$（相应地 $H,G/H$）的\Term{affine-algebra}{仿射代数}，$I_A$ 为 $A$ 的\Term{augmentation-ideal}{增广理想}，$I_B=B\cap I_A$。假设 $H$ 在 $k$ 上\Term{topologically-flat}{拓扑平坦}。则 $J$ 等于由 $I_B$ 生成的\Term{closed-ideal}{闭理想} $AI_B$。
+\end{SGAresult}
+\begin{proof}
+\Term{projection}{投影} $B\to B/I_B$ 对应于 $G/H$ 的「\Term{unit-section}{单位截面}」$e:\operatorname{Spf}(k)\to G/H$。由 $(*)$，$H$ 可等同于\Term{fiber-product}{纤维积} $\operatorname{Spf}(k)\times_{G/H}G$，所以其\Term{affine-algebra}{仿射代数} $A/J$ 可等同于 $(B/I_B)\widehat\otimes_B A\simeq A/AI_B$。
+\end{proof}
+
+\textbf{2.4.A。} 设 $G,Q$ 为\Term{topologically-flat}{拓扑平坦} $k$-\Term{formal-group}{形式群}；\footnote{编者注（92）：这里加入了 2.4.A 和 2.4.B，分别供 5.1.3 和 2.9 使用。}假设存在\Term{homomorphism}{同态} $\sigma:Q\to G$ 和 $\pi:G\to Q$，使 $\pi\circ\sigma=\mathrm{id}_Q$。特别地，$\sigma$ 为\Term{monomorphism}{单态射}，所以 $Q$ 是 $G$ 的\Term{formal-subgroup}{形式子群}（参见注记 1.3）。设 $N=\operatorname{Ker}(\pi)$，$\sigma'$ 为包含映射 $N\hookrightarrow G$。则 $G$ 是 $N$ 被 $Q$ 的\Term{semidirect-product}{半直积}（参见第 I 讲 2.3.8），即对每个 $B\in\operatorname{Ob}\mathrm{Alf}_{/k}$，用 $\sigma',\sigma$ 将 $N(B),Q(B)$ 等同于它们在 $G(B)$ 中的像后，$N(B)$ 是 $G(B)$ 的\Term{normal-subgroup}{正规子群}，且映射
+\[
+\mu:N(B)\times Q(B)\longrightarrow G(B),\qquad(x,q)\longmapsto xq\tag{1}
+\]
+为\Term{bijection}{双射}。于是 $k$-\Term{formal-variety}{形式簇}\Term{morphism}{态射}
+\[
+\theta:G(B)\longrightarrow N(B),\qquad g\longmapsto g\cdot\sigma\pi(g^{-1})\tag{2}
+\]
+是 $\sigma'$ 的\Term{retraction}{收缩}，$\mu$ 的逆映射为
+\[
+g\longmapsto(\theta(g),\pi(g)),\tag{3}
+\]
+而 $\theta\circ\sigma':N\to G/Q$ 为 $k$-\Term{formal-variety}{形式簇}的\Term{isomorphism}{同构}。特别地，由 1.4 (ii)，$N$ 在 $k$ 上\Term{topologically-flat}{拓扑平坦}。以 $\alpha$（相应地 $\beta$）表示
+\SourcePage{559}
+从 $Q\times N$（相应地 $G\times N=N\times Q\times N$）到 $N$ 的映射，其在\Term{set}{集合}上由 $\alpha(q,y)=qyq^{-1}$（相应地 $\beta(x,q,y)=x\alpha(q,y)$）定义。于是有\Term{commutative-diagram}{交换图}：
+\[
+\begin{tikzcd}
+G\times G\arrow[r,"\mathrm{id}\times\theta"]\arrow[d,"m_G"']&G\times N\arrow[r,"\theta\times\mathrm{id}"]\arrow[d,"\beta"]&N\times N\arrow[dl,"m_N"]\\
+G\arrow[r,"\theta"']&N&
+\end{tikzcd}\tag{4}
+\]
+这可以用 $G,Q,N$ 的\Term{affine-algebra}{仿射代数} $A,A_0,A'$ 表述如下（参见后文 5.1.3）。设 $\rho':A\to A'$、$\rho:A\to A_0$、$\tau:A_0\to A$ 为对应于 $\sigma',\sigma,\pi$ 的 $k$-\Term{bialgebra}{双代数}\Term{homomorphism}{同态}，设 $I=\operatorname{Ker}(\rho)$。则由前一推论，$A'$ 可等同于 $A/A\tau(J_0)$，其中 $J_0$ 表示 $A_0$ 的\Term{augmentation-ideal}{增广理想}。
+
+另一方面，设 $B$ 为 $G/Q$ 的\Term{affine-algebra}{仿射代数}，它是\Term{morphism}{态射}对
+\[
+A\mathrel{\substack{\xrightarrow{\tau_1}\\[-.6ex]\xrightarrow[(\mathrm{id}\widehat\otimes\rho)\Delta_A]{}}}A\widehat\otimes_k A_0
+\]
+的核，即 $B=\{x\in A\mid\Delta_A(x)-x\widehat\otimes1\in A\widehat\otimes I\}$。以 $\gamma$ 表示\Term{continuous}{连续} $k$-\Term{algebra}{代数}\Term{morphism}{态射} $\theta^\natural:A'\to A$；它是 $\rho'$ 的\Term{section}{截面}，并且给出从 $A'$ 到 $B$ 的\Term{profinite-algebra}{预有限} $k$-\Term{algebra}{代数}\Term{isomorphism}{同构}。此外，$\tau=\pi^\natural$ 将 $A_0$ 等同于 $A$ 的一个子\Term{bialgebra}{双代数}，它恰好就是商 $N\backslash G$ 的\Term{affine-algebra}{仿射代数}。由 (1)、(3) 得\Term{profinite-algebra}{预有限} $k$-\Term{algebra}{代数}\Term{isomorphism}{同构}
+\[
+A'\widehat\otimes_k A_0\xrightarrow{\sim}A,\qquad a'\widehat\otimes a_0\longmapsto\gamma(a')\tau(a_0),\tag{*}
+\]
+其逆映射为 $a\mapsto(\rho'\otimes\rho)\Delta_A(a)$。
+
+最后，用 $\gamma$ 将 $A'$ 等同于它在 $A$ 中的像，则\Term{projection}{投影} $A\to A'$ 为 $\gamma\rho'$。以 $\Delta_{A'}$ 表示 $A'$ 的\Term{comultiplication}{余乘法}，由 (4) 得 $\Delta_A(A')\subset A\widehat\otimes A'$，且下图交换：
+\[
+\begin{tikzcd}
+A'\arrow[r,"\Delta_A"]\arrow[d,equal]&A\widehat\otimes A'\arrow[d,"\gamma\rho'\otimes\mathrm{id}"]\\
+A'\arrow[r,"\Delta_{A'}"']&A'\widehat\otimes A'
+\end{tikzcd}
+\]
+（因此也有 $\gamma\rho'\circ c_A=c_{A'}$，其中 $c_A$（相应地 $c_{A'}$）为 $A$（相应地 $A'$）的\Term{antipode}{对极映射}）。另一方面，以 $m_A$ 表示 $A$ 的\Term{multiplication}{乘法}，由 (2) 得，对每个 $a\in A$，
+\[
+\gamma\rho'(a)=\bigl(m_A\circ(\mathrm{id}\otimes\tau\rho c_A)\circ\Delta_A\bigr)(a).
+\]
+
+\textbf{2.4.B。} 为简单起见，假设 $k$ 为\Term{artinian-ring}{Artin 环}。\textsuperscript{（92）}则以上论述用 $G,Q,N$ 的\Term{covariant-bialgebra}{协变双代数}可以表述得更简单。事实上，由于
+\SourcePage{560}
+作为 $k$-\Term{formal-variety}{形式簇}有 $G=N\times Q$，故作为 $k$-\Term{coalgebra}{余代数}有 $H(G)=H(N)\otimes_k H(Q)$。此外，因 $G$ 的\Term{multiplication}{乘法}由
+\[
+(x,q)\cdot(x',q')=(x\alpha(q,x'),qq'),\qquad\alpha(q,x')=qxq^{-1},
+\]
+给出，故 $H(G)$ 的\Term{multiplication}{乘法}如下：对每个 $x\in H(N),q\in H(Q)$，
+\[
+(x\otimes q)\cdot(x'\otimes q')=x\phi(q,x')\otimes qq',
+\]
+其中 $\phi:H(Q)\otimes_k H(N)$\SGAsourcegap{原文在此未印出\Term{morphism}{态射} $\phi$ 的\Term{arrow}{箭头}及靶\Term{object}{对象}。} 是由 $\alpha$ 诱导的 $k$-\Term{coalgebra}{余代数}\Term{morphism}{态射}。由于 $\alpha$ 是以下\Term{composition-morphism}{复合态射}（其中 $\delta_G$（相应地 $m_G$）为 $G$ 的\Term{diagonal-morphism}{对角态射}（相应地\Term{multiplication}{乘法}），$c_Q$ 为 $Q$ 的\Term{inversion}{取逆}\Term{morphism}{态射}，且 $v(q\otimes q'\otimes x)=q\otimes x\otimes q'$）：
+\[
+Q\times N\xrightarrow{v\circ(\delta_G\times\mathrm{id})}Q\times N\times Q
+\xrightarrow{\mathrm{id}\times\mathrm{id}\times c_Q}Q\times N\times Q\xrightarrow{m_G}G,
+\]
+仍以 $c_Q$ 表示 $H(Q)$ 的\Term{antipode}{对极映射}，便得到
+\[
+\phi(q\otimes x')=\sum_iq_ix'c_Q(q_i')\quad\text{若}\quad\Delta_{H(Q)}(q)=\sum_iq_i\otimes q_i'.\tag{$\star$}
+\]
+特别地，若 $M$ 为抽象群，$H(Q)$ 为\Term{group-algebra}{群代数} $kM$（即 $Q=\operatorname{Spf}^*kM$ 是\Term{constant-formal-group}{常值 $k$-形式群} $M_k$），则对每个 $\gamma\in M$ 和 $x'\in H(N)$ 有 $\phi(\gamma\otimes x')=\gamma x'\gamma^{-1}$，这定义了 $M$ 通过\Term{Hopf-algebra}{Hopf 代数}\Term{automorphism}{自同构}在 $H(N)$ 上的\Term{action}{作用}。
+
+\begin{SGAresult}{命题}{2.4.1}
+设 $f:G\to K$ 为 $k$-\Term{formal-group}{形式群}\Term{morphism}{态射}。若 $H=\operatorname{Ker}(f)$ 在 $k$ 上\Term{topologically-flat}{拓扑平坦}，则由 $f$ 诱导的\Term{homomorphism}{同态} $f':G/H\to K$ 是\Term{monomorphism}{单态射}。
+\end{SGAresult}
+\begin{proof}
+这是第 IV 讲诸结果的推论，\footnote{编者注（93）：参见第 IV 讲 5.2.6。}不过这里仍给出直接证明。设 $T$ 是 $k$ 上\Term{finite-length-algebra}{有限长}的\Term{formal-variety}{形式簇}，$t\in(G/H)(T)$ 满足 $f'\circ t$ 为 $K(T)$ 的\Term{identity-element}{单位元}。须证 $t$ 是 $(G/H)(T)$ 的\Term{identity-element}{单位元}。以 $p$ 表示\Term{projection}{投影} $G\to G/H$，$X$ 表示\Term{fiber-product}{纤维积} $T\times_{G/H}G$。
+
+由 2.4，$p$ 为\Term{surjectivity}{满射}且\Term{topologically-flat}{拓扑平坦}，故\Term{morphism}{态射} $\operatorname{pr}_1:X\to T$ 亦然，因而由命题 1.3.1，$\operatorname{pr}_1$ 为\Term{epimorphism}{满态射}；所以只须证明 $t\circ\operatorname{pr}_1$ 为 $(G/H)(X)$ 的\Term{identity-element}{单位元}。以 $\operatorname{pr}_2$ 表示\Term{projection}{投影} $X\to G$，有 $t\circ\operatorname{pr}_1=p\circ\operatorname{pr}_2$，从而
+\[
+1=f'\circ t\circ\operatorname{pr}_1=f'\circ p\circ\operatorname{pr}_2=f\circ\operatorname{pr}_2.
+\]
+于是\Term{exact-sequence}{正合列}
+\[
+1\longrightarrow H\longrightarrow G\xrightarrow{f}K
+\]
+说明 $\operatorname{pr}_2$ 通过 $H$ \Term{resolution}{分解}，故 $p\circ\operatorname{pr}_2$ 为零\Term{morphism}{态射}。因 $p\circ\operatorname{pr}_2=t\circ\operatorname{pr}_1$，命题得证。
+\end{proof}
+由命题得以下推论。以 $\mathscr O(G),\mathscr O(K),\mathscr O(G/H)$ 表示 $G,K,G/H$ 的\Term{affine-algebra}{仿射代数}；已经看到（2.4），$p$ 诱导 $\mathscr O(G/H)$ 到 $\mathscr O(G)$ 的\Term{injectivity}{单射}。此外，由命题 1.3，因 $f':G/H\to K$ 为\Term{monomorphism}{单态射}，\Term{morphism}{态射} $\mathscr O(K)\to\mathscr O(G/H)$ 为\Term{surjectivity}{满射}。因此：
+\SourcePage{561}
+\begin{SGAresult}{推论}{}
+设 $f:G\to K$ 是 $k$-\Term{formal-group}{形式群}\Term{morphism}{态射}，$H=\operatorname{Ker}(f)$。若 $H$ 在 $k$ 上\Term{topologically-flat}{拓扑平坦}，则 $\mathscr O(G/H)$ 就是 $\mathscr O(K)$ 在 $\mathscr O(G)$ 中的像。
+\end{SGAresult}
+
+\textbf{2.4.2。} 保持以上记号，假设 $H,G$ 均在 $k$ 上\Term{topologically-flat}{拓扑平坦}。则 $G$ 在 $k$ 上及 $G/H$ 上均\Term{topologically-flat}{拓扑平坦}，故由 1.3.3，$G/H$ 在 $k$ 上\Term{topologically-flat}{拓扑平坦}。因此，由 2.4，$K$ 到 $\operatorname{Coker}(f')$ 的\Term{canonical-projection}{典范投影} $q$ 为\Term{topologically-flat}{拓扑平坦}，且 $f'$ 是从 $G/H$ 到 $\operatorname{Ker}(q)$ 的\Term{isomorphism}{同构}。另一方面，显然 $\operatorname{Coker}(f)=\operatorname{Coker}(f')$。因此，在 $G,H=\operatorname{Ker}(f)$ 均于 $k$ 上\Term{topologically-flat}{拓扑平坦}的假设下，得到 $f$ 的像 $\operatorname{Ker}(q)$ 与 $f$ 的\Term{coimage}{余像} $G/\operatorname{Ker}(f)$ 之间的\Term{isomorphism}{同构}。由此得以下\Term{theorem}{定理}。
+\begin{SGAresult}{\Term{theorem}{定理}}{}
+设 $k$ 是域。交换 $k$-\Term{formal-group}{形式群}构成一个\Term{abelian-category}{阿贝尔范畴}。
+\end{SGAresult}
+\begin{SGAresult}{推论}{}
+设 $k$ 是域。\Term{affine}{仿射}交换 $k$-\Term{group-scheme}{群概形}构成一个\Term{abelian-category}{阿贝尔范畴}。\footnote{编者注（94）：另见第 VI\textsubscript{A} 讲 5.4.3 后的注记。}
+\end{SGAresult}
+这由上述\Term{theorem}{定理}及\Term{equivalence-of-categories}{范畴等价} 2.2.2 得出。
+
+\textbf{2.5。} 一个 $k$-\Term{formal-group}{形式群}称为\Term{etale}{平展}的，若其底层\Term{formal-variety}{形式簇}为\Term{etale}{平展}的（参见 1.6）；这类\Term{formal-group}{形式群}的结构十分简单。事实上，假设 $k$ 为\Term{local-ring}{局部环}；设 $\kappa$ 为 $k$ 的\Term{residue-field}{剩余域}，$\kappa_s$ 为 $\kappa$ 的一个\Term{separable-closure}{可分闭包}，$\Gamma$ 为 $\kappa_s/\kappa$ 的\Term{topological-galois-group}{拓扑 Galois 群}。所谓 $\Gamma$-\Term{set}{集合}，是指一个\Term{set}{集合} $E$ 连同 $\Gamma$ 在 $E$ 上的\Term{continuous}{连续}\Term{action}{作用}（即每个元素 $x\in E$ 的\Term{stabilizer}{稳定子}都是 $\Gamma$ 的\Term{open-subgroup}{开子群}）。
+
+对任一 $k$-\Term{formal-variety}{形式簇} $X$，置
+\[
+X(\kappa_s)=\varinjlim_\ell X(\ell),
+\]
+其中 $\ell$ 遍历 $\kappa_s$ 内的 $\kappa$ 的\Term{finite-extension}{有限扩张}。\footnote{编者注（95）：注意若 $[\kappa_s:\kappa]=\infty$，$\kappa_s$ 并非\Term{profinite-algebra}{预有限} $\kappa$-\Term{algebra}{代数}，所以前一写法是一种记号滥用。此外，以下详细展开了原文。}于是 $\Gamma$ \Term{continuous}{连续}\Term{action}{作用}于每个 $X(\ell)$，因此也\Term{continuous}{连续}\Term{action}{作用}于 $X(\kappa_s)$。此外，设 $X_\kappa=X\widehat\otimes_k\kappa$（参见 1.6.C）；对每个 $\ell$ 有 $X(\ell)=X_\kappa(\ell)$，从而 $X(\kappa_s)=X_\kappa(\kappa_s)$。
+
+现在假设 $X$ 在 $k$ 上\Term{etale}{平展}，则 $X_\kappa$ 为各个 $\operatorname{Spec}\kappa(x)$（$x\in X$）的\Term{direct-sum}{直和}\Term{formal-variety}{形式簇}；若以 $X'_\kappa$ 表示各个 $\operatorname{Spec}\kappa(x)$ 的\Term{direct-sum}{直和} $\kappa$-\Term{scheme}{概形}，可见 $X_\kappa(\kappa_s)$ 就是 $X'_\kappa(\kappa_s)=\operatorname{Hom}_{(\mathrm{Sch}/\kappa)}(\operatorname{Spec}\kappa_s,X'_\kappa)$。
+
+以 $\mathscr C=(\mathrm{Sch}^{\text{ét}}_{/\kappa})$ 表示 $(\mathrm{Sch}/\kappa)$ 中由\Term{etale}{平展} $\kappa$-\Term{scheme}{概形}构成的\Term{full-subcategory}{满子范畴}。已知\Term{functor}{函子} $X'\mapsto X'(\kappa_s)$ 是 $\mathscr C$ 到 $\Gamma$-\Term{set}{集合}\Term{category}{范畴} $\mathscr C'$ 的\Term{equivalence-of-categories}{等价}（参见 SGA 1，第 V 讲 §§7--8，或 [DG70]，§I.4 6.4），因此诱导 $\mathscr C$-群\Term{category}{范畴}与 $\mathscr C'$-群\Term{category}{范畴}的\Term{equivalence-of-categories}{等价}；而立刻可见，$\mathscr C'$-群就是带有 $\Gamma$ 通过群\Term{automorphism}{自同构}的\Term{continuous}{连续}\Term{action}{作用}的抽象群 $G$（此时称 $G$ 为 $\Gamma$-群）。
+
+\SourcePage{562}
+结合 1.6.E 的\Term{equivalence-of-categories}{等价}
+\[
+\mathrm{Vaf}^{\text{ét}}_{/k}\xrightarrow{\sim}\mathrm{Vaf}^{\text{ét}}_{/\kappa}\xrightarrow{\sim}(\mathrm{Sch}^{\text{ét}}_{/\kappa}),
+\]
+遂得：
+\begin{SGAresult}{命题}{}
+设 $k$ 是\Term{pseudocompact-ring}{伪紧}\Term{local-ring}{局部环}，$\kappa$ 为其\Term{residue-field}{剩余域}，$\kappa_s$ 为 $\kappa$ 的一个\Term{separable-closure}{可分闭包}，$\Gamma=\operatorname{Gal}(\kappa_s/\kappa)$。
+
+(i) \Term{functor}{函子} $X\mapsto X(\kappa_s)$ 是从\Term{etale}{平展} $k$-\Term{formal-variety}{形式簇}\Term{category}{范畴}到 $\Gamma$-\Term{set}{集合}\Term{category}{范畴}的\Term{equivalence-of-categories}{等价}。
+
+(ii) 它诱导\Term{etale}{平展} $k$-\Term{formal-group}{形式群}\Term{category}{范畴}和 $\Gamma$-群\Term{category}{范畴}之间的\Term{equivalence-of-categories}{等价}。
+\end{SGAresult}
+
+\textbf{注记 2.5.A。} 设 $k$ 为域，$k_s$ 为 $k$ 的一个\Term{separable-closure}{可分闭包}，$G$ 为\Term{etale}{平展} $k$-\Term{formal-group}{形式群}，$M$ 为抽象群 $G(k_s)$。\footnote{编者注（96）：加入了本注记。}以 $X$ 表示 $\Gamma=\operatorname{Gal}(k_s/k)$ 在 $M$ 中各\Term{orbit}{轨道}的代表元集；对每个 $x\in X$，设 $\Gamma_x$ 为其\Term{stabilizer}{稳定子}，它是 $\Gamma$ 的\Term{finite-index}{有限指数}\Term{subgroup}{子群}，$L_x=k_s^{\Gamma_x}$，它是 $k$ 的 $[\Gamma:\Gamma_x]$ 次\Term{group-extension}{扩张}（例如参见 [BAlg]，V §10.10）。则由上述\Term{equivalence-of-categories}{范畴等价}，$G$ 的\Term{affine-algebra}{仿射代数} $\mathscr A(G)$ 为各个 $L_x$ 的乘积，赋以乘\Term{product-topology}{积拓扑}，因而这些 $L_x$ 恰好是单商 $\mathscr A(G)/\mathfrak m$，其中 $\mathfrak m$ 为 $\mathscr A(G)$ 的开\Term{maximal-ideal}{极大理想}。这些商经\Term{dual-correspondence}{对偶对应}于 $H(G)$ 的子\Term{coalgebra}{余代数}，所以得到：$H(G)$ 为\Term{pointed-coalgebra}{尖余代数}（pointée，即对每个单子\Term{coalgebra}{余代数} $C$ 有 $\dim_k C=1$），当且仅当对每个 $x$ 有 $L_x=k$；此时 $\mathscr A(G)$ 为\Term{topological-algebra}{拓扑代数} $k^M$，故 $H(G)$ 为\Term{group-algebra}{群代数} $kM$，且
+\[
+M=\{x\in H(G)\mid\varepsilon(x)=1\text{ 且 }\Delta(x)=x\otimes x\}=G(k).
+\]
+
+\textbf{2.5.1。} 再次假设\Term{pseudocompact-ring}{伪紧环} $k$ 任意。由于 1.6.F 的\Term{functor}{函子} $X\mapsto X_e$ 与\Term{finite}{有限}乘积交换，它将任一\Term{formal-group}{形式群} $G$ 变为一个\Term{etale}{平展}\Term{formal-group}{形式群} $G_e$；又因该处的\Term{morphism}{态射} $p:X\to X_e$ 关于 $X$ \Term{functorial}{函子性}，此时 $p:G\to G_e$ 是\Term{formal-group}{形式群}\Term{morphism}{态射}。
+
+考虑核 $\operatorname{Ker}(p)$，\footnote{编者注（97）：以下详细展开了原文。}它是图
+\[
+\begin{tikzcd}
+&G\arrow[d,"p"]\\
+\operatorname{Spf}(k)\arrow[r,"\varepsilon"']&G_e
+\end{tikzcd}
+\]
+的\Term{fiber-product}{纤维积}，其中 $\varepsilon$ 为 $G_e$ 的\Term{unit-section}{单位截面}。由于 $p$ 在底层\Term{set}{集合}上诱导\Term{bijection}{双射}，得出（参见 1.2，编者注（41））：$\operatorname{Ker}(p)$ 的底层\Term{set}{集合}是 $\operatorname{Spf}(k)$ 在 $\varepsilon$ 下的像，且对 $\operatorname{Spf}(k)$ 的每个点 $s$，$\operatorname{Ker}(p)$ 在点 $\varepsilon(s)$ 的\Term{local-ring}{局部环}为 $\mathscr O_{G,\varepsilon(s)}\widehat\otimes_{\mathscr O_{G_e,\varepsilon(s)}}k_s$。此外，在每个点 $\varepsilon(s)$，$\mathscr O_{G,\varepsilon(s)}$ 的\Term{residue-field}{剩余域}为 $\kappa(s)$，故 $\mathscr O_{G_e,\varepsilon(s)}=k_s$，从而 $\mathscr O_{\operatorname{Ker}(p),\varepsilon(s)}=\mathscr O_{G,\varepsilon(s)}$。为此，
+\SourcePage{563}
+我们称 $\operatorname{Ker}(p)$ 为 $G$ 的原点的\Term{infinitesimal-neighborhood}{无穷小邻域}，并记 $\operatorname{Ker}(p)=G_0$，于是得到\Term{exact-sequence}{正合列}
+\[
+1\longrightarrow G_0\xrightarrow{\mathrm{incl.}}G\xrightarrow{p}G_e.
+\]
+下文称 $G$ 为\Term{infinitesimal-formal-group}{无穷小}的，若 $G=G_0$。\footnote{编者注（98）：加入了后一句。}这\Term{equivalence}{等价}于对每个 $s\in\operatorname{Spf}(k)$，或对每个\Term{continuous}{连续}\Term{morphism}{态射} $k\to\kappa$（其中 $\kappa$ 为赋\Term{discrete-topology}{离散拓扑}的域），\Term{identity-element}{单位元}是 $G(\kappa(s))$（相应地 $G(\kappa)$）的唯一元素。
+
+进一步假设 $G$ 在 $k$ 上\Term{topologically-flat}{拓扑平坦}。\footnote{编者注（99）：详细展开了以下论述。}则由 1.6.1，\Term{morphism}{态射} $p:G\to G_e$ 为\Term{topologically-flat}{拓扑平坦}；因它是\Term{bijection}{双射}，由命题 1.3.1 可知它是\Term{effective-epimorphism}{有效满态射}。因此 $G_e$ 可等同于商 $G/G_0$。于是得到：
+\begin{SGAresult}{推论}{}
+设 $G$ 为 $k$ 上\Term{topologically-flat}{拓扑平坦}的\Term{formal-group}{形式群}。则 $G_e$ 可等同于商 $G/G_0$，即有\Term{formal-group}{形式群}的\Term{exact-sequence}{正合列}
+\[
+1\longrightarrow G_0\xrightarrow{\mathrm{incl.}}G\xrightarrow{p}G_e\longrightarrow1.
+\]
+\end{SGAresult}
+
+\textbf{2.5.2。} 假设 $k$ 为\Term{perfect-field}{完美域}。此时已经看到（参见 1.6.2），\Term{morphism}{态射} $p:X\mapsto X_e$ 有一个关于 $X$ \Term{functorial}{函子性}的\Term{section}{截面} $s:X_e\to X$；因此当 $X$ 为\Term{formal-group}{形式群}时，这个\Term{section}{截面}也是\Term{formal-group}{形式群}\Term{morphism}{态射}。于是得到：
+\begin{SGAresult}{命题}{}
+当 $k$ 为\Term{perfect-field}{完美域}时，每个 $k$-\Term{formal-group}{形式群} $G$ 都\Term{canonical}{典范}地\Term{isomorphism}{同构}于一个\Term{infinitesimal-formal-group}{无穷小}群 $G_0$ 与一个\Term{action}{作用}于 $G_0$ 的\Term{etale}{平展}群 $G_e$ 的\Term{semidirect-product}{半直积}。\footnote{编者注（100）：同一论证还说明，对任意域 $k$，若 $G$ 的所有\Term{residue-field}{剩余域}均为 $k$，则 $G_e$ 为常值 $k$-群 $(M)_k$，其中 $M=G(k)=\operatorname{Spf}^*H(G)$，且 $H(G)$ 为 $H(G_0)$ 与\Term{group-algebra}{群代数} $kM$ 的\Term{semidirect-product}{半直积}，参见后文增补的 2.9。}
+\end{SGAresult}
+若 $G$ 此外交换，则 $G$ 为 $G_0$ 与 $G_e$ 的乘积。由 2.2.2，交换 $k$-\Term{formal-group}{形式群}的这一\Term{canonical}{典范}\Term{resolution}{分解}对应于\Term{affine}{仿射}交换 $k$-\Term{group-scheme}{群概形}的类似\Term{resolution}{分解}，见下面的 2.5.3。
+
+\textbf{注记 2.5.2.A。} 当 $k$ 不\Term{perfect}{完美}时，\Term{exact-sequence}{正合列} $1\to G_0\to G\to G_e\to1$ 未必\Term{split-exact-sequence}{分裂}：给出以下取自 [DG70]，§III.6，8.6 的例子。\footnote{编者注（101）：加入了本注记。}设 $k$ 为\Term{characteristic}{特征} $p>0$ 的非\Term{perfect-field}{完美域}。取 $\lambda\in k-k^p$，设 $L_\lambda$ 是以 $(x,y)$ 为基的阿贝尔 $p$-\Term{Lie-algebra}{Lie 代数}，其\Term{signature}{符号} $p$ 次幂（参见第 VII\textsubscript{A} 讲 5.2）由 $x^{(p)}=x$、$y^{(p)}=\lambda x$ 给出；设 $U_p(L_\lambda)=k[x,y]/(x^p-x,y^p-\lambda x)$ 为 $L_\lambda$ 的\Term{restricted-enveloping-algebra}{限制包络代数}（参见第 VII\textsubscript{A} 讲 5.3），并设 $G_\lambda$ 为\Term{affine-algebra}{仿射代数}为 $U_p(L_\lambda)$ 的交换 $k$-\Term{formal-group}{形式群}。
+\SourcePage{564}
+则 $G_\lambda$ 是常值\Term{etale}{平展} $k$-群 $(\mathbf Z/p\mathbf Z)_k$ 被\Term{infinitesimal-formal-group}{无穷小} $k$-群 $\boldsymbol\alpha_{p,k}=\operatorname{Spf}k[x]/(x^p-x)$ 的非\Term{split-exact-sequence}{分裂扩张}，即有交换 $k$-\Term{formal-group}{形式群}的非\Term{split-exact-sequence}{分裂正合列}：\footnote{编者注（102）：$\boldsymbol\alpha_{p,k}$、$(\mathbf Z/p\mathbf Z)_k$ 和 $G_\lambda$ 也都是 $k$ 上\Term{finite}{有限}\Term{flat}{平坦}的\Term{algebraic-group}{代数群}，参见 2.2.2 的编者注（84）。}
+\[
+0\longrightarrow\boldsymbol\alpha_{p,k}\longrightarrow G_\lambda\longrightarrow(\mathbf Z/p\mathbf Z)_k\longrightarrow0.
+\]
+它经\Term{dual-correspondence}{对偶对应}于交换\Term{algebraic-group}{代数 $k$-群}的非\Term{split-exact-sequence}{分裂正合列}
+\[
+0\longrightarrow\boldsymbol\mu_{p,k}\longrightarrow D'(G_\lambda)\longrightarrow\boldsymbol\alpha_{p,k}\longrightarrow0,
+\]
+其中 $\boldsymbol\mu_{p,k}=\operatorname{Spec}k[t]/(t^p-1)$（这样可得到 $\boldsymbol\alpha_{p,k}$ 被 $\boldsymbol\mu_{p,k}$ 的所有\Term{group-extension}{扩张}，参见 [DG70]，§III.6，8.6）。
+
+\textbf{2.5.3。} 设 $k$ 为域。\footnote{编者注（103）：加入了编号 2.5.3 及 2.5.3.A 至 2.5.3.C。}
+\begin{SGAresult}{定义}{2.5.3.A}
+一个交换 $k$-\Term{group-scheme}{群概形}称为\Term{unipotent}{幺幂}的，若它\Term{isomorphism}{同构}于 $\operatorname{Spec}H(G)$，其中 $G$ 为交换\Term{infinitesimal-formal-group}{无穷小} $k$-\Term{formal-group}{形式群}。\footnote{编者注（104）：这与\Term{unipotent}{幺幂} $k$-\Term{group-scheme}{群概形}的「通常」概念一致，参见本节末尾增补的 2.8。}
+\end{SGAresult}
+另一方面，\footnote{编者注（105）：原文说：「称一个交换 $k$-\Term{group-scheme}{群概形}为\Term{multiplicative-type}{乘法型}的，若它\Term{isomorphism}{同构}于 $\operatorname{Spec}H(G)$，其中 $G$ 为交换\Term{etale}{平展} $k$-\Term{formal-group}{形式群}。」这里给出了取自第 IX 讲 1.1 的「通常」定义，并证明它与前述条件\Term{equivalence}{等价}；另见 [DG70]，§IV.1，\Term{theorem}{定理} 2.2。}按照第 IX 讲定义 1.1，若存在 $\operatorname{Spec}k$ 上\Term{faithfully-flat}{忠实平坦}且\Term{quasi-compact}{拟紧}的\Term{scheme}{概形} $S$，使 $H_S$ 为\Term{diagonalizable-group}{可对角化} $S$-群，即对某个「抽象」\Term{abelian-group}{阿贝尔群} $M$，$H_S$ \Term{isomorphism}{同构}于 $D_S(M)$，便称 $k$-\Term{group-scheme}{群概形} $H$ 为\Term{multiplicative-type}{乘法型}的。由 (fpqc) \Term{descent}{下降}，这蕴涵 $H$ 为\Term{affine}{仿射}且交换的。又因可将 $S$ 换成它某一点的\Term{residue-field}{剩余域}，可见 $H$ 为\Term{multiplicative-type}{乘法型}当且仅当存在 $k$ 的一个\Term{group-extension}{扩张} $K$，使 $H_K$ 为\Term{diagonalizable-group}{可对角化} $K$-群。
+\begin{SGAresult}{命题}{2.5.3.B}
+设 $T$ 是\Term{affine}{仿射}交换 $k$-\Term{group-scheme}{群概形}，$k_s$ 为 $k$ 的一个\Term{separable-closure}{可分闭包}。
+
+(i) $T$ 为\Term{multiplicative-type}{乘法型}的充要条件是，其\Term{duality}{对偶} $D(T)$ 为交换\Term{etale}{平展} $k$-\Term{formal-group}{形式群}。
+
+(ii) 因此，$T$ 为\Term{multiplicative-type}{乘法型}当且仅当 $T\otimes_k k_s$ \Term{diagonalizable-group}{可对角化}。
+\end{SGAresult}
+\begin{proof}
+以 $\mathscr A$ 表示 $D(T)$ 的\Term{affine-algebra}{仿射代数}，$\mathscr A_0$ 表示它在\Term{identity-element}{单位元}处的\Term{local-component}{局部分支}；则 $D(T)$ 在 $k$ 上\Term{etale}{平展}当且仅当 $\mathscr A_0=k$。若 $K$ 为 $k$ 的\Term{group-extension}{扩张}，则\Term{algebra}{代数} $\mathscr A_0\widehat\otimes_k K$ 为\Term{local-ring}{局部}的（因它是\Term{artinian-ring}{Artin 局部环}的\Term{projective-limit}{射影极限}），所以与\Term{local-component}{局部分支} $(\mathscr A\widehat\otimes_k K)_0$ 一致；此外，由于
+\SourcePage{565}
+$D(T)$ 的构造与\Term{base-change}{基变换}交换（参见 2.2.2），还有 $\mathscr A\widehat\otimes_k K\simeq D(T_K)$。
+
+假设 $T$ 为\Term{multiplicative-type}{乘法型}，则存在 $k$ 的一个\Term{group-extension}{扩张} $K$，使 $\mathscr O(T)\otimes_k K$ 作为 $K$-\Term{Hopf-algebra}{Hopf 代数}\Term{isomorphism}{同构}于某个\Term{abelian-group}{阿贝尔群} $M$ 的\Term{group-algebra}{群代数} $KM$。于是 $\mathscr A\widehat\otimes_k K$ \Term{isomorphism}{同构}于赋乘\Term{product-topology}{积拓扑}的\Term{algebra}{代数} $K^M$，从而 $K=(\mathscr A\widehat\otimes_k K)_0=\mathscr A_0\widehat\otimes_k K$，这蕴涵 $\mathscr A_0=k$，故 $D(T)$ 为\Term{etale}{平展}的。
+
+反之，假设 $D(T)$ 为\Term{etale}{平展}的。则 $D(T)\widehat\otimes_k k_s=D(T_{k_s})$ 是一个常值 $k_s$-群 $M$，其\Term{covariant-bialgebra}{协变双代数}因而为\Term{group-algebra}{群代数} $k_sM$（参见注记 2.5.A），所以 $\mathscr O(T)\otimes_k k_s=k_sM$，说明 $T$ 为\Term{multiplicative-type}{乘法型}且被\Term{group-extension}{扩张} $k\to k_s$ \Term{split-group}{分裂}。命题随之得证。
+\end{proof}
+由 2.2.2、2.5.1 和 2.5 得：
+\begin{SGAresult}{推论}{2.5.3.C}
+设 $k$ 为域，$G$ 为\Term{affine}{仿射}交换 $k$-\Term{group-scheme}{群概形}。
+
+(i) $G$ 含有一个\Term{multiplicative-type}{乘法型}\Term{subgroup}{子群} $G_m$，使 $G/G_m$ 为\Term{unipotent}{幺幂}的。
+
+(ii) 当 $k$ \Term{perfect}{完美}时，还存在从 $G$ 到 $G_m$ 的\Term{canonical}{典范}\Term{retraction}{收缩}，所以 $G$ 为一个\Term{unipotent}{幺幂}群和一个\Term{multiplicative-type}{乘法型}群的乘积。
+
+(iii) 设 $k_s$ 为 $k$ 的一个\Term{separable-closure}{可分闭包}，$\Gamma=\operatorname{Gal}(k_s/k)$。\Term{multiplicative-type}{乘法型} $k$-\Term{group-scheme}{群概形}\Term{category}{范畴}与\Term{continuous}{连续} $\Gamma$-\Term{module-category}{模范畴}\Term{anti-equivalence}{反等价}。\footnote{编者注（106）：加入了由命题 2.5 得出的 (iii)。}
+\end{SGAresult}
+
+\textbf{2.6。} 现在研究\Term{infinitesimal-formal-group}{无穷小}\Term{formal-group}{形式群}，以下各段均以此为主题。在这项研究中，\Term{Lie-algebra}{Lie 代数}起着首要\Term{action}{作用}。
+
+先假设基环 $k$ 为\Term{artinian-ring}{Artin 环}，设 $G$ 是 $k$ 上的\Term{formal-group}{形式群}。$G$ 的\Term{Lie-algebra}{Lie 代数}有三种不同的解释，三者我们都会用到：
+
+a) 设 $D$ 为 $k$ 上的\Term{dual-numbers}{对偶数}\Term{algebra}{代数} $k[d]/(d^2)$，$\delta$ 为将 $d$ 送至零的 $D\to k$ 的\Term{homomorphism}{同态}。对 $k$ 上任一\Term{formal-group}{形式群} $G$，$\operatorname{Lie}(G)$ 为 $G(\delta)$ 的核，因此按定义有群的\Term{exact-sequence}{正合列}
+\[
+1\longrightarrow\operatorname{Lie}(G)\longrightarrow G(D)\xrightarrow{G(\delta)}G(k)\longrightarrow1.
+\]
+b) 设 $A$ 是 $G$ 的\Term{affine-algebra}{仿射代数}，$I_A=\operatorname{Ker}\varepsilon_A$ 为其\Term{augmentation-ideal}{增广理想}。群 $G(D)$ 的元素为\Term{profinite-algebra}{预有限} $k$-\Term{algebra}{代数}的\Term{morphism}{态射} $f:A\to D$。条件 $G(\delta)(f)=1$ \Term{equivalence}{等价}于 $\delta\circ f=\varepsilon_A$。因对每个 $x\in A$ 有 $x-\varepsilon_A(x)1_A\in I_A$，这又\Term{equivalence}{等价}于 $f(I_A)\subset k\cdot d$，所以 $\operatorname{Ker}(f)$ 包含 $I_A^2$，进而包含 $\overline{I_A^2}$，故 $f$ 诱导从 $I_A/\overline{I_A^2}=\omega_{G/k}$ 到 $k$ 的\Term{continuous}{连续}\Term{linear}{线性}映射 $f'$，使对每个 $x\in A$ 有等式
+\[
+f(x)=\varepsilon_A(x)1_D+f'(\overline x)d,
+\]
+\SourcePage{566}
+其中 $\overline x$ 表示 $x-\varepsilon_A(x)1_A$ 在 $I_A/\overline{I_A^2}$ 中的像。于是可见，映射 $f\mapsto f'$ 定义了 $\operatorname{Lie}(G)$ 到 $\omega_{G/k}$ 的\Term{topological-dual}{拓扑对偶} $\omega_{G/k}^\dagger$ 的\Term{bijection}{双射}（参见 0.2.2）。
+
+该\Term{bijection}{双射}保持\Term{group-structure}{群结构}。事实上，设 $f,g\in\operatorname{Lie}(G)$；其乘积 $f\cdot g$ 为复合映射 $h\circ\Delta_A$，其中 $h:A\widehat\otimes A\to D$ 满足 $h(b\widehat\otimes b')=f(b)g(b')$。若 $a\in I_A$，则由 2.1 (ii)，$\Delta_A(a)-a\widehat\otimes1-1\widehat\otimes a\in I_A\widehat\otimes I_A$，从而 $(f\cdot g)(a)=f(a)+g(a)$（另见第 II 讲 3.10）。
+
+下文用上述\Term{bijection}{双射} $f\mapsto f'$ 将 $\operatorname{Lie}(G)$ 与 $\omega_{G/k}^\dagger$ 等同。因此群 $\operatorname{Lie}(G)$ 带有 $k$-模结构。
+
+c) 设 $A^\dagger,D^\dagger$ 为 $A,D$ 的\Term{duality}{对偶} $k$-模，$\{1_D^\dagger,d^\dagger\}$ 为 $D$ 的 $k$-基 $\{1_D,d\}$ 的\Term{dual-basis}{对偶基}（有 $1_D^\dagger=\delta$）。由于 $D$ 在 $k$ 上\Term{finite-rank}{有限秩}自由，\Term{canonical}{典范}映射
+\[
+\operatorname{Hom}_c(A,D)\longrightarrow\operatorname{Hom}_k(D^\dagger,A^\dagger),\qquad f\longmapsto{}^tf
+\]
+为\Term{bijection}{双射}。另一方面，${}^tf$ 由其值 ${}^tf(1_D^*)$ 和 ${}^tf(d^*)=x$ 决定。条件 $G(\delta)(f)=1$ \Term{equivalence}{等价}于等式 ${}^tf(1_D^*)=\varepsilon_A$。此外，容易看出 $f$ 与\Term{multiplication}{乘法}相容当且仅当（参见 2.3）
+\[
+\delta_G(x)=\varphi_G(x\otimes1+1\otimes x).\tag{*}
+\]
+最后，显然，若\Term{continuous}{连续}\Term{linear}{线性}映射 $f:A\to D$ 与\Term{multiplication}{乘法}相容且 $\delta\circ f=\varepsilon_A$，它便将 $A$ 的\Term{identity-element}{单位元}送到 $D$ 的\Term{identity-element}{单位元}。\footnote{编者注（107）：事实上，$\delta\circ f=\varepsilon_A$ 蕴涵 $f(1)=1+\lambda d$，其中 $\lambda\in k$；于是 $f(1)=f(1)^2=1+2\lambda d$ 给出 $\lambda=0$。}所以映射 $f\mapsto x$ 让我们将 $\operatorname{Lie}(G)$ 等同于 $H(G)$ 的「\Term{primitive-element}{本原元素}」的\Term{set}{集合}（即满足关系 $(*)$ 的 $x\in H(G)$）。若 $x,y$ 为两个这样的元素，有
+\[
+\begin{aligned}
+\delta_G(xy)&=\delta_G(x)\delta_G(y)=\varphi_G\bigl((x\otimes1+1\otimes x)(y\otimes1+1\otimes y)\bigr)\\
+&=\varphi_G(xy\otimes1+x\otimes y+y\otimes x+1\otimes xy),
+\end{aligned}
+\]
+故 $\delta_G(xy-yx)=\varphi_G\bigl((xy-yx)\otimes1+1\otimes(xy-yx)\bigr)$。
+
+这说明 $k$-模 $\operatorname{Lie}(G)$ 被等同于 $H(G)$ 的一个子\Term{Lie-algebra}{Lie 代数}：称 $\operatorname{Lie}(G)$ 为 $G$ 的\Term{Lie-algebra}{Lie 代数}。\footnote{编者注（108）：与第 VII\textsubscript{A} 讲 2.5 比较可见，若 $K$ 为\Term{finite-type}{有限型} $k$-\Term{group-scheme}{群概形}，$G$ 是 $K$ 在原点处的\Term{formal-completion}{形式完备化}（即 $\mathscr A(G)$ 是\Term{local-ring}{局部环} $\mathscr O_{K,e}$ 对 $\mathfrak m$-\Term{adic-topology}{进拓扑}的\Term{completion}{完备化}，$\mathfrak m$ 为\Term{augmentation}{增广} $\varepsilon:\mathscr O_{K,e}\to k$ 的核），则 $H(G)$ 可等同于\Term{distribution-algebra}{分布代数} $U(K)$，$\operatorname{Lie}(G)$ 可等同于 $\operatorname{Lie}(K)$。（$K$ 在 $k$ 上\Term{finite-type}{有限型}的条件用来保证 $\mathfrak m/\mathfrak m^2$ 为\Term{finite-length}{有限长} $k$-模，因而为\Term{discrete}{离散}的，从而它的\Term{topological-dual}{拓扑对偶}与普通\Term{duality}{对偶}相同。）特别地，当 $G$ 为\Term{finite}{有限} $k$-\Term{formal-group}{形式群}（即 $\mathscr A(G)$ 为\Term{finite}{有限} $k$-模）时，$G$ 也可视为 $k$-\Term{group-scheme}{群概形} $\operatorname{Spec}\mathscr A(G)$，此时 $\operatorname{Lie}(G)$ 的两个定义相同。}
+
+\textbf{2.6.1。} 当 $k$ 为任意\Term{pseudocompact-ring}{伪紧环}且 $G$ 为 $k$ 上的\Term{formal-group}{形式群}时，我们称以下\Term{functor}{函子} $\operatorname{Lie}(G)$ 为 $G$ 的 $\mathscr O_k$-\Term{Lie-algebra}{Lie 代数}：它将 $\mathrm{Alf}_{/k}$ 的每个\Term{object}{对象} $C$ 送到 $C$-\Term{formal-group}{形式群} $G'=G\widehat\otimes_k C$ 的 $C$-\Term{Lie-algebra}{Lie 代数}。\footnote{编者注（109）：以下详细展开了原文。}置 $A'=A\widehat\otimes_k C$；因为 $I_A$ 为 $A$ 的\Term{direct-summand}{直和因子}，$I_{A'}$ 等于 $I_A\widehat\otimes_k C=I_A\widehat\otimes_A A'$；
+\SourcePage{567}
+又因 $\omega_{G/k}=I_A\widehat\otimes_A k$，且同样有 $\omega_{G'/C}=I_{A'}\widehat\otimes_{A'}C$，得到 $\omega_{G'/C}=\omega_{G/k}\widehat\otimes_A C$，从而
+\[
+\operatorname{Lie}(G)(C)=\operatorname{Hom}_c(\omega_{G/k}\widehat\otimes_A C,C),
+\qquad\text{即}\quad\operatorname{Lie}(G)=V_k^f(\omega_{G/k})
+\]
+（用 1.2.3.B 的记号）。因此由命题 1.2.3.E，$\operatorname{Lie}(G)$ 在 $\mathscr O_k$ 上\Term{flat}{平坦}当且仅当 $\omega_{G/k}$ 是\Term{pseudocompact-module}{伪紧}\Term{projective-module}{投射} $k$-模。
+
+\textbf{2.6.2。} 反之，$\mathscr O_k$ 上任一\Term{Lie-algebra}{Lie 代数} $L$ 都定义一个 $k$-\Term{group-functor}{群函子}。事实上，以 $U(L)$ 表示将 $\mathrm{Alf}_{/k}$ 的每个\Term{object}{对象} $C$ 送到 $C$-\Term{Lie-algebra}{Lie 代数} $L(C)$ 的\Term{enveloping-algebra}{包络代数} $U(L(C))$ 的\Term{functor}{函子}。由第 VII\textsubscript{A} 讲 3.2.2，$U(L)$ 为 $\mathscr O_k$ 上的\Term{bialgebra}{双代数}，因而由 2.2 决定一个 $k$-\Term{group-functor}{群函子} $\operatorname{Spf}^*U(L)$，今后将其记为 $\mathscr G(L)$。因此，$\mathscr G(L)(C)$ 是满足 $\Delta_{U(L(C))}(z)=z\otimes z$ 且\Term{augmentation}{增广}为 $1$ 的 $z\in U(L(C))$ 所成的群。
+
+此外，当 $L$ 在 $\mathscr O_k$ 上\Term{flat}{平坦}时，有如下命题。
+\begin{SGAresult}{命题}{}
+设 $L$ 是\Term{flat}{平坦} $\mathscr O_k$-\Term{Lie-algebra}{Lie 代数}。\footnote{编者注（110）：突出列出了 (i)、(ii)，并加入了 (iii)，后者将在 2.6.3 和 3.3.2 中使用。}
+
+(i) $\mathscr G(L)$ 为 $k$ 上\Term{topologically-flat}{拓扑平坦}的\Term{formal-group}{形式群}，其 $\mathscr O_k$-\Term{bialgebra}{双代数}为 $U(L)$。
+
+(ii) $\mathscr G(L)$ 为\Term{infinitesimal-formal-group}{无穷小}的。
+
+(iii) 对 $\mathrm{Alf}_{/k}$ 的每个\Term{object}{对象} $C$，$\operatorname{Lie}(\mathscr G(L))(C)$ 可等同于 $U(L(C))$ 的\Term{primitive-element}{本原元素}的\Term{set}{集合}
+\[
+\operatorname{Prim}U(L(C))=\{x\in U(L(C))\mid\varepsilon(x)=0\text{ 且 }\Delta(x)=x\otimes1+1\otimes x\}.
+\]
+特别地，有自然的 $\mathscr O_k$-\Term{Lie-algebra}{Lie 代数}\Term{morphism}{态射} $\tau_L:L\to\operatorname{Lie}(\mathscr G(L))$。
+\end{SGAresult}
+\begin{proof}
+$L$ 在 $\mathscr O_k$ 上\Term{flat}{平坦}的假设意味着：对 $\mathrm{Alf}_{/k}$ 的每个\Term{morphism}{态射} $C\to D$，有 $L(D)=L(C)\otimes_C D$，且对 $C$ 的每个\Term{local-component}{局部分支} $C'$，$L(C')$ 是自由 $C'$-模。第一个条件蕴涵 $U(L(D))=U(L(C))\otimes D$（由\Term{tensor-product}{张量积}和\Term{functor}{函子} $L\mapsto U(L)$ 的\Term{universal-property}{泛性质}）；第二个条件由 Poincaré--Birkhoff--Witt \Term{theorem}{定理}（参见 Bourbaki，\textit{Groupes et algèbres de Lie}，I 2.7）蕴涵 $U(L(C'))$ 为自由 $C'$-模。因此\Term{bialgebra}{双代数} $U(L)$ 在 $\mathscr O_k$ 上\Term{flat}{平坦}。
+
+为证 (ii)、(iii)，可以假设 $k$ 为\Term{artinian-ring}{Artin 环}。置 $L=L(k)$、$U=U(L)$、$U_0=k\cdot1_U$，设 $U^+$ 为 $U$ 中由 $L$ 的像生成的\Term{two-sided-ideal}{双边理想}。再对每个 $n\geq1$ 置
+\[
+U_n=\{u\in U\mid\Delta_U(u)-u\otimes1\in U_{n-1}\otimes U^+\}.
+\]
+由 1.3.6，只须证明 $U$ 为各个 $U_n$ 的并。将 $L$ 等同于它在 $U$ 中的\Term{canonical}{典范}像，显然 $L\subset U_1$。若 $x_1,\ldots,x_n\in L$，则
+\[
+\Delta_U(x_1\cdots x_n)=(x_1\otimes1+1\otimes x_1)\cdots(x_n\otimes1+1\otimes x_n),
+\]
+由此对 $n$ 归纳可知乘积 $x_1\cdots x_n$ 属于 $U_n$，故 $U=\bigcup_nU_n$。这就证明了 (ii)。
+
+\SourcePage{568}
+另一方面，设 $D=k[d]/(d^2)$ 为 $k$ 上的\Term{dual-numbers}{对偶数}\Term{algebra}{代数}。由假设，$L(D)\simeq L\otimes D$，由\Term{tensor-product}{张量积}及\Term{enveloping-algebra}{包络代数}的\Term{universal-property}{泛性质}，得 $U(L(D))\simeq U\otimes D$。因此，$\operatorname{Lie}(\mathscr G(L))(k)$ 可等同于 $U\oplus Ud$ 中满足 $\varepsilon(z)=1$、$\Delta(z)=z\otimes z$ 的元素 $z=1+xd$（其中 $x\in U$）之\Term{set}{集合}；这\Term{equivalence}{等价}于 $\varepsilon(x)=0$ 且 $\Delta(x)=x\otimes1+1\otimes x$，也即 $x\in\operatorname{Prim}U$。特别地，映射 $\tau_L:x\mapsto1+dx$ 是从 $L$ 到 $\operatorname{Lie}(\mathscr G(L))$ 的 $\mathscr O_k$-\Term{Lie-algebra}{Lie 代数}\Term{morphism}{态射}。
+\end{proof}
+
+\textbf{2.6.3。} 若 $L$ 为 $\mathscr O_k$ 上\Term{flat}{平坦}的\Term{Lie-algebra}{Lie 代数}，则\Term{formal-group}{形式群} $\mathscr G(L)$ 可用一个\Term{universal-property}{泛性质}刻画。\footnote{编者注（111）：利用 2.6.2 所加的内容，修改了以下论述。}事实上，任一从 $\mathscr G(L)$ 到\Term{formal-group}{形式群} $G$ 的\Term{morphism}{态射} $\phi$ 诱导一个\Term{morphism}{态射} $\operatorname{Lie}(\phi):\operatorname{Lie}(\mathscr G(L))\to\operatorname{Lie}(G)$；将它与\Term{morphism}{态射} $\tau_L:L\to\operatorname{Lie}(\mathscr G(L))$（参见 2.6.2）复合，得\Term{morphism}{态射} $\phi':L\to\operatorname{Lie}(G)$，且有：
+\begin{SGAresult}{命题}{}
+若 $G$ 是 $k$-\Term{formal-group}{形式群}，$L$ 是\Term{flat}{平坦} $\mathscr O_k$-\Term{Lie-algebra}{Lie 代数}，则以上定义的映射 $\phi\mapsto\phi'$ 是\Term{bijection}{双射}
+\[
+\operatorname{Hom}_{\mathrm{Grf}/k}(\mathscr G(L),G)\xrightarrow{\sim}\operatorname{Hom}_{\mathrm{Lie}}(L,\operatorname{Lie}(G)),
+\]
+其中右端表示从 $L$ 到 $\operatorname{Lie}(G)$ 的 $\mathscr O_k$-\Term{Lie-algebra}{Lie 代数}\Term{morphism}{态射}的\Term{set}{集合}。
+\end{SGAresult}
+\begin{proof}
+立刻可归结到 $k$ 为\Term{artinian-ring}{Artin 环}的情形。置 $L=L(k)$。由 2.3.1，$\operatorname{Hom}_{\mathrm{Grf}/k}(\mathscr G(L),G)$ 与使下图交换的保单位\Term{algebra}{代数}\Term{morphism}{态射} $\phi:U(L)\to H(G)$ 的\Term{set}{集合}一一对应：
+\[
+\begin{tikzcd}[column sep=large]
+U(L)\arrow[r,"h"]\arrow[d,"\Delta_{U(L)}"']&H(G)\arrow[dr,"\delta_G"]&\\
+U(L)\otimes U(L)\arrow[r,"h\otimes h"']&H(G)\otimes H(G)\arrow[r,"\varphi_G"']&H(G\times G)
+\end{tikzcd}
+\]
+而 $h$ 由其在 $L$ 上的\Term{restriction}{限制}决定，该\Term{restriction}{限制}是从 $L$ 到 $H(G)$ 的底层\Term{Lie-algebra}{Lie 代数}的\Term{morphism}{态射}；图的\Term{commutativity}{交换性}意味着 $h$ 将 $L$ 映入 $H(G)$ 中由满足 $\delta_G(x)=\varphi_G(x\otimes1+1\otimes x)$ 的 $x$ 构成的部分，而这正是 $\operatorname{Lie}(G)$，参见 2.6 c)。
+\end{proof}
+
+\textbf{2.7。} 以一个可追溯至 S.~Lie 的命题结束这些一般论述，5.1 将用到它。$k$ 上的\Term{formal-monoid}{形式幺半群}按定义是一个二元组 $(M,m)$，其中 $M$ 为\Term{formal-variety}{形式簇}，$m:M\times M\to M$ 为\Term{morphism}{态射}，使对 $\mathrm{Alf}_{/k}$ 的每个\Term{object}{对象} $C$，$m(C)$ 都使 $M(C)$ 成为\Term{monoid}{幺半群}。\footnote{编者注（112）：这里及下文均以「\Term{monoid}{幺半群}」代替「有\Term{identity-element}{单位元}的\Term{monoid}{幺半群}」（提醒读者，\Term{monoid}{幺半群}按定义就是带有结合\Term{composition-law}{合成律}并有\Term{identity-element}{单位元}的\Term{set}{集合}）。}特别地，将每个\Term{object}{对象} $C$ 送到 $M(C)$ 的\Term{identity-element}{单位元}的「\Term{unit-section}{单位截面}」，定义了
+\SourcePage{569}
+\Term{canonical-projection}{典范投影} $M\to\operatorname{Spf}(k)$ 的一个\Term{section}{截面} $\varepsilon_M$。若 $\varepsilon_M$ 在底层\Term{set}{集合}上诱导\Term{bijection}{双射}，则称\Term{formal-monoid}{形式幺半群} $M$ 为\Term{infinitesimal-formal-group}{无穷小}的。
+\begin{SGAresult}{命题}{}
+每个\Term{topologically-flat}{拓扑平坦}且\Term{infinitesimal-formal-group}{无穷小}的\Term{formal-monoid}{形式 $k$-幺半群} $M$ 都是 $k$-\Term{formal-group}{形式群}。\footnote{编者注（113）：由 1.3.5.D 的\Term{equivalence-of-categories}{范畴等价}，\Term{topologically-flat}{拓扑平坦} $k$-\Term{formal-variety}{形式簇}\Term{category}{范畴}中的\Term{monoid}{幺半群}，与\Term{flat}{平坦}\Term{cocommutative}{余交换} $\mathscr O_k$-\Term{coalgebra}{余代数}\Term{category}{范畴}中的\Term{monoid}{幺半群}「是同一回事」，即为一个\Term{cocommutative}{余交换} $\mathscr O_k$-\Term{bialgebra}{双代数}（通常意义下的，即不必有\Term{antipode}{对极映射}）。此外，由 1.3.6，$M$ 为\Term{infinitesimal-formal-group}{无穷小}的假设\Term{equivalence}{等价}于对应的\Term{bialgebra}{双代数}\Term{connected-coalgebra}{连通}。所以，若 $k$ 为\Term{artinian-ring}{Artin 环}，本命题\Term{equivalence}{等价}于说：每个 $k$ 上\Term{flat}{平坦}的\Term{cocommutative}{余交换}\Term{connected-coalgebra}{连通} $k$-\Term{bialgebra}{双代数}都是 $k$-\Term{Hopf-algebra}{Hopf 代数}，即有\Term{antipode}{对极映射}（而\Term{cocommutative}{余交换}假设事实上是多余的，参见证明）。}
+\end{SGAresult}
+\begin{proof}
+须证对 $\mathrm{Alf}_{/k}$ 的每个\Term{object}{对象} $C$，$M(C)$ 为群。因此立刻归结到 $k$ 为\Term{artinian-ring}{Artin 环}的情形。于是设 $U=H(M)$ 为 $M$ 的\Term{coalgebra}{余代数}（1.3.5）；\Term{multiplication}{乘法} $m:M\times M\to M$ 诱导\Term{coalgebra}{余代数}\Term{morphism}{态射} $m_U:U\otimes U\to U$，使 $U$ 成为 $k$ 上的结合\Term{algebra}{代数}；该\Term{algebra}{代数}的\Term{identity-element}{单位元}是 $k$ 的\Term{identity-element}{单位元}在由 $M$ 的\Term{unit-section}{单位截面} $\varepsilon_M$ 诱导的 $k\to U$ 映射下的像。同样，\Term{projection}{投影} $M\to\operatorname{Spf}(k)$ 诱导 $U\to k$ 的\Term{homomorphism}{同态} $\varepsilon_U$；以 $U^+$ 表示 $\varepsilon_U$ 的核。
+
+须证存在\Term{antipode}{对极映射}，即\Term{coalgebra}{余代数}\Term{morphism}{态射} $c_U:U\to U$，使对每个 $u\in U$ 有
+\[
+\bigl(m_U\circ(c_n\otimes\mathrm{id}_U)\circ\Delta_U\bigr)(x)=\varepsilon_U(u)\cdot1_U.\tag{*}
+\]
+设 $(U_n)$ 为 1.3.6 定义的 $U$ 的\Term{filtration}{滤过}，置 $U_n^+=U^+\cap U_n$。由于 $M$ 为\Term{infinitesimal-formal-group}{无穷小}的，$U^+$ 为\Term{submodule}{子模} $U_n^+$ 的并。\footnote{编者注（114）：原文接着说：「然后容易对 $n$ 归纳证明，存在唯一\Term{linear}{线性}映射 $c_n:U_n\to U_n$，使复合映射 $m_U\circ(c_n\otimes\mathrm{id}_U)\circ\Delta_U:U_n^+\to U$ 为零」；这里详细给出了依赖于\Term{lemma}{引理} 1.3.6.A 证明的论证。}于是置 $c_0(1)=1$，若 $x\in U_1^+$，即 $x$ 为\Term{primitive-element}{本原元素}，则置 $c_1(x)=-x$。假设已构造 $c_{n-1}:U_{n-1}\to U$，使对每个 $x\in U_{n-1}$ 满足 $(*)$，并取 $x\in U_n^+$。由\Term{lemma}{引理} 1.3.6.A 的证明，有 $\Delta_U(x)-x\otimes1\in U_{n-1}\otimes U^+$（这里用到了 $U$ 在 $k$ 上\Term{flat}{平坦}的假设），所以可写 $\Delta_U(x)=x\otimes1+\sum_i y_i\otimes z_i$，其中 $y_i\in U_{n-1}$；于是置 $c_n(x)=-\sum_i c_{n-1}(y_i)z_i$。这样得到一个 $k$-\Term{linear}{线性}映射 $c:U\to U$，对于 $\operatorname{End}_k(U)$ 上由 $f\cdot g=m_U\circ(f\otimes g)\circ\Delta_U$ 定义的\Term{monoid}{幺半群}运算（其\Term{identity-element}{单位元}为映射 $\eta:u\mapsto\varepsilon(u)1_U$），它是 $\mathrm{id}_U$ 的左逆。因此 $c$ 唯一确定，且也是 $\mathrm{id}_U$ 的右逆，即也有 $m_U\circ(c_n\otimes\mathrm{id}_U)\circ\Delta_U=\eta$（不必假设 $U$ \Term{cocommutative}{余交换}）。
+\end{proof}
+
+\textbf{2.8。域上的\Term{unipotent-group}{幺幂群}\Term{scheme}{概形}。} 设 $k$ 是域。\footnote{编者注（115）：加入了本小节。}「回顾」称 $k$-\Term{group-scheme}{群概形} $G$ 为\Term{unipotent}{幺幂}的，若它满足以下两个条件（参见 [DG70]，§IV.2，命题 2.5）：
+\SourcePage{570}
+
+(a) $G$ 为\Term{affine}{仿射}的。
+
+(b) 每个单 $\mathscr O(G)$-\Term{comodule}{余模}均为\Term{trivial-comodule}{平凡}的，即若 $\rho:V\to V\otimes_k\mathscr O(G)$ 是非零 $k$-\Term{vector-space}{向量空间} $V$ 上的一个 $\mathscr O(G)$-\Term{comodule}{余模}结构，且不存在非零子\Term{space}{空间} $W\ne V$ 使 $\rho(W)\subset W\otimes_k\mathscr O(G)$，则 $V$ 为一维，且对每个 $v\in V$ 有 $\rho(v)=v\otimes1$。
+
+由所引文献，当 $G$ 在 $k$ 上\Term{finite-type}{有限型}时，这\Term{equivalence}{等价}于第 XVII 讲 §1 给出的定义，即 $G$ 有\Term{finite}{有限}\Term{composition-series}{合成列}，其相继商均\Term{isomorphism}{同构}于 $\mathbf G_{a,k}$ 的 $k$-\Term{subgroup}{子群}。
+
+对任意\Term{affine-group-scheme}{仿射 $k$-群概形} $G$，$\mathscr O(G)$ 的\Term{comultiplication}{余乘法}使\Term{pseudocompact-module}{伪紧} $k$-模 $A=\mathscr O(G)^*$ 带有不必交换的\Term{profinite-algebra}{预有限} $k$-\Term{algebraic-structure}{代数结构}，其\Term{identity-element}{单位元} $1_A$ 就是\Term{augmentation}{增广} $\varepsilon:\mathscr O(G)\to k$。另一方面，设 $I=\{f\in A\mid f(1_{\mathscr O(G)})=0\}$；这是 $A$ 的\Term{two-sided-ideal}{双边理想}，且 $A=k\cdot1_A\oplus I$，参见 1.3.6。
+
+设 $V$ 是 $A$ 的\Term{finite}{有限}\Term{codimension}{余维}子\Term{space}{空间}，考虑\Term{continuous}{连续} $k$-\Term{bilinear}{双线性}映射 $\varphi:A\times A\to A/V$，$(a,b)\mapsto ab+V$；由\Term{lemma}{引理} 0.3.1，存在 $A$ 的两个\Term{finite}{有限}\Term{codimension}{余维}子\Term{space}{空间} $L_1,L_2$，使 $V$ 包含 $AL_2$ 和 $L_1A$，于是 $L=L_1\cap L_2$ 为 $A$ 的\Term{finite}{有限}\Term{codimension}{余维}子\Term{space}{空间}，且 $V$ 包含\Term{finite}{有限}\Term{codimension}{余维}\Term{two-sided-ideal}{双边理想} $ALA$。这说明\Term{finite}{有限}\Term{codimension}{余维}\Term{two-sided-ideal}{双边理想}构成零点的\Term{neighborhood}{邻域}基。由此得出，$\mathscr O(G)$-\Term{comodule}{余模}与\Term{continuous}{连续} $A$-模「是同一回事」；后者是指使映射 $A\times V\to V$ \Term{continuous}{连续}的 $A$-模 $V$，其中 $V$ 赋\Term{discrete-topology}{离散拓扑}。这样的模显然是 $k$ 上\Term{finite-dimensional}{有限维}\Term{submodule}{子模} $V_i$ 的并，每个 $V_i$ 都是 $A$ 的某个 $k$ 上\Term{finite-dimensional}{有限维}商\Term{algebra}{代数} $A_i$ 上的模。因此若 $M$ 为单\Term{continuous}{连续}模，则它在 $k$ 上\Term{finite-dimensional}{有限维}，且是\Term{finite-dimensional}{有限维} $k$-\Term{algebra}{代数} $A/\operatorname{Ann}(M)$ 的忠实单模；所以后者为\Term{finite-dimensional}{有限维}单 $k$-\Term{algebra}{代数}，即 $\operatorname{Ann}(M)$ 为 $A$ 的开\Term{maximal-ideal}{极大理想}。反之，设 $P$ 是 $A$ 的开\Term{prime-ideal}{素理想}，\footnote{编者注（116）：回顾，环 $A$ 的\Term{two-sided-ideal}{双边理想} $P$ 称为\Term{prime-ideal}{素}的，若 $A/P$ 中任意两个非零\Term{two-sided-ideal}{双边理想}的乘积均非零。}则 $A/P$ 为\Term{finite-dimensional}{有限维} $k$-\Term{algebra}{代数}，其中\Term{ideal}{理想} $(0)$ 为\Term{prime-ideal}{素}的，所以它是\Term{finite-dimensional}{有限维}单 $k$-\Term{algebra}{代数}；因此在\Term{isomorphism}{同构}意义下，存在唯一\Term{annihilator}{零化子}为 $P$ 的单\Term{continuous}{连续} $A$-模。由此得出，映射 $M\mapsto\operatorname{Ann}(M)$ 在单\Term{continuous}{连续} $A$-模的\Term{isomorphism-class}{同构类}与 $A$ 的开\Term{prime-ideal}{素理想}之间定义了\Term{bijection}{双射}。特别地，$k$ 上一维的 $A$-模 $A/I$ 称为「\Term{trivial-comodule}{平凡模}」；它对应于一维\Term{trivial-comodule}{平凡} $\mathscr O(G)$-\Term{comodule}{余模} $V$，即对每个 $v\in V$ 有 $\rho(v)=v\otimes1_{\mathscr O(G)}$。于是得到以下命题：
+\begin{SGAresult}{命题}{2.8.1}
+设 $k$ 为域，$G$ 为\Term{affine-group-scheme}{仿射 $k$-群概形}，$A=\mathscr O(G)^*$。
+\SourcePage{571}
+
+(i) $G$ 为\Term{unipotent}{幺幂}的当且仅当 $I$ 为 $A$ 的唯一开\Term{prime-ideal}{素理想}。\footnote{编者注（117）：这也\Term{equivalence}{等价}于说 $k\cdot1_{\mathscr O(G)}$ 是 $\mathscr O(G)$ 的唯一单 $k$-子\Term{coalgebra}{余代数}；例如参见 [Ab80]，3.1.4。顺便指出所引文献第 130 页第 4 行的一处排印错误：$M\simeq C^*/\operatorname{ann}M$ 应替换为 $C^*/\operatorname{ann}M\simeq\operatorname{End}_k(M)$。}
+
+(ii) 特别地，若 $G$ 交换，从而 $\mathscr O(G)=H(D(G))$，其中 $D(G)=\operatorname{Spf}(A)$ 为 $G$ 的\Term{Cartier-duality}{Cartier 对偶}，则 $G$ 为\Term{unipotent}{幺幂}的当且仅当 $D(G)$ 为\Term{infinitesimal-formal-group}{无穷小}的。
+\end{SGAresult}
+
+\textbf{2.9。域上的\Term{cocommutative}{余交换}尖 \Term{hopf-algebra}{Hopf 代数}。}\footnote{编者注（118）：加入本段是为了用\Term{cocommutative}{余交换} \Term{Hopf-algebra}{Hopf 代数}的语言翻译命题 2.5.2，以及编者注（100）中指出的变体。}设 $k$ 为域，$C$ 为 $k$-\Term{coalgebra}{余代数}，$A$ 为带有 2.8 所述不必交换的\Term{profinite-algebra}{预有限} $k$-\Term{algebraic-structure}{代数结构}的\Term{algebra}{代数} $C^*$；由 0.2.2 有 $C=A^\dagger=\operatorname{Hom}_c(A,k)$。由此得出，映射 $D\mapsto D^\perp=\{f\in A\mid f(D)=0\}$ 是从 $C$ 的子\Term{coalgebra}{余代数}的\Term{set}{集合}到 $A$ 的闭\Term{two-sided-ideal}{双边理想}（下文简称「\Term{ideal}{理想}」）的\Term{set}{集合}的\Term{bijection}{双射}，其逆\Term{bijection}{双射}为 $I\mapsto I^\perp=\{x\in C=A^\dagger\mid x(I)=0\}$。由于每个极大\Term{closed-ideal}{闭理想}都是开\Term{maximal-ideal}{极大理想}（参见 0.2.1），每个子\Term{coalgebra}{余代数}都包含一个单子\Term{coalgebra}{余代数}，后者必然\Term{finite-dimensional}{有限维}。
+
+回顾，$C$ 的子\Term{coalgebra}{余代数} $D$ 称为\Term{irreducible-coalgebra}{不可约}的，若它只含一个单子\Term{coalgebra}{余代数} $S_0$；这\Term{equivalence}{等价}于说 $\mathfrak m_0=S_0^\perp$ 是包含 $D^\perp$ 的唯一开\Term{maximal-ideal}{极大理想}，即对每个不同于 $\mathfrak m_0$ 的开\Term{maximal-ideal}{极大理想} $\mathfrak m$ 有 $D^\perp+\mathfrak m=A$。特别地，$D=S_0$ 时就是如此。于是，所有包含 $S_0$ 的\Term{irreducible-coalgebra}{不可约}子\Term{coalgebra}{余代数} $C_i$ 的和 $\Sigma_0$ 显然为子\Term{coalgebra}{余代数}，且为\Term{irreducible-coalgebra}{不可约}的，因为对每个 $\mathfrak m\ne\mathfrak m_0$，由 0.2.D 有
+\[
+\mathfrak m+\bigcap_iC_i^\perp=\bigcap_i(\mathfrak m+C_i^\perp)=A.
+\]
+称 $\Sigma_0$ 为 $C$ 的对应于 $C_0$ 的\Term{irreducible-component}{不可约分支}。
+
+另一方面，若 $C$ 的每个单 $k$-子\Term{coalgebra}{余代数}都为一维，则称 $C$ 为\Term{pointed-coalgebra}{尖}的；这\Term{equivalence}{等价}于对 $A$ 的每个开\Term{maximal-ideal}{极大理想} $\mathfrak m$ 有 $A/\mathfrak m=k$。还请回顾，若 $C$ 为\Term{irreducible-coalgebra}{不可约}且\Term{pointed-coalgebra}{尖}的，便称它\Term{connected-coalgebra}{连通}。（顺便指出，若 $C$ 为\Term{bialgebra}{双代数}，则它\Term{connected-coalgebra}{连通}当且仅当它\Term{irreducible-coalgebra}{不可约}，因为 $k\cdot1_C$ 是一个单子\Term{coalgebra}{余代数}。）
+
+今后假设 $C$ 为\Term{cocommutative}{余交换}的。于是 $A$ 交换，因而是其\Term{local-component}{局部分支} $A_{\mathfrak m}$（$\mathfrak m\in\Upsilon(A)$）的乘积（参见 0.1.1）；以 $S_{\mathfrak m}$ 表示单子\Term{coalgebra}{余代数} $\mathfrak m^\perp\simeq(A/\mathfrak m)^*$，以 $\Sigma_{\mathfrak m}$ 表示它的\Term{irreducible-component}{不可约分支}。$\Sigma_{\mathfrak m}$ 可如下描述。以 $J_{\mathfrak m}$ 表示\Term{projection}{投影} $A\to A_{\mathfrak m}$ 的核，它包含于 $\mathfrak m$，并且是 $\mathfrak m$ 内满足对每个 $\mathfrak m'\ne\mathfrak m$ 有 $I+\mathfrak m'=A$ 的最小\Term{closed-ideal}{闭理想} $I$。事实上，若 $I$ 有此性质，则对每个 $\mathfrak m'\ne\mathfrak m$ 它都包含 $A_{\mathfrak m'}$，故包含 $J_{\mathfrak m}$。由于 $A=J_{\mathfrak m}\oplus A_{\mathfrak m}$，$\Sigma_{\mathfrak m}=J_{\mathfrak m}^\perp$ 因而可等同于 $A_{\mathfrak m}^\dagger$。现在可以证明：
+\begin{SGAresult}{命题}{2.9.1}
+设 $k$ 为域。
+\SourcePage{572}
+
+(i) 设 $G$ 为所有\Term{residue-field}{剩余域}均等于 $k$ 的 $k$-\Term{formal-group}{形式群}。则 $G_e$ 为常值 $k$-群 $M_k$，其中
+\[
+M=G(k)=\{x\in H(G)\mid\varepsilon(x)=1\text{ 且 }\Delta(x)=x\otimes x\},
+\]
+并且 $H(G)$ 为 $H(G_0)$ 与 $kM$ 的\Term{semidirect-product}{半直积}（参见 2.4.B）。
+
+(ii) \Term{equivalence}{等价}地，设 $H$ 为\Term{cocommutative}{余交换}\Term{pointed-coalgebra}{尖} $k$-\Term{Hopf-algebra}{Hopf 代数}。则 $H$ 为\Term{identity-element}{单位元} $1_H$ 的\Term{irreducible-component}{不可约分支} $H_0$ 与 $kM$ 的\Term{semidirect-product}{半直积}，其中 $M=\{x\in H\mid\varepsilon(x)=1\text{ 且 }\Delta(x)=x\otimes x\}$。
+\end{SGAresult}
+\begin{proof}
+先证 (i)。由于 $G$ 的所有\Term{residue-field}{剩余域}均为 $k$，\Term{projection}{投影} $\pi:G\to G_e$ 有一个\Term{section}{截面} $s:G_e\to G$，它由对每个 $g\in G$ 的映射 $\mathscr O_{G,g}\to\kappa(g)=k$ 定义；此外，对每个 $g,h\in G$，$\mathscr O_{G,g}\widehat\otimes_k\mathscr O_{G,h}$ 是\Term{residue-field}{剩余域}为 $k$ 的\Term{local-ring}{局部环}，因此 $s\times s$ 为\Term{projection}{投影} $\pi\times\pi:G\times G\to(G\times G)_e=G_e\times G_e$ 的\Term{section}{截面}。因 $\pi$ 是\Term{group-morphism}{群态射}，可得 $\pi\circ m_G\circ(s\times s)=m_{G_e}=\pi\circ s\circ m_{G_e}$，而 $\pi$ 是\Term{epimorphism}{满态射}，故这蕴涵 $s$ 为\Term{group-morphism}{群态射}。于是 $G=G_0\rtimes G_e$，所以 $H(G)$ 为 $H(G_0)$ 与 $H(G_e)$ 的\Term{semidirect-product}{半直积}。此外，因 $G$ 的所有\Term{residue-field}{剩余域}均为 $k$，$H(G_e)$ 为\Term{group-algebra}{群代数} $kM$，其中 $M=G_e(k)$（参见 2.5.A）。最后，因 $G_0$ 为\Term{infinitesimal-formal-group}{无穷小}的，\Term{morphism}{态射} $G(k)\to G_e(k)$ 为\Term{injectivity}{单射}，因而为\Term{bijection}{双射}（它有\Term{section}{截面}），所以 $M=G(k)$。由此得 (i)。
+
+为证 (ii)，只须说明 $H_0=H(G_0)$。$H$ 的\Term{identity-element}{单位元} $1_H$ 恰为\Term{augmentation}{增广} $\varepsilon_A:A\to k$，即 $G(k)$ 的\Term{unit-section}{单位截面}，所以 $\mathscr A(G)$ 中对应于 $H_0$ 的\Term{local-component}{局部分支}恰为 $\mathscr A(G_0)$；由前文所述，$H_0=\mathscr A(G_0)^\dagger=H(G_0)$。命题得证。
+\end{proof}
+
+\textbf{注记 2.9.2。} (a) 上述命题已隐含在 2.5.2 中，B.~Kostant 也独立得到了它（参见 [Sw69]，前言）。将这个结果与下文 Cartier \Term{theorem}{定理} 3.3（参见 [Ca62]，§12，\Term{theorem}{定理} 3）结合，便得到通常所称的「Cartier--Gabriel--Kostant \Term{theorem}{定理}」；Cartier \Term{theorem}{定理}也曾由 Kostant 得到（参见 [Sw69]，同处）。
+
+(b) R.~G.~Heyneman 和 M.~E.~Sweedler 已将 2.9.1 的 (ii) \Term{form}{形式}推广到 $H$ 为\Term{pointed-coalgebra}{尖}的且为其\Term{irreducible-component}{不可约分支}的\Term{direct-sum}{直和}（但不必\Term{cocommutative}{余交换}）的情形，参见 [HS69]，\Term{theorem}{定理} 3.5.8。
+
+\SGAsection{3}{特征零所特有的现象}
+本节始终假设\Term{pseudocompact-ring}{伪紧环} $k$ 包含有理数域 $\mathbf Q$。
+\begin{SGAresult}{\Term{lemma}{引理}}{3.1}
+设 $C$ 是交换有\Term{identity-element}{单位元}的 $\mathbf Q$-\Term{algebra}{代数}，$L$ 是 $C$ 上的\Term{Lie-algebra}{Lie 代数}，其底层 $C$-模为\Term{free-module}{自由模}。则\Term{canonical}{典范}映射 $L\to U(L)$ 是从 $L$ 到 $U(L)$ 的\Term{primitive-element}{本原元素}之\Term{set}{集合}的\Term{isomorphism}{同构}。
+\end{SGAresult}
+\begin{proof}
+将 $L$ 等同于它在 $U(L)$ 中的\Term{canonical}{典范}像；设 $I$ 为\Term{totally-ordered}{全序}集，$(x_i)_{i\in I}$ 为以 $I$ 编号的 $L$ 的一组基；以 $\mathbf N^{(I)}$ 表示自然数族 $\mathbf n=(n_i)_{i\in I}$ 的\Term{set}{集合}，其中除可能\Term{finite}{有限}多个指标 $i_1<i_2<\cdots<i_s$ 外，$n_i$ 均为零（这些指标依赖于 $\mathbf n$）；最后置
+\SourcePage{573}
+\[
+x^{\mathbf n}=x_{i_1}^{n_{i_1}}x_{i_2}^{n_{i_2}}\cdots x_{i_s}^{n_{i_s}},\qquad
+\mathbf n!=(n_{i_1}!)(n_{i_2}!)\cdots(n_{i_s}!).
+\]
+已知各个 $x^{\mathbf n}$ 构成 $U(L)$ 的一组基（Poincaré--Birkhoff--Witt \Term{theorem}{定理}），并且容易看出有
+\[
+\Delta_{U(L)}\left(\frac{x^{\mathbf n}}{\mathbf n!}\right)
+=\sum\frac{x^{\mathbf m}}{\mathbf m!}\otimes\frac{x^{\mathbf n-\mathbf m}}{(\mathbf n-\mathbf m)!},\tag{*}
+\]
+求和遍历 $\mathbf N^{(I)}$ 中满足 $0\leq\mathbf m\leq\mathbf n$ 的所有元素 $\mathbf m$（即对每个 $i$ 有 $0\leq m_i\leq n_i$）。显然，由此得 $\Delta_{U(L)}(u)=u\otimes1+1\otimes u$ 当且仅当 $u$ 为各个 $x_i$ 的\Term{linear}{线性}组合。
+\end{proof}
+
+\textbf{3.2。} 现在假设 $C$ 为\Term{artinian-ring}{Artin 环}，其根为 $\mathfrak r$。则对每个（结合、有\Term{identity-element}{单位元}的）$C$-\Term{algebra}{代数} $U$，\Term{ideal}{理想} $\mathfrak rU$ 均由\Term{nilpotent-element}{幂零元素}组成；若 $x\in\mathfrak rU$，置
+\[
+\exp_Ux=1+x+\frac{x^2}{2!}+\cdots.
+\]
+\footnote{编者注（119）：若 $x,x'\in\mathfrak rU$ 交换，则 $\exp_U(x+x')=(\exp_Ux)(\exp_Ux')$。}
+这样得到从 $\mathfrak rU$ 到 $1+\mathfrak rU$ 的\Term{bijection}{双射}；逆\Term{bijection}{双射}将 $1+\mathfrak rU$ 的元素 $1+y$ 送到
+\[
+\log_U(1+y)=y-\frac{y^2}{2}+\frac{y^3}{3}-\cdots.
+\]
+此外，显然映射 $\exp_U$ 关于 $U$ \Term{functorial}{函子性}。\footnote{编者注（120）：即对每个 $C$-\Term{algebra}{代数}\Term{morphism}{态射} $\varphi:U\to V$，有 $\varphi(\exp_U(x))=\exp_V\varphi(x)$。}
+
+仍设环 $C$ 为\Term{artinian-ring}{Artin 环}，并假设 $U$ 带有 $C$ 上的\Term{bialgebra}{双代数}结构（参见 2.2）。则对 $\mathfrak rU$ 的每个\Term{primitive-element}{本原元素} $x$（参见第 VII\textsubscript{A} 讲 3.2.3），有
+\[
+\begin{aligned}
+\Delta_U(\exp_Ux)&=\exp_{U\otimes U}(\Delta_U(x))\\
+&=\exp_{U\otimes U}(x\otimes1+1\otimes x)\\
+&=\exp_{U\otimes U}(x\otimes1)\cdot\exp_{U\otimes U}(1\otimes x)\\
+&=((\exp_Ux)\otimes1)\cdot(1\otimes(\exp_Ux))\\
+&=(\exp_Ux)\otimes(\exp_Ux).
+\end{aligned}
+\]
+可见\Term{bijection}{双射} $\exp_U$ 将 $\mathfrak rU$ 的\Term{primitive-element}{本原元素}变成满足 $\Delta_U(z)=z\otimes z$ 的 $z\in1+\mathfrak rU$。反之，若 $z$ 满足这些条件，置 $x=\log_U(z)$，则前面的计算说明 $\exp_{U\otimes U}(x\otimes1+1\otimes x)$ 等于 $z\otimes z=\Delta(\exp_Ux)=\exp_{U\otimes U}(\Delta_U(x))$，从而 $x\otimes1+1\otimes x=\Delta_U(x)$。\footnote{编者注（121）：详细展开了以上论述，并加入了后一句。}还请注意，若 $z\in1+\mathfrak rU$ 满足 $\Delta_U(z)=z\otimes z$，则 $\varepsilon_U(z)^2=\varepsilon_U(z)$；又因 $\varepsilon_U(z)$ \Term{invertible}{可逆}（因为 $z$ \Term{invertible}{可逆}，$\mathfrak r$ 为\Term{nilpotent-ideal}{幂零}\Term{ideal}{理想}），故 $\varepsilon_U(z)=1$。
+
+特别地，考虑 $C$ 上\Term{flat}{平坦}的\Term{Lie-algebra}{Lie 代数} $L$，取 $U$ 为 $L$ 在 $C$ 上的\Term{enveloping-algebra}{包络代数} $U(L)$，并将 $L$ 等同于它在 $U$ 中的\Term{canonical}{典范}像。由\Term{lemma}{引理} 3.1，$L$ 就是 $U$ 的\Term{primitive-element}{本原元素}之\Term{set}{集合}（事实上 $L$ 是 $C$ 的各\Term{local-component}{局部分支}上\Term{free-module}{自由模}的乘积）。于是考虑
+\SourcePage{574}
+$C$-\Term{formal-group}{形式群} $\mathscr G(L)=\operatorname{Spf}^*U(L)$，其\Term{covariant-bialgebra}{协变双代数}为 $U=U(L)$（参见 2.6.2）。设 $\mathfrak m$ 为 $C$ 的\Term{maximal-ideal}{极大理想}，$\overline C=C/\mathfrak m$。由于 $\mathscr G(L)$ 为\Term{infinitesimal-formal-group}{无穷小}的（同处），$\overline U=U\otimes_C\overline C$ 的\Term{identity-element}{单位元}是 $\overline U$ 中唯一满足 $\varepsilon_{\overline U}(\overline z)=1$ 且 $\Delta_{\overline U}(\overline z)=\overline z\otimes\overline z$ 的元素 $\overline z$。\footnote{编者注（122）：加入了原文遗漏的条件 $\varepsilon_{\overline U}(\overline z)=1$。}因此，$U$ 中满足 $\varepsilon_U(z)=1$ 且 $\Delta_U(z)=z\otimes z$ 的元素 $z$ 必属于 $1+\mathfrak rU$。
+
+最后，由于 $L\cap\mathfrak rU$ 可等同于 $\mathfrak rL=L\otimes_C\mathfrak r$，最终可见：$\exp_U$ 定义了 $L\otimes_C\mathfrak r$ 到群 $\mathscr G(L)(C)$ 的\Term{bijection}{双射}。概括如下：
+\begin{SGAresult}{命题}{}
+设 $k$ 为包含 $\mathbf Q$ 的\Term{pseudocompact-ring}{伪紧环}，$L$ 为\Term{flat}{平坦} $\mathscr O_k$-\Term{Lie-algebra}{Lie 代数}。
+
+(i) 对 $\mathrm{Alf}_{/k}$ 的每个\Term{object}{对象} $C$，以 $\mathfrak r(C)$ 表示其根，则映射
+\[
+\exp_{U(L(C))}:L(C)\otimes_C\mathfrak r(C)\longrightarrow\mathscr G(L)(C)
+\]
+是\Term{bijection}{双射}，且关于 $C,L$ \Term{functorial}{函子性}。
+
+(ii) 自然\Term{morphism}{态射} $L\to\operatorname{Lie}(\mathscr G(L))$（参见 2.6.2）为 $\mathscr O_k$-\Term{Lie-algebra}{Lie 代数}\Term{isomorphism}{同构}。\footnote{编者注（123）：加入了 (ii)，它是 3.1 的直接推论。}
+\end{SGAresult}
+
+\textbf{3.2.1。} \Term{bijection}{双射} $\exp_{U(L(C))}$ 通过结构转移，在\Term{set}{集合} $L(C)\otimes_C\mathfrak r(C)$ 上定义了一个\Term{group-law}{群运算}（如 3.2，将此\Term{set}{集合}等同于 $U(L(C))$ 的一个\Term{subset}{子集}）。若 $x,y$ 为 $L(C)\otimes_C\mathfrak r(C)$ 的两个元素，则此运算满足
+\[
+\begin{aligned}
+x\cdot y&=\log\bigl((\exp x)(\exp y)\bigr)
+=\log\left(1+\sum_{p+q>0}\frac{x^py^q}{p!\,q!}\right)\\
+&=\sum_{m\geq1}\sum_{p_i+q_i>0}\frac{(-1)^{m-1}}m\frac{x^{p_1}y^{q_1}}{p_1!\,q_1!}\cdots\frac{x^{p_m}y^{q_m}}{p_m!\,q_m!}
+=\sum_{\ell\geq1}P_\ell(x,y),
+\end{aligned}
+\]
+其中 $P_\ell(x,y)$ 表示关于 $x,y$ 的总\Term{degree}{次数}为 $\ell$ 的单项式之和。例如有：
+\[
+P_1(x,y)=x+y,
+\]
+\[
+P_2(x,y)=\underbrace{\frac{x^2}2+xy+\frac{y^2}2}_{m=1}
+-\underbrace{\frac12(x^2+xy+yx+y^2)}_{m=2}
+=\frac12(xy-yx)=\frac12[x,y],
+\]
+而 $P_3(x,y)$ 为以下三项之和：
+\[
+\begin{aligned}
+{}&\underbrace{\frac{x^3}6+\frac{x^2y}2+\frac{xy^2}2+\frac{y^3}6}_{m=1}\\
+&\quad-\underbrace{\frac12\left(x^3+\frac32x^2y+\frac12yx^2+xyx+yxy+\frac12y^2x+\frac32xy^2+y^3\right)}_{m=2}\\
+&\quad+\underbrace{\frac13(x^3+x^2y+yx^2+xyx+yxy+y^2x+xy^2+y^3)}_{m=3}.
+\end{aligned}
+\]
+
+\SourcePage{575}
+从而
+\[
+\begin{aligned}
+P_3(x,y)&=\frac1{12}(x^2y+yx^2-2xyx-2yxy+y^2x+xy^2)\\
+&=\frac1{12}\bigl([[y,x],x]+[y,[y,x]]\bigr).
+\end{aligned}
+\]
+更一般地，可证明如下 Campbell--Hausdorff 公式：\footnote{编者注（124）：修正了原文中错误的公式，并加入了文献 [BLie]。}
+\[
+\begin{aligned}
+P_\ell(x,y)
+={}&\sum_{m=1}^{\ell}\frac{(-1)^{m-1}}{m\cdot\ell}
+\sum_{\substack{p_1,\ldots,p_m\\q_1,\ldots,q_{m-1}}}
+\left(\prod_{i=1}^{m-1}\frac{(\operatorname{ad}x)^{p_i}}{p_i!}\frac{(\operatorname{ad}y)^{q_i}}{q_i!}\right)
+\frac{(\operatorname{ad}x)^{p_m}}{p_m!}(y)\\
+&+\sum_{m=1}^{\ell}\frac{(-1)^{m-1}}{m\cdot\ell}
+\sum_{\substack{p_1,\ldots,p_{m-1}\\q_1,\ldots,q_{m-1}}}
+\left(\prod_{i=1}^{m-1}\frac{(\operatorname{ad}x)^{p_i}}{p_i!}\frac{(\operatorname{ad}y)^{q_i}}{q_i!}\right)(x),
+\end{aligned}
+\]
+其中 $p_j,q_i\in\mathbf N$ 满足 $p_i+q_i\geq1$（$i=1,\ldots,m-1$）以及 $p_m+\sum_{i=1}^{m-1}(p_i+q_i)=\ell-1$（即上式各和中的每个非零「Lie 单项式」均为总\Term{degree}{次数} $\ell$）；证明可参见 N.~Jacobson，\textit{Lie Algebras}（Interscience，1962），§V.5，或 [BLie]，II §6.4，\Term{theorem}{定理} 2。
+
+\textbf{3.3。} 若 $G$ 为\Term{affine-algebra}{仿射代数}为 $A$ 的 $k$-\Term{formal-group}{形式群}，回顾以 $I_A$ 表示 $A$ 的\Term{augmentation-ideal}{增广理想}，以 $\omega_{G/k}$ 表示\Term{pseudocompact-module}{伪紧} $k$-模 $I_A/\overline{I_A^2}\simeq I_A\widehat\otimes_A k$。
+\begin{SGAresult}{\Term{theorem}{定理}（Cartier）}{}
+设 $k$ 为包含 $\mathbf Q$ 的\Term{pseudocompact-ring}{伪紧环}，\footnote{编者注（125）：删去了 $k$ 为\Term{local-ring}{局部环}的假设（证明可归结到这种情形）。}$G$ 为 $k$-\Term{formal-group}{形式群}。下列断言\Term{equivalence}{等价}：
+
+(i) 存在\Term{flat}{平坦} $\mathscr O_k$-\Term{Lie-algebra}{Lie 代数} $L$，使 $G$ \Term{isomorphism}{同构}于 $\mathscr G(L)$（此时由 3.2 有 $L=\operatorname{Lie}(G)$）。
+
+(ii) 存在\Term{pseudocompact-module}{伪紧}\Term{projective-module}{投射} $k$-模 $\omega$，使 $G$ 的底层\Term{formal-variety}{形式簇}\Term{isomorphism}{同构}于\Term{affine-algebra}{仿射代数}为 $k[[\omega]]$ 的\Term{formal-variety}{形式簇} $V_k^{f,0}(\omega)$（参见 1.2.5）（此时 $\omega\simeq\omega_{G/k}$）。
+
+(iii) $G$ 为\Term{infinitesimal-formal-group}{无穷小}的，且 $\omega_{G/k}$ 为\Term{pseudocompact-module}{伪紧}\Term{projective-module}{投射} $k$-模。
+
+(iv) $G$ 为\Term{infinitesimal-formal-group}{无穷小}的，且在 $k$ 上\Term{topologically-flat}{拓扑平坦}。
+\end{SGAresult}
+\begin{proof}
+(i) $\Rightarrow$ (ii)：设 $\omega=\Gamma^*(L)$ 为 $L$ 的\Term{duality}{对偶}\Term{pseudocompact-module}{伪紧} $k$-模（参见 1.2.3.D）。对 $\mathrm{Alf}_{/k}$ 的每个\Term{object}{对象} $C$，须给出从 $V_k^{f,0}(\omega)(C)$ 到 $\mathscr G(L)(C)$ 的\Term{isomorphism}{同构}，并使它关于 $C$ \Term{functorial}{函子性}。由 1.2.5，$V_k^{f,0}(\omega)(C)$ 可等同于从 $\omega$ 到 $C$ 的根 $\mathfrak r(C)$ 的\Term{continuous}{连续} $k$-\Term{linear}{线性}映射的\Term{set}{集合} $\operatorname{Hom}_c(\omega,\mathfrak r(C))$。此\Term{set}{集合}自然\Term{isomorphism}{同构}于从 $\omega\widehat\otimes_k C$ 到 $\mathfrak r(C)$ 的\Term{continuous}{连续} $C$-\Term{linear}{线性}映射的\Term{set}{集合} $\operatorname{Hom}_c(\omega\widehat\otimes_k C,\mathfrak r(C))$；最后，因 $\omega\widehat\otimes_k C$ 是\Term{pseudocompact-module}{伪紧}\Term{projective-module}{投射} $C$-模，\Term{canonical}{典范}映射
+\[
+(\omega\widehat\otimes_k C)^\dagger\otimes_C\mathfrak r(C)\longrightarrow\operatorname{Hom}_c(\omega\widehat\otimes_k C,\mathfrak r(C))
+\]
+为\Term{bijection}{双射}（参见 0.3.6.A）。由 1.2.3.E，$L(C)$ 可等同于 $V_k^f(\Gamma^*(L))(C)=(\omega\widehat\otimes_k C)^\dagger$，故得到 $V_k^{f,0}(\omega)(C)$ \Term{canonical}{典范}地\Term{isomorphism}{同构}于 $L(C)\otimes_C\mathfrak r(C)$，后者由命题 3.2 又\Term{canonical}{典范}地\Term{isomorphism}{同构}于 $\mathscr G(L)(C)$。这就证明了
+\SourcePage{576}
+蕴涵 (i) $\Rightarrow$ (ii)。
+
+(ii) $\Rightarrow$ (iii)：设 $\omega$ 为 $\mathrm{PC}(k)$ 的\Term{projective-module}{投射对象}，$h$ 为从 $k[[\omega]]$ 到 $G$ 的\Term{affine-algebra}{仿射代数} $A$ 的\Term{isomorphism}{同构}。将 $h$ 与\Term{augmentation}{增广} $\varepsilon_A:A\to k$ 复合，得\Term{homomorphism}{同态} $\varepsilon_A\circ h:k[[\omega]]\to k$，它由其在 $\omega$ 上的\Term{restriction}{限制} $\lambda$ 决定；后者将 $\omega$ 映入 $k$ 的根 $\mathfrak r$。所以，从 $\omega$ 到 $k[[\omega]]$ 的根的映射 $x\mapsto x-\lambda(x)$，由 $k[[\omega]]$ 的\Term{universal-property}{泛性质}（参见 1.2.5）延拓为 $k[[\omega]]$ 的\Term{endomorphism}{自同态} $\ell_\lambda$。等式 $\ell_\lambda\circ\ell_{-\lambda}=\ell_{-\lambda}\circ\ell_\lambda=\mathrm{id}$ 说明 $\ell_\lambda$ 为 $k[[\omega]]$ 的\Term{automorphism}{自同构}。因此 $h\circ\ell_\lambda$ 同 $h$ 一样，是 $k[[\omega]]$ 到 $A$ 的\Term{isomorphism}{同构}，且 $\varepsilon_A\circ h\circ\ell_\lambda$ 将 $\omega$ 映至零。故将 $h$ 换成 $h\circ\ell_\lambda$ 后，可假设 $\varepsilon_A\circ h$ 在 $k[[\omega]]$ 中由 $\omega$ 生成的\Term{closed-ideal}{闭理想} $I$ 上为零。此时，$h$ 诱导 $I/\overline{I^2}$ 到 $I_A/\overline{I_A^2}$ 的\Term{isomorphism}{同构}；因 $I/\overline{I^2}\simeq\omega$，得到 $\omega_{G/k}=I_A/\overline{I_A^2}$ \Term{isomorphism}{同构}于 $\omega$，从而为\Term{projective-module}{投射}的。另一方面，$V_k^{f,0}(\omega)$ 显然为\Term{infinitesimal-formal-group}{无穷小}的，$G$ 亦然。
+
+(iii) $\Rightarrow$ (i)：假设 $G$ 为\Term{infinitesimal-formal-group}{无穷小}的，$\omega_{G/k}$ 为\Term{projective-module}{投射}的。设 $L$ 为 $G$ 的 $\mathscr O_k$-\Term{Lie-algebra}{Lie 代数}；由 2.6.1，其底层 $\mathscr O_k$-模为 $V_k^f(\omega_{G/k})$。所以 $L$ 在 $\mathscr O_k$ 上\Term{flat}{平坦}，且由命题 1.2.3.E，$\Gamma^*(L)\simeq\omega_{G/k}$。因此，由 (i) $\Rightarrow$ (ii) 的证明，$k$-\Term{formal-group}{形式群} $\mathscr G(L)$ 的\Term{affine-algebra}{仿射代数}可等同于 $k[[\omega_{G/k}]]$。另一方面，由 2.6.3，$L$ 的\Term{identity-morphism}{恒等态射}\Term{canonical}{典范}地对应于\Term{formal-group}{形式群}\Term{morphism}{态射} $\mathscr G(L)\to G$，因而对应于\Term{continuous}{连续} $k$-\Term{algebra}{代数}\Term{morphism}{态射}
+\[
+\phi:A\longrightarrow k[[\omega_{G/k}]].
+\]
+设 $I$ 为 $k[[\omega_{G/k}]]$ 中由 $\omega_{G/k}$ 生成的\Term{closed-ideal}{闭理想}，以\Term{ideal}{理想} $I^n$（相应地 $I_A^n$）的\Term{closure}{闭包}赋予 $k[[\omega_{G/k}]]$（相应地 $A$）一个\Term{filtration}{滤过}。须证按定义在 $\omega_{G/k}=I_A/\overline{I_A^2}=I/\overline{I^2}$ 上诱导\Term{identity-map}{恒等映射}的 $\phi$ 是\Term{isomorphism}{同构}。
+
+因 $\omega_{G/k}$ 为 $\mathrm{PC}(k)$ 的\Term{projective-module}{投射对象}，\Term{canonical-projection}{典范投影} $I_A\to\omega_{G/k}$ 有一个\Term{section}{截面} $\tau$。由 $k[[\omega_{G/k}]]$ 的\Term{universal-property}{泛性质}（参见 1.2.5），$\tau$ 定义\Term{continuous}{连续}\Term{algebra}{代数}\Term{morphism}{态射}
+\[
+\psi:k[[\omega_{G/k}]]\longrightarrow A,
+\]
+而 $\phi\circ\psi$ 在 $\omega_{G/k}$ 上诱导\Term{identity-map}{恒等映射}，因此在 $k[[\omega_{G/k}]]$ 的\Term{associated-graded}{相伴分次}上也诱导\Term{identity-map}{恒等映射}。由 [CA]，§V.7，\Term{lemma}{引理} 1，可得 $\phi\circ\psi$ 为\Term{isomorphism}{同构}。\footnote{编者注（126）：参见后文 5.1.5；另见 [BAC]，III，§2.8，\Term{theorem}{定理} 1 及其推论。此外，详细展开了以下原文。}
+
+此外，$\psi$ 诱导 $I/\overline{I^2}$ 到 $I_A/\overline{I_A^2}$ 的\Term{isomorphism}{同构}，因而诱导 $k[[\omega_{G/k}]]$ 与 $A$ 的\Term{associated-graded}{相伴分次}之间的\Term{surjectivity}{满射}。另一方面，由于 $G$ 为\Term{radicial}{根性}的，$I_A$ 包含于 $A$ 的根中，故各 $\overline{I_A^n}$ 的交为零。因此由所引文献，$\psi$ 为\Term{surjectivity}{满射}。于是，由 $\phi\circ\psi$ 为\Term{isomorphism}{同构}且 $\psi$ 为\Term{surjectivity}{满射}，$\psi,\phi$ 都为\Term{isomorphism}{同构}。这就证明了 (iii) $\Rightarrow$ (i)。
+
+最后，显然 (i) 或 (ii) 蕴涵 (iv)，所以只须证明 (iv) $\Rightarrow$ (ii)。为此可假设 $k$ 为\Term{local-ring}{局部环}，其\Term{residue-field}{剩余域}为
+\SourcePage{577}
+$k_0$。于是置 $G_0=G\widehat\otimes_k k_0$、$\omega=\omega_{G/k}$、$\omega_0=\omega\widehat\otimes_k k_0$，等等。\footnote{编者注（127）：以下详细展开了原文。}由于 $k_0$ 为域，\Term{pseudocompact-module}{伪紧} $k_0$-模 $\omega_0$ 有\Term{pseudobasis}{伪基} $(y_\lambda)_{\lambda\in\Lambda}$；以 $\omega'$ 表示各个 $k$ 的拷贝 $k_\lambda$（$\lambda\in\Lambda$）的乘积这个\Term{topologically-free}{拓扑自由} $k$-模，并将每个 $y_\lambda$ \Term{lifting}{提升}为 $\omega$ 的元素 $x_\lambda$，便得到\Term{continuous}{连续} $k$-\Term{linear}{线性}映射 $f:\omega'\to\omega$，使 $f_0=f\widehat\otimes_k k_0$ \Term{invertible}{可逆}。\footnote{编者注（128）：尚不能先验地知道 $\omega$ 是\Term{pseudocompact-module}{伪紧}\Term{projective-module}{投射} $k$-模，但以下将得出这一点：可与第 VII\textsubscript{A} 讲 7.4 中 (iv) $\Rightarrow$ (iii) 的证明比较。}因 $\omega'$ 是\Term{pseudocompact-module}{伪紧}\Term{projective-module}{投射} $k$-模，$f$ \Term{liftable}{可提升}为\Term{continuous}{连续} $k$-\Term{linear}{线性}映射 $g:\omega'\to I_A$，使 $\pi\circ g=f$，其中 $\pi$ 为\Term{projection}{投影} $I_A\to\omega$。由 $k[[\omega']]$ 的\Term{universal-property}{泛性质}（参见 1.2.5），$g$ \Term{induced-topology}{诱导拓扑}\Term{algebra}{代数}\Term{morphism}{态射} $\phi:k[[\omega']]\to A$。
+
+而 $\omega'\widehat\otimes_k k_0$ 可等同于 $\omega\widehat\otimes_k k_0=\omega_{G_0/k_0}$，所以 $k[[\omega']]\widehat\otimes_k k_0$ 可等同于 $k_0[[\omega_{G_0/k_0}]]$。因 $k_0,G_0$ 满足 (iii) 的假设，(iii) $\Rightarrow$ (i) 的证明说明 $\phi_0=\phi\widehat\otimes_k k_0$ \Term{invertible}{可逆}。另一方面，$k[[\omega']]$ 与 $A$ 都为\Term{pseudocompact-module}{伪紧}\Term{projective-module}{投射} $k$-模，故由 0.3.4，$\phi$ \Term{invertible}{可逆}。（特别地，以 $I$ 表示 $k[[\omega']]$ 的\Term{augmentation-ideal}{增广理想}，则 $\phi$ 诱导 $\omega'=I/\overline{I^2}$ 到 $I_A/\overline{I_A^2}=\omega$ 的\Term{isomorphism}{同构}。）
+\end{proof}
+
+\begin{SGAresult}{推论}{3.3.1}
+设 $S$ 是 $\mathbf Q$ 上\Term{locally-noetherian}{局部 Noether}的\Term{scheme}{概形}，$G$ 是\Term{flat}{平坦}且\Term{locally-finite-type}{局部有限型}的 $S$-\Term{group-scheme}{群概形}。\footnote{编者注（129）：加入了原文遗漏的\Term{flat}{平坦}假设。}若 $\omega_{G/S}$ 为\Term{locally-free}{局部自由} $\mathscr O_S$-模，则 $G$ 在\Term{unit-section}{单位截面}的每一点均在 $S$ 上\Term{smooth}{光滑}。
+\end{SGAresult}
+\begin{proof}
+设 $x$ 为\Term{unit-section}{单位截面}的一点，$s$ 为其在 $S$ 中的像，$\mathscr O_x,\mathscr O_s$ 为 $x,s$ 的\Term{local-ring}{局部代数}。\footnote{编者注（130）：以下详细展开了原文。}由假设 $\mathscr O_s,\mathscr O_x$ 为 Noether \Term{local-ring}{局部环}，故这两个环上的 $\mathfrak m$-\Term{adic-topology}{进拓扑}均与由\Term{finite}{有限}\Term{codimension}{余维}\Term{ideal}{理想}定义的「\Term{pseudocompact-ring}{伪紧}」\Term{topology}{拓扑}一致。以 $\widehat{\mathscr O}_x,\widehat{\mathscr O}_s$ 表示它们对这一\Term{topology}{拓扑}的\Term{completion}{完备化}。由 EGA IV$_4$，17.5.3，$G$ 在点 $x$ 于 $S$ 上\Term{smooth}{光滑}，当且仅当 $\widehat{\mathscr O}_x$ 在 $\widehat{\mathscr O}_s$ 上\Term{formally-smooth}{形式光滑}，其中两个\Term{algebra}{代数}均赋 $\mathfrak m$-\Term{adic-topology}{进拓扑}；所以只须证明后一性质。而 $\widehat{\mathscr O}_x,\widehat{\mathscr O}_s$ 就是 1.2.6 定义的\Term{formal-variety}{形式簇} $\widehat G_{/\widehat S}$ 和 $\widehat S$ 中 $x,s$ 的\Term{local-ring}{局部环}。置 $k=\widehat{\mathscr O}_s$、$H=\operatorname{Spf}(\widehat{\mathscr O}_x)$，则 $H$ 是\Term{infinitesimal-formal-group}{无穷小} $k$-\Term{formal-variety}{形式簇}；又因 $\widehat G_{/\widehat S}$ 的构造与乘积交换（同处），$H$ 为\Term{infinitesimal-formal-group}{无穷小} $k$-\Term{formal-group}{形式群}。以 $I$ 表示 $\mathscr O_x$ 的\Term{augmentation-ideal}{增广理想}。由假设，$\omega_{G/S,x}=I/I^2$ 是秩为\Term{finite}{有限}数 $n$ 的\Term{locally-free}{局部自由} $\mathscr O_s$-模。因 $\mathscr O_s$ 为 Noether 环，$\omega_{H/k}$ 作为 $\omega_{G/S,x}$ 的\Term{completion}{完备化}，可等同于 $\omega_{G/S}\otimes_{\mathscr O_S}\widehat{\mathscr O}_s$，从而是秩为 $n$ 的\Term{topologically-free}{拓扑自由} $k$-模。所以，由 3.3 的 (iv) $\Rightarrow$ (ii)，$\widehat{\mathscr O}_x$ \Term{isomorphism}{同构}于 $k[[\omega_{H/k}]]$，即\Term{isomorphism}{同构}于\Term{formal-power-series-algebra}{形式幂级数代数} $k[[t_1,\ldots,t_n]]$。最后，由 EGA 0$_{\mathrm{IV}}$，19.3.3，此\Term{algebra}{代数}在 $k$ 上\Term{formally-smooth}{形式光滑}。推论得证。
+\end{proof}
+这样便重新得到了另一处针对任意\Term{scheme}{概形} $S$ 上\Term{locally-finite-presentation}{局部有限表现}的\Term{group-scheme}{群概形}所证明的一个结果，参见第 VI\textsubscript{B} 讲 1.6。
+
+\SourcePage{578}
+\begin{SGAresult}{推论}{3.3.2}
+设 $k$ 为\Term{characteristic-zero}{特征零}的域。\Term{functor}{函子} $L\mapsto\mathscr G(L)$ 是 $k$-\Term{Lie-algebra}{Lie 代数}\Term{category}{范畴}到\Term{infinitesimal-formal-group}{无穷小} $k$-\Term{formal-group}{形式群}\Term{category}{范畴}的\Term{equivalence-of-categories}{等价}。\footnote{编者注（131）：由 2.7、2.2.1 和 1.3.6，\Term{infinitesimal-formal-group}{无穷小} $k$-\Term{formal-group}{形式群} $G$ 与\Term{cocommutative}{余交换}\Term{connected-coalgebra}{连通} $k$-\Term{bialgebra}{双代数} $H$「是同一回事」（参见 2.9），因此这一陈述\Term{equivalence}{等价}于下面这个由 Kostant 独立得到的\Term{theorem}{定理}（参见 2.9.2）。J.~W.~Milnor 和 J.~C.~Moore 先前已在附加假设 $H$ 作为\Term{algebra}{代数}由其\Term{primitive-element}{本原元素}生成的情形下得到了它（[MM65]）（虽然发表于 1965 年，该文本在 1960 年以前已流传，参见书评 [Ja65]），因此这一结果常被称为「Cartier--Kostant--Milnor--Moore \Term{theorem}{定理}」。\par\textbf{\Term{theorem}{定理}（Cartier--Kostant--Milnor--Moore）。}设 $k$ 为\Term{characteristic-zero}{特征零}的域。\Term{functor}{函子} $L\mapsto U(L)$ 和 $H\mapsto\operatorname{Prim}(H)$ 定义 $k$-\Term{Lie-algebra}{Lie 代数}\Term{category}{范畴}与\Term{cocommutative}{余交换}\Term{connected-coalgebra}{连通} $k$-\Term{bialgebra}{双代数}\Term{category}{范畴}之间的\Term{equivalence-of-categories}{等价}。\par 另一方面，若 $k$ 为包含 $\mathbf Q$ 的\Term{artinian-ring}{Artin 环}，则 3.2 (ii) 与 3.3（结合 2.7、2.2.1 和 1.3.6）同样说明，\Term{functor}{函子} $L\mapsto\mathscr G(L)$（相应地 $L\mapsto U(L)$）是\Term{flat}{平坦} $k$-\Term{Lie-algebra}{Lie 代数}\Term{category}{范畴}到\Term{topologically-flat}{拓扑平坦}\Term{infinitesimal-formal-group}{无穷小} $k$-\Term{formal-group}{形式群}\Term{category}{范畴}（相应地到\Term{flat}{平坦}\Term{cocommutative}{余交换}\Term{connected-coalgebra}{连通} $k$-\Term{bialgebra}{双代数}\Term{category}{范畴}）的\Term{equivalence-of-categories}{等价}。}
+\end{SGAresult}
+\begin{proof}
+事实上，当 $G$ 遍历\Term{infinitesimal-formal-group}{无穷小} $k$-\Term{formal-group}{形式群}时，由\Term{theorem}{定理} 3.3，\Term{functor}{函子} $G\mapsto\mathscr G(\operatorname{Lie}G)$ \Term{isomorphism}{同构}于\Term{infinitesimal-formal-group}{无穷小} $k$-群\Term{category}{范畴}的\Term{identity-functor}{恒等函子}。同样，由 3.2 (ii)，\Term{functor}{函子} $L\mapsto\operatorname{Lie}(\mathscr G(L))=\operatorname{Prim}U(L)$ \Term{isomorphism}{同构}于 $k$-\Term{Lie-algebra}{Lie 代数}\Term{category}{范畴}的\Term{identity-functor}{恒等函子}。
+\end{proof}
+
+\textbf{3.3.3。} 仍设 $k$ 为\Term{characteristic-zero}{特征零}的域。设 $\overline k$ 为 $k$ 的一个\Term{algebraic-closure}{代数闭包}，$\Gamma$ 为 $\overline k/k$ 的\Term{topological-galois-group}{拓扑 Galois 群}。
+
+对每个 $k$-\Term{formal-group}{形式群} $G$，以 $\underline{\operatorname{Aut}}_k(G)$ 表示将每个\Term{finite-dimensional}{有限维}交换 $k$-\Term{algebra}{代数} $C$ 送到 $C$-\Term{formal-group}{形式群} $G\widehat\otimes_k C$ 的\Term{automorphism-group}{自同构群}的 $k$-\Term{group-functor}{群函子}。\footnote{编者注（132）：原文说：「这个 $k$-\Term{functor}{函子}显然是\Term{left-exact}{左正合}的（$H$ 在 $k$ 上\Term{topologically-flat}{拓扑平坦}！）」。以下详细说明了这一点。}因 $G$ 在 $k$ 上\Term{topologically-flat}{拓扑平坦}（$k$ 为域），即其\Term{affine-algebra}{仿射代数} $A=\mathscr A(G)$ 在 $k$ 上\Term{topologically-flat}{拓扑平坦}，或\Term{equivalence}{等价}地，其\Term{covariant-bialgebra}{协变双代数} $H=H(G)$ 在 $k$ 上\Term{flat}{平坦}，这个 $k$-\Term{functor}{函子}是一个 $k$-\Term{formal-group}{形式群}。事实上，$\underline{\operatorname{Aut}}_k(G)$ 可等同于下图的\Term{fiber-product}{纤维积}（参见第 I 讲 1.7.3）：
+\[
+\begin{tikzcd}
+&\underline{\operatorname{End}}_k(G)\times\underline{\operatorname{End}}_k(G)\arrow[d]\\
+\operatorname{Spf}(k)\arrow[r]&\underline{\operatorname{End}}_k(G)\times\underline{\operatorname{End}}_k(G)
+\end{tikzcd}
+\]
+其中竖\Term{arrow}{箭头}由 $(\phi,\psi)\mapsto(\phi\circ\psi,\psi\circ\phi)$ 给出，横\Term{arrow}{箭头}为\Term{unit-section}{单位截面}；所以只须说明 $k$-\Term{functor}{函子} $\underline{\operatorname{End}}_k(G)$ 由 $\mathrm{Vaf}_{/k}$ 的一个\Term{object}{对象}表示，即（参见 1.1 和 0.4.2）它是\Term{left-exact}{左正合}的，也就是与 $k$-\Term{algebra}{代数}的\Term{fiber-product}{纤维积}交换。而给定 $\underline{\operatorname{End}}_k(G)(C)$ 的一个元素，\Term{equivalence}{等价}于给定一个 $k$-\Term{algebra}{代数}\Term{morphism}{态射} $\phi:H\to H\otimes_k C$，并要求它也保持\Term{coalgebra}{余代数}结构，即使那些熟知的图交换；因 $H$ 在 $k$ 上\Term{flat}{平坦}，$H\otimes_k-$ 与 $k$-\Term{algebra}{代数}的\Term{fiber-product}{纤维积}交换，
+\SourcePage{579}
+故可得 $k$-\Term{functor}{函子} $\underline{\operatorname{End}}_k(G)$ 为\Term{left-exact}{左正合}的，从而可将它视为 $k$-\Term{formal-group}{形式群}。
+
+若 $L$ 为 $k$-\Term{Lie-algebra}{Lie 代数}，$G$ 为\Term{formal-group}{形式群} $\mathscr G(L)$，\Term{theorem}{定理} 3.3 说明 $\underline{\operatorname{Aut}}_k(G)$ \Term{isomorphism}{同构}于 $k$-\Term{group-functor}{群函子} $\underline{\operatorname{Aut}}_k(L)$，后者将每个\Term{finite-dimensional}{有限维} $k$-\Term{algebra}{代数} $C$ 送到 $C$-\Term{Lie-algebra}{Lie 代数} $C\otimes_k L$ 的\Term{automorphism-group}{自同构群}。
+
+若 $G$ 为任意 $k$-\Term{formal-group}{形式群}，在 2.5.2 已见 $G$ \Term{canonical}{典范}地\Term{resolution}{分解}为一个\Term{etale}{平展}\Term{formal-group}{形式群} $G_e$ 与一个\Term{infinitesimal-formal-group}{无穷小}\Term{formal-group}{形式群} $G_0$ 的\Term{semidirect-product}{半直积}。这一\Term{semidirect-product}{半直积}由 $L=\operatorname{Lie}(G)=\operatorname{Lie}(G_0)$、$\Gamma$-群 $M=G_e(\overline k)=G(\overline k)$ 以及一个 $k$-\Term{formal-group}{形式群}\Term{morphism}{态射}
+\[
+\Phi:G_e\longrightarrow\underline{\operatorname{Aut}}_k(G_0)\simeq\underline{\operatorname{Aut}}_k(L)
+\]
+的给定所决定。这样的\Term{morphism}{态射}将 $G_e$ 映入 $\underline{\operatorname{Aut}}_k(L)$ 的「\Term{etale}{平展}部分」$\underline{\operatorname{Aut}}_k(L)_e$，参见 2.5.1。因此，它由以下 $\Gamma$-\Term{group-morphism}{群态射}的给定所决定：
+\[
+\phi=\Phi(\overline k):M\longrightarrow(\underline{\operatorname{Aut}}_kL)(\overline k)=\operatorname{Aut}_{\overline k}(L\otimes_k\overline k).
+\]
+若使 $\Gamma$ 通过公式 $\gamma(\ell\otimes t)=\ell\otimes\gamma(t)$ \Term{action}{作用}于 $L\otimes_k\overline k$，则 $\phi$ 使 $M$ 通过 $\overline k$-\Term{Lie-algebra}{Lie 代数}\Term{automorphism}{自同构}\Term{action}{作用}于 $L\otimes_k\overline k$，使得 $\phi(\gamma(m))=\gamma\circ\phi(m)\circ\gamma^{-1}$，即
+\[
+\gamma(m)(\ell\otimes t)=\gamma\bigl(m(\ell\otimes\gamma^{-1}(t))\bigr)
+\]
+对每个 $m\in M$、$\gamma\in\Gamma$ 及 $\ell\otimes t\in L\otimes_k\overline k$ 成立。我们将最后这个条件表述为：$M$ 以与 $\Gamma$ 相容的方式\Term{action}{作用}于 $L\otimes_k\overline k$。
+
+可用一个「高深」的陈述概括这一情形：所谓 $k$ 上的 $\Gamma$-\Term{Lie-algebra}{Lie 代数}，是指一个三元组 $(L,M,\phi)$，其中 $L$ 为 $k$-\Term{Lie-algebra}{Lie 代数}，$M$ 为 $\Gamma$-群，$\phi$ 为 $M$ 在 $L\otimes_k\overline k$ 上的\Term{action}{作用}，并要求它「与 $\Gamma$ 在 $M$ 及 $L\otimes_k\overline k$ 上的\Term{action}{作用}相容」。
+
+若 $(L,M,\phi)$ 和 $(L',M',\phi')$ 为两个这样的 $\Gamma$-\Term{Lie-algebra}{Lie 代数}，从前者到后者的\Term{morphism}{态射}是一个二元组 $(f,\theta)$，其中 $f:L\to L'$ 为 $k$-\Term{Lie-algebra}{Lie 代数}\Term{morphism}{态射}，$\theta:M\to M'$ 为 $\Gamma$-\Term{group-morphism}{群态射}，并使对每个 $x\in L\otimes_k\overline k$ 和 $m\in M$ 有
+\[
+(f\otimes1)(m\cdot x)=\theta(m)\cdot(f\otimes1)(x).
+\]
+于是得到：
+\begin{SGAresult}{\Term{theorem}{定理}}{}
+设 $k$ 为\Term{characteristic-zero}{特征零}的域。则将 $G$ 送到三元组 $(\operatorname{Lie}(G),G(\overline k),\Phi(\overline k))$ 的\Term{functor}{函子}，是 $k$-\Term{formal-group}{形式群}\Term{category}{范畴}到 $\Gamma$-\Term{Lie-algebra}{Lie 代数}\Term{category}{范畴}的\Term{equivalence-of-categories}{等价}。\footnote{编者注（133）：特别地，当 $k=\overline k$ 时，这重新给出 2.9.2 中指出的「Cartier--Gabriel--Kostant \Term{theorem}{定理}」。}
+\end{SGAresult}

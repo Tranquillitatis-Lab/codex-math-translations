@@ -1,0 +1,930 @@
+\SourcePage{189}
+\SGAsection{3}{仿射 Lefschetz 定理的逆定理}
+本节将在第 4 节中用来证明“Lefschetz 定理”的一个逆定理；因此，只关心该定理正向部分的读者可以跳过本节。
+
+\textbf{3.1。}回顾\Term{affine}{仿射} Lefschetz 定理\footnote{编者注：Gabber 证明了如下推广。设 $Y$ 是一个\Term{strictly-local}{严格局部}\Term{scheme}{概形}，在\Term{dimension}{维数} $\leq1$ 的\Term{regular}{正则}\Term{noetherian}{诺特}\Term{scheme}{概形} $S$ 上为算术型。设 $f:X\to Y$ 是\Term{finite-type}{有限型}\Term{affine}{仿射}\Term{morphism}{态射}，$\Lambda=\mathbb Z/n\mathbb Z$，其中 $n$ 在 $X$ 上\Term{invertible}{可逆}，且 $F$ 是一个 $\Lambda$-\Term{sheaf}{层}。则当 $q>\delta(F)$ 时，$H^q(X,F)=0$。由此可得如下\Term{local-scheme}{局部} Lefschetz 定理。设 $\mathscr O$ 是 $S$ 上算术型的\Term{strictly-local}{严格局部环}。对任意\Term{non-zero-divisor}{非零因子} $f\in\mathscr O$ 以及 $\operatorname{Spec}(\mathscr O[f^{-1}])$ 上任意 $\Lambda$-\Term{sheaf}{层} $F$，当 $q>\dim(\mathscr O)$ 时，均有 $H^q(\operatorname{Spec}(\mathscr O[f^{-1}]),F)=0$。参见 Fujiwara K., ``A Proof of the Absolute Purity Conjecture (after Gabber)'', in \emph{Algebraic geometry 2000, Azumino (Hotaka)}, Adv. Stud. in Pure Math., vol.~36, 2002, pp.~153--183, \S5，尤其参见 Illusie 的文章：Illusie L., ``Perversité et variation'', \emph{Manuscripta Math.} 112 (2003), pp.~271--295。这一结果是 Gabber 证明 Grothendieck \Term{purity}{纯性}定理所用的关键点之一（参见原书第 168 页注 (1)）。}的陈述（SGA~4，第 XIX 讲 6.1 bis）：
+设 $S$ 是\Term{characteristic}{特征}零的\Term{excellent}{优良}\Term{strictly-local}{严格局部}\Term{scheme}{概形}，$f:X\to S$ 是\Term{finite-type}{有限型}\Term{affine}{仿射}\Term{morphism}{态射}，$F$ 是 $X$ 上的\Term{torsion-sheaf}{挠层}。令
+\[
+\delta(F)=\sup\{\delta(x)\mid x\in X\text{ 且 }F_{\bar x}\ne0\},
+\]
+\SourcePage{190}
+则有
+\[
+H^q(X,F)=0\qquad(q>\delta(F)).
+\]
+在陈述逆定理之前，先证明几个引理。
+
+\begin{SGAresult}{引理}{3.2}
+设 $K$ 是一个域，$\ell$ 是异于 $K$ 的\Term{characteristic}{特征}的素数，$F$ 是 $K$ 上非零的\Term{constructible}{可构造} $\ell$-\Term{torsion-sheaf}{挠层}。假设 $K$ 的 $\ell$-\Term{cohomological-dimension}{上同调维数}（SGA~4，第 X 讲 1）等于 $n$（例如，当 $K$ 是\Term{dimension}{维数}为 $n$ 的\Term{characteristic}{特征}零\Term{excellent}{优良}\Term{integral}{整}\Term{strictly-local}{严格局部环}的\Term{fraction-field}{分式域}时，满足这一条件，见 SGA~4，第 XIX 讲 6.3；当 $K$ 是\Term{separably-closed}{可分闭域}的\Term{transcendence-degree}{超越次数}为 $n$ 的\Term{finitely-generated-extension}{有限生成扩张}时，也满足这一条件，见 SGA~4，第 X 讲 2.1）。则可以找到 $K$ 的一个\Term{finite-separable-extension}{有限可分扩张} $L$，使得
+\[
+H^n(L,F|_L)\ne0.
+\]
+\end{SGAresult}
+\begin{proof}
+可以找到 $K$ 的一个\Term{finite-extension}{有限扩张} $K'$，使得 $F$ 和 $\mu_\ell$ 在 $\operatorname{Spec}K'$ 上的限制都是\Term{constant-sheaf}{常层}。于是有 $\operatorname{cd}_\ell(K')=\operatorname{cd}_\ell(K)=n$（SGA~4，第 X 讲 2.1），由 [2]，II，\S3，命题 4 (iii)，可以找到 $K'$ 的一个\Term{finite-extension}{有限扩张} $L$，使得
+\[
+H^n(L,\mu_\ell)\ne0,\qquad\text{即 }H^n(L,\mathbb Z/\ell\mathbb Z)\ne0.
+\]
+又因 $\operatorname{cd}_\ell(L)=n$，\Term{functor}{函子} $H^n(L,\cdot)$ 在 $\ell$-\Term{torsion-sheaf}{挠层}\Term{category}{范畴}上是\Term{right-exact}{右正合}的；而 $F$ 有一个\Term{isomorphism}{同构}于 $\mathbb Z/\ell\mathbb Z$ 的商，故也有 $H^n(L,F|_L)\ne0$。
+\end{proof}
+
+\begin{SGAresult}{推论}{3.3}
+设 $k$ 是一个域，$K$ 是 $k$ 的\Term{transcendence-degree}{超越次数}为 $n$ 的\Term{finitely-generated-extension}{有限生成扩张}，$F$ 是 $K$ 上非零的\Term{constructible}{可构造} $\ell$-\Term{torsion-sheaf}{挠层}，其中 $\ell$ 与 $k$ 的\Term{characteristic}{特征}互素。则可以找到 $K$ 的一个\Term{finite-separable-extension}{有限可分扩张} $L$，使得若以 $u:\operatorname{Spec}L\to\operatorname{Spec}k$ 表示\Term{canonical}{典范}\Term{morphism}{态射}，就有
+\[
+R^nu_*(F|_{\operatorname{Spec}L})\ne0.
+\]
+\end{SGAresult}
+\begin{proof}
+当域 $k$ 是\Term{separably-closed}{可分闭的}时，这是 3.2 的特例。在一般情形，可以找到 $k$ 的一个\Term{finite-separable-extension}{有限可分扩张} $k_1$，使 $K\otimes_k k_1$ 的\Term{irreducible-component}{不可约分支}都是几何\Term{irreducible}{不可约}的（EGA~IV，4.5.11）；设 $K_1$ 是其中一个。若 $k'$ 是 $k_1$ 的\Term{separable-closure}{可分闭包}，则 $K'=K_1\otimes_{k_1}k'$ 是一个域，且由 EGA~IV，4.2 有
+\[
+\operatorname{trdeg}_{k'}K'=\operatorname{trdeg}_kK=n.
+\]
+由 3.2 可知，可以找到 $K'$ 的一个\Term{finite-separable-extension}{有限可分扩张} $L'$，使 $H^n(L',F|_{L'})\ne0$。但 $k'=\varinjlim_i k_i$，其中 $k_i$ 遍历 $k'$ 中包含的 $k_1$ 的\Term{finite-extension}{有限扩张}；因而 $K'=\varinjlim_i(k_i\otimes_{k_1}K_1)$。因此可以找到一个指标 $i$ 以及 $k_i\otimes_{k_1}K_1=K_i$ 的一个\Term{finite-separable-extension}{有限可分扩张} $L$，
+\SourcePage{191}
+使得 $L'\simeq L\otimes_{K_i}K'$。这个 $K$ 的\Term{group-extension}{扩张} $L$ 即满足要求；事实上，由\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}
+&\operatorname{Spec}L\arrow[dl,"v"']\arrow[dr,"u"]&\\
+\operatorname{Spec}k_i\arrow[rr,"w"']&&\operatorname{Spec}k
+\end{tikzcd}
+\]
+以及 $w$ 为\Term{finite}{有限}\Term{morphism}{态射}，从而 $q>0$ 时 $R^qw_*=0$，可得
+\[
+R^nu_*(F|_{\operatorname{Spec}L})\simeq w_*\bigl(R^nv_*(F|_{\operatorname{Spec}L})\bigr).
+\]
+而 $H^n(L',F|_{L'})\ne0$ 蕴含 $R^nv_*(F|_{\operatorname{Spec}L})\ne0$，故也有 $R^nu_*(F|_{\operatorname{Spec}L})\ne0$。
+\end{proof}
+回顾以下熟知的引理（参见 EGA~$0_{\mathrm{III}}$，10.3.1.2 及 EGA~IV，18.2.3）：
+\begin{SGAresult}{引理}{3.4}
+设 $X$ 是一个\Term{scheme}{概形}，$x$ 是 $X$ 的一个点，$K$ 是 $k(x)$ 的\Term{finite-separable-extension}{有限可分扩张}。则存在一个 $X$ 上的\Term{etale}{平展}\Term{affine}{仿射}\Term{scheme}{概形} $X_1$，以及 $x$ 上方的点 $x_1\in X_1$，使得 $k(x_1)$ 与 $K$ 是 $k(x)$-\Term{isomorphism}{同构}的。
+\end{SGAresult}
+第 4 节将使用如下技术形式的 3.1 的逆命题。
+\begin{SGAresult}{命题}{3.5}
+设有\Term{cartesian-square}{笛卡尔方块}
+\[
+\begin{tikzcd}
+X'\arrow[r,"h"]\arrow[d,"f'"']&X\arrow[d,"f"]\\
+S'\arrow[r,"g"']&S,
+\end{tikzcd}
+\]
+其中 $S$ 和 $S'$ 是\Term{characteristic}{特征}零的\Term{excellent}{优良}\Term{strictly-local}{严格局部}\Term{scheme}{概形}，$f$ 是\Term{locally-finite-type}{局部有限型}\Term{morphism}{态射}，$g$ 是\Term{surjectivity}{满射}的\Term{regular}{正则}\Term{morphism}{态射}（EGA~IV，6.8.1），且 $g$ 的闭\Term{fiber}{纤维}只有 $S'$ 的\Term{closed-point}{闭点}。对给定的 $S$-\Term{scheme}{概形} $X_1$（相应地，$S$-\Term{morphism}{态射} $f_1$ 等），用 $X'_1$（相应地，$f'_1$ 等）表示 $X_1\times_S S'$（相应地，$(f_1)_{(S')}$ 等）。设 $F$ 是 $X'$ 上的\Term{constructible}{可构造} $\mathbb Z/m\mathbb Z$-模\Term{sheaf}{层}（$m$ 是素数 $\ell$ 的幂），满足以下条件：
+
+(i) 对每一个点 $x\in X$，都能找到 $k(x)$ 的一个\Term{finite-separable-extension}{有限可分扩张} $K$，使得 $F$ 在\Term{fiber}{纤维} $(X')_{(\operatorname{Spec}K)}$ 上的限制是 $\operatorname{Spec}K$ 上某个\Term{constructible}{可构造}\Term{sheaf}{层}的\Term{inverse-image}{逆像}。
+
+(ii) 对每一个\Term{morphism}{态射} $f_1:X_1\to S$，其中 $X_1$ 在 $X$ 上\Term{etale}{平展}且为\Term{affine}{仿射}\Term{scheme}{概形}，每一个点 $s\in S$ 及每一个整数 $q>0$，都能找到 $k(s)$ 的一个\Term{finite-separable-extension}{有限可分扩张} $K$，使得 $R^qf'_{1*}(F|_{X'_1})$ 在\Term{fiber}{纤维} $S'_{(\operatorname{Spec}K)}$ 上的限制是 $\operatorname{Spec}K$ 上某个\Term{constructible}{可构造}\Term{sheaf}{层}的\Term{inverse-image}{逆像}。
+
+设 $n$ 是整数，并假设对每一个 $X$ 上的\Term{etale}{平展}\Term{affine}{仿射}\Term{scheme}{概形} $X_1$，都有
+\[
+H^i(X'_1,F)=0\qquad(i>n).
+\]
+\SourcePage{192}
+则若 $\bar x'$ 是点 $x'\in X'$ 上方的一个\Term{geometric-point}{几何点}，且 $F_{\bar x'}\ne0$，就有
+\[
+\delta(x')\leq n.
+\]
+\end{SGAresult}
+\begin{proof}
+设 $Z'$ 是 $X'$ 中满足 $F_{\bar x'}=0$ 的点 $x'$ 的\Term{set}{集合}。令 $Z=h(Z')$，则由 (i) 有 $Z'=h^{-1}(Z)$；设 $x'\in X'$，$x=h(x')$，$s'=f'(x')$，$s=f(x)$。由 2.1.1 以及函数 $\delta$ 在\Term{specialization}{特化}时减小，只须在 $x$ 为 $Z$ 的\Term{maximal-point}{极大点}，且 $x'$ 满足
+\[
+r=\operatorname{trdeg}_{k(s)}k(x)=\operatorname{trdeg}_{k(s')}k(x'),
+\qquad d=\dim\overline{\{s\}}=\dim\overline{\{s'\}}
+\]
+时证明 $\delta(x')\leq n$。设 $x'$ 是这样的点；只须证明能找到 $X$ 上的\Term{etale}{平展}\Term{affine}{仿射}\Term{scheme}{概形} $X_1$，使
+\[
+H^{d+r}(X'_1,F)\ne0.
+\]
+\Term{set}{集合} $Z'$ 是\Term{constructible}{可构造的}（SGA~4，第 IX 讲 2.4），所以 $Z$ 也是\Term{constructible}{可构造的}（EGA~IV，1.9.12）；将 $X$ 缩小到 $x$ 的一个邻域后，可以假设 $Z$ 是以 $x$ 为\Term{generic-point}{泛点}的\Term{irreducible}{不可约}闭集。设 $T=f(Z)$；$T$ 是包含在 $\overline{\{s\}}$ 中的\Term{constructible}{可构造集}；因而可找到 $S$ 的一个\Term{affine}{仿射}\Term{open-subset}{开集} $U$，使 $s\in U$ 且 $T\cap U=T_U$ 是 $U$ 中以 $s$ 为\Term{generic-point}{泛点}的\Term{irreducible}{不可约}闭集。
+
+设 $V$ 是 $X$ 上的\Term{etale}{平展}\Term{affine}{仿射}\Term{scheme}{概形}，其在 $X$ 中的像包含 $x$，在 $S$ 中的像包含于 $U$；以 $Z_V$ 表示 $Z$ 在 $V$ 中的\Term{inverse-image}{逆像}，以 $u:Z_V\to T_U$ 表示\Term{canonical}{典范}\Term{morphism}{态射}。设 $W$ 是 $U$ 上的\Term{etale}{平展}\Term{affine}{仿射}\Term{scheme}{概形}，以 $T_W$ 表示 $T_U$ 在 $W$ 中的\Term{inverse-image}{逆像}，并令 $X_1=W\times_UV$。由于 $F$ 在 $Z'$ 外为零，有\Term{spectral-sequence}{谱序列}
+\[
+E_2^{pq}=H^p\bigl((T_W)',R^qu'_*(F|_{(Z_V)'})\bigr)
+\Longrightarrow H^*(X'_1,F).
+\]
+下面将证明，可以选择 $V$ 和 $W$，使得：
+
+\quad a) $p>d$ 时及 $q>r$ 时，$E_2^{pq}=0$；
+
+\quad b) $E_2^{dr}\ne0$。
+
+于是由\Term{spectral-sequence}{谱序列}便得到 $H^{d+r}(X'_1,F)\ne0$。
+
+$1^\circ$）令 $G_q=R^qu'_*(F|_{(Z_V)'})$；则有
+\[
+(G_q)_{\bar s'}=H^q\bigl((Z_V)'_{\bar s'},F|_{(Z_V)'_{\bar s'}}\bigr),
+\]
+因为 $s'$ 是 $(T_U)'$ 的一个\Term{maximal-point}{极大点}。\Term{fiber}{纤维} $(Z_V)'_{\bar s'}$ 是一个\Term{separably-closed}{可分闭域}上的\Term{dimension}{维数}为 $r$ 的\Term{finite-type}{有限型}\Term{affine}{仿射}\Term{scheme}{概形}，故由 3.1 得
+\[
+(G_q)_{\bar s'}=0\qquad(q>r).
+\]
+对 $q>r$，设 $Y'_q$ 是 $(T_U)'$ 中 $G_q$ 的\Term{geometric-fiber}{几何纤维}非零的点的\Term{set}{集合}，$Y_q=g(Y'_q)$；由 (ii) 有 $Y'_q=g^{-1}(Y_q)$，所以 $Y_q$ 是 $T_U$ 的一个不包含 $s$ 的\Term{constructible}{可构造}\Term{subset}{子集}（SGA~4，第 XIX 讲 5.1 及 EGA，1.9.12）；将 $U$ 缩小为 $s$ 的一个\Term{open-neighborhood}{开邻域}后，可以假设 $q>r$ 时 $G_q=0$，从而 $q>r$ 时 $E_2^{pq}=0$。
+\SourcePage{193}
+另一方面，$(T_W)'$ 是 $g^{-1}(\overline{\{s\}})$ 上的\Term{finite-type}{有限型}\Term{affine}{仿射}\Term{scheme}{概形}，故对任意 $q$ 均有（参见 3.1）
+\[
+H^p((T_W)',G_q)=0\qquad\bigl(p>\dim g^{-1}(\overline{\{s\}})=d\bigr),
+\]
+这就得到条件 a)。
+
+$2^\circ$）证明可以选择 $V$ 使 $(G_r)_{\bar s'}\ne0$。由 (i)，存在定义在 $k(x)$ 的一个\Term{finite-separable-extension}{有限可分扩张} $K$ 上的\Term{constructible}{可构造}\Term{sheaf}{层} $I$，其在 $(X')_{(\operatorname{Spec}K)}$ 上的\Term{inverse-image}{逆像}\Term{isomorphism}{同构}于 $F|_{(X')_{(\operatorname{Spec}K)}}$。由 3.3 可找到 $K$ 的一个\Term{finite-separable-extension}{有限可分扩张} $L$，使得若以 $v:\operatorname{Spec}L\to\operatorname{Spec}k(s)$ 表示\Term{canonical}{典范}\Term{morphism}{态射}，则 $R^rv_*(I)\ne0$。由于\Term{morphism}{态射} $S'_s\to\operatorname{Spec}k(s)$ 是\Term{regular}{正则的}，由 SGA~4，第 XIX 讲 4.2 得
+\[
+R^rv'_*(F|_{(\operatorname{Spec}L)'})\simeq(R^rv_*(I))'\ne0.
+\]
+由引理 3.4，可找到 $X$ 上的\Term{etale}{平展}\Term{affine}{仿射}\Term{scheme}{概形} $X_2$，以及 $X_2$ 中位于 $x$ 上方的点 $x_2$，使 $L$ 与 $k(x_2)$ 是 $k(x)$-\Term{isomorphism}{同构}的，而且可假设 $X_2$ 位于 $U$ 上方。由于 $x$ 是 $Z$ 的一个\Term{maximal-point}{极大点}，有
+\[
+\operatorname{Spec}L\simeq\varprojlim_V Z_V,
+\]
+其中 $V$ 遍历 $x_2$ 的\Term{affine}{仿射}\Term{open-neighborhood}{开邻域}。在 $s'$ 处的\Term{geometric-fiber}{几何纤维}上限制后，再取\Term{limit}{极限}（SGA~4，第 VII 讲 5.8），得到
+\[
+\bigl(R^rv'_*(F|_{\operatorname{Spec}I})'\bigr)_{\bar s'}
+=\varinjlim_V\bigl(R^ru'_*(F|_{(Z_V)'})\bigr)_{\bar s'},
+\]
+因而确实可以找到 $V$ 使 $(G_r)_{\bar s'}\ne0$。
+
+$3^\circ$）已在 $2^\circ$）选定\Term{scheme}{概形} $V$，现证明可以选择\Term{scheme}{概形} $W$，使得
+\[
+E_2^{dr}=H^d((T_W)',G_r)\ne0.
+\]
+由 (ii)，存在定义在 $k(s)$ 的一个\Term{finite-separable-extension}{有限可分扩张} $K$ 上的\Term{constructible}{可构造}\Term{sheaf}{层} $J$，其在 $(S')_{(\operatorname{Spec}K)}$ 上的\Term{inverse-image}{逆像}\Term{isomorphism}{同构}于 $G_r|_{(S')_{(\operatorname{Spec}K)}}$。由引理 3.2，可找到 $K$ 的一个\Term{finite-separable-extension}{有限可分扩张} $L$，使 $H^d(\operatorname{Spec}L,J)\ne0$。由于\Term{morphism}{态射} $(S')_{(\operatorname{Spec}L)}\to\operatorname{Spec}L$ 是\Term{acyclic}{无环的}（SGA~4，第 XIX 讲 4.1 及第 XV 讲 1.10、1.16），故
+\[
+H^d\bigl((\operatorname{Spec}L)',G_r|_{(S')_{(\operatorname{Spec}L)'}}\bigr)
+=H^d(\operatorname{Spec}L,J)\ne0.
+\]
+由 3.4，可找到 $U$ 上的\Term{etale}{平展}\Term{affine}{仿射}\Term{scheme}{概形} $U_1$，以及 $s$ 上方的点 $s_1$，使 $k(s_1)$ 与 $L$ 是 $k(s)$-\Term{isomorphism}{同构}的。由于 $s$ 是 $T_U$ 的一个\Term{maximal-point}{极大点}，有
+\[
+\operatorname{Spec}L\simeq\varprojlim_W T_W,
+\]
+其中 $W$ 遍历 $s_1$ 的\Term{affine}{仿射}\Term{open-neighborhood}{开邻域}。由此得到 $(\operatorname{Spec}L)'\simeq\varprojlim_W(T_W)'$，
+\SourcePage{194}
+再取\Term{limit}{极限}（SGA~4，第 VII 讲 5.8），得到
+\[
+H^d((\operatorname{Spec}L)',G_r|_{(\operatorname{Spec}L)'})
+\simeq\varinjlim_WH^d((T_W)',G_r|_{(T_W)'}).
+\]
+因而可以找到 $W$ 使
+\[
+H^d((T_W)',G_r|_{(T_W)'})\ne0,
+\]
+这就完成了定理的证明。
+\end{proof}
+
+\begin{SGAresult}{推论}{3.6}
+关于 $S,S',f,f',m$ 的假设与 3.5 相同。现在以 $F$ 表示 $X'$ 上的一个 $\mathbb Z/m\mathbb Z$-模\Term{sheaf}{层}\Term{complex}{复形}，其次数有下界，\Term{cohomology}{上同调}\Term{constructible}{可构造}，且各\Term{cohomology-sheaf}{上同调层}满足 3.5 的条件 (i) 和 (ii)。设 $n$ 是整数，并假设对每一个 $X$ 上的\Term{etale}{平展}\Term{affine}{仿射}\Term{scheme}{概形} $X_1$，都有
+\[
+H^i(X'_1,F)=0\qquad(i>n).
+\]
+则若 $\bar x'$ 是 $X'$ 的一个点 $x'$ 上方的\Term{geometric-point}{几何点}，且对某个整数 $j$ 有 $(\mathcal H^j(F))_{\bar x'}\ne0$，就有
+\[
+\delta(x')\leq n-j.
+\]
+\end{SGAresult}
+\begin{proof}
+设 $T'$ 是 $X'$ 中不满足 3.7 的结论的点的\Term{set}{集合}，假设 $T'\ne\varnothing$；令 $T=f(T')$，取 $T$ 的一个\Term{maximal-point}{极大点} $x$ 以及 $X'$ 中 $x$ 上方的点 $x'$。设 $j$ 是使 $(\mathcal H^j(F))_{\bar x'}\ne0$ 的最大整数；于是有 $r=\delta(x)>n-j$。设 $Z'_q$ 是 $\mathcal H^q(F)$ 的\Term{geometric-fiber}{几何纤维}等于零的点的\Term{set}{集合}，$Z_q=h(Z'_q)$；与 3.5 的证明相同，可以看出 $Z_q$ 是\Term{constructible}{可构造的}。显然，当 $q>n$ 以及 $q$ 足够小时，$Z'_q=\varnothing$。其余的 $q$ 分成三类。令
+\[
+Q_1=\{q\mid x\in Z_q\text{，且 }x\text{ 的一个异于 }x\text{ 的一般化不属于 }Z_q\}.
+\]
+有 $j\in Q_1$，且可找到 $x$ 的一个\Term{affine}{仿射}\Term{open-neighborhood}{开邻域} $U_1$，使对每一个 $q\in Q_1$，$U_1\cap Z_q$ 都是以 $x$ 为\Term{generic-point}{泛点}的\Term{irreducible}{不可约}闭集。若 $q\in Q_1$，则
+\[
+\delta(\mathcal H^q(F)|_{U'_1})=\delta(x)
+\qquad\text{（$\delta(\mathcal H^q(F))$ 的定义见 3.1）。}\tag{*}
+\]
+令
+\[
+Q_2=\{q\mid x\text{ 的任何一般化都不属于 }Z_q\}.
+\]
+当 $j<q\leq n$ 时，有 $q\in Q_2$；且可找到 $x$ 的一个\Term{affine}{仿射}\Term{open-neighborhood}{开邻域} $U_2$，使对每一个 $q\in Q_2$，都有 $Z_q\cap U_2=\varnothing$；从而
+\[
+\mathcal H^q(F)|_{U'_2}=0\qquad(q\in Q_2).\tag{**}
+\]
+最后令
+\[
+Q_3=\{q\mid Z_q\text{ 包含 }x\text{ 的严格一般化}\}.
+\]
+\SourcePage{195}
+可以找到 $x$ 的一个\Term{affine}{仿射}\Term{open-neighborhood}{开邻域} $U_3$，使对每一个 $q\in Q_3$，$Z_q\cap U_3$ 的所有\Term{maximal-point}{极大点}都是 $x$ 的\Term{generization}{一般化}。若 $q\in Q_3$，则
+\[
+\delta(\mathcal H^q(F)|_{U'_3})\leq n-q.\tag{***}
+\]
+对每一个 $U_1\cap U_2\cap U_3$ 上的\Term{etale}{平展}\Term{affine}{仿射}\Term{scheme}{概形} $X_1$，考虑\Term{hypercohomology}{超上同调}\Term{spectral-sequence}{谱序列}
+\[
+E_2^{pq}=H^p(X'_1,\mathcal H^q(F))\Longrightarrow H^*(X'_1,F).
+\]
+由 $(**)$，$q\in Q_2$ 时 $E_2^{pq}=0$。若 $p+q\geq r+j$，则除可能在 $p=r,q=j$ 时外，均有 $E_2^{pq}=0$。事实上，$q\in Q_2$ 时这是显然的；若 $q\in Q_1$，则除 $p=r,q=j$ 的情形外，均有 $p>r$，由 $(*)$ 结合 3.1 得到结论；最后，若 $q\in Q_3$，则由 $r>n-j$ 可知 $p>n-q$，再由 $(***)$ 结合 3.1 得到断言。由于 $H^{r+j}(X'_1,F)=0$，\Term{spectral-sequence}{谱序列}给出
+\[
+H^r(X'_1,\mathcal H^j(F))=0.
+\]
+但由 3.5，这蕴含 $\delta(x)<r$，矛盾。
+\end{proof}
+
+\begin{SGAresult}{推论}{3.7}
+设 $S$ 是\Term{characteristic}{特征}零的\Term{excellent}{优良}\Term{strictly-local}{严格局部}\Term{scheme}{概形}，$f:X\to S$ 是\Term{locally-finite-type}{局部有限型}\Term{morphism}{态射}，$m$ 是一个素数的幂，$F$ 是 $X$ 上的一个有下界且\Term{cohomology}{上同调}\Term{constructible}{可构造}的 $\mathbb Z/m\mathbb Z$-模\Term{sheaf}{层}\Term{complex}{复形}，$n$ 是整数。则下列条件\Term{equivalence}{等价}：
+
+(i) 对每一个 $X$ 上的\Term{etale}{平展}\Term{affine}{仿射}\Term{scheme}{概形} $X_1$，都有
+\[
+H^i(X_1,F)=0\qquad(i>n).
+\]
+(ii) 对每一个 $X$ 的点 $x$ 上方的\Term{geometric-point}{几何点} $\bar x$，以及满足 $(\mathcal H^j(F))_{\bar x}\ne0$ 的每一个整数 $j$，都有
+\[
+\delta(x)\leq n-j.
+\]
+\end{SGAresult}
+\begin{proof}
+(i)$\Rightarrow$(ii) 是 3.6 在 $S=S'$ 时的特例。
+
+(ii)$\Rightarrow$(i) 由 3.1 及\Term{hypercohomology}{超上同调}\Term{spectral-sequence}{谱序列}
+\[
+H^p(X_1,\mathcal H^q(F))\Longrightarrow H^*(X_1,F)
+\]
+立即得到。
+\end{proof}
+
+\SGAsection{4}{主定理及其变式}
+\textbf{4.0。}设 $g:X\to S$ 是\Term{separated}{分离}\Term{finite-type}{有限型}\Term{morphism}{态射}，$T$ 是 $S$ 的\Term{closed-subset}{闭子集}，$Z=g^{-1}(T)$，$F$ 是 $X$ 上次数有下界的阿贝尔\Term{sheaf}{层}\Term{complex}{复形}。称
+\[
+H^i_{Z!}(X/S,F)=H^i_T(S,R_!g(F))
+\]
+为 $F$ 的具有\Term{proper-support}{固有支撑}且\Term{support}{支撑}在 $Z$ 中的第 $i$ 个\Term{cohomology}{上同调群}，
+\SourcePage{196}
+其中 $R_!g$ 表示“具有\Term{proper-support}{固有支撑}的\Term{direct-image}{直像}”（SGA~4，第 XVII 讲）。在 $g$ 为\Term{proper}{固有}\Term{morphism}{态射}的特殊情形，简单地有
+\[
+H^i_{Z!}(X/S,F)=H^i_Z(X,F).
+\]
+
+\begin{SGAresult}{命题}{4.1}
+设 $f:U\to S$ 是\Term{finite-type}{有限型}\Term{morphism}{态射}，$F$ 是 $U$ 上次数有下界的阿贝尔\Term{sheaf}{层}\Term{complex}{复形}。假设有 $f$ 的一个\Term{resolution}{分解}
+\[
+\begin{tikzcd}
+U\arrow[r,"i"]\arrow[dr,"f"']&X\arrow[d,"g"]\\
+&S
+\end{tikzcd}
+\]
+其中 $i$ 是\Term{open-immersion}{开浸入}，$g$ 是\Term{separated}{分离}\Term{finite-type}{有限型}\Term{morphism}{态射}，并以 $G$ 表示 $X$ 上一个延拓 $F$ 的次数有下界的阿贝尔\Term{sheaf}{层}\Term{complex}{复形}。设 $Y$ 是 $X$ 的一个底空间为 $X-U$ 的闭子\Term{scheme}{概形}，从而有\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}
+Y\arrow[r,"j"]\arrow[dr,"h"']&X\arrow[d,"g"]\\
+&S.
+\end{tikzcd}
+\]
+最后设 $n$ 是整数，$T$ 是 $S$ 的\Term{closed-subset}{闭子集}。则以下条件\Term{equivalence}{等价}：
+
+(i) $\operatorname{prof}_T(R_!f(F))\geq n$。
+
+(ii) \Term{canonical}{典范}\Term{morphism}{态射}
+\[
+\mathcal H^i_T(R_!g(G))\longrightarrow\mathcal H^i_T(R_!h(j^*G))
+\]
+在 $i<n-1$ 时为\Term{bijection}{双射}，在 $i=n-1$ 时为\Term{injectivity}{单射}。
+
+(iii) 对每一个 $S$ 上的\Term{etale}{平展}\Term{scheme}{概形} $S'$，以 $X'$（相应地，$f'$ 等）表示 $X\times_SS'$（相应地，$f_{(S')}$ 等），则\Term{canonical}{典范}\Term{morphism}{态射}
+\[
+H^i_{g'^{-1}(T')!}(X'/S',G')\longrightarrow
+H^i_{h'^{-1}(T')!}(Y'/S',j'^*G')
+\]
+在 $i<n-1$ 时为\Term{bijection}{双射}，在 $i=n-1$ 时为\Term{injectivity}{单射}。
+\end{SGAresult}
+\begin{proof}
+在\Term{derived-category}{导出范畴} $D^+(X)$（参见 [3]）中考虑\Term{distinguished-triangle}{区分三角}
+\[
+i_!F\longrightarrow G\longrightarrow j_*j^*G\longrightarrow i_!F[1].
+\]
+\SourcePage{197}
+对此三角施以\Term{functor}{函子} $R_!g$，得到三角
+\[
+R_!f(F)\longrightarrow R_!g(G)\longrightarrow R_!h(j^*G)
+\longrightarrow R_!f(F)[1].\tag{*}
+\]
+证明 (i)$\Leftrightarrow$(ii)。由定义 1.2，(i) \Term{equivalence}{等价}于
+\[
+\mathcal H^i_T(R_!f(F))=0\qquad(i<n).
+\]
+而由 $(*)$ 得到\Term{sheaf}{层}的\Term{exact-sequence}{正合列}
+\[
+\cdots\longrightarrow\mathcal H^i_T(R_!f(F))\longrightarrow
+\mathcal H^i_T(R_!g(G))\longrightarrow\mathcal H^i_T(R_!h(j^*G))\longrightarrow\cdots,
+\]
+由此得到 (i) 和 (ii) 的\Term{equivalence}{等价}性。
+
+(i)$\Leftrightarrow$(iii)。事实上，(i) \Term{equivalence}{等价}于说，对每一个 $S$ 上的\Term{etale}{平展}\Term{scheme}{概形} $S'$，都有
+\[
+H^i_{T'}(S',R_!f'(F'))=0\qquad(i<n).\tag{**}
+\]
+由 $(*)$ 得到\Term{abelian-group}{阿贝尔群}的\Term{exact-sequence}{正合列}
+\[
+\cdots\longrightarrow H^i_{T'}(S',R_!f'(F'))\longrightarrow
+H^i_{T'}(S',R_!g'(G'))\longrightarrow H^i_{T'}(S',R_!h'(j'^*G'))\longrightarrow\cdots.
+\]
+由 4.0，此\Term{exact-sequence}{正合列}写为
+\[
+\cdots\longrightarrow H^i_{T'}(S',R_!f'(F'))\longrightarrow
+H^i_{g'^{-1}(T')!}(X'/S',G')\longrightarrow
+H^i_{h'^{-1}(T')!}(Y'/S',j'^*G')\longrightarrow\cdots.
+\]
+结合 (i) 的形式 $(**)$，即得到 (i) 与 (iii) 的\Term{equivalence}{等价}性。
+\end{proof}
+
+\textbf{4.2.0。}当 $f:U\to S$ 是\Term{affine}{仿射}\Term{morphism}{态射}时，下面将给出关于 $F$ 的\Term{local-scheme}{局部}条件，使 4.1 的条件 (i)--(iii) 成立。以下所考虑的\Term{scheme}{概形}均为\Term{characteristic}{特征}零的\Term{excellent}{优良}\Term{scheme}{概形}，\Term{sheaf}{层}均为 $\mathbb Z/m\mathbb Z$-模\Term{sheaf}{层}，其中 $m$ 是某个素数的幂。如果具备 SGA~4，第 XIX 讲意义下的\Term{resolution-singularities}{奇点消解}，则所述结果及其证明对于\Term{equal-characteristic}{等特征}的\Term{excellent}{优良}\Term{scheme}{概形}仍成立，只需 $m$ 与该\Term{characteristic}{特征}互素。
+
+\begin{SGAresult}{定理}{4.2}
+设 $S$ 是\Term{characteristic}{特征}零的\Term{excellent}{优良}\Term{scheme}{概形}，$f:U\to S$ 是\Term{separated}{分离}\Term{finite-type}{有限型}\Term{morphism}{态射}。设 $F$ 是 $U$ 上次数有下界且\Term{cohomology}{上同调}\Term{constructible}{可构造}的 $\mathbb Z/m\mathbb Z$-模\Term{sheaf}{层}\Term{complex}{复形}，$n$ 是整数，$T$ 是 $S$ 的\Term{closed-subset}{闭子集}。则以下条件\Term{equivalence}{等价}：
+
+(i) 对每一个 $U$ 上\Term{etale}{平展}且在 $S$ 上\Term{affine}{仿射}的\Term{scheme}{概形} $U_1$，若以 $f_1$ 表示 $U_1$ 的结构\Term{morphism}{态射}，$F_1$ 表示 $F$ 在 $U_1$ 上的限制，则有
+\[
+\operatorname{prof}_T(R_!f_1(F_1))\geq n
+\]
+（此关系的含义见命题 4.1）。
+\SourcePage{198}
+(ii) 对 $U$ 的每一个点 $u$，均有
+\[
+\operatorname{prof}_u(F)\geq n-\delta_T(u),
+\]
+其中令（参见 2.2）
+\[
+\delta_T(u)=\operatorname{trdeg}_{k(s)}k(x)+
+\operatorname{codim}(\overline{\{s\}}\cap T,\overline{\{s\}}).
+\]
+\end{SGAresult}
+\begin{proof}
+$1^\circ$）设 $t$ 是 $T$ 的一个点，$\overline S$ 是 $S$ 在 $t$ 上方某个\Term{geometric-point}{几何点}处的\Term{strict-localization}{严格局部化}，$S'$ 是 $\overline S$ 的\Term{completion}{完备化}，其\Term{closed-point}{闭点}为 $t'$；由 EGA~IV，7.9.5，$\overline S$ 是\Term{excellent}{优良的}，故 $S'$ 是\Term{excellent}{优良}的\Term{strictly-local}{严格局部}\Term{complete}{完备}\Term{scheme}{概形}。对给定的 $X$ 上的\Term{scheme}{概形} $U$（相应地，$S$-\Term{morphism}{态射} $f$ 等），以 $U'$（相应地，$f'$ 等）表示 $U\times_SS'$（相应地，$f_{(S')}$ 等）。有\Term{cartesian-square}{笛卡尔方块}
+\[
+\begin{tikzcd}
+U'\arrow[r,"h"]\arrow[d,"f'"']&U\arrow[d,"f"]\\
+S'\arrow[r,"g"']&S,
+\end{tikzcd}
+\]
+其中\Term{morphism}{态射} $g$ 是\Term{regular}{正则的}（EGA~IV，7.8.2）。证明只须对每个点 $t\in T$ 证明以下两条性质\Term{equivalence}{等价}：
+
+(i)$_t$ 对每一个 $U$ 上\Term{etale}{平展}且在 $S$ 上\Term{affine}{仿射}的\Term{scheme}{概形} $U_1$，令 $f_1:U_1\to S$，都有
+\[
+\operatorname{prof}_{t'}(R_!f'_1(F'_1))\geq n.
+\]
+(ii)$_t$ 对 $U'$ 的每一个点 $u'$，都有
+\[
+\operatorname{prof}_{u'}(F')\geq n-\delta_{t'}(u').
+\]
+只须证明以下引理：
+\begin{SGAresult}{引理}{4.2.1}
+有 (i)$\Leftrightarrow$ 对所有 $t\in T$ 成立 (i)$_t$，以及 (ii)$\Leftrightarrow$ 对所有 $t\in T$ 成立 (ii)$_t$。
+\end{SGAresult}
+(i)$\Leftrightarrow$ 对所有 $t\in T$ 成立 (i)$_t$。事实上，(i) \Term{equivalence}{等价}于说，对每一个 $U$ 上\Term{etale}{平展}且在 $S$ 上\Term{affine}{仿射}的\Term{scheme}{概形} $U_1$，都有
+\[
+\operatorname{prof}_T(R_!f_1(F_1))\geq n.
+\]
+而由 1.8，
+\[
+\operatorname{prof}_T(R_!f_1(F_1))=
+\inf_{t\in T}\operatorname{prof}_t(R_!f_1(F_1)).
+\]
+由于 $g^*(R_!f_1(F_1))\simeq R_!f'_1(F'_1)$（SGA~4，第 XVII 讲），由 1.16 得
+\[
+\operatorname{prof}_t(R_!f_1(F_1))=
+\operatorname{prof}_{t'}(R_!f'_1(F'_1)).
+\]
+故 (i) \Term{equivalence}{等价}于对所有 $t\in T$ 均有 $\operatorname{prof}_{t'}(R_!f'_1(F'_1))\geq n$，这正是 (i)$_t$。
+
+对所有 $t\in T$ 成立 (ii)$_t\Rightarrow$(ii)。设 $u\in U$；需证明
+\[
+\operatorname{prof}_u(F)\geq n-\delta_T(u),
+\]
+\SourcePage{199}
+其中 $\delta_T(u)=\inf_{t\in T\cap\overline{\{s\}}}\delta_t(u)$（参见 2.2）；故只须对每一个 $t\in T\cap\overline{\{s\}}$ 证明
+\[
+\operatorname{prof}_u(F)\geq n-\delta_t(u).
+\]
+取 $U'$ 中一点 $u'$，使 $h(u')=u$ 且 $\delta_{t'}(u')=\delta_t(u)$（参见 2.1.1）。因为 $h$ 是\Term{locally-acyclic}{局部无环的}（SGA~4，第 XIX 讲 4.1），由 1.16 以及 $u'$ 是 $U'_u$ 的\Term{generic-point}{泛点}，得
+\[
+\operatorname{prof}_{u'}(F')=\operatorname{prof}_u(F).
+\]
+而由 (ii)$_t$，$\operatorname{prof}_u(F)=\operatorname{prof}_{u'}(F')\geq n-\delta_t(u)$，这就证明了 (ii)。
+
+(ii)$\Rightarrow$ 对所有 $t$ 成立 (ii)$_t$。采用 2.2.1 的记号，对 $U'$ 的任意点 $u'$，由 1.16 有
+\[
+\operatorname{prof}_{u'}(F')\geq\operatorname{prof}_u(F)+2\dim h_{u'}^{-1}(u)
+\geq\operatorname{prof}_u(F)+\dim h_{u'}^{-1}(u).
+\]
+结合 2.2.1 和 (ii)，得到
+\[
+\operatorname{prof}_{u'}(F')\geq n-\delta_T(u)+\dim h_{u'}^{-1}(u)
+\geq n-\delta_{t'}(u'),
+\]
+这正是 (ii)$_t$。
+
+$2^\circ$）(ii)$_t\Leftrightarrow$(i)$_t$。将 $F$ 在足够高的次数截断，便立即归结为 $F$ 次数有界的情形。可以把 $S'$ 实现为某个\Term{complete}{完备}\Term{regular}{正则}\Term{local-scheme}{局部概形}的闭子\Term{scheme}{概形}，该\Term{scheme}{概形}因而是\Term{excellent}{优良的}；由 SGA~5，第 I 讲 3.4.3，$S'$ 上存在\Term{dualizing-complex}{对偶化复形} $K$，且 $R^!f'(K)=K'$ 是 $U'$ 上的\Term{dualizing-complex}{对偶化复形}。选取 $K$ 使 $\delta^K(t')=0$（$\delta^K(t')$ 的定义见 2.3），并以 $DF'$ 表示 $F'$ 关于 $K'$ 的\Term{duality}{对偶}。假设 (ii)$_t$ 可以改述如下。
+\begin{SGAresult}{引理}{4.2.2}
+设 $u'$ 是 $U'$ 的一个点；则下列条件\Term{equivalence}{等价}：
+
+(i) $\operatorname{prof}_{u'}(F')\geq n-\delta_{t'}(u')$。
+
+(ii) $q>-n-\delta_{t'}(u')$ 时，$(\mathcal H^q(DF'))_{\bar u'}=0$（$\bar u'$ 是 $u'$ 上方的\Term{geometric-point}{几何点}）。
+\end{SGAresult}
+设 $\overline{U'}$ 是 $U'$ 在 $\bar u'$ 处的\Term{strict-localization}{严格局部化}，$\overline{F'}$ 是 $F'$ 通过\Term{morphism}{态射} $\overline{U'}\to U'$ 的\Term{inverse-image}{逆像}。由定义，关系 $\operatorname{prof}_{u'}(F')\geq n-\delta_{t'}(u')$ \Term{equivalence}{等价}于
+\[
+H^i_{\bar u'}(\overline{F'})=0\qquad(i>n-\delta_{t'}(u')).\tag{*}
+\]
+设 $D(H^i_{\bar u'}(\overline{F'}))$ 是\Term{abelian-group}{阿贝尔群} $H^i_{\bar u'}(\overline{F'})$ 关于 $\mathbb Z/m\mathbb Z$ 的\Term{duality}{对偶}。由 2.3.2，$K'[-2\delta_{t'}(u')]=K''$ 满足 $\delta^{K''}(u')=0$；由于 $F'$ 的\Term{cohomology}{上同调}是\Term{constructible}{可构造的}，有 $\overline{DF'}=D(\overline{F'})$；由\Term{local-duality}{局部对偶}定理（SGA~5，第 I 讲 4.5.3）得到
+\[
+D(H^i_{\bar u'}(\overline{F'}))\simeq
+(\mathcal H^{-i-2\delta_{t'}(u')}(DF'))_{\bar u'}.
+\]
+故 $(*)$ \Term{equivalence}{等价}于
+\[
+(\mathcal H^q(DF'))_{\bar u'}=0\qquad(q>-n-\delta_{t'}(u')).\tag{**}
+\]
+\SourcePage{200}
+现在可以证明定理了。关系 (ii)$_t$ \Term{equivalence}{等价}于 $(**)$。令 $G_q=\mathcal H^q(DF')$；\Term{affine}{仿射} Lefschetz 定理 (3.1) 特别蕴含，对每一个 $U$ 上\Term{etale}{平展}且在 $S$ 上\Term{affine}{仿射}的\Term{scheme}{概形} $U_1$，均有
+\[
+H^p(U'_1,G_q)=0\qquad(p>\delta(G_q)),
+\]
+其中 $\delta(G_q)$ 是满足 $(G_q)_{\bar u'}\ne0$ 的所有 $u'$ 的 $\delta_{t'}(u')$ 的\Term{supremum}{上确界}；由 $(**)$，$\delta(G_q)\leq-n-q$，故 (ii)$_t$ 蕴含
+\[
+H^p(U'_1,\mathcal H^q(DF'))=0\qquad(p>-q-n).
+\]
+结合“$U'_1$ 上的\Term{section}{截面}”\Term{functor}{函子}对\Term{complex}{复形} $DF'$ 的\Term{hypercohomology}{超上同调}\Term{spectral-sequence}{谱序列}
+\[
+E_2^{pq}=H^p(U'_1,\mathcal H^q(DF'))\Longrightarrow H^*(U'_1,DF'),
+\]
+得到
+\[
+H^i(U'_1,DF')=0\qquad(i>-n).\tag{***}
+\]
+反之，假设对所有 $U$ 上\Term{etale}{平展}且在 $S$ 上\Term{affine}{仿射}的 $U_1$，上式均成立。应用命题 3.6，并将其中的 $S$ 换成 $\overline S$；3.6 关于 $S$ 的假设成立，因为对任意 $\overline U$ 上的\Term{etale}{平展}\Term{affine}{仿射}\Term{scheme}{概形} $\overline{U_1}$，都可以找到一个在 $\overline{U_1}$ 上方的\Term{scheme}{概形}，它来自 $U$ 上\Term{etale}{平展}且在 $S$ 上\Term{affine}{仿射}的某个\Term{scheme}{概形}的\Term{inverse-image}{逆像}；至于关于 $F$ 的假设，则由 2.3.3 满足。因此，对 $U'$ 中每一个满足 $(\mathcal H^q(DF'))_{\bar u'}\ne0$ 的点 $u'$，均有
+\[
+\delta_{t'}(u')\leq-n-q,
+\]
+这正是关系 $(**)$；故已经证明
+\[
+\text{(ii)}_t\Longleftrightarrow(***).
+\]
+下面变换关系 $(***)$；首先有
+\[
+H^i(U'_1,DF')=(\mathcal H^i(Rf'_{1*}(DF'_1)))_{\bar t'}.
+\]
+但由 SGA~5，第 I 讲 1.12，存在\Term{canonical}{典范}\Term{isomorphism}{同构}
+\[
+Rf'_{1*}(DF'_1)\simeq D(R_!f'_1(F'_1)),
+\]
+其中 $D(R_!f'_1(F'_1))$ 表示 $R_!f'_1(F'_1)$ 关于 $K$ 的\Term{duality}{对偶}。因此 (ii)$_t$ \Term{equivalence}{等价}于
+\[
+(\mathcal H^i(D(R_!f'_1(F'_1))))_{\bar t'}=0\qquad(i>-n).
+\]
+再次应用\Term{local-duality}{局部对偶}定理（SGA~5，第 I 讲 4.5.3），但这次应用于点 $t'$，得到
+\[
+(\mathcal H^i(D(R_!f'_1(F'_1))))_{\bar t'}
+\simeq D(H^{-i}_{t'}(R_!f'_1(F'_1))).
+\]
+最终，(ii)$_t$ \Term{equivalence}{等价}于
+\[
+\mathcal H^i_{t'}(R_!f'_1(F'_1))=0\qquad(i<n),
+\]
+即 $\operatorname{prof}_{t'}(R_!f'_1(F'_1))\geq n$，定理得证。
+\end{proof}
+\SourcePage{201}
+\textbf{注记 4.2.3。}若假设 $S$（至少\Term{local-scheme}{局部}地）具有\Term{dualizing-complex}{对偶化复形}（例如，$S$ \Term{local-scheme}{局部}可\Term{immersion}{浸入}某个\Term{regular}{正则}\Term{scheme}{概形}），则论证大为简化。这就免除了取\Term{completion}{完备化}的步骤（归约到 $S$ 为\Term{strictly-local}{严格局部}的情形是直接的），也不必用 2.3.3 以及不太讨人喜欢的技术性陈述 3.6；后者可以用更令人愉快的 3.7 代替。
+
+\begin{SGAresult}{推论}{4.3}
+设 $S$ 是\Term{characteristic}{特征}零的\Term{excellent}{优良}\Term{scheme}{概形}，$f:U\to S$ 是\Term{separated}{分离}\Term{finite-type}{有限型}\Term{morphism}{态射}，且 $U$ 是 $c+1$ 个在 $S$ 上\Term{affine}{仿射}的\Term{open-subset}{开集}的并。设 $F$ 是次数有下界且\Term{cohomology}{上同调}\Term{constructible}{可构造}的 $\mathbb Z/m\mathbb Z$-模\Term{sheaf}{层}\Term{complex}{复形}，$n$ 是整数，$T$ 是 $S$ 的\Term{closed-subset}{闭子集}。假设对每个点 $u\in U$，都有
+\[
+\operatorname{prof}_u(F)\geq n-\delta_T(u).
+\]
+则有
+\[
+\operatorname{prof}_T(R_!f(F))\geq n-c.
+\]
+\end{SGAresult}
+\begin{proof}
+设 $U_j$（$0\leq j\leq c$）是由在 $S$ 上\Term{affine}{仿射}的\Term{open-subset}{开集} $U_j$ 构成的 $U$ 的一个\Term{covering}{覆盖}。沿用 4.2 证明中的记号，对每个 $j$ 有
+\[
+H^i(U'_j,\mathcal H^q(DF'))=0\qquad(i>-n).
+\]
+利用将 $U$ 的\Term{cohomology}{上同调}与由 $U_j$ 构成的\Term{covering}{覆盖}的\Term{cohomology}{上同调}联系起来的\Term{spectral-sequence}{谱序列}（SGA~4，第 V 讲 2.4），由上式得到
+\[
+H^i(U',\mathcal H^q(DF'))=0\qquad(i>-n+c).
+\]
+于是由 4.2 证明的最后一部分得到推论。
+\end{proof}
+
+\begin{SGAresult}{推论}{4.4}
+设 $S$ 是\Term{characteristic}{特征}零的\Term{excellent}{优良}\Term{scheme}{概形}，$g:X\to S$ 是一个\Term{morphism}{态射}，$U$ 是 $X$ 的一个\Term{open-subset}{开集}，是 $c+1$ 个在 $S$ 上\Term{affine}{仿射}的\Term{open-subset}{开集}的并；设 $Y$ 是底空间为 $X-U$ 的闭子\Term{scheme}{概形}，$j:Y\to X$ 是自然\Term{morphism}{态射}。设 $F$ 是 $X$ 上次数有下界且\Term{cohomology}{上同调}\Term{constructible}{可构造}的 $\mathbb Z/m\mathbb Z$-模\Term{sheaf}{层}\Term{complex}{复形}，$T$ 是 $S$ 的\Term{closed-subset}{闭子集}，$n$ 是整数。假设对 $U$ 的每个点 $u$，均有
+\[
+\operatorname{prof}_u(F)\geq n-\delta_T(u).
+\]
+则\Term{canonical}{典范}\Term{morphism}{态射}
+\[
+H^i_{g^{-1}(T)!}(X/S,F)\longrightarrow
+H^i_{(g^{-1}(T)\cap Y)!}(Y/S,j^*F)
+\]
+在 $i<n-c-1$ 时为\Term{bijection}{双射}，在 $i=n-c-1$ 时为\Term{injectivity}{单射}。
+\end{SGAresult}
+\begin{proof}
+由 4.1 和 4.3 立即得到。
+\end{proof}
+
+\begin{SGAresult}{推论（\Term{local-scheme}{局部} Lefschetz 定理）}{4.5}
+设 $S$ 是\Term{characteristic}{特征}零的\Term{excellent}{优良}\Term{henselian}{Hensel}\Term{local-scheme}{局部概形}，$t$ 是 $S$ 的\Term{closed-point}{闭点}，$X$ 是 $S'=S-\{t\}$ 上的\Term{proper}{固有}\Term{scheme}{概形}，$U$ 是 $X$ 的一个\Term{open-subset}{开集}，是 $c+1$ 个\Term{affine}{仿射}\Term{open-subset}{开集}的并。设 $Y$ 是 $X$ 的一个底空间为 $X-U$ 的闭子\Term{scheme}{概形}，$j:Y\to X$ 是\Term{canonical}{典范}\Term{morphism}{态射}，
+\SourcePage{202}
+$F$ 是 $X$ 上次数有下界且\Term{cohomology}{上同调}\Term{constructible}{可构造}的 $\mathbb Z/m\mathbb Z$-模\Term{sheaf}{层}\Term{complex}{复形}，$n$ 是整数。假设对 $U$ 的每一个点 $u$，均有
+\[
+\operatorname{prof}_u(F)\geq n-\delta'_t(u),\qquad
+\text{其中 }\delta'_t(u)=\delta_t(u)-1.
+\]
+则\Term{canonical}{典范}\Term{morphism}{态射}
+\[
+H^i(X,F)\longrightarrow H^i(Y,j^*F)
+\]
+在 $i<n-c-1$ 时为\Term{bijection}{双射}，在 $i=n-c-1$ 时为\Term{injectivity}{单射}。
+\end{SGAresult}
+\begin{proof}
+设 $f:U\to S$ 是\Term{canonical}{典范}\Term{morphism}{态射}；应用 4.2，并将其中的 $n$ 换成 $n+1$，得到
+\[
+\operatorname{prof}_t(R_!f(F|_U))\geq n+1-c.
+\]
+上式说明\Term{canonical}{典范}\Term{morphism}{态射}
+\[
+H^i(S,R_!f(F|_U))\longrightarrow H^i(S',R_!f(F|_U))
+\]
+在 $i<n-c$ 时为\Term{bijection}{双射}，在 $i=n-c$ 时为\Term{injectivity}{单射}。由于 $R_!f(F|_U)$ 在 $S'$ 外为零，有
+\[
+H^i(S,R_!f(F|_U))\simeq(\mathcal H^i(R_!f(F|_U)))_{\bar t}=0,
+\]
+因而
+\[
+H^i(S',R_!f(F|_U))=0\qquad(i<n-c).\tag{*}
+\]
+设 $g:X\to S'$，$h:Y\to S'$，$f':U\to S'$ 是\Term{canonical}{典范}\Term{morphism}{态射}。由\Term{distinguished-triangle}{区分三角}
+\[
+R_!f'(F|_U)\longrightarrow Rg_*(F)\longrightarrow Rh_*(j^*F)
+\longrightarrow R_!f'(F|_U)[1]
+\]
+可知，条件 $(*)$ \Term{equivalence}{等价}于\Term{morphism}{态射}
+\[
+H^i(S',Rg_*(F))\longrightarrow H^i(S',Rh_*(j^*F))
+\]
+在 $i<n-c-1$ 时为\Term{bijection}{双射}，在 $i=n-c-1$ 时为\Term{injectivity}{单射}。此\Term{morphism}{态射}\Term{canonical}{典范}地等同于\Term{morphism}{态射}
+\[
+H^i(X,F)\longrightarrow H^i(Y,j^*F),
+\]
+故立即得到结论。
+\end{proof}
+
+\begin{SGAresult}{推论（整体 Lefschetz 定理）}{4.6}
+设 $S$ 是一个域的谱，$X$ 是 $S$ 上的\Term{proper}{固有}\Term{scheme}{概形}，$U$ 是 $X$ 的一个\Term{open-subset}{开集}，是 $c+1$ 个\Term{affine}{仿射}\Term{open-subset}{开集}的并。设 $Y$ 是 $X$ 的一个底空间为 $X-U$ 的闭子\Term{scheme}{概形}，$j:Y\to X$ 是\Term{canonical}{典范}\Term{morphism}{态射}，$F$ 是 $X$ 上次数有下界且\Term{cohomology}{上同调}\Term{constructible}{可构造}的 $\mathbb Z/m\mathbb Z$-模\Term{sheaf}{层}\Term{complex}{复形}，$n$ 是整数。假设对 $U$ 的每个点 $u$，均有
+\[
+\operatorname{prof}_u(F)\geq n-\dim(\overline{\{u\}}).
+\]
+\SourcePage{203}
+则\Term{canonical}{典范}\Term{morphism}{态射}
+\[
+H^i(X,F)\longrightarrow H^i(Y,j^*F)
+\]
+在 $i<n-c-1$ 时为\Term{bijection}{双射}，在 $i=n-c-1$ 时为\Term{injectivity}{单射}。
+
+更一般地，若 $g:X\to S$ 是\Term{separated}{分离}\Term{finite-type}{有限型}\Term{morphism}{态射}，关于 $S,U,Y,F$ 的假设与前面相同，则\Term{canonical}{典范}\Term{morphism}{态射}
+\[
+H^i_!(X/S,F)\longrightarrow H^i_!(Y/S,j^*F)
+\]
+（其中 $H^i_!$ 表示\Term{proper-support}{固有支撑}\Term{cohomology}{上同调}，即 $H^i_!(X/S,F)=H^i(S,R_!g(F))$）在 $i<n-c-1$ 时为\Term{bijection}{双射}，在 $i=n-c-1$ 时为\Term{injectivity}{单射}。
+\end{SGAresult}
+\begin{proof}
+这是 4.4 中取 $T=S$ 的特例。
+\end{proof}
+下面给出 4.3 的一个部分逆命题。
+\begin{SGAresult}{命题}{4.7}
+设 $S$ 是\Term{noetherian}{诺特}\Term{scheme}{概形}，$f:U\to S$ 是\Term{finite-type}{有限型}\Term{morphism}{态射}。假设 $S$ 上存在一个\Term{dualizing-complex}{对偶化复形} $K$，且 $R^!f(K)$ 是 $U$ 上的\Term{dualizing-complex}{对偶化复形}。设 $T$ 是 $S$ 的\Term{closed-subset}{闭子集}，$c$ 是整数。则以下条件\Term{equivalence}{等价}：
+
+(i) 对 $U$ 上每一个次数有下界且\Term{cohomology}{上同调}\Term{constructible}{可构造}的 $\mathbb Z/m\mathbb Z$-模\Term{sheaf}{层}\Term{complex}{复形} $F$，以及满足对 $U$ 的每个点 $u$ 均有
+\[
+\operatorname{prof}_u(F)\geq n-\delta_T(u)
+\]
+的每一个整数 $n$，都有
+\[
+\operatorname{prof}_T(R_!f(F))\geq n-c.
+\]
+(ii) 对 $U$ 上每一个\Term{constructible}{可构造} $\mathbb Z/m\mathbb Z$-模\Term{sheaf}{层} $G$，以及每个点 $t\in T$，都有
+\[
+(R^pf_*(G))_{\bar t}=0\qquad(p>\delta(G,f,t)+c)
+\]
+（由 SGA~4，第 XIX 讲 6.0 回顾 $\delta(G,f,t)=\sup\{\delta_t(u)\mid t\in\overline{\{u\}}\text{ 且 }G_{\bar u}\ne0\}$）。
+\end{SGAresult}
+\textbf{注意。}若 $f$ 是\Term{separated}{分离的}，且对 $S$ 的\Term{etale}{平展}\Term{topology}{拓扑}\Term{local-scheme}{局部}地，$U$ 是 $c+1$ 个在 $S$ 上\Term{affine}{仿射}的\Term{open-subset}{开集}的并，则由 3.1，条件 (ii) 成立；因此 4.7 包含 4.3\footnote{至少在 $S$ \Term{local-scheme}{局部}具有\Term{dualizing-complex}{对偶化复形}的情形如此，例如 $S$ \Term{local-scheme}{局部}可\Term{immersion}{浸入}某个\Term{regular}{正则}\Term{scheme}{概形}时。}。
+\begin{proof}
+显然可以假设 $S$ 是\Term{local-scheme}{局部概形}，而 $T$ 是 $S$ 的\Term{closed-point}{闭点} $t$。(ii)$\Rightarrow$(i) 的证明与 4.2 证明的第 $2^\circ$）部分实质相同。简要证明 (i)$\Rightarrow$(ii)。将\Term{local-duality}{局部对偶}定理（SGA~5，第 I 讲 4.3.2）应用于 $DG$，得到
+\[
+D(H^i_{\bar u}(DG))\simeq
+(\mathcal H^{-i-2\delta_t(u)}(G))_{\bar u}.
+\]
+\SourcePage{204}
+因为 $G$ 只在次数 $0$ 非零，故除可能在 $i=-2\delta_t(u)$ 时外，均有 $H^i_{\bar u}(DG)=0$；更精确地，
+\[
+\operatorname{prof}_u(DG)=
+\begin{cases}
+-2\delta_t(u),&G_{\bar u}\ne0,\\
+\infty,&G_{\bar u}=0.
+\end{cases}
+\]
+因此对任意 $u\in U$，均有
+\[
+\operatorname{prof}_u(DG)\geq-n-\delta_t(u).
+\]
+由假设 (i)，得到 $\operatorname{prof}_t(R_!f(DG))\geq-n-c$。利用\Term{isomorphism}{同构} $R_!f(DG)\simeq D(Rf_*(G))$（SGA~5，第 I 讲 1.12），并在点 $t$ 应用\Term{local-duality}{局部对偶}定理，将此关系变换为
+\[
+(\mathcal H^i(Rf_*(G)))_{\bar t}=0\qquad(i>n+c),
+\]
+这正是 (ii)。
+\end{proof}
+
+\textbf{4.8。}采用 4.4 的假设并假设 $g$ \Term{proper}{固有}（相应地，采用 4.5 的假设；采用 4.6 的假设并假设 $g$ \Term{proper}{固有}），若 $V$ 是 $Y$ 在 $X$ 中的一个\Term{open-neighborhood}{开邻域}，则\Term{morphism}{态射}
+\[
+H^i(V,F)\longrightarrow H^i(Y,j^*F)
+\]
+在 $i<n-c-1$ 时为\Term{bijection}{双射}，在 $i=n-c-1$ 时为\Term{injectivity}{单射}。事实上，若 $\iota:V\to X$ 是\Term{canonical}{典范}\Term{morphism}{态射}，只须将 4.4（相应地，4.5；4.6）应用于\Term{complex}{复形} $R\iota_*(F|_V)$ 即可看出。可以问：上面的\Term{morphism}{态射}是否在 $i=n-c-1$ 时为\Term{bijection}{双射}，在 $i=n-c$ 时为\Term{injectivity}{单射}？显然，只要将 $n$ 换成 $n+1$ 后各假设仍成立即可；以下命题表明，稍弱一些的条件就已经足够。
+
+\begin{SGAresult}{命题}{4.9}
+设 $S$ 是\Term{characteristic}{特征}零的\Term{excellent}{优良}\Term{local-scheme}{局部概形}，\Term{closed-point}{闭点}为 $t$（相应地，除上述条件外，还假设 $S$ 是\Term{henselian}{Hensel 的}），$f:X\to S$ 是 $S$ 上的\Term{proper}{固有}\Term{scheme}{概形}（相应地，在 $S-\{t\}$ 上\Term{proper}{固有}），$U$ 是 $X$ 的一个\Term{open-subset}{开集}，是 $c+1$ 个\Term{affine}{仿射}\Term{open-subset}{开集}的并。设 $Y$ 是 $X$ 的一个底空间为 $X-U$ 的闭子\Term{scheme}{概形}，$j:Y\to X$ 是\Term{canonical}{典范}\Term{morphism}{态射}，$F$ 是 $X$ 上次数有下界且\Term{cohomology}{上同调}\Term{constructible}{可构造}的 $\mathbb Z/m\mathbb Z$-模\Term{sheaf}{层}\Term{complex}{复形}，$n$ 是整数。假设对 $U$ 的每个点 $u$ 均有
+\[
+\operatorname{prof}_u(F)\geq\inf(n-1,n-\delta_t(u))
+\]
+（相应地，$\operatorname{prof}_u(F)\geq\inf(n-1,n+1-\delta_t(u))$）。
+则对 $Y$ 在 $X$ 中的每个\Term{open-neighborhood}{开邻域} $V$，\Term{canonical}{典范}\Term{morphism}{态射}
+\[
+H^i_{f^{-1}(t)}(V,F)\longrightarrow H^i_{f^{-1}(t)\cap Y}(Y,j^*F)
+\]
+（相应地，$H^i(V,F)\to H^i(Y,j^*F)$）在 $i<n-c-2$ 时为\Term{bijection}{双射}，在 $i=n-c-2$ 时为\Term{injectivity}{单射}。此外，存在 $Y$ 在 $X$ 中的一个\Term{open-neighborhood}{开邻域} $V_0$，使得对每个满足 $V\subset V_0$ 的这样的\Term{open-neighborhood}{开邻域} $V$，\Term{canonical}{典范}\Term{morphism}{态射}
+\[
+H^i_{f^{-1}(t)\cap V}(V,F)\longrightarrow H^i_{f^{-1}(t)\cap Y}(Y,j^*F)
+\]
+（相应地，$H^i(V,F)\to H^i(Y,j^*F)$）在 $i<n-c-1$ 时为\Term{bijection}{双射}，在 $i=n-c-1$ 时为\Term{injectivity}{单射}。
+\end{SGAresult}
+\SourcePage{205}
+\begin{proof}
+为简便起见，令 $\delta'_t(u)=\delta_t(u)$（相应地，$\delta'_t(u)=\delta_t(u)-1$）。由 4.8 得到 4.9 的第一个断言，因为把 4.4（相应地，4.5）中的 $n$ 换成 $n-1$ 后，其假设成立。对于 $n$ 本身，这些假设除在 $\delta'_t(u)=0$ 的点 $u$ 处外也成立。而对 $u\in U$，$\delta'_t(u)=0$ \Term{equivalence}{等价}于 $u$ 是 $U_t$ 的一个\Term{closed-point}{闭点}（相应地，是 $X$ 的一个\Term{closed-point}{闭点}）。设 $E$ 是 $U$ 中满足 $\delta'_t(u)=0$ 的点的\Term{set}{集合}；证明除\Term{finite}{有限}多个点外，对所有 $u\in E$ 均有 $\operatorname{prof}_u(F)\geq n$。设 $\overline S$ 是 $S$ 在 $\bar t$ 处的\Term{strict-localization}{严格局部化}，$S'$ 是 $\overline S$ 的\Term{completion}{完备化}，\Term{closed-point}{闭点}为 $t'$；考虑\Term{cartesian-square}{笛卡尔方块}
+\[
+\begin{tikzcd}
+U'\arrow[r,"h"]\arrow[d,"f'"']&U\arrow[d,"f"]\\
+S'\arrow[r,"g"']&S.
+\end{tikzcd}
+\]
+把 $U$ 换成 $U'$，把 $F$ 换成它在 $U'$ 上的\Term{inverse-image}{逆像} $F'$ 后，$U$ 各点处的\Term{depth}{深度}假设保持成立。事实上，设 $u'\in U'$，$u=h(u')$。若 $u\notin E$，则 $\operatorname{prof}_u(F)\geq n-\delta'_t(u)$，由 4.2.1，这蕴含 $\operatorname{prof}_{u'}(F')\geq n-\delta'_{t'}(u')$。若 $u\in E$，则 $u'$ 是 $U'_{t'}$ 的一个\Term{closed-point}{闭点}（相应地，是 $X'=X\times_SS'$ 的一个\Term{closed-point}{闭点}），而 $h$ 在 $u$ 处的\Term{fiber}{纤维} $U'_u$ \Term{dimension}{维数}为零，且 $h$ 是\Term{regular}{正则的}，故由 1.16 有 $\operatorname{prof}_{u'}(F')=\operatorname{prof}_u(F)\geq n-1$。
+
+设 $K$ 是 $S'$ 上在\Term{closed-point}{闭点} $t'$ 处\Term{normalization}{正规化}的一个\Term{dualizing-complex}{对偶化复形}，$DF'$ 是 $F'$ 关于 $R^!f'(K)$ 的\Term{duality}{对偶}。由 4.2.2，$U'$ 各点处的\Term{etale-depth}{平展深度}假设转化为以下关系：当 $u'$ 不属于 $E'=h^{-1}(E)$ 时，
+\[
+(\mathcal H^q(DF'))_{\bar u'}=0\quad(q>-n-\delta_{t'}(u'))
+\]
+（相应地，$q>-n-2-\delta'_{t'}(u')$）；当 $u'\in E'$ 时，
+\[
+(\mathcal H^q(DF'))_{\bar u'}=0\quad(q>-(n-1))
+\]
+（相应地，$q>-n-1$）。
+
+令 $G=\mathcal H^{-(n-1)}(DF')$（相应地，$G=\mathcal H^{-n-1}(DF')$）；由于 $G$ 是\Term{constructible}{可构造}\Term{sheaf}{层}，其\Term{geometric-fiber}{几何纤维}非零的点的\Term{set}{集合}是一个\Term{constructible}{可构造集}（SGA~4，第 IX 讲 2.4 (iv)）；但由假设，这个\Term{set}{集合}包含于 $U'_{t'}$ 的\Term{closed-point}{闭点}（相应地，$U'$ 中在 $X'$ 内为\Term{closed-point}{闭点}的点）的\Term{set}{集合} $E'$；故由下面的 4.9.1，这个\Term{set}{集合}只有\Term{finite}{有限}多个点。应用 4.2.2，可知除\Term{finite}{有限}多个点外，对 $E'$ 的所有点均有 $\operatorname{prof}_{u'}(F')\geq n$。再由 1.16，确实得到除\Term{finite}{有限}多个点外，对 $E$ 的所有点均有
+\[
+\operatorname{prof}_u(F)\geq n.
+\]
+取 $Y$ 在 $X$ 中的一个\Term{open-neighborhood}{开邻域} $V$，使其包含于 $E$ 中满足 $\operatorname{prof}_u(F)=n-1$ 的\Term{finite}{有限}多个点在 $X$ 中的补集。若 $\iota:V\to X$ 是\Term{canonical}{典范}\Term{immersion}{浸入}，令
+\[
+F_1=R\iota_*(F|_V).
+\]
+\SourcePage{206}
+则 $F_1$ 是 $X$ 上\Term{cohomology}{上同调}\Term{constructible}{可构造}（SGA~4，第 XIX 讲 5.1）且次数有下界的\Term{sheaf}{层}\Term{complex}{复形}。证明对 $U$ 的每一个点 $u$，\Term{complex}{复形} $F_1$ 满足
+\[
+\operatorname{prof}_u(F_1)\geq n-\delta'_t(u).\tag{*}
+\]
+若 $u\in U\cap V$，则 $\operatorname{prof}_u(F_1)=\operatorname{prof}_u(F)$；对于 $U$ 中不属于 $E$ 的点，$(*)$ 由假设成立；对于属于 $E$ 的点，由 $V$ 的选择也成立。最后，若 $u\in U$ 且 $u\notin V$，则由 1.6 g) 有 $\operatorname{prof}_u(F_1)=\infty$。将 4.4（相应地，4.5）中的 $F$ 换成 $F_1$，便得到所述结果，因为对任意 $i$ 均有
+\[
+H^i_{f^{-1}(t)}(X,R\iota_*(F|_V))\simeq H^i_{f^{-1}(t)\cap V}(V,F)
+\]
+（相应地，$H^i(X,R\iota_*(F|_V))\simeq H^i(V,F)$）。
+\end{proof}
+
+\begin{SGAresult}{引理}{4.9.1}
+\Term{noetherian}{诺特}\Term{scheme}{概形} $X$ 的\Term{closed-point}{闭点}\Term{set}{集合}中包含的一个\Term{constructible}{可构造集} $E$，只有\Term{finite}{有限}多个点。
+\end{SGAresult}
+\begin{proof}
+事实上，$E$ 是形如 $U\cap\complement V$ 的\Term{set}{集合}的\Term{finite}{有限}并，其中 $U,V$ 是 $X$ 的\Term{open-subset}{开集}；由假设，$U\cap\complement V$ 的每个点都是这个\Term{set}{集合}的\Term{maximal-point}{极大点}，故这样的点只有\Term{finite}{有限}多个。
+\end{proof}
+
+\SGAsection{5}{几何深度}
+为在实际中应用 4.2 及其推论，需要有一个方便的判据来检验 $U$ 各点处的\Term{etale-depth}{平展深度}假设。下面利用\Term{local-scheme}{局部} Lefschetz 定理 4.5 给出这样的判据。
+
+\textbf{5.1。}设 $A$ 是\Term{noetherian}{诺特}\Term{local-ring}{局部环}；谈到 $A$ 的\Term{etale-depth}{平展深度}时，指的是其\Term{closed-point}{闭点}处的\Term{depth}{深度}。下面引入“$A$ 的\Term{geometric-depth}{几何深度}”这一概念，并利用 4.5 将它与\Term{etale-depth}{平展深度} $\operatorname{prof\,\text{ét}}(A)$ 比较。
+
+\begin{SGAresult}{命题}{5.2}
+设 $A$ 是\Term{noetherian}{诺特}\Term{local-ring}{局部环}；假设 $A$ \Term{isomorphism}{同构}于某个\Term{regular}{正则}\Term{local-ring}{局部环} $B$ 对某个\Term{ideal}{理想} $I$ 的商（例如，$A$ \Term{complete}{完备}时，由 Cohen 定理，EGA~$0_{\mathrm{IV}}$，19.8.8，此条件成立）。设 $q$ 是 $I$ 的最少\Term{generator}{生成元}数；则数 $\dim B-q$ 不依赖 $B$ 的选择。
+\end{SGAresult}
+\begin{proof}
+$I$ 的最少\Term{generator}{生成元}数也等于 $k$-\Term{vector-space}{向量空间} $I\otimes_Bk$ 的秩，其中 $k$ 表示 $A$ 的\Term{residue-field}{剩余域}。立即可归约到 $A$ \Term{complete}{完备}的情形，因为 $\widehat A\simeq\widehat B/\widehat I$，且 $\dim\widehat B=\dim B$ 及 $\operatorname{rk}_k(I\otimes_Bk)=\operatorname{rk}_k(\widehat I\otimes_{\widehat B}k)$；同理也可假设环 $B$ \Term{complete}{完备}。设 $B,B'$ 是两个\Term{complete}{完备}\Term{regular}{正则}\Term{local-ring}{局部环}，$f:B\to A$，$f':B'\to A$ 是两个满\Term{homomorphism}{同态}，并令 $I=\operatorname{Ker}f$，$I'=\operatorname{Ker}f'$。需证明
+\[
+\dim B-\operatorname{rk}_k(I\otimes_Bk)
+=\dim B'-\operatorname{rk}_k(I'\otimes_{B'}k).
+\]
+\SourcePage{207}
+先考虑具有如下\Term{resolution}{分解}的情形：
+\[
+\begin{tikzcd}
+B\arrow[r,"f"]\arrow[dr,"g"']&A\\
+&B'\arrow[u,"f'"']
+\end{tikzcd}
+\]
+其中 $g$ 为\Term{surjectivity}{满射}。令 $J=\operatorname{Ker}g$；则 $J\subset I$ 且 $I/J=I'$。由于 $B'$ 是\Term{regular}{正则的}，$\dim B'=\dim B-\operatorname{rk}_k(J\otimes_Bk)$，且 $J$ 由 $B$ 的一个\Term{regular-system-of-parameters}{正则参数系}中的若干元素生成。因此有\Term{exact-sequence}{正合列}
+\[
+0\longrightarrow J\otimes_Bk\longrightarrow I\otimes_Bk
+\longrightarrow (J/I)\otimes_{B'}k\longrightarrow0,
+\]
+从而
+\begin{align*}
+\dim B-\operatorname{rk}_k(I\otimes_Bk)
+&=\dim B-\operatorname{rk}_k(J\otimes_Bk)
+-\operatorname{rk}_k((J/I)\otimes_{B'}k)\\
+&=\dim B'-\operatorname{rk}_k(I'\otimes_{B'}k).
+\end{align*}
+一般情形归结为上述情形；为此只须证明可找到一个\Term{complete}{完备}\Term{regular}{正则}\Term{local-ring}{局部环} $B''$，以及满\Term{homomorphism}{同态} $g:B''\to B$ 和 $g':B''\to B'$，使下图交换：
+\[
+\begin{tikzcd}
+&B\arrow[dr,"f"]&\\
+B''\arrow[ur,"g"]\arrow[dr,"g'"']&&A\\
+&B'\arrow[ur,"f'"']&
+\end{tikzcd}\tag{*}
+\]
+若 $W$ 是\Term{residue-field}{剩余域}为 $k$ 的一个 Cohen 环，则有一个\Term{local-scheme}{局部}\Term{morphism}{态射} $W\to A$，它可\Term{lifting}{提升}到 $B$ 和 $B'$（EGA~IV，19.8.6），从而有\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}
+&B\arrow[dr]&\\
+W\arrow[ur]\arrow[dr]&&A\\
+&B'\arrow[ur]&
+\end{tikzcd}
+\]
+可以找到整数 $n,n'$，以及为 $W$-\Term{algebra}{代数}\Term{morphism}{态射}的\Term{surjectivity}{满射}
+\[
+h:W[[T_1,\ldots,T_n]]\longrightarrow B,\qquad
+h':W[[T'_1,\ldots,T'_{n'}]]\longrightarrow B'
+\]
+（EGA~$0_{\mathrm{IV}}$，19.8.8）；令 $B''=W[[T_1,\ldots,T_n,T'_1,\ldots,T'_{n'}]]$，并定义 $W$-\Term{algebra}{代数}\Term{morphism}{态射} $g,g'$，使
+\[
+g(T_i)=h(T_i),\quad g(T'_i)=b_i,\quad
+g'(T_i)=b'_i,\quad g'(T'_i)=h'(T'_i),
+\]
+其中 $b_i$（相应地，$b'_i$）是 $B$（相应地，$B'$）中\Term{lifting}{提升} $(f'\circ h')(T'_i)$（相应地，$(f\circ h)(T_i)$）的元素，则图 $(*)$ 确实交换。
+\end{proof}
+命题 5.2 使以下定义合理。
+
+\SourcePage{208}
+\begin{SGAresult}{定义}{5.3}
+设 $A$ 是\Term{noetherian}{诺特}\Term{local-ring}{局部环}，$\widehat A$ 是其\Term{completion}{完备化}，因而\Term{isomorphism}{同构}于某个\Term{complete}{完备}\Term{regular}{正则}\Term{local-ring}{局部环} $B$ 对某个\Term{ideal}{理想} $I$ 的商；设 $q$ 是 $I$ 的最少\Term{generator}{生成元}数，则称
+\[
+\operatorname{prof\,\text{géom}}(A)=\dim B-q
+\]
+为 $A$ 的\Term{geometric-depth}{几何深度}。
+\end{SGAresult}
+
+\begin{SGAresult}{命题}{5.4}
+设 $A$ 是\Term{noetherian}{诺特}\Term{local-ring}{局部环}。则有
+\[
+\operatorname{prof\,\text{géom}}(A)\leq\dim A,
+\]
+且等号成立当且仅当 $A$ 是\Term{complete-intersection}{完全交}。
+\end{SGAresult}
+\begin{proof}
+可假设 $A$ \Term{complete}{完备}。写成 $A=B/I$，其中 $B$ 是\Term{complete}{完备}\Term{regular}{正则}\Term{local-ring}{局部环}，$I$ 是 $B$ 的\Term{ideal}{理想}。若 $(x_1,\ldots,x_q)$ 是 $I$ 的一个\Term{minimal-generating-system}{极小生成元系}，则 $\dim A\geq\dim B-q$；而 $\dim A=\dim B-q$ \Term{equivalence}{等价}于 $(x_1,\ldots,x_q)$ 是 $B$ 的某个\Term{system-of-parameters}{参数系}的一部分（EGA~$0_{\mathrm{IV}}$，16.3.7）；命题立即由此得到。
+\end{proof}
+
+\begin{SGAresult}{命题}{5.5}
+设 $A,A'$ 是\Term{noetherian}{诺特}\Term{local-ring}{局部环}，$f:A\to A'$ 是一个\Term{local-homomorphism}{局部同态}。假设 $f$ \Term{flat}{平坦}，且若以 $k$ 表示 $A$ 的\Term{residue-field}{剩余域}，则 $A'\otimes_Ak$ 是一个域，为 $k$ 的\Term{separable-extension}{可分扩张}。则有
+\[
+\operatorname{prof\,\text{géom}}(A)=\operatorname{prof\,\text{géom}}(A').
+\]
+\end{SGAresult}
+\begin{proof}
+把 $A,A'$ 换成它们的\Term{completion}{完备化}后，可假设二者均\Term{complete}{完备}（由 EGA~$0_{\mathrm{III}}$，10.2.1，\Term{flat}{平坦}性假设得以保持；对其他假设，这是显然的）。写成 $A=B/I$，其中 $B$ 是\Term{regular}{正则}\Term{local-ring}{局部环}，$I$ 是 $B$ 的一个\Term{ideal}{理想}。由于 $A'$ 在 $A$ 上\Term{formally-smooth}{形式光滑}（EGA~$0_{\mathrm{IV}}$，19.8.2），由 EGA~$0_{\mathrm{IV}}$，19.7.2，可找到一个\Term{complete}{完备}\Term{noetherian}{诺特}\Term{local-ring}{局部环} $B'$，以及一个\Term{local-homomorphism}{局部同态} $B\to B'$，使 $B'$ 为\Term{flat}{平坦} $B$-模，且 $B'\otimes_BA\simeq A'$。所以 $A'\simeq B'/IB'$；此外，环 $B'$ 是\Term{regular}{正则的}：事实上，若 $\mathfrak m$ 是 $B$ 的\Term{maximal-ideal}{极大理想}，则 $\mathfrak mB'$ 是 $B'$ 的\Term{maximal-ideal}{极大理想}；由“\Term{regular}{正则}”的定义，$\mathfrak m$ 由一个\Term{regular-sequence}{正则序列}生成，所以 $\mathfrak mB'$ 由一个 $B'$-\Term{regular-sequence}{正则序列}生成（EGA~$0_{\mathrm{IV}}$，15.1.14）。显然 $\dim B=\dim B'$，且 $I$ 与 $IB'$ 的最少\Term{generator}{生成元}数相等，故得到断言。
+\end{proof}
+
+\begin{SGAresult}{定理}{5.6}
+设 $A$ 是\Term{characteristic}{特征}零的\Term{excellent}{优良}\Term{local-ring}{局部环}。则有\footnote{编者注：Illusie 后来证明了不等式 $\operatorname{prof}_x(\mathbb Z/\ell^\nu\mathbb Z)\geq\operatorname{prof\,\text{géom}}_x(X/S)-\delta(x)+1$，其中 $x$ 是某个在\Term{trait}{一维离散赋值基概形} $S$ 上\Term{finite-type}{有限型}的\Term{scheme}{概形} $X$ 的点，$S$ 的\Term{residue-characteristic}{剩余特征}与 $\ell$ 互素，且 $\nu\geq1$。若 $S$ 为\Term{characteristic}{特征}零，这是定理 5.6 的推论；参见 Illusie L., ``Perversité et variation'', \emph{Manuscripta Math.} 112 (2003), pp.~271--295。}
+\[
+\operatorname{prof\,\text{ét}}(A)\geq\operatorname{prof\,\text{géom}}(A).
+\]
+\end{SGAresult}
+\SourcePage{209}
+\begin{proof}
+可假设 $A$ 是\Term{complete}{完备}的\Term{strictly-local}{严格局部环}，因为由 5.5 和 1.16，经过\Term{strict-henselization}{严格 Hensel 化}和\Term{completion}{完备化}后，\Term{geometric-depth}{几何深度}和\Term{etale-depth}{平展深度}均保持不变。设 $A\simeq B/I$，其中 $B$ 是\Term{complete}{完备}\Term{regular}{正则}\Term{local-ring}{局部环}，$(f_1,\ldots,f_q)$ 是\Term{ideal}{理想} $I$ 的一个\Term{minimal-generating-system}{极小生成元系}。于是
+\[
+\pi=\operatorname{prof\,\text{géom}}(A)=\dim B-q.
+\]
+考虑\Term{closed-immersion}{闭浸入}
+\[
+Y=\operatorname{Spec}A\longrightarrow X=\operatorname{Spec}B,
+\]
+并令 $U=X-Y=\bigcup_{1\leq i\leq q}X_{f_i}$。若以 $a$ 表示 $X$ 的\Term{closed-point}{闭点}，需证明对每个素数 $p$，均有
+\[
+H^i_a(Y,\mathbb Z/p\mathbb Z)=0\qquad(i<\pi).
+\]
+由于 $B$ 是\Term{regular}{正则}\Term{excellent}{优良环}，有 $\operatorname{prof\,\text{ét}}(B)=2\dim X$（参见 1.10），因而当 $i<2\dim X$ 时，$H^i_a(X,\mathbb Z/p\mathbb Z)=0$。因此，为证明定理，只须证明\Term{morphism}{态射}
+\[
+H^i_a(X,\mathbb Z/p\mathbb Z)\longrightarrow H^i_a(Y,\mathbb Z/p\mathbb Z)\tag{*}
+\]
+在 $i<\pi$ 时为\Term{bijection}{双射}。为此应用\Term{local-scheme}{局部} Lefschetz 定理 4.5，取 $n=\pi+q-1$，$c=q-1$，于是 $n-c=\pi$。注意 $U=X-Y$ 是 $q$ 个\Term{affine}{仿射}\Term{open-subset}{开集} $X_{f_i}$ 的并。证明对 $U$ 的每一个点 $u$，均有
+\[
+\operatorname{prof\,\text{ét}}_u(X)\geq\pi+q-1-\dim(\overline{\{u\}})
+=\dim\mathscr O_{X,u}
+\]
+（其中 $\overline{\{u\}}$ 表示 $u$ 在 $X-\{a\}$ 中的\Term{closure}{闭包}）。事实上，由 1.10 得
+\[
+\operatorname{prof\,\text{ét}}_u(X)=2\dim\mathscr O_{X,u}\geq\dim\mathscr O_{X,u}.
+\]
+应用 4.5，可知 $(*)$ 在 $i<\pi$ 时为\Term{bijection}{双射}，定理得证。
+\end{proof}
+
+\begin{SGAresult}{推论}{5.7}
+设 $S$ 是\Term{characteristic}{特征}零的一个域的谱（相应地，是\Term{characteristic}{特征}零的\Term{excellent}{优良}\Term{henselian}{Hensel}\Term{local-scheme}{局部概形}），$f:X\to S$ 是 $S$ 上（相应地，$S-\{s\}$ 上）的\Term{proper}{固有}\Term{scheme}{概形}。设 $U$ 是 $X$ 的 $c+1$ 个\Term{affine}{仿射}\Term{open-subset}{开集}的并，$Y$ 是底空间为 $X-U$ 的闭子\Term{scheme}{概形}，$n,m$ 是大于零的整数。假设对 $U$ 的每个点 $u$，都有
+\[
+\operatorname{prof\,\text{géom}}(\mathscr O_{X,u})\geq n-\dim(\overline{\{u\}})
+\]
+（$\overline{\{u\}}$ 是 $u$ 在 $X$ 中的\Term{closure}{闭包}）。则\Term{canonical}{典范}\Term{morphism}{态射}
+\[
+H^i(X,\mathbb Z/m\mathbb Z)\longrightarrow H^i(Y,\mathbb Z/m\mathbb Z)
+\]
+在 $i<n-c-1$ 时为\Term{bijection}{双射}，在 $i=n-c-1$ 时为\Term{injectivity}{单射}。
+\end{SGAresult}
+\begin{proof}
+应用 4.5 和 4.6。$U$ 各点处的\Term{etale-depth}{平展深度}假设成立，因为由 5.6 有
+\[
+\operatorname{prof\,\text{ét}}_u(X)\geq\operatorname{prof\,\text{géom}}(\mathscr O_{X,u})
+\geq n-\dim(\overline{\{u\}}).
+\]
+\end{proof}
+
+\SourcePage{210}
+\SGAsection{6}{未解决的问题}
+\textbf{6.1。}可以问：4.2 中的蕴含 (ii)$\Rightarrow$(i) 是否对更一般的\Term{torsion-sheaf}{挠层} $F$ 成立，而不要求 $F$ 被一个给定整数 $m$ 消去，也不要求 $F$ \Term{constructible}{可构造}？当 $S$ 不是\Term{characteristic}{特征}零时，这一蕴含似乎仍可能成立，甚至对 $p$-\Term{torsion-sheaf}{挠层}也可能成立（$p$ 为\Term{residue-characteristic}{剩余特征}）。最后，也不清楚能否去掉 $S$ \Term{excellent}{优良}的假设。
+
+\textbf{6.2。}设 $X$ 是域 $k$ 上的\Term{proper}{固有}\Term{scheme}{概形}，或者是一个\Term{henselian}{Hensel}\Term{local-scheme}{局部概形}的\Term{closed-point}{闭点}的补集；设 $j:Y\to X$ 是 $X$ 的一个闭子\Term{scheme}{概形}，其补集 $U$ 是\Term{affine}{仿射的}。若 $F$ 是 $X$ 上的一个\Term{set}{集合}\Term{sheaf}{层}，或一个不必交换的群\Term{sheaf}{层}，则只要把 $n$ 限制在较小的取值，陈述 4.5 或 4.6 以及 4.9 对这样的 $F$ 仍有意义。若 $u$ 是 $U$ 的一个点，以 $\bar u$ 表示 $u$ 上方的一个\Term{geometric-point}{几何点}，以 $X(\bar u)$ 表示 $X$ 在 $\bar u$ 处的\Term{strict-localization}{严格局部化}，以 $F_{\bar u}$ 表示 $F$ 在 $\bar u$ 处的\Term{fiber}{纤维}。我们希望，在适当对 $X$ 和 $F$ 加入某些假设后，例如假设 $X$ \Term{excellent}{优良}（必要时假设\Term{characteristic}{特征}零，或借助\Term{resolution-singularities}{奇点消解}假设\Term{equal-characteristic}{等特征}），且 $F$ 为\Term{ind-finite}{归纳有限}的（必要时甚至为 $\mathbb L$-\Term{ind-finite}{归纳有限}的，其中 $\mathbb L$ 与 $X$ 的\Term{characteristic}{特征}互素），能够证明以下陈述：
+
+\textbf{a)} 设 $F$ 是\Term{set}{集合}\Term{sheaf}{层}（相应地，是群\Term{sheaf}{层}），并假设对 $U$ 的每个点 $u$，均有
+\[
+F_{\bar u}\longrightarrow H^0(X(\bar u)-\bar u,F)
+\quad\text{在 }\dim(\overline{\{u\}})\leq1\text{ 时为单射}
+\]
+（即对于这样的 $u$，有 $\operatorname{prof}_u(F)\geq1$）。则当 $V$ 遍历 $Y$ 的\Term{open-neighborhood}{开邻域}时，\Term{canonical}{典范}\Term{morphism}{态射}
+\[
+\varinjlim_V H^0(V,F)\longrightarrow H^0(Y,j^*F)
+\]
+为\Term{bijection}{双射}（相应地，上述结论成立，且\Term{morphism}{态射} $\varinjlim_VH^1(V,F)\to H^1(Y,j^*F)$ 为\Term{injectivity}{单射}）。若 $F$ \Term{constructible}{可构造}，可将 $\varinjlim$ 换成“足够小”的 $V$ 的\Term{cohomology}{上同调}。
+
+\textbf{b)} 设 $F$ 是\Term{set}{集合}\Term{sheaf}{层}（相应地，是群\Term{sheaf}{层}），并假设对 $U$ 的每个点 $u$，均有 $\operatorname{prof}_u(F)\geq2-\dim(\overline{\{u\}})$；这也可写为以下关系：
+\[
+\begin{aligned}
+F_{\bar u}&\longrightarrow H^0(X(\bar u)-\bar u,F)
+&&\text{在 }\dim(\overline{\{u\}})=0\text{ 时为双射},\\
+F_{\bar u}&\longrightarrow H^0(X(\bar u)-\bar u,F)
+&&\text{在 }\dim(\overline{\{u\}})=1\text{ 时为单射}.
+\end{aligned}
+\]
+则\Term{canonical}{典范}\Term{morphism}{态射}
+\[
+H^0(X,F)\longrightarrow H^0(Y,j^*F)
+\]
+为\Term{bijection}{双射}（相应地，上述结论成立，且\Term{morphism}{态射} $H^1(X,F)\to H^1(Y,j^*F)$ 为\Term{injectivity}{单射}）。
+
+\SourcePage{211}
+\textbf{c)} 设 $F$ 是\Term{ind-finite}{归纳有限}群\Term{sheaf}{层}。假设对 $U$ 的每个点 $u$，均有
+\[
+\begin{aligned}
+F_{\bar u}&\longrightarrow H^0(X(\bar u)-\bar u,F)
+&&\text{在 }\dim(\overline{\{u\}})=0\text{ 或 }1\text{ 时为双射},\\
+F_{\bar u}&\longrightarrow H^0(X(\bar u)-\bar u,F)
+&&\text{在 }\dim(\overline{\{u\}})=2\text{ 时为单射}.
+\end{aligned}
+\]
+则当 $V$ 遍历 $Y$ 的\Term{open-neighborhood}{开邻域}时，\Term{canonical}{典范}\Term{morphism}{态射}
+\[
+\varinjlim_VH^0(V,F)\longrightarrow H^0(Y,j^*F),\qquad
+\varinjlim_VH^1(V,F)\longrightarrow H^1(Y,j^*F)
+\]
+都是\Term{bijection}{双射}。若 $F$ \Term{constructible}{可构造}，可将 $\varinjlim$ 换成足够小的 $V$ 的\Term{cohomology}{上同调}。
+
+\textbf{d)} 设 $F$ 是一个群\Term{sheaf}{层}。假设对 $U$ 的每个点 $u$，均有 $\operatorname{prof}_u(F)\geq3-\dim(\overline{\{u\}})$；这也可写为以下条件：
+\[
+\begin{aligned}
+F_{\bar u}&\longrightarrow H^0(X(\bar u)-\bar u,F)\text{ 为双射，且 }H^1(X(\bar u)-\bar u,F)=0
+&&\text{若 }\dim(\overline{\{u\}})=0,\\
+F_{\bar u}&\longrightarrow H^0(X(\bar u)-\bar u,F)\text{ 为双射}
+&&\text{若 }\dim(\overline{\{u\}})=1,\\
+F_{\bar u}&\longrightarrow H^0(X(\bar u)-\bar u,F)\text{ 为单射}
+&&\text{若 }\dim(\overline{\{u\}})=2.
+\end{aligned}
+\]
+则\Term{canonical}{典范}\Term{morphism}{态射}
+\[
+H^0(X,F)\longrightarrow H^0(Y,j^*F),\qquad
+H^1(X,F)\longrightarrow H^1(Y,j^*F)
+\]
+都是\Term{bijection}{双射}。
+
+作为支持这些陈述的迹象\footnote{编者注：除\Term{constructible}{可构造}变式外，6.2 中的所有陈述均已由 Raynaud 夫人证明；参见 Raynaud M., ``Théorèmes de Lefschetz en cohomologie des faisceaux cohérents et en cohomologie étale. Application au groupe fondamental'', \emph{Ann. Sci. Éc. Norm. Sup.} (4) 7 (1974), pp.~29--52，推论 III.1.3。}，可指出第 XIII 讲 2.1、第 X 讲 3.4 及第 XII 讲 3.5。另请注意，借助 4.8 和 4.9 的论证，陈述 a)（相应地，c)）可由 b)（相应地，d)）推出。
+
+\textbf{6.3。}由 d) 可推出与 5.6 类似的以下陈述：若 $A$ 是\Term{noetherian}{诺特}\Term{local-ring}{局部环}（必要时假设\Term{excellent}{优良}），且 $\operatorname{prof\,\text{géom}}(A)\geq3$，则有 $\operatorname{prof\,hop}(A)\geq3$。为说明这一点，将 $Y'=\operatorname{Spec}A$ 实现为一个\Term{regular}{正则}\Term{local-scheme}{局部概形} $X'=\operatorname{Spec}B$ 的闭子\Term{scheme}{概形}，其补集是 $q$ 个\Term{affine}{仿射}\Term{open-subset}{开集}的并，且满足 $\dim B-q=\operatorname{prof\,\text{géom}}(A)$。若 $n=\dim B$，则对 $X'$ 的每一个点 $x$ 均有 $\operatorname{prof\,hop}_x(X)\geq\inf(3,n-\dim(\overline{\{x\}}))$（参见 1.11），由 d) 得到，对 $Y'$ 的每一个点 $y$ 均有 $\operatorname{prof\,hop}_y(Y')\geq\inf(3,n-q-\dim(\overline{\{y\}}))$。最后取 $y$ 为 $Y'$ 的\Term{closed-point}{闭点}，即得所述结果。
+
+\SourcePage{212}
+\textbf{6.4。}4.2 的一个变式，至少是蕴含 (ii)$\Rightarrow$(i) 的变式，在复解析情形也应成立，只要采用“解析\Term{constructible}{可构造}”\Term{sheaf}{层}（参见第 XIII 讲）；证明将类似于 4.2，并使用 J.-L. Verdier 的\Term{duality-theory}{对偶理论}。不过要注意，对于 6.2 中提出的非交换变式的复解析类比，对于第 X、XII、XIII 讲的结果所提示、并在 6.2 末尾回顾的那些有关\Term{fundamental-group}{基本群}的陈述，我们甚至还没有一个着手的方法。事实上，本研讨班所用的方法似乎不可避免地与\Term{finite}{有限}\Term{covering}{覆盖}的情形相联系（这种\Term{covering}{覆盖}可以用\Term{coherent}{凝聚}\Term{algebra}{代数}\Term{sheaf}{层}来研究）。
+
+\textbf{参考文献}
+\begin{enumerate}
+\item[{[1]}] M.~Artin 与 B.~Mazur，《\Term{etale-topology}{平展拓扑}中簇的\Term{homotopy}{同伦}》（``Homotopy of Varieties in Etale Topology''），载 \emph{\Term{local-scheme}{局部}域会议论文集}（\emph{Proceedings of a Conference on Local Fields}），Springer，1967。
+\item[{[2]}] J.-P.~Serre，\emph{Galois \Term{cohomology}{上同调}}（\emph{Cohomologie Galoisienne}），Springer-Verlag，1964。
+\item[{[3]}] J.-L.~Verdier，\emph{\Term{abelian-category}{阿贝尔范畴}的\Term{derived-category}{导出范畴}}（\emph{Des catégories dérivées des catégories abéliennes}），Luc Illusie 作序，Georges Maltsiniotis 编订，\emph{Astérisque}，第 239 卷，Société mathématique de France，Paris，1996。
+\end{enumerate}

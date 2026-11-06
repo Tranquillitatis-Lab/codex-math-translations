@@ -1,0 +1,622 @@
+\SGAchapter{XII}{代数几何与解析几何}{Géométrie algébrique et géométrie analytique}
+\SourcePage{255}
+\begin{center}M. Raynaud 女士\footnote{根据 A. Grothendieck 未发表的笔记。}\end{center}
+按照 [10] 的做法，对复数域 $\mathbb C$ 上每个\Term{locally-finite-type}{局部有限型}\Term{scheme}{概形} $X$，可以构造一个\Term{analytic-space}{解析空间} $X^{\mathrm{an}}$，其底层集合为 $X(\mathbb C)$。
+
+本讲第 2、3 节给出一份“词典”，对照 $X$ 与 $X^{\mathrm{an}}$ 的常见性质，以及\Term{morphism}{态射} $f:X\to Y$ 与相伴\Term{morphism}{态射} $f^{\mathrm{an}}:X^{\mathrm{an}}\to Y^{\mathrm{an}}$ 的性质。
+
+随后我们证明，[10，第 12 节] 对\Term{projective-variety}{射影簇}建立的 $X$ 与 $X^{\mathrm{an}}$ 上\Term{coherent-sheaf}{凝聚层}之间的比较定理，在 $X$ 为\Term{proper-scheme}{固有概形}时仍然成立。
+
+最后，第 5 节证明 $X$ 的\Term{finite-etale-cover}{有限平展覆盖}\Term{category}{范畴}与 $X^{\mathrm{an}}$ 的\Term{finite-etale-cover}{有限平展覆盖}\Term{category-equivalence}{范畴等价}。作为给读者的额外收获，我们还利用\Term{resolution-singularities}{奇点消解} [8]，给出 Grauert–Remmert 定理 [6] 的一个新证明。
+
+\SGAsection{1}{概形的相伴解析空间}
+设 $X$ 是 $\mathbb C$ 上\Term{locally-finite-type}{局部有限型}\Term{scheme}{概形}。令 $\Phi$ 为从\Term{analytic-space}{解析空间}\Term{category}{范畴} [4，第 9 节] 到集合\Term{category}{范畴}的\Term{functor}{函子}：它将\Term{analytic-space}{解析空间} $\mathcal X$ 对应到以 $\mathbb C$-代数为\Term{structure-sheaf}{结构层}的环化空间\Term{morphism}{态射}所成的集合 $\operatorname{Hom}_{\mathbb C}(\mathcal X,X)$。有以下定理。
+
+\begin{SGAresult}{定理与定义}{1.1}
+\Term{functor}{函子} $\Phi$ 可由一个\Term{analytic-space}{解析空间} $X^{\mathrm{an}}$ 及一个\Term{morphism}{态射} $\varphi:X^{\mathrm{an}}\to X$ 表示。称 $X^{\mathrm{an}}$ 为 $X$ 的\Term{associated-analytic-space}{相伴解析空间}。
+
+若 $|X^{\mathrm{an}}|$ 表示 $X^{\mathrm{an}}$ 的底层集合，则 $\varphi$ 在 $|X^{\mathrm{an}}|$ 与 $X$ 的 $\mathbb C$-值点集合 $X(\mathbb C)$ 之间诱导一个\Term{bijection}{双射}。此外，对 $X^{\mathrm{an}}$ 的每个点 $x$，\Term{morphism}{态射}
+\SourcePage{256}
+\[
+\varphi_x:O_{X,\varphi(x)}\longrightarrow O_{X^{\mathrm{an}},x}
+\]
+必为\Term{local-homomorphism}{局部同态}，而且取\Term{completion}{完备化}后得到\Term{isomorphism}{同构}
+\[
+\widehat\varphi_x:\widehat O_{X,\varphi(x)}\xrightarrow{\sim}\widehat O_{X^{\mathrm{an}},x}.
+\]
+特别地，\Term{morphism}{态射} $\varphi$ 是\Term{flat}{平坦}的。
+\end{SGAresult}
+
+\begin{proof}
+注意，$\varphi$ 在 $X^{\mathrm{an}}$ 与 $X(\mathbb C)$ 之间诱导\Term{bijection}{双射}，直接来自 $X^{\mathrm{an}}$ 的\Term{universal-property}{泛性质}。另一方面，有以下断言。
+
+a) 若定理对\Term{scheme}{概形} $Y$ 成立，则它对 $Y$ 的任意\Term{subscheme}{子概形} $X$ 也成立。先设 $X$ 是 $Y$ 的\Term{open-subscheme}{开子概形}；若 $\psi:Y^{\mathrm{an}}\to Y$ 为典范\Term{morphism}{态射}，则 $\psi^{-1}(X)$ 是 $Y^{\mathrm{an}}$ 的开集，赋予从 $Y^{\mathrm{an}}$ 诱导的\Term{analytic-space}{解析空间}结构。由于从\Term{analytic-space}{解析空间} $\mathcal X$ 到 $X$ 的每个\Term{morphism}{态射}，都由 $Y^{\mathrm{an}}$ 的\Term{universal-property}{泛性质}通过 $Y^{\mathrm{an}}$ 分解，从而通过\Term{fiber-product}{纤维积} $X^{\mathrm{an}}=Y^{\mathrm{an}}\times_Y X$ 分解，故 $X^{\mathrm{an}}$ 是 $X$ 的\Term{associated-analytic-space}{相伴解析空间}。关于 $\varphi_x$ 的断言也显然成立。
+
+现在只需考虑 $X$ 是 $Y$ 的\Term{closed-subscheme}{闭子概形}的情形。设 $I$ 是定义 $X$ 的\Term{coherent}{凝聚} $O_Y$-\Term{ideal-sheaf}{理想层}，则 $I\cdot O_{Y^{\mathrm{an}}}$ 是 $O_{Y^{\mathrm{an}}}$ 上的\Term{coherent}{凝聚}\Term{ideal-sheaf}{理想层}，定义 $Y^{\mathrm{an}}$ 的一个闭解析子空间 $X^{\mathrm{an}}$。如同\Term{open-subscheme}{开子概形}的情形可见，$X^{\mathrm{an}}$ 是 $X$ 的\Term{associated-analytic-space}{相伴解析空间}。设 $\varphi:X^{\mathrm{an}}\to X$ 为典范\Term{morphism}{态射}；对 $X^{\mathrm{an}}$ 的每个点 $x$，$\varphi_x$ 就是由 $\psi_x$ 诱导的\Term{morphism}{态射}
+\[
+O_{Y,\psi(x)}/I_{\psi(x)}\longrightarrow
+O_{Y^{\mathrm{an}},x}/I_{\psi(x)}\cdot O_{Y^{\mathrm{an}},x}.
+\]
+它的\Term{completion}{完备化}
+\[
+\widehat\varphi_x:
+\widehat O_{Y,\psi(x)}/I_{\psi(x)}\cdot\widehat O_{Y,\psi(x)}
+\longrightarrow
+\widehat O_{Y^{\mathrm{an}},x}/I_{\psi(x)}\cdot\widehat O_{Y^{\mathrm{an}},x}
+\]
+是\Term{isomorphism}{同构}，因为 $\widehat\psi_x$ 是\Term{isomorphism}{同构}。这就证明了 a)。
+
+b) 若两个 $\mathbb C$-\Term{scheme}{概形} $X_1,X_2$ 的 $X_1^{\mathrm{an}},X_2^{\mathrm{an}}$ 都存在，则 $(X_1\times X_2)^{\mathrm{an}}$ 也存在。事实上，设 $\varphi_1:X_1^{\mathrm{an}}\to X_1$、$\varphi_2:X_2^{\mathrm{an}}\to X_2$ 为典范\Term{morphism}{态射}，$p_1,p_2$ 为 $X_1^{\mathrm{an}}\times X_2^{\mathrm{an}}$ 的两个投影。由 EGA I 1.8.1 可形式地推出，$X_1\times X_2$ 是 $X_1$ 与 $X_2$ 在\Term{local-ring}{局部环}化空间\Term{category}{范畴}中的积。因此，\Term{morphism}{态射} $\varphi_1p_1,\varphi_2p_2$ 定义一个\Term{morphism}{态射}
+\[
+\varphi:X_1^{\mathrm{an}}\times X_2^{\mathrm{an}}\longrightarrow X_1\times X_2,
+\]
+而且 $(X_1^{\mathrm{an}}\times X_2^{\mathrm{an}},\varphi)$ 表示\Term{functor}{函子} $\mathcal X\mapsto\operatorname{Hom}_{\mathbb C}(\mathcal X,X_1\times X_2)$。
+
+c) 以 $\mathcal E^1$ 表示一维\Term{affine-space}{仿射空间}，即赋予全纯函数层的\Term{topological-space}{拓扑空间} $\mathbb C$。\Term{functor}{函子}\footnote{〔2003 年增补：$E^1_{\mathbb C}$ 表示 $\mathbb C$ 上的（代数）\Term{affine}{仿射}直线。〕}$\mathcal X\mapsto\operatorname{Hom}_{\mathbb C}(\mathcal X,E^1_{\mathbb C})$ 可由 $\mathcal E^1$ 表示，典范\Term{morphism}{态射} $\varphi:\mathcal E^1\to E^1_{\mathbb C}$ 就是显然的那个\Term{morphism}{态射}。事实上，给定从\Term{analytic-space}{解析空间} $\mathcal X$ 到 $E^1_{\mathbb C}$ 的\Term{morphism}{态射}，等价于给定 $\Gamma(\mathcal X,O_{\mathcal X})$ 的一个元素，也就等价于给定从 $\mathcal X$ 到 $\mathcal E^1$ 的\Term{morphism}{态射}。
+\SourcePage{257}
+显然有\Term{bijection}{双射} $|\mathcal E^1|\simeq E^1(\mathbb C)$；对 $\mathcal E^1$ 的每个点 $x$，\Term{morphism}{态射} $\widehat\varphi_x$ 就是 $\mathbb C$ 上一元形式幂级数环的恒等\Term{morphism}{态射}。
+
+由 b)、c) 可知，定理对\Term{affine-space}{仿射空间} $E^n_{\mathbb C}$（$n\geq0$）成立。利用 a)，可见它对 $\mathbb C$ 上每个\Term{locally-finite-type}{局部有限型}\Term{affine}{仿射}\Term{scheme}{概形} $X$ 也成立。不再假设 $X$ \Term{affine}{仿射}，若 $(X_i)$ 是 $X$ 的一个\Term{affine}{仿射}开\Term{covering}{覆盖}，则由\Term{universal-property}{泛性质}和 a)，各 $X_i^{\mathrm{an}}$ 可以\Term{gluing}{粘合}，由此定义出 $X$ 的\Term{associated-analytic-space}{相伴解析空间} $X^{\mathrm{an}}$。
+\end{proof}
+
+\textbf{1.2.} 设 $f:X\to Y$ 是\Term{locally-finite-type}{局部有限型} $\mathbb C$-\Term{scheme}{概形}之间的\Term{morphism}{态射}。若 $\varphi:X^{\mathrm{an}}\to X$、$\psi:Y^{\mathrm{an}}\to Y$ 为典范\Term{morphism}{态射}，则由 $Y^{\mathrm{an}}$ 的\Term{universal-property}{泛性质}，存在唯一的\Term{morphism}{态射} $f^{\mathrm{an}}:X^{\mathrm{an}}\to Y^{\mathrm{an}}$，使下图交换：
+\[
+\begin{tikzcd}
+X^{\mathrm{an}}\arrow[r]\arrow[d,"f^{\mathrm{an}}"']&X\arrow[d,"f"]\\
+Y^{\mathrm{an}}\arrow[r]&Y.
+\end{tikzcd}
+\]
+这样便定义了一个从\Term{locally-finite-type}{局部有限型} $\mathbb C$-\Term{scheme}{概形}\Term{category}{范畴}到\Term{analytic-space}{解析空间}\Term{category}{范畴}的\Term{functor}{函子} $\Phi$。
+
+\Term{functor}{函子} $\Phi$ 与\Term{finite-projective-limit}{有限投射极限}可交换。事实上，只需证明 $\Phi$ 与\Term{fiber-product}{纤维积}可交换。若 $X,Y,Z$ 都是 $\mathbb C$ 上\Term{locally-finite-type}{局部有限型}\Term{scheme}{概形}，则 $X\times_ZY$ 是 $X$ 与 $Y$ 在\Term{local-ring}{局部环}化空间\Term{category}{范畴}中位于 $Z$ 上的\Term{fiber-product}{纤维积}；由此可知，$X^{\mathrm{an}}\times_{Z^{\mathrm{an}}}Y^{\mathrm{an}}$ 满足刻画 $(X\times_ZY)^{\mathrm{an}}$ 的\Term{universal-property}{泛性质}。
+
+\textbf{1.3.} 设 $X$ 是\Term{locally-finite-type}{局部有限型} $\mathbb C$-\Term{scheme}{概形}，$X^{\mathrm{an}}$ 为其\Term{associated-analytic-space}{相伴解析空间}，$\varphi:X^{\mathrm{an}}\to X$ 为典范\Term{morphism}{态射}。若 $F$ 是一个 $O_X$-模，则\Term{inverse-image}{逆像} $\varphi^*F=F^{\mathrm{an}}$ 是 $O_{X^{\mathrm{an}}}$ 上的\Term{module-sheaf}{模层}。由此定义了一个从 $O_X$-模\Term{category}{范畴}到 $X^{\mathrm{an}}$ 上模\Term{category}{范畴}的\Term{functor}{函子}。此\Term{functor}{函子}与\Term{inductive-limit}{归纳极限}可交换（EGA 0 4.3.2）。由于层 $O_{X^{\mathrm{an}}}$ 是\Term{coherent}{凝聚}的 [4，第 18 节第 2 小节定理 2]，它将\Term{coherent-sheaf}{凝聚层}变为\Term{coherent-sheaf}{凝聚层}（EGA 0 5.3.11）。此外还有以下命题。
+
+\begin{SGAresult}{命题}{1.3.1}
+将每个 $O_{X^{\mathrm{an}}}$-模 $F$ 对应到其在 $X^{\mathrm{an}}$ 上的\Term{inverse-image}{逆像} $F^{\mathrm{an}}$ 的\Term{functor}{函子}，是\Term{exact-functor}{正合}、\Term{faithful-functor}{忠实}且\Term{conservative-functor}{保守}的。
+\end{SGAresult}
+\begin{proof}
+\Term{exactness}{正合性}来自\Term{morphism}{态射} $\varphi:X^{\mathrm{an}}\to X$ 的\Term{flatness}{平坦性}（1.1）。证明\Term{functor}{函子} $F\mapsto F^{\mathrm{an}}$ 忠实。考虑到\Term{exactness}{正合性}，只需证明，若 $F^{\mathrm{an}}=0$，则 $F=0$。此时，对 $X^{\mathrm{an}}$ 的每个点 $x$，有
+\[
+F_{\varphi(x)}\otimes_{O_{X,\varphi(x)}}O_{X^{\mathrm{an}},x}=0.
+\]
+由于\Term{morphism}{态射} $O_{X,\varphi(x)}\to O_{X^{\mathrm{an}},x}$ \Term{faithfully-flat}{忠实平坦}，对 $X$ 的每个\Term{closed-point}{闭点} $\varphi(x)$ 都有 $F_{\varphi(x)}=0$。又由于 $X$ 是 Jacobson \Term{scheme}{概形}（EGA IV 10.4.8），这就推出 $F=0$。
+\SourcePage{258}
+\Term{functor}{函子} $F\mapsto F^{\mathrm{an}}$ 的保守性，由\Term{exactness}{正合性}和忠实性形式地推出。
+\end{proof}
+
+\SGAsection{2}{概形与其相伴解析空间的性质比较}
+\begin{SGAresult}{命题}{2.1}
+设 $X$ 是\Term{locally-finite-type}{局部有限型} $\mathbb C$-\Term{scheme}{概形}，$X^{\mathrm{an}}$ 为\Term{associated-analytic-space}{相伴解析空间}，$n$ 为整数。考虑下列任一性质 $P$：
+\begin{enumerate}[label={}]
+\item (i) 非空；
+\item (i$'$) \Term{discrete}{离散}；
+\item (ii) Cohen–Macaulay；
+\item (iii) $(S_n)$；
+\item (iv) \Term{regular}{正则}；
+\item (v) $(R_n)$；
+\item (vi) \Term{normal}{正规}；
+\item (vii) \Term{reduced}{约化}；
+\item (viii) 维数为 $n$。
+\end{enumerate}
+则 $X$ 具有性质 $P$，当且仅当 $X^{\mathrm{an}}$ 具有性质 $P$。
+\end{SGAresult}
+\begin{proof}
+设 $\varphi:X^{\mathrm{an}}\to X$ 为典范\Term{morphism}{态射}。(i) 来自等式 $|X^{\mathrm{an}}|=X(\mathbb C)$（1.1）和 $X$ 是 Jacobson \Term{scheme}{概形}这一事实（EGA IV 10.4.8）。$X$ \Term{discrete}{离散}，等价于 $\dim X=0$；$X^{\mathrm{an}}$ \Term{discrete}{离散}，等价于 $\dim X^{\mathrm{an}}=0$ [4，第 19 节第 4 小节推论 6]。故 (i$'$) 由 (viii) 推出。
+
+设 $P$ 是 (ii)—(vii) 中的一个性质。$X$ 具有性质 $P$，当且仅当 $P$ 在 $X$ 的每个\Term{closed-point}{闭点}成立。事实上，由于 $X$ 是\Term{excellent}{优秀}的（EGA IV 7.8.6 (iii)），$X$ 上满足 $P$ 的点所成集合是开集（同上）；若此开集包含所有\Term{closed-point}{闭点}，它就等于整个 $X$。因而，$X$（相应地 $X^{\mathrm{an}}$）具有性质 $P$，等价于对 $X^{\mathrm{an}}$ 的每个点 $x$，\Term{local-ring}{局部环} $O_{X,\varphi(x)}$（相应地 $O_{X^{\mathrm{an}},x}$）具有性质 $P$。\Term{excellent}{优秀}\Term{local-ring}{局部环}是否具有性质 $P$，可在取\Term{completion}{完备化}后判定，所以在 (ii)—(vii) 的情形，命题由\Term{isomorphism}{同构}
+\[
+\widehat O_{X,\varphi(x)}\xrightarrow{\sim}\widehat O_{X^{\mathrm{an}},x}
+\]
+推出。在 (viii) 的情形也同样如此，只需注意
+\[
+\dim X=\sup_x\dim O_{X,\varphi(x)},\qquad
+\dim X^{\mathrm{an}}=\sup_x\dim O_{X^{\mathrm{an}},x},
+\]
+其中 $x\in X^{\mathrm{an}}$。证明完毕。
+\end{proof}
+
+\begin{SGAresult}{命题}{2.2}
+设 $X$ 是\Term{locally-finite-type}{局部有限型} $\mathbb C$-\Term{scheme}{概形}，$\varphi:X^{\mathrm{an}}\to X$ 为典范\Term{morphism}{态射}，$T$ 为 $X$ 的一个\Term{locally-constructible}{局部可构造}子集。则
+\[
+\varphi^{-1}(\overline T)=\overline{\varphi^{-1}(T)}.
+\]
+\end{SGAresult}
+\begin{proof}
+可以假设 $T$ 是 $X$ 的稠密开集。设 $H$ 是底层空间为 $X-T$ 的\Term{reduced}{约化}\Term{closed-subscheme}{闭子概形}；相伴空间 $H^{\mathrm{an}}$ 是 $X^{\mathrm{an}}$ 的闭解析子空间，其底层空间为 $X^{\mathrm{an}}-\varphi^{-1}(T)$。
+\SourcePage{259}
+须证明 $H^{\mathrm{an}}$ 的每个点 $x$ 都属于 $\overline{\varphi^{-1}(T)}$。在这样的点 $x$，\Term{analytic-space}{解析空间}芽 $(X^{\mathrm{an}},x)$ 包含子芽 $(H^{\mathrm{an}},x)$，后者由 $O_{X^{\mathrm{an}},x}$ 的一个非\Term{nilpotent}{幂零}理想定义。由零点定理（Nullstellensatz）[4，第 19 节第 4 小节推论 3] 可知，$x$ 的每个\Term{open-neighborhood}{开邻域}都包含不属于 $H^{\mathrm{an}}$ 的 $X^{\mathrm{an}}$ 中的点。这就证明了 $x\in\overline{\varphi^{-1}(T)}$。
+\end{proof}
+
+\begin{SGAresult}{推论}{2.3}
+设 $X$ 是\Term{locally-finite-type}{局部有限型} $\mathbb C$-\Term{scheme}{概形}，$\varphi:X^{\mathrm{an}}\to X$ 为典范\Term{morphism}{态射}，$T$ 为 $X$ 的\Term{locally-constructible}{局部可构造}子集。则 $T$ 是开集（相应地闭集、稠密子集），当且仅当 $\varphi^{-1}(T)$ 也是如此。
+\end{SGAresult}
+推论来自 2.2，以及如下事实：由于 $X$ 是 Jacobson \Term{scheme}{概形}（EGA IV 10.4.8），$X$ 的两个\Term{locally-constructible}{局部可构造}子集若在\Term{very-dense}{极稠密}集合 $X(\mathbb C)$ 上有相同的迹，它们便相等。
+
+\begin{SGAresult}{命题}{2.4}
+设 $X$ 是\Term{locally-finite-type}{局部有限型} $\mathbb C$-\Term{scheme}{概形}。则 $X$ \Term{connected}{连通}（相应地\Term{irreducible}{不可约}），当且仅当 $X^{\mathrm{an}}$ 也是如此。
+\end{SGAresult}
+\begin{proof}
+设 $X^{\mathrm{an}}$ \Term{connected}{连通}（相应地\Term{irreducible}{不可约}），则它在 $X$ 中的像 $X(\mathbb C)$ \Term{connected}{连通}（相应地\Term{irreducible}{不可约}）。由于 $X$ 与 $X(\mathbb C)$ 的闭集一一对应（EGA IV 10.1.2），这就推出 $X$ \Term{connected}{连通}（相应地\Term{irreducible}{不可约}）。
+
+反之，设 $X$ \Term{connected}{连通}（相应地\Term{irreducible}{不可约}），证明 $X^{\mathrm{an}}$ 也如此。只需考虑 $X$ \Term{irreducible}{不可约}的情形。事实上，假设 $X$ \Term{connected}{连通}。给定 $X$ 的点 $x$，所有满足以下条件的点 $y\in X$ 所成的集合既开又闭，因而等于整个 $X$：存在 $X$ 的\Term{finite}{有限}个\Term{irreducible}{不可约}\Term{closed-subscheme}{闭子概形} $X_1,\ldots,X_n$，使 $x\in X_1$、$y\in X_n$，并且当 $1\leq i\leq n-1$ 时，$X_i\cap X_{i+1}\ne\varnothing$。对这样的 $X_1,\ldots,X_n$，同样有 $X_i^{\mathrm{an}}\cap X_{i+1}^{\mathrm{an}}\ne\varnothing$（$1\leq i\leq n-1$）。若已知各 $X_i^{\mathrm{an}}$ \Term{connected}{连通}，就可推出 $X^{\mathrm{an}}$ \Term{connected}{连通}。
+
+以下假设 $X$ \Term{irreducible}{不可约}。还可假设 $X$ \Term{affine}{仿射}。事实上，若 $(U_i)_{i\in I}$ 是 $X$ 的\Term{affine}{仿射}开\Term{covering}{覆盖}，则其中任意两个开集的交都非空，所以 $X^{\mathrm{an}}$ 的\Term{covering}{覆盖} $(U_i^{\mathrm{an}})_{i\in I}$ 也有此性质。若已知各 $U_i^{\mathrm{an}}$ \Term{irreducible}{不可约}，就能推出 $X^{\mathrm{an}}$ \Term{irreducible}{不可约}。
+
+还可假设 $X$ \Term{normal}{正规}。事实上，设 $\widetilde X$ 为 $X$ 的\Term{normalization}{正规化}。由于\Term{morphism}{态射} $\widetilde X\to X$ 是\Term{surjectivity}{满射}，$\widetilde X^{\mathrm{an}}\to X^{\mathrm{an}}$ 也是\Term{surjectivity}{满射}。因此，$\widetilde X^{\mathrm{an}}$ \Term{irreducible}{不可约}就推出 $X^{\mathrm{an}}$ \Term{irreducible}{不可约}。
+
+以下假设 $X$ \Term{affine}{仿射}且\Term{normal}{正规}。由于 $X^{\mathrm{an}}$ 的\Term{local-ring}{局部环}都是\Term{integral-domain}{整环}，$X^{\mathrm{an}}$ \Term{irreducible}{不可约}与 $X^{\mathrm{an}}$ \Term{connected}{连通}等价。事实上，若 $\mathcal F$ 是 $X^{\mathrm{an}}$ 的闭解析子集，则满足 $\operatorname{codim}_x(\mathcal F,X^{\mathrm{an}})=0$ 的 $X^{\mathrm{an}}$ 中的点 $x$ 所成集合是闭解析子集 [4，第 20 节 A 推论 1]，同时也是开集。若 $X^{\mathrm{an}}$ \Term{connected}{连通}，这说明只要 $\mathcal F\ne X^{\mathrm{an}}$，$\mathcal F$ 就是\Term{nowhere-dense}{稀薄}的，因而 $X^{\mathrm{an}}$ \Term{irreducible}{不可约}。
+\SourcePage{260}
+这样便归结为证明 $X^{\mathrm{an}}$ \Term{connected}{连通}。
+
+取 $X$ 的一个\Term{compactification}{紧化}
+\[
+i:X\longrightarrow P,
+\]
+其中 $P$ 是一个\Term{normal}{正规}\Term{projective}{射影} $\mathbb C$-\Term{scheme}{概形}，$i$ 是\Term{dominant}{占优}\Term{open-immersion}{开浸入}。由 [10，第 12 节定理 1]，$P^{\mathrm{an}}$ \Term{connected}{连通}。$X^{\mathrm{an}}$ 是从 $P^{\mathrm{an}}$ 中删去一个\Term{nowhere-dense}{稀薄}闭解析子集而得到的，由下面的 2.5 可知，$X^{\mathrm{an}}$ 也\Term{connected}{连通}。
+\end{proof}
+
+\begin{SGAresult}{引理}{2.5}
+设 $\mathcal P$ 是\Term{normal}{正规}\Term{connected}{连通}\Term{analytic-space}{解析空间}，$\mathcal Y$ 是\Term{nowhere-dense}{稀薄}闭解析子集，则 $\mathcal X=\mathcal P-\mathcal Y$ \Term{connected}{连通}。
+\end{SGAresult}
+\begin{proof}
+当 $\mathcal Y$ 的余维 $\geq2$ 时，命题由 [11，第 3 节命题 4] 推出。一般情形下，删去 $\mathcal P$ 的一个余维 $\geq2$ 的闭解析子集后，可假设 $\mathcal P$ 及 $\mathcal Y$ 都\Term{regular}{正则}；其中 $\mathcal Y$ 赋予 $\mathcal P$ 的\Term{reduced}{约化}解析子空间结构。由隐函数定理，$\mathcal Y$ 的每个点 $y$ 都有一个邻域 $\mathcal U$，\Term{isomorphism}{同构}于某个\Term{affine-space}{仿射空间} $\mathcal E^n$ 中的球，并且 $\mathcal U\cap\mathcal Y$ 由若干坐标函数的消失定义。这说明 $\mathcal U-\mathcal U\cap\mathcal Y$ \Term{connected}{连通}，从而 $\mathcal X$ 也\Term{connected}{连通}。
+\end{proof}
+
+\begin{SGAresult}{推论}{2.6}
+设 $X$ 是\Term{locally-finite-type}{局部有限型} $\mathbb C$-\Term{scheme}{概形}，则典范\Term{morphism}{态射} $X^{\mathrm{an}}\to X$ 诱导的\Term{morphism}{态射}
+\[
+\pi_0(X^{\mathrm{an}})\longrightarrow\pi_0(X)
+\]
+是\Term{bijection}{双射}。
+\end{SGAresult}
+
+\SGAsection{3}{态射的性质比较}
+\begin{SGAresult}{命题}{3.1}
+设 $f:X\to Y$ 是\Term{locally-finite-type}{局部有限型} $\mathbb C$-\Term{scheme}{概形}之间的\Term{morphism}{态射}，$f^{\mathrm{an}}:X^{\mathrm{an}}\to Y^{\mathrm{an}}$ 是 $f$ 在\Term{associated-analytic-space}{相伴解析空间}上诱导的\Term{morphism}{态射}。令 $P$ 为下列任一性质：
+\begin{enumerate}[label={}]
+\item (i) \Term{flat}{平坦}；
+\item (ii) 净（即\Term{unramified}{非分歧}）；
+\item (iii) \Term{etale}{平展}；
+\item (iv) \Term{smooth}{光滑}；
+\item (v) \Term{normal}{正规}；
+\item (vi) \Term{reduced}{约化}；
+\item (vii) \Term{injectivity}{单射}；
+\item (viii) \Term{separated}{分离}；
+\item (ix) 是\Term{isomorphism}{同构}；
+\item (x) 是\Term{monomorphism}{单态射}；
+\item (xi) 是\Term{open-immersion}{开浸入}。
+\end{enumerate}
+则 $f$ 具有性质 $P$，当且仅当 $f^{\mathrm{an}}$ 具有性质 $P$。
+\end{SGAresult}
+\SourcePage{261}
+\begin{proof}
+以 $\varphi:X^{\mathrm{an}}\to X$、$\psi:Y^{\mathrm{an}}\to Y$ 表示典范\Term{morphism}{态射}。设 $x$ 是 $X^{\mathrm{an}}$ 的点，$y=f^{\mathrm{an}}(x)$。由 $f$ 与 $f^{\mathrm{an}}$ 所得的\Term{morphism}{态射} $O_{Y^{\mathrm{an}},y}\to O_{X^{\mathrm{an}},x}$ 与 $O_{Y,\psi(y)}\to O_{X,\varphi(x)}$，在取\Term{completion}{完备化}后给出相同的\Term{morphism}{态射}（1.1）。由 [2，第 3 章第 5 节命题 4]（相应地 EGA IV 17.4.4），$f^{\mathrm{an}}$ 满足性质 (i)（相应地 (ii)），等价于 $f$ 在 $X$ 的每个\Term{closed-point}{闭点}满足 (i)（相应地 (ii)）。又由于 $X$ 上满足 (i)（相应地 (ii)）的点所成的集合是开集（EGA IV 11.1.1 和 I 3.3），这就证明了 (i)、(ii)，因而也证明了 (iii)。
+
+令 $P$ 为性质 (iv)（相应地 (v)、(vi)）。考虑到 2.1 ((v)、(vi)、(vii))，$f^{\mathrm{an}}$ 在 $Y^{\mathrm{an}}$ 各点 $y$ 上的\Term{geometric-fiber}{几何纤维}\Term{regular}{正则}（相应地\Term{normal}{正规}、\Term{reduced}{约化}），等价于 $f$ 在 $Y$ 各\Term{closed-point}{闭点} $\psi(y)$ 上的\Term{geometric-fibre}{几何纤维}具有相应性质。于是，(iv)（相应地 (v)、(vi)）由 (i) 及如下事实推出：$Y$ 中使 $f$ 的\Term{geometric-fibre}{几何纤维}\Term{regular}{正则}的点所成的集合是开集（EGA IV 12.1.7）。
+
+(vii) 若 $f$ 为\Term{injectivity}{单射}，则 $f^{\mathrm{an}}$ 也是\Term{injectivity}{单射}。反之，设 $f^{\mathrm{an}}$ 为\Term{injectivity}{单射}，证明 $f$ 也是\Term{injectivity}{单射}。可以假设 $f$ 为\Term{finite-type}{有限型}。由于 $f^{\mathrm{an}}$ 为\Term{injectivity}{单射}，$f$ 在 $Y$ 的\Term{closed-point}{闭点}处的\Term{fiber}{纤维}是\Term{radicial}{根性}的；$Y$ 中\Term{fiber}{纤维}为\Term{radicial}{根性}的点所成集合是\Term{locally-constructible}{局部可构造}的（EGA IV 9.6.1），而 $Y$ 是 Jacobson \Term{scheme}{概形}，所以 $f$ 的所有\Term{fiber}{纤维}都为\Term{radicial}{根性}的，因而 $f$ 为\Term{injectivity}{单射}。
+
+(viii) 设 $\Delta:X\to X\times_YX$ 与 $\Delta^{\mathrm{an}}:X^{\mathrm{an}}\to X^{\mathrm{an}}\times_{Y^{\mathrm{an}}}X^{\mathrm{an}}$ 为对角\Term{immersion}{浸入}，$\Theta:X^{\mathrm{an}}\times_{Y^{\mathrm{an}}}X^{\mathrm{an}}\to X\times_YX$ 为典范\Term{morphism}{态射}。由 2.3，$\Delta(X)$ 在 $X\times_YX$ 中闭，等价于 $\Delta^{\mathrm{an}}(X^{\mathrm{an}})$ 在 $X^{\mathrm{an}}\times_{Y^{\mathrm{an}}}X^{\mathrm{an}}$ 中闭。
+
+由于\Term{open-immersion}{开浸入}恰好就是\Term{etale}{平展}\Term{injectivity}{单射}\Term{morphism}{态射}（EGA IV 17.9.1 和 [4，第 13 节第 1 小节]），(xi) 由 (iii)、(vii) 推出。\Term{isomorphism}{同构}恰好是\Term{surjectivity}{满射}的\Term{open-immersion}{开浸入}，故 (ix) 由 (xi) 和下面的 3.2 (i) 推出。$f$ 为\Term{monomorphism}{单态射}，等价于\Term{diagonal-morphism}{对角态射} $\Delta:X\to X\times_YX$ 为\Term{isomorphism}{同构}，因此 (x) 由 (ix) 推出。
+\end{proof}
+
+\begin{SGAresult}{命题}{3.2}
+设 $X,Y$ 是两个\Term{locally-finite-type}{局部有限型} $\mathbb C$-\Term{scheme}{概形}，$f:X\to Y$ 为\Term{finite-type}{有限型}\Term{morphism}{态射}，$f^{\mathrm{an}}:X^{\mathrm{an}}\to Y^{\mathrm{an}}$ 为 $f$ 在\Term{associated-analytic-space}{相伴解析空间}上诱导的\Term{morphism}{态射}。令 $P$ 为下列任一性质：
+\begin{enumerate}[label={}]
+\item (i) \Term{surjectivity}{满射}；
+\item (ii) \Term{dominant}{占优}；
+\item (iii) 是\Term{closed-immersion}{闭浸入}；
+\item (iv) 是\Term{immersion}{浸入}；
+\item (v) \Term{proper}{固有}；\footnote{若\Term{analytic-space}{解析空间}之间的\Term{morphism}{态射}在 [1，第 1 章第 10 节第 1 小节] 的意义下\Term{proper}{固有}，且它是\Term{separated}{分离}的，我们就称此\Term{morphism}{态射}\Term{proper}{固有}。}
+\item (vi) \Term{finite}{有限}。
+\end{enumerate}
+则 $f$ 具有性质 $P$，当且仅当 $f^{\mathrm{an}}$ 具有性质 $P$。
+\end{SGAresult}
+\SourcePage{262}
+\begin{proof}
+设 $\varphi:X^{\mathrm{an}}\to X$、$\psi:Y^{\mathrm{an}}\to Y$ 为典范\Term{morphism}{态射}。
+
+(i) 若 $f$ 为\Term{surjectivity}{满射}，则对 $Y^{\mathrm{an}}$ 的每个点 $y$，$f^{-1}(\psi(y))$ 是 $X$ 的非空闭子集，因而至少包含一个\Term{closed-point}{闭点}。这就证明 $f^{\mathrm{an}}$ 为\Term{surjectivity}{满射}。反之，若 $f^{\mathrm{an}}$ 为\Term{surjectivity}{满射}，则 $f(X)$ 是 $Y$ 的一个\Term{locally-constructible}{局部可构造}子集（EGA IV 1.8.4），且包含 $Y$ 的所有\Term{closed-point}{闭点}，因此 $f(X)=Y$。
+
+(ii) 由 2.2 推出。
+
+(iii) 若 $f$ 为\Term{closed-immersion}{闭浸入}，则由 1.1 a)，$f^{\mathrm{an}}$ 也为\Term{closed-immersion}{闭浸入}。反之，若 $f^{\mathrm{an}}$ 为\Term{closed-immersion}{闭浸入}，则由 3.1 (x) 和 3.2 (v)，$f$ 也为\Term{closed-immersion}{闭浸入}，因为这等价于说 $f$ 是\Term{proper}{固有}\Term{monomorphism}{单态射}（EGA IV 8.11.5）。
+
+(iv) 显然，若 $f$ 为\Term{immersion}{浸入}，则 $f^{\mathrm{an}}$ 也是\Term{immersion}{浸入}。反之，设 $f^{\mathrm{an}}$ 为\Term{immersion}{浸入}，令 $T$ 为 $X$ 在 $Y$ 中的像，$\overline T$ 为 $f$ 的\Term{schematic-closure}{概形闭包}。$f$ 有分解
+\[
+X\xrightarrow{i}\overline T\xrightarrow{j}J,
+\]
+其中 $j$ 为\Term{closed-immersion}{闭浸入}，$i$ 为典范\Term{morphism}{态射}，由此得到 $f^{\mathrm{an}}$ 的如下分解：
+\[
+X^{\mathrm{an}}\xrightarrow{i^{\mathrm{an}}}\overline T^{\mathrm{an}}\xrightarrow{j^{\mathrm{an}}}Y^{\mathrm{an}}.
+\]
+由于 $T=f(X)$ 是 $Y$ 的\Term{locally-constructible}{局部可构造}子集（EGA IV 1.8.4），由 2.2，
+\[
+\overline T^{\mathrm{an}}=\overline{f^{\mathrm{an}}(X^{\mathrm{an}})}.
+\]
+故 $i^{\mathrm{an}}(X^{\mathrm{an}})$ 是 $\overline T^{\mathrm{an}}$ 的开集，从而 $i(X)$ 是 $\overline T$ 的开集。考虑 $i$ 的典范分解
+\[
+X\xrightarrow{i_1}i(X)\xrightarrow{i_2}\overline T.
+\]
+\Term{morphism}{态射} $i_1^{\mathrm{an}}$ 是\Term{proper}{固有}\Term{monomorphism}{单态射}，因此由 3.2 (v) 和 3.1 (x)，$i_1$ 也是如此。这说明 $i_1$ 为\Term{immersion}{浸入}，因而 $f$ 也为\Term{immersion}{浸入}。
+
+(v) 假设 $f$ \Term{proper}{固有}，证明 $f^{\mathrm{an}}$ 也\Term{proper}{固有}。$f^{\mathrm{an}}$ 的\Term{proper}{固有}性在 $Y^{\mathrm{an}}$ 上是局部性质，故可假设 $Y$ \Term{affine}{仿射}。由 Chow 引理（EGA II 5.6.1），可取一个\Term{projective}{射影} $Y$-\Term{scheme}{概形} $X'$ 及一个\Term{projective}{射影}\Term{surjectivity}{满射}\Term{morphism}{态射}
+\[
+g:X'\longrightarrow X.
+\]
+\Term{morphism}{态射} $(fg)^{\mathrm{an}}=f^{\mathrm{an}}g^{\mathrm{an}}$ 是\Term{projective}{射影}的，因而\Term{proper}{固有}；又 $g^{\mathrm{an}}$ 为\Term{surjectivity}{满射}，故由 [1，第 1 章第 10 节]，$f^{\mathrm{an}}$ \Term{proper}{固有}。
+
+反之，设 $f^{\mathrm{an}}$ \Term{proper}{固有}，证明 $f$ \Term{proper}{固有}。由 3.1 (viii)，$f$ \Term{separated}{分离}。只需再证明 $f$ \Term{universally-closed}{普遍闭}，甚至只需证明 $f$ 为闭映射。事实上，对任意\Term{locally-finite-type}{局部有限型} $Y$-\Term{scheme}{概形} $Y'$，\Term{morphism}{态射}
+\[
+f_{(Y')}=h:X\times_Y Y'\longrightarrow Y'
+\]
+也将是闭映射，因为 $h^{\mathrm{an}}$ \Term{proper}{固有}。
+\SourcePage{263}
+设 $T$ 是 $X$ 的闭子集，则 $f(T)$ 是\Term{locally-constructible}{局部可构造}集合，且
+\[
+f^{\mathrm{an}}(\varphi^{-1}(T))=\psi^{-1}(f(T)).
+\]
+由于 $f^{\mathrm{an}}$ \Term{proper}{固有}，$\psi^{-1}(f(T))$ 是 $Y^{\mathrm{an}}$ 的闭子集，因此由 2.2，
+\[
+\psi^{-1}(\overline{f(T)})=\psi^{-1}(f(T)).
+\]
+这就推出 $f(T)=\overline{f(T)}$，即 $f$ 为闭映射，因而\Term{proper}{固有}。
+
+(vi) \Term{morphism}{态射}\Term{finite}{有限}，等价于它\Term{proper}{固有}且\Term{fiber}{纤维}\Term{finite}{有限}（EGA III 4.4.2 和 [4，第 19 节第 5 小节]）。由于 $f$ 的\Term{fiber}{纤维}为\Term{finite}{有限}集的点所成集合是\Term{locally-constructible}{局部可构造}的（EGA IV 9.7.9），$f$ 的\Term{fiber}{纤维}\Term{finite}{有限}，当且仅当 $f^{\mathrm{an}}$ 的\Term{fiber}{纤维}\Term{finite}{有限}。因此 (vi) 由 (v) 推出。
+\end{proof}
+
+\begin{SGAresult}{注记}{3.3}
+a) 设 $f:X\to Y$ 是\Term{locally-finite-type}{局部有限型} $\mathbb C$-\Term{scheme}{概形}之间的\Term{morphism}{态射}。$f^{\mathrm{an}}$ 为\Term{local-isomorphism}{局部同构}，并不推出 $f$ 也是\Term{local-isomorphism}{局部同构}。事实上，若 $f$ \Term{etale}{平展}，则 $f^{\mathrm{an}}$ \Term{etale}{平展}，从而是\Term{local-isomorphism}{局部同构} [4，第 13 节第 1 小节]，但 $f$ 未必如此。
+
+b) 若不假设 $f$ 为\Term{finite-type}{有限型}，3.2 的结论便不成立。例如，$f^{\mathrm{an}}$ 可以是\Term{closed-immersion}{闭浸入}，而 $f$ 却不是。只需取 $X$ 为以 $\mathbb Z$ 为指标的若干个 $\operatorname{Spec}\mathbb C$ 的和，$Y$ 为\Term{affine}{仿射}直线，而 $f$ 将 $X$ 的各点映到 $Y$ 中彼此不同且组成一个\Term{discrete}{离散}子集的点。
+\end{SGAresult}
+
+\SGAsection{4}{上同调比较定理与存在定理}
+本节的目的是重新证明 [3，第 2 节定理 5、定理 6] 的结果。这些结果将 [10，第 12 节] 在 $X$ \Term{projective}{射影}时建立的定理推广到\Term{proper-scheme}{固有概形}，并扩展到相对情形。关于\Term{analytic-space}{解析空间}上\Term{proper}{固有}相对\Term{scheme}{概形}的更一般结果，见 [7，第 VIII 章第 3 节]。
+
+回顾一下，[10，第 12 节] 中所用的 Čech \Term{cohomology}{上同调}，无论在代数情形还是解析情形，都与通常的\Term{cohomology}{上同调}一致（EGA III 1.4.1 和 [5，II 5.10]）。
+
+\textbf{4.1.} 设 $f:X\to Y$ 是\Term{locally-finite-type}{局部有限型} $\mathbb C$-\Term{scheme}{概形}之间的\Term{morphism}{态射}，考虑\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}
+X^{\mathrm{an}}\arrow[r,"\varphi"]\arrow[d,"f^{\mathrm{an}}"']&X\arrow[d,"f"]\\
+Y^{\mathrm{an}}\arrow[r,"\psi"']&Y.
+\end{tikzcd}
+\]
+\SourcePage{264}
+若 $F$ 是 $O_X$-模，则对每个整数 $p\geq0$，有\Term{morphism}{态射}
+\[
+\begin{aligned}
+R^pf_*F&\xrightarrow{i}R^pf_*(\varphi_*F^{\mathrm{an}})
+\xrightarrow{j}R^p(f\cdot\varphi)_*F^{\mathrm{an}}\\
+&\hspace{6em}\xrightarrow{k}\psi_*(R^pf_*^{\mathrm{an}}F^{\mathrm{an}}),
+\end{aligned}
+\]
+其中 $i$ 由典范\Term{morphism}{态射} $F\to\varphi_*F^{\mathrm{an}}$ 得到，$j,k$ 是 \Term{leray-spectral-sequence}{Leray 谱序列}的\Term{edge-homomorphism}{边缘同态}。复合 $kji$ 对应一个典范\Term{morphism}{态射}
+\[
+\theta_p:(R^pf_*F)^{\mathrm{an}}\longrightarrow R^pf_*^{\mathrm{an}}(F^{\mathrm{an}}).
+\tag{4.1.1}
+\]
+
+\begin{SGAresult}{定理}{4.2}
+设 $f:X\to Y$ 是\Term{locally-finite-type}{局部有限型} $\mathbb C$-\Term{scheme}{概形}之间的\Term{proper-morphism}{固有态射}，$F$ 为\Term{coherent}{凝聚} $O_X$-模。则对每个整数 $p\geq0$，\Term{morphism}{态射} (4.1.1)
+\[
+\theta_p:(R^pf_*F)^{\mathrm{an}}\longrightarrow R^pf_*^{\mathrm{an}}(F^{\mathrm{an}})
+\]
+都是\Term{isomorphism}{同构}。
+\end{SGAresult}
+\begin{proof}
+\textbf{1) $f$ \Term{projective}{射影}的情形。} 证明与 [10，第 13 节] 类似。简要回顾如下。先归结到 $X$ 为 $Y$ 上的标准\Term{projective-space}{射影空间} $\mathbb P^r_Y$ 的情形。令 $\mathcal Y=Y^{\mathrm{an}}$、$\mathcal P=\mathbb P^r_{\mathcal Y}$；先证明
+\[
+f_*^{\mathrm{an}}O_{\mathcal P}=O_{\mathcal Y},\qquad
+R^pf_*^{\mathrm{an}}(O_{\mathcal P})=0\quad(p>0).
+\]
+为证明这些关系，可以归结到 $\mathcal Y$ 是\Term{affine-space}{仿射空间} $\mathcal E^n$ 中的一个球 $\mathcal B$ 的情形。考虑 $\mathcal P$ 的“标准\Term{covering}{覆盖}” $\{\mathcal U_i\}$，由 $r+1$ 个\Term{isomorphism}{同构}于 $\mathcal B\times\mathcal E^r$ 的开集组成。由于这些开集是 Stein 空间，对每个整数 $p\geq0$，有\Term{isomorphism}{同构}
+\[
+H^p(\{\mathcal U_i\},O_{\mathcal P})\xrightarrow{\sim}H^p(\mathcal P,O_{\mathcal P}).
+\]
+于是，可以用 Laurent 级数表示\Term{structure-sheaf}{结构层} $O_{\mathcal P}$ 在开集 $\mathcal U_i$ 及其交上的\Term{section}{截面}；简单计算给出
+\[
+H^0(\mathcal P,O_{\mathcal P})\xrightarrow{\sim}H^0(\mathcal Y,O_{\mathcal Y}),\qquad
+H^p(\mathcal P,O_{\mathcal P})=0\quad(p>0).
+\]
+随后，只需照搬 [10，第 12 节引理 5] 的证明，将其中的\Term{cohomology}{上同调}群换为\Term{cohomology}{上同调}层，证明即告完成。
+
+\textbf{2) $f$ \Term{proper}{固有}的情形。} 利用 EGA III 3.1.2 归结到\Term{projective}{射影}情形。令 $\mathcal K$ 为满足以下条件的\Term{coherent}{凝聚} $O_X$-模所成的\Term{category}{范畴}：对所有 $p\geq0$，$\theta_p$ 都是\Term{isomorphism}{同构}。只需证明：对每个\Term{exact-sequence}{正合列} $0\to F'\to F\to F''\to0$，若其中两项属于 $\mathcal K$，则第三项也属于 $\mathcal K$；$\mathcal K$ 的对象的\Term{direct-factor}{直因子}仍属于 $\mathcal K$；对 $X$ 的每个点 $x$，都能找到 $\mathcal K$ 的对象 $F$，使 $F_x\ne0$。
+\SourcePage{265}
+第一个条件由五引理应用于下面的\Term{commutative-diagram}{交换图}得到，其中两行\Term{exact}{正合}：
+\[
+\resizebox{\textwidth}{!}{\begin{tikzcd}[ampersand replacement=\&,column sep=small]
+{}\arrow[r]\&(R^pf_*F')^{\mathrm{an}}\arrow[r]\arrow[d]\&(R^pf_*F)^{\mathrm{an}}\arrow[r]\arrow[d]\&(R^pf_*F'')^{\mathrm{an}}\arrow[r]\arrow[d]\&(R^{p+1}f_*F')^{\mathrm{an}}\arrow[r]\arrow[d]\&{}\\
+{}\arrow[r]\&R^pf_*^{\mathrm{an}}F'^{\mathrm{an}}\arrow[r]\&R^pf_*^{\mathrm{an}}F^{\mathrm{an}}\arrow[r]\&R^pf_*^{\mathrm{an}}F''^{\mathrm{an}}\arrow[r]\&R^{p+1}f_*^{\mathrm{an}}F'^{\mathrm{an}}\arrow[r]\&{}.
+\end{tikzcd}}
+\]
+第二个条件可类似地验证。
+
+为证明第三个条件，只需考虑 $X$ 是以 $x$ 为\Term{generic-point}{泛点}的\Term{irreducible}{不可约}\Term{scheme}{概形}的情形。从一开始就可以假设 $Y$ 为\Term{noetherian}{诺特}\Term{scheme}{概形}。由 Chow 引理（EGA II 5.6.1），可取一个\Term{projective}{射影} $Y$-\Term{scheme}{概形} $X'$ 以及\Term{projective}{射影}\Term{surjectivity}{满射}\Term{morphism}{态射} $g:X'\to X$。另一方面，存在整数 $n$，使对所有 $p>0$ 有 $R^pg_*(O_{X'}(n))=0$，且典范\Term{morphism}{态射} $g^*g_*(O_{X'}(n))\to O_{X'}(n)$ 为\Term{surjectivity}{满射}（EGA III 2.2.1）。令 $F=g_*(O_{X'}(n))$，则 $F$ 就满足要求。事实上，$F_x\ne0$；此外，由于 \Term{leray-spectral-sequence}{Leray 谱序列}
+\[
+R^pf_*(R^qg_*(O_{X'}(n)))\Longrightarrow R^{p+q}(f\cdot g)_*(O_{X'}(n))
+\]
+退化，得到\Term{isomorphism}{同构}
+\[
+R^pf_*F\xrightarrow{\sim}R^p(f\cdot g)_*(O_{X'}(n)).
+\]
+与代数情形一样，有典范\Term{isomorphism}{同构}
+\[
+R^pf_*^{\mathrm{an}}F^{\mathrm{an}}\xrightarrow{\sim}
+R^p(f\cdot g)_*^{\mathrm{an}}(O_{X'}(n)^{\mathrm{an}}),
+\]
+且下图交换：
+\[
+\begin{tikzcd}[column sep=large]
+(R^pf_*F)^{\mathrm{an}}\arrow[r,"\sim"]\arrow[d,"\theta_p"']&
+(R^p(f\cdot g)_*(O_{X'}(n)))^{\mathrm{an}}\arrow[d,"\psi_p"]\\
+R^pf_*^{\mathrm{an}}F^{\mathrm{an}}\arrow[r,"\sim"']&
+R^p(f\cdot g)_*^{\mathrm{an}}(O_{X'}(n)^{\mathrm{an}}).
+\end{tikzcd}
+\]
+由 1)，$\psi_p$ 是\Term{isomorphism}{同构}，故 $\theta_p$ 也是\Term{isomorphism}{同构}。证明完毕。
+\end{proof}
+
+\begin{SGAresult}{推论}{4.3}
+设 $X$ 是\Term{proper}{固有} $\mathbb C$-\Term{scheme}{概形}，$F$ 是\Term{coherent}{凝聚} $O_X$-模。则对每个整数 $p\geq0$，典范\Term{morphism}{态射}
+\[
+H^p(X,F)\longrightarrow H^p(X^{\mathrm{an}},F^{\mathrm{an}})
+\]
+是\Term{isomorphism}{同构}。
+\end{SGAresult}
+
+\begin{SGAresult}{定理}{4.4}
+设 $X$ 是\Term{proper}{固有} $\mathbb C$-\Term{scheme}{概形}。将每个\Term{coherent}{凝聚} $O_X$-模 $F$ 对应到其在 $X^{\mathrm{an}}$ 上的\Term{inverse-image}{逆像} $F^{\mathrm{an}}$ 的\Term{functor}{函子}，是一个\Term{equivalence-categories}{范畴等价}。
+\end{SGAresult}
+\begin{proof}
+\textbf{1) 此\Term{functor}{函子}\Term{fully-faithful}{完全忠实}。} 事实上，设 $F,G$ 是两个\Term{coherent}{凝聚} $O_X$-模。典范\Term{morphism}{态射}
+\[
+\operatorname{Hom}_{O_X}(F,G)\longrightarrow
+\operatorname{Hom}_{O_{X^{\mathrm{an}}}}(F^{\mathrm{an}},G^{\mathrm{an}})
+\]
+\SourcePage{266}
+可以识别为典范\Term{morphism}{态射}
+\[
+H^0(X,\underline{\operatorname{Hom}}_{O_X}(F,G))\longrightarrow
+H^0(X^{\mathrm{an}},\underline{\operatorname{Hom}}_{O_X}(F,G))
+\]
+（EGA $0_{\mathrm I}$ 6.7.6）。由于 $\underline{\operatorname{Hom}}_{O_X}(F,G)$ \Term{coherent}{凝聚}，由 4.3 可知，这个\Term{morphism}{态射}为\Term{bijection}{双射}。
+
+\textbf{2) 此\Term{functor}{函子}\Term{essentially-surjective}{本质满射}。} 当 $X$ \Term{projective}{射影}时，断言来自 [10，第 12 节定理 3]。一般情形利用 Chow 引理（EGA II 5.6.1）归结到前一情形。事实上，取一个\Term{projective}{射影} $\mathbb C$-\Term{scheme}{概形} $X'$、\Term{projective}{射影}\Term{surjectivity}{满射}\Term{morphism}{态射} $f:X'\to X$，以及 $X$ 的稠密开集 $U$，使 $f$ 诱导\Term{isomorphism}{同构} $f^{-1}(U)\simeq U$。对 $X$ 作\Term{noetherian}{诺特}归纳，因而可作以下假设：对 $X^{\mathrm{an}}$ 上的每个\Term{coherent-sheaf}{凝聚层} $\mathcal G$，若存在不同于 $X$ 的闭子集 $Y\subset X$，使 $Y^{\mathrm{an}}\supset\operatorname{Supp}\mathcal G$，则存在 $X$ 上的\Term{coherent-sheaf}{凝聚层} $G$，使 $G^{\mathrm{an}}\simeq\mathcal G$。
+
+设 $\mathcal F$ 为 $O_{X^{\mathrm{an}}}$ 上的\Term{coherent}{凝聚}\Term{module-sheaf}{模层}，$\mathcal K,\mathcal L$ 为使下列序列\Term{exact}{正合}的\Term{coherent-sheaf}{凝聚层}：
+\[
+0\longrightarrow\mathcal K\longrightarrow\mathcal F
+\longrightarrow f_*^{\mathrm{an}}f^{\mathrm{an}*}\mathcal F
+\longrightarrow\mathcal L\longrightarrow0.
+\]
+由于 $X'$ \Term{projective}{射影}，存在\Term{coherent}{凝聚} $O_{X'}$-模 $F'$，使 $F'^{\mathrm{an}}\simeq f^{\mathrm{an}*}\mathcal F$；由 4.2 得到\Term{isomorphism}{同构} $(f_*F')^{\mathrm{an}}\simeq f_*^{\mathrm{an}}f^{\mathrm{an}*}\mathcal F$。由于 $\mathcal K|U^{\mathrm{an}}$ 与 $\mathcal L|U^{\mathrm{an}}$ 都为零，存在\Term{coherent}{凝聚} $O_X$-模 $K,L$，使 $K^{\mathrm{an}}\simeq\mathcal K$、$L^{\mathrm{an}}\simeq\mathcal L$。由 1)，\Term{morphism}{态射} $f_*^{\mathrm{an}}f^{\mathrm{an}*}\mathcal F\to\mathcal L$ 来自唯一的\Term{morphism}{态射} $f_*F'\to L$；令 $I=\operatorname{Ker}(f_*F'\to L)$。于是层 $\mathcal F$ 是 $I^{\mathrm{an}}$ 被 $K^{\mathrm{an}}$ 的\Term{group-extension}{扩张}，只需证明这个\Term{group-extension}{扩张}是 $I$ 被 $K$ 的某个\Term{group-extension}{扩张}的\Term{inverse-image}{逆像}。因此只需证明典范\Term{morphism}{态射}
+\[
+\operatorname{Ext}_{O_X}^q(I,K)^{\mathrm{an}}\xrightarrow{\sim}
+\operatorname{Ext}_{O_{X^{\mathrm{an}}}}^q(I^{\mathrm{an}},K^{\mathrm{an}}),\qquad q\ne1
+\tag{*}
+\]
+为\Term{bijection}{双射}。对每个整数 $q\geq0$，有\Term{isomorphism}{同构}
+\[
+\underline{\operatorname{Ext}}_{O_X}^q(I,K)^{\mathrm{an}}\xrightarrow{\sim}
+\underline{\operatorname{Ext}}_{O_{X^{\mathrm{an}}}}^q(I^{\mathrm{an}},K^{\mathrm{an}})
+\]
+（EGA $0_{\mathrm{III}}$ 12.3.5），以及\Term{spectral-sequence}{谱序列}的\Term{morphism}{态射}
+\[
+\begin{tikzcd}[column sep=large]
+H^p(X,\underline{\operatorname{Ext}}_{O_X}^q(I,K))\arrow[r,Rightarrow]\arrow[d]&
+\operatorname{Ext}_{O_X}^{p+q}(I,K)\arrow[d]\\
+H^p(X^{\mathrm{an}},\underline{\operatorname{Ext}}_{O_{X^{\mathrm{an}}}}^q(I^{\mathrm{an}},K^{\mathrm{an}}))\arrow[r,Rightarrow]&
+\operatorname{Ext}_{O_{X^{\mathrm{an}}}}^{p+q}(I^{\mathrm{an}},K^{\mathrm{an}}).
+\end{tikzcd}
+\]
+这个\Term{morphism}{态射}是\Term{isomorphism}{同构}，因为由 4.3，它在各 $E_2^{pq}$ 项上都是\Term{isomorphism}{同构}。这就证明了 (*) 的\Term{bijection}{双射}性。
+\end{proof}
+
+\begin{SGAresult}{推论}{4.5}
+将每个\Term{proper}{固有} $\mathbb C$-\Term{scheme}{概形} $X$ 对应到 $X^{\mathrm{an}}$ 的\Term{functor}{函子}\Term{fully-faithful}{完全忠实}。
+\end{SGAresult}
+\begin{proof}
+须证明，对任意两个\Term{proper}{固有} $\mathbb C$-\Term{scheme}{概形} $X,Y$，典范映射
+\[
+\operatorname{Hom}_{\mathbb C}(X,Y)\longrightarrow
+\operatorname{Hom}(X^{\mathrm{an}},Y^{\mathrm{an}})
+\]
+\SourcePage{267}
+是\Term{bijection}{双射}。给定一个从 $X$ 到 $Y$ 的\Term{morphism}{态射}（相应地从 $X^{\mathrm{an}}$ 到 $Y^{\mathrm{an}}$ 的\Term{morphism}{态射}），等价于给定其图，即 $X\times Y$ 的一个\Term{closed-subscheme}{闭子概形} $Z$（相应地 $X^{\mathrm{an}}\times Y^{\mathrm{an}}$ 的一个闭解析子空间 $\mathcal Z$），使第一投影 $X\times Y\to X$ 在 $Z$ 上的限制（相应地 $X^{\mathrm{an}}\times Y^{\mathrm{an}}\to X^{\mathrm{an}}$ 在 $\mathcal Z$ 上的限制）为\Term{isomorphism}{同构}。由于给定 $X\times Y$ 的\Term{closed-subscheme}{闭子概形}（相应地 $X^{\mathrm{an}}\times Y^{\mathrm{an}}$ 的闭解析子空间），等价于给定 $O_{X\times Y}$（相应地 $O_{X^{\mathrm{an}}\times Y^{\mathrm{an}}}$）上的\Term{coherent}{凝聚}\Term{ideal-sheaf}{理想层}，推论遂由 4.4 得到。
+\end{proof}
+
+\begin{SGAresult}{推论}{4.6}
+设 $X$ 是\Term{proper}{固有} $\mathbb C$-\Term{scheme}{概形}。将 $X$ 上的每个\Term{finite}{有限}\Term{scheme}{概形}（相应地\Term{finite}{有限}\Term{etale}{平展}\Term{scheme}{概形}）$X'$ 对应到 $X'^{\mathrm{an}}$ 的\Term{functor}{函子}，是从 $X$ 上\Term{finite}{有限}\Term{scheme}{概形}（相应地\Term{finite}{有限}\Term{etale}{平展}\Term{scheme}{概形}）的\Term{category}{范畴}到 $X^{\mathrm{an}}$ 上\Term{finite}{有限}\Term{analytic-space}{解析空间}（相应地\Term{finite}{有限}\Term{etale}{平展}\Term{analytic-space}{解析空间}）的\Term{category}{范畴}的一个等价。
+\end{SGAresult}
+\begin{proof}
+事实上，给定\Term{finite-morphism}{有限态射} $X'\to X$（相应地 $X'^{\mathrm{an}}\to X^{\mathrm{an}}$），等价于给定 $O_X$（相应地 $O_{X^{\mathrm{an}}}$）上的\Term{coherent}{凝聚}代数层 [4，第 19 节第 5 小节定理 2]。故非括号中的情形来自 4.4；再结合 3.1 (iii)，即可得到括号中的情形。
+\end{proof}
+
+\SGAsection{5}{平展覆盖的比较定理}
+\textbf{5.0.} 先明确\Term{analytic-space}{解析空间}的\Term{finite-cover}{有限覆盖}这一概念。若 $\mathcal X$ 是\Term{analytic-space}{解析空间}，我们称 $\mathcal X$ 上的\Term{finite}{有限}\Term{analytic-space}{解析空间} $\mathcal X'$ 为 $\mathcal X$ 的\Term{finite-covering}{有限覆盖}，如果 $\mathcal X'$ 的每个\Term{irreducible-component}{不可约分支}都\Term{dominant}{占优}于 $\mathcal X$ 的一个\Term{irreducible-component}{不可约分支}。
+
+\begin{SGAresult}{定理}{5.1（Riemann 存在定理）}
+设 $X$ 是\Term{locally-finite-type}{局部有限型} $\mathbb C$-\Term{scheme}{概形}，$X^{\mathrm{an}}$ 为 $X$ 的\Term{associated-analytic-space}{相伴解析空间}。将 $X$ 的每个\Term{finite-etale-cover}{有限平展覆盖} $X'$ 对应到 $X'^{\mathrm{an}}$ 的\Term{functor}{函子} $\Psi$，是从 $X$ 的\Term{finite-etale-cover}{有限平展覆盖}\Term{category}{范畴}到 $X^{\mathrm{an}}$ 的\Term{finite-etale-cover}{有限平展覆盖}\Term{category}{范畴}的一个等价。
+\end{SGAresult}
+\begin{proof}
+\textbf{1) \Term{functor}{函子} $\Psi$ \Term{fully-faithful}{完全忠实}。} 设 $X',X''$ 是 $X$ 的两个\Term{finite-etale-cover}{有限平展覆盖}，证明典范映射
+\[
+\operatorname{Hom}_X(X',X'')\longrightarrow
+\operatorname{Hom}_{X^{\mathrm{an}}}(X'^{\mathrm{an}},X''^{\mathrm{an}})
+\tag{*}
+\]
+为\Term{bijection}{双射}。可以假设 $X'$ \Term{connected}{连通}。给定一个从 $X'$ 到 $X''$ 的 $X$-\Term{morphism}{态射}，等价于给定 $X'\times_X X''$ 的一个\Term{connected-component}{连通分支} $X_i$，使第一投影诱导的\Term{morphism}{态射} $X_i\to X'$ 为\Term{isomorphism}{同构}。由于 $X'\times_X X''$ 的\Term{connected-component}{连通分支}与 $X'^{\mathrm{an}}\times_{X^{\mathrm{an}}}X''^{\mathrm{an}}$ 的\Term{connected-component}{连通分支}一一对应（2.6），而且\Term{morphism}{态射} $X_i\to X'$ 为\Term{isomorphism}{同构}，当且仅当 $X_i^{\mathrm{an}}\to X'^{\mathrm{an}}$ 为\Term{isomorphism}{同构}，这就证明了 (*) 的\Term{bijection}{双射}性。
+
+\textbf{2) \Term{functor}{函子} $\Psi$ \Term{essentially-surjective}{本质满射}。} 设 $\mathcal X'$ 是 $X^{\mathrm{an}}$ 的\Term{finite-etale-cover}{有限平展覆盖}，证明存在 $X$ 的\Term{etale-covering}{平展覆盖} $X'$，使有\Term{isomorphism}{同构} $X'^{\mathrm{an}}\xrightarrow{\sim}\mathcal X'$。
+\SourcePage{268}
+考虑到 1)，此问题在 $X$ 上是局部的，故可假设 $X$ \Term{affine}{仿射}。
+
+\textbf{a) 归结到 $X$ \Term{normal}{正规}的情形。} 可以假设 $X$ \Term{reduced}{约化}。事实上，设定理已对 $X_{\mathrm{red}}$ 得证。将 $X$ 的\Term{finite-etale-cover}{有限平展覆盖} $X'$ 对应到 $X_{\mathrm{red}}^{\mathrm{an}}$ 的\Term{finite-etale-cover}{有限平展覆盖} $X'^{\mathrm{an}}_{\mathrm{red}}$ 的\Term{functor}{函子}，此时是一个等价。它由 $\Psi$ 与\Term{functor}{函子} $\Theta$ 复合而成；其中 $\Theta$ 将 $X^{\mathrm{an}}$ 的\Term{finite-etale-cover}{有限平展覆盖}对应到其在 $X_{\mathrm{red}}^{\mathrm{an}}$ 上的\Term{inverse-image}{逆像}，而 $\Theta$ \Term{fully-faithful}{完全忠实}。因此，$\Psi$ 是\Term{category-equivalence}{范畴等价}。
+
+可以假设 $X$ \Term{normal}{正规}。事实上，设 $\widetilde X$ 为 $X$ 的\Term{normalization}{正规化}，$p:\widetilde X\to X$ 为典范\Term{morphism}{态射}。由于 $p$ \Term{finite}{有限}，它是\Term{etale-covering}{平展覆盖}\Term{category}{范畴}的\Term{effective-descent-morphism}{有效下降态射}（IX 4.7）。假设定理已对 $\widetilde X$ 得证，令
+\[
+\widetilde{\mathcal X}'=\mathcal X'\times_{X^{\mathrm{an}}}\widetilde X^{\mathrm{an}},
+\]
+则存在 $\widetilde X$ 的\Term{etale-covering}{平展覆盖} $\widetilde X'$ 以及\Term{isomorphism}{同构} $\widetilde X'^{\mathrm{an}}\simeq\widetilde{\mathcal X}'$。由 1)，$\widetilde{\mathcal X}'$ 上的自然\Term{descent-datum}{下降数据}提升为 $\widetilde X'$ 上相对于 $\widetilde X\to X$ 的\Term{descent-datum}{下降数据}。因此存在 $X$ 的\Term{etale-covering}{平展覆盖} $X'$，以及\Term{isomorphism}{同构}
+\[
+i:X'^{\mathrm{an}}\times_{X^{\mathrm{an}}}\widetilde X^{\mathrm{an}}\simeq\widetilde{\mathcal X}',
+\]
+使它沿 $\widetilde X^{\mathrm{an}}\times_{X^{\mathrm{an}}}\widetilde X^{\mathrm{an}}$ 的两个投影的\Term{inverse-image}{逆像}相同。IX 3.2 的证明在解析情形下同样成立，因此由该命题，\Term{morphism}{态射} $\widetilde X^{\mathrm{an}}\to X^{\mathrm{an}}$ 是\Term{etale-covering}{平展覆盖}\Term{category}{范畴}的\Term{descent-morphism}{下降态射}。所以 $i$ 来自一个\Term{isomorphism}{同构} $X'^{\mathrm{an}}\simeq\mathcal X'$。
+
+\textbf{b) 归结到 $X$ \Term{regular}{正则}的情形。} 设 $U$ 是 $X$ 中\Term{regular-point}{正则点}所成的开集，$i:U\to X$、$i^{\mathrm{an}}:U^{\mathrm{an}}\to X^{\mathrm{an}}$ 为典范\Term{morphism}{态射}。由于 $X$ \Term{normal}{正规}，$\operatorname{codim}(X-U,X)\geq2$。假设存在 $U$ 的\Term{etale-covering}{平展覆盖} $U'$，使 $U'^{\mathrm{an}}\simeq\mathcal X'|U^{\mathrm{an}}$。证明 $U'$ 可以延拓为 $X$ 的一个\Term{etale-covering}{平展覆盖} $X'$，使 $X'^{\mathrm{an}}\simeq\mathcal X'$。只需证明 $U'$ 可以延拓为 $X$ 的\Term{etale-covering}{平展覆盖} $X'$。事实上，此时有\Term{isomorphism}{同构} $X'^{\mathrm{an}}|U^{\mathrm{an}}\simeq\mathcal X'|U^{\mathrm{an}}$。若 $\mathcal F,\mathcal G$ 为 $O_{X^{\mathrm{an}}}$ 上分别定义 $\mathcal X'$、$X'^{\mathrm{an}}$ 的\Term{coherent}{凝聚}代数层，则由 $X$ \Term{normal}{正规}以及 $\operatorname{codim}(X-U,X)\geq2$，典范\Term{morphism}{态射}
+\[
+\mathcal F\longrightarrow i_*^{\mathrm{an}}(\mathcal F|U^{\mathrm{an}}),\qquad
+\mathcal G\longrightarrow i_*^{\mathrm{an}}(\mathcal G|U^{\mathrm{an}})
+\]
+都是\Term{isomorphism}{同构} [11，第 3 节命题 4]。所以 $\mathcal F$ 与 $\mathcal G$ \Term{isomorphism}{同构}，从而 $X'^{\mathrm{an}}$ 与 $\mathcal X'$ 也\Term{isomorphism}{同构}。
+
+设 $\varphi:X^{\mathrm{an}}\to X$ 为典范\Term{morphism}{态射}。由于把 $U'$ 延拓到 $X$ 的问题在 $X$ 上是局部的，只需证明：对每个点 $y\in X^{\mathrm{an}}-U^{\mathrm{an}}$，$U_{\varphi(y)}=U\times_X\operatorname{Spec}O_{X,\varphi(y)}$ 的\Term{etale-covering}{平展覆盖}
+\[
+U'_{\varphi(y)}=U'\times_X\operatorname{Spec}O_{X,\varphi(y)}
+\]
+可以延拓到 $\operatorname{Spec}O_{X,\varphi(y)}$。设 $H$ 为定义 $U'$ 的\Term{coherent}{凝聚} $O_U$-代数。典范\Term{morphism}{态射}
+\[
+\alpha:(i_*H)^{\mathrm{an}}\longrightarrow i_*^{\mathrm{an}}(H^{\mathrm{an}})=\mathcal F
+\]
+\SourcePage{269}
+定义 $\operatorname{Spec}O_{X^{\mathrm{an}},y}$ 上的\Term{module-sheaf}{模层}\Term{morphism}{态射}
+\[
+\alpha_y:(i_*H)^{\mathrm{an}}_y\longrightarrow\mathcal F_y,
+\]
+其在
+\[
+U_y=U_{\varphi(y)}\times_{\operatorname{Spec}O_{X,\varphi(y)}}\operatorname{Spec}O_{X^{\mathrm{an}},y}
+\]
+上的限制为\Term{isomorphism}{同构}。这就证明 $H|U_y$ \Term{trivial-bundle}{平凡}，从而 $U'_{\varphi(y)}$ 可延拓到 $\operatorname{Spec}O_{X,\varphi(y)}$。
+
+\textbf{c) $X$ \Term{affine}{仿射}且\Term{regular}{正则}的情形。} 取 $X$ 的\Term{compactification}{紧化}
+\[
+j:X\longrightarrow P,
+\]
+其中 $P$ 是\Term{projective}{射影} $\mathbb C$-\Term{scheme}{概形}，$j$ 是\Term{dominant}{占优}\Term{open-immersion}{开浸入}。由\Term{resolution-singularities}{奇点消解}定理 [8]，可取一个\Term{regular-scheme}{正则概形} $R$ 及\Term{projective}{射影}\Term{morphism}{态射} $r:R\to P$，使 $r$ 诱导\Term{isomorphism}{同构} $r^{-1}(X)\simeq X$，且 $r^{-1}(X)$ 是 $R$ 中某个\Term{normal-crossings-divisor}{正规交叉除子}的补集。设
+\[
+k:X\longrightarrow R
+\]
+为典范\Term{immersion}{浸入}。我们要证明存在 $R^{\mathrm{an}}$ 的\Term{finite}{有限}\Term{normal}{正规}\Term{covering}{覆盖}（5.0）$\mathcal R'$，延拓\Term{etale-covering}{平展覆盖} $X'^{\mathrm{an}}$。由下面的命题 5.3，这样的\Term{covering}{覆盖}唯一，所以延拓 $X'^{\mathrm{an}}$ 的问题，是 $R^{\mathrm{an}}$ 上邻近 $R^{\mathrm{an}}-X^{\mathrm{an}}$ 的局部问题。$R^{\mathrm{an}}-X^{\mathrm{an}}$ 的每个点都有一个\Term{open-neighborhood}{开邻域} $\mathcal V$，\Term{isomorphism}{同构}于某个\Term{affine-space}{仿射空间} $\mathcal E^n$ 中的球，使 $\mathcal V-\mathcal V\cap X^{\mathrm{an}}$ 由前 $p$ 个坐标函数 $z_1,\ldots,z_p$ 的消失定义，其中 $0\leq p\leq n$。$\mathcal U=\mathcal V\cap X^{\mathrm{an}}$ 的\Term{fundamental-group}{基本群}\Term{isomorphism}{同构}于 $\mathbb Z^p$，$\mathcal U$ 的每个\Term{etale-covering}{平展覆盖}都是如下形式\Term{covering}{覆盖}的商：
+\[
+\mathcal U''=\mathcal U[T_1,\ldots,T_p]/(T_1^{n_1}-z_1,\ldots,T_p^{n_p}-z_p),
+\]
+其中 $n_i$ 都为正整数，取商的群 $H$ 是 $\mathcal U''$ 的 Galois 群
+\[
+\mathbb Z/n_1\mathbb Z\times\cdots\times\mathbb Z/n_p\mathbb Z
+\]
+的一个子群。$\mathcal U''$ 可以延拓为 $\mathcal V$ 的\Term{regular}{正则}\Term{covering}{覆盖}
+\[
+\mathcal V''=\mathcal V[T_1,\ldots,T_p]/(T_1^{n_1}-z_1,\ldots,T_p^{n_p}-z_p),
+\]
+$H$ 在其上作用；$\mathcal V''$ 关于 $H$ 的商，就是所求的延拓。
+
+最后利用 4.6 即可完成证明。\Term{covering}{覆盖} $\mathcal R'$ 来自 $R$ 的某个\Term{finite-covering}{有限覆盖} $R'$；$R'$ 在 $X$ 上的限制是 $X$ 的\Term{covering}{覆盖} $X'$，使 $X'^{\mathrm{an}}\simeq\mathcal X'$。由 3.1 (iii)，$X'$ 是 $X$ 的\Term{etale-covering}{平展覆盖}。
+\end{proof}
+
+\begin{SGAresult}{推论}{5.2}
+设 $X$ 是\Term{locally-finite-type}{局部有限型}\Term{connected}{连通} $\mathbb C$-\Term{scheme}{概形}，$\varphi:X^{\mathrm{an}}\to X$ 为典范\Term{morphism}{态射}，$x$ 是 $X^{\mathrm{an}}$ 的一个点。以 $\pi_1(X^{\mathrm{an}},x)$ 表示\Term{topological-space}{拓扑空间} $X^{\mathrm{an}}$ 在点 $x$ 处的\Term{fundamental-group}{基本群}，以 $\pi_1(X,\varphi(x))$ 表示\Term{scheme}{概形} $X$ 在点 $\varphi(x)$ 处的\Term{fundamental-group}{基本群}（V 7）。则 $\pi_1(X,\varphi(x))$ 典范\Term{isomorphism}{同构}于 $\pi_1(X^{\mathrm{an}},x)$ 关于\Term{finite-index}{有限指数}子群拓扑的\Term{completion}{完备化}。
+\end{SGAresult}
+\begin{proof}
+设 $\mathcal C$ 为 $X^{\mathrm{an}}$ 的\Term{finite-etale-cover}{有限平展覆盖}\Term{category}{范畴}，$F$ 为从 $\mathcal C$ 到 $\mathrm{Ens}$ 的\Term{functor}{函子}，将 $X^{\mathrm{an}}$ 的每个\Term{finite-etale-cover}{有限平展覆盖} $\mathcal X'$ 对应到 $\mathcal X'$ 中位于 $x$ 上方的点所成集合；以 $\widehat\pi_1(X^{\mathrm{an}},x)$ 表示 V 4 中与 $\mathcal C,F$ 相伴的\Term{profinite-group}{投有限群}。由于 $X^{\mathrm{an}}$ 的每个\Term{finite-etale-cover}{有限平展覆盖}都是\Term{universal-cover}{万有覆盖}关于某个\Term{finite-index}{有限指数}子群的商，
+\SourcePage{270}
+$\widehat\pi_1(X^{\mathrm{an}},x)$ 正是 $\pi_1(X^{\mathrm{an}},x)$ 关于\Term{finite-index}{有限指数}子群拓扑的\Term{completion}{完备化}。推论遂由 5.1 和 V 6.10 得到。
+\end{proof}
+
+\begin{SGAresult}{命题}{5.3}
+设 $\mathcal X$ 是\Term{normal}{正规}\Term{analytic-space}{解析空间}，$\mathcal Y$ 为闭解析子集，使 $\mathcal U=\mathcal X-\mathcal Y$ 在 $\mathcal X$ 中稠密。则将 $\mathcal X$ 的每个\Term{finite}{有限}\Term{normal}{正规}\Term{covering}{覆盖}（5.0）$\mathcal X'$ 对应到其在 $\mathcal U$ 上的限制的\Term{functor}{函子}，是\Term{fully-faithful}{完全忠实}的。
+\end{SGAresult}
+\begin{proof}
+设 $\mathcal X',\mathcal X''$ 是 $\mathcal X$ 的两个\Term{finite}{有限}\Term{normal}{正规}\Term{covering}{覆盖}。须证明典范映射
+\[
+\operatorname{Hom}_{\mathcal X}(\mathcal X',\mathcal X'')\longrightarrow
+\operatorname{Hom}_{\mathcal U}(\mathcal X'|\mathcal U,\mathcal X''|\mathcal U)
+\]
+是\Term{bijection}{双射}。设 $u,v$ 是从 $\mathcal X'$ 到 $\mathcal X''$ 的两个 $\mathcal X$-\Term{morphism}{态射}，它们在 $\mathcal U$ 上的限制相同，证明 $u=v$。\Term{morphism}{态射} $u,v$ 在稠密开集 $\mathcal U\times_{\mathcal X}\mathcal X'$ 上相同，因而在底层\Term{topological-space}{拓扑空间}上相同。由 [4，第 19 节第 4 小节推论 5]，这就证明 $u=v$。
+
+现在，设 $u$ 是从 $\mathcal X'|\mathcal U$ 到 $\mathcal X''|\mathcal U$ 的 $\mathcal U$-\Term{morphism}{态射}，证明它可延拓到整个 $\mathcal X'$。可以假设 $\mathcal X'$ \Term{regular}{正则}。事实上，由于 $\mathcal X'$ \Term{normal}{正规}，可取 $\mathcal X$ 的一个开集 $\mathcal V$，其补集是余维 $\geq2$ 的解析子集，且 $\mathcal X'\times_{\mathcal X}\mathcal V=\mathcal V'$ \Term{regular}{正则}。令 $\mathcal V''=\mathcal X''\times_{\mathcal X}\mathcal V$，并假设命题已对 $\mathcal V$ 得证。考虑\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}[column sep=1.5em,row sep=1.8em]
+\mathcal V'\arrow[rr,"i'"]\arrow[dd,"g'"']\arrow[dr]&&\mathcal X'\arrow[dd,"f'"]&{}\\
+{}&\mathcal V''\arrow[rr,"i''"]\arrow[dl,"g''"']&&\mathcal X''\arrow[dl,"f''"]\\
+\mathcal V\arrow[rr,"i"']&&\mathcal X&{}
+\end{tikzcd}
+\]
+与 $u$ 相伴的是一个 $O_{\mathcal V}$-代数\Term{morphism}{态射} $g''_*O_{\mathcal V''}\to g'_*O_{\mathcal V'}$，由此得到\Term{morphism}{态射}
+\[
+i_*g''_*O_{\mathcal V''}\longrightarrow i_*g'_*O_{\mathcal V'}.
+\]
+利用\Term{isomorphism}{同构} $i'_*O_{\mathcal V'}\simeq O_{\mathcal X'}$、$i''_*O_{\mathcal V''}\simeq O_{\mathcal X''}$ [11，第 3 节命题 4]，得到 $O_{\mathcal X}$-代数\Term{morphism}{态射}
+\[
+f''_*O_{\mathcal X''}\longrightarrow f'_*O_{\mathcal X'},
+\]
+从而得到所求的\Term{morphism}{态射} $\mathcal X'\to\mathcal X''$。
+
+以下假设 $\mathcal X'$ \Term{regular}{正则}。令 $\mathcal U'=\mathcal U\times_{\mathcal X}\mathcal X'$、$\mathcal Y'=\mathcal X'-\mathcal U'$。将 $\mathcal Y'$ 视为 $\mathcal X'$ 的\Term{reduced}{约化}解析子空间；若 $\mathcal Y'_1$ 是 $\mathcal Y'$ 的奇异闭集，则 $\dim\mathcal Y'_1<\dim\mathcal Y'$ [4，第 20 节 D 定理 3]。因此，对 $\mathcal Y'$ 的维数作归纳，可假设 $\mathcal Y'$ \Term{smooth}{光滑}。只需将 $u$ 延拓到 $\mathcal Y'$ 每个点的某个\Term{open-neighborhood}{开邻域}，故由隐函数定理，可以假设
+\SourcePage{271}
+$\mathcal X'$ 是\Term{affine-space}{仿射空间} $\mathcal E^n$ 中的球，$\mathcal Y'$ 为前 $p$ 个坐标函数 $z_1,\ldots,z_p$ 消失所定义的闭集，其中 $0\leq p\leq n$。
+
+与 $u$ 相伴的是 $p:\mathcal X'\times_{\mathcal X}\mathcal X''\to\mathcal X'$ 在 $\mathcal U'$ 上的一个\Term{section}{截面} $s$。缩小 $\mathcal X'$ 后，可假设 $p_*(O_{\mathcal X'\times_{\mathcal X}\mathcal X''})$ 由
+\[
+x_1,\ldots,x_q\in\Gamma(\mathcal X',p_*O_{\mathcal X'\times_{\mathcal X}\mathcal X''})
+\]
+生成。设 $u_1,\ldots,u_q\in\Gamma(\mathcal U',O_{\mathcal X'})$ 是 $x_1|\mathcal U',\ldots,x_q|\mathcal U'$ 经 $s$ 所得的像。$s$ 可延拓到 $\mathcal X'$，等价于 $u_1,\ldots,u_q$ 可延拓为 $\Gamma(\mathcal X',O_{\mathcal X'})$ 中的\Term{section}{截面}。由于 $f$ \Term{finite}{有限}，每个 $u_i$ 都是关于 $z_1,\ldots,z_p$ 的 Laurent 级数，其系数是关于 $z_{p+1},\ldots,z_n$ 的整幂级数，并满足整相关关系。因此 $u_i$ 有界，从而是关于 $z_1,\ldots,z_n$ 的整幂级数，故可延拓到 $\mathcal X'$。
+\end{proof}
+
+可以进一步问，5.3 中引入的\Term{functor}{函子}是否为\Term{category-equivalence}{范畴等价}。Grauert–Remmert 定理 [6] 回答了这个问题；下面我们利用\Term{resolution-singularities}{奇点消解}给出一个证明。也可以利用 Grauert–Remmert 定理来证明 5.1；在尚无 [8] 时，人们就是这样做的。
+
+\begin{SGAresult}{定理}{5.4（Grauert–Remmert 定理）}
+设 $\mathcal X$ 是\Term{normal}{正规}\Term{analytic-space}{解析空间}，$\mathcal Y$ 为闭解析子集，使 $\mathcal U=\mathcal X-\mathcal Y$ 在 $\mathcal X$ 中稠密。设 $\mathcal U'$ 为 $\mathcal U$ 的\Term{finite}{有限}\Term{normal}{正规}\Term{covering}{覆盖}；假设存在 $\mathcal X$ 的一个\Term{nowhere-dense}{稀薄}闭解析子集 $\mathcal S$，使 $\mathcal U'$ 在 $\mathcal U-\mathcal U\cap\mathcal S$ 上的限制\Term{etale}{平展}。则存在 $\mathcal X$ 的一个\Term{finite}{有限}\Term{normal}{正规}\Term{covering}{覆盖} $\mathcal X'$，延拓 $\mathcal U'$；而且 $\mathcal X'$ 在\Term{isomorphism}{同构}意义下唯一。
+\end{SGAresult}
+\begin{proof}
+唯一性来自 5.3。因此，延拓 $\mathcal U'$ 的问题在 $\mathcal X$ 上是局部的。可以假设 $\mathcal U$ \Term{regular}{正则}，且 $\mathcal U'$ 在 $\mathcal U$ 上\Term{etale}{平展}。事实上，$\mathcal U$ 的\Term{regular-point}{正则点}所成集合是 $\mathcal X$ 的稠密开集 $\mathcal V$，其补集是解析子集 [4，第 20 节 D 定理 2]，只需将 $\mathcal U$ 替换为开集 $\mathcal V-\mathcal V\cap\mathcal S$。
+
+设 $y$ 是 $\mathcal X-\mathcal U$ 的一个点，证明 $\mathcal U'$ 可延拓到 $y$ 的某个邻域。将 $\mathcal X$ 缩小为 $y$ 的一个\Term{open-neighborhood}{开邻域}后，由\Term{resolution-singularities}{奇点消解}定理 [8]，可取一个\Term{regular}{正则}\Term{analytic-space}{解析空间} $\mathcal X_1$ 及\Term{projective}{射影}\Term{morphism}{态射} $f:\mathcal X_1\to\mathcal X$，使其在 $\mathcal U$ 上的限制诱导\Term{isomorphism}{同构} $\mathcal U_1=f^{-1}(\mathcal U)\simeq\mathcal U$，且 $\mathcal U_1$ 是 $\mathcal X_1$ 中某个\Term{normal-crossings-divisor}{正规交叉除子}的补集。先证明 $\mathcal U'$ 可延拓为 $\mathcal X_1$ 的\Term{finite}{有限}\Term{normal}{正规}\Term{covering}{覆盖}。问题在 $\mathcal X_1$ 上是局部的，故可假设 $\mathcal X_1$ 是\Term{affine-space}{仿射空间} $\mathcal E^n$ 中的球，$\mathcal X_1-\mathcal U_1$ 由前 $p$ 个坐标函数 $z_1,\ldots,z_p$ 的消失定义，其中 $0\leq p\leq n$。$\mathcal U_1$ 的\Term{etale-covering}{平展覆盖} $\mathcal U'$ 是如下\Term{covering}{覆盖}
+\[
+\mathcal U_2=\mathcal U_1[T_1,\ldots,T_p]/(T_1^{n_1}-z_1,\ldots,T_p^{n_p}-z_p)
+\]
+关于 $\mathcal U_2$ 的 Galois 群的某个子群 $H$ 的商。\Term{covering}{覆盖} $\mathcal U_2$ 延拓为 $\mathcal X_1$ 的\Term{covering}{覆盖}
+\[
+\mathcal X_2=\mathcal X_1[T_1,\ldots,T_p]/(T_1^{n_1}-z_1,\ldots,T_p^{n_p}-z_p),
+\]
+$H$ 在其上作用，且 $\mathcal X_2/H$ 将 $\mathcal U'$ 延拓到 $\mathcal X_1$。
+\SourcePage{272}
+以 $\mathcal X'_1$ 表示延拓 $\mathcal U'$ 的 $\mathcal X_1$ 上的\Term{finite}{有限}\Term{normal}{正规}\Term{covering}{覆盖}，以 $\mathcal F_1$ 表示由 $\mathcal F_1$ 定义的\Term{coherent}{凝聚} $O_{\mathcal X_1}$-代数。由 Grauert–Remmert \Term{finite}{有限}性定理 [4，第 15 节定理 1.1]，$f_*\mathcal F_1$ 是\Term{coherent}{凝聚} $O_{\mathcal X}$-代数。因此，它对应 $\mathcal X$ 的一个\Term{finite-covering}{有限覆盖} $\mathcal X'$；由于 $\mathcal X'_1$ \Term{normal}{正规}，$\mathcal X'$ 也\Term{normal}{正规}。$\mathcal X'$ 就是所求的 $\mathcal U'$ 的延拓。
+\end{proof}
+
+\begin{SGAresult}{注记}{5.5}
+在 5.4 中，关于\Term{morphism}{态射} $\mathcal U'\to\mathcal U$ 非\Term{etale}{平展}点的集合的假设不能删去。例如，令 $\mathcal X$ 为复平面中的单位圆盘，$\mathcal U$ 为 $\mathcal X$ 中原点的补集，并令
+\[
+\mathcal U'=\mathcal U[T]/(T^2-\sin(1/z)),
+\]
+其中 $z$ 是 $\mathcal X$ 上的坐标函数。则 $\mathcal U'$ 是 $\mathcal U$ 的\Term{finite}{有限}\Term{normal}{正规}\Term{covering}{覆盖}，却不能延拓到 $\mathcal X$。事实上，若 $\mathcal U'$ 可延拓为 $\mathcal X$ 的\Term{finite-covering}{有限覆盖} $\mathcal X'$，则 $\mathcal X$ 中使\Term{morphism}{态射} $\mathcal X'\to\mathcal X$ 非\Term{etale}{平展}的点所成集合，是一个闭解析子集，而且包含所有满足 $\sin(1/z)=0$ 的点 $z$，矛盾。
+
+然而，当 $\operatorname{codim}(\mathcal X-\mathcal U,\mathcal X)\geq2$ 时，可以删去关于\Term{morphism}{态射} $\mathcal U'\to\mathcal U$ 的奇异点集的假设。事实上，可以假设 $\mathcal U$ \Term{regular}{正则}。$\mathcal U$ 中使 $\mathcal U'\to\mathcal U$ 非\Term{etale}{平展}的点所成集合是 $\mathcal U$ 的一个\Term{divisor}{除子}。由 Remmert–Stein 定理 [9，定理 3]，它是 $\mathcal X$ 的某个\Term{divisor}{除子}在 $\mathcal U$ 上的迹。在这种情形下，若 $\mathcal A$ 是\Term{coherent}{凝聚} $O_{\mathcal U}$-代数，且 $\mathcal U'=\operatorname{Spec\,an}(\mathcal A)$，$i:\mathcal U\to\mathcal X$ 为典范\Term{morphism}{态射}，则只需取 $\mathcal X'=\operatorname{Spec\,an}(i_*\mathcal A)$；因为已知 $i_*\mathcal A$ \Term{coherent}{凝聚} [11，第 1 节定理 1]。
+\end{SGAresult}
+
+\textbf{〔注记（2003 年增补，MR）。〕} 存在非\Term{trivial-bundle}{平凡}的\Term{finitely-presented-group}{有限表示群} $G$，没有不同于 $G$ 本身的\Term{finite-index}{有限指数}子群，例如 G. Higman 的群（参见 J.-P. Serre，\textit{Arbres et amalgames}，Astérisque 第 46 号，第 I 章第 1 节命题 6）。因此，若这样的群能实现为某个 $\mathbb C$ 上\Term{scheme}{概形} $V$ 的拓扑\Term{fundamental-group}{基本群}，例如 $V$ \Term{smooth}{光滑}且\Term{projective}{射影}，则 $V$ 的底层\Term{topological-space}{拓扑空间} $V_{\mathrm{top}}$ 不是\Term{simply-connected}{单连通}的，但 $V$ 在代数意义下\Term{simply-connected}{单连通}。目前尚不知道是否存在这样的 $V$。不过，D. Toledo 已构造出 $\mathbb C$ 上的\Term{smooth}{光滑}\Term{projective}{射影}\Term{scheme}{概形} $V$，其拓扑\Term{fundamental-group}{基本群}关于\Term{finite-index}{有限指数}子群拓扑不是\Term{separated}{分离}的，即自然\Term{morphism}{态射}
+\[
+\pi_1(V_{\mathrm{top}})\longrightarrow\pi_1(V_{\mathrm{alg}})
+\]
+不是\Term{injectivity}{单射}。[D. Toledo，\textit{Projective varieties with non-residually finite fundamental group}（\Term{fundamental-group}{基本群}非剩余\Term{finite}{有限}的\Term{projective-variety}{射影簇}），Publ. Math. IHES \textbf{77} (1993)，第 103—119 页。]〔原增补注记结束〕
+
+\SGAsection{6}{参考文献}
+\begin{enumerate}[label={[\arabic*]},leftmargin=2em]
+\item N. Bourbaki，\textit{Topologie Générale}（一般拓扑学），Hermann，巴黎，1960。
+\item N. Bourbaki，\textit{Algèbre Commutative}（交换代数），Hermann，巴黎，1961。
+\item H. Cartan，巴黎高等师范学校讨论班，1956—1957。
+\item H. Cartan，巴黎高等师范学校讨论班，1960—1961。
+\item R. Godement，\textit{Théorie des Faisceaux}（层论），Hermann，巴黎，1958。
+\SourcePage{273}
+\item H. Grauert、R. Remmert，\textit{Komplexe Räume}（复空间），Math. Ann. \textbf{136} (1958)，第 245—318 页。
+\item M. Hakim，\textit{Schémas relatifs}（相对\Term{scheme}{概形}），博士论文，巴黎，1967。
+\item H. Hironaka，\textit{Resolution of singularities of an algebraic variety over a field of characteristic zero}（特征零域上代数簇的\Term{resolution-singularities}{奇点消解}），Ann. of Math. \textbf{39} (1964)，第 109—236 页。
+\item R. Remmert、K. Stein，\textit{Ueber die wesentlichen Singularitäten analytischer Mengen}（论解析集合的本性奇点），Math. Ann. \textbf{126} (1953)，第 263—306 页。
+\item J.-P. Serre，\textit{Géométrie algébrique et géométrie analytique}（代数几何与解析几何），Ann. Inst. Fourier (Grenoble) \textbf{6} (1956)，第 1—42 页。
+\item J.-P. Serre，\textit{Prolongement de faisceaux analytiques cohérents}（\Term{coherent}{凝聚}解析层的延拓），Ann. Inst. Fourier (Grenoble) \textbf{16} (1966)，第 363—374 页。
+\end{enumerate}
+\SourcePage{274}

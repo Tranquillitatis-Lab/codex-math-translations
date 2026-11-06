@@ -1,0 +1,62 @@
+\documentclass[UTF8,zihao=-4,twoside,openany,fontset=fandol]{ctexbook}
+\usepackage[a4paper,inner=27mm,outer=23mm,top=26mm,bottom=27mm,headheight=16pt]{geometry}
+\usepackage{fontspec}
+% 优先沿用原工程字体；其他系统使用 TeX Live 自带字体。
+\IfFontExistsTF{Times New Roman}{\setmainfont{Times New Roman}}{\setmainfont{TeX Gyre Termes}}
+\IfFontExistsTF{Helvetica Neue}{\setsansfont{Helvetica Neue}}{\setsansfont{TeX Gyre Heros}}
+\IfFontExistsTF{Menlo}{\setmonofont{Menlo}[Scale=MatchLowercase]}{\setmonofont{TeX Gyre Cursor}[Scale=MatchLowercase]}
+\IfFontExistsTF{Songti SC}{\setCJKmainfont{Songti SC}[BoldFont=Heiti SC,ItalicFont=Kaiti SC]}{}
+\IfFontExistsTF{Heiti SC}{\setCJKsansfont{Heiti SC}}{}
+\usepackage{amsmath,amssymb,amsthm,mathtools,mathrsfs,bm}
+\usepackage{graphicx,booktabs,longtable,array,multirow,tabularx}
+\usepackage[font=small,labelfont=bf]{caption}
+\usepackage[dvipsnames,svgnames]{xcolor}
+\definecolor{BookInk}{HTML}{153849}
+\definecolor{BookAccent}{HTML}{287F91}
+\definecolor{BookGray}{HTML}{64717A}
+\definecolor{CodeBack}{HTML}{F4F6F8}
+\usepackage{tikz,tikz-cd}
+\usetikzlibrary{arrows.meta,calc,positioning,decorations.pathreplacing,cd}
+\usepackage{enumitem}
+\setlist{nosep,topsep=.5\baselineskip}
+\usepackage{listings}
+\lstdefinestyle{bookcode}{backgroundcolor=\color{CodeBack},basicstyle=\ttfamily\small,keywordstyle=\color{RoyalBlue}\bfseries,commentstyle=\color{ForestGreen},stringstyle=\color{BrickRed},numbers=left,numberstyle=\scriptsize\color{BookGray},numbersep=9pt,frame=single,framerule=.25pt,rulecolor=\color{BookGray!30},breaklines=true,showstringspaces=false,columns=fullflexible,keepspaces=true,tabsize=4,xleftmargin=1.8em,framexleftmargin=1.5em,aboveskip=1em,belowskip=1em}
+\lstset{style=bookcode}
+\usepackage[bottom,hang]{footmisc}
+\usepackage{fancyhdr}
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[LE]{\small\color{BookGray}\thepage}
+\fancyhead[RO]{\small\color{BookGray}\thepage}
+\fancyhead[RE]{\small\color{BookGray}自守形式、表示与 $L$ 函数}
+\fancyhead[LO]{\small\color{BookGray}\nouppercase{\leftmark}}
+\renewcommand{\headrulewidth}{.25pt}
+\fancypagestyle{plain}{\fancyhf{}\fancyfoot[C]{\small\color{BookGray}\thepage}\renewcommand{\headrulewidth}{0pt}}
+\ctexset{part={name={第,部分},number=\Roman{part},format=\Huge\sffamily\bfseries\color{BookInk}},chapter={name={第,章},number=\arabic{chapter},format=\huge\sffamily\bfseries\color{BookInk},beforeskip=10pt,afterskip=18pt},section={format=\Large\sffamily\bfseries\color{BookInk}},subsection={format=\large\sffamily\bfseries},contentsname={总目录},bibname={参考文献（References）}}
+\setcounter{tocdepth}{1}\setcounter{secnumdepth}{0}
+\setlength{\parindent}{2em}\setlength{\parskip}{.15\baselineskip}
+\linespread{1.18}
+\allowdisplaybreaks[2]
+\emergencystretch=2em
+\usepackage[unicode,hypertexnames=false,hyperfootnotes=false,bookmarksnumbered,bookmarksopen,colorlinks=true,linkcolor=BookInk,citecolor=BookAccent,urlcolor=BookAccent,pdftitle={自守形式、表示与L函数：中文合订本},pdfauthor={A. Borel 与 W. Casselman 编}]{hyperref}
+\usepackage{bookmark}
+\newcommand{\article}[5]{\chapter{#1}\label{\ArticleKey}\markboth{#1}{#1}\begin{center}{\large\itshape #2}\par\vspace{.7em}{\large #3}\par\vspace{.45em}{\small\color{BookGray}原书第 #4 册，第 #5 页}\end{center}\vspace{1em}}
+\newcommand{\articleappendix}[5]{\section*{#1}\phantomsection\label{\ArticleKey}\addcontentsline{toc}{section}{#1}\begin{center}\textit{#2}\par #3\par{\small\color{BookGray}原书第 #4 册，第 #5 页}\end{center}}
+\newcommand{\origsection}[2]{\section*{#1.\quad #2}\addcontentsline{toc}{section}{#1.\quad #2}}
+\newcommand{\origsubsection}[2]{\subsection*{#1.\quad #2}}
+\newenvironment{originaltheorem}[1]{\par\addvspace{.75\baselineskip}\noindent\textbf{#1.}\ \ignorespaces}{\par\addvspace{.5\baselineskip}}
+\renewcommand{\proofname}{证明（Proof）}
+\newcommand{\N}{\mathbb N}\newcommand{\A}{\mathbb A}\newcommand{\C}{\mathbb C}\newcommand{\R}{\mathbb R}\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}\newcommand{\F}{\mathbb F}
+\newcommand{\Gm}{\mathbb G_{m}}\newcommand{\Ga}{\mathbb G_{a}}
+\DeclareMathOperator{\GL}{GL}\DeclareMathOperator{\SL}{SL}\DeclareMathOperator{\Gal}{Gal}\DeclareMathOperator{\Hom}{Hom}\DeclareMathOperator{\Aut}{Aut}\DeclareMathOperator{\End}{End}\DeclareMathOperator{\Ind}{Ind}\DeclareMathOperator{\Res}{Res}\DeclareMathOperator{\Tr}{Tr}\DeclareMathOperator{\Norm}{N}\DeclareMathOperator{\Spec}{Spec}\DeclareMathOperator{\Lie}{Lie}\DeclareMathOperator{\Ad}{Ad}\DeclareMathOperator{\diag}{diag}
+\graphicspath{{figures/}}
+% 为 PDF 书签提供数学标题的纯文本形式。
+\pdfstringdefDisableCommands{%
+  \def\GL{GL}\def\SL{SL}\def\Gal{Gal}\def\Hom{Hom}%
+  \def\operatorname#1{#1}\def\mathrm#1{#1}\def\mathbb#1{#1}%
+  \def\mathcal#1{#1}\def\mathfrak#1{#1}\def\mathbf#1{#1}%
+  \def\widetilde#1{#1}\def\tilde#1{#1}\def\widehat#1{#1}%
+  \def\theta{θ}\def\Theta{Θ}\def\zeta{ζ}\def\pi{π}%
+  \def\varepsilon{ε}\def\epsilon{ε}\def\ell{l}%
+  \def\otimes{⊗}\def\times{×}\def\backslash{\textbackslash}%
+  \def\R{R}\def\C{C}\def\Q{Q}\def\Z{Z}\def\A{A}\def\F{F}%
+}

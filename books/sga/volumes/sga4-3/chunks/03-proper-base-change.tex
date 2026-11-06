@@ -1,0 +1,1017 @@
+\SGAchapter{XII}{固有态射的换基定理}{Théorème de changement de base pour un morphisme propre}
+\begin{center}M. Artin\end{center}
+\SourcePage{62}
+\SGAsection{1}{引言}
+本讲给出如下基本定理的一个稍为精确的表述：对于\Term{scheme}{概形}的\Term{proper-morphism}{固有态射} $f:X\to Y$ 和 $X$ 上的\Term{torsion-sheaf}{挠阿贝尔层} $F$，$R^qf_*F$ 在 $Y$ 的一个\Term{geometric-point}{几何点} $\xi$ 处的\Term{fiber}{纤维}，\Term{isomorphism}{同构}于\Term{fiber}{纤维} $X_\xi$ 的\Term{cohomology}{上同调} $H^q(X_\xi,F|_{X_\xi})$。
+
+回顾一下，对仿\Term{compact-space}{紧空间}的\Term{proper-morphism}{固有态射}，类似结果是熟知而且容易证明的（Godement，II 4.11）。对于\Term{scheme}{概形}，情况要微妙得多。例如，$F$ 为\Term{torsion-sheaf}{挠层}的假设确实必不可少，这与仿\Term{compact-space}{紧空间}的情形不同。
+
+证明分为几步：通过一些或多或少\Term{form}{形式}性的逐层剖分方法，归结到 $Y$ 为\Term{noetherian}{诺特}、$f$ 的\Term{relative-dimension}{相对维数} $\leq1$、且\Term{sheaf}{层} $F$ 为\Term{constant-sheaf}{常值层}的情形。为处理这一特例，使用\Term{fundamental-group}{基本群}的\Term{specialization}{特殊化}定理（5.9）；它是上述定理的一个非阿贝尔变体，
+\SourcePage{63}
+而且在所考虑的特例下可以直接证明（第 XIII 讲 2）。
+
+\SGAsection{2}{一个例子}
+我们说明 $F$ 为\Term{torsion-sheaf}{挠层}的假设是必需的。设 $X$ 是\Term{algebraically-closed-field}{代数闭域} $k$ 上的一个\Term{nonsingular}{非奇异}曲面，$Y$ 是 $k$ 上的一条\Term{nonsingular}{非奇异}曲线，$f:X\to Y$ 是一个\Term{proper-morphism}{固有态射}，其\Term{generic-fiber}{泛纤维}是\Term{smooth}{光滑}的，而在 $Y$ 的\Term{geometric-point}{几何点} $\bar y$ 处的\Term{geometric-fiber}{几何纤维}是\Term{irreducible}{不可约}的，并有一个\Term{ordinary-double-point}{普通二重点}。取 $F$ 为\Term{constant-sheaf}{常值层} $\mathbf Z_X$。
+
+回顾下面的事实：对于\Term{scheme}{概形} $Z$ 的任意一点 $z$，设 $i:z\to Z$ 为包含\Term{morphism}{态射}，则 $H^1(Z,i_*\mathbf Z_z)=0$（第 IX 讲 3.6 (i)）。由于 $X$ 是\Term{normal}{正规的}，因而是\Term{unibranch}{单支的}，故有 $\mathbf Z_X\simeq i_*\mathbf Z_x$，其中 $i:x\to X$ 为\Term{generic-point}{泛点}的包含\Term{morphism}{态射}。于是 $H^1(X,\mathbf Z_X)=0$，同样 $R^1f_*\mathbf Z_X=0$。但我断言，对于带有\Term{ordinary-double-point}{普通二重点}的\Term{geometric-fiber}{几何纤维} $X_\circ$，有
+\[
+H^1(X_\circ,\mathbf Z_{X_\circ})\simeq\mathbf Z.
+\]\footnote{从 $\Pi_1$ 的观点，可与 SGA 3，第 X 讲（6，例）及 (1.6) 比较。}
+这就给出了反例，因为 $\mathbf Z_{X_\circ}\simeq\mathbf Z_X|_{X_\circ}$。
+
+设 $i_\circ:x_\circ\to X_\circ$ 为 $X_\circ$ 的\Term{generic-point}{泛点}的包含\Term{morphism}{态射}，$Q$ 为 $X_\circ$ 的奇点。曲线 $X_\circ$ 在 $Q$ 有两个“分支”，由此可知 $i_{\circ *}(\mathbf Z_{x_\circ})$ 在 $Q$ 处的\Term{fiber}{纤维}\Term{isomorphism}{同构}于 $\mathbf Z\times\mathbf Z$。在 $Q$ 以外，曲线 $X_\circ$ 是\Term{normal}{正规的}，因此在 $X_\circ-Q$ 上有 $i_{\circ *}(\mathbf Z_{x_\circ})\simeq\mathbf Z_{X_\circ}$。故有\Term{exact-sequence}{正合列}
+\[
+0\longrightarrow\mathbf Z_{X_\circ}\longrightarrow i_{\circ *}(\mathbf Z_{x_\circ})
+\longrightarrow(\mathbf Z)_Q\longrightarrow0,
+\]
+其中末项是在点 $Q$ 处的\Term{sheaf}{层} $\mathbf Z$ 的\Term{extension-by-zero}{零延拓}。这三项的 $H^0$ 都\Term{isomorphism}{同构}于 $\mathbf Z$，而 $H^1(X_\circ,i_{\circ *}(\mathbf Z_{x_\circ}))=0$；从\Term{cohomology}{上同调}\Term{exact-sequence}{正合列}得到 $H^1(X_\circ,\mathbf Z_{X_\circ})=\mathbf Z$。
+
+\SGAsection{3}{非阿贝尔 $H^1$ 的回顾}
+我们简要列出后文需要的一些\Term{nonabelian-cohomology}{非阿贝尔上同调}结果。大部分证明将略去；这些证明在各种特例下都很熟知，可以在 Giraud 的学位论文 [1] 中找到。
+
+设 $X$ 为\Term{scheme}{概形}，$F$ 为 $X$ 上的\Term{group-sheaf}{群层}。对每一个\Term{etale}{平展}的 $X'/X$，定义一个\Term{pointed-set}{带基点集合} $H^1(X',F)$；它对 $F$ \Term{covariant}{协变}，对 $X'$ \Term{contravariant}{反变}。$H^1$ 与\Term{sheaf}{层}的\Term{finite-product}{有限积}交换。若 $f:X\to Y$ 是一个\Term{morphism}{态射}，便定义一个\Term{pointed-sheaf}{带基点集合层}（即有指定\Term{section}{截面}的层）$R^1f_*F$。它是如下（\Term{pointed-set}{带基点集合}）\Term{presheaf}{预层} $\mathscr R^1F$ 的\Term{associated-sheaf}{伴随层}：对每一个\Term{etale}{平展}的 $Y'/Y$，赋予\Term{set}{集合} $H^1(X\times_Y Y',F)$。
+
+\SourcePage{64}
+有通常的\Term{cohomology}{上同调}\Term{exact-sequence}{正合列}；这里只列出其中一个。
+\begin{SGAresult}{命题}{3.1}
+设 $0\to F\xrightarrow{u}G$ 为\Term{group-sheaf}{群层}的\Term{injectivity}{单射}，$C=G/F$ 为 $G$ 下的\Term{homogeneous-space}{齐性集合}\Term{sheaf}{层}。则有\Term{pointed-sheaf}{带基点集合层}的\Term{exact-sequence}{正合列}
+\[
+0\to f_*F\to f_*G\to f_*C\xrightarrow{\partial}R^1f_*F\xrightarrow{u^1}R^1f_*G.
+\]
+\end{SGAresult}
+当然，此\Term{exact-sequence}{正合列}是由\Term{presheaf}{预层}\Term{exact-sequence}{正合列}取\Term{associated-sheaf}{伴随层}而得；后者在\Term{etale}{平展}的 $Y'/Y$ 处的值是
+\[
+0\to F(X')\to G(X')\to C(X')\xrightarrow{\partial}H^1(X',F)\to H^1(X',G),
+\]
+其中 $X'=X\times_Y Y'$。$\partial$ 所诱导的\Term{equivalence-relation}{等价关系}，就是 $f_*G$ 在 $f_*C$ 上的\Term{action}{作用}所给出的\Term{equivalence-relation}{等价关系}。与通常一样，借助“\Term{twisting}{扭曲}”的概念 [1]，可以明确写出 $u^1$ 所诱导的\Term{equivalence-relation}{等价关系}。
+
+\begin{SGAresult}{命题}{3.2}
+设 $X\xrightarrow{f}Y\xrightarrow{g}Z$ 为\Term{scheme}{概形}\Term{morphism}{态射}。对每一个\Term{etale}{平展}的 $Z'/Z$，令 $Y'=Y\times_Z Z'$，$X'=X\times_Z Z'$，则有\Term{exact-sequence}{正合列}
+\[
+0\longrightarrow H^1(Y',f_*F)\longrightarrow H^1(X',F)\longrightarrow H^0(Y',R^1f_*F).
+\]
+从而，取\Term{associated-sheaf}{伴随层}，得到 $Z$ 上的\Term{pointed-sheaf}{带基点层}\Term{exact-sequence}{正合列}
+\[
+0\longrightarrow(R^1g_*)f_*F\longrightarrow R^1(gf)_*F\longrightarrow f_*(R^1g_*)F.
+\]
+\end{SGAresult}
+\footnote{译注：最后一项在重排本与原扫描本中均印作 $f_*(R^1g_*)F$；此处照录。重排本中 $X'$ 的\Term{fiber-product}{纤维积}底标误作 $X$，据原扫描本恢复为 $Z$。}
+
+\begin{SGAresult}{命题}{3.3}
+形如 $H^1(X',F)$（$X'$ 在 $X$ 上\Term{etale}{平展}）以及形如 $R^1f_*F$（$f:X\to Y$ 为任意\Term{morphism}{态射}）的\Term{functor}{函子}族是\Term{effaceable}{可消去的}，即存在一个\Term{injectivity}{单射} $F\xrightarrow{u}G$，使诱导的\Term{morphism}{态射} $H^1(X',F)\to H^1(X',G)$ 和 $R^1f_*F\to R^1f_*G$ 全都为零。更精确地说，存在一个\Term{injectivity}{单射} $F\xrightarrow{u}G$，使每一个 $H^1(X',G)$（$X'$ 在 $X$ 上\Term{etale}{平展}）以及每一个\Term{pointed-sheaf}{带基点层} $R^1f_*G$ 都为零。若 $X$ 是\Term{noetherian}{诺特}的，且 $F$ 是一个\Term{constructible}{可构造}的\Term{ind-l-group}{ind-$L$ 群层}，则可以选取这样的\Term{injectivity}{单射}，并使 $G$ 也是\Term{ind-l-group}{ind-$L$ 群层}。
+\end{SGAresult}
+\begin{proof}
+第一个断言大概在任意\Term{topos}{拓扑斯}中都成立；但对于\Term{etale-topology}{平展拓扑}，用“\Term{godement-resolution}{Godement 分解}”作消去很方便：
+\[
+F\longrightarrow G=\prod_{x\in X}i_{\bar x *}i_{\bar x}^{*}F.\tag{3.4}
+\]
+这里 $x$ 遍历 $X$ 的全部点，$i_{\bar x}:\bar x\to X$ 是位于 $x$ 上方的一个\Term{geometric-point}{几何点}。注意，对于\Term{etale}{平展}的 $X'/X$，有
+\[
+G(X')=\prod_{x\in X}(i_{\bar x}^{*}F)(X'\times_X\bar x)
+=\prod_{x\in X}\left(\prod_{\bar x'/\bar x}F_{\bar x'}\right),
+\]
+\SourcePage{65}
+其中 $\bar x'$ 是 $X'$ 的\Term{geometric-point}{几何点}。显然，$X'$ 的每一点上方至少有一个 $\bar x'$，所以 $F(X')\subset G(X')$（第 VIII 讲 3），从而 $F\subset G$。另一方面，任意\Term{etale}{平展}的 $\bar u/\bar x$ 都是一些\Term{separably-closed-field}{可分闭域}的谱的和，故对 $\bar x$ 上任意\Term{sheaf}{层} $\bar G$，有 $H^1(\bar u,\bar G)=0$。于是由 3.2，对每一个\Term{etale}{平展}的 $X'/X$，有 $H^1(X',i_{\bar x *}i_{\bar x}^{*}F)=0$；由于 $H^1$ 与积交换，遂得 $H^1(X',G)=0$。利用 $R^1f_*(G)$ 是\Term{presheaf}{预层} $Y'\mapsto H^1(X\times_Y Y',G)$ 的\Term{associated-sheaf}{伴随层}这一描述，同样得到对每一个 $f:X\to Y$ 都有 $R^1f_*G=0$。
+
+现在再假设 $F$ 为\Term{constructible}{可构造层}，$X$ 是\Term{noetherian}{诺特}的。立即看出，$X$ 存在\Term{finite}{有限}点集 $\{x_1,\ldots,x_n\}$，使\Term{morphism}{态射}
+\[
+F\longrightarrow\prod_{1\leq i\leq n}i_{\bar x_i *}i_{\bar x_i}^{*}F
+\]
+已经是\Term{injectivity}{单射}。\Term{sheaf}{层} $i_{\bar x_i *}i_{\bar x_i}^{*}F$ 是一个\Term{ind-finite-group}{ind-有限群层}（第 IX 讲 1.5），所以其\Term{finite-product}{有限积}也是如此（第 IX 讲 1.4 及 1.6 (iii)）。用此\Term{sheaf}{层}替换 $G$，便得到最后的断言。
+\end{proof}
+
+\textbf{3.5。}与\Term{abelian-cohomology}{阿贝尔上同调}的情形一样（在第 V 讲 2.4 中讨论），可以用 Čech 方法计算 $H^1$ [1]。
+
+\SGAsection{4}{换基态射}
+设
+\[
+\begin{tikzcd}
+X\arrow[d,"f"']&X'\arrow[l,"g'"']\arrow[d,"f'"]\\
+S&S'\arrow[l,"g"]
+\end{tikzcd}
+\]
+为\Term{scheme}{概形}\Term{morphism}{态射}的一个\Term{cartesian-square}{笛卡尔方块}。由此按以下方式\Term{derive}{导出}一个\Term{functor}{函子}\Term{morphism}{态射} $\varphi=\varphi_g$：
+\[
+g^*f_*\xrightarrow{\varphi}f'_*g'^*.\tag{4.1}
+\]
+由于 $g_*$ 与 $g^*$ \Term{adjoint}{伴随}，给出这样的\Term{morphism}{态射}，\Term{equivalence}{等价}于给出\Term{functor}{函子}\Term{morphism}{态射}
+\[
+f_*\longrightarrow g_*f'_*g'^*.\tag{4.1 adj}
+\]
+取后者为
+\[
+f_*\xrightarrow{(\mathrm{id}\to g'_*g'^*)}f_*g'_*g'^*=g_*f'_*g'^*,
+\]
+这里用了
+\[
+g_*f'_*=(gf')_*=(fg')_*=f_*g'_*.
+\]
+
+\SourcePage{66}
+注意，(4.1) 还有另一种候选。事实上，给出这样的\Term{morphism}{态射}也\Term{equivalence}{等价}于给出
+\[
+f'^*g^*f_*\longrightarrow g'^*,
+\]
+因而可以取
+\[
+f'^*g^*f_*\simeq g'^*f^*f_*\xrightarrow{(f^*f_*\to\mathrm{id})}g'^*.
+\]
+我不知道这两种选择是否总是一致\footnote{Deligne 先生已在一个一般得多的背景下肯定地解决了这一疑惑，参见第 XVII 讲。}；无论如何，我们只使用第一种。称它为\Term{base-change-morphism}{换基态射}。
+
+把 (4.1) \Term{restriction}{限制}到\Term{abelian-sheaf}{阿贝尔层}（相应地，\Term{group-sheaf}{群层}），便对每个 $q\geq0$（相应地，$q=0,1$）得到一个\Term{morphism}{态射} $\varphi^q=\varphi_g^q$：
+\[
+g^*(R^qf_*)\xrightarrow{\varphi^q}(R^qf'_*)g'^*.\tag{4.2}
+\]
+实际上，这也\Term{equivalence}{等价}于给出
+\[
+R^qf_*\longrightarrow g_*(R^qf'_*)g'^*,\tag{4.2 adj}
+\]
+而有“显然的”\Term{morphism}{态射}
+\[
+\begin{aligned}
+R^qf_*&\xrightarrow{a}(R^qf_*)g'_*g'^*
+\xrightarrow{b}R^q(fg')_*g'^*\\
+&=R^q(gf')_*g'^*\xrightarrow{c}g_*(R^qf'_*)g'^*.
+\end{aligned}
+\]
+
+\begin{SGAresult}{注记}{4.3}
+假设 $g$（因而 $g'$）是\Term{closed-immersion}{闭浸入}。则上面的\Term{morphism}{态射} $b,c$ 都是\Term{isomorphism}{同构}（第 VIII 讲 5.7）。所以 (4.2) 本质上就是上面的\Term{morphism}{态射} $a$；后者由对\Term{canonical}{典范}\Term{morphism}{态射} $F\to g'_*g'^*F$ 施以 $R^qf_*$ 定义。
+\end{SGAresult}
+
+\begin{SGAresult}{命题}{4.4}
+（\Term{base-change-morphism}{换基态射}的复合。）
+
+(i) 设
+\[
+\begin{tikzcd}
+X\arrow[d,"f"']&X'\arrow[l,"g'"']\arrow[d,"f'"]&X''\arrow[l,"h'"']\arrow[d,"f''"]\\
+S&S'\arrow[l,"g"]&S''\arrow[l,"h"]
+\end{tikzcd}
+\]
+为\Term{scheme}{概形}\Term{morphism}{态射}的一个\Term{cartesian-diagram}{笛卡尔图}。则下图交换：
+\SourcePage{67}
+\[
+\begin{tikzcd}[column sep=small]
+(gh)^*f_*\arrow[rr,"\varphi_{gh}"]\arrow[d,"\sim"']&&f''_*(g'h')^*\arrow[d,"\sim"]\\
+h^*g^*f_*\arrow[r,"h^*\varphi_g"']&h^*f'_*g'^*\arrow[r,"\varphi_hg'^*"']&f''_*h'^*g'^*.
+\end{tikzcd}
+\]
+把 $f_*,f'_*,f''_*$ 分别替换为 $R^qf_*,R^qf'_*,R^qf''_*$，在有关\Term{functor}{函子}的自然定义域内（参见第 3 节），所得的图也交换。
+
+(ii) 设
+\[
+\begin{tikzcd}
+Y\arrow[d,"e"']&Y'\arrow[l,"g''"']\arrow[d,"e'"]\\
+X\arrow[d,"f"']&X'\arrow[l,"g'"']\arrow[d,"f'"]\\
+S&S'\arrow[l,"g"]
+\end{tikzcd}
+\]
+为\Term{scheme}{概形}\Term{morphism}{态射}的一个\Term{cartesian-diagram}{笛卡尔图}。则下图交换：
+\[
+\begin{tikzcd}[column sep=small]
+g^*(fe)_*\arrow[rr]\arrow[d,equal]&&(f'e')_*g''^*\arrow[d,equal]\\
+g^*f_*e_*\arrow[r]&f'_*g'^*e_*\arrow[r]&f'_*e'_*g''^*.
+\end{tikzcd}
+\]
+其中三条水平\Term{arrow}{箭头}分别来自 $fe,f,e$ 的\Term{base-change-morphism}{换基同态}。
+
+在阿贝尔情形，$fe$ 的\Term{base-change-morphism}{换基态射}由如下\Term{spectral-sequence}{谱序列}的\Term{morphism}{态射}诱导：
+\[
+\begin{tikzcd}[column sep=large]
+E_2^{p,q}=g^*(R^qf_*)(R^qe_*)F\arrow[r,Rightarrow]\arrow[d,"\varphi"']&g^*R^{p+q}(fe)_*F\arrow[d,"\varphi"]\\
+(R^pf'_*)(R^qe'_*)g''^*F\arrow[r,Rightarrow]&R^{p+q}(f'e')_*g'^*F.
+\end{tikzcd}
+\]
+\footnote{译注：原文\Term{spectral-sequence}{谱序列}的左上项使用两个上标 $q$，右下项使用 $g'^*$，与左下项的 $g''^*$ 不一致，此处照录。}它在起始项上由 $e$ 和 $f$ 的\Term{base-change-morphism}{换基态射}诱导；
+\SourcePage{68}
+对于\Term{group-sheaf}{群层}，有\Term{exact-sequence}{正合列}的\Term{morphism}{态射}
+\[
+\begin{tikzcd}[column sep=small]
+0\arrow[r]&g^*(R^1f_*)e_*F\arrow[r]\arrow[d,"\varphi"']&g^*R^1(fe)_*F\arrow[r]\arrow[d,"\varphi"']&g^*f_*(R^1e_*)F\arrow[d,"\varphi"]\\
+0\arrow[r]&(R^1f'_*)e'_*g''^*F\arrow[r]&R^1(f'e')_*g''^*F\arrow[r]&f'_*(R^1e'_*)g''^*F.
+\end{tikzcd}
+\]
+\end{SGAresult}
+证明留给读者。
+
+\SGAsection{5}{主要定理及若干变体的陈述}
+定理如下。
+\begin{SGAresult}{定理}{5.1}
+（\Term{proper-morphism}{固有态射}的\Term{base-change-theorem}{换基定理}。）设
+\[
+\begin{tikzcd}
+X\arrow[d,"f"']&X'\arrow[l,"g'"']\arrow[d,"f'"]\\
+S&S'\arrow[l,"g"]
+\end{tikzcd}
+\]
+为\Term{scheme}{概形}的一个\Term{cartesian-diagram}{笛卡尔图}，$f$ 为\Term{proper-morphism}{固有态射}。
+
+(i) 设 $F$ 是 $X$ 上的\Term{set-sheaf}{集合层}。则\Term{morphism}{态射} (4.1)
+\[
+\varphi:g^*f_*F\longrightarrow f'_*g'^*F
+\]
+是\Term{bijection}{双射}。
+
+(ii) 设 $F$ 是 $X$ 上的\Term{group-sheaf}{群层}（相应地，\Term{ind-finite-group}{ind-有限群层}）。则\Term{morphism}{态射} (4.2)
+\[
+\varphi^1:g^*(R^1f_*)F\longrightarrow(R^1f'_*)g'^*F
+\]
+是\Term{injectivity}{单射}（相应地，\Term{bijection}{双射}）。
+
+(iii) 设 $F$ 是 $X$ 上的\Term{torsion-sheaf}{挠阿贝尔层}。则对每个 $q\geq0$，\Term{morphism}{态射} (4.2)
+\[
+\varphi^q:g^*(R^qf_*)F\longrightarrow(R^qf'_*)g'^*F
+\]
+都是\Term{bijection}{双射}。
+\end{SGAresult}
+先陈述定理的一些直接推论。如果 $S'=\xi$ 是 $S$ 的一个\Term{geometric-point}{几何点}，则 $\xi$ 上的一个\Term{sheaf}{层}由其\Term{global-section}{整体截面}确定。对于 $X$ 上每一个\Term{sheaf}{层} $G$，有 $H^0(\xi,R^qf'_*G)=H^q(X',G)$，从而有以下推论（它实际上与 (5.1) 本质\Term{equivalence}{等价}）。
+
+\begin{SGAresult}{推论}{5.2}
+设 $f:X\to S$ 为\Term{proper-morphism}{固有态射}，$\xi\to S$ 为一个\Term{geometric-point}{几何点}，$X_\xi$ 为 $f$ 在 $\xi$ 处的\Term{fiber}{纤维}。
+\SourcePage{69}
+
+(i) 若 $F$ 是 $X$ 上的\Term{set-sheaf}{集合层}，则\Term{canonical}{典范}\Term{base-change-morphism}{换基态射}
+\[
+(f_*F)_\xi\longrightarrow H^0(X_\xi,F|_{X_\xi})
+\]
+是\Term{bijection}{双射}。
+
+(ii) 若 $F$ 是\Term{group-sheaf}{群层}（相应地，\Term{ind-finite-group}{ind-有限群层}），则\Term{base-change-morphism}{换基态射}
+\[
+(R^1f_*F)_\xi\longrightarrow H^1(X_\xi,F|_{X_\xi})
+\]
+是\Term{injectivity}{单射}（相应地，\Term{bijection}{双射}）。
+
+(iii) 若 $F$ 为\Term{torsion-sheaf}{挠阿贝尔层}，则对每个 $q\geq0$，\Term{base-change-morphism}{换基态射}
+\[
+(R^qf_*F)_\xi\longrightarrow H^q(X_\xi,F|_{X_\xi})
+\]
+是\Term{bijection}{双射}。
+\end{SGAresult}
+由第 X 讲 4.3 及 5.2，得到：
+\begin{SGAresult}{推论}{5.3}
+在第 X 讲 5.2 的条件下，设 $n$ 是\Term{fiber}{纤维} $X_\xi$ 的\Term{dimension}{维数}。则对 $X$ 上每个\Term{torsion-sheaf}{挠阿贝尔层} $F$，当 $q>2n$ 时，\Term{fiber}{纤维} $(R^qf_*F)_\xi$ 为零。若 $F$ 为 $p$-\Term{torsion-sheaf}{挠层}（$p$ 为 $\xi$ 的\Term{characteristic}{特征}），则当 $q>n$ 时，$R^qf_*(F)$ 在 $\xi$ 处的\Term{fiber}{纤维}为零。
+\end{SGAresult}
+回顾一下，说 $X/S$ 的\Term{relative-dimension}{相对维数} $\leq n$，是指每个\Term{fiber}{纤维}的\Term{dimension}{维数}都 $\leq n$。因此有：
+\begin{SGAresult}{推论}{5.3 bis}
+设 $f:X\to S$ 为\Term{proper-morphism}{固有态射}，且 $X/S$ 的\Term{relative-dimension}{相对维数} $\leq n$。则对 $X$ 上每个\Term{torsion-sheaf}{挠阿贝尔层} $F$，当 $q>2n$ 时有 $R^qf_*F=0$。若 $S$ 的\Term{characteristic}{特征}为 $p$，$F$ 是 $p$-\Term{torsion-sheaf}{挠阿贝尔层}，则当 $q>n$ 时有 $R^qf_*F=0$。
+\end{SGAresult}
+把 (5.1) 应用于\Term{separably-closed-field}{可分闭域}的谱之间的\Term{morphism}{态射}，得到：
+\begin{SGAresult}{推论}{5.4}
+（\Term{proper}{固有}情形下\Term{cohomology}{上同调}在\Term{base-field}{基域}变换下的不变性。）设 $k\subset K$ 为\Term{separably-closed-field}{可分闭域}，$X$ 为 $\operatorname{Spec}k$ 上的一个\Term{proper-scheme}{固有概形}，$X'=X_K$。设 $F$ 为 $X$ 上的\Term{sheaf}{层}，$F'$ 为它在 $X'$ 上的\Term{inverse-image}{逆像层}。则：
+
+(i) $H^0(X,F)\xrightarrow{\sim}H^0(X',F')$。
+
+(ii) 若 $F$ 为\Term{group-sheaf}{群层}（相应地，\Term{ind-finite-group}{ind-有限群层}），则
+\[
+H^1(X,F)\longrightarrow H^1(X',F')
+\]
+为\Term{injectivity}{单射}（相应地，\Term{bijection}{双射}）。
+
+(iii) 若 $F$ 为\Term{torsion-sheaf}{挠阿贝尔层}，则对所有 $q$，有
+\[
+H^q(X,F)\xrightarrow{\sim}H^q(X',F').
+\]
+\end{SGAresult}
+
+\SourcePage{70}
+(5.2) 的一个略有不同的变体如下。
+\begin{SGAresult}{推论}{5.5}
+设 $S$ 为\Term{henselian-ring}{亨泽尔环}的谱，$S'=s_\circ$ 为\Term{closed-point}{闭点}。设 $f:X\to S$ 为\Term{proper-morphism}{固有态射}。令 $X_\circ=X'$，$F_\circ=g'^*F$。则有：
+
+(i) 对任意\Term{set-sheaf}{集合层} $F$，
+$H^0(X,F)\xrightarrow{\sim}H^0(X_\circ,F_\circ)$。
+
+(ii) 对任意\Term{group-sheaf}{群层}（相应地，\Term{ind-finite-group}{ind-有限群层}）$F$，
+$H^1(X,F)\to H^1(X_\circ,F_\circ)$ 是\Term{injectivity}{单射}（相应地，\Term{bijection}{双射}）。
+
+(iii) 对任意\Term{torsion-sheaf}{挠阿贝尔层} $F$ 及任意 $q$，
+$H^q(X,F)\xrightarrow{\sim}H^q(X_\circ,F_\circ)$。
+\end{SGAresult}
+\begin{proof}
+若 $S$ 为\Term{strictly-local}{严格局部}，此陈述只是 (5.2) 的一个特例。设 (5.2) 已知。令 $\bar S$ 为 $S$ 的\Term{strict-localization}{严格局部化}，$\bar s$ 为 $\bar S$ 的\Term{closed-point}{闭点}，$G$ 为 $\bar S/S$ 的\Term{galois-group}{Galois 群}（它也是 $\bar s/s_\circ$ 的\Term{galois-group}{Galois 群}）。于是 $G$ 在各 $R^q$ 的\Term{fiber}{纤维}上\Term{action}{作用}，并且，对于\Term{set-sheaf}{集合层} $F$，有（采用意义明显的记号）
+\[
+H^0(X,F)\simeq H^0(\bar X,\bar F)^G,\qquad
+H^0(X_\circ,F_\circ)\simeq H^0(\bar X_\circ,\bar F_\circ)^G.
+\]
+由于 $H^0(\bar X,\bar F)\xrightarrow{\sim}H^0(\bar X_\circ,\bar F_\circ)$，而且此\Term{isomorphism}{同构}显然与 $G$ 的\Term{action}{作用}交换，所以得到 (i)。
+
+若 $F$ 为\Term{group-sheaf}{群层}，容易定义如下\Term{pointed-set}{带基点集合}\Term{exact-sequence}{正合列}的\Term{morphism}{态射}：
+\[
+\begin{tikzcd}[column sep=small]
+0\arrow[r]&H^1(G,H^0(\bar X,\bar F))\arrow[r]\arrow[d]&H^1(X,F)\arrow[r]\arrow[d]&H^1(\bar X,\bar F)^G\arrow[d]\\
+0\arrow[r]&H^1(G,H^0(\bar X_\circ,\bar F_\circ))\arrow[r]&H^1(X_\circ,F_\circ)\arrow[r]&H^1(\bar X_\circ,\bar F_\circ)^G.
+\end{tikzcd}\tag{5.5.1}
+\]
+由 (5.2)，两端的竖直\Term{arrow}{箭头}为\Term{isomorphism}{同构}。设 $\alpha,\beta\in H^1(X,F)$ 是在 $H^0(X_\circ,F_\circ)$ 中具有相同像的类\footnote{译注：原扫描本与重排本此处均写作 $H^0$；以下\Term{twisting}{扭曲}论证仍照原文保留。}，$F^\alpha$ 为借助 $\alpha$ 对 $F$ 作\Term{twisting}{扭曲}所得的\Term{sheaf}{层} [1]。令 $\beta'$ 为 $H^1(X,F^\alpha)$ 中对应于 $\beta$ 的类。由于对应于 $\alpha$ 的类 $\alpha'$ 为零，$\beta'$ 在 $H^1(X_\circ,(F^\alpha)_\circ)$ 中的像为零。
+
+考察在 (5.5.1) 中将 $F$ 替换为 $F^\alpha$ 后所得的图，发现 $\beta'$ 在 $H^1(\bar X,\overline{F^\alpha})^G$ 中的像为零，所以 $\beta'$ 是 $H^1(G,H^0(\bar X,\overline{F^\alpha}))$ 中某个元素的像，而该元素必为零。因而 $\beta'=0$，即 $\beta'=\alpha'$，从而 $\beta=\alpha$。这就证明了 (ii) 中\Term{morphism}{态射}的\Term{injectivity}{单射}性。
+
+现在假设 $F$ 为\Term{ind-finite-group}{ind-有限群层}，来证明\Term{arrow}{箭头} (ii) 的\Term{surjectivity}{满射}性。只需证明\Term{functor}{函子} $F\mapsto H^1(X_\circ,F_\circ)$ 是\Term{effaceable}{可消去的}。事实上，设 $0\to F\xrightarrow{u}G$ 是消去此\Term{functor}{函子}的一个\Term{injectivity}{单射}。
+\SourcePage{71}
+令 $C=G/F$。有\Term{exact-sequence}{正合列}的\Term{morphism}{态射}（4.4）
+\[
+\begin{tikzcd}
+H^0(X,C)\arrow[r]\arrow[d]&H^1(X,F)\arrow[r]\arrow[d,"\varepsilon"]&H^1(X,G)\arrow[d]\\
+H^0(X_\circ,C_\circ)\arrow[r]&H^1(X_\circ,F_\circ)\arrow[r,"u^1_\circ"]&H^1(X_\circ,G_\circ),
+\end{tikzcd}
+\]
+其中 $u^1_\circ$ 为零，这便蕴含 $\varepsilon$ 的\Term{surjectivity}{满射}性。
+
+来证明\Term{functor}{函子} $F\mapsto H^1(X_\circ,F_\circ)$ 对\Term{ind-finite-group}{ind-有限群层} $F$ 是\Term{effaceable}{可消去的}。设 $F\xrightarrow{u}C$ 为“\Term{godement-resolution}{Godement 分解}”(3.4)。有
+\[
+H^1(G,H^0(\bar X_\circ,\bar C_\circ))\simeq H^1(G,H^0(\bar X,\bar C))\subset H^1(X,C)=0.
+\]
+此外有\Term{commutative-square}{交换方块}
+\[
+\begin{tikzcd}
+H^1(\bar X,\bar F)\arrow[r,"\sim"]\arrow[d]&H^1(\bar X_\circ,\bar F_\circ)\arrow[d,"\alpha"]\\
+0=H^1(\bar X,\bar C)\arrow[r]&H^1(\bar X_\circ,\bar C_\circ),
+\end{tikzcd}
+\]
+（因为 $H^1(\bar X,\bar C)=\varinjlim H^1(X',C)=0$，其中 $X'/X$ 为\Term{etale}{平展}），所以 $\alpha$ 为零。于是有\Term{exact-sequence}{正合列}的\Term{morphism}{态射}
+\[
+\begin{tikzcd}[column sep=small]
+0\arrow[r]&H^1(G,H^0(\bar X_\circ,\bar F_\circ))\arrow[r]\arrow[d]&H^1(X_\circ,F_\circ)\arrow[r]\arrow[d,"\beta"]&H^1(\bar X_\circ,\bar F_\circ)^G\arrow[d,"\alpha^G"]\\
+&0\arrow[r]&H^1(X_\circ,C_\circ)\arrow[r]&H^1(\bar X_\circ,\bar C_\circ)^G.
+\end{tikzcd}
+\]
+这里 $\alpha^G$ 为零，故 $\beta$ 也为零，消去性得证。\footnote{译注：此图第二行的 $C$ 在原文中改记为 $G$；此处统一沿用刚才选定的\Term{resolution}{分解}的记号 $C$。}
+
+最后证明 (5.5) 的断言 (iii)。有\Term{spectral-sequence}{谱序列}的\Term{morphism}{态射}
+\[
+\begin{tikzcd}[column sep=large]
+E_2^{p,q}=H^p(G,H^q(\bar X,\bar F))\arrow[r,Rightarrow]\arrow[d]&H^n(X,F)\arrow[d,"\varphi"]\\
+H^p(G,H^q(\bar X_\circ,\bar F_\circ))\arrow[r,Rightarrow]&H^n(X_\circ,F_\circ).
+\end{tikzcd}
+\]
+由 (5.2)，\Term{morphism}{态射} $H^q(\bar X,\bar F)\to H^q(\bar X_\circ,\bar F_\circ)$ 都是\Term{isomorphism}{同构}。故 $\varphi$ 在 $E_2^{p,q}$ 上为\Term{isomorphism}{同构}，因而在\Term{abutment}{终项}上也是\Term{isomorphism}{同构}，结论得证。
+\end{proof}
+
+\textbf{5.6。}考察 $F$ 为\Term{constant-sheaf}{常值层}时的 (5.5) (i)、(ii)。设 $F=S_X$ 为\Term{scheme}{概形} $X$ 上取值于 $T$ 的\Term{constant-sheaf}{常值集合层}。则 $F(X)$ 就是 $X$ 到 $T$ 的\Term{locally-constant-map}{局部常值映射}所成的\Term{set}{集合}。若 $X_\circ$ 为 $X$ 的一个\Term{subscheme}{子概形}，且 $T$ 至少有两个元素，则可知 $F(X)\to F(X_\circ)$ 为\Term{bijection}{双射}，当且仅当从 $X$ 的既开又闭部分的\Term{set}{集合} $\Theta(X)$ 到 $X_\circ$ 的相应\Term{set}{集合} $\Theta(X_\circ)$ 的映射 $U\mapsto U_\circ=U\cap X_\circ$ 为\Term{bijection}{双射}。
+
+\SourcePage{72}
+如果 $X_\circ$ 的\Term{connected-component}{连通分支}集 $\Pi_0(X_\circ)$ \Term{finite}{有限}，这\Term{equivalence}{等价}于说映射 $\Pi_0(X_\circ)\to\Pi_0(X)$ 是\Term{bijection}{双射}。由此，(5.5) (i) 也可改述如下（注意在此情形下，$X_\circ$ 在一个域上是\Term{finite-type}{有限型}的，因而是\Term{noetherian}{诺特}的，故 $\Pi_0(X_\circ)$ \Term{finite}{有限}）：
+\begin{SGAresult}{推论}{5.7}
+设 $S$ 为\Term{henselian-ring}{亨泽尔环}的谱，$s_\circ$ 为其\Term{closed-point}{闭点}。设 $f:X\to S$ 为\Term{proper-morphism}{固有态射}，$X_\circ$ 为 $X/S$ 的\Term{closed-fiber}{闭纤维}。则由 $X_\circ\to X$ 诱导的映射 $\Pi_0(X)\to\Pi_0(X_\circ)$ 为\Term{bijection}{双射}。
+\end{SGAresult}
+\footnote{译注：本陈述中 $\Pi_0$ \Term{arrow}{箭头}的方向依原文照录；此前 5.6 中写的是 $\Pi_0(X_\circ)\to\Pi_0(X)$。}
+特别地，$\Pi_0(X)$ 是\Term{finite}{有限}集。现在在\Term{noetherian}{诺特}情形下直接证明 (5.7)。
+\begin{SGAresult}{引理}{5.8}
+若 $S$ 是\Term{noetherian}{诺特}的，则陈述 (5.7) 成立。\footnote{参见 EGA IV 18.5.19。}
+\end{SGAresult}
+\begin{proof}
+在\Term{noetherian}{诺特}情形下，$\Pi_0(X)$ 当然\Term{finite}{有限}。将 $X$ 替换为它的一个\Term{connected-component}{连通分支}，可以假设 $\Pi_0(X)$ 只有一个元素，即 $X$ \Term{connected}{连通}且\Term{nonempty}{非空}。须证明 $X_\circ$ 也\Term{connected}{连通}且\Term{nonempty}{非空}。由于 $f$ 是\Term{proper-morphism}{固有态射}，$X$ 在 $S$ 中的像是闭的；又因 $X$ \Term{nonempty}{非空}，该像\Term{nonempty}{非空}，故包含 $s_\circ$，这说明 $X_\circ$ \Term{nonempty}{非空}。设
+\[
+\begin{tikzcd}
+X\arrow[dr,"f'"]\arrow[dd,"f"']&\\
+&S'\arrow[dl,"\pi"]\\
+S&
+\end{tikzcd}
+\]
+是 $f$ 的\Term{stein-factorization}{Stein 分解}（EGA III 4.3.3），使 $S'/S$ \Term{finite-morphism}{有限}，$S'$ \Term{connected}{连通}。已知 $f'$ 的每个\Term{fiber}{纤维}都\Term{connected}{连通}且\Term{nonempty}{非空}，而 $X_\circ$ 的底\Term{space}{空间}是 $S'$ 各\Term{closed-fiber}{闭纤维}的底\Term{space}{空间}之并。所以只须证明 $S'$ 是一个\Term{local-ring}{局部环}的谱。由于 $S$ 是\Term{henselian}{亨泽尔}的，$S'$ 的环 $A'$ 是若干\Term{local-ring}{局部环}的积（第 VII 讲 4.1 (i)）；而 $S'$ \Term{connected}{连通}，故 $A'$ 是\Term{local-ring}{局部环}。这就证明了 5.8。
+\end{proof}
+
+\textbf{5.9.0。}现在设 $F=G_X$ 是取值于\Term{finite-group}{有限群} $G$ 的\Term{constant-sheaf}{常值群层}。则 $H^1(X,G_X)$ 分类 $X$ 的群为 $G$ 的\Term{galois-cover}{主 Galois 覆盖}（第 VII 讲 2.1）。推论 5.5 (ii) 表明，\Term{morphism}{态射} $X_\circ\to X$ 在这些\Term{cover}{覆盖}的\Term{isomorphism-class}{同构类}集之间诱导一个\Term{bijection}{双射}。由 $\Pi_1$ 的定义，便知对于\Term{finite}{有限}\Term{constant-sheaf}{常值群层}，在 (i) 成立的前提下，5.5 (ii) \Term{equivalence}{等价}于：
+
+\SourcePage{73}
+\begin{SGAresult}{定理}{5.9}
+（\Term{fundamental-group}{基本群}的\Term{specialization}{特殊化}定理。）沿用 (5.5) 的记号，假设 $X$ \Term{connected}{连通}且\Term{nonempty}{非空}。则 $X_\circ$ 也\Term{connected}{连通}且\Term{nonempty}{非空}；若 $x_\circ$ 是 $X_\circ$ 的一个\Term{geometric-point}{几何点}，则\Term{fundamental-group}{基本群}\Term{morphism}{态射}
+\[
+\Pi_1(X_\circ,x_\circ)\longrightarrow\Pi_1(X,x_\circ)
+\]
+为\Term{bijection}{双射}。
+\end{SGAresult}
+另一方面，由 Galois 理论（SGA，第 V 讲），陈述 5.9（在 $X_\circ$ \Term{connected}{连通}的情形下；由 5.7 可以如此假设）\Term{equivalence}{等价}于：
+\begin{SGAresult}{定理}{5.9 bis}
+设 $S$ 为\Term{henselian-ring}{亨泽尔环}的谱，$s_\circ$ 为 $S$ 的\Term{closed-point}{闭点}，$f:X\to S$ 为\Term{proper-morphism}{固有态射}，$X_\circ$ 为 $X/S$ 的\Term{closed-fiber}{闭纤维}。对\Term{scheme}{概形} $Z$，用 $\operatorname{Et}(Z)$ 表示 $Z$ 的\Term{etale-cover}{平展覆盖}\Term{category}{范畴}。则\Term{restriction}{限制}\Term{functor}{函子}
+\[
+\operatorname{Et}(X)\longrightarrow\operatorname{Et}(X_\circ)
+\]
+是\Term{equivalence-of-categories}{范畴等价}。
+\end{SGAresult}
+\begin{SGAresult}{注记}{5.10}
+回顾一下，在 $S$ 为\Term{complete}{完备}\Term{noetherian}{诺特}\Term{local-ring}{局部环}的谱时，5.9 已经得到证明（SGA 1，第 X 讲 2.1）。遗憾的是，我们未能用此结果来证明一般情形的 5.9\footnote{写下这些文字后，情况已有变化；参见 M. Artin，\textit{\Term{complete}{完备}\Term{local-ring}{局部环}上结构的\Term{algebra}{代数}逼近}（\textit{Algebraic approximation of structures over complete local rings}，待刊）中的定理 3.1。}；本讲及下一讲中给出的 5.9 的证明，与 SGA 1 第 X 讲中的证明大不相同。
+\end{SGAresult}
+
+\textbf{5.11。}利用 J. Giraud 的二阶\Term{cohomology}{上同调}理论（参见 J. Giraud 正在撰写的学位论文），还可以给出 (5.5) (ii) 的另一个“非交换”变体。假设 $S$ 是\Term{noetherian}{诺特}的。在 $X$ 上取一个\Term{band}{带}（lien）$L$，并假设 $L$ \Term{local-scheme}{局部}地（对于\Term{etale-topology}{平展拓扑}）可由一个\Term{ind-finite-group}{ind-有限群层}实现。考虑映射
+\[
+\varphi^{(2)}:H^2(X,L)\longrightarrow H^2(X_\circ,L_\circ),
+\]
+其中 $L_\circ$ 为 $L$ 在 $X_\circ$ 上的\Term{restriction}{限制}。则有
+\[
+(\varphi^{(2)})^{-1}\bigl(H^2(X_\circ,L_\circ)'\bigr)=H^2(X,L)',\tag{5.11.1}
+\]
+这里撇号表示由\Term{neutral-element}{中性元素}组成的部分。
+
+考虑到 5.5 (iii)，此陈述也\Term{equivalence}{等价}于如下陈述：对于 $X$ 上带为上述 $L$ 的任意\Term{gerbe}{凝集} $\mathscr G$，记其在 $X_\circ$ 上的\Term{restriction}{限制}为 $\mathscr G_\circ$，则\Term{section-category}{截面范畴}上的\Term{restriction}{限制}\Term{functor}{函子}
+\[
+\mathscr G(X)\longrightarrow\mathscr G_\circ(X_\circ)
+\]
+是\Term{equivalence-of-categories}{范畴等价}。
+
+事实上，此\Term{functor}{函子}的\Term{fully-faithful}{全忠实}性来自 5.5 (i)；而在 $\mathscr G(X)\neq\varnothing$，即 $\mathscr G$ 的类 $\xi\in H^2(X,\mathscr G)$ 为\Term{neutral-element}{中性}时，其\Term{essentially-surjective}{本质满射}性来自 5.5 (ii)。
+\SourcePage{74}
+因此还须表达 $\mathscr G_\circ(X_\circ)\neq\varnothing$ 蕴含 $\mathscr G(X)\neq\varnothing$；这恰好就是 (5.11.1)。
+
+这里不给出 (5.11.1) 的证明，只指出：对于任意\Term{noetherian}{诺特}\Term{scheme}{概形} $X$ 及任意\Term{closed-subscheme}{闭子概形}，实际上可以证明 5.5 (i)、(ii) 的成立蕴含 (5.11.1) 的成立；此证明相当初等，只须使用第 VIII 讲 9.4 a) 的\Term{descent}{下降}结果。
+
+\SGAsection{6}{初步约化}
+我们用缩写 $(f,F,g)$ 表示 5.1 的三个情形 (i)、(ii)、(iii) 中任一情形的数据。
+\begin{SGAresult}{引理}{6.1}
+固定 $f,F$。要使 5.1 对任意 $g$ 的数据 $(f,F,g)$ 成立，只须：对于每一个 $S$-\Term{scheme}{概形} $\bar S$，若它是 $S$ 上一个\Term{locally-finite-type}{局部有限型}\Term{scheme}{概形} $S_0$ 在其\Term{fiber}{纤维}中为\Term{closed-point}{闭点}的某一点处的\Term{strict-localization}{严格局部化}，则定理对于 $(\bar f,\bar F,\bar g)$ 成立；这里 $\bar f,\bar F$ 由 $f,F$ 经\Term{base-change}{换基} $\bar S\to S$ 得到，而 $\bar g:\bar s\to\bar S$ 是 $\bar S$ 的\Term{closed-point}{闭点}的包含\Term{morphism}{态射}。
+\end{SGAresult}
+\begin{proof}
+显然可假设 $S,S'$ \Term{affine}{仿射}，分别是环 $A,A'$ 的谱。$A'$ 是其\Term{finite-type}{有限型}子 $A$-\Term{algebra}{代数} $A'_i$ 的\Term{inductive-limit}{归纳极限}。利用过\Term{limit}{极限}理论（第 VII 讲 5.11、5.14），只须对 $(f,F,g_i)$ 证明 5.1，其中 $g_i:\operatorname{Spec}(A'_i)=S'_i\to S$；这便归结到 $g$ 为\Term{finite-type}{有限型}的情形。
+
+为证明\Term{base-change-morphism}{换基同态}为\Term{isomorphism}{同构}，只须证明它们在所涉及\Term{sheaf}{层}的\Term{fiber}{纤维}上\Term{induction-isomorphism}{诱导同构}；且只需考察 $S'$ 中在其 $S$ 上的\Term{fiber}{纤维}中为\Term{closed-point}{闭点}的点 $s'$ 处的\Term{geometric-fiber}{几何纤维}（第 VIII 讲 3.13）。设 $\bar s'$ 为对应于 $k(s')$ 的一个\Term{separable-closure}{可分闭包}的 $S'$ 的\Term{geometric-point}{几何点}。由于 $s'$ 在 $S$ 的对应点 $s$ 上\Term{algebra}{代数}，$k(\bar s')$ 也就是 $k(s)$ 的一个\Term{separable-closure}{可分闭包}。以 $\bar s$ 表示视为位于 $S$ 上方的\Term{prescheme}{预概形} $\bar s'$，也就是视为 $S$ 的\Term{geometric-point}{几何点}的 $\bar s'$。考虑 $S$、$S'$ 分别在 $\bar s,\bar s'$ 处的\Term{strict-localization}{严格局部化} $\bar S,\bar S'$，得到一个\Term{commutative-square}{交换方块}
+\[
+\begin{tikzcd}
+\bar s'\arrow[r]\arrow[d]&\bar s\arrow[d]\\
+\bar S'\arrow[r]&\bar S,
+\end{tikzcd}
+\]
+其中上方水平\Term{arrow}{箭头}为\Term{isomorphism}{同构}。由第 VIII 讲 5.2、5.3，与 $(f,F,g)$ 相关的\Term{base-change-morphism}{换基同态}在 $\bar s'$ 处的\Term{fiber}{纤维}上诱导的\Term{homomorphism}{同态}，可识别为
+\[
+H^i(\bar X,\bar F)\longrightarrow H^i(\bar X',\bar F'),
+\]
+\SourcePage{75}
+它由 $\bar X'\to\bar X$ 诱导，其中 $\bar X,\bar X'$ 分别是 $X$ 经\Term{base-change}{换基} $\bar S\to S$、$\bar S'\to S$ 得到的\Term{scheme}{概形}。而上面的\Term{commutative-square}{交换方块}显然给出\Term{commutative-square}{交换方块}
+\[
+\begin{tikzcd}
+H^i(X_{\bar s},F)\arrow[r]&H^i(X'_{\bar s'},F')\\
+H^i(\bar X,\bar F)\arrow[r]\arrow[u]&H^i(\bar X',\bar F')\arrow[u],
+\end{tikzcd}
+\]
+上方水平\Term{arrow}{箭头}仍为\Term{isomorphism}{同构}。因此，只要两条竖直\Term{arrow}{箭头}为\Term{isomorphism}{同构}，下方水平\Term{arrow}{箭头}就是\Term{isomorphism}{同构}。而 (6.1) 的假设正好保证这一点。
+\end{proof}
+
+\textbf{6.1.1。}因此，要在某个情形 $(F,f,-)$ 下证明 5.1，只须研究 $S$ 为\Term{strictly-local}{严格局部}时的特例 5.5。这使我们一般地研究如下情形：给定\Term{scheme}{概形}\Term{morphism}{态射} $h:Y\to X$，要求给出使相应\Term{homomorphism}{同态}
+\[
+H^i(X,F)\longrightarrow H^i(Y,h^*(F))
+\]
+为\Term{bijection}{双射}的一般条件。本节对这一情形给出几个容易的辅助结果；为方便以后的引用，我们将以比证明 5.1 所需更一般、更精确的\Term{form}{形式}陈述它们。
+
+\begin{SGAresult}{引理}{6.2}
+设 $C,C'$ 为两个\Term{abelian-category}{阿贝尔范畴}，$T^\bullet=(T^i)$、$T'^\bullet=(T'^i)$ 为 $C$ 到 $C'$ 的两个\Term{cohomological-functor}{上同调函子}，$\varphi=(\varphi^i)$ 为 $T^\bullet$ 到 $T'^\bullet$ 的\Term{cohomological-functor}{上同调函子}\Term{homomorphism}{同态}。假设 $T^\bullet,T'^\bullet$ 在次数 $<0$ 时为零，且 $i>0$ 时 $T^i$ \Term{effaceable}{可消去}。设 $n$ 为整数，则下列条件\Term{equivalence}{等价}：
+
+ a) 当 $i\leq n$ 时，$\varphi^i$ 为\Term{isomorphism}{同构}；当 $i=n+1$ 时，它为\Term{monomorphism}{单态射}。
+
+ b) （当 $n\geq-1$。）$i=0$ 时\Term{homomorphism}{同态} $\varphi^i$ 为\Term{monomorphism}{单态射}，$i\leq n$ 时为\Term{epimorphism}{满态射}。
+
+ c) （当 $n\geq0$。）\Term{homomorphism}{同态} $\varphi^0$ 为\Term{isomorphism}{同构}，且当 $0<i\leq n$ 时，$T'^i$ \Term{effaceable}{可消去}。
+
+若这些条件成立，且 $A\in\operatorname{Ob}(C)$，则 $\varphi^{n+1}(A):T^{n+1}(A)\to T'^{n+1}(A)$ 为\Term{epimorphism}{满态射}（因而为\Term{isomorphism}{同构}），当且仅当 $T'^{n+1}(A)$ \Term{effaceable}{可消去}，即存在一个\Term{monomorphism}{单态射} $A\to B$，使相应\Term{homomorphism}{同态} $T'^{n+1}(A)\to T'^{n+1}(B)$ 为零。若 $C'=(\mathrm{Ab})$（\Term{abelian-group}{阿贝尔群}\Term{category}{范畴}），且 $\xi\in T'^{n+1}(A)$，则 $\xi$ 属于 $T^{n+1}(A)$ 的像，当且仅当 $\xi$ \Term{effaceable}{可消去}，即存在一个\Term{monomorphism}{单态射} $A\to B$，使 $\xi$ 在 $T'^{n+1}(B)$ 中的像为零。
+\end{SGAresult}
+
+\SourcePage{76}
+\begin{proof}
+显然，a) 蕴含 b) 和 c)。对 $T^\bullet$ 的假设蕴含 $T^i$（$i>0$）是 $T^0$ 的\Term{right-satellite}{右卫星函子}，所以由\Term{satellite-functor}{卫星函子}的公理刻画，c) 蕴含 b)。也可对 $n$ 归纳，由 6.2 的最后一个断言得到这一蕴含；该断言由一个熟知的论证证明，这里不再重复（参看下面第 \SGAsourcegap{6.2 证明中此交叉引用的节号仅可读作“6.”，后续数字在重排本及现有扫描本均缺失。} 节的证明）。当 $n=1$ 时，b) 蕴含 c) 是显然的；若 $n\geq0$，则对 $n$ 归纳。\footnote{译注：原文此处印作“b) 蕴含 c)”及“$n=1$”，与以下证明的论述次序不合，此处保留。}由归纳假设，可设 $i\leq n-1$ 时 $\varphi^i$ 为\Term{isomorphism}{同构}，$i=n$ 时为\Term{monomorphism}{单态射}；结合假设，$i=n$ 时也为\Term{isomorphism}{同构}。因此，利用 $\varphi^n$ 为\Term{isomorphism}{同构}，只须证明 $i=n+1$ 时为\Term{monomorphism}{单态射}。取消去 $T^{n+1}$ 的\Term{monomorphism}{单态射} $A\to B$，得到 $C$ 中的\Term{exact-sequence}{正合列} $0\to A\to B\to C\to0$，以及 $C'$ 中\Term{exact-sequence}{正合列}的\Term{homomorphism}{同态}
+\[
+\begin{tikzcd}[column sep=small]
+T^n(B)\arrow[r]\arrow[d]&T^n(C)\arrow[r]\arrow[d]&T^{n+1}(A)\arrow[r]\arrow[d]&T^{n+1}(B)\arrow[d]\\
+T'^n(B)\arrow[r]&T'^n(C)\arrow[r]&T'^{n+1}(A)\arrow[r]&T'^{n+1}(B).
+\end{tikzcd}
+\]
+由刚才所述，前两条竖直\Term{arrow}{箭头}为\Term{isomorphism}{同构}，而由构造，$T^{n+1}(A)\to T^{n+1}(B)$ 为零。由\Term{five-lemma}{五引理}，$T^{n+1}(A)\to T'^{n+1}(A)$ 为\Term{monomorphism}{单态射}。
+\end{proof}
+
+\begin{SGAresult}{推论}{6.3}
+假设 $T^\bullet,T'^\bullet$ 来自右\Term{derived-category}{导出范畴} [3] $D^+(C)$ 上取值于 $C'$ 的\Term{cohomological-functor}{上同调函子}（仍用相同记号表示）。这里不必假设 $T^i$（$i>0$）\Term{effaceable}{可消去}。假设 $K^\bullet\in D^+(C)$ 且 $i<0$ 时 $H^i(K^\bullet)=0$ 蕴含 $i<0$ 时 $T^i(K^\bullet)=T'^i(K^\bullet)=0$。设 $K^\bullet\in\operatorname{Ob}D^+(C)$ 是 $C$ 中的一个\Term{bounded-below}{左有界}\Term{complex}{复形}，且 $i<0$ 时 $H^i(K^\bullet)=0$。
+
+(i) 若 6.2 的条件 a) 成立，则\Term{homomorphism}{同态}
+\[
+\varphi^i(K^\bullet):T^i(K^\bullet)\longrightarrow T'^i(K^\bullet)
+\]
+在 $i<n$ 时为\Term{isomorphism}{同构}，在 $i=n+1$ 时为\Term{monomorphism}{单态射}。\footnote{译注：此处的严格不等式 $i<n$ 在原扫描本与重排本均如此，照录；以下证明使用 $i\leq n$。}
+
+(ii) 再设 $L^\bullet\in\operatorname{Ob}D^+(C)$，$i<0$ 时 $H^i(L^\bullet)=0$，且 $u:L^\bullet\to K^\bullet$ 是 $D^+(C)$ 中的\Term{homomorphism}{同态}，所诱导的 $H^0(u):H^0(L^\bullet)\to H^0(K^\bullet)$ 为\Term{injectivity}{单射}。则 $T^{n+1}(L^\bullet)\to T'^{n+1}(L^\bullet)$ 为\Term{surjectivity}{满射}，当且仅当 $T'^{n+1}(L^\bullet)$ 在 $T'^{n+1}(K^\bullet)$ 中的像包含于 $T^{n+1}(K^\bullet)$ 的像中。若 $C'=(\mathrm{Ab})$ 且 $\xi\in T'^{n+1}(A)$，则 $\xi$ 在 $T^{n+1}(A)$ 的像中，当且仅当它在 $T'^{n+1}(K^\bullet)$ 中的像属于 $T^{n+1}(K^\bullet)$ 的像。\footnote{译注：最后一句的\Term{object}{对象} $A$ 原文未在本推论中另作定义，此处保留原记号。}
+\end{SGAresult}
+回顾一下，$T^\bullet,T'^\bullet$ 来自 $D^+(C)$ 上的\Term{cohomological-functor}{上同调函子}这一假设可以明确表述为：它们来自 $C$ 中\Term{bounded-below}{左有界}\Term{complex}{复形}所成\Term{abelian-category}{阿贝尔范畴}上的\Term{cohomological-functor}{上同调函子}；这些\Term{functor}{函子}与次数\Term{translation}{平移}交换，将\Term{homotopic}{零伦}的\Term{complex}{复形}\Term{homomorphism}{同态}变为 $C'$ 中的零\Term{homomorphism}{同态}，且将每一个为\Term{quasi-isomorphism}{拟同构}的\Term{complex}{复形}\Term{homomorphism}{同态}
+\SourcePage{77}
+$u:K^\bullet\to L^\bullet$（即在各阶\Term{cohomology}{上同调}上\Term{induction-isomorphism}{诱导同构} $H^i(K^\bullet)\to H^i(L^\bullet)$ 的\Term{homomorphism}{同态}）变为 $C'$ 中的\Term{isomorphism}{同构}。实际上，我们所遇到的从 $C$ 到 $C'$ 的\Term{cohomological-functor}{上同调函子}都是如此得到的。
+
+\begin{proof}[6.3 的证明]
+先证 (i)。若 $i\leq n+1$ 时 $H^i(K^\bullet)=0$，断言显然成立，因为由对 $T^\bullet,T'^\bullet$ 所作的次数假设，此时 $i\leq n+1$ 时有 $T^i(K^\bullet)=T'^i(K^\bullet)=0$。另一方面，设整数 $m\geq0$ 满足 $i<m$ 时 $H^i(K^\bullet)=0$；这样的整数存在，例如 $m=0$ 即可。对 $m$ 作降序归纳；当 $m=n+2$ 时断言已证。现在假设对所有 $m'>m$ 已证，来证明 $m$ 的情形。由 $K^\bullet$ 的次数假设，$K^\bullet$ \Term{quasi-isomorphism}{拟同构}于一个次数 $\geq m$ 的\Term{complex}{复形}，所以可以假设它本身的次数 $\geq m$。于是有\Term{complex}{复形}的\Term{exact-sequence}{正合列}
+\[
+0\longrightarrow H^m[-m]\longrightarrow K^\bullet\longrightarrow K'^\bullet\longrightarrow0,
+\]
+其中 $H^m=H^m(K^\bullet)$，\Term{signature}{符号} $[-m]$ 表示\Term{complex}{复形}次数的 $-m$ \Term{translation}{平移}，$K'^\bullet$ 定义为\Term{cokernel}{余核}。因此，$K'^\bullet$ 在次数 $\geq m+1$ 的\Term{cohomology-object}{上同调对象}与 $K^\bullet$ 的相同，在次数 $\leq m+1$ 则为零\footnote{译注：原文这里同时使用 $\geq m+1$ 与 $\leq m+1$，照录。}；特别地，可对 $K'^\bullet$ 应用归纳假设。上述\Term{exact-sequence}{正合列}给出\Term{exact-sequence}{正合列}的\Term{homomorphism}{同态}
+\[
+\begin{tikzcd}[column sep=tiny]
+T^{i-1}(K'^\bullet)\arrow[r]\arrow[d]&T^{i-m}(H^m)\arrow[r]\arrow[d]&T^i(K^\bullet)\arrow[r]\arrow[d]&T^i(K'^\bullet)\arrow[r]\arrow[d]&T^{i+1-m}(H^m)\arrow[d]\\
+T'^{i-1}(K'^\bullet)\arrow[r]&T'^{i-m}(H^m)\arrow[r]&T'^i(K^\bullet)\arrow[r]&T'^i(K'^\bullet)\arrow[r]&T'^{i+1-m}(H^m).
+\end{tikzcd}
+\]
+在此图中取 $i\leq n$，结合归纳假设和 $m\geq0$，可知中央竖直\Term{arrow}{箭头}两旁的竖直\Term{arrow}{箭头}是\Term{isomorphism}{同构}，因而特别是\Term{epimorphism}{满态射}，且最右边竖直\Term{arrow}{箭头}是\Term{monomorphism}{单态射}。由\Term{five-lemma}{五引理}，中央竖直\Term{arrow}{箭头}是\Term{epimorphism}{满态射}。取 $i\leq n+1$，同样可见中央\Term{arrow}{箭头}两旁的竖直\Term{arrow}{箭头}为\Term{monomorphism}{单态射}，而最左边竖直\Term{arrow}{箭头}为\Term{isomorphism}{同构}，因而特别是\Term{epimorphism}{满态射}。再由\Term{five-lemma}{五引理}，中央竖直\Term{arrow}{箭头}是\Term{monomorphism}{单态射}。这证明了 6.3 (i)。
+
+为证明第二个断言 6.3 (ii)，同样使用\Term{exact-sequence}{正合列}
+\[
+0\longrightarrow L^\bullet\longrightarrow K^\bullet\longrightarrow K'^\bullet\longrightarrow0,
+\]
+\SourcePage{78}
+其中 $K'^\bullet$ 定义为 $L^\bullet\to K^\bullet$ 的映射柱（mapping-cylinder），所以其\Term{cohomology}{上同调}仍集中于非负次数。在下图中作通常的“图追踪”：
+\[
+\begin{tikzcd}[column sep=tiny]
+T^n(K^\bullet)\arrow[r]\arrow[d]&T^n(K'^\bullet)\arrow[r]\arrow[d]&T^{n+1}(L^\bullet)\arrow[r]\arrow[d]&T^{n+1}(K^\bullet)\arrow[r]\arrow[d]&T^{n+1}(K'^\bullet)\arrow[d]\\
+T'^n(K^\bullet)\arrow[r]&T'^n(K'^\bullet)\arrow[r]&T'^{n+1}(L^\bullet)\arrow[r]&T'^{n+1}(K^\bullet)\arrow[r]&T'^{n+1}(K'^\bullet),
+\end{tikzcd}
+\]
+考虑到由已证第一部分，前两条竖直\Term{arrow}{箭头}为\Term{isomorphism}{同构}，后两条为\Term{monomorphism}{单态射}，就得到 6.3 的最后一个断言。6.3 证毕。
+\end{proof}
+
+\begin{SGAresult}{引理}{6.4}
+若 $f$ 为\Term{finite-morphism}{有限态射}，则定理 (5.1) 成立。
+\end{SGAresult}
+这立即由第 VIII 讲 5.5 和 5.8 得到。
+
+\begin{SGAresult}{命题}{6.5}
+设 $h:Y\to X$ 为\Term{quasicompact}{拟紧}\Term{quasiseparated}{拟分离}\Term{scheme}{概形}之间的\Term{morphism}{态射}。在下面的 (i) 中，$I$ 表示一个至少含两点的给定\Term{set}{集合}；在 (ii)、(iii) 中，$L$ 表示素数\Term{set}{集合} $\mathbf P$ 的一个\Term{nonempty}{非空}\Term{subset}{子集}；在 (iii) 中，$n$ 表示一个整数。
+
+(i) 以下条件\Term{equivalence}{等价}：
+
+ a) 对 $X$ 上任意\Term{set-sheaf}{集合层} $F$，\Term{canonical}{典范}映射
+\[
+H^0(X,F)\longrightarrow H^0(Y,h^*(F))
+\]
+为\Term{injectivity}{单射}（相应地，\Term{bijection}{双射}）。
+
+ b) 对任意\Term{finite-morphism}{有限态射} $X'\to X$，记 $h':Y'\to X'$ 为由 $h$ 经\Term{base-change}{换基} $X'\to X$ 得到的\Term{morphism}{态射}，则由 $h'$ \Term{derive}{导出}的\Term{canonical}{典范}映射
+\[
+H^0(X',I_{X'})\longrightarrow H^0(Y',I_{Y'})
+\]
+为\Term{injectivity}{单射}（相应地，\Term{bijection}{双射}）。
+
+ b') 沿用 b) 的记号，映射 $U\mapsto h'^{-1}(U)$，从 $Y'$ 的既开又闭部分的\Term{set}{集合}到 $X'$ 的既开又闭部分的\Term{set}{集合}，是\Term{injectivity}{单射}（相应地，\Term{bijection}{双射}）。\footnote{译注：原文 b') 的起讫\Term{set}{集合}与\Term{inverse-image}{逆像}记号方向不相合，此处保留其文字；b'') 的 $\Pi_0(h')$ 方向同样照录。}
+
+ b'') （若 $X$ \Term{locally-noetherian}{局部诺特}。）沿用 b) 的记号，在\Term{connected-component}{连通分支}\Term{set}{集合}上诱导的映射
+\[
+\Pi_0(h'):\Pi_0(X')\longrightarrow\Pi_0(Y')
+\]
+是\Term{surjectivity}{满射}（相应地，\Term{bijection}{双射}）；或者说，若 $X'$ \Term{nonempty}{非空}（相应地，\Term{connected}{连通}且\Term{nonempty}{非空}），则 $Y'$ 也如此。
+
+此外，若这些条件满足，则对 $X$ 上任意\Term{group-sheaf}{群层} $F$，从 $F$ 下的\Term{torsor}{挠子}（即\Term{principal-homogeneous-bundle}{主齐性纤维丛}）\Term{category}{范畴}到 $h^*(F)$ 下的\Term{torsor}{挠子}\Term{category}{范畴}的\Term{functor}{函子} $P\mapsto h^*(P)$ 是\Term{faithful}{忠实}的（相应地，\Term{fully-faithful}{全忠实}的）；
+\SourcePage{79}
+因此在\Term{lie-bracket}{括号}中的相应情形下，\Term{canonical}{典范}映射
+\[
+H^1(X,F)\longrightarrow H^1(Y,h^*(F))
+\]
+是\Term{injectivity}{单射}。最后，在相同假设下，从 $X$ 的\Term{etale-cover}{平展覆盖}\Term{category}{范畴}到 $Y$ 的\Term{etale-cover}{平展覆盖}\Term{category}{范畴}的\Term{functor}{函子} $X'\mapsto Y'=X'\times_XY$ 是\Term{faithful}{忠实}的（相应地，\Term{fully-faithful}{全忠实}的）。
+
+(ii) 以下条件\Term{equivalence}{等价}：
+
+ a) 对 $X$ 上任意\Term{ind-l-finite-group}{ind-$L$-有限群层} $F$，\Term{canonical}{典范}映射
+\[
+H^1(X,F)\longrightarrow H^1(Y,h^*(F))
+\]
+对 $i=0,1$ 为\Term{bijection}{双射}。\footnote{译注：(ii) a)、b) 中\Term{cohomology}{上同调}上标均印为 $1$，紧接着却写“对 $i=0,1$”；此处保留原式及文字。}
+
+ b) 对任意\Term{finite-morphism}{有限态射} $X'\to X$，记 $h':Y'\to X'$ 为由 $h$ 经\Term{base-change}{换基}得到的\Term{morphism}{态射}；则对每一个通常意义的\Term{finite}{有限} $L$-群 $G$，\Term{canonical}{典范}映射
+\[
+H^1(X',G_{X'})\longrightarrow H^1(Y',G_{X'})
+\]
+对 $i=0,1$ 为\Term{bijection}{双射}。
+
+ b') （若 $L=\mathbf P$。）沿用 b) 的记号，由 $h'$ 取\Term{inverse-image}{逆像}的\Term{functor}{函子}诱导 $X'$ 的\Term{etale-cover}{平展覆盖}\Term{category}{范畴}与 $Y'$ 的\Term{etale-cover}{平展覆盖}\Term{category}{范畴}之间的\Term{equivalence}{等价}。
+
+ b'') （若 $X$ 是\Term{noetherian}{诺特}的，$L=\mathbf P$。）沿用 b) 的记号，若 $X'$ \Term{nonempty}{非空}，则 $Y'$ 也\Term{nonempty}{非空}；若 $y'$ 为 $Y'$ 的一个\Term{geometric-point}{几何点}，$x'$ 为它在 $X'$ 中的像，则对 $i=0,1$，\Term{canonical}{典范}映射
+\[
+\Pi_i(Y',y')\longrightarrow\Pi_i(X',x')
+\]
+为\Term{bijection}{双射}。
+
+(iii) 以下条件\Term{equivalence}{等价}：
+
+ a) 对 $X$ 上任意 $L$-\Term{torsion-sheaf}{挠层} $F$，\Term{homomorphism}{同态}
+\[
+H^i(X,F)\longrightarrow H^i(Y,h^*(F))
+\]
+在 $i\leq n$ 时为\Term{isomorphism}{同构}，在 $i=n+1$ 时为\Term{monomorphism}{单态射}。
+
+ a') （若 $n\geq-1$。）对于如上 $F$，所考虑的\Term{homomorphism}{同态}在 $i=0$ 时为\Term{injectivity}{单射}，在 $i\leq n$ 时为\Term{surjectivity}{满射}。
+
+ b) （若 $n\geq-1$。）对任意\Term{finite-morphism}{有限态射} $X'\to X$，记 $h':Y'\to X'$ 为 $h$ 经\Term{base-change}{换基} $X'\to X$ 得到的\Term{morphism}{态射}；则对任意 $\ell\in L,\nu>0$，\Term{canonical-homomorphism}{典范同态}
+\[
+H^i\bigl(X',(\mathbf Z/\ell^\nu\mathbf Z)_{X'}\bigr)
+\longrightarrow H^i\bigl(Y',(\mathbf Z/\ell^\nu\mathbf Z)_{Y'}\bigr)
+\]
+在 $i=0$ 时为\Term{injectivity}{单射}，在 $i\leq n$ 时为\Term{surjectivity}{满射}。
+\end{SGAresult}
+上述陈述还有如下补充。
+
+\SourcePage{80}
+\begin{SGAresult}{推论}{6.6}
+(i) 假设 6.5 (i) a) 中不带\Term{lie-bracket}{括号}的条件满足。设 $F$ 是 $X$ 上的\Term{set-sheaf}{集合层}，$\xi\in H^0(Y,h^*(F))$。若存在\Term{set-sheaf}{集合层}的\Term{monomorphism}{单态射} $F\to G$，使 $\xi$ 在 $H^0(Y,h^*(G))$ 中的像属于 $H^0(X,G)$ 的像，则 $\xi$ 属于 $H^0(X,F)$ 的像。
+
+(ii) 假设 6.5 (i) a) 中\Term{lie-bracket}{括号}内的相应条件满足。设 $F$ 是 $X$ 上的\Term{group-sheaf}{群层}，$\xi\in H^1(Y,h^*(F))$。若存在\Term{group-sheaf}{群层}的\Term{monomorphism}{单态射} $F\to G$，使 $\xi$ 在 $H^1(Y,h^*(G))$ 中的像属于 $H^1(X,G)$ 的像，则 $\xi$ 属于 $H^1(X,F)$ 的像。
+
+(iii) 假设 6.5 (iii) a) 对给定 $n$ 成立。设 $F$ 是 $X$ 上的 $L$-\Term{torsion-sheaf}{挠层}，$\xi\in H^{n+1}(Y,h^*(F))$。若存在 $L$-\Term{torsion-sheaf}{挠层}的\Term{monomorphism}{单态射} $F\to G$，使 $\xi$ 在 $H^{n+1}(Y,h^*(G))$ 中的像属于 $H^{n+1}(X,G)$ 的像，则 $\xi$ 属于 $H^{n+1}(X,F)$ 的像。
+\end{SGAresult}
+
+\begin{proof}[6.5 和 6.6 的证明]
+先证 6.6。6.6 (iii) 是 6.3 最后一个断言的特例：取 $C$ 为 $X$ 上的 $L$-\Term{torsion-sheaf}{挠阿贝尔层}\Term{category}{范畴}，$C'=(\mathrm{Ab})$，$T^i(F)=H^i(X,F)$，$T'^i(F)=H^i(Y,h^*(F))$（由于\Term{functor}{函子} $h^*$ \Term{exact}{正合}，$T'^\bullet$ 确为关于 $F$ 的\Term{cohomological-functor}{上同调函子}）。当然，这里无需像 6.3 那样考虑\Term{complex}{复形}（但稍后在 6.8 中将很方便），只须用 6.3 的最后一个断言。
+
+为证明 (i)，考虑\Term{amalgamated-sum}{融合和} $H=G\amalg_FG$，即 $X$ 上\Term{set-sheaf}{集合层}\Term{category}{范畴}中下图的\Term{inductive-limit}{归纳极限}：
+\[
+\begin{tikzcd}
+&G\\
+F\arrow[ur]\arrow[dr]&\\
+&G.
+\end{tikzcd}
+\]
+由\Term{set-sheaf}{集合层}\Term{topos}{拓扑斯}通常的\Term{exactness}{正合性}，由于 $F\to G$ 是\Term{monomorphism}{单态射}，可得 $X$ 上\Term{set-sheaf}{集合层}的\Term{exact-diagram}{正合图}
+\[
+F\longrightarrow G\rightrightarrows H.
+\]
+这也可表述为：在一个\Term{topos}{拓扑斯}中，每一个\Term{monomorphism}{单态射}都是\Term{effective}{有效的}；如通常一样，将问题归结到\Term{set}{集合}\Term{category}{范畴}便可证明。由于\Term{functor}{函子} $H^0$ 和 $h^*$ \Term{left-exact}{左正合}，得到\Term{set}{集合}的\Term{exact-diagram}{正合图}之间的\Term{homomorphism}{同态}
+\SourcePage{81}
+\[
+\begin{tikzcd}
+H^0(X,F)\arrow[r]\arrow[d]&H^0(X,G)\arrow[r,shift left]\arrow[r,shift right]\arrow[d]&H^0(X,H)\arrow[d]\\
+H^0(Y,h^*(F))\arrow[r]&H^0(Y,h^*(G))\arrow[r,shift left]\arrow[r,shift right]&H^0(Y,h^*(H)),
+\end{tikzcd}
+\]
+其中各竖直\Term{arrow}{箭头}均为\Term{injectivity}{单射}。直接作一次“图追踪”便证明 6.6 (i)。
+
+为证明 6.6 (ii)，先证明 6.5 (i) 的第二个断言：在 6.5 (i) 的条件 a) 下，对 $X$ 上任意\Term{group-sheaf}{群层} $F$，从 $F$ 下的\Term{torsor}{挠子}\Term{category}{范畴}到 $h^*(F)$ 下的\Term{torsor}{挠子}\Term{category}{范畴}的\Term{functor}{函子} $P\mapsto h^*(P)$ 是\Term{faithful}{忠实}的（相应地，\Term{fully-faithful}{全忠实}的），因而在\Term{lie-bracket}{括号}中的相应情形下，在 $H^1$ 上诱导\Term{injectivity}{单射}。为此，若 $P,P'$ 是 $F$ 下的两个\Term{torsor}{挠子}，用 $\operatorname{Isom}_F(P,P')$ 表示从 $P$ 到 $P'$ 的 $F$-\Term{isomorphism}{同构}\Term{sheaf}{层}。显然，此\Term{sheaf}{层}的形成与任意\Term{base-change}{基底扩张}，特别是与 $h$ 所给出的\Term{base-change}{基底扩张}交换（这一断言对任意\Term{site}{景}\Term{morphism}{态射}都成立）。将关于 $h^*$ 对 $H^0$ 的\Term{action}{作用}的假设应用于\Term{sheaf}{层} $\operatorname{Isom}_F(P,P')$，可知映射
+\[
+\operatorname{Isom}_F(P,P')\longrightarrow
+\operatorname{Isom}_{h^*F}(h^*(P),h^*(P'))
+\]
+是\Term{injectivity}{单射}（相应地，\Term{bijection}{双射}），这正是\Term{functor}{函子} $P\mapsto h^*(P)$ \Term{faithful}{忠实}（相应地，\Term{fully-faithful}{全忠实}）的含义。注意，在一个\Term{group-sheaf}{群层}下的\Term{torsor}{挠子}\Term{category}{范畴}中，每个\Term{homomorphism}{同态}都是\Term{isomorphism}{同构}。
+
+另一方面，若 $F$ 是\Term{group-sheaf}{群层} $G$ 的一个\Term{subsheaf}{子群层}，则给定 $F$ 下的一个\Term{torsor}{挠子} $P$，\Term{equivalence}{等价}于给定 $G$ 下的一个\Term{torsor}{挠子} $Q$（即从 $P$ 经结构群\Term{group-extension}{扩张} $F\to G$ 得到的那个），并给定 $Q/F$ 的一个\Term{section}{截面}；此\Term{section}{截面}恰\Term{solvable}{可解}释为将“结构群”由 $G$ “缩减”为 $F$。
+
+在 6.6 (ii) 的记号下，$\xi$ 在 $H^1(Y,h^*(G))$ 中的像 $\eta$ 来自 $H^1(X,G)$ 的一个元素。后者由 $G$ 下的一个\Term{torsor}{挠子} $Q$ 定义，使 $\eta$ 为 $h^*(G)$ 下的\Term{torsor}{挠子} $h^*(Q)$ 的类。$\eta$ 来自某个 $\xi\in H^1(Y,h^*(F))$，明确地说就是：$\xi$ 为由 $h^*(Q)$ 及 $h^*(Q)/h^*(F)$ 的一个适当\Term{section}{截面}所定义的 $h^*(F)$-\Term{torsor}{挠子}的类。由于\Term{functor}{函子} $h^*$ \Term{right-exact}{右正合}，后一个\Term{sheaf}{层}就是 $h^*(Q/F)$；而 $h^*$ 在\Term{set-sheaf}{集合层}的 $H^0$ 上诱导\Term{bijection}{双射}，所以所考虑的 $h^*(Q)/h^*(F)$ 的\Term{section}{截面}来自 $Q/F$ 的一个\Term{section}{截面}。后者通过结构群缩减定义一个 $F$-\Term{torsor}{挠子}，其在 $H^1(X,F)$ 中的类显然以 $\xi$ 为其在 $H^1(Y,h^*(F))$ 中的像。这证明了 6.6 (ii)，从而完成了 6.6 的证明。
+
+现在从 6.5 (iii) 开始证明 6.5。显然 a) 蕴含 a')；只要证明 $i>0$ 时\Term{functor}{函子} $H^i(X,F)$ 在 $C$ 中\Term{effaceable}{可消去}，逆向蕴含便是 6.2 的一个特例（仍取 $C$ 为 $X$ 上的 $L$-\Term{torsion-sheaf}{挠层}\Term{category}{范畴}，$C'$ 为\Term{abelian-group}{阿贝尔群}\Term{category}{范畴}）。这并不困难；不过也可不证明此结果，只须注意
+\SourcePage{82}
+$F$ 是其那些被某个整数 $n>0$ 消去的\Term{subsheaf}{子层} $F_i$ 的\Term{filtered-inductive-limit}{滤过归纳极限}（第 IX 讲 1.1）。于是 $h^*(F)$ 是各 $h^*(F_i)$ 的\Term{inductive-limit}{归纳极限}。由对 $X,Y$ 所作的\Term{quasicompact}{拟紧}、\Term{quasiseparated}{拟分离}假设（这些假设在 6.6 中尚未用到），\Term{cohomology}{上同调}与\Term{inductive-limit}{归纳极限}交换（第 VII 讲 3.3），故只须对各 $F_i$ 证明条件 a)，从而归结到存在整数 $m>0$ 使 $mF=0$ 的情形。显然可设 $m$ 的素因子都属于 $L$，此时可取 $C$ 为 $X$ 上的 $\mathbf Z/m\mathbf Z$-模\Term{sheaf}{层}\Term{category}{范畴}。已知在此\Term{category}{范畴}中，$i\geq1$ 时\Term{functor}{函子} $H^i(X,-)$ 都\Term{effaceable}{可消去}。\footnote{\SGAsourcegap{6.5 (iii) 证明中，在“$i\geq1$ 时\Term{functor}{函子} $H^i(X,-)$ 都\Term{effaceable}{可消去}”之后，原重排本及扫描本都只有一个空脚注标记，未见脚注文字。}}这证明了 6.5 (iii) 中 a) 与 a') 的\Term{equivalence}{等价}性。
+
+另一方面，将 a) 应用于 $X'$ 上一个 $L$-\Term{torsion-sheaf}{挠层} $F'$ 的\Term{direct-image}{正像}，其中 $X'$ 在 $X$ 上\Term{finite-morphism}{有限}；由第 IX 讲 1.2 (v)、1.6 (iii)，该\Term{direct-image}{正像}也是 $L$-\Term{torsion-sheaf}{挠层}。再用 6.4 和第 VIII 讲 5.5，可知\Term{homomorphism}{同态}
+\[
+H^i(X',F')\longrightarrow H^i(Y',h'^*(F'))
+\]
+在 $i\leq n$ 时为\Term{isomorphism}{同构}，$i=n+1$ 时为\Term{monomorphism}{单态射}，因而特别有 b)。只须证明 b) 蕴含 a')。
+
+为此，利用 $X$ 上每个 $L$-\Term{torsion-sheaf}{挠层} $F$ 都是\Term{constructible}{可构造} $L$-\Term{torsion-sheaf}{挠层}的\Term{filtered-inductive-limit}{滤过归纳极限}这一事实（第 IX 讲 2.7.2）。由已用过的过\Term{limit}{极限}论证，在 a') 中只须考虑 $F$ 为\Term{constructible}{可构造层}。由第 IX 讲 2.14，存在\Term{finite}{有限}多个\Term{finite-morphism}{有限态射} $p_i:X'_i\to X$、$X'_i$ 上的\Term{constant-sheaf}{常值} $L$-\Term{torsion-sheaf}{挠层} $G_{iX'_i}$，以及\Term{injectivity}{单射}
+\[
+F\longrightarrow\prod_i p_{i*}(G_{iX'_i}).
+\]
+若 $n=-1$，即所求结论只是 $H^0(X,F)\to H^0(Y,h^*(F))$ 的\Term{injectivity}{单射}性，立即可见可将 $F$ 替换为一个容许\Term{monomorphism}{单态射} $F\to G$ 的\Term{sheaf}{层} $G$，因而可替换为各 $p_{i*}(G_{iX'_i})$ 的积。由 6.4，只须将 $h:Y\to X$ 替换为 $h':Y'\to X'$，并将 $F$ 替换为 $X'$ 上取值于通常意义的\Term{finite}{有限} $L$-\Term{torsion-group}{挠群} $G$ 的\Term{constant-sheaf}{常值层}，来证明\Term{injectivity}{单射}性。$G$ \Term{isomorphism}{同构}于若干形如 $\mathbf Z/\ell^\nu\mathbf Z$（$\ell\in L$）的群之和，所以确实归结到检验 b)。
+
+若 $n\geq0$，同样论证。对 $n$ 归纳，可以假设所求结论（从而 a)）在把 $n$ 替换为 $n-1$ 后成立。再由 6.6 (iii)，仍可将 $F$ 替换为容许\Term{monomorphism}{单态射} $F\to G$ 的\Term{sheaf}{层} $G$，并仍取 $G=p_*(G_{X'})$。由 6.4 及\Term{finite-morphism}{有限态射}的 $R^ip_*$（$i\geq1$）为零（第 VIII 讲 5.5），只须把 $h:Y\to X$ 替换为某个 $h':Y'\to X'$，并把 $F$ 替换为 $X'$ 上取值于通常意义的\Term{finite}{有限} $L$-\Term{torsion-group}{挠群}的\Term{constant-sheaf}{常值层}，来证明 $H^n$ 的\Term{surjectivity}{满射}性。由归纳假设及 a') 蕴含 a)，\Term{injectivity}{单射}性已经成立，因此再对 $G$ 逐层剖分，
+\SourcePage{83}
+归结到 $G$ 形如 $\mathbf Z/\ell^\nu\mathbf Z$ 的情形，也就是 6.5 (iii) 条件 b) 所考虑的情形。这就证明了 6.5 的情形 (iii)。
+
+对于 6.5 (i)、相应地 6.5 (ii) 中 a) 与 b) 的\Term{equivalence}{等价}性，情形 (i)、(ii) 的证明完全相同：利用第 IX 讲 2.7.2 及 $H^0,H^1$ 与\Term{sheaf}{层}的\Term{filtered-inductive-limit}{滤过归纳极限}交换（第 VII 讲 5.14），归结到 $F$ 为\Term{constructible}{可构造层}，再用第 IX 讲 2.14、6.6 (i)、(ii) 及第 VIII 讲 5.8，归结到 b) 中的特例。此外，(i) 中 b)、b')、b'') 的\Term{equivalence}{等价}性是显然的，此处列出仅为备忘；它们蕴含\Term{functor}{函子} $X'\mapsto Y'$ 从 $X$ 的\Term{etale-cover}{平展覆盖}\Term{category}{范畴}到 $Y$ 的\Term{etale-cover}{平展覆盖}\Term{category}{范畴}的\Term{faithful}{忠实}性（相应地，\Term{fully-faithful}{全忠实}性），也是如此。6.5 (ii) 中 b)、b')、b'') 的\Term{equivalence}{等价}性亦然；列出这些条件只是使陈述更充实。6.5 的证明完成。
+\end{proof}
+
+\begin{SGAresult}{注记}{6.7}
+\footnote{撰稿人建议略去这些注记及 (6.13)；它们是由一位不恭敬的合作者偷偷加进来的，同时还对原文作了各种或好或坏的其他改动。}
+1) 显然，证明 6.5 和 6.6 的论证非常一般，本质上也很初等；若将其抽出为与 6.2 同类的抽象引理，会颇有益处（\Term{sheaf}{层} $p_*(G_{X'})$ 在所用\Term{category}{范畴} $C$ 中起\Term{cogenerator}{余生成元}的\Term{action}{作用}）。这个有趣的练习留给读者。这里只指出，把\Term{functor}{函子} $H^i$ 换成 $R^if_*$ 之类的\Term{functor}{函子}，本质上可以给出相同的陈述。相同的注记也适用于下面的 6.8、6.11。
+
+2) 当 $X$ 是\Term{noetherian}{诺特}的，所给论证表明，在 6.5 (i)、(ii)、(iii) 条件 b) 及其变体的陈述中，只须取 $X'$ 为\Term{integral-scheme}{整概形}；当 $X$ 为\Term{universally-japanese}{普遍日本概形}时，甚至可取其为\Term{integral-scheme}{整}且\Term{normal}{正规}的。即使不对 $X$ 作日本性\Term{restriction}{限制}，这一点仍成立，只要将\Term{finite-morphism}{有限态射}替换为\Term{integral-morphism}{整态射} $p:X'\to X$。本讨论班后文不使用这些变体。
+
+3) 6.6 的证明不使用对 $X$ 所作的\Term{quasicompact}{拟紧}和\Term{quasiseparated}{拟分离}假设；(i)、(ii)、(iii) 中条件 a) 蕴含其余条件，以及条件 b)、b')、b'') 相互\Term{equivalence}{等价}，也不需要这些假设。另一方面，6.5 (i) 中条件 b) 的\Term{form}{形式}表明，对于 $L=\varnothing$，它们是 6.5 (iii) 在 $n=-1$、相应地 $n=0$ 时的特例（当 $X$ \Term{quasicompact}{拟紧}\Term{quasiseparated}{拟分离}）。\footnote{译注：原文此处印为 $L=\varnothing$，照录；6.5 的假设则要求 $L$ \Term{nonempty}{非空}。}事实上，限于 a) \Term{form}{形式}的条件，即使不加上述对 $X$ 的\Term{restriction}{限制}，这仍成立。容易看出这一点，因为对任意\Term{set-sheaf}{集合层} $F$ 及任意素数 $\ell$，可找到两个 $\ell$-\Term{torsion-sheaf}{挠阿贝尔层} $G,H$ 以及其底\Term{set-sheaf}{集合层}的\Term{homomorphism}{同态} $u:G\to H$，使 $F$ \Term{isomorphism}{同构}于\Term{zero-section}{零截面}的\Term{inverse-image}{逆像}（取由 $F$ 自由生成的 $\mathbf Z/\ell\mathbf Z$-模为 $F$\footnote{译注：原文此处仍写“为 $F$”，与刚才所引入的 $G,H$ 记号不合，照录。}，
+\SourcePage{84}
+取 $X$ 上的\Term{constant-sheaf}{常值层} $\mathbf Z/\ell\mathbf Z$ 为 $H$）。相同论证表明（不加\Term{quasicompact}{拟紧}、\Term{quasiseparated}{拟分离}\Term{restriction}{限制}），6.5 (ii) a)（甚至只须 $i=0$）蕴含 6.5 (i) a) 中\Term{lie-bracket}{括号}内的相应条件。由于后者对 $X$ 上任意\Term{group-sheaf}{群层} $F$ 已经蕴含 $H^1(X,F)\to H^1(Y,h^*(F))$ 的\Term{injectivity}{单射}性，在 6.5 (ii) a) 的陈述中，便只须对 $i=1$ 要求 $H^1(X,F)\to H^1(Y,h^*(F))$ 的\Term{surjectivity}{满射}性。遗憾的是，6.5 (ii) 不能视为 6.5 (iii) 的特例，这使我们常常必须在非交换情形重复一个已在交换情形基本完成的论证。还须指出，除 6.10 外，以下结果的陈述都不要求\Term{quasicompact}{拟紧}和\Term{quasiseparated}{拟分离}假设。
+\end{SGAresult}
+
+\begin{SGAresult}{命题}{6.8}
+（\Term{descent}{下降}引理。）沿用 6.5 的一般记号，再给定\Term{morphism}{态射} $p:\bar X\to X$。记 $\bar h:\bar Y\to\bar X$ 为 $h$ 经\Term{base-change}{换基} $p$ 得到的\Term{morphism}{态射}，$p_Y:\bar Y\to Y$ 为\Term{canonical}{典范}\Term{morphism}{态射}。假设 $p$ 为\Term{surjectivity}{满射}，或者 $h$ 是\Term{closed-immersion}{闭浸入}且 $X=p(\bar X)\cup h(Y)$。
+
+(i) 假设\Term{morphism}{态射} $\bar h:\bar Y\to\bar X$ 满足 6.5 (i) a) 的\Term{injectivity}{单射}性条件（相应地，\Term{bijection}{双射}性条件）。在\Term{lie-bracket}{括号}中的相应情形下，再假设对 $\bar X$ 上每一个\Term{set-sheaf}{集合层} $\bar F$，\Term{base-change-morphism}{换基态射}
+\[
+h^*(p_*(\bar F))\longrightarrow p_{Y*}(\bar h^*(\bar F))\tag{*}
+\]
+为\Term{injectivity}{单射}。则\Term{morphism}{态射} $h:X\to Y$ 也满足 6.5 (i) a) 的\Term{injectivity}{单射}性条件（相应地，\Term{bijection}{双射}性条件）。\footnote{译注：本句中 $h:X\to Y$ 的方向在原扫描本与重排本均如此，与本命题开头的 $h:Y\to X$ 相反，此处照录。}
+
+(ii) 假设 $\bar h:\bar Y\to\bar X$ 满足 6.5 (ii) a) 的条件，且对 $\bar X$ 上每一个\Term{ind-l-group}{ind-$L$ 群层} $\bar F$，\Term{base-change-morphism}{换基态射} (*) 为\Term{bijection}{双射}。则 $h:Y\to X$ 也满足 6.5 (ii) a) 的条件。
+
+(iii) 假设 $\bar h:\bar Y\to\bar X$ 满足 6.5 (iii) a) 的条件，且对 $\bar X$ 上每一个 $L$-\Term{torsion-sheaf}{挠阿贝尔层} $\bar F$，\Term{base-change-morphism}{换基同态}
+\[
+h^*(R^ip_*(\bar F))\longrightarrow R^ip_{Y*}(\bar h^*(\bar F))
+\]
+在 $i\leq n-1$ 时为\Term{bijection}{双射}，在 $i=n$ 时为\Term{injectivity}{单射}（这里 $n\geq1$ 为给定整数）。则 $h:Y\to X$ 也满足 6.5 (iii) a) 的条件。
+\end{SGAresult}
+
+\begin{proof}[6.8 的证明]
+若未假设 $p$ 为\Term{surjectivity}{满射}，而是假设 $h$ 为\Term{closed-immersion}{闭浸入}且 $X=p(\bar X)\cup h(Y)$，则考虑 $\bar X$ 与 $Y$ 的和\Term{scheme}{概形} $\bar X'$，以及由 $p,h$ \Term{derive}{导出}的\Term{morphism}{态射} $p':\bar X'\to X$。于是 $p'$ 为\Term{surjectivity}{满射}，而且在 (i)、(ii)、(iii) 各情形，容易看出关于 $(h,p)$ 的假设对于 $(h,p')$ 仍成立。故归结到 $p$ 为\Term{surjectivity}{满射}；下文都在此情形进行。此时，对 $X$ 上任意\Term{sheaf}{层} $F$，\Term{canonical-homomorphism}{典范同态}
+\[
+F\longrightarrow p_*(p^*(F))
+\]
+\SourcePage{85}
+为\Term{injectivity}{单射}。在 (i) 中，为检验 $H^0(X,F)\to H^0(Y,h^*(F))$ 的\Term{injectivity}{单射}性，立即可归结到将 $F$ 替换为 $p_*(\bar F)$ 的情形，其中 $\bar F=p^*(F)$。考虑\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}[column sep=large]
+H^0(X,p_*\bar F)\arrow[r]\arrow[dd,"\sim"']&H^0(Y,h^*(p_*\bar F))\arrow[d]\\
+&H^0(Y,p_{Y*}(\bar h^*\bar F))\arrow[d,"\sim"]\\
+H^0(\bar X,\bar F)\arrow[r]&H^0(\bar Y,\bar h^*\bar F).
+\end{tikzcd}
+\]
+左边的竖直\Term{arrow}{箭头}和右边第二条竖直\Term{arrow}{箭头}是\Term{canonical-isomorphism}{典范同构}，右边第一条竖直\Term{arrow}{箭头}来自由 $h$ 给出的\Term{base-change-morphism}{换基同态}。由假设，下方水平\Term{arrow}{箭头}为\Term{injectivity}{单射}，所以立即可知上方水平\Term{arrow}{箭头}也为\Term{injectivity}{单射}，证明了 (i) 中不带\Term{lie-bracket}{括号}的断言。对于\Term{lie-bracket}{括号}中的相应断言，假设下方水平\Term{arrow}{箭头}为\Term{surjectivity}{满射}；此外，由假设，\Term{base-change-morphism}{换基同态}为\Term{monomorphism}{单态射}，故右边第一条竖直\Term{arrow}{箭头}亦为\Term{monomorphism}{单态射}，其与第二条的复合也如此。由此立即推出上方水平\Term{arrow}{箭头}也是\Term{surjectivity}{满射}，(i) 证毕。
+
+为证明 (ii)，由上述论证和 6.5 (i)，只须证明 $H^1(X,F)\to H^1(Y,h^*(F))$ 的\Term{surjectivity}{满射}性。利用 6.6 (ii)，又只须对形如 $p_*(\bar F)$ 的 $F$ 证明，其中 $\bar F$ 为 $\bar X$ 上的\Term{ind-l-group}{ind-$L$ 群层}（第 IX 讲 1.6 (ii)）。对\Term{morphism}{态射} $p,p_Y$ 写出 $H^1$ 的\Term{exact-sequence}{正合列}（3.2 的变体），得到非交换\Term{exact-sequence}{正合列}的\Term{homomorphism}{同态}
+\[
+\begin{tikzcd}[column sep=small]
+H^1(X,p_*\bar F)\arrow[r]\arrow[d]&H^1(\bar X,\bar F)\arrow[r]\arrow[d]&H^0(X,R^1p_*\bar F)\arrow[d]\\
+H^1(Y,p_{Y*}(\bar h^*\bar F))\arrow[r]&H^1(\bar Y,\bar h^*\bar F)\arrow[r]&H^0(Y,R^1p_{Y*}(\bar h^*\bar F)).
+\end{tikzcd}
+\]
+在每一行中，第一条\Term{arrow}{箭头}为\Term{injectivity}{单射}，并将第一项识别为第二条\Term{arrow}{箭头}下第三项的基点的\Term{inverse-image}{逆像}。由对 $\bar h$ 的假设，中央竖直\Term{arrow}{箭头}为\Term{bijection}{双射}。另一方面，两端竖直\Term{arrow}{箭头}分别经 $H^1(Y,h^*(p_*\bar F))$ 和 $H^0(Y,h^*(R^1p_*\bar F))$ \Term{resolution}{分解}：先取\Term{homomorphism}{同态} $H^i(X,-)\to H^i(Y,-)$（分别取 $i=1,0$），再对\Term{base-change-morphism}{换基同态}
+\[
+h^*(p_*\bar F)\longrightarrow p_{Y*}(\bar h^*\bar F),\qquad
+h^*(R^1p_*\bar F)\longrightarrow R^1p_{Y*}(\bar h^*\bar F)
+\]
+施以 $H^i(Y,-)$（分别取同样的 $i$）。由假设，上面第一个\Term{base-change-morphism}{换基同态}为\Term{isomorphism}{同构}，
+\SourcePage{86}
+故该图第一条竖直\Term{arrow}{箭头}可识别为要研究的\Term{homomorphism}{同态} $H^1(X,-)\to H^1(Y,-)$。为证明其\Term{bijection}{双射}性，只须证明最后一条竖直\Term{arrow}{箭头}的\Term{injectivity}{单射}性。由刚才所述，后者由两个映射复合：第一个是\Term{canonical-homomorphism}{典范同态} $H^0(X,-)\to H^0(Y,-)$，故为\Term{bijection}{双射}；第二个为\Term{injectivity}{单射}，因为它由\Term{left-exact-functor}{左正合函子} $H^0(Y,-)$ \Term{action}{作用}于\Term{monomorphism}{单态射}
+\[
+h^*(R^1p_*\bar F)\longrightarrow R^1p_{Y*}(\bar h^*\bar F)
+\]
+而得。后者为\Term{monomorphism}{单态射}，容易由前一次数 $0$ 的\Term{base-change-morphism}{换基同态}的\Term{bijection}{双射}性假设推出；例如可使用 6.5 (i) 的第二个断言和\Term{higher-direct-image}{高阶正像}\Term{fiber}{纤维}的通常计算（第 VIII 讲 5.3）。这证明了 6.8 (ii)。
+
+还须证明 6.8 (iii)。为此，不直接使用上述\Term{injectivity}{单射} $F\to p_*(p^*(F))$，而使用右\Term{derived-category}{导出范畴} $D^+(C)$ 中的\Term{homomorphism}{同态}
+\[
+F\longrightarrow Rp_*(\bar F),
+\]
+会更方便；这里 $C$ 为 $X$ 上\Term{abelian-sheaf}{阿贝尔层}\Term{category}{范畴}。回顾一下，按定义，$Rp_*(\bar F)$ 是\Term{complex}{复形} $p_*(C(\bar F))$，其中 $C(\bar F)$ 是 $\bar F$ 在 $\bar X$ 上\Term{abelian-sheaf}{阿贝尔层}\Term{category}{范畴}中的一个\Term{injective-resolution}{内射分解}。若 $K^\bullet$ 为 $X$ 上的\Term{complex}{复形}，用 $H^i(X,K^\bullet)$ 表示 $X$ 以 $K^\bullet$ 为系数的\Term{hypercohomology}{超上同调}群，并对 $Y$ 采用类似记号。由 6.3，只须证明
+\[
+H^n(X,Rp_*(\bar F))\longrightarrow H^n(Y,h^*Rp_*(\bar F))\tag{1}
+\]
+的\Term{surjectivity}{满射}性。由假设，\Term{base-change-morphism}{换基同态}
+\[
+h^*(Rp_*(\bar F))\longrightarrow Rp_{Y*}(\bar h^*(\bar F))\tag{2}
+\]
+在次数 $\leq n-1$ 的\Term{cohomology-sheaf}{上同调层}上\Term{induction-isomorphism}{诱导同构}，在次数 $n$ 诱导\Term{monomorphism}{单态射}。这也可表述为：上述\Term{homomorphism}{同态}的“映射柱”$K^\bullet$ 只有在次数 $\geq n$ 才可能有非零\Term{cohomology-sheaf}{上同调层}。所以 $i<n$ 时 $H^i(Y,K^\bullet)=0$；由\Term{cohomology}{上同调}\Term{exact-sequence}{正合列}，上述\Term{homomorphism}{同态}所诱导的
+\[
+H^i(Y,h^*(Rp_*(\bar F)))\longrightarrow H^i(Y,Rp_{Y*}(\bar h^*(\bar F)))\tag{3}
+\]
+在 $i\leq n-1$ 时为\Term{isomorphism}{同构}，在 $i=n$ 时为\Term{monomorphism}{单态射}。考虑 (1) 与 (3) 的复合
+\[
+\begin{aligned}
+H^n(X,Rp_*(\bar F))&\longrightarrow H^n(Y,h^*(Rp_*(\bar F)))\\
+&\longrightarrow H^n(Y,Rp_{Y*}(\bar h^*(\bar F))).
+\end{aligned}\tag{4}
+\]
+由定义，两端分别\Term{isomorphism}{同构}于 $H^n(\bar X,\bar F)$ 和 $H^n(\bar Y,\bar h^*(\bar F))$；(4) 的复合正是由 $\bar h$ \Term{derive}{导出}的\Term{homomorphism}{同态}，由对 $\bar h$ 的假设，它为\Term{bijection}{双射}。由于刚才已证 (4) 的第二条\Term{arrow}{箭头}为\Term{injectivity}{单射}，第一条\Term{arrow}{箭头}也为\Term{bijection}{双射}，6.8 证毕。
+\end{proof}
+
+\SourcePage{87}
+而且立即看出，前面的证明给出如下一个略为精确、略为一般的结果。
+\begin{SGAresult}{推论}{6.9}
+沿用 6.8 的记号。再假设 $h$ 满足 6.5 (i) 中不带\Term{lie-bracket}{括号}的条件（相应地，6.5 (i) 中\Term{lie-bracket}{括号}内的条件；相应地，$n\geq-1$ 时 6.5 (iii) 的条件），且对 $\bar X$ 上每个\Term{set-sheaf}{集合层} $\bar F$，\Term{base-change-morphism}{换基同态}
+\[
+h^*(p_*(\bar F))\longrightarrow p_{Y*}(\bar h^*(\bar F))
+\]
+为\Term{injectivity}{单射}（相应地，\Term{bijection}{双射}；相应地，对 $\bar X$ 上每个 $L$-\Term{torsion-sheaf}{挠层} $\bar F$，\Term{base-change-morphism}{换基同态}
+\[
+h^*R^ip_*(\bar F)\longrightarrow R^ip_{Y*}(\bar h^*(\bar F))
+\]
+在 $i\leq n$ 时为\Term{bijection}{双射}，在 $i=n+1$ 时为\Term{injectivity}{单射}）。设 $F$ 为 $X$ 上的\Term{set-sheaf}{集合层}（相应地，\Term{ind-l-group}{ind-$L$ 群层}；相应地，$L$-\Term{torsion-sheaf}{挠层}），$\xi\in H^{n+1}(Y,h^*(F))$（在情形 (i) 中取 $n=-1$，在情形 (ii) 中取 $n=0$）。令 $\bar F=p^*(F)$。则 $\xi$ 属于 $H^{n+1}(X,F)$ 的像，当且仅当其在
+\[
+H^{n+1}(\bar Y,p_Y^*(h^*(F)))=H^{n+1}(\bar Y,\bar h^*(\bar F))
+\]
+中的\Term{inverse-image}{逆像}属于 $H^{n+1}(\bar X,\bar F)$ 的像。\footnote{译注：原文等式左侧写作 $p_{Y*}$，据前后文及第二项的定义应为 $p_Y^*$；此处将原记号差别明确记录。}
+\end{SGAresult}
+我们将使用 6.8 的这一精确\Term{form}{形式}来证明：
+\begin{SGAresult}{推论}{6.10}
+沿用 6.5 的记号。为简便，假设 6.5 (i) 中不带\Term{lie-bracket}{括号}的条件满足。
+
+(i) 6.5 (i) 中\Term{lie-bracket}{括号}内的相应条件满足（相应地，6.5 (ii) a) 成立；相应地，6.5 (iii) a) 成立），当且仅当下述条件满足：对 $X$ 上任意\Term{set-sheaf}{集合层}（相应地，\Term{ind-l-group}{ind-$L$ 群层}；相应地，$L$-\Term{torsion-sheaf}{挠阿贝尔层}）$F$，任意 $\xi\in H^0(Y,h^*(F))$（相应地，$\xi\in H^i(Y,h^*(F))$，$i=0,1$；相应地，$\xi\in H^i(Y,h^*(F))$，$i\leq n$），以及 $X$ 的任意\Term{nonempty}{非空}闭部分 $X'$，记其在 $Y$ 中的\Term{inverse-image}{逆像}为 $Y'$，存在\Term{morphism}{态射} $p:\bar X\to X$ 满足：
+
+ $1^\circ$）像 $p(\bar X)$ 包含于 $X'$，且包含 $X'$ 的一个\Term{nonempty}{非空}\Term{open-subset}{开集}。
+
+ $2^\circ$）对 $\bar X$ 上任意\Term{set-sheaf}{集合层} $\bar F$（相应地，……），\Term{base-change-morphism}{换基同态}
+\[
+h^*(p_*(\bar F))\longrightarrow p_{Y*}(\bar h^*(\bar F))
+\]
+为\Term{isomorphism}{同构}（相应地，对 $\bar X$ 上每个\Term{ind-l-group}{ind-$L$ 群层} $\bar F$，\Term{base-change-morphism}{换基同态}
+\[
+h^*(R^ip_*(\bar F))\longrightarrow R^ip_{Y*}(\bar h^*(\bar F))
+\]
+在 $i=0,1$ 时为\Term{bijection}{双射}；相应地，对 $\bar X$ 上每个 $L$-\Term{torsion-sheaf}{挠阿贝尔层} $\bar F$，\Term{base-change-morphism}{换基同态}在 $i\leq n$ 时为\Term{bijection}{双射}）。
+
+ $3^\circ$）$\xi$ 在 $H^i(\bar Y,p_Y^*(h^*(F)))=H^i(\bar Y,\bar h^*(p^*(F)))$ 中的\Term{inverse-image}{逆像}属于 $H^i(\bar X,p^*(F))$ 的像。
+
+(ii) 设 $n\geq-1$，并假设对 $X$ 上每一个\Term{set-sheaf}{集合层}（相应地，\Term{ind-l-group}{ind-$L$ 群层}；相应地，$L$-\Term{torsion-sheaf}{挠阿贝尔层}）$F$，\Term{homomorphism}{同态} $H^i(X,F)\to H^i(Y,h^*(F))$ 在 $i\leq n$ 时为\Term{bijection}{双射}，在 $i=n+1$ 时为\Term{injectivity}{单射}（第一种情形假设 $n=1$；第二种情形假设 $n=-1$ 或 $0$）。\footnote{译注：第一种情形的 $n=1$ 在原扫描本与重排本均如此，与\Term{set-sheaf}{集合层}只考虑 $H^0$ 的约定不合，此处保留。}设 $\xi\in H^{n+1}(Y,h^*(F))$。则 $\xi$ 属于 $H^{n+1}(X,F)$ 的像，当且仅当它满足上面 (i) 在 $i=n+1$ 时所陈述的条件。
+\end{SGAresult}
+
+\SourcePage{88}
+\begin{proof}[6.10 的证明]
+使用 6.5 并对 $n$ 作直接归纳，可见 6.10 (i) 是 6.10 (ii) 的推论；现在证明后者。
+
+假设 $\xi$ 不属于 $H^n(X,F)$ 的像。\footnote{译注：本证明的指数一直印作 $n$，而 6.10 (ii) 的陈述中为 $n+1$；此处照录原证明的指数。}设 $\Phi$ 为 $X$ 的那些闭部分 $X'$ 的\Term{set}{集合}，使 $\xi$ 在 $H^n(Y',h^*(F)|_{Y'})$ 中的像不属于 $H^n(X',F|_{X'})$ 的像。由假设，$X\in\Phi$，故 $\Phi$ \Term{nonempty}{非空}。以关系 $\supset$ 给 $\Phi$ 排序，并证明它是归纳\Term{ordered-set}{有序集}。为此，只须证明：若 $(X'_\lambda)$ 为 $\Phi$ 中的一个全序族，$X'$ 为其交，则 $X'\in\Phi$。赋予 $X'_\lambda$ 和 $X'$ 诱导的\Term{reduced}{既约}结构，可见\Term{morphism}{态射} $X'_\lambda\to X$ 是\Term{affine}{仿射}的（因为它们是\Term{closed-immersion}{闭浸入}），所以各 $X'_\lambda$ 构成的\Term{projective-system}{投射系}满足第 VII 讲 5 中考虑的条件。此外，立即看出 $X'$ 是各 $X'_\lambda$ 的\Term{projective-limit}{投射极限}。同样，$Y'$ 是\Term{projective-system}{投射系} $(Y'_\lambda)$ 的\Term{projective-limit}{投射极限}，其中各项在 $Y$ 上\Term{affine}{仿射}。利用第 VII 讲 5.8，得到
+\[
+\begin{aligned}
+\varinjlim H^n(X'_\lambda,F|_{X'_\lambda})&\xrightarrow{\sim}H^n(X',F|_{X'}),\\
+\varinjlim H^n(Y'_\lambda,h^*(F)|_{Y'_\lambda})&\xrightarrow{\sim}H^n(Y',h^*(F)|_{Y'}).
+\end{aligned}
+\]
+由此立即可知，若有 $(\xi|_{Y'})\in\operatorname{Im}H^n(X',F|_{X'})$，则存在指标 $\lambda$，使 $(\xi|_{Y'_\lambda})\in\operatorname{Im}H^n(X'_\lambda,F|_{X'_\lambda})$，矛盾。因此确有 $X'\in\Phi$。所以 $\Phi$ 是归纳\Term{ordered-set}{有序集}，因而有一个极小元素，记为 $X'$。显然 $\varnothing\notin\Phi$，故 $X'$ \Term{nonempty}{非空}。
+
+对 $\xi,X'$ 应用 6.10 的假设，得到满足 6.10 中条件 $1^\circ$）至 $3^\circ$）的\Term{morphism}{态射} $p:\bar X\to X$。注意甚至可假设 $p$ 为\Term{surjectivity}{满射}。事实上，设 $U$ 为 $p(\bar X)$ 所包含的 $X'$ 的一个\Term{nonempty}{非空}\Term{open-subset}{开集}，$X'_1$ 为其在 $X'$ 中的补集，则由构造 $X'_1\notin\Phi$。利用此关系，立即可见，令 $\bar X_1=\bar X\amalg X'_1$，以 $p_1:\bar X_1\to X$ 表示由 $p$ 及 $X'_1$ 到 $X$ 的包含\Term{morphism}{态射}所定义的\Term{morphism}{态射}，则 $p_1$ 仍满足与 $p$ 相同的假设，而且为\Term{surjectivity}{满射}。\footnote{译注：原文此处称到 $X$ 的\Term{morphism}{态射}为\Term{surjectivity}{满射}，而由所列像条件直接得到的是在 $X'$ 上\Term{surjectivity}{满射}；本段仍依原文表述。}因此假设 $p$ 为\Term{surjectivity}{满射}，应用 6.9，其中把 $h:Y\to X$ 替换为 $h':Y'\to X'$（例如赋予 $X'$ 诱导的\Term{reduced}{既约}结构），并把 $\xi$ 替换为 $\xi|_{Y'}$。于是由 6.9 得 $(\xi|_{Y'})\in\operatorname{Im}H^n(X',F|_{X'})$，这与 $X'\in\Phi$ 矛盾，6.10 证毕。
+\end{proof}
+我们将用 6.10 把 5.5 归结到 $f$ 为\Term{projective-morphism}{射影态射}的情形；但在非\Term{noetherian}{诺特}情形，为此还须用 Chow 引理的一个非\Term{noetherian}{诺特}变体，将在下一节给出。
+
+\begin{SGAresult}{命题}{6.11}
+（\Term{transitivity}{传递性}引理。）沿用 6.8 的记号，但不对 $p$ 作任何\Term{surjectivity}{满射}性假设。假设 $h$ 满足 6.5 的 (i) a)（相应地，(ii) a)；相应地，(iii) a)）。再假设：在情形 (i)，对 $\bar X$ 上每一个\Term{set-sheaf}{集合层} $\bar F$，6.8 的\Term{base-change-morphism}{换基同态}是\Term{monomorphism}{单态射}（相应地，\Term{isomorphism}{同构}）；在情形 (ii)，$\bar X$ 是\Term{noetherian}{诺特}的，且对每一个\Term{ind-l-group}{ind-$L$ 群层} $\bar F$，\Term{base-change-morphism}{换基同态}
+\[
+h^*(R^1p_*(\bar F))\longrightarrow R^1p_{Y*}(\bar h^*(\bar F))
+\]
+对 $i=0,1$ 为\Term{bijection}{双射}；\footnote{译注：此处原式的上标印为 $1$，而后文要求“对 $i=0,1$”，与 6.5 (ii) a)、b) 中的排印情况相同，此处照录。}
+\SourcePage{89}
+最后，在情形 (iii)，\Term{base-change-morphism}{换基同态}在 $i\leq n$ 时为\Term{bijection}{双射}，在 $i=n+1$ 时为\Term{injectivity}{单射}。则\Term{morphism}{态射} $\bar h:\bar Y\to\bar X$ 也满足 6.5 的条件 (i)（相应地，(ii)；相应地，(iii)）。
+\end{SGAresult}
+
+\begin{proof}[6.11 的证明]
+在情形 (i)，考虑 6.8 (i) 证明中的\Term{commutative-diagram}{交换图}。这里的假设蕴含第一条水平\Term{arrow}{箭头}和右边第一条竖直\Term{arrow}{箭头}为\Term{injectivity}{单射}（相应地，\Term{bijection}{双射}），所以第二条水平\Term{arrow}{箭头}亦然，这正是要证明的。
+
+在情形 (ii)，给定 $\bar X$ 上的一个\Term{ind-l-group}{ind-$L$ 群层} $\bar F$，须证明 $H^1(\bar Y,\bar h^*(\bar F))$ 的每个元素都来自 $H^1(\bar X,\bar F)$ 的一个元素。由应用于 $\bar h$ 的 6.6 (ii)，只须找到 $\bar X$ 上\Term{group-sheaf}{群层}的一个\Term{monomorphism}{单态射} $\bar F\to\bar G$，消去 $H^1(\bar Y,\bar h^*(\bar F))$。考虑 6.8 (ii) 证明中所用图的第二行。只须先找到一个\Term{monomorphism}{单态射} $\bar F\to\bar G$，其中 $\bar G$ 为\Term{ind-l-finite-group}{ind-$L$-有限群层}，以消去末项 $H^0(Y,R^1p_{Y*}(\bar h^*(\bar F)))$；再找到\Term{group-sheaf}{群层}的一个\Term{monomorphism}{单态射} $\bar G\to\bar H$，以消去 $H^1(Y,p_{Y*}(\bar h^*(\bar F)))$。如 6.8 (i) 的证明中已指出，由这里对 $p,h$ 的\Term{base-change-morphism}{换基同态}所作的假设，通过该图两端的竖直\Term{arrow}{箭头}，这两个待消去的项分别\Term{isomorphism}{同构}于 $H^0(X,R^1p_*(\bar F))$ 和 $H^1(X,p_*(\bar F))$。而所考虑的\Term{isomorphism}{同构}显然关于 $\bar F$ \Term{functor}{函子}化，所以只须消去这两个项。
+
+由 3.3，可以用 $\bar F$ 到一个\Term{ind-l-group}{ind-$L$ 群层} $\bar G$ 的\Term{monomorphism}{单态射}来消去 $R^1p_*(\bar F)$，从而也消去 $H^0(X,R^1p_*(\bar F))$。还须消去 $H^1(X,p_*(\bar F))$；这可以做到，因为在所考虑的图中，后者通过一个关于 $\bar F$ \Term{functor}{函子}化的\Term{monomorphism}{单态射}映到 $H^1(\bar X,\bar F)$，而由 3.3，$H^1(\bar X,\bar F)$ 仍\Term{effaceable}{可消去}。
+
+还须处理情形 (iii)，仍反过来使用 6.8 的证明。\footnote{也可以不用 6.3，而对 $p,p_Y$ 使用 Leray \Term{spectral-sequence}{谱序列}。}须证明\Term{homomorphism}{同态}
+\[
+H^i(\bar X,\bar F)\longrightarrow H^i(\bar Y,\bar h^*(\bar F))
+\]
+在 $i\leq n$ 时为\Term{isomorphism}{同构}，在 $i=n+1$ 时为\Term{monomorphism}{单态射}。这些\Term{homomorphism}{同态}由\Term{complex}{复形}\Term{homomorphism}{同态}
+\[
+R\Gamma_{\bar X}(\bar F)\longrightarrow R\Gamma_{\bar Y}(\bar h^*(\bar F))
+\]
+诱导；后者由一个\Term{injective-resolution}{内射分解} $C(\bar F)$ 及从 $\bar h^*(C(\bar F))$（这是 $\bar h^*(\bar F)$ 的一个\Term{resolution}{分解}）到 $\bar h^*(\bar F)$ 的一个\Term{injective-resolution}{内射分解}的\Term{homomorphism}{同态}而得。上述\Term{homomorphism}{同态}也可识别为复合
+\[
+\begin{aligned}
+R\Gamma_X(Rp_*(\bar F))&\longrightarrow R\Gamma_Y(h^*(Rp_*(\bar F)))\\
+&\longrightarrow R\Gamma_Y(Rp_{Y*}(\bar h^*(\bar F))),
+\end{aligned}
+\]
+其中第一个\Term{homomorphism}{同态}是相对于 $Rp_*(\bar F)$ 的\Term{homomorphism}{同态} $h^*$，第二个由\Term{base-change-morphism}{换基同态} $h^*(Rp_*(\bar F))\to Rp_{Y*}(\bar h^*(\bar F))$ 施以 $R\Gamma_Y$ 而得。\footnote{译注：重排本该复合的中间项缺失 $Rp_*(\bar F)$，据原扫描本恢复。}
+\SourcePage{90}
+由对 $h$ 的假设及 6.3 (i)，第一个\Term{homomorphism}{同态}在所考虑\Term{complex}{复形}的\Term{cohomology}{上同调}群上\Term{induction-isomorphism}{诱导同构}。由我们对\Term{base-change-morphism}{换基同态}所作的假设，并使用 6.8 (iii) 证明中的论证，第二个\Term{homomorphism}{同态}亦然。因此同样的结论适用于两者的复合，6.11 证毕。
+\end{proof}
+
+\begin{SGAresult}{注记}{6.12}
+在 (i)、(iii) 情形下用于 6.11 的论证，还给出一个更精确的结果：为了对 $\bar X$ 上给定的\Term{sheaf}{层} $\bar F$ 得出 $H^i(\bar X,\bar F)\to H^i(\bar Y,\bar h^*(\bar F))$ 在 $i\leq n$ 时为\Term{bijection}{双射}、在 $i=n+1$ 时为\Term{injectivity}{单射}，只须假设：
+
+ $1^\circ$）\Term{base-change-morphism}{换基同态}
+$h^*(R^ip_*(\bar F))\to R^ip_{Y*}(\bar h^*(\bar F))$
+在 $i\leq n$ 时为\Term{isomorphism}{同构}，在 $i=n+1$ 时为\Term{monomorphism}{单态射}；以及
+
+ $2^\circ$）对每一对整数 $i,j\geq0$，由 $h$ 诱导的\Term{homomorphism}{同态}
+\[
+H^i(X,R^jp_*(\bar F))\longrightarrow H^i(Y,h^*(R^jp_*(\bar F)))
+\]
+在 $i+j\leq n$ 时为\Term{isomorphism}{同构}，在 $i+j=n+1$ 时为\Term{monomorphism}{单态射}。
+
+在情形 (ii) 大概也有类似结果，但其陈述必然涉及非交换二阶\Term{cohomology}{上同调}。正是为避免使用这一理论，我们在 6.10 (ii) 中采用了另一个利用非交换 $H^1$ 的\Term{effaceable}{可消去}性的论证；不过那个论证不能像这里一样，对固定的 $F$ 给出结果。
+\end{SGAresult}
+
+\begin{SGAresult}{注记}{6.13}
+6.5 (i)、(ii)、(iii) 的条件满足的最重要情形，是 5.5 所考虑的情形；下一讲将利用本讲所作的\Term{reduced}{约化}证明它。第 XV 讲还将研究另一种有趣情形（其中 $h$ 不再像 5.5 中那样是\Term{closed-immersion}{闭浸入}）。还指出一种与 5.5 相当接近的情形：$X$ 是一个\Term{noetherian}{诺特}环 $A$ 的谱，$A$ 对由\Term{ideal}{理想} $J$ 定义的\Term{topology}{拓扑}是\Term{separated}{分离}\Term{complete}{完备}的，而 $Y=\operatorname{Spec}(A/J)$ 是 $J$ 在 $X$ 中定义的\Term{closed-subscheme}{闭子概形}。此时可直接检验 6.5 (ii)（$L=\mathbf P$）的 b'') \Term{form}{形式}的条件（EGA IV 18.3.2）；很可能 6.5 (iii) 的条件对于任意 $n$ 也满足，即对于 $X$ 上任意\Term{torsion-sheaf}{挠层} $F$，\Term{homomorphism}{同态} $H^n(X,F)\to H^n(Y,F|_Y)$ 都为\Term{bijection}{双射}。
+
+还可提出广泛得多的猜想，它们与将\Term{henselization}{亨泽尔化}的构造推广到非\Term{local-scheme}{局部}\Term{scheme}{概形}有关。首先指出，若 $h$ 为\Term{closed-immersion}{闭浸入}，在 6.5 (i) 的相应条件满足时，即二元组 $(X,Y)$ 是 EGA IV 18.5.5 术语中的\Term{henselian-pair}{亨泽尔对}时，我们不知道任何 6.5 (ii)、(iii) 的条件（$L=\mathbf P$）不满足的例子。因此可以猜想，这样的二元组满足 6.5 (ii)、(iii) 的条件（$L=\mathbf P$，任意 $n$）。另一方面，可以问：对于\Term{quasicomplete}{拟完备}（quasi-complet）\Term{quasiseparated}{拟分离}\Term{scheme}{概形} $X$ 和其\Term{closed-subscheme}{闭子概形} $Y$ 所成二元组 $(X,Y)$，在什么条件下，下述性质蕴含此二元组为\Term{henselian-pair}{亨泽尔对}：\footnote{译注：此处 quasi-complet 依原扫描本与重排本文字照译。}
+\SourcePage{91}
+
+(*) 对 $X$ 上任意\Term{etale}{平展}\Term{scheme}{概形} $X'$，令 $Y'=X'\times_XY$，则\Term{canonical}{典范}映射
+\[
+\Gamma(Y'/Y)\longrightarrow\Gamma(X'/X)
+\]
+为\Term{bijection}{双射}。（参见 EGA IV 18.5.4 b)。）\footnote{译注：此处 $\Gamma$ 映射的方向在原文中即如此，照录。}
+
+此条件显然先验地弱于\Term{henselian}{亨泽尔}条件 6.5 (i)；它甚至严格更弱，因为例如，当 $X$ 是域 $k$ 上一个\Term{dimension}{维数} $\geq2$ 的\Term{normal}{正规}\Term{irreducible}{不可约}\Term{projective-scheme}{射影概形}，且 $Y$ 是 $X$ 的一个\Term{hyperplane-section}{超平面截面}时，此条件成立（由 SGA 2 第 XII 讲 2.1，取 $S=\operatorname{Spec}(k)$，容易推出）；但显然 $(X,Y)$ 不是\Term{henselian-pair}{亨泽尔对}。反过来，如果 $X$ 是\Term{affine}{仿射}的，条件 (*) 可能蕴含 $(X,Y)$ 是\Term{henselian-pair}{亨泽尔对}。若果真如此，对任意\Term{affine}{仿射}\Term{scheme}{概形} $X$ 及其任意闭部分 $Y$，应可通过一种沿 $Y$ 的\Term{etale}{平展}\Term{localization}{局部化}过程，类似于\Term{local-ring}{局部环}的\Term{henselization}{亨泽尔化}，给它关联一个\Term{henselian-pair}{亨泽尔对} $(X',Y)$，其中 $X'$ 在 $X$ 上是“pro-\Term{etale}{平展}”的。
+
+对于 $(X,Y)$ 的另一个假设（由 Hironaka 和 Rossi 关于\Term{algebraic-variety}{代数簇}的某些\Term{subvariety}{子簇}\Term{contractible}{可缩}性所得结果提示），也许能从较弱性质 (*) 推出\Term{henselian}{亨泽尔}性质：\Term{immersion}{浸入} $Y\to X$ 是\Term{regular-immersion}{正则浸入}，\Term{codimension}{余维数}为 $1$，且\Term{conormal-sheaf}{余法层} $N_{Y/X}=J/J^2$（$J$ 是在 $X$ 中定义 $Y$ 的\Term{ideal}{理想}）是 $Y$ 上的一个\Term{ample}{丰沛}\Term{invertible-sheaf}{可逆层}。（注意，在上述反例中，此\Term{conormal-sheaf}{余法层}恰好是反\Term{ample}{丰沛}的，即其逆为\Term{ample}{丰沛层}。）
+\end{SGAresult}
+
+\SGAsection{7}{Chow 引理的一个变体}
+\footnote{只关心第 5 节诸陈述在\Term{noetherian}{诺特}情形下的内容的读者，可以略去本节。}
+我们需要 EGA II 5.6.1 的下述变体，去掉一切\Term{noetherian}{诺特}性或\Term{irreducible}{不可约}性假设。
+\begin{SGAresult}{引理}{7.1}
+设 $S$ 为\Term{quasicompact}{拟紧}\Term{quasiseparated}{拟分离}\Term{scheme}{概形}，$f:X\to S$ 为\Term{separated-morphism}{分离}\Term{finite-type}{有限型}\Term{morphism}{态射}，且 $X$ \Term{nonempty}{非空}。则存在\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}
+X\arrow[dr,"f"']&\bar X\arrow[l,"\pi"']\arrow[d,"\bar f"]\\
+&S
+\end{tikzcd}
+\]
+其中 $\pi$ 为\Term{projective-morphism}{射影态射}，$\bar f$ 为\Term{quasiprojective-morphism}{拟射影态射}；并存在 $X$ 的一个\Term{nonempty}{非空}\Term{open-subset}{开集} $U$，使 $\pi$ 诱导 $\bar U=U\times_X\bar X=\pi^{-1}(U)$ 到 $U$ 的\Term{isomorphism}{同构}。
+\end{SGAresult}
+\begin{proof}
+先指出：设 $i:X'\to X$ 是 $X/S$ 的一个\Term{closed-subscheme}{闭子概形}，$V\subset X'$ 是一个在 $X$ 中开、在 $X'$ 中\Term{dense}{稠密}的\Term{subscheme}{子概形}。若引理对 $X'$ 成立，
+\SourcePage{92}
+则对 $X$ 也成立。事实上，设
+\[
+\begin{tikzcd}
+X'\arrow[dr,"f'"']&\bar X'\arrow[l,"\pi'"']\arrow[d,"\bar f'"]\\
+&S
+\end{tikzcd}
+\]
+为陈述中的图，且 $U'\neq\varnothing$ 是 $X'$ 的一个\Term{open-subset}{开集}，使 $\pi'$ \Term{induction-isomorphism}{诱导同构} $\bar U'=\pi'^{-1}(U')\to U'$。由于 $V$ 在 $X'$ 中\Term{dense}{稠密}，$U'\cap V\neq\varnothing$，所以可以用此\Term{open-subset}{开集}替换 $U'$。于是 $U'$ 是 $X$ 的\Term{open-subset}{开集}，取 $\pi=i\pi'$，$\bar f=\bar f'$，$U=U'$。
+
+存在 $X$ 的由\Term{nonempty}{非空}\Term{affine}{仿射}\Term{open-subset}{开集} $U_k$（$k=1,\ldots,n$）组成的\Term{finite}{有限}\Term{covering}{覆盖}。由对 $S$ 的假设，每个 $U_k\to S$ 都\Term{quasiaffine}{拟仿射}，因而特别\Term{quasicompact}{拟紧}。对 $n$ 归纳来证明对任意 $X$ 的定理：若各 $U_k$ 的交 $U$ 在 $X$ 中\Term{dense}{稠密}，只须注意记号的改动，照搬 EGA II 5.6 的 B、C、D 的证明。若此交\Term{nonempty}{非空}，则把 $X$ 替换为 $U$ 的\Term{closure}{闭包} $X'$（见上），并把 $U_k$ 替换为 $U'_k=U_k\cap X'$，归结到交为\Term{dense}{稠密}的情形。最后设 $U$ 为空，选取 $r$，$1\leq r\leq n$，使
+\[
+V=\bigcap_{k=1}^{n}U_k\neq\varnothing,\qquad V\cap U_{r+1}=\varnothing;
+\]
+由于 $U_1\neq\varnothing$，这显然可以做到。\footnote{译注：这里交集的上限在原扫描本与重排本均印为 $n$，与 $U=\varnothing$ 不合；此处照录。}现在可把 $X$ 替换为 $V$ 的\Term{closure}{闭包} $X'$，把各 $U$ 替换为那些\Term{nonempty}{非空}的 $U_k\cap V$。此时 $U_{r+1}\cap V$ 为空，由归纳假设即得所求结果。
+\end{proof}
+
+\SGAsection{8}{最终约化}
+\begin{SGAresult}{引理}{8.1}
+要证明 5.1 (i)、(ii)、(iii) 中的任一陈述，只须在假设 $f$ 为\Term{projective-morphism}{射影态射}且 $S$ 为\Term{noetherian}{诺特}时证明。
+\end{SGAresult}
+\begin{proof}
+先假设对\Term{projective-morphism}{射影态射} $f$，5.1 已证，说明怎样由此对任意 $f$ 得到相同陈述。由 6.1，归结到 $S$ 为\Term{strictly-local}{严格局部}时的 5.5。令 $Y=X_\circ$，应用 6.10。给定如 6.10 中所述的 $(\xi,X')$，应用 Chow 引理 7.1，找到一个 $S$-\Term{morphism}{态射} $p:\bar X\to X'$，其中 $\bar X$ 在 $S$ 上\Term{projective-morphism}{射影}，且 $p(\bar X)$ 包含 $X'$ 的一个\Term{nonempty}{非空}\Term{open-subset}{开集}（6.10 的条件 $1^\circ$））。由于 $p$ 为\Term{projective-morphism}{射影态射}，由假设，$(p,h)$ 的\Term{base-change-morphism}{换基同态}都是\Term{isomorphism}{同构}（6.10 的条件 $2^\circ$））。最后，$\bar X$ 在 $S$ 上\Term{projective-morphism}{射影}，故由假设，包含\Term{morphism}{态射} $\bar Y=\bar X_\circ\to\bar X$ 诱导\Term{cohomology}{上同调}群\Term{isomorphism}{同构}
+\[
+H^i(\bar X,\bar F)\longrightarrow H^i(\bar X_\circ,\bar h^*(\bar F))
+\]
+（6.10 的条件 $3^\circ$））。所以 6.10 的条件确实满足，从而得到结论。
+
+现在说明，为了在 $f$ 为\Term{projective-morphism}{射影态射}的任意情形 $(f,F,g)$ 下检验 5.1 的三个陈述之一，还可假设 $S$ 为\Term{noetherian}{诺特}。
+\SourcePage{93}
+由 6.1，可设 $S$ 为\Term{strictly-local}{严格局部}，$S'\to S$ 是\Term{closed-point}{闭点}的包含\Term{morphism}{态射}，从而只须在 $S$ 为\Term{strictly-local}{严格局部}时检验 5.5。此外，$X$ 可\Term{embedding}{嵌入}标准\Term{projective-scheme}{射影概形} $\mathbf P^r_S$，所以由兼容性 4.4 (ii)，可把 $X$ 替换为 $\mathbf P^r_S$，把 $F$ 替换为其在 $\mathbf P^r_S$ 中的\Term{direct-image}{正像}，从而归结到 $X=\mathbf P^r_S$。
+
+记 $S=\operatorname{Spec}A$。注意，$A$ 是一些\Term{noetherian}{诺特}\Term{henselian-local-ring}{亨泽尔局部子环} $A_i$ 的\Term{filtered-inductive-limit}{滤过归纳极限}，且包含\Term{homomorphism}{同态} $A_i\to A$ 为\Term{local-homomorphism}{局部同态}：取 $A$ 的\Term{finite-type}{有限型}子 $\mathbf Z$-\Term{algebra}{代数}在 $A$ 的\Term{maximal-ideal}{极大理想}所诱导的\Term{prime-ideal}{素理想}处的\Term{strict-henselization}{严格亨泽尔化}即可。在此条件下，$A$ 的\Term{residue-field}{剩余域} $k$ 也就是各 $A_i$ 的域 $k_i$ 的\Term{inductive-limit}{归纳极限}（EGA IV 5.13.1）。令 $S_i=\operatorname{Spec}(A_i)$，$X_i=\mathbf P^r_{S_i}$，并假设给定一个如第 VII 讲 5.7 所述的 $X_i$ 上的\Term{set-sheaf}{集合层}（相应地，……）的\Term{inductive-system}{归纳系} $(F_i)$；设 $F$ 为其在 $X$ 上定义的\Term{sheaf}{层}。记 $F_{i\circ}$（相应地，$F_\circ$）为 $F_i$ 在 $S_i$ 的\Term{closed-point}{闭点} $s_i$ 的\Term{fiber}{纤维} $X_{i\circ}$ 上诱导的\Term{sheaf}{层}（相应地，$F$ 在 $S$ 的\Term{closed-point}{闭点} $s$ 的\Term{fiber}{纤维} $X_\circ$ 上诱导的\Term{sheaf}{层}）。则有\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}
+\varinjlim_i H^n(X_i,F_i)\arrow[r]\arrow[d]&H^n(X,F)\arrow[d]\\
+\varinjlim_i H^n(X_{i\circ},F_{i\circ})\arrow[r]&H^n(X_\circ,F_\circ).
+\end{tikzcd}
+\]
+由第 VII 讲 5.7，两条水平\Term{arrow}{箭头}均为\Term{isomorphism}{同构}。所以为证明第二条竖直\Term{arrow}{箭头}为\Term{isomorphism}{同构}，只须证明第一条如此；因而只须证明\Term{homomorphism}{同态} $H^n(X_i,F_i)\to H^n(X_{i\circ},F_{i\circ})$ 为\Term{isomorphism}{同构}。另一方面，$X$ 上的任意\Term{set-sheaf}{集合层}（相应地，……）$F$ 都\Term{isomorphism}{同构}于上述某个\Term{inductive-system}{归纳系}的\Term{limit}{极限}；例如可取 $F_i=u_{i*}(F)$，其中 $u_i:X\to X_i$ 为\Term{canonical}{典范}\Term{morphism}{态射}，这是 (5.2) 和第 IX 讲 1.6 (iii) 的结果。8.1 证毕。
+\end{proof}
+
+\begin{SGAresult}{推论}{8.2}
+定理 5.1 (i) 成立。
+\end{SGAresult}
+事实上，只须结合 8.1、判据 6.5 (i) b'') 和 5.8。
+
+\begin{SGAresult}{引理}{8.3}
+要证明 5.1 (i)、(ii)、(iii) 中的任一陈述，只须在假设 $f$ 为\Term{relative-dimension}{相对维数} $\leq1$ 的\Term{projective-morphism}{射影态射}，且 $S$ 为\Term{noetherian}{诺特}时证明。
+\end{SGAresult}
+\begin{proof}
+由 8.1 已知，只须考虑 $f$ 为\Term{projective-morphism}{射影态射}且 $S$ 为\Term{noetherian}{诺特}的情形；前面提过的一个论证还容许假设 $X=\mathbf P^r_S$。对 $r$ 归纳，注意由假设，$r=1$ 时定理成立。因此可设 $r\geq2$，且对 $\mathbf P^{r-1}_S\to S$（任意\Term{base}{基底} $S$），定理已证。将 $Z=\mathbf P^{r-2}_S$ 按通常方式\Term{embedding}{嵌入} $X=\mathbf P^r_S$，并令 $p:\bar X\to X$ 为沿 $X$ 中的 $Z$ 作\Term{blowup}{爆破}所得到的\Term{morphism}{态射}。直接计算（参见 EGA V）表明，存在自然\Term{morphism}{态射} $p_1:\bar X\to X_1=\mathbf P^1_S$，使 $\bar X$ 成为一个\Term{local-isomorphism}{局部同构}于 $\mathbf P^{r-1}_{X_1}$ 的 $X_1$-\Term{scheme}{概形}（它就是 $X_1$ 上与 $X_1$ 上某个适当的秩 $r$ \Term{locally-free-sheaf}{局部自由层}相伴的\Term{projective-bundle}{射影丛}）。
+\SourcePage{94}
+另一方面，$p$ 的\Term{fiber}{纤维}\Term{dimension}{维数} $\leq1$，$f_1:X_1\to X$ 的\Term{fiber}{纤维}也如此。\footnote{译注：此处原文写作 $f_1:X_1\to X$，而紧接的\Term{commutative-diagram}{交换图}中 $f_1$ 的目标为 $S$，照录。}因此可对\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}
+&\bar X\arrow[dl,"p"']\arrow[dr,"p_1"]&\\
+X\arrow[dr,"f"']&&X_1\arrow[dl,"f_1"]\\
+&S&
+\end{tikzcd}
+\]
+中的三个\Term{morphism}{态射} $p,p_1,f_1$ 应用假设及归纳假设。由于 $p$ 为\Term{surjectivity}{满射}，由引理 6.8，只须对复合 $\bar f=fp=f_1p_1$ 证明 5.1。现在已可对 $f_1,p_1$ 应用 5.1；结合 6.11，便知 5.1 对复合 $f_1p_1$ 也成立。8.3 证毕。
+\end{proof}
+
+\begin{SGAresult}{引理}{8.4}
+为证明 5.1 (ii)，只须在 $f$ 为\Term{relative-dimension}{相对维数} $\leq1$ 的\Term{projective-morphism}{射影态射}，且 $S$ 为\Term{strictly-local}{严格局部}\Term{noetherian}{诺特}\Term{scheme}{概形}时，证明“\Term{fundamental-group}{基本群}的\Term{specialization}{特殊化}定理”5.9 bis。
+\end{SGAresult}
+这立即由 8.3、6.1 和 6.5 (ii)（判据 b)）得到。
+
+下一讲（第 XIII 讲 2）将在 8.4 的情形下直接证明\Term{specialization}{特殊化}定理。
+
+\begin{SGAresult}{引理}{8.5}
+为证明 5.1 (iii)，只须证明 5.1 (ii)，再证明下面的命题（它将在下一讲第 XIII 讲 3，或 EGA IV 21.9.12 中证明）。
+\end{SGAresult}
+\begin{SGAresult}{命题}{8.6}
+设 $S$ 为\Term{henselian}{亨泽尔}且\Term{noetherian}{诺特}的，$f:X\to S$ 为\Term{relative-dimension}{相对维数} $\leq1$ 的\Term{projective-morphism}{射影态射}，$X_\circ$ 为 $X/S$ 的\Term{closed-fiber}{闭纤维}。对任意\Term{scheme}{概形} $Z$，令 $\operatorname{Pic}Z=H^1(Z,(\mathbf G_m)_Z)$ 为 $Z$ 的\Term{picard-group}{Picard 群}。则\Term{restriction}{限制}\Term{morphism}{态射}
+\[
+\operatorname{Pic}X\longrightarrow\operatorname{Pic}X_\circ
+\]
+为\Term{surjectivity}{满射}。
+\end{SGAresult}
+
+\begin{proof}[8.5 的证明]
+由 6.5 (iii) 及 8.2，只须证明：对任意 $q\geq1$ 及任意素数 $\ell$，
+\[
+\varphi^q:H^q(X,\mathbf Z/\ell^\nu\mathbf Z)\longrightarrow
+H^q(X_\circ,\mathbf Z/\ell^\nu\mathbf Z)
+\]
+为\Term{surjectivity}{满射}。由 5.1 (ii)，$q=1$ 时已知\Term{surjectivity}{满射}性。此外，$X_\circ$ 为\Term{separably-closed-field}{可分闭域} $k$ 上\Term{dimension}{维数} $\leq1$ 的\Term{projective-scheme}{射影概形}，因此有
+\[
+H^q(X_\circ,\mathbf Z/\ell^\nu\mathbf Z)=0
+\]
+\SourcePage{95}
+其中当 $\ell\neq\operatorname{char}k$ 时取 $q>2$（第 X 讲 4.3），当 $\ell=\operatorname{char}k$ 时取 $q>1$（第 X 讲 5.2）。所以对这些 $q$ 值，\Term{surjectivity}{满射}性是显然的！
+
+只须处理 $q=2$、$\ell\neq\operatorname{char}k$ 的情形。记 $n=\ell^\nu$。由于\Term{roots-of-unity}{$n$ 次单位根层} $(\mu_n)_S$ \Term{local-isomorphism}{局部同构}于 $(\mathbf Z/n)_S$，且 $S$ 为\Term{strictly-local}{严格局部}，所以存在一个（非\Term{canonical}{典范}）\Term{isomorphism}{同构} $(\mu_n)_S\simeq(\mathbf Z/n\mathbf Z)_S$，从而有 $(\mu_n)_X\simeq(\mathbf Z/n\mathbf Z)_X$。
+
+将第 IX 讲 3.2 的 Kummer 理论应用于 $X$ 和 $X_\circ$，得到\Term{exact-sequence}{正合列}的\Term{morphism}{态射}
+\[
+\begin{tikzcd}
+\operatorname{Pic}X\arrow[r]\arrow[d,"\varepsilon"']&H^2(X,\boxed{?}_n)\arrow[r]\arrow[d,"\varphi^2"]&H^2(X,\mathbf G_m)\arrow[d]\\
+\operatorname{Pic}X_\circ\arrow[r]&H^2(X_\circ,\boxed{?}_n)\arrow[r]&H^2(X_\circ,\mathbf G_m).
+\end{tikzcd}
+\]
+\SGAsourcegap{在原重排本及 SLMath 原扫描本的这幅 Kummer 图中，两项 $H^2(-,-)$ 的系数均只可读出下标 $n$，其前字符缺失，图中以 $\boxed{?}_n$ 保留此缺失，待补源。}
+由第 IX 讲 4.6，$H^2(X_\circ,\mathbf G_m)=0$。所以 $\varepsilon$ 的\Term{surjectivity}{满射}性蕴含 $\varphi^2$ 的\Term{surjectivity}{满射}性，引理得证。
+\end{proof}
+
+\SGAsection{}{参考文献}
+\begin{enumerate}
+\item[{[1]}] Giraud J.，\textit{\Term{nonabelian-cohomology}{非阿贝尔上同调}}（\textit{Cohomologie non-abélienne}），学位论文（待刊）；另有两篇短札，载于 \textit{C.R.} 第 260 卷，第 2392、2656 页（1965）。
+\item[{[2]}] Godement R.，\textit{层论}（\textit{Théorie des faisceaux}），巴黎（1958）。
+\item[{[3]}] Verdier J. L.，\textit{\Term{derived-category}{导出范畴}}（\textit{Catégories dérivées}），高等科学研究所（1964）。
+\end{enumerate}

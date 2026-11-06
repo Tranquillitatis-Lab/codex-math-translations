@@ -1,0 +1,508 @@
+\SourcePage{397}
+\SGAchapter{XVIII}{从有理运算律构造群的 Weil 定理}{Théorème de Weil sur la construction d'un groupe à partir d'une loi rationnelle}
+\begin{center}Michael Artin\end{center}
+\footnote{2009 年 5 月 8 日版本。}
+\SGAsection{0}{引言}
+本讲讨论 Weil 的著名\Term{theorem}{定理} [1]：从一个\Term{birational-law}{双有理运算律}构造一个\Term{group-variety}{群簇}。把这一结果推广到\Term{base}{基底}为\Term{discrete-valuation-ring}{离散赋值环}的谱的情形，似乎早已为若干人所知，例如可参看 [2]。这里我们将在任意基\Term{prescheme}{预概形} $S$ 上，对\Term{flat}{平坦}且\Term{finite-presentation}{有限表示}的群证明这个\Term{theorem}{定理}。由于假设必须提得更为仔细，\Term{theorem}{定理}的陈述不采用 Weil 给出的\Term{form}{形式}；不过，当 $S$ 是一个域的谱时，可以看出这里的\Term{form}{形式}与 Weil 的\Term{form}{形式}实质上\Term{equivalence}{等价}。我们采用 Grothendieck 的如下建议：给定\Term{prescheme}{预概形} $S$ 上的一个“\Term{group-germ}{群芽}” $X$，应把所求的群构造为 $X\times_S X$ 对某个适当\Term{equivalence-relation}{等价关系}的商。
+
+\SGAsection{1}{有理映射的“回顾”}
+设 $X/S$ 为相对\Term{prescheme}{预概形}，$U\subseteq X$ 为\Term{open-subset}{开集}。若对每个\Term{base-change}{基变换} $S'\to S$，\Term{open-subset}{开集} $U\times_S S'$ 都在 $X\times_S S'$ 中\Term{schematically-dense}{概形稠密}，就称 $U$ 在 $X$ 中相对于 $S$ \Term{relatively-schematically-dense}{概形稠密}，或称 $U\hookrightarrow X$ \Term{relatively-schematically-dense}{相对概形稠密}。这一概念的定义和性质见第 IX 讲第 4 节。\footnote{亦参见 EGA IV$_3$，11.9 和 11.10（特别是 11.10.8），那里称为“相对于 $S$ \Term{universal}{普遍}\Term{schematically-dense}{概形稠密}”。}
+\begin{SGAresult}{命题}{1.1}
+(i) 相对于 $S$ \Term{schematically-dense}{概形稠密}的\Term{open-subset}{开集}的\Term{finite}{有限}交，以及\Term{nonempty}{非空}族的并，仍相对于 $S$ \Term{schematically-dense}{概形稠密}。
+\SourcePage{398}
+(ii) 若 $U\subseteq X$ 相对于 $S$ \Term{schematically-dense}{概形稠密}，且 $S\to T$ 为\Term{morphism}{态射}，则 $U_T\subseteq X_T$ 相对于 $T$ \Term{schematically-dense}{概形稠密}。
+
+(iii) 设 $U\subseteq V\subseteq X$ 为\Term{open-immersion}{开浸入}。$U$ 在 $X$ 中相对于 $S$ \Term{schematically-dense}{概形稠密}，当且仅当 $U$ 在 $V$ 中、$V$ 在 $X$ 中都具有这一性质。
+
+(iv) 若 $U\subseteq X$ 和 $V\subseteq Y$ 都\Term{relatively-schematically-dense}{相对概形稠密}，则 $U\times_S V$ 在 $X\times_S Y$ 中相对于 $S$ \Term{schematically-dense}{概形稠密}。
+\end{SGAresult}
+第 IX 讲中有如下判据：
+\begin{SGAresult}{命题}{1.2}
+设 $X/S$ \Term{locally-finite-presentation}{局部有限表示}且\Term{flat}{平坦}，$U$ 为 $X$ 的\Term{open-subset}{开集}。若对每个 $s\in S$，\Term{fiber}{纤维} $U_s$ 在 $X_s$ 中\Term{schematically-dense}{概形稠密}，则 $U$ 在 $X$ 中相对于 $S$ \Term{schematically-dense}{概形稠密}。
+\end{SGAresult}
+特别地：
+\begin{SGAresult}{推论}{1.3}
+若 $X/S$ \Term{locally-finite-presentation}{局部有限表示}且\Term{flat}{平坦}，且每个\Term{fiber}{纤维} $X_s$ 都“\Term{no-embedded-components}{没有嵌入分支}”，则 $U$ 在 $X$ 中相对于 $S$ \Term{schematically-dense}{概形稠密}，当且仅当对每个 $s\in S$，$U_s$ 在 $X_s$ 中\Term{topology}{拓扑}\Term{dense}{稠密}。
+\end{SGAresult}
+由定义容易\Term{pushout}{推出}：
+\begin{SGAresult}{命题}{1.4}
+设 $U\subseteq X$ 相对于 $S$ \Term{schematically-dense}{概形稠密}，$f,g:X\to Y$ 为 $S$ 上的两个\Term{functor}{函子}\Term{morphism}{态射}，其中 $Y$ 满足下列条件之一：
+
+(i) $Y$ 是 $S$ 上的\Term{prescheme}{预概形}，且每个\Term{fiber}{纤维} $Y_s$ 都\Term{separated}{分离}。
+
+(ii) $Y$ 是 $S$ 上的\Term{presheaf}{预层}\footnote{编者注：需说明采用哪种\Term{topology}{拓扑}；初步看来应是 (fpqc)。}，且\Term{diagonal-morphism}{对角态射} $Y\to Y\times_S Y$ 可由\Term{closed-immersion}{闭浸入}\Term{representable}{表示}。\footnote{编者注：这里回顾\Term{closed-immersion}{闭浸入}的定义。若对每个 $S$ \Term{morphism}{态射} $T\to G$（$T$ 是 $S$ \Term{prescheme}{预概形}），$T$ \Term{functor}{函子} $F_T=F\times_S T$ 都可由 $T$ \Term{prescheme}{预概形}\Term{representable}{表示}，则称 $S$ \Term{functor}{函子}\Term{morphism}{态射} $F\to G$ 相对\Term{representable}{可表示}。若它相对\Term{representable}{可表示}，且对每个这样的 $T\to G$，$T$ \Term{morphism}{态射} $F_T\to T$ 都是\Term{open-immersion}{开浸入}（相应地，\Term{closed-immersion}{闭浸入}），则称 $F\to G$ 为\Term{open-immersion}{开浸入}（相应地，\Term{closed-immersion}{闭浸入}）。}
+
+那么，若 $f=g$ 在 $U$ 上成立，就有 $f=g$。
+\end{SGAresult}
+\begin{proof}
+在 (i) 的情形，IX 4.1 之后的标准论证表明，$f$ 与 $g$ 在每个\Term{fiber}{纤维}上都相等。因此 $X$ 的\Term{subprescheme}{子预概形} $\operatorname{Ker}(f,g)$ 与 $X$ 的底层\Term{set}{集合}相同，从而是闭的；又因它包含 $U$，故等于 $X$，即 $f=g$。情形 (ii) 的证明与上述引文相同。\footnote{编者注：需详述这一点……\SGAsourcegap{原书编者注仅要求补充此处证明细节，未给出补文。}}
+\end{proof}
+\begin{SGAresult}{定义}{1.5}
+设 $X$ 是 $S$ 上的\Term{prescheme}{预概形}，$Y$ 是 $S$ 上的\Term{presheaf}{预层}。\footnote{参见 EGA IV$_4$，20.5；那里为避免与 EGA I，7.12 冲突，称为“相对于 $S$ 的从 $X$ 到 $Y$ 的伪\Term{morphism}{态射}”。} 称 $S$ 上的一个\Term{rational-map}{有理映射} $f:X\dashrightarrow Y$ 为如下\Term{morphism}{态射}的\Term{equivalence-class}{等价类}：
+\SourcePage{399}
+$f:U\to Y$ 为 $S$ 上的\Term{morphism}{态射}，其中 $U$ 是 $X$ 中相对于 $S$ \Term{schematically-dense}{概形稠密}的\Term{open-subset}{开集}；并规定 $(f:U\to Y)\sim(f':U'\to Y)$，当且仅当存在相对于 $S$ \Term{schematically-dense}{概形稠密}的\Term{open-subset}{开集} $U''\subseteq U'\cap U$，使得 $f=f'$ 在 $U''$ 上成立。
+\end{SGAresult}
+这样定义后，对每个\Term{base-extension}{基扩张} $S'\to S$，显然都能定义\Term{rational-map}{有理映射} $f\times_S S'$。
+
+若 $U$ 为 $X$ 的\Term{open-subset}{开集}，且存在一个代表 $f$ 的\Term{morphism}{态射}，其定义\Term{set}{集合}包含 $U$，就说\Term{rational-map}{有理映射} $f$ 在 $U$ 上有定义。
+\begin{SGAresult}{定义}{1.5.1}
+\footnote{编者注：这里增添了编号 1.5.1。} 若 $Y$ 满足 1.4 的条件 (i)、(ii) 之一，则显然存在最大的\Term{open-subset}{开集} $U\subseteq X$，使 $f$ 在 $U$ 上有定义；此 $U$ 相对于 $S$ \Term{schematically-dense}{概形稠密}。称它为 $f$ 在 $S$ 上的\Term{domain-of-definition}{定义域}，记作 $\operatorname{Dom}(f)$。
+\end{SGAresult}
+这一概念不与\Term{base-change}{基变换}交换，但有：
+\begin{SGAresult}{命题}{1.6}
+设 $X$ 为 $S$ \Term{prescheme}{预概形}，$Y$ 为满足 1.4 的假设 (i)、(ii) 之一的 $S$ \Term{functor}{函子}。设 $f:X\dashrightarrow Y$ 是 $S$ 上的\Term{rational-map}{有理映射}，$S'\to S$ 是\Term{flat}{平坦}且\Term{locally-finite-presentation}{局部有限表示}的\Term{morphism}{态射}，$f'=f\times_S S'$。则
+\[
+\operatorname{Dom}(f')=\operatorname{Dom}(f)\times_S S'.
+\]
+\end{SGAresult}
+\begin{proof}
+令 $U=\operatorname{Dom}(f)$。显然 $V'=\operatorname{Dom}(f')$ 包含 $U\times_S S'$。设 $V$ 为 $V'$ 的像；因为 $X'\to X$ 是\Term{open-morphism}{开态射}，$V$ 是 $X$ 的\Term{open-subset}{开集}。须证明 $V=U$，即须找到一个代表 $f$ 的\Term{morphism}{态射} $V\to Y$。令 $S''=S'\times_S S'$，并令
+\[
+X''=X\times_S S'',\qquad U''=U\times_S S'',\qquad V''=V'\times_V V'.
+\]
+于是 $U''$ 在 $X''$ 中相对于 $S''$ \Term{schematically-dense}{概形稠密}；因为 $U''\subseteq V''\subseteq X''$，$U''$ 在 $V''$ 中相对于 $S$ \Term{schematically-dense}{概形稠密}。$f':V'\to Y'$ 在 $U'$ 上的\Term{restriction}{限制}由 $f:U\to Y$ 经\Term{base-change}{基变换}得到。由 $g$ 经\Term{base-change}{基变换}得到的两个\Term{morphism}{态射} $V''\to Y$ 在 $U''$ 上相等，因而相等。又因 $V'\to V$ \Term{flat}{平坦}且\Term{locally-finite-presentation}{局部有限表示}，它是\Term{fppf-cover}{fppf 覆盖}（第 IV 讲 6.3），故由\Term{descent}{下降}得到\Term{morphism}{态射} $V\to Y$。
+\end{proof}
+下面这个显然的事实将反复用到：
+\begin{SGAresult}{命题}{1.7}
+设 $X/S$ \Term{faithfully-flat}{忠实平坦}且\Term{locally-finite-presentation}{局部有限表示}，$U\subseteq X$ 为\Term{relatively-schematically-dense}{相对概形稠密}的\Term{open-subset}{开集}。则存在一个\Term{fppf-cover}{fppf 覆盖}的\Term{base-extension}{基扩张} $S'\to S$，以及包含在 $U(S')$ 中的\Term{section}{截面} $x\in X(S')$。
+\end{SGAresult}
+事实上，$U/S$ 是\Term{fppf-cover}{fppf 覆盖}。取 $S'=U$，并取包含映射 $U\hookrightarrow X$ 的 $S$ \Term{graph}{图像}作为所求\Term{section}{截面}即可。
+
+\SourcePage{400}
+\SGAsection{2}{群态射的局部确定}
+设 $G,H$ 为群，$U\subseteq G$ 为满足 $U\cdot U=G$ 的\Term{subset}{子集}。若 $f,g$ 为从 $G$ 到 $H$ 的\Term{homomorphism}{同态}，且在 $U$ 上有 $f=g$，则 $f=g$。同样地：
+\begin{SGAresult}{命题}{2.1}
+设 $S$ 为\Term{site}{景}（见第 IV 讲\footnote{编者注：即配备了一个\Term{topology}{拓扑}的\Term{category}{范畴}，参见 IV，第 4.2 节。}），$G$ 为 $S$ 上的\Term{group-sheaf}{群层}，$U\subseteq G$ 为\Term{set}{集合}\Term{subsheaf}{子层}，且乘法诱导的\Term{morphism}{态射} $U\times U\to G$ 为\Term{epimorphism}{满态射}。若 $f,g$ 为从 $G$ 到\Term{group-sheaf}{群层} $H$ 的\Term{homomorphism}{同态}，且在 $U$ 上相等，则 $f=g$。
+\end{SGAresult}
+\begin{SGAresult}{推论}{2.2}
+设 $G$ 为\Term{locally-finite-presentation}{局部有限表示}且\Term{flat}{平坦}的 $S$ \Term{group-prescheme}{群预概形}，$U\subseteq G$ 为\Term{relatively-schematically-dense}{相对概形稠密}的\Term{open-subset}{开集}，$H$ 为 $S$ 上关于\Term{fppf-topology}{fppf 拓扑}的\Term{group-sheaf}{群层}。则任意\Term{homomorphism}{同态} $f:G\to H$ 都由它在 $U$ 上的\Term{restriction}{限制}确定。
+\end{SGAresult}
+事实上，由于 $G$ 在 $S$ 上\Term{flat}{平坦}，$G$ 的运算律是\Term{flat}{平坦}\Term{morphism}{态射}（VI$_{\mathrm B}$，9.2.xi）；所以 $U\times_S U\to G$ \Term{faithfully-flat}{忠实平坦}且\Term{locally-finite-presentation}{局部有限表示}，从而是\Term{fppf-cover}{fppf 覆盖}，故为\Term{epimorphism}{满态射}。
+\begin{SGAresult}{命题}{2.3}
+设 $G$ 为 $S$ 上\Term{locally-finite-presentation}{局部有限表示}且\Term{flat}{平坦}的\Term{group-prescheme}{群预概形}，$U\subseteq G$ 为\Term{relatively-schematically-dense}{相对概形稠密}的\Term{open-subset}{开集}，$H$ 为关于\Term{fppf-topology}{fppf 拓扑}的\Term{group-sheaf}{群层}。记 $G$ 的乘法为 $m_G$，$H$ 的乘法为 $m_H$。
+
+设 $\bar f:U\to H$ 是 $S$ \Term{morphism}{态射}，并假设 $m_G^{-1}(U)\cap(U\times_S U)$ 有一个\Term{relatively-schematically-dense}{相对概形稠密}的\Term{open-subset}{开集} $V$，使下图交换：
+\[
+\begin{tikzcd}
+V \arrow[r,"{(\bar f\times\bar f)|_V}"] \arrow[d,"m_G"'] & H\times_S H \arrow[d,"m_H"]\\
+U \arrow[r,"\bar f"'] & H.
+\end{tikzcd}
+\]
+则在下列任一情形，都存在延拓 $\bar f$ 的 $S$ \Term{group-morphism}{群态射} $f:G\to H$（且它必然唯一）：
+
+(i) $H$ \Term{representable}{可表示}。
+
+(ii) \Term{diagonal-morphism}{对角态射} $H\to H\times_S H$ 可由\Term{closed-immersion}{闭浸入}\Term{representable}{表示}。\footnote{编者注：见 1.4 的脚注。}
+
+(iii) 对每个\Term{section}{截面} $a\in U(S)$，\Term{open-subset}{开集} $\operatorname{pr}_2((a\times_S U)\cap V)$ 在 $U$ 中\Term{relatively-schematically-dense}{相对概形稠密}\footnote{也可说在 $G$ 中；由 1.1 (iv)，两者\Term{equivalence}{等价}。}，且此陈述在任意\Term{base-change}{基变换} $S'\to S$ 后仍然成立。
+\end{SGAresult}
+\SourcePage{401}
+\begin{proof}
+先注意，$V$ 在 $G\times_S G$ 中\Term{relatively-schematically-dense}{相对概形稠密}。事实上，$V$ 在
+\[
+m_G^{-1}(U)\cap(U\times_S G)\cap(G\times_S U)
+\]
+中\Term{relatively-schematically-dense}{相对概形稠密}，而这三个因子都可由 $U\subseteq G$ 经一个显然的\Term{base-change}{基变换} $G\times_S G\to G$ 得到，故由 1.1 即得此断言。
+
+因为 $U\times_S U\to G$ 是\Term{fppf-cover}{fppf 覆盖}，要构造\Term{morphism}{态射} $f:G\to H$，只需找到一个从 $U\times_S U$ 到 $H$ 的\Term{morphism}{态射}，使它在 $(U\times_S U)\times_G(U\times_S U)$ 上诱导的两个\Term{morphism}{态射}相同。
+
+取 $m_H\circ(\bar f\times\bar f):U\times_S U\to H$。须验证：对任意 $S'\to S$，只要\Term{section}{截面} $a,b,c,d\in U(S')$ 满足 $ab=cd$，就有 $\bar f(a)\bar f(b)=\bar f(c)\bar f(d)$。由假设，若 $(a,d)$ 与 $(c,d)$ 都包含在 $V(S')$ 中，这一点成立，因为此时 $\bar f(a)\bar f(b)=\bar f(ab)$ 且 $\bar f(c)\bar f(d)=\bar f(cd)$。因此，凡 $(a,b,c,d)\in(V\times_G V)(S')$ 时，它都成立。
+
+我断言，$V\times_G V$ 是 $(U\times_S U)\times_G(U\times_S U)$ 中相对于 $S$ \Term{schematically-dense}{概形稠密}的\Term{open-subset}{开集}。由 1.4，这就完成了 (i)、(ii) 的证明；同样由 1.4，所构造的\Term{morphism}{态射} $f$ 延拓 $\bar f$ 且为\Term{homomorphism}{同态}，都是显然的。
+
+写成
+\[
+V\times_G V=\bigl(V\times_G(G\times_S G)\bigr)\cap\bigl((G\times_S G)\times_G V\bigr).
+\]
+由对称性和 1.1，只需验证 $V\times_G(G\times_S G)$ 在 $(G\times_S G)\times_G(G\times_S G)$ 中\Term{relatively-schematically-dense}{相对概形稠密}。后一个\Term{prescheme}{预概形}通过 $(a,b,c,d)\mapsto(a,b,c)$ 与 $G\times_S G\times_S G$ 在 $S$ 上\Term{isomorphism}{同构}。故须证明的只是 $V\times_S G$ 在 $G\times_S G\times_S G$ 中相对于 $S$ \Term{schematically-dense}{概形稠密}；这由 $V$ 在 $G\times_S G$ 中\Term{relatively-schematically-dense}{相对概形稠密}即得。
+
+还须处理 (iii)。为证明 $\bar f(a)\bar f(b)=\bar f(c)\bar f(d)$，可以作一个\Term{fppf-cover}{fppf 覆盖}的\Term{base-extension}{基扩张}。假设有\Term{section}{截面} $x\in G(S')$，其中 $S'\to S$ 为\Term{fppf-cover}{fppf 覆盖}，使得 $(b,x),(a,bx),(d,x),(c,dx)$ 都在 $V$ 中。于是
+\[
+\bar f(a)\bar f(b)\bar f(x)=\bar f(a)\bar f(bx)=\bar f(abx)=\bar f(cdx)=\bar f(c)\bar f(dx)=\bar f(c)\bar f(d)\bar f(x),
+\]
+由此得到所求等式。
+
+为找到这样的 $x$，\footnote{编者注：这里增添了本句的开头。} 对每个 $z\in U(S')$，令
+\[
+V_z=\operatorname{pr}_2\bigl((z\times_{S'}U_{S'})\cap V_{S'}\bigr).
+\]
+对 $x$ 的条件就是 $x\in W$，其中
+\[
+W=V_b(S')\cap V_d(S')\cap b^{-1}V_a(S')\cap d^{-1}V_c(S').
+\]
+由 (iii)，$W$ 在 $G$ 中\Term{relatively-schematically-dense}{相对概形稠密}。故由命题 1.7，经过一个\Term{fppf-cover}{fppf 覆盖}的\Term{base-extension}{基扩张}后，存在\Term{section}{截面} $x$。
+\SourcePage{402}
+验证所构造的\Term{morphism}{态射}保持乘法。设 $a,b\in G(S')$，$S'\to S$ 任意，并将 $S'$ 记作 $S$。选取\Term{fppf-cover}{fppf 覆盖}的\Term{base-extension}{基扩张} $S'\to S$ 和\Term{section}{截面} $x\in G(S')$，使 $x\in U(S')$ 且 $ax^{-1}\in U(S')$，即 $x\in(a^{-1}U)^{-1}(S')$。再选一个\Term{fppf-cover}{fppf 覆盖}的\Term{group-extension}{扩张} $S''\to S'$ 和\Term{section}{截面} $y\in G(S'')$，使
+\[
+y,\ by^{-1},\ aby^{-1}\quad\text{都属于 }U(S''),
+\]
+且
+\[
+by^{-1}\in V_x,\qquad xby^{-1}\in V_{ax^{-1}}.
+\]
+于是由 $f$ 的定义，在 $S''$ 上有
+\[
+f(a)=\bar f(ax^{-1})\bar f(x),\qquad f(b)=\bar f(by^{-1})\bar f(y),\qquad f(ab)=\bar f(aby^{-1})\bar f(y).
+\]
+此外，
+\[
+\begin{aligned}
+f(a)f(b)&=\bar f(ax^{-1})\bar f(x)\bar f(by^{-1})\bar f(y)\\
+&=\bar f(ax^{-1})\bar f(xby^{-1})\bar f(y)\\
+&=\bar f(aby^{-1})\bar f(y)=f(ab),
+\end{aligned}
+\]
+所以它保持乘法。
+
+现在容易说明 $f$ 延拓 $\bar f$。设 $a\in U(S')$，将 $S'$ 记作 $S$，选取\Term{fppf-cover}{fppf 覆盖} $S'\to S$ 和\Term{section}{截面} $x,y\in G(S')$，使 $(x,y),(ax,y),(a,xy)$ 都在 $V(S')$ 中。于是
+\[
+f(xy)=\bar f(x)\bar f(y)=\bar f(xy),\qquad f(axy)=\bar f(ax)\bar f(y)=\bar f(axy).
+\]
+因此
+\[
+f(a)=f(axy)f((xy)^{-1})=f(axy)f(xy)^{-1}=\bar f(axy)\bar f(xy)^{-1}=\bar f(a).
+\]
+\end{proof}
+\begin{SGAresult}{注记}{2.3.1}
+在许多情形，假设 (iii) 成立；事实上，把 $U$ 换成在 $G$ 中仍\Term{relatively-schematically-dense}{相对概形稠密}的较小\Term{open-subset}{开集} $U'$ 后，它也会成立。例如：
+\end{SGAresult}
+\begin{SGAresult}{命题}{2.4}
+处于 2.3 的情形，并假设 $G/S$ 的每个\Term{geometric-fiber}{几何纤维}都\Term{irreducible}{不可约}。令 $U'=\operatorname{pr}_1V$，并令
+\[
+V'=V\cap m_G^{-1}(U')\cap(U'\times_S U').
+\]
+则 $U'\subseteq U$ 是 $G$ 中\Term{relatively-schematically-dense}{相对概形稠密}的\Term{open-subset}{开集}，且 $U',\bar f|_{U'},V'$ 满足假设 (iii)。
+\end{SGAresult}
+\begin{proof}
+因为 $G\times_S G\to G$ \Term{flat}{平坦}且\Term{locally-finite-presentation}{局部有限表示}，$U'$ 是\Term{open-subset}{开集}。除假设 (iii) 之外，其他各项验证都是显然的。
+
+设 $a\in U(S')$，将 $S'$ 记作 $S$。要验证 $\operatorname{pr}_2((a\times U')\cap V')$ 在 $U'$ 中\Term{relatively-schematically-dense}{相对概形稠密}，由推论 1.3，只需逐\Term{fiber}{纤维}验证，即只需处理 $S$ 为域的谱的情形。在此情形，只须证明 $U'$ \Term{nonempty}{非空}，因为 $G$ \Term{irreducible}{不可约}且“\Term{no-embedded-components}{没有嵌入分支}”（参见 VI$_{\mathrm A}$，1.1.1）。而
+\[
+\operatorname{pr}_2((a\times U')\cap V')=
+\operatorname{pr}_2((a\times U')\cap V)\cap
+\operatorname{pr}_2((a\times U')\cap m_G^{-1}(U')),
+\]
+\SourcePage{403}
+右端第二项在 $G$ 中\Term{dense}{稠密}。故只需证明 $\operatorname{pr}_2((a\times U')\cap V)$ 在 $G$ 中\Term{dense}{稠密}，即\Term{nonempty}{非空}；由 $a\in U'=\operatorname{pr}_1V$，这一点显然。
+\end{proof}
+
+\SGAsection{3}{从有理运算律构造群}
+\textbf{3.0。} 假设给定一个\Term{prescheme}{预概形} $X/S$ 和 $S$ 上的\Term{rational-map}{有理映射} $X\times_S X\dashrightarrow X$。我们寻求一个群 $G/S$ 和相对于 $S$ 的\Term{birational-map}{双有理映射}\footnote{编者注：需明确相对于 $S$ 的\Term{birational-map}{双有理映射}的概念，或许增添一条 1.5.2？\SGAsourcegap{原书此编者注所要求的相对\Term{birational-map}{双有理映射}定义补文未给出。}}
+\[
+X\dashrightarrow G,
+\]
+使之与运算律交换。我们只处理 $X/S$ 满足下列假设的情形：
+\begin{quote}
+$(\diamond)$\quad $X/S$ \Term{faithfully-flat}{忠实平坦}、\Term{finite-presentation}{有限表示}，且其\Term{fiber}{纤维}\Term{separated}{分离}并“\Term{no-embedded-components}{没有嵌入分支}”。
+\end{quote}
+（注意，后两个假设是\Term{group-prescheme}{群预概形}都具有的性质。\footnote{编者注：参见 VI$_{\mathrm A}$，需给出确切位置……\SGAsourcegap{原书未补明此处第 VI A 讲的具体引注。}}）
+
+今后常省略\Term{fiber-product}{纤维积}中的\Term{signature}{符号} $S$。
+
+设 $X/S$ 为具有上述性质 $(\diamond)$ 的\Term{prescheme}{预概形}，$W$ 为 $X\times X\times X$ 的一个\Term{finite-presentation}{有限表示}\Term{subprescheme}{子预概形}，具有下列性质：
+\begin{quote}
+$(*)$\quad 由 $X^3$ 到 $X^2$ 的\Term{projection}{投影}给出的三个\Term{morphism}{态射} $W\to X\times X$ 都是相对于 $S$ \Term{schematically-dense}{概形稠密}的\Term{open-immersion}{开浸入}。
+\end{quote}
+\textbf{记号。} 我们采用如下说法：若 $S'\to S$ 任意，\Term{section}{截面} $a,b,c\in X(S')$ 满足 $(a,b,c)\in W(S')$，就写
+\[
+c=ab,\qquad b=a^{-1}c,\qquad a=cb^{-1}.
+\]
+\begin{SGAresult}{定义}{3.0.1}
+\footnote{编者注：这里引入了编号 3.0.1 和 3.0.2。} 给定\Term{section}{截面} $(a,b)\in X^2(S')$，称 $ab$ 有定义，当且仅当存在\Term{section}{截面} $c\in X(S')$ 使 $(a,b,c)\in W(S')$，即当且仅当 $(a,b)\in\operatorname{pr}_{12}W(S')$。同样，$a^{-1}b$ 或 $ab^{-1}$ 有定义也具有类似含义；这一说法还推广到多个因子的乘积。
+\end{SGAresult}
+\begin{SGAresult}{注记}{3.0.2}
+立即注意如下事实：由 (i)，$W$ 定义了一个 $S$ 上的\Term{rational-map}{有理映射} $X^2\dashrightarrow X$（即 $(a,b)\mapsto ab$）。这个\Term{rational-map}{有理映射}的\Term{domain-of-definition}{定义域}完全可能大于 $\operatorname{pr}_{12}W$。但我们只有在 $(a,b)\in\operatorname{pr}_{12}W(S')$ 时，才说 $ab$ 有定义。
+\end{SGAresult}
+\begin{SGAresult}{定义}{3.1}
+一个\Term{group-germ}{群芽}是具有上述性质 $(\diamond)$ 的\Term{prescheme}{预概形} $X/S$，
+\SourcePage{404}
+连同 $X\times X\times X$ 的一个\Term{finite-presentation}{有限表示}\Term{subprescheme}{子预概形} $W$，满足下列性质：
+
+(i) $W$ 满足上述性质 $(*)$。
+
+(ii) 对每个\Term{section}{截面} $a\in X(S)$，\Term{set}{集合}
+\[
+\begin{aligned}
+{}&\operatorname{pr}_i((a\times X\times X)\cap W),&&i=2,3,\\
+&\operatorname{pr}_i((X\times a\times X)\cap W),&&i=3,1,\\
+&\operatorname{pr}_i((X\times X\times a)\cap W),&&i=1,2
+\end{aligned}
+\]
+都在 $X$ 中相对于 $S$ \Term{schematically-dense}{概形稠密}，且此陈述经任意\Term{base-change}{基变换} $S'\to S$ 后仍然成立。（由假设 (i)，这些\Term{set}{集合}都是 $X$ 的\Term{open-subset}{开集}。）直观上，这就是说“对充分一般的 $x$，$ax$ 有定义”等等。
+
+(iii) 运算律具有\Term{associativity}{结合性}：对任意 $S'\to S$，若 $(a,b,c)\in X^3(S')$ 使得 $(ab)c$ 与 $a(bc)$ 都有定义，就有 $(ab)c=a(bc)$。
+\end{SGAresult}
+\textbf{注记。} (a) 由对 $X$ 的假设及 1.2，(i) 中“$W$ 在 $X^2$ 中相对于 $S$ \Term{schematically-dense}{概形稠密}”可换成：对每个 $s\in S$，\Term{fiber}{纤维} $W_s$ 在 $X_s^2$ 中\Term{topology}{拓扑}\Term{dense}{稠密}。
+
+(b) 条件 (iii) \Term{equivalence}{等价}于：设 $V_1$（相应地，$V_2$）为 $X^3$ 中\Term{rational-map}{有理映射} $(a,b,c)\mapsto a(bc)$（相应地，$(a,b,c)\mapsto(ab)c$）有定义的\Term{open-subset}{开集}。\footnote{这里采用 3.0.1 所解释的意义；也可以把这些\Term{open-subset}{开集}换成相应\Term{rational-map}{有理映射}的\Term{domain-of-definition}{定义域}（见 1.5）。} 则存在在 $X^3$ 中相对于 $S$ \Term{schematically-dense}{概形稠密}的\Term{open-subset}{开集} $V\subseteq V_1\cap V_2$，使上述两个映射在 $V$ 上相同。这由 1.4 得出，因为 $V_1$ 和 $V_2$ 当然都在 $X^3$ 中相对于 $S$ \Term{schematically-dense}{概形稠密}。
+
+(c) 以下将用假设 (ii) 保证 $X$ 是它所定义的\Term{group-prescheme}{群预概形}的\Term{subobject}{子对象}。许多情形中，只要把 $X$ 换成\Term{relatively-schematically-dense}{相对概形稠密}的\Term{open-subset}{开集} $X'$，并把 $W$ 换成 $W\cap X'^3$ 中\Term{relatively-schematically-dense}{相对概形稠密}的\Term{open-subset}{开集}，就能由 (i) \Term{pushout}{推出} (ii)。事实上：
+\begin{SGAresult}{命题}{3.2}
+假设 $X/S$ 的每个\Term{geometric-fiber}{几何纤维}都\Term{irreducible}{不可约}，$W$ 为满足 3.1 的条件 (i) 的 $X^3$ 的\Term{subprescheme}{子预概形}。则存在 $X$ 中\Term{relatively-schematically-dense}{相对概形稠密}的\Term{open-subset}{开集} $X'$，以及 $W\cap(X'\times X')$ 中\Term{relatively-schematically-dense}{相对概形稠密}的\Term{open-subset}{开集} $W'$，使得 $(X',W')$ 满足条件 (i)、(ii)。若 $(X,W)$ 满足 (iii)，则 $(X',W')$ 也满足 (iii)。
+\end{SGAresult}
+\begin{proof}
+令 $X'=\bigcap_{i=1}^3\operatorname{pr}_iW$。每个 $\operatorname{pr}_iW$ 都是 $X$ 的\Term{open-subset}{开集}，因为 $W\to X^2$ 是\Term{open-immersion}{开浸入}，且\Term{projection}{投影} $X^2\to X$ \Term{flat}{平坦}而\Term{finite-presentation}{有限表示}。此外，$\operatorname{pr}_iW$ 在 $X$ 中\Term{relatively-schematically-dense}{相对概形稠密}，因为 $W$ 在 $X^2$ 中具有此性质，且\Term{projection}{投影} $X^2\to X$ \Term{surjectivity}{满射}（只需验证\Term{topology}{拓扑}\Term{dense}{稠密}性）。取 $W'=W\cap X'^3$。
+\SourcePage{405}
+为验证 (i)，注意
+\[
+\begin{aligned}
+W'={}&\bigl(W\cap(X'\times X'\times X)\bigr)\cap\bigl(W\cap(X\times X'\times X')\bigr)\\
+&\cap\bigl(W\cap(X'\times X\times X')\bigr).
+\end{aligned}
+\]
+而 $W\cap(X'\times X'\times X)\simeq\operatorname{pr}_{12}W\cap(X'\times X')$，因而在 $W$ 中\Term{relatively-schematically-dense}{相对概形稠密}。右端其他各项同样在 $W$ 中\Term{relatively-schematically-dense}{相对概形稠密}，所以 $W'$ 在 $W$ 中\Term{relatively-schematically-dense}{相对概形稠密}。故 $\operatorname{pr}_{ij}W'$ 在 $\operatorname{pr}_{ij}W$ 中\Term{relatively-schematically-dense}{相对概形稠密}，从而在 $X\times X$ 中、进而在 $X'\times X'$ 中也具有此性质。
+
+为验证 (ii)，设 $a\in X'(S')$，将 $S'$ 记作 $S$。例如，须证明 $\operatorname{pr}_2((a\times X'\times X')\cap W')$ 在 $X'$ 中相对于 $S$ \Term{schematically-dense}{概形稠密}。由 1.3，只需逐\Term{fiber}{纤维}验证，即只需处理 $S$ 为域的谱的情形；此时只需验证该\Term{open-subset}{开集}\Term{nonempty}{非空}，因为 $X/S$ 的\Term{fiber}{纤维}\Term{irreducible}{不可约}且“\Term{no-embedded-components}{没有嵌入分支}”。由于 $a$ 是 $X'$ 的\Term{section}{截面}，$\operatorname{pr}_2((a\times X\times X)\cap W)$ \Term{nonempty}{非空}，故此\Term{open-subset}{开集}在 $X$ 中\Term{dense}{稠密}。又有
+\[
+\operatorname{pr}_2((a\times X\times X)\cap W)=\operatorname{pr}_2((a\times X)\cap\operatorname{pr}_{12}W).
+\]
+所以
+\[
+\begin{aligned}
+{}&\operatorname{pr}_2((a\times X)\cap\operatorname{pr}_{12}W)\cap X'\\
+&\quad=\operatorname{pr}_2((a\times X')\cap\operatorname{pr}_{12}W)\\
+&\quad=\operatorname{pr}_2((a\times X'\times X)\cap W)
+\end{aligned}
+\]
+在 $X$ 中\Term{dense}{稠密}，故在 $X'$ 中\Term{dense}{稠密}。
+
+同样，$\operatorname{pr}_3((a\times X\times X')\cap W)$ 在 $X$ 中\Term{dense}{稠密}，从而在 $\operatorname{pr}_3((a\times X\times X)\cap W)$ 中\Term{dense}{稠密}；也就是说，$(a\times X\times X')\cap W$ 在 $(a\times X\times X)\cap W$ 中\Term{dense}{稠密}；也就是说，$\operatorname{pr}_2((a\times X\times X')\cap W)$ 在 $\operatorname{pr}_2((a\times X\times X)\cap W)$ 中\Term{dense}{稠密}，因而在 $X$ 中、进而在 $X'$ 中\Term{dense}{稠密}。
+
+而由于
+\[
+\begin{aligned}
+\operatorname{pr}_2((a\times X'\times X')\cap W')
+&=\operatorname{pr}_2((a\times X'\times X')\cap W)\\
+&=\operatorname{pr}_2((a\times X'\times X)\cap W)\cap\operatorname{pr}_2((a\times X\times X')\cap W),
+\end{aligned}
+\]
+它确实在 $X'$ 中\Term{dense}{稠密}，得到了所求结论。(ii) 的其他断言由对称性得出；条件 (iii) 得以保持则是显然的。命题 3.2 得证。\footnote{编者注：这里增添了最后一句。}
+\end{proof}
+\textbf{3.2.1。}\footnote{编者注：这里增添了编号 3.2.1 和 3.2.2。} 现在固定 $S$ 上的一个\Term{group-germ}{群芽} $(X,W)$。我们先把关于这一情形的一些预备注记汇集如下。以下会经常使用这些规则而不再明说。
+
+设 $a\in X(S')$，将 $S'$ 记作 $S$。把\Term{section}{截面} $x$ 对应于 $ax$（当它有定义时），得到 $X$ 到自身的一个 $S$ 上的（双）\Term{rational-map}{有理映射} $\varphi$。由 3.1 (ii)，$\varphi$ 的\Term{domain-of-definition}{定义域}包含\Term{relatively-schematically-dense}{相对概形稠密}的\Term{open-subset}{开集} $\operatorname{pr}_2((a\times X\times X)\cap W)$；并且 $\varphi$ 给出此\Term{open-subset}{开集}到\Term{open-subset}{开集} $\operatorname{pr}_3((a\times X\times X)\cap W)$（即 $a^{-1}x$ 有定义处）的\Term{isomorphism}{同构}。这一注记在规则 1 中有显然的推广。
+\SourcePage{406}
+\textbf{规则 1。} 设 $P=P(x,t_1,\ldots,t_n)$ 是由\Term{signature}{符号} $x,t_1,\ldots,t_n$ 按下述递归方式得到的一个“乘积”：$P_0=x$；$P_{i+1}$ 为下列表达式之一：
+\[
+P_i t,\qquad tP_i,\qquad P_i^{-1}t,\qquad tP_i^{-1},\qquad P_i t^{-1},\qquad t^{-1}P_i,
+\]
+其中 $t$ 是某个 $t_j$；最后 $P_r=P$。设 $a_1,\ldots,a_n\in X(S')$。则存在 $X_{S'}$ 中\Term{relatively-schematically-dense}{相对概形稠密}的\Term{open-subset}{开集} $U$，使得对\Term{section}{截面} $x\in X(S'')$，乘积 $P(x,a_1,\ldots,a_n)$ 有定义（采用注记 3.0.2 的意义），当且仅当 $x\in U(S'')$；且映射 $x\mapsto P(x,(a))$ 给出 $U$ 到 $X_{S'}$ 中另一个\Term{relatively-schematically-dense}{相对概形稠密}的\Term{open-subset}{开集}（记作 $P(U,(a))$）的\Term{isomorphism}{同构}。
+
+\textbf{规则 2。} 设 $a,b\in X(S')$。则：
+
+若 $ab$ 有定义，则 $a^{-1}(ab)$ 也有定义，且 $a^{-1}(ab)=b$。
+
+若 $a^{-1}b$ 有定义，则 $a(a^{-1}b)$ 也有定义，且 $a(a^{-1}b)=b$。
+
+若 $ba^{-1}$ 有定义，则 $(ba^{-1})a$ 也有定义，且 $(ba^{-1})a=b$。
+
+\textbf{规则 3。} 设 $a,b,b'\in X(S')$。若 $ab=ab'$，或 $ba=b'a$，或 $a^{-1}b=a^{-1}b'$，或 $ba^{-1}=b'a^{-1}$，则 $b=b'$。这里约定，写出等式就意味着两端都有定义。
+
+\textbf{规则 4。} 设 $a,b,c\in X(S')$。则只要两端都有定义，就有
+\[
+a\bigl((ba)^{-1}c\bigr)=b^{-1}c.
+\]
+同样，
+\[
+\bigl(c(ab)^{-1}\bigr)a=cb^{-1},\qquad
+ a^{-1}\bigl((ab^{-1})c\bigr)=b^{-1}c,\qquad
+ \bigl(c(b^{-1}a)\bigr)a^{-1}=cb^{-1}.
+\]
+\textbf{规则 5。} 下列各\Term{associativity}{结合律}，只要两端都有定义，就都成立：
+\[
+\begin{aligned}
+(a^{-1}b)c&=a^{-1}(bc),& (ab^{-1})c&=a(b^{-1}c),& (ab)c^{-1}&=a(bc^{-1}),\\
+(ab)^{-1}c&=b^{-1}(a^{-1}c),& (a^{-1}b)c^{-1}&=a^{-1}(bc^{-1}),& (ab^{-1})c^{-1}&=a(cb)^{-1}.
+\end{aligned}
+\]
+\textbf{3.2.2。规则的验证。} (1) 对 $P$ 的\Term{length}{长度} $r$ 作显然的归纳即可；$r=1$ 的情形直接由 (3.1) (ii) 得到。
+
+(2) 由定义显然成立。
+
+(3) 事实上，由规则 2，例如在第一种情形，有
+\[
+b=a^{-1}(ab)=a^{-1}(ab')=b'.
+\]
+(4) 例如验证第一个关系式。由规则 2，右端可以左乘 $b$，所得为 $c$。假设左端也能左乘 $b$，则
+\[
+b\Bigl(a\bigl((ba)^{-1}c\bigr)\Bigr)=(ba)\bigl((ba)^{-1}c\bigr)=c.
+\]
+事实上，由假设，$(ba)$ 有定义，因为它出现在表达式中。故由规则 2，中间一项有定义且等于 $c$，又由\Term{associativity}{结合性}（见 3.1 (iii)）等于左端。因此，若这个左乘 $b$ 的运算有定义，规则 3 就给出所求等式。
+\SourcePage{407}
+现在固定 $a,b$。规则 1 表明，对“在”某个\Term{relatively-schematically-dense}{相对概形稠密}的\Term{open-subset}{开集} $U\subseteq X$ 中的 $c$，$b\bigl(a((ba)^{-1}c)\bigr)$ 确实有定义。因此在这个\Term{relatively-schematically-dense}{相对概形稠密}的\Term{open-subset}{开集}上，两个\Term{rational-map}{有理映射} $c\mapsto b^{-1}c$ 与 $c\mapsto a((ba)^{-1}c)$ 相等。由 1.4，它们在任意共同\Term{domain-of-definition}{定义域}上都相等，得到了所求结论。
+
+(5) 采用与上面相同的论证。例如，验证 $(ab^{-1})c^{-1}=a(cb)^{-1}$：若右端可以右乘 $c$，则由规则 4 得到等式。由于只需在一个\Term{relatively-schematically-dense}{相对概形稠密}的\Term{open-subset}{开集}上验证此类公式，可以归结到这个乘法确实有定义的情形。
+
+\textbf{3.2.3。} 现在考虑 $X\times X$ 上的关系 $R$：对 $a,b,a',b'\in X(S')$，规定 $(a,b)\sim(a',b')$ 模 $R(S')$，当且仅当存在\Term{fppf-cover}{fppf 覆盖} $S'\to S$ 以及\Term{section}{截面} $x\in X(S')$，使 $(xa)b$ 与 $(xa')b'$ 都有定义且相等。则 $R$ 是\Term{equivalence-relation}{等价关系}。
+
+事实上，此关系显然对称。由规则 1，只要 $x$ “在”某个适当的\Term{relatively-schematically-dense}{相对概形稠密}\Term{open-subset}{开集}中，乘积 $(xa)b$ 就有定义。因此 1.7 保证存在\Term{fppf-cover}{fppf 覆盖} $S'\to S$ 及 $x\in X(S')$，使 $(xa)b$ 有定义。故此关系具有\Term{reflexive}{自反}性；\Term{transitivity}{传递性}则由以下\Term{lemma}{引理}得出：
+\begin{SGAresult}{\Term{lemma}{引理}}{3.3}
+设 $x,y,a,b,a',b'$ 是 $X(S')$ 的\Term{section}{截面}，使 $(xa)b,(xa')b',(ya)b,(ya')b'$ 都有定义。若 $(xa)b=(xa')b'$，则 $(ya)b=(ya')b'$。
+\end{SGAresult}
+事实上，\Term{lemma}{引理}说明，只要两个乘积有定义，就可以用任意 $x\in X(S')$（$S'\to S$ 为\Term{fppf-cover}{fppf 覆盖}）来检验 $(a,b)\sim(a',b')$。给定 $a,b,a',b',a'',b''\in X(S)$，由规则 1、1.1 和 1.7，可以找到\Term{fppf-cover}{fppf 覆盖}的\Term{group-extension}{扩张} $S'\to S$ 和\Term{section}{截面} $x\in X(S')$，使所涉及的三个乘积都有定义，由此得到\Term{transitivity}{传递性}。
+\begin{proof}[\Term{lemma}{引理}的证明]
+先\Term{form}{形式}地写成：
+\[
+\begin{aligned}
+(za)b&=\bigl(((zx^{-1})x)a\bigr)b
+ =\bigl((zx^{-1})(xa)\bigr)b=(zx^{-1})\bigl((xa)b\bigr),\\
+(za')b'&=\bigl(((zx^{-1})x)a'\bigr)b'
+ =\bigl((zx^{-1})(xa')\bigr)b'=(zx^{-1})\bigl((xa')b'\bigr).
+\end{aligned}
+\]
+由相应规则可验证，只要各项有定义，这些等式确实成立。\footnote{编者注：需明确……\SGAsourcegap{原书此编者注未补明此处具体使用的规则。}} 所以，只要这些表达式都有定义，就有 $(za)b=(za')b'$。此外，由规则 1 及已有假设，当 $z\in X(S'')$ 属于 $V(S'')$ 时，这些表达式确实有定义；这里 $V$ 是 $X$ 的某个\Term{relatively-schematically-dense}{相对概形稠密}\Term{open-subset}{开集}（我们已令 $S'=S$）。因此 $X$ 到自身的两个\Term{rational-map}{有理映射} $z\mapsto(za)b$ 与 $z\mapsto(za')b'$ 相等，从而 $(ya)b=(ya')b'$。
+\end{proof}
+\SourcePage{408}
+\begin{SGAresult}{\Term{lemma}{引理}}{3.4}
+考虑 $S$ 上由 $(a,b,c)\mapsto c^{-1}(ab)$ 定义的\Term{rational-map}{有理映射} $\varphi:X^3\dashrightarrow X$。设 $U$ 为 $\varphi$ 的\Term{domain-of-definition}{定义域}，考虑 $\varphi$ 所诱\Term{derived-morphism}{导态射} $f:U\to X$ 的\Term{graph}{图像} $\Gamma$，它是 $X^4$ 的一个\Term{subscheme}{子概形}。则\Term{section}{截面} $(a,b,c,d)\in X^4(S)$ 属于 $\Gamma(S)$，当且仅当 $(a,b)\sim(c,d)$。
+\end{SGAresult}
+\begin{proof}
+先注意，对任意\Term{section}{截面} $x\in X(S)$，\Term{rational-map}{有理映射} $\varphi$ 都与公式 $(a,b,c)\mapsto(xc)^{-1}((xa)b)$ 给出的映射相同。也就是说，只要两端都有定义，就有 $c^{-1}(ab)=(xc)^{-1}((xa)b)$。验证留给读者。
+
+现在说明，映射 $\varphi$ 在\Term{section}{截面} $(a,b,c)\in X^3(S)$ 处有定义，当且仅当存在 $d$ 使 $(a,b)\simeq(c,d)$；并且此时 $d=\varphi(a,b,c)$。事实上，假设 $(a,b)\sim(c,d)$。为验证映射 $\varphi$ 有定义，可以作\Term{fppf-cover}{fppf 覆盖}的\Term{base-extension}{基扩张}（命题 1.6），所以可假设存在\Term{section}{截面} $x\in X(S')$，使 $(xa)b$ 与 $(xc)d$ 都有定义且相等。由此（规则 2），$(xc)^{-1}((xa)b)$ 有定义且等于 $d$。
+
+反之，设映射 $\varphi$ 在\Term{section}{截面} $(a,b,c)$ 处有定义，令 $d=\varphi(a,b,c)$。选取一个\Term{fppf-cover}{fppf 覆盖} $S'\to S$ 和\Term{section}{截面} $x\in X(S')$，使 $(xa)b$ 与 $(xc)d$ 都有定义。我们要证明它们相等。为此，只需证明 $X$ 到自身的两个 $S$ 上的\Term{rational-map}{有理映射} $b\mapsto(xa)b$ 与 $b\mapsto(xc)\varphi(a,b,c)$ 相同；这由第一段的注记得到。
+\end{proof}
+\begin{SGAresult}{命题}{3.5}
+\Term{equivalence-relation}{等价关系} $R\rightrightarrows X^2$ \Term{representable}{可表示}，且为\Term{flat}{平坦}而\Term{finite-presentation}{有限表示}的关系，即 $R$ 到 $X^2$ 的\Term{projection}{投影}是\Term{flat}{平坦}且\Term{finite-presentation}{有限表示}的\Term{morphism}{态射}。
+\end{SGAresult}
+\begin{proof}
+可假设 $S$ \Term{affine}{仿射}。因为 $(X,W)$ 在 $S$ 上\Term{finite-presentation}{有限表示}，可把整个情形\Term{descent}{下降}到某个在 $\operatorname{Spec}\mathbb Z$ 上\Term{finite-type}{有限型}、因而\Term{noetherian}{诺特}的 $S$ 上。所以可假设 $S$ \Term{noetherian}{诺特}。于是显然 (3.4) 的\Term{graph}{图像} $\Gamma$ 在 $X^2$ 上\Term{finite-presentation}{有限表示}。\Term{projection}{投影} $\operatorname{pr}_{12}|_\Gamma$ \Term{flat}{平坦}，因为 $\Gamma\xrightarrow{\sim}\operatorname{pr}_{123}\Gamma$，后者是 $X^3$ 的\Term{open-subset}{开集}；且由于 $X$ 在 $S$ 上\Term{flat}{平坦}，\Term{projection}{投影} $\operatorname{pr}_{12}:X^3\to X^2$ \Term{flat}{平坦}。
+
+我断言，$\Gamma$ \Term{representable}{表示} $R$。注意，这一点需要证明，因为\Term{rational-map}{有理映射}的\Term{domain-of-definition}{定义域}一般不与\Term{base-extension}{基扩张}交换。设 $S''\to S$。由对 $S''$ 应用 (3.4)，显然 $R(S'')\supseteq\Gamma(S'')$，因为 $\varphi\times_S S''$ 肯定在 $U\times_S S''$ 上有定义。故设 $(a,b,c,d)\in R(S'')$；须证明 $(a,b,c,d)\in\Gamma(S'')$。这一点可在例如\Term{etale-topology}{平展拓扑}下\Term{local-scheme}{局部}验证。因此可假设 $S''$ \Term{strictly-local}{严格局部}，即为一个\Term{residue-field}{剩余域}\Term{separably-closed}{可分闭}的\Term{henselian-ring}{Hensel 环}的谱。再应用 (1.6) 和通常的取\Term{limit}{极限}论法，可归结为 $S$ \Term{strictly-local}{严格局部}且 $S''\to S$ 为\Term{local-morphism}{局部态射}的情形。假设有\Term{section}{截面} $x\in X(S)$，使得在 $S''$ 上 $(xa)b$ 与 $(xc)d$ 都有定义。由此，$(xc)^{-1}((xa)b)$ 有定义且等于 $d$。而 $X^3$ 有一个\Term{relatively-schematically-dense}{相对概形稠密}的\Term{open-subset}{开集} $V$，使 $(xc)^{-1}((xa)b)$ 有定义当且仅当 $(a,b,c)\in V(S'')$，并且 $V\subseteq U$。所以只要存在这样的 $x$，就有 $(a,b,c,d)\in\Gamma(S'')$。由 (1.6)，可以作\Term{fppf-cover}{fppf 覆盖}的\Term{base-change}{基变换} $S'\to S$ 来寻找这样的 $x$。由于 $S$ \Term{strictly-local}{严格局部}，
+\SourcePage{409}
+可找到\footnote{结合第 VI$_{\mathrm A}$ 讲 1.1.1 与 EGA IV$_4$，17.16.2。} 一个\Term{faithfully-flat}{忠实平坦}、\Term{local-morphism}{局部}且\Term{finite}{有限}的\Term{morphism}{态射} $S'\to S$，以及\Term{section}{截面} $x\in X(S')$，使它“经过” $X/S$ 的闭\Term{fiber}{纤维}的任意给定\Term{closed-point}{闭点}。而在 $S''$ 上 $(xa)b$ 和 $(xc)d$ 有定义，意味着 $x$ 属于某个\Term{relatively-schematically-dense}{相对概形稠密}的\Term{open-subset}{开集}，这可以在 $X_{S''}$ 的闭\Term{fiber}{纤维}上验证。因此所求确实能够做到。
+\end{proof}
+现在令 $G$ 为关于\Term{fppf-topology}{fppf 拓扑}的\Term{sheaf}{层}意义下 $X^2$ 对 $R$ 的商。如下定义 $G$ 上的运算律：设 $(g,g')\in G(S')$ 由 $X^2\times X^2(S'')$ 的\Term{section}{截面} $((a,b),(c,d))$ 表示，其中 $S''\to S'$ 为\Term{fppf-cover}{fppf 覆盖}。再假设 $X$ 在 $S''$ 上有一个\Term{section}{截面} $x$，使 $a(b(cx))$ 与 $x^{-1}d$ 都有定义；由规则 1 和 (1.7)，可以这样做。称 $X^2(S'')$ 的\Term{section}{截面} $(a(b(cx)),x^{-1}d)$ 在 $G(S')$ 中所代表的类为 $gg'$。
+
+验证 $gg'$ 与\Term{section}{截面} $x$ 及代表元 $((a,b),(c,d))$ 的选择无关。事实上，设 $(a',b')\sim(a,b)$，$(c',d')\sim(c,d)$，并设 $x$ 使 $a'(b'(c'x'))$ 与 $x'^{-1}d'$ 有定义。可以假设它们都是 $S''$ 上的\Term{section}{截面}。须证明
+\[
+(a(b(cx)),x^{-1}d)\sim(a'(b'(c'x')),x'^{-1}d'),
+\]
+即对某个适当的\Term{fppf-cover}{fppf 覆盖} $S'''\to S''$ 和适当\Term{section}{截面} $z\in X(S''')$，有
+\[
+\bigl(z(a(b(cx)))\bigr)(x^{-1}d)=\bigl(z(a'(b'(c'x')))\bigr)(x'^{-1}d').
+\]
+只要所有乘积都有定义，就有
+\[
+\begin{aligned}
+\bigl(z(a(b(cx)))\bigr)(x^{-1}d)
+&=\bigl((za)(b(cx))\bigr)(x^{-1}d)\\
+&=\bigl(((za)b)(cx)\bigr)(x^{-1}d)\\
+&=\bigl((((za)b)c)x\bigr)(x^{-1}d)\\
+&=\bigl(((za)b)c\bigr)\bigl(x(x^{-1}d)\bigr)\\
+&=(((za)b)c)d,
+\end{aligned}
+\]
+带撇号的各项也满足同样的恒等式。由规则 1 和 (1.7)，存在这样的 $z$。所以须证明
+\[
+(((za)b)c)d=(((za')b')c')d'.
+\]
+因为 $(a,b)\sim(a',b')$，由 (3.3) 有 $(za)b=(za')b'$；再由 $(c,d)\sim(c',d')$，即得所求等式。
+
+考虑如下定义的自然\Term{morphism}{态射} $i:X\to G$：对 $a\in X(S')$，选取\Term{fppf-cover}{fppf 覆盖} $S''\to S'$ 和\Term{section}{截面} $b\in X(S'')$，使 $ab^{-1}$ 有定义，令
+\[
+i(a)=(ab^{-1},b)\text{ 在 }G\text{ 中的类}.
+\]
+容易验证，这个起初属于 $G(S'')$ 的类与 $b$ 的选择无关，因而给出 $G(S')$ 中一个确定的元素。
+
+以下命题的验证留给读者：
+\begin{SGAresult}{命题}{3.6}
+\Term{morphism}{态射} $i$ 与 $X,G$ 的运算律交换，即若\Term{section}{截面} $a,b\in X(S')$ 使 $ab$ 有定义，就有 $i(a)i(b)=i(ab)$。
+\end{SGAresult}
+\SourcePage{410}
+本节的目标是下面的\Term{theorem}{定理}：
+\begin{SGAresult}{\Term{theorem}{定理}}{3.7}
+\footnote{编者注：若 $X$ 在 $S$ 上\Term{smooth}{光滑}、\Term{separated}{分离}，且\Term{faithfully-flat}{忠实平坦}而\Term{finite-presentation}{有限表示}，则 $G/S$ 可由一个在 $S$ 上\Term{smooth}{光滑}且\Term{finite-type}{有限型}的 $S$ \Term{group-scheme}{群概形}\Term{representable}{表示}。这是 Bosch--Lütkebohmert--Raynaud 的《Néron models》（Springer，1990）中的\Term{theorem}{定理} 6.6.1。}
+设 $(X,W)$ 为 $S$ 上的\Term{group-germ}{群芽}，其中 $X/S$ \Term{faithfully-flat}{忠实平坦}、\Term{finite-presentation}{有限表示}，且\Term{fiber}{纤维}\Term{separated}{分离}而\Term{no-embedded-components}{没有嵌入分支}。沿用上述记号，有：
+
+(i) $G$ 是\Term{group-sheaf}{群层}。
+
+(ii) $i:X\to G$ 可由\Term{open-immersion}{开浸入}\Term{representable}{表示}。
+
+(iii) $G$ 在 $S$ 上关于\Term{fppf-topology}{fppf 拓扑}\Term{local-scheme}{局部}\Term{representable}{可表示}。
+
+(iv) 若 $G/S$ \Term{representable}{可表示}，则它是\Term{flat}{平坦}且\Term{finite-presentation}{有限表示}的群，且 $i:X\to G$ 相对于 $S$ \Term{schematically-dense}{概形稠密}。
+\end{SGAresult}
+注意，$G$ 显然由性质 (i)，……，(iv) 刻画；因此可以不再记住 $G$ 的显式构造。
+
+证明分为若干步：
+\begin{SGAresult}{\Term{lemma}{引理}}{3.8}
+(i) 设 $c\in X(S)$ 为\Term{section}{截面}，则由 $c\times X\hookrightarrow X\times X\to G$ 给出的、从\Term{prescheme}{预概形} $c\times X$（它在 $S$ 上\Term{isomorphism}{同构}于 $X$）到 $G$ 的\Term{morphism}{态射}是\Term{monomorphism}{单态射}。
+
+(ii) 设 $\{c_i\}_{i\in I}$ 为 $X(S)$ 的\Term{section}{截面}，$Z=\coprod_i c_i\times X$，并将显然的\Term{morphism}{态射} $Z\to X^2$ 在 $Z$ 上诱导的\Term{equivalence-relation}{等价关系}记作 $R'\rightrightarrows Z$。则 $R'$ 是各个 $c_i\times X\simeq X$ 的一个“\Term{gluing}{粘合}”。
+\end{SGAresult}
+\begin{proof}
+(i) $(c\times X)(S')$ 的两个\Term{section}{截面} $(c,a),(c,a')$ 在 $G$ 中的像相同，当且仅当 $(c,a)\sim(c,a')$，即对适当的\Term{fppf-cover}{fppf 覆盖} $S''\to S'$ 及 $x\in X(S'')$，有 $(xc)a\sim(xc)a'$；由规则 3 得 $a=a'$。
+
+(ii) 设 $c_i,c_j$ 为两个\Term{section}{截面}，考虑 $X$ 到自身的 $S$ 上的\Term{birational-map}{双有理映射} $\psi_{ji}$，由公式 $x\mapsto c_j^{-1}(c_i x)$ 给出。若 $y\in X(S)$，容易看出它与 $x\mapsto(yc_j)^{-1}((yc_i)x)$ 给出的映射相同。此外可以验证，$\varphi_{ji}$ 在 $b\in X(S')$ 处有定义，当且仅当存在 $b'$ 使 $(c_i,b)\sim(c_j,b')$，且此时 $b'=\varphi_{ji}(b)$。令 $U_{ji}$ 为 $\varphi_{ji}$ 在 $S$ 上的\Term{domain-of-definition}{定义域}。还须证明此\Term{domain-of-definition}{定义域}是\Term{universal}{普遍}的，即若 $S''\to S$ 任意、$b\in X(S'')$，且 $\varphi_{ji}$ 在 $b$ 处有定义，则 $b\in U_{ji}(S'')$。这\Term{equivalence}{等价}于证明：若 $b,b'\in X(S'')$ 满足 $(c_i,b)\simeq(c_j,b')$，则 $b\in U_{ji}(S'')$。这一事实的验证与 (3.5) 类似，留给读者。
+\end{proof}
+\begin{SGAresult}{\Term{lemma}{引理}}{3.9}
+设 $\{c_i\}_{i\in I}$ 是 $X(S)$ 的\Term{section}{截面}，使 $\coprod_i c_i\times X\to G$ 作为\Term{sheaf}{层}\Term{morphism}{态射}是\Term{surjectivity}{满射}。则 $G$ \Term{representable}{可表示}，且在 $S$ 上\Term{flat}{平坦}而\Term{finite-presentation}{有限表示}；\Term{structural-morphism}{结构态射} $X^2\to G$ \Term{flat}{平坦}且\Term{finite-presentation}{有限表示}。
+\end{SGAresult}
+\SourcePage{411}
+\begin{proof}
+$G$ \Term{representable}{可表示}直接由 (3.8) 得到，从而 $\coprod_i c_i\times X\to G$ 是\Term{open-cover}{开覆盖}。要证明 $X^2\to G$ \Term{flat}{平坦}，只需\Term{local-scheme}{局部}证明，即证明\Term{rational-map}{有理映射} $X^2\dashrightarrow c_i\times X$ 在其\Term{domain-of-definition}{定义域}上诱导一个\Term{flat}{平坦}\Term{morphism}{态射}。这个\Term{rational-map}{有理映射}由
+\[
+(a,b)\longmapsto\bigl(c_i,((xc_i)^{-1}(xa))b\bigr)
+\]
+给出，其中 $x$ 为任意\Term{section}{截面}。若它在 $(a,b)\in X^2(S')$ 处有定义，就能找到一个\Term{fppf-cover}{fppf 覆盖} $S''\to S'$ 和\Term{section}{截面} $x\in X(S'')$，使 $((xc_i)^{-1}(xa))b$ 有定义。容易看出，这因而是\Term{flat}{平坦}\Term{morphism}{态射}。同样可知它\Term{locally-finite-presentation}{局部有限表示}，所以是\Term{fppf-cover}{fppf 覆盖}。由构造，关系 $R$ 是\Term{effective-equivalence-relation}{有效的}。因此由 (3.5)，\Term{morphism}{态射} $X^2\to G$ 经\Term{fppf-cover}{fppf 覆盖}的\Term{base-change}{基变换} $G\leftarrow X^2$ 后成为\Term{finite-presentation}{有限表示}，故 $X^2\to G$ \Term{finite-presentation}{有限表示}。现在证明 $G\to S$ \Term{flat}{平坦}且\Term{finite-presentation}{有限表示}。由于 $G$ 由各个 $c_i\times X\simeq X$ \Term{covering}{覆盖}，它\Term{flat}{平坦}且\Term{locally-finite-presentation}{局部有限表示}。又因 $X^2/S$ \Term{quasi-compact}{拟紧}且 $X^2\to G$ \Term{surjectivity}{满射}，$G/S$ \Term{quasi-compact}{拟紧}。为证明 $G\to S$ \Term{quasi-separated}{拟分离}，注意有如下\Term{cartesian-diagram}{笛卡尔图}：
+\[
+\begin{tikzcd}
+R \arrow[r,"\alpha"] \arrow[d,"\gamma"'] & X^2\times_S X^2 \arrow[d,"\beta"]\\
+G \arrow[r,"\Delta"'] & G\times_S G.
+\end{tikzcd}
+\]
+$\gamma$ \Term{surjectivity}{满射}，$\alpha,\beta$ \Term{quasi-compact}{拟紧}，故 $\beta\alpha$ \Term{quasi-compact}{拟紧}，从而 $\Delta$ \Term{quasi-compact}{拟紧}。\footnote{编者注：这里也可由\Term{faithfully-flat}{忠实平坦}\Term{descent}{下降}（EGA IV$_2$，2.7.1）得出结论，因为 $\beta$ 是\Term{fppf-cover}{fppf 覆盖}。}
+\end{proof}
+\begin{SGAresult}{\Term{lemma}{引理}}{3.10}
+设 $\{c_i\}_{i\in I}$ 为 $X(S)$ 的\Term{section}{截面}。要使 $\coprod_i c_i\times X\to G$ 作为 fppf \Term{sheaf}{层}\Term{morphism}{态射}\Term{surjectivity}{满射}，只需满足下列条件：
+
+对每个 $S'\to S$ 和 $(a,b)\in X^2(S')$，存在 $S'$ 的\Term{open-cover}{开覆盖} $\{S'_\nu\}_{\nu\in N}$ 及函数 $N\to I$，$\nu\mapsto i(\nu)$，使 $(c_{i(\nu)}^{-1}a)b$ 在 $S'_\nu$ 上有定义。
+\end{SGAresult}
+\begin{proof}
+设 $S''\to S$ 任意，$g\in G(S'')$。选取\Term{fppf-cover}{fppf 覆盖} $S'\to S''$，以及代表 $g$ 的\Term{section}{截面} $(a,b)\in X^2(S')$。取由\Term{lemma}{引理}假设给出的 $S'$ 的\Term{open-cover}{开覆盖} $\{S'_\nu\}$。则在每个 $S'_\nu$ 上有 $(a,b)\sim(c_{i(\nu)},(c_{i(\nu)}^{-1}a)b)$，故 $g$ 在 $S'_\nu$ 上由 $[c_{i(\nu)}\times X](S')$ 的一个\Term{section}{截面}表示。由于\Term{morphism}{态射}族 $\{S'_\nu\to S''\}$ 是\Term{fppf-cover}{fppf 覆盖}，这就证明了\Term{surjectivity}{满射}性。
+\end{proof}
+\begin{SGAresult}{\Term{lemma}{引理}}{3.11}
+设 $Y/S$ 为\Term{finite-presentation}{有限表示}的\Term{prescheme}{预概形}，$\{a_i\}_{i\in I}$ 为 $Y(S)$ 的\Term{section}{截面}。设 $s_0,s_1\in S$，且 $s_0$ 是 $s_1$ 的\Term{specialization}{特殊化}；记 $Y_j$ 为 $Y/S$ 在 $s_j$ 处的\Term{fiber}{纤维}。设 $C_j$ 为点集 $\{a_i(s)\cap Y_j\}$ 在 $Y_j$ 中的\Term{closure}{闭包}。则 $\dim C_1\geq\dim C_0$。
+\end{SGAresult}
+\begin{proof}
+只需在\Term{base-change}{基变换} $S'\to S$ 后验证，并选取点 $s'_0,s'_1$，使 $s'_j\mapsto s_j$ 且 $s'_0$ 为 $s'_1$ 的\Term{specialization}{特殊化}。
+\SourcePage{412}
+因此由 EGA II 7.1.4，可归结到 $S$ 为\Term{valuation-ring}{赋值环} $A$ 的谱，$s_0$ 为 $S$ 的\Term{closed-point}{闭点}、$s_1$ 为 $S$ 的\Term{generic-point}{一般点}的情形。设 $V$ 为 $C_1$ 在 $Y$ 中的\Term{closure}{闭包}。显然 $C_0\subseteq V$，因此\Term{lemma}{引理}由如下“众所周知”的事实得出：若 $S$ 是一个\Term{valuation-ring}{赋值环}的谱，且 $V\times s_1\neq\varnothing$，则\Term{finite-presentation}{有限表示}的\Term{prescheme}{预概形} $Y/S$ 的\Term{irreducible}{不可约}闭\Term{subprescheme}{子预概形} $V$ 满足 $\dim(V\times s_1)\geq\dim(V\times s_0)$（EGA IV 13.1.6）。
+\end{proof}
+\begin{SGAresult}{\Term{lemma}{引理}}{3.12}
+假设 $S$ 为\Term{local-ring}{局部环}的谱，\Term{closed-point}{闭点}为 $s_0$。设 $\{c_i\}_{i\in I}$ 为一族\Term{section}{截面}，使\Term{set}{集合} $\{c_i(s)\cap X_0\}$ 在闭\Term{fiber}{纤维} $X_0$ 中的\Term{closure}{闭包} $C_0$ 的\Term{dimension}{维数}等于 $\dim X_0=n$。则\Term{lemma}{引理} 3.9 的条件成立。
+\end{SGAresult}
+\begin{proof}
+先注意，$X/S$ 的所有\Term{fiber}{纤维}都具有同一\Term{dimension}{维数} $u$；这由 EGA IV 12.1.1 (i) 及 $X$ 具有\Term{rational-law}{有理运算律}得到。因此\Term{lemma}{引理} (3.11) 表明，对每个 $S_1\to S$（$S_1$ 为域的谱），\Term{set}{集合} $\{c_i\times_S S_1\}$ 在 $X_{S_1}$ 中的\Term{closure}{闭包}的\Term{dimension}{维数}都等于 $n$。验证 (3.10) 的条件：设 $(a,b)\in X^2(S')$。$(c_i^{-1}a)b$ 有定义，当且仅当 $c_i$ 包含在某个\Term{open-subset}{开集} $U\subseteq X_{S'}$ 中，此\Term{open-subset}{开集}相对于 $S'$ \Term{schematically-dense}{概形稠密}（规则 1）。须证明，在 $S'$ 上\Term{local-scheme}{局部}可以找到适当的 $i$ 使此条件成立。因此只需处理 $S'$ 是\Term{local-ring}{局部环}的谱的情形；此时 $c_i\in U(S')$ 可在闭\Term{fiber}{纤维}上验证。所以归结到 $S'=\operatorname{Spec}k$、$k$ 为域的情形。沿用上述记号，取 $S'=S_1$。有 $\dim C_1=\dim X_{S_1}$，而 $U$ 在 $X_{S_1}$ 中\Term{relatively-schematically-dense}{相对概形稠密}。故 $U\cap C_1\neq\varnothing$，从而 $U\cap\{c_p\times_S S_1\}\neq\varnothing$，于是得证。
+\end{proof}
+现在容易证明\Term{theorem}{定理}。先注意\Term{lemma}{引理} (3.9) 的\Term{finiteness}{有限性}有如下推论：若 $\{A_i\}$ 为 $S$ 上环的\Term{inductive-system}{归纳系统}，令 $\underrightarrow A=\varinjlim A_i$，且对 $S=\operatorname{Spec}\underrightarrow A$ 满足 (3.9) 的假设，则可将\Term{representable}{表示} $R\rightrightarrows X^2$ 的商 $G$ 的\Term{object}{对象}\Term{descent}{下降}到某个 $S_i=\operatorname{Spec}A_i$ 上，并保留 (3.9) 所述的\Term{finiteness}{有限性}和\Term{flat}{平坦}性。这是通常的取\Term{limit}{极限}论法（EGA IV 8 和 11）。因此，要证明 (3.7) 的 (iii)、(iv)，只需考虑 $S=\operatorname{Spec}A$、$A$ 为\Term{strictly-local-ring}{严格局部环}的情形。设 $x_0$ 为 $X/S$ 的闭\Term{fiber}{纤维} $X_0$ 的一个\Term{closed-point}{闭点}。存在\footnote{参见第 VII 讲第 15 页的页下注。} $A$ 的一个\Term{local-ring}{局部}、\Term{free-module}{自由}且\Term{finite}{有限}的\Term{group-extension}{扩张} $A'$，以及 $X'=X\times_S S'$ 的一个\Term{section}{截面}，经过 $X'$ 在 $x_0$ 上方的唯一点 $x'_0$。注意，$X'_0\to X_0$ 是\Term{radicial}{根性}\Term{morphism}{态射}，因为 $S$ \Term{strictly-local}{严格局部}，故 $A$ 的\Term{residue-field}{剩余域}\Term{separably-closed}{可分闭}。由此存在一个由\Term{local-ring}{局部环}组成的\Term{inductive-system}{归纳系统} $\{A_i\}$，各环在 $S$ 上\Term{flat}{平坦}且\Term{finite}{有限}，使得令
+\[
+\underrightarrow A=\varinjlim A_i,\qquad \underleftarrow X=X\times_S\operatorname{Spec}\underrightarrow A,
+\]
+则 $\underleftarrow X$ 有一族\Term{section}{截面}，在闭\Term{fiber}{纤维} $\underleftarrow X_0$ 上诱导一个\Term{dense}{稠密}集。具体地，对 $X_0$ 的每个\Term{closed-point}{闭点} $x_0$，取一个\Term{group-extension}{扩张} $A(x_0)$，使相应的 $X$ 的\Term{base-extension}{基扩张}有一个“经过 $x_0$”的\Term{section}{截面}；再取各 $A(x_0)$ 的\Term{finite}{有限}\Term{tensor-product}{张量积}所组成的\Term{inductive-system}{归纳系统}。注意，$\underrightarrow A$ 是\Term{local-ring}{局部环}，因为它是\Term{local-ring}{局部环}的\Term{limit}{极限}。因此由 (3.12) 和 (3.10)，在 $\operatorname{Spec}\underrightarrow A$ 上有商 $G$，
+\SourcePage{413}
+由上述说明，它因而存在于某个 $\operatorname{Spec}A_i$ 上，故关于\Term{fppf-topology}{fppf 拓扑}\Term{local-scheme}{局部}存在。
+
+事实上，由构造可知，关于\Term{fppf-topology}{fppf 拓扑}\Term{local-scheme}{局部}可找到\Term{finite}{有限}多个\Term{section}{截面} $\{c_i\}$（$i=1,\ldots,r$），使 $G$ 由各 $c_i\times X$ \Term{covering}{覆盖}。(ii)、(iv) 容易由此得出；(i) 的验证留给读者。
+\begin{SGAresult}{推论}{3.13}
+由 $S$ 上的\Term{group-germ}{群芽} $(X,W)$ 确定的\Term{group-sheaf}{群层} $G$ 在下列任一情形中\Term{representable}{可表示}：
+
+(i) $S$ \Term{artinian}{阿廷}。
+
+(ii) 对 $S$ 的每个\Term{closed-point}{闭点} $s$ 的\Term{local-scheme}{局部概形} $S'\to S$，$X_{S'}$ 有一族\Term{section}{截面}，在闭\Term{fiber}{纤维}上诱导一个\Term{set}{集合}，其\Term{closure}{闭包}的\Term{dimension}{维数}为 $\dim X_s$。
+
+(iii) $S$ \Term{strictly-local}{严格局部}，且 $X/S$ \Term{smooth}{光滑}。
+
+(iv) 存在\Term{fppf-cover}{fppf 覆盖} $S'\to S$，使得 $G_{S'}$ \Term{representable}{可表示}且在 $S$ 上\Term{affine}{仿射}。
+\end{SGAresult}
+事实上，(ii) 是 (3.10) 和 (3.12) 的推论；(iii) 直接由 (ii) 及“Hensel \Term{lemma}{引理}”得到；(iv) 由\Term{affine}{仿射}\Term{scheme}{概形}的\Term{descent}{下降}得到；(i) 由\Term{group-scheme}{群概形}的\Term{descent}{下降}得到，这里能够\Term{descent}{下降}，是因为已知域上的群的每个\Term{finite}{有限}\Term{subset}{子集}都包含在一个\Term{affine}{仿射}\Term{open-subset}{开集}中（第 VI 讲）。
+
+\SGAsection{}{参考文献}
+\begin{enumerate}
+\item[{[1]}] Weil, A.，\textit{Variétés abéliennes et courbes algébriques}（\Term{abelian-variety}{阿贝尔簇}与\Term{algebraic-curve}{代数曲线}），Hermann，Paris，1948。
+\item[{[2]}] Yanagihara, H.，\textit{Reduction of group varieties and transformation spaces}（\Term{group-variety}{群簇}与变换\Term{space}{空间}的\Term{reduced}{约化}），Journ. Sci. Hiroshima Univ.，Ser. A-I，vol. 27，No. 1，June，1963。
+\end{enumerate}
+\SourcePage{414}
+% 原 PDF 此页空白。

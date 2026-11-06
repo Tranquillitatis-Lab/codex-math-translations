@@ -1,0 +1,678 @@
+\SourcePage{38}
+\SGAchapter{X}{上同调维数：初步结果}{Dimension cohomologique : premiers résultats}
+\begin{center}M. Artin\end{center}
+\SGAsection{1}{引言}
+本讲除非明确另有说明，约定“\Term{sheaf}{层}”均指“\Term{abelian-sheaf}{阿贝尔层}”。
+
+设 $X$ 为\Term{scheme}{概形}，$\ell\in\mathbb P$。“回顾”一下，所谓 $X$ 的 $\ell$-\Term{cohomological-dimension}{上同调维数}，是使得至少存在一个 $X$ 上的 $\ell$-\Term{torsion-sheaf}{挠层} $F$ 满足 $H^n(X,F)\ne0$ 的最大整数 $\operatorname{cd}_\ell X=n$；若不存在这样的最大整数，则取 $\infty$。若 $X=\operatorname{Spec}A$，记 $\operatorname{cd}_\ell A=\operatorname{cd}_\ell\operatorname{Spec}A$。借助第 VIII 讲 2 的对应表，当 $A=k$ 为域时，这就回到了 [CG] 中的“经典”概念。由于显然有公式
+\[
+ \operatorname{cd}_\ell\left(\coprod_iX_i\right)=\sup_i\operatorname{cd}_\ell X_i,
+\]
+经典理论显然可以推广到任意 Artin 环。这一理论见 Serre 的《Galois \Term{cohomology}{上同调}》，记作 (CG)。第 2 节将对此补充若干说明。
+
+\SourcePage{39}
+例如，考虑\Term{separably-closed}{可分闭}域 $k$ 上一个\Term{dimension}{维数}为 $n$ 的\Term{irreducible}{不可约}\Term{algebraic-variety}{代数簇} $X$，并固定 $\ell\ne\operatorname{char}k$。第 4 节的一个定理给出\Term{cohomological-dimension}{上同调维数}的上界 $2n$；这是 $X$ 的“真正”\Term{dimension}{维数}（$k=\mathbb C$ 时的\Term{topology}{拓扑}类比提示了这一点）。从域的理论出发，这个结果相当初等。事实上，除非 $X$ \Term{complete}{完备}，否则上界 $2n$ 还能改进：只要 $X$ 中“至少缺少一个点”，另一个上界 $2n-1$ 就成立。这是正确的“\Term{stable}{稳定}上界”，意思是每个 $n$ 维的 $X$ 都包含一个\Term{cohomological-dimension}{上同调维数}为 $2n-1$ 的\Term{open-subset}{开集}。对于\Term{affine}{仿射}簇，还可得到第三个上界，即 $n$。这是 Lefschetz 关于\Term{hyperplane-section}{超平面截面}的一条定理的推广。后两项断言较深，只能留待以后证明（第 XIV 讲）。
+
+须注意，\Term{cohomological-dimension}{上同调维数}不是\Term{local-scheme}{局部}概念（与仿\Term{compact-space}{紧空间}的情况不同）。例如，\Term{residue-field}{剩余域}\Term{separably-closed}{可分闭}的 Hensel 环，其\Term{cohomological-dimension}{上同调维数}为零；然而去掉\Term{closed-point}{闭点}后，所得数值可以任意大，在最重要的情形中，若 $n=\dim A$，便是 $2n-1$。这也符合\Term{complex-analytic-space}{复解析空间}中一点 $x$ 的小\Term{open-neighborhood}{开邻域} $U$ 的去点\Term{space}{空间} $U-\{x\}$ 的\Term{cohomology}{上同调}所给出的\Term{topology}{拓扑}类比。
+
+\SGAsection{2}{域上的辅助结果}
+有如下定理。
+\begin{SGAresult}{定理}{2.1}
+设 $k'/k$ 是域 $k$ 的\Term{finite-type}{有限型}\Term{group-extension}{扩张}，$\ell\in\mathbb P$。则
+\[
+ \operatorname{cd}_\ell k'\leq\operatorname{cd}_\ell k+\operatorname{trdeg}(k'/k).
+\]
+若严格不等式成立，且 $\ell\ne\operatorname{char}k$，则 $\ell=2$，$k$ 可序，而 $k'$ 不可序（即 $-1$ 在 $k'$ 中是若干平方之和）。
+\end{SGAresult}
+回顾，当 $\ell=\operatorname{char}k$ 时，$\operatorname{cd}_\ell k'\leq1$（CG II 2.2），故 2.1 中的等号问题几乎无从谈起。此外，若 $k$ 可序，则 $\operatorname{cd}_2k=\infty$。事实上，$k$ 的\Term{algebraic-closure}{代数闭包} $\bar k$ 中包含一个中间域 $\widetilde k$（$\bar k$ 的极大可序子域），使 $[\bar k:\widetilde k]=2$。显然 $\operatorname{cd}_2\widetilde k=\infty$，且由 CG I 命题 14，$\operatorname{cd}_2\widetilde k\leq\operatorname{cd}_2k$。
+\begin{proof}
+其中几乎全是已知结果。不等式以及 $\operatorname{cd}_\ell k<\infty$ 时的等号，均为 Tate 的结果（CG II 4.1.2）。只须证明 $\operatorname{cd}_\ell k'<\infty$ 且 $\operatorname{cd}_\ell k=\infty$ 蕴涵 $k$ 可序且 $\ell=2$；只需处理以下两种情形：
+\begin{enumerate}
+\item[a)] $[k':k]<\infty$；
+\SourcePage{40}
+\item[b)] $k'=k(x)$，其中 $x$ 在 $k$ 上超越。
+\end{enumerate}
+在 a) 中可以假设 $k'/k$ \Term{separable}{可分}。此时 Galois 群 $H=G(\bar k/k')$ 是 $G=G(\bar k/k)$ 的\Term{open-subgroup}{开子群}；由 Serre 的一个结果 [5]，有 $\operatorname{cd}_\ell H=\operatorname{cd}_\ell G$，除非 $G$ 含有阶为 $\ell$ 的元素。而\Term{algebraically-closed-field}{代数闭域} $\bar k$ 不可能有\Term{finite-index}{有限指数}子域 $\widetilde k$，除非 $\ell=2$ 且 $\widetilde k$ 可序 [7]，故得所求。
+
+处理 b)。设 $R$ 是 $\operatorname{Spec}k[x]$ 在 $x=0$ 处的\Term{henselization}{Hensel 化}，这是一个\Term{discrete-valuation-ring}{离散赋值环}；设 $K$ 为其\Term{field-of-fractions}{分式域}。由 $\operatorname{cd}_\ell k(x)<\infty$ 可得 $\operatorname{cd}_\ell K<\infty$。故只须证明后者蕴涵 $\operatorname{cd}_\ell k<\infty$；这由下一定理推出。
+\end{proof}
+\begin{SGAresult}{定理}{2.2}
+\footnote{此定理最近已由 Ax 证明 [1]。}设 $R$ 为 Hensel \Term{discrete-valuation-ring}{离散赋值环}，\Term{field-of-fractions}{分式域}为 $K$，\Term{residue-field}{剩余域}为 $k$。设 $\ell\in\mathbb P$。在下列两种情形中均有
+\[
+ \operatorname{cd}_\ell K=\operatorname{cd}_\ell k+1.
+\]
+\begin{enumerate}
+\item[(i)] $\ell\ne\operatorname{char}k$；
+\item[(ii)] $\ell\ne\operatorname{char}K$，$k$ 为\Term{perfect-field}{完美域}，且 $\operatorname{cd}_\ell k<\infty$。
+\end{enumerate}
+\end{SGAresult}
+\textbf{注记。}当然，若 $\ell=\operatorname{char}K$，总有 $\operatorname{cd}_\ell K\leq1$（CG II 2.2）。所以，在混合\Term{characteristic}{特征}、$\operatorname{char}k=\ell$ 且 $k$ 不\Term{perfect}{完美}的情形中，仍须研究 $\operatorname{cd}_\ell K$ 与可能相关的\Term{absolute-differential}{绝对微分}模 $\Omega^1_k$（EGA IV 20.4.3）之间的关系。
+
+\textbf{定理的证明。}同定理 2.1 一样，结果大部分归功于 Tate。$R$ \Term{complete}{完备}时，CG II 命题 12 已明确处理 (ii)；借助下述引理可归结到该情形。
+\begin{SGAresult}{引理}{2.2.1}
+设 $R$ 为 Hensel \Term{discrete-valuation-ring}{离散赋值环}，\Term{field-of-fractions}{分式域}为 $K$，并设 $\widehat K$ 为 $R$ 的\Term{completion}{完备化} $\widehat R$ 的\Term{field-of-fractions}{分式域}。则
+\[
+ G(\overline{\widehat K}/\widehat K)\simeq G(\bar K/K).
+\]
+\end{SGAresult}
+\begin{proof}
+这表示\Term{functor}{函子} $L\mapsto\widehat L=L\otimes_K\widehat K$ 从\Term{etale}{平展} $K$-\Term{algebra}{代数}的\Term{category}{范畴}到\Term{etale}{平展} $\widehat K$-\Term{algebra}{代数}的\Term{category}{范畴}是一个\Term{equivalence}{等价}。而每个 $\widehat K$ 的\Term{etale}{平展}\Term{algebra}{代数} $\widehat K'$ 都由 $K$ 的某个适当的\Term{etale}{平展}\Term{algebra}{代数} $K'$ 诱导。事实上，若 $\widehat K'=\widehat K[\alpha]$，其中 $\alpha$ 满足一个系数在 $\widehat R$ 中的\Term{irreducible}{不可约}\Term{separable}{可分}方程 $f(T)=0$，只须取 $K'=K[\alpha_0]$，其中 $\alpha_0$ 是某个系数在 $R$ 中的方程 $f_0(T)=0$ 的根，且 $f_0\equiv f\pmod{\widehat{\mathfrak m}^{,N}}$，$N$ \Term{large-relative-to-cardinal}{足够大}，$\widehat{\mathfrak m}$ 为 $\widehat R$ 的\Term{maximal-ideal}{极大理想}。这是通常“Newton 方法”的应用（Bourbaki，《\Term{commutative-algebra}{交换代数}》III 4.5）。还须证明该\Term{functor}{函子}\Term{fully-faithful}{完全忠实}（忠实性显然）；\Term{equivalence}{等价}地，只须证明 $K'$ 为域时 $\widehat K'$ 也是域。
+\SourcePage{41}
+设 $R'$ 为 $R$ 在 $K'$ 中的\Term{integral-closure}{整闭包}；因 $K'/K$ \Term{separable}{可分}，它在 $R$ 上\Term{finite}{有限}。$R'$ 为\Term{discrete-valuation-ring}{离散赋值环}，其\Term{completion}{完备化}为 $\widehat R'=R'\otimes_R\widehat R$。所以 $\widehat R'$ 也是\Term{discrete-valuation-ring}{离散赋值环}；由于 $\widehat K'$ 是其\Term{total-ring-of-fractions}{全分式环}，它确实是域。
+\end{proof}
+处理 (3.1) 的断言 i)。若 $\operatorname{cd}_\ell k<\infty$，由 2.2.1 又可归结到 CG II 命题 12（其中 $k$ \Term{perfect}{完美}这一假设，在证明中仅用于\Term{residue-characteristic}{剩余特征}为 $\ell$ 的情形）。因此只须证明 $\operatorname{cd}_\ell K<\infty$ 蕴涵 $\operatorname{cd}_\ell k<\infty$。
+
+设 $\bar G=G(\bar k/k)=G(\widetilde K/K)$，其中 $\widetilde K$ 是 $K$ 的极大\Term{unramified}{非分歧}\Term{group-extension}{扩张}（即\Term{residue-field}{剩余域}\Term{separably-closed}{可分闭}的\Term{discrete-valuation-ring}{离散赋值环} $\widetilde R$ 的\Term{field-of-fractions}{分式域}，$\widetilde R$ 为 $R$ 的\Term{strict-henselization}{严格 Hensel 化}）；设 $G=G(\bar K/K)$，$H=G(\bar K/\widetilde K)$，于是 $\bar G=G/H$。取 $\bar G$ 的一个 $\ell$-Sylow \Term{subgroup}{子群} $\bar G'$，并设 $k'/k$、$K'/K$ 为与 $\bar G'$ 对应的\Term{group-extension}{扩张}。由 CG I 命题 14，$\operatorname{cd}_\ell k<\infty$ 当且仅当 $\operatorname{cd}_\ell k'<\infty$；故将 $R$ 换成它在 $K'$ 中的\Term{integral-closure}{整闭包}，便可归结到 $\bar G$ 是 $\ell$-群的情形。此时只须证明，若 $\operatorname{cd}_\ell G<\infty$，则充分大的 $N$ 满足 $H^N(\bar G,\mathbb Z/\ell)=0$（CG I 命题 20）。
+
+将已证的 i) 部分用于 $\widetilde R$，得 $\operatorname{cd}_\ell H=1$。此外，
+\begin{equation}
+ H^1(H,\mu_\ell)=H^1(\operatorname{Spec}\widetilde K,\mu_\ell)
+ =\widetilde K^*/\widetilde K^{*\ell}=\mathbb Z/\ell.\tag{2.2.2}
+\end{equation}
+事实上，由 Kummer 理论（第 IX 讲 3.2），$H^1(\operatorname{Spec}\widetilde K,\mu_\ell)=\widetilde K^*/\widetilde K^{*\ell}$。有\Term{exact-sequence}{正合列}
+\[
+ 0\longrightarrow\widetilde R^*\longrightarrow\widetilde K^*\longrightarrow\mathbb Z\longrightarrow0,
+\]
+而 $\widetilde R^*$ 关于 $\ell$ 可除，因为 $\widetilde R$ \Term{strictly-local}{严格局部}且 $\ell$ 在其中\Term{invertible}{可逆}，从而得到 (2.2.1)。
+
+考虑 Hochschild--Serre \Term{spectral-sequence}{谱序列}
+\[
+ E_2^{pq}=H^p(\bar G,H^q(H,\mu_\ell))\Longrightarrow H^{p+q}(G,\mu_\ell).
+\]
+$q>1$ 时有 $E_2^{pq}=0$。若又有 $\operatorname{cd}_\ell G<\infty$，则对充分大的 $n$，“余\Term{boundary}{边界}”\Term{morphism}{态射}
+\[
+ H^{n-1}(\bar G,H^1(H,\mu_\ell))\longrightarrow H^{n+1}(\bar G,\mu_\ell)
+\]
+必为\Term{bijection}{双射}；须证明此时
+\[
+ H^{n-1}(\bar G,H^1(H,\mu_\ell))=H^{n-1}(\bar G,\mathbb Z/\ell)=0.
+\]
+令 $R'=R[x']$，其中 $x'^\ell=x$，$x$ 为 $R$ 的\Term{local-scheme}{局部}参数；设 $K'$ 为 $R'$ 的\Term{field-of-fractions}{分式域}，$G'=G(\bar K/K')$，等等。$R'$ 的\Term{residue-field}{剩余域}为 $k$，因为已假定 $\bar G$ 为 $\ell$-群，所以 $\ell$ 次\Term{root-of-unity}{单位根}属于 $K$。有图
+\SourcePage{42}
+\[
+\begin{tikzcd}
+H'\arrow[r]\arrow[d,hook]&G'\arrow[r]\arrow[d,hook]&\bar G\\
+H\arrow[r]&G\arrow[r]&\bar G
+\end{tikzcd}
+\]
+从而得到 Hochschild--Serre \Term{spectral-sequence}{谱序列}之间的\Term{morphism}{态射}，并给出\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}[column sep=large]
+H^{n-1}(\bar G,H^1(H',\mu_\ell))\arrow[dr]&\\
+&H^{n+1}(\bar G,\mu_\ell)\\
+H^{n-1}(\bar G,H^1(H,\mu_\ell))\arrow[uu,"\varepsilon"]\arrow[ur]&
+\end{tikzcd}
+\]
+由于 $\operatorname{cd}_\ell G<\infty$ 蕴涵 $\operatorname{cd}_\ell G'<\infty$，当 $n$ \Term{large-relative-to-cardinal}{足够大}时，此图中全部\Term{morphism}{态射}都是\Term{isomorphism}{同构}。但诱导\Term{arrow}{箭头} $\varepsilon$ 的\Term{morphism}{态射}
+\[
+ \mathbb Z/r=H^1(H,\mu_\ell)\longrightarrow H^1(H',\mu_\ell)=\mathbb Z/\ell
+\]
+显然为零，因此 $H^{n-1}(\bar G,\mathbb Z/\ell)=0$，证毕。
+
+\begin{SGAresult}{定理}{2.3}
+设 $A$ 为一维\Term{noetherian}{诺特} Hensel 环，$\ell\in\mathbb P$ 在 $A$ 中\Term{invertible}{可逆}。设 $k$ 为 $A$ 的\Term{residue-field}{剩余域}，$R(A)$ 为 $\operatorname{Spec}A$ 上的\Term{rational-function-ring}{有理函数环}。则
+\[
+ \operatorname{cd}_\ell R(A)\leq\operatorname{cd}_\ell k+1,
+\]
+若 $\ell\ne2$ 或 $k$ 不可序，则等号成立。
+\end{SGAresult}
+\begin{proof}
+将 $A$ 换成 $A/P$，其中 $P$ 为 $A$ 的\Term{minimal-prime-ideal}{极小素理想}，并应用第 VIII 讲 1，可见可假定 $A$ 整。设 $K$ 为其\Term{field-of-fractions}{分式域}，$R$ 为其\Term{integral-closure}{整闭包}；它是\Term{local-scheme}{局部} Hensel 环，因而是\Term{discrete-valuation-ring}{离散赋值环}（由 Krull--Akizuki 定理，它是\Term{noetherian-ring}{诺特环}，见 Bourbaki，《\Term{commutative-algebra}{交换代数}》第 7 章 §2 命题 5）；设 $k'$ 为 $R$ 的\Term{residue-field}{剩余域}。已知 $[k':k]<\infty$（同上）。$K$ 是 $R$ 的\Term{field-of-fractions}{分式域}，因此由 2.2，
+\[
+ \operatorname{cd}_\ell K=\operatorname{cd}_\ell k'+1\leq\operatorname{cd}_\ell k+1.
+\]
+由 2.1，在 2.3 的最后一个假设下等号成立。
+\end{proof}
+\textbf{例。}当 $\ell=2$，且 $A$ 为 $\mathbb R[x,y]/(x^2+y^2)$ 在原点处的\Term{henselization}{Hensel 化}时，等号并不成立。
+
+\SourcePage{43}
+\begin{SGAresult}{推论}{2.4}
+设 $A$ 为\Term{noetherian-local-ring}{诺特局部环}，\Term{residue-field}{剩余域}为 $k$；设 $\ell\in\mathbb P$ 在 $A$ 中\Term{invertible}{可逆}。假定 $\ell\ne2$，或 $\operatorname{Spec}A$ 的任何\Term{residue-field}{剩余域}均不可序。则
+\[
+ \operatorname{cd}_\ell R(A)\geq\operatorname{cd}_\ell k+\dim A,
+\]
+其中 $R(A)$ 为 $\operatorname{Spec}A$ 上的\Term{rational-function-ring}{有理函数环}。
+\end{SGAresult}
+\begin{proof}
+可假定 $A$ 整，\Term{field-of-fractions}{分式域}为 $R(A)=K$。取 $x\in\Gamma A$ 为一个\Term{non-zero-divisor}{非零因子}。则 $\dim A/(x)=\dim A-1$。对 $\dim A$ 归纳，有
+\[
+ \operatorname{cd}_\ell R(A/(x))\geq\operatorname{cd}_\ell k+\dim A-1.
+\]
+取 $R(A/(x))$ 的一个\Term{residue-field}{剩余域} $k'$，使 $\operatorname{cd}_\ell k'=\operatorname{cd}_\ell R(A/(x))$（参见第 VIII 讲 1）；设 $P$ 为 $A\to k'$ 的核所给出的\Term{prime-ideal}{素理想}。环 $A_P$ 为一维。因此只须对\Term{local-ring}{局部环} $A_P$ 证明本推论，即归结到 $\dim A=1$ 的情形。设 $\widetilde A$ 为 $A$ 的\Term{henselization}{Hensel 化}。$R(\widetilde A)$ 的每个\Term{residue-field}{剩余域}均可视为 $R(A)=K$ 的\Term{separable-extension}{可分扩张}，因此
+\[
+ \operatorname{cd}_\ell R(A)=\operatorname{cd}_\ell K\geq\operatorname{cd}_\ell R(\widetilde A).
+\]
+于是归结到 $A$ 为一维 Hensel 环的情形，而这由 2.3 得出。
+\end{proof}
+\begin{SGAresult}{推论}{2.5}
+设 $X$ 为\Term{noetherian}{诺特}\Term{scheme}{概形}，$\ell\in\mathbb P$ 在 $X$ 上\Term{invertible}{可逆}。则
+\[
+ \operatorname{cd}_\ell R(X)\geq\dim X.
+\]
+\end{SGAresult}
+事实上，取 $x\in X$ 使 $\dim X=\dim\mathcal O_{X,x}$（$\dim X=\infty$ 时，取使 $\dim\mathcal O_{X,x}$ 非常大的点）。设 $A$ 为 $\mathcal O_{X,x}$ 的\Term{strict-henselization}{严格 Hensel 化}。由通常的论证，
+\[
+ \operatorname{cd}_\ell R(X)\geq\operatorname{cd}_\ell R(\mathcal O_{X,x})\geq\operatorname{cd}_\ell R(A).
+\]
+此外 $\dim A=\dim X$（相应地，$\dim A$ 非常大）。若 $\ell=2$ 且 $\ell$ 在 $X$ 上\Term{invertible}{可逆}，则方程 $T^2+1=0$ 在 $A$ 上\Term{separable}{可分}，故由于 $A$ \Term{strictly-local}{严格局部}，$-1$ 在 $A$ 中是平方，因而 $A$ 的\Term{residue-field}{剩余域}都不可序。所以无论如何 $A$ 均满足 2.4 的假设，有 $\operatorname{cd}_\ell R(A)\geq\dim A$，所求即得。
+
+\SGAsection{3}{严格局部环的分式域}
+\textbf{3.0。}下面几节中将必须知道 $\operatorname{cd}_\ell R(A)$，其中 $A$ 是\Term{strictly-local}{严格局部}环，即\Term{residue-field}{剩余域}\Term{separably-closed}{可分闭}的 Hensel 环。遗憾的是，一般情形中尚不知道 $\operatorname{cd}_\ell R(A)$，例如 $A=\widehat{\mathbb Z}_p[[x]]$（$p\ne\ell$）。
+
+不过猜想，若 $A$ \Term{noetherian}{诺特}且 $\ell$ 在 $A$ 中\Term{invertible}{可逆}，则至少在最重要的情形中，例如 $A$ 为\Term{excellent}{优良}环（EGA IV 7.8.2）时，有
+\begin{equation}
+ \operatorname{cd}_\ell R(A)=\dim A\qquad(\ell\text{ 在 }A\text{ 中可逆}).\tag{3.1}
+\end{equation}
+\SourcePage{44}
+注意，当 $\dim A=1$ 时，由 2.3，(3.1) 成立。此外，不等式 $\geq$ 总由 2.5 成立。以后（第 XIX 讲）将用\Term{resolution-singularities}{奇点消解} [3] 证明：若 $A$ \Term{excellent}{优良}且\Term{residue-characteristic}{剩余特征}为零，则 (3.1) 也成立。这里仅对下述容易的情形 3.2 证明 (3.1)。
+
+当然，若 $A$ 的\Term{characteristic}{特征}为 $\ell$，则 $\operatorname{cd}_\ell R(A)\leq1$，故这一情形是平凡的。还须分析\Term{residue-characteristic}{剩余特征}为 $\ell$ 的混合\Term{characteristic}{特征}情形；并不期待 (3.1) 在此情形成立。肯定还须考虑模 $\Omega^1_k$ 的秩（$k$ 为\Term{residue-field}{剩余域}），即次数 $[k:k^\ell]$。
+\begin{SGAresult}{命题}{3.2}
+设 $X$ 为域 $k$ 的谱或\Term{discrete-valuation-ring}{离散赋值环} $R$ 的谱上的\Term{finite-type}{有限型}\Term{prescheme}{预概形}，$\ell\in\mathbb P$ 在 $k$（相应地，$R$）中\Term{invertible}{可逆}。则对 $X$ 的每个\Term{strict-localization}{严格局部化}环 $A$，(3.1) 均成立。
+\end{SGAresult}
+\begin{proof}
+取 $X$ 整（照通常方法可归结到这一情形），设 $n=\dim X$。
+
+先假定 $X$ 定义在\Term{separably-closed}{可分闭}域 $k$ 上。那么，对 $X$ 在任一\Term{closed-point}{闭点}的\Term{strict-localization}{严格局部化}环 $A$，有 $\dim A=n$。因为 $R(A)$ 的每个\Term{residue-field}{剩余域} $K$ 均可视为 $R(X)$ 的\Term{algebra}{代数}\Term{group-extension}{扩张}，且
+\[
+ \operatorname{trdeg}(R(X)/k)=\dim X=n,
+\]
+由 2.1 得 $\operatorname{cd}_\ell K\leq n$，从而 $\operatorname{cd}_\ell R(A)\leq n$。反向不等式由 2.5 得到。
+
+现在假定 $X$ 在 $\operatorname{Spec}R$ 上\Term{finite-type}{有限型}，其中 $R$ 为\Term{discrete-valuation-ring}{离散赋值环}；设 $A$ 为 $X$ 在一点 $x$ 的\Term{strict-localization}{严格局部化}。若 $x$ 不在 $\operatorname{Spec}R$ 的\Term{closed-point}{闭点}之上，将 $R$ \Term{localization}{局部化}，便立即归结到 $X$ 在域上\Term{finite-type}{有限型}的情形。基于同一理由，还可假定\Term{morphism}{态射} $X\to\operatorname{Spec}R$ \Term{dominant}{占优}。
+
+暂且进一步假定 $R$ 为\Term{strictly-local}{严格局部}\Term{discrete-valuation-ring}{离散赋值环}，且 $x$ 是 $X$ 的\Term{closed-point}{闭点}。于是 $\dim A=\dim X=n$（EGA IV 5.6.5）。$R(A)$ 的每个\Term{residue-field}{剩余域} $K$ 均可视为 $R(X)$ 的\Term{separable-extension}{可分扩张}，故由 2.1 及 2.2，
+\[
+\begin{split}
+ \operatorname{cd}_\ell R(A)&\leq\operatorname{cd}_\ell R(X)\\
+ &\leq\operatorname{cd}_\ell L+\operatorname{trdeg}(R(X)/L)\\
+ &=1+(n-1)=n,
+\end{split}
+\]
+其中 $L$ 为 $R$ 的\Term{field-of-fractions}{分式域}。结合 2.5，即得此情形的结果。
+
+下述引理将一般情形归结为这些特殊情形。
+\end{proof}
+\begin{SGAresult}{引理}{3.3}
+\begin{enumerate}
+\item[(i)] 设 $X$ 在域 $k$ 的谱上\Term{finite-type}{有限型}，$A$ 为 $X$ 在一点 $x$ 的\Term{strict-localization}{严格局部化}环。则存在\Term{separably-closed}{可分闭}域 $k'$、$\operatorname{Spec}k'$ 上的\Term{finite-type}{有限型}\Term{scheme}{概形} $X'$ 及 $X'$ 的\Term{closed-point}{闭点} $x'$，使 $A$ \Term{isomorphism}{同构}于 $X'$ 在 $x'$ 的一个\Term{strict-localization}{严格局部化}环。
+\SourcePage{45}
+\item[(ii)] 设 $X$ 在 $\operatorname{Spec}R$ 上\Term{finite-type}{有限型}，$R$ 为\Term{discrete-valuation-ring}{离散赋值环}；设 $x\in X$ 位于 $\operatorname{Spec}R$ 的\Term{closed-point}{闭点}之上，$A$ 为 $X$ 在 $x$ 的一个\Term{strict-localization}{严格局部化}。则存在\Term{strictly-local}{严格局部}\Term{discrete-valuation-ring}{离散赋值环} $R'$、$\operatorname{Spec}R'$ 上的\Term{finite-type}{有限型}\Term{scheme}{概形} $X'$ 及 $X'$ 中位于 $\operatorname{Spec}R'$ \Term{closed-point}{闭点}之上的\Term{closed-point}{闭点} $x'$，使 $A$ \Term{isomorphism}{同构}于 $X'$ 在 $x'$ 的一个\Term{strict-localization}{严格局部化}。
+\end{enumerate}
+\end{SGAresult}
+\begin{proof}
+(i) 可取 $X$ \Term{affine}{仿射}。设 $Y$ 为 $x$ 在 $X$ 中的\Term{closure}{闭包}，赋予诱导的\Term{reduced}{既约}结构；设 $d=\dim Y$。由\Term{normalization}{正规化}引理（[2] 第 V 章 §3 第 1 节），存在\Term{morphism}{态射}
+\[
+ X\longrightarrow\operatorname{Spec}k[y_1,\ldots,y_d]=T
+\]
+诱导\Term{finite-morphism}{有限态射} $Y\to T$。于是 $\mathcal O_{X,x}$ 的\Term{strict-localization}{严格局部化}环\Term{isomorphism}{同构}于 $\mathcal O_{X',x'}$ 的\Term{strict-localization}{严格局部化}，其中 $X'=X\times_T\operatorname{Spec}\overline{R(T)}$，$x'$ 为 $X'$ 的一个\Term{closed-point}{闭点}。
+
+(ii) 类似地处理。可假定 $X$ \Term{affine}{仿射}，其环为 $A$。设 $Y$ 为 $x$ 在 $X$ 中的\Term{closure}{闭包}，赋予诱导的\Term{reduced}{既约}结构；它是 $X$ 在 $\operatorname{Spec}R$ 上的\Term{closed-fiber}{闭纤维} $X_0$ 的闭子\Term{scheme}{概形}。设 $d=\dim Y$。将 i) 中所考虑的 $A\otimes_R k$ 的元素 $y_1,\ldots,y_d$ \Term{lifting}{提升}为 $A$ 的元素，便得到\Term{morphism}{态射}
+\[
+ X\longrightarrow\operatorname{Spec}R[y_1,\ldots,y_d]=T
+\]
+诱导\Term{finite-morphism}{有限态射} $Y\to T_0$。设 $R'$ 为 $R[y_1,\ldots,y_d]=B$ 在\Term{prime-ideal}{素理想} $\mathfrak mB$ 的\Term{strict-localization}{严格局部化}。则 $R'$ 为\Term{strictly-local}{严格局部}\Term{discrete-valuation-ring}{离散赋值环}；可取 $X'=X\times_T\operatorname{Spec}R'$，并取 $X'$ 中位于 $x$ 之上的一个\Term{closed-point}{闭点} $x'$。
+\end{proof}
+
+\SGAsection{4}{上同调维数：$\ell$ 在 $\mathcal O_X$ 中可逆的情形}
+\begin{SGAresult}{定理}{4.1}
+设 $X$ 为\Term{noetherian}{诺特}\Term{scheme}{概形}，$\ell\in\mathbb P$，$\varphi$ 为 $X$ 上取值于 $\mathbb N$ 的函数，满足下列条件：
+\begin{enumerate}
+\item[(i)] 对每个 $x\in X$，$\operatorname{cd}_\ell k(x)\leq\varphi(x)$。
+\item[(ii)] 设 $x\in X$，$Y$ 为 $x$ 的\Term{closure}{闭包}，$y\in Y$ 且 $y\ne x$。设 $K$ 为 $Y$ 在 $y$ 之上的一个\Term{strict-localization}{严格局部化}的\Term{rational-function-ring}{有理函数环}。则 $\operatorname{cd}_\ell K<\varphi(x)-\varphi(y)$。
+\end{enumerate}
+则对 $X$ 上每个 $\ell$-\Term{torsion-sheaf}{挠层} $F$，当
+\[
+ q>\varphi(F)\mathrel{\mathop:}=\sup\{\varphi(x)\mid x\in X,\ F_{\bar x}\ne0\}
+\]
+时，有 $H^q(X,F)=0$。
+\end{SGAresult}
+\begin{proof}
+将 $\varphi$ \Term{restriction}{限制}于 $X$ 的任意子\Term{prescheme}{预概形}，假设仍成立。因此由\Term{noetherian-induction}{诺特归纳}法，可假设定理对 $X$ 的每个不等于
+\SourcePage{46}
+$X$ 的闭子\Term{prescheme}{预概形}成立。给定 $F$，写成 $F=\varinjlim F_i$，其中 $F_i$ 遍历 $F$ 的\Term{constructible}{可构造}子\Term{sheaf}{层}（第 IX 讲 2.9 (iii)）。
+
+对每个 $F_i$，使 $(F_i)_{\bar x}\ne0$ 的点 $x\in X$ 构成 $X$ 的\Term{constructible}{可构造}\Term{subset}{子集}，因而可对\Term{support}{支集}不\Term{dense}{稠密}的各 $F_i$ 应用归纳假设。由此可见，归纳假设实际上蕴涵：只要 $F$ 至少在 $X$ 的一个\Term{maximal-point}{极大点}处为零，定理便对 $F$ 成立。因此以下假定 $F$ 不满足这一条件。
+
+设 $i:\operatorname{Spec}R(X)\to X$ 为包含\Term{morphism}{态射}，其中 $R(X)$ 是 $X$ 的\Term{rational-function-ring}{有理函数环}；考虑以下\Term{exact-sequence}{正合列}，$K$、$C$ 分别定义为核和\Term{cokernel}{余核}：
+\[
+ 0\longrightarrow K\longrightarrow F\longrightarrow i_*i^*F\longrightarrow C\longrightarrow0.
+\]
+这里 $K$ 和 $C$ 在 $X$ 的每个\Term{maximal-point}{极大点}处为零，因此由 (ii)，$\varphi(K)$、$\varphi(C)$ 均严格小于 $n=\varphi(F)$，故 $q\geq n$ 时 $H^q(X,K)=H^q(X,C)=0$。所以，借助\Term{cohomology}{上同调}\Term{exact-sequence}{正合列}，为证 $q>n$ 时 $H^q(X,F)=0$，只须证明 $H^q(X,i_*i^*F)=0$。因而可假设 $F=i_*G$，其中 $G$ 为 $\operatorname{Spec}R(X)$ 上适当的 $\ell$-\Term{sheaf}{层}。
+
+考察 Leray \Term{spectral-sequence}{谱序列}
+\[
+ E_2^{p,q}=H^p(X,R^qi_*G)\Longrightarrow H^{p+q}(\operatorname{Spec}R(X),G).
+\]
+$R(X)_{\mathrm{red}}$ 是 $x$ 遍历 $X$ 的\Term{maximal-point}{极大点}时各域 $k(x)$ 的乘积，所以由 (i)，$\operatorname{cd}_\ell R(X)\leq n$，故\Term{spectral-sequence}{谱序列}的\Term{abutment}{终项}在次数 $>n$ 时为零。我们要证明 $p>n$ 时 $E_2^{p0}=0$。考察\Term{spectral-sequence}{谱序列}可见，只须证明 $q>0$ 且 $p>n-q-1$ 时 $E_2^{pq}=0$。因此由归纳，只须证明 $q>0$ 时 $\varphi(R^qi_*G)<n-q$。但由第 VIII 讲 5.2，$R^qi_*G$ 在位于 $y\in X$ 之上的\Term{geometric-point}{几何点} $\bar y$ 的\Term{fiber}{纤维}正是 $H^q(\operatorname{Spec}K,G_K)$，其中 $K$ 为 $X$ 在 $\bar y$ 的\Term{strict-localization}{严格局部化}的\Term{rational-function-ring}{有理函数环}，$G_K$ 为 $\operatorname{Spec}K$ 上诱导的\Term{sheaf}{层}。由 (ii)，$\operatorname{cd}_\ell K<n-\varphi(y)$，故 $q\geq n-\varphi(y)$ 时 $(R^qi_*G)_{\bar y}=0$，这就给出所求结果。
+\end{proof}
+\begin{SGAresult}{推论}{4.2}
+设 $X$ 为\Term{noetherian}{诺特}\Term{scheme}{概形}，$\ell\in\mathbb P$，$n\in\mathbb N$，并假定满足：
+\begin{enumerate}
+\item[(i)] 对 $X$ 中每个\Term{codimension}{余维}为 $c$ 的点 $y$，有 $\operatorname{cd}_\ell k(y)\leq n-2c$。
+\item[(ii)] 对 $X$ 的\Term{irreducible}{不可约}闭子\Term{scheme}{概形} $Y$ 的每个\Term{strict-localization}{严格局部化}环 $A$，有 $\operatorname{cd}_\ell R(A)\leq\dim A$。
+\end{enumerate}
+则 $\operatorname{cd}_\ell X\leq n$。更确切地，若 $F$ 为在每个\Term{codimension}{余维} $<s$ 的点 $y$ 处均为零的 $\ell$-\Term{sheaf}{层}，则
+\[
+ H^q(X,F)=0\qquad\text{若 }q>n-2s.
+\]
+\end{SGAresult}
+\SourcePage{47}
+事实上，可取 $\varphi(y)=n-2\operatorname{codim}y$ 并应用 4.1。其条件 (i)、(ii) 分别由 4.2 的相应条件 (i)、(ii) 得到，其中对于 (ii) 要用到不等式
+\[
+ \dim\mathcal O_{Y,y}+\dim\mathcal O_{X,x}\leq\dim\mathcal O_{X,y}.
+\]
+\begin{SGAresult}{推论}{4.3}
+设 $X$ 在域 $k$ 上\Term{finite-type}{有限型}且\Term{dimension}{维数}为 $n$，$\ell\ne\operatorname{char}k$。则
+\[
+ \operatorname{cd}_\ell X\leq2n+\operatorname{cd}_\ell k.
+\]
+\end{SGAresult}
+在前一推论中将 $n$ 换成 $2n+\operatorname{cd}_\ell k$ 后应用之。用 2.1 及 3.2 核实 4.2 的条件 (i)、(ii)，其中对于 (i) 要用到不等式
+\[
+ \operatorname{trdeg}(K(y)/k)+\dim\mathcal O_{X,y}\leq\dim X.
+\]
+\begin{SGAresult}{推论}{4.4}
+设 $X$ \Term{noetherian}{诺特}，$\ell\in\mathbb P$ 在 $X$ 上\Term{invertible}{可逆}。假定 4.2 的条件 (ii) 成立，且进一步假定 $\ell\ne2$ 或 $X$ 的任何\Term{residue-field}{剩余域}均不可序。则
+\[
+ \operatorname{cd}_\ell X\leq\operatorname{cd}_\ell R(X)+\dim X\leq2\operatorname{cd}_\ell R(X).
+\]
+\end{SGAresult}
+在 4.2 中置 $n=\operatorname{cd}_\ell R(X)+\dim X$，并应用 2.4，它蕴涵 4.2 的条件 (i)，因为
+\[
+\begin{split}
+ \operatorname{cd}_\ell k(y)&\leq\operatorname{cd}_\ell R(\mathcal O_{X,y})-\dim\mathcal O_{X,y}\\
+ &\leq\operatorname{cd}_\ell R(X)-\dim\mathcal O_{X,y}\\
+ &\leq n-2\dim\mathcal O_{X,y}.
+\end{split}
+\]
+4.4 的第二个不等式由 2.5 得到。
+
+\textbf{例 4.5。}4.4 中关于\Term{residue-field}{剩余域}的那个不够美观的假设是必要的。例如，取 $X=\operatorname{Spec}\mathbb R[x,y,z]/(x^2+y^2+z^2)$，其余条件全部满足，且 $\dim X=\operatorname{cd}_\ell R(X)=\ell=2$；但集中于点 $(0,0,0)$ 的\Term{sheaf}{层} $\mathbb Z/2$ 在每个次数都有非零的\Term{cohomology}{上同调}，故 $\operatorname{cd}_\ell X=+\infty$。
+
+\textbf{4.6。}人们还容易想到尝试在 4.2 中仅对 $X$ 的\Term{closed-point}{闭点}作假设，但这是不可能的。例如，存在\Term{residue-field}{剩余域}\Term{algebraically-closed}{代数闭}、而\Term{function-field}{函数域}的\Term{cohomological-dimension}{上同调维数}任意大的\Term{discrete-valuation-ring}{离散赋值环}\footnote{要说明这一点，只须注意，若 $X$ 为域 $k$ 上的\Term{smooth}{光滑}\Term{algebra}{代数}\Term{scheme}{概形}，且有一个点 $x\in X(k)$，则可找到一条经过 $x$ 的“\Term{form}{形式}曲线弧”，其“\Term{algebra}{代数}包络”为 $X$；因此其\Term{function-field}{函数域}包含 $X$ 的\Term{function-field}{函数域} $K$，并在 $K$ 上诱导一个\Term{residue-field}{剩余域}为 $k$ 的\Term{discrete}{离散}赋值。}。这样的环的谱也有很大的\Term{cohomological-dimension}{上同调维数}。
+
+\SGAsection{5}{上同调维数：$\ell=p$ 的情形}
+\textbf{5.0。}利用 Artin--Schreier 理论（第 IX 讲 3.5），可对\Term{characteristic}{特征}为 $p$ 的\Term{scheme}{概形} $X$ 的 $p$-\Term{cohomological-dimension}{上同调维数}得到一个优于 4.3 的上界。令 $\operatorname{cd}_{\mathrm{qc}}X$ 为使得至少存在一个 $X$ 上（Zariski 意义下）的\Term{quasi-coherent}{拟凝聚}模\Term{sheaf}{层} $F$ 满足 $H^n(X,F)\ne0$ 的最大数 $n$。有如下定理。
+\SourcePage{48}
+\begin{SGAresult}{定理}{5.1}
+设 $X$ 为\Term{characteristic}{特征} $p>0$ 的\Term{noetherian}{诺特}\Term{scheme}{概形}。则
+\[
+ \operatorname{cd}_pX\leq\operatorname{cd}_{\mathrm{qc}}X+1.
+\]
+特别地，\Term{characteristic}{特征} $p>0$ 的\Term{noetherian}{诺特}\Term{affine}{仿射}\Term{scheme}{概形} $X$ 的 $p$-\Term{cohomological-dimension}{上同调维数}至多为 $1$。
+\end{SGAresult}
+\begin{proof}
+应用第 IX 讲 5.5。对于\Term{finite-morphism}{有限态射} $f$ 及\Term{abelian-sheaf}{阿贝尔层} $F$（第 VIII 讲 5.5）（相应地，\Term{quasi-coherent}{拟凝聚}\Term{sheaf}{层} $F$），$q>0$ 时 $R^qf_*F$ 均为零。考虑到这一点，可归结为证明：若 $i:U\to X$ 为\Term{open-immersion}{开浸入}，$q>\operatorname{cd}_{\mathrm{qc}}X$，则 $H^q(X,i_!(\mathbb Z/p)_U)=0$。
+
+设 $Y$ 为 $X$ 的一个\Term{support}{支集}为 $X-U$ 的闭子\Term{prescheme}{预概形}，$J$ 为定义 $Y$ 的\Term{coherent}{凝聚}\Term{ideal}{理想}\Term{sheaf}{层}。\Term{morphism}{态射} $\mathfrak p:f\mapsto f^p-f$（第 IX 讲 3.5）诱导\Term{morphism}{态射} $J\to J$。考察第 IX 讲 3.5 的\Term{exact-sequence}{正合列}及\Term{exact-sequence}{正合列}
+\[
+ 0\longrightarrow i_!(\mathbb Z/p)_U\longrightarrow(\mathbb Z/p)_X\longrightarrow(\mathbb Z/p)_Y\longrightarrow0,
+\]
+可见实际上有\Term{exact-sequence}{正合列}
+\begin{equation}
+ 0\longrightarrow i_!(\mathbb Z/p)_U\longrightarrow J\longrightarrow J\longrightarrow0.\tag{*}
+\end{equation}
+因为 $J$ \Term{coherent}{凝聚}，$q>\operatorname{cd}_{\mathrm{qc}}X$ 时 $H^q(X,J)=0$，故由\Term{cohomology}{上同调}\Term{exact-sequence}{正合列}得到结果。
+\end{proof}
+对于\Term{separably-closed}{可分闭}域 $k$ 上的\Term{quasi-projective-morphism}{拟射影}\Term{scheme}{概形}，某些情形中可将此上界再降低 $1$。事实上有：
+\begin{SGAresult}{推论}{5.2}
+设 $X$ 为\Term{characteristic}{特征} $p>0$ 的域 $k$ 上的\Term{finite-type}{有限型}\Term{scheme}{概形}。则
+\[
+ \operatorname{cd}_pX\leq\dim X+1;
+\]
+若 $k$ \Term{separably-closed}{可分闭}且 $X$ \Term{quasi-projective-morphism}{拟射影}\footnote{利用 Chow 引理，容易将条件“$X$ \Term{quasi-projective-morphism}{拟射影}”换成“$X$ \Term{separated}{分离}”。}，则
+\[
+ \operatorname{cd}_pX\leq\dim X.
+\]
+\end{SGAresult}
+事实上，第一条断言显然，因为 $\operatorname{cd}_{\mathrm{qc}}X\leq\dim X$（[6] 4.15.2）。处理第二条：对于这样的 $X$ 及其\Term{coherent}{凝聚}\Term{sheaf}{层} $F$，\Term{cohomology}{上同调}群 $H^n(X,F)$（$n=\dim X$）是 $k$ 上的\Term{finite}{有限}维\Term{vector-space}{向量空间}。设 $V=H^n(X,J)$，其中 $J$ 为\Term{exact-sequence}{正合列} (*) 中的\Term{ideal}{理想}\Term{sheaf}{层}。由 (*) 得到的\Term{morphism}{态射} $\varphi:V\to V$ 显然具有\Term{form}{形式} $\varphi=\varepsilon-\mathrm{id}$，其中 $\varepsilon(rv)=r^p\varepsilon(v)$，$r\in k$，$v\in V$。因此，由 $\varphi$ \Term{derive}{导出}的\Term{affine}{仿射}\Term{scheme}{概形}映射 $\Phi$ 的 Jacobi 矩阵为 $-I$，$I$ 为单位矩阵。于是 $\Phi$ \Term{etale}{平展}，又因其可加而\Term{surjectivity}{满射}。由于 $k$ \Term{separably-closed}{可分闭}，故 $\varphi$ \Term{surjectivity}{满射}，结论随即成立。
+
+\SourcePage{49}
+\SGAsection{6}{$\operatorname{Spec}\mathbb Z$ 上有限型预概形的上同调维数}
+\begin{SGAresult}{命题}{6.1}
+设 $X$ 在 $\operatorname{Spec}\mathbb Z$ 上\Term{quasi-finite}{拟有限}。假定 $\ell\ne2$，或 $X$ 的每个\Term{characteristic-zero}{特征零}\Term{residue-field}{剩余域}均为全虚域。则 $\operatorname{cd}_\ell X\leq3$。
+\end{SGAresult}
+这是定理 2.2 (ii)、推论 4.2 及如下事实的推论：数域（$\ell=2$ 时为全虚数域）的 $\ell$-\Term{cohomological-dimension}{上同调维数}至多为 $2$（CG II 4.4）。
+
+事实上，由类域论还可推出：若\Term{morphism}{态射} $X\to\operatorname{Spec}\mathbb Z$ \Term{proper}{固有}且\Term{surjectivity}{满射}，则等号成立。
+
+遗憾的是，若只假定 $X$ 在 $\operatorname{Spec}\mathbb Z$ 上\Term{finite-type}{有限型}，第 4 节的结果不能原样应用，因为对于\Term{residue-characteristic}{剩余特征}为 $\ell$ 的\Term{local-ring}{局部环}，4.2 的假设 (ii) 一般不成立。故须利用结果 5.1 才能得到正确上界；现在定理 5.1 就要派上用场了。
+\begin{SGAresult}{定理}{6.2}
+设 $X$ 在 $\operatorname{Spec}\mathbb Z$ 上\Term{finite-type}{有限型}，$\ell\in\mathbb P$。若 $\ell=2$，假定 $X$ 的任何\Term{residue-field}{剩余域}均不可序。则
+\[
+ \operatorname{cd}_\ell X\leq2\dim X+1.
+\]
+更确切地，设 $F$ 为 $\ell$-\Term{torsion-sheaf}{挠层}，对 $X$ 中每个使 $F_{\bar x}\ne0$ 的点 $x$，有
+\[
+ \dim\overline{\{x\}}\leq
+ \begin{cases}
+ (N-1)/2,&\ell\ne\operatorname{char}k(x),\\
+ N-1,&\ell=\operatorname{char}k(x)
+ \end{cases}
+\]
+（$\overline{\{x\}}$ 为 $\{x\}$ 的\Term{closure}{闭包}）；则 $p>N$ 时 $H^p(X,F)=0$。
+\end{SGAresult}
+\begin{proof}
+对 $X$ 归纳，可假定定理对每个不等于 $X$ 的闭子\Term{prescheme}{预概形}成立。设 $F$ 如定理所述，将它写成 $F=\varinjlim F_i$，其中 $F_i$ 遍历 $F$ 的\Term{constructible}{可构造}子\Term{sheaf}{层}（第 IX 讲 2.9 (iii)）；每个 $F_i$ 也满足同样假设。故只须在 $F$ \Term{constructible}{可构造}时证明定理。
+
+此时使 $F_{\bar x}\ne0$ 的 $x\in X$ 所成\Term{set}{集合} $E$ 是\Term{constructible}{可构造}\Term{subset}{子集}，归纳假设蕴涵：$E$ 不\Term{dense}{稠密}时，定理对 $F$ 成立。此外，对于集中于 $X$ 在 $\operatorname{Spec}\mathbb Z$ 的点 $(\ell)$ 上的\Term{fiber}{纤维}的\Term{sheaf}{层}，定理由 5.1 得到；对于集中于 $(p)$ 上\Term{fiber}{纤维}的\Term{sheaf}{层}，$p\ne\ell$，考虑 $\operatorname{cd}_\ell\mathbb Z/p\mathbb Z=1$（CG II 2.2），则由 4.3 得到。
+
+取 $X$ \Term{reduced}{既约}，写 $X=X_0\cup X_1$，其中 $X_1$ 为 $X$ 的所有\Term{characteristic}{特征}为 $\ell$ 的\Term{irreducible}{不可约}分支之并，是\Term{closed-subset}{闭子集}；$X_0$ 为其余\Term{irreducible}{不可约}分支之并。$X_0$、$X_1$ 均赋予诱导的\Term{reduced}{既约}结构。
+\SourcePage{50}
+设 $j_\nu:X_\nu\to X$ 为包含，$d_\nu=\dim X_\nu$，$N=\sup\{2d_0+1,d_1+1\}$。对于 $X$ 上每个\Term{constructible}{可构造}\Term{sheaf}{层} $F$，有\Term{exact-sequence}{正合列}
+\begin{equation}
+ 0\longrightarrow F\longrightarrow j_{0*}j_0^*F\oplus j_{1*}j_1^*F\longrightarrow C\longrightarrow0,\tag{*}
+\end{equation}
+其中 $C$ 集中于 $X_0\cap X_1$；后者\Term{characteristic}{特征}为 $\ell$，\Term{dimension}{维数}至多为 $d_1-1$。因此 $q>N-1$ 时 $H^q(X,C)=0$，因为由 5.1，
+\[
+ \operatorname{cd}_\ell(X_0\cap X_1)\leq\dim(X_0\cap X_1)+1\leq d_1\leq N-1.
+\]
+考察 (*) 的\Term{cohomology}{上同调}\Term{exact-sequence}{正合列}，便归结到 $X=X_0$ 或 $X=X_1$ 的情形；如上所述，后一种情形由 5.1 得到。
+
+因此假定 $X$ 的每个\Term{maximal-point}{极大点}的\Term{characteristic}{特征}均不等于 $\ell$，设 $i_\nu:x_\nu\to X$ 为这些\Term{maximal-point}{极大点}的包含。考察\Term{exact-sequence}{正合列}
+\[
+ 0\longrightarrow K\longrightarrow F\longrightarrow\bigoplus_\nu i_{\nu*}i_\nu^*F\longrightarrow C\longrightarrow0,
+\]
+由归纳可归结到 $F=i_{\nu*}i_\nu^*F$ 的情形，即 $F=i_*G$，其中 $G$ 为 $\operatorname{Spec}k(x)$ 上适当的\Term{sheaf}{层}，$x\in X$。因此可假定 $X$ \Term{irreducible}{不可约}且\Term{reduced}{既约}，\Term{generic-point}{泛点}为 $x$；由 4.3，还可假定 $k(x)$ 的\Term{characteristic}{特征}为零。
+
+考察\Term{spectral-sequence}{谱序列}
+\begin{equation}
+ H^p(X,R^qi_*G)\Longrightarrow H^{p+q}(\operatorname{Spec}k(x),G).\tag{**}
+\end{equation}
+设 $s=\dim X$。须证明
+\begin{equation}
+ E_2^{p0}=0\qquad\text{若 }p>2s+1.\tag{+}
+\end{equation}
+$k(x)[i]$ 在 $\mathbb Q[i]$ 上的\Term{transcendence-degree}{超越次数}为 $s-1$，而 $\mathbb Q[i]$ 的\Term{cohomological-dimension}{上同调维数}为 $2$。由于 $\ell=2$ 时 $k(x)$ 不可序，由 2.1 得 $\operatorname{cd}_\ell k(x)=s+1$。这意味着\Term{spectral-sequence}{谱序列}的目标在 $n>s+1$ 时为零。因此为证 (+)，只须证明 (**) 中
+\begin{equation}
+ E_2^{pq}=0\qquad\text{若 }p>2s-q\text{ 且 }q>0.\tag{++}
+\end{equation}
+设 $y\in X$，$K$ 为 $X$ 在位于 $y$ 之上的\Term{geometric-point}{几何点} $\widetilde y$ 的一个\Term{strict-localization}{严格局部化}的\Term{fraction-ring}{分式环}。则 $K$ 是若干域的\Term{direct-product}{直积}，每个域在 $\mathbb Z$ 的一个\Term{strict-localization}{严格局部化}上的\Term{transcendence-degree}{超越次数}均为 $s-1$，故由 2.1、2.2 得 $\operatorname{cd}_\ell K\leq s$。此外，若 $y$ 的\Term{residue-characteristic}{剩余特征}不是 $\ell$，可应用 3.2。因此
+\begin{equation}
+ (R^qi_*G)_{\widetilde y}=0\quad
+ \begin{cases}
+ \text{若 }q>\operatorname{codim}y\text{，即 }\dim\bar y>s-q\text{，且 }\ell\ne\operatorname{char}k(y),\\
+ \text{或无论如何，只要 }q>s.
+ \end{cases}\tag{''}
+\end{equation}
+特别地，$q>s$ 时 $E_2^{pq}=0$。为在 $0<q\leq s$ 时验证 (++)，对\Term{sheaf}{层} $R^qi_*(G)$ 应用归纳假设。
+\SourcePage{51}
+依定理的陈述及 ('')，须取 $N'=2s-q$ 并验证两个不等式
+\[
+ s-q\leq(N'-1)/2,\qquad s-1=\dim X_\ell\leq N'-1,
+\]
+其中 $X_\ell$ 为 $X$ 在 $\operatorname{Spec}\mathbb Z$ 的点 $(\ell)$ 之上的\Term{fiber}{纤维}。当 $0<q\leq s$ 时，两者确实成立。证毕。
+\end{proof}
+
+\SGAsection{}{参考文献}
+\begin{enumerate}
+\item[{[1]}] Ax, J.，《Serre 关于\Term{cohomological-dimension}{上同调维数}的若干猜想的证明》（Proof of some conjectures of Serre on cohomological dimension），\textit{Proc. Amer. Math. Society} 16 (1965)，1214--1221。
+\item[{[2]}] Bourbaki, N.，《\Term{commutative-algebra}{交换代数}》（\textit{Algèbre Commutative}），巴黎，1960。
+\item[{[3]}] Hironaka, H.，《\Term{characteristic-zero}{特征零}域上\Term{algebra}{代数}曲面的\Term{resolution-singularities}{奇点消解}》（Resolution of singularities of an algebraic surface over a field of characteristic zero），\textit{Annals of Math.}，第 79 卷，第 1、2 期，1964。
+\item[{[4]}] Nagata, M.，《\Term{local-ring}{局部环}》（\textit{Local Rings}），纽约，1962。
+\item[{[5]}] Serre, J.-P.，《关于\Term{profinite}{投射有限}群的\Term{cohomological-dimension}{上同调维数}》（Sur la dimension cohomologique de groupes profinis），\textit{Topology}，第 3 卷，第 413 页，1965。
+\item[{[6]}] Godement, R.，《层论》（\textit{Théorie des Faisceaux}），巴黎，1958。
+\item[{[7]}] E. Artin 与 A. Schreier，《实闭域的一个刻画》（Eine Kennzeichnung der reel abgeschlossenen Körper），\textit{Hamb. Abh.} 5 (1927)，225--231。
+\item[{[8]}] Serre, J.-P.，《Galois \Term{cohomology}{上同调}》（\textit{Cohomologie Galoisienne}），\textit{Lecture Notes} 第 5 号，Springer。
+\end{enumerate}
+
+\SourcePage{52}
+\SGAchapter{XI}{与经典上同调的比较：光滑概形的情形}{Comparaison avec la cohomologie classique : cas d'un schéma lisse}
+\begin{center}M. Artin\end{center}
+\SGAsection{1}{引言}
+第 4 节将证明：对于 $\operatorname{Spec}\mathbb C$ 上的\Term{smooth}{光滑}\Term{scheme}{概形} $X$，以\Term{locally-constant}{局部常值}\Term{torsion-sheaf}{挠层}为系数的\Term{etale-cohomology}{平展上同调}与经典\Term{cohomology}{上同调}一致。证明基本上就是 [1] 中的证明；从下面回顾的 Grauert 定理（4.3 (iii)）出发，它是初等的。该定理说，$X(\mathbb C)$ 的每个\Term{finite-covering}{有限覆盖}都来自 $X$ 的一个\Term{etale-covering}{平展覆盖}。所以这里给出这一证明，尽管以后还将用 Hironaka 的\Term{resolution-singularities}{奇点消解}定理 [3] 证明一个更\Term{complete}{完备}的结果\footnote{还应指出，Hironaka 的\Term{resolution-singularities}{奇点消解}也能给出 Grauert 结果的一个极简单的证明；从这个意义上说，无论如何它都可视为\Term{comparison-theorem}{比较定理}的基础。关于此事，参见 M. Raynaud 女士在 SGA 1 第 XII 讲中的报告（North Holland Pub. Cie）。}。此外，第 3 节构造的\Term{good-neighborhood}{好邻域}在其他场合也可能有用。
+
+注意，对于不是\Term{torsion-sheaf}{挠层}的\Term{sheaf}{层}，\Term{etale-cohomology}{平展上同调}与经典\Term{cohomology}{上同调}并不总是一致。例如，对每个\Term{normal}{正规}\Term{scheme}{概形} $X$，有 $H^1(X_{\text{ét}},\mathbb Z)=0$（第 IX 讲 3.6 (ii)），但经典\Term{cohomology}{上同调}未必为零。
+
+\SourcePage{53}
+\SGAsection{2}{充分一般的超平面截面的存在性}
+以下结果是经典的，但我们找不到参考文献（尚待 EGA V 出版）。
+\begin{SGAresult}{定理}{2.1}
+设 $k$ 为域，$V\subset\mathbb P^n_k$ 为纯 $r$ 维的\Term{projective}{射影}\Term{algebra}{代数}\Term{scheme}{概形}。设 $V'$ 为 $V$ 中在 $\operatorname{Spec}k$ 上\Term{smooth}{光滑}的点构成的开子\Term{scheme}{概形}，$P$ 为 $\mathbb P^n$ 的一个\Term{rational-point}{有理点}。则：
+\begin{enumerate}
+\item[(i)] $\mathbb P^n$ 中一个给定\Term{dimension}{维数} $d$ 的“充分一般”的线性子\Term{space}{空间} $L$，在 $L\cap V'$ 的每一点与 $V$ \Term{transverse-intersection}{横截相交}。
+\item[(ii)] 设 $\{H_1,\ldots,H_s\}$（$s\leq r$）为一组通过 $P$ 的 $d\geq2$ 次\Term{hyperplane}{超平面}，令 $Y=H_1\cap\cdots\cap H_s$。若 $\{H_1,\ldots,H_s\}$ 充分一般，则 $Y$ 在 $Y\cap V'$ 的每一点与 $V$ \Term{transverse-intersection}{横截相交}。
+\end{enumerate}
+\end{SGAresult}
+“对于充分一般的线性子\Term{space}{空间}”这句话的意思是：在参数化 $d$ 维线性子\Term{space}{空间}的 Grassmann 簇中，存在一个\Term{dense}{稠密}\Term{open-subset}{开子集} $U$，使只要 $L$ 的参数属于 $U$，关于 $L$ 的所述断言就成立。因此，若 $k$“未定义”，这并不蕴涵一定存在这样的 $L$（定义在 $k$ 上）。\SGAsourcegap{主源与补源原版第 65 页均写作“si k n'est pas défini”；该条件语义不明，暂照字面保留，不猜改为无限域或\Term{finite-field}{有限域}条件。}同样，通过 $P$ 的 $d$ 次\Term{hyperplane}{超平面}由一个\Term{projective-space}{射影空间} $\mathbb P^N$ 参数化；“对于充分一般的 $\{H_1,\ldots,H_s\}$”的意思是：存在 $(\mathbb P^N)^s$ 的一个\Term{dense}{稠密}\Term{open-subset}{开子集} $U$，只要 $(H_1,\ldots,H_s)$ 的参数属于 $U$，所述断言就成立。
+\begin{proof}
+(i) 由归纳，立即归结到 $L$ 为\Term{hyperplane}{超平面}的情形。设 $(V'_\nu)$ 为 $V'$ 的一个\Term{finite}{有限}\Term{open-cover}{开覆盖}。若对每个 $\nu$，将\Term{signature}{符号} $V'$ 换成 $V'_\nu$ 后断言 (i) 成立，则它对 $V'$ 也成立，因为\Term{finite}{有限}个\Term{dense}{稠密}\Term{open-subset}{开子集}的交仍然开且\Term{dense}{稠密}。因此可将情况换成一个\Term{affine}{仿射}\Term{algebra}{代数}\Term{scheme}{概形}，譬如 $V\subset\mathbb E^n_k=\operatorname{Spec}k[x_1,\ldots,x_n]$。\Term{hyperplane}{超平面} $L$ 是一个线性方程的零点集：
+\[
+ \ell(x)=a_0+\sum_{i=1}^na_ix_i.
+\]
+回顾，\Term{smooth}{光滑}\Term{scheme}{概形}\Term{local-scheme}{局部}为\Term{complete-intersection}{完全交}。因此可将 $V'$ 换成 $V$ 的点的一个\Term{open-subset}{开子集}，使存在在 $V$ 上为零的多项式 $f_1(x),\ldots,f_{n-r}(x)$ 及指标 $1\leq j_\nu\leq n$（$\nu=1,\ldots,n-r$），满足行列式
+\[
+ \det\left(\frac{\partial f_i}{\partial x_{j_\nu}}\right)_{i,\nu=1,\ldots,n-r}
+\]
+\Term{invertible}{可逆}。不妨设 $j_\nu=\nu$（$\nu=1,\ldots,n-r$）。于是可从方程
+\[
+ y_j=\sum_{i=1}^{n-r}c_i\frac{\partial f_i}{\partial x_j}
+\]
+解出 $c_i$，表示成变量 $x_i,y_j$（$i=1,\ldots,n-r$；$j=1,\ldots,n$）的\Term{rational-function}{有理函数}；这些函数 $c_i(x,y)$ 在 $V'$ 的每一点都有定义。
+\SourcePage{54}
+$L$ 在 $V'$ 的一点 $Q$ 与 $V$ \Term{transverse-intersection}{横截相交}，\Term{equivalence}{等价}于矩阵
+\[
+ \begin{bmatrix}
+ \dfrac{\partial f_1}{\partial x_1}&\cdots&\dfrac{\partial f_1}{\partial x_n}\\
+ \vdots&&\vdots\\
+ \dfrac{\partial f_{n-r}}{\partial x_1}&\cdots&\dfrac{\partial f_{n-r}}{\partial x_n}\\
+ a_1&\cdots&a_n
+ \end{bmatrix}
+\]
+在 $Q$ 处的值的秩为 $n-r+1$。因此，$L$ 在 $V'$ 的每一点与 $V$ \Term{transverse-intersection}{横截相交}，当且仅当由下列 $r+1$ 个方程组成的方程组在 $V'$ 上无解：
+\[
+ \begin{aligned}
+ a_j&=\sum_{i=1}^{n-r}c_i(x,a)\frac{\partial f_i}{\partial x_j}
+ &&(j=n-r+1,\ldots,n),\\
+ a_0+\sum_{i=1}^na_ix_i&=0.
+ \end{aligned}
+\]
+这显然是关于 $(a)$ 的\Term{constructible}{可构造}条件：令 $X=V'\times A$，其中 $A$ 为坐标 $a_0,\ldots,a_n$ 的\Term{affine}{仿射}\Term{space}{空间}；令 $Y\subset X$ 为这些方程的解所成的\Term{closed-subset}{闭子集}。该条件就是 $Y/A$ 的\Term{fiber}{纤维}为空，这确实是\Term{constructible}{可构造}条件（EGA IV 9.5.1）。故只须验证 $A$ 的\Term{generic-point}{泛点}之上的\Term{fiber}{纤维}为空，由方程的\Term{form}{形式}立即可见这一点。至此 (i) 得证。
+
+(ii) 考虑由通过 $P$ 的 $d$ 次\Term{hyperplane}{超平面}（$d\geq2$）的线性系给出的\Term{rational-map}{有理映射} $\mathbb P^n\dashrightarrow\mathbb P^N$。众所周知（且容易验证），这是对 $P$ 的一次“\Term{blow-up}{爆破}”，因而给出一个\Term{locally-closed}{局部闭}\Term{immersion}{浸入}
+\[
+ f:\mathbb P^n-\{P\}\longrightarrow\mathbb P^N.
+\]
+设 $V''=V'-\bigl(\{P\}\cap V'\bigr)$，$\overline{V''}=f(V'')$，$L_i$ 为 $\mathbb P^N$ 中对应于\Term{hyperplane}{超平面} $H_i$ 的\Term{hyperplane}{超平面}（$i=1,\ldots,s$）。则 $V''$ \Term{isomorphism}{同构}于 $\overline{V''}$，且由 $f$ 的定义，$Y$ 与 $V''$ \Term{transverse-intersection}{横截相交}，\Term{equivalence}{等价}于 $L_1\cap\cdots\cap L_s$ 与 $\overline{V''}$ \Term{transverse-intersection}{横截相交}。令 $\bar V$ 为 $\overline{V''}$ 的\Term{closure}{闭包}，便归结到对 $\bar V$ 的断言 (i)；它给出将 $V'$ 换成 $V''$ 后的 (ii)。因此，若 $P$ 是 $V$ 的\Term{smooth}{光滑}点，只须再考虑点 $P$。但显然，当 $\{H_1,\ldots,H_s\}$ 充分一般且 $P$ 在 $V$ 上\Term{smooth}{光滑}时，$Y$ 在 $P$ 与 $V$ \Term{transverse-intersection}{横截相交}，故得所求。
+\end{proof}
+
+\SourcePage{55}
+\SGAsection{3}{好邻域的构造}
+\begin{SGAresult}{定义}{3.1}
+所谓\Term{elementary-fibration}{初等纤维化}，是指一个\Term{scheme}{概形}\Term{morphism}{态射} $f:X\to S$，它可\Term{embedding}{嵌入}如下\Term{commutative-diagram}{交换图}：
+\[
+\begin{tikzcd}
+X\arrow[r,"j"]\arrow[dr,"f"']&\bar X\arrow[r,"i"]\arrow[d,"\bar f"]&Y\arrow[dl,"g"]\\
+&S&
+\end{tikzcd}
+\]
+并满足下列条件：
+\begin{enumerate}
+\item[(i)] $j$ 是在每条\Term{fiber}{纤维}中\Term{dense}{稠密}的\Term{open-immersion}{开浸入}，且 $X=\bar X-Y$。
+\item[(ii)] $\bar f$ \Term{smooth}{光滑}且\Term{projective}{射影}，其\Term{geometric-fibre}{几何纤维}\Term{irreducible}{不可约}且为一维。
+\item[(iii)] $g$ 是\Term{etale-covering}{平展覆盖}，且 $g$ 的每条\Term{fiber}{纤维}均\Term{nonempty}{非空}。
+\end{enumerate}
+\end{SGAresult}
+容易验证，这样的 $X$ 的\Term{embedding}{嵌入}若存在，则在\Term{canonical-isomorphism}{典范同构}的意义下唯一。
+\begin{SGAresult}{定义}{3.2}
+若对一个 $S$-\Term{scheme}{概形} $X$，存在 $S$-\Term{scheme}{概形}
+\[
+ X=X_n,\ldots,X_0=S
+\]
+及\Term{elementary-fibration}{初等纤维化} $f_i:X_i\to X_{i-1}$，$i=1,\ldots,n$，则称 $X$ 为相对于 $S$ 的\Term{good-neighborhood}{好邻域}。
+\end{SGAresult}
+\begin{SGAresult}{命题}{3.3}
+\footnote{这个结果容易推广为一个半\Term{local-scheme}{局部}的断言。}设 $k$ 为\Term{algebraically-closed-field}{代数闭域}，$X/\operatorname{Spec}k$ 为\Term{smooth}{光滑}\Term{scheme}{概形}，$x\in X$ 为\Term{rational-point}{有理点}。则 $X$ 中存在一个包含 $x$ 的\Term{open-subset}{开集}，它是（相对于 $\operatorname{Spec}k$ 的）\Term{good-neighborhood}{好邻域}。
+\end{SGAresult}
+\begin{proof}
+取 $X$ \Term{irreducible}{不可约}。对 $\dim X=n$ 归纳，只须找到 $x$ 在 $X$ 中的\Term{neighborhood}{邻域} $U$ 及\Term{elementary-fibration}{初等纤维化} $f:U\to V$，其中 $V$ \Term{smooth}{光滑}且\Term{dimension}{维数}为 $n-1$。事实上，$v=f(x)$ 将有一个为\Term{good-neighborhood}{好邻域}的\Term{neighborhood}{邻域} $V'$，便可取 $U'=U\cap V'$ 作为 $x$ 的\Term{good-neighborhood}{好邻域}。
+
+可假定 $X\subset\mathbb E^r$ \Term{affine}{仿射}。设 $X_0$ 为 $X$ 在 $\mathbb P^r$ 中的\Term{closure}{闭包}，$\bar X$ 为 $X_0$ 的\Term{normalization}{正规化}，$Y=\bar X-X$，赋予诱导的\Term{reduced}{既约}结构。再设 $S\subset\bar X$ 为奇点构成的\Term{closed-subset}{闭子集}。则 $S\subset Y$，并且
+\[
+ \dim\bar X=\dim X=n,\qquad\dim Y=n-1,\qquad\dim S\leq n-2.
+\]
+\SourcePage{56}
+借助一个具有\Term{form}{形式} $M^{\otimes r}$ 的\Term{invertible}{可逆}\Term{sheaf}{层} $L$ 将 $\bar X$ \Term{embedding}{嵌入}\Term{projective-space}{射影空间} $\mathbb P^N$，其中 $M$ \Term{very-ample}{很丰沛}，$r\geq2$。此时存在 $\mathbb P^N$ 的\Term{hyperplane}{超平面} $H_1,\ldots,H_{n-1}$，其中 $H_i$ 为
+\[
+ \sum_{\nu=0}^Na_{i\nu}x_\nu=0
+\]
+的零点集；这些\Term{hyperplane}{超平面}都包含 $x$，其交 $L=H_1\cap\cdots\cap H_{n-1}$ 的\Term{dimension}{维数}为 $N-n+1$，且与 $\bar X$、$Y$ \Term{transverse-intersection}{横截相交}（2.1）。交 $\bar X\cap L$ 为\Term{smooth}{光滑}\Term{connected}{连通}曲线（这由 Bertini 定理得到），而 $Y\cap L$ 为零维。再选一个\Term{hyperplane}{超平面}
+\[
+ H_0:\sum_{\nu=0}^Na_{0\nu}x_\nu=0,
+\]
+使 $H_0$ 与 $\bar X\cap L$ \Term{transverse-intersection}{横截相交}，并使 $H_0\cap Y\cap L=\varnothing$。
+
+考虑通过“引入\Term{projective}{射影}坐标”
+\[
+ y_i=\sum_{\nu=0}^Na_{i\nu}x_\nu
+\]
+得到的\Term{projection}{投影} $\mathbb P^N\dashrightarrow\mathbb P^{n-1}$。这是一个在\Term{projection}{投影}\Term{center}{中心} $C=H_0\cap\cdots\cap H_{n-1}$ 之外有定义的\Term{rational-map}{有理映射}。设 $\varepsilon:P'\to\mathbb P^N$ 为沿 $C$ 的\Term{blow-up}{爆破}，有图
+\[
+\begin{tikzcd}
+\mathbb P^N\arrow[dr,dashed]&P'\arrow[l,"\varepsilon"']\arrow[d,"\pi"]\\
+&\mathbb P^{n-1}
+\end{tikzcd}
+\]
+其中 $\pi$ 为\Term{morphism}{态射}。设 $\bar X'\subset P'$ 为 $\bar X$ 的“严格”\Term{inverse-image}{逆像}，即 $\varepsilon^{-1}(\bar X-(\bar X\cap C))$ 的\Term{closure}{闭包}。由于假定 $C$ 与 $\bar X$ \Term{transverse-intersection}{横截相交}，\Term{morphism}{态射} $\bar X'\to\bar X$ 是对\Term{finite}{有限}集 $\bar X\cap C$ 的\Term{blow-up}{爆破}。设 $X'=X-X\cap C$，它也可视为 $\bar X'$ 的一个开子\Term{scheme}{概形}；设 $Y'=\bar X'-X'$ 为闭子\Term{scheme}{概形}，赋予诱导的\Term{reduced}{既约}结构。得到\Term{morphism}{态射}图 $D$：
+\[
+\begin{tikzcd}
+X'\arrow[r,"j"]\arrow[dr,"f'"']&\bar X'\arrow[d,"\bar f'"]&Y'\arrow[l,"i"']\arrow[dl,"g'"]\\
+&\mathbb P^{n-1}&
+\end{tikzcd}
+\]
+\SourcePage{57}
+我断言，$v=f'(x)$ 有一个\Term{neighborhood}{邻域} $V$，使 $D$ 在 $V$ 上的\Term{restriction}{限制}满足 3.1 的条件 (i)、(ii)、(iii)，故 $f'|V$ 为\Term{elementary-fibration}{初等纤维化}。这就完成证明。
+
+条件 (i) 显然。对于 (ii)，注意，按假设 $\bar X\cap L$ 是\Term{smooth}{光滑}曲线，并且立即可见 $\varepsilon$ 诱导一个一一\Term{morphism}{态射} $\bar f'^{-1}(v)\to\bar X\cap L$。故 $(\bar f'^{-1}(v))_{\mathrm{red}}\to\bar X\cap L$ 为\Term{bijection}{双射}。由 Hironaka 引理（SGA 1 第 II 讲 2.6\footnote{以及 EGA IV 5.12.10。}），为验证 $\bar f'$ 在 $v$ 的一个\Term{neighborhood}{邻域}之上\Term{smooth}{光滑}，只须验证它在 $\bar f'^{-1}(v)$ 的\Term{generic-point}{泛点}处\Term{smooth}{光滑}。在该点处，$\bar X'$ 与 $\bar X$ \Term{isomorphism}{同构}；由于 $L$ 与 $\bar X$ \Term{transverse-intersection}{横截相交}，\Term{morphism}{态射}确实\Term{smooth}{光滑}。
+
+还须证明 $g'$ 在 $v$ 的一个\Term{neighborhood}{邻域}中\Term{etale}{平展}（由于 $Y$ 为 $n-1$ 维，$g'$ 的每条\Term{fiber}{纤维}显然\Term{nonempty}{非空}）。有
+\[
+ Y'=\varepsilon^{-1}(Y)\amalg D_1\amalg\cdots\amalg D_r,
+\]
+其中 $\bar X\cap C=\{P_1,\ldots,P_r\}$，$D_i$ 是 $\bar X$ 中 $P_i$ 的\Term{blow-up}{爆破}。每个 $D_i$ 可与 $\varepsilon^{-1}(P_i)$ 等同，并\Term{isomorphism}{同构}地映到 $\mathbb P^{n-1}$；在 $Y$ 的每一点有定义，而在 $Y$ 上诱导的\Term{morphism}{态射}正是 $g'|\varepsilon^{-1}(Y)$。\SGAsourcegap{主源第 57 页及补源原版第 72 页在“\Term{isomorphism}{同构}地映到 $\mathbb P^{n-1}$”后直接接“在 $Y$ 的每一点有定义”，缺少后半句的主语；此处照译现存文字，未补造缺文。}它在 $v$ 之上\Term{etale}{平展}，因为 $L$ 与 $Y$ \Term{transverse-intersection}{横截相交}，所以 $g'$ 在 $v$ 之上\Term{etale}{平展}。
+\end{proof}
+
+\SGAsection{4}{比较定理}
+\textbf{4.0。}设 $X$ 为 $\operatorname{Spec}\mathbb C$ 上\Term{local-scheme}{局部}\Term{finite-type}{有限型}的\Term{scheme}{概形}，并考虑 $X$ 的\Term{rational-point}{有理点}\Term{space}{空间} $X(\mathbb C)$ 上的通常\Term{topology}{拓扑}。用 $X_{\mathrm{cl}}$ 表示\Term{local-isomorphism}{局部同构} $f:U\to X(\mathbb C)$ 构成的\Term{site}{景}；这里\Term{local-isomorphism}{局部同构}指具有以下性质的\Term{topological-space}{拓扑空间}\Term{morphism}{态射} $f$：
+
+对每个 $x\in U$，存在\Term{open-neighborhood}{开邻域} $U_x$，使 $f|U_x$ 是从 $U_x$ 到 $f(x)$ 的一个\Term{open-neighborhood}{开邻域}的\Term{homeomorphism}{同胚}。
+
+$X_{\mathrm{cl}}$ 中的一族\Term{morphism}{态射} $\{U_\nu\to U\}$，若各 $U_\nu$ 的像之并为 $U$，便称为\Term{covering-family}{覆盖族}。
+
+由于\Term{open-immersion}{开浸入}为\Term{local-isomorphism}{局部同构}，有一个\Term{site}{景}的\Term{morphism}{态射}（包含，第 IV 讲）
+\begin{equation}
+ \delta:X_{\mathrm{cl}}\longrightarrow X(\mathbb C).\tag{4.1}
+\end{equation}
+\footnote{更确切地说，\Term{category}{范畴}的包含 $\operatorname{Ouv}(X(\mathbb C))\to X_{\mathrm{cl}}$ 定义一个反方向的\Term{site}{景}\Term{morphism}{态射} (4.1)。}
+对每个\Term{local-isomorphism}{局部同构} $U\to X(\mathbb C)$，根据定义，存在由 $X(\mathbb C)$ 的\Term{open-subset}{开集}给出的 $U$ 的一个“\Term{covering}{覆盖}”；由（原文引文处空缺）\SGAsourcegap{主源与补源原版第 72 页这里均只有空\Term{lie-bracket}{括号}，缺少所引结果的编号。}可推出两个\Term{site}{景}所关联的\Term{topos}{拓扑斯}通过 $\delta_*$ \Term{equivalence}{等价}。特别地，计算通常\Term{cohomology}{上同调}时可用 $X_{\mathrm{cl}}$ 代替 $X(\mathbb C)$。
+
+现设 $f:X'\to X$ 为\Term{scheme}{概形}的\Term{etale}{平展}\Term{morphism}{态射}。则 $f(\mathbb C):X'(\mathbb C)\to X(\mathbb C)$ 为\Term{local-isomorphism}{局部同构}。
+\SourcePage{58}
+这立即由 Jacobi 判据（SGA 1 第 II 讲 4.10）及隐函数定理得出。因此，\Term{functor}{函子} $X'\mapsto X'(\mathbb C)$ 给出一个\Term{site}{景}\Term{morphism}{态射}
+\begin{equation}
+ \varepsilon:X_{\mathrm{cl}}\longrightarrow X_{\text{ét}},\tag{4.2}
+\end{equation}
+其中 $X_{\text{ét}}$ 为\Term{etale}{平展}\Term{site}{景}。
+
+回顾以下结果\footnote{它们见第 2 页脚注所引的报告。}。
+\begin{SGAresult}{定理}{4.3}
+\begin{enumerate}
+\item[(i)] $X$ \Term{connected}{连通}且\Term{nonempty}{非空}，当且仅当 $X(\mathbb C)$ \Term{connected}{连通}且\Term{nonempty}{非空}。
+\item[(ii)] \Term{functor}{函子} $\varepsilon$ \Term{fully-faithful}{完全忠实}。
+\item[(iii)] （“Grauert--Remmert 定理”。）\Term{functor}{函子} $\varepsilon$ 诱导以下\Term{category}{范畴}之间的\Term{equivalence}{等价}：赋予通常\Term{locally-compact-space}{局部紧空间}\Term{topology}{拓扑}的 $X(\mathbb C)$ 的\Term{finite-covering}{有限覆盖}的\Term{category}{范畴}，以及 $X$ 的\Term{etale-covering}{平展覆盖}的\Term{category}{范畴}。
+\end{enumerate}
+\end{SGAresult}
+我们承认 (i) 为已知。例如它由 GAGA [4] 得到。断言 (ii) 容易由 (i) 推出。事实上，为验证 (ii) 所含的\Term{surjectivity}{满射}性断言，设 $\varphi:X'(\mathbb C)\to X''(\mathbb C)$ 为一个 $X(\mathbb C)$-\Term{morphism}{态射}。可假定所有\Term{scheme}{概形}均\Term{connected}{连通}且\Term{affine}{仿射}，从而\Term{separated}{分离}。此时 $\varphi$ 的图像 $\Gamma$ 是 $(X'\times_X X'')(\mathbb C)$ 的一个\Term{connected-component}{连通分支}；由 (i)，有 $\Gamma=Y(\mathbb C)$，其中 $Y$ 为 $X'\times_X X''$ 的某个\Term{connected-component}{连通分支}。于是 $Y$ 为一个诱导 $\varphi$ 的\Term{morphism}{态射} $f:X'\to X''$ 的图像，即\Term{projection}{投影} $Y\to X'$ 为\Term{isomorphism}{同构}：事实上，$Y(\mathbb C)\to X(\mathbb C)$ 是\Term{isomorphism}{同构}，从而容易推出 $Y\to X'$ 也如此（它\Term{etale}{平展}、\Term{radicial}{根性}、\Term{surjectivity}{满射}！）。由 (ii)，要证明 (iii)，只须证明 $X(\mathbb C)$ 的每个\Term{finite-covering}{有限覆盖}均形如 $X'(\mathbb C)$，其中 $X'\to X$ \Term{etale}{平展}。
+
+为此，利用\Term{descent}{下降}（SGA 1 第 IX 讲 4.7），立即归结到 $X$ \Term{connected}{连通}且\Term{normal}{正规的}情形。问题在 $X$ 上对 Zariski \Term{topology}{拓扑}是\Term{local-scheme}{局部}的，因而可假定 $X$ \Term{affine}{仿射}。设 $f:X\to\mathbb E^n$ 为\Term{finite-morphism}{有限态射}，$T'\to X(\mathbb C)$ 为\Term{connected}{连通}\Term{finite-covering}{有限覆盖}。立即可见，复合\Term{morphism}{态射} $\eta':T'\to\mathbb E^n(\mathbb C)$ 为 [2] §2 定义 3 意义下的“解析\Term{covering}{覆盖}”。由 [2] §2 定理 8，它延拓成一个“解析\Term{covering}{覆盖}” $\eta:T\to\mathbb P^n(\mathbb C)$；只须证明 $\eta$ 由某个适当的\Term{scheme}{概形}\Term{morphism}{态射} $f:Y\to\mathbb P^n$ 诱导，其中 $Y$ \Term{normal}{正规}。基本定理 [2] §13 定理 42 断言：$T$ 上存在\Term{canonical}{典范}的\Term{normal}{正规}解析结构，使 $\eta$ 诱导\Term{analytic-space}{解析空间}\Term{morphism}{态射}。此时 $\eta$ 为\Term{finite-morphism}{有限态射}，所以 $T$ 的结构\Term{sheaf}{层}的\Term{direct-image}{直像}为 $\mathbb P^n$ 上的\Term{coherent}{凝聚}解析\Term{algebra}{代数}\Term{sheaf}{层} $\mathfrak a$。由 GAGA [4]，$\mathfrak a$ 是 $\mathbb P^n$ 上一个\Term{algebra}{代数}\Term{sheaf}{层} $A$ 所关联的解析\Term{sheaf}{层}；取 $Y=\operatorname{Spec}A$ 即可。
+
+现在可证明如下结果。
+\begin{SGAresult}{定理}{4.4}
+设 $X$ 为 $\operatorname{Spec}\mathbb C$ 上的\Term{smooth}{光滑}\Term{scheme}{概形}。
+\SourcePage{59}
+\begin{enumerate}
+\item[(i)] $X_{\text{ét}}$ 上的\Term{locally-constant}{局部常值}\Term{constructible}{可构造}\Term{torsion-sheaf}{挠层}\Term{category}{范畴}与 $X_{\mathrm{cl}}$ 上\Term{fiber}{纤维}\Term{finite}{有限}的\Term{locally-constant}{局部常值}\Term{torsion-sheaf}{挠层}\Term{category-equivalence}{范畴等价}；\Term{equivalence}{等价}由互为\Term{quasi-inverse}{拟逆}的\Term{functor}{函子} $\varepsilon_*$、$\varepsilon^*$ 给出。
+\item[(ii)] 设 $F$ 为 $X_{\mathrm{cl}}$ 上\Term{fiber}{纤维}\Term{finite}{有限}的\Term{locally-constant}{局部常值}\Term{torsion-sheaf}{挠层}，亦用 $F$ 表示 $X_{\text{ét}}$ 上诱导的\Term{sheaf}{层} $\varepsilon_*F$。则
+\[
+ R^q\varepsilon_*F=0\qquad\text{若 }q>0.
+\]
+\item[(iii)] 用 (i) 的记号，对每个 $q$，\Term{canonical}{典范}\Term{morphism}{态射}
+\[
+ H^q(X_{\text{ét}},F)\longrightarrow H^q(X_{\mathrm{cl}},F)
+\]
+为\Term{bijection}{双射}。特别地，对每个 $q$，有
+\[
+ H^q(X_{\text{ét}},\mathbb Z/n)\xrightarrow{\sim}H^q(X_{\mathrm{cl}},\mathbb Z/n).
+\]
+\end{enumerate}
+\end{SGAresult}
+\begin{proof}
+对于 (i)，注意，所讨论的\Term{sheaf}{层}恰好是可由 $X$ 的\Term{etale-covering}{平展覆盖}（相应地，$X(\mathbb C)$ 的\Term{finite-covering}{有限覆盖}）表示的\Term{sheaf}{层}。这些\Term{covering}{覆盖}的\Term{category}{范畴}彼此\Term{equivalence}{等价}（4.3），断言 (i) 随即成立。(iii) 的\Term{isomorphism}{同构}由 (ii) 及 $\varepsilon$ 的 Leray \Term{spectral-sequence}{谱序列}（第 V 讲 5.2）得到。故只须证明 (ii)。
+
+$R^q\varepsilon_*F$ 是\Term{presheaf}{预层} $\mathscr R^qF$ 的关联\Term{sheaf}{层}，其中对\Term{etale}{平展}的 $X'\to X$，有 $(\mathscr R^qF)(X')=H^q(X'_{\mathrm{cl}},F)$。所以，要证明 $q>0$ 时 $R^q\varepsilon_*F=0$，须证明下述引理。
+\end{proof}
+\begin{SGAresult}{引理}{4.5}
+设 $\xi\in H^q(X_{\mathrm{cl}},F)$，$x\in X_{\mathrm{cl}}=X(\mathbb C)$。则存在像包含 $x$ 的\Term{etale}{平展}\Term{morphism}{态射} $X'\to X$，使 $\xi$ 在 $H^q(X'_{\mathrm{cl}},F)$ 中的像为零。
+\end{SGAresult}
+\begin{proof}
+对 $n=\dim X$ 归纳；问题对\Term{etale}{平展}\Term{topology}{拓扑}在 $X$ 上是\Term{local-scheme}{局部}的，故可假定 $F$ 为常值，经逐次\Term{resolution}{分解}甚至可假定 $F=\mathbb Z/n$。此外，将 $X$ 换成 $x$ 的一个 Zariski \Term{open-neighborhood}{开邻域}，由 3.3，可假定 $X$ 有一个\Term{elementary-fibration}{初等纤维化}（3.1）$f:X\to S$。沿用 3.1 的记号。直接计算表明，$q>1$ 时 $R^qj_{\mathrm{cl}*}F=0$，$R^1j_{\mathrm{cl}*}F$ 为 $Y_{\mathrm{cl}}$ 上一个常值\Term{sheaf}{层}的\Term{extension-by-zero}{零延拓}，且 $j_{\mathrm{cl}*}F$ 为 $\bar X$ 上的常值\Term{sheaf}{层} $\mathbb Z/n$。此外，$R^q\bar f_{\mathrm{cl}*}(j_{\mathrm{cl}*}F)$ 可逐\Term{fiber}{纤维}计算。从 Leray \Term{spectral-sequence}{谱序列}
+\[
+ E_2^{pq}=R^p\bar f_{\mathrm{cl}*}(R^qj_{\mathrm{cl}*}F)
+ \Longrightarrow R^{p+q}f_{\mathrm{cl}*}F
+\]
+推出 $R^{p+q}f_{\mathrm{cl}*}F$ 同样可逐\Term{fiber}{纤维}计算，因此
+\[
+ R^0f_{\mathrm{cl}*}\mathbb Z/n=\mathbb Z/n,
+\]
+$R^1f_{\mathrm{cl}*}\mathbb Z/n$ 是 $S_{\mathrm{cl}}$ 上的\Term{locally-constant}{局部常值}\Term{torsion-sheaf}{挠层}，而 $q>1$ 时 $R^qf_{\mathrm{cl}*}\mathbb Z/n=0$。
+
+于是 Leray \Term{spectral-sequence}{谱序列}
+\[
+ E_2^{pq}=H^p(S_{\mathrm{cl}},R^qf_{\mathrm{cl}*}F)
+ \Longrightarrow H^{p+q}(X_{\mathrm{cl}},F)
+\]
+\SourcePage{60}
+化为\Term{exact-sequence}{正合列}
+\begin{equation}
+ \cdots\longrightarrow H^q(S_{\mathrm{cl}},f_{\mathrm{cl}*}F)
+ \longrightarrow H^q(X_{\mathrm{cl}},F)
+ \longrightarrow H^{q-1}(S_{\mathrm{cl}},R^1f_{\mathrm{cl}*}F)\longrightarrow\cdots.\tag{*}
+\end{equation}
+设 $s$ 为 $x$ 在 $S$ 中的像。由归纳假设并借助 (i)，对每个类 $\eta\in H^q(S_{\mathrm{cl}},G)$（$G$ 为\Term{fiber}{纤维}\Term{finite}{有限}的\Term{locally-constant}{局部常值}\Term{torsion-sheaf}{挠层}），都存在 $s$ 的一个“\Term{etale}{平展}\Term{neighborhood}{邻域}” $S'\to S$，使 $\eta$ 在 $H^q(S'_{\mathrm{cl}},G)$ 中的像为零。而\Term{functor}{函子} $R^qf_{\mathrm{cl}*}$ 显然与\Term{etale}{平展}\Term{base-change}{基变换}交换；若 $S'\to S$ 是 $s$ 的\Term{etale}{平展}\Term{neighborhood}{邻域}，则 $X'=X\times_SS'\to X$ 是 $x$ 的\Term{etale}{平展}\Term{neighborhood}{邻域}。当 $q\geq1$ 时，先取 $G=R^1f_{\mathrm{cl}*}F$，再取 $G=f_{\mathrm{cl}*}F$，由\Term{exact-sequence}{正合列} (*) 即完成证明。当 $q=1$ 时，注意 $H^1(X_{\mathrm{cl}},\mathbb Z/n\mathbb Z)$（相应地，$H^1(X,\mathbb Z/n\mathbb Z)$）分类 $X_{\mathrm{cl}}$（相应地，$X$）的群为 $\mathbb Z/n\mathbb Z$ 的主\Term{etale-covering}{平展覆盖}，故由 4.3 (iii)，映射
+\[
+ H^1(X,\mathbb Z/n\mathbb Z)\longrightarrow H^1(X_{\mathrm{cl}},\mathbb Z/n\mathbb Z)
+\]
+为\Term{bijection}{双射}；$q=1$ 的消去结果 4.5 随即成立。
+\end{proof}
+
+\textbf{变体 4.6。}也可按如下由 Serre 给出的优美方法证明 4.5：注意，一个\Term{connected}{连通}\Term{good-neighborhood}{好邻域} $X$（3.2）满足以下两个条件：
+\begin{enumerate}
+\item[(i)] 若 $n>1$，则 $\Pi_n(X(\mathbb C))=0$。
+\item[(ii)] $\Pi_1(X(\mathbb C))$ 是若干\Term{finitely-generated}{有限生成}\Term{free-group}{自由群}的逐次\Term{group-extension}{扩张}。
+\end{enumerate}
+事实上，若 $X\to S$ 为\Term{elementary-fibration}{初等纤维化}，$S$ 为\Term{good-neighborhood}{好邻域}，则由归纳可假定 (i)、(ii) 对 $S$ 成立。容易看出 $X(\mathbb C)\to S(\mathbb C)$ 是一个\Term{locally-trivial}{局部平凡}\Term{fibred-space}{纤维空间}，其\Term{fiber}{纤维}\Term{isomorphism}{同构}于 $X_0(\mathbb C)$，其中 $X_0$ 为 $X/S$ 的任一\Term{fiber}{纤维}。而 $X_0$ 是\Term{connected}{连通}、\Term{nonsingular}{非奇异}、非\Term{complete}{完备}曲线，众所周知，这蕴涵 $n>1$ 时 $\Pi_n(X_0(\mathbb C))=0$，且 $\Pi_1(X_0(\mathbb C))$ 为\Term{free-group}{自由群}。于是 (i)、(ii) 是\Term{homotopy}{同伦}\Term{exact-sequence}{正合列}
+\[
+ \longrightarrow\Pi_0(X_0(\mathbb C))\longrightarrow\Pi_n(X(\mathbb C))
+ \longrightarrow\Pi_n(S(\mathbb C))\longrightarrow\cdots
+\]
+的推论。
+
+因此 $X(\mathbb C)$ 是一个 $K(\Pi,1)$ \Term{space}{空间}，这蕴涵每个\Term{cohomology}{上同调}类 $\xi\in H^n(X(\mathbb C),F)$ 在 $X(\mathbb C)$ 的\Term{universal-covering}{万有覆盖}上变为零。只须证明 $\xi$ 已在 $X$ 的某个\Term{finite-covering}{有限覆盖} $X'$ 上变为零；这\Term{equivalence}{等价}于证明 $\Pi_1=\Pi_1(X(\mathbb C))$ 是一个\Term{good-group}{好群}（参见 CG I 16），即从 $\Pi_1$ 到其\Term{completion}{完备化}
+\[
+ \widehat\Pi_1=\varprojlim_N\Pi_1/N
+\]
+的\Term{morphism}{态射}（其中 $N$ 遍历 $\Pi_1$ 的\Term{finite-index}{有限指数}\Term{normal-subgroup}{正规子群}）对每个\Term{finite}{有限}\Term{continuous}{连续} $\Pi_1$-模 $M$ 诱导一个\Term{bijection}{双射}
+\[
+ H^q(\widehat\Pi_1,M)\xrightarrow{\sim}H^q(\Pi_1,M)
+\]
+（左边表示 $\widehat\Pi_1$ 作为\Term{profinite}{投射有限}群的\Term{cohomology}{上同调}）。而\Term{finitely-generated}{有限生成}\Term{free-group}{自由群}的逐次\Term{group-extension}{扩张}是\Term{good-group}{好群}（参见 CG I 第 15--16 页，习题 1、2），故得结果。
+
+\SourcePage{61}
+\SGAsection{}{参考文献}
+\begin{enumerate}
+\item[{[1]}] Giraud, J.，《位置分析》（Analysis Situs），\textit{Séminaire Bourbaki}，第 256 讲。
+\item[{[2]}] Grauert, H. 与 Remmert, R.，《复\Term{space}{空间}》（Komplexe Räume），\textit{Math. Ann.}，第 136 卷，第 345 页，1958。
+\item[{[3]}] Hironaka, H.，《\Term{characteristic-zero}{特征零}域上\Term{algebraic-variety}{代数簇}的\Term{resolution-singularities}{奇点消解}》（Resolution of singularities of an algebraic variety over a field of characteristic zero），\textit{Annals of Math.}，第 39 卷，第 1、2 期，1964。
+\item[{[4]}] Serre, J.-P.，《\Term{algebra}{代数}几何与解析几何》（Géométrie Algébrique et Géométrie Analytique），\textit{Annales de l'Institut Fourier}，第 VI 卷，第 1--12 页，1956。
+\end{enumerate}

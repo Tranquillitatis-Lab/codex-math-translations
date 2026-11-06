@@ -1,0 +1,986 @@
+% 第 VII 讲，第5—8节；PDF 476（第5节起）—506。
+\SourcePage{476}
+\SGAsection{5}{$p$-Lie 代数}
+先回顾 Sophus Lie 讨论班中的一些结果。\footnote{编者注（51）：参见 P. Cartier，《超\Term{algebra}{代数}的例子》（Exemples d’hyperalgèbres），Sém. Sophus Lie 1955/56，第3讲（可在 Numdam 网站 \url{http://www.numdam.org} 获取）。}
+
+\SourcePage{477}
+\textbf{5.1。}设 $p$ 是素数，$R$ 是\Term{characteristic}{特征}为 $p$ 的\Term{commutative-ring}{交换环}，$A$ 是一个结合的、但未必交换的 $R$-\Term{algebra}{代数}。对 $A$ 中两个元素 $a,b$，置 $[a,b]=ab-ba$ 及 $ab=L_a(b)=R_b(a)$。于是
+\[
+ (\operatorname{ad}x^p)(y)=[x^p,y]=(L_x^p-R_x^p)(y)
+ =(L_x-R_x)^p(y)=(\operatorname{ad}x)^p(y),
+\]
+由此得到第一条 Jacobson 公式：
+\[
+ \operatorname{ad}(x^p)=(\operatorname{ad}x)^p.\tag{i}
+\]
+若 $a_1,\ldots,a_p$ 是 $A$ 的任意 $p$ 个元素，以 $\mathrm N$ 表示\Term{symmetrization}{对称化}\Term{operator}{算子}（参见4.2），则
+\[
+\begin{split}
+ \mathrm N(a_1\otimes\cdots\otimes a_p)
+ &=\sum_\sigma a_{\sigma(1)}\cdots a_{\sigma(p)}\\
+ &=\sum_\tau[a_{\tau(1)},[a_{\tau(2)},[\cdots,[a_{\tau(p-1)},a_p]\cdots]]].
+\end{split}\tag{*}
+\]
+这里 $\sigma$ 遍历 $p$ 个字母的置换，而 $\tau$ 遍历 $p-1$ 个字母的置换。事实上，最后一项等于
+\[
+ \sum_\tau\sum_{r=0}^{p-1}\sum_{i_1<\cdots<i_r}
+ (-1)^s a_{\tau(i_1)}a_{\tau(i_2)}\cdots a_{\tau(i_r)}a_p
+ a_{\tau(j_s)}\cdots a_{\tau(j_1)},
+\]
+其中 $\tau$ 遍历 $p-1$ 个字母的置换，$i_1,\ldots,i_r$ 遍历区间 $[1,p-1]$ 中严格递增的整数列，而 $j_1,\ldots,j_s$ 是由 $[1,p-1]$ 中异于 $i_1,\ldots,i_r$ 的整数所组成的严格递增列。固定 $r$ 时，各项
+$(-1)^s a_{\tau(i_1)}\cdots a_{\tau(i_r)}a_p a_{\tau(j_s)}\cdots a_{\tau(j_1)}$
+的和显然等于
+\[
+ (-1)^s\binom{p-1}{s}\sum_\rho
+ a_{\rho(1)}\cdots a_{\rho(r)}a_p a_{\rho(r+1)}\cdots a_{\rho(p-1)},
+\]
+其中 $\rho$ 遍历 $p-1$ 个字母的置换。又在 $\mathbf F_p$ 中，$(-1)^s\binom{p-1}{s}=1$；这是因为在 $\mathbf F_p[x]$ 中（$x$ 是不定元）有
+$(x-1)^p=x^p-1=(x-1)(x^{p-1}+\cdots+1)$，从而
+$(x-1)^{p-1}=x^{p-1}+\cdots+1$。这就证明了 $(*)$。
+
+另一方面，对 $A$ 中两个元素 $x_0,x_1$，有
+\[
+ (x_0+x_1)^p=x_0^p+x_1^p+\sum_z x_{z(1)}x_{z(2)}\cdots x_{z(p)},
+\]
+其中 $z$ 遍历 $[1,p]\to\{0,1\}$ 的非常值映射。因此
+\[
+ (x_0+x_1)^p=x_0^p+x_1^p+
+ \sum_{0<r<p}\frac{1}{r!(p-r)!}
+ \mathrm N(\underbrace{x_0,\ldots,x_0}_{r},\underbrace{x_1,\ldots,x_1}_{p-r}).
+\]
+根据 $(*)$，有\footnote{编者注（52）：以下说明由编者插入，取自 [DG70]，第 II.7 节，3.2。}
+\[
+\begin{split}
+ &\mathrm N(\underbrace{x_0,\ldots,x_0}_{r},\underbrace{x_1,\ldots,x_1}_{p-r})\\
+ &\qquad=r!(p-1-r)!\sum_t
+ [x_{t(1)},[x_{t(2)},[\cdots,[x_{t(p-1)},x_1]\cdots]]],
+\end{split}
+\]
+\SourcePage{478}
+其中 $t$ 遍历取值 $0$ 恰好 $r$ 次的映射 $[1,p-1]\to\{0,1\}$。由此得到第二条 Jacobson 公式：
+\[
+ (x_0+x_1)^p=x_0^p+x_1^p-
+ \sum_{0<r<p}\sum_t\frac1r
+ [x_{t(1)},[x_{t(2)},[\cdots,[x_{t(p-1)},x_1]\cdots]]].\tag{ii}
+\]
+这里 $t$ 仍遍历取值 $0$ 恰好 $r$ 次的映射 $[1,p-1]\to\{0,1\}$。
+
+\textbf{5.2。}现在设 $\mathfrak g$ 是一个 $R$-\Term{lie-algebra}{Lie 代数}。若映射 $x\mapsto x^{(p)}$ 从 $\mathfrak g$ 到自身满足下列条件，就说它使 $\mathfrak g$ 成为 $R$ 上的一个\Term{p-lie-algebra}{$p$-Lie 代数}：
+\[
+\begin{aligned}
+ {}&(0)\quad (\lambda x)^{(p)}=\lambda^p x^{(p)}
+ &&(\lambda\in R,\ x\in\mathfrak g),\\
+ &(\mathrm i)\quad \operatorname{ad}x^{(p)}=(\operatorname{ad}x)^p
+ &&(x\in\mathfrak g),
+\end{aligned}
+\]
+\[
+ (\mathrm{ii})\quad (x_0+x_1)^{(p)}=x_0^{(p)}+x_1^{(p)}-
+ \sum_{0<r<p}\sum_t\frac1r
+ [x_{t(1)},[x_{t(2)},[\cdots,[x_{t(p-1)},x_1]\cdots]]],
+\]
+其中 $t$ 遍历取值 $0$ 恰好 $r$ 次的映射 $[1,p-1]\to\{0,1\}$（$x_0,x_1\in\mathfrak g$）。此时称映射 $x\mapsto x^{(p)}$ 为“\Term{symbolic-p-power}{符号 $p$ 次幂}”。
+
+例如，若 $A$ 是结合的 $R$-\Term{algebra}{代数}，5.1 已说明：取 $A$ 的底层 $R$-\Term{module}{模}，并对 $x,y\in A$ 置
+\[
+ [x,y]=xy-yx,\qquad x^{(p)}=x^p,
+\]
+就得到一个\Term{p-lie-algebra}{$p$-Lie 代数}，记为 $A_{\mathrm{Lie}}$。称 $A_{\mathrm{Lie}}$ 为 $A$ 的底层\Term{p-lie-algebra}{$p$-Lie 代数}。
+
+以下主要考虑形如 $A_{\mathrm{Lie}}$ 的\Term{p-lie-algebra}{$p$-Lie 代数}中的\Term{p-lie-subalgebra}{$p$-Lie 子代数}。下面给出一个例子：设 $S$ 是\Term{characteristic}{特征} $p>0$ 的\Term{scheme}{概形}，$X$ 是 $S$-\Term{scheme}{概形}。回顾，$X$ 在 $S$ 上的一个\Term{derivation}{导子}是阿贝尔\Term{group}{群}\Term{sheaf}{层} $\mathcal O_X$ 的一个\Term{endomorphism}{自同态} $D$，满足
+\[
+ D(\lambda s)=\lambda D(s),\qquad D(st)=(Ds)t+s(Dt),
+\]
+这里 $\lambda$ 及 $s,t$ 分别遍历使上述公式有意义的\Term{open-subset}{开集}上的 $\mathcal O_S$ 及 $\mathcal O_X$ 的\Term{section}{截面}。由 Leibniz 公式
+\[
+ D^n(st)=\sum_{i=0}^n\binom ni(D^is)(D^{n-i}t)
+\]
+及 $i\ne0,p$ 时 $\binom pi\equiv0\pmod p$，可知 $D^p$ 仍是 $X$ 在 $S$ 上的\Term{derivation}{导子}。于是：
+\begin{quote}
+$X$ 在 $S$ 上的\Term{derivation}{导子}\Term{algebra}{代数} $\operatorname{D\text{é}r}_{X/S}$ 是 $X$ 在 $S$ 上的\Term{differential-operator}{微分算子}所成的 $\Gamma(S,\mathcal O_S)$-\Term{algebra}{代数}中的一个\Term{p-lie-subalgebra}{$p$-Lie 子代数}。
+\end{quote}
+
+\textbf{5.2.1。}若 $\mathfrak g,\mathfrak h$ 是两个\Term{p-lie-algebra}{$p$-Lie 代数}，一个\Term{homomorphism}{同态} $h:\mathfrak g\to\mathfrak h$ 是满足
+$h([x,y])=[h(x),h(y)]$ 及 $h(x^{(p)})=h(x)^{(p)}$（$x,y\in\mathfrak g$）的 $R$-\Term{linear}{线性}映射。两个\Term{homomorphism}{同态}的复合仍是\Term{homomorphism}{同态}，因而可以谈论 $R$ 上\Term{p-lie-algebra}{$p$-Lie 代数}的\Term{category}{范畴}。
+
+若 $(X,\mathcal R)$ 是\Term{ringed-space}{赋环空间}，称 $\mathcal R$-\Term{module}{模} $\mathfrak g$ 带有 $\mathcal R$ 上的\Term{p-lie-algebra}{$p$-Lie 代数}结构，是指对每个\Term{open-subset}{开集} $U$，$\Gamma(U,\mathfrak g)$ 带有 $\Gamma(U,\mathcal R)$ 上的\Term{p-lie-algebra}{$p$-Lie 代数}结构，
+\SourcePage{479}
+且\Term{restriction}{限制}映射都是\Term{homomorphism}{同态}。
+
+\textbf{5.3。}现在研究5.2中\Term{functor}{函子} $A\mapsto A_{\mathrm{Lie}}$ 的\Term{left-adjoint}{左伴随}。设 $\mathfrak g$ 是\Term{characteristic}{特征} $p$ 的环 $R$ 上的一个\Term{p-lie-algebra}{$p$-Lie 代数}，$U(\mathfrak g)$ 是其底层\Term{lie-algebra}{Lie 代数}的\Term{enveloping-algebra}{包络代数}（参见 [BLie]，I，\S2.1），$i_{\mathfrak g}$（或简记为 $i$）是\Term{canonical}{典范}映射 $\mathfrak g\to U(\mathfrak g)$。
+
+设 $A$ 是结合的含幺 $R$-\Term{algebra}{代数}。已知对每个\Term{lie-algebra}{Lie 代数}\Term{homomorphism}{同态} $\phi:\mathfrak g\to A_{\mathrm{Lie}}$，存在唯一的含幺 $R$-\Term{algebra}{代数}\Term{homomorphism}{同态} $\psi:U(\mathfrak g)\to A$，满足 $\psi\circ i=\phi$。此外，$\phi$ 是\Term{p-lie-algebra}{$p$-Lie 代数}\Term{homomorphism}{同态}，当且仅当 $\psi$ 在 $x$ 遍历 $\mathfrak g$ 时的所有元素 $i(x)^p-i(x^{(p)})$ 上为零。
+
+\begin{SGAresult}{定义}{}
+以 $U_p^R(\mathfrak g)$ 或简记 $U_p(\mathfrak g)$ 表示 $U(\mathfrak g)$ 对元素 $i(x)^p-i(x^{(p)})$ 生成的双边\Term{ideal}{理想}的商；以 $j_{\mathfrak g}$（或简记 $j$）表示 $i:\mathfrak g\to U(\mathfrak g)$ 与\Term{canonical}{典范}映射 $U(\mathfrak g)\to U_p(\mathfrak g)$ 的复合 $\mathfrak g\to U_p(\mathfrak g)$。称 $U_p(\mathfrak g)$ 为 $\mathfrak g$ 的\Term{restricted-enveloping-algebra}{限制包络代数}。
+\end{SGAresult}
+由以上讨论得到：
+\begin{SGAresult}{命题}{}
+对任意结合的含幺 $R$-\Term{algebra}{代数}以及任意\Term{p-lie-algebra}{$p$-Lie 代数}\Term{morphism}{态射} $\phi:\mathfrak g\to A_{\mathrm{Lie}}$，存在唯一的含幺\Term{algebra}{代数}\Term{homomorphism}{同态} $\psi:U_p(\mathfrak g)\to A$，满足 $\psi\circ j=\phi$。换言之，\Term{functor}{函子} $\mathfrak g\mapsto U_p(\mathfrak g)$ 是遗忘\Term{functor}{函子} $A\mapsto A_{\mathrm{Lie}}$ 的\Term{left-adjoint}{左伴随}。
+\end{SGAresult}
+
+\textbf{5.3.1。}沿用5.3的记号，置 $\beta(x)=i(x)^p-i(x^{(p)})$。由5.1 (i) 和5.2 (i)，对任意 $y\in\mathfrak g$，有
+\[
+\begin{aligned}
+ \beta(x)i(y)&=i(y)\beta(x)+[\beta(x),i(y)]\\
+ &=i(y)\beta(x)+(\operatorname{ad}i(x))^pi(y)-i((\operatorname{ad}x)^py)\\
+ &=i(y)\beta(x).
+\end{aligned}
+\]
+因此 $\beta(x)$ 属于 $U(\mathfrak g)$ 的\Term{center}{中心}；特别地，元素 $\beta(x)$ 生成的左\Term{ideal}{理想}已经是双边\Term{ideal}{理想}。
+
+另一方面，显然 $\beta(\lambda x)=\lambda^p\beta(x)$（$\lambda\in R$），并且由5.1 (ii) 与5.2 (ii)，对 $x,y\in\mathfrak g$ 有
+\[
+ \beta(x+y)=\beta(x)+\beta(y).
+\]
+特别地，若 $(x_\alpha)$ 是 $R$-\Term{module}{模} $\mathfrak g$ 的一族\Term{generator}{生成元}，则各 $\beta(x)$ 生成的左\Term{ideal}{理想}已经由各 $\beta(x_\alpha)$ 生成。
+
+\begin{SGAresult}{命题}{5.3.2}
+\footnote{编者注（53）：本段调整了原文的顺序，先陈述结果，再详细给出证明。}
+设 $\mathfrak g$ 是 $R$-\Term{lie-algebra}{Lie 代数}，其底层 $R$-\Term{module}{模}以 $(x_\alpha)$ 为基\Term{free-module}{自由}。则 $\mathfrak g$ 上的\Term{p-lie-algebra}{$p$-Lie 代数}结构与 $\mathfrak g$ 中满足 $\operatorname{ad}y_\alpha=(\operatorname{ad}x_\alpha)^p$ 的族 $(y_\alpha)$ 一一对应。
+\end{SGAresult}
+\SourcePage{480}
+\begin{proof}
+事实上，若 $\mathfrak g$ 带有\Term{p-lie-algebra}{$p$-Lie 代数}结构 $x\mapsto x^{(p)}$，则由5.2 (i) 及 (0)、(ii)，各 $y_\alpha=x_\alpha^{(p)}$ 满足 $\operatorname{ad}y_\alpha=(\operatorname{ad}x_\alpha)^p$，且决定该\Term{p-lie-algebra}{$p$-Lie 代数}结构。
+
+反之，由于 $\mathfrak g$ 是\Term{free-module}{自由} $R$-\Term{module}{模}，根据 Poincaré--Birkhoff--Witt \Term{theorem}{定理}（参见 [BLie]，I，\S2.7），\Term{canonical}{典范}映射 $i:\mathfrak g\to U(\mathfrak g)$ 是\Term{injectivity}{单射}，故可将 $\mathfrak g$ 视为 $U(\mathfrak g)$ 的一个 $R$-子\Term{module}{模}。设 $(y_\alpha)$ 是 $\mathfrak g$ 中满足 $\operatorname{ad}y_\alpha=(\operatorname{ad}x_\alpha)^p$ 的一族元素。以 $\pi$ 表示 $R$ 到自身的映射 $r\mapsto r^p$，以 $\mathfrak g\otimes_\pi R$ 表示通过\Term{extension-of-scalars}{标量扩张} $\pi:R\to R$ 得到的 $R$-\Term{lie-algebra}{Lie 代数}。\footnote{编者注（54）：也就是说，对 $x\in\mathfrak g$、$r\in R$，有 $xr\otimes_\pi1=x\otimes_\pi r^p$ 及 $r\cdot(x\otimes_\pi1)=x\otimes_\pi r$。}
+
+存在一个 $R$-\Term{linear}{线性}映射 $\gamma:\mathfrak g\otimes_\pi R\to U(\mathfrak g)$，将 $x_\alpha\otimes_\pi1$ 映为 $x_\alpha^p-y_\alpha$。又因对任意 $x\in\mathfrak g$ 有
+\[
+ (\operatorname{ad}x_\alpha^p)(x)=(\operatorname{ad}x_\alpha)^p(x)
+ =(\operatorname{ad}y_\alpha)(x),
+\]
+$\gamma$ 将 $\mathfrak g\otimes_\pi R$ 映入 $U(\mathfrak g)$ 的\Term{center}{中心}。对任意 $x\in\mathfrak g$，置
+\[
+ x^{(p)}=x^p-\gamma(x\otimes_\pi1).
+\]
+于是对每个 $\alpha$ 都有 $x_\alpha^{(p)}=y_\alpha$。若 $x=\sum\lambda_\alpha x_\alpha$，由5.1 (ii)（对满足 $\lambda_\alpha\ne0$ 的指标个数归纳）可得
+\[
+ x^p-\sum_\alpha\lambda_\alpha^px_\alpha^p\in\mathfrak g.
+\]
+以 $z$ 表示此元素，则 $x^{(p)}=\sum\lambda_\alpha^py_\alpha+z$，从而 $x^{(p)}\in\mathfrak g$。
+
+映射 $x\mapsto x^{(p)}$ 显然满足 $(\lambda x)^{(p)}=\lambda^px^{(p)}$。此外，由于 $\gamma(x\otimes_\pi1)$ 在\Term{center}{中心}中，$\operatorname{ad}x^{(p)}=\operatorname{ad}x^p$，故由第一条 Jacobson 公式（5.1 (i)）有
+\[
+ \operatorname{ad}x^{(p)}=(\operatorname{ad}x)^p.
+\]
+最后，由第二条 Jacobson 公式（5.1 (ii)），映射 $x\mapsto x^{(p)}$ 满足5.2的条件 (ii)。因此它使 $\mathfrak g$ 成为一个\Term{p-lie-algebra}{$p$-Lie 代数}。命题得证。
+\end{proof}
+
+\begin{SGAresult}{命题}{5.3.3}
+设 $\mathfrak g$ 是 $R$ 上的\Term{p-lie-algebra}{$p$-Lie 代数}，其底层\Term{module}{模}以 $(x_\alpha)$ 为基\Term{free-module}{自由}。则映射 $j:\mathfrak g\to U_p(\mathfrak g)$ 是\Term{injectivity}{单射}，且置 $z_\alpha=j(x_\alpha)$ 后，$U_p(\mathfrak g)$ 以单项式
+\[
+ \prod_\alpha z_\alpha^{n_\alpha},\qquad 0\le n_\alpha<p
+\]
+为基（假定只有\Term{finite}{有限}个 $n_\alpha$ 非零；基带有一个\Term{totally-ordered}{全序}，乘积按递增顺序进行）。
+\end{SGAresult}
+\begin{proof}
+利用\Term{canonical}{典范}映射 $i$，将 $\mathfrak g$ 视为\Term{enveloping-algebra}{包络代数} $U(\mathfrak g)$ 的子\Term{module}{模}。对只有\Term{finite}{有限}个非零项的任意自然数族 $n=(n_\alpha)$，置
+\[
+ |n|=\sum_\alpha n_\alpha,\qquad x^n=\prod_\alpha x_\alpha^{n_\alpha}.
+\]
+\SourcePage{481}
+写成 $n_\alpha=m_\alpha+p\ell_\alpha$，其中 $0\le m_\alpha<p$，再置
+\[
+ T_n=\prod_\alpha x_\alpha^{m_\alpha}\beta(x_\alpha)^{\ell_\alpha},
+\]
+这里 $\beta(x)=x^p-x^{(p)}$ 是5.3.1定义的映射 $\mathfrak g\to U(\mathfrak g)$。
+
+对每个 $r\in\mathbf N$，以 $U_r$ 表示由满足 $|n|\le r$ 的 $x^n$ 生成的 $U(\mathfrak g)$ 的 $R$-子\Term{module}{模}。由于\Term{graded-ring}{分次环} $\bigoplus_r U_r/U_{r-1}$ 是交换的（参见 [BLie]，I，\S2.6），可见对任意 $n$ 都有
+\[
+ T_n-\prod_\alpha x_\alpha^{n_\alpha}\in U_{|n|-1}.
+\]
+对每个 $s\in\mathbf N$，由 Poincaré--Birkhoff--Witt \Term{theorem}{定理}（同上，\S2.7），满足 $|n|=s$ 的各 $x^n$ 构成 $U_s/U_{s-1}$ 的一组基，故满足 $|n|=s$ 的各 $T_n$ 也如此。
+
+因此，让 $s=|n|$ 变化，所有 $T_n$ 构成 $U(\mathfrak g)$ 的一组基。\Term{canonical}{典范}映射 $U(\mathfrak g)\to U_p(\mathfrak g)$ 的核 $J$，是由\Term{center}{中心}元素 $\beta(x_\alpha)$ 生成的 $U(\mathfrak g)$ 的左\Term{ideal}{理想}（5.3.1）。所以满足 $\ell=(\ell_\alpha)\ne0$ 的 $T_n$ 构成 $J$ 的一组基，而满足对每个 $\alpha$ 都有 $n_\alpha<p$ 的 $T_n$ 构成 $U_p(\mathfrak g)=U(\mathfrak g)/J$ 的一组基。
+\end{proof}
+
+\textbf{5.3.3 bis。}设 $\mathfrak g$ 是 $R$ 上的\Term{p-lie-algebra}{$p$-Lie 代数}，$f:R\to R'$ 是基环的一个\Term{group-extension}{扩张}。断言：$R'$-\Term{module}{模} $R'\otimes_R\mathfrak g$ 上存在唯一的\Term{p-lie-algebra}{$p$-Lie 代数}结构，使得
+\[
+ [\lambda\otimes x,\mu\otimes y]=\lambda\mu\otimes[x,y],\qquad
+ (\lambda\otimes x)^{(p)}=\lambda^p\otimes x^{(p)}.\tag{*}
+\]
+特别地，这将说明\Term{functor}{函子} $\mathfrak g\mapsto R'\otimes_R\mathfrak g$ 是“从 $R'$ 到 $R$ \Term{restriction-of-scalars}{限制标量}”的\Term{functor}{函子}的\Term{left-adjoint}{左伴随}。
+
+由 $(*)$ 定义的\Term{p-lie-algebra}{$p$-Lie 代数}结构的唯一性是显然的，下面证明存在性。当 $\mathfrak g$ 以 $(x_\alpha)$ 为基\Term{free-module}{自由}时，由5.3.2，\Term{lie-algebra}{Lie 代数} $R'\otimes_R\mathfrak g$ 上存在唯一的\Term{p-lie-algebra}{$p$-Lie 代数}结构，满足
+\[
+ (1\otimes x_\alpha)^{(p)}=1\otimes x_\alpha^{(p)};
+\]
+这正是所求的结构。
+
+对任意\Term{p-lie-algebra}{$p$-Lie 代数} $\mathfrak g$，存在一个作为 $R$-\Term{module}{模}\Term{free-module}{自由}的\Term{p-lie-algebra}{$p$-Lie 代数} $L_0$ 和一个满\Term{homomorphism}{同态} $q_0:L_0\to\mathfrak g$：例如可取 $L_0=R\otimes_{\mathbf F_p}\mathfrak g$，其中 $\mathbf F_p$ 是\Term{characteristic}{特征} $p$ 的\Term{prime-field}{素域}，取 $q_0$ 为\Term{homomorphism}{同态} $\lambda\otimes x\mapsto\lambda x$（$\mathfrak g$ 在 $\mathbf F_p$ 上是\Term{free-module}{自由}的！）。$q_0$ 的核是 $L_0$ 的一个\Term{p-ideal}{$p$-理想}，即\Term{lie-algebra}{Lie 代数} $L_0$ 中在\Term{endomorphism}{自同态} $x\mapsto x^{(p)}$ 下\Term{stable}{稳定}的\Term{ideal}{理想}；因此也存在一个作为 $R$-\Term{module}{模}\Term{free-module}{自由}的\Term{p-lie-algebra}{$p$-Lie 代数} $L_1$ 和一个像为 $\operatorname{Ker}q_0$ 的\Term{homomorphism}{同态} $q_1:L_1\to L_0$，得到\Term{exact-sequence}{正合列}
+\[
+ L_1\xrightarrow{q_1}L_0\xrightarrow{q_0}\mathfrak g\longrightarrow0.
+\]
+由此得到 $R'$-\Term{lie-algebra}{Lie 代数}的\Term{exact-sequence}{正合列}
+\[
+ R'\otimes_RL_1\xrightarrow{R'\otimes_Rq_1}R'\otimes_RL_0
+ \xrightarrow{R'\otimes_Rq_0}R'\otimes_R\mathfrak g\longrightarrow0.
+\]
+\SourcePage{482}
+由于 $R'\otimes_Rq_1$ 显然是\Term{p-lie-algebra}{$p$-Lie 代数}\Term{homomorphism}{同态}，$R'\otimes_Rq_0$ 的核是一个\Term{p-ideal}{$p$-理想}，故 $R'\otimes_RL_0$ 的\Term{symbolic-p-power}{符号 $p$ 次幂}运算通过取商诱\Term{derive}{导出} $R'\otimes_R\mathfrak g$ 到自身的映射（使用5.2的公式 (ii)）；此映射赋予 $R'\otimes_R\mathfrak g$ 所求的\Term{p-lie-algebra}{$p$-Lie 代数}结构。
+
+\textbf{5.3.4。}对基环的任意\Term{group-extension}{扩张} $R\to R'$，\Term{canonical}{典范}映射 $j_{\mathfrak g}:\mathfrak g\to U_p(\mathfrak g)$ 诱\Term{derive}{导出}\Term{homomorphism}{同态}
+\[
+ R'\otimes_Rj_{\mathfrak g}:R'\otimes_R\mathfrak g\longrightarrow R'\otimes_RU_p(\mathfrak g),
+\]
+从而得到\Term{homomorphism}{同态}
+\[
+ h:U_p(R'\otimes_R\mathfrak g)\longrightarrow R'\otimes_RU_p(\mathfrak g),
+\]
+满足 $h\circ j_{R'\otimes\mathfrak g}=R'\otimes_Rj_{\mathfrak g}$。由 $R'\otimes_R\mathfrak g$ 及\Term{restricted-enveloping-algebra}{限制包络代数}的\Term{universal-property}{泛性质}，显然 $h$ 是\Term{isomorphism}{同构}，因此今后可将 $U_p(R'\otimes_R\mathfrak g)$ 与 $R'\otimes_RU_p(\mathfrak g)$ 等同。
+
+特别地，若 $r\in R$ 且 $R'$ 是\Term{localization}{局部化}环 $R_r$，则 $\mathfrak g_r=R_r\otimes_R\mathfrak g$ \Term{canonical}{典范}地带有 $R_r$ 上的\Term{p-lie-algebra}{$p$-Lie 代数}结构，所以 $\operatorname{Spec}R$ 上的\Term{sheaf}{层} $\widetilde{\mathfrak g}$ 是 $\operatorname{Spec}R$ 上的\Term{quasi-coherent}{拟凝聚}\Term{p-lie-algebra}{$p$-Lie 代数}。此外，\Term{restricted-enveloping-algebra}{限制包络代数} $U_p^{R_r}(\mathfrak g_r)$ 等同于 $U_p^R(\mathfrak g)_r$，故\Term{presheaf}{预层} $V\mapsto U_p(\Gamma(V,\mathfrak g))$ 的\Term{adjunction}{伴随}\Term{sheaf}{层}是\Term{quasi-coherent}{拟凝聚}的。
+
+\begin{SGAresult}{定义}{}
+更一般地，若 $S$ 是\Term{characteristic}{特征} $p$ 的\Term{scheme}{概形}，$\mathcal G$ 是 $\mathcal O_S$ 上的\Term{quasi-coherent}{拟凝聚}\Term{p-lie-algebra}{$p$-Lie 代数}，则\Term{presheaf}{预层} $V\mapsto U_p(\Gamma(V,\mathcal G))$ 的\Term{adjunction}{伴随}\Term{sheaf}{层}是\Term{quasi-coherent}{拟凝聚}的；记为 $U_p(\mathcal G)$，称作 $\mathcal G$ 的\Term{restricted-enveloping-algebra}{限制包络代数}。若 $V$ 是\Term{affine}{仿射}的，则 $U_p(\Gamma(V,\mathcal G))$ 等同于 $\Gamma(V,U_p(\mathcal G))$。
+\end{SGAresult}
+
+\textbf{5.4。}$U_p(\mathfrak g)$ 的\Term{universal-property}{泛性质}表明，$U_p(\mathfrak g)$ 关于 $\mathfrak g$ 具有\Term{functorial}{函子性}：每个\Term{p-lie-algebra}{$p$-Lie 代数}\Term{homomorphism}{同态} $\phi:\mathfrak g\to\mathfrak h$ 都诱导唯一的含幺\Term{algebra}{代数}\Term{homomorphism}{同态} $U_p(\phi)$，满足 $j_{\mathfrak h}\circ\phi=U_p(\phi)\circ j_{\mathfrak g}$。以下给出几个例子。
+
+\textbf{a)} 若 $\mathfrak h=0$，则 $U_p(\mathfrak h)$ 等同于基环，$U_p(\phi)$ 是一个\Term{algebra}{代数}\Term{homomorphism}{同态} $\varepsilon_{\mathfrak g}:U_p(\mathfrak g)\to R$，称为\Term{augmentation}{增广}。
+
+\textbf{b)} 现在取 $\mathfrak h$ 为 $\mathfrak g$ 的反\Term{algebra}{代数} $\mathfrak g^\circ$，即 $\mathfrak g^\circ$ 与 $\mathfrak g$ 有相同的底层\Term{module}{模}及\Term{symbolic-p-power}{符号 $p$ 次幂}，而 $\mathfrak g^\circ$ 中两元素的\Term{lie-bracket}{括号}是其在 $\mathfrak g$ 中的\Term{lie-bracket}{括号}的相反数。显然可将 $U_p(\mathfrak g^\circ)$ 与 $U_p(\mathfrak g)$ 的反\Term{algebra}{代数}等同。又 $\mathfrak g$ 到 $\mathfrak g^\circ$ 的\Term{isomorphism}{同构} $x\mapsto-x$ 诱\Term{derive}{导出} $U_p(\mathfrak g)$ 到 $U_p(\mathfrak g^\circ)\simeq U_p(\mathfrak g)^\circ$ 的\Term{isomorphism}{同构} $c_{\mathfrak g}$。称 $c_{\mathfrak g}$ 为 $U_p(\mathfrak g)$ 的\Term{antipode}{对极映射}。
+
+\textbf{c)} 最后，设 $\mathfrak f,\mathfrak g$ 是两个\Term{p-lie-algebra}{$p$-Lie 代数}，$\mathfrak h$ 是它们的积\Term{p-lie-algebra}{$p$-Lie 代数} $\mathfrak f\times\mathfrak g$：其底层 $R$-\Term{module}{模}是\Term{direct-product}{直积} $\mathfrak f\times\mathfrak g$，\Term{lie-bracket}{括号}和\Term{symbolic-p-power}{符号 $p$ 次幂}由下式定义：
+\[
+ [(x,y),(x',y')]=([x,x'],[y,y']),\qquad
+ (x,y)^{(p)}=(x^{(p)},y^{(p)}).
+\]
+\SourcePage{483}
+若两个\Term{p-lie-algebra}{$p$-Lie 代数}\Term{homomorphism}{同态} $h_1:\mathfrak f\to\mathfrak k$ 及 $h_2:\mathfrak g\to\mathfrak k$ 满足对所有 $x\in\mathfrak f$、$y\in\mathfrak g$ 都有 $[h_1(x),h_2(y)]=0$，则映射
+$h_1+h_2:(x,y)\mapsto h_1(x)+h_2(y)$ 是\Term{p-lie-algebra}{$p$-Lie 代数}\Term{homomorphism}{同态}；反之，从 $\mathfrak f\times\mathfrak g$ 到 $\mathfrak k$ 的每个\Term{homomorphism}{同态}都具有这种\Term{form}{形式}。这样便将 $\mathfrak f\times\mathfrak g$ 刻画为一个\Term{universal-problem}{泛问题}的解。例如，映射
+\[
+ h_1:x\mapsto i_{\mathfrak f}(x)\otimes1,\qquad
+ h_2:y\mapsto1\otimes i_{\mathfrak g}(y)
+\]
+诱\Term{derive}{导出} $\mathfrak f\times\mathfrak g$ 到 $U_p(\mathfrak f)\otimes U_p(\mathfrak g)$ 的底层\Term{p-lie-algebra}{$p$-Lie 代数}的\Term{homomorphism}{同态} $h_1+h_2$。由 $\mathfrak f\times\mathfrak g$ 及\Term{restricted-enveloping-algebra}{限制包络代数}的\Term{universal-property}{泛性质}，$h_1+h_2$ 延拓为\Term{isomorphism}{同构}
+\[
+ \varphi:U_p(\mathfrak f\times\mathfrak g)\xrightarrow{\sim}
+ U_p(\mathfrak f)\otimes U_p(\mathfrak g).
+\]
+\begin{SGAresult}{定义}{}
+若 $\mathfrak f=\mathfrak g$，从 $\mathfrak g$ 到 $\mathfrak g\times\mathfrak g$ 的\Term{diagonal-map}{对角映射} $\delta:x\mapsto(x,x)$ 诱\Term{derive}{导出} $U_p(\mathfrak g)\to U_p(\mathfrak g\times\mathfrak g)$ 的\Term{homomorphism}{同态}。以 $\Delta_{\mathfrak g}$ 表示它与\Term{isomorphism}{同构} $\varphi:U_p(\mathfrak g\times\mathfrak g)\xrightarrow{\sim}U_p(\mathfrak g)\otimes U_p(\mathfrak g)$ 的复合。\footnote{编者注（55）：即对任意 $x\in\mathfrak g$ 都有 $\Delta_{\mathfrak g}(x)=x\otimes1+1\otimes x$；特别地，\Term{comultiplication}{余乘法} $\Delta_{\mathfrak g}$ 确实是\Term{cocommutative}{余交换}的……}
+\end{SGAresult}
+容易看出，$\Delta_{\mathfrak g}$ 和 $U_p(\mathfrak g)$ 的\Term{multiplication}{乘法}使 $U_p(\mathfrak g)$ 成为一个 $R$-\Term{group-coalgebra}{群余代数}（参见3.2），其\Term{augmentation}{增广}为 $\varepsilon_{\mathfrak g}$，\Term{antipode}{对极映射}为 $c_{\mathfrak g}$。
+
+\textbf{5.5。}\footnote{编者注（56）：原本的5.4.1改为本5.5：一方面，命题5.5.1汇集第5节及命题3.2.3的结果，并包含原本的\Term{lemma}{引理}7.3；另一方面，5.5.3 (ii) 的证明是下文\Term{theorem}{定理}7.4中蕴涵 (i)$\Rightarrow$(ii) 的证明的详细展开。}
+现在设 $S$ 是\Term{characteristic}{特征} $p$ 的\Term{scheme}{概形}。首先，若 $\mathcal U$ 是一个 $\mathcal O_S$-\Term{group-coalgebra}{群余代数}，$G$ 是 $S$-\Term{group-functor}{群函子} $\operatorname{Spec}^*\mathcal U$，则已知（3.2.3），对每个 $T\to S$，$(\operatorname{Lie}G)(T)$ 是 $\Gamma(T,\mathcal U_T)$ 中由\Term{primitive-element}{本原元素}组成的子\Term{lie-algebra}{Lie 代数}。若 $x$ 是这样的元素，则
+$\Delta(x^p)=x^p\otimes1+1\otimes x^p$（因为对 $0<i<p$ 有 $\binom pi=0\pmod p$），即 $x^p$ 仍是\Term{primitive-element}{本原元素}。所以，由5.1和5.2，映射 $x\mapsto x^p$ 赋予 $(\operatorname{Lie}G)(T)$ 一个 $\mathcal O(T)$-\Term{p-lie-algebra}{$p$-Lie 代数}结构。
+
+现在设 $\mathcal L$ 是 $\mathcal O_S$ 上的\Term{quasi-coherent}{拟凝聚}\Term{p-lie-algebra}{$p$-Lie 代数}。当 $V$ 遍历 $S$ 的\Term{open-subset}{开集}时，上述\Term{set}{集合} $U_p(\Gamma(V,\mathcal L))$ 上的\Term{group-coalgebra}{群余代数}结构，在其\Term{adjunction}{伴随}\Term{sheaf}{层}，即\Term{restricted-enveloping-algebra}{限制包络代数} $U_p(\mathcal L)$ 上诱导一个 $\mathcal O_S$-\Term{group-coalgebra}{群余代数}结构。此外，对每个 $S$-\Term{scheme}{概形} $T$，有\Term{isomorphism}{同构} $U_p(\mathcal L_T)\xrightarrow{\sim}U_p(\mathcal L)_T$。
+
+以 $\operatorname{Prim}U_p(\mathcal L)$ 表示 $U_p(\mathcal L)$ 的如下子\Term{presheaf}{预层}：它将每个\Term{open-subset}{开集} $V$ 对应于 $U_p(\mathcal L)(V)$ 中\Term{primitive-element}{本原元素}的\Term{set}{集合}；容易看出它是一个\Term{sheaf}{层}。当 $V$ 遍历 $S$ 的\Term{open-subset}{开集}时，复合映射
+\[
+ \Gamma(V,\mathcal L)\xrightarrow{j}\operatorname{Prim}U_p(\Gamma(V,\mathcal L))
+ \longrightarrow\operatorname{Prim}U_p(\mathcal L)(V)
+\]
+\SourcePage{484}
+定义一个\Term{morphism}{态射} $\mathcal L\to\operatorname{Prim}U_p(\mathcal L)$，仍记为 $j$ 或 $j_{\mathcal L}$；它又定义一个 $\mathcal O_S$-\Term{p-lie-algebra}{$p$-Lie 代数}\Term{morphism}{态射}
+$\mathbf W(\mathcal L)\to\operatorname{Prim}\mathbf W(U_p(\mathcal L))$（参见3.2.3）。
+
+\begin{SGAresult}{命题}{5.5.1}
+设 $\mathcal L$ 是 $\mathcal O_S$-\Term{p-lie-algebra}{$p$-Lie 代数}，作为 $\mathcal O_S$-\Term{module}{模}是\Term{locally-free}{局部自由}的。则 $j_{\mathcal L}$ 诱导一个 $\mathcal O_S$-\Term{p-lie-algebra}{$p$-Lie 代数}\Term{isomorphism}{同构}
+\[
+ \mathbf W(\mathcal L)\xrightarrow{\sim}\operatorname{Prim}\mathbf W(U_p(\mathcal L)).
+\]
+\end{SGAresult}
+\begin{proof}
+设 $T$ 是 $S$-\Term{scheme}{概形}。考虑到等同 $U_p(\mathcal L_T)=U_p(\mathcal L)_T$，需证明映射
+$\Gamma(T,\mathcal L_T)\to\operatorname{Prim}\Gamma(T,U_p(\mathcal L_T))$ 是\Term{bijection}{双射}。将 $S$ 换为 $T$，便归结为 $T=S$ 的情形，此时只需证明\Term{sheaf}{层}\Term{morphism}{态射} $j_{\mathcal L}:\mathcal L\to\operatorname{Prim}U_p(\mathcal L)$ 是\Term{isomorphism}{同构}。这个问题在 $S$ 上是\Term{local-scheme}{局部}的，因此可假设 $S$ 是环为 $R$ 的\Term{affine}{仿射}\Term{scheme}{概形}，$\mathcal L$ 是一个以 $(x_\alpha)$ 为基的 $R$-\Term{p-lie-algebra}{$p$-Lie 代数} $L$ 的\Term{adjunction}{伴随}\Term{sheaf}{层}。如5.3.3，记 $x_\alpha$ 在 $U=U_p(L)$ 中的像为 $z_\alpha$；对仅有\Term{finite}{有限}个非零项、且每项介于 $0$ 和 $p-1$ 之间的整数族 $n=(n_\alpha)$，以 $z^{(n)}$ 表示乘积
+\[
+ \prod_\alpha\frac{z_\alpha^{n_\alpha}}{n_\alpha!}
+\]
+（假定基 $(x_\alpha)$ 带有一个\Term{totally-ordered}{全序}，且乘积按递增顺序进行）。
+
+由于 $\Delta(z_\alpha)=z_\alpha\otimes1+1\otimes z_\alpha$，容易看出
+\[
+ \Delta(z^{(n)})=\sum_r z^{(n-r)}\otimes z^{(r)},
+\]
+其中对满足所有 $\alpha$ 都有 $0\le r_\alpha\le n_\alpha$ 的 $r$ 所成的（\Term{finite}{有限}！）\Term{set}{集合}求和。各 $z^{(n)}$（相应地，各 $z^{(n)}\otimes z^{(m)}$）是 $U$（相应地，$U\otimes U$）的一组基，故 $u\in U$ 满足 $\Delta(u)=u\otimes1+1\otimes u$，当且仅当 $u$ 是各 $z_\alpha$ 的\Term{linear}{线性}组合。这就证明了5.5.1。
+\end{proof}
+
+\begin{SGAresult}{注记}{5.5.2}
+回顾（参见3.2.2及3.2.3），$S$-\Term{group-functor}{群函子} $G=\operatorname{Spec}^*U_p(\mathcal L)$ 是\Term{very-good-group}{很好群}，且
+$\operatorname{Lie}(G)=\operatorname{Prim}\mathbf W(U_p(\mathcal L))$。故上一命题就是说，$j_{\mathcal L}$ 诱导一个\Term{isomorphism}{同构} $\mathbf W(\mathcal L)\xrightarrow{\sim}\operatorname{Lie}(G)$。
+
+若再假定 $\mathcal L$ 是\Term{finite-rank}{有限秩}\Term{locally-free}{局部自由} $\mathcal O_S$-\Term{module}{模}，则由5.3.3，$U_p(\mathcal L)$ 在 $\mathcal O_S$ 上\Term{finite}{有限}\Term{locally-free}{局部自由}，因此 $\operatorname{Spec}^*U_p(\mathcal L)$ 由 $S$-\Term{group}{群} $G_p(\mathcal L)=\operatorname{Spec}U_p(\mathcal L)^*$ 表示（参见3.2.2.1），并得到以下更精确的命题。
+\end{SGAresult}
+
+\begin{SGAresult}{命题}{5.5.3}
+设 $\mathcal L$ 是 $\mathcal O_S$-\Term{p-lie-algebra}{$p$-Lie 代数}，作为 $\mathcal O_S$-\Term{module}{模}是\Term{finite-rank}{有限秩}\Term{locally-free}{局部自由}的。令 $\mathcal A=U_p(\mathcal L)^*$，$G=G_p(\mathcal L)$ 为\Term{affine}{仿射} $S$-\Term{group}{群} $\operatorname{Spec}\mathcal A$。
+
+(i) $j_{\mathcal L}$ 诱导一个 $\mathcal O_S$-\Term{p-lie-algebra}{$p$-Lie 代数}\Term{isomorphism}{同构} $\mathbf W(\mathcal L)\xrightarrow{\sim}\operatorname{Lie}(G)$。
+
+(ii) 设 $\mathcal I$ 是 $\mathcal A$ 的\Term{augmentation-ideal}{增广理想}，$\omega_G=\mathcal I/\mathcal I^2$（参见第 II 讲4.11.4）。则 $\omega_G$ 等同于
+$\mathcal L^*=\mathcal Hom_{\mathcal O_S}(\mathcal L,\mathcal O_S)$，因而是一个\Term{finite-rank}{有限秩}\Term{locally-free}{局部自由} $\mathcal O_S$-\Term{module}{模}（且 $\omega_{G/S}^*=\mathcal L$）。
+\end{SGAresult}
+\SourcePage{485}
+\begin{proof}
+(i) 由5.5.2得到，下面证明 (ii)。以 $\eta_{\mathcal U},\varepsilon_{\mathcal U}$ 表示 $\mathcal U=U_p(\mathcal L)$ 的\Term{unit-section}{单位截面}和\Term{augmentation}{增广}，$\eta_{\mathcal A},\varepsilon_{\mathcal A}$ 表示 $\mathcal A$ 的相应映射，令 $\mathcal J=\operatorname{Ker}\varepsilon_{\mathcal U}$。于是
+\[
+ \mathcal U=\eta_{\mathcal U}(\mathcal O_S)\oplus\mathcal J.\tag{1}
+\]
+以下图定义\Term{morphism}{态射} $\delta$，其中 $\tau$ 和 $\pi$ 是\Term{resolution}{分解} (1) 给出的包含映射和\Term{projection}{投影}：
+\[
+\begin{tikzcd}
+ \mathcal J\arrow[r,"\delta"]\arrow[d,"\tau"']&\mathcal J\otimes\mathcal J\\
+ \mathcal U\arrow[r,"\Delta"']&\mathcal U\otimes\mathcal U\arrow[u,"\pi"']
+\end{tikzcd}
+\]
+于是有\Term{exact-sequence}{正合列}
+\[
+ 0\longrightarrow\mathcal L^*\xrightarrow{j_{\mathcal L}}\mathcal J
+ \xrightarrow{\delta}\mathcal J\otimes\mathcal J.\tag{*}
+\]
+此外，由5.3.3，$\mathcal O_S$-\Term{module}{模} $\mathcal J/\mathcal L$ 是\Term{locally-free}{局部自由}的；由5.5.1，列 $(*)$ 在任意\Term{base-change}{基变换}后仍然\Term{exact}{正合}。因此由 [BAC]，II，\S3，命题6，$\delta$ 将 $\mathcal J/\mathcal L$ \Term{isomorphism}{同构}地映到 $\mathcal J\otimes\mathcal J$ 的一个\Term{local-scheme}{局部}\Term{direct-summand}{直和因子}子\Term{module}{模} $Q$ 上。所以 $(*)$ 经\Term{duality}{对偶}给出\Term{exact-sequence}{正合列}
+\[
+ 0\longleftarrow\mathcal L^*\xleftarrow{{}^tj_{\mathcal L}}\mathcal I
+ \xleftarrow{{}^t\delta}\mathcal I\otimes\mathcal I.\tag{**}
+\]
+\Term{resolution}{分解} (1) 经\Term{duality}{对偶}对应于\Term{resolution}{分解}
+\[
+ \mathcal A=\eta_{\mathcal A}(\mathcal O_S)\oplus\mathcal I,\tag{2}
+\]
+且 $\Delta$ 的\Term{transpose}{转置}是\Term{multiplication}{乘法} $m_{\mathcal A}:\mathcal A\otimes\mathcal A\to\mathcal A$。由于 $\mathcal I$ 是 $\mathcal A$ 的\Term{ideal}{理想}，$m_{\mathcal A}$ 将 $\mathcal I\otimes\mathcal I$ 映入 $\mathcal I$；更精确地，考虑\Term{resolution}{分解} (2)，有\Term{commutative-square}{交换方块}
+\[
+\begin{tikzcd}
+ \mathcal I&\mathcal I\otimes\mathcal I\arrow[l,"m'"']\\
+ \mathcal A\arrow[u,"{}^t\tau"]&\mathcal A\otimes\mathcal A\arrow[l,"m_{\mathcal A}"]\arrow[u,"{}^t\pi"']
+\end{tikzcd}
+\]
+这表明 $m_{\mathcal A}$ 在 $\mathcal I\otimes\mathcal I$ 上的\Term{restriction}{限制} $m'$ 是 $\delta$ 的\Term{transpose}{转置}。于是\Term{exact-sequence}{正合列} $(**)$ 给出 $\mathcal I/\mathcal I^2\simeq\mathcal L^*$，命题随之得到。
+\end{proof}
+
+\SGAsection{6}{$S$-群概形的 $p$-Lie 代数}
+设 $S$ 是\Term{characteristic}{特征} $p>0$ 的\Term{scheme}{概形}。在5.5中，对每个\Term{quasi-coherent}{拟凝聚} $\mathcal O_S$-\Term{p-lie-algebra}{$p$-Lie 代数} $\mathcal L$，我们构造了 $S$-\Term{group-functor}{群函子} $G_p(\mathcal L)=\operatorname{Spec}^*U_p(\mathcal L)$。现在将说明，对每个 $S$-\Term{group-scheme}{群概形} $G$，第 II 讲4.11定义的 $\mathcal O_S$-\Term{lie-algebra}{Lie 代数} $\operatorname{Lie}(G/S)$ 自然带有 $\mathcal O_S$-\Term{p-lie-algebra}{$p$-Lie 代数}结构。
+\SourcePage{486}
+\textbf{6.1。}先利用2.5的\Term{injectivity}{单射} $\alpha,\beta$，分别将 $\operatorname{Lie}(G/S)(S)$ 及 $\operatorname{Lie}(\operatorname{Aut}G/S)(S)$ 视为 $U(G)$ 及 $\operatorname{Dif}_{G/S}$ 的子\Term{lie-algebra}{Lie 代数}；于是 $\operatorname{Lie}(\operatorname{Aut}G/S)(S)$ 等同于 $\mathcal O_G$ 的 $S$-\Term{derivation}{导子}所成的 $\Gamma(\mathcal O_S)$-\Term{lie-algebra}{Lie 代数}。由5.2，后者是 $\operatorname{Dif}_{G/S}$ 的\Term{p-lie-subalgebra}{$p$-Lie 子代数}。
+
+另一方面，$L=\operatorname{Lie}(G/S)(S)$ 在\Term{injectivity}{单射}\Term{algebra}{代数}\Term{morphism}{态射}
+$\ell:U(G)\to\operatorname{Dif}_{G/S}$，$d\mapsto{}^Gd$ 下的像，由\Term{left-invariant}{左不变}\Term{derivation}{导子}组成（参见2.2、编者注（17）、2.4及2.5）。若 $x\in L$，则由上述各处，$\ell(x)^p$ 就是 $\ell(x^p)$。由于 $\ell(x)^p$ 仍是\Term{derivation}{导子}，$x^p$ 属于 $\operatorname{Lie}(G/S)(S)$。因此：\footnote{编者注（57）：也可以直接证明（不经过 $\operatorname{Dif}_{G/S}$），$G$ 在原点处的\Term{derivation}{导子}所成的\Term{lie-algebra}{Lie 代数}（由2.5，它\Term{isomorphism}{同构}于 $\operatorname{Lie}(G/S)(S)$）在 $U(G)$ 中的取 $p$ 次幂运算下\Term{stable}{稳定}：这将在下文6.2中完成。}
+\begin{quote}
+$\operatorname{Lie}(G/S)(S)$ 是\Term{infinitesimal-algebra}{无穷小代数} $U(G)$ 的\Term{p-lie-subalgebra}{$p$-Lie 子代数}。
+\end{quote}
+
+\textbf{6.1.1。}设 $\phi:G\to H$ 是 $S$-\Term{group-scheme}{群概形}\Term{homomorphism}{同态}。显然，\Term{homomorphism}{同态} $\operatorname{Lie}(\phi/S)(S)$ 和 $U(\phi)$ 与将 $\operatorname{Lie}(G/S)(S)$、$\operatorname{Lie}(H/S)(S)$ 视为 $U(G)$、$U(H)$ 的\Term{p-lie-subalgebra}{$p$-Lie 子代数}的上述等同相容。由于 $U(\phi)$ 是\Term{algebra}{代数}\Term{homomorphism}{同态}，可见 $\operatorname{Lie}(\phi/S)(S)$ 是\Term{p-lie-algebra}{$p$-Lie 代数}\Term{homomorphism}{同态}。
+
+同样，若 $s:T\to S$ 是\Term{base-change}{基变换}，由 $s$ 诱导的 $\operatorname{Lie}(G/S)(S)\to\operatorname{Lie}(G/S)(T)$ 的映射是\Term{p-lie-algebra}{$p$-Lie 代数}\Term{homomorphism}{同态}。这也可以表述为：\Term{functor}{函子} $\operatorname{Lie}(G/S)$ 带有 $\mathcal O_S$-\Term{p-lie-algebra}{$p$-Lie 代数}结构。特别地，让 $T$ 遍历 $S$ 的\Term{open-subset}{开集}，可见\Term{sheaf}{层} $\mathscr{L}\mathrm{ie}(G/S)$ 带有 $\mathcal O_S$-\Term{p-lie-algebra}{$p$-Lie 代数}结构。
+
+\textbf{6.2。}遵循 Demazure 的一个想法，现在把上述结果推广到某些未必\Term{representable}{可表示}的 $S$-\Term{group-functor}{群函子}。为此，先给出 $S$-\Term{group-scheme}{群概形} $G$ 的\Term{lie-algebra}{Lie 代数}中\Term{symbolic-p-power}{符号 $p$ 次幂}的另一个定义。
+
+设 $D$ 是 $G$ 在原点处的\Term{derivation}{导子}；\footnote{编者注（58）：以下详细展开了原文。}由1.2.1，$D$ 是\Term{zero-section}{零截面} $\tau:S\to I_S$ 的 $S$-\Term{derivation}{导子} $\delta=(\tau,\partial_t)$ 与一个满足 $x\circ\tau=\varepsilon$ 的\Term{morphism}{态射} $x:I_S\to G$ 的复合（即 $x\in\operatorname{Lie}(G/S)(S)$）。由2.1给出的定义，$D^p$ 是下列复合\Term{deviation}{偏差}：
+\[
+ \underbrace{S\simeq S\times S\times\cdots\times S}_{p}
+ \xrightarrow{\delta\times\cdots\times\delta}I_S\times\cdots\times I_S
+ \xrightarrow{x\times\cdots\times x}G\times\cdots\times G
+ \xrightarrow{m^{(p)}}G,
+\]
+其中 $m^{(p)}$ 是\Term{multiplication}{乘法} $m:G\times G\to G$ 诱导的\Term{morphism}{态射}。$I_S\times\cdots\times I_S$ 在 $S$ 上是\Term{affine}{仿射}的，其\Term{affine-algebra}{仿射代数}为
+$\mathcal B=\mathcal O_S[d_1,\ldots,d_p]/(d_1^2,\ldots,d_p^2)$，故\Term{deviation}{偏差} $\delta\times\cdots\times\delta$ 由 $\mathcal O_S$-\Term{module}{模}\Term{morphism}{态射}
+\[
+ \varphi:\mathcal B\longrightarrow\mathcal O_S
+\]
+定义：它将单项式 $d_1d_2\cdots d_p$ 映为 $1$，将其余单项式 $d_{i_1}\cdots d_{i_r}$（$0\le r<p$）映为 $0$。另一方面，以 $\operatorname{pr}_i$ 表示 $I_S^p$ 到第 $i$ 个因子的\Term{projection}{投影}，以 $x_i$ 表示 $x$ 经 $G(\operatorname{pr}_i)$ 在 $G(I_S^p)$ 中的像，
+\SourcePage{487}
+则复合\Term{morphism}{态射} $m^{(p)}\circ(x\times\cdots\times x)$ 就是乘积 $x_1x_2\cdots x_p$。所以 $D^p$ 也是下列复合\Term{deviation}{偏差}：
+\[
+ S\xrightarrow{\delta\times\cdots\times\delta}I_S\times\cdots\times I_S
+ \xrightarrow{x_1x_2\cdots x_p}G.
+\]
+这一描述使我们能够重新证明 $D^p$ 是 $G$ 在原点处的\Term{derivation}{导子}。事实上，由于 $G$ 是\Term{very-good-group}{很好群}（第 II 讲4.11），$x$ 在 $G(I_S\times I_S)$ 中的像 $G(\operatorname{pr}_1)(x)$ 与 $G(\operatorname{pr}_2)(x)$ 彼此交换。因此 $G(I_S^p)$ 中的元素 $x_i$ 两两交换，从而对 $I_S^p$ 的因子的每个置换 $\gamma$ 都有
+$(x_1\cdots x_p)\circ\gamma=x_1\cdots x_p$；故 $x_1\cdots x_p$ 通过 $I_S^p$ 到\Term{symmetric-product}{对称积} $\Sigma^pI_S$ 的\Term{canonical}{典范}\Term{projection}{投影}\Term{resolution}{分解}（参见4.2）。
+
+\Term{symmetric-product}{对称积} $\Sigma^pI_S$ 的\Term{affine-algebra}{仿射代数}为 $\mathcal B$ 的子\Term{algebra}{代数} $\mathcal A$，它以 $d_1,\ldots,d_p$ 的初等\Term{symmetric-function}{对称函数} $1=\sigma_0,\sigma_1,\ldots,\sigma_p$ 为 $\mathcal O_S$ 上的一组基。以 $\kappa$ 表示包含映射 $\mathcal A\hookrightarrow\mathcal B$，以 $\pi$ 表示将 $\sigma_1,\ldots,\sigma_{p-1}$ 映为零、将 $\sigma_p$ 映为 $t$ 的 $\mathcal O_S$-\Term{algebra}{代数}\Term{morphism}{态射} $\mathcal A\to\mathcal O_S[t]/(t^2)$；则 $\varphi\circ\kappa=\partial_t\circ\pi$（回顾，$\partial_t:\mathcal O_S[t]/(t^2)\to\mathcal O_S$ 是将 $1$ 映为零、将 $t$ 映为 $1$ 的 $\mathcal O_S$-\Term{module}{模}\Term{morphism}{态射}）。因此，若以 $i$ 表示 $\pi$ 定义的\Term{closed-immersion}{闭浸入} $I_S\hookrightarrow\Sigma^pI_S$，则有\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}[column sep=large]
+ S\arrow[r,"\delta\times\cdots\times\delta"]\arrow[d,"\delta"']\arrow[rr,bend left=25,"D^p"]
+ &I_S^p\arrow[r,"x_1\cdots x_p"]\arrow[d,"\mathrm{can.}"]&G\\
+ I_S\arrow[r,"i"']&\Sigma^pI_S\arrow[ur,"y"']
+\end{tikzcd}
+\]
+可见 $D^p$ 具有 $y\circ\delta$ 的\Term{form}{形式}，因而确实是 $G$ 在原点处的\Term{derivation}{导子}。
+
+\textbf{6.3。}设 $\mathfrak S_p$ 是 $p$ 阶对称\Term{group}{群}，$I_S^p\times\mathfrak S_p$ 是以 $\mathfrak S_p$ 为指标的一族 $I_S^p$ 的副本的\Term{direct-sum}{直和}。以 $\pi:I_S^p\times\mathfrak S_p\to I_S^p$ 表示\Term{canonical}{典范}\Term{projection}{投影}，以
+\[
+ \mu:I_S^p\times\mathfrak S_p\longrightarrow I_S^p
+\]
+表示定义 $\mathfrak S_p$ 在 $I_S^p$ 上的\Term{group-action}{作用}的\Term{morphism}{态射}（即若 $\tau\in\mathfrak S_p$，则 $\mu$ 在 $I_S^p\times\tau$ 上的\Term{restriction}{限制}的第 $j$ 个\Term{set-component}{分量}是 $\operatorname{pr}_{\tau(j)}$）。作如下定义。
+\begin{SGAresult}{定义}{}
+称\Term{functor}{函子} $X:(\mathrm{Sch}/S)^\circ\to(\mathrm{Ens})$ 满足条件 (F)，若：
+
+ a) $X$ 将\Term{finite}{有限}\Term{direct-sum}{直和}变成\Term{direct-product}{直积}；
+
+ b) 对每个 $S$-\Term{scheme}{概形} $T$，下列列\Term{exact}{正合}：
+\[
+ X(T\times\Sigma^pI_S)\longrightarrow X(T\times I_S^p)
+ \mathrel{\substack{\xrightarrow{\quad X(\operatorname{id}_T\times\pi)\quad}\\[-.6ex]
+ \xrightarrow[\quad X(\operatorname{id}_T\times\mu)\quad]{}}}
+ X(T\times I_S^p\times\mathfrak S_p).
+\]
+\end{SGAresult}
+每个 $S$-\Term{scheme}{概形}都满足 (F)；若 $\mathcal F$ 是 $\mathcal O_S$-\Term{module}{模}，则 $\mathbf W(\mathcal F)$ 满足 (F)；满足 (F) 的\Term{functor}{函子}的任意\Term{inverse-limit}{投射极限}仍满足 (F)；若 $Y$ 满足 (F)，$X$ 是任意 $S$-\Term{functor}{函子}，则 $\operatorname{Hom}_S(X,Y)$ 满足 (F)。
+
+\SourcePage{488}
+设 $X$ 是满足条件 (F) 的\Term{very-good-group}{很好群}（第 II 讲4.10）。以 $x:I_S\to X$ 表示延拓 $X$ 的\Term{unit-section}{单位截面}的一个\Term{morphism}{态射}，沿用6.2的记号，由上面的论证可见 $x_1\cdots x_p:I_S^p\to X$ 通过 $\Sigma^pI_S$ \Term{resolution}{分解}：
+\[
+\begin{tikzcd}
+ I_S^p\arrow[rr,"x_1\cdots x_p"]\arrow[dr,"\mathrm{can.}"']&&X\\
+ &\Sigma^pI_S\arrow[ur,"\Sigma^p(x)"']
+\end{tikzcd}
+\]
+并通过复合定义一个\Term{morphism}{态射}
+\[
+ x^{(p)}:I_S\xrightarrow{i}\Sigma^pI_S\xrightarrow{\Sigma^p(x)}X,
+\]
+称之为 $x$ 的\Term{symbolic-p-power}{符号 $p$ 次幂}。
+
+$\operatorname{Lie}(G/S)(S)$ 的\Term{endomorphism}{自同态} $x\mapsto x^{(p)}$ 显然与\Term{base-change}{基变换}相容，并且关于 $G$ 具有\Term{functorial}{函子性}。对哪些 $G$，这一\Term{endomorphism}{自同态}使 $\operatorname{Lie}(G/S)(S)$ 成为\Term{p-lie-algebra}{$p$-Lie 代数}，是一个值得研究的问题。
+
+\textbf{6.4。}刚给出的\Term{symbolic-p-power}{符号 $p$ 次幂}的最后这个定义特别适于计算。下面给出一些例子。
+
+\textbf{6.4.1。}设 $M$ 是一个“抽象”阿贝尔\Term{group}{群}，$D_S(M)$ 是类型为 $M$ 的\Term{diagonalizable-group}{可对角化} $S$-\Term{group}{群}（第 I 讲4.4.2）。因此对每个 $S$-\Term{scheme}{概形} $T$，有
+\[
+ D_S(M)(T)=\operatorname{Hom}_{(\mathrm{Ab})}(M,\mathcal O(T)^\times).
+\]
+设 $x\in\operatorname{Lie}(D_S(M)/S)(S)$，也就是说，$x$ 是具有 $m\mapsto1+d\xi(m)$ \Term{form}{形式}的阿贝尔\Term{group}{群}\Term{homomorphism}{同态}
+\[
+ M\xrightarrow{x}\Gamma(S,\mathcal O_S+d\mathcal O_S)^\times,
+\]
+其中 $\xi\in\operatorname{Hom}_{(\mathrm{Ab})}(M,\mathcal O(S))$。使用6.2及6.3的记号，乘积 $x_1\cdots x_p$ 将 $m\in M$ 对应于表达式
+\[
+ (1+d_1\xi(m))\cdots(1+d_p\xi(m)),
+\]
+即 $1+\sigma_1\xi(m)+\sigma_2\xi(m)^2+\cdots+\sigma_p\xi(m)^p$。
+
+这个表达式确实属于 $\mathcal O(\Sigma^pI_S)$。将 $\sigma_1,\ldots,\sigma_{p-1}$ 映为零、$\sigma_p$ 映为 $d$，把它\Term{projection}{投影}到 $\mathcal O(S)[d]/(d^2)$ 中，可见 $x^{(p)}$ 是从 $M$ 到 $\Gamma(S,\mathcal O_S+d\mathcal O_S)^\times$ 的如下\Term{homomorphism}{同态}：
+\[
+ m\longmapsto1+d\xi(m)^p.
+\]
+综上，若如第 II 讲5.1将 $\operatorname{Lie}(D_S(M)/S)(S)$ 与 $\operatorname{Hom}_{(\mathrm{Ab})}(M,\mathcal O(S))$ 等同，则\Term{symbolic-p-power}{符号 $p$ 次幂}将 $\xi$ 对应于\Term{homomorphism}{同态} $\xi^{(p)}:m\mapsto\xi(m)^p$。
+
+\textbf{6.4.2。}设 $\mathcal F$ 是 $\mathcal O_S$-\Term{module}{模}，$G$ 是阿贝尔 $S$-\Term{group-functor}{群函子} $\mathbf W(\mathcal F)$（参见第 I 讲4.6）。设 $y\in\mathbf W(\mathcal F)(S)=\Gamma(S,\mathcal F)$，$y'$ 是它经 $\mathbf W(\mathcal F)(I_S\to S)$ 在 $\mathbf W(\mathcal F)(I_S)$ 中的像。
+
+已知（参见第 II 讲4.4.2及4.5.1），映射 $y\mapsto dy'$ 是从 $\mathbf W(\mathcal F)(S)$ 到 $\operatorname{Lie}(\mathbf W(\mathcal F)/S)(S)$ 的 $\mathcal O(S)$-\Term{module}{模}\Term{isomorphism}{同构}。置 $x=dy'$，则6.2中的量 $x_i$
+\SourcePage{489}
+就是 $d_iy''$，其中 $y''$ 是 $y'$ 在 $\mathbf W(\mathcal F)(I_S^p)$ 中的\Term{canonical}{典范}像。\footnote{编者注（59）：已将 $x$ 改为 $y'$。}因此，这里的乘积 $x_1\cdots x_p$ 等于
+\[
+ x_1+\cdots+x_p=(d_1+\cdots+d_p)y''=\sigma_1y'',
+\]
+且属于 $\mathbf W(\mathcal F)(\Sigma^pI_S)$。由于定义6.1中\Term{morphism}{态射} $i$ 的\Term{homomorphism}{同态} $\mathcal O(\Sigma^pI_S)\to\mathcal O(I_S)$ 将 $\sigma_1$ 映为零，可见 $x^{(p)}=0$。所以：
+\begin{quote}
+对每个 $\mathcal O_S$-\Term{module}{模} $\mathcal F$，$\operatorname{Lie}\mathbf W(\mathcal F)$ 中的运算 $x\mapsto x^{(p)}$ 为零。
+\end{quote}
+
+\textbf{6.4.3。}设 $X$ 是 $S$-\Term{scheme}{概形}，$G$ 是 $S$-\Term{group-functor}{群函子} $\operatorname{Aut}_SX$，$D$ 是\Term{structure-sheaf}{结构层} $\mathcal O_X$ 的 $S$-\Term{derivation}{导子}。由1.5，$D$ 可视为 $X_{I_S}$ 的一个在 $X$ 上诱导恒等的 $I_S$-\Term{automorphism}{自同构} $x$，它可作如下描述。若 $f$ 是形如 $a+bd$ 的 $\mathcal O_S[d]/(d^2)$ 的\Term{section}{截面}，置 $D_{I_S}f=Da+(Db)d$；换言之，$D_{I_S}$ 是 $D$ 经\Term{base-change}{基变换} $I_S\to S$ 所得。那么上述 $X_{I_S}$ 的\Term{automorphism}{自同构}对应于 $\mathcal O_S[d]/(d^2)$ 的\Term{endomorphism}{自同态}
+\[
+ f\longmapsto f+(D_{I_S}f)d=a+(D(a)+b)d.
+\]
+同样，以 $D_{I_S^p}$ 表示 $D$ 经\Term{base-change}{基变换} $I_S^p\to S$ 得到的 $X_{I_S^p}$ 的\Term{differential-operator}{微分算子}。依6.2的记号，$X_{I_S^p}$ 的\Term{automorphism}{自同构} $x_i$ 对应于 $\mathcal O_S[d_1,\ldots,d_p]/(d_1^2,\ldots,d_p^2)$ 的\Term{endomorphism}{自同态} $f\mapsto f+(D_{I_S^p}f)d_i$。故乘积 $x_1\cdots x_p$ 对应于\Term{endomorphism}{自同态}
+\[
+ (1+d_1D_{I_S^p})(1+d_2D_{I_S^p})\cdots(1+d_pD_{I_S^p}),
+\]
+即 $1+\sigma_1D_{I_S^p}+\sigma_2D_{I_S^p}^2+\cdots+\sigma_pD_{I_S^p}^p$。
+
+$\sigma_p$ 的系数为 $D_{I_S^p}^p$，这说明\Term{lie-algebra}{Lie 代数}\Term{isomorphism}{同构}
+$\operatorname{D\text{é}r}_S(\mathcal O_X)\xrightarrow{\sim}\operatorname{Lie}(\operatorname{Aut}_SX)$，$D\mapsto x$（参见1.5），也是\Term{p-lie-algebra}{$p$-Lie 代数}\Term{isomorphism}{同构}。
+
+\textbf{6.4.4。}用同样的方法可见，对每个 $\mathcal O_S$-\Term{module}{模} $\mathcal F$，\Term{lie-algebra}{Lie 代数}\Term{isomorphism}{同构}（参见第 II 讲4.8）
+\[
+ \operatorname{Lie}(\operatorname{Aut}_{\mathcal O_S\text{-mod.}}\mathbf W(\mathcal F)/S)(S)
+ \xrightarrow{\sim}(\operatorname{End}_{\mathcal O_S\text{-mod.}}\mathbf W(\mathcal F))(S)
+\]
+也是\Term{p-lie-algebra}{$p$-Lie 代数}\Term{isomorphism}{同构}。
+
+\textbf{6.4.5。}\footnote{编者注（60）：增加了编号6.4.5，并详细展开了原文。}
+设 $\mathcal U$ 是 $\mathcal O_S$-\Term{group-coalgebra}{群余代数}，$G$ 是 $S$-\Term{group-functor}{群函子} $\operatorname{Spec}^*\mathcal U$，假设 $G$ \Term{representable}{可表示}。此时，对每个 $T\to S$，5.5与6.1.1在 $L(T)=\operatorname{Lie}(G)(T)$ 上定义了两个\Term{p-lie-algebra}{$p$-Lie 代数}结构。由于有\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}
+ L(T)\arrow[r,hook,"\tau"]\arrow[d,hook,"\alpha"']\arrow[dr,"i"]&\Gamma(T,\mathcal U_T)\\
+ U(G_T)&U(L(T))\arrow[l,"\phi"]\arrow[u,"\psi"']
+\end{tikzcd}
+\]
+\SourcePage{490}
+其中 $U(L(T))$ 是 $L(T)$ 的\Term{enveloping-algebra}{包络代数}，$\phi,\psi$ 是由 $\alpha,\tau$ 诱导的\Term{algebra}{代数}\Term{morphism}{态射}，可见这两个\Term{p-lie-algebra}{$p$-Lie 代数}结构相同：若将 $x\in L(T)$ 与它在 $U(G_T)$（相应地，$\Gamma(T,\mathcal U_T)$）中的像等同，则 $x^{(p)}$ 是元素 $x^p\in U(L(T))$ 经 $\phi$（相应地，经 $\psi$）的像。
+
+\SGAsection{7}{高度为1的根性群}
+设 $S$ 是\Term{characteristic}{特征} $p>0$ 的\Term{scheme}{概形}。\footnote{编者注（61）：本节的结果也可参见 [DG70]，第 II.7 节，3—4。}若 $\mathcal O_S$-\Term{algebra}{代数} $\mathcal A$（相应地，$\mathcal O_S$-\Term{p-lie-algebra}{$p$-Lie 代数} $\mathcal L$）的底层 $\mathcal O_S$-\Term{module}{模}是\Term{locally-free}{局部自由}且\Term{finite-type}{有限型}的，就称 $\mathcal A$（相应地，$\mathcal L$）\Term{finite}{有限}\Term{locally-free}{局部自由}。若 $\mathcal L$ 是\Term{finite}{有限}\Term{locally-free}{局部自由} $\mathcal O_S$-\Term{p-lie-algebra}{$p$-Lie 代数}，已知（参见5.5.2），$S$-\Term{group-functor}{群函子} $\operatorname{Spec}^*U_p(\mathcal L)$ 由一个\Term{finite}{有限}\Term{locally-free}{局部自由} $S$-\Term{group-scheme}{群概形} $G_p(\mathcal L)$ 表示。我们将说明该 $S$-\Term{group-scheme}{群概形}是一个\Term{universal-problem}{泛问题}的解（7.2），并刻画形如 $G_p(\mathcal L)$ 的 $S$-\Term{group-scheme}{群概形}（7.4）。
+
+\begin{SGAresult}{定义}{7.0}
+\footnote{编者注（62）：编者增加了这一定义（参见 [DG70]，第 II.4 节，7.1），将在7.2.1中使用。}
+设 $H=\operatorname{Spec}\mathcal A$ 是\Term{finite}{有限}\Term{locally-free}{局部自由} $S$-\Term{group-scheme}{群概形}。若\Term{unit-section}{单位截面} $\varepsilon_H:S\to H$ 是\Term{homeomorphism}{同胚}，就称 $H$ 是\Term{infinitesimal-group}{无穷小群}；这\Term{equivalence}{等价}于 $\mathcal A$ 的\Term{augmentation-ideal}{增广理想}\Term{local-scheme}{局部}\Term{nilpotent}{幂零}。
+\end{SGAresult}
+
+\textbf{7.1。}\footnote{编者注（63）：利用5.5中的增补，对原文作了简化。}
+设 $\mathcal L$ 是\Term{finite}{有限}\Term{locally-free}{局部自由} $\mathcal O_S$-\Term{p-lie-algebra}{$p$-Lie 代数}，$G_p(\mathcal L)$ 为\Term{affine}{仿射} $S$-\Term{group}{群} $\operatorname{Spec}U_p(\mathcal L)$。由5.5，已知 $\mathcal L$ 等同于 $\mathscr{L}\mathrm{ie}G_p(\mathcal L)$。
+
+现在考虑满足6.3条件 (F) 的\Term{very-good-group}{很好} $S$-\Term{group-functor}{群函子} $G$，设 $\phi:G_p(\mathcal L)\to G$ 是 $S$-\Term{group-functor}{群函子}\Term{morphism}{态射}。由6.3，$\mathcal O_S$-\Term{lie-algebra}{Lie 代数}\Term{morphism}{态射} $\mathscr{L}\mathrm{ie}\phi:\mathscr{L}\mathrm{ie}G_p(\mathcal L)\to\mathscr{L}\mathrm{ie}G$ 与\Term{symbolic-p-power}{符号 $p$ 次幂}相容。以 $\operatorname{Hom}_p(\mathcal L,\mathscr{L}\mathrm{ie}G)$ 表示与\Term{symbolic-p-power}{符号 $p$ 次幂}相容的 $\mathcal O_S$-\Term{lie-algebra}{Lie 代数}\Term{morphism}{态射}的\Term{set}{集合}，就有映射
+\[
+ \mathscr{L}\mathrm{ie}:\operatorname{Hom}_{S\text{-Gr.}}(G_p(\mathcal L),G)
+ \longrightarrow\operatorname{Hom}_p(\mathcal L,\mathscr{L}\mathrm{ie}G),\qquad
+ \phi\longmapsto\mathscr{L}\mathrm{ie}\phi.
+\]
+
+\begin{SGAresult}{\Term{theorem}{定理}}{7.2}
+若 $\mathcal L$ 是\Term{finite}{有限}\Term{locally-free}{局部自由} $\mathcal O_S$-\Term{p-lie-algebra}{$p$-Lie 代数}，则下列每种情形中，映射
+\[
+ \operatorname{Hom}_{S\text{-gr.}}(G_p(\mathcal L),G)
+ \longrightarrow\operatorname{Hom}_p(\mathcal L,\mathscr{L}\mathrm{ie}G)
+\]
+都是\Term{bijection}{双射}：
+
+(i) $G$ 是 $S$-\Term{group-scheme}{群概形}；
+
+(ii) $G$ 具有 $\operatorname{Aut}_SX$ 的\Term{form}{形式}，其中 $X$ 是 $S$-\Term{scheme}{概形}；
+
+(iii) $G$ 具有 $\mathbf W(\mathcal F)$ 或 $\operatorname{Aut}_{\mathcal O_S\text{-mod}}\mathbf W(\mathcal F)$ 的\Term{form}{形式}，其中 $\mathcal F$ 是\Term{quasi-coherent}{拟凝聚} $\mathcal O_S$-\Term{module}{模}。
+\end{SGAresult}
+\Term{theorem}{定理}的证明基于以下\Term{lemma}{引理}。
+\SourcePage{491}
+\begin{SGAresult}{\Term{lemma}{引理}}{}
+若 $\mathcal L$ 是\Term{finite}{有限}\Term{locally-free}{局部自由} $\mathcal O_S$-\Term{p-lie-algebra}{$p$-Lie 代数}，则 $S$-\Term{group}{群} $G=G_p(\mathcal L)$ 被 Frobenius \Term{morphism}{态射} $\operatorname{Fr}:G\to G^{(p)}$ \Term{annihilate}{零化}。特别地，$G$ 是\Term{infinitesimal-group}{无穷小群}。
+\end{SGAresult}
+\begin{proof}
+\footnote{编者注（64）：以下详细展开了原文。另一种证明见 [DG70]，第 II.7 节，3.9。}
+设 $\mathcal U$ 是 $\mathcal L$ 的\Term{restricted-enveloping-algebra}{限制包络代数}，$\mathcal A=\mathcal U^*$ 是 $G$ 的\Term{affine-algebra}{仿射代数}，$\mathcal I=\operatorname{Ker}\varepsilon_{\mathcal A}$ 是 $\mathcal A$ 的\Term{augmentation-ideal}{增广理想}。有
+\[
+ \mathcal A=\mathcal I\oplus\eta_{\mathcal A}(\mathcal O_S),\tag{1}
+\]
+其中 $\eta_{\mathcal A}$ 是 $\mathcal A$ 的\Term{unit-section}{单位截面}；且 $\varepsilon_{\mathcal A}$（相应地，$\eta_{\mathcal A}$）是 $\eta_{\mathcal U}$（相应地，$\varepsilon_{\mathcal U}$）的\Term{transpose}{转置}，因此该\Term{resolution}{分解}经\Term{duality}{对偶}对应于\Term{resolution}{分解}
+\[
+ \mathcal U=\mathcal J\oplus\eta_{\mathcal U}(\mathcal O_S),\tag{2}
+\]
+其中 $\mathcal J$ 是 $\mathcal U$ 的\Term{augmentation-ideal}{增广理想}；所以 $\mathcal J=\mathcal I^*$。
+
+以 $\pi$ 表示 $\mathcal O_S$ 的\Term{endomorphism}{自同态} $x\mapsto x^p$。需证明\Term{morphism}{态射} $\operatorname{Fr}:G\to G^{(p)}$ 通过 $G^{(p)}$ 的\Term{unit-section}{单位截面}\Term{resolution}{分解}；这\Term{equivalence}{等价}于说（参见4.1.4 (c)），从 $\mathcal I\otimes_\pi\mathcal O_S$ 到 $\mathcal A$ 的\Term{morphism}{态射} $\Phi:a\otimes_\pi x\mapsto a^px$ 为零。由于 $\mathcal A$ 在 $\mathcal O_S$ 上\Term{finite}{有限}\Term{locally-free}{局部自由}，只需证明\Term{transpose}{转置}\Term{morphism}{态射} ${}^t\Phi$ 为零。
+
+$\Phi$ 正是下列复合：
+\[
+ \mathcal I\otimes_\pi\mathcal O_S\xrightarrow{\tau}\mathcal A\otimes_\pi\mathcal O_S
+ \xrightarrow{j(\mathcal A)}S^p\mathcal A\xrightarrow{b(\mathcal A)}\mathcal A,
+\]
+其中 $\tau$ 由包含映射 $\mathcal I\hookrightarrow\mathcal A$ 得到，$b(\mathcal A)$ 与 $j(\mathcal A)$ 如4.3.3中定义（即 $b(\mathcal A)$ 由 $\mathcal A$ 的\Term{multiplication}{乘法}诱导，而 $j(\mathcal A)$ 将 $a\otimes_\pi1$ 映为 $a\otimes\cdots\otimes a$ 在 $S^p\mathcal A$ 中的像）。$S^p\mathcal A$ 的 $\mathcal O_S$-\Term{duality}{对偶}\Term{module}{模}正是 $\bigotimes^p\mathcal U$ 中由 $p$ 阶对称\Term{group}{群}\Term{group-action}{作用}下的\Term{invariant}{不变}\Term{section}{截面}组成的子\Term{module}{模} $\Sigma^p\mathcal U$，故 ${}^t\Phi$ 是下列复合\Term{morphism}{态射}：
+\[
+ \mathcal U\xrightarrow{a(\mathcal U)}\Sigma^p\mathcal U
+ \xrightarrow{r(\mathcal U)}\mathcal U\otimes_\pi\mathcal O_S
+ \xrightarrow{q}\mathcal J\otimes_\pi\mathcal O_S,
+\]
+其中 $q$ 由核为 $\eta_{\mathcal U}(\mathcal O_S)$ 的\Term{projection}{投影} $\mathcal U\to\mathcal J$ 得到，$a(\mathcal U)$ 由 $\mathcal U$ 的\Term{comultiplication}{余乘法}诱导，$r(\mathcal U)$ 在\Term{symmetrization}{对称化}张量上为零，并将\Term{section}{截面} $x\otimes\cdots\otimes x$ 映为 $x\otimes_\pi1$（参见4.3.3）。
+
+显然 ${}^t\Phi\circ\eta_{\mathcal U}=0$，所以由 (2)，只需证明 ${}^t\Phi$ 在\Term{augmentation-ideal}{增广理想} $\mathcal J$ 上为零。由于 ${}^t\Phi$ 是\Term{algebra}{代数}\Term{morphism}{态射}，且\Term{ideal}{理想} $\mathcal J$ 由 $\mathcal L$（与其在 $\mathcal U$ 中的像等同）生成，只需证明对 $\mathcal L$ 的每个\Term{section}{截面} $x$ 都有 ${}^t\Phi(x)=0$。但 $-a(\mathcal U)(x)=(p-1)!\,a(\mathcal U)(x)$ 是 $x\otimes1\otimes\cdots\otimes1$ 的\Term{symmetrization}{对称化}张量，故它经 $r(\mathcal U)$ 的像为零。这就证明了\Term{lemma}{引理}的第一项断言。
+
+第二项随之得到。事实上，$\mathcal I$ 的每个\Term{local-scheme}{局部}\Term{section}{截面}的 $p$ 次幂为零，且 $\mathcal I$ 是\Term{finite-type}{有限型} $\mathcal O_S$-\Term{module}{模}，故 $\mathcal I$ \Term{local-scheme}{局部}\Term{nilpotent}{幂零}（明确地说，若 $V$ 是 $S$ 的\Term{affine}{仿射}\Term{open-subset}{开集}，$I=\Gamma(V,\mathcal I)$ 由 $r$ 个元素生成，则 $I^{r(p-1)+1}=0$）；所以 $G_{\mathrm{r\text{é}d}}=S_{\mathrm{r\text{é}d}}$，因而\Term{unit-section}{单位截面} $\varepsilon_G:S\to G$ 是\Term{homeomorphism}{同胚}。
+\end{proof}
+
+\SourcePage{492}
+\textbf{7.2.1。}\footnote{编者注（65）：以下详细展开了原文。}
+先证明\Term{theorem}{定理}7.2的断言 (ii)。设 $\pi:X\to S$ 是一个 $S$-\Term{scheme}{概形}。先考虑任意\Term{infinitesimal-group}{无穷小} $S$-\Term{group}{群} $H$。$H$ 到 $\operatorname{Aut}X$ 的\Term{morphism}{态射} $\phi$，与 $H$ 在 $X$ 上的左\Term{group-action}{作用} $\mu:H\times X\to X$ 一一对应。对于这样的\Term{group-action}{作用}，若 $\varepsilon$ 是 $H$ 的\Term{unit-section}{单位截面}，则复合\Term{morphism}{态射}
+\[
+ X\simeq S\times X\xrightarrow{\varepsilon\times X}H\times X\xrightarrow{\mu}X
+\]
+必须是恒等。由于 $(H\times X)_{\mathrm{r\text{é}d}}$ 等同于 $X_{\mathrm{r\text{é}d}}$，可见 $\mu$ 必须在相应的\Term{reduced-scheme}{约化概形}上诱导恒等。特别地，$\mu$ 诱\Term{derive}{导出} $H$ 在 $X$ 每个\Term{open-subset}{开集}上的\Term{group-action}{作用}，因而对 $X$ 中每个在 $S$ 上\Term{affine}{仿射}的\Term{open-subset}{开集} $U$，得到结合含幺\Term{algebra}{代数}的\Term{morphism}{态射}
+\[
+ \mathcal A(U)\longrightarrow\mathcal A(H)\otimes\mathcal A(U),
+\]
+使 $\mathcal A(U)$ 成为一个左 $\mathcal A(H)$-\Term{comodule}{余模}，并使 $U'\subset U$ 时的\Term{restriction}{限制}映射 $\mathcal A(U)\to\mathcal A(U')$ 都是\Term{comodule}{余模}\Term{morphism}{态射}。反之，任何这样的数据都来自唯一的左\Term{group-action}{作用} $\mu:H\times X\to X$。另一方面，有以下\Term{lemma}{引理}。
+
+\begin{SGAresult}{\Term{lemma}{引理}}{}
+设 $X=\operatorname{Spec}\mathcal C$ 是\Term{affine}{仿射} $S$-\Term{scheme}{概形}，$H=\operatorname{Spec}\mathcal A$ 是\Term{infinitesimal-group}{无穷小} $S$-\Term{group}{群}，$\mathcal U=\mathcal A^*=\mathcal Hom_{\mathcal O_S}(\mathcal A,\mathcal O_S)$。$H$ 在 $X$ 上的左\Term{group-action}{作用}，与\Term{algebra}{代数} $\mathcal U$ 在 $\mathcal O_S$-\Term{module}{模} $\mathcal C$ 中满足下列条件的\Term{representation}{表示}一一对应：
+\[
+\begin{aligned}
+ {}&(a)\quad u(1_{\mathcal C})=\varepsilon(u)\,1_{\mathcal C},\\
+ &(b)\quad u(xy)=\sum_i v_i(x)w_i(y)
+ \quad\text{若 }\Delta u=\sum_i v_i\otimes w_i.
+\end{aligned}
+\]
+\end{SGAresult}
+（上述公式中，$u$ 是 $S$ 的\Term{affine}{仿射}\Term{open-subset}{开集} $V$ 上的 $\mathcal U$ 的任意\Term{section}{截面}，$x,y$ 是 $V$ 上的 $\mathcal C$ 的\Term{section}{截面}；$1_{\mathcal C}$ 表示 $\mathcal C$ 的\Term{unit-section}{单位截面}，$\varepsilon,\Delta$ 表示 $\mathcal U$ 的\Term{augmentation}{增广}和对角\Term{morphism}{态射}。）
+\begin{proof}
+一个左\Term{group-action}{作用} $\mu$ 由一个结合含幺\Term{algebra}{代数}\Term{morphism}{态射}
+\[
+ \lambda:\mathcal C\longrightarrow\mathcal A\otimes\mathcal C
+\]
+定义，且它使 $\mathcal C$ 成为左 $\mathcal A$-\Term{comodule}{余模}。以 $\alpha$ 表示复合\Term{morphism}{态射}
+\[
+ \mathcal U\otimes_{\mathcal O_S}\mathcal C\xrightarrow{\mathcal U\otimes\lambda}
+ \mathcal U\otimes_{\mathcal O_S}\mathcal A\otimes_{\mathcal O_S}\mathcal C
+ \xrightarrow{\gamma\otimes\mathcal C}\mathcal O_S\otimes_{\mathcal O_S}\mathcal C\simeq\mathcal C,
+\]
+其中 $\gamma$ 是 $\mathcal A^*\otimes_{\mathcal O_S}\mathcal A$ 到 $\mathcal O_S$ 的“\Term{retraction}{收缩}”。由于 $\mathcal A$ 在 $\mathcal O_S$ 上\Term{finite}{有限}\Term{locally-free}{局部自由}，已知映射 $\lambda\mapsto(\gamma\otimes\mathcal C)(\mathcal U\otimes\lambda)$ 是从
+$\operatorname{Hom}_{\mathcal O_S}(\mathcal C,\mathcal A\otimes\mathcal C)$ 到
+$\operatorname{Hom}_{\mathcal O_S}(\mathcal U\otimes\mathcal C,\mathcal C)$ 的\Term{bijection}{双射}。此外，容易看出，经\Term{duality}{对偶}，$\lambda$ 定义一个左 $\mathcal A$-\Term{comodule}{余模}结构（相应地，是结合含幺\Term{algebra}{代数}\Term{morphism}{态射}）的条件，\Term{equivalence}{等价}于 $\alpha$ 是 $\mathcal U$ 在 $\mathcal C$ 中的\Term{representation}{表示}（相应地，$\alpha$ 满足条件 (a)、(b)）。\Term{lemma}{引理}得证。
+\end{proof}
+
+\SourcePage{493}
+此外，显然，对 $\mathcal U$ 在 $\mathcal O_S$-\Term{module}{模} $\mathcal C$ 中的任意\Term{representation}{表示}，满足\Term{lemma}{引理}条件 (a)、(b) 的 $\mathcal U$ 的\Term{section}{截面}构成 $\mathcal U$ 的子\Term{algebra}{代数}。
+
+在所关心的特例 $H=G_p(\mathcal L)$ 中，只要这些条件对 $\mathcal L$ 的\Term{section}{截面} $u$ 成立（将 $\mathcal L$ 与其在 $U_p(\mathcal L)$ 中的像等同），它们便对 $\mathcal U=U_p(\mathcal L)$ 的所有\Term{section}{截面} $u$ 成立。但若 $u$ 是 $\mathcal L$ 的\Term{section}{截面}，条件 (a)、(b) 仅仅意味着 $u(1_{\mathcal C})=0$ 及 $u(xy)=u(x)y+xu(y)$，即 $\alpha(u)$ 是 $\mathcal C=\mathcal A(X)$ 的 $\mathcal O_S$-\Term{derivation}{导子}。7.2的断言 (ii) 随之得到。事实上，$G_p=G_p(\mathcal L)$ 到 $\operatorname{Aut}X$ 的任意\Term{morphism}{态射} $\phi$ 都定义一个从 $\mathcal L=\mathscr{L}\mathrm{ie}G_p$ 到 $\pi_*(\operatorname{D\text{é}r}_{\mathcal O_S}\mathcal O_X)$ 的\Term{p-lie-algebra}{$p$-Lie 代数}\Term{morphism}{态射} $\mathscr{L}\mathrm{ie}\phi$；反之，由上述讨论，任何这样的数据都来自唯一的\Term{group-action}{作用} $\mu:G\times X\to X$。
+
+\textbf{7.2.2。}现在说明\Term{theorem}{定理}7.2的断言 (i) 如何由 (ii) 得到。设 $G$ 是 $S$-\Term{group-scheme}{群概形}。若 $T$ 是 $S$-\Term{scheme}{概形}，$x\in G(T)$，以 $\ell_x^T$（相应地，$r_x^T$）表示由 $x$ 定义的 $G_T$ 的\Term{left-translation}{左平移}（相应地，\Term{right-translation}{右平移}）。于是映射 $\ell^T:x\mapsto\ell_x^T$ 确定一个从 $G$ 到 $\operatorname{Aut}G$ 的\Term{homomorphism}{同态} $\ell$。另一方面，若 $f$ 是 $G_T$ 的一个 $T$-\Term{automorphism}{自同构}，定义 ${}^xf=(r_x^T)^{-1}fr_x^T$，即对每个 $T'\to T$ 及 $g\in G(T')$，有 $({}^xf)(g)=f(gx)x^{-1}$。这样 $G$ 左\Term{group-action}{作用}于 $S$-\Term{group-functor}{群函子} $\operatorname{Aut}G$，因而也\Term{group-action}{作用}于\Term{functor}{函子}
+\[
+ T\longmapsto\operatorname{Hom}_{T\text{-Gr.}}(G_p(\mathcal L_T),\operatorname{Aut}G_T),\qquad
+ T\longmapsto\operatorname{Hom}_p(\mathcal L_T,\mathscr{L}\mathrm{ie}(\operatorname{Aut}G_T/T)).
+\]
+另一方面，\Term{morphism}{态射} $\ell^T:G_T\to\operatorname{Aut}G_T$ 将 $G_T$ 等同于 $T$-\Term{scheme}{概形} $G_T$ 的与各\Term{right-translation}{右平移}交换的\Term{automorphism}{自同构}\Term{group}{群}；导\Term{morphism}{态射} $\operatorname{Lie}(\ell^T)$ 将 $\operatorname{Lie}G_T$ 等同于 $\mathcal O_{G_T}$ 的与各\Term{right-translation}{右平移}交换的 $\mathcal O_T$-\Term{derivation}{导子}所成的\Term{p-lie-algebra}{$p$-Lie 代数}（参见第 II 讲4.11.1）。它们因此诱导\Term{commutative-square}{交换方块}
+\[
+\begin{tikzcd}[column sep=small]
+ \operatorname{Hom}_{T\text{-Gr.}}(G_p(\mathcal L_T),G_T)
+ \arrow[r,"\mathscr{L}\mathrm{ie}"]\arrow[d,"\ell^T"']
+ &\operatorname{Hom}_p(\mathcal L_T,\mathscr{L}\mathrm{ie}(G_T/T))\arrow[d,"\mathscr{L}\mathrm{ie}\ell^T"]\\
+ \operatorname{Hom}_{T\text{-Gr.}}(G_p(\mathcal L_T),\operatorname{Aut}G_T)
+ \arrow[r,"\mathscr{L}\mathrm{ie}"']
+ &\operatorname{Hom}_p(\mathcal L_T,\mathscr{L}\mathrm{ie}(\operatorname{Aut}G_T/T)).
+\end{tikzcd}
+\]
+两个竖\Term{arrow}{箭头}的像是由 $S$-\Term{group}{群} $G$ 的\Term{group-action}{作用}下的\Term{invariants}{不变量}组成的子\Term{functor}{函子}。由7.2.1，下面的水平\Term{arrow}{箭头}\Term{invertible}{可逆}，且与 $G$ 的\Term{group-action}{作用}相容，故上面的水平\Term{arrow}{箭头}也\Term{invertible}{可逆}。这就证明了7.2 (i)。
+
+\textbf{7.2.3。}现在考虑 $G=\operatorname{Aut}_{\mathcal O_S\text{-mod.}}\mathbf W(\mathcal F)$ 的情形。\footnote{编者注（66）：以下利用第 VI$_B$ 讲11.6.1，对原文作了详细展开（并作了简化）。}置 $\mathcal U=U_p(\mathcal L)$、$\mathcal A=\mathcal U^*$、$H=G_p(\mathcal L)=\operatorname{Spec}\mathcal A$。由于 $H$ 在 $S$ 上\Term{affine}{仿射}，根据第 VI$_B$ 讲11.6.1，从 $H$ 到 $\operatorname{Aut}_{\mathcal O_S\text{-mod.}}\mathbf W(\mathcal F)$ 的 $S$-\Term{group}{群}\Term{morphism}{态射}，就是一个右 $\mathcal A$-\Term{comodule}{余模}结构
+\[
+ \mu:\mathcal F\longrightarrow\mathcal F\otimes\mathcal A.
+\]
+\SourcePage{494}
+又由于 $\mathcal A$ 在 $\mathcal O_S$ 上\Term{finite}{有限}\Term{locally-free}{局部自由}，这\Term{equivalence}{等价}于给定 $\mathcal U$ 在 $\mathcal F$ 中的一个\Term{representation}{表示}
+\[
+ \alpha:\mathcal U\longrightarrow\mathcal End_{\mathcal O_S}(\mathcal F).
+\]
+最后，由 $\mathcal U=U_p(\mathcal L)$ 的\Term{universal-property}{泛性质}，给定这样的\Term{morphism}{态射} $\alpha$ \Term{equivalence}{等价}于给定其在 $\mathcal L$（与它在 $\mathcal U$ 中的像等同）上的\Term{restriction}{限制} $\rho$，它是从 $\mathcal L$ 到 $\mathcal End_{\mathcal O_S}(\mathcal F)$ 的\Term{p-lie-algebra}{$p$-Lie 代数}\Term{morphism}{态射}。
+
+最后，考虑 $G=\mathbf W(\mathcal F)$ 的情形，沿用上述记号。\footnote{编者注（67）：以下内容为编者所加。（原文只说“$\mathbf W(\mathcal F)$ 的情形类似”。）}首先，给定一个 $S$-\Term{functor}{函子}\Term{morphism}{态射} $\phi:H\to\mathbf W(\mathcal F)$，\Term{equivalence}{等价}于给定 $\Gamma(H,\mathcal F\otimes\mathcal O_H)$ 的一个元素 $\theta$；由于 $H$ 在 $S$ 上\Term{finite}{有限}\Term{locally-free}{局部自由}，有
+\[
+ \Gamma(H,\mathcal F\otimes\mathcal O_H)=\Gamma(S,\mathcal F\otimes\mathcal A)
+ =\operatorname{Hom}_{\mathcal O_S}(\mathcal U,\mathcal F).
+\]
+$\phi$ 是\Term{group-morphism}{群态射}的条件，转化为将 $\theta$ 视为 $\mathcal O_S$-\Term{module}{模}\Term{morphism}{态射} $\mathcal U\to\mathcal F$ 时，它在 $1_{\mathcal U}$ 及 $\mathcal J/\mathcal J^2$ 上为零，其中 $\mathcal J$ 为 $\mathcal U$ 的\Term{augmentation-ideal}{增广理想}，所以
+\[
+ \operatorname{Hom}_{S\text{-gr.}}(H,\mathbf W(\mathcal F))
+ =\operatorname{Hom}_{\mathcal O_S}(\mathcal J/\mathcal J^2,\mathcal F).\tag{1}
+\]
+另一方面，考虑\Term{quasi-coherent}{拟凝聚}\Term{sheaf}{层} $[\mathcal L,\mathcal L]$，它是\Term{morphism}{态射} $\mathcal L\otimes\mathcal L\to\mathcal L$，$x\otimes y\mapsto[x,y]$ 的像；对 $S$ 的每个\Term{affine}{仿射}\Term{open-subset}{开集} $V$，有
+$[\mathcal L,\mathcal L](V)=[\mathcal L(V),\mathcal L(V)]$。于是有\Term{exact-sequence}{正合列}
+\[
+ 0\longrightarrow[\mathcal L,\mathcal L]\longrightarrow\mathcal L
+ \xrightarrow{\pi}\mathcal J/\mathcal J^2\longrightarrow0,\tag{$\dagger$}
+\]
+其中 $\pi$ 是包含映射 $\mathcal L\hookrightarrow\mathcal J$ 与\Term{projection}{投影} $\mathcal J\to\mathcal J/\mathcal J^2$ 的复合。
+
+事实上，问题在 $S$ 上是\Term{local-scheme}{局部}的，可假设 $S$ 是环为 $R$ 的\Term{affine}{仿射}\Term{scheme}{概形}，且 $L=\mathcal L(S)$ 是以 $(x_1,\ldots,x_r)$ 为基的\Term{free-module}{自由}\Term{module}{模}。将 $L$ 与它在 $U=U_p(L)$ 中的像等同，设 $K$ 是 $U$ 的如下 $R$-子\Term{module}{模}：它是 $[L,L]$ 与以满足 $n_1+\cdots+n_r\ge2$ 的单项式 $x_1^{n_1}\cdots x_r^{n_r}$ 为基的子\Term{module}{模}的\Term{direct-sum}{直和}。可验证 $K$ 是 $U$ 的双边\Term{ideal}{理想}。由于 $K$ 包含于 $J^2$ 中（其中 $J$ 是 $U$ 的\Term{augmentation-ideal}{增广理想}），且包含所有乘积 $x_ix_j$（这些乘积生成 $J^2$），可得 $K=J^2$，因而 $J^2\cap L=[L,L]$，得到\Term{exact-sequence}{正合列} $(\dagger)$。
+
+另一方面，由6.4.2已知，$\mathscr{L}\mathrm{ie}\mathbf W(\mathcal F)$ 就是 $\mathcal F$，其\Term{lie-bracket}{Lie 括号}和\Term{symbolic-p-power}{符号 $p$ 次幂}均为零。由此及上述讨论得到
+\[
+ \operatorname{Hom}_p(\mathcal L,\mathcal F)
+ =\operatorname{Hom}_{\mathcal O_S}(\mathcal L/[\mathcal L,\mathcal L],\mathcal F)
+ =\operatorname{Hom}_{\mathcal O_S}(\mathcal J/\mathcal J^2,\mathcal F).\tag{2}
+\]
+结合 (1)，便完成\Term{theorem}{定理}7.2的证明。
+
+\begin{SGAresult}{\Term{lemma}{引理}}{7.3}
+若 $\mathcal L$ 是\Term{finite}{有限}\Term{locally-free}{局部自由} $\mathcal O_S$-\Term{p-lie-algebra}{$p$-Lie 代数}，则5.5中的\Term{morphism}{态射} $j_{\mathcal L}:\mathcal L\to\mathscr{L}\mathrm{ie}G_p(\mathcal L)$ \Term{invertible}{可逆}。
+\end{SGAresult}
+证明见5.5.1。\footnote{编者注（68）：为不改变编号，尽管已将\Term{lemma}{引理}7.3及其证明纳入5.5.1，仍保留它的陈述。}
+\SourcePage{495}
+\textbf{7.4。}本节最后给出形如 $G_p(\mathcal L)$ 的 $S$-\Term{group-scheme}{群概形}的刻画，其中 $\mathcal L$ 为\Term{finite}{有限}\Term{locally-free}{局部自由} $\mathcal O_S$-\Term{p-lie-algebra}{$p$-Lie 代数}。
+
+设 $G$ 是 $S$-\Term{group-scheme}{群概形}，$\varepsilon_G$ 是\Term{unit-section}{单位截面}，$\mathcal I'$ 是对应于 $\varepsilon_G$ 的\Term{morphism}{态射} $\varepsilon_G^{-1}(\mathcal O_G)\to\mathcal O_S$ 的核。根据2.5及1.3.1，$\operatorname{Lie}(G/S)(S)$ 在 $U(G)$ 中的像等同于从 $\varepsilon_G^{-1}(\mathcal O_G)$ 到 $\mathcal O_S$ 的、在 $\varepsilon_G^{-1}(\mathcal O_G)$ 的\Term{unit-section}{单位截面}及 $\mathcal I'^2$ 上为零的 $\mathcal O_S$-\Term{module}{模}\Term{morphism}{态射}。由此重新得到第 II 讲3.3及4.11.4中从 $\operatorname{Lie}(G/S)(S)$ 到 $\operatorname{Hom}_{\mathcal O_S}(\mathcal I'/\mathcal I'^2,\mathcal O_S)$ 的\Term{canonical}{典范}\Term{isomorphism}{同构}。\footnote{编者注（69）：若 $G$ 在 $S$ 上\Term{affine}{仿射}，且 $\mathcal I$ 表示 $\mathcal A(G)$ 的\Term{augmentation-ideal}{增广理想}，则 $\mathcal I'/\mathcal I'^2$ 等同于 $\varepsilon_G^*(\mathcal I/\mathcal I^2)$，参见上述各处。}如上述各处，置 $\omega_{G/S}=\mathcal I'/\mathcal I'^2$，于是\Term{sheaf}{层} $\mathscr{L}\mathrm{ie}(G/S)$ 等同于 $\omega_{G/S}^*=\mathcal Hom_{\mathcal O_S}(\omega_{G/S},\mathcal O_S)$。\footnote{编者注（70）：以下一句为编者所加。}此外，若 $G=G_p(\mathcal L)$，其中 $\mathcal L$ 是\Term{finite}{有限}\Term{locally-free}{局部自由} $\mathcal O_S$-\Term{p-lie-algebra}{$p$-Lie 代数}，则由5.5.3，$\omega_{G/S}=\mathcal L^*$。
+
+\begin{SGAresult}{\Term{theorem}{定理}}{7.4}
+若 $G$ 是\Term{characteristic}{特征} $p>0$ 的\Term{scheme}{概形} $S$ 上的\Term{group-scheme}{群概形}，则下列断言\Term{equivalence}{等价}：
+
+(i) 存在\Term{finite}{有限}\Term{locally-free}{局部自由} $\mathcal O_S$-\Term{p-lie-algebra}{$p$-Lie 代数} $\mathcal L$，使 $G\simeq G_p(\mathcal L)$。
+
+(i$'$) $\mathcal O_S$-\Term{p-lie-algebra}{$p$-Lie 代数} $\mathscr{L}\mathrm{ie}(G)$ \Term{finite}{有限}\Term{locally-free}{局部自由}，且 $G\simeq G_p(\mathscr{L}\mathrm{ie}(G))$。
+
+(ii) $G$ 在 $S$ 上\Term{affine}{仿射}，$\omega_{G/S}$ 是\Term{finite-type}{有限型}\Term{locally-free}{局部自由} $\mathcal O_S$-\Term{module}{模}，且 $G$ 的\Term{affine-algebra}{仿射代数}\Term{local-scheme}{局部}\Term{isomorphism}{同构}于\Term{symmetric-algebra}{对称代数} $S_{\mathcal O_S}(\omega_{G/S})$ 对 $\omega_{G/S}$ 的各\Term{section}{截面}的 $p$ 次幂所生成的\Term{ideal}{理想}的商。
+
+(iii) $G$ 在 $S$ 上\Term{locally-finite-presentation}{局部有限表现}，\Term{height}{高度} $\le1$，且 $\omega_{G/S}$ \Term{locally-free}{局部自由}。
+
+(iii$'$) $G$ 在 $S$ 上\Term{locally-finite-type}{局部有限型}，\Term{height}{高度} $\le1$，且 $\omega_{G/S}$ \Term{locally-free}{局部自由}。
+
+(iv) $G$ 在 $S$ 上\Term{locally-finite-presentation}{局部有限表现}且\Term{flat}{平坦}，\Term{height}{高度} $\le1$。\footnote{编者注（71）：一方面增加了原文中隐含的断言 (i$'$)，另一方面增加了 O. Gabber 指出的断言 (iii$'$) 和 (iv)。断言 (iv) 重述了原本的一条脚注，其原文为：“关于 $\omega_{G/S}$ 的条件实际上是不必要的：将问题归结到 $S$ 为\Term{residue-field}{剩余域}为 $k$ 的\Term{local-scheme}{局部}\Term{scheme}{概形}的情形，并对 $G_k$ 应用本\Term{theorem}{定理}，就容易看出这一点。”如 Gabber 指出，在没有\Term{flat}{平坦}性假设时，这一说法不正确：若 $A$ 是\Term{characteristic}{特征} $p>0$ 的\Term{locally-artinian}{局部 Artin} 环，$J$ 是 $A$ 的一个非零真\Term{ideal}{理想}，取 $\alpha_{p,A}$ 的子\Term{group}{群} $H=\operatorname{Spec}A[x]/(x^p,Jx)$（即对每个 $A$-\Term{algebra}{代数} $R$，有 $H(R)=\{x\in R\mid x^p=0\text{ 且 }Jx=0\}$），则 $H$ 在 $A$ 上不\Term{flat}{平坦}，因此不能写成 $G_p(\mathcal L)$，其中 $\mathcal L$ 为 $A$ 上\Term{finite-rank}{有限秩}\Term{free-module}{自由}\Term{p-lie-algebra}{$p$-Lie 代数}。}
+\end{SGAresult}
+
+\textbf{7.4.1。}\Term{equivalence}{等价} (i)$\Leftrightarrow$(i$'$) 由5.5.3 (i) 得到，蕴涵 (ii)$\Rightarrow$(iii)$\Rightarrow$(iii$'$) 是显然的；且有 (i)$\Rightarrow$(iv)，因为由5.5.2及\Term{lemma}{引理}7.2，$G_p(\mathcal L)$ \Term{finite}{有限}\Term{locally-free}{局部自由}且\Term{height}{高度} $\le1$。下面证明 (i) 蕴涵 (ii)。以 $\mathcal I$ 表示 $\mathcal A=U_p(\mathcal L)^*$ 的\Term{augmentation-ideal}{增广理想}。由5.5.3 (ii) 已知，$\omega_{G/S}=\mathcal I/\mathcal I^2$ 等同于 $\mathcal L^*$，因此\Term{finite}{有限}\Term{locally-free}{局部自由}。
+
+\SourcePage{496}
+现在假定 $S$ \Term{affine}{仿射}。于是\Term{projection}{投影} $\mathcal I\to\mathcal I/\mathcal I^2$ 存在一个\Term{section}{截面} $\sigma:\omega_{G/S}\to\mathcal I$；它诱导\Term{algebra}{代数}\Term{morphism}{态射} $\sigma':S_{\mathcal O_S}(\omega_{G/S})\to\mathcal A$，且由\Term{lemma}{引理}7.2，$\sigma'$ \Term{resolution}{分解}为一个\Term{morphism}{态射}
+\[
+ \phi:S_{\mathcal O_S}(\omega_{G/S})/\mathcal K\longrightarrow\mathcal A,
+\]
+其中 $\mathcal K$ 表示由 $\omega_{G/S}$ 的\Term{section}{截面}的 $p$ 次幂生成的\Term{ideal}{理想}。若以 $\mathcal I$ 的各次幂（相应地，以 $\omega_{G/S}$ 生成的\Term{ideal}{理想}的各次幂）过滤 $\mathcal A$（相应地，$S_{\mathcal O_S}(\omega_{G/S})/\mathcal K$），则 $\phi$ 显然诱导其\Term{associated-graded}{相伴分次对象}之间的满\Term{morphism}{态射}。因此，$\phi$ 是同秩的\Term{locally-free}{局部自由} $\mathcal O_S$-\Term{module}{模}之间的满\Term{morphism}{态射}（参见5.3.3），故是\Term{isomorphism}{同构}。这就证明了 (i)$\Rightarrow$(ii)。
+
+\textbf{7.4.2。}现在假设 $G$ 的\Term{height}{高度} $\le1$ 且在 $S$ 上\Term{locally-finite-presentation}{局部有限表现}。\footnote{编者注（72）：以下详细展开（并简化）了原文。}由于 Frobenius \Term{morphism}{态射} $\operatorname{Fr}:G\to G^{(p)}$ 是整的，并且通过 $G^{(p)}$ 的\Term{unit-section}{单位截面}\Term{resolution}{分解}，$G$ 在 $S$ 上是整的（从而\Term{affine}{仿射}）。令 $\mathcal A=\mathcal A(G)$；由于假设 $G$ 在 $S$ 上\Term{locally-finite-presentation}{局部有限表现}，可得 $G$ 在 $S$ 上\Term{finite}{有限}且\Term{finite-presentation}{有限表现}，所以 $\mathcal A(G)$ 是\Term{finite-presentation}{有限表现} $\mathcal O_S$-\Term{module}{模}（参见 EGA IV$_1$，1.4.7）。以 $\mathcal I$ 表示 $\mathcal A$ 的\Term{augmentation-ideal}{增广理想}；由 $\mathcal A=\eta_{\mathcal A}(\mathcal O_S)\oplus\mathcal I$（其中 $\eta_{\mathcal A}$ 为 $\mathcal A$ 的\Term{unit-section}{单位截面}），$\mathcal I$ 是\Term{finite-presentation}{有限表现} $\mathcal O_S$-\Term{module}{模}，故 $\omega_G=\mathcal I/\mathcal I^2$ 也如此。若假设 $G$ 的\Term{height}{高度} $\le1$ 且在 $S$ 上\Term{locally-finite-type}{局部有限型}，同样得到 $\mathcal A(G)$、$\mathcal I$ 和 $\omega_G=\mathcal I/\mathcal I^2$ 是\Term{finite-type}{有限型} $\mathcal O_S$-\Term{module}{模}。
+
+因此，在 (iii$'$) 的假设下，$\omega_{G/S}$ 在 $\mathcal O_S$ 上\Term{finite}{有限}\Term{locally-free}{局部自由}，$\mathcal L=\mathscr{L}\mathrm{ie}(G/S)=\omega_{G/S}^*$ 也如此。令 $\mathcal B=U_p(\mathcal L)^*$，$H=G_p(\mathcal L)=\operatorname{Spec}\mathcal B$。由\Term{theorem}{定理}7.2，$\mathcal L$ 的\Term{identity-map}{恒等映射}对应于一个从 $H=G_p(\mathcal L)$ 到 $G$ 的\Term{group-morphism}{群态射}，因而对应于 $\mathcal O_S$-\Term{algebra}{代数}\Term{morphism}{态射} $\theta:\mathcal A\to\mathcal B$。按定义，$\theta$ 诱导 $\omega_{G/S}$ 到 $\omega_{H/S}$ 的\Term{isomorphism}{同构}；要证明 $\theta$ 是\Term{isomorphism}{同构}。
+
+为此，可限于 $S$ \Term{affine}{仿射}的情形。于是\Term{projection}{投影} $\mathcal I\to\omega_{G/S}$ 有一个\Term{section}{截面} $\tau$；它诱导\Term{algebra}{代数}\Term{morphism}{态射} $\tau':S_{\mathcal O_S}(\omega_{G/S})\to\mathcal A$。$\mathcal I$ 的每个\Term{local-scheme}{局部}\Term{section}{截面}的 $p$ 次幂为零（因为 $\operatorname{Fr}:G\to G^{(p)}$ 通过 $G^{(p)}$ 的\Term{unit-section}{单位截面}\Term{resolution}{分解}），故 $\tau'$ 诱导一个 $\mathcal O_S$-\Term{algebra}{代数}\Term{morphism}{态射} $\psi$，纳入下列\Term{commutative-diagram}{交换图}：
+\[
+\begin{tikzcd}
+ S_{\mathcal O_S}(\omega_{G/S})/\mathcal K\arrow[r,"\psi"]\arrow[dr,"\phi"']&\mathcal A\arrow[d,"\theta"]\\
+ &\mathcal B
+\end{tikzcd}
+\]
+其中 $\mathcal K$ 是由 $\omega_{G/S}$ 的\Term{section}{截面}的 $p$ 次幂生成的\Term{ideal}{理想}。一方面，如7.4.1可证明 $\psi$ 是 $\mathcal O_S$-\Term{module}{模}的满\Term{morphism}{态射}；另一方面，7.4.1已说明 $\phi=\theta\circ\psi$ 是\Term{isomorphism}{同构}，故 $\theta$ 也如此。这就证明了 (iii$'$)$\Rightarrow$(i)。
+
+\SourcePage{497}
+\textbf{7.4.3。}\footnote{编者注（73）：增加本段以证明 (iv)$\Rightarrow$(iii)，参见编者注（71）。}
+最后证明 (iv) 蕴涵 (iii)。只需证明 $\omega_{G/S}$ \Term{locally-free}{局部自由}，故可假定 $S$ 是环为 $R$ 的\Term{affine}{仿射}\Term{scheme}{概形}。如7.4.2开头所指出，假设 (iv) 此时\Term{pushout}{推出} $G=\operatorname{Spec}A$，其中 $R$-\Term{algebra}{代数} $A$ 是\Term{finite-presentation}{有限表现} $R$-\Term{module}{模}，$\omega_{G/A}=I/I^2$ 也如此（其中 $I$ 是 $A$ 的\Term{augmentation-ideal}{增广理想}）。再由 $G$ 在 $S$ 上\Term{flat}{平坦}的假设，$A$ 是\Term{finite}{有限}\Term{locally-free}{局部自由} $R$-\Term{module}{模}（参见 [BAC]，II，\S5.2，\Term{theorem}{定理}1及推论2）；由同处，为证明 $\omega_{G/A}$ \Term{finite-rank}{有限秩}\Term{locally-free}{局部自由}，只需证明对 $R$ 的每个极大\Term{ideal}{理想} $\mathfrak m$，$(\omega_{G/A})_{\mathfrak m}$ 都\Term{flat}{平坦}。因此可假定 $R$ 为\Term{local-ring}{局部环}，$A$ \Term{free-module}{自由}且秩为 $n+1$，所以 $I$ \Term{free-module}{自由}且秩为 $n$。设 $\mathfrak m$ 为 $R$ 的极大\Term{ideal}{理想}，$k=R/\mathfrak m$。
+
+以 $I_k$ 表示 $A_k$ 的\Term{augmentation-ideal}{增广理想}，$r$ 表示 $\omega_{G_k/k}=I_k/I_k^2$ 的\Term{dimension}{维数}。取 $I_k$ 的一组基 $(e_1,\ldots,e_n)$，使 $(e_{r+1},\ldots,e_n)$ 为 $I_k^2$ 的一组基，并取 $I$ 中的元素 $x_1,\ldots,x_n$ 分别\Term{lifting}{提升}各 $e_i$。由 \Term{nakayama-lemma}{Nakayama 引理}，$(x_1,\ldots,x_n)$ 是 $I$ 在 $R$ 上的一组基。设 $N$ 是以 $(x_1,\ldots,x_r)$ 为基的 $I$ 的 $R$-子\Term{module}{模}，$B$ 是 $N$ 的\Term{symmetric-algebra}{对称代数}对元素 $x^p$（$x\in N$）生成的\Term{ideal}{理想}的商。$I$ 中每个元素的 $p$ 次幂为零，故得到 $R$-\Term{algebra}{代数}\Term{morphism}{态射}
+\[
+ \psi:B\longrightarrow A.
+\]
+由7.4.2，$\psi\otimes k$ 是\Term{isomorphism}{同构}。因此 $\operatorname{Coker}\psi=0$，且若记 $K=\operatorname{Ker}\psi$，则\Term{morphism}{态射} $\tau:K\otimes k\to B\otimes k$ 为零。但由于 $\psi$ \Term{surjectivity}{满射}、$A$ 在 $R$ 上\Term{flat}{平坦}，$\tau$ 也是\Term{injectivity}{单射}，故 $K\otimes k=0$。另一方面，$A$ 为\Term{finite-presentation}{有限表现} $R$-\Term{module}{模}，所以 $K$ 为\Term{finite-type}{有限型} $R$-\Term{module}{模}（参见 [BAC]，I，\S2.8，\Term{lemma}{引理}9），由 \Term{nakayama-lemma}{Nakayama 引理}得到 $K=0$。于是 $\psi$ 是 $R$-\Term{algebra}{代数}\Term{isomorphism}{同构}；由于 $\psi^{-1}(I)$ 包含 $B$ 的\Term{augmentation-ideal}{增广理想} $J$，可得 $\psi^{-1}(I)=J$，从而 $\psi^{-1}$ 诱\Term{derive}{导出} $I/I^2$ 到 $J/J^2=N$ 的 $R$-\Term{module}{模}\Term{isomorphism}{同构}。这证明了 $\omega_{G/S}$ \Term{finite}{有限}\Term{locally-free}{局部自由}，即蕴涵 (iv)$\Rightarrow$(iii)。\Term{theorem}{定理}7.4的证明至此完成。
+
+\begin{SGAresult}{注记}{7.5}
+\footnote{编者注（74）：本注记为编者所加。}
+由\Term{theorem}{定理}7.2和7.4显然得到，\Term{functor}{函子} $G\mapsto\mathscr{L}\mathrm{ie}(G)$ 及 $\mathcal L\mapsto G_p(\mathcal L)$ 在以下两个\Term{category}{范畴}之间诱导互为\Term{quasi-inverse}{拟逆}的\Term{equivalence-of-categories}{等价}：一方是在 $S$ 上\Term{locally-finite-presentation}{局部有限表现}且\Term{flat}{平坦}、\Term{height}{高度} $\le1$ 的 $S$-\Term{group}{群}的\Term{category}{范畴}；另一方是 $\mathcal O_S$-\Term{p-lie-algebra}{$p$-Lie 代数}\Term{category}{范畴}中由\Term{finite}{有限}\Term{locally-free}{局部自由} $\mathcal O_S$-\Term{p-lie-algebra}{$p$-Lie 代数}组成的\Term{full-subcategory}{全子范畴}。
+\end{SGAresult}
+
+\SGAsection{8}{基为域的情形}
+\textbf{8.1。}现在总结 $S$ 是\Term{characteristic}{特征} $p>0$ 的域 $k$ 的谱时所得的结果。在此情形，若 $k$-\Term{group-scheme}{群概形}的底层\Term{scheme}{概形}在 $k$ 上\Term{finite-type}{有限型}，就称它是\Term{algebraic-group}{代数群}。此时，由\Term{theorem}{定理}7.2得到：\footnote{编者注（75）：增加了编号8.1.1—8.1.3，以突出其中陈述的结果。}
+\SourcePage{498}
+\begin{SGAresult}{\Term{theorem}{定理}}{8.1.1}
+将 $k$ 上每个\Term{finite-dimensional}{有限维}\Term{p-lie-algebra}{$p$-Lie 代数} $L$ 对应于 $k$-\Term{group}{群} $G_p(L)$ 的\Term{functor}{函子} $G_p$，是将每个 $k$-\Term{algebraic-group}{代数群} $G$ 对应于 $\operatorname{Lie}(G)$ 的\Term{functor}{函子}的\Term{left-adjoint}{左伴随}。
+\end{SGAresult}
+结合\Term{theorem}{定理}7.4，得到：
+\begin{SGAresult}{\Term{theorem}{定理}}{8.1.2}
+\Term{functor}{函子} $G_p:L\mapsto G_p(L)$ 及 $G\mapsto\operatorname{Lie}(G)$，在 $k$ 上\Term{finite-dimensional}{有限维}\Term{p-lie-algebra}{$p$-Lie 代数}的\Term{category}{范畴}与\Term{height}{高度} $\le1$ 的 $k$-\Term{algebraic-group}{代数群}的\Term{category}{范畴}之间诱导互为\Term{quasi-inverse}{拟逆}的\Term{equivalence-of-categories}{等价}。
+\end{SGAresult}
+因为 $G_p$ 是\Term{left-adjoint}{左伴随}\Term{functor}{函子}，它与\Term{direct-limit}{归纳极限}交换，\footnote{编者注（76）：详细展开了以下内容以及下面推论的证明。}特别是与\Term{cokernel}{余核}的形成交换。另一方面，若有\Term{height}{高度} $\le1$ 的 $k$-\Term{algebraic-group}{代数群}之间的两个\Term{morphism}{态射} $\phi:G\to H$ 及 $\phi':G'\to H$，则\Term{fiber-product}{纤维积} $G\times_HG'$ 仍是\Term{height}{高度} $\le1$ 的 $k$-\Term{algebraic-group}{代数群}（因为\Term{morphism}{态射} $\operatorname{Fr}:G\to G^{(p)}$ 与\Term{fiber-product}{纤维积}交换）。所以，\Term{height}{高度} $\le1$ 的 $k$-\Term{algebraic-group}{代数群}的\Term{category}{范畴}到全体 $k$-\Term{algebraic-group}{代数群}的\Term{category}{范畴}的包含与\Term{fiber-product}{纤维积}交换，特别是与核的形成交换。由此得到：
+
+\begin{SGAresult}{推论}{8.1.3}
+\Term{functor}{函子} $G_p$ 在如下意义下\Term{exact}{正合}。若 $\pi:L_1\to L_2$ 是 $k$ 上\Term{finite-dimensional}{有限维}\Term{p-lie-algebra}{$p$-Lie 代数}之间的满\Term{morphism}{态射}，$i$ 是 $L_0=\operatorname{Ker}\pi$ 到 $L_1$ 的包含映射，则有 $k$-\Term{algebraic-group}{代数群}的\Term{exact-sequence}{正合列}
+\[
+ 1\longrightarrow G_p(L_0)\xrightarrow{G_p(i)}G_p(L_1)
+ \xrightarrow{G_p(\pi)}G_p(L_2)\longrightarrow1.
+\]
+\footnote{编者注（77）：此外，由第 VI$_A$ 讲3.2，$G_p(L_2)$ 表示 $G_p(L_1)$ 对 $G_p(L_0)$ 的商 $(\mathrm{fppf})$ \Term{sheaf}{层}。}
+\end{SGAresult}
+\begin{proof}
+由上述讨论，$G_p(i)$ 诱导 $G_p(L_0)$ 到 $\operatorname{Ker}(G_p(\pi))$ 的\Term{isomorphism}{同构}（这个核无论在全体 $k$-\Term{algebraic-group}{代数群} $H$ 的\Term{category}{范畴}中，还是在\Term{height}{高度} $\le1$ 的 $H$ 的\Term{category}{范畴}中，都是相同的）；而
+$G_p(\pi):G_p(L_1)\to G_p(L_2)$ 将 $G_p(L_2)$ 等同于 $k$-\Term{algebraic-group}{代数群}\Term{category}{范畴}中 $G_p(L_1)$ 对 $G_p(L_0)$ 的商。
+\end{proof}
+
+\begin{SGAresult}{注记}{8.1.4}
+\footnote{编者注（78）：增加了 O. Gabber 指出的本注记，将在8.3.1中使用。}
+设 $\phi:G\to H$ 是 $k$-\Term{group}{群}\Term{morphism}{态射}，$K=\operatorname{Ker}(\phi)$。假设 $\phi$ 对 $(\mathrm{fpqc})$ \Term{topology}{拓扑}是\Term{covering-morphism}{覆盖}（特别地，若 $\phi$ 对一个较粗的\Term{topology}{拓扑}，例如 $(\mathrm{fppf})$ \Term{topology}{拓扑}是\Term{covering-morphism}{覆盖}，便满足这一条件）。一方面，$\phi$ 是 $H$ 上的 $K$-\Term{torsor}{挠子}（参见第 IV 讲5.1.7.1）。另一方面（参见第 IV 讲6.3.1），存在由\Term{affine}{仿射}\Term{open-subset}{开集} $S_i$ 组成的 $H$ 的\Term{covering-family}{覆盖}，且对每个 $i$，存在通过 $\phi$ \Term{resolution}{分解}的\Term{affine}{仿射}\Term{faithfully-flat}{忠实平坦}\Term{morphism}{态射} $T_i\to S_i$。于是 $G\times_HT_i$ 在 $T_i$ 上\Term{isomorphism}{同构}于 $K\times T_i$，因而在 $T_i$ 上\Term{faithfully-flat}{忠实平坦}；再由 $(\mathrm{fpqc})$ \Term{descent}{下降}，$G\times_HS_i\to S_i$ \Term{faithfully-flat}{忠实平坦}，从而 $\phi$ \Term{faithfully-flat}{忠实平坦}。
+
+反之，若 $\phi$ \Term{faithfully-flat}{忠实平坦}且\Term{quasi-compact}{拟紧}（相应地，且\Term{locally-finite-presentation}{局部有限表现}），则它对 $(\mathrm{fpqc})$（相应地，$(\mathrm{fppf})$）\Term{topology}{拓扑}是\Term{covering-morphism}{覆盖}，参见第 IV 讲6.3.1。最后回顾，\Term{sheaf}{层}\Term{morphism}{态射}是\Term{covering-morphism}{覆盖}当且仅当它是满\Term{morphism}{态射}，参见第 IV 讲4.4.3。
+\SourcePage{499}
+因此，特别地，一个\Term{quasi-compact}{拟紧} $k$-\Term{group}{群}\Term{morphism}{态射}是\Term{faithfully-flat}{忠实平坦}的，当且仅当它是 $(\mathrm{fpqc})$ \Term{sheaf}{层}的满\Term{morphism}{态射}。
+\end{SGAresult}
+
+\begin{SGAresult}{命题}{8.2}
+考虑\Term{characteristic}{特征} $p>0$ 的域 $k$ 上\Term{algebraic-group}{代数群}的一个\Term{exact-sequence}{正合列}\footnote{编者注（79）：即 $\pi$ \Term{faithfully-flat}{忠实平坦}，且 $i$ 是 $G'$ 到 $\operatorname{Ker}\pi$ 的\Term{isomorphism}{同构}，从而 $G''$ 表示 $G$ 对 $G'$ 的商 $(\mathrm{fppf})$ \Term{sheaf}{层}，参见第 VI$_A$ 讲3.2及5.2。}
+\[
+ 1\longrightarrow G'\xrightarrow{\tau}G\xrightarrow{\pi}G''\longrightarrow1,
+\]
+以及下列断言：
+
+(i) \Term{morphism}{态射} $\pi$ \Term{smooth}{光滑}。
+
+(ii) $G'$ \Term{smooth}{光滑}。
+
+(iii) 对每个整数 $n>0$，以下由 $\tau,\pi$ 诱导的列\Term{exact}{正合}：
+\[
+ 1\longrightarrow {}_{\operatorname{Fr}^n}G'\longrightarrow{}_{\operatorname{Fr}^n}G
+ \longrightarrow{}_{\operatorname{Fr}^n}G''\longrightarrow1.
+\]
+(iv) \Term{morphism}{态射} ${}_{\operatorname{Fr}}\pi:{}_{\operatorname{Fr}}G\to{}_{\operatorname{Fr}}G''$ 是 $(\mathrm{fppf})$ \Term{sheaf}{层}的满\Term{morphism}{态射}。
+
+(v) \Term{morphism}{态射} $\operatorname{Lie}(\pi):\operatorname{Lie}(G)\to\operatorname{Lie}(G'')$ \Term{surjectivity}{满射}。
+
+则有蕴涵 (i)$\Leftrightarrow$(ii)$\Rightarrow$(iii)$\Rightarrow$(iv)$\Leftrightarrow$(v)；若 $G$ 在 $k$ 上\Term{smooth}{光滑}，则所有断言\Term{equivalence}{等价}。
+\end{SGAresult}
+\begin{proof}
+由第 VI$_B$ 讲9.2 (vii)，(i) \Term{equivalence}{等价}于 (ii)；显然 (iii) 蕴涵 (iv)。另一方面，(iv) 和 (v) 的\Term{equivalence}{等价}性由8.1.3得到。
+
+蕴涵 (ii)$\Rightarrow$(iii) 由下图得到：
+\[
+\begin{tikzcd}
+ 1\arrow[r]&G'\arrow[r,"\tau"]\arrow[d,"\operatorname{Fr}^n(G'/k)"']
+ &G\arrow[r,"\pi"]\arrow[d,"\operatorname{Fr}^n(G/k)"]
+ &G''\arrow[r]\arrow[d,"\operatorname{Fr}^n(G''/k)"]&1\\
+ 1\arrow[r]&G'^{(p^n)}\arrow[r,"\tau^{(p^n)}"']
+ &G^{(p^n)}\arrow[r,"\pi^{(p^n)}"']&G''^{(p^n)}\arrow[r]&1
+\end{tikzcd}
+\]
+两行都是\Term{exact}{正合}的；由下文推论8.3.1，$\operatorname{Fr}^n(G'/k)$ 是 $(\mathrm{fppf})$ \Term{sheaf}{层}的满\Term{morphism}{态射}，因此 $\pi$ 诱\Term{derive}{导出} ${}_{\operatorname{Fr}^n}G$ 到 ${}_{\operatorname{Fr}^n}G''$ 的满\Term{morphism}{态射}（将\Term{snake-lemma}{蛇引理}推广到未必交换的\Term{group}{群}\Term{sheaf}{层}）。
+
+同样，若 $G$ 在 $k$ 上\Term{smooth}{光滑}，则 $\operatorname{Fr}(G/k)$ 是满\Term{morphism}{态射}；若再假定 ${}_{\operatorname{Fr}}\pi$ 为满\Term{morphism}{态射}，对上图取 $n=1$ 应用同一\Term{snake-lemma}{蛇引理}可得 $\operatorname{Fr}(G'/k)$ 是满\Term{morphism}{态射}，因此由下文8.3.1，$G'$ 在 $k$ 上\Term{smooth}{光滑}。
+\end{proof}
+
+\begin{SGAresult}{命题}{8.3}
+若 $G$ 是\Term{characteristic}{特征} $p>0$ 的域 $k$ 上\Term{locally-finite-type}{局部有限型}的\Term{group}{群}，\footnote{编者注（80）：将“\Term{algebra}{代数}的”改为“\Term{locally-finite-type}{局部有限型}的”。}则存在整数 $n_0$，使对 $n\ge n_0$，$G/({}_{\operatorname{Fr}^n}G)$ 在 $k$ 上\Term{smooth}{光滑}。
+\end{SGAresult}
+\SourcePage{500}
+\begin{proof}
+由于 $G/({}_{\operatorname{Fr}^n}G)$ 的构造与\Term{base-field-extension}{基域扩张}交换（4.1.1及第 VI$_A$ 讲3.3.2），可假定 $k$ 是\Term{perfect-field}{完美域}。此时 $G_{\mathrm{r\text{é}d}}$ 是\Term{locally-finite-type}{局部有限型} $k$-\Term{group}{群}（参见第 VI$_A$ 讲0.2），且有下列\Term{exact}{正合}\Term{commutative-diagram}{交换图}，其中 $H$ 表示 $k$-\Term{scheme}{概形} $G_{\mathrm{r\text{é}d}}\backslash G$：
+\[
+\begin{tikzcd}[column sep=large]
+ 1\arrow[r]&G_{\mathrm{r\text{é}d}}\arrow[r]\arrow[d,"\operatorname{Fr}^n(G_{\mathrm{r\text{é}d}}/k)"']
+ &G\arrow[r]\arrow[d,"\operatorname{Fr}^n(G/k)"]
+ &H\arrow[d,"\operatorname{Fr}^n(H/k)"]\\
+ 1\arrow[r]&G_{\mathrm{r\text{é}d}}^{(p^n)}\arrow[r]&G^{(p^n)}\arrow[r]&H^{(p^n)}.
+\end{tikzcd}
+\]
+$H$ 是一个\Term{residue-field}{剩余域}为 $k$ 的\Term{finite}{有限}\Term{local-scheme}{局部} $k$-\Term{algebra}{代数}的谱（参见第 VI$_A$ 讲5.6.1）。因此存在整数 $n_0$，使对所有 $n\ge n_0$，$\operatorname{Fr}^n(H/k)$ 通过 $H^{(p^n)}$ 的“\Term{unit-section}{单位截面}”\Term{resolution}{分解}。于是，对 $n\ge n_0$，$\operatorname{Fr}^n(G/k)$ 通过 $G_{\mathrm{r\text{é}d}}^{(p^n)}$ \Term{resolution}{分解}，从而由第 VI$_A$ 讲5.4.1有\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}
+ G\arrow[r,"\operatorname{Fr}^n(G/k)"]\arrow[d,"\pi"']&G_{\mathrm{r\text{é}d}}^{(p^n)}\\
+ G/({}_{\operatorname{Fr}^n}G)\arrow[ur,"i"']
+\end{tikzcd}
+\]
+其中 $i$ 为\Term{closed-immersion}{闭浸入}（$\pi$ 为\Term{canonical}{典范}\Term{projection}{投影}）。又 $i$ 在底层\Term{topological-space}{拓扑空间}之间诱导\Term{homeomorphism}{同胚}，因此它是\Term{isomorphism}{同构}。由于 $k$ 是\Term{perfect-field}{完美域}，$G_{\mathrm{r\text{é}d}}^{(p^n)}$ 在 $k$ 上\Term{smooth}{光滑}（第 VI$_A$ 讲1.3.1），所以对每个 $n\ge n_0$，$G/({}_{\operatorname{Fr}^n}G)$ 在 $k$ 上\Term{smooth}{光滑}。
+\end{proof}
+
+\begin{SGAresult}{推论}{8.3.1}
+设 $G$ 是\Term{characteristic}{特征} $p>0$ 的域 $k$ 上\Term{locally-finite-type}{局部有限型}的\Term{group}{群}，\footnotemark[\value{footnote}]$n$ 是整数 $\ge1$。\footnote{编者注（81）：明确写出了 (ii) 与 (iii) 的\Term{equivalence}{等价}性，并详细展开了证明。}下列条件\Term{equivalence}{等价}：
+
+(i) $G$ 在 $k$ 上\Term{smooth}{光滑}。
+
+(ii) $\operatorname{Fr}^n(G/k):G\to G^{(p^n)}$ 是 $(\mathrm{fppf})$ \Term{sheaf}{层}的满\Term{morphism}{态射}。
+
+(iii) $\operatorname{Fr}^n(G/k):G\to G^{(p^n)}$ \Term{faithfully-flat}{忠实平坦}。
+\end{SGAresult}
+\begin{proof}
+首先，由于 $G$ 在 $k$ 上\Term{locally-finite-type}{局部有限型}，$\operatorname{Fr}^n(G/k)$ 是\Term{finite-presentation}{有限表现}的，故 (ii) 与 (iii) 的\Term{equivalence}{等价}性由8.1.4得到。假设 $G$ 在 $k$ 上\Term{smooth}{光滑}，从而 $G$ \Term{reduced-scheme}{约化}；由于 $\operatorname{Fr}^n(G/k)$ \Term{surjectivity}{满射}，它是\Term{faithfully-flat}{忠实平坦}的（参见第 VI$_A$ 讲6.2或第 VI$_B$ 讲1.3）。
+
+反之，假设 $\operatorname{Fr}^n(G/k)$ \Term{faithfully-flat}{忠实平坦}。$\operatorname{Fr}^n(G^{(p^n)}/k)$ 是 $\operatorname{Fr}^n(G/k)$ 经\Term{base-change}{基变换}所得（参见4.1.3），所以也\Term{faithfully-flat}{忠实平坦}，复合
+\[
+ \operatorname{Fr}^{2n}(G/k):G\longrightarrow G^{(p^n)}\longrightarrow G^{(p^{2n})}
+\]
+也如此。
+\SourcePage{501}
+由此得到，对每个 $m\in\mathbf N$，$\operatorname{Fr}^{mn}(G/k):G\to G^{(p^{mn})}$ 都\Term{faithfully-flat}{忠实平坦}，因此诱导\Term{isomorphism}{同构} $G/({}_{\operatorname{Fr}^{mn}}G)\simeq G^{(p^{mn})}$（参见第 VI$_A$ 讲5.4.1）。由命题8.3，$m$ 充分大时 $G^{(p^{mn})}$ 在 $k$ 上\Term{smooth}{光滑}，因而由 $(\mathrm{fpqc})$ \Term{descent}{下降}，$G$ 也如此（参见 EGA IV$_4$，17.7.1）。
+\end{proof}
+\textbf{8.4。}在本讲最后的两个陈述中，回到任意\Term{characteristic}{特征}的域 $k$ 的情形。
+
+当 $k$ 的\Term{characteristic}{特征}为 $0$（相应地，为 $p>0$）时，取整数 $n\ge1$（相应地，取 $n\ge1$ 且 $n$ 与 $p$ 互素）；在这两种情形下，都简称 $n$ 与 $k$ 的\Term{characteristic}{特征}互素。此外，若 $G$ 是 $k$ 上的\Term{group-scheme}{群概形}，以 $n_G:G\to G$ 表示如下 $k$-\Term{scheme}{概形}\Term{morphism}{态射}：当 $T$ 为 $k$-\Term{scheme}{概形}时，将 $x\in G(T)$ 映为 $x^n\in G(T)$。
+
+\begin{SGAresult}{命题}{8.4}
+设 $G$ 是域 $k$ 上的\Term{algebraic-group}{代数群}，$n$ 是与 $k$ 的\Term{characteristic}{特征}互素的整数。则 $n_G:G\to G$ 是\Term{etale}{平展}\Term{morphism}{态射}。
+\end{SGAresult}
+\begin{proof}
+\footnote{编者注（82）：在陈述中将“在原点处\Term{etale}{平展}”改为“\Term{etale}{平展}”，并增加了以下一句。}
+由第 VI$_B$ 讲1.3，只需证明 $n_G$ 在原点处\Term{etale}{平展}。设 $A$ 是 $G$ 在原点处的\Term{local-ring}{局部环}，$I$ 为 $A$ 的极大\Term{ideal}{理想}。由第 II 讲3.9.4，由 $n_G$ 诱导的映射 $\operatorname{Lie}(n_G):\operatorname{Lie}(G)\to\operatorname{Lie}(G)$ 是比例为 $n$ 的\Term{homothety}{位似}。因此它是\Term{isomorphism}{同构}，$n_G$ 在 $I/I^2=\operatorname{Lie}(G)^*$ 上诱导的\Term{endomorphism}{自同态}也如此。若 $k$ 的\Term{characteristic}{特征}为 $0$，则 $G$ 在 $k$ 上\Term{smooth}{光滑}（第 VI$_B$ 讲1.6.1，另见第 VII$_B$ 讲3.3.1），故\Term{canonical}{典范}\Term{morphism}{态射} $S(I/I^2)\to\operatorname{gr}_I(A)$ 是\Term{isomorphism}{同构}，其中 $\operatorname{gr}_I(A)$ 是 $I$-进过滤的\Term{associated-graded}{相伴分次对象}。于是 $n_G$ 诱导 $\operatorname{gr}_I(A)$ 的一个\Term{automorphism}{自同构}，从而也诱导 $A$ 的\Term{completion}{完备化} $\widehat A$ 的\Term{automorphism}{自同构}，所以 $n_G$ 在原点处\Term{etale}{平展}（参见 EGA IV$_4$，17.6.3）。
+
+若\Term{characteristic}{特征}为 $p>0$ 且 $G$ 的\Term{height}{高度} $\le1$，则 $A$ \Term{isomorphism}{同构}于 $\omega_{G/k}=I/I^2$ 的\Term{symmetric-algebra}{对称代数}对 $\omega_{G/k}$ 中各元素的 $p$ 次幂所生成的\Term{ideal}{理想}的商（参见7.4）。此时可采用与\Term{characteristic}{特征} $0$ 的情形“相同”的论证，得到 $n_G$ 诱导 $A$ 的一个\Term{automorphism}{自同构}。
+
+若 $G$ 的\Term{height}{高度} $\le r$，并假设已对\Term{height}{高度} $\le r-1$ 的\Term{group}{群}证明了断言，以 $B,A,A'$ 分别表示 ${}_{\operatorname{Fr}}G$、$G$ 及 $G'={}_{\operatorname{Fr}}G\backslash G$ 的\Term{affine-algebra}{仿射代数}，以 $n_B,n_A,n_{A'}$ 分别表示由 $n_{{}_{\operatorname{Fr}}G},n_G,n_{G'}$ 在 $B,A,A'$ 上诱导的\Term{endomorphism}{自同态}。\footnote{编者注（83）：以下详细展开了原文。}设 $I'=I\cap A$ 是 $A'$ 的极大\Term{ideal}{理想}；由于有\Term{cartesian}{笛卡尔}方块
+\[
+\begin{tikzcd}
+ {}_{\operatorname{Fr}}G\arrow[r]\arrow[d]&G\arrow[d]\\
+ e\arrow[r]&G'
+\end{tikzcd}
+\]
+可得 $B=A/I'A$。注意，$n_{A'}$（相应地，$n_B$）就是 $n_A$ 在 $A'$ 上（相应地，在 $B$ 上）诱导的\Term{endomorphism}{自同态}。由第 VI$_A$ 讲3.2，$A$ 是\Term{faithfully-flat}{忠实平坦} $A'$-\Term{module}{模}，
+\SourcePage{502}
+且 $A'$ 为\Term{locally-artinian}{局部 Artin} 环（因为 $G'$ 是\Term{height}{高度} $\le r-1$ 的 $k$-\Term{algebraic-group}{代数群}），所以 $A$ 是\Term{free-module}{自由} $A'$-\Term{module}{模}。$n_A$ 在 $A'$ 上的\Term{restriction}{限制}是 $n_{A'}$，后者由归纳假设是\Term{isomorphism}{同构}；故由 \Term{nakayama-lemma}{Nakayama 引理}，若 $n_A$ 在 $A/I'A$ 上诱导的\Term{endomorphism}{自同态}是\Term{automorphism}{自同构}，则 $n_A$ 也是\Term{automorphism}{自同构}。但这个\Term{endomorphism}{自同态}正是 $n_B$；由于 $B$ 的\Term{height}{高度} $\le1$，它是\Term{automorphism}{自同构}。因此 $n_A$ 是\Term{automorphism}{自同构}。
+
+最后，若 $G$ 是\Term{characteristic}{特征} $p>0$ 的域上的任意\Term{algebraic-group}{代数群}，上述结果表明 $n_G$ 诱\Term{derive}{导出}各 $k$-\Term{scheme}{概形} ${}_{\operatorname{Fr}^r}G$ 的\Term{automorphism}{自同构}；这些\Term{scheme}{概形}在 $k$ 上\Term{affine}{仿射}，其\Term{algebra}{代数}为\Term{local-ring}{局部环} $A$ 对\Term{ideal}{理想} $I^{\{p^r\}}$ 的商，其中 $I^{\{p^r\}}$ 由 $I$ 中各元素的 $p^r$ 次幂生成。由于 $n_G$ 定义了 $A/I^{\{p^r\}}$ 的\Term{automorphism}{自同构}，取\Term{inverse-limit}{投射极限}可见 $n_G$ 诱导 $\widehat A$ 的\Term{automorphism}{自同构}，故 $n_G$ 在原点处\Term{etale}{平展}（EGA IV$_4$，17.6.3）。
+\end{proof}
+
+\begin{SGAresult}{命题}{8.5}
+设 $G$ 是域 $k$ 上秩为 $n$ 的\Term{finite}{有限}\Term{algebraic-group}{代数群}。则 $n_G:G\to G$ 是 $G$ 的零\Term{morphism}{态射}。
+\end{SGAresult}
+先指出将8.4与8.5结合所得的以下推论：\footnote{编者注（84）：增加了本推论，原文通过“（参见8.4）”隐含指出了它。不使用8.5的另一种证明，例如可见 [TO70]，\Term{lemma}{引理}5。}
+\begin{SGAresult}{推论}{8.5.1}
+设 $G$ 是域 $k$ 上秩为 $n$ 的\Term{finite}{有限}\Term{algebraic-group}{代数群}。若 $n$ 与 $k$ 的\Term{characteristic}{特征}互素，则 $G$ 在 $k$ 上\Term{etale}{平展}。
+\end{SGAresult}
+
+\begin{proof}[命题8.5的证明]
+设 $H$ 是 $G$ 的一个在 $k$ 上秩为 $m$ 的\Term{normal}{正规}子\Term{group}{群}。以 $\lambda:H\times G\to G$ 表示由 $G$ 的\Term{multiplication}{乘法}诱导的\Term{morphism}{态射}。沿用第 VI$_A$ 讲3.2的记号，有\Term{cartesian}{笛卡尔}方块
+\[
+\begin{tikzcd}
+ H\times G\arrow[r,"\lambda"]\arrow[d,"\operatorname{pr}_2"']&G\arrow[d,"\pi"]\\
+ G\arrow[r,"\pi"']&H\backslash G
+\end{tikzcd}
+\]
+由于 $\pi:G\to H\backslash G$ \Term{faithfully-flat}{忠实平坦}且\Term{quasi-compact}{拟紧}（第 VI$_A$ 讲3.2），而 $\operatorname{pr}_2$ \Term{locally-free}{局部自由}且秩为 $m$，由 EGA IV$_2$，2.5.2，$G\to H\backslash G$ \Term{locally-free}{局部自由}且秩为 $m$。记 $r=\operatorname{rg}_k(H\backslash G)$，则 $n=\operatorname{rg}_k(G)=rm$。
+
+另一方面，对任意 $k$-\Term{scheme}{概形} $T$，有“抽象”\Term{group}{群}的\Term{exact-sequence}{正合列}
+\[
+ 1\longrightarrow H(T)\longrightarrow G(T)\longrightarrow(H\backslash G)(T).
+\]
+所以若 $m_H$ 和 $r_{H\backslash G}$ 为零，显然 $n_G$ 也为零。取 $H$ 为 $G$ 的\Term{neutral-component}{单位分支} $G^0$，则 $G^0\backslash G$ \Term{etale}{平展}（参见第 VI$_A$ 讲5.5.1），故可假定 $G$ 在 $k$ 上\Term{etale}{平展}，或假定 $G$ 为\Term{infinitesimal-group}{无穷小群}（参见7.0）。
+
+若 $G$ \Term{etale}{平展}，经\Term{base-field-extension}{基域扩张}可归结到 $k$ \Term{algebraically-closed}{代数闭}的情形。此时 $G$ 是\Term{constant-group}{常值群}（参见第 I 讲4.1），而陈述是经典结果。
+
+若 $G$ 是非零的\Term{infinitesimal-group}{无穷小群}，则 $k$ 的\Term{characteristic}{特征}必为 $p>0$
+\SourcePage{503}
+（参见第 VI$_B$ 讲1.6.1或第 VII$_B$ 讲3.3.1）；各子\Term{group}{群} ${}_{\operatorname{Fr}^n}G$ 构成 $G$ 的一个\Term{composition-series}{合成列}，其各商的\Term{height}{高度} $\le1$。
+
+这就归结到 $G$ 的\Term{height}{高度} $\le1$ 的情形。设 $A$（相应地，$L$）是 $G$ 的\Term{affine-algebra}{仿射代数}（相应地，\Term{lie-algebra}{Lie 代数}），$U=U_p(L)$。由7.4有 $G=G_p(L)$，故 $A=U^*$；所以若 $\dim_kL=r$，则 $G$ 在 $k$ 上的秩为 $p^r$（参见5.3.3）。因此来研究取 $p$ 次幂定义的\Term{morphism}{态射} $p_G:G\to G$；它诱导 $A$ 的\Term{endomorphism}{自同态} $p_A$，并经\Term{duality}{对偶}诱导 $U$ 的\Term{endomorphism}{自同态} $p_U$。
+
+设 $I$ 是 $A$ 的\Term{augmentation-ideal}{增广理想}，将证明 $p_A(I)\subset I^p$。若此结论成立，则有 $p_A^r(I)\subset I^{p^r}$。另一方面，已知 $I^{r(p-1)+1}=0$（因为 $I$ 由 $r$ 个 $p$ 次幂为零的元素生成）。由于 $p^r>r(p-1)$，得到 $p_A^r(I)=0$，因此 $p_G^r$ 是零\Term{morphism}{态射}。故只需证明断言
+\[
+ p_A(I)\subset I^p.\tag{*}
+\]
+对每个整数 $s\ge1$，以 $m_A^{s-1}:A^{\otimes s}\to A$（相应地，$\Delta_U^s:U\to U^{\otimes s}$）表示由 $A$ 的\Term{multiplication}{乘法} $m_A$（相应地，$U$ 的\Term{comultiplication}{余乘法} $\Delta_U$）诱导的映射。则 $p_A$ 等于下列复合：
+\[
+ A\xrightarrow{\Delta_A^{p-1}}A^{\otimes p}\xrightarrow{m_A^{p-1}}A;
+\]
+而由于 $m_A$（相应地，$\Delta_A$）的\Term{transpose}{转置}是 $\Delta_U$（相应地，$m_U$），$U$ 的\Term{endomorphism}{自同态} $p_U={}^tp_A$ 是下列复合：
+\[
+ U\xrightarrow{\Delta_U^{p-1}}U^{\otimes p}\xrightarrow{m_U^{p-1}}U.
+\]
+设 $J$ 是 $U$ 的\Term{augmentation-ideal}{增广理想}，\footnote{编者注（85）：以下一段详细展开了原文。}有 $U=k1_U\oplus J$，以 $\pi$ 表示核为 $k1_U$ 的\Term{projection}{投影} $U\to J$。对每个整数 $s\ge1$，以 $(I^s)^\perp$ 表示 $I^s$ 在 $A^*=U$ 中的\Term{orthogonal-complement}{正交补}，即使下列复合为零的 $u\in U$ 的\Term{set}{集合}：
+\[
+ I^{\otimes s}\xrightarrow{m_A^{s-1}}I\xrightarrow{u}k.
+\]
+由于 $m_A$ 的\Term{transpose}{转置}为 $\Delta_U$，可见 $(I^s)^\perp$ 是由满足 $\Delta_U^{s-1}(u)$ 在 $I^{\otimes s}$ 上为零的 $u\in U$ 组成的向量子\Term{space}{空间} $P_{s-1}$；也就是说，以 $\overline\Delta_U^{s-1}$ 表示 $\Delta_U^{s-1}$ 与\Term{projection}{投影} $\pi^{\otimes s}:U^{\otimes s}\to J^{\otimes s}$ 的复合，则
+\[
+ (I^s)^\perp=P_{s-1}=\operatorname{Ker}\overline\Delta_U^{s-1}
+\]
+（另见第 VII$_B$ 讲1.3.6）。因此，要证明断言 $(*)$，需证明\Term{transpose}{转置}映射 $p_U={}^tp_A$ 将 $P_{p-1}$ 映入 $I^\perp=k1_U$。由于 $p_U(1_U)=1_U$，只需证明下列断言，其中 $P_{p-1}^+$ 表示 $J\cap P_{p-1}$：
+\[
+ p_U(P_{p-1}^+)=0.\tag{**}
+\]
+\SourcePage{504}
+另一方面，对 $s$ 归纳容易证明，$P_{s-1}^+$ 是由乘积 $x_1\cdots x_t$（$1\le t\le s-1$ 且 $x_i\in L$）生成的 $U$ 的向量子\Term{space}{空间}（参见第 VII$_B$ 讲4.3）。若 $x_1,x_2,\ldots,x_t\in L$，则
+\[
+ p_U(x_1x_2\cdots x_t)=m_U^{p-1}\left(
+ \prod_{j=1}^t\sum_{i=1}^p
+ 1\otimes\cdots\otimes\overset{i}{x_j}\otimes\cdots\otimes1\right).
+\]
+显然，表达式 $\prod_j\sum_i1\otimes\cdots\otimes x_j\otimes\cdots\otimes1$ 是 $p^t$ 个项 $x_h$ 的和，这些项以映射 $h:\{1,\ldots,t\}\to\{1,\ldots,p\}$ 为指标。\footnote{编者注（86）：以下详细展开了原文，将\Term{preorder}{预序}的概念换成\Term{equivalence}{等价}的有序分划的概念。}这样的映射 $h$ 定义 $\{1,\ldots,t\}$ 的一个至多有 $p$ 个块的有序分划 $\mathfrak p_h$。事实上，以 $i_1<\cdots<i_r$ 表示 $h$ 的像中的元素；对 $s=1,\ldots,r$，置 $I_s=h^{-1}(i_s)$，$x_{I_s}=\prod_{j\in I_s}x_j$，其中乘积按递增顺序进行。于是 $h$ 对应于 $p$-张量
+\[
+ 1\otimes\cdots\otimes x_{I_1}\otimes\cdots\otimes x_{I_r}\otimes\cdots\otimes1
+\]
+（每个 $x_{I_s}$ 位于第 $i_s$ 个位置），而它在 $m_U^p$ 下的像是乘积
+\[
+ x_{I_1}\otimes\cdots\otimes x_{I_r},
+\]
+此乘积只依赖于有序分划 $\mathfrak p=(I_1,\ldots,I_r)$，将其记为 $x_{\mathfrak p}$。固定 $\mathfrak p$ 后，$\{1,\ldots,p\}$ 中所有 $i_1<\cdots<i_r$ 的选择都会给出 $x_{\mathfrak p}$，因此得到等式
+\[
+ p_U(x_1x_2\cdots x_t)=\sum_{\mathfrak p}\binom{p}{n(\mathfrak p)}x_{\mathfrak p},
+\]
+其中 $\mathfrak p$ 遍历 $\{1,\ldots,t\}$ 的至多有 $p$ 个块的有序分划，$n(\mathfrak p)$ 表示 $\mathfrak p$ 的块数。（有 $1\le n(\mathfrak p)\le\min(t,p)$。）
+
+当 $t<p$ 时，各项 $\binom p{n(\mathfrak p)}$ 都为零，故 $p_U(x_1\cdots x_t)=0$。因此 $p_U$ 在 $P_{p-1}^+$ 上为零，证明了断言 $(**)$，从而证明 $(*)$，并完成8.5的证明。
+\end{proof}
+
+\begin{SGAresult}{推论}{8.5.2}
+\footnote{编者注（87）：增加了本推论，见第 VIII 讲注记7.3.1。}
+设 $S$ 为\Term{reduced-scheme}{约化概形}，$G$ 是\Term{finite}{有限}\Term{locally-free}{局部自由}且秩为 $n$ 的 $S$-\Term{group}{群}。则 $n_G:G\to G$ 是 $G$ 的零\Term{morphism}{态射}。
+\end{SGAresult}
+\begin{proof}
+设 $S'$ 是当 $\eta$ 遍历 $S$ 的\Term{maximal-point}{极大点}时所有 $\operatorname{Spec}\mathcal O_{S,\eta}$ 的\Term{direct-sum}{直和}。由于 $S$ \Term{reduced-scheme}{约化}，\Term{morphism}{态射} $S'\to S$ 是\Term{schematically-dominant}{概形支配}的；又因 $G$ 在 $S$ 上\Term{finite}{有限}\Term{locally-free}{局部自由}，\Term{morphism}{态射} $f:G_{S'}\to G$ 也如此（参见 EGA IV$_3$，11.10.5）。由于 $G\to S$ \Term{affine}{仿射}，从而\Term{separated}{分离}，$n_G$ 与零\Term{morphism}{态射}的重合轨迹是 $G$ 的一个\Term{closed-subscheme}{闭子概形}；但由8.5，它包含 $f$，因此等于 $G$，即 $n_G$ 是零\Term{morphism}{态射}。
+\end{proof}
+
+\begin{SGAresult}{注记}{8.5.3}
+还应指出，根据 P. Deligne 的一个\Term{theorem}{定理}（见 [TO70]，第4页），若 $G$ 是任意基 $S$ 上\Term{finite}{有限}\Term{locally-free}{局部自由}、秩为 $n$ 的交换 $S$-\Term{group}{群}，则 $n_G=0$。
+\end{SGAresult}
+
+\SourcePage{505}
+\SGAsection{}{参考文献}
+\begin{description}
+ \item[{[BAlg]}] N. Bourbaki，\emph{Algèbre}（《\Term{algebra}{代数}》），第 I—III 章，Hermann，1974；第 X 章，Masson，1980。
+ \item[{[BAC]}] N. Bourbaki，\emph{Algèbre commutative}（《\Term{commutative-algebra}{交换代数}》），第 I—IV 章，Masson，1985。
+ \item[{[BLie]}] N. Bourbaki，\emph{Groupes et algèbres de Lie}（《Lie 群与 \Term{lie-algebra}{Lie 代数}》），第 I 章，Hermann，1971。
+ \item[{[DG70]}] M. Demazure，P. Gabriel，\emph{Groupes algébriques}（《\Term{algebraic-group}{代数群}》），Masson \& North-Holland，1970。
+ \item[{[Ja03]}] J. C. Jantzen，\emph{Representations of algebraic groups}（《\Term{algebraic-group}{代数群}的表示》），Academic Press，1987；第2版，Amer. Math. Soc.，2003。
+ \item[{[TO70]}] J. Tate，F. Oort，\emph{Groups schemes of prime order}（《素数阶\Term{group-scheme}{群概形}》），Ann. scient. Éc. Norm. Sup. \textbf{3}（1970），1—21。
+\end{description}
+\SourcePage{506}
+% 原PDF第506页为空白页。

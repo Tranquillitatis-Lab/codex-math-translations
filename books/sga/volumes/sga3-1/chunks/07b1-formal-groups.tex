@@ -1,0 +1,466 @@
+\SourcePage{507}
+\SGAchapter{VII B}{群概形的无穷小研究：形式群}{Étude infinitésimale des schémas en groupes : Groupes formels}
+\begin{center}P. Gabriel\end{center}
+\textbf{B）\Term{formal-group}{形式群}}
+
+\Term{formal-group}{形式群}的研究通常极为简单。若以下各页未能清楚显出这一点，责任应归于某位算术学家：他声称懂得定义在“域以外的东西”上的\Term{formal-group}{形式群}。\footnote{编者注：例如，Lubin 和 Tate 的工作（参见 [LT65]）体现了定义在\Term{complete-noetherian-local-ring}{完备诺特局部环}上的\Term{formal-group}{形式群}的意义。关于任意\Term{base}{基底}上的\Term{formal-group}{形式群}以及\Term{lifting}{提升}和变形问题，特别是 Barsotti--Tate 群（“$p$-\Term{divisible-group}{可除群}”），已有大量文献；例如参见 [LT66, Ta67, Gr74, Me72, La75, Fo77, Il85, Br00]。本讲的结果尤其有很大部分在 [Fo77] 第 I 章中重新出现。} 因此，我们对“在\Term{artinian-ring}{阿廷环}的\Term{projective-limit}{投射极限}上\Term{locally-free}{局部自由}”的\Term{formal-group}{形式群}，逐一展开了通常针对域上\Term{formal-group}{形式群}叙述的一般理论。有关后者的更详细研究，参见 Heidelberg--Strasbourg 1964/65 年\Term{algebraic-geometry}{代数几何}讨论班。\footnote{编者注：编者只找到一个标为 1965/66 年、题为“\Term{linear-algebraic-group}{线性代数群}”的此类讨论班，其中未出现\Term{formal-group}{形式群}的概念；不过可参见 [De72]。}
+
+\SGAsection{0}{伪紧环与伪紧模的回顾}
+本节包含若干技术准备；我们回顾并补充 [CA]（\emph{Des catégories abéliennes}, Bull. Soc. Math. France \textbf{90}, 1962）中的若干结果。
+
+\textbf{0.1。}一个\Term{left-pseudocompact-ring}{左伪紧环}是指带\Term{identity-element}{单位元}的\Term{topological-ring}{拓扑环}，它是\Term{hausdorff}{分离}且\Term{complete}{完备}的，并且 $0$ 有一组由\Term{finite}{有限}余\Term{length}{长度}\Term{left-ideal}{左理想} $\mathfrak l$ 构成的\Term{neighborhood}{邻域}基（即 $\operatorname{long}_A(A/\mathfrak l)<+\infty$）。这里我们假定 $A$ 交换，因此无须区分“左”和“右”。特别地，\Term{quotient-ring}{商环} $A/\mathfrak l$ 是\Term{artinian-ring}{阿廷环}，而 $A$ 等同于这些赋予\Term{discrete-topology}{离散拓扑}的环的\Term{topology}{拓扑}\Term{projective-limit}{投射极限}。
+
+\SourcePage{508}
+\Term{complete-noetherian-local-ring}{完备诺特局部环} $(A,\mathfrak m)$ 显然是\Term{pseudocompact}{伪紧}的。\footnote{编者注：（赋予它 $\mathfrak m$-\Term{adic-topology}{进拓扑}时。）}
+
+\textbf{0.1.1。} $A$ 的每个\Term{closed-ideal}{闭理想} $I$ 都是包含它的各开\Term{ideal}{理想}的交。\footnote{编者注：事实上，若 $x\notin I$，就存在开\Term{ideal}{理想} $\mathfrak l$ 使 $(x+\mathfrak l)\cap I=\varnothing$；于是 $I+\mathfrak l$ 是不含 $x$ 的开\Term{ideal}{理想}。另外，以下明确说明了每个“极大闭”\Term{ideal}{理想}都是极大的且为开\Term{ideal}{理想}。} 因此，每个极大\Term{closed-ideal}{闭理想}都是开的。此外，若 $\mathfrak l$ 是 $A$ 的开\Term{ideal}{理想}，则 $A/\mathfrak l$ 的\Term{maximal-ideal}{极大理想}与包含 $\mathfrak l$ 的\Term{maximal-ideal}{极大理想} $\mathfrak m$ 一一对应；后者因而既开又闭。所以，每个极大\Term{closed-ideal}{闭理想}都是开的\Term{maximal-ideal}{极大理想}（从而也是闭的），逆命题显然。以 $\Upsilon(A)$ 记这些\Term{ideal}{理想}的\Term{set}{集合}。
+
+若 $\mathfrak l$ 是 $A$ 的开\Term{ideal}{理想}且 $\mathfrak m\in\Upsilon(A)$，那么\Term{localization}{局部化} $(A/\mathfrak l)_{\mathfrak m}$ 在 $\mathfrak m$ 包含 $\mathfrak l$ 时是\Term{local-ring}{局部环}，否则是零环。由于 $A/\mathfrak l$ 是\Term{artinian-ring}{阿廷环}，它是\Term{finite}{有限}个\Term{local-ring}{局部环}的\Term{direct-product}{直积}，可写为
+\[
+ A/\mathfrak l\simeq\prod_{\mathfrak m\in\Upsilon(A)}(A/\mathfrak l)_{\mathfrak m}.
+\]
+由此得到“\Term{canonical}{典范}”\Term{isomorphism}{同构}
+\[
+ A\simeq\varprojlim_{\mathfrak l}(A/\mathfrak l)
+ \simeq\varprojlim_{\mathfrak l}\prod_{\mathfrak m}(A/\mathfrak l)_{\mathfrak m}
+ \simeq\prod_{\mathfrak m}\varprojlim_{\mathfrak l}(A/\mathfrak l)_{\mathfrak m}
+ \simeq\prod_{\mathfrak m}A_{\mathfrak m},
+ \qquad A_{\mathfrak m}:=\varprojlim_{\mathfrak l}(A/\mathfrak l)_{\mathfrak m}.
+\]
+这个\Term{local-component}{局部分量} $A_{\mathfrak m}$ 是赋予\Term{discrete-topology}{离散拓扑}的\Term{artinian}{阿廷}\Term{local-ring}{局部环}的\Term{filtered}{滤过}\Term{projective-limit}{投射极限}；所以它是一个\Term{local-ring}{局部环}，对于\Term{projective-limit}{投射极限}\Term{topology}{拓扑}是\Term{pseudocompact}{伪紧}的。\footnote{编者注：注意，$A_{\mathfrak m}$ 就是 $A$ 在\Term{maximal-ideal}{极大理想} $\mathfrak m$ 处的\Term{localization}{局部化}。事实上，$A_{\mathfrak m}$ 的\Term{identity-element}{单位元} $e_{\mathfrak m}$ 是 $A$ 中不属于 $\mathfrak m$ 的\Term{idempotent}{幂等元}；由于 $A=A_{\mathfrak m}\times B$，其中 $B=A(1-e_{\mathfrak m})$，$A_{\mathfrak m}$ 等同于\Term{localization}{局部化} $A_{e_{\mathfrak m}}$，从而也等同于 $S^{-1}A$，其中 $S=A-\mathfrak m$。另一方面，由 $e_{\mathfrak m}(1-e_{\mathfrak m})=0$，$\mathfrak m$ 包含 $1-e_{\mathfrak m}$，因而也包含 $B$，所以 $\mathfrak m$ 等同于 $\mathfrak mA_{\mathfrak m}\times B$。}
+
+\textbf{0.1.2。}设 $r(A)$ 为 $A$ 的所有开\Term{maximal-ideal}{极大理想}之交；将 $A$ 等同于 $\prod_{\mathfrak m}A_{\mathfrak m}$ 时，它就是各\Term{ideal}{理想} $\mathfrak mA_{\mathfrak m}$ 的\Term{cartesian-product}{笛卡儿积}。对于 $A$ 的每个开\Term{ideal}{理想} $\mathfrak l$，$r(A)$ 在 $A/\mathfrak l$ 中的像包含在 $A/\mathfrak l$ 的\Term{radical}{根基}内。因而这个像的某个幂为零，于是在 $n$ 充分大时有 $r(A)^n\subset\mathfrak l$。所以序列 $r(A)^n$ 趋于 $0$。
+
+当 $x\in r(A)$ 时，序列 $x^n$ 也是如此。换言之，$r(A)$ 的每个元素都是\Term{topologically-nilpotent}{拓扑幂零}的，逆命题也显然成立。因此，通项为 $1+x+\cdots+x^n$ 的序列在 $x\in r(A)$ 时收敛于 $1/(1-x)$。这表明 $r(A)$ 是 $A$ 的\Term{jacobson-radical}{Jacobson 根基}，即 $A$ 的所有\Term{maximal-ideal}{极大理想}之交（参见 Bourbaki，\emph{Algèbre}，第 8 章，\S 6，\Term{theorem}{定理} 1）。\footnote{编者注：事实上，设 $x\in r(A)$；若 $\mathfrak m$ 是不含 $x$ 的\Term{maximal-ideal}{极大理想}，则存在 $y\in A$ 使 $1-xy\in\mathfrak m$，但 $xy\in r(A)$，故 $1-xy$ \Term{invertible}{可逆}，矛盾。注意以下推论：若 $\Upsilon(A)$ 是\Term{finite}{有限}集 $\{\mathfrak m_1,\ldots,\mathfrak m_r\}$，则这些 $\mathfrak m_i$ 就是 $A$ 的全部\Term{maximal-ideal}{极大理想}。}
+
+\SourcePage{509}
+\textbf{注记。}\footnote{编者注：增补这些注记，是为比较 1.1 中给出的\Term{formal-spectrum}{形式谱} $\operatorname{Spf}(A)$ 的定义与 EGA I，10.1.2 和 10.4.2 中的定义。}
+ a）若 $\mathfrak p$ 是 $A$ 的开\Term{prime-ideal}{素理想}，则因为 $A/\mathfrak p$ 是\Term{artinian-ring}{阿廷环}，$\mathfrak p$ 是\Term{maximal-ideal}{极大理想}。因此，$\Upsilon(A)$ 等于 $A$ 的开\Term{prime-ideal}{素理想}的\Term{set}{集合}。
+
+b）每个 $\mathfrak mA_{\mathfrak m}$ 都是 $A_{\mathfrak m}$ 的\Term{ideal-of-definition}{定义理想}，即一个开\Term{ideal}{理想} $I$，使序列 $I^n$ 趋于 $0$（参见 EGA $0_{\mathrm I}$，7.1.2）。所以，$\operatorname{Spec}(A_{\mathfrak m}/\mathfrak mA_{\mathfrak m})$ 配备\Term{topological-ring}{拓扑环} $A_{\mathfrak m}$ 后，是 EGA I，10.1.2 意义下的\Term{affine-formal-scheme}{仿射形式概形}。
+
+c）\Term{topological-ring}{拓扑环} $A$ 在 EGA $0_{\mathrm I}$，7.1.2 的意义下\Term{admissible-ring}{可容许}，当且仅当 $r(A)$ 是开的（因而是\Term{ideal-of-definition}{定义理想}）；这又当且仅当 $\Upsilon(A)$ \Term{finite}{有限}。此时，\Term{affine-formal-scheme}{仿射形式概形} $\operatorname{Spf}(A)=\operatorname{Spec}(A/r(A))$（参见 EGA I，10.1.2）的底\Term{space}{空间}为赋予\Term{discrete-topology}{离散拓扑}的 $\Upsilon(A)$；其\Term{structure-sheaf}{结构层}在 $\Upsilon(A)$ 的\Term{subset}{子集} $E$ 上的\Term{section}{截面}环为 $\prod_{\mathfrak m\in E}A_{\mathfrak m}$。
+
+d）设 $A$ 是任意\Term{pseudocompact-ring}{伪紧环}。下文 1.1 将在\Term{space}{空间} $\Upsilon(A)$ 上赋予\Term{discrete-topology}{离散拓扑}和一个环\Term{sheaf}{层}，它在每个\Term{subset}{子集} $E$ 上的\Term{section}{截面}环为 $\prod_{\mathfrak m\in E}A_{\mathfrak m}$。由 b），每个点都具有一个为\Term{affine-formal-scheme}{仿射形式概形}的\Term{open-neighborhood}{开邻域}，故这定义了一个\Term{formal-scheme}{形式概形}（EGA I，10.4.2），记为 $\operatorname{Spf}(A)$。（若要使这个\Term{formal-scheme}{形式概形}为\Term{affine}{仿射}的，它必须\Term{quasi-compact}{拟紧}，所以 $\Upsilon(A)$ 必须\Term{finite}{有限}；此时 $\operatorname{Spf}(A)$ 与 EGA I，10.1.2 的定义相符。）
+
+\textbf{0.1.3。}若 $A$ 和 $B$ 是两个\Term{pseudocompact-ring}{伪紧环}，则 $A$ 到 $B$ 的\Term{homomorphism}{同态}按定义是与加法、\Term{multiplication}{乘法}及\Term{identity-element}{单位元}相容的\Term{continuous-map}{连续映射}。这样的\Term{homomorphism}{同态}把 $A$ 中的\Term{topologically-nilpotent}{拓扑幂零}元素映为 $B$ 中的\Term{topologically-nilpotent}{拓扑幂零}元素；因此，它把 $A$ 的\Term{radical}{根基} $r(A)$ 映入 $B$ 的\Term{radical}{根基} $r(B)$。
+
+\textbf{0.2。}设 $A$ 是一个（交换的）\Term{pseudocompact-ring}{伪紧环}。一个\Term{pseudocompact-module}{伪紧 $A$-模} $M$ 是指\Term{hausdorff}{分离}且\Term{complete}{完备}的\Term{topology}{拓扑} $A$-模，且 $0$ 有一组由\Term{submodule}{子模} $M'$ 构成的\Term{neighborhood}{邻域}基，使 $M/M'$ 作为 $A$-模具有\Term{finite-length}{有限长度}。
+
+若 $M$、$N$ 是两个\Term{pseudocompact-module}{伪紧 $A$-模}，则 $M$ 到 $N$ 的\Term{morphism}{态射}按定义是\Term{continuous}{连续}的 $A$-\Term{linear}{线性}映射。以 $\operatorname{Hom}_c(M,N)$ 记这些\Term{morphism}{态射}组成的群。
+
+\begin{SGAresult}{命题}{0.2.B}
+\footnote{编者注：我们把本节的结果集中陈述为以下命题，并随后指出证明的步骤；参见 [CA]，\S IV.3 或 [DG70]，\S V.2。}
+（i）\Term{pseudocompact-module}{伪紧 $A$-模}构成一个\Term{abelian-category}{阿贝尔范畴}，记为 $\operatorname{PC}(A)$。（特别地，对每个\Term{morphism}{态射} $f:M\to N$，$\operatorname{Im}(f)$ 是\Term{complete}{完备}\Term{submodule}{子模}，因而在 $N$ 中是闭的。）
+
+（ii）\Term{finite-length}{有限长度}的\Term{pseudocompact-module}{伪紧 $A$-模}（其\Term{topology}{拓扑}因而是\Term{discrete}{离散}的）构成 $\operatorname{PC}(A)$ 的一族\Term{cogenerator}{余生成元}。
+\SourcePage{510}
+（iii）无限积和\Term{filtered}{滤过}\Term{projective-limit}{投射极限}是\Term{exact}{正合}的，即 $\operatorname{PC}(A)$ 满足公理 $(\mathrm{AB}5^*)$。\footnote{编者注：参见 [Gr57]，I \S 1.5 和命题 1.8；也可参看，例如 [Po73]，\S 2.8 或 [We95]，附录 A.4。}
+\end{SGAresult}
+为方便读者，简述证明的步骤。首先有以下\Term{lemma}{引理}（[CA] \S IV.3，\Term{lemma}{引理} 1；证明见 [BEns]，III，\S 7.4，\Term{theorem}{定理} 1 及例 2）：
+\begin{SGAresult}{\Term{lemma}{引理}}{0.2.C}
+设 $B$ 是一个环，$I$ 是一个\Term{filtered-ordered-set}{滤过有序集}，$(M_i)$ 和 $(N_i)$ 是以 $I$ 为指标的两个左 $B$-模\Term{projective-system}{投射系统}。设 $(s_i):(M_i)\to(N_i)$ 是\Term{projective-system}{投射系统}的\Term{morphism}{态射}，对每个 $i$，$s_i$ 均\Term{surjectivity}{满射}且核为\Term{artinian}{阿廷}模。那么映射
+\[\varprojlim s_i:\varprojlim M_i\longrightarrow\varprojlim N_i\]
+是\Term{surjectivity}{满射}。
+\end{SGAresult}
+\begin{SGAresult}{推论}{0.2.D}
+（[CA] \S IV.3，命题 10 和 11。）设 $M$ 是一个\Term{pseudocompact-module}{伪紧 $A$-模}。
+
+（i）设 $K$ 为 $M$ 的闭\Term{submodule}{子模}。则赋予\Term{quotient-topology}{商拓扑}的 $M/K$ 是\Term{pseudocompact-module}{伪紧 $A$-模}。
+
+（ii）设 $(M_i)$ 是 $M$ 的一族\Term{filtered}{滤过}递减闭\Term{submodule}{子模}。
+
+（a）\Term{canonical}{典范}映射 $M\to\varprojlim M/M_i$ 是\Term{surjectivity}{满射}，其核为 $\bigcap_iM_i$。
+
+（b）对 $M$ 的每个闭\Term{submodule}{子模} $N$，有 $N+\bigcap_iM_i=\bigcap_i(N+M_i)$。
+\end{SGAresult}
+\begin{proof}
+设 $(L_j)$ 为 $M$ 的开\Term{submodule}{子模}构成的\Term{filtered}{滤过}递减族。在 $M/K$ 上赋予\Term{quotient-topology}{商拓扑}，即以开\Term{submodule}{子模} $(K+L_j)/K$ 为 $0$ 的一组\Term{neighborhood}{邻域}基。因为 $K$ 是闭的，它等于各 $K+L_j$ 的交，因此映射
+\[\tau:M/K\longrightarrow\varprojlim_jM/(K+L_j)\]
+是\Term{injectivity}{单射}。它也是开映射，右端赋予\Term{discrete}{离散}模 $M/(K+L_j)$ 的\Term{projective-limit}{投射极限}\Term{topology}{拓扑}。此外，对每个 $j$，映射 $t_j:M/L_j\to M/(K+L_j)$ 是\Term{surjectivity}{满射}且核为\Term{artinian}{阿廷}模，所以由上一\Term{lemma}{引理}，下述\Term{commutative-diagram}{交换图}中的映射 $t$ 是\Term{surjectivity}{满射}：
+\[
+\begin{tikzcd}
+ M\arrow[r,"p","\sim"']\arrow[d]&\varprojlim_j M/L_j\arrow[d,"t"]\\
+ M/K\arrow[r,"\tau"]&\varprojlim_jM/(K+L_j).
+\end{tikzcd}
+\]
+因 $M$ \Term{complete}{完备}，$p$ 是\Term{isomorphism}{同构}；所以 $\tau$ \Term{surjectivity}{满射}，因而为\Term{isomorphism}{同构}。这就证明了（i）。
+
+\SourcePage{511}
+再证（ii）（a）。根据上述结果，对每个 $i$ 有\Term{isomorphism}{同构} $M/M_i\xrightarrow{\sim}\varprojlim_jM/(M_i+L_j)$，因此下述\Term{commutative-diagram}{交换图}中的两个水平\Term{arrow}{箭头}均为\Term{isomorphism}{同构}：
+\[
+\begin{tikzcd}
+ M\arrow[r,"p","\sim"']\arrow[d,"g"]&\varprojlim_jM/L_j\arrow[d,"s"]\\
+ \varprojlim_iM/M_i\arrow[r,"\sim"']&\varprojlim_{i,j}M/(M_i+L_j).
+\end{tikzcd}
+\]
+此外，对每个 $j$，由于 $M/L_j$ 是\Term{artinian}{阿廷}模，\Term{submodule}{子模}族 $(M_i+L_j)/L_j$ 有最小元，因此\Term{morphism}{态射} $s_j:M/L_j\to\varprojlim_iM/(L_j+M_i)$ \Term{surjectivity}{满射}；由上一\Term{lemma}{引理}，$s$ \Term{surjectivity}{满射}。所以 $g$ \Term{surjectivity}{满射}。最后，$g$ 的核是各 $M_i$ 的\Term{projective-limit}{投射极限}，即它们的交。这就证明了（a）。
+
+由此\Term{pushout}{推出}（b）。因为 $N$ 是闭\Term{submodule}{子模}（从而\Term{hausdorff}{分离}且\Term{complete}{完备}），它对于 $M$ 的\Term{topology}{拓扑}所诱导的\Term{topology}{拓扑}是\Term{pseudocompact-module}{伪紧模}。所以由（a），下面\Term{commutative-diagram}{交换}\Term{exact}{正合}图中的\Term{morphism}{态射} $f$、$g$ 都是\Term{surjectivity}{满射}：
+\[
+\begin{tikzcd}[column sep=small]
+0\arrow[r]&N\arrow[r]\arrow[d,"f"]&M\arrow[r]\arrow[d,"g"]&M/N\arrow[r]\arrow[d,"h"]&0\\
+0\arrow[r]&\varprojlim_iN/(N\cap M_i)\arrow[r]&\varprojlim_iM/M_i\arrow[r]&\varprojlim_iM/(N+M_i).
+\end{tikzcd}
+\]
+于是由“\Term{snake-lemma}{蛇引理}”，序列 $0\to\ker f\to\ker g\to\ker h\to0$ \Term{exact}{正合}，从而得到等式 $N+\bigcap_iM_i=\bigcap_i(N+M_i)$。
+\end{proof}
+现在可以证明命题 0.2.B。设 $f:M\to N$ 是\Term{pseudocompact-module}{伪紧 $A$-模}的\Term{morphism}{态射}。那么 $K=\ker(f)$ 是 $M$ 的闭\Term{submodule}{子模}，所以\Term{hausdorff}{分离}且\Term{complete}{完备}，因而对于 $M$ 诱导的\Term{topology}{拓扑}是\Term{pseudocompact-module}{伪紧模}。由 0.2.D（i），$M/K$ 赋予\Term{quotient-topology}{商拓扑}后是\Term{pseudocompact}{伪紧}的。
+
+证明\Term{continuous}{连续}\Term{bijection}{双射} $M/K\to\operatorname{Im}(f)$ 双向\Term{continuous}{连续}。将 $M/K$ 与 $\operatorname{Im}(f)$ 等同后，只须证明\Term{quotient-topology}{商拓扑} $Q$ 比 $N$ 诱导的\Term{topology}{拓扑} $T$ 更细。以 $(L_j)$（分别地 $(N_i)$）记 $M$（分别地 $N$）的开\Term{submodule}{子模}构成的\Term{filtered}{滤过}递减\Term{set}{集合}，并置 $N_i'=N_i\cap\operatorname{Im}(f)$。设 $P=(K+L_j)/K$ 是 $M/K$ 中对于 $Q$ 为开的\Term{submodule}{子模}。由于 $M/(K+L_j)$ 是\Term{artinian}{阿廷}模，族 $N_i'+P$ 有一个最小元 $N_{i_0}'+P$。由于各 $N_i'$ 对于 $T$ 是开的，因而是闭的，所以对于 $Q$ 也是闭的，由 0.2.D（ii）（b）得到
+\[
+ N_{i_0}'+P=\bigcap_i(N_i'+P)=P+\bigcap_iN_i'=P,
+\]
+故 $N_{i_0}'\subset P$。这表明 $P$ 对于 $T$ 是开的，从而 $M/K\to\operatorname{Im}(f)$ 是\Term{pseudocompact-module}{伪紧模}的\Term{isomorphism}{同构}。
+
+特别地，$\operatorname{Im}(f)$ 对于 $T$ \Term{complete}{完备}，所以在 $N$ 中是闭的。再次由 0.2.D（i），$\operatorname{Coker}(f)$ 赋予\Term{quotient-topology}{商拓扑}后是\Term{pseudocompact}{伪紧}的。这就证明 $\operatorname{PC}(A)$ 是\Term{abelian-category}{阿贝尔范畴}。
+
+另一方面，$\operatorname{PC}(A)$ 中存在任意\Term{projective-limit}{投射极限}：若 $(M_i)$ 是\Term{pseudocompact-module}{伪紧模}的\Term{projective-system}{投射系统}，则各 $M_i$ 的\Term{projective-limit}{投射极限}的
+\SourcePage{512}
+底模是各底模的\Term{projective-limit}{投射极限}，\Term{topology}{拓扑}则是\Term{projective-limit}{投射极限}\Term{topology}{拓扑}。此外，若有 $\operatorname{PC}(A)$ 中的一族\Term{exact-sequence}{正合列}
+\[0\longrightarrow K_i\longrightarrow M_i\longrightarrow Q_i\longrightarrow0,\]
+则序列 $0\to\prod_iK_i\to\prod_iM_i\to\prod_iQ_i\to0$ \Term{exact}{正合}。由此得到 0.2.B 的（iii），因为在任意具有任意积的\Term{abelian-category}{阿贝尔范畴}中，0.2.D 的条件（a）和（b）彼此\Term{equivalence}{等价}，并且\Term{equivalence}{等价}于\Term{filtered}{滤过}\Term{projective-limit}{投射极限}的\Term{exactness}{正合性}（参见 [Mi65]，III 1.2--1.9 或 [Po73]，第 2 章，\Term{theorem}{定理} 8.6）。
+
+最后，每个\Term{pseudocompact-module}{伪紧模} $M$ 都是积 $\prod_LM/L$ 的\Term{submodule}{子模}，其中 $L$ 遍历 $M$ 的开\Term{submodule}{子模}，因此\Term{finite-length}{有限长度}\Term{object}{对象}构成 $\operatorname{PC}(A)$ 的一族\Term{cogenerator}{余生成元}。（此外，每个\Term{length}{长度}为 $n$ 的\Term{object}{对象}都\Term{isomorphism}{同构}于某个商 $A^n/L$，其中 $L$ 是 $A^n$ 中余\Term{length}{长度}为 $n$ 的开\Term{submodule}{子模}；因而这些商构成一组\Term{cogenerator}{余生成元}。）0.2.B 的证明完成。
+
+\footnote{编者注：本段插入了命题 0.2.E 和推论 0.2.F；它们将在 0.2.2 中用到。（原版中，这些结果位于 0.3。）}设 $(\mathrm{Ab})$ 是\Term{abelian-group}{阿贝尔群}\Term{category}{范畴}，$\operatorname{LF}(A)$ 是 $\operatorname{PC}(A)$ 中由\Term{finite-length}{有限长度}\Term{object}{对象}构成的\Term{full-subcategory}{满子范畴}。对 $\operatorname{PC}(A)$ 的每个\Term{object}{对象} $M$，以 $h_c^M$ 记\Term{functor}{函子}
+\[\operatorname{LF}(A)\longrightarrow(\mathrm{Ab}),\qquad N\longmapsto\operatorname{Hom}_c(M,N).\]
+根据 [CA]，\S II.4，\Term{theorem}{定理} 1、\Term{lemma}{引理} 4 及推论 1，有以下结果。\footnote{编者注：事实上，$\operatorname{PC}(A)$ 有一组\Term{artinian}{阿廷}\Term{cogenerator}{余生成元}，其中的\Term{filtered}{滤过}\Term{projective-limit}{投射极限}是\Term{exact}{正合}的，而 $\operatorname{LF}(A)$ 是\Term{artinian-object}{阿廷对象}的\Term{full-subcategory}{满子范畴}。因此，\Term{duality}{对偶}\Term{category}{范畴} $\operatorname{PC}(A)^0$ 有一组\Term{noetherian}{诺特}\Term{generator}{生成元}，其中的\Term{filtered}{滤过}\Term{inductive-limit}{归纳极限}是\Term{exact}{正合}的。根据 [CA] \S II.4，\Term{theorem}{定理} 1 的证明，\Term{functor}{函子} $M\mapsto\operatorname{Hom}_c(M,-)$ 是从 $\operatorname{PC}(A)$ 到 $\operatorname{Lex}(\operatorname{LF}(A),(\mathrm{Ab}))$ 的\Term{anti-equivalence}{反等价}。同处\Term{lemma}{引理} 4 和推论 1 也陈述了推论 0.2.F 的“\Term{duality}{对偶}”结果。“直接”证明见 [DG70]，\S V.2，\Term{theorem}{定理} 3.1、\Term{lemma}{引理} 3.5、推论 3.3 和 3.4。}
+\begin{SGAresult}{命题}{0.2.E}
+\Term{functor}{函子} $M\mapsto h_c^M$ 是从 $\operatorname{PC}(A)$ 到\Term{left-exact-functor}{左正合函子} $\operatorname{LF}(A)\to(\mathrm{Ab})$ 的\Term{category}{范畴} $\operatorname{Lex}(\operatorname{LF}(A),(\mathrm{Ab}))$ 的\Term{anti-equivalence}{反等价}。
+\end{SGAresult}
+\begin{SGAresult}{推论}{0.2.F}
+（i）$\operatorname{PC}(A)$ 的\Term{object}{对象} $P$ 是\Term{projective-object}{投射对象}，当且仅当\Term{functor}{函子} $h_c^P$ \Term{exact}{正合}（即当且仅当\Term{functor}{函子} $\operatorname{Hom}_c(P,-)$ 在 $\operatorname{LF}(A)$ 上\Term{exact}{正合}）。
+
+（ii）设 $(M_i)$ 是 $\operatorname{PC}(A)$ 中的一个\Term{filtered}{滤过}\Term{projective-system}{投射系统}。\footnote{编者注：由于每个无限积都是\Term{finite-product}{有限积}的\Term{filtered}{滤过}\Term{projective-limit}{投射极限}，每个与\Term{filtered}{滤过}\Term{projective-limit}{投射极限}交换的\Term{additive}{加性}\Term{functor}{函子}也与无限积交换。} 对 $\operatorname{LF}(A)$ 的每个\Term{object}{对象} $N$，有关于 $N$ 的\Term{functorial-isomorphism}{函子性同构}
+\[\operatorname{Hom}_c(\varprojlim M_i,N)\simeq\varinjlim\operatorname{Hom}_c(M_i,N).\]
+（iii）$\operatorname{PC}(A)$ 的\Term{projective-object}{投射对象}的任意\Term{filtered}{滤过}\Term{projective-limit}{投射极限}和任意积\footnotemark[\value{footnote}]仍是 $\operatorname{PC}(A)$ 的\Term{projective-object}{投射对象}。
+\end{SGAresult}
+最后，由 0.2.F 得到：
+\begin{SGAresult}{推论}{0.2.G}
+设 $(M_i)_{i\in I}$ 是 $\operatorname{PC}(A)$ 的一族\Term{object}{对象}。那么 $\prod_{i\in I}M_i$ 是\Term{projective-object}{投射的}，当且仅当每个 $M_i$ 都是\Term{projective-object}{投射的}。
+\end{SGAresult}
+\SourcePage{513}
+事实上，对每个 $N\in\operatorname{Ob}\operatorname{LF}(A)$，有 $\operatorname{Hom}_c(\prod_iM_i,N)\simeq\bigoplus_i\operatorname{Hom}_c(M_i,N)$。
+
+\textbf{0.2.1。} $A$ 的每个\Term{local-component}{局部分量} $A_{\mathfrak m}$ 都是 $A$ 的\Term{direct-factor}{直因子}，因而是 $\operatorname{PC}(A)$ 的\Term{projective-object}{投射对象}（$A$ 显然是\Term{projective-object}{投射的}）。而且，$A_{\mathfrak m}$ 只有一个单商 $S_{\mathfrak m}=A_{\mathfrak m}/\mathfrak mA_{\mathfrak m}$，所以是不\Term{decomposable}{可分解}的。另一方面，$\operatorname{PC}(A)$ 的每个单\Term{object}{对象}都\Term{isomorphism}{同构}于唯一的一个 $S_{\mathfrak m}$。由 [CA]，IV \S 3，\Term{theorem}{定理} 3 的推论 1，\footnote{编者注：这里指的是同处 \S 2，\Term{theorem}{定理} 2 及 \S 1，命题 2 中建立的“\Term{duality}{对偶}”命题；“直接”证明见 [DG70]，V，\S 2，\Term{theorem}{定理} 4.5 及例 4.6 b）。}得到：
+\begin{SGAresult}{命题}{0.2.1}
+（i）$\operatorname{PC}(A)$ 的每个\Term{projective-object}{投射对象}都是不\Term{decomposable}{可分解}\Term{projective-object}{投射对象}的\Term{direct-product}{直积}，这些\Term{object}{对象}在\Term{isomorphism}{同构}意义下唯一确定。
+
+（ii）每个不\Term{decomposable}{可分解}\Term{projective-object}{投射对象}都\Term{isomorphism}{同构}于唯一的一个 $A_{\mathfrak m}$（$\mathfrak m\in\Upsilon(A)$）。
+\end{SGAresult}
+\begin{SGAresult}{定义}{0.2.1}
+称\Term{pseudocompact-module}{伪紧 $A$-模} $M$ 为\Term{topologically-free}{拓扑自由}的，若它\Term{isomorphism}{同构}于一族 $A$ 的副本 $(A_i)$ 的积。
+
+此时，若把 $A_i$ 的\Term{identity-element}{单位元}映为 $m_i$ 的各 $A$-\Term{linear}{线性}映射 $A_i\to M$ 可延拓为 $\prod_iA_i\to M$ 的\Term{isomorphism}{同构}，就称 $M$ 的元素族 $(m_i)$ 为 $M$ 的一个\Term{pseudobasis}{伪基}。
+\end{SGAresult}
+
+\textbf{0.2.2。}\footnote{编者注：本段的结果在下文起重要\Term{action}{作用}（参见 1.2.3、1.3.5、2.2.1 等），故我们详述了这些结果。}若 $M$ 是\Term{pseudocompact-module}{伪紧 $A$-模}，以 $M^\dagger$ 记（不带\Term{topology}{拓扑}的）$A$-模 $\operatorname{Hom}_c(M,A)$。
+
+反过来，若 $N$ 是 $A$-模，以 $N^*=\operatorname{Hom}_A(N,A)$ 记它的\Term{dual}{对偶}，赋予逐点收敛\Term{topology}{拓扑}，即 $N^*$ 中 $0$ 的一组\Term{neighborhood}{邻域}基由下述\Term{submodule}{子模}给出，其中 $x\in N$，$\mathfrak l$ 是 $A$ 的开\Term{ideal}{理想}：
+\[\mathcal V(x,\mathfrak l)=\{f\in N^*\mid f(x)\in\mathfrak l\}.\]
+这使 $N^*$ 成为\Term{pseudocompact-module}{伪紧 $A$-模}。事实上，首先看到若 $N=A$，则 $N^*=A$，带有其\Term{pseudocompact-ring}{伪紧环}\Term{topology}{拓扑}；若 $N$ 是\Term{free-module}{自由模} $A^{(I)}$，则 $N^*$ 是赋予\Term{product-topology}{积拓扑}的积 $A^I$。另一方面，对每个\Term{morphism}{态射} $\phi:N_1\to N_2$，\Term{transpose}{转置}\Term{morphism}{态射} ${}^t\phi:N_2^*\to N_1^*$ 是\Term{continuous}{连续}的，因为 $N_1^*$ 的\Term{submodule}{子模} $\mathcal V(x_1,\mathfrak l)$ 在 ${}^t\phi$ 下的\Term{inverse-image}{逆像}正是 $N_2^*$ 的\Term{submodule}{子模} $\mathcal V(\phi(x_1),\mathfrak l)$。因此，对任意 $N$，取一个表示
+\[ A^{(J)}\xrightarrow{\phi}A^{(I)}\xrightarrow{\pi}N\longrightarrow0,\]
+可见 $N^*$ 是\Term{continuous}{连续}\Term{morphism}{态射} ${}^t\phi:A^I\to A^J$ 的核，所以 $N^*$ 是\Term{pseudocompact}{伪紧}的。
+
+当 $A$ 为\Term{artinian-ring}{阿廷环}时（此时上面可取 $\mathfrak l=0$），由 0.2.F 得到：
+\begin{SGAresult}{命题}{0.2.2}
+当 $A$ 为\Term{artinian-ring}{阿廷环}时，\Term{functor}{函子}
+\[P\longmapsto P^\dagger,\qquad Q\longmapsto Q^*,\]
+\SourcePage{514}
+其中 $P$ 是 $\operatorname{PC}(A)$ 的\Term{projective-object}{投射对象}（相应地，$Q$ 是\Term{projective-object}{投射} $A$-模），在\Term{projective-object}{投射}\Term{pseudocompact-module}{伪紧 $A$-模}的\Term{category}{范畴}与\Term{projective-object}{投射} $A$-模的\Term{category}{范畴}之间建立一个\Term{anti-equivalence}{反等价}。\footnote{编者注：另请回顾，在\Term{artinian-ring}{阿廷环}上，一个模是\Term{projective-object}{投射的}当且仅当它是\Term{flat}{平坦}的，例如见第 VI B 讲，编者注（54）或下文 0.3.7。}
+\end{SGAresult}
+特别地，当 $A$ 是域 $k$ 时，$P\mapsto P^\dagger$ 是从全部\Term{pseudocompact-module}{伪紧 $k$-模}（也称\Term{linearly-compact-vector-space}{线性紧 $k$-向量空间}）的\Term{category}{范畴}到 $k$-\Term{vector-space}{向量空间}\Term{category}{范畴}的\Term{anti-equivalence}{反等价}。\footnote{编者注：注意，一族\Term{linearly-compact-vector-space}{线性紧 $k$-向量空间} $(V_i)_{i\in I}$ 在 $\operatorname{PC}(k)$ 中的\Term{direct-sum}{直和}为 $(\prod_{i\in I}V_i^\dagger)^*$。}
+
+\textbf{0.3。}\footnote{编者注：我们根据 0.2 中的增补修改了本段。}设 $L$、$M$ 是两个\Term{pseudocompact-module}{伪紧 $A$-模}。\Term{functor}{函子}
+\[\operatorname{LF}(A)\longrightarrow(\mathrm{Ab}),\qquad N\longmapsto\operatorname{Bil}_c(L\times M,N),\]
+其中 $\operatorname{Bil}_c(L\times M,N)$ 表示 $L\times M$ 到 $N$ 的\Term{continuous}{连续} $A$-\Term{bilinear}{双线性}映射所成的\Term{abelian-group}{阿贝尔群}，是\Term{left-exact-functor}{左正合的}。
+
+由 0.2.E，存在一个在唯一\Term{isomorphism}{同构}意义下唯一的\Term{pseudocompact-module}{伪紧 $A$-模} $L\widehat\otimes_A M$，它\Term{representable-functor}{表示}这个\Term{functor}{函子}；即对每个 $N\in\operatorname{Ob}\operatorname{LF}(A)$，有\Term{functorial-isomorphism}{函子性同构}
+\[\operatorname{Hom}_c(L\widehat\otimes_A M,N)\simeq\operatorname{Bil}_c(L\times M,N).\]
+此外，$L\widehat\otimes_A M$ 等同于各（\Term{discrete}{离散}）$A$-模 $(L/L')\otimes_A(M/M')$ 的\Term{projective-limit}{投射极限} $P=\widehat{L\otimes_A M}$，其中 $L'$ 和 $M'$ 分别遍历 $L$ 和 $M$ 的开\Term{submodule}{子模}。
+
+事实上，设 $\varphi:L\times M\to N$ 是到\Term{finite-length}{有限长度}（\Term{discrete}{离散}）$A$-模 $N$ 的\Term{continuous}{连续}\Term{bilinear}{双线性}映射。由下文\Term{lemma}{引理} 0.3.1，存在 $L$、$M$ 的开\Term{submodule}{子模} $L'$、$M'$，使 $\varphi(L'\times M)=\varphi(L\times M')=\{0\}$。这意味着 $\varphi$ 所诱导的映射 $\overline\varphi:L\otimes_A M\to N$ 具有\Term{form}{形式} $\varphi'\circ p$，其中 $p$ 是从 $L\otimes_A M$ 到 $(L/L')\otimes_A(M/M')$ 的\Term{canonical-projection}{典范投影}。若以 $\widehat\varphi$ 记复合映射
+\[P\longrightarrow(L/L')\otimes_A(M/M')\xrightarrow{\varphi'}N,\]
+可见映射 $\varphi\mapsto\widehat\varphi$ 是从 $\operatorname{Bil}_c(L\times M,N)$ 到 $\operatorname{Hom}_c(P,N)$ 的\Term{functorial-isomorphism}{函子性双射}，故 $P\simeq L\widehat\otimes_A M$。
+
+所以，\Term{pseudocompact-module}{伪紧模} $L\widehat\otimes_A M$ 是 $L\otimes_A M$ 对于由到 $(L/L')\otimes_A(M/M')$ 的\Term{canonical-projection}{典范投影}的核所定义的\Term{linear-topology}{线性拓扑}的\Term{separated-completion}{分离完备化}；我们称它为 $L$ 与 $M$ 的\Term{completed-tensor-product}{完备张量积}。
+
+若 $x\in L$、$y\in M$，则 $x\otimes_A y$ 在 $L\widehat\otimes_A M$ 中的像记为 $x\widehat\otimes_A y$。
+
+\begin{SGAresult}{\Term{lemma}{引理}}{0.3.1}
+设 $L$、$M$、$N$ 是\Term{pseudocompact-module}{伪紧 $A$-模}，且 $N$ 具有\Term{finite-length}{有限长度}。若 $\varphi:L\times M\to N$ 是\Term{continuous}{连续} $A$-\Term{bilinear}{双线性}映射，则存在 $L$、$M$ 的开\Term{submodule}{子模} $L'$、$M'$，使 $\varphi(L'\times M)=\varphi(L\times M')=\{0\}$。
+\end{SGAresult}
+\SourcePage{515}
+\begin{proof}
+事实上，$\varphi^{-1}(0)$ 是 $(0,0)$ 的\Term{open-neighborhood}{开邻域}，故包含形如 $L_1\times M_1$ 的\Term{open-subset}{开集}，其中 $L_1$、$M_1$ 是 $L$、$M$ 的开\Term{submodule}{子模}。由于 $L/L_1$ 具有\Term{finite-length}{有限长度}，存在 $L$ 的元素 $x_1,\ldots,x_r$，使 $L_1+Ax_1+\cdots+Ax_r=L$。若 $M'\subset M_1$“足够小”，则对每个 $i$，还有 $\varphi(x_i,M')=0$，因为映射 $y\mapsto\varphi(x_i,y)$ \Term{continuous}{连续}；由此得到 $\varphi(L,M')=\{0\}$。同理，若 $L'$ 足够小，则 $\varphi(L',M)=\{0\}$。
+\end{proof}
+\begin{SGAresult}{推论}{0.3.1.1}
+\footnote{编者注：此推论为增补。}设 $M$ 是一个\Term{pseudocompact-module}{伪紧 $A$-模}。
+
+（i）对每个开\Term{submodule}{子模} $M'$，存在 $A$ 的开\Term{ideal}{理想} $\mathfrak l$，使 $\overline{\mathfrak lM}\subset M'$。
+
+（ii）所以，$M\simeq\varprojlim_{\mathfrak l}M/\overline{\mathfrak lM}$，其中 $\mathfrak l$ 遍历 $A$ 的开\Term{ideal}{理想}构成的\Term{filtered}{滤过}\Term{projective-system}{投射系统}，且各 $M/\overline{\mathfrak lM}$ 都赋予\Term{quotient-topology}{商拓扑}（这使其成为\Term{pseudocompact-module}{伪紧模}，参见 0.2.D）。
+\end{SGAresult}
+\begin{proof}
+考虑映射 $\varphi:A\times M\to M/M'$，$(a,m)\mapsto am+M'$；由 0.3.1，存在 $A$ 的开\Term{ideal}{理想} $\mathfrak l$ 使 $\mathfrak lM\subset M'$；由于 $M'$ 也是闭的，它也包含 $\overline{\mathfrak lM}$。由于 $M$ 的开\Term{submodule}{子模}之交为零，故有 $\bigcap_{\mathfrak l}\overline{\mathfrak lM}=(0)$。另一方面，由 0.2.D，映射 $\phi:M\to\varprojlim_{\mathfrak l}M/\overline{\mathfrak lM}$ 是\Term{surjectivity}{满射}；所以由 0.2.B（的证明），$\phi$ 诱导一个\Term{isomorphism}{同构} $M/\ker(\phi)\xrightarrow{\sim}\varprojlim_{\mathfrak l}M/\overline{\mathfrak lM}$，而我们刚已证明 $\ker(\phi)=\bigcap_{\mathfrak l}\overline{\mathfrak lM}$ 为零。
+\end{proof}
+
+\textbf{注记 0.3.1.2。}\footnote{编者注：此注记为增补。}\Term{completed-tensor-product}{完备张量积}满足通常的\Term{associative-law}{结合律}：若 $L$、$M$、$P$ 是\Term{pseudocompact-module}{伪紧 $A$-模}，有\Term{canonical}{典范}\Term{isomorphism}{同构}
+\[(L\widehat\otimes M)\widehat\otimes P\simeq L\widehat\otimes(M\widehat\otimes P);\]
+事实上，这两个\Term{object}{对象}都\Term{representable-functor}{表示}如下\Term{functor}{函子}：它把 $\operatorname{LF}(A)$ 的每个\Term{object}{对象} $N$ 映为 $L\times M\times P$ 到 $N$ 的\Term{continuous}{连续} $A$-\Term{trilinear}{三线性}映射组成的\Term{abelian-group}{阿贝尔群}。
+
+\textbf{0.3.2。}设 $L'\xrightarrow{f}L\xrightarrow{g}L''\to0$ 是一条\Term{exact-sequence}{正合列}，$M$ 是 $\operatorname{PC}(A)$ 的一个\Term{object}{对象}。显然，对 $\operatorname{LF}(A)$ 的每个\Term{object}{对象} $N$，所诱导的序列
+\[
+\begin{aligned}
+0&\longrightarrow\operatorname{Bil}_c(L''\times M,N)\longrightarrow\operatorname{Bil}_c(L\times M,N)\longrightarrow\operatorname{Bil}_c(L'\times M,N),\\
+0&\longrightarrow\operatorname{Hom}_c(L''\widehat\otimes_A M,N)\longrightarrow\operatorname{Hom}_c(L\widehat\otimes_A M,N)\longrightarrow\operatorname{Hom}_c(L'\widehat\otimes_A M,N)
+\end{aligned}
+\]
+均\Term{exact}{正合}。由 0.2.E，这\Term{equivalence}{等价}于说序列
+\[
+ L'\widehat\otimes_A M\xrightarrow{f\widehat\otimes M}L\widehat\otimes_A M
+ \xrightarrow{g\widehat\otimes M}L''\widehat\otimes_A M\longrightarrow0\tag{*}
+\]
+\Term{exact}{正合}。因此：
+\begin{SGAresult}{推论}{0.3.2}
+对于每个\Term{pseudocompact-module}{伪紧 $A$-模} $M$，\Term{functor}{函子} $-\widehat\otimes_A M$ 是\Term{right-exact}{右正合}的。
+\end{SGAresult}
+
+\SourcePage{516}
+特别地，取 $L$ 为环 $A$，$f$ 为\Term{closed-ideal}{闭理想} $\mathfrak a$ 到 $A$ 的包含映射，$g$ 为 $A$ 到 $A/\mathfrak a$ 的\Term{canonical-projection}{典范投影}。这时可通过映射 $x\widehat\otimes_A m\mapsto xm$ 将 $A\widehat\otimes_A M$ 与 $M$ 等同。由于 $\mathfrak a\widehat\otimes_A M$ 的像在 $M$ 中是闭的（参见 0.2.B），且 $\mathfrak a\otimes_A M$ 的像在 $\mathfrak a\widehat\otimes_A M$ 中\Term{dense}{稠密}，$f\widehat\otimes_A M$ 的像恰为 $\mathfrak aM$ 在 $M$ 中的\Term{closure}{闭包} $\overline{\mathfrak aM}$。故\Term{exact-sequence}{正合列}（*）给出\Term{isomorphism}{同构}
+\[(A/\mathfrak a)\widehat\otimes_A M\xrightarrow{\sim}M/\overline{\mathfrak aM}.\]
+
+\begin{SGAresult}{\Term{nakayama-lemma}{Nakayama 引理}}{0.3.3}
+设 $A$ 是\Term{pseudocompact-ring}{伪紧环}，$M$ 是\Term{pseudocompact-module}{伪紧 $A$-模}，$\mathfrak a$ 是 $A$ 中包含于\Term{radical}{根基} $r(A)$ 的\Term{ideal}{理想}。那么等式 $\overline{\mathfrak aM}=M$ 蕴含 $M=0$。
+\end{SGAresult}
+\begin{proof}
+事实上，假设 $\overline{\mathfrak aM}=M$。\footnote{编者注：将 $\mathfrak a$ 换为它的\Term{closure}{闭包}后，可假定 $\mathfrak a$ 是闭的。}设 $M'$ 是 $M$ 的开\Term{submodule}{子模}，$M''=M/M'$。因为 $M''$ \Term{discrete}{离散}，$\mathfrak aM''$ 在 $M''$ 中是闭的，因而等于 $\overline{\mathfrak aM''}$。由 0.3.2，从 $M/\overline{\mathfrak aM}$ 到 $M''/\overline{\mathfrak aM''}$ 的\Term{canonical}{典范}映射是\Term{surjectivity}{满射}，故 $\mathfrak aM''=\overline{\mathfrak aM''}=M''$。由于 $M''$ 是\Term{finite-type}{有限型} $A$-模且 $\mathfrak a\subset r(A)$，由通常的 \Term{nakayama-lemma}{Nakayama 引理}，这蕴含 $M''=0$。所以，$M$ 的每个开\Term{submodule}{子模} $M'$ 都等于 $M$，因而 $M$ 为零。\footnote{编者注：因为它等于各 $M/M'=0$ 的\Term{projective-limit}{投射极限}。}
+\end{proof}
+
+\textbf{0.3.4。}由 \Term{nakayama-lemma}{Nakayama 引理}得到通常的推论：
+\begin{SGAresult}{推论}{0.3.4}
+设 $\mathfrak a$ 是包含于 $r(A)$ 的\Term{closed-ideal}{闭理想}，$f:M\to N$ 是\Term{pseudocompact-module}{伪紧 $A$-模}的\Term{morphism}{态射}。
+
+（i）若诱导映射 $f':M/\overline{\mathfrak aM}\to N/\overline{\mathfrak aN}$ \Term{surjectivity}{满射}，则 $f$ \Term{surjectivity}{满射}。\footnote{编者注：所以，每个\Term{pseudocompact-module}{伪紧 $A$-模}都是一个\Term{topologically-free}{拓扑自由} $A$-模的商（先归结到 $A$ 为\Term{local-ring}{局部环}的情形），参见 0.3.7 的证明。}
+
+（ii）若 $N$ 是\Term{projective-object}{投射的}，则当 $f'$ \Term{invertible}{可逆}时 $f$ 也\Term{invertible}{可逆}。
+\end{SGAresult}
+\begin{proof}
+事实上，（i）由对 $\operatorname{Coker}f$ 应用\Term{lemma}{引理} 0.3.3 得到。对于（ii），假定 $f'$ \Term{invertible}{可逆}。于是由（i），$f$ \Term{surjectivity}{满射}，因而具有一个\Term{section}{截面}；再对 $\ker f$ 应用 0.3.3 即可。
+\end{proof}
+当 $A$ 是\Term{maximal-ideal}{极大理想}为 $\mathfrak m$ 的\Term{local-ring}{局部环}时，还可由 0.3.3 \Term{pushout}{推出}以下交换\Term{theorem}{定理}：
+\begin{SGAresult}{\Term{theorem}{定理}}{0.3.4}
+设 $A$ 是\Term{pseudocompact}{伪紧}\Term{local-ring}{局部环}，$\mathfrak m$ 是其\Term{maximal-ideal}{极大理想}，$M$ 是具有\Term{pseudobasis}{伪基} $(m_i)_{i\in I}$ 的\Term{topologically-free}{拓扑自由} $A$-模（0.2.1），$N$ 是 $M$ 的一个（闭）\Term{direct-factor}{直因子}。则 $M$ 有一个由 $N$ 的元素及某些 $m_i$ 构成的\Term{pseudobasis}{伪基}。
+\end{SGAresult}
+\begin{proof}
+事实上，当 $A$ 是域时结论显然（利用 0.2.2 的\Term{duality}{对偶性}，再应用通常的交换\Term{theorem}{定理}）。所以 $N/\overline{\mathfrak mN}$\footnote{编者注：我们把 $N/\mathfrak mN$ 改正为 $N/\overline{\mathfrak mN}$，下文的 $M/\overline{\mathfrak mM}$ 也作同样改正。}有一个补模，它是在 $A/\mathfrak m$ 上以 $(\overline m_i)_{i\in J}$ 为\Term{pseudobasis}{伪基}的\Term{topologically-free}{拓扑自由}模，其中 $\overline m_i$ 是 $m_i$ 在 $M/\overline{\mathfrak mM}$ 中的像，$J$ 是 $I$ 的一个\Term{subset}{子集}。若以 $P$ 记\Term{direct-product}{直积}
+\SourcePage{517}
+$\prod_{i\in J}Am_i$，则从 $N\oplus P$ 到 $M$ 的\Term{canonical}{典范}映射“模 $\mathfrak m$ 为\Term{bijection}{双射}”；由上述结果，它就是\Term{bijection}{双射}（另一证明见 [CA]，\S IV.2，命题 8）。
+\end{proof}
+
+\textbf{0.3.5。}现在考虑三个\Term{pseudocompact-module}{伪紧 $A$-模} $L$、$M$、$N$，其中 $N$ 具有\Term{finite-length}{有限长度}。在 $A$-模 $\operatorname{Hom}_c(M,N)$ 上赋予\Term{discrete-topology}{离散拓扑}，则 $\operatorname{Hom}_c(L,\operatorname{Hom}_c(M,N))$ 的每个元素 $\psi$ 都定义一个从 $L\times M$ 到 $N$ 的\Term{continuous}{连续}\Term{bilinear}{双线性}映射 $\psi':(\ell,m)\mapsto\psi(\ell)(m)$。由此得到自然\Term{isomorphism}{同构}
+\[
+\operatorname{Hom}_c(L,\operatorname{Hom}_c(M,N))\xrightarrow{\sim}\operatorname{Hom}_c(L\widehat\otimes_A M,N),\tag{1}
+\]
+因此也得到 $\operatorname{Hom}_c(L\widehat\otimes_A M,N)$ 的另一刻画；我们将把它用于 $M$ 是一个\Term{pseudocompact-module}{伪紧 $A$-模}的\Term{filtered}{滤过}\Term{projective-system}{投射系统} $(M_i)$ 的\Term{projective-limit}{投射极限}的情形。此时由（1）及 0.2.F（ii），有自然\Term{isomorphism}{同构}
+\[
+\begin{aligned}
+\operatorname{Hom}_c(L\widehat\otimes_A\varprojlim M_i,N)
+ &\simeq\operatorname{Hom}_c(L,\operatorname{Hom}_c(\varprojlim M_i,N))\\
+ &\simeq\operatorname{Hom}_c(L,\varinjlim\operatorname{Hom}_c(M_i,N)).
+\end{aligned}\tag{2}
+\]
+此外，由于模 $\varinjlim\operatorname{Hom}_c(M_i,N)$ 是\Term{discrete}{离散}的，以 $L$ 为源的每个\Term{continuous-map}{连续映射}都通过 $L$ 的一个\Term{finite-length}{有限长度}商\Term{resolution}{分解}。因此，下面的自然映射是\Term{isomorphism}{同构}：
+\[
+\varinjlim\operatorname{Hom}_c(L,\operatorname{Hom}_c(M_i,N))
+\longrightarrow\operatorname{Hom}_c(L,\varinjlim\operatorname{Hom}_c(M_i,N)).\tag{3}
+\]
+最后，再次由（1）及 0.2.F（ii），有自然\Term{isomorphism}{同构}
+\[
+\begin{aligned}
+\varinjlim\operatorname{Hom}_c(L,\operatorname{Hom}_c(M_i,N))
+ &\simeq\varinjlim\operatorname{Hom}_c(L\widehat\otimes_A M_i,N)\\
+ &\simeq\operatorname{Hom}_c(\varprojlim(L\widehat\otimes_A M_i),N).
+\end{aligned}\tag{4}
+\]
+结合\Term{isomorphism}{同构}（2）、（3）、（4），得到：
+\begin{SGAresult}{命题}{0.3.5}
+设 $(M_i)$ 是 $\operatorname{PC}(A)$ 的\Term{object}{对象}构成的\Term{filtered}{滤过}\Term{projective-system}{投射系统}，$L$（相应地 $N$）是 $\operatorname{PC}(A)$（相应地 $\operatorname{LF}(A)$）的\Term{object}{对象}。有关于 $N$ 的\Term{functorial-isomorphism}{函子性同构}
+\[
+ \operatorname{Hom}_c(L\widehat\otimes_A\varprojlim M_i,N)
+ \simeq\operatorname{Hom}_c(\varprojlim(L\widehat\otimes_A M_i),N),
+\]
+从而有\Term{isomorphism}{同构}
+\[L\widehat\otimes_A\varprojlim M_i\simeq\varprojlim(L\widehat\otimes_A M_i).\]
+所以\Term{completed-tensor-product}{完备张量积}与\Term{filtered}{滤过}\Term{projective-limit}{投射极限}交换。\footnote{编者注：由此重新得到 0.3.1.1：$L=L\widehat\otimes_A A=L\widehat\otimes_A\varprojlim_{\mathfrak l}(A/\mathfrak l)\simeq\varprojlim_{\mathfrak l}L/\overline{\mathfrak lL}$，其中 $\mathfrak l$ 遍历 $A$ 的开\Term{ideal}{理想}。}
+\end{SGAresult}
+
+\textbf{0.3.6。}特别地，\footnote{编者注：参见编者注（12）。}\Term{completed-tensor-product}{完备张量积}与无限积交换。例如，因为环 $A$ 是其\Term{local-component}{局部分量} $A_{\mathfrak m}$ 的积（0.1.1），每个\Term{pseudocompact-module}{伪紧 $A$-模} $M$（$\simeq A\widehat\otimes_A M$）等同于各模 $M_{\mathfrak m}=A_{\mathfrak m}\widehat\otimes_A M$（$M$ 的\Term{local-component}{局部分量}）的积。
+
+\SourcePage{518}
+同样，设 $M$、$N$ 是两个\Term{pseudocompact-module}{伪紧 $A$-模}。回顾（参见 0.2.2），$M^\dagger$ 表示 $\operatorname{Hom}_c(M,A)$。考虑映射
+\[\varphi:M^\dagger\otimes_A N^\dagger\longrightarrow(M\widehat\otimes_A N)^\dagger,\]
+它把 $M^\dagger\otimes_A N^\dagger$ 的元素 $f\otimes g$ 映为从 $M\widehat\otimes_A N$ 到 $A$ 的映射 $m\widehat\otimes n\mapsto f(m)g(n)$。当 $M$ \Term{isomorphism}{同构}于 $A$ 时，映射 $\varphi$ 是\Term{bijection}{双射}。
+\begin{SGAresult}{推论}{0.3.6}
+当 $A$ 是\Term{artinian-ring}{阿廷环}时，只要 $M$ 是\Term{topologically-free}{拓扑自由}的（更一般地，是\Term{projective-object}{投射的}），$\varphi$ 就是\Term{isomorphism}{同构}。
+\end{SGAresult}
+\begin{proof}
+事实上，对固定的 $N$，由上述结果及 0.2.F，\Term{functor}{函子} $M\mapsto(M\widehat\otimes_A N)^\dagger$（相应地 $M\mapsto M^\dagger\otimes_A N^\dagger$）把每个\Term{direct-product}{直积}变为\Term{direct-sum}{直和}。
+\end{proof}
+\textbf{注记 0.3.6.A。}\footnote{编者注：此注记为增补，将在 2.3.1 中用到。}类似地利用 0.2.F，还得到以下结果：设 $A$ 是\Term{artinian-ring}{阿廷环}，$M$、$Q$ 是 $\operatorname{PC}(A)$ 的\Term{object}{对象}，$N$ 是 $\operatorname{LF}(A)$ 的\Term{object}{对象}。假定 $Q$ 是\Term{projective-object}{投射的}，则有自然\Term{isomorphism}{同构}
+\[
+\operatorname{Hom}_c(M,Q)\xrightarrow{\sim}\operatorname{Hom}_A(Q^\dagger,M^\dagger),
+\qquad Q^\dagger\otimes_A N\xrightarrow{\sim}\operatorname{Hom}_c(Q,N).
+\]
+
+\textbf{0.3.7。}对每个 $\mathfrak m\in\Upsilon(A)$，\Term{functor}{函子} $M\mapsto A_{\mathfrak m}\widehat\otimes_A M$ 显然\Term{exact}{正合}。因为每个\Term{projective-object}{投射}\Term{pseudocompact-module}{伪紧 $A$-模} $P$ 都是形如 $A_{\mathfrak m}$ 的模的积，所以当 $P$ 是\Term{projective-object}{投射的}时，\Term{functor}{函子} $M\mapsto P\widehat\otimes_A M$ \Term{exact}{正合}。逆命题也成立：
+\begin{SGAresult}{命题}{0.3.7}
+设 $A$ 是\Term{pseudocompact-ring}{伪紧环}，$P$ 是\Term{pseudocompact-module}{伪紧 $A$-模}。以下条件\Term{equivalence}{等价}：
+
+（i）$P$ 是 $\operatorname{PC}(A)$ 的\Term{projective-object}{投射对象}。
+
+（ii）每个\Term{local-component}{局部分量} $P_{\mathfrak m}$ 都是\Term{topologically-free}{拓扑自由} $A_{\mathfrak m}$-模。
+
+（iii）\Term{functor}{函子} $M\mapsto P\widehat\otimes_A M$ \Term{exact}{正合}。
+\end{SGAresult}
+\begin{proof}
+事实上，（i）与（ii）的\Term{equivalence}{等价}性由 0.2.F（iii）及 0.2.1 得到，而我们刚已证明（ii）$\Rightarrow$（iii）。假定\Term{functor}{函子} $M\mapsto P\widehat\otimes_A M$ \Term{exact}{正合}。因为 $P\widehat\otimes_A M$ 是其各\Term{local-component}{局部分量}的积，且
+\[(P\widehat\otimes_A M)_{\mathfrak m}\simeq P_{\mathfrak m}\widehat\otimes_{A_{\mathfrak m}}M_{\mathfrak m},\]
+可归结到环 $A$ 为\Term{local-ring}{局部环}的情形。下面证明 $P$ 是\Term{topologically-free}{拓扑自由}的。
+
+设 $\mathfrak m$ 为 $A$ 的\Term{maximal-ideal}{极大理想}；则 $P/\overline{\mathfrak mP}$ 是 $A/\mathfrak m$ 上的\Term{linearly-compact-vector-space}{线性紧向量空间}，所以是若干个 $A/\mathfrak m$ 的副本的积（参见 0.2.2）。因此，存在
+\SourcePage{519}
+一族 $A$ 的副本 $(A_i)_{i\in I}$ 和\Term{isomorphism}{同构} $\varphi:\prod_{i\in I}(A_i/\mathfrak m)\xrightarrow{\sim}P/\overline{\mathfrak mP}$。由于 $\prod_{i\in I}A_i$ 是\Term{projective-object}{投射的}，有\Term{commutative-diagram}{交换方块}
+\[
+\begin{tikzcd}
+\prod_{i\in I}A_i\arrow[r,"\psi"]\arrow[d,"p"]&P\arrow[d,"q"]\\
+\prod_{i\in I}(A_i/\mathfrak m)\arrow[r,"\varphi","\sim"']&P/\overline{\mathfrak mP},
+\end{tikzcd}
+\]
+其中 $p$、$q$ 表示\Term{canonical-projection}{典范投影}。对 $\operatorname{Coker}\psi$ 应用 \Term{nakayama-lemma}{Nakayama 引理}，并注意 $(A/\mathfrak m)\widehat\otimes_A\psi$ 正是 $\varphi$，可见 $\psi$ \Term{surjectivity}{满射}。\footnote{编者注：这证明了编者注（22）所宣布的结果：每个\Term{pseudocompact-module}{伪紧 $A$-模} $M$ 都是某个\Term{topologically-free}{拓扑自由} $A$-模的商。（因为 $\operatorname{PC}(A)$ 中的积是\Term{exact}{正合}的，可归结到以上处理的 $A$ 为\Term{local-ring}{局部环}的情形。）}
+
+置 $B=\prod_{i\in I}A_i$、$N=\ker\psi$，得到以下\Term{commutative-diagram}{交换}\Term{exact}{正合}图：
+\[
+\begin{tikzcd}[column sep=small,row sep=large]
+ &&&0\arrow[d]\\
+ &\mathfrak m\widehat\otimes_A N\arrow[r]\arrow[d]&\mathfrak m\widehat\otimes_A B\arrow[r]\arrow[d]&\mathfrak m\widehat\otimes_A P\arrow[r]\arrow[d]&0\\
+0\arrow[r]&A\widehat\otimes_A N\arrow[r]\arrow[d]&A\widehat\otimes_A B\arrow[r,"\psi"]\arrow[d]&A\widehat\otimes_A P\arrow[r]\arrow[d]&0\\
+ &(A/\mathfrak m)\widehat\otimes_A N\arrow[r]&(A/\mathfrak m)\widehat\otimes_A B\arrow[r,"\varphi"]&(A/\mathfrak m)\widehat\otimes_A P\arrow[r]&0.
+\end{tikzcd}
+\]
+对前两行应用“\Term{snake-lemma}{蛇引理}”，可知最下一行中的\Term{morphism}{态射} $(A/\mathfrak m)\widehat\otimes_A N\to(A/\mathfrak m)\widehat\otimes_A B$ 是\Term{monomorphism}{单态射}。由于 $\varphi$ 是\Term{isomorphism}{同构}，于是 $(A/\mathfrak m)\widehat\otimes_A N$ 为零；故 $N=0$（0.3.3），而 $\psi$ 是\Term{isomorphism}{同构}。\footnote{编者注：使用“\Term{nilpotent-nakayama-lemma}{幂零 Nakayama 引理}”，完全类似的证明表明，若 $A$ 是\Term{artinian-ring}{阿廷环}且 $P$ 是\Term{flat}{平坦} $A$-模，则 $P$ 的每个\Term{local-component}{局部分量}都是自由 $A$-模（参见 [BAC]，II \S 3.2，命题 5 的推论 2）。}
+\end{proof}
+
+\begin{SGAresult}{推论}{0.3.8}
+设 $A$ 是\Term{complete-noetherian-local-ring}{完备诺特局部环}，$P$ 是\Term{pseudocompact-module}{伪紧 $A$-模}。那么 $P$ 是\Term{topologically-free}{拓扑自由}的，当且仅当它在 $A$ 上\Term{flat}{平坦}。
+\end{SGAresult}
+\begin{proof}
+事实上，当 $M=A$ 时，从 $M\otimes_A P$ 到 $M\widehat\otimes_A P$ 的\Term{canonical}{典范}映射是\Term{bijection}{双射}，因此当 $M$ 是\Term{noetherian}{诺特}模时也是\Term{bijection}{双射}（取 $M$ 的\Term{finite-presentation}{有限表示}，并利用\Term{tensor-product}{张量积}及\Term{completed-tensor-product}{完备张量积}的\Term{right-exact}{右正合性}）。
+\SourcePage{520}
+而 $P$ \Term{flat}{平坦}，当且仅当当 $M$ 遍历\Term{noetherian}{诺特}模时，\Term{functor}{函子} $M\mapsto M\otimes_A P$ \Term{exact}{正合}。同样，在命题 0.3.7 的证明中已经看到，若序列
+\[0\longrightarrow\mathfrak m\widehat\otimes_A P\longrightarrow A\widehat\otimes_A P\longrightarrow(A/\mathfrak m)\widehat\otimes_A P\longrightarrow0\]
+\Term{exact}{正合}，则 $P$ 是\Term{topologically-free}{拓扑自由}的。所以，$P$ 是\Term{topologically-free}{拓扑自由}的，当且仅当当 $M$ 遍历\Term{noetherian}{诺特}模时，\Term{functor}{函子} $M\mapsto M\widehat\otimes_A P$ \Term{exact}{正合}。因此，上面建立的等式 $M\otimes_A P=M\widehat\otimes_A P$ 给出本推论。
+\end{proof}
+
+\textbf{0.4。}设 $k$ 是\Term{pseudocompact-ring}{伪紧环}；一个\Term{topological-algebra}{拓扑 $k$-代数}是指一个（交换的）\Term{topological-ring}{拓扑环} $A$，配备一个\Term{topological-ring}{拓扑环}\Term{morphism}{态射} $k\to A$。若底\Term{topology}{拓扑} $k$-模是\Term{pseudocompact}{伪紧}的，则称 $A$ 是一个\Term{profinite-algebra}{预有限 $k$-代数}（algèbre profinie）。
+
+在这种情形下，设 $\mathfrak l$ 是 $A$ 的一个开 $k$-\Term{submodule}{子模}。复合映射
+\[\varphi:A\times A\xrightarrow{\text{乘法}}A\xrightarrow{\text{典范}}A/\mathfrak l\]
+\Term{continuous}{连续}，所以由\Term{lemma}{引理} 0.3.1，存在 $A$ 的一个开 $k$-\Term{submodule}{子模} $\mathfrak n$，使 $\varphi(A\times\mathfrak n)=0$。这意味着 $\mathfrak l$ 包含开\Term{ideal}{理想} $A\mathfrak n$，并蕴含 $A$ 是一个\Term{pseudocompact-ring}{伪紧环}。
+
+同样，设 $M$ 是一个\Term{topology}{拓扑} $A$-模，其底 $k$-模是\Term{pseudocompact}{伪紧}的。若 $M'$ 是 $M$ 的开 $k$-\Term{submodule}{子模}，则对映射
+\[A\times M\xrightarrow{\text{乘法}}M\xrightarrow{\text{典范}}M/M'\]
+应用\Term{lemma}{引理} 0.3.1，可知 $M'$ 包含一个开 $A$-\Term{submodule}{子模}，因而 $M$ 也是\Term{pseudocompact-module}{伪紧 $A$-模}。\footnote{编者注：我们增补了以下\Term{lemma}{引理}，参见命题 0.5 中的编者注（36）。}反过来：
+\begin{SGAresult}{\Term{lemma}{引理}}{0.4}
+设 $A$ 是\Term{profinite-algebra}{预有限 $k$-代数}，$M$ 是\Term{pseudocompact-module}{伪紧 $A$-模}。那么由\Term{restriction-of-scalars}{限制标量}得到的 $k$-模 $M|_k$ 是\Term{pseudocompact}{伪紧}的。
+\end{SGAresult}
+\begin{proof}
+事实上，每个\Term{finite-length}{有限长度}的\Term{pseudocompact-module}{伪紧 $A$-模}都\Term{isomorphism}{同构}于某个商 $A^n/L$（其中 $L$ 是 $A^n$ 的开\Term{submodule}{子模}），因此是\Term{pseudocompact-module}{伪紧 $k$-模}。由于 $M|_k$ 是这类模的\Term{projective-limit}{投射极限}，它是\Term{pseudocompact-module}{伪紧 $k$-模}。
+\end{proof}
+
+\textbf{0.4.1。}若 $A$、$B$ 是两个\Term{profinite-algebra}{预有限 $k$-代数}，则 $A$ 到 $B$ 的\Term{morphism}{态射}按定义是\Term{continuous}{连续}的 $k$-\Term{algebra}{代数}\Term{homomorphism}{同态}。以 $\operatorname{Alp}/k$ 记\Term{profinite-algebra}{预有限 $k$-代数}的\Term{category}{范畴}。
+
+它显然具有\Term{projective-limit}{投射极限}：一个\Term{projective-limit}{投射极限}的底\Term{algebra}{代数}是各底\Term{algebra}{代数}的\Term{projective-limit}{投射极限}，\Term{topology}{拓扑}是\Term{projective-limit}{投射极限}\Term{topology}{拓扑}。
+
+它也具有\Term{finite}{有限}\Term{inductive-limit}{归纳极限}：\footnote{编者注：0.4.2 将证明它具有任意\Term{inductive-limit}{归纳极限}。}例如，若 $f:A\to B$、$g:A\to C$ 是两个\Term{profinite-algebra}{预有限 $k$-代数}的\Term{morphism}{态射}，则 $B$、$C$ 在 $A$ 下的\Term{amalgamated-sum}{合并和}的底\Term{topology}{拓扑} $A$-模为 $B\widehat\otimes_A C$（由 0.4，$f$、$g$
+\SourcePage{521}
+在 $B$、$C$ 上赋予\Term{pseudocompact-module}{伪紧 $A$-模}结构）；$B\widehat\otimes_A C$ 的\Term{multiplication}{乘法}显然满足：若 $b,b'\in B$、$c,c'\in C$，则
+\[(b\widehat\otimes c)(b'\widehat\otimes c')=(bb')\widehat\otimes(cc').\]
+
+\begin{SGAresult}{定义}{0.4.2}
+一个\Term{profinite-algebra}{预有限 $k$-代数} $C$ 称为\Term{finite-length}{有限长度}的，若其底 $k$-模具有\Term{finite-length}{有限长度}（因而是\Term{discrete}{离散}的）；以 $\operatorname{Alf}/k$ 记 $\operatorname{Alp}/k$ 中由\Term{finite-length}{有限长度} $k$-\Term{algebra}{代数}构成的\Term{full-subcategory}{满子范畴}。\footnote{编者注：注意，只有当 $k$ 是\Term{artinian-ring}{阿廷环}时，$k$ 才是 $\operatorname{Alf}/k$ 的\Term{object}{对象}，参见下文 1.2.2。}
+\end{SGAresult}
+对每个\Term{profinite-algebra}{预有限 $k$-代数} $A$，以 $h^A$ 记\Term{functor}{函子}
+\[\operatorname{Alf}/k\longrightarrow(\mathrm{Ens}),\qquad C\longmapsto\operatorname{Hom}_{\operatorname{Alp}/k}(A,C).\]
+显然，$h^A$ 是\Term{left-exact-functor}{左正合函子}。\footnote{编者注：即与\Term{finite}{有限}\Term{projective-limit}{投射极限}交换的\Term{functor}{函子}。}此外，对 $\operatorname{Alf}/k$ 的每个\Term{object}{对象} $C$，\Term{canonical-projection}{典范投影} $A\to A/\mathfrak l$（其中 $\mathfrak l$ 遍历 $A$ 的开\Term{ideal}{理想}）诱导关于 $C$ 具有\Term{functorial}{函子性}的\Term{canonical}{典范}\Term{isomorphism}{同构}
+\[\varinjlim_{\mathfrak l}\operatorname{Hom}_{\operatorname{Alf}/k}(A/\mathfrak l,C)\xrightarrow{\sim}\operatorname{Hom}_{\operatorname{Alp}/k}(A,C).\]
+这意味着 $h^A$ 是各\Term{representable-functor}{可表函子} $h^{A/\mathfrak l}$ 的\Term{inductive-limit}{归纳极限}，即
+\[h^A\simeq\varinjlim_{\mathfrak l}h^{A/\mathfrak l}.\tag{*}\]
+若 $B$ 是另一个\Term{profinite-algebra}{预有限 $k$-代数}，则双\Term{functor}{函子} $\operatorname{Hom}$ 的一般性质及 $C$ 具有\Term{finite-length}{有限长度}时的\Term{isomorphism}{同构} $\operatorname{Hom}(h^C,h^B)=h^B(C)$，给出\Term{isomorphism}{同构}
+\[
+\begin{aligned}
+\operatorname{Hom}_{\operatorname{Alp}/k}(B,A)
+ &\simeq\varprojlim\operatorname{Hom}_{\operatorname{Alp}/k}(B,A/\mathfrak l)\\
+ &\simeq\varprojlim\operatorname{Hom}(h^{A/\mathfrak l},h^B)\\
+ &\simeq\operatorname{Hom}(\varinjlim_{\mathfrak l}h^{A/\mathfrak l},h^B).
+\end{aligned}
+\]
+结合（*），这表明\Term{contravariant}{反变}\Term{functor}{函子} $A\mapsto h^A$ 是\Term{fully-faithful}{全忠实}的。事实上：
+\begin{SGAresult}{命题}{0.4.2}
+\Term{functor}{函子} $A\mapsto h^A$ 是从 $\operatorname{Alp}/k$ 到\Term{left-exact-functor}{左正合函子} $\operatorname{Alf}/k\to(\mathrm{Ens})$ 的\Term{category}{范畴}的\Term{anti-equivalence}{反等价}。
+\end{SGAresult}
+\begin{proof}
+事实上，根据上述结果，只须证明每个\Term{left-exact-functor}{左正合函子} $F:\operatorname{Alf}/k\to(\mathrm{Ens})$ 都\Term{isomorphism}{同构}于某个形如 $h^A$ 的\Term{functor}{函子}；为此可如下构造 $A$（参见 TDTE II，\S 3）。
+
+由于 $F$ 是\Term{left-exact-functor}{左正合的}，对每个\Term{finite-length}{有限长度} $k$-\Term{algebra}{代数} $C$ 及 $F(C)$ 的每个元素 $\xi$，都存在 $C$ 的一个最小\Term{subalgebra}{子代数} $C'$，使 $\xi$ 属于 $F(C')$ 在 $F(C)$ 中的像。若 $C'=C$，则称二元组 $(C,\xi)$ 为\Term{minimal-pair}{极小的}。
+
+若取从 $(C,\xi)$ 到 $(D,\eta)$ 的\Term{morphism}{态射}为满足 $(F\varphi)(\xi)=\eta$ 的\Term{homomorphism}{同态} $\varphi:C\to D$，则各\Term{minimal-pair}{极小二元组}构成一个\Term{category}{范畴}；显然，这样的 $\varphi$ 是\Term{surjectivity}{满射}，而\Term{minimal-pair}{极小二元组}的\Term{category}{范畴}是
+\SourcePage{522}
+“向\Term{left-filtered}{左滤过}”的。此外，可以只取那些 $C$ 属于某个\Term{set}{集合}的二元组 $(C,\xi)$，该\Term{set}{集合}对\Term{finite-length}{有限长度} $k$-\Term{algebra}{代数}的每个\Term{isomorphism}{同构}类型都含有一个代表。\footnote{编者注：事实上，每个\Term{length}{长度}为 $n$ 的\Term{discrete}{离散} $k$-模都\Term{isomorphism}{同构}于 $k^n/L$，其中 $L$ 是 $k^n$ 的余\Term{length}{长度}为 $n$ 的开\Term{submodule}{子模}。然后可考虑每个这样的模上的\Term{profinite-algebra}{预有限 $k$-代数}结构的（\Term{isomorphism}{同构}类的）\Term{set}{集合}。}因此，以\Term{minimal-pair}{极小二元组}的\Term{category}{范畴}为出发\Term{category}{范畴}、以\Term{profinite-algebra}{预有限 $k$-代数}的\Term{category}{范畴}为到达\Term{category}{范畴}的\Term{functor}{函子} $(C,\xi)\mapsto C$ 具有\Term{projective-limit}{投射极限}；取这个\Term{projective-limit}{投射极限}为 $A$。
+\end{proof}
+\begin{SGAresult}{推论}{0.4.2}
+\Term{category}{范畴} $\operatorname{Alp}/k$ 具有无限\Term{inductive-limit}{归纳极限}。
+\end{SGAresult}
+\begin{proof}
+事实上，从 $\operatorname{Alf}/k$ 到 $(\mathrm{Ens})$ 的\Term{left-exact-functor}{左正合函子}的\Term{category}{范畴}具有\Term{projective-limit}{投射极限}，它们“逐个自变量地”定义；即若 $(F_i)$ 是这样的\Term{functor}{函子}的\Term{projective-system}{投射系统}，则对 $\operatorname{Alf}/k$ 的每个\Term{object}{对象} $C$，有
+\[(\varprojlim F_i)(C)=\varprojlim F_i(C).\]
+\footnote{编者注：若 $(A_i)_{i\in I}$ 是 $\operatorname{Alp}/k$ 中的\Term{inductive-system}{归纳系统}，则它在 $\operatorname{Alp}/k$ 中的\Term{inductive-limit}{归纳极限}是 $k$-\Term{algebra}{代数} $B$ 的\Term{separated-completion}{分离完备化}，其中 $B$ 是各底 $k$-\Term{algebra}{代数}的\Term{inductive-limit}{归纳极限}，\Term{topology}{拓扑}由满足下列条件的\Term{ideal}{理想} $I$ 定义：对每个 $i$，$I\cap A_i$ 是 $A_i$ 的开\Term{ideal}{理想}，且 $\operatorname{long}_k(B/I)<\infty$。注意，例如若 $K/k$ 是无限\Term{degree}{次数}的域的\Term{algebra}{代数}\Term{group-extension}{扩张}，$(k_i)$ 是\Term{finite}{有限}\Term{degree}{次数}子\Term{group-extension}{扩张}组成的\Term{filtered}{滤过}\Term{inductive-system}{归纳系统}，则系统 $(k_i)$ 在 $\operatorname{Alp}/k$ 中的\Term{inductive-limit}{归纳极限}是零环！}
+\end{proof}
+
+\textbf{0.5。}\footnote{编者注：本段作了详细展开。}设 $\varphi:k\to\ell$ 是\Term{pseudocompact-ring}{伪紧环}的\Term{homomorphism}{同态}（参见 0.1.3）。可以如下推广 0.3 的构造。
+\begin{SGAresult}{定义}{0.5.A}
+对 $\operatorname{PC}(k)$ 的每个\Term{object}{对象} $M$（相应地，$\operatorname{PC}(\ell)$ 的每个\Term{object}{对象} $N$），以 $M\widehat\otimes_k N$ 记 $M\otimes_k N$ 对于由\Term{projection}{投影}
+\[M\otimes_k\ell\longrightarrow(M/M')\otimes_k(N/N')\]
+的核所定义的\Term{linear-topology}{线性拓扑}的\Term{separated-completion}{分离完备化}，其中 $M'$（相应地 $N'$）是 $M$（相应地 $N$）的开\Term{submodule}{子模}。那么 $M\widehat\otimes_k N$ 是一个\Term{pseudocompact-module}{伪紧 $\ell$-模}。若 $m\in M$、$x\in N$，以 $m\widehat\otimes_k x$ 记 $m\otimes_k x$ 在 $M\widehat\otimes_k N$ 中的\Term{canonical}{典范}像。
+
+这特别适用于 $N=\ell$ 的情形；此时称 $M\widehat\otimes_k\ell$ 为由 $M$ 经\Term{base-change}{基变换} $k\to\ell$ 得到的\Term{pseudocompact-module}{伪紧 $\ell$-模}。
+\end{SGAresult}
+\textbf{注记 0.5.B。}（i）在考虑这样的\Term{base-change}{基变换}时，一般说来 $\ell$ 不是\Term{profinite-algebra}{预有限 $k$-代数}：典型例子是 $k$ 为域而 $\ell$ 为 $k$ 的任意\Term{field-extension}{扩域} $K$ 的情形。
+
+（ii）不过，若 $N$ 的底 $k$-模是\Term{pseudocompact}{伪紧}的（例如 $\ell$ 是\Term{profinite-algebra}{预有限 $k$-代数}时），则由 0.4，$N$ 的每个开 $k$-\Term{submodule}{子模}都包含 $N$ 的一个开 $\ell$-\Term{submodule}{子模}；所以此时 $M\widehat\otimes_k N$ 与\Term{pseudocompact-module}{伪紧 $k$-模} $M$、$N$ 的\Term{completed-tensor-product}{完备张量积}（参见 0.3）一致，因而记号不会引起歧义。
+
+\SourcePage{523}
+由\Term{restriction-of-scalars}{限制标量}得到的 $k$-模 $N|_k$ 无论如何都是一个\Term{topology}{拓扑} $k$-模，即映射 $k\times N\to N$，$(t,n)\mapsto\varphi(t)n$ \Term{continuous}{连续}。以 $\operatorname{Hom}_c(M,N|_k)$ 记从 $M$ 到 $N|_k$ 的\Term{continuous}{连续} $k$-模\Term{homomorphism}{同态}组成的\Term{abelian-group}{阿贝尔群}。
+\begin{SGAresult}{命题}{0.5.C}
+对每个 $M\in\operatorname{Ob}\operatorname{PC}(k)$ 和 $N\in\operatorname{Ob}\operatorname{PC}(\ell)$，有\Term{functorial-isomorphism}{函子性同构}
+\[\operatorname{Hom}_{\operatorname{PC}(\ell)}(M\widehat\otimes_k\ell,N)\simeq\operatorname{Hom}_c(M,N|_k).\]
+\footnote{编者注：所以，若 $\ell$ 是\Term{profinite-algebra}{预有限 $k$-代数}，则\Term{functor}{函子} $M\mapsto M\widehat\otimes_k\ell$ 是\Term{restriction-of-scalars}{限制标量}\Term{functor}{函子} $\operatorname{PC}(\ell)\to\operatorname{PC}(k)$ 的\Term{left-adjoint}{左伴随}（参见\Term{lemma}{引理} 0.4）。}
+\end{SGAresult}
+\begin{proof}
+事实上，设 $\phi:M\to N|_k$ 是一个\Term{continuous}{连续}\Term{homomorphism}{同态}，则映射 $\phi':M\times\ell\to N$，$(m,\lambda)\mapsto\lambda\phi(m)$ \Term{continuous}{连续}且“\Term{bilinear}{双线性}”（即关于第一个因子为 $k$-\Term{linear}{线性}，关于第二个因子为 $\ell$-\Term{linear}{线性}）。若 $N'$ 是 $N$ 的开 $\ell$-\Term{submodule}{子模}，则类似于\Term{lemma}{引理} 0.3.1 的证明，可知存在 $M$ 的开\Term{submodule}{子模} $M'$ 及 $\ell$ 的开\Term{ideal}{理想} $\ell'$，使 $\phi'(M'\times\ell)$ 和 $\phi'(M\times\ell')$ 都包含于 $N'$。因此，$\phi$ 诱导一个\Term{continuous}{连续}的 $\ell$-模\Term{homomorphism}{同态} $\Phi:M\widehat\otimes_k\ell\to N$，使对每个 $m\in M$、$\lambda\in\ell$，有 $\Phi(m\widehat\otimes\lambda)=\lambda\phi(m)$。
+
+反过来，对每个\Term{morphism}{态射} $f:M\widehat\otimes_k\ell\to N$，令其对应于从 $M$ 到 $N|_k$ 的\Term{morphism}{态射} $f':m\mapsto f(m\widehat\otimes_k1)$。
+\end{proof}
+然后，与 0.3.2、0.3.5 和 0.3.1.2 一样，得到：
+\begin{SGAresult}{推论}{0.5.D}
+\Term{functor}{函子} $\operatorname{PC}(k)\to\operatorname{PC}(\ell)$，$M\mapsto M\widehat\otimes_k\ell$ 是\Term{right-exact}{右正合}的，并与\Term{filtered}{滤过}\Term{projective-limit}{投射极限}交换；即若 $(M_i)$ 是 $\operatorname{PC}(k)$ 的\Term{object}{对象}构成的\Term{filtered}{滤过}\Term{projective-system}{投射系统}，则有\Term{canonical}{典范}\Term{isomorphism}{同构}
+\[(\varprojlim M_i)\widehat\otimes_k\ell\simeq\varprojlim(M_i\widehat\otimes_k\ell).\]
+此外，若 $M$、$N$ 是\Term{pseudocompact-module}{伪紧 $k$-模}，有\Term{canonical}{典范}\Term{isomorphism}{同构}
+\[(M\widehat\otimes_k N)\widehat\otimes_k\ell\simeq(M\widehat\otimes_k\ell)\widehat\otimes_{\ell}(N\widehat\otimes_k\ell).\]
+\end{SGAresult}
+\begin{SGAresult}{定义}{0.5.E}
+最后，若 $A$ 是\Term{profinite-algebra}{预有限 $k$-代数}，则 $A\widehat\otimes_k\ell$ 上存在唯一的\Term{profinite-algebra}{预有限 $\ell$-代数}结构，使得若 $a,b\in A$、$\lambda,\mu\in\ell$，则
+\[(a\widehat\otimes_k\lambda)(b\widehat\otimes_k\mu)=(ab)\widehat\otimes_k(\lambda\mu).\]
+称 $A\widehat\otimes_k\ell$ 为由 $A$ 经\Term{extension-of-scalars}{标量扩张}（或“\Term{base-change}{基变换}”）$k\to\ell$ 得到的\Term{profinite-algebra}{预有限 $\ell$-代数}。
+\end{SGAresult}

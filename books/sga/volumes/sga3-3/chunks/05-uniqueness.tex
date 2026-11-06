@@ -1,0 +1,654 @@
+\SGAchapter{XXIII}{约化群：钉扎群的唯一性}{Groupes réductifs : unicité des groupes épinglés}
+\begin{center}M. Demazure\end{center}
+\SourcePage{177}
+本讲旨在证明唯一性定理（定理4.1）。Chevalley已在\Term{algebraically-closed-field}{代数闭域}上证明此定理；这里所用的化归到秩二的方法也出自Chevalley（见Bible，第23、24讲）。过程中还得到\Term{reductive-group}{约化群}的\Term{generator}{生成元}与关系的显式描述（3.5）。
+\SGAsection{1}{钉扎}
+\begin{SGAresult}{定义}{1.1}
+设$S$为\Term{scheme}{概形}，$(G,T,M,R)$为\Term{split-group}{分裂}$S$-群（XXII，1.13）。此\Term{split-group}{分裂群}的一个\Term{pinning}{钉扎}\footnote{编者注：Demazure告知我们，此术语背后是Grothendieck提出的蝴蝶形象：身体是一个\Term{maximal-torus}{极大环面}$T$，双翼是相对于$T$互为对面的两个Borel\Term{subgroup}{子群}；摊开双翼使蝴蝶展开，再在\Term{additive-group}{加法群}中固定元素（即插上针），从而使情形\Term{rigidity}{刚性}化，也就是消除\Term{automorphism}{自同构}。}是$R$的一个\Term{simple-root-system}{单根系}$\Delta$，以及对每个$\alpha\in\Delta$选定的\Term{section}{截面}$X_\alpha\in\Gamma(S,\mathfrak g_\alpha)^\times$。
+\end{SGAresult}
+换言之，\Term{nonempty}{非空}\Term{scheme}{概形}$S$上的\Term{reductive-group}{约化群}$G$的一个\Term{pinning}{钉扎}由以下数据组成：(i) 一个\Term{maximal-torus}{极大环面}$T$；(ii) 一个\Term{abelian-group}{阿贝尔群}$M$及\Term{isomorphism}{同构}$T\simeq D_S(M)$；(iii) $G$相对于$T$的\Term{root-system}{根系}$R$；(iv) $R$的一个\Term{simple-root-system}{单根系}$\Delta$；(v) 对每个$\alpha\in\Delta$，一个$X_\alpha\in\Gamma(S,\mathfrak g_\alpha)^\times$，亦即一个
+\[u_\alpha=\exp_\alpha(X_\alpha)\in U_\alpha^\times(S),\]
+并满足第XXII讲1.13的条件(D1)（该处的(D2)自动成立\footnote{编者注：它由条件(v)，即\Term{section}{截面}$X_\alpha\in\Gamma(S,\mathfrak g_\alpha)^\times$的存在性推出。}）。
+\SourcePage{178}
+每个\Term{split-group}{分裂群}都有\Term{pinning}{钉扎}；特别地，每个\Term{reductive-group}{约化群}在\Term{etale}{平展}\Term{topology}{拓扑}下\Term{local-scheme}{局部}可\Term{pinning}{钉扎}。
+\textbf{1.2.} 若$G$为\Term{pinned-group}{钉扎}$S$-群，即带\Term{pinning}{钉扎}的\Term{split-group}{分裂}$S$-群，则它\Term{canonical}{典范}地带有$\Delta$确定的\Term{positive-root-system}{正根系}$R_+$、相应的Borel\Term{subgroup}{子群}$B=B_{R_+}$、对面的Borel\Term{subgroup}{子群}$B^-=B_{R_-}$、\Term{unipotent}{幺幂}群$U=B^u$、$U^-=(B^-)^u$、\Term{open-subset}{开集}$U^-\cdot T\cdot U$等。类似地，对每个$\alpha\in\Delta$有\Term{canonical}{典范}的\Term{vector-group}{向量群}\Term{isomorphism}{同构}
+\[p_\alpha:\mathbf G_{a,S}\xrightarrow\sim U_\alpha,\qquad x\longmapsto\exp_\alpha(xX_\alpha)=u_\alpha^x,\]
+它被$T$\Term{normalization}{正规化}，\Term{multiplier}{乘子}为$\alpha$；指定它\Term{equivalence}{等价}于指定$X_\alpha$（第XXII讲1.1）。由\Term{duality}{对偶性}得到$X_{-\alpha}\in\Gamma(S,\mathfrak g_{-\alpha})^\times$及与上述\Term{isomorphism}{同构}互为\Term{contravariant}{反变}的\Term{isomorphism}{同构}$p_{-\alpha}:\mathbf G_{a,S}\xrightarrow\sim U_{-\alpha}$（第XXII讲1.3）。置（第XX讲3.1）
+\[w_\alpha=w_\alpha(X_\alpha)=p_\alpha(1)p_{-\alpha}(-1)p_\alpha(1)=p_{-\alpha}(-1)p_\alpha(1)p_{-\alpha}(-1).\]
+于是（同处3.1、3.7）
+\[w_\alpha^2=\alpha^*(-1),\qquad \operatorname{int}(w_\alpha)t=s_\alpha(t)=t\alpha^*(\alpha(t)^{-1}),\]
+\[\begin{aligned}\operatorname{int}(w_\alpha)p_\alpha(x)&=p_{-\alpha}(-x)=p_{-\alpha}(x)^{-1},&\operatorname{Ad}(w_\alpha)X_\alpha&=-X_{-\alpha},\\
+\operatorname{int}(w_\alpha)p_{-\alpha}(x)&=p_\alpha(-x)=p_\alpha(x)^{-1},&\operatorname{Ad}(w_\alpha)X_{-\alpha}&=-X_\alpha.\end{aligned}\]
+下文始终使用这些记号。
+\begin{SGAresult}{定义}{1.3}
+设$S$为\Term{scheme}{概形}，$(G,T,M,R,\Delta,(X_\alpha))$和$(G',T',M',\ldots)$为两个\Term{pinned-group}{钉扎}$S$-群。称\Term{split-group-morphism}{分裂群态射}（第XXII讲4.2.1）$f:G\to G'$与\Term{pinning}{钉扎}相容，或定义一个\Term{pinned-group}{钉扎群}\Term{morphism}{态射}，若其\Term{adjunction}{伴随}的\Term{bijection}{双射}$d:R\to R'$（见同处）满足$d(\Delta)=\Delta'$，且对所有$\alpha\in\Delta$有
+\[f(\exp_\alpha(X_\alpha))=\exp_{d(\alpha)}(X'_{d(\alpha)}),\quad\text{即 }f(u_\alpha)=u'_{d(\alpha)}.\]
+\end{SGAresult}
+\footnote{编者注：将\Term{bijection}{双射}$R\xrightarrow\sim R'$记作$d$而非$u$，以避免记号$u'_{u(\alpha)}$。}
+\SourcePage{179}
+\textbf{1.4.} 若把该处的整数记作$q(\alpha)$，则
+\[f(p_\alpha(x))=p'_{d(\alpha)}(x^{q(\alpha)})\quad(\alpha\in\Delta),\]
+从而还有
+\[f(p_{-\alpha}(x))=p'_{-d(\alpha)}(x^{q(\alpha)}),\qquad f(w_\alpha)=w'_{d(\alpha)}.\]
+回忆（第XXII讲4.2），对任意$\alpha\in R$、$z\in\mathbf G_m(S')$、$t\in T(S')$都有
+\[f(\alpha^*(z))=(d(\alpha)^*(z))^{q(\alpha)}=d(\alpha)^*(z^{q(\alpha)}),\qquad d(\alpha)(f(t))=\alpha(t)^{q(\alpha)}.\]
+\textbf{1.5.} 称带有\Term{simple-root-system}{单根系}的\Term{root-datum}{根数据}为\Term{pinned-root-datum}{钉扎根数据}；称把\Term{simple-root}{单根}变成\Term{simple-root}{单根}的\Term{root-datum}{根数据}$p$-\Term{morphism}{态射}（第XXI讲6.8）为\Term{pinned-root-datum}{钉扎根数据}的$p$-\Term{morphism}{态射}。若$G$为\Term{pinned-group}{钉扎}$S$-群，以$\mathcal R(G)$记其对应的\Term{pinned-root-datum}{钉扎根数据}（即第XXII讲1.14的\Term{root-datum}{根数据}配以$\Delta$）。设$p$为第XXII讲4.2.2定义的整数，则有：
+\begin{SGAresult}{评注}{1.6}
+对应$G\mapsto\mathcal R(G)$定义了从\Term{pinned-group}{钉扎}\Term{reductive-group}{约化}$S$-群\Term{category}{范畴}到\Term{pinned-root-datum}{钉扎根数据}\Term{category}{范畴}的\Term{functor}{函子}，后者的\Term{morphism}{态射}取为$p$-\Term{morphism}{态射}。
+\end{SGAresult}
+\textbf{1.7. \Term{pinned-group}{钉扎群}$Z_{\Delta_1}$。} 设$\Delta_1\subset\Delta$，$T_{\Delta_1}$为$\bigcap_{\alpha\in\Delta_1}\operatorname{Ker}(\alpha)$的\Term{maximal-torus}{极大环面}，置
+\[Z_{\Delta_1}=\operatorname{Centr}_G(T_{\Delta_1}).\]
+记$R'=\mathbf Z\Delta_1\cap R$。已知（第XXII讲5.10.7），$Z_{\Delta_1}$是\Term{jacobson-radical}{根基}为$T_{\Delta_1}$的\Term{reductive-group}{约化}$S$-群，$(T,M,R')$是其\Term{splitting}{分裂}，$\Delta_1$是一个\Term{simple-root-system}{单根系}。因此$(Z_{\Delta_1},T,M,R',\Delta_1,(X_\alpha)_{\alpha\in\Delta_1})$是\Term{pinned-group}{钉扎}$S$-群。总给$Z_{\Delta_1}$配备此\Term{pinning}{钉扎}。特别考虑
+\[Z_\alpha=Z_{\{\alpha\}},\qquad Z_{\alpha\beta}=Z_{\{\alpha,\beta\}}.\]
+记$B_{\Delta_1}=B\cap Z_{\Delta_1}$；已知它是$Z_{\Delta_1}$的\Term{canonical}{典范}Borel\Term{subgroup}{子群}\footnote{编者注：即$Z_{\Delta_1}$中对应于$R'_+=R'\cap R_+$的Borel\Term{subgroup}{子群}。}，其\Term{unipotent-part}{幺幂部分}为$U_{\Delta_1}=U\cap Z_{\Delta_1}$。特别地$B_\alpha=T\cdot U_\alpha$。记
+\[U_{\alpha\beta}=U_{\{\alpha,\beta\}}=U\cap Z_{\alpha\beta}=\prod_{\gamma\in R^+_{\alpha\beta}}U_\gamma,\]
+其中$R^+_{\alpha\beta}$为由$\alpha,\beta$线性组合得到的\Term{positive-root}{正根}集。若$f:G\to G'$为\Term{pinned-group}{钉扎}$S$-\Term{group-morphism}{群态射}，$d:R\to R'$为相应\Term{bijection}{双射}，则$\Delta'_1=d(\Delta_1)\subset\Delta'$。显然$f$把$T_{\Delta_1}$映入$T'_{\Delta'_1}$，因而把$Z_{\Delta_1}$映入$Z'_{\Delta'_1}$。
+\SourcePage{180}
+相应的$S$-\Term{morphism}{态射}$f_{\Delta_1}:Z_{\Delta_1}\to Z'_{d(\Delta'_1)}$与\Term{canonical}{典范}\Term{pinning}{钉扎}相容，定义\Term{pinned-root-datum}{钉扎根数据}\Term{morphism}{态射}
+\[\mathcal R(f_{\Delta_1}):\mathcal R(Z_{\Delta_1},T,M,\ldots)\longrightarrow\mathcal R(Z'_{\Delta'_1},T',M',\ldots),\]
+且$\mathcal R(f)$和$\mathcal R(f_{\Delta_1})$下层的\Term{morphism}{态射}$M'\to M$相同。
+\textbf{1.8. 群$\operatorname{Norm}_G(T)$的研究。} 对每对\Term{simple-root}{单根}$(\alpha,\beta)$，以$n_{\alpha\beta}$记Weyl群$W$中$s_\alpha s_\beta$的阶。特别$n_{\alpha\alpha}=1$，故$(w_\alpha w_\beta)^{n_{\alpha\beta}}\in T(S)$。
+\begin{SGAresult}{定义}{1.8.1}
+对$(\alpha,\beta)\in\Delta\times\Delta$，置$t_{\alpha\beta}=(w_\alpha w_\beta)^{n_{\alpha\beta}}\in T(S)$；并置（第XX讲3.1）$t_\alpha=t_{\alpha\alpha}=w_\alpha^2=\alpha^*(-1)\in T(S)$。
+\end{SGAresult}
+\begin{SGAresult}{命题}{1.8.2}
+设$H$为把\Term{scheme}{概形}的\Term{direct-sum}{直和}变成积的$S$-\Term{group-functor}{群函子}（例如Zariski\Term{topology}{拓扑}的\Term{sheaf}{层}），$f_T:T\to H$为\Term{group-morphism}{群态射}，$h_\alpha\in H(S)$（$\alpha\in\Delta$）。存在（必唯一）\Term{group-morphism}{群态射}$f_N:\operatorname{Norm}_G(T)\to H$，使其在$T$上诱导$f_T$且$f_N(w_\alpha)=h_\alpha$，当且仅当：
+(i) 对所有$\alpha\in\Delta$、$S'\to S$及$t\in T(S')$，
+\[f_T(s_\alpha(t))=h_\alpha f_T(t)h_\alpha^{-1}\quad\text{即 }f_T\circ s_\alpha=\operatorname{int}(h_\alpha)\circ f_T;\]
+(ii) 对所有$(\alpha,\beta)\in\Delta\times\Delta$，$f_T(t_{\alpha\beta})=(h_\alpha h_\beta)^{n_{\alpha\beta}}$。
+\end{SGAresult}
+\begin{proof}
+在$(\mathrm{Sch})$上取由\Term{covering-family}{覆盖族}为\Term{direct-sum}{直和}的\Term{pretopology}{预拓扑}生成的\Term{topology}{拓扑}$\mathcal C$；假设就是$H$为$\mathcal C$-\Term{sheaf}{层}。设$L$为\Term{generator}{生成元}$(m_\alpha)_{\alpha\in R}$上的\Term{free-group}{自由群}，$L_1$为由$(m_\alpha m_\beta)^{n_{\alpha\beta}}$（$(\alpha,\beta)\in\Delta\times\Delta$）生成的\Term{normal-subgroup}{正规子群}。由$g(m_\alpha)=s_\alpha$定义$g:L\to W$；已知（第XXI讲5.1）它\Term{induction-isomorphism}{诱导同构}$\bar g:L/L_1\xrightarrow\sim W$。令$L$经由$g$\Term{action}{作用}于$T$，即$m_\alpha\cdot t=s_\alpha(t)$。以$L_S$记$L$定义的\Term{constant-group}{常群}，考虑此\Term{action}{作用}的\Term{semidirect-product}{半直积}$N=T\cdot L_S$。存在唯一$S$-\Term{group-morphism}{群态射}
+\[h:T\cdot L_S=N\longrightarrow\operatorname{Norm}_G(T)\]
+\SourcePage{181}
+使$h(m_\alpha)=w_\alpha$，对每个$S'\to S$、$t\in T(S')$有$h(t)=t$。设$N_1$为由$t_{\alpha\beta}^{-1}(m_\alpha m_\beta)^{n_{\alpha\beta}}$生成的\Term{normal}{正规}群子\Term{sheaf}{层}。显然$N_1\subset\operatorname{Ker}h$；考虑诱\Term{derived-morphism}{导态射}$h_1:N/N_1\to\operatorname{Norm}_G(T)$。证明它为\Term{isomorphism}{同构}。因$h$在$T$上诱导\Term{canonical}{典范}\Term{immersion}{浸入}，后者为\Term{monomorphism}{单态射}，\Term{canonical}{典范}\Term{morphism}{态射}$T\to N/N_1$亦为\Term{monomorphism}{单态射}，故诱导$T\simeq TN_1/N_1$。同理$h_1$诱导$TN_1/N_1\simeq T$；只须证明
+\[h_2:N/TN_1\longrightarrow\operatorname{Norm}_G(T)/T\]
+为\Term{isomorphism}{同构}。但$TN_1$是$N$中由$T$和$(m_\alpha m_\beta)^{n_{\alpha\beta}}$生成的\Term{normal}{正规}群子$\mathcal C$-\Term{sheaf}{层}，也就是由$T$和$L_1$生成者，即$T\cdot(L_1)_S$。故$h_2$等同于按构造为\Term{isomorphism}{同构}的$\bar g:L_S/(L_1)_S\to W_S$。
+现在1.8.2易证。条件显然必要；证明充分性。条件(i)保证存在$u:N\to H$，满足$u(m_\alpha)=h_\alpha$及$u|_T=f_T$。条件(ii)说$u$在$N_1$上为零，结果立即得出。
+\end{proof}
+\textbf{1.9. \Term{functor}{函子}$\mathcal R$的忠实性。}
+\begin{SGAresult}{命题}{1.9.1}
+1.6的\Term{functor}{函子}$\mathcal R$是忠实的：若$f,g:G\rightrightarrows G'$是两个\Term{pinned-group}{钉扎群}\Term{morphism}{态射}，且$\mathcal R(f)=\mathcal R(g)$，则$f=g$。
+\end{SGAresult}
+事实上$f,g$在$T$、$U_\alpha$和$U_{-\alpha}$（$\alpha\in\Delta$）上相同，故只须应用下述引理。
+\begin{SGAresult}{引理}{1.9.2}
+设$S$为\Term{scheme}{概形}，$G$为\Term{pinned-group}{钉扎}\Term{reductive-group}{约化}$S$-群，$H$为对(fppf)\Term{separated}{分离}的$S$-群预\Term{sheaf}{层}，$f,g:G\rightrightarrows H$为$S$-\Term{group-morphism}{群态射}。下列条件\Term{equivalence}{等价}：(i) $f=g$；(ii) $f,g$在$T$以及每个$U_\alpha,U_{-\alpha}$（$\alpha\in\Delta$）上相同；(iii) $f,g$在$T$和每个$U_\alpha$（$\alpha\in\Delta$）上相同，且对各$\alpha\in\Delta$有$f(w_\alpha)=g(w_\alpha)$。
+\end{SGAresult}
+\SourcePage{182}
+\begin{proof}
+(i)$\Rightarrow$(ii)显然，(ii)$\Rightarrow$(iii)立即由$w_\alpha$的定义（1.2）推出。余下证明(iii)$\Rightarrow$(i)。若$\alpha\in R$，存在$\{\alpha_i\}\subset\Delta$使$\alpha=s_{\alpha_1}\cdots s_{\alpha_n}(\alpha_{n+1})$，故
+\[U_\alpha=\operatorname{int}(w_{\alpha_1}\cdots w_{\alpha_n})U_{\alpha_{n+1}}.\]
+由此$f,g$在每个$U_\alpha$上相同，因而在$\Omega$上相同，故相同（第XXII讲4.1.11）。
+\end{proof}
+\textbf{注记1.9.3。} 若$G$\Term{semisimple}{半单}，则(ii)、(iii)中可去掉$f,g$在$T$上相同的假设。事实上$G$作为(fppf)\Term{sheaf}{层}由$U_\alpha$（$\alpha\in R$）生成（第XXII讲6.2.2(a)）。
+\SGAsection{2}{钉扎群的生成元与关系}
+本节固定\Term{pinned-group}{钉扎}$S$-群$G$。若$\alpha,\beta\in\Delta$，沿用1.7的记号$Z_\alpha,Z_{\alpha\beta},U_{\alpha\beta},R^+_{\alpha\beta}$。
+\begin{SGAresult}{定理}{2.1}
+设$S$为\Term{scheme}{概形}，$G$为\Term{pinned-group}{钉扎}$S$-群，$H$为(fppf)的$S$-群\Term{sheaf}{层}。给定\Term{group-morphism}{群态射}$f_N:\operatorname{Norm}_G(T)\to H$和$f_\alpha:U_\alpha\to H$（$\alpha\in R$）。存在延拓$f_N$及全部$f_\alpha$的（必唯一）\Term{group-morphism}{群态射}$f:G\to H$，当且仅当：
+(i) 对$\alpha\in\Delta,\beta\in R$有$\operatorname{int}(f_N(w_\alpha))\circ f_\beta=f_{s_\alpha(\beta)}\circ\operatorname{int}(w_\alpha)$；
+(ii) 对$\alpha\in\Delta$存在\Term{group-morphism}{群态射}$F_\alpha:Z_\alpha\to H$延拓$f_\alpha,f_{-\alpha}$和$f_N|_{\operatorname{Norm}_{Z_\alpha}(T)}$；
+(iii) 对$(\alpha,\beta)\in\Delta\times\Delta$存在\Term{group-morphism}{群态射}$U_{\alpha\beta}\to H$，在各$U_\gamma$（$\gamma\in R^+_{\alpha\beta}$，即$U_\gamma\subset U_{\alpha\beta}$）上诱导$f_\gamma$。
+\end{SGAresult}
+\textbf{2.1.1. 证明。} 这些条件显然必要。在$\Gamma_0(R)$上选择一个全序\Term{group-structure}{群结构}，使大于零的根恰是$R_+$（第XXI讲3.5.6）；以$R$的\Term{subset}{子集}为指标的积均按此序排列。以$f_T$记$f_N$在$T$上的\Term{restriction}{限制}，考虑\Term{morphism}{态射}$\bar f:\Omega\to H$，
+\SourcePage{183}
+其\Term{set}{集合}意义的定义为
+\[\bar f\left(\prod_{\alpha\in R_-}y_\alpha\cdot t\cdot\prod_{\alpha\in R_+}x_\alpha\right)=\prod_{\alpha\in R_-}f_\alpha(y_\alpha)\cdot f_T(t)\cdot\prod_{\alpha\in R_+}f_\alpha(x_\alpha).\]
+满足定理条件的\Term{morphism}{态射}必延拓$\bar f$；反之，延拓$\bar f$的\Term{group-morphism}{群态射}$f:G\to H$也延拓$f_N$：它延拓$f_\alpha,f_{-\alpha}$，故$f(w_\alpha)=F_\alpha(w_\alpha)=f_N(w_\alpha)$，且按假设延拓$f_T$。由第XXII讲4.1.11(ii)，只须证明：
+\begin{SGAresult}{命题}{2.1.2}
+上述$\bar f:\Omega\to H$是“泛乘法的”：确切说，对任意$S'\to S$及$x,y\in\Omega(S')$，若$xy\in\Omega(S')$，则$\bar f(xy)=\bar f(x)\bar f(y)$。
+\end{SGAresult}
+\begin{SGAresult}{引理}{2.1.3}
+设$n\in\operatorname{Norm}_G(T)(S')$，$S'\to S$，且$\alpha,\beta\in R$满足$\operatorname{int}(n)U_\alpha=U_\beta$（即$n(\alpha)=\beta$），则
+\[\operatorname{int}(f_N(n))\circ f_\alpha=f_\beta\circ\operatorname{int}(n).\]
+\end{SGAresult}
+\begin{proof}
+只须对\Term{sheaf}{层}$\operatorname{Norm}_G(T)$的一组\Term{generator}{生成元}验证。对各$w_\alpha$（$\alpha\in\Delta$），公式由2.1(i)成立，故仅须处理$n\in T(S')$。$\alpha$为\Term{simple-root}{单根}时由2.1(ii)显然；否则取$w\in W$使$w^{-1}(\alpha)\in\Delta$。把$w$写成单反射的积\footnote{编者注：将“基本对称”改为“单反射”。}，归结为证明：若公式对$\alpha$和任意$n$成立，则对$w_{\alpha_0}(\alpha)$及$t\in T(S')$亦成立，其中$\alpha_0\in\Delta$。由2.1(i)，
+\[\begin{aligned}\operatorname{int}(f_N(t))\circ f_{w_{\alpha_0}(\alpha)}&=\operatorname{int}(f_N(tw_{\alpha_0}))\circ f_\alpha\circ\operatorname{int}(w_{\alpha_0}^{-1})\\&=f_{w_{\alpha_0}(\alpha)}\circ\operatorname{int}(tw_{\alpha_0})\circ\operatorname{int}(w_{\alpha_0}^{-1}).\end{aligned}\]
+\end{proof}
+\begin{SGAresult}{引理}{2.1.4}
+$\bar f$在$U$（相应地$U^-$）上的\Term{restriction}{限制}为\Term{group-morphism}{群态射}，特别地与所选根的次序无关。
+\end{SGAresult}
+\begin{proof}
+只证$U$的情形。由第XXII讲5.5.8，只须对\Term{positive-root}{正根}$\alpha<\beta$及$x_\alpha\in U_\alpha(S'),x_\beta\in U_\beta(S')$、$S'\to S$验证
+\[f_\beta(x_\beta)f_\alpha(x_\alpha)f_\beta(x_\beta^{-1})=\bar f(x_\beta x_\alpha x_\beta^{-1}).\]
+由第XXII讲5.5.2存在$x_\gamma\in U_\gamma(S')$（$\gamma=i\alpha+j\beta\in R$，$i>0,j\geq0$\footnote{编者注：将$i,j>0$改为$i>0,j\geq0$，因为右边的积中出现$x_\alpha$。}），使$x_\beta x_\alpha x_\beta^{-1}=\prod_\gamma x_\gamma$；故须验证
+\[f_\beta(x_\beta)f_\alpha(x_\alpha)f_\beta(x_\beta^{-1})=\prod_{\substack{\gamma=i\alpha+j\beta\\i>0,j\geq0}}f_\gamma(x_\gamma).\]
+\SourcePage{184}
+由第XXI讲3.5.4存在$w\in W$使$w(\alpha)=\alpha_0\in\Delta$，$w(\beta)\in A_{\alpha_0\beta_0}$（1.7的记号），其中$\beta_0\in\Delta$。由第XXII讲3.8\Term{lifting}{提升}$w$为$n\in\operatorname{Norm}_G(T)(S)$，只须验证用$f_N(n)$\Term{conjugacy}{共轭}后的关系。由2.1.3便归结于$\alpha,\beta\in R^+_{\alpha_0\beta_0}$，此时由2.1(iii)结束。
+\end{proof}
+\begin{SGAresult}{引理}{2.1.5}
+设$n\in\operatorname{Norm}_G(T)(S)$满足$\operatorname{int}(n)U=U^-$（即$n$为Weyl群相对于$\Delta$的对称\footnote{编者注：相对于$\Delta$而言。}，第XXI讲3.6.14）。对任意$S'\to S$及$u\in U(S')$（相应地$u\in U^-(S')$），有$\bar f(nun^{-1})=f_N(n)\bar f(u)f_N(n^{-1})$。
+\end{SGAresult}
+由2.1.3、2.1.4立即得出。
+\begin{SGAresult}{引理}{2.1.6}
+设$u\in B(S'),v\in B^-(S'),g\in\Omega(S')$，$S'\to S$，则$\bar f(vgu)=\bar f(v)\bar f(g)\bar f(u)$。
+\end{SGAresult}
+\begin{proof}
+置$v=v_1t_1,g=v_2t_2u_2,u=t_3u_3$，其中$v_i\in U^-(S'),t_i\in T(S'),u_i\in U(S')$。一方面
+\[\bar f(v)\bar f(g)\bar f(u)=\bar f(v_1)f_T(t_1)\bar f(v_2)f_T(t_2)\bar f(u_2)f_T(t_3)\bar f(u_3).\]
+另一方面
+\[\begin{aligned}\bar f(vgu)&=\bar f(v_1t_1v_2t_1^{-1}t_1t_2t_3t_3^{-1}u_2t_3u_3)\\&=\bar f(v_1\cdot t_1v_2t_1^{-1})f_T(t_1t_2t_3)\bar f(t_3^{-1}u_2t_3\cdot u_3)\\&=\bar f(v_1)\bar f(t_1v_2t_1^{-1})f_T(t_1t_2t_3)\bar f(t_3^{-1}u_2t_3)\bar f(u_3),\end{aligned}\]
+最后一步用了2.1.4。故归结为显然的公式
+\[\bar f(t_1v_2t_1^{-1})=f_T(t_1)\bar f(v_2)f_T(t_1)^{-1},\quad \bar f(t_3^{-1}u_2t_3)=f_T(t_3)^{-1}\bar f(u_2)f_T(t_3),\]
+它们来自$\bar f$的定义及2.1.3。
+\end{proof}
+\begin{SGAresult}{引理}{2.1.7}
+设$\alpha\in\Delta$，$g\in\Omega(S')\cap\operatorname{int}(w_\alpha)^{-1}\Omega(S')$，$S'\to S$，则$\bar f(w_\alpha gw_\alpha^{-1})=f_N(w_\alpha)\bar f(g)f_N(w_\alpha)^{-1}$。
+\end{SGAresult}
+\begin{proof}
+对$g\in\Omega(S')$，由第XXII讲5.6.8写$g=ax_{-\alpha}tx_\alpha b$，其中$a\in U_{-\widehat\alpha}(S'),x_{-\alpha}\in U_{-\alpha}(S'),t\in T(S'),x_\alpha\in U_\alpha(S'),b\in U_{\widehat\alpha}(S')$。由2.1.3、2.1.4及$s_\alpha$置换异于$\alpha$的\Term{positive-root}{正根}（第XXI讲3.3.2），有$\operatorname{int}(w_\alpha)a\in U_{-\widehat\alpha}(S')$、$\operatorname{int}(w_\alpha)b\in U_{\widehat\alpha}(S')$，且公式对$g=a,b$成立。由2.1.6只须处理$g=x_{-\alpha}tx_\alpha\in Z_\alpha(S')$；此时“一切都在$Z_\alpha$中进行”，由2.1(ii)结束。
+\end{proof}
+\SourcePage{185}
+\begin{SGAresult}{引理}{2.1.8}
+设$n\in\operatorname{Norm}_G(T)(S)$。对$S'\to S$及$g\in\Omega(S')$，若$\operatorname{int}(n)g\in\Omega(S')$，则$\bar f(ngn^{-1})=f_N(n)\bar f(g)f_N(n)^{-1}$。
+\end{SGAresult}
+\begin{proof}
+$n\in T(S)$时由2.1.3显然。公式两边定义$\Omega\cap\operatorname{int}(n)^{-1}\Omega\to H$的\Term{morphism}{态射}；验证它们相同，只须找$\Omega$中含\Term{unit-section}{单位截面}的\Term{open-subset}{开集}$V_n$，使$\operatorname{int}(n)V_n\subset\Omega$，且$\bar f\circ\operatorname{int}(n)$与$\operatorname{int}(f_N(n))\circ\bar f$在$V_n$上相同。由\Term{normalizer}{正规化子}的结构，只须证明：若对$n_0\in\operatorname{Norm}_G(T)(S)$成立，则对$n=n_0w_\alpha$（$\alpha\in\Delta$）成立。置$V_n=\Omega\cap\operatorname{int}(w_\alpha)^{-1}V_{n_0}$。有$\operatorname{int}(n)V_n\subset\operatorname{int}(n_0)V_{n_0}\subset\Omega$。若$g\in V_n(S')$，则$\operatorname{int}(n)g=\operatorname{int}(n_0)\operatorname{int}(w_\alpha)g$，且$\operatorname{int}(w_\alpha)g\in V_{n_0}(S')$，故由假设
+\[\bar f(\operatorname{int}(n_0)\operatorname{int}(w_\alpha)g)=\operatorname{int}(f_N(n_0))\bar f(\operatorname{int}(w_\alpha)g).\]
+又$\operatorname{int}(w_\alpha)g\in\Omega(S')$，可用2.1.7，得$\bar f(\operatorname{int}(w_\alpha)g)=\operatorname{int}(f_N(w_\alpha))\bar f(g)$，立即结束。
+\end{proof}
+现在证明2.1.2。设$x,x'\in\Omega(S')$，照常写$x=vtu,x'=v't'u'$，故$xx'=vt(uv')t'u'$。由2.1.6及$U^-(S')\Omega(S')U(S')=\Omega(S')$，只须证明$uv'\in\Omega(S')$时$\bar f(uv')=\bar f(u)\bar f(v')$。取2.1.5(ii)中的$n\in\operatorname{Norm}_G(T)(S')$，由该处
+\[\bar f(u)=f_N(n)^{-1}\bar f(nun^{-1})f_N(n),\quad \bar f(v')=f_N(n)^{-1}\bar f(nv'n^{-1})f_N(n),\]
+故$\bar f(u)\bar f(v')=f_N(n)^{-1}\bar f(nun^{-1})\bar f(nv'n^{-1})f_N(n)$。但$nun^{-1}\in U^-(S')$、$nv'n^{-1}\in U(S')$，从而
+\[\bar f(nun^{-1})\bar f(nv'n^{-1})=\bar f((nun^{-1})(nv'n^{-1}))=\bar f(nuv'n^{-1}).\]
+所以$\bar f(u)\bar f(v')=f_N(n)^{-1}\bar f(nuv'n^{-1})f_N(n)$。若$uv'\in\Omega(S')$，用2.1.8即告完成。
+\textbf{注记2.2。} 可用\Term{group-morphism}{群态射}$f_T:T\to H$及满足1.8.2的\Term{section}{截面}$h_\alpha\in H(S)$（$\alpha\in\Delta$）替代$f_N$。此时定理的(ii)改为：(ii$'$) 存在\Term{group-morphism}{群态射}$F_\alpha:Z_\alpha\to H$，延拓$f_\alpha,f_{-\alpha},f_T$并满足$F_\alpha(w_\alpha)=h_\alpha$。
+\SourcePage{186}
+下面把上述定理写得更显式。沿用前面的记号。
+\begin{SGAresult}{定理}{2.3}
+设$S$为\Term{scheme}{概形}，$G$为\Term{pinned-group}{钉扎}$S$-群，$H$为(fppf)的$S$-群\Term{sheaf}{层}，给定\Term{group-morphism}{群态射}$f_T:T\to H$、$f_\alpha:U_\alpha\to H$（$\alpha\in\Delta$）及\Term{section}{截面}$h_\alpha\in H(S)$（$\alpha\in\Delta$）。存在诱导$f_T$和$f_\alpha$且满足$f(w_\alpha)=h_\alpha$的（必唯一）\Term{group-morphism}{群态射}$f:G\to H$，当且仅当：
+(i) 对$S'\to S$、$t\in T(S')$、$\alpha\in\Delta$及$x\in U_\alpha(S')$，
+\[f_T(t)f_\alpha(x)f_T(t)^{-1}=f_\alpha(\operatorname{int}(t)x).\tag{1}\]
+(ii) 对$\alpha\in\Delta$、$S'\to S$及$t\in T(S')$，
+\[h_\alpha f_T(t)h_\alpha^{-1}=f_T(s_\alpha(t))=f_T(t\cdot\alpha^*(\alpha(t)^{-1})).\tag{2}\]
+(iii) 对$(\alpha,\beta)\in\Delta\times\Delta$，
+\[(h_\alpha h_\beta)^{n_{\alpha\beta}}=f_T(t_{\alpha\beta}).\tag{3}\]
+(iv) 对$\alpha\in\Delta$（回忆$u_\alpha=\exp_\alpha(X_\alpha)$），
+\[(h_\alpha f_\alpha(u_\alpha))^3=e.\tag{4}\]
+(v) 对$(\alpha,\beta)\in\Delta\times\Delta$、$\alpha\ne\beta$，存在\Term{group-morphism}{群态射}$f_{\alpha\beta}:U_{\alpha\beta}\to H$，满足：a)
+\[f_{\alpha\beta}|_{U_\alpha}=f_\alpha,\qquad f_{\alpha\beta}|_{U_\beta}=f_\beta;\tag{5}\]
+b) 对$\gamma\in R^+_{\alpha\beta}$、$\gamma\ne\alpha$（相应地$\gamma\ne\beta$），以及$S'\to S$、$x\in U_\gamma(S')$，
+\[\begin{aligned}\operatorname{int}(h_\alpha)f_{\alpha\beta}(x)&=f_{\alpha\beta}(\operatorname{int}(w_\alpha)x),\\
+\text{（相应地 }\operatorname{int}(h_\beta)f_{\alpha\beta}(x)&=f_{\alpha\beta}(\operatorname{int}(w_\alpha)x)\text{）。}\end{aligned}\tag{6}\]
+\end{SGAresult}
+\textbf{证明。} 唯一性由1.9.2显然。证明存在性。
+\begin{SGAresult}{引理}{2.3.1}
+存在延拓$f_T$且满足$f_N(w_\alpha)=h_\alpha$的\Term{group-morphism}{群态射}$f_N:\operatorname{Norm}_G(T)\to H$。
+\end{SGAresult}
+结合(2)、(3)，这正是1.8.2的断言。
+\SourcePage{187}
+\begin{SGAresult}{引理}{2.3.2}
+存在\Term{group-morphism}{群态射}$F_\alpha:Z_\alpha\to H$（$\alpha\in\Delta$），延拓$f_T,f_\alpha$并满足$F_\alpha(w_\alpha)=h_\alpha$，因而延拓$f_N|_{\operatorname{Norm}_{Z_\alpha}(T)}$。
+\end{SGAresult}
+由第XX讲6.2及条件(1)、(3)、(4)显然。
+\begin{SGAresult}{引理}{2.3.3}
+对$(\alpha,\beta)\in\Delta\times\Delta$、$\alpha\ne\beta$及$n\in\operatorname{Norm}_{Z_{\alpha\beta}}(T)(S)$，若$n(\alpha)=\alpha$（相应地$n(\alpha)=\beta$），即$\operatorname{int}(n)U_\alpha=U_\alpha$（相应地$U_\beta$），则对$S'\to S$及$x\in U_\alpha(S')$有
+\[\operatorname{int}(f_N(n))f_\alpha(x)=f_\alpha(\operatorname{int}(n)x)\quad\text{（相应地 }=f_\beta(\operatorname{int}(n)x)\text{）。}\]
+\end{SGAresult}
+\begin{proof}
+存在$t\in T(S)$及$\{\alpha_i\}\subset\{\alpha,\beta\}$使$n=tw_{\alpha_k}\cdots w_{\alpha_1}$。$n=t$时由(1)成立，故可设$n=w_{\alpha_k}\cdots w_{\alpha_1}$。对$k$归纳，假定对可写成少于$k-1$个单反射之积且满足引理假设的$n$已证。考虑$\gamma_i=s_{\alpha_i}\cdots s_{\alpha_1}(\alpha)$。若所有$\gamma_i$均为\Term{positive-root}{正根}，即属于$R^+_{\alpha\beta}$，用2.3(v)的记号与条件，立即归纳得到
+\[\operatorname{int}(f_N(w_{\alpha_i}\cdots w_{\alpha_1}))f_\alpha(x)=f_{\alpha\beta}(\operatorname{int}(w_{\alpha_i}\cdots w_{\alpha_1})x),\]
+取$i=k$即所求。否则存在$j<k$使$\gamma_j\in R_+$、$\gamma_{j+1}\notin R_+$。由$\gamma_{j+1}=s_{\alpha_j}(\gamma_j)$及第XXI讲3.3.2，立即有$\gamma_j=\alpha_j$，故$\gamma_j$为$\alpha$或$\beta$。\Term{decomposable}{可分解}$n=n'n''$，其中$n'=w_{\alpha_k}\cdots w_{\alpha_{j+1}}$、$n''=w_{\alpha_j}\cdots w_{\alpha_1}$；两者满足引理假设且为少于$k-1$个反射之积，故由归纳假设满足结论。
+\end{proof}
+\begin{SGAresult}{引理}{2.3.4}
+设$\alpha\in R$。若$n,n'\in\operatorname{Norm}_G(T)(S)$及$\beta,\beta'\in\Delta$满足$n(\alpha)=\beta,n'(\alpha)=\beta'$，则对$x\in U_\alpha(S')$、$S'\to S$有
+\[\operatorname{int}(f_T(n)^{-1})f_\beta(nxn^{-1})=\operatorname{int}(f_T(n')^{-1})f_{\beta'}(n'xn'^{-1}).\]
+\end{SGAresult}
+\SourcePage{188}
+\begin{proof}
+只须证明$n(\alpha)=\beta$、$\alpha,\beta\in\Delta$时，$\operatorname{int}(f_T(n))\circ f_\alpha=f_\beta\circ\operatorname{int}(n)$。由Tits引理（第XXI讲5.6），存在\Term{simple-root}{单根}序列$\alpha_0=\alpha,\alpha_1,\ldots,\alpha_m=\beta$及$w_i\in W$（$0\leq i<m$），使
+\[n=w_{m-1}\cdots w_0,\qquad w_i(\alpha_i)=\alpha_{i+1},\]
+且对各$i$存在\Term{simple-root}{单根}$\beta_i$满足$w_i\in W_{\alpha_i\beta_i}$、$\alpha_{i+1}=\alpha_i$或$\beta_i$。归纳即归结到上一引理。
+\end{proof}
+\begin{SGAresult}{引理}{2.3.5}
+存在\Term{group-morphism}{群态射}族$f'_\gamma:U_\gamma\to H$（$\gamma\in R$），满足：(i) 对$\alpha\in\Delta$，$f'_\alpha=f_\alpha$且$f'_{-\alpha}=F_\alpha|_{U_{-\alpha}}$，$F_\alpha$如2.3.2；(ii) 对$\alpha,\beta\in\Delta$、$\gamma\in R^+_{\alpha\beta}$，$f'_\gamma=f_{\alpha\beta}|_{U_\gamma}$；(iii) 若$n\in\operatorname{Norm}_G(T)(S)$及$\alpha,\beta\in R$满足$n(\alpha)=\beta$，则对$S'\to S$及$x\in U_\alpha(S')$有$\operatorname{int}(f_N(n))f'_\alpha(x)=f'_\beta(\operatorname{int}(n)x)$。
+\end{SGAresult}
+\begin{proof}
+对各$\alpha\in R$取$n\in\operatorname{Norm}_G(T)(S)$使$n(\alpha)\in\Delta$，用2.3.4的表达式定义$f'_\alpha(x)$。它与$n$的选择无关且确为\Term{group-morphism}{群态射}。性质(iii)按构造成立。(i)的第一断言显然（取$n=e$），第二断言也显然（取$n=w_\alpha$并用2.3.2）。若$\gamma\in R^+_{\alpha\beta}$，存在$n\in\operatorname{Norm}_{Z_{\alpha\beta}}(T)(S)$使$n(t)=\alpha$或$\beta$，用(iii)及(5)、(6)即证(ii)。
+\end{proof}
+\textbf{2.3.6。} 现在对$f_N$和$f'_\alpha$验证2.1的条件来证明定理：2.1(i)来自2.3.5(iii)；2.1(ii)来自2.3.5(i)及2.3.2；2.1(iii)来自2.3.5(ii)及$f_{\alpha\beta}$为\Term{group-morphism}{群态射}。显然得到：
+\begin{SGAresult}{推论}{2.4}
+设$S$为\Term{scheme}{概形}，$G$为\Term{semisimple-rank}{半单秩}$\geq1$的\Term{pinned-group}{钉扎}$S$-群，$H$为(fppf)的$S$-群\Term{sheaf}{层}。对各$(\alpha,\beta)\in\Delta\times\Delta$给定\Term{group-morphism}{群态射}$F_{\alpha\beta}:Z_{\alpha\beta}\to H$。存在诱导全部$F_{\alpha\beta}$的\Term{group-morphism}{群态射}$f:G\to H$，当且仅当对每对$(\alpha,\beta)$都有$F_{\alpha\beta}|_{Z_\alpha}=F_{\alpha\alpha}$。
+\end{SGAresult}
+\SourcePage{189}
+\begin{proof}
+必要性显然。设条件成立，置$f_T=F_{\alpha\alpha}|_T$，它与$\alpha$无关，因为$F_{\alpha\alpha}|_T=F_{\alpha\beta}|_T=F_{\beta\beta}|_T$。置$p_\alpha=F_{\alpha\alpha}|_{U_\alpha}$、$h_\alpha=F_{\alpha\alpha}(w_\alpha)$、$f_{\alpha\beta}=F_{\alpha\beta}|_{U_{\alpha\beta}}$。2.3的条件显然满足：(1)、(2)、(4)在$Z_\alpha$中“验证”，(3)、(5)、(6)在$Z_{\alpha\beta}$中验证。故有$f:G\to H$延拓$f_T,f_\alpha$且$f(w_\alpha)=h_\alpha$；它与$F_{\alpha\beta}$在$Z_{\alpha\beta}$的\Term{generator}{生成元}上相同，因而$f|_{Z_{\alpha\beta}}=F_{\alpha\beta}$。
+\end{proof}
+还有下述技术性推论：
+\begin{SGAresult}{推论}{2.5}
+设$G,G'$为\Term{semisimple-rank}{半单秩}二的\Term{pinned-group}{钉扎}$S$-群，$q>0$为使$x\mapsto x^q$成为$\mathbf G_{a,S}$\Term{endomorphism}{自同态}的整数，$h:\mathcal R(G')\to\mathcal R(G)$为\Term{pinned-root-datum}{钉扎根数据}的$q$-\Term{morphism}{态射}。对每个$\alpha\in R_+$选择$X_\alpha\in\Gamma(S,\mathfrak g_\alpha)^\times$及$X'_{d(\alpha)}\in\Gamma(S,\mathfrak g'_{d(\alpha)})^\times$，延拓$\alpha\in\Delta$时的\Term{canonical}{典范}选择。假设：(i) 若$\Delta=\{\alpha,\beta\}$，则$D_S(h)(t_{\alpha\beta})=t'_{d(\alpha)d(\beta)}$；(ii) 对$\alpha\in\Delta,\beta\in R_+$、$\beta\ne\alpha$（故$s_\alpha(\beta)\in R_+$），若$z\in\mathbf G_m(S)$由$\operatorname{Ad}(w_\alpha)X_\beta=zX_{s_\alpha(\beta)}$定义，则还有
+\[\operatorname{Ad}(w'_{d(\alpha)})X'_{d(\beta)}=z^{q(\beta)}X'_{d(s_\alpha(\beta))};\]
+(iii) 存在\Term{group-morphism}{群态射}$f:U\to U'$，对$\alpha\in R_+$、$S'\to S$及$x\in\mathbf G_a(S')$满足$f(\exp(xX_\alpha))=\exp(x^{q(\alpha)}X'_{d(\alpha)})$。则存在\Term{pinned-group}{钉扎群}\Term{morphism}{态射}$g:G\to G'$使$\mathcal R(g)=h$。
+\end{SGAresult}
+\begin{proof}
+以$f_\alpha(\exp(xX_\alpha))=\exp(x^{q(\alpha)}X'_{d(\alpha)})$定义$f_\alpha:U_\alpha\to G'$，置$f_T=D_S(h)$、$h_\alpha=w'_{d(\alpha)}$。2.3的条件满足（注意$q(s_\alpha(\beta))=q(\beta)$，第XXI讲6.8.4，且总有$D_S(h)(t_\alpha)=t'_{d(\alpha)}$），立即得出结论。
+\end{proof}
+\textbf{注记2.6。} 2.3(v)可进一步明确。首先须验证：(a) 对$w_\alpha,w_\beta$组成的每个字，若其相应的字把$\alpha$或$\beta$变成$\alpha$或$\beta$，则2.3.3型的相应关系成立。事实上2.3.3的证明表明，只须对极小字验证，即非平凡的真初始子字均不满足规定条件的字。若(a)成立，可如2.3.5定义各$\gamma\in R^+_{\alpha\beta}$的$f_\gamma:U_\gamma\to H$，随后须写下：
+\SourcePage{190}
+(b) 由$f_\gamma$定义的\Term{morphism}{态射}$U_{\alpha\beta}=\prod_{\gamma\in R^+_{\alpha\beta}}U_\gamma\to H$是\Term{group-morphism}{群态射}。由第XXII讲5.5.8，下述条件推出(b)：(b$'$) 此\Term{morphism}{态射}保持$U_\gamma,U_\delta$之间的交换关系，其中$\gamma,\delta\in R^+_{\alpha\beta},\gamma>\delta$（即第XII讲5.5.2中以$C_{i,j,\gamma,\delta}$表示的关系）。反之，(a)与(b$'$)合起来显然\Term{equivalence}{等价}于(v)。
+甚至可将这些条件化为只涉及$H$中$h_\alpha,h_\beta,f_\alpha(u_\alpha),f_\beta(u_\beta)$的条件。例如若$s_\alpha s_\beta s_\alpha(\beta)=\alpha$，一个(a)型条件写作
+\[\operatorname{int}(h_\alpha h_\beta h_\alpha)f_\beta(x)=f_\alpha(\operatorname{int}(w_\alpha w_\beta w_\alpha)x)\tag{1}\]
+（$x\in U_\alpha(S'),S'\to S$）。特别取$x=u_\beta$，有$\operatorname{int}(w_\alpha w_\beta w_\alpha)u_\beta=u_\alpha^z$，其中$z\in\mathbf G_m(S)$，故上述关系给出
+\[\operatorname{int}(h_\alpha h_\beta h_\alpha)f_\beta(u_\beta)=f_\alpha(u_\alpha)^z.\tag{1'}\]
+反之，在2.3(i)--(iv)下，(1$'$)推出(1)。对$t\in T(S')$，使$\operatorname{int}(t)$\Term{action}{作用}于(1$'$)，利用(i)、(ii)得到$x=\operatorname{int}(t)u_\beta=u_\beta^{\beta(t)}$时的(1)。注意$\beta:T\to\mathbf G_{m,S}$\Term{faithfully-flat}{忠实平坦}，故(1)必对$x\in U_\alpha(S')^\times$成立。因它对$x$可加，且$U_\alpha$的任意\Term{section}{截面}\Term{local-scheme}{局部}可写作$U_\alpha^\times$的两个\Term{section}{截面}之和，得到$(1')+\text{(i)}+\text{(ii)}\Rightarrow(1)$。
+对(b)型条件同理。此时须用：若$\gamma,\gamma'$是两个不同\Term{positive-root}{正根}，因而在$\mathbf Q$上\Term{linearly-independent}{线性无关}，则\Term{set-component}{分量}为$\gamma,\gamma'$的\Term{morphism}{态射}$T\to\mathbf G_{m,S}^2$\Term{faithfully-flat}{忠实平坦}。细节留给读者。
+\SGAsection{3}{半单秩二的群}
+\textbf{3.1. 一般事实。}
+\begin{SGAresult}{引理}{3.1.1}
+设$S$为\Term{scheme}{概形}，$G$为\Term{pinned-group}{钉扎}$S$-群，$\alpha,\beta$为其两根且$\alpha+\beta\ne0$。
+(i) 若$\alpha+\beta\notin R$，则对所有$S'\to S$、$X_\alpha\in\mathbf W(\mathfrak g_\alpha)(S'),X_\beta\in\mathbf W(\mathfrak g_\beta)(S')$有$\exp(X_\alpha)\exp(X_\beta)=\exp(X_\beta)\exp(X_\alpha)$。
+(ii) 若$\alpha+\beta,\alpha-\beta$均非根，则对$X_\beta\in\mathbf W(\mathfrak g_\beta)(S'),z_\alpha\in\mathbf W(\mathfrak g_\alpha)^\times(S')$有
+\[w_\alpha(z_\alpha)\exp(X_\beta)w_\alpha(z_\alpha)^{-1}=\exp(X_\beta),\]
+\SourcePage{191}
+且对$z_\alpha\in\mathbf W(\mathfrak g_\alpha)^\times(S'),z_\beta\in\mathbf W(\mathfrak g_\beta)^\times(S')$有$w_\alpha(z_\alpha)w_\beta(z_\beta)=w_\beta(z_\beta)w_\alpha(z_\alpha)$。
+(iii) 设$X_\alpha\in\mathbf W(\mathfrak g_\alpha)^\times(S'),X_\beta\in\mathbf W(\mathfrak g_\beta)^\times(S')$，且$w\in\operatorname{Norm}_G(T)(S')$满足$w(\alpha)=\beta$；由$\operatorname{Ad}(w)X_\alpha=zX_\beta$定义$z\in\mathbf G_m(S')$，则
+\[\begin{aligned}\operatorname{int}(w)\exp(xX_\alpha)&=\exp(xzX_\beta),\\\operatorname{int}(w)\exp(yX_\alpha^{-1})&=\exp(yz^{-1}X_\beta^{-1}),\\\operatorname{int}(w)w_\alpha(X_\alpha)&=\beta^*(z)w_\beta(X_\beta).\end{aligned}\]
+特别地若$z=\pm1$，则$\operatorname{int}(w)w_\alpha(X_\alpha)=w_\beta(X_\beta)^z$。
+(iv) 置$t_\alpha=\alpha^*(-1),t_\beta=\beta^*(-1)$，则
+\[s_\alpha(t_\beta)=t_\beta t_\alpha^{(\beta^*,\alpha)},\qquad\beta(t_\alpha)=(-1)^{(\alpha^*,\beta)}.\]
+\end{SGAresult}
+\begin{proof}
+(i)立即来自第XXII讲5.5.2；(ii)来自第XX讲3.1及对$(\beta,\alpha),(\beta,-\alpha),(-\beta,\alpha),(-\beta,-\alpha)$应用(i)；(iii)由定义显然，末句须注意$\beta^*(-1)=w_\beta(X_\beta)^{-2}$。最后(iv)显然。
+\end{proof}
+\begin{SGAresult}{命题（$A_1\times A_1$型群）}{3.1.2}
+设$G$为$A_1\times A_1$型\Term{pinned-group}{钉扎}$S$-群，记$\Delta=R_+=\{\alpha,\beta\}$。
+(i) $t_{\alpha\beta}=(w_\alpha w_\beta)^2=t_\alpha t_\beta=(w_\beta w_\alpha)^2=t_{\beta\alpha}$。
+(ii) $\operatorname{Ad}(w_\alpha)X_\beta=X_\beta$，$\operatorname{Ad}(w_\beta)X_\alpha=X_\alpha$。
+(iii) $U_\alpha,U_\beta$可交换（即$U$交换）。
+\end{SGAresult}
+\begin{proof}
+由引理(ii)，$w_\alpha w_\beta=w_\beta w_\alpha$，故$(w_\alpha w_\beta)^2=w_\alpha^2w_\beta^2=t_\alpha t_\beta$，即(i)。引理(ii)也给出(ii)；最后(iii)就是引理(i)。
+\end{proof}
+\textbf{3.1.3。} 用2.6的方法，2.3(v)明确写成以下两组条件，其中$v_\alpha=f_\alpha(u_\alpha)$（$\alpha\in\Delta$）：
+\[\text{(A)}\quad h_\alpha v_\beta h_\alpha^{-1}=v_\beta,\quad h_\beta v_\alpha h_\beta^{-1}=v_\alpha;\qquad \text{(B)}\quad v_\alpha v_\beta=v_\beta v_\alpha.\]
+\SourcePage{192}
+\textbf{3.2. $A_2$型群。}
+\begin{SGAresult}{命题}{3.2.1}
+设$G$为$A_2$型\Term{pinned-group}{钉扎}$S$-群，记$\Delta=\{\alpha,\beta\},R_+=\{\alpha,\beta,\alpha+\beta\}$。
+(i) $t_{\alpha\beta}=(w_\alpha w_\beta)^3=e=(w_\beta w_\alpha)^3=t_{\beta\alpha}$。
+(ii) 置$\operatorname{Ad}(w_\beta)X_\alpha=X_{\alpha+\beta}$，则
+\[\operatorname{Ad}(w_\alpha)X_\beta=-X_{\alpha+\beta},\quad\operatorname{Ad}(w_\alpha)X_{\alpha+\beta}=X_\beta,\quad\operatorname{Ad}(w_\beta)X_{\alpha+\beta}=-X_\alpha.\]
+(iii) 置$p_{\alpha+\beta}(x)=\exp(xX_{\alpha+\beta})=\operatorname{int}(w_\beta)p_\alpha(x)$，则
+\[p_\beta(y)p_\alpha(x)=p_\alpha(x)p_\beta(y)p_{\alpha+\beta}(xy).\]
+\end{SGAresult}
+\textbf{3.2.2。} 证明占据3.2.2至3.2.7。首先$(\beta^*,\alpha)=(\alpha^*,\beta)=-1$，故$\alpha(t_\beta)=\beta(t_\alpha)=-1$。置$\operatorname{Ad}(w_\beta)X_\alpha=X_{\alpha+\beta}$，立即有$\operatorname{Ad}(w_\beta)X_{\alpha+\beta}=\alpha(t_\beta)X_\alpha=-X_\alpha$。置$\operatorname{Ad}(w_\alpha)X_\beta=zX_{\alpha+\beta}$，$z\in\mathbf G_m(S)$，故$\operatorname{Ad}(w_\alpha)X_{\alpha+\beta}=\beta(t_\alpha)z^{-1}X_\beta=-z^{-1}X_\beta$。已知（第XXII讲5.5.2）存在唯一$A\in\mathbf G_a(S)$使
+\[p_\beta(y)p_\alpha(x)=p_\alpha(x)p_\beta(y)p_{\alpha+\beta}(Axy).\tag{+}\]
+要证(ii)、(iii)，就是证明$A=-z=1$。
+\textbf{3.2.3。} 对(+)\Term{action}{作用}$\operatorname{int}(w_\beta)$，得
+\[p_{-\beta}(-y)p_{\alpha+\beta}(x)=p_{\alpha+\beta}(x)p_{-\beta}(-y)p_\alpha(-Axy).\tag{++}\]
+\textbf{3.2.4。} 按$p_{\alpha+\beta}$的定义，$w_\beta p_\alpha(x)w_\beta^{-1}=p_{\alpha+\beta}(x)$，即
+\[p_\beta(1)p_{-\beta}(-1)p_\beta(1)p_\alpha(x)p_\beta(-1)p_{-\beta}(1)p_\beta(-1)=p_{\alpha+\beta}(x).\]
+因$\alpha+2\beta$非根，$p_\beta$和$p_{\alpha+\beta}$可交换，故也写作
+\[p_\beta(1)p_\alpha(x)p_\beta(-1)=p_{-\beta}(1)p_{\alpha+\beta}(x)p_{-\beta}(-1).\]
+左边用(+)，右边用(++)，得到
+\[p_\alpha(x)p_\beta(1)p_{\alpha+\beta}(Ax)p_\beta(-1)=p_{\alpha+\beta}(x)p_{-\beta}(1)p_\alpha(Ax)p_{-\beta}(-1).\]
+因$\alpha+2\beta$（相应地$\alpha-\beta$）非根，左边（相应地右边）为$p_\alpha(x)p_{\alpha+\beta}(Ax)$（相应地$p_{\alpha+\beta}(x)p_\alpha(Ax)$）；又因$2\alpha+\beta$非根，后者为$p_\alpha(Ax)p_{\alpha+\beta}(x)$。故
+\[p_\alpha(x)p_{\alpha+\beta}(Ax)=p_\alpha(Ax)p_{\alpha+\beta}(x),\]
+由XXII 4.1.3得$A=1$。
+\SourcePage{193}
+\textbf{3.2.5。} 对(+)\Term{action}{作用}$\operatorname{int}(w_\alpha)$并用$A=1$，得
+\[p_{\alpha+\beta}(zy)p_{-\alpha}(-x)=p_{-\alpha}(-x)p_{\alpha+\beta}(zy)p_\beta(-z^{-1}xy).\tag{+++}\]
+\textbf{3.2.6。} 如前写$w_\alpha p_\beta(y)w_\alpha^{-1}=p_{\alpha+\beta}(zy)$。因$p_\alpha,p_{\alpha+\beta}$可交换，
+\[p_\alpha(1)p_\beta(y)p_\alpha(-1)=p_{-\alpha}(1)p_{\alpha+\beta}(zy)p_{-\alpha}(-1).\]
+用(+)及(+++)，也写作$p_\beta(y)p_{\alpha+\beta}(-y)=p_{\alpha+\beta}(zy)p_\beta(-z^{-1}y)$。因$p_\beta,p_{\alpha+\beta}$可交换，得$z=-1$。
+\textbf{3.2.7。} 已证(ii)、(iii)，再证(i)。有
+\[w_\alpha w_\beta w_\alpha=w_\alpha w_\beta w_\alpha^{-1}w_\alpha^2=w_{\alpha+\beta}^{-1}t_\alpha,\]
+\[\begin{aligned}w_\beta w_\alpha w_\beta w_\alpha w_\beta&=w_\beta w_{\alpha+\beta}^{-1}t_\alpha w_\beta\\&=w_\beta w_{\alpha+\beta}^{-1}w_\beta^{-1}\cdot s_\beta(t_\alpha)\cdot t_\beta\\&=w_\alpha\cdot t_\alpha t_\beta\cdot t_\beta=w_\alpha t_\alpha=w_\alpha^{-1}.\end{aligned}\]
+故$(w_\alpha w_\beta)^3=(w_\beta w_\alpha)^3=e$，证明完成。
+\textbf{注记3.2.8。} 记$v_\alpha=f_\alpha(u_\alpha)$，2.3(v)在此写成
+\[\text{(A)}\quad h_\alpha v_\beta^{-1}h_\alpha^{-1}=h_\beta v_\alpha h_\beta^{-1};\]
+\[\text{(B)}\quad\begin{cases}v_\beta v_\alpha=v_\alpha v_\beta\cdot h_\beta v_\alpha h_\beta^{-1},\\v_\beta\cdot h_\beta v_\alpha h_\beta^{-1}=h_\beta v_\alpha h_\beta^{-1}\cdot v_\beta,\\v_\alpha\cdot h_\beta v_\alpha h_\beta^{-1}=h_\beta v_\alpha h_\beta^{-1}\cdot v_\alpha.\end{cases}\]
+置$v_{\alpha+\beta}=\operatorname{int}(h_\beta)v_\alpha$，后三个条件也写作
+\[\text{(B)}\quad v_\beta v_\alpha=v_\alpha v_\beta v_{\alpha+\beta},\quad v_\alpha v_{\alpha+\beta}=v_{\alpha+\beta}v_\alpha,\quad v_\beta v_{\alpha+\beta}=v_{\alpha+\beta}v_\beta.\]
+\textbf{3.3. $B_2$型群。}
+\begin{SGAresult}{命题}{3.3.1}
+设$G$为$B_2$型\Term{pinned-group}{钉扎}$S$-群，记$\Delta=\{\alpha,\beta\},R_+=\{\alpha,\beta,\alpha+\beta,2\alpha+\beta\}$。
+(i) $t_{\alpha\beta}=(w_\alpha w_\beta)^4=t_\alpha=(w_\beta w_\alpha)^4=t_{\beta\alpha}$。
+\SourcePage{194}
+(ii) 若置$\operatorname{Ad}(w_\beta)X_\alpha=X_{\alpha+\beta}$、$\operatorname{Ad}(w_\alpha)X_\beta=X_{2\alpha+\beta}$，则
+\[\begin{aligned}\operatorname{Ad}(w_\alpha)X_{\alpha+\beta}&=-X_{\alpha+\beta},&\operatorname{Ad}(w_\alpha)X_{2\alpha+\beta}&=X_\beta,\\\operatorname{Ad}(w_\beta)X_{\alpha+\beta}&=-X_\alpha,&\operatorname{Ad}(w_\beta)X_{2\alpha+\beta}&=X_{2\alpha+\beta}.\end{aligned}\]
+(iii) 置$p_{\alpha+\beta}(x)=\exp(xX_{\alpha+\beta})=\operatorname{int}(w_\beta)p_\alpha(x)$、$p_{2\alpha+\beta}(x)=\exp(xX_{2\alpha+\beta})=\operatorname{int}(w_\alpha)p_\beta(x)$，则
+\[\begin{aligned}p_\beta(y)p_\alpha(x)&=p_\alpha(x)p_\beta(y)p_{\alpha+\beta}(xy)p_{2\alpha+\beta}(x^2y),\\p_{\alpha+\beta}(y)p_\alpha(x)&=p_\alpha(x)p_{\alpha+\beta}(y)p_{2\alpha+\beta}(2xy).\end{aligned}\]
+\end{SGAresult}
+\textbf{3.3.2。} 证明占据3.3.2至3.3.6。有$(\beta^*,\alpha)=-1,(\alpha^*,\beta)=-2$，故$\alpha(t_\beta)=-1,\beta(t_\alpha)=1$。顺便注意$\beta(t_\alpha)=\alpha(t_\alpha)=1$，故$t_\alpha$是$\operatorname{Centr}(G)$的\Term{section}{截面}。置$\operatorname{Ad}(w_\beta)X_\alpha=X_{\alpha+\beta}$、$\operatorname{Ad}(w_\alpha)X_\beta=X_{2\alpha+\beta}$，立即有
+\[\operatorname{Ad}(w_\beta)X_{\alpha+\beta}=\alpha(t_\beta)X_\alpha=-X_\alpha,\quad\operatorname{Ad}(w_\alpha)X_{2\alpha+\beta}=\beta(t_\alpha)X_\beta=X_\beta.\]
+因$(2\alpha+\beta)\pm\beta$非根，$\operatorname{Ad}(w_\beta)X_{2\alpha+\beta}=X_{2\alpha+\beta}$。存在$k\in\mathbf G_m(S)$使$\operatorname{Ad}(w_\alpha)X_{\alpha+\beta}=kX_{\alpha+\beta}$。另一方面，由第XXII讲5.5.2存在$A,B,C\in\mathbf G_a(S)$，使
+\[p_\beta(y)p_\alpha(x)=p_\alpha(x)p_\beta(y)p_{\alpha+\beta}(Axy)p_{2\alpha+\beta}(Bx^2y),\tag{1}\]
+\[p_{\alpha+\beta}(y)p_\alpha(x)=p_\alpha(x)p_{\alpha+\beta}(y)p_{2\alpha+\beta}(Cxy).\tag{2}\]
+要证(ii)、(iii)，就是证明$A=B=1,C=2,k=-1$。
+\textbf{3.3.3。} 对公式(2)\Term{action}{作用}$\operatorname{int}(w_\alpha)$，得
+\[p_{2\alpha+\beta}(y)p_{-\alpha}(-x)=p_{-\alpha}(-x)p_{2\alpha+\beta}(y)p_{\alpha+\beta}(Akxy)p_\beta(Bx^2y).\tag{3}\]
+同样变换(2)，得
+\[p_{\alpha+\beta}(ky)p_{-\alpha}(-x)=p_{-\alpha}(-x)p_{\alpha+\beta}(ky)p_\beta(Cxy).\tag{4}\]
+对(1)\Term{action}{作用}$\operatorname{int}(w_\beta)$，得
+\[p_{-\beta}(-y)p_{\alpha+\beta}(x)=p_{\alpha+\beta}(x)p_{-\beta}(-y)p_\alpha(-Axy)p_{2\alpha+\beta}(Bx^2y).\tag{5}\]
+\SourcePage{195}
+\textbf{3.3.4。} 写$w_\beta p_\alpha(X)w_\beta^{-1}=p_{\alpha+\beta}(x)$。因$\alpha+2\beta$非根，得
+\[p_\beta(1)p_\alpha(x)p_\beta(-1)=p_{-\beta}(1)p_{\alpha+\beta}(x)p_{-\beta}(-1).\]
+左边用(1)，右边用(5)，得
+\[\begin{aligned}p_\alpha(x)p_\beta(1)p_{\alpha+\beta}(Ax)p_{2\alpha+\beta}(Bx^2)p_\beta(-1)\\=p_{\alpha+\beta}(x)p_{-\beta}(1)p_\alpha(Ax)p_{2\alpha+\beta}(-Bx^2)p_{-\beta}(-1).\end{aligned}\]
+$p_\beta$与$p_{\alpha+\beta},p_{2\alpha+\beta}$可交换，$p_{-\beta}$与$p_\alpha,p_{2\alpha+\beta}$可交换，故
+\[p_\alpha(x)p_{\alpha+\beta}(Ax)p_{2\alpha+\beta}(Bx^2)=p_{\alpha+\beta}(x)p_\alpha(Ax)p_{2\alpha+\beta}(-Bx^2).\]
+右边用(2)，得
+\[p_\alpha(x)p_{\alpha+\beta}(Ax)p_{2\alpha+\beta}(Bx^2)=p_\alpha(Ax)p_{\alpha+\beta}(x)p_{2\alpha+\beta}((AC-B)x^2),\]
+从而$A=1,C=2B$。
+\textbf{3.3.5。} 再写$w_\alpha p_\beta(y)w_\alpha^{-1}=p_{2\alpha+\beta}(y)$。因$3\alpha+\beta$非根，得
+\[p_\alpha(1)p_\beta(y)p_\alpha(-1)=p_{-\alpha}(1)p_{2\alpha+\beta}(y)p_{-\alpha}(-1).\]
+左边用(1)，右边用(3)，得到
+\[p_\beta(y)p_{\alpha+\beta}(-Ay)p_{2\alpha+\beta}(By)=p_{2\alpha+\beta}(y)p_{\alpha+\beta}(Aky)p_\beta(By).\]
+因$p_{\alpha+\beta},p_{2\alpha+\beta},p_\beta$可交换，立即得$B=1,-A=Ak$，最终$A=B=1,C=2,k=-1$。
+\textbf{3.3.6。} 已证(ii)、(iii)。证明(i)。利用$s_\beta(t_\alpha)=t_\alpha t_\beta^{(\alpha^*,\beta)}=t_\alpha$（因为$(\alpha^*,\beta)=2$），依次有
+\[\begin{aligned}w_\alpha w_\beta w_\alpha&=w_\alpha w_\beta w_\alpha^{-1}t_\alpha=w_{2\alpha+\beta}t_\alpha,\\w_\beta w_\alpha w_\beta w_\alpha w_\beta&=w_\beta w_{2\alpha+\beta}w_\beta^{-1}s_\beta(t_\alpha)t_\beta=w_{2\alpha+\beta}t_\alpha t_\beta,\\w_\alpha w_\beta w_\alpha w_\beta w_\alpha w_\beta w_\alpha&=w_\alpha w_{2\alpha+\beta}w_\alpha^{-1}s_\alpha(t_\alpha t_\beta)t_\alpha\\&=w_\beta\cdot t_\alpha\cdot t_\beta t_\alpha\cdot t_\alpha=w_\beta^{-1}t_\alpha.\end{aligned}\]
+故$(w_\beta w_\alpha)^4=t_\alpha$，且$(w_\alpha w_\beta)^4=s_\beta(t_\alpha)=t_\alpha$，证明完成。
+\SourcePage{196}
+\textbf{注记3.3.7。} 置$v_{\alpha+\beta}=\operatorname{int}(h_\beta)v_\alpha$、$v_{2\alpha+\beta}=\operatorname{int}(h_\alpha)v_\beta$，2.3(v)在此写成
+\[\text{(A)}\quad\operatorname{int}(h_\alpha h_\beta h_\alpha)v_\beta=v_\beta,\quad\operatorname{int}(h_\beta h_\alpha h_\beta)v_\alpha=v_\alpha;\]
+\[\text{(B)}\quad\begin{cases}v_\beta v_\alpha=v_\alpha v_\beta v_{\alpha+\beta}v_{2\alpha+\beta},\\v_{\alpha+\beta}v_\alpha=v_\alpha v_{\alpha+\beta}v_{2\alpha+\beta}^{2},\\v_{\alpha+\beta}v_\beta=v_\beta v_{\alpha+\beta},\\v_{2\alpha+\beta}v_\alpha=v_\alpha v_{2\alpha+\beta},\\v_{2\alpha+\beta}v_\beta=v_\beta v_{2\alpha+\beta},\\v_{2\alpha+\beta}v_{\alpha+\beta}=v_{\alpha+\beta}v_{2\alpha+\beta}.\end{cases}\]
+\textbf{3.4. $G_2$型群。}
+\begin{SGAresult}{命题}{3.4.1}
+设$G$为$G_2$型\Term{pinned-group}{钉扎}$S$-群，记$\Delta=\{\alpha,\beta\},R_+=\{\alpha,\beta,\alpha+\beta,2\alpha+\beta,3\alpha+\beta,3\alpha+2\beta\}$。
+(i) $t_{\alpha\beta}=(w_\alpha w_\beta)^6=e=(w_\beta w_\alpha)^6=t_{\beta\alpha}$。
+(ii) 若置
+\[\begin{aligned}\operatorname{Ad}(w_\beta)X_\alpha&=X_{\alpha+\beta},&\operatorname{Ad}(w_\alpha)X_{\alpha+\beta}&=X_{2\alpha+\beta},\\\operatorname{Ad}(w_\alpha)X_\beta&=-X_{3\alpha+\beta},&\operatorname{Ad}(w_\beta)X_{3\alpha+\beta}&=X_{3\alpha+2\beta},\end{aligned}\]
+则
+\[\begin{aligned}\operatorname{Ad}(w_\alpha)X_{2\alpha+\beta}&=-X_{\alpha+\beta},&\operatorname{Ad}(w_\alpha)X_{3\alpha+\beta}&=X_\beta,\\\operatorname{Ad}(w_\alpha)X_{3\alpha+2\beta}&=X_{3\alpha+2\beta},&\operatorname{Ad}(w_\beta)X_{\alpha+\beta}&=-X_\alpha,\\\operatorname{Ad}(w_\beta)X_{2\alpha+\beta}&=X_{2\alpha+\beta},&\operatorname{Ad}(w_\beta)X_{3\alpha+2\beta}&=-X_{3\alpha+\beta}.\end{aligned}\]
+(iii) 若置
+\[\begin{aligned}p_{\alpha+\beta}(x)&=\exp(xX_{\alpha+\beta})=\operatorname{int}(w_\beta)p_\alpha(x),\\p_{2\alpha+\beta}(x)&=\exp(xX_{2\alpha+\beta})=\operatorname{int}(w_\alpha w_\beta)p_\alpha(x),\\p_{3\alpha+\beta}(x)&=\exp(xX_{3\alpha+\beta})=\operatorname{int}(w_\alpha)p_\beta(-x),\\p_{3\alpha+2\beta}(x)&=\exp(xX_{3\alpha+2\beta})=\operatorname{int}(w_\beta w_\alpha)p_\beta(-x),\end{aligned}\]
+则
+\[\begin{aligned}p_\beta(y)p_\alpha(x)&=p_\alpha(x)p_\beta(y)p_{\alpha+\beta}(xy)p_{2\alpha+\beta}(x^2y)p_{3\alpha+\beta}(x^3y)p_{3\alpha+2\beta}(x^3y^2),\\p_{\alpha+\beta}(y)p_\alpha(x)&=p_\alpha(x)p_{\alpha+\beta}(y)p_{2\alpha+\beta}(2xy)p_{3\alpha+\beta}(3x^2y)p_{3\alpha+2\beta}(3xy^2),\\p_{2\alpha+\beta}(y)p_\alpha(x)&=p_\alpha(x)p_{2\alpha+\beta}(y)p_{3\alpha+\beta}(3xy),\\p_{3\alpha+\beta}(y)p_\beta(x)&=p_\beta(x)p_{3\alpha+\beta}(y)p_{3\alpha+2\beta}(-xy),\\p_{2\alpha+\beta}(y)p_{\alpha+\beta}(x)&=p_{\alpha+\beta}(x)p_{2\alpha+\beta}(y)p_{3\alpha+2\beta}(3xy).\end{aligned}\]
+\end{SGAresult}
+\textbf{3.4.2。} 证明占据3.4.2至3.4.9。有$(\beta^*,\alpha)=-1,(\alpha^*,\beta)=-3$，故$\beta(t_\alpha)=\alpha(t_\beta)=-1$。如(ii)定义$X_{\alpha+\beta},X_{2\alpha+\beta},X_{3\alpha+\beta},X_{3\alpha+2\beta}$。
+\SourcePage{197}
+立即有
+\[\begin{aligned}\operatorname{Ad}(w_\beta)X_{\alpha+\beta}&=\alpha(t_\beta)X_\alpha=-X_\alpha,\\\operatorname{Ad}(w_\alpha)X_{2\alpha+\beta}&=\alpha(t_\alpha)\beta(t_\alpha)X_{\alpha+\beta}=-X_{\alpha+\beta},\\\operatorname{Ad}(w_\alpha)X_{3\alpha+\beta}&=-\beta(t_\alpha)X_\beta=X_\beta,\\\operatorname{Ad}(w_\beta)X_{3\alpha+2\beta}&=\alpha(t_\beta)^3\beta(t_\beta)X_{3\alpha+\beta}=-X_{3\alpha+\beta}.\end{aligned}\]
+最后因$(3\alpha+2\beta)\pm\alpha$及$(2\alpha+\beta)\pm\beta$非根，
+\[\operatorname{Ad}(w_\alpha)X_{3\alpha+2\beta}=X_{3\alpha+2\beta},\qquad\operatorname{Ad}(w_\beta)X_{2\alpha+\beta}=X_{2\alpha+\beta},\]
+从而完成(ii)的证明。
+\textbf{3.4.3。} 由第XXII讲5.5.2存在标量\footnote{编者注：这里引入绝对常数$A,B,\ldots,J$；下面几页将确定它们，其值为$A=B=C=D=1,E=2,J=-1,F=G=H=3$，见3.4.8第195页。}$A,B,C,D,E,F,G,H,J\in\mathbf G_a(S)$，使
+\[\begin{aligned}p_\beta(y)p_\alpha(x)=p_\alpha(x)p_\beta(y)p_{\alpha+\beta}(Axy)p_{2\alpha+\beta}(Bx^2y)p_{3\alpha+\beta}(Cx^3y)p_{3\alpha+2\beta}(Dx^3y^2).\end{aligned}\tag{1}\]
+\[p_{\alpha+\beta}(y)p_\alpha(x)=p_\alpha(x)p_{\alpha+\beta}(y)p_{2\alpha+\beta}(Exy)p_{3\alpha+\beta}(Fx^2y)p_{3\alpha+2\beta}(Gxy^2).\tag{2}\]
+\[p_{2\alpha+\beta}(y)p_\alpha(x)=p_\alpha(x)p_{2\alpha+\beta}(y)p_{3\alpha+\beta}(Hxy).\tag{3}\]
+\[p_{3\alpha+\beta}(y)p_\beta(x)=p_\beta(x)p_{3\alpha+\beta}(y)p_{3\alpha+2\beta}(Jxy).\tag{4}\]
+\textbf{3.4.4。} 对(1)、(3)、(4)\Term{action}{作用}$\operatorname{int}(w_\beta)$：
+\[\begin{aligned}p_{-\beta}(-y)p_{\alpha+\beta}(x)={}&p_{\alpha+\beta}(x)p_{-\beta}(-y)p_\alpha(-Axy)p_{2\alpha+\beta}(Bx^2y)\\&\cdot p_{3\alpha+2\beta}(Cx^3y)p_{3\alpha+\beta}(-Dx^3y^2).\end{aligned}\tag{5}\]
+\[p_{2\alpha+\beta}(y)p_{\alpha+\beta}(x)=p_{\alpha+\beta}(x)p_{2\alpha+\beta}(y)p_{3\alpha+2\beta}(Hxy).\tag{6}\]
+\[p_{3\alpha+2\beta}(y)p_{-\beta}(-x)=p_{-\beta}(-x)p_{3\alpha+2\beta}(y)p_{3\alpha+\beta}(-Jxy).\tag{7}\]
+同样对(1)\Term{action}{作用}$\operatorname{int}(w_\alpha)$，得
+\[\begin{aligned}p_{3\alpha+\beta}(-y)p_{-\alpha}(-x)={}&p_{-\alpha}(-x)p_{3\alpha+\beta}(-y)p_{2\alpha+\beta}(Axy)\\&\cdot p_{\alpha+\beta}(-Bx^2y)p_\beta(Cx^3y)p_{3\alpha+\beta}(Dx^3y^2).\end{aligned}\tag{8}\]
+\textbf{3.4.5。} 写$w_\beta p_\alpha(x)w_\beta^{-1}=p_{\alpha+\beta}(x)$，因$\alpha+2\beta$非根，即
+\[p_\beta(1)p_\alpha(x)p_\alpha(-1)=p_{-\beta}(1)p_{\alpha+\beta}(x)p_{-\beta}(-1).\tag{9}\]
+\SourcePage{198}
+对(9)左边依次用(1)、(4)，得到
+\[\begin{aligned}p_\beta(1)p_\alpha(x)p_\beta(-1)
+&=p_\alpha(x)p_\beta(1)p_{\alpha+\beta}(Ax)p_{2\alpha+\beta}(Bx^2)p_{3\alpha+\beta}(Cx^3)p_{3\alpha+2\beta}(Dx^3)p_\beta(-1)\\
+&=p_\alpha(x)p_\beta(1)p_{\alpha+\beta}(Ax)p_{2\alpha+\beta}(Bx^2)p_\beta(-1)p_{3\alpha+\beta}(Cx^3)p_{3\alpha+2\beta}((D-CJ)x^3)\\
+&=p_\alpha(x)p_{\alpha+\beta}(Ax)p_{2\alpha+\beta}(Bx^2)p_{3\alpha+\beta}(Cx^3)p_{3\alpha+2\beta}((D-CJ)x^3).\end{aligned}\tag{10}\]
+对(9)右边依次用(5)、(7)：
+\[\begin{aligned}p_{-\beta}(1)p_{\alpha+\beta}(x)p_{-\beta}(-1)
+&=p_{\alpha+\beta}(x)p_{-\beta}(1)p_\alpha(Ax)p_{2\alpha+\beta}(-Bx^2)p_{3\alpha+2\beta}(-Cx^3)p_{3\alpha+\beta}(-Dx^3)p_{-\beta}(-1)\\
+&=p_{\alpha+\beta}(x)p_\alpha(Ax)p_{2\alpha+\beta}(-Bx^2)p_{3\alpha+2\beta}(-Cx^3)p_{3\alpha+\beta}((CJ-D)x^3).\end{aligned}\tag{11}\]
+再用(2)，此右边变为
+\[\begin{aligned}{}&p_\alpha(Ax)p_{\alpha+\beta}(x)p_{2\alpha+\beta}(AEx^2)p_{3\alpha+\beta}(A^2Fx^3)p_{3\alpha+2\beta}(AGx^3)\\{}&\qquad\cdot p_{2\alpha+\beta}(-Bx^2)p_{3\alpha+2\beta}(-Cx^3)p_{3\alpha+\beta}((CJ-D)x^3)\\{}&=p_\alpha(Ax)p_{\alpha+\beta}(x)p_{2\alpha+\beta}((AE-B)x^2)p_{3\alpha+\beta}((A^2F+CJ-D)x^3)p_{3\alpha+2\beta}((AG-C)x^3).\end{aligned}\tag{12}\]
+因此(9)重写为
+\[\begin{aligned}{}&p_\alpha(x)p_{\alpha+\beta}(Ax)p_{2\alpha+\beta}(Bx^2)p_{3\alpha+\beta}(Cx^3)p_{3\alpha+2\beta}((D-CJ)x^3)\\{}&=p_\alpha(Ax)p_{\alpha+\beta}(x)p_{2\alpha+\beta}((AE-B)x^2)p_{3\alpha+\beta}((A^2F+CJ-D)x^3)p_{3\alpha+2\beta}((AG-C)x^3),\end{aligned}\]
+得$A=1,E=2B,C+D=F+CJ,F=G$。
+\textbf{3.4.6。} 再写$w_\alpha p_\beta(y)w_\alpha^{-1}=p_{3\alpha+\beta}(-y)$，因$4\alpha+\beta$非根，即
+\[p_\alpha(1)p_\beta(y)p_\alpha(-1)=p_{-\alpha}(1)p_{3\alpha+\beta}(-y)p_{-\alpha}(-1).\tag{13}\]
+左边用(1)：
+\[p_\alpha(1)p_\beta(y)p_\alpha(-1)=p_\beta(y)p_{\alpha+\beta}(-Ay)p_{2\alpha+\beta}(By)p_{3\alpha+\beta}(-Cy)p_{3\alpha+2\beta}(-Dy^2).\]
+右边依次用(8)、(6)、(4)：
+\[\begin{aligned}{}&p_{-\alpha}(1)p_{3\alpha+\beta}(-y)p_{-\alpha}(-1)\\{}&=p_{3\alpha+\beta}(-y)p_{2\alpha+\beta}(Ay)p_{\alpha+\beta}(-By)p_\beta(Cy)p_{3\alpha+2\beta}(Dy^2)\\{}&=p_{3\alpha+\beta}(-y)p_{\alpha+\beta}(-By)p_{2\alpha+\beta}(Ay)p_{3\alpha+2\beta}(-ABHy^2)p_\beta(Cy)p_{3\alpha+2\beta}(Dy^2)\\{}&=p_\beta(Cy)p_{3\alpha+\beta}(-y)p_{\alpha+\beta}(-By)p_{2\alpha+\beta}(Ay)p_{3\alpha+2\beta}((D-CJ-ABH)y^2)\\{}&=p_\beta(Cy)p_{\alpha+\beta}(-By)p_{2\alpha+\beta}(Ay)p_{3\alpha+\beta}(-y)p_{3\alpha+2\beta}((D-CJ-ABH)y^2).\end{aligned}\]
+\SourcePage{199}
+故(13)重写为
+\[\begin{aligned}{}&p_\beta(Cy)p_{\alpha+\beta}(-By)p_{2\alpha+\beta}(Ay)p_{3\alpha+\beta}(-y)p_{3\alpha+2\beta}((D-CJ-ABH)y^2)\\{}&=p_\beta(y)p_{\alpha+\beta}(-Ay)p_{2\alpha+\beta}(By)p_{3\alpha+\beta}(-Cy)p_{3\alpha+2\beta}(-Dy^2),\end{aligned}\]
+得$C=1,A=B,D-CJ-ABH=-D$。结合已有结果，
+\[A=B=C=1,\quad E=2,\quad F=G,\quad D+1=F+J,\quad2D=H+J.\]
+\textbf{3.4.7。} 写$w_\beta p_{3\alpha+\beta}(x)w_\beta^{-1}=p_{3\alpha+2\beta}(x)$，即
+\[p_\beta(1)p_{3\alpha+\beta}(x)p_\beta(-1)=p_{-\beta}(1)p_{3\alpha+2\beta}(x)p_{-\beta}(-1).\]
+左边用(4)，右边用(7)，得$p_{3\alpha+\beta}(x)p_{3\alpha+2\beta}(-Jx)=p_{3\alpha+2\beta}(x)p_{3\alpha+\beta}(-Jx)$，即$J=-1$。
+\textbf{3.4.8。} 最后写$w_\alpha p_{\alpha+\beta}(y)w_\alpha^{-1}=p_{2\alpha+\beta}(y)$，即
+\[p_\alpha(1)p_{\alpha+\beta}(y)p_\alpha(-1)=p_{-\alpha}(1)p_\alpha(-1)p_{2\alpha+\beta}(y)p_\alpha(1)p_{-\alpha}(-1).\]
+左边用(2)，右边用(3)，得
+\[p_{\alpha+\beta}(y)p_{2\alpha+\beta}(-Ey)p_{3\alpha+\beta}(Fy)p_{3\alpha+2\beta}(-Gy^2)=p_{-\alpha}(1)p_{2\alpha+\beta}(y)p_{3\alpha+\beta}(Hy)p_{-\alpha}(-1).\]
+立即看出，使$p_{-\alpha}(-1)$依次与$p_{3\alpha+\beta}(Hy)$和$p_{2\alpha+\beta}(y)$交换，不会在右边引入新的$p_{3\alpha+\beta}$项。因此用空\Term{lie-bracket}{括号}表示无须知道确切值的量，右边写作
+\[p_{\alpha+\beta}(\ )p_{2\alpha+\beta}(\ )p_\beta(\ )p_{3\alpha+\beta}(Hy)p_{3\alpha+2\beta}(\ ).\]
+比较左边立即得$F=H$；由已有结果得$2D=D+1$，即$D=1$，最终$F=G=H=2D-J=3$。这样确定了系数$A,\ldots,J$并完成(iii)的证明。
+\SourcePage{200}
+\textbf{3.4.9。} 最后照惯常方法证明(i)。依次有
+\[\begin{aligned}w_\alpha w_\beta w_\alpha&=w_\alpha w_\beta w_\alpha^{-1}t_\alpha=w_{3\alpha+\beta}^{-1}t_\alpha,\\
+w_\beta(w_\alpha w_\beta)^2&=w_\beta w_{3\alpha+\beta}^{-1}w_\beta^{-1}s_\beta(t_\alpha)t_\beta=w_{3\alpha+2\beta}^{-1}t_\alpha t_\beta t_\beta=w_{3\alpha+2\beta}^{-1}t_\alpha,\\
+w_\alpha(w_\beta w_\alpha)^3&=w_\alpha w_{3\alpha+2\beta}^{-1}w_\alpha^{-1}=w_{3\alpha+2\beta}^{-1},\\
+w_\beta(w_\alpha w_\beta)^4&=w_\beta w_{3\alpha+2\beta}^{-1}w_\beta^{-1}t_\beta=w_{3\alpha+\beta}t_\beta,\\
+w_\alpha(w_\beta w_\alpha)^5&=w_\alpha w_{3\alpha+\beta}w_\alpha^{-1}s_\alpha(t_\beta)t_\beta=w_\beta t_\beta t_\alpha t_\alpha=w_\beta^{-1}.\end{aligned}\]
+故$(w_\alpha w_\beta)^6=(w_\beta w_\alpha)^6=e$。
+\textbf{注记3.4.10。} 2.4的条件(v)由以下条件组成：
+\[\text{(A)}\quad\operatorname{int}(h_\alpha h_\beta h_\alpha h_\beta h_\alpha)v_\beta=v_\beta,\quad\operatorname{int}(h_\beta h_\alpha h_\beta h_\alpha h_\beta)v_\alpha=v_\alpha,\]
+并置
+\[\begin{aligned}v_{\alpha+\beta}&=\operatorname{int}(h_\beta)v_\alpha,&v_{2\alpha+\beta}&=\operatorname{int}(h_\alpha h_\beta)v_\alpha,\\v_{3\alpha+\beta}&=\operatorname{int}(h_\alpha)v_\beta^{-1},&v_{3\alpha+2\beta}&=\operatorname{int}(h_\beta h_\alpha)v_\beta^{-1},\end{aligned}\]
+再要求交换关系
+\[\text{(B)}\quad\begin{cases}v_\beta v_\alpha=v_\alpha v_\beta v_{\alpha+\beta}v_{2\alpha+\beta}v_{3\alpha+\beta}v_{3\alpha+2\beta},\\v_{\alpha+\beta}v_\alpha=v_\alpha v_{\alpha+\beta}v_{2\alpha+\beta}^2v_{3\alpha+\beta}^3v_{3\alpha+2\beta}^3,\\v_{2\alpha+\beta}v_\alpha=v_\alpha v_{2\alpha+\beta}v_{3\alpha+\beta}^3,\\v_{3\alpha+\beta}v_\alpha=v_\alpha v_{3\alpha+\beta},\\v_{3\alpha+2\beta}v_\alpha=v_\alpha v_{3\alpha+2\beta},\\v_{\alpha+\beta}v_\beta=v_\beta v_{\alpha+\beta},\\v_{2\alpha+\beta}v_\beta=v_\beta v_{2\alpha+\beta},\\v_{3\alpha+\beta}v_\beta=v_\beta v_{3\alpha+\beta}v_{3\alpha+2\beta}^{-1},\\v_{3\alpha+2\beta}v_\beta=v_\beta v_{3\alpha+2\beta},\\v_{2\alpha+\beta}v_{\alpha+\beta}=v_{\alpha+\beta}v_{2\alpha+\beta}v_{3\alpha+2\beta}^3,\\v_{3\alpha+\beta}v_{\alpha+\beta}=v_{\alpha+\beta}v_{3\alpha+\beta},\\v_{3\alpha+2\beta}v_{\alpha+\beta}=v_{\alpha+\beta}v_{3\alpha+2\beta},\\v_{3\alpha+\beta}v_{2\alpha+\beta}=v_{2\alpha+\beta}v_{3\alpha+\beta},\\v_{3\alpha+2\beta}v_{2\alpha+\beta}=v_{2\alpha+\beta}v_{3\alpha+2\beta},\\v_{3\alpha+2\beta}v_{3\alpha+\beta}=v_{3\alpha+\beta}v_{3\alpha+2\beta}.\end{cases}\]
+\textbf{3.5. \Term{generator}{生成元}与关系定理的显式\Term{form}{形式}。}
+\begin{SGAresult}{定理}{3.5.1}
+设$G$为\Term{pinned-group}{钉扎}$S$-群，$T$为其\Term{maximal-torus}{极大环面}，$\Delta$为其\Term{simple-root-system}{单根系}，$u_\alpha\in U_\alpha(S)^\times,w_\alpha\in\operatorname{Norm}_G(T)(S)$为\Term{pinning}{钉扎}定义的元素（$\alpha\in\Delta$）。设$H$为(fppf)的$S$-群\Term{sheaf}{层}，给定\Term{group-morphism}{群态射}$f_T:T\to H$、$f_\alpha:U_\alpha\to H$及\Term{section}{截面}$h_\alpha\in H(S)$（$\alpha\in\Delta$），置$v_\alpha=f_\alpha(u_\alpha)$。
+\SourcePage{201}
+存在延拓$f_T,f_\alpha$且满足$f(w_\alpha)=h_\alpha$的\Term{group-morphism}{群态射}$f:G\to H$（它必唯一），当且仅当：
+(i) 对$S'\to S$、$\alpha\in\Delta$、$t\in T(S')$及$x\in U_\alpha(S')$，
+\[\operatorname{int}(f_T(t))f_\alpha(x)=f_\alpha(\operatorname{int}(t)x)=f_\alpha(x^{\alpha(t)}).\tag{1}\]
+(ii) 对$\alpha\in\Delta$、$S'\to S$及$t\in T(S')$，
+\[\operatorname{int}(h_\alpha)f_T(t)=f_T(s_\alpha(t))=f_T(t\cdot\alpha^*(\alpha(t)^{-1})).\tag{2}\]
+(iii) 对$\alpha\in\Delta$，\footnote{编者注：$(3_1)$和$(3_2)$描述\Term{torus}{环面}的\Term{normalizer}{正规化子}；$(3_1)$与(4)一样位于秩一群中，而$(3_2)$位于秩二群中。}
+\[h_\alpha^2=f_T(\alpha^*(-1)),\tag{$3_1$}\]
+\[(h_\alpha v_\alpha)^3=e.\tag{4}\]
+(iv) 对$\alpha,\beta\in\Delta$、$\alpha\ne\beta$，若$(\alpha^*,\beta)=0$（相应地$-1,-2,-3$），有：(a) 关系
+\[\begin{cases}(h_\alpha h_\beta)^2=f_T(\alpha^*(-1)\beta^*(-1)),&(\alpha^*,\beta)=0,\\(h_\alpha h_\beta)^3=e,&(\alpha^*,\beta)=-1,\\(h_\alpha h_\beta)^4=f_T(\alpha^*(-1)),&(\alpha^*,\beta)=-2,\\(h_\alpha h_\beta)^6=e,&(\alpha^*,\beta)=-3;\end{cases}\tag{$3_2$}\]
+(b) 3.1.3（相应地3.2.8、3.3.7、3.4.10）的关系(A)、(B)。
+\end{SGAresult}
+这立即来自2.3、2.6及各个特殊情形的计算。
+\textbf{注记3.5.2。} 上述结果也可略作不同的表述。给定\Term{morphism}{态射}$a_\alpha:T\cdot U_\alpha\to H$、$b_\alpha:\operatorname{Norm}_{Z_\alpha}(T)\to H$（$\alpha\in\Delta$），置$h_\alpha=b_\alpha(w_\alpha),v_\alpha=a_\alpha(u_\alpha)$。所须验证的条件为：(1) 全部$a_\alpha,b_\alpha$在$T$上的\Term{restriction}{限制}相同；(2) 上面3.5.1的(4)及(iv)成立。
+\textbf{3.5.4（3.5.3）。} 下一讲将给出本定理的若干应用。这里指出一个：3.5.1在(fppf)的$S$-\Term{sheaf}{层}\Term{category}{范畴}中给出了$G$的\Term{generator}{生成元}与关系描述。换言之，对各$S'\to S$，令$H(S')$为由$T(S'),U_\alpha(S')$（$\alpha\in R$）及$w_\alpha$（$\alpha\in R$）生成、满足类似(1)、(2)、$(3_1)$、(4)、$(3_2)$、(A)、(B)关系的群，则$G$就是预\Term{sheaf}{层}$S'\mapsto H(S')$的\Term{adjunction}{伴随}\Term{sheaf}{层}。
+特别地，若$S'$为\Term{algebraically-closed-field}{代数闭域}$k$的谱，则$G(S')=H(S')$，这是\Term{nullstellensatz}{零点定理}下述\Term{form}{形式}的直接推论：“\Term{algebraically-closed-field}{代数闭域}上对(fppf)\Term{covering}{覆盖}的\Term{sieve}{筛}是平凡的”。
+\SourcePage{202}
+因而3.5.1立即给出“抽象”群$G(k)$的显式\Term{generator}{生成元}与关系描述。\footnote{编者注：对任意域$k$及\Term{simply-connected}{单连通}$G$，R. Steinberg在[St62]定理3.2给出了$G(k)$的一个表示，另见[St67]，\S6，定理8。}
+\SGAsection{4}{钉扎群的唯一性：基本定理}
+\begin{SGAresult}{定理}{4.1}
+设$S$为\Term{nonempty}{非空}\Term{scheme}{概形}。1.6的\Term{functor}{函子}$\mathcal R$\Term{fully-faithful}{完全忠实}：若$G,G'$为两个\Term{pinned-group}{钉扎}$S$-群，$p>0$\footnote{编者注：为避免后文的记号问题，此处将$q$改为$p$，所以在下面$q$（相应地$q_1$）为$p$的任意幂。}为使$x\mapsto x^p$成为$\mathbf G_{a,S}$\Term{endomorphism}{自同态}的整数，$h:\mathcal R(G')\to\mathcal R(G)$为\Term{pinned-root-datum}{钉扎根数据}的$p$-\Term{morphism}{态射}，则存在唯一\Term{pinned-group}{钉扎群}\Term{morphism}{态射}$f:G\to G'$，使$\mathcal R(f)=h$。
+\end{SGAresult}
+唯一性已在1.9证明。只须证明存在性。按假设，有\Term{bijection}{双射}$d:R\xrightarrow\sim R'$及映射$q:R\to\{p^n\mid n\in\mathbf N\}$，对每个$\alpha\in R$满足
+\[h(d(\alpha))=q(\alpha)\alpha,\qquad{}^th(\alpha^*)=q(\alpha)d(\alpha)^*.\]
+特别地，$G,G'$的\Term{semisimple-rank}{半单秩}相同。
+\textbf{4.1.1。} 设$\operatorname{rg}_{\rm ss}(G)=\operatorname{rg}_{\rm ss}(G')=0$。则二者为\Term{torus}{环面}，$G=T=D_S(M),G'=T'=D_S(M')$，而$h$只是普通\Term{group-morphism}{群态射}$M'\to M$。取$f=D_S(h)$即可。
+\textbf{4.1.2。} 设两者\Term{semisimple-rank}{半单秩}为一。考虑$f_T=D_S(h):T\to T'$。按假设有\Term{commutative-diagram}{交换图}，其中$\alpha'=d(\alpha)$：
+\[\begin{tikzcd}\mathbf G_{m,S}\arrow[r,"\alpha^*"]\arrow[d,"q(\alpha)"']&T\arrow[r,"\alpha"]\arrow[d,"f_T"]&\mathbf G_{m,S}\arrow[d,"q(\alpha)"]\\\mathbf G_{m,S}\arrow[r,"\alpha'^*"']&T'\arrow[r,"\alpha'"']&\mathbf G_{m,S}\end{tikzcd}\]
+应用第XX讲4.1即可。
+\textbf{4.1.3。} 设两者\Term{semisimple-rank}{半单秩}为二。由第XXI讲7.5.3，已知$h:\mathcal R(G')\to\mathcal R(G)$的所有可能情形。逐一研究，每次验证2.5的条件。记$\Delta=\{\alpha,\beta\},\Delta'=\{\alpha',\beta'\}$，使$d(\alpha)=\alpha',d(\beta)=\beta'$。
+\SourcePage{203}
+\textbf{4.1.4。} $G,G'$均为$A_1\times A_1$型。此时$h(\alpha')=q\alpha,h(\beta')=q_1\beta$。证明2.5的条件：(ii)、(iii)由3.1.2(ii)、(iii)推出；证明(i)。有
+\[D_S(h)t_{\alpha\beta}=D_S(h)(t_\alpha t_\beta)={}^th(\alpha^*)(-1)\cdot{}^th(\beta^*)(-1)=\alpha'^*((-1)^q)\beta'^*((-1)^{q_1}).\]
+\footnote{编者注：我们详写了下面的论证。}假设$x\mapsto x^p$为$\mathbf G_{a,S}$\Term{endomorphism}{自同态}且$S\ne\varnothing$，推出$p=1$或$S$的\Term{characteristic}{特征}为$p$。总有$(-1)^q=-1$（若$q$为偶数，则$p=2$且$1=-1$）。所以$D_S(h)t_{\alpha\beta}=\alpha'^*(-1)\beta'^*(-1)=t'_{\alpha'\beta'}$，证得2.5(i)。
+\textbf{4.1.5。} $G,G'$均为$A_2$型。此时$h(\alpha')=q\alpha,h(\beta')=q\beta$。置$X_{\alpha+\beta}=\operatorname{Ad}(w_\beta)X_\alpha$及$X'_{\alpha'+\beta'}=\operatorname{Ad}(w_{\beta'})X_{\alpha'}$。验证2.5：(i)如上利用3.2.1(i)；(ii)由3.2.1(ii)立即得出；余下(iii)，须验证
+\[p_\alpha(x)p_\beta(y)p_{\alpha+\beta}(z)\longmapsto p'_{\alpha'}(x^q)p'_{\beta'}(y^q)p'_{\alpha'+\beta'}(z^q)\]
+为\Term{group-morphism}{群态射}。唯一非平凡交换关系为3.2.1(iii)，即
+\[p_\beta(y)p_\alpha(x)=p_\alpha(x)p_\beta(y)p_{\alpha+\beta}(xy),\]
+\[p'_{\beta'}(y^q)p'_{\alpha'}(x^q)=p'_{\alpha'}(x^q)p'_{\beta'}(y^q)p'_{\alpha'+\beta'}(x^qy^q).\]
+\textbf{4.1.6。} 当\Term{root-exponent}{根指数}相同，对$B_2$型（相应地$G_2$型）的$G,G'$利用3.3.1（相应地3.4.1）同理。为完成秩二群的情形，余下第XXI讲7.5.3的两个例外情形。
+\textbf{4.1.7。} $G,G'$为$B_2$型，$S$\Term{characteristic}{特征}为二，$q(\alpha)=2q,q(\beta)=q$。\Term{positive-root}{正根}分别为$\{\alpha,\beta,\alpha+\beta,2\alpha+\beta\}$和$\{\alpha',\beta',\alpha'+\beta',\alpha'+2\beta'\}$（注意短\Term{simple-root}{单根}为$\alpha,\beta'$）。有
+\[\begin{aligned}h(\alpha')&=2q\alpha,&h(\beta')&=q\beta,\\h(\alpha'+\beta')&=q(2\alpha+\beta),&h(\alpha'+2\beta')&=2q(\alpha+\beta),\end{aligned}\]
+故$d(\alpha+\beta)=\alpha'+2\beta',q(\alpha+\beta)=2q$，$d(2\alpha+\beta)=\alpha'+\beta',q(2\alpha+\beta)=q$。置
+\[\begin{aligned}X_{\alpha+\beta}&=\operatorname{Ad}(w_\beta)X_\alpha,&X_{2\alpha+\beta}&=\operatorname{Ad}(w_\alpha)X_\beta,\\X'_{\alpha'+\beta'}&=\operatorname{Ad}(w'_{\alpha'})X'_{\beta'},&X'_{\alpha'+2\beta'}&=\operatorname{Ad}(w'_{\beta'})X'_{\alpha'}.\end{aligned}\]
+下面验证2.5。
+\SourcePage{204}
+(i) 因$S$\Term{characteristic}{特征}为二，$-1=1$，故$t_{\alpha\beta}=t_\alpha=\alpha^*(-1)=e=\beta'^*(-1)=t'_{\beta'}=t'_{\alpha'\beta'}$（3.3.1(i)）。
+(ii) 按构造
+\[\begin{aligned}\operatorname{Ad}(w_\alpha)X_\beta&=X_{2\alpha+\beta},&\operatorname{Ad}(w'_{\alpha'})X'_{\beta'}&=X'_{\alpha'+\beta'}=X'_{d(2\alpha+\beta)},\\\operatorname{Ad}(w_\beta)X_\alpha&=X_{\alpha+\beta},&\operatorname{Ad}(w'_{\beta'})X'_{\alpha'}&=X'_{\alpha'+2\beta'}=X'_{d(\alpha+\beta)}.\end{aligned}\]
+由3.3.1(ii)及$-1=1$，两边有
+\[\begin{aligned}\operatorname{Ad}(w_\alpha)X_{\alpha+\beta}&=X_{\alpha+\beta},&\operatorname{Ad}(w'_{\alpha'})X'_{d(\alpha+\beta)}&=\operatorname{Ad}(w'_{\alpha'})X'_{\alpha'+2\beta'}=X'_{\alpha'+2\beta'}=X'_{d(\alpha+\beta)},\\\operatorname{Ad}(w_\alpha)X_{2\alpha+\beta}&=X_\beta,&\operatorname{Ad}(w'_{\alpha'})X'_{d(2\alpha+\beta)}&=\operatorname{Ad}(w'_{\alpha'})X'_{\alpha'+\beta'}=X'_{\beta'}=X'_{d(\beta)},\\\operatorname{Ad}(w_\beta)X_{\alpha+\beta}&=X_\alpha,&\operatorname{Ad}(w'_{\beta'})X'_{d(\alpha+\beta)}&=\operatorname{Ad}(w'_{\beta'})X'_{\alpha'+2\beta'}=X'_{\alpha'}=X'_{d(\alpha)},\\\operatorname{Ad}(w_\beta)X_{2\alpha+\beta}&=X_{2\alpha+\beta},&\operatorname{Ad}(w'_{\beta'})X'_{d(2\alpha+\beta)}&=\operatorname{Ad}(w'_{\beta'})X'_{\alpha'+\beta'}=X'_{\alpha'+\beta'}=X'_{d(2\alpha+\beta)}.\end{aligned}\]
+(iii) 由3.3.1(iii)，$U$（相应地$U'$）中唯一非平凡交换关系为
+\[p_\beta(y)p_\alpha(x)=p_\alpha(x)p_\beta(y)p_{\alpha+\beta}(xy)p_{2\alpha+\beta}(x^2y),\]
+相应地
+\[p'_{\alpha'}(y')p'_{\beta'}(x')=p'_{\beta'}(x')p'_{\alpha'}(y')p'_{\alpha'+\beta'}(x'y')p'_{\alpha'+2\beta'}(x'^2y').\]
+须验证\Term{morphism}{态射}
+\[p_\alpha(x)p_\beta(y)p_{\alpha+\beta}(z)p_{2\alpha+\beta}(t)\longmapsto p'_{\alpha'}(x^{2q})p'_{\beta'}(y^q)p'_{\alpha'+2\beta'}(z^{2q})p'_{\alpha'+\beta'}(t^q)\]
+为\Term{group-morphism}{群态射}。立即看出\Term{equivalence}{等价}于
+\[p'_{\beta'}(y^q)p'_{\alpha'}(x^{2q})=p'_{\alpha'}(x^{2q})p'_{\beta'}(y^q)p'_{\alpha'+2\beta'}((xy)^{2q})p'_{\alpha'+\beta'}((x^2y)^q),\]
+这正是上面第二个关系（置$y'=x^{2q},x'=y^q$）。
+\textbf{4.1.8。} $G,G'$为$G_2$型，$S$\Term{characteristic}{特征}为三，$q(\alpha)=3q,q(\beta)=q$。两边\Term{positive-root}{正根}分别为$\{\alpha,\beta,\alpha+\beta,2\alpha+\beta,3\alpha+\beta,3\alpha+2\beta\}$及$\{\alpha',\beta',\alpha'+\beta',\alpha'+2\beta',\alpha'+3\beta',2\alpha'+3\beta'\}$（如前一情形，短\Term{simple-root}{单根}为$\alpha,\beta'$）。有
+\[\begin{aligned}h(\alpha')&=3q\alpha,&h(\beta')&=q\beta,&h(\alpha'+\beta')&=q(3\alpha+\beta),\\h(\alpha'+2\beta')&=q(3\alpha+2\beta),&h(\alpha'+3\beta')&=3q(\alpha+\beta),&h(2\alpha'+3\beta')&=3q(2\alpha+\beta),\end{aligned}\]
+故
+\[\begin{aligned}d(\alpha+\beta)&=\alpha'+3\beta',&q(\alpha+\beta)&=3q,\\d(2\alpha+\beta)&=2\alpha'+3\beta',&q(2\alpha+\beta)&=3q,\\d(3\alpha+\beta)&=\alpha'+\beta',&q(3\alpha+\beta)&=q,\\d(3\alpha+2\beta)&=\alpha'+2\beta',&q(3\alpha+2\beta)&=q.\end{aligned}\]
+\SourcePage{205}
+置
+\[\begin{aligned}X_{\alpha+\beta}&=\operatorname{Ad}(w_\beta)X_\alpha,&X_{2\alpha+\beta}&=\operatorname{Ad}(w_\alpha)X_{\alpha+\beta},\\X_{3\alpha+\beta}&=-\operatorname{Ad}(w_\alpha)X_\beta,&X_{3\alpha+2\beta}&=\operatorname{Ad}(w_\beta)X_{3\alpha+\beta},\\X'_{\alpha'+\beta'}&=-\operatorname{Ad}(w'_{\alpha'})X'_{\beta'},&X'_{\alpha'+2\beta'}&=\operatorname{Ad}(w'_{\beta'})X'_{\alpha'+\beta'},\\X'_{\alpha'+3\beta'}&=\operatorname{Ad}(w'_{\beta'})X'_{\alpha'},&X'_{2\alpha'+3\beta'}&=\operatorname{Ad}(w'_{\alpha'})X'_{\alpha'+3\beta'}.\end{aligned}\]
+现在验证2.5。(i) 由3.4.1(i)，$t_{\alpha\beta}=e,t'_{\alpha'\beta'}=e$。
+(ii) 按构造
+\[\begin{aligned}\operatorname{Ad}(w_\beta)X_\alpha&=X_{\alpha+\beta},&\operatorname{Ad}(w'_{\beta'})X'_{\alpha'}&=X'_{\alpha'+3\beta'}=X'_{d(\alpha+\beta)},\\\operatorname{Ad}(w_\alpha)X_\beta&=-X_{3\alpha+\beta},&\operatorname{Ad}(w'_{\alpha'})X'_{\beta'}&=-X'_{\alpha'+\beta'}=-X'_{d(3\alpha+\beta)},\\\operatorname{Ad}(w_\beta)X_{3\alpha+\beta}&=X_{3\alpha+2\beta},&\operatorname{Ad}(w'_{\beta'})X'_{d(3\alpha+\beta)}&=\operatorname{Ad}(w'_{\beta'})X'_{\alpha'+\beta'}\\&&&=X'_{\alpha'+2\beta'}=X'_{d(3\alpha+2\beta)},\\\operatorname{Ad}(w_\alpha)X_{\alpha+\beta}&=X_{2\alpha+\beta},&\operatorname{Ad}(w'_{\alpha'})X'_{d(\alpha+\beta)}&=\operatorname{Ad}(w'_{\alpha'})X'_{\alpha'+3\beta'}\\&&&=X'_{2\alpha'+3\beta'}=X'_{d(2\alpha+\beta)}.\end{aligned}\]
+由3.4.1(ii)，两边有
+\[\begin{aligned}\operatorname{Ad}(w_\alpha)X_{2\alpha+\beta}&=-X_{\alpha+\beta},&\operatorname{Ad}(w'_{\alpha'})X'_{d(2\alpha+\beta)}&=\operatorname{Ad}(w'_{\alpha'})X'_{2\alpha'+3\beta'}\\&&&=-X'_{\alpha'+3\beta'}=-X'_{d(\alpha+\beta)},\\&\cdots&&\cdots\\\operatorname{Ad}(w_\beta)X_{3\alpha+2\beta}&=-X_{3\alpha+\beta},&\operatorname{Ad}(w'_{\beta'})X'_{d(3\alpha+2\beta)}&=\operatorname{Ad}(w'_{\beta'})X'_{\alpha'+2\beta'}\\&&&=-X'_{\alpha'+\beta'}=-X'_{d(3\alpha+\beta)}.\end{aligned}\]
+（省略号代表四个同类的验证。）
+(iii) 由3.4.1(iii)及$S$上$3=0$，$U,U'$中仅有的非平凡交换关系为
+\[\begin{aligned}p_\beta(y)p_\alpha(x)&=p_\alpha(x)p_\beta(y)p_{\alpha+\beta}(xy)p_{2\alpha+\beta}(x^2y)p_{3\alpha+\beta}(x^3y)p_{3\alpha+2\beta}(x^3y^2),\\p_{\alpha+\beta}(y)p_\alpha(x)&=p_\alpha(x)p_{\alpha+\beta}(y)p_{2\alpha+\beta}(-xy),\\p_{3\alpha+\beta}(y)p_\beta(x)&=p_\beta(x)p_{3\alpha+\beta}(y)p_{3\alpha+2\beta}(-xy);\end{aligned}\]
+\[\begin{aligned}p'_{\alpha'}(y')p'_{\beta'}(x')={}&p'_{\beta'}(x')p'_{\alpha'}(y')p'_{\alpha'+\beta'}(-x'y')p'_{\alpha'+2\beta'}(-x'^2y')\\&\cdot p'_{\alpha'+3\beta'}(-x'^3y')p'_{2\alpha'+3\beta'}(-x'^3y'^2),\\p'_{\alpha'+\beta'}(y')p'_{\beta'}(x')={}&p'_{\beta'}(x')p'_{\alpha'+\beta'}(y')p'_{\alpha'+2\beta'}(x'y'),\\p'_{\alpha'+3\beta'}(y')p'_{\alpha'}(x')={}&p'_{\alpha'}(x')p'_{\alpha'+3\beta'}(y')p'_{2\alpha'+3\beta'}(x'y').\end{aligned}\]
+须验证$U\to U'$的\Term{morphism}{态射}$\varphi$，定义为
+\[\begin{aligned}{}&\varphi(p_\alpha(x)p_\beta(y)p_{\alpha+\beta}(t)p_{2\alpha+\beta}(u)p_{3\alpha+\beta}(v)p_{3\alpha+2\beta}(w))\\{}&=p^{\prime}_{\alpha'}(x^{3q})p^{\prime}_{\beta'}(y^q)p^{\prime}_{\alpha'+3\beta'}(t^{3q})p^{\prime}_{2\alpha'+3\beta'}(u^{3q})p^{\prime}_{\alpha'+\beta'}(v^q)p^{\prime}_{\alpha'+2\beta'}(w^q),\end{aligned}\]
+\SourcePage{206}
+是\Term{group-morphism}{群态射}。直接验证最后三个交换关系也写作
+\[\begin{aligned}p'_{\beta'}(y^q)p'_{\alpha'}(x^{3q})={}&p'_{\alpha'}(x^{3q})p'_{\beta'}(y^q)p'_{\alpha'+3\beta'}((xy)^{3q})p'_{2\alpha'+3\beta'}((x^2y)^{3q})\\&\cdot p'_{\alpha'+\beta'}((x^3y)^q)p'_{\alpha'+2\beta'}((x^3y^2)^q),\\p'_{\alpha'+3\beta'}(y^{3q})p'_{\alpha'}(x^{3q})={}&p'_{\alpha'}(x^{3q})p'_{\alpha'+3\beta'}(y^{3q})p'_{2\alpha'+3\beta'}(-(xy)^{3q}),\\p'_{\alpha'+\beta'}(y^q)p'_{\beta'}(x^q)={}&p'_{\beta'}(x^q)p'_{\alpha'+\beta'}(y^q)p'_{\alpha'+2\beta'}(-(xy)^q).\end{aligned}\]
+这说明$\varphi$确为\Term{group-morphism}{群态射}，并完成4.1.7的证明。
+\textbf{4.1.9。} $G,G'$\Term{semisimple-rank}{半单秩}$>2$的情形。对$\alpha\in\Delta$记$\alpha'=d(\alpha)\in\Delta'=d(\Delta)$。对$(\alpha,\beta)\in\Delta\times\Delta$考虑\Term{semisimple-rank}{半单秩}$\leq2$的\Term{pinned-group}{钉扎群}$Z_{\alpha\beta},Z'_{\alpha'\beta'}$。$h$下层的\Term{group-morphism}{群态射}$M'\to M$定义\Term{root-datum}{根数据}的$p$-\Term{morphism}{态射}
+\[h_{\alpha\beta}:\mathcal R(Z_{\alpha\beta})\longrightarrow\mathcal R(Z'_{\alpha'\beta'}).\]
+由前述结果有\Term{pinned-group}{钉扎群}\Term{morphism}{态射}$f_{\alpha\beta}:Z_{\alpha\beta}\to Z'_{\alpha'\beta'}$，使$\mathcal R(f_{\alpha\beta})=h_{\alpha\beta}$。证明它们满足2.5的\Term{gluing}{粘合}条件：$f_{\alpha\beta}|_{Z_\alpha}$和$f_{\alpha\alpha}$是两个$Z_\alpha\to Z'_{\alpha'}$的\Term{pinned-group}{钉扎群}\Term{morphism}{态射}，对应于同一\Term{pinned-root-datum}{钉扎根数据}\Term{morphism}{态射}，故由已证的唯一性相同。由2.5存在\Term{group-morphism}{群态射}$f:G\to G'$延拓所有$f_{\alpha\beta}$。它显然是\Term{pinned-group}{钉扎群}\Term{morphism}{态射}且$\mathcal R(f)=h$，完成定理4.1的证明。
+\SGAsection{5}{基本定理的推论}
+最重要的是：
+\begin{SGAresult}{推论}{5.1}
+设$S$为\Term{nonempty}{非空}\Term{scheme}{概形}，$G,G'$为两个\Term{pinned-group}{钉扎}$S$-群，$h:\mathcal R(G')\xrightarrow\sim\mathcal R(G)$为\Term{pinned-root-datum}{钉扎根数据}\Term{isomorphism}{同构}。存在唯一\Term{pinned-group}{钉扎}$S$-群\Term{isomorphism}{同构}$f:G\xrightarrow\sim G'$使$\mathcal R(f)=h$。
+\end{SGAresult}
+\SourcePage{207}
+注意5.1也由3.5.1推出（3.5.1的关系可仅用$\mathcal R(G)$的数据写出）；也可由4.1证明中最初等的部分推出，无须考虑4.1.7、4.1.8的“例外\Term{isogenous}{同源}映射”。
+\begin{SGAresult}{推论（唯一性定理）}{5.2}
+设$S$为\Term{scheme}{概形}，$G,G'$为两个\Term{separable}{可分}裂$S$-群（第XXII讲1.13）。若它们具有相同类型（第XXII讲2.6），则它们\Term{isomorphism}{同构}。
+\end{SGAresult}
+\begin{SGAresult}{推论}{5.3}
+设$G,G'$为\Term{separable}{可分}裂$S$-群。下列条件\Term{equivalence}{等价}：(i) $G,G'$\Term{isomorphism}{同构}；(ii) 它们在(fpqc)\Term{topology}{拓扑}下\Term{local-isomorphism}{局部同构}；(iii) 存在$s\in S$使$s$-群$G_s,G'_s$类型相同。
+\end{SGAresult}
+事实上(i)$\Rightarrow$(ii)$\Rightarrow$(iii)显然。另一方面(iii)推出$\mathcal R(G)=\mathcal R(G_s)=\mathcal R(G'_s)=\mathcal R(G')$，故$G,G'$满足4.2的条件。
+\begin{SGAresult}{推论（Chevalley\Term{scheme}{概形}的唯一性）}{5.4}
+设$G,G'$为$\mathbf Z$上的\Term{reductive-group}{约化群}，具有\Term{split-torus}{分裂极大环面}\footnote{事实上可证每个$\mathbf Z$-\Term{torus}{环面}都是\Term{splitting}{分裂}的。编者注：因为所有$\mathbf Z$-\Term{torus}{环面}均\Term{isotrivial}{等平凡}（第X讲5.16），且$\operatorname{Spec}(\mathbf Z)$的每个\Term{etale}{平展}\Term{covering}{覆盖}均平凡。}。下列条件\Term{equivalence}{等价}：(i) $G,G'$\Term{isomorphism}{同构}；(ii) 存在$s\in\operatorname{Spec}(\mathbf Z)$使$G_s,G'_s$类型相同；(iii) $G_{\mathbf C},G'_{\mathbf C}$类型相同。
+\end{SGAresult}
+事实上由第XXII讲2.2，$G,G'$\Term{separable}{可分}裂。
+\begin{SGAresult}{推论（\Term{outer-automorphism}{外自同构}的存在性）}{5.5}
+设$G$为\Term{pinned-group}{钉扎}$S$-群，$h$为\Term{pinned-root-datum}{钉扎根数据}$\mathcal R(G)$的\Term{automorphism}{自同构}。存在唯一保持其\Term{pinning}{钉扎}的$G$的\Term{automorphism}{自同构}$u$使$\mathcal R(u)=h$。
+\end{SGAresult}
+把上述推论明确写出：
+\begin{SGAresult}{推论}{5.5 bis}
+设$G$为\Term{split-group}{分裂}\Term{reductive-group}{约化}$S$-群，$R_+$为其\Term{positive-root-system}{正根系}。对每个\Term{simple-root}{单根}$\alpha$选\Term{vector-group}{向量群}\Term{isomorphism}{同构}$p_\alpha:\mathbf G_{a,S}\xrightarrow\sim U_\alpha$。设$h$为$M$的\Term{automorphism}{自同构}，置换\Term{positive-root}{正根}及其相应\Term{coroot}{余根}：若$\alpha\in R_+$，则$h(\alpha)\in R_+$且$h^\vee(\alpha^*)=h(\alpha)^*$。存在唯一$G$的\Term{automorphism}{自同构}$u$，在$T$上诱导$D_S(h)$，且对每个\Term{simple-root}{单根}满足$u\circ p_\alpha=p_{h(\alpha)}$。
+\end{SGAresult}
+\begin{SGAresult}{推论}{5.6}
+设$G,G'$为两个\Term{reductive-group}{约化}$S$-群。下列条件\Term{equivalence}{等价}：(i) 它们在(fpqc)\Term{topology}{拓扑}下\Term{local-isomorphism}{局部同构}；(i bis) 它们在\Term{etale}{平展}\Term{topology}{拓扑}下\Term{local-isomorphism}{局部同构}；
+\SourcePage{208}
+(ii) 对每个$s\in S$，$G_{\bar s},G'_{\bar s}$\Term{isomorphism}{同构}；(iii) 函数$s\mapsto G_s$的类型和$s\mapsto G'_s$的类型相同。
+\end{SGAresult}
+事实上(i bis)$\Rightarrow$(i)显然；(i)$\Rightarrow$(ii)由\Term{finite-extension}{有限扩张}原理（EGA IV$_3$，9.1.4）；(ii)$\Rightarrow$(iii)显然；只须证(iii)$\Rightarrow$(i bis)。可设$G,G'$\Term{separable}{可分}裂（第XXII讲2.3），此时由5.3得出断言。
+\begin{SGAresult}{推论}{5.7}
+设$G$为\Term{reductive-group}{约化}$S$-群，$G'$为\Term{affine}{仿射}、\Term{smooth}{光滑}且\Term{fiber}{纤维}\Term{connected}{连通}的$S$-群。若$s\in S$使$G_{\bar s},G'_{\bar s}$\Term{isomorphism}{同构}，则存在\Term{etale}{平展}且\Term{covering}{覆盖}$s$的$S'\to S$，使$G_{S'},G'_{S'}$\Term{isomorphism}{同构}。
+\end{SGAresult}
+事实上由第XIX讲2.5及第XXII讲2.1可设$G,G'$为\Term{separable}{可分}裂\Term{reductive-group}{约化群}，遂归结到5.3。当$S$为域的谱，由5.6、5.7得到：
+\begin{SGAresult}{推论}{5.8}
+设$k$为域，$G,G'$为两个\Term{reductive-group}{约化}$k$-群。下列条件\Term{equivalence}{等价}\footnote{编者注：M. Takeuchi给出了不使用化归到秩二群的另一证明（[Ta83]定理4.6），另见[Ja87]，II 1.14。}：(i) $G,G'$类型相同；(ii) $G\otimes_k\bar k$与$G'\otimes_k\bar k$\Term{isomorphism}{同构}；(iii) 存在$k$的\Term{finite-separable-extension}{有限可分扩张}$K$使$G\otimes_k K,G'\otimes_k K$\Term{isomorphism}{同构}。
+\end{SGAresult}
+\begin{SGAresult}{推论}{5.9}
+设$S$为\Term{nonempty}{非空}\Term{scheme}{概形}，$\mathcal R$为\Term{root-datum}{根数据}。下列条件\Term{equivalence}{等价}\footnote{编者注：第XXV讲证明$\operatorname{Spec}(\mathbf Z)$上存在$\mathcal R$型\Term{split-group}{分裂群}，故任意\Term{base}{基底}$S$上也存在，所以本推论变得多余。事实上XXV 1.3之后曾引用本推论以保证所得的\Term{reduced}{约化}$\mathbf Z$-群\Term{splitting}{分裂}，但这已由XXII 2.2推出，见XXV编者注(3)。}：(i) 存在$\mathcal R$型\Term{pinned-group}{钉扎}$S$-群；(ii) 存在$\mathcal R$型$S$-群；(iii) 对(fpqc)\Term{local-scheme}{局部}存在$\mathcal R$型\Term{reductive-group}{约化}$S$-群。
+\end{SGAresult}
+显然须证明(iii)$\Rightarrow$(i)。为简化证明，设存在\Term{faithfully-flat}{忠实平坦}\Term{quasi-compact-morphism}{拟紧态射}$S'\to S$及$\mathcal R$型\Term{reductive-group}{约化}$S'$-群$G'$。可设$G'$\Term{separable}{可分}裂，固定其\Term{pinning}{钉扎}$E'$，记$\mathcal R=\mathcal R(G',E')$。$(G',E')$在$S''=S'\times_S S'$上的两个\Term{inverse-image}{逆像}为\Term{pinned-group}{钉扎群}$(G''_1,E''_1),(G''_2,E''_2)$；有\Term{canonical-isomorphism}{典范同构}$p_i:\mathcal R(G''_i,E''_i)\xrightarrow\sim\mathcal R$，故有\Term{isomorphism}{同构}
+\[p=p_2^{-1}\circ p_1:\mathcal R(G''_1,E''_1)\longrightarrow\mathcal R(G''_2,E''_2).\]
+由唯一性定理存在唯一\Term{isomorphism}{同构}$f:(G''_1,E''_1)\xrightarrow\sim(G''_2,E''_2)$，
+\SourcePage{209}
+使$\mathcal R(f)=p$。因此在$G'$上有\Term{gluing-datum}{粘合数据}，它是\Term{descent}{下降}数据。
+事实上须验证$f$在$S'''$上的\Term{inverse-image}{逆像}间的相容条件；因$\mathcal R$\Term{fully-faithful}{完全忠实}，只须对这些\Term{arrow}{箭头}经$\mathcal R$变换后的像验证。按构造$p$确为\Term{descent}{下降}数据，故$f$也是。因$G'$\Term{affine}{仿射}，此\Term{descent}{下降}数据\Term{effective}{有效}；因$G'$的\Term{pinning}{钉扎}在此数据下\Term{stable}{稳定}，容易验证存在\Term{pinned-group}{钉扎}$S$-群$(G,E)$，经\Term{base-extension}{基底扩张}给出$(G',E')$，所以它为$\mathcal R$型。
+\textbf{附记。} 自然，在\Term{fibred-category}{纤维范畴}的语言中，上述证明变得简明（并且可以理解）。
+\begin{SGAresult}{推论}{5.10}
+设$S$\Term{nonempty}{非空}，$\mathcal R$为\Term{pinned-root-datum}{钉扎根数据}，且存在$\mathcal R$型\Term{reductive-group}{约化}$S$-群。则存在$\mathcal R$型\Term{pinned-group}{钉扎}$S$-群，且在唯一\Term{isomorphism}{同构}意义下唯一。
+\end{SGAresult}
+\begin{SGAresult}{定义}{5.11}
+在上述条件下，以$G_S^{\mathrm{Ép}}(\mathcal R)$记唯一的$\mathcal R$型\Term{pinned-group}{钉扎}$S$-群，以$T_S(\mathcal R)$记其\Term{canonical}{典范}\Term{maximal-torus}{极大环面}，$B_S(\mathcal R)$记其\Term{canonical}{典范}Borel\Term{subgroup}{子群}，等等。
+\end{SGAresult}
+若$S'\to S$且$S'$\Term{nonempty}{非空}，可将$G_S^{\mathrm{Ép}}(\mathcal R)\times_S S'$与$G_{S'}^{\mathrm{Ép}}(\mathcal R)$等同。特别地，若$G_{\operatorname{Spec}(\mathbf Z)}^{\mathrm{Ép}}(\mathcal R)$存在（将看到总是如此），记作$G^{\mathrm{Ép}}(\mathcal R)$，且
+\[G_S^{\mathrm{Ép}}(\mathcal R)=G^{\mathrm{Ép}}(\mathcal R)\times_{\operatorname{Spec}(\mathbf Z)}S.\]
+称$G^{\mathrm{Ép}}(\mathcal R)$为$\mathcal R$型Chevalley群\Term{scheme}{概形}。
+\textbf{5.12。} 因而，说$S$-群\Term{sheaf}{层}$G$是$\mathcal R$型\Term{reductive-group}{约化}$S$-群，\Term{equivalence}{等价}于说它在\Term{etale}{平展}或(fpqc)\Term{topology}{拓扑}下\Term{local-isomorphism}{局部同构}于$G_S^{\mathrm{Ép}}(\mathcal R)$。同样，由\Term{conjugacy}{共轭}定理，说$(G,T)$为带\Term{maximal-torus}{极大环面}的$\mathcal R$型\Term{reductive-group}{约化}$S$-群，\Term{equivalence}{等价}于说它\Term{local-isomorphism}{局部同构}于$(G_S^{\mathrm{Ép}}(\mathcal R),T_S(\mathcal R))$；带Borel\Term{subgroup}{子群}或Killing偶的情形相同。
+\SGAsection{6}{Chevalley系}
+第3节的显式计算有重要的数值推论。先作如下定义：
+\begin{SGAresult}{定义}{6.1}
+设$S$为\Term{scheme}{概形}，$(G,T,M,R)$为\Term{split-group}{分裂}$S$-群。$G$的一个\Term{chevalley-system}{Chevalley系}是元素族$(X_\alpha)_{\alpha\in R}$，$X_\alpha\in\Gamma(S,\mathfrak g_\alpha)^\times$，满足：
+\SourcePage{210}
+(SC) 对任意$\alpha,\beta\in R$有$\operatorname{Ad}(w_\alpha(X_\alpha))X_\beta=\pm X_{s_\alpha(\beta)}$。
+\end{SGAresult}
+回忆（第XX讲3.1）
+\[w_\alpha(X_\alpha)=\exp(X_\alpha)\exp(-X_\alpha^{-1})\exp(X_\alpha).\]
+注意由关系（第XX讲2.10）$\operatorname{Ad}(w_\alpha(X_\alpha))X_\alpha=-X_{-\alpha}$，(SC)特别推出对$\alpha\in R$有$X_{-\alpha}=\pm X_\alpha$。
+\begin{SGAresult}{命题}{6.2}
+每个\Term{split-group}{分裂群}均有\Term{chevalley-system}{Chevalley系}。更确切地，设$(\Delta,(X'_\alpha)_{\alpha\in\Delta})$为\Term{split-group}{分裂群}$(G,T,M,R)$的一个\Term{pinning}{钉扎}（1.1），则存在$G$的\Term{chevalley-system}{Chevalley系}$(X_\alpha)_{\alpha\in R}$使$\alpha\in\Delta$时$X_\alpha=X'_\alpha$。
+\end{SGAresult}
+先证只须对$\alpha\in\Delta$验证(SC)。对任意$\alpha\in R$，存在$\{\alpha_i\}\subset\Delta$使$\alpha=s_{\alpha_1}\cdots s_{\alpha_n}(\alpha_{n+1})$；依次对各$\alpha_i$应用(SC)，得
+\[X_\alpha=\pm\operatorname{Ad}(w_{\alpha_1}(X_{\alpha_1})\cdots w_{\alpha_n}(X_{\alpha_n}))X_{\alpha_{n+1}}.\]
+由3.1.1(iii)，
+\[\begin{aligned}{}&w_{\alpha_1}(X_{\alpha_1})\cdots w_{\alpha_n}(X_{\alpha_n})w_{\alpha_{n+1}}(X_{\alpha_{n+1}})w_{\alpha_n}(X_{\alpha_n})^{-1}\cdots w_{\alpha_1}(X_{\alpha_1})^{-1}\\{}&=\alpha^*(\pm1)w_\alpha(X_\alpha).\end{aligned}\]
+注意$w_{\alpha_i}(X_{\alpha_i})^{-1}=\alpha_i^*(-1)w_{\alpha_i}(X_{\alpha_i})$，且对任意根$(\beta,\gamma)$有$\beta(\gamma^*(-1))=(-1)^{(\gamma^*,\beta)}=\pm1$，故若(SC)对所有$(\alpha_i,\gamma)$（$\gamma\in R$）成立，则对任意$(\alpha,\beta)$（$\beta\in R$）成立。
+现在如下构造$(X_\alpha)_{\alpha\in R}$。对各$\alpha\in R$如上选序列$\{\alpha_i\}\subset\Delta$，定义
+\[X_\alpha=\operatorname{Ad}(w_{\alpha_i}(X_{\alpha_1})\cdots w_{\alpha_n}(X_{\alpha_n}))X'_{\alpha_{n+1}}.\]
+为验证(SC)，只须证明：
+\begin{SGAresult}{引理}{6.3}
+设$(G,T,M,R,\Delta,(X_\alpha)_{\alpha\in\Delta})$为\Term{pinned-group}{钉扎}$S$-群，$\alpha_i$（$0\leq i\leq n+1$）为\Term{simple-root}{单根}序列，满足$\operatorname{int}(s_{\alpha_1}\cdots s_{\alpha_n})(\alpha_{n+1})=\alpha_0$，则
+\[\operatorname{Ad}(w_{\alpha_1}\cdots w_{\alpha_n})X_{\alpha_{n+1}}=\pm X_{\alpha_0}.\]
+\end{SGAresult}
+如2.3.4利用Tits引理（第XXI讲5.6）论证，可归结到：(a) $G$\Term{semisimple-rank}{半单秩}至多二；或(b) $w_{\alpha_1}\cdots w_{\alpha_n}$为$T$的\Term{section}{截面}。(a)中注意6.3是6.2的推论，而6.2已在3.1.2（相应地3.2.1、3.3.1、3.4.1）的(i)中验证。
+因此只须在(b)中证明6.3，\Term{equivalence}{等价}地，若\Term{simple-root}{单根}序列$\{\alpha_i\}$满足$s_{\alpha_1}\cdots s_{\alpha_n}=\operatorname{id}$，则$t=w_{\alpha_1}\cdots w_{\alpha_n}$满足对所有$\alpha\in R$有$\alpha(t)=\pm1$。由Weyl群的结构（第XXI讲5.1），由$s_\alpha$（$\alpha\in\Delta$）生成的\Term{free-group}{自由群}中的字$s_{\alpha_1}\cdots s_{\alpha_n}$
+\SourcePage{211}
+属于由$(s_\alpha s_\beta)^{n_{\alpha\beta}}$（$(\alpha,\beta)\in\Delta\times\Delta$）生成的\Term{normal-subgroup}{正规子群}。故归结到$s_{\alpha_1}\cdots s_{\alpha_n}$具有\Term{form}{形式}
+\[s_{\alpha_1}\cdots s_{\alpha_i}(s_{\alpha_{i+1}}s_{\alpha_{i+2}})^{n_{\alpha_{i+1}\alpha_{i+2}}}s_{\alpha_i}\cdots s_{\alpha_1}.\]
+此时$t=s_{\alpha_1}\cdots s_{\alpha_i}(t_{\alpha_{i+1}\alpha_{i+2}})$，故只须对每对\Term{simple-root}{单根}$(\alpha_1,\alpha_2)$及任意$\beta\in R$验证$\beta(t_{\alpha_1\alpha_2})=\pm1$。由第3节中计算的$t_{\alpha_1\alpha_2}$之值（3.1.2、3.2.1、3.3.1、3.4.1的(i)），这显然成立。
+\begin{SGAresult}{命题}{6.4}
+设$(G,T,M,R)$为\Term{split-group}{分裂}$S$-群，$(X_\alpha)_{\alpha\in R}$为其\Term{chevalley-system}{Chevalley系}。设$\alpha,\beta$为不成比例的两根，且
+\[\operatorname{long}(\alpha)\leq\operatorname{long}(\beta),\qquad\text{即 }|(\beta^*,\alpha)|\leq|(\alpha^*,\beta)|.\]
+设$q,p-1$为非负整数，使形如$\beta+k\alpha$（$k\in\mathbf Z$）的根恰为
+\[\{\beta-(p-1)\alpha,\ldots,\beta,\ldots,\beta+q\alpha\}\]
+（见第XXI讲2.3.5，由该处有$-(\alpha^*,\beta)=q-p+1$）。则$U_\alpha,U_\beta$间的交换关系由下表给出（穷尽了所有可能情形，因为上述根链的长度$p+q-1\leq3$）；对每个$\gamma\in R$记$p_\gamma(x)=\exp(xX_\gamma)$：
+\[\begin{array}{c|l}(p,q)&p_\beta(y)p_\alpha(x)p_\beta(-y)p_\alpha(-x)\\\hline
+(-,0)&=e\\(1,1)&=p_{\alpha+\beta}(\pm xy)\\(1,2)&=p_{\alpha+\beta}(\pm xy)p_{2\alpha+\beta}(\pm x^2y)\\(1,3)&=p_{\alpha+\beta}(\pm xy)p_{2\alpha+\beta}(\pm x^2y)p_{3\alpha+\beta}(\pm x^3y)p_{3\alpha+2\beta}(\pm x^3y^2)\\(2,1)&=p_{\alpha+\beta}(\pm2xy)\\(2,2)&=p_{\alpha+\beta}(\pm2xy)p_{2\alpha+\beta}(\pm3x^2y)p_{\alpha+2\beta}(\pm3xy^2)\\(3,1)&=p_{\alpha+\beta}(\pm3xy)\end{array}\]
+\end{SGAresult}
+\begin{proof}
+由第XXI讲3.5.4，存在$R$的\Term{simple-root-system}{单根系}$\Delta$使$\alpha\in\Delta$，且存在$\alpha'\in\Delta$及$a,b\in\mathbf Q_+$使$\beta=a\alpha+b\alpha'$。考虑$G$的\Term{pinning}{钉扎}$(\Delta,(X_\alpha)_{\alpha\in\Delta})$。待证交换关系是$U_{\alpha\alpha'}$中元素间的关系，故归结到第3节的显式计算，由(SC)立即得出。
+\end{proof}
+\begin{SGAresult}{推论（Chevalley法则）}{6.5}
+设$S$为\Term{scheme}{概形}，$(X_\alpha)_{\alpha\in R}$为\Term{split-group}{分裂}$S$-群$G$的\Term{chevalley-system}{Chevalley系}。若$\alpha,\beta,\alpha+\beta\in R$，则$[X_\alpha,X_\beta]=\pm pX_{\alpha+\beta}$，其中$p$为使$\beta-p\alpha$非根的最小正整数。
+\end{SGAresult}
+因断言对$\alpha,\beta$对称，可设$\operatorname{long}(\alpha)\leq\operatorname{long}(\beta)$，归结到6.4。
+\SourcePage{212}
+\begin{SGAresult}{推论}{6.6}
+设$S$为满足$6\cdot1_S\ne0$的\Term{scheme}{概形}，$(G,T,M,R)$为\Term{split-group}{分裂}$S$-群。若$R'\subset R$使
+\[\mathfrak g_{R'}=\mathfrak t\oplus\coprod_{\alpha\in R'}\mathfrak g_\alpha\tag{*}\]
+是$\mathfrak g$的Lie子\Term{algebra}{代数}，则$R'$是$R$的\Term{closed-subset}{闭子集}（第XXI讲3.1.4）。
+\end{SGAresult}
+\begin{proof}
+\footnote{编者注：我们添加了下面的证明。注意只须$2,3$在$S$上非零；例如结论对$S=\operatorname{Spec}(\mathbf Z/6\mathbf Z)$成立。}设$(X_\gamma)_{\gamma\in R_+}$为$\mathfrak g$的\Term{chevalley-system}{Chevalley系}，且$\alpha,\beta\in R'$满足$\alpha+\beta\in R$。由6.5、6.4，
+\[[X_\alpha,X_\beta]=\pm pX_{\alpha+\beta},\qquad p\in\{1,2,3\}.\]
+因$2,3$在$S$上均非零，由(*)得$\mathfrak g_{R'}$包含$\mathfrak g_{\alpha+\beta}$，故$\alpha+\beta\in R'$。\footnote{编者注：另一方面，若$S$上$2=0$且$R$为$C_n$型，则短\Term{root-set}{根集}$R'$（为$D_n$型\Term{root-system}{根系}）在$R$中不闭，但它是对称的(R)型\Term{subset}{子集}（见XXII 5.4.2、5.4.10），即对应于$G$的一个具有\Term{reduced}{约化}\Term{fiber}{纤维}的(R)型\Term{subgroup}{子群}$H_{R'}$。\Term{characteristic}{特征}二时$\operatorname{SO}(2n)$自然\Term{embedding}{嵌入}$\operatorname{Sp}(2n)$正是此情形。同样，若$S$上$2=0$且$R$为$F_4$型（相应地$3=0$且$R$为$G_2$型），则短\Term{root-set}{根集}$R'$为$D_4$型（相应地$A_2$型）\Term{root-system}{根系}，在$R$中不闭，却对应于$G$的一个具有\Term{reduced}{约化}\Term{fiber}{纤维}的(R)型\Term{subgroup}{子群}$H_{R'}$。}
+\end{proof}
+\textbf{6.7。} 研究$\operatorname{Norm}_G(T)$，更确切地研究“\Term{group-extension}{扩张}Weyl群”
+\[W^*=N(\mathbf Z),\qquad N=\operatorname{Norm}_{G_{\mathbf Z}^{\mathrm{Ép}}(\mathcal R)}(T_{\mathbf Z}(\mathcal R))\]
+（见5.11），可以确定本节各个$\pm$的确切值。它是$W(\mathcal R)$以一个$(2,2,\ldots,2)$型\Term{abelian-group}{阿贝尔群}为核的\Term{group-extension}{扩张}，后者“负责\Term{signature}{符号}”。\footnote{见J. Tits：《论结构常数及\Term{semisimple}{半单}Lie\Term{algebra}{代数}的存在性定理》（Sur les constantes de structure et le théorème d'existence des algèbres de Lie semi-simples），Publ. Math. I.H.É.S. \textbf{31} (1966)，21--58。编者注：另见[Ti66]。}
+\textbf{注记6.7.1。}\footnote{编者注：我们添加了此注记。} 注意由3.1.2及3.$n$.1（$n=2,3,4$）的(i)，$N(\mathbf Z)$的元素$w_\alpha,w_\beta$满足“辫子关系”
+\[w_\alpha w_\beta\cdots=w_\beta w_\alpha\cdots\qquad\text{（每边有$n_{\alpha\beta}$个因子）。}\]
+另见[Ti66]、[BLie]，\S IX.4，习题12及[Sp98]，9.3.2。
+\SourcePage{213}
+\SGAsection{}{参考文献}
+\footnote{编者注：本讲引用的补充参考文献。}
+\begin{description}
+\item[{[BLie]}] N. Bourbaki，《Lie群与Lie\Term{algebra}{代数}》（Groupes et algèbres de Lie），第IX章，Masson，1982。
+\item[{[Ja87]}] J. C. Jantzen，《\Term{algebraic-group}{代数群}的表示》（Representations of algebraic groups），Academic Press，1987；第2版，Amer. Math. Soc.，2003。
+\item[{[Sp98]}] T. A. Springer，《线性\Term{algebraic-group}{代数群}》（Linear algebraic groups），第2版，Birkhaüser，1998。
+\item[{[St62]}] R. Steinberg，《\Term{algebraic-group}{代数群}的\Term{generator}{生成元}、关系与\Term{covering}{覆盖}》（Générateurs, relations et revêtements de groupes algébriques），《\Term{algebraic-group}{代数群}理论讨论会》（布鲁塞尔，1962），Univ. Louvain \& Gauthier-Villars，1962（收入R. Steinberg《论文集》，Amer. Math. Soc.，1997，第133--147页）。
+\item[{[St67]}] R. Steinberg，《Chevalley群讲义》（Lectures on Chevalley groups），Yale University，1967。
+\item[{[Ta83]}] M. Takeuchi，《\Term{reductive-group}{约化群}\Term{isomorphism}{同构}与\Term{isogenous}{同源}定理的一个超\Term{algebra}{代数}证明》（A hyperalgebraic proof of the isomorphism and isogeny theorems for reductive groups），J. Algebra \textbf{85} (1983)，179--196。
+\item[{[Ti66]}] J. Tits，《\Term{torus}{环面}的\Term{normalizer}{正规化子}I：\Term{group-extension}{扩张}Coxeter群》（Normalisateurs de tores I. Groupes de Coxeter étendus），J. Algebra \textbf{4} (1969)，96--116。
+\end{description}
+\SourcePage{214}
+% 原PDF第214页为空白页。

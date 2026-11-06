@@ -1,0 +1,1049 @@
+\article{自守 L 函数}{Automorphic L-functions}{A. Borel}{2}{27--61}
+本文主要讨论 Langlands [35] 给整体域（global field）$k$ 上约化群（reductive group）$G$ 的不可约容许自守表示（irreducible admissible automorphic representation）$\pi$ 所附加的 $L$ 函数，以及有关的局部和整体问题。本文侧重一般理论，以补充本次研究班的各个专题，尤其是 $\GL_2$ 专题。背景和动机可参见其他专题讲稿、综述 [3]，以及讨论相关方面的文章 [7]、[14]、[15]、[23]。
+
+表示 $\pi$ 可分解为遍历 $k$ 各素位的限制张量积 $\pi=\bigotimes_v\pi_v$，其中 $\pi_v$ 是 $G(k_v)$ 的不可约容许表示 [11]。相应地，附加于 $\pi$ 的 $L$ 函数将是附加于各 $\pi_v$ 的局部因子的 Euler 乘积（Euler product）。定义这些局部因子，需要引入与 $G$ 关联的 $L$ 群（$L$-group）${}^LG$。这是第I章的内容，这一章的写法受益于 Deligne 给作者的一封信。由此得到附加于 $\pi$ 和 ${}^LG$ 的有限维表示 $r$ 的 Euler 乘积 $L(s,\pi,r)$。（若 $G=\GL_n$，则其 $L$ 群本质上为 $\GL_n(\C)$，可默认为 $r$ 取 $\GL_n(\C)$ 的标准表示（standard representation）$r_n$，因此如 [3] 前六节所做的那样，讨论 $\GL_n$ 时可以不显式提及 $L$ 群。）局部 $L$ 因子和 $\varepsilon$ 因子在 $G$ 与 $\pi$ 均在适当意义下“非分歧”（unramified）的位置定义，该条件至多排除有限个位置。第II章讨论此情形。要点是用 ${}^LG$ 中某些半单共轭类（semisimple conjugacy classes）表述 Satake 同构（见7.1）。对于一般群，分歧素位处的局部因子目前尚无定义。不过，对于 $\GL_n$ 与 $r_n$，存在直接定义 [19]、[25]。一般理论中最广泛的设想，是给局部域 $E$ 上约化群 $H$ 的不可约容许表示，典范地附加一个 $E$ 的 Weil--Deligne 群 $W'_E$ 到 ${}^LH$ 的表示，再借助 $W'_E$ 的表示所对应的 $L$ 因子与 $\varepsilon$ 因子 [60]。这个问题是第III章的主题。
+
+上述附加于 $\pi,r$ 的 $L$ 函数 $L(s,\pi,r)$ 在第13节引入。一般情形下，先用 $k$ 几乎所有素位处的局部因子定义这一乘积。它在某个右半平面绝对收敛（13.3；14.2）。第14节讨论其主要解析猜想，包括亚纯延拓和函数方程，以及目前已知的证据。
+
+从 [35] 的观点看，自守表示及其 $L$ 函数的众多问题都可归入同一个框架，即所谓提升问题（lifting problem），或关于 $L$ 群的函子性问题（functoriality）。第V章讨论这一问题。它与 Artin 猜想密切相关（见第17节和基变换讨论班 [17]）。第18节简述自守 $L$ 函数与某些簇的 Hasse--Weil zeta 函数之间若干已知或猜想的联系；Shimura 簇讨论班 [8]、[40] 将作更详细的讨论。
+
+感谢 H. Jacquet 和 R. P. Langlands 对本文初稿提出的诸多宝贵意见。
+
+\paragraph*{本文目录（括号内为原书页码）}
+I. $L$ 群（28）：1. 分类（29）；2. $L$ 群的定义（29）；3. 抛物子群（31）；4. 关于诱导群的注记（33）；5. 标量限制（34）。
+
+II. 拟分裂群；非分歧情形（35）：6. ${}^LG$ 中的半单共轭类（35）；7. Satake 同构与 $L$ 群，非分歧情形的局部因子（38）。
+
+III. Weil 群与表示，局部因子（39）：8. $\Phi(G)$ 的定义（39）；9. 环面的对应（41）；10. 所期望的性质（43）；11. $\R,\C$ 上构造的概要（46）；12. 局部因子（48）。
+
+IV. 自守表示的 $L$ 函数（49）：13. $G_{\A}$ 的不可约容许表示的 $L$ 函数（49）；14. 自守表示的 $L$ 函数（52）。
+
+V. 提升问题（54）：15. $L$ 群的 $L$ 同态（54）；16. 局部提升（55）；17. 整体提升（56）；18. 与其他类型 $L$ 函数的关系（58）。参考文献（59）。
+
+\origsection{I}{L 群（L-groups）}
+$k$ 为域，$\overline k$ 为其代数闭包，$k_s$ 为 $k$ 在 $\overline k$ 中的可分闭包，$\Gamma_k$ 为 $k_s/k$ 的 Galois 群。$G$ 为连通约化群，在1.1、1.2、2.1、2.2中定义在 $\overline k$ 上，其余地方定义在 $k$ 上。
+
+第1、2节的内容贯穿全文，第3节的内容从第III章起使用。第4、5节给出标量限制（restriction of scalars）的细节；接受相关结论的读者可以跳过。
+
+\origsubsection{1}{分类（Classification）}
+先回顾 [58] 中讨论的一些事实。
+
+\paragraph*{1.1.} 连通约化 $\overline k$-群的同构类与根系（root systems）的同构类之间有典范双射。\footnote{\textbf{译者注（本次校订）：}这里应为“根数据的同构类”。单独的根系不能确定连通约化群；例如 $\operatorname{SL}_2$ 与 $\operatorname{PGL}_2$ 都有 $A_1$ 型根系，却不同构。紧接着列出的 $\psi(G)$ 正是分类所需的根数据。}这一对应将 $G$ 映到根数据（root datum）$\psi(G)=(X^*(T),\Phi,X_*(T),\Phi^\vee)$，其中 $T$ 为 $G$ 的极大环面（maximal torus），$X^*(T)$（分别 $X_*(T)$）为 $T$ 的特征群（分别单参数子群群），$\Phi$（分别 $\Phi^\vee$）为 $G$ 关于 $T$ 的根（分别余根）集合。
+
+\paragraph*{1.2.} 选取包含 $T$ 的 Borel 子群（Borel subgroup）$B$ 等价于选取 $\Phi(G,T)$ 的一组基 $\Delta$。上述分类也给出三元组 $(G,B,T)$ 的同构类与带基根数据（based root data）$\psi_0(G)=(X^*(T),\Delta,X_*(T),\Delta^\vee)$ 的同构类之间的双射。有分裂正合列（split exact sequence）
+\begin{equation}
+ (1)\longrightarrow\operatorname{Int}G\longrightarrow\Aut G\longrightarrow\Aut\psi_0(G)\longrightarrow(1).\tag{1}
+\end{equation}
+选取 $x_\alpha\in G_\alpha$（$\alpha\in\Delta$），即可得到分裂，并有典范双射
+\begin{equation}
+ \Aut\psi_0(G)\xrightarrow{\sim}\Aut(G,B,T,\{x_\alpha\}_{\alpha\in\Delta}).\tag{2}
+\end{equation}
+任意两个这样的分裂相差一个内自同构（inner automorphism）$\operatorname{Int}t$（$t\in T$）。\footnote{\textbf{译者注（本次校订）：}这里选取的每个 $x_\alpha$ 都应是根子群 $G_\alpha$ 中的非单位元，才能给出所需的钉扎。若允许 $x_\alpha=1$，则它不能消除相应的环面共轭自由度，式 (2) 便不成立。}
+
+\paragraph*{1.3.} 给定 $\gamma\in\Gamma_k$，存在 $g\in G(k_s)$，使 $g\,{}^\gamma T\,g^{-1}=T$、$g\,{}^\gamma B\,g^{-1}=B$，从而给出 $\psi_0(G)$ 的一个仅依赖 $\gamma$ 的自同构。记由此定义的同态为 $\mu_G:\Gamma_k\to\Aut\psi_0(G)$。若 $G'$ 为在 $\overline k$（因而在 $k_s$）上与 $G$ 同构的 $k$-群，则 $\mu_G=\mu_{G'}$ 当且仅当 $G,G'$ 互为内形式（inner forms）。
+
+\paragraph*{1.4.} 设 $f:G\to G'$ 为像是正规子群的 $\overline k$-态射。它诱导映射 $\psi(f):\psi(G)\to\psi(G')$，在前两个变量上反变，在后两个变量上协变。给定上述 $B,T\subset G$，存在 $G'$ 的 Borel 子群 $B'$ 及极大环面 $T'$，使 $f(B)\subset B'$、$f(T)\subset T'$，从而还有映射 $\psi_0(f):\psi_0(G)\to\psi_0(G')$。\footnote{\textbf{译者注（本次校订）：}对任意正特征下的不可分态射，仅要求像为正规子群不足以得到后文的复对偶态射。例如特征 $p$ 下 $\operatorname{SL}_2$ 的 Frobenius 同态在特征格上乘以 $p$，却没有诱导这种格映射的复半单群同态。这里的函子性陈述需在可分态射的条件下理解；第一篇已将一般同源的根数据映射与不可分情形的 $p$-态射作了区分。}
+
+\origsubsection{2}{L 群的定义（Definition of the L-group）}
+\paragraph*{2.1.} 带基根数据 $\Psi_0=(M,\Delta,M^*,\Delta^\vee)$ 的对偶根数据为 $\psi_0^\vee=(M^*,\Delta^\vee,M,\Delta)$。先为 $\overline k$-群 $G$ 指定一个 $\C$ 上的群 ${}^LG^\circ$，使 $\psi_0({}^LG^\circ)=\psi_0(G)^\vee$。用 ${}^LT^\circ,{}^LB^\circ$ 表示由 $\psi_0^\vee$ 确定的极大环面及 Borel 子群，并称它们确定 ${}^LG^\circ$ 的典范分裂（canonical splitting）。
+
+设 $f$ 如1.4。它也诱导映射 $\psi_0^\vee(f):\psi_0(G')^\vee\to\psi_0(G)^\vee$。记与之对应的 ${}^LG'^\circ$ 到 ${}^LG^\circ$ 的代数群态射为 ${}^Lf^\circ$。选定一个这样的态射后，其余选择都形如 $\operatorname{Int}t\circ{}^Lf^\circ\circ\operatorname{Int}t'$（$t\in{}^LT^\circ,t'\in{}^LT'^\circ$），且将 ${}^LT'^\circ$（分别 ${}^LB'^\circ$）映入 ${}^LT^\circ$（分别 ${}^LB^\circ$）。
+
+\paragraph*{2.2. 例（Examples）。}
+(1) 设 $G=\GL_n$。则 ${}^LG^\circ=\GL_n$。事实上，令 $M=\Z^n$，典范基为 $\{x_i\}$，$M^*=\Z^n$ 的对偶基为 $\{e_i\}$。则 $\Psi_0(\GL_n)=(M,\Delta,M^*,\Delta^\vee)$，其中 $\Delta=\{x_i-x_{i+1}:1\leq i<n\}$，$\Delta^\vee=\{e_i-e_{i+1}:1\leq i<n\}$，故 $\psi_0=\psi_0^\vee$。
+
+(2) 设 $G$ 半单，$\Psi_0(G)=(M,\Phi,M^*,\Phi^\vee)$。如常，令 $P(\Phi)\subset M\otimes\Q$ 为 $\Phi$ 的权格（weight lattice），$Q(\Phi)$ 为 $M$ 中由 $\Phi$ 生成的群。类似定义 $P(\Phi^\vee),Q(\Phi^\vee)$。
+
+众所周知，$G$ 单连通（simply connected）（分别为伴随型（adjoint type）），当且仅当 $P(\Phi)=M$（分别 $Q(\Phi)=M$）。此外，
+\[
+ P(\Phi)=\{\lambda\in M\otimes\Q:\langle\lambda,\Phi^\vee\rangle\subset\Z\},\qquad
+ P(\Phi^\vee)=\{\lambda\in M^*\otimes\Q:\langle\lambda,\Phi\rangle\subset\Z\}.
+\]
+因此，
+\[
+\begin{aligned}
+ G\text{ 单连通}&\Longleftrightarrow{}^LG^\circ\text{ 为伴随型},\\
+ G\text{ 为伴随型}&\Longleftrightarrow{}^LG^\circ\text{ 单连通}.
+\end{aligned}
+\]
+(3) 设 $G$ 为单群。在中心同源（central isogeny）意义下，它由 Killing--Cartan 分类中的某个类型 $A_n,\ldots,G_2$ 刻画。众所周知，映射 $\psi_0(G)\mapsto\psi_0(G)^\vee$ 互换 $B_n,C_n$，保持其他类型不变。因此，若 $G=\operatorname{Sp}_{2n}$（分别 $G=\operatorname{PSp}_{2n}$），则 ${}^LG^\circ=\operatorname{SO}_{2n+1}$（分别 ${}^LG^\circ=\operatorname{Spin}_{2n+1}$）。对于其他类型，$G\mapsto{}^LG^\circ$ 保持类型（但将单连通群变成伴随群，反之亦然）。
+
+(4) 再设 $G$ 约化，$f:G\to G'$ 为中心同源。令
+\[
+\begin{aligned}
+ N&=\operatorname{coker}(f_*:X_*(T)\longrightarrow X_*(T'))\quad(T'=f(T)),\\
+ N'&=\operatorname{coker}(f^*:X^*(T')\longrightarrow X^*(T)).
+\end{aligned}
+\]
+则 $N,N'$ 同构，且 $\ker{}^Lf^\circ=\Hom(N,\C^*)\xrightarrow{\sim}N$。特别地，${}^Lf^\circ$ 为同构，当且仅当 $f$ 为同构。
+
+(5) 设 $f:G\to G'$ 为中心满射态射，$Q=\ker f$，$Q^\circ$ 为 $Q$ 的单位元分支。则 $\ker{}^Lf^\circ\simeq Q/Q^\circ$。\footnote{\textbf{译者注（本次校订）：}这一陈述也须补上可分性条件。若在特征 $p$ 下取 $f:\mathbb G_m\to\mathbb G_m$、$f(x)=x^p$，则其核群概形 $\mu_p$ 连通，而复对偶映射 $z\mapsto z^p$ 的核有 $p$ 个元素，故不能由 $Q/Q^\circ$ 给出。可分情形下，此处的有限核与分支群比较才适用。}
+
+若 $Q$ 连通，则 $T''=T\cap Q$ 为 $Q$ 的极大环面，而 ${}^Lf^\circ$ 的单射性来自正合列 $1\to T''\to T\to T'\to1$ 必然分裂这一事实。若 $Q$ 不连通，则 $r:H=G/Q^\circ\to G'$ 为非平凡可分同源，其核为 $Q/Q^\circ$。${}^Lf^\circ$ 经由 ${}^Lr^\circ$ 分解，由前半部分及 (4)，有 $\ker{}^Lf^\circ=\ker{}^Lr^\circ\simeq Q/Q^\circ$。特别地，取 $G'=G_{\mathrm{ad}}$ 为 $G$ 的伴随群，并使用 (2)，可见 ${}^LG^\circ$ 的导出群（derived group）单连通，当且仅当 $G$ 的中心连通。例如，令 $G=\operatorname{GSp}_{2n}$ 为 $2n$ 维空间的辛相似群（group of symplectic similitudes）。则 ${}^LG^\circ$ 的导出群同构于 $\operatorname{Spin}_{2n+1}$。事实上，${}^LG^\circ=(\GL_1\times\operatorname{Spin}_{2n+1})/A$，其中 $A=\{1,a\}$，$a=(a_1,a_2)$，$a_1$ 为 $\GL_1$ 中二阶元素，$a_2$ 为 $\operatorname{Spin}_{2n+1}$ 的非平凡中心元素。若 $n=2$，则 $\operatorname{Spin}_{2n+1}=\operatorname{Sp}_{2n}$。所以，若 $G=\operatorname{GSp}_4$，则 ${}^LG^\circ=\operatorname{GSp}_4(\C)$。
+
+\paragraph*{2.3.} 有典范等式 $\Aut\Psi_0=\Aut\Psi_0^\vee$。因此可将 $\mu_G$ 视为 $\Gamma_k$ 到 $\Aut\psi_0^\vee$ 的同态。如1.2(2)，选取单同态
+\begin{equation}
+ \Aut\psi_0^\vee\longrightarrow\Aut({}^LG^\circ,{}^LB^\circ,{}^LT^\circ),\tag{1}
+\end{equation}
+于是有同态
+\[
+ \mu'_G:\Gamma_k\longrightarrow\Aut({}^LG^\circ,{}^LB^\circ,{}^LT^\circ).
+\]
+与 $G$ 关联的群，或 $G$ 的 $L$ 群，按定义为关于 $\mu'_G$ 的半直积
+\begin{equation}
+ {}^L(G/k)={}^LG={}^LG^\circ\rtimes\Gamma_k.\tag{2}
+\end{equation}
+$\mu'_G$ 的不同选择只相差一个由 ${}^LT^\circ$ 中元素给出的内自同构。在 ${}^LG$ 上取自然的半直积拓扑。${}^LG^\circ$ 的典范分裂（2.1）在 $\Gamma_k$ 下稳定。
+
+有核为 ${}^LG^\circ$ 的典范投影 ${}^LG\to\Gamma_k$。正合列
+\begin{equation}
+ 1\longrightarrow{}^LG^\circ\longrightarrow{}^LG\xrightarrow{\nu_G}\Gamma_k\longrightarrow1\tag{3}
+\end{equation}
+的分裂，若如1.2通过同构 $\Aut\Psi_0^\vee\xrightarrow{\sim}\Aut({}^LG^\circ,{}^LB^\circ,{}^LT^\circ,\{x_\alpha\})$ 定义，则称为容许的（admissible）。它们相差内自同构 $\operatorname{Int}t$（$t\in{}^LT^\circ$）。注意，若 $G$ 在 $k$ 上分裂，便有 $\Gamma_k$ 在 ${}^LG^\circ$ 上平凡作用，${}^LG$ 就只是 ${}^LG^\circ$ 与 $\Gamma_k$ 的直积。
+
+\paragraph*{2.4. 注（Remarks）。}
+(1) 到此为止，定义中可把 ${}^LG^\circ$ 取在任意域上。我们选用 $\C$，因为它是目前最重要的情形，但使用其他局部域有时也有用。
+
+(2) 在不同问题中，还可以采用以下变式。例如，可将 $\Gamma_k$ 除以一个在 $\Psi^\vee$、从而在 ${}^LG^\circ$ 上平凡作用的闭正规子群；若 $k'/k$ 为使 $G$ 分裂的 Galois 扩张，便可除以 $\Gamma_{k'}$。此时 $\Gamma_k$ 被 $\Gal(k'/k)$ 代替，${}^LG$ 为复约化 Lie 群。
+
+对于任意配备到 $\Gamma_k$ 的同态的群 $\Sigma$，也可以定义半直积 ${}^LG^\circ\rtimes\Sigma$，例如，当 $k$ 为局部域或整体域时，可用其 Weil 群。此时得到 ${}^LG$ 的“Weil 形式”（Weil form）。
+
+(3) 设 $G'$ 是在 $\overline k$ 上与 $G$ 同构的 $k$-群。则 $G,G'$ 互为内形式，当且仅当 ${}^LG$ 与 ${}^LG'$ 在 $\Gamma_k$ 上同构。事实上，第一个条件等价于 $\mu_G=\mu_{G'}$，这又等价于第二个条件。特别地，$k$ 上互为内形式的两个拟分裂群（quasi-split groups）在 $k$ 上同构，因此若 $G,G'$ 拟分裂，且 ${}^LG\xrightarrow{\sim}{}^LG'$ 为 $\Gamma_k$ 上的同构，则 $G,G'$ 为 $k$-同构。
+
+\paragraph*{2.5. 函子性（Functoriality）。}
+设 $f:G\to G'$ 为像是正规子群的 $k$-态射。则 $f_{\psi_0}:\psi_0(G)\to\psi_0(G')$ 显然与 $\Gamma_k$ 交换，从而 $f_{\psi_0^\vee}:\psi_0(G')^\vee\to\psi_0(G)^\vee$ 与 ${}^Lf^\circ:{}^LG'^\circ\to{}^LG^\circ$ 也如此。因此得到延拓 ${}^Lf^\circ$ 的连续同态 ${}^Lf:{}^LG'\to{}^LG$，使下图交换：
+\[
+\begin{tikzcd}
+ {}^LG'\arrow[rr,"{}^Lf"]\arrow[dr,"\nu_{G'}"']&&{}^LG\arrow[dl,"\nu_G"]\\
+ &\Gamma_k&
+\end{tikzcd}
+\]
+
+\paragraph*{2.6. 表示（Representations）。}
+以下约定，${}^LG$ 的表示是指连续同态 $r:{}^LG\to\GL_m(\C)$，其对 ${}^LG^\circ$ 的限制是复 Lie 群态射。
+
+显然，$\ker r$ 总包含 $\Gamma_k$ 的一个开子群，因此 $r$ 经由 ${}^LG^\circ\rtimes\Gamma_{k'/k}$ 分解，其中 $k'/k$ 为使 $G$ 分裂的有限 Galois 扩张。群 ${}^LG^\circ\rtimes\Gamma_{k'/k}$ 典范地是复代数群，$r$ 为复代数群态射。
+
+\origsubsection{3}{抛物子群（Parabolic subgroups）}
+\paragraph*{3.1. 记号（Notation）。}
+用 $\mathcal P(G/k)$ 表示 $G$ 的抛物 $k$-子群集合，并以 $\mathcal P(G)$ 简记 $\mathcal P(G/\overline k)$。令 $p(G/k)$ 为抛物 $k$-子群的共轭类集合（关于 $G(k)$ 或 $G(\overline k)$，二者相同），$p(G)=p(G/\overline k)$。令 $p(G)_k$ 为定义在 $k$ 上的抛物子群共轭类的集合（即若 $P\in\sigma\in p(G)_k$，则对所有 $\gamma\in\Gamma_k$ 有 ${}^\gamma P\in\sigma$）。特别地，$p(G/k)\hookrightarrow p(G)_k$；若 $G$ 在 $k$ 上拟分裂，则为等号。
+
+\paragraph*{3.2.} 回忆，$p(G)$ 与 $\Delta$ 的各子集之间有典范双射。$p(G)_k$ 对应 $\Delta$ 的 $\Gamma_k$-稳定子集，而 $p(G/k)$ 对应其中包含某个极小抛物 $k$-子群的 Levi 子群的单根集合 $\Delta_0$ 的那些 $\Gamma_k$-稳定子集。特别地，若 $G$ 在 $k$ 上拟分裂，则 $p(G/k)=p(G)_k$。对 $P\in\mathcal P(G)$，用 $J(P)$ 表示其共轭类所对应的 $\Delta$ 的子集。
+
+由于两个共轭的抛物子群若其交仍为抛物子群，则二者相同，由此可知：若 $P$ 定义在 $k$ 上，$P'\supset P$，且 $P'$ 的共轭类定义在 $k$ 上，则 $P'$ 本身定义在 $k$ 上。
+
+\paragraph*{3.3. ${}^LG$ 的抛物子群。}
+${}^LG$ 的闭子群 $P$ 称为抛物子群，如果它投影满 $\Gamma_k$，且 $P^\circ={}^LG^\circ\cap P$ 是 ${}^LG^\circ$ 的抛物子群。此时 $P=N_{{}^LG}(P^\circ)$。换言之，抛物子群是 ${}^LG^\circ$ 的某个抛物子群 $P^\circ$ 的正规化子（normalizer），且要求该正规化子与模 ${}^LG^\circ$ 的每个陪集相交。若 $P$ 包含 ${}^LB$，则称它为标准的（standard）。标准抛物子群就是各子群
+\begin{equation}
+ {}^LP^\circ\rtimes\Gamma_k,\tag{1}
+\end{equation}
+其中 ${}^LP^\circ$ 遍历 ${}^LG^\circ$ 中满足 $J({}^LP^\circ)\subset\Delta^\vee$ 在 $\Gamma_k$ 下稳定的标准抛物子群。
+
+${}^LG$ 的每个抛物子群都与唯一一个标准抛物子群共轭（关于 ${}^LG$，或等价地关于 ${}^LG^\circ$）。
+
+用 $\mathcal P({}^LG)$ 表示 ${}^LG$ 的抛物子群集合，$p({}^LG)$ 表示它们的共轭类集合。由3.2，给定双射 $\Delta\leftrightarrow\Delta^\vee$ 给出双射
+\begin{equation}
+ p(G)_k\longleftrightarrow p({}^LG).\tag{2}
+\end{equation}
+若 ${}^LG$ 的某个抛物子群的类在此映射下对应 $p(G/k)$ 中的类，则称该抛物子群为相关的（relevant）。用 ${}^L\mathcal P({}^LG)$ 表示相关抛物子群的集合，${}^Lp({}^LG)$ 表示它们的共轭类，即抛物子群的相关共轭类集合。于是按定义，
+\begin{equation}
+ p(G/k)\longleftrightarrow{}^Lp({}^LG).\tag{3}
+\end{equation}
+因此，若 $G,G'$ 互为内形式，则 $p({}^LG)$ 与 $p({}^LG')$ 相同，但 ${}^Lp({}^LG)$ 与 ${}^Lp({}^LG')$ 未必相同。若 $G'$ 拟分裂，则 ${}^Lp({}^LG')=p({}^LG')$，因而有包含关系
+\begin{equation}
+ {}^Lp({}^LG)\subset{}^Lp({}^LG')=p({}^LG').\tag{4}
+\end{equation}
+若 $G$ 的导出群 $\mathcal DG$ 在 $k$ 上各向异性（anisotropic），则 ${}^Lp({}^LG)$ 仅含 ${}^LG$ 本身的共轭类。
+
+\paragraph*{3.4. Levi 子群（Levi subgroups）。}
+设 $P$ 为 ${}^LG$ 的抛物子群。$P^\circ$ 的幺幂根基（unipotent radical）$N$ 在 $P$ 中正规，也称为 $P$ 的幺幂根基。此时 $P/N\xrightarrow{\sim}P^\circ/N\rtimes\Gamma_k$。事实上，由 (1)，$P$ 是 $N$ 的分裂扩张，且是 $N$ 与 $P^\circ$ 的任一 Levi 子群 $M^\circ$ 在 $P$ 中的正规化子所成的半直积。称这些正规化子为 $P$ 的 Levi 子群。
+
+设 $P\in\mathcal P(G/k)$，$M$ 为 $P$ 的 Levi $k$-子群。令 ${}^LP$ 为其共轭类与 $P$ 的共轭类对应的标准抛物子群（见 (3)）。则可将 ${}^LM$ 视为 ${}^LP$ 的 Levi 子群。事实上，若 $M$ 对应 $(X^*(T),J,X_*(T),J^\vee)$，则 ${}^LM$ 对应 $(X_*(T),J^\vee,X^*(T),J)$；${}^LM^\circ\rtimes\Gamma_k$ 按定义等于 ${}^LM$，且按上述定义是 ${}^LP$ 的 Levi 子群。
+
+若抛物子群 $P\subset{}^LG$ 相关，则也称其 Levi 子群为相关的。为简便，有时以“$G$ 中的 Levi 子群”代替“$G$ 的某个抛物子群的 Levi 子群”。对 ${}^LG$ 也采用此约定。
+
+\begin{originaltheorem}{引理 3.5（Lemma 3.5）}
+${}^LG$ 中的真 Levi 子群，恰好是 ${}^L G^\circ$ 的导出群 $\mathcal D({}^LG^\circ)$ 中某些环面在 ${}^LG$ 中的中心化子（centralizers），且这些中心化子投影满 $\Gamma_k$。
+\end{originaltheorem}
+设 $M$ 为 ${}^LG$ 中的真 Levi 子群。它共轭于某个子群 $\mathcal Z(S)^\circ\rtimes\Gamma_k$，其中 $S\subset{}^LT^\circ$ 为 $\Gamma_k$-稳定子集 $J\subsetneq\Delta^\vee$ 的核的单位元分支。令 $S'$ 为 $S\cap\mathcal D({}^LG^\circ)$ 的一维子环面，使剩下的各单根在其上均相等。显然 $\mathcal Z(S')^\circ=\mathcal Z(S)$，且 $S'$ 逐点被 $\Gamma_k$ 固定。于是 $M=\mathcal Z(S')$。
+
+反之，令 $S$ 为 $\mathcal D({}^LG^\circ)$ 中的非平凡环面，使 $\mathcal Z(S)$ 与 ${}^LG$ 的每个连通分支相交。在 $X^*(S)$ 上固定一个序。存在 ${}^LG^\circ$ 的真抛物子群 $P^\circ=\mathcal Z(S)^\circ\cdot U$，使 $S$ 在其幺幂根基 $U$ 中的权，正是 ${}^LG^\circ$ 关于 $S$ 的对此序为正的根。$\mathcal Z(S)$ 正规化 $U$，故 $\mathcal Z(S)\cdot U$ 是 ${}^LG$ 的真抛物子群 $P$，且 $\mathcal Z(S)$ 是 $P$ 的 Levi 子群。
+
+\begin{originaltheorem}{命题 3.6（Proposition 3.6）}
+设 $H$ 为 ${}^LG$ 的子群，其在 $\Gamma_k$ 上的投影稠密。那么，${}^LG$ 中极小地包含 $H$ 的 Levi 子群，在 $H$ 于 ${}^LG^\circ$ 中的中心化子作用下构成一个共轭类。
+\end{originaltheorem}
+令 $C$ 为 $H$ 在 $\mathcal D({}^LG^\circ)$ 中的中心化子的单位元分支，$D$ 为其一个极大环面。若 $D=\{1\}$，则由3.5，$H$ 不包含于 ${}^LG$ 中的任何真 Levi 子群，结论即已成立。以下设 $D\neq\{1\}$。
+
+令 $\Gamma'$ 为 $\Gamma_k$ 的一个在 ${}^LG^\circ$ 上平凡作用的正规开子群。它也在 ${}^LG$ 中正规，且 $H\Gamma'$ 投影满 $\Gamma_k$。由于 $\mathcal Z(D)$ 包含 $H\Gamma'$，它投影满 $\Gamma_k$，故由3.5是真 Levi 子群。令 $M$ 为包含 $H$ 的 Levi 子群。由3.5，$M=\mathcal Z(S)$，其中 $S$ 为 $\mathcal D({}^LG^\circ)$ 中的环面。则 $S\subset C$，存在 $c\in C$ 使 $cSc^{-1}\subset D$，故 $cMc^{-1}=\mathcal Z(S')\supset\mathcal Z(D)$。
+
+\origsubsection{4}{关于诱导群的注记（Remarks on induced groups）}
+（主要用于第5节和6.4关于标量限制的讨论。）
+
+\paragraph*{4.1.} 设 $A$ 为群，$A'$ 为 $A$ 的有限指数子群，$E$ 为带有 $A'$ 自同构作用的群。令
+\begin{equation}
+ \Ind_{A'}^A(E)=I_{A'}^A(E)=\{f:A\to E:f(a'a)=a'\cdot f(a)\ (a\in A,a'\in A')\}.\tag{1}
+\end{equation}
+以逐点相乘为运算，这一集合构成群。通过右平移将其视为 $A$-群：
+\begin{equation}
+ r_a f(x)=f(xa)\qquad(x,a\in A).\tag{2}
+\end{equation}
+对 $s\in A'\backslash A$，令
+\begin{equation}
+ E_s=\{f\in I_{A'}^A(E):f(a)=0\text{ 若 }a\notin s\}.\tag{3}
+\end{equation}
+则 $E_s$ 为子群，\footnote{\textbf{译者注（本次校订）：}式 (3) 中陪集之外的函数值应为群 $E$ 的单位元 $1_E$，而不是 $0$。本节用逐点乘法定义群结构，且 $E$ 并不假定为加法群。}$I_{A'}^A(E)$ 是各 $E_s$（$s\in A'\backslash A$）的直积，且 $A$ 置换这些子群。子群 $E_{\overline e}$ 在 $A'$ 下稳定，并通过映射 $f\mapsto f(e)$ 与 $E$ 作为 $A'$-模同构。其余 $E_s$（$s\in A'\backslash A,s\neq\overline e$）的乘积也在 $A'$ 下稳定。由此得到两个典范同态，其复合为恒等映射：
+\begin{equation}
+ E\rtimes A'\longrightarrow I(E)\rtimes A'\longrightarrow E\rtimes A'.\tag{4}
+\end{equation}
+
+\paragraph*{4.2.} 设 $B$ 为群，$\mu:B\to A$ 为同态。令 $B'=\mu^{-1}(A')$，并假定 $\mu$ 诱导双射 $B'\backslash B\xrightarrow{\sim}A'\backslash A$。设 $E$ 为带有 $A'$ 自同构作用的群，也通过 $\mu$ 视为 $B'$-群。则 $f\mapsto f\circ\mu$ 诱导同构
+\begin{equation}
+ \mu':I_{A'}^A(E)\xrightarrow{\sim}I_{B'}^B(E),\tag{1}
+\end{equation}
+其逆映射为 $\mu$-等变映射。由定义即可验证。
+
+\paragraph*{4.3.} 设 $A,E$ 如前，$C$ 为群，$\nu:C\to A$ 为同态。设 $\varphi:C\to E\rtimes A$ 为 $A$ 上的同态。由 $\varphi(c)=(\psi(c),\nu(c))$（$c\in C$）确定的映射 $\psi:C\to E$ 是 $C$ 在 $E$ 中的一个1-上闭链（1-cocycle），且 $\varphi\mapsto\psi$ 诱导双射
+\[
+ H^1(C;E)\xrightarrow{\sim}\varphi_A(C,E),
+\]
+其中按定义，$\varphi_A(C,E)$ 是 $A$ 上的同态 $\varphi:C\to E\rtimes A$ 模去由 $E$ 中元素给出的内自同构后的集合。
+
+\paragraph*{4.4.} 设 $A,A',B,B',E$ 如4.2。有如下各行正合的交换图：
+\begin{equation}
+\begin{tikzcd}[column sep=small]
+ 1\arrow[r]&I_{A'}^A(E)\arrow[r]&I_{A'}^A(E)\rtimes A\arrow[r]&A\arrow[r]&1\\
+ 1\arrow[r]&E\arrow[r]\arrow[u]&E\rtimes A'\arrow[r]\arrow[u]&A'\arrow[r]\arrow[u]&1,
+\end{tikzcd}\tag{1}
+\end{equation}
+其中竖直映射为自然包含（4.1）。
+设 $\varphi:B\to I_{A'}^A(E)\rtimes A$ 为 $A$ 上的同态。利用4.1(4)，通过限制得到 $A'$ 上的同态 $\overline\varphi:B'\to E\rtimes A'$。
+
+\begin{originaltheorem}{引理 4.5（Lemma 4.5）}
+4.4中的映射 $\varphi\mapsto\overline\varphi$ 诱导双射
+$\varphi_A(B,I_{A'}^A(E))\xrightarrow{\sim}\varphi_{A'}(B',E)$。
+\end{originaltheorem}
+由4.2、4.3，有
+\begin{align}
+ \varphi_A(B,I_{A'}^A(E))&=H^1(B;I_{A'}^A(E))=H^1(B;I_{B'}^B(E)),\tag{1}\\
+ \varphi_{A'}(B',E)&=H^1(B';E).\tag{2}
+\end{align}
+由 Shapiro 引理（Shapiro's lemma）的一个变式，例如 [4, 1.29] 所含的版本，
+\[
+ H^1(B;I_{B'}^B(E))\xrightarrow{\sim}H^1(B';E),
+\]
+在同构 (1)、(2) 下，这一同构恰好对应于 $\varphi\mapsto\overline\varphi$。
+
+\origsubsection{5}{标量限制（Restriction of scalars）}
+本节中，$k'$ 是 $k_s$ 中 $k$ 的一个有限扩张，$G'$ 为连通 $k'$-群，且 $G=R_{k'/k}G'$。
+
+\paragraph*{5.1.} $k_s/k'$ 的 Galois 群 $\Gamma_{k'}$ 为 $\Gamma_k$ 的有限指数开子群，$\Sigma_{k',k}=\Gamma_{k'}\backslash\Gamma_k$ 可与 $k'$ 到 $k_s$ 的 $k$-同态集合等同。用4.1的记号（$A=\Gamma_k,A'=\Gamma_{k'}$），有
+\begin{equation}
+ G(\overline k)=I_{\Gamma_{k'}}^{\Gamma_k}(G'(\overline k))
+ =\prod_{\sigma\in\Gamma_{k'}\backslash\Gamma_k}{}^\sigma G'(\overline k).\tag{1}
+\end{equation}
+假定 $G'$ 约化。容易看出，$\psi(G)=(M,\varphi,M^*,\varphi^\vee)$ 与 $\psi(G')=(M',\varphi',M'^*,\varphi'^\vee)$ 的关系为
+\begin{equation}
+ M=I_{\Gamma_{k'}}^{\Gamma_k}(M'),\qquad
+ \varphi=\bigcup_{a\in A'\backslash A}\varphi'\cdot a.\tag{2}
+\end{equation}
+类似地，若 $\Delta'$ 是 $\varphi'$ 的一组基，则
+\begin{equation}
+ \Delta=\bigcup_a\Delta'\cdot a\tag{3}
+\end{equation}
+为 $\varphi$ 的一组基。于是得到自然同构
+\begin{equation}
+ {}^LG^\circ\xrightarrow{\sim}I_{\Gamma_{k'}}^{\Gamma_k}({}^LG'^\circ).\tag{4}
+\end{equation}
+因而有交换图
+\begin{equation}
+\begin{tikzcd}[column sep=small]
+ 1\arrow[r]&{}^LG'^\circ\arrow[r]\arrow[d]&{}^LG'={}^LG'^\circ\rtimes\Gamma_{k'}\arrow[r]\arrow[d]&\Gamma_{k'}\arrow[r]\arrow[d]&1\\
+ 1\arrow[r]&{}^LG^\circ=I_{\Gamma_{k'}}^{\Gamma_k}({}^LG'^\circ)\arrow[r]&{}^LG={}^LG^\circ\rtimes\Gamma_k\arrow[r]&\Gamma_k\arrow[r]&1.
+\end{tikzcd}\tag{5}
+\end{equation}
+
+\paragraph*{5.2.} 映射 $P'\mapsto R_{k'/k}P'$ 诱导 $\mathcal P(G'/k')$ 与 $\mathcal P(G/k)$ 之间的双射。此外，$P'$ 为 $G'$ 的 Borel 子群，当且仅当 $R_{k'/k}P'$ 为 $G$ 的 Borel 子群。因此 $G'$ 在 $k'$ 上拟分裂，当且仅当 $G$ 在 $k$ 上拟分裂（见 [5, §6]）。
+
+因 $G(k)\xrightarrow{\sim}G'(k')$，也得到双射 $p(G'/k')\xrightarrow{\sim}p(G/k)$。
+
+若 $J'\subset\Delta'$ 在 $\Gamma_{k'}$ 下稳定，则 $J=\bigcup_{a\in A'\backslash A}r_a(J')$ 在 $\Gamma_k$ 下稳定。容易看出，此映射在 $\Delta'$ 的 $\Gamma_{k'}$-稳定子集与 $\Delta$ 的 $\Gamma_k$-稳定子集之间给出双射，因此还有典范双射
+\[
+ p({}^LG')\xrightarrow{\sim}p({}^LG),\qquad
+ {}^Lp({}^LG')\xrightarrow{\sim}{}^Lp({}^LG).
+\]
+
+\origsection{II}{拟分裂群；非分歧情形（Quasi-split groups; the unramified case）}
+本章中，$G$ 为连通约化拟分裂 $k$-群。从6.2起，假定 $G$ 在 $k$ 的循环扩张 $k'$ 上分裂，$\sigma$ 表示 $\Gal(k'/k)$ 的一个生成元。
+
+\origsubsection{6}{L 群中的半单共轭类（Semisimple conjugacy classes in the L-group）}
+\paragraph*{6.1.} 设 $B,T$ 均定义在 $k$ 上。则 $\mu_G$ 所给出的 $\Gamma_k$ 在 $X^*(T)$ 或 $X_*(T)$ 上的作用，与通常作用一致。$T$ 的最大 $k$-分裂子环面 $T_d$ 在 $G$ 中极大 $k$-分裂，且其中心化子为 $T$；特别地，$T_d$ 包含 $G$ 的正则元素（regular elements）。因此，任何保持 $T_d$ 稳定的 $w\in W$ 都由其对 $T_d$ 的限制完全确定。于是可将 ${}_kW$ 等同于 $W$ 中保持 $T_d$ 稳定的元素所成子群，或等价地等同于 $\Gamma_k$ 在 $W$ 中的不动点集。转到 $L$ 群，并典范地把 $W$ 等同于 $W({}^LG^\circ,{}^LT^\circ)$ 后，${}_kW$ 仍为 $\Gamma_k$ 在 $W$ 中的不动点集，它作用于 ${}^LT^\circ$ 中逐点被 $\Gamma_k$ 固定的最大子环面 $S$。群 $S$ 总包含正则元素，故 ${}_kW$ 的任意元素都由其对 $S$ 的限制确定。记 ${}_kN$ 为 ${}_kW$ 在 ${}^LT^\circ$ 于 ${}^LG^\circ$ 中的正规化子 $N$ 内的逆像。
+
+\begin{originaltheorem}{引理 6.2（Lemma 6.2）}
+每个元素 $w\in{}_kW$ 都有一个被 $\sigma$ 固定的代表元，位于 ${}_kN$ 中。
+\end{originaltheorem}
+写 $\Delta^\vee=D_1\cup\cdots\cup D_m$，其中 $D_i$ 为 $\Gamma(k'/k)$ 在 $\Delta^\vee$ 中的不同轨道。令 $\delta_i$ 为 $D_i$ 中元素对 $S$ 的共同限制，$S_i$ 为 $\delta_i$ 的核的单位元分支。将 ${}_kW$ 视为 $S$ 的自同构群时，它由关于各 $S_i$ 的反射 $s_i$（$1\leq i\leq m$）生成，故只须对 $w=s_i$ 证明引理。[“反射”$s_i$ 是 $W$ 中唯一非 $1$、保持 $S$ 稳定、逐点固定 $S_i$ 且阶为2的元素。]
+
+用 $\Lie(M)$ 表示复 Lie 群 $M$ 的 Lie 代数。对 $\check\alpha\in\Delta^\vee$，如常令
+\begin{equation}
+ \mathfrak g_{\check\alpha}=\{X\in\Lie({}^LG^\circ):\Ad(t)(X)=\check\alpha(t)X\ (t\in{}^LT^\circ)\}.\tag{1}
+\end{equation}
+它是一维的。固定 $1\leq i\leq m$。由 ${}^LG$ 的构造，可找到由 $\sigma$ 置换的非零元素 $e_{\check\alpha}\in\mathfrak g_{\check\alpha}$（分别 $e_{-\check\alpha}\in\mathfrak g_{-\check\alpha}$），其中 $\check\alpha\in D_i$。于是
+\begin{equation}
+ [e_{\check\alpha},e_{-\check\alpha}]=c\alpha,\tag{2}
+\end{equation}
+其中 $c\neq0$，且因 $\Gamma(k'/k)$ 在 $D_i$ 上传递，$c$ 与 $\check\alpha\in D_i$ 无关。此处把 $X_*({}^LT^\circ)\otimes\C$ 与 $\Lie({}^LT^\circ)$ 等同，把 $\alpha$ 与 $\check\alpha\otimes1$ 等同。元素
+\begin{equation}
+ f_{\pm i}=\sum_{\check\alpha\in D_i}e_{\pm\check\alpha}\tag{3}
+\end{equation}
+被 $\sigma$ 固定。此外，由于两个单根之差不是根，
+\begin{equation}
+ h_i=[f_i,f_{-i}]=\sum_{\check\alpha\in D_i}[e_{\check\alpha},e_{-\check\alpha}]
+ =c\sum_{\check\alpha\in D_i}\alpha.\tag{4}
+\end{equation}
+利用 (3)、(4)，有
+\begin{equation}
+ [h_i,f_{\pm i}]=c\sum_{\check\alpha,\check\beta\in D_i}
+ \langle\alpha,\check\beta\rangle e_{\pm\check\beta}.\tag{5}
+\end{equation}
+由 $\Gal(k'/k)$ 在 $D_i$ 上的传递性，数
+\begin{equation}
+ d=\sum_{\check\alpha\in D_i}\langle\alpha,\check\beta\rangle\tag{6}
+\end{equation}
+也与 $\check\beta\in D_i$ 无关，因此
+\begin{equation}
+ [h,f_{\pm i}]=cd f_{\pm i}.\tag{7}
+\end{equation}
+断言 $d\neq0$，事实上 $d=1$ 或 $2$。\footnote{\textbf{译者注（本次校订）：}式 (5)、(7) 对负根向量漏掉了负号，正确关系为 $[h_i,f_{\pm i}]=\pm cd\,f_{\pm i}$；式 (7) 的 $h$ 也应为 $h_i$。另外，式 (2) 后识别到 $X_*({}^LT^\circ)\otimes\C$ 中的应为余根 $\alpha\otimes1$，而非根 $\check\alpha\otimes1$。这些修正给出后文使用的 $\mathfrak{sl}_2$ 三元组关系。}$D_i$ 的不可约分支被 $\Gal(k'/k)$ 传递地置换，且各分支有传递的自同构群，因而其类型为 $A_1$ 或 $A_2$。相应地，$d=2$ 或 $d=1$。于是 $h_i,f_i,f_{-i}$ 张成一个逐点被 $\sigma$ 固定的三维单代数。因此 ${}^LG^\circ$ 中相应的解析子群 $G_i$ 也逐点被固定。群 $G_i$ 中心化 $S_i$，且 $S\cap G_i$ 是 $G_i$ 的极大环面，其 Lie 代数由 $h_i$ 张成。因此 $W(G_i,S\cap G_i)$ 的非平凡元素就是所求元素。
+
+\paragraph*{注。} [35，第19--22页] 以另一种方式证明了等价命题。
+
+\paragraph*{6.3.} 令 $Y={}^L(T_d)^\circ$。可将 $X_*(T_d)$ 等同于 $\Gamma_k$ 在 $X_*(T)$ 中的不动点集。包含映射 $X_*(T_d)=X^*(Y)\hookrightarrow X_*(T)=X^*({}^LT^\circ)$ 诱导满射态射 ${}^LT^\circ\to Y$，记为 $\nu$。
+
+映射 $A:t\mapsto t^{-1}\,{}^\sigma t$ 是 ${}^LT^\circ$ 的自同态，其在 $1$ 处的微分 $dA$ 为 $d\sigma-\mathrm{Id}$。令
+\begin{equation}
+ U=(\ker A)^\circ,\qquad V=\operatorname{im}A.\tag{1}
+\end{equation}
+则 $U$ 逐点被 $\sigma$ 固定，$U$（分别 $V$）的 Lie 代数是 $dA$ 的核（分别像）。因 $dA$ 半单，二者互相横截，故
+\begin{equation}
+ {}^LT^\circ=U\cdot V,\qquad U\cap V\text{ 有限}.\tag{2}
+\end{equation}
+此外，
+\begin{equation}
+ V=\ker\nu,\qquad\nu(U)=Y.\tag{3}
+\end{equation}
+本章余下部分，用 ${}^LG$ 表示 $L$ 群的“有限 Galois 形式”（finite Galois form）${}^LG^\circ\rtimes\Gal(k'/k)$。现在讨论 ${}^LG^\circ\rtimes\sigma$ 中关于 ${}^LG^\circ$ 的半单共轭类。有
+\begin{equation}
+ g^{-1}(h\rtimes\sigma)g=g^{-1}h\,{}^\sigma g\rtimes\sigma
+ \qquad(g,h\in{}^LG^\circ),\tag{4}
+\end{equation}
+故 ${}^LG^\circ\rtimes\sigma$ 中的 ${}^LG^\circ$-共轭，等价于 ${}^LG^\circ$ 中的 $\sigma$-共轭。
+
+\begin{originaltheorem}{引理 6.4（Lemma 6.4）}
+定义 $\nu':{}^LT^\circ\rtimes\sigma\to Y$ 为 $\nu'(t\rtimes\sigma)=\nu(t)$（$t\in{}^LT^\circ$）。则 $\nu'$ 诱导双射
+\begin{equation}
+ \overline\nu:({}^LT^\circ\rtimes\sigma)/\operatorname{Int}{}_kN\xrightarrow{\sim}Y/{}_kW.\tag{1}
+\end{equation}
+\end{originaltheorem}
+设 $n\in{}_kN$。由引理6.2，可写成 $n=ws$，其中 $w={}^\sigma w$，$s\in{}^LT^\circ$。则 $n^{-1}(t\rtimes\sigma)n$ 的 ${}^LT^\circ$ 分量为
+\[
+ s^{-1}w^{-1}t\,w\,{}^\sigma s=s^{-1}\,{}^\sigma s\,(w^{-1}tw)\in V\cdot w^{-1}tw,
+\]
+因此
+\[
+ \nu'(n^{-1}(t\rtimes\sigma)n)=\nu(w^{-1}tw)
+ =w^{-1}\nu(t)w=w^{-1}\nu'(t\rtimes\sigma)w.
+\]
+于是，$\nu'$ 关于投影 ${}_kN\to{}_kW$ 等变，故诱导从 (1) 左侧到右侧的映射；显然它满射。设 $t,t'\in{}^LT^\circ$，且对某 $w\in{}_kW$ 有 $\nu'(t\rtimes\sigma)=w^{-1}\nu'(t'\rtimes\sigma)w$。则 $\nu(t)=\nu(w^{-1}t'w)$，其中用 $w$ 表示被 $\sigma$ 固定的代表元。因此 $t=v(w^{-1}t'w)$，$v\in V$。可写 $v=s^{-1}\,{}^\sigma s$，其中 $s\in{}^LT^\circ$，从而 $t\rtimes\sigma=n^{-1}(t'\rtimes\sigma)n$，其中 $n=ws$。
+
+\begin{originaltheorem}{引理 6.5（Lemma 6.5）}
+令 $({}^LG^\circ\rtimes\sigma)_{\mathrm{ss}}$ 为 ${}^LG^\circ\rtimes\sigma$ 中的半单元素集合。则由包含诱导的映射
+\[
+ \overline\mu:({}^LT^\circ\rtimes\sigma)/\operatorname{Int}{}_kN
+ \longrightarrow({}^LG^\circ\rtimes\sigma)_{\mathrm{ss}}/\operatorname{Int}{}^LG^\circ
+\]
+为双射。
+\end{originaltheorem}
+由 F. Gantmacher 的结果 [12，定理14]，$\overline\mu$ 为满射。设 $s,t\in{}^LT^\circ$，$g\in{}^LG^\circ$，满足 $g^{-1}(s\rtimes\sigma)g=t\rtimes\sigma$，即 $g^{-1}s\,{}^\sigma g=t$。利用 ${}^LG^\circ$ 关于 ${}^LB^\circ$ 的 Bruhat 分解（Bruhat decomposition），可唯一地写 $g=unv$，其中 $u,v$ 属于 ${}^LB^\circ$ 的幺幂根基，$n$ 属于 ${}^LT^\circ$ 的正规化子 $N$。这些群在 $\sigma$ 下稳定，且被 ${}^LT^\circ$ 正规化。于是
+\[
+ s\,{}^\sigma u\,{}^\sigma n\,{}^\sigma v=unvt,\qquad
+ (s\,{}^\sigma u\,s^{-1})s\,{}^\sigma n\,{}^\sigma v=unt(t^{-1}vt),
+\]
+故 ${}^\sigma n\,s^{-1}=nt$。\footnote{\textbf{译者注（本次校订）：}由前一行的 Bruhat 分解比较，正确等式是 $s\,{}^\sigma n=nt$，亦即 $n^{-1}s\,{}^\sigma n=t$。原式取 $g=n=1$ 即会错误地给出 $s^{-1}=t$。此外，要得到所称的唯一分解，须将 $u$ 限制在对应的 Bruhat 子群 $U\cap nU^-n^{-1}$ 中，而不能任取两个 $u,v\in U$。}因此 $n$ 在 $N$ 中所在的连通分支在 $\sigma$ 下稳定，即 $n$ 代表 ${}_kW$ 中的元素，故 $n\in{}_kN$，而 $t\rtimes\sigma$ 与 $s\rtimes\sigma$ 在 ${}_kN$ 下共轭。
+
+\paragraph*{注。} 此证明由 T. Springer 向我指出。
+
+\paragraph*{6.6.} 若 $M$ 为复仿射簇（complex affine variety），用 $\C[M]$ 表示其坐标代数（coordinate algebra）。代数 $\C[Y]$ 可与 $X^*(Y)=X_*(T_d)$ 的群代数（group algebra）等同。商 $Y/{}_kW$ 也是仿射簇（事实上与仿射空间同构），且 $\C[Y/{}_kW]=\C[Y]^{{}_kW}$。\footnote{\textbf{译者注（本次校订）：}括号中的断言对一般连通约化群不成立。例如 $G=\mathbb G_m$ 时，$Y/{}_kW=\C^*$，并非仿射空间；$G=\operatorname{GL}_n$ 时相应商为 $\mathbb A^{n-1}\times\mathbb G_m$。这里所需的结论只是商为仿射簇及随后给出的坐标环等式。}
+
+令 $\operatorname{Rep}({}^LG)\subset\C[{}^LG]$ 为有限维全纯表示（holomorphic representations）的特征所生成的子代数。其元素在共轭类上为常数。特别地，通过限制，它们给出 $({}^LG^\circ\rtimes\sigma)_{\mathrm{ss}}/\operatorname{Int}{}^LG^\circ$ 上的函数。
+
+\begin{originaltheorem}{命题 6.7（Proposition 6.7）}
+映射
+\[
+ \alpha=\overline\mu\circ\overline\nu^{-1}:Y/{}_kW\longrightarrow
+ ({}^LG^\circ\rtimes\sigma)_{\mathrm{ss}}/\operatorname{Int}{}^LG^\circ
+\]
+为双射，它诱导 $\C[Y/{}_kW]$ 到代数 $A$ 的同构，其中 $A$ 是 $\operatorname{Rep}({}^LG)$ 中各元素的限制所成代数。
+\end{originaltheorem}
+\paragraph*{注。} 我们只在 $k$ 为非阿基米德局部域时使用6.7。此情形的证明见 [35，第18--24页]。
+
+\begin{proof}
+$\alpha$ 的双射性来自6.4、6.5。如 [35] 证明第二个断言。令 $\rho$ 为 ${}^LG$ 的有限维全纯表示，$f_\rho$ 为 ${}^LT^\circ$ 上由 $f_\rho(t)=\operatorname{tr}\rho(t\rtimes\sigma)$ 定义的函数。它可写为特征 $\lambda\in X^*({}^LT^\circ)$ 的有限线性组合 $f=\sum c_\lambda\lambda$。因 $\operatorname{tr}\rho$ 是 ${}^LG$ 上的类函数（class function），对所有 $s,t\in{}^LT^\circ$ 有 $f_\rho(s^{-1}t\,{}^\sigma s)=f_\rho(t)$。由特征的线性独立性，若 $c_\lambda\neq0$，则 $\lambda$ 在 $V$ 上平凡（参见6.3(1)），从而被 $\sigma$ 固定，即可视为 $X^*(Y)$ 中的元素。因此，$f_\rho$ 可视为 $\C[Y]$ 的元素。但共轭不变性与6.4推出 $f\in\C[Y/{}_kW]$，故 $\alpha$ 自然诱导映射 $\beta:A\to\C[Y/{}_kW]$。余下只须证明 $\beta$ 满射。注意，作为向量空间，$\C[Y/{}_kW]$ 由函数
+\begin{equation}
+ \varphi_\lambda=\sum_{w\in{}_kW}w\cdot\lambda\tag{1}
+\end{equation}
+张成，其中 $\lambda$ 遍历 ${}_kW$ 在 $X_*(T_d)$ 上的一个基本域（fundamental domain）$C$。可以将 $C$ 取为 $X_*(T_d)$ 与由 $B$ 确定的 $W$ 在 $X_*(T)$ 中的 Weyl 室（Weyl chamber）的交。因此，每个 $\lambda\in C$ 都是 ${}^LG^\circ$ 关于 ${}^LT^\circ$ 的优势权（dominant weight），因而是 ${}^LG^\circ$ 某个不可约表示 $\pi_\lambda$ 的最高权（highest weight）。由于它被 $\sigma$ 固定，表示 ${}^\sigma\pi_\lambda:g\mapsto\pi_\lambda({}^\sigma g)$ 与 $\pi_\lambda$ 等价。由此可将 $\pi_\lambda$ 延拓为 ${}^LG$ 的一个与它同次的不可约表示 $\widetilde\pi_\lambda$。最高权空间为一维，在 $\sigma$ 下稳定。令 $c$ 为 $\sigma$ 在其上的特征值。则迹给出的函数，模去按通常序满足 $\mu<\lambda$ 的函数 $\varphi_\mu$ 的线性组合后，等于 $c\varphi_\lambda$。\footnote{\textbf{译者注（本次校订）：}按式 (1) 对整个 Weyl 群求和的定义，每个轨道元素重复出现 $|\operatorname{Stab}_{{}_kW}(\lambda)|$ 次，故这里的系数应为 $c/|\operatorname{Stab}_{{}_kW}(\lambda)|$。若改为对不同轨道元素求和，则可直接写成 $c$。这一非零常数不影响后面的归纳论证。}对该序作归纳，便证明 $\operatorname{im}\beta$ 包含所有 $\varphi_\lambda$（$\lambda\in C$）。
+\end{proof}
+
+\origsubsection{7}{Satake 同构与 L 群；局部因子（The Satake isomorphism and the L-group; local factors）}
+\paragraph*{7.1.} 沿用先前的记号与约定，并假定 $k$ 为非阿基米德局部域，$k'/k$ 非分歧，$\sigma$ 为 $\Gamma_k$ 中一个 Frobenius 元素 $\operatorname{Fr}$ 的像。
+
+令 $Q$ 为 $G(k)$ 的一个特殊极大紧子群（special maximal compact subgroup）[61]。假定 $Q\cap T$ 为 $T(k)$ 的最大紧子群，且 $Q$ 包含 ${}_kW$ 中各元素的代表元。
+令 $H(G(k),Q)$ 为 $G(k)$ 上局部常值、$Q$-双不变且紧支撑的复值函数的 Hecke 代数（Hecke algebra）。Satake 同构给出典范等同 $H\xrightarrow{\sim}\C[Y/{}_kW]$，从而也将 $Y/{}_kW$ 与 $H$ 的特征等同 [6]。
+
+由6.7，现有 $H$ 与代数 $A$ 的典范同构，其中 $A$ 为 ${}^LG$ 的有限维表示的特征限制到 ${}^LG^\circ\rtimes\sigma$ 中半单 ${}^LG^\circ$-共轭类所得的代数。从而得到 $H(G(k),Q)$ 的特征与 ${}^LG^\circ\rtimes\sigma$ 中半单类之间的典范双射。此外，每个这样的类都有形如 $(t,\sigma)$ 的代表元，其中 $t\in{}^LT^\circ$ 被 $\sigma$ 固定，并在模有限群 $U\cap V$ 的意义下确定（记号如6.3）。\footnote{\textbf{译者注（本次校订）：}这里还须模去相对 Weyl 群 ${}_kW$ 的作用。由6.4、6.5，半单共轭类对应 $Y/{}_kW$；先选定 $Y$ 中的一个代表元后，其在 $U$ 中的提升才在模 $U\cap V$ 的意义下唯一。}
+
+\paragraph*{7.2. 局部因子（Local factors）。}
+现假定 $Q$ 为超特殊的（hyperspecial）[61]。令 $\psi$ 为 $k$ 的加性特征。设 $(\pi,U_\pi)$ 为 $G(k)$ 关于 $Q$ 的第一类（class one）不可约容许表示，$r$ 为 ${}^LG$ 的表示。则 $U_\pi$ 中被 $Q$ 固定的向量空间为一维，$H$ 通过特征 $\chi_\pi$ 作用于它。由7.1，为 $\chi_\pi$ 指定 ${}^LG^\circ\rtimes\sigma$ 中的半单类 $S_\chi$。于是令
+\begin{equation}
+ L(s,\pi,r)=\det(1-r(g\rtimes\sigma)q^{-s})^{-1},\qquad
+ \varepsilon(s,\pi,r,\psi)=1,\tag{1}
+\end{equation}
+其中 $q$ 为剩余域的阶，$(g,\sigma)$ 为 $S_\chi$ 中任意元素。\footnote{\textbf{译者注（本次校订）：}要使这里的 $\varepsilon=1$ 与第12节及前篇的局部常数一致，还须取导子指数为 $0$ 的非平凡加性特征 $\psi$，并采用相应的自对偶测度约定。改变 $\psi$ 一般会改变局部常数；非分歧表示本身并不能保证任意 $\psi$ 都给出 $1$。}
+
+\origsection{III}{Weil 群与表示；局部因子（Weil groups and representations; local factors）}
+本章中，$k$ 为局部域，$W_k$（分别 $W'_k$）为 $k$ 的绝对 Weil 群（absolute Weil group）（分别 Weil--Deligne 群）。若 $H$ 为约化 $k$-群，则 $\Pi(H(k))$ 为 $H(k)$ 的不可约容许表示的无穷小等价类（infinitesimal equivalence classes）集合。$G$ 表示连通约化 $k$-群。
+
+局部理论的主要问题是，将 $\Pi(G(k))$ 分划成有限集合 $\Pi_{\varphi,G}$ 或 $\Pi_\varphi$，以 $W'_k$ 到 ${}^LG$ 的容许同态模内自同构的集合 $\Phi(G)$ 为指标（$\Phi(G)$ 见第8节），并要求这一划分满足若干相容条件。目前，这对任意 $G$ 在 $k=\R,\C$ 时已经完成 [37]，对任意 $k$ 上的环面也已完成 [34]，对 $G=\GL_2$ 则基本完成（参见12.2）。第9节回顾环面的结果，第10节描述参数化应满足的条件，第11节概述 $\R,\C$ 上的构造。有了这种参数化，便可给任意 $\pi\in\Pi(G(k))$ 以及 ${}^LG$ 的任意复表示典范地附加局部 $L$ 因子与 $\varepsilon$ 因子。同一集合 $\Pi_\varphi$ 中的两个元素 $\pi,\pi'$ 总有相同的局部因子，因此称为 $L$-不可区分的（$L$-indistinguishable）。不过对于 $\GL_n$，局部因子已已有另一种直接定义，因此可将参数化问题与这些 $L$ 因子及 $\varepsilon$ 因子的比较问题联系起来。第12节讨论此事。
+
+\origsubsection{8}{Phi(G) 的定义（Definition of Phi(G)）}
+\paragraph*{8.1. $W'_k$ 中的 Jordan 分解（Jordan decomposition）。}
+若 $k=\R,\C$，则 $W'_k=W_k$，且按定义 $W_k$ 中每个元素都半单。
+
+设 $k$ 为非阿基米德域。称 $x\in W'_k$ 为幺幂，当且仅当 $x\in\Ga$；称 $x$ 为半单，若 $\varepsilon(x)\neq0$，或 $x$ 属于惯性群。这里 $\varepsilon:W'_k\to\Z$ 为典范同态 $W'_k\to W_k\to k^*\to\Z$。每个 $x\in W'_k$ 都有唯一的 Jordan 分解 $x=x_sx_u$，其中 $x_s$ 半单，$x_u$ 幺幂，且 $x_sx_u=x_ux_s$ [60]。
+
+\paragraph*{8.2. 集合 $\Phi(G)$。}
+考虑 $\Gamma_k$ 上的同态 $\alpha:W'_k\to{}^LG$，即使下图交换的同态：
+\[
+\begin{tikzcd}
+ W'_k\arrow[rr,"\alpha"]\arrow[dr]&&{}^LG\arrow[dl]\\
+ &\Gamma_k&
+\end{tikzcd}
+\]
+此外要求满足下列条件：
+
+(i) $\alpha$ 连续，$\alpha(\Ga)$ 为 ${}^LG^\circ$ 中的幺幂子群，且 $\alpha$ 将半单元素映到半单元素（${}^LG$ 中元素 $x=(u,\gamma)$ 称为半单，若其在任意表示（2.6）下的像均半单）。
+
+(ii) 若 $\alpha(W'_k)$ 包含于 ${}^LG$ 的某个抛物子群 $P$ 的 Levi 子群中，则 $P$ 相关（3.3）。
+
+称这样的 $\alpha$ 为容许的。\footnote{\textbf{译者注（本次校订）：}在非阿基米德情形，还应要求 $\alpha|_{\mathbb G_a}$ 为复代数群同态。仅要求连续及像为幺幂子群，不能排除 $a\mapsto\exp(\overline aN)$ 这样的反全纯同态；它也满足与 Weil 群模特征的缩放关系，却不属于前篇所定义的 Weil--Deligne 表示。}令 $\Phi(G)$ 为它们模去 ${}^LG^\circ$ 中元素给出的内自同构后的等价类集合。
+
+若写 $\alpha(w)=(a(w),\nu(w))$，其中 $a(w)\in{}^LG^\circ$，则 $w\mapsto a(w)$ 为 $W'_k$（通过 $W'_k\to\Gamma_k$ 作用于 ${}^LG^\circ$）在 ${}^LG^\circ$ 中的1-上闭链。因此
+\begin{equation}
+ \Phi(G)\subset H^1(W'_k;{}^LG^\circ).\tag{1}
+\end{equation}
+令 $H$ 为 $W'_k$ 的一个子群。称 $\alpha:W'_k\to{}^LG$ 在 $H$ 上平凡，若 $\nu(H)$ 在 ${}^LG^\circ$ 上平凡作用，且 $a(H)=\{1\}$。注意，若 $\nu(H)$ 在 ${}^LG^\circ$ 上平凡作用，则 $a|_H$ 是同态。
+
+\paragraph*{8.3.} 假定 $G'$ 为 $G$ 的一个拟分裂内形式，则
+\begin{equation}
+ \Phi(G)\subset\Phi(G').\tag{1}
+\end{equation}
+事实上，${}^LG\simeq{}^LG'$，且 ${}^Lp({}^LG')\supset{}^Lp({}^LG)$，故 $\alpha\in\Phi(G)\Rightarrow\alpha\in\Phi(G')$。
+
+\begin{originaltheorem}{命题 8.4（Proposition 8.4）}
+设 $k'$ 为 $k$ 的有限可分扩张，$G'$ 为连通约化 $k'$-群，$G=R_{k'/k}G'$。则有典范双射 $\Phi(G)\xrightarrow{\sim}\Phi(G')$。
+\end{originaltheorem}
+考虑4.2、4.4的情形，取 $A=\Gamma_k$，$A'=\Gamma_{k'}$，$B=W'_k$，$B'=W'_{k'}$，$E={}^LG'^\circ$。由8.2，有单射
+\[
+ \Phi(G)\subset H^1(W'_k;{}^LG^\circ),\qquad
+ \Phi(G')\subset H^1(W'_{k'};{}^LG'^\circ).
+\]
+此外，${}^LG^\circ=I_{\Gamma_{k'}}^{\Gamma_k}({}^LG'^\circ)$（见5.1），因此由 Shapiro 引理及4.2，有
+\[
+ H^1(W'_k;{}^LG^\circ)\xrightarrow{\sim}H^1(W'_{k'};{}^LG'^\circ).
+\]
+显然，该同构把 $\Phi(G)$ 映满 $\Phi(G')$。
+
+\paragraph*{8.5.} 令 $Z_L=C({}^LG^\circ)$。若 $a:W_k\to Z_L$、$b:W'_k\to{}^LG^\circ$ 为1-上闭链，则 $ab:w\mapsto a(w)b(w)$ 又是 $W'_k$ 在 ${}^LG^\circ$ 中的1-上闭链。若 $a$ 连续且 $b$ 对应 $\varphi\in\Phi(G)$，则 $ab$ 对应 $\Phi(G)$ 的元素。因此有映射
+\begin{align}
+ H^1(W_k;Z_L)\times H^1(W'_k;{}^LG^\circ)&\longrightarrow H^1(W'_k;{}^LG^\circ),\tag{1}\\
+ H^1(W_k;Z_L)\times\Phi(G)&\longrightarrow\Phi(G),\tag{2}
+\end{align}
+它们定义群 $H^1(W_k;Z_L)$ 在集合 $H^1(W'_k;{}^LG^\circ)$ 和 $\Phi(G)$ 上的作用。
+
+\begin{originaltheorem}{命题 8.6（Proposition 8.6）}
+设 $\varphi:W'_k\to{}^LG$ 为容许同态。则 ${}^LG$ 中极小地包含 $\varphi(W'_k)$ 的 Levi 子群，在 $\varphi(W'_k)$ 于 ${}^LG^\circ$ 中的中心化子作用下构成一个共轭类。
+\end{originaltheorem}
+因 $\varphi(W'_k)$ 按定义投影到 $\Gamma_k$ 的稠密子群，结论由3.6得到。
+
+\paragraph*{注。} 形式上这也适用于 阿基米德情形，不过此时的证明更简单 [37，第78--79页]。事实上，该处的论证适用于所有情形中 Weil 群（而非 Weil--Deligne 群）的容许同态，因为 $\varphi(W_k)$ 总是完全可约的（fully reducible）。在此情形，极小地包含 $\varphi(W_k)$ 的 Levi 子群，恰好是极小地包含 $\varphi(W_k)$ 的抛物子群的 Levi 子群。因此这些抛物子群构成一类相联系群（associated groups）。
+
+\origsubsection{9}{环面的对应（The correspondence for tori）}
+\paragraph*{9.1.} 设 $T$ 为复环面。连续同态 $\varphi:T\to\C^*$ 由满足 $\lambda-\mu\in X^*(T)$ 的一对元素 $\lambda,\mu\in X^*(T)\otimes\C$ 按规则 $\varphi(t)=t^\lambda\overline t^{\mu}$ 描述。
+
+类似地，连续同态 $\varphi:\C^*\to T$ 由满足 $\mu-\nu\in X_*(T)$ 的 $\mu,\nu\in X_*(T)\otimes\C$ 给出，记为 $\varphi(z)=z^\mu\overline z^{\nu}$，意思是对任意 $\lambda\in X^*(T)$，$\lambda\circ\varphi:\C^*\to\C^*$ 由
+\[
+ \lambda(\varphi(z))=z^{\langle\lambda,\mu\rangle}\overline z^{\langle\lambda,\nu\rangle}
+\]
+给出。也可以这样理解：将 $X_*(T)\otimes\C$ 与 Lie 代数 $\Lie(T(\C))$ 等同。则指数映射给出同构 $(X_*(T)\otimes\C)/2\pi iX_*(T)=T(\C)$。此时 $\mu,\nu\in\Lie(T(\C))$ 满足 $\varphi(e^h)=e^{h\mu+\overline h\nu}$（$h\in\C$）。
+
+\paragraph*{9.2.} 设 $G=T$ 为 $k$-环面，$l=\dim T$。每个 $\varphi\in\Phi(G)$ 都在 $\Ga$ 上平凡，因此
+\begin{equation}
+ \Phi(G)=H^1_{\mathrm{ct}}(W_k;{}^LT^\circ)
+ =H^1_{\mathrm{ct}}(W_k;X^*(T)\otimes\C^*),\tag{1}
+\end{equation}
+其中 $H^1_{\mathrm{ct}}$ 表示使用连续上闭链。另一方面，
+\begin{equation}
+ \Pi(G)=\Hom((X_*(T)\otimes k_s^*)^{\Gamma_k},\C^*).\tag{2}
+\end{equation}
+由 [34，定理1]，典范地有
+\begin{equation}
+ \Pi(G)=\Phi(G).\tag{3}
+\end{equation}
+事实上，[34] 将 ${}^LT$ 和 $W_k$ 分别换成有限 Galois 形式 ${}^LT^\circ\rtimes\Gamma_{k'/k}$ 及相对 Weil 群（relative Weil group）$W_{k'/k}$，其中 $k'/k$ 为有限 Galois 扩张，其 Galois 群在 ${}^LT^\circ$ 上平凡作用；\footnote{\textbf{译者注（本次校订）：}这里应指绝对 Galois 子群 $\Gamma_{k^{\prime}}$ 在 ${}^LT^\circ$ 上平凡作用，即 $T$ 在 $k^{\prime}$ 上分裂。有限商 $\operatorname{Gal}(k^{\prime}/k)$ 对对偶环面的作用一般并不平凡。}容易看出这不改变 $\Phi(G)$。证明先说明从 $W_{k'/k}$ 到 $k'^*$ 的转移给出同构
+\begin{equation}
+ H_1(W_{k'/k};X_*(T))\xrightarrow{\sim}
+ H_1(k'^*;X_*(T))^{\Gamma_{k'/k}}
+ =(k'^*\otimes X_*(T))^{\Gamma_{k'/k}},\tag{4}
+\end{equation}
+再说明与求值映射 $(t,\lambda)\mapsto\lambda(t)$（$t\in{}^LT^\circ,\lambda\in X_*(T)$）对应的配对
+\begin{equation}
+ H^1_{\mathrm{ct}}(W_{k'/k};{}^LT^\circ)\times
+ H_1(W_{k'/k};X_*(T))\longrightarrow\C^*\tag{5}
+\end{equation}
+给出第一个群到第二个群的特征群的同构；按定义，这就是 (3)。
+
+下面用几个简单情形说明这一对应。
+
+\paragraph*{9.3. $k=\C$。}
+此时 $W_k=\C^*$，$\Phi(G)=\Hom(\C^*,{}^LT^\circ)$。对应来自9.1，因为 $\Hom(\C^*,{}^LT^\circ)$ 与 $\Hom(T,\C^*)$ 均典范地等同于 $\{(\lambda,\mu):\lambda,\mu\in X^*(T)\otimes\C,\lambda-\mu\in X^*(T)\}$。
+
+\paragraph*{9.4. $k=\R$。}
+有
+\begin{equation}
+ W_{\R}=\C^*\rtimes\{\tau\},\qquad
+ \tau^2=-1,\quad\tau z\tau^{-1}=\overline z\quad(z\in\C^*).\tag{1}
+\end{equation}
+写 $\C^*=S\times\R^+$，\footnote{\textbf{译者注（本次校订）：}式 (1) 的 $\rtimes$ 不能按通常半直积解释。实 Weil 群应写作 $W_\R=\C^*\cup\tau\C^*$，满足 $\tau^2=-1$；它是 $\C^*$ 对 $\operatorname{Gal}(\C/\R)$ 的非分裂扩张。事实上，$(z\tau)^2=-z\overline z$ 不可能为 $1$，故非平凡陪集中没有可给出分裂的二阶元素。}其中 $S=\{z\in\C^*:z\overline z=1\}$。则 $\operatorname{Int}\tau$ 在 $\R^+$ 上为恒等，在 $S$ 上为取逆。
+
+写 $\varphi(\tau)=(a,\sigma)$，其中 $a$ 在模 $\sigma$-共轭意义下确定，故可假定 $a$ 被 $\sigma$ 固定（6.3(3)）。于是 $\varphi(-1)=a^2$。令 $\mu,\nu\in X^*(T)\otimes\C$ 满足
+\begin{equation}
+ \varphi(z)=z^\mu\overline z^{\nu}\quad(z\in\C^*),\qquad\mu-\nu\in X^*(T)\tag{2}
+\end{equation}
+（见9.1）。有 $\varphi(\overline z)=\sigma(\varphi(z))$（$z\in\C^*$），故 $\nu=\sigma(\mu)$。固定 $h\in X^*(T)\otimes\C$，使 $a=\exp(2\pi ih)$。则附加于 $\varphi$ 的特征 $\pi$ 由下式给出 [37，第27页]：
+\begin{equation}
+ \pi(e^x)=\exp\langle h,x-\sigma\overline x\rangle\cdot
+ \exp\bigl(\langle\mu,x+\sigma\overline x\rangle/2\bigr)
+ \quad(x\in X_*(T)\otimes\C).\tag{3}
+\end{equation}
+这里横线表示 $\Lie(T(\C))=X_*(T)\otimes\C$ 关于 $X_*(T)\otimes\R$ 的复共轭，故 $x\mapsto\sigma\overline x$ 为关于 $\Lie(T(\R))$ 的复共轭。因此 $e^x\in T(\R)$，当且仅当 $x-\sigma\overline x\in2\pi iX_*(T)$。
+
+\paragraph*{例。}
+(a) 设 $T$ 在 $\R$ 上各向异性。则 $\sigma=-1$，可假定 $a=1,h=0$。当 $x$ 纯虚时有 $e^x\in T(\R)$，此时 (3) 给出 $\pi=\mu$。$\varphi(-1)=1$ 表明 $\mu\in X^*(T)$，与 $\Pi(T(\R))=X^*(T)$ 相符。
+
+(b) 设 $T$ 在 $\R$ 上分裂。则 $\sigma=1$，$\mu=\nu$，$\varphi(z)=(z\overline z)^\mu$，$a^2=1$，且 $h\in X^*(T)/2$。有 $e^x\in T(\R)$ 当且仅当 $x-\overline x\in2\pi iX_*(T)$。容易验证，$\pi$ 在 $T(\R)$ 的单位元连通分支上由 $\mu$ 给出，在 $T(\R)$ 的挠子群（torsion subgroup）上的限制则为 $h$ 自然定义的特征。
+
+\paragraph*{9.5. 非分歧情形（The unramified case）。}
+设 $k$ 为非阿基米德域，并假定 $T$ 在 $k$ 的非分歧扩张 $k'$ 上分裂。$T(k)$ 的特征 $\chi$ 称为非分歧，若它在 $T(k)$ 的最大紧子群 ${}^0T(k)$ 上平凡。另一方面，$\varphi\in\Phi(T)$ 称为非分歧，若它在惯性群上平凡（见8.2）。双射 $\Phi(T)\xrightarrow{\sim}\Pi(T)$ 诱导非分歧元素集合 $\Phi_{\mathrm{unr}}(T)$ 与 $\Pi_{\mathrm{unr}}(T)$ 之间的双射 [34]。这一对应尤其重要，下面给出更具体的描述。
+
+给定 $t\in T(k')$，令 $\nu(t)\in\Hom(X^*(T),\Z)$ 由 $\nu(t)(m)=\operatorname{ord}m(t)$（$m\in X^*(T)$）定义。由 Hilbert 定理90容易推出熟知的事实 $H^1(\Gamma_{k'/k};\mathfrak o_{k'}^*)=0$，其中 $\mathfrak o_{k'}^*$ 是 $k'$ 的整数环 $\mathfrak o_{k'}$ 的单位群。因 $T$ 在 $k'$ 上分裂，故 $H^1(\Gamma_{k'/k};{}^0T(k'))=0$。由 Galois 上同调，推出 $(T(k')/{}^0T(k'))^{\Gamma_k}=T(k)/{}^0T(k)$，因此 $t\mapsto\nu(t)$ 给出双射
+\begin{equation}
+ T(k)/{}^0T(k)\xrightarrow{\sim}\Hom(X^*(T),\Z)^{\Gamma_k}
+ =X_*(T)^{\Gamma_k}=X_*(T_d),\tag{1}
+\end{equation}
+其中 $T_d$ 是 $T$ 的最大 $k$-分裂子环面。
+也可说，包含 $T_d\subset T$ 诱导同构 $T_d(k)/{}^0T_d(k)\xrightarrow{\sim}T(k)/{}^0T(k)$，参见 [6]。于是
+\begin{equation}
+ \Pi_{\mathrm{unr}}(T(k))=\Hom(X_*(T)^{\Gamma_k},\C^*)=Y.\tag{2}
+\end{equation}
+群 $\Gamma_k$ 通过循环群 $\Gamma_{k'/k}$ 作用于 ${}^LT^\circ$，后者由 Frobenius 元素 $\operatorname{Fr}$ 的像 $\sigma$ 生成。非分歧的 $\varphi$ 完全由 $\varphi(\operatorname{Fr})$ 确定，可写 $\varphi(\operatorname{Fr})=(t,\operatorname{Fr})$，其中 $t\in{}^LT^\circ$ 在模 ${}^LT^\circ$ 共轭意义下确定。因此 $\Phi_{\mathrm{unr}}(T)=({}^LT^\circ\rtimes\sigma)/\operatorname{Int}{}^LT^\circ$；6.4的一个初等特例给出后一集合到 $Y$ 的典范同构，从而得到所求同构。
+
+\origsubsection{10}{所期望的性质（Desiderata）}
+为表述这些性质，先作两个预备构造。
+
+\paragraph*{10.1. 附加于 $\varphi\in\Phi(G)$ 的 $C(G)$ 的特征 $\chi_\varphi$（参见 [37，第20--34页]）。}
+我们的目标是为 $\varphi\in\Phi(G)$ 典范地指定 $G$ 的中心 $C(G)$ 的一个特征。令 $G_{\mathrm{rad}}$ 为 $G$ 的最大中心环面。则 $G_{\mathrm{rad}}\to G$ 给出满射同态 ${}^LG\to{}^LG_{\mathrm{rad}}$，从而给出映射 $\Phi(G)\to\Phi(G_{\mathrm{rad}})$。由9.2，便可给 $\varphi\in\Phi(G)$ 附加 $G_{\mathrm{rad}}$ 的特征 $\chi_\varphi$。因此若 $C(G(k))\subset G_{\mathrm{rad}}(k)$，问题已经解决。
+
+一般情形下，将 $G$ 嵌入一个更大的连通约化群 $G_1$，由 $G$ 和一个中心环面生成，且其中心为环面。可以证明 $\Phi(G_1)\to\Phi(G)$ 满射。用上一步的构造得到 $C(G_1)$ 的特征，再限制为 $C(G)$ 的特征。可证明这一特征与 $G_1$ 的选择无关（同上），将其记为 $\chi_\varphi$。映射 $\varphi\mapsto\chi_\varphi$ 与标量限制相容 [37, 2.11]。
+
+\paragraph*{10.2. 附加于 $\alpha\in H^1(W'_k;Z_L)$ 的特征 $\pi_\alpha$ [37，第34--36页]。}
+回顾，$Z_L$ 表示 ${}^LG^\circ$ 的中心（8.5）。总能找到 $k$-环面 $D$，使 $H^1(\Gamma_k;D)=0$，并找到与 $G\times D$ 同源的 $k$-群 $\widetilde G$，使有正合列
+\begin{equation}
+ 1\longrightarrow D\longrightarrow\widetilde G\longrightarrow G\longrightarrow1.\tag{1}
+\end{equation}
+由于 $H^1(\Gamma_k;D)=0$，映射 $\mu:\widetilde G(k)\to G(k)$ 满射。令 $G_{\mathrm{sc}}$ 为 $G$ 的导出群 $\mathcal DG$ 的万有覆盖（universal covering）。有交换图
+\[
+\begin{tikzcd}[column sep=small]
+ &&1\arrow[d]&&\\
+ &&D\arrow[d]\arrow[dr,"\beta"]&&\\
+ 1\arrow[r]&G_{\mathrm{sc}}\arrow[r]\arrow[dr,"\alpha"']&\widetilde G\arrow[r]\arrow[d]&\widetilde G/G_{\mathrm{sc}}\arrow[r]&1\\
+ &&G\arrow[d]&&\\
+ &&1&&
+\end{tikzcd}
+\]
+转到 $L$ 群，得到
+\[
+\begin{tikzcd}[column sep=large]
+ &1&\\
+ &{}^LD^\circ\arrow[u]&\\
+ {}^LG_{\mathrm{sc}}^\circ&{}^L\widetilde G^\circ\arrow[l]\arrow[u]&{}^L(\widetilde G/G_{\mathrm{sc}})^\circ\arrow[l]\arrow[ul,"{}^L\beta^\circ"']\\
+ &{}^LG^\circ\arrow[u]\arrow[ul,"{}^L\alpha^\circ"]&\\
+ &1\arrow[u]&
+\end{tikzcd}
+\]
+因 ${}^LG_{\mathrm{sc}}^\circ$ 为伴随型（2.2），可见 $Z_L=\ker{}^L\alpha^\circ$。此外容易看出
+\begin{equation}
+ Z_L\simeq\ker{}^L\beta^\circ.\tag{2}
+\end{equation}
+从而得到映射
+\begin{equation}
+ H^1(W'_k;Z_L)\longrightarrow
+ \ker\{H^1(W'_k;{}^L(\widetilde G/G_{\mathrm{sc}})^\circ)
+ \longrightarrow H^1(W'_k;{}^LD^\circ)\}.\tag{3}
+\end{equation}
+于是可给 $\alpha\in H^1(W'_k;Z_L)$ 附加 $(\widetilde G/G_{\mathrm{sc}})(k)$ 的特征 $\sigma_\alpha$，它在 $D(k)$ 上平凡，从而给出 $G(k)=\widetilde G(k)/D(k)$ 的特征 $\pi_\alpha$。可证明所得特征与 $D$ 的选择无关。映射 $\alpha\mapsto\pi_\alpha$ 与标量限制相容 [37, 2.12]，并满足
+\begin{equation}
+ \chi_{\alpha\varphi}=\pi_\alpha\chi_\varphi
+ \qquad(\alpha\in H^1(W'_k;Z_L),\ \varphi\in\Phi(G)).\tag{4}
+\end{equation}
+
+\paragraph*{10.3. 集合 $\Pi_\varphi$ 应满足的条件（Conditions on the sets）。}
+(1) 若 $\pi\in\Pi_\varphi$，则 $\pi(z)=\chi_\varphi(z)\operatorname{Id}$（$z\in C(G)$）。
+
+(2) 若 $\varphi'=\alpha\varphi$，其中 $\varphi,\varphi'\in\Phi(G)$、$\alpha\in H^1(W'_k;Z_L)$（见8.5），则 $\Pi_{\varphi'}=\{\pi_\alpha\otimes\pi:\pi\in\Pi_\varphi\}$。
+
+(3) 关于 $\Pi_\varphi$ 的下列条件等价：
+(i) $\Pi_\varphi$ 中某个元素模 $C(G)$ 平方可积（square-integrable）；
+(ii) $\Pi_\varphi$ 中所有元素都模 $C(G)$ 平方可积；
+(iii) $\varphi(W'_k)$ 不包含于 ${}^LG$ 的任何真 Levi 子群。
+
+(4) 假定 $\varphi(\Ga)=\{1\}$。关于 $\Pi_\varphi$ 的下列条件等价：
+(i) $\Pi_\varphi$ 中某个元素缓增（tempered）；
+(ii) $\Pi_\varphi$ 中所有元素缓增；
+(iii) $\varphi(W_k)$ 有界。
+
+(5) 设 $H$ 为连通约化 $k$-群，$\eta:H\to G$ 为核与余核交换的 $k$-态射。设 $\varphi\in\Phi(G)$，$\varphi'={}^L\eta\circ\varphi$。则任意 $\pi\in\Pi_\varphi$ 视为 $H(k)$-模时，是有限多个属于 $\Pi_{\varphi'}$ 的不可约容许表示的直和。
+
+\paragraph*{10.4. 非分歧情形。}
+若 $\varphi\in\Phi(G)$ 在8.2的意义下于 $\Ga$ 及惯性群 $I$ 上平凡，则称其非分歧。此时可假定 $\operatorname{im}\varphi$ 在 ${}^LT$ 中。因此若 $\Phi(G)$ 包含非分歧元素，则 $G$ 拟分裂（见8.2(ii)）。
+
+现设 $G$ 拟分裂，在 $k$ 的非分歧 Galois 扩张 $k'$ 上分裂，且 $\varphi\in\Phi(G)$ 非分歧。存在 $t\in({}^LT^\circ)^{\Gamma_k}$，使
+\begin{equation}
+ \varphi(\operatorname{Fr})=(t,\operatorname{Fr}),\tag{1}
+\end{equation}
+见9.5，并且
+\begin{equation}
+ \varphi(w)=(t,\operatorname{Fr})^{\varepsilon(w)}\qquad(w\in W'_k),\tag{2}
+\end{equation}
+其中 $\varepsilon:W'_k\to\Z$ 为典范同态。\footnote{\textbf{译者注（本次校订）：}式 (2) 在有限非分歧 Galois 形式中成立；在本章采用的绝对 $L$ 群中，还须保留 $w$ 的 Galois 投影。若记该投影为 $\nu(w)$，则应写成 $\varphi(w)=(t^{\varepsilon(w)},\nu(w))$。对惯性元素，8.2所说的“平凡”仅指对偶群分量为 $1$，其 Galois 分量通常仍非平凡。}元素 $t$ 确定 $G$ 的 Borel $k$-子群 $B$ 的极大 $k$-环面 $T$ 的一个非分歧特征 $\chi$（9.5）。此时要求 $\Pi_\varphi$ 由非分歧归一化主系列（unramified normalized principal series）$\operatorname{PS}(\chi)$ 中那些具有某个超特殊极大紧子群的非零不变向量的组成成分构成。反之，设 $(\pi,V)$ 为不可约容许表示，具有被某个超特殊极大紧子群固定的非零向量。则存在 $T$ 的非分歧特征 $\chi$，使 $(\pi,V)$ 为 $\operatorname{PS}(\chi)$ 的组成成分，且 $\chi$ 在模相对 Weyl 群意义下确定。此时 $(\pi,V)\in\Pi_\varphi$，其中非分歧的 $\varphi$ 将 $\operatorname{Fr}$ 映到 $(t,\operatorname{Fr})$，$t$ 代表 $\chi$（9.5）。注意，若 $U$ 为 $G(k)$ 的特殊极大紧子群，则 $G(k)=B(k)U$，故 $U$ 在 $\operatorname{PS}(\chi)$ 中的不动点集至多一维。因此 $\operatorname{PS}(\chi)$ 至多有一个不可约组成成分具有非零的 $U$-不变向量。
+
+这一对应与7.2一致。即若 $\pi\in\Pi_\varphi$，则与 $\pi$ 确定的 Hecke 代数特征相对应的 ${}^LG^\circ\rtimes\sigma$ 中的半单类 $S_\chi$，确实由 $t\rtimes\sigma$ 代表。这来自 [6]。
+
+\paragraph*{注。} 最初认为，$\Pi_\varphi$ 应由 $\operatorname{PS}(\chi)$ 中具有某个特殊极大紧子群的非零不变向量的组成成分构成。但 I. Macdonald 在本次研究班中指出，这些表示可能属于离散系列（discrete series）。若如此，此条件将与10.3(3)矛盾。依 J. Tits 的建议，因而改为上述超特殊极大紧子群的限制。这样得到的表示不可能属于离散系列，故10.3(3)与10.4相容。
+
+\paragraph*{10.5. 例。}
+假定 $k=\R$，$G$ 半单，具有在 $\R$ 上各向异性的 Cartan 子群（Cartan subgroup）$T$，并是某个分裂群的内形式。则 ${}^LG$ 是 ${}^LG^\circ$ 与 $\Gamma_k$ 的直积，Weyl 群 $W$ 包含 $-\operatorname{Id}$，且 $G(\R)$ 有离散系列。下面用 $\Phi(G)$ 来描述这些离散系列的参数。这里将 ${}^LT$ 记作 $T$ 的 $L$ 群。设 $\varphi\in\Phi(G)$，它由连续同态 $\varphi':W_{\R}\to{}^LG^\circ$ 给出。可假定 $\operatorname{im}\varphi'$ 包含于 ${}^LT^\circ$ 的正规化子。令 $n=\varphi(\tau)$，用 $w\in W$ 表示 $n$ 所代表的元素，则 $w^2=1$。取 $\mu,\nu\in X^*(T)\otimes\C$，使
+\begin{equation}
+ \varphi(z)=z^\mu\overline z^{\nu}\quad(z\in\C^*),\qquad\mu-\nu\in X^*(T)\tag{1}
+\end{equation}
+（见9.1）。有
+\begin{equation}
+ \varphi(\overline z)=n\varphi(z)n^{-1}=z^{w\mu}\overline z^{w\nu},\tag{2}
+\end{equation}
+故 $\mu=w\nu$、$\nu=w\mu$。现假定 $\operatorname{im}\varphi$ 不包含于 ${}^LG$ 的任何真 Levi 子群，或等价地，$\operatorname{im}\varphi'$ 不包含于 ${}^LG^\circ$ 的任何真 Levi 子群。则 $w=-\operatorname{Id}$，且 $\mu$ 正则。事实上，${}^LG^\circ$ 中真 Levi 子群是非平凡环面的中心化子。这首先表明 $w$ 不逐点固定 ${}^LT^\circ$ 中任何非平凡环面，故 $w=-\operatorname{Id}$；若 $\mu$ 非正则，则 $\mu(\C^*)$ 的中心化子将包含某个在 $\operatorname{Int}n$ 下稳定的非平凡半单子群 $H$，而后者将逐点固定 $H$ 的某个非平凡环面 $S$，从而 $\operatorname{im}\varphi'$ 将包含于 $S$ 的中心化子 $Z(S)$，矛盾。因 $\nu=w\mu=-\mu$，有
+\begin{equation}
+ \lambda(\varphi(-1))=(-1)^{\langle2\mu,\lambda\rangle}\qquad(\lambda\in X_*(T)).\tag{3}
+\end{equation}
+令 $\delta$ 为 $G$ 关于 $T$ 的满足 $\langle\mu,\check\alpha\rangle>0$ 的根 $\alpha$ 之和的一半。则 [37] 引理3.2特别推出
+\begin{equation}
+ \lambda(\varphi'(-1))=(-1)^{\langle2\delta,\lambda\rangle}\qquad(\lambda\in X_*(T)).\tag{4}
+\end{equation}
+因此
+\begin{equation}
+ \mu\in\delta+X^*(T).\tag{5}
+\end{equation}
+所以 $\mu$ 属于 Harish-Chandra 定理中参数化离散系列的那些 $X^*(T)\otimes\Q$ 中元素。令 $\Pi_\varphi$ 为 $G(\R)$ 中无穷小特征为 $\chi_\mu$ 的离散系列表示集合。若 $G(\R)$ 紧，则 $\Pi_\varphi$ 仅含优势权为 $\mu-\delta$ 的不可约有限维表示。此时 ${}^LG$ 的真抛物子群都不相关，因此 $\Phi(G)$ 恰由这里考虑的 $\varphi$ 构成。
+
+\paragraph*{10.6. 设 $G=\GL_n$，$k$ 为非阿基米德域。}
+令 $\psi$ 为 $W'_k$ 的容许表示。若它不可约，则 $\psi(\Ga)=1$。若它不可分解，则为张量积 $\rho\otimes\operatorname{sp}(m)$，其中 $m\mid n$，$\rho$ 为 $n/m$ 次不可约表示，$\operatorname{sp}(m)$ 为 $m$ 维表示，在 $I$ 上平凡，将 $\Ga$ 的 Lie 代数的一个生成元映到超对角线为1、其余各项为0的幂零矩阵，并将 $w\in W'_k$ 映到对角元为 $a(w)^i$（$0\leq i<n$）的对角矩阵 [9, 3.1.3]。\footnote{\textbf{译者注（本次校订）：}这里描述的是 $m$ 维表示，指标应为 $0\le i<m$；对角矩阵公式应只用于 $w\in W_k$，而非含有加法群部分的全部 $W^{\prime}_k$。此外，若采用前篇的关系 $\rho(w)N\rho(w)^{-1}=\lVert w\rVert N$，则与超对角线为 $1$ 的 $N$ 相配的应为 $a(w)=\lVert w\rVert^{-1}$；也可改用下对角线为 $1$ 的 $N$ 并取 $a(w)=\lVert w\rVert$。}若 $\chi$ 为 $W_k$（从而为 $k^*$）的特征，且 $\varphi=\chi\otimes\operatorname{sp}(n)$，则 $\Pi_\varphi$ 仅含由 $\chi$ 确定中心特征的特殊表示（special representation）。事实上，最初引入 Weil--Deligne 群，正是为了把 $\GL_2$ 的特殊表示纳入一般框架（见 [9]）。
+
+\origsubsection{11}{R、C 上构造的概要（Outline of the construction over R, C）}
+这里概述在 $k=\R$ 时给出集合 $\Pi_\varphi$ 的各个步骤，证明见 [37]。
+
+首先，总可假定 $\varphi(W_k)\subset N({}^LT^\circ)$，且可写（9.1）
+\[
+ \varphi(z)=z^\mu\overline z^\nu\quad
+ (z\in\C^*;\ \mu,\nu\in X^*(T)\otimes\C,\ \mu-\nu\in X^*(T)).
+\]
+\begin{originaltheorem}{引理 11.1（Lemma 11.1）}
+设 $\varphi\in\Phi(G)$，假定 $\varphi(W_{\R})$ 不包含于 ${}^LG$ 的任何真 Levi 子群。则：
+(i) $G$ 有一个 Cartan $k$-子群 $C$，使 $(\mathcal DG\cap C)(\R)$ 紧 [28, 3.1]；
+(ii) $\mu$ 正则，且 $\varphi(\C^*)$ 包含正则元素 [37, 3.3]。
+\end{originaltheorem}
+群 ${}^LC^\circ$ 可视为 ${}^LG^\circ$ 的极大环面，故有在模 $W$ 元素意义下确定的同构 ${}^LC\xrightarrow{\sim}{}^LT$。因此 $\varphi$ 确定 $\Phi(C)$ 中的一个 $W$-轨道，从而由9.2确定 $X(C(\R))$ 中的一个 $W$-轨道 $X_\varphi$。[注意，定义在 $G(\C)$ 中的 $W$ 作用于 $C(\R)$，因为 $C(\R)\cap\mathcal DG$ 紧，因而也作用于 $X(C(\R))$。]
+
+\paragraph*{11.2.} 令 $G_0=C(\R)(\mathcal DG)(\R)^\circ$。令 $A_0$ 为 $G_0$ 上模中心平方可积、且无穷小特征为 $\chi_\lambda$（$\lambda\in X_\varphi$）的表示集合。诱导表示 $\pi=I_{G_0}^{G(\R)}(\pi_0)$（$\pi_0\in A_0$）不可约 [37，第50页]。按定义，$\Pi_\varphi$ 是这些表示的等价类集合 [37，第54页]。
+
+\paragraph*{11.3.} 设 $\varphi\in\Phi(G)$。令 ${}^LM$ 为包含 $\operatorname{im}\varphi$ 的一个极小相关 Levi 子群。按8.6，它在相应中心化子的共轭作用下唯一。假定 ${}^LM\neq{}^LG$，可将 $\varphi$ 视为 $\Phi(M)$ 的元素。由11.2，可为它指定一个有限集合 $\Pi_{\varphi,M}$，由 $M$ 的离散系列表示构成。
+
+可假定 ${}^LM$ 为与 $P\in\mathcal P(G/k)$ 对应的相关抛物子群 ${}^LP$ 的 Levi 子群。令 $U=X^*(T)\otimes\R=X_*({}^LT^\circ)\otimes\R$，$V$ 为 $U$ 中与 ${}^LM$ 的根正交、且被 $\Gamma_k$ 固定的元素所成子空间。可将其与 $P$ 的分裂分量（split component）$A$ 的 Lie 代数的对偶 $\mathfrak a_{\mathfrak p}^*$ 等同。
+
+令 $\xi$ 为 $\Pi_{\varphi,M}$ 各元素所定义的 $C(M)$ 特征。可假定 $|\xi|\in\operatorname{Cl}(\mathfrak a_{\mathfrak p}^{*+})$。令 $P_1$ 为包含 $P$ 的最小抛物 $k$-子群，使 $|\xi|$ 限制到 $\mathfrak a_{\mathfrak p_1}$ 后位于 Weyl 室 $\mathfrak a_{\mathfrak p_1}^{*+}$。令 $M_1=Z(\mathfrak a_{\mathfrak p_1})$，$P'=P\cap M_1$。则 $P'$ 为 $M_1$ 的抛物子群。此外，$|\xi|$ 对 $P'$ 的分裂分量 $M_1\cap A_P$ 的限制为1，故对每个 $\rho\in\Pi_{\varphi,M}$，诱导表示 $\Ind_{P'}^{M_1}(\rho)$ 缓增。\footnote{\textbf{译者注（本次校订）：}这里须将分裂中心上的实拟特征分离出来。$|\xi|$ 为 $1$ 的是 $A_P\cap\mathcal D M_1$ 上的部分，而原文所写 $M_1\cap A_P=A_P$ 一般过大；它在 $M_1$ 的分裂中心上仍可非平凡。因此在整个 $M_1$ 上，所得表示一般是缓增表示的实拟特征扭转；除去这一扭转后才是用于 Langlands 分类的缓增表示。}令 $\Pi'_\varphi$ 为所有这些表示的组成成分集合。按定义，$\Pi_\varphi$ 为所有 $\sigma\in\Pi'_\varphi$ 所给出的 Langlands 商（Langlands quotients）$J(P_1,\sigma)$ 的集合（参见 [37，第82页]）。
+
+\paragraph*{11.4. 复群（Complex groups）。}
+现设 $k=\C$。则 $W_k=\C^*$，$\Phi(G)$ 可与 $\C^*$ 到 ${}^LT^\circ$ 的同态模 Weyl 群 $W$ 的集合等同，即
+\begin{equation}
+ \{(\lambda,\mu):\lambda,\mu\in X^*(T)\otimes\C,\ \lambda-\mu\in X^*(T)\}\tag{1}
+\end{equation}
+模 $W$ 的对角作用。此时 $\operatorname{im}\varphi$ 位于 ${}^LB$ 的 Levi 子群 ${}^LT$ 中，这就是11.3中的 ${}^LP$。集合 $\Pi_{\varphi,M}$ 仅含 $T$ 的一个特征（参见9.1）。如11.3选取 $P_1,M$。因复群的酉主系列不可约（N. Wallach），集合 $\Pi'_\varphi$ 仅含一个元素，故 $\Pi_\varphi$ 也只含一个元素。因此每个 $\Pi_\varphi$ 都为单点集。这样得到的分类等价于 Zhelobenko 的分类。
+
+\paragraph*{11.5.} 设 $G=\GL_n$，$k=\R$。此时由离散系列诱导的缓增表示同样不可约 [22]，因此每个集合 $\Pi'_\varphi$（参见11.3）仅含一个元素，$\Pi_\varphi$ 也一样，从而得到 $\Phi(G)$ 与 $\Pi(G(\R))$ 之间的双射。
+
+令 $n=2$。若 $\varphi$ 可约，则 $\operatorname{im}\varphi$ 交换，故 $\varphi$ 经由 $(W_{\R})^{\mathrm{ab}}=\R^*$ 分解，由 $\R^*$ 的两个特征 $\mu,\nu$ 描述。此时 $\Pi_\varphi$ 包含一个主系列表示 $\pi(\mu,\nu)$（如常，也包括有限维表示）。特别地，有三个核为 $\C^*$ 的 $\varphi$，分别对应 $\pi(1,1)$、$\pi(\operatorname{sgn},\operatorname{sgn})$、$\pi(1,\operatorname{sgn})$，其中 $\operatorname{sgn}$ 为符号特征（sign character）。若 $\varphi$ 不可约，可设 $\varphi(\tau)=(s_0,\tau)$，其中 $s_0$ 为 ${}^LT^\circ$ 的正规化子中固定选取的、在该环面上诱导取逆的元素。\footnote{\textbf{译者注（本次校订）：}对于 $\operatorname{GL}_2$ 的整个对角环面，Weyl 元素的作用是交换两个对角元；只有在行列式为 $1$ 的子环面上，这才等于取逆。此外，$\varphi(\tau)$ 的代表元须满足 $\varphi(\tau)^2=\varphi(-1)$，一般还要按参数乘上适当的对角因子，不能不加调整地对所有参数固定同一个矩阵。}$\varphi(\R^+)$ 位于 ${}^LG^\circ$ 的中心，$\varphi(S)$ 是由两个整数描述的两个特征之和。此时 $\Pi_\varphi$ 包含一个以一维表示扭曲的离散系列表示。
+
+\paragraph*{11.6.} 这两个例子表明，要显式描述 $\Pi_\varphi$，关键在于分解从抛物子群的缓增表示诱导的表示。后一问题已由 A. Knapp 和 G. Zuckerman 解决 [29]、[30]。
+
+\paragraph*{11.7. 关于非阿基米德情形的注记。}
+Langlands 分类 [37] 对 $p$ 进域也成立 [57]。由8.6，上述构造的最后一步（11.3）显然也可在非阿基米德情形进行。因此，除缓增表示的分解外，$p$ 进情形主要未解决的问题是离散系列的构造与参数化。
+
+\origsubsection{12}{局部因子（Local factors）}
+\paragraph*{12.1.} 设 $\pi\in\Pi(G(k))$，$r$ 为 ${}^LG$ 的表示（2.6）。假设对某个 $\varphi\in\Phi(G)$ 有 $\pi\in\Pi_\varphi$。对 $k$ 的非平凡加性特征 $\psi$，令
+\begin{equation}
+ L(s,\pi,r)=L(s,r\circ\varphi),\qquad
+ \varepsilon(s,\pi,r)=\varepsilon(s,\pi,r,\psi)=\varepsilon(s,r\circ\varphi,\psi),\tag{1}
+\end{equation}
+其中右侧为附加于 $W'_k$ 的表示 $r\circ\varphi$ 的 $L$ 因子和 $\varepsilon$ 因子 [60]。在10.4的非分歧情形，这与7.2给出的定义一致。
+
+由以上回顾，当 $k$ 为阿基米德域，或 $k$ 为非阿基米德域而处于非分歧情形，或 $G$ 为环面时，这些局部因子已有定义。
+
+\paragraph*{12.2.} 现令 $G=\GL_n$。此时附加于 $\pi\in\Pi(G(k))$ 的局部因子 $L(s,\pi)$、$\varepsilon(s,\pi,\psi)$ 可用 Tate 方法的推广定义：$n=2$ 见 [25]，任意 $n$ 见 [19]。它们在参数化问题及局部提升中起重要作用。自然的问题是，这些因子是否就是12.1中取 $r=r_n$ 为 $\GL_n$ 的标准表示时的特例，即是否有等式
+\begin{equation}
+ L(s,\pi)=L(s,\pi,r_n),\qquad
+ \varepsilon(s,\pi,\psi)=\varepsilon(s,\pi,r_n,\psi),\tag{1}
+\end{equation}
+其中右侧按12.1的规则定义。
+
+(a) 令 $n=2$。[25] 已证明，$\pi$ 的等价类由各函数 $L(s,\pi\otimes\chi)$、$\varepsilon(s,\pi\otimes\chi,\psi)$ 刻画，其中 $\chi$ 遍历 $k^*$ 的特征。此时，参数化问题及 (1) 的证明是如下问题的一部分：
+
+(*) 给定 $\sigma\in\Phi(G)$，找到 $\pi=\pi(\sigma)$，使对所有 $\chi$ 有
+\begin{equation}
+ L(s,\sigma\otimes\chi)=L(s,\pi\otimes\chi),\qquad
+ \varepsilon(s,\sigma\otimes\chi,\psi)=\varepsilon(s,\pi\otimes\chi,\psi),\tag{2}
+\end{equation}
+并证明 $\sigma\mapsto\pi(\sigma)$ 在 $\Phi(G)$ 与 $\Pi(G(k))$ 间建立双射。
+
+该问题在 [25] 中提出并部分解决。最新且最完整的预印本结果见 [62]；这些结果尚未涵盖剩余特征为偶数的全部情形，但 Deligne 概述的论证有望处理余下情形（综述见 [63]）。
+
+按表述这是局部问题，但除无穷远位外，最初的进展大多由整体方法取得：取整体域 $E$，使其在某位的完备化为 $k$；取在 $k$ 上与 $G$ 同构的约化 $E$-群 $H$；取 $\rho\in\Phi(H/k)$，其在所选局部 Weil--Deligne 群上的限制为 $\sigma$，并要求存在 $L$ 级数为 $L(s,\rho)$ 的自守表示 $\pi(\rho)$（后者见第14节）。这一构造还要用到某些情形的 Artin 猜想及 [38]。事实上，[25] 已表明剩余特征为奇数时，(*) 从 Artin 猜想推出，从而解决了相应的等特征情形。目前，剩余特征为奇数时，原则上已有纯局部证明 [63]。还应注意，单射性断言是关于 $W'_k$ 的二维容许表示的陈述：这样的表示 $\sigma$ 是否在等价意义下由各因子 $L(s,\sigma\otimes\chi)$、$\varepsilon(s,\sigma\otimes\chi,\psi)$ 确定。但迄今已知的证明都使用约化群的容许表示 [63]。
+
+(b) 对任意 $n$，(1) 已在非分歧情形、特殊表示情形得到证明，并由 H. Jacquet 在 $k=\R,\C$ 的情形证明 [24]。
+
+(c) [21] 对 $G=\GL_2\times\GL_2$ 也引入了局部 $L$ 因子、$\varepsilon$ 因子，至少在两个因子都是无限维不可约表示时，适用于乘积 $\pi\times\pi'$ 如此。对于其他 $m,n$ 的 $\GL_m\times\GL_n$ 的部分推广，也已有相关结果。
+
+(d) $n=3$ 时，$\pi\in\Pi(G(k))$ 仍由因子 $L(s,\pi\otimes\chi)$、$\varepsilon(s,\pi\otimes\chi,\psi)$ 唯一刻画 [27]、[46]。$n\geq4$ 时此结论不成立 [46]。不过，若允许 $\chi$ 遍历 $\Pi(\GL_{n-1}(k))$ 的适当元素，甚至可能只需 $\Pi(\GL_{n-2}(k))$，也许仍有这种刻画。
+
+\paragraph*{12.3.} 对某些其他经典群，也已直接定义局部因子，特别地：F. Rodier [48] 推广 M. E. Novodvorsky 与 I. Piatetskii-Shapiro 早期工作，对 $\operatorname{GSp}_4$ 作了定义；M. E. Novodvorsky [41] 对 $2n+1$ 维分裂正交群作了定义。后一情形 ${}^LG^\circ=\operatorname{Sp}_{2n}$，非分歧时，局部因子在 $s$ 的一个平移后，与7.2给 $L$ 群的标准 $2n$ 维表示附加的因子一致。也见 [42]。
+
+\origsection{IV}{自守表示的 L 函数（The L-function of an automorphic representation）}
+从现在起，$k$ 为整体域，$\mathfrak o=\mathfrak o_k$ 为 $k$ 的整数环，$\A_k$ 或 $\A$ 为 $k$ 的阿代尔环（ring of adeles），$V$（分别 $V_\infty,V_f$）为 $k$ 的位置（分别无穷位置、有限位置）集合。对 $v\in V$，$k_v,\mathfrak o_v,Nv$ 采用通常含义。除非另有说明，$G$ 为连通约化 $k$-群。
+
+\origsubsection{13}{阿代尔群不可约容许表示的 L 函数（The L-function of an irreducible admissible representation of the adelic group）}
+\paragraph*{13.1.} 设 $\pi$ 为 $G_{\A}$ 的不可约容许表示，$r$ 为 ${}^LG$ 的表示。存在 $k$ 的有限 Galois 扩张 $k'$，使 $G$ 在其上分裂，且 $r$ 经由 ${}^LG^\circ\rtimes\Gamma_{k'/k}$ 分解。要给 $\pi,r$ 附加无穷 Euler 乘积 $L(s,\pi,r)$ 和 $\varepsilon(s,\pi,r)$，其中的局部因子至少在 $k$ 的几乎所有素位都有定义。
+
+设 $v\in V$。通过限制，$r$ 给出 ${}^L(G/k_v)={}^LG^\circ\rtimes\Gamma_{k_v}$ 的表示 $r_v$。另一方面，$\pi=\bigotimes_v\pi_v$，$\pi_v\in\Pi(G(k_v))$ [11]。假定第III章的参数化问题已解决。则存在唯一 $\varphi_v\in\Phi(G/k_v)$，使 $\pi_v\in\Pi_{\varphi_v}$。于是令
+\begin{align}
+ L(s,\pi,r)&=\prod_v L(s,\pi_v,r_v),\tag{1}\\
+ \varepsilon(s,\pi,r)&=\prod_v\varepsilon(s,\pi_v,r_v,\psi_v),\tag{2}
+\end{align}
+其中 $\psi_v$ 为与一个给定非平凡整体加性特征相对应的 $k_v$ 的加性特征，右侧因子由12.1(1)给出。
+
+局部问题对 阿基米德位及几乎所有有限位均已解决（见下文），因此，除至多有限多个 $v\in V_f$ 外，右侧的因子均已定义。去掉有限个因子不影响这里的收敛及亚纯延拓问题；这种部分乘积也记为 $L(s,\pi,r)$。
+
+由10.4，若满足以下条件，$\varphi_v$ 便良定义：$G$ 在 $k_v$ 上拟分裂，$G(\mathfrak o_v)$ 为 $G(k_v)$ 的超特殊极大紧子群，$k'/k$ 在 $v$ 处非分歧，且 $\pi_v$ 关于 $G(\mathfrak o_v)$ 为第一类。除有限多个 $v\in V_f$ 外，这些条件均满足 [61]。
+
+\begin{originaltheorem}{定理 13.2（Theorem 13.2；[35]）}
+设 $\pi$ 为 $G_{\A}$ 的不可约容许可酉化表示（unitarizable representation），$r$ 为 ${}^LG$ 的表示（2.6）。则 $L(s,\pi,r)$ 在 $\operatorname{Re}s$ 充分大时绝对收敛。
+\end{originaltheorem}
+可将 $r$ 视为 ${}^LG^\circ\rtimes\Gamma_{k'/k}$ 的复解析表示，其中 $k'/k$ 为使 $G$ 分裂的有限 Galois 扩张（2.6）。令 $V_1$ 为满足13.1末尾所列条件的 $v\in V_f$ 的集合。须证
+\begin{equation}
+ L'=\prod_{v\in V_1}L(s,\pi_v,r_v)\tag{1}
+\end{equation}
+在某个右半平面收敛。
+
+令 $\operatorname{Fr}_v$ 为 $\Gamma_{k'_{v'}/k_v}$ 的 Frobenius 元素，其中 $v'\in V_{k'}$ 位于 $v\in V_1$ 上方。有
+\begin{align}
+ \varphi_v(\operatorname{Fr}_v)&=(t_v,\operatorname{Fr}_v),\qquad t_v\in{}^LT^\circ,\tag{2}\\
+ L(s,\pi_v,r_v)&=\det(1-r(t_v,\operatorname{Fr}_v)(Nv)^{-s})^{-1}.\tag{3}
+\end{align}
+因此，只须找到常数 $a>0$，使
+\begin{equation}
+ |\mu|\leq(Nv)^a\quad
+ \text{对每个 }v\in V_1\text{ 及 }r(t_v,\operatorname{Fr}_v)\text{ 的每个特征值 }\mu.\tag{4}
+\end{equation}
+令 $n=[k':k]$。由于可设 $t_v$ 被 $\Gamma_{k_v}$ 固定（6.3），有 $t_v^n=(t_v,\operatorname{Fr}_v)^n$；因此，对 $r(t_v)$ 的所有特征值 $\mu$ 证明 (4) 与之等价。这些特征值形如 $t_v^\lambda$，其中 $\lambda$ 遍历 $r$ 限制到 ${}^LG^\circ$ 后的权集合 $P_r$。因此须证存在 $a>0$，使
+\begin{equation}
+ |t_v|^{\operatorname{Re}\lambda}\leq(Nv)^a
+ \qquad(v\in V_1,\ \lambda\in P_r).\tag{5}
+\end{equation}
+令 $G'$ 为 $G$ 的拟分裂内 $k$-形式。则 ${}^LG={}^LG'$，且对每个 $v\in V_1$，$G,G'$ 在 $k_v$ 上同构。因此可将 $G$ 换成 $G'$；重新选取记号后，以下假定 $G$ 在 $k$ 上拟分裂。固定 $G$ 的 Borel $k$-子群 $B$，并将 ${}^LT$ 视为 $G$ 的极大 $k$-环面 $T$ 的 $L$ 群。
+
+对 $\Gamma_{k'/k}$ 的循环子群 $D$，令 $V_D$ 为使 $\Gamma_{k_v}$ 等于 $D$ 在 $\Gamma_k$ 中逆像的 $v\in V_1$ 的集合。群 $U=X_*(T)^D$\footnote{\textbf{译者注（本次校订）：}这里应要求 $\Gamma_{k_v}$ 在有限商 $\operatorname{Gal}(k^{\prime}/k)$ 中的像为 $D$（必要时先取共轭），而不是要求整个分解群等于 $D$ 在 $\Gamma_k$ 中的逆像。后续论证只使用这个有限商上的作用。} 是 $T$ 的子环面 $S$ 的单参数子群群，且对每个 $v\in V_D$，$S/k_v$ 是 $G/k_v$ 的极大 $k_v$-分裂环面。群
+\begin{equation}
+ Y=\Hom(U,\C^*)=\Hom(X_*(T)^D,\C^*)\qquad(v\in V_D)\tag{6}
+\end{equation}
+与 $v$ 无关，是第6节对于 $G/k_v$ 的 $Y$。由 $D$ 的作用确定的相对根数据 $\psi(G/k_v)$ 也与 $v\in V_D$ 无关。
+给定 $y\in Y$，令 $y_0$ 为 $y$ 的一个“对数”，即 $\Hom(X_*(T)^D,\C)$ 中满足下式的元素：
+\begin{equation}
+ y(u)=(Nv)^{y_0(u)}=(Nv)^{\langle y_0,u\rangle}
+ \qquad(u\in X_*(T)^D).\tag{7}
+\end{equation}
+它在加上某个格中的元素后保持不变，但其实部 $\operatorname{Re}y_0\in\Hom(U,\R)$，由
+\begin{equation}
+ y(u)=(Nv)^{\langle\operatorname{Re}y_0,u\rangle}\tag{8}
+\end{equation}
+定义，是良定义的。若 $y$ 取正实值，便选 $y_0$ 等于其实部。空间 $\mathfrak a^*$ 为 $\mathfrak a=U\otimes\R$ 的对偶，后者即所谓 $S/k_v$ 的实 Lie 代数；${}_kW$ 在其上典范地作为反射群作用。用 $\mathfrak a^{*+}$ 表示由 $B$ 定义的正 Weyl 室。
+
+令 $\rho_v$ 为 $T(k_v)$ 的非分歧特征，由 $t\mapsto|\delta(t)|_v$ 给出，其中 $|\cdot|_v$ 是 $v$ 处的正规化绝对值，$\delta$ 为正根之和的一半。其实对数 $\rho_0$ 与 $v\in V_D$ 无关。这里，$\rho_v$ 的取值写为 $Nv$ 的幂，相应指数由 $k_v$-根、根的重数及 Bruhat--Tits 理论的指标 $q_\alpha$ 确定 [61]。后者又由前述资料及 $\Gamma_{k_v}$ 在扩充 Dynkin 图上的作用确定 [61]，也与 $v\in V_D$ 无关。用 $\rho_0$ 代替 $\rho_{v,0}$，有 $\rho_0\in\mathfrak a^{*+}$。
+
+表示 $\pi_v$ 是非分歧主系列 $\operatorname{PS}(\chi_v)$ 的组成成分，其中 $\chi_v$ 为 $T(k_v)$，或等价地 $S(k_v)$ 的非分歧特征，在模 ${}_kW$ 变换意义下确定。因此可假定 $\chi_{v,0}$ 位于 $\mathfrak a^{*+}$ 的闭包 $\operatorname{Cl}(\mathfrak a^{*+})$ 中。因 $\pi_v$ 酉，相应球函数（spherical function）有界，故 $\operatorname{Re}\chi_{v,0}$ 包含于 ${}_kW(\rho_0)$ 的凸包，即
+\begin{equation}
+ \langle\rho_0-\chi_{v,0},\lambda\rangle\geq0
+ \qquad(\lambda\in\mathfrak a^{*+}).\tag{9}
+\end{equation}
+（见证明之后的注。）
+对 $\lambda\in X^*({}^LT^\circ)$，令 $\lambda'$ 为其对 $X_*(T)^D$ 的限制。由10.4及我们的约定，
+\begin{equation}
+ |\lambda(t_v)|=(Nv)^{\langle\operatorname{Re}\chi_{v,0},\lambda'\rangle}.\tag{10}
+\end{equation}
+令 $\overline\lambda={}_kW(\lambda')\cap\operatorname{Cl}(\mathfrak a^{*+})$。因 $\operatorname{Re}\chi_{v,0}\in\operatorname{Cl}(\mathfrak a^{*+})$，有
+\begin{equation}
+ (Nv)^{\langle\operatorname{Re}\chi_{v,0},\lambda'\rangle}
+ \leq(Nv)^{\langle\operatorname{Re}\chi_{v,0},\overline\lambda\rangle}.\tag{11}
+\end{equation}
+结合 (9)，得到\footnote{\textbf{译者注（本次校订）：}这一段有几处配对与实部的记号需要统一：式 (8) 左端应为 $|y(u)|$；进入实 Weyl 室和式 (9) 不等式的应是 $\operatorname{Re}\chi_{v,0}$。此外，$\lambda\in X^*({}^LT^\circ)=X_*(T)$ 在这里应先作 $D$ 平均，得到 $\lambda^{\prime}=|D|^{-1}\sum_{d\in D}d\lambda\in U\otimes\Q$，再与 $\operatorname{Re}\chi_{v,0}\in\mathfrak a^*$ 配对；并取其相对 Weyl 群轨道中的优势代表 $\overline\lambda$。相应地，式 (9) 的检验向量属于 $\mathfrak a$ 中的优势锥。这些修正使 (8)--(12) 的不等式与对偶配对一致。另，$\rho_v$ 所用幂指数不必为整数，例如分裂 $\operatorname{PGL}_2$ 的半模特征在基本余特征上有半整数指数；这里所需的是这些指数与 $v$ 无关。}
+\begin{equation}
+ |\lambda(t_v)|\leq(Nv)^{\langle\rho_0,\overline\lambda\rangle}.\tag{12}
+\end{equation}
+当 $\lambda$ 遍历 $P_r$ 时，$\overline\lambda$ 只有有限种可能，因而对 $v\in V_D$，(4) 成立，可取 $a=\sup_{\lambda\in P_r}\langle\rho_0,\overline\lambda\rangle$。由于 $V_1$ 是有限多个这种集合的并，(4) 得证。
+
+\paragraph*{注。} [35，第27--29页] 对分裂情形证明了关系 (9)。对一般半单单连通群，见 I. Macdonald, \emph{Spherical functions on a group of p-adic type}, Publ. Ramanujan Institute 2, Madras, 定理4.7.1；或 H. Matsumoto, Lecture Notes in Math., vol. 590, Springer-Verlag, Berlin and New York, 命题4.4.11。事实上，我们把它用于一般连通约化群，但通过转到导出群的万有覆盖，容易归结为半单单连通情形。
+
+\begin{originaltheorem}{推论 13.3（Corollary 13.3）}
+设 $P$ 为 $G$ 的抛物 $k$-子群，$P=MN$ 为其 $k$ 上的 Levi 分解（Levi decomposition）。假定 $\pi$ 是表示 $\Ind_{P_{\A}}^{G_{\A}}(\sigma)$ 的一个组成成分，其中 $\sigma$ 为 $M_{\A}$ 的可酉化不可约容许表示，视为 $P_{\A}$ 上在 $N_{\A}$ 上平凡的表示。则 $L(s,\pi,r)$ 在某个右半平面绝对收敛。
+\end{originaltheorem}
+把 ${}^LM$ 视为 ${}^LG$ 的子群（3.3），令 $r'$ 为 $r$ 对 ${}^LM$ 的限制。取 $v\in V_f$，使13.1末尾列出的条件对 $M,G,\sigma_v,\pi_v$ 均满足。由诱导的传递性，存在如前面证明中的 $\chi_v$，使 $\sigma_v$（分别 $\pi_v$）为 $M(k_v)$（分别 $G(k_v)$）的主系列 $\operatorname{PS}(\chi_v)$ 中关于 $M(\mathfrak o_v)$（分别 $G(\mathfrak o_v)$）的第一类组成成分。于是 $L(s,\pi_v,r)=L(s,\sigma_v,r')$（7.2、10.4）。这一等式对几乎所有 $v$ 成立，因而可应用定理13.2。
+
+\origsubsection{14}{自守表示的 L 函数（The L-function of an automorphic representation）}
+\paragraph*{14.1.} $G_{\A}$ 的一个光滑表示（smooth representation）称为自守的，若它是 $G_{\A}$ 在 $G_k\backslash G_{\A}$ 上正则表示（regular representation）的子商（subquotient）。若由尖点形式组成，则称其为尖点的（cuspidal）；此时模中心为酉表示。用 $\mathfrak A(G/k)$ 表示 $G_{\A}$ 的不可约容许自守表示的等价类集合。由 [39] 命题2，每个 $\pi\in\mathfrak A(G/k)$ 都是从某个尖点表示 $\sigma\in\mathfrak A(M/k)$ 诱导得到的表示的组成成分，其中 $M$ 是 $G$ 的某个抛物 $k$-子群的 Levi $k$-子群。结合13.3，得到：
+
+\begin{originaltheorem}{定理 14.2（Theorem 14.2；Langlands）}
+设 $\pi\in\mathfrak A(G/k)$，$r$ 为 ${}^LG$ 的表示。则 $L(s,\pi,r)$ 在某个右半平面绝对收敛。
+\end{originaltheorem}
+不可约容许自守表示的 $L$ 函数，也称为自守 $L$ 函数（automorphic $L$-function）。
+
+\paragraph*{14.3.} 对自守的 $\pi$，关于 $L(s,\pi,r)$ 的解析性质有若干猜想，它们都在某些特殊情形得到验证，最早可追溯至 Hecke 关于附加于 Größencharaktere 和模形式的 $L$ 级数的工作。
+
+(a) 若 $\pi\in\mathfrak A(G/k)$，则 $L(s,\pi,r)$ 可亚纯延拓到整个复平面。
+
+(b) 假定 $\pi,G$ 使局部问题的解在所有位置均给出因子 $L,\varepsilon$。猜想存在函数方程
+\[
+ L(s,\pi,r)=\varepsilon(s,\pi,r)L(1-s,\widetilde\pi,r),
+\]
+其中 $\widetilde\pi$ 为 $\pi$ 的逆反表示（contragredient representation）。\footnote{\textbf{译者注（本次校订）：}对于本篇允许的任意 $L$ 群表示 $r$，右侧一般应使用对偶表示，即写作 $L(1-s,\pi,r^\vee)$，其中 $r^\vee$ 为 $r$ 的逆反表示。直接写成 $L(1-s,\widetilde\pi,r)$ 需要额外的相容约定，尤其不能忽略 $r$ 在 Galois 因子上的作用。取 $\pi$ 平凡而 $r$ 为非自对偶的有限阶 Galois 特征，即可看出函数方程必须将该特征换为其逆特征。}
+
+(c) 在若干特殊情形下，已知以下结论：
+
+(*) 若 $\pi$ 尖点，$r$ 不可约且非平凡，则 $L(s,\pi,r)$ 为整函数。
+
+这一现象曾被猜想为普遍成立，但已有反例。从构造上看，若 $\pi$ 是从约化群 $H$ 的尖点表示提升而来（下文第V章的意义），且 $r$ 限制到 ${}^LH$ 后含平凡表示，就可能出现反例。
+
+\paragraph*{14.4.} (a) 令 $G=\GL_n$，$r=r_n$ 为 $\GL_n(\C)$ 的标准表示。若将 $L,\varepsilon$ 定义为12.2所述局部因子之积，则14.3(b)、(c) 在 $n=2$ 时由 [25] 证明，在 $n\geq2$ 时由 [19] 证明。如12.2所述，这些因子在几乎所有位置与本文考虑的相同，且 $n=2$ 时在所有位置均相同。
+
+(b) 若 $G=\GL_2\times\GL_2$，$r=r_2\otimes r_2$，Jacquet 在 [21] 中建立了类似结果。
+
+(c) 令 $G=\GL_2$。若 $r:\GL_2(\C)\to\GL_3(\C)$ 为伴随表示（adjoint representation），则 [16] 宣布了14.3(b)、(c)，推广了 Shimura 的结果 [54]。若 $r=\operatorname{Sym}^3(r_2),\operatorname{Sym}^4(r_2)$，则 [15] 在整体提升（见第V章）的背景下陈述了14.3(b)；对 $\operatorname{Sym}^3(r_2)$，[51] 还在下述14.5的框架内证明了它。
+
+(d) 设 $k$ 为函数域，$G=\GL_m\times\GL_n$，$r=r_m\otimes r_n$。令 $\pi$（分别 $\pi'$）为第一（分别第二）因子的尖点自守表示。利用 [19]、[26]、[27] 的方法，可以定义 $L,\varepsilon$，并据 Jacquet 告知，可证明14.3(b)，以及全纯性；例外是 $m=n$ 且 $\pi$ 与 $\pi'$ 互为逆反。这些方法还给出其他群与其他表示的更多例子。预期数域上也有类似结果。
+
+(e) 当 $G=\operatorname{PSp}(4)$ 时，14.3(a) 已在 [1] 中的某些情形及 [42] 的一般情形中验证，也建立了函数方程。[41] 对函数域上奇数个变量的正交群，宣布了12.3所述局部因子所给出的14.3(a)、(b)。综述及更早文献见 [43]；也见 [44]。
+
+\paragraph*{14.5.} 下面介绍 [33] 中验证14.3(a)的若干例子（综述另见 [18]）。设 $C$ 为分裂、伴随型的 $k$-群，配备其典范 $\mathfrak o$-结构。固定 $C$ 的 Borel 子群 $B$ 及 $B$ 的一个定义在 $\mathfrak o$ 上的极大环面 $T$。令 $P$ 为极大真标准抛物子群，$P=MN$ 为其标准 Levi 分解。因 $C$ 为伴随型，容易看出 $C(M)$ 为环面。群 $M/C(M)$ 半单、在 $k$ 上分裂、为伴随型，且秩为 $\operatorname{rk}(C)-1$。令 $G=M/C(M)$，群 ${}^LG^\circ$ 单连通（2.2(2)）。有自然包含 ${}^LG\to{}^LM$，且 ${}^LM$ 为某个标准抛物子群 ${}^LP={}^LM\cdot U$ 的 Levi 子群，其中 $U$ 为幺幂根基（3.3）。令 $A$ 为 $P$ 在 $T$ 中的分裂分量，${}^LA^\circ$ 为 ${}^LP^\circ$ 在 ${}^LT^\circ$ 中的分裂分量。群 ${}^LA^\circ$ 作用于 $U$ 的 Lie 代数，其特征空间为不可约 ${}^LG^\circ$-模。令 $F_P$ 表示与这些 ${}^LG^\circ$-模互为逆反的表示集合。[33] 考虑的 $L$ 函数形如 $L(s,\pi,r)$，其中 $r\in F_P$，$\pi$ 为 $G$ 的不可约尖点自守表示。该文给出许多 $L(s,\pi,r)$ 具有亚纯延拓的例子。这由 [32] 的结果推出：令 $m$ 为 $\mathfrak u$ 关于 $M$ 的组成列（composition series）长度。适当排列 $F_P$ 的元素，并选取正整数 $a_i$ 后，有关系
+\begin{equation}
+ M(s)=\prod_{1\leq i\leq m}L(a_i s,\pi,r_i)L(sa_i+1,\pi,r_i)^{-1},\tag{1}
+\end{equation}
+其中 $M(s)$ 为关于 $P$ 的 Eisenstein 级数理论中出现的交织算子（intertwining operator），\footnote{\textbf{译者注（本次校订）：}式 (1) 右端是标量。若 $M(s)$ 表示整个交织算子，则应另保留归一化后的交织算子；这里的 $L$ 函数比值描述的是相应的标量归一化因子，或无分歧球向量上的系数。分歧素位的局部算子也须单独计入。}已知它可亚纯延拓到复平面 [32]。若 $m=1$，结合13.2即得亚纯延拓。一般地，若除一个 $r_i$ 外的所有 $r_i$ 都已知解析延拓，则 (1) 给出余下一个的解析延拓。
+
+\paragraph*{14.6.} 逆问题（converse problem）是研究如何通过 $L$ 函数的解析性质刻画自守表示；换言之，需要哪些解析条件，才能保证给定的 $L$ 函数来自自守表示。第一个主要结果是 Hecke 对尖点模形式的 Mellin 变换（Mellin transform）的刻画。随后是 Weil 对该定理到同余子群（congruence subgroups）的推广 [64]、[65]，[25] 中的表示论推广，以及到 $\GL_3$ 的推广 [46]、[27]。这些结果对 $\pi$ 的 $L$ 函数及其由特征扭曲得到的 $\pi\otimes\chi$ 的 $L$ 函数施加条件。然而，从 $n=4$ 起类似结论不成立 [46]。若对 $\pi$ 由 $\GL_{n-1}$、甚至仅由 $\GL_{n-2}$ 的表示所作的扭曲 $\pi\otimes\rho$ 施加条件，或许仍成立。函数域中此方向的结果见 [45]。
+
+对于本文讨论的一般问题，另一条研究路径是：直接证明某个给定 $L$ 级数是自守的，从而推出其解析性质（见基变换及 Shimura 簇 zeta 函数讨论班 [17]、[8]、[40]）。
+
+\paragraph*{14.7. 其他问题（Other problems）。}
+(1) “Ramanujan 猜想”可以表述为如下表示论命题：若 $\pi=\bigotimes_v\pi_v$ 为不可约非平凡容许尖点自守表示（且 $G$ 为单群），则每个 $\pi_v$ 均缓增。目前已知这对某些正交群或酉群，甚至对一个分裂群都不成立 [20]。
+
+(2) 设 $\pi$ 为 $G_{\A}$ 的酉不可约表示。若 $G=\GL_2$，则它在尖点形式空间 ${}^0L_2(G(k)\backslash G(\A))$ 中的重数至多为1，这就是“重数一定理”（multiplicity one theorem）[25]。事实上，还有“强重数一定理”（strong multiplicity one theorem）[38]：给定几乎所有位置的 $\pi_v$ 后，尖点形式空间中至多有一个组成成分 $\pi$ 具有这些局部因子。
+
+重数一定理已对 $\GL_n$ 证明 [52]，强形式已对 $\GL_3$ 证明 [28]。对 $\SL_2$ 是否成立尚不清楚；另一方面，对 $\SL_2$ 的某些内形式存在反例 [31]。
+
+\origsection{V}{提升问题（Lifting problems）}
+虽然第14节讨论的自守 $L$ 函数问题只部分解决，但已有结果却涵盖了当时几乎所有已知具有亚纯或全纯延拓及函数方程的 $L$ 级数，无论它们最初是否来自自守形式。这启发我们：给定一个 $L$ 级数与约化群 $G$，尝试判断 $G$ 是否具有以该级数为 $L$ 级数的自守表示。许多这类问题更准确地可视为“提升问题”，或“关于 $L$ 群态射的函子性问题”的特例。它也有局部版本。为叙述方便，先从局部问题开始，这些问题的动机和要求来自整体理论，现有许多证明也同时使用局部与整体方法。这些问题由 Langlands 在 [35] 中提出。
+
+\origsubsection{15}{L 群的 L 同态（L-homomorphisms of L-groups）}
+\paragraph*{15.1.} 设 $E$ 为域，$H,G$ 为连通约化 $E$-群。$\Gamma_E$ 上的同态 $u:{}^LH\to{}^LG$ 称为 $L$ 同态（$L$-homomorphism），若它连续，且其对 ${}^LH^\circ$ 的限制是到 ${}^LG^\circ$ 的复解析同态。设 $E$ 为局部域，$G$ 拟分裂。若 $\varphi\in\Phi(H)$，则 $u\circ\varphi\in\Phi(G)$。事实上，$u\circ\varphi$ 显然满足8.2(i)；又因为 ${}^LG$ 的每个抛物子群均相关，8.2(ii) 也满足。
+因此 $\varphi\mapsto u\circ\varphi$ 定义映射 $\Phi(H)\to\Phi(G)$，记为 $\Phi(u)$。
+
+\paragraph*{15.2.} 设 $E=k$ 为整体域。对 $v\in V$，Galois 群 $\Gamma_{k_v}$ 为 $\Gamma_k$ 的子群，故将 $G$ 视为 $k_v$-群时的 $L$ 群，记为 ${}^L(G/k_v)$，是 ${}^LG={}^L(G/k)$ 的子群。因此特别地，15.1的 $L$ 同态 $u$ 通过限制给出 $L$ 同态 $u_v:{}^L(H/k_v)\to{}^L(G/k_v)$，从而还有映射 $\Phi(u_v):\Phi(H/k_v)\to\Phi(G/k_v)$（$v\in V$）。
+
+粗略地说，“提升问题”是问：在局部情形，是否有表示间的映射，在整体情形，是否有自守表示间的映射，与这些映射相对应。
+
+\paragraph*{15.3. 例：基变换（Base change）。}
+设 $H$ 在 $E$ 上分裂，$F$ 为 $E$ 的有限 Galois 扩张，$G=R_{F/E}H$。则 ${}^LG^\circ$ 为若干份 ${}^LH^\circ$ 的乘积，由 $\Gamma_{F/E}$ 编号并置换（5.1）。此时有自然 $L$ 同态 $u$，在 $\Gamma_E$ 上为恒等，在 ${}^LH^\circ$ 上为对角映射。若 $E$ 为局部域，则 $W'_F$ 是 $W'_E$ 的开正规子群，映射 $\Phi(u)$ 可看作由限制到 $W'_F$ 给出。
+
+\origsubsection{16}{局部提升（Local lifting）}
+\paragraph*{16.1.} 设 $k=E$ 为局部域，$G$ 在 $E$ 上拟分裂，$H$ 为连通约化 $E$-群，$u:{}^LH\to{}^LG$ 为 $L$ 同态。局部提升问题的基本目标，是建立保持 $L$ 因子与 $\varepsilon$ 因子的对应 $\Pi(u):\Pi(H(k))\to\Pi(G(k))$。若第III章的局部参数化问题已解决，则 $\Pi(u)$ 为不可区分类之间的映射，把 $\Pi_{\varphi,H}$ 映到 $\Pi_{u\circ\varphi,G}$（$\varphi\in\Phi(H)$）。若 $\Pi\in\Pi(G(k))$ 属于 $\Pi_{u\circ\varphi,G}$，其中 $\varphi\in\Phi(H)$ 满足 $\pi\in\Pi_{\varphi,H}$，则称 $\Pi$ 为 $\pi\in\Pi(H(k))$ 的一个提升（lift）。此时对 ${}^LG$ 的每个表示 $r$，有
+\begin{equation}
+ L(s,\Pi,r)=L(s,\pi,r\circ u),\qquad
+ \varepsilon(s,\Pi,r,\psi)=\varepsilon(s,\pi,r\circ u,\psi).\tag{1}
+\end{equation}
+
+\paragraph*{16.2.} 因此，局部提升是 $L$-不可区分表示类之间的映射。不过，在整体情形中几乎处处成立的下列条件下，可以选出唯一一个提升：假定 $H,G$ 拟分裂，均在 $E$ 的非分歧扩张 $F$ 上分裂，配备 $\mathfrak o_E$-结构使 $H(\mathfrak o_E)$、$G(\mathfrak o_E)$ 均为超特殊极大紧子群，且 $\pi$ 关于 $H(\mathfrak o_E)$ 为第一类。则使 $\pi\in\Pi_{\varphi,H}$ 的 $\varphi$ 及集合 $\Pi_{u\circ\varphi,G}$ 良定义。此外，$\Pi_{u\circ\varphi,G}$ 恰含一个关于 $G(\mathfrak o_E)$ 的第一类元素，称为 $\pi$ 的自然提升（natural lift）。
+
+\paragraph*{16.3.} 局部参数化问题的完整解决尚待进一步研究，并可能需要同时解决 Artin 猜想等整体问题。目前可先研究它的若干较弱形式，特别是借此证明 Artin 猜想的若干情形。注意，若 $G=\GL_n$，则已知或猜想各集合 $\Pi_{\varphi,G}$ 都仅含一个元素（12.2、12.3）。此时提升问题可表述为构造满足一定条件的映射 $u_*:\Pi(H(k))\to\Pi(G(k))$。目前有两个例子：
+
+(a) 基变换（参见15.3），其中 $H=\GL_2$，$F/E$ 为素数次循环扩张 [17]、[38]、[49]、[56]。除某些自然性条件及16.2的要求外，主要要求是建立 $\pi$ 与假想的 $u_*(\pi)$ 的特征之间的关系。结果还描述 $u_*$ 的纤维与像。[注意，[62] 使用 [38] 关于此问题的结果，因此不能直接援引 $\GL_2$ 的局部参数化问题的解（12.2）来使用16.1的 $\Pi(u)$。若能这样做，则局部问题 [38] 便主要归结为建立 $\pi$ 与 $\Pi(u)(\pi)$ 的特征关系。]
+
+(b) $H=\GL_2$，$G=\GL_3$，且
+\begin{equation}
+ u:{}^LH^\circ=\GL_2(\C)\longrightarrow{}^LG^\circ=\GL_3(\C)\tag{1}
+\end{equation}
+由 ${}^LH^\circ$ 的伴随表示给出（见 [16]）。
+
+此时 $\Pi=u_*(\pi)$ 必须在 ${}^LG^\circ$ 的中心上平凡，\footnote{\textbf{译者注（本次校订）：}$\Pi$ 是 $G(E)=\operatorname{GL}_3(E)$ 的表示，不能说它在复对偶群 ${}^LG^\circ$ 的中心上平凡。这里的准确结论是 $\Pi$ 的中心特征为平凡特征，因为伴随表示 $u$ 的行列式为 $1$。}且要求 $u_*(\pi)\otimes\chi$（$\chi$ 为 $E^*$ 的特征）的 $L$ 因子、$\varepsilon$ 因子等于某些给定函数。这样的 $\Pi$ 至多一个（12.2(d)）。[16] 陈述 $\Pi$ 的存在性，可能的例外是 $E$ 的剩余特征为偶数、且 $\pi$ 为“例外的”（extraordinary）。
+
+\paragraph*{16.4.} 在16.3(a)，提升问题与特征之间关系的存在性相联系。这是 $\Pi(H)$ 与 $\Pi(G)$ 之间的直接联系，对利用迹公式证明或使用局部、整体提升极其重要。再举两个这种关系的例子。假定 $G$ 是 $H$ 的拟分裂内形式，则有同构 $u:{}^LH\xrightarrow{\sim}{}^LG$ 及嵌入 $\Phi(u):\Phi(H)\subset\Phi(G)$。若 $f:H\to G$ 为 $\overline k$-同构，且每个 $\gamma\in\Gamma_k$ 对应的 $f^{-1}\,{}^\gamma f$ 都是 $G$ 的内自同构，则 $f$ 在 $\Gamma_k$-稳定共轭类之间建立双射。利用 Steinberg 的结果 [59]，容易看出 $H$ 的极大 $k$-环面在 $k$ 上同构于 $G$ 的极大 $k$-环面。借助这一点，在某些情形下可以给 $H(k)$ 的正则半单类附加 $G(k)$ 的相应类，从而可以比较 $H(k)$、$G(k)$ 的特征在这些类上的值。
+
+(a) 令 $k$ 为 $\R$，或剩余特征为奇数的非阿基米德域。令 $G=\GL_2$，$H$ 为 $k$ 上四元数代数（quaternion algebra）的可逆元群。\footnote{\textbf{译者注（本次校订）：}这里应取四元数除代数。若代数分裂，则 $H(k)=\operatorname{GL}_2(k)$，其不可约表示一般既非有限维，也不必属于离散系列；下述局部 Jacquet--Langlands 对应所讨论的是非分裂内形式。}各集合 $\Pi_\varphi$ 为单点集，$\Phi(u)$ 把 $H(k)$ 的一个（有限维）不可约表示 $\pi$ 映到 $G(k)$ 的一个离散系列表示 $\pi'$。此时 $H(k)$ 的半单类对应 $G(k)$ 的椭圆类（elliptic classes）。[25] 证明了 $\pi,\pi'$ 的特征在这些类上仅相差一个符号。
+
+(b) 令 $k=\R$。对 $\varphi\in\Phi(H)$ 或 $\Phi(G)$，令 $\chi_\varphi$ 为 $\Pi_\varphi$ 中各元素特征之和。取 $\varphi\in\Phi(H)$，使 $\Pi_\varphi$ 由缓增表示组成。则在 $H(k)$ 的正则半单类上，$\chi_\varphi$ 与 $\chi_{u\circ\varphi}$ 相等，至多相差一个仅依赖 $H,G$ 的符号 [53, 6.3]。
+
+\paragraph*{16.5.} 也可采用 $L$ 群的 Weil 形式，此时假定 $L$ 同态限制到 $W_E$ 后满足8.2(i)的显然类似条件。特别取 $H=\{1\}$，则 $u$ 就是 $\Phi(G)$ 的一个元素。此时提升问题是第III章局部问题的一部分。
+
+\origsubsection{17}{整体提升（Global lifting）}
+\paragraph*{17.1.} 假定 $G$ 拟分裂。设 $H$ 为约化 $k$-群，$u:{}^LH\to{}^LG$ 为 $L$ 同态。令 $u_v:{}^L(H/k_v)\to{}^L(G/k_v)$ 及 $\Phi(u_v):\Phi(H/k_v)\to\Phi(G/k_v)$ 为相应映射（$v\in V$，见15.1）。
+
+令 $\pi=\bigotimes_v\pi_v$（分别 $\Pi=\bigotimes_v\Pi_v$）为 $H_{\A}$（分别 $G_{\A}$）的不可约容许表示。若对每个 $v\in V$，$\Pi_v$ 都是 $\pi_v$ 的一个提升（16.1），则称 $\Pi$ 为 $\pi$ 的提升。此时对 ${}^LG$ 的每个表示 $r$，有
+\begin{equation}
+ L(s,\Pi,r)=L(s,\pi,r\circ u),\qquad
+ \varepsilon(s,\Pi,r)=\varepsilon(s,\pi,r\circ u).\tag{1}
+\end{equation}
+通常还要求 $\Pi_v$ 在几乎所有位置为 $\pi_v$ 的自然提升（16.2）。问题是每个自守 $\pi$ 是否都有自守提升；或者更进一步，是否存在具有合理性质的映射 $u_*:\mathfrak A(H/k)\to\mathfrak A(G/k)$，把 $\pi\in\mathfrak A(H/k)$ 映到其一个提升。还希望描述 $u_*$ 的纤维与像。
+
+这一问题的一般情形目前尚待解决。许多已有结果却已清楚体现这一原则，其中一些将在各讨论班中详细讨论。下面列出若干特例，以说明这一问题的范围和研究方向，细节请参见文献或其他讨论班。
+
+\paragraph*{注。} 设 $r$ 为 ${}^LH$ 的一个 $n$ 次表示。它显然确定 $L$ 同态 $u:{}^LH\to{}^L\GL_n=\GL_n(\C)\times\Gamma_k$。若整体提升存在，便有如下推论：若 $\pi$ 为 $H$ 的自守表示，则 $L(s,\pi,r)=L(s,\Pi,r_n)$，其中 $\Pi$ 为 $\GL_n$ 的自守表示，$r_n$ 为标准表示。这将把自守 $L$ 函数的研究归结为 $\GL_n$ 关于标准表示的 $L$ 函数的研究。
+
+\paragraph*{17.2.} 令 $H=\{1\}$，$G=\GL_n$。则 $L$ 同态 $u$ 就是 $\Gamma_k$ 的一个连续 $n$ 维复表示。问题是 Artin $L$ 级数 $L(s,u)$ 是否为 $\GL_n$ 的自守 $L$ 级数（关于 $\GL_n(\C)$ 的标准表示）；当 $u$ 不可约时，所对应的自守表示应为尖点表示。由 $\GL_n$ 的已知结果（参见14.4），这将推出 Artin 猜想。
+
+$n=1$ 时，类域论给出肯定答案。$n=2,3$ 时，由于有 Hecke 理论的逆定理 [25]、[65]、[27]、[46]，肯定答案等价于 Artin 猜想。$n=2$ 时，对于 $\Gamma_k$ 的二面体或四面体表示，以及 $\Q$ 上某些其他表示，已得到证明（见 [38]、[17]、[15]）。
+
+\paragraph*{17.3.} 令 $k'/k$ 为 Galois 扩张，$n=[k':k]$。取 $H=R_{k'/k}\GL_1$，$G=\GL_n$。存在从 ${}^LH^\circ\rtimes\Gamma_{k'/k}$ 到 ${}^LG^\circ$ 的某个极大环面 ${}^LT^\circ$ 的正规化子的自然同态 $f$。前一个群是 ${}^LH$ 的商，且 ${}^LG={}^LG^\circ\times\Gamma_k$，故可定义 $L$ 同态 $u:{}^LH\to{}^LG$ 为 $u(h,\gamma)=(f(h),\gamma)$（$h\in{}^LH^\circ,\gamma\in\Gamma_k$）。$H$ 的自守表示为 $k'$ 的 Größencharakter $\chi$。问题是 Artin $L$ 级数 $L(s,\chi)$ 是否为 $G$ 的自守表示的 $L$ 级数。
+
+若 $n=2,k=\Q$，$k'$ 为虚二次域，Hecke 证明了这一点；$\pi$ 与一个尖点全纯自守形式相联系。\footnote{\textbf{译者注（本次校订）：}这一二次域提升要得到尖点表示，须使 $\chi$ 不在非平凡 Galois 自同构下不变。若 $\chi=\chi_0\circ N_{k^{\prime}/k}$，则诱导参数可约，所对应的是 Eisenstein 型表示。另，前段的 $L$ 同态公式漏掉了置换矩阵：准确地应为 $u(h,\gamma)=(f(h,\overline\gamma),\gamma)$，其中 $\overline\gamma\in\operatorname{Gal}(k^{\prime}/k)$；不能只写 $f(h)$。}若 $n=2,k=\Q$，$k'$ 为实二次域，H. Maass 建立了该结论；此时 $\pi$ 与非全纯自守形式相联系。$n=3$ 的证明见 [26]、[27]。
+
+\paragraph*{17.4. 基变换。}
+这是16.3(a)的整体对应。令 $k'/k$ 为有限 Galois 扩张，假定 $H$ 为 $k$-分裂群，$G=R_{k'/k}H$。此时仍有 $L$ 同态 $u:{}^LH\to{}^LG$，其对 ${}^LH^\circ$ 的限制为对角映射。此时 $G(\A),G(k)$ 典范地同构于 $H(\A_{k'}),H(k')$，故问题是给 $H(\A_k)$ 的自守表示附加 $H(\A_{k'})$ 的自守表示。同样，它应对应于把同态 $W_k\to{}^LH^\circ$ 限制到 $W_{k'}$。
+
+若 $H=\GL_2$，$k'/k$ 为素数次循环扩张，则 [38] 构造了表示的提升映射 $u_*$，并描述其像和纤维。这推广 Doi--Naganuma、Jacquet [21]（二次情形），以及 Saito [49]、Shintani [55]、[56] 的工作（参见 [17]）。
+
+\paragraph*{17.5.} 设 $G$ 拟分裂，$H$ 为 $G$ 的内形式。则 ${}^LH={}^LG$，且对所有 $v$ 有 $\Phi(H/k_v)\subset\Phi(G/k_v)$（8.3）。此外，在几乎所有 $v$，$H,G$ 在 $k_v$ 上同构，故 $\Phi(H/k_v)=\Phi(G/k_v)$，$\Pi(H(k_v))=\Pi(G(k_v))$。问题是，给定 $\pi=\bigotimes_v\pi_v$，是否存在 $G$ 的自守表示 $\Pi=\bigotimes_v\Pi_v$，使几乎所有位置有 $\Pi_v=\pi_v$？
+
+若 $G=\GL_2$，$H$ 为 $k$ 上四元数代数 $D$ 的可逆元群，Jacquet--Langlands [25] 给出肯定答案。注意，此时由“强重数一定理”，至多有一个 $\Pi$ 能这样附加于给定的 $\pi$。可能的 $\Pi$ 恰为那些在 $D$ 不分裂的所有位置 $v$ 满足 $\Pi_v$ 属于离散系列的尖点自守表示（同上）。\footnote{\textbf{译者注（本次校订）：}此处的整体 Jacquet--Langlands 对应须在 $D^\times$ 一侧排除一维自守表示，并在 $\operatorname{GL}_2$ 一侧取所述尖点表示。若 $\pi=\chi\circ\operatorname{Nrd}$ 为一维表示，则它在几乎所有分裂素位也是一维，不能与所述尖点 $\Pi$ 几乎处处相同。强重数一的唯一性论证也应在这一尖点范围内使用。}
+
+\paragraph*{17.6.} 若 $H=\GL_2$，$G=\GL_3$，$u$ 如16.3(b)由伴随表示给出，则整体提升问题已由 Gelbart--Jacquet [16] 解决，其局部提升就是16.3(b)中的提升。
+
+\paragraph*{17.7.} 令 $M$ 为 $G$ 的抛物 $k$-子群 $P$ 的 Levi $k$-子群。则 ${}^LM$ 自然嵌入 ${}^LG$（3.3），给出 $L$ 同态 $u:{}^LM\to{}^LG$。若 $\pi$ 尖点，已知在许多情形，Eisenstein 级数 [32] 的解析延拓与留数给出一个酉的 $u_*(\pi)$，猜想一般也如此。
+
+\origsubsection{18}{与其他类型 L 函数的关系（Relations with other types of L-functions）}
+\paragraph*{18.1.} 在17.2，提升问题等于把 Artin $L$ 函数与 $\GL_n$ 的自守 $L$ 函数等同。采用 $L$ 群的 Weil 形式后，还可将更一般的 Weil 群表示纳入此问题。为简便，限于相对 Weil 群 $W_{k'/k}$，其中 $k'/k$ 为使 $H,G$ 分裂的有限 Galois 扩张。此时 $L$ 同态
+\[
+ u:{}^LH^\circ\rtimes W_{k'/k}\longrightarrow{}^LG^\circ\rtimes W_{k'/k}
+\]
+是与向 $W_{k'/k}$ 的投影相容的连续同态，其对 ${}^LH^\circ$ 的限制为到 ${}^LG^\circ$ 的复解析同态，且对 $w\in W_{k'/k}$，$u(w)=(u'(w),w)$ 为半单元素（参见8.2(i)）。
+
+若 $H=\{1\}$，这样的 $L$ 同态称为 $W_{k'/k}$ 到 ${}^LG$ 的容许同态。仿照局部情形 $\Phi(G)$ 的定义，可考虑这些同态模 ${}^LG^\circ$ 的内自同构的等价类集合 $\Phi_{k'/k}(G)$，再对 $k'$ 取适当极限 $\Phi(G)$。
+
+此时提升问题要求给任意 $\varphi\in\Phi(G)$ 附加自守表示 $\pi$，使对 ${}^LG$ 的任意表示 $r$，$L(s,\pi,r)$ 都等于 $r\circ u$ 的 Artin--Hecke $L$ 级数。特别要问的是，每个 Artin--Hecke $L$ 级数是否都等于 $\GL_n$ 的某个自守表示关于标准表示的 $L$ 级数？
+
+若 $G$ 为环面，[34] 给出肯定答案。事实上，此时 $G$ 的不可约容许自守表示是 $G(k)\backslash G(\A)$ 的特征，而 [34] 给出从 $\Phi_{k'/k}(G)$ 到这些特征的集合的有限核满同态。
+
+\paragraph*{18.2.} 另一个自然的问题是，Hasse--Weil zeta 函数（甚至 Galois 群的相容 $l$ 进表示系的 $L$ 函数）能否用自守 $L$ 函数表达。对函数域上的椭圆曲线，这是定理；对 $\Q$ 上的椭圆曲线应当如此的断言就是 Taniyama--Weil 猜想。它已在一些特殊情形验证（经典观点与表示论观点的综述分别见 [2]、[14]）。此外，相关研究主要集中在 Shimura 曲线及某些 Shimura 簇上；进展见相应专题讲稿。
+
+最后，还需研究如何先验地刻画那些 $L$ 级数具有算术或代数几何意义的自守表示。若 $k$ 为数域，一个必要条件是：对无穷位置 $v$，$\pi_v$ 应与 $W_{k_v}$ 的一个表示 $\sigma_v$ 相联系，后者对 $\C^*$ 的限制应为有理表示（将 $\C^*$ 视为实代数群），即 [3, 6.5] 中的 $A_0$ 型。若 $\pi$ 的 $L$ 级数要成为 Artin $L$ 级数，则 $\pi$ 甚至应为 $A_{00}$ 型（同上），即 $\sigma_v$ 在 $\C^*$ 上平凡。以下取 $G=\GL_2$、$k=\Q$，则 $\pi_\infty$ 有三种可能（11.5）。若 $\pi_\infty=\pi(1,\operatorname{sgn})$，由 Deligne--Serre 定理 [10]、[50]，$\pi$ 对应 $\Gamma_{\Q}$ 的行列式为奇特征的二维表示。若承认这类表示的 Artin 猜想，该对应便为双射。不过，对于 $\pi_\infty$ 的另两种可能值，我尚不知道有何结果。肯定答案将涉及非全纯自守形式。[36] 在 $\Q$ 上 $\GL_2$ 的许多情形证明，$A_0$ 型表示的 $L$ 级数是 $\Gamma_{\Q}$ 的一个相容 $l$ 进表示系的 $L$ 级数。在函数域上，没有 $A_0$ 之类的条件。事实上，对 $\GL_2$，Drinfeld 已证明所有不可约容许自守表示都与 $l$ 进表示相联系（见 G. Harder 与 D. Kazhdan 关于其工作的讲座）。
+
+\begin{thebibliography}{65}
+\setlength{\itemsep}{3pt}
+\bibitem[1]{c22-1} A. N. Andrianov, \emph{Dirichlet series with Euler product in the theory of Siegel modular forms of genus two}, Trudy Mat. Inst. Steklov \textbf{112} (1971), 73--94.
+\bibitem[2]{c22-2} B. J. Birch and H. P. F. Swinnerton-Dyer, \emph{Elliptic curves and modular functions of one variable. IV}, Lecture Notes in Math., vol. 476, Springer, New York, 1975, pp. 2--32.
+\bibitem[3]{c22-3} A. Borel, \emph{Formes automorphes et séries de Dirichlet (d'après R. P. Langlands)}, Sém. Bourbaki, Exposé 466 (1974/75); Lecture Notes in Math., vol. 514, Springer, New York, pp. 189--222.
+\bibitem[4]{c22-4} A. Borel and J.-P. Serre, \emph{Théorèmes de finitude en cohomologie galoisienne}, Comment. Math. Helv. \textbf{39} (1964), 111--164.
+\bibitem[5]{c22-5} A. Borel et J. Tits, \emph{Groupes réductifs}, Inst. Hautes Études Sci. Publ. Math. \textbf{27} (1965), 55--151.
+\bibitem[6]{c22-6} P. Cartier, \emph{Representations of reductive p-adic groups}, 本论文集第一册，第111--155页.
+\bibitem[7]{c22-7} W. Casselman, \emph{GL$_n$}, Proc. Durham Sympos. Algebraic Number Fields, London, Academic Press, New York, 1977.
+\bibitem[8]{c22-8} W. Casselman, \emph{The Hasse--Weil $\zeta$-function of some moduli varieties of dimension greater than one}, 本论文集第二册，第141--163页.
+\bibitem[9]{c22-9} P. Deligne, \emph{Formes modulaires et représentations de GL$_2$}, Modular Functions of One Variable, Lecture Notes in Math., vol. 349, Springer, New York, 1973, pp. 55--106.
+\bibitem[10]{c22-10} P. Deligne and J.-P. Serre, \emph{Formes modulaires de poids 1}, Ann. Sci. École Norm. Sup. (4) \textbf{7} (1974), 507--530.
+\bibitem[11]{c22-11} D. Flath, \emph{Decomposition of representations into tensor products}, 本论文集第一册，第179--183页.
+\bibitem[12]{c22-12} F. Gantmacher, \emph{Canonical representations of automorphisms of a complex semi-simple group}, Mat. Sb. \textbf{5} (1939), 101--142（英文）.
+\bibitem[13]{c22-13} S. Gelbart, \emph{Automorphic functions on adele groups}, Ann. of Math. Studies, no. 83, Princeton Univ. Press, Princeton, N. J., 1975.
+\bibitem[14]{c22-14} S. Gelbart, \emph{Elliptic curves and automorphic representations}, Advances in Math. \textbf{21} (1976), 235--292.
+\bibitem[15]{c22-15} S. Gelbart, \emph{Automorphic forms and Artin's conjecture}, Lecture Notes in Math., vol. 627, Springer-Verlag, Berlin and New York, 1977, pp. 241--276.
+\bibitem[16]{c22-16} S. Gelbart and H. Jacquet, \emph{A relation between automorphic forms on GL$_2$ and GL$_3$}, Proc. Nat. Acad. Sci. U.S.A. \textbf{73} (1976), 3348--3350.
+\bibitem[17]{c22-17} P. Gérardin and J.-P. Labesse, \emph{The solution of a base change problem for GL$_2$ (following Langlands, Saito, Shintani)}, 本论文集第二册，第115--133页.
+\bibitem[18]{c22-18} R. Godement, \emph{Fonctions automorphes et produits eulériens}, Sém. Bourbaki (1968/69), Exposé 349; Lecture Notes in Math., vol. 179, New York, 1970, pp. 37--53.
+\bibitem[19]{c22-19} R. Godement and H. Jacquet, \emph{Zeta-functions of simple algebras}, Lecture Notes in Math., vol. 260, Springer, New York, 1972.
+\bibitem[20]{c22-20} R. Howe and I. I. Piatetski-Shapiro, \emph{A counterexample to the `generalized Ramanujan conjecture' for (quasi-) split groups}, 本论文集第一册，第315--322页.
+\bibitem[21]{c22-21} H. Jacquet, \emph{Automorphic Forms on GL(2). II}, Lecture Notes in Math., vol. 278, Springer, New York, 1972.
+\bibitem[22]{c22-22} H. Jacquet, \emph{Generic representations}, Non-Commutative Harmonic Analysis, Lecture Notes in Math., vol. 587, Springer, New York, 1977, pp. 91--101.
+\bibitem[23]{c22-23} H. Jacquet, \emph{From GL$_2$ to GL$_n$}, U.S.-Japan Seminar on Number Theory (Ann Arbor, Mich., 1975).
+\bibitem[24]{c22-24} H. Jacquet, \emph{Principal L-functions of the linear group}, 本论文集第二册，第63--86页.
+\bibitem[25]{c22-25} H. Jacquet and R. P. Langlands, \emph{Automorphic forms on GL(2)}, Lecture Notes in Math., vol. 114, Springer, New York, 1970.
+\bibitem[26]{c22-26} H. Jacquet, I. Piatetskii-Shapiro and J. Shalika, \emph{Construction of cusp forms on GL$_3$}, Univ. of Maryland Lecture Notes, no. 16, 1975.
+\bibitem[27]{c22-27} H. Jacquet, I. Piatetskii-Shapiro and J. Shalika, \emph{Hecke theory for GL$_3$}, Ann. of Math.（待刊）.
+\bibitem[28]{c22-28} H. Jacquet and J. Shalika, \emph{Comparaison des représentations automorphes du groupe linéaire}, C. R. Acad. Sci. Paris Sér. A \textbf{284} (1977), 741--744.
+\bibitem[29]{c22-29} A. Knapp and G. Zuckerman, \emph{Classification of irreducible tempered representations of semi-simple Lie groups}, Proc. Nat. Acad. Sci. U.S.A. \textbf{73} (1976), 2178--2180.
+\bibitem[30]{c22-30} A. Knapp and G. Zuckerman, \emph{Normalizing factors, tempered representations and L-groups}, 本论文集第一册，第93--105页.
+\bibitem[31]{c22-31} J. P. Labesse and R. P. Langlands, \emph{L-indistinguishability for SL$_2$}, Institute for Advanced Study, Princeton, N. J.（预印本）.
+\bibitem[32]{c22-32} R. P. Langlands, \emph{On the functional equations satisfied by Eisenstein series}, Lecture Notes in Math., vol. 544, Springer, New York.
+\bibitem[33]{c22-33} R. P. Langlands, \emph{Euler products}, Yale Univ. Press, 1967.
+\bibitem[34]{c22-34} R. P. Langlands, \emph{Representations of abelian algebraic groups}, Yale Univ., 1968（预印本）.
+\bibitem[35]{c22-35} R. P. Langlands, \emph{Problems in the theory of automorphic forms}, Lectures in Modern Analysis and Applications, Lecture Notes in Math., vol. 170, Springer, New York, 1970, pp. 18--86.
+\bibitem[36]{c22-36} R. P. Langlands, \emph{Modular forms and l-adic representations}, Modular Functions of One Variable. II, Lecture Notes in Math., vol. 349, Springer, New York, 1973, pp. 361--500.
+\bibitem[37]{c22-37} R. P. Langlands, \emph{On the classification of irreducible representations of real algebraic groups}（预印本）.
+\bibitem[38]{c22-38} R. P. Langlands, \emph{Base change for GL$_2$: The theory of Saito-Shintani with applications}, Notes, Inst. Advanced Study, Princeton, N. J., 1975.
+\bibitem[39]{c22-39} R. P. Langlands, \emph{On the notion of an automorphic representation}, 本论文集第一册，第203--207页.
+\bibitem[40]{c22-40} R. P. Langlands, \emph{Automorphic representations, Shimura varieties, and motives. Ein Märchen}, 本论文集第二册，第205--246页.
+\bibitem[41]{c22-41} M. E. Novodvorsky, \emph{Théorie de Hecke pour les groupes orthogonaux}, C. R. Acad. Sci. Paris Sér. A, \textbf{285} (1975), 93--94.
+\bibitem[42]{c22-42} M. E. Novodvorsky, \emph{Automorphic L-functions for the symplectic group GSp(4)}, 本论文集第二册，第87--95页.
+\bibitem[43]{c22-43} M. E. Novodvorsky and I. I. Piatetskii-Shapiro, \emph{Rankin-Selberg method in the theory of automorphic forms}, Proc. Sympos. Pure Math., vol. 30, no. 2, Amer. Math. Soc., Providence, R. I., 1977, pp. 297--301.
+\bibitem[44]{c22-44} I. Piatetski-Shapiro, \emph{Euler subgroups}, Lie Groups and Their Representations, Proc. Summer School, Budapest, 1971.
+\bibitem[45]{c22-45} I. Piatetski-Shapiro, \emph{Zeta-functions of GL$_n$}, Notes, Univ. of Maryland, College Park, Md.
+\bibitem[46]{c22-46} I. Piatetski-Shapiro, \emph{Converse theorem for GL$_3$}, Notes, Univ. of Maryland, College Park, Md.
+\bibitem[47]{c22-47} I. Piatetski-Shapiro, \emph{Multiplicity one theorems}, 本论文集第一册，第209--212页.
+\bibitem[48]{c22-48} F. Rodier, \emph{Les représentations de GSp(4, k), où k est un corps local}, C. R. Acad. Sci. Paris \textbf{283} (1976), 429--431.
+\bibitem[49]{c22-49} H. Saito, \emph{Automorphic forms and algebraic extensions of number fields}, Lecture Notes in Math., vol. 8, Kinokuniya Book Store Co., Ltd., Tokyo, Japan, 1975.
+\bibitem[50]{c22-50} J.-P. Serre, \emph{Modular forms of weight one and Galois representations}（与 C. J. Bushnell 合作编写）, Proc. Durham Sympos. Algebraic Number Fields (London), Academic Press, New York, 1977, pp. 193--268.
+\bibitem[51]{c22-51} F. Shahidi, \emph{Functional equations satisfied by certain L-functions}, Compositio Math.（待刊）.
+\bibitem[52]{c22-52} J. A. Shalika, \emph{The multiplicity one theorem for GL$_n$}, Ann. of Math. (2) \textbf{100} (1974), 171--193.
+\bibitem[53]{c22-53} D. Shelstad, \emph{Characters and inner forms of a quasi-split group over F}（待刊）.
+\bibitem[54]{c22-54} G. Shimura, \emph{On the holomorphy of certain Dirichlet series}, Proc. London Math. Soc. (3) \textbf{31} (1975), 79--98.
+\bibitem[55]{c22-55} T. Shintani, \emph{On liftings of holomorphic automorphic forms}, U.S.-Japan Seminar on Number Theory (Ann Arbor, Mich., 1975).
+\bibitem[56]{c22-56} T. Shintani, \emph{On liftings of holomorphic cusp forms}, 本论文集第二册，第97--110页.
+\bibitem[57]{c22-57} A. Silberger, \emph{The Langlands classification for reductive p-adic groups}（待刊）.
+\bibitem[58]{c22-58} T. A. Springer, \emph{Reductive groups}, 本论文集第一册，第3--27页.
+\bibitem[59]{c22-59} R. Steinberg, \emph{Regular elements of semi-simple algebraic groups}, Inst. Hautes Études Sci. Publ. Math. \textbf{25} (1965), 49--80.
+\bibitem[60]{c22-60} J. Tate, \emph{Number theoretic background}, 本论文集第二册，第3--26页.
+\bibitem[61]{c22-61} J. Tits, \emph{Reductive groups over local fields}, 本论文集第一册，第29--69页.
+\bibitem[62]{c22-62} J. B. Tunnell, \emph{On the local Langlands conjecture for GL(2)}, Thesis, Harvard Univ.
+\bibitem[63]{c22-63} J. B. Tunnell, \emph{Report on the local Langlands conjecture for GL$_2$}, 本论文集第二册，第135--138页.
+\bibitem[64]{c22-64} A. Weil, \emph{Ueber die Bestimmung Dirichletscher Reihen durch Funktionalgleichungen}, Math. Ann. \textbf{168} (1967), 149--167.
+\bibitem[65]{c22-65} A. Weil, \emph{Dirichlet series and automorphic forms}, Lecture Notes in Math., vol. 189, Springer, New York, 1971.
+\end{thebibliography}
+\begin{flushright}高等研究院（The Institute for Advanced Study）\end{flushright}

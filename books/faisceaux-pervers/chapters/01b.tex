@@ -1,0 +1,532 @@
+% PDF物理页50--62；原印刷页43--55。第1.4节完整译文。
+\SourcePage{50}
+\section*{1.4. 粘合}
+\addcontentsline{toc}{section}{1.4. 粘合}
+
+\par\medskip\noindent\textbf{1.4.1.}
+设 $X$ 是带有环\term{sheaf}{层} $\mathcal O$ 的拓扑空间（也可以是一个\term{topos}{拓扑斯}）。记 $\D(X,\mathcal O)$ 为 $X$ 上左 $\mathcal O$-模\term{sheaf}{层}所成的\term{abelian-category}{阿贝尔范畴} $M(X,\mathcal O)$ 的\term{derived-category}{导出范畴}。照常，以 $\D^+(X,\mathcal O)$ 表示由下有界\term{complex}{复形}的\term{essential-image}{本质像}构成的满子范畴。
+
+设 $U$ 是 $X$ 的一个开子集，$F$ 是其闭补集，$j$ 和 $i$ 分别为 $U$ 和 $F$ 到 $X$ 的包含映射；$\mathcal O$ 在 $U$ 或 $F$ 上的\term{inverse-image}{逆像}仍记作 $\mathcal O$。下面要给出一种构造：由 $\D^+(U,\mathcal O)$ 和 $\D^+(F,\mathcal O)$ 上各自的一个\term{t-structure}{$t$-结构}，得到 $\D^+(X,\mathcal O)$ 上的一个 \term{t-structure}{$t$-结构}。
+
+范畴 $M(X,\mathcal O)$、$M(U,\mathcal O)$ 和 $M(F,\mathcal O)$ 之间有以下函子：
+\[
+\begin{aligned}
+j_! &:M(U,\mathcal O)\longrightarrow M(X,\mathcal O),&&\text{\term{extension-by-zero}{零延拓}（正合）；}\\
+j^* &:M(X,\mathcal O)\longrightarrow M(U,\mathcal O),&&\text{限制（正合），也记作 }j^!;\\
+j_* &:M(U,\mathcal O)\longrightarrow M(X,\mathcal O),&&\text{\term{direct-image}{正像}（左正合）；}\\
+i^* &:M(X,\mathcal O)\longrightarrow M(F,\mathcal O),&&\text{限制（正合）；}\\
+i_* &:M(F,\mathcal O)\longrightarrow M(X,\mathcal O),&&\text{\term{direct-image}{正像}（正合），也记作 }i_!;\\
+i^! &:M(X,\mathcal O)\longrightarrow M(F,\mathcal O),&&\text{\term{support}{支撑}于 }F\text{ 的截面（左正合）。}
+\end{aligned}
+\]
+它们组成两个由三个\term{adjunction}{伴随}函子构成的序列 $(j_!,j^!=j^*,j_*)$ 和 $(i^*,i_*=i_!,i^!)$。有 $j^*i_*=0$，由\term{adjunction}{伴随}性又得 $i^*j_!=0$ 和 $i^!j_*=0$。对 $X$ 上的每个\term{sheaf}{层} $\mathcal F$，\term{adjunction-morphism}{伴随态射}给出\term{exact-sequence}{正合列}
+\begin{equation*}
+\begin{gathered}
+0\longrightarrow j_!j^*\mathcal F\longrightarrow\mathcal F
+ \longrightarrow i_*i^*\mathcal F\longrightarrow0,\\
+0\longrightarrow i_*i^!\mathcal F\longrightarrow\mathcal F
+ \longrightarrow j_*j^*\mathcal F.
+\end{gathered}\tag{1.4.1.1}
+\end{equation*}
+当 $\mathcal F$ \term{injective}{内射}时，第二列的右端可以补上一个 $0$。
+
+对 $F$ 上（分别地，$U$ 上）的 $\mathcal F$，\term{adjunction-morphism}{伴随态射}给出同构
+\begin{equation*}
+i^*i_*\mathcal F\xrightarrow{\sim}\mathcal F
+ \xrightarrow{\sim}i^!i_*\mathcal F,\tag{1.4.1.2}
+\end{equation*}
+\begin{equation*}
+j^*j_*\mathcal F\xrightarrow{\sim}\mathcal F
+ \xrightarrow{\sim}j^*j_!\mathcal F.\tag{1.4.1.3}
+\end{equation*}
+对任意一对\term{adjoint-functor}{伴随函子} $(T^*,T_*)$，\term{adjunction-morphism}{伴随态射} $T^*T_*\to\mathrm{Id}$（分别地，$\mathrm{Id}\to T_*T^*$）为同构，当且仅当 $T_*$（分别地，$T^*$）\term{fully-faithful}{全忠实}。因此，断言 (1.4.1.2)、(1.4.1.3) \term{equivalence}{等价}于说：$i_*$、$j_*$ 和 $j_!$ \term{fully-faithful}{全忠实}。
+
+\par\medskip\noindent\textbf{1.4.2.0.}
+\term{abelian-category}{阿贝尔范畴}之间的\term{exact-functor}{正合函子} $T$ 可以直接诱导出\term{derived-category}{导出范畴}之间的函子。我们往往
+\SourcePage{51}
+用同一符号表示原函子及其在\term{derived-category}{导出范畴}上的延拓。这个延拓既是 $T$ 的左导出函子 $LT$，也是其右导出函子 $RT$。
+
+\par\medskip\noindent\textbf{1.4.2.1.}
+1.4.1 中的函子经右导出后，给出连接 $\D^+(X,\mathcal O)$、$\D^+(U,\mathcal O)$ 和 $\D^+(F,\mathcal O)$ 的函子，组成两个\term{adjoint-functor}{伴随函子}三元组 $(j_!,j^*,Rj_*)$ 和 $(i^*,i_*,Ri^!)$。有 $j^*i_*=0$；由\term{adjunction}{伴随}性，$i^*j_!=0$ 且 $Ri^!Rj_*=0$。对 $K^+(X,\mathcal O)$ 中的任意 $K$，\term{exact-sequence}{正合列} (1.4.1.1) 导出为\term{distinguished-triangle}{区别三角}
+\[
+(j_!j^*K,K,i_*i^*K),\qquad(i_*Ri^!K,K,Rj_*j^*K).
+\]
+对 $\D^+(F,\mathcal O)$ 中（分别地，$\D^+(U,\mathcal O)$ 中）的 $K$，(1.4.1.2)（分别地，(1.4.1.3)）给出同构
+\[
+i^*i_*K\xrightarrow{\sim}K\xrightarrow{\sim}Ri^!i_*K:
+ \quad i_*\text{ \term{fully-faithful}{全忠实}},
+\]
+\[
+\text{（分别为 }j^*Rj_*K\xrightarrow{\sim}K\xrightarrow{\sim}j^*j_!K:
+ \quad j_!\text{ 和 }Rj_*\text{ \term{fully-faithful}{全忠实}）。}
+\]
+这是因为 $j_*$ 和 $i_*$ 将\term{injective}{内射}对象送到\term{injective}{内射}对象。
+
+\par\medskip\noindent\textbf{1.4.2.3.}
+\term{recollement}{粘合} \term{t-structure}{$t$-结构}时，我们只需要上面列出的这些性质。在其他情形中也会遇到它们，例如严格说来不属于 1.4.1 框架的 \term{l-adic}{$\ell$-进}\term{derived-category}{导出范畴}。为了涵盖这些情形，下面采用 1.4.3 中更一般的框架。在这一框架内，不再出现\term{sheaf}{层}范畴，只出现\term{triangulated-category}{三角范畴}；我们也借此简化记号，把上面的 $Rj_*$ 和 $Ri^!$ 分别直接写作 $j_*$ 和 $i^!$。
+
+\par\medskip\noindent\textbf{1.4.3.}
+设有三个\term{triangulated-category}{三角范畴} $\mathcal D$、$\mathcal D_U$ 和 $\mathcal D_F$，以及\term{exact-functor}{正合函子}
+\[
+\mathcal D_F\xrightarrow{i_*}\mathcal D\xrightarrow{j^*}\mathcal D_U.
+\]
+有时令 $i_!:=i_*$、$j^!:=j^*$，会更方便。我们假定下面的 (1.4.3.1)--(1.4.3.5) 成立。
+
+\par\medskip\noindent\textbf{(1.4.3.1)} $i_*$ 有正合的左、右\term{adjoint-functor}{伴随函子}，分别记为 $i^*$ 和 $i^!$。
+
+\par\medskip\noindent\textbf{(1.4.3.2)} $j^*$ 有正合的左、右\term{adjoint-functor}{伴随函子}，分别记为 $j_!$ 和 $j_*$。
+
+\par\medskip\noindent\textbf{(1.4.3.3)} 有 $j^*i_*=0$。因此，由\term{adjunction}{伴随}性还有 $i^*j_!=0$ 和 $i^!j_*=0$，并且对 $\mathcal D_F$ 中的 $A$ 和 $\mathcal D_U$ 中的 $B$，有
+\[
+\Hom(j_!B,i_*A)=0,\qquad\Hom(i_*A,j_*B)=0.
+\]
+\SourcePage{52}
+\par\medskip\noindent\textbf{(1.4.3.4)} 对 $\mathcal D$ 中的任意 $K$，存在
+\[
+d:i_*i^*K\longrightarrow j_!j^*K[1]
+\quad\text{（分别地， }d:j_*j^*K\longrightarrow i_*i^!K[1]\text{），}
+\]
+使三角
+\[
+j_!j^*K\longrightarrow K\longrightarrow i_*i^*K\xrightarrow{d},
+\]
+\[
+\text{（分别为 }i_*i^!K\longrightarrow K\longrightarrow j_*j^*K\xrightarrow{d}\text{）}
+\]
+为\term{distinguished-triangle}{区别三角}。由 (1.4.3.3) 和 1.1.10，$d$ 唯一。
+
+\par\medskip\noindent\textbf{(1.4.3.5)} $i_*$、$j_!$ 和 $j_*$ \term{fully-faithful}{全忠实}，即\term{adjunction-morphism}{伴随态射}
+\[
+i^*i_*\longrightarrow\mathrm{Id}\longrightarrow i^!i_*,
+\qquad j^*j_*\longrightarrow\mathrm{Id}\longrightarrow j^*j_!
+\]
+均为同构。
+
+这一套形式体系是\term{self-dual}{自对偶}的；\term{duality}{对偶}交换 $j_!$ 与 $j_*$，也交换 $i^*$ 与 $i^!$。
+
+\par\medskip\noindent\textbf{1.4.4.}
+设\term{triangulated-category}{三角范畴} $\mathcal T$ 带有两个严格满子范畴 $\mathcal U$ 和 $\mathcal V$，它们在平移 $X\mapsto X[n]$（$n\in\Z$）下稳定。假定对 $\mathcal U$ 中的 $U$ 和 $\mathcal V$ 中的 $V$，有 $\Hom(U,V)=0$，并且每个 $\mathcal T$ 中的 $X$ 都能置于一个\term{distinguished-triangle}{区别三角} $(U,X,V)$ 中，其中 $U\in\mathcal U$、$V\in\mathcal V$。于是 $(\mathcal U,\mathcal V)$ 是 $\mathcal T$ 上的一个 \term{t-structure}{$t$-结构}。由 1.3.4，$\mathcal V$ 是 $\mathcal U$ 的右正交，$\mathcal U$ 是 $\mathcal V$ 的左正交。特别地，$\mathcal U$ 和 $\mathcal V$ 是\term{thick-subcategory}{厚子范畴}（[10] 6.2，第24页）。[10] 6.4（第25页）的假设 (i)、(ii) 成立；由 [10] 第23--26页，投影 $\mathcal T\to\mathcal T/\mathcal U$ 有一个\term{fully-faithful}{全忠实}的右\term{adjoint-functor}{伴随函子}，其像为 $\mathcal V$；投影 $\mathcal T\to\mathcal T/\mathcal V$ 则有一个\term{fully-faithful}{全忠实}的左\term{adjoint-functor}{伴随函子}，其像为 $\mathcal U$。换言之，包含函子 $u:\mathcal U\to\mathcal T$（分别地，$v:\mathcal V\to\mathcal T$）有右\term{adjunction}{伴随}（分别地，左\term{adjunction}{伴随}）$u_*$（分别地，$v^*$），而序列
+\[
+0\longrightarrow\mathcal U\xrightarrow{u}\mathcal T\xrightarrow{v^*}\mathcal V\longrightarrow0,
+\qquad
+0\longleftarrow\mathcal U\xleftarrow{u_*}\mathcal T\xleftarrow{v}\mathcal V\longleftarrow0
+\]
+在如下意义下“正合”：$v^*$（分别地，$u_*$）把 $\mathcal V$（分别地，$\mathcal U$）等同于 $\mathcal T$ 对\term{thick-subcategory}{厚子范畴} $\mathcal U$（分别地，$\mathcal V$）的商。
+
+取 $\mathcal T=\mathcal D$，并分别取 $(\mathcal U,\mathcal V)$ 为 $(i_*\mathcal D_F,j_*\mathcal D_U)$ 和 $(j_!\mathcal D_U,i_*\mathcal D_F)$，就得到：
+
+\par\medskip\noindent\textbf{命题 1.4.5.} 下列序列在上述意义下“正合”：
+\[
+\begin{gathered}
+0\longleftarrow\mathcal D_F\xleftarrow{i^*}\mathcal D\xleftarrow{j_!}\mathcal D_U\longleftarrow0,\\
+0\longrightarrow\mathcal D_F\xrightarrow{i_*}\mathcal D\xrightarrow{j^*}\mathcal D_U\longrightarrow0,\\
+0\longleftarrow\mathcal D_F\xleftarrow{i^!}\mathcal D\xleftarrow{j_*}\mathcal D_U\longleftarrow0.
+\end{gathered}
+\]
+
+\par\medskip\noindent\textbf{1.4.6.}
+a) 函子 $i_*$ \term{fully-faithful}{全忠实}，所以\term{adjunction-morphism}{伴随态射}的复合 $i_*i^!\to\mathrm{Id}\to i_*i^*$ 是某个唯一的函子态射经 $i_*$ 作用所得。这个函子态射为
+\SourcePage{53}
+\begin{equation*}
+i^!\longrightarrow i^*.\tag{1.4.6.1}
+\end{equation*}
+将其作用于 $i_*X$，并把 $i^!i_*X$ 和 $i^*i_*X$ 均等同于 $X$ 后，得到的是 $X$ 的恒等自同构。
+
+b) 函子 $j^*$ 是取商函子（它把 $\mathcal D_U$ 等同于由 $\mathcal D$ 经分式演算得到的范畴），所以\term{adjunction-morphism}{伴随态射}的复合 $j_!j^*\to\mathrm{Id}\to j_*j^*$ 来自某个唯一的函子态射
+\begin{equation*}
+j_!\longrightarrow j_*.\tag{1.4.6.2}
+\end{equation*}
+若把 $j^*j_!$ 和 $j^*j_*$ 均等同于恒等函子，则对 (1.4.6.2) 作用 $j^*$ 后，得到恒等函子的恒等自同构。
+
+c) 对 $\mathcal D_U$ 中的 $X$，$j_!X\to j_*X$ 的\term{cone}{锥}因而被 $j^*$ \term{effaceable}{消去}，故属于 $i_*\mathcal D_F$。由 (1.4.3.3) 和 1.1.10，以 $j_!X\to j_*X$ 为底的\term{distinguished-triangle}{区别三角}在唯一同构意义下唯一。因此得到函子 $j_*/j_!:\mathcal D_U\to\mathcal D_F$，以及函子性的\term{distinguished-triangle}{区别三角}
+\begin{equation*}
+(j_!,j_*,i_*(j_*/j_!)).\tag{1.4.6.3}
+\end{equation*}
+\term{duality}{对偶}的构造给出函子 $T:\mathcal D_U\to\mathcal D_F$，它由函子性的\term{distinguished-triangle}{区别三角} $(i_*T,j_!,j_*)$ 刻画。这类三角可由 (1.4.6.3) 旋转得到，因此有同构
+\[
+T=(j_*/j_!)[-1],
+\]
+使得态射 $i_*T\to j_!$ 是 (1.4.6.3) 中次数为 $1$ 的态射经 $[-1]$ 平移所得。于是，函子 $(j_*/j_!)$ 和 $(j_*/j_!)[-1]$ 互为\term{duality}{对偶}。
+
+对 (1.4.6.3) 作用函子 $i^*$ 和 $i^!$，并利用 $i^*j_!=i^!j_*=0$，得到同构
+\begin{equation*}
+i^*j_*\xrightarrow{\sim}j_*/j_!\xrightarrow{\sim}i^!j_![1].\tag{1.4.6.4}
+\end{equation*}
+
+\par\medskip\noindent\textbf{1.4.7.}
+设 $X\in\mathcal D$，对\term{adjunction-morphism}{伴随态射} $j_!j^*X\to X\to j_*j^*X$ 应用 TR~4。下面证明所得八面体在唯一同构意义下唯一，并且关于 $X$ 具有函子性。
+\[
+\begin{tikzcd}[ampersand replacement=\&,column sep=large,row sep=large]
+\&\&A\arrow[dr]\arrow[ddll,bend right=40,"{+1}"']\&\&\\
+\&X\arrow[ur]\arrow[dr]\&\&B\arrow[dr]\arrow[dlll,bend left=30,"{+1}"]\&\\
+j_!j^*X\arrow[ur]\arrow[rr]\&\&j_*j^*X\arrow[ur]\arrow[rr]\&\&C\arrow[ulll,bend left=28,"{+1}"]\arrow[uull,bend right=38,"{+1}"']
+\end{tikzcd}
+\]
+% 上图以平面展开方式重绘八面体；各标有+1的箭头均为次数1的连接态射。
+(a) 由 (1.4.3.3)、(1.4.3.4) 和 1.1.10，存在唯一同构 $A=i_*i^*X$，它把 $X\to A$ 等同于\term{adjunction}{伴随}箭头。
+\SourcePage{54}
+这个同构将 $(j_!j^*X,X,A)$ 等同于 (1.4.3.4) 中的\term{distinguished-triangle}{区别三角} $(j_!j^*X,X,i_*i^*X)$。
+
+(b) 把同一论证用于与 $X$ 有相同 $j^*$ 的对象 $j_*j^*X$，就把 $B$ 等同于
+\[
+i_*i^*j_*j^*X=i_*(j_*/j_!)j^*X\qquad\text{(1.4.6.4)，}
+\]
+其中 $j_*j^*X\to B$ 是 $(i^*,i_*)$ 的\term{adjunction}{伴随}箭头。由 1.1.9，存在唯一态射 $A\to B$，使八面体上方的菱形交换。因此，态射 $A\to B$，即 $i_*i^*X\to i_*i^*j_*j^*X$，正是由 $X\to j_*j^*X$ 根据函子性得到的态射。
+
+(c) \term{duality}{对偶}地，存在唯一同构 $C=i_*i^!X[1]$，它将 $(X,j_*j^*X,C)$ 中次数为 $1$ 的箭头等同于\term{adjunction-morphism}{伴随态射} $i_*i^!X\to X$：三角 $(X,j_*j^*X,C)$ 由 (1.4.3.4) 中的三角 $(i_*i^!X,X,j_*j^*X)$ 旋转（TR~2）而来，同时改变 $j_*j^*X\xrightarrow{(1)}i_*i^!X$ 的符号。态射 $B\to C$ 是使正方形 $(B,C,j_!j^*X,X)$ 交换的唯一态射。通过 (1.4.6.4) 中 $j_*/j_!$ 与 $i^!j_![1]$ 的同构，它就是由 $j_!j^*X\to X$ 根据函子性得到的态射
+\[
+i_*(j_*/j_!)j^*X=i_*i^!j_!j^*X[1]\longrightarrow i_*i^!X[1].
+\]
+(d) 至此，八面体的全部顶点和箭头都已确定（$C\xrightarrow{(1)}A$ 是 $C\xrightarrow{(1)}X\to A$ 的复合），并且函子性也得到了证明。代入 $A$、$B$、$C$ 的值，八面体为
+\begin{equation*}
+\begin{tikzcd}[ampersand replacement=\&,column sep=small,row sep=large]
+\&\&i_*i^*X\arrow[dr]\arrow[ddll,bend right=40,"{+1}"']\&\&\\
+\&X\arrow[ur]\arrow[dr]\&\&i_*(j_*/j_!)j^*X\arrow[dr]\arrow[dlll,bend left=30,"{+1}"]\&\\
+j_!j^*X\arrow[ur]\arrow[rr]\&\&j_*j^*X\arrow[ur]\arrow[rr]\&\&i_*i^!X[1]\arrow[ulll,bend left=28,"{+1}"]\arrow[uull,bend right=38,"{+1}"']
+\end{tikzcd}\tag{1.4.7.1}
+\end{equation*}
+因为 $i_*$ \term{fully-faithful}{全忠实}，\term{distinguished-triangle}{区别三角}
+\[
+(i_*i^*X,i_*(j_*/j_!)j^*X,i_*i^!X[1])
+\]
+是三角 $(i^*X,(j_*/j_!)j^*X,i^!X[1])$ 经 $i_*$ 作用所得；后者自动是\term{distinguished-triangle}{区别三角}（1.3.19）。这个三角中次数为 $1$ 的箭头 $d$ 经 $i_*$ 作用后，是复合
+\[
+i_*i^!X[1]\xrightarrow{(1)}X\longrightarrow i_*i^*X.
+\]
+因此，$d$ 就是 $X[1]$ 对应的 (1.4.6.1)，也即 $X$ 对应的 (1.4.6.1) 经 $[1]$ 作用所得。旋转三角（TR~2），改变新的次数 $1$ 箭头的符号，再去掉 $i_*$（1.3.19），便得到以 (1.4.6.1) 为底的函子性\term{distinguished-triangle}{区别三角}
+\begin{equation*}
+(i^!,i^*,(j_*/j_!)j^*).\tag{1.4.7.2}
+\end{equation*}
+在 1.4.1、1.4.2 的框架内，这个三角来自如下事实：对每个\term{flabby-sheaf}{松弛层} $\mathcal F$，序列
+\[
+0\longrightarrow i^!\mathcal F\longrightarrow i^*\mathcal F
+ \longrightarrow i^*j_*j^*\mathcal F\longrightarrow0
+\]
+正合。
+
+\SourcePage{55}
+\par\medskip\noindent\textbf{注 1.4.8.}
+根据 [10] 第2节，特别是第23--27页，公理 (1.4.3.1)--(1.4.3.5) \term{equivalence}{等价}于：“$i_*$ 把 $\mathcal D_F$ 等同于 $\mathcal D$ 的一个\term{thick-subcategory}{厚子范畴}；$j^*$ 把 $\mathcal D_U$ 等同于 $\mathcal D/\mathcal D_F$，且 $j^*$ 有左\term{adjunction}{伴随}和右\term{adjunction}{伴随}。”
+
+\par\medskip\noindent\textbf{1.4.9.}
+假定 1.4.3 的条件成立，且 $(\mathcal D_U^{\le0},\mathcal D_U^{\ge0})$ 是 $\mathcal D_U$ 上的 \term{t-structure}{$t$-结构}，$(\mathcal D_F^{\le0},\mathcal D_F^{\ge0})$ 是 $\mathcal D_F$ 上的 \term{t-structure}{$t$-结构}。定义
+\[
+\begin{aligned}
+\mathcal D^{\le0}&:=\{K\in\mathcal D\mid j^*K\in\mathcal D_U^{\le0},\ i^*K\in\mathcal D_F^{\le0}\},\\
+\mathcal D^{\ge0}&:=\{K\in\mathcal D\mid j^*K\in\mathcal D_U^{\ge0},\ i^!K\in\mathcal D_F^{\ge0}\}.
+\end{aligned}
+\]
+
+\par\medskip\noindent\textbf{定理 1.4.10.}
+在上述假设与记号下，$(\mathcal D^{\le0},\mathcal D^{\ge0})$ 是 $\mathcal D$ 上的一个 \term{t-structure}{$t$-结构}。我们称它是由 $\mathcal D_U$ 和 $\mathcal D_F$ 上的 \term{t-structure}{$t$-结构}经\term{recollement}{粘合}得到的。
+
+下面验证公理 1.3.1 (i)、(ii)、(iii)。
+
+\emph{公理 (i)。} 设 $X\in\mathcal D^{\le0}$、$Y\in\mathcal D^{\ge1}$。对 $X$ 应用 (1.4.3.4) 中的第一个三角，得到\term{exact-sequence}{正合列}
+\[
+\Hom(i_*i^*X,Y)\longrightarrow\Hom(X,Y)\longrightarrow\Hom(j_!j^*X,Y).
+\]
+由 $\mathcal D_F$ 上的 1.3.1 (i)，有 $\Hom(i_*i^*X,Y)=\Hom(i^*X,i^!Y)=0$；由 $\mathcal D_U$ 上的 1.3.1 (i)，有 $\Hom(j_!j^*X,Y)=\Hom(j^*X,j^*Y)=0$。结论随之成立。
+
+\emph{公理 (ii)。} 直接由 $\mathcal D_U$ 和 $\mathcal D_F$ 上的 1.3.1 (ii) 得到。
+
+\emph{公理 (iii)。} 设 $X\in\mathcal D$。依次选择 $Y$ 和 $A$，使之构成\term{distinguished-triangle}{区别三角} $(Y,X,j_*\tau_{>0}j^*X)$ 和 $(A,Y,i_*\tau_{>0}i^*Y)$，然后应用 TR~4：
+\[
+\begin{tikzcd}[ampersand replacement=\&,column sep=large,row sep=large]
+\&\&i_*\tau_{>0}i^*Y\arrow[dr,dashed]\arrow[ddll,bend right=38,"{+1}"']\&\&\\
+\&Y\arrow[ur]\arrow[dr]\&\&B\arrow[dr,dashed]\arrow[dlll,bend left=32,"{+1}"]\&\\
+A\arrow[ur]\arrow[rr]\&\&X\arrow[ur]\arrow[rr]\&\&j_*\tau_{>0}j^*X\arrow[ulll,bend left=28,"{+1}"]\arrow[uull,bend right=38,"{+1}"']
+\end{tikzcd}
+\]
+考虑 (1.4.3.3)--(1.4.3.5)，按下列方式把函子 $j^*$、$i^*$ 和 $i^!$ 作用于这个八面体中的\term{distinguished-triangle}{区别三角}：
+\[
+\begin{aligned}
+j^*(i_*\tau_{>0}i^*Y,B,j_*\tau_{>0}j^*X)
+  &=(0,j^*B,\tau_{>0}j^*X),\\
+&\hspace{-2em}\text{故 }j^*B\xrightarrow{\sim}\tau_{>0}j^*X;\\
+j^*(A,X,B)&=(j^*A,j^*X,\tau_{>0}j^*X),\\
+&\hspace{-2em}\text{故 }j^*A\xrightarrow{\sim}\tau_{\le0}j^*X;\\
+i^*(A,Y,i_*\tau_{>0}i^*Y)&=(i^*A,i^*Y,\tau_{>0}i^*Y),\\
+&\hspace{-2em}\text{故 }i^*A\xrightarrow{\sim}\tau_{\le0}i^*Y;
+\end{aligned}
+\]
+\SourcePage{56}
+\[
+i^!(i_*\tau_{>0}i^*Y,B,j_*\tau_{>0}j^*X)
+ =(\tau_{>0}i^*Y,i^!B,0),
+ \quad\text{故 }\tau_{>0}i^*Y\xrightarrow{\sim}i^!B.
+\]
+因此 $A\in\mathcal D^{\le0}$、$B\in\mathcal D^{\ge1}$，而 $(A,X,B)$ 满足 (1.3.1) (iii)。
+
+\par\medskip\noindent\textbf{注 1.4.11.}
+所得 $\mathcal D$ 上的 \term{t-structure}{$t$-结构}\term{nondegenerate}{非退化}，当且仅当 $\mathcal D_U$ 和 $\mathcal D_F$ 上给定的两个 \term{t-structure}{$t$-结构}均\term{nondegenerate}{非退化}。
+
+在本书后面的内容中，我们不需要使用下面这个 1.4.10 的逆命题。
+
+\par\medskip\noindent\textbf{命题 1.4.12.}
+在 1.4.3 的假设与记号下，设 $(\mathcal D^{\le0},\mathcal D^{\ge0})$ 是 $\mathcal D$ 上的一个 \term{t-structure}{$t$-结构}。以下条件\term{equivalence}{等价}：
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item $j_!j^*$ 是右 \term{t-exact}{$t$-正合}的；
+\end{enumerate}
+\noindent(i$'$) $j_*j^*$ 是左 \term{t-exact}{$t$-正合}的；
+\begin{enumerate}[label=\textup{(\roman*)},start=2]
+\item $\mathcal D$ 的 \term{t-structure}{$t$-结构}由\term{recollement}{粘合}得到。
+\end{enumerate}
+由 1.3.17 (iii) 得到 (i)$\Leftrightarrow$(i$'$)；(i)、(i$'$) \term{equivalence}{等价}于 $(j^*\mathcal D^{\le0},j^*\mathcal D^{\ge0})$ 满足公理 1.3.1 (i)。\term{distinguished-triangle}{区别三角} $(j_!j^*,\mathrm{Id},i_*i^*)$ 和 $(i_*i^!,\mathrm{Id},j_*j^*)$ 分别表明：(i)、(i$'$) 蕴含 $i_*i^*$ 右 \term{t-exact}{$t$-正合}、$i_*i^!$ 左 \term{t-exact}{$t$-正合}。根据 1.3.17 (iii)，后面这两个条件也彼此\term{equivalence}{等价}，它们表示 $(i^*\mathcal D^{\le0},i^!\mathcal D^{\ge0})$ 满足公理 1.3.1 (i)。
+
+显然，(ii)$\Rightarrow$(i)、(i$'$)，而且\term{recollement}{粘合}为 $\mathcal D$ 上给定 \term{t-structure}{$t$-结构}的两个结构，分别是 $\mathcal D_U$ 上的 $(j^*\mathcal D^{\le0},j^*\mathcal D^{\ge0})$，以及 $\mathcal D_F$ 上由 $\mathcal D$ 的结构诱导的结构：
+\[
+(\mathcal D_F\cap\mathcal D^{\le0},\mathcal D_F\cap\mathcal D^{\ge0})
+ =(i^*\mathcal D^{\le0},i^!\mathcal D^{\ge0}).
+\]
+反过来，若 (i)、(i$'$) 成立，则依次验证：
+
+(a) $(j^*\mathcal D^{\le0},j^*\mathcal D^{\ge0})$ 是 $\mathcal D_U$ 上的 \term{t-structure}{$t$-结构}。1.3.1 (i) 已经验证，1.3.1 (ii) 显然，而 1.3.1 (iii) 来自 $j^*$ 的本质满射性。
+
+(b) $(i^*\mathcal D^{\le0},i^!\mathcal D^{\ge0})$ 是 $\mathcal D_F$ 上的 \term{t-structure}{$t$-结构}。1.3.1 (i) 已经验证；只有 1.3.1 (iii) 并非显然。对 $\mathcal D_F$ 中的 $X$，$j^*$ 的 \term{t-exact}{$t$-正合}性给出
+\[
+j^*\tau_{\le0}i_*X=\tau_{\le0}j^*i_*X=0,
+\]
+同样有 $j^*\tau_{>0}i_*X=0$。因此，\term{truncation}{截断} $\tau_{\le0}i_*X$ 和 $\tau_{>0}i_*X$ 属于 $i_*\mathcal D_F$；它们给出三角
+\[
+(i^*\tau_{\le0}i_*X,X,i^*\tau_{>0}i_*X),
+\]
+满足 1.3.1 (iii)。
+
+(c) 从带有原 \term{t-structure}{$t$-结构}的 $\mathcal D$ 到带有
+\SourcePage{57}
+由 $(j^*\mathcal D^{\le0},j^*\mathcal D^{\ge0})$ 和 $(i^*\mathcal D^{\le0},i^!\mathcal D^{\ge0})$ \term{recollement}{粘合}而得的 \term{t-structure}{$t$-结构}的 $\mathcal D$，恒等函子是 \term{t-exact}{$t$-正合}的。由 1.3.19，原 \term{t-structure}{$t$-结构}就是\term{recollement}{粘合}得到的结构。
+
+\par\medskip\noindent\textbf{1.4.13.}
+现在只假设 $\mathcal D_F$ 上给定了一个 \term{t-structure}{$t$-结构}。将 1.4.10 应用于 $\mathcal D_U$ 上的退化 \term{t-structure}{$t$-结构} $(\mathcal D_U,0)$ 和 $\mathcal D_F$ 上给定的 \term{t-structure}{$t$-结构}。把所得 $\mathcal D$ 上的 \term{t-structure}{$t$-结构}对应的\term{truncation}{截断}函子 $\tau_{\le p}$ 记作 $\tau^F_{\le p}$。函子 $\tau^F_{\le p}$ 是由满足 $i^*X\in\mathcal D_F^{\le p}$ 的对象 $X$ 构成的满子范畴到 $\mathcal D$ 的包含函子的右\term{adjunction}{伴随}。1.4.10 对公理 1.3.1 (iii) 的证明给出\term{distinguished-triangle}{区别三角}
+\[
+(\tau^F_{\le p}X,X,i_*\tau_{>p}i^*X)
+\]
+（沿用 1.4.10 的记号，此时 $X=Y$）。因此，这个 \term{t-structure}{$t$-结构}下各次 $H^p$ 就是 $i_*H^pi^*X$。
+
+\term{duality}{对偶}地，利用 $\mathcal D_U$ 上的退化 \term{t-structure}{$t$-结构} $(0,\mathcal D_U)$ 定义 $\tau^F_{\ge p}$：它是 $(i^!)^{-1}(\mathcal D_F^{\ge p})$ 到 $\mathcal D$ 的包含函子的左\term{adjunction}{伴随}。有\term{distinguished-triangle}{区别三角}
+\[
+(i_*\tau_{<p}i^!X,X,\tau^F_{\ge p}X),
+\]
+而 $H^p$ 为 $i_*H^pi^!X$。
+
+类似地，若只假设 $\mathcal D_U$ 上给定了一个 \term{t-structure}{$t$-结构}，并给 $\mathcal D_F$ 配上 \term{t-structure}{$t$-结构} $(\mathcal D_F,0)$（分别地，$(0,\mathcal D_F)$），就在 $\mathcal D$ 上定义出一个 \term{t-structure}{$t$-结构}。其函子 $\tau_{\le p}$（分别地，$\tau_{\ge p}$）记作 $\tau^U_{\le p}$（分别地，$\tau^U_{\ge p}$），并给出\term{distinguished-triangle}{区别三角}
+\[
+(\tau^U_{\le p}X,X,j_*\tau_{>p}j^*X)
+\quad\text{（分别为 }(j_!\tau_{<p}j^*X,X,\tau^U_{\ge p}X)\text{）；}
+\]
+相应的 $H^pX$ 为 $j_*H^pj^*X$（分别为 $j_!H^pj^*X$）。
+
+1.4.10 对公理 (iii) 的证明表明，$\tau_{\le0}=\tau^F_{\le0}\tau^U_{\le0}$。平移并取\term{duality}{对偶}，得到
+\begin{equation*}
+\tau_{\le p}=\tau^F_{\le p}\tau^U_{\le p},
+\qquad\tau_{\ge p}=\tau^F_{\ge p}\tau^U_{\ge p}.\tag{1.4.13.1}
+\end{equation*}
+在 1.4.1 的情形下，对 $\D^+(F,\mathcal O)$ 的自然 \term{t-structure}{$t$-结构}，函子 $\tau^F_{\le p}$ 来自\term{sheaf}{层}\term{complex}{复形}范畴到自身的如下函子：给定\term{complex}{复形} $K$，取其一个子\term{complex}{复形}，它在 $U$ 上与 $K$ 相同，而在 $F$ 上与子\term{complex}{复形} $\tau_{\le p}K$（1.3.2）相同。
+
+所谓 $\mathcal D_U$ 中对象 $Y$ 的\emph{延拓}，是指 $\mathcal D$ 中一个带有同构 $j^*X\simeq Y$ 的对象 $X$。由\term{adjunction}{伴随}性，这样的同构给出态射 $j_!Y\to X\to j_*Y$。若一个延拓 $X$ 作为延拓同构于 $\tau^F_{\ge p}j_!Y$（分别地，$\tau^F_{\le p}j_*Y$），则该同构唯一；我们便直接写 $X=\tau^F_{\ge p}j_!Y$（分别地，$X=\tau^F_{\le p}j_*Y$）。
+
+\SourcePage{58}
+\par\medskip\noindent\textbf{命题 1.4.14.}
+设 $Y\in\mathcal D_U$，$p$ 为整数。在唯一同构意义下，存在唯一一个 $Y$ 的延拓 $X$，满足 $i^*X\in\mathcal D_F^{\le p-1}$ 且 $i^!X\in\mathcal D_F^{\ge p+1}$。它就是 $\tau^F_{\le p-1}j_*Y$，并且
+\[
+\tau^F_{\le p-1}j_*Y=\tau^F_{\ge p+1}j_!Y.
+\]
+设 $X$ 是 $Y$ 的一个延拓。三角 $(i^*X,(j_*/j_!)Y,i^!X[1])$ 是\term{distinguished-triangle}{区别三角}，(1.4.7.2) 可由它旋转得到。这个三角表明，下列条件\term{equivalence}{等价}：
+
+(a) $i^*X\in\mathcal D_F^{\le p-1}$ 且 $i^!X\in\mathcal D_F^{\ge p+1}$；
+
+(b) $i^!X[1]$ 是 $(j_*/j_!)Y=i^*j_*Y$ 的 $\tau_{\ge p}$；
+
+(b$'$) $i^*X$ 是 $(j_*/j_!)Y$ 的 $\tau_{\le p-1}$。
+
+由 (1.4.7.1) 中的\term{distinguished-triangle}{区别三角} $(X,j_*Y,i_*i^!X[1])$，(b) \term{equivalence}{等价}于 $X=\tau^F_{\le p-1}j_*Y$。\term{duality}{对偶}地，(b$'$) \term{equivalence}{等价}于 $X=\tau^F_{\ge p+1}j_!Y$。
+
+\par\medskip\noindent\textbf{注 1.4.14.1.}
+记 $\mathcal D_m$ 为 $\mathcal D$ 中由满足 1.4.14 的条件 $i^*X\in\mathcal D_F^{\le p-1}$、$i^!X\in\mathcal D_F^{\ge p+1}$ 的对象 $X$ 构成的满子范畴。函子 $j^*$ 诱导范畴\term{equivalence}{等价} $\mathcal D_m\to\mathcal D_U$；事实上，它有\term{quasi-inverse}{拟逆} $\tau^F_{\le p-1}j_*$。我们有时将这个\term{quasi-inverse}{拟逆}记作 ${}^p j_{!*}$。
+
+\par\medskip\noindent\textbf{1.4.15.}
+设 $C$、$C_U$ 和 $C_F$ 分别为 $t$-范畴 $\mathcal D$、$\mathcal D_U$ 和 $\mathcal D_F$ 的\term{heart}{心}；$\mathcal D_U$ 和 $\mathcal D_F$ 带有给定的 \term{t-structure}{$t$-结构}，$\mathcal D$ 带有 1.4.10 的 \term{t-structure}{$t$-结构}。用 $\varepsilon$ 表示 $C$、$C_U$ 或 $C_F$ 到相应的 $\mathcal D$、$\mathcal D_U$ 或 $\mathcal D_F$ 的包含函子。对 $T=j_!,j^*,j_*,i^*,i_*,i^!$ 之一，以 ${}^pT$ 表示函子 $H^0\circ T\circ\varepsilon$。根据 $\mathcal D$ 的 \term{t-structure}{$t$-结构}的定义，$j^*$ 是 \term{t-exact}{$t$-正合}的，$i^*$ 是右 \term{t-exact}{$t$-正合}的，$i^!$ 是左 \term{t-exact}{$t$-正合}的。应用 1.3.17 (iii)，得到：
+
+\par\medskip\noindent\textbf{命题 1.4.16.}
+(i) 函子 $j_!$ 和 $i^*$ 是右 \term{t-exact}{$t$-正合}的；$j^*$ 和 $i_*$ 是 \term{t-exact}{$t$-正合}的；$j_*$ 和 $i^!$ 是左 \term{t-exact}{$t$-正合}的。
+
+(ii) $({}^pj_!,{}^pj^*,{}^pj_*)$ 和 $({}^pi^*,{}^pi_*,{}^pi^!)$ 组成两个\term{adjoint-functor}{伴随函子}三元组。
+
+\par\medskip\noindent\textbf{命题 1.4.17.}
+(i) 复合 ${}^pj^*\circ{}^pi_*$、${}^pi^*\circ{}^pj_!$ 和 ${}^pi^!\circ{}^pj_*$ 均为零。对 $A\in C_F$、$B\in C_U$，有
+\[
+\Hom({}^pj_!B,{}^pi_*A)=\Hom({}^pi_*A,{}^pj_*B)=0.
+\]
+(ii) 对每个 $A\in C$，序列
+\[
+{}^pj_!{}^pj^*A\longrightarrow A\longrightarrow{}^pi_*{}^pi^*A\longrightarrow0
+\]
+和
+\[
+0\longrightarrow{}^pi_*{}^pi^!A\longrightarrow A\longrightarrow{}^pj_*{}^pj^*A
+\]
+正合。
+
+\SourcePage{59}
+(iii) ${}^pi_*$、${}^pj_!$ 和 ${}^pj_*$ \term{fully-faithful}{全忠实}，即\term{adjunction-morphism}{伴随态射}
+\[
+{}^pi^*{}^pi_*\longrightarrow\mathrm{Id}\longrightarrow{}^pi^!{}^pi_*,
+\qquad{}^pj^*{}^pj_*\longrightarrow\mathrm{Id}\longrightarrow{}^pj^*{}^pj_!
+\]
+均为同构。
+
+这些断言分别来自 (1.4.3.3)、(1.4.3.4) 和 (1.4.3.5)。验证留给读者（使用 1.3.17 (iv)）。
+
+\par\medskip\noindent\textbf{补充说明 1.4.17.1.}
+由 (i)（${}^pj^*{}^pi_*=0$）及 (ii) 中任一\term{exact-sequence}{正合列}，$C$ 中的 $X$ 属于 ${}^pi_*$ 的\term{essential-image}{本质像} $\overline C_F$，当且仅当 ${}^pj^*X=0$。因为函子 ${}^pj^*$ 正合，这个\term{essential-image}{本质像}是 $C$ 的\term{thick-subcategory}{厚子范畴}，即在\term{extension}{扩张}和\term{subquotient}{子商}下稳定。若通过\term{fully-faithful}{全忠实}函子 ${}^pi_*$ 把 $C_F$ 等同于 $C$ 的子范畴 $\overline C_F$，那么\term{adjunction}{伴随}关系 $({}^pi^*,{}^pi_*)$ 和 $({}^pi_*,{}^pi^!)$（1.4.16 (ii)）表明：对 $X\in C$，${}^pi^*X$ 是 $X$ 的属于 $C_F$ 的最大商对象，${}^pi^!X$ 是 $X$ 的属于 $C_F$ 的最大子对象。
+
+\par\medskip\noindent\textbf{命题 1.4.18.}
+函子 ${}^pj^*$ 把 $C_U$ 等同于 $C$ 对\term{thick-subcategory}{厚子范畴} $C_F$（更准确地说，$\overline C_F$；见 1.4.17.1）的商。
+
+设 $Q:C\to C/C_F$ 为取商函子。\term{exact-functor}{正合函子} ${}^pj^*$ 分解为 $T\circ Q$，且 $T$ 忠实。事实上，若 $C/C_F$ 中的 $f$ 来自 $C$ 中的 $f_1$，且 $T$ \term{effaceable}{消去} $f$，则 ${}^pj^*$ \term{effaceable}{消去} $f_1$，即 $\im(f_1)$ 属于 $C_F$ 的像，从而 $Q$ \term{effaceable}{消去} $f_1$。因为
+\[
+\mathrm{Id}\xrightarrow{\sim}{}^pj^*{}^pj_!=T\circ Q\circ{}^pj_!,
+\]
+$T$ 在对象的同构类上满射。还需验证 $T$ \term{fully-faithful}{全忠实}，从而是范畴\term{equivalence}{等价}。
+
+\par\medskip\noindent\textbf{引理 1.4.19.}
+对每个 $A\in C$，序列
+\[
+0\longrightarrow{}^pi_*H^{-1}i^*A\longrightarrow{}^pj_!{}^pj^*A
+ \longrightarrow A\longrightarrow{}^pi_*{}^pi^*A\longrightarrow0
+\]
+和
+\[
+0\longrightarrow{}^pi_*{}^pi^!A\longrightarrow A
+ \longrightarrow{}^pj_*{}^pj^*A\longrightarrow{}^pi_*H^1i^!A\longrightarrow0
+\]
+正合。
+
+这由 (1.4.3.4) 和 1.4.16 (i) 得到。
+
+现在完成 1.4.18 的证明。由 1.4.19，${}^pj_!{}^pj^*A\to A$ 的核和余核属于 ${}^pi_*$ 的像。因此，$C/{}^pi_*C_F$ 中的每个对象都可以取一个属于 ${}^pj_!$ 的像的代表。对这像中的 ${}^pj_!X$ 和 ${}^pj_!Y$，映射
+\[
+\begin{aligned}
+T:\Hom(Q{}^pj_!X,Q{}^pj_!Y)&\longrightarrow
+\Hom(TQ{}^pj_!X,TQ{}^pj_!Y)\\
+&=\Hom(X,Y)
+\end{aligned}
+\]
+有截面 $Q{}^pj_!$，故为满射。证明完毕。
+
+\SourcePage{60}
+\par\medskip\noindent\textbf{1.4.20. 提醒。}
+在 1.4.1 的假设下，若给 $\D^+(U,\mathcal O)$ 和 $\D^+(F,\mathcal O)$ 配上自然 \term{t-structure}{$t$-结构}（1.3.2 (i)），则 $\D^+(X,\mathcal O)$ 上得到的也是自然 \term{t-structure}{$t$-结构}，而\term{abelian-category}{阿贝尔范畴} $C$、$C_U$ 和 $C_F$ 就是 $M(X,\mathcal O)$、$M(U,\mathcal O)$ 和 $M(F,\mathcal O)$。这样便回到了 1.4.1 的情形。
+
+但一般而言，${}^pj_!$ 右正合，却不一定正合；${}^pi^*$ 左正合，却不一定正合\footnote{译注：原文此处确实写作 ${}^pi^*$“左正合”。按 1.4.16 (ii) 的\term{adjunction}{伴随}关系，${}^pi^*$ 应为右正合，而 ${}^pi^!$ 为左正合。这里保留原文，并提示这一处记号或正合方向的排印问题。}；1.4.17 (ii) 中的第一列在左端也不正合。由于形式体系 1.4.3 \term{self-dual}{自对偶}，只有那些在 1.4.1 的框架中成立、且其\term{duality}{对偶}也成立的公式，才可能普遍成立。
+
+\par\medskip\noindent\textbf{1.4.21.}
+重新考虑 1.4.6 的论证。
+
+a) 函子 ${}^pi_*$ \term{fully-faithful}{全忠实}，所以\term{adjunction-morphism}{伴随态射}的复合 ${}^pi_*{}^pi^!\to\mathrm{Id}\to{}^pi_*{}^pi^*$ 是某个唯一函子态射经 ${}^pi_*$ 作用所得。这个态射为
+\begin{equation*}
+{}^pi^!\longrightarrow{}^pi^*.\tag{1.4.21.1}
+\end{equation*}
+对 $(i^*,i_*)$ 和 $(i_*,i^!)$ 应用 1.3.18 (ii) 中的图，并利用 $i_*$ 的 \term{t-exact}{$t$-正合}性，对 $A\in C$ 得到交换图
+\[
+\begin{tikzcd}[ampersand replacement=\&,column sep=large,row sep=large]
+{}^pi_*{}^pi^!A\arrow[r]\arrow[d,equal]\&A\arrow[r]\arrow[dd,equal]\&{}^pi_*{}^pi^*A\arrow[d,equal]\\
+i_*{}^pi^!A\arrow[d]\&\&i_*{}^pi^*A\\
+i_*i^!A\arrow[r]\&A\arrow[r]\&i_*i^*A\arrow[u]
+\end{tikzcd}
+\]
+因此，对 $A\in C$，(1.4.21.1) 中的态射 ${}^pi^!A\to{}^pi^*A$ 是复合
+\begin{equation*}
+{}^pi^!A\longrightarrow i^!A\xrightarrow{\text{(1.4.6.1)}}i^*A
+ \longrightarrow{}^pi^*A.\tag{1.4.21.2}
+\end{equation*}
+将 (1.4.21.1) 作用于 $i_*A$（$A\in C_F$），就得到 $A$ 的恒等自同构。
+
+b) 函子 ${}^pj^*$ 是取商函子（1.4.18），故\term{adjunction-morphism}{伴随态射}的复合 ${}^pj_!{}^pj^*\to\mathrm{Id}\to{}^pj_*{}^pj^*$ 来自唯一的函子态射
+\begin{equation*}
+{}^pj_!\longrightarrow{}^pj_*.\tag{1.4.21.3}
+\end{equation*}
+对 $(j^*,j_*)$ 和 $(j_!,j^*)$ 应用 1.3.18 (ii) 中的图，并利用 $j^*$ 的 \term{t-exact}{$t$-正合}性，对 $A\in C$ 得到交换图
+\SourcePage{61}
+\[
+\begin{tikzcd}[ampersand replacement=\&,column sep=large,row sep=large]
+{}^pj_!{}^pj^*A\arrow[r]\arrow[d,equal]\&A\arrow[r]\arrow[dd,equal]\&{}^pj_*{}^pj^*A\arrow[d,equal]\\
+{}^pj_!j^*A\&\&{}^pj_*j^*A\arrow[d]\\
+j_!j^*A\arrow[u]\arrow[r]\&A\arrow[r]\&j_*j^*A
+\end{tikzcd}
+\]
+由此，对 $B\in C_U$，(1.4.6.2) 中从 $j_!B$ 到 $j_*B$ 的态射是复合
+\begin{equation*}
+\begin{aligned}
+j_!B&\longrightarrow\tau_{\ge0}j_!B={}^pj_!B\\
+&\xrightarrow{\text{(1.4.21.3)}}{}^pj_*B=\tau_{\le0}j_*B
+ \longrightarrow j_*B.
+\end{aligned}\tag{1.4.21.4}
+\end{equation*}
+对 (1.4.21.3) 作用 ${}^pj^*$，得到恒等函子的恒等自同构。特别地，对 $B\in C_U$，(1.4.21.3) 中态射 ${}^pj_!B\to{}^pj_*B$ 的核和余核均属于 ${}^pi_*C_F$。
+
+\par\medskip\noindent\textbf{定义 1.4.22.}
+函子 $j_{!*}:C_U\to C$ 将 $C_U$ 中的 $B$ 送到 ${}^pj_!B$ 在 ${}^pj_*B$ 中的像。
+
+对 $B\in C_U$，(1.4.21.4) 给出 (1.4.6.2) 中态射 $j_!B\to j_*B$ 的如下分解：
+\begin{equation*}
+j_!B\longrightarrow{}^pj_!B\longrightarrow j_{!*}B
+ \longrightarrow{}^pj_*B\longrightarrow j_*B.\tag{1.4.22.1}
+\end{equation*}
+
+\par\medskip\noindent\textbf{命题 1.4.23.}
+对 $B\in C_U$，有
+\[
+\begin{aligned}
+{}^pj_!B&=\tau^F_{\ge0}j_!B=\tau^F_{\le-2}j_*B,\\
+j_{!*}B&=\tau^F_{\ge1}j_!B=\tau^F_{\le-1}j_*B,\\
+{}^pj_*B&=\tau^F_{\ge2}j_!B=\tau^F_{\le0}j_*B.
+\end{aligned}
+\]
+更准确地说，${}^pj_!B$ 连同映射 $j_!B\to{}^pj_!B$ 就是 $\tau^F_{\ge0}j_!B$，其余等式也作同样理解。
+
+因为 $j^*j_!B\in C_U$，$j_!B$ 等于它自己的 $\tau^U_{\ge0}$。因此，由 (1.4.13.1)，有
+\[
+{}^pj_!B=\tau_{\ge0}j_!B=\tau^F_{\ge0}j_!B;
+\]
+由 1.4.14，$\tau^F_{\ge0}j_!B=\tau^F_{\le-2}j_*B$。同样，${}^pj_*B=\tau^F_{\ge2}j_!B=\tau^F_{\le0}j_*B$。
+
+1.4.13 对定义 $\tau^F_{\ge p}$ 的 \term{t-structure}{$t$-结构}的 $H^p$ 的描述，给出\term{distinguished-triangle}{区别三角}
+\[
+(i_*H^0i^!j_!B,\tau^F_{\ge0}j_!B,\tau^F_{\ge1}j_!B).
+\]
+这表明 $\tau^F_{\ge1}j_!B\in\mathcal D^{[-1,0]}$。\term{duality}{对偶}论证给出\term{distinguished-triangle}{区别三角}
+\[
+(\tau^F_{\le-1}j_*B,\tau^F_{\le0}j_*B,i_*H^0i^*j_*B),
+\]
+从而 $\tau^F_{\le-1}j_*B\in\mathcal D^{[0,1]}$。应用 1.4.14，得到
+\[
+\tau^F_{\ge1}j_!B=\tau^F_{\le-1}j_*B\in C,
+\]
+而上面的三角成为短\term{exact-sequence}{正合列}
+\SourcePage{62}
+\[
+0\longrightarrow i_*H^0i^!j_!B\longrightarrow{}^pj_!B
+ \longrightarrow\tau^F_{\ge1}j_!B\longrightarrow0,
+\]
+\[
+0\longrightarrow\tau^F_{\le-1}j_*B\longrightarrow{}^pj_*B
+ \longrightarrow i_*H^0i^*j_*B\longrightarrow0.
+\]
+它们表明，$\tau^F_{\ge1}j_!B=\tau^F_{\le-1}j_*B$ 正是 ${}^pj_!B$ 在 ${}^pj_*B$ 中的像 $j_{!*}B$。
+
+\par\medskip\noindent\textbf{推论 1.4.24.}
+对 $B\in C_U$，$j_{!*}B$ 是 $B$ 在 $\mathcal D$ 中满足 $i^*X\in\mathcal D_F^{\le-1}$、$i^!X\in\mathcal D_F^{\ge1}$ 的唯一延拓 $X$。
+
+应用 1.4.14 即可。同样，${}^pj_!B$（分别地，${}^pj_*B$）是满足 $i^*X\in\mathcal D_F^{\le-2}$（分别地，$\mathcal D_F^{\le0}$）、$i^!X\in\mathcal D_F^{\ge0}$（分别地，$\mathcal D_F^{\ge2}$）的唯一延拓 $X$。
+
+\par\medskip\noindent\textbf{推论 1.4.25.}
+对 $B\in C_U$，$j_{!*}B$ 是 $B$ 在 $C$ 中的唯一延拓 $X$，使得 $X$ 没有属于 $C_F$ 经 $i_*$ 的\term{essential-image}{本质像} $\overline C_F$ 的非平凡子对象或商对象。
+
+根据定义，$j_{!*}B\in C\subset\mathcal D$。对 $C$ 中 $B$ 的一个延拓 $X$，有 $i^*X\in\mathcal D_F^{\le0}$，且 $i^*X\in\mathcal D_F^{\le-1}$ 当且仅当 ${}^pi^*X=0$。\term{duality}{对偶}地，$i^!X\in\mathcal D_F^{\ge1}$ 当且仅当 ${}^pi^!X=0$。通过 $i_*$ 把 $C_F$ 等同于 $\overline C_F$。由于 ${}^pi^*X$（分别地，${}^pi^!X$）是 $X$ 的属于 $C_F$ 的最大商对象（分别地，子对象）（1.4.17.1），1.4.25 中对 $j_{!*}B$ 的刻画就是对 1.4.24 的重新表述。
+
+\par\medskip\noindent\textbf{命题 1.4.26.}
+$C$ 的\term{simple-object}{单对象}是 $C_F$ 中\term{simple-object}{单对象} $S$ 的 ${}^pi_*S$，以及 $C_U$ 中\term{simple-object}{单对象} $S$ 的 $j_{!*}S$。
+
+因为 $C_F$ 经 ${}^pi_*$ 的\term{essential-image}{本质像} $\overline C_F$ 是 $C$ 的\term{thick-subcategory}{厚子范畴}，所以 $C$ 中的 $S$ 为\term{simple-object}{单对象}，当且仅当以下两种情况之一成立：(a) $S$ 属于 $\overline C_F$，并且在 $\overline C_F$ 中为\term{simple-object}{单对象}；(b) $S$ 在 $C/\overline C_F$ 中的像为\term{simple-object}{单对象}，且 $S$ 没有属于 $\overline C_F$ 的非平凡子对象或商对象。情形 (a) 给出 $C_F$ 中\term{simple-object}{单对象}的 ${}^pi_*$。根据 1.4.25，情形 (b) 给出 $C_U$ 中\term{simple-object}{单对象}的 $j_{!*}$。

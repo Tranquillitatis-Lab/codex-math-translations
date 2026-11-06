@@ -1,0 +1,510 @@
+\article{约化 Lie 群的表示}{Representations of reductive Lie groups}{Nolan R. Wallach}{1}{71--86}
+本文旨在介绍实约化 Lie 群（real reductive Lie groups）的表示论（所研究的精确群类见第1节）。重点是介绍 Langlands 和 Harish-Chandra 对这类群的不可约表示所给出的分类。第7、8节研究 $\GL(2,\R)$ 与 $\GL(2,\C)$ 的交织算子（intertwining operators），并详细说明这一分类对这两个群的具体形式。\footnote{原文 AMS（MOS）学科分类（1970）：主要 22E45。}
+
+约化 Lie 群表示论是一个庞大的领域。要全面介绍这一领域，需要一部篇幅可观的专著。本文篇幅有限，因而只沿一条通向分类定理的路线展开。理论的许多重要方面几乎没有讨论，如离散系列的详细理论 [5]、[6]、[19]，交织算子 [13]、[14]，Plancherel 定理 [8]、[9]、[10]。这些材料仍足以展现这一领域的基本面貌。本文未涉及的许多内容将在本卷其他文章中出现。已有几篇半单 Lie 群表示论综述（尤其是 [20]）；有意深入研究的读者应查阅 G. Warner 的专著 [22]。
+
+\origsection{1}{所研究的群类（The class of groups to be studied）}
+\paragraph*{1.1.} 设 $\mathbf G$ 是定义于 $\R$ 上的 $\C$ 代数群。以 $\mathbf G(\R)$ 表示其实点，以 $\mathbf G^0$ 表示其单位连通分支（identity component）。
+\paragraph*{1.2.} 我们研究具有下列性质的 Lie 群 $G$：
+\begin{enumerate}
+\item[(1)] 存在定义于 $\R$ 的代数群 $\mathbf G$ 及 Lie 群同态 $\gamma:G\to\mathbf G(\R)$，使 $\gamma(G)$ 在 $\mathbf G(\R)$ 中开，且 $\gamma:G\to\gamma(G)$ 为有限覆盖（finite covering）；
+\item[(2)] $\mathbf G^0$ 约化（reductive）；
+\item[(3)] $\Ad(\gamma(G))\subset\Ad(\mathbf G^0)$，其中 $\Ad$ 为 $\mathbf G^0$ 在其 Lie 代数上的伴随表示（adjoint representation）。
+\end{enumerate}
+\paragraph*{1.3.} 基本例子为 $\GL(n,\R)$、$\GL(n,\C)$，后者也视为定义于 $\R$ 的代数群的实点群。采用比线性群更广的群类，一个主要原因是要包括“亚辛群”（metaplectic group），即 $\operatorname{Sp}(n,\R)$ 的二重覆盖。
+\paragraph*{1.4.} 设 $G$ 如1.2。以 $X(G)$ 表示所有从 $G$ 到 $\R^\times=\R-\{0\}$ 的连续同态所成的群。令
+\[
+ {}^0G=\{g\in G:|\chi(g)|=1,\ \chi\in X(G)\}.
+\]
+\paragraph*{1.5.} 若 $H$ 为 Lie 群，以 $\mathfrak h$ 表示其 Lie 代数，$\Ad$ 表示 $H$ 在 $\mathfrak h$ 上的伴随表示，$\mathfrak h_{\C}$ 表示 $\mathfrak h$ 的复化（complexification）。
+\paragraph*{1.6.} 设 $G$ 满足1.2。不难证明，$\mathfrak g$ 上存在非退化、$\Ad(G)$ 不变的对称双线性形式 $B$，以及 $G$ 的对合自同构 $\theta$，使：(1) $B$ 在 $\theta$ 下不变，且 $(X,Y)=-B(X,\theta Y)$ 正定；(2) $G$ 存在极大紧子群 $K$，使 $K\subset\{g\in G:\theta(g)=g\}$ 为开子群。
+
+对此类 $G$ 固定 $B,\theta,K$。以 $\mathfrak c$ 表示 $\mathfrak g$ 的中心，令 ${}^0\mathfrak c=\{X\in\mathfrak c:\theta X=X\}$，则 $\exp({}^0\mathfrak c)=K\cap\exp\mathfrak c$。令 $\mathfrak z=\{X\in\mathfrak c:\theta X=-X\}$、$Z=\exp\mathfrak z$，称 $Z$ 为 $G$ 的分裂分量（split component）。
+\paragraph*{1.7.} 不难证明，映射 $Z\times{}^0G\to G$，$(z,g)\mapsto zg$，是 Lie 群同构。
+\paragraph*{1.8.} 回到例子。若 $G=\GL(n,F)$，$F=\R$ 或 $\C$，令 $B(X,Y)=\operatorname{Re}\operatorname{tr}(XY)$，$\theta X=-X^*$（$X^*$ 是共轭转置）。则
+\[
+ {}^0G=\{g:|\det g|=1\},\qquad Z=\{aI:a>0\}.
+\]
+当 $F=\R$ 时 $K=\operatorname O(n)$，当 $F=\C$ 时 $K=\operatorname U(n)$。
+
+\origsection{2}{容许表示（Admissible representations）}
+\paragraph*{2.1.} 固定1.2中的群 $G$，以及1.6中的 $B,K$。
+\paragraph*{2.2.} 设 $H$ 为可分 Hilbert 空间，$\GL(H)$ 为其所有有界可逆算子组成的群。$G$ 在 $H$ 上的表示（representation）$(\pi,H)$ 为同态 $\pi:G\to\GL(H)$，要求映射 $G\times H\to H$，$(g,v)\mapsto\pi(g)v$ 连续。若每个 $\pi(g)$ 均为酉算子，则称表示为酉的（unitary）。
+\paragraph*{2.3.} 以 $\|\cdot\|$ 表示 $\End(H)$ 上的算子范数。由一致有界原理，若 $\omega\subset G$ 紧，则 $\|\pi(g)\|\le C(\omega)<\infty$（$g\in\omega$）。若 $(\,\cdot\,,\,\cdot\,)$ 为 $H$ 的 Hilbert 空间内积，令
+\[
+ \langle v,w\rangle=\int_K(\pi(k)v,\pi(k)w)\,dk
+\]
+（$dk$ 是 $K$ 上总质量为1的 Haar 测度），则此内积给出相同拓扑，并使 $\pi|_K$ 为酉的。因此此后假定 $\pi|_K$ 为酉表示。
+\paragraph*{2.4.} 固定 $G$ 上的 Haar 测度 $dg$（$G$ 为幺模群（unimodular））。对紧支撑光滑函数 $f\in C_c^\infty(G)$，以下式定义 $\pi(f):H\to H$：
+\[
+ \langle\pi(f)v,w\rangle=\int_Gf(g)\langle\pi(g)v,w\rangle\,dg.
+\]
+若 $\operatorname{supp}f\subset\omega$，则 $\|\pi(f)\|\le C(\omega)\|f\|_1$（见2.3，$\|f\|_1$ 为 $L^1$ 范数）。若 $f\in C^\infty(K)$，令 $\pi_K(f)=(\pi|_K)(f)$。
+\paragraph*{2.5.} 以 $\mathcal E(K)$ 表示 $K$ 的不可约酉表示的等价类集合。对 $\tau\in\mathcal E(K)$，固定 $(\tau_\tau,V_\tau)\in\tau$，则 $\dim V_\tau<\infty$。令
+\[
+ \alpha_\tau(k)=(\dim V_\tau)\operatorname{tr}\tau_\tau(k^{-1}),\qquad k\in K.
+\]
+则 $\pi_K(\alpha_\tau)$ 是 $H$ 上的投影算子。令 $H_\tau=\pi_K(\alpha_\tau)H$，则 $H=\widehat{\bigoplus}_\tau H_\tau$ 为 Hilbert 空间直和。
+\paragraph*{2.6.} 若每个 $\tau\in\mathcal E(K)$ 均有 $\dim H_\tau<\infty$，称 $(\pi,H)$ 为容许表示（admissible representation）。
+\paragraph*{2.7.} 若 $H$ 的闭 $\pi(G)$ 不变子空间只有 $\{0\},H$，称 $(\pi,H)$ 不可约（irreducible）。
+\begin{originaltheorem}{2.8. 定理（Harish-Chandra [2]）}
+(1) $G$ 的不可约酉表示为容许表示。
+
+(2) 若 $(\pi,H)$ 为 $G$ 的容许表示，$F\subset\mathcal E(K)$ 为有限子集，且 $v\in\bigoplus_{\tau\in F}H_\tau$，则 $g\mapsto\pi(g)v$ 为实解析映射（real analytic）。
+\end{originaltheorem}
+\paragraph*{2.9.} 设 $(\pi,H)$ 为容许表示，令 $H_0$ 为各 $H_\tau$ 的代数直和。对 $v\in H$，令 $H(v)=\sum_{k\in K}\C\pi(k)v$。则 $H_0=\{v\in H:\dim H(v)<\infty\}$。
+\paragraph*{2.10.} 对 $v\in H_0$，定理2.8蕴含：(1) 对 $X\in\mathfrak g$，$\pi(X)v=\left.\frac d{dt}\pi(\exp tX)v\right|_{t=0}$ 存在；(2) 若 $k\in K,X\in\mathfrak g$，则 $\pi(k)\pi(X)v=\pi(\Ad(k)X)\pi(k)v$。
+\paragraph*{2.11.} 由2.10(2)，若 $X\in\mathfrak g,v\in H_0$，则 $\pi(k)\pi(X)v\in\pi(\mathfrak g)H(v)$，故 $\dim H(\pi(X)v)<\infty$，从而 $\pi(X)v\in H_0$。与有限维情形一样，得到：(1) 在 $H_0$ 上，对 $X,Y\in\mathfrak g$ 有
+\[
+ \pi[X,Y]=\pi(X)\pi(Y)-\pi(Y)\pi(X)=[\pi(X),\pi(Y)].
+\]
+\paragraph*{2.12.} 2.10、2.11自然引出 $(\mathfrak g,K)$ 模（$(\mathfrak g,K)$-module）。它是满足以下条件的复向量空间 $V$：
+\begin{enumerate}
+\item[(1)] $V$ 为 $\mathfrak g$ 模，即有线性映射 $\mathfrak g\otimes V\to V$，$X\otimes v\mapsto Xv$，满足 $[X,Y]v=X(Yv)-Y(Xv)$；
+\item[(2)] $V$ 为 $K$ 模，即有在 $V$ 变量上线性的映射 $K\times V\to V$，满足 $1v=v$、$k_1(k_2v)=(k_1k_2)v$；
+\item[(3)] 对 $v\in V$，$\dim\sum_{k\in K}\C kv<\infty$；若 $W\subset V$ 为有限维 $K$ 不变子空间，则 (a) $K$ 在 $W$ 上完全可约，(b) $K\times W\to W$，$(k,w)\mapsto kw$ 连续（因而实解析）；
+\item[(4)] 若 $X\in\mathfrak k,v\in V$，则 $Xv=\left.\frac d{dt}\exp(tX)v\right|_{t=0}$；
+\item[(5)] 若 $k\in K,X\in\mathfrak g,v\in V$，则 $k(Xv)=(\Ad(k)X)(kv)$。
+\end{enumerate}
+\paragraph*{2.13.} 若 $V,W$ 为 $K$ 模（或 $\mathfrak g$ 模），以 $\Hom_K(W,V)$（或 $\Hom_{\mathfrak g}(W,V)$）表示满足 $Akw=kAw$（或 $AXw=XAw$）的线性映射 $A:W\to V$。对 $(\mathfrak g,K)$ 模，令
+\[
+ \Hom_{\mathfrak g,K}(W,V)=\Hom_{\mathfrak g}(W,V)\cap\Hom_K(W,V).
+\]
+\paragraph*{2.14.} 若对每个 $\tau\in\mathcal E(K)$ 都有 $\dim\Hom_K(V_\tau,V)<\infty$，称 $(\mathfrak g,K)$ 模 $V$ 容许。令
+\[
+ V(\tau)=\sum_{A\in\Hom_K(V_\tau,V)}AV_\tau\subset V,
+\]
+称为 $V$ 的 $\tau$ 等型子空间（$\tau$-isotypic subspace）。
+\paragraph*{2.15.} 若 $(\pi,H)$ 为 $G$ 的容许表示，取 $V_\pi=H_0$，作用为 $Xv=\pi(X)v$，则2.10(1)、(2)及2.11(1)表明 $V_\pi$ 是容许 $(\mathfrak g,K)$ 模。
+\paragraph*{2.16.} 若 $V$ 中同时在 $\mathfrak g$ 和 $K$ 下不变的子空间只有 $V$ 和 $\{0\}$，称 $(\mathfrak g,K)$ 模 $V$ 不可约。
+\begin{originaltheorem}{2.17. 定理（Harish-Chandra [2]）}
+若 $(\pi,H)$ 为 $G$ 的容许表示，则它不可约当且仅当 $V_\pi$ 为不可约 $(\mathfrak g,K)$ 模。
+\end{originaltheorem}
+\paragraph*{2.18.} 若 $(\pi_i,H_i)$（$i=1,2$）为 $G$ 的表示，从第一个到第二个的交织算子是满足 $A\pi_1(g)=\pi_2(g)A$ 的连续线性映射 $A:H_1\to H_2$。若存在双射交织算子，称 $\pi_1,\pi_2$ 等价。若二者均为酉表示，且存在双射酉交织算子，称其酉等价（unitarily equivalent）。
+\begin{originaltheorem}{2.19. 定理（Harish-Chandra [4]）}
+若 $(\pi_i,H_i)$ 为 $G$ 的酉容许表示，则 $\pi_1,\pi_2$ 酉等价当且仅当 $V_{\pi_1},V_{\pi_2}$ 同构，即 $\Hom_{\mathfrak g,K}(V_{\pi_1},V_{\pi_2})$ 中存在双射。
+\end{originaltheorem}
+\paragraph*{2.20.} 若 $(\mathfrak g,K)$ 模 $V$ 上存在正定内积 $\langle\,\cdot\,,\,\cdot\,\rangle$，使 (1) $\langle kv,kw\rangle=\langle v,w\rangle$（$k\in K$），(2) $\langle Xv,w\rangle=-\langle v,Xw\rangle$（$X\in\mathfrak g$），则称 $V$ 为酉的。
+\begin{originaltheorem}{2.21. 定理（Harish-Chandra [2]、[3]）}
+设 $V$ 为容许 $(\mathfrak g,K)$ 模。存在 $G$ 的容许酉表示 $\pi$ 使 $V=V_\pi$ 的充要条件是 $V$ 为酉的。
+\end{originaltheorem}
+\paragraph*{2.22.} 本节结果表明，确定 $G$ 的不可约酉表示等价类集 $\mathcal E(G)$，就等价于求不可约酉容许 $(\mathfrak g,K)$ 模的同构类集 $\mathcal E(\mathfrak g,K)$。这可分两步：首先确定不可约容许 $(\mathfrak g,K)$ 模的同构类集 $\Pi(\mathfrak g,K)$；再从中找出可以酉化的同构类。第一步由 Langlands 分类完成（Vogan 也给出了另一种分类，预计将带来重要而深远的结果）。第二步还远未完成。关于这一问题的相关文献，可参看 Knapp 和 Zuckerman 的讲座 [14]。
+
+\origsection{3}{无穷小特征（Infinitesimal characters）}
+\paragraph*{3.1.} 设 $\mathfrak g$ 为域上的 Lie 代数，$T(\mathfrak g)$ 为其张量代数（tensor algebra）。令 $I(\mathfrak g)$ 为由 $X\otimes Y-Y\otimes X-[X,Y]$ 生成的双边理想。令 $U(\mathfrak g)=T(\mathfrak g)/I(\mathfrak g)$，定义 $j:\mathfrak g\to U(\mathfrak g)$ 为 $j(X)=X+I(\mathfrak g)$。
+\paragraph*{3.2.} $(U(\mathfrak g),j)$ 或 $U(\mathfrak g)$ 称为 $\mathfrak g$ 的泛包络代数（universal enveloping algebra）。注意 $j[X,Y]=j(X)j(Y)-j(Y)j(X)=[j(X),j(Y)]$。这一名称源于下面的泛性质：若 $E$ 为含幺结合代数，$\varphi:\mathfrak g\to E$ 满足 $\varphi[X,Y]=[\varphi(X),\varphi(Y)]$，则存在唯一代数同态 $\bar\varphi:U(\mathfrak g)\to E$，使 (a) $\bar\varphi(1)=1$，(b) $\bar\varphi(j(X))=\varphi(X)$。
+\paragraph*{3.3.} 特别地，每个 $\mathfrak g$ 模自然也是 $U(\mathfrak g)$ 模。
+\begin{originaltheorem}{3.4. 定理（参见 [11]）}
+若 $X_1,\ldots,X_n$ 为 $\mathfrak g$ 的一组基，则单项式 $X_1^{r_1}\cdots X_n^{r_n}$ 组成 $U(\mathfrak g)$ 的一组基。
+\end{originaltheorem}
+\paragraph*{3.5.} 定理3.4通常称为 Poincaré--Birkhoff--Witt（P-B-W）定理。特别地，$j:\mathfrak g\to U(\mathfrak g)$ 单射。因此以后省略嵌入 $j$，将 $\mathfrak g$ 视为 $U(\mathfrak g)$ 在交换子括号下的 Lie 子代数。
+\paragraph*{3.6.} 设 $G$ 如1.2，Lie 代数为 $\mathfrak g$，复化为 $\mathfrak g_{\C}$。记 $U(\mathfrak g_{\C})$ 的中心为 $\mathcal Z(\mathfrak g_{\C})=\mathcal Z$。
+\paragraph*{3.7.} $g\in G$ 时 $\Ad(g)$ 延拓为 $U(\mathfrak g_{\C})$ 的自同构。1.2(3)蕴含对 $z\in\mathcal Z$ 有 $\Ad(g)z=z$。
+\paragraph*{3.8.} 回忆 $\mathfrak g_{\C}$ 的 Cartan 子代数（Cartan subalgebra）$\mathfrak h$ 是满足下列条件的子代数：(1) 阿贝尔；(2) 每个 $h\in\mathfrak h$ 的 $\operatorname{ad}(h)$ 在 $\mathfrak g_{\C}$ 上可对角化；(3) 关于(1)、(2)极大。
+\paragraph*{3.9.} Cartan 子代数总存在。例如 $G=\GL(n,\R)$ 时，$\mathfrak g=M_n(\R)$，括号为 $[X,Y]=XY-YX$，$\mathfrak g_{\C}=M_n(\C)$；可取 $\mathfrak h$ 为所有对角矩阵。
+\paragraph*{3.10.} 取 Cartan 子代数 $\mathfrak h\subset\mathfrak g_{\C}$。对 $\alpha\in\mathfrak h^*$，令
+\[
+ (\mathfrak g_{\C})_\alpha=\{X\in\mathfrak g_{\C}:[H,X]=\alpha(H)X,\ H\in\mathfrak h\}.
+\]
+令 $\Delta=\{\alpha\in\mathfrak h^*:\alpha\ne0,(\mathfrak g_{\C})_\alpha\ne0\}$，称为 $(\mathfrak g_{\C},\mathfrak h)$ 的根系（root system）。有 $\mathfrak g_{\C}=\sum_{\alpha\in\Delta}(\mathfrak g_{\C})_\alpha+\mathfrak h$。
+\paragraph*{3.11.} 仍以 $B$ 表示其在 $\mathfrak g_{\C}$ 上的复线性延拓。$B|_{\mathfrak h\times\mathfrak h}$ 非退化，以 $\langle\,\cdot\,,\,\cdot\,\rangle$ 表示 $\mathfrak h^*$ 上的对偶双线性形式。对 $\alpha\in\Delta$，令
+\[
+ s_\alpha h=h-2\frac{\alpha(h)}{\langle\alpha,\alpha\rangle}H_\alpha,
+ \qquad B(H_\alpha,h)=\alpha(h).
+\]
+$\GL(\mathfrak h)$ 中由所有 $s_\alpha$ 生成的群 $W(\Delta)$ 称为 Weyl 群（Weyl group）。规定其在 $\mathfrak h^*$ 上的作用为 $s\lambda=\lambda\circ s^{-1}$。
+\paragraph*{3.12.} 已知对每个 $s\in W(\Delta)$，存在 $g\in\mathbf G^0$ 使 $s=\Ad(g)|_{\mathfrak h}$（参见 [11]）。
+\paragraph*{3.13.} 正根系（system of positive roots）是子集 $\Delta^+\subset\Delta$，满足：(1) $\Delta=\Delta^+\sqcup\{-\alpha:\alpha\in\Delta^+\}$；(2) 若 $\alpha,\beta\in\Delta^+$ 且 $\alpha+\beta\in\Delta$，则 $\alpha+\beta\in\Delta^+$。
+
+注意，$\alpha,\beta\in\Delta$ 时 $\langle\alpha,\beta\rangle\in\R$。令 $\mathfrak h_{\R}=\sum\R H_\alpha$，则 $B$ 在其上正定。令 $\mathfrak h'_{\R}=\{h\in\mathfrak h_{\R}:\alpha(h)\ne0,\alpha\in\Delta\}$。因 $\Delta$ 有限，$\mathfrak h'_{\R}\ne\varnothing$。对 $h\in\mathfrak h'_{\R}$，令 $\Delta^+(h)=\{\alpha\in\Delta:\alpha(h)>0\}$。
+\paragraph*{3.14.} 取正根系 $\Delta^+$，令 $\mathfrak n^+=\sum_{\alpha\in\Delta^+}(\mathfrak g_{\C})_\alpha$，$\mathfrak b=\mathfrak h+\mathfrak n^+$，称 $\mathfrak b$ 为 Borel 子代数。令 $\mathfrak n^-=\sum_{\alpha\in\Delta^+}(\mathfrak g_{\C})_{-\alpha}$。
+\paragraph*{3.15.} 由 P-B-W，
+\[
+ U(\mathfrak g_{\C})=U(\mathfrak h)\oplus\bigl(\mathfrak n^-U(\mathfrak g_{\C})+U(\mathfrak g_{\C})\mathfrak n^+\bigr).
+\]
+容易验证 $\mathcal Z\subset U(\mathfrak h)\oplus\mathfrak n^-U(\mathfrak g_{\C})$，亦有 $\mathcal Z\subset U(\mathfrak h)\oplus U(\mathfrak g_{\C})\mathfrak n^+$。因此，若 $p:\mathcal Z\to U(\mathfrak h)$ 为上述分解到 $U(\mathfrak h)$ 因子的投影，则 $p$ 为代数同态。
+\paragraph*{3.16.} 定义 $\mu:U(\mathfrak h)\to U(\mathfrak h)$ 为 $\mu(1)=1$、$\mu(h)=h-\delta(h)1$、$\mu(h_1h_2)=\mu(h_1)\mu(h_2)$。令 $\gamma=\mu\circ p$。\footnote{\textbf{译者注（本次校订）：}这里使用的 $\delta$ 尚未定义，应为正根的半和 $\delta=\frac12\sum_{\alpha\in\Delta^+}\alpha$。它给出 Harish-Chandra 同构所需的平移。}
+\begin{originaltheorem}{3.17. 定理（Harish-Chandra，参见 [1]）}
+(1) $\gamma:\mathcal Z\to U(\mathfrak h)$ 为单射，其像为
+\[
+ U(\mathfrak h)^{W(\Delta)}=\{h\in U(\mathfrak h):sh=h,\ s\in W(\Delta)\}.
+\]
+(2) $\gamma$ 不依赖 $\Delta^+$ 的选择，记为 $\gamma_{\mathfrak g_{\C},\mathfrak h}$。
+
+(3) 若 $\chi:\mathcal Z\to\C$ 为同态且 $\chi(1)=1$，则存在 $\Lambda\in\mathfrak h^*$，满足 $\chi(z)=\Lambda(\gamma(z))$（$z\in\mathcal Z$）。这里 $\Lambda:U(\mathfrak h)\to\C$ 是线性映射 $h\mapsto\Lambda(h)$ 的延拓。
+
+(4) 对 $\Lambda\in\mathfrak h^*$，令 $\chi_\Lambda(z)=\Lambda(\gamma(z))$。则 $\chi_\Lambda=\chi_{\Lambda'}$ 当且仅当存在 $s\in W(\Delta)$ 使 $\Lambda'=s\Lambda$。
+\end{originaltheorem}
+\paragraph*{3.18.} 定理3.17的困难部分是(1)。(3)来自 $U(\mathfrak h)$ 在 $U(\mathfrak h)^{W(\Delta)}$ 上整这一事实。(4)只是(1)的重述。
+\paragraph*{3.19.} 设 $V$ 为容许 $(\mathfrak g,K)$ 模，则 $V=\bigoplus_{\tau\in\mathcal E(K)}V(\tau)$。若 $z\in\mathcal Z$，则 $zV(\tau)\subset V(\tau)$。因 $\dim V(\tau)<\infty$，$\mathcal Z|_{V(\tau)}$ 可化为上三角形式。
+\paragraph*{3.20.} 对同态 $\chi:\mathcal Z\to\C$，令
+\[
+ V_\chi=\{v\in V:(z-\chi(z))^dv=0\text{ 对所有 }z\in\mathcal Z,
+ \ d\text{ 仅依赖于 }v\}.
+\]
+由3.19可知，$V$ 是各 $V_\chi$ 的 $(\mathfrak g,K)$ 模直和。
+\paragraph*{3.21.} 若 $V$ 不可约且 $V_\chi\ne0$，则 $V_\chi=V$。令 $W=\{v\in V:zv=\chi(z)v,z\in\mathcal Z\}$。由 $V_\chi=V$，$W\ne0$。$W$ 显然为 $(\mathfrak g,K)$ 子模，故 $W=V$。称 $\chi$ 为 $V$ 的无穷小特征（infinitesimal character）。
+\begin{originaltheorem}{3.22. 定理（Chevalley、Harish-Chandra，参见 [22]）}
+令 $w=|W(\Delta)|$，则存在 $u_1,\ldots,u_w\in U(\mathfrak h)$，使 $U(\mathfrak h)=\sum u_iU(\mathfrak h)^{W(\Delta)}$。
+\end{originaltheorem}
+\begin{originaltheorem}{3.23. 定理（Harish-Chandra，参见 [22]）}
+若 $(\mathfrak g,K)$ 模 $V$ 在 $U(\mathfrak g)$ 上有限生成，且对某 $\chi$ 有 $V=V_\chi$，则 $V$ 容许。若 $V\ne0$，则它有非零不可约商。
+\end{originaltheorem}
+
+\origsection{4}{主系列（The principal series）}
+\paragraph*{4.1.} 设 $G$ 如1.2。子群 $P\subset G$ 若满足：(1) 在 $G$ 中等于自己的正规化子；(2) $\mathfrak p_{\C}$ 包含 $\mathfrak g_{\C}$ 的一个 Borel 子代数（见3.14），则称为抛物子群（parabolic subgroup）。
+\paragraph*{4.2.} 取 $\mathfrak g$ 中包含于 $\mathfrak k^\perp=\{X:B(X,\mathfrak k)=0\}$ 的极大阿贝尔子代数 $\mathfrak a_0$。$h\in\mathfrak a_0$ 时，$\operatorname{ad}h$ 在 $\mathfrak g$ 上可对角化（事实上 $\theta h=h$）。\footnote{\textbf{译者注（本次校订）：}括号内应为 $\theta h=-h$。因为 $\mathfrak a_0\subset\mathfrak k^\perp$ 正是 Cartan 分解中的 $-1$ 特征空间；由 $B$ 的不变性可知，$\operatorname{ad}h$ 关于内积 $-B(X,\theta Y)$ 自伴，从而可对角化。}对 $\lambda\in\mathfrak a_0^*$，令 $\mathfrak g^\lambda=\{X\in\mathfrak g:[h,X]=\lambda(h)X,h\in\mathfrak a_0\}$，$\Lambda=\{\lambda\ne0:\mathfrak g^\lambda\ne0\}$。固定 $h_0\in\mathfrak a_0$，使所有 $\lambda\in\Lambda$ 均有 $\lambda(h_0)\ne0$。令 $\Lambda^+=\{\lambda\in\Lambda:\lambda(h_0)>0\}$，$\mathfrak n_0=\sum_{\lambda\in\Lambda^+}\mathfrak g^\lambda$。令 $M_0$ 为 $G$ 中 $A_0=\exp\mathfrak a_0$ 的中心化子，则 $P_0=M_0N_0$ 是抛物子群。若 $P$ 为 $G$ 的抛物子群，则存在 $g\in G$，使 $gP_0g^{-1}\subset P$。
+\paragraph*{4.3.} Iwasawa 分解（Iwasawa decomposition）给出 $G=KP_0$。因而任意抛物子群 $P$ 都包含某个 $kP_0k^{-1}$（$k\in K$），从而 $G=KP$。
+\paragraph*{4.4.} 固定4.2中的 $(P_0,A_0)$，称为极小抛物对（minimal parabolic pair）。${}^0M_0=M_0\cap K$（见1.5），$A_0$ 为按1.6选取的 $M_0$ 的分裂分量。
+\paragraph*{4.5.} 设 $P$ 为抛物子群，$N$ 为其幺幂根基（unipotent radical）。令 $M=P\cap\theta P$，则 $P=MN$，$M={}^0M\cdot A$，其中 $A$ 为按1.6选取的分裂分量。称 $(P,A)$ 为抛物对，或 $p$ 对（$p$-pair）。若 $A\subset A_0$ 且 $P\supset P_0$，称其标准。每个 $p$ 对在 $G$ 中共轭于唯一标准 $p$ 对。
+\paragraph*{4.6.} 若 $(P,A)$ 为 $p$ 对，$P=MN$，则 $M$ 满足1.2。若这是标准抛物对，则 $M\cap K$ 是 $M$ 的相应极大紧子群；$M$ 的容许表示也相对于 $M\cap K$ 定义。
+\paragraph*{4.7.} 设 $(P,A)$ 为标准 $p$ 对，$P=MN={}^0MAN$。设 $(\sigma,H_\sigma)$ 为 $M$ 的有限生成容许表示。以 $\delta_P$ 表示 $MN$ 的模函数（modular function），则
+\[
+ \delta_P({}^0man)=a^{2\rho_P}=e^{2\rho_P(H)},\qquad
+ a=\exp H,\quad 2\rho_P(H)=\operatorname{tr}(\operatorname{ad}H|_{\mathfrak n}),\quad H\in\mathfrak a.
+\]
+\paragraph*{4.8.} 如下构造 $G$ 的表示 $(\pi(P,\sigma),H^{P,\sigma})$：(1) $H^{P,\sigma}$ 为所有可测函数 $f:K\to H_\sigma$ 所成空间，满足 $f(km)=\sigma(m)^{-1}f(k)$（$m\in K\cap M$），且 $\|f\|^2=\int_K\|f(k)\|^2dk<\infty$；(2) 将 $f$ 延拓到 $G$，使 $f(kp)=\delta_P(p)^{-1/2}\sigma(p)^{-1}f(k)$，$p\in P$；定义 $(\pi(g)f)(x)=f(g^{-1}x)$，$\pi=\pi(P,\sigma)$。
+\begin{originaltheorem}{4.9. 定理}
+$(\pi(P,\sigma),H^{P,\sigma})=I(P,\sigma)$ 是 $G$ 的容许表示。
+\end{originaltheorem}
+\paragraph*{4.10.} 定理4.9可由定理3.23导出。
+\paragraph*{4.11.} 令 $V(P,\sigma)$ 为相应容许 $(\mathfrak g,K)$ 模，即 $V(P,\sigma)=V_\pi$，$\pi=\pi(P,\sigma)$。令 $V_\sigma$ 为对应于 $\sigma$ 的 $(\mathfrak m,K\cap M)$ 模。
+\paragraph*{4.12.} 对 $f\in V(P,\sigma)$，由定理2.8(2)，$f$ 实解析。定义 $j(f)=f(1)$。容易看出：(1) $j:V(P,\sigma)\to V_\sigma$ 是满射的 $(\mathfrak m,K\cap M)$ 模同态；(2) $\ker j\supset\mathfrak n V(P,\sigma)$。所以 $V_\sigma$ 为 $V(P,\sigma)/\mathfrak n V(P,\sigma)$ 的商模。\footnote{\textbf{译者注（本次校订）：}这里须计入归一化诱导的 $\rho_P$ 平移。按4.8的定义，对 $X\in\mathfrak m$ 有 $j(\pi(X)f)=(d\sigma(X)+\rho_P(X))j(f)$，其中 $\rho_P$ 在 $\mathfrak m$ 上按模特征的微分理解。因此 $j$ 的目标应为 $V_{\delta_P^{1/2}\sigma}$；等价地，可先将余不变量模扭曲以 $\delta_P^{-1/2}$。4.16和4.21中的 $\delta_P^{-1/2}$ 正是这一平移。}
+\paragraph*{4.13.} 下列结果可由定理3.22、3.23、子商定理（subquotient theorem；Harish-Chandra [3]、Lepowsky [16]、Rader [18]），结合 Casselman 利用容许表示矩阵元素渐近展开的技术证明（参见 Miličić [17]）。另一种不依赖渐近展开的证明见 [21]。
+\begin{originaltheorem}{4.14. 定理}
+设 $V$ 为容许 $(\mathfrak g,K)$ 模，$(P,A)$ 为标准 $p$ 对，$P=MN$。则 (1) $V\ne\mathfrak nV$；(2) 若 $V$ 有限生成，则 $V/\mathfrak nV$ 是有限生成的 $(\mathfrak m,M\cap K)$ 模。
+\end{originaltheorem}
+\paragraph*{4.15.} 将上述结果应用于 $(P,A)=(P_0,A_0)$，可得到一个有趣的推论。由于 ${}^0M_0=M_0\cap K$，有限生成的容许 $(\mathfrak m,K\cap M)$ 模为有限维。
+\paragraph*{4.16.} 设 $V$ 为非零、容许、有限生成的 $(\mathfrak g,K)$ 模。由4.15有 $1\le\dim V/\mathfrak n_0V<\infty$。取其非零不可约 $(\mathfrak m,K\cap M_0)$ 商模 $W$。$\mathfrak a_0$ 在其上按 $\nu\in(\mathfrak a_0^*)_{\C}$ 作用，因而可将 $W$ 看成 $M_0$ 的表示 $(\sigma,H_\sigma)$。令 $\xi=\delta_{P_0}^{-1/2}\sigma$，以 $\mu:V\to W$ 表示自然映射的复合。对 $v\in V$ 定义 $C(v)(k)=\mu(k^{-1}v)$。显然 $C:V\to H^{P_0,\xi}=H$，且 $C(kv)=kC(v)$。
+\begin{originaltheorem}{4.17. 引理}
+令 $\pi=\pi_{P_0,\xi}$，则 $C(Xv)=\pi(X)C(v)$（$v\in V,X\in\mathfrak g$）。
+\end{originaltheorem}
+\begin{proof}
+有 $C(kXv)=C(\Ad(k)Xkv)$，故 $\pi(k)C(Xv)=C(\Ad(k)Xkv)$。因此只须证明 (1) $C(Xv)(1)=(\pi(X)C(v))(1)$。利用 (2) $\mathfrak g=\mathfrak k\oplus\mathfrak a_0\oplus\mathfrak n_0$ 及4.12中的讨论，(1)不难得到。
+\end{proof}
+\begin{originaltheorem}{4.18. 定理（Casselman 子表示定理）}
+若 $V$ 为不可约容许 $(\mathfrak g,K)$ 模，则对适当的 $M_0$ 不可约表示 $\sigma$，$V$ 同构于 $V(P_0,\sigma)$ 的一个 $(\mathfrak g,K)$ 子模。
+\end{originaltheorem}
+\begin{proof}
+取4.16的 $C$，则 $C\ne0$，因而为单射。
+\end{proof}
+\begin{originaltheorem}{4.19. 推论}
+每个不可约容许 $(\mathfrak g,K)$ 模 $V$ 都同构于某个 $V_\pi$，其中 $(\pi,H)$ 为 $G$ 的不可约容许表示。
+\end{originaltheorem}
+\paragraph*{4.20.} 设 $(P,A)$ 为标准 $p$ 对，$P=MN$，$V$ 为容许不可约 $(\mathfrak g,K)$ 模。则 $V/\mathfrak nV$ 为有限生成、非零、容许的 $(\mathfrak m,K\cap M)$ 模，故有非零不可约商。由推论4.19，此商形如 $V_\sigma$，其中 $(\sigma,H_\sigma)$ 为 $M$ 的不可约容许表示。沿用4.16和引理4.17的论证，可得：
+\begin{originaltheorem}{4.21. 定理}
+设 $V$ 为不可约容许 $(\mathfrak g,K)$ 模，$(P,A)$ 为标准 $p$ 对，$P=MN$。则 (1) $V/\mathfrak nV$ 有非零不可约 $(\mathfrak m,K\cap M)$ 商模；(2) 若 $W$ 为这样的不可约商，则 $W=V_\sigma$，且 $V$ 同构于 $V(P,\delta_P^{-1/2}\sigma)$ 的一个 $(\mathfrak g,K)$ 子模。
+\end{originaltheorem}
+
+\origsection{5}{指数（Exponents）}
+\paragraph*{5.1.} 沿用第4节记号。
+\paragraph*{5.2.} 设 $(P,A)$ 为标准 $p$ 对，$P=MN$，则 ${}^*P_0=M\cap P_0$ 是 $M$ 的极小抛物子群。写 ${}^*P_0={}^0M_0A_0{}^*N_0$，${}^*M_0={}^0M_0A_0$。$( {}^*P_0,A_0)$ 是 $M$ 的极小抛物对，对应于 $G$ 的极小抛物对 $(P_0,A_0)$。注意 $N_0={}^*N_0N$。
+\paragraph*{5.3.} 若 $V$ 为容许有限生成 $(\mathfrak g,K)$ 模，容易看出 (1) $V/\mathfrak n_0V=(V/\mathfrak nV)/{}^*\mathfrak n_0(V/\mathfrak nV)$。
+\paragraph*{5.4.} 设 $V$ 满足5.3的假设，$(P,A)$ 为标准 $p$ 对。令 $E(P,V)$ 为所有 $\nu-\rho_P$ 组成的集合，其中 $\nu$ 遍历 $\mathfrak a$ 在 $V/\mathfrak nV$ 上的权。由5.3(1)，$E(P,V)=\{\mu|_{\mathfrak a}:\mu\in E(P_0,V)\}$。
+\paragraph*{5.5.} 对 $p$ 对 $(P,A)$，以 $\Sigma(P,A)$ 表示 $\mathfrak a$ 在 $\mathfrak n$ 上的权集，称为 $(P,A)$ 的根集。若 $\lambda\in\Sigma(P,A)$ 不能写成 $\lambda_1+\cdots+\lambda_r$，其中 $r\ge2$、$\lambda_i\in\Sigma(P,A)$，称其为简单根（simple root）。以 ${}^0\Sigma(P,A)$ 表示简单根集。
+\paragraph*{5.6.} 令 ${}^0\Sigma(P_0,A_0)=\{\alpha_1,\ldots,\alpha_l\}$。定义 $H_i\in\mathfrak a_0$ 使 $\alpha_i(H_j)=\delta_{ij}$，且 $H_i\perp\mathfrak z$（$\mathfrak z$ 是1.6中 $G$ 的分裂分量 $Z$ 的 Lie 代数）。令 $D_0=\sum\R H_i$，则 $\mathfrak a_0=\mathfrak z\oplus D_0$ 为正交直和。
+\paragraph*{5.7.} 定义 $\beta_i\in D_0^*$ 使 $\langle\beta_i,\alpha_j\rangle=\delta_{ij}$。对 $F\subset\{1,\ldots,l\}$，令
+\[
+ D_0^*(F)=\left\{\nu\in D_0^*:\nu=-\sum_{i\notin F}x_i\beta_i+
+ \sum_{i\in F}y_i\alpha_i,\quad x_i>0,\ y_i\ge0\right\}.
+\]
+\begin{originaltheorem}{5.8. 引理（Langlands [15]）}
+$D_0^*$ 为所有 $D_0^*(F)$ 的不交并。
+\end{originaltheorem}
+\paragraph*{5.9.} 若 $\nu\in D_0^*(F)$，$\nu=-\sum_{i\notin F}x_i\beta_i+\sum_{i\in F}y_i\alpha_i$，令 $\nu^\circ=-\sum_{i\notin F}x_i\beta_i$。对 $\alpha,\beta\in D_0^*$，若 $\alpha-\beta=\sum z_i\alpha_i$，$z_i\in\R,z_i\ge0$，记 $\alpha\ge\beta$。
+\begin{originaltheorem}{5.10. 引理（Langlands [15]）}
+若 $\lambda,\nu\in D_0^*$ 且 $\lambda\ge\nu$，则 $\lambda^\circ\ge\nu^\circ$。
+\end{originaltheorem}
+\paragraph*{5.11.} 以 $\mathcal E_t(G)$ 表示如下不可约容许 $(\mathfrak g,K)$ 模 $V$ 的等价类集：每个 $\nu\in E(V,P_0)$ 均满足 $\operatorname{Re}(\nu)|_{D_0}\in D_0^*(\varnothing)$。\footnote{\textbf{译者注（本次校订）：}此处集合应为 $D_0^*(\{1,\ldots,l\})=\sum_i\R_{\ge0}\alpha_i$，即正根生成的闭锥，而非 $D_0^*(\varnothing)$。按5.7，后者由负的基本权锥给出，与5.14的离散系列条件方向相反；采用前者，才能得到离散系列属于缓增系列，以及5.13、5.15的陈述。}
+\paragraph*{5.12.} 对 $F\subset\{1,\ldots,l\}$，如下构造标准 $p$ 对 $(P_F,A_F)$。令
+\[
+ \mathfrak a_F=\{H\in\mathfrak a_0:\alpha_i(H)=0,\ i\in F\},\qquad
+ \Sigma_F=\{\lambda\in\Sigma(P_0,A_0):\lambda|_{\mathfrak a_F}\ne0\},
+\]
+$\mathfrak n_F=\sum_{\lambda\in\Sigma_F}(\mathfrak n_0)_\lambda$。令 $M_F$ 为 $G$ 中 $A_F=\exp\mathfrak a_F$ 的中心化子，则 $P_F=M_FN_F$，$(P_F,A_F)$ 为标准 $p$ 对。已知每个标准抛物对都可写成这一形式（参见 [22]）。
+\begin{originaltheorem}{5.13. 引理}
+设 $V$ 为不可约容许 $(\mathfrak g,K)$ 模。则存在 $F\subset\{1,\ldots,l\}$ 及 $M_F$ 的不可约容许表示 $(\sigma,H_\sigma)$，使得对每个 $\nu\in E(\sigma,{}^*P_0)$ 都有 $\operatorname{Re}(\nu|_{D_0})\in D_0^*(F)$，且 $V$ 同构于 $V(P_F,\sigma)$ 的一个 $(\mathfrak g,K)$ 子模。
+\end{originaltheorem}
+特别地，$V_\sigma\in\mathcal E_t(M_F)$。
+\begin{proof}
+令 $L(V,P_0)=\{\operatorname{Re}\nu|_{D_0}:\nu\in E(V,P_0)\}$，取极小元素 $\mu$。存在唯一 $F$ 使 $\mu\in D_0^*(F)$。令 $(P,A)$ 为相应标准 $p$ 对。由
+$V/\mathfrak n_0V=(V/\mathfrak nV)/{}^*\mathfrak n_0(V/\mathfrak nV)$，存在 $\eta\in E(V/\mathfrak nV,{}^*P_0)$，使 $\operatorname{Re}\eta|_{D_0}=\mu$。所以 $V/\mathfrak nV$ 存在商 $W$，使 $\eta\in E(W,{}^*P_0)$。若 $\eta'\in E(W,{}^*P_0)$，则 $\eta'|_{\mathfrak a}=\eta|_{\mathfrak a}$。故若
+\[
+ \mu=-\sum_{i\notin F}x_i\beta_i+\sum_{i\in F}y_i\alpha_i,
+ \quad x_i>0,\ y_i\ge0,
+\]
+则 $\operatorname{Re}\eta'|_{D_0}=-\sum_{i\notin F}x_i\beta_i+\sum_{i\in F}z_i\alpha_i$，$z_i\in\R$。只需证 $z_i\ge0$。设恰有 $z_{i_1},\ldots,z_{i_r}<0$，则
+\[
+ \operatorname{Re}\eta'|_{D_0}\le-\sum_{i\notin F}x_i\beta_i+
+ \sum_{i\in F-\{i_1,\ldots,i_r\}}z_i\alpha_i.
+\]
+以左端为 $\mu'$，右端为 $\mu''$，有 $\mu'\le\mu''$，故 $(\mu')^\circ\le(\mu'')^\circ$。但 $(\mu'')^\circ=\mu^\circ$，所以 $(\mu')^\circ\le\mu^\circ$。$\mu$ 为极小元，故 $(\mu')^\circ=\mu^\circ$，即得结论。
+\end{proof}
+\paragraph*{5.14.} 以 $\mathcal E_d(G)$ 表示所有如下不可约容许 $(\mathfrak g,K)$ 模 $V$ 的等价类：若 $\nu\in E(V,P_0)$，则 $\operatorname{Re}\nu(H_i)>0$（$i=1,\ldots,l$）。
+\begin{originaltheorem}{5.15. 引理}
+若不可约 $(\mathfrak g,K)$ 模 $V$ 的类在 $\mathcal E_t(G)$ 中但不在 $\mathcal E_d(G)$ 中，则存在标准 $p$ 对 $(P,A)$ 及 $M$ 的不可约容许表示 $(\sigma,H_\sigma)$，满足：(1) $a\in A$ 时 $\sigma(a)=\chi(a)I$，且 $H\in\mathfrak a\cap D_0$ 时 $|\chi(\exp H)|=1$；(2) $V_\sigma\in\mathcal E_d(M)$，且 $V$ 同构于 $V(P,\sigma)$ 的子表示。
+\end{originaltheorem}
+\paragraph*{5.16.} 证明的思路与引理5.13相同。
+
+\origsection{6}{离散系列与 Langlands 分类（The discrete series and the Langlands classification）}
+\paragraph*{6.1.} 沿用第5节记号。设 $(\pi,H)$ 为 $G$ 的不可约酉表示。对 $v,w\in H$，令 $\varphi_{v,w}(g)=|\langle\pi(g)v,w\rangle|$，则 (1) $\varphi_{v,w}(gz)=\varphi_{v,w}(g)$（$g\in G,z\in Z$），因为 $\pi(z)=\chi(z)I$，$\chi$ 为 $Z$ 的酉特征。若所有 $v,w\in H$ 都满足 $\varphi_{v,w}\in L^2(G/Z)$，称表示平方可积（square-integrable）。
+\paragraph*{6.2.} 以 $\mathcal E_2(G)$ 表示 $V_\pi$ 的同构类集，其中 $(\pi,H)$ 是 $G$ 的不可约平方可积表示。
+\begin{originaltheorem}{6.3. 定理（Harish-Chandra [6]、Casselman，参见 Miličić [17]）}
+(1) $\mathcal E_2(G)\subset\mathcal E_d(G)$。
+
+(2) 若 $V$ 代表 $\mathcal E_d(G)$ 的一个元素，则存在一维 $(\mathfrak g,K)$ 模 $W$，使 $V\otimes W$ 的类在 $\mathcal E_2(G)$ 中。
+\end{originaltheorem}
+\paragraph*{6.4.} 证明定理6.3时，使用 $E(V,P_0)$ 的元素与 Harish-Chandra 意义下 $V$ 的首指数（leading exponents）之间的关系（参见 Warner [22，第9章]）。这一关系归于 Harish-Chandra 和 Casselman，另见 Miličić [17]。
+\begin{originaltheorem}{6.5. 推论}
+若 $V$ 代表 $\mathcal E_t(G)$ 的元素，则存在一维 $(\mathfrak g,K)$ 模 $W$，使 $V\otimes W$ 为酉的。
+\end{originaltheorem}
+\paragraph*{6.6.} 这由5.15以及“酉表示的此种诱导仍为酉表示”这一事实推出。
+\begin{originaltheorem}{6.7. 定理（Langlands [15]）}
+设 $F\subset\{1,\ldots,l\}$（见5.6、5.7），$(\sigma,H_\sigma)$ 为 $M_F$ 的不可约容许表示，使得对每个 $\nu\in E(V_\sigma,{}^*(P_F)_0)$ 都有 $\operatorname{Re}\nu|_{D_0}\in D_0^*(F)$。那么 $V(P_F,\sigma)$ 有唯一非零不可约子模，记为 $J(P_F,\sigma)$。若 $F'\subset\{1,\ldots,l\}$ 且 $\sigma'$ 对 $M_{F'}$ 满足上述条件，则 $J(P_F,\sigma)\cong J(P_{F'},\sigma')$ 当且仅当 $F'=F$ 且 $\sigma\cong\sigma'$。
+\end{originaltheorem}
+\paragraph*{6.8.} 定理6.7的第一部分通过交织算子与某些极限公式之间的关系来证明；第二部分则结合这些极限公式和引理5.13的论证思路。
+\paragraph*{6.9.} 定理6.7结合 Harish-Chandra 对 $\mathcal E_2(G)$ 的分类（见 [6]）、引理5.13、5.15，给出不可约 $(\mathfrak g,K)$ 模的完整分类。
+
+\origsection{7}{$\GL(2,\R)$ 与 $\GL(2,\C)$ 的主系列}
+\paragraph*{7.1.} 令 $G=\GL(2,F)$，$F=\R$ 或 $\C$，取1.8中的 $\theta,B,K$ 等。取 $P_0$ 为上三角矩阵群，$\overline P_0$ 为下三角矩阵群，$M_0$ 为所有对角矩阵组成的群。
+\paragraph*{7.2.} 以 $[h_1,h_2]$ 表示对角元为 $h_1,h_2$ 的对角矩阵。另记
+\[
+ n(x)=\begin{pmatrix}1&x\\0&1\end{pmatrix},\qquad
+ \bar n(x)=\begin{pmatrix}1&0\\x&1\end{pmatrix}.
+\]
+\paragraph*{7.3.} $\Sigma(P_0,A_0)=\{\lambda\}$，$\Sigma(\overline P_0,A_0)=\{-\lambda\}$，其中 $\lambda([x_1,x_2])=x_1-x_2$。
+\paragraph*{7.4.} 适当正规化 $N_0$（或 $\overline N_0$）上的 Haar 测度后，$dn(x)=dx$（或 $d\bar n(x)=dx$），其中 $dx$ 为 $F$ 的 Lebesgue 测度。
+\paragraph*{7.5.} 当 $F=\C$ 时取 $k_1,k_2\in\Z$（当 $F=\R$ 时取 $k_1,k_2\in\{0,1\}$），以及 $z_1,z_2\in\C$，定义
+\[
+ \xi_{k_1,k_2,z_1,z_2}([h_1,h_2])
+ =h_1^{k_1}h_2^{k_2}|h_1|^{z_1-k_1}|h_2|^{z_2-k_2}.
+\]
+$M_0$ 的每个不可约容许表示都具有这一形式。令它在 $n(x)$（或 $\bar n(x)$）上取值为1，便可将其延拓到 $P_0$（或 $\overline P_0$）。
+\begin{originaltheorem}{7.6. 引理}
+设 $k_1,k_2,z_1,z_2$ 如7.5，$\operatorname{Re}(z_1-z_2)<0$，$f\in V(\overline P_0,\xi_{k_1,k_2,z_1,z_2})$。则
+\[
+ (A(k_1,k_2,z_1,z_2)f)(k)=\int_{N_0}f(kn)\,dn=A(f)
+\]
+绝对收敛，且关于 $k\in K$ 一致收敛，并定义 $V(\overline P_0,\sigma)$ 到 $V(P_0,\sigma)$ 的 $(\mathfrak g,K)$ 模同态，其中 $\sigma=\xi_{k_1,k_2,z_1,z_2}$。
+\end{originaltheorem}
+\begin{proof}
+\[
+ (A(f))(k)=\int_{N_0}\delta_{\overline P_0}(n)^{-1/2}
+ \sigma(a(n))^{-1}f(\kappa(kn))\,dn,
+\]
+其中 $\delta_{\overline P_0}(k\bar p)=\delta_{\overline P_0}(\bar p)$，$k\in K,\bar p\in\overline P_0$；且 $g=\kappa(g)a(g)n$，$\kappa(g)\in K,a(g)\in A_0,n\in\overline N_0$。现有 $|f(\kappa(kn))|\le\|f\|_\infty$。故只需证明
+\begin{equation}
+ \int_{N_0}\delta_{\overline P_0}(n)^{-1/2}|\sigma(a(n))|^{-1}\,dn<\infty.
+ \tag{I}
+\end{equation}
+将 $n$ 写成 $n(x)$，直接计算得到\nobreak\footnote{\textbf{译者注（本次校订）：}式(II)中的两个 $x^2$ 均应为 $|x|^2$，这样公式才同时适用于 $F=\R$ 与 $F=\C$。下面的式(III)已经使用了正确的绝对值。}
+\begin{equation}
+ a(n(x))=[(1+x^2)^{-1/2},(1+x^2)^{1/2}].
+ \tag{II}
+\end{equation}
+令 $d=\dim_{\R}F$，则 (I) 的被积函数为
+\begin{equation}
+ (1+|x|^2)^{-d/2+\operatorname{Re}(z_1-z_2)/2},
+ \tag{III}
+\end{equation}
+当 $\operatorname{Re}(z_1-z_2)<0$ 时在 $F$ 上可积。简单的变量代换表明 $Af\in V(P_0,\sigma)$，积分一致收敛则蕴含 $A$ 为 $(\mathfrak g,K)$ 模同态。
+\end{proof}
+\paragraph*{7.7.} 现在讨论 $F=\R$ 的情形，此时 $K=\operatorname O(2)$。用 $\varepsilon_i$ 表示 $\{0,1\}$ 的元素。
+\paragraph*{7.8.} 令 $\eta=\diag(1,-1)\in K$，且
+\[
+ k(\theta)=\begin{pmatrix}\cos\theta&\sin\theta\\-\sin\theta&\cos\theta\end{pmatrix},\quad\theta\in\R.
+\]
+有 $\operatorname{SO}(2)=\{k(\theta):\theta\in\R\}$，$K=\operatorname{SO}(2)\cup\eta\operatorname{SO}(2)$，$\eta k(\theta)\eta^{-1}=k(-\theta)$。
+\paragraph*{7.9.} 现描述 $\mathcal E(K)$。设 $W$ 为不可约有限维 $K$ 模。存在 $w_0\in W$ 使 $k(\theta)w_0=e^{il\theta}w_0$，其中 $l\in\Z$ 固定。则 $k(\theta)\eta w_0=e^{-il\theta}\eta w_0$。若 $l\ne0$，$W$ 完全由 $l$ 决定；必要时将 $w_0$ 换为 $\eta w_0$，便可令 $l>0$。记此 $K$ 模为 $W_l$（$l=1,2,\ldots$）。若 $l=0$，令 $W_0=\{w:k(\theta)w=w,\theta\in\R\}$，则 $\eta W_0=W_0$。由 $\eta^2=1$，$W=W_0$，$\dim W=1$，且 $\eta w=w$ 或 $\eta w=-w$。平凡表示记为 $W_0^0$，$\eta\mapsto-1$ 的表示记为 $W_0^1$。
+\paragraph*{7.10.} 留给读者验证：$\mathfrak g_{\C}$ 上的 $\Ad|_K$ 是两个 $W_0^0$ 与一个 $W_2$ 的直和。\footnote{\textbf{译者注（本次校订）：}正确分解是 $W_0^0\oplus W_0^1\oplus W_2$。标量矩阵给出平凡表示；反对称矩阵构成的一维空间在反射 $\eta$ 下变号，给出行列式表示 $W_0^1$；无迹对称矩阵则给出 $W_2$。}
+\paragraph*{7.11.} 注意：(1) $W_l\otimes W_k=W_{l+k}\oplus W_{|l-k|}$（$l,k>0$）；(2) $W_l\otimes W_0^\varepsilon=W_l$（$\varepsilon=0,1$）；(3) $W_0^\varepsilon\otimes W_0^{\varepsilon'}=W_0^{\varepsilon''}$，$\varepsilon''=\varepsilon+\varepsilon'\bmod2$。\footnote{\textbf{译者注（本次校订）：}当 $l=k$ 时，(1)中的 $W_{|l-k|}$ 应解释为 $W_0^0\oplus W_0^1$，而不是一个一维表示。因此 $W_l\otimes W_l=W_{2l}\oplus W_0^0\oplus W_0^1$；7.13中下标为零的对应项也应按这一约定理解。}
+\paragraph*{7.12.} 以 $\gamma_l$ 表示 $W_l$ 的等价类（$l>0$），以 $\gamma_0^\varepsilon$ 表示 $W_0^\varepsilon$ 的等价类（$\varepsilon=0,1$）。
+\paragraph*{7.13.} 利用上面的 $K$ 模分解可得，对容许 $(\mathfrak g,K)$ 模 $V$，有
+\[
+ \mathfrak g V(\gamma_l)\subset V(\gamma_{l+2})+V(\gamma_{|l-2|})+V(\gamma_l)\quad(l>0),
+ \qquad
+ \mathfrak g V(\gamma_0^\varepsilon)\subset V(\gamma_0^\varepsilon)+V(\gamma_2).
+\]
+\paragraph*{7.14.} 由于 $(P_0,A_0)$ 为极小 $p$ 对，可取 ${}^0M_0=M_0\cap K=\{[\eta_1,\eta_2]:\eta_i=\pm1\}$。令 $V=V(\xi_{\varepsilon_1,\varepsilon_2,z_1,z_2},P_0)$，将 $\xi$ 限制到 ${}^0M_0$ 得到
+\[
+ \xi_{\varepsilon_1,\varepsilon_2}([\eta_1,\eta_2])=\eta_1^{\varepsilon_1}\eta_2^{\varepsilon_2}.
+\]
+Frobenius 互反律（Frobenius reciprocity）表明，$\dim V(\gamma)$ 等于 $\xi_{\varepsilon_1,\varepsilon_2}$ 在 $\gamma|_{{}^0M_0}$ 中出现的次数。\footnote{\textbf{译者注（本次校订）：}按2.14的定义，$V(\gamma)$ 是等型子空间，其维数须再乘以该不可约 $K$ 型的维数。互反律给出的是重数 $m_\gamma=\dim\Hom_K(W_\gamma,V)$，而 $\dim V(\gamma)=m_\gamma\dim W_\gamma$。因此7.16中的“$\dim V(\gamma)\le1$”应改为“$m_\gamma\le1$”；对 $l>0$，出现的 $V(\gamma_l)$ 是二维的。7.17使用的是重数一性质。}
+\paragraph*{7.15.} 读者可验证，若 $\tau_l\in\gamma_l$（$l=1,2,\ldots$），$\tau_0^\varepsilon\in\gamma_0^\varepsilon$，则
+\[
+ \begin{gathered}
+ \tau_0^0|_{{}^0M_0}=\xi_{0,0},\qquad\tau_0^1|_{{}^0M_0}=\xi_{1,1},\\
+ \tau_l|_{{}^0M_0}=\xi_{0,0}\oplus\xi_{1,1}\quad(l>0\text{ 偶数}),\\
+ \tau_l|_{{}^0M_0}=\xi_{1,0}\oplus\xi_{0,1}\quad(l\text{ 奇数}).
+ \end{gathered}
+\]
+\paragraph*{7.16.} 对 $V=V(\xi_{\varepsilon_1,\varepsilon_2,z_1,z_2},P_0)$，7.15蕴含 $\dim V(\gamma)\le1$，且
+\[
+ V=\begin{cases}
+ V(\gamma_0^{\varepsilon_1})\oplus\displaystyle\bigoplus_{l>0}V(\gamma_{2l}),&\varepsilon_1+\varepsilon_2\text{ 偶数},\\
+ \displaystyle\bigoplus_{l\ge0}V(\gamma_{2l+1}),&\varepsilon_1+\varepsilon_2\text{ 奇数}.
+ \end{cases}
+\]
+\begin{originaltheorem}{7.17. 引理}
+对 $z\in\C,k\in\Z$，令
+\[
+ a_k(z)=\frac{\pi^{1/2}\Gamma(z/2)\Gamma((z+1)/2)}
+ {\Gamma((1+z+k)/2)\Gamma((1+z-k)/2)},
+\]
+其中 $\Gamma$ 为 Gamma 函数（gamma function，参见 [23]）。令 $\sigma=\xi_{\varepsilon_1,\varepsilon_2,z_1,z_2}$。若 $V=V(\overline P_0,\sigma)$，则它作为 $K$ 模与 $V(P_0,\sigma)$ 同构。若 $\operatorname{Re}(z_1-z_2)<0$，令 $A=A(\varepsilon_1,\varepsilon_2,z_1,z_2)$。以 $\gamma_0$ 表示 $\gamma_0^0$ 或 $\gamma_0^1$。若 $f\in V(\gamma_k)$，则 $Af=a_k(z_2-z_1)f$。
+\end{originaltheorem}
+\begin{proof}
+7.16蕴含 $A$ 在每个 $V(\gamma)$ 上为标量。利用引理7.6证明开头的公式，直接计算可得该标量为
+\begin{equation}
+ \int_{-\infty}^{\infty}\left(\frac{1+ix}{(1+x^2)^{1/2}}\right)^{-k}
+ (1+x^2)^{(-1+z_1-z_2)/2}\,dx.
+ \tag{1}
+\end{equation}
+作代换 $e^{it}=(1+ix)/(1+x^2)^{1/2}$，$-\pi/2\le t\le\pi/2$，积分变成
+\begin{equation}
+ 2\int_0^{\pi/2}\cos(kt)(\cos t)^{-(1+z_1-z_2)}\,dt.
+ \tag{2}
+\end{equation}
+由 Whittaker 和 Watson [23，第263页，习题39] 及 Gamma 函数倍乘公式 [23，第240页] 即得引理。
+\end{proof}
+\paragraph*{7.18.} 现在取 $F=\C$。本节余下部分以 $G$ 表示 $\GL(2,\C)$，$K$ 表示 $\operatorname U(2)$。
+\paragraph*{7.19.} 熟知 $S^1\times\operatorname{SU}(2)\to\operatorname U(2)$，$(z,k)\mapsto zk$ 为二重覆盖（$S^1$ 为圆周群）。若 $(\tau,V)$ 为 $K$ 的不可约酉表示，则 $z\in S^1$ 时 $\tau(zI)=z^kI$，其中整数 $k$ 只依赖于 $\tau$。因此 $\tau$ 限制到 $\operatorname{SU}(2)$ 上仍不可约。
+
+$\operatorname{SU}(2)$ 的不可约酉表示在等价意义下由维数唯一确定。若 $(\tau,V)$ 为 $d+1$ 维表示，则熟知 $\tau(\varepsilon I)=\varepsilon^dI$（$\varepsilon=\pm1$）。故 $k+d$ 为偶数。
+\paragraph*{7.20.} 这完整描述了 $\mathcal E(K)$：它由所有 $\gamma_{m,n}$ 组成，其中 $m,n\in\Z$，$n\ge0$，$m+n$ 偶数。$\gamma_{m,n}$ 表示满足 $\dim W=n+1$ 及 $\tau(zI)=z^mI$（$z\in S^1$）的不可约表示 $(\tau,W)$ 的等价类。
+\paragraph*{7.21.} 令 $\xi_{k_1,k_2}=\xi_{k_1,k_2,z_1,z_2}|_{{}^0M_0}$。由 $\operatorname{SU}(2)$ 的表示分类容易得到
+\[
+ \gamma_{m,n}|_{{}^0M_0}=\bigoplus_{j=0}^n
+ \xi_{(n+m-2j)/2,(m-n+2j)/2}.
+\]
+\paragraph*{7.22.} 利用7.21及 Frobenius 互反律，对 $V=V(\overline P_0,\xi_{k_1,k_2,z_1,z_2})$ 得到
+\[
+ V=\bigoplus_{j=0}^\infty V(\gamma_{k_1+k_2,|k_1-k_2|+2j}),
+\]
+且各 $V(\gamma)$ 作为 $K$ 表示不可约。
+\begin{originaltheorem}{7.23. 引理}
+对整数 $0\le r\le n$ 及 $z\in\C$，令
+\[
+ b_{n,r}(z)=\frac{2\pi}{z+n}\prod_{j=1}^r\frac{z-n+2(j-1)}{z+n-2j}.
+\]
+若 $V=V(\overline P_0,\xi_{k_1,k_2,z_1,z_2})$ 且 $\operatorname{Re}(z_1-z_2)<0$，则
+\[
+ A(k_1,k_2,z_1,z_2)|_{V(\gamma_{k_1+k_2,|k_1-k_2|+2j})}
+ =b_{|k_1-k_2|+2j,j}(z_2-z_1)I.
+\]
+\end{originaltheorem}
+\paragraph*{7.24.} 证明与引理7.17类似，计算较繁，这里省略细节。
+\paragraph*{7.25.} 引理7.17、7.23蕴含，最初在 $\operatorname{Re}(z_1-z_2)<0$ 定义的 $A(k_1,k_2,z_1,z_2)$ 亚纯延拓到 $\C\times\C$。关于这些交织算子的更多内容，请参阅 Knapp 和 Zuckerman 的讲座。
+
+\origsection{8}{$\GL(2,\R)$ 与 $\GL(2,\C)$ 的表示}
+\paragraph*{8.1.} 沿用第7节记号。先取 $G=\GL(2,\R)$。
+\begin{originaltheorem}{8.2. 引理}
+$V=V(P_0,\xi_{\varepsilon_1,\varepsilon_2,z_1,z_2})$ 可约当且仅当：(1) $k=z_1-z_2\in\Z-\{0\}$；(2) $\varepsilon_1+\varepsilon_2+1=0\bmod2$。\footnote{\textbf{译者注（本次校订）：}条件(2)应为 $\varepsilon_1+\varepsilon_2+1\equiv k\pmod2$，其中 $k=z_1-z_2$。这一奇偶性条件与下面(a)、(b)及8.4(II)一致；原式漏掉了 $k$。}
+
+若 $V$ 可约，则：(a) 当 $z_1-z_2=-k-1$，$k\ge0$，$\varepsilon_1+\varepsilon_2=k\bmod2$ 时，$J=J(P_0,\xi_{\varepsilon_1,\varepsilon_2,z_1,z_2})$ 有限维，且 $\dim J=k+1$，$V/J$ 不可约。
+
+(b) 当 $z_1-z_2=k+1$，$k\ge0$，$\varepsilon_1+\varepsilon_2=k\bmod2$ 时，$V$ 包含 $V(\xi_{\varepsilon_2,\varepsilon_1,z_2,z_1})/J(\xi_{\varepsilon_2,\varepsilon_1,z_2,z_1})$ 作为唯一非零真子模，并以 $J(\xi_{\varepsilon_2,\varepsilon_1,z_2,z_1})$ 为唯一非零真商模。
+\end{originaltheorem}
+\begin{proof}
+取非零子模 $W\subset V$，则 $W=\bigoplus W(\gamma)$。
+
+(1) 若 $W(\gamma_{j_r})\ne0$ 且 $\lim_{r\to\infty}j_r=\infty$，则 $W$ 包含所有 $k\ge0$ 的 $V(\gamma_{j_r+2k})$，故 $\dim V/W<\infty$。
+
+事实上，设 $j_i\ge2$ 且 $j_{i+1}>j_i+2$，则 $j_{i+1}-j_i=2m$，$m\ge2$。于是 $(V/W)(\gamma_{j_i+2}),\ldots,(V/W)(\gamma_{j_i+2m-2})$ 非零，而两端 $(V/W)(\gamma_{j_i})$、$(V/W)(\gamma_{j_i+2m})$ 为零。由7.13，
+\[
+ \mathfrak g\bigoplus_{u=1}^{m-1}(V/W)(\gamma_{j_i+2u})
+ \subset\bigoplus_{u=1}^{m-1}(V/W)(\gamma_{j_i+2u}).
+\]
+故此直和为 $V/W$ 的有限维 $(\mathfrak g,K)$ 子模。$G$ 的有限维表示限制到 $K$ 后只能为 (a) $W_0^\varepsilon\oplus\bigoplus_{1\le l\le j}W_{2l}$，或 (b) $\bigoplus_{0\le l\le j}W_{2l+1}$。由此得到矛盾，(1)得证。
+
+由(1)容易推出，若 $V$ 可约，则有非零有限维子模，或非零有限维商模。
+
+(2) 若 $W$ 为有限维 $(\mathfrak g,K)$ 模，则 $W/\mathfrak n_0W$ 作为 $M_0$ 模，同构于 $\delta_{P_0}^{1/2}\xi_{\varepsilon_1,\varepsilon_2,z_1,z_2}$，其中 $z_1-z_2=-k-1$，$k\ge0$ 为整数，$\varepsilon_1+\varepsilon_2=k\bmod2$。
+
+这正是 $G$ 的最低权定理（lowest weight theorem）。结合(1)、(2)以及 $V(P_0,\xi_{\varepsilon_1,\varepsilon_2,z_1,z_2})$ 的对偶 $(\mathfrak g,K)$ 模为 $V(P_0,\xi_{\varepsilon_2,\varepsilon_1,z_2,z_1})$ 这一事实，得到引理。\footnote{\textbf{译者注（本次校订）：}此处一般的逆反模应为 $V(P_0,\xi_{\varepsilon_1,\varepsilon_2,-z_1,-z_2})$，而非仅交换两组参数。逆反使中心特征取逆，交换两组参数则保留中心特征，故二者一般不同。此外，前面(2)中的有限维模 $W$ 应假定不可约，才能断言其最高或最低权空间为一维。}
+\end{proof}
+\begin{originaltheorem}{8.3. 引理}
+令 $V=V(P_0,\xi_{\varepsilon_1,\varepsilon_2,z_1,z_2})$。假定 $z_1-z_2=-k-1$，$k\in\Z,k\ge0$，且 $\varepsilon_1+\varepsilon_2=k\bmod2$。令 $J=J(\xi_{\varepsilon_1,\varepsilon_2,z_1,z_2},P_0)$，则 $V/J$ 的类在 $\mathcal E_d(G)$ 中。
+\end{originaltheorem}
+\begin{proof}
+由8.2及4.21，$E(V/J,P_0)=\langle\lambda,\lambda\rangle^{-1}(z_2-z_1)\lambda$。\footnote{\textbf{译者注（本次校订）：}这一公式应理解为指数在 $D_0$ 上的限制。若写成整个 $\mathfrak a_0$ 上的指数，还须加上中心方向的权；该权由 $z_1+z_2$ 决定。离散系列判据只涉及 $D_0$，所以这里的论证只需所写的半单部分。}
+\end{proof}
+\paragraph*{8.4.} 利用第4、5、6节结果，可得到不可约容许 $(\mathfrak g,K)$ 模的完整分类（另见 Jacquet--Langlands [12]）：
+\begin{enumerate}
+\item[(I)] 有限维模 $J(\xi_{\varepsilon_1,\varepsilon_2,z_1,z_2},P_0)$，其中 $z_1-z_2=-k-1$，$k\ge0$ 为整数，$\varepsilon_1+\varepsilon_2=k\bmod2$。
+\item[(II)] $V(\xi_{\varepsilon_1,\varepsilon_2,z_1,z_2},P_0)$，其中 $z_1-z_2\notin\Z-\{0\}$；或若 $z_1-z_2=k\in\Z$，则 $\varepsilon_1+\varepsilon_2\ne k+1\bmod2$。此外，$V(\xi_{\varepsilon_1,\varepsilon_2,z_1,z_2},P_0)\cong V(\xi_{\varepsilon_2,\varepsilon_1,z_2,z_1},P_0)$。
+\item[(III)] $\mathcal E_d(G)$：当 $z_1-z_2=-k-1$，$k\ge0$ 为整数，$\varepsilon_1+\varepsilon_2=k\bmod2$ 时，令
+\[
+ D_{\varepsilon_1,\varepsilon_2,k,z_1+z_2}
+ =V(\xi_{\varepsilon_1,\varepsilon_2,z_1,z_2},P_0)/J(\xi_{\varepsilon_1,\varepsilon_2,z_1,z_2},P_0).
+\]
+\end{enumerate}
+\paragraph*{8.5.} 现在给出不可约酉 $(\mathfrak g,K)$ 模的分类，先需一个引理。
+\begin{originaltheorem}{8.6. 引理}
+若 $\operatorname{Re}(z_1-z_2)<0$，则 $J(P_0,\xi_{\varepsilon_1,\varepsilon_2,z_1,z_2})$ 为酉的，当且仅当：(1) $z_1+z_2$ 为纯虚；(2) $z_1-z_2\in\R$；(3) $A(\varepsilon_1,\varepsilon_2,z_1,z_2)$ 为半正定。
+\end{originaltheorem}
+\begin{proof}
+由引理8.2、7.17，当 $\operatorname{Re}(z_1-z_2)<0$，有
+\[
+ A(\varepsilon_1,\varepsilon_2,z_1,z_2)V(\overline P_0,\xi_{\varepsilon_1,\varepsilon_2,z_1,z_2})
+ =J(P_0,\xi_{\varepsilon_1,\varepsilon_2,z_1,z_2}).
+\]
+计算可知，$V(P_0,\xi_{\varepsilon_1,\varepsilon_2,z_1,z_2})$ 的共轭对偶容许模为 $V(\overline P_0,\xi_{\varepsilon_1,\varepsilon_2,-\bar z_2,-\bar z_1})$。所以相应的 $J$ 与自身共轭对偶等价，当且仅当 $z_1=-\bar z_2,z_2=-\bar z_1$，得到(1)、(2)的必要性。最后注意，将 $A(\varepsilon_1,\varepsilon_2,z_1,z_2)$ 与两个 $V$ 的半双线性配对（sesquilinear pairing）复合，给出对应 $J$ 与自身的半双线性配对。
+\end{proof}
+\paragraph*{8.7.} 引理8.6、8.4结合7.17，立即给出 $\mathcal E(G)$ 的完整分类：
+\begin{enumerate}
+\item[(1)] 酉主系列（unitary principal series）：$V(P_0,\xi_{\varepsilon_1,\varepsilon_2,z_1,z_2})$，$z_1,z_2\in i\R$。
+\item[(2)] 离散系列（discrete series）：$D_{\varepsilon_1,\varepsilon_2,k,z}$，$k\ge0$ 为整数，$\varepsilon_1+\varepsilon_2=k\bmod2$，$z\in i\R$。
+\item[(3)] 补系列（complementary series）：$V(\xi_{\varepsilon_1,\varepsilon_2,z_1,z_2})$，$z_1+z_2\in i\R$，$\varepsilon_1+\varepsilon_2=0\bmod2$，$z_1-z_2\in\R$，且 $-1<z_1-z_2<0$。
+\item[(4)] $G$ 的酉特征。
+\end{enumerate}
+\paragraph*{8.8.} 再讨论 $G=\GL(2,\C)$，沿用7.20的记号。注意
+\[
+ \gamma_{n,m}\otimes\gamma_{n',m'}
+ =\bigoplus_{0\le j\le\min(m,m')}\gamma_{n+n',m+m'-2j},
+ \qquad\Ad|_K=\gamma_{0,2}+\gamma_{0,2}.
+\]
+\paragraph*{8.9.} \footnote{\textbf{译者注（本次校订）：}8.8中 $\mathfrak g_{\C}$ 的伴随表示还包含两个平凡分量，完整分解为 $2\gamma_{0,0}\oplus2\gamma_{0,2}$。这里把 $\GL_2(\C)$ 看作实 Lie 群，故其复化 Lie 代数为两份 $\mathfrak{gl}_2(\C)$，每份各有一维中心。}利用8.8中的分解，可以沿用引理8.2的证明来得到下面的结果。
+\begin{originaltheorem}{8.10. 引理}
+设 $\operatorname{Re}(z_1-z_2)\le0$。$V(P_0,\xi_{k_1,k_2,z_1,z_2})$ 可约当且仅当：(1) $z_1-z_2=-k-2$，$k\ge0$ 为整数；(2) $|k_1-k_2|\le k$。若可约，则对应的 $J$ 有限维。\footnote{\textbf{译者注（本次校订）：}还须补上奇偶性条件 $k\equiv k_1-k_2\pmod2$。由7.22，出现的 $K$ 型次数为 $|k_1-k_2|+2j$；有限维截断只有在最高次数 $k$ 具有相同奇偶性时才可能发生。因此8.11(II)也须加此条件，而8.11(III)的不可约情形还应包括奇偶性不相符的参数。}
+\end{originaltheorem}
+\paragraph*{8.11.} 引理8.10结合第6节结果，给出不可约容许 $(\mathfrak g,K)$ 模的分类：
+\begin{enumerate}
+\item[(I)] $\mathcal E_d(G)=\varnothing$。
+\item[(II)] 有限维表示：$J(P_0,\xi_{k_1,k_2,z_1,z_2})$，$z_1-z_2=-k-2$，$k\ge0$ 为整数，$|k_1-k_2|\le k$。
+\item[(III)] $V(\xi_{k_1,k_2,z_1,z_2},P_0)$，其中 $\operatorname{Re}(z_1-z_2)<0$，且不存在整数 $k\ge0$ 使 $z_1-z_2=-k-2$；或 $z_1-z_2=-k-2$ 而 $|k_1-k_2|>k$。
+\item[(IV)] $V(P_0,\xi_{k_1,k_2,z_1,z_2})$，$\operatorname{Re}(z_1-z_2)=0$。此时 $V(P_0,\xi_{k_1,k_2,z_1,z_2})\cong V(P_0,\xi_{k_2,k_1,z_2,z_1})$。
+\end{enumerate}
+\paragraph*{8.12.} 在 $\GL(2,\C)$ 的情形，沿用引理8.6的论证，再结合引理7.23，不难给出不可约容许酉 $(\mathfrak g,K)$ 模的分类：
+\begin{enumerate}
+\item[(I)] $G$ 的酉特征。
+\item[(II)] 酉主系列：$V(P_0,\xi_{k_1,k_2,z_1,z_2})$，$z_j\in i\R$（$j=1,2$）。
+\item[(III)] 补系列：$V(P_0,\xi_{k_1,k_2,z_1,z_2})$，$z_1+z_2\in i\R$，$z_1-z_2\in\R$，$0>z_1-z_2>-2$，且 $k_1-k_2=0$。
+\end{enumerate}
+
+\begin{thebibliography}{23}
+\bibitem[1]{c03-1} J. Dixmier, \textit{Algèbres enveloppantes}, Gauthier Villars, Paris, 1974.
+\bibitem[2]{c03-2} Harish-Chandra, \textit{Representations of semi-simple Lie groups. I}, Trans. Amer. Math. Soc. \textbf{75} (1953), 185--243.
+\bibitem[3]{c03-3} Harish-Chandra, \textit{Representations of semi-simple Lie groups. II}, Trans. Amer. Math. Soc. \textbf{76} (1954), 26--65.
+\bibitem[4]{c03-4} Harish-Chandra, \textit{The Plancherel formula for complex semi-simple Lie groups}, Trans. Amer. Math. Soc. \textbf{76} (1954), 485--528.
+\bibitem[5]{c03-5} Harish-Chandra, \textit{Discrete series for semi-simple Lie groups. I}, Acta Math. \textbf{113} (1965), 241--318.
+\bibitem[6]{c03-6} Harish-Chandra, \textit{Discrete series for semi-simple Lie groups. II}, Acta Math. \textbf{116} (1966), 1--11.
+\bibitem[7]{c03-7} Harish-Chandra, \textit{Differential equations and semi-simple Lie groups}, 1960，未发表.
+\bibitem[8]{c03-8} Harish-Chandra, \textit{Harmonic analysis on real reductive Lie groups. I}, J. Functional Analysis \textbf{19} (1975), 104--204.
+\bibitem[9]{c03-9} Harish-Chandra, \textit{Harmonic analysis on real reductive Lie groups. II}, Invent. Math. \textbf{36} (1976), 1--55.
+\bibitem[10]{c03-10} Harish-Chandra, \textit{Harmonic analysis in real reductive Lie groups. III}, Ann. of Math. (2) \textbf{104} (1976), 117--201.
+\bibitem[11]{c03-11} N. Jacobson, \textit{Lie algebras}, Interscience, New York, 1962.
+\bibitem[12]{c03-12} N. Jacquet and R. Langlands, \textit{Automorphic forms on GL(2)}, Lecture Notes in Math., vol. 114, Springer-Verlag, Berlin, 1970.
+\bibitem[13]{c03-13} A. Knapp and E. Stein, \textit{Intertwining operators for semi-simple groups}, Ann. of Math. (2) \textbf{93} (1971), 489--578.
+\bibitem[14]{c03-14} A. Knapp and G. Zuckerman, \textit{Classification theorems for representations of semisimple Lie groups}, Lecture Notes in Math., vol. 587, Springer-Verlag, Berlin, 1977, pp. 138--159.
+\bibitem[15]{c03-15} R. P. Langlands, \textit{On the classification of irreducible representations of real reductive groups}, 油印讲义，Institute for Advanced Study, 1973.
+\bibitem[16]{c03-16} J. Lepowsky, \textit{Algebraic results on representations of semisimple Lie groups}, Trans. Amer. Math. Soc. \textbf{176} (1973), 1--44.
+\bibitem[17]{c03-17} D. Miličić, \textit{Asymptotic behavior of the matrix coefficients of the discrete series}（待刊）.
+\bibitem[18]{c03-18} C. Rader, 学位论文，University of Washington, 1970.
+\bibitem[19]{c03-19} W. Schmid, \textit{Some properties of square integrable representations of semisimple Lie groups}, Ann. of Math. (2) \textbf{102} (1975), 535--564.
+\bibitem[20]{c03-20} V. Varadarajan, \textit{The theory of characters and the discrete series for semisimple Lie groups}, Proc. Sympos. Pure Math., vol. 26, Amer. Math. Soc., Providence, R. I., 1973, pp. 45--100.
+\bibitem[21]{c03-21} N. Wallach, \textit{Lectures on the representations of reductive Lie groups}, Proc. Canad. Congr. 1977（待刊）.
+\bibitem[22]{c03-22} G. Warner, \textit{Harmonic analysis on semi-simple Lie groups. I, II}, Springer-Verlag, Berlin, 1972.
+\bibitem[23]{c03-23} E. T. Whittaker and G. N. Watson, \textit{A course of modern analysis}, Cambridge Univ. Press, London, 1902（1965年重印）.
+\end{thebibliography}
+\noindent Brandeis University（布兰代斯大学）。

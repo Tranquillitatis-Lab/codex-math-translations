@@ -1,0 +1,79 @@
+% operators
+  \DeclareMathOperator{\aut}{Aut}
+  \DeclareMathOperator{\br}{Br}
+  \DeclareMathOperator{\cl}{cl}
+  \DeclareMathOperator{\cosp}{cosp}
+  \DeclareMathOperator{\dv}{div}
+  \DeclareMathOperator{\Div}{Div}
+  \DeclareMathOperator{\ext}{Ext}
+  \DeclareMathOperator{\Ext}{\mathscr{E}\text{\kern -2pt {\calligra\large xt}}\,\,} % sheaf ext
+  \DeclareMathOperator{\gal}{Gal}
+  \DeclareMathOperator{\gl}{GL}
+  \DeclareMathOperator{\gr}{gr}
+  \DeclareMathOperator{\h}{H}
+  \DeclareMathOperator{\hh}{\mathsf{H}} % hypercohomology?
+  \DeclareMathOperator{\Hom}{\mathscr{H}\text{\kern -3pt {\calligra\large om}}\,} % sheaf hom
+  \DeclareMathOperator{\im}{im}
+  \DeclareMathOperator{\ob}{Ob}
+  \DeclareMathOperator{\pgl}{PGL}
+  \DeclareMathOperator{\pic}{Pic} 
+  \DeclareMathOperator{\res}{R} % restriction of scalars
+  \DeclareMathOperator{\rHom}{\mathsf{R}\mathscr{H}\text{\kern -3pt {\calligra\large om}}\,}
+  \DeclareMathOperator{\sh}{Sh}
+  \DeclareMathOperator{\spe}{sp} % specialisation
+  \DeclareMathOperator{\spec}{Spec}
+  \DeclareMathOperator{\swan}{Sw}
+  \DeclareMathOperator{\tor}{Tor}
+  \DeclareMathOperator{\Tor}{\mathscr{T}\text{\kern -4pt {\calligra\large or}}\,} % sheaf tor
+  \DeclareMathOperator{\tr}{tr}
+
+
+% special symbols: a new way of defining them!
+  \newcommand{\dmu}{{\bm\mu}}
+  \newcounter{char}
+  \setcounter{char}{1}
+  \loop\ifnum\value{char}<27
+    \expandafter\edef\csname c\Alph{char}\endcsname{\noexpand\mathcal{\Alph{char}}}  % mathcal
+    \expandafter\edef\csname d\Alph{char}\endcsname{\noexpand\mathbb{\Alph{char}}}   % mathbb
+    \expandafter\edef\csname f\Alph{char}\endcsname{\noexpand\mathfrak{\Alph{char}}} % mathfrak
+    \expandafter\edef\csname e\Alph{char}\endcsname{\noexpand\mathsf{\Alph{char}}}   % mathsf
+    \expandafter\edef\csname s\Alph{char}\endcsname{\noexpand\mathscr{\Alph{char}}}  % mathscr
+    \addtocounter{char}{1}
+  \repeat
+% can't do the previous for lower-case mathfrak because \fi is already defined 
+% (otherwise, could do \alph instead of \Alph above)
+  \def\mydeff#1{\expandafter\def\csname f#1\endcsname{\mathfrak{#1}}}
+  \def\mydefallf#1{\ifx#1\mydefallf\else\mydeff#1\expandafter\mydefallf\fi}
+  \mydefallf abcdefghjklmnopqrstuvwxyz\mydefallf
+
+
+% miscellaneous operators
+  \newcommand{\an}[1]{{#1}^{\textnormal{an}}}
+  \newcommand{\const}[1]{\underline{#1}}
+  \newcommand{\et}[1]{{#1}_{\textnormal{et}}}
+  \newcommand{\iso}{\xrightarrow\sim}
+  \newcommand{\lotimes}{{\overset{\mathsf{L}}{\otimes}}}
+  \DeclareMathOperator{\rhom}{\mathsf{R}\hom}
+  \renewcommand{\setminus}{\smallsetminus}
+  \newcommand{\kloos}{\textnormal{K}} % Kloosterman sum
+  \newcommand{\pr}{\mathrm{pr}} % projection map
+
+
+% allows for large external tensor product symbol
+\newcommand{\bigboxtimes}{\mathop{\vphantom{\sum}\mathchoice
+  {\vcenter{\hbox{\huge $\boxtimes$}}}
+  {\vcenter{\hbox{\Large $\boxtimes$}}}{\boxtimes}{\boxtimes}}\displaylimits}
+
+
+%\renewcommand{\bullet}{\text{\,\begin{picture}(-1,1)(-1,-2)\circle*{2}\end{picture}\ }}
+\let\oldbullet\bullet
+\renewcommand{\bullet}{\textnormal{\tiny$\oldbullet$}}
+
+
+% unmarked footnote
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}

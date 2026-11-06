@@ -1,0 +1,681 @@
+\SourcePage{76}
+\SGAsection{4}{群的切空间——Lie 代数}
+\textbf{4.1。}设 $G$ 是 $S$ 上的\Term{group-functor}{群函子}。由 3.9.0.2，$T_{G/S}(M)$ 和 $\operatorname{Lie}(G/S,M)$ 具有 $S$ 上的\Term{group-structure}{群结构}，并有\Term{group-morphism}{群态射}
+\[
+\begin{tikzcd}
+\operatorname{Lie}(G/S,M)\arrow[r,"i"]&T_{G/S}(M)\arrow[r,shift left,"p"]&G\arrow[l,shift left,"s"]
+\end{tikzcd}
+\]
+依定义，$i$ 将 $\operatorname{Lie}(G/S,M)$ \Term{isomorphism}{同构}到 $p$ 的核，$s$ 是 $p$ 的\Term{section}{截面}。由 I 2.3.7，这组\Term{morphism}{态射}将 $T_{G/S}(M)$ 与 $G$ 被 $\operatorname{Lie}(G/S,M)$ \Term{group-extension}{扩张}所得的\Term{semidirect-product}{半直积}等同。
+\begin{SGAresult}{定义}{4.1.A}
+\footnote{编者注（49）：增加编号 4.1.A、4.1.B，以突出这两个定义。}$G$ 在 $\operatorname{Lie}(G/S,M)$ 上相应的\Term{action}{作用}记为
+\[\operatorname{Ad}:G\longrightarrow\operatorname{Aut}_{S\text{-gr.}}(\operatorname{Lie}(G/S,M)),\]
+称为 $G$ 的（相对于 $M$ 的）\Term{adjoint-representation}{伴随表示}。于是对 $x\in G(S')$、$X\in\operatorname{Lie}(G/S,M)(S')$，依定义有
+\[\operatorname{Ad}(x)X=i^{-1}(s(x)i(X)s(x)^{-1}).\]
+\end{SGAresult}
+若 $G$ 交换，则 $T_{G/S}(M)$ 也交换，且 $\operatorname{Ad}(x)X=X$。
+\begin{SGAresult}{定义}{4.1.B}
+设 $G,H$ 是 $S$ 上的\Term{group-functor}{群函子}，$f:G\to H$ 是\Term{group-morphism}{群态射}。由\Term{functorial}{函子性}得到与\Term{canonical}{典范}\Term{section}{截面}相容的\Term{exact-sequence}{正合列}间的\Term{morphism}{态射}：
+\[
+\begin{tikzcd}
+1\arrow[r]&\operatorname{Lie}(G/S,M)\arrow[r]\arrow[d,"L(f)"]&T_{G/S}(M)\arrow[r]\arrow[d,"T(f)"]&G\arrow[r]\arrow[d,"f"]&1\\
+1\arrow[r]&\operatorname{Lie}(H/S,M)\arrow[r]&T_{H/S}(M)\arrow[r]&H\arrow[r]&1.
+\end{tikzcd}
+\]
+$L(f)$ 也记为 $\operatorname{Lie}(f)$，称为 $f$ 的\Term{derived-morphism}{导态射}。\footnote{编者注（50）：若 $f$ 是\Term{monomorphism}{单态射}，则 $L(f)$ 与 $T(f)$ 也是，见 3.7。}
+\end{SGAresult}
+\textbf{注记 4.1.C。}\footnote{编者注（51）：增加了这条注记。}若 $G/S$、$H/S$ 满足 (E)，则 $L(f)$ 保持由“关于 $M$ 的\Term{functorial}{函子性}”\Term{derive}{导出}的 $\mathcal O_S$ 模结构（见 3.6）。
+\begin{SGAresult}{命题}{4.1.1}
+设 $g\in G(S)$。则 $\operatorname{Ad}(g):\operatorname{Lie}(G/S,M)\to\operatorname{Lie}(G/S,M)$ 是 $\operatorname{Int}(g):G\to G$ 的\Term{derived-morphism}{导态射}。
+\end{SGAresult}
+事实上，$\operatorname{Ad}(g)X=i^{-1}(\operatorname{Int}(g)i(X))$，按\Term{derived-morphism}{导态射}的定义，这正是 $L(\operatorname{Int}(g))(X)$。
+假设 $G/S$ 满足 (E)。由命题 3.9，上面定义的 $\operatorname{Lie}(G/S,M)$ 的\Term{group-structure}{群结构}就是其 $\mathcal O_S$ 模结构（借助 (E) 定义）诱导的\Term{group-structure}{群结构}。由上一命题及 $\mathcal O_S$ \Term{action}{作用}的\Term{functorial}{函子性}（3.6）得到：
+\SourcePage{77}
+\begin{SGAresult}{推论}{4.1.1.1}
+假设 $G/S$ 满足 (E)。则 $\operatorname{Ad}$ 将 $G$ 映入 $\operatorname{Aut}_{S\text{-gr.}}(\operatorname{Lie}(G/S,M))$ 的\Term{subgroup}{子群}
+\[\operatorname{Aut}_{\mathcal O_S\text{-mod.}}(\operatorname{Lie}(G/S,M)).\]
+亦即，对所有 $g\in G(S')$，$\operatorname{Ad}(g)$ 保持 $\operatorname{Lie}(G'/S',M)$ 的 $\mathcal O_{S'}$ 模结构，其中 $G'=G\times_SS'$。换言之，$\operatorname{Ad}$ 是 $G$ 在 $\mathcal O_S$ 模 $\operatorname{Lie}(G/S,M)$ 中的\Term{linear-representation}{线性表示}（I 3.2）。
+\end{SGAresult}
+\textbf{注记 4.1.1.2。}a) $G/S$ 满足 (E) 当且仅当对每对\Term{finite-type}{有限型}自由 $\mathcal O_S$ 模 $M,N$，将\Term{functor}{函子} $\operatorname{Lie}(G/S,\ )$ 应用于 2.1 的图 $(*)$ 所得的图
+\[\begin{tikzcd}
+&\operatorname{Lie}(G/S,M\oplus N)\arrow[dl]\arrow[dr]&\\
+\operatorname{Lie}(G/S,M)\arrow[dr]&&\operatorname{Lie}(G/S,N)\arrow[dl]\\
+&\operatorname{Lie}(G/S,0)=S&
+\end{tikzcd}\]
+是\Term{cartesian}{笛卡尔图}。
+
+b) 假设 $G/S$ 满足 (E)。则群律 $\pi:G\times_SG\to G$ 的\Term{derived-morphism}{导态射}就是 $\operatorname{Lie}(G/S,M)$ 的加法。（注意：$\pi$ 并非\Term{group-morphism}{群态射}，但 $\pi(e,e)=e$，故 $L(\pi)$ 将
+$T^{(e,e)}_{(G\times_SG)/S}(M)=\operatorname{Lie}(G/S,M)\times_S\operatorname{Lie}(G/S,M)$ 映入 $\operatorname{Lie}(G/S,M)$，见 3.7、3.8。）同样，对 $n\in\mathbb Z$，若 $n_G:G\to G$ 是由 $g\mapsto g^n$ 定义的 $S$ \Term{morphism-of-functors}{函子态射}，则 $L(n_G)$ 是 $\operatorname{Lie}(G/S)$ 上的乘 $n$，见 3.9.4。
+
+\textbf{4.1.2.0。}\footnote{编者注（52）：下文展开了原文，以明确 $G$ 在\Term{functor}{函子} $\operatorname{Hom}_{G/S}(G,T_{G/S}(M))$ 与 $\operatorname{Hom}_S(G,\operatorname{Lie}(G/S,M))$ 上的\Term{action}{作用}。}现在考虑 $S$ \Term{functor}{函子} $\operatorname{Hom}_{G/S}(G,T_{G/S}(M))$。对 $S'\to S$，有 $T_{G/S}(M)_{S'}\simeq T_{G_{S'}/S'}(M)$（3.4），因而
+\[\operatorname{Hom}_{G/S}(G,T_{G/S}(M))(S')\simeq\operatorname{Hom}_{G_{S'}}(G_{S'},T_{G_{S'}/S'}(M))=\Gamma(T_{G_{S'}/S'}(M)/G_{S'}).\]
+首先，有关于 $S'$ \Term{functorial}{函子性}的\Term{isomorphism}{同构}
+\[\operatorname{Hom}_{S'}(G_{S'},\operatorname{Lie}(G_{S'}/S',M))\xrightarrow{\sim}\Gamma(T_{G_{S'}/S'}(M)/G_{S'}),\tag{*}\]
+将 $f$ 对应于\Term{section}{截面} $s_f:G_{S'}\to T_{G_{S'}/S'}(M)$，其中对 $S''\to S'$、$g\in G(S'')$，
+\[s_f(g)=i(f(g))s(g).\]
+\SourcePage{78}
+设 $h$ 是 $S'$ 上\Term{functor}{函子} $G_{S'}$ 的\Term{automorphism}{自同构}，不一定保持\Term{group-structure}{群结构}。对 $T_{G_{S'}/S'}(M)$ 的每个\Term{section}{截面} $\tau$，可通过\Term{transport-of-structure}{结构搬运}定义 $h(\tau)$；它就是使下图交换的唯一\Term{section}{截面}：
+\[\begin{tikzcd}
+G_{S'}\arrow[r,"\tau"]\arrow[d,"h"]&T_{G_{S'}/S'}(M)\arrow[d,"T(h)"]\\
+G_{S'}\arrow[r,"h(\tau)"]&T_{G_{S'}/S'}(M).
+\end{tikzcd}\]
+特别取 $h=t_x$ 为 $x\in G(S')$ 的\Term{right-translation}{右平移}，即 $t_x(g)=g\cdot x$（$g\in G(S'')$，$S''\to S'$）。立即有 $t_x(s_f)=s_{t_x(f)}$，其中
+\[t_x(f)(g)=f(g\cdot x^{-1}).\]
+因此，若令 $G$ 以下式通过\Term{right-translation}{右平移}\Term{action}{作用}于
+$\operatorname{Hom}_{G/S}(G,T_{G/S}(M))$ 和 $\operatorname{Hom}_S(G,\operatorname{Lie}(G/S,M))$：对 $S'\to S$、$x\in G(S')$、$\sigma\in\Gamma(T_{G_{S'}/S'}(M)/G_{S'})$、$f\in\operatorname{Hom}_{S'}(G_{S'},\operatorname{Lie}(G_{S'}/S',M))$，
+\[(\sigma\cdot x)(g)=\sigma(g\cdot x^{-1})s(x),\qquad(f\cdot x)(g)=f(g\cdot x^{-1})\quad(g\in G(S''),\ S''\to S'),\]
+则上面的\Term{isomorphism}{同构} $(*)$ 保持 $G$ 的\Term{action}{作用}。特别，$\operatorname{Hom}_{G/S}(G,T_{G/S}(M))^G(S')$ 中的元素对应于 $G_{S'}$ 到 $\operatorname{Lie}(G_{S'}/S',M)$ 的常值\Term{morphism}{态射}（即经过\Term{projection}{投影} $G_{S'}\to S'$ \Term{resolution}{分解}的\Term{morphism}{态射}），也就是 $\operatorname{Lie}(G_{S'}/S',M)(S')=\operatorname{Lie}(G/S,M)(S')$ 中的元素。
+
+\textbf{术语。}称 $\operatorname{Hom}_{G/S}(G,T_{G/S}(M))^G(S')$ 的元素为“$T_{G_{S'}/S'}(M)$ 的\Term{right-translation}{右平移}\Term{invariant}{不变}\Term{section}{截面}”。于是得到：
+\begin{SGAresult}{命题}{4.1.2}
+映射 $\operatorname{Lie}(G/S,M)(S)\to\Gamma(T_{G/S}(M)/G)$，将 $X$ 对应于 $x\mapsto X\cdot x$，给出 $\operatorname{Lie}(G/S,M)(S)$ 与所有\Term{right-translation}{右平移}\Term{invariant}{不变}\Term{section}{截面}组成的\Term{subset}{子集}之间的\Term{bijection}{双射}。
+\end{SGAresult}
+\footnote{原注（*）：注意到 $G$ 的\Term{right-translation}{右平移}\Term{invariant}{不变}\Term{automorphism}{自同构}正是\Term{left-translation}{左平移}，即可更简单地得到 4.1.2、4.1.3、4.1.4。编者注（53）：例如见 [DG70]，\S II.4，命题 4.6 与 2.5 的证明。}
+\SourcePage{79}
+同样，以下式令 $G$ \Term{right-action}{右作用}于 $\operatorname{End}_{I_S(M)/S}(G_{I_S(M)})$：对 $S'\to S$、$x\in G(S')$ 和
+$u\in\operatorname{End}_{I_S(M)/S}(G_{I_S(M)})(S')=\operatorname{End}_{I_{S'}(M)}(G_{I_{S'}(M)})$，
+\[(u\cdot x)(g)=u(g\cdot x^{-1})\cdot x\quad(g\in G(S''),\ S''\to I_{S'}(M)).\]
+于是 3.12.1 的\Term{morphism}{态射}
+\[\operatorname{Hom}_{G/S}(G,T_{G/S}(M))\to\operatorname{End}_{I_S(M)/S}(G_{I_S(M)})\]
+保持 $G$ 的\Term{action}{作用}，因而对每个 $S'\to S$，诱导 $\Gamma(T_{G_{S'}/S'}(M)/G_{S'})$ 与 $G_{I_{S'}(M)}$ 的那些在 $G$ 上诱导恒等且“与\Term{right-translation}{右平移}交换”的 $I_{S'}(M)$ \Term{endomorphism}{自同态}之间的\Term{bijection}{双射}；这里后一个条件意为对所有 $S''\to S'$、$x\in G(S'')$，有 $u_{S''}\cdot x=u_{S''}$。故有：
+\begin{SGAresult}{命题}{4.1.3}
+$\operatorname{Lie}(G/S,M)(S)$ 与 $G_{I_S(M)}$ 的在 $G$ 上诱导恒等且与 $G$ 的\Term{right-translation}{右平移}交换（意义如上）的 $I_S(M)$ \Term{endomorphism}{自同态}的\Term{set}{集合}之间，有关于 $G$ \Term{functorial}{函子性}的\Term{bijection}{双射}。
+\end{SGAresult}
+再考虑 3.13，得到：
+\begin{SGAresult}{\Term{theorem}{定理}}{4.1.4}
+设 $G$ 是 $S$ 上的\Term{group-functor}{群函子}，$G/S$ 满足 (E)。则群 $\operatorname{Lie}(G/S,M)(S)$ 可关于 $G$ \Term{functorial}{函子性}地等同于 $G_{I_S(M)}$ 的在 $G$ 上诱导恒等且与 $G$ 的\Term{right-translation}{右平移}交换（意义如上）的 $I_S(M)$ \Term{automorphism-group}{自同构群}。
+\end{SGAresult}
+这样在 $M=\mathcal O_S$ 时就得到群的 \Term{lie-algebra}{Lie 代数}的一种经典定义。
+
+\textbf{4.2.0。}\footnote{编者注（54）：增加了 4.2.0；原文 4.2、4.7 隐含地使用了这里的结果。}在继续之前，先建立 3.11 的一些新推论。如第 1 节，设 $X,Y$ 在 $Z$ 上，$Z$ 在 $S$ 上。如 3.11 所见，1.1 (4) 的\Term{isomorphism}{同构}
+\[\begin{tikzcd}[column sep=small]
+\operatorname{Hom}_S(I_S(M),\operatorname{Hom}_{Z/S}(X,Y))\arrow[rr,"\sim"]\arrow[dr,"\simeq"']&&\operatorname{Hom}_{Z/S}(X,\operatorname{Hom}_Z(I_Z(M),Y))\\
+&\operatorname{Hom}_{Z/S}(X\times_SI_S(M),Y)\arrow[ur,"\simeq"']&
+\end{tikzcd}\tag{1}\]
+诱导下面的\Term{isomorphism}{同构} $\theta$：
+\[\begin{tikzcd}
+T_{\operatorname{Hom}_{Z/S}(X,Y)}(M)\arrow[rr,"\theta", "\sim"']\arrow[dr,"\simeq"']&&\operatorname{Hom}_{Z/S}(X,T_{Y/Z}(M))\\
+&\operatorname{Hom}_{Z/S}(X\times_SI_S(M),Y)\arrow[ur,"\simeq"']&
+\end{tikzcd}\tag{2}\]
+\SourcePage{80}
+由 1.3，若 $Y$ 是 $Z$ 群，则对每个 $V\to Z$（特别 $V=I_Z(M)$），$\operatorname{Hom}_Z(V,Y)$ 也是 $Z$ 群。具体地，对 $Z''\to Z'\to Z$、$\phi,\psi\in\operatorname{Hom}_Z(V_{Z'},Y)$，其积由
+$(\phi\cdot\psi)(v)=\phi(v)\psi(v)$（$v\in V_{Z'}(Z'')$）定义。
+现在假设 $X,Y$ 是 $Z$ 群，并作如下定义。
+\begin{SGAresult}{定义}{4.2.0.1}
+$\operatorname{Hom}_{(Z/S)\text{-gr.}}(X,Y)$ 是 $\operatorname{Hom}_{Z/S}(X,Y)$ 的\Term{subfunctor}{子函子}，由对所有 $S'\to S$ 的下式定义：
+\[\operatorname{Hom}_{(Z/S)\text{-gr.}}(X,Y)(S')=\operatorname{Hom}_{Z_{S'}\text{-gr.}}(X_{S'},Y_{S'}).\tag{3}\]
+将 $Y$ 换成 $Z$ 群 $T_{Y/Z}(M)$ 时，此定义仍适用。
+\end{SGAresult}
+容易看到，在 (2) 的\Term{isomorphism}{同构}下，$T_{\operatorname{Hom}_{(Z/S)\text{-gr.}}(X,Y)/S}(M)(S')$ 对应于那些“对 $X$ \Term{multiplication}{乘法}性”的 $Z_{S'}$ \Term{morphism}{态射}
+$\phi:X_{S'}\times_{S'}I_{S'}(M)\to Y_{S'}$，即满足 $\phi(x_1x_2,m)=\phi(x_1,m)\phi(x_2,m)$ 的\Term{morphism}{态射}；它们又对应于 $Z_{S'}$ 群的\Term{morphism}{态射} $X_{S'}\to T_{Y/Z}(M)_{S'}$。于是有：
+\begin{SGAresult}{命题}{4.2.0.2}
+设 $X,Y$ 为 $Z$ 群，$Z$ 在 $S$ 上。有关于 $M$ \Term{functorial}{函子性}的 $S$ \Term{functor}{函子}\Term{isomorphism}{同构}
+\[T_{\operatorname{Hom}_{(Z/S)\text{-gr.}}(X,Y)}(M)\xrightarrow{\sim}\operatorname{Hom}_{(Z/S)\text{-gr.}}(X,T_{Y/Z}(M)).\]
+\end{SGAresult}
+特别取 $Z=S$，得到下述推论。先注意，若 $Y$ 是交换 $S$ 群，则 $T_{Y/S}(M)$、$H=\operatorname{Hom}_{S\text{-gr.}}(X,Y)$、$\operatorname{Hom}_{S\text{-gr.}}(X,T_{Y/S}(M))$ 以及 $T_{H/S}(M)$ 也都交换。
+\begin{SGAresult}{推论}{4.2.0.3}
+设 $X,Y$ 是 $S$ 群。有关于 $M$ \Term{functorial}{函子性}的 $S$ \Term{functor}{函子}\Term{isomorphism}{同构}
+\[T_{\operatorname{Hom}_{S\text{-gr.}}(X,Y)/S}(M)\xrightarrow{\sim}\operatorname{Hom}_{S\text{-gr.}}(X,T_{Y/S}(M)).\]
+若 $Y$ 交换，这还是交换 $S$ 群的\Term{isomorphism}{同构}。
+\end{SGAresult}
+\begin{SGAresult}{定义}{4.2.0.4}
+\footnote{编者注（55）：此定义原在 4.3，现插入此处。}若 $Y$ 是 $\mathcal O_S$ 模，则\Term{functor}{函子} $T_{Y/S}(M)$（相应地，$\operatorname{Lie}(Y/S,M)$）具有由 $Y$ 的结构\Term{derive}{导出}的 $\mathcal O_S$ 模结构。赋予此结构后，将其记为 $T^0_{Y/S}(M)$（相应地，$\operatorname{Lie}^0(Y/S,M)$）。
+\end{SGAresult}
+因此，若 $X,Y$ 是 $\mathcal O_S$ 模，则 $T^0_{Y/S}(M)=\operatorname{Hom}_S(I_S(M),Y)$、$H=\operatorname{Hom}_{\mathcal O_S\text{-mod.}}(X,Y)$，以及 $\operatorname{Hom}_{\mathcal O_S\text{-mod.}}(X,T^0_{Y/S}(M))$、$T^0_{H/S}(M)$ 都具有 $\mathcal O_S$ 模结构，且有：
+\SourcePage{81}
+\begin{SGAresult}{推论}{4.2.0.5}
+若 $X,Y$ 是 $\mathcal O_S$ 模，则有关于 $M$ \Term{functorial}{函子性}的 $\mathcal O_S$ 模\Term{isomorphism}{同构}
+\[T^0_{\operatorname{Hom}_{\mathcal O_S\text{-mod.}}(X,Y)/S}(M)\xrightarrow{\sim}\operatorname{Hom}_{\mathcal O_S\text{-mod.}}(X,T^0_{Y/S}(M)).\]
+\end{SGAresult}
+\begin{SGAresult}{定义}{4.2.A}
+\footnote{编者注（56）：下文展开了原文，特别增加定义 4.2.A 和注记 4.2.B。}设 $X,L$ 是 $S$ 群，$X$ 通过群\Term{automorphism}{自同构}\Term{action}{作用}于 $L$（I 2.3.5）。$\operatorname{Hom}_S(X,L)$ 的\Term{subfunctor}{子函子} $Z^1_S(X,L)$ 由下式定义：对所有 $S'\to S$，
+\[Z^1_S(X,L)(S')=\{\phi\in\operatorname{Hom}_{S'}(X_{S'},L_{S'})\mid\phi(x_1x_2)=\phi(x_1)(x_1\cdot\phi(x_2)),\ \forall x_1,x_2\in X(S''),\ S''\to S'\}.\]
+称其为“从 $X$ 到 $L$ 的\Term{crossed-homomorphism}{交叉同态}\Term{functor}{函子}”。
+\end{SGAresult}
+\textbf{注记 4.2.B。}a) 若 $L'$ 是另一个由 $X$ 通过群\Term{automorphism}{自同构}\Term{action}{作用}的 $S$ 群，则
+\[Z^1_S(X,L\times_SL')\simeq Z^1_S(X,L)\times_SZ^1_S(X,L').\]
+b) 若 $L$ 是 $G$-$\mathcal O_S$ 模，则 $Z^1_S(X,L)$ 等于 I 5.1 所定义的\Term{differential}{微分} $\partial:\operatorname{Hom}_S(X,L)\to\operatorname{Hom}_S(X^2,L)$ 的核；特别，此时 $Z^1_S(X,L)$ 是 $\mathcal O_S$ 模。
+
+\textbf{4.2。}设 $u:X\to Y$ 是 $S$ 群的\Term{morphism}{态射}；$L^u_{\operatorname{Hom}_{S\text{-gr.}}(X,Y)/S}(M)$ 可描述如下。首先，3.11.3 给出关于 $M$ \Term{functorial}{函子性}的 $S$ \Term{functor}{函子}\Term{isomorphism}{同构}
+\[L^u_{\operatorname{Hom}_S(X,Y)/S}(M)\xrightarrow{\sim}\operatorname{Hom}_{Y/S}(X,T_{Y/S}(M)).\tag{$\dagger$}\]
+又因 $Y$ 是 $S$ 群，$T_{Y/S}(M)=\operatorname{Lie}(Y/S,M)\cdot Y=\operatorname{Lie}(Y/S,M)_Y$，从而有关于 $M$ \Term{functorial}{函子性}的\Term{isomorphism}{同构}
+\[L^u_{\operatorname{Hom}_S(X,Y)/S}(M)\xrightarrow{\sim}\operatorname{Hom}_S(X,\operatorname{Lie}(Y/S,M)).\]
+对 $S'\to S$，令 $u':X'\to Y'$ 为 $u$ 经\Term{base-change}{基变换}所得\Term{morphism}{态射}。考虑如下定义的 $S$ \Term{functor}{函子}：\footnote{编者注（57）：这是将定义 4.2.0.1 应用于 $Z=Y$ 和 $Y$ 群 $u:X\to Y$、$T_{Y/S}(M)$。}
+\[\begin{aligned}
+\operatorname{Hom}_{(Y/S)\text{-gr.}}(X,\operatorname{Lie}(Y/S,M)\cdot Y)(S')
+&=\operatorname{Hom}_{Y'\text{-gr.}}(X',(\operatorname{Lie}(Y/S,M)\cdot Y)_{S'})\\
+&=\operatorname{Hom}_{Y'\text{-gr.}}(X',\operatorname{Lie}(Y'/S',M)\cdot Y').
+\end{aligned}\]
+容易看到 $(\dagger)$ \Term{induction-isomorphism}{诱导同构}
+\[L^u_{\operatorname{Hom}_{S\text{-gr.}}(X,Y)/S}(M)\xrightarrow{\sim}\operatorname{Hom}_{(Y/S)\text{-gr.}}(X,\operatorname{Lie}(Y/S,M)\cdot Y).\tag{$\dagger'$}\]
+另一方面，\Term{morphism}{态射} $X\xrightarrow{u}Y\xrightarrow{\operatorname{Ad}}\operatorname{Aut}_{S\text{-gr.}}(\operatorname{Lie}(Y/S,M))$
+\SourcePage{82}
+定义 $X$ 在 $L=\operatorname{Lie}(Y/S,M)$ 上通过群\Term{automorphism}{自同构}的\Term{action}{作用}。若 $\Phi\in\operatorname{Hom}_{Y/S}(X,\operatorname{Lie}(Y/S,M)\cdot Y)$，则对 $S''\to S'\to S$、$x\in X(S'')$，唯一地写成
+\[\Phi(S')(x)=\phi(S')(x)\cdot u'(x),\quad\phi(S')(x)\in\operatorname{Lie}(Y'/S',M)(S'').\]
+这确定 $\operatorname{Hom}_S(X,\operatorname{Lie}(Y/S,M))$ 的一个元素 $\phi$。$\Phi(S')$ 是\Term{group-morphism}{群态射}当且仅当对所有 $x_1,x_2\in X(S'')$，
+\[\phi(S')(x_1x_2)=\phi(S')(x_1)\bigl(u(x_1)\phi(S')(x_2)u(x_1)^{-1}\bigr)=\phi(S')(x_1)(x_1\cdot\phi(S')(x_2)),\]
+即当且仅当 $\phi\in Z^1_S(X,\operatorname{Lie}(Y/S,M))$。于是得到：
+\begin{SGAresult}{命题}{4.2}
+设 $u:X\to Y$ 是 $S$ 群的\Term{morphism}{态射}。有关于 $M$ \Term{functorial}{函子性}的 $S$ \Term{functor}{函子}\Term{isomorphism}{同构}
+\[L^u_{\operatorname{Hom}_{S\text{-gr.}}(X,Y)/S}(M)\xrightarrow{\sim}Z^1_S(X,\operatorname{Lie}(Y/S,M)).\]
+\end{SGAresult}
+进一步假设 $Y/S$ 满足 (E)。\footnote{编者注（58）：增加了后面几句话及命题 4.2 bis，原文隐含了这些内容。}由 4.2.0.3，与 3.11.1 的证明完全一样，$\operatorname{Hom}_{S\text{-gr.}}(X,Y)/S$ 满足 (E)。故由 3.5.1，
+\[L^u_{\operatorname{Hom}_{S\text{-gr.}}(X,Y)/S}(M\oplus N)\simeq L^u_{\operatorname{Hom}_{S\text{-gr.}}(X,Y)/S}(M)\times_SL^u_{\operatorname{Hom}_{S\text{-gr.}}(X,Y)/S}(N).\]
+这也可由 4.2 和 4.2.B a) 得到。因此左边的\Term{tangent-space}{切空间}\Term{functor}{函子}与 $Z^1_S(X,\operatorname{Lie}(Y/S,M))$（4.2.B b)）一样，具有由关于 $M$ 的\Term{functorial}{函子性}\Term{derive}{导出}的 $\mathcal O_S$ 模结构。由此知 4.2 的\Term{isomorphism}{同构}在此情形是 $\mathcal O_S$ 模\Term{isomorphism}{同构}：
+\begin{SGAresult}{命题}{4.2 bis}
+设 $u:X\to Y$ 是 $S$ 群的\Term{morphism}{态射}，$Y/S$ 满足 (E)。有关于 $M$ \Term{functorial}{函子性}的 $\mathcal O_S$ 模\Term{isomorphism}{同构}
+\[L^u_{\operatorname{Hom}_{S\text{-gr.}}(X,Y)/S}(M)\xrightarrow{\sim}Z^1_S(X,\operatorname{Lie}(Y/S,M)).\]
+\end{SGAresult}
+此外，若 $Y/S$ 满足 (E)，则由 3.13.1，与 3.13.2 的证明完全一样，对每个 $u\in\operatorname{Isom}_{S\text{-gr.}}(X,Y)$ 有关于 $M$ \Term{functorial}{函子性}的\Term{isomorphism}{同构}
+\[L^u_{\operatorname{Isom}_{S\text{-gr.}}(X,Y)/S}(M)\xrightarrow{\sim}L^u_{\operatorname{Hom}_{S\text{-gr.}}(X,Y)/S}(M).\tag{*}\]
+由此得到以下两个推论。
+\begin{SGAresult}{推论}{4.2.1}
+设 $u:X\to Y$ 是 $S$ 群的\Term{morphism}{态射}；若 $Y/S$ 满足 (E)，则有关于 $M$ \Term{functorial}{函子性}的 $\mathcal O_S$ 模\Term{isomorphism}{同构}
+\[L^u_{\operatorname{Isom}_{S\text{-gr.}}(X,Y)/S}(M)\xrightarrow{\sim}Z^1_S(X,\operatorname{Lie}(Y/S,M)).\]
+\end{SGAresult}
+\SourcePage{83}
+\begin{SGAresult}{推论}{4.2.2}
+设 $X$ 是 $S$ 群；若 $X/S$ 满足 (E)，则有关于 $M$ \Term{functorial}{函子性}的 $\mathcal O_S$ 模\Term{isomorphism}{同构}
+\[\operatorname{Lie}(\operatorname{Aut}_{S\text{-gr.}}(X)/S,M)\xrightarrow{\sim}Z^1_S(X,\operatorname{Lie}(X/S,M)).\]
+\end{SGAresult}
+另一方面，若 $Y$ 交换，则 $Y$ 在 $L=\operatorname{Lie}(X/S,M)$ 上的\Term{adjoint-action}{伴随作用}平凡，故 $Z^1_S(X,L)=\operatorname{Hom}_{S\text{-gr.}}(X,L)$。\footnote{编者注（59）：增加了这句话。}所以：
+\begin{SGAresult}{推论}{4.2.3}
+设 $Y$ 是交换 $S$ 群。有关于 $M$ \Term{functorial}{函子性}的 $S$ \Term{functor}{函子}\Term{isomorphism}{同构}
+\[L^u_{\operatorname{Hom}_{S\text{-gr.}}(X,Y)/S}(M)\xrightarrow{\sim}\operatorname{Hom}_{S\text{-gr.}}(X,\operatorname{Lie}(Y/S,M)).\]
+\end{SGAresult}
+\textbf{4.3。}现在考虑 $X,Y$ 是 $\mathcal O_S$ 模的情形。回顾 4.2.0.4，$T^0_{Y/S}(M)$、$\operatorname{Lie}^0(Y/S,M)$ 表示赋予由 $Y$ 的结构\Term{derive}{导出}的 $\mathcal O_S$ 模结构的\Term{functor}{函子} $T_{Y/S}(M)$、$\operatorname{Lie}(Y/S,M)$。
+当 $Y/S$ 满足 (E) 时，仍以 $\operatorname{Lie}(Y/S,M)$ 表示赋予对所有满足 (E) 的\Term{functor}{函子}所定义的 $\mathcal O_S$ 模结构的\Term{functor}{函子}。由 3.9，此时 $\operatorname{Lie}(Y/S,M)$ 与 $\operatorname{Lie}^0(Y/S,M)$ 的\Term{abelian-group}{交换群}结构相同，但模结构先验并不相同（反例见 6.3）。对 $S'\to S$、$a\in\mathcal O(S')$，分别以 $a\cdot_0m$、$a\cdot m$ 表示 $a$ 在 $m\in\operatorname{Lie}^0(Y/S,M)(S')$、$m\in\operatorname{Lie}(Y/S,M)(S')$ 上的\Term{action}{作用}；对 $T^0_{Y/S}(M)$、$T_{Y/S}(M)$ 的\Term{action}{作用}也采用同样记法。
+有 $\mathcal O_S$ 模\Term{isomorphism}{同构} $T^0_{Y/S}(M)\simeq\operatorname{Lie}^0(Y/S,M)\oplus Y$。因此，与命题 4.2、4.2 bis 完全一样，得到：
+\begin{SGAresult}{命题}{4.3}
+设 $u:X\to Y$ 是 $\mathcal O_S$ 模的\Term{morphism}{态射}。有关于 $M$ \Term{functorial}{函子性}的 $S$ \Term{functor}{函子}\Term{isomorphism}{同构}
+\[L^u_{\operatorname{Hom}_{\mathcal O_S\text{-mod.}}(X,Y)/S}(M)\xrightarrow{\sim}\operatorname{Hom}_{\mathcal O_S\text{-mod.}}(X,\operatorname{Lie}^0(Y/S,M)).\tag{*}\]
+若 $Y/S$ 满足 (E)，则 $\operatorname{Hom}_{\mathcal O_S\text{-mod.}}(X,Y)/S$ 满足 (E)，且对两边赋予由关于 $M$ 的\Term{functorial}{函子性}\Term{derive}{导出}的 $\mathcal O_S$ 模结构后，$(*)$ 是 $\mathcal O_S$ 模\Term{isomorphism}{同构}。\footnote{编者注（60）：增加了这句话。}\footnote{编者注（61）：右边的结构由 $(a\phi)(x)=a\cdot\phi(x)$ 定义，这里 $a\cdot\phi(x)$ 是 $a$ 对 $\phi(x)\in\operatorname{Lie}(Y/S,M)$ 的\Term{action}{作用}。它与 $(a\cdot_0\phi)(x)=a\cdot_0\phi(x)=\phi(ax)$ 不同，但若 $\operatorname{Lie}(Y/S,M)=\operatorname{Lie}^0(Y/S,M)$，二者相同。}
+\end{SGAresult}
+\textbf{注记 4.3 bis。}\footnote{编者注（62）：增加此注记，供 4.5.1 使用。}设 $u:X\to Y$ 是 $\mathcal O_S$ 模的\Term{morphism}{态射}；$\tau_u$ 将每个 $\mathcal O_S$ \Term{module-morphism}{模态射} $\phi:X\to\operatorname{Lie}^0(Y/S,M)$ 对应于
+\[u\oplus\phi:X\to T^0_{Y/S}(M)=Y\oplus\operatorname{Lie}^0(Y/S,M).\]
+\SourcePage{84}
+于是 4.3 的\Term{isomorphism}{同构}放入以下关于 $M$ \Term{functorial}{函子性}的\Term{commutative-diagram}{交换图}：
+\[\begin{tikzcd}
+L^u_{\operatorname{Hom}_{\mathcal O_S\text{-mod.}}(X,Y)/S}(M)\arrow[r,"\sim"]\arrow[d,hook]&\operatorname{Hom}_{\mathcal O_S\text{-mod.}}(X,\operatorname{Lie}^0(Y/S,M))\arrow[d,hook,"\tau_u"]\\
+T_{\operatorname{Hom}_{\mathcal O_S\text{-mod.}}(X,Y)/S}(M)\arrow[r,"\sim"]&\operatorname{Hom}_{\mathcal O_S\text{-mod.}}(X,T^0_{Y/S}(M)).
+\end{tikzcd}\]
+此外，当 $Y/S$ 满足 (E)，由 3.13.1，与 3.13.2 的证明完全一样，对所有 $u\in\operatorname{Isom}_{\mathcal O_S\text{-mod.}}(X,Y)$ 有
+\[L^u_{\operatorname{Isom}_{\mathcal O_S\text{-mod.}}(X,Y)/S}(M)=L^u_{\operatorname{Hom}_{\mathcal O_S\text{-mod.}}(X,Y)/S}(M).\tag{*}\]
+\begin{SGAresult}{推论}{4.3.1}
+设 $X$ 是相对于 $S$ 满足 (E) 的 $\mathcal O_S$ 模。有关于 $M$ \Term{functorial}{函子性}的\Term{isomorphism}{同构}
+\[\operatorname{Lie}(\operatorname{Aut}_{\mathcal O_S\text{-mod.}}(X)/S,M)\xrightarrow{\sim}\operatorname{Hom}_{\mathcal O_S\text{-mod.}}(X,\operatorname{Lie}^0(X/S,M)),\]
+保持由关于 $M$ 的\Term{functorial}{函子性}\Term{derive}{导出}的 $\mathcal O_S$ 模结构。特别，$\operatorname{Aut}_{\mathcal O_S\text{-mod.}}(X)/S$ 满足 (E)。\footnote{编者注（63）：参见编者注（61）。此外，增加最后一句及其证明。}
+\end{SGAresult}
+\begin{proof}
+第一断言由 $(*)$、4.3 得到。证明第二断言：因 $X/S$ 满足 (E)，有 $\mathcal O_S$ 模\Term{isomorphism}{同构}
+$\operatorname{Lie}^0(X/S,M\oplus N)\simeq\operatorname{Lie}^0(X/S,M)\times_S\operatorname{Lie}^0(X/S,N)$，故
+\[\operatorname{Lie}(\operatorname{Aut}_{\mathcal O_S\text{-mod.}}(X)/S,M\oplus N)\simeq\operatorname{Lie}(\operatorname{Aut}_{\mathcal O_S\text{-mod.}}(X)/S,M)\times_S\operatorname{Lie}(\operatorname{Aut}_{\mathcal O_S\text{-mod.}}(X)/S,N).\]
+由 4.1.1.2 a)，这证明了所需的 (E)。
+\end{proof}
+\textbf{4.3.2。}继续之前，仔细考察 $Y$、$\operatorname{Lie}(Y/S)$、$\operatorname{Lie}^0(Y/S)$ 的关系。首先，
+\[\operatorname{Lie}(\mathcal O_S/S,M)=\operatorname{Lie}^0(\mathcal O_S/S,M)=W(M),\tag{1}\]
+其中 $W(M)$ 定义于 I 4.6。因此有\Term{canonical-isomorphism}{典范同构}
+\[d:\mathcal O_S\xrightarrow{\sim}\operatorname{Lie}(\mathcal O_S/S).\tag{2}\]
+现在设 $F$ 是 $\mathcal O_S$ 模。对 $S_2\to S_1\to S$，\footnote{编者注（64）：将 $S'\to S$ 改为 $S_2\to S_1\to S$，因为需要使 $S_1,S_2$ 变化（见下文）。并展开了后面的原文。}有一个双\Term{homomorphism}{同态}
+\[\left\{\begin{aligned}F(S_1)&\to F(S_2),\\\mathcal O(S_1)&\to\mathcal O(S_2),\end{aligned}\right.\tag{3}\]
+因而有 $\mathcal O(S_2)$ \Term{module-morphism}{模态射} $F(S_1)\otimes_{\mathcal O(S_1)}\mathcal O(S_2)\to F(S_2)$。
+\SourcePage{85}
+特别取 $S_1=S'$、$S_2=I_{S'}(M)$，得到关于 $M$ \Term{functorial}{函子性}的 $\mathcal O(S')$ \Term{module-morphism}{模态射}
+\[F(S')\otimes_{\mathcal O(S')}T_{\mathcal O_S/S}(M)(S')\to T^0_{F/S}(M)(S').\]
+让 $S'$ 变化，得到关于 $M$ \Term{functorial}{函子性}的 $\mathcal O_S$ \Term{module-morphism}{模态射}
+\[F\otimes_{\mathcal O_S}T_{\mathcal O_S/S}(M)\to T^0_{F/S}(M).\tag{4}\]
+这些\Term{morphism}{态射}关于 $M$ \Term{functorial}{函子性}，故与\Term{tangent-bundle}{切丛}到\Term{base}{基底}的\Term{projection}{投影}相容，从而定义 $\mathcal O_S$ \Term{module-morphism}{模态射}
+\[F\otimes_{\mathcal O_S}\operatorname{Lie}(\mathcal O_S/S,M)\to\operatorname{Lie}^0(F/S,M),\tag{5}\]
+使下图交换：
+\[\begin{tikzcd}[column sep=small]
+0\arrow[r]&F\otimes_{\mathcal O_S}\operatorname{Lie}(\mathcal O_S/S,M)\arrow[r]\arrow[d]&F\otimes_{\mathcal O_S}T_{\mathcal O_S/S}(M)\arrow[r]\arrow[d]&F\arrow[r]\arrow[d,equal]&0\\
+0\arrow[r]&\operatorname{Lie}^0(F/S,M)\arrow[r]&T^0_{F/S}(M)\arrow[r]&F\arrow[r]&0.
+\end{tikzcd}\]
+可将 (5) 看成交换 $S$ 群的\Term{morphism}{态射}
+\[F\otimes_{\mathcal O_S}\operatorname{Lie}(\mathcal O_S/S,M)\to\operatorname{Lie}(F/S,M).\tag{6}\]
+把 $F$ 与\Term{isomorphism}{同构} $d:\mathcal O_S\xrightarrow{\sim}\operatorname{Lie}(\mathcal O_S/S)$ 作\Term{tensor-product}{张量积}，在 $M=\mathcal O_S$ 时，得到交换 $S$ 群的\Term{morphism}{态射}
+\[F\xrightarrow{\sim}F\otimes_{\mathcal O_S}\operatorname{Lie}(\mathcal O_S/S)\to\operatorname{Lie}(F/S),\tag{7}\]
+也记为 $d:F\to\operatorname{Lie}(F/S)$。
+
+\textbf{注记 4.3.3。}\footnote{编者注（65）：原文声称，若 $F/S$ 满足 (E)，则 (6)（故也 (7)）是 $\mathcal O_S$ \Term{module-morphism}{模态射}，但 6.3 的反例否定了该断言。现删除此断言，插入所述反例，并相应修改定义 4.4。这不影响后文。}当 $F/S$ 满足 (E) 时，给两边赋予借助 (E) 由 $M$ 的结构\Term{derive}{导出}的模结构，\Term{morphism}{态射} (6)、(7) 未必是 $\mathcal O_S$ \Term{module-morphism}{模态射}。例如设 $k$ 是\Term{characteristic}{特征} $p>0$ 的域，$S=\operatorname{Spec}(k)$；令 $F$ 将每个 $S$ \Term{scheme}{概形} $T$ 对应于 $F(T)=\Gamma(T,\mathcal O_T)$，模结构通过 $p$ 次幂\Term{action}{作用}标量：$r\cdot f=r^pf$。作为 $S$ 上的\Term{group-functor}{群函子}，$F$ \Term{isomorphism}{同构}于 $\mathbb G_{a,S}$。故 $F$ 满足 (E)，且 $\operatorname{Lie}(F/S)$ 等同于 $\operatorname{Lie}(\mathbb G_{a,S}/S)\simeq\mathcal O_S$。于是对 $T\to S$，\Term{canonical-morphism}{典范态射} $d:F\to\operatorname{Lie}(F/S)$ 是\Term{identity-map}{恒等映射} $F(T)\to\mathcal O(T)$；它保持\Term{abelian-group}{交换群}结构，却不保持 $\mathcal O_S$ 模结构。
+\SourcePage{86}
+\textbf{注记 4.3.4。}\footnote{编者注（66）：增加此注记，供 4.6.2 使用。}可如下明确写出 (4)、(5)。\Term{morphism}{态射} $\Theta:F\otimes_{\mathcal O_S}T_{\mathcal O_S/S}(M)\to T^0_{F/S}(M)=\operatorname{Hom}_S(I_S(M),F)$ 由下式定义：对 $S'\to S$、$\alpha\in\mathcal O(I_{S'}(M))$、$f:S'\to F$，
+\[\Theta(f\otimes\alpha)=\alpha\cdot(\tau_0\circ f)=\alpha\cdot(f\circ\rho),\]
+其中 $\tau_0:F\to T^0_{F/S}(M)$ 是零\Term{section}{截面}，$\rho:I_{S'}(M)\to S'$ 是\Term{structural-morphism}{结构态射}。$\Theta$ 诱导 $\theta:F\otimes_{\mathcal O_S}\operatorname{Lie}(\mathcal O_S/S,M)\to\operatorname{Lie}^0(F/S,M)$；这由 (4) 后所说的“关于 $M$ 的\Term{functorial}{函子性}”得到，也可明确看出：一方面，
+\[\operatorname{Lie}^0(F/S,M)(S')=\{\phi\in\operatorname{Hom}_S(I_{S'}(M),F)\mid\phi\circ\varepsilon_M=e\},\]
+其中 $e:S'\to F$ 为单位\Term{section}{截面}。另一方面，$\operatorname{Lie}(\mathcal O_S/S,M)(S')=\Gamma(S',M)$ 是\Term{augmentation}{增广} $\eta:\mathcal O(I_{S'}(M))\to\mathcal O(S')$ 的核，因而只需说明，对 $f\in F(S')$、$\alpha\in\Gamma(S',M)$，有 $(\alpha\cdot(f\circ\rho))\circ\varepsilon_M=e$。
+在 (3) 中取 $S$ \Term{morphism}{态射} $S_2\to S_1$ 为 $\varepsilon_M:S'\to I_{S'}(M)$，有\Term{commutative-diagram}{交换图}
+\[\begin{tikzcd}
+F(I_{S'}(M))\arrow[r,"F(\varepsilon_M)"]\arrow[d,"\alpha"]&F(S')\arrow[d,"\eta(\alpha)"]\\
+F(I_{S'}(M))\arrow[r,"F(\varepsilon_M)"]&F(S').
+\end{tikzcd}\]
+故对每个 $\phi:I_{S'}(M)\to F$，有 $(\alpha\cdot\phi)\circ\varepsilon_M=\eta(\alpha)\cdot(\phi\circ\varepsilon_M)$；若 $\eta(\alpha)=0$，这就是 $e$。特别取 $M=t\mathcal O_S$，则 $\operatorname{Lie}(\mathcal O_S/S)=t\mathcal O_S$，且 $F\to\operatorname{Lie}^0(F/S)$ 由 $f\mapsto t\cdot(f\circ\rho)$ 给出。
+
+\textbf{注记 4.3.5。}\footnote{编者注（67）：增加此注记，供 4.5、4.7 使用。}设 $F$ 是 $\mathcal O_S$ 模，置 $E=\operatorname{End}_{\mathcal O_S\text{-mod.}}(F)$，以 $d_F,d_E$ 表示 4.3.2 (5) 给出的 $\mathcal O_S$ \Term{module-morphism}{模态射}：
+\[d_F:F\otimes_{\mathcal O_S}\operatorname{Lie}(\mathcal O_S/S,M)\to\operatorname{Lie}^0(F/S,M),\quad d_E:E\otimes_{\mathcal O_S}\operatorname{Lie}(\mathcal O_S/S,M)\to\operatorname{Lie}^0(E/S,M).\]
+由 4.3.4 得到 $\mathcal O_S$ \Term{module-morphism}{模态射}的\Term{commutative-diagram}{交换图}
+\[\begin{tikzcd}
+E\otimes_{\mathcal O_S}\operatorname{Lie}(\mathcal O_S/S,M)\arrow[r,"d_E"]\arrow[d]&\operatorname{Lie}^0(E/S,M)\\
+\operatorname{Hom}_{\mathcal O_S}(F,F\otimes_{\mathcal O_S}\operatorname{Lie}(\mathcal O_S/S,M))\arrow[r,"d_F"]&\operatorname{Hom}_{\mathcal O_S}(F,\operatorname{Lie}^0(F/S,M))\arrow[u,"\simeq\ (*)"'].
+\end{tikzcd}\]
+右侧竖\Term{arrow}{箭头}是 4.3 的\Term{isomorphism}{同构} $(*)$。故由该处，若 $F/S$ 满足 (E)，则 $E/S$ 也满足 (E)，且赋予右侧各项由 (E) \Term{derive}{导出}的模结构后，$(*)$ 也是 $\mathcal O_S$ 模\Term{isomorphism}{同构}。
+\SourcePage{87}
+\textbf{注记 4.4.0。}\footnote{编者注（68）：鉴于定义 4.4 的修改（见编者注（65）），在此插入原来位于 4.4.1 证明中的这条注记。}4.3.2 中，\Term{morphism}{态射} (4) 为\Term{isomorphism}{同构}当且仅当 (5) 为\Term{isomorphism}{同构}。此外，若这些条件成立，则 $F/S$ 满足 (E)。事实上，只需证明 $\operatorname{Lie}^0(F/S,M\oplus N)\simeq\operatorname{Lie}^0(F/S,M)\times_S\operatorname{Lie}^0(F/S,N)$。有\Term{commutative-diagram}{交换图}
+\[\begin{tikzcd}
+F\otimes_{\mathcal O_S}\operatorname{Lie}(\mathcal O_S/S,M\oplus N)\arrow[r,"\sim"]\arrow[d,"\simeq"']&\operatorname{Lie}^0(F/S,M\oplus N)\arrow[d]\\
+F\otimes_{\mathcal O_S}(\operatorname{Lie}(\mathcal O_S/S,M)\times_S\operatorname{Lie}(\mathcal O_S/S,N))\arrow[r,"\sim"]&\operatorname{Lie}^0(F/S,M)\times_S\operatorname{Lie}^0(F/S,N).
+\end{tikzcd}\]
+按假设水平\Term{arrow}{箭头}均为\Term{isomorphism}{同构}，故第二条竖\Term{arrow}{箭头}也是\Term{isomorphism}{同构}，即 $F/S$ 满足 (E)。
+\begin{SGAresult}{定义}{4.4}
+称 $F$ 是\Term{good-module}{良好 $\mathcal O_S$ 模}，若\Term{morphism}{态射}
+\[F\otimes_{\mathcal O_S}T_{\mathcal O_S/S}(M)\to T_{F/S}(M),\]
+或\Term{equivalence}{等价}地，$F\otimes_{\mathcal O_S}\operatorname{Lie}(\mathcal O_S/S,M)\to\operatorname{Lie}(F/S,M)$，是交换 $S$ 群的\Term{isomorphism}{同构}（从而 $F/S$ 满足 (E)），且保持由 (E) \Term{derive}{导出}的 $\mathcal O_S$ 模结构。
+\end{SGAresult}
+\begin{SGAresult}{推论}{4.4.1}
+\footnote{编者注（69）：原文证明 (i) 蕴含 (ii)、(iii)；现增加 (ii)$\Rightarrow$(i)。}对 $\mathcal O_S$ 模 $F$，考虑条件：
+(i) $F$ 是\Term{good-module}{良好 $\mathcal O_S$ 模}；
+(ii) $F/S$ 满足 (E)，且 $d:F\to\operatorname{Lie}(F/S)$ 是 $\mathcal O_S$ 模\Term{isomorphism}{同构}；
+(iii) $\operatorname{Lie}(F/S,M)=\operatorname{Lie}^0(F/S,M)$。
+则 (i)$\Leftrightarrow$(ii)$\Rightarrow$(iii)。
+\end{SGAresult}
+\begin{proof}
+(i)$\Rightarrow$(ii) 由定义得到。证明 (ii)$\Rightarrow$(i)，须说明关于 $M$ \Term{functorial}{函子性}的交换 $S$ \Term{group-morphism}{群态射}
+$F\otimes_{\mathcal O_S}\operatorname{Lie}(\mathcal O_S/S,M)\to\operatorname{Lie}(F/S,M)$ 是 $\mathcal O_S$ 模\Term{isomorphism}{同构}。由于 $F/S$ 满足 (E)，两边都将\Term{finite}{有限}个 $\mathcal O_S$ 的\Term{direct-sum}{直和}变为交换 $S$ 群的\Term{finite-product}{有限积}，故归结为 $M=\mathcal O_S$，这正是所作假设。最后，(i)$\Rightarrow$(iii) 由定义及 4.3.2 (5) 的\Term{isomorphism}{同构} $F\otimes_{\mathcal O_S}\operatorname{Lie}(\mathcal O_S/S,M)\xrightarrow{\sim}\operatorname{Lie}^0(F/S,M)$ 是 $\mathcal O_S$ \Term{module-morphism}{模态射}这一事实得到。
+\end{proof}
+\textbf{例 4.4.2。}对每个\Term{quasi-coherent}{拟凝聚} $\mathcal O_S$ 模 $\mathcal E$，I 4.6 定义的 $V(\mathcal E)$、$W(\mathcal E)$ 都是\Term{good-module}{良好 $\mathcal O_S$ 模}。
+\SourcePage{88}
+事实上，对 $f:S'\to S$，\Term{morphism}{态射}\footnote{编者注（70）：增加了下面的说明。}
+\[V(\mathcal E)(S')\otimes_{\mathcal O(S')}\mathcal O(I_{S'}(M))\to T_{V(\mathcal E)/S}(M)(S'),\qquad W(\mathcal E)(S')\otimes_{\mathcal O(S')}\mathcal O(I_{S'}(M))\to T_{W(\mathcal E)/S}(M)(S')\]
+分别对应于
+\[\begin{aligned}
+\operatorname{Hom}_{\mathcal O_{S'}\text{-mod.}}(f^*\mathcal E,\mathcal O_{S'})\otimes_{\mathcal O(S')}\Gamma(S',D_{\mathcal O_{S'}}(M))&\to\operatorname{Hom}_{\mathcal O_{S'}\text{-mod.}}(f^*\mathcal E,D_{\mathcal O_{S'}}(M)),\\
+\Gamma(S',f^*\mathcal E)\otimes_{\mathcal O(S')}\Gamma(S',D_{\mathcal O_{S'}}(M))&\to\Gamma(S',f^*\mathcal E\otimes_{\mathcal O_{S'}}D_{\mathcal O_{S'}}(M)).
+\end{aligned}\]
+这些都是\Term{isomorphism}{同构}，因为 $D_{\mathcal O_{S'}}(M)$ 作为 $\mathcal O_{S'}$ 模\Term{isomorphism}{同构}于\Term{finite}{有限}个 $\mathcal O_{S'}$ 的\Term{direct-sum}{直和}。
+\begin{SGAresult}{命题}{4.5}
+设 $F$ 是\Term{good-module}{良好 $\mathcal O_S$ 模}。则：
+(i) $\operatorname{Aut}_{\mathcal O_S\text{-mod.}}(F)/S$ 满足 (E)，且有\Term{functorial}{函子性}的\Term{isomorphism}{同构}
+\[\operatorname{Lie}(\operatorname{Aut}_{\mathcal O_S\text{-mod.}}(F)/S,M)\xrightarrow{\sim}\operatorname{Hom}_{\mathcal O_S\text{-mod.}}(F,\operatorname{Lie}(F/S,M)),\]
+保持由 (E) \Term{derive}{导出}的模结构；特别，有 $\mathcal O_S$ 模\Term{isomorphism}{同构}
+$\operatorname{Lie}(\operatorname{Aut}_{\mathcal O_S\text{-mod.}}(F)/S)\xrightarrow{\sim}\operatorname{End}_{\mathcal O_S\text{-mod.}}(F)$。
+(ii) $\operatorname{End}_{\mathcal O_S\text{-mod.}}(F)$ 也是\Term{good-module}{良好 $\mathcal O_S$ 模}。\footnote{编者注（71）：增加了直接由前文得到的 (ii)。}
+\end{SGAresult}
+事实上，由 4.4.1，$F/S$ 满足 (E)，且
+\[\operatorname{Lie}(F/S,M)=\operatorname{Lie}^0(F/S,M)\simeq F\otimes_{\mathcal O_S}\operatorname{Lie}(\mathcal O_S/S,M).\tag{1}\]
+由 4.3.1 得 (i)。置 $E=\operatorname{End}_{\mathcal O_S\text{-mod.}}(F)$。由 (1)、注记 4.3.5，有交换 $S$ \Term{group-morphism}{群态射}的\Term{commutative-diagram}{交换图}
+\[\begin{tikzcd}
+\operatorname{End}_{\mathcal O_S\text{-mod.}}(F)\otimes_{\mathcal O_S}\operatorname{Lie}(\mathcal O_S/S,M)\arrow[r,"d_E"]\arrow[d]&\operatorname{Lie}(\operatorname{End}_{\mathcal O_S\text{-mod.}}(F)/S,M)\\
+\operatorname{Hom}_{\mathcal O_S}(F,F\otimes_{\mathcal O_S}\operatorname{Lie}(\mathcal O_S/S,M))\arrow[r,"d_F"]&\operatorname{Hom}_{\mathcal O_S}(F,\operatorname{Lie}(F/S,M))\arrow[u,"\simeq\ (*)"'].
+\end{tikzcd}\]
+$d_F$ 与 $(*)$ 是 $\mathcal O_S$ 模\Term{isomorphism}{同构}，故 $d_E$ 也是。这证明 (ii)。
+\begin{SGAresult}{说明}{4.5.1}
+\footnote{编者注（72）：增加了原文隐含的此说明，供 4.7.1 使用。这里及后文以 $t,t'$ 等表示平方为零的变量，$\varepsilon$ 保留给群的\Term{unit-section}{单位截面}。}如 2.1，置 $\mathcal O_{I_S}=\mathcal O_S\oplus t\mathcal O_S$，$t^2=0$，设 $F$ 是\Term{good-module}{良好 $\mathcal O_S$ 模}。对 $S'\to S$，\Term{morphism}{态射}
+\[F(S')\oplus tF(S')=F(S')\otimes_{\mathcal O(S')}\mathcal O(I_{S'})\to F(I_{S'})=F(S')\oplus\operatorname{Lie}(F/S)(S')\]
+\SourcePage{89}
+在 $F(S')$ 上为恒等，诱导 $\mathcal O(S')$ 模\Term{isomorphism}{同构} $tF(S')\simeq\operatorname{Lie}(F/S)(S')$。让 $S'$ 变化，得到可记作 $\operatorname{Lie}(F/S)\simeq tF$ 的\Term{isomorphism}{同构}。故由 4.5，对 $S'\to S$，有\Term{commutative-diagram}{交换图}
+\[\begin{tikzcd}[column sep=small]
+\operatorname{End}_{\mathcal O_{S'}\text{-mod.}}(F_{S'})\arrow[r,"\sim"]&\operatorname{Hom}_{\mathcal O_{S'}\text{-mod.}}(F_{S'},tF_{S'})\arrow[r,"\sim"]\arrow[d,hook]&\operatorname{Lie}(\operatorname{Aut}_{\mathcal O_S\text{-mod.}}(F)/S)(S')\arrow[d,hook]\\
+&\operatorname{Aut}_{\mathcal O_{I_{S'}}\text{-mod.}}(F_{I_{S'}})\arrow[r,equal]&T_{\operatorname{Aut}_{\mathcal O_S\text{-mod.}}(F)/S}(S').
+\end{tikzcd}\]
+由 4.3 bis，每个 $X\in\operatorname{End}_{\mathcal O_{S'}\text{-mod.}}(F_{S'})$ 对应于 $\operatorname{Aut}_{\mathcal O_{I_{S'}}\text{-mod.}}(F_{I_{S'}})$ 中的 $\mathrm{id}+tX$。
+\end{SGAresult}
+\begin{SGAresult}{定义}{4.6}
+称 $S$ 上的\Term{group-functor}{群函子} $G$ 是\Term{good-group}{良好的}，若 $G/S$ 满足 (E)，且 $\operatorname{Lie}(G/S)$ 是\Term{good-module}{良好 $\mathcal O_S$ 模}。
+\end{SGAresult}
+注意，\Term{good-module}{良好 $\mathcal O_S$ 模} $F$ 也是\Term{good-group}{良好 $S$ 群}：$F/S$ 满足 (E)，且 $\operatorname{Lie}(F/S)\simeq F$ 是\Term{good-module}{良好 $\mathcal O_S$ 模}。\footnote{编者注（73）：增加了这句话。}
+\textbf{例 4.6.1。}若 $G$ \Term{representable}{可表}，则它\Term{good-group}{良好}。事实上，$G/S$ 满足 (E)，且 $\operatorname{Lie}(G/S)$ 形如 $V(\mathcal E)$，由 4.4.2 是\Term{good-module}{良好的}。
+\begin{SGAresult}{\Term{lemma}{引理}}{4.6.2}
+\footnote{编者注（74）：增加了此\Term{lemma}{引理}。}设 $S$ 上的\Term{group-functor}{群函子} $G$ 满足 $G/S$ 的 (E)，置 $F=\operatorname{Lie}(G/S)$。则 $F$ 满足 (E)，且\Term{abelian-group}{交换群}\Term{morphism}{态射} $d:F\to\operatorname{Lie}(F/S)$ 保持 $\mathcal O_S$ 模结构。因此 $G$ \Term{good-group}{良好}当且仅当 $F\to\operatorname{Lie}(F/S)$ 是\Term{bijection}{双射}。
+\end{SGAresult}
+\begin{proof}
+设 $G/S$ 满足 (E)，$M,N$ 是\Term{finite-rank}{有限秩}自由 $\mathcal O_S$ 模。记 $F(N)=\operatorname{Lie}(G/S,N)$，$e$ 为 $G$ 的单位\Term{section}{截面}。对 $S'\to S$，有 $F(N)(S')=\{g\in\operatorname{Hom}_S(I_{S'}(N),G)\mid g\circ\varepsilon_N=e\}$，而 $\operatorname{Lie}(F(N)/S,M)(S')$ 通过 $\operatorname{Hom}_S(I_{S'}(M),F(N))$ 等同于
+\[\left\{\Phi\in\operatorname{Hom}_S(I_{S'}(N)\times_{S'}I_{S'}(M),G)\ \middle|\ \begin{aligned}\Phi\circ(\varepsilon_N\times\mathrm{id}_{I_{S'}(M)})&=e\in G(I_{S'}(M)),\\\Phi\circ(\mathrm{id}_{I_{S'}(N)}\times\varepsilon_M)&=e\in G(I_{S'}(N))\end{aligned}\right\}.\]
+这表明
+\[\operatorname{Lie}(F(N)/S,M)\simeq\operatorname{Lie}(F(M)/S,N).\tag{1}\]
+因 $G/S$ 满足 (E)，得到
+\[\begin{aligned}
+\operatorname{Lie}(F(N)/S,M_1\oplus M_2)&\simeq\operatorname{Lie}(F(M_1\oplus M_2)/S,N)\\&\simeq\operatorname{Lie}((F(M_1)\times_SF(M_2))/S,N).
+\end{aligned}\]
+由 3.8，右边\Term{isomorphism}{同构}于
+\[\operatorname{Lie}(F(M_1)/S,N)\times_S\operatorname{Lie}(F(M_2)/S,N)\simeq\operatorname{Lie}(F(N)/S,M_1)\times_S\operatorname{Lie}(F(N)/S,M_2).\]
+\SourcePage{90}
+从而
+\[\operatorname{Lie}(F(N)/S,M_1\oplus M_2)\simeq\operatorname{Lie}(F(N)/S,M_1)\times_S\operatorname{Lie}(F(N)/S,M_2).\tag{2}\]
+由 4.1.1.2 a)，$F(N)/S$ 满足 (E)。
+现在证明\Term{abelian-group}{交换群}\Term{morphism}{态射} $d:F(N)\to\operatorname{Lie}(F(N)/S)$ 保持 $\mathcal O_S$ 模结构。取\Term{free-module}{自由模} $M=t\mathcal O_S$，则
+\[\mathcal O(I_{S'}(M))=\mathcal O(S')[t]/(t^2)=\mathcal O(S')\oplus t\mathcal O(S'),\quad\operatorname{Lie}(\mathcal O_S/S)\simeq t\mathcal O_S.\]
+记 $\rho_t:I_S(M)\to S$ 为\Term{structural-morphism}{结构态射}，对应于\Term{injectivity}{单射} $u_t:\mathcal O_S\hookrightarrow D_{\mathcal O_S}(M)=\mathcal O_S\oplus t\mathcal O_S$。回顾 3.4.2，对每个 $S$ \Term{functor}{函子} $X$，$F(N)(X)=\operatorname{Lie}(G/S,N)(X)$ 是满足 $\phi\circ\varepsilon_N=e$ 的 $S$ \Term{morphism}{态射} $\phi:I_X(N)\to G$ 的\Term{set}{集合}，而 $a\in\mathcal O(X)$ 的\Term{action}{作用}由 $a\cdot\phi=\phi\circ a^*$ 给出，$a^*$ 是 $a$ 对应的 $I_X(N)$ 的\Term{endomorphism}{自同态}，见 2.1.3。
+故由 4.3.4，\Term{morphism}{态射} $d:F(N)\xrightarrow{\sim}F(N)\otimes_{\mathcal O_S}t\mathcal O_S\to\operatorname{Lie}(F(N)/S)$ 由下式给出：对 $S'\to S$、$f\in\operatorname{Hom}_S(S',F(N))$，
+\[f\mapsto f\otimes t\mapsto t\cdot(f\circ\rho_t)=f\circ\rho_t\circ t^*,\]
+最后一项将 $f\circ\rho_t\in F(N)(I_{S'}(M))$ 看成 $S$ \Term{morphism}{态射} $\phi:I_{I_{S'}(M)}(N)\to G$（满足 $\phi\circ\varepsilon_N=e$）。须说明对 $a\in\mathcal O(S')$，$d(a\cdot f)=u_t(a)\cdot d(f)$。
+把 $f\in F(N)(S')$ 看成\Term{morphism}{态射} $I_{S'}(N)\to G$，同样有 $a\cdot f=f\circ a^*$。由 $\mathcal O(X)$ 对 $I_X(N)$ 的\Term{action}{作用}关于 $X$ 的\Term{functorial}{函子性}（2.1.3），有\Term{commutative-diagram}{交换图}
+\[\begin{tikzcd}
+I_{S'}(N)\arrow[r,"a^*"]&I_{S'}(N)\\
+I_{I_{S'}(M)}(N)\arrow[u,"\rho_t"]\arrow[r,"u_t(a)^*"']&I_{I_{S'}(M)}(N)\arrow[u,"\rho_t"'].
+\end{tikzcd}\]
+故
+\[\begin{aligned}
+d(a\cdot f)&=f\circ a^*\circ\rho_t\circ t^*=f\circ\rho_t\circ u_t(a)^*\circ t^*\\&=f\circ\rho_t\circ t^*\circ u_t(a)^*=u_t(a)\cdot d(f).
+\end{aligned}\]
+倒数第二个等号由 $\mathcal O$ 交换得到。\Term{lemma}{引理}得证。
+\end{proof}
+\begin{SGAresult}{\Term{theorem}{定理}}{4.7}
+若 $F$ 是\Term{good-module}{良好 $\mathcal O_S$ 模}，则 $S$ 群 $\operatorname{Aut}_{\mathcal O_S\text{-mod.}}(F)$ \Term{good-group}{良好}。
+\end{SGAresult}
+事实上，\footnote{编者注（75）：利用 4.3.1、4.5 的增补，简化了原文。}由 4.5，$\operatorname{Aut}_{\mathcal O_S\text{-mod.}}(F)/S$ 满足 (E)，且 $\operatorname{Lie}(\operatorname{Aut}_{\mathcal O_S\text{-mod.}}(F)/S)\simeq\operatorname{End}_{\mathcal O_S\text{-mod.}}(F)$ 是\Term{good-module}{良好 $\mathcal O_S$ 模}。
+\SourcePage{91}
+\textbf{4.7.1。}\footnote{编者注（76）：增加编号 4.7.1、4.7.2、4.7.3。}现在设 $G$ 是 $S$ 群，$F$ 是\Term{good-module}{良好 $\mathcal O_S$ 模}。给定 $G$ 在 $F$ 中的\Term{linear-representation}{线性表示}，即（I 4.7.1）$S$ \Term{group-morphism}{群态射}
+\[\rho:G\to\operatorname{Aut}_{\mathcal O_S\text{-mod.}}(F).\]
+若 $G/S$ 满足 (E)，由 4.1.C、4.5 得 $\mathcal O_S$ \Term{module-morphism}{模态射}，记为 $\rho'$ 或 $d\rho$：
+\[\operatorname{Lie}(G/S)\to\operatorname{Lie}(\operatorname{Aut}_{\mathcal O_S\text{-mod.}}(F)/S)\simeq\operatorname{End}_{\mathcal O_S\text{-mod.}}(F).\]
+此外，\footnote{编者注（77）：增加了后面这句话。}置 $\mathcal O_{I_S}=\mathcal O_S\oplus t\mathcal O_S$（$t^2=0$），由 4.5.1，对 $S'\to S$ 和 $X\in\operatorname{Lie}(G/S)(S')\subset G(I_{S'})$，在 $\operatorname{Aut}_{\mathcal O_{I_{S'}}\text{-mod.}}(F_{I_{S'}})$ 中有
+\[\rho(X)=\mathrm{id}+t\rho'(X).\tag{*}\]
+即对 $S''\to I_{S'}$、$f\in F(S'')$，在 $F(S'')$ 中有 $\rho(X)(f)=f+t\rho'(X)(f)$。
+\begin{SGAresult}{定义}{4.7.2}
+设 $G$ 是\Term{good-group}{良好 $S$ 群}。则 $\operatorname{Lie}(G/S)$ 是\Term{good-module}{良好 $\mathcal O_S$ 模}，且有 $S$ \Term{group-morphism}{群态射} $\operatorname{Ad}:G\to\operatorname{Aut}_{\mathcal O_S\text{-mod.}}(\operatorname{Lie}(G/S))$。由 4.7.1 得 $\mathcal O_S$ \Term{module-morphism}{模态射}
+\[\operatorname{ad}:\operatorname{Lie}(G/S)\to\operatorname{End}_{\mathcal O_S\text{-mod.}}(\operatorname{Lie}(G/S)),\]
+或\Term{equivalence}{等价}地，$\mathcal O_S$ \Term{bilinear-morphism}{双线性态射}
+\[\operatorname{Lie}(G/S)\times_S\operatorname{Lie}(G/S)\to\operatorname{Lie}(G/S),\qquad(x,y)\mapsto[x,y]=\operatorname{ad}(x)\cdot y,\]
+这里 $x,y$ 是 $\operatorname{Lie}(G/S)(S')=\operatorname{Lie}(G_{S'}/S')(S')$ 的任意元素。称 $[x,y]$ 为\Term{lie-bracket}{括号}。若 $G$ 交换，则 $[x,y]=0$。
+\end{SGAresult}
+\textbf{4.7.3。}还可如下\Term{equivalence}{等价}地定义\Term{lie-bracket}{括号}。只需对 $x,y\in\operatorname{Lie}(G/S)(S)$ 定义即可。有\Term{canonical-isomorphism}{典范同构} $I_S\times_SI_S\simeq I_{I_S}$。为免混淆，将 $I_S$ 的两份副本记为 $I,I'$，置 $\mathcal O_I=\mathcal O_S[t]$、$\mathcal O_{I'}=\mathcal O_S[t']$，其中 $t^2=0=t'^2$。有\Term{commutative-diagram}{交换图}
+\[\begin{tikzcd}
+I\times I'\arrow[r]\arrow[d]&I'\arrow[d]\\I\arrow[r]&S,
+\end{tikzcd}\]
+从 $I\times I'$ 出发的两条\Term{arrow}{箭头}将其分别等同于 $I$、$I'$ 上的\Term{dual-numbers}{对偶数}\Term{scheme}{概形}。由此得到群的\Term{commutative-diagram}{交换图}（记 $L=\operatorname{Lie}(G/S)$）：
+\SourcePage{92}
+\[\begin{tikzcd}
+&&1\arrow[d]&1\arrow[d]&\\
+&&L(I)\arrow[d]\arrow[r]&L(S)\arrow[d]\arrow[r]&1\\
+1\arrow[r]&L(I')\arrow[r]\arrow[d]&G(I\times I')\arrow[r]\arrow[d]&G(I')\arrow[r]\arrow[d]&1\\
+1\arrow[r]&L(S)\arrow[r]\arrow[d]&G(I)\arrow[r]\arrow[d]&G(S)\arrow[r]\arrow[d]&1\\
+&1&1&1&
+\end{tikzcd}\tag{1}\]
+这幅拼图的第九块正是 $\operatorname{Lie}(L/S)(S)$。若 $G$ \Term{good-group}{良好}，则它是 $L(S)$，于是有下述\Term{commutative-diagram}{交换图}，其行、列都是群的\Term{exact-sequence}{正合列}，五个 $L(\ )$ 都交换；\footnote{编者注（78）：展开了下面的原文。}在 $L(I)=L(S)\oplus tL(S)$（相应地 $L(I')=L(S)\oplus t'L(S)$）的等同下，\Term{injectivity}{单射} $L(S)\hookrightarrow L(I)$（相应地 $L(S)\hookrightarrow L(I')$）由 $u\mapsto tu$（相应地 $u\mapsto t'u$）给出：
+\[\begin{tikzcd}
+z\in L(S)\arrow[r,"t"]\arrow[d,"t'"']&L(I)\arrow[r]\arrow[d]&L(S)\ni x\arrow[d]\\
+L(I')\arrow[r]\arrow[d]&G(I\times I')\arrow[r]\arrow[d]&G(I')\arrow[d]\\
+y\in L(S)\arrow[r]&G(I)\arrow[r]&G(S).
+\end{tikzcd}\tag{2}\]
+在这样的图中，取图示的 $x,y$，任意将其分别\Term{lifting}{提升}为 $\widetilde x\in L(I)$、$y'\in L(I')$，则 $G(I\times I')$ 中的\Term{commutator}{交换子} $\widetilde xy'\widetilde x^{-1}y'^{-1}$ 不依赖\Term{lifting}{提升}的选择，并是某个图示元素 $z$ 的像。读者可验证 $z=[x,y]$。\footnote{编者注（79）：原文的脚注为：“（*）应 Gabriel 要求，撰稿人承认这个练习并非显然；这也正是它没有放进正文的原因。”现利用 4.7.1 的增补给出细节；另见 [DG70]，\S II.4，4.2。}
+事实上，仍将 $x$ 在\Term{canonical}{典范}\Term{section}{截面} $L(S)\to L(I)$ 下的像记为 $x$（对 $y$ 也一样）。则 $\widetilde x=xu$、$y'=yv$，其中 $u,v\in L(S)=L(I)\cap L(I')$。由于 $L(I)$、$L(I')$ 交换，
+\[\widetilde xy'\widetilde x^{-1}y'^{-1}=xuyvu^{-1}x^{-1}v^{-1}y^{-1}=xuyu^{-1}vx^{-1}v^{-1}y^{-1}=xyx^{-1}y^{-1}.\]
+\SourcePage{93}
+此外，此元素在 $G(I)$、$G(I')$ 中都映为\Term{identity-element}{单位元}，故来自图示的唯一 $z$。最后，将 $y$ 看成 $L_{I'}(I')$ 的元素，将 $x$ 看成 $L(S)\subset G(I')$ 的元素，由 4.7.1 $(*)$，
+\[xyx^{-1}=\operatorname{Ad}(x)(y)=(\mathrm{id}+t'\operatorname{ad}(x))(y)=y+t'[x,y].\]
+故 $L(I')$ 中的 $xyx^{-1}y^{-1}$ 是 $L(S)$ 中 $z=[x,y]$ 的像。
+此构造显出两个性质：
+(i) \Term{lie-bracket}{括号}“关于 $G$ \Term{functorial}{函子性}”；确切地，$G\mapsto\operatorname{Lie}(G/S)$ 是从\Term{good-group}{良好 $S$ 群}\Term{category}{范畴}到赋予 $\mathcal O_S$ \Term{bilinear}{双线性}\Term{composition-law}{合成律}的\Term{good-module}{良好 $\mathcal O_S$ 模}\Term{category}{范畴}的\Term{functor}{函子}。
+(ii) $[x,y]+[y,x]=0$，因为该图关于主\Term{diagonal}{对角线}对称。\footnote{编者注（80）：即 $x,y$ 的地位对称：$[y,x]$ 在 $G(I\times I')$ 中的像是\Term{commutator}{交换子} $y'\widetilde xy'^{-1}\widetilde x^{-1}$，为 $\widetilde xy'\widetilde x^{-1}y'^{-1}=[x,y]$ 的逆。另一方面（见后文 4.10），尚不知是否必有 $[x,x]=0$：若将 $x$ 分别看成 $\widetilde x\in L(I)$ 和 $x'\in L(I')$，先验并不清楚 $\widetilde x,x'$ 是否交换。}
+\begin{SGAresult}{命题}{4.8}
+设 $F$ 是\Term{good-module}{良好 $\mathcal O_S$ 模}。在等同
+$\operatorname{Lie}(\operatorname{Aut}_{\mathcal O_S\text{-mod.}}(F)/S)=\operatorname{End}_{\mathcal O_S\text{-mod.}}(F)$ 下，
+\[\operatorname{Ad}(g)\cdot Y=g\circ Y\circ g^{-1},\qquad[X,Y]=X\circ Y-Y\circ X,\]
+对所有 $S'\to S$、$g\in\operatorname{Aut}_{\mathcal O_{S'}\text{-mod.}}(F_{S'})$、$X,Y\in\operatorname{Lie}(\operatorname{Aut}_{\mathcal O_S\text{-mod.}}(F)/S)(S')=\operatorname{End}_{\mathcal O_{S'}\text{-mod.}}(F_{S'})$ 成立。
+\end{SGAresult}
+\begin{proof}
+\footnote{编者注（81）：展开并简化了下面的原文。}作\Term{base-change}{基变换}，归结为 $S'=S$，以简化记号。置 $I=I_S$、$\mathcal O_I=\mathcal O_S[t]$（$t^2=0$）。回顾 4.5.1，包含映射 $i:\operatorname{End}_{\mathcal O_S\text{-mod.}}(F)\hookrightarrow\operatorname{Aut}_{\mathcal O_I\text{-mod.}}(F_I)$ 将 $Y$ 映为 $\mathrm{id}+tY$。由 4.1.A 中 $\operatorname{Ad}(g)$ 的定义，
+\[\mathrm{id}+t\operatorname{Ad}(g)(Y)=g\circ(\mathrm{id}+tY)\circ g^{-1}=\mathrm{id}+t(g\circ Y\circ g^{-1}),\]
+故 $\operatorname{Ad}(g)(Y)=g\circ Y\circ g^{-1}$。
+令 $I'$ 是 $I_S$ 的第二份副本，$\mathcal O_{I'}=\mathcal O_S[t']$（$t'^2=0$）。将 4.7.3 应用于 $G=\operatorname{Aut}_{\mathcal O_S\text{-mod.}}(F)$ 和 $L=\operatorname{Lie}(G/S)=\operatorname{Aut}_{\mathcal O_S\text{-mod.}}(F)$。把 $X$ 与它在\Term{canonical}{典范}\Term{section}{截面} $L(S)\hookrightarrow L(I)$ 下的像等同；它在 $G(I\times I')$ 中的像是 $\mathrm{id}+t'X$，逆为 $\mathrm{id}-t'X$。同样，$Y$ \Term{lifting}{提升}为 $\mathrm{id}+tY$，逆为 $\mathrm{id}-tY$。于是\Term{commutator}{交换子}
+\[(\mathrm{id}+t'X)\circ(\mathrm{id}+tY)\circ(\mathrm{id}-t'X)\circ(\mathrm{id}-tY)=\mathrm{id}+tt'(X\circ Y-Y\circ X)\]
+是 $L(S)$ 的元素 $Z=X\circ Y-Y\circ X$ 在 $G(I\times I')$ 中的像（$Z$ 先映为 $tZ\in L(I)$，再映为 $\mathrm{id}+t'tZ$）。由 4.7.3，$[X,Y]=X\circ Y-Y\circ X$。
+\end{proof}
+\SourcePage{94}
+\begin{SGAresult}{推论}{4.8.1}
+设 $G$ 是\Term{good-group}{良好 $S$ 群}，$x,y,z\in\operatorname{Lie}(G/S)(S')$。则
+\[[x,[y,z]]+[y,[z,x]]+[z,[x,y]]=0.\]
+\end{SGAresult}
+事实上，\footnote{编者注（82）：展开了下面的原文。}因 $G$ \Term{good-group}{良好}，$\operatorname{Lie}(G/S)$ 是\Term{good-module}{良好 $\mathcal O_S$ 模}，故由 4.7，$\operatorname{Aut}_{\mathcal O_S\text{-mod.}}(\operatorname{Lie}(G/S))$ 是\Term{good-group}{良好 $S$ 群}。由 4.7.3 (i) 的\Term{functorial}{函子性}，$S$ \Term{group-morphism}{群态射} $\operatorname{Ad}:G\to\operatorname{Aut}_{\mathcal O_S\text{-mod.}}(\operatorname{Lie}(G/S))$ 给出 $\operatorname{ad}[x,y]=[\operatorname{ad}x,\operatorname{ad}y]$。结合 4.8，得
+\[\operatorname{ad}[x,y]=[\operatorname{ad}x,\operatorname{ad}y]=\operatorname{ad}x\circ\operatorname{ad}y-\operatorname{ad}y\circ\operatorname{ad}x.\]
+将它应用于 $z$ 即得 Jacobi 关系。
+\begin{SGAresult}{推论}{4.8.2}
+设\Term{good-group}{良好 $S$ 群} $G$ \Term{linear-action}{线性作用}于\Term{good-module}{良好 $\mathcal O_S$ 模} $F$（即 $F$ 是 $G$-$\mathcal O_S$ 模，$G,F$ 都良好）。则\Term{linear}{线性}映射 $\rho':\operatorname{Lie}(G/S)\to\operatorname{End}_{\mathcal O_S\text{-mod.}}(F)$ 是一个表示，即
+\[\rho'([x,y])=\rho'(x)\circ\rho'(y)-\rho'(y)\circ\rho'(x).\]
+\end{SGAresult}
+\begin{SGAresult}{说明}{4.9}
+对每个\Term{good-group}{良好 $S$ 群}（例如\Term{representable}{可表}群），已关联\Term{good-module}{良好 $\mathcal O_S$ 模} $\operatorname{Lie}(G/S)$，\Term{functorial}{函子性}地赋予一个\Term{bilinear}{双线性}映射，满足
+\[[x,y]+[y,x]=0,\qquad[x,[y,z]]+[y,[z,x]]+[z,[x,y]]=0.\]
+称赋予此结构的 $\operatorname{Lie}(G/S)$ 为 $G$ 在 $S$ 上的“\Term{lie-algebra}{Lie 代数}”（引号的原因是尚不知它严格说来是否为 $\mathcal O_S$ \Term{lie-algebra}{Lie 代数}\footnote{编者注（83）：因为尚不知 $[x,x]=0$，见下文 4.10。}）。$G$ 在\Term{good-module}{良好 $\mathcal O_S$ 模} $F$ 中的每个\Term{linear-representation}{线性表示}对应于其“\Term{lie-algebra}{Lie 代数}”的一个表示。特别，$G$ 的\Term{adjoint-representation}{伴随表示}对应于其“\Term{lie-algebra}{Lie 代数}”的\Term{adjoint-representation}{伴随表示}。
+\end{SGAresult}
+\begin{SGAresult}{定义}{4.10}
+称 $S$ 上的\Term{group-functor}{群函子} $G$ 是\Term{very-good-group}{很好}的，若它\Term{good-group}{良好}，且 $\operatorname{Lie}(G/S)$ 是 $\mathcal O_S$ \Term{lie-algebra}{Lie 代数}（即恒有 $[x,x]=0$）。
+\end{SGAresult}
+\textbf{例 4.10.1。}下列 $S$ 群\Term{very-good-group}{很好}：对\Term{good-module}{良好 $\mathcal O_S$ 模} $F$ 的 $\operatorname{Aut}_{\mathcal O_S\text{-mod.}}(F)$（4.7、4.8）；所有\Term{representable}{可表}群（见下文）；所有具有到\Term{very-good-group}{很好 $S$ 群}的\Term{monomorphism}{单态射}的\Term{good-group}{良好 $S$ 群}，例如\Term{representable}{可表}群的所有\Term{good-group}{良好}\Term{subgroup}{子群}\Term{functor}{函子}，或在\Term{good-module}{良好 $\mathcal O_S$ 模}中有忠实\Term{linear-representation}{线性表示}的\Term{good-group}{良好 $S$ 群}，例如 $\operatorname{Ad}$ 是\Term{monomorphism}{单态射}的\Term{good-group}{良好 $S$ 群}……
+\SourcePage{95}
+\textbf{4.11。}现在假设 $G$ 是 $S$ 上的群\Term{scheme}{概形}。由 4.1.4，$\operatorname{Lie}(G/S)(S)$ 等同于 $G/S$ 的\Term{right-invariant}{右不变}\Term{infinitesimal-automorphism}{无穷小自同构}群，即由 3.14，等同于 $\mathcal O_G$ 在 $\mathcal O_S$ 上的\Term{right-translation}{右平移}\Term{invariant}{不变}\Term{derivation}{导子}群。此外，此等同保持模结构，且是 \Term{lie-algebra}{Lie 代数}的\Term{anti-isomorphism}{反同构}。\footnote{编者注（84）：修正了原文的\Term{signature}{符号}错误，见 [DG70]，\S II.4，4.4、4.6。}这可仿照 4.7.3 看出：置 $\mathcal O_I=\mathcal O_S[t]$、$\mathcal O_{I'}=\mathcal O_S[t']$，取 $x\in L(I)$、$y\in L(I')$。\Term{left-translation}{左平移} $\lambda_x$（相应地 $\lambda_y$）是 $G_{I\times I'}$ 的 $S$ \Term{automorphism}{自同构}，在 $G_{I'}$（相应地 $G_I$）上诱导恒等，并对应于
+\[\mathcal O_{G_{I\times I'}}=\mathcal O_G[t,t']/(t^2,t'^2)\]
+的 $\mathcal O_S$ \Term{automorphism}{自同构} $u=\mathrm{id}+td_x$（相应地 $v=\mathrm{id}+t'd_y$），其中 $d_x,d_y$ 是 $\mathcal O_G$ 的\Term{right-translation}{右平移}\Term{invariant}{不变} $\mathcal O_S$ \Term{derivation}{导子}。由于这两类\Term{automorphism}{自同构}之间的对应是\Term{contravariant}{反变}的，$\lambda_x\lambda_y\lambda_x^{-1}\lambda_y^{-1}$ 对应于
+\[v^{-1}u^{-1}vu=\mathrm{id}+tt'(d_yd_x-d_xd_y).\]
+由 4.7.3，$x\mapsto-d_x$ 是 \Term{lie-algebra}{Lie 代数}\Term{isomorphism}{同构}（细节见 [DG70]，\S II.4，4.4、4.6）。这对所有 $S'\to S$ 的 $\operatorname{Lie}(G/S)(S')=\operatorname{Lie}(G_{S'}/S')(S')$ 都成立。因此得到经典定义：\footnote{编者注（85）：展开了下文，特别增加 4.11.1--4.11.8 的编号，以供后续引用。}
+\begin{SGAresult}{说明}{4.11.1}
+经由 $x\mapsto-d_x$ 的\Term{isomorphism}{同构}，$\operatorname{Lie}(G/S)$ 等同于将 $S$ 上每个 $S'$ 对应于 $G_{S'}$ 相对于 $S'$ 的\Term{right-translation}{右平移}\Term{invariant}{不变}\Term{derivation}{导子}所组成的 $\mathcal O(S')$ \Term{lie-algebra}{Lie 代数}的\Term{functor}{函子}。
+\end{SGAresult}
+由 4.6.1 已知\Term{representable}{可表}群\Term{good-group}{良好}，结合以上得：
+\begin{SGAresult}{推论}{4.11.2}
+所有\Term{representable}{可表}群都\Term{very-good-group}{很好}。
+\end{SGAresult}
+设 $\varepsilon:S\to G$ 是单位\Term{section}{截面}。置 $\omega^1_{G/S}=\varepsilon^*(\Omega^1_{G/S})$。回顾 3.3，$\operatorname{Lie}(G/S)$ 由\Term{vector-fibration}{向量纤维化} $V(\omega^1_{G/S})$ 表示。
+\begin{SGAresult}{说明}{4.11.3}
+对每个 $S$ 群\Term{scheme}{概形} $G$，\Term{functorial}{函子性}地关联 $S$ 上的\Term{vector-fibration}{向量纤维化} $\operatorname{Lie}(G/S)=V(\omega^1_{G/S})$；它表示\Term{functor}{函子} $\operatorname{Lie}(G/S)$，因此具有 $\mathcal O_S$ \Term{lie-algebra}{Lie 代数}的 $S$ \Term{scheme}{概形}结构。此外（3.4、3.8），此构造与\Term{base-extension}{基底扩张}及\Term{finite-product}{有限积}交换。
+\end{SGAresult}
+\textbf{注记 4.11.4。}\footnote{编者注（86）：考虑到第 I 讲 \S 6.8 的增补，展开了下文。}记 $\pi:G\to S$。
+a) $\mathcal O_G$ 模 $\Omega^1_{G/S}$ 显然是 $(G\times_SG)$ \Term{equivariant}{等变}的（I \S 6），故由 I 6.8.1，有 $\Omega^1_{G/S}\simeq\pi^*(\omega^1_{G/S})$。由此，例如，若 $\omega^1_{G/S}$ \Term{locally-free}{局部自由}（相应地\Term{locally-free-finite-type}{有限型局部自由}），则 $\Omega^1_{G/S}$ 也如此。特别，$S$ 是域的谱时（相应地再假设 $G$ 在 $S$ 上\Term{locally-finite-type}{局部有限型}），这总成立。
+\SourcePage{96}
+b) 此外，由 I 6.8.2，$\omega^1_{G/S}$ 具有\Term{canonical}{典范}的 $G$-$\mathcal O_S$ 模结构，在 $V(\omega^1_{G/S})=\operatorname{Lie}(G/S)$ 上诱导\Term{adjoint-action}{伴随作用}。\footnote{编者注（87）：因此，$G$ 在 $\omega^1_{G/S}$ 上的\Term{linear-action}{线性作用}可称为“预\Term{adjunction}{伴随}”\Term{action}{作用}；实际上仍滥用术语称为“\Term{adjoint-action}{伴随作用}”。这里给出稍一般的构造，第 III 讲（特别 III 0.8）将使用它。假设对每个 $Y\to S$ 给定 $\mathcal O_Y$ 模 $N(Y)$，对每个 $S$ \Term{morphism}{态射} $\phi:Z\to Y$ 给定关于 $\phi$ \Term{functorial}{函子性}的 $\mathcal O_Z$ \Term{module-morphism}{模态射} $N(\phi):\phi^*N(Y)\to N(Z)$（例如 $\mathcal J$ 是 $\mathcal O_S$ 的\Term{quasi-coherent}{拟凝聚}\Term{ideal}{理想}，置 $N(Y)=\mathcal J\mathcal O_Y$，见第 III 讲）。则 $G$ 对 $\omega^1_{G/S}$ 的\Term{action}{作用}在将 $f:Y\to S$ 对应于 $\operatorname{Hom}_{\mathcal O_Y}(f^*\omega^1_{G/S},N(Y))$ 的\Term{abelian-group}{交换群} $S$ \Term{functor}{函子}上，诱导一个（广义）“\Term{adjoint-action}{伴随作用}”。}
+
+c) 另一方面（EGA I 5.3.11、5.4.6），$\varepsilon$ 是\Term{immersion}{浸入}；若 $G$ 在 $S$ 上\Term{separated}{分离}，则是\Term{closed-immersion}{闭浸入}。故 $\omega^1_{G/S}$ 等同于 $\mathcal I/\mathcal I^2$，其中 $\mathcal I$ 是在 $G$ 的一个使 $\varepsilon(S)$ 闭合的\Term{open-subset}{开集} $U$ 中定义 $\varepsilon(S)$ 的\Term{quasi-coherent}{拟凝聚}\Term{ideal}{理想}。若 $G\to S$ \Term{separated}{分离}，可取 $U=G$；若 $G=\operatorname{Spec}\mathcal A(G)$ 在 $S$ 上\Term{affine}{仿射}，则 $\mathcal I$ 就是 $\mathcal A(G)$ 的\Term{augmentation-ideal}{增广理想}，即 $\varepsilon^\sharp:\mathcal A(G)\to\mathcal O_S$ 的核（I 4.2）。\footnote{编者注（88）：增加了上述 $\omega^1_{G/S}$ 的描述，供后文（如 VIIA 5.5）使用。}
+
+\textbf{注记 4.11.5。}由 $\Omega^1_{G/S}\simeq\pi^*(\omega^1_{G/S})$ 可得，$\mathcal O_S$ 模 $\omega^1_{G/S}$ 等同于“$G$ 相对于 $S$ 的\Term{right-invariant}{右不变}\Term{differential}{微分}”\Term{sheaf}{层} $\pi_*^G(\Omega^1_{G/S})$，即在 $S$ 的\Term{open-subset}{开集} $U$ 上的\Term{section}{截面}是在 $\pi^{-1}(U)$ 上\Term{right-translation}{右平移}\Term{invariant}{不变}的 $\Omega^1_{G/S}$ 的\Term{section}{截面}的\Term{sheaf}{层}（I 6.8.3；另比较 VIIA 2.4）。\footnote{编者注（89）：后文不使用这一通过\Term{invariant}{不变}\Term{differential}{微分}描述 $\omega^1_{G/S}$ 的方式。}
+
+\textbf{记号 4.11.6。}以 $\mathscr{L}\mathrm{ie}(G/S)$ 表示\Term{vector-fibration}{向量纤维化} $\operatorname{Lie}(G/S)\to S$ 的\Term{section}{截面}\Term{sheaf}{层}；它是 $\omega^1_{G/S}$ 的\Term{duality}{对偶} $\mathcal O_S$ 模
+$(\omega^1_{G/S})^\vee=\mathcal Hom_{\mathcal O_S}(\omega^1_{G/S},\mathcal O_S)$（EGA II 1.7.9），具有 $\mathcal O_S$ \Term{lie-algebra}{Lie 代数}结构。
+由于此构造一般不与\Term{base-extension}{基底扩张}交换，这个模上的 \Term{lie-algebra}{Lie 代数}结构不能重建 $\operatorname{Lie}(G/S)$ 上 $\mathcal O_S$ \Term{lie-algebra}{Lie 代数}的 $S$ \Term{scheme}{概形}结构。\footnote{编者注（90）：因为 $\mathscr{L}\mathrm{ie}(G/S)\simeq(\omega^1_{G/S})^\vee$ 未必确定 $\omega^1_{G/S}$。例如 $S=\mathbb A^1_k$（$k$ 为域），$G$ 是在 $s=0$ 的\Term{fiber}{纤维}为 $\mathbb G_{a,k}$、其余\Term{fiber}{纤维}为\Term{unit-group}{单位群}的 $S$ 群，则 $\mathscr{L}\mathrm{ie}(G/S)=0$，但 $\operatorname{Lie}(G_s/k)(k)=k$。}然而有：
+\begin{SGAresult}{\Term{lemma}{引理}}{4.11.7}
+假设 $\omega^1_{G/S}$ \Term{locally-free-finite-type}{有限型局部自由}（特别，若 $G$ 在 $S$ 上\Term{smooth}{光滑}，见 EGA IV$_4$ 17.2.4；或 $S$ 是域的谱且 $G$ 在 $S$ 上\Term{locally-finite-type}{局部有限型}，就有此性质）。则 $\mathscr{L}\mathrm{ie}(G/S)^\vee\simeq(\omega^1_{G/S})^{\vee\vee}\simeq\omega^1_{G/S}$，因而
+\[\operatorname{Lie}(G/S)=V(\omega^1_{G/S})=V(\mathscr{L}\mathrm{ie}(G/S)^\vee)=W(\mathscr{L}\mathrm{ie}(G/S)),\]
+最后一个等号由 I 4.6.5.1 得到。
+\end{SGAresult}
+\SourcePage{97}
+最后，设 $G\to H$ 是\Term{group-functor}{群函子}的\Term{monomorphism}{单态射}，则 $\operatorname{Lie}(G/S)\to\operatorname{Lie}(H/S)$ 也是\Term{monomorphism}{单态射}（3.7）。由于\Term{vector-fibration}{向量纤维化}的每个向量\Term{monomorphism}{单态射}都是\Term{closed-immersion}{闭浸入}，\footnote{编者注（91）：设 $f:\mathcal M\to\mathcal N$ 是 $\mathcal O_S$ \Term{module-morphism}{模态射}，$\mathcal P=\operatorname{Coker}(f)$。若 $V(\mathcal N)\to V(\mathcal M)$ 是\Term{monomorphism}{单态射}，则\Term{surjectivity}{满射} $\operatorname{Sym}(\mathcal N)\to\operatorname{Sym}(\mathcal P)$ 经过 $\mathcal O_S$ \Term{resolution}{分解}，故 $\mathcal P=0$。}得到：
+\begin{SGAresult}{推论}{4.11.8}
+设 $G\hookrightarrow H$ 是 $S$ 群\Term{scheme}{概形}的\Term{monomorphism}{单态射}。
+(i) $\operatorname{Lie}(G/S)\to\operatorname{Lie}(H/S)$ 是\Term{closed-immersion}{闭浸入}，故 $\omega^1_{H/S}\to\omega^1_{G/S}$ 是\Term{epimorphism}{满态射}。
+(ii) 若 $\omega^1_{G/S}$ \Term{locally-free-finite-type}{有限型局部自由}，则相应\Term{morphism}{态射} $\mathscr{L}\mathrm{ie}(G/S)\to\mathscr{L}\mathrm{ie}(H/S)$ 将 $\mathscr{L}\mathrm{ie}(G/S)$ \Term{isomorphism}{同构}到 $\mathscr{L}\mathrm{ie}(H/S)$ 的一个\Term{local-scheme}{局部}\Term{direct-summand}{直和因子}\Term{submodule}{子模}。
+\end{SGAresult}
+\SGAsection{5}{若干 Lie 代数的计算}
+\textbf{5.1。\Term{lie-algebra}{Lie 代数}的例子：\Term{diagonalizable-group}{可对角化群}。}设 $G=D_S(M)$ 是 $S$ 上的\Term{diagonalizable-group}{可对角化群}（I 4.4）。由于 $\operatorname{Lie}(G/S)$ 的形成与\Term{base-extension}{基底扩张}交换，只需对 $G=D(M)$ 作此构造。此时
+\[G(I_S)=\operatorname{Hom}_{\mathrm{gr.}}(M,\Gamma(I_S,\mathcal O_{I_S})^\times)=\operatorname{Hom}_{\mathrm{gr.}}(M,\Gamma(S,D_{\mathcal O_S})^\times).\]
+有\Term{splitting}{分裂}\Term{exact-sequence}{正合列}
+\[1\to\Gamma(S,\mathcal O_S)\to\Gamma(S,D_{\mathcal O_S})^\times\to\Gamma(S,\mathcal O_S)^\times\to1.\]
+由此 $\operatorname{Lie}(G)(S)$ 等同于赋予显然的 $\mathcal O(S)$ 模结构的 $\operatorname{Hom}_{\mathrm{gr.}}(M,\mathcal O(S))$。作\Term{base-change}{基变换}后得到：
+\begin{SGAresult}{命题}{5.1}
+有\Term{isomorphism}{同构}
+\[\operatorname{Hom}_{S\text{-gr.}}(M_S,\mathcal O_S)\xrightarrow{\sim}\operatorname{Lie}(D_S(M)/S),\qquad\mathcal Hom_{\mathrm{gr.}}(\widetilde M_S,\mathcal O_S)\xrightarrow{\sim}\mathscr{L}\mathrm{ie}(D_S(M)/S),\]
+第二式中 $\widetilde M_S$ 为 $M$ 定义的 $S$ 上的\Term{constant-group}{常群}\Term{sheaf}{层}，$\mathcal Hom_{\mathrm{gr.}}$ 为群\Term{sheaf}{层}\Term{homomorphism}{同态}的\Term{sheaf}{层}。
+\end{SGAresult}
+\begin{SGAresult}{推论}{5.1.1}
+若 $M$ 是\Term{finite-type}{有限型}\Term{free-group}{自由群}（用后面的术语，$D_S(M)$ 是\Term{split-torus}{分裂环面}），则（$W$ 的定义见 I 4.6.5）
+\[W(\mathscr{L}\mathrm{ie}(D_S(M)/S))\xrightarrow{\sim}\operatorname{Lie}(D_S(M)/S),\qquad M^\vee\otimes_{\mathbb Z}\mathcal O_S\xrightarrow{\sim}\mathscr{L}\mathrm{ie}(D_S(M)/S),\]
+其中 $M^\vee$ 为\Term{abelian-group}{交换群} $M$ 的\Term{duality}{对偶}。特别，
+\[\mathcal O_S\xrightarrow{\sim}\operatorname{Lie}(\mathbb G_{m,S}/S),\qquad\mathcal O_S\xrightarrow{\sim}\mathscr{L}\mathrm{ie}(\mathbb G_{m,S}/S).\]
+\end{SGAresult}
+\textbf{5.2。\Term{normalizer}{正规化子}与\Term{centralizer}{中心化子}。}先证几个\Term{lemma}{引理}。回顾 I 3.1.1，称 $\mathcal O_S$ 模列 $0\to F'\to F\to F''\to0$ \Term{exact-sequence}{正合}，若对每个 $S'\to S$，$\mathcal O(S')$ 模列 $0\to F'(S')\to F(S')\to F''(S')\to0$ \Term{exact}{正合}。
+\SourcePage{98}
+同样，称 $S$ 群列 $1\to G'\to G\to G''\to1$ \Term{exact-sequence}{正合}，若对每个 $S'\to S$，群列 $1\to G'(S')\to G(S')\to G''(S')\to1$ \Term{exact}{正合}。
+\begin{SGAresult}{\Term{lemma}{引理}}{5.2.1}
+\footnote{编者注（92）：展开了\Term{lemma}{引理}的陈述及证明，供 5.3.1 使用。}设 $1\to G'\to G\to G''\to1$ 是 $S$ 群的\Term{exact-sequence}{正合列}。
+(i) 列 $1\to T_{G'/S}(M)\to T_{G/S}(M)\to T_{G''/S}(M)\to1$ 及
+\[1\to\operatorname{Lie}(G'/S,M)\to\operatorname{Lie}(G/S,M)\to\operatorname{Lie}(G''/S,M)\to1\]
+均\Term{exact-sequence}{正合}。
+(ii) 设 $1\to H'\to H\to H''\to1$ 为另一群列。它\Term{exact-sequence}{正合}当且仅当
+\[1\to G'\times_SH'\to G\times_SH\to G''\times_SH''\to1\]
+\Term{exact-sequence}{正合}。
+(iii) 若 $G',G,G''$ 中两个满足 (E)，则第三个也满足 (E)。
+(iv) 若 $0\to F'\to F\to F''\to0$ 是 $\mathcal O_S$ 模的\Term{exact-sequence}{正合列}，且 $F',F,F''$ 中两个\Term{good-module}{良好}，则第三个也\Term{good-module}{良好}。
+(v) 若 $G',G,G''$ 中两个\Term{good-group}{良好}，则第三个也\Term{good-group}{良好}。
+\end{SGAresult}
+(i) 第一部分显然，第二部分随即得到。(ii) 同样显然。证明 (iii)：\footnote{编者注（93）：增加了 (iii)、(v) 的证明。}简记 $L(M)=\operatorname{Lie}(G,M)$、$L'(M)=\operatorname{Lie}(G',M)$ 等。有\Term{commutative-diagram}{交换图}
+\[\begin{tikzcd}[column sep=small]
+1\arrow[r]&L'(M\oplus N)\arrow[r]\arrow[d]&L(M\oplus N)\arrow[r]\arrow[d]&L''(M\oplus N)\arrow[r]\arrow[d]&1\\
+1\arrow[r]&L'(M)\times_SL'(N)\arrow[r]&L(M)\times_SL(N)\arrow[r]&L''(M)\times_SL''(N)\arrow[r]&1.
+\end{tikzcd}\]
+第一行由 (i) \Term{exact}{正合}，第二行由 (i)、(ii) \Term{exact}{正合}，(iii) 随即得到。
+证明 (iv)：有\Term{commutative-diagram}{交换图}
+\[\begin{tikzcd}[column sep=small]
+0\arrow[r]&F'\otimes_{\mathcal O_S}T_{\mathcal O_S/S}(M)\arrow[r]\arrow[d]&F\otimes_{\mathcal O_S}T_{\mathcal O_S/S}(M)\arrow[r]\arrow[d]&F''\otimes_{\mathcal O_S}T_{\mathcal O_S/S}(M)\arrow[r]\arrow[d]&0\\
+0\arrow[r]&T_{F'/S}(M)\arrow[r]&T_{F/S}(M)\arrow[r]&T_{F''/S}(M)\arrow[r]&0.
+\end{tikzcd}\]
+两行均\Term{exact-sequence}{正合}：第一行因 $T_{\mathcal O_S/S}(M)$ 是自由故\Term{flat}{平坦}的 $\mathcal O_S$ 模，第二行由 (i)。所以若三个模中两个\Term{good-module}{良好}，第三个也\Term{good-module}{良好}。最后，(v) 由 (iii)、(iv) 得到。
+\begin{SGAresult}{\Term{lemma}{引理}}{5.2.2}
+设 $G$ 是 $S$ 群，$E,H$ 是 $G$ \Term{object}{对象}，$F$ 是 $G$-$\mathcal O_S$ 模。
+(i) \Term{canonical-homomorphism}{典范同态} $E^G\times_SH^G\to(E\times_SH)^G$ 是\Term{isomorphism}{同构}。
+(ii) 若 $F$ 是\Term{good-module}{良好 $\mathcal O_S$ 模}，则 $F^G$ 也是。
+\end{SGAresult}
+\SourcePage{99}
+第一断言显然。证明第二断言：\footnote{编者注（94）：展开了下面的原文。}对 $S'\to S$，有\Term{commutative-diagram}{交换图}
+\[\begin{tikzcd}
+F^G(I_{S'}(M))\arrow[r,hook]&F(I_{S'}(M))\\
+F^G(S')\otimes_{\mathcal O(S')}\mathcal O(I_{S'}(M))\arrow[u,"\phi"]\arrow[r,hook]&F(S')\otimes_{\mathcal O(S')}\mathcal O(I_{S'}(M))\arrow[u,"\simeq\ \phi_1"'].
+\end{tikzcd}\]
+须证 $\phi$ 为\Term{bijection}{双射}；它显然为\Term{injectivity}{单射}，故只需证满。设 $(t_0,\ldots,t_n)$ 为自由 $\mathcal O(S')$ 模 $\mathcal O(I_{S'}(M))$ 的基，取
+\[u=\sum_{i=0}^nf_i\otimes t_i\in F(S')\otimes_{\mathcal O(S')}\mathcal O(I_{S'}(M)),\]
+使 $\phi_1(u)\in F^G(I_{S'}(M))$。须证 $f_i\in F^G(S')$。给定 $S''\to S'$，通过零\Term{section}{截面} $\varepsilon_M$ 将 $S''$ 看成在 $I_{S'}(M)$ 上。对所有 $g\in G(S'')$，
+\[u_{S''}=g\cdot u_{S''}=\sum_{i=0}^ng\cdot(f_i)_{S''}\otimes(t_i)_{S''}.\]
+由于 $(t_i)_{S''}$ 是 $\mathcal O(I_{S''}(M))\simeq\mathcal O(I_{S'}(M))\otimes_{\mathcal O(S')}\mathcal O(S'')$ 在 $\mathcal O(S'')$ 上的基，得到 $g\cdot(f_i)_{S''}=(f_i)_{S''}$，故每个 $f_i\in F^G(S')$。
+
+\textbf{记号。}\footnote{编者注（95）：展开了这些记号。}若 $E$ 是 $S$ 群，$F$ 是其子 $S$ 群，记 $E/F$ 为将 $S'\to S$ 对应于陪集\Term{set}{集合} $E(S')/F(S')=\{\bar x=xF(S')\mid x\in E(S')\}$ 的 $S$ \Term{functor}{函子}。若 $E$ 交换，则 $E/F$ 是交换 $S$ 群。
+现在设 $G$ 是 $S$ 群，$K$ 是其子 $S$ 群，置 $E=\operatorname{Lie}(G/S,M)$、$F=\operatorname{Lie}(K/S,M)$。$K$ 在 $E$ 上的\Term{adjoint-action}{伴随作用}保持 $F$，故在 $S$ \Term{functor}{函子} $E/F$ 上\Term{induced-action}{诱导作用}。于是对 $S'\to S$，
+\[(E/F)^K(S')=\{\bar x\in E(S')/F(S')\mid f^*(x^{-1})\operatorname{Ad}(k)(f^*(x))\in F(S''),\ \forall f:S''\to S',\ k\in K(S'')\},\]
+其中 $f^*(x)$ 为 $x$ 在 $E(S'')$ 中的像。
+\begin{SGAresult}{\Term{theorem}{定理}}{5.2.3}
+设 $G$ 是 $S$ 群，$K$ 是其子 $S$ 群。记（I 2.3.3）
+\[N=\operatorname{Norm}_G(K),\qquad Z=\operatorname{Centr}_G(K).\]
+通过 $G$ 的\Term{adjoint-representation}{伴随表示}，令 $K$ \Term{action}{作用}于 $\operatorname{Lie}(G/S,M)$。
+\SourcePage{100}
+(i) 若 $\operatorname{Lie}(G/S,M)$ 的群律交换，\footnote{原注（*）：若 $G$ 满足 (E)（3.9），此条件自动成立，例如 $G$ \Term{representable}{可表}时如此。编者注（96）：$S$ 群 $\operatorname{Lie}(G/S)$ 不交换的例子见 6.3。}则
+\[\operatorname{Lie}(N/S,M)/\operatorname{Lie}(K/S,M)=(\operatorname{Lie}(G/S,M)/\operatorname{Lie}(K/S,M))^K.\]
+(ii) 若 $\operatorname{Lie}(G/S,M)$ 的群律交换，则
+\[\operatorname{Lie}(Z/S,M)=\operatorname{Lie}(G/S,M)^K.\]
+(iii) 若 $G$ 满足 (E)，则 $Z$ 满足 (E)；相应地，若 $G,K$ 满足 (E)，则 $N$ 满足 (E)。
+(iv) 若 $G$ \Term{good-group}{良好}，则 $Z$ \Term{good-group}{良好}；若进一步 $G$ \Term{very-good-group}{很好}，则 $Z$ \Term{very-good-group}{很好}。
+(v) 若 $G,K$ \Term{good-group}{良好}，则 $N$ \Term{good-group}{良好}；若进一步 $G$ \Term{very-good-group}{很好}，则 $N$ \Term{very-good-group}{很好}。
+\end{SGAresult}
+证明 (i)、(ii) 时使用下述\Term{lemma}{引理}，\footnote{编者注（97）：展开了证明，特别增加原文隐含的\Term{lemma}{引理} 5.2.3.0。}它由 4.1.B 的\Term{exact-sequence}{正合列}图（交换 $G,H$ 的位置）得到。
+\begin{SGAresult}{\Term{lemma}{引理}}{5.2.3.0}
+设 $G$ 是 $S$ 群，$H$ 是其子 $S$ 群，$M$ 是\Term{finite-type}{有限型}自由 $\mathcal O_S$ 模。则 $T_{H/S}(M)$、$\operatorname{Lie}(G/S,M)$ 是 $T_{G/S}(M)$ 的子 $S$ 群，并有
+\[T_{H/S}(M)\cap\operatorname{Lie}(G/S,M)=\operatorname{Lie}(H/S,M),\]
+其中交集定义为 $T_{H/S}(M)\times_{T_{G/S}(M)}\operatorname{Lie}(G/S,M)$。
+\end{SGAresult}
+由于 (i)、(ii) 中各\Term{functor}{函子}都与\Term{base-extension}{基底扩张}交换，只需证明 $S$ 点的等式。置 $H=N$（相应地 $H=Z$），$\alpha=\pm1$。由\Term{lemma}{引理}及 $N,Z$ 的定义（I 2.3.3），$\operatorname{Lie}(H/S,M)(S)$ 等于满足下列条件的 $X\in\operatorname{Lie}(G/S,M)(S)\subset G(I_S(M))$ 的\Term{set}{集合}：对所有 $f:S'\to I_S(M)$、$u\in K(S')$，
+\[f^*(X^\alpha)u f^*(X^{-\alpha})u^{-1}\in K(S'),\quad\text{相应地 }f^*(X)u f^*(X^{-1})u^{-1}=1.\tag{*}\]
+$f^*(X)$ 表示 $X$ 在 $G(S')$ 中的像。简记
+\[\mathfrak g=\operatorname{Lie}(G/S,M),\quad\mathfrak k=\operatorname{Lie}(K/S,M),\quad\mathfrak n=\operatorname{Lie}(N/S,M),\quad\mathfrak z=\operatorname{Lie}(Z/S,M).\]
+若 $X\in\operatorname{Lie}(H/S,M)(S)$，则 $(*)$ 对所有 $f:S'\to S$ 都适用，因为 $f=\rho\circ\varepsilon_M\circ f$ 经过 $I_S(M)$ \Term{resolution}{分解}（$\rho:I_S(M)\to S$ 为\Term{structural-morphism}{结构态射}，$\varepsilon_M:S\to I_S(M)$ 为零\Term{section}{截面}）。故
+\[\mathfrak n(S)/\mathfrak k(S)\subset(\mathfrak g/\mathfrak k)^K(S),\qquad\mathfrak z(S)\subset\mathfrak g^K(S).\]
+\SourcePage{101}
+为证反向包含，现假设 $\mathfrak g=\operatorname{Lie}(G/S,M)$ 交换；于是 $\mathfrak g^K$、$(\mathfrak g/\mathfrak k)^K$ 是交换 $S$ 群。取 $X\in\mathfrak g(S)$，$\bar X$ 为其在 $(\mathfrak g/\mathfrak k)(S)$ 中的像。假设 $\bar X\in(\mathfrak g/\mathfrak k)^K(S)$（相应地 $X\in\mathfrak g^K(S)$），须证 $X\in\mathfrak n(S)$（相应地 $X\in\mathfrak z(S)$）。
+取 $f:S'\to I_S(M)$；须对每个 $u\in K(S')$ 证 $(*)$。考虑\Term{cartesian}{笛卡尔图}
+\[\begin{tikzcd}
+I_{S'}(M)\arrow[r,"p"]\arrow[d,"\rho'"']&I_S(M)\arrow[d,"\rho"]\\S'\arrow[r,"\rho\circ f"']&S,
+\end{tikzcd}\]
+令 $h$ 为 $f$ 确定的 $\rho'$ 的\Term{section}{截面}。只需对所有 $v\in K(I_{S'}(M))$ 证
+\[p^*(X^\alpha)v p^*(X^{-\alpha})v^{-1}\in K(I_{S'}(M)),\quad\text{相应地 }p^*(X)v p^*(X^{-1})v^{-1}=1.\tag{**}\]
+事实上，取 $v=\rho'^*(u)$，将 $h^*$ 应用于 $(**)$，因 $\rho'\circ h=\mathrm{id}_{S'}$、$p\circ h=f$，便得 $(*)$。
+现在证明 $(**)$，简写 $X$ 代替 $p^*(X)$。每个 $v\in K(I_{S'}(M))$ 唯一写成 $Yk$，其中 $Y\in\operatorname{Lie}(K/S,M)(S')$、$k\in K(S')$。表达式 $X^\alpha uX^{-\alpha}u^{-1}$ 于是变成 $X^\alpha Y(kX^{-\alpha}k^{-1})Y^{-1}$，因 $\operatorname{Lie}(G/S,M)$ 交换，等于 $X^\alpha\operatorname{Ad}(k)(X^{-\alpha})$。它先验属于 $\operatorname{Lie}(G/S,M)(S')$，故由 5.2.3.0，条件 $(**)$ 化为对每个 $k\in K(S')$，
+\[\begin{cases}\operatorname{Ad}(k)(X)=X,&H=Z,\\X^\alpha\operatorname{Ad}(k)(X^{-\alpha})\in\operatorname{Lie}(K/S,M)(S'),&H=N.\end{cases}\]
+$H=Z$ 时，这由 $X\in\mathfrak g^K(S)$ 得到。$H=N$ 时，条件也可写为
+\[\operatorname{Ad}(k)(\bar X)=\bar X,\qquad\operatorname{Ad}(k)(\overline{X^{-1}})=\overline{X^{-1}}.\tag{*'}\]
+第二式由第一式得到，因为 $K$ 在 $\mathfrak g/\mathfrak k$ 上的\Term{action}{作用}保持\Term{group-structure}{群结构}。因此 $H=N$ 时，$(**)$ 也由 $\bar X\in(\mathfrak g/\mathfrak k)^K(S)$ 得到。(i)、(ii) 得证。
+为证 (iii)--(v)，记 $\mathfrak g(M)=\operatorname{Lie}(G/S,M)$，并类似定义 $\mathfrak k(M),\mathfrak z(M),\mathfrak n(M)$。若 $G/S$ 满足 (E)，则 $\mathfrak g(M\oplus N)\simeq\mathfrak g(M)\times_S\mathfrak g(N)$，故由 5.2.2 (i)，
+\[\mathfrak g(M\oplus N)^K\simeq\mathfrak g(M)^K\times_S\mathfrak g(N)^K.\]
+\SourcePage{102}
+于是 $\mathfrak z(M\oplus N)\simeq\mathfrak z(M)\times_S\mathfrak z(S)$，故 $Z$ 满足 (E)。若进一步 $K/S$ 满足 (E)，依次有\Term{isomorphism}{同构}
+\[(\mathfrak g/\mathfrak k)(M\oplus N)\simeq(\mathfrak g/\mathfrak k)(M)\times_S(\mathfrak g/\mathfrak k)(N),\]
+\[(\mathfrak g/\mathfrak k)^K(M\oplus N)\simeq(\mathfrak g/\mathfrak k)(M)^K\times_S(\mathfrak g/\mathfrak k)(N)^K,\]
+以及\Term{commutative-diagram}{交换图}
+\[\begin{tikzcd}[column sep=small]
+0\arrow[r]&\mathfrak k(M\oplus N)\arrow[r]\arrow[d,"\simeq"']&\mathfrak n(M\oplus N)\arrow[r]\arrow[d]&(\mathfrak n/\mathfrak k)(M\oplus N)\arrow[r]\arrow[d,"\simeq"]&0\\
+0\arrow[r]&\mathfrak k(M)\times_S\mathfrak k(N)\arrow[r]&\mathfrak n(M)\times_S\mathfrak n(N)\arrow[r]&(\mathfrak n/\mathfrak k)(M)\times_S(\mathfrak n/\mathfrak k)(N)\arrow[r]&0.
+\end{tikzcd}\]
+由此 $\mathfrak n(M\oplus N)\simeq\mathfrak n(M)\times_S\mathfrak n(N)$，故 $N$ 满足 (E)。
+现在记 $\mathfrak g=\mathfrak g(\mathcal O_S)=\operatorname{Lie}(G/S)$，并类似定义 $\mathfrak k,\mathfrak z,\mathfrak n$。若 $G$ \Term{good-group}{良好}，则 $\mathfrak g$ 是\Term{good-module}{良好 $\mathcal O_S$ 模}，由 5.2.2 (ii)，$\mathfrak z\simeq\mathfrak g^K$ 也是，故 $Z$（由 (iii) 满足 (E)）\Term{good-group}{良好}。若 $K$ 也\Term{good-group}{良好}，则 $\mathfrak k$ 是\Term{good-module}{良好 $\mathcal O_S$ 模}，由 5.2.1 (iv)、5.2.2 (ii)，$\mathfrak g/\mathfrak k$、$(\mathfrak g/\mathfrak k)^K$ 也如此。结合\Term{exact-sequence}{正合列}
+\[0\to\mathfrak k\to\mathfrak n\to(\mathfrak g/\mathfrak k)^K\to0,\]
+再由 5.2.1 (iv)，$\mathfrak n$ \Term{good-module}{良好}。最后，若再假设 $G$ \Term{very-good-group}{很好}，即对所有 $x\in\mathfrak g$ 恒有 $[x,x]=0$，则显然 $Z,N$ 都\Term{very-good-group}{很好}。这证明了 (iii)、(iv)、(v)。
+\begin{SGAresult}{推论}{5.2.3.1}
+若 $\operatorname{Lie}(G/S)$ 的群律交换，则 $\operatorname{Lie}(\operatorname{Centr}(G)/S)=\operatorname{Lie}(G/S)^G$。
+\end{SGAresult}
+\begin{SGAresult}{推论}{5.2.3.2}
+若 $\operatorname{Lie}(G/S)$ 的群律交换，且 $K$ 是 $G$ 的\Term{normal-subgroup}{正规子群}，则
+\[(\operatorname{Lie}(G/S)/\operatorname{Lie}(K/S))^K=\operatorname{Lie}(G/S)/\operatorname{Lie}(K/S).\]
+\end{SGAresult}
+\textbf{5.3。\Term{linear-representation}{线性表示}。}设\Term{good-group}{良好 $S$ 群} $G$ 通过 $\rho:G\to\operatorname{Aut}_{\mathcal O_S\text{-mod.}}(F)$ \Term{linear-action}{线性作用}于\Term{good-module}{良好 $\mathcal O_S$ 模} $F$。已在 4.7.1、4.8.2 定义相应的\Term{linear-representation}{线性表示}
+\[\rho':\operatorname{Lie}(G/S)\to\operatorname{End}_{\mathcal O_S\text{-mod.}}(F).\]
+对 $F$ 的每个\Term{subset}{子集} $E$，例如每个 $\mathcal O_S$ \Term{submodule}{子模} $E$，已定义子 $S$ 群 $\operatorname{Norm}_G(E)$、$\operatorname{Centr}_G(E)$。
+\SourcePage{103}
+\begin{SGAresult}{定义}{5.3.0}
+类似地，对 $S'\to S$，置
+\[\operatorname{Norm}_{\operatorname{Lie}(G/S)}(E)(S')=\{X\in\operatorname{Lie}(G/S)(S')\mid\rho'(X)E_{S'}\subset E_{S'}\},\]
+\[\operatorname{Centr}_{\operatorname{Lie}(G/S)}(E)(S')=\{X\in\operatorname{Lie}(G/S)(S')\mid\rho'(X)E_{S'}=0\}.\]
+注意，对 $\mathcal O_S$ “\Term{lie-algebra}{Lie 代数}”（4.9 的意义下）的任意\Term{linear-representation}{线性表示}都可作此构造，所得两个\Term{subobject}{子对象}是对\Term{lie-bracket}{括号}\Term{stable}{稳定}的 $\mathcal O_S$ \Term{submodule}{子模}。
+\end{SGAresult}
+\begin{SGAresult}{\Term{theorem}{定理}}{5.3.1}
+设\Term{good-group}{良好 $S$ 群} $G$ \Term{linear-action}{线性作用}于\Term{good-module}{良好 $\mathcal O_S$ 模} $F$，$E$ 是 $F$ 的 $\mathcal O_S$ \Term{submodule}{子模}。
+(i) $\operatorname{Lie}(\operatorname{Centr}_G(E)/S)=\operatorname{Centr}_{\operatorname{Lie}(G/S)}(E)$，且 $\operatorname{Centr}_G(E)$ 是\Term{good-group}{良好 $S$ 群}；若 $G$ \Term{very-good-group}{很好}，它也\Term{very-good-group}{很好}。
+(ii) 假设 $E$ 是\Term{good-module}{良好 $\mathcal O_S$ 模}。则 $\operatorname{Lie}(\operatorname{Norm}_G(E)/S)=\operatorname{Norm}_{\operatorname{Lie}(G/S)}(E)$，且 $\operatorname{Norm}_G(E)$ 是\Term{good-group}{良好 $S$ 群}；若 $G$ \Term{very-good-group}{很好}，它也\Term{very-good-group}{很好}。\footnote{编者注（98）：修正了原文：原文无关于 $E$ 的假设就陈述了此等式；反例见 6.5.1。}
+\end{SGAresult}
+证明留给读者。
+\textbf{5.3.2。}设 $G$ 是\Term{good-group}{良好 $S$ 群}。特别取 $\rho$ 为 $G$ 的\Term{adjoint-representation}{伴随表示}，以上结果适用。对 $\operatorname{Lie}(G/S)$ 的\Term{good-module}{良好}\Term{submodule}{子模} $E$，\footnote{编者注（99）：增加了此假设，见 6.5.1。}可关联 $G$ 的两个\Term{subgroup}{子群}，即其\Term{centralizer}{中心化子}与\Term{normalizer}{正规化子}。由 5.3.1，它们的\Term{lie-algebra}{Lie 代数}分别是 $E$ 在 $\operatorname{Lie}(G/S)$ 中的\Term{centralizer}{中心化子}和\Term{normalizer}{正规化子}，可照常用\Term{lie-bracket}{括号}计算：
+\[\operatorname{Centr}_{\operatorname{Lie}(G/S)}(E)(S')=\{X\in\operatorname{Lie}(G/S)(S')\mid[X,E_{S'}]=0\},\]
+\[\operatorname{Norm}_{\operatorname{Lie}(G/S)}(E)(S')=\{X\in\operatorname{Lie}(G/S)(S')\mid[X,E_{S'}]\subset E_{S'}\}.\]
+\textbf{5.3.3。}设 $K$ 是 $G$ 的子 $S$ 群，则 $\operatorname{Lie}(K/S)$ 是 $\operatorname{Lie}(G/S)$ 的 $\mathcal O_S$ \Term{submodule}{子模}。假设 $\operatorname{Lie}(K/S)$ 是\Term{good-module}{良好 $\mathcal O_S$ 模}（若 $K$ 是\Term{good-group}{良好 $S$ 群}即如此）。\footnote{编者注（99，同上）：增加了此假设，见 6.5.1。}显然
+\[\operatorname{Centr}_G(K)\subset\operatorname{Centr}_G(\operatorname{Lie}(K/S)),\qquad\operatorname{Norm}_G(K)\subset\operatorname{Norm}_G(\operatorname{Lie}(K/S)).\]
+由 5.3.1，
+\[\operatorname{Lie}(\operatorname{Centr}_G(K)/S)\subset\operatorname{Centr}_{\operatorname{Lie}(G/S)}(\operatorname{Lie}(K/S)),\]
+\[\operatorname{Lie}(\operatorname{Norm}_G(K)/S)\subset\operatorname{Norm}_{\operatorname{Lie}(G/S)}(\operatorname{Lie}(K/S)).\]
+这四个包含关系先验均未必是等式；后面将看到许多例子。特别，由这些包含可知，若 $K$ 是 $G$ 的\Term{normal-subgroup}{正规子群}，则 $\operatorname{Lie}(K/S)$ 是 $\operatorname{Lie}(G/S)$ 的\Term{ideal}{理想}。
+\SourcePage{104}
+\SGAsection{6}{若干注记}
+\textbf{6.1。}对于未必为群的 $S$ \Term{functor}{函子} $X$，也可以定义两个\Term{infinitesimal-automorphism}{无穷小自同构}的\Term{lie-bracket}{括号}。只需将本讲结果应用于群 $\operatorname{Aut}_S(X)$。为得到方便的\Term{form}{形式}体系，自然要假设 $X$ 良好，即假设 $\mathcal O_X$ 模 $T_{X/S}$ \Term{good-module}{良好}（若 $X$ 是 $S$ 群，此定义显然与定义 4.6 一致）。
+
+\textbf{6.2。}有些\Term{functor}{函子}具有并非\Term{automorphism}{自同构}的\Term{infinitesimal-endomorphism}{无穷小自同态}，因而更不满足 (E)。\footnote{编者注（100）：展开了下文。特别，“\Term{pointed-set}{带基点集合}上的自由交换\Term{monoid}{幺半群}”的正确定义由 O. Gabber 告知。}对\Term{pointed-set}{带基点集合} $(E,x_0)$，令 $\operatorname{MA}(E)$ 为 $E$ 生成的自由交换\Term{monoid}{幺半群}，$\operatorname{MAP}(E,x_0)$ 为用关系 $m\sim x_0+m$ 生成的\Term{equivalence-relation}{等价关系}对 $\operatorname{MA}(E)$ 取商所得交换\Term{monoid}{幺半群}。于是 $(E,x_0)\mapsto\operatorname{MAP}(E,x_0)$ 是从交换\Term{monoid}{幺半群}\Term{category}{范畴}到\Term{pointed-set}{带基点集合}\Term{category}{范畴}的\Term{forgetful-functor}{遗忘函子}的\Term{left-adjoint}{左伴随}；称 $\operatorname{MAP}(E,x_0)$ 为“\Term{pointed-set}{带基点集合} $(E,x_0)$ 上的自由交换\Term{monoid}{幺半群}”。
+取 $X$ 为将每个\Term{scheme}{概形} $S$ 对应于以零为\Term{base-point}{基点}的\Term{set}{集合} $\mathcal O(S)$ 上的自由交换\Term{monoid}{幺半群}的\Term{functor}{函子}。每个\Term{morphism}{态射} $f:S\to I_{\mathbb Z}=\operatorname{Spec}(\mathbb Z[\varepsilon])$ 对应于 $\mathcal O(S)$ 中平方为零的元素 $u_f$，从而由 $x\mapsto x+u_f$（在 $\operatorname{MAP}(\mathcal O(S),0)$ 中的和）定义 $X(S)$ 的\Term{endomorphism}{自同态}。由此得到 $X_{I_{\mathbb Z}}=X\times_{\mathbb Z}I_{\mathbb Z}$ 的\Term{endomorphism}{自同态} $\phi$：对 $f\in I_{\mathbb Z}(S)$、$x\in X(S)$，
+\[\phi((x,f))=(x+u_f,f).\]
+若 $f_0:S\to I_{\mathbb Z}$ 为\Term{structural-morphism}{结构态射} $S\to\operatorname{Spec}(\mathbb Z)$ 与 $I_{\mathbb Z}$ 的零\Term{section}{截面}的复合，则 $u_{f_0}=0$，从而 $\phi((x,f_0))=(x,f_0)$，因为在 $\operatorname{MAP}(\mathcal O(S),0)$ 中 $x+0=x$。这表明 $\phi$ 在 $X$ 上诱导恒等，故是 $X$ 的\Term{infinitesimal-endomorphism}{无穷小自同态}，却显然不是\Term{automorphism}{自同构}。
+
+\textbf{6.3。}存在不\Term{good-module}{良好}的模。一方面，略微修改上一反例：\footnote{编者注（101）：增加了后面的内容。}令 $F(S)$ 为以 $\mathcal O(S)$ 的元素为基的自由 $\mathcal O(S)$ 模，则 $F$ 相对于 $\operatorname{Spec}(\mathbb Z)$ 不满足 (E)。此外，设 $G$ 为由 $G(S)=\operatorname{GL}_n(R(S))$ 定义的 $\mathbb Z$ 群，其中 $n\geq2$，$R(S)$ 为\Term{abelian-group}{交换群} $\mathcal O(S)$ 的 $\mathcal O(S)$ \Term{group-algebra}{群代数}，则 $\mathbb Z$ 群 $\operatorname{Lie}(G/\mathbb Z)$ 不交换。
+另一方面，还可给出以下反例。\footnote{编者注（102）：下文展开了例 a)，增加了例 b)。}设 $S=\operatorname{Spec}(k)$，$k$ 为\Term{characteristic}{特征} $p>0$ 的域。
+a) 令 $F$ 为将每个 $S$ \Term{scheme}{概形} $T$ 对应于 $F(T)=\Gamma(T,\mathcal O_T)$ 的 $\mathcal O_S$ 模，其中标量通过 $p$ 次幂\Term{action}{作用}，即 $r\cdot f=r^pf$（$r\in\mathcal O(T)$、$f\in F(T)$）。作为 $S$ 上的\Term{group-functor}{群函子}，$F$ \Term{isomorphism}{同构}于 $\mathbb G_{a,S}$。故 $F/S$ 满足 (E)，$\operatorname{Lie}(F/S)$ 等同于 $\operatorname{Lie}(\mathbb G_{a,S}/S)\simeq\mathcal O_S$。于是对每个 $T\to S$，\Term{canonical-morphism}{典范态射} $F\to\operatorname{Lie}(F/S)$ 是
+\SourcePage{105}
+\Term{identity-map}{恒等映射} $F(T)\to\mathcal O(T)$；它保持\Term{abelian-group}{交换群}结构，却不保持模结构。因此 $F$ 不\Term{good-module}{良好}（4.4.1）。
+
+b) 令 $\alpha_{p,k}$ 为将每个 $S$ \Term{scheme}{概形} $T$ 对应于
+\[\alpha_{p,k}(T)=\{x\in\mathcal O(T)\mid x^p=0\}\]
+的 $k$ 上的\Term{group-functor}{群函子}。它由 $\operatorname{Spec}(k[X]/(X^p))$ 表示，故是\Term{very-good-group}{很好 $S$ 群}；它也具有 $\mathcal O_S$ 模结构，但不是\Term{good-module}{良好 $\mathcal O_S$ 模}，因为\Term{canonical-morphism}{典范态射} $\alpha_{p,k}\to\operatorname{Lie}(\alpha_{p,k}/k)=\mathbb G_{a,k}$ 不是\Term{bijection}{双射}。
+
+\textbf{6.4。}设 $G$ 是 $S$ 上的\Term{group-functor}{群函子}。由定义有
+\[(G/S\text{ 满足 (E)})\ \Longleftarrow\ (G\text{ 良好})\ \Longleftarrow\ (G\text{ 很好}).\]
+\footnote{编者注（103）：若 $G$ \Term{representable}{可表}，则它\Term{very-good-group}{很好}（4.11）。\Term{representability}{可表性}判据例如见 [MO67]。另一方面，对\Term{affine-algebraic-group}{仿射代数群}（在\Term{characteristic}{特征} $0$ 的\Term{algebraically-closed-field}{代数闭域}上）的\Term{automorphism}{自同构}，可引 [HM69]。}证明反向蕴含或给出反例将是有趣的。
+
+\textbf{6.5。}\footnote{编者注（104）：增加了这一段。}设 $\operatorname{Nil}$ 为以下定义的 $\mathbb Z$ 上的\Term{group-functor}{群函子}：对每个\Term{scheme}{概形} $S$，$\operatorname{Nil}(S)$ 是 $\mathcal O(S)$ 的\Term{nilpotent-element}{幂零元素}组成的\Term{ideal}{理想}，即
+\[\operatorname{Nil}(S)=\{x\in\mathcal O(S)\mid\text{存在 }n\in\mathbb N\text{ 使 }x^n=0\}.\]
+注意 $\operatorname{Nil}$ \Term{very-good-group}{很好}，但不\Term{representable}{可表}。令 $\operatorname{Nil}^2$、$\mathcal O_{\text{réd}}$、$F$ 为分别将每个\Term{scheme}{概形} $S$ 对应于 $\operatorname{Nil}(S)^2$ 以及
+\[\mathcal O_{\text{réd}}(S)=\mathcal O(S)/\operatorname{Nil}(S),\qquad F(S)=\mathcal O(S)/\operatorname{Nil}(S)^2\]
+的 $\mathbb Z$ 上的\Term{group-functor}{群函子}。容易看出 $\operatorname{Lie}(\mathcal O_{\text{réd}}/\mathbb Z)=0$，故 $\mathcal O_{\mathbb Z}$ 模 $\mathcal O_{\text{réd}}$ 不\Term{good-module}{良好}（虽然它是\Term{good-group}{良好 $\mathbb Z$ 群}）。若 $M,N$ 是\Term{finite-rank}{有限秩}自由 $\mathbb Z$ 模，则
+\[\operatorname{Nil}^2(I_S(M\oplus N))\simeq\operatorname{Nil}^2(S)\oplus\operatorname{Nil}(S)\otimes_{\mathbb Z}M\oplus\operatorname{Nil}(S)\otimes_{\mathbb Z}N,\]
+从而
+\[F(I_S(M\oplus N))\simeq F(S)\oplus\mathcal O_{\text{réd}}(S)\otimes_{\mathbb Z}M\oplus\mathcal O_{\text{réd}}(S)\otimes_{\mathbb Z}N.\]
+一方面，由此 $\mathbb Z$ 上的\Term{group-functor}{群函子} $F$ 满足 (E)；另一方面，$\operatorname{Lie}(F/\mathbb Z)=\mathcal O_{\text{réd}}$，后者不是\Term{good-module}{良好 $\mathcal O_{\mathbb Z}$ 模}。故 $F$ 是满足 (E) 却不\Term{good-group}{良好}的 $\mathbb Z$ 群的例子。
+
+\textbf{6.5.1。}再给出 5.3.1--5.3.3 所述反例。设 $S$ 是\Term{scheme}{概形}，$F$ 为赋予\Term{good-group}{良好 $S$ 群} $G=\operatorname{GL}_{2,S}$ 的自然\Term{action}{作用}的\Term{good-module}{良好 $\mathcal O_S$ 模} $\mathcal O_S^{\oplus2}$，$E$ 为 $F$ 中由 $x_2$ \Term{nilpotent}{幂零}的对 $(x_1,x_2)$ 组成的 $\mathcal O_S$ \Term{submodule}{子模}。置 $N=\operatorname{Norm}_G(E)$。则 $\operatorname{Lie}(N/S)=\operatorname{Lie}(G/S)$，而对 $S'\to S$，
+\[\operatorname{Norm}_{\operatorname{Lie}(G/S)}(E)(S')=\left\{\begin{pmatrix}a&b\\x&c\end{pmatrix}\ \middle|\ a,b,c,x\in\mathcal O(S'),\ x\text{ 幂零}\right\},\]
+所以 $\operatorname{Lie}(\operatorname{Norm}_G(E)/S)\ne\operatorname{Norm}_{\operatorname{Lie}(G/S)}(E)$。
+\SourcePage{106}
+考虑\Term{semidirect-product}{半直积} $G_1=F\cdot G$，即得类似的反例，其中 $E$ 是 $\operatorname{Lie}(G_1/S)$ 的 $\mathcal O_S$ \Term{submodule}{子模}。此外，用上面引入的记号，有 $E=\operatorname{Lie}(K/S)$，其中 $K$ 是 $F$ 的\Term{subgroup}{子群} $\mathcal O_S\oplus\operatorname{Nil}^2$（即对 $S'\to S$，$K(S')$ 由满足 $x_2\in\operatorname{Nil}(S')^2$ 的对 $(x_1,x_2)$ 组成）。
+
+\textbf{参考文献}\footnote{编者注（105）：本讲引用的增补参考文献。}
+\begin{description}
+\item[{[DG70]}] M. Demazure、P. Gabriel，\emph{Groupes Algébriques}（《\Term{algebraic-group}{代数群}》），Masson \& North-Holland，1970。
+\item[{[HM69]}] G. Hochschild、G. D. Mostow，\emph{Automorphisms of affine algebraic groups}（《\Term{affine-algebraic-group}{仿射代数群}的\Term{automorphism}{自同构}》），J. Algebra \textbf{13} (1969)，535--543。
+\item[{[MO67]}] H. Matsumura、F. Oort，\emph{Representability of group functors and automorphisms of algebraic schemes}（《\Term{group-functor}{群函子}的\Term{representability}{可表性}与\Term{algebraic-scheme}{代数概形}的\Term{automorphism}{自同构}》），Invent. math. \textbf{4} (1967)，1--25。
+\end{description}

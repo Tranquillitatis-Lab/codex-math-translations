@@ -1,0 +1,664 @@
+\SGAchapter{IX}{乘法型群：到群概形的同态}{Groupes de type multiplicatif : homomorphismes dans un schéma en groupes}
+\begin{center}A. Grothendieck\end{center}
+\SourcePage{31}
+\SGAsection{1}{定义}
+\begin{SGAresult}{定义}{1.1}
+设 $S$ 是\Term{prescheme}{预概形}，$G$ 是 $S$ 上的\Term{group-prescheme}{群预概形}。若 $G$ 在\Term{fpqc-topology}{忠实平坦拟紧拓扑}意义下\Term{locally-diagonalizable}{局部可对角化}（参见第 IV 讲 6.3），就称 $G$ 为\Term{multiplicative-type}{乘法型群}；也就是说，对每个 $s\in S$，存在 $s$ 的\Term{open-neighborhood}{开邻域} $U$ 和\Term{faithfully-flat}{忠实平坦}且\Term{quasi-compact}{拟紧}的\Term{morphism}{态射} $S'\to U$，使 $G'=G\times_S S'$ 是\Term{diagonalizable}{可对角化}的 $S'$-群（第 I 讲 4.4 及第 VIII 讲 1.1）。
+
+若 $G$ 甚至在\Term{etale-topology}{平展拓扑}意义下\Term{locally-diagonalizable}{局部可对角化}（第 IV 讲 6.3），就称它是\Term{quasi-isotrivial}{拟等平凡}的\Term{multiplicative-type}{乘法型群}。即在上述定义中，甚至可取 $S'\to U$ 为\Term{etale}{平展}\Term{surjective}{满射}；\Term{equivalence}{等价}地，存在\Term{etale}{平展}\Term{surjective}{满射} $S'\to S$，使 $G'=G\times_S S'$ 是\Term{locally-diagonalizable}{局部可对角化}的 $S'$-群（对各 $s\in S$ 所对应的 $S'$ 取\Term{disjoint-union}{不交并概形}，即可看出这两种条件\Term{equivalence}{等价}）。
+
+若甚至能选取\Term{etale}{平展}、\Term{surjective}{满}且\Term{finite}{有限}的 $S'\to S$，就称 $G$ 是\Term{isotrivial}{等平凡}的\Term{multiplicative-type}{乘法型群}。
+
+最后，若每个 $s\in S$ 都有\Term{open-neighborhood}{开邻域} $U$，使 $G\times_S U$ 是\Term{diagonalizable}{可对角化}的 $U$-群（分别地，\Term{isotrivial}{等平凡}的\Term{multiplicative-type}{乘法型群}，即存在\Term{etale}{平展}、\Term{surjective}{满}且\Term{finite}{有限}的\Term{morphism}{态射} $S'\to U$，使 $G\times_S S'$ 是\Term{diagonalizable}{可对角化}的 $S'$-群），则称 $G$ 是\Term{locally-trivial}{局部平凡}（分别地，\Term{locally-isotrivial}{局部等平凡}）的\Term{multiplicative-type}{乘法型群}。
+\end{SGAresult}
+\textbf{说明 1.2。}上述五个概念都由\Term{diagonalizable}{可对角化群}的概念，对 $(\mathrm{Sch})$ 上五种不同的“\Term{topology}{拓扑}”施行\Term{localization}{局部化}而得到。
+
+我们通常约定，“\Term{local-scheme}{局部}”一词若不明确说明所指的\Term{topology}{拓扑}，就指 Zariski \Term{topology}{拓扑}，这与通行术语一致。因此，这里“\Term{locally-trivial}{局部平凡}的\Term{multiplicative-type}{乘法型群}”\Term{equivalence}{等价}于第 VIII 讲 1.1 中的“\Term{locally-diagonalizable}{局部可对角化群}”，\footnote{版本 1.0，2009 年 11 月 8 日：在 3.6 bis 的证明、4.4--7、5.0--6、6.1、7.1、8.2 中增补。待重审 8.1 和 4.5。}
+\SourcePage{32}
+同样，“\Term{trivial}{平凡}”就是“\Term{diagonalizable}{可对角化}”。上述五个概念间，由有关\Term{topology}{拓扑}的相应关系可得以下蕴涵图：
+\[
+\begin{tikzcd}[column sep=small,row sep=small]
+&\text{一般的乘法型} &\\
+&\text{拟等平凡}\arrow[u,Rightarrow]&\\
+&\text{局部等平凡}\arrow[u,Rightarrow]&\\
+\text{等平凡}\arrow[ur,Rightarrow]&&\text{局部平凡}\arrow[ul,Rightarrow]\\
+&\text{平凡}\arrow[ul,Rightarrow]\arrow[ur,Rightarrow]&
+\end{tikzcd}
+\]
+从实际应用看，先指出我们遇到的所有\Term{multiplicative-type}{乘法型群}都将是\Term{quasi-isotrivial}{拟等平凡}的。下一讲（第 X 讲 4.5）将证明，$G$ 在 $S$ 上\Term{finite-type}{有限型}时，自动\Term{quasi-isotrivial}{拟等平凡}；但也将给出它不\Term{locally-isotrivial}{局部等平凡}的例子。同样，$G$ 可以\Term{locally-trivial}{局部平凡}却既不\Term{isotrivial}{等平凡}，更不\Term{trivial}{平凡}（由此容易\Term{pushout}{推出}上图中的包含均为严格包含）。
+
+另一方面，下一讲（第 X 讲 5.16）还将证明，若 $S$ \Term{locally-noetherian}{局部诺特}且\Term{normal}{正规}（更一般地，\Term{geometrically-unibranch}{几何单分支}），则每个在 $S$ 上\Term{finite-type}{有限型}的\Term{multiplicative-type}{乘法型群}必定\Term{isotrivial}{等平凡}；并且一旦\Term{locally-trivial}{局部平凡}（甚至只要在某个\Term{dense-open}{稠密开集}上\Term{trivial}{平凡}），它就\Term{trivial}{平凡}。这说明实际中遇到的大多数\Term{multiplicative-type}{乘法型群}大概都会\Term{isotrivial}{等平凡}；我们后面还将证明，\Term{semisimple-group-scheme}{半单群概形}的\Term{maximal-torus}{极大环面}自动\Term{isotrivial}{等平凡}。
+\begin{SGAresult}{定义}{1.3}
+设 $S,G$ 如 1.1。若 $G$ 在\Term{fpqc-topology}{忠实平坦拟紧拓扑}意义下\Term{local-scheme}{局部}\Term{isomorphism}{同构}于形如 $\mathbf G_m^r$ 的群（$r$ 为 $\geq0$ 的整数），则称 $G$ 为\Term{torus}{环面}。
+\end{SGAresult}
+用 1.1 的记号，这就是说可以选取 $S'$，使 $G'$ \Term{isomorphism}{同构}于 $(\mathbf G_{m,S'})^r$。整数 $r$ 依赖于 $s\in S$，它就是\Term{fiber}{纤维} $G_s=G\otimes_S\kappa(s)$ 的\Term{dimension}{维数}。容易看出，这是 $s$ 的\Term{locally-constant}{局部常值}函数。这一观察应予推广：
+\SourcePage{33}
+\begin{SGAresult}{定义}{1.4}
+设 $G$ 是域 $k$ 上\Term{diagonalizable}{可对角化}的\Term{group-scheme}{群概形}，因此 $G$ \Term{isomorphism}{同构}于 $D_k(M)$，其中 $M$ 是通常意义下的\Term{abelian-group}{交换群}，由这个条件确定到\Term{isomorphism}{同构}；准确地说，$M\simeq\operatorname{Hom}_{k\text{-gr.}}(G,\mathbf G_{m,k})$（第 VIII 讲 1.3）。$M$ 的\Term{isomorphism-class}{同构类}称为\Term{diagonalizable}{可对角化群} $G$ 的\Term{type}{型}；它显然在\Term{base-field-extension}{基域扩张}下\Term{invariant}{不变}。
+
+现在设 $G$ 是任意\Term{prescheme}{预概形} $S$ 上\Term{multiplicative-type}{乘法型}的\Term{group-scheme}{群概形}。对每个 $s\in S$，存在 $\kappa(s)$ 的\Term{field-extension}{扩域} $k$，使 $G\times_S\operatorname{Spec}(k)$ 为\Term{diagonalizable}{可对角化}的 $k$-群。\footnote{编者注：依假设，存在 $s$ 的\Term{open-neighborhood}{开邻域} $U$ 及\Term{faithfully-flat}{忠实平坦}且\Term{quasi-compact}{拟紧}的\Term{morphism}{态射} $S'\to U$，使 $G_{S'}$ \Term{diagonalizable}{可对角化}；于是对每个位于 $s$ 上方的 $s'\in S'$，$\kappa(s')$ 是 $\kappa(s)$ 的\Term{field-extension}{扩域}，且 $G_{s'}=G\times_S\operatorname{Spec}\kappa(s')$ \Term{diagonalizable}{可对角化}。}由上述观察，它的\Term{type}{型}不依赖所选的\Term{field-extension}{扩域}，称为 $G$ 在 $s$ 处的\Term{type}{型}，或 $G_s$ 的\Term{type}{型}。特别地，若 $G$ 本身\Term{diagonalizable}{可对角化}，从而\Term{isomorphism}{同构}于 $D_S(M)$，则对每个 $s\in S$，$G$ 在 $s$ 处的\Term{type}{型}都是群 $M$ 的类。
+
+一般地，若 $G$ 是 $S$ 上的\Term{multiplicative-type}{乘法型群}，$M$ 是通常意义下的\Term{abelian-group}{交换群}，当 $G$ 在每个 $s\in S$ 处均为\Term{type}{型} $M$ 时，就称 $G$ 为 $M$ \Term{type}{型}；换言之，$G$ 在\Term{fpqc-topology}{忠实平坦拟紧拓扑}意义下\Term{local-scheme}{局部}\Term{isomorphism}{同构}于 $D_S(M)$。
+\end{SGAresult}
+\textbf{注记 1.4.1。}\footnote{编者注：为便于后文引用，我们给以下注记加上编号 1.4.1。}
+a) 对给定的 $S$ 上\Term{multiplicative-type}{乘法型群} $G$，函数 $s\mapsto G_s\text{ 的型}$ 在 $S$ 上\Term{locally-constant}{局部常值}。事实上，沿用 1.1 的记号，若 $G'$ 是 $M$ \Term{type}{型}，则 $G$ 在 $s$ 的\Term{neighborhood}{邻域} $U$ 上也是 $M$ \Term{type}{型}。于是 $S$ 有\Term{canonical}{典范}\Term{resolution}{分解} $S=\coprod_i S_i$，使每个 $G_{S_i}$ 是 $M_i$ \Term{type}{型}，其中\Term{abelian-group}{交换群} $M_i$ 两两不\Term{isomorphism}{同构}。
+
+b) 特别地，若 $S$ \Term{connected}{连通}，则 $G$ 的\Term{fiber}{纤维}的\Term{type}{型}恒定，即存在\Term{abelian-group}{交换群} $M$，使 $G$ 是 $M$ \Term{type}{型}。若 $G$ 是\Term{torus}{环面}，则其在 $s$ 处的\Term{type}{型}由整数 $\dim G_s$ 刻画（事实上，$G_s$ 是 $\mathbf Z^n$ \Term{type}{型}，其中 $n=\dim G_s$）。
+
+\textbf{注记 1.5。}a) 由定义 1.1 和 1.3 立即可见，它们与\Term{base-change}{基变换}相容。因此，若 $G$ 是 $S$ 上的\Term{group-prescheme}{群预概形}，$S'\to S$ 是\Term{base-change}{基变换}\Term{morphism}{态射}，则 $G$ 为\Term{multiplicative-type}{乘法型}（分别地，\Term{isotrivial}{等平凡}的\Term{multiplicative-type}{乘法型}，等等）时，$G'$ 亦然。
+
+b) 若 $S'\to S$ 还\Term{faithfully-flat}{忠实平坦}且\Term{quasi-compact}{拟紧}，则 $G'$ 为\Term{multiplicative-type}{乘法型}或\Term{torus}{环面}时，$G$ 也如此。若 $S'\to S$ 还\Term{etale}{平展}（分别地，\Term{finite-etale}{有限平展}），且 $G'$ \Term{quasi-isotrivial}{拟等平凡}（分别地，\Term{isotrivial}{等平凡}），则 $G$ 亦然。
+
+c) 最后，回到任意\Term{base-change}{基变换}\Term{morphism}{态射} $f:S'\to S$，若 $s'\in S'$ 且 $s=f(s')$，则 $G'$ 在 $s'$ 处的\Term{type}{型}等于 $G$ 在 $s$ 处的\Term{type}{型}，因为 $G'_{s'}=G_s\otimes_{\kappa(s)}\kappa(s')$。
+\SourcePage{34}
+\SGAsection{2}{可对角化群的某些性质向乘法型群的推广}
+以下推广，本质上是上一讲结果的直接推论，只需考虑定义 1.1 以及有关性质在\Term{fpqc-topology}{忠实平坦拟紧拓扑}意义下的“\Term{local-scheme}{局部}”性质。
+\begin{SGAresult}{定义}{2.0}
+\footnote{编者注：我们加上这个定义，它在命题 2.3 和 2.7 中出现。}以 $\mathcal M$ 表示\Term{faithfully-flat}{忠实平坦}且\Term{quasi-compact}{拟紧}的\Term{morphism}{态射}的\Term{set}{集合}。
+\end{SGAresult}
+\begin{SGAresult}{命题}{2.1}
+设 $G$ 是\Term{prescheme}{预概形} $S$ 上的\Term{multiplicative-type}{乘法型群}。有下列结论：
+
+ a) $G$ 在 $S$ 上\Term{faithfully-flat}{忠实平坦}且\Term{affine}{仿射}（因而\Term{quasi-compact}{拟紧}）。
+
+ b) $G$ 在 $S$ 上\Term{finite-type}{有限型} $\Longleftrightarrow G$ 在 $S$ 上\Term{finite-presentation}{有限表示} $\Longleftrightarrow$ 对每个 $s\in S$，$G$ 在 $s$ 处的\Term{type}{型}由\Term{finitely-generated}{有限生成}\Term{abelian-group}{交换群}给出。
+
+ c) $G$ 在 $S$ 上\Term{finite}{有限} $\Longleftrightarrow$ 对每个 $s\in S$，$G$ 在 $s$ 处的\Term{type}{型}由\Term{finite}{有限}\Term{abelian-group}{交换群}给出 $\Longleftrightarrow$（若 $S$ \Term{quasi-compact}{拟紧}）$G$ 在 $S$ 上\Term{finite-type}{有限型}且被某个整数 $n>0$ 消去。
+
+ c$'$) $G$ 在 $S$ 上\Term{integral-morphism}{整} $\Longleftrightarrow$ 对每个 $s\in S$，$G$ 在 $s$ 处的\Term{type}{型}由\Term{torsion-group}{挠交换群}给出。
+
+ d) $G$ 为\Term{unit-group}{单位群} $\Longleftrightarrow$ 对每个 $s\in S$，$G$ 在 $s$ 处的\Term{type}{型}由零\Term{abelian-group}{交换群}给出。
+
+ e) $G$ 在 $S$ 上\Term{smooth}{光滑} $\Longleftrightarrow$ 对每个 $s\in S$，$G$ 在 $s$ 处的\Term{type}{型}由\Term{finitely-generated}{有限生成}\Term{abelian-group}{交换群}给出，且其\Term{torsion-subgroup}{挠子群}的阶与 $\kappa(s)$ 的\Term{characteristic}{特征}互素。
+\end{SGAresult}
+这些断言来自第 VIII 讲 2.1，因为有关性质可以沿\Term{faithfully-flat}{忠实平坦}且\Term{quasi-compact}{拟紧}的\Term{morphism}{态射}\Term{descent}{下降}（参见 SGA 1，第 VIII 讲，或 EGA IV$_2$，\S2）。同样，利用第 VIII 讲 3.5 得到：
+\begin{SGAresult}{命题}{2.2}
+设 $G$ 是 $S$ 上\Term{finite-type}{有限型}的\Term{multiplicative-type}{乘法型群}，则对每个整数 $n\ne0$，$n\cdot\operatorname{id}_G$ 的\Term{kernel}{核} ${}_nG$ 是 $S$ 上\Term{finite}{有限}的\Term{multiplicative-type}{乘法型群}。
+\end{SGAresult}
+\begin{SGAresult}{命题}{2.3}
+设 $G$ 是\Term{prescheme}{预概形} $S$ 上的\Term{multiplicative-type}{乘法型群}，它从右\Term{free-action}{自由作用}于 $S$ 上\Term{affine}{仿射}的 $S$-\Term{prescheme}{预概形} $X$。则：
+
+ a) $G$ 在 $X$ 中定义的\Term{equivalence-relation}{等价关系}是 $\mathcal M$-\Term{effective}{有效}的（第 IV 讲 3.4），且 $Y=X/G$ 在 $S$ 上\Term{affine}{仿射}。
+
+ b) 若 $X$ 在 $S$ 上还\Term{finite-presentation}{有限表示}（分别地，\Term{finite-type}{有限型}），则 $Y$ 也如此。
+\end{SGAresult}
+第一条来自处理 $G$ \Term{diagonalizable}{可对角化}情形的第 VIII 讲 5.1，以及允许归约到这一情形的第 IV 讲 3.5.2；这里需用到\Term{faithfully-flat}{忠实平坦}且\Term{quasi-compact}{拟紧}的\Term{morphism}{态射} $S'\to S$，对“在其他\Term{scheme}{概形}上\Term{affine}{仿射}的\Term{scheme}{概形}”组成的\Term{fibered-category}{纤维范畴}而言，是\Term{effective-descent}{有效下降}\Term{morphism}{态射}。
+\SourcePage{35}
+即对每个在 $S'$ 上\Term{affine}{仿射}、带有关于 $S'\to S$ 的\Term{descent-datum}{下降数据}的 $Y'$，这个\Term{descent-datum}{下降数据}都是\Term{effective}{有效}的，即 $Y'$ 来自某个在 $S$ 上\Term{affine}{仿射}的 $Y$；参见 SGA 1，第 VIII 讲 2.1。
+
+对于第二条，也可归约到\Term{diagonalizable}{可对角化}情形，即第 VIII 讲 5.8，因为所考虑的\Term{finiteness-condition}{有限性条件}可沿\Term{faithfully-flat}{忠实平坦}且\Term{quasi-compact}{拟紧}的\Term{morphism}{态射}\Term{descent}{下降}（SGA 1，第 VIII 讲 3.3 及 3.6\footnote{编者注：亦参见第 V 讲 9.1 或 EGA IV$_2$，2.7.1。}）。照第 VIII 讲推论 5.5 至 5.7 的做法，从 2.3 \Term{pushout}{推出}：
+\begin{SGAresult}{推论}{2.4}
+在 2.3 的条件下，\Term{graph-morphism}{图态射}
+\[X\times_S G\longrightarrow X\times_S X\]
+为\Term{closed-immersion}{闭浸入}。对 $X$ 在 $S$ 上的每个\Term{section}{截面} $\sigma$，相应的\Term{morphism}{态射} $G\to X$，$g\mapsto\sigma\cdot g$，为\Term{closed-immersion}{闭浸入}。
+\end{SGAresult}
+特别地：
+\begin{SGAresult}{推论}{2.5}
+设 $u:G\to H$ 为 $S$-\Term{group-prescheme}{群预概形}的\Term{monomorphism}{单态射}，$G$ 为\Term{multiplicative-type}{乘法型}，$H$ 在 $S$ 上\Term{affine}{仿射}。则 $u$ 是\Term{closed-immersion}{闭浸入}，$H/G=Y$ 存在且在 $S$ 上\Term{affine}{仿射}；最后，$H$ 是 $Y$ 上群为 $G_Y$ 的\Term{principal-homogeneous-bundle}{主齐性纤维丛}。
+\end{SGAresult}
+\textbf{注记 2.6。}设 $u:G\to H$ 为 $S$-\Term{group-prescheme}{群预概形}的\Term{monomorphism}{单态射}，$G$ 在 $S$ 上为\Term{finite-type}{有限型}的\Term{multiplicative-type}{乘法型群}，$H$ 在 $S$ 上\Term{finite-presentation}{有限表示}且\Term{separated}{分离}。利用第 VIII 讲 7.12（见第 VIII 讲注记 7.13 b)），可以证明 $u$ 为\Term{closed-immersion}{闭浸入}。
+\begin{SGAresult}{命题}{2.7}
+设 $u:G\to H$ 为 $S$ 上\Term{multiplicative-type}{乘法型群}的\Term{homomorphism}{同态}，$H$ 在 $S$ 上\Term{finite-type}{有限型}。则：
+
+ (i) $G'=\operatorname{Ker}u$ 是\Term{multiplicative-type}{乘法型}的 $S$-群，$G'$ 在 $G$ 中定义的\Term{equivalence-relation}{等价关系}是 $\mathcal M$-\Term{effective}{有效}的，因而（第 IV 讲 3.4）$u$ \Term{resolution}{分解}为
+\[G\longrightarrow G/G'=I\longrightarrow H,\]
+其中 $I\to H$ 是 $S$-群的\Term{monomorphism}{单态射}\footnote{编者注：甚至是\Term{closed-immersion}{闭浸入}。}；$I$ 为\Term{multiplicative-type}{乘法型}，$I$ 在 $H$ 中定义的\Term{equivalence-relation}{等价关系}是 $\mathcal M$-\Term{effective}{有效}的，所以 $H'=H/I$ 存在，且 $H'$ 也为\Term{multiplicative-type}{乘法型}。
+
+ (ii) $H'$ 和 $I$ \Term{finite-type}{有限型}；若 $G$ \Term{finite-type}{有限型}，则 $G'$ 亦然。
+\end{SGAresult}
+\begin{proof}
+照 2.3 的做法，归约到 $G,H$ 均\Term{diagonalizable}{可对角化}的情形，此时 2.7 就归结为第 VIII 讲 3.4。
+\end{proof}
+记下以下推论：
+\SourcePage{36}
+\begin{SGAresult}{推论}{2.8}
+ a) 设 $S$ 是\Term{prescheme}{预概形}。则 $S$ 上\Term{finite-type}{有限型}的\Term{multiplicative-type}{乘法型群}所成的\Term{category}{范畴}是\Term{abelian-category}{阿贝尔范畴}。
+
+ b) 设 $u:G\to H$ 为这一\Term{category}{范畴}中的\Term{homomorphism}{同态}。$u$ 在这个\Term{category}{范畴}中为\Term{monomorphism}{单态射}（分别地，\Term{epimorphism}{满态射}，\Term{isomorphism}{同构}）的充要条件是 $u$ 为\Term{prescheme}{预概形}的\Term{monomorphism}{单态射}（分别地，$u$ \Term{faithfully-flat}{忠实平坦}，$u$ 是\Term{prescheme}{预概形}的\Term{isomorphism}{同构}）。
+\end{SGAresult}
+只需注意两个\Term{multiplicative-type}{乘法型} $S$-群的积仍为\Term{multiplicative-type}{乘法型}（这是立即可见的），且两个因子在 $S$ 上\Term{finite-type}{有限型}时，其积显然也\Term{finite-type}{有限型}。2.8 的其余部分由 2.7 立即得到，细节留给读者。
+\begin{SGAresult}{推论}{2.9}
+设 $u:G\to H$ 为 $S$ 上\Term{finite-type}{有限型}的\Term{multiplicative-type}{乘法型群}的\Term{homomorphism}{同态}。以 $U$ 表示使 $u_s:G_s\to H_s$ 为\Term{monomorphism}{单态射}（分别地，\Term{faithfully-flat}{忠实平坦}，\Term{isomorphism}{同构}）的 $s\in S$ 构成的\Term{set}{集合}。则 $U$ 同时\Term{open-and-closed}{开且闭}，诱导的\Term{homomorphism}{同态} $u_U:G_U\to H_U$ 是\Term{monomorphism}{单态射}（分别地，\Term{faithfully-flat}{忠实平坦}，\Term{isomorphism}{同构}）。
+\end{SGAresult}
+设 $P$（分别地 $Q$）为 $u$ 的\Term{kernel}{核}（分别地，\Term{cokernel}{余核}）。由 2.7，$Q$ 存在，且 $P,Q$ 为\Term{multiplicative-type}{乘法型}，它们的构造还与任意\Term{base-change}{基变换} $S'\to S$ 相交换，特别地与取\Term{fiber}{纤维}相交换。另一方面，$u$ 为\Term{monomorphism}{单态射}（分别地，\Term{faithfully-flat}{忠实平坦}，\Term{isomorphism}{同构}）当且仅当 $P=0$（分别地，$Q=0$，$P=Q=0$）。由此只需验证：若 $R$ 为\Term{multiplicative-type}{乘法型} $S$-群，则使 $R_s=0$ 的 $s\in S$ 组成的\Term{set}{集合} $U$ \Term{open-and-closed}{开且闭}，且 $R_U=0$。这已包含在注记 1.4.1 a) 中。
+\begin{SGAresult}{推论}{2.10}
+设 $G$ 是 $S$ 上\Term{finite-type}{有限型}的\Term{multiplicative-type}{乘法型群}，$H,H'$ 是两个\Term{multiplicative-type}{乘法型}\Term{subgroup}{子群}。
+
+ a) $H''=H\cap H'$ 是 $G$ 的\Term{multiplicative-type}{乘法型}\Term{subgroup}{子群}。
+
+ b) 以 $U$ 表示使 $H_s\subseteq H'_s$（分别地 $H_s=H'_s$）的 $s\in S$ 构成的\Term{set}{集合}。则 $U$ \Term{open-and-closed}{开且闭}，且 $H_U\subseteq H'_U$（分别地 $H_U=H'_U$）。
+\end{SGAresult}
+当然，$H\cap H'$ 中的交是\Term{functorial}{函子意义}的交，即 $H\times_G H'$，显然为 $G$ 的一个 $S$-\Term{subgroup}{子群}；包含号（分别地等号）同样表示 $H$ 的\Term{subfunctor}{子函子}间的\Term{order-relation}{序关系}（分别地相等），而非\Term{underlying-set}{底集}的包含（分别地相等）。
+
+先将 2.7 应用于包含\Term{morphism}{态射} $H\to G$，可知 $H$ \Term{finite-type}{有限型}；同样 $H'$ 也\Term{finite-type}{有限型}。于是由 2.8，$H\cap H'$ 是\Term{finite-type}{有限型}的\Term{multiplicative-type}{乘法型群}（注意从 2.8 的\Term{category}{范畴}到 $(\mathrm{Sch})_{/S}$ 的\Term{canonical}{典范}\Term{functor}{函子}与\Term{finite-projective-limit}{有限投射极限}相交换）。
+
+$H\cap H'$ 的构造与\Term{base-change}{基变换}，特别地与取\Term{fiber}{纤维}相交换。另一方面，$H\subseteq H'$（分别地 $H=H'$）\Term{equivalence}{等价}于 $H''=H$（分别地 $H''=H$ 且 $H''=H'$）。考虑\Term{canonical}{典范}\Term{homomorphism}{同态} $H''\to H$ 和 $H''\to H'$，则 $U$ 是使诱导\Term{homomorphism}{同态} $H''_s\to H_s$ 为\Term{isomorphism}{同构}（分别地，使 $H''_s\to H_s$ 及 $H''_s\to H'_s$ 均为\Term{isomorphism}{同构}）的 $s\in S$ 的\Term{set}{集合}。
+\SourcePage{37}
+由 2.9，$U$ \Term{open-and-closed}{开且闭}，且 $H''_U\to H_U$（分别地，$H''_U\to H_U$ 和 $H''_U\to H'_U$）为\Term{isomorphism}{同构}，这就得到所需结论。
+\begin{SGAresult}{命题}{2.11}
+设 $S$ 是\Term{prescheme}{预概形}，$G$ 是 $S$ 上\Term{finite-type}{有限型}的\Term{multiplicative-type}{乘法型群}，$H$ 是 $G$ 的\Term{multiplicative-type}{乘法型}\Term{subgroup}{子群}，$K=G/H$（它是 $G$ 的\Term{multiplicative-type}{乘法型}\Term{quotient-group}{商群}）。
+
+ (i) 假设 $G$ \Term{trivial}{平凡}，即\Term{diagonalizable}{可对角化}。则存在 $S$ 的分拆，其各部分 $S_i$ \Term{open-and-closed}{开且闭}，使每个 $H_{S_i},K_{S_i}$ 均\Term{diagonalizable}{可对角化}。特别地，若 $S$ \Term{connected}{连通}，则 $H,K$ 均\Term{diagonalizable}{可对角化}。
+
+ (ii) 将 (i) 中“\Term{diagonalizable}{可对角化}”换成“\Term{isotrivial}{等平凡}”，结论仍成立，只要 $S$ \Term{connected}{连通}，或\Term{locally-connected}{局部连通}，或\Term{quasi-compact}{拟紧}。
+
+ (iii) 若 $G$ \Term{locally-trivial}{局部平凡}（分别地，\Term{locally-isotrivial}{局部等平凡}，\Term{quasi-isotrivial}{拟等平凡}），则 $K,H$ 亦然。
+\end{SGAresult}
+\begin{proof}
+(i) 依假设 $G=D_S(M)$，其中 $M$ 为\Term{finitely-generated}{有限生成}\Term{abelian-group}{交换群}。对 $M$ 的每个\Term{quotient-group}{商群} $M_i$，令 $H_i=D_S(M_i)$ 为 $G$ 的相应\Term{diagonalizable}{可对角化}\Term{subgroup}{子群}（第 VIII 讲 3.1）。设 $S_i$ 为使 $H_s=(H_i)_s$ 的 $s\in S$ 的\Term{set}{集合}；由 2.10，$S_i$ \Term{open-and-closed}{开且闭}，且 $H_{S_i}=(H_i)_{S_i}$，故 $H_{S_i}$ \Term{diagonalizable}{可对角化}，$K_{S_i}$ 也\Term{diagonalizable}{可对角化}（第 VIII 讲 3.1）。$S_i$ 显然两两不交，现说明它们\Term{cover}{覆盖} $S$。对每个 $s$，$H_s$ 作为\Term{diagonalizable}{可对角化群} $G_s$ 的\Term{subgroup}{子群}也\Term{diagonalizable}{可对角化}（见下文 8.1\footnote{编者注：我们改正了原先误引的第 IV 讲 4.7.5。注意本讲第 8 节独立于第 3 至 7 节。}），故由第 VIII 讲 1.5 及 3.2 b)，$H_s$ 形如 $D_{\kappa(s)}(M_i)$。只保留\Term{nonempty}{非空}的 $S_i$，就得到 (i)。
+
+(ii) 依假设，存在\Term{finite-etale}{有限平展}\Term{surjective}{满射} $S'\to S$，使 $G_{S'}$ \Term{diagonalizable}{可对角化}。于是 $S'$ 的每个点都有\Term{open-and-closed}{开且闭}的\Term{neighborhood}{邻域} $U'$，使 $H_{U'},K_{U'}$ 均\Term{diagonalizable}{可对角化}。$U'$ 在 $S$ 中的像 $U$ \Term{open-and-closed}{开且闭}，且 $S'\to S$ 仍诱导\Term{finite-etale}{有限平展}\Term{surjective}{满射} $U'\to U$。因此每个 $s\in S$ 都有\Term{open-and-closed}{开且闭}的\Term{neighborhood}{邻域} $U$，使 $H_U,K_U$ 均\Term{isotrivial}{等平凡}。由此立即得到 (ii)。
+
+(iii) 由 (i)、(ii) 和定义立即得到。注意，“\Term{quasi-isotrivial}{拟等平凡}”情形也将是 1.2 中预告的更一般事实“\Term{finite-type}{有限型} $\Rightarrow$ \Term{quasi-isotrivial}{拟等平凡}”的推论（参见第 X 讲 4.5）。
+\end{proof}
+\SGAsection{3}{无穷小性质：提升定理与共轭定理}
+\Term{multiplicative-type}{乘法型群}的基本\Term{infinitesimal}{无穷小}性质来自以下\Term{theorem}{定理}：
+\begin{SGAresult}{\Term{theorem}{定理}}{3.1}
+设 $S$ 为\Term{affine-scheme}{仿射概形}，$H$ 为 $S$ 上的\Term{multiplicative-type}{乘法型群}，$F$ 是 $S$ 上带有 $H$ 的\Term{action}{作用}的\Term{quasi-coherent}{拟凝聚}\Term{sheaf}{层}（第 I 讲 4.7）。则
+\[\mathrm H^i(H,F)=0\qquad(i>0),\]
+其中 $\mathrm H^i$ 是第 I 讲 \S5 中研究的 Hochschild \Term{cohomology}{上同调}。
+\end{SGAresult}
+\SourcePage{38}
+事实上，根据该处 5.3，Hochschild \Term{cohomology}{上同调}可由 $S$ 的\Term{affine-ring}{仿射环} $A$、$G$ 的\Term{affine-ring}{仿射环} $B$ 及定义 $F$ 的 $A$-\Term{module}{模} $M$ 显式写成 $A$-\Term{module}{模}\Term{complex}{复形} $C^\bullet(H,M)$ 的\Term{cohomology}{上同调}；这一\Term{complex}{复形}的构造与任意\Term{base-change}{基变换} $A\to A'$ 相交换。因此，当 $A'$ 在 $A$ 上\Term{flat}{平坦}时，
+\[\mathrm H^i(H',F')=\mathrm H^i(H,F)\otimes_A A'.\]
+所以若 $A'$ 甚至在 $A$ 上\Term{faithfully-flat}{忠实平坦}，要证 $\mathrm H^i(H,F)=0$，只需证 $\mathrm H^i(H',F')=0$。由此将 3.1 归约到 $G$ \Term{diagonalizable}{可对角化}的情形，而这种情形已在第 I 讲 5.3.3 中证明。
+
+利用第 III 讲的结果，下面从 3.1 \Term{pushout}{推出}若干几何上的结论：
+\begin{SGAresult}{\Term{theorem}{定理}}{3.2}
+设 $S$ 为\Term{affine-scheme}{仿射概形}，$S_0$ 为由\Term{ideal}{理想} $J$ 定义的\Term{affine}{仿射}\Term{subscheme}{子概形}，$H$ 为 $S$ 上的\Term{multiplicative-type}{乘法型群}，$G$ 为 $S$ 上任意\Term{group-prescheme}{群预概形}，$u,v:H\to G$ 为两个群\Term{homomorphism}{同态}，$u_0,v_0:H_0\to G_0$ 为经\Term{base-change}{基变换} $S_0\to S$ 所得的\Term{homomorphism}{同态}。若 $J^2=0$ 且 $u_0=v_0$，则存在 $g\in G(S)$，使 $v=\operatorname{int}(g)\circ u$ 且 $g_0=e$。
+\end{SGAresult}
+这来自第 III 讲 2.1 (ii) 和 3.1（$\mathrm H^1$ 的消失）。
+\begin{SGAresult}{推论}{3.3}
+在 3.2 的初步条件下，再假设 $G$ 在 $S$ 上\Term{smooth}{光滑}，但对 $J$ 只假设其\Term{nilpotent}{幂零}（不一定平方为零）。若存在 $g_0\in G_0(S_0)$，使 $v_0=\operatorname{int}(g_0)\circ u_0$，则 $g_0$ 可\Term{lifting}{提升}为 $g\in G(S)$，使 $v=\operatorname{int}(g)\circ u$。
+\end{SGAresult}
+对满足 $J^n=0$ 的整数 $n$ 归纳，即归约到 $J$ 平方为零的情形。又因为 $G$ 在 $S$ 上\Term{smooth}{光滑}，可把 $g_0$ \Term{lifting}{提升}为 $G(S)$ 的元素 $g'$。把 $v$ 换成 $v'=\operatorname{int}(g')\circ u$，便归约到 3.2 的情形。
+\begin{SGAresult}{推论}{3.4}
+在 3.2 的初步条件下，设 $J$ \Term{nilpotent}{幂零}，并假设 $u$ 是\Term{central-homomorphism}{中心同态}（例如 $G$ 交换）。则 $u_0=v_0$ 蕴含 $u=v$。
+\end{SGAresult}
+事实上，归约到 $J$ 平方为零仍是直接的，此时只需应用 3.2。特别地：
+\begin{SGAresult}{推论}{3.5}
+设 $S,S_0,H,G$ 如 3.2，且 $J$ \Term{nilpotent}{幂零}。设 $u:H\to G$ 为 $S$-群\Term{homomorphism}{同态}，且 $u_0:H_0\to G_0$ 为\Term{unit-homomorphism}{单位同态}，则 $u$ 为\Term{unit-homomorphism}{单位同态}。
+\end{SGAresult}
+\begin{SGAresult}{\Term{theorem}{定理}}{3.6}
+设 $S$ 为\Term{affine-scheme}{仿射概形}，$S_0$ 为由\Term{nilpotent}{幂零}\Term{ideal}{理想} $J$ 定义的\Term{subscheme}{子概形}，$H$ 为 $S$ 上的\Term{multiplicative-type}{乘法型群}，$G$ 为 $S$ 上\Term{smooth}{光滑}的\Term{group-prescheme}{群预概形}，$u_0:H_0\to G_0$ 为经\Term{base-change}{基变换} $S_0\to S$ 所得的 $S_0$-群间的\Term{homomorphism}{同态}。
+
+则存在 $S$-群\Term{homomorphism}{同态} $u:H\to G$ \Term{lifting}{提升} $u_0$（且由 3.3，任意两个这样的\Term{lifting}{提升} $u,u'$ 可由 $G(S)$ 中某个\Term{reduced}{约化}为 $G(S_0)$ 的单位元素的元素\Term{conjugate}{共轭}）。
+\end{SGAresult}
+\SourcePage{39}
+这来自第 III 讲 2.1、2.3 以及 3.1（$\mathrm H^2$ 消失保证 $u_0$ 的\Term{lifting}{提升}存在，$\mathrm H^1$ 消失保证其在\Term{conjugacy}{共轭}意义下唯一）。
+
+同样可证 3.2 至 3.6 的以下变体（事实上，把它们应用于 3.2 至 3.6 中\Term{homomorphism}{同态}的\Term{graph-subgroup}{图子群}，就能\Term{pushout}{推出}前述断言）：
+\begin{SGAresult}{\Term{theorem}{定理}}{3.2 bis}
+设 $S$ 为\Term{affine-scheme}{仿射概形}，$S_0$ 为由\Term{ideal}{理想} $J$ 定义的\Term{subscheme}{子概形}，$G$ 为 $S$-\Term{group-prescheme}{群预概形}，$H,H'$ 为两个\Term{multiplicative-type}{乘法型}\Term{subgroup-prescheme}{子群预概形}，$G_0,H_0,H'_0$ 为经\Term{base-change}{基变换} $S_0\to S$ 所得的 $S_0$ 上的群。若 $J^2=0$ 且 $H_0=H'_0$，则存在 $g\in G(S)$，使 $H'=\operatorname{int}(g)(H)$ 且 $g_0=e$。
+\end{SGAresult}
+\begin{SGAresult}{推论}{3.3 bis}
+在 3.2 bis 的初步条件下，另设 $G$ 在 $S$ 上\Term{smooth}{光滑}，且 $J$ \Term{nilpotent}{幂零}（不一定平方为零）。若 $g_0\in G_0(S_0)$ 满足 $H'_0=\operatorname{int}(g_0)(H_0)$，则 $g_0$ 可\Term{lifting}{提升}为 $g\in G(S)$，使 $H'=\operatorname{int}(g)(H)$。
+\end{SGAresult}
+\begin{SGAresult}{推论}{3.4 bis}
+在 3.2 bis 的初步条件下，设 $J$ \Term{nilpotent}{幂零}，$H$ 是\Term{central-subgroup}{中心子群}（例如 $G$ 交换）。则 $H_0=H'_0$ 蕴含 $H=H'$。
+\end{SGAresult}
+\begin{SGAresult}{\Term{theorem}{定理}}{3.6 bis}
+设 $S$ 为\Term{affine-scheme}{仿射概形}，$S_0$ 为由\Term{nilpotent}{幂零}\Term{ideal}{理想} $J$ 定义的\Term{subscheme}{子概形}，$G$ 为 $S$ 上\Term{smooth}{光滑}的\Term{group-prescheme}{群预概形}，$H_0$ 为 $G_0=G\times_S S_0$ 的\Term{multiplicative-type}{乘法型}\Term{subgroup-prescheme}{子群预概形}。则：
+
+ (a) 存在 $G$ 的\Term{subgroup-prescheme}{子群预概形} $H$，它在 $S$ 上\Term{flat}{平坦}，且 $H\times_S S_0=H_0$。
+
+ (b) 这样的 $H$ 必为\Term{multiplicative-type}{乘法型}。
+
+ (c) 最后，由 3.2 bis，$H_0$ 的任意两个这样的\Term{lifting}{提升} $H,H'$ 可由某个 $g\in G(S)$ \Term{conjugate}{共轭}，且 $g$ \Term{reduced}{约化}为 $G(S_0)$ 的单位元素。
+\end{SGAresult}
+下面说明如何证明 3.2 bis（3.3 bis 和 3.4 bis 是其直接推论）以及 3.6 bis 的 (a)。后者由 3.1（$\mathrm H^2$ 消失）和第 III 讲 4.37 (ii) 得出。同样，至少当 $G,H$ 在 $S$ 上\Term{smooth}{光滑}时，3.2 bis 由 3.1（$\mathrm H^1$ 消失）和第 III 讲 4.37 (i) 得出。
+
+不过，利用下一讲的结果，可从 3.2 和 3.6 很简单地\Term{pushout}{推出}这里所述一般\Term{form}{形式}的 3.2 bis 和 3.6 bis。对 3.2 bis，只需注意由第 X 讲 2.1，$H,H'$ \Term{isomorphism}{同构}，于是归约到 3.2。
+
+对 3.6 bis，先注意 $H_0$ 必在 $S_0$ 上\Term{finite-type}{有限型}：\footnote{编者注：原文写“由 2.1 b)，因为其\Term{fiber}{纤维}\Term{finite-type}{有限型}”。编者未能理解这一论证，改用下面的论证。}事实上，作为在 $S_0$ 上\Term{smooth}{光滑}的 $G_0$ 的\Term{subprescheme}{子预概形}，$H_0$ 在 $S_0$ 上\Term{locally-finite-type}{局部有限型}；又由 2.1 a)，$H_0$ 在 $S_0$ 上\Term{affine}{仿射}，故在 $S_0$ 上\Term{finite-type}{有限型}。由第 X 讲 4.5，$H_0$ \Term{quasi-isotrivial}{拟等平凡}，因而由第 X 讲 2.1，它来自 $S$ 上某个\Term{multiplicative-type}{乘法型群} $H$。\footnote{编者注：我们展开了接下来的一句话。}由 3.6，存在 $S$-群\Term{homomorphism}{同态} $u:H\to G$ \Term{lifting}{提升}\Term{immersion}{浸入} $H_0\hookrightarrow G_0$；因为 $H,H_0$（分别地 $G,G_0$）具有相同的\Term{underlying-topological-space}{底拓扑空间}，且对每个 $h\in H$，
+\SourcePage{40}
+$\mathcal O_{G,u(h)}\to\mathcal O_{H,h}$ \Term{surjective}{满射}（因为模\Term{nilpotent}{幂零}\Term{ideal}{理想} $J$ \Term{reduced}{约化}后\Term{surjective}{满射}），故 $u$ 也是\Term{immersion}{浸入}（参见 EGA I，4.2.2）。
+
+最后，对 $H_0$ 到 $G$ 的\Term{flat-subgroup}{平坦子群}的任意\Term{lifting}{提升} $H$，由第 X 讲 2.3，$H$ 必为\Term{multiplicative-type}{乘法型}\footnote{编者注：注意第 X 讲 2.3 本质上依赖本讲\Term{theorem}{定理} 3.6。}，这也证明了 3.6 bis 的 (b)。（读者可验证第 X 讲并未使用 3.2 bis 至 3.6 bis，因而没有循环论证！）
+\begin{SGAresult}{命题}{3.8}
+\footnote{编者注：我们保留原文编号，没有 3.7。}设 $S$ 是\Term{prescheme}{预概形}，$S_0$ 是由\Term{locally-nilpotent}{局部幂零}\Term{ideal}{理想} $J$ 定义的\Term{closed-subprescheme}{闭子预概形}，$G$ 是\Term{multiplicative-type}{乘法型} $S$-群，$X$ 是 $S$ 上\Term{locally-finite-presentation}{局部有限表示}的\Term{prescheme}{预概形}。设 $G$ \Term{action}{作用}于 $X$，且 $G_0=G\times_S S_0$ 在 $X_0=X\times_S S_0$ 上的\Term{action}{作用}\Term{trivial}{平凡}。则 $G$ 在 $X$ 上的\Term{action}{作用}\Term{trivial}{平凡}。
+\end{SGAresult}
+证明与第 III 讲 2.4 b) 相同；也可直接归约到该处，只需注意 3.8 立即归约到 $G$ \Term{diagonalizable}{可对角化}的情形，而这正是该处处理的情形。
+\begin{SGAresult}{推论}{3.9}
+设 $S,S_0$ 如上，$u:G\to H$ 是 $S$-群\Term{homomorphism}{同态}，其中 $G$ 为\Term{multiplicative-type}{乘法型}，$H$ 在 $S$ 上\Term{locally-finite-presentation}{局部有限表示}。若经\Term{base-change}{基变换} $S_0\to S$ 所得的\Term{homomorphism}{同态} $u_0:G_0\to H_0$ 为\Term{central-homomorphism}{中心同态}，则 $u$ 为\Term{central-homomorphism}{中心同态}。
+\end{SGAresult}
+事实上，只需在 3.8 中取 $X=H$，并让 $G$ 按 $(g,h)\mapsto\operatorname{int}(u(g))\cdot h=u(g)hu(g)^{-1}$ \Term{action}{作用}于 $H$。
+\SGAsection{4}{稠密性定理}
+本\Term{theorem}{定理}（见下文 4.7）\footnote{4.1 至 4.6 的所有结果都包含在 EGA IV$_3$，11.10 中；关于\Term{schematic-density}{概形稠密性}的系统论述，请读者参阅该处。}结合第 7 节的\Term{theorem}{定理}\footnote{编者注：即“\Term{algebraization}{代数化}”\Term{theorem}{定理} 7.1。}，将是本讲和随后两讲的主要工具，用来从刚讨论的\Term{multiplicative-type}{乘法型群}的\Term{infinitesimal}{无穷小}性质过渡到“\Term{finite}{有限}”性质。
+\begin{SGAresult}{定义}{4.1}
+设 $X$ 是\Term{prescheme}{预概形}。若对 $X$ 的每个\Term{open-subset}{开集} $U$，以及每个包含所有 $Z_i\cap U$ 的 $U$ 的\Term{closed-subprescheme}{闭子预概形} $U_0$，均有 $U_0=U$，则称 $X$ 的\Term{subprescheme}{子预概形}族 $(Z_i)_{i\in I}$ \Term{schematically-dense}{概形稠密}。
+
+若只有一个成员 $Z$ 的族具有这一性质，就称\Term{subprescheme}{子预概形} $Z$ 在 $X$ 中\Term{schematically-dense}{概形稠密}。
+\end{SGAresult}
+\SourcePage{41}
+立即可见（参见 EGA IV$_3$，11.10.1），这一定义\Term{equivalence}{等价}于：对 $X$ 的每个\Term{open-subset}{开集} $U$，$\mathcal O_U$ 的每个在所有 $Z_i\cap U$ 上为零的\Term{section}{截面} $f$ 都为零；这也意味着\Term{canonical}{典范}\Term{homomorphism}{同态}
+\[u_i:\mathcal O_X\longrightarrow(v_i)_*(\mathcal O_{Z_i})\]
+的\Term{kernel}{核}之交为零，其中 $v_i:Z_i\to X$ 为\Term{canonical}{典范}\Term{immersion}{浸入}。\footnote{编者注：EGA IV$_3$，\S11.10 中所有\Term{schematic-density}{概形稠密性}结果，都来自该处 \S11.9 证明的“\Term{separated}{分离}\Term{homomorphism}{同态}族”的结果；以下某些编者注会引用后者。}当 $X$ 位于某个\Term{prescheme}{预概形} $S$ 上时，这还\Term{equivalence}{等价}于：对 $X$ 的每个\Term{open-subset}{开集} $U$ 和从 $U$ 到某个在 $S$ 上\Term{separated}{分离}的 $S$-\Term{prescheme}{预概形} $Y$ 的每一对\Term{morphism}{态射} $(u,v)$，若它们在各 $Z_i\cap U$ 上相同，则 $u=v$。（事实上，$u=v$ \Term{equivalence}{等价}于 $U_0=U$，其中 $U_0$ 是 $Y\times_S Y$ 的\Term{diagonal}{对角线}在由 $(u,v)$ 定义的 $S$-\Term{morphism}{态射} $X\to Y\times_S Y$ 下的\Term{inverse-image}{逆像}；该\Term{diagonal}{对角线}是 $Y\times_S Y$ 的\Term{closed-subprescheme}{闭子预概形}，所以 $U_0$ 是 $U$ 的\Term{closed-subprescheme}{闭子预概形}，且由 $(u,v)$ 的假设它包含所有 $Z_i\cap U$。若 $(Z_i)$ \Term{schematically-dense}{概形稠密}，便有 $U_0=U$，从而 $u=v$。反向蕴涵只需取 $Y=\operatorname{Spec}\mathcal O_S[T]$ 即得。）
+
+按照 EGA I，第 9.5 节末引入的术语，说 $X$ 的\Term{subprescheme}{子预概形} $Z$ \Term{schematically-dense}{概形稠密}，也就是说 $X$ 等于 $Z$ 在 $X$ 中的\Term{schematic-closure}{子预概形闭包}。
+\begin{SGAresult}{\Term{lemma}{引理}}{4.2}
+设 $X$ 为 $S$ 上\Term{flat}{平坦}的\Term{prescheme}{预概形}，$(Z_i)_{i\in I}$ 是 $X$ 的一族在 $S$ 上\Term{flat}{平坦}的\Term{subprescheme}{子预概形}。设 $S_0$ 是由\Term{nilpotent}{幂零}\Term{ideal}{理想} $J$ 定义的 $S$ 的\Term{subprescheme}{子预概形}；假定各\Term{module}{模} $J^n/J^{n+1}$ 在 $S_0$ 上\Term{locally-free}{局部自由}。
+
+设 $X_0,Z_{i0}$ 是从 $X,Z_i$ 经\Term{base-change}{基变换} $S_0\to S$ 得到的\Term{object}{对象}。若 $(Z_{i0})_{i\in I}$ 在 $X_0$ 中\Term{schematically-dense}{概形稠密}，则 $(Z_i)_{i\in I}$ 在 $X$ 中也\Term{schematically-dense}{概形稠密}。
+\end{SGAresult}
+假设 $J^{n+1}=0$（$n\geq0$），对 $n$ 归纳；$n=0$ 时显然。照常以模 $J^{m+1}$ \Term{reduced}{约化}定义 $S_m,X_m,Z_{im}$。归纳假设已说明 $(Z_{i,n-1})_{i\in I}$ 在 $X_{n-1}$ 中\Term{schematically-dense}{概形稠密}。将 $X$ 换成其开\Term{subobject}{子对象}后，只需证明 $\mathcal O_X$ 的每个在各 $Z_i$ 上为零的\Term{section}{截面} $f$ 都为零。
+
+$f$ 定义的 $\mathcal O_{X_{n-1}}=\mathcal O_X/J^n\mathcal O_X$ 的\Term{section}{截面} $f_{n-1}$ 在各 $Z_{i,n-1}$ 上为零，因而为零；所以 $f$ 是 $J^n\mathcal O_X$ 的\Term{section}{截面}。因为 $X$ 在 $S$ 上\Term{flat}{平坦}，有
+\[J^n\mathcal O_X\xleftarrow{\sim}E\otimes_{\mathcal O_{S_0}}\mathcal O_{X_0},\qquad E=J^n=J^n/J^{n+1}.\]
+同样，每个 $Z_i$ 在 $S$ 上\Term{flat}{平坦}，故 $f$ 在 $Z_i$ 上的\Term{restriction}{限制} $f_i$ 可视为
+\[J^n\mathcal O_{Z_i}\xleftarrow{\sim}E\otimes_{\mathcal O_{S_0}}\mathcal O_{Z_{i0}}\]
+的\Term{section}{截面}。依假设，各 $f_i$ 为零。又 $E$ 依假设\Term{locally-free}{局部自由}，所以 $F=E\otimes_{\mathcal O_{S_0}}\mathcal O_{X_0}$ 也\Term{locally-free}{局部自由}。因此 $f$ 是 $X_0$ 上\Term{locally-free}{局部自由}\Term{module}{模} $F$ 的\Term{section}{截面}，其在每个 $Z_{i0}$ 上的\Term{restriction}{限制}均为零。因为 $(Z_{i0})_{i\in I}$ 在 $X_0$ 中\Term{schematically-dense}{概形稠密}，立即得到 $f=0$。证毕。
+\SourcePage{42}
+\begin{SGAresult}{推论}{4.3}
+设 $X$ 是 $S$ 上\Term{flat}{平坦}且\Term{locally-noetherian}{局部诺特}的 $S$-\Term{prescheme}{预概形}，$(Z_i)_{i\in I}$ 是 $X$ 的一族在 $S$ 上\Term{flat}{平坦}的\Term{subprescheme}{子预概形}。假设对每个 $s\in S$，\Term{fiber}{纤维}族 $(Z_{is})_{i\in I}$ 在 $X_s$ 中\Term{schematically-dense}{概形稠密}。则 $(Z_i)_{i\in I}$ 在 $X$ 中\Term{schematically-dense}{概形稠密}。
+\end{SGAresult}
+将 $X$ 换成开\Term{subobject}{子对象}，只需证明 $\mathcal O_X$ 的每个在各 $Z_i$ 上\Term{restriction}{限制}为零的\Term{section}{截面} $f$ 均为零。\footnote{编者注：以下我们展开了原文。}只需证明对每个 $x\in X$，$f$ 在 $\mathcal O_{X,x}$ 中的像为零。以 $\mathfrak m_x$ 表示 $\mathcal O_{X,x}$ 的\Term{maximal-ideal}{极大理想}，以 $\mathfrak m_s$ 表示 $\mathcal O_{S,s}$ 的\Term{maximal-ideal}{极大理想}，其中 $s$ 是 $x$ 在 $S$ 中的像。因为 $\mathcal O_{X,x}$ \Term{noetherian}{诺特}，有 $\bigcap_{n\in\mathbf N}\mathfrak m_x^n=0$，从而更有 $\bigcap_{n\in\mathbf N}\mathcal O_{X,x}\mathfrak m_s^n=0$。
+
+因此，只需证明对每个整数 $n$，$f$ 在 $X\times_S\operatorname{Spec}(\mathcal O_{S,s}/\mathfrak m_s^{n+1})$ 上诱导的\Term{section}{截面}为零。依假设，\Term{fiber}{纤维}族 $Z_{is}=Z_i\otimes_{\mathcal O_{S,s}}\kappa(s)$ 在 $X_s=X\otimes_{\mathcal O_{S,s}}\kappa(s)$ 中\Term{schematically-dense}{概形稠密}。这便归约到 $S$ 是一个\Term{maximal-ideal}{极大理想} $J$ \Term{nilpotent}{幂零}的\Term{local-ring}{局部环}的\Term{spectrum}{谱}，$S_0=\operatorname{Spec}\kappa(s)$ 的情形；此时满足 4.2 的假设，故得到结论。
+\begin{SGAresult}{\Term{lemma}{引理}}{4.4}
+设 $S$ 是\Term{locally-noetherian}{局部诺特}\Term{prescheme}{预概形}，$X$ 是 $S$ 上\Term{flat}{平坦}且\Term{locally-noetherian}{局部诺特}的 $S$-\Term{prescheme}{预概形}，$(Z_i)_{i\in I}$ 是 $X$ 的一族在 $S$ 上\Term{flat}{平坦}的\Term{subprescheme}{子预概形}。假设对每个 $s\in S$，\Term{fiber}{纤维}族 $(Z_{is})_{i\in I}$ 在 $X_s$ 中\Term{schematically-dense}{概形稠密}。
+
+则对任意\Term{base-change}{基变换} $S'\to S$（$S'$ 不必\Term{locally-noetherian}{局部诺特}），族 $(Z_{iS'})_{i\in I}$ 在 $X'$ 中\Term{schematically-dense}{概形稠密}（即 $(Z_i)_{i\in I}$ 相对于 $S$ 在 $X$ 中\Term{universally-schematically-dense}{普遍概形稠密}，参见 EGA IV$_3$，定义 11.10.8）。
+\end{SGAresult}
+\begin{proof}
+\footnote{编者注：另一个证明使用归约到 $S'$ \Term{locally-noetherian}{局部诺特}的情形（与这里一样用到 4.3 和 4.5），见 EGA IV$_3$，11.9.16 及 11.9.12（注意 11.9.16 证明最后一行，应将 11.9.5 换为 11.9.12）。}设 $f'$ 为 $X'$ 的某\Term{open-subset}{开集} $U'$ 上 $\mathcal O_{X'}$ 的\Term{section}{截面}，它在各 $Z_{iS'}$ 上为零；需证 $f'=0$。取 $s'\in S'$，只需证明 $f'$ 在 $U'$ 中位于 $s'$ 上方的所有点处均为零。设 $s$ 是 $s'$ 在 $S$ 中的像；将 $S,S'$ 换成 $s,s'$ 处\Term{local-ring}{局部环}的\Term{spectrum}{谱}，可设 $S,S'$ \Term{local-scheme}{局部}，且 $s,s'$ 为其\Term{closed-point}{闭点}。还可设 $X$ \Term{affine}{仿射}，故
+\[S=\operatorname{Spec}(A),\quad S'=\operatorname{Spec}(A'),\quad X=\operatorname{Spec}(B),\quad X'=\operatorname{Spec}(B'),\quad B'=B\otimes_A A',\]
+其中 $A,A'$ 为\Term{local-ring}{局部环}，$A\to A'$ 是\Term{local-homomorphism}{局部同态}，$A,B$ \Term{noetherian}{诺特}。也可设 $U'$ \Term{affine}{仿射}，形如 $X'_{g'}$，其中 $g'\in B'$。
+
+对 $A'$ 的每个子 $A$-\Term{algebra}{代数} $A''$，考虑 $S''=\operatorname{Spec}(A'')$，以及从 $X,Z_i$ 经\Term{base-change}{基变换} $S''\to S$ 得到的 $X'',Z_{iS''}$，于是有图：
+\SourcePage{43}
+\[
+\begin{tikzcd}
+Z_i\arrow[d]&Z_{iS''}\arrow[l]\arrow[d]&Z_{iS'}\arrow[l]\arrow[d]\\
+X\arrow[d]&X''\arrow[l]\arrow[d]&X'\arrow[l]\arrow[d]\\
+S&S''\arrow[l]&S'\arrow[l]
+\end{tikzcd}
+\]
+此后只考虑这样的 $A''$：它是 $A'$ 的某个\Term{finite-type}{有限型}子 $A$-\Term{algebra}{代数} $A''_1$ 在 $\mathfrak m'\cap A''_1$ 处的\Term{localization}{局部化}，其中 $\mathfrak m'$ 是 $A'$ 的\Term{maximal-ideal}{极大理想}；因而 $A\to A''\to A'$ 都是\Term{local-homomorphism}{局部同态}。这些 $A''$ 组成递增的\Term{filtered-family}{滤过族}，其并为 $A'$，故其\Term{inductive-limit}{归纳极限}也为 $A'$。同样 $B'=\varinjlim_{A''}B\otimes_A A''$。因而存在某个 $A''$ 及 $g''\in B''=B\otimes_A A''$，使它在 $B'$ 中的像为 $g'$。
+
+由下文\Term{lemma}{引理} 4.5，\Term{fiber}{纤维}族 $(Z_{is})_{i\in I}$ 在 $X_s$ 中\Term{schematically-dense}{概形稠密}这一性质在任意\Term{base-change}{基变换} $S''\to S$ 下保持；所以每个 $S''$ 都\Term{locally-noetherian}{局部诺特}，若把 $S$ 换为适当的 $S''$，并把 $X,Z_i$ 换为 $X'',Z_{iS''}$，4.4 的假设仍然成立。\footnote{编者注：我们加上前一句，并展开了下面的原文。}
+
+所以将 $S$ 换成 $S''$（相应地替换 $X,Z_i$），可设 $g'$ 来自 $g\in B$。再将 $X$ 换成\Term{open-subset}{开集} $X_g=U$，可设 $U'=X'$。同样可设 $f'$ 来自 $X$ 上 $\mathcal O_X$ 的某个\Term{section}{截面} $f$。
+
+设 $Y=V(f)$ 为 $f$ 定义的 $X$ 的\Term{subscheme}{子概形}，$Y_i=Z_i\times_X Y$ 为它与 $Z_i$ 的交，后者是 $Z_i$ 的\Term{closed-subscheme}{闭子概形}，等于 $V(f^i)$，其中 $f^i$ 为 $f$ 在 $\mathcal O_{Z_i}$ 中诱导的\Term{section}{截面}。以 $Y',Y'_i$ 表示这些\Term{object}{对象}经\Term{base-change}{基变换}所得的 $S'$-\Term{scheme}{概形}，则仍有
+\[Y'=V(f'),\qquad Y'_i=Z_{iS'}\times_{X'}Y'=V(f^{i'}),\]
+$Y'',Y''_i$ 也有类似关系。$f'$ 在各 $Z_{iS'}$ 上为零的假设，表示为对每个 $i$ 均有 $Y'_i=Z_{iS'}$。\footnote{编者注：原文还加上“至少在 $X'$ 中位于 $s'$ 上方的每个点 $x'$ 处”，但这个\Term{restriction}{限制}似乎无用。}
+
+设 $\mathfrak m$ 为 $A$ 的\Term{maximal-ideal}{极大理想}。对每个整数 $n\geq0$，引入 $S$ 的\Term{subscheme}{子概形} $S_n=\operatorname{Spec}(A/\mathfrak m^{n+1})$，以及 $X,Y,Z_i,Y_i$ 经\Term{base-change}{基变换} $S_n\to S$ 得到的 $X_n,Y_n,Z_{in},Y_n^i$。一般地，对每个 $S$-\Term{prescheme}{预概形} $P$，记 $P_n=P\times_S S_n$。
+
+对每个 $n$ 和 $i\in I$，考虑\Term{functor}{函子}
+\[F_n^i=\prod_{Z_{in}/S_n}Y_n^i/Z_{in}:(\mathrm{Sch})_{/S_n}^{\circ}\longrightarrow(\mathrm{Ens}),\]
+\SourcePage{44}
+其定义为（参见第 VIII 讲 6.4）：对每个 $S_n$ 上的 $P$，
+\[F_n^i(P)=\Gamma\bigl((Y_n^i)_P/(Z_{in})_P\bigr)=
+\begin{cases}\varnothing,&(Y_n^i)_P\ne(Z_{in})_P,\\\{\operatorname{id}\},&(Y_n^i)_P=(Z_{in})_P.\end{cases}\]
+因为 $S_n$ 是\Term{local-artinian}{局部阿廷}的，且 $Z_{in}$ 在 $S_n$ 上\Term{flat}{平坦}、因而\Term{essentially-free}{本质自由}，所以由第 VIII 讲 6.4，每个 $F_n^i$ 可由 $S_n$ 的\Term{closed-subprescheme}{闭子预概形} $T_n^i$ \Term{representable}{表示}。
+
+$A$ 的\Term{completion}{完备化} $\widehat A$ 是\Term{noetherian}{诺特}的，因为 $A$ \Term{noetherian}{诺特}；它是各 $A_n$ 的\Term{projective-limit}{投射极限}。记 $K_n^i$ 为定义 $T_n^i$ 的 $A_n=A/\mathfrak m^{n+1}$ 的\Term{ideal}{理想}，$K^i$ 为各 $K_n^i$ 的\Term{projective-limit}{投射极限}；这是 $\widehat A$ 的\Term{ideal}{理想}。\footnote{编者注：我们展开并改正了原文，以说明各环 $\mathcal O(T_n^i)$ 的\Term{projective-limit}{投射极限}定义\Term{formal-scheme}{形式概形} $\operatorname{Spf}(\widehat A)$ 的一个\Term{closed-formal-subscheme}{闭形式子概形}。}
+
+固定 $i$，对 $m\geq n$ 和每个 $S_n$-\Term{prescheme}{预概形} $P$，有
+\[(Y_n^i)_P=Y_i\times_S S_n\times_{S_n}P=Y_i\times_S P=(Y_m^i)_P,\]
+同样 $(Z_{in})_P=(Z_{im})_P$。因此 $F_n^i$ 是 $F_m^i$ 在 $(\mathrm{Sch})_{/S_n}$ 上的\Term{restriction}{限制} $F_m^i\times_{S_m}S_n$，故 $T_n^i=T_m^i\times_{S_m}S_n$。于是有行\Term{exact}{正合}的\Term{commutative-diagram}{交换图}：
+\[
+\begin{tikzcd}
+0\arrow[r]&K_m^i\arrow[r]\arrow[d,two heads]&A_m\arrow[r]\arrow[d,two heads]&\mathcal O(T_m^i)\arrow[r]\arrow[d,two heads]&0\\
+0\arrow[r]&K_n^i\arrow[r]&A_n\arrow[r]&\mathcal O(T_n^i)\arrow[r]&0
+\end{tikzcd}
+\]
+所有竖直\Term{arrow}{箭头}均\Term{surjective}{满射}。由此，一方面，\Term{projective-system}{投射系} $(K_n^i)_{n\in\mathbf N}$ 满足 \Term{ml-condition}{Mittag--Leffler 条件}，所以各 $\mathcal O(T_n^i)$ 的\Term{projective-limit}{投射极限}可认同于\Term{quotient-topological-ring}{商拓扑环} $\widehat A/K^i$（参见 EGA $0_{\mathrm{III}}$，\S13.2）。另一方面，映射 $K^i\to K_n^i$ \Term{surjective}{满射}（参见 [BEns]，III，\S7.4，命题 5），所以
+\[K_n^i\simeq(K^i+\mathfrak m^{n+1}\widehat A)/\mathfrak m^{n+1}\widehat A,\qquad
+\mathcal O(T_n^i)\simeq(\widehat A/K)\otimes_A(A/\mathfrak m^{n+1}).\]
+换言之，$(T_n^i)_n$ 是\Term{affine}{仿射}\Term{artinian-scheme}{阿廷概形}的\Term{inductive-system}{归纳系}，其\Term{inductive-limit}{归纳极限} $T^i=\varinjlim_nT_n^i$ 是\Term{formal-scheme}{形式概形} $\widehat S=\operatorname{Spf}(\widehat A)$ 的\Term{closed-formal-subscheme}{闭形式子概形}（参见 EGA I，\S10），其模 $\mathfrak m^{n+1}$ \Term{reduced}{约化}为 $T_n^i$。
+
+设 $T$ 为 $\widehat S$ 中所有 $T^i$ 的交，即由 $K=\sum_iK^i$ 定义的\Term{closed-formal-subscheme}{闭形式子概形}。因为 $\widehat A$ \Term{noetherian}{诺特}，存在 $I$ 的\Term{finite}{有限}\Term{subset}{子集} $J$，使 $K=\sum_{i\in J}K^i$（即 $T=\bigcap_{i\in J}T^i$）。于是对每个 $n$，有 $K_n=\sum_{i\in J}K_n^i$，其中 $K_n$ 为 $K$ 在 $A_n$ 中的像。
+
+回想 $f^i$ 是 $f\in B=\mathcal O(X)$ 在 $\mathcal O(Z_i)$ 中的像，$f^{i'}$ 是它在 $\mathcal O(Z_{iS'})=\mathcal O(Z_i)\otimes_A A'$ 中的像；假设 $Y'_i=Z_{iS'}$ \Term{equivalence}{等价}于 $f^{i'}=0$。因为 $\mathcal O(Z_i)\otimes_A A'$ 是各\Term{subalgebra}{子代数} $\mathcal O(Z_i)\otimes_A A''$ 的\Term{inductive-limit}{归纳极限}（$A''$ 满足前述条件），所以存在 $A''$，使 $Y''_i=Z_{iS''}$。$A''$ 起初依赖 $i$，但 $J$ \Term{finite}{有限}，故可选一个对所有 $i\in J$ 均适用的 $A''$。记 $S''=\operatorname{Spec}(A'')$，$S''_{(n)}=S''\times_S S_n$。\footnote{编者注：我们展开并改正了原文，区分 $S''_{(n)}$ 与下文引入的\Term{subscheme}{子概形} $S''_n=S''_n(s'')$。}
+\SourcePage{45}
+因为对所有 $i\in J$，$Y''_i\times_{S''}S''_{(n)}=(Y_n^i)_{S''_{(n)}}$ 等于 $Z_{iS''}\times_{S''}S''_{(n)}=(Z_{in})_{S''_{(n)}}$，由 $T_n^i$ 的定义，$S''_{(n)}\to S_n$ 对每个 $i\in J$ 都经 $T_n^i$ \Term{resolution}{分解}，因而也经 $T_n=\bigcap_{i\in J}T_n^i$ \Term{resolution}{分解}，因而对每个 $i\in I$ 都经 $T_n^i$ \Term{resolution}{分解}。以 $f''$ 表示 $f$ 在 $B''=B\otimes_A A''$ 中的像，$f''_{(n)}$ 表示它在 $B''_{(n)}=B''/\mathfrak m^{n+1}B''$ 中的像；这意味着对每个 $n$，$f''_{(n)}$ 在各 $Z_i\times_S S''_{(n)}$ 上为零。
+
+因为 $A\to A''\to A'$ 是\Term{local-homomorphism}{局部同态}，$s'$ 在 $S''$ 中的像 $s''$ 是 $S''$ 的\Term{closed-point}{闭点}，对应于 $B''$ 的\Term{maximal-ideal}{极大理想} $\mathfrak m''$，且 $s''$ 在 $S$ 中的像为 $s$。固定 $n$，现在以 $S''_n$ 表示 $s''$ 在 $S''$ 中的第 $n$ 个\Term{infinitesimal-neighborhood}{无穷小邻域}，即 $\operatorname{Spec}(A''/\mathfrak m''^{n+1})$。记 $B''_n=B''/\mathfrak m''^{n+1}B''$，$Z_{in}''=Z_i\times_S S''_n=\operatorname{Spec}(B''_n)$。则 $f''_{(n)}$ 在 $B''_n$ 中的像 $f''_n$ 在所有 $Z_{in}''$ 上为零。由下文\Term{lemma}{引理} 4.5，\Term{fiber}{纤维}族
+\[Z_{i0}''=Z_{in}''\times_{S''_n}\kappa(s'')=Z_{is}\times_{\kappa(s)}\kappa(s'')\]
+在\Term{fiber}{纤维} $X''_0=X''_n\times_{S''_n}\kappa(s'')=X_s\times_{\kappa(s)}\kappa(s'')$ 中\Term{schematically-dense}{概形稠密}。所以 $S''_n,X''_n,(Z_{in}'')_{i\in I}$ 和 $S''_0=\operatorname{Spec}\kappa(s'')$ 满足\Term{lemma}{引理} 4.2 的假设，故 $f''_n=0$，即 $f''\in\mathfrak m''^{n+1}B''$，对每个 $n$ 皆然。
+
+因为 $B$ \Term{noetherian}{诺特}，而 $B''=B\otimes_A A''$ 是\Term{finite-type}{有限型} $B$-\Term{algebra}{代数}的\Term{localization}{局部化}，故 $B''$ \Term{noetherian}{诺特}，其\Term{local-ring}{局部环}在通常\Term{topology}{拓扑}下\Term{separated}{分离}。因此 $f''$ 在所有满足 $\mathfrak m''B''$ 包含于 $\mathcal O_{X'',x''}$ 的\Term{maximal-ideal}{极大理想}中的 $x''\in X''$ 处为零，即在 $X''$ 中位于 $s''$ 上方的点处为零。从而 $f'$ 更在 $X'$ 中位于 $s'$ 上方的所有 $x'$ 处为零。
+\end{proof}
+\begin{SGAresult}{\Term{lemma}{引理}}{4.5.0}
+\footnote{编者注：这里加入这个\Term{lemma}{引理}，在 4.5 和 4.7 的证明中使用。}设 $X$ 为 $S$-\Term{prescheme}{预概形}，$(Z_i)_{i\in I}$ 为 $X$ 的一族\Term{subprescheme}{子预概形}，$S'\to S$ 为\Term{faithfully-flat}{忠实平坦}\Term{morphism}{态射}。若 $(Z'_i)_{i\in I}$ 在 $X'$ 中\Term{schematically-dense}{概形稠密}，则 $(Z_i)_{i\in I}$ 在 $X$ 中\Term{schematically-dense}{概形稠密}。
+\end{SGAresult}
+这来自 EGA IV$_3$，11.10.5 (i) 及 11.9.10 (i)。尚需给出以下\Term{lemma}{引理}的证明。
+\begin{SGAresult}{\Term{lemma}{引理}}{4.5}
+设 $X$ 为域 $k$ 上的\Term{locally-noetherian}{局部诺特}\Term{prescheme}{预概形}\footnote{编者注：这一假设实际上多余，参见 EGA IV$_3$，11.10.6 及 11.9.13。}，$(Z_i)_{i\in I}$ 为 $X$ 的一族\Term{subprescheme}{子预概形}，$k'$ 为 $k$ 的\Term{field-extension}{扩域}，$X',Z'_i$ 为 $X,Z_i$ 经\Term{base-change}{基变换} $k'/k$ 所得的\Term{prescheme}{预概形}。则 $(Z_i)_{i\in I}$ 在 $X$ 中\Term{schematically-dense}{概形稠密}的充要条件是 $(Z'_i)_{i\in I}$ 在 $X'$ 中\Term{schematically-dense}{概形稠密}。
+\end{SGAresult}
+充分性来自 4.5.0，现证必要性。\footnote{编者注：以下展开了原文。}首先可设 $X=\operatorname{Spec}(B)$ \Term{affine}{仿射}。对每个 $i$，取 $Z_i$ 的\Term{affine-open-cover}{仿射开覆盖} $(Z_{ij})_{j\in J_i}$；用 $(Z_{ij})_{(i,j)\in J}$，其中 $J=\coprod_{i\in I}J_i$，代替 $(Z_i)_{i\in I}$，便也可设各 $Z_i$ \Term{affine}{仿射}。
+
+设 $g\in B'=B\otimes_k k'$，$t'\in B'_g$ 为\Term{affine-open}{仿射开集} $U'=X'_g$ 上 $\mathcal O_{X'}$ 的\Term{section}{截面}，它在各 $Z'_i\cap U'$ 上为零，即它在每个 $(\mathcal O(Z_i)\otimes_k k')_g$ 中的像为零。存在 $k'$ 的\Term{finite-type}{有限型}子 $k$-\Term{algebra}{代数} $A$，使 $g\in B_A=B\otimes_k A$，且
+\SourcePage{46}
+$t'\in(B_A)_g$。映射 $\mathcal O(Z_i)\otimes_k A\to\mathcal O(Z_i)\otimes_k k'$ \Term{injective}{单射}，故映射
+\[(\mathcal O(Z_i)\otimes_k A)_g\longrightarrow(\mathcal O(Z_i)\otimes_k k')_g\]
+也\Term{injective}{单射}；结合假设，可知 $t'$ 在各 $(\mathcal O(Z_i)\otimes_k A)_g$ 中的像为零。因此只需证明 $(Z_{iA})_{i\in I}$ 在 $X_A$ 中\Term{schematically-dense}{概形稠密}\footnote{编者注：原文接着写：“对各 $X_{A'}$ 应用 4.3，其中 $A'$ 是 $A$ 模某个\Term{maximal-ideal}{极大理想}的幂的商，再用 Hilbert \Term{nullstellensatz}{零点定理}，就归约到 $k'$ 是 $k$ 的\Term{finite-extension}{有限扩张}的情形。”可以展开这个归约并沿此路继续，因为\Term{finite-extension}{有限扩张} $k'/k$ 的情形比 EGA IV$_3$，11.9.10 b) 所处理的一般情形稍简单。}，而这来自 EGA IV$_3$，11.9.10 b)。
+
+顺便记下将在以后某一讲使用的结果：\footnote{编者注：有待具体说明此处……}
+\begin{SGAresult}{推论}{4.6}
+设 $X$ 为 $S$ 上\Term{flat}{平坦}的\Term{prescheme}{预概形}，$U$ 是 $X$ 的\Term{open-subset}{开子集}。假设对每个 $s\in S$，$U_s$ 在 $X_s$ 中\Term{schematically-dense}{概形稠密}，且 $X$ \Term{locally-noetherian}{局部诺特}或在 $S$ 上\Term{locally-finite-presentation}{局部有限表示}。则 $U$ 在 $X$ 中\Term{schematically-dense}{概形稠密}。
+\end{SGAresult}
+为简化起见，假设 $U$ 在 $X$ 中\Term{retrocompact}{相对拟紧}（一般情形见 EGA IV$_3$，11.10.10 及 11.9.17）。$X$ \Term{locally-noetherian}{局部诺特}的情形只是为完整起见列出，它已包含于 4.3。
+
+在第二种情形下，显然可设 $S,X$ 均\Term{affine}{仿射}；于是 $X,U$ 均在 $S=\operatorname{Spec}(A)$ 上\Term{finite-presentation}{有限表示}。环 $A$ 是其\Term{finite-type}{有限型}子 $\mathbf Z$-\Term{algebra}{代数} $A_i$ 的\Term{inductive-limit}{归纳极限}。已使用过的“专利方法”（参见 EGA IV$_3$，8.8.2 及 8.10.5 (iii)）说明存在某个 $i$、$S_i=\operatorname{Spec}(A_i)$ 上的\Term{affine-scheme}{仿射概形} $X_i$ 及其中\Term{open-subset}{开集} $U_i$，使 $X,U$ 由它们经\Term{base-change}{基变换} $S\to S_i$ 得到。以 $E_i$ 表示使 $(U_i)_s$ 在 $(X_i)_s$ 中\Term{schematically-dense}{概形稠密}的 $s\in S_i$ 的\Term{set}{集合}。
+
+由 EGA IV$_2$，5.9.9 及 5.10.2，$E_i$ 是使 $(U_i)_s$ 包含 $(X_i)_s$ 的\Term{structure-sheaf}{结构层}的所有“\Term{associated-point}{伴随点}”所成\Term{set}{集合} $\operatorname{Ass}\mathcal O_{(X_i)_s}$ 的 $s\in S_i$ 的\Term{set}{集合}；由 EGA IV$_3$，11.9.17.1，这个条件是\Term{constructible}{可构造}的，即 $E_i$ 是 $S_i$ 的\Term{constructible-subset}{可构造子集}。\footnote{编者注：以下展开了原文。}
+
+由 4.5，$E_i$ 在 $S_j\to S_i$（分别地 $S\to S_i$）下的\Term{inverse-image}{逆像}为 $E_j$（分别地，使 $U_s$ 在 $X_s$ 中\Term{schematically-dense}{概形稠密}的 $s\in S$ 的\Term{set}{集合} $E$）。又依假设 $E=S$，这也是 $S_i$ 在每个 $S\to S_i$ 下的\Term{inverse-image}{逆像}。由 EGA IV$_3$，8.3.11，存在 $j\geq i$，使 $E_j=S_j$，即对每个 $s\in S_j$，$(U_j)_s$ 在 $(X_j)_s$ 中\Term{schematically-dense}{概形稠密}。\footnote{编者注：以下展开了原文。}
+
+于是对 $(S_j,X_j,U_j)$ 及\Term{base-change}{基变换} $S\to S_j$ 应用 4.4，得到 $U$ 在 $X$ 中\Term{schematically-dense}{概形稠密}。注意，这里只在指标集\Term{finite}{有限}（实际上只有一个元素）的族上使用 4.4；在这种情形下，4.4 的证明可大为简化，读者自可验证。
+\SourcePage{47}
+\begin{SGAresult}{\Term{theorem}{定理}}{4.7}
+设 $S$ 为\Term{prescheme}{预概形}，$G$ 为 $S$ 上\Term{finite-type}{有限型}的\Term{multiplicative-type}{乘法型群}。对每个整数 $n>0$，令 ${}_nG$ 为 $n\cdot\operatorname{id}_G$ 的\Term{kernel}{核}。则 $G$ 的\Term{subprescheme}{子预概形}族 $({}_nG)_{n>0}$ \Term{schematically-dense}{概形稠密}（定义 4.1）。
+\end{SGAresult}
+分两种情形。
+
+a) $S$ \Term{locally-noetherian}{局部诺特}。由 4.3，归约到 $S$ 是域 $k$ 的\Term{spectrum}{谱}。由 4.5.0，可设 $k$ \Term{algebraically-closed}{代数闭}且 $G$ \Term{diagonalizable}{可对角化}，即 $G=D_k(M)$，其中 $M$ 为\Term{finitely-generated}{有限生成}\Term{abelian-group}{交换群}。于是 $M=\Gamma\times\mathbf Z^r$，其中 $\Gamma$ \Term{finite}{有限}，故 $G=G_1\times G_2$，其中 $G_1=D(\Gamma)$，$G_2=\mathbf G_m^r$。当 $n$ 在整除意义下\Term{large-relative-to-cardinal}{足够大}（即为 $\Gamma$ 的阶的倍数）时，${}_nG=G_1\times{}_nG_2$，因为 ${}_nG_1=G_1$。
+
+再次对\Term{projection}{投影} $G\to G_1$ 应用 4.3，便归约到 $G_2$，即 $G=\mathbf G_m^r$ 的情形。此时 $G$ \Term{reduced}{约化}，所以 $({}_nG)_{n>0}$ 在 $G$ 中\Term{schematically-dense}{概形稠密}，\Term{equivalence}{等价}于各 ${}_nG$ 的并在通常\Term{topology}{拓扑}下\Term{dense}{稠密}。因为 ${}_nG=({}_n\mathbf G_m)^r$，归约到 $G=\mathbf G_m$，即 $G$ 是\Term{irreducible}{不可约}的、\Term{dimension}{维数}为 $1$。结论来自各 ${}_nG$ 的并（等于 $k$ 中所有\Term{root-of-unity}{单位根}的\Term{set}{集合}）是无限集这一事实。
+
+b) 一般情形。对 $S$ 的每个点 $s$，存在\Term{open-neighborhood}{开邻域} $U$ 及\Term{faithfully-flat}{忠实平坦}、\Term{quasi-compact}{拟紧}的\Term{morphism}{态射} $S'\to U$，使 $G'=G_{S'}$ \Term{diagonalizable}{可对角化}，即形如 $D_{S'}(M)$。再次由 4.5.0，可归约到 $G'$，故可设 $G$ \Term{diagonalizable}{可对角化}；它因此由 $\operatorname{Spec}(\mathbf Z)$ 上的绝对群 $H=D_{\mathbf Z}(M)$ 经\Term{base-change}{基变换} $S\to\operatorname{Spec}(\mathbf Z)$ 得到。由 a) 的证明，对每个 $s\in\operatorname{Spec}(\mathbf Z)$，族 $({}_nH_s)_{n>0}$ 在 $H$ 中\Term{schematically-dense}{概形稠密}；现在只需应用 4.4。\footnote{编者注：第 X 讲 4.3 将在 $S$ 非\Term{locally-noetherian}{局部诺特}时用到此结果（即 $S=\operatorname{Spec}(\widehat A\otimes_A\widehat A)$，其中 $\widehat A$ 是\Term{noetherian}{诺特}\Term{local-ring}{局部环} $A$ 的\Term{completion}{完备化}）。}
+\begin{SGAresult}{推论}{4.8}
+ a) 设 $u,v:H\to G$ 为两个 $S$-\Term{group-prescheme}{群预概形}的\Term{homomorphism}{同态}，其中 $H$ 为\Term{finite-type}{有限型}的\Term{multiplicative-type}{乘法型群}\footnote{编者注：我们把“\Term{diagonalizable}{可对角化}”改为“\Term{multiplicative-type}{乘法型}”。}，并假设对每个整数 $n>0$，$u,v$ 在 ${}_nH$ 上的\Term{restriction}{限制}相同。则 $u=v$。
+
+ b) 设 $H_1,H_2$ 为\Term{group-prescheme}{群预概形} $G$ 的两个\Term{finite-type}{有限型}的\Term{multiplicative-type}{乘法型}\Term{subgroup}{子群}，并假设对每个整数 $n>0$，均有 ${}_nH_1={}_nH_2$。则 $H_1=H_2$。
+\end{SGAresult}
+把 $u,v$ 的\Term{graph-subgroup}{图子群}视为 $H\times G$ 的\Term{subgroup}{子群} $H_1,H_2$，第一条即由第二条得到。为证 b)，令 $H=H_1\cap H_2$；它是 $H_i$ 的\Term{subgroup-prescheme}{子群预概形}（$i=1,2$），需证它等于 $H_i$。假设意味着它包含各 ${}_nH_i$。故归约到：
+\begin{SGAresult}{推论}{4.9}
+设 $G$ 为 $S$ 上\Term{finite-type}{有限型}的\Term{multiplicative-type}{乘法型群}，$H$ 是包含各 ${}_nG$（$n>0$）的\Term{subgroup-prescheme}{子群预概形}。则 $H=G$。
+\end{SGAresult}
+由 4.7，只需证明\Term{subprescheme}{子预概形} $H$ \Term{closed}{闭}，或\Term{equivalence}{等价}地，在\Term{set}{集合}意义下等于 $G$。这使我们归约到 $S$ 为域的\Term{spectrum}{谱}的情形，
+\SourcePage{48}
+而此时 $G$ 的每个\Term{subgroup-prescheme}{子群预概形}均\Term{closed}{闭}（第 VI$_{\mathrm B}$ 讲 1.4.2），故得到结论。
+
+\textbf{注记 4.10。}在 4.7 的条件下，设整数 $m>0$ 具有以下性质：对每个 $s\in S$，$m$ 不是 $\kappa(s)$ 的\Term{characteristic}{特征}的幂；并且若 $G_s$ 为 $M$ \Term{type}{型}，则 $M$ 的挠部分的素因子均整除 $m$。（注意，若 $G$ 为\Term{torus}{环面}，第二个条件总成立。）上述证明表明，在 4.7 及推论 4.8、4.9 中，可以只考虑形如 ${}_{m^r}G$（$r>0$）的\Term{subgroup}{子群}。
+
+此外，立即可见，若 $G$ 在 $S$ 上\Term{smooth}{光滑}，则对每个 $s\in S$，存在\Term{open-neighborhood}{开邻域} $U$ 和整数 $m>0$，它与 $U$ 的所有\Term{residue-characteristic}{剩余特征}互素，并对 $G_U$ 满足前述条件。（例如可取 $m$ 为 $G$ 在 $s$ 处的\Term{type}{型}的挠部分的阶，参见 1.4.1 a) 及 2.1 e)。）在这些条件下，将基\Term{restriction}{限制}到 $U$，就得到在 $S$ 上\Term{finite}{有限}且\Term{etale}{平展}、其族\Term{schematically-dense}{概形稠密}的 ${}_{m^r}G$。这在某些情形下（尤其涉及\Term{theorem}{定理} 3.2 和 3.2 bis 的情形，见第 XI 讲第 6 节；但不包括涉及\Term{theorem}{定理} 3.6 和 3.6 bis 的情形）可以省去涉及 Hochschild \Term{cohomology}{上同调}的\Term{theorem}{定理} 3.1。
+\SGAsection{5}{乘法型群的中心同态}
+\begin{SGAresult}{\Term{lemma}{引理}}{5.0}
+\footnote{编者注：我们显式写出此\Term{lemma}{引理}，下文将多次使用（原文隐含地使用）。}设 $(A,\mathfrak m)$ 为\Term{noetherian}{诺特}\Term{local-ring}{局部环}，$S=\operatorname{Spec}(A)$，$H$ 为 $S$ 上的\Term{finite-scheme}{有限概形}，故 $H=\operatorname{Spec}(B)$，其中 $B$ 在 $A$ 上\Term{finite}{有限}。设 $K$ 为 $H$ 的\Term{subscheme}{子概形}，且模 $\mathfrak m^{n+1}$ \Term{reduced}{约化}后，对每个 $n$ 均有 $K_n=H_n$。则 $K=H$。
+\end{SGAresult}
+设 $s$ 为 $S$ 的\Term{closed-point}{闭点}。先注意 $K$ 是 $H$ 的\Term{closed-subscheme}{闭子概形}。事实上，起初它是 $H$ 某个\Term{open-subset}{开集} $U$ 的\Term{closed-subscheme}{闭子概形}。但 $K$，从而 $U$，包含\Term{fiber}{纤维} $K_s=H_s$；因为 $H\to S$ \Term{finite}{有限}、因而为\Term{closed-morphism}{闭态射}，$U$ 的补集为空，即 $U=H$。所以 $K$ 由 $B$ 的\Term{ideal}{理想} $I$ 定义。假设说明对每个 $n$，$I\subseteq\mathfrak m^nB$；因为 $B$ 是\Term{finite}{有限} $A$-\Term{module}{模}，在 $\mathfrak m$-\Term{adic-topology}{进拓扑}下\Term{separated}{分离}，故 $I=0$。
+\begin{SGAresult}{\Term{theorem}{定理}}{5.1}
+设 $u,v:H\to G$ 为两个 $S$-\Term{group-prescheme}{群预概形}的\Term{homomorphism}{同态}，其中 $H$ 为\Term{finite-type}{有限型}的\Term{multiplicative-type}{乘法型群}，且 $S$ \Term{locally-noetherian}{局部诺特}或 $G$ 在 $S$ 上\Term{finite-presentation}{有限表示}。设 $s\in S$ 满足 $u_s=v_s$，并假设 $u_s$ 为\Term{central-homomorphism}{中心同态}。则存在 $s$ 的\Term{open-neighborhood}{开邻域} $U$，使 $u_U=v_U$。
+\end{SGAresult}
+区分两种情形：
+
+a) $S$ \Term{locally-noetherian}{局部诺特}。\footnote{编者注：以下展开了原文。}设 $K=\operatorname{Ker}(u,v)$ 为 $G\times_S G$ 的\Term{diagonal}{对角线}在 $(u,v)$ 下的\Term{inverse-image}{逆像}；这是 $H$ 的\Term{subgroup-prescheme}{子群预概形}。我们要找 $U$ 使 $K_U=H_U$。因为 $S$ \Term{locally-noetherian}{局部诺特}且 $H$ 在 $S$ 上\Term{finite-type}{有限型}，$H$ \Term{locally-noetherian}{局部诺特}，故\Term{immersion}{浸入} $K\hookrightarrow H$
+\SourcePage{49}
+\Term{finite-type}{有限型}（参见 EGA I，6.3.5）。所以 $K$ 在 $S$ 上\Term{finite-type}{有限型}，又因 $S$ \Term{locally-noetherian}{局部诺特}而在 $S$ 上\Term{finite-presentation}{有限表示}。由 EGA IV$_3$，8.8.2.4，要证存在 $s$ 的\Term{open-neighborhood}{开邻域} $U$ 使 $K_U=H_U$，只需证 $K_{S'}=H_{S'}$，其中 $S'$ 是 $A=\mathcal O_{S,s}$ 的\Term{spectrum}{谱}。所以可设 $S$ \Term{local-scheme}{局部}，\Term{closed-point}{闭点}为 $s$。将\Term{noetherian}{诺特}\Term{local-ring}{局部环} $A$ 换为 $\widehat A$，引入\Term{faithfully-flat}{忠实平坦}且\Term{quasi-compact}{拟紧}的\Term{base-change}{基变换} $\widehat S\to S$，还可以在需要时假设 $A$ \Term{complete}{完备}。\footnote{编者注：因为若 $K_{\widehat S}=H_{\widehat S}$，就有 $K=H$，参见 SGA 1，第 VIII 讲 5.4；但后文未使用“$A$ \Term{complete}{完备}”的假设。}
+
+由 3.4，对每个 $n$ 都有 $u_n=v_n$；照常，下标 $n$ 表示模 $\mathfrak m^{n+1}$ \Term{reduced}{约化}，其中 $\mathfrak m$ 为 $A$ 的\Term{maximal-ideal}{极大理想}。对每个整数 $m>0$，以 ${}_mu,{}_mv$ 表示 $u,v$ 诱导的 ${}_mH\to G$ 的\Term{homomorphism}{同态}，便也有 $({}_mu)_n=({}_mv)_n$。这对每个 $n$ 成立，而由 2.2，${}_mH$ 在 $S$ 上\Term{finite}{有限}，所以由 5.0 得 ${}_mu={}_mv$。这对每个 $m$ 成立，故由 4.7 得 $u=v$。
+
+b) $G$ \Term{finite-presentation}{有限表示}。\footnote{编者注：以下展开了原文。}因为 $H$ 在 $S$ 上也\Term{finite-presentation}{有限表示}，由 EGA IV$_3$，8.8.2，仍可设 $S$ \Term{local-scheme}{局部}、\Term{closed-point}{闭点}为 $s$，只需证 $u=v$。若 $f:S'\to S$ \Term{faithfully-flat}{忠实平坦}且\Term{quasi-compact}{拟紧}，记 $f_H:H'\to H$ 为相应\Term{morphism}{态射}，$u',v':H'\to G'$ 为从 $u,v$ 得到的\Term{morphism}{态射}，则 $u'=v'$ 蕴含 $u'\circ f_H=v'\circ f_H$；由于 $f_H$ 是\Term{epimorphism}{满态射}，得 $u=v$。故经过\Term{faithfully-flat}{忠实平坦}且\Term{quasi-compact}{拟紧}的\Term{base-change}{基变换}，还可设 $H$ \Term{diagonalizable}{可对角化}，即 $H=D_S(M)$，其中 $M$ 为\Term{finitely-generated}{有限生成}\Term{abelian-group}{交换群}。
+
+如 4.6 的证明，引入 $A=\mathcal O_{S,s}$ 的\Term{finite-type}{有限型}子 $\mathbf Z$-\Term{algebra}{代数} $A_i$ 组成的递增\Term{filtered-family}{滤过族}，记 $S_i=\operatorname{Spec}(A_i)$。\footnote{编者注：以下展开了原文。}注意 $H=D_S(M)$ 对每个 $i$ 都来自\Term{diagonalizable}{可对角化群} $H_i=D_{S_i}(M)$。因为 $G$ 在 $S$ 上\Term{finite-presentation}{有限表示}，由 EGA IV$_3$，8.8.2（亦见第 VI$_{\mathrm B}$ 讲 10.2、10.3），存在指标 $i$、$S_i$ 上\Term{finite-presentation}{有限表示}的\Term{group-prescheme}{群预概形} $G_i$ 以及 $S_i$-群\Term{morphism}{态射} $u_i,v_i:H_i\to G_i$，使 $u,v$ 由其经\Term{base-change}{基变换}得到。设 $s_i$ 是 $s$ 在 $S_i$ 中的像，$\rho_i:H_i\times_{S_i}G_i\to G_i$ 为由 $\rho_i(h,g)=u_i(h)gu_i(h)^{-1}$ 定义的 $S_i$-\Term{prescheme}{预概形}\Term{morphism}{态射}。因为 $u_s$ 为\Term{central-homomorphism}{中心同态}，$\rho_s=\rho_i\times_{\kappa(s_i)}\kappa(s)$ 等于第二\Term{projection}{投影}，故 $\rho_i$ 亦然（因为 $\kappa(s_i)\to\kappa(s)$ \Term{faithfully-flat}{忠实平坦}且\Term{quasi-compact}{拟紧}），即 $(u_i)_{s_i}$ 为\Term{central-homomorphism}{中心同态}。同样，由 $u_s=v_s$ 得 $(u_i)_{s_i}=(v_i)_{s_i}$。现在对 $S_i$ 上的情形应用 a)，即得所述结论。
+\begin{SGAresult}{推论}{5.2}
+设 $u:H\to G$ 为 $S$-\Term{group-prescheme}{群预概形}的\Term{homomorphism}{同态}，$H$ 为\Term{finite-type}{有限型}的\Term{multiplicative-type}{乘法型群}，且 $S$ \Term{locally-noetherian}{局部诺特}或 $G$ 在 $S$ 上\Term{finite-presentation}{有限表示}。设 $s\in S$，并假设 $u_s$ 为\Term{unit-homomorphism}{单位同态}。则存在 $s$ 的\Term{open-neighborhood}{开邻域} $U$，使 $u_U$ 为\Term{unit-homomorphism}{单位同态}。
+\end{SGAresult}
+\begin{SGAresult}{推论}{5.3}
+设 $u,H,G$ 如 5.2，再设 $G$ 在 $S$ 上\Term{separated}{分离}。令 $U$ 为使 $u_s$ 为\Term{unit-homomorphism}{单位同态}的 $s\in S$ 的\Term{set}{集合}。则 $U$ 是 $S$ 的\Term{open-and-closed}{开闭子集}，且 $u_U:H_U\to G_U$ 为\Term{unit-homomorphism}{单位同态}。
+\end{SGAresult}
+\SourcePage{50}
+只需再证 $U$ \Term{closed}{闭}。令 $K=\operatorname{Ker}(u)$；因为 $G$ 在 $S$ 上\Term{separated}{分离}，$K$ 为 $H$ 的\Term{closed-subprescheme}{闭子预概形}，且 $U$ 为使 $K_s=H_s$ 的 $s\in S$ 的\Term{set}{集合}。易见 $U$ \Term{closed}{闭}；例如可用第 VIII 讲 6.4（由第 VIII 讲 6.3，$H$ 在 $S$ 上\Term{essentially-free}{本质自由}），或注意可设 $S$ \Term{reduced}{约化}且 $U$ 在 $S$ 中\Term{dense}{稠密}，因而\Term{schematically-dense}{概形稠密}，由 $H$ 在 $S$ 上\Term{flat}{平坦}\footnote{编者注：且在 $S$ 上\Term{finite-presentation}{有限表示}，参见 EGA IV$_3$，11.10.5 (ii) 及 11.9.10 (ii)。}，可知 $H_U$ 在 $H$ 中\Term{schematically-dense}{概形稠密}；既然 $u$ 和\Term{unit-homomorphism}{单位同态}在 $H_U$ 上相同，它们就在 $H$ 上相同。
+\begin{SGAresult}{推论}{5.4}
+设 $S$ 为\Term{prescheme}{预概形}，$H,G$ 为两个 $S$-群，$H$ 是\Term{finite-type}{有限型}的\Term{multiplicative-type}{乘法型群}，$G$ 在 $S$ 上\Term{separated}{分离}且\Term{finite-presentation}{有限表示}。设 $\pi:S'\to S$ 为\Term{universally-effective-epimorphism}{普遍有效满态射}\footnote{编者注：我们以“\Term{universally-effective-epimorphism}{普遍有效满态射}”代替“\Term{fpqc-topology}{忠实平坦拟紧拓扑}的\Term{covering-morphism}{覆盖态射}”，以便将其应用于 5.5 的\Term{morphism}{态射} $K\to S$，并相应修改了证明的开头。}（例如\Term{faithfully-flat}{忠实平坦}且\Term{quasi-compact}{拟紧}的\Term{morphism}{态射}，或有\Term{section}{截面}的\Term{morphism}{态射}，参见第 IV 讲 1.12），其\Term{fiber}{纤维}\Term{geometrically-connected}{几何连通}。\footnote{编者注：例如，若 $S=\operatorname{Spec}k$，$S'=\operatorname{Spec}k'$，其中 $k$ 为域，$k'$ 为 $k$ 的\Term{purely-inseparable-extension}{纯不可分扩张}，就属于这种情形；参见第 X 讲命题 1.4。}
+
+设 $u':H'\to G'$ 为从 $H,G$ 经\Term{base-change}{基变换} $S'\to S$ 得到的 $S'$-群间的\Term{central-homomorphism}{中心同态}。则存在唯一的 $S$-群\Term{homomorphism}{同态} $u:H\to G$，使 $u\times_S S'=u'$。当 $S'/S$ 有\Term{section}{截面} $g$ 时，$u$ 就是 $u'$ 经\Term{base-change}{基变换} $g:S\to S'$ 所得的\Term{morphism}{态射}。
+\end{SGAresult}
+因为 $\pi$ 是\Term{universally-effective-epimorphism}{普遍有效满态射}，$H'\to H$ 亦然，故 $u$ 唯一，参见 5.1 b) 证明的开头。若 $\pi$ 有\Term{section}{截面} $g$，则 $u'=\pi^*(u)$ 蕴含 $u=g^*\pi^*(u)=g^*(u')$。
+
+为证 $u$ 存在，由第 IV 讲 2.3，只需证明 $u'$ 经两次\Term{base-change}{基变换} $\operatorname{pr}_1,\operatorname{pr}_2:S''=S'\times_S S'\to S'$ 得到的两个 $S''$-群\Term{homomorphism}{同态} $u''_1,u''_2:H''\to G''$ 相同。它们在 $S''$ 的\Term{diagonal}{对角线}上相同；准确地说，$u''_1,u''_2$ 沿\Term{diagonal-morphism}{对角态射} $S'\to S''$ 的\Term{inverse-image}{逆像}相同（均等于 $u'$）。\footnote{编者注：我们加上了接下来的一句话。}因为 $u''_1,u''_2$ 都是\Term{central-homomorphism}{中心同态}，可对 $u''_1(u''_2)^{-1}$ 应用 5.3。于是存在 $S''$ 的\Term{open-and-closed}{开闭子集} $U$，包含 $S''$ 的\Term{diagonal}{对角线}，使 $u''_1,u''_2$ 在 $U$ 上相同。
+
+因为 $S'/S$ 的\Term{fiber}{纤维}\Term{geometrically-connected}{几何连通}，$S''/S$ 的\Term{fiber}{纤维}亦然，从而\Term{connected}{连通}；于是 $U$（包含这些\Term{fiber}{纤维}的\Term{diagonal}{对角线}）包含所有这些\Term{fiber}{纤维}，故等于 $S''$，证明完成。
+\begin{SGAresult}{推论}{5.5}
+设 $S$ 为\Term{prescheme}{预概形}，$K$ 为\Term{locally-finite-type}{局部有限型}\footnote{编者注：为与引用的第 VI$_{\mathrm A}$ 讲 2.4 一致，增加了“\Term{locally-finite-type}{局部有限型}”的假设。事实上，在域上可以证明每个\Term{connected}{连通}\Term{group-scheme}{群概形}都\Term{geometrically-connected}{几何连通}。}且\Term{fiber}{纤维}\Term{connected}{连通}的 $S$-\Term{group-prescheme}{群预概形}，$H$ 为 $K$ 中\Term{invariant}{不变}的\Term{finite-type}{有限型}的\Term{multiplicative-type}{乘法型}\Term{subgroup}{子群}。则 $H$ 是 $K$ 的\Term{central-subgroup}{中心子群}。
+\end{SGAresult}
+\SourcePage{51}
+先注意 $\pi:K\to S$ 的\Term{fiber}{纤维}\Term{geometrically-connected}{几何连通}，因为域上\Term{locally-finite-type}{局部有限型}的\Term{group-scheme}{群概形}\Term{connected}{连通}即蕴含\Term{geometrically-connected}{几何连通}（参见第 VI$_{\mathrm A}$ 讲 2.4）。\footnote{编者注：以下展开了原文。}在 5.4 中取 $G=H$、$S'=K$，应用于\Term{set}{集合}意义下由 $(h,k)\mapsto(khk^{-1},k)$ 定义的 $K$-群\Term{homomorphism}{同态} $u':H_K\to H_K$；因为 $H$ 交换，此\Term{homomorphism}{同态}为\Term{central-homomorphism}{中心同态}。$u'$ 沿\Term{unit-section}{单位截面} $\varepsilon:S\to K$ 的\Term{inverse-image}{逆像}为 $K$ 的恒等\Term{homomorphism}{同态}，故由 5.4，$H_K\to H_K$ 也是恒等\Term{homomorphism}{同态}，所以 $H$ 在 $K$ 中\Term{central-subgroup}{居中心}。
+
+现在给出前述结果对\Term{multiplicative-type}{乘法型}\Term{central-subgroup}{中心子群}的变体。用相同的方法（并使用 3.2 bis）得到：
+\begin{SGAresult}{\Term{theorem}{定理}}{5.1 bis}
+设 $G$ 为 $S$-\Term{group-prescheme}{群预概形}，$H_1,H_2$ 为两个\Term{finite-type}{有限型}的\Term{multiplicative-type}{乘法型}\Term{subgroup-prescheme}{子群预概形}，且 $(H_1)_s$ 为\Term{central-subgroup}{中心子群}。假设 $S$ \Term{locally-noetherian}{局部诺特}或 $G$ 在 $S$ 上\Term{finite-presentation}{有限表示}。则对每个使 $(H_1)_s=(H_2)_s$ 的 $s\in S$，存在 $s$ 的\Term{open-neighborhood}{开邻域} $U$，使 $H_1|_U=H_2|_U$。
+\end{SGAresult}
+\begin{SGAresult}{推论}{5.3 bis}
+在前述条件下，另设 $G$ 在 $S$ 上\Term{separated}{分离}。设 $U$ 为使 $(H_1)_s=(H_2)_s$ 的 $s\in S$ 的\Term{set}{集合}。则 $U$ 是 $S$ 的\Term{open-and-closed}{开闭子集}，且 $H_1|_U=H_2|_U$。
+\end{SGAresult}
+\begin{SGAresult}{推论}{5.4 bis}
+设 $S$ 为\Term{prescheme}{预概形}，$G$ 为 $S$ 上\Term{separated}{分离}且\Term{finite-presentation}{有限表示}的\Term{group-prescheme}{群预概形}，$S'\to S$ 为\Term{fpqc-topology}{忠实平坦拟紧拓扑}的\Term{covering-morphism}{覆盖态射}，且\Term{fiber}{纤维}\Term{geometrically-connected}{几何连通}，$H'$ 为 $G'=G\times_S S'$ 的\Term{finite-type}{有限型}的\Term{multiplicative-type}{乘法型}\Term{subgroup}{子群}。
+
+则存在唯一的 $G$ 的\Term{subgroup}{子群} $H$，使 $H'=H\times_S S'$；由 1.1 和 2.1 b)，$H$ 在 $S$ 上为\Term{finite-type}{有限型}的\Term{multiplicative-type}{乘法型群}。若 $S'\to S$ 有\Term{section}{截面} $g$，则 $H$ 为 $G'$ 的\Term{subgroup}{子群} $H'$ 沿 $g:S\to S'$ 的\Term{inverse-image}{逆像}。
+\end{SGAresult}
+\begin{SGAresult}{\Term{theorem}{定理}}{5.6}
+设 $S$ 为\Term{prescheme}{预概形}，$u:H\to G$ 为 $S$-\Term{group-prescheme}{群预概形}的\Term{homomorphism}{同态}，其中 $H$ 为\Term{finite-type}{有限型}的\Term{multiplicative-type}{乘法型群}，$G$ 在 $S$ 上\Term{finite-presentation}{有限表示}。
+
+ a) 假设 $G$ 的\Term{fiber}{纤维}\Term{connected}{连通}，且 $s\in S$ 满足 $u_s:H_s\to G_s$ 是\Term{central-homomorphism}{中心同态}。则存在 $s$ 的\Term{open-neighborhood}{开邻域} $U$，使 $u$ 诱导的\Term{homomorphism}{同态} $H|_U\to G|_U$ 为\Term{central-homomorphism}{中心同态}。
+
+ b) 假设对每个 $s\in S$，$u_s:H_s\to G_s$ 为\Term{central-homomorphism}{中心同态}。则 $u$ 为\Term{central-homomorphism}{中心同态}。
+\end{SGAresult}
+证明 a)。\footnote{编者注：我们展开了原文中 a) 的证明。}完全照 5.1 b) 的证明，可设 $S$ \Term{local-scheme}{局部}且\Term{closed-point}{闭点}为 $s$，再设 $H=D_S(M)$ \Term{diagonalizable}{可对角化}，继而存在 $A=\mathcal O_{S,s}$ 的\Term{finite-type}{有限型}子 $\mathbf Z$-\Term{algebra}{代数} $A_i$ 和\Term{morphism}{态射} $u_i:D_{S_i}(M)\to G_i$，使 $u_{s_i}$ 为\Term{central-homomorphism}{中心同态}（$s_i$ 是 $s$ 在 $S_i$ 中的像），且 $u$ 由它经\Term{base-change}{基变换}得到。这将问题归约到 $S$ 是\Term{noetherian}{诺特}\Term{local-scheme}{局部概形}、\Term{closed-point}{闭点}为 $s$ 的情形，此时需证 $u$ 为\Term{central-homomorphism}{中心同态}。
+\SourcePage{52}
+设 $K$ 为\Term{subprescheme}{子预概形} $\operatorname{Ker}(v,w)$，其中 $v,w:H\times_S G\rightrightarrows G$ 定义为
+\[v(h,g)=g,\qquad w(h,g)=\operatorname{int}(u(h))\cdot g=u(h)gu(h)^{-1}.\]
+则 $K$ 是 $G$-群 $H_G=H\times_S G$ 的一个 $G$-\Term{subgroup}{子群}；要证它等于 $H_G$。由 4.9，只需证对每个整数 $m>0$，它包含 ${}_m(H_G)=({}_mH)\times_S G$；故归约到 $H={}_mH$，因而 $H$ 在 $S$ 上\Term{finite}{有限}的情形。
+
+设 $e$ 为\Term{fiber}{纤维} $G_s$ 的单位元素，则 $S'=\operatorname{Spec}(\mathcal O_{G,e})$ 是\Term{noetherian}{诺特}\Term{local-scheme}{局部概形}（$G$ 在\Term{noetherian}{诺特}的 $S$ 上\Term{finite-presentation}{有限表示}）。记 $S'_n=S'\times_S S_n$，其中 $S_n=\operatorname{Spec}(A/\mathfrak m^{n+1})$。于是 $K_{S'}=K\times_G S'$ 是 $H_{S'}=H\times_S S'$ 的\Term{subprescheme}{子预概形}，且由 3.9，对每个 $n$ 均有 $K_{S'_n}=H_{S'_n}$。\footnote{编者注：我们展开并改正了原文，用 $H_{S'_n}$ 代替“$(G_H)_n$ 在 $H_n$ 上的\Term{unit-section}{单位截面}”。}因为 $H_{S'}$ 在 $S'$ 上\Term{finite}{有限}，对\Term{noetherian}{诺特}\Term{local-ring}{局部环} $B$ 应用 5.0，得 $K_{S'}=H_{S'}$。
+
+另一方面，$H\times_S G$ \Term{noetherian}{诺特}（因其在\Term{noetherian}{诺特}的 $S$ 上\Term{finite-presentation}{有限表示}），故\Term{immersion}{浸入} $K\hookrightarrow H\times_S G$ \Term{finite-type}{有限型}（参见 EGA I，6.3.5），从而 $K$ 在 $G$ 上\Term{finite-type}{有限型}、因而\Term{finite-presentation}{有限表示}。于是等式 $K_{S'}=H_G\times_G S'$ 由 EGA IV$_3$，8.8.2.4 蕴含：存在 $e$ 在 $G$ 中的\Term{open-neighborhood}{开邻域} $W$，使 $K\times_G W=H_G\times_G W=H\times_S W$。所以 $K$ 包含 $G_H$ 在 $H$ 上的\Term{unit-section}{单位截面}的\Term{open-neighborhood}{开邻域} $V=H\times_S W$。
+
+对每个 $t\in H$，\Term{fiber}{纤维} $G_t$（是一个 $\kappa(t)$-\Term{algebraic-group}{代数群}）为 Cohen--Macaulay（第 VI$_{\mathrm A}$ 讲 1.1.1），因而无\Term{embedded-component}{嵌入分支}；又因它\Term{connected}{连通}，故\Term{irreducible}{不可约}（第 VI$_{\mathrm A}$ 讲 2.4），其唯一\Term{associated-point}{伴随点}是\Term{generic-point}{泛点}。因此，由 EGA IV$_2$，3.1.8，\Term{open-subset}{开集} $V_t$ 在 $G_t$ 中\Term{schematically-dense}{概形稠密}。由 4.3，$V$ 在 $G_H$ 中\Term{schematically-dense}{概形稠密}。又 $K$ 为 $G_H$ 的 $H$-\Term{subgroup}{子群}，因而在每个\Term{fiber}{纤维} $G_h$ 中诱导\Term{subgroup}{子群} $K_h$；后者包含单位元素的\Term{open-neighborhood}{开邻域}，且 $G_h$ \Term{connected}{连通}，所以 $K_h=G_h$，从而 $K=G_H$ 在\Term{set}{集合}意义下成立。因此 $K$ 是 $G_H$ 的\Term{closed-subprescheme}{闭子预概形}，且包含\Term{schematically-dense}{概形稠密}的\Term{subprescheme}{子预概形} $V$，故 $K=G_H$，这就证明 a)。
+
+最后，b) 直接来自 3.9；这里只需注意，要验证 $P=G\times_S H$ 的\Term{subprescheme}{子预概形} $K$ 等于 $P$，只需验证对每个\Term{base-change}{基变换} $S'\to S$，其中 $S'$ 是 $S$ 某个\Term{local-ring}{局部环}的\Term{artinian-quotient}{阿廷商}，均有 $K'=P'$。
+\SGAsection{6}{乘法型群的单态射及这种群的同态的典范分解}
+\begin{SGAresult}{\Term{lemma}{引理}}{6.1}
+设 $S$ 为\Term{quasi-compact}{拟紧}\Term{prescheme}{预概形}，$G$ 为交换的 $S$-\Term{group-prescheme}{群预概形}，它在 $S$ 上\Term{finite-presentation}{有限表示}且\Term{quasi-finite}{拟有限}。则存在整数 $n>0$，使 $n\cdot\operatorname{id}_G=0$，即 $G={}_nG$。
+\end{SGAresult}
+若 $S$ 为域 $k$ 的\Term{spectrum}{谱}，则 $G$ 在 $k$ 上\Term{finite}{有限}，由第 VII$_{\mathrm A}$ 讲 8.5，只需
+\SourcePage{53}
+取 $n=\deg(G/k)$。现在设 $S=\operatorname{Spec}(A)$ \Term{local-artinian}{局部阿廷}，$k$ 为 $A$ 的\Term{residue-field}{剩余域}，$G_0=G\otimes_A k$，$n_0=\deg(G_0/k)$。分两种情形。
+
+a) $k$ 的\Term{characteristic}{特征}为零。此时 $G_0$ 在 $k$ 上\Term{separable}{可分}，故 $G$ 在 $S$ 上\Term{unramified}{非分歧}。因此 $G$ 的\Term{unit-section}{单位截面}是\Term{open-immersion}{开浸入}，故 ${}_nG=\operatorname{Ker}(n\cdot\operatorname{id}_G)$ 为 $G$ 的\Term{open-subscheme}{开子概形}；所以它等于 $G$ 只需在\Term{set}{集合}意义下等于 $G$，从而可取 $n=n_0$。
+
+b) $k$ 的\Term{characteristic}{特征}为 $p>0$。记 $\mathfrak m$ 为 $A$ 的\Term{maximal-ideal}{极大理想}，对每个 $r$ 令 $S_r=\operatorname{Spec}(A/\mathfrak m^{r+1})$。取整数 $m$ 使 $\mathfrak m^{m+1}=0$，我们断言可取 $n=p^mn_0$。事实上，对 $m$ 归纳，并记 $n'=p^{m-1}n_0$，可设 $n'\cdot\operatorname{id}_G$ 在 $G_{m-1}=G\times_S S_{m-1}$ 中诱导零\Term{endomorphism}{自同态}。
+
+记 $E$ 为具有此性质的 $G$ 的\Term{endomorphism}{自同态} $u$ 的\Term{set}{集合}，$K$ 为群\Term{functor}{函子}\Term{morphism}{态射} $G\to\prod_{S_{m-1}/S}G$ 的\Term{kernel}{核}（参见第 III 讲 0.1.2）。\footnote{编者注：以下展开了原文，并明确所用的第 III 讲结果。}于是 $E$ 可认同于 $\operatorname{Hom}_{S\text{-gr.}}(G,K)$；特别地，$E$ 上的\Term{abelian-group}{阿贝尔群}运算由 $K$ 的运算诱导。而由第 III 讲 0.9，$K$ 是如下 $S$-群\Term{functor}{函子}：对每个 $g:T\to S$，赋予 $k$-\Term{vector-space}{向量空间}
+\[\operatorname{Hom}_{\mathcal O_{T_0}}\bigl(g_0^*(\Omega^1_{G_0/S_0}),\mathfrak m^m\mathcal O_T\bigr).\]
+所以对每个 $u\in E$，有 $pu=0$。因此 $pn'\cdot\operatorname{id}_G=0$，即 $p^mn_0\cdot\operatorname{id}_G=0$。
+
+现在设 $S$ \Term{noetherian}{诺特}（用通常的归约到\Term{noetherian}{诺特}情形的方法，可在 6.1 中归约到这里\footnote{编者注：因为 $S$ \Term{quasi-compact}{拟紧}，可用\Term{finite}{有限}个\Term{affine-open}{仿射开集}\Term{cover}{覆盖}，所以归约到 $S=\operatorname{Spec}(A)$。又 $G$ 在 $S$ 上\Term{finite-presentation}{有限表示}，故可应用 EGA IV$_3$，8.8.2。}）。只需将前述结论与以下\Term{lemma}{引理}结合。
+\begin{SGAresult}{\Term{lemma}{引理}}{6.2}
+设 $X$ 为\Term{noetherian}{诺特}的 $S$ 上\Term{quasi-finite}{拟有限}的\Term{prescheme}{预概形}，并考虑\Term{subprescheme}{子预概形}的递增\Term{filtered-family}{滤过族} $(X_i)_{i\in I}$，满足：对每个 $s\in S$ 和 $n\geq0$，记 $S_{s,n}=\operatorname{Spec}(\mathcal O_{S,s}/\mathfrak m^{n+1})$，则存在 $i\in I$，使
+\[X_i\times_S S_{s,n}=X\times_S S_{s,n}.\]
+在这些条件下，存在 $i\in I$，使 $X_i=X$。
+\end{SGAresult}
+因为 $S$ \Term{noetherian}{诺特}，存在最大的\Term{open-subset}{开集} $U$，使对充分大的 $i$，有 $X|_U=X_i|_U$；要证 $U=S$。换言之，若 $U\ne S$，我们要找到严格大于 $U$ 的\Term{open-subset}{开集} $U'$，以及某个 $i$，使 $X|_{U'}=X_i|_{U'}$。在 $S-U$ 的某个\Term{maximal-point}{极大点} $s$ 处\Term{localization}{局部化}，归约到 $S$ \Term{local-scheme}{局部}、\Term{closed-point}{闭点}为 $s$，且 $U=S-\{s\}$ 的情形。（事实上，记 $S'=\operatorname{Spec}(\mathcal O_{S,s})$，若存在 $i$ 使 $X\times_S S'=X_i\times_S S'$，则存在 $s$ 的\Term{open-neighborhood}{开邻域} $V$，\footnote{编者注：我们将上文的 $X-\{s\}$ 改为 $S-\{s\}$。还应记住，\Term{quasi-finite}{拟有限}\Term{morphism}{态射}按定义是\Term{finite-type}{有限型}的，参见 EGA II，6.2.3（“\Term{locally-quasi-finite}{局部拟有限}”的定义见 EGA III$_2$，勘误 III 20）。故此处（$S$ \Term{noetherian}{诺特}）$X$ 在 $S$ 上\Term{finite-presentation}{有限表示}，每个\Term{immersion}{浸入} $X_i\hookrightarrow X$ 均\Term{finite-type}{有限型}（由 EGA I，6.3.5），所以 $X_i$ 在 $S$ 上\Term{finite-presentation}{有限表示}，可应用 EGA IV$_3$，8.8.2。}
+\SourcePage{54}
+使 $X|_V=X_i|_V$；取 $i$ 充分大使 $X_i|_U=X|_U$，则 $X|_W=X_i|_W$，其中 $W=U\cup V$。）
+
+对充分大的 $i$，因 $X|_U=X_i|_U$，可见 $X_i$ 是 $X$ 的\Term{closed-subprescheme}{闭子预概形}，由\Term{support}{支集}包含在 $X_s=X_0=X\times_S S_0$ 中的\Term{ideal}{理想} $\mathcal I^{(i)}$ 定义（其中 $S_n=\operatorname{Spec}(A/\mathfrak m^{n+1})$，$S=\operatorname{Spec}(A)$）。因为 $X_0$ 在 $S_0$ 上\Term{quasi-finite}{拟有限}，$X_0$ 是\Term{noetherian}{诺特}的 $X$ 的\Term{finite}{有限}\Term{closed-subset}{闭子集}，故 $\mathcal I^{(i)}$ 为\Term{finite-length}{有限长度}\Term{module}{模}。所以存在整数 $n\geq0$，使 $\mathcal I^{(i)}\cap\mathfrak m^{n+1}\mathcal O_X=0$。另一方面，依 6.2 的假设，增大 $i$ 后，可设 $\mathcal I^{(i)}$ 在 $\mathcal O_{X_n}=\mathcal O_X/\mathfrak m^{n+1}\mathcal O_X$ 中的像为零。因此 $\mathcal I^{(i)}=0$，故 $X_i=X$。证毕。
+\begin{SGAresult}{\Term{lemma}{引理}}{6.3}
+设 $S$ 为\Term{prescheme}{预概形}，$K$ 为 $S$ 上\Term{locally-finite-presentation}{局部有限表示}的\Term{group-prescheme}{群预概形}，$s\in S$ 满足 $K_s$ 在单位元素处在 $\kappa(s)$ 上\Term{quasi-finite}{拟有限}（分别地，\Term{unramified}{非分歧}）。则存在 $s$ 的\Term{open-neighborhood}{开邻域} $U$，使 $K|_U$ 在 $U$ 上\Term{locally-quasi-finite}{局部拟有限}（分别地，\Term{unramified}{非分歧}）。\footnote{更一般的断言见第 VI$_{\mathrm B}$ 讲 2.5 (ii)。}
+\end{SGAresult}
+事实上，设 $V$ 为满足下述条件的 $x\in K$ 的\Term{set}{集合}：记 $t$ 为 $x$ 在 $S$ 中的像，则\Term{fiber}{纤维} $K_t$ 在 $x$ 处在 $\kappa(t)$ 上\Term{quasi-finite}{拟有限}（分别地，\Term{unramified}{非分歧}），即 $x$ 是 $K_t$ 的\Term{isolated-point}{孤立点}（分别地，并且其在 $K_t$ 中的\Term{local-ring}{局部环}为 $\kappa(t)$ 的\Term{separable-extension}{可分扩张}）。因为 $K$ 在 $S$ 上\Term{locally-finite-presentation}{局部有限表示}，已知 $V$ \Term{open}{开}\footnote{编者注：参见 EGA IV$_3$，13.1.4 及 EGA IV$_4$，17.4.1。此外，我们用 $t$（而非 $s$）记 $x$ 的像。}；故若 $\varepsilon$ 是 $K$ 的\Term{unit-section}{单位截面}，则 $\varepsilon^{-1}(V)$ \Term{open}{开}。依假设它包含 $s$，故为 $s$ 的\Term{open-neighborhood}{开邻域} $U$。这个 $U$ 符合要求，即 $t\in U$ 蕴含 $K_t$ 在 $\kappa(t)$ 上\Term{locally-quasi-finite}{局部拟有限}（分别地，\Term{unramified}{非分歧}）：因为 $K_t$ 是 $\kappa(t)$ 上\Term{locally-finite-type}{局部有限型}的群，由它在 $\varepsilon(t)$ 处\Term{quasi-finite}{拟有限}（分别地，\Term{unramified}{非分歧}）即可得出，参见第 VI$_{\mathrm B}$ 讲 1.3。
+
+结合 6.1 和 6.3，得到：
+\begin{SGAresult}{\Term{theorem}{定理}}{6.4}
+设 $S$ 为\Term{prescheme}{预概形}，$H$ 为\Term{finite-type}{有限型}的\Term{multiplicative-type}{乘法型} $S$-群，$K$ 为 $H$ 的\Term{closed-subgroup-prescheme}{闭子群预概形}，且在 $S$ 上\Term{finite-presentation}{有限表示}。设 $s\in S$ 满足 $K_s$ \Term{finite}{有限}。
+
+则存在 $s$ 的\Term{open-neighborhood}{开邻域} $U$，使 $K|_U$ 包含于某个 ${}_nH|_U$，从而更有（因 ${}_nH$ 在 $S$ 上\Term{finite}{有限}）$K|_U$ 在 $U$ 上\Term{finite}{有限}。
+\end{SGAresult}
+利用 \Term{nakayama-lemma}{Nakayama 引理}，\Term{pushout}{推出}：
+\begin{SGAresult}{推论}{6.5}
+沿用前述记号，设 $K_s$ 为\Term{unit-group}{单位群}。则存在 $s$ 的\Term{open-neighborhood}{开邻域} $U$，使 $K|_U$ 为\Term{unit-group}{单位群}。
+\end{SGAresult}
+\begin{SGAresult}{推论}{6.6}
+设 $u:H\to G$ 为 $S$-\Term{group-prescheme}{群预概形}的\Term{homomorphism}{同态}，其中 $H$ 为\Term{finite-type}{有限型}的\Term{multiplicative-type}{乘法型群}，$G$ 在 $S$ 上\Term{separated}{分离}。再设 $S$ \Term{locally-noetherian}{局部诺特}，或 $G$ 在 $S$ 上\Term{locally-finite-presentation}{局部有限表示}。\footnote{编者注：事实上只需假设 $G$ 在 $S$ 上\Term{locally-finite-type}{局部有限型}；由 EGA IV$_4$，1.4.3 (v)，因为 $H\to S$ \Term{finite-presentation}{有限表示}，这蕴含 $H\to G$ \Term{locally-finite-presentation}{局部有限表示}，从而经\Term{base-change}{基变换}得到的 $K\to S$ 亦然。}
+\SourcePage{55}
+若 $s\in S$ 满足 $u_s:H_s\to G_s$ 为\Term{monomorphism}{单态射}，则存在 $s$ 的\Term{open-neighborhood}{开邻域} $U$，使 $u$ 诱导\Term{monomorphism}{单态射} $H|_U\to G|_U$。
+\end{SGAresult}
+事实上，设 $K=\operatorname{Ker}(u)$；关于 $u_s$ 的假设表示 $K_s$ 为\Term{unit-group}{单位群}，而结论表示对适当的 $U$，$K|_U$ 为\Term{unit-group}{单位群}。因为 $G$ 在 $S$ 上\Term{separated}{分离}，$K$ 是 $H$ 的\Term{closed-subgroup}{闭子群}；而在不假设 $S$ \Term{locally-noetherian}{局部诺特}、改假设 $G$ 在 $S$ 上\Term{locally-finite-presentation}{局部有限表示}的情形，$K$ 在 $S$ 上\Term{locally-finite-presentation}{局部有限表示}（见前注），从而在 $S$ 上\Term{finite-presentation}{有限表示}：因为它在 $S$ 上\Term{separated}{分离}（$H$ 如此），且在 $S$ 上\Term{quasi-compact}{拟紧}（是 $S$ 上\Term{quasi-compact}{拟紧}的 $H$ 的闭\Term{subobject}{子对象}）。所以可应用 6.5，得到 6.6。
+
+\textbf{注记 6.6.1。}\footnote{编者注：为便于后文引用，我们加上编号 6.6.1。}在 6.6 的假设下，若 $G$ 还在 $S$ 上\Term{affine}{仿射}（分别地，\Term{finite-presentation}{有限表示}），则 $H|_U\to G|_U$ 甚至为\Term{closed-immersion}{闭浸入}，如 2.5（分别地，2.6）所指出的。
+\begin{SGAresult}{推论}{6.7}
+设 $u:H\to G$ 为 $S$-\Term{group-prescheme}{群预概形}的\Term{homomorphism}{同态}，其中 $H$ 为\Term{finite-type}{有限型}的\Term{multiplicative-type}{乘法型群}；假设 $S$ \Term{locally-noetherian}{局部诺特}或 $G$ 在 $S$ 上\Term{locally-finite-presentation}{局部有限表示}。
+
+若各\Term{fiber}{纤维}上诱导的所有\Term{homomorphism}{同态} $u_s:H_s\to G_s$ 都为\Term{monomorphism}{单态射}，则 $u$ 为\Term{monomorphism}{单态射}。
+\end{SGAresult}
+论证与 6.6 相同。这里无需假设 $G$ 在 $S$ 上\Term{separated}{分离}来保证 $K$ 在 $H$ 中\Term{closed}{闭}，因为各 $u_s$ 为\Term{monomorphism}{单态射}的假设，蕴含 $K$ 在\Term{set}{集合}意义下只有 $G$ 的\Term{unit-section}{单位截面}。
+\begin{SGAresult}{\Term{theorem}{定理}}{6.8}
+设 $u:H\to G$ 为 $S$-\Term{group-prescheme}{群预概形}的\Term{homomorphism}{同态}，其中 $H$ 为\Term{finite-type}{有限型}的\Term{multiplicative-type}{乘法型群}，$G$ 在 $S$ 上\Term{separated}{分离}。再设 $S$ \Term{locally-noetherian}{局部诺特}或 $G$ 在 $S$ 上\Term{finite-presentation}{有限表示}。
+
+则 $K=\operatorname{Ker}(u)$ 是 $H$ 的\Term{finite-type}{有限型}的\Term{multiplicative-type}{乘法型}\Term{subgroup}{子群}，且 $u$ \Term{resolution}{分解}为
+\[H\xrightarrow{u'}H/K\xrightarrow{u''}G,\]
+其中 $H/K$ 为\Term{finite-type}{有限型}的\Term{multiplicative-type}{乘法型群}，$u'$ 为\Term{canonical}{典范}\Term{homomorphism}{同态}，它\Term{faithfully-flat}{忠实平坦}（且\Term{affine}{仿射}），$u''$ 是\Term{monomorphism}{单态射}。
+\end{SGAresult}
+（注意，如 6.6.1 所述，若 $G$ 在 $S$ 上\Term{affine}{仿射}或\Term{finite-presentation}{有限表示}，则 $u''$ 是\Term{closed-immersion}{闭浸入}。）只需证明 $K$ 为\Term{multiplicative-type}{乘法型}，其余部分由 2.7 和第 IV 讲 5.2.6 得到。
+
+先设 $G$ 在 $S$ 上\Term{finite-presentation}{有限表示}。此假设在\Term{base-change}{基变换}下保持，所以为证 $K$ 为\Term{multiplicative-type}{乘法型}，可归约到 $H$ \Term{diagonalizable}{可对角化}，即 $H=D_S(M)$，其中 $M$ 为\Term{finitely-generated}{有限生成}\Term{abelian-group}{交换群}。取 $s\in S$，则 $K_s$ 为 $H_s=D_{\kappa(s)}(M)$ 的\Term{closed-subgroup}{闭子群}，故
+\SourcePage{56}
+由 8.1\footnote{编者注：我们改正了误引的第 IV 讲 4.7.5。注意本讲第 8 节独立于第 2 至 7 节。}，它形如 $D_{\kappa(s)}(N)$，其中 $N$ 为 $M$ 的\Term{quotient-group}{商群}。记 $K'=D_S(N)$，则 $K'$ 是 $H$ 的\Term{multiplicative-type}{乘法型}\Term{subgroup}{子群}；设 $v':K'\to G$ 为 $u$ 诱导的\Term{homomorphism}{同态}。\footnote{编者注：我们将“由 $G$ 诱导”改为“由 $u$ 诱导”。}按构造 $v'_s$ 是\Term{unit-homomorphism}{单位同态}，所以由 5.2，存在 $s$ 的\Term{open-neighborhood}{开邻域} $U$，使 $v'|_U:K'|_U\to G|_U$ 为\Term{unit-homomorphism}{单位同态}。将 $S$ 换成 $U$，可设 $v'$ 为\Term{unit-homomorphism}{单位同态}，因此 $u$ \Term{resolution}{分解}为
+\[H\xrightarrow{u'}H/K'\xrightarrow{u''}G.\]
+因为 $u''_s$ 由 $u_s$ 通过 $H_s\to H_s/\operatorname{Ker}(u_s)$ \Term{resolution}{分解}得到，所以 $u''_s$ 为\Term{monomorphism}{单态射}（第 IV 讲 5.2.6）；由 6.6，存在 $s$ 的\Term{open-neighborhood}{开邻域} $U$，使 $u''|_U:(H/K')|_U\to G|_U$ 是\Term{monomorphism}{单态射}。\Term{restriction}{限制} $S$ 后，可设 $u''$ 是\Term{monomorphism}{单态射}，从而 $\operatorname{Ker}(u)=\operatorname{Ker}(u')=K'$，这证明 $\operatorname{Ker}u$ 为\Term{multiplicative-type}{乘法型}。
+
+若不假设 $G$ 在 $S$ 上\Term{finite-presentation}{有限表示}，而假设 $S$ \Term{locally-noetherian}{局部诺特}，至少当 $H$ \Term{diagonalizable}{可对角化}时，同样的证明适用。在 $H$ 不满足这个条件时，需证明可找到\Term{covering-base-change}{覆盖基变换} $S'\to S$，其中 $S'$ \Term{locally-noetherian}{局部诺特}，并使 $H$ \Term{trivialization}{平凡化}。下一讲确将证明这一点（第 X 讲 4.6）。
+\SGAsection{7}{到仿射群的形式同态的代数性}
+\begin{SGAresult}{\Term{theorem}{定理}}{7.1}
+设 $A$ 为\Term{noetherian}{诺特}环，带有\Term{ideal}{理想} $I$，且 $A$ 在 $I$-\Term{adic-topology}{进拓扑}下\Term{separated}{分离}且\Term{complete}{完备}；令 $S=\operatorname{Spec}(A)$，$S_n=\operatorname{Spec}(A/I^{n+1})$。设 $H,G$ 为 $S$-\Term{group-prescheme}{群预概形}，其中 $H$ 是\Term{isotrivial}{等平凡}的\Term{multiplicative-type}{乘法型群}，$G$ \Term{affine}{仿射}。
+
+则\Term{canonical}{典范}映射
+\[\theta:\operatorname{Hom}_{S\text{-gr.}}(H,G)\longrightarrow\varprojlim_n\operatorname{Hom}_{S_n\text{-gr.}}(H_n,G_n)\tag{$\times$}\]
+为\Term{bijective}{双射}（其中 $H_n,G_n$ 为 $H,G$ 经\Term{base-change}{基变换} $S_n\to S$ 所得的 $S_n$-群）。
+\end{SGAresult}
+先设 $H$ \Term{diagonalizable}{可对角化}，故形如
+\[H=\operatorname{Spec}A(M),\]
+其中 $B=A(M)$ 是以 $A$ 为系数的\Term{abelian-group}{交换群} $M$ 的\Term{group-algebra}{群代数}。另有 $G=\operatorname{Spec}(C)$，$C$ 是带有\Term{diagonal-map}{对角映射}（满足熟知公理）的 $A$-\Term{algebra}{代数}。因此 $S$-群\Term{homomorphism}{同态} $H\to G$ 与相容于\Term{diagonal-map}{对角映射}的 $A$-\Term{algebra}{代数}\Term{homomorphism}{同态} $\varphi:C\to B$ 一一对应，即对每个 $f\in C$ 满足
+\[\Delta_H(\varphi(f))=(\varphi\otimes\varphi)(\Delta_G(f)),\]
+\SourcePage{57}
+其中 $\Delta_H,\Delta_G$ 为\Term{diagonal-map}{对角映射}。对 $S_n$-群\Term{homomorphism}{同态} $H_n\to G_n$ 也有类似描述：它由某些 $A_n$-\Term{algebra}{代数}\Term{homomorphism}{同态} $\varphi_n:C_n\to B_n$ 给出，其中 $A_n=A/I^{n+1}$，$B_n=B\otimes_A A_n$，$C=C\otimes_A A_n$。令
+\[\widehat B=\varprojlim_nB_n,\qquad\widehat C=\varprojlim_nC_n.\]
+则 $\widehat B=\varprojlim_n A_n(M)$ 可认同于乘积 $A^M$ 的一个\Term{submodule}{子模}，即由 $A$ 的元素族 $(a_m)_{m\in M}$ 组成，其中 $a_m$ 沿 $M$ 的\Term{finite}{有限}\Term{subset}{子集}的补集所成\Term{filter}{滤子}，在 $I$-\Term{adic-topology}{进拓扑}下趋于零。这已说明\Term{canonical}{典范}\Term{homomorphism}{同态} $B\to\widehat B$ \Term{injective}{单射}\footnote{编者注：我们展开了接下来的内容。}，因为\Term{projective-system}{投射系} $\theta(\varphi)=(\varphi_n)_{n\geq0}$ 定义\Term{homomorphism}{同态} $\widehat\varphi:\widehat C\to\widehat B$，使下图\Term{commutative-diagram}{交换}：
+\[
+\begin{tikzcd}
+C\arrow[r,"\varphi"]\arrow[d]&B\arrow[d]\\
+\widehat C\arrow[r,"\widehat\varphi"]&\widehat B.
+\end{tikzcd}
+\]
+证明 $\theta$ \Term{surjective}{满射}：取一个\Term{projective-system}{投射系} $(\varphi_n)_{n\geq0}$，要证它由左端某个 $\varphi$ \Term{reduced}{约化}得到。起初，$(\varphi_n)$ 在\Term{completion}{完备化}\Term{algebra}{代数}上定义\Term{homomorphism}{同态}
+\[\widehat\varphi:\widehat C\longrightarrow\widehat B,\]
+只需证明它与\Term{canonical}{典范}\Term{homomorphism}{同态} $C\to\widehat C$ 的复合 $\Phi:C\to\widehat C\xrightarrow{\widehat\varphi}\widehat B$ 将 $C$ 映入 $B$。若此成立，就得到模各 $I^{n+1}$ \Term{reduced}{约化}为 $\varphi_n$ 的 $A$-\Term{algebra}{代数}\Term{homomorphism}{同态} $\varphi:C\to B$，立即可知它与\Term{diagonal-map}{对角映射}相容（因为各 $\varphi_n$ 如此，且 $B\otimes_A B\to\widehat{B\otimes_A B}$ \Term{injective}{单射}，这与上述论证相同，只需将 $M$ 换成 $M\times M$）。
+
+注意 $H$ 的\Term{diagonal-homomorphism}{对角同态} $\Delta_H$ 经\Term{completion}{完备化}定义\Term{homomorphism}{同态}
+\[\widehat\Delta_H:\widehat B\longrightarrow\widehat{B\otimes_A B},\]
+并有以下\Term{commutative-diagram}{交换图}（由各 $\varphi_n$ 定义的类似图取\Term{projective-limit}{投射极限}而得）：
+\[
+\begin{tikzcd}
+C\arrow[r,"\Phi"]\arrow[d,"\Delta_G"']&\widehat B\arrow[d,"\widehat\Delta_H"]\\
+C\otimes_A C\arrow[r,"\Psi"]&\widehat{B\otimes_A B},
+\end{tikzcd}
+\]
+其中 $\Psi$ 为复合
+\[C\otimes_A C\xrightarrow{\Phi\otimes\Phi}\widehat B\otimes_A\widehat B\longrightarrow\widehat{B\otimes_A B}\]
+\SourcePage{58}
+（最后一个\Term{arrow}{箭头}为显然的\Term{canonical}{典范}\Term{homomorphism}{同态}）。因此，对每个 $f\in C$，$\Phi(f)$ 是 $\widehat B$ 中一个在 $\widehat\Delta_H$ 下的像为 $\widehat{B\otimes_A B}$ 中“\Term{decomposable}{可分解}”元素的元素，即该像属于 $\widehat B\otimes_A\widehat B$ 的像。
+
+以 $(e_m)_{m\in M}$ 表示 $A(M)$ 的\Term{canonical-basis}{典范基}，以 $(e_{m,m'})$ 表示 $A(M\times M)=A(M)\otimes_A A(M)$ 的\Term{canonical-basis}{典范基}。因对每个 $m$，$\Delta_H(e_m)=e_m\otimes e_m=e_{m,m}$，现在只需应用：
+\begin{SGAresult}{\Term{lemma}{引理}}{7.2}
+设 $A$ 为\Term{noetherian}{诺特}环，$M$ 为\Term{set}{集合}，$(a_{m,m'})$ 为以 $M\times M$ 为指标的 $A$ 中元素族，满足：
+
+ (i) 若 $m\ne m'$，则 $a_{m,m'}=0$（即该族的\Term{support}{支集}包含在 $M\times M$ 的\Term{diagonal}{对角线}中）；
+
+ (ii) 有
+\[a_{m,m'}=\sum_i b_m^i c_{m'}^i,\]
+其中 $b^i,c^i$ 为\Term{finite}{有限}多个 $A^M$ 的元素（即 $(a_{m,m'})$ 属于\Term{canonical}{典范}\Term{homomorphism}{同态} $A^M\otimes_A A^M\to A^{M\times M}$ 的像）。
+
+则族 $(a_{m,m'})$ 的\Term{support}{支集}\Term{finite}{有限}。
+\end{SGAresult}
+由 (i)，族 $(a_{m,m'})$ 由各 $a_m=a_{m,m}$ 确定。对每个 $x=(x_n)_{n\in M}\in A^{(M)}$，令
+\[(u\cdot x)_m=\sum_{m'}a_{m,m'}x_{m'},\]
+即将 $(a_{m,m'})$ 解释为\Term{homomorphism}{同态} $u:A^{(M)}\to A^M$ 的矩阵。由 (i)，这简化为
+\[(u\cdot x)_m=a_mx_m.\]
+另一方面，由 (ii)，有
+\[u\cdot x\in\sum_i A\cdot b^i,\]
+所以 $u(A^{(M)})$ 包含在一个\Term{finitely-generated}{有限生成} $A$-\Term{module}{模}中。因此，记 $(e_m)_{m\in M}$ 为 $A^{(M)}\subset A^M$ 的\Term{canonical-basis}{典范基}，各 $a_me_m$ 包含在一个\Term{finitely-generated}{有限生成} $A$-\Term{module}{模}中。因为 $A$ \Term{noetherian}{诺特}，它们生成的\Term{module}{模}也\Term{finitely-generated}{有限生成}；由于各 $e_m$ \Term{linearly-independent}{线性无关}，这说明除\Term{finite}{有限}多个外，所有 $a_m$ 均为零。这证明了 7.2，因而也证明了 $H$ \Term{diagonalizable}{可对角化}时的 7.1。
+
+现在证明 7.1 的一般情形，只假设 $H$ \Term{isotrivial}{等平凡}，即存在\Term{finite-etale}{有限平展}\Term{surjective}{满射} $S'\to S$，使 $H'=H\times_S S'$ \Term{diagonalizable}{可对角化}。我们只用到 $S'\to S$ \Term{finite}{有限}且为\Term{covering-morphism}{覆盖态射}（对\Term{fpqc-topology}{忠实平坦拟紧拓扑}，甚至只对 $(\mathrm{Sch})$ 的\Term{canonical-topology}{典范拓扑}），因此“\Term{etale}{平展}”假设可替换为“\Term{flat}{平坦}”。
+
+令 $S''=S'\times_S S'$，同样引入 $S'_n$ 和 $S''_n=S''\times_S S_n=S'_n\times_{S_n}S'_n$，以及从 $H,G$ 经显然的\Term{base-change}{基变换}所得的 $H',G',H'',G'',H'_n,G'_n,H''_n,G''_n$。
+\SourcePage{59}
+注意 $H',H''$ 现在均\Term{diagonalizable}{可对角化}。还应注意，$S'$、从而 $S''$ 均\Term{affine}{仿射}；若 $S'=\operatorname{Spec}(A')$、$S''=\operatorname{Spec}(A'')$，则 $A',A''$ 在由 $IA'$、分别地 $IA''$ 定义的\Term{topology}{拓扑}下\Term{separated}{分离}且\Term{complete}{完备}（因 $A',A''$ 在 $A$ 上\Term{finite}{有限}）。因为 $S'\to S$ 和 $S'_n\to S_n$ 为\Term{covering-morphism}{覆盖态射}，得到以下\Term{set}{集合}映射的\Term{commutative-diagram}{交换图}，其两行均\Term{exact}{正合}：
+\[
+\begin{tikzcd}[column sep=small]
+\operatorname{Hom}_{S\text{-gr.}}(H,G)\arrow[r]\arrow[d,"u"']&\operatorname{Hom}_{S'\text{-gr.}}(H',G')\arrow[r,shift left]\arrow[r,shift right]\arrow[d,"u'"']&\operatorname{Hom}_{S''\text{-gr.}}(H'',G'')\arrow[d,"u''"]\\
+\varprojlim_n\operatorname{Hom}_{S_n\text{-gr.}}(H_n,G_n)\arrow[r]&\varprojlim_n\operatorname{Hom}_{S'_n\text{-gr.}}(H'_n,G'_n)\arrow[r,shift left]\arrow[r,shift right]&\varprojlim_n\operatorname{Hom}_{S''_n\text{-gr.}}(H''_n,G''_n).
+\end{tikzcd}
+\]
+（注意，第二行是关于各 $S'_n\to S_n$ 的\Term{exact}{正合}图的\Term{projective-limit}{投射极限}，故\Term{exact}{正合}。）由已证明的\Term{diagonalizable}{可对角化}情形，$u',u''$ 均为\Term{bijective}{双射}，故 $u$ 也为\Term{bijective}{双射}，7.1 得证。
+\begin{SGAresult}{推论}{7.3}
+在 7.1 的条件下，再假设 $G$ 在 $S$ 上\Term{smooth}{光滑}，并给定 $S_0$-群\Term{homomorphism}{同态} $u_0:H_0\to G_0$。则存在 $S$-群\Term{homomorphism}{同态} $u:H\to G$ \Term{lifting}{提升} $u_0$。任意两个这样的\Term{lifting}{提升} $u,u'$ 可由某个\Term{reduced}{约化}为 $G_0(S_0)$ 单位元素的 $g\in G(S)$ \Term{conjugate}{共轭}。
+\end{SGAresult}
+由 3.6 和 7.1 联合得到。为构造 $u$，逐步构造 $u_n$；3.6 保证可行，7.1 保证系 $(u_n)$ 来自某个 $u$。给定两个\Term{lifting}{提升} $u,u'$，为构造满足 $u'=\operatorname{int}(g)u$、$g_0=1$ 的 $g$，逐步构造 $g_n$，使 $g_0=1$，$g_n$ 由 $g_{n+1}$ \Term{reduced}{约化}得到，且 $u'_n=\operatorname{int}(g_n)u_n$；这由 3.6 保证。因为 $A$ \Term{separated}{分离}且\Term{complete}{完备}，各 $g_n$ 来自某个 $g\in G(S)$；为证 $u'=\operatorname{int}(g)u$，只需用 7.1 中的\Term{injective}{单射}性。
+
+\textbf{注记 7.4。}可以将 7.1 与 EGA III，5.4.1 比较：后者说明，如果把 $H$ 为\Term{multiplicative-type}{乘法型}、$G$ \Term{affine}{仿射}的假设，换为 $H$ 在 $S$ 上\Term{proper}{固有}、$G$ 在 $S$ 上\Term{separated}{分离}且\Term{locally-finite-type}{局部有限型}，7.1 仍然成立。能在没有\Term{properness}{固有性}假设下得到像 7.1 这样的结论，是很例外的；这里应将其理解为\Term{multiplicative-type}{乘法型群}结构的\Term{height}{高度}“\Term{rigidity}{刚性}”的一个方面。取 $G=H=\mathbf G_a$（\Term{additive-group}{加法群}）时，类似结论一般错误：可取\Term{characteristic}{特征}为 $p>0$ 的 $A$，并从\Term{additive-formal-series}{加性形式级数}
+\[u(T)=\sum_{n\geq0}a_nT^{p^n}\]
+模 $I^{n+1}$ \Term{reduced}{约化}定义 $u_n$，其中 $a_n\in A$ 在 $I$-\Term{adic-topology}{进拓扑}下趋于零，但在\Term{discrete-topology}{离散拓扑}下并不趋于零。若去掉 $G$ \Term{affine}{仿射}的假设，即使 $H=\mathbf G_m$（\Term{multiplicative-group}{乘法群}），7.1 也不成立。可从 $A$ 的\Term{field-of-fractions}{分式域} $K$ 上的\Term{elliptic-curve}{椭圆曲线}构造一个例子（$A$ 为\Term{complete-discrete-valuation-ring}{完备离散赋值环}），它在\Term{residue-field}{剩余域} $k$ 上\Term{reduced}{约化}为 $\mathbf G_m$（例如按 Néron--Kodaira 的\Term{reduced}{约化}理论理解）：
+\SourcePage{60}
+\footnote{编者注：可以具体写出这样的例子……}于是得到 $S$ 上\Term{smooth}{光滑}的交换\Term{group-scheme}{群概形} $G$，其\Term{special-fiber}{特殊纤维}为 $\mathbf G_{m,k}$（由 3.6，这允许定义\Term{isomorphism}{同构}的\Term{projective-system}{投射系} $u_n:H_n\xrightarrow{\sim}G_n$，其中 $H=\mathbf G_{m,A}$），但其\Term{generic-fiber}{泛纤维}是\Term{abelian-variety}{阿贝尔簇}，所以除 $0$ 外不存在其他 $S$-群\Term{homomorphism}{同态} $H\to G$。
+\SGAsection{8}{域上乘法型群的子群、商群与扩张}
+\footnote{1969 年 7 月增补。这一补遗节独立于第 3 至 7 节。}
+\begin{SGAresult}{补充说明}{8.0}
+\footnote{编者注：我们增加了这一补充说明。}设 $k$ 为域，$H$ 为\Term{affine}{仿射} $k$-\Term{group-scheme}{群概形}。以 $k[H]$ 表示其\Term{affine-algebra}{仿射代数}，以 $X(H)=\operatorname{Hom}_{k\text{-gr.}}(H,\mathbf G_{m,k})$ 表示 $H$ 的\Term{character-group}{特征标群}。由\Term{character-independence}{特征标无关性引理}，$X(H)$ 是 $k[H]$ 的\Term{linearly-independent}{线性无关}\Term{subset}{子集}。因此，$H$ \Term{diagonalizable}{可对角化}，当且仅当 $X(H)$ 生成 $k$-\Term{vector-space}{向量空间} $k[H]$。
+\end{SGAresult}
+\begin{SGAresult}{命题}{8.1}
+设 $G$ 为域 $k$ 上的\Term{diagonalizable}{可对角化}（分别地，\Term{multiplicative-type}{乘法型}）\Term{group-scheme}{群概形}。\footnote{编者注：我们增加了原文隐含的“域 $k$ 上”；另一方面，将“\Term{algebraic-group}{代数群}”换为“\Term{group-scheme}{群概形}”，因为不假设 $G$ \Term{finite-type}{有限型}。}则对 $G$ 的每个\Term{subgroup-scheme}{子群概形} $H$，$H$ 和 $G/H$ 都\Term{diagonalizable}{可对角化}（分别地，为\Term{multiplicative-type}{乘法型}）。
+\end{SGAresult}
+定义 1.1 立即将问题归约到非括注情形。用第 VI$_{\mathrm B}$ 讲 11.13 和第 VIII 讲 3.1，作简单的\Term{limit}{极限}过渡，归约到 $G$ 在 $k$ 上\Term{finite-type}{有限型}的情形。\footnote{编者注：应展开这一“\Term{limit}{极限}过渡”：它使用 8.0，以及等式 $G/H=\varprojlim_iG_i/H_i$，参见第 VI$_{\mathrm B}$ 讲 11.17 的证明。为证 $H=\varprojlim_i(H\cap G_i)$，是否使用了 $H$ 在 $G$ 中\Term{closed}{闭}这一事实？利用这一点，可以给出直接证明……}由第 VI$_{\mathrm B}$ 讲 11.16，\footnote{编者注：大概应该把第 VI$_{\mathrm B}$ 讲 11.16 改写为通常的、更好用的\Term{form}{形式}。特别地，下文只需一个 $f_i$……}可在 $G=D_k(M)$ 的\Term{affine-ring}{仿射环} $k(M)$ 中找到\Term{finite}{有限}个非零元素
+\[f_i=\sum_m a_{im}\,m,\qquad a_{im}\in k,\tag{8.1.1}\]
+使 $H$ 的点（取值于任意 $k$-\Term{algebra}{代数} $k'$）就是满足
+\[\tau_gf_i=\lambda_i(g)f_i,\qquad\lambda_i(g)\in k'\tag{8.1.2}\]
+的 $g\in G(k')$，其中 $\tau_g$ 表示以 $g$ 作\Term{translation}{平移}。而有
+\[\tau_gf_i=\sum_m a_{im}\chi_m(g)\,m,\tag{8.1.3}\]
+\SourcePage{61}
+其中 $\chi_m:G\to\mathbf G_{m,k}$ 是 $m$ 所对应的\Term{character}{特征标}，所以 (8.1.2) \Term{equivalence}{等价}于关系
+\[\chi_m(g)=\chi_{m'}(g)\qquad(m,m'\in Z_i),\tag{8.1.4}\]
+这里 $Z_i$ 为使 $a_{im}\ne0$ 的 $m\in M$ 的\Term{set}{集合}。这个关系也可写成
+\[\chi_{m'-m}(g)=1\qquad(m,m'\in Z_i).\]
+以 $N$ 表示 $M$ 中由所有 $m'-m$（$i$ 可变，且 $m,m'\in Z_i$）生成的\Term{subgroup}{子群}，由 $D_k(M)$（$\simeq G$）的定义，$H$ 可认同于 $D_k(M/N)$。再由第 VIII 讲 3.1，$G/H$ 可认同于 $D_k(N)$。证毕。
+\begin{SGAresult}{命题}{8.2}
+\footnote{编者注：我们展开了命题及其证明。}设 $k$ 为域，$H,K$ 为\Term{finite-type}{有限型}的\Term{multiplicative-type}{乘法型} $k$-\Term{group-scheme}{群概形}，$G$ 为 $k$-\Term{group-scheme}{群概形}，使存在\Term{exact-sequence}{正合列}
+\[1\longrightarrow H\longrightarrow G\longrightarrow K\longrightarrow1\]
+（这蕴含 $G$ 在 $k$ 上\Term{finite-type}{有限型}）。
+
+ (i) 若 $G$ 交换或 $K$ \Term{connected}{连通}，则 $G$ 为\Term{multiplicative-type}{乘法型}。
+
+ (ii) 若 $K,H$ 均\Term{diagonalizable}{可对角化}，且 $K$ 为\Term{torus}{环面}，则 $G$ \Term{diagonalizable}{可对角化}。
+\end{SGAresult}
+(i) 的证明请读者参阅第 XVII 讲 7.1.1，8.2 (i) 是它的特例；域的情形在第 XVII 讲 7.1.1 证明的 (i) 部分处理（并不使用随后各讲的结果）。
+
+(ii) 现在设 $K,H$ 均\Term{diagonalizable}{可对角化}：
+\[K\simeq D_k(M),\qquad H\simeq D_k(N),\]
+并假设 $G$ 为\Term{multiplicative-type}{乘法型}（依 (i)，当 $K$ 是\Term{torus}{环面}时确实如此）。由第 X 讲 1.4，$G$ 在 $k$ 上\Term{isotrivial}{等平凡}，即存在\Term{finite-separable-extension}{有限可分扩张} $k'/k$，使 $G'=G\times_k k'$ \Term{diagonalizable}{可对角化}，因而 $G'=D_{k'}(E)$，其中 $E$ 为\Term{abelian-group}{交换群}，且有\Term{exact-sequence}{正合列}
+\[0\longrightarrow D_{k'}(N)\longrightarrow D_{k'}(E)\longrightarrow D_{k'}(M)\longrightarrow0.\tag{1}\]
+由第 VIII 讲 3.1、3.2，$M$ 是 $E$ 的\Term{subgroup}{子群}，且有\Term{exact-sequence}{正合列}
+\[0\longrightarrow M\longrightarrow E\longrightarrow N\longrightarrow0.\tag{2}\]
+给定 $N$ 被 $M$ 的一个\Term{extension}{扩张} $E_0$，考虑\Term{diagonalizable}{可对角化}的 $k$-群 $G_0=D_k(E_0)$；则\Term{extension}{扩张}
+\[1\longrightarrow H\longrightarrow G_0\longrightarrow K\longrightarrow1\tag{3}\]
+的\Term{automorphism}{自同构}组成的 $k$-群\Term{functor}{函子} $\mathcal A$，即 $\operatorname{Aut}_{k\text{-gr.}}(G_0)$ 的如下群\Term{subfunctor}{子函子}：其在 $k$-\Term{prescheme}{预概形} $T$ 上的点为在 $H_T,K_T$ 上均诱导恒等的 $\varphi\in\operatorname{Aut}_{T\text{-gr.}}(G_T)$；它可认同于 $\operatorname{Hom}_{k\text{-gr.}}(K,H)$，由第 VIII 讲 1.5，这是值为 $L=\operatorname{Hom}_{\mathrm{gr.}}(N,M)$ 的\Term{constant-group}{常值} $k$-群。
+
+所以，$K$ 被 $H$ 的那些在 $k$ 的\Term{separable-closure}{可分闭包} $k_s$ 上变为与\Term{extension}{扩张} (3) \Term{isomorphism}{同构}的\Term{extension}{扩张} $G$ 的分类，等同于\Term{constant-group}{常值群} $L_k$ 下\Term{etale-topology}{平展拓扑}的 $k$-\Term{torsor}{挠子}的分类。
+\SourcePage{62}
+记 $\Gamma=\operatorname{Gal}(k_s/k)$，这些\Term{torsor}{挠子}由以下 Galois \Term{cohomology}{上同调}群分类（$L$ 为\Term{trivial}{平凡} $\Gamma$-\Term{module}{模}）：
+\[\mathrm H^1_{\text{ét}}(k,L_k)=\mathrm H^1(\Gamma,L)=\operatorname{Hom}_{\mathrm{gr.\ top.}}(\Gamma,L).\]
+若 $K$ 还是\Term{torus}{环面}，则 $M$ \Term{torsion-free}{无挠}，故 $L$ 也\Term{torsion-free}{无挠}，所以 $\operatorname{Hom}_{\mathrm{gr.\ top.}}(\Gamma,L)=0$；于是 $K$ 被 $H$ 的每个\Term{extension}{扩张}都已经\Term{diagonalizable}{可对角化}。
+
+\textbf{注记 8.3。}如 8.2 的证明已指出的，第一条在任意基上都在第 XVII 讲 7.1.1 中陈述并证明。另一方面，第二条用基本相同的证明可推广到\Term{normal}{正规}\Term{integral-scheme}{整基概形}（或更一般地，\Term{geometrically-unibranch}{几何单分支}\Term{base-scheme}{基概形}）的情形，只需使用下文第 X 讲 5.13。
+
+最后，也可将 8.1 看作较不平凡的结果 6.8 的推论；后者也在任意\Term{base-scheme}{基概形}上成立。\footnote{编者注：但应注意，6.8 的证明使用了 8.1！}
+
+\SGAsection{}{参考文献}
+\footnote{编者注：本讲引用的补充参考文献。}
+\begin{description}
+\item[{[BEns]}] N. Bourbaki，\emph{Théorie des ensembles}（《\Term{set-theory}{集合论}》），第 I--IV 章，Hermann，1970。
+\end{description}

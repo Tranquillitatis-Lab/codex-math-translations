@@ -1,0 +1,522 @@
+\SourcePage{107}
+\SGAchapter{III}{无穷小扩张}{Extensions infinitésimales}
+\begin{center}M. Demazure\end{center}
+本讲始终置于如下的一般情形。给定一个\Term{scheme}{概形} $S$ 及其上的一个\Term{coherent}{凝聚}\Term{nilpotent}{幂零}\Term{ideal}{理想} $\mathcal I$。以 $S_n$ 表示由\Term{ideal}{理想} $\mathcal I^{n+1}$ 定义的\Term{closed-subscheme}{闭子概形}（$n\geq0$）。特别地，$S_0$ 由 $\mathcal I$ 定义。由于 $\mathcal I$ \Term{nilpotent}{幂零}，$n$ 充分大时 $S_n=S$，且所有 $S_i$ 的\Term{underlying-topological-space}{底拓扑空间}相同。典型例子如下：$S$ 是一个 Artin \Term{local-ring}{局部环} $A$ 的谱，$\mathcal I$ 是 $A$ 的\Term{radical}{根基}所定义的\Term{ideal}{理想}，因而 $S_0$ 是 $A$ 的\Term{residue-field}{剩余域}的谱。
+
+在上述情形下，给定 $S_0$ 上的若干资料，要在 $S$ 上寻找它们的\Term{lifting}{提升}，即经由从 $S$ 到 $S_0$ 的\Term{base-change}{基变换}后重新得到原资料的资料。此过程借助各 $S_n$ 逐步进行。每一步都要定义所遇到的\Term{obstruction}{障碍}，并在解存在时对解分类。
+
+从 $S_n$ 到 $S_{n+1}$ 的过渡可推广如下：给定\Term{scheme}{概形} $S$ 及两个\Term{ideal}{理想} $\mathcal I\supset\mathcal J$，满足 $\mathcal I\mathcal J=0$（在上述情形中，$S,\mathcal I,\mathcal J$ 分别为 $S_{n+1},\mathcal I/\mathcal I^{n+2},\mathcal I^{n+1}/\mathcal I^{n+2}$）。以 $S_0$（分别以 $S_{\mathcal J}$）表示由 $\mathcal I$（分别由 $\mathcal J$）定义的\Term{closed-subscheme}{闭子概形}，研究从 $S_{\mathcal J}$ 到 $S$ 的\Term{group-extension}{扩张}问题。
+
+SGA 1 第 III 讲已讨论\Term{scheme}{概形}\Term{morphism}{态射}及\Term{scheme}{概形}的\Term{group-extension}{扩张}问题。这里将讨论\Term{group-morphism}{群态射}、\Term{group-structure}{群结构}及\Term{subgroup}{子群}的\Term{group-extension}{扩张}问题。
+
+第 0 节汇集 SGA 1 第 III 讲中所需的结果，改写为最适合本文使用的\Term{form}{形式}，以免读者不断查阅 SGA 1 第 III 讲。\footnote{编者注：读者也可先读较容易的第 1 节，它能为第 0 节的结果提供动机和指引。}第 1 节汇集后文需要的\Term{group}{群}\Term{cohomology}{上同调}计算，这些计算本身与\Term{scheme}{概形}理论无关。第 2、3 节分别讨论\Term{group-morphism}{群态射}和\Term{group-structure}{群结构}的\Term{group-extension}{扩张}。第 4 节简要回顾
+\SourcePage{108}
+TDTE IV 中关于\Term{subscheme}{子概形}\Term{group-extension}{扩张}的一个结果的证明，并将它应用于\Term{subgroup}{子群}的\Term{group-extension}{扩张}问题。研讨班的后续部分只必须用到第 2 节关于\Term{group-morphism}{群态射}\Term{group-extension}{扩张}的结果。\footnote{编者注：不过，XXIV，1.13 用到 3.10。此外，IX，3.2 bis 和 3.6 bis 的证明用到 4.37；但这两个结果也可由第 X 讲中不使用 4.37 的结果\Term{pushout}{推出}。}
+
+在口头报告时，J. Giraud 提议将\Term{infinitesimal}{无穷小}\Term{group-extension}{扩张}问题化归为\Term{group}{群}\Term{group-extension}{扩张}中通常的\Term{cohomology}{上同调}计算（原报告的计算明显更复杂，也更不透明）。遗憾的是，这个方法似乎只适用于前两个问题；对\Term{subgroup}{子群}的\Term{group-extension}{扩张}，我们仍未能避免相当繁难的计算。
+
+为简化措辞，称带有到\Term{functor}{函子} $Y$ 的\Term{morphism}{态射}的\Term{functor}{函子}、\Term{scheme}{概形}等为 $Y$-\Term{functor}{函子}、$Y$-\Term{scheme}{概形}等，从而推广第 I 讲的定义（那里仅考虑 $Y$ \Term{representable}{可表}的情形）。
+\SGAsection{0}{SGA 1 第 III 讲的回顾与若干注记}
+先陈述一个一般定义。
+\begin{SGAresult}{定义}{0.1}
+设 $\mathscr C$ 是一个\Term{category}{范畴}，$X$ 是 $\widehat{\mathscr C}$ 的\Term{object}{对象}，$G$ 是\Term{action}{作用}于 $X$ 的 $\widehat{\mathscr C}$-\Term{group}{群}。若以下\Term{equivalence}{等价}条件成立，则称 $X$ 在 $G$ 下\Term{formally-principal-homogeneous}{形式主齐性}：\footnote{编者注：也称“\Term{pseudo-torsor}{伪挠子}”，参见 EGA IV$_4$，16.5.15。更一般的\Term{formally-homogeneous}{形式齐性}\Term{object}{对象}（不一定为\Term{principal-homogeneous}{主齐性}）的概念见第 IV 讲，6.7.1。}
+
+(i) 对 $\mathscr C$ 的每个\Term{object}{对象} $S$，\Term{set}{集合} $X(S)$ 或为空，或为 $G(S)$ 下的\Term{principal-homogeneous-set}{主齐性集合}；
+
+(ii) 在\Term{set-sheaf}{集合层}面由 $(g,x)\mapsto(gx,x)$ 定义的\Term{functor}{函子}\Term{morphism}{态射} $G\times X\to X\times X$ 是\Term{isomorphism}{同构}。
+\end{SGAresult}
+接下来将 SGA 1 第 III 讲 §5 的结果\footnote{编者注：另见 EGA IV$_4$，16.5.14--18。}改写为最方便使用的\Term{form}{形式}。本节始终使用下列一般记号。给定\Term{scheme}{概形} $S$ 及其上两个\Term{quasi-coherent}{拟凝聚}\Term{ideal}{理想} $\mathcal I,\mathcal J$，满足
+\[\mathcal I\supset\mathcal J,\qquad\mathcal I\mathcal J=0.\]
+特别地，$\mathcal J^2=0$。以 $S_0$（分别以 $S_{\mathcal J}$）表示由\Term{ideal}{理想} $\mathcal I$（分别由 $\mathcal J$）定义的\Term{closed-subscheme}{闭子概形}。对任意 $S$-\Term{functor}{函子} $X$，一律以 $X_0,X_{\mathcal J}$ 表示从 $S$ 到 $S_0,S_{\mathcal J}$ 的\Term{base-change}{基变换}所得\Term{functor}{函子}。\Term{morphism}{态射}也采用相同记号。
+\SourcePage{109}
+\begin{SGAresult}{定义}{0.1.1}
+\footnote{编者注：增加了编号 0.1.1，\ldots，0.1.13，以突出其中的定义和结果。}设 $X$ 为 $S$-\Term{functor}{函子}。对可变的 $S$-\Term{scheme}{概形} $Y$，用公式
+\[\operatorname{Hom}_S(Y,X^+)=\operatorname{Hom}_{S_{\mathcal J}}(Y_{\mathcal J},X_{\mathcal J})=\operatorname{Hom}_S(Y_{\mathcal J},X)\]
+定义 $S$ 上的\Term{functor}{函子} $X^+$。按第 II 讲，1 的记号，
+\[X^+\simeq\prod_{S_{\mathcal J}/S}X_{\mathcal J}.\]
+按构造，$X_{\mathcal J}$ 的\Term{identity-morphism}{恒等态射}定义了一个 $S$-\Term{morphism}{态射}
+\[p_X:X\longrightarrow X^+.\]
+\footnote{编者注：增加了下一句，并详细展开了后面两条注记。}明确地说，对每个 $S$-\Term{scheme}{概形} $Y$，映射
+\[p_X(Y):\operatorname{Hom}_S(Y,X)\longrightarrow\operatorname{Hom}_S(Y,X^+)=\operatorname{Hom}_S(Y_{\mathcal J},X)\]
+就是\Term{morphism}{态射} $Y_{\mathcal J}\to Y$ 所诱导的映射。
+\end{SGAresult}
+\begin{SGAresult}{注记}{0.1.2}
+若 $X$ 是 $S$-\Term{group-functor}{群函子}，则 $X_{\mathcal J}$ 是 $S_{\mathcal J}$-\Term{group-functor}{群函子}；$X^+$ 的定义公式赋予它 $S$-\Term{group-functor}{群函子}结构。上述 $p_X$ 的描述表明 $p_X:X\to X^+$ 是 $S$-\Term{group-functor}{群函子}\Term{morphism}{态射}。
+\end{SGAresult}
+\begin{SGAresult}{注记}{0.1.3}
+对任意 $S$-\Term{group-functor}{群函子} $Y$，有
+\[\operatorname{Hom}_{S\text{-群}}(Y,X^+)=\operatorname{Hom}_{S_{\mathcal J}\text{-群}}(Y_{\mathcal J},X_{\mathcal J}).\]
+事实上，设 $f\in\operatorname{Hom}_S(Y,X^+)$ 对应于 $f_{\mathcal J}\in\operatorname{Hom}_{S_{\mathcal J}}(Y_{\mathcal J},X_{\mathcal J})$。$f$ 属于 $\operatorname{Hom}_{S\text{-群}}(Y,X^+)$ 的条件是：对任意 $T\to S$ 及 $y,y'\in Y(T)$，有 $f(yy')=f(y)f(y')$，这\Term{equivalence}{等价}于
+\[f_{\mathcal J}(y_{\mathcal J})f_{\mathcal J}(y'_{\mathcal J})=f_{\mathcal J}((yy')_{\mathcal J}).\]
+由于 $(yy')_{\mathcal J}=y_{\mathcal J}y'_{\mathcal J}$（$Y(T)\to Y(T_{\mathcal J})=Y_{\mathcal J}(T_{\mathcal J})$ 为\Term{group-morphism}{群态射}），这正是 $f_{\mathcal J}$ 为\Term{group-morphism}{群态射}的条件。应用于 $Y=X$，便再次得到：对应于 $\operatorname{id}_{X_{\mathcal J}}$ 的 $p_X$ 是 $S$-\Term{group-functor}{群函子}\Term{morphism}{态射}。
+\end{SGAresult}
+现在回到一般情形，但假设 $X$ 是一个 $S$-\Term{scheme}{概形}。按定义，可变的 $S$-\Term{scheme}{概形} $Y$ 到 $X^+$ 的 $S$-\Term{morphism}{态射}就是 $Y_{\mathcal J}$ 到 $X_{\mathcal J}$ 的 $S_{\mathcal J}$-\Term{morphism}{态射} $g_{\mathcal J}$。我们如下定义一个 $X^+$-\Term{abelian-group}{阿贝尔群}\Term{functor}{函子} $L_X$。
+\begin{SGAresult}{说明}{0.1.4}
+\footnote{编者注：本说明为新增。}若 $\pi:Y\to S$ 是\Term{scheme}{概形}\Term{morphism}{态射}，$\mathcal M$ 是 $\mathcal O_S$-\Term{module}{模}，以 $\mathcal M\otimes_{\mathcal O_S}\mathcal O_Y$ 表示\Term{inverse-image}{逆像} $\pi^*\mathcal M$。若 $\mathcal J$ 是 $\mathcal O_S$ 的\Term{ideal}{理想}，以 $\mathcal J\mathcal O_Y$ 表示\Term{morphism}{态射}
+\[\pi^*\mathcal J=\mathcal J\otimes_{\mathcal O_S}\mathcal O_Y\longrightarrow\mathcal O_Y\]
+的像\Term{ideal}{理想}。
+\SourcePage{110}
+对每个 $S$-\Term{scheme}{概形}\Term{morphism}{态射} $f:Z\to Y$，有 $\mathcal O_Z$-\Term{module}{模}的\Term{epimorphism}{满态射}
+\[f^*(\mathcal J\mathcal O_Y)\longrightarrow\mathcal J\mathcal O_Z,\tag{0.1.4}\]
+这由下列\Term{commutative-diagram}{交换图}得到：
+\[\begin{tikzcd}
+\mathcal J\otimes_{\mathcal O_S}\mathcal O_Y\otimes_{\mathcal O_Y}\mathcal O_Z \arrow[r,equal]\arrow[d,two heads]&\mathcal J\otimes_{\mathcal O_S}\mathcal O_Z\arrow[d,two heads]\\
+f^*(\mathcal J\mathcal O_Y)=(\mathcal J\mathcal O_Y)\otimes_{\mathcal O_Y}\mathcal O_Z\arrow[r,two heads]&\mathcal J\mathcal O_Z.
+\end{tikzcd}\]
+\end{SGAresult}
+\begin{SGAresult}{定义}{0.1.5}
+\footnote{编者注：引入\Term{functor}{函子} $L_X$ 可将 SGA 1，第 III 讲，命题 5.1 推广为“关于 $Y$（及 $X$）具有\Term{functorial}{函子性}”的\Term{form}{形式}；见下文 0.1.8、0.1.9，以及 0.1.10、0.2。此外，当 $X$ 为 $S$-\Term{group-functor}{群函子}时，在某些假设下 $L_X$ 产生一个 $S$-\Term{group-functor}{群函子} $L'_X$ 和\Term{exact-sequence}{正合列} $1\to L'_X\to X\to X^+$（见 0.4、0.9、0.11），它们在本讲起着关键\Term{action}{作用}（见\Term{theorem}{定理} 2.1、3.5、4.21）。}设 $X$ 为 $S$-\Term{scheme}{概形}。对任意由\Term{morphism}{态射} $g_{\mathcal J}:Y_{\mathcal J}\to X_{\mathcal J}$ 给出的 $X^+$-\Term{scheme}{概形} $Y$，置
+\[\operatorname{Hom}_{X^+}(Y,L_X)=\operatorname{Hom}_{\mathcal O_{Y_0}}(g_0^*(\Omega^1_{X_0/S_0}),\mathcal J\mathcal O_Y),\]
+其中 $\Omega^1_{X_0/S_0}$ 为 $X_0$ 相对于 $S_0$ 的\Term{differential-module}{微分模}（见 SGA 1，I.1 或 EGA IV$_4$，16.3）；$\mathcal J\mathcal O_Y$ 被 $\mathcal I$ \Term{annihilate}{零化}，故视为 $\mathcal O_{Y_0}$-\Term{module}{模}。
+
+于是 $L_X$ 为 $X^+$-\Term{abelian-group}{阿贝尔群}\Term{functor}{函子}。\footnote{编者注：以下文字为新增。}事实上，对每个 $X^+$-\Term{morphism}{态射} $f:Z\to Y$，\Term{functor}{函子} $f_0^*$ 及 (0.1.4) 的\Term{morphism}{态射} $f_0^*(\mathcal J\mathcal O_Y)\to\mathcal J\mathcal O_Z$ 诱导自然的\Term{abelian-group}{阿贝尔群}\Term{morphism}{态射} $L_X(f)$：
+\[\begin{aligned}
+\operatorname{Hom}_{\mathcal O_{Y_0}}(g_0^*\Omega^1_{X_0/S_0},\mathcal J\mathcal O_Y)&\longrightarrow\operatorname{Hom}_{\mathcal O_{Z_0}}(f_0^*g_0^*\Omega^1_{X_0/S_0},f_0^*(\mathcal J\mathcal O_Y))\\
+&\longrightarrow\operatorname{Hom}_{\mathcal O_{Z_0}}(f_0^*g_0^*\Omega^1_{X_0/S_0},\mathcal J\mathcal O_Z).
+\end{aligned}\]
+最后，$L_X(f)$ 有如下简单的\Term{local-scheme}{局部}描述。$Y,Y_{\mathcal J}$ 的\Term{underlying-topological-space}{底拓扑空间}相同，$Y$ 的\Term{open-subset}{开集} $V$ 与 $V_{\mathcal J}$ 也如此。设 $U=\operatorname{Spec}A$ 为 $X$ 中位于 $S$ 的\Term{affine}{仿射}\Term{open-subset}{开集} $\operatorname{Spec}\Lambda$ 上方的\Term{affine}{仿射}\Term{open-subset}{开集}，$V=\operatorname{Spec}B$ 为 $Y$ 中满足 $g_{\mathcal J}(V_{\mathcal J})\subset U$ 的\Term{affine}{仿射}\Term{open-subset}{开集}，$W=\operatorname{Spec}C$ 为 $f^{-1}(V)$ 的\Term{affine}{仿射}\Term{open-subset}{开集}。令 $J,I$ 为 $\Lambda$ 中对应于 $\mathcal J,\mathcal I$ 的\Term{ideal}{理想}。则 $f$（分别为 $g_{\mathcal J}$）诱导 $\Lambda$-\Term{algebra}{代数}\Term{morphism}{态射} $\theta:B\to C$（分别为 $\varphi:A\to B/JB$），显然 $\theta(JB)\subset JC$。另一方面，$m\in\operatorname{Hom}_{\mathcal O_{Y_0}}(g_0^*(\Omega^1_{X/S}),\mathcal J\mathcal O_Y)$ 诱导
+\[D\in\operatorname{Hom}_{\mathcal O_{V_0}}(g_0^*\Omega^1_{U/S},\mathcal J\mathcal O_V)=\operatorname{Hom}_{B/IB}(\Omega^1_{A/\Lambda}\otimes_A B/IB,JB)=\operatorname{Der}_{\Lambda}(A,JB),\]
+而 $L_X(f)(m)$ 在
+\[\operatorname{Hom}_{\mathcal O_{W_0}}(f_0^*g_0^*\Omega^1_{U/S},\mathcal J\mathcal O_Z)=\operatorname{Hom}_{C/IC}(\Omega^1_{A/\Lambda}\otimes_A C/IC,JC)=\operatorname{Der}_{\Lambda}(A,JC)\]
+中的像正是 $\theta\circ D$。
+\end{SGAresult}
+\SourcePage{111}
+\begin{SGAresult}{注记}{0.1.6}
+\footnote{编者注：本注记已作详细展开。}设 $f:X\to W$ 为 $S$-\Term{morphism}{态射}。它诱导 $S$-\Term{morphism}{态射} $f^+:X^+\to W^+$：若 $g\in\operatorname{Hom}_S(Y,X^+)$ 对应于 $S$-\Term{morphism}{态射} $g_{\mathcal J}:Y_{\mathcal J}\to X$，则 $f^+(g)$ 就是 $\operatorname{Hom}_S(Y,W^+)$ 的元素 $f\circ g_{\mathcal J}$。显然下图交换：
+\[\begin{tikzcd}X\arrow[r,"f"]\arrow[d,"p_X"']&W\arrow[d,"p_W"]\\X^+\arrow[r,"f^+"']&W^+.\end{tikzcd}\]
+\end{SGAresult}
+\begin{SGAresult}{回顾}{0.1.7}
+\footnote{编者注：本段为新增（亦见 [DG70]，§I.4，第 1--2 目）。}本段对给定的 $S$-\Term{scheme}{概形} $X$，“回顾”\Term{differential-module}{微分模} $\Omega^1_{X/S}$ 和\Term{diagonal}{对角线}的\Term{first-infinitesimal-neighborhood}{一阶无穷小邻域} $\Delta^{(1)}_{X/S}$ 的某些\Term{functorial}{函子性}质；它们容易由 EGA IV$_4$，§§16.1--16.4 \Term{pushout}{推出}，但那里未明确列出。
+
+a) 先回顾以下事实（见 EGA II，§§1.2--1.5）。设 $g:Y\to X$ 为\Term{scheme}{概形}\Term{morphism}{态射}，$\pi:X'\to X$ 为\Term{affine}{仿射} $X$-\Term{scheme}{概形}，$\mathcal B=\pi_*\mathcal O_{X'}$ 为\Term{quasi-coherent}{拟凝聚} $\mathcal O_X$-\Term{algebra}{代数}。则 $Y\times_X X'$ 是\Term{affine}{仿射} $Y$-\Term{scheme}{概形}，对应于\Term{quasi-coherent}{拟凝聚} $\mathcal O_Y$-\Term{algebra}{代数} $g^*\mathcal B$，且有\Term{bijection}{双射}构成的\Term{commutative-diagram}{交换图}
+\[\begin{tikzcd}[column sep=large]
+\operatorname{Hom}_X(Y,X')\arrow[r,"\sim"]\arrow[d,"\sim"']&\operatorname{Hom}_Y(Y,Y\times_X X')\arrow[d,"\sim"]\\
+\operatorname{Hom}_{\mathcal O_X\text{-代数}}(\mathcal B,g_*\mathcal O_Y)\arrow[r,"\sim"']&\operatorname{Hom}_{\mathcal O_Y\text{-代数}}(g^*\mathcal B,\mathcal O_Y).
+\end{tikzcd}\]
+这些\Term{bijection}{双射}对 $(X,X')$ 具有\Term{functorial}{函子性}：若 $W'$ 为对应于\Term{quasi-coherent}{拟凝聚} $\mathcal O_W$-\Term{algebra}{代数} $\mathcal A$ 的\Term{affine}{仿射} $W$-\Term{scheme}{概形}，并有\Term{commutative-diagram}{交换图}
+\[\begin{tikzcd} &X'\arrow[r,"f'"]\arrow[d]&W'\arrow[d]\\Y\arrow[ur,dashed,"g'"]\arrow[r,"g"']&X\arrow[r,"f"']&W,\end{tikzcd}\]
+以 $\varphi:\mathcal A\to f_*\mathcal B$、$\varphi^\sharp:f^*\mathcal A\to\mathcal B$（分别以 $\theta:\mathcal B\to g_*\mathcal O_Y$、$\theta^\sharp:g^*\mathcal B\to\mathcal O_Y$）表示 $f'$（分别为可变的 $X$-\Term{morphism}{态射} $g':Y\to X'$）对应的\Term{algebra}{代数}\Term{morphism}{态射}，则有如下\Term{commutative-diagram}{交换图}（其中通过 $f\circ g$ 把 $Y$ 看成 $W$-\Term{scheme}{概形}）：
+\SourcePage{112}
+\[\begin{tikzcd}[column sep=large,row sep=large]
+\operatorname{Hom}_X(Y,X')\arrow[r,"g'\mapsto f'\circ g'"]\arrow[d,"\sim"']&\operatorname{Hom}_W(Y,W')\arrow[r,"\sim"]&\operatorname{Hom}_{\mathcal O_W\text{-代数}}(\mathcal A,f_*g_*\mathcal O_Y)\arrow[d,"\sim"]\\
+\operatorname{Hom}_{\mathcal O_X\text{-代数}}(\mathcal B,g_*\mathcal O_Y)\arrow[rr,"\theta\mapsto\theta\circ\varphi^\sharp"']\arrow[urr,"\theta\mapsto f_*(\theta)\circ\varphi",sloped]\arrow[d,"\sim"']&&\operatorname{Hom}_{\mathcal O_X\text{-代数}}(f^*\mathcal A,g_*\mathcal O_Y)\arrow[d,"\sim"]\\
+\operatorname{Hom}_{\mathcal O_Y\text{-代数}}(g^*\mathcal B,\mathcal O_Y)\arrow[rr,"\theta^\sharp\mapsto\theta^\sharp\circ g^*(\varphi^\sharp)"']&&\operatorname{Hom}_{\mathcal O_Y\text{-代数}}(g^*f^*\mathcal A,\mathcal O_Y).
+\end{tikzcd}\]
+
+b) 现在设 $X$ 为 $S$-\Term{scheme}{概形}。设 $\Omega^1_{X/S}$ 为 $X$ 在 $S$ 上的\Term{differential-module}{微分模}，$\Delta^{(1)}_{X/S}$ 为对角\Term{immersion}{浸入} $\delta_X:X\to X\times_S X$ 的\Term{first-infinitesimal-neighborhood}{一阶无穷小邻域}；它是 $X\times_S X$ 的\Term{subscheme}{子概形}，\Term{diagonal}{对角线} $\Delta_{X/S}$ 是它的\Term{closed-subscheme}{闭子概形}。记 $\operatorname{pr}_X^i$（$i=1,2$）为 $X\times_S X$ 的两个\Term{projection}{投影}，$\pi_X$ 为 $\operatorname{pr}_X^1$ 在 $\Delta^{(1)}_{X/S}$ 上的\Term{restriction}{限制}。
+
+每个 $S$-\Term{scheme}{概形}\Term{morphism}{态射} $f:X\to W$ 诱导一个 $S$-\Term{morphism}{态射} $\Delta^{(1)}f:\Delta^{(1)}_{X/S}\to\Delta^{(1)}_{W/S}$，使下图交换：
+\[\begin{tikzcd}
+X\arrow[r,"\delta_X"]\arrow[d,"f"']&\Delta^{(1)}_{X/S}\arrow[r]\arrow[d,"\Delta^{(1)}f"]&X\times_S X\arrow[r,"\operatorname{pr}_X^i"]\arrow[d,"f\times f"]&X\arrow[d,"f"]\\
+W\arrow[r,"\delta_W"']&\Delta^{(1)}_{W/S}\arrow[r]&W\times_S W\arrow[r,"\operatorname{pr}_W^i"']&W.
+\end{tikzcd}\]
+另一方面，经\Term{projection}{投影} $\pi_X$，$\Delta^{(1)}_{X/S}$ 是\Term{affine}{仿射} $X$-\Term{scheme}{概形}，即\Term{quasi-coherent}{拟凝聚}\Term{augmentation}{增广} $\mathcal O_X$-\Term{algebra}{代数}
+\[\mathcal P^1_{X/S}=\mathcal O_X\oplus\Omega^1_{X/S}\]
+的谱，其中 $\Omega^1_{X/S}$ 是平方为零的\Term{ideal}{理想}；\Term{augmentation}{增广}为在 $\Omega^1_{X/S}$ 上为零的 $\mathcal O_X$-\Term{algebra}{代数}\Term{morphism}{态射} $\varepsilon_X:\mathcal P^1_{X/S}\to\mathcal O_X$，对应于\Term{closed-immersion}{闭浸入} $\delta_X:X\hookrightarrow\Delta^{(1)}_{X/S}$。每个 $S$-\Term{scheme}{概形}\Term{morphism}{态射} $f:X\to W$ 诱导\Term{augmentation}{增广} $\mathcal O_X$-\Term{algebra}{代数}\Term{morphism}{态射}
+\[f^*\mathcal P^1_{W/S}=\mathcal O_X\oplus f^*\Omega^1_{W/S}\longrightarrow\mathcal P^1_{X/S}=\mathcal O_X\oplus\Omega^1_{X/S},\]
+\Term{equivalence}{等价}地，诱导 $\mathcal O_X$-\Term{module}{模}\Term{morphism}{态射}
+\[f_{X/W/S}:f^*\Omega^1_{W/S}\longrightarrow\Omega^1_{X/S};\]
+见 EGA IV$_4$，(16.4.3.6)（记号 $f_{X/W/S}$ 见 (16.4.18.2)）。
+\SourcePage{113}
+由于 $\pi_X:\Delta^{(1)}_{X/S}\to X$ \Term{affine}{仿射}，按 a)，$\Delta^{(1)}f$ 完全由 $f_{X/W/S}$ 决定；对任意 $X$-\Term{scheme}{概形} $g:Y\to X$，\Term{set}{集合}
+\[\operatorname{Hom}_X(Y,\Delta^{(1)}_{X/S})\simeq\operatorname{Hom}_{\mathcal O_Y\text{-代数}}(\mathcal O_Y\oplus g^*\Omega^1_{X/S},\mathcal O_Y)\]
+可等同于 $\operatorname{Hom}_{\mathcal O_Y}(g^*\Omega^1_{X/S},\mathcal O_Y)$ 的一个\Term{subset}{子集}
+\[\operatorname{Hom}^{\square}_{\mathcal O_Y}(g^*\Omega^1_{X/S},\mathcal O_Y),\]
+它由满足 $\operatorname{Im}\psi$ 是 $\mathcal O_Y$ 的平方为零\Term{ideal}{理想}的 $\mathcal O_Y$-\Term{morphism}{态射} $\psi:g^*\Omega^1_{X/S}\to\mathcal O_Y$ 组成。\footnote{编者注：SGA 1，第 III 讲 5.1 的证明中，“而\Term{algebra}{代数}\Term{homomorphism}{同态} $\mathcal A\to\mathcal O_Y$ 对应于……”一句须据此修正（其后的文字\Term{invariant}{不变}）。}
+
+将 a) 应用于图
+\[\begin{tikzcd}&\Delta^{(1)}_{X/S}\arrow[r,"\Delta^{(1)}f"]\arrow[d]&\Delta^{(1)}_{W/S}\arrow[d]\\Y\arrow[ur,dashed,"g'"]\arrow[r,"g"']&X\arrow[r,"f"']&W\end{tikzcd}\]
+并注意 $\Delta^{(1)}f$ 是 $f\times f$ 在 $\Delta^{(1)}_{X/S}$ 上的\Term{restriction}{限制}，得到如下对 $X$-\Term{scheme}{概形} $g:Y\to X$ 具有\Term{functorial}{函子性}的\Term{commutative-diagram}{交换图}：
+\[\begin{tikzcd}[column sep=large]
+\operatorname{Hom}_X(Y,X\times_S X)\arrow[r,"{(g,g')\mapsto(f\circ g,f\circ g')}"]&\operatorname{Hom}_W(Y,\Delta^{(1)}_{W/S})\\
+\operatorname{Hom}_X(Y,\Delta^{(1)}_{X/S})\arrow[u,hook]\arrow[r,"g'\mapsto(\Delta^{(1)}f)\circ g'"]\arrow[d,"\sim"']&\operatorname{Hom}_W(Y,\Delta^{(1)}_{W/S})\arrow[u,hook]\arrow[d,"\sim"]\\
+\operatorname{Hom}^{\square}_{\mathcal O_Y}(g^*\Omega^1_{X/S},\mathcal O_Y)\arrow[r,"\psi\mapsto\psi\circ g^*(f_{X/W/S})"']&\operatorname{Hom}^{\square}_{\mathcal O_Y}(g^*f^*\Omega^1_{W/S},\mathcal O_Y).
+\end{tikzcd}\tag{0.1.7 (*)}\]
+\end{SGAresult}
+\begin{SGAresult}{注记}{0.1.7.1}
+以如下将在后文（0.1.10）使用的注记结束本段。记 $L_X^{\square}$ 为将每个 $X$-\Term{scheme}{概形} $g:Y\to X$ 映至 $\operatorname{Hom}^{\square}_{\mathcal O_Y}(g^*\Omega^1_{X/S},\mathcal O_Y)$ 的 $X$-\Term{functor}{函子}，$L_f^{\square}:L_X^{\square}\to L_W^{\square}$ 为上述\Term{functor}{函子}\Term{morphism}{态射}（它把 $\psi\in L_X^{\square}(Y)$ 映至 $\psi\circ g^*(f_{X/W/S})$）。上文说明有\Term{functor}{函子}\Term{commutative-diagram}{交换图}
+\[\begin{tikzcd}
+X\times_X L_X^{\square}\arrow[d,"f\times L_f^{\square}"']&\Delta^{(1)}_{X/S}\arrow[l,"\sim"']\arrow[r,hook]\arrow[d,"\Delta^{(1)}f"]&X\times_S X\arrow[d,"f\times f"]\\
+W\times_W L_W^{\square}&\Delta^{(1)}_{W/S}\arrow[l,"\sim"]\arrow[r,hook]&W\times_S W.
+\end{tikzcd}\]
+\end{SGAresult}
+\SourcePage{114}
+\begin{SGAresult}{\Term{theorem}{定理}}{0.1.8}
+（SGA 1，第 III 讲 5.1）\footnote{编者注：这里重述 SGA 1，第 III 讲 5.1 的陈述和证明，以便证明后面的命题 0.2（亦见紧接的推论 0.1.9）。此外，$\mathfrak J$（分别为 $\mathfrak I$）只是字母 $J$（分别为 $I$）的另一种书体；回到此前的记号（$\mathcal J\subset\mathcal I$ 为 $\mathcal O_S$ 的\Term{ideal}{理想}，且 $\mathcal I\mathcal J=0$），将把此结论应用于 $\mathfrak J=\mathcal J\mathcal O_Y$（分别为 $\mathfrak I=\mathcal I\mathcal O_Y$）。}设 $Y,X$ 为两个 $S$-\Term{scheme}{概形}，$\mathfrak J$ 为 $\mathcal O_Y$ 的平方为零的\Term{quasi-coherent}{拟凝聚}\Term{ideal}{理想}，$Y_{\mathfrak J}$ 为它定义的\Term{closed-subscheme}{闭子概形}，$g_{\mathfrak J}:Y_{\mathfrak J}\to X$ 为 $S$-\Term{morphism}{态射}。
+
+a) 延拓 $g_{\mathfrak J}$ 的 $S$-\Term{morphism}{态射} $g:Y\to X$ 构成的\Term{set}{集合} $P(g_{\mathfrak J})$ 或为空，或为\Term{abelian-group}{阿贝尔群}
+\[\operatorname{Hom}_{\mathcal O_{Y_{\mathfrak J}}}(g_{\mathfrak J}^*\Omega^1_{X/S},\mathfrak J)\]
+下的\Term{principal-homogeneous-set}{主齐性集合}。
+
+b) 若 $i:Y_0\hookrightarrow Y_{\mathfrak J}$ 为由满足 $\mathfrak I\supset\mathfrak J$、$\mathfrak I\mathfrak J=0$ 的\Term{quasi-coherent}{拟凝聚}\Term{ideal}{理想} $\mathfrak I$ 定义的\Term{closed-immersion}{闭浸入}，且 $g_0=g_{\mathfrak J}\circ i$，则上述\Term{abelian-group}{阿贝尔群}\Term{isomorphism}{同构}于
+\[\operatorname{Hom}_{\mathcal O_{Y_0}}(g_0^*\Omega^1_{X/S},\mathfrak J).\]
+\end{SGAresult}
+\begin{proof}
+(b) 立即由 (a) 得到。事实上，$\mathfrak J$ 被 $\mathfrak I$ \Term{annihilate}{零化}，故可视为 $\mathcal O_{Y_0}$-\Term{module}{模}，由\Term{adjunction}{伴随}性，
+\[\operatorname{Hom}_{\mathcal O_{Y_{\mathfrak J}}}(g_{\mathfrak J}^*\Omega^1_{X/S},\mathfrak J)=\operatorname{Hom}_{\mathcal O_{Y_0}}(i^*g_{\mathfrak J}^*\Omega^1_{X/S},\mathfrak J).\]
+为证明 (a)，可设 $P(g_{\mathfrak J})\neq\varnothing$，即存在延拓 $g_{\mathfrak J}$ 的 $S$-\Term{morphism}{态射} $g:Y\to X$。以 $j$ 表示\Term{immersion}{浸入} $Y_{\mathfrak J}\hookrightarrow Y$。则 $P(g_{\mathfrak J})$ 是满足 $g'\circ j=g_{\mathfrak J}$ 的 $S$-\Term{morphism}{态射} $g':Y\to X$ 的\Term{set}{集合}。给出这样的 $g'$ \Term{equivalence}{等价}于给出 $S$-\Term{morphism}{态射}
+\[h:Y\longrightarrow X\times_S X\]
+使 $\operatorname{pr}_1\circ h=g$ 且 $h_{\mathfrak J}=\delta\circ g_{\mathfrak J}$，其中 $h_{\mathfrak J}=h\circ j$，$\delta$ 为对角\Term{immersion}{浸入} $X\hookrightarrow X\times_S X$：
+\[\begin{tikzcd}
+X\times_S X\arrow[d,"\operatorname{pr}_1"']&Y_{\mathfrak J}\arrow[l,"h_{\mathfrak J}=\delta\circ g_{\mathfrak J}"']\arrow[d,"j"]\\X&Y\arrow[l,"g"]\arrow[ul,dashed,"h"'].
+\end{tikzcd}\]
+由于 $h_{\mathfrak J}$ 通过 $\delta$ \Term{resolution}{分解}，而 $Y$ 位于\Term{immersion}{浸入} $j:Y_{\mathfrak J}\to Y$ 的\Term{first-infinitesimal-neighborhood}{一阶无穷小邻域}中（因为 $\mathfrak J^2=0$），\Term{functorial}{函子性}（见 EGA IV$_4$，16.2.2(i)）表明所求 $h$ 唯一地通过 $\Delta^{(1)}_{X/S}$ \Term{resolution}{分解}（见 0.1.7）。置
+\[Y'=\Delta^{(1)}_{X/S}\times_X Y,\qquad Y'_{\mathfrak J}=Y'\times_Y Y_{\mathfrak J}=\Delta^{(1)}_{X/S}\times_X Y_{\mathfrak J}.\]
+所求 $h$ 与 $Y'\to Y$ 的、延拓 $Y'_{\mathfrak J}\to Y_{\mathfrak J}$ 的\Term{section}{截面} $u_{\mathfrak J}=(\delta\circ g_{\mathfrak J},\operatorname{id})$ 的\Term{section}{截面} $u$ 一一对应。另一方面，$Y'$（分别为 $Y'_{\mathfrak J}$）为 $Y$（分别为 $Y_{\mathfrak J}$）上的\Term{affine}{仿射}\Term{scheme}{概形}，对应于\Term{quasi-coherent}{拟凝聚}\Term{algebra}{代数}
+\[\mathcal A=\mathcal O_Y\oplus g^*\Omega^1_{X/S},\qquad\mathcal A_{\mathfrak J}=\mathcal A\otimes_{\mathcal O_Y}\mathcal O_{Y_{\mathfrak J}}=\mathcal O_{Y_{\mathfrak J}}\oplus g_{\mathfrak J}^*\Omega^1_{X/S}.\]
+以 $\varepsilon:\mathcal A\to\mathcal O_Y$ 表示\Term{canonical}{典范}\Term{augmentation}{增广}（即在 $g^*\Omega^1_{X/S}$ 上为零的 $\mathcal O_Y$-\Term{algebra}{代数}\Term{morphism}{态射}），同样定义 $\varepsilon_{\mathfrak J}:\mathcal A_{\mathfrak J}\to\mathcal O_{Y_{\mathfrak J}}$。于是
+\[\Gamma(Y'/Y)\simeq\operatorname{Hom}_{\mathcal O_Y\text{-代数}}(\mathcal A,\mathcal O_Y),\quad\Gamma(Y'_{\mathfrak J}/Y_{\mathfrak J})\simeq\operatorname{Hom}_{\mathcal O_{Y_{\mathfrak J}}\text{-代数}}(\mathcal A_{\mathfrak J},\mathcal O_{Y_{\mathfrak J}}),\]
+\SourcePage{115}
+在这些\Term{isomorphism}{同构}下，\Term{section}{截面} $u=(\delta\circ g,\operatorname{id})$（分别为 $u_{\mathfrak J}$）对应于 $\varepsilon$（分别为 $\varepsilon_{\mathfrak J}$）。故 $P(g_{\mathfrak J})$ 与\Term{reduced}{约化}为 $\varepsilon_{\mathfrak J}$ 的\Term{algebra}{代数}\Term{morphism}{态射} $\mathcal A\to\mathcal O_Y$ 一一对应，且 $g$ 对应于 $\varepsilon$。
+
+置 $\mathcal M=g^*\Omega^1_{X/S}$。则 $\operatorname{Hom}_{\mathcal O_Y\text{-代数}}(\mathcal A,\mathcal O_Y)$ 等同于满足 $\operatorname{Im}\psi$ 为平方零\Term{ideal}{理想}的 $\mathcal O_Y$-\Term{morphism}{态射} $\psi:\mathcal M\to\mathcal O_Y$ 的\Term{set}{集合}。我们关心其中诱导零\Term{morphism}{态射} $\mathcal M\to\mathcal O_{Y_{\mathfrak J}}=\mathcal O_Y/\mathfrak J$ 的那些，即把 $\mathcal M$ 映入 $\mathfrak J$ 的\Term{morphism}{态射}。反过来，由 $\mathfrak J^2=0$，每个 $\mathcal O_Y$-\Term{morphism}{态射} $\varphi:\mathcal M\to\mathfrak J$ 都来自唯一的、\Term{reduced}{约化}为 $\varepsilon_{\mathfrak J}$ 的\Term{algebra}{代数}\Term{morphism}{态射} $\mathcal A\to\mathcal O_Y$。最后，由 $\mathfrak J^2=0$，有
+\[\operatorname{Hom}_{\mathcal O_Y}(g^*\Omega^1_{X/S},\mathfrak J)=\operatorname{Hom}_{\mathcal O_{Y_{\mathfrak J}}}(g_{\mathfrak J}^*\Omega^1_{X/S},\mathfrak J)\]
+（见已证明的 (b)）。从而得到\Term{bijection}{双射}
+\[P(g_{\mathfrak J})\simeq\operatorname{Hom}_{\mathcal O_{Y_{\mathfrak J}}}(g_{\mathfrak J}^*\Omega^1_{X/S},\mathfrak J),\]
+其中 $g$ 对应于零\Term{morphism}{态射}。
+
+对任意 $m\in\operatorname{Hom}_{\mathcal O_{Y_{\mathfrak J}}}(g_{\mathfrak J}^*\Omega^1_{X/S},\mathfrak J)$，以 $m\cdot g$ 表示上述\Term{bijection}{双射}由 $g,m$ 给出的 $P(g_{\mathfrak J})$ 的元素。已知 $0\cdot g=g$；还须证明
+\[m'\cdot(m\cdot g)=(m+m')\cdot g.\tag{0.1.8 (*)}\]
+这可\Term{local-scheme}{局部}验证。\footnote{编者注：以上几乎逐字照录 SGA 1，第 III 讲 5.1；以下证明作了详细展开。}上述两个\Term{morphism}{态射} $Y\to X$ 在\Term{underlying-topological-space}{底拓扑空间}上均诱导与 $g$ 相同的\Term{continuous-map}{连续映射}；只需验证，对 $X$ 中位于 $S$ 的\Term{affine}{仿射}\Term{open-subset}{开集} $\operatorname{Spec}\Lambda$ 上方的任意\Term{affine}{仿射}\Term{open-subset}{开集} $U=\operatorname{Spec}A$，以及 $g^{-1}(U)$ 的任意\Term{affine}{仿射}\Term{open-subset}{开集} $V=\operatorname{Spec}B$，它们诱导相同的 $\Lambda$-\Term{algebra}{代数}\Term{morphism}{态射} $A\to B$。
+
+令 $J=\Gamma(V,\mathfrak J)$，$\varphi,\psi,\eta:A\to B$ 分别由 $g,m\cdot g,m'\cdot(m\cdot g)$ 诱导；它们\Term{module}{模} $J$ 相同。可唯一地写成 $\psi=\varphi+D$、$\eta=\psi+D'$，其中 $D$（分别为 $D'$）属于
+\[\operatorname{Der}_{\varphi}(A,J)=\{\delta\in\operatorname{Hom}_{\Lambda}(A,J)\mid\delta(ab)=\varphi(a)\delta(b)+\varphi(b)\delta(a)\}\]
+（分别属于 $\operatorname{Der}_{\psi}(A,J)$）。由于 $J^2=0$，$\operatorname{Der}_{\varphi}(A,J)=\operatorname{Der}_{\psi}(A,J)$，两者均等同于
+\[\operatorname{Hom}_{B/J}(\Omega^1_{A/\Lambda}\otimes_A B/J,J),\]
+在此等同下，$D$ 对应 $m$，$D'$ 对应 $m'$。于是 $\eta=\varphi+D+D'$，且 $D+D'$ 对应于 $m+m'$，即得 (*)。
+\end{proof}
+\begin{SGAresult}{推论}{0.1.9}
+\footnote{编者注：增加了这一 SGA 1，第 III 讲 5.1 的推论，它证明下文命题 0.2 的 (i)。}设 $X$ 为 $S$-\Term{scheme}{概形}，采用 0.1.5 的记号。则 $X^+$-\Term{abelian-group}{阿贝尔群} $L_X$ 在 $X$ 上有一个\Term{left-action}{左作用}，使 $X$ 成为 $X^+$ 上在 $L_X$ 下\Term{formally-principal-homogeneous}{形式主齐性}的\Term{object}{对象}，即有 $X^+$-\Term{functor}{函子}\Term{isomorphism}{同构}
+\[L_X\times_{X^+}X\xrightarrow{\sim}X\times_{X^+}X,\]
+在\Term{set-sheaf}{集合层}面由 $(m,x)\mapsto(x,m\cdot x)$ 给出。
+\end{SGAresult}
+\SourcePage{116}
+\begin{proof}
+以 $i_0$ 表示\Term{immersion}{浸入} $X_0\hookrightarrow X$。由于 $X_0=X\times_S S_0$，先有 $i_0^*\Omega^1_{X/S}\simeq\Omega^1_{X_0/S_0}$（见 EGA IV，16.4.5）。
+
+设 $Y$ 为由 $S$-\Term{morphism}{态射} $g_{\mathcal J}:Y_{\mathcal J}\to X$ 给出的 $X^+$-\Term{scheme}{概形}，$g_0:Y_0\to X_0$ 为\Term{base-change}{基变换}所得\Term{morphism}{态射}。由 0.1.8，$\operatorname{Hom}_{X^+}(Y,X)$ 若\Term{nonempty}{非空}，便是\Term{group}{群}
+\[\operatorname{Hom}_{\mathcal O_{Y_0}}(g_0^*i_0^*\Omega^1_{X/S},\mathcal J\mathcal O_Y)\]
+下的\Term{principal-homogeneous-set}{主齐性集合}；该\Term{group}{群}等同于 $\operatorname{Hom}_{\mathcal O_{Y_0}}(g_0^*\Omega^1_{X_0/S_0},\mathcal J\mathcal O_Y)=L_X(Y)$。故有\Term{bijection}{双射}
+\[L_X(Y)\times\operatorname{Hom}_{X^+}(Y,X)\xrightarrow{\sim}\operatorname{Hom}_{X^+}(Y,X\times_{X^+}X),\qquad(m,g)\mapsto(g,m\cdot g).\]
+证明它“对 $Y$ 具有\Term{functorial}{函子性}”。设 $f:Z\to Y$ 为 $S$-\Term{scheme}{概形}\Term{morphism}{态射}，要证下图交换：
+\[\begin{tikzcd}[column sep=large]
+L_X(Y)\times\operatorname{Hom}_{X^+}(Y,X)\arrow[r,"\sim"]\arrow[d,"L_X(f)\times f"']&\operatorname{Hom}_{X^+}(Y,X\times_{X^+}X)\arrow[d,"f\times f"]\\
+L_X(Z)\times\operatorname{Hom}_{X^+}(Z,X)\arrow[r,"\sim"']&\operatorname{Hom}_{X^+}(Z,X\times_{X^+}X).
+\end{tikzcd}\]
+若 $\operatorname{Hom}_{X^+}(Y,X)=\varnothing$，则无须证明。故只需证，对每个延拓 $g_{\mathcal J}$ 的 $S$-\Term{morphism}{态射} $g:Y\to X$ 及 $m\in L_X(Y)$，有
+\[(m\cdot g)\circ f=L_X(f)(m)\cdot(g\circ f).\tag{0.1.9 (*)}\]
+这两个 $S$-\Term{morphism}{态射} $Z\to X$ 在 $Z_{\mathcal J}$ 上均为 $g_{\mathcal J}\circ f_{\mathcal J}$，特别地，在\Term{underlying-topological-space}{底拓扑空间}上诱导与 $g\circ f$ 相同的\Term{continuous-map}{连续映射}。故只需证明：若 $z\in Z$、$y=f(z)$、$x=g(y)$，并以 $A,B,C$ 分别表示\Term{local-ring}{局部环} $\mathcal O_{X,x},\mathcal O_{Y,y},\mathcal O_{Z,z}$，则两个\Term{morphism}{态射}诱导相同的 $A\to C$。记 $s$ 为 $x$ 在 $S$ 中的像，$\Lambda=\mathcal O_{S,s}$，$J,I$ 为对应于 $\mathcal J,\mathcal I$ 的 $\Lambda$ 的\Term{ideal}{理想}；设 $\varphi,\psi:A\to B$、$\theta:B\to C$ 分别由 $g,m\cdot g,f$ 诱导。则 $m$ 诱导元素
+\[D\in\operatorname{Hom}_{B/IB}(\Omega^1_{A/\Lambda}\otimes_A B/IB,JB)=\operatorname{Der}_{\Lambda}(A,JB),\]
+且 $\psi=\varphi+D$，故 $(m\cdot g)\circ f$ 对应于 $\theta\circ\psi=\theta\circ\varphi+\theta\circ D$。由 0.1.5，$\theta\circ D$ 是 $L_X(f)(m)$ 在
+\[\operatorname{Hom}_{C/IC}(\Omega^1_{A/\Lambda}\otimes_A C/IC,JC)=\operatorname{Der}_{\Lambda}(A,JC)\]
+中的像，故 $\theta\circ\varphi+\theta\circ D$ 是 $L_X(f)(m)\cdot(g\circ f)$ 的像。这证明 (0.1.9 (*))。
+\end{proof}
+\begin{SGAresult}{推论}{0.1.10}
+\footnote{编者注：详细展开了 $L_X$ 的“关于 $X$ 的\Term{functorial}{函子性}”，特别是下面的 b)。}a) $L_X$ 对 $X$ 具有\Term{functorial}{函子性}：每个 $S$-\Term{morphism}{态射} $f:X\to W$ 给出一个 $S$-\Term{morphism}{态射} $L_f:L_X\to L_W$，它是“在 $f^+$ 上方”的\Term{abelian-group}{阿贝尔群}\Term{morphism}{态射}，即图
+\SourcePage{117}
+\[\begin{tikzcd}L_X\arrow[r,"L_f"]\arrow[d]&L_W\arrow[d]\\X^+\arrow[r,"f^+"']&W^+\end{tikzcd}\]
+交换，且对任意 $Y\to X^+$，
+\[L_f(Y):\operatorname{Hom}_{X^+}(Y,L_X)\longrightarrow\operatorname{Hom}_{W^+}(Y,L_W)\]
+是\Term{abelian-group}{阿贝尔群}\Term{morphism}{态射}（右边通过 $f^+$ 将 $Y$ 置于 $W^+$ 上方）。
+
+b) 此外，下图交换：
+\[\begin{tikzcd}
+L_X\times_{X^+}X\arrow[r,"\sim"]\arrow[d,"L_f\times f"']&X\times_{X^+}X\arrow[d,"f\times f"]\\
+L_W\times_{W^+}W\arrow[r,"\sim"']&W\times_{W^+}W.
+\end{tikzcd}\]
+\end{SGAresult}
+\begin{proof}
+a) $L_f$ 由 $\mathcal O_{X_0}$-\Term{module}{模}\Term{morphism}{态射} $f_{X_0/W_0/S_0}:f_0^*\Omega^1_{W_0/S_0}\to\Omega^1_{X_0/S_0}$ 诱导（见 0.1.7 b)）：对任意由 $S$-\Term{morphism}{态射} $g_{\mathcal J}:Y_{\mathcal J}\to X$ 给出的 $X^+$-\Term{scheme}{概形} $Y$，有对 $Y$ 具有\Term{functorial}{函子性}的\Term{commutative-diagram}{交换图}
+\[\begin{tikzcd}[column sep=large]
+\operatorname{Hom}_{\mathcal O_{Y_0}}(g_0^*\Omega^1_{X_0/S_0},\mathcal J\mathcal O_Y)\arrow[r,"L_f(Y)"]\arrow[d]&\operatorname{Hom}_{\mathcal O_{Y_0}}(g_0^*f_0^*\Omega^1_{W_0/S_0},\mathcal J\mathcal O_Y)\arrow[d]\\
+\{g_{\mathcal J}\}\arrow[r]&\{f_{\mathcal J}\circ g_{\mathcal J}\},
+\end{tikzcd}\]
+其中 $L_f(Y)$ 为 $\psi\mapsto\psi\circ g_0^*(f_{X_0/W_0/S_0})$，确为\Term{abelian-group}{阿贝尔群}\Term{morphism}{态射}。\footnote{编者注：注意 $L_f$ 仅依赖于 $f_0:X_0\to W_0$。}
+
+证明 b)。设 $Y$ 为 $X^+$-\Term{scheme}{概形}；若 $\operatorname{Hom}_{X^+}(Y,X)=\varnothing$，则无须证明。故取 $g\in\operatorname{Hom}_{X^+}(Y,X)$；要证对任意 $m\in L_X(Y)$ 有
+\[f\circ(m\cdot g)=L_f(Y)(m)\cdot(f\circ g).\tag{0.1.10 (*)}\]
+固定 $g$ 后，$\operatorname{Hom}_X(Y,X\times_{X^+}X)$ 是 $\operatorname{Hom}_X(Y,\Delta^{(1)}_{X/S})$ 的\Term{subset}{子集}，且
+\[L_X(Y)=\operatorname{Hom}_{\mathcal O_{Y_0}}(g_0^*\Omega^1_{X_0/S_0},\mathcal J\mathcal O_Y)=\operatorname{Hom}_{\mathcal O_Y}(g^*\Omega^1_{X/S},\mathcal J\mathcal O_Y)\]
+是 $L_X^{\square}(Y)$ 的\Term{subset}{子集}（见 0.1.7）；$L_f(Y)$ 是 $L_f^{\square}(Y)$ 在 $L_X(Y)$ 上的\Term{restriction}{限制}。此外，\Term{bijection}{双射}
+\[L_X(Y)\xrightarrow{\sim}\operatorname{Hom}_X(Y,X\times_{X^+}X),\qquad m\mapsto(g,m\cdot g)\]
+是 0.1.7.1 中\Term{bijection}{双射} $\operatorname{Hom}_X(Y,\Delta^{(1)}_{X/S})\xrightarrow{\sim}\{g\}\times L_X^{\square}(Y)$ \Term{restriction}{限制}到 $L_X(Y)\subset L_X^{\square}(Y)$ 后的逆。因此 (0.1.10 (*)) 由 (0.1.7 (*)) 得出：
+\SourcePage{118}
+若记 $g'$ 为 $(g,m\cdot g)$ 定义的 $X$-\Term{morphism}{态射} $Y\to\Delta^{(1)}_{X/S}$，则与 $(f\circ g,f\circ g')$ 对应的 $L_W(Y)$ 中元素为 $L_f^{\square}(Y)(m)=L_f(Y)(m)$，即确有
+\[L_f(m)\cdot(f\circ g)=f\circ(m\cdot g).\]
+\end{proof}
+\begin{SGAresult}{\Term{lemma}{引理}}{0.1.11}
+设 $X,X'$ 为两个 $S$-\Term{scheme}{概形}。有\Term{commutative-diagram}{交换图}
+\[\begin{tikzcd}L_X\times_S L_{X'}\arrow[r,"\sim"]\arrow[d]&L_{X\times_S X'}\arrow[d]\\X^+\times_S X'^+\arrow[r,"\sim"']&(X\times_S X')^+.\end{tikzcd}\]
+\end{SGAresult}
+\begin{proof}
+\footnote{编者注：证明已作详细展开。}首先，对任意 $S$-\Term{scheme}{概形} $Y$，$\operatorname{Hom}_S(Y,X^+\times_S X'^+)$ 等于 $\operatorname{Hom}_S(Y,X^+)\times\operatorname{Hom}_S(Y,X'^+)$，后者\Term{isomorphism}{同构}于
+\[\operatorname{Hom}_S(Y_{\mathcal J},X)\times\operatorname{Hom}_S(Y_{\mathcal J},X')=\operatorname{Hom}_S(Y,(X\times_S X')^+).\]
+这证明 $X^+\times_S X'^+\simeq(X\times_S X')^+$。
+
+其次，设 $Y$ 为通过 $h:Y_{\mathcal J}\to X\times_S X'$ 位于 $X^+\times_S X'^+$ 上方的\Term{scheme}{概形}。置 $f=p\circ h$、$g=q\circ h$，其中 $p,q$ 为 $X\times_S X'$ 到 $X,X'$ 的\Term{projection}{投影}。由于
+\[\Omega^1_{(X_0\times_{S_0}X'_0)/S_0}\simeq p_0^*\Omega^1_{X_0/S_0}\oplus q_0^*\Omega^1_{X'_0/S_0}\]
+（见 EGA IV$_4$，16.4.23），得到自然\Term{isomorphism}{同构}
+\[\begin{aligned}
+\operatorname{Hom}_{\mathcal O_{Y_0}}(f_0^*\Omega^1_{X_0/S_0},\mathcal J\mathcal O_Y)\times\operatorname{Hom}_{\mathcal O_{Y_0}}(g_0^*\Omega^1_{X'_0/S_0},\mathcal J\mathcal O_Y)\\
+\simeq\operatorname{Hom}_{\mathcal O_{Y_0}}(h_0^*\Omega^1_{(X_0\times_{S_0}X'_0)/S_0},\mathcal J\mathcal O_Y),
+\end{aligned}\]
+即 $L_X(Y)\times L_{X'}(Y)\simeq L_{X\times_S X'}(Y)$。
+\end{proof}
+\begin{SGAresult}{注记}{0.1.12}
+\footnote{编者注：本注记及以下推论为新增。}设 $\mathscr C$ 为对\Term{fiber-product}{纤维积}\Term{stable}{稳定}的\Term{category}{范畴}，$S$ 为 $\mathscr C$ 的\Term{object}{对象}，$T_1,T_2$ 为 $S$ 上方的两个\Term{object}{对象}，对 $i=1,2$，$L_i,X_i$ 为 $T_i$ 上方的两个\Term{object}{对象}：
+\[\begin{tikzcd}L_1\arrow[dr]& &X_1\arrow[dl]&L_2\arrow[dr]&&X_2\arrow[dl]\\&T_1\arrow[drr]&&&T_2\arrow[dl]\\&&&S.\end{tikzcd}\]
+有自然\Term{isomorphism}{同构}
+\[(L_1\times_{T_1}X_1)\times_S(L_2\times_{T_2}X_2)\simeq(L_1\times_S L_2)\times_{T_1\times_S T_2}(X_1\times_S X_2).\]
+故由上一\Term{lemma}{引理}得到：
+\end{SGAresult}
+\SourcePage{119}
+\begin{SGAresult}{推论}{0.1.13}
+设 $X_1,X_2$ 为两个 $S$-\Term{scheme}{概形}。有\Term{isomorphism}{同构}组成的\Term{commutative-diagram}{交换图}
+\[\begin{tikzcd}[column sep=small]
+L_{X_1\times_S X_2}\times_{(X_1\times_S X_2)^+}(X_1\times_S X_2)\arrow[d,"(0.1.11)\;\simeq"']\arrow[dr,"\simeq"]&\\
+(L_{X_1}\times_S L_{X_2})\times_{X_1^+\times_S X_2^+}(X_1\times_S X_2)\arrow[r,"\sim"',"(0.1.12)"]&(L_{X_1}\times_{X_1^+}X_1)\times_S(L_{X_2}\times_{X_2^+}X_2).
+\end{tikzcd}\]
+\end{SGAresult}
+现在可以陈述：
+\begin{SGAresult}{命题}{0.2}
+对每个 $S$-\Term{scheme}{概形} $X$，可定义 $X^+$-\Term{abelian-group}{阿贝尔群} $L_X$ 在 $X^+$-\Term{object}{对象} $X$ 上的\Term{left-action}{左作用}，使得：
+
+(i) 此\Term{action}{作用}使 $X$ 成为 $X^+$ 上在 $L_X$ 下\Term{formally-principal-homogeneous}{形式主齐性}的\Term{object}{对象}，即\Term{morphism}{态射}
+\[L_X\times_{X^+}X\longrightarrow X\times_{X^+}X\]
+是 $X^+$-\Term{functor}{函子}\Term{isomorphism}{同构}；
+
+(ii) 此\Term{action}{作用}对 $S$-\Term{scheme}{概形} $X$ 具有\Term{functorial}{函子性}，即对每个 $S$-\Term{morphism}{态射} $f:X\to W$，下图交换：
+\[\begin{tikzcd}L_X\times_{X^+}X\arrow[r]\arrow[d,"L_f\times f"']&X\arrow[d,"f"]\\L_W\times_{W^+}W\arrow[r]&W;\end{tikzcd}\]
+(iii) 此\Term{action}{作用}“与\Term{fiber-product}{纤维积}交换”，即对任意 $S$-\Term{scheme}{概形} $X_1,X_2$，下图交换：
+\[\begin{tikzcd}[column sep=small]
+L_{X_1\times_S X_2}\times_{(X_1\times_S X_2)^+}(X_1\times_S X_2)\arrow[r]\arrow[d,"\simeq"']\arrow[dr,"\simeq"]&X_1\times_S X_2\\
+(L_{X_1}\times_S L_{X_2})\times_{(X_1\times_S X_2)^+}(X_1\times_S X_2)\arrow[r,"\sim"']&(L_{X_1}\times_{X_1^+}X_1)\times_S(L_{X_2}\times_{X_2^+}X_2)\arrow[u].
+\end{tikzcd}\]
+\end{SGAresult}
+\begin{proof}
+\footnote{编者注：结合前述增补，对原文作了修改和展开；这些增补详细纳入了原版第 89 页的内容。}(i)、(ii) 分别由推论 0.1.9、0.1.10 得出。为证 (iii)，对每个 $S$-\Term{scheme}{概形} $X$，记 $P(X)=L_X\times_{X^+}X$。将 (ii) 应用于\Term{projection}{投影} $p_i:X_1\times_S X_2\to X_i$，得到\Term{commutative-square}{交换方块}
+\[\begin{tikzcd}P(X_1\times_S X_2)\arrow[r]\arrow[d,"L_{p_i}\times p_i"']&X_1\times_S X_2\arrow[d,"p_i"]\\P(X_i)\arrow[r]&X_i\end{tikzcd}\]
+\SourcePage{120}
+（$i=1,2$），故得到\Term{commutative-square}{交换方块}
+\[\begin{tikzcd}P(X_1\times_S X_2)\arrow[r]\arrow[d]&X_1\times_S X_2\arrow[d,equal]\\P(X_1)\times_S P(X_2)\arrow[r]&X_1\times_S X_2.\end{tikzcd}\]
+结合推论 0.1.13，竖直\Term{arrow}{箭头}是\Term{isomorphism}{同构}，且正是 (iii) 所述\Term{commutative-diagram}{交换图}。
+\end{proof}
+\begin{SGAresult}{注记}{0.3}
+假设 $X^+$-\Term{scheme}{概形} $Y$ 在 $S$ 上\Term{flat}{平坦}（见 SGA 1，第 IV 讲）。此时可写成
+\[\operatorname{Hom}_{X^+}(Y,L_X)=\operatorname{Hom}_{\mathcal O_{Y_0}}(g_0^*\Omega^1_{X_0/S_0},\mathcal J\otimes_{\mathcal O_{S_0}}\mathcal O_{Y_0}).\]
+\end{SGAresult}
+\begin{SGAresult}{注记}{0.4}
+记 $\pi_0:X_0\to S_0$ 为\Term{structure-morphism}{结构态射}，假设存在 $\mathcal O_{S_0}$-\Term{module}{模} $\omega^1_{X_0/S_0}$，使 $\Omega^1_{X_0/S_0}\simeq\pi_0^*\omega^1_{X_0/S_0}$（特别地，当 $X_0$ 为 $S_0$-\Term{group}{群}时便是如此，见 II，4.11）。若用公式
+\[\operatorname{Hom}_S(Y,L'_X)=\operatorname{Hom}_{\mathcal O_{Y_0}}(\omega^1_{X_0/S_0}\otimes_{\mathcal O_{S_0}}\mathcal O_{Y_0},\mathcal J\mathcal O_Y)\tag{0.4.1}\]
+定义 $S$ 上的\Term{functor}{函子} $L'_X$，则对每个 $X^+$-\Term{scheme}{概形} $Y$ 有 $\operatorname{Hom}_{X^+}(Y,L_X)=\operatorname{Hom}_S(Y,L'_X)$，即
+\[L_X=L'_X\times_S X^+.\]
+\footnote{编者注：以下文字已作详细展开。}由于 $L_X\times_{X^+}X=L'_X\times_S X$，$L_X$ 在 $X$ 上的\Term{action}{作用}诱导 $L'_X$ 在 $X$ 上的\Term{action}{作用}，且此\Term{action}{作用}保持\Term{morphism}{态射} $p_X:X\to X^+$：若 $Y$ 为 $S$-\Term{scheme}{概形}，$h:Y\to X$ 为 $S$-\Term{morphism}{态射}，$m\in L'_X(Y)$，则 $h,m\cdot h$ 在 $Y_{\mathcal J}$ 上的\Term{restriction}{限制}相同，即 $p_X(m\cdot h)=p_X(h)$。
+\end{SGAresult}
+\begin{SGAresult}{注记}{0.5}
+保留 0.4 的假设和记号，再假设 $Y$ 为在 $S$ 上\Term{flat}{平坦}的 $S$-\Term{scheme}{概形}。则
+\[\operatorname{Hom}_{X^+}(Y,L_X)=\operatorname{Hom}_S(Y,L'_X)=\operatorname{Hom}_{S_0}(Y_0,L_{0X}),\]
+其中 $S_0$-\Term{abelian-group}{阿贝尔群}\Term{functor}{函子} $L_{0X}$ 由下列关于可变的 $S_0$-\Term{scheme}{概形} $T$ 的恒等式定义：
+\[\operatorname{Hom}_{S_0}(T,L_{0X})=\operatorname{Hom}_{\mathcal O_T}(\omega^1_{X_0/S_0}\otimes_{\mathcal O_{S_0}}\mathcal O_T,\mathcal J\otimes_{\mathcal O_{S_0}}\mathcal O_T).\tag{0.5.1}\]
+用 II，1 的记号，即已证明\Term{functor}{函子} $L'_X$ 与 $\prod_{S_0/S}L_{0X}$ 在 $(\mathrm{Sch})/S$ 中由在 $S$ 上\Term{flat}{平坦}的 $S$-\Term{scheme}{概形}组成的\Term{full-subcategory}{满子范畴}上有相同的\Term{restriction}{限制}。
+\end{SGAresult}
+\begin{SGAresult}{注记}{0.6}
+保留 0.5 的假设和记号，\footnote{编者注：增加了下述原文中隐含的假设。}再假设 $\pi_0:X_0\to S_0$ 有\Term{section}{截面} $\varepsilon_0$，则 $\omega^1_{X_0/S_0}\simeq\varepsilon_0^*\Omega^1_{X_0/S_0}$。首先（无须刚才的假设），有
+\[\operatorname{Hom}_{S_0}(T,L_{0X})=\Gamma\bigl(T,\mathcal Hom_{\mathcal O_T}(\omega^1_{X_0/S_0}\otimes_{\mathcal O_{S_0}}\mathcal O_T,\mathcal J\otimes_{\mathcal O_{S_0}}\mathcal O_T)\bigr).\]
+\SourcePage{121}
+现假设 $\omega^1_{X_0/S_0}$ 有\Term{finite-presentation}{有限表现}（见 EGA 0$_{\mathrm I}$，5.2.5）；特别地，若 $X_0$ 在 $S_0$ 上\Term{locally-finite-presentation}{局部有限表现}，便是如此（见 EGA IV$_4$，16.4.22）。若 $T$ 在 $S_0$ 上\Term{flat}{平坦}，由 EGA 0$_{\mathrm I}$，6.7.6 得
+\[\mathcal Hom_{\mathcal O_T}(\omega^1_{X_0/S_0}\otimes_{\mathcal O_{S_0}}\mathcal O_T,\mathcal J\otimes_{\mathcal O_{S_0}}\mathcal O_T)\simeq\mathcal Hom_{\mathcal O_{S_0}}(\omega^1_{X_0/S_0},\mathcal J)\otimes_{\mathcal O_{S_0}}\mathcal O_T,\]
+从而
+\[\operatorname{Hom}_{S_0}(T,L_{0X})=\Gamma\bigl(T,\mathcal Hom_{\mathcal O_{S_0}}(\omega^1_{X_0/S_0},\mathcal J)\otimes_{\mathcal O_{S_0}}\mathcal O_T\bigr).\]
+引入 I，4.6.1 中的记号 $\mathbf W(\ )$，即得：对每个在 $S_0$ 上\Term{flat}{平坦}的 $S_0$-\Term{scheme}{概形} $T$，有
+\[\operatorname{Hom}_{S_0}(T,L_{0X})=\operatorname{Hom}_{S_0}\bigl(T,\mathbf W(\mathcal Hom_{\mathcal O_{S_0}}(\omega^1_{X_0/S_0},\mathcal J))\bigr).\]
+总之，若 $\omega^1_{X_0/S_0}$ 有\Term{finite-presentation}{有限表现}，并\Term{restriction}{限制}到在 $S$ 上\Term{flat}{平坦}的 $S$-\Term{scheme}{概形}\Term{category}{范畴}，则
+\[L'_X=\prod_{S_0/S}\mathbf W(\mathcal Hom_{\mathcal O_{S_0}}(\omega^1_{X_0/S_0},\mathcal J)),\tag{0.6.1}\]
+由 EGA I，9.1.1，$\mathcal Hom_{\mathcal O_{S_0}}(\omega^1_{X_0/S_0},\mathcal J)$ 是\Term{quasi-coherent}{拟凝聚} $\mathcal O_{S_0}$-\Term{module}{模}。
+
+最后，若 $\omega^1_{X_0/S_0}$ 还\Term{locally-free}{局部自由}（\Term{finite-rank}{有限秩}），例如 $X_0$ 在 $S_0$ 上\Term{smooth}{光滑}时（此时自动\Term{locally-finite-presentation}{局部有限表现}），有
+\[\mathcal Hom_{\mathcal O_{S_0}}(\omega^1_{X_0/S_0},\mathcal J)\simeq\operatorname{Lie}(X_0/S_0)\otimes_{\mathcal O_{S_0}}\mathcal J,\tag{0.6.2}\]
+其中略为滥用术语（$X_0$ 未必是 $S_0$-\Term{group}{群}），以 $\operatorname{Lie}(X_0/S_0)$ 表示 $\mathcal O_{S_0}$-\Term{module}{模} $\omega^1_{X_0/S_0}$ 的\Term{duality}{对偶}。\footnote{编者注：这由 II，3.3、4.11 得到。事实上，“$X_0$ 在 $S_0$ 上于 $\varepsilon_0$ 处的\Term{tangent-space}{切空间}”\Term{functor}{函子} $L^{\varepsilon_0}_{X_0/S_0}$ 由 $S_0$ 上的\Term{vector-fibration}{向量纤维化} $\mathbf V(\varepsilon_0^*\Omega^1_{X_0/S_0})=\mathbf V(\omega^1_{X_0/S_0})$ 表示，其\Term{section}{截面}层是\Term{duality}{对偶}\Term{module}{模} $\operatorname{Hom}_{\mathcal O_{S_0}}(\omega^1_{X_0/S_0},\mathcal O_{S_0})$；当 $X_0$ 为 $S_0$-\Term{group}{群}且 $\varepsilon_0$ 为\Term{unit-section}{单位截面}时，此\Term{module}{模}正是 $\operatorname{Lie}(X_0/S_0)$。}
+\end{SGAresult}
+命题 0.2（及其证明）有两个重要推论。\footnote{编者注：在 0.7 之后增补了推论 0.7.bis，原文在 0.8 的证明中隐含使用了它。指出：0.8--0.12 及 0.17 在本讲后文起重要技术\Term{action}{作用}，它们都是 0.7 与 0.7.bis 的推论。}
+\begin{SGAresult}{推论}{0.7}
+设 $X$ 为 $S$-\Term{scheme}{概形}。
+
+a) 每个在 $X_{\mathcal J}$ 上诱导\Term{identity-map}{恒等映射}的 $S$-\Term{endomorphism}{自态射}都是\Term{automorphism}{自同构}。
+
+b) 有\Term{group}{群}的\Term{exact-sequence}{正合列}
+\[0\longrightarrow\operatorname{Hom}_{\mathcal O_{X_0}}(\Omega^1_{X_0/S_0},\mathcal J\mathcal O_X)\xrightarrow{i}\operatorname{Aut}_S(X)\longrightarrow\operatorname{Aut}_{S_{\mathcal J}}(X_{\mathcal J}).\]
+
+c) 此外，若通过\Term{transport-of-structure}{结构搬运}使 $\operatorname{Aut}_S(X)$ \Term{action}{作用}于第一个\Term{group}{群}，则对任意 $u\in\operatorname{Aut}_S(X)$、$m\in\operatorname{Hom}_{\mathcal O_{X_0}}(\Omega^1_{X_0/S_0},\mathcal J\mathcal O_X)$，有
+\[i(um)=u\,i(m)\,u^{-1}.\]
+\end{SGAresult}
+\SourcePage{122}
+\begin{proof}
+由 0.2(i)，$\operatorname{Hom}_{X^+}(X,X)$ 是 $\operatorname{Hom}_{X^+}(X,L_X)$ 下的\Term{principal-homogeneous-set}{主齐性集合}，因为它显然\Term{nonempty}{非空}：它含有一个标记点，即 $X$ 的恒等\Term{automorphism}{自同构}。\footnote{编者注：以下文字已作详细展开。}因此 $m\mapsto m\cdot\operatorname{id}_X$ 诱导\Term{bijection}{双射}
+\[\operatorname{Hom}_{\mathcal O_{X_0}}(\Omega^1_{X_0/S_0},\mathcal J\mathcal O_X)=L_X(X)\xrightarrow{\sim}\operatorname{Hom}_{X^+}(X,X).\]
+取 $m\in L_X(X)$、$f=m'\cdot\operatorname{id}_X\in\operatorname{Hom}_{X^+}(X,X)$。将 0.2(ii) 应用于 $f$，得到
+\[f\circ(m\cdot\operatorname{id}_X)=L_f(X)(m)\cdot f=L_f(X)(m)\cdot(m'\cdot\operatorname{id}_X).\]
+又因 $f$ 是 $X$ 的 $X^+$-\Term{endomorphism}{自态射}，$f_{\mathcal J}=\operatorname{id}_{X_{\mathcal J}}$，故 $f_0=\operatorname{id}_{X_0}$；$L_f$ 仅依赖 $f_0$（见 0.1.10 中编者注 (17)），所以 $L_f(X)(m)=m$。上述等式可重写为
+\[(m'\cdot\operatorname{id}_X)\circ(m\cdot\operatorname{id}_X)=m\cdot(m'\cdot\operatorname{id}_X)=(m+m')\cdot\operatorname{id}_X.\]
+这说明\Term{bijection}{双射} $m\mapsto m\cdot\operatorname{id}_X$ 将 $\operatorname{Hom}_{X^+}(X,L_X)$ 的\Term{group-law}{群运算}变为 $X$ 的 $X^+$-\Term{endomorphism}{自态射}的复合运算。
+
+首先，$\operatorname{Hom}_{X^+}(X,X)$ 的每个元素均\Term{invertible}{可逆}，得到第一项断言；其次有\Term{exact-sequence}{正合列}
+\[0\longrightarrow\operatorname{Hom}_{X^+}(X,L_X)\xrightarrow{i}\operatorname{Aut}_S(X)\longrightarrow\operatorname{Aut}_{S_{\mathcal J}}(X_{\mathcal J}),\]
+即第二项断言。
+
+注意，上述\Term{morphism}{态射} $i$ 对 $X$ 的\Term{isomorphism}{同构}具有\Term{functorial}{函子性}，因为它是从 $L_X$ 在 $X^+$ 上方对 $X$ 的\Term{action}{作用}通过结构方式定义的，而命题 0.2(ii) 表明该\Term{action}{作用}本身对 $X$ 具有\Term{functorial}{函子性}。\footnote{编者注：以下文字已作详细展开。}故 $X$ 在 $S$ 上的每个\Term{automorphism}{自同构} $u$ 都通过\Term{transport-of-structure}{结构搬运}诱导\Term{isomorphism}{同构}
+\[h:\operatorname{Hom}_{X^+}(X,L_X)\xrightarrow{\sim}\operatorname{Hom}_{X^+}(X,L_X),\qquad f:\operatorname{Aut}_S(X)\xrightarrow{\sim}\operatorname{Aut}_S(X),\]
+使下图交换：
+\[\begin{tikzcd}
+\operatorname{Hom}_{X^+}(X,L_X)\arrow[r,"i"]\arrow[d,"h"']&\operatorname{Aut}_S(X)\arrow[d,"f"]\\
+\operatorname{Hom}_{X^+}(X,L_X)\arrow[r,"i"']&\operatorname{Aut}_S(X),
+\end{tikzcd}\]
+即 $f\circ i=i\circ h$。另一方面，$f$ 由\Term{commutative-diagram}{交换图}
+\[\begin{tikzcd}X\arrow[r,"a"]\arrow[d,"u"']&X\arrow[d,"u"]\\X\arrow[r,"f(a)"']&X\end{tikzcd}\]
+\SourcePage{123}
+给出，即对每个 $a\in\operatorname{Aut}_S(X)$ 有 $f(a)=u\circ a\circ u^{-1}$。写出 $i(h(m))=f(i(m))$，即得所求公式。
+\end{proof}
+\begin{SGAresult}{推论}{0.7.bis}
+设 $X$ 为 $S$-\Term{scheme}{概形}，且 $X_{\mathcal J}$ 为 $S_{\mathcal J}$-\Term{monoid}{幺半群}。则 $L_X$ 带有 $S$-\Term{monoid}{幺半群}结构，有 $S$-\Term{monoid}{幺半群}的\Term{splitting}{分裂}\Term{exact-sequence}{正合列}
+\[\begin{tikzcd}1\arrow[r]&L'_X\arrow[r,"i"]&L_X\arrow[r,shift left,"p"]&X^+\arrow[l,shift left,"s"]\arrow[r]&1,\end{tikzcd}\]
+且 $L'_X$ 上诱导的\Term{monoid}{幺半群}运算与它的\Term{abelian-group}{阿贝尔群}结构相同。特别地，若 $X_{\mathcal J}$ 为 $S_{\mathcal J}$-\Term{group}{群}，则 $L_X$ 为 $S$-\Term{group}{群}，是 $X^+$ 与 $L'_X$ 的\Term{semidirect-product}{半直积}。
+\end{SGAresult}
+\begin{proof}
+由于 $X_{\mathcal J}$ 为 $S_{\mathcal J}$-\Term{monoid}{幺半群}，$X^+=\prod_{S_{\mathcal J}/S}X_{\mathcal J}$ 是 $S$-\Term{monoid}{幺半群}（对每个 $Y\to S$，有 $X^+(Y)=X_{\mathcal J}(Y_{\mathcal J})$）。对每个 $S$-\Term{scheme}{概形} $Y$，以 $\widetilde Y_{\mathcal J}$ 表示对应于\Term{quasi-coherent}{拟凝聚} $\mathcal O_{Y_{\mathcal J}}$-\Term{algebra}{代数} $\mathcal O_{Y_{\mathcal J}}\oplus\mathcal J\mathcal O_Y$ 的\Term{affine}{仿射} $Y_{\mathcal J}$-\Term{scheme}{概形}（即\Term{filtered}{滤过} $\mathcal O_Y\supset\mathcal J\mathcal O_Y$ 的\Term{adjunction}{伴随}\Term{graded}{分次}\Term{algebra}{代数}）。则 $L_X(Y)$ 等同于 $X_{\mathcal J}(\widetilde Y_{\mathcal J})$，$L'_X(Y)$ 等同于“\Term{zero-section}{零截面}” $Y_{\mathcal J}\to\widetilde Y_{\mathcal J}$ 诱导的\Term{morphism}{态射} $p:X_{\mathcal J}(\widetilde Y_{\mathcal J})\to X_{\mathcal J}(Y_{\mathcal J})$ 的核（\Term{zero-section}{零截面}即由在\Term{ideal}{理想} $\mathcal J\mathcal O_Y$ 上为零的 $\mathcal O_{Y_{\mathcal J}}$-\Term{algebra}{代数}\Term{morphism}{态射} $\mathcal O_{\widetilde Y_{\mathcal J}}\to\mathcal O_{Y_{\mathcal J}}$ 给出）。因而对每个 $Y\to S$，有对 $Y$ 具有\Term{functorial}{函子性}的\Term{monoid}{幺半群}\Term{splitting}{分裂}\Term{exact-sequence}{正合列}
+\[\begin{tikzcd}1\arrow[r]&L'_X(Y)\arrow[r,"i"]&L_X(Y)\arrow[r,shift left,"p"]&X^+(Y)\arrow[l,shift left,"s"]\arrow[r]&1.\end{tikzcd}\]
+尚需证明 $L'_X$ 上诱导的\Term{monoid}{幺半群}运算与其\Term{abelian-group}{阿贝尔群}结构相同。记 $\mu$ 为 $L_X$ 的\Term{monoid}{幺半群}运算，$e$ 为其\Term{unit-section}{单位截面}；要证对任意 $m,m'\in L'_X(Y)$，有
+\[\mu(m\cdot e,m'\cdot e)=(m+m')\cdot e.\]
+有两种证明方式。一方面，可重复 (0.1.10 (*)) 的证明，将其中的\Term{morphism}{态射} $f:X\to W$ 换成 $\mu:L_X\times_S L_X\to L_X$。通过 $s$ 将 $X^+(Y)=X_{\mathcal J}(Y_{\mathcal J})$ 等同于其在 $L_X(Y)=X_{\mathcal J}(\widetilde Y_{\mathcal J})$ 中的像，便得到：对每个 $g,g'\in X_{\mathcal J}(Y_{\mathcal J})$ 及 $m,m'\in L'_X(Y)$，有
+\[\mu(m\cdot g,m'\cdot g')=L_\mu^{(g,g')}(m,m')\cdot\mu(g,g'),\tag{*}\]
+其中 $L_\mu^{(g,g')}$ 表示 $\mu$ 在点 $(g,g')$ 处的导\Term{morphism}{态射}（即通过 $(g,g')$ 将 $\widetilde Y_{\mathcal J}$ 置于 $L_X\times_S L_X$ 上方）。特别地，
+\[\mu(m\cdot e,m'\cdot e)=L_\mu^{(e,e)}(m,m')\cdot e.\]
+而 $L_\mu^{(e,e)}(m,m')=L_{\ell_e}(m')+L_{r_e}(m)$，其中 $\ell_e$（分别为 $r_e$）是由 $e$ 给出的左（分别为右）\Term{translation}{平移}，亦即 $X_{\mathcal J}$ 的\Term{identity-map}{恒等映射}，故 $L_\mu^{(e,e)}(m,m')=m+m'$。
+
+另一方面，也可如下证明（参见 [DG70]，§II.4，\Term{theorem}{定理} 3.5 的证明）。由\Term{lemma}{引理} 0.1.11，$X^+$ 与 $L_X$ 的构造“与积交换”，故 $L'_X$ 也如此。因而 $\mu$ 诱导的\Term{morphism}{态射} $\mu^0:L'_X\times L'_X\to L'_X$ 是关于\Term{abelian-group}{阿贝尔群}结构的\Term{homomorphism}{同态}。再由第 II 讲\Term{lemma}{引理} 3.10，$\mu^0$ 与\Term{abelian-group}{阿贝尔群}运算相同。
+\end{proof}
+\SourcePage{124}
+\textbf{0.8.}\footnote{编者注：这里增加编号 0.8，以标明从此回到原文。}现设 $X$ 为 $S$-\Term{scheme}{概形}，且 $X_{\mathcal J}$ 为 $S_{\mathcal J}$-\Term{group}{群}。假设存在 $S$-\Term{morphism}{态射}
+\[P:X\times_S X\longrightarrow X\]
+使\Term{base-change}{基变换}所得\Term{morphism}{态射}
+\[P_{\mathcal J}:X_{\mathcal J}\times_{S_{\mathcal J}}X_{\mathcal J}\longrightarrow X_{\mathcal J}\]
+是 $X_{\mathcal J}$ 的\Term{group-law}{群运算}。（一个重要特例是 $X$ 为 $S$-\Term{group}{群}，而 $P$ 是其\Term{group-law}{群运算}。）由此得到\Term{morphism}{态射}
+\[L_P:L_X\times_S L_X\simeq L_{X\times_S X}\longrightarrow L_X,\]
+它实际上不依赖于 $P$，因为可用 $X_{\mathcal J}$ 的\Term{group-law}{群运算} $P_{\mathcal J}$ 来计算，如下所示。\footnote{编者注：以下对原文作了详细展开。}由 0.2 的 (ii)、(iii)，对每个 $Y\to S$、$x,x'\in X(Y)$、$m,m'\in L'_X(Y)$，有
+\[P(m\cdot x,m'\cdot x')=P\bigl((m,m')\cdot(x,x')\bigr)=L_P^{(x,x')}(m,m')\cdot\mu(g,g'),\]
+其中 $g$（分别为 $g'$）是 $x$（分别为 $x'$）在 $X^+(Y)$ 中的像。此外（见 0.10 的证明），$L_P^{(x,x')}=L_\mu^{(g,g')}$；按 0.7.bis 的 (*)，后者是由 $L_X(Y)$ 中如下等式确定的 $L'_X(Y)$ 的元素：
+\[L_\mu^{(g,g')}(m,m')\cdot\mu(g,g')=\mu(m\cdot g,m'\cdot g').\]
+即若以 $\times$（代替 $\mu$）表示 $L_X$ 的\Term{group-law}{群运算}，以 $\operatorname{Ad}$ 表示 $X^+$ 在 $L'_X$ 上的“\Term{adjoint-action}{伴随作用}”（此\Term{action}{作用}通过 $X_0$ \Term{resolution}{分解}，由 $X_0$ 在 $\omega^1_{X_0/S_0}$ 上的\Term{adjoint-action}{伴随作用}诱导），便有
+\[L_\mu^{(g,g')}(m,m')\times g\times g'=m\times g\times m'\times g'=(m\times\operatorname{Ad}(g)(m'))\times g\times g',\]
+最终得到 $L_P^{(x,x')}(m,m')=m\times\operatorname{Ad}(g)(m')$。于是有：
+\begin{SGAresult}{命题}{0.8}
+设 $P:X\times_S X\to X$ 为 $S$-\Term{morphism}{态射}，使 $P_{\mathcal J}$ 赋予 $X_{\mathcal J}$ 一个 $S_{\mathcal J}$-\Term{group-structure}{群结构}。记 $\times$ 为 $L'_X$ 的\Term{group-law}{群运算}，$(m,x)\mapsto m\cdot x$ 为定义 $L'_X$ 在 $X$ 上的\Term{action}{作用}的\Term{morphism}{态射} $L'_X\times_S X\to X$，$\operatorname{Ad}:X^+\to\underline{\operatorname{Aut}}_{S\text{-群}}(L'_X)$ 为 $X^+$ 在 $L'_X$ 上的“\Term{adjoint-action}{伴随作用}”（它由 $X_0$ 在 $\omega^1_{X_0/S_0}$ 上的\Term{adjoint-action}{伴随作用}诱导）。则对任意 $S'\to S$、$x,x'\in X(S')$、$m,m'\in L'_X(S')$，有
+\[P(m\cdot x,m'\cdot x')=\bigl(m\times\operatorname{Ad}(p_X(x))(m')\bigr)\cdot P(x,x').\tag{0.8.1}\]
+\end{SGAresult}
+若 $X$ 为 $S$-\Term{group}{群}，以 $*$ 表示其\Term{group-law}{群运算}，$e$ 表示其\Term{unit-section}{单位截面}，并以 $i$ 表示对任意 $S'\to S$、$m\in L'_X(S')$ 由
+\[i(m)=m\cdot e\]
+定义的 $S$-\Term{morphism}{态射}。
+\SourcePage{125}
+\begin{SGAresult}{推论}{0.9}
+设 $X$ 为 $S$-\Term{group}{群}。则 $X^+$ 自然带有 $S$-\Term{group-structure}{群结构}，$p_X$ 为 $S$-\Term{group-morphism}{群态射}。此外，$S$-\Term{morphism}{态射}
+\[i:L'_X\longrightarrow X,\qquad m\longmapsto m\cdot e\]
+是 $L'_X$ 到 $\operatorname{Ker}p_X$ 的 $S$-\Term{group}{群}\Term{isomorphism}{同构}，且对任意 $S'\to S$、$x'\in X(S')$、$m\in L'_X(S')$，有
+\[m\cdot x'=(m\cdot e)*x'=i(m)*x'.\tag{0.9.1}\]
+\end{SGAresult}
+前两项断言已在 0.1.2 中证明。由于在 $X^+$ 上方 $X$ 在 $L_X=L'_X\times_S X^+$ 下\Term{formally-principal-homogeneous}{形式主齐性}，\Term{morphism}{态射} $i$ 确为 $L'_X$ 到 $p_X$ 的核的 $S$-\Term{functor}{函子}\Term{isomorphism}{同构}。分别将公式 (0.8.1) 应用于 $x=x'=e$ 及 $x=e,m'=1$，即得 $i$ 为\Term{group-morphism}{群态射}及公式 (0.9.1)。
+\begin{SGAresult}{推论}{0.10}
+设 $X$ 为 $S$-\Term{group}{群}。采用上述记号，对任意 $S'\to S$、$x\in X(S')$、$m'\in L'_X(S')$，有
+\[x*i(m')*x^{-1}=i\bigl(\operatorname{Ad}(p_X(x))(m')\bigr).\tag{0.10.1}\]
+\end{SGAresult}
+这由等式 $i(m')*x^{-1}=m'\cdot x^{-1}$ 及将 (0.8.1) 应用于 $m=1,x'=x^{-1}$ 得到。
+
+因此，当 $X$ 为 $S$-\Term{group}{群}时，我们已明确确定 $X\to X^+$ 的核，以及 $X$ 的\Term{inner-automorphism}{内自同构}在此核上的\Term{action}{作用}。下面将说明，对某些不一定\Term{representable}{可表}的 $S$-\Term{group-functor}{群函子}也可如此。我们需要的一个情形是\Term{functor}{函子} $\underline{\operatorname{Aut}}$（I，1.7）。先陈述：
+\begin{SGAresult}{命题}{0.11}
+设 $E$ 为 $S$-\Term{scheme}{概形}，记 $X=\underline{\operatorname{Aut}}_S(E)$。$S$-\Term{group-functor}{群函子}\Term{morphism}{态射}
+\[p_X:X\longrightarrow X^+\]
+的核\Term{canonical}{典范}地等同于由
+\[\operatorname{Hom}_S(Y,L'_X)=\operatorname{Hom}_{\mathcal O_{E_0\times_{S_0}Y_0}}(\Omega^1_{E_0/S_0}\otimes_{\mathcal O_{S_0}}\mathcal O_{Y_0},\mathcal J\mathcal O_{E\times_S Y})\]
+定义的交换 $S$-\Term{group-functor}{群函子} $L'_X$，其中 $Y$ 为可变的 $S$-\Term{scheme}{概形}。
+\end{SGAresult}
+事实上，对可变的 $S$-\Term{scheme}{概形} $Y$，有 $\operatorname{Hom}_S(Y,X)=\operatorname{Aut}_Y(E\times_S Y)$，且
+\[\operatorname{Hom}_S(Y,X^+)=\operatorname{Hom}_S(Y_{\mathcal J},X)=\operatorname{Aut}_{Y_{\mathcal J}}(E\times_S Y_{\mathcal J})=\operatorname{Aut}_{Y_{\mathcal J}}((E\times_S Y)\times_Y Y_{\mathcal J}).\]
+将 0.7 b) 应用于 $Y$-\Term{scheme}{概形} $E\times_S Y$，得到\Term{group}{群}\Term{isomorphism}{同构}
+\[\operatorname{Hom}_S(Y,L'_X)\simeq\operatorname{Ker}\bigl(\operatorname{Hom}_S(Y,X)\longrightarrow\operatorname{Hom}_S(Y,X^+)\bigr),\]
+容易验证它对 $S$-\Term{scheme}{概形} $Y$ 具有\Term{functorial}{函子性}。故得到 $S$-\Term{group}{群}\Term{isomorphism}{同构}
+\[L'_X\simeq\operatorname{Ker}(X\longrightarrow X^+),\]
+完成命题 0.11 的证明。
+\SourcePage{126}
+\begin{SGAresult}{推论}{0.12}
+\footnote{编者注：将“注记”改为“推论”。}保留 0.11 的记号：$E$ 为 $S$-\Term{scheme}{概形}，$X=\underline{\operatorname{Aut}}_S(E)$。$X$ 在 $L'_X$ 上有自然\Term{action}{作用} $f$，定义如下。对每个 $S$-\Term{scheme}{概形} $Y$，有
+\[\operatorname{Hom}_S(Y,X)=\operatorname{Aut}_Y(E\times_S Y)\]
+和
+\[\operatorname{Hom}_S(Y,L'_X)=\operatorname{Hom}_{\mathcal O_{E_0\times_{S_0}Y_0}}(\Omega^1_{(E_0\times_{S_0}Y_0)/Y_0},\mathcal J\mathcal O_{E\times_S Y}).\]
+（注意 $\Omega^1_{E_0/S_0}\otimes_{S_0}\mathcal O_{Y_0}\simeq\Omega^1_{(E_0\times_{S_0}Y_0)/Y_0}$，见 EGA IV$_4$，16.4.5。）第一个\Term{group}{群}通过\Term{transport-of-structure}{结构搬运}\Term{action}{作用}于第二个\Term{group}{群}，此\Term{action}{作用}对 $Y$ 确有\Term{functorial}{函子性}。于是对每个 $Y\to S$、$x\in\operatorname{Hom}_S(Y,X)$、$m\in\operatorname{Hom}_S(Y,L'_X)$，有公式
+\[x\,i(m)\,x^{-1}=i(f(x)m).\tag{0.12.1}\]
+\end{SGAresult}
+事实上，这是将 0.7 c) 应用于 $Y$-\Term{scheme}{概形} $E\times_S Y$ 的结果。
+\begin{SGAresult}{回顾}{0.13}
+\Term{quasi-coherent}{拟凝聚}\Term{module}{模}沿\Term{finite-presentation}{有限表现}\Term{morphism}{态射}的\Term{direct-image}{正像}仍\Term{quasi-coherent}{拟凝聚}。在相同条件下，\Term{direct-image}{正像}的构造与\Term{flat}{平坦}\Term{base-change}{基变换}交换：在图
+\[\begin{tikzcd}T\arrow[d,"f"']&T'=T\times_S S'\arrow[l,"g'"']\arrow[d,"f'"]\\S&S'\arrow[l,"g"],\end{tikzcd}\]
+中，若 $f$（因而 $f'$）\Term{finite-presentation}{有限表现}，$g$（因而 $g'$）\Term{flat}{平坦}，则对每个\Term{quasi-coherent}{拟凝聚} $\mathcal O_T$-\Term{module}{模} $\mathcal F$，有
+\[f_*\mathcal F\otimes_{\mathcal O_S}\mathcal O_{S'}=f'_*\bigl(\mathcal F\otimes_{\mathcal O_S}\mathcal O_{S'}\bigr),\]
+或者写得更美观一些，
+\[g^*(f_*\mathcal F)=f'_*(g'^*\mathcal F).\]
+更一般地，$f$ 为\Term{quasi-compact}{拟紧}且\Term{quasi-separated}{拟分离}\Term{morphism}{态射}时，这两个事实仍成立；见 EGA I，9.2.1，以及\Term{quasi-compact}{拟紧}\Term{separated}{分离}情形的 EGA III$_1$，1.4.15（结合 EGA III$_2$，Err$_{\mathrm{III}}$ 25）和 EGA IV$_1$，1.7.4、1.7.21。
+\end{SGAresult}
+\begin{SGAresult}{注记}{0.14}
+\footnote{编者注：详细展开了本注记的第一部分，并增加了第二部分。}沿用 0.11 的记号：$E$ 为 $S$-\Term{scheme}{概形}，$X=\underline{\operatorname{Aut}}_S(E)$，$L'_X$ 为下式定义的交换 $S$-\Term{group-functor}{群函子}：
+\[\begin{aligned}
+L'_X(Y)&=\operatorname{Hom}_{\mathcal O_{E_0\times_{S_0}Y_0}}(\Omega^1_{E_0/S_0}\otimes_{\mathcal O_{S_0}}\mathcal O_{Y_0},\mathcal J\mathcal O_{E\times_S Y})\\
+&=\operatorname{Hom}_{\mathcal O_{E\times_S Y}}(\Omega^1_{E/S}\otimes_{\mathcal O_S}\mathcal O_Y,\mathcal J\mathcal O_{E\times_S Y})\\
+&=\Gamma\bigl(E\times_S Y,\mathcal Hom_{\mathcal O_{E\times_S Y}}(\Omega^1_{E/S}\otimes_{\mathcal O_S}\mathcal O_Y,\mathcal J\mathcal O_{E\times_S Y})\bigr).
+\end{aligned}\]
+\SourcePage{127}
+假设 $Y$ 在 $S$ 上\Term{flat}{平坦}，则有\Term{isomorphism}{同构}
+\[\mathcal J\mathcal O_{E\times_S Y}\xleftarrow{\sim}(\mathcal J\mathcal O_E)\otimes_{\mathcal O_S}\mathcal O_Y\xrightarrow{\sim}(\mathcal J\mathcal O_E)\otimes_{\mathcal O_{S_0}}\mathcal O_{Y_0}.\]
+再假设 $E$ 在 $S$ 上\Term{finite-presentation}{有限表现}，则 $\Omega^1_{E/S}$ 是\Term{finite-presentation}{有限表现}的 $\mathcal O_E$-\Term{module}{模}（见 EGA IV$_4$，16.4.22），由 EGA 0$_{\mathrm I}$，6.7.6，有
+\[\begin{aligned}
+\mathcal Hom_{\mathcal O_{E\times_S Y}}(\Omega^1_{E/S}\otimes_{\mathcal O_S}\mathcal O_Y,(\mathcal J\mathcal O_E)\otimes_{\mathcal O_S}\mathcal O_Y)\\
+\simeq\mathcal Hom_{\mathcal O_E}(\Omega^1_{E/S},\mathcal J\mathcal O_E)\otimes_{\mathcal O_S}\mathcal O_Y.
+\end{aligned}\]
+记 $\pi:E\to S$、$g:Y\to S$ 为\Term{structure-morphism}{结构态射}。将 0.13 应用于图
+\[\begin{tikzcd}E\arrow[d,"\pi"']&E\times_S Y\arrow[l,"g'"']\arrow[d,"\pi'"]\\S&Y\arrow[l,"g"],\end{tikzcd}\]
+及 $\mathcal O_E$-\Term{module}{模} $\mathcal F=\mathcal Hom_{\mathcal O_E}(\Omega^1_{E/S},\mathcal J\mathcal O_E)$，得
+\[\Gamma(E\times_S Y,g'^*\mathcal F)=\Gamma(Y,\pi'_*g'^*\mathcal F)=\Gamma(Y,g^*\pi_*\mathcal F)=\mathbf W(\pi_*\mathcal F)(Y).\]
+因而已证明：若 $E$ 在 $S$ 上\Term{finite-presentation}{有限表现}，则在\Term{flat}{平坦} $S$-\Term{scheme}{概形}\Term{category}{范畴}上有
+\[L'_X=\mathbf W\bigl(\pi_*\mathcal Hom_{\mathcal O_E}(\Omega^1_{E/S},\mathcal J\mathcal O_E)\bigr).\tag{0.14.1}\]
+此外，由 EGA I，9.1.1、9.2.1，取 $\mathbf W$ 的那个\Term{module}{模}为\Term{quasi-coherent}{拟凝聚}\Term{module}{模}。
+
+\footnote{编者注：以下文字为新增。}记 $L_0$ 为 $S_0$-\Term{functor}{函子}
+\[\mathbf W\bigl(\pi_{0*}\mathcal Hom_{\mathcal O_{E_0}}(\Omega^1_{E_0/S_0},\mathcal J\mathcal O_E)\bigr).\]
+回到 $L'_X(Y)$ 的定义，并考虑\Term{isomorphism}{同构}
+\[\mathcal J\mathcal O_{E\times_S Y}\simeq(\mathcal J\mathcal O_E)\otimes_{\mathcal O_{S_0}}\mathcal O_{Y_0},\]
+按上面的方式推理，得到
+\[L'_X(Y)=L_0(Y_0)=L_0(Y\times_S S_0)=\left(\prod_{S_0/S}L_0\right)(Y).\]
+故在\Term{flat}{平坦} $S$-\Term{scheme}{概形}\Term{category}{范畴}上，
+\[L'_X=\prod_{S_0/S}\mathbf W\bigl(\pi_{0*}\mathcal Hom_{\mathcal O_{E_0}}(\Omega^1_{E_0/S_0},\mathcal J\mathcal O_E)\bigr).\]
+0.12 中定义的 $X$ 在 $L'_X$ 上的\Term{action}{作用}是否来自 $X_0=\underline{\operatorname{Aut}}_{S_0}(E_0)$ 在 $L_0$ 上的\Term{action}{作用}，并不显然；但当 $E$ 还在 $S$ 上\Term{flat}{平坦}时，确实如此。
+\SourcePage{128}
+事实上，此时有\Term{canonical}{典范}\Term{isomorphism}{同构}
+\[\mathcal J\mathcal O_E\simeq\mathcal J\otimes_{\mathcal O_S}\mathcal O_E\simeq\mathcal J\otimes_{\mathcal O_{S_0}}\mathcal O_{E_0},\]
+\[L_0\simeq\mathbf W\bigl(\pi_{0*}\mathcal Hom_{\mathcal O_{E_0}}(\Omega^1_{E_0/S_0},\mathcal J\otimes_{\mathcal O_{S_0}}\mathcal O_{E_0})\bigr),\]
+\[L'_X=\prod_{S_0/S}\mathbf W\bigl(\pi_{0*}\mathcal Hom_{\mathcal O_{E_0}}(\Omega^1_{E_0/S_0},\mathcal J\otimes_{\mathcal O_{S_0}}\mathcal O_{E_0})\bigr).\tag{0.14.2}\]
+于是对每个 $S_0$-\Term{scheme}{概形} $T$，有
+\[L_0(T)\simeq\operatorname{Hom}_{\mathcal O_{E_0\times_{S_0}T}}(\Omega^1_{(E_0\times_{S_0}T)/T},\mathcal J\otimes_{\mathcal O_{S_0}}\mathcal O_{E_0\times_{S_0}T}),\]
+$\operatorname{Hom}_{S_0}(T,X_0)=\operatorname{Aut}_T(E_0\times_{S_0}T)$ 通过\Term{transport-of-structure}{结构搬运}\Term{action}{作用}于 $L_0(T)$，且对 $T$ 具有\Term{functorial}{函子性}。最后，对每个在 $S$ 上\Term{flat}{平坦}的 $S$-\Term{scheme}{概形} $Y$，$\operatorname{Hom}_S(Y,X)=\operatorname{Aut}_Y(E\times_S Y)$ 通过\Term{transport-of-structure}{结构搬运}在 $L'_X(Y)=L_0(Y_0)$ 上的\Term{action}{作用}，经过 $\operatorname{Aut}_{Y_0}(E_0\times_{S_0}Y_0)$ \Term{resolution}{分解}。
+\end{SGAresult}
+最后从 SGA 1 第 III 讲摘录以下两个命题。
+\begin{SGAresult}{命题}{0.15}
+（SGA 1，第 III 讲，6.8）\footnote{编者注：这一“整体”\Term{lifting}{提升}结果使用了同处 4.1 的“\Term{local-scheme}{局部}”\Term{lifting}{提升}结果，后者是在 $S$ \Term{locally-noetherian}{局部 Noether} 的假设下陈述的；一般情形见 EGA IV$_4$，18.1.1。}对任意在 $S_{\mathcal J}$ 上\Term{smooth}{光滑}且\Term{affine}{仿射}的 $S_{\mathcal J}$-\Term{scheme}{概形} $Y$，存在在 $S$ 上\Term{smooth}{光滑}的 $S$-\Term{scheme}{概形} $X$，使 $X\times_S S_{\mathcal J}\simeq Y$；这样的 $X$ 在（不唯一的）\Term{isomorphism}{同构}意义下唯一。
+\end{SGAresult}
+\begin{SGAresult}{命题}{0.16}
+（SGA 1，第 III 讲，5.5）\footnote{编者注：这直接由 EGA IV$_4$，17.3.1（及 17.1.1）所采用的“（\Term{form}{形式}）\Term{smooth}{光滑}”的定义得到。}设 $X$ 为在 $S$ 上\Term{smooth}{光滑}的 $S$-\Term{scheme}{概形}。对任意\Term{affine}{仿射} $S$-\Term{scheme}{概形} $Y$，\Term{canonical}{典范}映射
+\[p_X(Y):\operatorname{Hom}_S(Y,X)\longrightarrow\operatorname{Hom}_S(Y,X^+)=\operatorname{Hom}_{S_{\mathcal J}}(Y_{\mathcal J},X_{\mathcal J})\]
+为\Term{surjection}{满射}。
+\end{SGAresult}
+\begin{SGAresult}{推论}{0.17}
+设 $E$ 为在 $S$ 上\Term{smooth}{光滑}且\Term{affine}{仿射}的 $S$-\Term{scheme}{概形}，记 $X=\underline{\operatorname{Aut}}_S(E)$。对任意\Term{affine}{仿射} $S$-\Term{scheme}{概形} $Y$，\Term{canonical}{典范}映射
+\[\operatorname{Aut}_Y(E\times_S Y)=\operatorname{Hom}_S(Y,X)\longrightarrow\operatorname{Hom}_S(Y,X^+)=\operatorname{Aut}_{Y_{\mathcal J}}(E_{\mathcal J}\times_{S_{\mathcal J}}Y_{\mathcal J})\]
+为\Term{surjection}{满射}。
+\end{SGAresult}
+事实上，$Y\times_S E$ 在 $Y$ 上\Term{affine}{仿射}，而 $Y$ 本身\Term{affine}{仿射}，故 $Y\times_S E$ \Term{affine}{仿射}。应用 0.16，每个 $S_{\mathcal J}$-\Term{morphism}{态射} $Y_{\mathcal J}\times_{S_{\mathcal J}}E_{\mathcal J}\to E_{\mathcal J}$ 都可延拓为 $S$-\Term{morphism}{态射} $Y\times_S E\to E$。
+
+\footnote{编者注：对原文稍作修改，以便恰好满足 0.7 的假设。}换言之，$Y_{\mathcal J}\times_{S_{\mathcal J}}E_{\mathcal J}$ 的每个 $Y_{\mathcal J}$-\Term{endomorphism}{自态射}都\Term{liftable}{可提升}为 $Y\times_S E$ 的 $Y$-\Term{endomorphism}{自态射}。由 0.7 a)，$Y_{\mathcal J}\times_{S_{\mathcal J}}E_{\mathcal J}$ 的每个 $Y_{\mathcal J}$-\Term{automorphism}{自同构}都\Term{liftable}{可提升}为 $Y\times_S E$ 的 $Y$-\Term{automorphism}{自同构}，即得所述性质。

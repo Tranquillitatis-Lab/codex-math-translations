@@ -1,0 +1,424 @@
+有。对照正文、逐页译注和书末勘误／附记后，我确认了 **29 项值得补充的问题**：其中 1 项是证明范围的缺口，其余是需要修改的数学陈述、定义或公式。几项错误有很短的反例，例如 Siegel–Bombieri–Vaaler 不等式的高度归一化、分圆单位的判据，以及两条 Newton–Hensel 引理的假设。
+
+下面按三篇文章排列，给出**位置、错误理由和修正方式**。页码统一写作 **PDF 页码（页脚译本页码）**，PDF 页码从文件第一页起计数。arithmetic-algebraic-geometry-zh.pdf
+
+## 一、第一篇：代数闭链的挠元与代数 K 理论
+
+### 1. Picard 下降正合列在不完美域上不成立
+
+**位置：PDF 13（5），命题 1.1 后。**
+
+正文取 \(\bar k\) 为**代数闭包**，令 \(G=\operatorname{Gal}(\bar k/k)\)，然后写出
+\[
+0\longrightarrow\operatorname{Pic}(X)
+\longrightarrow\operatorname{Pic}(X_{\bar k})^G
+\longrightarrow\operatorname{Br}(k),
+\]
+并声称当 \(X(k)\ne\varnothing\) 时，前一个 Picard 映射是同构。
+
+这里应当使用**可分闭包 \(k^s\)**，或增加“\(k\) 完美”的假设。
+
+一个反例是取 \(k=\mathbf F_2(t)^{\mathrm{sep}}\)。这个域可分闭，但 \(\alpha=\sqrt t\notin k\)。考虑椭圆曲线 \(E:y^2+y=x^3\)，其无穷远点 \(O\) 是 \(k\)-点。在 \(\bar k\) 中可以取点 \(P=(\alpha,y)\)，所以 \(P\notin E(k)\)。
+
+此时 \(G=1\)、\(\operatorname{Br}(k)=0\)，正文的断言会给出 \(\operatorname{Pic}(E)\cong\operatorname{Pic}(E_{\bar k})\)。但在度零部分，这要求 \(E(k)=E(\bar k)\)，与上述 \(P\) 矛盾；具体地，\(\mathcal O(P-O)\) 不能下降到 \(k\)。
+
+**修正：** 将该下降论证中的 \(\bar k\) 换成 \(k^s\)。命题 1.1 本身的 Picard 拉回单射结论可以保留。
+
+### 2. 定理 6.4 的证明没有覆盖陈述中的正特征情形
+
+**位置：PDF 37–38（29–30），定理 6.4。**
+
+定理允许“\(k\) 在其素域上有限生成”，因此包含正特征；结论涉及整个 \(CH^2(X)_{\mathrm{tors}}\)。
+
+但所给证明有两个范围问题：
+
+- 开头使用几何挠闭链到 étale 上同调的单射，而此前建立的相应 \(\ell\)-进论证要求 \(\ell\ne\operatorname{char}k\)。
+- 下一页对剩余核的有界指数论证，又明确在“\(k\) 特征为零”下进行。
+
+因此，**正特征情形，尤其 \(p\)-初级挠元部分，没有由这段证明得到**。
+
+**修正：** 将此处定理的基域限为 \(\mathbf Q\) 上有限生成的域，或者补上正特征的论证。这一项应记作证明缺口。
+
+### 3. 到 Brauer 群的“自然同态”缺少取商
+
+**位置：PDF 58（50），备注 8.4.2。**
+
+文中使用自然复合
+\[
+H^1(k,\underline{\operatorname{Pic}}_X^0)
+\longrightarrow H^1(k,\underline{\operatorname{Pic}}_X)
+\longrightarrow\operatorname{Br}(X).
+\]
+
+在这里的假设下，Hochschild–Serre 给出的自然对应是
+\[
+H^1(k,\operatorname{Pic}\bar X)
+\cong
+\operatorname{Br}_1(X)/\operatorname{im}\operatorname{Br}(k),
+\]
+而非一个自然提升到 \(\operatorname{Br}(X)\) 的映射。正文没有提供选取这种提升所需的额外结构。
+
+**修正：** 将目标改为上述商群，并在商群上定义所需配对。常数 Brauer 类与 \(A_0(X)\) 的配对为零，所以这里需要的配对能够自然下降。
+
+### 4. 定理 9.1 证明中两处 \(H^0\) 应为 \(H^2\)
+
+**位置：PDF 61（53），第二个交换图及紧接着的说明。**
+
+正文写成
+\(H^0(\bar C,\mathbf Q/\mathbf Z(2))^G=\mathbf Q/\mathbf Z(1)^G=\mu(k)\)。
+
+这里的两处 \(H^0\) 都应改为 **\(H^2_{\mathrm{\acute et}}\)**。相应谱序列微分是 \(d_2^{0,2}:E_2^{0,2}\to E_2^{2,1}\)，而曲线上的迹同构给出
+\(H^2_{\mathrm{\acute et}}(\bar C,\mathbf Q/\mathbf Z(2))\cong\mathbf Q/\mathbf Z(1)\)。
+
+实际的 \(H^0\) 是 \(\mathbf Q/\mathbf Z(2)\)，扭转次数不同。例如 \(k=\mathbf Q\) 时，错误表达式的不动部分含有三阶元，而 \(\mu(\mathbf Q)=\{\pm1\}\)。
+
+---
+
+## 二、第二篇：Kato 的 Hasse–Weil \(L\) 函数与岩泽理论
+
+以下的 I、II、III 表示这篇文章内部的三章。
+
+### 5. \(p\) 处 Euler 因子中的晶体 Frobenius 不应取逆
+
+**位置：PDF 91（83），I §2.2.3(3)。**
+
+\(\ell=p\) 分支写为
+\(\det_\Lambda(1-\varphi_p^{-1}t;D_{\mathrm{crys}}(V))\)，应改成
+**\(\det_\Lambda(1-\varphi_p t;D_{\mathrm{crys}}(V))\)**。
+
+书中明确引用的是 II §1.3 的标准 Fontaine Frobenius。取 \(V=\mathbf Q_p(1)\)，则其 \(D_{\mathrm{crys}}\) 上的 Frobenius 为 \(p^{-1}\)，正确因子是 \(1-p^{-1}t\)；现有公式却给出 \(1-pt\)。
+
+这也与同一节的 Tate 扭转公式 \(L(V(r),s)=L(V,s+r)\) 不相容。
+
+### 6. 定义 \(V\) 时漏掉了 Tate 扭转 \((r)\)
+
+**位置：PDF 93（85），I §2.2.4。**
+
+应将
+\(V=H^m_{\mathrm{\acute et}}(X_{\overline{\mathbf Q}},\mathbf Q_p)\)
+改为
+**\(V=H^m_{\mathrm{\acute et}}(X_{\overline{\mathbf Q}},\mathbf Q_p)(r)\)**。
+
+同页紧接着取 \(X=\operatorname{Spec}K\)、\((m,r)=(0,1)\)，并把相应上同调写成以 \(\mathbf Q_p(1)\) 为系数的群。按现有定义，只能得到无扭转的 \(\mathbf Q_p\)。
+
+取 \(K=\mathbf Q\)，零次上同调就分别为 \(\mathbf Q_p\) 与 \(0\)，差异已经可见。后面的猜想 2.2.7 又写出了带 \((r)\) 的正确版本。
+
+### 7. 应排除的例外 \((m,r)=(0,1)\) 被写成 \((1,0)\)
+
+**位置：PDF 95（87），I 猜想 2.2.7(ii)；影响前页 §2.2.6(4)。**
+
+现有条件为
+\((m,r)\ne(1,0),(2\dim X,\dim X+1)\)，第一组应改成 **\((0,1)\)**。
+
+前页声称，仅由条件 (i)、(ii) 就有 \(H_S^1\cong H_{\lim}^1\)。修正上一项 Tate 扭转后，取 \(X=\mathbf P^1_{\mathbf Q}\)、\(m=0,r=1\)，现有条件都满足，却有
+\[
+H_S^1\simeq\mathbf Z[1/S]^\times\otimes\mathbf Q_p,
+\qquad
+H_{\lim}^1\simeq\mathbf Q^\times\otimes\mathbf Q_p.
+\]
+前者有限维，后者无限维，映射不可能为同构。
+
+### 8. Lichtenbaum 公式左侧漏掉了 \(S\) 处 Euler 因子
+
+**位置：PDF 96（88），I §2.2.9。**
+
+公式右侧使用
+\(\#H^2(\mathcal O_K[1/S],\mathbf Z_p(r))/\#H^1(\mathcal O_K[1/S],\mathbf Z_p(r))\)，
+左侧却写完整的 \(\zeta_K(1-r)_{(p)}\)。
+
+**左侧应为 \(\zeta_K^{(S)}(1-r)_{(p)}\)**，即同页上一段已经定义的去掉 \(S\) 处 Euler 因子的函数；另一种修法是将右侧的 \(S\) 限为 \(\{p\}\)。
+
+例如 \(K=\mathbf Q,p=3,r=2\)，把 \(7\) 加入 \(S\) 后，新增 Euler 因子 \(1-7=-6\)，其 \(3\) 幂部分为 \(3\)。定位正合列也使右侧相应增加一个阶为 \(3\) 的因子。完整 zeta 值的左侧却保持不变。
+
+### 9. 分圆单位的判据：“合数”应为“不是素数幂”
+
+**位置：PDF 109（101），I §3.3.5。**
+
+正文称 \(c_N=(1-\zeta_N)(1-\zeta_N^{-1})\) 是 \(\mathbf Z[\zeta_N]^+\) 中的单位，当且仅当 \(N\) 为合数。
+
+最小反例是 **\(N=4\)**：\(c_4=(1-i)(1+i)=2\)，而 \(\mathbf Z[i]^+=\mathbf Z\)。
+
+**正确判据：** 对 \(N\ge2\)，\(c_N\) 为单位当且仅当 \(N\) **不是素数幂**。这是由 \(\Phi_N(1)\) 的值直接得到的。
+
+### 10. 有限域 zeta 函数的零极点阶公式整体反号
+
+**位置：PDF 120（112），I 引理 3.5.5。**
+
+正文中的两处 \((-1)^i\) 都应改为 **\((-1)^{i+1}\)**：
+\[
+\operatorname{ord}_{t=1}Z_\Lambda(X,D_\Lambda\mathcal F,t)
+=
+\sum_i(-1)^{i+1}\operatorname{rk}_\Lambda P^i
+=
+\sum_i(-1)^{i+1}\operatorname{rk}_\Lambda Q^i.
+\]
+
+取 \(X=\operatorname{Spec}\mathbf F_\ell\)、\(\Lambda=\mathbf Q_p\)、\(\mathcal F=\mathbf Q_p\)。此时 \(Z=(1-t)^{-1}\)，在 \(t=1\) 的阶为 \(-1\)；但 \(P^0=Q^0=\mathbf Q_p\)，其余为零，正文右侧给出 \(+1\)。
+
+这个例子满足引理要求的条件，因此是直接反例。该符号还影响后面首项的归一化。
+
+### 11. II §2.1.4 所定义的 Frobenius 算子不存在
+
+**位置：PDF 132（124）。**
+
+正文要求 \(\phi:\mathcal O(G)\to\mathcal O(G)\) 同时满足：
+
+- 在 \(\mathcal O(\Gamma)\) 上为恒等；
+- 对所有 \(f\in\mathcal O(G)\)，有 \(\phi(f)\equiv f^q\pmod\pi\)。
+
+取形式参数 \(t\in\mathcal O(\Gamma)\)。第一条给出 \(\phi(t)=t\)，第二条却要求在剩余域的形式幂级数环中 \(t=t^q\)，立即矛盾。
+
+**修正：** Frobenius 同余条件只应施加在系数环上，即对 \(a\in\mathcal O_K\) 要求 \(\phi(a)\equiv a^q\pmod\pi\)，再令其固定形式参数。这也与后续使用 \(\phi^{-n}\) 的方式一致。
+
+### 12. 微分迹与拉回的复合应为乘 \(q\)，而非乘 \(\pi\)
+
+**位置：PDF 136（128），II §2.2.5。**
+
+原式 \(\operatorname{Tr}_\pi\circ[\pi]^*=\pi\) 应改为
+**\(\operatorname{Tr}_\pi\circ[\pi]^*=q\,\mathrm{id}\)**，其中 \(q=\#(\mathcal O_F/\pi)\)。
+
+这可直接由 PDF 139 的迹映射定义和投影公式验证：令 \(m=n+1,x=1\)，所得标量就是 \([\pi]\) 的次数 \(q\)。
+
+例如 \(F/\mathbf Q_p\) 为非分歧二次扩张、\(\pi=p\) 时，正确标量是 \(p^2\)，原文给出 \(p\)。
+
+### 13. Kummer–\(d\log\) 方块的符号错误
+
+**位置：PDF 137–138（129–130），II 引理 2.2.8 及其证明。**
+
+按照文中连接同态的约定，这个标为交换的左方块实际**反交换**。
+
+证明令 \(w=\log(\widetilde v^{p^m}h^{-1})\)，并算出 \(dw=-dh/h\)。另一方面，文中对 \(\mu\) 的描述是：若 \(dx=\omega\)，则 \(\mu(\omega)\) 由余循环 \(\sigma x-x\) 表示。因此上方路线得到的应为
+**\(-\mu_{\xi,n}(dh/h)\)**，证明最后一行却写成了正号。
+
+**修正：** 将方块左侧箭头改为 \(-d\log\)，并修正证明最后一行的负号；或者明确表述该方块反交换。这也使其与前后两条显式互反律公式的符号衔接起来。
+
+### 14. \(\log\chi_G\) 一般不取值于 \(\mathcal O_F\)
+
+**位置：PDF 139（131），II §2.3.1。**
+
+正文写 \(\log:\mathcal O_F^\times\to\mathcal O_F\)，进而认为 \(\log\chi_G\in H^1(K,\mathcal O_F)\)。在允许的分歧情形中，这个整性断言是假的。
+
+取 \(F=K=\mathbf Q_3(\pi)\)，其中 \(\pi^4=3\)，并规范化 \(v_\pi(\pi)=1\)。在
+\[
+\log(1+\pi)=\sum_{j\ge1}(-1)^{j-1}\frac{\pi^j}{j}
+\]
+中，第 \(j\) 项的赋值为 \(j-4v_3(j)\)，唯一最小值是 \(j=3\) 时的 \(-1\)。故 \(v_\pi(\log(1+\pi))=-1\)，不属于 \(\mathcal O_F\)。
+
+Lubin–Tate 特征的像为 \(\mathcal O_F^\times\)，所以这个问题确实会出现在 \(\log\chi_G\) 的值中。[kskedlaya.org](https://kskedlaya.org/cft/sec_lubin-tate.html?utm_source=chatgpt.com)
+
+**修正：** 先将其视为 \(H^1(K,F)\) 中的元素，再乘足够可除的固定常数以获得整性。现有译注指出的是对数展开中的二次项符号；这里另有整性问题。
+
+### 15. \(D_{\mathrm{dR}}\) 漏掉滤过上标 \(0\)
+
+**位置：PDF 153（145），III §1.2.5 首行。**
+
+\(\Omega\otimes\mathbf Q_p\simeq D_{\mathrm{dR}}(\mathcal F)\)
+应改成
+**\(\Omega\otimes\mathbf Q_p\simeq D_{\mathrm{dR}}^0(\mathcal F)\)**。
+
+I §3.2.6 中定义的是 \(\Omega=M_{\mathrm{dR}}^0\)，II §2.1.3 中相应的 coLie 同构也明确针对 \(D_{\mathrm{dR}}^0\)。在 CM 情形，完整 de Rham 空间与滤过零部分的秩确实不同。
+
+### 16. 辅助映射 \(a'\) 一般不是同构
+
+**位置：PDF 153（145），III §1.2.5。**
+
+正文把 \(a':\Omega'\otimes\mathbf R\to\Sigma'\otimes\mathbf R\) 标成同构。
+
+在有理数情形，取 \(r=1,L=\mathbf Q(i)\)，并取奇二次特征作为 \(\lambda\)。显示公式对应于实线性映射
+\(z\mapsto(z\bmod\mathbf R,\bar z\bmod\mathbf R)\)。
+定义域和值域实维数都是 \(2\)，但映射的核是 \(\mathbf R\)，秩只有 \(1\)。
+
+**修正：** 删除 \(a'\) 上的同构符号。经过指定的系数特化后得到的 \(a\) 才是所需同构；在上述例子中，奇特征分量上确实得到一维同构。
+
+### 17. 局部计算需要 \(T_{\mathfrak p}E\)，正文使用了完整的 \(T_pE\)
+
+**位置：PDF 154（146），III 定理 1.2.6 的证明。**
+
+正文令 \(T=T_pE\)，然后将一个元素称为相应模块的 \(\mathcal O_{\mathfrak p}\)-基。
+
+若 \(p\) 在 CM 域中分裂，则 \(\mathcal O_{\mathfrak p}=\mathbf Z_p\)，而完整 \(T_pE\) 的 \(\mathbf Z_p\)-秩为 \(2\)，无法由一个元素构成基。
+
+**修正：** 在这段局部计算中投影到
+\[
+T_{\mathfrak p}E
+=
+T_pE\otimes_{\mathcal O_K\otimes\mathbf Z_p}\mathcal O_{\mathfrak p},
+\]
+并将对应的 Betti 格改为
+\(H_1(E(\mathbf C),\mathbf Z)\otimes_{\mathcal O_K}\mathcal O_{\mathfrak p}\)。
+
+### 18. 系数代数 \(\mathbf Q[G]\) 应为 \(K[G]\)
+
+**位置：PDF 155（147），III 定理 1.2.6 证明的第一段。**
+
+该处 \(A=\mathbf Q[\operatorname{Gal}(L/K)]\) 应改成
+**\(A=K[\operatorname{Gal}(L/K)]\)**。
+
+这里正处于虚二次域情形，前文要求 \(A\) 是 \(K\) 的有限扩张的有限直积，且使用了在 \(K[G]\) 上的张量积。
+
+更直接地，\(\mathbf Q[G]\) 有增广商 \(\mathbf Q\)。若它具有所要求的含幺 \(K\)-代数结构，就会得到 \(K\hookrightarrow\mathbf Q\)，不可能成立。
+
+---
+
+## 三、第三篇：Vojta 的丢番图逼近
+
+### 19. Siegel–Bombieri–Vaaler 定理使用了错误的高度归一化
+
+**位置：PDF 166–167（158–159），定义 2.3(d) 与定理 2.4。**
+
+这是最值得优先修正的一项。
+
+正文把矩阵高度定义为最大子式向量的 sup 高度。取 \(k=\mathbf Q\)、\(A=(5,7,8)\)，则 \(h(A)=\log8\)，定理中的判别式附加项为零。按现有陈述，应存在核空间的一组基 \(\mathbf x_1,\mathbf x_2\)，使高度之和不超过 \(\log8\)。
+
+但每个非零有理核向量化为本原整数向量 \((x,y,z)\) 后，最大坐标绝对值都至少为 \(3\)。因为由 \(5x+7y+8z=0\)，模 \(5\) 得 \(y\equiv z\pmod5\)；若三个坐标绝对值都不超过 \(2\)，则必须 \(y=z\)，进而 \(x=-3y\)，只能得到零向量。
+
+所以任何核空间基都满足
+\[
+h(\mathbf x_1)+h(\mathbf x_2)
+\ge 2\log3=\log9>\log8.
+\]
+而 \((3,-1,-1)\)、\((1,-3,2)\) 恰好达到 \(\log9\)。
+
+**修正：** 矩阵高度在无穷位应使用 Euclidean Plücker 范数；本例对应 \(\tfrac12\log138\)。若保留正文的 sup 高度，则可在右侧增加 \(\tfrac12\log\binom NM\)，以吸收两种高度之差。
+
+### 20. Riemann–Roch 下界漏掉了负的一次项
+
+**位置：PDF 176（168），§7 第一阶段。**
+
+正文从 \(h^2(C\times C,dY)=0\) 推出
+\(h^0(C\times C,dY)\ge d^2Y^2/2=\delta d^2\)。
+
+实际的 Riemann–Roch 公式是
+\[
+\chi(\mathcal O(dY))
+=
+\delta d^2-(g-1)(a_1+a_2)d+(g-1)^2.
+\]
+因此只能直接得到 \(h^0\ge\delta d^2-O(d)\)。
+
+还可以构造明确反例。取 \(g=2,a_1=4,a_2=1,\delta=2\)，则 \(Y=\Delta+3F_1\)。该除子丰沛：\(Y^2=4\)、\(Y\cdot\Delta=1\)，与其他不可约曲线的交数也为正。于是充分大且充分整除的 \(d\) 满足
+\(h^0(\mathcal O(dY))=2d^2-5d+1<2d^2\)。
+
+**修正：** 保留一次项，或使用 \(h^0\ge(\delta/2)d^2\) 这样的充分大 \(d\) 下界。
+
+### 21. 单项式限制应为 \(b<N\)，而非 \(b\le N\)
+
+**位置：PDF 177（169），§7 第二阶段。**
+
+正文用 \(0\le a+b\le D,\ 0\le b\le N\) 限制单项式，并声称所得空间单射到相应截面空间。
+
+当 \(D\) 大时，这些单项式的数目是
+\((N+1)(D+1)-N(N+1)/2\)，其一次项为 \((N+1)D\)；但目标空间
+\(H^0(C,\mathcal O(DNF))\) 的维数是 \(ND+1-g\)。
+
+**维数已经排除了所称的单射。**
+
+应将条件改为 **\(0\le b<N\)**，另一因子的条件也同步改为 **\(0\le b'<N\)**。这个端点错误直接影响后面的线性方程构造。
+
+### 22. 引理 8.1 还缺少测度的非退化假设
+
+**位置：PDF 181（173），引理 8.1。**
+
+译者附记已指出需要紧致性；此外，“固定一个测度 \(\nu\)”也过于宽泛。
+
+即使取紧致的 \(X=\mathbf P^1\)，令 \(\nu=\delta_P\) 为一点的 Dirac 测度，取 \(\mathcal L=\mathcal O(1)\) 及一个在 \(P\) 消失的非零截面 \(s\)，就有
+\(\|s\|_{L^2}=0\)，而 \(\|s\|_{\sup}>0\)。
+
+因此不存在正文要求的正常数 \(c_\mathcal L\)。
+
+**修正：** 为配合给出的局部积分证明，可要求 \(\nu\) 是光滑、处处正的体积测度。
+
+### 23. Faltings 复形 (9.3) 末项中的减号应为加号
+
+**位置：PDF 183（175），式 (9.3)。**
+
+令
+\[
+D_\pm=\sum_{i<j}(s_i\operatorname{pr}_i\pm s_j\operatorname{pr}_j)^*L,
+\qquad
+H=\sum_i s_i^2\operatorname{pr}_i^*L.
+\]
+则 \(D_-+D_+=2(n-1)H\)。
+
+该复形的源线丛为 \(A=d(D_-+\delta H)\)，中项为
+\(B=d(2n-2+\delta)H=A+dD_+\)。前文选择的乘子 \(u_\alpha\) 是 \(\mathcal O(dD_+)\) 的截面，所以关系
+\(u_\alpha t_\beta-u_\beta t_\alpha\)
+必须落在 \(\mathcal O(B+dD_+)\)。
+
+**因此，(9.3) 末项中的 \(s_i\operatorname{pr}_i-s_j\operatorname{pr}_j\) 应改为加号。** 这样再乘以 \(dD_-\) 的截面，才能得到后面的 (9.4)。
+
+这是与译注已指出的 §11 中符号问题不同的一处错误。
+
+### 24. 范数截面的多次数漏乘了 \(N_i\)
+
+**位置：PDF 194（186），式 (13.10)。**
+
+原式 \(e_i=d_i\prod_{j\ne i}N_j\) 应改为
+**\(e_i=d_i\prod_jN_j\)**。
+
+令 \(\pi=\prod_i\pi_i\)、\(N=\deg\pi=\prod_iN_i\)，以及 \(M=\mathcal O(d_1,\ldots,d_n)\)。这里原线丛是 \(\pi^*M\)，故
+\(\operatorname{Nm}_\pi(\pi^*M)=M^N\)。
+
+因此每个多次数都乘以总次数 \(N\)。仅取 \(n=1\) 就能看到问题：正文给出 \(e_1=d_1\)，实际上应为 \(N_1d_1\)。
+
+### 25. 命题 14.1 证明中的 \(\Gamma_1\) 错写了 \(\epsilon\) 的符号
+
+**位置：PDF 195（187），命题 14.1 证明。**
+
+\(\Gamma_1\) 所属线丛的系数写成 \(d(2n-2+\epsilon)\)，应改为
+**\(d(2n-2-\epsilon)\)**。
+
+这里使用的是令 \(\delta=-\epsilon\) 后的 Faltings 复形。现有正号使构造对应到错误的线丛，无法得到命题所需的 \(L_{-\epsilon,s}\) 截面。
+
+### 26. 非阿基米德 Hensel 引理漏掉完备性假设
+
+**位置：PDF 197（189），引理 15.3 及其前面的设定。**
+
+正文只要求 \(K\) 带非阿基米德绝对值，却断言 Newton 迭代在 \(K\) 中收敛到根。
+
+取 \(K=\mathbf Q\) 配上 \(7\)-进绝对值，\(f(T)=T^2-2\)、\(\alpha_0=3\)。此时
+\(|f(3)|_7=1/7<1=|f'(3)|_7^2\)，满足原引理条件，但 \(\sqrt2\notin\mathbf Q\)。
+
+**修正：** 在此处补充 \(K\) 完备。后续实际使用的 \(\mathbf C_v\) 满足这个条件。
+
+### 27. 复数版 Newton 引理中的 \(C^2\) 假设应加强为全纯
+
+**位置：PDF 199（191），引理 15.8。**
+
+正文对一般 \(C^2\) 映射 \(\mathbf C^m\to\mathbf C^m\)，仅使用 \(m\times m\) 的复 Jacobian 及 \(\partial^2/\partial z_i\partial z_j\)，然后推出根的存在。
+
+取 \(m=1\)、
+\(f(z)=z+\bar z+i/4\)、\(\alpha_0=0\)、\(B=1\)。
+它是 \(C^\infty\) 的，且 \(f_z=1,f_{zz}=0\)，满足写出的估计；但 \(\operatorname{Im}f(z)=1/4\)，根根本不存在。
+
+**修正：** 将 \(f\) 假设为全纯。若要保留一般实意义的 \(C^2\) 函数，则必须改用完整的 \(2m\times2m\) 实 Jacobian 和相应 Hessian。
+
+### 28. 乘积定理的高度界漏掉截面整性条件
+
+**位置：PDF 206–207（198–199），定理 18.1、推论 18.3，尤其式 (18.2)、(18.4)。**
+
+陈述允许任意非零整体截面，却只用阿基米德范数控制子簇高度。
+
+将 \(\gamma\) 换成 \(\gamma/M\)，其零集、指标和次数都不变，但阿基米德对数范数会减去随 \(M\) 无界增长的量，因而右侧高度界可以趋于负无穷。
+
+明确地，在定理 18.1 中取 \(n=1,\Pi=\mathbf P^1_{\mathbf Q},e_1=1\)，令
+\(\gamma'=X_0/M\)、\(x=[0:1]\)，并取 \(0<\epsilon_3\le1\)。符合结论的真子簇只能是固定点 \(\{x\}\)，高度固定；右端却随 \(M\to\infty\) 趋于负无穷。
+
+**修正：** 要求基域为数域，并要求截面来自固定整数模型；或者将右端换为包含有限位分母贡献的适当射影高度。
+
+### 29. 范数估计 (18.5) 漏掉总次数的幂
+
+**位置：PDF 208（200），式 (18.5)。**
+
+设有限映射总次数为 \(N\)，且 \(\gamma'=\operatorname{Nm}(\gamma)\)。右侧的第一个因子应为
+**\(\bigl(\prod_{v\mid\infty}\|\gamma\|_{\sup,v}\bigr)^N\)**，正文只写了一次幂。
+
+缩放即可检验：把 \(\gamma\) 换成 \(m\gamma\)，则范数截面变为 \(m^N\gamma'\)。原不等式左侧按 \(m^N\) 增长，右侧却只按 \(m\) 增长，其余数据固定；当 \(N>1\) 时不可能成立。
+
+---
+
+## 关于这些错误的来源与影响
+
+其中一些问题在作者原文中已经存在。例如第一篇的代数闭包下降问题、定理 9.1 的 \(H^0/H^2\) 错误，在作者提供的法文原文中也能看到；作者的正式勘误没有列出这两项。[imo.universite-paris-saclay.fr](https://www.imo.universite-paris-saclay.fr/~jean-louis.colliot-thelene/Cyclesdetorsion93CIME.pdf?utm_source=chatgpt.com) 第三篇的高度归一化、Riemann–Roch 下界和单项式端点问题，在 Vojta 提供的英文原文中也有相同表述。[math.berkeley.edu](https://math.berkeley.edu/~vojta/ftp/cime.pdf?utm_source=chatgpt.com)
+
+**最建议优先补注的是第 5、7、10–14、19–21、23–29 项**：它们会改变 Euler 因子、上同调群、首项符号、线丛归属、维数或高度估计，直接影响读者复算后面的证明。第 2 项则需要单独补充正特征论证，修改一个符号不足以填上这个缺口。

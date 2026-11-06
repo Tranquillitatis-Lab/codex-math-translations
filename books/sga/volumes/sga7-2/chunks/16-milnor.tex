@@ -1,0 +1,433 @@
+\SourcePage{207}
+\SGAchapter{XVI}{Milnor 公式}{La formule de Milnor}
+\begin{center}P. Deligne\end{center}
+
+本讲把 Milnor [3] 给出的公式（另见 [2]）推广到\Term{characteristic}{特征} $p$。在某些情形下，这一公式可以计算\Term{vanishing-cycles}{消失圈}\Term{space}{空间}的\Term{dimension}{维数}。证明采用整体方法，只能处理如下“几何”情形：底是\Term{equal-characteristic}{等特征}的 Hensel \Term{trait}{离散赋值环谱}，且\Term{residue-field}{剩余域}是\Term{perfect-field}{完美域}。
+
+\SGAsection{1}{问题的陈述}
+\textbf{1.1。} 设 $S$ 是纯一维的\Term{regular}{正则}\Term{scheme}{概形}，$s$ 是 $S$ 的一个\Term{closed-point}{闭点}，其\Term{residue-field}{剩余域}为\Term{perfect-field}{完美域}；设 $f:X\to S$ 是\Term{finite-type}{有限型}\Term{flat}{平坦}\Term{morphism}{态射}，$x_0$ 是\Term{fiber}{纤维} $X_s$ 的一个\Term{closed-point}{闭点}，$\bar x_0$ 是 $X$ 的一个位于 $x_0$ 上的\Term{geometric-point}{几何点}。假设：
+
+(a) $x_0$ 是 $f$ 的\Term{isolated-nonsmooth-point}{孤立非光滑点}：存在整数 $n$ 和 $x_0$ 的一个纯\Term{relative-dimension}{相对维数}为 $n$ 的\Term{neighborhood}{邻域} $U$，使 $U-\{x_0\}$ 在 $S$ 上\Term{smooth}{光滑}；
+
+(b) $X$ 在 $x_0$ 处\Term{regular}{正则}。
+
+在这些假设下，$X$ 在 $x_0$ 处是 $S$ 上的\Term{relative-complete-intersection}{相对完全交}。$D^1_{X/S}$ 的定义见第 VI 讲 3.10。在 $x_0$ 的\Term{neighborhood}{邻域} $U$ 上，有
+\[
+D^1_{X/S}=H^1\bigl(R\operatorname{Hom}(L\Omega_{X/S},\mathscr O_X)\bigr)
+=\operatorname{Ext}^1(\Omega^1_{X/S},\mathscr O_X);
+\]
+在这个\Term{neighborhood}{邻域}内，$D^1_{X/S}$ 的\Term{length}{长度}\Term{finite}{有限}，且其\Term{support}{支集}包含于 $\{x_0\}$。
+
+\SourcePage{208}
+\begin{SGAresult}{定义}{1.2}
+$X/S$ 在 $\bar x_0$ 处的 \Term{milnor-number}{Milnor 数} $\mu=\mu(X/S,\bar x_0)$，是 $D^1_{X/S}$ 所定义的 $\mathscr O_{X,x_0}$-\Term{module}{模}的\Term{length}{长度}。
+\end{SGAresult}
+
+\textbf{例 1.3。} 取 $S$ 为\Term{algebraically-closed-field}{代数闭域} $k$ 上的一条\Term{smooth}{光滑}\Term{curve}{曲线}。把 $X$ 换成 $x_0$ 的一个\Term{neighborhood}{邻域}后，可以假设 $X$ 在 $k$ 上\Term{smooth}{光滑}。此时\Term{cotangent-complex}{余切复形}化为 $\Omega^1_{X/S}$ 的下述\Term{resolution}{消解}：
+\[
+L\Omega_{X/S}=[f^*\Omega^1_{S/k}\longrightarrow\Omega^1_{X/k}].
+\]
+在 $S$ 的 $s$ 处选择一个\Term{local-coordinate}{局部坐标} $t:S\to\mathbf E^1_k$（$t$ 在 $s$ 处\Term{etale}{平展}），仍用 $f$ 表示复合 $t\circ f$；再设 $(x_i)_{1\leq i\leq n+1}$ 是 $X$ 在 $x_0$ 处的一组\Term{local-coordinate}{局部坐标}。这时，在 $x_0$ 处，$f^*\Omega^1_{S/k}$ 以 $df$ 为基，$\Omega^1_{X/k}$ 以 $dx_i$ 为基。因此 $D^1_{X/S}$ 可等同于 $\mathscr O_X$ 对各 $\partial f/\partial x_i$ 所生成的\Term{ideal}{理想}取商所得的\Term{quotient}{商}：
+\[
+\mu=\dim_k\left(\mathscr O_{X,x_0}/
+\left(\frac{\partial f}{\partial x_1},\ldots,\frac{\partial f}{\partial x_{n+1}}\right)\right).
+\tag{1.3.1}
+\]
+这就是 Milnor 所用的定义。
+
+\textbf{例 1.4。} 假设 $X$ 是 $\mathbf E^{n+1}_S$ 中由一个方程 $g$ 定义的\Term{subscheme}{子概形}。设 $i:X\hookrightarrow\mathbf E^{n+1}_S$ 是\Term{inclusion-morphism}{包含态射}。此时\Term{cotangent-complex}{余切复形}化为
+\[
+[(g)/(g)^2\longrightarrow i^*\Omega^1_{\mathbf E^{n+1}_S/S}],
+\]
+而 $D^1_{X/S}$ \Term{isomorphism}{同构}于 $\mathscr O_X$ 对 $(\partial g/\partial x_i)_{1\leq i\leq n+1}$ 所生成的\Term{ideal}{理想}取商所得的\Term{quotient}{商}；也就是 $\mathscr O_{\mathbf E^{n+1}_S}$ 对 $g$ 和各 $\partial g/\partial x_i$ 所生成的\Term{ideal}{理想}取商所得的\Term{quotient}{商}。
+
+\textbf{例 1.5。} 取 $S$ 为一个\Term{discrete-valuation-ring}{离散赋值环} $V$ 的\Term{spectrum}{谱}，其\Term{residue-field}{剩余域}为\Term{perfect-field}{完美域}，\Term{fraction-field}{分式域}为 $K$。设 $X$ 是 $S$ 在 $K$ 的一个\Term{separable-extension}{可分扩张} $K'$ 中的\Term{normalization}{正规化}。
+\SourcePage{209}
+根据 1.4 和 [5] III 7.14，第 68 页，$D^1_{X/S}$ 此时\Term{isomorphism}{同构}于 $\mathscr O_X$ 对\Term{different}{余不同理想} $\mathfrak D_{X/S}$ 取商所得的\Term{quotient}{商}。若 $\bar x_0$ 是 $X_s$ 的一个位于 $x_0\in X_s$ 上的\Term{geometric-point}{几何点}，则 $\bar x_0$ 处的 \Term{milnor-number}{Milnor 数}为
+\[
+\mu=\operatorname{lg}(\mathscr O_{X,x_0}/\mathfrak D_{X/S}).
+\tag{1.5.1}
+\]
+设 $\bar s$ 是 $S$ 的一个位于其\Term{closed-point}{闭点} $s$ 上的\Term{geometric-point}{几何点}，$d_{K'/K}$ 是 $V$ 中生成\Term{discriminant-ideal}{判别式理想}的一个元素，其\Term{valuation}{赋值}为 $v(d_{K'/K})$。由 1.5.1 得
+\[
+v(d_{K'/K})=\sum_{x\in X(\bar s)}\mu(X/S,x).
+\tag{1.5.2}
+\]
+
+\textbf{1.6。} 保持 1.1 的假设，用 $\bar s$ 表示 $\bar x_0$ 在 $S$ 中的像\Term{geometric-point}{几何点}；设 $S_{(\bar s)}$ 是 $\mathscr O_{S,s}$ 在 $\bar s$ 处的\Term{strict-henselization}{严格 Hensel 化}的\Term{spectrum}{谱}，$X_{(\bar s)}$ 是 $X$ 在 $S_{(\bar s)}$ 上的\Term{inverse-image}{逆像}。设 $\bar\eta$ 是 $S_{(\bar s)}$ 的\Term{fraction-field}{分式域} $k(\eta)$ 的一个\Term{algebraic-closure}{代数闭包}的\Term{spectrum}{谱}，并令
+\[
+I=\operatorname{Gal}(k(\bar\eta)/k(\eta))
+\]
+为\Term{inertia-group}{惯性群}。
+
+设 $\ell$ 是不同于 $S$ 的\Term{residue-characteristic}{剩余特征}的素数。在 $X_{\bar s}$ 中 $\bar x_0$ 的一个\Term{neighborhood}{邻域}上，相对于 $X_{(\bar s)}$ 上的\Term{constant-sheaf}{常值层} $\mathbf Z/\ell$ 的\Term{vanishing-cycles-sheaf}{消失圈层}
+\[
+\Phi^i_{\bar\eta}(\mathbf Z/\ell)=R^i\Phi_{\bar\eta}(\mathbf Z/\ell)
+\]
+集中于 $\bar x_0$；此外，\Term{inertia-group}{惯性群} $I$ \Term{action}{作用}在 $\mathbf Z/\ell$-\Term{vector-space}{向量空间} $\Phi^i_{\bar\eta}(\mathbf Z/\ell)_{\bar x_0}$ 上。这些\Term{space}{空间}是\Term{finite-dimensional}{有限维}的（第 XIII 讲 2.4.2）。
+
+\textbf{1.7。} 设 $I_1$ 是\Term{inertia-group}{惯性群}的一个\Term{finite}{有限}\Term{quotient}{商}。回顾 $I_1$ 的 \Term{swan-character}{Swan 特征标} $\mathrm{Sw}$ 是 \Term{artin-character}{Artin 特征标} $a$ 与\Term{augmentation-representation}{增广表示}的\Term{character}{特征标} $u$ 之差 $a-u$。再回顾，在\Term{isomorphism}{同构}意义下，恰有一个\Term{character}{特征标}为 $\mathrm{Sw}$ 的\Term{projective-module}{投射} $\mathbf Z_\ell[I_1]$-\Term{module}{模} $S(I_1)$（见 [6]）。
+
+\SourcePage{210}
+设 $V$ 是一个\Term{finite-dimensional}{有限维} $\mathbf Z/\ell$-\Term{vector-space}{向量空间}，带有 $I$ 的\Term{action}{作用} $\rho:I\to\operatorname{GL}(V)$。假设 $\rho$ 经 $I_1$ \Term{resolution}{分解}。$V$ 的\Term{wild-dimension}{野性维数}为
+\[
+\dim\mathrm{Sw}(V)=\dim_{\mathbf Z/\ell}
+\operatorname{Hom}_{I_1}(S(I_1)\otimes_{\mathbf Z_\ell}\mathbf Z/\ell,V).
+\tag{1.7.1}
+\]
+这个整数不依赖于 $I_1$ 的选择，因为对于 $I_1$ 的\Term{normal-subgroup}{正规子群} $H$，有 $S(I_1/H)\simeq S(I_1)_H$。
+
+再令
+\[
+\dim\operatorname{tot}(V)=\dim\mathrm{Sw}(V)+\dim_{\mathbf Z/\ell}(V),
+\]
+称这个数为 $V$ 的\Term{total-dimension}{总维数}。
+
+\begin{SGAresult}{定义}{1.8}
+采用 1.6 和 1.7 的术语，称整数
+\[
+(-1)^n\dim\Phi_{\bar x_0}
+\mathrel{:=}(-1)^n\sum_i(-1)^i\dim\Phi^i_{\bar\eta}(\mathbf Z/\ell)_{\bar x_0}
+\]
+为 $X/S$ 在 $\bar x_0$ 处的\Term{number-vanishing-cycles}{消失圈数}。相应地，称
+\[
+(-1)^n\dim\mathrm{Sw}\Phi_{\bar x_0}
+\mathrel{:=}(-1)^n\sum_i(-1)^i\dim\mathrm{Sw}\Phi^i_{\bar\eta}(\mathbf Z/\ell)_{\bar x_0}
+\]
+为\Term{wild-number-vanishing-cycles}{野性消失圈数}，称
+\[
+\begin{aligned}
+(-1)^n\dim\operatorname{tot}\Phi_{\bar x_0}
+&\mathrel{:=}(-1)^n\sum_i(-1)^i\dim\operatorname{tot}\Phi^i_{\bar\eta}(\mathbf Z/\ell)_{\bar x_0}\\
+&=(-1)^n\bigl(\dim\Phi_{\bar x_0}+\dim\mathrm{Sw}\Phi_{\bar x_0}\bigr)
+\end{aligned}
+\]
+为\Term{total-number-vanishing-cycles}{总消失圈数}。
+\end{SGAresult}
+
+\begin{SGAresult}{猜想}{1.9}
+在 1.1 的假设下，$X/S$ 在 $\bar x_0$ 处的 \Term{milnor-number}{Milnor 数} $\mu$ 等于 $X/S$ 在 $\bar x_0$ 处的\Term{total-number-vanishing-cycles}{总消失圈数}。
+\end{SGAresult}
+
+\textbf{注记 1.10。} 设 $S$ 是\Term{residue-field}{剩余域}不\Term{perfect}{完美}的 Hensel \Term{trait}{离散赋值环谱}，$f:X\to S$ 是一个除 $x_0\in X_s$ 外处处\Term{smooth}{光滑}的\Term{morphism}{态射}。
+\SourcePage{211}
+假设 $X$ 在 $x_0$ 处\Term{regular}{正则}。在这些假设下，\Term{milnor-number}{Milnor 数} $\mu$ 的定义 1.2 仍然有意义，但我已无法给出 $\mu$ 的几何解释。
+
+\textbf{1.11。} 在本节余下部分，假设 $S=\operatorname{Spec}(V)$ 是\Term{residue-field}{剩余域}为\Term{algebraically-closed-field}{代数闭域}的 Hensel \Term{trait}{离散赋值环谱}，其\Term{closed-point}{闭点}为 $s$；$f:X\to S$ 是纯\Term{relative-dimension}{相对维数}为 $n$ 的\Term{finite-type}{有限型}\Term{flat}{平坦}\Term{morphism}{态射}，$X$ \Term{regular}{正则}，$x_0$ 是 $X_s$ 的一个\Term{closed-point}{闭点}，且 $X-\{x_0\}$ 在 $S$ 上\Term{smooth}{光滑}。
+
+这样做不损失\Term{generic}{一般}性。
+
+\begin{SGAresult}{命题}{1.12}
+若 $n=0$（即 $X/S$ \Term{finite-morphism}{有限}），则猜想 1.9 对 $(X/S,x_0)$ 成立。
+\end{SGAresult}
+\begin{proof}
+可以假设 $X$ 是 $S$ 在其\Term{fraction-field}{分式域} $K$ 的一个\Term{finite-extension}{有限扩张} $K'$ 中的\Term{normalization}{正规化}。根据 1.5，有 $\mu=v(d_{K'/K})$。
+
+\Term{group-extension}{扩张} $K'$ 由\Term{inertia-group}{惯性群} $I$ 的一个\Term{open-subgroup}{开子群} $H$ 定义。设 $H'\subset H$ 是 $I$ 的一个\Term{open-normal-subgroup}{开正规子群}，并令 $I'=I/H'$。设 $s_{I/H}$ 是 $I'$ 在 $I/H$ 上的\Term{permutation-representation}{置换表示}的\Term{character}{特征标}，$a_{I'}$ 是 \Term{artin-representation}{Artin 表示}的\Term{character}{特征标}，$\mathrm{Sw}_{I'}$ 是 \Term{swan-representation}{Swan 表示}的\Term{character}{特征标}，$u_{I'}$ 是\Term{augmentation-representation}{增广表示}的\Term{character}{特征标}。根据 Artin 的“\Term{derivation}{导子}\Term{discriminant}{判别式}乘积公式”（Führerdiskriminantenproduktformel），\Term{discriminant-ideal}{判别式理想}就是 $s_{I/H}$ 的 \Term{artin-conductor}{Artin 导子}（[5] VI 3 推论 1，第 111 页）：
+\[
+\mu=(a_{I'},s_{I/H})=|I'|^{-1}\sum_{i\in I'}a_{I'}(i)s_{I/H}(i).
+\]
+\SourcePage{212}
+有
+\[
+\begin{aligned}
+a_{I'}&=u_{I'}+\mathrm{Sw}_{I'},\\
+(u_{I'},s_{I/H})&=\#(I/H)-1,\\
+(\mathrm{Sw}_{I'},s_{I/H})
+&=\dim_{\mathbf Z/\ell}\operatorname{Hom}_I
+\bigl(S(I')\otimes_{\mathbf Z_\ell}\mathbf Z/\ell,(\mathbf Z/\ell)^{I/H}\bigr)\\
+&=\dim_{\mathbf Z/\ell}\operatorname{Hom}_I
+\bigl(S(I')\otimes_{\mathbf Z_\ell}\mathbf Z/\ell,
+\operatorname{Coker}(\mathbf Z/\ell\to(\mathbf Z/\ell)^{I/H})\bigr),
+\end{aligned}
+\]
+因此
+\[
+\mu=(\#(I/H)-1)+\dim\mathrm{Sw}\bigl(\operatorname{Coker}(\mathbf Z/\ell\to(\mathbf Z/\ell)^{I/H})\bigr).
+\]
+立即可知，$i\ne0$ 时 $\Phi^i=0$，并且
+\[
+\Phi^0_{\bar x_0}=\operatorname{Coker}(\mathbf Z/\ell\to(\mathbf Z/\ell)^{I/H});
+\]
+所需公式随之成立。
+\end{proof}
+
+\begin{SGAresult}{命题}{1.13}
+若 $X_s$ 在 $x_0$ 处具有\Term{ordinary-quadratic-singularity}{普通二次奇点}，则猜想 1.9 对 $(X/S,x_0)$ 成立。
+\end{SGAresult}
+\begin{proof}
+\textbf{情形 1。} $n=\dim(X_s)=2m-1$。
+
+这个问题对于 $X$ 上的\Term{etale-topology}{平展拓扑}是\Term{local-scheme}{局部}的。因此可以假设 $X_s$ 是 $\mathbf E^{n+1}_S$ 中由方程 $f$
+\[
+\sum_{i=1}^m x_ix_{i+m}+a=0
+\]
+定义的\Term{subscheme}{子概形}，其中 $a$ 属于 $V$ 的\Term{maximal-ideal}{极大理想}，且 $x_0$ 是坐标原点。此外，$X$ 在 $x_0$ 处\Term{regular}{正则}的充要条件是 $a$ 为\Term{uniformizer}{素元}。根据 1.4，有
+\[
+\mu=\operatorname{lg}\left(\mathscr O_{\mathbf E^{2m}_S}/
+\left(f,\frac{\partial f}{\partial x_i}\right)\right)=1.
+\]
+\SourcePage{213}
+根据\SGAsourcegap{此处原文“D'après”之后、逗号之前的引注为空缺；原 PDF 第 213 页及现有 IAS 补源对应页均如此。}，$i\ne n$ 时 $\Phi^i_{\bar x_0}=0$，而 $\Phi^n_{\bar x_0}$ 为一维，且\Term{inertia-group}{惯性群}在其上的\Term{action}{作用}\Term{trivial-action}{平凡}。因此\Term{wild-number-vanishing-cycles}{野性消失圈数}为零，\Term{total-number-vanishing-cycles}{总消失圈数}为 $1$，从而验证了 1.9。
+
+\textbf{情形 2。} $n=\dim(X_s)=2m$，$\operatorname{car}(k(s))\ne2$。
+
+在这些假设下，可以取 $X\subset\mathbf E^{n+1}_S$ 由方程 $f$
+\[
+\sum_{i=1}^m x_ix_{i+m}+x_{2m+1}^2+a=0
+\]
+定义，其中 $a$ 是一个\Term{uniformizer}{素元}。仍有 $\mu=1$，$i\ne n$ 时 $\Phi^i_{\bar x_0}=0$，且 $\Phi^n_{\bar x_0}$ 为一维。这次\Term{inertia-group}{惯性群}通过 $\pm1$ \Term{action}{作用}在 $\Phi^n_{\bar x_0}$ 上，因而其\Term{action}{作用}是\Term{tame-action}{温和的}。\Term{wild-number-vanishing-cycles}{野性消失圈数}仍为零，故 1.9 成立。
+
+\textbf{情形 3。} $n=\dim(X_s)=2m$，$\operatorname{car}(k(s))=2$。
+
+这次可以取 $X\subset\mathbf E^{n+1}_S$ 由方程 $f$
+\[
+\sum_{i=1}^m x_ix_{i+m}+(x_{2m+1}^2+ax_{2m+1}+b)=0
+\]
+定义，其中 $a,b$ 属于\Term{maximal-ideal}{极大理想}。$X$ \Term{regular}{正则}的充要条件是 $b$ 为\Term{uniformizer}{素元}；$X$ 的\Term{generic-fiber}{一般纤维}\Term{smooth}{光滑}的充要条件是 $a^2-4b\ne0$。
+
+$X/S$ 的 \Term{milnor-number}{Milnor 数} $\mu$ 等于由方程 $f_0$
+\[
+x^2+ax+b=0
+\tag{1}
+\]
+定义的 $X_0\subset\mathbf E^1_S$ 的 \Term{milnor-number}{Milnor 数}。同样，$i\ne n$ 时 $\Phi^i_{\bar x_0}$ 为零，$\Phi^n_{\bar x_0}$ 为一维，$I$ 通过 $\pm1$ \Term{action}{作用}在 $\Phi^n_{\bar x_0}$ 上，而 $I$ 中\Term{action}{作用}\Term{trivial-action}{平凡}的指数为二的\Term{subgroup}{子群}，对应于方程 (1) 所定义的 $K$ 的\Term{group-extension}{扩张}。$X/S$ 在 $x_0$ 处的\Term{total-number-vanishing-cycles}{总消失圈数}
+\SourcePage{214}
+等于 $X_0/S$ 的\Term{total-number-vanishing-cycles}{总消失圈数}，因此这一情形中 1.9 的成立由 1.12 得出。\Term{milnor-number}{Milnor 数}由 (1.5) 给出：
+\[
+\mu=v(a^2-4b).
+\tag{1.13.1}
+\]
+\end{proof}
+
+\SGAsection{2}{“几何”情形}
+我们将证明猜想 1.9 在\Term{equal-characteristic}{等特征}情形成立。关键的几何结果如下。与 B. Saint-Donat 的讨论使我想到可以运用这一结果。
+
+\begin{SGAresult}{命题}{2.1}
+设 $S$ 是\Term{algebraically-closed-field}{代数闭域} $k$ 上的一条\Term{smooth}{光滑}\Term{connected}{连通}\Term{projective}{射影}\Term{curve}{曲线}，$X$ 是 $k$ 上纯\Term{dimension}{维数}为 $n+1$ 的\Term{proper}{固有}\Term{smooth}{光滑}簇，$f:X\to S$ 是除 $X$ 的一个\Term{finite}{有限}点集 $F$ 外处处\Term{smooth}{光滑}的\Term{morphism}{态射}。则 $S$、$X$ 和 $f$ 的\Term{geometric-generic-fiber}{几何一般纤维} $X_{\bar\eta}$ 的 \Term{euler-poincare-characteristic}{Euler--Poincaré 特征数}（取\Term{etale-cohomology}{平展上同调}）满足
+\[
+\chi(X)=\chi(S)\chi(X_{\bar\eta})-(-1)^n\sum_{x\in F}\mu(X/S,x).
+\tag{2.1.1}
+\]
+\end{SGAresult}
+\begin{proof}
+已知 $X$ 的 \Term{euler-poincare-characteristic}{Euler--Poincaré 特征数}等于\Term{tangent-bundle}{切丛}的最高 \Term{chern-class}{Chern 类}的\Term{trace}{迹}（即在 $X$ 上的积分）：
+\[
+\chi(X)=\int_X c^{n+1}(\Theta^1_X)
+=(-1)^{n+1}\int_X c^{n+1}(\Omega^1_X).
+\]
+令
+\[
+\Omega^1_X=\bigl(\Omega^1_X\otimes(f^*\Omega^1_S)^{\otimes-1}\bigr)\otimes f^*\Omega^1_S.
+\]
+\Term{invertible-sheaf}{可逆层} $f^*\Omega^1_S$ 的总 \Term{chern-class}{Chern 类}是 $S$ 上 $\Omega^1_S$ 的总 \Term{chern-class}{Chern 类}的\Term{inverse-image}{逆像}：
+\SourcePage{215}
+\[
+c^*(f^*\Omega^1_S)=1+f^*c^1(S,\Omega^1_S),
+\]
+且 $c^1$ 的\Term{cup-power}{杯积幂}为零：
+\[
+\bigl(f^*c^1(S,\Omega^1_S)\bigr)^n
+=f^*\bigl(c^1(S,\Omega^1_S)^n\bigr)=0\qquad(n>1).
+\]
+由此得
+\[
+\begin{aligned}
+c^{n+1}(\Omega^1_X)
+={}&c^n\bigl(\Omega^1_X\otimes(f^*\Omega^1_S)^{\otimes-1}\bigr)\cdot f^*c_1(S,\Omega^1_S)\\
+&+c^{n+1}\bigl(\Omega^1_X\otimes(f^*\Omega^1_S)^{\otimes-1}\bigr).
+\end{aligned}
+\]
+若 $S$ 的\Term{genus}{亏格}为 $g$，则 $c_1(S,\Omega^1_S)$ 等于 $S$ 的任一\Term{closed-point}{闭点} $s$ 的\Term{cohomology-class}{上同调类}的 $2g-2$ 倍。因此，当 $X_s$ \Term{nonsingular}{非奇异}时，有
+\[
+\begin{aligned}
+\mathrm I
+&=\int_X c^n\bigl(\Omega^1_X\otimes(f^*\Omega^1_S)^{\otimes-1}\bigr)\cdot f^*c_1(S,\Omega^1_S)\\
+&=(2g-2)\int_X c^n\bigl(\Omega^1_X\otimes(f^*\Omega^1_S)^{\otimes-1}\bigr)\cdot f^*\operatorname{cl}(s)\\
+&=(2g-2)\int_{X_s}c^n\bigl(X_s,\Omega^1_X\otimes(f^*\Omega^1_S)^{\otimes-1}\otimes\mathscr O_{X_s}\bigr).
+\end{aligned}
+\]
+此外，在 $X_s$ 上，$f^*\Omega^1_S$ \Term{isomorphism}{同构}于 $\mathscr O_{X_s}$，而 $\Omega^1_X\otimes_{\mathscr O_X}\mathscr O_{X_s}$ 位于\Term{exact-sequence}{正合列}
+\[
+0\longrightarrow f^*\Omega^1_S\otimes\mathscr O_{X_s}
+\longrightarrow\Omega^1_X\otimes\mathscr O_{X_s}
+\longrightarrow\Omega^1_{X_s}\longrightarrow0
+\]
+之中。由此得到
+\[
+c^n\bigl(X_s,\Omega^1_X\otimes(f^*\Omega^1_S)^{\otimes-1}\otimes\mathscr O_{X_s}\bigr)
+=c^n(X_s,\Omega^1_{X_s})
+\]
+和
+\[
+\mathrm I=(2g-2)\int_{X_s}c^n(X_s,\Omega^1_{X_s})
+=(-1)^{n+1}\chi(S)\chi(X_s).
+\]
+\SourcePage{216}
+\Term{canonical-map}{典范映射}
+\[
+f^*:f^*\Omega^1_S\longrightarrow\Omega^1_X
+\]
+可等同于 $\Omega^1_X\otimes(f^*\Omega^1_S)^{\otimes-1}$ 的一个\Term{section}{截面} $a$。一旦选定 $S$ 和 $X$ 上的\Term{local-coordinate}{局部坐标}，从而把 $\Omega^1_X\otimes(f^*\Omega^1_S)^{\otimes-1}$ 等同于 $\mathscr O_X^{n+1}$，$a$ 的坐标就是各偏导数 $\partial f/\partial x_i$。因此\Term{section}{截面} $a$ 只在 $F$ 上为零，而且由 1.3，$a$ 在 $x\in F$ 处的零点\Term{multiplicity}{重数}等于 \Term{milnor-number}{Milnor 数} $\mu(X/S,x)$。
+
+回顾，若在 $k$ 上纯\Term{dimension}{维数}为 $d$ 的\Term{proper}{固有}\Term{smooth}{光滑}\Term{scheme}{概形} $X$ 上，一个\Term{rank}{秩}为 $d$ 的\Term{vector-bundle}{向量丛} $G$ 的\Term{section}{截面} $a$ 仅在\Term{isolated-point}{孤立点}处为零，则\Term{trace}{迹} $\int_X c^d(G)$ 等于按\Term{multiplicity}{重数}计数的 $a$ 的零点数。此处有
+\[
+\mathrm{II}=\int_X c^{n+1}\bigl(\Omega^1_X\otimes(f^*\Omega^1_S)^{\otimes-1}\bigr)
+=\sum_{x\in F}\mu(X/S,x).
+\]
+合并各项得到
+\[
+\chi(X)=(-1)^{n+1}(\mathrm I+\mathrm{II})
+=\chi(S)\chi(X_s)-(-1)^n\sum_{x\in F}\mu(X/S,x).
+\]
+由于 $\chi(X_s)=\chi(X_{\bar\eta})$，这就得到了 2.1。
+\end{proof}
+
+\begin{SGAresult}{推论}{2.2}
+在上述假设下，若 $n(X/S,x)$ 表示 $X/S$ 在 $x$ 处的\Term{total-number-vanishing-cycles}{总消失圈数}（1.8），则有
+\[
+\sum_{x\in F}\mu(X/S,x)=\sum_{x\in F}n(X/S,x).
+\]
+\end{SGAresult}
+\begin{proof}
+$f$ 的 \Term{leray-spectral-sequence}{Leray 谱序列}给出
+\[
+\chi(X)=\sum_{p,q}(-1)^{p+q}\dim_{\mathbf Z/\ell}H^p(S,R^qf_*\mathbf Z/\ell)
+=\sum_q(-1)^q\chi(S,R^qf_*\mathbf Z/\ell).
+\]
+\SourcePage{217}
+对于 $S$ 上的任意\Term{constructible-sheaf}{可构造} $\mathbf Z/\ell$-\Term{module}{模}\Term{sheaf}{层} $G$，有（[4] 或 SGA 5 第 X 讲 7.2）
+\[
+\chi(S,G)=\chi(S)\cdot\dim_{\mathbf Z/\ell}(G_{\bar\eta})-\sum_{s\in S}\varepsilon_s(G),
+\]
+其中，对于每个 $s\in S$，若把 $\bar\eta$ 等同于 $S$ 在 $s$ 处的\Term{henselization}{Hensel 化}的\Term{fraction-field}{分式域}的\Term{algebraic-closure}{代数闭包}，则
+\[
+\varepsilon_s(G)=\dim(G_{\bar\eta})-\dim(G_s)-\dim\mathrm{Sw}(G_{\bar\eta}).
+\]
+对于 $s\in S$，由第 XIII 讲 2.4.6.3 的\Term{exact-sequence}{正合列}
+\[
+\cdots\longrightarrow(R^qf_*\mathbf Z/\ell)_s
+\longrightarrow(R^qf_*\mathbf Z/\ell)_{\bar\eta}
+\longrightarrow\bigoplus_{x\in F(s)}\Phi^q_{\bar\eta}(\mathbf Z/\ell)_x
+\longrightarrow\cdots
+\]
+得到
+\[
+\begin{aligned}
+\text{(a)}\quad&\sum_q(-1)^q\bigl(\dim(R^qf_*\mathbf Z/\ell)_{\bar\eta}-\dim(R^qf_*\mathbf Z/\ell)_s\bigr)\\
+&\hspace{2em}=\sum_{x\in F(s)}\sum_q(-1)^q\dim\Phi^q_{\bar\eta}(\mathbf Z/\ell)_x,\\[4pt]
+\text{(b)}\quad&\sum_q(-1)^q\dim\mathrm{Sw}(R^qf_*\mathbf Z/\ell)_{\bar\eta}\\
+&\hspace{2em}=\sum_{x\in F(s)}\sum_q(-1)^q\dim\mathrm{Sw}\Phi^q_{\bar\eta}(\mathbf Z/\ell)_x,\\[4pt]
+\text{(c)}\quad&\sum_q(-1)^q\varepsilon_s(R^qf_*\mathbf Z/\ell)
+=\sum_{x\in F(s)}\dim\operatorname{tot}\Phi_x.
+\end{aligned}
+\]
+因此 \Term{euler-poincare-formula}{Euler--Poincaré 公式}化为
+\[
+\begin{aligned}
+\chi(X)
+&=\sum_q(-1)^q\chi(S,R^qf_*\mathbf Z/\ell)\\
+&=\sum_q(-1)^q\left(\chi(S)\dim(R^qf_*\mathbf Z/\ell)_{\bar\eta}
+-\sum_s\varepsilon_s(R^qf_*\mathbf Z/\ell)\right)\\
+&=\chi(S)\sum_q(-1)^q\dim(R^qf_*\mathbf Z/\ell)_{\bar\eta}
+-\sum_s\sum_q(-1)^q\varepsilon_s(R^qf_*\mathbf Z/\ell)\\
+&=\chi(S)\chi(X_{\bar\eta})-\sum_s\sum_{x\in F(s)}\dim\operatorname{tot}\Phi_x\\
+&=\chi(S)\chi(X_{\bar\eta})-(-1)^n\sum_{x\in F}n(X/S,x).
+\end{aligned}
+\]
+\SourcePage{218}
+将此式与 (2.1.1) 比较，就得到 2.2。
+\end{proof}
+
+\begin{SGAresult}{推论}{2.3}
+在上述假设和记号下，若 $x_0\in F$，且对于每个不同于 $x_0$ 的 $x\in F$，$f$ 通过 $x$ 的\Term{fiber}{纤维}在 $x$ 处具有一个\Term{ordinary-quadratic-singularity}{普通二次奇点}，则
+\[
+\mu(X/S,x_0)=n(X/S,x_0).
+\]
+\end{SGAresult}
+\begin{proof}
+对于 $x\ne x_0$，根据 1.13，有
+\[
+\mu(X/S,x)=n(X/S,x),
+\]
+故只需应用 2.2。
+\end{proof}
+
+\begin{SGAresult}{\Term{theorem}{定理}}{2.4}
+设 $S$ 是\Term{equal-characteristic}{等特征}的 Hensel \Term{trait}{离散赋值环谱}，其\Term{residue-field}{剩余域}为\Term{perfect-field}{完美域}；设 $f:X\to S$ 是\Term{finite-type}{有限型}\Term{flat}{平坦}\Term{morphism}{态射}，$\bar x$ 是 $X$ 的一个\Term{geometric-point}{几何点}，它在 $X$ 中的像是 $X_s$ 的一个\Term{closed-point}{闭点} $x$，且 $x$ 是 $X/S$ 的\Term{isolated-nonsmooth-point}{孤立非光滑点}。假设 $X$ 在 $x$ 处\Term{regular}{正则}。则 $X/S$ 在 $\bar x$ 处的\Term{total-number-vanishing-cycles}{总消失圈数}（1.8）等于 \Term{milnor-number}{Milnor 数} $\mu(X/S,x)$。
+\end{SGAresult}
+\begin{proof}
+设 $S'$ 是把 $S$ 的\Term{residue-field}{剩余域}从 $k(s)$ \Term{group-extension}{扩张}到其\Term{separable-closure}{可分闭包}而得到的 Hensel \Term{trait}{离散赋值环谱}，并设 $X'=X\times_S S'$。则 $X/S$ 的断言 2.4 \Term{equivalence}{等价}于 $X'/S'$ 的断言 2.4。由于已经假设 $k(s)$ 是\Term{perfect-field}{完美域}，所以可以假设 $S$ 的\Term{residue-field}{剩余域}\Term{algebraically-closed-field}{代数闭}。
+
+对于这样的 $S$，设 $S'$ 是 $S$ 的\Term{completion}{完备化}，并设 $X'=X\times_S S'$。$X/S$ 与 $X'/S'$ 在 $x$ 处的 \Term{milnor-number}{Milnor 数}相同。根据第 XIII 讲 2.4.2，\Term{total-number-vanishing-cycles}{总消失圈数}也是如此。因此还可以假设 $S$ \Term{complete}{完备}，从而\Term{isomorphism}{同构}于 $k[[t]]$（其中 $k$ \Term{algebraically-closed-field}{代数闭}）。若 $X_s$ 在 $x$ 处\Term{dimension}{维数}为 $n$，则有如下命题。
+\end{proof}
+
+\begin{SGAresult}{命题}{2.5}
+存在 $k$ 上纯\Term{dimension}{维数}为 $n+1$ 的\Term{projective}{射影}\Term{smooth}{光滑}簇 $Y$，一个\Term{morphism}{态射} $f:Y\to\mathbf P^1_k$，它在 $Y$ 的一个\Term{finite}{有限}点集 $F$ 之外\Term{smooth}{光滑}，
+\SourcePage{219}
+以及 $y_0\in F$，使得：
+
+(a) 若 $y\in F$ 且 $y\ne y_0$，则 $y$ 是 $f$ 通过 $y$ 的\Term{fiber}{纤维}的一个\Term{ordinary-quadratic-singularity}{普通二次奇点}；
+
+(b) 有 $f(y_0)=0$；若 $a:S\to\mathbf P^1_k$ 是 $S$ 与 $\mathbf P^1_k$ 在 $0$ 处的\Term{completion}{完备化}之间的自然\Term{isomorphism}{同构}，则 $X$ 在 $x$ 处的\Term{henselization}{Hensel 化}与 $a^*Y$ 在 $y_0$ 处的\Term{henselization}{Hensel 化}之间存在一个 $S$-\Term{isomorphism}{同构}。
+\end{SGAresult}
+
+\begin{proof}[证明 $2.5\Rightarrow2.4$]
+根据 2.3 和 2.5(a)，$Y/T$ 在 $y_0$ 处的 \Term{milnor-number}{Milnor 数}等于其\Term{total-number-vanishing-cycles}{总消失圈数}。如前所述，根据第 XIII 讲 2.4.2，同一结果对 $a^*Y/S$ 也成立，从而对 $(X/S,x)$ 亦成立；因为由 2.5(b)，在\Term{etale-topology}{平展拓扑}下，后者\Term{local-scheme}{局部}\Term{isomorphism}{同构}于 $(a^*Y/S,y_0)$。
+\end{proof}
+
+\begin{proof}[命题 2.5 的证明]
+\Term{local-ring}{局部环} $\mathscr O_{X,x}$ 的\Term{completion}{完备化}作为 $k[[t]]$-\Term{algebra}{代数}\Term{isomorphism}{同构}于一个\Term{quotient}{商}
+\[
+\widehat{\mathscr O}_{X,x}=k[[t,x_1,\ldots,x_{n+1}]]/(f).
+\]
+由\Term{implicit-function-theorem}{隐函数定理}，第 XV 讲 1.1.2（即 [1] \Term{lemma}{引理} 5.10），可得存在整数 $N$，使得只要 $\widehat{\mathscr O}_{Y,y_0}$ 与 $k[[t,x_1,\ldots,x_{n+1}]]/(f_1)$ 作为 $k[[t]]$-\Term{algebra}{代数}\Term{isomorphism}{同构}，且 $f_1-f$ 属于 $k[[t,x_1,\ldots,x_{n+1}]]$ 的\Term{maximal-ideal}{极大理想} $\mathfrak m$ 的 $N$ 次幂，条件 2.5(b) 就成立。
+
+若 $(t_0,t_1)$ 和 $(x_0,\ldots,x_{n+1})$ 分别是 $\mathbf P^1$ 和 $\mathbf P^{n+1}$ 上通常的\Term{homogeneous-coordinate}{齐次坐标}，则我们取 $Y/\mathbf P^1$ 为 $\mathbf P^1\times\mathbf P^{n+1}$ 中由方程
+\[
+g(t_0,t_1;x_0,\ldots,x_{n+1})=0
+\tag{2.5.1}
+\]
+定义的\Term{subvariety}{子簇}；其中 $g$ 对 $(t_0,t_1)$ 是 $d'$ 次\Term{homogeneous-polynomial}{齐次式}，对各 $x_i$ 是 $d''$ 次\Term{homogeneous-polynomial}{齐次式}。更内蕴地说，$g$ 是
+\[
+\mathscr O(d',d'')=\operatorname{pr}_1^*\mathscr O(d')\otimes\operatorname{pr}_2^*\mathscr O(d'')
+\]
+的一个\Term{section}{截面}。
+\SourcePage{220}
+此时，只要
+\[
+g(1,t;1,x_1,\ldots,x_{n+1})\equiv f\pmod{\mathfrak m^N},
+\tag{2.5.2}
+\]
+条件 (b) 就成立。
+
+固定 $d'$ 和 $d''$。于是 (2.5.1) 这种类型的 $g$ 就是 $k$ 上一个\Term{affine-space}{仿射空间} $A$ 的（\Term{rational-point}{有理}）点。设 $u\in\mathbf P^1\times\mathbf P^{n+1}$。用 $B(u,k)$ 表示其点为 $\mathscr O(d',d'')$ 的\Term{section}{截面}在 $u$ 处的 $k$-\Term{jet}{喷射}的\Term{affine-space}{仿射空间}。若 $u_0=(1,0;1,0,\ldots,0)$ 且 $u\ne u_0$，则对充分大的 $d'$、$d''$，\Term{restriction-map}{限制映射}
+\[
+A\longrightarrow B(u_0,N)\times B(u,2),
+\tag{2.5.3}
+\]
+总是\Term{linear}{线性}的，并且是\Term{surjective}{满射}。设 $C(u)\subset B(u,2)$ 为如下 $2$-\Term{jet}{喷射} $h\in B(u,2)$ 的\Term{set}{集合}：$h$ 是一个\Term{germ}{芽} $\widetilde h$ 的 $2$-\Term{jet}{喷射}，且 $\widetilde h$ 为零，或满足：
+
+(a) $u$ 位于方程 $\widetilde h=0$ 所定义的簇 $V$ 上；
+
+(b) $u$ 既不是 $V/\mathbf P^1$ 通过 $u$ 的\Term{fiber}{纤维}的\Term{smooth-point}{光滑点}，也不是该\Term{fiber}{纤维}的\Term{ordinary-quadratic-singularity}{普通二次点}。
+
+容易验证，$C(u)$ 是 $B(u,2)$ 中\Term{codimension}{余维数}为 $n+3$ 的\Term{closed-subset}{闭子集}。
+
+设 $D$ 是 $A$ 中由满足 (2.5.2) 的 $g$ 组成的\Term{affine-subspace}{仿射子空间}。对于 $u\ne u_0$，设 $D(u)$ 是 $D$ 中由下述 $g$ 组成的\Term{vector-subspace}{子空间}：$g$ 为零，或 $g(u)=0$ 且 $u$ 既不是方程 $g=0$ 所定义的簇 $V$ 通过 $u$ 的\Term{fiber}{纤维}的\Term{smooth-point}{光滑点}，也不是该\Term{fiber}{纤维}的\Term{ordinary-quadratic-singularity}{普通二次点}。若 $d'$、$d''$ 充分大，使得 (2.5.3) 是\Term{surjective}{满射}，则 $D(u)$ 在 $D$ 中的\Term{codimension}{余维数}为 $n+3$。所以，$u\ne u_0$ 时各 $D(u)$ 的并的\Term{codimension}{余维数}
+\[
+\geq1=(n+3)-(n+2),
+\]
+而 $D$ 的一个\Term{generic}{一般}元素 $g$ 不属于任何 $D(u)$。它就解决了所提出的问题。
+\end{proof}
+
+\SourcePage{221}
+\section*{参考文献}
+\begin{enumerate}[label={[\arabic*]}]
+\item M. ARTIN：《\Term{completed-local-ring}{完备局部环}上结构的\Term{algebra}{代数}逼近》（Algebraic approximation of structures over complete local rings），\textit{Publ. Math. IHES} \textbf{36} (1969)（Zariski 纪念卷）。
+\item LÊ DŨNG TRÁNG：《复\Term{hypersurface}{超曲面}的\Term{isolated-singularity}{孤立奇点}》（Singularités isolées des hypersurfaces complexes），\textit{Pub. Centre Math. École Polytechnique}，1969 年 5 月。
+\item J. MILNOR：《复\Term{hypersurface}{超曲面}的\Term{singular-point}{奇点}》（Singular points of complex hypersurfaces），Princeton Univ. Press，1968。
+\item M. RAYNAUD：《层的 \Term{euler-poincare-characteristic}{Euler--Poincaré 特征数}与\Term{abelian-variety}{阿贝尔簇}的\Term{cohomology}{上同调}》（Caractéristique d'Euler-Poincaré d'un faisceau et cohomologie des variétés abéliennes），\textit{Séminaire Bourbaki} 286，1965 年 2 月。
+\item J. P. SERRE：《\Term{local-field}{局部域}》（Corps locaux），\textit{Publ. Inst. Math. un. Nancago} VIII，Hermann，1962。
+\item J. P. SERRE：SGA 5，第 IX 讲，《Brauer 理论导论》（Introduction à la théorie de Brauer）。重印于《群的\Term{linear-representation}{线性表示}》（Représentations linéaires des groupes），第 3 部分，Hermann，Paris，1967。
+\end{enumerate}

@@ -1,0 +1,784 @@
+\article{数论背景}{Number theoretic background}{J. Tate}{2}{3--26}
+\origsection{1}{Weil 群（Weil groups）}
+若 $G$ 是拓扑群（topological group），记 $G^c$ 为 $G$ 的交换子子群的闭包，并记 $G^{\mathrm{ab}}=G/G^c$ 为 $G$ 的最大交换 Hausdorff 商群。回忆，若 $H$ 是 $G$ 的有限指数闭子群，则有转移同态（transfer homomorphism）$t:G^{\mathrm{ab}}\to H^{\mathrm{ab}}$，定义如下。任取截面（section）$s:H\backslash G\to G$，对于 $g\in G$，令
+\[
+ t(gG^c)=\prod_{x\in H\backslash G}h_{g,x}\pmod {H^c},
+\]
+其中 $h_{g,x}\in H$ 由 $s(x)g=h_{g,x}s(xg)$ 确定。
+
+\origsubsection{1.1}{Weil 群的定义（Definition of Weil group）}
+设 $F$ 是局部域或整体域（local or global field），$\overline F$ 是 $F$ 的一个可分代数闭包（separable algebraic closure）。用 $E,E',\ldots$ 表示 $\overline F$ 中 $F$ 的有限扩张。对每个这样的 $E$，令 $G_E=\Gal(\overline F/E)$。$\overline F/F$ 的Weil 群是由一个群及其附加结构组成的三元组 $(W_F,\varphi,\{r_E\})$。其中前两项分别为拓扑群 $W_F$ 和具有稠密像的连续同态 $\varphi:W_F\to G_F$。给定 $W_F$ 和 $\varphi$ 后，对 $\overline F$ 中 $F$ 的每个有限扩张 $E$，令 $W_E=\varphi^{-1}(G_E)$。$\varphi$ 的连续性正是说每个 $W_E$ 均为 $W_F$ 中的开子群；其像稠密正是说 $\varphi$ 对每个 $E$ 都诱导齐性空间（homogeneous spaces）的双射
+\[
+ W_F/W_E\xrightarrow{\sim}G_F/G_E\simeq\Hom_F(E,\overline F),
+\]
+特别地，当 $E/F$ 是 Galois 扩张时，它诱导群同构 $W_F/W_E\simeq\Gal(E/F)$。最后一项是一族同构：对每个 $E$，给定拓扑群同构 $r_E:C_E\xrightarrow{\sim}W_E^{\mathrm{ab}}$，其中
+\[
+ C_E=\begin{cases}E\text{ 的乘法群 }E^*,&\text{局部情形},\\
+ \text{伊代尔类群（idele-class group） }\A_E^*/E^*,&\text{整体情形}.
+ \end{cases}
+\]
+上述数据须满足以下四个条件。
+
+\paragraph*{(W1)} 对每个 $E$，复合映射
+\[
+ C_E\xrightarrow[\sim]{r_E}W_E^{\mathrm{ab}}
+ \xrightarrow{\text{由 }\varphi\text{ 诱导}}G_E^{\mathrm{ab}}
+\]
+为类域论（class field theory）的互反律同态（reciprocity law homomorphism）。
+
+\paragraph*{(W2)} 设 $w\in W_F$，$\sigma=\varphi(w)\in G_F$。对每个 $E$，下图交换：
+\[
+\begin{tikzcd}[column sep=large]
+ C_E\arrow[r,"r_E"]\arrow[d,"\text{由 }\sigma\text{ 诱导}"']&W_E^{\mathrm{ab}}\arrow[d,"\text{以 }w\text{ 共轭}"]\\
+ C_{E^\sigma}\arrow[r,"r_{E^\sigma}"']&W_{E^\sigma}^{\mathrm{ab}}.
+\end{tikzcd}
+\]
+\paragraph*{(W3)} 对 $E'\subset E$，下图交换：
+\[
+\begin{tikzcd}[column sep=large]
+ C_{E'}\arrow[r,"r_{E'}"]\arrow[d,"\text{由包含 }E'\subset E\text{ 诱导}"']&W_{E'}^{\mathrm{ab}}\arrow[d,"\text{转移}"]\\
+ C_E\arrow[r,"r_E"']&W_E^{\mathrm{ab}}.
+\end{tikzcd}
+\]
+\paragraph*{(W4)} 自然映射
+\[
+ W_F\longrightarrow\varprojlim_E\{W_{E/F}\}
+\]
+是拓扑群同构，其中
+\begin{equation}
+ W_{E/F}\text{ 表示 }W_F/W_E^c\quad\text{（而非 }W_F/W_E\text{）},\tag{1.1.1}
+\end{equation}
+逆极限（projective limit）遍历按包含关系排序的所有 $E$，即 $E\to\overline F$。\footnote{\textbf{译者注（本次校订）：}这里作为群商的 $W_{E/F}=W_F/W_E^c$，以及由它们组成的逆系统，应取 $E/F$ 为有限 Galois 扩张。对于一般有限扩张，$W_E^c$ 未必在 $W_F$ 中正规。有限 Galois 扩张在所有有限扩张中构成共尾族，故这一限定仍给出所需的逆极限。}
+
+这就给出了 Weil 群的定义。由定义可知：若 $W_F$ 是 $\overline F/F$ 的 Weil 群，则对于 $\overline F$ 中 $F$ 的每个有限扩张 $E$，$W_E$（配备 $\varphi$ 的限制以及各个 $E'\supset E$ 的同构 $r_{E'}$）就是 $\overline F/E$ 的 Weil 群。
+
+若 $W_F$ 是 Weil 群，则对每个 $F\subset E'\subset E$，下图交换：
+\begin{equation}
+\begin{tikzcd}[column sep=large]
+ C_E\arrow[r,"r_E"]\arrow[d,"N_{E/E'}\text{（范数）}"']&W_E^{\mathrm{ab}}\arrow[d,"\text{由 }W_E\subset W_{E'}\text{ 诱导}"]\\
+ C_{E'}\arrow[r,"r_{E'}"']&W_{E'}^{\mathrm{ab}}.
+\end{tikzcd}\tag{1.2.2}
+\end{equation}
+这可由以下事实推出：若 $H$ 是 $G$ 的有限指数正规子群，则复合映射
+\[
+ H^{\mathrm{ab}}\xrightarrow{\text{由包含诱导}}G^{\mathrm{ab}}
+ \xrightarrow{\text{转移}}H^{\mathrm{ab}}
+\]
+把元素 $h\in H$ 映到它被 $G/H$ 中各元素代表元共轭所得元素的乘积。（用本节首段的记号，若 $g\in H\subset G$，则 $h_{g,x}=s(x)gs(x)^{-1}$。）
+
+\origsubsection{1.2}{上同调；Weil 群的构造（Cohomology; construction of Weil groups）}
+设 $W_F$ 是 $\overline F/F$ 的 Weil 群。对于每个 Galois 扩张 $E/F$，群 $W_{E/F}=W_F/W_E^c$ 是 $\Gal(E/F)=W_F/W_E$ 以 $C_E\simeq W_E/W_E^c$ 为核的群扩张。记 $\alpha_{E/F}\in H^2(\Gal(E/F),C_E)$ 为该群扩张的类。对每个 $n\in\Z$，记
+\begin{equation}
+ \alpha_n(E/F):H^n(\Gal(E/F),\Z)\longrightarrow H^{n+2}(\Gal(E/F),C_E)\tag{1.2.3}
+\end{equation}
+为与 $\alpha_{E/F}$ 作杯积（cup product）的映射。由于对 $F\subset E'\subset E$，映射 $C_{E'}\to C_E^{\Gal(E/E')}$ 是双射，上述性质 (W3) 通过一个抽象上同调定理（结合 [AT] 第184页的推论与 [S1] 第154页的定理12），推出 $\alpha_n(E/F)$ 对每个 $n$ 都是同构。此外，这些典范类（canonical classes）之间满足
+\begin{equation}
+ \operatorname{infl}\alpha_{E'/F}=[E:E']\alpha_{E/F},\qquad
+ \operatorname{res}\alpha_{E/F}=\alpha_{E/E'}.\tag{1.2.4}
+\end{equation}
+（第一式用 [AT] 第188页定理6；第二式显然。）因此，Weil 群的存在性已蕴含类域论的全部上同调结论。
+
+例如，在 (1.2.3) 中取 $n=-1$，得到 $H^1(\Gal(E/F),C_E)=0$。取 $n=0$，得到 $H^2(\Gal(E/F),C_E)$ 是阶为 $[E:F]$ 的循环群，由 $\alpha_{E/F}$ 生成。取 $n=-2$，得到同构 $G_{E/F}^{\mathrm{ab}}\simeq C_F/N_{E/F}C_E$，由 (W1)，它就是互反律所给出的同构。若 $E/F$ 为循环扩张，该同构确定 $\alpha_{E/F}$，因而 $\alpha_{E/F}$ 就是类域论的“典范类”或“基本类”（fundamental class）。一般的 $E/F$ 也有同样结论：取次数与 $E/F$ 相同的循环扩张 $E_1/F$，将 $\alpha_{E/F}$ 和 $\alpha_{E_1/F}$ 膨胀（inflate）到 $EE_1/F$；由 (1.2.4)，它们在那里相等。
+
+反过来，若给定满足 (1.2.4) 的类 $\alpha_{E/E'}$，且映射 (1.2.3) 均为同构，则可以把由这些类构成的群扩张 $W_{E/F}$ 的逆极限作为 Weil 群 $W_F$。[AT] 第XIV章对这一构造作了抽象化，并给出了详细论述。这样的类 $\alpha_{E/E'}$ 的存在性在 [AT] 和 [CF] 中得到证明。
+
+因此，每个 $F$ 都有 Weil 群。下面讨论其唯一性。
+
+\origsubsection{1.3}{唯一性（Unicity）}
+$\overline F/F$ 的 Weil 群在同构意义下唯一。更准确地说：
+\begin{originaltheorem}{命题 1.3.1（Proposition 1.3.1）}
+设 $W_F$ 和 $W'_F$ 为 $\overline F/F$ 的两个 Weil 群。存在同构 $\theta:W_F\xrightarrow{\sim}W'_F$，使下列两图交换：
+\[
+\begin{tikzcd}[column sep=large]
+ W_F\arrow[rr,"\varphi"]\arrow[dr,"\theta"']&&G_F\\
+ &W'_F\arrow[ur,"\varphi'"']&
+\end{tikzcd}
+\qquad
+\begin{tikzcd}[column sep=large]
+ &W_E^{\mathrm{ab}}\arrow[d,"\text{由 }\theta\text{ 诱导}"]\\
+ C_E\arrow[ur,"r_E"]\arrow[r,"r'_E"']&(W'_E)^{\mathrm{ab}}.
+\end{tikzcd}
+\]
+\end{originaltheorem}
+对每个有限 Galois 扩张 $E/F$，用 $I(E)$ 表示使下图交换的同构 $f$ 的集合：
+\[
+\begin{tikzcd}[column sep=small]
+ 0\arrow[r]&C_E\arrow[r]\arrow[d,"\mathrm{id}"']&W_{E/F}\arrow[r]\arrow[d,"f"]&\Gal(E/F)\arrow[r]\arrow[d,"\mathrm{id}"]&0\\
+ 0\arrow[r]&C_E\arrow[r]&W'_{E/F}\arrow[r]&\Gal(E/F)\arrow[r]&0.
+\end{tikzcd}
+\]
+由于两个群扩张 $W_{E/F}$ 和 $W'_{E/F}$ 有相同的上同调类，即典范类 $\alpha_{E/F}$，故 $I(E)$ 非空。由于 $H^1(\Gal(E/F),C_E)=0$，任意两个同构 $f\in I(E)$ 只相差一个由 $C_E\simeq W_E^{\mathrm{ab}}$ 中元素给出的 $W_{E/F}$ 内自同构（inner automorphism）。$W_{E/F}$ 的中心为 $C_F$，而 $C_E/C_F$ 紧。因此，$I(E)$ 作为 $C_E/C_F$ 的主齐性空间（principal homogeneous space），具有自然的紧拓扑。对 $E_1\supset E$，自然映射 $I(E_1)\to I(E)$ 关于该拓扑连续，因为一旦选定 $I(E_1)$ 中一个元素，该映射就可表示为范数映射 $N_{E_1/E}$。故逆极限 $\varprojlim_E I(E)$ 非空。由 (W4)，该极限中一个元素 $\theta$ 给出同构 $W_F\xrightarrow{\sim}W'_F$，并且具有所需性质。
+
+事实上（见 (1.5.2)），$\theta$ 在复合一个由 $w\in\ker\varphi$ 给出的 $W_F$ 内自同构之后唯一，这一点将在第1.5节证明。
+
+\origsubsection{1.4}{特殊情形（Special cases）}
+下面分别讨论四种情形：$F$ 为非阿基米德局部域、$F$ 为整体函数域、$F$ 为阿基米德局部域，以及 $F$ 为整体数域。在前两种情形，$G_F$ 是 $W_F$ 的一个完备化；在后两种情形，它是 $W_F$ 的一个商群。
+
+\paragraph*{(1.4.1) $F$ 为非阿基米德局部域（local nonarchimedean）。}
+对每个 $E$，记 $k_E$ 为 $E$ 的剩余域（residue field），$q_E=\operatorname{Card}(k_E)$，并令 $\overline k=\bigcup_E k_E$。可将 $W_F$ 取为 $G_F$ 中由下列元素组成的稠密子群：这些元素在 $\overline k$ 上诱导映射 $x\mapsto x^{q_F^n}$（某个 $n\in\Z$）。因此 $W_F$ 包含惯性群（inertia group）$I_F$（即 $G_F$ 中固定 $\overline k$ 的子群），且 $W_F/I_F\simeq\Z$。$W_F$ 的拓扑规定为：$I_F$ 具有由 $G_F$ 诱导的预有限拓扑（profinite topology），且 $I_F$ 在 $W_F$ 中开。映射 $\varphi:W_F\to G_F$ 是包含映射，$r_E:E^*\to W_E^{\mathrm{ab}}$ 是互反律同态。关于互反律的符号，我们约定 $r_E(a)$ 在 $\overline k$ 上的作用为 $x\mapsto x^{\lVert a\rVert_E}$，其中 $\lVert a\rVert_E$ 是 $a\in E^*$ 的归一化绝对值（normed absolute value）。（若 $\pi_E$ 是 $E$ 中的素元（uniformizer），则 $\lVert\pi_E\rVert_E=q_E^{-1}$；因此我们约定素元对应于 Frobenius 自同构的逆，和 Deligne [D3] 一致，与 [D1]、[AT]、[CF] 和 [S1] 中的约定相反。）
+
+\paragraph*{(1.4.2) $F$ 为整体函数域（global function field）。}
+此处情形与 (1.4.1) 相同。只需把“剩余域”换成“常数域”（constant field），把“惯性群 $I_F$”换成“几何 Galois 群（geometric Galois group）$\Gal(\overline F/F\overline k)$”，并把伊代尔类 $a\in C_E$ 的范数 $\lVert a\rVert_E$ 定义为代表该类的一个伊代尔的各分量的正规化绝对值之积。
+
+\paragraph*{(1.4.3) $F$ 为阿基米德局部域（local archimedean）。}
+若 $F\simeq\C$，可取 $W_F=F^*$、$\varphi$ 为平凡映射，$r_F$ 为恒等映射。
+
+若 $F\simeq\R$，可取 $W_F=\overline F^*\cup j\overline F^*$，乘法规则为 $j^2=-1$ 及 $jcj^{-1}=\overline c$，其中 $c\mapsto\overline c$ 是 $\Gal(\overline F/F)$ 的非平凡元素。映射 $\varphi$ 将 $\overline F^*$ 映到 $1$，将 $j\overline F^*$ 映到该非平凡元素。$r_{\overline F}$ 是恒等映射，而 $r_F$ 由下式刻画：
+\[
+ r_F(-1)=jW_F^c,\qquad
+ r_F(x)=\sqrt{x}\,W_F^c\quad(x\in F,\ x>0).
+\]
+（$W_F^c$ 是由满足 $\lVert u\rVert=N_{\overline F/F}u=1$ 的元素 $u\in\overline F$ 组成的“单位圆”。）
+
+\paragraph*{(1.4.4) $F$ 为整体数域（global number field）。}
+这是目前唯一没有 $W_F$ 的简单描述的情形，目前只能使用第1.2节所述的上闭链（cocycle）构造。这一构造出自 Weil [W1]；他强调有必要寻找更自然的构造，并证明：映射 $\varphi:W_F\to G_F$ 为满射。其核是 $W_F$ 的单位元连通分支（connected component of identity），同构于 $C_E$ 中 $1$ 的连通分支 $D_E$ 在范数映射 $N_{E/E'}$ 下的逆极限。这些范数映射 $D_E\to D_{E'}$ 均为满射，且 $r_E(D_E)=(\ker\varphi)W_E^c/W_E^c$ 是 $\ker\varphi$ 在 $W_{E/F}$ 中的像。若 $E$ 有 $r_1$ 个实位和 $r_2$ 个复位，则 $D_E$ 同构于 $\R$、$r_1+r_2-1$ 个螺线管群（solenoids）以及 $r_2$ 个圆群的直积。
+
+\paragraph*{(1.4.5)} 注意，在刚讨论的四种情形中，$W_F$ 中形如 $W_E$（$E/F$ 有限）的子群恰好是有限指数开子群。它们的交 $\ker\varphi$ 为可除连通交换群，在前两种情形平凡，在第三种情形同构于 $\C^*$，在最后一种情形则极其庞大。
+
+\paragraph*{(1.4.6)} 在每种情形，均有 $W_F$ 到严格正实数乘法群的同态 $w\mapsto\lVert w\rVert$，它在同构 $r_F:C_F\simeq W_F^{\mathrm{ab}}$ 下对应于 $C_F$ 上的范数或正规化绝对值。由 (1.2.2) 和等式 $\lVert N_{E/F}a\rVert_F=\lVert a\rVert_E$，此“范数”函数从 $W_F$ 限制到子群 $W_E$ 后就是 $W_E$ 的范数函数，因此可统一记为 $\lVert w\rVert$，无须标出下标 $F$。在各情形，$w\mapsto\lVert w\rVert$ 的核 $W_F^1$ 均为紧群。在前两种情形，该映射的像由 $q_F$ 的各次幂组成，且 $W_F$ 是半直积（semidirect product）$\Z\ltimes W_F^1$。在后两种情形，它为满射，且事实上 $W_F$ 是直积 $\R\times W_F^1$。
+
+以下称前两种情形为“$\Z$ 情形”，后两种为“$\R$ 情形”。在 $\Z$ 情形，$\varphi$ 是单射而非满射；在 $\R$ 情形，$\varphi$ 是满射而非单射。
+
+\origsubsection{1.5}{Weil 群的自同构（Automorphisms of Weil groups）}
+设 $W_F$ 是 $\overline F/F$ 的 Weil 群。用 $\Aut(\overline F,W_F)$ 表示二元组 $(\sigma,\alpha)$ 的集合，其中 $\sigma\in G_F$ 是 $\overline F/F$ 的自同构，$\alpha$ 是群 $W_F$ 的自同构，并使下列两图交换（第二图对所有 $E$）：
+\[
+\begin{tikzcd}[column sep=large]
+ W_F\arrow[r,"\varphi"]\arrow[d,"\alpha"']&G_F\arrow[d,"\operatorname{Inn}(\sigma)"]\\
+ W_F\arrow[r,"\varphi"']&G_F
+\end{tikzcd}
+\qquad
+\begin{tikzcd}[column sep=large]
+ C_E\arrow[r,"r_E"]\arrow[d,"\text{由 }\sigma\text{ 诱导}"']&W_E^{\mathrm{ab}}\arrow[d,"\text{由 }\alpha\text{ 诱导}"]\\
+ C_{E^\sigma}\arrow[r,"r_{E^\sigma}"']&W_{E^\sigma}^{\mathrm{ab}}.
+\end{tikzcd}
+\]
+这里 $\operatorname{Inn}(a)$ 表示由 $a$ 定义的内自同构。
+
+若 $W_F$ 的一个自同构对每个有限 Galois 扩张 $E/F$ 都在 $W_{E/F}$ 上诱导内自同构，就称其为本质内的（essentially inner）。
+
+\begin{originaltheorem}{命题 1.5.1（Proposition 1.5.1）}
+在 $\R$ 情形，$\Aut(\overline F,W_F)$ 由各对 $(\varphi(w),\operatorname{Inn}(w))$（$w\in W_F$）组成。
+
+在 $\Z$ 情形，$\Aut(\overline F,W_F)$ 由各对 $(\sigma,\alpha_\sigma)$（$\sigma\in G_F$）组成，其中将 $W_F$ 通过 $\varphi$ 视为 $G_F$ 的子群，$\alpha_\sigma$ 表示 $\operatorname{Inn}(\sigma)$ 对 $W_F$ 的限制。若 $\sigma\notin W_F$，则 $\alpha_\sigma$ 不是 $W_F$ 的内自同构，但按上述定义它是本质内的。
+\end{originaltheorem}
+\begin{originaltheorem}{推论 1.5.2（Corollary 1.5.2）}
+(1.3.1) 中的同构 $\theta$ 在 $\Z$ 情形唯一；在 $\R$ 情形，则在复合一个由连通分支 $W_F^0=\ker\varphi$ 中元素给出的 $W_F$ 内自同构之后唯一。
+\end{originaltheorem}
+为证明 $\R$ 情形的 (1.5.1)，由 $\varphi$ 满射，可先归结为推论所述的情形，即只须证明：若 $(1,\alpha)\in\Aut(\overline F,W_F)$，则有某个 $w\in W_F^0$ 使 $\alpha=\operatorname{Inn}(w)$。回到 (1.3.1) 的证明，令 $W'_F=W_F$，可见这些 $\alpha$ 构成的群为
+\[
+\begin{aligned}
+\varprojlim_E(C_E/C_F)
+ &=\varprojlim_E(C_E^1/C_F^1)&&\text{（上标1表示范数为1）}\\
+ &=\varprojlim_E C_E^1/\varprojlim_E C_F^1&&\text{（由紧性）}\\
+ &=W^{0,1}/(Z\cap W^{0,1})&&\text{（存在定理；上标0表示连通分支）}\\
+ &=W^0/Z,
+\end{aligned}
+\]
+如所断言，其中 $Z$ 为 $W$ 的中心。
+
+再考察 $\Z$ 情形。由于 $\varphi$ 单射，即 $W_F\subset G_F$，显然 $\Aut(\overline F,W_F)$ 仅由各对 $(\sigma,\alpha_\sigma)$ 组成。$G_F$ 的中心为 $1$，因为对每个有限 Galois 扩张 $E/F$，$G_F/G_E\simeq\Gal(E/F)$ 在 $C_E\subset G_E^{\mathrm{ab}}$ 上忠实作用。因此，由于 $W_F$ 在 $G_F$ 中稠密，除非 $\sigma\in W_F$，否则 $\alpha_\sigma$ 不是 $W_F$ 的内自同构。但对于有限 Galois 扩张 $E/F$，$\alpha_\sigma$ 在 $W_{E/F}$ 上诱导内自同构。利用 $W_F$ 的稠密性，只须对充分接近 $1$ 的 $\sigma$ 证明这一点，可取 $\sigma\in G_E$。此时 $\alpha_\sigma$ 诱导群扩张 $0\to C_E\to W_{E/F}\to\Gal(E/F)\to0$ 的一个同构，其两端均为恒等映射，故由 $H^1(\Gal(E/F),C_E)=0$，它是由 $C_E$ 中元素给出的内自同构。
+
+\origsubsection{1.6}{局部与整体的关系（The local-global relationship）}
+现设 $F$ 为整体域。令 $v$ 为 $F$ 的一个位（place），$F_v$ 为 $F$ 在 $v$ 处的完备化（completion）。令 $\overline F$（分别 $\overline F_v$）为 $F$（分别 $F_v$）的可分代数闭包，$W_F$（分别 $W_{F_v}$）为 $\overline F/F$（分别 $\overline F_v/F_v$）的 Weil 群。
+\begin{originaltheorem}{命题 1.6.1（Proposition 1.6.1）}
+设 $i_v:\overline F\to\overline F_v$ 为 $F$-同态。对 $\overline F$ 中 $F$ 的每个有限扩张 $E$，令 $E_v=i(E)F_v$ 为 $E$ 的相应完备化。存在连续同态 $\theta_v:W_{F_v}\to W_F$，使下图交换：
+\[
+\begin{tikzcd}[column sep=large]
+ W_{F_v}\arrow[r]\arrow[d,"\theta_v"']&G_{F_v}\arrow[d,"\text{由 }i_v\text{ 诱导}"]\\
+ W_F\arrow[r]&G_F
+\end{tikzcd}
+\qquad
+\begin{tikzcd}[column sep=large]
+ E_v^*\arrow[r,"\sim"]\arrow[d,"n_v"']&W_{E_v}^{\mathrm{ab}}\arrow[d,"\text{由 }i_v\text{ 诱导}"]\\
+ C_E\arrow[r,"\sim"']&W_E^{\mathrm{ab}},
+\end{tikzcd}
+\]
+其中 $n_v$ 将 $a\in E_v^*$ 映到以 $a$ 为 $v$ 分量、其余分量均为 $1$ 的伊代尔的类。
+
+若 $F$ 为函数域，则 $\theta_v$ 唯一。在数域情形，$\theta_v$ 在复合一个由连通分支 $W_F^0=\ker\varphi$ 中元素定义的 $W_F$ 内自同构之后唯一。
+\end{originaltheorem}
+证明与 (1.3.1)、(1.5.1) 的论证类似，所需事实是整体与局部典范类之间的标准关系，以及 $H^1(\Gal(E_v/F_v),C_E)=0$。
+
+结合 (1.6.1) 与 (1.5.2)，得到：
+\begin{originaltheorem}{推论（Corollary）}
+交换图
+\[
+\begin{tikzcd}[column sep=large]
+ W_{F_v}\arrow[r]\arrow[d,"\theta_v"']&G_{F_v}\arrow[d,"i_v"]\\
+ W_F\arrow[r]&G_F
+\end{tikzcd}
+\]
+在同构意义下唯一。它的自同构是由 $w\in W^0$ 给出的 $W$ 的内自同构，且须诱导 $W_{F_v}$ 的自同构（即 $v$ 为非阿基米德位时，$w$ 被 $G_{F_v}$ 固定；$v$ 为阿基米德位时，$w$ 是 $W^0$ 中一个元素与 $(W^0)^{G_{F_v}}$ 中一个元素的乘积）。\footnote{\textbf{译者注（本次校订）：}后一条件的第一个因子应为局部连通分支的像 $\theta_v(W_{F_v}^0)$，而不是整个 $W_F^0$；正确条件为 $w\in\theta_v(W_{F_v}^0)(W_F^0)^{G_{F_v}}$。确实，若共轭作用在局部 Weil 群上由 $u\in W_{F_v}^0$ 给出，则 $w\theta_v(u)^{-1}$ 必须与局部 Weil 群的像交换。}
+\end{originaltheorem}
+
+\origsection{2}{表示（Representations）}
+设 $G$ 为拓扑群。本节中，$G$ 的一个表示（representation）是指连续同态 $\rho:G\to\GL(V)$，其中 $V$ 是有限维复向量空间。$G$ 的一个拟特征（quasi-character）是指连续同态 $\chi:G\to\C^*$。若 $(\rho,V)$ 是 $G$ 的表示，则 $\det\rho$ 是拟特征，有时也记为 $\det V$。映射 $V\mapsto\det V$ 在一维表示的同构类与拟特征之间建立双射。因此，$G$ 的拟特征也可视为 $G^{\mathrm{ab}}$ 的拟特征。
+
+用 $M(G)$ 表示 $G$ 的表示的同构类集合，$R(G)$ 表示虚表示群（group of virtual representations）。$M(G)$ 上取值于交换群 $X$ 的函数 $\lambda$ 可延拓为同态 $R(G)\to X$，当且仅当它是可加的（additive），即对 $G$ 的表示的每个正合列（exact sequence）$0\to V'\to V\to V''\to0$，均有 $\lambda(V)=\lambda(V')\lambda(V'')$。
+
+\paragraph*{(2.1)} 设 $F$ 为局部域或整体域，$\overline F$ 为其代数闭包，$W_F$ 为 $\overline F/F$ 的 Weil 群。设 $(\rho,V)$ 为 $W_F$ 的表示。由于 $W_F=\varprojlim\{W_{E/F}\}$，而 $\GL(V)$ 没有非平凡的小子群（small subgroups），$\rho$ 必经由某个 $W_{E/F}$ 分解，其中 $E$ 为 $\overline F$ 中 $F$ 的某个有限 Galois 扩张。因此，若 $\alpha$ 是 (1.5) 意义下 $W_F$ 的本质内自同构，则 $V^\alpha\simeq V$。故本质内自同构在 $M(W_F)$、$R(W_F)$ 上的作用均为恒等。由 (1.5.1)，可以将 $M(W_F)$ 视为仅由 $F$ 确定的集合，与 $\overline F$ 或 $\overline F/F$ 的 Weil 群 $W_F$ 的具体选取无关；$R(W_F)$ 也一样。同样，若 $v$ 是整体域 $F$ 的一个位，则命题 (1.6.1) 中的 $\theta_v$ 所诱导的“限制”映射 $M(W_F)\to M(W_{F_v})$ 仅依赖 $v$，不依赖该命题中 $i_v$ 与 $\theta_v$ 的具体选取；$R(W_F)\to R(W_{F_v})$ 也一样。把此映射记为 $\rho\mapsto\rho_v$ 或 $V\mapsto V_v$。（与 $\theta_v$ 无关由 (1.6.1) 得到，与 $i_v$ 无关由 (1.5.1) 得到。）
+
+若 $E/F$ 为任意有限可分扩张，则有典范映射
+\[
+ R(W_F)\mathrel{\mathop{\rightleftarrows}^{\operatorname{res}_{E/F}}_{\operatorname{ind}_{E/F}}}R(W_E),
+\]
+其中上方为限制（restriction），下方为诱导（induction）；它们满足通常的 Frobenius 互反律，因为可将 $W_E$ 视为 $W_F$ 的有限指数闭子群。
+
+\origsubsection{2.2}{拟特征与 Galois 型表示（Quasi-characters and representations of Galois type）}
+通过同构 $C_F\simeq W_F^{\mathrm{ab}}$，可将 $C_F$ 的拟特征与 $W_F$ 的拟特征等同。例如，对 $s\in\C$，用 $\omega_s$ 表示与拟特征 $c\mapsto\lVert c\rVert_F^s$ 对应的 $W_F$ 拟特征，其中 $\lVert c\rVert_F$ 为 $c\in C_F$ 的范数。因此，用 (1.4) 的记号，$\omega_s(w)=\lVert w\rVert^s$。
+
+另一方面，因 $\varphi:W_F\to G_F$ 具有稠密像，可将 $G_F$ 表示的同构类集合 $M(G_F)$ 等同于 $M(W_F)$ 的一个子集。称该子集中的表示为“Galois 型”（of Galois type）。由 (1.4.5)，$W_F$ 的表示 $\rho$ 为 Galois 型，当且仅当 $\rho(W_F)$ 有限。
+
+作此等同后，$G_F$ 的特征 $\chi$ 就与通过互反律同态与之对应的 $C_F$ 特征 $\chi$ 等同。
+
+\paragraph*{(2.2.1)} 在 $\Z$ 情形，即 $F$ 为整体函数域或非阿基米德局部域时，$W_F$ 的每个不可约表示（irreducible representation）$\rho$ 都形如 $\rho=\sigma\otimes\omega_s$，其中 $\sigma$ 为 Galois 型。这是由预有限群扩张 $\Z$ 所得群的不可约表示的一般事实：用某个在该预有限子群上平凡的拟特征扭曲（twist）$\rho$ 后可使其像有限；见 [D3, §4.10]。
+
+\paragraph*{(2.2.2)} 若 $F$ 为阿基米德局部域，则 $W_F$ 的拟特征，即 $F^*\simeq W_F^{\mathrm{ab}}$ 的拟特征，形如 $\chi=z^{-N}\omega_s$，其中 $z:F\to\C$ 为嵌入，$N$ 为非负整数；$F$ 为实数域时限于 $N=0$ 或 $1$。若 $F$ 为复数域，这些就是 $F^*=W_F$ 的全部不可约表示。若 $F$ 为实数域，$W_F$ 有指数为 $2$ 的交换子群 $W_{\overline F}=\overline F^*$，且 $W_F$ 中非拟特征的不可约表示形如 $\rho=\Ind_{\overline F/F}(z^{-N}\omega_s)$，其中 $N>0$。（当 $N=0$ 时，此诱导表示可约：
+\begin{equation}
+ \Ind_{\overline F/F}\omega_s=\omega_s\oplus x^{-1}\omega_{s+1},\tag{2.2.2.1}
+\end{equation}
+其中 $x:F\to\C$ 为 $F$ 到 $\C$ 的嵌入。）
+
+\paragraph*{(2.2.3)} 设 $F$ 为整体数域。$W_F$ 的一个本原（primitive，即不是从真子群诱导而来）不可约表示 $\rho$ 形如 $\rho=\sigma\otimes\chi$，其中 $\sigma$ 为 Galois 型，$\chi$ 为拟特征。
+
+选取足够大的有限 Galois 扩张 $E/F$，使 $\rho$ 经由 $W_{E/F}=W_F/W_E^c$ 分解。因 $\rho$ 本原且不可约，而 $W_E^{\mathrm{ab}}$ 是 $W_{E/F}$ 的交换正规子群，$\rho(W_E^{\mathrm{ab}})$ 必在 $\GL(V)$ 的中心中。换言之，复合映射 $W_F\xrightarrow{\rho}\GL(V)\to\operatorname{PGL}(V)$ 消去 $W_E$，故给出 $\Gal(E/F)$ 的一个射影表示（projective representation）。这个射影表示可提升为线性表示 $\sigma_0:G_F\to\GL(V)$（见 [S3，定理4的推论]）。令 $\sigma=\sigma_0\circ\varphi$。下列两复合映射相等：
+\[
+ W_F\mathrel{\substack{\xrightarrow{\rho}\\[-3pt]\xrightarrow[\sigma]{}}}\GL(V)\longrightarrow\operatorname{PGL}(V).
+\]
+故对某个拟特征 $\chi$，有 $\rho=\sigma\otimes\chi$。
+
+\paragraph*{(2.2.4)} 注意，在全部整体和局部情形，$W_F$ 的本原不可约表示都是 Galois 表示以拟特征作的扭曲。
+
+\paragraph*{(2.2.5)} 在非阿基米德局部情形，对于本原不可约表示的结构可以说得更多（见 [K]）。下面给出其中一个基本结果。
+\begin{originaltheorem}{命题 2.2.5.1（Proposition 2.2.5.1）}
+设 $F$ 为非阿基米德局部域，$V$ 为 $W_F$ 的本原不可约表示。那么 $V$ 对野分歧群（wild ramification group）$P$ 的限制不可约。
+\end{originaltheorem}
+该结果在 [K]、[B] 中证明。证明依赖于 $G_F/P$ 的超可解性（supersolvability）。
+\begin{originaltheorem}{推论 2.2.5.2（Corollary 2.2.5.2）}
+$V$ 的维数是剩余特征（residue characteristic）$p$ 的幂。
+\end{originaltheorem}
+事实上，$P$ 是 pro-$p$ 群。
+\begin{originaltheorem}{推论 2.2.5.3（Corollary 2.2.5.3）}
+若 $U$ 是 $W_F$ 的不可约表示（不必本原），且其次数与 $p$ 互素，则 $U$ 为单项表示（monomial representation）。
+\end{originaltheorem}
+因为 $U$ 是从一个本原不可约表示 $V$ 诱导而来，而 $V$ 的维数既与 $p$ 互素，又是 $p$ 的幂，所以等于 $1$。
+
+\origsubsection{2.3}{表示的诱导相容函数（Inductive functions of representations）}
+设 $F$ 为局部域或整体域。对 $W_F$ 的表示 $V$，记 $[V]\in R(W_F)$ 为它所确定的虚表示。用 $R^0(W_F)$ 表示 $W_F$ 的零次虚表示群，即形如 $[V]-[V']$ 且 $\dim V=\dim V'$ 的元素所成的群。
+\begin{originaltheorem}{命题 2.3.1（Proposition 2.3.1）}
+群 $R(W_F)$ 由形如 $\Ind_{E/F}[\chi]$ 的元素生成，其中 $E/F$ 有限，$\chi$ 为 $W_E$ 的拟特征。类似地，$R^0(W_F)$ 由形如 $\Ind_{E/F}([\chi]-[\chi'])$ 的元素生成。
+\end{originaltheorem}
+只需证明第二个断言，因为 $R(W_F)=R^0(W_F)+\Z\cdot[1]$。令 $R_*^0(W_F)$ 为 $R^0(W_F)$ 中由各元素 $\Ind_{E/F}([\chi]-[\chi'])$ 生成的子群。由 Brauer 定理的零次变式 [D3，命题1.5]，有 $R^0(G_F)\subset R_*^0(W_F)$。公式 $\Ind(\rho\otimes\Res\chi)=(\Ind\rho)\otimes\chi$ 表明，对 $W_F$ 的每个拟特征 $\chi$，均有 $R_*^0\cdot\chi\subset R_*^0$。
+
+为证明命题，须对 $W_F$ 的每个不可约表示 $\rho$ 证明 $[\rho]-(\dim\rho)[1]\in R_*^0(W_F)$。对每个 $\rho$，存在 $F$ 的有限扩张 $E$ 及 $W_E$ 的本原不可约表示 $\rho_E$，使 $\rho=\Ind_{E/F}\rho_E$。此时 $[\rho]-(\dim\rho)[1]$ 是 $\Ind_{E/F}([\rho_E]-(\dim\rho_E)[1_E])$ 与 $(\dim\rho_E)(\Ind_{E/F}[1_E]-[E:F][1_F])$ 之和。后一项为 Galois 型；再利用诱导的传递性，便可归结为 $\rho$ 本原不可约的情形。但此时 $\rho=\sigma\otimes\chi$，其中 $\sigma\in R(G_F)$，$\chi$ 为 $W_F$ 的拟特征（见 (2.2.4)）。若 $n=\dim\rho=\dim\sigma$，则
+\[
+ [\rho]-n[1]=([\sigma]-n[1])[\chi]+n([\chi]-[1]),
+\]
+由以上讨论及 $[\sigma]-n[1]\in R^0(G_F)$，此式属于 $R_*^0(W_F)$。
+
+\begin{originaltheorem}{定义 2.3.2（Definition 2.3.2）}
+设 $F$ 为局部域或整体域，$\lambda$ 为一个函数，给每个有限可分扩张 $E/F$ 和每个 $V\in M(W_E)$ 指定交换群 $X$ 中的元素 $\lambda(V)$。若对每个 $E$ 及 $W_E$ 表示的每个正合列 $0\to V'\to V\to V''\to0$，都有 $\lambda(V)=\lambda(V')\lambda(V'')$，就称 $\lambda$ 在 $F$ 上可加。此时可将 $\lambda$ 定义在虚表示上，使每个 $E$ 对应的 $\lambda:R(W_E)\to X$ 均为同态。若 $\lambda$ 在 $F$ 上可加，且对有限可分扩张 $E/E'/F$ 下图交换，则称 $\lambda$ 在 $F$ 上与诱导相容（inductive）：
+\[
+\begin{tikzcd}[column sep=large]
+ R(W_E)\arrow[rr,"\lambda"]\arrow[dr,"\Ind_{E/E'}"']&&X\\
+ &R(W_{E'})\arrow[ur,"\lambda"']&
+\end{tikzcd}
+\]
+若将 $R$ 换成 $R^0$ 后上述条件成立，则称 $\lambda$ 在 $F$ 上对零次虚表示与诱导相容（inductive in degree $0$）。
+\end{originaltheorem}
+
+\paragraph*{(2.3.3) 注（Remark）。}
+由 (2.3.1)，在 $F$ 上与诱导相容，甚至仅在零次与诱导相容的 $\lambda$，均由它在所有有限可分扩张 $E/F$ 的 $W_E$（即 $C_E$）的拟特征 $\chi$ 上的值唯一确定。[D3, §1.9] 针对有限群讨论了如下问题：定义在各子群特征上的函数 $\lambda$ 须满足何种关系，才能延拓为表示的诱导相容函数。
+
+\paragraph*{(2.3.4) 例（Example）。}
+设 $a\in C_F$。对于 $V\in M(W_E)$，令
+\[
+ \lambda(V)=(\det V)(r_E(a)).
+\]
+则 $\lambda$ 在 $F$ 上对零次虚表示与诱导相容。这来自 Weil 群的性质 (W3) 及规则
+\[
+ \det(\Ind V)=(\det V)\circ\text{转移}\qquad(V\text{ 为零次虚表示}),
+\]
+参见 [D3, §1]。
+
+\paragraph*{(2.3.5) 例。}
+设 $v$ 为整体域 $F$ 的一个位，$\lambda$ 为 $F_v$ 上与诱导相容的函数。对每个有限可分扩张 $E/F$ 及每个 $V\in M(W_E)$，令
+\[
+ \lambda_v(V)=\prod_{\substack{w\text{ 为 }E\text{ 的位}\\w\mid v}}\lambda(V_w),
+\]
+由此得到 $F$ 上与诱导相容的函数 $\lambda_v$。若 $\lambda$ 仅在零次与诱导相容，则 $\lambda_v$ 也在零次与诱导相容。
+
+事实上，由从一个子群诱导后再限制到另一子群的标准公式，有
+\[
+ (\Ind_{E/F}V)_v=\bigoplus_{w\mid v}\Ind_{E_w/F_v}V_w,
+\]
+因为若 $w_0$ 为 $E$ 中位于 $v$ 上方的一个位，则映射 $\sigma\mapsto\sigma w_0$ 将双陪集集合 $W_E\backslash W_F/W_{F_v}$ 双射到所有这类位的集合，且对每个 $\sigma$，可将 $W_{E_{\sigma w_0}}$ 等同于 $(\sigma W_{F_v}\sigma^{-1})\cap W_E$。\footnote{\textbf{译者注（本次校订）：}这里应先将 $v$ 延拓为 $\overline F$ 上的位 $\overline v$，再将双陪集 $W_E\sigma W_{F_v}$ 对应到 $(\sigma\overline v)|_E$。对一般非 Galois 扩张 $E/F$，任意 $\sigma\in G_F$ 并不保持 $E$，因而不能直接对 $E$ 上的位 $w_0$ 写出 $\sigma w_0$。}
+
+\origsection{3}{L 级数、函数方程、局部常数（L-series, functional equations, local constants）}
+本节所考虑的 $L$ 函数是 Weil [W1] 给 Weil 群的表示附加的 $L$ 函数。其特例包括用 Größencharaktere（即 $C_F$ 的拟特征）构成的 Hecke“交换”$L$ 级数，以及用 Galois 群表示构成的 Artin“非交换”$L$ 函数。以下主要沿用 [D3, §§3,4,5] 的论述。
+
+\origsubsection{3.1}{局部交换 L 函数（Local abelian L-functions）}
+设 $F$ 为局部域。对 $F^*$ 的拟特征 $\chi$，如下定义 $L(\chi)\in\C^*\cup\{\infty\}$。
+
+\paragraph*{(3.1.1) $F\simeq\R$。}
+设 $x$ 是 $F$ 到 $\C$ 的嵌入，$N=0$ 或 $1$，则
+\[
+ L(x^{-N}\omega_s)=\Gamma_{\R}(s)\overset{\mathrm{def}}=\pi^{-s/2}\Gamma(s/2).
+\]
+\paragraph*{(3.2.1) $F\simeq\C$。}
+设 $z$ 是 $F$ 到 $\C$ 的嵌入，$N\geq0$，则
+\[
+ L(z^{-N}\omega_s)=\Gamma_{\C}(s)\overset{\mathrm{def}}=2(2\pi)^{-s}\Gamma(s).
+\]
+\paragraph*{(3.1.3) $F$ 为非阿基米德域。}
+取 $F$ 中的素元 $\pi$，则
+\[
+ L(\chi)=\begin{cases}(1-\chi(\pi))^{-1},&\chi\text{ 非分歧（unramified）},\\
+ 1,&\chi\text{ 分歧（ramified）}.
+ \end{cases}
+\]
+在每种情形，$L$ 都是 $\chi$ 的亚纯函数（meromorphic function），即 $L(\chi\omega_s)$ 关于 $s$ 亚纯，并且 $L$ 没有零点。
+
+\origsubsection{3.2}{局部交换 epsilon 函数（Local abelian epsilon-functions）}
+用 $dx$ 表示 $F$ 上的 Haar 测度，$d^*x$ 表示 $F^*$ 上的 Haar 测度（例如 $d^*x=\lVert x\rVert^{-1}dx$），$\psi$ 表示 $F$ 的非平凡加性特征（additive character）。
+给定 $\psi$ 和 $dx$，有“Fourier 变换”（Fourier transform）
+\[
+ \widehat f(y)=\int f(x)\psi(xy)\,dx.
+\]
+局部函数方程
+\begin{equation}
+ \frac{\int\widehat f(x)\omega_1\chi^{-1}(x)\,d^*x}{L(\omega_1\chi^{-1})}
+ =\varepsilon(\chi,\psi,dx)\frac{\int f(x)\chi(x)\,d^*x}{L(\chi)}\tag{3.2.1}
+\end{equation}
+定义了一个数 $\varepsilon(\chi,\psi,dx)\in\C^*$：只要两边有意义，所得数值便与 $f$ 的选择无关。例如，若 $f$ 连续，并且在 $\lVert x\rVert\to\infty$ 时 $f(x)$、$\widehat f(x)$ 都是 $O(e^{-\lVert x\rVert})$，则对于满足 $\chi(x)=\lVert x\rVert^\sigma$、$0<\sigma<1$ 的 $\chi$，两边的积分均收敛，且可关于 $\chi$ 作亚纯延拓。两边使用相同的乘法 Haar 测度 $d^*x$。$\varepsilon$ 对 $\psi$ 和 $dx$ 的依赖来自 Fourier 变换对它们的依赖。可得
+\begin{align}
+ \varepsilon(\chi,\psi,r\,dx)&=r\varepsilon(\chi,\psi,dx),\qquad r>0,\tag{3.2.2}\\
+ \varepsilon(\chi,\psi(ax),dx)&=\chi(a)\lVert a\rVert^{-1}\varepsilon(\chi,\psi,dx),\qquad a\in F^*.\tag{3.2.3}
+\end{align}
+[T1] 和 [W2] 中的计算表明，$\varepsilon$ 由 (3.2.2)、(3.2.3) 及以下显式公式给出。
+
+\paragraph*{(3.2.4) $F\simeq\R$。}
+设 $x$ 是 $F$ 到 $\C$ 的嵌入，$N=0$ 或 $1$。对 $\psi=\exp(2\pi ix)$ 及通常的测度 $dx$，有 $\varepsilon(x^{-N}\omega_s,\psi,dx)=i^N$。
+
+\paragraph*{(3.2.5) $F\simeq\C$。}
+设 $z$ 是 $F$ 到 $\C$ 的嵌入，$N\geq0$。对 $\psi=\exp(2\pi i\Tr_{\C/\R}z)$ 及 $dx=i\,dz\wedge d\overline z$（$z=a+bi$ 时等于 $2\,da\,db$），有 $\varepsilon(z^{-N}\omega_s,\psi,dx)=i^N$。
+
+\paragraph*{(3.2.6) $F$ 为非阿基米德域。}
+令 $\mathfrak o$ 为 $F$ 的整数环（ring of integers），并令
+\[
+\begin{aligned}
+ n(\psi)&=\text{使 }\psi(\pi^{-n}\mathfrak o)=1\text{ 的最大整数 }n,\\
+ a(\chi)&=\chi\text{ 的导子（conductor）的指数},\\
+ c&=F^*\text{ 中赋值为 }n(\psi)+a(\chi)\text{ 的元素}.
+\end{aligned}
+\]
+这里，若 $\chi$ 非分歧则 $a(\chi)=0$；若 $\chi$ 分歧，则它是使 $\chi$ 在模 $\pi^m$ 同余于 $1$ 的单位群上平凡的最小整数 $m$。若 $\chi$ 非分歧，
+\begin{equation}
+ \varepsilon(\chi,\psi,dx)=\frac{\chi(c)}{\lVert c\rVert}\int_{\mathfrak o}dx.\tag{3.2.6.1}
+\end{equation}
+（特别地，当 $\chi$ 非分歧，且 $\int_{\mathfrak o}dx=1$、$n(\psi)=0$ 时，$\varepsilon(\chi,\psi,dx)=1$。）
+若 $\chi$ 分歧，则
+\begin{equation}
+\begin{aligned}
+ \varepsilon(\chi,\psi,dx)
+ &=\int_{F^*}\chi^{-1}(x)\psi(x)\,dx
+ \overset{\mathrm{def}}=\sum_{n\in\Z}\int_{\pi^n\mathfrak o^*}\chi^{-1}(x)\psi(x)\,dx\\
+ &=\int_{c^{-1}\mathfrak o^*}\chi^{-1}(x)\psi(x)\,dx.
+\end{aligned}\tag{3.2.6.2}
+\end{equation}
+由这些公式可推出，对任意 $\chi$ 及非分歧的 $\omega$，
+\begin{equation}
+ \varepsilon(\chi\omega,\psi,dx)=\varepsilon(\chi,\psi,dx)\,
+ \omega(\pi^{n(\psi)+a(\chi)}).\tag{3.2.6.3}
+\end{equation}
+
+\origsubsection{3.3}{局部非交换 L 函数（Local nonabelian L-functions）}
+Artin 发现，局部域的 Weil 群表示上存在一个与诱导相容的函数 $L$（见 (2.3.2)），当 $V$ 为与拟特征 $\chi$ 对应的一次表示时，满足 $L(V)=L(\chi)$。其显式描述如下。
+
+\paragraph*{(3.3.1) $F$ 为阿基米德域。}
+因 $L$ 可加，只须给出它在不可约 $V$ 上的值。若 $F$ 为复数域，则 $W_F=F^*$ 交换，唯一的不可约表示就是拟特征 $\chi$，其 $L$ 已有定义。若 $F$ 为实数域，唯一的非一维不可约表示形如 $V=\Ind_{\overline F/F}\chi$，其中 $\chi$ 是 $\overline F^*=W_{\overline F}$ 的拟特征，不被复共轭作用固定。此时令 $L(V)=L(\chi)$；这一定义正是诱导相容性所要求的。
+
+\paragraph*{(3.3.2) $F$ 为非阿基米德域。}
+令 $I$ 为 $W_F$ 的惯性子群。令 $\Phi$ 为“逆 Frobenius”，即 $W_F$ 中满足 $\lVert\Phi\rVert=\lVert\pi\rVert_F$ 的元素。此条件模 $I$ 唯一确定 $\Phi$，并令
+\[
+ L(V)=\det(1-\Phi\mid V^I)^{-1},
+\]
+其中 $V^I$ 为 $V$ 中被 $I$ 固定的元素构成的子空间。
+
+这样定义的“非交换”函数 $L$ 与诱导相容，其证明见 [D3，命题3.8]（也见 [A]）。阿基米德情形用到关系 $\Gamma_{\C}(s)=\Gamma_{\R}(s)\Gamma_{\R}(s+1)$。为使 $L$ 的值域成为一个群，应令它将 $V$ 映到亚纯函数 $s\mapsto L(V\omega_s)$，并把定义 (2.3.2) 中的 $X$ 取为 $s$ 的非零亚纯函数乘法群。
+
+\origsubsection{3.4}{局部“非交换” epsilon 函数（The local nonabelian epsilon-function）}
+关于 $\varepsilon(V,\psi,dx)$，目前只有存在性定理（见下文），没有显式公式。\footnote{除 Deligne 对正交表示以 Stiefel--Whitney 类给出的表达式外，见 [D5，命题5.2]。}这与第3.2节的定义方式有关：那里将 $\chi$ 视为 $F^*$ 的拟特征，这一点不可或缺。若把 $\chi$ 看作 $W_F$ 的拟特征，不使用互反律同构 $F^*\simeq W_F^{\mathrm{ab}}$，便无法定义 $\varepsilon(\chi,\psi,dx)$。事实上，Langlands 关于将 $W_F$ 的 $n$ 次表示 $V$ 与 $\GL(n,F)$ 的不可约表示 $\pi$ 联系起来的“非交换互反律”（nonabelian reciprocity laws）的思想，以及为后者定义 $\varepsilon(\pi,\psi,dx)$ 的可能性，促使他提出并证明了以下重要定理的一个版本。
+
+\begin{originaltheorem}{定理 3.4.1（Theorem 3.4.1）}
+存在唯一函数 $\varepsilon$，给每组资料——局部域 $F$、$F$ 的非平凡加性特征 $\psi$、$F$ 上的加法 Haar 测度 $dx$，以及 $W_F$ 的表示 $V$——指定数 $\varepsilon(V,\psi,dx)\in\C^*$，满足：若 $V$ 是与拟特征 $\chi$ 对应的一次表示，则 $\varepsilon(V,\psi,dx)=\varepsilon(\chi,\psi,dx)$；并且，对任意局部域 $F$，若给 $F$ 的每个有限可分扩张 $E$ 选取加法 Haar 测度 $\mu_E$，则把每个这样的 $E$ 和每个 $V\in M(W_E)$ 映到 $\varepsilon(V,\psi\circ\Tr_{E/F},\mu_E)$ 的函数，在 (2.3.2) 意义下于 $F$ 上零次与诱导相容。
+\end{originaltheorem}
+由 (2.3.1)，这样的 $\varepsilon$ 至多只有一个，关键是证明其存在。Dwork 和 Langlands 的经验表明，局部存在性证明要验证各个 $\varepsilon(\chi,\psi,dx)$ 满足必要关系，过于繁复，无法完整发表。Deligne 找到了一个相对短的证明（见 [D3, §4]；也可能见 [T2]）。证明使用两个主要事实，分别来自整体理论和局部理论：(1) 来自 $L(V)$ 的整体函数方程的整体 $\varepsilon(V)$ 的存在性（参见下文 (3.5)）；(2) 若 $F$ 为非阿基米德局部域，$\alpha$ 为 $F^*$ 的野分歧拟特征，则有元素 $\gamma=\gamma(\alpha,\psi)\in F^*$，使对满足 $a(\chi)\leq\tfrac12a(\alpha)$ 的 $F^*$ 的所有拟特征 $\chi$，均有
+\[
+ \varepsilon(\chi\alpha,\psi,dx)=\chi^{-1}(\gamma)\varepsilon(\alpha,\psi,dx),
+\]
+因此，右端对 $\chi$ 的依赖非常简单。
+
+一旦得到 $\varepsilon(V,\psi,dx)$ 的存在性，下列性质通过零次诱导相容性与 (2.3.1)，均可从 $\varepsilon(\chi,\psi,dx)$ 的相应性质推出。
+
+\paragraph*{(3.4.2)} $\varepsilon$ 关于 $V$ 可加，因而对虚表示 $V$ 也有意义。
+\paragraph*{(3.4.3)} 对 $r>0$，
+\[
+ \varepsilon(V,\psi,r\,dx)=r^{\dim V}\varepsilon(V,\psi,dx).
+\]
+特别地，若 $V$ 为零次虚表示，$\varepsilon(V,\psi,dx)=\varepsilon(V,\psi)$ 与 $dx$ 无关。
+\paragraph*{(3.4.4)} 对 $a\in F^*$，
+\[
+ \varepsilon(V,\psi_a,dx)=(\det V)(a)\lVert a\rVert^{-\dim V}\varepsilon(V,\psi,dx)
+\]
+（参见 (2.3.4)）。
+\paragraph*{(3.4.5)}
+\[
+ \varepsilon(V\omega_s,\psi,dx)=\varepsilon(V,\psi,dx)f(V)^{-s}\delta(\psi)^{-s\dim V},
+\]
+其中：非阿基米德情形 $\delta(\psi)=q_F^{n(\psi)}$；阿基米德情形则由 $\delta(\psi_a)=\lVert a\rVert^{-1}\delta(\psi)$，以及对 (3.2.4)、(3.2.5) 中的 $\psi$ 有 $\delta(\psi)=1$ 来刻画。阿基米德情形 $f(V)=1$；非阿基米德情形 $f(V)=q_F^{a(V)}$，即 $V$ 的 Artin 导子的绝对范数。此 $f$ 可刻画为唯一在零次与诱导相容，且对拟特征 $\chi$ 满足 $f(\chi)=q_F^{a(\chi)}$ 的函数。关于用高阶分歧群（higher ramification groups）给出的 $a(V)$ 的熟知显式公式，见 [S1] 或 [D3, (4.5)]。
+\paragraph*{(3.4.6)} 若 $F$ 为非阿基米德域，$W$ 非分歧，则
+\[
+ \varepsilon(V\otimes W,\psi,dx)=\varepsilon(V,\psi,dx)^{\dim W}
+ \cdot\det W(\pi^{a(V)+\dim V\,n(\psi)}).
+\]
+\paragraph*{(3.4.7)} 令 $V^*$ 表示 $V$ 的对偶（dual），$dx'$ 表示关于 $\psi$ 与 $dx$ 对偶的 Haar 测度，则
+\[
+ \varepsilon(V,\psi,dx)\varepsilon(V^*\omega_1,\psi(-x),dx')=1.
+\]
+特别地，若 $V^*=\overline V$，即 $V$ 为酉的（unitary），则\footnote{\textbf{译者注（本次校订）：}酉性可推出 $V^*\simeq\overline V$，但仅有这一同构并不足以反推酉性。例如 $V=\omega_1\oplus\omega_{-1}$ 与其对偶及复共轭均同构，却不可酉化。因此这里的“即”不应理解为两个条件等价；以下模长公式在所述酉情形成立。}
+\[
+ |\varepsilon(V,\psi,dx)|^2=f(V)(\delta(\psi)dx/dx')^{\dim V}.
+\]
+\paragraph*{(3.4.8)} 若 $E/F$ 为有限可分扩张，$V_E$ 为 $W_E$ 的零次虚表示，$V_F$ 为诱导得到的 $W_F$ 虚表示，则 $\varepsilon(V_F,\psi)=\varepsilon(V_E,\psi\circ\Tr)$。
+
+\origsubsection{3.5}{整体 L 函数与函数方程（Global L-functions, functional equations）}
+设 $F$ 为整体域，$\psi$ 为 $\A_F/F$ 的非平凡加性特征，$dx$ 为 $\A_F$ 上满足 $\int_{\A_F/F}dx=1$ 的 Haar 测度（Tamagawa 测度（Tamagawa measure））。用 $\psi_v$ 表示 $\psi$ 在位 $v$ 处的局部分量，并任取分解 $dx=\prod_v dx_v$ 为局部测度之积，要求对几乎所有 $v$，$F_v$ 的整数环测度为 $1$。
+设 $V$ 为整体 Weil 群 $W_F$ 的表示，并令
+\begin{align}
+ L(V,s)&=\prod_v L(V_v\omega_s),\tag{3.5.1}\\
+ \varepsilon(V,s)&=\prod_v\varepsilon(V_v\omega_s,\psi_v,dx_v).\tag{3.5.2}
+\end{align}
+\begin{originaltheorem}{定理 3.5.3（Theorem 3.5.3）}
+乘积 (3.5.1) 在某个右半平面内对 $s$ 收敛，并可延拓为整个 $s$ 平面上的亚纯函数 $L(V,s)$，并满足函数方程
+\begin{equation}
+ L(V,s)=\varepsilon(V,s)L(V^*,1-s),\tag{3.5.4}
+\end{equation}
+其中 $V^*$ 为 $V$ 的对偶。
+\end{originaltheorem}
+当 $V$ 为拟特征 $\chi$ 时，此结果由 Hecke 证明。在其证明的现代版本（[T1]、[W2]）中，利用 Poisson 求和（Poisson summation），对 $\A$ 上适当的函数 $f$ 证明
+\[
+ \int_{\A^*}\widehat f(x)\omega_{1-s}\chi^{-1}(x)\,d^*x
+ =\int_{\A^*}f(x)\omega_s\chi(x)\,d^*x,
+\]
+其中各积分通过解析延拓对所有 $s$ 定义。取 $f=\prod f_v$，并使用局部函数方程 (3.2.1)（以 $\chi\omega_s$ 代替 $\chi$），便得到 (3.5.4) 在“交换”情形 $V=\chi$ 下成立。
+
+此时，即使尚无局部非交换 $\varepsilon(V_v,\psi_v,dx_v)$ 的理论，也能通过 (2.3.1)、(2.3.5) 及局部 $L$ 的诱导相容性，得到：对每个 $V$，$L(V,s)$ 在整个平面上亚纯，在一个右半平面内由乘积 (3.5.1) 给出，且作为 $V$ 的函数与诱导相容。于是
+\[
+ \varepsilon'(V,s)\overset{\mathrm{def}}=\frac{L(V,s)}{L(V^*,1-s)}
+\]
+关于 $V$ 与诱导相容，并对 $\A^*/F^*$ 的拟特征 $\chi$ 满足 $\varepsilon'(\chi,s)=\prod_v\varepsilon(\chi_v\omega_s,\psi_v,dx_v)$。Deligne 在其局部非交换 $\varepsilon$ 存在性的“整体”证明中，所用的正是以下事实：对于整体 $\chi$，局部 $\varepsilon(\chi_v,\psi_v,dx_v)$ 遍历所有 $v$ 的乘积，可以与诱导相容地延拓到所有整体 $V$。在局部存在性得到证明后，再由诱导相容函数的唯一性得到 $\varepsilon'(V,s)=\varepsilon(V,s)$，因为由乘积 (3.5.2) 定义的 $\varepsilon(V,s)$ 按 (2.3.5) 在零次与诱导相容。
+
+\paragraph*{(3.5.5)} Hecke 的整体函数 $L(\chi,s)$ 在 $\chi$ 不形如 $\omega_s$ 时为整函数（entire function）。Artin 猜想（在 Galois 情形），只要 $V$ 不含形如 $\omega_s$ 的成分，$L(V,s)$ 就为整函数。Weil 在函数域情形证明了 Artin 猜想。最近，Langlands 利用 Saito 和 Shintani 的思想，在数域情形取得第一个突破：借助迹公式，通过基变换处理某些二维 $V$。（见本论文集第二册第115--133页 \emph{The solution of a base change problem for GL(2) (following Langlands, Saito, Shintani)}。）这些方法适用于所有 $W_F$ 在 $\operatorname{PGL}(V)$ 中的像为四面体群的二维 $V$。它们也适用于某些八面体情形，但要处理不可解的二十面体情形，还需要新的思想。不过，J. Buhler [B] 借助 Harvard Science Center 的 PDP11 及 [DS] 的主要结果，通过验证一个权为 $1$、级为 $800$ 的相应模形式（modular form）的存在性，证明了导子为 $800$ 的一个特定二十面体 $V$ 的 Artin 猜想。
+
+虽然 Weil 已在函数域情形证明关于 $L(\chi,s)$ 零点的 Riemann 假设（Riemann hypothesis），但在数域情形，似乎还看不到突破的迹象。对所有 $V$ 的 Artin 猜想与对所有 $\chi$ 的 Riemann 假设合起来，等价于 $W_F$ 上某个分布的正性（参见 [W3]）。
+
+\origsubsection{3.6}{局部常数的不同约定的比较（Comparison of different conventions for local constants）}
+以上材料的现代参考文献是 Deligne [D3] 和 Langlands [L1]；此处沿用 [D3] 的约定。[D3] 与 [L1] 对局部和整体 $L$ 函数采用相同定义。但 Deligne 的局部常数 $\varepsilon(V,\psi,dx)$（本小节记为 $\varepsilon_D$，而不只写 $\varepsilon$）与 Langlands 的 $\varepsilon(V,\psi)$（此处记为 $\varepsilon_L$）略有不同。关系为
+\begin{equation}
+ \varepsilon_L(V,\psi)=\varepsilon_D(V\omega_{1/2},\psi,dx_\psi),\tag{3.6.1}
+\end{equation}
+其中 $dx_\psi$ 是关于 $\psi$ 自对偶（self-dual）的加法测度。反过来，
+\begin{equation}
+ \varepsilon_D(V,\psi,dx)=(dx/dx_\psi)^{\dim V}\varepsilon_L(V\omega_{-1/2},\psi).\tag{3.6.2}
+\end{equation}
+非阿基米德情形，测度比 $dx/dx_\psi$ 为 $q^{-n(\psi)/2}\int_{\mathfrak o}dx$。此外，在该情形若 $V$ 对应于 $F^*$ 的拟特征 $\chi$，则
+\begin{equation}
+ \varepsilon_L(\chi,\psi)=\chi(c)
+ \frac{\int_{\mathfrak o^*}\chi^{-1}(u)\psi(u/c)\,du}
+ {|\int_{\mathfrak o^*}\chi^{-1}(u)\psi(u/c)\,du|},\tag{3.6.3}
+\end{equation}
+其中 $c$ 如 (3.2.6)，是 $F^*$ 中赋值为 $a(\chi)+n(\psi)$ 的元素。
+Langlands 令
+\begin{equation}
+ \varepsilon_L(s,V,\psi)\overset{\mathrm{def}}=
+ \varepsilon_L(V\omega_{s-(1/2)},\psi)=\varepsilon_D(V\omega_s,\psi,dx_\psi).\tag{3.6.4}
+\end{equation}
+于是整体函数方程 (3.5.4) 中的“常数”由 $\varepsilon(V,s)=\prod_v\varepsilon_L(s,V_v,\psi_v)$ 给出，其中 $\psi$ 为 $\A/F$ 的任意非平凡特征；因为若每个 $dx_v$ 关于 $\psi_v$ 在 $F_v$ 上自对偶，则 $dx=\prod_v dx_v$ 关于 $\psi$ 在 $\A$ 上自对偶，因而就是 $\A$ 上的 Tamagawa 测度。
+
+以非分歧拟特征作扭曲时，$\varepsilon_L$ 的行为为
+\begin{equation}
+ \varepsilon_L(V\omega_s,\psi)=\varepsilon_L(V,\psi)f(V)^{-s}\delta(\psi)^{-s\dim V},\tag{3.6.5}
+\end{equation}
+与 (3.4.5) 相同；但它对 $\psi$ 的依赖为
+\begin{equation}
+ \varepsilon_L(V,\psi_a)=(\det V)(a)\varepsilon_L(V,\psi),\tag{3.6.6}
+\end{equation}
+不同于 (3.4.4)。若 $V^*$ 是 $V$ 的逆反表示（contragredient），则
+\begin{equation}
+ \varepsilon_L(V,\psi)\varepsilon_L(V^*,\psi^{-1})=1.\tag{3.6.7}
+\end{equation}
+故由 (3.6.6)，
+\begin{equation}
+ \varepsilon_L(V,\psi)\varepsilon_L(V^*,\psi)=(\det V)(-1),\tag{3.6.8}
+\end{equation}
+另一方面，
+\begin{equation}
+ |\varepsilon_L(V,\psi)|=1\qquad(V\text{ 为酉表示}).\tag{3.6.9}
+\end{equation}
+$\varepsilon_L$ 体系的优点是无需另行指定测度 $dx$，但也有如下缺点：非阿基米德情形，若 $\sigma$ 是 $\C$ 的一个不连续自同构，则 $V^\sigma$ 仍为 $W_F$ 的表示，$\psi^\sigma$ 仍为加性特征，但 $\varepsilon_L(V^\sigma,\psi^\sigma)$ 一般不等于 $\varepsilon_L(V,\psi)^\sigma$（$\varepsilon_L(0,V^\sigma,\psi^\sigma)$ 也不等于 $\varepsilon_L(0,V,\psi)^\sigma$）。问题在于，(3.6.3) 中的绝对值未必被 $\sigma$ 保持，且 (3.6.1) 中的自对偶测度 $dx_\psi$ 可能涉及 $\sqrt p$，因而也未必被 $\sigma$ 保持。若希望省去测度参数 $dx$，一种更合适的选择是定义
+\begin{equation}
+ \varepsilon_1(V,\psi)=\varepsilon_D(V,\psi,dx_1),\tag{3.6.10}
+\end{equation}
+其中非阿基米德情形 $dx_1$ 是使 $\mathfrak o$ 的测度为 $1$ 的测度，阿基米德情形则为 (3.2.4)、(3.2.5) 所描述的测度。此约定有一个小缺点：整体函数方程中的 $\varepsilon(V)$ 不等于各局部 $\varepsilon_1(V_v,\psi_v)$ 的乘积，而是该乘积的 $a^{-1}$ 倍，其中数域情形 $a$ 为判别式（discriminant）的平方根，函数域情形 $a=q^{g-1}$，$g$ 为亏格（genus），$q$ 为常数域的元素个数。\footnote{\textbf{译者注（本次校订）：}前句的测度修正因子应为 $a^{-\dim V}$，而不是一般写作 $a^{-1}$。由 (3.4.3)，将测度乘以一个标量会使局部常数乘以该标量的 $\dim V$ 次幂；一维表示时才得到所写的 $a^{-1}$。}但 $\varepsilon_1(V,\psi)$ 的优点是，非阿基米德情形对于 $\C$ 的所有自同构 $\sigma$，确有 $\varepsilon_1(V^\sigma,\psi^\sigma)=\varepsilon_1(V,\psi)^\sigma$。这由唯一性 (2.3.3) 及公式
+\begin{equation}
+ \varepsilon_1(\chi,\psi)=\chi(c)q^{n(\psi)}
+ \sum_{u\in\mathfrak o^*\bmod\pi^{a(\chi)}}\chi(u)\left(\frac uc\right)\tag{3.6.11}
+\end{equation}
+显然可见。\footnote{译注：此式依所提供扫描本转写。扫描本的求和项印为 $\chi(u)(u/c)$，未见 $\psi$ 或逆特征的上标；该处疑有原书印刷讹误，未擅自更改。\par\textbf{本次校订补充：}由 (3.2.6.2) 换元 $x=u/c$ 并按模 $\pi^{a(\chi)}$ 的单位类分组，可确定求和项应为 $\chi^{-1}(u)\psi(u/c)$。因此，分歧情形的正确式子为 $\varepsilon_1(\chi,\psi)=\chi(c)q^{n(\psi)}\sum_u\chi^{-1}(u)\psi(u/c)$；非分歧情形由 (3.2.6.1) 直接给出。}
+该式来自 (3.2.6.1)、(3.2.6.2)，其中也解释了所用记号。因此在非阿基米德情形，若 $V$、$\psi$ 定义在任意特征为 $0$ 的域 $E$ 上（$I$ 的某个开子群在 $V$ 上平凡作用，$\psi$ 在某个 $\pi^n\mathfrak o$ 上平凡），便可唯一定义 $\varepsilon_1(V,\psi)\in E^*$，使它对任意同态 $\alpha:E\to E'$ 满足 $\varepsilon_1(V^\alpha,\psi^\alpha)=\varepsilon_1(V,\psi)^\alpha$，并在 $E=\C$ 时与 (3.6.10) 给出的旧 $\varepsilon_1$ 一致。如此定义后，对于每个特征为 $0$ 的系数域 $E$，$\varepsilon_1(V_E,\psi\circ\Tr_{E/F})$ 都在零次与诱导相容（见 (2.3.2)）；\footnote{\textbf{译者注（本次校订）：}此处的 $E$ 同时被用作系数域与局部基域的扩张，记号发生混淆。准确的说法是：固定特征为 $0$ 的系数域 $E$，对局部域的有限可分扩张 $K/F$ 及 $W_K$ 的 $E$ 系数表示 $V_K$，使用 $\varepsilon_1(V_K,\psi\circ\operatorname{Tr}_{K/F})$；这些量满足零次诱导相容性。}若 $V$ 对应拟特征 $\chi:F^*\to E^*$，则 $\varepsilon_1(V,\psi)$ 由 (3.6.11) 给出。
+
+撰写这些札记时，我曾想只用 $\varepsilon_1(V,\psi)$ 代替 $\varepsilon_D(V,\psi,dx)$，以简化表述，但最终没有这样做，原因是：(1) $\varepsilon_D$ 体系无需额外选取，具有最大的通用性和灵活性；$\varepsilon_L$ 或 $\varepsilon_1$ 等其他体系都可立即作为 $\varepsilon_D$ 的特例描述；(2) $\varepsilon$ 对 $dx$ 的依赖表明了它“为何”仅在零次与诱导相容；(3) 若局部域 $F$ 为非阿基米德域，一旦定义了 $F$ 上取值于 $E$ 的 Haar 测度（参见 [D3, (6.1)]），$\varepsilon_D$ 体系就像 $\varepsilon_1$ 一样，适用于任意特征为 $0$ 的域 $E$。
+
+\origsection{4}{Weil--Deligne 群、lambda 进表示与动机的 L 函数（The Weil--Deligne group, lambda-adic representations, L-functions of motives）}
+第3节讨论的表示只是这一理论的起点。Galois 型表示是系数在 $\C$ 中的零维有效动机（effective motives）；Deligne 在本论文集的文章 [D6, §6] 中称之为 Artin 动机（Artin motives）。关于动机的概念，参见 [D1]、[D6]；这里主要说明如何为任意次数的动机构造 $L$ 函数与 $\varepsilon$ 函数。只有极特殊的非零次动机才对应第3节考虑的 $W_F$ 表示，即 $A_0$ 型动机：它们在某个有限扩张 $E/F$ 后，对应于 $E$ 上若干 $A_0$ 型 Hecke 特征的直和。（Langlands 在本论文集 [L3] 中为它们构造了一个“动机 Galois 群”（motivic Galois group）的候选者。）不属于此型的最简单动机来自没有复乘（complex multiplication）的椭圆曲线（elliptic curves）；其 $L$ 函数即“Hasse--Weil zeta 函数”，无法表示为 Hecke $L$ 函数。
+
+Deligne [D3]、[D6] 为动机构造 $L$ 函数的方法，可概括为下图。这里 $F$ 为整体域，$v$ 为 $F$ 的一个位，$E$ 为 $\Q$ 的有限次扩张，$\lambda$ 遍历剩余特征与 $\operatorname{char}(F)$ 互素的 $E$ 的有限位，$\sigma$ 为 $E$ 到 $\C$ 的嵌入。
+\begin{center}
+\begin{tikzcd}[column sep=large,row sep=large]
+ \substack{F\text{ 上的动机 }M\\\text{带有 }E\text{ 的乘法作用}}
+ \arrow[r,Rightarrow,"l\text{ 进上同调}"]\arrow[d,Rightarrow,"\text{基域扩张}"']&
+ \substack{G_F\text{ 的 }\lambda\text{ 进表示系}\\(H_\lambda(M))}\arrow[d,Rightarrow,"\text{限制}"]\\
+ \substack{F_v\text{ 上的动机 }M_v\\\text{带有 }E\text{ 的乘法作用}}\arrow[r,Rightarrow]\arrow[d,Rightarrow,"\substack{v\text{ 为阿基米德位}\\\text{Hodge 理论，见 (4.4)}}"']&
+ \substack{G_{F_v}\text{ 的 }\lambda\text{ 进表示系}\\(H_\lambda(M_v))}\arrow[d,Rightarrow,"\substack{v\text{ 为非阿基米德位}\\\text{见 (4.2)}}"]\\
+ \substack{F_v\text{ 上的 Hodge 结构}\\\operatorname{Hdg}(M_v)\text{，带有 }E\text{ 的乘法作用}}\arrow[d,Rightarrow,"\text{见 (4.4)}"']&
+ \substack{\C\text{ 上 Weil--Deligne 群 }W'_{F_v}\\\text{的表示等价类 }V(M_{v,\sigma})\\\text{在 }\Aut(\C/E)\text{ 下不变}}\arrow[dd,Rightarrow,"\text{见 (4.1)}"]\\
+ \substack{\C\text{ 上 Weil 群 }W_{F_v}\\\text{的表示等价类 }V(M_{v,\sigma})}\arrow[d,Rightarrow,"\text{见 (3.3)、(3.4)}"']&\\
+ \substack{\text{阿基米德位 }v\text{ 处的}\\L\text{（即 }\Gamma\text{）因子与 }\varepsilon\text{ 因子}}&
+ \substack{\text{非阿基米德位 }v\text{ 处的}\\L\text{ 因子与 }\varepsilon\text{ 因子}}
+\end{tikzcd}
+\end{center}
+下文讨论此图所示的若干步骤和概念。先从 Weil--Deligne 群开始。它是 $\Q$ 上的群概形（group scheme），但本节所需的内容，即它在特征为 $0$ 的域上的点与表示，可以直接描述。
+
+\origsubsection{4.1}{Weil--Deligne 群及其表示（The Weil--Deligne group and its representations）}
+设 $F$ 为非阿基米德局部域，$\overline F$、$G_F=\Gal(\overline F/F)$、$W_F$（Weil 群）及 $I$（惯性群）含义如常。对 $w\in W_F$，如 (1.4.6)，用 $\lVert w\rVert$ 表示与 $w$ 在剩余域上的作用对应的 $q$ 的幂。因此，$w\in I$ 时 $\lVert w\rVert=1$，几何 Frobenius 元素（geometric Frobenius element）$\Phi$ 则满足 $\lVert\Phi\rVert=q^{-1}$。如下将 $W_F$ 视为 $\Q$ 上的群概形：对 $I$ 的每个开正规子群 $J$，把 $W_F/J$ 视为“离散”概形，并令 $W_F=\varprojlim(W_F/J)$，极限遍历所有 $J$。换言之，
+\[
+ W_F=\coprod_{n\in\Z}\Phi^n I=\coprod_{n\in\Z}\Spec A_n,
+\]
+其中 $A_n$ 为 $\Phi^n I$ 上取值于 $\Q$ 的局部常值函数环。
+
+\begin{originaltheorem}{定义 4.1.1（Definition 4.1.1；[D3, (8.3.6)]）}
+Weil--Deligne 群 $W'_F$ 是 $\Q$ 上的群概形，为 $W_F$ 与 $\Ga$ 的半直积，其中 $W_F$ 按规则 $wxw^{-1}=\lVert w\rVert x$ 作用于 $\Ga$。
+\end{originaltheorem}
+设 $E$ 为特征为 $0$ 的域。$W'_F$ 的 $E$ 值点群 $W'_F(E)$ 就是 $E\times W_F$，其乘法为
+\[
+ (a_1,w_1)(a_2,w_2)=(a_1+\lVert w_1\rVert a_2,w_1w_2)
+ \quad(a_1,a_2\in E,\ w_1,w_2\in W_F).
+\]
+设 $V$ 为 $E$ 上的有限维向量空间。$E$ 上的群概形同态
+\[
+ \rho':W'_F\times_{\Q}E\longrightarrow\GL(V)
+\]
+确定下述 (4.1.2) 中的二元组 $(\rho,N)$，也由其确定，且在点上满足 $\rho'((a,w))=\exp(aN)\rho(w)$。这给出了以下定义。
+
+\begin{originaltheorem}{定义 4.1.2（Definition 4.1.2；[D3, (8.4.1)]）}
+设 $E$ 为特征为 $0$ 的域。$W'_F$ 在 $E$ 上的表示为二元组 $\rho'=(\rho,N)$，具体包含以下数据：
+
+(a) $E$ 上的有限维向量空间 $V$，以及核包含 $I$ 的某个开子群的同态 $\rho:W_F\to\GL(V)$，即对 $\GL(V)$ 的离散拓扑连续的同态；
+
+(b) $V$ 的幂零自同态（nilpotent endomorphism）$N$，满足对于 $w\in W$，有 $\rho(w)N\rho(w)^{-1}=\lVert w\rVert N$。
+\end{originaltheorem}
+
+\paragraph*{(4.1.3) $\Phi$ 半单性（$\Phi$-semisimplicity）。}
+设 $\rho'=(\rho,N)$ 为 $W'_F$ 在 $E$ 上的表示。由 $\lVert w\rVert=q^{-\nu(w)}$ 定义 $\nu:W_F\to\Z$。存在唯一的 $V$ 的幺幂自同构（unipotent automorphism）$u$，使 $u$ 与 $N$ 及 $\rho(W_F)$ 交换，且对所有 $a\in E$ 和 $w\in W_F-I$，$\exp(aN)\rho(w)u^{-\nu(w)}$ 是 $V$ 的半单自同构 [D3, (8.5)]。称 $\rho'_{\mathrm{ss}}=(\rho u^{-\nu},N)$ 为 $\rho'$ 的 $\Phi$ 半单化（$\Phi$-semisimplification）；称 $\rho'$ 为 $\Phi$ 半单，当且仅当 $\rho'=\rho'_{\mathrm{ss}}$，即 $u=1$，亦即 Frobenius 元素半单地作用。其充要条件为 $W_F$ 的表示 $\rho$ 在通常意义下半单，因为 $\rho(\Phi)$ 在 $\rho(W_F)$ 中生成一个有限指数子群，而在特征 $0$，群的表示半单当且仅当它对一个有限指数子群的限制半单。Borel 在本论文集的文章中讨论容许态射（admissible morphisms）$W'_F\to{}^LG$；当 $G=\GL_n$ 时，它们正是此处 $\Phi$ 半单的 $(\rho,N)$。
+
+\paragraph*{(4.1.4) 例。}
+$\operatorname{Sp}(n)$ 为 $W'_F$ 在 $\Q$ 上的如下表示 $(\rho,N)$：
+\[
+\begin{gathered}
+ V=\Q^n=\Q e_0+\Q e_1+\cdots+\Q e_{n-1},\\
+ \rho(w)e_i=\omega_i(w)e_i\quad(=\lVert w\rVert^i e_i),\\
+ Ne_i=e_{i+1}\quad(0\leq i<n-1),\qquad Ne_{n-1}=0.
+\end{gathered}
+\]
+\paragraph*{(4.1.5)} 给定任意 $(\rho,N)$，$\ker N$ 在 $W_F$ 下稳定。因此 $(\rho,N)$ 不可约，当且仅当 $N=0$ 且 $\rho$ 不可约。不难证明，$W'_F$ 的 $\Phi$ 半单不可分解表示（indecomposable representations）恰好形如 $\rho'\otimes\operatorname{Sp}(n)$，其中 $\rho'$ 不可约。（张量积定义为 $(\rho,N)\otimes(\rho_1,N_1)=(\rho\otimes\rho_1,N\otimes1+1\otimes N_1)$。）
+
+\paragraph*{(4.1.6)} 设 $(\rho,N,V)$ 为 $W'_F$ 在 $E$ 上的表示。令 $V_N^I=(\ker N)^I$，并定义局部 $L$ 因子（local $L$-factor）、导子及局部常数为
+\[
+\begin{gathered}
+ Z(V,t)=\det(1-\Phi t\mid V_N^I)^{-1},\qquad
+ L(V,s)=Z(V,q^{-s})\quad(E\subset\C),\\
+ a(V)=a(\rho)+\dim V^I-\dim V_N^I,\\
+ \varepsilon(V)=\varepsilon(\rho)\det(-\Phi\mid V^I/V_N^I),\\
+ \varepsilon(V,t)=\varepsilon(V)t^{a(V)}.
+\end{gathered}
+\]
+这里关于 $\varepsilon$，通常的 $\psi$ 与 $dx$ 已默认为给定，只是在记号中省略。
+
+将 $V$ 换成其 $\Phi$ 半单化不会改变这些量；但这些量关于 $V$ 一般不满足可加性，因为取 $V_N$ 并不保持正合列。若 $N=0$，它们与先前定义的量相同。\footnote{\textbf{译者注（本次校订）：}若将这里的 $\varepsilon(V,t)$ 与第3节按 $\omega_s$ 扭转得到的局部常数比较，还须计入加性特征的导子。当 $t=q^{-s}$ 时，扭转给出的幂应为 $t^{a(V)+n(\psi)\dim V}$；所列的 $t^{a(V)}$ 与之相同，需要 $n(\psi)=0$。这一点直接来自 (3.4.5)，对 Weil--Deligne 表示再结合本段的行列式因子即可。}
+
+引入 Weil--Deligne 群的主要原因之一，是要将局部类域论推广为以下形式。
+\begin{originaltheorem}{猜想 4.1.7（Conjecture 4.1.7）}
+设 $F$ 为非阿基米德局部域，$n\geq1$ 为整数。$W'_F$ 的 $n$ 次 $\Phi$ 半单表示的同构类，与 $\GL(n,F)$ 的不可约容许表示（irreducible admissible representations）的同构类之间存在自然双射（事实上不止一个）。
+\end{originaltheorem}
+$n=1$ 时就是局部类域论。$n=2$ 的情形在 [D2, (3.2)] 中有详细讨论。在该猜想中，对任意 $n$，$W'_F$ 的不可约表示（即 $W_F$ 的不可约表示）应对应 $\GL(n,F)$ 的尖点表示（cuspidal representations）。据作者所知，Bernstein 和 Zelevinsky 已证明：$\GL(n,F)$ 的任意容许表示由尖点表示构成的方式，与 $W'_F$ 的任意 $\Phi$ 半单表示由不可约表示构成的方式遵循相同模式。因此，主要问题已归结为不可约表示与尖点表示之间的对应。
+
+更一般的猜想用任意约化群（reductive group）$G$ 代替 $\GL(n)$，把 $G(F)$ 的容许表示与 $W'_F$ 到 $G$ 的“Langlands 对偶”（Langlands dual）的同态联系起来（见本论文集中 Borel 的文章）。这个更一般的猜想，就是“Langlands 哲学”（Langlands' philosophy）的非阿基米德局部情形。
+
+\origsubsection{4.2}{lambda 进表示（lambda-adic representations）}
+现设 $l$ 为不同于 $F$ 的剩余特征 $p$ 的素数，取非零同态 $t_l:I_F\to\Q_l$。（这样的 $t_l$ 存在且在非零常数倍意义下唯一，因为野分歧群 $P$ 是 pro-$p$ 群，而商群 $I/P$ 同构于直积 $\prod_{l\neq p}\Z_l$。）有
+\[
+ t_l(w\sigma w^{-1})=\lVert w\rVert t_l(\sigma)\qquad(\sigma\in I,\ w\in W),
+\]
+因为以 $w$ 共轭在 $I/P$ 上诱导取 $\lVert w\rVert$ 次幂。令 $\Phi$ 为一个逆 Frobenius 元素（见 (4.1)）。设 $E_\lambda$ 为 $\Q_l$ 的有限扩张。$W_F$ 的一个 $\lambda$ 进表示（$\lambda$-adic representation）是 $E_\lambda$ 上的有限维向量空间 $V_\lambda$ 及拓扑群同态 $\rho_\lambda:W_F\to\GL_{E_\lambda}(V_\lambda)$，其中 $\GL_{E_\lambda}(V_\lambda)$ 具有 $\lambda$ 进拓扑（即赋值给出的拓扑）。
+
+\begin{originaltheorem}{定理 4.2.1（Theorem 4.2.1；Deligne [D3, §8]）}
+关系 $V_\lambda=V$ 及
+\[
+ \rho_\lambda(\Phi^n\sigma)=\rho(\Phi^n\sigma)\exp(t_l(\sigma)N),
+ \qquad\sigma\in I,\ n\in\Z,
+\]
+在 $W_F$ 的 $\lambda$ 进表示 $(\rho_\lambda,V_\lambda)$ 的集合，与 $W'_F$ 在 $E_\lambda$ 上的表示 $(\rho,N,V)$ 的集合之间建立双射。相应的同构类之间的双射与 $t_l$ 和 $\Phi$ 的选择无关。
+\end{originaltheorem}
+为证明每个 $\rho_\lambda$ 均有此形式，需要以下结论。
+\begin{originaltheorem}{推论 4.2.2（Corollary 4.2.2；Grothendieck）}
+设 $(\rho_\lambda,V_\lambda)$ 为 $W_F$ 的 $\lambda$ 进表示。存在 $V_\lambda$ 的幂零自同态 $N$，使对 $I$ 的某个开子群中的 $\sigma$，有 $\rho_\lambda(\sigma)=\exp(t_l(\sigma)N)$。
+\end{originaltheorem}
+该推论的证明见 [ST] 的附录。下面概述其思路。因 $I$ 紧，$\rho_\lambda(I)$ 保持 $V_\lambda$ 中的一个“格”（lattice）$L$。将 $F$ 换成有限扩张后，可设 $\rho_\lambda(I)$ 模 $l^2$ 固定 $L$。于是 $\rho_\lambda(I)$ 是 pro-$l$ 群，因 $\ker t_l$ 的阶与 $l$ 互素，它是 $t_l(I)$ 的同态像。取 $c\in\Q_l$，使 $ct_l(I)=\Z_l$。于是存在模 $l^2$ 固定 $L$ 的 $\alpha\in\GL(V_\lambda)$，使对所有 $\sigma\in I$ 有
+\[
+ \rho_\lambda(\sigma)=\alpha^{ct_l(\sigma)}=\exp(t_l(\sigma)N),
+\]
+其中 $N=c\log\alpha$。以 $\rho_\lambda(\Phi)$ 共轭，得 $\rho_\lambda(\Phi)N\rho_\lambda(\Phi)^{-1}=q^{-1}N$。因此 $N$ 的特征值集合在乘 $q^{-1}$ 下稳定。特征为 $0$ 时 $q$ 不是单位根（root of unity），故 $N$ 唯一的特征值为零，即 $N$ 幂零。
+
+\begin{originaltheorem}{推论 4.2.3（Corollary 4.2.3）}
+若 $V_\lambda$ 为 $W_F$ 的半单 $\lambda$ 进表示，则 $I$ 的某个开子群在 $V_\lambda$ 上平凡作用，故可将 $V_\lambda$ 视为 $W_F$ 的“通常”表示。
+\end{originaltheorem}
+对任意 $V_\lambda$，因 $\rho_\lambda(w)N\rho_\lambda(w)^{-1}=\lVert w\rVert N$，$N$ 的核在 $W_F$ 下稳定。因此若 $V_\lambda$ 不可约，则 $N=0$，断言由 (4.2.2) 得到。半单的 $V_\lambda$ 是不可约子表示的直和。
+
+\paragraph*{(4.2.4)} 由 (4.2.3)，若 $V_\lambda$ 半单，则 $\varepsilon(V_\lambda)$、$a(V_\lambda)$ 有意义。对任意 $V_\lambda$，若 $(\rho_\lambda,V_\lambda)$ 与 $(\rho,N,V)$ 如 (4.2.1) 对应，则把附加于 $V_\lambda$ 的 $L$ 因子与 $\varepsilon$ 因子定义为附加于 $V$ 的相应因子。它们可直接用 $V_\lambda$ 表示如下：
+\[
+\begin{gathered}
+ Z(V,t)=\det(1-\Phi\mid V_\lambda^I)=Z(V_\lambda,t),\\
+ a(V)=a(V_\lambda^{\mathrm{ss}})+\dim(V_\lambda^{\mathrm{ss}})^I-\dim V_\lambda=a(V_\lambda),\\
+ \varepsilon(V)=\varepsilon(V_\lambda^{\mathrm{ss}})
+ \frac{\det(-\Phi\mid(V_\lambda^{\mathrm{ss}})^I)}{\det(-\Phi\mid V_\lambda^I)}
+ =\varepsilon(V_\lambda),\\
+ \varepsilon(V,t)=\varepsilon(V_\lambda)t^{a(V_\lambda)}=\varepsilon(V_\lambda,t),
+\end{gathered}
+\]
+其中 $V_\lambda^{\mathrm{ss}}$ 是 $V_\lambda$ 在通常意义下的半单化。\footnote{译注：本组公式按扫描本保留。第一式中的 $t$、逆幂，以及第二式末项是否应有限制到惯性不变量的上标，均与前述 (4.1.6) 的定义有疑点，宜结合原书勘误处理。\par\textbf{本次校订补充：}由 (4.1.6) 及 $V_N^I=V_\lambda^I$，第一式应为 $Z(V,t)=\det(1-\Phi t\mid V_\lambda^I)^{-1}$；第二式末项应为 $-\dim V_\lambda^I$。若不取惯性不变量，后式甚至会在惯性作用非平凡而幺幂的表示上给出错误的导子。}
+可仿照 $V$ 的 $\Phi$ 半单化 (4.1.3)，定义 $V_\lambda$ 的“$\Phi$ 半单化”。将 $V_\lambda$ 换成其 $\Phi$ 半单化，不改变右侧各量；但因 $V_\lambda^I$ 不可加，它们关于 $V_\lambda$ 不可加。
+
+\paragraph*{(4.2.4) 动机（Motives）。}
+现设 $E$ 为 $\Q$ 的有限扩张。设 $M$ 为定义在非阿基米德局部域 $F$ 上、带有 $E$ 乘法作用的动机（[D1]、[D6]），$n$ 为 $M$ 的秩（rank）。附加于 $M$ 的有各个 $l\neq\operatorname{char}(F)$ 对应的 $l$ 进表示 $H_l(M)$：它是 $\Q_l$ 上的 $n$ 维向量空间，带有 $G_F$ 的连续作用。域 $E$ 作用于这些空间，对每个 $l$ 有分解 $H_l(M)=\bigoplus_{\lambda\mid l}H_\lambda(M)$，其中对 $E$ 中位于 $l$ 上方的每个 $\lambda$，令
+\[
+ H_\lambda(M)=E_\lambda\otimes_{E\otimes\Q_l}H_l(M).
+\]
+这是 $E_\lambda$ 上的 $m$ 维向量空间，其中 $m$ 为 $M$ 在 $E$ 上的秩，由 $n=m[E:\Q]$ 给出。
+
+对每个 $l\neq p$ 及 $l$ 上方的每个 $\lambda$，令 $H'_\lambda(M)$ 为通过 (4.2.1) 与 $H_\lambda(M)$ 对应的 $W'_F$ 在 $E_\lambda$ 上的表示。按照预期，动机 $M$ 的 $\lambda$ 进表示系 $H_\lambda(M)$ 应在 $E$ 上相容（compatible over $E$），意思是表示系 $H'_\lambda(M)$ 在以下朴素意义下于 $E$ 上相容：对不位于 $p$ 上方的 $E$ 的任意两个有限位 $\lambda,\mu$，以及每个交换图
+\[
+\begin{tikzcd}[column sep=large]
+ &E_\lambda\arrow[dr]&\\
+ E\arrow[ur]\arrow[dr]&&\C\\
+ &E_\mu\arrow[ur]&
+\end{tikzcd}
+\]
+$W'_F$ 在 $\C$ 上的两个 $m$ 维表示 $H'_\lambda(M)\otimes_{E_\lambda}\C$ 与 $H'_\mu(M)\otimes_{E_\mu}\C$ 同构（或至少具有同构的 $\Phi$ 半单化）。若如此，这些表示（的 $\Phi$ 半单化）的同构类仅依赖图中的嵌入 $E\subset\C$。
+
+把此同构类记为 $V(M_\sigma)$，其中 $\sigma$ 表示 $E$ 到 $\C$ 的嵌入，而 $M_\sigma=M\otimes_{E,\sigma}\C$ 是从原动机 $M$、$E$ 在它上面的作用及嵌入 $\sigma:E\to\C$ 得到的系数在 $\C$ 中、秩为 $m$ 的动机，参见 [D6, 2.1]。如 (4.1.6) 所述，可给 $V(M_\sigma)$ 附加局部量 $a,L,\varepsilon$，记为 $L(M_\sigma,s)$ 等。
+
+\origsubsection{4.3}{约化（Reduction）}
+设 $r\geq0$ 为整数，$X$ 为 $F$ 上的射影非奇异簇（projective nonsingular variety）。本小节只考虑由 $X$ 的 $r$ 次上同调给出的特殊动机 $M=H^r(X)$，并暂不考虑额外的系数域作用。目前可令 $F$ 为任意域。令 $\overline X=X\times_F\overline F$，即把标量从 $F$ 扩张到 $\overline F$ 所得的概形。对每个素数 $l\neq\operatorname{char}(F)$，有定义好的 $l$ 进平展上同调群（$l$-adic étale cohomology group）$H^r(\overline X_{\mathrm{et}},\Q_l)$，它由函子性给出 $G_F=\Gal(\overline F/F)$ 的一个 $l$ 进表示（$G_F$ 通过 $\overline F$ 作用于 $\overline X$）。用上一段的记号，此时 $E=\Q$，$\lambda=l$，$H_l(M)=H^r(\overline X_{\mathrm{et}},\Q_l)$。我不知道这些 $H_l(M)$ 的相容性目前已证明到什么程度（这里又假定 $F$ 为非阿基米德局部域）；但至少其 $\Phi$ 半单化的相容性，在下面这个极重要的情形已知。
+
+\paragraph*{(4.3.1) 好约化（Good reduction）。}
+令 $\mathfrak o$ 为 $F$ 的整数环，$k=\mathfrak o/\pi\mathfrak o$ 为剩余域。若存在 $\mathfrak o$ 上射影且光滑（smooth）的概形 $\mathfrak X$，使 $X=\mathfrak X\times_{\mathfrak o}F$，则称概形 $X$ 有好约化。选定这样的 $\mathfrak X$ 后，称 $\mathfrak X\times_{\mathfrak o}k$ 为 $X$ 的约化，记此约化为 $X_0$。令 $\overline X_0=X_0\times_k\overline k$，其中 $\overline k$ 为 $\overline F$ 的剩余域，基变换定理（base-change theorem）给出典范同构
+\begin{equation}
+ H_l(M)=H^r(\overline X,\Q_l)\simeq H^r(\overline X_0,\Q_l),\tag{*}
+\end{equation}
+与 Galois 群的作用相容。因此 $H_l(M)$ 非分歧，即被 $I$ 固定，其作为 $W_F$ 表示的结构由 $\Phi$ 的作用给出。令 $\varphi:X_0\to X_0$ 为 Frobenius 态射（Frobenius morphism），$\sigma:\overline k\to\overline k$ 为 Frobenius 自同构。复合映射 $\varphi\times\sigma$ 在 $\overline X_0=X_0\times\overline k$ 上固定各点，并在结构层（structure sheaf）上将 $f$ 映为 $f^q$。它在景（site）$(\overline X_0)_{\mathrm{et}}$ 上诱导一个与恒等态射典范同构的态射。因此 Frobenius 态射 $\varphi$ 在 $H^r(\overline X_0,\Q_l)$ 上的作用，与 $\sigma^{-1}$ 的作用相同，而后者正是在同构 (*) 下与我们的 $\Phi$ 对应的作用。这就是 Deligne 称 $\Phi$ 为几何 Frobenius 的原因。
+
+Deligne [D4] 已证明 Weil 猜想：$\varphi$ 在 $H^r(\overline X_0,\Q_l)$ 上作用的特征多项式（characteristic polynomial）系数在 $\Z$ 中，与 $l$ 无关，且其所有复根的绝对值均为 $q^{r/2}$。由对 $l$ 的独立性可知，在好约化情形，诸 $H_l(M)$ 的 $\Phi$ 半单化构成相容系；并且当 $r=1$ 时，已知 $H_l(M)$ 本身 $\Phi$ 半单。
+
+自然地，可定义：$F$ 上的动机 $M$ 有好约化，或称其非分歧，当且仅当 $H_l(M)=H_l(M)^I$，即 $V(M)=V(M)_N^I$。若 $M=H^1(A)$，其中 $A$ 为交换簇（abelian variety），则此条件等价于 $A$ 有好约化（[ST] 中的 Néron--Ogg--Shafarevich 判别准则）。
+
+类似地，称 $M$ 有潜在好约化（potential good reduction）当且仅当 $N=0$；称 $M$ 有半稳定约化（semistable reduction），若 $V(M)=V(M)^I$。显然，通过基域的有限扩张，总可使后一条件成立。
+
+\origsubsection{4.4}{F 为阿基米德域（F archimedean）}
+现令 $M,E,n,m$ 如 (4.2.4)，但把 $F$ 取为阿基米德域。若 $F$ 为实数域，令 $z:F\to\C$ 为其嵌入；若 $F$ 为复数域，令 $z$ 为它到 $\C$ 的两个同构之一。这样的 $z$ 给出 $\C$ 上的动机 $M_z$，它有一个“Betti 实现”（Betti realization）$H_B(M_z)$，为 $\Q$ 上 $n$ 维向量空间，其复化
+\[
+ H_B(M_z)\otimes\C=\bigoplus H^{pq}(M_z)
+\]
+具有双分次（bigrading），且映射 $1\otimes c$（$c$ 为复共轭）将 $H^{pq}$ 映到 $H^{qp}$。（例如，若如 (4.3) 有 $M=H^r(X)$，则 $H_B(M_z)=H^r(X_z^{\mathrm{an}},\Q)$，其中 $X_z^{\mathrm{an}}$ 为概形 $X\times_{F,z}\C$ 的底层复解析簇；此空间的复化 $H^r(X_z^{\mathrm{an}},\C)$ 由 Hodge 理论赋予双分次。）
+
+令 $\overline z=c\circ z:F\to\C$ 为与 $z$ 共轭的映射。通过结构转移（transport of structure），得到同构 $\tau:H_B(M_z)\to H_B(M_{\overline z})$，使 $\tau\otimes c$ 保持复化上的双分次；故 $\tau\otimes1$ 将 $H^{pq}(M_z)$ 映到 $H^{qp}(M_{\overline z})$。系数域 $E$ 作用于 $H_B(M_z)$，保持其复化上的双分次，且 $\tau$ 为 $E$-同态。令 $\sigma:E\to\C$。取
+\[
+ V_z(M_\sigma)=H_B(M_z)\otimes_{E,\sigma}\C,
+\]
+得到 $m$ 维双分次复向量空间，及将 $V_z^{pq}$ 映到 $V_{\overline z}^{qp}$ 的线性同构 $\tau\otimes1:V_z(M_\sigma)\to V_{\overline z}(M_\sigma)$。
+
+Weil 群 $W_F$ 在这些空间上有如下自然作用。
+
+\paragraph*{F 为复数域。}
+$z:F\xrightarrow{\sim}\C$ 为同构，$W_F=F^*$，$W_F$ 通过特征 $z^{-p}(\overline z)^{-q}$ 在 $V_z^{pq}$ 上作标量乘法。显然，$\tau\otimes1$ 是 $W_F$-等变的（equivariant），故两个表示 $V_z(M_\sigma)$ 与 $V_{\overline z}(M_\sigma)$ 同构。用 $V(M_\sigma)$ 表示它们的同构类。
+
+\paragraph*{F 为实数域。}
+$z=\overline z:F\to\C$ 为嵌入，$W_F=\C^*\cup j\C^*$。此时 $M_z=M_{\overline z}$，因此只有一个空间 $V_z(M_\sigma)=V_{\overline z}(M_\sigma)$，$\tau\otimes1$ 是其自同构。$W_F$ 在它上面的作用如下：
+\[
+\begin{aligned}
+ u\in\C^*&\text{ 在 }V_z^{pq}\text{ 上作标量乘法 }u^{-p}(\overline u)^{-q},\\
+ j&\text{ 在 }V_z^{pq}\text{ 上作用为 }i^{p+q}(\tau\otimes1).
+\end{aligned}
+\]
+同样，用 $V(M_\sigma)$ 表示此表示的等价类。
+
+由动机通过 Hodge 理论得到的表示受到很强的限制，因为其中的 $p,q$ 都是整数。
+
+最后，如第3节，将 $L(M_\sigma,s)$、$\varepsilon(M_\sigma,s)$ 定义为附加于表示 $V(M_\sigma)$ 的 $L$ 因子和 $\varepsilon$ 因子。它们的显式公式见 [D6, 5.3]。
+
+\origsubsection{4.5}{F 为整体域（F global）}
+设 $F$ 为整体域，$M$ 为定义在 $F$ 上、带有 $E$ 乘法作用的动机。对 $F$ 的每个位置 $v$，用 $M_v$ 表示 $M$ 对 $F_v$ 的限制。设 $\sigma:E\to\C$。乘积 $L(M_\sigma,s)=\prod_vL(M_{v,\sigma},s)$ 在一个右半平面收敛。猜想它在整个 $s$ 平面上亚纯，并满足函数方程
+\[
+ L(M_\sigma,s)=\varepsilon(M_\sigma,s)L(M_\sigma^*,1-s),
+\]
+其中 $M^*=\Hom(M,\Q)$，$\varepsilon(M_\sigma,s)=\prod_v\varepsilon(M_{v,\sigma},s)$。
+
+在函数域情形，Deligne 已证明该猜想。令 $q$ 为 $F$ 的常数域 $k$ 的元素个数。Grothendieck 证明：对 $G_F$ 的任意给定 $\lambda$ 进表示 $V$，若除有限个位置 $v$ 外均非分歧，则相应的 $L$ 函数 $L(V,s)=\prod_vL(V_v,s)$ 是 $q^{-s}$ 的有理函数（若 $V^{\overline G}=0$ 且 $V_{\overline G}=0$，则甚至是多项式，其中 $\overline G$ 为几何 Galois 群，即 $G_F\to G_k$ 的核），并满足形如 $L(V,s)=\varepsilon(V,s)L(V^*,1-s)$ 的函数方程，其中 $\varepsilon$ 是 $q^{-s}$ 的单项式，其次数为 $\sum_v[k(v):k]a(V_v)$。\footnote{\textbf{译者注（本次校订）：}这里漏掉了基曲线的 Euler 特征项。若该曲线的亏格为 $g$，则 $\varepsilon(V,s)$ 作为 $q^{-s}$ 的单项式，其指数为 $(2g-2)\dim V+\sum_v[k(v):k]a(V_v)$。例如在 $F=\mathbb F_q(T)$、$V=1$ 时，所有局部导子均为零，但函数方程给出 $\varepsilon(1,s)=q^{2s-1}$，相应指数为 $-2$。}后来 Deligne 证明：若对某数域 $E$ 的一个无限位集 $\mathscr L$，$V=V_{\lambda_0}$ 是 $G_F$ 的 $\lambda$ 进表示族 $(V_\lambda)_{\lambda\in\mathscr L}$ 中的一员，并且该族在以下弱意义下相容，则 Grothendieck 的 $\varepsilon(V,s)$ 等于局部 $\varepsilon(V_v,s)$ 的乘积：对每个 $\lambda,\mu\in\mathscr L$，存在 $F$ 的有限位集 $S$，使对 $v\notin S$，$V_\lambda$、$V_\mu$ 均在 $v$ 处非分歧，且 $\Phi_v$ 在它们上作用的特征多项式系数在 $E$ 中且彼此相等。Deligne 的方法是证明 Grothendieck 的 $\varepsilon$ 对所有 $\lambda\in\mathscr L$ 都模 $\lambda$ 同余于局部 $\varepsilon$ 之积，因而二者相等。由 (4.3)，来自 $l$ 进上同调，即来自动机的任意 $\lambda$ 进表示，均属于在上述意义下弱相容的一个表示系。
+
+当 $\dim V=2$ 时，由 Jacquet--Langlands（分别 Weil），Springer Lecture Notes 114（分别189），这些结果表明 $L(V,s)$ 来自 $\GL_2(\A_F)$ 的一个自守表示（分别其上的一个模形式）。另一方面，Drinfeld 最近证明 $\GL_2$ 的自守表示产生 $l$ 进表示系，其各成员作为来自一次 $l$ 进上同调，因而来自动机的表示之张量积的组成成分出现。因此，在函数域的 $\GL_2$ 情形，动机、相容的 $l$ 进表示系与自守表示之间的对应已得到相当充分的证明。
+
+此外，Zarhin [Z] 已证明函数域上的同源定理（isogeny theorem）：若整体函数域 $F$ 上的两个交换簇 $A,B$ 给出同构的 $l$ 进表示，则它们同源；更准确地说，
+\[
+ \Q_l\otimes\Hom_F(A,B)=\Hom_{G_F}(V_l(A),V_l(B)).
+\]
+相比之下，数域情形的进展要少得多。对于秩为 $2$ 的 Artin 动机，Langlands 用基变换理论迈出了第一步（见注 (3.5.5)）。对于 $\Q$ 上的椭圆曲线 $M$，甚至还不知道 $L(M,s)$ 是否在整个 $s$ 平面具有亚纯延拓，也不知道同源定理是否成立。关于尚待解决的问题和已有结果，详见 [S4]。
+
+\begin{thebibliography}{AT}
+\bibitem[A]{c21-A} E. Artin, \emph{Zur Theorie der L-Reihen mit allgemeinen Gruppencharakteren}, Abh. Math. Sem. Univ. Hamburg \textbf{8} (1930), 292--306（文集，第165--179页）.
+\bibitem[AT]{c21-AT} E. Artin and J. Tate, \emph{Class field theory}, Benjamin, New York, 1967.
+\bibitem[B]{c21-B} J. Buhler, \emph{Icosahedral Galois representations}, Ph.D. Thesis, Harvard Univ., January 1977.
+\bibitem[CF]{c21-CF} J. W. S. Cassels and A. Fröhlich, \emph{Algebraic number theory}, Academic Press, London, 1967.
+\bibitem[D1]{c21-D1} P. Deligne, \emph{Les constantes des équations fonctionnelles}, Séminaire Delange--Pisot--Poitou 1969/70, 19 bis.
+\bibitem[D2]{c21-D2} P. Deligne, \emph{Formes modulaires et représentations de GL(2)}, Antwerp II, Lecture Notes in Math., vol. 349, Springer-Verlag, 1973, pp. 55--106.
+\bibitem[D3]{c21-D3} P. Deligne, \emph{Les constantes des équations fonctionnelles des fonctions L}, Antwerp II, Lecture Notes in Math., vol. 349, Springer-Verlag, 1973, pp. 501--595.
+\bibitem[D4]{c21-D4} P. Deligne, \emph{La conjecture de Weil. I}, Inst. Hautes Études Sci. Publ. Math. \textbf{43} (1974), 273--307.
+\bibitem[D5]{c21-D5} P. Deligne, \emph{Les constantes locales de l'équation fonctionnelle de la fonction L d'Artin d'une représentation orthogonale}, Invent. Math. \textbf{35} (1976), 299--316.
+\bibitem[D6]{c21-D6} P. Deligne, \emph{Valeurs de fonctions L et périodes d'intégrales}, 本论文集第二册，第313--346页.
+\bibitem[DS]{c21-DS} P. Deligne and J.-P. Serre, \emph{Formes modulaires de poids 1}, Ann. Sci. École Norm. Sup. (4) \textbf{7} (1974), 507--530.
+\bibitem[K]{c21-K} H. Koch, \emph{Classification of the primitive representations of the Galois groups of local fields}, Invent. Math. \textbf{40} (1977), 195--216.
+\bibitem[L1]{c21-L1} R. P. Langlands, \emph{On Artin's L-functions}, Complex Analysis, Rice Univ. Studies No. 56, 1970, 23--28；另见油印札记 \emph{On the functional equation of Artin's L-functions}.
+\bibitem[L2]{c21-L2} R. P. Langlands, \emph{Modular forms and l-adic representations}, Lecture Notes in Math., vol. 349, Springer-Verlag, 1973, pp. 362--498.
+\bibitem[L3]{c21-L3} R. P. Langlands, \emph{Automorphic representations, Shimura varieties, and motives. Ein Märchen}, 本论文集第二册，第205--246页.
+\bibitem[S1]{c21-S1} J.-P. Serre, \emph{Corps locaux}, Hermann, Paris, 1962.
+\bibitem[S2]{c21-S2} J.-P. Serre, \emph{Facteurs locaux des fonctions zêta des variétés algébriques (Définitions et conjectures)}, Séminaire Delange--Pisot--Poitou, 1969/70, no. 19.
+\bibitem[S3]{c21-S3} J.-P. Serre, \emph{Modular forms of weight one and Galois representations}, Proc. Durham Sympos. on Algebraic Number Fields, Academic Press, London, 1977, pp. 193--267.
+\bibitem[S4]{c21-S4} J.-P. Serre, \emph{Représentations l-adiques}, Algebraic Number Theory, Papers for the Internat. Sympos., Kyoto 1976 (S. Iyanaga, Ed.), Japan Soc. for the Promotion of Science, Tokyo, 1977, pp. 177--193.
+\bibitem[ST]{c21-ST} J.-P. Serre and J. Tate, \emph{Good reduction of abelian varieties}, Ann. of Math. (2) \textbf{88} (1968), 492--517.
+\bibitem[T1]{c21-T1} J. Tate, \emph{Fourier analysis in number fields and Hecke's zeta functions}, Thesis, Princeton Univ., 1950（刊于 [CF]，第305--347页）.
+\bibitem[T2]{c21-T2} J. Tate, \emph{Local constants}, Proc. Durham Sympos. on Algebraic Number Fields, Academic Press, London, 1977.
+\bibitem[W1]{c21-W1} A. Weil, \emph{Sur la théorie du corps de classes}, J. Math. Soc. Japan \textbf{3} (1951), 1--35.
+\bibitem[W2]{c21-W2} A. Weil, \emph{Basic number theory}, Springer, New York, 1967.
+\bibitem[W3]{c21-W3} A. Weil, \emph{Sur les formules explicites de la théorie des nombres}, Izv. Akad. Nauk SSSR Ser. Mat. \textbf{36} (1972), 3--18.
+\bibitem[Z]{c21-Z} Ju. G. Zarhin, \emph{Endomorphisms of abelian varieties over fields of finite characteristic}, Izv. Akad. Nauk SSSR Ser. Mat. \textbf{39} (2) (1975) = Math USSR-Izv. \textbf{9} (1975), 255--260.
+\end{thebibliography}
+\begin{flushright}Harvard 大学（Harvard University）\end{flushright}

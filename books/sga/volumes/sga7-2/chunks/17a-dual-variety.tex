@@ -1,0 +1,524 @@
+\SourcePage{222}
+\SGAchapter{XVII}{Lefschetz 铅笔：存在定理}{Pinceaux de Lefschetz : théorème d'existence}
+\begin{center}N. M. Katz\end{center}
+\SGAsection{0}{引言}
+本讲在口头讨论班中原本排在讨论 \Term{picard-lefschetz-formula}{Picard--Lefschetz 公式}的第 XIV、XV 讲之前。我们将在这里引入\Term{projective}{射影}\Term{smooth}{光滑}\Term{scheme}{概形}的\Term{hyperplane-section}{超平面截面}所成的“\Term{lefschetz-pencil}{Lefschetz 铅笔}”，并给出它们存在的条件；下一讲则依据已知的\Term{blow-up}{爆破}\Term{algebraic-variety}{簇}的\Term{cohomology}{上同调}结构，对它们作初等的\Term{cohomology}{上同调}研究。我们将要引入的关于\Term{lefschetz-pencil}{Lefschetz 铅笔}的某些假设往往成立，这一点将由第 XV 讲的 \Term{picard-lefschetz-formula}{Picard--Lefschetz 公式}\Term{pushout}{推出}；该公式不像本讲及下一讲的结果那样初等。
+
+本讲和下一讲的某些内容，将在别处以更\Term{generic}{一般}的\Term{form}{形式}叙述，例如允许\Term{generic}{一般}的\Term{base-scheme}{基概形}，或以\Term{quasi-projective}{拟射影}假设代替\Term{projective}{射影}假设，等等。特别是，\Term{hyperplane-section}{超平面截面}\Term{pencil}{铅笔}（尤其是\Term{lefschetz-pencil}{Lefschetz 铅笔}）的\Term{cohomology}{上同调}之前的研究将见于 EGA V，而\Term{blow-up}{爆破}\Term{scheme}{概形}的\Term{cohomology}{上同调}研究将见于
+\SourcePage{223}
+Jouanolou 的 SGA 5 第 VII 讲。读者在 EGA V 中还可找到以内蕴的\Term{commutative-diagram}{交换图}追逐，代替本讲撰稿人所偏爱的坐标计算的证明。
+
+我要感谢 P. Deligne 和 P. Griffiths 在本讲构思过程中给予的帮助。除非明确另作说明，本讲中 $k$ 始终表示一个\Term{algebraically-closed-field}{代数闭域}。
+
+\SGAsection{1}{二次奇点的回顾（参见第 VI 讲第 6 节）}
+\begin{SGAresult}{定义}{1.1}
+设 $Y$ 是纯\Term{dimension}{维数}为 $n$ 的 $k$-\Term{scheme}{概形}。若\Term{closed-point}{闭点} $y\in Y$ 满足以下条件，就称它为 $Y$ 的一个\Term{ordinary-quadratic-singularity}{普通二次奇点}：
+\begin{enumerate}
+\item[a)] $Y$ 中 $y$ 处的\Term{local-ring}{局部环}的\Term{completion}{完备化} $\widehat{\mathcal O}_{Y,y}$ \Term{isomorphism}{同构}于 $n=1+\dim_kY$ 个变量的\Term{formal-power-series}{形式幂级数}环被一个元素 $Q(T)$ 生成的\Term{ideal}{理想}所取的商
+\[
+k[[T_1,\ldots,T_n]]/(Q(T)).
+\]
+\item[b)] $Q$ 从二次项才开始；若 $n\geq2$，则 $Q(T)$ 的二次\Term{homogeneous-component}{齐次部分}的零点定义的 $\mathbb P^{n-1}$ 的\Term{subvariety}{子簇}在 $k$ 上\Term{smooth}{光滑}；若 $n=1$，则 $Q(T)$ 的二次\Term{homogeneous-component}{齐次部分}不为零。
+\end{enumerate}
+若 $k$ 的\Term{characteristic}{特征}不为二，或 $n$ 为偶数，则条件 b) \Term{equivalence}{等价}于下述条件：
+\SourcePage{224}
+\begin{enumerate}
+\item[b$'$)] $Q$ 从二次项才开始，而且 $Q$ 的\Term{hessian-matrix}{Hessian 矩阵}
+\[
+\left(\frac{\partial^2Q}{\partial T_i\partial T_j}(0)\right)_{1\leq i,j\leq n}
+\]
+\Term{invertible}{可逆}。
+\end{enumerate}
+\end{SGAresult}
+这可由\Term{smoothness}{光滑性}的 Jacobian 判别法看出。
+
+满足 b) 的级数 $Q$ 的二次\Term{homogeneous-component}{齐次部分} $Q_2$ 的“标准形”为
+\[
+\begin{cases}
+Q_2(T)=\displaystyle\sum_{i=1}^{[n/2]}T_{2i-1}T_{2i},&n\text{ 为偶数},\\[4pt]
+Q_2(T)=T_n^2+\displaystyle\sum_{i=1}^{[n/2]}T_{2i-1}T_{2i},&n\text{ 为奇数}.
+\end{cases}\tag{1.1.1}
+\]
+经过一个\Term{linear}{线性}变量代换便可得到此形，正如\Term{quadratic-form}{二次型}理论所表明的那样（Bourbaki，Alg. X）。
+
+\begin{SGAresult}{定义}{1.2}
+满足 a)、b) 的\Term{closed-point}{闭点} $y\in Y$ 称为\Term{nondegenerate-quadratic-singularity}{非退化二次奇点}。由于在\Term{characteristic}{特征}二且 $n$ 为奇数时，\Term{hessian-matrix}{Hessian 矩阵}的\Term{determinant}{行列式}恒为零，\Term{dimension}{维数} $n$ 中的\Term{nondegenerate-quadratic-singularity}{非退化二次奇点}只有在 $n$ 为偶数或 $k$ 的\Term{characteristic}{特征}不为二时才存在；在这些情形下，它们恰为\Term{ordinary-quadratic-singularity}{普通二次奇点}。
+\end{SGAresult}
+
+\SourcePage{225}
+\SGAsection{2}{Lefschetz 铅笔：结果的陈述}
+\begin{SGAresult}{定义}{2.1}
+以 $\mathbb P^r$ 表示 $k$ 上 $r$ 维的\Term{projective-space}{射影空间}，以 $\check{\mathbb P}^{,r}$ 表示 $\mathbb P^r$ 中\Term{hyperplane}{超平面}组成的\Term{dual-projective-space}{对偶射影空间}，以 $\operatorname{Gr}(1,\check{\mathbb P}^{,r})$ 表示 $\check{\mathbb P}^{,r}$ 中直线的\Term{algebraic-variety}{簇}。点 $D\in\operatorname{Gr}(1,\check{\mathbb P}^{,r})$ 称为 $\mathbb P^r$ 中的一个\Term{hyperplane-pencil}{超平面铅笔}。把 $D$ 看作 $\check{\mathbb P}^{,r}$ 中的一条直线时，我们略微滥用记号，写成 $D=\{H_t\}_{t\in D}$，其中 $H_t$ 是直线 $D$ 的各点所对应的 $\mathbb P^r$ 中的\Term{hyperplane}{超平面}。\Term{pencil}{铅笔}中任意两个不同成员的交 $H_0\cdot H_\infty$ 是 $\mathbb P^r$ 中\Term{codimension}{余维数}为二的\Term{linear-subvariety}{线性子簇}，称为 $D$ 的\Term{pencil-axis}{轴}。将 $D$ 的\Term{pencil-axis}{轴}看作 $\operatorname{Gr}(r-2,\mathbb P^r)$ 的一点，这里的后者是 $\mathbb P^r$ 中\Term{dimension}{维数}为 $r-2$ 的\Term{linear-subvariety}{线性子簇}的\Term{algebraic-variety}{簇}，则映射 $D\mapsto D\text{ 的轴}$ 正是熟知的\Term{orthogonality}{正交}对应\Term{isomorphism}{同构}
+\[
+\operatorname{Gr}(1,\check{\mathbb P}^{,r})\xrightarrow{\sim}\operatorname{Gr}(r-2,\mathbb P^r).
+\]
+\end{SGAresult}
+
+\begin{SGAresult}{定义}{2.2}
+设 $X$ 是\Term{proper}{固有}、\Term{smooth}{光滑}且\Term{irreducible}{不可约}的 $k$-\Term{scheme}{概形}，\Term{dimension}{维数} $n\geq1$，并给定一个\Term{embedding}{嵌入} $X\hookrightarrow\mathbb P^r$。若 $\mathbb P^r$ 中的\Term{hyperplane-pencil}{超平面铅笔} $D=\{H_t\}_{t\in D}$ 满足以下条件，就称它为相对于\Term{embedding}{嵌入} $X\hookrightarrow\mathbb P^r$ 的一个\Term{lefschetz-pencil}{Lefschetz 铅笔}：
+\begin{enumerate}
+\item[a)] $D$ 的\Term{pencil-axis}{轴}与 $X$ \Term{transverse-intersection}{横截相交}（EGA IV 17.13.7）；
+\item[b)] $D$ 有一个\Term{dense-open-subset}{稠密开子集} $U$，使得对每个 $t\in U$，\Term{hyperplane}{超平面} $H_t$ 都与 $X$ \Term{transverse-intersection}{横截相交}；
+\item[c)] 对于 $t_0\in D-U$，$H_{t_0}$ 除了一点外处处与 $X$ \Term{transverse-intersection}{横截相交}，
+\SourcePage{226}
+而这一点是 $X\cdot H_{t_0}$ 的一个\Term{ordinary-quadratic-singularity}{普通二次奇点}。
+\end{enumerate}
+\end{SGAresult}
+下文（3.2.1）将说明，\Term{lefschetz-pencil}{Lefschetz 铅笔}组成 $\operatorname{Gr}(1,\check{\mathbb P}^{,r})$ 的一个\Term{open-subset}{开子集}。
+
+\begin{SGAresult}{定义}{2.3}
+如果\Term{lefschetz-pencil}{Lefschetz 铅笔}组成 $\operatorname{Gr}(1,\check{\mathbb P}^{,r})$ 的一个\Term{dense-open-subset}{稠密开子集}，就称\Term{embedding}{嵌入} $X\hookrightarrow\mathbb P^r$ 是一个\Term{lefschetz-embedding}{Lefschetz 嵌入}\footnote{更准确地说，是在 $\operatorname{Gr}(1,\check{\mathbb P}^{,r})$ 的\Term{closed-point}{闭点}\Term{set}{集合}中。下文中我们也允许这种语言上的滥用。}。
+\end{SGAresult}
+
+\begin{SGAresult}{定义}{2.4}
+现在回顾给定\Term{embedding}{嵌入} $X\hookrightarrow\mathbb P^r$ 的\Term{multiple-of-embedding}{倍数}的概念。它是给定\Term{embedding}{嵌入} $X\hookrightarrow\mathbb P^r$ 与第 $d$ 个 Segre \Term{embedding}{嵌入}
+\[
+s_d:\mathbb P^r\hookrightarrow\mathbb P^{\binom{r+d}{d}-1}
+\]
+的复合。用 $\mathbb P^r$ 中的\Term{homogeneous-coordinates}{齐次坐标} $X_0,\ldots,X_r$ 表示，这个\Term{embedding}{嵌入}写成
+\[
+(X_0,\ldots,X_r)\xmapsto{s_d}(\ldots,X^W,\ldots),
+\]
+其中 $X^W=X_0^{W_0}\cdots X_r^{W_r}$ 遍历 $X_0,\ldots,X_r$ 的所有 $d$ 次\Term{monomial}{单项式}。注意，对于给定\Term{embedding}{嵌入}，所谓“$X$ 与一个 $d$ 次\Term{hypersurface}{超曲面}所截得的\Term{section}{截面}”\footnote{用英语可以更简便地说：hypersurface section of degree $d$。}，无非就是该\Term{embedding}{嵌入}的第 $d$ 个\Term{multiple-of-embedding}{倍数}的一个
+\SourcePage{227}
+“\Term{hyperplane-section}{超平面截面}”。
+\end{SGAresult}
+
+\begin{SGAresult}{\Term{theorem}{定理}}{2.5}
+设 $X$ 在 $k$ 上\Term{irreducible}{不可约}、\Term{proper}{固有}且\Term{smooth}{光滑}，\Term{dimension}{维数} $n\geq1$，并给定一个\Term{embedding}{嵌入} $i:X\hookrightarrow\mathbb P^r$。则：
+
+\textbf{2.5.1.} 对任意 $d\geq2$，$i$ 的第 $d$ 个\Term{multiple-of-embedding}{倍数}都是一个\Term{lefschetz-embedding}{Lefschetz 嵌入}。
+
+\textbf{2.5.2.} 若 $k$ 的\Term{characteristic}{特征}为零，则给定的\Term{embedding}{嵌入} $i$ 是一个\Term{lefschetz-embedding}{Lefschetz 嵌入}。
+\end{SGAresult}
+证明分成以下几个部分。
+
+\SGAsection{3}{对偶簇}
+\textbf{3.1.} 设 $I$ 是 $\mathbb P^r$ 中定义 $X$ 的\Term{ideal}{理想}。以 $N$ 表示\Term{conormal-sheaf}{余法层} $I/I^2$，这是 $X$ 上秩为 $r-n$ 的\Term{locally-free-sheaf}{局部自由层}；以 $\mathbb P(N)$ 表示 $X$ 上由 $\check N$ 中的直线构成的\Term{projective-bundle}{射影丛}。（若 $X=\mathbb P^r$，则 $\mathbb P(N)$ 为空。）由映射
+\[
+\mathbb P(I/I^2)_x\ni F\longmapsto
+\left(x,\text{方程为 }\sum_i\frac{\partial F}{\partial X_i}(x)T_i=0\text{ 的超平面}\right)
+\tag{3.1.1}
+\]
+给出的 $\mathbb P(N)\hookrightarrow X\times\check{\mathbb P}^{,r}$，把\Term{projective-bundle}{射影丛} $\mathbb P(N)$ 等同于由所有二元组 $(x,H)$ 构成的\Term{subvariety}{子簇}，其中 $H$ 是在 $x$ 处与 $X$ \Term{tangent}{相切}的\Term{hyperplane}{超平面}。这里 $F$ 表示 $I/I^2$ 的一个\Term{local-section}{局部截面}。定义
+\[
+\varphi:\mathbb P(N)\longrightarrow\check{\mathbb P}^{,r}\tag{3.1.2}
+\]
+为复合映射 $\mathbb P(N)\hookrightarrow X\times\check{\mathbb P}^{,r}\xrightarrow{\operatorname{pr}_2}\check{\mathbb P}^{,r}$。
+
+\SourcePage{228}
+\textbf{3.1.3.} 以 $\check X$ 表示 $\varphi$ 的像；它是所有不与 $X$ \Term{transverse-intersection}{横截相交}的\Term{hyperplane}{超平面}组成的\Term{set}{集合}，称为 $X$（经 $i$ \Term{embedding}{嵌入} $\mathbb P^r$）的\Term{dual-variety}{对偶簇}。
+
+\begin{SGAresult}{命题}{3.1.4}
+\Term{dual-variety}{对偶簇} $\check X$ 是\Term{irreducible}{不可约}且\Term{proper}{固有}的，\Term{dimension}{维数}不超过 $r-1$。
+\end{SGAresult}
+\begin{proof}
+它是 $\mathbb P(N)$ 经 $\varphi$ 的像；当 $X\ne\mathbb P^r$ 时，$\mathbb P(N)$ 本身\Term{irreducible}{不可约}，\Term{dimension}{维数}为 $r-1$；而当 $X=\mathbb P^r$ 时，它为空。
+\end{proof}
+
+\textbf{注记 3.1.5。} 可进一步说明 $\mathbb P(N)$ 的解释如下。设 $Y\subset X\times\check{\mathbb P}^{,r}$ 是“关联”\Term{subscheme}{子概形}，其在每个点 $H\in\check{\mathbb P}^{,r}(k)$ 处的\Term{fibre}{纤维}为 $X\cdot H$。显然 $Y$ \Term{smooth}{光滑}，\Term{dimension}{维数}为 $n+r-1$，因为它是 $X$ 上\Term{relative-dimension}{相对维数}为 $r-1$ 的\Term{projective-bundle}{射影丛}。因此 $Y\to\check{\mathbb P}^{,r}$ 使 $Y$ 成为虚\Term{relative-dimension}{相对维数}为 $(n+r-1)-r=n-1$ 的\Term{relative-complete-intersection}{相对完全交}。于是 \Term{jacobian-subscheme}{Jacobian 子概形} $J_{n-1}(Y/\check{\mathbb P}^{,r})$（第 VI 讲 5.2）正是 $\mathbb P(N)$。由于\Term{relative-complete-intersection}{相对完全交}的\Term{jacobian-subscheme}{Jacobian 子概形}的形成与任意\Term{base-change}{基变换}相容，可知对于 $\check{\mathbb P}^{,r}$ 中的每条直线 $D$，\Term{jacobian-subscheme}{Jacobian 子概形} $J_{n-1}(\widetilde X/D)$ 无非是 $\mathbb P(N)\times_{\check{\mathbb P}^{,r}}D$，其中 $\widetilde X=Y\times_{\check{\mathbb P}^{,r}}D$。
+
+\begin{SGAresult}{命题}{3.2}
+$\check X$ 中由满足下述条件的\Term{hyperplane}{超平面} $H$ 构成的\Term{subset}{子集} $B$ 是\Term{open-subset}{开子集}：$X\cdot H$ 有且只有一个\Term{singular-point}{奇点}，且该点是
+\SourcePage{229}
+\Term{ordinary-quadratic-singularity}{普通二次奇点}。
+\end{SGAresult}
+这是第 XV 讲 1.3.2 的一个特例，它以 R. Elkik 的“\Term{henselian-module}{Hensel 模}”理论（第 XV 讲 1.1.4）为依据。顺便说，如果只考虑\Term{nondegenerate-quadratic-singularity}{非退化二次奇点}（即 $\operatorname{char}(k)\ne2$，或 $n=\dim X$ 为偶数），则由下面的 3.3，此结论是显然的；3.3 的证明并不使用 3.2。
+
+\begin{SGAresult}{推论}{3.2.1}
+在 3.2 的假设下，以 $F$ 表示 $\check X$ 的\Term{closed-subset}{闭子集} $\check X-B$。则\Term{lefschetz-pencil}{Lefschetz 铅笔}组成 $\operatorname{Gr}(1,\check{\mathbb P}^{,r})$ 的一个\Term{open-subset}{开子集}，而且以下条件\Term{equivalence}{等价}：
+
+\textbf{3.2.2.} 给定\Term{embedding}{嵌入} $i:X\hookrightarrow\mathbb P^r$ 是一个\Term{lefschetz-embedding}{Lefschetz 嵌入}；
+
+\textbf{3.2.3.} 存在一个（相对于给定\Term{embedding}{嵌入}的）\Term{hyperplane}{超平面}的\Term{lefschetz-pencil}{Lefschetz 铅笔}；
+
+\textbf{3.2.4.} $F$ 在 $\check{\mathbb P}^{,r}$ 中的\Term{codimension}{余维数}至少为 $2$。
+\end{SGAresult}
+\begin{proof}
+$\check{\mathbb P}^{,r}$ 中的一条直线 $D$ 是\Term{lefschetz-pencil}{Lefschetz 铅笔}，当且仅当它满足：
+\begin{align}
+&D\text{ 的轴与 }X\text{ 横截相交},\tag{3.2.5}\\
+&D\text{ 不包含于 }\check X,\tag{3.2.6}\\
+&D\text{ 不与 }F\text{ 相交}.\tag{3.2.7}
+\end{align}
+\SourcePage{230}
+条件（3.2.5）和（3.2.6）定义 $\operatorname{Gr}(1,\check{\mathbb P}^{,r})$ 的\Term{open-subset}{开子集}，而且由于 $F$ \Term{closed-subset}{闭}，条件（3.2.7）也是如此，所以\Term{lefschetz-pencil}{Lefschetz 铅笔}组成 $\operatorname{Gr}(1,\check{\mathbb P}^{,r})$ 的一个\Term{open-subset}{开子集}。因为 $\dim\check X\leq r-1$，\Term{open-subset}{开子集}（3.2.6）\Term{nonempty}{非空}，因而\Term{dense}{稠密}。\Term{open-subset}{开子集}（3.2.5）也\Term{nonempty}{非空}，因而\Term{dense}{稠密}。事实上，取一个与 $X$ \Term{transverse-intersection}{横截相交}的\Term{hyperplane}{超平面} $H$；由 $\dim\check X\leq r-1$，这样的 $H$ 存在。因为 $\dim (X\cdot G)^{\vee}\leq r-1$，存在与 $X\cdot H$ \Term{transverse-intersection}{横截相交}的\Term{hyperplane}{超平面} $G$；按构造，通过 $H$ 和 $G$ 的直线 $D$ 的\Term{pencil-axis}{轴}与 $X$ \Term{transverse-intersection}{横截相交}。因此，给定\Term{embedding}{嵌入}是\Term{lefschetz-embedding}{Lefschetz 嵌入}，当且仅当\Term{open-subset}{开子集}（3.2.7）\Term{nonempty}{非空}（从而\Term{dense}{稠密}）。由于 $F$ \Term{closed-subset}{闭}，（3.2.7）\Term{nonempty}{非空}当且仅当 $F$ 在 $\check{\mathbb P}^{,r}$ 中的\Term{codimension}{余维数}至少为 $2$（参见 EGA V，或 Mumford，\textit{Introduction to Algebraic Geometry}，第 88 页，推论 3）。
+\end{proof}
+
+\begin{SGAresult}{推论}{3.2.8}
+在 3.2 的假设下，设 $i:X\hookrightarrow\mathbb P^r$ 是一个\Term{lefschetz-embedding}{Lefschetz 嵌入}。设 $H_0$ 是与 $X$ \Term{transverse-intersection}{横截相交}的\Term{hyperplane}{超平面}，并以 $\operatorname{Gr}(1,\check{\mathbb P}^{,r})_{H_0}$ 表示由通过 $H_0$ 的直线组成的 $\operatorname{Gr}(1,\check{\mathbb P}^{,r})$ 的\Term{subvariety}{子簇}。则通过 $H_0$ 的\Term{lefschetz-pencil}{Lefschetz 铅笔}组成 $\operatorname{Gr}(1,\check{\mathbb P}^{,r})_{H_0}$ 的一个\Term{dense-open-subset}{稠密开子集}。
+\end{SGAresult}
+\begin{proof}
+由（3.2.1），所说的\Term{pencil}{铅笔}组成 $\operatorname{Gr}(1,\check{\mathbb P}^{,r})_{H_0}$ 的一个\Term{open-subset}{开子集}。刚才用来说明\Term{open-subset}{开子集}（3.2.5）和（3.2.6）\Term{nonempty}{非空}的论证，
+\SourcePage{231}
+也说明它们与 $\operatorname{Gr}(1,\check{\mathbb P}^{,r})_{H_0}$ 的交\Term{nonempty}{非空}。只须再证明存在通过 $H_0$ 且不与 $F$ 相交的直线。为此，取 $\check{\mathbb P}^{,r}$ 中不包含 $H_0$ 的一个\Term{hyperplane}{超平面} $T$。有\Term{isomorphism}{同构}
+\[
+\begin{aligned}
+\operatorname{Gr}(1,\check{\mathbb P}^{,r})_{H_0}&\xleftarrow{\sim}T,\\
+\text{通过 }H_0\text{ 和 }\tau\text{ 的直线}&\mathrel{\longleftarrow\!\shortmid}\tau.
+\end{aligned}
+\]
+所以 $\operatorname{Gr}(1,\check{\mathbb P}^{,r})_{H_0}$ “就是”一个 $r-1$ 维\Term{projective-space}{射影空间}。其中通过 $F$ 的某一点的那些直线组成一个\Term{dimension}{维数}不超过 $r-2$ 的\Term{closed-subset}{闭子集}，因为它是下述\Term{morphism}{态射}的像：
+\[
+\begin{aligned}
+F&\longrightarrow\operatorname{Gr}(1,\check{\mathbb P}^{,r})_{H_0},\\
+f&\longmapsto\text{通过 }H_0\text{ 和 }f\text{ 的直线}.
+\end{aligned}
+\]
+\end{proof}
+
+\begin{SGAresult}{命题}{3.3}
+\Term{morphism}{态射} $\varphi:\mathbb P(N)\to\check{\mathbb P}^{,r}$ 在\Term{closed-point}{闭点} $(x_0,H)$ 处是\Term{net}{净}的（即\Term{unramified}{非分歧}的），当且仅当点 $x_0$ 是 $X\cdot H$ 的一个\Term{nondegenerate-quadratic-singularity}{非退化二次奇点}（1.2）。特别地，$\mathbb P(N)$ 中由满足“$x$ 是 $X\cdot H$ 的\Term{nondegenerate-quadratic-singularity}{非退化二次奇点}”的点 $(x,H)$ 组成的\Term{subset}{子集}是\Term{open-subset}{开子集}。
+\end{SGAresult}
+\begin{proof}
+\SourcePage{232}
+可限于 $X\ne\mathbb P^r$ 的情形。所断言\Term{equivalence}{等价}的性质与坐标的具体选择无关，因此可用一组非常特殊的坐标将它们写出。$X$ 是 $\mathbb P^r$ 中\Term{dimension}{维数} $n\geq1$ 的\Term{smooth}{光滑}\Term{subvariety}{子簇}，所以可选取 $\mathbb P^r$ 中的\Term{homogeneous-coordinates}{齐次坐标} $X_0,\ldots,X_r$，使得：
+
+\textbf{3.3.1.} 点 $x_0\in\mathbb P^r$ 为 $(1,0,\ldots,0)$；
+
+\textbf{3.3.2.} 令 $x_i=X_i/X_0$，$i=1,\ldots,r$，于是\Term{completion}{完备化} $\widehat{\mathcal O}_{\mathbb P^r,x_0}$ 等同于 $k[[x_1,\ldots,x_r]]$；定义 $X$ 在 $\operatorname{Spec}\mathcal O_{\mathbb P^r,x_0}$ 中的迹的\Term{ideal}{理想}由 $\mathcal O_{\mathbb P^r,x_0}$ 中的元素 $g_i$（$i=1,\ldots,r-n$）生成，它们在 $\widehat{\mathcal O}_{\mathbb P^r,x_0}$ 中写成
+\[
+g_i=x_{n+i}-h_i(x_1,\ldots,x_n),\qquad i=1,\ldots,r-n,
+\]
+其中 $h_i(x_1,\ldots,x_n)$ 是只含 $x_1,\ldots,x_n$ 的级数，且属于 $k[[x_1,\ldots,x_n]]$ 的\Term{maximal-ideal}{极大理想}的平方。
+
+\textbf{3.3.3.} \Term{hyperplane}{超平面} $H$ 由 $g_{n-r}$ 经（3.1.1）得到。
+
+由（3.3.2），令 $V=\operatorname{Spec}(\widehat{\mathcal O}_{X,x_0})$，则有一个\Term{trivialization}{平凡化} $(I/I^2)|_V\simeq\mathcal O_V^{r-n}$：
+\[
+(\lambda_1',\ldots,\lambda_{r-n}')\longmapsto\sum_{1}^{n-r}\lambda_i g_{n+i}.
+\tag{3.3.4}
+\]
+由此及（3.3.3），$\mathbb P(N)|_V$ 中存在 $(x,H)$ 的一个\Term{neighborhood}{邻域} $W$，
+\SourcePage{233}
+使得 $V\times\mathbb A^{r-n-1}\simeq W$，其\Term{isomorphism}{同构}为
+\[
+\begin{split}
+V\times\mathbb A^{r-n-1}\ni\bigl(v,(\lambda_1,\ldots,\lambda_{r-n-1})\bigr)
+\longmapsto{}&\left(v,\left(g_{r-n}+\sum_{i=1}^{n-r-1}\lambda_i g_i\right)\right)\\
+&\in\mathbb P(I/I^2)|_V,
+\end{split}\tag{3.3.5}
+\]
+其中令 $\lambda_i=\lambda_i'/\lambda_{n-r}'$。
+特别地，$\mathbb P(N)$ 在 $(x,H)$ 处的\Term{local-ring}{局部环}的\Term{completion}{完备化} $\widehat{\mathcal O}_{\mathbb P(N),(x,H)}$ 等同于 $k[[x_1,\ldots,x_n,\lambda_1,\ldots,\lambda_{r-n-1}]]$。现在在\Term{completion}{完备化}上用这些坐标表示 $\varphi$：
+\[
+\begin{split}
+\varphi(x,\lambda)&=\varphi(x_1,\ldots,x_n,\lambda_1,\ldots,\lambda_{r-n-1})\\
+&=\text{方程为 }\sum_{i=0}^{n+r}\varphi_i(x,\lambda)T_i=0\text{ 的超平面}.
+\end{split}\tag{3.3.6}
+\]
+像\Term{hyperplane}{超平面} $\sum\varphi_iT_i$ 包含点 $(x)$，而此点的\Term{homogeneous-coordinates}{齐次坐标}为
+\[
+(x)=(1,x_1,\ldots,x_n,h_1(x),\ldots,h_{r-n}(x)),\tag{3.3.7}
+\]
+因此在 $\widehat{\mathcal O}_{\mathbb P(N),(x_0,H)}$ 中有
+\[
+\varphi_0(x,\lambda)=-\sum_{i=1}^{n}x_i\varphi_i(x,\lambda)-\sum_{i=1}^{r-n}h_i(x)\varphi_{n+i}(x,\lambda).
+\tag{3.3.8}
+\]
+而且由（3.1.1），对 $i\geq1$，令
+\[
+D_i=\frac{\partial}{\partial x_i}\in\operatorname{Der}_k(\mathcal O_{\mathbb P^r,x_0},\widehat{\mathcal O}_{\mathbb P^r,x_0}),
+\]
+则在 $\widehat{\mathcal O}_{\mathbb P(N),(x_0,H)}$ 中有
+\[
+\varphi_i(x,\lambda)=D_i\left(g_{r-n}+\sum_{i=1}^{r-n-1}\lambda_i g_i\right)(x).
+\tag{3.3.9}
+\]
+\SourcePage{234}
+回忆 $g_i=x_{n+i}-h_i(x_1,\ldots,x_n)$，有
+\[
+\varphi_i(x,\lambda)=-\frac{\partial}{\partial x_i}\left(h_{r-n}+\sum_{i=1}^{r-n-1}\lambda_i h_i\right),\qquad1\leq i\leq n,
+\tag{3.3.10}
+\]
+\[
+\varphi_i(x,\lambda)=\lambda_i,\qquad1\leq i\leq n,\tag{3.3.11}
+\]
+以及
+\[
+\varphi_r(x,\lambda)=1.\tag{3.3.12}
+\]
+以 $\mathfrak m$ 表示 $\widehat{\mathcal O}_{\mathbb P(N),(x_0,H)}$ 的\Term{maximal-ideal}{极大理想}。由于 $h_i\equiv0\pmod{\mathfrak m^2}$，$i=1,\ldots,r-n$，得到
+\[
+\varphi_0(x,\lambda)\equiv0\pmod{\mathfrak m^2},\tag{3.3.13}
+\]
+\[
+\varphi_i(x,\lambda)\equiv-\frac{\partial h_{r-n}}{\partial x_i}\pmod{\mathfrak m^2},\qquad i=1,\ldots,n.
+\tag{3.3.14}
+\]
+合并公式（3.3.11）--（3.3.14），得到 $\varphi$ 在点 $(x_0,H)$ 处的\Term{jacobian-matrix}{Jacobian 矩阵}为
+\SourcePage{235}
+\[
+\begin{array}{c@{\quad}c}
+&\begin{array}{cc}
+\overbrace{\hphantom{\left(-\dfrac{\partial^2h_{r-n}}{\partial x_j\partial x_i}(0)\right)_{1\leq i,j\leq n}}}^{n}
+&\overbrace{\hphantom{I_{r-n-1}}}^{r-n-1}
+\end{array}\\[-3pt]
+\begin{array}{c}
+1\\[5pt]
+n\vphantom{\displaystyle\left(-\frac{\partial^2h_{r-n}}{\partial x_j\partial x_i}(0)\right)_{1\leq i,j\leq n}}\\[5pt]
+r-n-1\\[5pt]
+1
+\end{array}
+&\left(\begin{array}{cc}
+0&0\\[5pt]
+\displaystyle\left(-\frac{\partial^2h_{r-n}}{\partial x_j\partial x_i}(0)\right)_{1\leq i,j\leq n}&0\\[5pt]
+0&I_{r-n-1}\\[5pt]
+0&0
+\end{array}\right)
+\end{array}
+\tag{3.3.15}
+\]
+因此，$\varphi$ 在 $(x_0,H)$ 处\Term{net}{净}，当且仅当\Term{hessian-matrix}{Hessian 矩阵}
+\[
+\left(\frac{\partial^2h_{r-n}}{\partial x_i\partial x_j}(0)\right)_{1\leq i,j\leq n}
+\]
+\Term{invertible}{可逆}。另一方面，（3.3.2）和（3.3.3）保证 $X\cdot H$ 中 $x_0$ 处的\Term{local-ring}{局部环}的\Term{completion}{完备化}为
+\[
+k[[x_1,\ldots,x_n]]/(h_{r-n}(x_1,\ldots,x_n)),\tag{3.3.16}
+\]
+\SourcePage{236}
+由定义（1.2）即得结论。
+\end{proof}
+
+\textbf{例 3.4。} 设 $X$ 是 $\mathbb P^r$ 中由\Term{homogeneous-equation}{齐次方程} $F(X_0,\ldots,X_r)=0$ 定义的\Term{hypersurface}{超曲面}。此时 $\mathbb P(N)=X$，而 $\varphi:X\to\check{\mathbb P}^{,r}$ 用\Term{homogeneous-coordinates}{齐次坐标}表示为
+\[
+\varphi(X_0,\ldots,X_r)=\left(\frac{\partial F}{\partial X_0},\ldots,\frac{\partial F}{\partial X_r}\right).
+\tag{3.4.1}
+\]
+这就是“\Term{gauss-morphism}{Gauss 态射}”。
+
+下面给出一个 $\varphi$ 处处\Term{ramified}{分歧}（即处处不\Term{net}{净}）的例子。为此，设 $p$ 为 $k$ 的\Term{characteristic}{特征}，$r$ 为整数且 $r\geq1$，并取方程为
+\[
+\sum_{i=0}^{r}X_i^{p^r+1}=0\tag{3.4.2}
+\]
+的\Term{hypersurface}{超曲面} $X$。对它有
+\[
+\varphi(X_0,\ldots,X_r)=(X_0^{p^r},\ldots,X_r^{p^r}),\tag{3.4.3}
+\]
+因此当 $p=0$ 时，$\check X$ 缩为一点；当 $p>0$ 时，则 $\check X\simeq X$，且 $\varphi$ 是 \Term{frobenius-morphism}{Frobenius 态射}。注意，由 3.3（或下面的 3.5.0）可知，若 $p>2$，这里的\Term{embedding}{嵌入}不是\Term{lefschetz-embedding}{Lefschetz 嵌入}。
+
+回到\Term{generic}{一般}情形。
+
+\SourcePage{237}
+\begin{SGAresult}{命题}{3.5}
+设\Term{morphism}{态射} $\varphi:\mathbb P(N)\to\check{\mathbb P}^{,r}$ 是\Term{generically-unramified}{泛净}的（即并非处处\Term{ramified}{分歧}）。则 $\varphi$ 诱导 $\mathbb P(N)$ 到 $\check X$ 的一个\Term{birational-morphism}{双有理态射}。更准确地说，$\check X$ 的以下三个\Term{open-subset}{开子集}相同：
+\begin{enumerate}
+\item[a)] $\check X$ 的最大\Term{smooth-locus}{光滑开集}；
+\item[b)] $\check X$ 的最大\Term{open-subset}{开子集} $V$，使得 $\varphi:\mathbb P(N)\to\check X$ 诱导\Term{isomorphism}{同构} $\varphi^{-1}(V)\xrightarrow{\sim}V$；
+\item[c)] $\check X$ 中由满足下述条件的\Term{hyperplane}{超平面} $H$ 组成的\Term{open-subset}{开子集}（参见 3.2）：$X\cdot H$ 有且只有一个\Term{singular-point}{奇点}，而且此点为\Term{nondegenerate-quadratic-singularity}{非退化二次奇点}。
+\end{enumerate}
+\end{SGAresult}
+
+\begin{SGAresult}{推论}{3.5.0}
+设 $\operatorname{char}(k)\ne2$，或 $\dim X$ 为偶数。则给定\Term{embedding}{嵌入}是\Term{lefschetz-embedding}{Lefschetz 嵌入}，当且仅当以下两个条件之一成立：a) $\varphi$ \Term{generically-unramified}{泛净}；或 b) $\dim\check X\leq r-2$。
+\end{SGAresult}
+\begin{proof}
+充分性由判别法（3.2.4）得出：根据 3.5，或者 $F=\operatorname{Sing}(\check X)$，从而 $\dim F<\dim\check X=r-1$；或者 $\dim\check X\leq r-2$。至于必要性，注意若 $D$ 是一个\Term{lefschetz-pencil}{Lefschetz 铅笔}，且 $\dim\check X=r-1$，则存在 $x\in D\cap\check X$；由 3.3 和定义（2.2 c)），$\varphi$ 在 $\varphi^{-1}(x)$ 的各点处\Term{net}{净}，因而\Term{generically-unramified}{泛净}。证毕。
+\end{proof}
+
+\begin{proof}[3.5 的证明]
+假设蕴涵 $\dim\check X=\dim\mathbb P(N)=r-1$，从而由（3.2），$\check X$ 是 $\check{\mathbb P}^{,r}$ 中的一个\Term{irreducible}{不可约}\Term{hypersurface}{超曲面}。
+\SourcePage{238}
+设 $R$ 是 $\varphi$ 的\Term{ramification-locus}{分歧轨迹}，根据假设，它是 $\mathbb P(N)$ 中\Term{dimension}{维数}不超过 $r-2$ 的\Term{closed-subset}{闭子集}，所以 $\varphi(R)$ 是 $\check X$ 中\Term{dimension}{维数}不超过 $r-2$ 的\Term{closed-subset}{闭子集}。以 $V'$ 表示 $\check X$ 的\Term{dense-open-subset}{稠密开子集}
+\[
+V'=(\check X-\varphi(R))\cap(\check X-\operatorname{Sing}(\check X)),\tag{3.5.1}
+\]
+以 $F$ 表示它在 $\check X$ 中的补集：
+\[
+F=\varphi(R)\cup\operatorname{Sing}(\check X).\tag{3.5.1.1}
+\]
+我们首先以直接构造逆映射 $\psi:V'\to\varphi^{-1}(V')$ 的朴素方法，证明 $\varphi$ 诱导 $\varphi^{-1}(V')$ 与 $V'$ 之间的\Term{isomorphism}{同构}。确实，通过（3.1.1）将 $\varphi^{-1}(V')$ 看作\Term{embedding}{嵌入}在 $X\times V'$ 中，于是 $\varphi$ 等同于 $\operatorname{pr}_2$；由此可见，构造 $\psi$ \Term{equivalence}{等价}于构造一个\Term{morphism}{态射} $\psi_1:V'\to\mathbb P^r$，使图
+\[
+\begin{tikzcd}
+\mathbb P(N)\supset\varphi^{-1}(V')\arrow[r,"\varphi"]\arrow[d]&V'\arrow[d,"\psi_1"]\\
+X\arrow[r,hook]&\mathbb P^r
+\end{tikzcd}\tag{3.5.2}
+\]
+交换（令 $\psi(v)=(\psi_1(v),v)\in\mathbb P^r\times V'$）。
+
+为此，注意对于\Term{projective-space}{射影空间}中的任意\Term{hypersurface}{超曲面}，\Term{gauss-morphism}{Gauss 态射}（3.4.1）在每个\Term{smooth-point}{光滑点}处都有“定义”。将此用于 $\check{\mathbb P}^{,r}$ 中的\Term{hypersurface}{超曲面} $\check X$；因为 $V'$ 包含在 $\check X$ 的\Term{smooth-locus}{光滑开集} $V$ 中，
+\SourcePage{239}
+\Term{gauss-morphism}{Gauss 态射}给出一个\Term{morphism}{态射}，记为 $\psi_1$：
+\[
+\psi_1:V'\longrightarrow(\check{\mathbb P}^{,r})^{\vee}\simeq\mathbb P^r.
+\tag{3.5.3}
+\]
+还须核对图（3.5.2）的\Term{commutativity}{交换性}。设 $(x_0,H_0)$ 是 $\varphi^{-1}(V')$ 的一个\Term{closed-point}{闭点}；要证明把 $x_0$ 看作 $\check{\mathbb P}^{,r}$ 中的一个\Term{hyperplane}{超平面}时，它在 $H_0$ 处与 $\check X$ \Term{tangent}{相切}。即要证明，对于 $(x_0,H_0)\in\varphi^{-1}(V')$，有
+\[
+H_0\text{ 在 }x_0\text{ 处与 }X\text{ 相切}
+\ \Longrightarrow\ x_0\text{ 在 }H_0\text{ 处与 }\check X\text{ 相切}.
+\]
+由于 $\varphi$ 在 $(x_0,H_0)$ 处\Term{net}{净}，且 $\check X$ 在 $H_0=\varphi(x_0,H_0)$ 处\Term{smooth}{光滑}，$\varphi$ 诱导\Term{tangent-space}{切空间}的\Term{isomorphism}{同构}
+\[
+T_{\mathbb P(N)}((x_0,H_0))\xrightarrow[\sim]{\varphi}T_{\check X}(H_0).
+\tag{3.5.4}
+\]
+因此下述\Term{lemma}{引理}将完成证明的第一部分。
+
+\begin{SGAresult}{\Term{lemma}{引理}（Euler）}{3.6}
+设 $(x_0,H_0)$ 是 $\mathbb P(N)$ 的一个\Term{closed-point}{闭点}，并以 $T_L$ 表示由 $x_0$ 定义的 $\check{\mathbb P}^{,r}$ 中的\Term{hyperplane}{超平面} $L$ 的\Term{tangent-bundle}{切丛}。则在 $T_{\check{\mathbb P}^{,r}}(H_0)$ 中有
+\[
+\varphi\bigl(T_{\mathbb P(N)}((x_0,H_0))\bigr)\subset T_L(H_0).
+\]
+\end{SGAresult}
+\end{proof}
+\begin{proof}[\Term{lemma}{引理}的证明]
+选取 $\mathbb P^r$ 中的\Term{homogeneous-coordinates}{齐次坐标} $X_0,\ldots,X_r$，使 $x_0$ 成为点 $A=(A_0,\ldots,A_r)$。
+\SourcePage{240}
+$T_X(x_0)$ 的一个点，是 $\mathbb P^r$ 的一个取值于 $k[\epsilon]/(\epsilon^2)$ 的点
+\[
+A+\epsilon B,\tag{3.6.1}
+\]
+使得对 $I$ 的任意\Term{local-section}{局部截面} $H$，都有
+\[
+\sum_{i=0}^{r}B_i\frac{\partial H}{\partial X_i}(A)=0.\tag{3.6.2}
+\]
+再取一个 $I$ 的\Term{local-section}{局部截面} $H$，使它经（3.1.1）给出 $H_0$。由于 $\mathbb P(N)$ 在 $X$ 上\Term{locally-trivial}{局部平凡}，$T_{\mathbb P(N)}((x_0,H_0))$ 的一个点\Term{representable-functor}{可表示}成
+\[
+(A+\epsilon B,H+\epsilon F),\tag{3.6.3}
+\]
+其中 $F$ 是 $I$ 的一个\Term{local-section}{局部截面}，$A$ 和 $B$ 如上。（3.6.3）经 $\varphi$ 的像，是系数在 $k[\epsilon]/(\epsilon^2)$ 中、方程为（参见（3.1.1））
+\[
+\sum_{i=0}^{r}\frac{\partial}{\partial X_i}(H+\epsilon F)(A+\epsilon B)T_i=0
+\tag{3.6.4}
+\]
+的\Term{hyperplane}{超平面}。所以\Term{lemma}{引理}\Term{equivalence}{等价}于公式
+\[
+\sum_{i=0}^{r}A_i\frac{\partial}{\partial X_i}(H+\epsilon F)(A+\epsilon B)=0.
+\tag{3.6.5}
+\]
+由 $\epsilon^2=0$ 和 Taylor 公式，有
+\[
+\frac{\partial}{\partial X_i}(H+\epsilon F)(A+\epsilon B)
+=\frac{\partial H}{\partial X_i}(A)+\epsilon\frac{\partial F}{\partial X_i}(A)
++\epsilon\sum_{j=0}^{r}B_j\frac{\partial^2H}{\partial X_j\partial X_i}(A).
+\tag{3.6.6}
+\]
+\SourcePage{241}
+因此只须核对下列三个公式：
+\[
+\sum_{i=0}^{r}A_i\frac{\partial H}{\partial X_i}(A)=0,\tag{3.6.7}
+\]
+\[
+\sum_{i=0}^{r}A_i\frac{\partial F}{\partial X_i}(A)=0,\tag{3.6.8}
+\]
+\[
+\sum_{i,j=0}^{r}A_iB_j\frac{\partial^2H}{\partial X_i\partial X_j}(A)=0.
+\tag{3.6.9}
+\]
+由于 $H$ 和 $F$ 都是零次\Term{homogeneous}{齐次}的，Euler 公式给出
+\[
+\sum_iX_i\frac{\partial H}{\partial X_i}=0,\qquad
+\sum_iX_i\frac{\partial F}{\partial X_i}=0.\tag{3.6.10}
+\]
+而 $\partial H/\partial X_j$ 是 $-1$ 次\Term{homogeneous}{齐次}的，同一公式给出
+\[
+\sum_iX_i\frac{\partial^2H}{\partial X_i\partial X_j}=-\frac{\partial H}{\partial X_j},
+\]
+故（3.6.9）改写为
+\[
+-\sum_j B_j\frac{\partial H}{\partial X_j}(A)=0,\tag{3.6.11}
+\]
+这正是（3.6.2）。
+\end{proof}
+
+\begin{proof}[续 3.5 的证明]
+这证明了 $\varphi$ 诱导一个\Term{isomorphism}{同构}
+\[
+\varphi^{-1}(V')\xrightarrow{\sim}V',\tag{3.6.12}
+\]
+\SourcePage{242}
+其逆为 $\psi$。现在注意，\Term{morphism}{态射}
+\[
+\begin{cases}
+\psi:V'\longrightarrow\mathbb P^r\times V'\subset\mathbb P^r\times\check X,\\
+\psi(v)=(\psi_1(v),v)
+\end{cases}\tag{3.6.13}
+\]
+延拓为\Term{morphism}{态射}
+\[
+\begin{cases}
+\widetilde\psi:V\longrightarrow\mathbb P^r\times V,\\
+\widetilde\psi(v)=(\widetilde\psi_1(v),v),
+\end{cases}\tag{3.6.14}
+\]
+其中
+\[
+\widetilde\psi_1:V\longrightarrow\mathbb P^r\tag{3.6.15}
+\]
+表示在整个 $V$ 上定义的\Term{gauss-morphism}{Gauss 态射}。
+刚才已证包含关系
+\[
+\psi(V')\subset\mathbb P(N),\tag{3.6.16}
+\]
+由于 $V'$ 在 $V$ 中\Term{dense}{稠密}，且 $\mathbb P(N)$ 在 $\mathbb P^r\times\check X$ 中\Term{closed-subset}{闭}，可得
+\[
+\widetilde\psi(V)\subset\mathbb P(N).\tag{3.6.17}
+\]
+显然甚至有
+\[
+\widetilde\psi(V)\subset\varphi^{-1}(V).\tag{3.6.18}
+\]
+再由“\Term{continuity}{连续性}”，关系
+\SourcePage{243}
+\[
+\begin{cases}
+\psi\circ\varphi=\operatorname{id}_{\varphi^{-1}(V')},\\
+\varphi\circ\psi=\operatorname{id}_{V'}
+\end{cases}
+\]
+蕴涵关系
+\[
+\begin{cases}
+\widetilde\psi\circ\varphi=\operatorname{id}_{\varphi^{-1}(V)},\\
+\varphi\circ\widetilde\psi=\operatorname{id}_V,
+\end{cases}
+\]
+所以 3.5 a) 和 3.5 b) 的\Term{open-subset}{开子集}相同。
+
+再证明 3.5 a) 和 3.5 c) 的\Term{open-subset}{开子集}相同。首先由 3.3，3.5 c) 的\Term{open-subset}{开子集}正是 $\check X$ 中定义为
+\[
+U=\left\{x\in\check X\ \middle|\ \begin{array}{l}
+\varphi^{-1}(x)\text{ 恰有一个点，}\\
+\text{且 }\varphi\text{ 在该点处净}
+\end{array}\right\}\tag{3.6.19}
+\]
+的\Term{subset}{子集} $U$。$\varphi^{-1}(U)$ 是\Term{normal}{正规}的（因为它\Term{smooth}{光滑}），而诱导的\Term{morphism}{态射}
+\[
+\varphi:\varphi^{-1}(U)\longrightarrow U
+\]
+是\Term{birational}{双有理}的（已经证明过）、\Term{radicial}{根性}的（由 $U$ 的定义）且\Term{proper}{固有}的。因此
+\[
+\varphi:\varphi^{-1}(U)\longrightarrow U
+\]
+是 $U$ 的\Term{normalization}{正规化}。特别地，$U$ 是\Term{geometrically-unibranch}{几何单枝}的。由于 $\varphi:\varphi^{-1}(U)\to U$ 是\Term{net}{净}的，由此可得它是\Term{etale}{平展}的（EGA IV 18.10.1）。再由 EGA IV 18.10.18，可知它是一个\Term{open-immersion}{开浸入}，因而是\Term{isomorphism}{同构}，所以
+\SourcePage{244}
+$U$ \Term{smooth}{光滑}，即有包含关系 $3.5\text{ c)}\subset3.5\text{ a)}$。另一方面，（3.6.19）使包含关系 $3.5\text{ b)}\subset3.5\text{ c)}$ 显而易见；结合 $3.5\text{ a)}=3.5\text{ b)}$ 即得结论。
+\end{proof}
+
+现在可以证明：
+\begin{SGAresult}{命题}{3.7}
+\Term{theorem}{定理} 2.5 在 $\operatorname{char}(k)\ne2$ 的情形成立，在 $X$ 的\Term{dimension}{维数}为偶数的情形也成立。
+\end{SGAresult}
+\begin{proof}
+由 3.5.0 和 3.3，只须证明：
+
+\textbf{（3.7.1）} 对每个\Term{closed-point}{闭点} $x_0\in X$ 和每个整数 $d\geq2$，存在一个在 $x_0$ 处与 $X$ \Term{tangent}{相切}的 $d$ 次\Term{hypersurface}{超曲面} $H$，使 $x_0$ 为 $X\cdot H$ 的一个\Term{ordinary-quadratic-singularity}{普通二次奇点}。
+
+适当选取\Term{homogeneous-coordinates}{齐次坐标} $X_0,\ldots,X_r$，可设 $x_0$ 为点 $(1,0,\ldots,0)$，而函数 $X_i/X_0$（$i=1,\ldots,n$）在 $x_0$ 的一个\Term{neighborhood}{邻域}中给出 $X$ 上的\Term{local-coordinates}{局部坐标}。取方程如下的\Term{hypersurface}{超曲面} $H$：
+\[
+H=X_0^{d-2}\sum_{i=1}^{n}X_i^2\qquad\text{若 }\operatorname{char}(k)\ne2,
+\tag{3.7.1.1}
+\]
+\[
+H=X_0^{d-2}\sum_{i=1}^{n/2}X_iX_{n/2+i}\qquad\text{若 }n\text{ 为偶数},
+\tag{3.7.1.2}
+\]
+\[
+H=X_0^{d-2}\left(X_n^2+\sum_{i=1}^{[n/2]}X_iX_{[n/2]+i}\right)\qquad\text{若 }n\text{ 为奇数}.
+\tag{3.7.1.3}
+\]
+\SourcePage{245}
+对于断言 2.5.2，注意或者 $\varphi$ \Term{generically-unramified}{泛净}，从而 3.5.0 适用；或者 $\varphi$ 处处\Term{ramified}{分歧}，而由于 $k$ 的\Term{characteristic}{特征}为零，这蕴涵 $\dim\check X\leq r-2$。在后一情形，判别法（3.2.4）显然满足。
+\end{proof}

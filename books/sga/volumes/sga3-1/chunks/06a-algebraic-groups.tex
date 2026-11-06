@@ -1,0 +1,981 @@
+\SGAchapter{VI$_A$}{代数群概论}{Généralités sur les groupes algébriques}
+\begin{center}P. Gabriel\end{center}
+\SourcePage{297}
+本讲始终以 $A$ 表示\Term{residue-field}{剩余域}为 $k$ 的 Artin \Term{local-ring}{局部环}。$\operatorname{Spec}A$ 上的\Term{group-scheme}{群概形} $G$ 简称为 $A$-\Term{group}{群}。若其底层\Term{scheme}{概形}在 $A$ 上\Term{locally-finite-type}{局部有限型}，就称此 $A$-\Term{group}{群}为\Term{locally-finite-type}{局部有限型}的；若其底层\Term{scheme}{概形}在 $A$ 上\Term{finite-type}{有限型}，就称它为\Term{algebraic-group}{代数群}。
+
+\SGAsection{0}{预备注记}
+\textbf{0.1.} 先考虑任意\Term{scheme}{概形} $S$ 上的\Term{group-scheme}{群概形} $G$。称结构\Term{morphism}{态射} $\mu:G\times_S G\to G$ 为\Term{multiplication}{乘法}，称由等式 $c(T)(x)=x^{-1}$ 定义的\Term{morphism}{态射} $c:G\to G$ 为\Term{inversion}{取逆}；这里 $T$ 是 $S$ 上的\Term{scheme}{概形}，$x\in G(T)$。若 $U,V$ 是 $G$ 的底层\Term{set}{集合}的\Term{subset}{子集}，以 $U\cdot V$ 表示 $G\times_S G$ 中第一\Term{projection}{投影}属于 $U$、第二\Term{projection}{投影}属于 $V$ 的各点组成的\Term{subset}{子集}在\Term{multiplication}{乘法态射}下的像。同样，记号 $U^{-1}$ 与 $c(U)$ \Term{equivalence}{等价}。
+
+设 $\operatorname{pr}_1$ 为 $G\times_S G$ 到第一因子的\Term{projection}{投影}，$\sigma:G\times_S G\to G\times_S G$ 为以 $\operatorname{pr}_1$ 和 $\mu$ 为\Term{set-component}{分量}的\Term{morphism}{态射}。对每个 $S$-\Term{scheme}{概形} $T$，$\sigma(T)$ 是映射 $(x,y)\mapsto(x,xy)$，所以 $\sigma$ 是\Term{automorphism}{自同构}。此\Term{automorphism}{自同构}与到第二因子的\Term{projection}{投影} $\operatorname{pr}_2$ 的复合就是\Term{multiplication}{乘法态射}。当 $G$ 在 $S$ 上\Term{flat}{平坦}时，$\operatorname{pr}_2$ 从而 $\mu$ 都是\Term{flat}{平坦态射}；当 $G$ 在 $S$ 上\Term{smooth}{光滑}时，$\operatorname{pr}_2$ 从而 $\mu$ 都是\Term{smooth}{光滑态射}；等等。
+
+\textbf{0.2.} 从现在起，假设 $S$ 是\Term{residue-field}{剩余域}为 $k$ 的 Artin \Term{local-ring}{局部环} $A$ 的谱。以 $(\mathrm{Sch}/k)_{\mathrm{r\text{é}d}}$ 表示 $k$ 上\Term{reduced}{约化}\Term{scheme}{概形}的\Term{category}{范畴}。对每个 $A$ 上的\Term{scheme}{概形} $X$，其\Term{reduction}{约化概形} $X_{\mathrm{r\text{é}d}}$ 是 $(\mathrm{Sch}/k)_{\mathrm{r\text{é}d}}$ 的\Term{object}{对象}，且\Term{functor}{函子} $X\mapsto X_{\mathrm{r\text{é}d}}$ 是 $(\mathrm{Sch}/k)_{\mathrm{r\text{é}d}}$ 到 $(\mathrm{Sch}/A)$ 的包含\Term{functor}{函子}的\Term{right-adjoint}{右伴随}。因此，对每个 $A$-\Term{group}{群} $G$，$G_{\mathrm{r\text{é}d}}$ 都是\Term{category}{范畴} $(\mathrm{Sch}/k)_{\mathrm{r\text{é}d}}$ 中的\Term{group}{群}，\footnote{编者注：增补了以下几句。}即对每个\Term{reduced}{约化} $k$-\Term{scheme}{概形} $T$，$G_{\mathrm{r\text{é}d}}(T)$ 都具有关于 $T$ \Term{functorial}{函子性}的\Term{group}{群}结构。要注意，$G_{\mathrm{r\text{é}d}}$ 未必是 $k$-\Term{group}{群}，
+\SourcePage{298}
+因为它的“\Term{multiplication}{乘法}”只是从 $(G_{\mathrm{r\text{é}d}}\times_k G_{\mathrm{r\text{é}d}})_{\mathrm{r\text{é}d}}$ 到 $G_{\mathrm{r\text{é}d}}$ 的\Term{morphism}{态射}。\footnote{编者注：关于非\Term{perfect-field}{完美域} $k$ 上的\Term{group-scheme}{群概形} $G$ 使得 $G_{\mathrm{r\text{é}d}}$ 不是 $k$-\Term{group-scheme}{群概形}的例子，见下文 1.3.2。}
+
+不过，\footnote{编者注：稍微修改了 0.2 的后半部分及 0.3。}若 $k$ 是\Term{perfect-field}{完美域}，则 $(\mathrm{Sch}/k)_{\mathrm{r\text{é}d}}$ 到 $(\mathrm{Sch}/k)$ 的包含与\Term{product}{积}可交换，因而\Term{category}{范畴} $(\mathrm{Sch}/k)_{\mathrm{r\text{é}d}}$ 中的\Term{group}{群}可等同于底层\Term{scheme}{概形}\Term{reduced}{约化}的 $k$ 上\Term{group-scheme}{群概形}。在此情形，若 $G$ 是 $k$-\Term{group}{群}，则 $G_{\mathrm{r\text{é}d}}$ 是 $G$ 的\Term{subgroup-scheme}{子群概形}；这个\Term{subgroup}{子群}一般并不在 $G$ 中\Term{normal-subgroup}{正规}。
+
+例如，若 $k$ 的\Term{characteristic}{特征}为 $3$，则常值\Term{group}{群} $(\mathbf Z/2\mathbf Z)_k$ 非平凡地\Term{action}{作用}于\Term{diagonalizable-group}{可对角化群} $D_k(\mathbf Z/3\mathbf Z)$（见第 I 讲 4.1 和 4.4）。若 $G$ 是此\Term{action}{作用}定义的 $D_k(\mathbf Z/3\mathbf Z)$ 与 $(\mathbf Z/2\mathbf Z)_k$ 的\Term{semidirect-product}{半直积}，则 $G_{\mathrm{r\text{é}d}}$ 等同于 $(\mathbf Z/2\mathbf Z)_k$，并不在 $G$ 中\Term{normal-subgroup}{正规}。\footnote{编者注：要得到 $G$ \Term{connected}{连通}的类似例子，可在 $\operatorname{car}(k)=p>0$ 时考虑 $\alpha_{p,k}$ 与 $\mathbf G_{m,k}$ 的\Term{semidirect-product}{半直积}。}
+
+设 $k$ 是任意域，$k^{p^{-\infty}}$ 是其\Term{perfect-closure}{完美闭包}，$H$ 是\Term{category}{范畴} $(\mathrm{Sch}/k)_{\mathrm{r\text{é}d}}$ 中的\Term{group}{群}。则 $(H\otimes_k k^{p^{-\infty}})_{\mathrm{r\text{é}d}}$ 是\Term{perfect-field}{完美域} $k^{p^{-\infty}}$ 上的\Term{group-scheme}{群概形}。由于 $H\otimes_k k^{p^{-\infty}}$ 与 $(H\otimes_k k^{p^{-\infty}})_{\mathrm{r\text{é}d}}$ 有相同的底层\Term{topological-space}{拓扑空间}，可见 $(\mathrm{Sch}/k)_{\mathrm{r\text{é}d}}$ 中的\Term{group}{群}与 $k$-\Term{group}{群}共有某些在\Term{base-field-extension}{基域扩张}下\Term{invariant}{不变}的\Term{topology}{拓扑}性质。例如，由 0.3 及上述注记可知，$(\mathrm{Sch}/k)_{\mathrm{r\text{é}d}}$ 中的每个\Term{group}{群}都是\Term{separated}{分离}的。
+
+以后，每当我们遇到 $A$-\Term{group}{群} $G$ 的\Term{nonempty}{非空}\Term{locally-closed}{局部闭}\Term{subset}{子集} $U$，满足 $U\cdot U=U$ 且 $U^{-1}=U$ 时，就会遇到 $(\mathrm{Sch}/k)_{\mathrm{r\text{é}d}}$ 中的\Term{group}{群}：事实上，由 $U$ 定义的 $G$ 的\Term{reduced}{约化}\Term{subscheme}{子概形}就是这个\Term{category}{范畴}中的\Term{group}{群}。
+
+\textbf{0.3.} $A$-\Term{group}{群} $G$ 总是\Term{separated}{分离}的，因为\Term{unit-section}{单位截面} $e:\operatorname{Spec}A\to G$ 是\Term{closed-immersion}{闭浸入}。事实上，设 $x$ 是 $\operatorname{Spec}A$ 的唯一点，$\eta:G\to\operatorname{Spec}A$ 是结构\Term{morphism}{态射}。由于 $\eta\circ e=\operatorname{id}_{\operatorname{Spec}A}$，对 $G$ 中每个包含 $e(x)$ 的\Term{affine-open}{仿射开子集} $U=\operatorname{Spec}B$，\Term{morphism}{态射} $B\to A$ 都有\Term{section}{截面}，因而是\Term{surjectivity}{满射}。由此可知 $e$ 是\Term{closed-immersion}{闭浸入}。\footnote{编者注：这个论证对每个零维\Term{local-ring}{局部环} $A$ 都成立，并表明若 $S$ 是\Term{discrete}{离散}\Term{scheme}{概形}，则每个 $S$-\Term{group}{群}都是\Term{separated}{分离}的，见第 VI$_B$ 讲 5.2；另一方面（见第 VI$_B$ 讲 5.6.4），若 $S$ 含有一个非孤立的\Term{closed-point}{闭点} $s$，则沿\Term{open-subset}{开子集} $S-\{s\}$ 将 $S$ 的两个副本\Term{gluing}{粘合}而得到的 $S$-\Term{scheme}{概形} $G$ 在 $S$ 上不\Term{separated}{分离}，却带有 $S$-\Term{group}{群}结构。}而 $G\times_A G$ 的\Term{diagonal}{对角线}可等同于如下从 $(\mathrm{Sch}/A)^\circ$ 到 $(\mathrm{Ens})$ 的\Term{functor}{函子}：它将每个 $A$ 上的\Term{scheme}{概形} $S$ 对应到 $G(S)$ 的\Term{identity-element}{单位元}在映射 $\varphi(S):G(S)\times G(S)\to G(S)$、$(x,y)\mapsto x\cdot y^{-1}$ 下的\Term{inverse-image}{逆像}。所以有以下\Term{cartesian-square}{笛卡尔方块}，从而\Term{diagonal-morphism}{对角态射}是\Term{closed-immersion}{闭浸入}经\Term{base-change}{基变换}所得，它自身也是\Term{closed-immersion}{闭浸入}：
+\SourcePage{299}
+\[
+\begin{tikzcd}
+G\times_S G\arrow[r,"\varphi"]&G\\
+G\arrow[u,"\text{对角态射}"]\arrow[r]&\operatorname{Spec}A\arrow[u,"\text{单位截面}"'].
+\end{tikzcd}
+\]
+
+\textbf{0.4.}\footnote{编者注：以下细化了原文，特别是增补了注记 0.4.1。} 设 $G$ 是 $A$-\Term{scheme}{概形}。称 $G$ 的点 $g$ 在 $A$ 上\Term{strictly-rational}{严格有理}，若存在将 $\operatorname{Spec}A$ 的唯一点映到 $g$ 的 $A$-\Term{morphism}{态射} $s:\operatorname{Spec}A\to G$，即\Term{morphism}{态射} $A\to\mathcal O_{G,g}$ 有一个\Term{retraction}{收缩}。注意，此时 $\kappa(g)=k$，所以 $g$ 是 $G$ 的\Term{closed-point}{闭点}：若 $B$ 是 $g$ 的一个\Term{affine-open}{仿射开邻域}的环，$\mathfrak p$ 是 $B$ 中对应于 $g$ 的\Term{prime-ideal}{素理想}，则 $B/\mathfrak p\subset k$ 是\Term{finite}{有限} $A$-\Term{algebra}{代数}，因而是整的 Artin 环，所以是域。
+
+现再设 $G$ 为 $A$-\Term{group}{群}。这样的 $s:\operatorname{Spec}A\to G$ 定义 $G$ 在 $A$ 上的\Term{automorphism}{自同构} $r_s$，称为由 $s$ 定义的\Term{right-translation}{右平移}：对每个\Term{morphism}{态射} $\pi:S\to\operatorname{Spec}A$，$r_s(\pi)$ 是 $G(S)$ 的\Term{automorphism}{自同构}，由 $x\mapsto x\cdot G(\pi)(s)$（$x\in G(S)$）定义。同样，以 $\ell_s$ 表示由 $s$ 定义的\Term{left-translation}{左平移}，即由 $\ell_s(\pi)(x)=G(\pi)(s)\cdot x$（$x\in G(S)$）定义的 $G$ 的\Term{automorphism}{自同构}。
+
+由于 $G\otimes_A k$ 与 $G$ 有相同的底层\Term{topological-space}{拓扑空间} $\underline G$，$G\otimes_A k$ 是 $k$-\Term{group}{群}，且 $s\otimes_A k$ 仅依赖于 $g$ 而不依赖于 $s$，所以 $r_s$ 和 $\ell_s$（或 $r_{s\otimes k}$ 和 $\ell_{s\otimes k}$）在 $\underline G$ 上诱导的\Term{automorphism}{自同构}仅依赖于 $g$。因此，若 $P$ 是 $\underline G$ 的\Term{subset}{子集}，可以用 $r_g(P)$ 或 $P\cdot g$（分别 $\ell_g(P)$ 或 $g\cdot P$）代替 $r_s(P)$（分别 $\ell_s(P)$）；这与 0.1 的记号一致。
+
+\begin{SGAresult}{注记}{0.4.1}
+若 $g$ 是 $G$ 的\Term{strictly-rational}{严格有理}点，$A\to A'$ 是 Artin \Term{local-ring}{局部环}的\Term{morphism}{态射}，则 $G'=G\otimes_A A'$ 在 $g$ 上方只有一个点 $g'$，且 $g'$ 在 $A'$ 上\Term{strictly-rational}{严格有理}；此外，若 $P'$ 是 $P$ 在 $G'$ 中的\Term{inverse-image}{逆像}，则 $P'\cdot g'$ 是 $P\cdot g$ 的\Term{inverse-image}{逆像}（见 EGA I, 3.4.8）。
+\end{SGAresult}
+\begin{SGAresult}{命题}{0.5}
+\footnote{编者注：原文在 $G$ 在 $A$ 上\Term{locally-finite-type}{局部有限型}的假设下陈述此结果。由于一般情形的结果很有用，且证明基本相同，现改为陈述并证明一般情形。以下将多次使用这一结果。}设 $G$ 是 $A$-\Term{group}{群}，$U,V$ 是 $G$ 中两个\Term{dense}{稠密}\Term{open-subset}{开子集}。则 $U\cdot V$（即 $U\times_A V$ 在\Term{multiplication}{乘法}下的像）等于 $G$ 的整个底层\Term{space}{空间}。
+\end{SGAresult}
+\begin{proof}
+由于 $G$ 与 $G\otimes_A k$ 有相同的底层\Term{space}{空间}，可用 $k$ 和 $G\otimes_A k$ 分别代替 $A$ 和 $G$，从而假设 $A=k$。取 $g\in G$，置 $K=\kappa(g)$，则\Term{left-translation}{左平移} $\ell_g$ 是 $G_K$ 的\Term{automorphism}{自同构}。由于\Term{projection}{投影} $G_K\to G$ 是开的，$U_K,V_K$ 以及 $V_K$ 在 $\lambda_g$ 下的像都是 $G_K$ 的\Term{dense}{稠密}\Term{open-subset}{开子集}。因此存在 $v\in V_K$ 使 $u=\ell_g(v)$ 属于 $U_K$。设 $L$ 是 $K$ 的一个\Term{group-extension}{扩张}，包含 $\kappa(v)$，因而也包含 $\kappa(u)$，并设 $g_L,v_L$ 是从 $g,v$ 得到的 $G_L$ 的 $L$-点。
+\SourcePage{300}
+则 $g_L\cdot v_L=u'$ 是 $G_L$ 中位于 $u$ 上方的点，所以 $g_L=u'\cdot v_L^{-1}$ 位于 $U\cdot V$ 上方，故 $g\in U\cdot V$，命题得证。
+\end{proof}
+\begin{SGAresult}{推论}{0.5.1}
+\footnote{编者注：此处增补了本推论，见下文 2.4 和 2.6.2。}若 $A$-\Term{group}{群} $G$ \Term{irreducible}{不可约}，则 $G$ \Term{quasi-compact}{拟紧}。
+\end{SGAresult}
+\begin{proof}
+设 $U$ 是 $G$ 的\Term{nonempty}{非空}\Term{affine-open}{仿射开子集}，则 $U$ 在 $G$ 中\Term{dense}{稠密}，所以由 0.5，\Term{morphism}{态射} $\mu:U\times_A U\to G$ 是\Term{surjectivity}{满射}。由于 $U\times_A U$ \Term{quasi-compact}{拟紧}，$G$ 也\Term{quasi-compact}{拟紧}。
+\end{proof}
+\begin{SGAresult}{推论}{0.5.2}
+\footnote{编者注：增补了此推论，第 VIII 讲 6.7 曾隐含地使用它；另见第 VI$_B$ 讲 6.2.5。}设 $G$ 是 $A$-\Term{group-scheme}{群概形}，$H$ 是 $G$ 的 $A$-\Term{subgroup-scheme}{子群概形}，则 $H$ 是闭的。
+\end{SGAresult}
+\begin{proof}
+设 $k'$ 是 $A$ 的\Term{residue-field}{剩余域} $k$ 的\Term{perfect-closure}{完美闭包}。由于 $G,H$ 的底层\Term{topological-space}{拓扑空间}经\Term{base-change}{基变换} $A\to k\to k'$ \Term{invariant}{不变}，可假设 $A=k$ 是\Term{perfect-field}{完美域}。于是可再假设 $G,H$ 都\Term{reduced}{约化}，从而都\Term{geometrically-reduced}{几何约化}。
+
+设 $\overline H$ 为 $H$ 的\Term{closure}{闭包}，则 $\mu^{-1}(\overline H)$ 是 $G\times G$ 的\Term{closed-subset}{闭子集}，包含 $H\times H$。由于 $H\to\operatorname{Spec}k$（分别 $\overline H\to\operatorname{Spec}k$）\Term{universally-open}{普遍开}，且 $H$ 在 $\overline H$ 中\Term{dense}{稠密}，所以 $H\times H$ 在 $\overline H\times H$ 中\Term{dense}{稠密}，而 $\overline H\times H$ 在 $\overline H\times\overline H$ 中\Term{dense}{稠密}，故 $H\times H$ 在 $\overline H\times\overline H$ 中\Term{dense}{稠密}。因此 $\mu(\overline H\times\overline H)\subset\overline H$；又因 $\overline H\times\overline H$ \Term{reduced}{约化}，$\mu$ 诱导\Term{morphism}{态射} $\mu':\overline H\times\overline H\to\overline H$。
+
+现取 $g\in\overline H$，置 $K=\kappa(g)$。由于\Term{projection}{投影} $\overline H_K\to\overline H$ 是开的，$H_K$ 与 $\ell_g(H_K)$ 是 $\overline H_K$ 中的两个\Term{dense}{稠密}\Term{open-subset}{开子集}，所以存在 $u,v\in H_K$ 使 $\ell_g(v)=u$。如同 0.5 的证明，由此得到 $g\in H\cdot H=H$，故 $H=\overline H$。
+\end{proof}
+
+\SGAsection{1}{局部有限型 $A$-群的局部性质}
+我们先来证明：若 $G$ 在 $A$ 上\Term{locally-finite-type}{局部有限型}且\Term{flat}{平坦}，则可通过底的\Term{finite}{有限}\Term{flat}{平坦}\Term{group-extension}{扩张}“使 $G$ 的每个\Term{closed-point}{闭点}成为\Term{strictly-rational}{严格有理}点”。
+
+\textbf{1.1.} 从现在起，除非明确作出相反说明，均假设 $G$ 是\Term{locally-finite-type}{局部有限型} $A$-\Term{group}{群}。当 $A$ 是域 $k$ 时，第 VII$_B$ 讲将给出关于 $G$ 的\Term{local-ring}{局部环}的非常精确的结果。\footnote{编者注：例如，它们总是\Term{complete-intersection}{完全交}，见第 VII$_B$ 讲 5.5.1。此外，若 $\operatorname{car}(k)=0$，则 $G$ \Term{smooth}{光滑}（第 VI$_B$ 讲 1.6.1，另见第 VII$_B$ 讲 3.3.1）。}这里仅给出一些初等结果。
+\begin{SGAresult}{命题}{1.1.1}
+设 $x$ 是在 $A$ 上\Term{locally-finite-type}{局部有限型}且\Term{flat}{平坦}的 $A$-\Term{group}{群} $G$ 的一点。则\Term{local-ring}{局部环} $\mathcal O_{G,x}$ 是 Cohen--Macaulay 环，且存在 $\mathcal O_{G,x}$ 的\Term{system-of-parameters}{参数系} $a_1,\ldots,a_n$，使 $\mathcal O_{G,x}/(a_1,\ldots,a_n)$ 是\Term{finite}{有限}\Term{flat}{平坦}（所以\Term{finite}{有限}自由）的 $A$-模。
+\end{SGAresult}
+\begin{proof}
+\SourcePage{301}
+先设 $A$ 等于其\Term{residue-field}{剩余域} $k$。此时只须证明 $\mathcal O_{G,x}$ 是 Cohen--Macaulay 环，且可限于 $x$ 为\Term{closed-point}{闭点}的情形（见 EGA $0_{\mathrm{IV}}$, 16.5.13）。由下面的\Term{lemma}{引理} 1.1.2，$G$ 含有\Term{closed-point}{闭点} $y$，使 $\mathcal O_{G,y}$ 为 Cohen--Macaulay 环。由 SGA 1，第 I 讲第 9 节，这\Term{equivalence}{等价}于：对\Term{base-field}{基域} $k$ 的每个\Term{finite-extension}{有限扩张} $K$ 及 $\overline G=G\otimes_k K$ 中每个位于 $y$ 上方的点 $\overline y$，$\mathcal O_{\overline G,\overline y}$ 都是 Cohen--Macaulay 环。若\Term{group-extension}{扩张} $K$ 取得\Term{large-relative-to-cardinal}{足够大}，即 $K$ 包含 $k$ 的一个\Term{normal}{正规}\Term{group-extension}{扩张}，而该\Term{normal}{正规}\Term{group-extension}{扩张}包含\Term{residue-field}{剩余域} $\kappa(y)$ 和 $\kappa(x)$，则 $\overline y$ 在 $K$ 上（\Term{strictly-rational}{严格}）\Term{rational-point}{有理}，$\overline G$ 中位于 $x$ 上方的每个点 $\overline x$ 也如此。\footnote{编者注：事实上，关于 $K$ 的假设蕴含：对 $K$ 的每个\Term{group-extension}{扩张} $L$，每个 $k$-\Term{morphism}{态射} $\kappa(x)\to L$（分别 $\kappa(y)\to L$）都经 $K$ \Term{resolution}{分解}。因此 $G\otimes_k K$ 中位于 $x$ 或 $y$ 上方的点的\Term{residue-field}{剩余域}都为 $K$，即都在 $K$ 上（\Term{strictly-rational}{严格}）\Term{rational-point}{有理}。}由于\Term{automorphism}{自同构} $r_{\overline x}\circ(r_{\overline y})^{-1}$ 将 $\overline y$ 映到 $\overline x$，可知 $\mathcal O_{\overline G,\overline x}$，从而 $\mathcal O_{G,x}$（SGA 1，第 I 讲第 9 节）都是 Cohen--Macaulay 环。
+
+再设 $A$ 任意。上述论证适用于 $k\otimes_A G$，所以 $k\otimes_A\mathcal O_{G,x}$ 是 Cohen--Macaulay 环。若 $a_1,\ldots,a_n\in\mathcal O_{G,x}$ 的像构成 $k\otimes_A\mathcal O_{G,x}$ 的\Term{system-of-parameters}{参数系}，则由 SGA 1，第 IV 讲 5.7 或 EGA $0_{\mathrm{IV}}$, 15.1.16，$a_1,\ldots,a_n$ 是 $\mathcal O_{G,x}$-\Term{regular-sequence}{正则序列}，且 $\mathcal O_{G,x}/(a_1,\ldots,a_n)$ 在 $A$ 上\Term{finite}{有限}\Term{flat}{平坦}，所以\Term{finite}{有限}自由。
+\end{proof}
+\begin{SGAresult}{\Term{lemma}{引理}}{1.1.2}
+Artin 环 $A$ 上的每个\Term{nonempty}{非空}\Term{locally-finite-type}{局部有限型}\Term{scheme}{概形} $X$ 都含有一个\Term{closed-point}{闭点} $x$，其\Term{local-ring}{局部环}为 Cohen--Macaulay 环。
+\end{SGAresult}
+\begin{proof}
+显然可假设 $X$ 为\Term{affine}{仿射}，其\Term{algebra}{代数}为 $B$，并对 $\dim X$ 归纳（若 $X$ \Term{discrete}{离散}，所有\Term{local-ring}{局部环}都是 Artin 环，结论显然）。由于 $B$ 在 $A$ 上\Term{finite-type}{有限型}，若 $\dim B>0$，则 $B$ 中存在一个不\Term{invertible}{可逆}的\Term{non-zero-divisor}{非零因子} $a$。\footnote{编者注：事实上，$B$ 是 Jacobson \Term{noetherian-ring}{诺特环}（见 [BAC]，第 V 章第 3.4 节）。若每个不\Term{invertible-element}{可逆元}都是\Term{zero-divisor}{零因子}，则每个\Term{prime-ideal}{素理想}都是 $B$ 的\Term{associated-prime}{相伴素理想}，所以特别地，$B$ 只有\Term{finite}{有限}多个\Term{maximal-ideal}{极大理想} $\mathfrak m_1,\ldots,\mathfrak m_n$。由于 $B$ 是 Jacobson 环，$\mathfrak m_i$ 的交就是 $B$ 的\Term{nilpotent}{幂零}根，因此每个 $\mathfrak m_i$ 都是 $B$ 的\Term{minimal-prime-ideal}{极小素理想}，故 $\dim B=0$。}于是 $X$ 的\Term{closed-subscheme}{闭子概形} $X'=\operatorname{Spec}B/(a)$ 的\Term{dimension}{维数}严格小于 $\dim X$，由归纳假设，它含有\Term{closed-point}{闭点} $x$，使 $\mathcal O_{X',x}$ 为 Cohen--Macaulay 环。因为 $\mathcal O_{X',x}=\mathcal O_{X,x}/(a)$，且 $a$ 在 $\mathcal O_{X,x}$ 中不\Term{invertible}{可逆}又\Term{non-zero-divisor}{非零因子}，所以 $\mathcal O_{X,x}$ 是 Cohen--Macaulay 环（另见 EGA IV$_2$, 6.11.3）。
+\end{proof}
+\begin{SGAresult}{命题}{1.2}
+设 $A$ 是 Artin \Term{local-ring}{局部环}，$G$ 是在 $A$ 上\Term{locally-finite-type}{局部有限型}且\Term{flat}{平坦}的 $A$-\Term{group}{群}，$x$ 是 $G$ 的\Term{closed-point}{闭点}。则存在\Term{local-scheme}{局部} $A$-\Term{algebra}{代数} $A'$，在 $A$ 上\Term{finite}{有限}自由，使 $G\otimes_A A'$ 中位于 $x$ 上方的每个点都在 $A'$ 上\Term{strictly-rational}{严格有理}。
+\end{SGAresult}
+\begin{proof}
+\footnote{编者注：以下细化了原文。}设 $k_1$ 是 $k$ 的\Term{finite}{有限}次\Term{normal}{正规}\Term{group-extension}{扩张}，包含 $x$ 的\Term{residue-field}{剩余域} $\kappa(x)$。由第 V 讲\Term{lemma}{引理} 4.1.2，存在\Term{local-scheme}{局部} $A$-\Term{algebra}{代数} $A_1$，在 $A$ 上\Term{finite}{有限}自由，\Term{residue-field}{剩余域}为 $k_1$。此时（见编者注 (11)），$G\otimes_A A_1$ 中位于 $x\in G$ 上方的所有点 $g_1,\ldots,g_n$ 的\Term{residue-field}{剩余域}都是 $k_1$（即 $g_1,\ldots,g_n$ 在第 V 讲第 4.e 节的意义下在 $A_1$ 上\Term{rational-point}{有理}）。
+\SourcePage{302}
+设 $B_1,\ldots,B_n$ 为 $g_1,\ldots,g_n$ 的\Term{local-ring}{局部环}。由 1.1.1，$B_1,\ldots,B_n$ 有商 $B'_1,\ldots,B'_n$，它们是 Artin 环，并在 $A_1$ 上\Term{finite}{有限}自由。置 $A'=B'_1\otimes_{A_1}\cdots\otimes_{A_1}B'_n$。则 $A'$ 是\Term{local-ring}{局部环}，在 $A_1$ 上\Term{finite}{有限}自由，且对每个 $i=1,\ldots,n$，有\Term{epimorphism}{满同态}
+\[
+B_i\otimes_{A_1}A'\twoheadrightarrow B'_i\otimes_{A_1}A'\twoheadrightarrow A',
+\]
+第二个\Term{homomorphism}{同态}由\Term{multiplication}{乘法}映射 $B'_i\otimes_{A_1}B'_i\twoheadrightarrow B'_i$ 诱导。因此 $A'$ 满足要求。
+\end{proof}
+
+\textbf{1.3.} 以 $e$ 表示 $G$ 的\Term{identity-element}{单位元}（或原点），即 $\operatorname{Spec}A$ 的唯一点在\Term{unit-section}{单位截面} $\operatorname{Spec}A\to G$ 下的像。按定义，$e$ 在 $A$ 上\Term{strictly-rational}{严格有理}。
+\begin{SGAresult}{命题}{1.3.1}
+\footnote{编者注：增补了第 (1) 点，下面的例 1.3.2 将用到它。}设 $G$ 是 Artin 环 $A$ 上\Term{locally-finite-type}{局部有限型}且\Term{flat}{平坦}的\Term{group}{群}，$K$（分别 $\overline k$）为 $A$ 的\Term{residue-field}{剩余域} $k$ 的\Term{perfect-closure}{完美闭包}（分别一个\Term{algebraic-closure}{代数闭包}）。
+
+(1) 对 $\overline G=G\otimes_k\overline k$ 的每个\Term{closed-point}{闭点} $x$，\Term{local-ring}{局部环} $\mathcal O_{\overline G,e}$ 与 $\mathcal O_{\overline G,x}$ \Term{isomorphism}{同构}。特别地，\Term{tangent-space}{切空间} $T_e\overline G$ 与 $T_x\overline G$ 的\Term{dimension}{维数}相同。
+
+(2) 以下断言\Term{equivalence}{等价}：
+\[
+\begin{array}{ll}
+\text{(i)}&G\otimes_A K\text{ 约化};\\
+\text{(i bis)}&\mathcal O_{G,e}\otimes_A K\text{ 约化};\\
+\text{(ii)}&G\text{ 在 }A\text{ 上光滑};\\
+\text{(ii bis)}&G\text{ 在原点处在 }A\text{ 上光滑}.
+\end{array}
+\]
+\end{SGAresult}
+\begin{proof}
+(1) 设 $x$ 是 $\overline G$ 的\Term{closed-point}{闭点}，恰有一个像为 $x$ 的 $\overline k$-\Term{morphism}{态射} $s:\operatorname{Spec}\overline k\to\overline G$；\Term{right-translation}{右平移} $r_s$ 诱导从 $\mathcal O_{\overline G,e}=\mathcal O_{G,e}\otimes_k\overline k$ 到 $\mathcal O_{\overline G,x}$ 的\Term{isomorphism}{同构}，即得 (1)。
+
+证明 (2)。利用 SGA 1，第 II 讲 2.1，立即归结到 $A$ 为域（$A=k$）的情形。蕴含 (i)$\Rightarrow$(i bis)、(ii)$\Rightarrow$(ii bis)、(ii)$\Rightarrow$(i) 和 (ii bis)$\Rightarrow$(i bis) 显然，所以只须证明 (i bis) 蕴含 (ii)。
+
+由 (i bis)，$\mathcal O_{G,e}\otimes_k\overline k$ \Term{reduced}{约化}。所以由 (1)，$\overline G$ 的每个\Term{closed-point}{闭点} $x$ 的\Term{local-ring}{局部环} $\mathcal O_{\overline G,x}$ 都\Term{reduced}{约化}，因而 $\overline G$ \Term{reduced}{约化}。由于 $\overline G$ 在 $\overline k$ 上\Term{locally-finite-type}{局部有限型}，至少存在一个\Term{closed-point}{闭点} $y$ 使 $\mathcal O_{\overline G,y}$ \Term{regular}{正则}。由 (1)，$\overline G$ 的所有\Term{closed-point}{闭点}的\Term{local-ring}{局部环}均\Term{isomorphism}{同构}于 $\mathcal O_{\overline G,e}$，所以它们都\Term{regular}{正则}。故 $\overline G$ 在 $\overline k$ 上\Term{smooth}{光滑}，因此 $G$ 在 $k$ 上\Term{smooth}{光滑}。
+\end{proof}
+现在可以给出 M. Raynaud 指出的以下例子，\footnote{编者注：增补了本句及例 1.3.2。}它们是非\Term{perfect-field}{完美域} $k$ 上的\Term{group-scheme}{群概形} $G$，而 $G_{\mathrm{r\text{é}d}}$ 并不是 $k$-\Term{group-scheme}{群概形}。
+\SourcePage{303}
+\begin{SGAresult}{例}{1.3.2}
+设 $k$ 是\Term{characteristic}{特征}为 $p>0$ 的非\Term{perfect-field}{完美域}，$t\in k-k^p$，$\overline k$ 为 $k$ 的\Term{algebraic-closure}{代数闭包}，$\alpha\in\overline k$ 满足 $\alpha^p=t$。
+
+(1) 考虑\Term{additive-group}{加法群} $\mathbf G_{a,k}=\operatorname{Spec}k[X]$，设 $G$ 是由\Term{additive-polynomial}{加性多项式} $X^{p^2}-tX^p$ 定义的在 $k$ 上\Term{finite}{有限}的\Term{subgroup-scheme}{子群概形}。则
+\[
+G_{\mathrm{r\text{é}d}}=\operatorname{Spec}k[X]/X(X^{p(p-1)}-t)
+\]
+在原点处\Term{etale}{平展}。若它是 $k$-\Term{group-scheme}{群概形}，则由 1.3.1 它应\Term{smooth}{光滑}；然而 $G_{\mathrm{r\text{é}d}}$ 并非\Term{geometrically-reduced}{几何约化}，所以它不是 $k$-\Term{group-scheme}{群概形}。
+
+(2) 考虑 $\mathbf G_{a,k}^4=\operatorname{Spec}k[X,Y,U,V]$，设 $G$ 是由\Term{additive-polynomial}{加性多项式} $P=X^p-tY^p$ 和 $Q=U^p-tV^p$ 生成的\Term{ideal}{理想} $I$ 所定义的\Term{subgroup-scheme}{子群概形}。则 $G$ 是二维\Term{irreducible}{不可约}的，因为 $(G_{\overline k})_{\mathrm{r\text{é}d}}\simeq\operatorname{Spec}\overline k[Y,V]$ 如此。
+
+设 $A=k[X,Y,U,V]$，$\mathfrak m$ 为其\Term{augmentation-ideal}{增广理想}。以 $x,y,u,v$ 表示 $\mathrm dX,\mathrm dY,\mathrm dU,\mathrm dV$ 在 $\Omega^1_{A/k}\otimes_A(A/\mathfrak m)$ 中的像，并视之为\Term{tangent-space}{切空间} $k^4=T_0\mathbf G_{a,k}^4$ 上的\Term{linear-form}{线性形式}。证明子\Term{space}{空间} $E=T_0G_{\mathrm{r\text{é}d}}$ 等于 $k^4$。否则存在一个在 $E$ 上为零的\Term{linear-form}{线性形式} $f=ax+by+a'u+b'v$，其中 $a,b,a',b'\in k$ 不全为零。回顾，$\Omega^1_{A/k}$ 的形成（从而\Term{tangent-space}{切空间}的形成）与\Term{base-change}{基变换}可交换（见 EGA IV$_4$, 16.4.5）；将 $f$ 等同于它在 $(\overline k^4)^*$ 中的像。由于 $(G_{\overline k})_{\mathrm{r\text{é}d}}\subset(G_{\mathrm{r\text{é}d}})_{\overline k}$，$f$ 在 $\overline k^4$ 的子\Term{space}{空间} $T_0(G_{\overline k})_{\mathrm{r\text{é}d}}$ 上为零；该子\Term{space}{空间}由方程 $g_1=x-\alpha y$ 和 $g_2=u-\alpha v$ 定义，所以 $f=\lambda g_1+\mu g_2$，其中 $\lambda,\mu\in\overline k$。但 $\lambda g_1+\mu g_2$ 属于 $k^4$ 当且仅当 $\lambda=\mu=0$！矛盾表明 $E=k^4$，所以 $T_0(G_{\mathrm{r\text{é}d}})_{\overline k}=\overline k^4$。
+
+另一方面，$R=XV-YU$ 属于 $\sqrt I$，因为 $R^p=(X^p-tY^p)V^p-Y^p(U^p-tV^p)$。因此 $(G_{\mathrm{r\text{é}d}})_{\overline k}$ 在点 $(\alpha,1,\alpha,1)$ 处的\Term{tangent-space}{切空间} $F$ 包含于 $\overline k^4$ 中由方程 $\alpha\,\mathrm dV+\mathrm dX-\mathrm dU-\alpha\,\mathrm dY=0$ 定义的\Term{hyperplane}{超平面} $H$，故\Term{dimension}{维数} $\leq3$。\footnote{编者注：实际上容易看出，在每个非零点处，$\sqrt I$ 由 $P,Q,R$ 生成，所以 $F=H$。}故由 1.3.1 的第 (1) 点，$G_{\mathrm{r\text{é}d}}$ 不是 $k$-\Term{group-scheme}{群概形}。
+\end{SGAresult}
+
+\SGAsection{2}{局部有限型 $A$-群的连通分支}
+\textbf{2.1.} 先考虑任意 $A$-\Term{group}{群} $G$，设 $G'$ 为 $G$ 的原点 $e$ 所在的\Term{connected-component}{连通分支}。这个\Term{connected-component}{连通分支}显然是闭的，所以可将它等同于以 $G'$ 为底层\Term{space}{空间}的 $G$ 的\Term{reduced}{约化}\Term{closed-subscheme}{闭子概形}。\footnote{编者注：下文（2.2）将看到 $G'$ 是\Term{category}{范畴} $(\mathrm{Sch}/k)_{\mathrm{r\text{é}d}}$ 中的\Term{group}{群}。}
+\begin{SGAresult}{命题}{2.1.1}
+对 $A$ 的\Term{residue-field}{剩余域} $k$ 的每个\Term{group-extension}{扩张} $K$，$G'\otimes_A K$ 的底层\Term{space}{空间}都是 $K$-\Term{group}{群} $G\otimes_A K$ 中原点的\Term{connected-component}{连通分支}（即 $G'$ \Term{geometrically-connected}{几何连通}）。
+\end{SGAresult}
+\begin{proof}
+设 $(G\otimes_A K)'$ 为 $G\otimes_A K$ 中原点的\Term{connected-component}{连通分支}。由于它在 $G$ 中的像\Term{connected}{连通}且包含 $G$ 的\Term{identity-element}{单位元}，该像包含于 $G'$，所以 $(G\otimes_A K)'$ 包含于 $G'$ 在 $G\otimes_A K$ 中的\Term{inverse-image}{逆像} $G'\otimes_A K$。
+\SourcePage{304}
+因此由下面\Term{lemma}{引理} 2.1.2 所证明的 $G'\otimes_A K$ 的\Term{connected}{连通性}，即得本命题。
+\end{proof}
+\begin{SGAresult}{\Term{lemma}{引理}}{2.1.2}
+设 $X,Y$ 是域 $k$ 上的两个\Term{connected}{连通}\Term{scheme}{概形}。若 $X$ 含有\Term{rational-point}{有理点}，则 $X\times_k Y$ \Term{connected}{连通}。
+\end{SGAresult}
+\begin{proof}
+下面给出 EGA IV$_2$（4.5.8 和 4.5.14）这一结果的直接证明。
+
+先设 $Y$ \Term{nonempty}{非空}、\Term{connected}{连通}且\Term{affine}{仿射}，\Term{algebra}{代数}为 $B$。此时 $X\times_k Y$ 是\Term{quasi-coherent}{拟凝聚} $\mathcal O_X$-\Term{algebra}{代数} $\mathcal B=\mathcal O_X\otimes_k B$ 的谱。我们要证明 $X\times_k Y$ 的每个\Term{nonempty}{非空}\Term{open-and-closed}{开闭}\Term{subset}{子集} $U$ 都等于 $X\times_k Y$。$U$ 在 $X$ 上\Term{affine}{仿射}，其\Term{affine}{仿射} $\mathcal O_X$-\Term{algebra}{代数}为 $\mathcal B$ 的一个\Term{direct-factor}{直因子}。所以由下面的\Term{lemma}{引理} 2.1.3，$U$ 在 $X$ 中的像是\Term{open-and-closed}{开闭}\Term{subset}{子集}，即等于整个 $X$。此像特别包含 $X$ 的一个\Term{rational-point}{有理点} $x$，所以 $U$ 与 $x$ 在 $X\times_k Y$ 中的\Term{inverse-image}{逆像}相交。后者\Term{isomorphism}{同构}于 $Y$，因而\Term{connected}{连通}，所以 $U$ 包含此\Term{inverse-image}{逆像}。若 $U\ne X\times_k Y$，同样的结论也适用于 $U$ 的补集，矛盾。
+
+现设 $Y$ 为任意 $k$-\Term{scheme}{概形}。由上述结论，\Term{canonical}{典范}\Term{projection}{投影} $X\times_k Y\to Y$ 的各\Term{fiber}{纤维}均\Term{connected}{连通}。若 $x$ 为 $X$ 的一个\Term{rational-point}{有理点}，则这些\Term{fiber}{纤维}都与本身\Term{connected}{连通}的\Term{subscheme}{子概形} $\{x\}\times_k Y$ 相交，即得结论。
+\end{proof}
+\begin{SGAresult}{\Term{lemma}{引理}}{2.1.3}
+设 $X$ 是\Term{scheme}{概形}，$\mathcal A$ 是\Term{quasi-coherent}{拟凝聚} $\mathcal O_X$-\Term{algebra}{代数}，且作为 $\mathcal O_X$-模是某个\Term{free-module}{自由模}的\Term{direct-factor}{直因子}。则 $\operatorname{Spec}\mathcal A$ 在 $X$ 中的像既开又闭。
+\end{SGAresult}
+\begin{proof}
+以 $V$ 表示此像。显然 $V$ 包含于 $\mathcal A$ 的\Term{support}{支集}。反之，若 $x$ 属于 $\mathcal A$ 的\Term{support}{支集}，则 $\mathcal A_x\ne0$，并且是自由 $\mathcal O_{X,x}$-模，因为由 Kaplansky 的\Term{theorem}{定理}，\footnote{编者注：参见 I. Kaplansky, \emph{Projective modules}, Ann. of Maths. 68 (1958), 372--377；另见 [BAC]，第 II.3 节习题 3。}\Term{local-ring}{局部环}上的每个\Term{projective-module}{投射模}都是自由的。因此 $\operatorname{Spec}\mathcal A$ 在 $x$ 处的\Term{fiber}{纤维}\Term{nonempty}{非空}，因为它是\Term{algebra}{代数}为 $\mathcal A_x\otimes_{\mathcal O_{X,x}}\kappa(x)$ 的\Term{affine}{仿射}\Term{scheme}{概形}。所以 $\operatorname{Spec}\mathcal A$ 的像等于 $\mathcal A$ 的\Term{support}{支集}。
+
+若 $s$ 是 $\mathcal A$ 的单位\Term{section}{截面}，则 $s_x=0$ 蕴含 $s$，因而 $\mathcal A$ 在 $x$ 的某个\Term{neighborhood}{邻域}内为零。所以 $\mathcal A$ 的\Term{support}{支集}是闭的。\footnote{编者注：以下细化了原文。}另一方面，“\Term{projective-module}{投射模}的\Term{support}{支集}是开的”。事实上，设 $\mathcal P$ 是\Term{local-scheme}{局部}\Term{projective-module}{投射}的\Term{quasi-coherent}{拟凝聚} $\mathcal O_X$-模，$\mathcal P^*=\mathcal H om_{\mathcal O_X}(\mathcal P,\mathcal O_X)$ 是其\Term{duality}{对偶} $\mathcal O_X$-模，$x\in X$ 满足 $\mathcal P_x\ne0$。将 $X$ 换为 $x$ 的充分小的\Term{affine-open}{仿射开邻域}，可假设 $\mathcal P$ 是某个自由 $\mathcal O_X$-模的\Term{direct-factor}{直因子}。于是自然\Term{morphism}{态射}
+\[
+\mathcal P^*\otimes_{\mathcal O_X}\mathcal O_{X,x}\longrightarrow\mathcal P_x^*=\operatorname{Hom}_{\mathcal O_{X,x}}(\mathcal P_x,\mathcal O_{X,x})
+\]
+是\Term{isomorphism}{同构}。再由 Kaplansky 的\Term{theorem}{定理}，$\mathcal P_x$ 在 $\mathcal O_{X,x}$ 上自由且非零，所以存在 $p\in\mathcal P_x$ 和 $\phi\in\mathcal P_x^*$，使 $\phi(p)=1$。因为 $\mathcal P_x^*=\mathcal P^*\otimes_{\mathcal O_X}\mathcal O_{X,x}$，
+\SourcePage{305}
+存在 $x$ 的\Term{open-neighborhood}{开邻域} $U$，使 $p,\phi$ 来自\Term{section}{截面} $\widetilde p\in\mathcal P(U)$ 和 $\widetilde\phi\in\mathcal P^*(U)$；于是 $\widetilde\phi(\widetilde p)=1$ 表明对每个 $y\in U$ 都有 $\widetilde p_y\ne0$。
+\end{proof}
+
+\textbf{2.2.} 沿用 2.1 的记号。显然 $G'$ 是\Term{reduced}{约化} $k$-\Term{scheme}{概形}。\Term{lemma}{引理} 2.1.2 表明 $G'\times_k G'$ \Term{connected}{连通}，所以 $(G'\times_k G')_{\mathrm{r\text{é}d}}$ 是 $G\times_A G$ 中以原点的\Term{connected-component}{连通分支}为底层\Term{space}{空间}的\Term{reduced}{约化}\Term{subscheme}{子概形}。特别地，\Term{multiplication}{乘法态射} $\mu:G\times_A G\to G$ 诱导一个\Term{morphism}{态射} $\mu^0:(G'\times_k G')_{\mathrm{r\text{é}d}}\to G'$，使 $G'$ 成为 $(\mathrm{Sch}/k)_{\mathrm{r\text{é}d}}$ 中的\Term{group}{群}。
+
+\textbf{2.2 bis.}\footnote{编者注：增补本段，以联系第 VI$_B$ 讲第 3 节。} 回顾（见第 V 讲），若 $P$ 是\Term{scheme}{概形}，则以 $\underline P$ 表示 $P$ 的底层\Term{topological-space}{拓扑空间}。定义 $G$ 的子 $A$-\Term{functor}{函子} $G^0$：对每个 $A$-\Term{scheme}{概形} $S$，置
+\[
+G^0(S)=\{u\in G(S)\mid u(\underline S)\subset\underline{G'}\}.
+\]
+设 $c:G\to G$ 为\Term{inversion}{取逆态射}。由于 $c(\underline{G'})=\underline{G'}$，对每个 $u\in G^0(S)$ 都有 $c\circ u\in G^0(S)$。另一方面，若 $u,v\in G^0(S)$，则 $u\boxtimes v$ 将 $\underline S$ 映入 $G\times_A G$ 中两个\Term{projection}{投影}均属于 $\underline{G'}$ 的点组成的子\Term{space}{空间}；它等同于 $G'\times_A G'$ 的底层\Term{space}{空间}，由\Term{lemma}{引理} 2.1.2 是\Term{connected}{连通}的。因此 $\mu\circ(u\boxtimes v)$ 将 $\underline S$ 映入 $\underline{G'}$。这说明 $G^0$ 是 $G$ 的群值子 $A$-\Term{functor}{函子}。
+
+若 $e$ 的\Term{connected-component}{连通分支}是 $G$ 的\Term{open-subset}{开子集}，则子\Term{functor}{函子} $G^0$ 由 $G$ 在此\Term{open-subset}{开子集}上诱导的\Term{subscheme}{子概形}表示，因而该\Term{subscheme}{子概形}是 $G$ 的\Term{subgroup-scheme}{子群概形}，仍记为 $G^0$。此时，按 2.1 的记号，有 $G'=(G^0)_{\mathrm{r\text{é}d}}$，且底层\Term{topological-space}{拓扑空间} $\underline{G'}$ 与 $\underline{G^0}$ 相同。\footnote{编者注：本讲仅在 $e$ 的\Term{connected-component}{连通分支}为\Term{open-subset}{开子集}时才使用记号 $G^0$；在第 VI$_B$ 讲第 3 节中，所有情形均以 $G^0$ 表示此\Term{connected-component}{连通分支}。这个记号略有滥用，但当该\Term{connected-component}{连通分支}是 $G$ 的一个开\Term{subgroup-scheme}{子群概形} $G^0$ 的底层\Term{topological-space}{拓扑空间}时，它与上述记号一致。}
+
+\textbf{2.3.} 按 1.1 的约定，从现在起再假设 $G$ 在 $A$ 上\Term{locally-finite-type}{局部有限型}。于是 $G$ \Term{locally-noetherian}{局部诺特}，因而\Term{local-scheme}{局部}\Term{connected}{连通}，\footnote{编者注：事实上，在\Term{noetherian-space}{诺特空间}中，\Term{connected-component}{连通分支}只有\Term{finite}{有限}多个，故每一个都是开的；另见 EGA I, 6.1.9。}所以 $G$ 的每个\Term{connected-component}{连通分支}都是开的。
+
+以 $G^0$ 表示 $G$ 在\Term{identity-element}{单位元}的\Term{connected-component}{连通分支} $\underline{G^0}$ 上诱导的\Term{subscheme}{子概形}。由 2.2 bis，$G^0$ 是 $G$ 的\Term{subgroup-scheme}{子群概形}，称为 $G$ 的\Term{neutral-component}{单位分支}；对每个 $A$-\Term{scheme}{概形} $S$，都有
+\[
+G^0(S)=\{u\in G(S)\mid u(\underline S)\subset\underline{G^0}=\underline{G'}\}.
+\]
+设 $G^\alpha$ 是 $G$ 的任一\Term{connected-component}{连通分支}，$\nu^\alpha:G^\alpha\times_A G^0\to G$ 是由等式
+\[
+\nu^\alpha(S)(g,\gamma)=g\gamma g^{-1}
+\]
+定义的\Term{morphism}{态射}，其中 $S\in(\mathrm{Sch}/A)$、$g\in G^\alpha(S)$、$\gamma\in G^0(S)$。
+\SourcePage{306}
+若 $e$ 是 $G$ 的原点，则 $\nu^\alpha$ 在 $G^\alpha\times_A\{e\}$ 上的\Term{restriction}{限制}是零\Term{morphism}{态射}；由 2.1.2，$G^\alpha\times_A G^0$ \Term{connected}{连通}，所以 $\nu^\alpha$ 经 $G^0$ \Term{resolution}{分解}。因此对每个 $A$-\Term{scheme}{概形} $S$，$G^0(S)$ 都是 $G(S)$ 的\Term{normal-subgroup}{正规子群}。这样得到以下命题。\footnote{编者注：增补编号 2.3.1，以突出此结论。还要指出，$G^0$ 甚至是 $G$ 的\Term{characteristic-subgroup}{特征子群}，见 2.6.5(ii)。}
+\begin{SGAresult}{命题}{2.3.1}
+设 $G$ 是\Term{locally-finite-type}{局部有限型} $A$-\Term{group}{群}。则\Term{neutral-component}{单位分支} $G^0$ 是 $G$ 的开\Term{normal-subgroup}{正规}\Term{subgroup-scheme}{子群概形}。
+\end{SGAresult}
+\begin{SGAresult}{命题}{2.4}
+设 $G$ 是\Term{locally-finite-type}{局部有限型} $A$-\Term{group}{群}。
+
+(i) $G^0$ \Term{irreducible}{不可约}，且 $G^0\otimes_A k$ 在 $k$ 上\Term{geometrically-irreducible}{几何不可约}。
+
+(ii) $G^0$ \Term{quasi-compact}{拟紧}，从而在 $A$ 上\Term{finite-type}{有限型}。
+\end{SGAresult}
+\begin{proof}
+\footnote{编者注：在陈述中将“$G^0$ \Term{geometrically-irreducible}{几何不可约}”改成“$G^0\otimes_A k$ 在 $k$ 上\Term{geometrically-irreducible}{几何不可约}”，并细化了证明。}(i) 由于 $G^0$ 与 $G^0\otimes_A k$ 有相同的底层\Term{topological-space}{拓扑空间}，只须证明第二个断言。设 $\overline k$ 为 $k$ 的一个\Term{algebraic-closure}{代数闭包}。由 2.2，$(G\otimes_A\overline k)_{\mathrm{r\text{é}d}}$ 是\Term{locally-finite-type}{局部有限型}\Term{reduced}{约化} $\overline k$-\Term{group}{群}，所以在 $\overline k$ 上\Term{smooth}{光滑}（1.3.1）。特别地，$(G\otimes_A\overline k)_{\mathrm{r\text{é}d}}$ 的\Term{local-ring}{局部环}均为\Term{integral-domain}{整环}，因此，\footnote{编者注：细化了原文，并加入 EGA I, 6.1.10 的引用。}由于 $G\otimes_A\overline k$ \Term{locally-noetherian}{局部诺特}，$G\otimes_A\overline k$ 的\Term{connected-component}{连通分支}均\Term{irreducible}{不可约}（见 EGA I, 6.1.10）。特别地，\Term{connected-component}{连通分支} $G^0\otimes_A\overline k$（见 2.1.1）\Term{irreducible}{不可约}。
+
+(ii) 现证明 $G^0$ 在 $A$ 上\Term{finite-type}{有限型}。由于它在 $A$ 上\Term{locally-finite-type}{局部有限型}，只须证明它\Term{quasi-compact}{拟紧}。因为 $G^0$ \Term{irreducible}{不可约}，这由 0.5.1 得到。
+\end{proof}
+\begin{SGAresult}{推论}{2.4.1}
+$G$ 的每个\Term{connected-component}{连通分支}都\Term{irreducible}{不可约}，\footnote{编者注：要注意，非单位\Term{connected-component}{连通分支}一般并不\Term{geometrically-connected}{几何连通}。例如，若 $k=\mathbf R$，则由 $\mathbf R[X]/(X^3-1)$ 表示的\Term{group}{群} $\mu_{3,\mathbf R}$ 有两个\Term{connected-component}{连通分支}：$\{e\}=\operatorname{Spec}\mathbf R$ 及 $C=\operatorname{Spec}\mathbf R[X]/(X^2+X+1)$，而 $C\otimes_{\mathbf R}\mathbf C$ 有两个分支。}在 $A$ 上\Term{finite-type}{有限型}，且与 $G^0$ 具有相同的\Term{dimension}{维数}。\footnote{编者注：增补了后一个断言，见第 VI$_B$ 讲 1.5。}
+\end{SGAresult}
+\begin{proof}
+可设 $A$ 等于其\Term{residue-field}{剩余域} $k$。设 $C$ 为 $G$ 的\Term{connected-component}{连通分支}，$x$ 是 $C$ 的\Term{closed-point}{闭点}，$\kappa(x)$ 为其\Term{residue-field}{剩余域}，$k'$ 为 $k$ 的一个\Term{finite}{有限}次\Term{normal}{正规}\Term{group-extension}{扩张}，包含 $\kappa(x)$。\Term{canonical}{典范}\Term{projection}{投影} $\pi:C\otimes_k k'\to C$ 既开又闭；\footnote{编者注：以下细化了原文。}所以若 $C'$ 是 $C\otimes_k k'$ 的\Term{connected-component}{连通分支}，则\Term{projection}{投影} $C'\to C$ \Term{surjectivity}{满射}，因而 $C'$ 含有点 $y\in\pi^{-1}(x)$，这样的点在 $k'$ 上\Term{rational-point}{有理}（见 1.2 的证明），所以 $C'$ 是 $G^0\otimes_k k'$ 在\Term{translation}{平移} $r_y$ 下的像。由 2.4，$G^0\otimes_k k'$ 在 $k'$ 上\Term{finite-type}{有限型}，且 $\pi^{-1}(x)$ \Term{finite}{有限}（\Term{cardinal}{基数} $\leq[k':k]$），所以 $C\otimes_k k'$ 在 $k'$ 上\Term{finite-type}{有限型}，故 $C$ 在 $k$ 上\Term{finite-type}{有限型}。
+\SourcePage{307}
+另一方面，由 2.4，$G^0\otimes_k k'$ \Term{irreducible}{不可约}，因而 $C'$ 也\Term{irreducible}{不可约}，\footnote{编者注：此处简化了原文。}又因 $C'\to C$ \Term{surjectivity}{满射}，$C$ 亦\Term{irreducible}{不可约}。
+
+最后，上面已看到 $C\otimes_k k'$ 是\Term{finite}{有限}多个 $G^0\otimes_k k'$ 的\Term{translation}{平移}的\Term{disjoint-union}{不交并}。由于\Term{dimension}{维数}在\Term{base-field-extension}{基域扩张}下\Term{invariant}{不变}（见 EGA IV$_2$, 4.1.4），$C$ 与 $G^0$ 有相同\Term{dimension}{维数}。（此外，由 EGA IV$_2$, 5.2.1，对每个 $g\in G$，都有 $\dim_gG=\dim G^0$。）
+\end{proof}
+
+\textbf{2.5.} 本段为增补。以下结果出现在第 VI$_B$ 讲中，但本可（甚至应当）放在第 VI$_A$ 讲中；为了细化下文\Term{theorem}{定理} 3.2，最好从现在起就可以使用它们。
+\begin{SGAresult}{\Term{lemma}{引理}}{2.5.1}
+设 $(A,\mathfrak m)$ 是 Artin \Term{local-ring}{局部环}，$k=A/\mathfrak m$ 是其\Term{residue-field}{剩余域}。
+
+(i) 若 $X$ 是 $A$-\Term{scheme}{概形}，且 $X\otimes_A k$ 在 $k$ 上\Term{locally-finite-type}{局部有限型}（分别\Term{finite-type}{有限型}），则 $X$ 在 $A$ 上也如此。
+
+(ii) 设 $u:X\to Y$ 是 $A$-\Term{scheme}{概形}的\Term{morphism}{态射}。若 $u\otimes_A k$ 是\Term{immersion}{浸入}（分别\Term{closed-immersion}{闭浸入}），则 $u$ 也如此。
+\end{SGAresult}
+\begin{proof}
+(i) 设 $X\otimes_A k$ 在 $k$ 上\Term{locally-finite-type}{局部有限型}。取 $X$ 的\Term{affine-open}{仿射开子集} $U=\operatorname{Spec}B$。按假设，存在 $B$ 中的元素 $x_1,\ldots,x_n$，其像生成 $k$-\Term{algebra}{代数} $B/\mathfrak mB$；由“\Term{nilpotent}{幂零}\Term{form}{形式}的 \Term{nakayama-lemma}{Nakayama 引理}”，$x_i$ 生成 $A$-\Term{algebra}{代数} $B$。这证明 $X$ 在 $A$ 上\Term{locally-finite-type}{局部有限型}。若 $X\otimes_A k$ 还\Term{quasi-compact}{拟紧}，则 $X$（与之有相同的底层\Term{topological-space}{拓扑空间}）也\Term{quasi-compact}{拟紧}，故 $X$ 在 $A$ 上\Term{finite-type}{有限型}。(i) 得证。
+
+证明 (ii)。设 $u\otimes_A k$ 是\Term{immersion}{浸入}（分别\Term{closed-immersion}{闭浸入}），则 $u$ 将 $X$ \Term{homeomorphism}{同胚}地映到 $Y$ 的一个\Term{locally-closed}{局部闭}（分别闭）\Term{subset}{子集}，且对每个 $x\in X$，环\Term{morphism}{态射} $\phi_x:\mathcal O_{Y,u(x)}\to\mathcal O_{X,x}$ 满足 $\phi_x\otimes_A k$ \Term{surjectivity}{满射}。由\Term{nilpotent}{幂零}\Term{form}{形式}的 \Term{nakayama-lemma}{Nakayama 引理}，$\phi_x$ \Term{surjectivity}{满射}，所以 $u$ 是\Term{immersion}{浸入}（分别\Term{closed-immersion}{闭浸入}）。
+\end{proof}
+\begin{SGAresult}{命题}{2.5.2}
+设 $A$ 是\Term{residue-field}{剩余域}为 $k$ 的 Artin \Term{local-ring}{局部环}，$u:G\to H$ 是\Term{locally-finite-type}{局部有限型} $A$-\Term{group-scheme}{群概形}之间的\Term{quasi-compact}{拟紧}\Term{morphism}{态射}。
+
+(a) \Term{set}{集合} $u(G)$ 是 $H$ 的\Term{closed-subset}{闭子集}，其\Term{connected-component}{连通分支}均\Term{irreducible}{不可约}且\Term{dimension}{维数}相同。
+
+(b) $\dim G=\dim u(G)+\dim\operatorname{Ker}(u)$。
+
+(c) 若 $u$ 是\Term{monomorphism}{单态射}，则它是\Term{closed-immersion}{闭浸入}。
+\end{SGAresult}
+\begin{proof}
+由上一\Term{lemma}{引理}，只须在 $A=k$ 时证明。又由于所考虑的性质在 (fpqc) \Term{descent}{下降}下\Term{stable}{稳定}，且\Term{dimension}{维数}在\Term{base-field-extension}{基域扩张}下\Term{invariant}{不变}，可假设 $k$ \Term{algebraically-closed}{代数闭}。
+
+证明 (a)。以 $C$ 表示 $H$ 中底层\Term{topological-space}{拓扑空间}为 $\overline{u(G)}$ 的\Term{reduced}{约化}\Term{subscheme}{子概形}。由于 $u(G)$ 在 $H$ 的\Term{inversion}{取逆态射}下\Term{stable}{稳定}，$C$ 亦如此。
+\SourcePage{308}
+另一方面，$u:G\to C$ 是\Term{quasi-compact}{拟紧}\Term{dominant}{支配}的，所以由 EGA IV$_2$, 2.3.7，$u\times_k\operatorname{id}_G$ 和 $\operatorname{id}_H\times_k u$ 也如此，其复合 $u\times_k u:G\times_k G\to C\times_k C$ 亦如此。因此 $H$ 的\Term{multiplication}{乘法}将 $C\times_k C$ 映入 $C$，所以 $C$ 是 $H$ 的\Term{subgroup-scheme}{子群概形}。
+
+于是以 $C$ 代替 $H$，归结到 $u$ \Term{dominant}{支配}的情形。此时 $G(k)$ 在 $H$ 中\Term{dense}{稠密}，因而与 $H$ 的每个\Term{connected-component}{连通分支}相交，所以\Term{transitive-action}{传递地作用}于这些\Term{connected-component}{连通分支}的\Term{set}{集合}。因此只须证明 $u(G)$ 包含 $H^0$。以 $u^{-1}(H^0)$ 代替 $G$，可设 $H=H^0$；此时由 2.4，$H$ \Term{irreducible}{不可约}，在 $k$ 上\Term{finite-type}{有限型}，因而\Term{noetherian}{诺特}。另一方面，$u$ \Term{locally-finite-type}{局部有限型}（见 EGA I, 6.6.6）且\Term{quasi-compact}{拟紧}，所以\Term{finite-type}{有限型}。由 Chevalley \Term{constructibility}{可构造性}\Term{theorem}{定理}（见 EGA IV$_1$, 1.8.5），$u(G)$ 是 $H=\overline{u(G)}$ 的\Term{constructible}{可构造}（且\Term{dense}{稠密}）\Term{subset}{子集}，所以包含 $H$ 的一个\Term{dense}{稠密}\Term{open-subset}{开子集} $U$（见 EGA $0_{\mathrm{III}}$, 9.2.2）。由 0.5，$H=U\cdot U\subset u(G)$，故 $u(G)=H$。结合 2.4.1 即得 (a)。
+
+证明 (b)。先回顾\Term{functor}{函子} $\operatorname{Ker}(u)$（见第 I 讲 2.3.6.1）由 $u^{-1}(e)$ 表示，其中 $e$ 为 $H$ 的\Term{identity-element}{单位元}。由于 $u$ \Term{finite-type}{有限型}，$\operatorname{Ker}(u)$ 在 $k$ 上\Term{finite-type}{有限型}。另一方面，用\Term{reduced}{约化}\Term{closed-subscheme}{闭子概形} $u(G)$ 代替 $H$，可假设 $u$ \Term{surjectivity}{满射}。以 $u^0$ 表示 $u$ 在 $G^0$ 上的\Term{restriction}{限制}。由于 $G$ 和 $\operatorname{Ker}(u)$ 都\Term{equidimensional}{等维}，且 $\operatorname{Ker}(u)^0\subset\operatorname{Ker}(u^0)$，可归结到 $G$，从而 $H$ 都\Term{irreducible}{不可约}的情形。
+
+由 EGA IV$_3$, 9.2.6.2 和 10.6.1(ii)，满足 $\dim u^{-1}(y)=\dim G-\dim H$ 的 $y\in H$ 所组成的\Term{set}{集合}包含一个\Term{nonempty}{非空}\Term{open-subset}{开子集} $V$。由于 $u$ \Term{surjectivity}{满射}，$U=u^{-1}(V)$ 是 $G$ 的\Term{nonempty}{非空}\Term{open-subset}{开子集}，又因 $G$ 是 Jacobson \Term{scheme}{概形}（见 EGA IV$_3$, 10.4.8），$U$ 包含 $G$ 的一个\Term{closed-point}{闭点} $x$。于是\Term{right-translation}{右平移} $r_x$ 给出 $\operatorname{Ker}(u)$ 到 $u^{-1}(u(x))$ 的\Term{isomorphism}{同构}，故
+\[
+\dim\operatorname{Ker}(u)=\dim u^{-1}(u(x))=\dim G-\dim H.
+\]
+
+按 [DG70]，第 I 章第 3.4 节来证明 (c)。（第 VI$_B$ 讲 1.4.2 还给出另一证明。）设 $u$ 为\Term{monomorphism}{单态射}。若 $C$ 为 $G$ 的\Term{connected-component}{连通分支}，则存在\Term{closed-point}{闭点} $x\in G$，使 $C=r_x(G^0)$。若以 $u_C$（分别 $u^0$）表示 $u$ 在 $C$（分别 $G^0$）上的\Term{restriction}{限制}，则 $u_C=r_{u(x)}\circ u^0\circ r_x^{-1}$，所以只须证明 $u^0$ 是\Term{closed-immersion}{闭浸入}。因而可假设 $G=G^0$，于是 $G$ \Term{irreducible}{不可约}且在 $k$ 上\Term{finite-type}{有限型}。
+
+设 $\xi$ 为 $G$ 的\Term{generic-point}{泛点}，则 $\mathcal O_{G,\xi}$ 是 Artin \Term{local-ring}{局部环}，以 $\mathfrak m$ 表示其\Term{maximal-ideal}{极大理想}。另设 $h=u(\xi)$，$\mathfrak n$ 为 $\mathcal O_{H,h}$ 的\Term{maximal-ideal}{极大理想}，并置 $A=\mathcal O_{G,\xi}/\mathfrak n\mathcal O_{G,\xi}$。由于 $u$ 是\Term{monomorphism}{单态射}，经\Term{base-change}{基变换}所得的\Term{morphism}{态射} $u_h:\operatorname{Spec}A\to\operatorname{Spec}\kappa(h)$ 亦为\Term{monomorphism}{单态射}，所以\Term{multiplication}{乘法态射} $A\otimes_{\kappa(h)}A\to A$ 是\Term{isomorphism}{同构}（见 EGA I, 5.3.8），故 $A=\kappa(h)$。由 \Term{nakayama-lemma}{Nakayama 引理}（$\mathfrak n\mathcal O_{G,\xi}$ 包含于 $\mathfrak m$，所以\Term{nilpotent}{幂零}），\Term{morphism}{态射} $\mathcal O_{H,h}\to\mathcal O_{G,\xi}$ \Term{surjectivity}{满射}。
+
+现取包含 $h$ 的 $H$ 的\Term{affine-open}{仿射开子集} $V$、包含于 $u^{-1}(V)$ 的 $G$ 的\Term{nonempty}{非空}\Term{affine-open}{仿射开子集} $U$，设 $\phi:\mathcal O_H(V)\to\mathcal O_G(U)$ 为 $u$ 诱导的 $k$-\Term{algebra}{代数}\Term{morphism}{态射}，$\mathfrak p$ 为 $\mathcal O_G(U)$ 中对应于 $\eta$ 的\Term{prime-ideal}{素理想}，$\mathfrak q=\phi^{-1}(\mathfrak p)$。由于 $G$ 在 $k$ 上\Term{finite-type}{有限型}，$k$-\Term{algebra}{代数} $\mathcal O_G(U)$ 由\Term{finite}{有限}多个元素 $a_1,\ldots,a_n$ 生成。
+\SourcePage{309}
+由上所述，存在 $\mathcal O_H(V)$ 中的元素 $b_1,\ldots,b_n,s$，使 $s\notin\mathfrak q$，且在 $\mathcal O_G(U)_{\mathfrak p}$ 中有 $a_i/1=\phi(b_i)/\phi(s)$。所以存在 $t_1,\ldots,t_n\in\mathcal O_G(U)-\mathfrak p$，使 $t_i(a_i\phi(s)-\phi(b_i))=0$。置 $t=t_1\cdots t_n\phi(s)\in\mathcal O_G(U)-\mathfrak p$，则这些等式已在 $\mathcal O_G(U)_t$ 中成立。又因 $t\in\mathcal O_G(U)=k[a_1,\ldots,a_n]$，存在 $b\in\mathcal O_H(V)$，使 $t/1=\phi(b)/\phi(s)^r$，其中 $r\in\mathbf N$。所以 $\phi$ 诱导从 $\mathcal O_H(V)_{sb}$ 到 $\mathcal O_G(U)_t$ 的\Term{surjectivity}{满射}，故 $u$ 在 $\xi$ 处是\Term{local-immersion}{局部浸入}。
+
+$G$ 中使 $u$ 为\Term{local-immersion}{局部浸入}的点组成的\Term{open-subset}{开子集} $W$ 因而\Term{nonempty}{非空}。由于 $G$ 是 Jacobson \Term{scheme}{概形}，$W$ 含有\Term{closed-point}{闭点} $y$；要证明 $W=G$，只须证明 $G$ 的每个\Term{closed-point}{闭点}都属于 $W$。而每个\Term{closed-point}{闭点} $x$ 都是 $y$ 在\Term{translation}{平移} $r_x\circ r_y^{-1}$ 下的像，所以属于 $W$，故 $W=G$。这证明 $u$ 是\Term{local-immersion}{局部浸入}。
+
+由于 $G$ \Term{irreducible}{不可约}，这又蕴含 $u$ 是\Term{immersion}{浸入}。事实上，对每个 $x\in G$，取 $G,H$ 的\Term{open-subset}{开子集} $U_x,V_x$，使 $x\in U_x$ 且 $u$ 诱导 $U_x$ 到 $V_x$ 的\Term{closed-immersion}{闭浸入}。由于 $U_x$ 在 $G$ 中\Term{dense}{稠密}，$u(U_x)$ 在 $u(G)\cap V_x$ 中\Term{dense}{稠密}；又因 $u(U_x)$ 在 $V_x$ 中闭，所以 $u(U_x)=V_x$。由于 $u$ 还是\Term{injectivity}{单射}，$U_x=u^{-1}(V_x)$，因而 $u$ 诱导 $G$ 到由各 $V_x$ \Term{covering}{覆盖}的 $H$ 的开\Term{subscheme}{子概形}的\Term{closed-immersion}{闭浸入}。所以 $u:G\to H$ 是\Term{immersion}{浸入}。但已知 $u(G)$ 是 $H$ 的\Term{closed-subset}{闭子集}，故 $u$ 为\Term{closed-immersion}{闭浸入}。
+\end{proof}
+\begin{SGAresult}{\Term{lemma}{引理}}{2.5.3}
+\footnote{编者注：本陈述不作\Term{finiteness}{有限性}假设；这在后文很有用（见 6.2 和第 VI$_B$ 讲第 12 节）。}设 $A$ 为 Artin \Term{local-ring}{局部环}，$k$ 为其\Term{residue-field}{剩余域}，$G$ 为\Term{flat}{平坦} $A$-\Term{group}{群}，$X$ 为带有 $G$ 的左\Term{action}{作用} $\mu:G\times_A X\to X$ 及\Term{section}{截面} $s_0:\operatorname{Spec}A\to X$ 的 $A$-\Term{scheme}{概形}。（例如，若 $G'$ 为第二个 $A$-\Term{group}{群}，并给定 $A$-\Term{group}{群}\Term{morphism}{态射} $G\to G'$，则属于这一情形。）
+
+设 $\phi=\mu\circ(\operatorname{id}_G\times s_0):G=G\times_A A\to X$。若 $\phi$ 在 $G$ 的某点 $g$ 处\Term{flat}{平坦}，则 $\phi$ \Term{flat}{平坦}。
+\end{SGAresult}
+\begin{proof}
+由于 $G$ 在 $A$ 上\Term{flat}{平坦}，由按\Term{fiber}{纤维}判断\Term{flat}{平坦}的判据（EGA IV$_3$, 11.3.10.2），只须证明 $\phi\otimes_A k$ \Term{flat}{平坦}，所以可假设 $A=k$。此时，给定 $s_0$ \Term{equivalence}{等价}于给定 $k$-点 $x_0\in X(k)$，而 $\phi$ 是\Term{morphism}{态射} $h\mapsto hx_0$。
+
+取 $h\in G$，证明 $\phi$ 在 $h$ 处\Term{flat}{平坦}。设 $K$ 是 $k$ 的\Term{group-extension}{扩张}，包含 $\kappa(g),\kappa(h)$ 的各一个副本。有\Term{cartesian-square}{笛卡尔方块}
+\[
+\begin{tikzcd}
+G_K\arrow[r,"\phi_K"]\arrow[d]&X_K\arrow[d]\\
+G\arrow[r,"\phi"']&X,
+\end{tikzcd}
+\]
+其中两个竖直\Term{arrow}{箭头}均\Term{faithfully-flat}{忠实平坦}。所以由第 V 讲 7.4(i)，$\phi_K$ 在 $G_K$ 中位于 $g$ 上方的每个点 $g'$ 处\Term{flat}{平坦}；要证明 $\phi$ 在 $h$ 处\Term{flat}{平坦}，只须证明 $\phi_K$ 在某个位于 $h$ 上方的点 $h'$ 处\Term{flat}{平坦}。这样归结到 $g,h$ 都\Term{rational-point}{有理}的情形。
+\SourcePage{310}
+置 $u=hg^{-1}$，以 $\ell_u$（分别 $\mu_u$）表示由 $u$ 定义的 $G$（分别 $X$）的\Term{left-translation}{左平移}。由于 $\phi\circ\ell_u=\mu_u\circ\phi$，得到\Term{commutative-square}{交换方块}
+\[
+\begin{tikzcd}
+\mathcal O_{G,h}\arrow[r,"\sim"]&\mathcal O_{G,g}\\
+\mathcal O_{X,hx_0}\arrow[u]\arrow[r,"\sim"]&\mathcal O_{X,gx_0}\arrow[u],
+\end{tikzcd}
+\]
+其中水平\Term{arrow}{箭头}均为\Term{isomorphism}{同构}。由于\Term{morphism}{态射} $\mathcal O_{X,gx_0}\to\mathcal O_{G,g}$ \Term{flat}{平坦}，$\mathcal O_{X,hx_0}\to\mathcal O_{G,h}$ 也\Term{flat}{平坦}。
+\end{proof}
+\begin{SGAresult}{命题}{2.5.4}
+设 $A$ 是 Artin \Term{local-ring}{局部环}，$k$ 为其\Term{residue-field}{剩余域}，$G$ 是\Term{locally-finite-type}{局部有限型} $A$-\Term{group}{群}，$X\ne\varnothing$ 为带有 $G$ 的左\Term{action}{作用}的\Term{locally-finite-type}{局部有限型} $A$-\Term{scheme}{概形}。设由\Term{set}{集合}公式 $(g,x)\mapsto(gx,x)$ 定义的\Term{morphism}{态射} $\phi:G\times_A X\to X\times_A X$ 为\Term{surjectivity}{满射}。则：
+
+(i) $X$ 的\Term{connected-component}{连通分支}均\Term{finite-type}{有限型}、\Term{irreducible}{不可约}且\Term{dimension}{维数}相同。
+
+(ii) 更准确地说，设 $\overline k$ 为 $k$ 的\Term{algebraic-closure}{代数闭包}，$x$ 为 $X\otimes_A\overline k$ 的\Term{closed-point}{闭点}，则它的\Term{stabilizer}{稳定子} $F$ 是 $G\otimes_A\overline k$ 的闭\Term{subgroup-scheme}{子群概形}，且 $X$ 的\Term{irreducible-component}{不可约分支}的\Term{dimension}{维数}为 $\dim G-\dim F$。
+\end{SGAresult}
+\begin{proof}
+由\Term{lemma}{引理} 2.5.1，可设 $A=k$。先设 $k$ \Term{algebraically-closed}{代数闭}。于是 $G_{\mathrm{r\text{é}d}}$ 为\Term{locally-finite-type}{局部有限型} $k$-\Term{group}{群}，所以分别以 $G_{\mathrm{r\text{é}d}},X_{\mathrm{r\text{é}d}}$ 代替 $G,X$，可设二者均\Term{reduced}{约化}。
+
+由于 $G\times_k X$ 在 $k$ 上\Term{locally-finite-type}{局部有限型}，$\phi$ \Term{locally-finite-type}{局部有限型}（见 EGA I, 6.6.6(v)）；又因 $X\times_k X$ \Term{locally-noetherian}{局部诺特}，$\phi$ \Term{locally-finite-presentation}{局部有限表现}。设 $x$ 为 $X$ 的\Term{rational-point}{有理点}，则由 $\phi$ 经\Term{base-change}{基变换}所得的\Term{morphism}{态射} $\phi_x:G\to X$ \Term{surjectivity}{满射}且\Term{locally-finite-presentation}{局部有限表现}。若 $\eta$ 是 $X$ 的\Term{maximal-point}{极大点}，则 $\mathcal O_{X,\eta}$ 是域（因为 $X$ \Term{reduced}{约化}），所以 $\phi_x$ 在 $G$ 中位于 $\eta$ 上方的每一点处\Term{flat}{平坦}。由\Term{lemma}{引理} 2.5.3，$\phi_x$ \Term{flat}{平坦}。因此 $\phi_x:G\to X$ \Term{faithfully-flat}{忠实平坦}且\Term{locally-finite-presentation}{局部有限表现}，因而是开\Term{morphism}{态射}（见 EGA IV$_2$, 2.4.6）。由于 $G^0$ 在 $G$ 中开、\Term{irreducible}{不可约}且\Term{quasi-compact}{拟紧}（2.4），当 $x$ 遍历 $X$ 的\Term{rational-point}{有理点}时，每个\Term{orbit}{轨道} $G^0x=\phi_x(G^0)$ 都是 $X$ 的\Term{irreducible}{不可约}\Term{quasi-compact}{拟紧}\Term{open-subset}{开子集}，所以在 $k$ 上\Term{finite-type}{有限型}（因为 $X$ 在 $k$ 上\Term{locally-finite-type}{局部有限型}）。
+
+由于 $X$ 的每个\Term{nonempty}{非空}\Term{open-subset}{开子集}都包含\Term{rational-point}{有理点}，这些\Term{open-subset}{开子集}\Term{covering}{覆盖} $X$。此外，其中任意两个或者不交，或者相等。事实上，若 $\phi_x(G^0)\cap\phi_y(G^0)$ \Term{nonempty}{非空}，则它包含\Term{rational-point}{有理点} $z$，所以存在两个\Term{rational-point}{有理点} $g,h\in G^0$，使 $gx=z=hy$，故 $x=g^{-1}z$、$y=h^{-1}z$，因此 $\phi_x(G^0)=\phi_z(G^0)=\phi_y(G^0)$。所以各\Term{orbit}{轨道} $\phi_x(G^0)$ 也是闭的，因而同时是 $X$ 的\Term{connected-component}{连通分支}及\Term{irreducible-component}{不可约分支}。
+
+最后，取 $X$ 的两个\Term{rational-point}{有理点} $x,y$。由于 $\phi_x$ \Term{surjectivity}{满射}，存在\Term{rational-point}{有理点} $g\in G$ 使 $y=gx$。又因 $G^0$ 是 $G$ 的\Term{normal-subgroup}{正规子群}，
+\SourcePage{311}
+\Term{orbit}{轨道} $G^0y$ 是 $G^0$ 在 $X$ 的\Term{translation}{平移} $\ell_g$ 下的像，所以 $G^0y$ 与 $G^0x$ \Term{dimension}{维数}相同。
+
+此外，由第 I 讲 2.3.3.1，$x$ 的\Term{stabilizer}{稳定子}由以下\Term{cartesian-square}{笛卡尔方块}所定义的 $G$ 的\Term{closed-subscheme}{闭子概形} $F$ 表示：
+\[
+\begin{tikzcd}
+F\arrow[r]\arrow[d]&G\arrow[d,"\phi_x"]\\
+\operatorname{Spec}k\arrow[r]&X.
+\end{tikzcd}
+\]
+于是 $F$ 是\Term{locally-finite-type}{局部有限型} $k$-\Term{group}{群}，$F\cap G^0$ 是包含 $F^0$ 的\Term{finite-type}{有限型} $k$-\Term{group}{群}；由 2.4.1，$F$ 和 $F\cap G^0$ 都\Term{equidimensional}{等维}，且\Term{dimension}{维数}与 $F^0$ 相同。设 $C=\phi_x(G^0)$ 是 $X$ 中包含 $x$ 的\Term{irreducible-component}{不可约分支}。按 2.5.2(b) 证明中的方法，得到 $\dim C=\dim G^0-\dim F^0=\dim G-\dim F$。
+
+在一般情形（即 $k$ 为任意域）中，取 $k$ 的\Term{algebraic-closure}{代数闭包} $\overline k$。设 $C$ 为 $X$ 的\Term{connected-component}{连通分支}，$C'$ 为 $C\otimes_k\overline k$ 的\Term{connected-component}{连通分支}；则 $C'$ 是 $X'=X\otimes_k\overline k$ 的\Term{connected-component}{连通分支}。\Term{morphism}{态射} $\pi:X'\to X$ 是开的（见 EGA IV$_2$, 2.4.10），又因它是\Term{integral-morphism}{整态射}，所以也是闭的；因此 $\pi(C')=C$。由于 $C'$ \Term{irreducible}{不可约}且\Term{quasi-compact}{拟紧}，$C$ 也\Term{irreducible}{不可约}且\Term{quasi-compact}{拟紧}，所以在 $k$ 上\Term{finite-type}{有限型}（因为 $X$ 在 $k$ 上\Term{locally-finite-type}{局部有限型}）。
+
+最后，由\Term{dimension}{维数}在\Term{base-field-extension}{基域扩张}下的\Term{invariant}{不变}性（见 EGA IV$_2$, 4.1.4），$\dim C=\dim C'$。由于 $X'$ 的所有\Term{irreducible-component}{不可约分支}\Term{dimension}{维数}相同，$X$ 也如此。
+\end{proof}
+
+\textbf{2.6. 补充。} 本段为增补，取自 [Per75] 第 II 章第 1--2 节，并包含 O. Gabber 给出的补充。\footnote{编者注：这些结果由 O. Gabber 告知我们，尤其是 2.6.6，它在第 VI$_B$ 讲第 5 节中起重要\Term{action}{作用}。}它表明上述结果对域 $k$ 上的每个\Term{group-scheme}{群概形} $G$ 都成立。（第 VI$_B$ 讲第 5、6、7 节将使用它。）
+
+固定一个域 $k$。先给出以下\Term{lemma}{引理}（同上，II 2.1.1），它并未明确出现在 EGA IV$_2$ 第 4.4 节中（尽管大概可从该处第 4.4.1 节开头的字里行间读出）。
+\begin{SGAresult}{\Term{lemma}{引理}}{2.6.0}
+设 $X$ 是\Term{irreducible}{不可约} $k$-\Term{scheme}{概形}，$K$ 是 $k$ 的\Term{group-extension}{扩张}，$X'$ 是 $X_K$ 的\Term{irreducible-component}{不可约分支}。则\Term{projection}{投影} $X'\to X$ \Term{surjectivity}{满射}。
+\end{SGAresult}
+\begin{proof}
+取 $K$ 在 $k$ 上的一组超越基 $B$，置 $L=k(B)\subset K$。由 EGA IV$_2$, 4.3.2 和 4.4.1，$X_L$ \Term{irreducible}{不可约}，且 $X'$ \Term{dominant}{支配} $X_L$。所以\Term{morphism}{态射} $X'\to X_L$ 为\Term{integral-morphism}{整}且\Term{dominant}{支配}的，因而\Term{surjectivity}{满射}。由于 $X_L\to X$ \Term{surjectivity}{满射}（同上，4.4.1），$X'\to X$ 亦\Term{surjectivity}{满射}。
+\end{proof}
+在 2.6 以下部分中，固定 $k$-\Term{group-scheme}{群概形} $G$ 以及 $G$ 在 $k$-\Term{scheme}{概形} $X$ 上的\Term{action}{作用} $\mu:G\times X\to X$，并假设满足条件
+\[
+\text{($\star$)}\qquad\Phi:G\times X\longrightarrow X\times X,\quad(g,x)\longmapsto(gx,x)\text{ 为满射}
+\]
+\SourcePage{312}
+（特别地，$G$ 通过\Term{left-translation}{左平移}\Term{action}{作用}于自身时就是如此）。为简便，称之为“满足 ($\star$) 的 $G$-\Term{scheme}{概形} $X$”。最后，以 $k'$ 表示 $k$ 的\Term{perfect-closure}{完美闭包}。
+\begin{SGAresult}{命题}{2.6.1}
+设 $X$ 是满足 ($\star$) 的 $G$-\Term{scheme}{概形}。
+
+(i) $X$ 在 $k$ 上\Term{geometrically-pointwise-irreducible}{几何逐点不可约}，即对 $k$ 的每个\Term{group-extension}{扩张} $K$，每个 $x\in X_K$ 均属于 $X_K$ 的唯一一个\Term{irreducible-component}{不可约分支}。
+
+(ii) $(X_{k'})_{\mathrm{r\text{é}d}}$ 的每个\Term{local-ring}{局部环}都\Term{normal}{正规}。
+
+(iii) 设 $\eta$ 是 $(X_{k'})_{\mathrm{r\text{é}d}}$ 的\Term{maximal-point}{极大点}，$C=\overline{\{\eta\}}$，$L$ 为 $k$ 在 $\kappa(\eta)$ 中的\Term{algebraic-closure}{代数闭包}。则 $C$ 是 $L$-\Term{scheme}{概形}，且在 $L$ 上\Term{geometrically-irreducible}{几何不可约}（即对 $L$ 的每个\Term{group-extension}{扩张} $K$，$C\otimes_L K$ 都\Term{irreducible}{不可约}）。
+
+(iv) 特别地，若 $x$ 是 $X$ 的\Term{rational-point}{有理点}，则 $X$ 中包含 $x$ 的\Term{irreducible-component}{不可约分支}在 $k$ 上\Term{geometrically-irreducible}{几何不可约}。
+\end{SGAresult}
+\begin{proof}
+(i) 因为每个\Term{base-change}{基变换} $k\to K$ 都保持假设 ($\star$)，只须证明 $X$ 的每一点均属于唯一一个\Term{irreducible-component}{不可约分支}。又因为\Term{morphism}{态射} $\operatorname{Spec}k'\to\operatorname{Spec}k$ 是\Term{universal-homeomorphism}{普遍同胚}，可再假设 $k$ \Term{perfect}{完美}。进而可假设 $G,X$ 均\Term{reduced}{约化}。设 $\eta$ 是 $X$ 的\Term{maximal-point}{极大点}，$z$ 是 $Z=\overline{\{\eta\}}$ 的任一点。由于 $X$ \Term{reduced}{约化}，\Term{local-ring}{局部环} $\mathcal O_{X,\eta}=\kappa(\eta)$；又因 $k$ \Term{perfect}{完美}，对 $k$ 的每个\Term{group-extension}{扩张} $K$，$\kappa(\eta)\otimes_k K$ 都\Term{normal}{正规}（见 EGA IV$_2$, 6.14.2），所以 $X_K$ 中位于 $\eta$ 上方的每一点都是\Term{normal}{正规点}。
+
+由于 $\Phi$ \Term{surjectivity}{满射}，存在 $G\times X$ 中的点 $\gamma$，使 $\Phi(\gamma)$ 的两个\Term{projection}{投影}为 $z,\eta$。置 $K=\kappa(\gamma)$，则 $G_K,X_K$ 中存在\Term{rational-point}{有理点} $g,\eta'$，使 $\eta'$ 位于 $\eta$ 上方，$z'=g\eta'$ 位于 $z$ 上方。由上述结论，$\eta'$ 是 $X_K$ 的\Term{normal}{正规点}，因而 $z'$ 亦如此。由于 $\pi:X_K\to X$ \Term{flat}{平坦}，$z=\pi(z')$ 是 $X$ 的\Term{normal}{正规点}（见 EGA IV$_2$, 2.1.13）。这证明了 (ii) 和 (i)。
+
+(iii) 的第一个断言由 (ii) 得到。又因为 $L$ 在 $\kappa(\eta)$ 中\Term{algebraically-closed}{代数闭}，由 EGA IV$_2$, 4.5.9，$C$ 在 $L$ 上\Term{geometrically-irreducible}{几何不可约}。
+
+最后，若 $X$ 有\Term{rational-point}{有理点} $x$，由 (iii) 可知 $L=k$，所以 $X$ 在 $k$ 上\Term{geometrically-irreducible}{几何不可约}。也可直接如下说明（见 [Per75], II 2.1）：设 $C$ 为 $X$ 中包含 $x$ 的\Term{irreducible-component}{不可约分支}，$K$ 为 $k$ 的一个\Term{group-extension}{扩张}；$X_K$ 在 $e$ 上方只有一个点 $e_K$，由 (i)，$e_K$ 属于 $X_K$ 的唯一\Term{irreducible-component}{不可约分支} $C'$；另一方面，由 2.6.0，$C_K$ 的每个\Term{irreducible-component}{不可约分支}均包含 $e_K$，故均等于 $C'$。
+\end{proof}
+\textbf{记号。} 暂以 $C^0$ 表示 $G$ 的\Term{reduced}{约化}\Term{closed-subscheme}{闭子概形}，其底层\Term{space}{空间}是 $G$ 中包含\Term{identity-element}{单位元} $e$ 的唯一\Term{irreducible-component}{不可约分支}。
+\begin{SGAresult}{推论}{2.6.2}
+$C^0$ 在 $k$ 上\Term{geometrically-irreducible}{几何不可约}，且作为\Term{set}{集合}在\Term{group-law}{群运算}下\Term{stable}{稳定}，即 $(C^0_{k'})_{\mathrm{r\text{é}d}}$ 是 $(G_{k'})_{\mathrm{r\text{é}d}}$ 的\Term{subgroup}{子群}。因此 $C^0$ \Term{quasi-compact}{拟紧}。
+\end{SGAresult}
+\begin{proof}
+\SourcePage{313}
+由 2.6.1，$C^0$ 在 $k$ 上\Term{geometrically-irreducible}{几何不可约}，所以 $C^0\times C^0$ \Term{irreducible}{不可约}，故 $\nu(C^0\times C^0)\subset C^0$，其中 $\nu$ 为\Term{morphism}{态射} $(g,h)\mapsto gh^{-1}$。由于 $\operatorname{Spec}k'\to\operatorname{Spec}k$ 是\Term{universal-homeomorphism}{普遍同胚}，同样的结论适用于 $C^0_{k'}$，继而适用于 $H=(C^0_{k'})_{\mathrm{r\text{é}d}}$；又因 $H\times_{k'}H$ \Term{reduced}{约化}，$\nu$ 诱导\Term{morphism}{态射} $H\times_{k'}H\to H$，即 $H$ 是 $(G_{k'})_{\mathrm{r\text{é}d}}$ 的\Term{subgroup}{子群}。所以由 0.5.1，$H$（从而 $C^0$）\Term{quasi-compact}{拟紧}。
+\end{proof}
+\begin{SGAresult}{回顾}{2.6.3}
+设 $Y$ 是\Term{scheme}{概形}。回顾（EGA $0_{\mathrm{III}}$, 9.1.1），若包含 $E\hookrightarrow Y$ \Term{quasi-compact}{拟紧}，则称 $Y$ 的\Term{subset}{子集} $E$ 为\Term{retrocompact}{相对拟紧}（rétrocompact）。由 EGA IV$_1$, 1.9.5(v) 和 1.10.1，若 $U$ 是 $Y$ 的\Term{retrocompact}{相对拟紧}\Term{open-subset}{开子集}，则 $U$ 的\Term{closure}{闭包} $\overline U$ 是各 $y\in U$ 的\Term{closure}{闭包} $\overline{\{y\}}$ 的并；当然，只须使 $y$ 遍历 $U$ 的\Term{maximal-point}{极大点}，即 $Y$ 中包含于 $U$ 的\Term{maximal-point}{极大点}。
+
+因此，若 $Y$ \Term{quasi-separated}{拟分离}，$\eta$ 是 $Y$ 的\Term{maximal-point}{极大点}，则 $\eta$ 的各闭\Term{neighborhood}{邻域}的交等于 $\overline{\{\eta\}}$。事实上，若 $y\in Y-\overline{\{\eta\}}$，则 $y$ 属于一个不含 $\eta$ 的\Term{affine-open}{仿射开子集} $V$；由于 $Y$ \Term{quasi-separated}{拟分离}，$V$ \Term{retrocompact}{相对拟紧}，所以 $\overline V$ 是 $Y$ 中属于 $V$ 的\Term{maximal-point}{极大点} $\xi$ 的各 $\overline{\{\xi\}}$ 的并。因此 $\eta\notin\overline V$，即 $Y-\overline V$ 是 $\eta$ 的一个不含 $y$ 的闭\Term{neighborhood}{邻域}。
+\end{SGAresult}
+\begin{SGAresult}{命题}{2.6.4}
+设 $X$ 是满足 ($\star$) 的 $G$-\Term{scheme}{概形}，$U$ 是 $X$ 的\Term{open-subset}{开子集}。
+
+(i) $C^0U$ 是 $X$ 的\Term{open-subset}{开子集}，等于 $X$ 中\Term{generic-point}{泛点}属于 $U$ 的各\Term{irreducible-component}{不可约分支}的并。
+
+(i$'$) 因此，若 $X$ \Term{irreducible}{不可约}，则它\Term{quasi-compact}{拟紧}。
+
+(ii) 若 $U$ 还在 $X$ 中\Term{retrocompact}{相对拟紧}，则 $C^0U=\overline U$，所以它是 $X$ 的\Term{open-and-closed}{开闭}\Term{subset}{子集}。
+\end{SGAresult}
+\begin{proof}
+(i) 首先 $C^0U$ 是\Term{open-subset}{开子集}，因为它是当 $g\in C^0$ 时，各\Term{open-subset}{开子集} $g\cdot U_{\kappa(g)}\subset X_{\kappa(g)}$ 的\Term{projection}{投影}的并，而每个\Term{projection}{投影} $X_{\kappa(g)}\to X$ 都是开的。
+
+为证明 (i) 的第二个断言，可用 $k'$ 代替 $k$（因为 $\operatorname{Spec}k'\to\operatorname{Spec}k$ 是\Term{universal-homeomorphism}{普遍同胚}），从而假设 $k$ \Term{perfect}{完美}。于是可假设 $G,X$ 都\Term{reduced}{约化}，所以都\Term{geometrically-reduced}{几何约化}。
+
+设 $\eta$ 是 $X$ 中属于 $U$ 的\Term{maximal-point}{极大点}，$Z$ 为其\Term{closure}{闭包}。考虑\Term{morphism}{态射} $\mu^0:C^0\times Z\to X$。由于 $C^0$ \Term{geometrically-irreducible}{几何不可约}，$C^0\times Z$ \Term{irreducible}{不可约}，以 $\gamma$ 表示其\Term{generic-point}{泛点}。由于 $\mu^0$ 将点 $\varepsilon(\eta)$（$\varepsilon$ 为 $C^0$ 的\Term{unit-section}{单位截面}）映到 $\eta$，$\gamma$ 被映到 $\eta$ 的一个\Term{generalization}{一般化}，从而映到 $\eta$。所以 $\mu^0$ 将 $C^0\times Z$ 的底层\Term{space}{空间}映入 $Z$；又因 $C^0\times Z$ \Term{reduced}{约化}，$\mu^0$ 经 $Z$ \Term{resolution}{分解}。
+
+现取 $z\in Z$，置 $K=\kappa(z)$。则\Term{morphism}{态射} $\mu_z:G_K\to X_K$、$h\mapsto h\cdot z$ \Term{surjectivity}{满射}。设 $\alpha$ 是 $X_K$ 的\Term{maximal-point}{极大点}，由于 $X_K$ \Term{reduced}{约化}，\Term{local-ring}{局部环} $\mathcal O_{X_K,\alpha}$ 是域，所以 $\mu_z$ 在 $G_K$ 中位于 $\alpha$ 上方的每个点处\Term{flat}{平坦}，故由\Term{lemma}{引理} 2.5.3，$\mu_z$ \Term{flat}{平坦}。
+
+另一方面，$\mu_z$ 将 $C^0_K$ 的\Term{generic-point}{泛点} $\omega$ 映到某点 $t\in Z_K$。取 $Z_K$ 的\Term{maximal-point}{极大点} $\beta$，使 $t\in\overline{\{\beta\}}$；由于 $\mu_z$ \Term{flat}{平坦}，存在 $\omega$ 的一个\Term{generalization}{一般化} $\xi$，使 $\mu_z(\xi)=\beta$。
+\SourcePage{314}
+又因 $\omega$ 是 $G_K$ 的\Term{maximal-point}{极大点}，必有 $\xi=\omega$，所以 $\mu_z(\omega)=\beta$，且 $\beta$ 位于 $\eta$ 上方（因为 $Z_K\to Z$ \Term{flat}{平坦}）。
+
+置 $L=\kappa(\omega)$，设 $\omega_L,z_L$ 为由 $\omega,z$ 得到的 $L$-点，则 $\omega_L\cdot z_L=\beta'$ 是 $Z_L$ 中位于 $\beta$ 上方的点，所以 $z_L=\omega_L^{-1}\cdot\beta'\in C^0_L\cdot U_L$，故 $z\in C^0\cdot U$。(i) 得证。
+
+由 2.6.2，$C^0$ \Term{quasi-compact}{拟紧}，从而得到 (i$'$)：若 $X$ \Term{irreducible}{不可约}，$U$ 为\Term{nonempty}{非空}\Term{affine-open}{仿射开子集}，则 $X=C^0U$，即 $X$ 是\Term{morphism}{态射} $C^0\times U\to X$ 的像，所以\Term{quasi-compact}{拟紧}。最后，若 $U$ 在 $X$ 中\Term{retrocompact}{相对拟紧}，由 2.6.3，$\overline U$ 是 $X$ 中属于 $U$ 的各\Term{maximal-point}{极大点} $\eta$ 的 $\overline{\{\eta\}}$ 的并，所以等于 $C^0U$。(ii) 得证。
+\end{proof}
+于是得到以下结果（[Per75], II \Term{theorem}{定理} 2.4，另见 [Per76], 命题 4.1.1）。
+\begin{SGAresult}{\Term{theorem}{定理}}{2.6.5}
+设 $k$ 是域，$G$ 是 $k$-\Term{group-scheme}{群概形}。
+
+(i) 存在唯一的 $G$ 的\Term{subgroup-scheme}{子群概形} $G^0$，称为 $G$ 的\Term{neutral-component}{单位分支}，满足：
+
+(a) $G^0$ 的底层\Term{space}{空间}是\Term{identity-element}{单位元}的\Term{irreducible-component}{不可约分支}；
+
+(b) $G^0\to G$ 是\Term{flat}{平坦}\Term{closed-immersion}{闭浸入}，即对每个 $g\in G^0$，$\mathcal O_{G,g}=\mathcal O_{G^0,g}$。
+
+(ii) 此外，$G^0$ \Term{quasi-compact}{拟紧}、\Term{geometrically-irreducible}{几何不可约}，且是 $G$ 的\Term{characteristic-subgroup}{特征子群}。
+
+(iii) 若 $G$ \Term{connected}{连通}，则 $G=G^0$。
+\end{SGAresult}
+\begin{proof}
+(i) 先回顾 $G$ \Term{separated}{分离}（0.3），从而\Term{quasi-separated}{拟分离}。设 $U$ 为 $G$ 的一个\Term{affine-open}{仿射开子集}，包含 $C^0$ 的\Term{generic-point}{泛点} $\omega$。由 2.6.3 和 2.6.4，$\overline U=C^0U$ 既开又闭，且作为\Term{set}{集合}，$C^0=\overline{\{\omega\}}$ 是这些\Term{open-and-closed}{开闭}\Term{subset}{子集}的交。
+
+当 $U$ 遍历包含 $\omega$ 的各\Term{affine-open}{仿射开子集}时，得到 $G$-\Term{scheme}{概形} $\overline U$ 的\Term{projective-system}{投射系}，其过渡\Term{morphism}{态射}均\Term{affine}{仿射}（因为都是\Term{closed-immersion}{闭浸入}）。因此可取其\Term{projective-limit}{投射极限} $G^0$（见 EGA IV$_3$, 8.2.2），即对 $G$ 的每个\Term{affine-open}{仿射开子集} $V$，$G^0\cap V$ 是如下\Term{algebra}{代数}的谱：
+\[
+\varinjlim_{\overline U}\mathcal O_G(V\cap\overline U)
+=\mathcal O_G(V)\Big/\sum_{\overline U}I_{\overline U}(V),
+\]
+其中 $I_{\overline U}(V)$ 是 $\mathcal O_G(V)\to\mathcal O_G(V\cap\overline U)$ 的核。于是 $G^0$ 的底层\Term{space}{空间}为 $C^0$，且 $G^0\to G$ 是\Term{closed-immersion}{闭浸入}。此外，对每个 $g\in G^0$，$\mathcal O_{G^0,g}$ 是当 $V$ 遍历 $G$ 中包含 $g$ 的各\Term{affine-open}{仿射开子集}时，$k$-\Term{algebra}{代数} $\mathcal O_{G^0}(V\cap G^0)=\varinjlim_{\overline U}\mathcal O_G(V\cap\overline U)$ 的\Term{inductive-limit}{归纳极限}，而此二重\Term{inductive-limit}{归纳极限}等同于
+\[
+\varinjlim_{\overline U}\;\varinjlim_{\substack{V\\g\in V\subset\overline U}}\mathcal O_G(V)=\mathcal O_{G,g},
+\]
+\SourcePage{315}
+即 $\mathcal O_{G^0,g}=\mathcal O_{G,g}$（另见 EGA IV$_2$, 5.13.3(ii)）。所以 $i:G^0\to G$ 是\Term{flat}{平坦}\Term{closed-immersion}{闭浸入}。反之，这个条件蕴含 $i^*(\mathcal O_G)=\mathcal O_{G^0}$，所以 $G^0$ 由 (a)、(b) 唯一确定。这证明 (i)。
+
+(ii) 的前两个断言由 2.6.2 得到。最后，设 $S$ 是 $k$-\Term{scheme}{概形}，$\phi$ 是 $S$-\Term{group}{群} $G_S$ 的\Term{automorphism}{自同构}。对每个 $s\in S$，$\phi_s$ 将 $G^0_{\kappa(s)}$ 映入自身，所以 $\phi(G^0_S)\subset G^0_S$。此外，由 $i$ 经\Term{base-change}{基变换}得到的\Term{closed-immersion}{闭浸入} $i_S:G^0_S\hookrightarrow G_S$ \Term{flat}{平坦}，所以对每个 $z\in G^0_S$，有 $\mathcal O_{G_S,\phi(z)}=\mathcal O_{G^0_S,\phi(z)}$，故 $\phi\circ i_S$ 经 $G^0_S$ \Term{resolution}{分解}。这证明 $G^0$ 是 $G$ 的\Term{characteristic-subgroup}{特征子群}，即得 (ii)。最后，(iii) 是以下命题第 (i) 点的特例。\footnote{编者注：本命题（以及前面的结果）由 O. Gabber 告知我们，将用于修正第 VI$_B$ 讲\Term{theorem}{定理} 5.3 的证明。}
+\end{proof}
+\begin{SGAresult}{命题}{2.6.6}
+设 $k$ 是域，$G$ 是\Term{action}{作用}于 $k$-\Term{scheme}{概形} $X$ 的 $k$-\Term{group}{群}，并使\Term{morphism}{态射} $G\times X\to X\times X$、$(g,x)\mapsto(gx,x)$ 为\Term{surjectivity}{满射}。设 $X$ \Term{quasi-separated}{拟分离}。则：
+
+(i) $X$ 的每个\Term{connected-component}{连通分支} $C$ 都\Term{irreducible}{不可约}。
+
+(ii) 设 $\eta$ 为 $C$ 的\Term{generic-point}{泛点}，$L$ 为 $k$ 在 $\kappa(\eta)$ 中的\Term{algebraic-closure}{代数闭包}。则 $C$ 是 $L$-\Term{scheme}{概形}，在 $L$ 上\Term{geometrically-irreducible}{几何不可约}，且\Term{morphism}{态射}
+\[
+G^0_L\times_L C\longrightarrow C\times_L C
+\]
+\Term{surjectivity}{满射}。
+
+(iii) 特别地，若 $C$ 包含\Term{rational-point}{有理点} $x$，则 $C$ 在 $k$ 上\Term{geometrically-irreducible}{几何不可约}，且\Term{morphism}{态射} $\phi:G^0\to C$、$g\mapsto gx$ \Term{surjectivity}{满射}。
+\end{SGAresult}
+\begin{proof}
+(i) 设 $C$ 为 $X$ 的\Term{connected-component}{连通分支}，$Y$ 为 $X$ 中包含于 $C$ 的\Term{irreducible-component}{不可约分支}，$\eta$ 为 $Y$ 的\Term{generic-point}{泛点}，$U$ 为 $X$ 中包含 $\eta$ 的\Term{affine-open}{仿射开子集}。由于 $X$ \Term{quasi-separated}{拟分离}，$U$ 在 $X$ 中\Term{retrocompact}{相对拟紧}，所以由 2.6.4，$\overline U=G^0U$ 是与 $C$ 相交的 $X$ 的\Term{open-and-closed}{开闭}\Term{subset}{子集}，从而包含 $C$。又由 2.6.3，当 $U$ 遍历 $\eta$ 的一个\Term{affine-open}{仿射开邻域}基本系时，所有 $\overline U$ 的交等于 $\overline{\{\eta\}}$。由此 $C=\overline{\{\eta\}}$，即得 (i)。
+
+(ii)（以及 (iii)）的第一个断言由 2.6.1 得到。先证明 (iii) 的第二个断言。以 $\omega$（分别 $\eta$）表示 $G^0$（分别 $C$）的\Term{generic-point}{泛点}。取 $z\in C$，$K=\kappa(z)$。由于 $G^0$（分别 $C$）在 $k$ 上\Term{geometrically-irreducible}{几何不可约}，$G^0_K$（分别 $C_K$）\Term{irreducible}{不可约}，以 $\xi$（分别 $\beta$）表示其\Term{generic-point}{泛点}。2.6.4 的证明已表明\Term{morphism}{态射} $\mu_z:G_K\to C_K$、$h\mapsto h\cdot z$ 将 $\xi$ 映到 $\beta$；同样有 $\phi(\omega)=\eta$。
+
+置 $L=\kappa(\xi)$，以 $\xi_L,z_L$ 表示由 $\xi,z$ 得到的 $L$-点，则 $\xi_L\cdot z_L=\beta'$ 是 $C_L$ 中位于 $\beta\in C_K$ 上方的点，因而也位于 $\eta\in C$ 上方。考虑
+\SourcePage{316}
+\Term{cartesian-square}{笛卡尔方块}
+\[
+\begin{tikzcd}
+G^0_L\arrow[r,"\phi_L"]\arrow[d,"\pi_{G^0}"']&C_L\arrow[d,"\pi_C"]\\
+G^0\arrow[r,"\phi"']&C.
+\end{tikzcd}
+\]
+由于 $\phi_L(\pi_{G^0}^{-1}(\omega))=\pi_C^{-1}(\eta)$（见 EGA I, 3.4.8），存在 $g\in G^0_L$ 使 $\phi_L(g)=\beta'$。因此
+\[
+z_L=\xi_L^{-1}\cdot\phi_L(g)=\phi_L(\xi_L^{-1}g),
+\]
+故 $\phi(\pi_{G^0}(\xi_L^{-1}g))=\pi_C(z_L)=z$。这证明 $\phi$ \Term{surjectivity}{满射}。
+
+现证明 (ii) 的第二个断言。只须证明对每个 $z\in C$，\Term{morphism}{态射} $\mu_z:G^0_L\otimes_L\kappa(z)\to C\otimes_L\kappa(z)$ \Term{surjectivity}{满射}；这由 (iii) 得到，因为 $z$ 是 $C\otimes_L\kappa(z)$ 的\Term{rational-point}{有理点}。
+\end{proof}
+\begin{SGAresult}{注记}{2.6.7}
+在 2.6.6 的假设下，若 $C(k)=\varnothing$，则\Term{morphism}{态射} $G^0\times_k C\to C\times_k C$ 未必\Term{surjectivity}{满射}。例如，取 $k=\mathbf R$、$G=\{\pm1\}_{\mathbf R}$，则 $G$-\Term{torsor}{挠子} $X=\operatorname{Spec}\mathbf R[X]/(X^2+1)$ \Term{connected}{连通}，但\Term{morphism}{态射} $G^0\times_{\mathbf R}X\to X\times_{\mathbf R}X$ 不\Term{surjectivity}{满射}。（不过 $L=\mathbf C$，且\Term{morphism}{态射} $G^0\times_{\mathbf R}X\to X\times_{\mathbf C}X$ 是\Term{isomorphism}{同构}。）
+\end{SGAresult}
+
+\SGAsection{3}{商 $F\backslash G$ 的构造（$G,F$ 有限型）}
+\textbf{3.1.} 设 $A$ 是 Artin \Term{local-ring}{局部环}，$u:F\to G$ 是 $A$-\Term{group}{群}的\Term{homomorphism}{同态}。若 $\mu:F\times_A F\to F$ 和 $\nu:G\times_A G\to G$ 为\Term{multiplication}{乘法态射}，$\lambda$ 为复合\Term{morphism}{态射}
+\[
+\begin{tikzcd}
+F\times_A G\arrow[r,"u\times G"]&G\times_A G\arrow[r,"\nu"]&G,
+\end{tikzcd}
+\]
+则回顾，$G$ 对 $F$ 的\Term{left-quotient}{左商} $F\backslash G$ 是以下 $(\mathrm{Sch}/A)$-\Term{groupoid}{群胚} $G_*$ 的\Term{coequalizer}{余核}：
+\[
+\begin{tikzcd}[column sep=large]
+F\times_A F\times_A G\arrow[r,shift left=1.6ex,"F\times\lambda"]\arrow[r,"\mu\times G" description]\arrow[r,shift right=1.6ex,"{\operatorname{pr}_{2,3}}"']&F\times_A G\arrow[r,shift left=.6ex,"\lambda"]\arrow[r,shift right=.6ex,"\operatorname{pr}_2"']&G.
+\end{tikzcd}
+\]
+（$\operatorname{pr}_2,\operatorname{pr}_{2,3}$ 分别为 $F\times_A G$ 和 $F\times_A(F\times_A G)$ 到第二因子的\Term{projection}{投影}。）称 $G_*$ 为由 $u$ 定义的以 $G$ 为底的\Term{groupoid}{群胚}（见第 V 讲第 2.a 节；与第 V 讲一样，本讲不遵循第 IV 讲 4.6.15 的约定）。
+
+由于唯一的 $A$-\Term{morphism}{态射} $F\to\operatorname{Spec}A$ \Term{universally-open}{普遍开}（EGA IV$_2$, 2.4.9），$\operatorname{pr}_2$ 是开\Term{morphism}{态射}；$\lambda$ 也如此，因为它是 $\operatorname{pr}_2$ 与 $F\times_A G$ 的\Term{automorphism}{自同构} $\sigma$ 的复合，后者由 $\sigma(S)(x,y)=(x,u(S)(x)\cdot y)$ 定义，其中 $S$ 为变动的 $A$-\Term{scheme}{概形}，$x\in F(S),y\in G(S)$。同样可见，当 $F$ 在 $A$ 上\Term{flat}{平坦}时，$\operatorname{pr}_2$ 和 $\lambda$ 都\Term{flat}{平坦}。
+
+结束这些预备说明前再指出，每个 $A$-\Term{morphism}{态射} $s:\operatorname{Spec}A\to G$ 都定义\Term{groupoid}{群胚} $G_*$ 的一个\Term{automorphism}{自同构}，它在 $G,F\times_A G$
+\SourcePage{317}
+和 $F\times_A F\times_A G$ 上分别诱导\Term{automorphism}{自同构} $r_s$、$\operatorname{id}_F\times_A r_s$ 和 $\operatorname{id}_F\times_A\operatorname{id}_F\times_A r_s$。这个 $G_*$ 的\Term{automorphism}{自同构}仍记作 $r_s$，称为由 $s$ 定义的\Term{right-translation}{右平移}（参见 0.4）。
+\begin{SGAresult}{\Term{theorem}{定理}}{3.2}
+设 $F,G$ 是 Artin \Term{local-ring}{局部环} $A$ 上\Term{flat}{平坦}且\Term{locally-finite-type}{局部有限型}的\Term{group}{群}。设 $u:F\to G$ 是\Term{quasi-compact}{拟紧}且核在 $A$ 上\Term{finite}{有限}的 $A$-\Term{group}{群}\Term{homomorphism}{同态}。则：\footnote{编者注：增补了 (ii$'$)，并结合 2.5.2、2.5.4 及第 V 讲 6.1 中的增补，细化了第 (iv) 点。}
+
+(i) $G$ 对 $F$ 的\Term{left-quotient}{左商} $F\backslash G$ 在 $(\mathrm{Sch}/A)$ 中存在，且序列
+\[
+\begin{tikzcd}
+F\times_A G\arrow[r,shift left=.6ex,"\lambda"]\arrow[r,shift right=.6ex,"\operatorname{pr}_2"']&G\arrow[r,"p"]&F\backslash G
+\end{tikzcd}
+\]
+在全体\Term{ringed-space}{赋环空间}的\Term{category}{范畴}中\Term{exact}{正合}。
+
+(ii) \Term{canonical}{典范}\Term{morphism}{态射} $p:G\to F\backslash G$ \Term{surjectivity}{满射}且开，$F\backslash G$ 是 $A$ 上\Term{finite-type}{有限型}\Term{scheme}{概形}的\Term{direct-sum}{直和}。
+
+(ii$'$) 更准确地说，$X=F\backslash G$ 带有 $G$ 的右\Term{action}{作用}，使对每个 $g\in G$ 均有 $p(e)\cdot g=p(g)$；因此 $X$ 的\Term{connected-component}{连通分支}都在 $A$ 上\Term{finite-type}{有限型}、\Term{irreducible}{不可约}，且\Term{dimension}{维数}均为 $\dim G-\dim F$。
+
+(iii) \Term{canonical}{典范}\Term{morphism}{态射} $F\times_A G\to G\times_{F\backslash G}G$ \Term{surjectivity}{满射}。
+
+(iv) 若 $u$ 是\Term{monomorphism}{单态射}，\footnote{编者注：此时可以去掉 $G$ \Term{flat}{平坦}的假设，见第 3.3 小节。}则：
+
+(a) $F\times_A G\xrightarrow{(\lambda,\operatorname{pr}_2)}G\times_{F\backslash G}G$ 是\Term{isomorphism}{同构}，且 $G\to F\backslash G$ \Term{faithfully-flat}{忠实平坦}、\Term{locally-finite-presentation}{局部有限表现}。
+
+(a$'$) $F\backslash G$ 表示 (fppf) \Term{quotient-sheaf}{商层} $\widetilde{F\backslash G}$，且 $G\to F\backslash G$ 是在 (fppf) \Term{topology}{拓扑}下\Term{locally-trivial}{局部平凡}的 $F$-\Term{torsor}{挠子}。
+
+(b) $F\backslash G$ 在 $A$ 上\Term{flat}{平坦}；若 $G$ 在 $A$ 上\Term{smooth}{光滑}，它也\Term{smooth}{光滑}。
+
+(c) $u:F\to G$ 是\Term{closed-immersion}{闭浸入}，且 $F\backslash G$ \Term{separated}{分离}。
+
+(d) 若 $F$ 还是 $G$ 的\Term{normal-subgroup}{正规子群}，则 $F\backslash G$ 上存在唯一的 $A$-\Term{group}{群}结构，使 $p:G\to F\backslash G$ 为 $A$-\Term{group}{群}\Term{morphism}{态射}。
+\end{SGAresult}
+在本\Term{theorem}{定理}的证明中，$A'$ 表示在 $A$ 上\Term{finite}{有限}自由的\Term{local-scheme}{局部} $A$-\Term{algebra}{代数}。若 $R$ 是一个涉及 $A'$ 的关系，则称“当 $A'$ \Term{large-relative-to-cardinal}{足够大}时 $R(A')$ 为真”，若存在\Term{local-scheme}{局部} $A$-\Term{algebra}{代数} $A_1$，在 $A$ 上\Term{finite}{有限}自由，使关系 $R(A')$ 对每个在 $A_1$ 上\Term{finite}{有限}自由的\Term{local-scheme}{局部} $A_1$-\Term{algebra}{代数} $A'$ 都成立。
+
+先在 $F,G$ 都在 $A$ 上\Term{finite-type}{有限型}时证明\Term{theorem}{定理}。
+
+\textbf{3.2.1.} 暂设 $G$ 的每一点都有一个\Term{saturated}{饱和}\Term{open-neighborhood}{开邻域} $W$，使 $G_*$ 在 $W$ 上诱导的\Term{groupoid}{群胚}有\Term{quasi-section}{拟截面}（见第 V 讲第 6 节）。则由第 V 讲 6.1，得到断言 (i)、(ii)、(iii)、(iv)(a)，且 $F\backslash G$ 在 $k$ 上\Term{finite-type}{有限型}。此外，在 (iv) 的假设下，由于 $G\to F\backslash G$ \Term{faithfully-flat}{忠实平坦}且
+\SourcePage{318}
+\Term{locally-finite-presentation}{局部有限表现}，断言 (b) 由 EGA IV, 2.2.14 和 17.7.7 得到。另一方面，由第 IV 讲 3.4.3.1、5.2.2 和 5.1.6，断言 (iv)(a$'$) 由 (iv)(a) 得到。最后，(iv)(c) 将在 3.2.5 中证明，(ii$'$) 和 (iv)(d) 将在第 5 节中证明。
+
+现在证明如下断言：
+\[
+\text{($\dagger$)}\qquad F\backslash G\text{ 的每个有限子集都包含于一个仿射开子集中。}
+\]
+\footnote{编者注：在此指出，若 $A=k$ 为域，则 $F\backslash G$ 的每个\Term{quasi-compact}{拟紧}\Term{open-subset}{开子集}都\Term{quasi-projective}{拟射影}（对于\Term{smooth}{光滑}\Term{algebraic-group}{代数群}，这是 Chow 的结果），见 [Ray70], VI 2.6。相反，在 Artin \Term{local-ring}{局部环} $A=\mathbf C[\varepsilon]/(\varepsilon^2)$ 上存在非\Term{projective}{射影}的 $A$-\Term{abelian-scheme}{阿贝尔概形} $G$（同上，XII 4.2）。}
+若 $U$ 是 $G_*$ 在 $G$ 的\Term{saturated}{饱和}\Term{open-subset}{开子集} $W$ 上诱导的\Term{groupoid}{群胚}的\Term{quasi-section}{拟截面}，则 $U\otimes_A A'$ 是 $G_*\otimes_A A'$ 在 $W\otimes_A A'$ 上诱导的 $(\mathrm{Sch}/A')$-\Term{groupoid}{群胚}的\Term{quasi-section}{拟截面}。此外，若 $U_*$ 是 $G_*$ 在 $U$ 上诱导的 $(\mathrm{Sch}/A)$-\Term{groupoid}{群胚}，则 $U_*\otimes_A A'$ 等同于 $G_*\otimes_A A'$ 在 $U\otimes_A A'$ 上诱导的 $(\mathrm{Sch}/A')$-\Term{groupoid}{群胚}。\footnote{编者注：上述内容对每个\Term{base-change}{基变换} $A\to A'$ 都成立。}
+
+由第 V 讲的证明可知，\Term{quotient}{商} $X=F\backslash G$ 的构造与这里所考虑类型的底\Term{group-extension}{扩张} $A\to A'$ 可交换。\footnote{编者注：下文 4.6 将细述此点：要证明沿\Term{morphism}{态射} $p,\lambda,\operatorname{pr}_2$ 的\Term{direct-image}{正像}的形成与\Term{flat}{平坦}\Term{base-change}{基变换} $A\to A'$ 可交换。由于 $F,G$ 在 Artin 环 $A$ 上\Term{finite-type}{有限型}，涉及的\Term{morphism}{态射} $f$ 都\Term{quasi-compact}{拟紧}且\Term{quasi-separated}{拟分离}，而等式 $f_*(\mathcal O_X)\otimes_A A'=f'_*(\mathcal O_{X'})$（记号含义显然）由 EGA IV$_1$, 1.7.21 得到。}
+
+取 $X=F\backslash G$ 中的点 $x_1,\ldots,x_n$，可假设它们都是\Term{closed-point}{闭点}，\footnote{编者注：事实上，设 $y_1,\ldots,y_n$ 为 $X$ 的任意点。由于 $X$ 在 $A$ 上\Term{finite-type}{有限型}，每个 $y_i$ 的\Term{closure}{闭包}中都含有\Term{closed-point}{闭点} $x_i$，且每个包含 $x_i$ 的\Term{open-subset}{开子集}都包含 $y_i$。}并取投到它们的 $G$ 的\Term{closed-point}{闭点} $g_1,\ldots,g_n$。设 $V$ 为 $X$ 中处处\Term{dense}{稠密}的\Term{affine-open}{仿射开子集}，\footnote{编者注：这样的\Term{open-subset}{开子集}存在，因为 $X$ 在 $k$ 上\Term{finite-type}{有限型}：$X$ 有\Term{finite}{有限}多个\Term{irreducible-component}{不可约分支} $C_1,\ldots,C_p$，只须对每个 $i$，在 $C_i-\bigcup_{j\ne i}C_j$ 中取\Term{nonempty}{非空}\Term{affine-open}{仿射开子集}。（此处由 (ii$'$) 还知道各 $C_i$ 不交……）}以 $U$ 表示 $V$ 在 $G$ 中的\Term{inverse-image}{逆像}。由 1.2，存在在 $A$ 上\Term{finite}{有限}自由的\Term{local-scheme}{局部} $A$-\Term{algebra}{代数} $A'$，使 $G'=G\otimes_A A'$ 中位于 $g_1,\ldots,g_n$ 上方的各点 $g'_1,\ldots,g'_p$ 都在 $A'$ 上\Term{strictly-rational}{严格有理}。\footnote{编者注：以下细化了原文。}由于\Term{morphism}{态射} $G'\to G$ 及 $G\to X$ 都是开的，$U'=U\otimes_A A'$ 在 $G'$ 中\Term{dense}{稠密}，所以\Term{open-subset}{开子集} $\bigcap_{i=1}^p(U')^{-1}\cdot g'_i$ \Term{nonempty}{非空}，因而包含\Term{closed-point}{闭点} $x$。由 1.2（及 0.4.1），增大 $A'$ 后可设 $x$ 在 $A'$ 上\Term{strictly-rational}{严格有理}。由于 $x\in(U')^{-1}\cdot g'_i$，有 $g'_i\in U'\cdot x$。
+
+以 $V'$ 表示 $V$ 在 $X'=X\otimes_A A'$ 中的\Term{inverse-image}{逆像}；它是 $X'$ 的\Term{affine-open}{仿射开子集}，也等于 $U'$ 在\Term{projection}{投影} $G'\to X'$ 下的像。由于\Term{right-translation}{右平移} $r_x$ 是\Term{groupoid}{群胚} $G_*\otimes_A A'$ 的\Term{automorphism}{自同构}，它在\Term{quotient}{商} $X'$ 上诱导一个仍记作 $r_x$ 的\Term{automorphism}{自同构}。因此 $U'\cdot x$ 在 $X'$ 中的像 $V'\cdot x=r_x(V')$ 是 $X'$ 的\Term{affine-open}{仿射开子集}，包含 $g'_1,\ldots,g'_p$ 的像 $x'_1,\ldots,x'_p$。
+\SourcePage{319}
+考虑\Term{projection}{投影} $X\otimes_A A'\to X$ 在 $X'=X\otimes_A A'$ 上定义的\Term{equivalence-relation}{等价关系}：
+\[
+\begin{tikzcd}
+X\otimes_A A'\otimes_A A'\arrow[r,shift left=.6ex,"d_1"]\arrow[r,shift right=.6ex,"d_0"']&X\otimes_A A'\arrow[r]&X,
+\end{tikzcd}
+\]
+其中 $d_0,d_1$ 由 $A'$ 到 $A'\otimes_A A'$ 的两个\Term{canonical}{典范}\Term{injectivity}{单射}诱导。由于 $A'$ 是\Term{finite}{有限}自由 $A$-\Term{algebra}{代数}，设秩为 $n$，$d_0,d_1$ 都\Term{finite}{有限}\Term{locally-free}{局部自由}且秩为 $n$；所以可应用第 V 讲第 5.b 节的论证（取自 SGA 1，第 VIII 讲 7.6 的证明）。由此可得 $x'_1,\ldots,x'_p$ 包含于一个\Term{saturated}{饱和}\Term{affine-open}{仿射开子集} $W'\subset V'\cdot x$。于是 $W'$ 在 $X$ 中的像包含 $x_1,\ldots,x_n$，并由第 V 讲 4.1(ii) 是 $X$ 的\Term{affine-open}{仿射开子集}。
+
+\textbf{3.2.2.} 对每个在 $A$ 上\Term{finite}{有限}自由的\Term{locally-algebraic}{局部代数} $A'$，以 $U(A')$ 表示 $G\otimes_A A'$ 中具有\Term{saturated}{饱和}\Term{open-neighborhood}{开邻域} $W$，且 $G_*\otimes_A A'$ 在 $W$ 上诱导的\Term{groupoid}{群胚}有\Term{quasi-section}{拟截面}的各点组成的\Term{set}{集合}。显然 $U(A')$ 对 $G(\operatorname{Spec}A')$ 在 $G\otimes_A A'$ 上的\Term{action}{作用}是\Term{saturated}{饱和}的。我们将证明，当 $A'$ \Term{large-relative-to-cardinal}{足够大}时，$U(A')=G\otimes_A A'$。
+
+由第 V 讲\Term{theorem}{定理} 8.1，$U(A)$ \Term{nonempty}{非空}，所以包含\Term{closed-point}{闭点} $y$。对 $\dim(G-U(A))$ 作归纳证明。设 $g_1,\ldots,g_n$ 是属于 $G-U(A)$ 的各个\Term{irreducible-component}{不可约分支}的\Term{closed-point}{闭点}。由 1.2，存在在 $A$ 上\Term{finite}{有限}自由的\Term{locally-algebraic}{局部代数} $A'$，使 $G'=G\otimes_A A'$ 中投到 $g_1,\ldots,g_n$（分别 $y$）的各点 $g'_1,\ldots,g'_p$（分别 $x=x_1,\ldots,x_r$）在 $A'$ 上\Term{strictly-rational}{严格有理}。于是对每个 $i$，$U(A')$ 都包含 $(U(A)\otimes_A A')\cdot x^{-1}g'_i$；所以 $U(A')$ 包含 $g'_1,\ldots,g'_p$，并有
+\[
+\dim(G'-U(A'))<\dim(G-U(A)).
+\]
+由归纳假设，存在在 $A'$ 上\Term{finite}{有限}自由的\Term{locally-algebraic}{局部代数} $A''$，使 $U(A'')=G'\otimes_{A'}A''=G\otimes_A A''$。
+
+\textbf{3.2.3.} 现在可以在 $F,G$ 都在 $A$ 上\Term{finite-type}{有限型}时证明 $F\backslash G$ 的存在性。取 $A$ 上\Term{large-relative-to-cardinal}{足够大}的 $A'$，使 $U(A')=G\otimes_A A'$（参见 3.2.2）。置 $A''=A'\otimes_A A'$，并对每个 $A$-\Term{scheme}{概形} $X$，以 $X',X''$ 分别表示\Term{fiber-product}{纤维积} $X\otimes_A A'$ 和 $X\otimes_A A''$。由 3.2.1 和 3.2.2，\Term{quotient}{商} $F'\backslash G'$ 和 $F''\backslash G''$ 存在，且有如下\Term{commutative-diagram}{交换图}，其前两行和前两列均\Term{exact}{正合}：
+\SourcePage{320}
+\[
+\tag{*}
+\begin{tikzcd}[column sep=large,row sep=large]
+F''\times_{A''}G''\arrow[r,shift left=.6ex,"\operatorname{pr}''_2"]\arrow[r,shift right=.6ex,"\lambda''"']\arrow[d,shift left=.6ex,"w_2"]\arrow[d,shift right=.6ex,"w_1"']&G''\arrow[r,"p''"]\arrow[d,shift left=.6ex,"v_2"]\arrow[d,shift right=.6ex,"v_1"']&F''\backslash G''\arrow[d,shift left=.6ex,"u_2"]\arrow[d,shift right=.6ex,"u_1"']\\
+F'\times_{A'}G'\arrow[r,shift left=.6ex,"\operatorname{pr}'_2"]\arrow[r,shift right=.6ex,"\lambda'"']\arrow[d,"h"']&G'\arrow[r,"p'"]\arrow[d,"g"]&F'\backslash G'\\
+F\times_A G\arrow[r,shift left=.6ex,"\operatorname{pr}_2"]\arrow[r,shift right=.6ex,"\lambda"']&G&
+\end{tikzcd}
+\]
+此图中，$\operatorname{pr}'_2,\lambda'$（分别 $\operatorname{pr}''_2,\lambda''$）由 $\operatorname{pr}_2,\lambda$ 经显然的\Term{base-change}{基变换}得到；\Term{morphism}{态射} $g,h$ 由\Term{canonical}{典范}\Term{injectivity}{单射} $A\to A'$ 诱导。$p',p''$ 是\Term{canonical}{典范}\Term{morphism}{态射}；$v_1,v_2$ 及 $w_1,w_2$ 由 $A'$ 到 $A''$ 的两个\Term{canonical}{典范}\Term{injectivity}{单射}诱导。最后，由于\Term{quotient}{商} $F'\backslash G'$ 的构造与两个\Term{base-change}{基变换} $f_1,f_2:\operatorname{Spec}A''\rightrightarrows\operatorname{Spec}A'$ 可交换，以 $\pi':F'\backslash G'\to\operatorname{Spec}A'$ 表示结构\Term{morphism}{态射}，则对 $i=1,2$ 有\Term{canonical}{典范}\Term{isomorphism}{同构}
+\[
+\tau_i:F''\backslash G''\xrightarrow{\sim}(F'\backslash G')\times_{\pi',f_i}\operatorname{Spec}A'',
+\]
+而 $u_i$ 是 $\tau_i$ 与\Term{projection}{投影} $(F'\backslash G')\times_{\pi',f_i}\operatorname{Spec}A''\to F'\backslash G'$ 的复合。
+
+对于形如 ($*$) 且前两行和前两列\Term{exact}{正合}的图，容易验证，$\operatorname{Coker}(\operatorname{pr}_2,\lambda)$ 存在当且仅当 $\operatorname{Coker}(u_1,u_2)$ 存在，且两者等同。因此 $F\backslash G$ 的存在性将由 $\operatorname{Coker}(u_1,u_2)$ 的存在性得到。
+
+由 $F\backslash G$ 的形成与这里所考虑底\Term{group-extension}{扩张}的相容性（见 3.2.1 的编者注 (37) 及下文 4.6），复合\Term{morphism}{态射}
+\[
+\begin{tikzcd}[column sep=small]
+(F'\backslash G')\times_{\pi',f_1}\operatorname{Spec}A''\arrow[r,"\tau_1^{-1}"]&F''\backslash G''\arrow[r,"\tau_2"]&(F'\backslash G')\times_{\pi',f_2}\operatorname{Spec}A''
+\end{tikzcd}
+\]
+是 $F'\backslash G'$ 相对于 $f:\operatorname{Spec}A'\to\operatorname{Spec}A$ 的一个\Term{descent-datum}{下降资料}。由 3.2.1($\dagger$) 和 SGA 1，第 VIII 讲 7.6，此\Term{descent-datum}{下降资料}是\Term{effective}{有效}的，即 $\operatorname{Coker}(u_1,u_2)$ 存在（也可直接使用第 V 讲\Term{theorem}{定理} 4.1）。
+
+\textbf{3.2.4.} 为完成 $F,G$ 在 $A$ 上\Term{finite-type}{有限型}时 3.2 中断言 (i)、(ii)、(iii)、(iv)(a) 的证明，还须研究\Term{quotient}{商} $F\backslash G$。由第 V 讲 6.1，断言 (ii)、(iii)、(iv)(a) 在\Term{base-change}{基变换} $f:\operatorname{Spec}A'\to\operatorname{Spec}A$ 后“成为真命题”。由 EGA IV$_2$, 2.6.1、2.6.2 和 2.7.1，这些断言在\Term{base-change}{基变换}前就已成立。最后，为证明 (i) 的第二个断言，即 $F\backslash G$ 是全体\Term{ringed-space}{赋环空间}的\Term{category}{范畴}中 $(\operatorname{pr}_2,\lambda)$ 的\Term{coequalizer}{余核}，只须参照第 V 讲第 6.c 节。
+\SourcePage{321}
+\textbf{3.2.5.}\footnote{编者注：本段为增补。} 现沿用第 VI$_B$ 讲 9.2.1 的证明，来证明 3.2 的断言 (iv)(c)。置 $X=F\backslash G$，以 $d$ 表示以 $\lambda,\operatorname{pr}_2$ 为\Term{set-component}{分量}的\Term{morphism}{态射} $F\times_A G\to G\times_A G$。
+
+由 2.5.2，$u$ 是\Term{closed-immersion}{闭浸入}。又 $d=\sigma\circ(u\times\operatorname{id}_G)$，其中 $\sigma$ 是由 $\sigma(x,y)=(xy,y)$ 定义的 $G\times_A G$ 的\Term{automorphism}{自同构}，所以 $d$ 是\Term{closed-immersion}{闭浸入}。另一方面，由 (iv)(a)，有\Term{cartesian-square}{笛卡尔方块}
+\[
+\begin{tikzcd}
+F\times_A G\arrow[r,"d"]\arrow[d]&G\times_A G\arrow[d,"p\times p"]\\
+X\arrow[r,"\Delta_X"']&X\times_A X,
+\end{tikzcd}
+\]
+且 $p$，从而 $p\times p$ 均\Term{faithfully-flat}{忠实平坦}且\Term{locally-finite-presentation}{局部有限表现}。因此由 (fppf) \Term{descent}{下降}，既然 $d$ 是\Term{closed-immersion}{闭浸入}，$\Delta_X$ 亦为\Term{closed-immersion}{闭浸入}，即 $X$ \Term{separated}{分离}。
+
+\textbf{3.3.}\footnote{编者注：本小节为增补。} 在\Term{theorem}{定理} 3.2 中，当 $u:F\to G$ 是\Term{monomorphism}{单态射}时，可以去掉 $G$ \Term{flat}{平坦}的假设。第 VI$_B$ 讲注记 9.3 b) 和 [Ray67a] 第 82 页例 a)i) 都提到这一推广。[An73] \Term{theorem}{定理} 4 给出的证明由\Term{theorem}{定理} 3.2 及以下 Grothendieck \Term{theorem}{定理}得到（[Ray67a] \Term{theorem}{定理} 1 ii) 提及此\Term{theorem}{定理}，[DG70] 第 III.2 章 7.1 证明了它）。若 $X$ 是\Term{scheme}{概形}，$R$ 是 $X$ 中的\Term{equivalence-relation}{等价关系}，以 $\widetilde{X/R}$ 表示 $X$ 对 $R$ 的 (fppf) \Term{quotient-sheaf}{商层}（见第 IV 讲 4.4.9）。
+\begin{SGAresult}{\Term{theorem}{定理}}{3.3.1（Grothendieck）}
+设 $A$ 是环，$X$ 是 $A$-\Term{scheme}{概形}，$d_0,d_1:R\to X$ 是 $X$ 中的 $A$-\Term{equivalence-relation}{等价关系}，且 $d_i$ \Term{faithfully-flat}{忠实平坦}、\Term{finite-presentation}{有限表现}。设 $X_0$ 是由\Term{nilpotent-ideal}{幂零理想}定义的 $X$ 的\Term{saturated}{饱和}\Term{closed-subscheme}{闭子概形}，$R_0$ 是 $R$ 在 $X_0$ 上诱导的\Term{equivalence-relation}{等价关系}。若 (fppf) \Term{quotient-sheaf}{商层} $\widetilde{X_0/R_0}$ 可由 $A$-\Term{scheme}{概形}表示，则 $\widetilde{X/R}$ 也如此。
+\end{SGAresult}
+证明参见 [DG70] 第 III.2 章 7.1。现在回到 $A$ 为 Artin \Term{local-ring}{局部环}的情形。设 $u:F\to G$ 为\Term{locally-finite-type}{局部有限型} $A$-\Term{group}{群}之间的\Term{quasi-compact}{拟紧}\Term{morphism}{态射}，并再假设 $u$ 是\Term{monomorphism}{单态射}。由 2.5.2，$u$ 是\Term{closed-immersion}{闭浸入}。
+
+现在可陈述\Term{theorem}{定理} 3.2 的以下变体。
+\begin{SGAresult}{\Term{theorem}{定理}}{3.3.2}
+设 $A$ 是 Artin \Term{local-ring}{局部环}，$G$ 是\Term{locally-finite-type}{局部有限型} $A$-\Term{group}{群}，$F$ 为 $G$ 的闭\Term{subgroup}{子群}，在 $A$ 上\Term{flat}{平坦}。\footnote{编者注：$F$ 不\Term{flat}{平坦}且 $\widetilde{F\backslash G}$ 不\Term{representable}{可表}的例子，见 [DG70] 第 III.3 章第 3.3 节。}则：
+
+(i) (fppf) \Term{quotient-sheaf}{商层} $\widetilde{F\backslash G}$ 可由\Term{separated}{分离}且\Term{locally-finite-type}{局部有限型}的 $A$-\Term{scheme}{概形} $F\backslash G$ 表示；此外，序列
+\[
+\begin{tikzcd}
+F\times_A G\arrow[r,shift left=.6ex]\arrow[r,shift right=.6ex]&G\arrow[r,"p"]&F\backslash G
+\end{tikzcd}
+\]
+\SourcePage{322}
+在全体\Term{ringed-space}{赋环空间}的\Term{category}{范畴}中\Term{exact}{正合}。
+
+(ii) $F\times_A G\xrightarrow{(\lambda,\operatorname{pr}_2)}G\times_{F\backslash G}G$ 是\Term{isomorphism}{同构}，且 $p:G\to F\backslash G$ \Term{faithfully-flat}{忠实平坦}、\Term{locally-finite-presentation}{局部有限表现}，所以 $p$ 是在 (fppf) \Term{topology}{拓扑}下\Term{locally-trivial}{局部平凡}的 $F$-\Term{torsor}{挠子}。
+
+(iii) 若 $G$ 在 $A$ 上\Term{flat}{平坦}（分别\Term{finite-type}{有限型}、\Term{smooth}{光滑}），则 $F\backslash G$ 也如此。
+
+(iv) $X=F\backslash G$ 带有 $G$ 的右\Term{action}{作用}，使对每个 $g\in G$，$p(e)\cdot g=p(g)$；因此 $X$ 的\Term{connected-component}{连通分支}都在 $A$ 上\Term{finite-type}{有限型}、\Term{irreducible}{不可约}，且\Term{dimension}{维数}均为 $\dim G-\dim F$。
+
+(v) 若 $F$ 还是 $G$ 的\Term{normal-subgroup}{正规子群}，则 $F\backslash G$ 上存在唯一的 $A$-\Term{group}{群}结构，使 $p:G\to F\backslash G$ 是 $A$-\Term{group}{群}\Term{morphism}{态射}。
+\end{SGAresult}
+断言 (i)、(ii) 由 3.2 和 3.3.1 得到。由于 $G\to F\backslash G$ \Term{faithfully-flat}{忠实平坦}且\Term{locally-finite-presentation}{局部有限表现}，断言 (iii) 由 EGA IV, 2.2.14、2.7.1 和 17.7.7 得到。断言 (iv)、(v) 将在第 5 节证明。先记下以下推论。
+\begin{SGAresult}{推论}{3.3.3}
+设 $A$ 是 Artin \Term{local-ring}{局部环}，$G$ 是\Term{locally-finite-type}{局部有限型} $A$-\Term{group}{群}，$H$ 是 $G$ 的闭\Term{subgroup}{子群}，在 $A$ 上\Term{flat}{平坦}。以 $p$ 表示\Term{morphism}{态射} $G\to G/H$，以 $\lambda$（分别 $\operatorname{pr}_1$）表示由 $\lambda(g,h)=gh$ 定义的\Term{morphism}{态射} $G\times H\to G$（分别\Term{projection}{投影} $G\times H\to G$）。则对 $G/H$ 的每个\Term{open-subset}{开子集} $U$，有
+\[
+\mathcal O(U)=\{\phi\in\mathcal O(p^{-1}(U))\mid\phi\circ\lambda=\phi\circ\operatorname{pr}_1\},
+\]
+即 $\mathcal O(U)$ 由满足 $\phi(gh)=\phi(g)$ 的 $\phi\in\mathcal O(p^{-1}(U))$ 组成，其中 $S$ 遍历 $A$-\Term{scheme}{概形}，$g\in G(S),h\in H(S)$。
+\end{SGAresult}
+\begin{proof}
+由于 $p:G\to G/H$ \Term{faithfully-flat}{忠实平坦}且\Term{locally-finite-presentation}{局部有限表现}，所以在 (fppf) \Term{topology}{拓扑}下是\Term{covering}{覆盖}，因此结论由第 IV 讲 3.3.3.2 得到。
+\end{proof}
+
+\SGAsection{4}{商 $F\backslash G$ 的构造（一般情形）}
+现在假设\Term{theorem}{定理} 3.2 的各假设成立，而 $F,G$ 不一定在 $A$ 上\Term{finite-type}{有限型}。
+
+\textbf{4.1.} 先考虑 $G$ 的一个\Term{connected-component}{连通分支} $G^\alpha$，证明 $G^\alpha$ 对\Term{groupoid}{群胚} $G_*$ 所定义的\Term{equivalence-relation}{等价关系}的\Term{saturation}{饱和集} $\mathscr S(G^\alpha)$\footnote{编者注：以 $\mathscr S(G^\alpha)$ 代替 $\overline{G^\alpha}$ 表示 $G^\alpha$ 的\Term{saturation}{饱和集}。}是 $G$ 的\Term{open-and-closed}{开闭}\Term{subset}{子集}（即 $G$ 的某些\Term{connected-component}{连通分支}的并）。
+
+此\Term{saturation}{饱和集}是 $F\times_A G^\alpha$ 在 $\lambda$ 下的像，所以在 $G$ 中开（参见 3.1）。若 $k$ 是 $A$ 的\Term{residue-field}{剩余域}，$\overline k$ 为 $k$ 的\Term{algebraic-closure}{代数闭包}，还须证明 $(F\times_A G^\alpha)\otimes_A k$ 在 $\lambda\otimes_A k$ 下的像在 $G\otimes_A k$ 中闭，或由 SGA 1，第 VIII 讲 4.4，证明 $(F\times_A G^\alpha)\otimes_A\overline k$ 在 $\lambda\otimes_A\overline k$ 下的像闭。由于 $G^\alpha\otimes_A\overline k$ 是 $G\otimes_A\overline k$ 的\Term{finite}{有限}多个\Term{connected-component}{连通分支}的并，归结到 $A$ 为\Term{algebraically-closed-field}{代数闭域}的情形，下文即作此假设。此时，$\mathscr S(G^\alpha)$ 是 $G^\alpha$ 在\Term{left-translation}{左平移} $\ell_{u(x)}$ 下的像的并，其中
+\SourcePage{323}
+$x$ 遍历 $F$ 的\Term{closed-point}{闭点}；这些像都是 $G$ 的\Term{connected-component}{连通分支}，因而得到所需断言。
+
+\textbf{4.2.} 特别取 $G^\alpha$ 为 $G$ 的原点的\Term{connected-component}{连通分支} $G^0$。则 $\mathscr S(G^0)$ 显然包含 $F$ 在 $u$ 下的像，而该像正是原点的\Term{equivalence-class}{等价类}。另一方面，若 $F^\beta$ 是 $F$ 的\Term{connected-component}{连通分支}，则 $F^\beta\times_A G^0$ \Term{connected}{连通}（2.1.2），所以 $F^\beta\times_A G^0$ 在 $\lambda$ 下的像包含于 $u(F^\beta)$ 在 $G$ 中的\Term{connected-component}{连通分支}。换言之，$\mathscr S(G^0)$ 是与 $F$ 的像相交的各\Term{connected-component}{连通分支}的并。
+
+还要指出，以 $\mathscr S(G^0)$ 为底层\Term{space}{空间}的 $G$ 的开\Term{subscheme}{子概形}是 $G$ 的\Term{subgroup}{子群}（仍记为 $\mathscr S(G^0)$）。事实上，$G$ 的\Term{inversion}{取逆态射}保持 $F$ 的像，并置换 $G$ 中与此像相交的各\Term{connected-component}{连通分支}；因此只须证明 $\nu:G\times_A G\to G$ 将 $\mathscr S(G^0)\times_A\mathscr S(G^0)$ 映入 $\mathscr S(G^0)$。为此可假设 $A$ 为\Term{algebraically-closed-field}{代数闭域}（按 4.1 的记号，$\mathscr S(G^0)\otimes_A\overline k$ 确实等于 $(G\otimes_A\overline k)^0$ 对\Term{homomorphism}{同态} $u\otimes_A\overline k$ 所定义的\Term{equivalence-relation}{等价关系}的\Term{saturation}{饱和集}）。若 $G^\gamma,G^\delta$ 是 $\mathscr S(G^0)$ 的\Term{connected-component}{连通分支}，则 $G^\gamma\times_A G^\delta$ \Term{connected}{连通}，它在 $\nu$ 下的像与 $F$ 的像相交；因此 $u(G^\gamma\times_A G^\delta)$ 包含于 $G$ 的一个与 $u(F)$ 相交的\Term{connected-component}{连通分支}。
+
+\textbf{4.3.} 由上述内容，$u$ 定义的以 $G$ 为底的\Term{groupoid}{群胚} $G_*$ 是 $G_*$ 在 $G$ 的各个形如 $\mathscr S(G^\alpha)$ 的\Term{open-and-closed}{开闭}\Term{subset}{子集}上诱导的\Term{groupoid}{群胚} $\mathscr S(G^\alpha_*)$ 的\Term{direct-sum}{直和}。所以 $G_*$ 的\Term{coequalizer}{余核}是这些\Term{groupoid}{群胚} $\mathscr S(G^\alpha_*)$ 的\Term{coequalizer}{余核}的\Term{direct-sum}{直和}，从而须分别研究它们。
+
+先考虑 $G_*$ 在 $\mathscr S(G^0)$ 上诱导的\Term{groupoid}{群胚} $\mathscr S(G^0_*)$。显然，它是由 $u$ 诱导的\Term{homomorphism}{同态} $F\to\mathscr S(G^0)$ 所定义的以 $\mathscr S(G^0)$ 为底的\Term{groupoid}{群胚}（3.1）。所以要证明存在的\Term{coequalizer}{余核}就是 $F\backslash\mathscr S(G^0)$。再考虑 $\mathscr S(G^0_*)$ 在 $G^0$ 上诱导的\Term{groupoid}{群胚}
+\[
+\begin{tikzcd}
+G^0_2\arrow[r,shift left=1.6ex,"\ell'_2"]\arrow[r,"\ell'_1" description]\arrow[r,shift right=1.6ex,"\ell'_0"']&G^0_1\arrow[r,shift left=.6ex,"\ell_1"]\arrow[r,shift right=.6ex,"\ell_0"']&G^0_0=G^0.
+\end{tikzcd}
+\]
+参照第 V 讲第 3.b 节详述的构造，那里记作 $Y_0\times_{X_0}X_1$ 的\Term{object}{对象}正是 $F\times_A G^0$，所以 $G^0_1$ 是 $G^0$ 在 $\lambda$ 诱导的\Term{morphism}{态射} $F\times_A G^0\to\mathscr S(G^0)$ 下的\Term{inverse-image}{逆像}。
+
+断言此\Term{inverse-image}{逆像}就是 $F_0\times_A G^0$，其中以 $F_0$ 表示 $G^0$ 在 $u$ 下的\Term{inverse-image}{逆像}。事实上，若 $F^\beta$ 是 $F_0$ 的\Term{connected-component}{连通分支}，则 $F^\beta\times_A G^0$ \Term{connected}{连通}（2.1.2），且 $\lambda(F\times_A G^0)$ 包含于 $G^0$；反之，若 $F^\beta$ 是 $F$ 的一个不包含于 $F_0$ 的\Term{connected-component}{连通分支}，则 $F^\beta\times_A G^0$ 的像仍\Term{connected}{连通}且包含 $u(F^\beta)$；若 $u(F^\beta)$ 不包含于 $G^0$，则 $\lambda(F^\beta\times_A G^0)$ 与 $G^0$ 不交。
+
+所以 $G_*$ 在 $G^0$ 上诱导的\Term{groupoid}{群胚} $G^0_*$ 是由 $u$ 诱导的\Term{homomorphism}{同态} $F_0\to G^0$ 所定义的以 $G^0$ 为底的\Term{groupoid}{群胚}。由于 $G^0$，从而
+\SourcePage{324}
+$F_0$ 都在 $A$ 上\Term{finite-type}{有限型}，由第 4 段，$G^0_*$ 有\Term{coequalizer}{余核}，它正是 $F_0\backslash G^0$。
+
+现在断言 $F_0\backslash G^0$ 等同于 $F\backslash\mathscr S(G^0)$。事实上，证明类似于第 V 讲第 6.1 节\Term{lemma}{引理}中断言 (i) 第一部分的证明。考虑图式
+\[
+\begin{tikzcd}
+\mathscr S(G^0)&F\times_A G^0\arrow[l,"v"']\arrow[r,"\operatorname{pr}_2"]&G^0,
+\end{tikzcd}
+\]
+其中 $v$ 是由 $\lambda$ 诱导的\Term{morphism}{态射}。由于 $\operatorname{pr}_2$ 有\Term{section}{截面}，$\operatorname{pr}_2$ 是\Term{universal-effective-epimorphism}{普遍有效满态射}，所以 $F_0\backslash G^0$ 等于 $\operatorname{Coker}(v_0,v_1)$，其中
+\[
+\begin{tikzcd}
+V_2\arrow[r,shift left=1.6ex,"v'_2"]\arrow[r,"v'_1" description]\arrow[r,shift right=1.6ex,"v'_0"']&V_1\arrow[r,shift left=.6ex,"v_1"]\arrow[r,shift right=.6ex,"v_0"']&V=F\times_A G^0
+\end{tikzcd}
+\]
+是\Term{groupoid}{群胚} $G^0_*$ 沿 $\operatorname{pr}_2$ 的\Term{inverse-image}{逆像}（见第 V 讲第 3.a 节），亦即 $\mathscr S(G^0_*)$ 沿复合\Term{morphism}{态射}
+\[
+\begin{tikzcd}
+F\times_A G^0\arrow[r,"\text{包含}"]&F\times_A\mathscr S(G^0)\arrow[r,"\operatorname{pr}_2"]&\mathscr S(G^0)
+\end{tikzcd}
+\]
+的\Term{inverse-image}{逆像}。
+
+同样，由于 $v$ \Term{faithfully-flat}{忠实平坦}且\Term{quasi-compact}{拟紧}，$F\backslash\mathscr S(G^0)$ 等于 $\mathscr S(G^0_*)$ 经\Term{base-change}{基变换} $v$ 所得\Term{inverse-image}{逆像}的\Term{coequalizer}{余核}。而由第 V 讲第 3.c 节，该\Term{inverse-image}{逆像}\Term{isomorphism}{同构}于 $V_*$；因此 $G^0_*$ 到 $\mathscr S(G^0_*)$ 的\Term{canonical}{典范}包含诱导 $F_0\backslash G^0$ 到 $F\backslash\mathscr S(G^0)$ 的\Term{isomorphism}{同构}。
+
+最后指出，$F\backslash\mathscr S(G^0)$ 的构造与\Term{finite}{有限}\Term{locally-free}{局部自由}\Term{base-change}{基变换}可交换，因为 $F_0\backslash G^0$ 的构造具有这一性质（见编者注 (37) 及下文 4.6）。
+
+\textbf{4.4.} 还须在 $G^\alpha$ 是 $G$ 的任意\Term{connected-component}{连通分支}时构造\Term{groupoid}{群胚} $\mathscr S(G^\alpha_*)$ 的\Term{coequalizer}{余核}。若 $A'$ 是\Term{large-relative-to-cardinal}{足够大}的、在 $A$ 上\Term{finite}{有限}自由的\Term{local-scheme}{局部} $A$-\Term{algebra}{代数}（见 3.2），则 $G^\alpha\otimes_A A'$ 是 $G\otimes_A A'$ 的\Term{finite}{有限}多个\Term{connected-component}{连通分支} $C_1,\ldots,C_n$ 的并，且它们各自都含有\Term{strictly-rational}{严格有理}点。因此，对每个 $i$，存在 $G\otimes_A A'$ 的\Term{right-translation}{右平移} $r_i$，将 $G^0\otimes_A A'$ 映到 $C_i$；此\Term{translation}{平移}诱导从\Term{groupoid}{群胚} $\mathscr S(G^0_*)\otimes_A A'$ 到 $\mathscr S(C^i_*)$ 的\Term{isomorphism}{同构}。所以 $G_*\otimes_A A'$ 在 $C_i$ 的\Term{saturation}{饱和集}上诱导的\Term{groupoid}{群胚}有\Term{coequalizer}{余核}。
+
+由于 $\mathscr S(G^\alpha_*)\otimes_A A'$ 是某些 $\mathscr S(C^i_*)$ 的\Term{direct-sum}{直和}，$\mathscr S(G^\alpha_*)\otimes_A A'$ 有\Term{coequalizer}{余核}；此\Term{coequalizer}{余核}是若干个 $(F_0\otimes_A A')\backslash(G^0\otimes_A A')$ 的\Term{direct-sum}{直和}，所以其每个\Term{finite}{有限}\Term{subset}{子集}都包含于一个\Term{affine-open}{仿射开子集}；此外，此\Term{coequalizer}{余核}的构造与底的\Term{finite}{有限}\Term{locally-free}{局部自由}\Term{group-extension}{扩张}可交换（见编者注 (37) 及下文 4.6）。于是如同 3.2.3，可知此\Term{coequalizer}{余核}形如 $Y\otimes_A A'$，其中 $Y$ 是 $\mathscr S(G^\alpha_*)$ 的\Term{coequalizer}{余核}。
+\SourcePage{325}
+\textbf{4.5.} 这样已经构造了 $F\backslash G$，并证明它是 $A$ 上\Term{finite-type}{有限型}\Term{scheme}{概形}的\Term{direct-sum}{直和}。\Term{theorem}{定理} 3.2 的其余断言直接归结为关于\Term{groupoid}{群胚} $\mathscr S(G^\alpha_*)$ 的相应断言。如同第 V 讲第 6 节，(i) 的第二个断言由第一个断言及 (ii)、(iii) 得到，所以只须证明 (ii)、(iii)、(iv)(a)。由于 $A'$ 是在 $A$ 上\Term{finite}{有限}自由的\Term{local-scheme}{局部} $A$-\Term{algebra}{代数}，\Term{morphism}{态射} $A\to A'$ \Term{faithfully-flat}{忠实平坦}且\Term{finite-presentation}{有限表现}，所以由 SGA 1，第 VIII 讲（3.1、4.6、5.4），只须在\Term{groupoid}{群胚} $\mathscr S(G^\alpha_*)\otimes_A A'$ 的情形验证相应断言。而此\Term{groupoid}{群胚}\Term{isomorphism}{同构}于\Term{finite}{有限}多个 $\mathscr S(G^0_*)\otimes_A A'$ 的\Term{direct-sum}{直和}（参见 4.4），从而归结到\Term{groupoid}{群胚} $\mathscr S(G^0_*)$。
+
+对后者，如同 4.3 已开始做的那样，继续仿照第 V 讲第 6 节的证明即可。
+
+\textbf{4.6.} 本节最后补充一些关于第 V 讲\Term{lemma}{引理} 6.1 及第 9.a 节的说明：在第 V 讲第 9.a 节的假设和记号下，我们要寻找一个条件，使 $(\mathrm{Sch}/S)$-\Term{groupoid}{群胚} $X_*$ 的\Term{coequalizer}{余核}的构造与底\Term{group-extension}{扩张} $\pi:S'\to S$ 可交换。由于 $X_*$ 和 $X'_*$ 的\Term{coequalizer}{余核}分别等同于 $X_*$ 和 $X'_*$ 在\Term{quasi-section}{拟截面} $U,U'$ 上诱导的\Term{groupoid}{群胚} $U_*,U'_*$ 的\Term{coequalizer}{余核}，归结到满足第 V 讲\Term{theorem}{定理} 4.1 的假设的 $(\mathrm{Sch}/S)$-\Term{groupoid}{群胚}情形。
+
+\footnote{编者注：增补了下一句。}若以 $Y$ 表示 $U_*$ 的\Term{coequalizer}{余核}，置 $Y'=Y\times_S S'$，并以 $Y_1$ 表示 $U'_*$ 的\Term{coequalizer}{余核}，则第 V 讲第 9.a 节已证明，\Term{canonical}{典范}\Term{morphism}{态射} $Y_1\to Y'$ 是\Term{homeomorphism}{同胚}（甚至是\Term{universal-homeomorphism}{普遍同胚}）；因而可将 $Y_1,Y'$ 等同为\Term{topological-space}{拓扑空间}。若 $p:U\to Y$ 为\Term{canonical}{典范}\Term{morphism}{态射}，$p':U'\to Y'$ 是由它经\Term{base-change}{基变换}所得，则所需条件就是以下 $\mathcal O_{Y'}$-模序列\Term{exact}{正合}：
+\[
+\tag{*}
+\begin{tikzcd}[column sep=large]
+\mathcal O_{Y'}\arrow[r]&p'_*(\mathcal O_{U'})\arrow[r,shift left=.5ex]\arrow[r,shift right=.5ex]&p'_*u'_{1*}(\mathcal O_{U'_1})=p'_*u'_{0*}(\mathcal O_{U'_1}).
+\end{tikzcd}
+\]
+\footnote{编者注：以下修改了原文，因为对 $X_*$ 所作的附加假设是多余的。}由于这里采用第 V 讲 4.1 的假设，$u_0,u_1$ \Term{finite}{有限}\Term{locally-free}{局部自由}；并且由第 V 讲 4.1(ii)，$p$ 是\Term{integral-morphism}{整态射}。所以 $p$ 和 $p\circ u_i$ 均\Term{affine}{仿射}，从而\Term{separated}{分离}且\Term{quasi-compact}{拟紧}。
+
+因此，若 $S'$ 在 $S$ 上\Term{flat}{平坦}，由 EGA III$_1$, 1.4.15（计入 EGA III$_2$ 中的勘误 Err$_{\mathrm{III}}$ 25），序列 ($*$) 等同于以下\Term{exact}{正合}序列的\Term{inverse-image}{逆像}：
+\[
+\tag{**}
+\begin{tikzcd}[column sep=large]
+\mathcal O_Y\arrow[r]&p_*(\mathcal O_U)\arrow[r,shift left=.5ex]\arrow[r,shift right=.5ex]&p_*u_{1*}(\mathcal O_{U_1})=p_*u_{0*}(\mathcal O_{U_1}).
+\end{tikzcd}
+\]
+\footnote{编者注：一方面增补了下一句，另一方面给以下命题增加编号 4.6.1，以突出这一结果。}当\Term{groupoid}{群胚} $X_*$ “\Term{local-scheme}{局部}”具有\Term{quasi-section}{拟截面}时，同样的论证适用（见第 V 讲\Term{theorem}{定理} 7.1 的证明）。因而得到：
+\begin{SGAresult}{命题}{4.6.1}
+当 $X_*$ \Term{local-scheme}{局部}具有\Term{quasi-section}{拟截面}时，其\Term{coequalizer}{余核}的构造与底的\Term{flat}{平坦}\Term{group-extension}{扩张}可交换。
+\end{SGAresult}
+\SourcePage{326}
+\textbf{4.7.} 现考虑\Term{theorem}{定理} 3.2 的\Term{groupoid}{群胚} $G_*$，暂设 $F,G$ 都在 $A$ 上\Term{finite-type}{有限型}。
+
+由 3.2.2，存在在 $A$ 上\Term{finite}{有限}自由的\Term{locally-algebraic}{局部代数} $A'$，使\Term{groupoid}{群胚} $G_*\otimes_A A'$ “\Term{local-scheme}{局部}”具有\Term{quasi-section}{拟截面}。对每个底\Term{group-extension}{扩张} $T\to\operatorname{Spec}A$，从 3.2.3 的图 ($*$) 得到的序列
+\[
+\begin{tikzcd}[column sep=large]
+(F''\backslash G'')\times_{\operatorname{Spec}A}T\arrow[r,shift left=.5ex]\arrow[r,shift right=.5ex]&(F'\backslash G')\times_{\operatorname{Spec}A}T\arrow[r]&(F\backslash G)\times_{\operatorname{Spec}A}T
+\end{tikzcd}
+\]
+均\Term{exact}{正合}。若再假设 $T$ 在 $\operatorname{Spec}A$ 上\Term{flat}{平坦}，则由 4.6，$(F''\backslash G'')\times_{\operatorname{Spec}A}T$ 和 $(F'\backslash G')\times_{\operatorname{Spec}A}T$ 分别等同于\Term{groupoid}{群胚}
+\[
+(G_*\otimes_A A'')\times_{\operatorname{Spec}A}T
+\quad\text{和}\quad
+(G_*\otimes_A A')\times_{\operatorname{Spec}A}T
+\]
+的\Term{coequalizer}{余核}。
+
+于是，由 3.2.3($*$) 经\Term{base-change}{基变换} $T\to\operatorname{Spec}A$ 得到的图表明，$(F\backslash G)\times_{\operatorname{Spec}A}T$ 等同于 $G_*\times_{\operatorname{Spec}A}T$ 的\Term{coequalizer}{余核}。同样的论证对一般情形（即 $G,F$ 在 $A$ 上\Term{locally-finite-type}{局部有限型}）也成立。因此得到：\footnote{编者注：给下文增补编号 4.7.1，以突出所述结果。}
+\begin{SGAresult}{命题}{4.7.1}
+在\Term{theorem}{定理} 3.2 的假设下，对每个\Term{flat}{平坦} $A$-\Term{scheme}{概形} $T$，$(F\backslash G)\times_{\operatorname{Spec}A}T$ 等同于 $G\times_{\operatorname{Spec}A}T$ 对 $F\times_{\operatorname{Spec}A}T$ 的\Term{left-quotient}{左商}。
+\end{SGAresult}
+
+\SGAsection{5}{与第 IV 讲的联系及推论}
+\textbf{5.1.}\footnote{编者注：修改了本节标题（原文为“补充”）。} 沿用第 3 节的记号和\Term{theorem}{定理} 3.2 的假设。于是有如下\Term{commutative-diagram}{交换图}：
+\[
+\begin{tikzcd}[column sep=large,row sep=large]
+F\times_A G\times_A G\arrow[r,"F\times\nu"]\arrow[d,shift left=.7ex,"\lambda\times G"]\arrow[d,shift right=.7ex,"\operatorname{pr}_2\times G"']&F\times_A G\arrow[d,shift left=.7ex,"\lambda"]\arrow[d,shift right=.7ex,"\operatorname{pr}_2"']\\
+G\times_A G\arrow[r,"\nu"]\arrow[d,"p\times G"']&G\arrow[d,"p"]\\
+(F\backslash G)\times_A G\arrow[r,dashed,"\rho"']&F\backslash G,
+\end{tikzcd}
+\]
+满足等式 $\operatorname{pr}_2\circ(F\times\nu)=\nu\circ(\operatorname{pr}_2\times G)$ 和 $\lambda\circ(F\times\nu)=\nu\circ(\lambda\times G)$。此外，由于假设 $G$ 在 $A$ 上\Term{flat}{平坦}，由 4.7 左边竖直序列\Term{exact}{正合}，所以 $\nu$ 诱导 $A$-\Term{scheme}{概形}的\Term{morphism}{态射}
+\[
+\rho:(F\backslash G)\times_A G\longrightarrow F\backslash G.
+\]
+\SourcePage{327}
+立即可验证此\Term{morphism}{态射} $\rho$ 使 $G$ 右\Term{action}{作用}于 $F\backslash G$；此外，\Term{canonical}{典范}\Term{morphism}{态射} $G\to F\backslash G$ 与 $G$ 在 $G,F\backslash G$ 上的右\Term{action}{作用}相容。
+
+\footnote{编者注：以下内容为增补。}这证明了 3.2 第 (ii$'$) 点的第一个断言。由 2.5.4，$X=F\backslash G$ 的\Term{connected-component}{连通分支}均\Term{finite-type}{有限型}、\Term{irreducible}{不可约}，且\Term{dimension}{维数}相同。为计算此\Term{dimension}{维数}，可假设 $A=k$ 且 $k$ \Term{algebraically-closed}{代数闭}。由第 I 讲 2.3.3.1，$k$-点 $p(e)$ 的\Term{stabilizer}{稳定子}由\Term{fiber}{纤维} $H=p^{-1}(p(e))$ 表示。由于 $F\backslash G$ 是\Term{ringed-space}{赋环空间}\Term{category}{范畴}中 $G$ 对 $F$ 的\Term{quotient}{商}，此\Term{fiber}{纤维}的底层\Term{space}{空间}为 $u(F)$；又因 $\operatorname{Ker}(u)$ \Term{finite}{有限}，$\dim H=\dim u(F)=\dim F$。所以由 2.5.4(ii)，$\dim X=\dim G-\dim F$。这证明\Term{theorem}{定理} 3.2 的第 (ii$'$) 点（从而也证明了 3.3.2 的第 (iv) 点）。
+
+\textbf{5.2.} 当 $A$-\Term{group}{群}\Term{homomorphism}{同态} $u:F\to G$ 是\Term{monomorphism}{单态射}时，可利用第 IV 讲的结果重新得到 5.1。事实上，由 3.2，\Term{canonical}{典范}\Term{morphism}{态射} $p:G\to F\backslash G$ \Term{faithfully-flat}{忠实平坦}且开，所以它是 (fpqc) \Term{topology}{拓扑}的\Term{covering}{覆盖}（第 IV 讲 6.3.1），从而可应用第 IV 讲推论 5.2.2 和 5.2.4。
+
+特别地，若除 3.2 的假设外，还假设 $u$ 是\Term{normal-subgroup}{正规子群} $F$ 到 $G$ 的包含，则 $F\backslash G$ 上存在唯一的 $A$-\Term{group}{群}结构，使\Term{canonical}{典范}\Term{morphism}{态射} $p:G\to F\backslash G$ 为 $A$-\Term{group}{群}\Term{homomorphism}{同态}。\footnote{编者注：增补了下一句。}这证明了 3.3.2 的第 (v) 点。
+
+\textbf{5.3.} 现在回顾第 IV 讲的几个陈述。
+
+\textbf{5.3.1.} 第 IV 讲 5.2.7 和 5.3.1 的陈述可表述如下。设 $F,G$ 是 $A$ 上\Term{locally-finite-type}{局部有限型}且\Term{flat}{平坦}的两个\Term{group}{群}，$F$ 是 $G$ 的闭\Term{normal-subgroup}{正规子群}。映射 $H\mapsto F\backslash H$ 和 $H'\mapsto H'\times_{F\backslash G}G$ 在 $G$ 中包含 $F$ 的\Term{flat}{平坦} $A$-\Term{subgroup}{子群}与 $F\backslash G$ 的\Term{flat}{平坦} $A$-\Term{subgroup}{子群}之间定义一个\Term{bijection}{双射}对应。在此\Term{bijection}{双射}下，$G$ 中包含 $F$ 的闭（分别\Term{normal-subgroup}{正规}）\Term{subgroup}{子群}对应于 $F\backslash G$ 的闭（分别\Term{normal-subgroup}{正规}）\Term{subgroup}{子群}。\footnote{编者注：除第 IV 讲上述陈述外，还用到了如下事实：由于 $G\to F\backslash G$ \Term{faithfully-flat}{忠实平坦}，$G$ 的 $A$-\Term{subgroup}{子群} $H$ 在 $A$ 上\Term{flat}{平坦}当且仅当 $F\backslash H$ 在 $A$ 上\Term{flat}{平坦}。}
+
+\textbf{5.3.2.} 第 IV 讲命题 5.2.9 蕴含以下结果。设 $F,H,G$ 是 $A$ 上\Term{locally-finite-type}{局部有限型}且\Term{flat}{平坦}的\Term{group}{群}，并设 $F\subset H\subset G$，$F$ 在 $G$ 中闭且在 $H$ 中\Term{normal-subgroup}{正规}。则 $F\backslash H$ \Term{free-action}{自由地}左\Term{action}{作用}于 $F\backslash G$，\Term{quotient-scheme}{商概形} $(F\backslash H)\backslash(F\backslash G)$ 存在，且有带\Term{operator-group}{算子群} $G$ 的\Term{scheme}{概形}的\Term{canonical}{典范}\Term{isomorphism}{同构}
+\[
+(F\backslash H)\backslash(F\backslash G)=H\backslash G.
+\]
+
+\textbf{5.3.3.} 最后，第 IV 讲 5.2.8 给出以下断言。设 $F,H,G$ 为 $A$ 上\Term{locally-finite-type}{局部有限型}且\Term{flat}{平坦}的\Term{group}{群}；假设 $F$ 包含于 $G$ 中，在 $G$ 中闭且\Term{normal-subgroup}{正规}，
+\SourcePage{328}
+$H$ 包含于 $G$ 中，且 $F\cap H$ 在 $A$ 上\Term{flat}{平坦}。以 $F\mathbin{\overset{\tau}{\times}}_A H$ 表示底层\Term{scheme}{概形}为 $F\times_A H$、\Term{multiplication}{乘法}由\Term{morphism}{态射}“$((x,h),(y,h'))\mapsto(xhyh^{-1},hh')$”定义的 $A$-\Term{group}{群}；同样，设 $u:H\cap F\to F\mathbin{\overset{\tau}{\times}}_A H$ 为\Term{monomorphism}{单态射} $x\mapsto(x^{-1},x)$，并设 $F\cdot H$ 为\Term{quotient}{商} $(F\cap H)\backslash(F\mathbin{\overset{\tau}{\times}}_A H)$。则存在\Term{canonical}{典范}\Term{isomorphism}{同构}
+\[
+F\backslash(F\cdot H)=(F\cap H)\backslash H.
+\]
+
+\textbf{5.4.}\footnote{编者注：以下细化了原文，特别是增补了命题 5.4.1。} 设 $u:G\to H$ 是\Term{locally-finite-type}{局部有限型} $A$-\Term{group}{群}之间的\Term{quasi-compact}{拟紧}\Term{morphism}{态射}，其核 $N$ 在 $A$ 上\Term{flat}{平坦}。由 3.3.2 和 5.2，$A$-\Term{quotient-group}{商群} $C=N\backslash G$ 存在，且\Term{morphism}{态射} $p:G\to C$ \Term{faithfully-flat}{忠实平坦}、\Term{locally-finite-presentation}{局部有限表现}。另一方面，由第 IV 讲 5.2.6，$u$ 诱导\Term{monomorphism}{单态射} $v:C\to H$，它是\Term{quasi-compact}{拟紧}的（因为 $u$ \Term{quasi-compact}{拟紧}且 $G\to C$ \Term{surjectivity}{满射}，见 EGA IV$_1$, 1.1.3），所以由 2.5.2，它是\Term{closed-immersion}{闭浸入}。这样得到以下命题。
+\begin{SGAresult}{命题}{5.4.1}
+设 $u:G\to H$ 是\Term{locally-finite-type}{局部有限型} $A$-\Term{group}{群}之间的\Term{quasi-compact}{拟紧}\Term{morphism}{态射}，且 $N=\operatorname{Ker}u$ 在 $A$ 上\Term{flat}{平坦}。则有\Term{resolution}{分解}
+\[
+\begin{tikzcd}
+G\arrow[r,"u"]\arrow[d,"p"']&H\\
+N\backslash G\arrow[ur,"i"']&
+\end{tikzcd}
+\]
+其中 $p$ \Term{faithfully-flat}{忠实平坦}、\Term{locally-finite-presentation}{局部有限表现}，$i$ 为\Term{closed-immersion}{闭浸入}。
+\end{SGAresult}
+再设 $G$ 在 $A$ 上\Term{flat}{平坦}。由 3.3.2，$C=N\backslash G$ 在 $A$ 上\Term{flat}{平坦}，所以\Term{quotient}{商} $X=C\backslash H$ 在 $(\mathrm{Sch}/A)$ 中存在并表示 (fppf) \Term{quotient-sheaf}{商层} $\widetilde{C\backslash H}$，且 $q:H\to X$ 是 $C$-\Term{torsor}{挠子}。因此，以 $e:\operatorname{Spec}A\to G$ 表示 $G$ 的\Term{unit-section}{单位截面}，$v$ 诱导 (fppf) \Term{sheaf}{层} $\widetilde C$ 与 $q$ 和 $q\circ e:\operatorname{Spec}A\to X$ 的\Term{fiber-product}{纤维积}之间的\Term{isomorphism}{同构}，此\Term{fiber-product}{纤维积}由 $H$ 的一个\Term{closed-subscheme}{闭子概形}表示。因此 $v$ 将 $C$ \Term{isomorphism}{同构}地映到 $G$ 的一个闭\Term{subgroup-scheme}{子群概形} $K$（它等于 $X$ 的 $A$-点 $q\circ e$ 的\Term{stabilizer}{稳定子}）。（这给出了另一证明：\Term{locally-finite-type}{局部有限型} $A$-\Term{group}{群}之间的每个\Term{quasi-compact}{拟紧}\Term{monomorphism}{单态射} $v:C\to H$ 都是\Term{closed-immersion}{闭浸入}，见 2.5.2 和第 VI$_B$ 讲 1.4.2。）
+
+再设 $C$ 是 $H$ 的\Term{normal-subgroup}{正规子群}。此时，$A$-\Term{group}{群} $\overline H=C\backslash H$ 是 $A$-\Term{group}{群}\Term{category}{范畴}中\Term{morphism}{态射} $u:G\to H$ 的\Term{cokernel}{余核}，$K$ 是\Term{morphism}{态射} $H\to\overline H$ 的核。当 $G,H$ 是阿贝尔 $A$-\Term{group}{群}时，$K$ 是 $u$ 在阿贝尔 $A$-\Term{group}{群}\Term{category}{范畴}中的像，而 $C=(\operatorname{Ker}u)\backslash G$ 是 $u$ 的\Term{coimage}{余像}。结合刚建立的\Term{isomorphism}{同构} $C\xrightarrow{\sim}K$，得到：\footnote[53]{编者注：为本\Term{theorem}{定理}增补编号 5.4.2。}
+\begin{SGAresult}{\Term{theorem}{定理}}{5.4.2}
+设 $k$ 为域。交换\Term{algebraic-group}{代数} $k$-\Term{group}{群}的\Term{category}{范畴}是\Term{abelian-category}{阿贝尔范畴}。
+\end{SGAresult}
+\SourcePage{329}
+事实上，当 $k$ 为域时，无论 $u$ 是什么，$\operatorname{Ker}(u)$ 都在 $k$ 上\Term{flat}{平坦}。
+
+\footnote{编者注：以下内容为增补。}注意，交换\Term{affine}{仿射}\Term{algebraic-group}{代数} $k$-\Term{group}{群}所成的满子\Term{category}{范畴}是\Term{thick-subcategory}{厚子范畴}。事实上，考虑交换\Term{algebraic-group}{代数} $k$-\Term{group}{群}的\Term{exact-sequence}{正合列}
+\[
+1\longrightarrow N\longrightarrow G\longrightarrow G/N\longrightarrow1.
+\]
+若 $G$ \Term{affine}{仿射}，则 $N$ 显然\Term{affine}{仿射}；由 Chevalley 的一个\Term{theorem}{定理}，$G/N$ 也\Term{affine}{仿射}，见第 VI$_B$ 讲 11.17。反之，若 $N,G/N$ 都\Term{affine}{仿射}，则由第 VI$_B$ 讲 9.2(viii)，$G$ 也\Term{affine}{仿射}。所以得到：
+\begin{SGAresult}{推论}{5.4.3}
+设 $k$ 为域。交换\Term{affine}{仿射}\Term{algebraic-group}{代数} $k$-\Term{group}{群}的\Term{category}{范畴}是\Term{abelian-category}{阿贝尔范畴}。
+\end{SGAresult}
+再指出，全体交换\Term{affine}{仿射} $k$-\Term{group}{群}（不必\Term{finite-type}{有限型}）的\Term{category}{范畴}也是\Term{abelian-category}{阿贝尔范畴}；这由第 VI$_B$ 讲 11.17 和 11.18.2 得到（见 [DG70] 第 III.3 章 7.4），另见第 VII$_B$ 讲 2.4.2 中利用\Term{formal-group}{形式群}的证明。
+
+\textbf{5.5.} 设 $G$ 是 Artin \Term{local-ring}{局部环} $A$ 上\Term{locally-finite-type}{局部有限型}且\Term{flat}{平坦}的\Term{group}{群}。由 2.3，原点的\Term{connected-component}{连通分支} $G^0$ 是 $G$ 的开\Term{normal-subgroup}{正规}\Term{subgroup-scheme}{子群概形}，因而也在 $A$ 上\Term{flat}{平坦}。由 3.2 和 5.2，$G^0\backslash G$ 是在 $A$ 上\Term{flat}{平坦}的 $A$-\Term{group-scheme}{群概形}。此外，由于 $G$ 的每个\Term{connected-component}{连通分支} $G^\alpha$ 对 $G^0$ 定义的\Term{equivalence-relation}{等价关系}都是\Term{saturated}{饱和}的，$G^0\backslash G$ 是各 $G^0\backslash G^\alpha$ 的\Term{direct-sum}{直和}（见 4.3）。特别地，$G^0\backslash G$ 中原点的\Term{connected-component}{连通分支}正是 $G^0\backslash G^0\simeq\operatorname{Spec}A$，所以 $G^0\backslash G\to\operatorname{Spec}A$ 在原点处是\Term{local-isomorphism}{局部同构}。由第 VI$_B$ 讲 1.3，$G^0\backslash G$ 在 $\operatorname{Spec}A$ 上\Term{etale}{平展}。\footnote{编者注：细化了以上原文，并增补命题 5.5.1，以突出这一结果。}所以得到以下命题（第 (ii) 点参见 [DG70] 第 II.5 章 1.7--1.10）：
+\begin{SGAresult}{命题}{5.5.1}
+设 $A$ 是 Artin \Term{local-ring}{局部环}，$G$ 是\Term{locally-finite-type}{局部有限型}\Term{flat}{平坦} $A$-\Term{group}{群}。
+
+(i) $G^0\backslash G$ 是\Term{etale}{平展} $A$-\Term{group}{群}。
+
+(ii) 因此，若 $A=k$ 为\Term{algebraically-closed-field}{代数闭域}，则 $G^0\backslash G$ 是常值 $k$-\Term{group}{群}，\Term{simply-transitive-action}{单纯传递地作用}于 $G$ 的\Term{connected-component}{连通分支}的\Term{set}{集合}；所以若 $G$ 是\Term{algebraic-group}{代数群}，则 $G^0\backslash G$ \Term{finite}{有限}。
+\end{SGAresult}
+
+\textbf{5.6.} 现设 $k$ 是\Term{perfect-field}{完美域}，$G$ 是\Term{locally-finite-type}{局部有限型} $k$-\Term{group}{群}。已知（0.2）$G_{\mathrm{r\text{é}d}}$ 是 $G$ 的\Term{subgroup-scheme}{子群概形}。此外，对于 $G_{\mathrm{r\text{é}d}}$ 在 $G$ 上的左\Term{action}{作用}，$G$ 的原点的\Term{equivalence-class}{等价类}就是 $G$ 的整个底层\Term{space}{空间}。因此由\Term{theorem}{定理} 3.2，得到：
+\begin{SGAresult}{命题}{5.6.1}
+设 $k$ 是\Term{perfect-field}{完美域}，$G$ 是\Term{locally-finite-type}{局部有限型} $k$-\Term{group}{群}。则 $k$-\Term{scheme}{概形} $G_{\mathrm{r\text{é}d}}\backslash G$ 是一个\Term{residue-field}{剩余域}为 $k$ 的\Term{finite}{有限}\Term{local-scheme}{局部} $k$-\Term{algebra}{代数}的谱。
+\end{SGAresult}
+\SourcePage{330}
+\begin{proof}
+\footnote{编者注：增补了编号 5.6.1 及以下证明。}由 3.2，$G_{\mathrm{r\text{é}d}}\backslash G$ 只有一个点，其\Term{residue-field}{剩余域}为 $k$，且它是在 $k$ 上\Term{finite-type}{有限型}的\Term{scheme}{概形}；所以它是一个\Term{finite-dimensional}{有限维}\Term{local-scheme}{局部} $k$-\Term{algebra}{代数}的谱（见 EGA I, 6.4.4）。
+\end{proof}
+\begin{SGAresult}{命题}{5.6.2}
+设 $u:F\to G$ 是\Term{perfect-field}{完美域} $k$ 上\Term{locally-finite-type}{局部有限型}\Term{group}{群}之间的\Term{morphism}{态射}。以下断言\Term{equivalence}{等价}：
+
+(i) $u$ \Term{flat}{平坦}。
+
+(ii) $u^0:F^0\to G^0$ \Term{dominant}{支配}，且由 $u$ 诱导的\Term{morphism}{态射} $v:F_{\mathrm{r\text{é}d}}\backslash F\to G_{\mathrm{r\text{é}d}}\backslash G$ \Term{flat}{平坦}。
+\end{SGAresult}
+\begin{proof}
+\footnote{编者注：细化了 (ii)$\Rightarrow$(i) 的证明，并简化了下图。}考虑以下\Term{commutative-diagram}{交换图}：
+\[
+\begin{tikzcd}
+F\arrow[r,"p"]\arrow[d,"u"']&F_{\mathrm{r\text{é}d}}\backslash F\arrow[d,"v"]\\
+G\arrow[r,"q"']&G_{\mathrm{r\text{é}d}}\backslash G,
+\end{tikzcd}
+\]
+其中 $p,q$ 为\Term{canonical}{典范}\Term{projection}{投影}。由 3.2(iv)，$p,q$ 均\Term{faithfully-flat}{忠实平坦}；因此，若 $u$ \Term{flat}{平坦}，则 $q\circ u=v\circ p$ \Term{flat}{平坦}，从而 $v$ 也\Term{flat}{平坦}。
+
+反之，设 $v$ \Term{flat}{平坦}且 $u^0$ \Term{dominant}{支配}。由于 $u^0$ \Term{quasi-compact}{拟紧}（由 2.4，$F^0$ 在 $k$ 上\Term{finite-type}{有限型}，因而\Term{noetherian}{诺特}），它将 $F^0$ 的\Term{generic-point}{泛点} $\xi$ 映到 $G^0$ 的\Term{generic-point}{泛点} $\eta$。设 $R$ 为以 $G_{\mathrm{r\text{é}d}}\backslash G$ 为谱的\Term{finite}{有限}\Term{local-scheme}{局部} $k$-\Term{algebra}{代数}，$\mathfrak m$ 为其\Term{maximal-ideal}{极大理想}。有\Term{local-ring}{局部环}的\Term{local-homomorphism}{局部同态} $R\to\mathcal O_{G,\eta}\to\mathcal O_{F,\xi}$。注意，有\Term{cartesian-square}{笛卡尔方块}
+\[
+\begin{tikzcd}
+G_{\mathrm{r\text{é}d}}\arrow[r]\arrow[d]&G\arrow[d,"q"]\\
+\operatorname{Spec}(R/\mathfrak m)\arrow[r]&\operatorname{Spec}R,
+\end{tikzcd}
+\]
+所以 $\mathcal O_{G,\eta}/\mathfrak m\mathcal O_{G,\eta}\simeq\mathcal O_{G_{\mathrm{r\text{é}d}},\eta}=\kappa(\eta)$，故 $\mathcal O_{F,\xi}/\mathfrak m\mathcal O_{F,\xi}$ 在 $\mathcal O_{G,\eta}/\mathfrak m\mathcal O_{G,\eta}$ 上\Term{flat}{平坦}。
+
+另一方面，由于 $q$ 和 $v\circ p$ \Term{flat}{平坦}，$G,F$ 都在 $R$ 上\Term{flat}{平坦}。因此由\Term{flatness-local-criterion}{平坦性的局部判据}（见 EGA IV$_3$, 11.3.10.2），$\mathcal O_{F,\xi}$ 在 $\mathcal O_{G,\eta}$ 上\Term{flat}{平坦}，即 $u$ 在点 $\xi$ 处\Term{flat}{平坦}。由 2.5.3，$u$ \Term{flat}{平坦}。
+\end{proof}
+
+\SGAsection{6}{关于不必有限型的 $k$-群的补充}
+再指出以下结果，\footnote{编者注：增补了以下取自 [Per75] 的结果。注意，若用 Weil 的语言，\Term{lemma}{引理} 6.1 可表述为：“$G$ 的每一点都是两个\Term{generic-point}{泛点}的乘积。”}它们将在增补的第 VI$_B$ 讲第 12 节中使用。固定\Term{base-field}{基域} $k$。
+\SourcePage{331}
+\begin{SGAresult}{\Term{lemma}{引理}}{6.1}
+设 $G$ 是 $k$-\Term{group}{群}。对每个 $x\in G$，存在点 $u\in G\times G$，使 $\mu(u)=x$，且两个\Term{projection}{投影} $p_1(u),p_2(u)$ 都是 $G$ 的\Term{maximal-point}{极大点}。
+\end{SGAresult}
+\begin{proof}
+置 $K=\kappa(x)$。由于\Term{projection}{投影} $G_K\to G$ 将\Term{maximal-point}{极大点}映到\Term{maximal-point}{极大点}，归结到 $x$ \Term{rational-point}{有理}的情形。此时，\Term{left-translation}{左平移} $\lambda_x$（分别\Term{right-translation}{右平移} $\rho_x$）给出\Term{morphism}{态射} $G\to G\times G$、$g\mapsto(\lambda_x(g^{-1}),g)$（分别 $g\mapsto(g,\rho_x(g^{-1}))$），它诱导从 $G$ 到 $\mu^{-1}(x)$ 的\Term{isomorphism}{同构}，其逆为 $p_2$（分别 $p_1$）。所以若 $u$ 为 $\mu^{-1}(x)$ 的\Term{maximal-point}{极大点}，则 $p_1(u),p_2(u)$ 都是 $G$ 的\Term{maximal-point}{极大点}，从而 $u$ 满足要求。
+\end{proof}
+\begin{SGAresult}{推论}{6.2}
+设 $f:G\to H$ 是\Term{quasi-compact}{拟紧}\Term{dominant}{支配}的 $k$-\Term{group}{群}\Term{morphism}{态射}。
+
+(i) $f$ \Term{surjectivity}{满射}。
+
+(ii) 若 $H$ \Term{reduced}{约化}，则 $f$ \Term{faithfully-flat}{忠实平坦}。
+\end{SGAresult}
+\begin{proof}
+以 $\mu_H$（分别 $\mu_G$）表示 $H$（分别 $G$）的\Term{multiplication}{乘法}。取 $h\in H$。由 6.1，存在 $u\in H\times H$，使 $\mu_H(u)=h$，且 $\alpha=p_1(u),\beta=p_2(u)$ 都是 $H$ 的\Term{maximal-point}{极大点}。由于 $f$ \Term{quasi-compact}{拟紧}且\Term{dominant}{支配}，$f^{-1}(\alpha),f^{-1}(\beta)$ 都\Term{nonempty}{非空}（见 EGA IV$_1$, 1.1.5），所以存在 $v\in G\times G$，使 $(f\times f)(v)=u$（见 EGA I, 3.5.2）。于是 $g=\mu_G(v)$ 满足 $f(g)=h$。这证明 $f$ \Term{surjectivity}{满射}。
+
+若再设 $H$ \Term{reduced}{约化}，则 $\mathcal O_{H,\alpha}$ 是域，且上面已知 $f^{-1}(\alpha)\ne\varnothing$，所以 $f$ 在 $f^{-1}(\alpha)$ 的每个点 $\xi$ 处\Term{flat}{平坦}，由\Term{lemma}{引理} 2.5.3，$f$ \Term{flat}{平坦}。
+\end{proof}
+\begin{SGAresult}{回顾}{6.3}
+回顾（见 EGA IV$_3$, 11.10.1），\Term{scheme}{概形}\Term{morphism}{态射} $f:X\to Y$ 称为\Term{schematically-dominant}{概形支配}的，若满足如下条件：对 $Y$ 的每个\Term{open-subset}{开子集} $U$，若 $Z$ 是 $U$ 的\Term{closed-subscheme}{闭子概形}，且\Term{morphism}{态射} $f^{-1}(U)\to U$ 经 $Z$ \Term{resolution}{分解}，则 $Z=U$。当 $f$ \Term{quasi-compact}{拟紧}且\Term{quasi-separated}{拟分离}时，这\Term{equivalence}{等价}于 $X$ 在 $f$ 下的\Term{scheme-theoretic-image}{闭像}为 $Y$（见同上 11.10.3(iv) 及 EGA I, 9.5.8）。
+\end{SGAresult}
+\begin{SGAresult}{命题}{6.4}
+设 $f:H\to G$ 是 $k$-\Term{group}{群}的\Term{quasi-compact}{拟紧}\Term{morphism}{态射}。则 $f$ 的\Term{scheme-theoretic-image}{闭像}是 $G$ 的\Term{subgroup-scheme}{子群概形} $H'$，且 $f$ \Term{resolution}{分解}为
+\[
+\begin{tikzcd}
+H\arrow[r,"f"]\arrow[d,"f'"']&G\\
+H'\arrow[ur,"i"']&
+\end{tikzcd}
+\]
+其中 $f'$ \Term{schematically-dominant}{概形支配}、\Term{quasi-compact}{拟紧}且\Term{surjectivity}{满射}。
+\end{SGAresult}
+\begin{proof}
+由于 $H$ \Term{separated}{分离}（0.3），$f$ \Term{quasi-compact}{拟紧}且\Term{separated}{分离}，所以 $f_*(\mathcal O_H)$ 是\Term{quasi-coherent}{拟凝聚} $\mathcal O_G$-模，$f$ 的\Term{scheme-theoretic-image}{闭像} $H'$ 存在，并是由\Term{quasi-coherent}{拟凝聚}\Term{ideal}{理想} $\mathcal I=\operatorname{Ker}(\mathcal O_G\to f_*(\mathcal O_H))$ 定义的 $G$ 的\Term{closed-subscheme}{闭子概形}（见 EGA I，第 9.5 节）。
+\SourcePage{332}
+以 $c_G,\mu_G$（分别 $c_H,\mu_H$）表示 $G$（分别 $H$）的\Term{inversion}{取逆态射}和\Term{multiplication}{乘法态射}。则 $c_G\circ f=f\circ c_H$ 经\Term{closed-subscheme}{闭子概形} $c_G(H')$ \Term{resolution}{分解}，所以 $H'\subset c_G(H')$，故 $H'=c_G(H')$（因为 $c_G^2=\operatorname{id}_G$）。同样，由于 $f\circ\pi_H=\pi_G\circ(f\times f)$ 经 $H'$ \Term{resolution}{分解}，$f\times f$ 经 $G\times G$ 的\Term{closed-subscheme}{闭子概形} $\pi_G^{-1}(H')$ \Term{resolution}{分解}。另一方面，由于\Term{scheme-theoretic-image}{闭像}的形成与\Term{flat}{平坦}\Term{base-change}{基变换}可交换（EGA III, 1.4.15 和 IV$_1$, 1.7.21），$f\times\operatorname{id}_H$（分别 $\operatorname{id}_{H'}\times f$）的\Term{scheme-theoretic-image}{闭像}为 $H'\times H$（分别 $H'\times H'$）。所以由“\Term{scheme-theoretic-image}{闭像}的\Term{transitivity}{传递性}”（EGA I, 9.5.5），$f\times f$ 的\Term{scheme-theoretic-image}{闭像}为 $H'\times H'$，因此包含于 $\pi_G^{-1}(H')$，即 $\pi_G$ 在 $H'\times H'$ 上的\Term{restriction}{限制}经 $H'$ \Term{resolution}{分解}。这表明 $H'$ 是 $G$ 的闭\Term{subgroup-scheme}{子群概形}。以 $i$ 表示包含 $H'\hookrightarrow G$。
+
+于是 $f=i\circ f'$，其中 $f':H\to H'$ \Term{schematically-dominant}{概形支配}且\Term{quasi-compact}{拟紧}（因为 $f$ \Term{quasi-compact}{拟紧}、$i$ \Term{separated}{分离}）。所以由 6.2，$f'$ \Term{surjectivity}{满射}。6.4 得证。
+\end{proof}
+现在可陈述以下\Term{theorem}{定理}（[Per75], V 3.1 和 3.2，另见 [Per76], 0.0 和 0.1）。
+\begin{SGAresult}{\Term{theorem}{定理}}{6.5（D. Perrin）}
+设 $G$ 是\Term{quasi-compact}{拟紧} $k$-\Term{group}{群}。则：
+
+(i) $G$ 是\Term{finite-type}{有限型} $k$-\Term{group}{群}的一个\Term{filtered}{滤过}系统 $(G_i)$ 的\Term{projective-limit}{投射极限}（对充分大的 $i$，过渡\Term{morphism}{态射} $u_{ij}:G_j\to G_i$ 均\Term{affine}{仿射}），且\Term{morphism}{态射} $G\to G_i$ \Term{faithfully-flat}{忠实平坦}（对充分大的 $i$ 还\Term{affine}{仿射}）。
+
+(ii) 设 $H$ 是 $G$ 的闭子 $k$-\Term{group}{群}。则在以下两种情形中，(fpqc) \Term{quotient-sheaf}{商层} $\widetilde{G/H}$ 是 $k$-\Term{scheme}{概形}：
+
+(1) \Term{immersion}{浸入} $H\to G$ \Term{finite-presentation}{有限表现}；此时 $G/H$ 在 $k$ 上\Term{finite-type}{有限型}。
+
+(2) $H$ 在 $G$ 中\Term{normal-subgroup}{正规}。
+\end{SGAresult}
+此\Term{theorem}{定理}的证明（依赖于若干中间\Term{theorem}{定理}）参见 [Per75]。为方便读者，仍给出以下两个推论的证明，见 [Per75], V 3.3--3.4 或 [Per76], 4.2.3--4.2.5。
+\begin{SGAresult}{推论}{6.6}
+设 $f:G\to H$ 是 $k$-\Term{group}{群}的\Term{quasi-compact}{拟紧}\Term{morphism}{态射}。
+
+(i) 若 $f$ \Term{schematically-dominant}{概形支配}，则它\Term{faithfully-flat}{忠实平坦}。
+
+(ii) 特别地，当 $H$ \Term{affine}{仿射}，且\Term{morphism}{态射} $f^\sharp:\mathcal O(H)\to\mathcal O(G)$ \Term{injectivity}{单射}时，即属于此情形。
+\end{SGAresult}
+\begin{proof}
+设 $f$ \Term{schematically-dominant}{概形支配}。则由 6.2(i)，$f$ \Term{surjectivity}{满射}，所以由 2.5.3，只须证明 $f$ 在 $G$ 的\Term{identity-element}{单位元}处\Term{flat}{平坦}。由于 $\mathcal O_{H,e}=\mathcal O_{H^0,e}$（见 2.6.5），可用 $H^0$ 代替 $H$，从而假设 $H$ \Term{irreducible}{不可约}。于是 $H$ \Term{quasi-compact}{拟紧}（同上）；由于 $f$ \Term{quasi-compact}{拟紧}，$G$ 亦\Term{quasi-compact}{拟紧}。由 6.5(i)，$H=\varprojlim_i H_i$，其中每个 $H_i$ 为\Term{algebraic-group}{代数} $k$-\Term{group}{群}。以 $N_i$ 表示 $G\to H_i$ 的核，它是 $G$ 的闭\Term{normal-subgroup}{正规}子 $k$-\Term{group}{群}。此外，由于\Term{unit-section}{单位截面} $\{e\}\to H_i$ \Term{finite-presentation}{有限表现}，\Term{immersion}{浸入} $N_i\to G$ 也
+\SourcePage{333}
+\Term{finite-presentation}{有限表现}，所以由 6.5(ii)，(fpqc) \Term{quotient}{商} $G/N_i$ 是\Term{algebraic-group}{代数} $k$-\Term{group}{群}。有\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}
+G\arrow[r,"f"]\arrow[d,"q_i"']&H\arrow[d,"p_i"]\\
+G/N_i\arrow[r,"f_i"']&H_i,
+\end{tikzcd}
+\]
+其中 $f$ \Term{schematically-dominant}{概形支配}，$p_i,q_i$ \Term{faithfully-flat}{忠实平坦}（因而\Term{schematically-dominant}{概形支配}）。于是 $f_i\circ q_i=p_i\circ f$ \Term{schematically-dominant}{概形支配}，故 $f_i$ 也\Term{schematically-dominant}{概形支配}。另一方面，$f_i$ 为\Term{monomorphism}{单态射}；由于 $G/N_i,H_i$ 都是\Term{algebraic-group}{代数群}，由 2.5.2，$f_i$ 为\Term{closed-immersion}{闭浸入}。由此 $f_i$ 为\Term{isomorphism}{同构}，所以 $G\to H_i$ \Term{faithfully-flat}{忠实平坦}。由 [BAC] 第 I 章第 2.7 节命题 9，\Term{morphism}{态射} $G\to H$ \Term{flat}{平坦}；另一方面，由 6.2(i)，它\Term{surjectivity}{满射}，所以\Term{faithfully-flat}{忠实平坦}。(i) 得证。(ii) 由 (i) 得到，因为若 $H$ \Term{affine}{仿射}且 $f^\sharp$ \Term{injectivity}{单射}，则 $f$ 的\Term{scheme-theoretic-image}{闭像}等于 $H$，所以 $f$ \Term{schematically-dominant}{概形支配}（见 6.4）。
+\end{proof}
+\begin{SGAresult}{推论}{6.7}
+设 $u:G\to H$ 是 $k$-\Term{group}{群}\Term{morphism}{态射}，$N=\operatorname{Ker}(u)$。设 $u$ \Term{quasi-compact}{拟紧}。
+
+(i) (fpqc) \Term{quotient-sheaf}{商层} $\widetilde{G/N}$ 由 $k$-\Term{group-scheme}{群概形} $G/N$ 表示，且 $u$ \Term{resolution}{分解}为
+\[
+\begin{tikzcd}
+G\arrow[r,"u"]\arrow[d,"p"']&H\\
+G/N\arrow[ur,"i"']&
+\end{tikzcd}
+\]
+其中 $p$ \Term{faithfully-flat}{忠实平坦}，$i$ 为\Term{closed-immersion}{闭浸入}。
+
+(ii) 特别地，若 $u$ 是\Term{monomorphism}{单态射}，则 $u$ 为\Term{closed-immersion}{闭浸入}；若 $u$ \Term{schematically-dominant}{概形支配}，则 $u$ \Term{faithfully-flat}{忠实平坦}。
+\end{SGAresult}
+\begin{proof}
+(i) 由 6.4 和 6.6，$u$ 的\Term{scheme-theoretic-image}{闭像} $G'$ 是 $G$ 的闭\Term{subgroup-scheme}{子群概形}，且 $p:G\to G'$ \Term{faithfully-flat}{忠实平坦}、\Term{quasi-compact}{拟紧}。显然 $\operatorname{Ker}(p)=\operatorname{Ker}(u)=N$，所以由第 IV 讲 3.3.2.1 和 5.1.7，$G'$ 表示 (fpqc) \Term{quotient-sheaf}{商层} $\widetilde{G/N}$。
+
+(ii) 第二个断言已包含于 6.6，现证明第一个。若 $u$ 是\Term{monomorphism}{单态射}，$p$ 亦如此；于是 $p$ 既是\Term{monomorphism}{单态射}，又是\Term{effective-epimorphism}{有效满态射}，所以是\Term{isomorphism}{同构}（见第 IV 讲 1.14）。6.7 得证。
+\end{proof}
+最后指出以下推论（见 [Per76], 4.2.6--4.2.8）。
+\begin{SGAresult}{推论}{6.8}
+交换\Term{quasi-compact}{拟紧} $k$-\Term{group-scheme}{群概形}的\Term{category}{范畴}是\Term{abelian-category}{阿贝尔范畴}。
+\end{SGAresult}
+结合 6.7，证明与 5.4.2 的证明类似。
+\begin{SGAresult}{推论}{6.9}
+若 $\operatorname{car}(k)=0$，则每个 $k$-\Term{group-scheme}{群概形} $G$ 都\Term{geometrically-reduced}{几何约化}。
+\end{SGAresult}
+\SourcePage{334}
+\begin{proof}
+若 $g\in G$，$K$ 是 $\kappa(g)$ 的\Term{algebraic-closure}{代数闭包}，则 $\mathcal O_{G,e}\otimes_k K\simeq\mathcal O_{G_K,g_K}$，所以只须证明 $\mathcal O_{G,e}=\mathcal O_{G^0,e}$ \Term{geometrically-reduced}{几何约化}。这样归结到 $G$ \Term{connected}{连通}，从而\Term{quasi-compact}{拟紧}（2.6.5）的情形。于是结论由 6.5 及\Term{algebraic-group}{代数群}的 Cartier \Term{theorem}{定理}（见第 VI$_B$ 讲 1.6.1 或 [DG70] 第 II.6 章\Term{theorem}{定理} 1.1）得到。
+\end{proof}
+\begin{SGAresult}{推论}{6.10}
+设 $G$ 是\Term{quasi-compact}{拟紧} $k$-\Term{group}{群}，并设 $k$ \Term{algebraically-closed}{代数闭}。
+
+(i) 设 $f:G\to H$ 是 $k$-\Term{group}{群}的\Term{faithfully-flat}{忠实平坦}\Term{morphism}{态射}，则诱导映射 $G(k)\to H(k)$ \Term{surjectivity}{满射}。
+
+(ii) \Term{rational-point}{有理点}的\Term{set}{集合}在 $G$ 中\Term{dense}{稠密}。
+\end{SGAresult}
+证明参见 [Per75], V 3.7 和 3.9。
+
+\textbf{参考文献}\footnote{编者注：本讲中引用的增补参考文献。}
+\begin{description}
+\item[{[An73]}] S. Anantharaman，\emph{一维底上的\Term{group-scheme}{群概形}、\Term{homogeneous-space}{齐性空间}与\Term{algebraic-space}{代数空间}}（Schémas en groupes, espaces homogènes et espaces algébriques sur une base de dimension 1），Mém. Soc. Math. France \textbf{33} (1973), 5--79。
+\item[{[BAC]}] N. Bourbaki，\emph{\Term{commutative-algebra}{交换代数}}（Algèbre commutative），第 I--IV 章及第 V--VII 章，Masson, 1985。
+\item[{[DG70]}] M. Demazure、P. Gabriel，\emph{\Term{algebraic-group}{代数群}}（Groupes algébriques），Masson \& North-Holland, 1970。
+\item[{[Per75]}] D. Perrin，\emph{域上的\Term{quasi-compact}{拟紧}\Term{group-scheme}{群概形}}（Schémas en groupes quasi-compacts sur un corps），Publ. Math. Orsay N\textsuperscript{o} 165--75.46（第一部分），\url{http://portail.mathdoc.fr/PMO/}。
+\item[{[Per76]}] D. Perrin，\emph{域上\Term{quasi-compact}{拟紧}\Term{group-scheme}{群概形}的逼近}（Approximation des schémas en groupes, quasi-compacts sur un corps），Bull. Soc. Mah. France \textbf{104} (1976), 323--335。
+\item[{[Ray67a]}] M. Raynaud，\emph{对\Term{flat}{平坦}\Term{equivalence-relation}{等价关系}取商}（Passage au quotient par une relation d'équivalence plate），载于 \emph{Proc. Conf. Local Fields} (Driebergen)（T. A. Springer 编），Springer-Verlag, 1967，第 78--85 页。
+\item[{[Ray67b]}] M. Raynaud，\emph{关于对\Term{flat}{平坦}\Term{groupoid}{群胚}取商}（Sur le passage au quotient par un groupoïde plat），C. R. Acad. Sci. Paris (Sér. A) \textbf{265} (1967), 384--387。
+\item[{[Ray70]}] M. Raynaud，\emph{\Term{group-scheme}{群概形}与\Term{homogeneous-space}{齐性空间}上的\Term{ample-sheaf}{丰沛层}}（Faisceaux amples sur les schémas en groupes et les espaces homogènes），Lect. Notes Maths. \textbf{119}, Springer-Verlag, 1970。
+\end{description}

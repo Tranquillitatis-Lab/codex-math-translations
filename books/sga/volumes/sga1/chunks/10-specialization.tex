@@ -1,0 +1,362 @@
+\SGAchapter{X}{基本群的特殊化理论}{Théorie de la spécialisation du groupe fondamental}
+\SourcePage{217}
+本讲只研究\Term{proper-morphism}{固有态射}的\Term{geometric-fiber}{几何纤维}的\Term{fundamental-group}{基本群}，也就是研究随参数变化的\Term{proper}{固有}代数\Term{scheme}{概形}的\Term{fundamental-group}{基本群}。在后续一讲中，我们将把这里使用的技术推广到“无穷远处”\Term{tamely-ramified}{温和分歧}的\Term{etale-covering}{平展覆盖}。例如，这将解决\Term{covering}{覆盖}的 \Term{galois-group}{Galois 群}阶数与特征互素时的“三点问题”及其显然的变式；所谓三点问题，就是确定\Term{projective}{射影}直线 $\mathbf P^1_k$ 的 \Term{galois-covering}{Galois 覆盖}，要求它至多在三个给定点处\Term{ramified}{分歧}，并且在这些点处只有\Term{tamely-ramified}{温和分歧}。
+
+\SGAsection{1}{固有可分态射的同伦正合列}
+\begin{SGAresult}{定义}{1.1}
+域 $k$ 上的\Term{prescheme}{预概形} $X$ 称为\Term{separable}{可分}的，或称在 $k$ 上\Term{separable}{可分}，如果对 $k$ 的每个\Term{group-extension}{扩张} $K$，$X\otimes_k K$ 都是\Term{reduced}{约化}的。设 $f:X\to Y$ 是\Term{prescheme}{预概形}\Term{morphism}{态射}；如果 $X$ 在 $Y$ 上\Term{flat}{平坦}，而且对每个 $y\in Y$，\Term{fiber}{纤维} $X\otimes_Y k(y)$ 在 $k(y)$ 上\Term{separable}{可分}，就称 $f$ \Term{separable}{可分}，或称 $X$ 在 $Y$ 上\Term{separable}{可分}。
+\end{SGAresult}
+若 $X$ 是域 $k$ 上的\Term{prescheme}{预概形}，称它\Term{separable}{可分}，也就等价于说 $X$ \Term{reduced}{约化}，且对 $X$ 的各个\Term{irreducible-component}{不可约分支}的\Term{generic-point}{泛点} $x$，域 $k(x)$ 都是 $k$ 的\Term{separable}{可分}\Term{group-extension}{扩张}。因此，当 $k$ \Term{perfect}{完美}时，这等价于说 $X$ \Term{reduced}{约化}。注意：如果 $X$ 在 $Y$ 上\Term{separable}{可分}，那么对任意\Term{base-change}{基变换} $Y'\to Y$，$X'=X\times_Y Y'$ 都在 $Y'$ 上\Term{separable}{可分}。在适当的\Term{finite}{有限}性假设下，还可以证明两个\Term{separable}{可分}\Term{morphism}{态射}的复合仍是\Term{separable}{可分}\Term{morphism}{态射}。我们只需要如下形式：如果 $X$ 在 $Y$ 上\Term{separable}{可分}，而 $X'$ 在 $X$ 上\Term{etale}{平展}，那么 $X'$ 在 $Y$ 上\Term{separable}{可分}。这直接由定义及 I 9.2 推出。此外，我们将通过下面的命题来使用“\Term{morphism}{态射}\Term{separable}{可分}”这一假设。
+
+\SourcePage{218}
+\begin{SGAresult}{命题}{1.2}
+设 $f:X\to Y$ 是\Term{proper-morphism}{固有}\Term{separable}{可分}\Term{morphism}{态射}，$Y$ \Term{locally-noetherian}{局部 Noether}。考虑它的\Term{stein-factorization}{Stein 分解}
+\[
+X\xrightarrow{f'}Y'\longrightarrow Y,
+\]
+其中 $f'_*(\mathcal O_X)=\mathcal O_{Y'}$，$Y'$ 在 $Y$ 上\Term{finite}{有限}，并\Term{isomorphism}{同构}于代数 $f_*(\mathcal O_X)$ 的谱。那么 $Y'$ 是 $Y$ 的\Term{etale-covering}{平展覆盖}。
+\end{SGAresult}
+这一命题将收入 EGA III 7。\footnote{参见 EGA III 7.8.10 (i)。}下面说明证明的思路。容易归结到 $Y$ 是某个完备\Term{local-ring}{局部环} $A$ 的谱的情形。再对 $A$ 作一次适当的\Term{finite}{有限}\Term{flat}{平坦}\Term{group-extension}{扩张}，对应于一次适当的\Term{residue-field}{剩余域}\Term{group-extension}{扩张}，就可以假定\Term{closed-point}{闭点} $y$ 的\Term{fiber}{纤维}的各个\Term{connected}{连通}分支都\Term{geometrically-connected}{几何连通}。这也就是说，$H^0(X_y,\mathcal O_{X_y})$ 分解为若干个与 $k=k(y)$ 相同的域的直积。随后可以假定 $X$ \Term{connected}{连通}，于是
+\[
+H^0(X_y,\mathcal O_{X_y})=k,
+\]
+故\Term{homomorphism}{同态} $A\to H^0(X_y,\mathcal O_{X_y})$ 是\Term{surjectivity}{满射}。利用一个 Künneth 型的一般命题可知，$f_*(\mathcal O_X)$ 由某个自由 $A$-模 $B$ 定义，而且
+\[
+B/\mathfrak mB\longrightarrow H^0(X_y,\mathcal O_{X_y})=k
+\]
+为\Term{bijection}{双射}。因此这里的 $B$ 是 $A$ 上的\Term{etale}{平展}代数，证明完毕。
+
+\begin{SGAresult}{定理}{1.3}
+设 $f:X\to Y$ 为\Term{proper}{固有}\Term{separable}{可分}\Term{morphism}{态射}，$Y$ \Term{locally-noetherian}{局部 Noether} 且\Term{connected}{连通}，并假定 $f_*(\mathcal O_X)=\mathcal O_Y$。这一条件蕴含 $X$ 在 $Y$ 上的\Term{fiber}{纤维}\Term{geometrically-connected}{几何连通}；由 1.2，其逆亦成立。设 $y$ 为 $Y$ 的一点，$\overline{k(y)}$ 为 $k(y)$ 的一个\Term{algebraic-closure}{代数闭包}，置
+\[
+\overline X_y=X_y\otimes_{k(y)}\overline{k(y)}.
+\]
+再设 $X'$ 是 $X$ 的一个\Term{connected}{连通}\Term{etale-covering}{平展覆盖}，并置
+\[
+\overline X'_y=X'_y\otimes_{k(y)}\overline{k(y)}.
+\]
+存在 $Y$ 的\Term{etale-covering}{平展覆盖} $Y'$ 及一个 $X$-\Term{isomorphism}{同构} $X'\xrightarrow{\sim}X\times_Y Y'$，当且仅当 $\overline X'_y$ 在 $\overline X_y$ 上有一个\Term{section}{截面}。
+\end{SGAresult}
+置 $Y'=\operatorname{Spec}(h_*(\mathcal O_{X'}))$，其中 $h:X'\to Y$ 为复合\Term{morphism}{态射} $X'\to X\to Y$。只需证明典范 $Y$-\Term{morphism}{态射}
+\[
+X'\longrightarrow X\times_Y Y'
+\]
+是\Term{isomorphism}{同构}，且 $Y'$ 在 $Y$ 上\Term{etale}{平展}。由 1.2，后一事实已知，所以 $X\times_Y Y'$ 在 $X$ 上\Term{etale}{平展}，因而\Term{morphism}{态射} $X'\to X\times_Y Y'$ 也\Term{etale}{平展}（I 4.8）。此外，$Y'$ 是\Term{connected}{连通}的 $X'$ 的像，故\Term{connected}{连通}；而 $X$ 在 $Y$ 上的\Term{fiber}{纤维}\Term{connected}{连通}，所以 $X\times_Y Y'$ \Term{connected}{连通}（IX 3.4 及 V 6.9 (iii)）。因此，只需验证 $X'\to X\times_Y Y'$ 在 $X\times_Y Y'$ 的某一点处的投影次数等于 $1$。这一点容易由 $\overline X'_y$ 在 $\overline X_y$ 上有\Term{section}{截面}的假设推出：可以使用 IX 6.6，也可以更直接地指出，只需在作\Term{base-change}{基变换} $\operatorname{Spec}(\overline{k(y)})\to Y$ 后证明 $X\times_Y Y'$ 中存在这样一点，而这显然成立。定理 1.3 得证。
+
+\SourcePage{219}
+结合 IX 3.4 及 V 6.9、V 6.11 中的对应辞典，可以把 1.3 写成以下等价形式。
+\begin{SGAresult}{推论}{1.4}
+沿用上文关于 $f:X\to Y$ 和 $\overline X_y$ 的记号。设 $\bar a$ 为 $\overline X_y$ 的一个\Term{geometric-point}{几何点}，$a$ 为其在 $X$ 中的像，$b$ 为其在 $Y$ 中的像。那么下列\Term{group-homomorphism}{群同态}序列\Term{exact-sequence}{正合}：
+\[
+\pi_1(\overline X_y,\bar a)\longrightarrow\pi_1(X,a)
+\longrightarrow\pi_1(Y,b)\longrightarrow e.
+\]
+\end{SGAresult}
+\textbf{注记 1.5。}注意，1.3 的证明实质上使用了 1.2，从而使用了形式代数几何中的“第一个比较定理”。另一方面，第 IX 讲的\Term{descent}{下降}理论只通过 IX 3.4 发挥作用，而当 $f:X\to Y$ \Term{proper}{固有}且满足 $f_*(\mathcal O_X)=\mathcal O_Y$ 时，后一个结果容易直接证明。事实上，设 $Y'$ 在 $Y$ 上\Term{etale}{平展}，且 $X'=X\times_Y Y'$ 是两个非空开集的不交并；我们来证明 $Y'$ 也如此。写成 $Y'=\operatorname{Spec}(\mathcal A)$，则 $X'=\operatorname{Spec}(\mathcal B)$，其中 $\mathcal B=\mathcal A\otimes_{\mathcal O_Y}\mathcal O_X$；$X'$ 的这一不交并分解对应于 $\mathcal B$ 分解为两个非零代数 $\mathcal B_1,\mathcal B_2$ 的直积。由 $f_*(\mathcal O_X)=\mathcal O_Y$，容易推出 $f_*(\mathcal B)=\mathcal A$，故 $\mathcal A$ 是 $f_*(\mathcal B_1)$ 与 $f_*(\mathcal B_2)$ 两个代数的和。这两个代数也都非零，因为它们的单位\Term{section}{截面}非零，证毕。
+
+\textbf{1.6。}仍设 $f$ \Term{proper}{固有}且\Term{separable}{可分}，但不再对 $f_*(\mathcal O_X)$ 作假设。它对应于 $Y$ 的一个完全确定的\Term{etale-covering}{平展覆盖} $Y'$；而且 $a$ 的像 $b'$ 给出了 $Y'$ 在 $b$ 上方的一个基点。将 1.4 应用于典范\Term{morphism}{态射} $X\to Y'$，并假定 $f$ 为\Term{surjectivity}{满射}，则 1.4 的\Term{exact-sequence}{正合列}替换为下面的序列，它类似于代数拓扑中\Term{fibred-space}{纤维空间}的\Term{homotopy-exact-sequence}{同伦正合列}：
+\[
+\begin{aligned}
+\pi_1(\overline X_y,\bar a)&\longrightarrow\pi_1(X,a)\longrightarrow\pi_1(Y,b)
+\longrightarrow\pi_0(\overline X_y,\bar a)\\
+&\longrightarrow\pi_0(X,a)\longrightarrow\pi_0(Y,b)\longrightarrow e.
+\end{aligned}
+\]
+当然，在 1.4 中一般不能断言\Term{homomorphism}{同态} $\pi_1(\overline X_y,\bar a)\to\pi_1(X,a)$ 为\Term{injectivity}{单射}；在代数拓扑中，其核是 $\pi_2(Y,b)$ 的像。在代数几何中，同样应该引入所有维数的同伦群，并对满足适当假设的\Term{proper-morphism}{固有态射}——例如\Term{smooth-morphism}{光滑态射}——建立完整的\Term{homotopy-exact-sequence}{同伦正合列}。目前在这一方向上，除了一个合理但未必最终的高阶同伦群定义之外，还没有任何结果。
+
+\begin{SGAresult}{推论}{1.7}
+设 $k$ 为\Term{algebraically-closed-field}{代数闭域}，$X,Y$ 为 $k$ 上的两个\Term{connected}{连通}\Term{prescheme}{预概形}，且 $X$ 在 $k$ 上\Term{proper}{固有}，$Y$ \Term{locally-noetherian}{局部 Noether}。设 $a$ 为 $X$ 的一个\Term{geometric-point}{几何点}，$b$ 为 $Y$ 的一个\Term{geometric-point}{几何点}，它们均取值于 $k$ 的同一个\Term{algebraically-closed}{代数闭}\Term{group-extension}{扩张} $K$。考虑 $X\times_k Y$ 的\Term{geometric-point}{几何点} $c=(a,b)$，以及由两投影 $X\times_k Y\to X$、$X\times_k Y\to Y$ 所对应的\Term{fundamental-group}{基本群}\Term{homomorphism}{同态}给出的\Term{homomorphism}{同态}
+\[
+\pi_1(X\times_k Y,c)\longrightarrow\pi_1(X,a)\times\pi_1(Y,b).
+\]
+这一\Term{homomorphism}{同态}是\Term{isomorphism}{同构}。
+\end{SGAresult}
+\SourcePage{220}
+先设 $K=k$。置 $Z=X\times_k Y$，考虑投影 $f:Z\to Y$，以及 $Y$ 的\Term{geometric-point}{几何点} $b$ 所在的点 $y$，对此应用 1.4。为此注意，换成 $X_{\mathrm{red}}$ 不会改变所考虑的\Term{fundamental-group}{基本群}，因此可以假定 $X$ 已经\Term{reduced}{约化}，从而在 $k$ 上\Term{separable}{可分}。于是 $Z$ 在 $k$ 上\Term{separable}{可分}，且显然具有\Term{geometrically-connected}{几何连通}的\Term{fiber}{纤维}，因为 $X$ \Term{connected}{连通}。$Z$ 在 $b$ 处的\Term{geometric-fiber}{几何纤维}典范\Term{isomorphism}{同构}于 $X\otimes_k K=X$。另一方面，由于复合\Term{morphism}{态射} $X\to Z\to X$ 为恒等\Term{morphism}{态射}，\Term{homomorphism}{同态} $\pi_1(X,a)\to\pi_1(Z,c)$ 是\Term{injectivity}{单射}，故 1.4 给出\Term{exact-sequence}{正合列}
+\[
+e\longrightarrow\pi_1(X,a)\longrightarrow\pi_1(Z,c)\longrightarrow\pi_1(Y,b)\longrightarrow e.
+\]
+另有典范\Term{exact-sequence}{正合列}
+\[
+e\longrightarrow\pi_1(X,a)\longrightarrow\pi_1(X,a)\times\pi_1(Y,b)
+\longrightarrow\pi_1(Y,b)\longrightarrow e,
+\]
+其中所写的两个\Term{homomorphism}{同态}分别为典范嵌入和典范投影。最后，取两端项上的恒等\Term{morphism}{态射}，以及中间项上的典范\Term{homomorphism}{同态} $\pi_1(Z,c)\to\pi_1(X,a)\times\pi_1(Y,b)$，得到第一条\Term{exact-sequence}{正合列}到第二条\Term{exact-sequence}{正合列}的一个\Term{homomorphism}{同态}。所得图的交换性显然。由于两端项上的\Term{homomorphism}{同态}均为\Term{isomorphism}{同构}，中间项上的\Term{homomorphism}{同态}亦为\Term{isomorphism}{同构}，这就证明了此时的 1.7。
+
+若不再假定 $K=k$，则只能得到\Term{isomorphism}{同构}
+\[
+\pi_1(Z,c)\longrightarrow\pi_1(X\otimes_k K,a)\times\pi_1(Y,b),
+\]
+因而 1.7 等价于下面的特殊情形。
+\begin{SGAresult}{推论}{1.8}
+设 $X$ 为\Term{algebraically-closed-field}{代数闭域} $k$ 上的\Term{proper}{固有}\Term{connected}{连通}\Term{scheme}{概形}，$k'$ 为 $k$ 的一个\Term{algebraically-closed}{代数闭}\Term{group-extension}{扩张}，$a'$ 为 $X\otimes_k k'$ 的\Term{geometric-point}{几何点}，$a$ 为其在 $X$ 中的像。那么典范\Term{homomorphism}{同态}
+\[
+\pi_1(X\otimes_k k',a')\longrightarrow\pi_1(X,a)
+\]
+是\Term{isomorphism}{同构}。
+\end{SGAresult}
+该\Term{homomorphism}{同态}为\Term{surjectivity}{满射}，等价于说：如果 $X'$ 是 $X$ 的\Term{connected}{连通}\Term{etale-covering}{平展覆盖}，那么 $X'\otimes_k k'$ 也\Term{connected}{连通}。这直接来自 $k$ \Term{algebraically-closed}{代数闭}，也是 IX 3.4 的一个特例；到这里尚未使用 $X$ 的\Term{proper}{固有}性假设。再者，该\Term{homomorphism}{同态}为\Term{injectivity}{单射}，也就是说 $X\otimes_k k'$ 的每个\Term{etale-covering}{平展覆盖}都\Term{isomorphism}{同构}于 $X$ 的某个\Term{etale-covering}{平展覆盖}的\Term{inverse-image}{逆像}。由基本性质容易得到：存在 $k'$ 的一个\Term{finite-type}{有限型} $k$-子代数 $A$，以及 $X\otimes_k A$ 的一个\Term{etale-covering}{平展覆盖}，使它在 $X\otimes_k k'$ 上的\Term{inverse-image}{逆像}\Term{isomorphism}{同构}于给定\Term{covering}{覆盖}。令 $Y=\operatorname{Spec}(A)$；这是\Term{finite-type}{有限型}整 $k$-\Term{scheme}{概形}，因而有 $k$-有理点。
+\SourcePage{221}
+现在在一个 $k$-有理点 $(a,b)$ 处，把 1.7 应用于 $X\times Y$ 的\Term{fundamental-group}{基本群}。可知 $X\times Y$ 的每个\Term{connected}{连通}\Term{etale-covering}{平展覆盖}都\Term{isomorphism}{同构}于某个\Term{covering}{覆盖} $X'\times Y'$ 对 $G\times G'$ 的子群 $H$ 所取的商；其中 $X',Y'$ 分别是 $X,Y$ 的 Galois \Term{etale-covering}{平展覆盖}，群分别为 $G,G'$。这意味着，该\Term{covering}{覆盖}在 $X\times Y'$ 上的\Term{inverse-image}{逆像}，\Term{isomorphism}{同构}于一个形如 $X'_1\times Y'$ 的\Term{covering}{覆盖}，其中 $X'_1$ 是 $X$ 的\Term{etale-covering}{平展覆盖}。因此，若 $L$ 是 $Y$ 的\Term{function-field}{函数域}，即 $A$ 在 $k'$ 中的\Term{field-of-fractions}{分式域}，则由给定的 $X\times_k Y$ 的\Term{covering}{覆盖}所诱导的 $X\otimes_k L$ 的\Term{etale-covering}{平展覆盖}，满足如下性质：存在 $L$ 的\Term{finite}{有限}\Term{separable}{可分}\Term{group-extension}{扩张} $L'$，使该\Term{covering}{覆盖}在 $X\otimes_k L'$ 上的\Term{inverse-image}{逆像}\Term{isomorphism}{同构}于 $X'_1\otimes_k L'$。因为 $k'$ \Term{algebraically-closed}{代数闭}，可以假定 $L$ 的\Term{group-extension}{扩张} $L'$ 包含在 $k'$ 中。于是给定的 $X\otimes_k k'$ 的\Term{etale-covering}{平展覆盖}\Term{isomorphism}{同构}于 $X'_1\otimes_k k'$，证毕。
+
+上述证明中顺带给出的关于乘积 $X\times_k Y$ 的\Term{etale-covering}{平展覆盖}的显式描述，立即推出以下结果。
+\begin{SGAresult}{推论}{1.9}
+设 $k$ 为\Term{algebraically-closed-field}{代数闭域}，$X,Y$ 为 $k$ 上\Term{locally-noetherian}{局部 Noether} 的\Term{prescheme}{预概形}，$Z=X\times_k Y$ 为其乘积，$Z'$ 为 $Z$ 的一个\Term{etale-covering}{平展覆盖}。对每个 $k$-有理点 $y\in Y$，令 $i_y:\operatorname{Spec}(k)\to Y$ 为相应的典范\Term{morphism}{态射}，$j_y=\operatorname{id}_X\times_k i_y$ 为相应的\Term{morphism}{态射} $X\to Z$；令 $X'_y$ 为 $Z'$ 经 $j_y$ 拉回所得的 $X$ 的\Term{etale-covering}{平展覆盖}。假定 $Y$ \Term{connected}{连通}，且 $X$ 或 $Y$ 在 $k$ 上\Term{proper}{固有}。那么各个\Term{covering}{覆盖} $X'_y$ 彼此\Term{isomorphism}{同构}。
+\end{SGAresult}
+形象地说，一个以\Term{connected}{连通}\Term{prescheme}{预概形} $Y$ 为参数的 $X$ 的\Term{etale-covering}{平展覆盖}族，在 $X$ 或参数\Term{prescheme}{预概形} $Y$ 在 $k$ 上\Term{proper}{固有}时是常值的。
+
+\textbf{注记 1.10。}在\Term{normal}{正规}代数\Term{scheme}{概形}的情形，推论 1.7—1.9 归功于 Lang–Serre [2]；他们的工作正是本讨论班发展\Term{fundamental-group}{基本群}理论的最初动机。如这两位作者所指出的，去掉\Term{proper}{固有}性假设后，这些结果便不再成立，至少在特征 $p>0$ 时如此。例如，取 $X$ 为\Term{affine}{仿射}直线 $\operatorname{Spec}(k[t])$，不难看出，以\Term{affine}{仿射}直线 $Y=\operatorname{Spec}(k[s])$ 为参数、由方程
+\[
+x^p-x=st
+\]
+定义的 $X$ 的\Term{covering}{覆盖}都是\Term{etale}{平展}的，且两两不\Term{isomorphism}{同构}。这反驳了 1.9，因而也反驳了 1.7。同样，若把 $s$ 看作 $k$ 的一个\Term{algebraically-closed}{代数闭}\Term{group-extension}{扩张} $K$ 中在 $k$ 上超越的元素，就得到 $X\otimes_k K$ 的一个\Term{etale-covering}{平展覆盖} $X'$，它不来自 $X$ 的\Term{etale-covering}{平展覆盖}。
+
+\SourcePage{222}
+\SGAsection{2}{层存在定理的应用：固有可分态射的纤维基本群的半连续性定理}
+\begin{SGAresult}{定理}{2.1}
+设 $Y$ 是一个完备 Noether \Term{local-ring}{局部环}的谱，其\Term{residue-field}{剩余域}为 $k$；设 $X$ 为\Term{proper}{固有} $Y$-\Term{scheme}{概形}，$X_0=X\otimes_A k$，$a_0$ 为 $X_0$ 的\Term{geometric-point}{几何点}，$a$ 为 $X$ 中对应的\Term{geometric-point}{几何点}。那么典范\Term{homomorphism}{同态} $\pi_1(X_0,a_0)\to\pi_1(X,a)$ 是\Term{isomorphism}{同构}。
+\end{SGAresult}
+这不过是将 IX 1.10 中回顾的结果用\Term{fundamental-group}{基本群}语言重新表述。正是在这里，形式代数几何中的\Term{existence-theorem}{层存在定理}以实质性的方式进入\Term{fundamental-group}{基本群}理论。
+
+现在取\Term{residue-field}{剩余域} $k$ 的一个\Term{algebraic-closure}{代数闭包} $\bar k$，并引入\Term{geometric-fiber}{几何纤维} $\overline X_0=X_0\otimes_k\bar k$。于是有\Term{exact-sequence}{正合列}（IX 6.1）
+\[
+e\longrightarrow\pi_1(\overline X_0,\bar a)\longrightarrow\pi_1(X_0,a_0)
+\longrightarrow\pi_1(k,\bar k)\longrightarrow e.
+\]
+另一方面，有 2.1 中的\Term{isomorphism}{同构}，以及类似但更初等的\Term{isomorphism}{同构}
+\[
+\pi_1(k,\bar k)\longrightarrow\pi_1(Y,b),
+\]
+其中 $b$ 为 $a$ 在 $Y$ 中的像。因此得到：
+\begin{SGAresult}{推论}{2.2}
+沿用上述记号，假定 $\overline X_0=X_0\otimes_k\bar k$ \Term{connected}{连通}，设 $\bar a_0$ 为 $\overline X_0$ 的一个\Term{geometric-point}{几何点}，$a_0$ 为其在 $X$ 中的像，$b_0$ 为其在 $Y$ 中的像。那么下列典范\Term{homomorphism}{同态}序列\Term{exact}{正合}：
+\[
+e\longrightarrow\pi_1(\overline X_0,\bar a)\longrightarrow\pi_1(X,a_0)
+\longrightarrow\pi_1(Y,b_0)\longrightarrow e.
+\]
+\end{SGAresult}
+可以把这条序列与\Term{exact-sequence}{正合列} 1.4 比较，但应注意：（a）这里并未对 $X\to Y$ 作\Term{flat}{平坦}性或\Term{fiber}{纤维}\Term{separable}{可分}性的假设；（b）这里有一个重要的补充，即\Term{morphism}{态射} $\pi_1(\overline X_0,\bar a_0)\to\pi_1(X,a_0)$ 是\Term{injectivity}{单射}。
+
+后一事实使我们能把 $X$ 在 $Y$ 上其他\Term{geometric-fiber}{几何纤维}的\Term{fundamental-group}{基本群}与 $\overline X_0$ 的\Term{fundamental-group}{基本群}相比较。事实上，设 $y_1$ 为 $Y$ 的任意一点，$X_1$ 为其\Term{fiber}{纤维}，$\overline X_1$ 为相对于 $k(y_1)$ 的某个\Term{algebraically-closed}{代数闭}\Term{group-extension}{扩张}的\Term{geometric-fiber}{几何纤维}；设 $\bar a_1$ 为 $\overline X_1$ 的一个\Term{geometric-point}{几何点}，$a_1$ 为其在 $X$ 中的像，$b_1$ 为其在 $Y$ 中的像。选择从 $a_1$ 到 $a_0$ 的一个“道路类”，从而得到从 $b_1$ 到 $b_0$ 的道路类，以及下列\Term{homomorphism}{同态}\Term{commutative-diagram}{交换图}：
+\[
+\begin{tikzcd}[column sep=small]
+{} & \pi_1(\overline X_1,\bar a_1)\arrow[r] & \pi_1(X,a_1)\arrow[r]\arrow[d] & \pi_1(Y,b_1)\arrow[r]\arrow[d] &e\\
+e\arrow[r]&\pi_1(\overline X_0,\bar a_0)\arrow[r]&\pi_1(X,a_0)\arrow[r]&\pi_1(Y,b_0)\arrow[r]&e.
+\end{tikzcd}
+\]
+其中所画出的两条竖直箭头均为\Term{isomorphism}{同构}。由于第二行\Term{exact}{正合}，由此得到一个典范\Term{homomorphism}{同态}，称为\Term{fundamental-group}{基本群}的\Term{specialization-homomorphism}{特殊化同态}。
+\SourcePage{223}
+它只依赖所选的从 $a_1$ 到 $a_0$ 的道路类，因此在 $\pi_1(X,a_0)$ 的\Term{inner-automorphism}{内自同构}模意义下确定：
+\[
+\pi_1(\overline X_1,\bar a_1)\longrightarrow\pi_1(\overline X_0,\bar a_0).
+\]
+当上图的第一行也\Term{exact}{正合}时，立即可知\Term{specialization-homomorphism}{特殊化同态}为\Term{surjectivity}{满射}。因此，由 1.4 得到：
+\begin{SGAresult}{推论}{2.3}
+在 2.1 的条件下，再假定\Term{morphism}{态射} $f:X\to Y$ \Term{separable}{可分}（1.1），且 $\overline X_0$ \Term{connected}{连通}；由 1.2，这时 $f_*(\mathcal O_X)=\mathcal O_Y$。那么对于 $X$ 在 $Y$ 上的每个带\Term{geometric-point}{几何点} $\bar a_1$ 的\Term{geometric-fiber}{几何纤维} $\overline X_1$，上述\Term{specialization-homomorphism}{特殊化同态}均为满\Term{homomorphism}{同态}。
+\end{SGAresult}
+这是一条关于\Term{fundamental-group}{基本群}的\Term{semicontinuity}{半连续性}结果，代数拓扑中似乎尚无相应结论。还可以在更一般的条件下表述它。
+\begin{SGAresult}{推论}{2.4}
+设 $f:X\to Y$ 为\Term{geometric-fiber}{几何纤维}\Term{connected}{连通}的\Term{proper-morphism}{固有态射}，$Y$ \Term{locally-noetherian}{局部 Noether}，$y_0,y_1$ 为 $Y$ 的两点，且 $y_0\in\overline{\{y_1\}}$。令 $\overline X_0,\overline X_1$ 分别为对应于 $k(y_0),k(y_1)$ 的给定\Term{algebraically-closed}{代数闭}\Term{group-extension}{扩张}的\Term{geometric-fiber}{几何纤维}，$\bar a_0,\bar a_1$ 分别为 $\overline X_0,\overline X_1$ 的一个\Term{geometric-point}{几何点}。那么可以自然地定义\Term{specialization-homomorphism}{特殊化同态}
+\[
+\pi_1(\overline X_1,\bar a_1)\longrightarrow\pi_1(\overline X_0,\bar a_0),
+\]
+它在相差\Term{inner-automorphism}{内自同构}的意义下确定；若 $f$ 为\Term{separable}{可分}\Term{morphism}{态射}（1.1），则这一\Term{homomorphism}{同态}为\Term{surjectivity}{满射}。
+\end{SGAresult}
+首先由 1.8 可知，2.4 在本质上与为\Term{residue-field}{剩余域} $k(y_0),k(y_1)$ 选择的\Term{algebraically-closed}{代数闭}\Term{group-extension}{扩张}无关。因此可以将 $Y$ 换成其上的某个\Term{prescheme}{预概形} $Y'$，只要 $Y'$ 有一点 $y'_0$ 位于 $y_0$ 上方，并有一点 $y'_1$ 位于 $y_1$ 上方即可。现在取 $Y'$ 为 $y_0$ 在 $Y$ 中的\Term{local-ring}{局部环}的\Term{completion}{完备化}的谱，应用 2.3 即得。
+
+\textbf{注记 2.5。}如果不再假定 $f:X\to Y$ 为\Term{separable}{可分}\Term{morphism}{态射}，则 2.4 最后关于\Term{specialization-homomorphism}{特殊化同态}为\Term{surjectivity}{满射}的结论便不成立；因而推出它的 1.3、1.4 也不再成立，即使在特征零\Term{algebraically-closed-field}{代数闭域}上的\Term{projective}{射影}\Term{scheme}{概形}的情形亦然。稍后我们将给出两类例子：一类中 $f$ \Term{flat}{平坦}，但有一个\Term{fiber}{纤维}不\Term{separable}{可分}，而 $X,Y$ 仍在 $k$ 上\Term{smooth}{光滑}；另一类中 $f$ 的\Term{fiber}{纤维}都\Term{separable}{可分}，但 $f$ 不\Term{flat}{平坦}，例如 $f:X\to Y$ 为\Term{normal}{正规}整\Term{scheme}{概形}之间的双有理\Term{morphism}{态射}。参见 XI 3。在这些例子中，泛\Term{geometric-fiber}{几何纤维}的\Term{fundamental-group}{基本群}可以为零，而某个特殊\Term{geometric-fiber}{几何纤维}的\Term{fundamental-group}{基本群}却不为零。另一方面，即使 $f:X\to Y$ 是 2.4 中的\Term{proper}{固有}\Term{separable}{可分}\Term{morphism}{态射}，\Term{specialization-morphism}{特殊化态射}通常也未必是\Term{isomorphism}{同构}。
+\SourcePage{224}
+例如，容易给出如下例子：$\overline X_1$ 为\Term{nonsingular}{非奇异}椭圆曲线，因此其\Term{fundamental-group}{基本群}为交换群，且对于与特征互素的素数 $\ell$，它的 $\ell$-准素分量\Term{isomorphism}{同构}于 $\mathbf Z_\ell^2$，参见第 XI 讲；而 $\overline X_0$ 则由两条在两个点相交的\Term{nonsingular}{非奇异}有理曲线组成，或由两条在一点相切的有理曲线组成，或者是一条有理曲线，其唯一奇点为尖点。退化椭圆曲线的完整分类见 Kodaira [1] 和 Néron 的近期工作。容易看出，在这三种情形下，$\overline X_0$ 的\Term{fundamental-group}{基本群}分别是 $\widehat{\mathbf Z},e,e$，因而比 $\overline X_1$ 的\Term{fundamental-group}{基本群}“严格更小”。不过，稍后我们会在 $f$ \Term{smooth}{光滑}时给出\Term{specialization-homomorphism}{特殊化同态}之核的一个上界；它特别蕴含，当 $k(y_0)$ 的特征为零时，\Term{specialization-homomorphism}{特殊化同态}为\Term{isomorphism}{同构}。但即使 $f$ \Term{smooth}{光滑}，当 $k(y_0)$ 的特征大于零时，\Term{specialization-homomorphism}{特殊化同态}仍可能不是\Term{isomorphism}{同构}；例如 $X$ 是 $Y$ 上的阿贝尔\Term{scheme}{概形}时便可出现这种情况，甚至\Term{relative-dimension}{相对维数}取 $1$ 即可，参见 XI 2。一套令人满意的\Term{fundamental-group}{基本群}\Term{specialization}{特殊化}理论应当考虑“真正的”\Term{fundamental-group}{基本群}的“连续分量”，它对应于以无穷小群为结构群的\Term{principal-covering}{主覆盖}的分类。这样，我们便有理由期待：\Term{proper}{固有}\Term{smooth-morphism}{光滑态射} $f:X\to Y$ 的各个\Term{geometric-fiber}{几何纤维}的“真正的”\Term{fundamental-group}{基本群}在 $X$ 上形成一个良好的\Term{local-system}{局部系统}，它是 $X$ 上\Term{finite}{有限}\Term{flat}{平坦}群\Term{scheme}{概形}的\Term{inverse-limit}{投射极限}。\footnote{遗憾的是，M. Artin 的一个尚未发表的例子已否定了这个极有吸引力的猜想，即使 $f$ 的\Term{fiber}{纤维}是给定\Term{genus}{亏格} $g\geq2$ 的代数曲线也不例外。}以后我们还将回到这一观点；当前的目标则是尽可能深入地研究\Term{fundamental-group}{基本群}的拓扑理论与\Term{scheme}{概形}理论所共有的现象。
+
+现在设 $X_0$ 为\Term{algebraically-closed-field}{代数闭域} $k$ 上一条\Term{proper}{固有}、\Term{smooth}{光滑}、\Term{connected}{连通}且\Term{genus}{亏格}为 $g$ 的曲线。若 $k$ 的特征为零，其\Term{fundamental-group}{基本群}可用超越方法如下确定。已知 $X_0$ 来自素域 $\mathbf Q$ 的某个\Term{finite}{有限}\Term{transcendence-degree}{超越次数}的\Term{algebraically-closed}{代数闭}\Term{group-extension}{扩张}上定义的曲线，经过\Term{base-extension}{基扩张}得到。由 1.8，可以假定 $k$ 本身在 $\mathbf Q$ 上具有\Term{finite}{有限}\Term{transcendence-degree}{超越次数}，从而可以把 $k$ 看成复数域 $\mathbf C$ 的子域。再次应用 1.8，便可假定 $k=\mathbf C$。这时不难验证，$X$ 的\Term{fundamental-group}{基本群}\Term{isomorphism}{同构}于其相伴\Term{topological-space}{拓扑空间} $\widetilde X$——一个\Term{genus}{亏格}为 $g$ 的紧致定向曲面——的\Term{fundamental-group}{基本群}，关于\Term{finite-index}{有限指数}子群所定义的拓扑的\Term{compactification}{紧化}。\footnote{这一步推导曾在一篇未写成讲义的口头报告中详细说明。}
+\SourcePage{225}
+另一方面，经典结果表明，这个拓扑\Term{fundamental-group}{基本群}由 $2g$ 个生成元 $s_i,t_i$（$1\leq i\leq g$）生成，它们只满足一个关系：
+\[
+(s_1t_1s_1^{-1}t_1^{-1})\cdots(s_gt_gs_g^{-1}t_g^{-1})=1.
+\]
+因此，$X$ 的\Term{fundamental-group}{基本群}有 $2g$ 个\Term{topological-generators}{拓扑生成元} $s_i,t_i$（$1\leq i\leq g$），其间也只有上述关系。现在若 $k$ 的特征为 $p>0$，以 $A$ 表示由 $k$ 构造的 Witt 向量环，以 $K$ 表示其\Term{field-of-fractions}{分式域}的一个\Term{algebraically-closed}{代数闭}\Term{group-extension}{扩张}。由 III 7.4，存在 $Y=\operatorname{Spec}(A)$ 上的一个\Term{scheme}{概形} $X$，它在 $Y$ 上\Term{proper}{固有}且\Term{smooth}{光滑}，\Term{reduced}{约化}后为 $X_0$。对它应用 2.3，得到\Term{epimorphism}{满态射}
+\[
+\pi_1(X_1)\longrightarrow\pi_1(X_0),\qquad X_1=X\otimes_A K.
+\]
+显然，\footnote{参见 EGA IV 12.2。}$X_1$ 在 $K$ 上\Term{smooth}{光滑}、\Term{connected}{连通}（1.2），维数为 $1$，且由 Euler–Poincaré 示性的恒定性，其\Term{genus}{亏格}等于 $g$（参见 EGA III 7）。$K$ 的特征为零，故可应用前面的结果。这样，我们就用超越方法证明了：
+\begin{SGAresult}{定理}{2.6}
+设 $X_0$ 为\Term{algebraically-closed-field}{代数闭域} $k$ 上一条\Term{smooth}{光滑}、\Term{proper}{固有}、\Term{connected}{连通}的代数曲线，\Term{genus}{亏格}为 $g$。那么 $\pi_1(X_0)$ 有一组 $2g$ 个\Term{topological-generators}{拓扑生成元}，满足上述关系。当 $k$ 的特征为零时，$\pi_1(X_0)$ 更是由这些生成元及关系自由生成的 \Term{galois-type-group}{Galois 型群}。
+\end{SGAresult}
+\textbf{注记 2.7。}据撰稿人所知，目前尚没有上述结果的纯代数证明，\Term{genus}{亏格} $0,1$ 的情形除外。首先，就很难在 $\pi_1(X_0)$ 中选出 $2g$ 个元素，并期待随后证明它们构成一组\Term{topological-generators}{拓扑生成元}。就此而言，从有理直线删去 $n$ 个点，再研究在这些点处\Term{tamely-ramified}{温和分歧}的\Term{covering}{覆盖}，情况要更令人满意：考虑这 $n$ 个点处的\Term{ramified}{分歧}群，可得到待研究\Term{fundamental-group}{基本群}的 $n$ 个元素，而且确实可以证明它们拓扑生成这个\Term{fundamental-group}{基本群}；我们以后将看到这一点。\footnote{参见第 XII 讲。不过这些元素实际上只在共轭意义下确定，因此应在各个共轭类中作适当的同时选择。}然而，即使在这一特别具体的情形，似乎也没有纯代数证明。这样的证明无疑极有价值。关于曲线\Term{fundamental-group}{基本群}，除下面由 Lang–Serre [2] 用代数方法证明的弱\Term{finite}{有限}性定理 2.12 之外，似乎唯一已知可用纯代数方法证明的事实，就是借助 Jacobian 簇确定其\Term{abelianization}{交换化}，见 IX 5.8 的最后一行。
+
+\SourcePage{226}
+\textbf{2.8。}2.6 的最后一个断言在特征 $p>0$ 时不再成立，椭圆曲线的情形就已说明这一点。如前所述，我们不知道 $X_0$ 的\Term{fundamental-group}{基本群}在拓扑意义下是否\Term{finite}{有限}呈示；看来这很不可能。
+
+\begin{SGAresult}{定理}{2.9}
+设 $k$ 为\Term{algebraically-closed-field}{代数闭域}，$X$ 为 $k$ 上的\Term{proper}{固有}\Term{connected}{连通}\Term{scheme}{概形}。那么 $X$ 的\Term{fundamental-group}{基本群}在拓扑意义下\Term{finitely-generated}{有限生成}。
+\end{SGAresult}
+对 $n=\dim X$ 作归纳；$n\leq0$ 时断言显然。设 $n>0$，且定理对维数 $n'<n$ 已成立。由 Chow 引理（EGA II 5.6.2），存在 $k$ 上的\Term{projective}{射影}\Term{scheme}{概形} $X'$ 和\Term{epimorphism}{满态射} $X'\to X$。显然可假定 $X'$ \Term{reduced}{约化}，再取\Term{normalization}{正规化}，可以令它\Term{normal}{正规}。由\Term{descent}{下降}理论，只需证明 $X'$ 的各个\Term{connected}{连通}分支的\Term{fundamental-group}{基本群}在拓扑意义下\Term{finitely-generated}{有限生成}（IX 5.2）。这就归结到 $X$ \Term{projective}{射影}且\Term{normal}{正规}的情形。若 $n=1$，应用 2.6 即可。若 $n\geq2$，取\Term{projective}{射影}嵌入 $X\to\mathbf P^r_k$，并取\Term{hyperplane-section}{超平面截面} $Y=X\cdot H$，赋予诱导的\Term{reduced}{约化}结构，要求 $Y\ne X$，亦即 $H\not\supset X$。这时 $\dim Y<n$；结合归纳假设，只需证明 $\pi_1(Y)\to\pi_1(X)$ 为\Term{surjectivity}{满射}。事实上有更一般的结论：
+\begin{SGAresult}{引理}{2.10}
+设 $X$ 为\Term{algebraically-closed-field}{代数闭域} $k$ 上的\Term{proper}{固有}\Term{prescheme}{预概形}，$g:X\to\mathbf P^r_k$ 为一个\Term{morphism}{态射}。假定 $X$ \Term{irreducible}{不可约}且\Term{normal}{正规}，且 $\dim g(X)\geq2$。设 $H$ 为 $\mathbf P^r_k$ 的一个超平面，$Y=X\times_{\mathbf P^r_k}H$。那么 $Y$ \Term{connected}{连通}，且\Term{homomorphism}{同态} $\pi_1(Y)\to\pi_1(X)$ 为\Term{surjectivity}{满射}。
+\end{SGAresult}
+这些断言由以下结论推出。
+\begin{SGAresult}{推论}{2.11}
+在上述条件下，设 $X'$ 为 $X$ 的\Term{connected}{连通}\Term{etale-covering}{平展覆盖}，$Y'=X'\times_X Y=X'\times_{\mathbf P^r_k}H$ 为在 $Y$ 上诱导的\Term{covering}{覆盖}。那么 $Y'$ \Term{connected}{连通}。
+\end{SGAresult}
+因为 $X$ \Term{normal}{正规}，$X'$ 也\Term{normal}{正规}；它又\Term{connected}{连通}，故\Term{irreducible}{不可约}。此外，它在 $\mathbf P^r_k$ 中的像的维数至少为 $2$。由 Zariski 的一个熟知引理，亦称“Bertini 定理”，若 $H'_1$ 是 $\mathbf P^r_k$ 中定义在 $k$ 的某个\Term{group-extension}{扩张} $K$ 上的泛超平面，则 $X'\times_{\mathbf P^r}H_1$ 在 $K$ 上普遍\Term{irreducible}{不可约}，从而普遍\Term{connected}{连通}。
+\SourcePage{227}
+于是 Zariski \Term{connected}{连通}性定理（EGA III 4）表明，对于定义在 $k$ 的任意\Term{group-extension}{扩张}上的每个超平面 $H$，$X'\times_{\mathbf P^r}H$ 都\Term{geometrically-connected}{几何连通}。这就证明了 2.11，从而证明了 2.9。
+
+\begin{SGAresult}{推论（Lang–Serre）}{2.12}
+在 2.9 的条件下，对每个\Term{finite-group}{有限群} $G$，以 $G$ 为群的 $X$ 的\Term{principal-covering}{主覆盖}的\Term{isomorphism}{同构}类集合是\Term{finite}{有限}的。
+\end{SGAresult}
+\textbf{注记 2.13。}在 2.10 的条件下，当 $\dim g(X)\geq3$ 时，至少在 $g$ 为\Term{immersion}{浸入}且 $X$ \Term{regular}{正则}的情形，我们将证明一个更精确的结果，即代数几何中称为“Lefschetz 定理”的结论：$\pi_1(Y)\to\pi_1(X)$ 为\Term{isomorphism}{同构}。\footnote{参见接续本讨论班的 SGA 2（1962），定理 X 3.10。}在经典情形中，同调群和高阶同伦群也有类似断言，它们迟早应被纳入抽象代数几何。即便对 Hodge \Term{cohomology}{上同调} $H^p(X,\Omega^q)$，似乎这一问题也还没有得到研究；而对于后者，Lefschetz 定理在特征 $p>0$ 时大概不会原样成立。
+
+\textbf{［注记（2003 年补充，MR）。}设 $R$ 为完备\Term{discrete-valuation-ring}{离散赋值环}，其\Term{residue-field}{剩余域} $k$ 为特征 $p>0$ 的\Term{algebraically-closed-field}{代数闭域}，\Term{field-of-fractions}{分式域}为 $K$；设 $Y$ 为 $R$ 上一条\Term{proper}{固有}、\Term{smooth}{光滑}、\Term{connected}{连通}、\Term{genus}{亏格}为 $g$ 的曲线。于是有满的\Term{specialization-morphism}{特殊化态射}
+\[
+\operatorname{sp}:\pi_1(Y_{\overline K})\longrightarrow\pi_1(Y_k).
+\]
+此前已指出，如果 $K$ 的特征为零，则一旦 $g\geq1$，$\operatorname{sp}$ 就不是\Term{isomorphism}{同构}。现在设 $K$ 的特征为 $p$，这时 $R$ \Term{isomorphism}{同构}于形式幂级数环 $k[[T]]$。在等特征 $p>0$ 的情形，\Term{fundamental-group}{基本群}并不由\Term{genus}{亏格} $g$ 决定；椭圆曲线既可能普通也可能超奇异，这已经说明了这一点。下面引用 A. Tamagawa 的一个近期结果，尚未发表。若 $G$ 为\Term{profinite-group}{投有限群}，记 $G^{\mathrm{rés}}$ 为其\Term{profinite}{投有限}商群，它是 $G$ 的所有\Term{finite}{有限}可解拓扑商群的\Term{inverse-limit}{投射极限}。
+
+\begin{SGAresult}{定理（A. Tamagawa）}{}
+假定 $g\geq2$，\Term{special-fiber}{特殊纤维} $Y_k$ 可在一个\Term{finite}{有限}域上定义，且由 $\operatorname{sp}$ 取商得到的\Term{morphism}{态射}
+\[
+\operatorname{sp}^{\mathrm{rés}}:\pi_1(Y_{\overline K})^{\mathrm{rés}}
+\longrightarrow\pi_1(Y_k)^{\mathrm{rés}}
+\]
+为\Term{bijection}{双射}。那么曲线 $Y$ 在 $R$ 上为常值曲线。
+\end{SGAresult}
+注意 $\overline K/K$ 的 \Term{galois-group}{Galois 群}是可解的。上面的断言还\Term{representable}{可表}述如下：假设\Term{generic-fiber}{泛纤维} $Y_K$ 的每个\Term{finite}{有限}\Term{etale-covering}{平展覆盖} $X_K\to Y_K$，只要它是具有可解 \Term{galois-group}{Galois 群}的 \Term{galois-covering}{Galois 覆盖}，就都具有\Term{potentially-good-reduction}{潜在良约化}；也就是说，必要时将 $R$ 换成它在 $K$ 的某个\Term{finite}{有限}\Term{group-extension}{扩张}中的\Term{normalization}{正规化}之后，这个\Term{covering}{覆盖}可以延拓为 $Y$ 的\Term{finite}{有限}\Term{etale-covering}{平展覆盖}。那么 $Y$ 在 $R$ 上为常值曲线。］
+
+\SourcePage{228}
+\SGAsection{3}{纯性定理的应用：固有光滑态射的纤维基本群的连续性定理}
+我们不加证明地回顾以下定理。\footnote{证明见 SGA 2 X 3.4。}
+\begin{SGAresult}{\Term{purity-theorem}{纯性定理}（Zariski–Nagata）}{3.1}
+设 $f:X\to Y$ 为整\Term{prescheme}{预概形}之间的\Term{quasi-finite}{拟有限}\Term{dominant-morphism}{支配态射}，$X$ \Term{normal}{正规}，$Y$ \Term{regular}{正则}且\Term{locally-noetherian}{局部 Noether}。令 $Z$ 为 $X$ 中 $f$ 不\Term{etale}{平展}的点的集合，也就是 $f$ 在其中发生\Term{ramified}{分歧}的点的集合；这两种说法等价，见 I 9.5 (ii)。若 $Z\ne X$，则 $Z$ 在 $X$ 中处处余维为 $1$：对 $Z$ 的每个\Term{irreducible-component}{不可约分支} $Z'$，若 $z$ 为其\Term{generic-point}{泛点}，则 $\mathcal O_{X,z}$ 的 \Term{krull-dimension}{Krull 维数}等于 $1$。
+\end{SGAresult}
+回顾，一个\Term{prescheme}{预概形}称为\Term{normal}{正规}或\Term{regular}{正则}，是指其各个\Term{local-ring}{局部环}分别\Term{normal}{正规}或\Term{regular}{正则}；关系 $Z\ne X$ 也等价于说，\Term{finite}{有限}\Term{group-extension}{扩张} $R(Z)/R(X)$ 是\Term{separable}{可分}的，这里 $R$ 表示有理\Term{function-field}{函数域}。在 $Z$ 的一个\Term{irreducible-component}{不可约分支} $Z'$ 的\Term{generic-point}{泛点} $z$ 处考虑，并在 $z$ 下方的 $Y$ 的点 $y$ 处\Term{localization}{局部化}，得到等价的断言。
+\begin{SGAresult}{推论}{3.2}
+设 $A$ 为\Term{regular}{正则} Noether \Term{local-ring}{局部环}，$A\to B$ 为单的\Term{local-homomorphism}{局部同态}，$B$ \Term{normal}{正规}，是某个\Term{finite-type}{有限型} $A$-代数的\Term{localization}{局部化}，且在 $A$ 上\Term{quasi-finite}{拟有限}。再假定 $\dim A(=\dim B)\geq2$，且对 $B$ 的每个不同于\Term{maximal-ideal}{极大理想}的\Term{prime-ideal}{素理想} $\mathfrak p$，$B$ 在 $\mathfrak p$ 处于 $A$ 上\Term{etale}{平展}；即令 $\mathfrak q=A\cap\mathfrak p$，则 $B_{\mathfrak p}$ 在 $A_{\mathfrak q}$ 上\Term{etale}{平展}。那么 $B$ 在 $A$ 上\Term{etale}{平展}。
+\end{SGAresult}
+不难进一步将这一断言归结到 $A$ 为完备\Term{local-ring}{局部环}的情形，这时 $B$ 在 $A$ 上\Term{finite}{有限}。Zariski [5] 给出了一个适用于等特征情形的简单证明；一般情形归功于 Nagata [3]，他的证明依赖于 Chow 的一个精细结果。讨论班的参与者尚无一人核实过后一个结果，它应当作为后续一篇报告的主题。这里只说明 $\dim A=2$ 时的一个非常简单的证明；这个特例已足以满足本节最重要的应用。因为 $B$ \Term{normal}{正规}，它作为 $B$-模的\Term{depth}{深度}——旧术语称为\Term{cohomology}{上同调}余维——至少为 $2$，所以作为 $A$-模的\Term{depth}{深度}也至少为 $2$。$A$ \Term{regular}{正则}且维数为 $2$，故 $B$ 是自由 $A$-模。\footnote{参见 EGA $0_{\mathrm{IV}}$ 17.3.4。}由 I 4.10，$A$ 中使 $B$ 在其上\Term{ramified}{分歧}的\Term{prime-ideal}{素理想} $\mathfrak q$ 的集合，是 $\operatorname{Spec}(A)$ 中由一个主理想所定义的部分；该理想由 $B$ 的一组 $A$-基的\Term{discriminant}{判别式}生成。因此，如果这个集合包含在 $\operatorname{Spec}(A)$ 的\Term{closed-point}{闭点}中，它必为空。由此证明了 $\dim A=2$ 时的 3.2。
+
+我们主要使用 3.1 的以下等价形式。
+\SourcePage{229}
+\begin{SGAresult}{推论}{3.3}
+设 $X$ 为\Term{locally-noetherian}{局部 Noether} \Term{regular}{正则}\Term{prescheme}{预概形}，$U$ 为 $X$ 的一个开子集，其补集为 $X$ 中余维至少为 $2$ 的闭子集 $Z$。那么\Term{functor}{函子} $X'\mapsto X'\times_X U$ 从 $X$ 的\Term{etale-covering}{平展覆盖}\Term{category}{范畴}到 $U$ 的\Term{etale-covering}{平展覆盖}\Term{category}{范畴}是一个\Term{equivalence-of-categories}{范畴等价}。特别地，若 $a$ 是 $U$ 的\Term{geometric-point}{几何点}，则典范\Term{homomorphism}{同态} $\pi_1(U,a)\to\pi_1(X,a)$ 为\Term{isomorphism}{同构}。
+\end{SGAresult}
+最后一个断言显然由第一个推出。对于第一个，可以假定 $X$ \Term{connected}{连通}，从而\Term{irreducible}{不可约}。由 $X$ \Term{normal}{正规}，\Term{functor}{函子} $X'\mapsto X'\times_X U$ 从 $X'$ 的\Term{locally-free}{局部自由}\Term{covering}{覆盖}\Term{category}{范畴}——不一定\Term{etale}{平展}——到 $U$ 的\Term{covering}{覆盖}\Term{category}{范畴}已经是\Term{fully-faithful}{全忠实}的，因为从 $X$ 上\Term{locally-free}{局部自由}模\Term{category}{范畴}到 $U$ 上\Term{locally-free}{局部自由}模\Term{category}{范畴}的\Term{functor}{函子} $\mathcal E\mapsto\mathcal E|U$ 是\Term{fully-faithful}{全忠实}的。因此，只需证明：对于 $U$ 的每个\Term{etale-covering}{平展覆盖} $U'$，存在 $X$ 的\Term{etale-covering}{平展覆盖} $X'$，由前述论证它必唯一，使 $U'$ \Term{isomorphism}{同构}于 $X'\times_X U$。显然可假定 $U'$ \Term{connected}{连通}；由于 $U$ \Term{normal}{正规}，$U'$ 也\Term{normal}{正规}，因而\Term{irreducible}{不可约}。令 $K$ 为 $X$ 或 $U$ 的有理\Term{function-field}{函数域}，这两者相同，$K'$ 为 $U'$ 的有理\Term{function-field}{函数域}。由 I 10.3，$U'$ 可识别为 $U$ 在 $K'$ 中的\Term{normalization}{正规化}。令 $X'$ 为 $X$ 在 $K'$ 中的\Term{normalization}{正规化}（EGA II 6.3），则
+\[
+X'=X\times_X U\simeq U'.
+\]
+此外，$X'$ \Term{normal}{正规}且整，结构\Term{morphism}{态射} $f:X'\to X$ \Term{finite}{有限}且\Term{dominant}{支配}，因为 $X$ \Term{normal}{正规}且 $K'/K$ 为\Term{finite}{有限}\Term{separable}{可分}\Term{group-extension}{扩张}。它在
+\[
+U'=f^{-1}(U)=X'=f^{-1}(Z)
+\]
+中\Term{etale}{平展}，而 $Z$ 在 $X$ 中余维至少为 $2$，所以 $f^{-1}(Z)$ 在 $X'$ 中余维也至少为 $2$。由 3.1 得知 $X'$ 在 $X$ 上\Term{etale}{平展}，证明完毕。
+
+现在设 $f:X\to Y$ 为\Term{locally-noetherian}{局部 Noether} \Term{regular}{正则}\Term{prescheme}{预概形} $X$ 到\Term{prescheme}{预概形} $Y$ 的\Term{rational-map}{有理映射}，并假定 $f$ 定义在某个开集 $U$ 上，其补集为余维至少为 $2$ 的闭集。由 3.3 得到一个在\Term{isomorphism}{同构}意义下确定的\Term{functor}{函子}，从 $Y$ 的\Term{etale-covering}{平展覆盖}\Term{category}{范畴}到 $X$ 的\Term{etale-covering}{平展覆盖}\Term{category}{范畴}。因此，对每个像为 $Y$ 中的 $b$ 的 $U$ 的\Term{geometric-point}{几何点} $a$，有典范\Term{homomorphism}{同态}
+\[
+\pi_1(X,a)\longrightarrow\pi_1(Y,b),
+\]
+它借助\Term{isomorphism}{同构} $\pi_1(U,a)\xrightarrow{\sim}\pi_1(X,a)$，由典范\Term{homomorphism}{同态} $\pi_1(U,a)\to\pi_1(Y,b)$ 得到。当 $f$ 为\Term{dominant-morphism}{支配态射}，$X,Y$ 为整\Term{prescheme}{预概形}，其\Term{function-field}{函数域}分别为 $K,L$，从而 $K$ 是 $L$ 的\Term{group-extension}{扩张}，且 $Y$ \Term{normal}{正规}时，可以用域\Term{group-extension}{扩张}更明确地描述这些对应：对于 $L$ 的每个在 $Y$ 上\Term{unramified}{非分歧}的\Term{finite}{有限}\Term{group-extension}{扩张} $L'$，$K$-代数 $K'=L'\otimes_L K$ 在 $X$ 上\Term{unramified}{非分歧}。
+
+特别地，这些讨论说明：对以余维不超过 $1$ 的位置上的\Term{geometric-point}{几何点}为基点的、\Term{locally-noetherian}{局部 Noether}、\Term{connected}{连通}、\Term{regular}{正则}\Term{prescheme}{预概形}，\Term{fundamental-group}{基本群}是一个\Term{functor}{函子}；其中\Term{morphism}{态射}取为定义在余维至少为 $2$ 的闭集之补集上的\Term{dominant}{支配}\Term{rational-map}{有理映射}。
+\SourcePage{230}
+例如，回顾到 $k$ 上\Term{proper}{固有}\Term{scheme}{概形}的一个从 $k$ 上\Term{normal}{正规}\Term{scheme}{概形}出发的\Term{rational-map}{有理映射}，总定义在某个余维至少为 $2$ 的集合的补集上，便得到：
+\begin{SGAresult}{推论（\Term{birational-invariance}{基本群的双有理不变性}）}{3.4}
+设 $k$ 为一个域，$X,Y$ 为 $k$ 上的两个\Term{proper}{固有}\Term{regular}{正则}\Term{scheme}{概形}，$f:X\to Y$ 为一个双\Term{rational-map}{有理映射}。设 $\Omega$ 为 $X$ 的\Term{function-field}{函数域} $K$ 的\Term{algebraically-closed}{代数闭}\Term{group-extension}{扩张}，由它可以定义 $X$ 和 $Y$ 的\Term{fundamental-group}{基本群}。那么这两个\Term{fundamental-group}{基本群}典范\Term{isomorphism}{同构}。
+\end{SGAresult}
+这也就是说，$K$ 的一个\Term{finite}{有限}\Term{group-extension}{扩张} $K'$ 如果在 $K$ 的某个\Term{proper}{固有}\Term{nonsingular}{非奇异}“模型” $X$ 上\Term{unramified}{非分歧}，那么它在每个其他\Term{proper}{固有}\Term{nonsingular}{非奇异}模型上也\Term{unramified}{非分歧}。
+
+\textbf{注记 3.5。}关于\Term{purity-theorem}{纯性定理}的其他应用，参见 [4] 中介绍的 Abhyankar 的工作。这些工作受到 Zariski [6，第 VIII 章] 中用拓扑方法证明的结果的启发。后者距离被“抽象”代数几何所吸收还很远，值得进一步努力。
+
+我们需要\Term{ramified}{分歧}理论中的几个初等事实。设 $V$ 为\Term{discrete-valuation-ring}{离散赋值环}，\Term{field-of-fractions}{分式域}为 $K$，\Term{residue-field}{剩余域}为 $k$；设 $L$ 为 $K$ 的 Galois \Term{group-extension}{扩张}，群为 $G$。令 $V'$ 为 $V$ 在 $L$ 中的\Term{normalization}{正规化}，它作为 $V$-模是秩 $n=[L:K]$ 的\Term{free-module}{自由模}。令 $\mathfrak m'$ 为 $V'$ 的一个\Term{maximal-ideal}{极大理想}，$G_d$ 为 $G$ 中使 $\mathfrak m'$ 不变的元素组成的子群；于是 $G_d$ 作用于 $k$ 的剩余\Term{group-extension}{扩张} $k'=V'/\mathfrak m'$。令 $G_i$ 为 $G_d$ 中作用\Term{trivial-bundle}{平凡}的元素组成的子群。回顾，$G_d,G_i$ 分别称为 $G$ 的\Term{decomposition-group}{分解子群}和\Term{inertia-group}{惯性子群}。若 $n_i=[G_i:e]$ 的阶数与 $k$ 的特征互素，就称 $L$ 在 $V$ 上\Term{tamely-ramified}{温和分歧}；当 $k$ 的特征为零时，这一条件总成立。熟知这时 $G_i$ 典范嵌入群 $k'^*$，因而\Term{isomorphism}{同构}于 $k'^*$ 中的 $n_i$ 次单位根群，特别地 $G_i$ 是循环群。典型例子是
+\[
+L=K[t]/(t^n-u),
+\]
+其中 $u$ 是 $V$ 的一个\Term{uniformizer}{一致化参数}，$n$ 为与 $p$ 互素的整数。若 $K$ 包含全部 $n$ 次单位根，则 $L$ 是 $K$ 的完全\Term{ramified}{分歧} Galois \Term{group-extension}{扩张}，其 \Term{galois-group}{Galois 群} $G=G_i$ \Term{isomorphism}{同构}于 $\mathbf Z/n\mathbf Z$。
+
+\begin{SGAresult}{引理（Abhyankar 引理）}{3.6}
+设 $V$ 为\Term{discrete-valuation-ring}{离散赋值环}，\Term{field-of-fractions}{分式域}为 $K$；设 $L,K'$ 为 $K$ 的两个在 $V$ 上\Term{tamely-ramified}{温和分歧}的 Galois \Term{group-extension}{扩张}，相应\Term{inertia-group}{惯性群}的阶分别为 $n,m$，$L'$ 为 $L$ 和 $K'$ 在 $K$ 上的一个合成\Term{group-extension}{扩张}。如果 $m$ 是 $n$ 的倍数，那么 $L'$ 在 $V$ 于 $K'$ 中的\Term{normal}{正规}闭包 $V'$ 的各个\Term{localization}{局部化}上\Term{unramified}{非分歧}。
+\end{SGAresult}
+令 $W'$ 为 $V'$ 在 $L'$ 中的\Term{normalization}{正规化}，$\mathfrak m'$ 为 $V'$ 的一个\Term{maximal-ideal}{极大理想}，$\mathfrak n'$ 为 $W'$ 中位于 $\mathfrak m'$ 上方的一个\Term{maximal-ideal}{极大理想}，$\mathfrak n$ 为它在 $V$ 于 $L$ 中的\Term{normalization}{正规化} $W$ 上诱导的\Term{maximal-ideal}{极大理想}。
+\SourcePage{231}
+设 $G,H,M$ 分别为 $L,K',L'$ 在 $K$ 上的 \Term{galois-group}{Galois 群}，$G_i,H_i,L'_i$ 为对应于所选\Term{maximal-ideal}{极大理想}的\Term{inertia-group}{惯性群}。那么 $M$ 嵌入直积 $G\times H$，$M_i$ 嵌入直积 $G_i\times H_i$，且投影 $M\to G$、$M\to H$、$M_i\to G_i$ 和 $M_i\to H_i$ 都为\Term{surjectivity}{满射}，这是中间域的基本性质。因为由假设 $G_i,H_i$ 是阶数分别为 $m,n$、与 $p$ 互素的循环群，可知 $M_i$ 的阶与 $p$ 互素，因而它是循环群。又由于 $m$ 是 $n$ 的倍数，$G_i\times H_i$ 中所有元素的 $m$ 次幂均为单位元，所以 $M_i$ 的阶整除 $m$；而 $M_i\to H_i$ 为\Term{surjectivity}{满射}，故其阶等于 $m$。因此，后一个\Term{homomorphism}{同态}也为\Term{injectivity}{单射}。它的核正是 $\mathfrak n'$ 在 $\mathfrak m'$ 上方的\Term{inertia-group}{惯性群}，这就证明 $L'$ 在 $\mathfrak n'$ 处于 $K'$ 上\Term{unramified}{非分歧}，引理得证。
+
+现在回到 2.4 的条件：对于\Term{proper}{固有}\Term{separable}{可分}\Term{morphism}{态射} $f:X\to Y$，有满的\Term{specialization-homomorphism}{特殊化同态}
+\[
+\pi_1(\overline X_1,\bar a_1)\longrightarrow\pi_1(\overline X_0,\bar a_0).
+\]
+我们希望更精确地描述它的核。仿照 2.4 的证明，在这一问题中总可以假定 $Y$ 是一个完备且\Term{residue-field}{剩余域}\Term{algebraically-closed}{代数闭}的\Term{discrete-valuation-ring}{离散赋值环} $V$ 的谱，因为总能找到这样的环，以及其谱到 $Y$ 的\Term{morphism}{态射} $Y'\to Y$，使像为 $\{y_0,y_1\}$。这时
+\[
+X_0=\overline X_0,\qquad k(y_0)=k=V\text{ 的剩余域},
+\qquad k(y_1)=K=V\text{ 的分式域}.
+\]
+令 $K_s$ 为 $K$ 的\Term{separable-closure}{可分闭包}，$\overline K$ 为其\Term{algebraic-closure}{代数闭包}。对 $\overline K$ 的每个包含 $V$ 的子环 $W$，置 $X_W=X\otimes_V W$。特别地，
+\[
+X_V=X,\qquad X_K=X_1,\qquad X_{\overline K}=\overline X_1.
+\]
+典范\Term{morphism}{态射} $\overline X_1=X_{\overline K}\to X_{K_s}$ 诱导\Term{fundamental-group}{基本群}的\Term{isomorphism}{同构}（IX 4.11）。因此，结合 2.1 中的\Term{isomorphism}{同构} $\pi_1(X_0)\to\pi_1(X)$，问题归结为研究典范\Term{morphism}{态射} $X_{K_s}\to X$ 所对应的满\Term{homomorphism}{同态}
+\[
+\pi_1(X_{K_s})\longrightarrow\pi_1(X).
+\]
+确定后一个\Term{homomorphism}{同态}的核，等价于解决如下问题：给定 $X_{K_s}$ 的一个\Term{connected}{连通}\Term{principal-covering}{主覆盖} $Z_{K_s}$，其群为 $G$，因而对应于 $\pi_1(X_{K_s})$ 到 $G$ 的一个\Term{homomorphism}{同态}，确定什么条件下它\Term{isomorphism}{同构}于 $X$ 的一个以 $G$ 为群的\Term{principal-covering}{主覆盖} $Z$ 的\Term{inverse-image}{逆像}。
+
+首先注意，$K_s$ 是它在 $K$ 上的各个\Term{finite}{有限}子\Term{group-extension}{扩张} $K'$ 的递增滤过并。因此，对某个适当的 $K'$，$Z_{K_s}$ \Term{isomorphism}{同构}于 $X_{K'}$ 的一个\Term{principal-covering}{主覆盖} $Z_{K'}$ 的\Term{inverse-image}{逆像}。但应注意，固定 $K'$ 后，$Z_{K'}$ 并不唯一确定。说 $Z_{K_s}$ \Term{isomorphism}{同构}于 $X$ 的某个\Term{principal-covering}{主覆盖} $Z$ 的\Term{inverse-image}{逆像}，等价于说存在 $K_s$ 中的\Term{finite}{有限}子\Term{group-extension}{扩张} $K''\supset K'$，使
+\[
+Z_{K''}=Z_{K'}\otimes_{K'}K''\simeq Z\otimes_V K''.
+\]
+对 $K_s$ 中的一个\Term{finite}{有限}子\Term{group-extension}{扩张} $K'$，以 $V'$ 表示 $V$ 在 $K'$ 中的\Term{normalization}{正规化}。
+\SourcePage{232}
+这是一个完备\Term{discrete-valuation-ring}{离散赋值环}，\Term{residue-field}{剩余域}为 $k$。因此，典范\Term{morphism}{态射} $X_{V'}\to X_V$ 在 $Y=\operatorname{Spec}(V)$ 和 $Y'=\operatorname{Spec}(V')$ 的\Term{closed-point}{闭点}\Term{fiber}{纤维}上诱导\Term{isomorphism}{同构}；分别对 $X_V,X_{V'}$ 应用 2.1，可知它诱导的\Term{fundamental-group}{基本群}\Term{homomorphism}{同态} $\pi_1(X_{V'})\to\pi_1(X_V)$ 为\Term{isomorphism}{同构}。换言之，$X_{V'}$ 的每个\Term{principal-covering}{主覆盖}都是 $X_V$ 的某个在\Term{isomorphism}{同构}意义下确定的\Term{principal-covering}{主覆盖}的\Term{inverse-image}{逆像}。因此得到：
+\begin{SGAresult}{引理}{3.7}
+设 $Z_{K'}$ 为 $X_{K'}$ 的一个\Term{connected}{连通}\Term{principal-covering}{主覆盖}，群为 $G$，$Z_K$ 为它在 $X_{K_s}$ 上的\Term{inverse-image}{逆像}。后者\Term{isomorphism}{同构}于 $X$ 的某个\Term{principal-covering}{主覆盖} $Z$ 的\Term{inverse-image}{逆像}，当且仅当存在 $K_s$ 中 $K$ 的\Term{finite}{有限}\Term{group-extension}{扩张} $K''\supset K'$，使 $X_{K''}$ 的\Term{principal-covering}{主覆盖} $Z_{K''}$ 由 $X_{V''}$ 的一个\Term{principal-covering}{主覆盖}所诱导。
+\end{SGAresult}
+特别地，假设各个 $X_{V''}$ 都\Term{normal}{正规}；例如，$X_0$ \Term{normal}{正规}即足以保证这一点，因而 $X_0$ \Term{smooth}{光滑}时更是如此，参见 I 9.1。它们\Term{connected}{连通}，因而\Term{irreducible}{不可约}。令 $L$ 为 $X$ 和 $X_K$ 的有理\Term{function-field}{函数域}，$L'$ 为 $X_{V'}$ 和 $X_{K'}$ 的有理\Term{function-field}{函数域}，$L''$ 为 $X_{V''}$ 和 $X_{K''}$ 的有理\Term{function-field}{函数域}。那么在 3.7 的条件下，$Z_{K'}$ 定义了 $L'$ 的一个\Term{finite}{有限}\Term{separable}{可分}\Term{group-extension}{扩张} $R'$，而 $Z_{K''}$ 定义\Term{group-extension}{扩张}
+\[
+R''=R'\otimes_{L'}L''=R'\otimes_{K'}K''.
+\]
+所以，3.7 中的条件也就是说：存在 $K'$ 的\Term{finite}{有限}\Term{separable}{可分}\Term{group-extension}{扩张} $K''$，使 $R''=R'\otimes_{K'}K''$ 不仅在 $X_{V''}$ 的开子集 $X_{K''}$ 上\Term{unramified}{非分歧}，而且在具有\Term{function-field}{函数域} $L''=L'\otimes_{K'}K''$ 的整个\Term{normal}{正规}\Term{scheme}{概形} $X_{V''}$ 上\Term{unramified}{非分歧}。
+
+从现在起，假设 $f:X\to Y$ 为\Term{smooth-morphism}{光滑态射}。于是\Term{morphism}{态射} $X_{V'}\to\operatorname{Spec}(V')$ \Term{smooth}{光滑}，从而\Term{scheme}{概形} $X_{V'}$ \Term{regular}{正则}。注意，$\operatorname{Spec}(V')$ 的\Term{closed-point}{闭点}在 $X_{V'}$ 中的\Term{fiber}{纤维}\Term{irreducible}{不可约}且余维为 $1$。令 $\mathfrak o'$ 为其\Term{local-ring}{局部环}；这便是一个\Term{field-of-fractions}{分式域}为 $L'$ 的\Term{discrete-valuation-ring}{离散赋值环}，\Term{residue-field}{剩余域}\Term{isomorphism}{同构}于 $X_0$ 的有理\Term{function-field}{函数域}，因而与 $k$ 有相同特征。同样，在 $L''$ 中定义 $\mathfrak o''$，它显然是 $\mathfrak o'$ 在 $L''$ 中的\Term{normalization}{正规化}。由\Term{purity-theorem}{纯性定理} 3.1 或 3.3，$R''$ 在 $X_{V''}$ 上\Term{unramified}{非分歧}，当且仅当 $R''$ 在 $\mathfrak o'$ 于 $L''$ 中的\Term{normalization}{正规化} $\mathfrak o''$ 上\Term{unramified}{非分歧}。
+
+现在注意，若 $u'$ 是 $V'$ 的\Term{uniformizer}{一致化参数}，它也是 $\mathfrak o'$ 的\Term{uniformizer}{一致化参数}。若 $n$ 为与 $k$ 的特征 $p$ 互素的整数，取
+\[
+K''=K'[t]/(t^n-u),
+\]
+则 $K''$ 为 $K'$ 的\Term{finite}{有限} Galois \Term{group-extension}{扩张}，$L''$ \Term{isomorphism}{同构}于 $L'[t]/(t^n-u')$，因而在 $\mathfrak o'$ 上\Term{tamely-ramified}{温和分歧}，\Term{inertia-group}{惯性群}的阶为 $n$。现在假定 $G$ 的阶与 $p$ 互素，这意味着 $R'$ 在 $\mathfrak o'$ 上\Term{tamely-ramified}{温和分歧}。取 $n$ 为 $R'$ 在 $\mathfrak o'$ 上的\Term{inertia-group}{惯性群}的阶的一个与 $p$ 互素的倍数，例如 $n=[G:e]$。应用 Abhyankar 引理 3.6，便知 3.7 中的条件成立。
+
+这就证明了下面的定理。
+\SourcePage{233}
+\begin{SGAresult}{定理}{3.8}
+设 $f:X\to Y$ 为\Term{proper}{固有}\Term{smooth-morphism}{光滑态射}，\Term{fiber}{纤维}\Term{geometrically-connected}{几何连通}，且 $Y$ \Term{locally-noetherian}{局部 Noether}；设 $y_0,y_1$ 为 $Y$ 的两点，满足 $y_0\in\overline{\{y_1\}}$，$\overline X_0,\overline X_1$ 为相应的\Term{geometric-fiber}{几何纤维}。考虑\Term{specialization-homomorphism}{特殊化同态}（2.4）
+\[
+\pi_1(\overline X_1)\longrightarrow\pi_1(\overline X_0).
+\]
+这一\Term{homomorphism}{同态}为\Term{surjectivity}{满射}，而且从 $\pi_1(\overline X_1)$ 到阶数与 $k(y_0)$ 的特征 $p$ 互素的\Term{finite-group}{有限群} $G$ 的每个连续\Term{homomorphism}{同态}，都来自 $\pi_1(\overline X_0)$ 到 $G$ 的一个\Term{homomorphism}{同态}。
+\end{SGAresult}
+换言之：
+\begin{SGAresult}{推论}{3.9}
+若 $k(y_0)$ 的特征为零，则\Term{specialization-homomorphism}{特殊化同态}为\Term{isomorphism}{同构}。若 $k(y_0)$ 的特征为 $p>0$，则\Term{specialization-homomorphism}{特殊化同态}的核包含在从 $\pi_1(\overline X_1)$ 到阶数与 $p$ 互素的\Term{finite-group}{有限群}的所有连续\Term{homomorphism}{同态}之核的交中；也即包含在 \Term{galois-type-group}{Galois 型群} $\pi_1(\overline X_1)$ 的一个 Sylow $p$-子群所生成的闭\Term{normal}{正规}子群中。因此，若 $\pi_1(\overline X_1)^{(p)}$ 表示 $\pi_1(\overline X_1)$ 对上述闭子群的商群，并类似地定义 $\pi_1(\overline X_0)^{(p)}$，则\Term{specialization-homomorphism}{特殊化同态}诱导\Term{isomorphism}{同构}
+\[
+\pi_1(\overline X_1)^{(p)}\xrightarrow{\sim}\pi_1(\overline X_0)^{(p)}.
+\]
+\end{SGAresult}
+注意，3.8 的证明是纯代数的。仿照 2.6，再用超越方法得到：
+\begin{SGAresult}{推论}{3.10}
+设 $X_0$ 为特征 $p$ 的\Term{algebraically-closed-field}{代数闭域}上一条\Term{proper}{固有}、\Term{smooth}{光滑}、\Term{connected}{连通}、\Term{genus}{亏格}为 $g$ 的曲线。使用 3.9 引入的记号，群 $\pi_1(X_0)^{(p)}$ \Term{isomorphism}{同构}于 $\Gamma^{(p)}$，其中 $\Gamma$ 为由生成元 $s_i,t_i$（$1\leq i\leq g$）及关系
+\[
+(s_1t_1s_1^{-1}t_1^{-1})\cdots(s_gt_gs_g^{-1}t_g^{-1})=1
+\]
+生成的 \Term{galois-type-group}{Galois 型群}。
+\end{SGAresult}
+\textbf{注记 3.11。}当 $k(y_0)$ 的特征为零时，3.9 的结果可用超越方法得到，已属熟知。注意，3.10 的证明用到了混合特征情形的\Term{purity-theorem}{纯性定理}，但只涉及维数为 $2$ 的环；在这一情形，\Term{purity-theorem}{纯性定理}的证明很简单，已在正文中回顾。
+
+\SGAsection{4}{参考文献}
+\begin{enumerate}[label={[\arabic*]},leftmargin=2.2em]
+\item K. Kodaira，\textit{On compact analytic surfaces}，Ann. of Math. \textbf{71} (1960)，第 111—152 页。
+\item S. Lang、J.-P. Serre，\textit{Sur les revêtements non ramifiés des variétés algébriques}，Amer. J. Math. \textbf{79} (1957)，第 319—330 页。
+\item M. Nagata，\textit{On the purity of branch loci in regular local rings}，Illinois J. Math. \textbf{3} (1959)，第 328—333 页。
+\item J.-P. Serre，\textit{Revêtements ramifiés du plan projectif (d’après S. Abhyankar)}，Bourbaki 讨论班，1960 年 5 月。
+\end{enumerate}
+\SourcePage{234}
+\begin{enumerate}[label={[\arabic*]},leftmargin=2.2em,start=5]
+\item O. Zariski，\textit{On the purity of the branch locus of algebraic functions}，Proc. Nat. Acad. Sc. USA \textbf{44} (1958)，第 791—796 页。
+\item O. Zariski，\textit{Algebraic surfaces}，Ergebnisse...，1948，Chelsea（纽约）。
+\end{enumerate}

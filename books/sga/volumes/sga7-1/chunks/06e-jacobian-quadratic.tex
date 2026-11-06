@@ -1,0 +1,772 @@
+\SourcePage{123}
+\SGAsection{5}{形式 Jacobian 子概形}
+设 $X_0$ 是域 $k$ 上的\Term{finite-type}{有限型}\Term{scheme}{概形}，$(R,\mathfrak X)$ 是 $X_0$ 的一个\Term{formal-versal-deformation}{形式万有形变}。于是 $\mathfrak X$ 不是 $R$ 上的通常\Term{scheme}{概形}，而是一个 $R$-\Term{adic-formal-scheme}{进形式概形}。本节旨在阐明“$\mathfrak X$ 在 $R$ 上的\Term{non-smooth-locus}{非光滑点集}”。
+
+先回顾与\Term{finite-type}{有限型}\Term{module}{模}相伴的 \Term{fitting-ideal}{Fitting 理想}的定义。设 $A$ 为\Term{commutative-ring}{交换环}，$E$ 为\Term{finite-type}{有限型} $A$-\Term{module}{模}。选择一个\Term{presentation}{表示}
+\[
+K\longrightarrow F\longrightarrow E\longrightarrow0,
+\]
+其中 $F$ 为常\Term{rank}{秩} $n$ 的\Term{locally-free}{局部自由}\Term{module}{模}。对 $p=0,1,2,\ldots$，定义
+\[
+I_A^p(E)=\operatorname{Im}\left(\bigwedge^{n-p}K\otimes_A\bigwedge^{n-p}F^*\longrightarrow A\right).
+\]
+如此定义的\Term{ideal}{理想} $I_A^p(E)$ 与\Term{presentation}{表示}的选择无关，因而是 $A$-\Term{module}{模} $E$ 的\Term{invariants}{不变量}，称为 $A$-\Term{module}{模} $E$ 的 \Term{fitting-ideal}{Fitting 理想}。由定义立即得到下列性质。
+
+\textbf{5.1。} (a) 对任意环\Term{homomorphism}{同态} $A\to B$，\Term{canonical-map}{典范映射}
+\[
+B\otimes_A A/I_A^p(E)\xrightarrow\sim B/I_B^p(B\otimes_A E)
+\]
+对所有 $p$ 都是\Term{isomorphism}{同构}。特别地，对 $A$ 的任意\Term{multiplication}{乘法}\Term{subset}{子集} $S$，有
+\[
+I_{S^{-1}A}^p(S^{-1}E)=S^{-1}I_A^p(E).
+\]
+\SourcePage{124}
+(b) 有 $I_A^0(E)\subset I_A^1(E)\subset I_A^2(E)\subset\cdots$；且对每一点 $x\in\operatorname{Spec}(A)$，当 $p\geq\dim_{\kappa(x)}E(x)$ 时均有 $I_A^p(E)_x=A_x$，其中 $E(x)=\kappa(x)\otimes_A E$。
+
+(c) $x\in\operatorname{Spec}(A)-\operatorname{Supp}A/I_A^p(E)$ 当且仅当，对任意一个（或某一个）\Term{presentation}{表示}
+\[
+K\longrightarrow F\longrightarrow E\longrightarrow0,
+\]
+其中 $F\simeq A^n$，$K_x$ 包含一个与 $F_x$ 的\Term{direct-summand}{直和项}\Term{isomorphic}{同构}的 $A_x^{n-p}$。特别地，
+\[
+\operatorname{Supp}A/I_A^0(E)=\operatorname{Supp}E.
+\]
+(d) 有
+\[
+I_A^r(E_1\oplus E_2)=\sum_{p+q=r}I_A^p(E_1)\cdot I_A^q(E_2).
+\]
+(e) 若 $A$ 是\Term{noetherian}{诺特}\Term{adic-ring}{进环}，则
+\[
+A/I_A^p(E)=\varprojlim_\nu A_\nu/I_{A_\nu}^p(E_\nu),
+\]
+其中 $A=\varprojlim_\nu A_\nu$，$E_\nu=E\otimes_A A_\nu$。
+
+由性质 5.1(a)，\Term{fitting-ideal}{Fitting 理想}的定义立即可以整体化。设 $X$ 是任意\Term{scheme}{概形}，$E$ 是一个\Term{finite-presentation}{有限表示}的\Term{quasi-coherent}{拟凝聚} $X$-\Term{module}{模}。于是得到一列\Term{quasi-coherent}{拟凝聚}\Term{ideal-sheaf}{理想层} $I_X^p(E)$，$p\geq0$，其定义是：对每个\Term{affine-open}{仿射开集} $U\subset X$，有
+\[
+\Gamma(U,I_X^p(E))\xrightarrow\sim I_{\Gamma(U,\mathcal O_X)}^p(\Gamma(U,E)).
+\]
+现设 $X\to Y$ 是\Term{scheme}{概形}的\Term{morphism}{态射}。\Term{relative-kahler-differentials}{相对 Kähler 微分模} $\Omega_{X\mid Y}\;(=\Omega^1_{X\mid Y})$ 是一个\Term{quasi-coherent}{拟凝聚} $X$-\Term{module}{模}。若\Term{morphism}{态射} $X\to Y$ 是\Term{essentially-finite-presentation}{本质有限表示}的，则 $\Omega_{X\mid Y}$ 是一个\Term{finite-presentation}{有限表示}的\Term{quasi-coherent}{拟凝聚} $X$-\Term{module}{模}，从而可以考虑\Term{ideal-sheaf}{理想层} $I_X^p(\Omega_{X\mid Y})$。
+
+\begin{SGAresult}{定义}{5.2}
+设 $X\to Y$ 是\Term{essentially-finite-presentation}{本质有限表示}的\Term{morphism}{态射}。对每个整数 $p\geq0$，定义 $J_X^p(X\mid Y)$ 为 $X$ 中由\Term{ideal-sheaf}{理想层}
+\SourcePage{125}
+\[
+I_X^p(X\mid Y)=I_X^p(\Omega_{X\mid Y})
+\]
+定义的\Term{closed-subscheme}{闭子概形}，称为 $X$ 在 $Y$ 上的 \Term{jacobian-subscheme}{Jacobian 子概形}。对每一点 $x\in X$，置 $X_x=\operatorname{Spec}(\mathcal O_{X,x})$。
+\end{SGAresult}
+
+\begin{SGAresult}{\Term{theorem}{定理}}{5.3}
+设 $X\to Y$ 是\Term{essentially-finite-presentation}{本质有限表示}的\Term{morphism}{态射}。则：
+
+(1) 对任意\Term{base-change}{基变换} $Y\leftarrow Y'$，\Term{canonical-map}{典范映射}
+\[
+J_{X'}^p(X'\mid Y')\xrightarrow\sim J_X^p(X\mid Y)\times_Y Y'
+\]
+对所有 $p$ 都是\Term{isomorphism}{同构}，其中 $X'=X\times_Y Y'$。
+
+(2) 对每一点 $x\in X$，有\Term{canonical}{典范}\Term{isomorphism}{同构}
+\[
+J_{X_x}^p(X_x\mid Y)\xrightarrow\sim J_X^p(X\mid Y)_x.
+\]
+(3) $J_X^0(X\mid Y)\supset J_X^1(X\mid Y)\supset J_X^2(X\mid Y)\supset\cdots$，且当 $p\geq\dim_{\kappa(x)}\Omega_{X\mid Y}(x)$ 时均有 $x\notin J_X^p(X\mid Y)$。
+
+(4) $x\notin J_X^p(X\mid Y)$ 当且仅当存在 $x$ 的一个\Term{open-neighborhood}{开邻域} $U$，它可以\Term{closed-immersion}{闭浸入}到一个 $Y$-\Term{scheme}{概形} $U'$ 中，使 $U'$ 在 $x'$ 处于 $Y$ 上\Term{smooth}{光滑}，并且 $\dim_{x'}U'_{f(x)}=p$；这里 $x'$ 是 $x$ 在 $U\to U'$ 下的像。
+
+(5) 有
+\[
+I_{X_1\times_Y X_2}^r(X_1\times_Y X_2\mid Y)
+ =\sum_{p+q=r}\pi_1^*I_{X_1}^p(X_1\mid Y)\cdot\pi_2^*I_{X_2}^q(X_2\mid Y),
+\]
+其中 $\pi_i:X_1\times_Y X_2\to X_i$ 为\Term{projection}{投影}。
+\end{SGAresult}
+\begin{proof}
+(3) 由 5.1(b) 得到；(1) 由 5.1(a) 以及 $P^*\Omega_{X\mid Y}\xrightarrow\sim\Omega_{X'\mid Y'}$ 是\Term{isomorphism}{同构}这一事实得到，其中 $P:X\times_Y Y'\to X$ 为\Term{projection}{投影}。(2) 也由 5.1(a) 得到，因为 $\mathcal O_{X,x}\otimes_{\mathcal O_X}\Omega_{X\mid Y}\xrightarrow\sim\Omega_{X_x\mid Y}$ 为\Term{isomorphism}{同构}。(5) 由 5.1(d) 和\Term{isomorphism}{同构}
+\[
+\pi_1^*\Omega_{X_1\mid Y}\oplus\pi_2^*\Omega_{X_2\mid Y}\xrightarrow\sim\Omega_{X_1\times_Y X_2\mid Y}
+\]
+得到。
+
+(4) 假设存在图
+\[
+\begin{tikzcd}
+U\arrow[d,"f"']&U'\arrow[l,"i"']\arrow[dl]\\
+Y&
+\end{tikzcd}
+\]
+\SourcePage{126}
+其中 $U'$ 在 $x'=i(x)$ 处于 $Y$ 上\Term{smooth}{光滑}，且 $\dim_{x'}U'_{f(x)}=p$。于是 $\dim_{\kappa(x')}\Omega_{U'\mid Y}(x')=p$，且 $i^*\Omega_{U'\mid Y}\to\Omega_{U\mid Y}\to0$ \Term{exact}{正合}，故 $\dim_{\kappa(x)}\Omega_{U\mid Y}(x)\leq p$，由 5.3(3) 即得 $x\notin J_U^p(U\mid Y)$。因 $J_U^p(U\mid Y)=J_X^p(X\mid Y)|_U$，这就是说 $x\notin J_X^p(X\mid Y)$。反之，现假定 $x\notin J_X^p(X\mid Y)$。
+
+问题是\Term{local-scheme}{局部}的，故可假设 $X,Y$ 都\Term{affine}{仿射}，设 $X=\operatorname{Spec}(B)$，$Y=\operatorname{Spec}(A)$。在 $A$ 上选择\Term{presentation}{表示}
+\[
+0\longrightarrow J\longrightarrow P\longrightarrow B\longrightarrow0,
+\]
+其中 $P=A[x_1,\ldots,x_n]$。则
+\[
+J/J^2\xrightarrow d B\otimes_P\Omega_{P\mid A}\longrightarrow\Omega_{B\mid A}\longrightarrow0
+\]
+\Term{exact}{正合}，且 $B\otimes_P\Omega_{P\mid A}$ 是\Term{rank}{秩} $n$ 的 $B$-\Term{free-module}{自由模}，因而
+\[
+I_B^p(\Omega_{B\mid A})=
+\operatorname{Im}\left(\bigwedge^{n-p}J/J^2\otimes_B
+\left(B\otimes_P\bigwedge^{n-p}\Omega_{P\mid A}\right)^*\longrightarrow B\right).
+\]
+因此，$x\notin J_X^p(X\mid Y)$ 当且仅当存在 $J$ 中的 $f_1,\ldots,f_{n-p}$，使对 $x_1,x_2,\ldots,x_n$ 中的某 $n-p$ 个变量的选择，有
+\[
+\left[\det\left(\frac{f_i}{x_j}\right)\right](x)\ne0;
+\]
+这又当且仅当存在 $J$ 中的 $f_1,f_2,\ldots,f_{n-p}$，使
+$\operatorname{Spec}(P/(f_1,\ldots,f_{n-p}))\to\operatorname{Spec}(A)$ 在 $x'$ 处\Term{smooth}{光滑}，其中 $x'$ 为 $x$ 在
+\[
+\operatorname{Spec}(B)\longrightarrow\operatorname{Spec}(P/(f_1,\ldots,f_{n-p}))
+\]
+下的像。因此取 $U'=\operatorname{Spec}(P/(f_1,\ldots,f_{n-p}))$ 即可。
+\end{proof}
+
+下面把通常的 \Term{jacobian-criterion}{Jacobian 判据}推广到相对情形。
+
+\begin{SGAresult}{\Term{theorem}{定理}}{5.4}
+设 $X\xrightarrow f Y$ 是\Term{essentially-finite-presentation}{本质有限表示}的\Term{morphism}{态射}。假设存在一个固定的整数 $n\geq0$，使以下两个条件之一成立：
+
+(1) $f$ \Term{flat}{平坦}，且对每一点 $x\in X$，有 $\dim_x X_{f(x)}=n$。
+
+(2) $f$ 是\Term{virtual-dimension}{虚维数}为 $n$ 的\Term{relative-complete-intersection}{相对完全交}（SGA6 第VIII讲 1.9）。
+
+则 $x\notin J_X^n(X\mid Y)$ 当且仅当 $f$ 在 $x$ 处\Term{smooth}{光滑}。
+\end{SGAresult}
+\begin{proof}
+由 5.3(4)，$x\notin J_X^n(X\mid Y)$ 当且仅当存在图
+\SourcePage{127}
+\[
+\begin{tikzcd}
+U\arrow[r,hook,"i"]\arrow[d,"f"']&U'\arrow[dl,"f'"]\\
+Y&
+\end{tikzcd}
+\]
+使 $f'$ 在 $x'$ 处\Term{smooth}{光滑}，且 $\dim_{x'}U'_{f(x)}=n$，其中 $i$ 是\Term{closed-immersion}{闭浸入}，$x'=i(x)$。故只须证明，条件 (1) 或 (2) 都蕴涵 $i$ 在点 $x$ 处为\Term{isomorphism}{同构}。置 $A=\mathcal O_{Y,f(x)}$，$B'=\mathcal O_{U',x'}$，$B=\mathcal O_{U,x}$，并令
+\[
+0\longrightarrow I\longrightarrow B'\longrightarrow B\longrightarrow0
+\]
+\Term{exact}{正合}。须证 $I=0$。假设 (1)。因 $B$ 为 $A$-\Term{flat}{平坦}，有\Term{exact-sequence}{正合列}
+\[
+0\longrightarrow I/\mathfrak mI\longrightarrow B'/\mathfrak mB'
+\longrightarrow B/\mathfrak mB\longrightarrow0,
+\]
+其中 $\mathfrak m$ 为 $A$ 的\Term{maximal-ideal}{极大理想}。由假设，$\dim_x U_{f(x)}=\dim_{x'}U'_{f(x)}$，故 $\dim B'/\mathfrak mB'=\dim B/\mathfrak mB$。但 $B'/\mathfrak mB'$ 是\Term{regular-local-ring}{正则局部环}，因此 $I/\mathfrak mI=0$，从而 $I=0$。现假设 (2)，考虑\Term{exact-sequence}{正合列}
+\[
+I/I^2\xrightarrow d B\otimes_{B'}\Omega_{B'\mid A}\longrightarrow\Omega_{B\mid A}\longrightarrow0.
+\]
+因为 $X$ 在 $Y$ 上为\Term{relative-complete-intersection}{相对完全交}，且 $U'\to Y$ 在 $x'$ 处\Term{smooth}{光滑}，故 $d:I/I^2\to B\otimes_{B'}\Omega_{B'\mid A}$ 在 $x$ 处为\Term{injectivity}{单射}，且 $I/I^2$ 与 $B\otimes_{B'}\Omega_{B'\mid A}$ 在 $x$ 处都\Term{free-module}{自由}。因此，由\Term{relative-complete-intersection}{相对完全交}的\Term{virtual-dimension}{虚维数}的定义，必有
+\[
+n=\dim_{\kappa(x')}\Omega_{B'\mid A}(x')-\dim_{\kappa(x)}I/I^2(x)
+ =n-\dim_{\kappa(x)}I/I^2(x),
+\]
+即 $I/I^2=0$，亦即 $I=0$。
+\end{proof}
+
+\begin{SGAresult}{定义}{5.5}
+设 $X\xrightarrow fY$ 是\Term{essentially-finite-presentation}{本质有限表示}的\Term{morphism}{态射}。若存在一个固定整数 $n$ 满足 5.4 中的性质 (1) 或 (2)，
+\SourcePage{128}
+则置 $I_X(X\mid Y)=I_X^n(X\mid Y)$，$J_X(X\mid Y)=J_X^n(X\mid Y)$。
+\end{SGAresult}
+
+这一概念显然可以推广到\Term{formal-scheme}{形式概形}。设 $\mathfrak X$ 是\Term{noetherian}{诺特}\Term{formal-scheme}{形式概形}，$E$ 是\Term{coherent}{凝聚} $\mathfrak X$-\Term{module}{模}。可以如下定义\Term{ideal-sheaf}{理想层} $I_{\mathfrak X}^p(E)$：对每个\Term{affine-open}{仿射开集} $U\subset\mathfrak X$，置
+\[
+I_{\mathfrak X}^p(E)(U)=I_{\mathfrak X(U)}^p(E(U)).
+\]
+若 $\mathfrak X=\varprojlim_\nu X_\nu$，则 $E=\varprojlim_\nu E_\nu$，其中 $E_\nu=E\otimes_{\mathcal O_{\mathfrak X}}\mathcal O_{X_\nu}$；由 $\mathfrak X$ 为\Term{noetherian}{诺特}这一事实，得到
+\[
+I_{\mathfrak X}^p(E)=\varprojlim_\nu I_{X_\nu}^p(E_\nu).
+\]
+现设 $S$ 为\Term{noetherian}{诺特}\Term{formal-scheme}{形式概形}，$\mathfrak X$ 是\Term{essentially-finite-type}{本质有限型}的 $S$-\Term{adic-formal-scheme}{进形式概形}。令 $\mathcal I_{\mathfrak X}$ 为定义\Term{closed-immersion}{闭浸入}
+$\Delta:\mathfrak X\to\mathfrak X\times_S\mathfrak X$ 的\Term{ideal-sheaf}{理想层}（这里是\Term{formal-scheme}{形式概形}\Term{category}{范畴}中的\Term{fiber-product}{纤维积}），即
+\[
+0\longrightarrow\mathcal I_{\mathfrak X}\longrightarrow\mathcal O_{\mathfrak X\times_S\mathfrak X}
+\longrightarrow\mathcal O_{\mathfrak X}\longrightarrow0
+\]
+\Term{exact}{正合}。定义 $\Omega_{\mathfrak X\mid S}=\mathcal I_{\mathfrak X}/\mathcal I_{\mathfrak X}^2$。因 $\mathfrak X$ 是\Term{essentially-finite-type}{本质有限型}的 $S$-\Term{adic-formal-scheme}{进形式概形}，有 $\mathfrak X=\varprojlim_\nu X_\nu$，其中 $X_\nu=\mathfrak X\times_S S_\nu$，从而 $\Omega_{\mathfrak X\mid S}\simeq\varprojlim_\nu\Omega_{X_\nu\mid S_\nu}$ 是\Term{coherent}{凝聚} $\mathfrak X$-\Term{module}{模}。注意，对任意\Term{finite-type}{有限型}的\Term{formal-scheme}{形式 $S$-概形} $S'$，有\Term{canonical}{典范}\Term{isomorphism}{同构}
+\[
+\Omega_{\mathfrak X\times_S S'\mid S'}\xrightarrow\sim
+\mathcal O_{S'}\widehat\otimes_{\mathcal O_S}\Omega_{\mathfrak X\mid S}.
+\]
+
+\begin{SGAresult}{定义}{5.6}
+设 $S$ 是\Term{noetherian}{诺特}\Term{formal-scheme}{形式概形}，$\mathfrak X$ 是\Term{essentially-finite-type}{本质有限型}的 $S$-\Term{adic-formal-scheme}{进形式概形}。定义\Term{ideal-sheaf}{理想层} $I_{\mathfrak X}^p(\mathfrak X\mid S)$ 为
+\[
+I_{\mathfrak X}^p(\mathfrak X\mid S)=I_{\mathfrak X}^p(\Omega_{\mathfrak X\mid S}),
+\]
+并令 $J_{\mathfrak X}^p(\mathfrak X\mid S)$ 为 $\mathfrak X$ 中由 $I_{\mathfrak X}^p(\mathfrak X\mid S)$ 定义的\Term{formal-closed-subscheme}{形式闭子概形}。
+\end{SGAresult}
+因 $\Omega_{\mathfrak X\mid S}=\varprojlim_n\Omega_{X_n\mid S_n}$，有
+\SourcePage{129}
+\[
+I_{\mathfrak X}^p(\mathfrak X\mid S)=\varprojlim_n I_{X_n}^p(X_n\mid S_n),
+\qquad
+J_{\mathfrak X}^p(\mathfrak X\mid S)=\varprojlim_n J_{X_n}^p(X_n\mid S_n).
+\]
+$\mathfrak X_{(x)}$ 是\Term{essentially-finite-type}{本质有限型}的 $S$-\Term{adic-formal-scheme}{进形式概形}，且有\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}
+\mathfrak X_{(\widehat x)}\arrow[rr,"i_{(\widehat x)}"]\arrow[dr]&&\mathfrak X\\
+&\mathfrak X_{(x)}\arrow[ur,"i_{(x)}"']&
+\end{tikzcd}
+\]
+注意，若 $x$ 为 $\mathfrak X$ 的\Term{isolated-point}{孤立点}，则 $i_{(x)},i_{(\widehat x)}$ 都是到 $\mathfrak X$ 中含 $x$ 的\Term{connected-component}{连通分支}的\Term{isomorphism}{同构}。特别地，若 $|\mathfrak X|=\{x_1,\ldots,x_m\}$ 是\Term{finite}{有限}\Term{discrete-space}{离散空间}，便有\Term{canonical}{典范}等同
+\[
+\mathfrak X=\coprod_{1\leq i\leq m}\mathfrak X_{(x_i)}
+\quad\text{（不交并）}.
+\]
+
+\begin{SGAresult}{推论}{5.7}
+设 $S$ 是\Term{noetherian}{诺特}\Term{formal-scheme}{形式概形}，$\mathfrak X$ 是\Term{essentially-finite-type}{本质有限型}的 $S$-\Term{adic-formal-scheme}{进形式概形}。则有：
+
+(1) $J_{\mathfrak X}^p(\mathfrak X\mid S)$ 与\Term{base-change}{基变换}交换，即
+\[
+J_{\mathfrak X'}^p(\mathfrak X'\mid S')=J_{\mathfrak X}^p(\mathfrak X\mid S)\times_S S',
+\qquad\mathfrak X'=\mathfrak X\times_S S'.
+\]
+(2) $J_{\mathfrak X}^p(\mathfrak X\mid S)$ 的\Term{connected-component}{连通分支}与 $J_{X_0}^p(X_0\mid S_0)$ 的\Term{connected-component}{连通分支}一一对应。对每一点 $x\in|J_{X_0}^p(X_0\mid S_0)|$，有\Term{canonical}{典范}\Term{isomorphism}{同构}
+\[
+J_{\mathfrak X}^p(\mathfrak X\mid S)_{(x)}\xrightarrow\sim
+J_{\mathfrak X_{(x)}}^p(\mathfrak X_{(x)}\mid S).
+\]
+特别地，若 $|J_{X_0}^p(X_0\mid S_0)|=\{x_1,\ldots,x_m\}$ 是\Term{discrete}{离散}的，则
+\[
+J_{\mathfrak X}^p(\mathfrak X\mid S)=\coprod_{1\leq i\leq m}
+J_{\mathfrak X_{(x_i)}}^p(\mathfrak X_{(x_i)}\mid S)
+\quad\text{（不交并）}.
+\]
+\SourcePage{130}
+(3) 设 $S$ 是通常的\Term{noetherian}{诺特}\Term{scheme}{概形}，$X$ 是\Term{essentially-finite-type}{本质有限型}的 $S$-\Term{scheme}{概形}。给定\Term{closed-subscheme}{闭子概形} $S_0\subset S$，令 $\widehat S$ 为 $S$ 沿 $S_0$ 的\Term{formal-completion}{形式完备化}。若置
+\[
+\widehat X=X\times_S\widehat S
+ =X\text{ 沿 }X_0=X\times_S S_0\text{ 的形式完备化},
+\]
+则
+\[
+J_{\widehat X}^p(\widehat X\mid\widehat S)=J_X^p(X\mid S)\times_S\widehat S
+ =J_X^p(X\mid S)\text{ 沿 }J_{X_0}^p(X_0\mid S_0)\text{ 的形式完备化}.
+\]
+(4) 若存在一个固定整数 $n\geq0$，使所有 $\nu$ 的 $X_\nu\to S_\nu$ 都具有性质 5.4(1) 或 (2)，则 $x\notin J_{\mathfrak X}^n(\mathfrak X\mid S)$ 当且仅当 $\mathfrak X$ 在 $x$ 处于 $S$ 上\Term{formally-smooth}{形式光滑}。
+\end{SGAresult}
+\begin{proof}
+(1) 由 $\Omega_{\mathfrak X'\mid S'}\simeq\mathcal O_{S'}\widehat\otimes_{\mathcal O_S}\Omega_{\mathfrak X\mid S}$ 得到；(2) 则由
+\[
+\mathcal O_{\mathfrak X_{(x)}}\widehat\otimes_{\mathcal O_{\mathfrak X}}
+\Omega_{\mathfrak X\mid S}\simeq\Omega_{\mathfrak X_{(x)}\mid S}
+\]
+得到。
+
+(3) 有
+\[
+\begin{aligned}
+J_{\widehat X}^p(\widehat X\mid\widehat S)
+ &=\varprojlim_\nu J_{X\times_S S_\nu}^p(X\times_S S_\nu\mid S_\nu)\\
+ &=\varprojlim_\nu J_X^p(X\mid S)\times_S S_\nu
+ =J_X^p(X\mid S)\times_S\widehat S.
+\end{aligned}
+\]
+(4) 因 $\mathfrak X$ 是 $S$-\Term{adic-formal-scheme}{进形式概形}，有
+\[
+\begin{aligned}
+{}&\mathfrak X\to S\text{ 在 }x\text{ 处形式光滑}\\
+\Longleftrightarrow{}&X_\nu\to S_\nu\text{ 对所有 }\nu\text{ 在 }x\text{ 处形式光滑}\\
+\Longleftrightarrow{}&x\notin J_{X_\nu}^n(X_\nu\mid S_\nu)\text{ 对所有 }\nu\\
+\Longleftrightarrow{}&x\notin\varprojlim_\nu J_{X_\nu}^n(X_\nu\mid S_\nu)
+ =J_{\mathfrak X}^n(\mathfrak X\mid S).
+\end{aligned}
+\]
+\end{proof}
+
+\textbf{注记 5.8。} 设 $\mathfrak X$ 是\Term{essentially-finite-type}{本质有限型}的 $S$-\Term{adic-formal-scheme}{进形式概形}。给定一点 $x\in\mathfrak X$，还考虑 $S$-\Term{adic-formal-scheme}{进形式概形}
+\[
+\mathfrak X_{(\widehat x)}=\varprojlim_\nu\operatorname{Spec}(\widehat{\mathcal O}_{X_\nu,x}).
+\]
+于是有自然\Term{morphism}{态射} $\mathfrak X_{(\widehat x)}\to\mathfrak X_{(x)}\to\mathfrak X$。\Term{generic}{一般}而言，$\widehat{\mathcal O}_{X_0,x}$ 在 $S_{(y)}$ 上并非\Term{essentially-finite-type}{本质有限型}，这里 $y$ 是 $x$ 在 $\mathfrak X\to S$ 下的像。为简便起见，置 $A_\nu=\mathcal O_{X_\nu,x}$，$R_\nu=\mathcal O_{S_\nu,y}$。自然映射
+\[
+\Omega_{A_\nu\mid R_\nu}\longrightarrow\Omega_{\widehat A_\nu\mid R_\nu}
+\]
+诱导\Term{isomorphism}{同构}
+\[
+\widehat\Omega_{A_\nu\mid R_\nu}\xrightarrow\sim\widehat\Omega_{\widehat A_\nu\mid R_\nu},
+\qquad
+\varprojlim_\nu\widehat\Omega_{A_\nu\mid R_\nu}\simeq
+\varprojlim_\nu\widehat\Omega_{\widehat A_\nu\mid R_\nu},
+\]
+这里 $\widehat{\ }$ 表示\Term{module}{模}对于环所诱导的\Term{topology}{拓扑}的\Term{separated-completion}{分离完备化}。因此，若定义
+\[
+\Omega_{\mathfrak X_{(\widehat x)}\mid S}
+ =\varprojlim_\nu\widehat{\mathcal O}_{X_\nu,x}
+ \widehat\otimes_{\mathcal O_{X_\nu}}\Omega_{X_\nu\mid S_\nu},
+\]
+则 $\Omega_{\mathfrak X_{(\widehat x)}\mid S}$ 是一个\Term{coherent}{凝聚} $\mathfrak X_{(\widehat x)}$-\Term{module}{模}。于是，若
+\SourcePage{131}
+令 $J_{\mathfrak X_{(\widehat x)}}^p(\mathfrak X_{(\widehat x)}\mid S)$ 为 $\mathfrak X_{(\widehat x)}$ 中由\Term{ideal-sheaf}{理想层}
+\[
+I_{\mathfrak X_{(\widehat x)}}^p(\mathfrak X_{(\widehat x)}\mid S)
+ =I_{\mathfrak X_{(\widehat x)}}^p(\Omega_{\mathfrak X_{(\widehat x)}\mid S})
+\]
+定义的\Term{formal-closed-subscheme}{形式闭子概形}，则有
+\[
+J_{\mathfrak X_{(x)}}^p(\mathfrak X_{(x)}\mid S)_{(\widehat x)}
+ \xrightarrow\sim J_{\mathfrak X_{(\widehat x)}}^p(\mathfrak X_{(\widehat x)}\mid S).
+\]
+注意，若 $x$ 为 $J_{\mathfrak X}^p(\mathfrak X\mid S)$ 的\Term{isolated-point}{孤立点}，则
+\[
+J_{\mathfrak X_{(\widehat x)}}^p(\mathfrak X_{(\widehat x)}\mid S)
+ \longrightarrow J_{\mathfrak X_{(x)}}^p(\mathfrak X_{(x)}\mid S)
+\]
+为\Term{isomorphism}{同构}。
+
+为考虑 $J_{\mathfrak X}^p(\mathfrak X\mid S)$ 在\Term{morphism}{态射} $\mathfrak X\xrightarrow fS$ 下的“像”，可以直接取 $S$ 中由\Term{ideal-sheaf}{理想层}
+\[
+\operatorname{Ker}\bigl(\mathcal O_S\longrightarrow
+ \mathcal O_{\mathfrak X}/I_{\mathfrak X}^p(\mathfrak X\mid S)\bigr)
+\]
+定义的\Term{formal-subscheme}{形式子概形}。不过，对这里的用途而言，再次使用 \Term{fitting-ideal}{Fitting 理想}更方便。
+
+\begin{SGAresult}{定义}{5.9}
+设 $S$ 是\Term{noetherian}{诺特}\Term{formal-scheme}{形式概形}，$f:\mathfrak X\to S$ 是一个\Term{essentially-finite-type}{本质有限型}的 $S$-\Term{adic-formal-scheme}{进形式概形}。假设 $J_{\mathfrak X}^p(\mathfrak X\mid S)$ 在 $S$ 上\Term{proper}{固有}，从而 $f_*\mathcal O_{J_{\mathfrak X}^p(\mathfrak X\mid S)}$ 为\Term{coherent}{凝聚} $\mathcal O_S$-\Term{module}{模}。定义 $\mathcal O_S$ 的\Term{ideal-sheaf}{理想层} $I_S^p(\mathfrak X\mid S)$ 为
+\[
+I_S^p(\mathfrak X\mid S)=I_S^0\bigl(f_*\mathcal O_{J_{\mathfrak X}^p(\mathfrak X\mid S)}\bigr),
+\]
+并令 $J_S^p(\mathfrak X\mid S)$ 为 $S$ 中由\Term{ideal-sheaf}{理想层} $I_S^p(\mathfrak X\mid S)$ 定义的\Term{formal-closed-subscheme}{闭形式子概形}。若存在一个固定整数 $n$，使所有 $\nu$ 的 $X_\nu\to S_\nu$ 都具有 5.4 中的性质 (1) 或 (2)，则置
+\[
+\begin{gathered}
+I_{\mathfrak X}(\mathfrak X\mid S)=I_{\mathfrak X}^n(\mathfrak X\mid S),
+\qquad J_{\mathfrak X}(\mathfrak X\mid S)=J_{\mathfrak X}^n(\mathfrak X\mid S),\\
+I_S^n(\mathfrak X\mid S)=I_S^n(\mathfrak X\mid S),
+\qquad J_S(\mathfrak X\mid S)=J_S^n(\mathfrak X\mid S).
+\end{gathered}
+\]
+\end{SGAresult}
+
+\begin{SGAresult}{推论}{5.10}
+设 $S$ 是\Term{noetherian}{诺特}\Term{formal-scheme}{形式概形}，$\mathfrak X\xrightarrow fS$ 是一个\Term{essentially-finite-type}{本质有限型}的 $S$-\Term{adic-formal-scheme}{进形式概形}，且 $J_{\mathfrak X}^p(\mathfrak X\mid S)$ 在 $S$ 上\Term{proper}{固有}。则：
+
+(1) $|J_S^p(\mathfrak X\mid S)|$ 是 $|J_{\mathfrak X}^p(\mathfrak X\mid S)|$ 在 $f:\mathfrak X\to S$ 下的像。
+\SourcePage{132}
+(2) $J_S^p(\mathfrak X\mid S)$ 与\Term{base-change}{基变换}交换，即
+\[
+J_{S'}^p(\mathfrak X'\mid S')=J_S^p(\mathfrak X\mid S)\times_S S'.
+\]
+(3) 若 $J_{\mathfrak X}^p(\mathfrak X\mid S)=\coprod_{1\leq i\leq m}\mathfrak Y^{(i)}$（\Term{disjoint-union}{不交并}），则
+\[
+I_S^p(\mathfrak X\mid S)=\prod_{1\leq i\leq m}I_S^0(f_*\mathcal O_{\mathfrak Y^{(i)}}).
+\]
+特别地，若 $|J_{X_0}^p(X_0\mid S_0)|=\{x_1,\ldots,x_m\}$ 为\Term{discrete}{离散}的，则
+\[
+I_S^p(\mathfrak X\mid S)=\prod_{1\leq i\leq m}I_S^p(\mathfrak X_{(x_i)}\mid S)
+ =\prod_{1\leq i\leq m}I_S^p(\mathfrak X_{(\widehat{x_i})}\mid S).
+\]
+(4) 设 $S$ 为通常的\Term{noetherian}{诺特}\Term{scheme}{概形}，$X$ 为\Term{essentially-finite-type}{本质有限型}的 $S$-\Term{scheme}{概形}。给定\Term{closed-subscheme}{闭子概形} $S_0\to S$，令 $\widehat S$ 为 $S$ 沿 $S_0$ 的\Term{formal-completion}{形式完备化}。若置 $\widehat X=X\times_S\widehat S$，即 $X$ 沿 $X_0=X\times_S S_0$ 的\Term{formal-completion}{形式完备化}，则
+\[
+J_{\widehat S}^p(\widehat X\mid\widehat S)=J_S^p(X\mid S)\times_S\widehat S
+ =J_S^p(X\mid S)\text{ 沿 }J_{S_0}^p(X_0\mid S_0)\text{ 的形式完备化}.
+\]
+\end{SGAresult}
+\begin{proof}
+由 5.1(c)，$\operatorname{Supp}f_*\mathcal O_{J_{\mathfrak X}^p(\mathfrak X\mid S)}=|J_S^p(\mathfrak X\mid S)|$，从而得到 (1)。(2) 与 (4) 由 5.1(a) 显然成立。(3) 由 5.1(d)，以及对 $J_{\mathfrak X}^p(\mathfrak X\mid S)$ 中的\Term{isolated-point}{孤立点} $x$ 成立的\Term{isomorphism}{同构}
+\[
+J_{\mathfrak X_{(\widehat x)}}^p(\mathfrak X_{(\widehat x)}\mid S)
+ \xrightarrow\sim J_{\mathfrak X_{(x)}}^p(\mathfrak X_{(x)}\mid S)
+\]
+得到。
+\end{proof}
+
+\textbf{注记 5.11。} 我们的 \Term{jacobian-ideal}{Jacobian 理想}的定义取自\Term{base-field}{基域}上经典情形的定义，它与\Term{base-change}{基变换}交换，并在 5.4 的温和条件下给出\Term{smoothness-criterion}{光滑性判据}。不过，在\Term{generic}{一般}情形下，可能有许多不同的方法定义一个\Term{canonical}{典范}的\Term{subscheme}{子概形}，使它给出\Term{non-smooth-locus}{非光滑点集}。这里略述其中一种：给定一个 $A$-\Term{algebra}{代数} $B$，定义
+\[
+\mathcal I_{B\mid A}=\bigcap_E\operatorname{Ann}D^1(B\mid A,E),
+\]
+其中 $E$ 遍历所有\Term{finite-type}{有限型} $B$-\Term{module}{模}。由 3.13(c)，这一\Term{ideal}{理想} $\mathcal I_{B\mid A}$ 与\Term{localization}{局部化}交换，因此对给定\Term{morphism}{态射} $X\xrightarrow fY$，得到\Term{ideal-sheaf}{理想层} $\mathcal I_{X\mid Y}$。若 $f$ 为\Term{essentially-finite-type}{本质有限型}\Term{morphism}{态射}，则由 3.13(a)，$f$ 在 $x$ 处\Term{smooth}{光滑}当且仅当 $x\notin\operatorname{Supp}\mathcal O_X/\mathcal I_{X\mid Y}$。这一概念显然也可移植到\Term{essentially-finite-type}{本质有限型}的\Term{adic-formal-scheme}{进形式概形}，
+\SourcePage{133}
+因而同样适用于\Term{deformation-theory}{形变理论}。
+
+\SGAsection{6}{非退化二次奇点}
+本节的目标是研究只有\Term{non-degenerate-quadratic-singularity}{非退化二次奇点}的 $k$-\Term{scheme}{概形}的\Term{deformation}{形变}。由 4.13，在适当的情形下，这成为一个纯粹的\Term{local-scheme}{局部}问题。
+
+回到第4节的记号。因此，$\Lambda$ 是一个固定的\Term{complete}{完备}\Term{noetherian}{诺特}\Term{local-ring}{局部环}，其\Term{residue-field}{剩余域}为 $k$；$\mathcal C_\Lambda$ 表示具有同一\Term{residue-field}{剩余域} $k$ 的 Artin \Term{local-algebra}{局部 $\Lambda$-代数}的\Term{category}{范畴}。
+
+设 $X$ 是\Term{finite-type}{有限型} $k$-\Term{scheme}{概形}，$x$ 是 $X$ 的一个\Term{closed-point}{闭点}。回顾，若
+\[
+\widehat{\mathcal O}_{X,x}=k[[x_1,\ldots,x_n]]/(f),
+\qquad
+\left(\frac{\partial f}{\partial x_1},\ldots,\frac{\partial f}{\partial x_n}\right)=(x_1,\ldots,x_n),
+\]
+则称点 $x$ 是一个在 $k$ 上有理的\Term{non-degenerate-quadratic-singularity}{非退化二次奇点}。总可以假设 $f$ 是\Term{quadratic-form}{二次型}。事实上有：
+
+\begin{SGAresult}{\Term{lemma}{引理}}{6.1}
+设 $f\in k[[x_1,\ldots,x_n]]$。若
+\[
+\left(\frac{\partial f}{\partial x_1},\ldots,\frac{\partial f}{\partial x_n}\right)
+ =M\;(=(x_1,\ldots,x_n)),
+\]
+则可找到 $x'_1,\ldots,x'_n$，满足 $x_i=x'_i\pmod{M^2}$，使 $f=q(x'_1,\ldots,x'_n)$，其中 $q$ 为\Term{quadratic-form}{二次型}。
+\end{SGAresult}
+\begin{proof}
+用逐次逼近法。写 $f=f_2+h_3$，其中 $f_2$ 为\Term{quadratic-form}{二次型}，$h_3\in M^3$。因 $(\partial f/\partial x_1,\ldots,\partial f/\partial x_n)=M$，存在 $M^2$ 中的 $\epsilon_1^{(1)},\ldots,\epsilon_n^{(1)}$，使
+\[
+\sum_i\epsilon_i^{(1)}\frac{\partial f}{\partial x_i}\equiv h_3\pmod{M^4}.
+\]
+若置 $x_i^{(1)}=x_i-\epsilon_i^{(1)}$，则
+\[
+\begin{aligned}
+f(x_1^{(1)},\ldots,x_n^{(1)})
+ &=f(x_1,\ldots,x_n)-\sum_i\epsilon_i^{(1)}\frac{\partial f}{\partial x_i}+\cdots\\
+ &\equiv f_2(x_1,\ldots,x_n)\pmod{M^4},
+\end{aligned}
+\]
+即 $f(x_1^{(1)},\ldots,x_n^{(1)})=f_2(x_1,\ldots,x_n)+h_4$，其中 $h_4\in M^4$。现有
+\[
+\left(\frac{\partial f}{\partial x_1^{(1)}},\ldots,\frac{\partial f}{\partial x_n^{(1)}}\right)
+ =\left(\frac{\partial f}{\partial x_1},\ldots,\frac{\partial f}{\partial x_n}\right)=M,
+\]
+因而可选择
+\SourcePage{134}
+$M^3$ 中的 $\epsilon_1^{(2)},\ldots,\epsilon_n^{(2)}$，使
+\[
+\sum_i\epsilon_i^{(2)}\frac{\partial f}{\partial x_i^{(1)}}\equiv h_4\pmod{M^5}.
+\]
+于是
+\[
+\begin{aligned}
+f(x_1^{(1)}-\epsilon_1^{(2)},\ldots,x_n^{(1)}-\epsilon_n^{(2)})
+ &=f(x_1^{(1)},\ldots,x_n^{(1)})-\sum_i\epsilon_i^{(2)}\frac{\partial f}{\partial x_i^{(1)}}+\cdots\\
+ &\equiv f_2(x_1,\ldots,x_n)\pmod{M^5}.
+\end{aligned}
+\]
+继续这一过程，便可找到 $\epsilon_i^{(1)},\epsilon_i^{(2)},\epsilon_i^{(3)},\ldots$，$i=1,2,\ldots,n$，其中 $\epsilon_i^{(\nu)}\in M^{\nu+1}$，使得若置 $x_i^{(\nu)}=x_i-(\epsilon_i^{(1)}+\cdots+\epsilon_i^{(\nu)})$，则
+\[
+f(x_1^{(\nu)},\ldots,x_n^{(\nu)})\equiv f_2(x_1,\ldots,x_n)\pmod{M^{\nu+3}}.
+\]
+因此置 $\epsilon_i=\sum_\nu\epsilon_i^{(\nu)}$，便有 $f(x_1-\epsilon_1,\ldots,x_n-\epsilon_n)=f_2(x_1,\ldots,x_n)$，亦即
+\[
+f(x_1,\ldots,x_n)=f_2(x_1+\epsilon_1,\ldots,x_n+\epsilon_n).
+\]
+\end{proof}
+
+\begin{SGAresult}{\Term{lemma}{引理}}{6.2}
+设 $A_0$ 为一个\Term{essentially-finite-type}{本质有限型}的\Term{local-algebra}{局部 $k$-代数}，满足
+\[
+\widehat A_0\simeq k[[x_1,\ldots,x_n]]/(f),
+\]
+其中 $f$ 为\Term{non-degenerate-quadratic-form}{非退化二次型}；设 $(R,\mathfrak X)$ 是 $X_0=\operatorname{Spec}(A_0)$ 的一个\Term{formal-versal-deformation}{形式万有形变}。则：
+
+(1) $J_{\mathfrak X}(\mathfrak X\mid R)\to J_R(\mathfrak X\mid R)\to\operatorname{Spec}(\Lambda)$ 都是\Term{isomorphism}{同构}。
+
+(2) $J_R^n(\mathfrak X\mid R)$ 是 $R$ 中由 $R$ 在 $\Lambda$ 上的一个\Term{free-formal-generator}{自由形式生成元}生成的\Term{principal-ideal}{主理想}，即 $I_R(\mathfrak X\mid R)=(t)$，$R=\Lambda[[t]]$。
+
+(3) $\mathfrak X\to\operatorname{Spec}(\Lambda)$ \Term{formally-smooth}{形式光滑}。
+\end{SGAresult}
+\begin{proof}
+置 $\mathfrak X=\operatorname{Spf}(A)$。由 4.10(b)，$(R,\operatorname{Spf}(\widehat A))$ 是 $\widehat X_0=\operatorname{Spec}(\widehat A_0)$ 的一个\Term{formal-versal-deformation}{形式万有形变}，其中 $\widehat A=\varprojlim_\nu A\otimes_R R_\nu$。
+
+现在 $\widehat A_0\simeq k[[x_1,\ldots,x_n]]/(f)$，且在 $k[[x_1,\ldots,x_n]]$ 中有 $(\partial f/\partial x_1,\ldots,\partial f/\partial x_n)=(x_1,\ldots,x_n)$。立即得到 $[\mathcal M_{\widehat X_0}(k[\epsilon])]\simeq k$，且由 4.14，得到
+\[
+R\simeq\Lambda[[t]],\qquad
+\widehat A\simeq R[[x_1,\ldots,x_n]]/(F-t),
+\]
+其中 $F$ 是 $\Lambda[x_1,\ldots,x_n]\;(\subset R[[x_1,\ldots,x_n]])$ 中的一个二次\Term{polynomial}{多项式}，由把 $f$ 的系数\Term{lifting}{提升}到 $\Lambda$ 得到。现在
+\[
+0\longrightarrow\widehat A\xrightarrow{df}
+\widehat A\,dx_1\oplus\cdots\oplus\widehat A\,dx_n
+\longrightarrow\widehat\Omega_{\widehat A\mid R}\longrightarrow0
+\]
+\SourcePage{135}
+\Term{exact}{正合}，其中 $df:\widehat A\to\widehat A\,dx_1\oplus\cdots\oplus\widehat A\,dx_n$ 由
+\[
+1\longmapsto\frac{\partial f}{\partial x_1}dx_1+\cdots+\frac{\partial f}{\partial x_n}dx_n
+\]
+给出，因而
+\[
+I_{\widehat A}(\widehat A\mid R)=
+\left(\frac{\partial F}{\partial x_1},\ldots,\frac{\partial F}{\partial x_n}\right)=(x_1,\ldots,x_n),
+\]
+于是
+\[
+\widehat A/I_{\widehat A}(\widehat A\mid R)
+ =\widehat A/(x_1,\ldots,x_n)
+ =R[[x_1,\ldots,x_n]]/(x_1,\ldots,x_n,F-t)\simeq\Lambda,
+\]
+即\Term{canonical-map}{典范映射} $\Lambda\to\widehat A/I_{\widehat A}(\widehat A\mid R)$ 是\Term{isomorphism}{同构}。由此得到 $\widehat A\twoheadrightarrow A/I_A(A\mid R)$ 是\Term{isomorphism}{同构}，从而 $\Lambda\to R/I_R(A\mid R)$ 也是\Term{isomorphism}{同构}。这证明了 (1) 与 (2)。另一方面，(3) 由如下 $\Lambda$-\Term{algebra}{代数}的等式得到：
+\[
+\widehat A\simeq R[[x_1,\ldots,x_n]]/(F-t)
+ \simeq\Lambda[[t,x_1,\ldots,x_n]]/(F-t)
+ \simeq\Lambda[[x_1,\ldots,x_n]].
+\]
+\end{proof}
+
+\begin{SGAresult}{推论}{6.3}
+设 $X_0$ 是\Term{finite-type}{有限型} $k$-\Term{scheme}{概形}，$x\in X_0$ 是一个在 $k$ 上有理的\Term{non-degenerate-quadratic-singularity}{非退化二次奇点}。
+
+(1) 设 $(R,\mathfrak X)$、$(R,\mathfrak Y)$ 是 $X_0$ 的任意两个\Term{deformation}{形变}，其中 $R\in\operatorname{ob}(\widehat{\mathcal C}_\Lambda)$。假设 $k=k^2$。则 $\mathfrak X_{(\widehat x)}\simeq\mathfrak Y_{(\widehat x)}$ 作为 $R$-\Term{adic-formal-scheme}{进形式概形}\Term{isomorphic}{同构}，当且仅当 $I_R(\mathfrak X_{(x)}\mid R)=I_R(\mathfrak Y_{(x)}\mid R)$。
+
+(2) 设 $R\in\operatorname{ob}(\widehat{\mathcal C}_\Lambda)$ 是\Term{regular-local-ring}{正则局部环}，$(R,\mathfrak X)$ 是 $X_0$ 的一个\Term{deformation}{形变}。则 $\mathcal O_{\mathfrak X,x}$ 为\Term{regular-local-ring}{正则局部环}，当且仅当 $I_R(\mathfrak X_{(x)}\mid R)\not\subset\mathfrak m_R^2$，亦即当且仅当 $I_R(\mathfrak X_{(x)}\mid R)$ 是 $\operatorname{Spf}(R)$ 中的一个\Term{regular-divisor}{正则除子}。
+\end{SGAresult}
+\begin{proof}
+设 $(R_0,\mathfrak Z)$ 是 $\operatorname{Spec}(\widehat{\mathcal O}_{X_0,x})$ 的一个\Term{formal-versal-deformation}{形式万有形变}。因 $X_0$ 中的 $x$ 是在 $k$ 上有理的\Term{non-degenerate-quadratic-singularity}{非退化二次奇点}，可如 6.2 中那样假设 $R_0=\Lambda[[t]]$，$\mathfrak Z\simeq\operatorname{Spf}(R_0[[x_1,\ldots,x_n]]/(F-t))$。
+
+(1) $(R,\mathfrak X_{(\widehat x)})$、$(R,\mathfrak Y_{(\widehat x)})$ 是 $\operatorname{Spec}(\widehat{\mathcal O}_{X_0,x})$ 的\Term{deformation}{形变}，因而分别由\Term{continuous}{连续}的\Term{local-algebra}{局部 $\Lambda$-代数}映射 $\varphi,\psi:R_0\to R$ 从 $(R_0,\mathfrak Z)$ 诱导。即若置 $a=\varphi(t)$，$b=\psi(t)$，则作为 $R$-\Term{adic-formal-scheme}{进形式概形}有
+\[
+\mathfrak X_{(\widehat x)}\simeq\operatorname{Spf}(R[[x_1,\ldots,x_n]]/(F-a)),
+\qquad
+\mathfrak Y_{(\widehat x)}\simeq\operatorname{Spf}(R[[x_1,\ldots,x_n]]/(F-b)).
+\]
+假设 $I_R(\mathfrak X_{(x)}\mid R)=I_R(\mathfrak Y_{(x)}\mid R)$，即
+\SourcePage{136}
+在 $R$ 中 $(a)=(b)$。则对 $R$ 中某个\Term{unit}{单位} $u$，有 $a=ab$。因 $k=k^2$ 且 $R$ \Term{complete}{完备}，可以对 $R$ 中某个\Term{unit}{单位} $v$ 写成 $u=v^2$，即 $a=v^2b$。于是 $(F-b)=(v^2F-a)$；又因 $F$ 是\Term{quadratic-form}{二次型}，$x_i\mapsto vx_i$ 给出 $R$-\Term{algebra}{代数}\Term{isomorphism}{同构}
+\[
+R[[x_1,\ldots,x_n]]/(F-a)\xrightarrow\sim R[[x_1,\ldots,x_n]]/(F-b).
+\]
+反向蕴涵显然成立。
+
+(2) 存在\Term{continuous}{连续}的\Term{local-algebra}{局部 $\Lambda$-代数}映射 $\varphi:R_0=\Lambda[[t]]\to R$，使
+\[
+\mathfrak X_{(\widehat x)}\simeq\operatorname{Spf}(R[[x_1,\ldots,x_n]]/(F-\varphi(t))).
+\]
+注意，$I_R(\mathfrak X_{(x)}\mid R)=I_R(\mathfrak X_{(\widehat x)}\mid R)=(\varphi(t))$；并且 $R[[x_1,\ldots,x_n]]/(F-\varphi(t))=\widehat{\mathcal O}_{\mathfrak X,x}$ 为\Term{regular-local-ring}{正则局部环}，当且仅当 $\mathcal O_{\mathfrak X,x}$ 为\Term{regular-local-ring}{正则局部环}。现在 $R$ \Term{regular}{正则}，从而 $R[[x_1,\ldots,x_n]]$ 也是\Term{regular-local-ring}{正则局部环}。若令 $M$ 为 $R[[x_1,\ldots,x_n]]$ 的\Term{maximal-ideal}{极大理想}，则 $R[[x_1,\ldots,x_n]]/(F-\varphi(t))$ \Term{regular}{正则}，当且仅当 $F-\varphi(t)\notin M^2$，亦即当且仅当 $\varphi(t)\notin\mathfrak m_R^2$，亦即当且仅当 $I_R(\mathfrak X_{(x)}\mid R)\not\subset\mathfrak m_R^2$。
+\end{proof}
+
+\begin{SGAresult}{\Term{theorem}{定理}}{6.4}
+设 $X_0$ 是仅有孤立的\Term{non-smooth-point}{非光滑点}的\Term{finite-type}{有限型} $k$-\Term{scheme}{概形}，$(R,\mathfrak X)$ 是 $X_0$ 的一个\Term{formal-versal-deformation}{形式万有形变}。以 $\{z_1,\ldots,z_m\}$ 记 $X_0$ 的\Term{non-smooth-point}{非光滑点}集。假设 $H^2(X_0,\mathcal D_{X_0}^0)=0$，且所有 $z_i$ 都是在 $k$ 上有理的\Term{non-degenerate-quadratic-singularity}{非退化二次奇点}。则：
+
+(1) $R$ 在 $\Lambda$ 上\Term{formally-smooth}{形式光滑}，即 $R$ 是 $\Lambda$ 上的\Term{formal-power-series-ring}{形式幂级数环}。
+
+(2) 有
+\[
+J_{\mathfrak X}(\mathfrak X\mid R)=\coprod_{1\leq i\leq m}
+J_{\mathfrak X_{(z_i)}}(\mathfrak X_{(z_i)}\mid R)
+\quad\text{（不交并）},
+\]
+且
+\[
+J_{\mathfrak X_{(z_i)}}(\mathfrak X_{(z_i)}\mid R)\xrightarrow\sim
+J_R(\mathfrak X_{(z_i)}\mid R)
+\]
+为\Term{isomorphism}{同构}。
+
+(3) $I_R(\mathfrak X_{(z_i)}\mid R)$ 是\Term{principal-ideal}{主理想}，从而
+\[
+I_R(\mathfrak X\mid R)=\prod_{1\leq i\leq m}I_R(\mathfrak X_{(z_i)}\mid R)
+\]
+也是\Term{principal-ideal}{主理想}。此外，若置 $I_R(\mathfrak X_{(z_i)}\mid R)=(t_i)$，则 $t_1,\ldots,t_m$ 可以扩充为 $R$ 在 $\Lambda$ 上（作为 $\Lambda$ 上的\Term{formal-power-series-ring}{形式幂级数环}）的一组\Term{free-formal-generator}{自由形式生成元}。
+
+(4) $\mathfrak X\to\operatorname{Spec}(\Lambda)$ \Term{smooth}{光滑}，即 $J_{\mathfrak X}(\mathfrak X\mid\Lambda)=\varnothing$。
+\SourcePage{137}
+(5) 若 $X_0$ 为\Term{complete-curve}{完备}\Term{irreducible}{不可约}\Term{curve}{曲线}，则 $\dim\mathcal M_{X_0}=3g-3+a$，其中
+\[
+g=\dim_k H^1(X_0,\mathcal O_{X_0}),\qquad a=\dim_k H^0(X_0,\mathcal D_{X_0}^0).
+\]
+\end{SGAresult}
+\begin{proof}
+(1) 由 (2) 与 (3) 得到。(2) 的第一项断言由 5.7(2) 得到。现设 $(R_i,\mathfrak Y_i)$ 是 $\operatorname{Spec}(\widehat{\mathcal O}_{X_0,z_i})$ 的一个\Term{formal-versal-deformation}{形式万有形变}。因 $(R,\mathfrak X_{(\widehat{z_i})})$ 是 $\operatorname{Spec}(\widehat{\mathcal O}_{X_0,z_i})$ 的\Term{deformation}{形变}，存在\Term{continuous}{连续}的\Term{local-algebra}{局部 $\Lambda$-代数}映射 $\varphi_i:R_i\to R$，以及\Term{cartesian}{笛卡儿}图
+\[
+\begin{tikzcd}[column sep=large]
+\mathfrak X_{(\widehat{z_i})}\arrow[r]\arrow[d]&\mathfrak Y_i\arrow[d]\\
+\operatorname{Spf}(R)\arrow[r,"\operatorname{Spf}(\varphi_i)"']&\operatorname{Spf}(R_i).
+\end{tikzcd}
+\]
+因此有
+\[
+\begin{aligned}
+J_{\mathfrak X_{(z_i)}}(\mathfrak X_{(z_i)}\mid R)
+ &=J_{\mathfrak X_{(\widehat{z_i})}}(\mathfrak X_{(\widehat{z_i})}\mid R)\\
+ &\simeq J_{\mathfrak Y_i}(\mathfrak Y_i\mid R_i)
+ \times_{\operatorname{Spf}(R_i)}\operatorname{Spf}(R),\\
+J_R(\mathfrak X_{(z_i)}\mid R)
+ &=J_R(\mathfrak X_{(\widehat{z_i})}\mid R)\\
+ &\simeq J_{R_i}(\mathfrak Y_i\mid R_i)
+ \times_{\operatorname{Spf}(R_i)}\operatorname{Spf}(R).
+\end{aligned}
+\]
+由 6.2(1)，$J_{\mathfrak Y_i}(\mathfrak Y_i\mid R_i)\to J_{R_i}(\mathfrak Y_i\mid R_i)$ 是\Term{isomorphism}{同构}，故\Term{canonical}{典范}\Term{morphism}{态射}
+$J_{\mathfrak X_{(z_i)}}(\mathfrak X_{(z_i)}\mid R)\to J_R(\mathfrak X_{(z_i)}\mid R)$ 是\Term{isomorphism}{同构}。现在，由 6.2(2)，有
+\[
+I_{R_i}(\mathfrak Y_i\mid R_i)=(u_i)=(u_i),\qquad R_i=\Lambda[[u_i]],
+\]
+因此
+\[
+I_R(\mathfrak X_{(z_i)}\mid R)=I_R(\mathfrak X_{(\widehat{z_i})}\mid R)=(t_i),
+\qquad t_i=\varphi_i(u_i),
+\]
+进而
+\[
+I_R(\mathfrak X\mid R)=\prod_{1\leq i\leq m}I_R(\mathfrak X_{(z_i)}\mid R)
+ =\left(\prod_{i=1}^m t_i\right).
+\]
+现在
+\[
+\mathcal M_{X_0}\longrightarrow
+\mathcal M_{X_0,(\widehat{z_1})}\times\cdots\times\mathcal M_{X_0,(\widehat{z_m})}
+\]
+是\Term{smooth}{光滑}的，由\SGAsourcegap{原 PDF137 页在“is smooth by”之后缺少引注，紧接“and therefore”；不补写所缺编号。}，故由 4.13，
+\[
+R_1\widehat\otimes_\Lambda\cdots\widehat\otimes_\Lambda R_m\longrightarrow R
+\]
+为\Term{formally-smooth}{形式光滑}，这就蕴涵 $t_1,\ldots,t_m$ 可以扩充为 $R$ 在 $\Lambda$ 上的一组\Term{free-formal-generator}{自由形式生成元}。
+
+\SourcePage{138}
+(4) \Term{projection}{投影}\Term{morphism}{态射}
+\[
+\mathfrak X_{(\widehat{z_i})}\simeq\mathfrak Y_i\times_{\operatorname{Spf}(R_i)}\operatorname{Spf}(R)
+ \longrightarrow\mathfrak Y_i
+\]
+是\Term{formally-smooth}{形式光滑}的，因为 $\operatorname{Spf}(R)\xrightarrow{\operatorname{Spf}(\varphi_i)}\operatorname{Spf}(R_i)$ \Term{formally-smooth}{形式光滑}。另一方面，由 6.2(3)，$\mathfrak Y_i\to\operatorname{Spec}(\Lambda)$ \Term{formally-smooth}{形式光滑}，故 $\mathfrak X_{(\widehat{z_i})}\to\operatorname{Spec}(\Lambda)$ \Term{formally-smooth}{形式光滑}。因 $\{z_1,\ldots,z_m\}$ 是 $X_0$ 的\Term{non-smooth-point}{非光滑点}集，得到 $\mathfrak X\to\operatorname{Spec}(\Lambda)$ \Term{formally-smooth}{形式光滑}。
+
+(5) 因 $R$ 在 $\Lambda$ 上\Term{formally-smooth}{形式光滑}，且由 4.4 和 4.11，
+\[
+0\longrightarrow H^1(X_0,\mathcal D_{X_0}^0)
+ \longrightarrow[\mathcal M_{X_0}(k[\epsilon])]
+ \longrightarrow H^0(X_0,\mathcal D_{X_0}^1)\longrightarrow0
+\]
+\Term{exact}{正合}，故有
+\[
+\begin{aligned}
+\dim\mathcal M_{X_0}
+ &=\dim k\otimes R
+ =\dim_k H^1(X_0,\mathcal D_{X_0}^0)+\dim H^0(X_0,\mathcal D_{X_0}^1)\\
+ &=\dim_k H^1(X_0,\mathcal D_{X_0}^0)+m.
+\end{aligned}
+\]
+于是只须证明
+\[
+\dim_k H^1(X_0,\mathcal D_{X_0}^0)+m
+ =3g-3+\dim_k H^0(X_0,\mathcal D_{X_0}^0),
+\]
+即 $\chi(\mathcal D_{X_0}^0)=3-3g+m$。这里对任意\Term{coherent}{凝聚} $X_0$-\Term{module}{模} $E$，置
+\[
+\chi(E)=\dim_k H^0(X_0,E)-\dim_k H^1(X_0,E).
+\]
+因把\Term{base-field}{基域} $k$ 换成其\Term{algebraic-closure}{代数闭包}时 $\chi(\mathcal D_{X_0}^0)$ \Term{invariant}{不变}，可假设 $k$ \Term{algebraically-closed}{代数闭}。置 $A=\mathcal O_{X_0,z}$，其中 $z$ 为 $X_0$ 的一个\Term{non-smooth-point}{非光滑点}，令 $A'$ 为它的\Term{normalization}{正规化}。
+
+由假设，$\widehat A\simeq k[[x,y]]/(f)$，其中 $f$ 为\Term{non-degenerate-quadratic-form}{非退化二次型}。因 $k$ \Term{algebraically-closed}{代数闭}，可假设 $f=xy$，即 $\widehat A\simeq k[[x,y]]/(xy)$。立即得到 $\ell(A'/A)=1$，且 $\operatorname{Der}_k(A,\mathfrak m_A)=\operatorname{Der}_k(A,A)$。令 $C$ 为 $A$ 在 $A'$ 中的\Term{conductor}{导子}。因 $A$ 为\Term{complete-intersection}{完全交}，必有 $\ell(A/C)=\ell(A'/A)=1$，故 $C=\mathfrak m_A$。由此得到
+\[
+A'=\{a'\in K\mid a'\mathfrak m_A\subset\mathfrak m_A\},
+\]
+其中 $K$ 为 $A$ 的\Term{fraction-field}{分式域}。现在断言，作为包含在 $\operatorname{Der}_k(K,K)$ 中的 $A$-\Term{module}{模}，有
+$\operatorname{Der}_k(A,A)\subset\operatorname{Der}_k(A',A')$。
+事实上，设 $X\in\operatorname{Der}_k(A,A)$。对任意 $a'\in A'$ 及
+\SourcePage{139}
+$x\in\mathfrak m_A$，有 $xa'\in\mathfrak m_A$，因此 $X(xa')\in\mathfrak m_A$，且 $a'X(x)\in\mathfrak m_A$，因为 $\operatorname{Der}_k(A,\mathfrak m_A)=\operatorname{Der}_k(A,A)$。于是 $X(xa')=a'X(x)+xX(a')$ 蕴涵，对所有 $x\in\mathfrak m_A$ 有 $xX(a')\in\mathfrak m_A$，故 $X(a')\in A'$。此外，\Term{exact-sequence}{正合列}
+\[
+0\longrightarrow\operatorname{Der}_k(A,A)\longrightarrow\operatorname{Der}_k(A',A')
+ \longrightarrow A'/\mathfrak m_A A'\longrightarrow0
+\]
+蕴涵\Term{exact-sequence}{正合列}
+\[
+0\longrightarrow\operatorname{Der}_k(A,A)\longrightarrow\operatorname{Der}_k(A',A')
+ \longrightarrow A'/C\longrightarrow0.
+\]
+因此，若令 $X'_0$ 为 $X_0$ 的\Term{normalization}{正规化}，则
+\[
+0\longrightarrow\mathcal D_{X_0}^0\longrightarrow\mathcal D_{X'_0}^0
+ \longrightarrow\mathcal O_{X'_0}/C\longrightarrow0
+\]
+\Term{exact}{正合}。因 $X_0$ \Term{local-scheme}{局部}为\Term{complete-intersection}{完全交}，有
+\[
+\ell(\mathcal O_{X'_0}/C)=2\ell(\mathcal O_{X'_0}/\mathcal O_{X_0})=2m,
+\]
+而由 \Term{riemann-roch-theorem}{Riemann--Roch 定理}，$\chi(\mathcal D_{X'_0}^0)=3-3(g-m)$。所以
+\[
+\chi(\mathcal D_{X_0}^0)=\chi(\mathcal D_{X'_0}^0)-\ell(\mathcal O_{X'_0}/C)
+ =3-3(g-m)-2m=3-3g+m.
+\]
+证明完成。
+\end{proof}
+
+\textbf{注记 6.5。} 在公式 6.4(5) 中，数 $a=H^0(X_0,\mathcal D_{X_0}^0)$ 可容易地用 \Term{riemann-roch-theorem}{Riemann--Roch 定理}算出。因此
+\[
+a=\begin{cases}
+0&g\geq2,\\
+1&g=1,\\
+3&g=0.
+\end{cases}
+\]
+最后补充一个关于\Term{characteristic}{特征} $2$ 的注记。若\Term{base-field}{基域} $k$ 的\Term{characteristic}{特征}为 $2$，则当 $n$ 为奇数时，$n$ 个变量上不存在\Term{non-degenerate-quadratic-form}{非退化二次型}。换言之，若 $\operatorname{char}k=2$，便不存在偶数维的\Term{non-degenerate-quadratic-singularity}{非退化二次奇点}。此时可考虑具有最大\Term{nondegenerate}{非退化}性的\Term{quadratic-form}{二次型}：
+
+\SourcePage{140}
+\begin{SGAresult}{定义}{6.6}
+设 $X$ 为\Term{finite-type}{有限型} $k$-\Term{scheme}{概形}。若下列条件成立，则称\Term{closed-point}{闭点} $z\in X$ 为一个在 $k$ 上有理的\Term{ordinary-quadratic-singularity}{普通二次奇点}：
+
+(i) 若 $\operatorname{char}k\ne2$，或 $\operatorname{char}k=2$ 且 $\dim\mathcal O_{X,z}$ 为奇数，则 $z$ 是一个在 $k$ 上有理的\Term{non-degenerate-quadratic-singularity}{非退化二次奇点}。
+
+(ii) 若 $\operatorname{char}k=2$ 且 $\dim\mathcal O_{X,z}$ 为偶数，则
+\[
+\bar k\widehat\otimes_k\widehat{\mathcal O}_{X,z}\simeq
+\bar k[[X_0,X_1,\ldots,X_{2n}]]/(f),
+\qquad
+f=X_0^2+X_1X_2+X_3X_4+\cdots+X_{2n-1}X_{2n},
+\]
+其中 $\bar k$ 是 $k$ 的\Term{algebraic-closure}{代数闭包}。
+\end{SGAresult}
+
+\begin{SGAresult}{\Term{lemma}{引理}}{6.7}
+设 $k$ 是\Term{characteristic}{特征}为 $2$ 的域，置
+\[
+A_0=k[[X_0,X_1,\ldots,X_{2n}]]/(f),\qquad
+f=X_0^2+X_1X_2+X_3X_4+\cdots+X_{2n-1}X_{2n}.
+\]
+设 $(R,\mathfrak X)$ 为 $X_0=\operatorname{Spec}(A_0)$ 的一个\Term{formal-versal-deformation}{形式万有形变}。则 $R=\Lambda[[t,t_1]]$，其中 $t,t_1$ 为 $R$ 在 $\Lambda$ 上的\Term{free-formal-generator}{自由形式生成元}，使 $I_R(\mathfrak X\mid R)=(t^2)$，且 $\mathfrak X\to\operatorname{Spec}(\Lambda)$ \Term{formally-smooth}{形式光滑}。
+\end{SGAresult}
+\begin{proof}
+置 $\mathfrak X=\operatorname{Spf}(A)$。因为
+\[
+\left(f,\frac{\partial f}{\partial X_0},\ldots,\frac{\partial f}{\partial X_{2n}}\right)
+ =(X_0^2,X_1,\ldots,X_{2n}),
+\]
+得到 $D^1(A_0\mid k,A_0)\simeq k[X_0]/(X_0^2)$，故 $[\mathcal M_{X_0}(k[\epsilon])]$ 是 $k$ 上的二维\Term{vector-space}{向量空间}。此外，由 4.14 得到
+\[
+R\simeq\Lambda[[t,t_1]],\qquad
+A\simeq R[[X_0,X_1,\ldots,X_{2n}]]/(F),
+\]
+其中 $F=f+t_1+tX_0$。现在\Term{exact-sequence}{正合列}
+\[
+0\longrightarrow A\xrightarrow{dF}A\,dX_0\oplus\cdots\oplus A\,dX_{2n}
+ \longrightarrow\widehat\Omega_{A\mid R}\longrightarrow0,
+\]
+其中
+\[
+dF=1\longmapsto\sum_{0\leq i\leq2n}\frac{\partial f}{\partial X_i}dX_i+dX_0,
+\]
+\SourcePage{141}
+蕴涵
+\[
+I_A(A\mid R)=(t,X_1,X_2,\ldots,X_{2n})
+ =(X_0^2+t_1,t,X_1,\ldots,X_{2n}),
+\]
+所以
+\[
+A/I_A(A\mid R)\simeq A/(X_0^2+t_1,t,X_1,\ldots,X_{2n})
+ \simeq\Lambda[[t_1,X_0]]/(X_0^2-t_1).
+\]
+因作为 $R$-\Term{module}{模}有 $\Lambda[[t_1,X_0]]/(X_0^2-t_1)\simeq R/(t)\oplus R/(t)$，得到 $I_R(A\mid R)=(t^2)$，这证明了第一项断言。另一方面，
+\[
+\begin{aligned}
+A&\simeq\Lambda[[t,t_1,X_0,X_1,\ldots,X_{2n}]]/
+ (X_0^2+X_1X_2+\cdots+X_{2n-1}X_{2n}+tX_0+t_1)\\
+ &\simeq\Lambda[[t,X_0,X_1,\ldots,X_{2n}]],
+\end{aligned}
+\]
+故 $A$ 在 $\Lambda$ 上\Term{formally-smooth}{形式光滑}。
+\end{proof}
+
+上面的断言 6.7 给出与 6.4 类似的结果，其证明留给读者。
+
+\begin{SGAresult}{推论}{6.8}
+设 $X_0$ 是仅有孤立的\Term{non-smooth-point}{非光滑点}的\Term{finite-type}{有限型} $k$-\Term{scheme}{概形}，满足 $H^2(X_0,\mathcal D_{X_0}^0)=0$；设 $(R,\mathfrak X)$ 为 $X_0$ 的一个\Term{formal-versal-deformation}{形式万有形变}。以 $\{z_1,\ldots,z_m\}$ 记 $X_0$ 的\Term{non-smooth-point}{非光滑点}集，并假设 $\operatorname{char}k=2$，$\dim X_0$ 为偶数，且所有 $z_i$ 都是\Term{ordinary-quadratic-singularity}{普通二次奇点}。则：
+
+(1) $R$ 在 $\Lambda$ 上\Term{formally-smooth}{形式光滑}。
+
+(2) $I_R(\mathfrak X_{(z_i)}\mid R)$ 是\Term{principal-ideal}{主理想}，从而
+\[
+I_R(\mathfrak X\mid R)=\prod_{1\leq i\leq m}I_R(\mathfrak X_{(z_i)}\mid R)
+\]
+也是\Term{principal-ideal}{主理想}。此外，$I_R(\mathfrak X_{(z_i)}\mid R)=(t_i^2)$，且 $t_1,\ldots,t_m$ 可以扩充为 $R$ 在 $\Lambda$ 上的一组\Term{free-formal-generator}{自由形式生成元}。
+
+(3) $\mathfrak X\to\operatorname{Spec}(\Lambda)$ \Term{formally-smooth}{形式光滑}。
+
+(4) 若 $k$ \Term{algebraically-closed}{代数闭}，且 $X_0$ 为\Term{complete-curve}{完备}\Term{irreducible}{不可约}\Term{curve}{曲线}，则 $\dim\mathcal M_{X_0}=3g-3+a$，其中
+\[
+g=\dim_k H^1(X_0,\mathcal O_{X_0}),\qquad a=\dim_k H^0(X_0,\mathcal D_{X_0}^0).
+\]
+\end{SGAresult}

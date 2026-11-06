@@ -1,0 +1,726 @@
+\SourcePage{85}
+\SGAchapter{III}{Lefschetz 公式}{Formule de Lefschetz}
+\begin{center}A. Grothendieck 著，L. Illusie 整理\end{center}
+本讲按照 Verdier 的表述（参见 [18]），证明\Term{etale-cohomology}{平展上同调}中\Term{complex}{层复形}之间\Term{correspondence}{对应}的 Lefschetz 公式。在约十年前由 IHES 分发的一份早期稿中，这个公式是在若干\Term{resolution}{消解}假设下陈述的，但所需的相容性并未证明。Deligne 的\Term{finiteness-theorem}{有限性定理}（SGA $4\frac12$ Finitude）使我们得以去掉这些假设，代价是只考虑域上\Term{separated}{分离}的\Term{finite-type}{有限型}\Term{scheme}{概形}。至于那些相容性，整理者已经（颇费力气地）逐一核实。
+
+先说明一点：这里的 Lefschetz 公式，与它所推广的\Term{constant-coefficients}{常系数}迹公式（SGA $4\frac12$ Cycle）一样，本质上是平凡的；它不过表达了\Term{duality}{对偶}\Term{form}{形式}体系中的若干相容性。粗略地说，它断言：在某些条件下，\Term{hypercohomology}{超上同调}\Term{complex}{复形} $R\Gamma(X,L)$ 的一个\Term{endomorphism}{自同态}的\Term{trace}{迹}，可以计算为 $X\times X$ 上某些\Term{cohomology-class}{上同调类}的“积分”，其中 $L$ 是 $X$ 上的\Term{complex}{层复形}。实际考虑的\Term{endomorphism}{自同态}来自\Term{correspondence}{对应} $C\subset X\times X$，而在乘积上得到的类的\Term{support}{支撑}包含在 $C\cap\Delta$ 中，这里 $\Delta$ 是\Term{diagonal}{对角线}；这些类在\Term{fixed-point}{不动点}\Term{neighborhood}{邻域}内具有“\Term{local-nature}{局部性质}”，原则上这有助于计算。精确陈述见 4.2、4.7。事实上，若不用较易理解的\Term{invariants}{不变量}计算这些“\Term{local-scheme}{局部}”类，这个公式便没有什么意义；但迄今只在一些十分特殊的情形中着手做了这种计算（见 4.10、4.11 及下一讲，其中尤其讨论了\Term{curve}{曲线}上的 \Term{frobenius-correspondence}{Frobenius 对应}）。
+
+由于尚无一个良好的 $\ell$ 进\Term{sheaf}{层}的\Term{derived-category}{导出范畴}
+\SourcePage{86}
+（遗憾的是 Jouanolou 的学位论文一直没有出版），我们始终使用与\Term{residue-characteristic}{剩余特征}互素的\Term{torsion-coefficient}{挠系数}。尽管\Term{trace}{迹}的定义有些小的技术困难，这种观点实际上给出的公式更精细；而且在计算\Term{local-term}{局部项}时，人们希望通过\Term{covering}{覆盖}使有关\Term{sheaf}{层}\Term{trivialization}{平凡化}，因此这些公式也更便于使用（尤其见 SGA $4\frac12$ Rapport、III B 及 XII）。
+
+第 1 节固定记号，回顾 SGA $4\frac12$ Finitude 中的若干 \Term{kunneth-formula}{Künneth 公式}，它们在后文起关键\Term{action}{作用}。我们还引入一些\Term{fibred-category}{纤维范畴}与\Term{cofibred-category}{上纤维范畴}，借此使后面某些相容性的核实更为方便。第 2 节技术性很强，初读时可跳过。其主要结果（2.5）表达了 $R\mathcal Hom$ 的\Term{external-tensor-product}{外张量积}与\Term{direct-image}{正像}及\Term{base-change}{基变换}之间的一种相容性。第 3 节定义\Term{complex}{复形}之间的\Term{cohomological-correspondence}{上同调对应}，并说明它们如何\Term{action}{作用}于\Term{hypercohomology}{超上同调}；上面提到的结果使我们能够用几种\Term{equivalence}{等价}方式描述这种\Term{action}{作用}。本讲的核心是第 4 节，其中定义\Term{cohomological-correspondence}{上同调对应}之间的 Verdier \Term{pairing}{配对}并证明 Lefschetz 公式；考虑的相对情形比通常的情形广泛得多，这是为了日后应用于\Term{local-term}{局部项}的计算。我们还给出\Term{constant-coefficients}{常系数}\Term{correspondence}{对应}的最明显的推论。第 5 节简略说明如何把\Term{constant-coefficients}{常系数}\Term{correspondence}{对应}的一些常用构造（参见 [12]），如取\Term{duality}{对偶}、复合、\Term{external-tensor-product}{外张量积}，推广到\Term{complex}{复形}之间的\Term{correspondence}{对应}。其中大多数核实与前几节类似，故予省略。最后，在附录中，我们利用 [8] 的\Term{duality}{对偶}\Term{form}{形式}体系，把前述理论转述到\Term{coherent-sheaf}{凝聚层}的框架内。这时可以在任意\Term{noetherian}{诺特}\Term{base}{基底} $S$ 上工作，只须在需要时，对所考虑的 $S$-\Term{scheme}{概形}作出\Term{proper}{固有}、\Term{finite-tor-dimension}{有限 Tor 维数}及\Term{tor-independence}{Tor 无关}的假设。我们说明由此所得十分一般的 Lefschetz 公式包含 Woods Hole 公式 [1] 作为特例，并指出若干应用。
+
+\SourcePage{87}
+\textbf{目录。}
+\begin{enumerate}
+\item 记号与 \Term{kunneth-formula}{Künneth 公式}回顾（原稿第 4 页）。
+\item $R\mathcal Hom$ 的\Term{functorial}{函子性}与\Term{external-tensor-product}{外张量积}（原稿第 9 页）。
+\item \Term{cohomological-correspondence}{上同调对应}（原稿第 17 页）。
+\item 对应的\Term{pairing}{配对}。Lefschetz 公式（原稿第 27 页）。
+\item 补充（原稿第 41 页）。
+\item 附录。\Term{coherent-sheaf}{凝聚层}的 Lefschetz 公式（原稿第 48 页）。
+\end{enumerate}
+
+\SourcePage{88}
+\SGAsection{1}{记号与 Künneth 公式回顾}
+\textbf{1.1。}以 $S$ 表示一个域的\Term{spectrum}{谱}。除非另有说明，下文考虑的 $S$-\Term{scheme}{概形}均为\Term{separated}{分离}\Term{finite-type}{有限型} $S$-\Term{scheme}{概形}。
+
+以 $A$ 表示一个\Term{commutative-ring}{交换}\Term{noetherian}{诺特环}，它被一个在 $S$ 上\Term{invertible}{可逆}的整数\Term{annihilate}{零化}。若 $X$ 是一个 $S$-\Term{scheme}{概形}，记 $D(X)=D(X,A)$ 为 $X$ 上 $A$-\Term{module}{模}\Term{complex}{复形}的\Term{derived-category}{导出范畴}（取\Term{etale-topology}{平展拓扑}），$D_{\mathrm{ctf}}(X)$ 为由\Term{finite-tor-dimension}{有限 Tor 维数}且\Term{cohomology}{上同调}\Term{constructible}{可构造}的\Term{complex}{复形}组成的\Term{full-subcategory}{满子范畴}。$D_{\mathrm{ctf}}(X)$ 是 $D(X)$ 的\Term{triangulated-subcategory}{三角子范畴}。若 $E,F\in\operatorname{ob}D_{\mathrm{ctf}}(X)$，容易由定义\Term{pushout}{推出} $E\mathbin{\overset L\otimes}F\in\operatorname{ob}D_{\mathrm{ctf}}(X)$。由 SGA $4\frac12$ Th. Finitude 1.6、1.7，还有 $R\mathcal Hom(E,F)\in\operatorname{ob}D_{\mathrm{ctf}}(X)$。
+
+\textbf{1.2。}设 $f:X\to Y$ 是一个 $S$-\Term{morphism}{态射}。显然有
+\[
+f^*D_{\mathrm{ctf}}(Y)\subset D_{\mathrm{ctf}}(X),
+\]
+并且由上述文献，
+\[
+Rf_*D_{\mathrm{ctf}}(X)\subset D_{\mathrm{ctf}}(Y),\qquad
+Rf_!D_{\mathrm{ctf}}(X)\subset D_{\mathrm{ctf}}(Y),\qquad
+Rf^!D_{\mathrm{ctf}}(Y)\subset D_{\mathrm{ctf}}(X).
+\]
+（涉及 $Rf_!$ 的包含关系只用到\Term{proper}{固有}\Term{morphism}{态射}的\Term{finiteness-theorem}{有限性定理}（SGA 4 XIV）和 SGA 4 XVII 5.2.11 的一般命题，因而更一般地适用于一切\Term{compactifiable}{可紧化}且\Term{fiber}{纤维}\Term{dimension}{维数}有上界的\Term{morphism}{态射}。）下文有时以 $f_*,f_!,f^!$ 代替 $Rf_*,Rf_!,Rf^!$；1.1 的假设保证这些\Term{functor}{函子}在整个\Term{derived-category}{导出范畴}上都有定义。
+
+\textbf{1.3。}对 $f:X\to S$，令
+\[
+K_X=f^!A,
+\]
+并以 $D_X$（或 $D$）表示\Term{functor}{函子} $R\mathcal Hom(-,K_X)$。由 SGA $4\frac12$ Th. Finitude
+\SourcePage{89}
+4.3，\Term{complex}{复形} $K_X$ 是\Term{dualizing-complex}{对偶化复形}：对 $E\in\operatorname{ob}D_{\mathrm{ctf}}(X)$，存在\Term{canonical-isomorphism}{典范同构}
+\[
+E\xrightarrow\sim DDE.
+\]
+
+\textbf{1.4。}设 $f:X\to Y$ 为 $S$-\Term{morphism}{态射}，$L\in\operatorname{ob}D(X)$，$M\in\operatorname{ob}D(Y)$。令
+\begin{align*}
+\operatorname{Hom}^{(1)}_f(L,M)&=\operatorname{Hom}(f^*M,L)\quad(\simeq\operatorname{Hom}(M,f_*L)),\\
+\operatorname{Hom}^{(2)}_f(L,M)&=\operatorname{Hom}(L,f^*M),\\
+\operatorname{Hom}^{(3)}_f(L,M)&=\operatorname{Hom}(f_!L,M)\quad(\simeq\operatorname{Hom}(L,f^!M)),\\
+\operatorname{Hom}^{(4)}_f(L,M)&=\operatorname{Hom}(f^!M,L),
+\end{align*}
+其中第三行的\Term{isomorphism}{同构}见 SGA 4 XVIII 3.1.5。$\operatorname{Hom}^{(i)}_f(L,M)$ 的元素称为 $f$ 上从 $L$ 到 $M$ 的第 $i$ 型\Term{arrow}{箭头}（或从 $L$ 到 $M$ 的第 $i$ 型 $f$-\Term{arrow}{箭头}）。\Term{functor}{函子} $f^*,f_*,f_!,f^!$ 的\Term{transitivity-isomorphism}{传递性同构}使我们能在固定 $i$ 时复合第 $i$ 型\Term{arrow}{箭头}，从而得到 $S$-\Term{scheme}{概形}\Term{category}{范畴}上的某些\Term{fibred-category}{纤维范畴}或\Term{cofibred-category}{上纤维范畴}。例如，$i=1$（分别地 $i=3$）时得到 SGA 4 XVII 4.1.3（分别地 SGA 4 XVIII 3.1.13）所考虑的既\Term{fibred-category}{纤维}又\Term{cofibred-category}{上纤维的范畴}，其在 $X$ 处的\Term{fiber}{纤维}是 $D(X)$ 的\Term{opposite-category}{反范畴}（分别地是 $D(X)$）。
+
+\textbf{1.5。}对 $i=1,2$，设 $X_i$ 是 $S$-\Term{scheme}{概形}，$X=X_1\times_S X_2$，$L_i\in\operatorname{ob}D^-(X_i)$。令
+\[
+L_1\mathbin{\overset L\otimes}_S L_2=\operatorname{pr}_1^*L_1\mathbin{\overset L\otimes}\operatorname{pr}_2^*L_2,
+\]
+其中 $\operatorname{pr}_i:X\to X_i$ 是\Term{canonical-projection}{典范投影}。
+
+\textbf{1.6。}对 $i=1,2$，设 $f_i:X_i\to Y_i$ 是 $S$-\Term{morphism}{态射}，
+\[
+f=f_1\times_S f_2:X=X_1\times_S X_2\longrightarrow Y=Y_1\times_S Y_2,\qquad
+L_i\in\operatorname{ob}D^-(X_i),\quad M_i\in\operatorname{ob}D^-(Y_i).
+\]
+显然的\Term{canonical-isomorphism}{典范同构}
+\[
+f_1^*M_1\mathbin{\overset L\otimes}_S f_2^*M_2\xrightarrow\sim
+f^*(M_1\mathbin{\overset L\otimes}_S M_2)\tag{1.6.1}
+\]
+\SourcePage{90}
+使我们能够对 $u_i\in\operatorname{Hom}^{(1)}_{f_i}(L_i,M_i)$（分别地 $\operatorname{Hom}^{(2)}_{f_i}(L_i,M_i)$）定义
+\[
+u_1\mathbin{\overset L\otimes}_S u_2\in\operatorname{Hom}^{(1)}_f(L,M)
+\quad\text{（分别地 }\operatorname{Hom}^{(2)}_f(L,M)\text{）},\tag{1.6.2}
+\]
+其中 $L=L_1\mathbin{\overset L\otimes}_S L_2$，$M=M_1\mathbin{\overset L\otimes}_S M_2$。若 $u_i,v_i$ 可复合，则
+\[
+(v_1u_1)\mathbin{\overset L\otimes}_S(v_2u_2)
+=(v_1\mathbin{\overset L\otimes}_S v_2)(u_1\mathbin{\overset L\otimes}_S u_2).\tag{1.6.3}
+\]
+取 $M_i=f_{i*}L_i$，并取由 $f_{i*}L_i$ 的恒等\Term{arrow}{箭头}给出的第 1 型\Term{arrow}{箭头} $u_i$，1.6.2 给出一个 Künneth \Term{arrow}{箭头}（参见 SGA 4 XVII 5.4.1.4）
+\[
+f_{1*}L_1\mathbin{\overset L\otimes}_S f_{2*}L_2\longrightarrow
+f_*(L_1\mathbin{\overset L\otimes}_S L_2).\tag{1.6.4}
+\]
+由 SGA $4\frac12$ Th. Finitude 1.9，1.6.4 是\Term{isomorphism}{同构}：事实上，由 1.6.3 可归结到 $X_2=Y_2$、$f_2=1$ 的情形，再应用该文献的附录。当 $f_1$ 和 $f_2$ \Term{proper}{固有}时，无需引用该文献：1.6.4 是 Künneth \Term{isomorphism}{同构}（SGA 4 XVII 5.4.3）的特例。
+
+\textbf{1.7。}选择\Term{compactification}{紧化} $f_i=p_i j_i$，其中 $j_i$ 是\Term{open-immersion}{开浸入}，$p_i$ 是\Term{proper}{固有}\Term{morphism}{态射}。把显然的\Term{canonical-isomorphism}{典范同构}（其中 $j=j_1\times_S j_2$）
+\[
+j_{1!}L_1\mathbin{\overset L\otimes}_S j_{2!}L_2\xrightarrow\sim j_!(L_1\mathbin{\overset L\otimes}_S L_2)
+\]
+与关于 $(p_i,j_{i!}L_i)$ 的\Term{isomorphism}{同构} 1.6.4 复合，得到 Künneth \Term{isomorphism}{同构}（SGA 4 XVII 5.4.3）
+\[
+f_{1!}L_1\mathbin{\overset L\otimes}_S f_{2!}L_2\xrightarrow\sim f_!(L_1\mathbin{\overset L\otimes}_S L_2).\tag{1.7.1}
+\]
+容易核实（同上），1.7.1 不依赖所选\Term{compactification}{紧化}，并且与复合 $g_i f_i$ 的\Term{transitivity-isomorphism}{传递性同构}相容（参见该处 5.2.4）。借助 1.7.1，可以对 $u_i\in\operatorname{Hom}^{(3)}_{f_i}(L_i,M_i)$ 定义
+\[
+u_1\mathbin{\overset L\otimes}_S u_2\in\operatorname{Hom}^{(3)}_f(L,M),\tag{1.7.2}
+\]
+其中 $L,M$ 如 1.6.2，并有类似 1.6.3 的\Term{transitivity}{传递性}公式。
+
+\SourcePage{91}
+对 $L_i=f_i^!M_i$，取 $u_i$ 为 $L_i$ 的恒等\Term{arrow}{箭头}，1.7.2 给出 Künneth \Term{arrow}{箭头}
+\[
+f_1^!M_1\mathbin{\overset L\otimes}_S f_2^!M_2\longrightarrow
+f^!(M_1\mathbin{\overset L\otimes}_S M_2).\tag{1.7.3}
+\]
+\begin{SGAresult}{命题}{1.7.4}
+\Term{arrow}{箭头} 1.7.3 是\Term{isomorphism}{同构}。
+\end{SGAresult}
+\begin{proof}
+由\Term{transitivity}{传递性}公式，只需处理 $X_2=Y_2$、$f_2=1$ 的情形。通过\Term{devissage}{分解论证}（dévissage），归结到 $M_2=g_*j_!A_V$，其中 $j:V\to U$ 是\Term{open-immersion}{开浸入}，$g:U\to Y_2$ 是\Term{finite-morphism}{有限态射}；再由 SGA 4 XVIII 3.1.12.3，归结到 $M_2=A_{Y_2}$。另一方面，在 $X_2$ 上\Term{localization}{局部化}后，可设 $f_1=g_1j_1$，其中 $j_1$ 是\Term{closed-immersion}{闭浸入}，$g_1$ 是纯\Term{relative-dimension}{相对维数}为 $n_1$ 的\Term{smooth}{光滑}\Term{morphism}{态射}。由\Term{transitivity}{传递性}，只需处理 a) $f_1=g_1$ 和 b) $f_1=j_1$ 两种情形。
+
+情形 a) 中，\Term{trace-morphism}{迹态射}通过\Term{adjunction}{伴随}给出\Term{isomorphism}{同构}（SGA 4 XVIII 3.2.5）
+\[
+f_1^*M_1(n_1)[2n_1]\xrightarrow\sim f_1^!M_1;
+\]
+它与\Term{base-change}{基变换} $Y_2\to S$ 相容，因为\Term{trace-morphism}{迹态射}具有这种相容性（SGA 4 XVIII 2.9），故此时 1.7.4 成立。情形 b) 中，若 $i_1$ 表示补\Term{open-subscheme}{开集}的包含，则有\Term{exact-sequence}{正合列}
+\[
+0\longrightarrow j_{1*}Rj_1^!M_1\longrightarrow M_1\longrightarrow Ri_{1*}i_1^*M_1\longrightarrow0,
+\]
+而 $Ri_{1*}i_1^*$ 与\Term{base-change}{基变换}相容，这是 1.6.4 的特例，由此得到结论。
+\end{proof}
+借助 1.7.3，对 $u_i\in\operatorname{Hom}^{(4)}_{f_i}(L_i,M_i)$ 可定义
+\[
+u_1\mathbin{\overset L\otimes}_S u_2\in\operatorname{Hom}^{(4)}_f(L,M),\tag{1.7.5}
+\]
+其中 $L,M$ 如 1.6.2，并有类似 1.6.3 的\Term{transitivity}{传递性}公式。另一方面，采用 1.3 的记号，1.7.3 给出\Term{isomorphism}{同构}
+\SourcePage{92}
+\[
+K_{X_1}\mathbin{\overset L\otimes}_S K_{X_2}\xrightarrow\sim K_X.\tag{1.7.6}
+\]
+
+\textbf{1.8。}设 $f:X\to Y$ 为 $S$-\Term{morphism}{态射}，$L\in\operatorname{ob}D^-(X)$，$M\in\operatorname{ob}D^-(Y)$，$S'$ 为 $S$-\Term{scheme}{概形}，$P\in\operatorname{ob}D^-(S')$，$f':X'\to Y'$ 是由 $f$ 经\Term{base-change}{基变换} $S'\to S$ 所得的\Term{morphism}{态射}。$P$ 的恒等\Term{arrow}{箭头}可以不加区别地视为 $S'$ 的恒等\Term{arrow}{箭头}上的第 $i$ 型\Term{arrow}{箭头}（$1\le i\le4$）。因此，对 $u\in\operatorname{Hom}^{(i)}_f(L,M)$（$1\le i\le4$），由 1.6.2、1.7.2、1.7.5 可以考虑
+\[
+u\mathbin{\overset L\otimes}_S\operatorname{Id}_P\in
+\operatorname{Hom}^{(i)}_{f'}(L\mathbin{\overset L\otimes}_S P,M\mathbin{\overset L\otimes}_S P).\tag{1.8.1}
+\]
+有时以 $u\mathbin{\overset L\otimes}_S P$ 代替 $u\mathbin{\overset L\otimes}_S\operatorname{Id}_P$。
+
+\SourcePage{93}
+\SGAsection{2}{$R\mathcal Hom$ 的函子性与外张量积}
+\textbf{2.1。}设 $f:X\to Y$ 为 $S$-\Term{morphism}{态射}，$P\in\operatorname{ob}D(Y)$，$Q\in\operatorname{ob}D^+(Y)$。\Term{complex}{复形}层次上显然的\Term{canonical}{典范}\Term{arrow}{箭头}
+\[
+f^*\mathcal Hom^\bullet(P,Q)\longrightarrow\mathcal Hom^\bullet(f^*P,f^*Q)
+\]
+通过\Term{derivation}{导出}给出\Term{canonical}{典范}\Term{arrow}{箭头}
+\[
+f^*R\mathcal Hom(P,Q)\longrightarrow R\mathcal Hom(f^*P,f^*Q).\tag{2.1.1}
+\]
+设 $L\in\operatorname{ob}D(X)$，$M\in\operatorname{ob}D^+(X)$。用 1.4 的记号，令
+\[
+\operatorname{Hom}^{(i,j)}_f((L,M),(P,Q))=
+\operatorname{Hom}^{(i)}_f(L,P)\times\operatorname{Hom}^{(j)}_f(M,Q).\tag{2.1.2}
+\]
+对 $(u,v)\in\operatorname{Hom}^{(2,1)}_f((L,M),(P,Q))$，定义
+\[
+R\mathcal Hom(u,v)\in\operatorname{Hom}^{(1)}_f(R\mathcal Hom(L,M),R\mathcal Hom(P,Q)),\tag{2.1.3}
+\]
+即将 2.1.1 与 $u,v$ 定义的\Term{arrow}{箭头} $R\mathcal Hom(f^*P,f^*Q)\to R\mathcal Hom(L,M)$ 复合。当 $L=f^*P$、$Q=f_*M$，且 $u$（分别地 $v$）由 $L$（分别地 $Q$）的恒等\Term{arrow}{箭头}给出时，$R\mathcal Hom(u,v)$ 是“\Term{trivial-duality}{平凡对偶}”\Term{isomorphism}{同构}
+\[
+R\mathcal Hom(P,f_*M)\xrightarrow\sim f_*R\mathcal Hom(f^*P,M).\tag{2.1.4}
+\]
+对 $(u,v)\in\operatorname{Hom}^{(3,4)}_f((L,M),(P,Q))$，定义
+\[
+R\mathcal Hom(u,v)\in\operatorname{Hom}^{(1)}_f(R\mathcal Hom(L,M),R\mathcal Hom(P,Q)),\tag{2.1.5}
+\]
+为下列\Term{arrow}{箭头}的复合：
+\[
+R\mathcal Hom(P,Q)\xrightarrow a R\mathcal Hom(f_!L,Q)
+\xrightarrow b f_*R\mathcal Hom(L,f^!Q)
+\xrightarrow c f_*R\mathcal Hom(L,M),
+\]
+其中 $a$（分别地 $c$）由 $u$（分别地 $v$）定义，$b$ 是\Term{duality}{对偶}\Term{isomorphism}{同构}（SGA 4 XVIII 3.1.9.6）的逆。
+
+由定义容易看出，$R\mathcal Hom(u,v)$ 的形成与复合相容：若 $(u,v)$、$(u',v')$ 可复合且均为 $(2,1)$ 型（分别地 $(3,4)$ 型），则
+\[
+R\mathcal Hom(u'u,v'v)=R\mathcal Hom(u',v')R\mathcal Hom(u,v).\tag{2.1.6}
+\]
+
+\SourcePage{94}
+\textbf{2.2。}设 $X$ 为 $S$-\Term{scheme}{概形}。回顾：对 $L\in\operatorname{ob}D^-(X)$、$M\in\operatorname{ob}D(X)$、$N\in\operatorname{ob}D^+(X)$，有\Term{adjunction-isomorphism}{伴随同构}（Grothendieck 所谓“Cartan 珍爱的”\Term{isomorphism}{同构}）
+\[
+\operatorname{Hom}(L\mathbin{\overset L\otimes}M,N)=\operatorname{Hom}(L,R\mathcal Hom(M,N)).\tag{2.2.1}
+\]
+对 $E\in\operatorname{ob}D^-(X)$、$F\in\operatorname{ob}D^+(X)$，$R\mathcal Hom(E,F)$ 的恒等\Term{arrow}{箭头}通过 2.2.1 定义一个\Term{arrow}{箭头}
+\[
+E\mathbin{\overset L\otimes}R\mathcal Hom(E,F)\longrightarrow F,\tag{2.2.2}
+\]
+称为\Term{evaluation-map}{求值箭头}：它是\Term{complex}{复形}层次上\Term{arrow}{箭头}
+\[
+\mathcal Hom^\bullet(E,F)\otimes E\longrightarrow F,\qquad f\otimes x\longmapsto f(x)
+\]
+的\Term{derivation}{导出}。
+
+对 $i=1,2$，设 $E_i,F_i\in\operatorname{ob}D_{\mathrm{ctf}}(X)$。通过\Term{adjunction}{伴随}（2.2.1），将一个\Term{symmetry-isomorphism}{对称同构}与关于 $(E_1,F_1)$、$(E_2,F_2)$ 的\Term{evaluation-map}{求值箭头}的\Term{tensor-product}{张量积}复合所得的\Term{arrow}{箭头}
+\[
+E_1\mathbin{\overset L\otimes}E_2\mathbin{\overset L\otimes}R\mathcal Hom(E_1,F_1)
+\mathbin{\overset L\otimes}R\mathcal Hom(E_2,F_2)\longrightarrow F_1\mathbin{\overset L\otimes}F_2
+\]
+给出\Term{arrow}{箭头}
+\[
+R\mathcal Hom(E_1,F_1)\mathbin{\overset L\otimes}R\mathcal Hom(E_2,F_2)
+\longrightarrow R\mathcal Hom(E_1\mathbin{\overset L\otimes}E_2,F_1\mathbin{\overset L\otimes}F_2).\tag{2.2.3}
+\]
+对 $i=1,2$，设 $X_i$ 是 $S$-\Term{scheme}{概形}，$X=X_1\times_S X_2$，$p_i:X\to X_i$ 为\Term{canonical-projection}{典范投影}，$E_i,F_i\in\operatorname{ob}D_{\mathrm{ctf}}(X_i)$，$E=E_1\mathbin{\overset L\otimes}_S E_2$，$F=F_1\mathbin{\overset L\otimes}_S F_2$。存在\Term{canonical}{典范}\Term{arrow}{箭头}
+\[
+R\mathcal Hom(E_1,F_1)\mathbin{\overset L\otimes}_S R\mathcal Hom(E_2,F_2)\longrightarrow R\mathcal Hom(E,F),\tag{2.2.4}
+\]
+它是\Term{arrow}{箭头} $p_i^*R\mathcal Hom(E_i,F_i)\to R\mathcal Hom(p_i^*E_i,p_i^*F_i)$ 的\Term{tensor-product}{张量积}与关于 $(p_i^*E_i,p_i^*F_i)$ 的 2.2.3 的复合。
+
+\begin{SGAresult}{命题}{2.3}
+\Term{arrow}{箭头} 2.2.4 是\Term{isomorphism}{同构}。
+\end{SGAresult}
+\begin{proof}
+通过\Term{localization}{局部化}与\Term{devissage}{分解论证}，可归结到 $E_i=f_{i!}A_{U_i}$，其中 $f_i:U_i\to X_i$ \Term{etale}{平展}。有如下\Term{canonical-isomorphism}{典范同构}（\Term{duality}{对偶}）：
+\SourcePage{95}
+\[
+R\mathcal Hom(f_{i!}A_{U_i},F_i)\xrightarrow\sim f_{i*}f_i^*F_i,\qquad
+R\mathcal Hom(E,F)\xrightarrow\sim f_*f^*F\quad(f=f_1\times_S f_2).\tag{1}
+\]
+考虑到 \Term{kunneth-formula}{Künneth 公式} 1.6.4，只需核实这些\Term{isomorphism}{同构}使下列方块交换，便可得到结论：
+\[
+\resizebox{\textwidth}{!}{\begin{tikzcd}[ampersand replacement=\&,column sep=large]
+R\mathcal Hom(f_{1!}A_{U_1},F_1)\mathbin{\overset L\otimes}_S R\mathcal Hom(f_{2!}A_{U_2},F_2)
+\arrow[r,"2.2.3"]\arrow[d,"\sim"'] \& R\mathcal Hom(f_!A_U,F)\arrow[d,"\sim"]\\
+f_{1*}f_1^*F_1\mathbin{\overset L\otimes}_S f_{2*}f_2^*F_2\arrow[r,"1.6.4"'] \& f_*f^*F,
+\end{tikzcd}}\tag{2}
+\]
+其中 $U=U_1\times_S U_2$。由于 $f_i$ \Term{etale}{平展}，关于 $f_i$ 的\Term{isomorphism}{同构} (1) 是下列复合\Term{arrow}{箭头}的\Term{adjoint}{伴随箭头}（关于 $f$ 的情形同理）：
+\[
+f_i^*R\mathcal Hom(f_{i!}A_{U_i},F_i)\xrightarrow\sim
+R\mathcal Hom(f_i^*f_{i!}A_{U_i},f_i^*F_i)\longrightarrow f_i^*F_i,\tag{3}
+\]
+其中第二个\Term{arrow}{箭头}由\Term{adjunction}{伴随} $A_{U_i}\to f_i^*f_{i!}A_{U_i}$ \Term{derive}{导出}。因此，(2) 的\Term{commutativity}{交换性}\Term{equivalence}{等价}于方块
+\[
+\resizebox{\textwidth}{!}{\begin{tikzcd}[ampersand replacement=\&,column sep=large]
+f_1^*R\mathcal Hom(f_{1!}A_{U_1},F_1)\mathbin{\overset L\otimes}_S f_2^*R\mathcal Hom(f_{2!}A_{U_2},F_2)
+\arrow[r]\arrow[d] \& f^*R\mathcal Hom(f_!A_U,F)\arrow[d]\\
+f_1^*F_1\mathbin{\overset L\otimes} f_2^*F_2\arrow[r,"\sim"'] \& f^*F
+\end{tikzcd}}\tag{4}
+\]
+的\Term{commutativity}{交换性}，其中竖\Term{arrow}{箭头}由 (3) 给出。而 (4) 的\Term{commutativity}{交换性}来自 2.2.3 对 $E_i$ 的\Term{functoriality}{函子性}及其在 $E_i=A$ 时\Term{degeneration}{退化}为恒等\Term{arrow}{箭头}这一事实，命题得证。
+\end{proof}
+
+\textbf{2.4。}对 $i=1,2$，设 $f_i:X_i\to Y_i$ 为 $S$-\Term{morphism}{态射}，$f=f_1\times_S f_2:X\to Y$，$E_i,F_i\in\operatorname{ob}D_{\mathrm{ctf}}(X_i)$，$P_i,Q_i\in\operatorname{ob}D_{\mathrm{ctf}}(Y_i)$，
+\[
+E=E_1\mathbin{\overset L\otimes}_S E_2,\quad F=F_1\mathbin{\overset L\otimes}_S F_2,\quad
+P=P_1\mathbin{\overset L\otimes}_S P_2,\quad Q=Q_1\mathbin{\overset L\otimes}_S Q_2:
+\]
+\[
+\begin{tikzcd}[row sep=large,column sep=large]
+X_1\ {(E_1,F_1)}\arrow[d,"f_1"'] & X_1\times_S Y_2\arrow[l]\arrow[d] & X\ {(E,F)}\arrow[l]\arrow[d]\arrow[dl,"f" description]\\
+Y_1\ {(P_1,Q_1)}\arrow[d] & Y\ {(P,Q)}\arrow[l]\arrow[d] & Y_1\times_S X_2\arrow[l]\arrow[d]\\
+S & Y_2\ {(P_2,Q_2)}\arrow[l] & X_2\ {(E_2,F_2)}\arrow[l,"f_2"]
+\end{tikzcd}\tag{2.4.0}
+\]
+
+\SourcePage{96}
+给定
+\[
+(u_1,v_1)\in\operatorname{Hom}^{(3,4)}_{f_1}((E_1,F_1),(P_1,Q_1)),\qquad
+(u_2,v_2)\in\operatorname{Hom}^{(2,1)}_{f_2}((E_2,F_2),(P_2,Q_2))
+\]
+（采用 2.1.2 与 1.4 的记号）。由 1.8，$(u_i,v_i)$ \Term{derive}{导出}方块
+\[
+\resizebox{\textwidth}{!}{\begin{tikzcd}[ampersand replacement=\&,column sep=huge,row sep=large]
+(E_1\mathbin{\overset L\otimes}_S P_2,F_1\mathbin{\overset L\otimes}_S Q_2)
+\arrow[d,"{(u_1\mathbin{\overset L\otimes}_S P_2,v_1\mathbin{\overset L\otimes}_S Q_2)}"'] \&
+(E,F)\arrow[l,"{(E_1\mathbin{\overset L\otimes}_S u_2,F_1\mathbin{\overset L\otimes}_S v_2)}"']
+\arrow[d,"{(u_1\mathbin{\overset L\otimes}_S E_2,v_1\mathbin{\overset L\otimes}_S F_2)}"]\\
+(P,Q) \& (P_1\mathbin{\overset L\otimes}_S E_2,Q_1\mathbin{\overset L\otimes}_S F_2)
+\arrow[l,"{(P_1\mathbin{\overset L\otimes}_S u_2,Q_1\mathbin{\overset L\otimes}_S v_2)}"]
+\end{tikzcd}}\tag{2.4.1}
+\]
+其中竖\Term{arrow}{箭头}为 $(3,4)$ 型，横\Term{arrow}{箭头}为 $(2,1)$ 型。现在可以陈述本节主要的相容性，它在 Lefschetz--Verdier 公式的核实中起关键\Term{action}{作用}。
+
+\begin{SGAresult}{命题}{2.5}
+下列图 2.5.1 是交换的，其中右侧方块是对 2.4.1 按照 2.1.3、2.1.5 的意义应用 $R\mathcal Hom$ 得到的：
+\[
+\resizebox{\textwidth}{!}{\begin{tikzcd}[ampersand replacement=\&,column sep=large,row sep=large]
+R\mathcal Hom(E_1,F_1)\mathbin{\overset L\otimes}_S R\mathcal Hom(E_2,F_2)
+\arrow[rr,"2.2.4"]\arrow[dd,"{R\mathcal Hom(u_1,v_1)\mathbin{\overset L\otimes}_S R\mathcal Hom(u_2,v_2)}"'] \&\& R\mathcal Hom(E,F)\arrow[dl]\arrow[dr] \& \\
+\& R\mathcal Hom(E_1\mathbin{\overset L\otimes}_S P_2,F_1\mathbin{\overset L\otimes}_S Q_2)\arrow[dr] \&\& R\mathcal Hom(P_1\mathbin{\overset L\otimes}_S E_2,Q_1\mathbin{\overset L\otimes}_S F_2)\arrow[dl]\\
+R\mathcal Hom(P_1,Q_1)\mathbin{\overset L\otimes}_S R\mathcal Hom(P_2,Q_2)\arrow[rr,"2.2.4"'] \&\& R\mathcal Hom(P,Q) \&
+\end{tikzcd}}\tag{2.5.1}
+\]
+\end{SGAresult}
+
+\textbf{2.6。}第 2 节余下部分将证明 2.5。由 1.6.3 可知，若 $w_i:L_i\to M_i$ 是 $f_i$ 上的第 1 型\Term{arrow}{箭头}，则\Term{arrow}{箭头} $w=w_1\mathbin{\overset L\otimes}_S w_2$ 使下图交换：
+\[
+\begin{tikzcd}[column sep=large]
+& L_1\mathbin{\overset L\otimes}_S L_2\arrow[dl,"L_1\mathbin{\overset L\otimes}_S w_2"']\arrow[dr,"w_1\mathbin{\overset L\otimes}_S L_2"] &\\
+L_1\mathbin{\overset L\otimes}_S M_2\arrow[dr,"w_1\mathbin{\overset L\otimes}_S M_2"'] && M_1\mathbin{\overset L\otimes}_S L_2\arrow[dl,"M_1\mathbin{\overset L\otimes}_S w_2"]\\
+& M_1\mathbin{\overset L\otimes}_S M_2 &
+\end{tikzcd}
+\]
+\SourcePage{97}
+把这一观察应用于 $w_i=R\mathcal Hom(u_i,v_i)$，便看出只需证明 2.5 的如下特例。
+
+\begin{SGAresult}{推论}{2.6.1}
+设 $f:X\to Y$ 为 $S$-\Term{morphism}{态射}，$S'$ 为 $S$-\Term{scheme}{概形}，$f':X'\to Y'$ 为由 $f$ 经\Term{base-change}{基变换} $S'\to S$ 所得的\Term{morphism}{态射}，$E,F\in\operatorname{ob}D_{\mathrm{ctf}}(X)$，$P,Q\in\operatorname{ob}D_{\mathrm{ctf}}(Y)$，$P',Q'\in\operatorname{ob}D_{\mathrm{ctf}}(S')$，
+\[
+(u,v)\in\operatorname{Hom}^{(2,1)}_f((E,F),(P,Q))
+\quad\text{（分别地 }\operatorname{Hom}^{(3,4)}_f((E,F),(P,Q))\text{）}.
+\]
+则有如下\Term{commutative-square}{交换方块}，其中竖\Term{arrow}{箭头}是 $f'$ 上的第 1 型\Term{arrow}{箭头}：
+\[
+\resizebox{\textwidth}{!}{\begin{tikzcd}[ampersand replacement=\&,column sep=large,row sep=large]
+R\mathcal Hom(E,F)\mathbin{\overset L\otimes}_S R\mathcal Hom(P',Q')\arrow[r,"2.2.4"]
+\arrow[d,"{R\mathcal Hom(u,v)\mathbin{\overset L\otimes}_S R\mathcal Hom(P',Q')}"'] \&
+R\mathcal Hom(E\mathbin{\overset L\otimes}_S P',F\mathbin{\overset L\otimes}_S Q')
+\arrow[d,"{R\mathcal Hom(u\mathbin{\overset L\otimes}_S P',v\mathbin{\overset L\otimes}_S Q')}"]\\
+R\mathcal Hom(P,Q)\mathbin{\overset L\otimes}_S R\mathcal Hom(P',Q')\arrow[r,"2.2.4"'] \&
+R\mathcal Hom(P\mathbin{\overset L\otimes}_S P',Q\mathbin{\overset L\otimes}_S Q')
+\end{tikzcd}}\tag{2.6.1.1}
+\]
+\end{SGAresult}
+\begin{proof}
+先考察 $(u,v)$ 为 $(2,1)$ 型的情形。由\Term{functoriality}{函子性}，可设 $E=f^*P$、$F=f^*Q$，而 $(u,v)$ 由 $(f^*P,f^*Q)$ 的恒等\Term{arrow}{箭头}给出。$P'=Q'=A_{S'}$ 时，2.6.1.1 的\Term{commutativity}{交换性}显然；因此，要证明一般情形，只需核实对 $L,M\in\operatorname{ob}D_{\mathrm{ctf}}(Y)$，方块
+\[
+\resizebox{\textwidth}{!}{\begin{tikzcd}[ampersand replacement=\&,column sep=large,row sep=large]
+f^*R\mathcal Hom(E,F)\mathbin{\overset L\otimes}f^*R\mathcal Hom(L,M)
+\arrow[r,"f^*(2.2.3)"]\arrow[d,"2.1.1\otimes2.1.1"'] \& f^*R\mathcal Hom(E\mathbin{\overset L\otimes}L,F\mathbin{\overset L\otimes}M)\arrow[d,"2.1.1"]\\
+R\mathcal Hom(f^*E,f^*F)\mathbin{\overset L\otimes}R\mathcal Hom(f^*L,f^*M)\arrow[r,"2.2.3"'] \&
+R\mathcal Hom(f^*(E\mathbin{\overset L\otimes}L),f^*(F\mathbin{\overset L\otimes}M))
+\end{tikzcd}}
+\]
+交换。然而立即可见，这个方块中的两个复合都是\Term{evaluation-map}{求值箭头}
+\[
+f^*E\mathbin{\overset L\otimes}f^*R\mathcal Hom(E,F)\longrightarrow f^*F,\qquad
+f^*L\mathbin{\overset L\otimes}f^*R\mathcal Hom(L,M)\longrightarrow f^*M
+\]
+的\Term{tensor-product}{张量积}的\Term{adjoint}{伴随箭头}，断言得证。
+
+现在转到 $(u,v)$ 为 $(3,4)$ 型的情形。由\Term{functoriality}{函子性}，可设 $P=f_!E$、$F=f^!Q$，且 $(u,v)$ 由 $(\operatorname{Id}_P,\operatorname{Id}_F)$ 定义。须证明方块
+\SourcePage{98}
+\[
+\resizebox{\textwidth}{!}{\begin{tikzcd}[ampersand replacement=\&,column sep=large,row sep=large]
+f_*R\mathcal Hom(E,f^!Q)\mathbin{\overset L\otimes}_S R\mathcal Hom(P',Q')
+\arrow[r,"b"]\arrow[d,"{a\mathbin{\overset L\otimes}_S R\mathcal Hom(P',Q')}"'] \&
+f'_*R\mathcal Hom(E\mathbin{\overset L\otimes}_S P',f^!Q\mathbin{\overset L\otimes}_S Q')\arrow[d,"a'"]\\
+R\mathcal Hom(f_!E,Q)\mathbin{\overset L\otimes}_S R\mathcal Hom(P',Q')\arrow[r,"2.2.4"'] \&
+R\mathcal Hom(f_!E\mathbin{\overset L\otimes}_S P',Q\mathbin{\overset L\otimes}_S Q')
+\end{tikzcd}}\tag{2.6.2}
+\]
+交换，其中 $b$ 是 $f'_*(2.2.4)$ 与一个\Term{base-change}{基变换}\Term{isomorphism}{同构}的复合，$a$ 为\Term{duality}{对偶}\Term{isomorphism}{同构}（SGA 4 XVIII 3.1.9.6），$a'$ 为\Term{duality}{对偶}\Term{isomorphism}{同构}（关于 $E\mathbin{\overset L\otimes}_S P'$ 与 $Q\mathbin{\overset L\otimes}_S Q'$）与下列\Term{base-change}{基变换}\Term{isomorphism}{同构}的复合：
+\[
+f_!E\mathbin{\overset L\otimes}_S P'\xrightarrow[\sim]{c}f'_!(E\mathbin{\overset L\otimes}_S P'),\qquad
+f^!Q\mathbin{\overset L\otimes}_S Q'\xrightarrow[\sim]{d}f'^!(Q\mathbin{\overset L\otimes}_S Q').
+\]
+回顾 $a$ 是\Term{canonical}{典范}\Term{arrow}{箭头}（SGA 4 XVIII 3.1.9.5）
+\[
+f_*R\mathcal Hom(E,f^!Q)\longrightarrow R\mathcal Hom(f_!E,f_!f^!Q)
+\]
+与由\Term{adjunction}{伴随}\Term{arrow}{箭头} $f_!f^!Q\to Q$ 定义的\Term{arrow}{箭头}的复合。$a'$ 也有类似描述：它是上述\Term{arrow}{箭头}
+\[
+f'_*R\mathcal Hom(E\mathbin{\overset L\otimes}_S P',f^!Q\mathbin{\overset L\otimes}_S Q')
+\longrightarrow R\mathcal Hom(f'_!(E\mathbin{\overset L\otimes}_S P'),f'_!(f^!Q\mathbin{\overset L\otimes}_S Q'))\tag{*}
+\]
+与 $c,d$ 定义的\Term{arrow}{箭头}，以及由\Term{adjunction}{伴随}\Term{arrow}{箭头} $f'_!f'^!(Q\mathbin{\overset L\otimes}_S Q')\to Q\mathbin{\overset L\otimes}_S Q'$ 定义的\Term{arrow}{箭头}的复合。按定义，$d$ 是\Term{arrow}{箭头} $f'_!(f^!Q\mathbin{\overset L\otimes}_S Q')\to Q\mathbin{\overset L\otimes}_S Q'$ 的\Term{adjoint}{伴随箭头}，后一个\Term{arrow}{箭头}由\Term{base-change}{基变换}\Term{isomorphism}{同构}
+\[
+f'_!(f^!Q\mathbin{\overset L\otimes}_S Q')\simeq f_!f^!Q\mathbin{\overset L\otimes}_S Q'
+\]
+及\Term{adjunction}{伴随}\Term{arrow}{箭头} $f_!f^!Q\to Q$ 定义；换言之，下列方块交换：
+\[
+\begin{tikzcd}[column sep=large,row sep=large]
+f'_!(f^!Q\mathbin{\overset L\otimes}_S Q')\arrow[r,"f'_!d"]\arrow[d,"\text{基变换}\ \sim"'] & f'_!f'^!(Q\mathbin{\overset L\otimes}_S Q')\arrow[d,"\text{伴随}"]\\
+f_!f^!Q\mathbin{\overset L\otimes}_S Q'\arrow[r,"\text{伴随}\otimes1"'] & Q\mathbin{\overset L\otimes}_S Q'
+\end{tikzcd}
+\]
+因而也可以把 $a'$ 描述为 (*)、由 $c$ 定义的\Term{arrow}{箭头}以及由\Term{base-change}{基变换}\Term{isomorphism}{同构} $f'_!(f^!Q\mathbin{\overset L\otimes}_S Q')\to f_!f^!Q\mathbin{\overset L\otimes}_S Q'$ 和\Term{adjunction}{伴随}\Term{arrow}{箭头} $f_!f^!Q\to Q$ 定义的\Term{arrow}{箭头}的复合。$a'$ 的这一\Term{resolution}{分解}及上面给出的 $a$ 的\Term{resolution}{分解}，结合方块
+\SourcePage{99}
+\[
+\resizebox{\textwidth}{!}{\begin{tikzcd}[ampersand replacement=\&,column sep=large,row sep=large]
+R\mathcal Hom(f_!E,f_!f^!Q)\mathbin{\overset L\otimes}_S R\mathcal Hom(P',Q')\arrow[r]\arrow[d] \&
+R\mathcal Hom(f_!E\mathbin{\overset L\otimes}_S P',f_!f^!Q\mathbin{\overset L\otimes}_S Q')\arrow[d]\\
+R\mathcal Hom(f_!E,Q)\mathbin{\overset L\otimes}_S R\mathcal Hom(P',Q')\arrow[r] \&
+R\mathcal Hom(f_!E\mathbin{\overset L\otimes}_S P',Q\mathbin{\overset L\otimes}_S Q')
+\end{tikzcd}}
+\]
+的\Term{commutativity}{交换性}（该方块由 2.2.4 及\Term{adjunction}{伴随}\Term{arrow}{箭头} $f_!f^!Q\to Q$ 定义），表明为了证明 2.6.2 交换，只需证明如下相容性。
+\end{proof}
+
+\begin{SGAresult}{\Term{lemma}{引理}}{2.6.3}
+设 $f,f',E,F,P',Q'$ 如 2.6.1。则有\Term{commutative-square}{交换方块}
+\[
+\resizebox{\textwidth}{!}{\begin{tikzcd}[ampersand replacement=\&,column sep=large,row sep=large]
+f_*R\mathcal Hom(E,F)\mathbin{\overset L\otimes}_S R\mathcal Hom(P',Q')\arrow[r,"(1)"]\arrow[d,"(2)"'] \&
+f'_*R\mathcal Hom(E\mathbin{\overset L\otimes}_S P',F\mathbin{\overset L\otimes}_S Q')\arrow[d,"(4)"]\\
+R\mathcal Hom(f_!E,f_!F)\mathbin{\overset L\otimes}_S R\mathcal Hom(P',Q')\arrow[r,"(3)"'] \&
+R\mathcal Hom(f_!E\mathbin{\overset L\otimes}_S P',f_!F\mathbin{\overset L\otimes}_S Q'),
+\end{tikzcd}}
+\]
+其中 (1) 是\Term{base-change}{基变换}\Term{isomorphism}{同构}
+\[
+f_*R\mathcal Hom(E,F)\mathbin{\overset L\otimes}_S-\xrightarrow\sim f'_*(R\mathcal Hom(E,F)\mathbin{\overset L\otimes}_S-)
+\]
+与 $f'_*(2.2.4)$ 的复合；(2) 是对\Term{canonical}{典范}\Term{arrow}{箭头} $f_*R\mathcal Hom(E,F)\to R\mathcal Hom(f_!E,f_!F)$（SGA 4 XVIII 3.1.9.5）应用 $\mathbin{\overset L\otimes}_S R\mathcal Hom(P',Q')$ 所得；(3) 由 2.2.4 给出；最后，(4) 是\Term{canonical}{典范}\Term{arrow}{箭头}
+\[
+f'_*R\mathcal Hom(E\mathbin{\overset L\otimes}_S P',F\mathbin{\overset L\otimes}_S Q')
+\longrightarrow R\mathcal Hom(f'_!(E\mathbin{\overset L\otimes}_S P'),f'_!(F\mathbin{\overset L\otimes}_S Q'))
+\]
+（同上）与由\Term{base-change}{基变换}\Term{isomorphism}{同构}
+\[
+f'_!(E\mathbin{\overset L\otimes}_S P')\xrightarrow\sim f_!E\mathbin{\overset L\otimes}_S P',\qquad
+f'_!(F\mathbin{\overset L\otimes}_S Q')\xrightarrow\sim f_!F\mathbin{\overset L\otimes}_S Q'
+\]
+定义的\Term{arrow}{箭头}的复合。
+\end{SGAresult}
+\begin{proof}
+回到 SGA 4 XVIII 3.1.9.5 中\Term{arrow}{箭头}的定义，选择 $f$ 的一个\Term{compactification}{紧化}\footnote{所引用的\Term{arrow}{箭头}是借助这种\Term{compactification}{紧化}定义的，但不依赖它：这一点在所引文献中被默认为成立，且容易核实。}，便归结到分别证明 $f$ 为\Term{open-immersion}{开浸入}与 $f$ 为\Term{proper}{固有}\Term{morphism}{态射}的情形。
+
+\textbf{a) $f$ 为\Term{open-immersion}{开浸入}的情形。}由\Term{adjunction}{伴随}（2.2.1），只需把 2.6.3 的方块与 $f'_!E\mathbin{\overset L\otimes}_S P'$ 作\Term{tensor-product}{张量积}，再与\Term{evaluation-map}{求值箭头} 2.2.2
+\[
+(f_!E\mathbin{\overset L\otimes}_S P')\mathbin{\overset L\otimes}
+R\mathcal Hom(f_!E\mathbin{\overset L\otimes}_S P',f_!F\mathbin{\overset L\otimes}_S Q')\longrightarrow f_!F\mathbin{\overset L\otimes}_S Q'
+\]
+\SourcePage{100}
+复合，核实所得方块交换即可。然而该方块各顶点在 $X'$ 外均为零，因此只需核实它在 $X'$ 上诱导的方块交换，而这是平凡的。
+
+\textbf{b) $f$ 为\Term{proper-morphism}{固有态射}的情形。}此时 $f_!=f_*$、$f'_!=f'_*$。容易看出，\Term{arrow}{箭头} $f_*R\mathcal Hom(E,F)\to R\mathcal Hom(f_*E,f_*F)$ 与\Term{trivial-duality}{平凡对偶}\Term{isomorphism}{同构}
+\[
+R\mathcal Hom(f_*E,f_*F)\xrightarrow\sim f_*R\mathcal Hom(f^*f_*E,F)\qquad(2.1.4)
+\]
+的复合，正是对\Term{adjunction}{伴随}\Term{arrow}{箭头} $f^*f_*E\to E$ 应用 $f_*R\mathcal Hom(-,F)$ 所得的\Term{arrow}{箭头}。同样，(4) 与\Term{trivial-duality}{平凡对偶}\Term{isomorphism}{同构}
+\[
+R\mathcal Hom(f_*E\mathbin{\overset L\otimes}_S P',f_*F\mathbin{\overset L\otimes}_S Q')
+\xrightarrow\sim f'_*R\mathcal Hom(f^*f_*E\mathbin{\overset L\otimes}_S P',F\mathbin{\overset L\otimes}_S Q')
+\]
+的复合（其中通过\Term{canonical-isomorphism}{典范同构}，把 $f_*F\mathbin{\overset L\otimes}_S Q'$ 与 $f'_*(F\mathbin{\overset L\otimes}_S Q')$ 等同），正是对\Term{adjunction}{伴随}\Term{arrow}{箭头} $f^*f_*E\to E$ 应用 $f'_*R\mathcal Hom(-\mathbin{\overset L\otimes}_S P',F\mathbin{\overset L\otimes}_S Q')$ 所得的\Term{arrow}{箭头}。因此归结到核实方块
+\[
+\resizebox{\textwidth}{!}{\begin{tikzcd}[ampersand replacement=\&,column sep=large,row sep=large]
+R\mathcal Hom(f_*E,f_*F)\mathbin{\overset L\otimes}_S R\mathcal Hom(P',Q')\arrow[r,"(3)"]\arrow[d] \&
+R\mathcal Hom(f_*E\mathbin{\overset L\otimes}_S P',f_*F\mathbin{\overset L\otimes}_S Q')\arrow[d]\\
+f_*R\mathcal Hom(f^*f_*E,F)\mathbin{\overset L\otimes}_S R\mathcal Hom(P',Q')\arrow[r,"(1')"'] \&
+f'_*R\mathcal Hom(f^*f_*E\mathbin{\overset L\otimes}_S P',F\mathbin{\overset L\otimes}_S Q')
+\end{tikzcd}}
+\]
+交换，其中竖\Term{arrow}{箭头}是\Term{trivial-duality}{平凡对偶}\Term{isomorphism}{同构}，$(1')$ 是把 (1) 中的 $E$ 换为 $f^*f_*E$ 所得的\Term{arrow}{箭头}。但其\Term{commutativity}{交换性}是 2.6.1.1 在已经处理的 $(u,v)$ 为 $(2,1)$ 型的情形的一个特例（取由 $f^*f_*E$ 的恒等\Term{arrow}{箭头}给出的 $u:f^*f_*E\to f_*E$，以及由 $f_*F$ 的恒等\Term{arrow}{箭头}给出的 $v:F\to f_*F$）。因此 2.6.3 已证。如前所述，由此得到 2.6.2 的\Term{commutativity}{交换性}，从而完成 2.6.1，最终也完成 2.5 的证明。
+\end{proof}
+\SourcePage{101}
+\SGAsection{3}{上同调对应}
+\textbf{3.1。}对 $i=1,2$，设 $X_i$ 是 $S$-\Term{scheme}{概形}，$L_i\in\operatorname{ob}D_{\mathrm{ctf}}(X_i)$，$X=X_1\times_S X_2$，$p_i:X\to X_i$ 与 $q_i:X_i\to S$ 为\Term{canonical-projection}{典范投影}：
+\[
+\begin{tikzcd}[column sep=large]
+& X\arrow[dl,"p_1"']\arrow[dr,"p_2"] &\\
+L_1\quad X_1\arrow[dr,"q_1"'] && X_2\quad L_2\arrow[dl,"q_2"]\\
+& X &
+\end{tikzcd}
+\]
+采用 1.3 的记号，有\Term{canonical-isomorphism}{典范同构}（2.2.4）
+\[
+DL_1\mathbin{\overset L\otimes}_S L_2\xrightarrow\sim
+R\mathcal Hom(L_1\mathbin{\overset L\otimes}_S A_{X_2},q_1^!A_S\mathbin{\overset L\otimes}_S L_2).
+\]
+与 Künneth \Term{isomorphism}{同构} $q_1^!A_S\mathbin{\overset L\otimes}_S L_2\xrightarrow\sim p_2^!L_2$（1.7.3）复合，得到\Term{isomorphism}{同构}
+\[
+DL_1\mathbin{\overset L\otimes}_S L_2\xrightarrow\sim R\mathcal Hom(p_1^*L_1,p_2^!L_2).\tag{3.1.1}
+\]
+它将在后文始终起根本\Term{action}{作用}。当 $X_i=S$ 时，3.1.1 化为 $L_1^\vee\mathbin{\overset L\otimes}L_2\xrightarrow\sim R\mathcal Hom(L_1,L_2)$，这是任意\Term{ringed-topos}{环化拓扑斯}上的\Term{perfect-complex}{完美复形}所满足的一个\Term{isomorphism}{同构}的特例（SGA 6 I 7.7）。令
+\[
+\begin{aligned}
+R\mathcal Hom(p_1^*L_1,p_2^!L_2)&=R\mathcal Hom_S(L_1,L_2),\\
+\operatorname{Hom}(p_1^*L_1,p_2^!L_2)&=\operatorname{Hom}_S(L_1,L_2).
+\end{aligned}\tag{3.1.2}
+\]
+$\operatorname{Hom}_S(L_1,L_2)$ 的元素称为从 $L_1$ 到 $L_2$ 的\Term{cohomological-correspondence}{上同调对应}。我们把“从 $A_{X_1}$ 到 $A_{X_2}$ 的\Term{cohomological-correspondence}{上同调对应}”简称为“从 $X_1$ 到 $X_2$ 的\Term{cohomological-correspondence}{上同调对应}”（默认为以 $A$ 为系数）。
+
+若 $X_1$ \Term{smooth}{光滑}且纯\Term{relative-dimension}{相对维数}为 $r_1$，则 $p_2$ 亦然；由\Term{duality-theorem}{对偶定理}（SGA 4 XVIII 3.2.5），有
+\SourcePage{102}
+$p_2^!L_2\xrightarrow\sim p_2^*L_2(r_1)[2r_1]$，故
+\[
+\begin{aligned}
+R\mathcal Hom_S(L_1,L_2)&=R\mathcal Hom(p_1^*L_1,p_2^*L_2)(r_1)[2r_1],\\
+\operatorname{Hom}_S(L_1,L_2)&=H^{2r_1}(X,R\mathcal Hom(p_1^*L_1,p_2^*L_2)(r_1)).
+\end{aligned}\tag{3.1.3}
+\]
+特别地，此时从 $X_1$ 到 $X_2$ 的\Term{cohomological-correspondence}{上同调对应}的群等同于 $H^{2r_1}(X,A(r_1))$。
+
+\textbf{3.2。}实际中遇到的\Term{cohomological-correspondence}{上同调对应}与 $S$-\Term{morphism}{态射} $X_2\to X_1$，或更一般地与 $X$ 的\Term{cycle}{圈}、$X$ 上方的\Term{scheme}{概形}相联系。设 $c:C\to X$ 是 $X$ 上方的\Term{scheme}{概形}（有时称 $c$ 为 $X_1$ 与 $X_2$ 之间的一个\Term{correspondence}{对应}），记\Term{projection}{投影}为 $c_i=p_ic:C\to X_i$。我们把群
+\[
+H^0(X,c_!R\mathcal Hom(c_1^*L_1,c_2^!L_2))
+\quad\bigl(=\operatorname{Hom}(c_1^*L_1,c_2^!L_2)\text{，若 }c\text{ 固有}\bigr)
+\]
+的元素称为\Term{support}{支撑}在 $c$（不会混淆时也说在 $C$）中的从 $L_1$ 到 $L_2$ 的\Term{cohomological-correspondence}{上同调对应}。由\Term{induction-formula}{诱导公式}（SGA 4 XVIII 3.1.12.2），有\Term{canonical-isomorphism}{典范同构}
+\[
+c^!R\mathcal Hom(p_1^*L_1,p_2^!L_2)\xrightarrow\sim R\mathcal Hom(c_1^*L_1,c_2^!L_2).\tag{3.2.1}
+\]
+应用 $c_!$，再与\Term{adjunction}{伴随}\Term{arrow}{箭头} $c_!c^!\to\operatorname{Id}$ 复合，得到\Term{canonical}{典范}\Term{arrow}{箭头}
+\[
+c_!R\mathcal Hom(c_1^*L_1,c_2^!L_2)\longrightarrow R\mathcal Hom(p_1^*L_1,p_2^!L_2),\tag{3.2.2}
+\]
+\[
+H^0(X,c_!R\mathcal Hom(c_1^*L_1,c_2^!L_2))\longrightarrow\operatorname{Hom}_S(L_1,L_2).\tag{3.2.3}
+\]
+因而每个\Term{support}{支撑}在 $C$ 中的从 $L_1$ 到 $L_2$ 的\Term{correspondence}{对应}，通过 3.2.3 \Term{canonical}{典范}地定义一个从 $L_1$ 到 $L_2$ 的（不指定\Term{support}{支撑}的）\Term{correspondence}{对应}。
+
+\textbf{例。a)} 假设 $c$ \Term{proper}{固有}，$c_2$ 为\Term{finite-tor-dimension}{有限 Tor 维数}且\Term{relative-dimension}{相对维数} $\le N$。\Term{trace-morphism}{迹态射}（SGA $4\frac12$ Cycle 2.3.3）
+\[
+\operatorname{Tr}_{c_2}:c_{2!}A_C\longrightarrow A_{X_2}(-N)[-2N]
+\]
+通过\Term{adjunction}{伴随}定义一个从 $A_{X_1}$ 到 $A_{X_2}(-N)[2N]$ 的\Term{cohomological-correspondence}{上同调对应}，
+\SourcePage{103}
+其\Term{support}{支撑}在 $C$ 中，称为 $(c,N)$ 的\Term{class}{类}，记作
+\[
+\operatorname{cl}(c,N)\in H^{-2N}(C,c_2^!A_{X_2}(-N)).\tag{3.2.4}
+\]
+最重要的情形是 $N=0$，即 $c_2$ \Term{finite-morphism}{有限}（且为\Term{finite-tor-dimension}{有限 Tor 维数}）；此时 $\operatorname{cl}(c)$ 是\Term{support}{支撑}在 $C$ 中的从 $X_1$ 到 $X_2$ 的\Term{cohomological-correspondence}{上同调对应}。若 $X_1$ \Term{smooth}{光滑}且纯\Term{relative-dimension}{相对维数}为 $r_1$，由 3.1.3 和 3.2.1 有
+\[
+H^{-2N}(C,c_2^!A_{X_2}(-N))=H^{2(r_1-N)}(C,c^!A_X(r_1-N)).\tag{3.2.5}
+\]
+若 $c$ 还是\Term{closed-immersion}{闭浸入}，右端可改写为 $H_C^{2(r_1-N)}(X,A_X(r_1-N))$；将 $(c,N)$ 的\Term{class}{类}视为此群的元素，它正是 SGA $4\frac12$ Cycle 2.3.1 意义下与 $c$ 相联系的\Term{cohomology-class}{上同调类}，这从定义立即可见。
+
+\textbf{b)} 设 $F:X_2\to X_1$ 为 $S$-\Term{morphism}{态射}，以 $c(F):C(F)\to X$ 表示其\Term{graph}{图}，即由 $F$ 定义的 $p_2$ 的\Term{section}{截面}之像（“点 $(Fx,x)$ 的\Term{set}{集合}”）：$c_2$ 为\Term{isomorphism}{同构}，且 $c_1c_2^{-1}=F$。因此有\Term{canonical-isomorphism}{典范同构}
+\[
+\begin{aligned}
+R\mathcal Hom(c_1(F)^*L_1,c_2(F)^!L_2)&=R\mathcal Hom(F^*L_1,L_2),\\
+\operatorname{Hom}(c_1(F)^*L_1,c_2(F)^!L_2)&=\operatorname{Hom}(F^*L_1,L_2).
+\end{aligned}\tag{3.2.6}
+\]
+换言之，\Term{support}{支撑}在 $F$ 的\Term{graph}{图}中的从 $L_1$ 到 $L_2$ 的\Term{cohomological-correspondence}{上同调对应}，就是把 $F$“\Term{lifting}{提升}”为一个\Term{homomorphism}{同态} $F^*L_1\to L_2$。以下是这种\Term{correspondence}{对应}的两个重要例子：
+
+(i) $X_1=X_2$，$L_1=L_2$，$F$ 为 $X_1$ 的恒等\Term{morphism}{态射}，其\Term{graph}{图} $\Delta$ 即\Term{diagonal}{对角线}。由 $L_1$ 的恒等\Term{arrow}{箭头}定义的\Term{support}{支撑}在 $\Delta$ 中的\Term{correspondence}{对应}称为\Term{diagonal-correspondence}{对角对应}。它是元素
+\[
+1\in\operatorname{Hom}(L_1,L_1)=H^0(X,\Delta_*\Delta^!R\mathcal Hom_S(L_1,L_1))
+\]
+（当 $X_1$ \Term{smooth}{光滑}且纯\Term{relative-dimension}{相对维数}为 $r$ 时，该群等同于
+\SourcePage{104}
+$H_\Delta^{2r}(X,R\mathcal Hom_S(L_1,L_1)(r))$）。
+
+(ii) 假设 $S$ 是\Term{finite-field}{有限域} $\mathbb F_q$ 的\Term{spectrum}{谱}，$X_1=X_2$，$L_1=L_2$，并取 $F:X_1\to X_1$ 为相对于 $\mathbb F_q$ 的 Frobenius \Term{endomorphism}{自同态}，即在底\Term{space}{空间}上为恒等、在 $\mathcal O_{X_1}$ 上为取 $q$ 次幂的\Term{morphism}{态射}（参见第 XIV 讲）；取 $F$ 到 $L_1$ 的\Term{lifting}{提升}为\Term{canonical-isomorphism}{典范同构} $F^*L_1\xrightarrow\sim L_1$（该讲第 2 节命题 1；更精确地，若 $q=p^a$，则取该处\Term{isomorphism}{同构}的第 $a$ 次迭代）。如此定义的\Term{support}{支撑}在 $F$ 的\Term{graph}{图}中的从 $L_1$ 到自身的\Term{cohomological-correspondence}{上同调对应}，称为（相对于 $\mathbb F_q$ 的）\Term{frobenius-correspondence}{Frobenius 对应}。
+
+\textbf{c)} Langlands 在 [13] 第 7 节研究了\Term{curve}{曲线}上\Term{sheaf}{层}之间与 Hecke \Term{operator}{算子}有关的若干\Term{cohomological-correspondence}{上同调对应}。
+
+\textbf{d)} 常\Term{sheaf}{层}之间的\Term{cohomological-correspondence}{上同调对应}（这是自然出现得最多的）通过“积分”自然给出\Term{complex}{复形}之间的\Term{cohomological-correspondence}{上同调对应}，下面就来说明这一点。
+
+\textbf{3.3。}对 $i=1,2$，设 $f_i:X_i\to Y_i$ 为 $S$-\Term{morphism}{态射}，
+\[
+f=f_1\times_S f_2:X\to Y,\quad f'_1=f_1\times_S Y_2,\quad f'_2=Y_1\times_S f_2,\quad
+p'_1=X_1\times_S f_2,\quad p'_2=f_1\times_S X_2:
+\]
+\[
+\begin{tikzcd}[column sep=large,row sep=large]
+X_1\times_S Y_2\arrow[d,"f'_1"'] & X\arrow[l,"p'_1"']\arrow[d,"p'_2"]\arrow[dl,"f" description]\\
+Y & Y_1\times_S X_2\arrow[l,"f'_2"]
+\end{tikzcd}\tag{3.3.0}
+\]
+设 $L_i\in\operatorname{ob}D_{\mathrm{ctf}}(X_i)$。存在唯一的\Term{isomorphism}{同构}
+\[
+f_*R\mathcal Hom_S(L_1,L_2)\xrightarrow\sim R\mathcal Hom_S(f_{1!}L_1,f_{2*}L_2),\tag{3.3.1}
+\]
+其逆使下列方块交换：
+\SourcePage{105}
+\[
+\resizebox{\textwidth}{!}{\begin{tikzcd}[ampersand replacement=\&,column sep=large,row sep=large]
+D(f_{1!}L_1)\mathbin{\overset L\otimes}_S f_{2*}L_2\arrow[r,"3.1.1"]\arrow[d,"(1)"'] \&
+R\mathcal Hom_S(f_{1!}L_1,f_{2*}L_2)\arrow[d]\\
+f_{1*}DL_1\mathbin{\overset L\otimes}_S f_{2*}L_2\arrow[r,"(2)"'] \& f_*R\mathcal Hom_S(L_1,L_2),
+\end{tikzcd}}
+\]
+其中 (1) 是对\Term{duality}{对偶}\Term{isomorphism}{同构}（SGA 4 XVIII 3.1.9.6）$Df_{1!}L_1\xrightarrow\sim f_{1*}DL_1$ 的逆应用 $\mathbin{\overset L\otimes}_S f_{2*}L_2$ 所得；(2) 是 Künneth \Term{isomorphism}{同构} $f_{1*}DL_1\mathbin{\overset L\otimes}_S f_{2*}L_2\xrightarrow\sim f_*(DL_1\mathbin{\overset L\otimes}_S L_2)$ 与 $f_*(3.1.1)$ 的复合。应用 $R\Gamma(Y,-)$，由 3.3.1 得到\Term{isomorphism}{同构}
+\[
+f_*:\operatorname{Hom}_S(L_1,L_2)\xrightarrow\sim\operatorname{Hom}_S(f_{1!}L_1,f_{2*}L_2).\tag{3.3.2}
+\]
+对 $u\in\operatorname{Hom}_S(L_1,L_2)$，\Term{correspondence}{对应} $f_*u$ 称为 $u$ 经 $f$ 的\Term{direct-image}{正像}。当 $Y_1=Y_2=S$ 时，将 $f_*u$ 记作 $u_*$。若 $Y_1=Y_2=S$ 是\Term{separably-closed-field}{可分闭域}的\Term{spectrum}{谱}，则 3.3.2 写为
+\[
+\operatorname{Hom}_S(L_1,L_2)\xrightarrow\sim\operatorname{Hom}(R\Gamma_c(X_1,L_1),R\Gamma(X_2,L_2)).\tag{3.3.3}
+\]
+于是，\Term{cohomological-correspondence}{上同调对应}“\Term{action}{作用}”于\Term{cohomology}{上同调}。下面的陈述使我们能够从几种不同方式解释这种\Term{action}{作用}，尤其能够在上述 a)、b) 等情形下将它同通常的定义联系起来。
+
+\begin{SGAresult}{命题}{3.4}
+采用 3.3.0 的记号，有 $D_{\mathrm{ctf}}(Y)$ 中如下由\Term{isomorphism}{同构}组成的\Term{commutative-diagram}{交换图}：
+\[
+\resizebox{\textwidth}{!}{\begin{tikzcd}[ampersand replacement=\&,column sep=large,row sep=large]
+\& R\mathcal Hom_S(f_{1!}L_1,f_{2*}L_2)\arrow[dl,"(1)"']\arrow[dr,"(2)"]\arrow[dd,"(5)" description] \&\\
+f'_{1*}R\mathcal Hom_S(L_1,f_{2*}L_2)\arrow[dr,"f'_{1*}(3)"'] \&\& f'_{2*}R\mathcal Hom_S(f_{1!}L_1,L_2)\arrow[dl,"f'_{2*}(4)"]\\
+\& f_*R\mathcal Hom_S(L_1,L_2) \&
+\end{tikzcd}}\tag{3.4.1}
+\]
+其中 (5) 是 3.3.1 的逆，\Term{arrow}{箭头} (1) 至 (4) 由下列\Term{commutative-diagram}{交换图}定义。在这些图中，“\Term{base-change}{基变换}”表示由第 1 节所考虑的某类\Term{base-change}{基变换}\Term{isomorphism}{同构}或 Künneth \Term{isomorphism}{同构}
+\SourcePage{106}
+\Term{derive}{导出}的\Term{arrow}{箭头}，“\Term{duality}{对偶}”表示由 2.1.4 或 SGA 4 XVIII 3.1.9.6 型的\Term{duality}{对偶}\Term{isomorphism}{同构}\Term{derive}{导出}的\Term{arrow}{箭头}，“平凡”表示平凡的\Term{isomorphism}{同构}。
+\[
+\resizebox{\textwidth}{!}{\begin{tikzcd}[ampersand replacement=\&,column sep=large,row sep=large]
+R\mathcal Hom(f_{1!}L_1\mathbin{\overset L\otimes}_S A_{Y_2},K_{Y_1}\mathbin{\overset L\otimes}_S f_{2*}L_2)
+\arrow[r,"\text{基变换}"]\arrow[d,"\text{基变换}"'] \& R\mathcal Hom_S(f_{1!}L_1,f_{2*}L_2)\arrow[ddd,"(1)"]\\
+R\mathcal Hom(f'_{1!}(L_1\mathbin{\overset L\otimes}_S A_{Y_2}),K_{Y_1}\mathbin{\overset L\otimes}_S f_{2*}L_2)\arrow[d,"\text{对偶}"'] \&\\
+f'_{1*}R\mathcal Hom(L_1\mathbin{\overset L\otimes}_S A_{Y_2},f_1'^!(K_{Y_1}\mathbin{\overset L\otimes}_S f_{2*}L_2))\arrow[d,"\text{基变换}"'] \&\\
+f'_{1*}R\mathcal Hom(L_1\mathbin{\overset L\otimes}_S A_{Y_2},K_{X_1}\mathbin{\overset L\otimes}_S f_{2*}L_2)
+\arrow[r,"\text{基变换}"'] \& f'_{1*}R\mathcal Hom_S(L_1,f_{2*}L_2)
+\end{tikzcd}}
+\]
+\[
+\resizebox{\textwidth}{!}{\begin{tikzcd}[ampersand replacement=\&,column sep=large,row sep=large]
+R\mathcal Hom(f_{1!}L_1\mathbin{\overset L\otimes}_S A_{Y_2},K_{Y_1}\mathbin{\overset L\otimes}_S f_{2*}L_2)
+\arrow[r,"\text{基变换}"]\arrow[d,"\text{基变换}"'] \& R\mathcal Hom_S(f_{1!}L_1,f_{2*}L_2)\arrow[ddd,"(2)"]\\
+R\mathcal Hom(f_{1!}L_1\mathbin{\overset L\otimes}_S A_{Y_2},f'_{2*}(K_{Y_1}\mathbin{\overset L\otimes}_S L_2))\arrow[d,"\text{对偶}"'] \&\\
+f'_{2*}R\mathcal Hom(f_2'^*(f_{1!}L_1\mathbin{\overset L\otimes}_S A_{Y_2}),K_{Y_1}\mathbin{\overset L\otimes}_S L_2)\arrow[d,"\text{平凡}"'] \&\\
+f'_{2*}R\mathcal Hom(f_{1!}L_1\mathbin{\overset L\otimes}_S A_{X_2},K_{Y_1}\mathbin{\overset L\otimes}_S L_2)
+\arrow[r,"\text{基变换}"'] \& f'_{2*}R\mathcal Hom_S(f_{1!}L_1,L_2)
+\end{tikzcd}}
+\]
+\SourcePage{107}
+\[
+\resizebox{\textwidth}{!}{\begin{tikzcd}[ampersand replacement=\&,column sep=large,row sep=large]
+R\mathcal Hom(L_1\mathbin{\overset L\otimes}_S A_{Y_2},K_{X_1}\mathbin{\overset L\otimes}_S f_{2*}L_2)
+\arrow[r,"\text{基变换}"]\arrow[d,"\text{基变换}"'] \& R\mathcal Hom_S(L_1,f_{2*}L_2)\arrow[ddd,"(3)"]\\
+R\mathcal Hom(L_1\mathbin{\overset L\otimes}_S A_{Y_2},p'_{1*}(K_{X_1}\mathbin{\overset L\otimes}_S L_2))\arrow[d,"\text{对偶}"'] \&\\
+p'_{1*}R\mathcal Hom(p_1'^*(L_1\mathbin{\overset L\otimes}_S A_{Y_2}),K_{X_1}\mathbin{\overset L\otimes}_S L_2)\arrow[d,"\text{平凡}"'] \&\\
+p'_{1*}R\mathcal Hom(L_1\mathbin{\overset L\otimes}_S A_{X_2},K_{X_1}\mathbin{\overset L\otimes}_S L_2)
+\arrow[r,"\text{基变换}"'] \& p'_{1*}R\mathcal Hom_S(L_1,L_2)
+\end{tikzcd}}
+\]
+\[
+\resizebox{\textwidth}{!}{\begin{tikzcd}[ampersand replacement=\&,column sep=large,row sep=large]
+R\mathcal Hom(f_{1!}L_1\mathbin{\overset L\otimes}_S A_{X_2},K_{Y_1}\mathbin{\overset L\otimes}_S L_2)
+\arrow[r,"\text{基变换}"]\arrow[d,"\text{基变换}"'] \& R\mathcal Hom_S(f_{1!}L_1,L_2)\arrow[ddd,"(4)"]\\
+R\mathcal Hom(p'_{2!}(L_1\mathbin{\overset L\otimes}_S A_{X_2}),K_{Y_1}\mathbin{\overset L\otimes}_S L_2)\arrow[d,"\text{对偶}"'] \&\\
+p'_{2*}R\mathcal Hom(L_1\mathbin{\overset L\otimes}_S A_{X_2},p_2'^!(K_{Y_1}\mathbin{\overset L\otimes}_S L_2))\arrow[d,"\text{基变换}"'] \&\\
+p'_{2*}R\mathcal Hom(L_1\mathbin{\overset L\otimes}_S A_{X_2},K_{X_1}\mathbin{\overset L\otimes}_S L_2)
+\arrow[r,"\text{基变换}"'] \& p'_{2*}R\mathcal Hom_S(L_1,L_2).
+\end{tikzcd}}
+\]
+\end{SGAresult}
+\begin{proof}
+这不过是将 2.5 应用于如下特例：$(u_1,v_1):(L_1,K_{X_1})\to(f_{1!}L_1,K_{Y_1})$ 由 $f_{1!}L_1$ 的恒等\Term{arrow}{箭头}及\Term{canonical-isomorphism}{典范同构} $f_1^!K_{Y_1}\xrightarrow\sim K_{X_1}$ 给出；$(u_2,v_2):(A_{X_2},L_2)\to(A_{Y_2},f_{2*}L_2)$ 由\Term{canonical-isomorphism}{典范同构} $A_{X_2}\xrightarrow\sim f_2^*A_{Y_2}$ 及 $f_{2*}L_2$ 的恒等\Term{arrow}{箭头}给出。
+\end{proof}
+
+\begin{SGAresult}{推论}{3.5}
+假设 $Y_1=Y_2=S$。设 $u\in\operatorname{Hom}_S(L_1,L_2)$。其\Term{direct-image}{正像} $f_*u\in\operatorname{Hom}(f_{1!}L_1,f_{2*}L_2)$（3.3.2）可以用以下两种\Term{equivalence}{等价}方式得到。
+\SourcePage{108}
+
+\textbf{a)} 通过\Term{trivial-duality}{平凡对偶}，把 $u$ 等同于一个\Term{arrow}{箭头} $L_1\to p_{1*}p_2^!L_2$；与\Term{base-change}{基变换}\Term{isomorphism}{同构} $p_{1*}p_2^!L_2\xrightarrow\sim f_1^!f_{2*}L_2$ 复合；$f_*u$ 就是这一复合\Term{arrow}{箭头}的\Term{adjoint}{伴随箭头}。
+
+\textbf{b)} 通过\Term{adjunction}{伴随}，把 $u$ 等同于一个\Term{arrow}{箭头} $p_{2!}p_1^*L_1\to L_2$；与\Term{base-change}{基变换}\Term{isomorphism}{同构} $f_2^*f_{1!}L_1\xrightarrow\sim p_{2!}p_1^*L_1$ 复合；$f_*u$ 就是这一复合\Term{arrow}{箭头}的\Term{adjoint}{伴随箭头}。
+\end{SGAresult}
+\begin{proof}
+事实上，描述 a)（分别地 b)）对应于 3.4.1 中的路径 $(f'_{1*}(3)\circ(1))^{-1}$（分别地 $f'_{2*}(4)\circ(2)$）。
+\end{proof}
+
+\textbf{3.6。}实际中主要使用描述 3.5 b)。为简化书写，假设 $S$ 是\Term{separably-closed-field}{可分闭域}的\Term{spectrum}{谱}，我们在\Term{cohomology-class}{上同调类}层次上将它明确写出。设
+\[
+u\in\operatorname{Hom}_S(L_1,L_2)=\operatorname{Hom}(p_1^*L_1,p_2^!L_2).
+\]
+对 $x\in H_c^i(X_1,L_1)$，$u_*(x)\in H^i(X_2,L_2)$ 定义如下：考虑由 $x$ 经\Term{inverse-image}{逆像}所得的元素 $p_1^*x\in H^i(X_2,p_{2!}p_1^*L_1)$，对其应用 $u$，即形成乘积 $u\cdot p_1^*x\in H^i(X_2,p_{2!}p_2^!L_2)$，然后应用由\Term{adjunction}{伴随}\Term{arrow}{箭头} $p_{2!}p_2^!\to\operatorname{Id}$ 定义的\Term{arrow}{箭头}
+\[
+\underline a:H^i(X_2,p_{2!}p_2^!L_2)\longrightarrow H^i(X_2,L_2).
+\]
+总之，
+\[
+u_*(x)=\underline a(u\cdot p_1^*x).\tag{3.6.1}
+\]
+设 $c:C\to X$ 为\Term{proper}{固有}\Term{morphism}{态射}，$u\in\operatorname{Hom}(c_1^*L_1,c_2^!L_2)$。以 $u_*\in\operatorname{Hom}(R\Gamma_c(X_1,L_1),R\Gamma(X_2,L_2))$ 表示 $u$ 在 3.2.3 与 3.3.3 的复合下的像。由 3.6.1 可知，对 $x\in H_c^i(X_1,L_1)$，有
+\[
+u_*(x)=\underline a(u\cdot c_1^*x),\tag{3.6.2}
+\]
+其中 $c_1^*x$ 是 $x$ 在 $H^i(X_2,c_{2!}c_1^*L_1)$ 中的\Term{inverse-image}{逆像}，
+\[
+\underline a:H^i(X_2,c_{2!}c_2^!L_2)\longrightarrow H^i(X_2,L_2)
+\]
+是由\Term{adjunction}{伴随} $c_{2!}c_2^!L_2\to\operatorname{Id}$ \Term{derive}{导出}的\Term{arrow}{箭头}。在例 3.2 a) 的情形中，由此得到
+\[
+\operatorname{cl}(c,N)_*(x)=\operatorname{Tr}_{c_2}(c_1^*x),\tag{3.6.3}
+\]
+\SourcePage{109}
+其中 $\operatorname{Tr}_{c_2}:H^i(X_2,Rc_{2!}A_C)\to H^{i-2N}(X_2,A(-N))$ 是由关于 $c_2$ 的\Term{trace-morphism}{迹态射}诱导的\Term{arrow}{箭头}。当 $N=0$ 时，此公式与 SGA $4\frac12$ Cycle 3.6 一致：$\operatorname{cl}(c)_*$ 就是该处记作 $\eta_{X_2X_1}$ 的\Term{homomorphism}{同态}。若 $X_1$ \Term{smooth}{光滑}且纯\Term{relative-dimension}{相对维数}为 $r_1$，$c$ 是\Term{closed-immersion}{闭浸入}，由 3.6.1 以及 3.2 a) 末尾的注记，还有
+\[
+\operatorname{cl}(c,N)_*(x)=\operatorname{Tr}_{p_2}(\operatorname{cl}(C)p_1^*x),\tag{3.6.4}
+\]
+其中 $\operatorname{cl}(C)\in H_C^{2(r_1-N)}(X,A(r_1-N))$ 是 $C$ 的\Term{cohomology-class}{上同调类}，$\operatorname{Tr}_{p_2}:H^*(X_2,Rp_{2!}A_{X_2})\to H^{*-2r_1}(X_2,A(-r_1))$ 是由关于 $p_2$ 的\Term{trace-morphism}{迹态射}定义的\Term{arrow}{箭头}。由此得到\Term{correspondence}{对应}在\Term{cohomology}{上同调}上诱导的\Term{homomorphism}{同态}的通常定义（[12] 1.3；SGA $4\frac12$ Cycle 3.2）。
+
+\textbf{3.6.5。}在 3.2 b) 的情形中，由 3.6.2 可知，对 $u\in\operatorname{Hom}(F^*L_1,L_2)$，$u_*:H_c^i(X_1,L_1)\to H^i(X_2,L_2)$ 是“\Term{inverse-image}{逆像}”\Term{homomorphism}{同态} $H_c^i(X_1,L_1)\to H^i(X_2,F^*L_1)$ 与由 $u$ 诱导的\Term{homomorphism}{同态}的复合。更一般地，$f_*u:Rf_{1!}L_1\to Rf_{2*}L_2$ 是\Term{canonical}{典范}\Term{homomorphism}{同态} $Rf_{1!}L_1\to Rf_{2*}F^*L_1$ 与 $Rf_{2*}u$ 的复合。特别地，\Term{diagonal-correspondence}{对角对应}诱导\Term{canonical}{典范}\Term{arrow}{箭头} $Rf_{1!}L_1\to Rf_{1*}L_1$（若 $X_1$ 在 $S$ 上\Term{proper}{固有}，则为恒等\Term{arrow}{箭头}）。
+
+\textbf{3.7。}回到 3.3 开始的情形，并另给定一个\Term{commutative-square}{交换方块}
+\[
+\begin{tikzcd}[column sep=large,row sep=large]
+X\arrow[d,"f"'] & C\arrow[l,"c"']\arrow[d,"g"]\\
+Y & D\arrow[l,"d"]
+\end{tikzcd}\tag{3.7.1}
+\]
+其中 $c$ \Term{proper}{固有}。令 $c_i=p_ic$，$d_i=q_id$，其中 $p_i:X\to X_i$、$q_i:Y\to Y_i$ 是\Term{projection}{投影}。由 3.7.1 \Term{derive}{导出}如下\Term{commutative-diagram}{交换图}，其中内方块为\Term{cartesian-square}{笛卡儿方块}：
+\SourcePage{110}
+\[
+\begin{tikzcd}[column sep=large,row sep=large]
+&& C\arrow[d,"i"]\arrow[dll,"c"']\arrow[dd,"g",bend left=35]\\
+X\arrow[d,"f"'] && C'\arrow[ll,"c'"']\arrow[d,"g'"']\\
+Y && D\arrow[ll,"d"]
+\end{tikzcd}\tag{3.7.2}
+\]
+对 $K\in\operatorname{ob}D_{\mathrm{ctf}}(X)$，存在\Term{canonical}{典范}\Term{arrow}{箭头}
+\[
+f_*c_*c^!K\longrightarrow d_*d^!f_*K,\tag{3.7.3}
+\]
+它是由\Term{adjunction}{伴随}\Term{arrow}{箭头} $i_*i^!\to\operatorname{Id}$ 定义的\Term{arrow}{箭头}
+\[
+f_*c_*c^!K=f_*c'_*(i_*i^!)c'^!K\longrightarrow f_*c'_*c'^!K=d_*g'_*c'^!K
+\]
+与\Term{isomorphism}{同构}
+\[
+d_*g'_*c'^!K\xrightarrow\sim d_*d^!f_*K
+\]
+的复合，后一个\Term{isomorphism}{同构}由\Term{canonical-isomorphism}{典范同构} $g'_*c'^!\xrightarrow\sim d^!f_*$（SGA 4 XVIII 3.1.12.3）定义。取 $K=R\mathcal Hom_S(L_1,L_2)$，并将 3.7.3 与由 3.3.1 \Term{derive}{导出}的\Term{isomorphism}{同构}复合，得到\Term{canonical}{典范}\Term{arrow}{箭头}
+\[
+f_*c_*c^!R\mathcal Hom_S(L_1,L_2)\longrightarrow d_*d^!R\mathcal Hom_S(f_{1!}L_1,f_{2*}L_2),\tag{3.7.4}
+\]
+借助 3.2.1，它可以改写为
+\[
+f_*c_*R\mathcal Hom(c_1^*L_1,c_2^!L_2)\longrightarrow
+ d_*R\mathcal Hom(d_1^*(f_{1!}L_1),d_2^!(f_{2*}L_2)).\tag{3.7.5}
+\]
+由此\Term{derive}{导出}
+\[
+f_*:\operatorname{Hom}(c_1^*L_1,c_2^!L_2)\longrightarrow
+\operatorname{Hom}(d_1^*(f_{1!}L_1),d_2^!(f_{2*}L_2)).\tag{3.7.6}
+\]
+\Term{arrow}{箭头} 3.7.5（分别地 3.7.6）推广了 3.3.1（分别地 3.3.2），并在 $c,d$ 为恒等\Term{arrow}{箭头}时与之相同。还应注意，当 $c$ \Term{proper}{固有}时，若 $f_1,f_2,d$ 为恒等\Term{arrow}{箭头}，则 3.2.2（分别地 3.2.3）正是 3.7.5（分别地 3.7.6）。当 $Y_1=Y_2=S=D$ 时，仍如上文，将 $f_*u$ 简记为 $u_*$。

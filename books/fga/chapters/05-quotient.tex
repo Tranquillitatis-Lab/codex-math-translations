@@ -1,0 +1,469 @@
+\chapter{下降技术与代数几何中的存在定理：商预概形}
+\chapterintro{Techniques de construction et théorèmes d'existence en géométrie algébrique. III : Préschémas quotients}{Bourbaki，第212号报告，1960/61年第13年度，1961年2月}
+
+\origpage{119}{212-01}
+\section*{引言}
+本篇所研究的问题与前两篇不同：这里试图表示的是以变动的\term{概形}{scheme}{schéma}为变量的某些\term{协变函子}{covariant functor}{foncteur covariant}，而不再是\term{反变函子}{contravariant functor}{foncteur contravariant}。不过，在代数几何的许多构造问题中，\term{取商}{passage to the quotient}{passage au quotient}都是关键步骤，前两篇的问题也不例外（[1]、[2]）。例如，相对于一个\term{忠实平坦}{faithfully flat}{fidèlement plat}且\term{拟紧}{quasi-compact}{quasi-compact}的态射 $T\to S$，$T$-\term{预概形}{prescheme}{préschéma} $X$ 上一组\term{下降资料}{descent datum}{donnée de descente}是否\term{有效}{effective}{effectif}，等价于问：由这组资料在 $X$ 上定义的\term{平坦等价关系}{flat equivalence relation}{relation d'équivalence plate}是否存在一个满足下文所述合理性质的商。[1]，A，\S2 c 所提出的问题，想必会与本篇第2节的问题同时解决。
+
+同样，一个 $S$-概形 $X$ 的 \term{Picard 概形}{Picard scheme}{schéma de Picard}（定义见 [2]，C，\S3），可以用若干方式定义为某些辅助概形对平坦等价关系的商；这些辅助概形参数化正除子，或者到射影空间中的浸入。它们的定义和构造在技术上反而较为简单：事实上，它们就是 [2]，C，\S2 中定义的 $\underline{\operatorname{Hom}}_S(X,Y)$ 型概形及其变式。下一篇将在适当的射影性假设下讨论它们的构造。因此，把本篇和下一篇的结果结合起来，就能在适当假设下构造 Picard 概形。
+
+预概形的取商问题仍有若干未解决之处，其中最重要的将在第8节说明。目前，它仍是构造整数上的\term{模概形}{moduli scheme}{schéma de modules}的唯一障碍；这里所指的对象包括任意亏格的曲线、极化阿贝尔簇等。由此可见，这个问题值得代数群专家投入精力。
+
+\origpage{120}{212-02}
+\section{等价关系与有效等价关系}
+设 $\mathcal C$ 是一个\term{范畴}{category}{catégorie}，$X$ 是其中的对象。如果对于 $\mathcal C$ 的每个对象 $T$，一对\term{态射}{morphism}{morphisme}
+\[
+ p_1,p_2:R\rightrightarrows X
+\]
+所诱导的两个映射
+\[
+ p_1(T),p_2(T):R(T)\rightrightarrows X(T)
+\]
+给出的映射
+\[
+ R(T)\longrightarrow X(T)\times X(T)
+\]
+把 $R(T)$ 双射到集合 $X(T)$ 中某个等价关系的图，那么就称 $(p_1,p_2)$ 是 $\mathcal C$ 中以 $R$ 为源、以 $X$ 为靶的一个\term{等价对}{equivalence pair}{couple d'équivalence}。这里对任意对象 $Y$，都记 $Y(T)=\operatorname{Hom}(T,Y)$。在靶为 $X$ 的等价对之间，可以引入显然的等价关系；它的一个等价类称为 $X$ 中的一个 $\mathcal C$-\term{等价关系}{equivalence relation}{relation d'équivalence}；不致混淆时，简称等价关系。
+
+如果 $X\times X$ 存在，那么给出 $X$ 中的等价关系，就等价于给出 $X\times X$ 的一个\term{子对象}{subobject}{sous-objet} $R$，使得对每个 $T$，由 $R(T)$ 给出的
+\[
+ (X\times X)(T)=X(T)\times X(T)
+\]
+的子集都是 $X(T)$ 中某个等价关系的图。若以 $p_1,p_2$ 表示两个投影 $\operatorname{pr}_1,\operatorname{pr}_2$ 所诱导的 $R\to X$，上述条件正是说 $(p_1,p_2)$ 是一个等价对。只要 $X\times X$ 以及\term{纤维积}{fiber product}{produit fibré}
+\[
+ (R,p_2)\times_X(R,p_1)
+\]
+存在，就可以按照 [2]，A，\S1 说明的一般原则，用 $\mathcal C$ 中的交换图表述集合 $X(T)$ 上的 $R(T)$ 满足通常的等价关系公理。这里不需要把它写出来。
+
+一般地，给定同源 $R$、同靶 $X$ 的一对态射 $(p_1,p_2)$，可以把它的\term{余核}{coequalizer}{conoyau}定义为表示如下关于 $Z$ 的协变函子的对象 $Y$：
+\[
+ \operatorname{Hom}_{p_1,p_2}(X,Z)
+ =\{u:X\to Z\mid up_1=up_2\}.
+\]
+如果 $Y$ 存在，它在唯一同构的意义下确定。记为 $X/(p_1,p_2)$，也常略记为 $X/R$。\translatornote{原文此处把这两个记号写成 $Y/(p_1,p_2)$ 和 $Y/R$。这是源对象的记号误写：余核所表示的函子以 $X$ 为源，且紧接着的定义也使用 $X/(p_1,p_2)=Y$，故应改为正文的写法。}后一记号尤其用于
+
+\origpage{121}{212-03}
+$(p_1,p_2)$ 是等价对的情形；这时，记号上通常把该等价对定义的等价关系与 $R$ 混同。注意，若把 $Y$ 看成 $X$ 的一个商，那么它确实只依赖于这对态射所定义的等价关系。
+
+现在从一个态射
+\[
+ f:X\longrightarrow Y
+\]
+出发，因而把 $X$ 看成一个“$Y$ 上的对象”。假定纤维积
+\[
+ \mathcal R(f)=X\times_YX
+\]
+存在，记它的两个投影为 $p_1,p_2$。那么 $(p_1,p_2)$ 是一个等价对，称为与 $f$ \term{关联}{associated}{associé}的等价对；它定义的等价关系也称为与 $f$ 关联的等价关系。
+
+同源 $R$、同靶 $X$ 的一对态射 $(p_1,p_2)$ 称为\term{有效等价对}{effective equivalence pair}{couple d'équivalence effectif}，如果：
+\begin{enumerate}[label=(\roman*)]
+ \item 余核 $X/(p_1,p_2)=Y$ 存在；
+ \item 纤维积 $X\times_YX$ 存在；
+ \item 以 $p_1,p_2$ 为分量的态射 $R\to X\times_YX$ 是同构。
+\end{enumerate}
+这时 $(p_1,p_2)$ 的确是等价对；也说它所定义的等价关系是\term{有效等价关系}{effective equivalence relation}{relation d'équivalence effective}。
+
+一个态射 $f:X\to Y$ 称为\term{有效满态射}{effective epimorphism}{épimorphisme effectif}，如果：
+\begin{enumerate}[label=(\roman*)]
+ \item 纤维积 $X\times_YX=R$ 存在；
+ \item 商 $X/(p_1,p_2)$ 存在，其中 $p_1,p_2$ 是 $R$ 到 $X$ 的两个投影；
+ \item $f$ 所诱导的态射 $X/(p_1,p_2)\to Y$ 是同构。
+\end{enumerate}
+这时 $f$ 确实是一个\term{满态射}{epimorphism}{épimorphisme}，甚至是\term{严格满态射}{strict epimorphism}{épimorphisme strict}（见 [1]，A，\S2 a.3）；如果 $X\times_YX$ 存在，反过来也成立。也称满态射 $f$ 所定义的商对象是 $X$ 的一个\term{有效商}{effective quotient}{quotient effectif}。
+
+上述定义直接给出如下“\term{Galois 对应}{Galois correspondence}{correspondance galoisienne}”：
+
+\origpage{122}{212-04}
+\begin{statement}{命题 1.1}
+$X$ 中的有效等价关系 $R$ 所成的集合，与 $X$ 的有效商 $Y$ 所成的集合之间，存在一个保持自然次序的双射。与 $R$ 对应的是有效商 $X/R$；与 $Y$ 对应的是典范投影 $X\to Y$ 所定义的有效等价关系，即带有两个投影的纤维积 $X\times_YX$。
+\end{statement}
+
+在性质极好的范畴中，例如集合范畴、集合层范畴等，每个商都是有效的，每个等价关系也都是有效的。但在给定预概形 $S$ 上的预概形范畴这类范畴中，情形就不同了；即使 $S$ 是一个域的谱，而且只考虑 $S$ 上的有限概形，也仍然如此。有效性问题，乃至在不假定预概形对 $S$ 有限时的商的存在性问题，通常都颇为微妙。
+
+\section{例：$S$ 上的有限预概形}
+设 $S$ \term{局部 Noether}{locally noetherian}{localement noethérien}，以 $\mathcal C$ 表示 $S$ 上的\term{有限}{finite}{fini}预概形范畴。它等价于 $S$ 上凝聚交换代数层范畴的\term{反范畴}{opposite category}{catégorie opposée}。特别地，当 $S$ 是环 $A$ 的仿射概形时，它等价于对 $A$ 有限的 $A$-代数范畴的反范畴；“对 $A$ 有限”意指作为 $A$-模是有限型的。由此立即得出：$\mathcal C$ 中的\term{有限逆极限}{finite inverse limit}{limite projective finie}和\term{有限归纳极限}{finite direct limit}{limite inductive finie}都存在。
+
+关于前者，这是熟知的，而且根本不需要有限性假设。例如，$S$ 上的预概形 $X,Y$ 的纤维积对应于相应代数的张量积 $B\otimes_AC$；由两个 $A$-代数同态 $u,v:C\rightrightarrows B$ 定义的一对态射 $X\rightrightarrows Y$ 的\term{核}{equalizer}{noyau}，对应于 $B$ 对由所有 $u(c)-v(c)$ 生成的理想所取的商，等等。
+
+至于有限归纳极限，只需分别考虑有限和与一对态射的余核。前者对应于 $A$-代数的通常直积；后者，即 $X\rightrightarrows Y$ 的余核，对应于 $C$ 中使两个同态 $u,v:C\rightrightarrows B$ 取相同值的元素所成的子环。这一子环由于 Noether 假设而对 $A$ 有限。还可以利用 Noether 假设证明：这样在 $S$ 上有限预概形的范畴 $\mathcal C$ 中构造的有限归纳极限，特别是商，事实上也是所有预概形所成范畴中的商。
+
+\origpage{123}{212-05}
+如 [1] 所述，$\mathcal C$ 中存在并非有效的满态射，也就是并非严格的满态射；两者在这里等价，因为纤维积存在。不加平坦性假设时，等价关系是否总是有效，我并不知道。在这个方向上，我只得到一些很不完整的肯定结果；它们对于证明形式模理论中的基本定理却不可缺少（见 [2]，B，定理1）。顺便指出，容易把这个问题归约到如下情形：$S$ 是一个 Artin 局部环 $A$ 的谱，而且 $A$ 的剩余域代数闭。然而，即使 $A$ 本身就是域，答案也仍然未知。
+
+也可以不再假定 $X$ 对 $S$ 有限，而只考虑 $X$ 中使 $p_1:R\to X$ 为有限态射的等价关系 $R$。这时称 $R$ 为\term{有限等价关系}{finite equivalence relation}{relation d'équivalence finie}。为简单起见，假定 $S,X$ 都仿射；于是 $R$ 也仿射，问题完全化为交换代数问题。即使如此，我们仍不知道商 $X/R=Y$ 是否存在，也不知道典范态射 $X\to Y$ 是否有限。最简单的情形是 $S$ 为域 $k$ 的谱，而 $X=\operatorname{Spec}k[t]$ 为仿射直线。当然，如果前述两个问题都得到肯定解答，就能在当前情形中断定 $R$ 有效。还应注意，如果把 $X$ 中的等价关系图换成第4节意义下的预等价关系图，商 $Y$ 的存在性与 $f:X\to Y$ 的有限性问题，仍可原样提出。
+
+当试图沿若干闭子预概形，把给定预概形 $X_i$ “\term{粘合}{gluing}{recollement}”成一个预概形时，自然会遇到对相当任意的有限等价关系取商的问题：粘合规则恰好由各 $X_i$ 的和预概形 $X$ 中的一个有限等价关系来表达。还可以预期，这些问题及其各种变式的解决，将是沿 [2] 所开辟的方向建立一般非射影构造技术的前提。
+
+关于这一问题，笔者所知道的唯一一般性肯定结果如下。
+
+\begin{statement}{命题 2.1}
+设 $S$ 是局部 Noether 预概形，$s\in S$，$\Omega$ 是 $k(s)$ 的一个代数闭扩域。考虑相应的“\term{纤维函子}{fiber functor}{foncteur-fibre}” $F$：它把每个对 $S$ 有限的 $S$-概形 $X$ 对应到 $X/S$ 的 $\Omega$-值点的集合。
+\origpage{124}{212-06}
+这个函子显然左正合；它也\term{右正合}{right exact}{exact à droite}，即与有限归纳极限交换，特别是与成对态射的余核交换。
+\end{statement}
+
+对 $S$ 的所有“\term{几何点}{geometric point}{point géométrique}”应用这个结果，可以推出：把满的\term{根态射}{radicial morphism}{morphisme radiciel}视为可逆态射，即形式地给这些态射添加逆，从 $\mathcal C$ 得到的“商”范畴 $\mathcal C'$ 是一个“几何”范畴；换言之，它满足与集合范畴相同的各项“有限性质”。特别地，其中的每个等价关系都有效。因此，若 $R$ 是对 $S$ 有限的 $X$ 中的等价关系，且 $Y=X/R$，则典范态射
+\[
+ R\longrightarrow X\times_YX
+\]
+是满的根态射。事实上，它是一个满的闭浸入，因为它是单态射。
+
+\section{群作用的情形}
+现在重新假定 $\mathcal C$ 是任意范畴。设 $G,X$ 是其中的对象，$G$ 是作用于 $X$ 的一个 $\mathcal C$-群。这是说（见 [2]，A，\S1），对每个对象 $T$，给定 $G(T)$ 上的群结构以及 $X(T)$ 上的 $G(T)$-作用，而且这些结构随 $T$ 以函子方式变化。如果 $\mathcal C$ 中的积 $G\times G$ 和 $G\times X$ 存在，这也可以表述为给出两个态射
+\[
+ G\times G\longrightarrow G,
+ \qquad \pi:G\times X\longrightarrow X,
+\]
+并要求对于任意 $T$，它们在集合 $G(T),X(T)$ 上诱导的运算使 $G(T)$ 成为一个作用于 $X(T)$ 的群。把这些公理译成 $\mathcal C$ 中若干交换图，是容易却繁琐的；而在我所知道的全部情形中，这样做实际上完全没有必要。
+
+假定 $G\times X$ 存在，考虑两个态射
+\[
+ p_1,p_2:G\times X\rightrightarrows X,
+\]
+其中
+
+\origpage{125}{212-07}
+\[
+ p_1=\operatorname{pr}_X,\qquad p_2=\pi.
+\]
+\translatornote{原文写 $p_1=\operatorname{pr}_1$；但对于按所列次序写出的 $G\times X$，通常第一投影的靶是 $G$。此处必须取靶为 $X$ 的投影，即通常的第二投影。为避免投影编号约定引起歧义，正文写作 $\operatorname{pr}_X$。}
+立即可见，$(p_1,p_2)$ 是等价对，当且仅当对每个 $T$，由它定义的映射
+\[
+ G(T)\times X(T)\simeq(G\times X)(T)
+ \longrightarrow X(T)\times X(T)
+\]
+都是单射；也就是说，$G(T)$ 在 $X(T)$ 上\term{自由作用}{free action}{opération libre}：对 $g\in G(T)$、$x\in X(T)$，等式 $gx=x$ 蕴含 $g$ 是 $G(T)$ 的单位元。这时说 $G$ 在 $X$ 上自由作用，也说 $X$ 是一个 $G$ 下的 $\mathcal C$-\term{主空间}{principal space}{espace principal}。$(p_1,p_2)$ 关联的等价关系称为自由作用群 $G$ 所定义的等价关系。如果 $X\times X$ 也存在，那么由这对态射定义的态射
+\[
+ p:G\times X\longrightarrow X\times X
+\]
+是\term{单态射}{monomorphism}{monomorphisme}，恰好就表示 $G$ 的作用是自由的。
+
+当然，即使 $G$ 的作用不自由，我们仍希望得到 $X$ 对 $G$ 的商的存在判据；这样的商就是上述 $(p_1,p_2)$ 的余核。
+
+这个余核通常记为 $X/G$；若 $G$ 左作用，则最好记为 $G\backslash X$，而把前一记号留给右作用。应当注意，即使 $G\times X$ 在 $p$ 下的“像” $R$ 存在，它通常也不是 $X$ 中的等价关系；例如，可以把像定义为 $X\times X$ 中使 $p$ 通过它分解的最小子对象。如果这时直接对 $R$ 取商，更准确地说，对由两个投影 $\operatorname{pr}_i$ 诱导的 $R\rightrightarrows X$ 取商，就会不可挽回地丢失原来那对态射 $(p_1,p_2)$ 的特殊性质。因此，必须推广等价关系的概念，使它能直接适用于一个 $\mathcal C$-作用群所定义的态射对。
+
+\section{预等价关系}
+回顾一下，\term{群胚}{groupoid}{groupoïde}是指所有态射都是同构的范畴。另一方面，一个范畴由两个基础集合 $(X,R)$，即对象集与箭头集，以及下列结构组成。
+
+\origpage{126}{212-08}
+\begin{enumerate}[label=(\roman*)]
+ \item 两个映射 $p_1,p_2:R\rightrightarrows X$，分别称为\term{源映射}{source map}{application-source}和\term{靶映射}{target map}{application-but}；
+ \item 一个映射
+ \[
+  \pi:(R,p_2)\times_X(R,p_1)\longrightarrow R,
+ \]
+ 称为\term{复合映射}{composition map}{application-composition}。
+\end{enumerate}
+这些资料应满足众所周知的公理，此处不再重复。它们可以用若干图的交换性来表述，并要求存在一个必然唯一的映射 $D:X\to R$，使另外两个图交换。$D$ 把一个对象对应到它的恒等箭头，并满足
+\[
+ p_1D=p_2D=\operatorname{id}_X.
+\]
+称这个范畴为群胚，则是说存在一个必然唯一的映射
+\[
+ s:R\longrightarrow R,
+\]
+称为 $R$ 的\term{对称映射}{symmetry map}{symétrie}，它把每个箭头变成逆箭头。这一要求也可以用另外四个图的交换性表述；这些图由 $s$、$D$ 和上述资料组成，其中头两个等式为
+\[
+ p_1s=p_2,\qquad p_2s=p_1.
+\]
+
+有了这些回顾，[2]，A，\S1 的一般定义尤其说明了：对于任意范畴 $\mathcal C$ 中的两个对象 $X,R$，所谓其上的 $\mathcal C$-范畴结构或 $\mathcal C$-群胚结构，应作何理解。按定义，就是对 $\mathcal C$ 的每个对象 $T$，给出一个通常集合意义下的范畴或群胚，其对象集为 $X(T)$、箭头集为 $R(T)$；并要求这些结构随 $T$ 函子性地变化。这特别包含两个态射
+\[
+ p_1,p_2:R\rightrightarrows X,
+\]
+分别称为\term{源态射}{source morphism}{morphisme-source}和\term{靶态射}{target morphism}{morphisme-but}；如果所需的纤维积存在，还包含一个态射
+
+\origpage{127}{212-09}
+\[
+ \pi:(R,p_2)\times_X(R,p_1)\longrightarrow R,
+\]
+称为\term{复合态射}{composition morphism}{morphisme composition}。这三项资料足以确定 $X,R$ 上的范畴结构；应要求的公理是：对每个 $T$，它们在 $X(T),R(T)$ 上诱导的三项资料，使这一对集合成为一个范畴，或者分别成为一个群胚。必要时，这也可以用某些图的交换性来表达；这些图涉及一个唯一确定的态射
+\[
+ D:X\longrightarrow R,
+\]
+而在群胚情形，还涉及一个唯一确定的态射
+\[
+ s:R\longrightarrow R.
+\]
+把这些图具体写出来，与集合情形完全相同。所幸实际运用时不必进行这样繁琐的公理解释。能够用某些纤维积之间的态射及态射等式表述所有资料和公理，其唯一理论意义在于：如果一个函子 $F:\mathcal C\to\mathcal C'$ \term{左正合}{left exact}{exact à gauche}，即与有限积和纤维积交换，那么它把 $\mathcal C$-范畴变为 $\mathcal C'$-范畴，也把 $\mathcal C$-群胚变为 $\mathcal C'$-群胚；这里当然要求 $\mathcal C$ 中所需的有限积和纤维积存在。
+
+实际工作中，重要的是把 $p_1,p_2,\pi,D,s$ 理解为 $\mathcal C$ 中某个适当的半单纯对象或单纯对象的\term{单纯运算}{simplicial operation}{opération simpliciale}，至少在 $\mathcal C$ 中纤维积存在时应当如此。
+
+为固定术语，引入\term{标准单形范畴}{category of standard simplices}{catégorie des simplexes-types} $\mathcal S$：其对象为有限集合
+\[
+ \Delta_n=[0,n],\qquad n\geq0,
+\]
+这里 $[0,n]$ 是从 $0$ 到 $n$ 的整数区间；态射或箭头则为这些有限集合之间的任意映射。$\mathcal S$ 等价于非空有限集合及其映射所成的范畴。在 $\mathcal S$ 中，非空有限族对象的和显然存在，两个对象沿第三个对象所作的\term{合并和}{pushout}{somme amalgamée}也存在；后一运算是纤维积的对偶。以 $\mathcal S'$ 表示 $\mathcal S$ 的如下子范畴：对象不变，态射只取各 $\Delta_n$ 之间的单调映射。它等价于非空有限全序集所成的范畴。
+
+\origpage{128}{212-10}
+在这个范畴中，两个对象的和从不存在；两个对象 $A,B$ 沿第三个对象 $C$ 的合并和，一般也不存在。例如，取 $C=\Delta_0$、$A=B=\Delta_1$，且两个结构映射 $u:C\to A$、$v:C\to B$ 相同。不过，某些特殊情形的合并和仍存在，例如
+\[
+ C=\Delta_0,\quad A=\Delta_m,\quad B=\Delta_n,
+ \quad u(0)=m,\quad v(0)=0;
+\]
+此时有
+\[
+ \Delta_m\amalg_{\Delta_0}\Delta_n=\Delta_{m+n}.
+\]
+
+按定义，范畴 $\mathcal C$ 中的\term{单纯对象}{simplicial object}{objet simplicial}，分别\term{半单纯对象}{semi-simplicial object}{objet semi-simplicial}，是从 $\mathcal S$，分别从 $\mathcal S'$，到 $\mathcal C$ 的反变函子 $K$。因此，单纯对象经限制就给出半单纯对象；两者的本质区别，在于前者的 $K_n=K(\Delta_n)$ 中还有对称运算，它们是 $n+1$ 个字母的对称群的元素经 $K$ 的像；这里把该对称群看成 $\Delta_n$ 在 $\mathcal S$ 中的自同构群。\translatornote{本节沿用作者在此明确规定的历史术语：$\mathcal S$ 允许全部集合映射，$\mathcal S'$ 允许所有单调映射，因而后者也包括退化映射。阅读时应以本节定义为准；不能把这里的“半单纯”理解为只允许单调单射的版本。}
+
+对每个 $n$，记 $\Delta'_n$、$\Delta''_n$ 为对象集均为 $\Delta_n$ 的两个有限范畴：前者由 $\Delta_n$ 上的混沌序关系定义，后者由其自然全序定义；箭头集即相应序关系的图。显然，$\Delta'_n$ 随 $\mathcal S$ 中的 $\Delta_n$ 函子性地变化，而 $\Delta''_n$ 随 $\mathcal S'$ 中的 $\Delta_n$ 函子性地变化。若 $Z$ 是一个范畴，则
+\[
+ \operatorname{Hom}(\Delta'_n,Z),\qquad
+ \operatorname{Hom}(\Delta''_n,Z)
+\]
+随 $\Delta_n$ 分别给出从 $\mathcal S$、$\mathcal S'$ 到集合范畴的反变函子，也就是一个\term{单纯集}{simplicial set}{ensemble simplicial}、一个\term{半单纯集}{semi-simplicial set}{ensemble semi-simplicial}，称为与 $Z$ 关联的对象，分别记为 $Z'$、$Z''$。还有一个显然的自然同态，从 $Z'$ 所关联的半单纯集到 $Z''$；这个同态是同构，当且仅当 $Z$ 是群胚。于是有：
+
+\begin{statement}{命题 4.1}
+从范畴所成范畴到半单纯集范畴的函子 $Z\mapsto Z''$ 是\term{全忠实}{fully faithful}{pleinement fidèle}的；它把范畴所成范畴，等价到那些把上述特殊类型的合并和 $A\amalg_CB$ 变为集合纤维积的半单纯集所成范畴。换言之，这些半单纯集就是满足该条件的反变函子 $K:\mathcal S'\to\mathrm{Ens}$。
+
+同样，从群胚范畴到单纯集范畴的函子 $Z\mapsto Z'$ 也是全忠实的，并把群胚范畴等价到那些
+\origpage{129}{212-11}
+把合并和变为纤维积的单纯集所成范畴，即满足该条件的反变函子 $K:\mathcal S\to\mathrm{Ens}$ 所成范畴。
+\end{statement}
+
+因此，可以把范畴看作特殊的半单纯集，把群胚看作特殊的单纯集。当然，这里的识别应当“在同构的意义下”理解；用一种结构解释另一种结构时，理应如此。用通常方法归约到集合情形，就得到：
+
+\begin{statement}{推论 4.2}
+只要 $\mathcal C$ 中纤维积存在，把上述命题中的范畴、群胚、单纯集分别换成 $\mathcal C$-范畴、$\mathcal C$-群胚、$\mathcal C$ 中的单纯对象，命题仍成立。
+\end{statement}
+
+与 $\mathcal C$ 中的范畴 $(X,R,\ldots)$ 关联的半单纯对象 $K$ 可以具体写出。其第 $n$ 个分量 $K_n=K(\Delta_n)$ 参数化 $n$ 个依次可复合的箭头。更准确地说，可递归写成
+\[
+ K_0=X,\qquad K_1=R,\qquad
+ K_n=(K_{n-1},p_{n-1}^{(n-1)})\times_X(R,p_1)
+ \quad(n\geq2),
+\]
+其中 $p_i^{(n-1)}:K_{n-1}\to X$（$0\leq i\leq n-1$）是各顶点投影，也可递归定义。\translatornote{原文此段存在相互关联的指标错误：先把 $K_n$ 写成 $(R,p_1)$ 在 $X$ 上的 $(n+1)$ 重纤维幂，又写
+$K_0=R$、$K_n=(K_{n-1},p_n^{(n-1)})\times_X(R,p_1)$，而紧随其后给出的顶点指标范围却是 $0\leq i\leq n-1$。这与上一页的定义 $K_n=\operatorname{Hom}(\Delta''_n,Z)$ 不相容：$\Delta''_0$ 只有一个对象，故 $K_0$ 必为对象集 $X$；$\Delta''_1$ 的一个非恒等箭头给出 $K_1=R$；$\Delta''_2$ 给出的是两个可复合箭头，故 $K_2=(R,p_2)\times_X(R,p_1)$。正文按这一直接由定义得出的递推式排印，其中最后顶点投影为 $p_{n-1}^{(n-1)}$。这里的纤维积也必须沿相邻箭头的靶和源形成，不能一般地把所有因子都只按同一个 $p_1$ 结构映射相乘。}
+
+这样，$p_1,p_2,\pi,D,s$ 分别解释为如下 $\mathcal S$ 中的态射所对应的单纯运算：$\Delta_1$ 的第0面、第1面，$\Delta_2$ 的 $(0,2)$ 面，退化映射 $\Delta_1\to\Delta_0$，以及 $\Delta_1$ 的对称。其余半单纯运算或单纯运算，都可由前四个或分别前五个运算，经复合及纤维积形式地导出。
+
+现在定义：范畴中对象 $X$ 的一个\term{预等价关系}{pre-equivalence relation}{pré-relation d'équivalence}，就是一个以 $X$ 为“对象之对象”的群胚结构。这当然包含一个对象 $R$ 和两个态射
+\[
+ p_1,p_2:R\rightrightarrows X.
+\]
+但与等价对的情形不同，仅有这些资料并不足以确定所考虑的结构。本篇研究这一概念，是为了得到可以取商的判据，即形成 $(p_1,p_2)$ 的余核的判据。因此，问题本身的表述并不涉及群胚结构中的其余资料。然而，在下面结果的证明中，
+
+\origpage{130}{212-12}
+将用到这些附加资料，特别是直到维数3的单纯运算，其中包括对称运算；这会涉及三个可复合箭头组成的纤维积，即四个顶点。\translatornote{原文接着上一页的指标写法，称这里涉及 $R$ 在 $X$ 上的“四重纤维幂”。按上一条译者注由 $K_n=\operatorname{Hom}(\Delta''_n,Z)$ 确定的指标，$K_3$ 由三个可复合箭头组成，具有四个顶点。若把群胚来自等价关系的情形写成对象空间 $X$ 在商上的纤维幂，则确实出现四个 $X$ 因子；应区分箭头因子数与顶点因子数。}
+
+$\mathcal C$ 的对象 $X$ 中的等价关系自然给出一个预等价关系。只须在集合情形中验证：与集合 $X$ 上的等价关系关联的群胚，其对象集为 $X$，箭头集为该等价关系的图。
+
+作用于 $\mathcal C$ 中对象 $X$ 的一个 $\mathcal C$-\term{单子}{monoid}{monoïde} $G$，也定义一个 $\mathcal C$-范畴，其基础对象为 $R=G\times X$ 和 $X$，这里要求 $G\times X$ 存在。当 $G$ 是群时，这是一个 $\mathcal C$-群胚；原文还断言反过来也成立。\translatornote{这一逆命题需要保证作用对象足以检测 $G$。即使在集合范畴中，也必须排除 $X=\varnothing$：任意非群单子，例如加法单子 $\mathbb N$，作用于空集所得的空范畴仍是群胚。若 $X$ 非空，则对任意 $g\in G$ 取 $a\in X$，箭头 $(g,a):a\to ga$ 的逆必为某个 $(h,ga)$；两个复合等于恒等箭头便给出 $hg=gh=1$，故 $G$ 确为群。}
+同样，只需在集合情形验证。箭头 $(g,a)$ 与 $(g',ga)$ 的复合定义为
+\[
+ (g',ga)(g,a)=(g'g,a).
+\]
+也就是说，对 $a,b\in X$，$\operatorname{Hom}(a,b)$ 按定义是把 $a$ 送到 $b$ 的\term{输运子}{transporter}{transporteur}；态射的复合由 $G$ 中的乘法给出。
+
+\begin{statement}{注}
+为了避免命题4.1 这类表述所涉及的逻辑困难，可以约定所有对象都位于某个固定的“\term{宇宙}{universe}{univers}”中；宇宙本身也是一个集合。
+\end{statement}
+
+\section{对有限平坦等价关系取商}
+\begin{statement}{定理 5.1}
+设 $X=\operatorname{Spec}B$ 是\term{仿射概形}{affine scheme}{schéma affine}，$\mathcal R$ 是 $X$ 中的预等价关系，其箭头分量 $R_1$ 仿射，记 $R_1=\operatorname{Spec}C$。假定第一投影 $p_1:R_1\to X$ 有限且\term{局部自由}{locally free}{localement libre}；换言之，相应的环同态 $p'_1:B\to C$ 使 $C$ 成为有限型投射 $B$-模。设 $A$ 是同态对 $p'_1,p'_2:B\rightrightarrows C$ 的核，即子环
+\[
+ A=\{b\in B\mid p'_1(b)=p'_2(b)\}.
+\]
+令 $Y=\operatorname{Spec}A$，以 $f:X\to Y$ 表示包含 $A\hookrightarrow B$ 所定义的态射。那么：
+\begin{enumerate}[label=(\roman*)]
+ \item $B$ 对 $A$ \term{整}{integral}{entier}，即 $f$ 是整态射；
+ \item $f$ 满射，它的纤维就是 $X$ 对 $\mathcal R$ 的集合意义下的等价类
+\origpage{131}{212-13}
+ $p_2(p_1^{-1}(x))$，而且 $Y$ 的拓扑是 $X$ 的商拓扑；
+ \item 在预概形范畴中，$Y$ 是 $X$ 对 $\mathcal R$ 的商；
+ \item 如果 $\mathcal R$ 来自一个等价关系，那么 $f:X\to Y$ 有限且局部自由，即 $B$ 是有限型投射 $A$-模；而且这个等价关系有效，即 $R_1\to X\times_YX$ 是同构。
+\end{enumerate}
+\end{statement}
+
+这个定理推广了如下熟知情形：有限群 $G$ 通过自同构作用于环 $B$，而 $A$ 是不变量环。证明也与该熟知情形的证明类似。可以用下面的推论进一步具体说明 (iii)：
+
+\begin{statement}{推论 5.2}
+典范态射 $R_1\to X\times_YX$ 满射。
+\end{statement}
+
+仍设 $\mathcal R$ 是 $X$ 中“有限且局部自由”的预等价关系，但现在允许 $X$ 是任意预概形。假设能找到预概形 $Y$ 和态射 $f:X\to Y$，使 $fp_1=fp_2$，并使 $Y$ 上的环层同态序列
+\[
+ \mathcal O_Y\longrightarrow f_*\mathcal O_X
+ \rightrightarrows g_*\mathcal O_{R_1},
+ \qquad g=fp_1,
+\]
+正合。于是从上述定理可得到与 (i)--(iv) 类似的结论。\translatornote{这一推广按原文所列条件还缺少假设。反例是 $X=\mathbb P^1_k$，取平凡等价关系 $R_1=X$、$p_1=p_2=\operatorname{id}_X$，再令 $Y=\operatorname{Spec}k$，$f$ 为结构态射。第一投影有限局部自由，而 $f_*\mathcal O_X=k$，故所列环层序列正合；但 $f$ 不是整态射，$Y$ 也不是平凡关系的商，该商应当是 $X$ 本身。补充“$f$ 为仿射态射”即可使这里从5.1 所作的推论成立：对 $Y$ 的每个仿射开集 $V$，$f^{-1}(V)$ 仿射，其箭头概形因为对它有限也仿射，层正合性便成为5.1 中的环等化子条件。逐片应用5.1 并粘合，即得所称结论。后面的“可容许”应按这种具有商性质的局部仿射构造来理解。}特别地，由 (iii)，$Y$ 是 $X$ 对 $\mathcal R$ 的商，因而在唯一同构的意义下确定。在这些条件下，称 $X$ 中的预等价关系 $\mathcal R$ 是\term{可容许}{admissible}{admissible}的。由此定义有：
+
+\begin{statement}{定理 5.3}
+设 $X$ 是预概形，$\mathcal R$ 是 $X$ 中的预等价关系，并且 $p_1:R_1\to X$ 有限且局部自由。$\mathcal R$ 可容许，当且仅当 $X$ 对 $\mathcal R$ 的每个集合意义下的等价类 $p_2(p_1^{-1}(x))$ 都包含在某个仿射开集中。如果 $X$ 的每个有限子集都包含在某个仿射开集中，这个条件当然满足；例如，$X$ 对某个仿射概形准射影时便是如此。
+\end{statement}
+
+事实上，不难证明每个模 $\mathcal R$ 的等价类这时都包含在一个对 $\mathcal R$ 稳定的仿射开集中，再把定理5.1 给出的各个商片粘合起来，就构造出商 $Y$。
+
+\origpage{132}{212-14}
+\begin{statement}{推论 5.4}
+假定上述条件成立，而且 $\mathcal R$ 来自一个等价关系。这个等价关系有效，即 $R_1\to X\times_YX$ 是同构；此外，$f:X\to Y$ 是有限局部自由态射。
+\end{statement}
+
+通过“\term{下降}{descent}{descente}”立即得到：
+
+\begin{statement}{推论 5.5}
+在推论5.4 的条件下，$X$ 在 $Y$ 上处处为秩 $n$，当且仅当 $(R_1,p_1)$ 在 $X$ 上处处为秩 $n$。如果 $X,R_1$ 都是 $Z$-预概形，而 $p_1,p_2$ 是 $Z$-态射，因而 $Y$ 也是 $Z$-预概形，那么 $X$ 对 $Z$ 平坦，当且仅当 $Y$ 对 $Z$ 平坦。
+\end{statement}
+
+综上可表述为：
+\begin{statement}{总括}
+给定预概形之间的一个有限、局部自由且满射的态射 $f:X\to Y$，等价于给定一个预概形 $X$ 及其中的等价关系 $R$，使 $p_1:R\to X$ 有限且局部自由，并且每个等价类 $p_2(p_1^{-1}(x))$ 都包含在某个仿射开集中。
+\end{statement}
+
+\begin{statement}{注 5.6}
+\begin{enumerate}[label=\arabic*\textsuperscript{o}]
+ \item 以上不需要任何 Noether 假设。
+ \item 这种取商包含 Cartier 的“\term{不可分下降}{inseparable descent}{descente inséparable}”作为特例。后者对应于确定有限局部自由态射 $f:X\to Y$，使 $f_*\mathcal O_X$ 相对于 $\mathcal O_Y$ 存在一个 $p$-基；这里 $X$ 已给定，并且其结构层 $\mathcal O_X$ 被素数 $p>0$ 零化。结果容易表述，而且既不需要假定局部环正则，也不需要假定 $X$ 是域上的代数概形。取 $X$ 为特征 $p$ 的域的谱，就得到 Jacobson--Bourbaki 理论。
+ \item Gabriel 此前在域 $k$ 上的有限交换群取商理论中，已得到定理5.3 的一个特例。参见7.4。
+\end{enumerate}
+\end{statement}
+
+\section{对固有平坦等价关系取商}
+\begin{statement}{定理 6.1}
+设 $S$ 是局部 Noether 预概形，$X$ 是对 $S$ \term{准射影}{quasi-projective}{quasi-projectif}的概形，$\mathcal R$ 是 $X$ 中的预等价关系，满足：
+\origpage{133}{212-15}
+\begin{enumerate}[label=(\alph*)]
+ \item $p_1:R_1\to X$ \term{固有}{proper}{propre}且\term{平坦}{flat}{plat}；
+ \item $R_1\to X\times_SX$ 是有限态射；由 (a)，这也等价于要求它的纤维有限。当 $\mathcal R$ 来自等价关系时，此条件自动满足。
+\end{enumerate}
+在这些条件下：
+\begin{enumerate}[label=(\roman*)]
+ \item 商 $X/\mathcal R=Y$ 存在；若 $S$ 是 Noether 的，$Y$ 对 $S$ 准射影。\footnote{\textbf{作者勘误提示。}作者在本书所附\hyperref[orig:7]{评论 C-05}中指出：$Y$ 对 $S$ 准射影这一断言，目前似乎只在 $\mathcal R$ 来自等价关系的情形下得到证明。这里保留原报告的表述，并应结合该勘误阅读。}
+ \item 典范态射 $f:X\to Y$ 满射、固有且开放；它的纤维是 $X$ 对 $\mathcal R$ 的集合意义下的等价类 $p_2(p_1^{-1}(x))$，所以 $Y$ 可识别为 $X$ 对 $\mathcal R$ 所定义的集合等价关系的商拓扑空间。此外，$R_1\to X\times_YX$ 满射。
+ \item 若 $\mathcal R$ 来自等价关系，则该关系有效，即 $R_1\to X\times_YX$ 是同构；而且 $f:X\to Y$ 平坦，因而忠实平坦。
+\end{enumerate}
+\end{statement}
+
+证明利用 $X$ 相对于 $\mathcal R$ 的适当\term{拟截面}{quasi-section}{quasi-section}，归约到定理5.1；其思路类似于 Chevalley 讨论班中商代数群的构造。
+
+可归纳为：
+\begin{statement}{总括}
+设 $S$ 局部 Noether，$X$ 对 $S$ 准射影。给定一个从 $X$ 到某个 $S$-预概形 $Y$ 的固有、忠实平坦且满射的态射 $f:X\to Y$，等价于给定 $X$ 中的一个等价关系 $R$，使 $p_1:R\to X$ 固有且平坦。
+\end{statement}
+
+同一方法还给出下述结果。
+\begin{statement}{定理 6.2}
+设 $S$ 是 Noether 预概形，$X$ 是对 $S$ \term{有限型}{of finite type}{de type fini}的预概形，$\mathcal R$ 是 $S$-预概形 $X$ 中的预等价关系。假定：(a) $p_1:R_1\to X$ 平坦且有限型；(b) $R_1\to X\times_SX$ \term{拟有限}{quasi-finite}{quasi-fini}，即纤维有限。那么，存在 $X$ 中一个稠密、对 $\mathcal R$ \term{饱和}{saturated}{saturé}的开集 $U$，满足：
+\begin{enumerate}[label=(\roman*)]
+ \item 以 $\mathcal R_U$ 表示 $\mathcal R$ 在 $U$ 上诱导的预等价关系，则 $U/\mathcal R_U$ 存在，而且对 $S$ 有限型。
+ \item 典范态射 $U\to U/\mathcal R_U$ 满射且开放，纤维是 $\mathcal R_U$ 的集合意义下的等价类。因此，$U/\mathcal R_U$ 是 $U$ 对 $\mathcal R_U$ 所定义的集合等价关系的商拓扑空间。此外，态射
+ \[
+  (\mathcal R_U)_1\longrightarrow U\times_{U/\mathcal R_U}U
+ \]
+ 满射。
+\origpage{134}{212-16}
+ \item 若 $\mathcal R$ 来自等价关系，则可以要求 $U\to U/\mathcal R_U$ 忠实平坦，且 $\mathcal R_U$ 有效。
+\end{enumerate}
+\end{statement}
+
+这是一个本质上具有“\term{双有理}{birational}{birationnel}”性质的结果。
+
+\begin{statement}{注 6.3}
+\begin{enumerate}[label=\arabic*\textsuperscript{o}]
+ \item 我不知道定理6.1 和6.2 的假设 (b) 能否删去。在群作用取商的实际应用中，这一假设使我们不得不把自己限制在所有\term{稳定子}{stabilizer}{stabilisateur}都是有限群的情形。
+ \item 可以问：不假定平坦性时，是否仍有类似定理6.1、6.2 的结果？我在这一方向上没有反例。另一方面，即使保留平坦性，并只考虑 $p_1:R\to X$ 平坦且拟有限、但不有限的等价关系，即使 $X$ 仿射，$R$ 也可能无效。只须取 Nagata 的代数簇上的等价关系在覆盖它的仿射开集上所诱导的关系即可；那个代数簇上有一个二元群以“不可容许”的方式作用。
+\end{enumerate}
+\end{statement}
+
+\section{应用}
+如引言所述，定理6.1 最重要的应用是构造 Picard 概形，并解决若干其他“模”问题；这些问题以后还会讨论。
+
+我们可以简单地证明下述 Shimura 的结果。
+\begin{statement}{命题 7.1}
+设 $A$ 是定义在\term{离散赋值环}{discrete valuation ring}{anneau de valuation discrète} $V$ 上的\term{阿贝尔概形}{abelian scheme}{schéma abélien}，$V$ 的分式域为 $K$。那么，每个与 $A\otimes_VK$ 的某个商\term{同源}{isogenous}{isogène}的 $K$ 上阿贝尔概形 $B'$，都“在 $V$ 处有\term{良约化}{good reduction}{bonne réduction}”；也就是说，它同构于某个 $B\otimes_VK$，其中 $B$ 是 $V$ 上的阿贝尔概形。回顾一下，这样的 $B$ 在本质上唯一。
+\end{statement}
+
+可以假定 $B'$ 是 $A_K$ 对某个子群概形 $C'$ 的商。注意，$C'$ 一般不是“\term{既约}{reduced}{réduit}”的，即其局部环可能含非零幂零元。考虑 $C'$ 在 $A$ 中的“\term{闭包}{closure}{adhérence}” $C$：它是使 $C_K$ 包含 $C'$ 的最小闭子概形。于是 $C_K=C'$。由于 $V$ 是离散赋值环，容易推出 $C$ 是 $A$ 的一个 $V$ 上子群概形。\translatornote{这里应用定理6.1 还需要 $C$ 对 $V$ 平坦，原文略去了这一步。概形闭包的定义使 $\mathcal O_C$ 没有 $V$-挠元：仿射地说，其定义理想是一般纤维理想的收缩，故若非零 $a\in V$ 且 $ab$ 属于该理想，则 $b$ 也属于该理想。离散赋值环上的无挠模平坦，所以 $C\to\operatorname{Spec}V$ 平坦。闭包在群运算下稳定，可在平坦的一般纤维上检验后取闭包得出；作用关系的投影 $C\times_VA\to A$ 因为是 $C\to\operatorname{Spec}V$ 的基变换，也平坦。这就补足了应用6.1 的平坦性条件。}
+由于 $A$ 对 $S=\operatorname{Spec}V$ 固有，$C$ 也固有；另一方面，$A$ 对 $S$ 甚至是射影的。因此可以应用定理6.1 构造 $A/C=B$，
+
+\origpage{135}{212-17}
+这正是所求的 $B$。
+
+最后，用一些基本上已知的论证，可以从定理6.2 导出如下结果。
+\begin{statement}{定理 7.2}
+设 $S$ 是 Artin 环的谱，$F,G$ 是 $S$ 上有限型\term{群概形}{group scheme}{schéma en groupes}，$u:F\to G$ 是 $S$ 上的群概形同态。假定：
+\begin{enumerate}[label=(\roman*)]
+ \item $F$ 对 $S$ 平坦；
+ \item $u$ 的核有限。
+\end{enumerate}
+那么，商概形 $G/F$ 存在，典范态射 $G\to G/F$ 满射且开放，其纤维为 $F$ 在 $G$ 上右作用所定义的集合意义下的等价类。如果 $u$ 是单态射，那么 $G\to G/F$ 平坦，而且
+\[
+ G\times_SF\longrightarrow G\times_{G/F}G
+\]
+是同构。换言之，$G$ 是 $G/F$ 上的一个\term{主齐性空间}{principal homogeneous space}{espace principal homogène}，其结构群为右作用的 $F$；更准确地说，是把 $F\times_S(G/F)$ 看作 $G/F$ 上的群概形而得到的结构群（见 [1]，B，\S6）。
+\end{statement}
+
+\begin{statement}{推论 7.3}
+在这些条件下，$G$ 对 $S$ 平坦，当且仅当 $G/F$ 对 $S$ 平坦。若此条件满足，则对 $F$ 取商与 $S$ 的任意基扩张交换；如果 $F$ 是 $G$ 的正规子群，那么 $G/F$ 可赋予 $G$ 对 $F$ 的商群结构。
+\end{statement}
+
+当 $S$ 是域的谱时，情形尤其简单，因为这时每个 $S$-预概形都自动对 $S$ 平坦。于是得到：
+
+\begin{statement}{推论 7.4}
+设 $F,G$ 是域 $k$ 上的有限型群概形，$u:F\to G$ 是 $k$-群同态。那么 $u$ 可以分解为
+\[
+ F\longrightarrow F'\longrightarrow G,
+\]
+其中 $F\to F'$ 是对 $F$ 的闭子群 $\operatorname{Ker}u$ 取商的同态，而 $F'\to G$ 是一个\term{闭浸入}{closed immersion}{immersion fermée}的群同态。商 $G/F=G/F'$ 存在。通常的形式运算，例如 Noether 型的同构定理，在 $k$ 上的代数群中都成立。
+\end{statement}
+
+这个结果可以统一处理经典意义下代数群的取商，即对 $k$ 不可约并且对 $k$ \term{光滑}{smooth}{simple}的代数群的取商，以及 Cartier 所考虑的对“\term{无穷小}{infinitesimal}{infinitésimal}”子群的取商。
+
+\origpage{136}{212-18}
+Cartier 在 Dieudonné 的形式群工作之后引入的“\term{超代数}{hyperalgebra}{hyperalgèbre}”，最好看成 $k$ 上形式概形范畴中的群；在适当情形，也就是相应超代数对 $k$ 的秩有限时，还可把它们看成 $k$ 上的有限代数群。
+
+\section{一个猜想}
+提出这个猜想，是因为需要对射影群在“\term{Hilbert 概形}{Hilbert scheme}{schéma de Hilbert}”的某些子概形上的作用取商；Hilbert 概形在概形理论中取代了 Chow 簇。
+
+设 $S$ 是预概形，$n$ 是一个整数。对于每个 $S$ 上的预概形 $S'$，考虑环 $\Gamma(S',\mathcal O_{S'})$ 中的可逆 $n\times n$ 矩阵所成的群
+\[
+ \operatorname{GL}\bigl(n,\Gamma(S',\mathcal O_{S'})\bigr).
+\]
+这给出一个关于 $S'$ 的反变函子，容易证明它可表示，因此对应于 $S$ 上的一个群概形，记为 $\operatorname{GL}(n)_S$；它对 $S$ 还是仿射的。这个构造与基变换相容，所以实际上所有这些概形都来自 $\mathbb Z$ 上的一个群概形 $\operatorname{GL}(n)$。群 $\operatorname{GL}(1)$ 称为\term{乘法群}{multiplicative group}{groupe multiplicatif}，通常记作 $\mathbb G_m$；它对应于把 $S$ 送到 $S$ 上“单位”群 $\Gamma(S,\mathcal O_S)^\times$ 的函子。有一个显然的同态 $\operatorname{GL}(1)\to\operatorname{GL}(n)$，而且容易构造相应商群，记为 $\operatorname{GP}(n-1)$，称为 $\mathbb Z$ 上\term{射影群}{projective group}{groupe projectif}，其次数为 $n-1$。它表示把 $S$ 送到层
+\[
+ \underline{\operatorname{GL}}(n)_S/
+ \underline{\operatorname{GL}}(1)_S
+\]
+的截面群的函子；这里 $\underline{\operatorname{GL}}(n)_S$ 表示 $\operatorname{GL}(n)_S$ 在 $S$ 上的截面芽层。务必注意：$\operatorname{GP}(n-1)_S$ 在 $S$ 上的截面，一般并不来自 $\operatorname{GL}(n)_S$ 在 $S$ 上的截面！还可以证明，$\operatorname{GP}(n-1)$ 也表示函子
+\[
+ S\longmapsto\operatorname{Aut}_S(\mathbb P_S^{n-1}),
+\]
+至少对 Noether 的 $S$ 如此；$\mathbb P_S^{n-1}$ 是 $S$ 上相对维数为 $n-1$ 的标准射影概形。它就是这样进入模理论的。
+
+设 $S$ 是 Noether 概形；如果愿意，还可以假定它仿射。设 $X$ 是准射影 $S$-预概形，带有对 $S$ \term{甚丰沛}{very ample}{très ample}的\term{可逆层}{invertible sheaf}{faisceau inversible} $\mathcal L$。假定群 $G=\operatorname{GP}(n)_S$ 作用于 $X$，同时以与 $X$ 上作用相容的方式作用于 $\mathcal L$，并且在 $X$ 上自由作用。\translatornote{原文末尾写成“在 $S$ 上自由作用”。但这里 $G$ 是 $S$ 上的群，所考虑的是 $S$-作用；在底 $S$ 上它的结构作用平凡，除非 $G$ 平凡，否则不可能自由。后文猜想所要求的 $G\times_SX\to X\times_SX$ 是单态射，也明确对应于 $X$ 上的自由作用，故应将这里的 $S$ 改为 $X$。}
+
+\origpage{137}{212-19}
+\begin{statement}{猜想 8.1}
+在上述条件下：
+\begin{enumerate}[label=\arabic*\textsuperscript{o}]
+ \item $G$ 所定义的等价关系有效，商 $Y=X/G$ 对 $S$ 有限型，且典范态射 $f:X\to Y$ 平坦、满射。因此 $X$ 成为 $Y$ 上的主齐性纤维丛，结构群为 $G\times_SY=\operatorname{GP}(n)_Y$。
+ \item 设 $\mathcal L'$ 是通过 $f$ 作“忠实平坦下降”，由 $\mathcal L$ 得到的 $Y$ 上可逆层（见 [1]，B，定理1）。那么 $\mathcal L'$ 对 $S$ 是“\term{预丰沛}{preample}{préample}”的，即存在整数 $m$ 和一个从 $Y$ 到某个适当标准射影概形 $\mathbb P_S^N$ 的拟有限态射，使 $(\mathcal L')^{\otimes m}$ 同构于 $\mathcal O_{\mathbb P_S^N}(1)$ 的逆像。
+\end{enumerate}
+\end{statement}
+\begin{statement}{作者勘误提示}
+作者在\hyperref[orig:7]{评论 C-05}中明确指出：这个猜想是错误的；反例在下一篇报告的末尾说明。这里保留猜想及原来的讨论，以呈现报告的原貌。
+\end{statement}
+
+应当注意，即使 $X$ 对 $S$ 分离，$Y$ 也可能不对 $S$ 分离；在毫不病态的模问题中，就会出现这种情形。若第1项成立，则 $Y$ 分离，当且仅当 $G$ 定义的等价关系有闭图，即 $G\times X\to X\times X$ 的像闭；这时该态射实际上是闭浸入。如果 $Y$ 分离，则 $\mathcal L'$ 对 $S$ 预丰沛，当且仅当它\term{丰沛}{ample}{ample}，也就是某个适当的张量幂定义一个射影浸入。对于引言所提到的模问题，可以证明所得等价关系确实具有闭图。
+
+\begin{statement}{注 8.1}
+为了固定讨论，我们假定 $G=\operatorname{GP}(n)_S$；而且这也是目前实践中最重要的情形。对 $G$ 更合理的假设，似乎应当是：它是某个 Tohoku 群在 $S$ 上的一个“\term{形式}{form}{forme}”；这些群在整数上的构造也已由 Chevalley 完成。
+
+关于上述猜想，我所知道的唯一肯定事实如下。设 $X$ 是特征为零的域 $k$ 上的仿射概形，$\operatorname{GL}(n)_k$ 或 $\operatorname{GP}(n-1)_k$ 在其上自由作用。那么 $G$ 所定义的等价关系有效，商 $X/G$ 也是仿射的，而态射 $X\to X/G$ 平坦、满射。证明利用如下事实，它目前也只在特征零下得到证明：让 $G$ 作用于自身的仿射坐标环 $A$，并把 $A$ 看成 $k$-向量空间，则 $G$ 的平凡表示只出现一次；这里指的是在 $G$-稳定的有限维 $k$-向量子空间的一条合成列中。
+\end{statement}
+
+\origpage{138}{212-20}
+似乎可以期待，对 $G$ 的线性表示理论作系统运用，最终能够证明这一猜想，至少在基为域时如此。至于基不再是域的情形，报告人一无所知。
+
+\section*{参考文献}
+\begin{enumerate}[label={[\arabic*]}]
+ \item Grothendieck, Alexander. \emph{代数几何中的下降技术与存在定理，I：一般性}（Techniques de descente et théorèmes d'existence en géométrie algébrique, I : Généralités）. Séminaire Bourbaki, 1959/60, 第190号报告，29页。
+ \item Grothendieck, Alexander. \emph{代数几何中的下降技术与存在定理，II：形式模理论中的存在定理}（Techniques de descente et théorèmes d'existence en géométrie algébrique, II : Le théorème d'existence en théorie formelle des modules）. Séminaire Bourbaki, 1959/60, 第195号报告，22页。
+ \item Grothendieck, A.; Dieudonné, J. \emph{代数几何原理，I：概形的语言}（Éléments de géométrie algébrique, I : Le langage des schémas）. Paris: Presses universitaires de France, 1960. Institut des Hautes Études Scientifiques, Publications mathématiques, 4。
+\end{enumerate}
+

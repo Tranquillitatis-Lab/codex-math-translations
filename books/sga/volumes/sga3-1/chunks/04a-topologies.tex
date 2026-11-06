@@ -1,0 +1,590 @@
+\SourcePage{183}
+\SGAchapter{IV}{拓扑与层}{Topologies et faisceaux}
+\begin{center}M. Demazure\footnote{本文展开了 A. Grothendieck 两次口头报告的主要内容，并在若干重要之处补充了原报告中略而不谈或仅略有涉及的内容。}\end{center}
+本讲旨在向读者介绍\Term{topology}{拓扑}与\Term{sheaf}{层}的基本语言（不涉及\Term{cohomology}{上同调}）；这种语言对于取\Term{quotient}{商}等问题尤为方便。
+
+前三节发展取\Term{quotient}{商}的语言。第四节是本讲的\Term{center}{中心}，阐述\Term{sheaf}{层}论，主要着眼于它在\Term{quotient}{商}问题中的应用；第五节将其应用于\Term{group}{群}中的取\Term{quotient}{商}以及\Term{principal-homogeneous-bundle}{主齐性纤维丛}。最后一节专门讨论\Term{scheme}{概形}\Term{category}{范畴}，并在这个\Term{category}{范畴}上定义几种有用的\Term{topology}{拓扑}。
+
+读者可参阅 [AS]、[MA]、[D] 及 SGA 4；其中 [D] 专门讨论\Term{topology}{拓扑}在\Term{descent}{下降}理论中的应用，而 SGA 4 讨论\Term{universe}{宇宙}问题（本讲对这些问题的处理尤其草率）。
+
+\SGAsection{1}{泛有效满态射}
+本讲以下固定一个\Term{category}{范畴} $\mathcal C$。
+\begin{SGAresult}{定义}{1.1}
+若对每个\Term{object}{对象} $X$，对应的映射
+\[
+ X(S)=\operatorname{Hom}(S,X)\longrightarrow X(T)=\operatorname{Hom}(T,X)
+\]
+均为\Term{injectivity}{单射}，则称\Term{morphism}{态射} $u:T\to S$ 为\Term{epimorphism}{满态射}\footnote{编者注（1）：即 $u$ 可右消去。}。若对每个\Term{morphism}{态射} $S'\to S$，\Term{fiber-product}{纤维积} $T'=T\times_S S'$ 都存在，且 $u':T'\to S'$ 为\Term{epimorphism}{满态射}，则称 $u$ 为\Term{universal-epimorphism}{泛满态射}。
+\end{SGAresult}
+\SourcePage{184}
+\begin{SGAresult}{定义}{1.2}
+称\Term{set}{集合}映射图
+\[
+\begin{tikzcd}A\arrow[r,"u"]&B\arrow[r,shift left=.5ex,"v_1"]\arrow[r,shift right=.5ex,"v_2"']&C\end{tikzcd}
+\]
+\Term{exact}{正合}，若 $u$ 是\Term{injectivity}{单射}，且其像恰由满足 $v_1(b)=v_2(b)$ 的 $b\in B$ 组成。称 $\mathcal C$ 中同型式的图\Term{exact}{正合}，若对 $\mathcal C$ 的每个\Term{object}{对象} $X$，对应的\Term{set}{集合}图
+\[
+ A(X)\longrightarrow B(X)\rightrightarrows C(X)
+\]
+均\Term{exact}{正合}；此时也说 $u$ 使 $A$ 成为\Term{arrow}{箭头}对 $(v_1,v_2)$ 的一个\Term{kernel}{核}。
+
+\Term{duality}{对偶}地，称 $\mathcal C$ 中的图
+\[
+\begin{tikzcd}C\arrow[r,shift left=.5ex,"v_1"]\arrow[r,shift right=.5ex,"v_2"']&B\arrow[r,"u"]&A\end{tikzcd}
+\]
+\Term{exact}{正合}，若它作为\Term{opposite-category}{反范畴} $\mathcal C^\circ$ 中的图\Term{exact}{正合}，即对 $\mathcal C$ 的每个\Term{object}{对象} $X$，相应的\Term{set}{集合}图
+\[
+ X(A)\longrightarrow X(B)\rightrightarrows X(C)
+\]
+均\Term{exact}{正合}\footnote{编者注（2）：特别地，这蕴含 $u$ 是\Term{epimorphism}{满态射}。}。此时也说 $u$ 使 $A$ 成为\Term{arrow}{箭头}对 $(v_1,v_2)$ 的一个\Term{cokernel}{余核}。
+\end{SGAresult}
+\begin{SGAresult}{定义}{1.3}
+若\Term{fiber-square}{纤维平方} $T\times_S T$ 存在，且图
+\[
+\begin{tikzcd}T\times_S T\arrow[r,shift left=.5ex,"\operatorname{pr}_1"]\arrow[r,shift right=.5ex,"\operatorname{pr}_2"']&T\arrow[r,"u"]&S\end{tikzcd}
+\]
+\Term{exact}{正合}，即 $u$ 使 $S$ 成为 $(\operatorname{pr}_1,\operatorname{pr}_2)$ 的一个\Term{cokernel}{余核}，则称\Term{morphism}{态射} $u:T\to S$ 为\Term{effective-epimorphism}{有效满态射}。若对每个\Term{morphism}{态射} $S'\to S$，\Term{fiber-product}{纤维积} $T'=T\times_S S'$ 都存在，且 $u':T'\to S'$ 是\Term{effective-epimorphism}{有效满态射}，则称 $u$ 为\Term{universal-effective-epimorphism}{泛有效满态射}。
+\end{SGAresult}
+显然有如下蕴含：
+\[
+\begin{tikzcd}
+\text{泛有效满态射}\arrow[r,Rightarrow]\arrow[d,Rightarrow]&\text{有效满态射}\arrow[d,Rightarrow]\\
+\text{泛满态射}\arrow[r,Rightarrow]&\text{满态射}
+\end{tikzcd}
+\]
+但一般没有其他蕴含成立。\footnote{编者注（3）：例如，若 $\mathcal C=(\mathrm{Sch})$ 是\Term{scheme}{概形}\Term{category}{范畴}，则容易看出每个\Term{universal-epimorphism}{泛满态射}都是\Term{surjectivity}{满射}。令 $T=\coprod_{p\text{ 为素数}}\operatorname{Spec}(\mathbf F_p)$，$S=\operatorname{Spec}(\mathbf Z)$，则\Term{morphism}{态射} $u:T\to S$ 是\Term{epimorphism}{满态射}，却不是\Term{universal-epimorphism}{泛满态射}。另一方面，$T\times_S T$ 可与 $T$ 等同，所以两个\Term{projection}{投影} $T\times_S T\rightrightarrows T$ 相同；由于 $\operatorname{id}_T$ 不能\Term{descent}{下降}为\Term{morphism}{态射} $S\to T$，这表明 $u$ 不是\Term{effective-epimorphism}{有效满态射}。}
+\SourcePage{185}
+\begin{SGAresult}{定义}{1.4.0}
+\footnote{编者注（4）：为便于后文引用，我们增添了编号 1.4.0。}“回顾”一下：若对每个\Term{morphism}{态射} $S'\to S$，\Term{fiber-product}{纤维积} $T\times_S S'$ 都存在，则称\Term{morphism}{态射} $u:T\to S$ \Term{quarrable}{可作基变换}（quarrable）。
+\end{SGAresult}
+\begin{SGAresult}{\Term{lemma}{引理}}{1.4}
+考虑\Term{morphism}{态射} $U\xrightarrow{v}T\xrightarrow{u}S$。则：
+\begin{enumerate}
+\item[a)] $u,v$ 是\Term{epimorphism}{满态射} $\Rightarrow uv$ 是\Term{epimorphism}{满态射} $\Rightarrow u$ 是\Term{epimorphism}{满态射}；
+\item[b)] $u,v$ 是\Term{universal-epimorphism}{泛满态射} $\Rightarrow uv$ 是\Term{universal-epimorphism}{泛满态射}，且若 $u$ \Term{quarrable}{可作基变换}，则后者又 $\Rightarrow u$ 是\Term{universal-epimorphism}{泛满态射}。
+\end{enumerate}
+\end{SGAresult}
+\Term{lemma}{引理} 1.4 由定义立即可得。由此\Term{pushout}{推出}：
+\begin{SGAresult}{推论}{1.5}
+设 $u:X\to Y$ 与 $u':X'\to Y'$ 是\Term{universal-epimorphism}{泛满态射}，且 $Y\times Y'$ 存在，则 $X\times X'$ 存在，且 $u\times u':X\times X'\to Y\times Y'$ 是\Term{universal-epimorphism}{泛满态射}。
+\end{SGAresult}
+再记下：
+\begin{SGAresult}{定义}{1.6.0}
+\footnote{编者注（5）：为便于后文引用，我们增添了编号 1.6.0。}若 $\mathcal C$ 的\Term{object}{对象} $S$ 与 $\mathcal C$ 的任一\Term{object}{对象}的\Term{product}{积}都存在，则称 $S$ \Term{quarrable}{可作积}。（若 $\mathcal C$ 有\Term{final-object}{终对象} $e$，这\Term{equivalence}{等价}于\Term{morphism}{态射} $S\to e$ \Term{quarrable}{可作基变换}，见 1.4.0。）
+\end{SGAresult}
+\begin{SGAresult}{\Term{lemma}{引理}}{1.6}
+设 $u:X\to Y$ 是 $\mathcal C/S$ 中的\Term{morphism}{态射}；要使它是\Term{epimorphism}{满态射}（分别为\Term{universal-epimorphism}{泛满态射}、\Term{effective-epimorphism}{有效满态射}、\Term{universal-effective-epimorphism}{泛有效满态射}），只须它在 $\mathcal C$ 中对应的\Term{morphism}{态射}具有该性质；若假设 $S$ 是 $\mathcal C$ 的\Term{quarrable}{可作积}\Term{object}{对象}，则此条件也必要。
+\end{SGAresult}
+\begin{proof}
+证明直接，留给读者。“$S$ \Term{quarrable}{可作积}”这一假设用于把 $\mathcal C/S$ 中的\Term{object}{对象} $Y$ 到 $\mathcal C$ 中\Term{object}{对象} $Z$ 的 $\mathcal C$-\Term{morphism}{态射}，解释成 $Y$ 到 $Z\times S$ 的 $\mathcal C/S$-\Term{morphism}{态射}。
+\end{proof}
+\begin{SGAresult}{\Term{lemma}{引理}}{1.7}
+沿用 1.4 的记号：若 $u,v$ 为\Term{effective-epimorphism}{有效满态射}，且 $v$ 为\Term{universal-epimorphism}{泛满态射}，则 $uv$ 为\Term{effective-epimorphism}{有效满态射}。
+\end{SGAresult}
+\begin{proof}
+考虑图
+\[
+\begin{tikzcd}
+S&T\arrow[l,"u"']&T\times_S T\arrow[l,shift left=.5ex]\arrow[l,shift right=.5ex]\\
+&U\arrow[u,"v"]&U\times_S U\arrow[u,"v\times_S v"']\arrow[l,shift left=.5ex]\arrow[l,shift right=.5ex]\\
+&U\times_T U\arrow[u,shift left=.5ex]\arrow[u,shift right=.5ex]\arrow[ur]
+\end{tikzcd}
+\]
+由假设，第一行与第一列\Term{exact}{正合}；又因 $v$ 是\Term{universal-epimorphism}{泛满态射}，由 1.5 和 1.6，$v\times_S v$ 是\Term{epimorphism}{满态射}。于是结论由直接的追图得出：若 $X(U)$ 的一个元素在 $X(U\times_S U)$ 中的两个像相同，
+\SourcePage{186}
+则它在 $X(U\times_T U)$ 中的两个像当然也相同，故由第一列\Term{exact}{正合}，它来自 $X(T)$ 的一个元素。由于第一行\Term{exact}{正合}，只须检查所考虑的这个元素在 $X(T\times_S T)$ 中的两个像相同；又因 $v\times_S v$ 为\Term{epimorphism}{满态射}，只须检查它们在 $X(U\times_S U)$ 中的像相同，而这正是已知的。
+\end{proof}
+\begin{SGAresult}{命题}{1.8}
+考虑\Term{morphism}{态射} $U\xrightarrow{v}T\xrightarrow{u}S$。则 $u,v$ 为\Term{universal-effective-epimorphism}{泛有效满态射} $\Rightarrow uv$ 为\Term{universal-effective-epimorphism}{泛有效满态射}；若 $u$ \Term{quarrable}{可作基变换}，则后者又 $\Rightarrow u$ 为\Term{universal-effective-epimorphism}{泛有效满态射}。
+\end{SGAresult}
+\begin{proof}
+第一个蕴含立即由 1.7 得到。对于第二个，考察下列“\Term{bisimplicial}{双单纯}型”图：
+\[
+\begin{tikzcd}[column sep=small]
+S&T\arrow[l,"u"']&T\times_S T\arrow[l,shift left=.5ex]\arrow[l,shift right=.5ex]\\
+U\arrow[u,"vu"]&U\times_S T\arrow[l]\arrow[u]&U\times_S T\times_S T\arrow[l,shift left=.5ex]\arrow[l,shift right=.5ex]\arrow[u]\\
+U\times_S U\arrow[u,shift left=.5ex]\arrow[u,shift right=.5ex]&U\times_S U\times_S T\arrow[l]\arrow[u,shift left=.5ex]\arrow[u,shift right=.5ex]&U\times_S U\times_S T\times_S T\arrow[l,shift left=.5ex]\arrow[l,shift right=.5ex]\arrow[u,shift left=.5ex]\arrow[u,shift right=.5ex]
+\end{tikzcd}
+\]
+由“$vu$ 为\Term{universal-effective-epimorphism}{泛有效满态射}”这一假设，第一、二、三列均\Term{exact}{正合}；第二行\Term{exact}{正合}，因为 $U\times_S T\to U$ 是\Term{effective-epimorphism}{有效满态射}（它在 $U$ 上有一个\Term{section}{截面}），第三行也同样\Term{exact}{正合}。直接追图便得到第一行\Term{exact}{正合}，即 $u$ 是\Term{effective-epimorphism}{有效满态射}。由于这些假设在任意\Term{base-change}{基变换} $S'\to S$ 下保持\Term{invariant}{不变}，$u$ 实际上是\Term{universal-effective-epimorphism}{泛有效满态射}。
+\end{proof}
+\begin{SGAresult}{推论}{1.9}
+设 $u:X\to Y$ 与 $u':X'\to Y'$ 为\Term{universal-effective-epimorphism}{泛有效满态射}，且 $Y\times Y'$ 存在，则 $X\times X'$ 存在，且 $u\times u':X\times X'\to Y\times Y'$ 为\Term{universal-effective-epimorphism}{泛有效满态射}。
+\end{SGAresult}
+\begin{proof}
+与 1.5 相同，使用图
+\[
+\begin{tikzcd}
+&Y'&X'\arrow[l,"u'"']\\
+X\arrow[d,"u"']&X\times Y'\arrow[l]\arrow[u]\arrow[d]&X\times X'\arrow[l]\arrow[u]\arrow[dl,"u\times u'"]\\
+Y&Y\times Y'\arrow[l]
+\end{tikzcd}
+\]
+即可证明。
+\end{proof}
+\begin{SGAresult}{推论}{1.10}
+考虑\Term{quarrable}{可作基变换}的\Term{morphism}{态射} $u:T\to S$ 及一个为\Term{universal-effective-epimorphism}{泛有效满态射}的\Term{base-change}{基变换}\Term{morphism}{态射} $S'\to S$。要使 $u$ 为\Term{universal-effective-epimorphism}{泛有效满态射}，充要条件是 $u':T'=T\times_S S'\to S'$ 为\Term{universal-effective-epimorphism}{泛有效满态射}：
+\SourcePage{187}
+\[
+\begin{tikzcd}T\arrow[d,"u"']&T'\arrow[l,"v'"']\arrow[d,"u'"]\\S&S'\arrow[l,"v"]\end{tikzcd}
+\]
+\end{SGAresult}
+\begin{proof}
+只有充分性需要证明。若 $u'$ 为\Term{universal-effective-epimorphism}{泛有效满态射}，则由 1.8，$vu'$ 也是；又因 $vu'=uv'$，再次由 1.8 \Term{pushout}{推出} $u$ 为\Term{universal-effective-epimorphism}{泛有效满态射}。
+\end{proof}
+\textbf{注记 1.11。}同样的论证表明，在 1.10 中，可将“\Term{universal-effective-epimorphism}{泛有效满态射}”换成“\Term{universal-epimorphism}{泛满态射}”、“既\Term{universal-epimorphism}{泛满}又\Term{effective-epimorphism}{有效的满态射}”，或仅仅“\Term{epimorphism}{满态射}”（最后一种情形显然不需要“$u$ \Term{quarrable}{可作基变换}”的假设）。
+
+在 1.8 的证明中，我们用了下述值得明确写出的结果：
+\begin{SGAresult}{命题}{1.12}
+设\Term{morphism}{态射} $u:T\to S$ 有一个\Term{section}{截面}。则 $u$ 为\Term{epimorphism}{满态射}；若 $T\times_S T$ 存在，则它为\Term{effective-epimorphism}{有效满态射}；若再有 $u$ \Term{quarrable}{可作基变换}，则它为\Term{universal-effective-epimorphism}{泛有效满态射}。
+\end{SGAresult}
+\begin{proof}
+第一断言包含在 1.4 a) 中，第三断言立即由第二断言得到，故只须证明第二断言。实际上还有更强的结论：对任一\Term{functor}{函子} $F:\mathcal C^\circ\to(\mathrm{Ens})$（不必\Term{representable}{可表}），\Term{set}{集合}图
+\[
+ F(S)\longrightarrow F(T)\rightrightarrows F(T\times_S T)
+\]
+均\Term{exact}{正合}。这可以看作 Čech \Term{cohomology}{上同调}\Term{form}{形式}体系的一个特例（在 $0$ 维！）；这里仅回顾如下。只假设 $T\times_S T$ 存在，令
+\[
+ H^0(T/S,F)=\operatorname{Ker}\bigl(F(T)\rightrightarrows F(T\times_S T)\bigr).
+\]
+显然，可以将 $H^0(T/S,F)$ 看作关于在 $\mathcal C/S$ 中变化的变量 $T$ 的\Term{contravariant-functor}{反变函子}；每个 $S$-\Term{morphism}{态射} $T'\to T$ 给出一个映射
+\[
+ H^0(T/S,F)\longrightarrow H^0(T'/S,F).\tag{+}
+\]
+固定 $\mathcal C/S$ 中的 $T,T'$。一个熟知的计算说明，若存在从 $T'$ 到 $T$ 的 $S$-\Term{morphism}{态射}，则对应的映射 $(+)$ 实际上与该\Term{morphism}{态射}的选取无关\footnote{编者注（6）：以下论证由 M. Demazure 提供。设 $f,g:T'\to T$，令 $\varphi:T'\to T\times_S T$ 为以 $f,g$ 为\Term{set-component}{分量}的\Term{morphism}{态射}，故 $p_1\circ\varphi=f$，$p_2\circ\varphi=g$。于是 $F(\varphi):F(T\times_S T)\to F(T')$ 满足 $F(\varphi)\circ F(p_1)=F(f)$ 及 $F(\varphi)\circ F(p_2)=F(g)$。而对每个 $x\in H^0(T/S,F)$，有 $F(p_1)(x)=F(p_2)(x)$。对两边施以 $F(\varphi)$，便得 $F(f)(x)=F(g)(x)$，所以 $f,g$ 诱导相同的\Term{morphism}{态射}。}，因而 $H^0(T/S,F)$ 可看作由“\Term{dominant}{支配}”关系赋予\Term{preorder}{预序}的\Term{set}{集合} $\operatorname{Ob}\mathcal C/S$ 所对应的\Term{category}{范畴}上的\Term{functor}{函子}
+\SourcePage{188}
+（若存在 $S$-\Term{morphism}{态射} $T'\to T$，就说 $T'$ \Term{dominant}{支配} $T$）。特别地，若 $T,T'$ 在这个\Term{category}{范畴}中\Term{isomorphism}{同构}，即它们相互\Term{dominant}{支配}，则 $(+)$ 是\Term{set}{集合}的\Term{isomorphism}{同构}。这特别适用于 $T'$ 为 $\mathcal C/S$ 的\Term{final-object}{终对象}，即本质上为 $S$ 本身的情形；无论如何 $T$ 都\Term{dominant}{支配} $T'=S$，而反过来成立恰好当 $T/S$ 有\Term{section}{截面}。这就证明了前述加强\Term{form}{形式}的 1.12。
+\end{proof}
+\textbf{注记 1.13。}为了各种应用，本讲引入的概念及陈述的结果，需要更一般地针对具有共同目标的一族\Term{morphism}{态射} $u_i:T_i\to S$ 来发展（而非单个\Term{morphism}{态射} $u:T\to S$）。例如，若对 $\mathcal C$ 的每个\Term{object}{对象} $X$，相应的映射
+\[
+ X(S)\longrightarrow\prod_i X(T_i)
+\]
+均为\Term{injectivity}{单射}，就称此族为\Term{epimorphic-family}{满态射族}；同样可引入\Term{effective-epimorphic-family}{有效满态射族}及这些概念的“泛”版本。下文需要时，我们将承认本讲结果可以推广到这个更一般的情形。
+
+\textbf{注记 1.14。}既为\Term{monomorphism}{单态射}又为\Term{effective-epimorphism}{有效满态射}的\Term{morphism}{态射}必为\Term{isomorphism}{同构}。事实上，沿用 1.3 的记号，$T\to S$ 是\Term{monomorphism}{单态射}蕴含两个\Term{morphism}{态射}
+\[
+ \operatorname{pr}_1,\operatorname{pr}_2:T\times_S T\rightrightarrows T
+\]
+相等（且均为\Term{isomorphism}{同构}）。由定义立即可知，图
+\[
+\begin{tikzcd}C\arrow[r,shift left=.5ex,"v"]\arrow[r,shift right=.5ex,"v"']&B\arrow[r,"u"]&A\end{tikzcd}
+\]
+只有在 $u$ 为\Term{isomorphism}{同构}时才\Term{exact}{正合}。\footnote{编者注（7）：应注意，兼为\Term{epimorphism}{满态射}的\Term{monomorphism}{单态射}不一定为\Term{isomorphism}{同构}。例如在 $\mathcal C=(\mathrm{Sch})$ 中，\Term{morphism}{态射} $\operatorname{Spec}(\mathbf F_p)\amalg\operatorname{Spec}(\mathbf Z[1/p])\to\operatorname{Spec}(\mathbf Z)$ 是\Term{monomorphism}{单态射}及\Term{surjectivity}{满射}的\Term{epimorphism}{满态射}，却不是\Term{isomorphism}{同构}。}
+
+\SGAsection{2}{下降态射}
+回顾如下定义：
+\begin{SGAresult}{定义}{2.1}
+设 $f:S'\to S$ 是一个\Term{morphism}{态射}，使得 $S''=S'\times_S S'$ 存在，并设 $u':X'\to S'$ 为 $S'$ 上的一个\Term{object}{对象}。称一个 $S''$-\Term{isomorphism}{同构}
+\[
+ c:X''_1\xrightarrow{\sim}X''_2
+\]
+为 $X'/S'$ 关于 $f$ 的一个\Term{gluing-datum}{粘合资料}，其中 $X''_i$（$i=1,2$）为 $X'/S'$ 沿\Term{projection}{投影} $\operatorname{pr}_i:S''\to S'$ 的\Term{inverse-image}{逆像}（假定存在）。若\Term{gluing-datum}{粘合资料} $c$ 满足“\Term{cocycle-condition}{上循环条件}”
+\[
+ \operatorname{pr}_{3,1}^*(c)=\operatorname{pr}_{3,2}^*(c)\operatorname{pr}_{2,1}^*(c),
+\]
+则称它为\Term{descent-datum}{下降资料}；
+\SourcePage{189}
+这里 $\operatorname{pr}_{i,j}$（$1\le j<i\le3$）是从 $S'''=S'\times_S S'\times_S S'$ 到 $S''$ 的\Term{canonical}{典范}\Term{projection}{投影}（注意，现在还假定 $S'''$ 存在），$\operatorname{pr}_{i,j}^*(c)$ 为 $c$ 的\Term{inverse-image}{逆像}，看作从 $X'''_j$ 到 $X'''_i$ 的 $S'''$-\Term{morphism}{态射}；对 $1$ 到 $3$ 之间的每个整数 $k$，$X'''_k$ 表示 $X'/S'$ 沿第 $k$ 个\Term{projection}{投影} $q_k:S'''\to S'$ 的\Term{inverse-image}{逆像}（假定存在）。
+\end{SGAresult}
+因此，定义的第二部分使用了一些通常的等同与记号滥用\footnote{编者注（8）：例如，一方面等同了 $\operatorname{pr}_{2,1}^*(X''_1)=\operatorname{pr}_{3,1}^*(X''_1)$，另一方面等同了 $\operatorname{pr}_{2,1}^*(X''_2)=\operatorname{pr}_{3,2}^*(X''_2)$。}。经验表明这并无害处，但在严格阐述\Term{descent}{下降}理论时，显然应避免这些做法（理论本身恰须在一定程度上为这些常见的语言滥用提供依据）。Giraud 已写出这样一份正式的阐述 [D]（以便为从未写成的 SGA 1 第 VII 讲提供依据并加以明确）。本研讨班将不断使用\Term{faithfully-flat}{忠实平坦}\Term{descent}{下降}的结果，详细阐述可参阅 SGA 1 第 VIII 讲。
+
+仍设 $f:S'\to S$ 为一个使 $S''=S'\times_S S'$ 存在的\Term{morphism}{态射}，并设 $X$ 是 $S$ 上的\Term{object}{对象}，使得 $X'=X\times_S S'$ 与 $X''=X\times_S S''$ 存在；则 $X'$ 沿 $\operatorname{pr}_i$（$i=1,2$）的\Term{inverse-image}{逆像}存在，并且\Term{canonical}{典范}\Term{isomorphism}{同构}，从而 $X'/S'$ 带有关于 $f$ 的\Term{canonical}{典范}\Term{gluing-datum}{粘合资料}。若 $S'''$ 以及 $X'''=X\times_S S'''$ 存在，它甚至是\Term{descent-datum}{下降资料}。若 $Y$ 是 $S$ 上另一个满足相同条件的\Term{object}{对象}，则对每个 $S$-\Term{morphism}{态射} $X\to Y$，对应的 $S'$-\Term{morphism}{态射} $X'\to Y'$ 与 $X',Y'$ 上的\Term{canonical}{典范}\Term{gluing-datum}{粘合资料}“相容”。特别地，若 $S'\to S$ \Term{quarrable}{可作基变换}，则
+\[
+ X\longmapsto X'=X\times_S S'
+\]
+是从\Term{category}{范畴} $\mathcal C/S$ 到“$S'$ 上带有关于 $f$ 的\Term{descent-datum}{下降资料}的\Term{object}{对象}所成的\Term{category}{范畴}”的\Term{functor}{函子}；后一\Term{category}{范畴}的定义留给读者，它是“$S'$ 上带有关于 $f$ 的\Term{gluing-datum}{粘合资料}的\Term{object}{对象}所成的\Term{category}{范畴}”的\Term{full-subcategory}{满子范畴}。
+
+据此作如下定义：
+\begin{SGAresult}{定义}{2.2}
+若 $f:S'\to S$ \Term{quarrable}{可作基变换}（即对每个 $X\to S$，\Term{fiber-product}{纤维积} $X\times_S S'$ 存在），且上述从 $S$ 上的\Term{object}{对象}所成\Term{category}{范畴} $\mathcal C/S$ 到 $S'$ 上带有关于 $f$ 的\Term{descent-datum}{下降资料}的\Term{object}{对象}所成\Term{category}{范畴}的\Term{functor}{函子} $X\mapsto X'=X\times_S S'$ 是\Term{fully-faithful}{全忠实}的（分别为\Term{equivalence-of-categories}{范畴等价}），则称\Term{morphism}{态射} $f$ 为\Term{descent-morphism}{下降态射}（分别为\Term{effective-descent-morphism}{有效下降态射}）。
+\end{SGAresult}
+应注意，这两个概念中的第一个只需用\Term{gluing-datum}{粘合资料}就能表述（因而不必涉及三重\Term{fiber-product}{纤维积} $S'''$）：$f$ 是\Term{descent-morphism}{下降态射}，当且仅当它\Term{quarrable}{可作基变换}，并且 $X\mapsto X'$ 是从 $\mathcal C/S$ 到 $S'$ 上带有关于 $f$ 的\Term{gluing-datum}{粘合资料}的\Term{object}{对象}所成\Term{category}{范畴}的\Term{fully-faithful}{全忠实}\Term{functor}{函子}。展开这个定义，便知它的意思是：
+\SourcePage{190}
+对 $S$ 上任意两个\Term{object}{对象} $X,Y$，\Term{set}{集合}图
+\[
+\begin{tikzcd}[column sep=small]
+\operatorname{Hom}_S(X,Y)\arrow[r]&\operatorname{Hom}_{S'}(X',Y')\arrow[r,shift left=.5ex,"p_1"]\arrow[r,shift right=.5ex,"p_2"']&\operatorname{Hom}_{S''}(X'',Y'')
+\end{tikzcd}\tag{x}
+\]
+\Term{exact}{正合}，其中对 $i=1,2$，$p_i(u')$ 表示 $u'\in\operatorname{Hom}_{S'}(X',Y')$ 沿\Term{projection}{投影} $\operatorname{pr}_i:S''\to S'$ 的\Term{inverse-image}{逆像}；事实上，\Term{arrow}{箭头}对 $(p_1,p_2)$ 的\Term{kernel}{核}按定义正是与\Term{canonical}{典范}\Term{gluing-datum}{粘合资料}相容的 $S'$-\Term{morphism}{态射} $X'\to Y'$ 所成的\Term{set}{集合}。
+
+由\Term{inverse-image}{逆像} $Y',Y''$ 的定义，有\Term{canonical}{典范}\Term{bijection}{双射}
+\[
+\operatorname{Hom}_{S'}(X',Y')\simeq\operatorname{Hom}_S(X',Y),\qquad
+\operatorname{Hom}_{S''}(X'',Y'')\simeq\operatorname{Hom}_S(X'',Y),
+\]
+所以图 $(\mathrm{x})$ 的\Term{exact}{正合}性\Term{equivalence}{等价}于图
+\[
+\operatorname{Hom}_S(X,Y)\longrightarrow\operatorname{Hom}_S(X',Y)\rightrightarrows\operatorname{Hom}_S(X'',Y)\tag{xx}
+\]
+的\Term{exact}{正合}性。后者由对 $\mathcal C/S$ 中的图
+\[
+ X''\rightrightarrows X'\longrightarrow X\tag{xxx}
+\]
+施以 $\operatorname{Hom}_S(-,Y)$ 得到，而这个图又由
+\[
+ S''\rightrightarrows S'\longrightarrow S
+\]
+经\Term{base-change}{基变换} $X\to S$ 得到。结合 1.6，这就证明了下一命题的第一部分：
+\begin{SGAresult}{命题}{2.3}
+设 $f:S'\to S$ 是\Term{morphism}{态射}。若它是\Term{universal-effective-epimorphism}{泛有效满态射}，则它是\Term{descent-morphism}{下降态射}；若 $S$ 是 $\mathcal C$ 中\Term{quarrable}{可作积}的\Term{object}{对象}（即它与 $\mathcal C$ 中任一\Term{object}{对象}的\Term{product}{积}都存在），则逆命题也成立。
+\end{SGAresult}
+\begin{proof}
+还须证明：若 $f$ 为\Term{descent-morphism}{下降态射}，则它为\Term{universal-effective-epimorphism}{泛有效满态射}，即对每个\Term{morphism}{态射} $X\to S$，图 $(\mathrm{xxx})$ \Term{exact}{正合}；也就是说，对 $\mathcal C$ 中的每个\Term{object}{对象} $Z$，该图经 $\operatorname{Hom}(-,Z)$ 变换后得到的\Term{set}{集合}图\Term{exact}{正合}。由假设，$Z\times S$ 存在；设 $Y$ 为它所定义的 $\mathcal C/S$ 的\Term{object}{对象}。则 $(\mathrm{xxx})$ 经 $\operatorname{Hom}(-,Z)$ 变换所得的图，\Term{isomorphism}{同构}于经 $\operatorname{Hom}_S(-,Y)$ 变换所得的图；而由对 $f$ 的假设，后者\Term{exact}{正合}。
+\end{proof}
+因此，关于\Term{descent-morphism}{下降态射}的结果可应用于\Term{universal-effective-epimorphism}{泛有效满态射}，例如下面这些结果：
+\begin{SGAresult}{命题}{2.4}
+设 $f:S'\to S$ 为\Term{descent-morphism}{下降态射}（例如\Term{universal-effective-epimorphism}{泛有效满态射}）。则：
+\begin{enumerate}
+\item[a)] 对每个 $S$-\Term{morphism}{态射} $u:X\to Y$，$u$ 是\Term{isomorphism}{同构}（分别为\Term{monomorphism}{单态射}），当且仅当 $u':X'\to Y'$ 是如此。
+\item[b)] 设 $X,Y$ 是 $S$ 的两个\Term{subobject}{子对象}，$X',Y'$ 为它们在 $S'$ 中的\Term{inverse-image}{逆像}\Term{subobject}{子对象}。要使 $X$ 包含于 $Y$（分别为等于 $Y$），充要条件是 $X',Y'$ 具有相应关系。
+\end{enumerate}
+\end{SGAresult}
+\SourcePage{191}
+\begin{proof}
+对 a)，由定义，若 $u'$ 在带有\Term{gluing-datum}{粘合资料}的\Term{object}{对象}所成\Term{category}{范畴}中为\Term{isomorphism}{同构}，则 $u$ 为\Term{isomorphism}{同构}；而立即可见，$S'$ 上的\Term{object}{对象}之间与\Term{gluing-datum}{粘合资料}相容的任何\Term{isomorphism}{同构}，都是带有\Term{gluing-datum}{粘合资料}的\Term{object}{对象}之间的\Term{isomorphism}{同构}，即其逆也与\Term{gluing-datum}{粘合资料}相容。对 b)，归结为证明：若 $X'$ 包含于 $Y'$，即存在 $S'$-\Term{morphism}{态射} $X'\to Y'$，则 $S$ 上的 $X,Y$ 也有同样性质。因 $Y'\to S'$，从而 $Y''\to S''$ 都是\Term{monomorphism}{单态射}，可见 $X'\to Y'$ 自动与\Term{gluing-datum}{粘合资料}相容，因此来自一个 $S$-\Term{morphism}{态射} $X\to Y$。注意，此证明更一般地适用于如下问题：给定 $S$ 上两个\Term{object}{对象} $X,Y$，且 $Y\to S$ 为\Term{monomorphism}{单态射}，问 $X\to S$ 是否经 $Y$ \Term{resolution}{分解}；只须 $X'\to S'$ 经 $Y'$ \Term{resolution}{分解}即可。
+\end{proof}
+\begin{SGAresult}{推论}{2.5}
+设 $f:S'\to S$ 为\Term{universal-effective-epimorphism}{泛有效满态射}，$g:S\to T$ 为一个使 $S\times_T S$ 存在的\Term{morphism}{态射}。假设 $S''=S'\times_S S'$ 同时也是 $S'$ 与自身在 $T$ 上的\Term{fiber-product}{纤维积}，即 $S'\times_S S'\xrightarrow{\sim}S'\times_T S'$。则 $g:S\to T$ 为\Term{monomorphism}{单态射}（逆命题当然也成立）。
+\end{SGAresult}
+\begin{proof}
+考虑\Term{cartesian-square}{笛卡儿方块}
+\[
+\begin{tikzcd}S'\times_S S'\arrow[r,"\sim"]\arrow[d]&S'\times_T S'\arrow[d,"f"]\\S\arrow[r]&S\times_T S\end{tikzcd}
+\]
+其中下方横\Term{arrow}{箭头}是\Term{diagonal-morphism}{对角态射}。由 1.9，右方竖\Term{arrow}{箭头} $f$ 为\Term{universal-effective-epimorphism}{泛有效满态射}；由假设，上方横\Term{arrow}{箭头}为\Term{isomorphism}{同构}。故可任选 2.4 a) 或 b)\footnote{编者注（9）：应用于 $f:S'\times_T S'\to S\times_T S=Y$。}，得到 $S\to S\times_T S$ 也为\Term{isomorphism}{同构}，这恰好意味着 $g:S\to T$ 为\Term{monomorphism}{单态射}。
+\end{proof}
+\textbf{注记 2.6。}在 2.1 中通过某些\Term{projective-limit}{投射极限}之间的\Term{morphism}{态射}引入的概念，显然可用所考虑的\Term{object}{对象} $S,S',X'$ 所定义的\Term{contravariant-functor}{反变函子}表述：只要 2.1 中涉及的\Term{fiber-product}{纤维积}存在，$X'/S'$ 上关于 $S'\to S$ 的\Term{gluing-datum}{粘合资料}（分别为\Term{descent-datum}{下降资料}）与 $\widehat{\mathcal C}=\operatorname{Hom}(\mathcal C^\circ,(\mathrm{Ens}))$ 中对应\Term{object}{对象}的\Term{gluing-datum}{粘合资料}（分别为\Term{descent-datum}{下降资料}）一一对应。因此，若愿意，可以把这些概念推广到完全不假定 $\mathcal C$ 中\Term{fiber-product}{纤维积}存在的情形。
+
+\textbf{注记 2.7。}本节引入的概念可推广到\Term{morphism}{态射}族的情形。另一方面，也可借助\Term{sieve}{筛}（4.1）的概念作出更内蕴的表述。关于这些问题，读者可参阅 [D]。
+\SourcePage{192}
+\SGAsection{3}{泛有效等价关系}
+\SGAsubsection{3.1}{等价关系：定义}
+\begin{SGAresult}{定义}{3.1.1}
+设 $X\in\operatorname{Ob}\mathcal C$。称\Term{functor}{函子} $X\times X$ 的\Term{representable}{可表}\Term{subfunctor}{子函子} $R$ 为 $X$ 中的一个 $\mathcal C$-\Term{equivalence-relation}{等价关系}，若对每个 $S\in\operatorname{Ob}\mathcal C$，$R(S)$ 都是 $X(S)$ 中某个\Term{equivalence-relation}{等价关系}的图。
+\end{SGAresult}
+这个定义特别适用于\Term{category}{范畴} $\widehat{\mathcal C}$。若将 $X$ 看作 $\widehat{\mathcal C}$ 的\Term{object}{对象}，就可看出：$X$ 中的一个 $\widehat{\mathcal C}$-\Term{equivalence-relation}{等价关系}，无非是 $X\times X$ 的一个\Term{subfunctor}{子函子} $R$，使得对 $\mathcal C$ 中的每个\Term{object}{对象} $S$，$R(S)$ 是 $X(S)$ 中某个\Term{equivalence-relation}{等价关系}的图。\footnote{编者注（10）：此条件显然必要。反过来，若对每个 $S\in\operatorname{Ob}\mathcal C$，$R(S)$ 均为某个\Term{equivalence-relation}{等价关系}的图，则此\Term{equivalence-relation}{等价关系}可推广到每个 $F\in\operatorname{Ob}\widehat{\mathcal C}$ 的 $R(F)$ 上：规定两个\Term{morphism}{态射} $\varphi,\psi:F\to R$ \Term{equivalence}{等价}，当且仅当对每个 $S\in\operatorname{Ob}\mathcal C$ 及 $x\in F(S)$，$\varphi(x)$ 与 $\psi(x)$ 在 $X(S)$ 中\Term{equivalence}{等价}。}
+
+若 $R$ 为 $X$ 中的 $\mathcal C$-\Term{equivalence-relation}{等价关系}，以 $p_i$ 表示由\Term{projection}{投影} $\operatorname{pr}_i:X\times X\to X$ 诱导的从 $R$ 到 $X$ 的\Term{morphism}{态射}。于是有图
+\[
+ p_1,p_2:R\rightrightarrows X.
+\]
+\begin{SGAresult}{定义}{3.1.2}
+若 $up_1=up_2$，则称\Term{morphism}{态射} $u:X\to Z$ 与 $R$ 相容。在 $\mathcal C$ 中作为\Term{arrow}{箭头}对 $(p_1,p_2)$ 的\Term{cokernel}{余核}的\Term{object}{对象}，也称为 $X$ 关于 $R$ 的\Term{quotient-object}{商对象}，记为 $X/R$。
+\end{SGAresult}
+于是有\Term{exact}{正合}图
+\[
+\begin{tikzcd}R\arrow[r,shift left=.5ex,"{p_1,p_2}"]\arrow[r,shift right=.5ex]&X\arrow[r,"p"]&X/R\end{tikzcd}
+\]
+并且 $X/R$ 表示如下\Term{covariant-functor}{协变函子}：
+\[
+ \operatorname{Hom}_{\mathcal C}(X/R,Z)=\{\text{从 }X\text{ 到 }Z\text{ 且与 }R\text{ 相容的态射}\}.
+\]
+由于\Term{quotient-object}{商对象}取在 $\mathcal C$ 中，\Term{quotient}{商} $X/R$ 若存在就是唯一的。
+
+这些定义立即推广到 $X$ 中 $\widehat{\mathcal C}$-\Term{equivalence-relation}{等价关系}的情形。但要注意，将 $\mathcal C$ 的\Term{object}{对象}与它们在 $\widehat{\mathcal C}$ 中的像等同，并不与取\Term{quotient}{商}交换：即 $X$ 关于 $R$ 在 $\mathcal C$ 中的\Term{quotient}{商} $X/R$，先验地并非 $X$ 关于 $R$ 在 $\widehat{\mathcal C}$ 中的\Term{quotient}{商}。因此，在涉及取\Term{quotient}{商}的问题中，应避免贸然将 $\mathcal C$ 与它在 $\widehat{\mathcal C}$ 中的像等同。\footnote{编者注（11）：用本讲后续内容的一个概览来说明这一点。设 $G$ 为一个 $\mathcal C$-\Term{group}{群}，$H$ 为一个子 $\mathcal C$-\Term{group}{群}，$R$ 为由 $G\times H\to G\times G$、$(g,h)\mapsto(g,gh)$ 定义的 $G$ 中的\Term{equivalence-relation}{等价关系}（见 3.2）。由 $Q(S)=G(S)/H(S)$ 定义的\Term{functor}{函子} $Q$ 是 $\widehat{\mathcal C}$ 中的\Term{quotient}{商}（由 4.4.9 应用于最粗\Term{topology}{拓扑}可得，见 4.4.2），但通常并非我们希望得到的\Term{quotient}{商}。例如，对 $\mathcal C=(\mathrm{Sch})$，有（\Term{affine}{仿射}）\Term{group-scheme}{群概形}的\Term{exact-sequence}{正合列}
+\[
+ 1\longrightarrow\mu_2\longrightarrow\mathbf G_m\xrightarrow{p}\mathbf G_m\longrightarrow1,
+\]
+它将 $\mathbf G_m$ 等同于\Term{quotient}{商} $\mathbf G_m/\mu_2$。此外，由于 $p$ 是\Term{finite}{有限}且\Term{locally-free}{局部自由}的\Term{morphism}{态射}，$\mathbf G_m$ 就是在更大的 $(\mathrm{fppf})$ \Term{topology}{拓扑}的\Term{sheaf}{层}\Term{category}{范畴}中 $\mathbf G_m$ 关于 $\mu_2$ 的\Term{quotient-sheaf}{商层}，见 4.6.6 (ii) 及 6.3.2。反之，$\widehat{\mathcal C}$ 中的\Term{quotient}{商} $Q$ 不\Term{isomorphism}{同构}于 $\mathbf G_m$，因为例如 $Q(\mathbf Z)=\{1\}$，而 $\mathbf G_m(\mathbf Z)=\{\pm1\}$。因此 $Q$ 不是 $(\mathrm{fppf})$ \Term{sheaf}{层}，更不\Term{representable}{可表}。}
+\SourcePage{193}
+以下将 $\widehat{\mathcal C}$-\Term{equivalence-relation}{等价关系}简称为\Term{equivalence-relation}{等价关系}；必要时会明确说明是否为 $\mathcal C$-\Term{equivalence-relation}{等价关系}。\footnote{编者注（12）：应注意，即使对 $X$ 中的 $\widehat{\mathcal C}$-\Term{equivalence-relation}{等价关系}，我们关心的仍是在 $\mathcal C$ 中\Term{quotient}{商}的存在性。}
+\begin{SGAresult}{定义}{3.1.3}
+若 $X$ 是 $\mathcal C$ 中位于 $S$ 上的\Term{object}{对象}，则称 $X$ 中与\Term{structure-morphism}{结构态射} $X\to S$ 相容的\Term{equivalence-relation}{等价关系} $R$ 为 $X$ 中在 $S$ 上的\Term{equivalence-relation}{等价关系}。
+\end{SGAresult}
+于是\Term{canonical}{典范}\Term{monomorphism}{单态射} $R\to X\times X$ 经\Term{monomorphism}{单态射}
+\[
+ X\times_S X\longrightarrow X\times X
+\]
+\Term{resolution}{分解}，并定义了 $\mathcal C/S$ 的\Term{object}{对象} $X\to S$ 中的一个\Term{equivalence-relation}{等价关系}。若\Term{quotient}{商} $X/R$ 存在，则带有到 $S$ 的\Term{canonical}{典范}\Term{morphism}{态射}，且对应的 $\mathcal C/S$ 的\Term{object}{对象}是 $X\in\operatorname{Ob}\mathcal C/S$ 关于上述\Term{equivalence-relation}{等价关系}的一个\Term{quotient}{商}。反之，若 $S$ 是 $\mathcal C$ 中\Term{quarrable}{可作积}的\Term{object}{对象}，且 $Y\to S$ 是 $X$ 关于该\Term{equivalence-relation}{等价关系}（在 $\mathcal C/S$ 中）的\Term{quotient}{商}，则 $Y$ 是 $X$ 关于 $R$ 在 $\mathcal C$ 中的\Term{quotient}{商}。无论如何，我们不会考虑那些尚不是 $\mathcal C$ 中的\Term{quotient}{商}的 $\mathcal C/S$ 中的\Term{quotient}{商}。
+\begin{SGAresult}{定义}{3.1.4}
+设 $X$（分别为 $X'$）是带有\Term{equivalence-relation}{等价关系} $R$（分别为 $R'$）的 $\mathcal C$ 的\Term{object}{对象}。若下列\Term{equivalence}{等价}条件成立，则称\Term{morphism}{态射} $u:X\to X'$ 与 $R,R'$ 相容：
+\begin{enumerate}
+\item[(i)] 对每个 $S\in\operatorname{Ob}\mathcal C$，$X(S)$ 中模 $R(S)$ 同余的两个点，经 $u$ 变为 $X'(S)$ 中模 $R'(S)$ 同余的两个点；
+\item[(ii)] 存在一个\Term{morphism}{态射} $R\to R'$（必然唯一），使图
+\[
+\begin{tikzcd}R\arrow[r]\arrow[d]&R'\arrow[d]\\X\times X\arrow[r,"u\times u"]&X'\times X'\end{tikzcd}
+\]
+交换。
+\end{enumerate}
+\end{SGAresult}
+由 $X/R$ 的\Term{universal-property}{泛性质}，若\Term{quotient}{商} $X/R$ 与 $X'/R'$ 存在，则存在唯一的\Term{morphism}{态射} $v$，使图
+\[
+\begin{tikzcd}X\arrow[r,"p"]\arrow[d,"u"']&X/R\arrow[d,"v"]\\X'\arrow[r,"p'"']&X'/R'\end{tikzcd}
+\]
+交换。
+\SourcePage{194}
+\begin{SGAresult}{定义}{3.1.5}
+若下列\Term{equivalence}{等价}条件成立，则称 $X$ 的\Term{subobject}{子对象}（即\Term{representable}{可表}\Term{subfunctor}{子函子}）$Y$ 在\Term{equivalence-relation}{等价关系} $R$ 下\Term{stable}{稳定}：
+\begin{enumerate}
+\item[(i)] 对每个 $S\in\operatorname{Ob}\mathcal C$，$X(S)$ 的\Term{subset}{子集} $Y(S)$ 在 $R(S)$ 下\Term{stable}{稳定}；
+\item[(ii)] $Y$ 沿 $p_1,p_2$ 的\Term{inverse-image}{逆像}所给出的 $R$ 的两个\Term{subobject}{子对象}相同。
+\end{enumerate}
+\end{SGAresult}
+$X$ 的\Term{stable-subobject}{稳定子对象}的一个重要特例是：\Term{quotient}{商} $X/R$ 存在，且 $Y$ 是 $X/R$ 的一个\Term{subobject}{子对象}在 $X$ 中的\Term{inverse-image}{逆像}。
+\begin{SGAresult}{定义}{3.1.6}
+设 $R$ 为 $X$ 中的一个\Term{equivalence-relation}{等价关系}，$X'\to X$ 为一个\Term{morphism}{态射}。由\Term{cartesian-square}{笛卡儿方块}
+\[
+\begin{tikzcd}R'\arrow[r]\arrow[d]&R\arrow[d]\\X'\times X'\arrow[r]&X\times X\end{tikzcd}
+\]
+得到的 $X'$ 中的\Term{equivalence-relation}{等价关系} $R'$，称为 $X$ 中\Term{equivalence-relation}{等价关系} $R$ 在 $X'$ 中的\Term{inverse-image}{逆像}\Term{equivalence-relation}{等价关系}。特别地，若 $X'$ 是 $X$ 的\Term{subobject}{子对象}，则称其为 $R$ 在 $X'$ 中诱导的\Term{equivalence-relation}{等价关系}，记为 $R_{X'}$。
+\end{SGAresult}
+\Term{morphism}{态射} $X'\to X$ 与 $R',R$ 相容，所以当\Term{quotient}{商}存在时，有\Term{morphism}{态射} $X'/R'\to X/R$（3.1.4）。若 $X'$ 为 $X$ 的\Term{subobject}{子对象}，稍后将看到在某些情形可以证明 $X'/R'\to X/R$ 是\Term{monomorphism}{单态射}，从而将 $X'/R'$ 等同于 $X/R$ 的\Term{subobject}{子对象}。此时这个\Term{subobject}{子对象}在 $X$ 中的\Term{inverse-image}{逆像}，是 $X$ 中包含 $X'$ 且在 $R$ 下\Term{stable}{稳定}的一个\Term{subobject}{子对象}：称为 $X'$ 关于\Term{equivalence-relation}{等价关系} $R$ 的\Term{saturation}{饱和化}。
+\begin{SGAresult}{命题}{3.1.7}
+若 $X$ 的\Term{subobject}{子对象} $Y$ 在 $R$ 下\Term{stable}{稳定}，则对 $i=1,2$，有两个\Term{cartesian-square}{笛卡儿方块}：
+\[
+\begin{tikzcd}R_Y\arrow[r]\arrow[d,"p_i"']&R\arrow[d,"p_i"]\\Y\arrow[r]&X\end{tikzcd}
+\]
+\end{SGAresult}
+\begin{proof}直接可得。\end{proof}
+\SGAsubsection{3.2}{自由作用的群所定义的等价关系}
+\begin{SGAresult}{定义}{3.2.1}
+设 $X$ 为 $\mathcal C$ 的\Term{object}{对象}，$H$ 为\Term{action}{作用}于 $X$ 的 $\mathcal C$-\Term{group}{群}（即给定一个 $\widehat{\mathcal C}$-\Term{group}{群}的\Term{morphism}{态射}
+\[
+ H\longrightarrow\underline{\operatorname{Aut}}(X)\text{）。}
+\]
+若下列\Term{equivalence}{等价}条件成立，则称 $H$ 在 $X$ 上\Term{free-action}{自由作用}：
+\begin{enumerate}
+\item[(i)] 对每个 $S\in\operatorname{Ob}\mathcal C$，\Term{group}{群} $H(S)$ 在 $X(S)$ 上\Term{free-action}{自由作用}；
+\SourcePage{195}
+\item[(ii)] 按\Term{set}{集合}元素由 $(h,x)\mapsto(hx,x)$ 定义的\Term{functor}{函子}\Term{morphism}{态射}
+\[
+ H\times X\longrightarrow X\times X
+\]
+为\Term{monomorphism}{单态射}。
+\end{enumerate}
+\end{SGAresult}
+（上述定义假定\Term{group}{群} $H$ 在 $X$ 上“\Term{left-action}{左作用}”。对\Term{group}{群}“\Term{right-action}{右作用}”的情形，即给定一个从 $H$ 的\Term{opposite-group}{反群} $H^\circ$ 到 $\underline{\operatorname{Aut}}(X)$ 的\Term{group-morphism}{群态射}时，显然有类似概念。）
+
+若 $H$ 在 $X$ 上\Term{free-action}{自由作用}，则 $H\times X$ 经 (ii) 的\Term{morphism}{态射}的像是 $X$ 中的一个\Term{equivalence-relation}{等价关系}，称为 $H$ 在 $X$ 上的\Term{action}{作用}所定义的\Term{equivalence-relation}{等价关系}。若 $X$ 关于此\Term{equivalence-relation}{等价关系}的\Term{quotient}{商}存在，则记为 $H\backslash X$（$H$ \Term{right-action}{右作用}时记为 $X/H$）。它表示如下\Term{covariant-functor}{协变函子}：对 $\mathcal C$ 的\Term{object}{对象} $Z$，有
+\[
+ \operatorname{Hom}(H\backslash X,Z)=\{\text{从 }X\text{ 到 }Z\text{ 的 }H\text{-不变态射}\},
+\]
+其中，称\Term{morphism}{态射} $f:X\to Z$ 为 $H$-\Term{invariant}{不变}，若对每个 $S\in\operatorname{Ob}\mathcal C$，对应的映射 $X(S)\to Z(S)$ 在\Term{group}{群} $H(S)$ 下\Term{invariant}{不变}。
+\begin{SGAresult}{\Term{lemma}{引理}}{3.2.2}
+在 3.2.1 的条件下，设 $Y$ 为 $X$ 的\Term{subobject}{子对象}。下列条件\Term{equivalence}{等价}：
+\begin{enumerate}
+\item[(i)] $Y$ 在 $H$ 定义的\Term{equivalence-relation}{等价关系}下\Term{stable}{稳定}（3.1.5）；
+\item[(ii)] 对每个 $S\in\operatorname{Ob}\mathcal C$，$X(S)$ 的\Term{subset}{子集} $Y(S)$ 在 $H(S)$ 下\Term{stable}{稳定}；
+\item[(iii)] 存在一个必然唯一的\Term{morphism}{态射} $f$，使图
+\[
+\begin{tikzcd}H\times Y\arrow[r,"f"]\arrow[d]&Y\arrow[d]\\H\times X\arrow[r]&X\end{tikzcd}
+\]
+交换。
+\end{enumerate}
+在这些条件下，$f$ 定义一个 $\widehat{\mathcal C}$-\Term{group}{群}的\Term{morphism}{态射}
+\[
+ H\longrightarrow\underline{\operatorname{Aut}}(Y),
+\]
+而 $H$ 的这个\Term{action}{作用}在 $Y$ 中定义的\Term{equivalence-relation}{等价关系}，恰好是 $H$ 在 $X$ 上的\Term{action}{作用}所定义的\Term{equivalence-relation}{等价关系}在 $Y$ 中诱导的\Term{equivalence-relation}{等价关系}。
+\end{SGAresult}
+\begin{proof}直接可得。对于“\Term{right-action}{右作用}”，显然有类似陈述。\end{proof}
+上述 $H$ 在 $Y$ 上的\Term{action}{作用}，称为 $H$ 在 $X$ 上给定的\Term{action}{作用}在 $Y$ 中的\Term{induced-action}{诱导作用}。
+
+现在考虑如下情形：$H,G$ 为两个 $\mathcal C$-\Term{group}{群}，并给定\Term{group-morphism}{群态射}
+\[
+ u:H\longrightarrow G.
+\]
+则 $H$ 以\Term{translation}{平移}\Term{action}{作用}于 $G$（按\Term{set}{集合}元素令 $hg=u(h)g$），且此\Term{action}{作用}\Term{free-action}{自由}当且仅当 $u$ 为\Term{monomorphism}{单态射}。$G$ 关于 $H$ 的这个\Term{action}{作用}的\Term{quotient}{商}，
+\SourcePage{196}
+若存在则记为 $H\backslash G$。类似地定义 $H$ 在 $G$ 上的\Term{right-action}{右作用}及\Term{quotient}{商} $G/H$。这些\Term{quotient}{商}对于所涉及的\Term{group}{群}具有\Term{functorial}{函子性}；确切地说，有如下针对右\Term{quotient}{商}陈述的\Term{lemma}{引理}：
+\begin{SGAresult}{\Term{lemma}{引理}}{3.2.3}
+设 $u:H\to G$ 与 $u':H'\to G'$ 为两个 $\mathcal C$-\Term{group}{群}的\Term{monomorphism}{单态射}。假设给定 $\mathcal C$-\Term{group}{群}的\Term{morphism}{态射}
+\[
+ f:G\longrightarrow G'.
+\]
+下列条件\Term{equivalence}{等价}：
+\begin{enumerate}
+\item[(i)] $f$ 与 $H,H'$ 在 $G,G'$ 中定义的\Term{equivalence-relation}{等价关系}相容；
+\item[(ii)] 对每个 $S\in\operatorname{Ob}\mathcal C$，有 $fu(H(S))\subset u'(H'(S))$；
+\item[(iii)] 存在一个必然唯一且保持\Term{multiplication}{乘法}的\Term{morphism}{态射} $g:H\to H'$，使图
+\[
+\begin{tikzcd}H\arrow[r,"g"]\arrow[d,"u"']&H'\arrow[d,"u'"]\\G\arrow[r,"f"']&G'\end{tikzcd}
+\]
+交换。
+\end{enumerate}
+在这些条件下，若\Term{quotient}{商} $G/H$ 与 $G'/H'$ 存在，则存在唯一\Term{morphism}{态射} $\overline f$，使图
+\[
+\begin{tikzcd}G\arrow[r,"f"]\arrow[d,"p"']&G'\arrow[d,"p'"]\\G/H\arrow[r,"\overline f"']&G'/H'\end{tikzcd}
+\]
+交换。
+\end{SGAresult}
+\begin{proof}
+第一部分归结到\Term{set}{集合}的情形即可证明。第二部分立即由 (i) 得到。
+\end{proof}
+前面为一般\Term{equivalence-relation}{等价关系}引入的概念，都可转述到当前情形。这里只指出以下\Term{lemma}{引理}；其证明归结到\Term{set}{集合}的情形后立即可得：
+\begin{SGAresult}{\Term{lemma}{引理}}{3.2.4}
+设 $u:H\to G$ 为 $\mathcal C$-\Term{group}{群}的\Term{monomorphism}{单态射}，$G'$ 为 $G$ 的一个子 $\mathcal C$-\Term{group}{群}。要使 $G$ 的\Term{subobject}{子对象} $G'$ 在 $H$ 定义的\Term{equivalence-relation}{等价关系}下\Term{stable}{稳定}，充要条件是 $u$ 经\Term{canonical}{典范}\Term{monomorphism}{单态射} $G'\to G$ \Term{resolution}{分解}；在此条件下，由 $u$ 定义的 $H$ 在 $G$ 上的\Term{action}{作用}所诱导的 $H$ 在 $G'$ 上的\Term{action}{作用}，恰好是由\Term{resolution}{分解} $u$ 的\Term{monomorphism}{单态射} $H\to G'$ 所给出的\Term{action}{作用}。
+\end{SGAresult}
+\SourcePage{197}
+\SGAsubsection{3.3}{泛有效等价关系}
+\begin{SGAresult}{定义}{3.3.1}
+设 $f:X\to Y$ 为\Term{morphism}{态射}。称\Term{canonical}{典范}\Term{monomorphism}{单态射}
+\[
+ X\times_Y X\longrightarrow X\times X
+\]
+的像这一 $X$ 中的 $\widehat{\mathcal C}$-\Term{equivalence-relation}{等价关系}，为 $f$ 在 $X$ 中定义的\Term{equivalence-relation}{等价关系}，记为 $\mathscr R(f)$。
+\end{SGAresult}
+\begin{SGAresult}{定义}{3.3.2}
+设 $R$ 为 $X$ 中的\Term{equivalence-relation}{等价关系}。若下列条件成立，则称 $R$ \Term{effective-equivalence-relation}{有效}：
+\begin{enumerate}
+\item[(i)] $R$ \Term{representable}{可表}（即为 $\mathcal C$-\Term{equivalence-relation}{等价关系}）；
+\item[(ii)] \Term{quotient}{商} $Y=X/R$ 在 $\mathcal C$ 中存在\footnote{编者注（13）：我们补加了“在 $\mathcal C$ 中”。}；
+\item[(iii)] 图
+\[
+\begin{tikzcd}R\arrow[r,shift left=.5ex,"{p_1,p_2}"]\arrow[r,shift right=.5ex]&X\arrow[r,"p"]&Y\end{tikzcd}
+\]
+使 $R$ 成为 $X$ 在 $Y$ 上的\Term{fiber-square}{纤维平方}，即 $R$ 是 $p$ 所定义的\Term{equivalence-relation}{等价关系}。
+\end{enumerate}
+\end{SGAresult}
+\begin{SGAresult}{说明}{3.3.2.1}
+\footnote{编者注（14）：为便于后文引用，我们增添了编号 3.3.2.1 和 3.3.3.1。此外还增添了注记 3.3.3.2。}若 $R$ 是 $X$ 中的\Term{effective-equivalence-relation}{有效等价关系}，则 $p$ 是\Term{effective-epimorphism}{有效满态射}（1.3）。若 $f:X\to Y$ 为\Term{effective-epimorphism}{有效满态射}，则 $\mathscr R(f)$ 是 $X$ 中的\Term{effective-equivalence-relation}{有效等价关系}，其一个\Term{quotient}{商}为 $Y$。因此，$X$ 中的\Term{effective-equivalence-relation}{有效等价关系}与 $X$ 的\Term{effective-quotient}{有效商}（即以 $X$ 为源的\Term{effective-epimorphism}{有效满态射}的\Term{equivalence-class}{等价类}）之间，存在一个“Galois 式”的一一对应。
+\end{SGAresult}
+\begin{SGAresult}{定义}{3.3.3}
+若\Term{quotient}{商} $Y=X/R$ 存在，且对每个 $Y'\to Y$，\Term{fiber-product}{纤维积} $X'=X\times_Y Y'$、$R'=R\times_Y Y'$ 存在，并且 $R'$ 为 $X'$ 在 $Y'$ 上的\Term{fiber-square}{纤维平方}，则称 $X$ 中的\Term{equivalence-relation}{等价关系} $R$ 为\Term{universal-effective-equivalence-relation}{泛有效}的。\Term{equivalence}{等价}地说，$R$ \Term{effective-equivalence-relation}{有效}，且 $p:X\to X/R$ 是\Term{universal-effective-epimorphism}{泛有效满态射}。
+\end{SGAresult}
+\begin{SGAresult}{说明}{3.3.3.1}
+\footnote{参见编者注（14）。}因此，与上面一样，$X$ 中的\Term{universal-effective-equivalence-relation}{泛有效等价关系}与 $X$ 的\Term{universal-effective-quotient}{泛有效商}之间存在一一对应。
+\end{SGAresult}
+\textbf{注记 3.3.3.2。}\footnote{参见编者注（14）。}设 $\mathcal C$ 为 $S$-\Term{scheme}{概形}\Term{category}{范畴}，以 $\mathbf A^1$ 表示 $S$ 上一维\Term{affine-space}{仿射空间}。设 $R\subset X\times_S X$ 为\Term{universal-effective-equivalence-relation}{泛有效等价关系}，$p:X\to Y$ 为\Term{quotient}{商}。则对 $Y$ 中每个\Term{open-subset}{开集} $U$，$\mathcal O(U)=\operatorname{Hom}_S(U,\mathbf A^1_S)$ 是 $\mathcal O(p^{-1}(U))=\operatorname{Hom}_S(p^{-1}(U),\mathbf A^1_S)$ 中满足 $\varphi\circ\operatorname{pr}_1=\varphi\circ\operatorname{pr}_2$ 的元素 $\varphi$ 所成的\Term{set}{集合}。特别地，若 $R$ 由在 $X$ 上\Term{free-action}{自由}\Term{right-action}{右作用}的\Term{group}{群} $H$ 的\Term{action}{作用}给出（见 3.2.1），则 $\mathcal O(U)$ 是所有满足如下条件的 $\varphi\in\mathcal O(p^{-1}(U))$ 所成的\Term{set}{集合}：对每个 $S'\to S$ 以及 $x\in X(S')$、$h\in H(S')$，均有 $\varphi(xh)=\varphi(x)$。
+\SourcePage{198}
+\begin{SGAresult}{命题}{3.3.4}
+设 $R$ 是 $X$ 中的\Term{universal-effective-equivalence-relation}{泛有效等价关系}。设\Term{morphism}{态射} $f:X\to Z$ 与 $R$ 相容，因而经 $g:X/R\to Z$ \Term{resolution}{分解}。下列条件\Term{equivalence}{等价}：
+\begin{enumerate}
+\item[(i)] $g$ 为\Term{monomorphism}{单态射}；
+\item[(ii)] $R$ 是 $f$ 所定义的\Term{equivalence-relation}{等价关系}。
+\end{enumerate}
+\end{SGAresult}
+\begin{proof}(i) 显然蕴含 (ii)，逆命题正是 2.5。\end{proof}
+\begin{SGAresult}{定义}{3.3.5}
+设 $H$ 是在 $X$ 上\Term{free-action}{自由作用}的 $\mathcal C$-\Term{group}{群}。若 $H$ 的\Term{action}{作用}在 $X$ 中所定义的\Term{equivalence-relation}{等价关系}\Term{effective-equivalence-relation}{有效}（分别为\Term{universal-effective-equivalence-relation}{泛有效}），则称 $H$ 的\Term{action}{作用}\Term{effective-action}{有效}，或称 $H$ 在 $X$ 上的\Term{action}{作用}为\Term{effective-action}{有效作用}（分别为\Term{universal-effective-action}{泛有效作用}）。
+\end{SGAresult}
+\SGAsubsection{3.4}{(M)-有效性}
+实际中，通常很难刻画\Term{universal-effective-epimorphism}{泛有效满态射}。然而，往往已掌握一些此类\Term{morphism}{态射}，例如在\Term{scheme}{概形}论中有\Term{faithfully-flat}{忠实平坦}且\Term{quasi-compact}{拟紧}的\Term{morphism}{态射}。这就引出了下面的讨论。
+
+\textbf{3.4.1。}先列出关于 $\mathcal C$ 的一个\Term{morphism}{态射}族 $(\mathrm M)$ 的若干条件：
+\begin{enumerate}
+\item[(a)] $(\mathrm M)$ 在\Term{base-extension}{基扩张}下\Term{stable}{稳定}，即每个 $u:T\to S\in(\mathrm M)$ 都\Term{quarrable}{可作基变换}（见 1.4.0），且对每个 $S'\to S$，$u':T\times_S S'\to S'$ 都属于 $(\mathrm M)$；
+\item[(b)] $(\mathrm M)$ 中两个元素的复合仍在 $(\mathrm M)$ 中；
+\item[(c)] 每个\Term{isomorphism}{同构}均属于 $(\mathrm M)$；
+\item[(d)] $(\mathrm M)$ 的每个元素均为\Term{effective-epimorphism}{有效满态射}。
+\end{enumerate}
+注意，(a) 和 (b) 蕴含：
+
+\textbf{(a$'$)} $(\mathrm M)$ 中两个元素的\Term{cartesian-product}{笛卡儿积}仍在 $(\mathrm M)$ 中：设 $u:X\to Y$ 与 $u':X'\to Y'$ 是属于 $(\mathrm M)$ 的两个 $S$-\Term{morphism}{态射}。若 $Y\times_S Y'$ 存在，则 $X\times_S X'$ 存在，且 $u\times_S u'$ 属于 $(\mathrm M)$。
+
+这由下图可得：
+\[
+\begin{tikzcd}
+&Y'&X'\arrow[l,"u'"']\\
+X\arrow[d,"u"']&X\times_S Y'\arrow[l]\arrow[u]\arrow[d]&X\times_S X'\arrow[l]\arrow[u]\arrow[dl,"u\times_S u'"]\\
+Y&Y\times_S Y'\arrow[l]
+\end{tikzcd}
+\]
+同样，(a) 和 (d) 蕴含：
+
+\textbf{(d$'$)} $(\mathrm M)$ 的每个元素均为\Term{universal-effective-epimorphism}{泛有效满态射}。
+\SourcePage{199}
+\textbf{3.4.2。}\Term{universal-effective-epimorphism}{泛有效满态射}族 $(\mathrm M_0)$ 满足 3.4.1 的条件 (a)--(d)。事实上，(a)、(c)、(d) 由定义成立，(b) 由 1.8 得到。以下假设给定一个满足这些条件的 $\mathcal C$ 的\Term{morphism}{态射}族 $(\mathrm M)$；因此，我们的结果特别适用于族 $(\mathrm M_0)$。
+\begin{SGAresult}{定义}{3.4.3}
+若 $X$ 中的\Term{equivalence-relation}{等价关系} $R$ \Term{representable}{可表}，且 $p_1\in(\mathrm M)$（由 (b)、(c)，这蕴含 $p_2\in(\mathrm M)$），则称 $R$ 为 $(\mathrm M)$ \Term{M-type}{型}。
+
+若 $R$ \Term{effective-equivalence-relation}{有效}，且\Term{canonical}{典范}\Term{morphism}{态射} $X\to X/R$ 属于 $(\mathrm M)$，则称 $R$ 为\Term{M-effective}{$(\mathrm M)$-有效}的。
+
+若\Term{canonical}{典范}\Term{morphism}{态射} $X\to Y$ 属于 $(\mathrm M)$，则称 $X$ 的\Term{quotient}{商} $Y$ 为\Term{M-effective}{$(\mathrm M)$-有效}的。
+\end{SGAresult}
+这个定义有以下推论：\footnote{编者注（15）：为便于后文引用，我们增添了编号 3.4.3.1，并补充了 (i) 的详细证明。}
+\begin{SGAresult}{命题}{3.4.3.1}
+\begin{enumerate}
+\item[(i)] 一个\Term{M-effective}{$(\mathrm M)$-有效}\Term{equivalence-relation}{等价关系}是 $(\mathrm M)$ \Term{M-type}{型}，且为\Term{universal-effective-equivalence-relation}{泛有效}的。
+\item[(ii)] 一个\Term{M-effective}{$(\mathrm M)$-有效}\Term{quotient}{商}是\Term{universal-effective-quotient}{泛有效}的（见 3.3.3）。
+\item[(iii)] 映射 $R\mapsto X/R$ 及 $p\mapsto\mathscr R(p)$ 给出 $X$ 中的\Term{M-effective}{$(\mathrm M)$-有效}\Term{equivalence-relation}{等价关系}与 $X$ 的\Term{M-effective}{$(\mathrm M)$-有效}\Term{quotient}{商}之间的一一对应。
+\item[(iv)] $(\mathrm M_0)$-\Term{M-effective}{有效}\Term{equivalence}{等价}于\Term{universal-effective-equivalence-relation}{泛有效}。
+\end{enumerate}
+\end{SGAresult}
+\begin{proof}
+先证明 (i)。由于 $R$ 是\Term{M-effective}{$(\mathrm M)$-有效}的，有\Term{cartesian-square}{笛卡儿方块}
+\[
+\begin{tikzcd}R\arrow[r,"p_2"]\arrow[d,"p_1"']&X\arrow[d,"p"]\\X\arrow[r,"p"']&X/R\end{tikzcd}
+\]
+且 $p\in(\mathrm M)$。由 3.4.1 (a)，$p_1,p_2$ 均属于 $(\mathrm M)$，所以 $R$ 为 $(\mathrm M)$ \Term{M-type}{型}。
+
+令 $Y=X/R$，并设 $Y'\to Y$ 是任意\Term{morphism}{态射}。由 3.4.1 (a)，\Term{fiber-product}{纤维积} $X'=X\times_Y Y'$ 与 $R'=R\times_Y Y'$ 存在，且\Term{morphism}{态射} $X'\to Y'$ 及 $p'_i:R'\to X'$ 属于 $(\mathrm M)$。最后，由 $R=X\times_Y X$ 及\Term{fiber-product}{纤维积}的\Term{associativity}{结合性}，得到
+\[
+ R'=X\times_Y X\times_Y Y'=X'\times_{Y'}X'.
+\]
+这表明 $R'$ 是\Term{M-effective}{$(\mathrm M)$-有效}的；所以，特别地，$R$ 为\Term{universal-effective-equivalence-relation}{泛有效}的。这就证明了 (i)，也证明了 (iv)。结合定义 3.3.2，(ii) 和 (iii) 随之得到。
+\end{proof}
+\textbf{3.4.4。}设 $H$ 为一个 $S$-\Term{group}{群}，其\Term{structure-morphism}{结构态射}属于 $(\mathrm M)$。若 $H$ 在 $S$-\Term{object}{对象} $X$ 上\Term{free-action}{自由作用}，则在其中定义一个 $(\mathrm M)$ \Term{M-type}{型}\Term{equivalence-relation}{等价关系}。
+\SourcePage{200}
+事实上，由 (a)，\Term{fiber-product}{纤维积} $H\times_S X$ 存在，且 $\operatorname{pr}_2:H\times_S X\to X$ 属于 $(\mathrm M)$。若这个\Term{action}{作用}在 $X$ 中所定义的\Term{equivalence-relation}{等价关系}是\Term{M-effective}{$(\mathrm M)$-有效}的，则称 $H$ 的\Term{action}{作用}为\Term{M-effective}{$(\mathrm M)$-有效}的。
+\begin{SGAresult}{命题}{3.4.5}
+\textbf{$(\mathrm M)$-\Term{effectivity}{有效性}与\Term{base-change}{基变换}。}
+设 $R$ 为 $S$ 上的 $X$ 中的一个\Term{M-effective}{$(\mathrm M)$-有效}\Term{equivalence-relation}{等价关系}，令 $Y=X/R$。设 $S'\to S$ 是使 $Y'=Y\times_S S'$ 存在的\Term{base-change}{基变换}。则 $X'=X\times_S S'$ 存在，$R'=R\times_S S'$ 是 $S'$ 上的 $X'$ 中的\Term{M-effective}{$(\mathrm M)$-有效}\Term{equivalence-relation}{等价关系}，且 $X'/R'\simeq(X/R)'$。
+\end{SGAresult}
+\begin{proof}
+\Term{canonical}{典范}\Term{morphism}{态射} $X\to Y$ 与 $R\to Y$ 属于 $(\mathrm M)$，故由 (a$'$)，$X'$ 与 $R'$ \Term{representable}{可表}。由\Term{product}{积}的\Term{associativity}{结合性}，$R'$ 是属于 $(\mathrm M)$ 的\Term{canonical}{典范}\Term{morphism}{态射} $X'\to Y'$ 在 $X'$ 中定义的\Term{equivalence-relation}{等价关系}，结论由此得到。
+\end{proof}
+\begin{SGAresult}{命题}{3.4.6}
+\textbf{$(\mathrm M)$-\Term{effectivity}{有效性}与\Term{cartesian-product}{笛卡儿积}。}
+设 $R$（分别为 $R'$）是 $S$ 上的 $X$（分别为 $X'$）中的\Term{M-effective}{$(\mathrm M)$-有效}\Term{equivalence-relation}{等价关系}。若 $(X/R)\times_S(X'/R')$ 存在，则 $X\times_S X'$ 存在，$R\times_S R'$ 是 $S$ 上的 $X\times_S X'$ 中的\Term{M-effective}{$(\mathrm M)$-有效}\Term{equivalence-relation}{等价关系}，且
+\[
+ (X\times_S X')/(R\times_S R')\simeq(X/R)\times_S(X'/R').
+\]
+\end{SGAresult}
+\begin{proof}
+令 $Y=X/R$、$Y'=X'/R'$。由 (a$'$)，\Term{fiber-product}{纤维积} $X\times_S X'$ 存在，且\Term{canonical}{典范}\Term{morphism}{态射}
+\[
+ q:X\times_S X'\longrightarrow Y\times_S Y'
+\]
+属于 $(\mathrm M)$。而公式
+\[
+ (X\times X')\times_{(Y\times Y')}(X\times X')\simeq(X\times_Y X)\times(X'\times_{Y'}X')
+\]
+（所有未标下标的\Term{product}{积}均在 $S$ 上取）表明 $R\times_S R'$ 是 $q$ 在 $X\times_S X'$ 中定义的\Term{equivalence-relation}{等价关系}，证明完毕。
+\end{proof}
+\textbf{3.4.7。}\footnote{编者注（16）：此段为新增。}设 $\mathcal C$ 有\Term{final-object}{终对象} $e$，$f:G\to G'$ 为 $\mathcal C$-\Term{group}{群}的\Term{morphism}{态射}，且 $f\in(\mathrm M)$。则由 3.4.1 (a)，\Term{kernel}{核} $\operatorname{Ker}(f)$ 由 $e\times_{G'}G$ \Term{representable}{表示}，且\Term{morphism}{态射} $\operatorname{Ker}(f)\to e$ 属于 $(\mathrm M)$。
+
+另一方面，$f$ 所定义的\Term{equivalence-relation}{等价关系}与 $\operatorname{Ker}(f)$ 在 $G$ 上（比如说在右边）的\Term{action}{作用}所定义的\Term{equivalence-relation}{等价关系}相同，即它是按\Term{set}{集合}元素由 $(g,h)\mapsto(g,gh)$ 定义的\Term{morphism}{态射} $G\times\operatorname{Ker}(f)\to G\times G$ 的像。因此由 3.3.2.1 得到如下推论：
+\begin{SGAresult}{推论}{3.4.7.1}
+设 $\mathcal C$ 有\Term{final-object}{终对象} $e$，$f:G\to G'$ 是满足 $f\in(\mathrm M)$ 的 $\mathcal C$-\Term{group}{群}的\Term{morphism}{态射}。则 $\operatorname{Ker}(f)$ 在 $G$ 上的\Term{action}{作用}为\Term{M-effective}{$(\mathrm M)$-有效}的，且 $G'$ 是\Term{quotient}{商} $G/\operatorname{Ker}(f)$。
+\end{SGAresult}
+\SourcePage{201}
+\SGAsubsection{3.5}{用下降构造商}
+常常会遇到这样的情形：不知道如何直接构造一个\Term{quotient}{商}，却能在适当的\Term{base-change}{基变换}后完成构造。本小节给出一个适用于此情形的判据。
+
+在 2.1 中已经定义了 $S'$ 上的\Term{object}{对象} $X'$ 关于\Term{morphism}{态射} $S'\to S$ 的\Term{descent-datum}{下降资料}。
+\begin{SGAresult}{定义}{3.5.1}
+若带有某个\Term{descent-datum}{下降资料}的 $X'$ \Term{isomorphism}{同构}于 $S$ 上某个\Term{object}{对象} $X$ 在 $S'$ 上的\Term{inverse-image}{逆像}，后者带有其\Term{canonical}{典范}\Term{descent-datum}{下降资料}，则称 $X'$ 上关于 $S'\to S$ 的这个\Term{descent-datum}{下降资料}\Term{effective-descent-datum}{有效}。
+\end{SGAresult}
+若 $S'\to S$ 为\Term{descent-morphism}{下降态射}（2.2），则定义中的 $X$ 在唯一\Term{isomorphism}{同构}意义下唯一。说 $S'\to S$ 为\Term{effective-descent-morphism}{有效下降态射}（2.2），就是说它为\Term{descent-morphism}{下降态射}，且关于它的每个\Term{descent-datum}{下降资料}均\Term{effective-descent-datum}{有效}。
+
+现在考虑 $S$ 上的\Term{object}{对象} $X$ 中的\Term{equivalence-relation}{等价关系} $R$。设 $X'$、$X''$、$X'''$ 分别为 $X$ 在 $S'$、$S''=S'\times_S S'$、$S'''=S'\times_S S'\times_S S'$ 上的\Term{inverse-image}{逆像}，并设 $R',R'',R'''$ 为由 $R$ 取\Term{inverse-image}{逆像}得到的\Term{equivalence-relation}{等价关系}。假设 $X'$ 中的\Term{equivalence-relation}{等价关系} $R'$ 为\Term{M-effective}{$(\mathrm M)$-有效}的，并考虑\Term{quotient}{商} $Y'=X'/R'$，它是 $S'$ 上的一个\Term{object}{对象}。由 3.4.5，它在 $S''$ 上的两个\Term{inverse-image}{逆像}均\Term{isomorphism}{同构}于 $X''/R''$。因此，$S'$-\Term{object}{对象} $Y'$ 带有一个\Term{canonical}{典范}\Term{gluing-datum}{粘合资料}。同样利用 $X'''/R'''$ 的唯一性，可见这甚至是一个\Term{descent-datum}{下降资料}。（注：这个证明隐含假设写出的全部\Term{fiber-product}{纤维积}都存在；特别地，若 $S'\to S$ \Term{quarrable}{可作基变换}，例如为\Term{descent-morphism}{下降态射}，此条件即成立。）
+\begin{SGAresult}{命题}{3.5.2}
+设 $R$ 为 $S$ 上的\Term{object}{对象} $X$ 中的\Term{equivalence-relation}{等价关系}，$S'\to S$ 为\Term{universal-effective-epimorphism}{泛有效满态射}。假设任何一个 $S$-\Term{morphism}{态射}，只要其在 $S'$ 上的\Term{inverse-image}{逆像}属于 $(\mathrm M)$，它自身便属于 $(\mathrm M)$。下列条件\Term{equivalence}{等价}：
+\begin{enumerate}
+\item[(i)] $R$ 在 $X$ 中为\Term{M-effective}{$(\mathrm M)$-有效}的；
+\item[(ii)] $R'$ 在 $X'$ 中为\Term{M-effective}{$(\mathrm M)$-有效}的，且 $X'/R'$ 上的\Term{canonical}{典范}\Term{descent-datum}{下降资料}\Term{effective-descent-datum}{有效}。
+\end{enumerate}
+此时，$X'/R'$ 的“\Term{descent}{下降}”\Term{object}{对象}\Term{canonical}{典范}\Term{isomorphism}{同构}于 $X/R$。
+\end{SGAresult}
+\begin{proof}
+(i) 蕴含 (ii)，无非是将 3.4.4 转述为\Term{descent}{下降}的语言。只要证明逆命题，命题的最后一个断言便由以下事实得到：\Term{universal-effective-epimorphism}{泛有效满态射}是\Term{descent-morphism}{下降态射}（2.3），所以“\Term{descent}{下降}所得\Term{object}{对象}”在唯一\Term{isomorphism}{同构}意义下唯一。
+
+于是证明 (ii) $\Rightarrow$ (i)。设 $Y'$ 为\Term{quotient}{商} $X'/R'$，$Y$ 为\Term{descent}{下降}所得\Term{object}{对象}。由于\Term{canonical}{典范}\Term{morphism}{态射} $p':X'\to X'/R'=Y'$ 按构造与\Term{descent-datum}{下降资料}相容（它在 $S''$ 上的\Term{inverse-image}{逆像}与\Term{canonical}{典范}\Term{morphism}{态射} $X''\to X''/R''$ 相同），它来自某个 $S$-\Term{morphism}{态射} $p:X\to Y$ 在 $S'$ 上的\Term{inverse-image}{逆像}。因为 $p'$ 属于 $(\mathrm M)$，由对\Term{morphism}{态射} $S'\to S$ 所作的假设，$p$ 也属于 $(\mathrm M)$。又因为 $p'$ 与\Term{equivalence-relation}{等价关系} $R'$ 相容，
+\SourcePage{202}
+$p$ 与 $R$ 相容，其理由仍是\Term{universal-effective-epimorphism}{泛有效满态射}为\Term{descent-morphism}{下降态射}。因此有\Term{morphism}{态射}
+\[
+ R\longrightarrow X\times_Y X.
+\]
+为证明 $R$ 为\Term{M-effective}{$(\mathrm M)$-有效}且 $Y$ \Term{isomorphism}{同构}于 $X/R$，只须证明此\Term{morphism}{态射}是\Term{isomorphism}{同构}。而将基从 $S$ \Term{group-extension}{扩张}到 $S'$ 后，由 $R'$ \Term{effective-equivalence-relation}{有效}，它变为\Term{isomorphism}{同构}；所以由与前面相同的理由（2.4），它本身为\Term{isomorphism}{同构}。
+\end{proof}
+注意，若取 $(\mathrm M)$ 为\Term{universal-effective-epimorphism}{泛有效满态射}族 $(\mathrm M_0)$，并且 $\mathcal C$ 有\Term{fiber-product}{纤维积}，则上文的假设成立（1.10）。由此得到：
+\begin{SGAresult}{推论}{3.5.3}
+假设 $\mathcal C$ 有\Term{fiber-product}{纤维积}（只需在 $S$ 上有\Term{fiber-product}{纤维积}即可）。设 $R$ 为 $S$ 上的 $X$ 中的\Term{equivalence-relation}{等价关系}，$S'\to S$ 为\Term{universal-effective-epimorphism}{泛有效满态射}。下列条件\Term{equivalence}{等价}：
+\begin{enumerate}
+\item[(i)] $R$ 在 $X$ 中为\Term{universal-effective-equivalence-relation}{泛有效}的；
+\item[(ii)] $R'$ 在 $X'$ 中为\Term{universal-effective-equivalence-relation}{泛有效}的，且 $X'/R'$ 上的\Term{canonical}{典范}\Term{descent-datum}{下降资料}\Term{effective-descent-datum}{有效}。
+\end{enumerate}
+此时，$X'/R'$ 的“\Term{descent}{下降}”\Term{object}{对象}\Term{canonical}{典范}\Term{isomorphism}{同构}于 $X/R$。
+\end{SGAresult}

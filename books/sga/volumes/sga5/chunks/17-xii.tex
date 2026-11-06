@@ -1,0 +1,1178 @@
+\SourcePage{419}
+\SGAchapter{XII}{代数几何中的 Nielsen--Wecken 公式与 Lefschetz 公式}{Formules de Nielsen--Wecken et de Lefschetz en géométrie algébrique}
+\begin{center}A. Grothendieck\quad 著\\I. Bucur\quad 整理\end{center}
+
+\SourcePage{420}
+\SGAsection{1}{基本设定}
+设 $X'$ 是\Term{algebraically-closed-field}{代数闭域} $k$ 上的\Term{proper}{固有}\Term{scheme}{概形}，$G$ 是\Term{action}{作用}于 $X'$ 的\Term{finite-group}{有限群}。对于每个 $g\in G$，以 $g_{X'}:X'\longrightarrow X'$ 表示 $g$ 所诱导的 $X'$ 的\Term{automorphism}{自同构}。
+
+假定 $X'$ 有一个在 $G$ 下\Term{stable}{稳定}的\Term{open-subscheme}{开子概形} $U'$，使得 $G$ 在 $U'$ 上\Term{free-action}{自由作用}。令 $\Lambda_n=\mathbf Z/\ell^n\mathbf Z$，其中 $\ell$ 是异于 $k$ 的\Term{characteristic}{特征}的素数。
+
+以 $\Lambda_{n,U',X'}$ 表示 $X'$ 上的\Term{sheaf}{层} $i_!(\Lambda_{n,U'})$，其中 $\Lambda_{n,U'}$ 是 $U'$ 上与环 $\Lambda_n$ 对应的\Term{constant-sheaf}{常值层}，$i:U'\hookrightarrow X'$ 是\Term{canonical}{典范}\Term{immersion}{浸入}。\Term{sheaf}{层} $\Lambda_{n,U',X'}$ 自然带有以 $G$ 为\Term{operator-group}{算子群}的\Term{sheaf}{层}结构。因此，\Term{complex}{复形}
+\[
+\mathbb H_{n,U',X'}=\mathrm R\Gamma_{X'}(\Lambda_{n,U',X'})
+\]
+是 $\Lambda_n[G]$-\Term{module}{模}\Term{complex}{复形}；更确切地说，它是 $\Lambda_n[G]$-\Term{module}{模}的\Term{perfect-complex}{完美复形}（第 VIII 讲 7；第 IX 讲 2）。
+
+我们将看到，为达到这里的目的，使用 $\mathrm R\Gamma_{X'}(\Lambda_{n,U',X'})$ 相对于环 $\Lambda_n$ 在\Term{derived-category}{导出范畴}意义下的\Term{dual}{对偶}，比使用它本身更方便。记此\Term{dual}{对偶}为
+\[
+\begin{aligned}
+\mathbb H_{n,U',X'}^\vee
+ &=\mathrm R\Gamma_{X'}(\Lambda_{n,U',X'})^\vee\\
+ &=\mathrm R\operatorname{Hom}_{\Lambda_n}
+   \bigl(\mathrm R\Gamma_{X'}(\Lambda_{n,U',X'}),\Lambda_n\bigr).
+\end{aligned}
+\]
+\Term{complex}{复形} $\mathrm R\Gamma_{X'}(\Lambda_{n,U',X'})^\vee$ 也是 $\Lambda_n[G]$-\Term{module}{模}的\Term{perfect-complex}{完美复形}。
+
+现在再给定\Term{scheme}{概形} $X'$ 的一个\Term{endomorphism}{自同态} $f':X'\longrightarrow X'$，以及群 $G$ 的一个\Term{endomorphism}{自同态} $\varphi:G\longrightarrow G$，使以下两个条件成立：
+\SourcePage{421}
+\[
+f'g_{X'}=\varphi(g)_{X'}f'\qquad(\forall g\in G).
+\tag{1.1}
+\]
+\[
+\text{补集 }Y'=X'-U'\text{ 在 }f'\text{ 下稳定。}
+\tag{1.2}
+\]
+（由已有假设，$Y'$ 在 $G$ 下\Term{stable}{稳定}。一般并不要求\Term{open-subscheme}{开子概形} $U'$ 在 $f'$ 下\Term{stable}{稳定}。）
+
+于是得到下列\Term{sheaf}{层}\Term{homomorphism}{同态}：
+\[
+\begin{gathered}
+f'_{\Lambda_{n,X'}}:\Lambda_{n,X'}\longrightarrow\Lambda_{n,X'},\qquad
+f'_{\Lambda_{n,Y'}}:\Lambda_{n,Y'}\longrightarrow\Lambda_{n,Y'},\\
+f'_{\Lambda_{n,U',X'}}:\Lambda_{n,U',X'}\longrightarrow\Lambda_{n,U',X'},\qquad
+g_{\Lambda_{n,U',X'}}:\Lambda_{n,U',X'}\longrightarrow\Lambda_{n,U',X'},
+\end{gathered}
+\]
+并且下图交换，其中各行均\Term{exact}{正合}：
+\[
+\begin{tikzcd}[column sep=small]
+0\arrow[r]&\Lambda_{n,U',X'}\arrow[r]\arrow[d,"{f'_{\Lambda_{n,U',X'}}}"']&\Lambda_{n,X'}\arrow[r]\arrow[d,"{f'_{\Lambda_{n,X'}}}"]&\Lambda_{n,Y'}\arrow[r]\arrow[d,"{f'_{\Lambda_{n,Y'}}}"]&0\\
+0\arrow[r]&\Lambda_{n,U',X'}\arrow[r]&\Lambda_{n,X'}\arrow[r]&\Lambda_{n,Y'}\arrow[r]&0.
+\end{tikzcd}
+\tag{1.3}
+\]
+特别地，由此得到下列 $\Lambda_n$-\Term{module}{模}\Term{complex}{复形}的\Term{homomorphism}{同态}：
+\SourcePage{422}
+\[
+\begin{aligned}
+f'_{\mathbb H_{n,U',X'}}
+ &=\mathrm R\Gamma_{X'}(f'_{\Lambda_{n,U',X'}}):
+ \mathbb H_{n,U',X'}\longrightarrow\mathbb H_{n,U',X'},\\
+f'_{\mathbb H_{n,U',X'}^\vee}
+ &=(f'_{\mathbb H_{n,U',X'}})^\vee:
+ \mathbb H_{n,U',X'}^\vee\longrightarrow\mathbb H_{n,U',X'}^\vee,\\
+g_{\mathbb H_{n,U',X'}}
+ &=\mathrm R\Gamma_{X'}(g_{\Lambda_{n,U',X'}}):
+ \mathbb H_{n,U',X'}\longrightarrow\mathbb H_{n,U',X'},\\
+g_{\mathbb H_{n,U',X'}^\vee}
+ &=(g_{\mathbb H_{n,U',X'}})^\vee:
+ \mathbb H_{n,U',X'}^\vee\longrightarrow\mathbb H_{n,U',X'}^\vee.
+\end{aligned}
+\]
+它们满足下列关系：
+\[
+g_{\mathbb H_{n,U',X'}}\circ f'_{\mathbb H_{n,U',X'}}
+=f'_{\mathbb H_{n,U',X'}}\circ\varphi(g)_{\mathbb H_{n,U',X'}};
+\tag{1.4}
+\]
+\[
+f'_{\mathbb H_{n,U',X'}^\vee}\circ g_{\mathbb H_{n,U',X'}^\vee}
+=\varphi(g)_{\mathbb H_{n,U',X'}^\vee}\circ f'_{\mathbb H_{n,U',X'}^\vee}.
+\tag{1.5}
+\]
+由 (1.5) 可知（参见关于迹的一般理论的第 XI 讲 5.2.1、7.1），其\Term{trace}{迹}满足
+\[
+\operatorname{Tr}^{*}_{\Lambda_n[G],\varphi}
+ (f'_{\mathbb H_{n,U',X'}^\vee})
+\in\Lambda_n[G_{\natural,\varphi}]
+\simeq\mathscr F_!(G_{\natural,\varphi},\Lambda_n).
+\]
+\footnote{参见第 III B 讲 5.12。}
+我们的第一个目标，是在一些附加假设下，用与 $f'$ 相关的\Term{local-invariant}{局部不变量}给出
+$\operatorname{Tr}^{*}_{\Lambda_n[G],\varphi}(f'_{\mathbb H_{n,U',X'}^\vee})$ 的显式公式；这些\Term{local-term}{局部项}将在下文定义。
+
+\SGAsection{2}{对系数的相容性}
+实际上还可以做得更多。为此，设 $n,m$ 是满足 $m\geq n$ 的两个正整数。环\Term{homomorphism}{同态}
+\SourcePage{423}
+\[
+\alpha_{m,n}:\Lambda_m\longrightarrow\Lambda_n
+\]
+诱导 $X'$ 上的环\Term{sheaf}{层}\Term{homomorphism}{同态}
+\[
+\alpha_{m,n,X'}:\Lambda_{m,X'}\longrightarrow\Lambda_{n,X'},\qquad
+\alpha_{m,n,U',X'}:\Lambda_{m,U',X'}\longrightarrow\Lambda_{n,U',X'}.
+\]
+应用 \Term{kunneth-formula}{Künneth 公式}，得到
+\[
+\mathrm R\Gamma_{X'}(\Lambda_{m,X'})\mathbin{\overset{\mathrm L}{\otimes}}_{\Lambda_m}\Lambda_n
+\simeq\mathrm R\Gamma_{X'}(\Lambda_{n,X'}),
+\tag{2.1}
+\]
+\[
+\mathrm R\Gamma_{X'}(\Lambda_{m,U',X'})\mathbin{\overset{\mathrm L}{\otimes}}_{\Lambda_m}\Lambda_n
+\simeq\mathrm R\Gamma_{X'}(\Lambda_{n,U',X'}),
+\tag{2.2}
+\]
+\[
+\mathrm R\Gamma_{X'}(f'_{\Lambda_{m,X'}})\mathbin{\overset{\mathrm L}{\otimes}}_{\Lambda_m}\Lambda_n
+\simeq\mathrm R\Gamma_{X'}(f'_{\Lambda_{n,X'}}),
+\tag{2.3}
+\]
+\[
+\mathrm R\Gamma_{X'}(f'_{\Lambda_{m,U',X'}})\mathbin{\overset{\mathrm L}{\otimes}}_{\Lambda_m}\Lambda_n
+\simeq\mathrm R\Gamma_{X'}(f'_{\Lambda_{n,U',X'}}).
+\tag{2.4}
+\]
+容易由此\Term{pushout}{推出}
+\[
+\begin{aligned}
+{}&\mathrm R\operatorname{Hom}_{\Lambda_m}
+ (\mathrm R\Gamma_{X'}(\Lambda_{m,U',X'}),\Lambda_m)
+ \mathbin{\overset{\mathrm L}{\otimes}}_{\Lambda_m}\Lambda_n\\
+&\hspace{2em}\simeq\mathrm R\operatorname{Hom}_{\Lambda_n}
+ (\mathrm R\Gamma_{X'}(\Lambda_{n,U',X'}),\Lambda_n),
+\end{aligned}
+\tag{2.5}
+\]
+\[
+f'_{\mathbb H_{m,U',X'}^\vee}\mathbin{\overset{\mathrm L}{\otimes}}_{\Lambda_m}\Lambda_n
+\simeq f'_{\mathbb H_{n,U',X'}^\vee}.
+\tag{2.6}
+\]
+因此，\Term{perfect-complex}{完美复形}的\Term{morphism}{态射}
+$\mathrm R\Gamma_{X'}(f'_{\Lambda_{n,X'}})$（以及相应的
+$\mathrm R\Gamma_{X'}(f'_{\Lambda_{n,U',X'}})$、$f'_{\mathbb H_{n,U',X'}^\vee}$）
+由\Term{morphism}{态射} $\mathrm R\Gamma_{X'}(f'_{\Lambda_{m,X'}})$（以及相应的
+$\mathrm R\Gamma_{X'}(f'_{\Lambda_{m,U',X'}})$、$f'_{\mathbb H_{m,U',X'}^\vee}$）
+沿 $\alpha_{m,n}$（相应地沿 $\alpha_{m,n}$、$\alpha_{m,n,G}:\Lambda_m[G]\longrightarrow\Lambda_n[G]$）作\Term{extension-of-scalars}{标量扩张}得到（第 XI 讲 6.3）。
+\SourcePage{424}
+利用第 XI 讲 6.3、6.3.2、6.3.3 以及 (2.3)、(2.6)，得到
+\[
+\operatorname{Tr}^{*}_{\Lambda_n}(\mathrm R\Gamma_{X'}(f'_{\Lambda_{n,X'}}))
+=\alpha_{m,n}\bigl(\operatorname{Tr}^{*}_{\Lambda_m}
+ (\mathrm R\Gamma_{X'}(f'_{\Lambda_{m,X'}}))\bigr),
+\tag{2.7}
+\]
+\[
+\operatorname{Tr}^{*}_{\Lambda_n[G],\varphi}(f'_{\mathbb H_{n,U',X'}^\vee})
+=\alpha_{m,n,G}\bigl(\operatorname{Tr}^{*}_{\Lambda_m[G],\varphi}
+ (f'_{\mathbb H_{m,U',X'}^\vee})\bigr).
+\tag{2.8}
+\]
+函数族
+$\bigl(\operatorname{Tr}_{\Lambda_n[G],\varphi}(f'_{\mathbb H_{n,U',X'}^\vee})\bigr)_{n>0}$
+确定了 $G$ 上的一个取值于\Term{ell-adic-integer}{$\ell$ 进整数}环 $\mathbf Z_\ell$ 的
+\Term{twisted-central-function}{$\varphi$ 中心函数}
+\[
+\operatorname{Tr}_{\mathbf Z_\ell[G],\varphi}
+ (f'_{\mathbb H_{U',X'}^\vee(\ell)})
+\in\mathscr F_!(G_{\natural,\varphi},\mathbf Z_\ell).
+\]
+同样，元素
+$\operatorname{Tr}^{*}_{\Lambda_n}(\mathrm R\Gamma_{X'}(f'_{\Lambda_{n,X'}}))$，$n\geq1$，
+确定了一个\Term{ell-adic-integer}{$\ell$ 进整数}
+\[
+\operatorname{Tr}^{*}_{\mathbf Z_\ell}
+ (f'_{\mathrm R\Gamma_{X'}(\mathbf Z_{\ell,X'})}).
+\]
+我们的目标就是求出
+$\operatorname{Tr}^{*}_{\mathbf Z_\ell[G],\varphi}(f'_{\mathbb H_{U',X'}^\vee(\ell)})$ 的公式。
+
+\SGAsection{3}{Nielsen--Wecken 局部不变量}
+参见文献 [1]。在第 1 节的假设之外，再假定 $G$ 的每条\Term{orbit}{轨道}都包含于某个\Term{affine}{仿射}\Term{open-subscheme}{开子概形}中。于是\Term{quotient-scheme}{商概形} $X=X'/G$ 存在；根据 (1.1)，$X'$ 的\Term{endomorphism}{自同态} $f'$ 可\Term{descent}{下降}为\Term{quotient-scheme}{商概形}上的\Term{endomorphism}{自同态}
+\[
+f:X\longrightarrow X.
+\]
+下文使用以下记号：
+\SourcePage{425}
+\[
+p:X'\longrightarrow X=X'/G\quad\text{为典范投影},\qquad
+Y=p(Y')=Y'/G,\qquad U=X-Y.
+\]
+$U'$ 是以 $G$ 为\Term{structure-group}{结构群}的\Term{principal-covering}{主覆盖}。设 $x\in U$ 是 $f$ 的一个\Term{fixed-point}{不动点}。我们按以下方式给它关联一个
+\Term{twisted-conjugacy-class}{$\varphi$ 共轭类}（第 XI 讲 7.1）$\operatorname{NW}_{f'}^{G,\varphi}(x)$。
+
+取 $x'\in U'$ 使 $p(x')=x$。由于 $U'$ 是以 $G$ 为\Term{structure-group}{结构群}的\Term{principal-covering}{主覆盖}，且 $x$ 在 $f$ 下不动，存在唯一的 $g\in G$，使得 $f'(x')=gx'$。$g$ 的\Term{twisted-conjugacy-class}{$\varphi$ 共轭类}只依赖于 $x$。事实上，若 $p(x'')=x$，则存在 $h\in G$ 使 $hx''=x'$。因此，若 $f'(x'')=g'x''$，便有
+\[
+gx'=f'(x')=f'(hx'')=\varphi(h)f'(x'')=(\varphi(h)g'h^{-1})x',
+\]
+\[
+g=\varphi(h)g'h^{-1}.
+\]
+也就是说，$g$ 与 $g'$ 是 $\varphi$ \Term{conjugacy}{共轭}的。由此得到一个确定的\Term{twisted-conjugacy-class}{$\varphi$ 共轭类}，称为与 $f$ 的\Term{fixed-point}{不动点} $x\in U$ 相关联的
+\Term{nielsen-wecken-invariant}{Nielsen--Wecken 局部不变量}，记作 $\operatorname{NW}_{f'}^{G,\varphi}(x)$。
+
+\Term{twisted-conjugacy-class}{$\varphi$ 共轭类} $\operatorname{NW}_{f'}^{G,\varphi}(x)$ 确定一个整数值的
+\Term{twisted-central-function}{$\varphi$ 中心函数}（参见第 XI 讲 7.1）
+\[
+\operatorname{NW}_{f'}^{G,\varphi}(x):G\longrightarrow\mathbf Z,
+\]
+它由以下关系刻画：
+\SourcePage{426}
+\[
+\operatorname{NW}_{f'}^{G,\varphi}(x)(g)=
+\begin{cases}
+1,&\text{存在 }x'\in X'\text{，使 }(g^{-1}f')(x')=x'\text{ 且 }p(x')=x,\\
+0,&\text{否则。}
+\end{cases}
+\tag{3.1}
+\]
+
+\SGAsection{4}{局部函数及其整性}
+假定 $X'$ 在 $k$ 上\Term{smooth}{光滑}，并且 $f$ 的\Term{fixed-point}{不动点}个数\Term{finite}{有限}。特别地，对每个 $g\in G$，$g^{-1}f'$ 的\Term{fixed-point}{不动点}个数也\Term{finite}{有限}。
+
+对于 $f$ 的每个\Term{fixed-point}{不动点} $x\in X$，引入一个取有理数值的
+\Term{twisted-central-function}{$\varphi$ 中心函数}
+\[
+S_x(f',f,G,\varphi):G\longrightarrow\mathbf Q,
+\]
+定义为
+\[
+S_x(f',f,G,\varphi)(g)
+=\frac{1}{c^\varphi(g)}\sum_{x'\in X_x'{}^{g^{-1}f'}}
+ \bigl(\nu_{x'}(g^{-1}f')-1\bigr).
+\tag{4.1}
+\]
+这里使用了以下记号：
+\[
+c^\varphi(g)=\operatorname{Card}G_g^\varphi,\qquad
+G_g^\varphi=\{a\in G\mid\varphi(a)ga^{-1}=g\},
+\tag{4.2}
+\]
+\[
+X_x'{}^{g^{-1}f'}
+=\{x'\in X'\mid p(x')=x,\ (g^{-1}f')(x')=x'\},
+\tag{4.3}
+\]
+\[
+\nu_{x'}(g^{-1}f')=g^{-1}f'\text{ 的不动点 }x'\text{ 的重数。}
+\tag{4.4}
+\]
+将上述函数与\Term{canonical}{典范}\Term{embedding}{嵌入} $\mathbf Q\hookrightarrow\mathbf Q_\ell$ 复合，
+\SourcePage{427}
+便由 $S_x(f',f,G,\varphi)$ 得到 $G$ 上取值于\Term{ell-adic-number}{$\ell$ 进数}域 $\mathbf Q_\ell$ 的
+\Term{twisted-central-function}{$\varphi$ 中心函数} $S_{x,\ell}(f',f,G,\varphi)$。
+
+\begin{SGAresult}{猜想}{4.5}
+对每个 $\ell\ne\operatorname{char}(k)$，函数 $S_{x,\ell}(f',f,G,\varphi)$ 的值都是\Term{ell-adic-integer}{$\ell$ 进整数}。
+\end{SGAresult}
+下面将证明，当 $X$ 的\Term{dimension}{维数}等于 $1$ 时，猜想 4.5 成立。
+
+\begin{SGAresult}{命题}{4.6}
+设 $R$ 是\Term{discrete-valuation-ring}{离散赋值环}，$\mathfrak m$ 是它的\Term{maximal-ideal}{极大理想}，$\pi$ 是一个\Term{uniformizer}{素元}，$k=R/\mathfrak m$ 是它的\Term{residue-field}{剩余域}，并假定 $k$ 为\Term{algebraically-closed-field}{代数闭域}。设 $v$ 是它的\Term{valuation}{赋值}，$f'_R:R\longrightarrow R$ 是 $R$ 的\Term{endomorphism}{自同态}，$G$ 是 $R$ 的一个\Term{finite}{有限}\Term{automorphism}{自同构}群。假定 $f'_R$ 及各\Term{automorphism}{自同构} $g_R$ 在 $k$ 上都诱导\Term{identity-map}{恒等映射}，并且给定群\Term{endomorphism}{自同态}
+\[
+\varphi:G\longrightarrow G,
+\]
+使得
+\[
+f'_R\circ g_R=\varphi(g)_R\circ f'_R.
+\]
+对每个 $g\in G$，记
+\[
+\nu(g_R^{-1}f'_R)=v\bigl(g_R^{-1}f'_R(\pi)-\pi\bigr).
+\]
+将 $c^\varphi(g)$（参见 (4.2)）写为
+\SourcePage{428}
+\[
+c^\varphi(g)=p^s q,\qquad(p,q)=1,\qquad p=\operatorname{char}(k),
+\]
+则 $q\mid\bigl(\nu(g_R^{-1}f'_R)-1\bigr)$。
+\end{SGAresult}
+
+为证明命题 4.6，可以归约到 $g=e$ 且 $\varphi=\operatorname{id}_G$ 的情形。事实上，先把情形 $(f'_R,G,g,\varphi)$ 换为
+\[
+(f''_R=g_R^{-1}f'_R,\ G,e,\varphi'=\operatorname{int}(g)\circ\varphi),
+\qquad\varphi'(a)=g^{-1}\varphi(a)g.
+\]
+容易看到
+\[
+\nu(g_R^{-1}f'_R)-1=\nu(f''_R)-1,
+\]
+\[
+c^\varphi(g)=c^{\varphi'}(e),\qquad G_g^\varphi=G_e^{\varphi'}
+\quad\text{（参见 (4.2)）}.
+\]
+这就归约到 $g=e$。为了同时归约到 $g=e$、$\varphi=\operatorname{id}_G$，注意可以将
+$(f''_R,G,e,\varphi')$ 换为
+\[
+(f''_R,G_e^{\varphi'},e,\operatorname{id}_{G_e^{\varphi'}}),
+\]
+并且有
+\[
+G_e^{\varphi'}=(G_e^{\varphi'})_e^{\operatorname{id}_{G_e^{\varphi'}}}.
+\]
+命题 4.6 的证明主要使用以下\Term{lemma}{引理}。
+
+\begin{SGAresult}{\Term{lemma}{引理}}{4.7}
+沿用命题 4.6 的假设与记号，再假定 $\varphi=\operatorname{id}_G$，即 $G$ 在 $R$ 上的\Term{action}{作用}与 $f'_R$ 交换，并且 $r=\nu(f'_R)\geq2$。令
+\[
+c=\operatorname{Card}\bigl(\operatorname{Im}
+ (G\longrightarrow\operatorname{Aut}_k(\mathfrak m/\mathfrak m^2))\bigr).
+\]
+则有以下整除关系：
+\SourcePage{429}
+\[
+c\mid(r-1).
+\]
+\end{SGAresult}
+\begin{proof}
+显然，整数 $r$ 满足下列条件：
+
+\textup{a)} 由 $f'_R$ 诱导的\Term{homomorphism}{同态}
+\[
+f'_r:A/\mathfrak m^r\longrightarrow A/\mathfrak m^r
+\]
+是\Term{identity-map}{恒等映射}；
+
+\textup{b)} \Term{homomorphism}{同态}
+\[
+f'_{r+1}:A/\mathfrak m^{r+1}\longrightarrow A/\mathfrak m^{r+1}
+\]
+不等于\Term{identity-map}{恒等映射}。
+
+另一方面，$G$ 显然\Term{action}{作用}于所有的 $k$-\Term{vector-space}{向量空间} $\mathfrak m^i/\mathfrak m^{i+1}$。
+
+我们首先证明：在\Term{lemma}{引理}的假设下，存在唯一一个 $k[G]$-\Term{module}{模}\Term{homomorphism}{同态}
+\[
+u(f'_R):\mathfrak m/\mathfrak m^2\longrightarrow
+ \mathfrak m^r/\mathfrak m^{r+1},
+\]
+使以下两个条件成立：
+\[
+u(f'_R)\ne0;
+\]
+\[
+u(f'_R)(x\bmod\mathfrak m^2)
+=(f'_R(x)-x)\bmod\mathfrak m^{r+1}\qquad(\forall x\in\mathfrak m).
+\]
+显然，由条件 a)，对每个 $x\in R$ 都有 $f'_R(x)-x\in\mathfrak m^r$，因此第二个条件是有意义的。
+
+\SourcePage{430}
+这一观察还使我们能够定义一个\Term{abelian-group}{Abel 群}\Term{homomorphism}{同态}
+\[
+\mathfrak m\longrightarrow\mathfrak m^r/\mathfrak m^{r+1},
+\qquad x\longmapsto(f'_R(x)-x)\bmod\mathfrak m^{r+1}.
+\]
+此\Term{homomorphism}{同态}在 $\mathfrak m^2$ 上为零。事实上，若 $x_1,x_2\in\mathfrak m$，则
+$f'_R(x_1x_2)-x_1x_2\in\mathfrak m^{r+1}$，因为由条件 a) 有
+\[
+f'_R(x_1)=x_1+\alpha_1,\quad\alpha_1\in\mathfrak m^r,
+\qquad
+f'_R(x_2)=x_2+\alpha_2,\quad\alpha_2\in\mathfrak m^r,
+\]
+从而
+\[
+\begin{aligned}
+f'_R(x_1x_2)&=f'_R(x_1)f'_R(x_2)=(x_1+\alpha_1)(x_2+\alpha_2)\\
+&=x_1x_2+x_1\alpha_2+x_2\alpha_1+\alpha_1\alpha_2,
+\end{aligned}
+\]
+而显然 $x_1\alpha_2+x_2\alpha_1+\alpha_1\alpha_2\in\mathfrak m^{r+1}$。
+
+因此，取商后得到一个\Term{abelian-group}{Abel 群}\Term{homomorphism}{同态}
+\[
+u(f'_R):\mathfrak m/\mathfrak m^2\longrightarrow
+ \mathfrak m^r/\mathfrak m^{r+1}.
+\]
+\Term{homomorphism}{同态} $u(f'_R)$ 实际上是 $k$-\Term{vector-space}{向量空间}的\Term{homomorphism}{同态}。为此，只需证明对每个 $x\in\mathfrak m$、$\alpha\in R$，均有
+\[
+f'_R(\alpha x)-\alpha x
+\equiv\alpha(f'_R(x)-x)\pmod{\mathfrak m^{r+1}},
+\]
+\SourcePage{431}
+即
+\[
+f'_R(\alpha x)-\alpha f'_R(x)\in\mathfrak m^{r+1}.
+\tag{4.7.1}
+\]
+但我们有
+\[
+f'_R(\alpha x)-\alpha f'_R(x)=(f'_R(\alpha)-\alpha)f'_R(x),
+\]
+而
+\[
+f'_R(\alpha)-\alpha\in\mathfrak m^r\quad\text{（条件 a)）},\qquad
+f'_R(x)\in\mathfrak m\quad(x\in\mathfrak m),
+\]
+故得 (4.7.1)。
+
+\Term{homomorphism}{同态} $u(f'_R)$ 还是 $k[G]$-\Term{module}{模}\Term{homomorphism}{同态}。事实上，对 $x\in\mathfrak m$，有
+\[
+\begin{aligned}
+u(f'_R)\bigl(g(x\bmod\mathfrak m^2)\bigr)
+ &=(f'_R(gx)-gx)\bmod\mathfrak m^{r+1}\\
+ &=g(f'_R(x)-x)\bmod\mathfrak m^{r+1}
+ =g\,u(f'_R)(x\bmod\mathfrak m^2).
+\end{aligned}
+\]
+最后，$u(f'_R)\ne0$。事实上，由条件 b)，存在 $x_0\in R$，使
+$f'_R(x_0)-x_0\notin\mathfrak m^{r+1}$。但我们需要一个属于 $\mathfrak m$ 的这种元素。为得到它，将 $x_0$ 写为
+\[
+x_0=\frac{x}{x'},\qquad x,x'\in\mathfrak m,\quad x'\notin\mathfrak m^{r+1}.
+\]
+$x,x'$ 中至少有一个满足所需条件。
+\SourcePage{432}
+否则，假定同时有
+\[
+f'_R(x)-x\in\mathfrak m^{r+1},\qquad
+f'_R(x')-x'\in\mathfrak m^{r+1}.
+\]
+那么，在 $A$ 的\Term{fraction-field}{分式域} $K$ 中有
+\[
+\frac{f'_R(x)}x\in1+\mathfrak m^r,\qquad
+\frac{f'_R(x')}{x'}\in1+\mathfrak m^r.
+\]
+可以假定 $f'_R(x')\ne0$，否则 $x'$ 就是所求的元素。在此假设下，由于 $1+\mathfrak m^r$ 是一个\Term{multiplicative-group}{乘法群}，得到
+\[
+\frac{x'}{f'_R(x')}\in1+\mathfrak m^r,
+\]
+从而
+\[
+\frac{f'_R(x)}x\cdot\frac{x'}{f'_R(x')}\in1+\mathfrak m^r.
+\]
+但最后这一关系\Term{pushout}{推出}
+\[
+\frac{f'_R(x_0)}{x_0}\in1+\mathfrak m^r.
+\]
+事实上，
+\[
+\begin{aligned}
+\frac{f'_R(x_0)}{x_0}-\frac{f'_R(x)}x\frac{x'}{f'_R(x')}
+ &=\frac{f'_R(x/x')}{x/x'}-\frac{f'_R(x)}x\frac{x'}{f'_R(x')}\\
+ &=\frac{x'f'_R(x/x')}{x}-\frac{f'_R(x)}x\frac{x'}{f'_R(x')}\\
+ &=\frac1x\left(
+ \frac{x'f'_R(x')f'_R(x/x')-x'f'_R(x)}{f'_R(x')}
+ \right)=0.
+\end{aligned}
+\]
+\SourcePage{433}
+给 $k$-\Term{vector-space}{向量空间}
+\[
+\operatorname{Hom}_k(\mathfrak m/\mathfrak m^2,
+ \mathfrak m^r/\mathfrak m^{r+1})
+\]
+赋予通常的 $G$-\Term{module}{模}结构后，其元素 $u(f'_R)$ 属于 $G$ 下的\Term{invariant-subspace}{不变子空间}
+\[
+\operatorname{Hom}_k(\mathfrak m/\mathfrak m^2,
+ \mathfrak m^r/\mathfrak m^{r+1})^G.
+\]
+另一方面，经典事实是：\Term{vector-space}{向量空间} $\mathfrak m^i/\mathfrak m^{i+1}$ \Term{canonical}{典范}地等同于第 $i$ 次\Term{tensor-power}{张量幂}
+$\bigotimes_k^i(\mathfrak m/\mathfrak m^2)$。因此，\Term{vector-space}{向量空间}
+$\operatorname{Hom}_k(\mathfrak m/\mathfrak m^2,\mathfrak m^r/\mathfrak m^{r+1})$
+通过“缩并”\Term{homomorphism}{同态}与第 $(r-1)$ 次\Term{tensor-power}{张量幂}
+$\bigotimes_k^{r-1}(\mathfrak m/\mathfrak m^2)$ 等同：
+\[
+\gamma:\operatorname{Hom}_k(\mathfrak m/\mathfrak m^2,
+ \mathfrak m^r/\mathfrak m^{r+1})
+\longrightarrow\bigotimes_k^{r-1}(\mathfrak m/\mathfrak m^2).
+\]
+在\Term{isomorphism}{同构} $\gamma$ 下，左边的 $G$-\Term{module}{模}结构转化为右边由 $\mathfrak m/\mathfrak m^2$ 的 $G$-\Term{module}{模}结构诱导的 $G$-\Term{module}{模}结构：
+\[
+g(\xi_1\otimes\xi_2\otimes\cdots\otimes\xi_{r-1})
+=g\xi_1\otimes\cdots\otimes g\xi_{r-1}.
+\]
+以 $\mu(f'_R)$ 表示 $u(f'_R)$ 在\Term{isomorphism}{同构} $\gamma$ 下的像。于是有
+\[
+\text{I)}\quad0\ne\mu(f'_R)\in\bigotimes_k^{r-1}(\mathfrak m/\mathfrak m^2);
+\]
+\SourcePage{434}
+\[
+\text{II)}\quad\mu(f'_R)\text{ 在 }G\text{ 下不变。}
+\]
+现在可以完成\Term{lemma}{引理} 4.7 的证明。首先，由于 $\mathfrak m/\mathfrak m^2$ 是一维\Term{vector-space}{向量空间}，有
+\[
+\operatorname{Aut}_k(\mathfrak m/\mathfrak m^2)=k^*.
+\]
+因此，$\operatorname{Im}(G\longrightarrow\operatorname{Aut}_k(\mathfrak m/\mathfrak m^2))$
+是 $k^*$ 的一个\Term{finite}{有限}循环\Term{subgroup}{子群}，由一个本原 $c$ 次\Term{root-of-unity}{单位根}生成。以 $\varepsilon$ 表示这样的一个根。上述像\Term{subgroup}{子群}于是由下列\Term{automorphism}{自同构}生成：
+\[
+\chi:\mathfrak m/\mathfrak m^2\longrightarrow\mathfrak m/\mathfrak m^2,
+\qquad\xi\longmapsto\varepsilon\xi.
+\]
+由于 $\bigotimes_k^{r-1}(\mathfrak m/\mathfrak m^2)$ 的元素 $\mu(f'_R)$ 在 $G$ 下\Term{invariant}{不变}，得到
+\[
+\begin{aligned}
+\mu(f'_R)&=\chi\mu(f'_R)
+ =\chi\sum_i\xi_{1i}\otimes\xi_{2i}\otimes\cdots\otimes\xi_{r-1,i}\\
+ &=\sum_i\varepsilon\xi_{1i}\otimes\varepsilon\xi_{2i}
+   \otimes\cdots\otimes\varepsilon\xi_{r-1,i}
+ =\varepsilon^{r-1}\mu(f'_R),
+\end{aligned}
+\]
+即 $(1-\varepsilon^{r-1})\mu(f'_R)=0$。由于 $\mu(f'_R)$ 非零（条件 I），有
+$1-\varepsilon^{r-1}=0$，也就是说 $c\mid(r-1)$。
+\end{proof}
+
+\SourcePage{435}
+\begin{proof}[命题 4.6 的证明]
+已经指出，可以归约到 $g=e$、$\varphi=\operatorname{id}_G$。以 $G_1$ 表示\Term{homomorphism}{同态}
+\[
+G\longrightarrow\operatorname{Aut}_k(\mathfrak m/\mathfrak m^2)
+\]
+的核。由\Term{ramification}{分歧}理论，
+\[
+\operatorname{Card}(G_1)=p^t.
+\]
+因此，沿用\Term{lemma}{引理} 4.7 的记号，有
+\[
+\operatorname{Card}(G)=p^t c.
+\]
+另一方面，$c^{\operatorname{id}_G}(e)=\operatorname{Card}(G)$。所以，命题 4.6 在 $g=e$、$\varphi=\operatorname{id}_G$ 时的断言，以及一般情形的断言，均由\Term{lemma}{引理} 4.7 得出。
+\end{proof}
+
+\begin{SGAresult}{推论}{4.8}
+对每个 $\ell\ne\operatorname{char}(k)$，有理数
+\[
+\frac{\nu(g_R^{-1}f'_R)-1}{c^\varphi(g)}
+\]
+在\Term{canonical}{典范}\Term{embedding}{嵌入} $\mathbf Q\hookrightarrow\mathbf Q_\ell$ 下的像是一个\Term{ell-adic-integer}{$\ell$ 进整数}。
+\end{SGAresult}
+
+\begin{SGAresult}{命题}{4.9}
+若\Term{scheme}{概形} $X$ 的\Term{dimension}{维数}等于 $1$，则猜想 4.5 成立。
+\end{SGAresult}
+\SourcePage{436}
+\begin{proof}
+引入\Term{endomorphism}{自同态} $\psi:G\longrightarrow G$，定义为
+\[
+\psi=\operatorname{int}_g\circ\varphi,\qquad
+\operatorname{int}_g(\xi)=g^{-1}\xi g.
+\]
+容易看出：
+
+\textup{i)} $\psi(G_{x'})\subset G_{g^{-1}f'x'}$，其中 $G_{x'}$ 是点 $x'$ 的\Term{stabilizer}{稳定子群}；
+
+\textup{ii)} $c^\varphi(g)=\operatorname{Card}(G^\psi)$，其中
+$G^\psi=\{\xi\mid\psi(\xi)=\xi\}$；
+
+\textup{iii)} $G^\psi$ \Term{action}{作用}于 $X_x'{}^{g^{-1}f'}$；
+
+\textup{iv)} 对每个 $h\in G^\psi$，有
+$\nu_{x'}(g^{-1}f')=\nu_{hx'}(g^{-1}f')$；
+
+\textup{v)} $(g^{-1}f')(g_1x)=\psi(g_1)(g^{-1}f')(x)$。
+
+因而可以把 $X_x'{}^{g^{-1}f'}$ \Term{resolution}{分解}为\Term{orbit}{轨道}的并，并得到
+\[
+\begin{aligned}
+\sum_{x'\in X_x'{}^{g^{-1}f'}}\bigl(\nu_{x'}(g^{-1}f')-1\bigr)
+=\sum_{x'\in X_x'{}^{g^{-1}f'}/G^\psi}
+ \frac{\nu_{x'}(g^{-1}f')-1}{\operatorname{Card}(G_{x'}^\psi)}
+ \operatorname{Card}(G^\psi),
+\end{aligned}
+\tag{4.9.1}
+\]
+\[
+\nu_{x'}(g^{-1}f')=\nu\bigl((g^{-1}f')_{\mathscr O_{x'}}\bigr).
+\]
+也就是说，
+\SourcePage{437}
+\[
+S_x(f',f,G,\varphi)(g)
+=\sum_{x'\in X_x'{}^{g^{-1}f'}/G^\psi}
+ \frac{\nu_{x'}(g^{-1}f')-1}{\operatorname{Card}(G_{x'}^\psi)}.
+\tag{4.9.2}
+\]
+命题遂由命题 4.6 得出。
+\end{proof}
+
+\SGAsection{5}{Nielsen--Wecken 型公式的推广}
+参见文献 [1]。
+\begin{SGAresult}{命题}{5.1}
+沿用第 1、2、3、4 节的假设与记号，再假定 $Y'$ 是 $X'$ 的一个\Term{finite}{有限}\Term{subset}{子集}。若 $\ell$ 是异于 $k$ 的\Term{characteristic}{特征}的素数，则：
+
+\textup{a)} \Term{twisted-central-function}{$\varphi$ 中心函数}
+\[
+\sum_{x\in Y^f}S_{x,\ell}(f,f',G,\varphi)
+\]
+的值都是\Term{ell-adic-integer}{$\ell$ 进整数}；
+
+\textup{b)} 下式成立：
+\[
+\begin{aligned}
+\operatorname{Tr}_{\mathbf Z_\ell[G],\varphi}
+ (f'_{\mathbb H_{U',X'}^\vee(\ell)})
+={}&\sum_{x\in U^f}\nu_x(f)\operatorname{NW}_{f'}^{G,\varphi}(x)\\
+&+\sum_{x\in Y^f}S_{x,\ell}(f,f',G,\varphi).
+\end{aligned}
+\tag{5.1.1}
+\]
+\end{SGAresult}
+\begin{proof}
+显然，只要将两边都视为取值于 $\mathbf Q_\ell$ 的函数并证明等式 b)，就已经得到 a)，因为
+$\operatorname{NW}_{f'}^{G,\varphi}(x)$ 与
+$\operatorname{Tr}_{\mathbf Z_\ell[G],\varphi}(f'_{\mathbb H_{U',X'}^\vee(\ell)})$
+都是取值于 $\mathbf Z_\ell$ 的函数。
+\SourcePage{438}
+首先，对每个 $n\geq1$ 模 $\ell^n$ \Term{reduced}{约化}，并使用第 XI 讲 7.2.3.6，可知对每个 $g\in G$ 都有
+\[
+\begin{aligned}
+c^\varphi(g)\operatorname{Tr}_{\mathbf Z_\ell[G],\varphi}
+ (f'_{\mathbb H_{U',X'}^\vee(\ell)})(g)
+ &=\operatorname{Tr}_{\mathbf Z_\ell}
+   (g_{X'}^{-1}f')_{\mathbb H_{U',X'}^\vee(\ell)}\\
+ &=\operatorname{Tr}_{\mathbf Z_\ell}
+   (g_{X'}^{-1}f')_{\mathbb H_{U',X'}(\ell)}.
+\end{aligned}
+\tag{5.2}
+\]
+各行\Term{exact}{正合}的\Term{commutative-diagram}{交换图} (1.3) 给出（第 XI 讲第 4 节）
+\[
+\begin{aligned}
+\operatorname{Tr}_{\mathbf Z_\ell}
+ (g_{X'}^{-1}f')_{\mathbb H_{U',X'}(\ell)}
+={}&\operatorname{Tr}_{\mathbf Z_\ell}
+ (g_{X'}^{-1}f')_{\mathrm R\Gamma_{X'}(\mathbf Z_{\ell,X'})}\\
+&-\operatorname{Tr}_{\mathbf Z_\ell}
+ (g_{Y'}^{-1}f'_{Y'})_{\mathrm R\Gamma_{Y'}(\mathbf Z_{\ell,Y'})}.
+\end{aligned}
+\tag{5.3}
+\]
+(5.3) 右边的两项可以用经典 Lefschetz 公式求出（参见\SGAsourcegap{原 PDF 第 438 页此处“cf.”之后的引文编号为空白。}）。事实上，最后一项只涉及一个平凡的 Lefschetz 公式：
+\[
+\operatorname{Tr}_{\mathbf Z_\ell}
+ (g_{X'}^{-1}f')_{\mathrm R\Gamma_{X'}(\mathbf Z_{\ell,X'})}
+=\sum_{x\in X^f}\sum_{x'\in X_x'{}^{g_{X'}^{-1}f'}}
+ \nu_{x'}(g_{X'}^{-1}f'),
+\tag{5.4}
+\]
+\[
+\operatorname{Tr}_{\mathbf Z_\ell}
+ (g_{Y'}^{-1}f'_{Y'})_{\mathrm R\Gamma_{Y'}(\mathbf Z_{\ell,Y'})}
+=\text{$g_{Y'}^{-1}f'_{Y'}$ 的不动点个数。}
+\tag{5.5}
+\]
+因此
+\[
+\begin{aligned}
+\operatorname{Tr}_{\mathbf Z_\ell}
+ (g_{X'}^{-1}f')_{\mathbb H_{U',X'}(\ell)}
+={}&\sum_{x\in U^f}\sum_{x'\in X_x'{}^{g_{X'}^{-1}f'}}
+ \nu_{x'}(g_{X'}^{-1}f')\\
+&-\sum_{x\in Y^f}\sum_{x'\in X_x'{}^{g_{X'}^{-1}f'}}
+ \bigl(1-\nu_{x'}(g_{X'}^{-1}f')\bigr).
+\end{aligned}
+\tag{5.6}
+\]
+\SourcePage{439}
+然而，对给定的 $x\in U^f$，\Term{set}{集合} $X_x'{}^{g_{X'}^{-1}f'}$ \Term{nonempty}{非空}当且仅当
+$\operatorname{NW}_{f'}^{G,\varphi}(x)=1$。再由
+\[
+\operatorname{Card}X_x'{}^{g_{X'}^{-1}f'}=c^\varphi(g),\qquad x\in U,
+\tag{5.7}
+\]
+\[
+\nu_{x'}(g_{X'}^{-1}f')=\nu_x(f),\qquad x\in U,
+\tag{5.8}
+\]
+关系式 (5.2)、(5.6) 给出
+\[
+\begin{aligned}
+\operatorname{Tr}_{\mathbf Z_\ell[G],\varphi}
+ (f'_{\mathbb H_{U',X'}^\vee(\ell)})(g)
+={}&\sum_{x\in U^f}\nu_x(f)\operatorname{NW}_{f'}^{G,\varphi}(x)(g)\\
+&-\sum_{x\in Y^f}\sum_{x'\in X_x'{}^{g_{X'}^{-1}f'}}
+ \frac{1-\nu_{x'}(g_{X'}^{-1}f')}{c^\varphi(g)},
+\end{aligned}
+\tag{5.9}
+\]
+这正是所需证明的公式。
+\end{proof}
+
+\textbf{5.10. 特殊情形。}
+\textup{a)} \Term{unramified}{非分歧}情形：$Y'=\varnothing$，即 $Y=\varnothing$。此时 (5.1.1) 成为
+\[
+\operatorname{Tr}_{\mathbf Z_\ell[G],\varphi}
+ (f'_{\mathbb H_{U',X'}^\vee(\ell)})
+=\sum_{x\in X^f}\nu_x(f)\operatorname{NW}_{f'}^{G,\varphi}(x).
+\tag{5.11}
+\]
+\textup{b)} \Term{multiplicity}{重数}为 $1$ 的情形：
+\[
+\nu_{x'}(g_{X'}^{-1}f')=1
+\quad\text{对所有 }x'\in Y'{}^{g_{Y'}^{-1}f'_{Y'}}\text{ 及所有 }g\in G.
+\]
+此时公式 (5.1.1) 归结为公式 (5.11)。特别地，若
+$\dim X=1$，且对每个 $y\in Y$ 都有 $\nu_x(f)=1$，便属于这种情形。
+
+\SourcePage{440}
+\SGAsection{6}{应用于 Lefschetz 公式}
+\textbf{6.1.} 沿用第 1 节的记号与条件。\footnote{$X^f$ 表示 $X$ 的闭\Term{fixed-point}{不动点}的\Term{set}{集合}。}
+再设 $A$ 是一个交换的 \Term{noetherian}{Noether} $\Lambda_n$-\Term{algebra}{代数}，$F$ 是 $X$ 上的一个由\Term{perfect-module}{完美} $A$-\Term{module}{模}组成的\Term{constructible-sheaf}{可构造层}（相对于\Term{etale-topology}{平展拓扑}），并设
+\[
+u:f^*(F)\longrightarrow F
+\]
+为 $A$-\Term{module}{模}\Term{sheaf}{层}的一个\Term{homomorphism}{同态}。
+
+特别地，得到二元组 $(X,F)$ 的一个\Term{endomorphism}{自同态}
+\[
+(u,f):(X,F)\longrightarrow(X,F),
+\]
+从而得到 $A$-\Term{module}{模}\Term{complex}{复形}的一个\Term{endomorphism}{自同态}
+\[
+\mathrm R\Gamma_X(u,f):\mathrm R\Gamma_X(F)\longrightarrow\mathrm R\Gamma_X(F).
+\]
+依假设，\Term{scheme}{概形} $X$ 在 $k$ 上\Term{proper}{固有}，而\Term{sheaf}{层} $F$ 是\Term{constructible-sheaf}{可构造}且\Term{torsion-sheaf}{挠}的，因此\Term{finiteness-theorem}{有限性定理}（SGA 4，第 XVII 讲 5）保证 $\mathrm R\Gamma_X(F)$ 是 $A$-\Term{module}{模}的\Term{perfect-complex}{完美复形}。所以\Term{trace}{迹}
+$\operatorname{Tr}_A(\mathrm R\Gamma_X(u,f))$ 有定义，且
+\[
+\operatorname{Tr}_A(\mathrm R\Gamma_X(u,f))\in A.
+\]
+我们的目标是在一些附加假设下，用 $f$ 的\Term{fixed-point}{不动点}所关联的\Term{local-invariant}{局部不变量}给出这个\Term{trace}{迹}的显式公式。
+
+\SourcePage{441}
+\textbf{6.2. \Term{local-term}{局部项}的定义。}
+假定 $X'$ 是一维\Term{irreducible}{不可约}\Term{scheme}{概形}，且\Term{sheaf}{层} $F'=p^*(F)$ 在 $U'$ 上的\Term{restriction}{限制}为\Term{constant-sheaf}{常值层}。
+
+若 $f'$ 的\Term{fixed-point}{不动点}个数\Term{finite}{有限}——下文始终作此假定——则总可以假设 $X^f\subset Y^f$。
+
+\Term{sheaf}{层} $F'|_{U'}$ 因而由一个带有 $G$ \Term{action}{作用}的 $A$-\Term{module}{模} $M$ 确定：
+\[
+F'|_{U'}\simeq M_{U'}.
+\]
+事实上，以 $\eta$（相应地以 $\eta'$）表示 $X$（相应地 $X'$）的\Term{generic-point}{泛点}，以 $\bar\eta$（相应地 $\bar\eta'$）表示 $\eta$（相应地 $\eta'$）上的一个\Term{geometric-point}{几何点}，则有
+\[
+p(\eta')=\eta,\qquad F_{\bar\eta}\simeq F'_{\bar\eta'}.
+\]
+\Term{complex}{复形} $F'$ 与 $M$ \Term{isomorphism}{同构}，所以 $M$ 是一个\Term{perfect-module}{完美} $A$-\Term{module}{模}。
+
+另一方面，若\Term{morphism}{态射} $f'$ 不是常值的，则它固定 $X'$ 的\Term{generic-point}{泛点}。因此，二元组 $(X',F')$ 的\Term{morphism}{态射} $(p^*(u),f')$ 在\Term{stalk}{茎} $F'_{\bar\eta'}$ 上诱导一个\Term{morphism}{态射}
+\[
+u'_{\bar\eta'}:F'_{\bar\eta'}\longrightarrow F'_{\bar\eta'},
+\]
+从而显然得到一个 $A$-\Term{module}{模}\Term{morphism}{态射}
+\[
+u_M:M\longrightarrow M.
+\]
+\SourcePage{442}
+容易看出，下列关系成立：
+\[
+u_M(\varphi(g)m)=gu_M(m)\qquad(\forall m\in M,\ \forall g\in G).
+\tag{6.2.1}
+\]
+因此，$M$ 相对于 $A$ 的\Term{dual}{对偶} $M^\vee$ 带有 $A[G]$-\Term{module}{模}结构，并有一个\Term{endomorphism}{自同态}
+\[
+u_M^\vee:M^\vee\longrightarrow M^\vee,
+\]
+满足
+\[
+u_M^\vee(gx)=\varphi(g)u_M^\vee(x)
+\qquad(\forall g\in G,\ \forall x\in M^\vee).
+\]
+此外，$M^\vee$ 是一个\Term{perfect-module}{完美} $A$-\Term{module}{模}，所以对每个 $g\in G$，\Term{trace}{迹} $\operatorname{Tr}_A(g^{-1}u_M^\vee)$ 都有定义。
+
+设 $x\in X^f$ 是 $f$ 的一个闭\Term{fixed-point}{不动点}。\Term{morphism}{态射} $u$ 诱导 $F$ 在 $x$ 处的\Term{stalk}{茎} $F_x$ 的一个\Term{endomorphism}{自同态}（我们将 $X$ 的\Term{closed-point}{闭点}与 $X(k)$ 的点等同）：
+\[
+u_x:F_x\longrightarrow F_x.
+\]
+\Term{trace}{迹} $\operatorname{Tr}_A(u_x)$ 给出了与\Term{fixed-point}{不动点} $x$ 相关的第一个\Term{local-invariant}{局部不变量}。
+
+再由下式引入另一个\Term{local-invariant}{局部不变量} $\alpha_x(f,u,f',G,\varphi)\in A$：
+\[
+\alpha_x(f,u,f',G,\varphi)
+=\sum_{g\in G_{\natural,\varphi}}
+ S_{x,\ell^n}(f,f',G,\varphi)(g)\operatorname{Tr}_A(g^{-1}u_M^\vee).
+\tag{6.2.2}
+\]
+\SourcePage{443}
+这里函数
+\[
+S_{x,\ell^n}(f,f',G,\varphi):G\longrightarrow\Lambda_n
+\]
+由函数 $i_\ell\circ S_x(f,f',G,\varphi)$（参见第 4 节）模 $\ell^n$ \Term{reduced}{约化}得到，即
+\[
+S_{x,\ell^n}(f,f',G,\varphi)(g)
+=(i_\ell\circ S_x(f,f',G,\varphi))(g)\bmod\ell^n\mathbf Z_\ell.
+\]
+
+\textbf{6.3. 一个 Lefschetz 公式。}
+在 5.1、6.1、6.2 的假设与记号下，有公式
+\[
+\operatorname{Tr}_A(\mathrm R\Gamma_X(u,f))
+=\sum_{x\in X^f}\tau_x(f,u,f',G,\varphi),
+\tag{6.3.1}
+\]
+其中定义
+\[
+\tau_x(f,u,f',G,\varphi)
+=\operatorname{Tr}_A(u_x)-\alpha_x(f,u,f',G,\varphi).
+\tag{6.3.2}
+\]
+\begin{proof}
+由于\Term{subscheme}{子概形} $Y$ 在 $f$ 下\Term{stable}{稳定}，\Term{morphism}{态射}
+\[
+(u,f):(X,F)\longrightarrow(X,F)
+\]
+诱导一个\Term{distinguished-triangle}{可区别三角形}的\Term{endomorphism}{自同态}：
+\[
+\begin{tikzcd}[column sep=large,row sep=large]
+&\mathrm R\Gamma_Y(F|_Y)
+ \arrow[dl,"{+1}"']
+ \arrow[loop above,"{\mathrm R\Gamma_Y(u|_Y,f|_Y)}"]&\\
+\mathrm R\Gamma_X(F_{U,X})
+ \arrow[rr]
+ \arrow[loop left,"{\mathrm R\Gamma_X((u,f)_{U,X})}"']
+&&\mathrm R\Gamma_X(F)
+ \arrow[ul]
+ \arrow[loop right,"{\mathrm R\Gamma_X(u,f)}"]
+\end{tikzcd}
+\tag{6.3.3}
+\]
+于是有
+\SourcePage{444}
+\[
+\begin{aligned}
+\operatorname{Tr}_A(\mathrm R\Gamma_X(u,f))
+={}&\operatorname{Tr}_A(\mathrm R\Gamma_X((u,f)_{U,X}))\\
+&+\operatorname{Tr}_A(\mathrm R\Gamma_Y(u|_Y,f|_Y)).
+\end{aligned}
+\tag{6.3.4}
+\]
+由初等 Lefschetz 公式，并利用总可假设 $X^f=Y^f$ 这一事实，(6.3.4) 的最后一项可明确写为
+\[
+\operatorname{Tr}_A(\mathrm R\Gamma_Y(u|_Y,f|_Y))
+=\sum_{x\in X^f}\operatorname{Tr}_A(u_x).
+\tag{6.3.5}
+\]
+另一方面，有
+\[
+\mathrm R\Gamma_X((u,f)_{U,X})
+\simeq\mathrm R\Gamma^G\mathrm R\Gamma_{X'}((u',f')_{U',X'}),
+\qquad u'=p^*(u),
+\tag{6.3.6}
+\]
+\[
+\begin{gathered}
+F_{U',X'}\simeq\Lambda_{n,U',X'}\otimes_{\Lambda_n}M,\\
+(u',f')_{U',X'}=f'_{\Lambda_{n,U',X'}}\otimes_{\Lambda_n}M.
+\end{gathered}
+\tag{6.3.7}
+\]
+因此，由 \Term{kunneth-formula}{Künneth 公式}，
+\[
+\mathrm R\Gamma_{X'}((u',f')_{U',X'})
+\simeq\mathrm R\Gamma_{X'}(f'_{\Lambda_{n,U',X'}})
+ \mathbin{\overset{\mathrm L}{\otimes}}_{\Lambda_n}u_M.
+\tag{6.3.8}
+\]
+由 (6.3.8) \Term{pushout}{推出}
+\[
+\begin{aligned}
+\mathrm R\Gamma_{X'}((u',f')_{U',X'})^\vee
+\simeq\bigl(\mathrm R\Gamma_{X'}(f'_{\Lambda_{n,U',X'}})^\vee
+ \mathbin{\overset{\mathrm L}{\otimes}}_{\Lambda_n}A\bigr)
+ \mathbin{\overset{\mathrm L}{\otimes}}_A u_M^\vee.
+\end{aligned}
+\tag{6.3.9}
+\]
+根据 (6.3.6)，得到
+\[
+\mathrm R\Gamma_X((u,f)_{U,X})
+=\mathrm R\Gamma_{X'}(f'_{\Lambda_{n,U',X'}})^\vee
+ \mathbin{\overset{\mathrm L}{\otimes}}_{A[G]}u_M^\vee.
+\tag{6.3.10}
+\]
+再由一般公式（参见第 XI 讲 7.5.9），
+\[
+\operatorname{Tr}_A((u,f)_{U,X})
+=\sum_{g\in G_{\natural,\varphi}}
+ \operatorname{Tr}_{\Lambda_n[G],\varphi}
+ (f'_{\mathbb H_{n,U',X'}^\vee})(g)
+ \operatorname{Tr}_A(g^{-1}u_M^\vee).
+\tag{6.3.11}
+\]
+而\Term{trace}{迹}
+$\operatorname{Tr}_{\Lambda_n[G],\varphi}(f'_{\mathbb H_{n,U',X'}^\vee})$
+可用 Nielsen--Wecken 公式（参见命题 5.1 b)）计算；当然须模 $\ell^n\mathbf Z_\ell$ \Term{reduced}{约化}。
+\SourcePage{445}
+考虑关系式 $X^f=Y^f$，得到
+\[
+\operatorname{Tr}_{\Lambda_n[G],\varphi}
+ (f'_{\mathbb H_{n,U',X'}^\vee})(g)
+=\sum_{x\in X^f}S_{x,\ell^n}(f,f',G,\varphi)(g).
+\tag{6.3.12}
+\]
+将 (6.3.12)、(6.3.11)、(6.3.5)、(6.3.4) 合并，即得所述公式。
+\end{proof}
+
+\textbf{6.4. 关于\Term{local-term}{局部项}的注记。}
+\textup{a)} 容易看出，若 $g\in G$，则有
+\[
+\alpha_x(f,u,g^{-1}f',G,\varphi_g)
+=\alpha_x(f,u,f',G,\varphi),
+\tag{6.4.1}
+\]
+其中定义
+\[
+\varphi_g(\xi)=(\operatorname{int}_g\circ\varphi)(\xi)
+=g^{-1}\varphi(\xi)g\qquad(\forall\xi\in G).
+\tag{6.4.2}
+\]
+由 (6.4.1)，将 $f'$ 换为 $g^{-1}f'$，将 $\varphi$ 换为 $\varphi_g$ 后，总可以归约到至少存在一个点 $x'\in X_x'{}^{f'}$ 的情形。
+
+\textup{b)} 取 $x'\in X_x'{}^{f'}$，以 $G_{x'}$ 表示 $x'$ 的\Term{stabilizer}{稳定子群}。显然，$G_{x'}$ 在 $\varphi$ 下\Term{stable}{稳定}，从而得到一个\Term{endomorphism}{自同态}
+\[
+\varphi_{x'}=\varphi|_{G_{x'}}:G_{x'}\longrightarrow G_{x'}.
+\]
+以 $X'/G_{x'}$ 表示按 $G_{x'}$ 确定的\Term{equivalence-relation}{等价关系}对 $X'$ 取商得到的\Term{quotient-scheme}{商概形}；以 $F'/G_{x'}$ 表示由 $X'$ 的\Term{endomorphism}{自同态} $f'$ 按同一\Term{equivalence-relation}{等价关系}得到的 $X'/G_{x'}$ 的\Term{endomorphism}{自同态}；以 $\bar x'$ 表示 $x'$ 模此\Term{equivalence-relation}{等价关系}的类。
+\SourcePage{446}
+\Term{canonical-projection}{典范投影}
+\[
+p:X'\longrightarrow X'/G=X
+\]
+可如下\Term{resolution}{分解}：
+\[
+p:X'\xrightarrow{p_1}X'/G_{x'}\xrightarrow{p_2}X=X'/G.
+\]
+对\Term{homomorphism}{同态} $u$ 沿 $p_2$ 取\Term{inverse-image}{逆像}，得到一个\Term{homomorphism}{同态}
+\[
+v=p_2(u):(f'/G_{x'})^*(p_2^*(F))\longrightarrow p_2^*(F).
+\]
+容易看出
+\[
+\alpha_{\bar x'}(f'/G_{x'},u,f',G_{x'},\varphi_{x'})
+=\alpha_x(f,u,f',G,\varphi)\qquad(x=p(x')).
+\tag{6.4.3}
+\]
+因而总可以归约到“\Term{totally-ramified}{全分歧}”情形，也就是点 $x$ 的\Term{fiber}{纤维}仅含一个点的情形。
+
+\textup{c)} “\Term{tamely-ramified}{温和分歧}”情形。假定存在 $x'\in p^{-1}(x)$，使
+\[
+f'(x')=x',\qquad p(x')=x,
+\]
+并且群 $G_{x'}$ 的阶与域 $k$ 的\Term{characteristic}{特征}互素；总可以归约到存在这样的 $x'$ 的情形（参见 a)）。此时有
+\[
+\alpha_x(f,u,f',G,\varphi)
+=S_{x,\ell^n}(f,f',G,\varphi)(e)\operatorname{Tr}_A(u_M^\vee).
+\tag{6.4.4}
+\]
+由 b)，可以假定 $G=G_{x'}$。于是公式 (6.4.4) 由下述\Term{lemma}{引理}得出。
+
+\SourcePage{447}
+\textit{〔原 PDF 此页重复上一页的正文；以下依原样保留。〕}
+
+\Term{canonical-projection}{典范投影}
+\[
+p:X'\longrightarrow X'/G=X
+\]
+可如下\Term{resolution}{分解}：
+\[
+p:X'\xrightarrow{p_1}X'/G_{x'}\xrightarrow{p_2}X=X'/G.
+\]
+对\Term{homomorphism}{同态} $u$ 沿 $p_2$ 取\Term{inverse-image}{逆像}，得到一个\Term{homomorphism}{同态}
+\[
+v=p_2(u):(f'/G_{x'})^*(p_2^*(F))\longrightarrow p_2^*(F).
+\]
+容易看出
+\[
+\alpha_{\bar x'}(f'/G_{x'},u,f',G_{x'},\varphi_{x'})
+=\alpha_x(f,u,f',G,\varphi)\qquad(x=p(x')).
+\tag{6.4.3}
+\]
+因而总可以归约到“\Term{totally-ramified}{全分歧}”情形，也就是点 $x$ 的\Term{fiber}{纤维}仅含一个点的情形。
+
+\textup{c)} “\Term{tamely-ramified}{温和分歧}”情形。假定存在 $x'\in p^{-1}(x)$，使
+\[
+f'(x')=x',\qquad p(x')=x,
+\]
+并且群 $G_{x'}$ 的阶与域 $k$ 的\Term{characteristic}{特征}互素；总可以归约到存在这样的 $x'$ 的情形（参见 a)）。此时有
+\[
+\alpha_x(f,u,f',G,\varphi)
+=S_{x,\ell^n}(f,f',G,\varphi)(e)\operatorname{Tr}_A(u_M^\vee).
+\tag{6.4.4}
+\]
+由 b)，可以假定 $G=G_{x'}$。于是公式 (6.4.4) 由下述\Term{lemma}{引理}得出。
+
+\SourcePage{448}
+\begin{SGAresult}{\Term{lemma}{引理}}{6.4.5}
+若下列关系成立：
+\[
+\nu_{x'}(f')>1,\qquad\nu_{x'}(g^{-1}f')>1,
+\]
+则 $g$ 属于第一\Term{ramification-group}{分歧群} $G_1$（参见 4.7）：
+\[
+g\in G_1,
+\]
+也就是说，$g$ 在\Term{vector-space}{向量空间} $\mathfrak m_{x'}/\mathfrak m_{x'}^2$ 上诱导\Term{identity-map}{恒等映射}。
+\end{SGAresult}
+\begin{proof}
+设 $\widehat{\mathscr O}_{x'}=k[[T]]$。由 $g^{-1}$ 诱导的 $\mathfrak m/\mathfrak m^2$ 的\Term{automorphism}{自同构}，由满足下列条件的\Term{root-of-unity}{单位根} $\varepsilon(g^{-1})\in k$ 确定：
+\[
+g^{-1}T=\varepsilon(g^{-1})T\pmod{\mathfrak m^2},
+\]
+其中 $\mathfrak m$ 是环 $k[[T]]$ 的\Term{maximal-ideal}{极大理想}。
+
+另一方面，由假设 $\nu_{x'}(f')>1$ 得到
+\[
+f'(T)=T+a_\nu T^\nu+a_{\nu+1}T^{\nu+1}+\cdots,\qquad\nu\geq2.
+\]
+因此
+\[
+g^{-1}f'(T)=\varepsilon(g^{-1})T+b_\nu T^\nu+b_{\nu+1}T^{\nu+1}+\cdots,
+\]
+而假设 $\nu(g^{-1}f')>1$ \Term{pushout}{推出} $\varepsilon(g^{-1})=1$。证毕。
+\end{proof}
+
+\SourcePage{449}
+\textup{d)} \Term{sheaf}{层} $F$ 在\Term{endomorphism}{自同态} $f$ 的\Term{fixed-point}{不动点}处不\Term{ramification}{分歧}的情形。
+
+此时，\Term{local-term}{局部项} $\tau_x(f,u,f',G,\varphi)$ 由下式给出：
+\[
+\tau_x(f,u,f',G,\varphi)=\nu_x(f)\operatorname{Tr}_A(u_x),
+\tag{6.4.6}
+\]
+因而它只依赖于二元组 $(f,u)$。
+
+事实上，此时有
+\[
+\begin{aligned}
+{}&S_{x,\ell^n}(f,f',G,\varphi)(g)\\
+&\quad=\begin{cases}
+0,&\begin{aligned}
+ {}&\text{存在 }x'\in X'\text{ 使 }(g^{-1}f')(x')=x',\\[-2pt]
+ &\text{等价地，}g\text{ 的 }\varphi\text{ 共轭类等于}\\[-2pt]
+ &\operatorname{NW}_{f'}^{G,\varphi}(x)\text{（参见第 3 节）；}
+\end{aligned}\\
+\nu_x(f)-1,&\text{否则。}
+\end{cases}
+\end{aligned}
+\tag{6.4.7}
+\]
+特别地，由此得到
+\[
+S_{x,\ell^n}(f,f',G,\varphi)(g)=0
+\quad\text{若 }g\notin\operatorname{NW}_{f'}^{G,\varphi}(x).
+\tag{6.4.8}
+\]
+于是得出
+\[
+\begin{aligned}
+\tau'_x(f,u,f',G,\varphi)
+ &=\nu_x(f)\operatorname{Tr}_A(g^{-1}u_M^\vee)
+  =\nu_x(f)\operatorname{Tr}_A(g^{-1}u')_{x'}\\
+ &=\nu_x(f)\operatorname{Tr}_A(u_x).
+\end{aligned}
+\tag{6.4.9}
+\]
+\textit{〔原文 (6.4.7) 的两种取值次序与紧接其后的 (6.4.8) 不一致；此处保留原式。〕}
+
+\SourcePage{450}
+\SGAsection{7}{关于 Lefschetz 公式成立条件的说明}
+\textbf{7.1.} 当然，在实际应用中，出发点是 $k$ 上的一个\Term{proper}{固有}\Term{scheme}{概形} $X$ 及一个\Term{endomorphism}{自同态}
+\[
+(u,f):(X,F)\longrightarrow(X,F),
+\]
+满足：
+\begin{itemize}
+\item $F$ 是 $A$-\Term{module}{模}的一个\Term{constructible-sheaf}{可构造层}；
+\item $f$ 的\Term{fixed-point}{不动点}\Term{set}{集合} $X^f$ \Term{finite}{有限}。
+\end{itemize}
+问题是在这些条件下定义\Term{local-term}{局部项} $\tau_x(u,f)$，$x\in X^f$，使得
+\[
+\operatorname{Tr}_A(\mathrm R\Gamma_X(u,f))
+=\sum_{x\in X^f}\tau_x(u,f).
+\tag{*}
+\]
+利用整体与\Term{local-scheme}{局部}两个\Term{duality-theorem}{对偶定理}，Verdier 已经定义了使公式 $(*)$ 成立的\Term{local-term}{局部项} $\tau_x(u,f)$（参见第 III 讲）。遗憾的是，似乎很难用已知的\Term{local-invariant}{局部不变量}显式算出 Verdier 所定义的 $\tau_x(u,f)$；这正是前一节提出那些定义的意义所在。\footnote{不过，关于 (6.3.1) 的\Term{local-term}{局部项}与 Verdier 的\Term{local-term}{局部项}的比较，参见第 III B 讲。}
+
+另一方面，后面这些定义需要对 $F$、$f$、$u$ 作附加假设，即要求存在满足 5.1、6.1、6.2 所需性质的 $U,U',G,f',\varphi$。
+
+\SourcePage{451}
+\begin{SGAresult}{命题}{7.2}
+设 $X$ 是一维\Term{smooth}{光滑}\Term{scheme}{概形}，$F$ \Term{constructible-sheaf}{可构造}，并设
+\[
+(u,f):(X,F)\longrightarrow(X,F)
+\]
+为一个\Term{endomorphism}{自同态}，使得\Term{sheaf}{层}\Term{morphism}{态射}
+\[
+u:f^*(F)\longrightarrow F
+\]
+是\Term{isomorphism}{同构}。在这些条件下，存在满足 5.1、6.1、6.2 的条件的 $U,U',G,f',\varphi$。
+\end{SGAresult}
+\begin{proof}
+设 $U$ 是 $X$ 的使 $F$ 在其上\Term{locally-constant-sheaf}{局部常值}的最大\Term{open-subscheme}{开子概形}，以 $Y$ 表示其补集。\Term{set}{集合} $Y$ 在 $f$ 下\Term{stable}{稳定}：
+\[
+f(Y)\subset Y.
+\]
+事实上，反设存在 $y\in Y$，使 $f(y)\in U$。那么\Term{sheaf}{层} $f^*(F)$ 在 $y$ 的某个\Term{neighborhood}{邻域}内\Term{locally-constant-sheaf}{局部常值}；利用\Term{isomorphism}{同构} $u$，得到 $F$ 在 $y$ 的某个\Term{neighborhood}{邻域}内也\Term{locally-constant-sheaf}{局部常值}，矛盾。
+
+若 $f$ 为常值，命题的证明是平凡的。因此假定 $f$ 不是常值。若 $\eta$ 是 $X$ 的\Term{generic-point}{泛点}，则有 $f(\eta)=\eta$。
+\SourcePage{452}
+设 $i_\eta:\operatorname{Spec}(k(\eta))\hookrightarrow X$ 为\Term{canonical}{典范}\Term{embedding}{嵌入}，$F_\eta=i_\eta^*(F)$，并以
+\[
+u_\eta:f_\eta^*(F_\eta)\longrightarrow F_\eta
+\]
+表示由 $u$ 诱导的\Term{sheaf}{层}\Term{morphism}{态射}（实际上是\Term{isomorphism}{同构}）。这里 $f_\eta$ 当然是 $f$ 在 $\operatorname{Spec}(k(\eta))$ 上的\Term{restriction}{限制}。
+
+将一切改用 $H$-\Term{module}{模}来表述，其中
+\[
+H=\operatorname{Gal}(k(\eta)_s/k(\eta)),\qquad
+k(\eta)_s\text{ 是 }k(\eta)\text{ 的一个可分闭包},
+\]
+得到\Term{isomorphism}{同构}
+\[
+H\xrightarrow{\psi}H,\qquad
+F_{\bar\eta}\xrightarrow{\underline u_\eta}F_{\bar\eta},
+\]
+其中 $F_{\bar\eta}$ 带有 $H$-\Term{module}{模}结构，且满足
+\[
+\underline u_\eta(gx)=\psi(g)\underline u_\eta x,
+\qquad g\in H,\quad x\in F_{\bar\eta}.
+\]
+若 $H_1$ 是 $H$ 中使 $F_{\bar\eta}^{H_1}=F_{\bar\eta}$ 的最大的\Term{finite-index}{有限指数}\Term{normal-subgroup}{正规子群}，则 $\psi(H_1)=H_1$。这样的\Term{subgroup}{子群}存在，因为\Term{sheaf}{层} $F_\eta$ 是\Term{constructible-sheaf}{可构造}的。
+
+设 $K\supset k(\eta)$ 是与\Term{subgroup}{子群} $H_1$ 对应的 $k(\eta)$ 的\Term{galois-extension}{Galois 扩张}，$X'$ 是 $X$ 在 $K$ 中的\Term{normalization}{正规化}。显然，可以定义\Term{endomorphism}{自同态}
+\[
+f':X'\longrightarrow X'
+\]
+以及\Term{endomorphism}{自同态}
+\[
+H/H_1=G\xrightarrow{\varphi}G,
+\]
+使得系统 $U,U',f',G,\varphi$ 满足所需条件。
+\end{proof}
+
+\SourcePage{453}
+\begin{SGAresult}{例}{7.3}
+设 $X$ 是\Term{finite-field}{有限域} $\mathbf F_p$ 上的一个\Term{prescheme}{预概形}，$p$ 是素数，$\operatorname{fr}_X:X\longrightarrow X$ 是 Frobenius \Term{endomorphism}{自同态}（参见第 XIV 讲），$F$ 是 $X$ 上的一个 $\Lambda$-\Term{module}{模}\Term{sheaf}{层}。
+
+若 $Y,S$ 是 $\mathbf F_p$ 上的\Term{scheme}{概形}，且 $Y$ 是一个 $S$-\Term{scheme}{概形}，则以
+\[
+\operatorname{Fr}_{Y/S}:Y\longrightarrow Y^{(p/S)}
+\]
+表示相对 Frobenius \Term{morphism}{态射}（参见第 XIV 讲 2）。
+
+可以得到 $X_{\text{ét}}$ 上的\Term{sheaf}{层}\Term{morphism}{态射}
+\[
+(\operatorname{fr}_X)_*(F)\longrightarrow F,
+\]
+其定义为：对每个\Term{etale}{平展} $X$-\Term{prescheme}{预概形} $U$，令
+\[
+\begin{aligned}
+(\operatorname{fr}_X)_*(F)(U)
+ &=F(\operatorname{fr}_X^{-1}(U))=F(U^{(p/X)})\\
+ &\xrightarrow{F(\operatorname{Fr}_{U/X})}F(U).
+\end{aligned}
+\]
+此\Term{morphism}{态射}实际上是一个\Term{isomorphism}{同构}。其逆
+\[
+F(\operatorname{Fr}_{/X})^{-1}:F\longrightarrow(\operatorname{fr}_X)_*(F)
+\]
+由\Term{adjunction}{伴随}定义出一个\Term{morphism}{态射}
+\[
+\operatorname{Fr}_{F/X}^{*}:(\operatorname{fr}_X)^*(F)\longrightarrow F,
+\]
+它是一个\Term{isomorphism}{同构}。
+
+特别地，若 $X$ 一维\Term{smooth}{光滑}，$F$ \Term{constructible-sheaf}{可构造}，则二元组
+\[
+(\operatorname{Fr}_{F/X}^{*},\operatorname{fr}_X):(X,F)\longrightarrow(X,F)
+\]
+满足命题 7.2 的条件。
+\end{SGAresult}
+
+\medskip
+\noindent [1]\quad F. Wecken，\textit{Fixpunktklassen I}（\Term{fixed-point}{不动点}类 I），\textit{Math. Ann.} \textbf{117}（1941），659--671 页；
+\textit{Fixpunktklassen II, III}（\Term{fixed-point}{不动点}类 II、III），\textit{Math. Ann.} \textbf{118}（1942--1943），216--234 页及 544--577 页。

@@ -1,0 +1,384 @@
+\SourcePage{142}
+\SGAchapter{VII}{群层的双扩张}{Biextensions de faisceaux de groupes}
+\begin{center}A. Grothendieck\end{center}
+\SGAsection{0}{引言}
+D. Mumford 在\Term{formal-group}{形式群}的背景下引入了\Term{biextension}{双扩张}的概念 [6]，以便于表达一个\Term{abelian-scheme}{阿贝尔概形}及其\Term{dual-abelian-scheme}{对偶阿贝尔概形}所关联的\Term{formal-group}{形式群}之间的关系。在本讲中，我们将在给定\Term{site}{景}上的\Term{group-sheaf}{群层}这一\Term{generic}{一般}背景下系统研究这个概念，尤其说明它如何以极其简单的方式纳入经典的 $\mathbin{\overset{\mathrm L}{\otimes}}$ 与 $\mathrm R\underline{\operatorname{Hom}}$ 的\Term{cohomology}{上同调}\Term{form}{形式}体系中（3.6.4 和 3.6.5）。在下一讲中，我们将具体说明最有意义的特殊情形，特别是以\Term{multiplicative-group}{乘法群} $\mathbf G_m$ 为核的\Term{group-scheme}{群概形}的\Term{biextension}{双扩张}情形（使用 Zariski \Term{site}{景}、fpqc \Term{site}{景}或某个介于两者之间的\Term{site}{景}）；我们尤其将看到，若 $A$ 和 $B$ 是\Term{scheme}{概形} $S$ 上的两个\Term{abelian-scheme}{阿贝尔概形}，则 $(A,B)$ 以 $\mathbf G_m$ 为核的\Term{biextension}{双扩张}有一种引人注目的解释：它们本质上就是 $A,B$ 上经典的\Term{divisorial-correspondence}{除子对应}。这样便十分方便地阐明了\Term{divisorial-correspondence}{除子对应}概念的\Term{cohomology}{上同调}意义（它已隐含于 $p$ 进域上\Term{abelian-variety}{阿贝尔簇}的 Tate \Term{duality-theorem}{对偶定理}之中）。对\Term{divisorial-correspondence}{除子对应}的这一解释，同样便于在利用 Néron 理论使 $A$ 和 $B$“\Term{degeneration}{退化}”时，追踪这样一个对应的去向。
+\SourcePage{143}
+这里假设 $A$ 和 $B$ 定义在一个\Term{discrete-valuation-ring}{离散赋值环}的\Term{fraction-field}{分式域}上。第 VIII 讲的结果将说明，例如可得到两个 \Term{neron-model}{Néron 模型}的\Term{neutral-component}{单位分支}所成的对的一个\Term{biextension}{双扩张}，从而得到这些 \Term{neron-model}{Néron 模型}的\Term{connected}{连通}\Term{special-fiber}{特殊纤维}的一个\Term{biextension}{双扩张}，它起着原\Term{divisorial-correspondence}{除子对应}的\Term{specialization}{特殊化}的\Term{action}{作用}。这些结果将在第 IX 讲中与\Term{monodromy-theorem}{单值性定理}（第 I 讲 3）结合，用以证明关于\Term{abelian-variety}{阿贝尔簇}的 \Term{neron-model}{Néron 模型}的若干结果（其中最重要的是 \Term{neron-model}{Néron 模型}的“\Term{semistable-reduction}{半稳定约化定理}”）。
+
+以下除非明确另作说明，始终在一个固定的 $\mathcal U$-\Term{topos}{拓扑斯} $\mathcal T$ 中工作；即（SGA 4 第 IV 讲）$\mathcal T$ 是一个与某个适当的 $\mathcal U$-\Term{site}{景}上的\Term{sheaf}{层}\Term{category}{范畴}\Term{equivalence-of-categories}{等价}的\Term{category}{范畴}（若愿意，可以取该\Term{site}{景}为赋有\Term{canonical-topology}{典范拓扑}的 $\mathcal T$ 本身）。在用语上，我们常把 $\mathcal T$ 的\Term{object}{对象}与 $\mathcal T$ 上的（\Term{set}{集合}）\Term{sheaf}{层}等同起来。所涉及的\Term{group}{群}、\Term{group-extension}{群扩张}等等，全都相对于这个\Term{topos}{拓扑斯} $\mathcal T$ 而言。
+
+\SGAsection{1}{关于群扩张的补充}
+\textbf{1.1。} 设 $P$ 和 $G$ 是 $\mathcal T$ 的两个\Term{group}{群}，并设
+\[
+1\longrightarrow G\xrightarrow{i}E\xrightarrow{j}P\longrightarrow1
+\tag{1.1.1}
+\]
+是 $P$ 以 $G$ 为核的一个\Term{group-extension}{扩张}；因而 $E$ 是一个\Term{group}{群}，$j:E\to P$ 是\Term{group}{群}的\Term{epimorphism}{满态射}，而 $i$ 诱导 $G$ 到 $\operatorname{Ker}j$ 的一个\Term{isomorphism}{同构}。我们将用另一种方式重新解释这样一个\Term{group-extension}{扩张}的数据，这种方式将便于定义和研究\Term{biextension}{双扩张}。
+
+\SourcePage{144}
+\textbf{1.1.2。} 首先，\Term{homomorphism}{同态} $i$ 使 $G$ 可以从左和从右两种方式\Term{group-action}{作用}于 $E$，规定
+\[
+gxg'=i(g)xi(g')
+\]
+其中 $g,g'\in G(S)$，$x\in E(S)$（$S$ 是 $\mathcal T$ 的任意\Term{object}{对象}）。如果通过 $j$ 将 $E$ 看作“位于 $P$ 之上”的\Term{object}{对象}，即\Term{induced-topos}{诱导拓扑斯} $E/P$ 的\Term{object}{对象}，那么这\Term{equivalence}{等价}于说，由 $G$ 在 $\mathcal T/P$ 中诱导的\Term{group}{群} $G_P=G\times P$ 从左和从右\Term{group-action}{作用}于 $E$。而且，众所周知，两种\Term{group-action}{作用}各自使 $E$ 成为 $P$ 上一个结构\Term{group}{群}为 $G_P$ 的（左或右）\Term{torsor}{挠子}；更确切地说，所得的实际上是一个 $(G_P,G_P)$-\Term{bitorsor}{双挠子}。回忆 [2]，这意味着通过 $G_P$ 的右\Term{group-action}{作用}，$E$ 是一个右\Term{torsor}{挠子} $E_d$，而左\Term{group-action}{作用}诱导 $G_P$ 到 $E_d$ 的\Term{automorphism-group}{自同构群}的一个\Term{isomorphism}{同构}（该\Term{group}{群}就是 $E$ 的、与 $G_P$ 在 $E$ 上的右\Term{group-action}{作用}可交换的\Term{automorphism}{自同构}所成的\Term{group-sheaf}{群层}）。这个条件\Term{equivalence}{等价}于\Term{symmetric}{对称}的条件：$G_P$ 在 $E$ 上的左\Term{group-action}{作用}使 $E$ 成为左\Term{torsor}{挠子} $E_s$，而右\Term{group-action}{作用}诱导 $G_P$ 的\Term{opposite-group}{反群} $G_P^\circ$ 到 $E_s$ 的\Term{automorphism-group}{自同构群}的一个\Term{isomorphism}{同构}。
+
+\textbf{1.1.2.1。} 当 $\mathcal T$ 是“点\Term{topos}{拓扑斯}”，即\Term{set}{集合}\Term{category}{范畴}（它与单点\Term{topological-space}{拓扑空间}上的\Term{sheaf}{层}\Term{category}{范畴}\Term{equivalence-of-categories}{等价}），从而 $P$ 和 $G$ 是通常的\Term{group}{群}时，给定一个 $(G_P,G_P)$-\Term{bitorsor}{双挠子} $E$，显然\Term{equivalence}{等价}于对每个 $p\in P$ 给定一个 $(G,G)$-\Term{bitorsor}{双挠子} $E_p$（就是 $E$ 在 $p$ 处的\Term{fiber}{纤维}）。在\Term{generic}{一般}情形也能给出类似的解释：给定一个 $(G_P,G_P)$-\Term{bitorsor}{双挠子} $E$，\Term{equivalence}{等价}于对每个“点” $p\in P(S)$（$S$ 是 $\mathcal T$ 的任意\Term{object}{对象}）给定 $S$ 上一个 $(G_S,G_S)$-\Term{bitorsor}{双挠子} $E_p$，
+\SourcePage{145}
+使 $E_p$ 的形成“与任意\Term{morphism}{态射} $S'\to S$ 的\Term{base-change}{基变换}相容”；即若 $p':S'\to P$ 为复合\Term{morphism}{态射}，还要给定 $P_{p'}$ 到 $P_p$ 沿 $S'\to S$ 的\Term{inverse-image}{逆像}的一个\Term{bitorsor}{双挠子}\Term{isomorphism}{同构}，这些\Term{isomorphism}{同构}须对两个\Term{morphism}{态射}的复合 $S''\to S'\to S$ 满足通常的传递条件。用\Term{canonical}{典范}语言（SGA 1 第 VI 讲）展开这一陈述时，它就归结为如下同义反复：给定 $P$ 上一个 $(G_P,G_P)$-\Term{bitorsor}{双挠子}，\Term{equivalence}{等价}于给定一个以 $\mathcal T/P$ 为底\Term{category}{范畴}、在可变底 $S\in\operatorname{ob}(\mathcal T/P)$ 上取结构\Term{group}{群}为 $(G_S,G_S)$ 的\Term{bitorsor}{双挠子}的\Term{fibered-category}{纤维范畴}的一个\Term{cartesian-section}{笛卡儿截面}；更确切地说，“在 $P$ 处的值”这一\Term{functor}{函子}，诱导上述\Term{cartesian-section}{笛卡儿截面}\Term{category}{范畴}与 $(G_P,G_P)$-\Term{bitorsor}{双挠子}\Term{category}{范畴}之间的一个\Term{equivalence-of-categories}{等价}。当然，这个陈述直接来自 $P$ 是我们\Term{fibered-category}{纤维范畴}的底\Term{category}{范畴} $\mathcal T/P$ 的\Term{final-object}{终对象}；所以对于 $\mathcal T/P$ 上的任意\Term{fibered-category}{纤维范畴}，“在 $S$ 处的值”这一\Term{functor}{函子}，给出该\Term{fibered-category}{纤维范畴}的\Term{cartesian-section}{笛卡儿截面}\Term{category}{范畴}与 $P$ 处的\Term{fiber-category}{纤维范畴}之间的一个\Term{equivalence-of-categories}{等价}。尽管其本质是同义反复，这一解释仍将有助于以接近“\Term{set}{集合}情形”的语言表达某些相容性，只须用取值于\Term{object}{对象} $S$ 的点代替通常的点。
+
+\textbf{1.1.3。} 从\Term{group-extension}{扩张}结构 (1.1.1) 构造 $E$ 上的 $(G_P,G_P)$-\Term{bitorsor}{双挠子}结构 1.1.2 时，只用了 $E$ 的\Term{multiplication}{乘法}结构的一部分，即两个“点”中至少有一个来自 $G$ 的某个点（经由 $i$）时的\Term{multiplication}{乘法}。现在我们要把 $E$ 的\Term{multiplication}{乘法}结构解释为上述\Term{bitorsor}{双挠子}上的一种附加结构。
+\SourcePage{146}
+为此，先取 $P$ 的两个\Term{section}{截面} $p,p'$，于是按 1.1.2.1 的记号，得到两个 $(G,G)$-\Term{bitorsor}{双挠子} $E_p,E_{p'}$，即上述\Term{section}{截面} $p,p':e\to P$ 在 $E$ 中的\Term{inverse-image}{逆像}（注意 $e$ 表示 $\mathcal T$ 的\Term{final-object}{终对象}）。显然，$E$ 的\Term{multiplication}{乘法}诱导 $\mathcal T$ 中\Term{object}{对象}的一个\Term{morphism}{态射}
+\[
+\varphi:P_p\times P_{p'}\longrightarrow P_{pp'},
+\]
+用所涉及的三个\Term{bitorsor}{双挠子}的左右结构来表达，它满足（仍像通常那样取值于任意\Term{object}{对象} $S\in\operatorname{ob}\mathcal T$ 的点）
+\[
+\left\{\begin{aligned}
+\varphi(gx,x')&=g\varphi(x,x'),&\quad\varphi(x,x'g')&=\varphi(x,x')g',\\
+\varphi(xg,x')&=\varphi(x,gx').
+\end{aligned}\right.
+\tag{1.1.3.0}
+\]
+其中 $g,g'\in G(S)$，$x\in P_p(S)$，$x'\in P_{p'}(S)$。用\Term{contracted-product}{缩积} [2]
+\[
+P_p\mathbin{\overset{G}{\times}}P_{p'}
+\]
+来解释第三个关系，就是说\Term{morphism}{态射} $\varphi$ \Term{resolution}{分解}为
+\[
+P_p\times P_{p'}\longrightarrow P_p\mathbin{\overset{G}{\times}}P_{p'}
+\xrightarrow{\varphi_{p,p'}}P_{pp'},
+\]
+其中第一个\Term{arrow}{箭头}是取商的\Term{canonical}{典范}\Term{morphism}{态射}。另一方面，前两个关系意味着，刚得到的\Term{morphism}{态射}
+\[
+\varphi_{p,p'}:P_p\mathbin{\overset{G}{\times}}P_{p'}\longrightarrow P_{pp'}
+\tag{1.1.3.1}
+\]
+是\Term{bitorsor}{双挠子}的\Term{homomorphism}{同态}；这里第一个\Term{object}{对象}的\Term{bitorsor}{双挠子}结构规定如下：$G$ 的左（或右）\Term{group-action}{作用}来自 $G$ 在第一个因子 $P_p$ 上的左\Term{group-action}{作用}（或在第二个因子 $P_{p'}$ 上的右\Term{group-action}{作用}）。
+\SourcePage{147}
+注意，和给定的一对\Term{group}{群}之下的任意\Term{bitorsor}{双挠子}\Term{homomorphism}{同态}一样，\Term{homomorphism}{同态} $\varphi_{p,p'}$ 必为\Term{isomorphism}{同构}。
+
+上述\Term{isomorphism}{同构} (1.1.3.1) 的定义立即推广到 $p,p'$ 不再是 $P$ 的\Term{section}{截面}、而是 $P$ 的取值于 $\mathcal T$ 的任意\Term{object}{对象} $S$ 的点的情形：只须把前面的讨论应用于\Term{induced-topos}{诱导拓扑斯} $\mathcal T/S$，以及从 (1.1.1) 经\Term{base-change}{基变换}得到的 $S$ 上的\Term{group-extension}{群扩张}。这时可以看出，上述\Term{isomorphism}{同构} $\varphi_{p,p'}$ 的形成“与任意\Term{base-change}{基变换} $S'\to S$ 相容”（即对应于一个\Term{fibered-category}{纤维范畴}的\Term{cartesian-section}{笛卡儿截面}的\Term{homomorphism}{同态}，这里所考虑的底\Term{category}{范畴}是以 $P$ 为靶的双\Term{arrow}{箭头} $p,p':S\rightrightarrows P$ 的\Term{category}{范畴} $\mathcal T/(P\times P)$）。当然，给定满足这一条件的 $\varphi_{p,p'}$ 系统，仍\Term{equivalence}{等价}于在“泛”情形给定 $\varphi_{p,p'}$，此时 $S=P\times P$，而 $p,p'$ 分别为 $P\times P$ 到 $P$ 的两个\Term{projection}{投影} $\operatorname{pr}_i$（$i=1,2$）。这时它解释为一个 $(G_{P\times P},G_{P\times P})$-\Term{bitorsor}{双挠子}\Term{isomorphism}{同构}：
+\[
+\varphi:\operatorname{pr}_1^*(E)\operatorname{pr}_2^*(E)\xrightarrow{\sim}\pi^*(E),
+\tag{1.1.3.2}
+\]
+其中
+\[
+\pi:P\times P\longrightarrow P
+\]
+是定义\Term{group}{群} $P$ 的\Term{multiplication}{乘法}结构的 $\mathcal T$ 中\Term{object}{对象}的\Term{morphism}{态射}。不过，下面的相容性质以数据 (1.1.3.1) 的\Term{form}{形式}来陈述最为方便，这样就可避免诉诸不那么贴近直觉的图。
+
+\SourcePage{148}
+\textbf{1.1.4。} 在写出关系 (1.1.3.0)、从而用\Term{bitorsor}{双挠子}\Term{isomorphism}{同构} (1.1.3.1) 表达 $E$ 上给定的\Term{composition-law}{合成律}时，我们只在 $E$ 的三个“点”中至少有一个来自 $G$ 的点的情形下，使用了这个\Term{composition-law}{合成律}的\Term{associativity}{结合性}。如果要用 $\varphi_{p,p'}$ 表达完整的\Term{associativity}{结合性}，就须对 $P$ 的三个点 $p,p',p''$（取值于 $\mathcal T$ 的某个\Term{object}{对象} $S$）写出下图交换：
+\[
+\begin{tikzcd}[column sep=large,row sep=large]
+& E_{pp'}E_{p''}\arrow[dr,"{\varphi_{pp',p''}}"] &\\
+E_pE_{p'}E_{p''}\arrow[ur,"{\varphi_{p,p'}\wedge\mathrm{id}}"]\arrow[dr,"{\mathrm{id}\wedge\varphi_{p',p''}}"'] && E_{pp'p''}\\
+& E_pE_{p'p''}\arrow[ur,"{\varphi_{p,p'p''}}"'] &
+\end{tikzcd}
+\tag{1.1.4.1}
+\]
+在此图中，\Term{bitorsor}{双挠子}的\Term{contracted-product}{缩积}略去了 $\mathbin{\overset{G_S}{\times}}$ \Term{signature}{符号}；约定两个\Term{bitorsor}{双挠子}的缩\Term{multiplication}{乘法} $Q.R$，使用结构\Term{group}{群} $G$ 在 $Q$ 上的右\Term{group-action}{作用}和在 $R$ 上的左\Term{group-action}{作用}（用以对 $Q\times R$ 取商）。另外，已知这一\Term{contracted-product}{缩积}运算在相差一个\Term{canonical-isomorphism}{典范同构}的意义下满足\Term{associativity}{结合性} [2]；我们作出等同
+\[
+(E_pE_{p'})E_{p''}\simeq E_p(E_{p'}E_{p''}),
+\]
+把两端都简写为 $E_pE_{p'}E_{p''}$。本讲以后将采用这一类显然的约定，不再每次明确指出。
+
+\textbf{1.1.4.2。} 正如给定\Term{isomorphism}{同构} $\varphi_{p,p'}$ (1.1.3.1) 可以归结为 (1.1.3.2) 所考虑的“泛”情形 $S=P\times P$，$p=\operatorname{pr}_1$，$p'=\operatorname{pr}_2$ 一样，
+\SourcePage{149}
+为了核实\Term{associativity}{结合性}条件 (1.1.4.1)，也可以只限于“泛”情形 $S=P\times P\times P$，$p=\operatorname{pr}_1$，$p'=\operatorname{pr}_2$，$p''=\operatorname{pr}_3$。我们留给读者用自己选取的记号写出所涉及的图。
+
+\textbf{1.1.5。} 反过来，设已给定 $\mathcal T$ 的\Term{group}{群} $P$ 和 $G$，并且还给定一个 $(G_P,G_P)$-\Term{bitorsor}{双挠子}
+\[
+j:E\longrightarrow P
+\tag{1.1.5.1}
+\]
+（注意：记号中省略了 $G_P$ 在 $E$ 上的两个\Term{group-action}{作用}，或者\Term{equivalence}{等价}地，$G$ 在 $P$ 上的两个\Term{group-action}{作用}），另一方面还给定可变底 $S$ 上的一族\Term{bitorsor}{双挠子}\Term{isomorphism}{同构}
+\[
+\varphi_{p,p'}:E_pE_{p'}\xrightarrow{\sim}E_{pp'}\qquad(p,p'\in P(S)),
+\tag{1.1.5.2}
+\]
+它们与\Term{base-change}{基变换} $S'\to S$ 相容；换言之，给定一个\Term{bitorsor}{双挠子}\Term{isomorphism}{同构} (1.1.3.2)。假设相应的图 (1.1.4.1) 交换。我断言：$E$ 上存在唯一的 $P$ 以 $G$ 为核的\Term{group-extension}{扩张}结构，使前述数据可由此结构通过 1.1.2 和 1.1.3 的构造得到。
+
+首先注意，在 (1.1.5.2) 中取 $p,p'$ 为 $P$ 的\Term{unit-section}{单位截面} $1$，便得到一个\Term{isomorphism}{同构}
+\[
+\varphi_{1,1}:E_1\xleftarrow{\sim}E_1\mathbin{\overset G\times}E_1,
+\tag{1.1.5.3}
+\]
+于是把两端与 $E_1$ 的\Term{inverse-bitorsor}{逆双挠子} $E_1^{-1}$ [2] 作\Term{contracted-product}{缩积}（譬如置于左边），得到一个\Term{canonical-isomorphism}{典范同构}
+\[
+E_1\xrightarrow{\sim}\text{单位双挠子 }{}_sG_d
+\tag{1.1.5.4}
+\]
+（即 $G$ 通过左\Term{right-translation}{右平移}\Term{group-action}{作用}于自身），这里利用了上述文献中的\Term{canonical-isomorphism}{典范同构}
+\SourcePage{150}
+\[
+E_1^{-1}.E_1\xrightarrow{\sim}\text{单位双挠子 }{}_sG_d,
+\]
+它对任意\Term{bitorsor}{双挠子}成立。\Term{equivalence}{等价}地说，我们有 $E_1$、从而也有 $E$ 的一个\Term{section}{截面} $1_E$：
+\[
+1_E\in\Gamma(E_1)=\operatorname{Hom}(e,E_1)\subset\Gamma(E)
+\tag{1.1.5.5}
+\]
+（即 ${}_sG_d$ 的标定\Term{section}{截面}在 (1.1.5.4) 下的像），它满足关系
+\[
+g.1_E=1_E.g\qquad(g\in G(S)),
+\]
+并且依构造，这个\Term{section}{截面}由条件
+\[
+\varphi_{1,1}(1_E,1_E)=1_E
+\tag{1.1.5.6}
+\]
+刻画。另一方面，给定一个\Term{torsor}{挠子}\Term{morphism}{态射} $\varphi$ (1.1.3.2)，显然\Term{equivalence}{等价}于给定一个\Term{morphism}{态射}
+\[
+\pi_E:E\times E\longrightarrow E,\qquad\text{亦记为 }(x,y)\longmapsto xy,
+\tag{1.1.5.7}
+\]
+它满足条件
+\[
+j(xy)=j(x)j(y)\qquad(x,y\in E(S))
+\tag{1.1.5.8}
+\]
+（即 $j$ 与 $E$、$P$ 上各自的\Term{multiplication}{乘法}结构 $\pi_E$、$\pi$ 相容），以及三个关系 (1.1.3.0)（最好从其中最后一个开始）。最后，以下式定义 $\mathcal T$ 中\Term{object}{对象}的\Term{morphism}{态射} $i:G\to E$：
+\[
+i(g)=g.1_E=1_E.g.
+\tag{1.1.5.9}
+\]
+\SourcePage{151}
+（在构造 $1_E$ 时，已经指出此式末两项相等。）这样，我断言：$E$ 上的\Term{multiplication}{乘法} $\pi_E$ 使 $E$ 成为以 $1_E$ 为\Term{unit-section}{单位截面}的\Term{group}{群}，且 $j:E\to P$ 与 $i:G\to E$ 是\Term{group}{群}\Term{homomorphism}{同态}，使\Term{group}{群} $E$ 成为 $P$ 以 $G$ 为核的\Term{group-extension}{扩张}。
+
+事实上，$E$ 的\Term{composition-law}{合成律}的\Term{associativity}{结合性}正是图 (1.1.4.1) 的\Term{commutativity}{交换性}。另一方面，通过\Term{isomorphism}{同构} $\varphi_{p,p'}$ (1.1.3.1) 构造 $\pi_E$ 表明：对于任意 $x\in E(S)$，在 $E(S)$ 中由 $x$ 给出的左\Term{right-translation}{右平移}都是\Term{injectivity}{单射}。由 (1.1.5.6) 有 $1_E1_E=1_E$，于是立即得出 $1_E$ 是 $E$ 的双侧\Term{identity-element}{单位元}。对于位于 $p\in P(S)$ 之上的 $x\in E(S)$，其逆元的存在性留给读者核实；可使用从 $\varphi_{p,p^{-1}}$ \Term{derive}{导出}的一个\Term{canonical-isomorphism}{典范同构}：
+\[
+P_{p^{-1}}\xrightarrow{\sim}(P_p)^\circ.
+\tag{1.1.5.10}
+\]
+因此，$E$ 的确是一个\Term{group}{群}。我们已经指出 $j$ 与\Term{composition-law}{合成律}相容 (1.1.5.8)，$i$ 也同样，因为对于 $g,g'\in G(S)$ 有
+\[
+\begin{aligned}
+i(g)i(g')&=(g.1_E)(g'.1_E)=(g.1_E.g')1_E
+&&\text{（(1.1.3.0) 的最后一个关系）}\\
+&=g.1_E.g'&&\text{（因 $1_E$ 是单位元）}\\
+&=g.(1_E.g')=g.(g'.1_E)&&\text{（(1.1.5.9)）}\\
+&=(gg').1_E=i(gg').
+\end{aligned}
+\]
+由于 $j$ 是一个\Term{torsor}{挠子}的结构\Term{projection}{投影}，它是 $\mathcal T$ 中\Term{object}{对象}的一个\Term{epimorphism}{满态射}。只剩下说明 $i$ 诱导 $G$ 到 $\operatorname{Ker}j=E_1$ 的一个\Term{isomorphism}{同构}；这由定义 (1.1.5.9) 和 $1_E$ 的构造即显然可知。
+
+\SourcePage{152}
+\textbf{1.1.6。} 我们认为前面的论证已证明：对于固定的\Term{topos}{拓扑斯} $\mathcal T$，上述构造给出 $\mathcal T$ 中\Term{group-extension}{群扩张} (1.1.1) 的\Term{category}{范畴}（其中 $P,G,E$ 都允许变化）与系统 $(P,G,E,\varphi)$ 所成的\Term{category}{范畴}之间的一个\Term{equivalence-of-categories}{等价}；这里 $P$ 和 $G$ 是 $\mathcal T$ 的\Term{group}{群}，$E$ 是 $P$ 上的一个 $(G_P,G_P)$-\Term{bitorsor}{双挠子}，而 $\varphi$ 是\Term{bitorsor}{双挠子}的一个\Term{isomorphism}{同构} (1.1.3.2)（或者，若愿意，是与\Term{base-change}{基变换}相容的一族\Term{bitorsor}{双挠子}\Term{isomorphism}{同构} (1.1.3.1)），它满足以图 (1.1.4.2)（或者，若愿意，以各图 (1.1.4.1)）的\Term{commutativity}{交换性}表达的\Term{associativity}{结合性}条件。
+
+利用上述字典，把\Term{group-extension}{扩张} (1.1.1) 沿\Term{group}{群}\Term{morphism}{态射}
+\[
+P'\longrightarrow P\qquad\text{（或 }G\longrightarrow G'\text{）}
+\]
+的\Term{inverse-image}{逆像}（或\Term{direct-image}{正像}）的概念，或者同时施行这两个运算的概念，作出显然的具体表述，留给读者完成。同样也留给读者具体说明：上述\Term{equivalence-of-categories}{范畴等价}与一个\Term{topos}{拓扑斯}\Term{morphism}{态射}
+\[
+f:\mathcal T'\longrightarrow\mathcal T
+\]
+的\Term{inverse-image-functor}{逆像函子} $f^*$ 相容。为此应把数据 $\varphi$ 写成 (1.1.3.2) 的\Term{form}{形式}（最好不用 (1.1.3.1) 的 $\varphi_{p,p'}$），它便在\Term{topos}{拓扑斯} $\mathcal T'$ 上定义相应的数据 $f^*(\varphi)$。
+
+\textbf{1.2。交换情形。} 从下面 1.4 开始，我们只考虑\Term{commutative-group-extension}{交换群扩张}。因此假设 $P$ 和 $G$ \Term{commutative-group}{交换}，并在这里利用\Term{bitorsor}{双挠子}给出\Term{group-extension}{扩张}的描述 $(P,G,E,\varphi)$，具体表达 $E$ 是一个\Term{commutative-group}{交换群}这一事实。
+\SourcePage{153}
+一个显然必要的首要条件（它实际上表达了 $i(G)$ 是 $E$ 的\Term{central-subgroup}{中心子群}），是\Term{bitorsor}{双挠子} $E_p$（$p\in P(S)$）为通常的\Term{torsor}{挠子}，即 $G$ 在 $P_p$ 上的左右\Term{group-action}{作用}重合。显然，这也\Term{equivalence}{等价}于说 $P$ 上的 $E$ 是一个通常的 $G_P$-\Term{torsor}{挠子}。（因此以后不再有必要谈\Term{bitorsor}{双挠子}，而只需考虑通常的\Term{torsor}{挠子}。）假设这个预备条件满足，则 $E$ 的\Term{commutativity}{交换性}表达为下列各图的\Term{commutativity}{交换性}（其中 $p,p'\in P(S)$）：
+\[
+\begin{tikzcd}[column sep=large,row sep=large]
+E_pE_{p'}\arrow[r,"{\varphi_{p,p'}}"]\arrow[d,"\mathrm{sym}"'] & E_{pp'}\arrow[d,"\mathrm{id}"]\\
+E_{p'}E_p\arrow[r,"{\varphi_{p',p}}"'] & E_{p'p}
+\end{tikzcd}
+\tag{1.2.1}
+\]
+其中第一个竖\Term{arrow}{箭头}是\Term{commutativity}{交换性}的\Term{canonical-isomorphism}{典范同构}（它是利用现在 $G$ \Term{commutative-group}{交换}这一事实定义的；又因为 $P$ \Term{commutative-group}{交换}，所以 $pp'=p'p$）。这个条件显然\Term{equivalence}{等价}于泛情形 $S=P\times P$、$p=\operatorname{pr}_1$、$p'=\operatorname{pr}_2$ 中的相应条件，我们不再把它写出。
+
+\textbf{1.3。与\Term{rigidification}{刚化}或\Term{birigidification}{双刚化}\Term{torsor}{挠子}的关系。}
+
+\textbf{1.3.1.0。} 设 $P$ 是 $\mathcal T$ 中赋有一个\Term{section}{截面} $e_P$ 的\Term{object}{对象}，$G$ 是 $\mathcal T$ 的一个\Term{group}{群}，而 $E$ 是一个 $G_P$-\Term{torsor}{挠子}。所谓 $E$ 的一个\Term{rigidification}{刚化}（相对于 $P$ 的给定\Term{section}{截面} $e_P$），就是 $G$-\Term{torsor}{挠子} $E_1=e_P^*(E)$ 的一个\Term{trivialization}{平凡化}，
+\SourcePage{154}
+即这个\Term{torsor}{挠子}的一个\Term{section}{截面}。所采用的用语来自如下情形：$G$ \Term{commutative-group}{交换}，并且有
+\[
+\operatorname{Hom}_{\mathrm{pt}}(P,G)\xrightarrow{\sim}(e),
+\tag{1.3.1.1}
+\]
+其中左端表示将 $e_P$ 送到 $G$ 的\Term{unit-section}{单位截面} $e_G$ 的\Term{morphism}{态射}所成的\Term{set}{集合}；这个关系\Term{equivalence}{等价}于如下事实：把 $G$ 的一个\Term{section}{截面} $g$ 对应到值为 $g$ 的\Term{constant}{常值}\Term{morphism}{态射} $P\to G$ 的自然\Term{homomorphism}{同态} $\Gamma(G)\to\operatorname{Hom}(P,G)$ 是一个\Term{isomorphism}{同构}：
+\[
+\Gamma(G)\xrightarrow{\sim}\operatorname{Hom}(P,G).
+\tag{1.3.1.2}
+\]
+事实上立即可见，上述\Term{equivalence}{等价}的关系又\Term{equivalence}{等价}于说，\Term{torsor}{挠子} $E$ 的每个保持给定\Term{rigidification}{刚化}的\Term{automorphism}{自同构}都是恒等\Term{automorphism}{自同构}（因为所述\Term{automorphism}{自同构}正好对应于 (1.3.1.1) 左端的元素）；特别地，在条件 (1.3.1.1) 下，相对于 $e_P$ \Term{rigidification}{刚化}的 $G_P$-\Term{torsor}{挠子}所成的\Term{category}{范畴}是“\Term{rigid-category}{刚性的}”。
+
+\textbf{1.3.2。} 再设 $Q$ 是 $\mathcal T$ 中赋有一个\Term{section}{截面} $e_Q$ 的\Term{object}{对象}，现在用 $E$ 表示一个 $G_{P\times Q}$-\Term{torsor}{挠子}。由于 $e_Q$ 定义 $P\times Q$ 在 $P$ 上的一个\Term{section}{截面} $e_{P\times Q/P}$，我们可以考虑 $E$ 相对于这个\Term{section}{截面}的\Term{rigidification}{刚化} $\alpha$（在\Term{induced-topos}{诱导拓扑斯} $\mathcal T/P$ 中工作），具体说，就是 $E$ 在 $P\times e_Q$ 上诱导的\Term{torsor}{挠子}的\Term{section}{截面}。交换 $P,Q$ 的角色，我们可以考虑 $E$ 相对于由 $e_P$ 定义的 $P\times Q$ 在 $Q$ 上的\Term{section}{截面} $e_{P\times Q/Q}$ 的\Term{rigidification}{刚化} $\beta$。若这两个部分\Term{rigidification}{刚化}的\Term{section}{截面} $\alpha$ 和 $\beta$ 在 $e_P\times e_Q$ 上重合，即定义出同一个 $G$-\Term{torsor}{挠子} $E_{1,1}$ 的\Term{section}{截面}，就称它们相容，
+\SourcePage{155}
+这里 $E_{1,1}$ 是 $E$ 沿 $P\times Q$ 的\Term{section}{截面} $(e_P,e_Q)$ 的\Term{inverse-image}{逆像}。相对于\Term{section}{截面}对 $(e_P,e_Q)$ 的两个相容的部分\Term{rigidification}{刚化}所成的对，也称为\Term{torsor}{挠子} $E$ 的一个\Term{birigidification}{双刚化}。若 $G$ \Term{commutative-group}{交换}，立即可见，\Term{torsor}{挠子} $E$ 具有\Term{birigidification}{双刚化} $(\alpha,\beta)$ 的充要条件是它具有部分\Term{rigidification}{刚化} $\alpha$ 和 $\beta$，而且此时可找到一个\Term{birigidification}{双刚化}，其中 $\alpha$（或 $\beta$）可预先指定。事实上，只须用如下\Term{morphism}{态射} $Q\to G$ 修正 $\beta$：它是复合 $Q\to e\xrightarrow{\lambda}G$，其中第二个\Term{arrow}{箭头} $\lambda$ 由性质 $\beta e_Q=(\alpha e_P)\lambda$ 定义。
+
+仍在交换情形，注意若 $E,E'$ 是两个带\Term{birigidification}{双刚化}的 $G_{P\times Q}$-\Term{torsor}{挠子}，那么说它们仅作为 $G_{P\times Q}$-\Term{torsor}{挠子}\Term{isomorphic}{同构}，与说它们作为带\Term{birigidification}{双刚化}的 $G_{P\times Q}$-\Term{torsor}{挠子}\Term{isomorphic}{同构}是一样的。换言之，若存在 $G_{P\times Q}$-\Term{torsor}{挠子}的一个\Term{isomorphism}{同构} $u:E\to E'$，则可找到一个保持\Term{birigidification}{双刚化}的 $G_{P\times Q}$-\Term{torsor}{挠子}\Term{isomorphism}{同构} $v:E\to E'$。事实上，考察 $u$ 对于给定\Term{birigidification}{双刚化}的\Term{deviation}{偏差}，得到\Term{morphism}{态射} $f:P\to G$ 和 $g:Q\to G$，满足 $fe_P=ge_Q$，把这个值记为 $a\in G(e)$；于是存在一个\Term{morphism}{态射} $P\times Q\to G$，它与 $e_{P\times Q/P}$、$e_{P\times Q/Q}$ 的复合分别为 $f,g$（即 $h(p,q)=f(p)g(q)a^{-1}$），并可取 $v=uh$。
+
+\textbf{1.3.3。} 1.3.1 的术语立即推广到 $E$ 为一个 $(G_P,G_P)$-\Term{bitorsor}{双挠子}的情形，但须约定，\Term{bitorsor}{双挠子} $E$ 的\Term{rigidification}{刚化}必须是 $e_P^*(E)$ 到\Term{trivial-bitorsor}{平凡双挠子} ${}_sG_d$ 的一个\Term{isomorphism}{同构}，即由 $e_P^*(E)$ 的一个\Term{central-section}{中心截面} $e_E$ 定义；所谓\Term{center}{中心}，是指满足条件 $g.e_E=e_E.g$（$g\in G(S)$）。同样，将\Term{birigidification}{双刚化}的术语推广到\Term{bitorsor}{双挠子}的情形。
+
+\SourcePage{156}
+\textbf{1.3.4。} 回到给定两个\Term{group}{群} $P,G$ 的情形，并选取\Term{unit-section}{单位截面} $e_P$，用以定义 $P$ 上\Term{bitorsor}{双挠子}的\Term{rigidification}{刚化}，以及 $P\times P$ 上\Term{bitorsor}{双挠子}的\Term{birigidification}{双刚化}。我们有自然\Term{functor}{函子}
+\[
+\operatorname{EXT}(P;G)\xrightarrow{i}\operatorname{BITORSRIG}(P,G)
+\xrightarrow{\delta}\operatorname{BITORSBIRIG}(P,P;G),
+\tag{1.3.4.1}
+\]
+其中写出的三个表达式分别表示 $P$ 以 $G$ 为核的\Term{group-extension}{群扩张}\Term{category}{范畴}、相对于 $e_P$ \Term{rigidification}{刚化}的 $(G_P,G_P)$-\Term{bitorsor}{双挠子}\Term{category}{范畴}，以及相对于 $(e_P,e_P)$ \Term{birigidification}{双刚化}的 $(G_{P\times P},G_{P\times P})$-\Term{bitorsor}{双挠子}\Term{category}{范畴}。\Term{functor}{函子} $i$ 把 $P$ 以 $G$ 为核的\Term{group-extension}{扩张} $E$ 对应到 $P$ 上的相应\Term{bitorsor}{双挠子}（1.1.6），并用 $E$ 的\Term{unit-section}{单位截面}将它\Term{rigidification}{刚化}。\Term{functor}{函子} $\delta$ 由下式定义：
+\[
+\delta(E)=\pi^*(E)\operatorname{pr}_1^*(E)^{-1}\operatorname{pr}_2^*(E)^{-1},
+\tag{1.3.4.2}
+\]
+其中 $\pi:P\times P\to P$ 是 $P$ 的\Term{composition-law}{合成律}，$\operatorname{pr}_1,\operatorname{pr}_2$ 是两个\Term{projection}{投影}。$\delta(E)$ 上有\Term{canonical}{典范}的\Term{birigidification}{双刚化}。事实上，$\delta(E)$ 在 $P\times e_P$ 上的\Term{restriction}{限制}\Term{canonical}{典范}\Term{isomorphic}{同构}于
+\[
+\operatorname{id}_P^*(E)\operatorname{id}_P^*(E)^{-1}e^*(E)^{-1},
+\]
+其中 $e=\operatorname{pr}_2\operatorname{inj}_1$ 是值为 $e_P$ 的\Term{constant}{常值}\Term{morphism}{态射} $P\to P$，因此借助 $E$ 的给定\Term{rigidification}{刚化}，有\Term{isomorphism}{同构} $e^*(E)\simeq\text{平凡双挠子}$，从而有 $\delta(E)$ 在 $P\times e_P$ 上的\Term{restriction}{限制}与\Term{trivial-bitorsor}{平凡双挠子}的一个\Term{isomorphism}{同构}。\Term{symmetric}{对称}地定义相对于 $e_P\times P$ 的一个部分\Term{rigidification}{刚化}，并且很容易核实这两个部分\Term{rigidification}{刚化}相容。
+
+\SourcePage{157}
+\textbf{1.3.4.3。} 注意，(1.3.4.1) 中\Term{functor}{函子} $\delta,i$ 的复合 $\delta i$ \Term{canonical}{典范}\Term{isomorphic}{同构}于\Term{trivial-functor}{平凡函子}，即值为 $P\times P$ 上\Term{trivial-bitorsor}{平凡双挠子}及其\Term{birigidification}{双刚化}的\Term{constant-functor}{常值函子}。事实上，对于 $P$ 以 $G$ 为核的任意\Term{group-extension}{扩张} $E$，(1.1.3.2) 的\Term{isomorphism}{同构} $\varphi$ 显然定义了 $\delta i(E)$ 的一个与其\Term{canonical}{典范}\Term{birigidification}{双刚化}相容的\Term{trivialization}{平凡化}。
+
+\begin{SGAresult}{命题}{1.3.5}
+设 $P$ 和 $Q$ 是 $\mathcal T$ 的两个\Term{group}{群}。
+
+\textup{a)} 假设每个在 $P\times e_P$ 和 $e_P\times P$ 上均\Term{trivial-morphism}{平凡}的、从 $P\times P$ 到 $G$ 的\Term{set}{集合}\Term{sheaf}{层}\Term{morphism}{态射}都是\Term{trivial-morphism}{平凡}的。那么 (1.3.4.1) 的\Term{functor}{函子} $i$ 是\Term{fully-faithful}{全忠实}的。特别地，对于相对于 $e_P$ \Term{birigidification}{双刚化}的一个 $(G_P,G_P)$-\Term{bitorsor}{双挠子} $E$，即赋有 $E_1=e_P^*(E)$ 的一个\Term{central-section}{中心截面} $e_E$，在 $E$ 上至多有一个 $P$ 以 $G$ 为核的\Term{group-extension}{扩张}结构，它与其\Term{bitorsor}{双挠子}结构相容，并以 $e_E$ 为\Term{unit-section}{单位截面}。
+
+\textup{b)} 再假设每个在部分积 $P\times P\times e_P$、$P\times e_P\times P$、$e_P\times P\times P$ 上均\Term{trivial-morphism}{平凡}的、从 $P\times P\times P$ 到 $G$ 的\Term{set}{集合}\Term{sheaf}{层}\Term{morphism}{态射}都是\Term{trivial-morphism}{平凡}的。设 $E$ 是一个 $G_P$-\Term{torsor}{挠子}。$E$ 上存在一个与其\Term{bitorsor}{双挠子}结构相容的、$P$ 以 $G$ 为核的\Term{group-extension}{扩张}结构的充要条件，是 $\delta(E)=\pi^*(E)\operatorname{pr}_1^*(E)^{-1}\operatorname{pr}_2^*(E)^{-1}$ 的底层 $(G_{P\times P},G_{P\times P})$-\Term{bitorsor}{双挠子}平凡。当此条件满足时，对于 $E_1=e_P^*(E)$ 的任意\Term{central-section}{中心截面} $e_E$，即 $E$ 相对于 $e_P$ 的任意\Term{rigidification}{刚化}，$E$ 上存在唯一的\Term{group-extension}{扩张}结构，它与其\Term{bitorsor}{双挠子}结构相容，并以 $e_E$ 为\Term{unit-section}{单位截面}；即 $E$ 作为相对于 $e_P$ \Term{rigidification}{刚化}的\Term{bitorsor}{双挠子}，属于 $i$ 的\Term{essential-image}{本质像}。另一方面，带\Term{birigidification}{双刚化}的\Term{bitorsor}{双挠子} $\delta(E)$ 存在且仅存在一个\Term{trivialization}{平凡化}。
+\end{SGAresult}
+\SourcePage{158}
+用图 (1.3.4.1) 的语言来说，\Term{fully-faithful}{全忠实}\Term{functor}{函子} $i$ 的\Term{essential-image}{本质像}就是\Term{functor}{函子} $\delta$ 的“核”；或者形象地说，图 (1.3.4.1) 是一个“带\Term{base-point}{基点}\Term{category}{范畴}的\Term{exact-sequence}{正合列}”，甚至是带有\Term{pseudo-group}{伪群}结构的\Term{category}{范畴}的\Term{exact-sequence}{正合列}（用下面 2.5.1 引入的术语）。
+
+\begin{proof}
+证明 1.3.5。a) 设 $E,E'$ 是 $P$ 以 $G$ 为核的两个\Term{group-extension}{扩张}，$f:E\to E'$ 是底层带\Term{rigidification}{刚化}的\Term{bitorsor}{双挠子}的一个\Term{morphism}{态射}。我们要说明 $f$ 是\Term{group-extension}{扩张}的\Term{morphism}{态射}，或者显然\Term{equivalence}{等价}地，是\Term{group}{群}的\Term{morphism}{态射}。必须证明 $f(xy)=f(x)f(y)$。用 $j':E'\to P$ 表示 $P$ 上\Term{torsor}{挠子} $E'$ 的结构\Term{morphism}{态射}，则有 $j'f(xy)=j'(f(x)f(y))$，因为两端分别等于 $j(f(xy))$ 和 $j(f(x)f(y))$，而因 $j$ 是\Term{multiplication}{乘法}性的，这两者相等。因此有
+\[
+f(xy)=u(j(x),j(y))f(x)f(y),
+\]
+其中
+\[
+u:P\times P\longrightarrow G
+\]
+是一个完全确定的\Term{morphism}{态射}。在上面的关系中先取 $x=1$，再取 $y=1$，考虑到 $f(1)=1$，就得到
+\[
+u(p,1)=u(1,p)=1,
+\]
+即 $u$ 在 $P\times e_P$ 和 $e_P\times P$ 上\Term{trivial-morphism}{平凡}；根据假设，$u$ \Term{trivial-morphism}{平凡}，因此 $f(xy)=f(x)f(y)$，得证。
+
+b) $E$ 能有与其\Term{bitorsor}{双挠子}结构相容的\Term{group-extension}{扩张}结构时，所述条件的必要性是显然的（1.3.4.3）。为证明 b) 的第一个断言，只须证明其充分性。利用 $\delta(E)$ 的一个\Term{trivialization}{平凡化}，
+\SourcePage{159}
+沿 $P\times P$ 的\Term{unit-section}{单位截面}取\Term{inverse-image}{逆像}，得到 $E_1=e_P^*(E)$ 的一个\Term{trivialization}{平凡化}（比较 1.5.1），即 $E$ 相对于 $e_P$ 的一个\Term{rigidification}{刚化}。设它已固定。$\delta(E)$ 的一个给定\Term{trivialization}{平凡化} $\varphi$ 未必与这个\Term{birigidification}{双刚化}相容；其在 $P\times e_P$ 和 $e_P\times P$ 上的\Term{restriction}{限制}，相对于 $\delta(E)$ 的自然部分\Term{rigidification}{刚化}，可表达为\Term{center}{中心}\Term{morphism}{态射}
+\[
+f:P\longrightarrow G,\qquad g:P\longrightarrow G,
+\]
+它们在 $P$ 的\Term{unit-section}{单位截面}上的\Term{restriction}{限制}相同：$f(1)=g(1)=a\in\Gamma G$。于是\Term{center}{中心}\Term{morphism}{态射}
+\[
+h:P\times P\longrightarrow G,\qquad h(p,q)=f(p)g(q)a^{-1}
+\]
+在 $P\times e_P$ 和 $e_P\times P$ 上的\Term{restriction}{限制}为\Term{morphism}{态射} $f$ 和 $g$。因而，用 $h$ 修正 $\varphi$（即把它替换为 $\varphi(p,q)h(p,q)^{-1}$），就得到 $\delta(E)$ 的一个与其\Term{birigidification}{双刚化}相容的\Term{trivialization}{平凡化}。还应注意，这样的\Term{trivialization}{平凡化}在相差一个于 $P\times e_P$ 和 $e_P\times P$ 上\Term{trivial-morphism}{平凡}的\Term{center}{中心}\Term{morphism}{态射} $P\times P\to G$ 的意义下是确定的；该\Term{morphism}{态射}因此\Term{trivial-morphism}{平凡}，故这个 $\varphi$ 唯一，这就是 1.3.5 b) 的最后一个断言。
+
+只要证明，把这个 $\varphi$ 看作 (1.1.3.2) \Term{form}{形式}的一个\Term{isomorphism}{同构}时，它满足\Term{associativity}{结合性}条件 (1.1.4.1)，证明就完成了；这里要考虑到，由 $\varphi$ 的选取已知 $e_E$ 是 $\varphi$ 所定义的\Term{composition-law}{合成律}的双侧\Term{identity-element}{单位元}。然而 (1.1.4.1) 中的两个复合是 $(G_{P\times P\times P},G_{P\times P\times P})$-\Term{bitorsor}{双挠子}的\Term{isomorphism}{同构}，故两者相差一个\Term{center}{中心}\Term{morphism}{态射}
+\[
+u:P\times P\times P\longrightarrow G,
+\]
+其关系式为
+\[
+(xy)z=u(jx,jy,jz)\,x(yz).
+\]
+\SourcePage{160}
+在此式中依次取 $y=z=1$，再取 $z=x=1$，再取 $x=y=1$，利用 $1$ 是所考虑的\Term{composition-law}{合成律}的双侧\Term{identity-element}{单位元}这一事实，得到 $u$ 在三个部分 $P\times e_P\times e_P$、$e_P\times P\times e_P$、$e_P\times e_P\times P$ 上\Term{trivial-morphism}{平凡}。根据假设，这意味着它\Term{trivial-morphism}{平凡}，因此 $(xy)z=x(yz)$，证明完成。
+\end{proof}
+
+\begin{SGAresult}{推论}{1.3.6}
+假设每个在 $P\times e_G$ 和 $e_P\times G$ 上\Term{trivial-morphism}{平凡}的\Term{set}{集合}\Term{sheaf}{层}\Term{morphism}{态射} $P\times G\to G$ 都是\Term{trivial-morphism}{平凡}的。那么，若 $G$ \Term{commutative-group}{交换}，则 $G$ 在 $P$ 以 $G$ 为核的任意\Term{group-extension}{群扩张}中都是\Term{central}{中心的}。若 $P$ 也\Term{commutative-group}{交换}，而且 1.3.5 a) 的假设成立，则 $P$ 以 $G$ 为核的任意\Term{group-extension}{群扩张} $E$ 都\Term{commutative-group}{交换}。
+\end{SGAresult}
+\begin{proof}
+对于第一个断言，要证明由\Term{group-extension}{扩张} $G$ 定义的 $P$ 在 $G$ 上的\Term{group-action}{作用}是\Term{trivial-morphism}{平凡}的。这个\Term{group-action}{作用}表达为一个\Term{morphism}{态射} $u:P\times G\to G$，使相应\Term{morphism}{态射} $(p,g)\mapsto u(p,g)g^{-1}$ 在 $P\times e_G$ 和 $e_P\times G$ 上的\Term{restriction}{限制}显然\Term{trivial-morphism}{平凡}，所以后一个\Term{morphism}{态射}\Term{trivial-morphism}{平凡}，即 $u(p,g)=g$，这正是所要证明的。
+
+现在注意，若 $E$ 是 $P$ 以 $G$ 为核的一个\Term{group-extension}{扩张}，那么 $E$ 的\Term{opposite-group}{反群} $E^\circ$ 是 $P^\circ$ 以 $G^\circ$ 为核的一个\Term{group-extension}{扩张}；它的底层\Term{bitorsor}{双挠子}结构 $i(E^\circ)$ 由\Term{bitorsor}{双挠子} $i(E)$ 交换左右\Term{group-action}{作用}得到。因此当 $E$ 是一个\Term{central-extension}{中心扩张}时，有 $i(E)=i(E^\circ)$；若进一步 $P$ \Term{commutative-group}{交换}，即 $P=P^\circ$，则由唯一性断言 1.3.5 a) 得到 $E=E^\circ$，即 $E$ \Term{commutative-group}{交换}。这就证明了推论。
+\end{proof}
+\SourcePage{161}
+\textbf{1.3.7。} 一个有意义的特殊情形，是 1.3.5 和 1.3.6 中所考虑的全部假设都满足的如下情形：
+\[
+\underline{\operatorname{Hom}}_{\mathrm{pt}}(P,G)=e\quad\text{（终层）},
+\tag{1.3.7.1}
+\]
+其中左端表示从 $P$ 到 $G$ 的\Term{pointed-set}{带基点集合}\Term{sheaf}{层}的\Term{morphism}{态射}所成的\Term{sheaf}{层}。这个条件还可不依赖于所标定的\Term{section}{截面}，写成如下\Term{form}{形式}（类似于 (1.3.1.2)）：
+\[
+G\xrightarrow{\sim}\underline{\operatorname{Hom}}_{\mathrm{ens}}(P,G),
+\tag{1.3.7.2}
+\]
+其中右端表示 $P,G$ 的底层\Term{set}{集合}\Term{sheaf}{层}之间的\Term{morphism}{态射}所成的\Term{sheaf}{层}。这些条件也意味着，对 $\mathcal T$ 的任意\Term{object}{对象} $Q$，映射 $u\mapsto u\circ\operatorname{pr}_2$
+\[
+\operatorname{Hom}_{\mathrm{ens}}(Q,G)\xrightarrow{\sim}
+\operatorname{Hom}_{\mathrm{ens}}(P\times Q,G)
+\tag{1.3.7.3}
+\]
+是\Term{bijection}{双射}。可见，$P$ 的这一性质（固定 $G$）在\Term{cartesian-product}{笛卡儿积}下\Term{stable}{稳定}，因此特别地，它蕴含\Term{cartesian-product}{笛卡儿积} $P\times P$、$P\times P\times P$ 等具有同样性质。于是立即看出，它蕴含 1.3.5 和 1.3.6 中所作的假设；而且，它还蕴含 (1.3.4.1) 中涉及的\Term{category}{范畴}全都是\Term{rigid-category}{刚性的}，即其中任一\Term{category}{范畴}的任一\Term{object}{对象}的每个\Term{automorphism}{自同构}都是恒等。再者，由于关于 $P,G$ 的条件 (1.3.7.1) 在任意\Term{base-change}{基变换} $S\to e$ 下\Term{stable}{稳定}，从唯一性结果 1.3.5 a) 通过\Term{descent}{下降}立即得出：$P$ 上一个带\Term{rigidification}{刚化}的\Term{bitorsor}{双挠子} $E$ 要对应于 $P$ 以 $G$ 为核的一个\Term{group-extension}{扩张}，只须这件事在 $e$ 上\Term{local-scheme}{局部}成立。由 1.3.5 b)，这也表达为由 $\delta(E)$ 定义的\Term{section}{截面}
+\[
+\delta(E)\in\Gamma\operatorname{R}^1h_*(G_{P\times P})
+\]
+为零，
+\SourcePage{162}
+其中
+\[
+h:P\times P\longrightarrow e
+\]
+是结构\Term{morphism}{态射}。
+
+\textbf{1.3.8。} 设 $p:P\to S$ 是\Term{scheme}{概形}的一个\Term{morphism}{态射}，使 $p$ \Term{coherent-morphism}{凝聚}（即\Term{quasi-compact}{拟紧}且\Term{quasi-separated}{拟分离}）并且\Term{flat}{平坦}，且满足
+\[
+p_*(\mathcal O_P)\xleftarrow{\sim}\mathcal O_S.
+\tag{1.3.8.1}
+\]
+利用 $p_*(\mathcal O_P)$ 的形成（由于 $p$ 的\Term{coherent-morphism}{凝聚性}）与任意\Term{flat}{平坦}\Term{base-change}{基变换}可交换这一事实，立即看出，关于相对\Term{scheme}{概形} $P/S$ 所考虑的条件在\Term{cartesian-product}{笛卡儿积}下\Term{stable}{稳定}，因此特别地，\Term{cartesian-power}{笛卡儿幂} $P\times P$、$P\times P\times P$、$\ldots$ 都满足这些条件。它们同样在任意\Term{flat}{平坦}\Term{base-change}{基变换}下\Term{stable}{稳定}。
+
+现在，若 $G$ 是 $S$ 上的\Term{affine-scheme}{仿射概形}，则立即由 (1.3.8.1) 得到关系 (1.3.7.2)，因为若 $\mathcal A$ 是 $S$ 上使 $G=\operatorname{Spec}(\mathcal A)$ 的\Term{quasi-coherent}{拟凝聚}\Term{algebra}{代数}，就有
+\[
+\operatorname{Hom}_S(P,G)
+=\operatorname{Hom}_{\mathrm{alg}}(\mathcal A,p_*(\mathcal O_P))
+\simeq\operatorname{Hom}_{\mathrm{alg}}(\mathcal A,\mathcal O_S).
+\]
+由刚才所说，同一结论适用于积 $P\times P$、$P\times P\times P$；同样，若 $G$ 在 $S$ 上\Term{flat}{平坦}，则对于 $G$ 上的相对\Term{scheme}{概形} $P_G$ 和 $G$ 上的相对\Term{scheme}{概形} $G_G$，也适用同一结论。
+
+当 $P,G$ 是 $S$ 上的\Term{group-scheme}{群概形}，并使用 $(\mathrm{Sch})/S$ 上一个比\Term{canonical-topology}{典范拓扑}更粗的\Term{topology}{拓扑}时，这允许我们把 $P,G$ 与上述\Term{site}{景}上的\Term{sheaf}{层}等同。于是可以看出，每个从 $P$、$P\times P$、$P\times P\times P$、$\ldots$ 到 $G$ 且与标定\Term{section}{截面}相容的\Term{morphism}{态射}都是\Term{trivial-morphism}{平凡}的；同样，若 $G$ \Term{flat}{平坦}，
+\SourcePage{163}
+则每个与标定\Term{section}{截面}相容的 $S$-\Term{morphism}{态射} $P\times G\to G$ 都是\Term{trivial-morphism}{平凡}的，把它解释为从 $P_G$ 到 $G_G$ 的 $G$-\Term{morphism}{态射}即可看出这一点。因此，这表明 1.3.5 的适用条件满足；当 $G$ \Term{flat}{平坦}时，1.3.6 的条件也满足。此外，(1.3.4.1) 中涉及的三个\Term{category}{范畴}都是\Term{rigid-category}{刚性的}。
+
+\textbf{1.3.8.2。} 条件 (1.3.8.1) 成立且在任意\Term{base-extension}{基扩张}之后仍然成立的最有意义的情形，是 $P$ 为 $S$ 上一个\Term{abelian-scheme}{阿贝尔概形}的情形；因此甚至满足 1.3.7 的条件。此时，3.5 和 3.6 的结论对 $S$ 上任意\Term{affine}{仿射}\Term{group}{群} $G$ 都成立。这就是 J.-P. Serre 最初所考虑的情形，前面的讨论显然受到他的启发。一个 (1.3.8.1) 成立但并非\Term{universal}{普遍}成立的有意义的情形，是 $P$ 为\Term{abelian-scheme}{阿贝尔概形}的 \Term{neron-model}{Néron 模型}，该\Term{abelian-scheme}{阿贝尔概形}定义在一个谱为 $S$ 的\Term{discrete-valuation-ring}{离散赋值环}的\Term{fraction-field}{分式域}上。
+
+\textbf{1.4。\Term{free-commutative-group}{自由交换群}的\Term{group-extension}{扩张}。}
+
+设 $I$ 是 $\mathcal T$ 的一个\Term{object}{对象}，并取
+\[
+P=\mathbf Z[I],
+\tag{1.4.1}
+\]
+即由 $I$ 生成的\Term{free-module}{自由 $\mathbf Z$-模}（SGA 4 第 IV 讲 11）。对于 $P$ 以一个给定\Term{module}{模} $G$（$\mathbf Z$-\Term{module}{模}）为核的每个\Term{group-extension}{扩张} $E$（注意：下面只再讨论\Term{commutative-group-extension}{交换群扩张}），先对应以相应的 $G_P$-\Term{torsor}{挠子}，再沿\Term{canonical}{典范}\Term{morphism}{态射}
+\[
+I\longrightarrow P=\mathbf Z[I]
+\]
+取其在 $I$ 上的\Term{restriction}{限制}。
+\SourcePage{164}
+这样便得到一个\Term{canonical}{典范}\Term{functor}{函子}
+\[
+\operatorname{EXT}(P,G)\longrightarrow\operatorname{TORS}(I,G_I).
+\tag{1.4.2}
+\]
+我断言这个\Term{functor}{函子}是一个\Term{equivalence-of-categories}{范畴等价}。显然，这\Term{equivalence}{等价}于说，对任意 $G$，映射
+\[
+\operatorname{Hom}_{\mathbf Z}(P,G)\longrightarrow\operatorname{H}^0(I,G_I)=G(I)
+\tag{1.4.3}
+\]
+\[
+\operatorname{Ext}_{\mathbf Z}^1(P,G)\longrightarrow\operatorname{H}^1(I,G_I)
+\tag{1.4.4}
+\]
+都是\Term{isomorphism}{同构}。事实上，更\Term{generic}{一般}地，当 $A$ 是 $\mathcal T$ 中的一个\Term{ring}{环}（不一定交换），而 $P=A[I]$ 是由 $I$ 生成的\Term{free-module}{自由 $A$-模}时，可得\Term{canonical}{典范}\Term{isomorphism}{同构}
+\[
+\operatorname{Ext}_A^i(A[I],G)\xrightarrow{\sim}\operatorname{H}^i(I,G_I),
+\tag{1.4.5}
+\]
+它们关于可变的 $A$-\Term{module}{模} $G$ 具有\Term{functoriality}{函子性}；当 $A=\mathbf Z$ 且 $i=0,1$ 时，它们分别与 (1.4.3)、(1.4.4) 一致。为定义\Term{isomorphism}{同构} (1.4.5)，回忆左端是\Term{functor}{函子} $G\mapsto\operatorname{Hom}_A(A[I],G)$ 的\Term{derived-functor}{导出函子}；根据 $A[I]$ 的定义，这个\Term{functor}{函子}\Term{isomorphic}{同构}于\Term{functor}{函子} $G\mapsto G(I)=\operatorname{H}^0(I,G_I)$。由于 $G\mapsto G_I$ 把\Term{injective-module}{内射模}变为 $\mathcal T/I$ 中的\Term{injective-module}{内射模}（SGA 4 第 V 讲），便得到所需结论。所宣称的与\Term{homomorphism}{同态} (1.4.3)、(1.4.4) 的相容性，留给读者核实。
+
+应注意，\Term{functor}{函子} 1.4.2 与\Term{topos}{拓扑斯}\Term{morphism}{态射}
+\[
+f:\mathcal T'\longrightarrow\mathcal T
+\]
+的\Term{inverse-image}{逆像}相容。

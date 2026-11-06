@@ -1,0 +1,1104 @@
+\SourcePage{83}
+\section*{3.1. 滤过导出范畴、典范滤过与朴素滤过}
+\addcontentsline{toc}{section}{3.1. 滤过导出范畴、典范滤过与朴素滤过}
+
+\par\medskip\noindent\textbf{3.1.1.}
+通常遇到的\term{triangulated-category}{三角范畴}都伴有一个“\term{filtered-derived-category}{滤过导出范畴}”。原来的\term{triangulated-category}{三角范畴}与这个范畴之间的关系尚未公理化。3.1.2 将讨论连接这两个范畴的最有用的几个函子，但我们并不声称已经列出它们所满足的全部相容关系。因此，本节只能从一个\term{abelian-category}{阿贝尔范畴} $\mathcal A$、它的\term{derived-category}{导出范畴} $\D\mathcal A$ 和\term{filtered-derived-category}{滤过导出范畴} $\D F\mathcal A$ 出发。这里稍改 1.1.4 的定义：我们对带有有限\term{filtration}{滤过}（而非仅仅逐次有限\term{filtration}{滤过}）的\term{complex}{复形}范畴作分式演算，得到 $\D F\mathcal A$。这正是 [8] V \S\,1、2 中的定义，系统论述可参看该处。$\D^*$（$*=+,-,b$）的情形也一样。偶尔还要用到双\term{filtered-derived-category}{滤过导出范畴} $\D F^2\mathcal A$；可把它看成\term{triangulated-category}{三角范畴} $\D F\mathcal A$ 所\term{adjunction}{伴随}的“\term{filtered-derived-category}{滤过导出范畴}”。
+
+若\term{abelian-category}{阿贝尔范畴} $\mathcal A$ 有足够多的\term{injective}{内射}对象，则 $\D^+\mathcal A$ 可等同于由 $\mathcal A$ 中\term{injective}{内射}对象组成的左有界\term{complex}{复形}范畴，其中\term{complex}{复形}态射按\term{homotopy}{同伦}取商；$\D^+F\mathcal A$（分别地，$\D^+F^2\mathcal A$）则可等同于由 $\mathcal A$ 中\term{injective}{内射}对象组成的左有界\term{filtration}{滤过}（分别地，双\term{filtration}{滤过}）\term{complex}{复形}范畴，要求\term{filtration}{滤过}（分别地，双\term{filtration}{滤过}）有限且逐次可分裂，\term{filtration}{滤过}（分别地，双\term{filtration}{滤过}）\term{complex}{复形}的态射按与\term{filtration}{滤过}相容的\term{homotopy}{同伦}取商（即模去 $dH+Hd$，其中 $H$ 的次数为 $-1$，并保持\term{filtration}{滤过}；$\D^+F$ 的情形见 [8] V 1.4.7）。
+
+我们的\term{filtration}{滤过}有时递增，有时递减；二者通过规定 $F_i:=F^{-i}$ 相互转换。
+
+\par\medskip\noindent\textbf{3.1.2.}
+先采用递减\term{filtration}{滤过}。$\D\mathcal A$ 与 $\D F\mathcal A$ 之间有如下函子：
+\begin{equation*}
+\gr_F^i:\D F\mathcal A\longrightarrow\D\mathcal A,
+\qquad (K,F)\longmapsto\gr_F^i(K).
+\tag{3.1.2.1}
+\end{equation*}
+
+\SourcePage{84}
+\begin{equation*}
+\text{遗忘\term{filtration}{滤过}：}\quad \omega:\D F\mathcal A\longrightarrow\D\mathcal A,
+\qquad (K,F)\longmapsto K;
+\tag{3.1.2.2}
+\end{equation*}
+更一般地，有
+\begin{equation*}
+F^i/F^j:\D F\mathcal A\longrightarrow\D\mathcal A,
+\qquad (K,F)\longmapsto F^iK/F^jK
+\quad(-\infty\leq i\leq j\leq\infty).
+\tag{3.1.2.3}
+\end{equation*}
+\emph{函子性。} 当 $(i,j)\geq(k,\ell)$ 时，有 $F^i/F^j\longrightarrow F^k/F^\ell$；当 $(i,j)\geq(k,\ell)\geq(m,n)$ 时，这些态射满足传递性。此外，还有次数为 $1$ 的态射
+\[
+F^{-\infty}/F^i\xrightarrow{(1)}F^i,
+\]
+当 $i\geq j$ 时，它们构成交换方块
+\[
+\begin{tikzcd}[ampersand replacement=\&]
+F^{-\infty}/F^i\arrow[r,"{(1)}"]\arrow[d]\&F^i\arrow[d]\\
+F^{-\infty}/F^j\arrow[r,"{(1)}"]\&F^j.
+\end{tikzcd}
+\]
+当 $i\geq j\geq k$ 时，三角 $(F^j/F^i,F^k/F^i,F^k/F^j)$ 是\term{distinguished-triangle}{区别三角}（其中次数为 $1$ 的箭头为
+$F^k/F^j\longrightarrow F^{-\infty}/F^j\xrightarrow{(1)}F^j\longrightarrow F^j/F^i$）。Verdier 受 Cartan--Eilenberg 构造\term{spectral-sequence}{谱序列}的方法启发，将这样一族\term{distinguished-triangle}{区别三角}称为 $\D\mathcal A$ 的一个\term{spectral-object}{谱对象}。
+
+反过来，有
+\begin{equation*}
+\text{平凡\term{filtration}{滤过}：}\quad\D\mathcal A\longrightarrow\D F\mathcal A,
+\qquad K\longmapsto(K,\mathrm{Tr}),
+\tag{3.1.2.4}
+\end{equation*}
+其中 $\gr_{\mathrm{Tr}}^0K=K$，而 $i\ne0$ 时 $\gr_{\mathrm{Tr}}^iK=0$。
+
+从 $\D F\mathcal A$ 到自身还有
+\begin{equation*}
+F^0:\D F\mathcal A\longrightarrow\D F\mathcal A,
+\qquad(K,F)\longmapsto(F^0K,\text{诱导\term{filtration}{滤过}});
+\tag{3.1.2.5}
+\end{equation*}
+更一般地，对每个递增、连续的映射 $\varphi:\overline\Z\longrightarrow\overline\Z$（这里 $\overline\Z=\Z\cup\{-\infty,\infty\}$），有
+\begin{equation*}
+[\varphi]:\D F\mathcal A\longrightarrow\D F\mathcal A,
+\quad(K,F)\longmapsto
+\bigl((F^{\varphi(-\infty)}/F^{\varphi(\infty)})(K),
+ F^{\varphi(n)}K/F^{\varphi(\infty)}K\bigr).
+\tag{3.1.2.6}
+\end{equation*}
+若 $\varphi(n)=n+p$，这就是 $(K,F)\longmapsto(K,F[p])$。
+
+给定底边的三角的存在性和 TR4 可以推广为：
+\par\medskip\noindent\textbf{(3.1.2.7)}
+任给 $\D\mathcal A$ 中的态射序列
+$\cdots\longrightarrow K_{n+1}\longrightarrow K_n\longrightarrow\cdots$
+（$n\in\Z$），其中 $i\gg0$ 时 $K_i=0$，$i\ll0$ 时 $K_{i+1}\xrightarrow{\sim}K_i$，则存在 $\D F\mathcal A$ 中的 $(K,F)$，使给定序列同构于 $F^iK$ 所构成的序列。
+
+$\D F^2\mathcal A$ 与 $\D F\mathcal A$ 之间也有同样的关系（有两种不同的方式：
+\SourcePage{85}
+例如有 $F^i/F^j$ 和 $G^i/G^j:\D F^2\mathcal A\longrightarrow\D F\mathcal A$）。此外，还有
+\begin{equation*}
+\text{对角\term{filtration}{滤过}：}\quad\D F^2\mathcal A\longrightarrow\D F\mathcal A,
+\qquad(K,F,G)\longmapsto(K,\delta(F,G)),
+\tag{3.1.2.8}
+\end{equation*}
+其中
+\[
+\delta(F,G)^p=\sum_{i+j=p}F^i\cap G^j
+ =\bigcap_{i+j=p+1}(F^i+G^j),
+\]
+并且
+\begin{equation*}
+\gr^p_{\delta(F,G)}=\bigoplus_{i+j=p}\gr_F^i\gr_G^j.
+\tag{3.1.2.9}
+\end{equation*}
+
+\par\medskip\noindent\textbf{3.1.3.}
+设 $\mathcal A$ 是有足够多\term{injective}{内射}对象的\term{abelian-category}{阿贝尔范畴}。对 $\D F\mathcal A$ 中的 $K$ 和 $\D^+F\mathcal A$ 中的 $L$，有一个自然的对象 $\RHom(K,L)\in\D F\mathrm{Ab}$。若假定 $L$ 下有界，且它的各项的\term{adjunction}{伴随}分次对象均为\term{injective}{内射}对象，则 $\RHom(K,L)$ 是\term{filtration}{滤过}\term{complex}{复形} $\Hom(K,L)$ 在 $\D F\mathrm{Ab}$ 中的像；这个\term{filtration}{滤过}\term{complex}{复形}按通常的规则定义：
+\[
+\Hom^n(K,L)=\prod_{j-i=n}\Hom(K^i,L^j);
+\]
+$f=(f_i)\in\Hom^n(K,L)$ 属于 $F^k$，当且仅当
+\[
+f_i(F^mK^i)\subset F^{m+k}L^{i+n}\qquad(\forall i\ \forall m).
+\]
+有
+\begin{align*}
+\gr_F^k\RHom(K,L)
+ &=\prod_{m-n=k}\RHom(\gr_F^nK,\gr_F^mL)
+ &&\text{（[8] V 1.4.9）},\tag{3.1.3.1}\\
+\Hom_{\D\mathcal A}(\omega K,\omega L)
+ &=H^0\omega\RHom(K,L)
+ &&\text{（$\omega$ 遗忘 $F$）},\tag{3.1.3.2}\\
+\Hom_{\D F\mathcal A}(K,L)
+ &=H^0F^0\RHom(K,L)
+ &&\text{（[8] V 1.4.6）}.\tag{3.1.3.3}
+\end{align*}
+\term{filtration}{滤过}\term{complex}{复形} $\RHom(K,L)$ 与 $F^0\RHom(K,L)$ 给出\term{spectral-sequence}{谱序列}
+\begin{equation*}
+E_1^{pq}=\prod_{j-i=p}\Hom^{p+q}(\gr_F^iK,\gr_F^jL)
+\ \Longrightarrow\ \Hom_{\D\mathcal A}^{p+q}(\omega K,\omega L),
+\tag{3.1.3.4}
+\end{equation*}
+\begin{equation*}
+E_1^{pq}=\begin{cases}
+\text{同上},&p\geq0,\\
+0,&p<0
+\end{cases}
+\ \Longrightarrow\ \Hom_{\D F\mathcal A}^{p+q}(K,L).
+\tag{3.1.3.5}
+\end{equation*}
+比较这两个\term{spectral-sequence}{谱序列}，就得到下面的 (i)。
+
+\par\medskip\noindent\textbf{命题 3.1.4.}
+设 $(K,F)$、$(L,F)$ 如上。
+
+(i) 若当 $n=0$ 或 $-1$ 且 $i>j$ 时，
+$\Hom^n(\gr_F^iK,\gr_F^jL)=0$，例如当 $n<0$ 时有
+$\Hom^n(\gr_F^iK[-i],\gr_F^jL[-j])=0$，则
+\[
+\Hom_{\D F\mathcal A}(K,L)\xrightarrow{\sim}
+\Hom_{\D\mathcal A}(\omega K,\omega L).
+\]
+
+\SourcePage{86}
+(ii) 若当 $n=0$ 或 $1$ 且 $n+i-j<0$ 时，
+$\Hom^n(\gr_F^iK,\gr_F^jL)=0$，例如当 $n<0$ 时有
+$\Hom^n(\gr_F^iK[i],\gr_F^jL[j])=0$，则
+\[
+\Hom_{\D F\mathcal A}(K,L)=E_2^{00}
+ =\Ker(d_1:E_1^{00}\longrightarrow E_1^{10}).
+\]
+证明 (i) 时，使用三角 $(F^0,\omega,F^{-\infty}/F^0)$ 和\term{spectral-sequence}{谱序列}
+\[
+\begin{cases}
+E_1^{pq},&p<0,\\
+0,&p\geq0
+\end{cases}
+\ \Longrightarrow\ H^{p+q}(F^{-\infty}/F^0)\RHom(K,L),
+\]
+得到 $F^{-\infty}/F^0$ 的 $H^0$ 与 $H^{-1}$ 均为零。证明 (ii) 时使用\term{spectral-sequence}{谱序列} (3.1.3.5)。
+
+\par\medskip\noindent\textbf{3.1.5.}
+设 $\mathcal A$ 是有足够多\term{injective}{内射}对象的\term{abelian-category}{阿贝尔范畴}，$\mathcal D$ 是 $\D^+\mathcal A$ 的一个满三角子范畴，$(\mathcal D^{\leq0},\mathcal D^{\geq0})$ 是 $\mathcal D$ 上的一个\term{t-structure}{$t$-结构}。记 $\mathcal D^b$ 为 $\mathcal D$ 的子范畴，由各个
+$\mathcal D^{[a,b]}=\mathcal D^{\leq b}\cap\mathcal D^{\geq a}$ 的并组成，并记
+$\mathcal C=\mathcal D^{\leq0}\cap\mathcal D^{\geq0}$。设 $\mathcal D F$（分别地，$\mathcal D^bF$）为 $\D^+F\mathcal A$ 中由有限\term{filtration}{滤过}对象 $(K,F)$ 组成的子范畴，要求各个 $\gr_F^iK$ 属于 $\mathcal D$（分别地，$\mathcal D^b$）。
+
+定义\term{canonical-filtration}{典范滤过}时，采用递增\term{filtration}{滤过}较为方便。若 $\mathcal D^bF$ 中的 $(K,T)$（$T$ 递增）满足 $(\gr_i^TK)[i]\in\mathcal C$，就称它是\emph{典范的}。这\term{equivalence}{等价}于要求：$T_iK$ 连同自然态射 $T_iK\longrightarrow K$ 等同于 ${}^p\tau_{\leq i}K$。于是
+${}^pH^iK=(\gr_i^TK)[i]$。
+
+\par\medskip\noindent\textbf{命题 3.1.6.}
+遗忘\term{filtration}{滤过}的函子
+$\omega:\mathcal D^bF_{\mathrm{can}}\longrightarrow\mathcal D^b$
+是范畴\term{equivalence}{等价}；这里 $\mathcal D^bF_{\mathrm{can}}$ 是\term{canonical-filtration}{典范滤过}\term{complex}{复形}的范畴。
+
+由 3.1.4(i) 以及当 $n<0$、$A,B\in\mathcal C$ 时 $\Hom^n(A,B)=0$，立即可知 $\omega$ \term{fully-faithful}{全忠实}。将 (3.1.2.7) 应用于 ${}^p\tau_{\leq i}K$ 所构成的序列，就得到本质满射性。
+
+\par\medskip\noindent\textbf{3.1.7.}
+我们的目标是定义函子 $\D^b(\mathcal C)\longrightarrow\mathcal D^b$。为此，将把 $\mathcal C$ 中对象组成的有界\term{complex}{复形}等同于一类特殊的\term{filtration}{滤过}\term{complex}{复形}，即\term{stupid-filtered-complex}{朴素滤过复形}。定义它们时，采用递减\term{filtration}{滤过}较为方便。若 $\mathcal D^bF$ 中的 $(K,F)$（$F$ 递减）满足
+\SourcePage{87}
+$(\gr_F^iK)[i]\in\mathcal C$，就称它是\emph{朴素的}。
+
+设 $(K,F)\in\mathcal D^bF$，置 $K^i:=(\gr_F^iK)[i]$。\term{distinguished-triangle}{区别三角}
+$(\gr_F^{i+1},F^i/F^{i+2},\gr_F^i)$ 给出次数为 $1$ 的态射
+$\gr_F^iK\xrightarrow{(1)}\gr_F^{i+1}K$，也就是态射
+$d^i:K^i\longrightarrow K^{i+1}$。三角的态射
+\[
+(F^{i+1}/F^{i+3},F^i/F^{i+3},\gr_F^i)
+ \longrightarrow(\gr_F^{i+1},F^i/F^{i+2},\gr_F^i)
+\]
+表明，次数为 $1$ 的态射 $\gr_F^iK\xrightarrow{(1)}\gr_F^{i+1}K$ 经由 $F^{i+1}/F^{i+3}$ 分解，因此 $d^{i+1}\circ d^i=0$。由此得到函子
+$G:\mathcal D^bF\longrightarrow C^b(\mathcal D)$。
+
+\par\medskip\noindent\textbf{命题 3.1.8.}
+函子 $G$ 诱导\term{stupid-filtered-complex}{朴素滤过复形}范畴 $\mathcal D^bF_{\mathrm{b\hat ete}}$ 与 $C^b(\mathcal C)$ 之间的\term{equivalence}{等价}。
+
+由 3.1.4(ii) 以及当 $n<0$、$A,B\in\mathcal C$ 时 $\Hom^n(A,B)=0$，立即得到 $G$ 的\term{fully-faithful}{全忠实}性：对 $K,L\in\mathcal D^bF_{\mathrm{b\hat ete}}$，有
+\[
+\Hom_{\mathcal D F}(K,L)=\Ker\left(
+\prod_i\Hom(K^i,L^i)\xrightarrow{d_1}
+\prod_i\Hom(K^i,L^{i+1})\right).
+\]
+这里 $d_1(f)=df-fd$（我们只需这个公式在符号意义下成立，验证留给读者），因而 $\Hom_{\mathcal D F}(K,L)$ 可等同于从 $K^*$ 到 $L^*$ 的\term{complex}{复形}态射群。
+
+下面证明本质满射性。设
+$0\longrightarrow K^a\longrightarrow\cdots\longrightarrow K^b\longrightarrow0$
+（$a<b$）是 $\mathcal C$ 中对象组成的有界\term{complex}{复形}；我们要找一个\term{stupid-filtered-complex}{朴素滤过复形} $(K,F)$，使它在 $G$ 下的像就是这个\term{complex}{复形}。
+
+\emph{第一种方法。} 把每个 $K^i$ 表示成由 $\mathcal A$ 中\term{injective}{内射}对象组成的下有界\term{complex}{复形} $(K^{i,j},d'')$ 在 $\D^+\mathcal A$ 中的像，并把态射 $d^i:K^i\longrightarrow K^{i+1}$ 实现为\term{complex}{复形}态射 $d'^i$。
+
+任一如下形式的\term{filtration}{滤过}\term{complex}{复形} $X$ 都满足要求：
+\[
+X^n=\bigoplus_{i+j=n}K^{i,j},\qquad
+F^pX^n=\bigoplus_{\substack{i+j=n\\i\geq p}}K^{i,j},
+\]
+\[
+d=(-1)^id''+d'+r,
+\quad\text{其中 $r$ 的\term{filtration}{滤过}次数至少为 $2$，即 }rF^p\subset F^{p+2}.
+\]
+
+\SourcePage{88}
+置 $H_0=(-1)^id''$、$H_1=d'$，并归纳寻找双齐次次数为 $(p,-p+1)$ 的 $H_p$，使
+$d_p=\sum_{n=0}^pH_n$ 满足
+\[
+(*)\qquad d_p\circ d_p\text{ 的\term{filtration}{滤过}次数至少为 }p+1.
+\]
+$p=1$ 时该条件成立：它恰好表示每个 $d'^i$ 都是\term{complex}{复形}态射。$p>b-a$ 时，这个条件蕴含 $d_p\circ d_p=0$，也就是说 $d:=d_p$ 满足所求。
+
+根据假设，$d'^{i+1}\circ d'^i:K^{i,*}\longrightarrow K^{i+2,*}$ 在\term{derived-category}{导出范畴}中为零，因此\term{homotopy}{同伦}于零。写成
+$d'^{i+1}\circ d'^i=d''H_2^i+H_2^id''$，就可取
+$H_2=\sum_i(-1)^{i+1}H_2^i$（验证留给读者）。
+
+现设 $p\geq2$，来构造 $H_{p+1}$。记 $\varphi$ 为 $d_p\circ d_p$ 中第一次数等于 $p+1$ 的分量。计算恒等式
+$d_p\circ(d_p\circ d_p)=(d_p\circ d_p)\circ d_p$
+两边第一次数等于 $p+1$ 的分量，得到
+$d''\varphi+(-1)^p\varphi d''=0$：因此 $\varphi$ 是一族次数为 $1-p$ 的\term{complex}{复形}态射
+$\varphi^i:K^i\longrightarrow K^{i+p+1}$。由于 $n<0$、$A,B\in\mathcal C$ 时 $\Hom^n(A,B)=0$，存在次数为 $-p$ 的 $H_{p+1}^i$，使
+\[
+\varphi^i=d''H_{p+1}^i+(-1)^{1-p}H_{p+1}^id''.
+\]
+于是可取 $H_{p+1}=\sum_i(-1)^{i+p}H_{p+1}^i$。
+
+\emph{第二种方法（略述）。} 本质上仍是同一个证明，只是换一种语言，使“从\term{abelian-category}{阿贝尔范畴}的\term{derived-category}{导出范畴}出发”这一事实不再显式出现。这个事实会出现在相容性的验证中；这里将这些相容性视为已知。
+
+对 $b-a$ 作归纳。若 $b=a$，取平凡\term{filtration}{滤过}。若 $a<b$，选取 $a\leq p<b$，考虑如下\term{complex}{复形}态射（其中 $K^b$ 位于 $b$ 次）：
+\[
+\begin{tikzcd}[ampersand replacement=\&,column sep=small]
+0\arrow[r]\&K^a\arrow[r]\&\cdots\arrow[r]\&K^p\arrow[r]\arrow[d,"{f}"]\&0\arrow[d]\\
+\&\&0\arrow[r]\&K^{p+1}\arrow[r]\&\cdots\arrow[r]\&K^b\arrow[r]\&0.
+\end{tikzcd}
+\]
+归纳假设适用于它的源和靶，$G$ 的\term{fully-faithful}{全忠实}性便给出
+\[
+\widetilde f:(A,F)\longrightarrow(B,F),
+\]
+\SourcePage{89}
+使得 $f=\gr(\widetilde f)$。
+
+以 $F[n]$ 表示平移后的\term{filtration}{滤过}：$F[n]^i=F^{n+i}$（3.1.2.6）。在 $\mathcal D F$ 中对复合态射
+\[
+(A,F[1])\xrightarrow{\id_A}(A,F)\xrightarrow{\widetilde f}(B,F)
+\]
+取\term{cone}{锥}，就得到所求。
+
+\par\medskip\noindent\textbf{3.1.9.}
+我们把函子
+$\mathrm{real}:=\omega G^{-1}:C^b(\mathcal C)\longrightarrow\mathcal D^b$
+称为“\term{realization-functor}{实现函子}”。它把由 $\mathcal C$ 中对象组成的每个有界\term{complex}{复形} $K^*$，送到\term{stupid-filtered-complex}{朴素滤过复形} $(K,F)$ 遗忘\term{filtration}{滤过}后所得的 $\mathcal D^b$ 中对象，其中 $G(K,F)=K^*$：
+\begin{equation*}
+\begin{tikzcd}[ampersand replacement=\&]
+\mathcal D^bF_{\mathrm{b\hat ete}}\arrow[r,"{G}","{\simeq}"']\arrow[dr,"{\omega}"']
+ \&C^b(\mathcal C)\arrow[d,"{\mathrm{real}}"]\\
+\&\mathcal D.
+\end{tikzcd}
+\tag{3.1.9.1}
+\end{equation*}
+若 $(K,F)$ 是朴素的，则 $(K[1],F[1])$ 也是朴素的，而且
+\begin{equation*}
+(\gr_{F[1]}^iK[1])[i]=(\gr_F^{i+1}K)[i+1].
+\tag{3.1.9.2}
+\end{equation*}
+这些同构 (3.1.9.2) 使下图反交换：
+\[
+\begin{tikzcd}[ampersand replacement=\&]
+(\gr_{F[1]}^iK[1])[i]\arrow[r,"{d}"]\arrow[d,equal]
+ \&(\gr_{F[1]}^{i+1}K[1])[i+1]\arrow[d,equal]\\
+(\gr_F^{i+1}K)[i+1]\arrow[r,"{d}"]\&(\gr_F^{i+2}K)[i+2].
+\end{tikzcd}
+\qquad(-)
+\]
+也就是说，它们定义了同构
+$G(K[1],F[1])=(GK)[1]$，从而得到同构
+\begin{equation*}
+\mathrm{real}(K^*[1])=(\mathrm{real}\,K^*)[1].
+\tag{3.1.9.3}
+\end{equation*}
+
+\par\medskip\noindent\textbf{命题 3.1.10.}
+带有分次结构 (3.1.9.3) 的函子
+$\mathrm{real}:C^b(\mathcal C)\longrightarrow\mathcal D^b$
+经由一个\term{exact-functor}{正合函子}
+$\mathrm{real}:\D^b(\mathcal C)\longrightarrow\mathcal D^b$ 分解；后者仍记作 $\mathrm{real}$。
+
+\par\medskip\noindent\textbf{引理 3.1.11.}
+$\mathrm{real}:C^b(\mathcal C)\longrightarrow\mathcal D^b$ 经由 $K^b(\mathcal C)$ 分解。
+
+设 $K^*,L^*\in C^b(\mathcal C)$，分别是 $\mathcal D F_{\mathrm{b\hat ete}}$ 中 $(K,F)$、
+\SourcePage{90}
+$(L,F)$ 在 $G$ 下的像。从\term{spectral-sequence}{谱序列}态射 (3.1.3.5)$\longrightarrow$(3.1.3.4) 中取出以下交换图，即得此引理：
+\[
+\begin{tikzcd}[ampersand replacement=\&,column sep=large]
+\Hom_{C^b\mathcal C}(K^*,L^*)=E_2^{00}\text{（3.1.3.5）}
+ \arrow[r,"{\sim}","{\text{3.1.4(ii)}}"']\arrow[d]
+ \&\Hom_{\mathcal D F}((K,F),(L,F))\arrow[d]\\
+\Hom_{K^b\mathcal C}(K^*,L^*)=E_2^{00}\text{（3.1.3.4）}
+ \arrow[r]\&\Hom_{\mathcal D}(K,L).
+\end{tikzcd}
+\]
+
+\par\medskip\noindent\textbf{引理 3.1.12.}
+函子 $\mathrm{real}:K^b(\mathcal C)\longrightarrow\mathcal D^b$ 把\term{distinguished-triangle}{区别三角}送到\term{distinguished-triangle}{区别三角}。
+
+设 $f:(K,F)\longrightarrow(L,F)$ 是 $\mathcal D F$ 中的\term{filtration}{滤过}\term{complex}{复形}态射。在 $f$ 的\term{cone}{锥} $C(f)$ 上取\term{filtration}{滤过} $\widetilde F$，令
+\[
+\widetilde F^iC(f)^n=F^iL^n\oplus F^{i+1}K^{n+1}.
+\]
+这样 $(C(f),\widetilde F)$ 就是
+$(K,F[1])\longrightarrow(K,F)\longrightarrow(L,F)$ 的\term{cone}{锥}。自然同构
+$\gr_{\widetilde F}^iC(f)=(\gr_F^{i+1}K)[1]\oplus\gr_F^iL$
+给出同构 $GC(f)=C(G(f))$。特别地，若 $(K,F)$ 与 $(L,F)$ 都是朴素的，则 $(C(f),\widetilde F)$ 也是朴素的；而
+$C(\omega f)=\omega C(f)$ 可等同于 $\mathrm{real}(C(f))$。
+更确切地说，自然三角 $(K,L,C(f))$ 可等同于
+$(G(K),G(L),C(G(f)))$ 在 $\mathrm{real}$ 下的像。这就证明了 3.1.12。
+
+\par\medskip\noindent\textbf{引理 3.1.13.}
+设 $\Sigma:0\longrightarrow A\longrightarrow B\longrightarrow C\longrightarrow0$ 是 $\mathcal C$ 中的短\term{exact-sequence}{正合列}，将它看作集中于 $0,1,2$ 次的\term{complex}{复形}，则 $\mathrm{real}(\Sigma)=0$。
+
+可将 $\Sigma$ 表示成 $\mathcal A$ 中对象组成的\term{complex}{复形}的短\term{exact-sequence}{正合列}
+$\Sigma^*:A^*\longrightarrow B^*\longrightarrow C^*$。
+把 $\Sigma^*$ 看成双\term{complex}{复形}（第一次数在 $A^*,B^*,C^*$ 上分别取 $0,1,2$）。它的关联单\term{complex}{复形} $\mathbf s\Sigma^*$ 按第一次数\term{filtration}{滤过}后是朴素的，\term{adjunction}{伴随}分次\term{complex}{复形}为 $\Sigma$。因此
+$\mathbf s\Sigma^*=\mathrm{real}(\Sigma)$；又因 $\Sigma^*$ 的各行都无\term{cohomology}{上同调}，$\mathbf s\Sigma^*$ 也无\term{cohomology}{上同调}，结论随即成立。
+
+\par\medskip\noindent\textbf{3.1.14. 构造同构 $H^i={}^pH^i\circ\mathrm{real}$。}
+
+设 $K^*\in C^b(\mathcal C)$。\term{truncation}{截断} $\tau_{\leq i}K^*$ 定义为：当 $j<i$ 时，$(\tau_{\leq i}K^*)^j=K^j$；当 $j=i$ 时为 $\Ker(d)$；当 $j>i$ 时为 $0$。再定义 $\tau'_{\leq i}K^*$：当 $j\leq i$ 时，$(\tau'_{\leq i}K^*)^j=K^j$；当 $j=i+1$ 时为 $\im d$；当 $j>i+1$ 时为 $0$。
+包含态射 $\tau_{\leq i}K^*\longrightarrow\tau'_{\leq i}K^*$ 的\term{cone}{锥}\term{homotopy}{同伦}于\term{complex}{复形}
+$\Ker(d)\longrightarrow K^i\longrightarrow\im d$
+（次数为 $i-1,i,i+1$）。由 3.1.13，这个\term{complex}{复形}的实现
+\SourcePage{91}
+为零。因此由 3.1.12，态射
+$\mathrm{real}(\tau_{\leq i}K^*)\longrightarrow\mathrm{real}(\tau'_{\leq i}K^*)$
+是同构。
+
+下面在态射
+$\mathrm{real}(\tau_{\leq i-1}K^*)\longrightarrow\mathrm{real}(\tau_{\leq i}K^*)$
+的一个\term{cone}{锥}与 $H^iK^*[-i]$ 之间构造同构。这既将证明
+$\mathrm{real}(\tau_{\leq i}K^*)$ 可等同于
+$\tau_{\leq i}(\mathrm{real}\,K^*)$，又将把 $H^iK^*$ 等同于
+${}^pH^i\mathrm{real}\,K^*$。
+
+可用 $\tau'_{\leq i-1}K^*$ 代替 $\tau_{\leq i-1}K^*$。
+这样，由 1.3.12，所求的\term{cone}{锥}就是态射
+$\tau'_{\leq i}K^*\longrightarrow\tau_{\leq i}K^*$ 的\term{cone}{锥}的实现。
+这个\term{cone}{锥}\term{homotopy}{同伦}于仅在 $i-1$、$i$ 次非零的\term{complex}{复形}
+$\im(d^{i-1})\longrightarrow\Ker(d^i)$，即态射
+\[
+\im(d^{i-1})[i]\longrightarrow\Ker(d^i)[i]
+\]
+的\term{cone}{锥}；它的实现是态射
+\[
+\im(d^{i-1})[i]\longrightarrow\Ker(d^i)[i]
+\]
+的一个\term{cone}{锥}。这个\term{cone}{锥}在唯一同构意义下唯一（参见 1.2.3），就是 $H^iK^*[i]$。\footnote{译注：本段首处位移为 $[-i]$，后面几处则写成 $[i]$，均依原书照录；其中的符号须留意。}
+
+\par\medskip\noindent\textbf{3.1.15. 3.1.10 证明的结束。}
+还需证明，若 $f:K^*\longrightarrow L^*$ 是\term{quasi-isomorphism}{拟同构}，则
+$\mathrm{real}(f)$ 是 $\mathcal D^b$ 中的同构。函子族
+${}^pH^i:\mathcal D^b\longrightarrow\mathcal C$
+是\term{conservative}{保守}的（1.3.7），因此只需验证各个
+${}^pH^i\mathrm{real}(f)$ 都是同构。3.1.14 的同构把它们等同于 $H^i(f)$，而后者由假设都是同构。
+
+\par\medskip\noindent\textbf{命题 3.1.16.}
+函子 $\mathrm{real}:\D^b\mathcal C\longrightarrow\mathcal D^b$ 是范畴\term{equivalence}{等价}，当且仅当：任给 $\mathcal C$ 中的 $A,B$、$n>0$ 以及 $f\in\Hom(A,B[n])$，都存在 $\mathcal C$ 中的单态射 $B\hookrightarrow B'$，使 $f$ 被\term{effaceable}{消去}。
+
+固定 $A$，考虑 $\delta$-函子的态射
+\[
+\mathrm{real}:\Hom_{\D\mathcal C}(A,B[n])\longrightarrow
+\Hom_{\mathcal D}(A,B[n]).
+\]
+$\Hom_{\D\mathcal C}(A,B[n])$ 就是 $\mathcal C$ 中的 Yoneda $\Ext^n(A,B)$。它们由以下性质刻画：当 $n<0$ 时为零；当 $n=0$ 时等于 $\Hom_{\mathcal C}(A,B)$；当 $n>0$ 时，具有 3.1.16 意义下的可\term{effaceable}{消去}性。因此，3.1.16 的可\term{effaceable}{消去}条件\term{equivalence}{等价}于：对任意 $A,B\in\mathcal C$ 及
+\SourcePage{92}
+$n\in\Z$，都有
+\[
+\Hom_{\D\mathcal C}(A,B[n])\xrightarrow{\sim}
+\Hom_{\mathcal D}(A,B[n]).
+\]
+$\D^b\mathcal C$ 的每个对象都可逐步分解为 $\mathcal C$ 中的对象，所以这个条件蕴含 $\mathrm{real}$ \term{fully-faithful}{全忠实}。
+
+还需证明：若 $\mathrm{real}$ \term{fully-faithful}{全忠实}，则它本质满射。对 $\ell=b-a$ 作归纳，证明 $\mathcal D^{[a,b]}$ 包含在它的\term{essential-image}{本质像}中。$\ell=0$ 时，$\mathcal C[a]$ 确实在\term{essential-image}{本质像}中。若 $\ell\geq1$，选 $a\leq c<b$。$\mathcal D^{[a,b]}$ 中的对象 $K$ 给出三角
+$(\tau_{\leq c}K,K,\tau_{>c}K)$，归纳假设保证
+$\tau_{\leq c}K$ 与 $\tau_{>c}K$ 均在\term{essential-image}{本质像}中。由\term{fully-faithful}{全忠实}性，态射
+$d:\tau_{>c}K\longrightarrow(\tau_{\leq c}K)[1]$
+可写成 $\mathrm{real}(\delta)$，而 $K[1]$ 同构于 $\delta$ 的一个\term{cone}{锥}在 $\mathrm{real}$ 下的像。
+
+\par\medskip\noindent\textbf{注 3.1.17.}
+(i) 若对 $A,B\in\mathcal C$、$n<N$ 有
+$\Hom_{\D\mathcal C}(A,B[n])\xrightarrow{\sim}\Hom_{\mathcal D}(A,B[n])$，则
+\[
+\Hom_{\D\mathcal C}(A,B[N])\hookrightarrow\Hom_{\mathcal D}(A,B[N]),
+\]
+其像由如下 $f$ 组成：存在 $A'\twoheadrightarrow A$ 和 $B\hookrightarrow B'$，使 $f$ 在 $\Hom_{\mathcal D}(A',B'[N])$ 中的像为零。
+
+(ii) 对 $n\leq1$，总有
+$\Hom_{\D\mathcal C}(A,B[n])\xrightarrow{\sim}\Hom_{\mathcal D}(A,B[n])$。
+$n\leq0$ 的情形显然；$n=1$ 的情形来自 $\mathcal C$ 对\term{extension}{扩张}封闭：每个次数为 $1$ 的箭头 $d:A\xrightarrow{(1)}B$，都是某个\term{distinguished-triangle}{区别三角}
+$B\xrightarrow{b}E\xrightarrow{a}A\xrightarrow{d}$
+中次数为 $1$ 的箭头，而 $a:E\twoheadrightarrow A$ 与 $b:B\hookrightarrow E$ 都能\term{effaceable}{消去} $d$。
+
+\section*{3.2. 局部化}
+\addcontentsline{toc}{section}{3.2. 局部化}
+
+\par\medskip\noindent\textbf{3.2.1.}
+设 $\mathscr S$ 是一个\term{site}{景}，配有环\term{sheaf}{层} $\mathcal O$。为简单起见，假设 $\mathscr S$ 中存在有限\term{projective-limit}{逆极限}，并以 $S$ 表示一个终对象。对每个 $U\in\operatorname{Ob}\mathscr S$，以 $\D(U)$ 表示 $U$ 上（即\term{site}{景} $\mathscr S|U$ 上）的 $\mathcal O$-模\term{sheaf}{层}所成\term{abelian-category}{阿贝尔范畴}的\term{derived-category}{导出范畴}。对 $\mathscr S$ 中的 $f:V\longrightarrow U$，有“\term{inverse-image}{逆像}”函子
+$f^*:\D(U)\longrightarrow\D(V)$。对 $K\in\D(U)$、$L\in\D(V)$，从 $K$ 到 $L$ 的一个 \emph{$f$-态射}，指的是态射 $f^*K\longrightarrow L$。
+
+这些 $\D(U)$ 一般并不构成 $\mathscr S$ 上的\term{stack}{叠}：\term{derived-category}{导出范畴} $\D(S)$ 中的对象和态射在 $\mathscr S$ 上都不具有局部性。不过，仍有下面的命题。
+
+\SourcePage{93}
+\par\medskip\noindent\textbf{命题 3.2.2.}
+设 $K\in\D^-(S)$、$L\in\D^+(S)$。假设当 $i<0$ 时，\term{sheaf}{层} $\mathcal E\!xt^i(K,L)$ 为零。那么，预\term{sheaf}{层}
+$U\longmapsto\Hom_{\D(U)}(K|U,L|U)$ 是\term{sheaf}{层}。
+
+从局部到整体的\term{spectral-sequence}{谱序列}
+\[
+E_2^{pq}=H^p(S,\mathcal E\!xt^q(K,L))\Longrightarrow\Ext^{p+q}(K,L)
+\]
+给出同构
+\[
+\Hom_{\D(S)}(K,L)=H^0(S,\mathcal H\!om(K,L)).
+\]
+将 $S$ 换成任意 $U\in\mathscr S$ 后，同一公式仍然成立，命题因此得证。
+
+\par\medskip\noindent\textbf{3.2.3.}
+本节要补充上述结果，证明：在负次数的 $\mathcal E\!xt^i$ 适当消失的假设下，只要局部给定 $\D^b(S)$ 的一个对象，就实际上给定了它的一个整体对象。
+
+设 $\mathscr C$ 是覆盖 $\mathscr S$ 的终对象 $S$ 的一个\term{sieve}{筛}。
+所谓\emph{在 $\mathscr C$-局部给定 $\D(S)$ 的一个对象}，指的是以下资料：对每个 $U\in\mathscr C$ 给定 $K_U\in\D(U)$；对 $\mathscr C$ 中对象之间的每个态射 $v:V\longrightarrow U$，给定一个 $v$-态射 $\varphi_v:K_U\longrightarrow K_V$，它由同构
+$\varphi'_v:v^*K_U\xrightarrow{\sim}K_V$ 定义。并要求对复合态射 $vw$ 有
+$\varphi_{vw}=\varphi_w\circ\varphi_v$。
+
+对 $K\in\D(S)$，它在各个 $U\in\mathscr C$ 上的限制 $K|U$ 构成的系统，就是一个在 $\mathscr C$-局部给定的 $\D(S)$ 对象。反过来，有：
+
+\par\medskip\noindent\textbf{定理 3.2.4.}
+设 $(K_U)$ 是在 $\mathscr C$-局部给定的 $\D(S)$ 对象，并且在某个与 $U$ 无关的区间之外，$H^iK_U=0$。假设对每个 $U\in\mathscr C$，在 $U$ 上都有
+$\mathcal E\!xt^i(K_U,K_U)=0$（$i<0$）。那么，存在 $K\in\D^b(S)$ 产生 $(K_U)$；由 3.2.2，它是唯一的。
+
+唯一性由 3.2.2 得出。证明存在性时，我们将借鉴 3.1.8 的证明以及\term{cohomological-descent}{上同调下降}理论（SGA 4 VI bis；[2] \S\,5 中有概述）。
+
+\par\medskip\noindent\textbf{3.2.5. 问题的单\term{pure}{纯}版本。}
+更换\term{site}{景}而保持\term{topos}{拓扑斯}不变，
+\SourcePage{94}
+可假设\term{sieve}{筛} $\mathscr C$ 由 $\mathscr S$ 中覆盖终对象的某个对象 $U$ 生成。此时，在 $\mathscr C$-局部给定 $\D(S)$ 的一个对象，\term{equivalence}{等价}于给定 $\D(U)$ 的一个对象，以及它在 $U\times U$（在 $S$ 上的纤维积）上的两个\term{inverse-image}{逆像}之间的一个同构，并要求该同构在 $U\times U\times U$ 上满足通常的余循环条件。
+
+设 $\Delta_n$（$n\geq-1$）为 $\mathbb N$ 中的区间 $[0,n]$，考虑 $U$ 的幂 $U^{\Delta_n}$（$n\geq0$）构成的单\term{pure}{纯}系统。我们只需要它的底\term{sheaf}{层}\term{semisimplicial-system}{半单纯系统}（即忘掉退化映射）。$\D(U^{\Delta_n})$（$n\geq0$）中的对象 $K^n$ 构成的\term{semisimplicial-system}{半单纯系统}，是以下资料：对每个 $n\geq0$，给定 $K^n\in\D(U^{\Delta_n})$；对每个递增单射 $\alpha:\Delta_n\longrightarrow\Delta_m$，它诱导投影
+$p(\alpha):U^{\Delta_m}\longrightarrow U^{\Delta_n}$，给定从 $K^n$ 到 $K^m$ 的 $p(\alpha)$-态射 $\varphi(\alpha)$，即态射
+$\varphi(\alpha)':p(\alpha)^*K^n\longrightarrow K^m$。
+要求 $\varphi(\id)=\id$ 且
+$\varphi(\alpha\beta)=\varphi(\alpha)\circ\varphi(\beta)$
+（即 $\varphi(\alpha\beta)'=\varphi(\alpha)'\circ p(\alpha)^*\varphi(\beta)'$）。若各个 $\varphi(\alpha)'$ 都是同构，就称这个\term{semisimplicial-system}{半单纯系统}是\term{cartesian}{笛卡儿}的。
+
+在 $\mathscr C$-局部给定 $\D(S)$ 的一个对象，也\term{equivalence}{等价}于给定 $\D(U^{\Delta_n})$ 中对象 $K^n$ 构成的一个\term{cartesian}{笛卡儿}\term{semisimplicial-system}{半单纯系统}。我们须证明：若这个系统满足
+\begin{enumerate}[label=\(\alph*\)]
+\item 当 $|i|$ 足够大时，$H^iK^0=0$；
+\item 在 $U$ 上，当 $i<0$ 时有 $\mathcal E\!xt^i(K^0,K^0)=0$，
+\end{enumerate}
+则 $K^*$ 是由某个 $K\in\D^b(S)$ 限制而来的。
+证明将在 3.2.18 给出；在此之前，先介绍一些单\term{pure}{纯}方面的预备知识。
+
+\par\medskip\noindent\textbf{3.2.6.}
+设 $(\Delta)$ 为如下范畴：对象是有限集 $\Delta_n=[0,n]$（$n\geq-1$），态射是它们之间的递增单射。设 $(\Delta)^+$ 是由 $\Delta_n$（$n\geq0$）组成的子范畴，$\mathcal A$ 是 $(\Delta)$ 上的一个\term{fibered-category}{纤维范畴}兼\term{cofibered-category}{余纤维范畴}，$\mathcal A^+$ 为其在 $(\Delta)^+$ 上的\term{inverse-image}{逆像}。
+对 $(\Delta)$ 中的箭头 $\alpha:\Delta_n\longrightarrow\Delta_m$，置
+$s(\alpha)=n$、$b(\alpha)=m$。以 $\mathcal A(n)$ 表示 $\mathcal A$ 在 $\Delta_n$ 上方的纤维。
+考虑到我们所关心的情形是：$\mathcal A(n)$ 为 $U^{\Delta_n}$ 上的 $\mathcal O$-模\term{sheaf}{层}范畴，我们将对每个 $\alpha:\Delta_n\longrightarrow\Delta_m$，以
+$(p(\alpha)^*,p(\alpha)_*)$，或简记为 $(\alpha^*,\alpha_*)$，表示满足下式的一对\term{adjoint-functor}{伴随函子}：
+\[
+\Hom_{\mathcal A,\alpha}(F,G)
+ =\Hom_{\mathcal A(m)}(p(\alpha)^*F,G)
+ =\Hom_{\mathcal A(n)}(F,p(\alpha)_*G).
+\]
+\SourcePage{95}
+假设各范畴 $\mathcal A(n)$ 都是\term{additive-category}{加性范畴}，并且函子 $p(\alpha)^*$ 和 $p(\alpha)_*$ 都是加性的。
+
+由 $(\Delta)$ 上的范畴 $\mathcal A$，可得到一系列 $(\Delta)$ 上的范畴（限制后也可看作 $(\Delta)^+$ 上的范畴），其纤维分别为
+$C(\mathcal A(n)),K(\mathcal A(n)),\ldots$。
+对任一 $(\Delta)^+$ 上的范畴 $\pi:\mathcal B\longrightarrow(\Delta)^+$，$\mathcal B$ 在 $(\Delta)^+$ 上的一个\emph{截面}，亦即各\term{fibered-category}{纤维范畴} $\mathcal B(n)$ 中对象组成的\term{semisimplicial-system}{半单纯系统}，指的是函子
+$s:(\Delta)^+\longrightarrow\mathcal B$，满足 $\pi\circ s=\id$。
+换言之，它是一族对象 $B_n\in\operatorname{Ob}\mathcal B(n)$ 和箭头 $\varphi(\alpha)$，其中对 $\alpha:\Delta_n\longrightarrow\Delta_m$，$\varphi(\alpha)$ 是从 $B_n$ 到 $B_m$ 的一个 $\alpha$-箭头。要求
+$\varphi(\id_{\Delta_n})=\id_{B_n}$，且
+$\varphi(\alpha\beta)=\varphi(\alpha)\varphi(\beta)$。
+若 $\mathcal B$ 是 $(\Delta)^+$ 上的\term{cofibered-category}{余纤维范畴}，给定 $\varphi(\alpha)$ \term{equivalence}{等价}于给定 $\mathcal B(m)$ 中的态射
+$\varphi(\alpha)':p(\alpha)^*B_n\longrightarrow B_m$。
+若各个 $\varphi(\alpha)'$ 都是同构，就称截面 $B_*$ 是\emph{\term{cartesian}{笛卡儿}的}；有些人更愿意称之为余\term{cartesian}{笛卡儿}的。
+
+\par\medskip\noindent\textbf{3.2.7.}
+以 $\operatorname{tot}(\mathcal A^+)$ 表示下述\term{additive-category}{加性范畴}：
+\begin{itemize}
+\item 对象：族 $(A^n)_{n\geq0}$，其中 $A^n\in\mathcal A(n)$；
+\item 箭头：$\displaystyle
+\Hom((A^n),(B^n))=\prod_\alpha\Hom_\alpha(A^{s(\alpha)},B^{b(\alpha)})$；
+\item 复合：$\displaystyle
+((f)\circ(g))_\alpha=\sum_{\alpha=\beta\gamma}f_\beta\circ g_\gamma$。
+\end{itemize}
+通过映射
+\[
+(A\in\mathcal A(n))\longmapsto
+(A^i)_i,\qquad A^n=A,\quad A^m=0\ (m\ne n),
+\]
+可将 $\mathcal A^+$ 等同于 $\operatorname{tot}(\mathcal A^+)$ 的一个子范畴。
+
+\par\medskip\noindent\textbf{3.2.8.}
+现在描述由 $\operatorname{tot}(\mathcal A^+)$ 中对象组成的\term{complex}{复形} $(K,d)$。按定义，$K$ 的每一项 $K^i$ 都是一族 $\mathcal A(j)$ 中的对象 $(K^i)^j$。重新编号，置
+\[
+K^{n,m}=(K^{n+m})^n.
+\]
+对 $\alpha:\Delta_n\longrightarrow\Delta_m$，以 $d(\alpha)$ 表示 $d$ 的 $\alpha$-分量，即一族 $\alpha$-态射
+$K^{n,p}\longrightarrow K^{m,p+n-m+1}$；我们也称之为从 $K^{n,*}$ 到 $K^{m,*}$ 的次数为 $n-m+1$ 的一个 $\alpha$-映射。
+
+设 $L$ 为 $K$ 上如下定义的递减\term{filtration}{滤过}：
+\[
+(L^pK)^{n,m}=\begin{cases}
+0,&n<p,\\
+K^{n,m},&p\leq n,
+\end{cases}
+\]
+\SourcePage{96}
+并置
+\[
+(K^{n,*},d'')=(\gr_L^nK)[n].
+\]
+这是 $\mathcal A(n)$ 中的\term{complex}{复形}，其各项为 $K^{n,m}$，微分为
+$(-1)^nd(\id_{\Delta_n})$。
+对每个面态射 $\partial_i:\Delta_n\longrightarrow\Delta_{n+1}$，置
+$\partial_i^*=(-1)^id(\partial_i)$。各个 $\partial_i^*$ 都是\term{complex}{复形}
+$K^{n,*}\longrightarrow K^{n+1,*}$ 的 $\partial_i$-态射；当
+$0\leq i<j\leq n+2$ 时，$(\partial_j\partial_i)$-态射
+$\partial_j^*\partial_i^*$ 与 $\partial_i^*\partial_{j-1}^*$ \term{homotopy}{同伦}，一个\term{homotopy}{同伦}由
+$\pm d(\partial_j\partial_i)$ 给出。更一般地，对每个
+$\alpha:\Delta_n\longrightarrow\Delta_m$，等式 $d\circ d=0$ 给出恒等式
+\begin{equation*}
+\sum_{\alpha=\beta\gamma}d(\beta)d(\gamma)=0.
+\tag{3.2.8.1}
+\end{equation*}
+用 $\sum'$ 表示求和时不允许指标为恒等映射。对 $m>n$，恒等式 (3.2.8.1) 可改写为
+\begin{equation*}
+\sum_{\alpha=\beta\gamma}'d(\beta)d(\gamma)
+ =(-1)^{m+1}\bigl(d''d(\alpha)+(-1)^{m-n}d(\alpha)d''\bigr).
+\tag{3.2.8.2}
+\end{equation*}
+它表示：左边的和是一个次数为 $n-m+1$ 的\term{complex}{复形} $\alpha$-态射，且通过\term{homotopy}{同伦} $(-1)^{m+1}d(\alpha)$ \term{homotopy}{同伦}于零。\footnote{译注：本句的次数依原书照录；比较紧接着的 3.2.9 证明，其中同一和的次数写为 $s(\alpha)-b(\alpha)+2$。}
+
+反过来，设有一族\term{complex}{复形}
+$K^{n,*}\in\operatorname{Ob}C(\mathcal A(n))$（$n\geq0$）以及映射
+$d(\alpha)$（$\alpha$ 为 $(\Delta)^+$ 的箭头），其中 $d(\alpha)$ 是从
+$K^{s(\alpha),*}$ 到 $K^{b(\alpha),*}$ 的次数为
+$s(\alpha)-b(\alpha)+1$ 的 $\alpha$-映射，$d(\id_{\Delta_n})$
+与 $K^{n,*}$ 的微分相差符号 $(-1)^n$，并且族 $d(\alpha)$ 满足
+(3.2.8.2)。那么，这些资料来自某个
+$(K,d)\in C(\operatorname{tot}\mathcal A^+)$。
+用这种语言，\term{complex}{复形}态射 $f:K\longrightarrow L$ 就是一族映射
+$f(\alpha)$（$\alpha$ 为 $(\Delta)^+$ 的箭头），其中 $f(\alpha)$ 是从
+$K^{s(\alpha),*}$ 到 $L^{b(\alpha),*}$ 的次数为
+$s(\alpha)-b(\alpha)$ 的 $\alpha$-映射，并且对每个 $\alpha$ 都有
+\begin{equation*}
+\sum_{\alpha=\beta\gamma}d(\beta)f(\gamma)
+ =\sum_{\alpha=\beta\gamma}f(\beta)d(\gamma).
+\tag{3.2.8.3}
+\end{equation*}
+
+下面给出一个充分条件，保证由各范畴 $K(\mathcal A(n))$ 中的对象组成的\term{semisimplicial-system}{半单纯系统} $(K^n)$ 来自 $K(\operatorname{tot}\mathcal A^+)$ 中的一个对象。
+
+\par\medskip\noindent\textbf{命题 3.2.9.}
+假设任给 $n$、$m\geq n+3$ 和 $(\Delta)^+$ 中的态射
+$\alpha:\Delta_n\longrightarrow\Delta_m$，当 $i<0$ 时都有
+$\Hom^i(p(\alpha)^*K^n,K^m)=0$。那么，由
+$K^n\in\operatorname{Ob}K(\mathcal A(n))$ 组成的\term{semisimplicial-system}{半单纯系统}来自
+$K(\operatorname{tot}\mathcal A^+)$ 中的一个对象。
+
+\SourcePage{97}
+把每个 $K^n$ 实现为\term{complex}{复形} $(K^{n,*},d'')$，并把每个 $\partial_i^*$ 实现为\term{complex}{复形}的 $\partial_i$-态射，仍记为
+$\partial_i^*:K^{n,*}\longrightarrow K^{n+1,*}$。
+对 $\id:\Delta_n\longrightarrow\Delta_n$，置
+$d(\id)=(-1)^nd''$；对每个
+$\partial_i:\Delta_n\longrightarrow\Delta_{n+1}$，置
+$d(\partial_i)=(-1)^i\partial_i^*$。
+根据假设，当 $0\leq i<j\leq n+2$ 时，
+$\partial_j^*\partial_i^*$ 与 $\partial_i^*\partial_{j-1}^*$ \term{homotopy}{同伦}，因此存在满足 (3.2.8.2) 的 $d(\partial_j\partial_i)$。
+下面证明，已选出的 $d(\alpha)$ 可延拓成一个满足 (3.2.8.2) 的完整系统。
+用归纳法：设当 $b(\alpha)-s(\alpha)\leq k$ 时已选好 $d(\alpha)$（$k\geq2$），现对 $b(\alpha)-s(\alpha)=k+1$ 构造它们。只需证明：
+\[
+(*)\quad S(\alpha):=\sum_{\alpha=\beta\gamma}'d(\beta)d(\gamma)
+\]
+是从 $K^{s(\alpha)}$ 到 $K^{b(\alpha)}$ 的次数为
+$-k+1=s(\alpha)-b(\alpha)+2$ 的\term{complex}{复形} $\alpha$-态射。
+事实上，由假设，此时 $S(\alpha)$ \term{homotopy}{同伦}于零，这就\term{equivalence}{等价}于存在满足
+(3.2.8.2) 的 $d(\alpha)$。
+来证明 $(*)$。令 $D$ 为所有满足
+$b(\beta)-s(\beta)\leq k$ 的 $d(\beta)$ 之和，考察等式
+\[
+(D\circ(D\circ D))(\alpha)=((D\circ D)\circ D)(\alpha).
+\]
+左边为
+$I=\sum_{\substack{\alpha=\beta\gamma\\\beta\ne\alpha}}d(\beta)(D\circ D)(\gamma)$。
+归纳假设保证 $\gamma\ne\alpha$ 时 $(D\circ D)(\gamma)=0$，所以
+$I=d(\id)S(\alpha)$。同理，右边为 $S(\alpha)d(\id)$。于是
+\[
+d(\id)S(\alpha)=S(\alpha)d(\id),
+\]
+这恰好\term{equivalence}{等价}于 $(*)$。
+
+\par\medskip\noindent\textbf{3.2.10.}
+设 $\varepsilon_n$ 为从 $\Delta_{-1}$ 到 $\Delta_n$ 的唯一映射。
+对每个 $A\in\mathcal A(-1)$，由各个 $p(\varepsilon_n)^*A$ 组成的系统是
+$\mathcal A^+$ 的一个\term{semisimple}{半单}\term{pure}{纯}对象，从而定义了
+$\operatorname{tot}\mathcal A^+$ 中的一个\term{complex}{复形}。
+这个构造可推广到\term{complex}{复形}：对每个
+$K\in\operatorname{Ob}C(\mathcal A(-1))$，用 $\varepsilon^*K$ 表示
+$\operatorname{tot}\mathcal A^+$ 中由\term{semisimplicial-system}{半单纯系统}
+$p(\varepsilon_n)^*K$ 定义的\term{complex}{复形}，其中高阶的 $d(\alpha)$
+（即 $b(\alpha)-s(\alpha)>1$ 的情形）都为零。通过同构
+\[
+\begin{aligned}
+(-1)^n:\quad(\varepsilon^*(K[1]))^{n,m}
+ &=p(\varepsilon_n)^*K^{m+1}\\
+ &\longrightarrow((\varepsilon^*K)[1])^{n,m}
+ =p(\varepsilon_n)^*K^{m+1},
+\end{aligned}
+\]
+赋予此函子分次结构。作此选择后，由 $\varepsilon^*$ 取商所得、仍记为
+$\varepsilon^*:K(\mathcal A(-1))\longrightarrow K(\operatorname{tot}\mathcal A^+)$
+的函子把\term{distinguished-triangle}{区别三角}送到\term{distinguished-triangle}{区别三角}。
+
+\SourcePage{98}
+\par\medskip\noindent\textbf{3.2.11.}
+以 $C(\operatorname{tot}\mathcal A^+)^+$（分别地，
+$K(\operatorname{tot}\mathcal A^+)^+$）表示
+$C(\operatorname{tot}\mathcal A^+)$（分别地，$K(\operatorname{tot}\mathcal A^+)$）的满子范畴，其对象 $K$ 满足：存在足够小的 $M$，使得 $m<M$ 时
+$K^{n,m}=0$。
+对 $K\in C(\operatorname{tot}\mathcal A^+)^+$，以 $\varepsilon_*K$ 表示
+$C^+(\mathcal A(-1))$ 中如下定义的\term{complex}{复形}：
+\[
+(\varepsilon_*K)^p=\bigoplus_{n+m=p}p(\varepsilon_n)_*K^{n,m},
+\qquad d=\sum d(\alpha).
+\]
+这里的直和是有限的；我们略微滥用记号，仍以 $d(\alpha)$ 表示由它取\term{direct-image}{正像}所得的态射。
+显然有同构 $\varepsilon_*(K[1])=(\varepsilon_*K)[1]$；由
+$\varepsilon_*$ 取商而得的函子
+$K(\operatorname{tot}\mathcal A^+)^+\longrightarrow K^+(\mathcal A(-1))$
+把\term{distinguished-triangle}{区别三角}送到\term{distinguished-triangle}{区别三角}。
+对 $K\in C^+(\mathcal A(-1))$，\term{adjunction-morphism}{伴随态射}族
+$K^n\longrightarrow p(\varepsilon_0)_*p(\varepsilon_0)^*K^n$
+给出态射
+\begin{equation*}
+a:K\longrightarrow\varepsilon_*\varepsilon^*K.
+\tag{3.2.11.1}
+\end{equation*}
+
+\par\medskip\noindent\textbf{命题 3.2.12.}
+函子
+$\varepsilon^*:K^+\mathcal A(-1)\longrightarrow K(\operatorname{tot}\mathcal A^+)^+$
+与
+$\varepsilon_*:K(\operatorname{tot}\mathcal A^+)^+\longrightarrow K^+\mathcal A(-1)$
+构成一对\term{adjoint-functor}{伴随函子}，\term{adjunction-morphism}{伴随态射}为 (3.2.11.1) 中的 $a$。
+
+对任意\term{additive-category}{加性范畴} $\mathcal B$，$K(\mathcal B)$ 中从 $K$ 到 $L$ 的态射群是\term{complex}{复形}
+$\Hom(K,L)^\bullet$ 的 $H^0$，其中
+\[
+\Hom(K,L)^d=\prod_{m-n=d}\Hom(K^n,L^m),
+\]
+而在 $\Hom(K,L)^d$ 上的微分为
+$d(f)=d\circ f-(-1)^df\circ d$。
+我们将证明一个更精确的断言：对
+$K\in K^+(\mathcal A(-1))$、$L\in K(\operatorname{tot}\mathcal A^+)^+$，由 $a$ 诱导的态射
+\begin{equation*}
+\Hom(\varepsilon^*K,L)^\bullet
+ \longrightarrow\Hom(\varepsilon_*\varepsilon^*K,\varepsilon_*L)^\bullet
+ \longrightarrow\Hom(K,\varepsilon_*L)^\bullet
+\tag{3.2.12.1}
+\end{equation*}
+是\term{quasi-isomorphism}{拟同构}。
+在 $L$ 上取递减\term{filtration}{滤过}，使其逐次商是仅有一个 $L^{n,m}$ 非零的\term{complex}{复形}
+（例如先用 $\bigoplus_{n+m\geq A}L^{n,m}$ \term{filtration}{滤过} $L$，再用
+$\bigoplus_{n\geq B}L^{n,A-n}$ \term{filtration}{滤过}逐次商
+$\bigoplus_{n+m=A}L^{n,m}$；第二个\term{filtration}{滤过}是有限的）。
+在 $\Hom^\bullet$ \term{complex}{复形}上，由此得到一个分离且完备的\term{filtration}{滤过}；只需证明
+(3.2.12.1) 在取\term{adjunction}{伴随}分次之后成为\term{quasi-isomorphism}{拟同构}。因此可假定，而且以下就假定，$L$ 仅集中在一个双次数上。
+再用各个 $\sigma_{>n}$ 给 $K$ 加\term{filtration}{滤过}。这次在 $\Hom^\bullet$ 上所得的\term{filtration}{滤过}逐次有限，从而可归结到 $K$ 仅集中在一个次数上的情形。
+最后作平移，可进一步假定 $K$ 仅在 $0$ 次为一个对象 $A$，
+\SourcePage{99}
+而 $L$ 仅在双次数 $(n,0)$ 为 $\mathcal A(n)$ 中的一个对象 $B$。此时
+\[
+\Hom(\varepsilon^*K,L)^d=
+\prod_{\substack{\alpha:\Delta_{n-d}\longrightarrow\Delta_n\\n-d\geq0}}
+\Hom_{\varepsilon_n}(A,B).
+\]
+\term{complex}{复形} $\Hom(\varepsilon^*K,L)^\bullet$ 是
+$\Hom_{\varepsilon_n}(A,B)$ 与标准单形 $\Delta_n$ 的\term{nondegenerate}{非退化}链\term{complex}{复形}的张量积，后者平移了 $-n$。
+(3.2.12.1) 的\term{cone}{锥}再平移 $[-1]$，仍由同一公式给出，只是不再有
+$n-d\geq0$ 的限制。因此只需利用：标准单形 $\Delta_n$ 的增广\term{nondegenerate}{非退化}链\term{complex}{复形}\term{homotopy}{同伦}于零。
+
+\par\medskip\noindent\textbf{3.2.13.}
+虽然下文用不到，我们还是要明确写出一个\term{complex}{复形}态射，表示从
+$\varepsilon^*\varepsilon_*L$ 到 $L$ 的\term{adjunction-morphism}{伴随态射}（3.2.13、3.2.14）。
+由 3.2.8，从 $\varepsilon^*\varepsilon_*L$ 到 $L$ 的一个\term{complex}{复形}态射
+$\underline b$，就是一族次数为 $s(\alpha)-b(\alpha)$ 的 $\alpha$-映射
+\[
+b(\alpha):p(\varepsilon_{s(\alpha)})^*(\varepsilon_*L)
+ \longrightarrow L^{b(\alpha),*},
+\]
+并且满足 (3.2.8.3)。从 $p(\varepsilon_{s(\alpha)})^*(\varepsilon_*L)$
+到 $L^{b(\alpha),*}$ 的 $\alpha$-映射，可等同于从 $\varepsilon_*L$ 到
+$L^{b(\alpha),*}$ 的 $\varepsilon_{b(\alpha)}$-映射 $b'(\alpha)$。
+形式地写作 $\underline b=\sum_\alpha b'(\alpha)\otimes\alpha$；这样便把
+$\underline b$ 等同于下列群对 $n$ 所取直积中的一个元素：
+\[
+\{\text{从 $\varepsilon_*L$ 到 $L^{n,*}$ 的 $\varepsilon_n$-映射}\}
+\otimes\{\Delta_n\text{ 的\term{nondegenerate}{非退化}链}\}.
+\]
+反过来，从 $\varepsilon_*L$ 到 $L^{n,*}$ 的次数为 $s$ 的
+$\varepsilon_n$-映射 $b'$，可等同于一族次数为 $s+p$ 的
+$\varepsilon_n$-映射
+\[
+b'_p:p(\varepsilon_p)_*L^{p,*}\longrightarrow L^{n,*}.
+\]
+我们只考虑这样的 $b'_p$：它是下列类型映射之和，指标为
+$\beta:\Delta_p\longrightarrow\Delta_n$；每个映射都是自然的
+$\varepsilon_p$-映射
+$p(\varepsilon_p)_*L^{p,*}\longrightarrow L^{p,*}$
+与某个 $\beta$-映射
+$b''(\beta):L^{p,*}\longrightarrow L^{n,*}$ 的复合。
+形式地写作 $b' =\sum b''(\beta)$。
+
+总之，这使我们要寻找如下形式的 $\underline b$：
+\[
+\underline b=\sum_{\alpha,\beta}b''(\alpha,\beta)\otimes\alpha,
+\]
+其中 $\alpha,\beta$ 有相同的靶，$b''(\alpha,\beta)$ 是从
+$L^{s(\beta),*}$ 到 $L^{b(\beta),*}$ 的 $\beta$-态射，次数为
+$s(\alpha)-b(\alpha)+s(\beta)=(s(\beta)-b(\beta))+s(\alpha)$。
+对每个分解 $\beta=\beta_1\cdots\beta_{s(\alpha)}$，都有一个这样的
+$\beta$-
+\SourcePage{100}
+映射可用，即各个 $d(\beta_i)$ 的复合。
+
+我们将证明，下面的系统符合要求：
+\begin{equation*}
+\underline b=\sum_{k,m}\ \sum_{\beta_1,\ldots,\beta_k}
+ d(\beta_1)\cdots d(\beta_k)\otimes
+ (0,\beta_1(0),\beta_1\beta_2(0),\ldots,\beta_1\cdots\beta_k(0)).
+\tag{3.2.13.1}
+\end{equation*}
+这里对 $k,m$ 及所有由 $k$ 个可复合映射组成、且复合映射的靶为
+$\Delta_m$ 的序列求和。允许空序列（$k=0$）：对每个 $m$，有一项
+$\id_{L^{m,*}}\otimes(0)$。
+我们用 $(n_0,\ldots,n_{k+1})$ 表示从 $\Delta_k$ 到 $\Delta_m$ 的映射
+$i\longmapsto n_i$；若这个映射不是严格递增的，就将该项置零（或略去）。
+
+需要证明 $\underline b$ 是\term{complex}{复形}态射，并且在\term{adjunction}{伴随}同构（3.2.12）
+\[
+\Hom(\varepsilon^*\varepsilon_*L,L)
+ =\Hom(\varepsilon_*L,\varepsilon_*L)
+\]
+下，$\underline b$ 对应于 $\varepsilon_*L$ 的恒等映射；亦即\term{complex}{复形}态射的复合
+\[
+\varepsilon_*L\xrightarrow{a}
+\varepsilon_*\varepsilon^*\varepsilon_*L
+ \xrightarrow{\varepsilon_*\underline b}\varepsilon_*L
+\]
+\term{homotopy}{同伦}于恒等映射。
+容易验证，这个态射实际上就等于恒等映射：它只依赖于
+$\underline b$ 中 $\alpha:\Delta_0\longrightarrow\Delta_m$ 所对应的分量
+$b'(\alpha)\otimes\alpha$，而这些分量都是
+$\id_{L^{m,*}}\otimes(0)$ 这种形式。
+
+\par\medskip\noindent\textbf{3.2.14. $\underline b$ 是\term{complex}{复形}态射。}
+要验证的恒等式是 $d\underline b=\underline b d$，即
+\[
+\begin{aligned}
+(*)\quad&\sum_\alpha\ \sum_{k,m=s(\alpha)}\ \sum_{\beta_1,\ldots,\beta_k}
+ d(\alpha)d(\beta_1)\cdots d(\beta_k)\\[-2pt]
+&\hspace{35mm}\otimes\alpha\circ
+ (0,\beta_1(0),\ldots,\beta_1\cdots\beta_k(0))\\
+={}&\sum_{k,m}\ \sum_{\beta_1,\ldots,\beta_k}(-1)^k
+ \sum_\alpha d(\beta_1)\cdots d(\beta_k)d(\alpha)\\[-2pt]
+&\hspace{35mm}\otimes
+ (0,\beta_1(0),\ldots,\beta_1\cdots\beta_k(0))\\
+&+\sum_{k,m}\ \sum_{\beta_1,\ldots,\beta_k}\ \sum_i(-1)^i
+ d(\beta_1)\cdots d(\beta_k)\\[-2pt]
+&\hspace{35mm}\otimes
+ (0,\beta_1(0),\ldots,\beta_1\cdots\beta_k(0))\circ\partial_i.
+\end{aligned}
+\]
+对 $k,m,\beta_1,\ldots,\beta_k$ 的求和与 (3.2.13.1) 相同。
+$i$ 从 $0$ 到 $k$，但 $k=0$ 时该和为空。
+注意，若 $c=(0,\beta_1(0),\ldots,\beta_1\cdots\beta_k(0))$
+是 $\Delta_m$ 的退化链，则模去退化链后，
+$\sum_{i=0}^k(-1)^ic\circ\partial_i=0$。
+为验证恒等式
+\SourcePage{101}
+$(*)$，只需证明对每个 $k\geq0$（对应于前两项中的 $k$ 以及第三项中的 $k-1$）都有
+\[
+\begin{aligned}
+&\sum_{\beta_0,\ldots,\beta_k}
+ d(\beta_0)\cdots d(\beta_k)
+ \otimes(\beta_0(0),\beta_0\beta_1(0),\ldots,\beta_0\cdots\beta_k(0))\\
+&\quad-(-1)^k\sum_{\beta_0,\ldots,\beta_k}
+ d(\beta_0)\cdots d(\beta_k)
+ \otimes(0,\beta_0(0),\ldots,\beta_0\cdots\beta_{k-1}(0))\\
+={}&\sum_{\beta_0,\ldots,\beta_k}\ \sum_{-1\leq i\leq k}
+ (-1)^{i+1}d(\beta_0)\cdots d(\beta_k)\\[-2pt]
+&\hspace{14mm}\otimes
+ (0,\beta_0(0),\ldots,\widehat{\beta_0\cdots\beta_i(0)},
+ \ldots,\beta_0\cdots\beta_k(0)).
+\end{aligned}
+\]
+这里对由 $k+1$ 个可复合态射组成的链求和；
+$(n_0,\ldots,n_k)$ 表示从 $\Delta_k$ 到 $\Delta_{b(\beta_0)}$ 的映射
+（若非单射则表示 $0$）。左边的两项分别对应于右边的 $i=-1$ 和 $i=k$。
+因此只需验证：对每个 $k\geq0$、每个 $-1<i<k$，以及每次选定
+$\beta_0,\ldots,\beta_{i-1}$、复合 $\beta=\beta_i\beta_{i+1}$ 和
+$\beta_{i+2},\ldots,\beta_k$（这些选择足以固定链
+$(0,\beta_0(0),\ldots,\widehat{\beta_0\cdots\beta_i(0)},
+\ldots,\beta_0\cdots\beta_k(0))$），都有
+\[
+\sum_{\beta_i\beta_{i+1}=\beta}d(\beta_0)\cdots d(\beta_k)=0.
+\]
+这由 (3.2.8.1) 得出。
+
+\par\medskip\noindent\textbf{3.2.15.}
+现在假设各范畴 $\mathcal A(n)$ 都是\term{abelian-category}{阿贝尔范畴}，有足够多\term{injective}{内射}对象，并且函子
+$p(\alpha)^*$ 都是正合的。因此各个 $p(\alpha)_*$ 把\term{injective}{内射}对象送到\term{injective}{内射}对象。
+若 $C(\operatorname{tot}\mathcal A^+)$ 中的态射
+$f:K\longrightarrow L$ 满足：各个
+$f(\id_{\Delta_n}):K^{n,*}\longrightarrow L^{n,*}$ 都是\term{quasi-isomorphism}{拟同构}，
+就称 $f$ 是一个\emph{\term{quasi-isomorphism}{拟同构}}。
+此条件在\term{homotopy}{同伦}下不变，也可表述为：各个 $\gr_L^n(f)$ 都是\term{quasi-isomorphism}{拟同构}。
+\term{derived-category}{导出范畴} $\D(\operatorname{tot}\mathcal A^+)^+$ 是在
+$K(\operatorname{tot}\mathcal A^+)^+$ 中将\term{quasi-isomorphism}{拟同构}可逆化后所得的范畴。
+
+函子 $\varepsilon^*$ 显然可下降到\term{derived-category}{导出范畴}，定义\term{exact-functor}{正合函子}
+\[
+\varepsilon^*:\D^+(\mathcal A(-1))\longrightarrow
+\D(\operatorname{tot}\mathcal A^+)^+.
+\]
+
+\SourcePage{102}
+而函子 $\varepsilon_*$ 可导出为
+\[
+\mathrm R\varepsilon_*:\D(\operatorname{tot}\mathcal A^+)^+
+ \longrightarrow\D^+(\mathcal A(-1)).
+\]
+计算它在 $L\in C(\operatorname{tot}\mathcal A^+)^+$ 处的值时，以一个双齐次分量均为\term{injective}{内射}对象的\term{quasi-isomorphism}{拟同构}\term{complex}{复形}
+$L\xrightarrow{\sim}L'$ 代替 $L$，再取 $\varepsilon_*L'$。
+事实上，只需这个\term{quasi-isomorphism}{拟同构}\term{complex}{复形} $L'\in C(\operatorname{tot}\mathcal A^+)^+$
+对每个 $n$ 满足下述条件即可：在 $\D^+(\mathcal A(-1))$ 中有
+\[
+\varepsilon_{n*}L'^{n,*}\xrightarrow{\sim}
+\mathrm R\varepsilon_{n*}L'^{n,*}.
+\]
+由 3.2.12 立即可得，这些函子 $\varepsilon^*$ 和
+$\mathrm R\varepsilon_*$ 仍构成一对\term{adjoint-functor}{伴随函子}。
+
+\par\medskip\noindent\textbf{3.2.16.}
+各范畴 $\D(\mathcal A(n))$ 自然构成 $(\Delta)^+$ 上的一个\term{cofibered-category}{余纤维范畴}。
+对每个 $K\in\D(\operatorname{tot}\mathcal A^+)^+$，各个 $\gr_L^nK$
+构成这个\term{cofibered-category}{余纤维范畴}在 $(\Delta)^+$ 上的一个截面。
+若 $K=\varepsilon^*K_{-1}$，其中 $K_{-1}\in\operatorname{Ob}\D\mathcal A(-1)$，则这个截面是余\term{cartesian}{笛卡儿}的：它就是各个
+$p(\varepsilon_n)^*K_{-1}$ 构成的系统。
+在当前的语境中，我们将称“\term{cartesian}{笛卡儿}”而不称“余\term{cartesian}{笛卡儿}”。
+称 $\D(\operatorname{tot}\mathcal A^+)^+$ 中的对象 $K$ 是\emph{\term{cartesian}{笛卡儿}的}，是指各个 $\gr_L^nK[n]$ 连同 3.2.8 中定义的 $\partial_i$-映射，构成系统
+$\D(\mathcal A(n))$ 的一个\term{cartesian}{笛卡儿}截面；亦即对每个 $i$，各个
+$H^i(\gr_L^nK[n])$ 构成 $\mathcal A^+$ 在 $(\Delta)^+$ 上的\term{cartesian}{笛卡儿}截面。
+
+\par\medskip\noindent\textbf{定理 3.2.17.}
+除 3.2.6、3.2.15 的假设外，再假设：
+\begin{enumerate}[label=\(\alph*\)]
+\item 函子 $A\longmapsto(\varepsilon_n^*A)_{n\geq0}$ 是从 $\mathcal A(-1)$
+到 $\mathcal A^+$ 在 $(\Delta)^+$ 上的\term{cartesian}{笛卡儿}截面范畴的\term{equivalence}{等价}；
+\item 对每个 $A\in\mathcal A(-1)$，将其等同于 $\D^+(\mathcal A(-1))$
+中的对象 $A[0]$ 后，\term{adjunction-morphism}{伴随态射}
+$A\longrightarrow\mathrm R\varepsilon_*\varepsilon^*A$ 是同构。
+\end{enumerate}
+那么，函子 $\varepsilon^*$ 和 $\mathrm R\varepsilon_*$ 给出
+$\D^+(\mathcal A(-1))$ 与 $\D(\operatorname{tot}\mathcal A^+)^+$ 中\term{cartesian}{笛卡儿}对象所成范畴之间的互逆范畴\term{equivalence}{等价}。
+\SourcePage{103}
+我们要验证：对 $K\in\D^+(\mathcal A(-1))$
+（分别地，对 $\D(\operatorname{tot}\mathcal A^+)^+$ 中的\term{cartesian}{笛卡儿}对象 $L$），相应的\term{adjunction-morphism}{伴随态射}
+\begin{align*}
+a:K&\longrightarrow\mathrm R\varepsilon_*\varepsilon^*K,
+\tag{3.2.17.1}\\
+b:\varepsilon^*\mathrm R\varepsilon_*L&\longrightarrow L
+\tag{3.2.17.2}
+\end{align*}
+都是同构。
+使 (3.2.17.1)（分别地，(3.2.17.2)）成为同构的对象 $K$（分别地，$L$），构成
+$\D^+(\mathcal A(-1))$（分别地，$\D(\operatorname{tot}\mathcal A^+)^+$）的一个三角子范畴。
+根据假设，$K=A[0]$ 时 (3.2.17.1) 是同构，故逐步分解可知它对任意
+$K\in\D^b(\mathcal A(-1))$ 都是同构。
+最后，对每个 $i$，$\tau_{\leq i}\mathrm R\varepsilon_*\varepsilon^*K$
+只依赖于 $\tau_{\leq i}K$，因此 (3.2.17.1) 对任意
+$K\in\D^+(\mathcal A(-1))$ 都是同构。
+
+这足以保证 $\varepsilon^*$ 给出
+$\D^+(\mathcal A(-1))$ 与其在 $\D(\operatorname{tot}\mathcal A^+)^+$
+中的像之间的\term{equivalence}{等价}，并保证对像中的 $L$，\term{adjunction-morphism}{伴随态射} (3.2.17.2) 是同构。
+事实上，若 $L=\varepsilon^*K$，则同构
+$\varepsilon^*K\xrightarrow{\sim}L$ 在\term{adjunction}{伴随}下对应于同构
+$K\xrightarrow{\sim}\mathrm R\varepsilon_*L$。
+
+若 $L\in\D(\operatorname{tot}\mathcal A^+)^+$ 是\term{cartesian}{笛卡儿}的，则对每个 $i$，
+$\mathcal A^+$ 在 $(\Delta)^+$ 上的截面 $H^iL^{n,*}$ 是\term{cartesian}{笛卡儿}的，因而由假设来自某个 $h^i\in\mathcal A(-1)$。
+定义 $L$ 的\term{canonical-filtration}{典范滤过}为
+$(\tau_{\leq i}L)^{n,*}=\tau_{\leq i}(L^{n,*})$。
+于是，在 $\D(\operatorname{tot}\mathcal A^+)^+$ 中有\term{distinguished-triangle}{区别三角}
+\[
+\longrightarrow\tau_{\leq i-1}L\longrightarrow\tau_{\leq i}L
+ \longrightarrow\varepsilon^*(h^i[-i])\longrightarrow.
+\]
+若 $|i|$ 足够大时 $h^i=0$，则逐步分解可知 (3.2.17.2) 是同构，即
+$L$ 属于 $\varepsilon^*$ 的像。
+最后，$\tau_{\leq i}(\varepsilon^*\mathrm R\varepsilon_*L)$ 只依赖于
+$\tau_{\leq i}L$；既然 (3.2.17.2) 对各个 $\tau_{\leq i}L$ 都是同构，就得到一般情形。
+
+\par\medskip\noindent\textbf{3.2.18. 3.2.4 的证明。}
+沿用 3.2.5 的记号，$U^{\Delta_n}$（$n\geq1$）上的
+$\mathcal O$-模\term{sheaf}{层}范畴，是 $(\Delta)$ 上的某个纤维兼\term{cofibered-category}{余纤维范畴}
+$\mathcal A$ 的纤维，且满足 3.2.6、3.2.15 的假设。
+范畴 $\mathcal A(-1)$ 就是 $S$ 上的 $\mathcal O$-模\term{sheaf}{层}范畴。
+3.2.17 的假设也都满足：(a) 表示\term{sheaf}{层}的局部性；(b) 在 R.~Godement 的《\term{sheaf}{层}论》（\emph{Théorie des faisceaux}）或 SGA 4 VI bis 中已获证明，它正是开覆盖的 Leray \term{spectral-sequence}{谱序列}的来
+\SourcePage{104}
+源。
+
+由 3.2.9，3.2.5 中的系统 $(K^n)$ 来自
+$\D(\operatorname{tot}\mathcal A^+)^+$ 中的一个对象；再由 3.2.17，它便来自
+$\D^+(S)$，这就是所要证明的。
+
+\par\medskip\noindent\textbf{3.2.19. 应用：推广 2.1.4。}
+设 $X$ 是配有环\term{sheaf}{层} $\mathcal O$ 的拓扑空间，$\mathscr S$ 是将 $X$
+分成局部闭子集的局部有限分划，$p:\mathscr S\longrightarrow\Z$ 为有界函数。
+如 2.1.2 那样定义 ${}^p\D^{\leq0}(X,\mathcal O)$ 与
+${}^p\D^{\geq0}(X,\mathcal O)$。
+
+\par\medskip\noindent\textbf{命题 3.2.20.}
+$({}^p\D^{\leq0}(X,\mathcal O),\allowbreak{}^p\D^{\geq0}(X,\mathcal O))$
+是 $\D(X,\mathcal O)$ 上的一个 \term{t-structure}{$t$-结构}。
+它在 $\D^*(X,\mathcal O)$ 上诱导一个 \term{t-structure}{$t$-结构}，其中 $*=+,-,b$。
+
+仿照 2.1.4，只需验证
+${}^p\D^{+\leq0}(X,\mathcal O):={}^{p}\D^{\leq0}(X,\mathcal O)\cap\D^+(X,\mathcal O)$
+与 ${}^p\D^{\geq0}(X,\mathcal O)$ 在 $\D^+(X,\mathcal O)$ 上定义一个
+\term{t-structure}{$t$-结构}即可。
+先假设分划 $\mathscr S$ 有限，对\term{stratum}{层片}数 $N$ 作归纳来证明 3.2.20。
+与 2.1.3 不同的是，这里不要求每个\term{stratum}{层片}的闭包是若干\term{stratum}{层片}的并。
+$N\leq1$ 时，所得结构只是自然 \term{t-structure}{$t$-结构}的一个平移，3.2.20 显然成立。
+$N>1$ 时，每点 $x$ 属于某个\term{stratum}{层片} $S$，并有开邻域 $U$ 使
+$U\cap S$ 在 $U$ 中闭。
+对 $U$ 的开子集 $V$，归纳假设适用于 $\mathscr S$ 在 $V-S$ 与
+$V\cap S$ 上诱导的分划；而由 1.4.10，
+$({}^p\D^{+\leq0}(V,\mathcal O),\allowbreak{}^p\D^{\geq0}(V,\mathcal O))$
+是 $\D^+(V,\mathcal O)$ 上的 \term{t-structure}{$t$-结构}。
+要完成归纳，并从 $\mathscr S$ 有限的情形推广到一般情形，只需验证下面的断言。
+
+\par\medskip\noindent\textbf{引理 3.2.21.}
+假设 $X$ 有开覆盖 $\mathfrak U$，使得对每个 $U\in\mathfrak U$ 的开子集
+$V$，$({}^p\D^{+\leq0}(V,\mathcal O),\allowbreak{}^p\D^{\geq0}(V,\mathcal O))$
+是 $\D^+(V,\mathcal O)$ 上的 \term{t-structure}{$t$-结构}。那么
+$({}^p\D^{+\leq0}(X,\mathcal O),\allowbreak{}^p\D^{\geq0}(X,\mathcal O))$
+也是 $\D^+(X,\mathcal O)$ 上的 \term{t-structure}{$t$-结构}。
+
+通过\term{localization}{局部化}，可验证 2.1.21 的类似命题及其推论。
+特别地，各个
+$\mathcal C_V={}^p\D^{+\leq0}(V,\mathcal O)\cap{}^p\D^{\geq0}(V,\mathcal O)$
+构成一个\term{stack}{叠}，从而是\term{abelian-category}{阿贝尔范畴}值\term{stack}{叠}，而 $\mathcal C_X$ 是\term{abelian-category}{阿贝尔范畴}。
+
+\term{t-structure}{$t$-结构}公理 1.3.1(i) 来自 2.1.21，公理 1.3.1(ii) 显然。
+来证明 1.3.1(iii)。设 $K\in$
+\SourcePage{105}
+$\D^+(X,\mathcal O)$。
+局部上，各个 ${}^pH^n(K)$ 已有定义；它们可\term{recollement}{粘合}起来，给出
+$\mathcal C_X$ 中的对象 ${}^pH^n(K)$。
+对满足 $n<N$ 时 ${}^pH^n(K)=0$ 的 $N$ 作递减归纳。
+若 $N>0$，三角 $(0,K,K)$ 就满足要求。
+局部上有态射 ${}^pH^N(K)[N]\longrightarrow K$，由 1.2.1，它可整体化。
+取\term{distinguished-triangle}{区别三角} $({}^pH^N(K)[N],K,K')$。
+归纳假设适用于 $K'$，所以当 $N\leq0$ 时，有态射
+$K'\longrightarrow B$，使复合态射 $K\longrightarrow B$ 局部上将
+$B$ 等同于 $K$ 的 ${}^p\tau_{>0}$。
+
+这个态射可嵌入三角 $(A,K,B)$。
+局部上，从而整体上，$A\in\D^{+\leq0}(X,\mathcal O)$ 且
+$B\in\D^{>0}(X,\mathcal O)$。这就验证了 1.3.1(iii)。\footnote{译注：本段的位移 $[N]$ 按原书照录。}
+
+\section*{3.3. 整系数上同调}
+\addcontentsline{toc}{section}{3.3. 整系数上同调}
+
+\par\medskip\noindent\textbf{3.3.1.}
+在阿贝尔群范畴的\term{derived-category}{导出范畴} $\D(\Z)$ 中，函子
+$D:K\longmapsto DK=\RHom(K,\Z)$
+在由满足各个 $H^iK$ 都有限生成的 $K$ 组成的子范畴
+$\D_c(\Z)\subset\D(\Z)$ 上诱导一个\term{self-dual}{自对偶}。
+这个\term{self-dual}{自对偶}不保持自然 \term{t-structure}{$t$-结构} $n$：它交换 $n$ 和下列结构 $n^*$：
+\[
+\begin{aligned}
+{}^{n^*}\D^{\leq0}
+ &=\{K\mid H^iK=0\ (i>1),\ H^1K\text{ 是\term{torsion}{挠}的}\},\\
+{}^{n^*}\D^{\geq0}
+ &=\{K\mid H^iK=0\ (i<0),\ H^0K\text{ 无\term{torsion}{挠}}\}.
+\end{aligned}
+\]
+
+\par\medskip\noindent\textbf{3.3.2.}
+对任意拓扑空间 $X$，在 $\D(X,\Z)$ 上定义一个 \term{t-structure}{$t$-结构} $n^+$：
+\[
+\begin{aligned}
+{}^{n^+}\D^{\leq0}
+ &=\{K\mid H^iK=0\ (i>1),\ H^1K\otimes\Q=0\},\\
+{}^{n^+}\D^{\geq0}
+ &=\{K\mid H^iK=0\ (i<0),\ H^0K\text{ 无\term{torsion}{挠}}\}.
+\end{aligned}
+\]
+这个 \term{t-structure}{$t$-结构}的函子 $\tau_{\leq0}$，由\term{sheaf}{层}\term{complex}{复形}范畴到自身的下述函子诱导：它将\term{complex}{复形} $K$ 送到 $K$ 的子\term{complex}{复形} $K'$，其中
+\[
+K'^i=K^i\quad(i\leq0),\qquad K'^i=0\quad(i>1),
+\]
+而 $K'^1$ 是 $H^1K$ 的\term{torsion}{挠}子\term{sheaf}{层}在 $\Ker(d)\subset K^1$ 中的\term{inverse-image}{逆像}。
+
+\SourcePage{106}
+\par\medskip\noindent\textbf{3.3.3.}
+若 $X$ 是\term{pure}{纯} $d$ 维拓扑流形，则 \term{t-structure}{$t$-结构} $n$（自然结构）与 $n^+$
+在 $\D(X,\Z)$ 的子范畴 $\D_{\ell c}(X,\Z)$ 上诱导 \term{t-structure}{$t$-结构}；该子范畴由各个
+$H^iK$ 都局部常值且有限生成的 $K$ 组成。
+由 3.3.1 可知，在相差一个 $d$ 的位移的意义下，这两个 \term{t-structure}{$t$-结构}被
+$X$ 上的 Verdier \term{duality}{对偶}
+$D:K\longmapsto\RHom(K,\mathrm{or}[-d])$
+交换：它把 ${}^n\D^{\leq0}$ 与 ${}^{n^+}\D^{\geq-d}$ 相互交换。\footnote{译注：定向\term{sheaf}{层} $\mathrm{or}$ 的位移 $[-d]$ 依原书照录。}
+
+\par\medskip\noindent\textbf{3.3.4.}
+设 $X$ 是 2.1.1 中的\term{stratification}{分层}空间，且 $\mathcal O=\Z$。
+将各\term{stratum}{层片}上的 \term{t-structure}{$t$-结构}
+$({}^{n^+}\D^{\leq p(S)},{}^{n^+}\D^{\geq p(S)})$
+\term{recollement}{粘合}，就在 $\D(X,\Z)$ 上定义了 \term{t-structure}{$t$-结构}
+$({}^{p^+}\D^{\leq0}(X,\Z),\allowbreak{}^{p^+}\D^{\geq0}(X,\Z))$。
+2.1.3--2.1.11 的形式体系仍适用（在 2.1.11 中，$\tau_{\leq i}$ 要按
+$n^+$ 的意义取）。
+
+若 $(X,\mathscr S)$ 满足 2.1.13 的假设，则这个 \term{t-structure}{$t$-结构}在
+$\D_c^+(X,\Z)$ 上诱导一个 \term{t-structure}{$t$-结构}，而 2.1.14（改用更细的\term{stratification}{分层}）仍然成立。
+$\D_c^+(X,\Z)$ 上\term{perversity}{反常度}为 $p$ 和 $p^+$ 的两个 \term{t-structure}{$t$-结构}互相决定。
+事实上，在记号中省略 $(X,\Z)$ 后，对 $K\in\D_c^+$ 有下列\term{equivalence}{等价}关系：
+\begin{align*}
+\text{(i)}\quad K\in{}^{p^+}\D^{\leq0}
+ &\Longleftrightarrow K\in{}^p\D^{\leq1}
+ \text{ 且 }{}^pH^1K\text{ 是\term{torsion}{挠}的};\\
+\text{(ii)}\quad K\in{}^{p^+}\D^{\geq0}
+ &\Longleftrightarrow K\in{}^p\D^{\geq0}
+ \text{ 且 }{}^pH^0K\text{ 无\term{torsion}{挠}};\\
+\text{(iii)}\quad K\in{}^p\D^{\leq0}
+ &\Longleftrightarrow K\in{}^{p^+}\D^{\leq0}
+ \text{ 且 }{}^{p^+}H^0K\text{ 可除};\\
+\text{(iv)}\quad K\in{}^p\D^{\geq0}
+ &\Longleftrightarrow K\in{}^{p^+}\D^{\geq-1}
+ \text{ 且 }{}^{p^+}H^{-1}K\text{ 是\term{torsion}{挠}的}.
+\end{align*}
+在 (i)--(iv) 中，“\term{torsion}{挠}”指存在 $n\ne0$，使“乘以 $n$”这一自同态为零；
+“无\term{torsion}{挠}”（分别地，“可除”）指对任意 $n\ne0$，这个自同态都是单态射
+（分别地，满态射）。
+由这些\term{equivalence}{等价}关系可知，\term{exact-functor}{正合函子}
+$T:\D_c^+(X,\Z)\longrightarrow\D_c^+(X',\Z)$
+对\term{perversity}{反常度}为 $p$ 的 \term{t-structure}{$t$-结构}右 \term{t-exact}{$t$-正合}，当且仅当它对\term{perversity}{反常度}为
+$p^+$ 的 \term{t-structure}{$t$-结构}右 \term{t-exact}{$t$-正合}。
+
+包含关系
+\[
+{}^p\D^{\leq n}\subset{}^{p^+}\D^{\leq n}\subset{}^p\D^{\leq n+1},
+\qquad
+{}^p\D^{\geq n-1}\subset{}^{p^+}\D^{\geq n}\subset{}^p\D^{\geq n}
+\]
+是显然的。\footnote{译注：后一串包含符号按原书照录。}
+证明 (i) 时，先验证 ${}^{p^+}\D_c^{\leq0}$ 是
+${}^p\D_c^{\leq1}$ 的如下子范畴：对象在 ${}^p\D_c(X,\Q)$ 中的像属于
+${}^p\D_c^{\leq0}(X,\Q)$。
+利用 $\D^{\geq0}$ 是 $\D^{\leq-1}$ 的右正交，可验证
+(i)$\Rightarrow$(ii)。对 (iv)、(iii) 也作类似处理。
+
+\SourcePage{107}
+若 $(X,\mathscr S)$ 还可三角剖分，例如带有 Whitney \term{stratification}{分层}的实代数空间，则
+Verdier \term{duality}{对偶}在 $\D_c(X,\Z)$ 上交换\term{perversity}{反常度}为 $p$ 和 $(p^*)^+$ 的
+\term{t-structure}{$t$-结构}。这形式地由 3.3.3，以及对\term{stratum}{层片}的包含映射 $i$，\term{duality}{对偶} $D$
+交换 $i^*$ 与 $i^!$ 这两点推出。
+
+上述一切在将 $\Z$ 换成 Dedekind 环 $R$ 后仍然成立。
+
+\par\medskip\noindent\textbf{3.3.5.}
+若 $X$ 是 $\C$ 上的\term{finite-type}{有限型}\term{scheme}{概形}，可如 2.2.1 那样，对各个代数\term{stratification}{分层}取极限。
+若 $X$ 是域 $k$ 上的\term{finite-type}{有限型}\term{scheme}{概形}，且 $\ell$ 与 $k$ 的特征互素，只要有适当的\term{derived-category}{导出范畴}可用（参见 2.2.14--2.2.16），就可在
+$\Z_\ell$-\term{cohomology}{上同调}中作同样的处理。

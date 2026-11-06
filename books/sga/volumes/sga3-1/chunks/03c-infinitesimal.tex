@@ -1,0 +1,963 @@
+\SourcePage{148}
+\SGAsection{4}{闭子群的无穷小扩张}
+先陈述一个在任意\Term{abelian-category}{交换范畴}中成立的结果。
+\begin{SGAresult}{\Term{lemma}{引理}}{4.1}
+设 $0\to A'\xrightarrow{i}A\xrightarrow{p}A''\to0$ 是\Term{exact-sequence}{正合列}，$\phi:A'\to Q$ 是\Term{morphism}{态射}，$\pi:A''\to P$ 是以 $C$ 为核的\Term{epimorphism}{满态射}。令 $E$ 为满足下列条件的四元组 $(B,f,g,h)$ 的\Term{isomorphism}{同构}类\Term{set}{集合}：序列 $0\to Q\xrightarrow f B\xrightarrow g P\to0$ \Term{exact}{正合}，且下图交换：
+\[
+\begin{tikzcd}
+0\arrow[r]&A'\arrow[r,"i"]\arrow[d,"\phi"']&A\arrow[r,"p"]\arrow[d,"h"]&A''\arrow[r]\arrow[d,"\pi"]&0\\
+0\arrow[r]&Q\arrow[r,"f"]&B\arrow[r,"g"]&P\arrow[r]&0.
+\end{tikzcd}
+\]
+(i) $E$ \Term{nonempty}{非空}的充要条件是 $\operatorname{Ext}^1(A'',A')$ 的元素 $A$ 在 $\operatorname{Ext}^1(C,Q)$ 中的像为零。
+
+(ii) 在此条件下，$E$ 是\Term{abelian-group}{交换群} $\operatorname{Hom}(C,Q)$ 下的\Term{principal-homogeneous-set}{主齐性集合}。
+\end{SGAresult}
+\begin{proof}
+\SourcePage{149}
+引入\Term{pushout}{推出} $B'=A\amalg^{A'}Q$。得到各行\Term{exact}{正合}的\Term{commutative-diagram}{交换图}：\footnote{编者注（74）：$\operatorname{Coker}(j)=B'\amalg^Q0=A\amalg^{A'}0=A''$；“仿佛 $\mathscr C$ 是一个模\Term{category}{范畴}”那样推理，即可看出 $\operatorname{Ker}(j)\simeq\operatorname{Ker}(i)=0$。完全用\Term{arrow}{箭头}表述的证明，可参见 [Fr64]，\Term{theorem}{定理} 2.5.4（$*$）。}
+\[
+\begin{tikzcd}
+0\arrow[r]&A'\arrow[r,"i"]\arrow[d,"\phi"']&A\arrow[r,"p"]\arrow[d]&A''\arrow[r]\arrow[d,equal]&0\\
+0\arrow[r]&Q\arrow[r,"j"]&B'\arrow[r]&A''\arrow[r]&0.
+\end{tikzcd}
+\]
+显然，所提问题的解构成的\Term{category}{范畴}，\Term{canonical}{典范}地\Term{isomorphism}{同构}于序列
+\[0\longrightarrow Q\longrightarrow B'\longrightarrow A''\longrightarrow0\]
+及\Term{morphism}{态射} $\mathrm{id}_Q$、$\pi:A''\to P$ 对应问题的解\Term{category}{范畴}。\footnote{编者注（75）：下文已将 $A$ 换成 $B'$，并展开了论证的结尾。}此时 $E$ 与下述\Term{subobject}{子对象} $N\subset B'$ 的\Term{set}{集合}一一对应：$B'\to A''$ 诱导 $N$ 到 $A''\to P$ 的核 $C$ 的\Term{isomorphism}{同构}；也就是\Term{lifting}{提升}\Term{canonical}{典范}\Term{morphism}{态射} $C\to A''$ 的\Term{morphism}{态射} $e:C\to B'$ 的\Term{set}{集合}。\Term{abelian-group}{交换群} $G=\operatorname{Hom}(C,Q)$ 按 $g\cdot e=g+e$ \Term{action}{作用}于 $E$（在 $\operatorname{Hom}(C,B')$ 中相加）；若 $E\ne\varnothing$，这就使 $E$ 成为 $G$ 下的\Term{principal-homogeneous-set}{主齐性集合}。
+\end{proof}
+由此得到：
+\begin{SGAresult}{命题}{4.2}
+\footnote{编者注（76）：已重写本命题，使之恰好适用于 4.3 中的应用；此外，根据 M. Demazure 给出的提示，展开了证明。}设 $S$ 为\Term{scheme}{概形}，$S_J$ 为平方为零的\Term{quasi-coherent}{拟凝聚}\Term{ideal}{理想} $\mathscr J$ 定义的\Term{closed-subscheme}{闭子概形}，$X$ 为 $S$-\Term{scheme}{概形}，$\mathscr F$ 为 $\mathscr O_X$-\Term{module}{模}，$X_J=X\times_S S_J$，$\mathscr F_J=\mathscr F\otimes_{\mathscr O_S}\mathscr O_{S_J}$，$\mathscr G_J=\mathscr F_J/\mathscr H_J$ 为 $\mathscr F_J$ 的\Term{quotient-module}{商模}。给定 $\mathscr O_{X_J}$-\Term{module}{模}\Term{morphism}{态射}
+\[f:\mathscr J\otimes_{\mathscr O_{S_J}}\mathscr G_J\longrightarrow\mathscr Q.\]
+在 $X$ 上定义\Term{set}{集合}\Term{sheaf}{层} $\mathscr E$ 如下：对每个\Term{open-subset}{开集} $U\subset X$，$\mathscr E(U)$ 是 $\mathscr F|_U$ 的\Term{quotient-module}{商模} $\mathscr G$ 的\Term{set}{集合}，要求 $\mathscr G/\mathscr J\mathscr G=\mathscr G_J|_U$，且存在\Term{isomorphism}{同构} $h:\mathscr J\mathscr G\xrightarrow\sim\mathscr Q|_U$，使下图交换：
+\[
+\begin{tikzcd}
+\mathscr J\otimes_{\mathscr O_{S_J}}(\mathscr G_J|_U)\arrow[r,"f|_U"]\arrow[d,two heads,"\mathrm{can.}"']&\mathscr Q|_U\\
+\mathscr J\mathscr G\arrow[ur,"h"',"\sim"]&.
+\end{tikzcd}
+\]
+\SourcePage{150}
+（此时 $h$ 唯一，因为 $\mathscr J\otimes_{\mathscr O_{S_J}}(\mathscr G_J|_U)\to\mathscr J\mathscr G$ 是\Term{epimorphism}{满态射}。）则 $\mathscr E$ 是\Term{commutative-group-sheaf}{交换群层}
+\[\mathscr A=\mathscr Hom_{\mathscr O_X}(\mathscr H_J,\mathscr Q)=\mathscr Hom_{\mathscr O_{X_J}}(\mathscr H_J,\mathscr Q)\]
+下的\Term{formally-principal-homogeneous}{形式主齐性}\Term{sheaf}{层}。
+\end{SGAresult}
+\begin{proof}
+若 $\mathscr E(U)=\varnothing$，便无须证明；故可设 $\mathscr E(U)$ 含有元素 $\widetilde{\mathscr G}$。此时下图中 $h$ 是\Term{isomorphism}{同构}，所有\Term{arrow}{箭头}都是\Term{epimorphism}{满态射}：
+\[
+\begin{tikzcd}[column sep=small]
+\mathscr J\otimes_{\mathscr O_{S_J}}(\mathscr F_J|_U)\arrow[r]\arrow[d,"\mathrm{can.}"']&\mathscr J\otimes_{\mathscr O_{S_J}}(\mathscr G_J|_U)\arrow[r,"f|_U"]\arrow[d,"\mathrm{can.}"]&\mathscr Q|_U\\
+\mathscr J\mathscr F|_U\arrow[r]&\mathscr J\widetilde{\mathscr G}\arrow[ur,"h"',"\sim"]&.
+\end{tikzcd}
+\]
+所以 $\mathscr J\otimes_{\mathscr O_{S_J}}(\mathscr F_J|_U)\to\mathscr Q|_U$ 诱导一个（必然唯一的）\Term{epimorphism}{满态射} $\phi:\mathscr J\mathscr F|_U\to\mathscr Q|_U$。若 $\mathscr G$ 是 $\mathscr O_U$-\Term{module}{模}，满足 $\mathscr G/\mathscr J\mathscr G=\mathscr G_J|_U$，且有各行\Term{exact}{正合}的\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}
+0\arrow[r]&\mathscr J\mathscr F|_U\arrow[r]\arrow[d,"\phi"']&\mathscr F|_U\arrow[r]\arrow[d]&\mathscr F_J|_U\arrow[r]\arrow[d,"\pi"]&0\\
+0\arrow[r]&\mathscr Q|_U\arrow[r]&\mathscr G\arrow[r,"p_J"]&\mathscr G_J|_U\arrow[r]&0
+\end{tikzcd}
+\]
+（其中 $p_J$ 是\Term{projection}{投影} $\mathscr G\to\mathscr G/\mathscr J\mathscr G=\mathscr G_J|_U$，因而 $\mathscr Q|_U=\operatorname{Ker}(p_J)=\mathscr J\mathscr G$），则可将 $\mathscr G$ 视为 $\mathscr F|_U$ 的\Term{quotient-module}{商模}。因此由 4.1(ii)，$\mathscr E(U)$ 是\Term{abelian-group}{交换群}
+\[\mathscr Hom_{\mathscr O_X}(\mathscr H_J,\mathscr Q)(U)=\mathscr Hom_{\mathscr O_{X_J}}(\mathscr H_J,\mathscr Q)(U)\]
+下的\Term{principal-homogeneous-set}{主齐性集合}。
+\end{proof}
+\begin{SGAresult}{命题}{4.3}
+（TDTE IV 5.1）设 $S$ 为\Term{scheme}{概形}，$S_J$ 为平方为零的\Term{quasi-coherent}{拟凝聚}\Term{ideal}{理想} $\mathscr J$ 定义的\Term{closed-subscheme}{闭子概形}，$X$ 为 $S$-\Term{scheme}{概形}，$\mathscr F$ 为\Term{quasi-coherent}{拟凝聚} $\mathscr O_X$-\Term{module}{模}，$X_J=X\times_S S_J$，$\mathscr F_J=\mathscr F\otimes_{\mathscr O_S}\mathscr O_{S_J}$。设 $\mathscr G_J=\mathscr F_J/\mathscr H_J$ 是 $\mathscr F_J$ 的\Term{quasi-coherent}{拟凝聚}\Term{quotient-module}{商模}，在 $S_J$ 上\Term{flat}{平坦}。
+
+对 $X$ 的每个\Term{open-subset}{开集} $U$，令 $\mathscr E(U)$ 为 $\mathscr F|_U$ 的\Term{quasi-coherent}{拟凝聚}\Term{quotient-module}{商模}\footnote{编者注（77）：为简化陈述，在此加入了 $\mathscr G$ \Term{quasi-coherent}{拟凝聚}的假设，而将此假设自动满足的注记移入证明，并相应展开了证明。} $\mathscr G$ 的\Term{set}{集合}，要求它在 $S$ 上\Term{flat}{平坦}且 $\mathscr G/\mathscr J\mathscr G\simeq\mathscr G_J|_U$。这些 $\mathscr E(U)$ 构成 $X$ 上的\Term{set}{集合}\Term{sheaf}{层} $\mathscr E$，它是\Term{commutative-group-sheaf}{交换群层}
+\[\mathscr A=\mathscr Hom_{\mathscr O_{X_J}}(\mathscr H_J,\mathscr J\otimes_{\mathscr O_{S_J}}\mathscr G_J)\]
+下的\Term{formally-principal-homogeneous}{形式主齐性}\Term{sheaf}{层}。
+\end{SGAresult}
+\SourcePage{151}
+\begin{proof}
+记 $\pi:X\to S$ 为\Term{structure-morphism}{结构态射}。设 $U\subset X$ 为\Term{open-subset}{开集}，$\mathscr G$ 是在 $S$ 上\Term{flat}{平坦}的 $\mathscr O_U$-\Term{module}{模}，且 $\mathscr G/\mathscr J\mathscr G\simeq\mathscr G_J|_U$。对每个 $x\in U$，$\mathscr G_x$ 在\Term{local-ring}{局部环} $\mathscr O_{S,s}$（$s=\pi(x)$）上\Term{flat}{平坦}，所以\Term{morphism}{态射}
+\[\mathscr J_s\otimes_{\mathscr O_{S,s}}(\mathscr G/\mathscr J\mathscr G)_x=\mathscr J_s\otimes_{\mathscr O_{S,s}}\mathscr G_x\longrightarrow(\mathscr J\mathscr G)_x\]
+为\Term{bijection}{双射}；因而有\Term{exact-sequence}{正合列}
+\[0\longrightarrow\mathscr J\otimes_{\mathscr O_S}(\mathscr G_J|_U)\longrightarrow\mathscr G\longrightarrow\mathscr G_J|_U\longrightarrow0.\]
+由于 $\mathscr J\otimes_{\mathscr O_S}(\mathscr G_J|_U)$ 和 $\mathscr G_J|_U$ 都是\Term{quasi-coherent}{拟凝聚} $\mathscr O_U$-\Term{module}{模}，$\mathscr G$ 也\Term{quasi-coherent}{拟凝聚}（参见 EGA III，1.4.17）。
+
+反过来，既已假设 $\mathscr G_J$ 在 $S_J$ 上\Term{flat}{平坦}，若\Term{quasi-coherent}{拟凝聚} $\mathscr O_U$-\Term{module}{模} $\mathscr G$ 满足 $\mathscr G/\mathscr J\mathscr G\simeq\mathscr G_J$，且 $\mathscr J\otimes_{\mathscr O_{S_J}}\mathscr G_J\to\mathscr J\mathscr G$ 为\Term{bijection}{双射}，则由“\Term{fundamental-flatness-criterion}{平坦性基本判据}”（参见 SGA 1 IV，5.5\footnote{编者注（78）：另见 [BAC]，§ III.5，\Term{theorem}{定理} 1。}），$\mathscr G$ 在 $S$ 上\Term{flat}{平坦}。
+
+因此，此处的 $\mathscr E(U)$ 与 4.2 中取 $f=\mathrm{id}_{\mathscr J\otimes_{\mathscr O_{S_J}}\mathscr G_J}$ 所得的\Term{set}{集合}相同，结论遂由 4.2 得到。
+\end{proof}
+沿用上述记号。\footnote{编者注（79）：已展开下文并加入推论 4.3.1。另提醒读者，“\Term{pseudo-torsor}{伪挠子}”与“\Term{formally-principal-homogeneous}{形式主齐性}”同义。}设 $Y_J$ 为 $X_J$ 中由\Term{quasi-coherent}{拟凝聚}\Term{ideal}{理想} $\mathscr I_{Y_J}$ 定义的\Term{closed-subscheme}{闭子概形}，并假设 $Y_J$ 在 $S_J$ 上\Term{flat}{平坦}。将 4.3 应用于 $\mathscr F=\mathscr O_X$、$\mathscr G_J=\mathscr O_{Y_J}=\mathscr O_{X_J}/\mathscr I_{Y_J}$，得到以下推论。
+\begin{SGAresult}{推论}{4.3.1}
+设 $S,S_J,\mathscr J,X,X_J,Y_J,\mathscr I_{Y_J}$ 如上，并假设 $Y_J$ 在 $S_J$ 上\Term{flat}{平坦}。记 $\mathscr A_J$ 为 $X_J$ 上的\Term{commutative-group-sheaf}{交换群层}
+\[\mathscr Hom_{\mathscr O_{X_J}}(\mathscr I_{Y_J},\mathscr J\otimes_{\mathscr O_{S_J}}\mathscr O_{Y_J}),\]
+并令 $\mathscr A=i_*(\mathscr A_J)$，其中 $i$ 为\Term{immersion}{浸入} $X_J\hookrightarrow X$。
+
+对每个\Term{open-subset}{开集} $U\subset X$，令 $\mathscr E(U)$ 为在 $S$ 上\Term{flat}{平坦}且满足 $Y\times_S S_J=Y_J\cap U$ 的 $U$ 的\Term{closed-subscheme}{闭子概形} $Y$ 的\Term{set}{集合}。则 $\mathscr E$ 是 $\mathscr A$-\Term{pseudo-torsor}{伪挠子}。
+\end{SGAresult}
+若进一步\Term{local-scheme}{局部}存在这样的 $Y$（即每个 $x\in X$ 都有\Term{open-neighborhood}{开邻域} $U$ 使 $\mathscr E(U)\ne\varnothing$），则 $\mathscr E$ 是 $\mathscr A$-\Term{torsor}{挠子}。已知（例如见 EGA IV$_4$，16.5.15），$X$ 上的 $\mathscr A$-\Term{torsor}{挠子}由\Term{cohomology}{上同调}\Term{group}{群} $H^1(X,\mathscr A)=H^1(X_J,\mathscr A_J)$ 参数化，且 $\mathscr E$ 有整体\Term{section}{截面}（即 $\mathscr E(X)\ne\varnothing$）当且仅当其对应的\Term{cohomology}{上同调}类为零。故得到：
+\begin{SGAresult}{推论}{4.4}
+设 $S,S_J,\mathscr J,X,X_J,Y_J,\mathscr I_{Y_J}$ 如上，并假设 $Y_J$ 在 $S_J$ 上\Term{flat}{平坦}。令 $E$ 为 $X$ 的\Term{closed-subscheme}{闭子概形} $Y$ 的\Term{set}{集合}，要求它在 $S$ 上\Term{flat}{平坦}且 $Y\times_S S_J=Y_J$。
+
+(i) $E$ 或为空，或是\Term{abelian-group}{交换群}
+\[H^0(X,\mathscr A)=H^0(X_J,\mathscr A_J)=\operatorname{Hom}_{\mathscr O_{X_J}}(\mathscr I_{Y_J},\mathscr J\otimes_{\mathscr O_{S_J}}\mathscr O_{Y_J})\]
+下的\Term{principal-homogeneous-set}{主齐性集合}。
+\SourcePage{152}
+(ii) $E$ \Term{nonempty}{非空}的充要条件是以下两条成立：
+
+(a) 问题在 $X$ 上\Term{local-scheme}{局部}有解。
+
+(b) 位于下述\Term{group}{群}中的某个\Term{obstruction}{障碍}为零：
+\[H^1(X_J,\mathscr Hom_{\mathscr O_{X_J}}(\mathscr I_{Y_J},\mathscr J\otimes_{\mathscr O_{S_J}}\mathscr O_{Y_J})).\]
+\end{SGAresult}
+\begin{SGAresult}{补充}{4.4.1}
+\footnote{编者注（80）：新增此补充，用于证明命题 4.8(ii)。}沿用 4.4 的记号，假设 $E$ 含有元素 $Y$。记 $\mathscr I_Y$ 为定义 $Y$ 的 $\mathscr O_X$ 的\Term{ideal}{理想}，$\mathscr I_{Y_J}$ 为它在 $\mathscr O_{X_J}$ 中的像。如 4.2 的证明所示，有\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}
+\mathscr J\otimes_{\mathscr O_{S_J}}\mathscr O_{X_J}\arrow[r,two heads]\arrow[d,two heads]&\mathscr J\mathscr O_X\arrow[d,two heads]\arrow[dl,dashed]\\
+\mathscr J\otimes_{\mathscr O_{S_J}}\mathscr O_{Y_J}\arrow[r,"\sim"]&\mathscr J\mathscr O_Y,
+\end{tikzcd}
+\]
+因而有 $\mathscr O_X$-\Term{module}{模}\Term{epimorphism}{满态射} $\phi:\mathscr J\mathscr O_X\to\mathscr J\otimes_{\mathscr O_{S_J}}\mathscr O_{Y_J}$；记其核为 $\mathscr K$。对 $E$ 的每个元素 $Y'$，\Term{morphism}{态射} $\mathscr O_X\to\mathscr O_{Y'}$ 都经 $\mathscr O_X/\mathscr K$ \Term{resolution}{分解}（它就是\Term{lemma}{引理} 4.1 证明中的\Term{pushout}{推出} $B'$）。记 $\mathscr I_{Y'}$ 为 $Y'$ 在 $\mathscr O_X$ 中的\Term{ideal}{理想}，有\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}[column sep=small]
+&&0\arrow[d]&0\arrow[d]\\
+&&\mathscr I_{Y'}/\mathscr K\arrow[d]\arrow[r,"\sim"]&\mathscr I_{Y_J}\arrow[d]\\
+0\arrow[r]&(\mathscr J\mathscr O_X)/\mathscr K\arrow[r]\arrow[d,"\sim"]&\mathscr O_X/\mathscr K\arrow[r]\arrow[d]&\mathscr O_{X_J}\arrow[r]\arrow[d]&0\\
+0\arrow[r]&\mathscr J\otimes_{\mathscr O_{S_J}}\mathscr O_{Y_J}\arrow[r]\arrow[d]&\mathscr O_{Y'}\arrow[r]\arrow[d]&\mathscr O_{Y_J}\arrow[r]\arrow[d]&0\\
+&0&0&0.
+\end{tikzcd}
+\]
+所以将 $X$ 换成 $\mathscr K$ 定义的\Term{closed-subscheme}{闭子概形}，便可归结为 $\mathscr K=0$。此时，给出 $Y'$ \Term{equivalence}{等价}于给出 $\mathscr O_X$ 的一个 $\mathscr O_X$-\Term{submodule}{子模} $\mathscr I_{Y'}$，使\Term{projection}{投影} $p:\mathscr O_X\to\mathscr O_{X_J}$ 将它\Term{bijection}{双射}地映到 $\mathscr I_{Y_J}$；记逆\Term{isomorphism}{同构}为 $f':\mathscr I_{Y_J}\xrightarrow\sim\mathscr I_{Y'}$（相应地，$f:\mathscr I_{Y_J}\xrightarrow\sim\mathscr I$）。于是 $f'-f$ 属于
+\[\operatorname{Hom}_{\mathscr O_{X_J}}(\mathscr I_{Y_J},\mathscr J\otimes_{\mathscr O_{S_J}}\mathscr O_{Y_J})=\operatorname{Hom}_{\mathscr O_{X_J}}(\mathscr I_{Y_J},\mathscr J\mathscr O_Y),\]
+记为 $d(Y',Y)$。（注意 $d(Y,Y')=-d(Y',Y)$。）
+\SourcePage{153}
+固定 $Y$，让 $Y'$ 变化，考虑\Term{morphism}{态射}
+\[\mathscr I_{Y'}\longrightarrow\mathscr O_X\longrightarrow\mathscr O_Y=\mathscr O_X/\mathscr I_Y.\]
+它与 $\mathscr O_Y\to\mathscr O_{Y_J}$ 的复合为零，故取值于 $\mathscr J\mathscr O_Y=\mathscr J\otimes_{\mathscr O_{S_J}}\mathscr O_{Y_J}$。具体地，若 $V\subset X$ 是\Term{open-subset}{开集}，$x'$ 是 $\mathscr I_{Y'}$ 在 $V$ 上的\Term{section}{截面}，$x_J$ 为它在 $\Gamma(V,\mathscr I_{Y_J})$ 中的像，则
+\[x'=f'(x_J)=f(x_J)+(f'-f)(x_J)=f(x_J)+d(Y',Y)(x_J).\]
+因此，\Term{morphism}{态射} $\mathscr I_{Y'}\to\mathscr J\mathscr O_Y$ 由 $d(Y',Y)$ 给出。
+\end{SGAresult}
+\textbf{4.5.0。}\footnote{编者注（81）：加入编号 4.5.0，以标示此处回到原文。}沿用 4.3.1 和 4.4 的记号，作如下变换：$\mathscr I_{Y_J}/\mathscr I_{Y_J}^2$ 是被 $\mathscr I_{Y_J}$ \Term{annihilate}{零化}的\Term{quasi-coherent}{拟凝聚} $\mathscr O_{X_J}$-\Term{module}{模}，故为某个\Term{quasi-coherent}{拟凝聚} $\mathscr O_{Y_J}$-\Term{module}{模}的\Term{direct-image}{正像}，将该模记为 $\mathscr N_{Y_J/X_J}$，称为 $Y_J$ 在 $X_J$ 中的\Term{conormal-sheaf}{余法层}。\footnote{编者注（82）：已修正下句。}由于 $\mathscr J\otimes_{\mathscr O_{S_J}}\mathscr O_{Y_J}$ 被 $\mathscr I_{Y_J}$ \Term{annihilate}{零化}，4.3.1 中的\Term{commutative-group-sheaf}{交换群层} $\mathscr A_J$ 可识别为
+\[\mathscr Hom_{\mathscr O_{Y_J}}(\mathscr I_{Y_J}/\mathscr I_{Y_J}^2,\mathscr J\otimes_{\mathscr O_{S_J}}\mathscr O_{Y_J})=\mathscr Hom_{\mathscr O_{Y_J}}(\mathscr N_{Y_J/X_J},\mathscr J\otimes_{\mathscr O_{S_J}}\mathscr O_{Y_J}),\]
+所以对所有 $i\geq0$，
+\[H^i(X_J,\mathscr A_J)=H^i(Y_J,\mathscr Hom_{\mathscr O_{Y_J}}(\mathscr N_{Y_J/X_J},\mathscr J\otimes_{\mathscr O_{S_J}}\mathscr O_{Y_J})).\]
+于是可以如下去掉“$Y$ 为闭”的假设。\footnote{编者注（83）：已展开下文。}先注意，$X_J$ 的每个\Term{open-subset}{开集} $U_J$ 都由 $X$ 中具有相同底\Term{topological-space}{拓扑空间}的\Term{open-subscheme}{开子概形} $U$ 经\Term{base-change}{基变换}得到。现设 $Y_J$ 为 $U_J$ 的\Term{closed-subscheme}{闭子概形}，在 $S_J$ 上\Term{flat}{平坦}，$\mathscr I_{Y_J}$ 为定义它的\Term{quasi-coherent}{拟凝聚} $\mathscr O_{U_J}$-\Term{ideal}{理想}。若 $Y_J$ \Term{lifting}{提升}为 $X$ 的\Term{subscheme}{子概形} $Y$，则 $Y$ 与 $Y_J$ 的底\Term{topological-space}{拓扑空间}相同，因而是 $U$ 的\Term{closed-subscheme}{闭子概形}；所以，将 $Y_J$ \Term{lifting}{提升}为 $X$ 或 $U$ 中在 $S$ 上\Term{flat}{平坦}的\Term{subscheme}{子概形}，其\Term{obstruction}{障碍}“相同”，均位于
+\[H^1(Y_J,\mathscr Hom_{\mathscr O_{Y_J}}(\mathscr N_{Y_J/X_J},\mathscr J\otimes_{\mathscr O_{S_J}}\mathscr O_{Y_J})).\]
+最后回到第 0 节的记号：设 $\mathscr I$ 为 $\mathscr O_S$ 的\Term{quasi-coherent}{拟凝聚}\Term{ideal}{理想}，满足 $\mathscr J\subset\mathscr I$、$\mathscr I\mathscr J=0$，$S_0$ 为 $\mathscr I$ 定义的 $S_J$ 的\Term{closed-subscheme}{闭子概形}。对每个 $S$-\Term{scheme}{概形} $Z$，记 $Z_J=Z\times_S S_J$、$Z_0=Z\times_S S_0$。由于 $\mathscr J$ 被 $\mathscr I$ \Term{annihilate}{零化}，以 4.4 的记号，有
+\[
+\begin{aligned}
+\mathscr J\otimes_{\mathscr O_{S_J}}\mathscr O_{Y_J}&=\mathscr J\otimes_{\mathscr O_{S_0}}\mathscr O_{Y_0},\\
+\mathscr Hom_{\mathscr O_{Y_J}}(\mathscr N_{Y_J/X_J},\mathscr J\otimes_{\mathscr O_{S_J}}\mathscr O_{Y_J})&=\mathscr Hom_{\mathscr O_{Y_0}}(\mathscr N_{Y_J/X_J}\otimes_{\mathscr O_{Y_J}}\mathscr O_{Y_0},\mathscr J\otimes_{\mathscr O_{S_0}}\mathscr O_{Y_0}),
+\end{aligned}
+\]
+等等。于是得到：
+\SourcePage{154}
+\begin{SGAresult}{命题}{4.5}
+设 $S$ 为\Term{scheme}{概形}，$S_0,S_J$ 为\Term{quasi-coherent}{拟凝聚}\Term{ideal}{理想} $\mathscr I,\mathscr J$ 定义的\Term{closed-subscheme}{闭子概形}，满足 $\mathscr I\supset\mathscr J$、$\mathscr I\mathscr J=0$。设 $X$ 为 $S$-\Term{scheme}{概形}，$Y_J$ 为 $X_J$ 的\Term{subscheme}{子概形}，在 $S_J$ 上\Term{flat}{平坦}。令 $\mathscr A_0$ 为如下定义的 $\mathscr O_{Y_0}$-\Term{module}{模}：
+\[\mathscr A_0=\mathscr Hom_{\mathscr O_{Y_0}}(\mathscr N_{Y_J/X_J}\otimes_{\mathscr O_{Y_J}}\mathscr O_{Y_0},\mathscr J\otimes_{\mathscr O_{S_0}}\mathscr O_{Y_0}).\]
+(i) 存在\Term{reduced}{约化}为 $Y_J$ 且在 $S$ 上\Term{flat}{平坦}的 $X$ 的\Term{subscheme}{子概形} $Y$，当且仅当下述条件成立：
+
+(a) 在 $X$ 上\Term{local-scheme}{局部}存在这样的 $Y$。
+
+(b) $R^1\Gamma(Y_0,\mathscr A_0)$ 中某个\Term{obstruction}{障碍}为零。\footnote{编者注（84）：此处将 $\mathscr O_{Y_0}$-模 $\mathscr A_0$ 的“\Term{coherent}{凝聚}”\Term{cohomology}{上同调}群 $H^1(Y_0,\mathscr A_0)$ 记为 $R^1\Gamma(Y_0,\mathscr A_0)$，以区别于从 4.16 起考虑的“Hochschild”\Term{cohomology}{上同调}群 $H^i(Y_0,M_0)$（$Y_0$ 为 $S_0$-群，$M_0$ 为 $\mathscr O_{S_0}$-模）。}
+
+(ii) 在此条件下，满足要求的 $Y$ 的\Term{set}{集合}是\Term{commutative-group}{交换群} $\Gamma(Y_0,\mathscr A_0)$ 下的\Term{principal-homogeneous-set}{主齐性集合}。
+\end{SGAresult}
+\begin{SGAresult}{注记}{4.5.1}
+\footnote{编者注（85）：将此注记移至这里，替代原文注记 4.7。}由 4.5(ii)，对 $X$ 的任意一对在 $S$ 上\Term{flat}{平坦}且\Term{reduced}{约化}为 $Y_J$ 的\Term{subscheme}{子概形}\footnote{编者注（86）：将“\Term{closed-subscheme}{闭子概形}”改为“\Term{subscheme}{子概形}”。} $(Y,Y')$，都有一个“\Term{deviation}{偏差}”
+\[d(Y',Y)\in\Gamma(Y_0,\mathscr A_0)=\operatorname{Hom}_{\mathscr O_{Y_0}}(\mathscr N_{Y_J/X_J}\otimes_{\mathscr O_{Y_J}}\mathscr O_{Y_0},\mathscr J\otimes_{\mathscr O_{S_0}}\mathscr O_{Y_0}).\]
+4.4.1 中采用的\Term{signature}{符号}约定是：$d(Y',Y)$ 对应于 $\mathscr O_X$-\Term{module}{模}\Term{morphism}{态射}
+\[\mathscr I_{Y'}\hookrightarrow\mathscr O_X\longrightarrow\mathscr O_Y\]
+（它取值于 $\mathscr J\mathscr O_Y\simeq\mathscr J\otimes_{\mathscr O_{S_0}}\mathscr O_{Y_0}$，并经 $\mathscr I_{Y'_J}=\mathscr I_{Y_J}$，再经 $\mathscr N_{Y_J/X_J}$ \Term{resolution}{分解}）。
+\end{SGAresult}
+\begin{SGAresult}{注记}{4.6}
+\footnote{编者注（87）：保留原文注记 4.6 以备参考，其中没有给出“\Term{local-complete-intersection}{局部完全交}”的定义。下文加入取自 SGA 6，VII 1.4 的“正确”定义（替代 EGA IV$_4$，16.9.2 的定义），以及注记中三个结论的证明。}若 $X$ 在 $S$ 上\Term{flat}{平坦}，而 $Y_J$ 是 $X_J$ 中的\Term{local-complete-intersection}{局部完全交}，则条件 (a) 总成立，且\Term{lifting}{提升} $Y_J$ 的任何在 $S$ 上\Term{flat}{平坦}的 $Y$ 都是 $X$ 中的\Term{local-complete-intersection}{局部完全交}。若 $Y_0$ 还\Term{affine}{仿射}，则条件 (b) 也成立。
+\end{SGAresult}
+\begin{SGAresult}{定义}{4.6.1}
+（参见 SGA 6，VII 1.1）设 $B$ 为\Term{commutative-ring}{交换环}，$f:E\to B$ 为 $B$-\Term{linear-morphism}{线性态射}，其中 $E$ 是秩为\Term{finite}{有限}数 $d$ 的\Term{free-module}{自由} $B$-\Term{module}{模}，$I=f(E)$ 为其像\Term{ideal}{理想}（选定 $E$ 的一组基后，$f$ 由 $B$ 中的 $d$ 元组 $(f_1,\ldots,f_d)$ 给出，而 $I$ 为各 $f_i$ 生成的\Term{ideal}{理想}）。\Term{koszul-complex}{Koszul 复形} $K_\bullet(f)$ 是\Term{graded-module}{分次} $B$-\Term{module}{模} $\bigwedge_B^\bullet E$，赋以\Term{degree}{次数} $-1$ 的\Term{differential}{微分}
+\[x_1\wedge\cdots\wedge x_i\longmapsto\sum_{j=1}^i(-1)^{j-1}f(x_j)x_1\wedge\cdots\wedge\widehat{x_j}\wedge\cdots\wedge x_i.\]
+\SourcePage{155}
+因而得到\Term{augmented-chain-complex}{增广链复形}（$B/I$ 位于 $-1$ 次）：
+\[\cdots\longrightarrow\bigwedge^2 E\longrightarrow E\xrightarrow f B\longrightarrow B/I\longrightarrow0.\]
+按定义，它在 $0$ 次\Term{exact}{正合}，因为 $I=f(E)$。若 $K_\bullet(f)$ 在正\Term{degree}{次数}\Term{acyclic}{无同调}，即上述\Term{augmented-chain-complex}{增广复形}为 $C=B/I$ 的\Term{resolution}{消解}，就称 $f$ 为\Term{regular-morphism}{正则态射}。
+
+此时，SGA 6，VII 1.2 b) 的证明表明，$C$-\Term{module}{模} $I^n/I^{n+1}$（$n\in\mathbb N$）均为\Term{free-module}{自由模}，且 $I/I^2$ 的秩为 $d$。
+\end{SGAresult}
+\begin{SGAresult}{定义}{4.6.2}
+（参见 SGA 6，VII 1.4）设 $X$ 为\Term{scheme}{概形}，$Y$ 为\Term{subscheme}{子概形}，$U\subset X$ 为\Term{open-subset}{开集}，使 $Y$ 是 $U$ 中由\Term{quasi-coherent}{拟凝聚}\Term{ideal}{理想} $\mathscr I_Y$ 定义的\Term{closed-subscheme}{闭子概形}。
+
+若 $Y\hookrightarrow X$ 是 SGA 6，VII 1.4 意义下的\Term{regular-immersion}{正则浸入}，便称 $Y$ 为 $X$ 中的\Term{local-complete-intersection}{局部完全交}；也就是说，对每个 $y\in Y$，在 $U$ 中存在 $y$ 的\Term{affine}{仿射}\Term{open-neighborhood}{开邻域} $V$、\Term{finite}{有限}\Term{free-module}{自由} $\mathscr O_V$-\Term{module}{模} $\mathscr E$ 以及像为 $\mathscr I_Y|_V$ 的\Term{regular-morphism}{正则态射} $f:\mathscr E\to\mathscr O_V$，即 $K_\bullet(f)$ 是 $\mathscr O_{Y\cap V}$ 的\Term{resolution}{消解}。
+
+这蕴含\Term{immersion}{浸入} $Y\hookrightarrow X$ 为\Term{locally-finite-presentation}{局部有限表现}；并由 4.6.1，\Term{conormal-sheaf}{余法层} $\mathscr N_{Y/X}=\mathscr I_Y/\mathscr I_Y^2$ 为\Term{finite}{有限}\Term{locally-free}{局部自由} $\mathscr O_Y$-\Term{module}{模}。
+\end{SGAresult}
+\begin{SGAresult}{\Term{lemma}{引理}}{4.6.3}
+\footnote{编者注（88）：为证明注记 4.6 中陈述的结果，加入了\Term{lemma}{引理} 4.6.3、4.6.4、命题 4.6.5 及注记 4.6.6。}设 $A$ 为环，$J$ 为 $A$ 中平方为零的\Term{ideal}{理想}，$\overline A=A/J$，$B$ 为\Term{flat}{平坦} $A$-\Term{algebra}{代数}，$E$ 为\Term{finite-rank}{有限秩}\Term{free-module}{自由} $B$-\Term{module}{模}，$f:E\to B$ 为 $B$-\Term{module}{模}\Term{morphism}{态射}。假设 $f$ 诱导的\Term{morphism}{态射} $g:\overline E=E\otimes_A\overline A\to\overline B=B\otimes_A\overline A$ \Term{regular-morphism}{正则}，且 $\overline B/g(\overline E)$ 在 $\overline A$ 上\Term{flat}{平坦}。
+
+则 $f$ \Term{regular-morphism}{正则}，且 $B/f(E)$ 在 $A$ 上\Term{flat}{平坦}。
+\end{SGAresult}
+\begin{proof}
+令 $C=B/f(E)$，$\overline C=C\otimes_A\overline A=\overline B/g(\overline E)$。首先，各 $\bigwedge_B^iE$ 是\Term{free-module}{自由} $B$-\Term{module}{模}，由于 $B$ 在 $A$ 上\Term{flat}{平坦}，故亦为\Term{flat}{平坦} $A$-\Term{module}{模}。由 $\bigwedge_B^\bullet E\otimes_A\overline A\simeq\bigwedge_{\overline B}^\bullet\overline E$，得到\Term{complex}{复形}的\Term{exact-sequence}{正合列}
+\[0\longrightarrow J\otimes_A\bigwedge_B^\bullet E\longrightarrow\bigwedge_B^\bullet E\longrightarrow\bigwedge_{\overline A}^\bullet\overline E\longrightarrow0.\]
+又因 $J^2=0$，对任意 $A$-\Term{module}{模} $M$ 有 $J\otimes_A M=J\otimes_{\overline A}\overline A\otimes_A M$。用虚线\Term{arrow}{箭头}表示\Term{augmentation}{增广}，并记 $E$ 的秩为 $d$，便得到下述各行\Term{exact}{正合}的\Term{bicomplex}{双复形}：
+\SourcePage{156}
+\[
+\begin{tikzcd}[column sep=small,row sep=small]
+&0\arrow[d]&0\arrow[d]&0\arrow[d]\\
+0\arrow[r]&J\otimes_{\overline A}\bigwedge_{\overline B}^{d}\overline E\arrow[r]\arrow[d]&\bigwedge_B^dE\arrow[r]\arrow[d]&\bigwedge_{\overline B}^{d}\overline E\arrow[r]\arrow[d]&0\\
+&\vdots\arrow[d]&\vdots\arrow[d]&\vdots\arrow[d]\\
+0\arrow[r]&J\otimes_{\overline A}\overline E\arrow[r]\arrow[d,"\mathrm{id}\otimes g"']&E\arrow[r]\arrow[d,"f"]&\overline E\arrow[r]\arrow[d,"g"]&0\\
+0\arrow[r]&J\otimes_{\overline A}\overline B\arrow[r]\arrow[d,dashed]&B\arrow[r]\arrow[d,dashed]&\overline B\arrow[r]\arrow[d,dashed]&0\\
+&J\otimes_{\overline A}\overline C\arrow[r]\arrow[d]&C\arrow[r]\arrow[d]&\overline C\arrow[r]\arrow[d]&0\\
+&0&0&0.
+\end{tikzcd}
+\]
+而且左右两列\Term{exact}{正合}，因为 $K_\bullet(g)$ 是 $\overline C$ 的\Term{resolution}{消解}，且后者在 $\overline A$ 上\Term{flat}{平坦}。考察未\Term{augmentation}{增广}的\Term{complex}{复形}\Term{exact-sequence}{正合列}所对应的\Term{long-exact-homology-sequence}{同调长正合列}，得到 $K_\bullet(f)$ 在正\Term{degree}{次数}\Term{acyclic}{无同调}，并在 $0$ 次得到\Term{exact-sequence}{正合列}
+\[0\longrightarrow J\otimes_{\overline A}\overline C\longrightarrow C\longrightarrow\overline C\longrightarrow0.\]
+故由“\Term{fundamental-flatness-criterion}{平坦性基本判据}”（[BAC]，§ III.5，\Term{theorem}{定理} 1），$C$ 在 $A$ 上\Term{flat}{平坦}。
+\end{proof}
+\begin{SGAresult}{\Term{lemma}{引理}}{4.6.4}
+\textsuperscript{（88）}设 $A$ 为\Term{commutative-ring}{交换环}，$J$ 为\Term{nilpotent}{幂零}\Term{ideal}{理想}，$N\subset M$ 为 $A$-\Term{module}{模}，使 $M/N$ 在 $A$ 上\Term{flat}{平坦}。若 $N$ 中元素 $x_1,\ldots,x_n$ 的像生成 $N$ 在 $M/JM$ 中的像 $\overline N$，则这些元素生成 $N$。
+\end{SGAresult}
+\begin{proof}
+记 $N'$ 为各 $x_i$ 生成的 $N$ 的\Term{submodule}{子模}，令 $Q=N/N'$。则 $N'\otimes(A/J)\to\overline N$ 为\Term{surjection}{满射}。又因 $M/N$ 在 $A$ 上\Term{flat}{平坦}，$N\otimes(A/J)\to\overline N$ 是\Term{bijection}{双射}。所以 $Q\otimes(A/J)=0$，由“\Term{nilpotent-nakayama-lemma}{幂零 Nakayama 引理}”得 $Q=0$（因为 $Q=JQ=J^2Q=\cdots=0$）。
+\end{proof}
+现在可证明：
+\begin{SGAresult}{命题}{4.6.5}
+\textsuperscript{（88）}设 $S,\mathscr I,\mathscr J,X,Y_J$ 如 4.5。进一步假设 $X$ 在 $S$ 上\Term{flat}{平坦}，且 $Y_J$ 为 $X_J$ 中的\Term{local-complete-intersection}{局部完全交}。
+\SourcePage{157}
+a) 则 4.5(i) 的条件 (a) 成立；而且，\Term{lifting}{提升} $Y_J$ 的任何在 $S$ 上\Term{flat}{平坦}的 $Y$ 都是 $X$ 中的\Term{local-complete-intersection}{局部完全交}。
+
+b) 若 $Y_0$ 还\Term{affine}{仿射}，则该处的条件 (b) 也成立。
+\end{SGAresult}
+\begin{proof}
+(a) 的第一条断言由\Term{lemma}{引理} 4.6.3 得到；第二条随后由\Term{lemma}{引理} 4.6.4 得到。另一方面，假设蕴含（见 4.6.2）$\mathscr N_{Y_J/X_J}$ 是\Term{finite}{有限}\Term{locally-free}{局部自由} $\mathscr O_{Y_J}$-\Term{module}{模}，所以 $\mathscr O_{Y_0}$-\Term{module}{模}
+\[\mathscr A_0=\mathscr Hom_{\mathscr O_{Y_0}}(\mathscr N_{Y_J/X_J}\otimes_{\mathscr O_{Y_J}}\mathscr O_{Y_0},\mathscr J\otimes_{\mathscr O_{S_0}}\mathscr O_{Y_0})\]
+\Term{quasi-coherent}{拟凝聚}（参见 EGA I，1.3.12）。当 $Y_0$ \Term{affine}{仿射}时，便有 $R^1\Gamma(Y_0,\mathscr A_0)=0$。
+\end{proof}
+\begin{SGAresult}{注记}{4.6.6}
+\textsuperscript{（88）}以如下例子结束本段。它表明，在\Term{lemma}{引理} 4.6.3 的假设下，生成\Term{ideal}{理想} $I=g(\overline E)$ 的\Term{regular-sequence}{正则列} $(g_1,g_2)$ 未必能\Term{lifting}{提升}为 $B$ 中的\Term{regular-sequence}{正则列}。
+
+设 $k$ 为域，$\overline A=k[X,Y]$，将 $\overline A$-\Term{module}{模} $\overline A/(X,Y)$ 记为 $k\varepsilon$（即对每个 $P\in\overline A$，$P\varepsilon=P(0,0)\varepsilon$），令 $A=\overline A\oplus k\varepsilon$，其中 $J=k\varepsilon$ 为平方为零的\Term{ideal}{理想}。于是 $A/J=\overline A$。
+
+$A$-\Term{algebra}{代数} $B=A\otimes_k k[Z,T]$ 在 $A$ 上\Term{free-module}{自由}，因而\Term{flat}{平坦}；有 $\overline B=k[X,Y,Z,T]$。令 $g_1=XZ-YT$、$g_2=XZ-1$。因\Term{polynomial}{多项式} $g_1$ \Term{irreducible}{不可约}，$\overline B/(g_1)$ 为\Term{integral-domain}{整环}，所以 $(g_1,g_2)$ 为 $\overline B$ 中的\Term{regular-sequence}{正则列}，生成\Term{ideal}{理想} $I=(XZ-1,YT-1)$。故
+\[\overline C=\overline B/I=k[X,Y,X^{-1},Y^{-1}]=\overline A[X^{-1},Y^{-1}]\]
+是\Term{flat}{平坦} $\overline A$-\Term{algebra}{代数}（也是\Term{flat}{平坦} $A$-\Term{algebra}{代数}）。但 $g_1$ 在 $B$ 中的每个\Term{lifting}{提升}都形如 $XY-ZT+\lambda\varepsilon$，其中 $\lambda\in k[Z,T]$，因而\Term{annihilate}{零化} $\varepsilon$。
+\end{SGAresult}
+\textbf{4.7。}这里删去了原文注记 4.7，已将其移至 4.5.1。
+\begin{SGAresult}{注记}{4.8.0}
+\footnote{编者注（89）：此注记用于下一个命题，原文置于 4.10，现移到这里。}设 $S$ 为\Term{scheme}{概形}，$S'$ 为\Term{closed-subscheme}{闭子概形}，$X$ 为 $S$-\Term{scheme}{概形}，$Y$ 为 $X$ 的 $S$-\Term{subscheme}{子概形}，$X'=X\times_S S'$、$Y'=Y\times_S S'$。则有\Term{surjective-morphism}{满射} $\mathscr O_{Y'}$-\Term{module}{模}\Term{morphism}{态射}
+\[\mathscr N_{Y/X}\otimes_{\mathscr O_Y}\mathscr O_{Y'}\twoheadrightarrow\mathscr N_{Y'/X'}.\]
+事实上，将 $X$ 换成某个\Term{open-subset}{开集}，可设 $Y$ 为闭，且由 $\mathscr O_X$ 的\Term{ideal}{理想} $\mathscr I_Y$ 定义。$\mathscr I_Y$ 在 $\mathscr O_{X'}$ 中的像便是定义 $Y'$ 的\Term{ideal}{理想} $\mathscr I_{Y'}$，并有\Term{surjective-morphism}{满射} $\mathscr O_{Y'}$-\Term{module}{模}\Term{morphism}{态射}
+\[\pi:(\mathscr I_Y/\mathscr I_Y^2)\otimes_{\mathscr O_Y}\mathscr O_{Y'}\twoheadrightarrow\mathscr I_{Y'}/\mathscr I_{Y'}^2.\]
+若还假设 $\mathscr O_Y=\mathscr O_X/\mathscr I_Y$ 在 $\mathscr O_S$ 上\Term{flat}{平坦}，则自然\Term{morphism}{态射} $\mathscr I_Y\otimes_{\mathscr O_X}\mathscr O_{X'}\to\mathscr I_{Y'}$ 为\Term{bijection}{双射}（参见 EGA IV$_2$，2.1.8）。
+\SourcePage{158}
+此时有各行\Term{exact}{正合}的\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}[column sep=small]
+&\mathscr I_Y^2\otimes_{\mathscr O_X}\mathscr O_{X'}\arrow[r]\arrow[d,two heads]&\mathscr I_Y\otimes_{\mathscr O_X}\mathscr O_{X'}\arrow[r]\arrow[d,"\sim"]&(\mathscr I_Y/\mathscr I_Y^2)\otimes_{\mathscr O_Y}\mathscr O_{Y'}\arrow[r]\arrow[d,two heads,"\pi"]&0\\
+0\arrow[r]&\mathscr I_{Y'}^2\arrow[r]&\mathscr I_{Y'}\arrow[r]&\mathscr I_{Y'}/\mathscr I_{Y'}^2\arrow[r]&0.
+\end{tikzcd}
+\]
+由\Term{snake-lemma}{蛇引理}可得：\footnote{编者注（90）：原文在注记 4.10 中指出此点，但附加假设 $Y'$ 为 $X'$ 中的\Term{local-complete-intersection}{局部完全交}。因而该假设也出现在 4.12—4.14 的陈述中；实际上它似乎多余，现已从上述陈述中删去。}
+\[\mathscr N_{Y/X}\otimes_{\mathscr O_Y}\mathscr O_{Y'}\xrightarrow\sim\mathscr N_{Y'/X'}\qquad\text{若 $Y$ 在 $S$ 上平坦。}\tag{4.8.0}\]
+\end{SGAresult}
+\begin{SGAresult}{命题}{4.8}
+设 $S,S_0,S_J,\mathscr I,\mathscr J$ 如 4.5。\footnote{编者注（91）：已删去 $\mathscr I$ \Term{nilpotent}{幂零}的假设；它似乎多余（参见证明）。}设 $X$ 为 $S$-\Term{scheme}{概形}，$Y$ 为 $X$ 的\Term{subscheme}{子概形}，$i$ 为\Term{immersion}{浸入} $Y\hookrightarrow X$。
+
+(i) 对任意 $S$-\Term{morphism}{态射} $f:T\to X$，若 $f_J:T_J\to X_J$ 经 $Y_J$ \Term{resolution}{分解}，便可定义\Term{obstruction}{障碍}
+\[c(X,Y,f)\in\operatorname{Hom}_{\mathscr O_{T_0}}(f_0^*(\mathscr N_{Y/X}\otimes_{\mathscr O_Y}\mathscr O_{Y_0}),\mathscr J\mathscr O_T),\tag{$*$}\]
+它为零当且仅当 $f$ 经 $Y$ \Term{resolution}{分解}。
+
+(ii) 设 $Y'$ 为 $X$ 的另一个\Term{subscheme}{子概形}。假设 $Y'_J=Y_J$，且 $Y,Y'$ 在 $S$ 上\Term{flat}{平坦}。此时有\Term{isomorphism}{同构}（见 4.8.0）
+\[\mathscr J\mathscr O_Y\simeq\mathscr J\otimes_{\mathscr O_{S_0}}\mathscr O_{Y_0}\simeq\mathscr J\mathscr O_{Y'},\qquad \mathscr N_{Y/X}\otimes_{\mathscr O_Y}\mathscr O_{Y_J}\xrightarrow\sim\mathscr N_{Y_J/X_J},\]
+从而有\Term{isomorphism}{同构}
+\[u:\operatorname{Hom}_{\mathscr O_{Y_0}}(\mathscr N_{Y_J/X_J}\otimes_{\mathscr O_{Y_J}}\mathscr O_{Y_0},\mathscr J\mathscr O_Y)\xrightarrow\sim\operatorname{Hom}_{\mathscr O_{Y_0}}(\mathscr N_{Y/X}\otimes_{\mathscr O_Y}\mathscr O_{Y_0},\mathscr J\mathscr O_{Y'}).\]
+记 $i':Y'\to X$ 为\Term{canonical}{典范}\Term{immersion}{浸入}，$d(Y,Y')$ 为 4.5.1 的\Term{deviation}{偏差}，则\footnote{编者注（92）：另见下文 4.27。}
+\[c(X,Y,i')=u(d(Y,Y')).\tag{$**$}\]
+(iii) \Term{canonical}{典范}\Term{morphism}{态射} $\mathscr N_{Y/X}\xrightarrow D i^*(\Omega^1_{X/S})$（见 SGA 1 II，公式 4.3）\footnote{编者注（93）：另见 EGA IV$_4$，16.4.21。提醒读者：若 $U$ 为 $X$ 的\Term{affine}{仿射}\Term{open-subset}{开集}，$Y\cap U$ 由 $A=\mathscr O_X(U)$ 的\Term{ideal}{理想} $I$ 定义，$d$ 为\Term{differential}{微分} $A\to\Gamma(U,\Omega^1_{X/S})$，且 $x\in I$，则 $D(x+I^2)$ 为 $\Gamma(U,\Omega^1_{X/S})\otimes_A(A/I)$ 中的 $d(x)\otimes1$。}诱导\Term{morphism}{态射}
+\[D_0:\mathscr N_{Y/X}\otimes_{\mathscr O_Y}\mathscr O_{Y_0}\longrightarrow\Omega^1_{X_0/S_0}\otimes_{\mathscr O_{X_0}}\mathscr O_{Y_0},\]
+\SourcePage{159}
+从而对 (i) 中的任意 $S$-\Term{morphism}{态射} $f:T\to X$，诱导\Term{morphism}{态射}
+\[
+\begin{aligned}
+v_{f_0}:\operatorname{Hom}_{\mathscr O_{T_0}}(f_0^*(\Omega^1_{X_0/S_0}),\mathscr J\mathscr O_T)&\longrightarrow\operatorname{Hom}_{\mathscr O_{T_0}}(f_0^*(\mathscr N_{Y/X}\otimes_{\mathscr O_Y}\mathscr O_{Y_0}),\mathscr J\mathscr O_T),\\
+a&\longmapsto a\circ f_0^*(D_0).
+\end{aligned}
+\]
+上式第一个\Term{group}{群}即 $\operatorname{Hom}_{X^+}(T,L_X)$，见 0.1.5。对 $a\in\operatorname{Hom}_{X^+}(T,L_X)$，有
+\[c(X,Y,a\cdot f)-c(X,Y,f)=v_{f_0}(a),\tag{$***$}\]
+其中 $a\cdot f$ 表示复合\Term{morphism}{态射} $T\xrightarrow{a\times f}L_X\times_{X^+}X\to X$。
+\end{SGAresult}
+\begin{proof}
+下面证明命题的 (i)，将 (ii)、(iii) 的验证留给读者（可不验证）；归结到\Term{affine}{仿射}情形，再比较各个显式定义，即可完成验证。\footnote{编者注（94）：下文给出了这些验证。}
+
+证明 (i)。\Term{morphism}{态射} $f:T\to X$ 给出环\Term{sheaf}{层}\Term{morphism}{态射} $\phi:\mathscr O_X\to f_*(\mathscr O_T)$。\footnote{编者注（95）：一方面，删去 $\mathscr I$ \Term{nilpotent}{幂零}、即 $X^0$ 与 $X$ 具有相同\Term{underlying-topological-space}{底拓扑空间}的假设；另一方面，展开了下句。}取 $X$ 的\Term{open-subscheme}{开子概形} $U$，使 $Y$ 在其中为闭；$T$（相应地 $Y_J$）与 $T_J$（相应地 $Y$）的底\Term{space}{空间}相同，故 $f$ 的底\Term{continuous-map}{连续映射}将 $T$ 映入 $U$。由于 $U$ 在 $X$ 中为开，$\phi$ 诱导环\Term{sheaf}{层}\Term{morphism}{态射} $\mathscr O_U=\mathscr O_X|_U\to f_*(\mathscr O_T)$，即 $f$ 经 $U$ \Term{resolution}{分解}。
+
+因此可限于 $Y$ 为闭的情形，它由\Term{ideal-sheaf}{理想层} $\mathscr I_Y$ 定义。$f$ 经 $Y$ \Term{resolution}{分解}的充要条件是复合映射 $\mathscr I_Y\to\mathscr O_X\to f_*(\mathscr O_T)$ 为零。由于 $f_J$ 经 $Y_J$ \Term{resolution}{分解}，复合映射 $\mathscr I_{Y_J}\to\mathscr O_{X_J}\to f_*(\mathscr O_{T_J})$ 为零。考虑第一行\Term{exact}{正合}的\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}
+0\arrow[r]&f_*(\mathscr J\mathscr O_T)\arrow[r]&f_*(\mathscr O_T)\arrow[r]&f_*(\mathscr O_{T_J})\\
+&&\mathscr O_X\arrow[u,"\phi"]\arrow[r]&\mathscr O_{X_J}\arrow[u,"\phi_J"']\\
+&&\mathscr I_Y\arrow[u,hook]\arrow[r]\arrow[uul,dashed,"\phi",bend left=15]&\mathscr I_{Y_J}\arrow[u,hook]
+\end{tikzcd}
+\]
+得知 $\phi$ 将 $\mathscr I_Y$ 映入 $f_*(\mathscr J\mathscr O_T)$。\footnote{编者注（96）：已展开下文。}由 $\mathscr J^2=0$，$f_*(\mathscr J\mathscr O_T)$ 通过 $\phi$ 视为 $\mathscr O_X$-\Term{module}{模}时，被 $\mathscr I_Y$ \Term{annihilate}{零化}。因此 $\phi$ 诱导 $\mathscr O_X$-\Term{module}{模}\Term{morphism}{态射}
+\[h:i_*(\mathscr N_{Y/X})=\mathscr I_Y/\mathscr I_Y^2\longrightarrow f_*(\mathscr J\mathscr O_T).\]
+\SourcePage{160}
+另一方面，有\Term{cartesian-square}{笛卡尔方块}
+\[
+\begin{tikzcd}
+T_0\arrow[r,"f_0"]\arrow[d,"\tau_{T_0}"']&X_0\arrow[d,"\tau_{X_0}"]&Y_0\arrow[l,"i_0"']\arrow[d,"\tau_{Y_0}"]\\
+T\arrow[r,"f"]&X&Y\arrow[l,"i"'].
+\end{tikzcd}
+\]
+其中 $i_{T_0}$ 等为由 $S_0\hookrightarrow S$ 经\Term{base-change}{基变换}得到的\Term{closed-immersion}{闭浸入}。因 $\mathscr J\mathscr O_T$ 是被 $\mathscr I$ \Term{annihilate}{零化}的\Term{quasi-coherent}{拟凝聚} $\mathscr O_T$-\Term{module}{模}，有\Term{isomorphism}{同构}
+\[\mathscr J\mathscr O_T\simeq(\tau_{T_0})_*\tau_{T_0}^*(\mathscr J\mathscr O_T),\]
+从而 $f_*(\mathscr J\mathscr O_T)\simeq(\tau_{X_0})_*(f_0)_*\tau_{T_0}^*(\mathscr J\mathscr O_T)$。由\Term{adjunction}{伴随}，$h$ 对应于 $\mathscr O_{T_0}$-\Term{module}{模}\Term{morphism}{态射}
+\[h_0:f_0^*\tau_{X_0}^*i_*(\mathscr N_{Y/X})\longrightarrow i_{T_0}^*(\mathscr J\mathscr O_T).\]
+而 $\tau_{X_0}^*i_*(\mathscr N_{Y/X})\simeq(i_0)_*\tau_{Y_0}^*(\mathscr N_{Y/X})=\mathscr N_{Y/X}\otimes_{\mathscr O_Y}\mathscr O_{Y_0}$。回到一直采用的记号滥用 $i_{T_0}^*(\mathscr J\mathscr O_T)=\mathscr J\mathscr O_T$，$h_0$ 就是\Term{morphism}{态射}
+\[h_0:f_0^*(\mathscr N_{Y/X}\otimes_{\mathscr O_Y}\mathscr O_{Y_0})\longrightarrow\mathscr J\mathscr O_T,\]
+这便是所求\Term{obstruction}{障碍} $c(X,Y,f)$。(i) 得证。
+
+当 $f$ 是\Term{immersion}{浸入} $i':Y\hookrightarrow X$ 时，可见 $c(X,Y,i')$ 来自\Term{morphism}{态射} $\mathscr I_Y\hookrightarrow\mathscr O_X\to\mathscr O_{Y'}$，故由 4.4.1、4.5.1 对应于类 $d(Y,Y')$。(ii) 得证。
+
+证明 (iii)。$D:\mathscr N_{Y/X}\to i^*(\Omega^1_{X/S})$ 首先诱导\Term{morphism}{态射}
+\[D_0:\tau_{Y_0}^*(\mathscr N_{Y/X})\longrightarrow\tau_{Y_0}^*i^*(\Omega^1_{X/S})=i_0^*\tau_{X_0}^*(\Omega^1_{X/S}).\]
+由于 $X_0=X\times_S S_0$，有 $\tau_{X_0}^*(\Omega^1_{X/S})\simeq\Omega^1_{X_0/S_0}$（见 EGA IV$_4$，16.4.5），所以得到所陈述的\Term{morphism}{态射}
+\[D_0:\mathscr N_{Y/X}\otimes_{\mathscr O_Y}\mathscr O_{Y_0}\longrightarrow\Omega^1_{X_0/S_0}\otimes_{\mathscr O_{X_0}}\mathscr O_{Y_0}.\]
+最后，在下述注记之后验证等式 ($***$)。
+\end{proof}
+\begin{SGAresult}{注记}{4.9}
+\Term{obstruction}{障碍} $c(X,Y,f)$ 可在 $T$ 上\Term{local-scheme}{局部}计算。设 $U=\operatorname{Spec}(C)$ 是 $T$ 的\Term{affine}{仿射}\Term{open-subset}{开集}，位于 $X$ 的\Term{affine}{仿射}\Term{open-subset}{开集} $\operatorname{Spec}(A)$ 上方，后者又位于 $S$ 的\Term{affine}{仿射}\Term{open-subset}{开集} $\operatorname{Spec}(\Lambda)$ 上方。令 $J\subset I\subset\Lambda$（相应地 $I_Y\subset A$）为对应于 $\mathscr J\subset\mathscr I$（相应地 $\mathscr I_Y$）的\Term{ideal}{理想}，令 $B=A/I_Y$，$\phi:A\to C$ 为对应于 $f:T\to X$ 的 $\Lambda$-\Term{algebra}{代数}\Term{morphism}{态射}。因 $f(T_J)\subset Y_J$，有 $\phi(I_Y)\subset JC$，故 $\phi$ 诱导 $\Lambda$-\Term{algebra}{代数}\Term{morphism}{态射} $B\to C/JC\to C_0=C/IC$。于是\Term{obstruction}{障碍} $c=c(X,Y,f)$ 由下述\Term{commutative-diagram}{交换图}计算：
+\[
+\begin{tikzcd}
+I_Y\arrow[r]\arrow[d]&A\arrow[r,"\phi"]&C\\
+I_Y/I_Y^2\arrow[r]&I_Y/I_Y^2\otimes_B C_0\arrow[r,"c"]&JC\arrow[u,hook].
+\end{tikzcd}
+\]
+\SourcePage{161}
+也就是说，在\Term{open-subset}{开集} $U$ 上，它定义为
+\[\operatorname{Hom}_{C_0}(I_Y/I_Y^2\otimes_B C_0,JC)=\operatorname{Hom}_{B_0}(I_Y/I_Y^2\otimes_B B_0,JC)\]
+中唯一满足 $c(x\otimes_B1)=\phi(x)$（$x\in I_Y$）的元素，其中记号含义显然。
+\end{SGAresult}
+现在可以完成 4.8(iii) 的证明。\footnote{编者注（97）：新增下文。}等式 ($***$) 可在 $T$ 上\Term{local-scheme}{局部}验证，所以归结为上述\Term{affine}{仿射}情形。记 $d_{A/\Lambda}$ 为\Term{differential}{微分} $A\to\Omega^1_{A/\Lambda}$。在 $U$ 上，$a$ 对应于
+\[\operatorname{Hom}_{C_0}(\Omega^1_{A_0/\Lambda_0}\otimes_{A_0}C_0,JC)\simeq\operatorname{Hom}_{B_0}(\Omega^1_{A/\Lambda}\otimes_A B_0,JC)\simeq\operatorname{Hom}_A(\Omega^1_{A/\Lambda},JC)\]
+中的元素 $a_U$。一方面，$v_{f_0}(a)$ 在 $U$ 上对应于 $a_U\circ D_0$，其中 $D_0$ 为 $B$-\Term{module}{模}\Term{morphism}{态射}\footnote{编者注（98）：参见编者注（93）。}
+\[I_Y/I_Y^2\longrightarrow\Omega^1_{A/\Lambda}\otimes_A B_0,\qquad x+I_Y^2\longmapsto d_{A/\Lambda}(x)\otimes1.\]
+另一方面（参见 0.1.8、0.1.9 的证明），对应于 $a\cdot f$ 的 $\Lambda$-\Term{algebra}{代数}\Term{morphism}{态射} $\phi':A\to C$ 与 $\phi$ 之差是与 $a_U$ 对应的 $\Lambda$-\Term{derivation}{导子} $A\to JC$，即
+\[\phi'=\phi+a_U\circ d_{A/\Lambda}=\phi+a_U\circ(d_{A/\Lambda}\otimes1).\]
+令 $c'=c(X,Y,a\cdot f)$，对每个 $x\in I_Y$，记其在 $I_Y/I_Y^2$ 中的像为 $\overline x$，有
+\[(c'-c)(\overline x\otimes1)=a_U(d_{A/\Lambda}(x)\otimes1)=(a_U\circ D_0)(\overline x)=v_{f_0}(a)(\overline x).\]
+故 $c'-c=v_{f_0}(a)$。
+
+\textbf{4.10。}原文注记 4.10 已因加入注记 4.8.0 而失去必要，故予删去。
+
+\textbf{4.11。}现在研究下述情形。设 $S,S_J,S_0$ 如 4.8；给定三个 $S$-\Term{scheme}{概形} $X,X',T$，$X$ 的\Term{subscheme}{子概形} $Y$（相应地 $X'$ 的\Term{subscheme}{子概形} $Y'$），以及\Term{morphism}{态射} $f:T\to X'$、$g:X'\to X$。
+\[
+\begin{tikzcd}
+&Y'\arrow[d,hook,"i'"']&Y\arrow[d,hook,"i"]\\
+T\arrow[r,"f"]&X'\arrow[r,"g"]&X.
+\end{tikzcd}
+\]
+\SourcePage{162}
+假设模 $\mathscr J$ \Term{reduced}{约化}后，上图可以补成\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}
+&Y'_J\arrow[r,dashed]\arrow[d,hook,"i'_J"]&Y_J\arrow[d,hook,"i_J"]\\
+T_J\arrow[r,"f_J"]\arrow[ur,dashed]&X'_J\arrow[r,"g_J"]&X_J.
+\end{tikzcd}
+\]
+由 4.8 有\Term{obstruction}{障碍}
+\[
+\begin{aligned}
+c(X,Y,g\circ i')&\in\operatorname{Hom}_{\mathscr O_{Y'_0}}(i_0'^*g_0^*(\mathscr N_{Y/X}\otimes_{\mathscr O_Y}\mathscr O_{Y_0}),\mathscr J\mathscr O_{Y'}),\\
+c(X',Y',f)&\in\operatorname{Hom}_{\mathscr O_{T_0}}(f_0^*(\mathscr N_{Y'/X'}\otimes_{\mathscr O_{Y'}}\mathscr O_{Y'_0}),\mathscr J\mathscr O_T),\\
+c(X,Y,g\circ f)&\in\operatorname{Hom}_{\mathscr O_{T_0}}(f_0^*g_0^*(\mathscr N_{Y/X}\otimes_{\mathscr O_Y}\mathscr O_{Y_0}),\mathscr J\mathscr O_T).
+\end{aligned}
+\]
+我们要计算它们之间的关系。\footnote{编者注（99）：从 4.17 起，将此应用于如下情形：$X$ 为 $S$-群，$g:X\times_S X\to X$ 为\Term{multiplication}{乘法}，$Y$ 为 $X$ 的\Term{subscheme}{子概形}且 $Y_J$ 为 $X_J$ 的\Term{subgroup}{子群}，$Y'=Y\times_S Y$，并取两个\Term{morphism}{态射} $Y^3\to X^2$，分别将 $(y_1,y_2,y_3)$ 映为 $(y_1y_2,y_3)$ 和 $(y_1,y_2y_3)$。比较上述\Term{obstruction}{障碍}，将表明 $Y$ 成为 $X$ 的\Term{subgroup}{子群}的\Term{obstruction}{障碍}位于某个（Hochschild）\Term{cohomology}{上同调}群 $H^2(Y_0,N_0)$ 中。}
+\begin{SGAresult}{\Term{lemma}{引理}}{4.12}
+假设 $Y'$ 在 $S$ 上\Term{flat}{平坦}，因而 $\mathscr J\otimes_{\mathscr O_{S_0}}\mathscr O_{Y'_0}=\mathscr J\mathscr O_{Y'}$。
+
+(i) 有自然\Term{morphism}{态射}
+\[b_{f_0}:\operatorname{Hom}_{\mathscr O_{Y'_0}}(i_0'^*g_0^*(\mathscr N_{Y/X}\otimes\mathscr O_{Y_0}),\mathscr J\mathscr O_{Y'})\longrightarrow\operatorname{Hom}_{\mathscr O_{T_0}}(f_0^*g_0^*(\mathscr N_{Y/X}\otimes\mathscr O_{Y_0}),\mathscr J\mathscr O_T).\]
+(ii) 还有关于 $T$ 具\Term{functorial}{函子性}的自然\Term{morphism}{态射}\footnote{编者注（100）：删去了“$Y'_0$ 为 $X'_0$ 中的\Term{local-complete-intersection}{局部完全交}”的假设；由 4.8.0，它是多余的。另补明 $a_{g_0}(f_0)$ “关于 $T$ 具\Term{functorial}{函子性}”，这一点在 4.17 的证明中至关重要。}
+\[a_{g_0}(f_0):\operatorname{Hom}_{\mathscr O_{T_0}}(f_0^*(\mathscr N_{Y'/X'}\otimes\mathscr O_{Y'_0}),\mathscr J\mathscr O_T)\longrightarrow\operatorname{Hom}_{\mathscr O_{T_0}}(f_0^*g_0^*(\mathscr N_{Y/X}\otimes\mathscr O_{Y_0}),\mathscr J\mathscr O_T).\]
+\end{SGAresult}
+\begin{proof}
+\footnote{编者注（101）：展开证明，以说明 $a_{g_0}$ “关于 $T$ 的\Term{functorial}{函子性}”。}先注意，固定 $X,X',Y,Y'$ 后，给出如上的 $T$ \Term{equivalence}{等价}于给出\Term{morphism}{态射} $(f,f_J):T\to X'\times_{X'^+}Y'^+$。令 $Z=X'\times_{X'^+}Y'^+$，并记 $M,M'$ 为如下定义的 $Z$-\Term{functor}{函子}：对每个 $f:T\to Z$，
+\[
+\begin{aligned}
+M(T)&=\operatorname{Hom}_{\mathscr O_{T_0}}(f_0^*g_0^*(\mathscr N_{Y/X}\otimes\mathscr O_{Y_0}),\mathscr J\mathscr O_T),\\
+M'(T)&=\operatorname{Hom}_{\mathscr O_{T_0}}(f_0^*(\mathscr N_{Y'/X'}\otimes\mathscr O_{Y'_0}),\mathscr J\mathscr O_T).
+\end{aligned}
+\]
+\footnote{编者注（102）：从 4.16 起，情形将简化：只考虑在 $S$ 上\Term{flat}{平坦}的\Term{scheme}{概形}，$Y$ 将是在 $S$ 上\Term{flat}{平坦}的群，$Y'=Y\times_S Y$，于是得到 $S_0$-\Term{functor}{函子} $N_0,N'_0$。}
+\SourcePage{163}
+总有\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}
+f_0^*(\mathscr J\otimes_{\mathscr O_{S_0}}\mathscr O_{Y'_0})\arrow[r,equal]\arrow[d]&\mathscr J\otimes_{\mathscr O_{S_0}}\mathscr O_{T_0}\arrow[d]\\
+f_0^*(\mathscr J\mathscr O_{Y'})\arrow[r,dashed]&\mathscr J\mathscr O_T.
+\end{tikzcd}
+\]
+因 $Y'$ 在 $S$ 上\Term{flat}{平坦}，左侧\Term{arrow}{箭头}为\Term{isomorphism}{同构}，故得到 $\mathscr O_{T_0}$-\Term{module}{模}\Term{morphism}{态射} $f_0^*(\mathscr J\mathscr O_{Y'})\to\mathscr J\mathscr O_T$，它诱导\Term{abelian-group}{交换群}\Term{morphism}{态射}
+\[\operatorname{Hom}_{\mathscr O_{T_0}}(f_0^*g_0^*(\mathscr N_{Y/X}\otimes\mathscr O_{Y_0}),f_0^*(\mathscr J\mathscr O_{Y'}))\longrightarrow M(T).\]
+将之与 $f_0^*$ 诱导的\Term{morphism}{态射}
+\[M(Y')\longrightarrow\operatorname{Hom}_{\mathscr O_{T_0}}(f_0^*g_0^*(\mathscr N_{Y/X}\otimes\mathscr O_{Y_0}),f_0^*(\mathscr J\mathscr O_{Y'}))\]
+复合，得到 $b_{f_0}:M(Y')\to M(T)$。
+
+同样，总有图
+\[
+\begin{tikzcd}
+g_0^*(\mathscr N_{Y/X}\otimes_{\mathscr O_Y}\mathscr O_{Y_0})\arrow[r,dashed]\arrow[d]&\mathscr N_{Y'/X'}\otimes_{\mathscr O_{Y'}}\mathscr O_{Y'_0}\arrow[d]\\
+g_0^*(\mathscr N_{Y_0/X_0})\arrow[r]&\mathscr N_{Y'_0/X'_0}.
+\end{tikzcd}
+\]
+因 $Y'$ 在 $S$ 上\Term{flat}{平坦}，由 4.8.0，第二个竖直\Term{arrow}{箭头}是\Term{isomorphism}{同构}。所以得到 $\mathscr O_{Y'_0}$-\Term{morphism}{态射}
+\[i_0'^*g_0^*(\mathscr N_{Y/X}\otimes_{\mathscr O_Y}\mathscr O_{Y_0})\longrightarrow\mathscr N_{Y'/X'}\otimes_{\mathscr O_{Y'}}\mathscr O_{Y'_0},\]
+它诱导\Term{morphism}{态射} $a_{g_0}(\mathrm{id}_{Y'_0}):M'(Y')\to M(Y')$，并对每个 $f:T\to Z$ 诱导\Term{morphism}{态射} $a_{g_0}(f):M'(T)\to M(T)$，使下图交换：
+\[
+\begin{tikzcd}
+M'(Y')\arrow[r,"a_{g_0}(\mathrm{id}_{Y'_0})"]\arrow[d,"b'_{f_0}"']&M(Y')\arrow[d,"b_{f_0}"]\\
+M'(T)\arrow[r,"a_{g_0}(f_0)"]&M(T).
+\end{tikzcd}
+\]
+其中 $b'_{f_0}$ 与 $b_{f_0}$ 的定义相同。
+\end{proof}
+\begin{SGAresult}{注记}{4.12.1}
+\footnote{编者注（103）：新增此注记，用于 4.17 的证明。}记 $M_0,M'_0$ 为如下定义的 $Y'_0$-\Term{functor}{函子}：对每个 $f:T_0\to Y'_0$，
+\[
+\begin{aligned}
+M_0(T)&=\operatorname{Hom}_{\mathscr O_{T_0}}(f_0^*g_0^*(\mathscr N_{Y/X}\otimes\mathscr O_{Y_0}),\mathscr J\otimes_{\mathscr O_{S_0}}\mathscr O_{T_0}),\\
+M'_0(T)&=\operatorname{Hom}_{\mathscr O_{T_0}}(f_0^*(\mathscr N_{Y'/X'}\otimes\mathscr O_{Y'_0}),\mathscr J\otimes_{\mathscr O_{S_0}}\mathscr O_{T_0}).
+\end{aligned}
+\]
+\SourcePage{164}
+立即注意到 $Z_0=Y'_0$，并且在那些在 $S$ 上\Term{flat}{平坦}的 $Z$-\Term{scheme}{概形} $T$ 构成的\Term{category}{范畴}上，$M,M'$ 分别与 $\prod_{S_0/S}M_0$、$\prod_{S_0/S}M'_0$ 一致。此时 $b_{f_0}$ 就是 $f_0$ 诱导的\Term{morphism}{态射}
+\[f_0^*:M_0(Y'_0)\longrightarrow M(T_0).\]
+对任意\Term{morphism}{态射} $u:U\to T$，令 $h=f\circ u$，有\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}
+M'_0(T_0)\arrow[r,"a_{g_0}(f_0)"]\arrow[d,"u_0^*"']&M_0(T_0)\arrow[d,"u_0^*"]\\
+M'_0(U_0)\arrow[r,"a_{g_0}(h_0)"]&M_0(U_0).
+\end{tikzcd}
+\]
+即 $a_{g_0}$ 成为\Term{functor-morphism}{函子态射} $\prod_{S_0/S}M'_0\to\prod_{S_0/S}M_0$。
+\end{SGAresult}
+\begin{SGAresult}{命题}{4.13}
+假设 $Y'$ 在 $S$ 上\Term{flat}{平坦}。则有公式
+\[c(X,Y,g\circ f)=a_{g_0}(c(X',Y',f))+b_{f_0}(c(X,Y,g\circ i')).\]
+\end{SGAresult}
+\begin{proof}
+各\Term{obstruction}{障碍}及\Term{morphism}{态射} $a_{g_0},b_{f_0}$ 的定义均为\Term{local-scheme}{局部}的，故容易看出，只须在涉及的各\Term{scheme}{概形}均为\Term{affine}{仿射}时验证公式。于是记 $S=\operatorname{Spec}(\Lambda)$、$S_J=\operatorname{Spec}(\Lambda/J)$、$S_0=\operatorname{Spec}(\Lambda/I)$、$T=\operatorname{Spec}(C)$、$X=\operatorname{Spec}(A)$、$Y=\operatorname{Spec}(A/I_Y)=\operatorname{Spec}(B)$、$X'=\operatorname{Spec}(A')$、$Y'=\operatorname{Spec}(A'/I_{Y'})=\operatorname{Spec}(B')$。
+有环及\Term{ideal}{理想}的图\footnote{编者注（104）：保留原文记号，将对应于 $f:T\to X'$、$g:X'\to X$ 的环\Term{morphism}{态射}记为 $f:A'\to C$、$g:A\to A'$。这解释了对 $x\in I_Y$，有公式 $c(X,Y,g\circ f)(x\otimes1)=f(g(x))$。}
+\[
+\begin{tikzcd}
+&B'&B\\
+C&A'\arrow[l,"f"']\arrow[u,"\pi'"]&A\arrow[l,"g"']\arrow[u,"\pi"']\\
+&I_{Y'}\arrow[u,hook]&I_Y\arrow[u,hook].
+\end{tikzcd}
+\]
+逐项研究待证公式。下文对 $x\in I_Y$（相应地 $u\in I_{Y'}$），记其在 $I_Y/I_Y^2$（相应地 $I_{Y'}/I_{Y'}^2$）中的像为 $\overline x$（相应地 $\overline u$）；对 $\Lambda$-\Term{module}{模} $M$ 的元素 $m$，记其在 $M_0=M/IM$ 中的像为 $m_0$。
+
+已知 $c=c(X,Y,g\circ f)$ 是唯一满足 $c(\overline x\otimes1)=f(g(x))$（$x\in I_Y$）的 $C_0$-\Term{morphism}{态射} $I_Y/I_Y^2\otimes_B C_0\to JC$。
+\SourcePage{165}
+固定 $x\in I_Y$；由 $g_J(Y'_J)\subset Y_J$，有 $g(x)\in I_{Y'}+JA'$。写成 $g(x)=x'+\sum\lambda_i a'_i$，其中 $x'\in I_{Y'}$、$\lambda_i\in J$、$a'_i\in A'$。于是
+\[c(X,Y,g\circ f)(\overline x\otimes1)=f(g(x))=f(x')+\sum\lambda_i f(a'_i).\tag{1}\]
+现考察 $a_{g_0}(c(X',Y',f))$。按定义，它由下图给出：
+\[
+\begin{tikzcd}[column sep=small]
+&I_{Y'}\arrow[r,"f"]\arrow[d]&C\\
+I_{Y'_0}/I_{Y'_0}^2\otimes_{B'_0}C_0&I_{Y'}/I_{Y'}^2\otimes_{B'}C_0\arrow[l,"\sim"']\arrow[r,"{c(X',Y',f)}"]&JC\arrow[u,hook]\\
+I_{Y_0}/I_{Y_0}^2\otimes_{B_0}C_0\arrow[u,"\overline g_0"]&I_Y/I_Y^2\otimes_B C_0\arrow[l,two heads]\arrow[u]\arrow[ur,"{a_{g_0}(c(X',Y',f))}"']&.
+\end{tikzcd}
+\]
+故 $a_{g_0}(c(X',Y',f))(\overline x\otimes1)=f(u)$，其中 $u\in I_{Y'}$ 在 $I_{Y'_0}/I_{Y'_0}^2$ 中的像 $\overline u$ 满足 $\overline u_0\otimes1=\overline g_0(\overline x_0)\otimes1=g_0(x_0)\otimes1$。因此可取 $u=x'$，得到
+\[a_{g_0}(c(X',Y',f))(\overline x\otimes1)=f(x').\tag{2}\]
+最后考察 $b_{f_0}(c(X,Y,g\circ i'))$。按假设，$\Lambda_0$-\Term{algebra}{代数}\Term{morphism}{态射} $f_0:A'_0\to C_0$ 经 $B'_0$ \Term{resolution}{分解}，又因 $J\otimes_{\Lambda_0}B'_0\xrightarrow\sim JB'$（$B'$ 在 $\Lambda$ 上\Term{flat}{平坦}），得到 $B'_0$-\Term{module}{模}\Term{morphism}{态射} $\psi:JB'\to JC$，使下图交换：
+\[
+\begin{tikzcd}
+J\otimes_{\Lambda_0}A'_0\arrow[r,"\mathrm{id}\otimes\pi'"]\arrow[d]&J\otimes_{\Lambda_0}B'_0\arrow[r,"\mathrm{id}\otimes f_0"]\arrow[d,"\sim"]&J\otimes_{\Lambda_0}C_0\arrow[d]\\
+JA'\arrow[r,"\pi'"]&JB'\arrow[r,dashed,"\psi"]&JC.
+\end{tikzcd}
+\]
+记 $\phi:JB'\otimes_{B'_0}C_0\to JC$ 为由 $\psi$ 得到的 $C_0$-\Term{module}{模}\Term{morphism}{态射}。对每个 $a'\in A'$、$\lambda\in J$，有
+\[\phi(\lambda\pi'(a')\otimes1)=\lambda f(a').\tag{$\dagger$}\]
+\SourcePage{166}
+于是 $b_{f_0}(c(X,Y,g\circ i'))$ 由\Term{commutative-diagram}{交换图}定义：
+\[
+\begin{tikzcd}[column sep=small]
+I_Y\arrow[r,"\pi'\circ g"]\arrow[d]&B'\\
+I_Y/I_Y^2\otimes_B B'_0\arrow[r,"{c(X,Y,g\circ i')}"]\arrow[d]&JB'\arrow[u,hook]\arrow[d]\\
+I_Y/I_Y^2\otimes_B C_0\arrow[r]\arrow[dr,"{b_{f_0}(c(X,Y,g\circ i'))}"']&JB'\otimes_{B'_0}C_0\arrow[d,"\phi"]\\
+&JC.
+\end{tikzcd}
+\]
+立刻得到
+\[b_{f_0}(c(X,Y,g\circ i'))(\overline x\otimes1)=\phi\left(\sum\lambda_i\pi'(a'_i)\otimes1\right)=\sum\lambda_i f(a'_i),\tag{3}\]
+最后一个等号由上面的 ($\dagger$) 得到。比较显式结果 (1)、(2)、(3)，便得所求公式。
+\end{proof}
+\begin{SGAresult}{推论}{4.14}
+设 $Y,Y'$ 为 $X$ 中\Term{flat}{平坦}且\Term{reduced}{约化}为 $Y_J$ 的两个\Term{subscheme}{子概形}；假设 $Y_0$ 为 $X_0$ 中的\Term{local-complete-intersection}{局部完全交}。若 $S$-\Term{morphism}{态射} $f:T\to X$ 满足 $f_J$ 经 $Y_J\to X_J$ \Term{resolution}{分解}，则有公式
+\[c(X,Y,f)-c(X,Y',f)=b_{f_0}(d(Y,Y')).\]
+\end{SGAresult}
+\begin{proof}
+将上一个公式应用于图
+\[
+\begin{tikzcd}
+&Y'\arrow[d,hook,"i'"']&Y\arrow[d,hook,"i"]\\
+T\arrow[r,"f"]&X\arrow[r,equal,"\mathrm{id}"]&X
+\end{tikzcd}
+\]
+得到 $c(X,Y,f)-c(X,Y',f)=b_{f_0}(c(X,Y,i'))$。再由 4.8(ii)，$c(X,Y,i')=d(Y,Y')$。
+\end{proof}
+\begin{SGAresult}{命题}{4.15}
+设 $X$ 为在 $S$ 上\Term{smooth}{光滑}的 $S$-\Term{group}{群}，$Y$ 为其在 $S$ 上\Term{flat}{平坦}且\Term{locally-finite-presentation}{局部有限表现}的 $S$-\Term{subgroup}{子群}。则 $Y$ 是 $X$ 中的\Term{local-complete-intersection}{局部完全交}（见 4.6.2）。
+\end{SGAresult}
+\SourcePage{167}
+\begin{proof}
+\footnote{编者注（105）：在陈述中加入 $Y$ 在 $S$ 上\Term{locally-finite-presentation}{局部有限表现}的假设，并给出下述证明，它比原文勾勒的证明更直接。为求完整，也展开后者。与上面的证明一样，先归结到 $S=\operatorname{Spec}(k)$，$k$ 为\Term{algebraically-closed-field}{代数闭域}。由 EGA IV$_4$，16.9.10、19.3.2，只须证明对每个 $y\in Y$，\Term{local-ring}{局部环} $\mathscr O_{Y,y}$ 的\Term{completion}{完备化}是一个\Term{complete}{完备}\Term{noetherian-local-ring}{诺特局部环}模掉一个\Term{regular-sequence}{正则列}所得的商。由该书 19.3.3，满足此性质的 $y\in Y$ 构成 $Y$ 的\Term{open-subset}{开集} $U$；$Y$ 在 $k$ 上\Term{finite-type}{有限型}，所以只须证明 $U$ 含有每个\Term{closed-point}{闭点}。因 $Y$ 为 $k$-群，由\Term{translation}{平移}只须证明该性质对 $\mathscr O_{Y,e}$ 的\Term{completion}{完备化}成立，即对与 $Y$ 对应的“\Term{formal-group}{形式群}” $\widehat Y$ 成立（见第 VII$_B$ 讲）。因 $X$ \Term{smooth}{光滑}，\Term{affine}{仿射}\Term{algebra}{代数} $\mathscr A(\widehat X)$ 为\Term{formal-power-series-algebra}{形式幂级数代数} $k[[X_1,\ldots,X_n]]$；Dieudonné 结构\Term{theorem}{定理}表明 $\mathscr A(\widehat Y)$ \Term{isomorphism}{同构}于商 $k[[X_1,\ldots,X_{r+s}]]/(X_1^{p^{n_1}},\ldots,X_r^{p^{n_r}})$，其中 $p$ 为 $k$ 的\Term{characteristic-exponent}{特征指数}，$r+s\leq n$，由此即得结论。参见 VII$_B$，注记 5.5.2(b)。}
+我们证明 $Y\to X$ 为 EGA IV$_4$，16.9.2 意义下的\Term{regular-immersion}{正则浸入}。由 EGA IV$_4$，19.5.1，这也蕴含它在 4.6.2 意义下\Term{regular-immersion}{正则}（而且依该处结果，$S$ \Term{locally-noetherian}{局部诺特}时两个定义\Term{equivalence}{等价}）。故下文“\Term{regular-immersion}{正则浸入}”均取 EGA IV$_4$，16.9.2 的意义。由于 $X,Y$ 均在 $S$ 上\Term{flat}{平坦}且\Term{locally-finite-presentation}{局部有限表现}，由 EGA IV$_4$，19.2.4，只须证明对每个 $s\in S$，$Y_s\to X_s$ 为\Term{regular-immersion}{正则浸入}。由 EGA IV$_4$，19.1.5(ii)，可归结为在 $S$ 的\Term{geometric-fiber}{几何纤维}上验证，即设 $S$ 为\Term{algebraically-closed-field}{代数闭域} $k$ 的谱。
+
+此时由 VI$_A$，3.2，商 $X/Y$ 存在且\Term{smooth}{光滑}，\Term{morphism}{态射} $\pi:X\to X/Y$ \Term{flat}{平坦}，并有\Term{cartesian-square}{笛卡尔方块}
+\[
+\begin{tikzcd}
+Y\arrow[r,"f"]\arrow[d]&X\arrow[d,"\pi"]\\
+e\arrow[r,"i"]&X/Y
+\end{tikzcd}
+\]
+（$e$ 为 $X$ 的单位点在 $X/Y$ 中的像）。故由\Term{flat-base-change}{平坦基变换}（见 EGA IV$_4$，19.1.5(ii)），只须证明 $i$ 为\Term{regular-immersion}{正则浸入}；这立即成立，因为\Term{noetherian-local-ring}{诺特局部环} $\mathscr O_{X/Y,e}$ \Term{smooth}{光滑}，从而其\Term{maximal-ideal}{极大理想}由一个\Term{regular-sequence}{正则列}生成。
+\end{proof}
+\textbf{4.16。}\footnote{编者注（106）：重新编排 4.16，将 4.15 末尾的假设与\Term{obstruction}{障碍} $DY$ 的定义归并在此。}设 $X$ 为在 $S$ 上\Term{smooth}{光滑}的 $S$-\Term{group}{群}，以 $\mu:X\times_S X\to X$ 表示其\Term{group-law}{群运算}。给定 $X_J$ 的 $S_J$-\Term{subgroup}{子群} $Y_J$，在 $S_J$ 上\Term{flat}{平坦}且\Term{locally-finite-presentation}{局部有限表现}。由 4.15，$Y_J$ 为 $X$ 中的\Term{local-complete-intersection}{局部完全交}。
+
+因此由 4.6.5，\Term{lifting}{提升} $Y_J$ 的每个\Term{flat}{平坦}\footnote{编者注（107）：补入“\Term{flat}{平坦}”，以修正原文。} $S$-\Term{scheme}{概形} $Y$ 都是 $X$ 中的\Term{local-complete-intersection}{局部完全交}。对这样的 $Y$，由 4.8.0 有
+\[\mathscr N_{Y/X}\otimes_{\mathscr O_Y}\mathscr O_{Y_0}=\mathscr N_{Y_0/X_0}=\mathscr N_{Y_J/X_J}\otimes_{\mathscr O_{Y_J}}\mathscr O_{Y_0}.\tag{4.16.1}\]
+\SourcePage{168}
+另一方面，记 $\varepsilon_0:S_0\to Y_0$ 为 $Y_0$ 的\Term{unit-section}{单位截面}，$n_{Y_0/X_0}$ 为\Term{quasi-coherent}{拟凝聚} $\mathscr O_{S_0}$-\Term{module}{模}
+\[n_{Y_0/X_0}=\varepsilon_0^*(\mathscr N_{Y_0/X_0}).\]
+由于 $Y_0,X_0$ 都是 $S_0$-\Term{group}{群}，容易看出 $\mathscr N_{Y_0/X_0}$ 在 $Y_0$ 的\Term{translation}{平移}（例如\Term{left-translation}{左平移}）下\Term{invariant}{不变}，故\footnote{编者注（108）：见下文 4.25。}它是 $n_{Y_0/X_0}$ 沿 $Y_0\to S_0$ 的\Term{inverse-image}{逆像}，即
+\[\mathscr N_{Y_0/X_0}=n_{Y_0/X_0}\otimes_{\mathscr O_{S_0}}\mathscr O_{Y_0}.\tag{4.16.2}\]
+结合 (4.16.1)、(4.16.2)，一方面由 4.5，$X$ 中在 $S$ 上\Term{flat}{平坦}且\Term{lifting}{提升} $Y_J$ 的 $S$-\Term{subscheme}{子概形} $Y$ 的\Term{set}{集合}，或为空，或在
+\[\operatorname{Hom}_{\mathscr O_{Y_0}}(n_{Y_0/X_0}\otimes_{\mathscr O_{S_0}}\mathscr O_{Y_0},\mathscr J\otimes_{\mathscr O_{S_0}}\mathscr O_{Y_0})\tag{4.16.3}\]
+下\Term{principal-homogeneous-set}{主齐性}。另一方面，由 4.8(i)，对每个这样的 $Y$ 及任意 $S$-\Term{morphism}{态射} $f:T\to X$，若 $f_J:T_J\to X_J$ 经 $Y_J$ \Term{resolution}{分解}，则 $f$ 经 $Y$ \Term{resolution}{分解}的\Term{obstruction}{障碍} $c(X,Y,f)$ 属于
+\[\operatorname{Hom}_{\mathscr O_{T_0}}(n_{Y_0/X_0}\otimes_{\mathscr O_{S_0}}\mathscr O_{T_0},\mathscr J\mathscr O_T).\]
+若 $T$ 还在 $S$ 上\Term{flat}{平坦}，后一个\Term{group}{群}等于
+\[\operatorname{Hom}_{\mathscr O_{T_0}}(n_{Y_0/X_0}\otimes_{\mathscr O_{S_0}}\mathscr O_{T_0},\mathscr J\otimes_{\mathscr O_{S_0}}\mathscr O_{T_0}).\]
+由此引入下述\Term{group-functor}{群函子} $N_0$：
+\begin{SGAresult}{定义}{4.16.1}
+令 $N_0$ 为如下定义的\Term{commutative-group}{交换群}值 $S_0$-\Term{functor}{函子}：对每个 $Z\in\operatorname{Ob}(\mathrm{Sch})/S_0$，
+\[\operatorname{Hom}_{S_0}(Z,N_0)=\operatorname{Hom}_{\mathscr O_Z}(n_{Y_0/X_0}\otimes_{\mathscr O_{S_0}}\mathscr O_Z,\mathscr J\otimes_{\mathscr O_{S_0}}\mathscr O_Z).\tag{$*$}\]
+于是，$X$ 中在 $S$ 上\Term{flat}{平坦}且\Term{lifting}{提升} $Y_J$ 的 $S$-\Term{subscheme}{子概形} $Y$ 的\Term{set}{集合}，或为空，或是
+\[\operatorname{Hom}_{S_0}(Y_0,N_0)=C^1(Y_0,N_0)\]
+下的\Term{principal-homogeneous-set}{主齐性集合}。
+对每个这样的 $Y$，考虑图
+\[
+\begin{tikzcd}
+Y\times_S Y\arrow[d,hook,"{(i,i)}"']&Y\arrow[d,hook,"i"]\\
+X\times_S X\arrow[r,"\mu"]&X.
+\end{tikzcd}
+\]
+记 $DY=c(X,Y,\mu\circ(i,i))$ 为 $\mu\circ(i,i)$ 经 $Y$ \Term{resolution}{分解}、即 $Y$ 在 $X$ 的\Term{group-law}{群运算}下\Term{stable}{稳定}的\Term{obstruction}{障碍}；由上文，$DY$ 属于
+\[N_0(Y_0\times_{S_0}Y_0)=C^2(Y_0,N_0).\]
+\end{SGAresult}
+\SourcePage{169}
+\begin{SGAresult}{\Term{lemma}{引理}}{4.17}
+\footnote{编者注（109）：考虑 4.16 所作的补充，修改了 4.17、4.18。}设 $X$ 为在 $S$ 上\Term{smooth}{光滑}的 $S$-\Term{group}{群}，$Y_J$ 为 $X_J$ 的 $S_J$-\Term{subgroup}{子群}，在 $S_J$ 上\Term{flat}{平坦}且\Term{locally-finite-presentation}{局部有限表现}。对 $X$ 中每个在 $S$ 上\Term{flat}{平坦}且\Term{lifting}{提升} $Y_J$ 的\Term{subscheme}{子概形} $Y$，考虑 4.16.1 定义的\Term{obstruction}{障碍}
+\[DY\in\operatorname{Hom}_{S_0}(Y_0\times_{S_0}Y_0,N_0)=C^2(Y_0,N_0).\]
+(i) $Y$ 为 $X$ 的 $S$-\Term{subgroup}{子群}的充要条件是 $DY=0$。
+
+(ii) 通过 $Y_0$ 的\Term{inner-automorphism}{内自同构}，利用\Term{functorial}{函子性}使 $Y_0$ \Term{action}{作用}于 $N_0$，则 $DY\in Z^2(Y_0,N_0)$。
+
+(iii) 若 $Y,Y'$ 为 $X$ 中两个在 $S$ 上\Term{flat}{平坦}且\Term{lifting}{提升} $Y_J$ 的\Term{subscheme}{子概形}（因而定义了\Term{deviation}{偏差} $d(Y,Y')\in C^1(Y_0,N_0)$，见 4.5.1），则 $DY'-DY=\partial^1d(Y,Y')$。\footnote{编者注（110）：原文写成 $DY'-DY=-\partial d(Y,Y')$，但其中的 $\partial$ 与 I，5.1 定义的\Term{differential}{微分} $\partial^1$ 相差一个负号。}
+\end{SGAresult}
+依次证明这些断言。
+
+\textbf{4.18。4.17(i) 的证明。}按定义，$DY=0$ 当且仅当 $Y$ 在 $X$ 的\Term{group-law}{群运算}下\Term{stable}{稳定}。因此，若 $Y$ 为 $X$ 的\Term{subgroup}{子群}，便有 $DY=0$。反过来，若 $DY=0$，则 $Y$ 带有诱导的运算 $\mu^Y$，它满足\Term{associative-law}{结合律}，且模 $\mathscr J$ \Term{reduced}{约化}为 $X_J$ 上的\Term{group-law}{群运算}；由于 $Y$ 在 $S$ 上\Term{flat}{平坦}且\Term{locally-finite-presentation}{局部有限表现}，由 3.3，$\mu^Y$ 为\Term{group-law}{群运算}。
+
+\textbf{4.19。4.17(ii) 的证明。}比较 $u=c(X,Y,\mu^2\circ(i,i,i))$ 在以下两图 $(D_j)$（$j=1,2$）中算出的值：
+\[
+\begin{tikzcd}[column sep=small]
+Y\times_S Y\times_S Y\arrow[d,hook,"{(i,i,i)}"']&Y\times_S Y\arrow[d,hook,"{(i,i)}"']&Y\arrow[d,hook,"i"]\\
+X\times_S X\times_S X\arrow[r,"f_j"]&X\times_S X\arrow[r,"\mu"]&X.
+\end{tikzcd}\qquad(D_j)
+\]
+其中 $f_1=(1,\pi)$、$f_2=(\pi,1)$，并以 $\mu^2$ 表示\Term{morphism}{态射}
+\[\mu\circ f_1=\mu\circ f_2:X\times_S X\times_S X\longrightarrow X.\]
+令 $\mu^Y=\mu\circ(i,i)$、$f_j^Y=f_j\circ(i,i,i)$、$\mu^{2,Y}=\mu^2\circ(i,i,i)$。\footnote{编者注（111）：略改记号，并展开论证的开头。}对 $j=1,2$，记 $a_j,b_j$ 为\Term{lemma}{引理} 4.12 与一对\Term{morphism}{态射} $(f_j^Y,\mu)$ 相联系的\Term{morphism}{态射}
+\[a_j=a_{\mu_0}((f_j^Y)_0),\qquad b_j=b_{(f_j^Y)_0}.\]
+因而有
+\[
+\left\{\begin{aligned}
+\operatorname{Hom}_{\mathscr O_{Y_0^3}}((f_j^Y)_0^*\mathscr N_{Y_0\times Y_0/X_0\times X_0},\mathscr J\mathscr O_{Y_0^3})&\xrightarrow{a_j}\operatorname{Hom}_{\mathscr O_{Y_0^3}}((\mu^{2,Y})_0^*\mathscr N_{Y_0/X_0},\mathscr J\mathscr O_{Y_0^3}),\\
+\operatorname{Hom}_{\mathscr O_{Y_0^2}}((\mu^Y)_0^*\mathscr N_{Y_0/X_0},\mathscr J\mathscr O_{Y_0^2})&\xrightarrow{b_j}\operatorname{Hom}_{\mathscr O_{Y_0^3}}((\mu^{2,Y})_0^*\mathscr N_{Y_0/X_0},\mathscr J\mathscr O_{Y_0^3}).
+\end{aligned}\right.\tag{$\dagger$}
+\]
+\SourcePage{170}
+因 $X_0,Y_0$ 在 $S_0$ 上\Term{flat}{平坦}，有 $\mathscr N_{Y_0\times Y_0/X_0\times X_0}\simeq\operatorname{pr}_1^*\mathscr N_{Y_0/X_0}\oplus\operatorname{pr}_2^*\mathscr N_{Y_0/X_0}$；又 $\mathscr N_{Y_0/X_0}\simeq n_{Y_0/X_0}\otimes_{\mathscr O_{S_0}}\mathscr O_{Y_0}$，故
+\[(f_j^Y)_0^*(\mathscr N_{Y_0\times Y_0/X_0\times X_0})\simeq(n_{Y_0/X_0}\oplus n_{Y_0/X_0})\otimes\mathscr O_{Y_0^3}.\]
+同样有
+\[(\mu^{2,Y})_0^*(\mathscr N_{Y_0/X_0})\simeq n_{Y_0/X_0}\otimes\mathscr O_{Y_0^3},\qquad(\mu^Y)_0^*(\mathscr N_{Y_0/X_0})\simeq n_{Y_0/X_0}\otimes\mathscr O_{Y_0^2}.\]
+又因 $Y_0^2,Y_0^3$ 在 $S_0$ 上\Term{flat}{平坦}，($\dagger$) 可改写为
+\[\left\{\begin{aligned}
+a_j&:\operatorname{Hom}_{S_0}(Y_0^3,N_0\oplus N_0)\longrightarrow\operatorname{Hom}_{S_0}(Y_0^3,N_0),\\
+b_j&:\operatorname{Hom}_{S_0}(Y_0^2,N_0)\longrightarrow\operatorname{Hom}_{S_0}(Y_0^3,N_0).
+\end{aligned}\right.\tag{$\ddagger$}\]
+两次将 4.13 应用于 $c(X,Y,\mu^{2,Y})=u$，得到
+\[a_1(c(X^2,Y^2,f_1))+b_1(c(X,Y,\mu^Y))=u=a_2(c(X^2,Y^2,f_2))+b_2(c(X,Y,\mu^Y)).\]
+而 $c(X,Y,\mu^Y)=DY$，且因 $f_1=(1,\mu)$、$f_2=(\mu,1)$，采用显然的记号，有
+\[c(X^2,Y^2,f_1)=(0,DY),\qquad c(X^2,Y^2,f_2)=(DY,0).\]
+于是
+\[u=a_1((0,DY))+b_1(DY)=a_2((DY,0))+b_2(DY).\]
+先注意，$b_j$ 正是 $\operatorname{Hom}_{S_0}((f_j^Y)_0,N_0)$，即由 $(f_j^Y)_0$ 的\Term{functorial}{函子性}得到的\Term{morphism}{态射}。故上式变为
+\[a_1((0,DY))-\operatorname{Hom}((\mu,1),N_0)(DY)+\operatorname{Hom}((1,\mu),N_0)(DY)-a_2((DY,0))=0.\]
+中间两项正是 $2$-\Term{coboundary}{余边界}公式中的“$DY(xy,z)$”和“$DY(x,yz)$”部分，只须辨认另外两项。
+
+先计算映射 $a_j$。它由 $Y_0$ 中的乘积诱导的 $\mathscr O_{Y_0^2}$-\Term{module}{模}\Term{morphism}{态射}
+\[P:n_{Y_0/X_0}\otimes\mathscr O_{Y_0^2}\longrightarrow(n_{Y_0/X_0}\oplus n_{Y_0/X_0})\otimes\mathscr O_{Y_0^2}\]
+沿 $(f_j^Y)_0$ 取\Term{inverse-image}{逆像}得到。$P$ 可如下描述：考虑\Term{vector-bundle}{向量丛} $V=\mathbf V(n_{Y_0/X_0})$；$P$ 通过\Term{duality}{对偶}给出\Term{morphism}{态射}
+\[\mathbf V(P):V\times_{S_0}V\times_{S_0}Y_0\times_{S_0}Y_0\longrightarrow V\times_{S_0}Y_0\times_{S_0}Y_0,\]
+在\Term{set-sheaf}{集合层}面表示为
+\[\mathbf V(P)(u,v,a,b)=(u+\operatorname{Ad}(a)v,ab,b).\]
+\footnote{编者注（112）：将 $a,b$ 换成 $ab,b$，以表明 $\mathbf V(P)$ 来自\Term{multiplication}{乘法}\Term{morphism}{态射} $\mathbf V_{Y_0}\times_{S_0}\mathbf V_{Y_0}\to\mathbf V_{Y_0}$ 在 $Y_0^2$ 上的\Term{inverse-image}{逆像}。}
+此式的证明与\Term{lie-algebra}{李代数}、即\Term{module}{模} $\omega^1_{Y_0/S_0}$ 中对应事实的证明完全相同。先注意，由关于 $Y_0$ 的\Term{functorial}{函子性}，$V$ 带有 $S_0$ 上\Term{vector-bundle}{向量丛}\Term{category}{范畴}中的\Term{group-structure}{群结构}；
+\SourcePage{171}
+由此前用于\Term{lie-algebra}{李代数}的\Term{lemma}{引理}（第 II 讲，3.10），此结构与其 $\mathscr O_S$-\Term{module}{模}结构的底\Term{group-structure}{群结构}一致。再看出 $\mathbf V(n_{Y_0/X_0}\otimes_{\mathscr O_{S_0}}\mathscr O_{Y_0})=\mathbf V(\mathscr N_{Y_0/X_0})$ 也带有 $S_0$-\Term{group}{群}结构，正是 $V$ 的结构与 $Y_0$ 的结构的\Term{semidirect-product}{半直积}。只须辨认 $Y_0$ 在 $V$ 上的\Term{action}{作用}，即得所求公式。
+
+现计算剩余两项。先考察 $a_1((0,DY))$，由下图计算（$n$ 表示 $n_{Y_0/X_0}$）：
+\[
+\begin{tikzcd}
+n\otimes\mathscr O_{Y_0^2}\arrow[r,"P"]\arrow[d,"(f_1^Y)_0^*"']&(n+n)\otimes\mathscr O_{Y_0^2}\arrow[d,"(f_1^Y)_0^*"]\\
+n\otimes\mathscr O_{Y_0^3}\arrow[dr,"{a_1((0,DY))}"']&(n+n)\otimes\mathscr O_{Y_0^3}\arrow[d,"{(0,DY)}"]\\
+&\mathscr J\otimes\mathscr O_{Y_0^3}.
+\end{tikzcd}
+\]
+将这些\Term{module}{模}定义的\Term{vector-bundle}{向量丛}均视为 $S_0$ 上的\Term{scheme}{概形}，取它们在任意\Term{object}{对象}中的值点，并以 $(u,x,y,z)$ 表示 $\mathbf V(\mathscr J)\times Y_0^3$ 的一点，有
+\[
+\begin{tikzcd}[column sep=small]
+(\operatorname{Ad}(x)DY_{y,z}(u),x,yz)&(0+DY_{y,z}(u),x,yz)\arrow[l,maps to]\\
+&(0+DY_{y,z}(u),x,y,z)\arrow[u,maps to]\\
+(\operatorname{Ad}(x)DY_{y,z}(u),x,y,z)\arrow[uu,maps to]&(u,x,y,z)\arrow[l,maps to]\arrow[u,maps to].
+\end{tikzcd}
+\]
+于是 $a_1((0,DY))(x,y,z)=\operatorname{Ad}(x)DY(y,z)$，正是\Term{coboundary}{余边界}的首项。同样可得 $a_2((DY,0))(x,y,z)=DY(x,y)$，故\footnote{编者注（113）：为与 I，5.1 相容，改变了各项\Term{signature}{符号}。}
+\[0=\operatorname{Ad}(x)DY(y,z)-DY(xy,z)+DY(x,yz)-DY(x,y)=(\partial^2DY)(x,y,z).\]
+\SourcePage{172}
+\textbf{4.20。4.17(iii) 的证明。}\footnote{编者注（114）：下文展开了原文。}在以下两图中计算 $v=c(X,Y,\mu\circ(i',i'))$，并比较所得的两个值：
+\[
+\begin{tikzcd}
+&Y'\arrow[d,hook,"i'"']&Y\arrow[d,hook,"i"]\\
+Y'\times_S Y'\arrow[r,"{\mu\circ(i',i')}"]&X\arrow[r,equal]&X
+\end{tikzcd}\qquad(*)
+\]
+\[
+\begin{tikzcd}
+&Y\times_S Y\arrow[d,hook,"{(i,i)}"']&Y\arrow[d,hook,"i"]\\
+Y'\times_S Y'\arrow[r,"{(i',i')}"]&X\times_S X\arrow[r,"\mu"]&X.
+\end{tikzcd}\qquad(\dagger)
+\]
+记 $f=\mu\circ(i',i')$，则 ($*$) 给出
+\[v=DY'+f_0^*(c(X,Y,i')).\tag{1}\]
+而 $Y'_0=Y_0$，$f_0$ 是\Term{multiplication}{乘法} $Y_0^2\to Y_0$，故
+\[f_0^*(c(X,Y,i'))(x_0,y_0)=c(X,Y,i')(x_0y_0).\tag{2}\]
+令 $c=c(X,Y,i')$；通过 $N'_0\simeq N_0\oplus N_0$，$c(X\times_S X,Y\times_S Y,(i',i'))$ 对应于 $(c,c)$。因此令 $h=(i',i')$，($\dagger$) 给出
+\[v=h_0^*(DY)+a_{\mu_0}(c,c).\tag{3}\]
+但 $h_0$ 是 $Y_0^2$ 的\Term{identity-map}{恒等映射}，故 $h_0^*(DY)=DY$。最后，由前面 $a_{\mu_0}$ 的计算，对任意 $S'\to S$ 及 $x_0,y_0\in Y_0(S'_0)$，有
+\[a_{\mu_0}(c,c)(x_0,y_0)=c(x_0)+\operatorname{Ad}(x_0)(c(y_0)).\tag{4}\]
+所以
+\[
+\begin{aligned}
+(DY'-DY)(x_0,y_0)&=\operatorname{Ad}(x_0)(c(X,Y,i')(y_0))-c(X,Y,i')(x_0y_0)+c(X,Y,i')(x_0)\\
+&=(\partial^1c(X,Y,i'))(x_0,y_0).
+\end{aligned}
+\]
+由于 $c(X,Y,i')=d(Y,Y')$（见 4.8(ii)），这表明 $DY'-DY=\partial^1d(Y,Y')$。
+\begin{SGAresult}{\Term{theorem}{定理}}{4.21}
+设 $S$ 为\Term{scheme}{概形}，$\mathscr I,\mathscr J$ 为其上两个\Term{ideal}{理想}\footnote{编者注（115）：删去了似乎多余的 $\mathscr I$ \Term{nilpotent}{幂零}的假设。}，满足 $\mathscr I\supset\mathscr J$、$\mathscr I\mathscr J=0$。设 $X$ 为在 $S$ 上\Term{smooth}{光滑}的 $S$-\Term{group}{群}，$Y_J$ 为 $X_J$ 的 $S_J$-\Term{subgroup}{子群}，在 $S_J$ 上\Term{flat}{平坦}且\Term{locally-finite-presentation}{局部有限表现}。考虑如下定义的\Term{commutative-group}{交换群}值 $S_0$-\Term{functor}{函子} $N_0$：
+\[\operatorname{Hom}_{S_0}(T,N_0)=\operatorname{Hom}_{\mathscr O_T}(n_{Y_0/X_0}\otimes_{\mathscr O_{S_0}}\mathscr O_T,\mathscr J\otimes_{\mathscr O_{S_0}}\mathscr O_T),\qquad T\in\operatorname{Ob}(\mathrm{Sch})/S_0,\]
+其上 $Y_0$ 通过 $X_0$ 的\Term{inner-automorphism}{内自同构}\Term{action}{作用}。
+
+(i) $X$ 中存在在 $S$ 上\Term{flat}{平坦}且\Term{reduced}{约化}为 $Y_J$ 的 $S$-\Term{subgroup}{子群}，当且仅当下述两条成立：
+\SourcePage{173}
+(i$_1$) $X$ 中存在在 $S$ 上\Term{flat}{平坦}且\Term{lifting}{提升} $Y_J$ 的\Term{subscheme}{子概形} $Y$（若 $Y_0$ \Term{affine}{仿射}，此条件自动满足，见 4.6.5）。
+
+(i$_2$) $H^2(Y_0,N_0)$ 中某个\Term{canonical}{典范}\Term{obstruction}{障碍}为零。
+
+(ii) 若 (i) 的条件成立，则 $X$ 中在 $S$ 上\Term{flat}{平坦}且\Term{reduced}{约化}为 $Y_J$ 的 $S$-\Term{subgroup}{子群} $Y$ 的\Term{set}{集合}，是\Term{group}{群} $Z^1(Y_0,N_0)$ 下的\Term{principal-homogeneous-set}{主齐性集合}。\footnote{编者注（116）：将上述\Term{set}{集合}模掉那些诱导 $X(S_J)$ 的\Term{identity-element}{单位元}的 $x\in X(S)$ 的\Term{conjugacy}{共轭}\Term{action}{作用}后，是否成为 $H^1(Y_0,N_0)$ 下的\Term{principal-homogeneous-set}{主齐性集合}？4.23—4.36 就讨论这一问题。}
+\end{SGAresult}
+\begin{proof}
+条件 (i$_1$) 必要。设其满足，并取在 $S$ 上\Term{flat}{平坦}且\Term{lifting}{提升} $Y_J$ 的 $Y$。须寻找同样在 $S$ 上\Term{flat}{平坦}且\Term{lifting}{提升} $Y_J$ 的 $Y'$，使 $DY'=0$\footnote{编者注（117）：将 $\partial DY'$ 改为 $DY'$。}，见 4.17(i)。由 4.17(iii)，这\Term{equivalence}{等价}于寻找 $d(Y',Y)\in C^1(Y_0,N_0)$，使 $DY=\partial^1d(Y',Y)$。\footnote{编者注（118）：参见编者注（110）。}
+
+由 4.17(ii)，$DY$ 为\Term{cocycle}{余循环}；令 $c\in H^2(Y_0,N_0)$ 为它的像类。由 4.17(iii)，它与 $Y$ 的选择无关；其为零是存在满足上式的 $d(Y',Y)$ 的充要条件。(i) 得证。
+
+若现已选定 $Y$ 使 $DY=0$，待解的方程就是 $\partial^1d(Y',Y)=0$，这就证明了 (ii)。
+\end{proof}
+\begin{SGAresult}{注记}{4.22}
+沿用 4.21 的记号。由 4.15，$Y_0$ 为 $X_0$ 中的\Term{local-complete-intersection}{局部完全交}，故 $\mathscr N_{Y_0/X_0}$ 为\Term{finite}{有限}\Term{locally-free}{局部自由} $\mathscr O_{Y_0}$-\Term{module}{模}，从而 $n_{Y_0/X_0}=\varepsilon_0^*(\mathscr N_{Y_0/X_0})$ 为\Term{finite}{有限}\Term{locally-free}{局部自由} $\mathscr O_{S_0}$-\Term{module}{模}。因此，记 $n_{Y_0/X_0}^\vee=\mathscr Hom_{\mathscr O_{Y_0}}(n_{Y_0/X_0},\mathscr O_{Y_0})$，对任意 $T\to S_0$ 有
+\[\mathscr Hom_{\mathscr O_T}(n_{Y_0/X_0}\otimes_{\mathscr O_{S_0}}\mathscr O_T,\mathscr J\otimes_{\mathscr O_{S_0}}\mathscr O_T)\simeq n_{Y_0/X_0}^\vee\otimes_{\mathscr O_{S_0}}\mathscr J\otimes_{\mathscr O_{S_0}}\mathscr O_T.\]
+\footnote{编者注（119）：展开了上述论证，说明下述\Term{isomorphism}{同构}无须\Term{flat}{平坦}性假设便成立；不过，自 4.16 起只考虑在 $S$ 上\Term{flat}{平坦}的 $S$-\Term{scheme}{概形} $f:T\to S$，是为了保证\Term{obstruction}{障碍} $c(X,Y,f)$ 所在的群 $\operatorname{Hom}_{\mathscr O_{T_0}}(n_{Y_0/X_0}\otimes_{\mathscr O_{S_0}}\mathscr O_{T_0},\mathscr J\mathscr O_T)$ 与 $N_0(T_0)$ 相同（见 4.16 末尾）。}因此 $S_0$-\Term{functor}{函子} $N_0$ \Term{isomorphism}{同构}于\Term{functor}{函子}
+\[\mathbf W(n_{Y_0/X_0}^\vee\otimes_{\mathscr O_{S_0}}\mathscr J)\simeq\mathbf W(\mathscr Hom_{\mathscr O_{S_0}}(n_{Y_0/X_0},\mathscr J)).\]
+从而有\Term{isomorphism}{同构}\footnote{编者注（120）：采用 I，5.3 的记号，并假设 $Y_0$ 在 $S_0$ 上\Term{affine}{仿射}。}
+\[
+\begin{aligned}
+H^2(Y_0,N_0)&\simeq H^2(Y_0,\mathscr Hom_{\mathscr O_{S_0}}(n_{Y_0/X_0},\mathscr J))\simeq H^2(Y_0,n_{Y_0/X_0}^\vee\otimes_{\mathscr O_{S_0}}\mathscr J),\\
+Z^1(Y_0,N_0)&\simeq Z^1(Y_0,\mathscr Hom_{\mathscr O_{S_0}}(n_{Y_0/X_0},\mathscr J))\simeq Z^1(Y_0,n_{Y_0/X_0}^\vee\otimes_{\mathscr O_{S_0}}\mathscr J).
+\end{aligned}
+\]
+\end{SGAresult}
+\textbf{4.23。}仍在 4.21 的假设下，现在研究\Term{lifting}{提升} $Y_J$ 的 $Y$ 的\Term{set}{集合}如何受 $X$ 的\Term{section}{截面}的\Term{conjugacy}{共轭}\Term{action}{作用}影响。若 $x$ 是 $X$ 在 $S$ 上的\Term{section}{截面}，诱导 $X_J$ 的\Term{unit-section}{单位截面}，则 $x$ 定义的\Term{inner-automorphism}{内自同构} $\operatorname{Int}(x)$ 将 $X$ 中\Term{lifting}{提升} $Y_J$ 的\Term{flat}{平坦}\Term{subgroup}{子群}映为同类\Term{subgroup}{子群}。在 4.21(ii) 的条件下，这些\Term{subgroup}{子群}的\Term{set}{集合}在 $Z^1(Y_0,N_0)$ 下\Term{principal-homogeneous-set}{主齐性}；我们将看到，此时存在 $B^1(Y_0,N_0)$ 的\Term{subgroup}{子群} $\Gamma$，
+\SourcePage{174}
+\footnote{编者注（121）：将 $Z^1(Y_0,N_0)$ 改为 $B^1(Y_0,N_0)$，因为证明表明 $\Gamma$ 是 $B^1(Y_0,N_0)$ 的\Term{subgroup}{子群}，见 4.27—4.29。}使 $X$ 中两个在 $S$ 上\Term{flat}{平坦}且\Term{lifting}{提升} $Y_J$ 的\Term{subgroup}{子群}，被某个诱导 $X(S_J)$ 的\Term{identity-element}{单位元}的 $x\in X(S)$ \Term{conjugacy}{共轭}，当且仅当它们在 $Z^1(Y_0,N_0)$ 中的“差”属于 $\Gamma$。在最好的情形下，将证明 $\Gamma=B^1(Y_0,N_0)$，因此将 $X$ 中\Term{lifting}{提升} $Y_J$ 的\Term{flat}{平坦}\Term{subgroup}{子群}的\Term{set}{集合}模掉这些 $x\in X(S)$ 的\Term{conjugacy}{共轭}\Term{action}{作用}后，所得\Term{set}{集合}或为空，或在 $H^1(Y_0,N_0)$ 下\Term{principal-homogeneous-set}{主齐性}（见 4.29、4.36）。
+
+\textbf{4.24。}沿用 4.21 的记号。设 $Y$ 为 $X$ 中\Term{reduced}{约化}为 $Y_J$ 的\Term{flat}{平坦}\Term{subgroup}{子群}。回顾 0.5 中引入的\Term{functor}{函子} $L_{0X}$（相应地 $L_{0Y}$），它由关于可变 $S_0$-\Term{scheme}{概形} $T$ 的恒等式
+\[\operatorname{Hom}_{S_0}(T,L_{0X})=\operatorname{Hom}_{\mathscr O_T}(\omega^1_{X_0/S_0}\otimes_{\mathscr O_{S_0}}\mathscr O_T,\mathscr J\otimes_{\mathscr O_{S_0}}\mathscr O_T)\]
+定义（相应地将 $X$ 换成 $Y$）；还引入了\Term{functor}{函子} $L'_X=\prod_{S_0/S}L_{0X}$。有：
+\begin{SGAresult}{\Term{lemma}{引理}}{4.25}
+存在\Term{canonical}{典范}的 $Y_0$-$\mathscr O_{S_0}$-\Term{module}{模}\Term{exact-sequence}{正合列}
+\[n_{Y_0/X_0}\xrightarrow d\omega^1_{X_0/S_0}\longrightarrow\omega^1_{Y_0/S_0}\longrightarrow0,\tag{$+$}\]
+并具有以下性质：
+
+(i) 沿 $Y_0$ 取\Term{inverse-image}{逆像}，$d$ 给出 4.8(iii) 的\Term{morphism}{态射} $D_0$。
+
+(ii) 若 $X_0,Y_0$ 在 $S_0$ 上\Term{smooth}{光滑}，则 $d$ 为\Term{injectivity}{单射}。由于两个 $\omega^1$ 此时都是\Term{finite-type}{有限型}\Term{locally-free}{局部自由}，$n_{Y_0/X_0}$ 也如此，且序列\Term{locally-split}{局部分裂}。
+\end{SGAresult}
+\begin{proof}
+\footnote{编者注（122）：结合第 I 讲 § 6.8 中的增补，展开了证明。}记 $\pi_0:Y_0\to S_0$。由 SGA 1 II，公式 (4.3)（另见 EGA IV$_4$，16.4.21），有\Term{canonical}{典范}的 $\mathscr O_{Y_0}$-\Term{module}{模}\Term{exact-sequence}{正合列}
+\[\mathscr N_{Y_0/X_0}\xrightarrow{D_0}\Omega^1_{X_0/S_0}\otimes_{\mathscr O_{X_0}}\mathscr O_{Y_0}\longrightarrow\Omega^1_{Y_0/S_0}\longrightarrow0.\tag{$\dagger$}\]
+此序列由 $(Y_0\times_S Y_0)$-\Term{equivariant}{等变}\Term{module}{模}及\Term{morphism}{态射}组成，所以它在 $\varepsilon_0^*$ 下的\Term{inverse-image}{逆像} ($+$) 是 $Y_0$-$\mathscr O_{S_0}$-\Term{module}{模}\Term{exact-sequence}{正合列}，而 ($\dagger$) 是 ($+$) 在 $\pi_0^*$ 下的\Term{inverse-image}{逆像}（见第 I 讲，§ 6.8）。这证明 (i)。
+
+若还假设 $X_0,Y_0$ 在 $S_0$ 上\Term{smooth}{光滑}，则由 SGA 1 II 4.10（另见 EGA IV$_4$，17.2.3(i)、17.2.5），$D$ 为\Term{injectivity}{单射}，而 ($\dagger$) 由\Term{finite-type}{有限型}\Term{locally-free}{局部自由} $\mathscr O_{Y_0}$-\Term{module}{模}组成（故\Term{locally-split}{局部分裂}）。由\Term{category-equivalence}{范畴等价} I，6.8.1，$d$ 也为\Term{injectivity}{单射}，故 ($+$) 具有所述性质。
+\end{proof}
+\SourcePage{175}
+\textbf{4.26。}\footnote{编者注（123）：展开原文，以说明所得为 $Y_0$-$\mathscr O_{S_0}$-模\Term{exact-sequence}{正合列}。}对任意 $S_0$-\Term{scheme}{概形} $f:T\to S_0$，($+$) 给出 $Y_0(T)$-$\mathscr O(T)$-\Term{module}{模}\Term{exact-sequence}{正合列}
+\[
+\begin{aligned}
+0\longrightarrow\operatorname{Hom}_{\mathscr O_T}(f^*(\omega^1_{Y_0/S_0}),f^*(\mathscr J))&\longrightarrow\operatorname{Hom}_{\mathscr O_T}(f^*(\omega^1_{X_0/S_0}),f^*(\mathscr J))\\
+&\longrightarrow\operatorname{Hom}_{\mathscr O_T}(f^*(n_{Y_0/X_0}),f^*(\mathscr J)),
+\end{aligned}
+\]
+故有 $Y_0$-$\mathscr O_{S_0}$-\Term{module}{模}\Term{exact-sequence}{正合列}
+\[0\longrightarrow L_{0Y}\longrightarrow L_{0X}\xrightarrow d N_0.\tag{4.26.1}\]
+由此得到\Term{abelian-group}{交换群}\Term{complex}{复形}的\Term{exact-sequence}{正合列}
+\[0\longrightarrow C^*(Y_0,L_{0Y})\longrightarrow C^*(Y_0,L_{0X})\xrightarrow{d^*}C^*(Y_0,N_0),\]
+特别有各行\Term{exact}{正合}的\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}[column sep=small]
+0\arrow[r]&C^0(Y_0,L_{0Y})\arrow[r]\arrow[d,"\partial"']&C^0(Y_0,L_{0X})\arrow[r,"d^0"]\arrow[d,"\partial"]&C^0(Y_0,N_0)\arrow[d,"\partial"]\\
+0\arrow[r]&C^1(Y_0,L_{0Y})\arrow[r]&C^1(Y_0,L_{0X})\arrow[r,"d^1"]&C^1(Y_0,N_0).
+\end{tikzcd}
+\]
+注意，$C^0(Y_0,L_{0Y})$（相应地 $C^0(Y_0,L_{0X})$）就是 $\operatorname{Hom}_{S_0}(S_0,L_{0Y})=\operatorname{Hom}_S(S,L'_Y)$（相应地 $\cdots$），即（见 0.9）$Y$（相应地 $X$）在 $S$ 上诱导 $X_J$ 的\Term{unit-section}{单位截面}的\Term{section}{截面}\Term{group}{群}。又，$d^1$ 就是 4.8(iii) 中的\Term{morphism}{态射} $v_{i_{Y_0}}$，其中 $i_{Y_0}:Y_0\to X_0$ 为\Term{canonical}{典范}\Term{immersion}{浸入}。\footnote{编者注（124）：这由 $d:n_{Y_0/X_0}\to\Omega^1_{X_0/S_0}$ 的定义（见 4.25）及 $v_{i_{Y_0}}$ 的定义（见 4.8）得到。}
+\begin{SGAresult}{\Term{lemma}{引理}}{4.27}
+设 $S,\mathscr I,\mathscr J,X$ 满足 4.21 的条件，$Y$ 为 $X$ 中在 $S$ 上\Term{flat}{平坦}且\Term{lifting}{提升} $Y_J$ 的\Term{subgroup}{子群}。记 $i:Y\hookrightarrow X$ 为\Term{canonical}{典范}\Term{immersion}{浸入}。\footnote{编者注（125）：加入下述 (i)，将用于 4.35.1，继而用于 4.38(4)、(5)。}
+
+(i) 设 $i':Y\to X$ 为\Term{lifting}{提升} $i_0$ 的 $S$-\Term{scheme}{概形}\Term{morphism}{态射}（故 $i'$ 也是\Term{immersion}{浸入}），$Y'=i'(Y)$，并令 $d(i,i')\in C^1(Y_0,L_{0X})$ 满足 $i'=d(i,i')\cdot i$（见 1.2.4）。则\Term{deviation}{偏差} $d(Y,Y')\in C^1(Y_0,N_0)$（见 4.5.1）由公式
+\[d(Y,Y')=d^1(d(i,i'))\]
+给出。
+
+(ii) 设 $x\in C^0(Y_0,L_{0X})$ 为 $X$ 在 $S$ 上的\Term{section}{截面}，在 $S_J$ 上诱导 $X_J$ 的\Term{unit-section}{单位截面}。则\Term{deviation}{偏差} $d(Y,\operatorname{Int}(x)Y)\in C^1(Y_0,N_0)$（见 4.5.1）由公式
+\[-d(Y,\operatorname{Int}(x)Y)=d^1\partial x=\partial d^0x\]
+给出。
+\end{SGAresult}
+\begin{proof}
+事实上，$Y'$ 是 $Y$ 在复合\Term{morphism}{态射}\footnote{编者注（126）：回顾 $L'_X=\prod_{S_0/S}L_{0X}$。}
+\[Y\xrightarrow{(d(i,i'),i)}L'_X\times_S X\longrightarrow X\]
+下的像。
+\SourcePage{176}
+4.8(iii) 将此记为 $d(i,i')\cdot i$；由该处结果及 $v_{i_0}=d^1$，有
+\[c(X,Y',d(i,i')\cdot i)-c(X,Y',i)=v_{i_0}(d(i,i'))=d^1(d(i,i')).\]
+但 $d(i,i')\cdot i=i'$ 按定义经 $Y'$ \Term{resolution}{分解}，故第一项为零；再由 4.8(ii)，$c(X,Y',i)=d(Y',Y)=-d(Y,Y')$。所以 $d(Y,Y')=d^1(d(i,i'))$，证明了 (i)。
+
+现设 $x$ 如 (ii)。由公式
+\[xyx^{-1}=xyx^{-1}y^{-1}y=(x-\operatorname{Ad}(y)x)y=(-\partial x)(y)\cdot y,\]
+可见 $Y'$ 是 $Y$ 在\Term{immersion}{浸入} $i'=(-\partial x)\cdot i_Y$ 下的像。故由 (i) 得
+\[-d(Y,\operatorname{Int}(x)Y)=d^1\partial x=\partial d^0x.\]
+\end{proof}
+\begin{SGAresult}{推论}{4.28}
+设 $Y,Y'$ 为 $G$ 中在 $S$ 上\Term{flat}{平坦}且\Term{lifting}{提升} $Y_J$ 的两个\Term{subgroup}{子群}。它们被 $X$ 在 $S$ 上某个诱导 $X_J$ 的\Term{unit-section}{单位截面}的\Term{section}{截面}\Term{conjugacy}{共轭}，当且仅当
+\[d(Y,Y')\in\partial d^0C^0(Y_0,L_{0X})\subset\partial C^0(Y_0,N_0)=B^1(Y_0,N_0).\]
+\end{SGAresult}
+\begin{SGAresult}{推论}{4.29}
+若 $d^0$ 为\Term{surjection}{满射}，则上述 $Y,Y'$ 被 $X$ 在 $S$ 上某个诱导 $X_J$ 的\Term{unit-section}{单位截面}的\Term{section}{截面}\Term{conjugacy}{共轭}，当且仅当 $d(Y,Y')\in B^1(Y_0,N_0)$。
+\end{SGAresult}
+\begin{SGAresult}{推论}{4.30}
+设 $Y$ 如 4.27；$Y$ 被 $X$ 在 $S$ 上诱导 $X_J$ 的\Term{unit-section}{单位截面}的\Term{section}{截面}\Term{conjugacy}{共轭}所得的\Term{set}{集合}，\Term{isomorphism}{同构}于
+\[d^1\partial C^0(Y_0,L_{0X})=C^0(Y_0,L_{0X})/\operatorname{Ker}d^1\partial.\]
+\end{SGAresult}
+现注意，$C^0(Y_0/L_{0X})/\operatorname{Ker}d^1\partial$ 只借助 4.26 \Term{commutative-diagram}{交换图}左侧方块便可计算。因此，特别可以用任何同类型且有相同左侧方块的图计算它。考虑 $S_0$ 上的\Term{functor}{函子} $L_{0X}/L_{0Y}$，定义为
+\[\operatorname{Hom}_{S_0}(T,L_{0X}/L_{0Y})=\operatorname{Hom}_{S_0}(T,L_{0X})/\operatorname{Hom}_{S_0}(T,L_{0Y}).\]
+有\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}[column sep=small]
+0\arrow[r]&C^0(Y_0,L_{0Y})\arrow[r]\arrow[d,"\partial"']&C^0(Y_0,L_{0X})\arrow[r]\arrow[d,"\partial"]&C^0(Y_0,L_{0X}/L_{0Y})\arrow[r]\arrow[d,"\partial"]&0\\
+0\arrow[r]&C^1(Y_0,L_{0Y})\arrow[r]&C^1(Y_0,L_{0X})\arrow[r]&C^1(Y_0,L_{0X}/L_{0Y})\arrow[r]&0,
+\end{tikzcd}
+\]
+由前述观察得到：
+\begin{SGAresult}{推论}{4.31}
+设 $Y$ 如 4.27；$Y$ 被 $X$ 在 $S$ 上诱导 $X_J$ 的\Term{unit-section}{单位截面}的\Term{section}{截面}\Term{conjugacy}{共轭}所得的\Term{set}{集合}，\Term{isomorphism}{同构}于
+\[E=\partial C^0(Y_0,L_{0X}/L_{0Y})=C^0(Y_0,L_{0X}/L_{0Y})/H^0(Y_0,L_{0X}/L_{0Y}).\]
+\end{SGAresult}
+\begin{SGAresult}{推论}{4.32}
+进一步假设 $S_0$ \Term{affine}{仿射}且 $\omega^1_{Y_0/S_0}$\footnote{编者注（127）：将 $\operatorname{Lie}(Y_0/S_0)$ 改为 $\omega^1_{Y_0/S_0}$。}\Term{finite}{有限}\Term{locally-free}{局部自由}。记 $\mathscr F_0=(\operatorname{Lie}(X_0/S_0)/\operatorname{Lie}(Y_0/S_0))\otimes_{\mathscr O_{S_0}}\mathscr J$，则 $E=\Gamma(S_0,\mathscr F_0)/H^0(Y_0,\mathscr F_0)$。
+\end{SGAresult}
+\SourcePage{177}
+\begin{proof}
+\footnote{编者注（128）：下文展开了原文。}由于 $\omega^1_{Y_0/S_0}$ \Term{finite}{有限}\Term{locally-free}{局部自由}，$\omega^1_{X_0/S_0}$ 亦然（因假设 $X$ 在 $S$ 上\Term{smooth}{光滑}），由 0.6 有
+\[L_{0Y}=\mathbf W(\operatorname{Lie}(Y_0/S_0)\otimes_{\mathscr O_{S_0}}\mathscr J),\quad L_{0X}=\mathbf W(\operatorname{Lie}(X_0/S_0)\otimes_{\mathscr O_{S_0}}\mathscr J).\]
+另一方面，由 4.25 有 $Y_0$-$\mathscr O_{S_0}$-\Term{module}{模}\Term{exact-sequence}{正合列}
+\[0\longrightarrow\mathscr K\longrightarrow\omega^1_{X_0/S_0}\xrightarrow\phi\omega^1_{Y_0/S_0}\longrightarrow0\]
+（$\mathscr K=\operatorname{Ker}(\phi)$）。因两个 $\omega^1$ 均\Term{finite}{有限}\Term{locally-free}{局部自由}，有\Term{locally-split}{局部分裂}\Term{exact-sequence}{正合列}
+\[0\longrightarrow\operatorname{Lie}(Y_0/S_0)\otimes_{\mathscr O_{S_0}}\mathscr J\longrightarrow\operatorname{Lie}(X_0/S_0)\otimes_{\mathscr O_{S_0}}\mathscr J\longrightarrow\mathscr F_0\longrightarrow0.\]
+于是有 $Y_0$-$\mathscr O_{S_0}$-\Term{module}{模}\Term{exact-sequence}{正合列}
+\[0\longrightarrow L_{0Y}\longrightarrow L_{0X}\longrightarrow\mathbf W(\mathscr F_0).\]
+由证明 4.31 时所用的论证，可以将 $E$ 算作复合映射
+\[C^0(Y_0,L_{0X})\xrightarrow\pi C^0(Y_0,\mathbf W(\mathscr F_0))\xrightarrow\partial C^1(Y_0,\mathbf W(\mathscr F_0))\]
+的像。而 $\pi$ 就是 $\Gamma(S_0,\operatorname{Lie}(X_0/S_0)\otimes_{\mathscr O_{S_0}}\mathscr J)\to\Gamma(S_0,\mathscr F_0)$。因 $S_0$ \Term{affine}{仿射}，$\pi$ 为\Term{surjection}{满射}，遂得所述结果。
+\end{proof}
+\begin{SGAresult}{推论}{4.33}
+设 $S,\mathscr I,\mathscr J,X$ 如 4.21，$Y$ 为 $X$ 的\Term{diagonalizable-subgroup}{可对角化子群}。假设 $\omega^1_{Y_0/S_0}$ \Term{finite}{有限}\Term{locally-free}{局部自由}且 $S_0$ \Term{affine}{仿射}。\footnote{编者注（129）：加入关于 $\omega^1_{Y_0/S_0}$ 的假设，并将“$S$ \Term{affine}{仿射}”改为“$S_0$ \Term{affine}{仿射}”。}$X$ 中由 $Y$ 经 $X$ 在 $S$ 上某个诱导 $X_J$ 的\Term{unit-section}{单位截面}的\Term{section}{截面}\Term{conjugacy}{共轭}得到的\Term{subgroup}{子群}的\Term{set}{集合}，\Term{isomorphism}{同构}于
+\[E=\Gamma\bigl(S_0,\operatorname{Lie}(X_0/S_0)/\operatorname{Lie}(X_0/S_0)^{\operatorname{ad}(Y_0)}\bigr)\otimes_{\Gamma(S_0,\mathscr O_{S_0})}\Gamma(S_0,\mathscr J),\]
+即 $L_{0X}(Y_0)/H^0(Y_0,L_{0X})$。\footnote{编者注（130）：新增此句，见 4.34。}
+\end{SGAresult}
+\begin{proof}
+由 I，4.7.3（见 2.13），写成
+\[\operatorname{Lie}(X_0/S_0)=\operatorname{Lie}(X_0/S_0)^{\operatorname{ad}(Y_0)}\oplus\mathscr R.\]
+因 $Y_0$ \Term{commutative-group}{交换}，$\operatorname{Lie}(Y_0/S_0)\subset\operatorname{Lie}(X_0/S_0)^{\operatorname{ad}(Y_0)}$，故
+\[
+\begin{aligned}
+\mathscr F_0&=\bigl(\operatorname{Lie}(X_0/S_0)^{\operatorname{ad}(Y_0)}/\operatorname{Lie}(Y_0/S_0)\bigr)\otimes\mathscr J\ \oplus\ \mathscr R\otimes\mathscr J,\\
+\mathscr F_0^{\operatorname{ad}(Y_0)}&=\bigl(\operatorname{Lie}(X_0/S_0)^{\operatorname{ad}(Y_0)}/\operatorname{Lie}(Y_0/S_0)\bigr)\otimes\mathscr J.
+\end{aligned}
+\]
+由 4.32，$E\simeq\Gamma(S_0,\mathscr R\otimes\mathscr J)$。回到 $\mathscr R$ 的定义，证明完成。
+\end{proof}
+\SourcePage{178}
+\begin{SGAresult}{推论}{4.34}
+设 $S,\mathscr I,\mathscr J,X$ 如 4.21，$Y$ 为 $X$ 的\Term{diagonalizable-subgroup}{可对角化子群}。假设 $\omega^1_{Y_0/S_0}$ \Term{finite}{有限}\Term{locally-free}{局部自由}且 $S_0$ \Term{affine}{仿射}。\footnote{编者注（131）：参见编者注（129）。}若 $x\in X(S)$ 诱导 $X_J$ 的\Term{unit-section}{单位截面}且\Term{normalizes}{正规化} $Y$，则它\Term{centralizes}{中心化} $Y$。
+\end{SGAresult}
+将上一个推论与 2.14 比较，立即得到此结论。事实上，4.33 表明 $C^0(Y_0,L_{0X})$ 中整体保持 $Y$ 的元素，正是 $H^0(Y_0,L_{0X})$ 的元素；而 2.14 已表明，这些恰是\Term{trivial-action}{平凡作用}于\Term{canonical}{典范}\Term{immersion}{浸入} $Y\to X$ 的元素。
+
+\textbf{4.35。}回到 4.21 的一般情形，并假设 $Y_J$ 在 $S_J$ 上\Term{smooth}{光滑}。由 4.25(ii)，有 $Y_0$-$\mathscr O_{S_0}$-\Term{module}{模}\Term{exact-sequence}{正合列}
+\[0\longrightarrow\operatorname{Lie}(Y_0/S_0)\longrightarrow\operatorname{Lie}(X_0/S_0)\longrightarrow n_{Y_0/X_0}^\vee\longrightarrow0,\tag{$*$}\]
+其中各项都是\Term{finite}{有限}\Term{locally-free}{局部自由} $\mathscr O_{S_0}$-\Term{module}{模}。
+
+另一方面，由 SGA 1，II 4.10，$X$ 中每个\Term{lifting}{提升} $Y_J$ 且在 $S$ 上\Term{flat}{平坦}的\Term{subscheme}{子概形} $Y$ 都在 $S$ 上\Term{smooth}{光滑}。\footnote{编者注（132）：新增下文及命题 4.35.1；原文已隐含此命题，见 4.38(5)。}再假设 $S_0,Y_J$ \Term{affine}{仿射}。由于 $n_{Y_0/X_0}^\vee$ 为\Term{locally-free}{局部自由} $\mathscr O_{S_0}$-\Term{module}{模}，对 ($*$) 作 $\otimes_{\mathscr O_{S_0}}\mathscr J$，再取其在 $Y_0^n$ 上的\Term{inverse-image}{逆像}，仍然\Term{exact}{正合}；且 $Y_0^n$ 均\Term{affine}{仿射}，故得到\Term{abelian-group}{交换群}\Term{complex}{复形}的\Term{exact-sequence}{正合列}
+\[0\longrightarrow C^*(Y_0,L_{0Y})\longrightarrow C^*(Y_0,L_{0X})\xrightarrow{d^*}C^*(Y_0,N_0)\longrightarrow0,\]
+特别有各行\Term{exact}{正合}的\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}[column sep=small]
+0\arrow[r]&C^1(Y_0,L_{0Y})\arrow[r]\arrow[d,"\partial"']&C^1(Y_0,L_{0X})\arrow[r,"d^1"]\arrow[d,"\partial"]&C^1(Y_0,N_0)\arrow[r]\arrow[d,"\partial"]&0\\
+0\arrow[r]&C^2(Y_0,L_{0Y})\arrow[r]&C^2(Y_0,L_{0X})\arrow[r,"d^2"]&C^2(Y_0,N_0)\arrow[r]&0.
+\end{tikzcd}
+\]
+现设 $Y,Y'$ 为 $X$ 中\Term{lifting}{提升} $Y_J$ 且在 $S$ 上\Term{flat}{平坦}、因而\Term{smooth}{光滑}的两个\Term{subgroup}{子群}。由于 $Y_J$ \Term{affine}{仿射}，由 0.15，$Y,Y'$ 作为延拓 $Y_J$ 的\Term{scheme}{概形}\Term{isomorphism}{同构}，即存在诱导 $Y_J$ 的\Term{identity-morphism}{恒等态射}的 $S$-\Term{scheme}{概形}\Term{isomorphism}{同构}
+\[f:Y\xrightarrow\sim Y'.\]
+一方面，由 1.2.4，$f$ 定义 $a\in C^1(Y_0,L_{0X})$，使对任意 $S'\to S$ 及 $y\in Y(S')$，有 $f(y)=a(y_0)y$；由 4.27(i)，有
+\[d^1(a)=d(Y,Y').\]
+又因 $Y,Y'$ 为 $X$ 的\Term{subgroup}{子群}，上式元素属于 $Z^1(Y_0,N_0)$（见 4.21）。于是 $\partial a\in Z^2(Y_0,L_{0Y})$，它在 $H^2(Y_0,L_{0Y})$ 中的像 $\overline{\partial a}$ 只依赖于类 $\overline{d(Y,Y')}\in H^1(Y_0,N_0)$；这就是\Term{connecting-homomorphism}{连接同态} $\partial^1:H^1(Y_0,N_0)\to H^2(Y_0,L_{0Y})$ 的定义，故
+\[\partial^1\overline{d(Y,Y')}=\overline{\partial a}.\]
+\SourcePage{179}
+另一方面，沿 $f$ 搬运 $Y'$ 的\Term{group-structure}{群结构}，以 $Y_1$ 表示所得\Term{group}{群}（故其底\Term{scheme}{概形}为 $Y$）；即 $Y_1$ 的\Term{group-law}{群运算} $\mu_1$ 定义为：对任意 $S'\to S$ 及 $x,y\in Y(S')$，
+\[\mu_1(x,y)=f^{-1}(f(x)f(y)).\]
+由 3.5.1，$Y_1$ 定义\Term{cocycle}{余循环} $\delta(Y,Y_1)\in Z^2(Y_0,\operatorname{Lie}(Y_0/S_0))$，使对任意 $S'\to S$ 及 $x,y\in Y(S')$，有
+\[\delta(Y,Y_1)(x_0,y_0)xy=\mu_1(x,y)=f^{-1}(f(x)f(y)).\]
+令 $b=\delta(Y,Y_1)$。对任意 $S'\to S$ 及 $x,y\in Y(S')$，$(b(x_0,y_0)xy)_0=x_0y_0$，故 $f(b(x_0,y_0)xy)$ 一方面等于 $a(x_0y_0)b(x_0y_0)xy$，另一方面等于
+\[f(x)f(y)=a(x_0)x\,a(y_0)y=a(x_0)\operatorname{Ad}(x_0)(a(y_0))xy.\]
+比较两式，得到 $b(x_0,y_0)$ 等于
+\[a(x_0y_0)^{-1}a(x_0)\operatorname{Ad}(x_0)(a(y_0))=\operatorname{Ad}(x_0)(a(y_0))-a(x_0y_0)+a(x_0)=(\partial a)(x_0,y_0),\]
+即 $\delta(Y,Y_1)=\partial a$。因此得到：
+\begin{SGAresult}{命题}{4.35.1}
+\textsuperscript{（132）}在 4.21 的假设下，进一步假设 $S_0$ \Term{affine}{仿射}，$Y_J$ 在 $S_J$ 上\Term{smooth}{光滑}且\Term{affine}{仿射}。设 $Y,Y'$ 为 $X$ 中\Term{lifting}{提升} $Y_J$ 且在 $S$ 上\Term{flat}{平坦}（因而\Term{smooth}{光滑}）的两个\Term{subgroup}{子群}，$f:Y\xrightarrow\sim Y'$ 为诱导 $Y_J$ 的\Term{identity-morphism}{恒等态射}的 $S$-\Term{scheme}{概形}\Term{isomorphism}{同构}，$Y_1$ 为沿 $f$ 搬运 $Y'$ 的\Term{group-structure}{群结构}所得的\Term{group}{群}。则
+\[\partial^1\overline{d(Y,Y')}=\overline{\delta(Y,Y_1)}.\]
+\end{SGAresult}
+\begin{SGAresult}{命题}{4.36}
+在 4.21 的假设下，进一步假设 $Y_J$ 在 $S_J$ 上\Term{smooth}{光滑}，且 $S_0$ \Term{affine}{仿射}。将 $X$ 中在 $S$ 上\Term{flat}{平坦}（或\Term{smooth}{光滑}）且\Term{reduced}{约化}为 $Y_J$ 的 $S$-\Term{subgroup}{子群} $Y$ 的\Term{set}{集合}，模掉 $X$ 在 $S$ 上诱导 $X_J$ 的\Term{unit-section}{单位截面}的\Term{section}{截面}的\Term{conjugacy}{共轭}\Term{action}{作用}，则所得\Term{set}{集合}或为空，或为\Term{group}{群}
+\[H^1(Y_0,[\operatorname{Lie}(X_0/S_0)/\operatorname{Lie}(Y_0/S_0)]\otimes_{\mathscr O_{S_0}}\mathscr J)\]
+下的\Term{principal-homogeneous-set}{主齐性集合}。
+\end{SGAresult}
+\begin{proof}
+只须验证推论 4.29 适用，即
+\[d^0:\operatorname{Hom}_{\mathscr O_{S_0}}(\omega^1_{X_0/S_0},\mathscr J)\longrightarrow\operatorname{Hom}_{\mathscr O_{S_0}}(n_{Y_0/X_0},\mathscr J)\]
+为\Term{surjection}{满射}。因 $S_0$ \Term{affine}{仿射}，4.25(ii) 的序列 ($+$) \Term{split}{分裂}，结论随之得到。\footnote{编者注（133）：也可由 4.32 的证明得到。}
+\end{proof}
+最后陈述 4.21、4.36 的一个共同推论。事实上，我们以后仅以此\Term{form}{形式}使用本节的一般结果。\footnote{编者注（134）：例如第 IX 讲用 4.37 证明陈述 3.2 bis、3.6 bis。}
+\begin{SGAresult}{推论}{4.37}
+设 $S$ 为\Term{scheme}{概形}，$S_0$ 为\Term{nilpotent}{幂零}\Term{ideal}{理想} $\mathscr I$ 定义的\Term{closed-subscheme}{闭子概形}。设 $X$ 为在 $S$ 上\Term{smooth}{光滑}的 $S$-\Term{group}{群}，$Y_0$ 为 $X_0$ 的 $S_0$-\Term{subgroup}{子群}，在 $S_0$ 上\Term{flat}{平坦}。
+\SourcePage{180}
+(i) 若 $S_0$ \Term{affine}{仿射}，$Y_0$ 在 $S_0$ 上\Term{smooth}{光滑}，且对每个 $n\geq0$，有
+\[H^1(Y_0,[\operatorname{Lie}(X_0/S_0)/\operatorname{Lie}(Y_0/S_0)]\otimes_{\mathscr O_{S_0}}\mathscr I^{n+1}/\mathscr I^{n+2})=0,\]
+则 $X$ 中两个在 $S$ 上\Term{flat}{平坦}（或\Term{smooth}{光滑}）且\Term{reduced}{约化}为 $Y_0$ 的 $S$-\Term{subgroup}{子群}，被 $X$ 在 $S$ 上某个诱导 $X_0$ 的\Term{unit-section}{单位截面}的\Term{section}{截面}\Term{conjugacy}{共轭}。
+
+(ii) 若 $Y_0$ \Term{affine}{仿射}且\Term{finite-presentation}{有限表现}，并且对每个 $n\geq0$，有\footnote{编者注（135）：依注记 4.22，将 $\mathscr Hom_{\mathscr O_{S_0}}(n_{Y_0/X_0},\mathscr I^{n+1}/\mathscr I^{n+2})$ 换成 $n_{Y_0/X_0}^\vee\otimes_{\mathscr O_{S_0}}\mathscr I^{n+1}/\mathscr I^{n+2}$。}
+\[H^2(Y_0,n_{Y_0/X_0}^\vee\otimes_{\mathscr O_{S_0}}\mathscr I^{n+1}/\mathscr I^{n+2})=0,\]
+则 $X$ 中存在在 $S$ 上\Term{flat}{平坦}且\Term{reduced}{约化}为 $Y_0$ 的 $S$-\Term{subgroup}{子群}。
+\end{SGAresult}
+\textbf{4.38。}还须联系本讲作出的三种构造。为避免非本质的复杂性，取如下情形：$S_0$ 为域 $k$ 的谱，$S$ 为\Term{dual-numbers}{对偶数} $D(k)$ 的谱，$G$ 为在 $S$ 上\Term{smooth}{光滑}的 $S$-\Term{group}{群}，$K$ 为其在 $S$ 上\Term{smooth}{光滑}且\Term{affine}{仿射}的 $S$-\Term{subgroup}{子群}。
+
+记 $\mathfrak g_0=\operatorname{Lie}G_0$（此处等于 $\Gamma(S_0,\operatorname{Lie}G_0)=\operatorname{Lie}(G_0/S_0)(S_0)$），$\mathfrak k_0=\operatorname{Lie}K_0$。\footnote{编者注（136）：下文略改原文。特别将 $X,Y$ 换为 $G,K$，将它们的\Term{lie-algebra}{李代数}记为 $\mathfrak g_0,\mathfrak k_0$；此外，明确写出 $H^i(K_0,\ )$，而不用原文缩写 $H^i(\ )$。}有 $k$-\Term{vector-space}{向量空间}的\Term{exact-sequence}{正合列}\footnote{编者注（137）：它们均带有 $K_0$ 的\Term{adjoint-action}{伴随作用}。}
+\[0\longrightarrow\mathfrak k_0\xrightarrow i\mathfrak g_0\xrightarrow d n_{K_0/G_0}^\vee\longrightarrow0,\]
+从而得到\Term{cohomology}{上同调}\Term{exact-sequence}{正合列}
+\[
+\begin{aligned}
+0\longrightarrow H^0(K_0,\mathfrak k_0)&\xrightarrow{i^0}H^0(K_0,\mathfrak g_0)\xrightarrow{d^0}H^0(K_0,\mathfrak g_0/\mathfrak k_0)\\
+&\xrightarrow{\partial^0}H^1(K_0,\mathfrak k_0)\xrightarrow{i^1}H^1(K_0,\mathfrak g_0)\xrightarrow{d^1}H^1(K_0,n_{K_0/G_0}^\vee)\xrightarrow{\partial^1}H^2(K_0,\mathfrak k_0).
+\end{aligned}
+\]
+这些\Term{group}{群}都有几何意义。
+
+a) 由 II，5.2.3，$H^0(K_0,\mathfrak k_0)=\operatorname{Lie}\underline{\operatorname{Centr}}(K_0)$。\footnote{编者注（138）：\Term{centralizer}{中心化子}和\Term{normalizer}{正规化子}的构造与\Term{base-change}{基变换}可交换（见 I，2.3.3.1），所以将原文 $\underline{\operatorname{Centr}}(K)_0$ 写成 $\underline{\operatorname{Centr}}(K_0)$；同样，将 $\underline{\operatorname{Centr}}_G(K)_0$、$\underline{\operatorname{Norm}}_G(K)_0$ 写成 $\underline{\operatorname{Centr}}_{G_0}(K_0)$、$\underline{\operatorname{Norm}}_{G_0}(K_0)$。}
+
+b) 同上，$H^0(K_0,\mathfrak g_0)=\operatorname{Lie}\underline{\operatorname{Centr}}_{G_0}(K_0)$。\textsuperscript{（138）}
+
+c) 同上，$H^0(K_0,\mathfrak g_0/\mathfrak k_0)=\operatorname{Lie}\underline{\operatorname{Norm}}_{G_0}(K_0)/\mathfrak k_0$。\textsuperscript{（138）}
+
+d) $H^1(K_0,\mathfrak k_0)=\operatorname{Lie}(\underline{\operatorname{Aut}}_{S_0\text{-gr.}}(K_0))/\operatorname{Im}(\mathfrak k_0)$，其中 $\operatorname{Im}(\mathfrak k_0)$ 为 $\mathfrak k_0$ 在由 $\operatorname{Int}_0:K_0\to\underline{\operatorname{Aut}}_{S_0\text{-gr.}}(K_0)$ \Term{derive}{导出}的\Term{morphism}{态射} $\operatorname{Lie}(\operatorname{Int}_0)$ 下的像。事实上，将 2.1(ii) 应用于 $Y=X=K$、$f_0=\mathrm{id}_{K_0}$，可知 $Z^1(K_0,\mathfrak k_0)$ 是 $S_0$-\Term{group}{群} $K_0$ 的\Term{infinitesimal-automorphism}{无穷小自同构}\Term{group}{群}，而 $H^1(K_0,\mathfrak k_0)$ 是将其模掉\Term{inner-infinitesimal-automorphism}{内无穷小自同构}、即 $\mathfrak k_0$ 的像所得的商。再由 II，4.2.2，还有 $Z^1(K_0,\mathfrak k_0)=\operatorname{Lie}(\underline{\operatorname{Aut}}_{S_0\text{-gr.}}(K_0))$。\footnote{编者注（139）：这就是 $\mathfrak k_0$ 的\Term{derivation}{导子}\Term{lie-algebra}{李代数} $\operatorname{D\text{é}r}_k(\mathfrak k_0)$，所以 $H^1(K_0,\mathfrak k_0)$ 为 $\operatorname{D\text{é}r}_k(\mathfrak k_0)$ 模掉\Term{inner-derivation}{内导子}（即 $\operatorname{ad}:\mathfrak k_0\to\operatorname{D\text{é}r}_k(\mathfrak k_0)$ 的像）所得的商。}
+\SourcePage{181}
+e) 由 2.1(ii)，$H^1(K_0,\mathfrak g_0)$ 是延拓\Term{canonical}{典范}\Term{immersion}{浸入} $i_0:K_0\to G_0$ 的\Term{homomorphism}{同态} $K\to G$ 之间的\Term{deviation}{偏差}\Term{group}{群}，模掉 $G$ 的\Term{inner-automorphism}{内自同构}\Term{action}{作用}所得的\Term{deviation}{偏差}；这些\Term{inner-automorphism}{内自同构}由 $G(S)$ 中映为 $G(S_0)$ 的\Term{identity-element}{单位元}的元素（即 $\mathfrak g_0$ 的元素）定义。
+
+f) 由 4.36，$H^1(K_0,n_{K_0/G_0}^\vee)$ 是 $G$ 中延拓 $K_0$ 且在 $S$ 上\Term{flat}{平坦}（从而在 $S$ 上\Term{smooth}{光滑}，见 SGA 1，II 4.10）的\Term{subgroup}{子群} $K'$ 之间的\Term{deviation}{偏差}\Term{group}{群}，模掉按上法构造的 $G$ 的\Term{inner-automorphism}{内自同构}\Term{action}{作用}所得的\Term{deviation}{偏差}。
+
+g) 由 3.5(ii)，$H^2(K_0,\mathfrak k_0)$ 是 $K$ 上延拓 $K_0$ 的\Term{group-structure}{群结构}的各\Term{group-structure}{群结构}之间的\Term{deviation}{偏差}\Term{group}{群}，模掉 $K$ 的诱导 $K_0$ 的\Term{identity-morphism}{恒等态射}的 $S$-\Term{automorphism}{自同构}。
+
+现在说明在上述几何解释中，前述\Term{exact-sequence}{正合列}的六个\Term{morphism}{态射}如何显式描述。
+
+1) $i^0,d^0$ 就是从\Term{canonical}{典范}\Term{monomorphism}{单态射}
+\[\underline{\operatorname{Centr}}(K_0)\longrightarrow\underline{\operatorname{Centr}}_{G_0}(K_0)\longrightarrow\underline{\operatorname{Norm}}_{G_0}(K_0)\]
+转到\Term{lie-algebra}{李代数}（对 $d^0$ 再取商）所得的\Term{morphism}{态射}。这由 (a)、(b)、(c) 中各识别的定义立即得到。
+
+2) 如下构造 $\partial^0$。取 $\overline x\in\operatorname{Lie}\underline{\operatorname{Norm}}_{G_0}(K_0)/\mathfrak k_0$，将之\Term{lifting}{提升}为 $x\in\operatorname{Lie}\underline{\operatorname{Norm}}_{G_0}(K_0)\subset\underline{\operatorname{Norm}}_G(K)(S)$。则 $\operatorname{Int}(x)$ 定义 $K$ 的一个诱导 $K_0$ 的\Term{identity-morphism}{恒等态射}的\Term{automorphism}{自同构}，从而定义 $\operatorname{Lie}\underline{\operatorname{Aut}}_{S_0\text{-gr.}}(K_0)$ 的元素。记此元素在 $\operatorname{Lie}\underline{\operatorname{Aut}}_{S_0\text{-gr.}}(K_0)/\operatorname{Im}(\mathfrak k_0)$ 中的像为 $\overline{\operatorname{Int}(x)}$，则
+\[\partial^0(\overline x)=-\overline{\operatorname{Int}(x)}=\overline{\operatorname{Int}(x^{-1})}.\tag{$*$}\]
+事实上，计算 $\operatorname{Int}(x)$ 定义的 $\operatorname{Lie}\underline{\operatorname{Aut}}_{S_0\text{-gr.}}(K_0)$ 的元素。按定义，它对应于 $a\in Z^1(K_0,\mathfrak k_0)$，使
+\[xyx^{-1}=a(y_0)y,\qquad y\in K(S'),\quad S'\longrightarrow S.\]
+这也可写成 $a(y_0)=xyx^{-1}y^{-1}=x-\operatorname{Ad}(y)x=-\partial(x)(y_0)$，故 $a=-\partial(x)$。
+
+另一方面，$x\in\operatorname{Lie}\underline{\operatorname{Norm}}_{G_0}(K_0)\subset\mathfrak g_0$ 在 $\partial$ 下的像属于 $Z^1(K_0,\mathfrak k_0)$，其在 $H^1(K_0,\mathfrak k_0)$ 中的像 $\overline{\partial(x)}$ 只依赖于 $\overline x$，按\Term{connecting-homomorphism}{连接同态} $\partial^0$ 的定义有\footnote{编者注（140）：新增此句。}
+\[\partial^0(\overline x)=\overline{\partial(x)}.\]
+结合 $a=-\partial(x)$ 即证明 ($*$)。
+
+3)\footnote{编者注（141）：下文展开了原文，并在 ($**$) 中将 $u\circ i$ 修正为 $i\circ u$。}记 $i:K\to G$ 为\Term{canonical}{典范}\Term{immersion}{浸入}。设 $\overline u\in H^1(K_0,\mathfrak k_0)$ 是
+\[u\in\operatorname{Lie}\underline{\operatorname{Aut}}_{S_0\text{-gr.}}(K_0)\subset\operatorname{Aut}_{S\text{-gr.}}(K)\]
+的像。
+\SourcePage{182}
+则有
+\[i^1(\overline u)=\overline{d(i,i\circ u)},\tag{$**$}\]
+其中 $\overline{d(i,i\circ u)}$ 是 2.1.1 定义的类。
+
+事实上，$u$ 为某个 $v\in Z^1(K_0,\mathfrak k_0)$ 的像，且 $u(y)=v(y_0)y$；$i^1(\overline u)$ 是\Term{cocycle}{余循环} $i\circ v\in Z^1(K_0,\mathfrak g_0)$ 在 $H^1(K_0,\mathfrak g_0)$ 中的像。因为 $i$ 为\Term{group-morphism}{群态射}，由 $u(y)=v(y_0)y$ 得 $iu(y)=iv(y_0)i(y)$，所以 $i\circ v=d(i,i\circ u)$，遂得 ($**$)。
+
+4) 设 $i':K\to G$ 为\Term{lifting}{提升} $i_0$ 的\Term{group-morphism}{群态射}，$\overline{d(i,i')}$ 为 2.1.1 定义的类，$d(K,i'(K))\in C^1(K_0,n_{K_0/X_0})$ 为 4.5.1 定义的\Term{deviation}{偏差}；由 4.21，$d(K,i'(K))\in Z^1(K_0,n_{K_0/X_0})$。记其在 $H^1(K_0,n_{K_0/X_0})$ 中的像为 $\overline{d(K,i'(K))}$。则由 4.27(i)，有
+\[d^1(\overline{d(i,i')})=\overline{d(K,i'(K))}.\tag{$\dagger$}\]
+
+5) 最后，设 $K'$ 为 $G$ 中\Term{lifting}{提升} $K_0$ 且在 $S$ 上\Term{flat}{平坦}、从而\Term{smooth}{光滑}的\Term{subgroup}{子群}。已假设 $K_0$ \Term{affine}{仿射}，故知 $K,K'$ 作为延拓 $K_0$ 的\Term{scheme}{概形}\Term{isomorphism}{同构}（见 0.15）；即存在诱导 $K_0$ 的\Term{identity-morphism}{恒等态射}的 $S$-\Term{scheme}{概形}\Term{isomorphism}{同构}
+\[f:K\xrightarrow\sim K'.\]
+沿 $f$ 搬运 $K'$ 的\Term{group-structure}{群结构}，记所得\Term{group}{群}为 $K_1$（故其底\Term{scheme}{概形}为 $K$）；即 $K_1$ 的\Term{group-law}{群运算} $\mu_1$ 定义为：对任意 $S'\to S$ 及 $x,y\in K(S')$，
+\[\mu_1(x,y)=f^{-1}(f(x)f(y)).\]
+由 3.5.1，\footnote{编者注（142）：结合 3.5.1、4.35.1 中的增补，修改了下文原文。}$K_1$ 定义\Term{cocycle}{余循环} $\delta(K,K_1)\in Z^2(K_0,\mathfrak k_0)$，使对任意 $S'\to S$ 及 $x,y\in K(S')$，有
+\[\delta(K,K_1)(x_0,y_0)xy=\mu_1(x,y)=f^{-1}(f(x)f(y)).\]
+于是由 4.35.1，
+\[\partial^1\overline{d(K,K')}=\overline{\delta(K,K_1)}.\tag{$\ddagger$}\]
+
+\textbf{参考文献}\footnote{编者注（143）：本讲引用的补充参考文献。}
+
+\noindent [BAlg] N. Bourbaki，\textit{Algèbre}（《\Term{algebra}{代数}》），第 I—III 章，Hermann，1970。
+
+\noindent [BAC] N. Bourbaki，\textit{Algèbre commutative}（《\Term{commutative-algebra}{交换代数}》），第 I—IV 章，Masson，1985。
+
+\noindent [DG70] M. Demazure、P. Gabriel，\textit{Groupes algébriques}（《\Term{algebraic-group}{代数群}》），Masson 与 North-Holland，1970。
+
+\noindent [Fr64] P. Freyd，\textit{Abelian categories}（《交换\Term{category}{范畴}》），Harper and Row，1964。

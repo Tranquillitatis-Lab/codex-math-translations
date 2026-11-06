@@ -1,0 +1,393 @@
+\article{自守形式与自守表示}{Automorphic forms and automorphic representations}{A. Borel and H. Jacquet}{1}{189--202}
+自守形式（automorphic form）理论最初研究的是上半平面或某些有界对称域（bounded symmetric domain）上的全纯自守形式。二十世纪五十年代，Gelfand 与 Fomin 等人首先注意到，这些自守形式可以看作相应变换群 $G$ 的表示中的光滑向量（smooth vector）。这些表示的空间由 $G$ 上在给定离散群 $\Gamma$ 下不变的函数组成。由此产生了更一般的概念，包括实半单群上关于算术子群（arithmetic subgroup）的自守形式，以及阿代尔群（adelic group）上的自守形式；研究的重点也逐渐转向这些形式所生成的表示。本文的主要目的，是讨论实约化群或阿代尔约化群上的自守形式、阿代尔群的自守表示（automorphic representation）以及两者之间的关系。至于有界对称域上的自守形式如何转化为群上的自守形式，已有许多文献作了介绍，本文不再展开（例如 [2]；对于模形式，另见 [5]、[6]、[15]）。
+\origsection{1}{实约化群上的自守形式}
+\origsubsection{1.1}{Hecke 代数}
+设 $G$ 为 $\Q$ 上连通约化群（connected reductive group），$Z$ 为 $G$ 的中心的最大 $\Q$ 分裂环面（$\Q$-split torus），$K$ 为 $G(\R)$ 的极大紧子群。令 $\mathfrak g$ 为 $G(\R)$ 的 Lie 代数，$U(\mathfrak g)$ 为其在 $\C$ 上的泛包络代数（universal enveloping algebra），$Z(\mathfrak g)$ 为 $U(\mathfrak g)$ 的中心。以 $\mathcal H$ 或 $\mathcal H(G(\R),K)$ 表示 $G(\R)$ 上支集包含于 $K$ 的分布的卷积代数（convolution algebra）[4]，以 $A_K$ 表示 $K$ 上有限测度的代数。回顾 $\mathcal H\cong U(\mathfrak g)\otimes_{U(\mathfrak k)}A_K$。按定义，$\mathcal H$ 中的幂等元（idempotent）为 $A_K$ 中的幂等元，即形如 $d(\sigma)^{-1}\chi_\sigma\,dk$ 的测度的有限和，其中 $\sigma$ 是 $K$ 的不可约有限维表示，$d(\sigma)$ 为其次数，$\chi_\sigma$ 为其特征，$dk$ 为 $K$ 上的归一化 Haar 测度。代数 $\mathcal H$ 称为 $G(\R)$ 与 $K$ 的 Hecke 代数（Hecke algebra）。\footnote{\textbf{译者注（本次校订）：}这里的分布和测度应取左右 $K$ 有限的部分。若 $\chi_\sigma$ 是通常的迹特征，投影到 $\sigma$ 等型分量的幂等测度为 $d(\sigma)\chi_\sigma(k^{-1})\,dk$；换用对偶表示的约定可去掉逆元，但系数仍为 $d(\sigma)$。文中的 $d(\sigma)^{-1}$ 一般不能给出幂等元。下文所用的是这些等型投影的有限和。}
+\origsubsection{1.2}{范数与缓慢增长}
+$G(\R)$ 上的范数（norm）$\|\ \|$ 指形如
+\[
+\|g\|=(\operatorname{tr}(\sigma(g)^*\sigma(g)))^{1/2}
+\]
+的函数，其中 $\sigma:G(\R)\to\GL(E)$ 为有限维复表示，核有限，且像在 $E$ 的自同态空间 $\End(E)$ 中闭；$*$ 表示相对于 $E$ 上一个 $K$ 不变 Hilbert 空间结构的伴随。若 $\tau$ 是另一个满足上述条件的表示，容易证明则存在常数 $C>0$ 及正整数 $n$，使
+\[
+\|x\|_\sigma\leq C\|x\|_\tau^n,\qquad x\in G(\R).\tag{1}
+\]
+若 $G(\R)$ 上的函数 $f$ 满足：存在范数 $\|\ \|$、常数 $C$ 和正整数 $n$，使
+\[
+|f(x)|\leq C\|x\|^n,\qquad x\in G(\R),\tag{2}
+\]
+则称 $f$ 缓慢增长（slowly increasing）。由 (1)，这一性质与范数的选择无关，不过指数 $n$ 可以随范数改变。
+\paragraph*{注（Remark）}
+若 $\sigma:G\to\GL(E)$ 的核有限，但像在 $\End E$ 中不闭，可以增加一个分量，将 $\det\sigma(g)^{-1}$ 作为新分量，或考虑 $\sigma$ 与 $\sigma^*:g\mapsto\sigma(g^{-1})^*$ 的直和。相应的范数平方分别为
+\[
+|\det\sigma(g)^{-1}|^2+\operatorname{tr}(\sigma(g)^*\sigma(g)),
+\quad\operatorname{tr}(\sigma(g)^*\sigma(g))+\operatorname{tr}(\sigma(g^{-1})\sigma(g^{-1})^*).
+\]
+\origsubsection{1.3}{定义}
+设 $\Gamma$ 是 $G(\Q)$ 的算术子群。若 $G(\R)$ 上的光滑复值函数 $f$ 满足下列条件，就称为关于 $(\Gamma,K)$（或简称关于 $\Gamma$）的自守形式：
+\begin{enumerate}
+\item[(a)] $f(\gamma x)=f(x)$（$x\in G(\R),\gamma\in\Gamma$）；
+\item[(b)] 存在幂等元 $\xi\in\mathcal H$（见1.1），使 $f*\xi=f$；
+\item[(c)] 存在 $Z(\mathfrak g)$ 的有限余维理想（ideal）$J$ 零化 $f$：$f*X=0$（$X\in J$）；
+\item[(d)] $f$ 缓慢增长（1.2）。
+\end{enumerate}
+对于固定的 $\xi,J$，满足上述条件的自守形式称为 $(\xi,J)$ 型。以 $\mathcal A(\Gamma,\xi,J,K)$ 表示所有关于 $(\Gamma,K)$ 的 $(\xi,J)$ 型自守形式的空间。
+\origsubsection{1.4}{例（Example）}
+令 $G=\GL_2$、$\Gamma=\GL_2(\Z)$、$K=O(2,\R)$、$\xi=1$，$J$ 为 $Z(\mathfrak g)$ 中由 $C-\lambda$ 生成的理想，其中 $C$ 为 Casimir 算子（Casimir operator），$\lambda\in\C$。于是 $f$ 为 Casimir 算子的特征函数，在左侧 $\Gamma$ 作用下不变，在右侧 $K$ 作用下不变，并在 $G(\R)$ 的中心 $Z$ 下不变。商空间 $G(\R)/Z\cdot K$ 可与 Poincaré 上半平面 $H$ 认同。函数 $f$ 因而可看作其上 Laplace--Beltrami 算子的 $\Gamma$ 不变特征函数，是 Maass 意义下的“波形”（wave-form）。模形式的类似解释见 [2]、[5]、[6]。\footnote{\textbf{译者注（本次校订）：}在 $\GL_2$ 情形，仅用 $C-\lambda$ 生成的理想还不能保证有限余维，也不能推出中心不变性：$Z(\mathfrak{gl}_2)$ 还包含来自标量矩阵的独立生成元。此例须另加中心作用平凡的条件，或在无穷小特征中同时固定中心方向；这样才能降到上半平面。}
+\origsubsection{1.5}{注（Remarks）}
+（1）条件1.3(b) 等价于：$f$ 在右侧 $K$ 有限（$K$-finite），即 $f$ 的所有 $K$ 右平移张成有限维空间。显然，如果 $f$ 满足1.3(a)、(c)、(d)，这些函数也满足。
+
+（2）设 $r:K\to\GL(V)$ 为 $K$ 的有限维酉表示。可类似定义 $V$ 值自守形式：光滑函数 $\varphi:G\to V$ 满足 (a)、(c)、(d)（此时 $|\ |$ 指 $V$ 中范数），并满足
+\[
+f(xk)=r(k^{-1})f(x),\qquad x\in G(\R),\ k\in K.\tag{b'}
+\]
+对半单群，这是 Harish-Chandra 的定义（参见 [2]、[11]）。对 $v\in V$，函数 $x\mapsto(\varphi(x),v)$ 是标量自守形式。反过来，若标量自守形式的有限维空间 $E$ 在 $K$ 下稳定，则可构造相应的 $E$ 值自守形式。
+
+（3）若用 $G(\R)$ 的某个开子群的有限覆盖 $H$ 代替 $G(\R)$，再以 $H$ 中一个像为算术群的离散子群代替 $\Gamma$，也可以给出类似定义。例如，有理权的模形式可视为 $\SL_2(\R)$ 的有限覆盖上的自守形式。
+\origsubsection{1.6}{增长条件（Growth condition）}
+（1）设 $A$ 为 $G$ 的极大 $\Q$ 分裂环面 $S$ 的单位元连通分支，${}_{\Q}\Phi$ 为 $G$ 关于 $S$ 的 $\Q$ 根系。固定 ${}_{\Q}\Phi$ 的一个序，以 $\Delta$ 表示单根集合。给定 $t>0$，令
+\[
+A_t=\{a\in A\mid|\alpha(a)|\geq t\ (\alpha\in\Delta)\}.\tag{1}
+\]
+设函数 $f$ 满足1.3(a)、(b)、(c)。则增长条件 (d) 等价于：
+
+(d') 给定紧集 $R\subseteq G(\R)$ 及 $t>0$，存在常数 $C>0$ 和正整数 $m$，使
+\[
+|f(xa)|\leq C|\alpha(a)|^m,\quad a\in A_t,\ \alpha\in\Delta,\ x\in R.\tag{2}
+\]
+这是约化理论（reduction theory）[11，第2节] 的推论。\footnote{\textbf{译者注（本次校订）：}式 (2) 的右端不能要求对每个单根分别控制 $f$；应由一个足够大的正锥特征统一控制，例如在导出群的分裂分量上取 $C\prod_{\alpha\in\Delta}|\alpha(a)|^m$。当半单秩大于一时，可以固定一个单根的值而让另一个趋于无穷，原式会额外强迫函数在这些方向有界，强于缓慢增长条件。}更精确地，设 $G'$ 为 $G$ 的导出群（derived group）。则 $A$ 是 $Z(\R)^\circ$ 与 $A'=A\cap G'(\R)$ 的直积。对满足1.3(a)、(b) 的函数，增长条件 (d') 对 $a\in A_t'$ 与 (d) 等价，却没有对 $a\in Z(\R)^\circ$ 作任何要求。条件 (c) 则保证中心方向满足相应的多项式增长界，因而补足了 $Z(\R)$ 方向的增长条件。
+
+（2）设 $f$ 满足1.3(a)、(b)、(c) 以及
+\[
+f(zx)=\chi(z)f(x),\qquad z\in Z(\R),\ x\in G(\R),\tag{3}
+\]
+其中 $\chi$ 为 $Z(\R)/(Z(\R)\cap\Gamma)$ 的特征。于是 $|f|$ 是 $Z(\R)\cdot\Gamma\backslash G(\R)$ 上的函数。若对某个 $p\geq1$ 有 $|f|\in L^p(Z(\R)\Gamma\backslash G(\R))$，则 $f$ 缓慢增长，从而为自守形式。由于 $Z(\R)\Gamma\backslash G(\R)$ 有有限不变体积，只需对 $p=1$ 证明。这时，结论来自 [11] 中引理9的推论，以及存在 $K$ 不变函数 $\alpha\in C_c^\infty(G(\R))$ 使 $f=f*\alpha$。后一点是 $G(\R)$ 的可微表示中 $K$ 有限且 $Z(\mathfrak g)$ 有限元素的一个熟知性质，可由下述2.1 推出。
+\begin{originaltheorem}{定理 1.7（[11，定理1]）}
+空间 $\mathcal A(\Gamma,\xi,J,K)$ 为有限维。
+\end{originaltheorem}
+这一定理由 Harish-Chandra 证明。 [11] 给出的证明针对半单群，但同一方法也适用于约化群；在 [11] 证明定理的归纳论证中，事实上已隐含地完成了这一推广。另一个证明见 [13，引理3.5]。通常的做法是固定 $Z(\R)/(\Gamma\cap Z(\R))$ 的拟特征（quasi-character）$\chi$，并考虑 $\mathcal A(\Gamma,\xi,J,K)$ 中满足1.6(3) 的元素组成的空间 $\mathcal A(\Gamma,\xi,J,K)_\chi$。对这类函数，问题可直接化约到半单情形。注意，$Z(\R)$ 的单位元连通分支 $Z(\R)^\circ$（有时称为 $G(\R)$ 的分裂分量，split component）在 $Z(\R)$ 中指数有限，而且 $Z(\R)^\circ\cap\Gamma=\{1\}$；因此，只对 $Z(\R)^\circ$ 上的拟特征施加1.6(3)，本质上得到同样的条件。
+
+$G(\R)$ 的中心 $C(G(\R))$ 通过左或右平移作用在 $\mathcal A(\Gamma,\xi,J,K)$ 上。由于这个空间有限维，可见任意自守形式都是 $C(G(\R))$ 有限的。
+\origsubsection{1.8}{尖点形式（Cusp forms）}
+若 $G(\R)$ 上的连续函数对所有$x\in G(\R)$ 满足
+\[
+\int_{(\Gamma\cap N(\R))\backslash N(\R)}f(nx)\,dn=0,\tag{1}
+\]
+其中 $N$ 为 $G$ 的任意真抛物 $\Q$ 子群的幺幂根基（unipotent radical），则称其为尖点的（cuspidal）。对于可测函数，只要求上式对几乎所有 $x$ 成立。实际上，只对任意真极大抛物 $\Q$ 子群要求此式便足够 [11，引理3]。
+
+尖点形式指尖点自守形式。以 $^\circ\mathcal A(\Gamma,\xi,J,K)$ 表示 $\mathcal A(\Gamma,\xi,J,K)$ 中的尖点形式空间。
+
+设 $f$ 为 $G(\R)$ 上满足1.3(a)、(b)、(c) 的光滑函数。假定 $f$ 为尖点的，且存在 $Z(\R)$ 的特征 $\chi$，使1.6(3) 成立。那么下列条件等价：
+\begin{enumerate}
+\item[(i)] $f$ 缓慢增长，即 $f$ 为尖点形式；
+\item[(ii)] $f$ 有界；
+\item[(iii)] $|f|$ 模 $Z(\R)\cdot\Gamma$ 后平方可积。
+\end{enumerate}
+参见 [11，第4节]。事实上，结论还可以加强：$|f|$ 在 $Z(\R)\Gamma\backslash G(\R)$ 的无穷远处极快地趋于零，因此若 $g$ 为任意满足1.6(3) 的自守形式，则 $|f g|$ 在 $Z(\R)\cdot\Gamma\backslash G(\R)$ 上可积（同处）。
+
+$^\circ\mathcal A(\Gamma,\xi,J,K)$ 中满足1.6(3) 的函数组成的空间 $^\circ\mathcal A(\Gamma,\xi,J,K)_\chi$，可看作 $L^2(\Gamma\backslash G(\R))_\chi$ 中由有界函数组成的一个闭子空间；这里后一个空间由 $\Gamma\backslash G(\R)$ 上满足1.6(3)、且绝对值在 $Z(\R)\Gamma\backslash G(\R)$ 上平方可积的函数组成。由于这个商空间测度有限，Godement 的一个熟知引理 [11，引理17] 表明此空间有限维。当 $Z(\R)\Gamma\backslash G(\R)$ 紧时，这就证明了定理1.7 对 $\mathcal A(\Gamma,\xi,J,K)_\chi$ 的断言；它也是一般情形证明的第一步。
+\origsubsection{1.9}{算术子群的归纳极限}
+设 $a\in G(\Q)$。则 ${}^a\Gamma=a\Gamma a^{-1}$ 为 $G(\Q)$ 的算术子群，$a$ 的左平移 $l_a$ 诱导从 $\mathcal A(\Gamma,\xi,J,K)$ 到 $\mathcal A({}^a\Gamma,\xi,J,K)$ 的同构。令 $\Sigma$ 为 $G(\Q)$ 的一族算术子群，对有限交封闭，且全部成员之交为 $\{1\}$。空间 $\mathcal A(\Gamma,\xi,J,K)$（$\Gamma\in\Sigma$）之并 $\mathcal A(\Sigma,\xi,J,K)$ 可与这些空间的归纳极限（inductive limit）认同：
+\[
+\mathcal A(\Sigma,\xi,J,K)=\mathop{\mathrm{ind\,lim}}_{\Gamma\in\Sigma}\mathcal A(\Gamma,\xi,J,K),\tag{1}
+\]
+这里的过渡映射由投影 $\Gamma''\backslash G(\R)\to\Gamma'\backslash G(\R)$ 诱导，具体为以下包含映射：
+\[
+j_{\Gamma''\Gamma'}:\mathcal A(\Gamma',\xi,J,K)\longrightarrow\mathcal A(\Gamma'',\xi,J,K),\quad\Gamma''\subseteq\Gamma'.\tag{2}
+\]
+假定 $\Sigma$ 在 $G(\Q)$ 的共轭下稳定。则 $G(\Q)$ 通过左平移作用在 $\mathcal A(\Sigma,\xi,J,K)$ 上。以 $\Sigma$ 中的元素为 $1$ 的开邻域基，赋予 $G(\Q)$ 拓扑。则此表示是容许的：每个元素都被某个开子群固定，每个开子群的不变向量空间均为有限维。由连续性，它延拓为 $G(\Q)$ 关于刚定义的拓扑的完备化 $G(\Q)_\Sigma$ 的连续容许表示。对适当的 $\Sigma$，过渡到 $\mathcal A(\Sigma,\xi,J,K)$，本质上就是考虑无穷远处的型由 $\xi,J,K$ 指定的全部阿代尔自守形式；群 $G(\Q)_\Sigma$ 可与 $G(\Q)$ 在 $G(\A_f)$ 中的闭包认同，其作用来自 $G(\A_f)$ 的一个作用。见4.7。
+\origsubsection{1.10}{改变型}
+最后，先让 $\xi$ 变化，考虑由 $\mathcal A(\Sigma,\xi,J,K)$ 张成的空间 $\mathcal A(\Sigma,J,K)$，再让 $J$ 变化，得到由 $\mathcal A(\Sigma,J,K)$ 张成的空间 $\mathcal A(\Sigma,K)$。它们既是 $G(\Q)_\Sigma$ 模，也是 $(\mathfrak g,K)$ 模，并且这两种作用交换。这同样有自然的阿代尔解释（4.8）。
+\origsubsection{1.11}{Hecke 算子（Hecke operators）}
+令 $\mathcal H(G(\Q),\Gamma)$ 为 $G(\Q)$ 关于 $\Gamma$ 的复 Hecke 代数。它是 $G(\Q)$ 上在 $\Gamma$ 下双不变且支集包含于有限多个模 $\Gamma$ 双陪集之并的复值函数空间。乘法可直接用双陪集定义（例如见 [17]），也可用卷积定义（见下文）。此代数作用在 $\mathcal A(\Gamma,\xi,J,K)$ 上，$\Gamma a\Gamma$（$a\in G(\Q)$）的作用为\footnote{\textbf{译者注（本次校订）：}下式漏掉了与 $a$ 有关的平移。由于 $b\in\Gamma$，原式的每个 $l_bf$ 都等于 $f$，所以只得到标量算子。若约定 $l_cf(x)=f(c^{-1}x)$，可取 $\Gamma a\Gamma/\Gamma$ 的一组代表 $c$，将算子写为 $f\mapsto\sum_c l_cf$；使用另一侧陪集代表时须相应调整逆元。}
+\[
+f\longmapsto\sum_{b\in(\Gamma\cap{}^a\Gamma)\backslash\Gamma}l_b f.
+\]
+更一般地，令 $\mathcal H(G(\Q),\Sigma)$ 为由双陪集 $\Gamma'a\Gamma''$（$\Gamma',\Gamma''\in\Sigma,a\in G(\Q)$）的示性函数张成的 Hecke 代数 [17，第3章]。它可与 $G(\Q)_\Sigma$ 上局部常值紧支集函数的 Hecke 代数 $\mathcal H(G(\Q)_\Sigma)$ 认同。这一对应将 $\mathcal H(G(\Q),\Gamma)$ 映到 $\mathcal H(G(\Q)_\Sigma,\overline\Gamma)$，其中 $\overline\Gamma$ 为 $\Gamma$ 在 $G(\Q)_\Sigma$ 中的闭包 [12]。这里乘法是通常的卷积（本情形中就是有限和）。由于 $\mathcal A(\Sigma,\xi,J,K)$ 是 $G(\Q)_\Sigma$ 的容许模，$G(\Q)_\Sigma$ 的作用以标准方式延拓为 $\mathcal H(G(\Q)_\Sigma)$ 的作用。空间 $\mathcal A(\Gamma,\xi,J,K)$ 为 $\overline\Gamma$ 的不动点集，先前 $\mathcal H(G(\Q),\Gamma)$ 在其上的作用可视为 $\mathcal H(G(\Q)_\Sigma,\overline\Gamma)$ 的作用。阿代尔解释见4.8。
+\origsection{2}{自守形式与 $G(\R)$ 的表示}
+自守形式的定义有一个简明的表示论解释，其现代形式也正是由此得到的。为说明这一点，需要下面的已知引理（术语参见 [18]）。
+\begin{originaltheorem}{引理 2.1（Lemma 2.1）}
+设 $(\pi,V)$ 为 $G(\R)$ 的可微表示（differentiable representation）。设 $v\in V$ 既是 $K$ 有限的，又是 $Z(\mathfrak g)$ 有限的。那么 $V$ 中包含 $v$ 的最小 $(\mathfrak g,K)$ 子模是容许的。
+\end{originaltheorem}
+事实上，$\mathcal H\cdot v$ 是若干空间 $\mathcal H^\circ\cdot w$ 的有限和，其中 $\mathcal H^\circ$ 是 $G(\R)$ 的单位元连通分支 $G(\R)^\circ$ 与 $K^\circ=K\cap G(\R)^\circ$ 的 Hecke 代数，$w$ 为 $K^\circ$ 有限且 $Z(\mathfrak g)$ 有限。因此只需证明 $\mathcal H^\circ\cdot v$ 是容许 $(\mathfrak g,K^\circ)$ 模。由假设，存在 $K$ 的 Lie 代数 $\mathfrak k$ 的包络代数 $U(\mathfrak k)$ 的有限余维理想 $R$ 和 $Z(\mathfrak g)$ 的有限余维理想 $J$，二者均零化 $v$，且 $U(\mathfrak k)/R$ 是半单 $\mathfrak k$ 模。于是 $\mathcal H^\circ\cdot v$ 可与 $U(\mathfrak g)/U(\mathfrak g)RJ$ 认同。根据 Harish-Chandra 的一个定理（见 [19，2.2.1.1]），$U(\mathfrak g)/U(\mathfrak g)R$ 是 $\mathfrak k$ 半单的，其 $\mathfrak k$ 等型子模都是有限生成的 $Z(\mathfrak g)$ 模。因此它们模 $J$ 的商有限维。\footnote{\textbf{译者注（本次校订）：}这里应使用 $U(\mathfrak g)/(U(\mathfrak g)R+U(\mathfrak g)J)$，而非按理想乘积 $U(\mathfrak g)RJ$ 取商。由 $u\mapsto u\cdot v$，循环模是这个商模的商，通常也不能直接与它等同。对正确的商模应用前述有限生成性，即可推出容许性。}
+\origsubsection{2.2}{自守形式生成的模}
+令 $G(\R)$ 通过右平移作用于 $C^\infty(\Gamma\backslash G(\R))$，并对这一表示应用引理。于是若 $f$ 为自守形式，$f*\mathcal H$ 就是容许 $\mathcal H$ 模或 $(\mathfrak g,K)$ 模。这个模由自守形式组成。事实上，1.3(a) 显然成立，1.3(b) 来自2.1；其元素被与 $f$ 相同的 $Z(\mathfrak g)$ 理想零化，从而满足 (c)。最后，存在 $\alpha\in C_c^\infty(G)$，使 $f*\alpha=f$，故 $f*X$ 对所有 $X\in U(\mathfrak g)$ 均满足1.3(d) 的增长条件，而且可以使用与 $f$ 相同的指数 [11，引理14]。因而空间
+\[
+\mathcal A(\Gamma,J,K)=\sum_\xi\mathcal A(\Gamma,\xi,J,K),\qquad
+\mathcal A(\Gamma,K)=\sum_J\mathcal A(\Gamma,J,K)
+\]
+是 $(\mathfrak g,K)$ 模，且是容许 $(\mathfrak g,K)$ 模的并。
+
+若 $f$ 为尖点形式，则 $f*\mathcal H$ 由尖点形式组成。因此尖点形式子空间 $^\circ\mathcal A(\Gamma,K)$ 也是 $\mathcal H$ 模。若 $\chi$ 是 $Z$ 的拟特征，则按 $\chi$ 变换的函数空间 $^\circ\mathcal A(\Gamma,K)_\chi$ 是不可约容许 $(\mathfrak g,K)$ 模的直和，且各重数有限。事实上，扭曲 $|\chi|^{-1}$ 后，可以假定 $\chi$ 是酉的，从而化约到 Gelfand--Piatetski-Shapiro 定理（[7]，另见 [11，定理2]、[13，第2节]）：
+将 $^\circ\mathcal A(\Gamma,K)_\chi$ 与 $L^2(\Gamma\backslash G(\R))_\chi$ 中尖点函数子空间 $^\circ L^2(\Gamma\backslash G(\R))_\chi$ 的 $K$ 有限且 $Z(\mathfrak g)$ 有限元素的空间认同（后者见1.8）。
+\origsection{3}{一些记号（Some notation）}
+下文统一采用以下记号和约定。
+\paragraph*{3.1.}
+$F$ 为整体域，$O_F$ 为 $F$ 的整数环；$V$ 或 $V_F$（分别地，$V_\infty$、$V_f$）为 $F$ 的素位（分别地，阿基米德素位、非阿基米德素位）的集合；$F_v$ 为 $F$ 在 $v\in V$ 处的完备化，若 $v\in V_f$，$O_v$ 为 $F_v$ 的整数环。照例，$\A$ 或 $\A_F$（分别地，$\A_f$）是 $F$ 的阿代尔环（分别地，有限阿代尔环）。
+\paragraph*{3.2.}
+$G$ 为 $F$ 上连通约化群，$Z$ 为 $G$ 的中心的最大 $F$ 分裂环面，$\mathcal H_v$ 为 $G_v=G(F_v)$（$v\in V$）的 Hecke 代数 [4]。因此当 $v\in V_\infty$ 时，$\mathcal H_v$ 为第1节考虑的类型；当 $v\in V_f$ 时，它是 $G(F_v)$ 上局部常值紧支集函数的卷积代数。令
+\[
+\mathcal H_\infty=\bigotimes_{v\in V_\infty}\mathcal H_v,\qquad
+\mathcal H_f=\bigotimes_{v\in V_f}\mathcal H_v,\qquad
+\mathcal H=\mathcal H_\infty\otimes\mathcal H_f,\tag{1}
+\]
+其中第二个张量积为关于适当幂等元族的限制张量积 [4]。因而 $\mathcal H$ 是 $G(\A)$ 的整体 Hecke 代数 [4]。若 $F$ 为函数域，则 $V_\infty$ 为空，$\mathcal H=\mathcal H_f$。
+
+若 $L$ 为 $G(\A_f)$ 的紧开子群，以 $\xi_L$ 表示相应幂等元，即 $L$ 的示性函数除以 $L$ 的体积（相对于定义 $\mathcal H_f$ 所用的 Haar 测度）。因此 $f*\xi_L=f$ 当且仅当 $f$ 在 $L$ 下右不变。
+
+将 $x\in G(\A)$ 在 $G(\A)$ 上以及在函数空间上诱导的右平移记为 $r_x$ 或 $r(x)$。
+\paragraph*{3.3.}
+若 $G(\A)$ 上连续（分别地，可测）函数对所有（分别地，几乎所有）$x\in G(\A)$ 满足
+\[
+\int_{N(F)\backslash N(\A)}f(nx)\,dn=0,
+\]
+其中 $N$ 为 $G$ 的任意真抛物 $F$ 子群 $P$ 的幺幂根基，则称其为尖点的。只需当 $P$ 遍历真极大抛物 $F$ 子群共轭类的一组代表时检验此条件。
+\origsection{4}{数域上的群（Groups over number fields）}
+\paragraph*{4.1.}
+本节中，$F$ 为数域。若 $\xi\in\mathcal H$ 形如
+\[
+\xi=\xi_\infty\otimes\xi_f,\qquad\xi_f\in\mathcal H_f,\quad\xi_\infty\text{ 为 }\mathcal H_\infty\text{ 中幂等元},\tag{1}
+\]
+就称其为简单元（simple element）。令 $G_\infty=\prod_{v\in V_\infty}G_v$，$\mathfrak g_\infty$ 为视作实 Lie 群的 $G_\infty$ 的 Lie 代数。回顾 $G_\infty$ 可典范地视为某个连通约化群 $H$ 的实点群 $H(\R)$；具体来说，$H=R_{F/\Q}G$ 是 $G$ 从 $F$ 到 $\Q$ 限制标量（restriction of scalars）所得的群。当把第1、2节的定义和结果应用于 $G_\infty$ 时，均按这一认同理解。
+
+群 $G(\A)$ 为 $G_\infty$ 与 $G(\A_f)$ 的直积。$G(\A)$ 上复值函数称为光滑（smooth），若它连续，并且当视为两个变量 $x\in G_\infty,y\in G(\A_f)$ 的函数时，固定 $y$ 对 $x$ 是 $C^\infty$ 的，固定 $x$ 对 $y$ 则局部常值。
+\origsubsection{4.2}{自守形式（Automorphic forms）}
+固定 $G_\infty$ 的极大紧子群 $K_\infty$。若 $G(\A)$ 上光滑函数 $f$ 满足下列条件，就称为 $G(\A)$ 上的 $K_\infty$ 自守形式：
+\begin{enumerate}
+\item[(a)] $f(\gamma x)=f(x)$（$\gamma\in G(F),x\in G(\A)$）；
+\item[(b)] 存在简单元 $\xi\in\mathcal H$，使 $f*\xi=f$；
+\item[(c)] 存在 $Z(\mathfrak g_\infty)$ 的有限余维理想 $J$ 零化 $f$；
+\item[(d)] 对每个 $y\in G(\A_f)$，$G_\infty$ 上的函数 $x\mapsto f(xy)$ 缓慢增长。
+\end{enumerate}
+有时称这样的 $f$ 为 $(\xi,J,K_\infty)$ 型，以 $\mathcal A(\xi,J,K_\infty)$ 表示该型的自守形式空间。
+
+存在 $G(\A_f)$ 的紧开子群 $L$，使 $\xi_f*\xi_L=\xi_f$。于是 $\mathcal A(\xi,J,K_\infty)\subseteq\mathcal A(\xi_\infty*\xi_L,J,K_\infty)$。因此，在后面的讨论中可直接取 $\xi_f=\xi_L$。
+\paragraph*{4.3.}
+现在将这些自守形式与 $G_\infty$ 上的自守形式联系起来。为此，取 $G(\A_f)$ 的紧开子群 $L$，$\xi=\xi_\infty\otimes\xi_L$。存在有限集 $C\subseteq G(\A)$，使 $G(\A)=G(F)\cdot C\cdot G_\infty\cdot L$ [1]。假定 $C$ 为这种陪集的一组代表，且包含于 $G(\A_f)$。于是 $G(\A)$ 分解为各开集 $G(F)cG_\infty L$ 的不交并。对 $c\in C$，令
+\[
+\Gamma_c=G(F)\cap(G_\infty\times cLc^{-1}).\tag{1}
+\]
+这是 $G_\infty$ 的算术子群。
+
+给定 $G(\A)$ 上函数 $f$ 和 $c\in C$，令 $f_c$ 为 $G_\infty$ 上的函数 $x\mapsto f(cx)$。假定 $f$ 在 $L$ 下右不变。直接检验可知，$f$ 在 $G(F)$ 下左不变，当且仅当对每个 $c\in C$，$f_c$ 在 $\Gamma_c$ 下左不变。更精确地，映射 $f\mapsto(f_c)_{c\in C}$ 给出 $G(F)\backslash G(\A)/L$ 上函数空间与 $\coprod_c(\Gamma_c\backslash G_\infty)$ 上函数空间之间的双射。由定义，它也诱导同构
+\[
+\mathcal A(\xi_\infty\otimes\xi_L,J,K_\infty)\xrightarrow{\sim}
+\bigoplus_{c\in C}\mathcal A(\Gamma_c,\xi_\infty,J,K_\infty),\tag{2}
+\]
+借助这个同构，第1节的结果便给出阿代尔自守形式的相应性质。特别是1.6、1.7 蕴含：
+\begin{enumerate}
+\item[(i)] 空间 $\mathcal A(\xi,J,K_\infty)$ 有限维。
+\item[(ii)] 若 $G(\A)$ 上光滑函数 $f$ 满足4.2(a)、(b)、(c)，且对 $Z(\A)/Z(F)$ 的某个特征 $\chi$ 满足
+\[
+f(zx)=\chi(z)f(x),\qquad z\in Z(\A),\ x\in G(\A),\tag{3}
+\]
+并且对某个 $p\geq1$，$|f|\in L^p(Z(\A)G(F)\backslash G(\A))$，则 $f$ 缓慢增长。
+\item[(iii)] 对满足4.2(a)、(b)、(c) 的光滑函数，增长条件4.2(d) 等价于1.6(d')，只是此时 $R$ 是 $G(\A)$ 的紧子集。
+\item[(iv)] 任意自守形式都是 $C(G(\A))$ 有限的，其中 $C(G(\A))$ 为 $G(\A)$ 的中心。
+\end{enumerate}
+此外，还可以仿照1.2直接利用阿代尔范数定义 $G(\A)$ 上的缓慢增长函数：给定核有限的 $F$ 态射 $\sigma:G\to\GL_n$，对 $x\in G(\A)$ 定义
+\[
+\|x\|=\sup_{v\in V}\max_{ij}(|\sigma(g)_{ij}|_v,|\sigma(g^{-1})_{ij}|_v)\tag{4}
+\]
+（若 $\sigma(G)$ 作为 $n\times n$ 矩阵空间的子集为闭集，只需取 $\max|\sigma(g)_{ij}|_v$）。对满足4.2(a)、(b) 的连续函数，这与4.2(d) 等价。\footnote{\textbf{译者注（本次校订）：}式 (4) 右端的 $g$ 应统一读作左端的 $x$，即取 $\sigma(x_v)$ 及其逆矩阵的各项。}
+\paragraph*{4.4.}
+尖点形式是尖点自守形式。以 $^\circ\mathcal A(\xi,J,K_\infty)$ 表示 $(\xi,J,K_\infty)$ 型的尖点形式空间。
+
+群 $N$ 幺幂，因而满足强逼近（strong approximation），即对 $N(\A_f)$ 的任意紧开子群 $Q$ 有
+\[
+\begin{gathered}
+N(\A)=N(F)N_\infty Q;\qquad\text{从而}\\
+N(F)\backslash N(\A)\cong(N(F)\cap(N_\infty\times Q))\backslash N_\infty.
+\end{gathered}\tag{2}
+\]
+见 [1]。\footnote{\textbf{译者注（本次校订）：}式 (2) 的第二个同构左端还须对 $Q$ 取商：$N(F)\backslash N(\A)/Q\cong(N(F)\cap(N_\infty\times Q))\backslash N_\infty$。未对 $Q$ 取商的阿代尔商仍包含有限素位方向，不能与右侧空间等同。}现设 $f$ 为 $G(\A)$ 上的连续函数，在 $G(F)$ 下左不变，在 $L$ 下右不变。由 (2) 经过初等计算可知，$f$ 尖点，当且仅当 $f_c$（记号同4.3）在 $G_\infty$ 上尖点。因此4.3(2) 的同构诱导同构
+\[
+{}^\circ\mathcal A(\xi_\infty\otimes\xi_L,J,K_\infty)\xrightarrow{\sim}
+\bigoplus_{c\in C}{}^\circ\mathcal A(\Gamma_c,\xi_\infty,J,K_\infty),\tag{3}
+\]
+从而1.8 的结果延拓到阿代尔尖点形式。特别地，假定 $f$ 满足4.2(a)、(b)、(c)，并对 $Z(\A)/Z(F)$ 的某个特征 $\chi$ 满足4.3(3)，则下列条件等价：\footnote{\textbf{译者注（本次校订）：}这里与1.8 一样，还须假设 $f$ 为尖点函数。否则，仅有4.2(a)、(b)、(c) 及中心特征条件，并不能推出含有“$f$ 为尖点形式”的等价关系。}
+\begin{enumerate}
+\item[(i)] $f$ 缓慢增长，即 $f$ 为尖点形式；
+\item[(ii)] $f$ 有界；
+\item[(iii)] $|f|$ 模 $Z(\A)G(F)$ 平方可积。
+\end{enumerate}
+\paragraph*{注}
+在4.3、4.4 中，为便于引用已有结果，我们将阿代尔自守形式的性质化约为 $G(\R)$ 上自守形式的相应陈述。也可以直接在阿代尔框架中证明，再借助4.3(2)、4.4(3) 将无穷远处的结果作为推论导出。特别是，像1.8 一样，用上述 (ii) 和 Godement 引理可证明 $^\circ\mathcal A(\xi,J,K_\infty)$ 有限维。
+\begin{originaltheorem}{命题 4.5（Proposition 4.5）}
+设 $f$ 为 $G(\A)$ 上满足4.2(a)、(b)、(d) 的光滑函数。则下列条件等价：
+\begin{enumerate}
+\item[(1)] $f$ 为自守形式；
+\item[(2)] 对每个无限素位 $v$，空间 $f*\mathcal H_v$ 是容许 $\mathcal H_v$ 模；
+\item[(3)] 对每个素位 $v\in V$，空间 $f*\mathcal H_v$ 是容许 $\mathcal H_v$ 模；
+\item[(4)] 空间 $f*\mathcal H$ 是容许 $\mathcal H$ 模。
+\end{enumerate}
+\end{originaltheorem}
+\begin{proof}
+蕴含关系 $(4)\Rightarrow(3)\Rightarrow(2)\Rightarrow(1)$ 显然；$(1)\Rightarrow(4)$ 来自4.3(i)。
+\end{proof}
+\origsubsection{4.6}{自守表示（Automorphic representations）}
+若 $\mathcal H$ 的不可约表示同构于 $\mathcal H$ 在 $G(\A)$ 上的自守形式（分别地，尖点形式）空间中的表示的一个子商，便称其自守（分别地，尖点）。由4.5，这种表示总是容许的。也称其为 $G$ 或 $G(\A)$ 的自守表示。它首先是 $\mathcal H$ 模，同时自然带有 $G(\A_f)$ 的作用；在无穷远处则采用相应的 Lie 代数与极大紧子群的作用。更一般地，若拓扑 $G(\A)$ 模 $E$ 中容许向量的子空间为 $\mathcal H$ 的自守表示，就称 $E$ 自守。特别是，若 $\chi$ 为 $Z(\A)/Z(F)$ 的特征，则
+\[
+\begin{aligned}
+L^2(G(F)\backslash G(\A))_\chi
+=\{f\mid &|f|\in L^2(G(F)Z(\A)\backslash G(\A)),\\
+&f(zx)=\chi(z)f(x),\ z\in Z(\A),\ x\in G(\A)\}
+\end{aligned}
+\]
+的任意 $G$ 不变不可约闭子空间，依 [4，定理4] 在此意义下自守。根据 Gelfand 与 Piatetski-Shapiro 的定理 [7]（另见 [8]），$L^2(G(F)\backslash G(\A))_\chi$ 的尖点函数子空间 $^\circ L^2(G(F)\backslash G(\A))_\chi$ 是闭不可约不变子空间的离散和，重数有限。这些子空间恰好给出所有同构类的 $Z(\A)$ 按特征 $\chi$ 作用的尖点自守表示。这些子空间中的容许向量，恰为满足4.3(3) 的全部尖点形式。
+\paragraph*{4.7.}
+设 $L\supseteq L'$ 是 $G(\A_f)$ 的紧开子群。则 $\xi_L*\xi_{L'}=\xi_L$，从而 $\mathcal A(\xi_\infty\otimes\xi_L,J,K_\infty)\subseteq\mathcal A(\xi_\infty\otimes\xi_{L'},J,K_\infty)$。由所有 $(\xi_\infty\otimes\xi_f,J,K_\infty)$ 型自守形式（$\xi_f\in\mathcal H_f$ 任意）张成的空间 $\mathcal A(\xi_\infty,J,K_\infty)$，可与归纳极限
+\[
+\mathcal A(\xi_\infty,J,K_\infty)=\mathop{\mathrm{ind\,lim}}_L\mathcal A(\xi_\infty\otimes\xi_L,J,K_\infty)\tag{1}
+\]
+认同；其中 $L$ 遍历 $G(\A_f)$ 的紧开子群，极限关于上述包含映射取。群 $G(\A_f)$ 通过内自同构作用在 $\mathcal H_f$ 上。以 ${}^x\xi$ 表示 $\xi\in\mathcal H_f$ 在 $\operatorname{Int}x$ 下的变换。特别有
+\[
+{}^x(\xi_L)=\xi_{{}^xL},\quad x\in G(\A_f),\tag{2}
+\]
+其中 $\xi_L$ 如4.1。若 $f$ 是 $G(\A)$ 上的连续（或可测）函数，则
+\[
+(r_xf)*\xi=r_x(f*{}^{x^{-1}}\xi),\qquad x\in G(\A_f),\ \xi\in\mathcal H_f.\tag{3}
+\]
+因此 $G(\A_f)$ 通过右平移作用在 $\mathcal A(\xi_\infty,J,K_\infty)$ 上。由4.3(i)，此表示容许。
+
+由4.3(2)，$\mathcal A(\xi_\infty,J,K_\infty)$ 是1.9 中空间 $\mathcal A(\Sigma,\xi_\infty,J,K_\infty)$ 的阿代尔对应物，其中 $\Sigma$ 为 $G(F)$ 的形如 $\Gamma_L=G(F)\cap(G_\infty\times L)$ 的算术子群族，$L$ 为 $G(\A_f)$ 的紧开子群。这些是 $G(F)$ 的同余算术子群（congruence arithmetic subgroup），即在一个 $F$ 上嵌入 $G\hookrightarrow\GL_n$ 下，包含 $G\cap\GL_n(O_F)$ 的某个同余子群的子群。当 $G$ 满足强逼近时，这一类比可以说得更精确；特别是当 $G$ 半单、单连通、在 $F$ 上几乎单（almost simple），且 $G_\infty$ 非紧时便如此 [16]。这时，如4.4(2) 所述，对 $G(\A_f)$ 的任意紧开子群 $L$ 都有 $G(\A)=G(F)G_\infty L$，从而4.3 中可取 $C=\{1\}$。于是4.3(2) 对任意 $L$ 给出同构
+\[
+\mathcal A(\xi_\infty\otimes\xi_L,J,K_\infty)\xrightarrow{\sim}\mathcal A(\Gamma_L,\xi_\infty,J,K_\infty),\tag{4}
+\]
+从而
+\[
+\mathcal A(\xi_\infty,J,K_\infty)\cong\mathcal A(\Sigma,\xi_\infty,J,K_\infty),\tag{5}
+\]
+这里 $\Sigma$ 为 $G(F)$ 的同余算术子群集合。此外，$G(F)$ 在 $G(\A_f)$ 中的投影稠密，而 $G(\A_f)$ 可与 $G(F)$ 关于子群 $\Gamma_L$ 定义的拓扑的完备化 $G(F)_\Sigma$ 认同。容易看出同构 (5) 与 $G(\Q)$ 作用交换：在左边，$x\in G(\Q)$ 如1.9 通过左平移作用；在右边，$x$ 作为 $G(\A_f)$ 的元素通过右平移作用。因此同构 (5) 与此处及1.9 中定义的 $G(F)_\Sigma=G(\A_f)$ 作用交换。
+
+同构 $G(F)_\Sigma\xrightarrow{\sim}G(\A_f)$ 也诱导 Hecke 代数 $\mathcal H(G(F)_\Sigma)$（见1.10）到 $\mathcal H_f$ 的同构，且 (5) 同样与此处及1.10 定义的作用相容。还应注意，由强逼近，$\Gamma_L$ 在 $L$ 中稠密，因此这个 Hecke 代数同构诱导 $\mathcal H(G(F)_\Sigma,\overline\Gamma_L)$（它等于 $\mathcal H(G(F),\Gamma_L)$）到 $\mathcal H(G(\A_f),L)$ 的同构。[严格说来，这首先适用于 $F=\Q$；但将 $G$ 换成 $R_{F/\Q}G$（4.1），便可把一般情形化约到这一情形。]
+
+在一般情形，各种 $\xi_L$ 对应的同构4.3(2)，与此处及1.9 分别定义的 $G(F)$ 作用相容；该作用由连续性延拓到 $G(F)$ 的投影在 $G(\A_f)$ 中的闭包。
+\paragraph*{4.8.}
+令 $\mathcal A(J,K_\infty)$ 为各空间 $\mathcal A(\xi_\infty,J,K_\infty)$ 的线性包，$\mathcal A(K_\infty)$ 为各 $\mathcal A(J,K_\infty)$ 的线性包。这些空间为 $\mathcal H$ 模，并为容许 $\mathcal H$ 子模之并。当4.7(5) 成立时，它们与1.10 定义的 $G(\R)$ 上自守形式空间 $\mathcal A(\Sigma,J,K_\infty)$、$\mathcal A(\Sigma,K_\infty)$ 同构。一般情形下，它们之间的关系需要通过同构4.3(2) 表达。
+\origsection{5}{函数域上的群（Groups over function fields）}
+本节中，$F$ 为有限域上的一变量函数域。$G(\A)$ 上的函数若局部常值，就称为光滑。
+\paragraph*{5.1.}
+设 $\chi$ 为 $Z(\A)/Z(F)$ 的拟特征，$K$ 为 $G(\A)$ 的开子群。以 $^\circ\mathcal V(\chi,K)$ 表示 $G(\A)$ 上满足以下条件的复值函数空间：在 $K$ 下右不变，在 $G(F)$ 下左不变，满足
+\[
+f(zx)=\chi(z)f(x),\qquad z\in Z(\A),\ x\in G(\A),\tag{1}
+\]
+且为尖点的（3.3）。这些函数属于下文将定义的尖点形式；后一个概念更为一般，见5.7--5.8。 需要下面的命题：
+\begin{originaltheorem}{命题 5.2（G. Harder）}
+给定 $K,\chi$。则存在 $G(\A)$ 的紧子集 $C$，使 $^\circ\mathcal V(\chi,K)$ 的每个元素的支集包含于 $Z(\A)G(F)C$。特别地，$^\circ\mathcal V(\chi,K)$ 有限维。
+\end{originaltheorem}
+当 $G$ 在 $F$ 上分裂且半单时，这可由 [10] 的推论1.2.3 得到（半单性限制是因为 (1) 并非 [10] 对中心施加的条件）。不过，由于 $G(\A)$ 可由有限多个 Siegel 集覆盖，同一论证也适用于一般情形（$\GL_n$ 的情形见 [9，第142页]）。
+\begin{originaltheorem}{推论 5.3（Corollary 5.3）}
+设 $X$ 为 $Z(\A)/Z(F)$ 的有限拟特征集，$m$ 为正整数。那么在 $K$ 下右不变且满足条件
+\[
+\prod_{\chi\in X}(r(z)-\chi(z))^m\cdot f=0\tag{1}
+\]
+的尖点函数空间 $^\circ\mathcal V(X,m,K)$ 有限维。
+\end{originaltheorem}
+\begin{proof}
+空间 $^\circ\mathcal V(X,m,K)$ 为各空间 $^\circ\mathcal V(\{\chi\},m,K)$ 的直和，所以可假定 $X$ 仅含一个拟特征 $\chi$。由5.2，$^\circ\mathcal V(X,1,K)$ 有限维。随后归纳，假定对某个 $s\geq1$，$^\circ\mathcal V(X,s,K)$ 有限维。
+
+群 $Z(\A)/Z(F)K'$（$K'=Z(\A)\cap K$）有限生成。设 $(z_j)_{1\leq j\leq q}$ 为生成元集。令 $A_{s+1,0}={}^\circ\mathcal V(X,s+1,K)$，并对 $t=1,\ldots,q$ 令
+\[
+A_{s+1,t}=\{f\in A_{s+1,0}\mid(r(z_j)-\chi(z_j))^s f=0\ (j=1,\ldots,t)\}.
+\]
+则
+\[
+A_{s+1,0}\supseteq A_{s+1,1}\supseteq\cdots\supseteq A_{s+1,t}\supseteq\cdots\supseteq A_{s+1,q}={}^\circ\mathcal V(X,s,K).
+\]
+固定 $t$（$0\leq t<q$）。则 $f\mapsto(r(z_{t+1})-\chi(z_{t+1}))f$ 将 $A_{s+1,t}$ 映到 $A_{s+1,t+1}$，其核包含于 $A_{s+1,t+1}$。于是对 $t$ 作下降归纳，可得 $A_{s+1,0}$ 有限维。\footnote{\textbf{译者注（本次校订）：}上述证明中 $A_{s+1,q}={}^\circ\mathcal V(X,s,K)$ 需要修正：即使各生成元的幂零部分都满足 $T_j^s=0$，它们的组合也未必具有同样的幂零阶。例如 $T_1^2=T_2^2=0$ 并不推出 $(T_1+T_2)^2=0$。可改用交换算子 $T_j=r(z_j)-\chi(z_j)$ 生成的理想按总次数过滤。由 $T_j^m=0$，总次数大于 $q(m-1)$ 的乘积均为零；各层的维数由真特征空间 $^\circ\mathcal V(\chi,K)$ 的有限维性归纳控制，即得所需结论。}
+\end{proof}
+\origsubsection{5.4}{注（Remark）}
+若 $H$ 为交换群，以 $\C[H]$ 表示其复群代数（group algebra）。$H$ 的每个复表示 $(\pi,W)$ 都典范延拓为 $\C[H]$ 的表示。元素 $w\in W$ 是 $H$ 有限的，当且仅当它被 $\C[H]$ 的某个有限余维理想 $I$ 零化。若 $I$ 为这样的理想，则存在 $H$ 的有限拟特征集 $X$ 和正整数 $m$，使
+\[
+\prod_{\chi\in X}(\pi(h)-\chi(h))^m w=0,\quad\text{对所有 }h\in H\text{ 及所有被 }I\text{ 零化的 }w.\tag{1}
+\]
+若 $H$ 有限生成，反之，对所有 $h\in H$ 满足 (1) 的全部元素 $w\in W$ 都是 $H$ 有限的，并被 $\C[H]$ 的某个有限余维理想零化。因此5.3 蕴含：$G(F)\backslash G(\A)/K$ 上被 $\C[Z(\A)/Z(F)]$ 的某个有限余维理想 $I$ 零化的尖点函数空间 $^\circ\mathcal V(I,K)$ 有限维。事实上，由于 $Z(\A)/Z(F)(K\cap Z(\A))$ 有限生成，这两个陈述等价。
+\paragraph*{5.5.}
+设 $E$ 为局部域，$R$ 为 $E$ 上连通约化群，$\mathcal H_R$ 为 $R(E)$ 的 Hecke 代数。若 $\mathcal H_R$ 在 $\mathcal H_R/J$ 上的自然表示容许，则称 $\mathcal H_R$ 的左理想 $J$ 为容许理想（admissible ideal）。
+\begin{originaltheorem}{引理（Lemma）}
+设 $J$ 为 $\mathcal H_R$ 的容许理想，$K$ 为 $R(E)$ 的紧开子群。设 $P$ 为 $R$ 的抛物 $E$ 子群，$N$ 为 $P$ 的幺幂根基，$M$ 为 $P$ 的 Levi $E$ 子群。则 $M(E)$ 的 Hecke 代数 $\mathcal H_M$ 中存在容许理想 $J_M$，具有如下性质：若 $\pi$ 为 $R(E)$ 在空间 $W$ 上的光滑表示，$w\in W$ 被 $K$ 固定且被 $J$ 零化，则 $w$ 在空间 $W_N$（参见 [3]）中的像 $\bar w$ 被 $J_M$ 零化。
+\end{originaltheorem}
+\begin{proof}
+令 $\varphi_0\in\mathcal H_R$ 为 $K$ 的示性函数，$v_0$ 为其在 $\mathcal H_R/J$ 中的像，$\bar v_0$ 为 $v_0$ 在 $(\mathcal H_R/J)_N$ 中的像。由假设，$R(E)$ 在 $\mathcal H_R/J$ 上的表示容许；故 $M(E)$ 在 $(\mathcal H_R/J)_N$ 上的表示也容许 [3]，$\bar v_0$ 在 $\mathcal H_M$ 中的零化子（annihilator）$J_M$ 容许。下面验证 $J_M$ 具有所需性质。若 $\pi,w$ 如引理，可定义 $R(E)$ 态射 $\mathcal H_R\to W$，将 $\xi$ 映到 $\operatorname{vol}(K)^{-1}\pi(\xi)w$；它将 $\varphi_0$ 映到 $w$。\footnote{\textbf{译者注（本次校订）：}这里使用显式给出的同态即可。仅指定 $\varphi_0$ 的像，一般不能在整个 $\mathcal H_R$ 上唯一确定同态；若限制到由 $\varphi_0$ 生成的循环左理想，才有这种唯一性。本引理中抛物子群的母群也统一记作 $R$。}因此它经过一个 $R(E)$ 态射 $\mathcal H_R/J\to W$ 分解，后者将 $v_0$ 映到 $w$，从而得到 $M(E)$ 态射 $(\mathcal H_R/J)_N\to W_N$，将 $\bar v_0$ 映到 $\bar w$。故 $\bar w$ 被 $J_M$ 零化。
+\end{proof}
+\begin{originaltheorem}{定理 5.6（Theorem 5.6）}
+设 $K$ 为 $G(\A)$ 的紧开子群，$v\in V$，$J$ 为 $\mathcal H_v$ 的容许理想。则 $G(\A)$ 上在 $G(F)$ 下左不变、在 $K$ 下右不变且被 $J$ 零化的复值函数 $f$ 的空间 $\mathcal V(G,v,J,K)$ 有限维。
+\end{originaltheorem}
+\begin{proof}
+由于 $G_v$ 在 $\mathcal H_v/J$ 上的表示容许（且有限生成），存在 $\C[Z(F_v)]$ 的有限余维理想 $I_v$，零化 $\mathcal H_v/J$。
+
+设 $f\in\mathcal V(G,v,J,K)$。则 $h\mapsto f*\check h$（$h\mapsto\check h$ 为 $\mathcal H_v$ 的典范对合）给出 $G_v$ 态射 $\mathcal H_v/J\to f*\mathcal H_v$。因此 $\mathcal V(G,v,J,K)$ 被 $I_v$ 零化。令 $Z'=Z(\A)\cap K$，并把 $Z(F_v)$ 看作 $Z(\A)$ 的子群，则 $Z(F)Z(F_v)Z'$ 在 $Z(\A)$ 中指数有限。由此存在 $Z(\A)/Z(F)$ 的一个有限余维理想 $I$，零化 $\mathcal V(G,v,J,K)$。于是其中尖点元素的空间 $^\circ\mathcal V$ 包含于 $^\circ\mathcal V(I,K)$（5.4 的记号），从而有限维。
+
+现在对 $G$ 的导出群 $G'$ 的 $F$ 秩 $\operatorname{rk}_FG'$ 作归纳来证明定理。若 $\operatorname{rk}_FG'=0$，则 $\mathcal V(G,v,J,K)={}^\circ\mathcal V$，断言已证。因此设 $\operatorname{rk}_FG'\geq1$，且定理对半单 $F$ 秩严格较小的群已证。令 $P=MN$ 遍历 $G$ 的真抛物 $F$ 子群共轭类的一组代表 $\mathcal P$，其中 $M$ 为 Levi $F$ 子群，$N$ 为 $P$ 的幺幂根基。对每个这样的 $P$，令 $C_P$ 为 $P(\A)\backslash G(\A)/K$ 的一组代表。此集有限。映射 $f\mapsto f_{P,c}$，其中
+\[
+f_{P,c}(m)=\int_{N(F)\backslash N(\A)}f(nmc)\,dn,
+\quad c\in C_P,\ P\in\mathcal P,\ f\in\mathcal V(G,v,J,K),
+\]
+的核的交即 $^\circ\mathcal V$，从而有限维。因此只需证明：给定 $P\in\mathcal P,c\in C_P$，所有这样的函数 $f_{P,c}$ 都落在某个固定的有限维空间中。将 $J,K$ 分别换成适当的共轭理想和共轭子群后，可假定 $c=1$。将 $f_{P,1}$ 写成 $f_P$。
+
+令 $U_G$（分别地，$U_M$）为 $G(F)\backslash G(\A)$（分别地，$M(F)\backslash M(\A)$）上在某个紧开子群下右不变的函数空间，子群可依赖于函数。$G(\A)$ 通过右平移在 $U_G$ 上的表示光滑。若 $x\in N(\A)$，则 $f_P=(r_xf)_P$；因此 $\mu_P:f\mapsto f_P$ 经过 $(U_G)_{N(F_v)}$ 分解。由5.5，元素 $f_P$（$f\in\mathcal V(G,v,J,K)$）均被 $M(F_v)$ 的 Hecke 代数的某个容许理想 $J'$ 零化。由于这些元素在 $K'=K\cap M(\A)$ 下右不变，$\mu_P$ 将 $\mathcal V(G,v,J,K)$ 映入 $\mathcal V(M,v,J',K')$。由归纳假设，后者有限维，证明完成。
+\end{proof}
+\begin{originaltheorem}{推论 5.7（Corollary 5.7）}
+设 $f$ 为 $G(\A)$ 上在 $G(F)$ 下左不变且在某个紧开子群下右不变的函数。则下列条件等价：
+\begin{enumerate}
+\item[(1)] 存在 $F$ 的素位 $v$，使 $G_v$ 在由 $r(G_v)f$ 生成的 $G(F_v)$ 不变子空间上的表示容许；
+\item[(2)] 对 $F$ 的每个素位 $v$，$G_v$ 在由 $r(G_v)f$ 生成的空间上的表示容许；
+\item[(3)] $G(\A)$ 在由 $r(G(\A))f$ 张成的空间上的表示容许。
+\end{enumerate}
+\end{originaltheorem}
+\begin{proof}
+显然 $(3)\Rightarrow(2)\Rightarrow(1)$。假定 (1)，取其中的 $v$。则 $f$ 被 $\mathcal H_v$ 的某个容许理想 $J$ 零化。令 $U=f*\mathcal H$。须证明对 $G(\A)$ 的任意紧开子群 $K$，$U^K$ 有限维。将 $K$ 换成较小子群无妨，因此可假定 $K$ 固定 $f$。还可假定 $K=K_v\times K^v$，其中 $K_v$ 在 $G_v$ 中紧开，$K^v$ 在 $G(\A)$ 中 $v$ 分量为 $1$ 的元素组成的子群 $G^v$ 中紧开。此外 $\mathcal H=\mathcal H_v\otimes\mathcal H^v$，$\mathcal H^v$ 为 $G^v$ 的 Hecke 代数。令 $\xi_v$（分别地，$\xi^v$）为与 $K_v$（分别地，$K^v$）相联系的幂等元（3.3）。则 $\xi_v\otimes\xi^v=\xi_K$ 为与 $K$ 相联系的幂等元。$U$ 中任意元素 $g$ 为形如 $f*\alpha*\beta$（$\alpha\in\mathcal H^v,\beta\in\mathcal H_v$）的元素的有限线性组合。
+
+若 $g$ 被 $K$ 固定，则 $g*\xi_K=g$，因此可假定每个和项均被 $K$ 固定，且 $\alpha*\xi^v=\alpha$、$\beta*\xi_v=\beta$。由于 $f$ 被 $K$ 固定，可知 $f*\alpha$ 被 $K$ 固定。这些元素 $f*\alpha$ 属于空间 $\mathcal V(G,v,J,K)$，由定理该空间有限维。对于每个这样的元素，$f*\alpha*\beta$ 属于容许 $\mathcal H_v$ 模 $f*\alpha*\mathcal H_v=f*\mathcal H_v*\alpha$ 的 $K_v$ 不变向量空间，故断言成立。
+\end{proof}
+\origsubsection{5.8}{定义（Definitions）}
+$G(\A)$ 上的自守形式，指在 $G(F)$ 下左不变、在某个紧开子群下右不变，并满足5.7 的等价条件的函数。尖点形式是尖点自守形式。由5.7(3)，任何自守形式都是 $Z(\A)$ 有限的。
+
+若 $G(\A)$ 的不可约表示同构于 $G(F)\backslash G(\A)$ 上全部自守形式构成的 $G(\A)$ 模 $\mathcal A$ 的一个子商，便称其自守。由5.7，它总是容许的。
+
+更一般地，$G(\A)$ 在拓扑向量空间上的拓扑不可约连续表示（topologically irreducible continuous representation），若其光滑向量子模自守，便称其自守。
+
+如4.6，由 [4，定理4] 可知：若 $\chi$ 为 $Z(\A)/Z(F)$ 的特征，则 $L^2(G(F)\backslash G(\A))_\chi$ 的任意 $G$ 不变闭不可约子空间均自守。
+\begin{originaltheorem}{命题 5.9（Proposition 5.9）}
+设 $f$ 为 $G(F)\backslash G(\A)$ 上的函数。则下列条件等价：
+\begin{enumerate}
+\item[(1)] $f$ 为尖点形式；
+\item[(2)] $f$ 为 $Z(\A)$ 有限、尖点的（3.3），并在 $G(\A)$ 的某个紧开子群下右不变。
+\end{enumerate}
+\end{originaltheorem}
+\begin{proof}
+$(1)\Rightarrow(2)$ 显然。假定 (2)，则 $f$ 被 $\C[Z(\A)/Z(F)]$ 的有限余维理想 $I$ 零化。令 $U$ 为 $r(G(\A))f$ 张成的函数空间。$U$ 中每个元素都是尖点的、被 $I$ 零化，且在某个紧开子群下右不变。若 $L$ 为任意紧开子群，则 $U^L$ 包含于空间 $^\circ\mathcal V(I,L)$（5.4 的记号），从而有限维。因此 $U$ 是容许 $G(\A)$ 模，(1) 成立。
+\end{proof}
+\paragraph*{5.10.}
+同理可得：被 $\C[Z(\A)/Z(F)]$ 的有限余维理想 $I$ 零化（分别地，满足5.3(1)）的所有尖点形式空间 $^\circ\mathcal A(I)$（分别地，$^\circ\mathcal A(X,m)$）是容许 $G(\A)$ 模。进一步，若 $X$ 仅含一个元素 $\chi$，且 $m=1$（这时令 $^\circ\mathcal A(X,m)={}^\circ\mathcal A_\chi$），则此空间为不可约容许 $G(\A)$ 模的直和，重数有限。为说明这一点，扭曲 $|\chi|^{-1}$ 后可假定 $\chi$ 酉。由于 $^\circ\mathcal A_\chi$ 由模 $Z(\A)$ 紧支集的元素组成，
+\[
+(f,g)=\int_{Z(\A)G(F)\backslash G(\A)}f(x)\overline{g(x)}\,dx
+\]
+定义其上的非退化正定不变 Hermitian 形式。由此和容许性得到断言。这是函数域上 Gelfand--Piatetski-Shapiro 定理（4.6）的对应物。
+
+最后，由 [14] 可知，对任意整体域 $F$，每个按 $\chi$ 变换的自守表示，都是从某个抛物 $F$ 子群的 Levi 子群的尖点自守表示诱导所得表示的一个成分。
+
+\begin{thebibliography}{19}
+\bibitem[1]{c12-1} A. Borel, \emph{Some finiteness theorems for adele groups over number fields}, Inst. Hautes Etudes Sci. Publ. Math. 16 (1963), 101--126.
+\bibitem[2]{c12-2} A. Borel, \emph{Introduction to automorphic forms}, Proc. Sympos. Pure Math., vol. 9, Amer. Math. Soc., Providence, R.I., 1966, pp. 199--210.
+\bibitem[3]{c12-3} P. Cartier, \emph{Representations of reductive $p$-adic groups: A survey}, 本论文集，第1册，111--155页。
+\bibitem[4]{c12-4} D. Flath, \emph{Decomposition of representations into tensor products}, 本论文集，第1册，179--183页。
+\bibitem[5]{c12-5} S. Gelbart, \emph{Automorphic forms on adele groups}, Ann. of Math. Studies, no. 83, Princeton Univ. Press, Princeton, N.J., 1975.
+\bibitem[6]{c12-6} I. M. Gelfand, M. I. Graev and I. I. Piatetski-Shapiro, \emph{Representation theory and automorphic functions}, Saunders, 1969.
+\bibitem[7]{c12-7} I. M. Gelfand and I. Piatetski-Shapiro, \emph{Automorphic functions and representation theory}, Trudy Moscov. Mat. Obšč. 12 (1963), 389--412.
+\bibitem[8]{c12-8} R. Godement, \emph{The spectral decomposition of cusp forms}, Proc. Sympos. Pure Math., vol. 9, Amer. Math. Soc., Providence, R.I., 1966, pp. 225--234.
+\bibitem[9]{c12-9} R. Godement and H. Jacquet, \emph{Zeta functions of simple algebras}, Lecture Notes in Math., vol. 260, Springer-Verlag, New York, 1972.
+\bibitem[10]{c12-10} G. Harder, \emph{Chevalley groups over function fields and automorphic forms}, Ann. of Math. (2) 100 (1974), 249--306.
+\bibitem[11]{c12-11} Harish-Chandra, \emph{Automorphic forms on semi-simple Lie groups}, J. G. M. Mars 整理，Lecture Notes in Math., vol. 68, Springer-Verlag, New York, 1968.
+\bibitem[12]{c12-12} M. Kuga, \emph{Fiber varieties over a symmetric space whose fibers are abelian varieties}, 油印讲义，Univ. of Chicago, 1963--64.
+\bibitem[13]{c12-13} R. P. Langlands, \emph{On the functional equations satisfied by Eisenstein series}, Lecture Notes in Math., vol. 544, Springer, New York, 1976.
+\bibitem[14]{c12-14} R. P. Langlands, \emph{On the notion of an automorphic representation}, 本论文集，第1册，203--207页。
+\bibitem[15]{c12-15} I. Piatetski-Shapiro, \emph{Classical and adelic automorphic forms. An introduction}, 本论文集，第1册，185--188页。
+\bibitem[16]{c12-16} V. I. Platonov, \emph{The problem of strong approximation and the Kneser-Tits conjecture}, Izv. Akad. Nauk SSSR Ser. Mat. 3 (1969), 1139--1147; 补遗，同刊 4 (1970), 784--786.
+\bibitem[17]{c12-17} G. Shimura, \emph{Introduction to the arithmetic theory of automorphic forms}, Publ. Math. Soc. Japan 11, I. Shoten and Princeton Univ. Press, Princeton, N.J., 1971.
+\bibitem[18]{c12-18} N. Wallach, \emph{Representations of reductive Lie groups}, 本论文集，第1册，71--86页。
+\bibitem[19]{c12-19} G. Warner, \emph{Harmonic analysis on semi-simple Lie groups. I}, Grundlehren der Math. Wissenschaften, Band 188, Springer, Berlin, 1972.
+\end{thebibliography}
+\noindent 高等研究院（Institute for Advanced Study）；哥伦比亚大学（Columbia University）。
+\par\noindent\footnotesize 原文 AMS（MOS）学科分类（1970）：主分类 10D20；次分类 20G35、22E55。版权 © 1979 American Mathematical Society。\normalsize

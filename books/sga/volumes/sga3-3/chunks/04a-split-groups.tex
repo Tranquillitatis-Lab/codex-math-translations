@@ -1,0 +1,609 @@
+\SGAchapter{XXII}{约化群：分裂、子群、商群}{Groupes réductifs : déploiements, sous-groupes, groupes quotients}
+\SourcePage{109}
+\begin{center}M. Demazure\end{center}
+本讲分为两部分。第一部分（1 至 5.5）汇集唯一性定理与存在性定理的证明所需的技术结果。第二部分（5.6 至末尾）不用于这些证明；第 5 节末尾尤其将用于讨论\Term{parabolic-subgroup}{抛物子群}的第 XXVI 讲；第 6 节在\Term{scheme}{概形}框架内建立\Term{reductive-group}{约化群}的\Term{derived-group}{导群}的经典结果。
+\SGAsection{1}{根与余根；分裂群与根数据}
+\begin{SGAresult}{定理}{1.1}
+设 $S$ 为\Term{scheme}{概形}，$G$ 为 $S$-\Term{reductive-group}{约化群}，$T$ 为 $G$ 的\Term{maximal-torus}{极大环面}，$\alpha$ 为 $G$ 关于 $T$ 的\Term{root}{根}。
+
+(i) 存在唯一的、以 $T$ 为\Term{operator}{算子}群的\Term{group-morphism}{群态射}
+\[\exp_\alpha:\mathrm W(\mathfrak g^\alpha)\longrightarrow G,\]
+其在\Term{lie-algebra}{李代数}上诱导\Term{canonical}{典范}\Term{morphism}{态射} $\mathfrak g^\alpha\to\mathfrak g$。此\Term{morphism}{态射}为\Term{closed-immersion}{闭浸入}。相应\Term{morphism}{态射}
+\[T\mathbin{\cdot_\alpha}\mathrm W(\mathfrak g^\alpha)\longrightarrow G\]
+亦为\Term{closed-immersion}{闭浸入}。
+若 $p_\alpha:\mathbb G_{a,S}\to G$ 为被 $T$ 以\Term{multiplier}{乘子} $\alpha$ \Term{normalized}{正规化}的\Term{monomorphism}{单态射}，则存在唯一 $X_\alpha\in\Gamma(S,\mathfrak g^\alpha)^\times$\footnote{编者注：\Term{set}{集合} $\Gamma(S,\mathfrak g^\alpha)^\times$ 定义于 XIX 4.4.1。}，使得 $p_\alpha(x)=\exp_\alpha(xX_\alpha)$；有 $\operatorname{Lie}(p_\alpha)(1)=X_\alpha$，且这两个公式给出 $\Gamma(S,\mathfrak g^\alpha)^\times$ 与被 $T$ 以\Term{multiplier}{乘子} $\alpha$ \Term{normalized}{正规化}的\Term{monomorphism}{单态射} $\mathbb G_{a,S}\to G$ 的\Term{set}{集合}之间的\Term{bijection}{双射}。
+
+(ii) 存在唯一的\Term{duality}{对偶性}（记为 $(X,Y)\mapsto XY$）
+\[\mathfrak g^\alpha\otimes_{\mathcal O_S}\mathfrak g^{-\alpha}\xrightarrow{\sim}\mathcal O_S,\]
+\SourcePage{110}
+以及唯一\Term{group-morphism}{群态射} $\alpha^*:\mathbb G_{m,S}\to T$，使第 XX 讲 2.1 的公式 (F) 成立。有
+\[\alpha\circ\alpha^*=2,\qquad(-\alpha)^*=-\alpha^*,\]
+且 $\alpha^*$ 由第 XX 讲 2.7 的公式给出。
+\end{SGAresult}
+事实上，被 $T$ 以\Term{multiplier}{乘子} $\alpha$ \Term{normalized}{正规化}的\Term{morphism}{态射}必通过 $G$ 的\Term{closed-subgroup}{闭子群} $Z_\alpha=\operatorname{Centr}_G(T_\alpha)$ \Term{resolution}{分解}（参见第 XIX 讲 3.9）。而 $(Z_\alpha,T,\alpha)$ 为一个 $S$-\Term{elementary-system}{初等系统}（第 XX 讲 1.4），故归结为第 XX 讲的结果（1.5、2.1 和 5.9）。
+
+\textbf{注记 1.2。} 定理 1.1 的 (i) 在只假设 $\alpha$ 是 $T$ 的一个在每条\Term{fiber}{纤维}上非平凡的\Term{character}{特征标}时仍成立。事实上，此时有\Term{resolution}{分解} $S=S'\amalg S''$，使 $\alpha|S'$ 为 $G_{S'}$ 关于 $T_{S'}$ 的\Term{root}{根}，且 $\mathfrak g^\alpha|S''=0$。当 $S=S'$ 时归结为 1.1；当 $S=S''$ 时结论显然；一般情形立即由此得出。
+
+\textbf{记号 1.3。} 如第 XX 讲，记 $\mathrm W(\mathfrak g^\alpha)$ 的像为 $U_\alpha$；它是 $G$ 的\Term{closed-subgroup}{闭子群}，\Term{canonical}{典范}地带有向量结构。称之为与\Term{root}{根} $\alpha$ 相伴的\Term{vector-group}{向量群}。称 $\alpha^*$ 为与 $\alpha$ 相伴的\Term{coroot}{余根}。若\Term{section}{截面} $X_\alpha\in\Gamma(S,\mathfrak g^\alpha)$ 与 $X_{-\alpha}\in\Gamma(S,\mathfrak g^{-\alpha})$ 满足 $X_\alpha X_{-\alpha}=1$，则称它们\Term{pairing}{配对}。此时 $X_\alpha\in\Gamma(S,\mathfrak g^\alpha)^\times$，$X_{-\alpha}$ 亦然。相应\Term{morphism}{态射} $p_\alpha$ 与 $p_{-\alpha}$ 互为\Term{contravariant}{反变}\Term{duality}{对偶}，并有
+\[p_\alpha(x)p_{-\alpha}(y)=p_{-\alpha}\left(\frac y{1+xy}\right)\alpha^*(1+xy)p_\alpha\left(\frac x{1+xy}\right).\]
+\begin{SGAresult}{命题}{1.4}
+在 1.1 的条件下，设 $w\in\operatorname{Norm}_G(T)(S)$。则 $\beta=\alpha\circ\operatorname{int}(w)^{-1}:T\to\mathbb G_{m,S}$ 为 $G$ 关于 $T$ 的\Term{root}{根}，$\beta^*=\operatorname{int}(w)\circ\alpha^*$ 为相应\Term{coroot}{余根}，且下图交换：
+\[\begin{tikzcd}\mathrm W(\mathfrak g^\alpha)\arrow[r,"\exp_\alpha"]\arrow[d,"\operatorname{Ad}(w)"']&G\arrow[d,"\operatorname{int}(w)"]\\\mathrm W(\mathfrak g^\beta)\arrow[r,"\exp_\beta"]&G.\end{tikzcd}\]
+\end{SGAresult}
+这是结构搬移的直接结果。
+
+\textbf{定义 1.5。} (a) 在 1.1 的条件下，以 $s_\alpha$ 表示由
+\[s_\alpha(t)=t\cdot\alpha^*(\alpha(t))^{-1}\]
+定义的 $T$ 的\Term{automorphism}{自同构}。以 $(\ ,\ )$ 表示\Term{canonical}{典范}\Term{pairing}{配对}
+\[\operatorname{Hom}_{S\text{-gr}}(\mathbb G_{m,S},T)\times\operatorname{Hom}_{S\text{-gr}}(T,\mathbb G_{m,S})\longrightarrow\operatorname{Hom}_{S\text{-gr}}(\mathbb G_{m,S},\mathbb G_{m,S})=\mathbb Z_S.\]
+\SourcePage{111}
+则 $s_\alpha$ 在 $\operatorname{Hom}_{S\text{-gr}}(T,\mathbb G_{m,S})$（相应地，$\operatorname{Hom}_{S\text{-gr}}(\mathbb G_{m,S},T)$）上按下式\Term{action}{作用}，其中 $\chi$（相应地，$u$）为前者（相应地，后者）的任意\Term{section}{截面}：
+\[s_\alpha(\chi)=\chi-(\alpha^*,\chi)\alpha,\qquad s_\alpha(u)=u-(u,\alpha)\alpha^*.\]
+有 $s_\alpha\circ s_\alpha=\operatorname{id}$ 及 $s_{-\alpha}=s_\alpha$。
+
+(b) 若 $X\in\Gamma(S,\mathfrak g^\alpha)^\times$，则由
+\[w_\alpha(X)=\exp_\alpha(X)\exp_{-\alpha}(-X^{-1})\exp_\alpha(X)\]
+定义的 $T$ 的\Term{inner-automorphism}{内自同构}（参见第 XX 讲 3.1）与 $s_\alpha$ 相同（同上）。由 1.4 得：
+\begin{SGAresult}{推论}{1.6}
+设 $S$ 为\Term{scheme}{概形}，$G$ 为 $S$-\Term{reductive-group}{约化群}，$T$ 为 $G$ 的\Term{maximal-torus}{极大环面}，$\alpha,\beta$ 为 $G$ 关于 $T$ 的两个\Term{root}{根}。则
+\[s_\alpha(\beta)=\beta-(\alpha^*,\beta)\alpha\]
+为 $G$ 关于 $T$ 的\Term{root}{根}，相应\Term{coroot}{余根}为
+\[s_\alpha(\beta)^*=s_\alpha(\beta^*)=\beta^*-(\beta^*,\alpha)\alpha^*.\]
+\end{SGAresult}
+\begin{SGAresult}{推论}{1.7} 在上述条件下，$\alpha^*=\beta^*$ 蕴含 $\alpha=\beta$。\end{SGAresult}
+事实上，若 $\alpha^*=\beta^*$，则有（参见 XXI 1.4）
+\[s_\beta(\alpha)=\alpha-2\beta,\qquad s_\alpha(\beta)=\beta-2\alpha,\]
+立即推出 $(s_\beta s_\alpha)^n(\alpha)=\alpha+2n(\beta-\alpha)$。若 $\beta\ne\alpha$，则存在 $s\in S$ 使 $\alpha_s\ne\beta_s$；但上式表明 $G_s$ 关于 $T_s$ 有无穷多个不同的\Term{root}{根}，矛盾。
+
+\textbf{定义 1.8.0。}\footnote{编者注：为突出这些定义，增添了编号 1.8.0。} 若\Term{group-morphism}{群态射} $u:\mathbb G_{m,S}\to T$ 可写作某个 $G$ 关于 $T$ 的\Term{root}{根} $\alpha$ 的 $\alpha^*$，则称 $u$ 为 $G$ 关于 $T$ 的\Term{coroot}{余根}。考虑 $G$ 关于 $T$ 的\Term{coroot}{余根}\Term{functor}{函子} $\mathscr R^*$，定义为
+\[\mathscr R^*(S')=\{G_{S'}\text{ 关于 }T_{S'}\text{ 的余根}\}.\]
+若 $\mathscr R$ 为 $G$ 关于 $T$ 的\Term{root}{根}\Term{functor}{函子}（第 XIX 讲 3.8），则有\Term{canonical}{典范}\Term{morphism}{态射} $\mathscr R\to\mathscr R^*$。由 1.7 和第 XIX 讲 3.8 得：
+\begin{SGAresult}{推论}{1.8} \Term{canonical}{典范}\Term{morphism}{态射} $\mathscr R\to\mathscr R^*$ 为\Term{isomorphism}{同构}。特别地，$\mathscr R^*$ 可由\Term{finite}{有限}扭常 $S$-\Term{scheme}{概形}表示，且它是 $\operatorname{Hom}_{S\text{-gr}}(\mathbb G_{m,S},T)$ 的开闭\Term{subscheme}{子概形}。\end{SGAresult}
+这引出如下定义。
+\SourcePage{112}
+\begin{SGAresult}{定义}{1.9}
+设 $S$ 为\Term{scheme}{概形}，$T$ 为 $S$-\Term{torus}{环面}。$T$ 中的\Term{twisted-root-datum}{扭根数据}是指：
+
+(i) $\operatorname{Hom}_{S\text{-gr}}(T,\mathbb G_{m,S})$ 的\Term{finite}{有限}\Term{subscheme}{子概形} $\mathscr R$；
+
+(ii) $\operatorname{Hom}_{S\text{-gr}}(\mathbb G_{m,S},T)$ 的\Term{finite}{有限}\Term{subscheme}{子概形} $\mathscr R^*$；
+
+(iii) 记作 $\alpha\mapsto\alpha^*$ 的\Term{isomorphism}{同构} $\mathscr R\xrightarrow\sim\mathscr R^*$，
+
+满足下列条件：
+
+(DR 1) 对任意 $S'\to S$ 及 $\alpha\in\mathscr R(S')$，有 $\alpha\circ\alpha^*=2$。
+
+(DR 2) 对任意 $S'\to S$ 及 $\alpha,\beta\in\mathscr R(S')$，有
+\[\alpha-(\beta^*,\alpha)\beta\in\mathscr R(S'),\qquad\alpha^*-(\alpha^*,\beta)\beta^*\in\mathscr R^*(S').\]
+此外，若 $\alpha\in\mathscr R(S')$（$S'\ne\varnothing$）蕴含 $2\alpha\notin\mathscr R(S')$，则称此\Term{root-datum}{根数据}为\Term{reduced}{既约}的。
+\end{SGAresult}
+\begin{SGAresult}{命题}{1.10} 设 $S$ 为\Term{scheme}{概形}，$G$ 为 $S$-\Term{reductive-group}{约化群}，$T$ 为 $G$ 的\Term{maximal-torus}{极大环面}，$\mathscr R$（相应地，$\mathscr R^*$）为 $G$ 关于 $T$ 的\Term{root}{根}（相应地，\Term{coroot}{余根}）\Term{scheme}{概形}。则 $(\mathscr R,\mathscr R^*)$ 为 $T$ 中的\Term{reduced}{既约}\Term{twisted-root-datum}{扭根数据}。\end{SGAresult}
+只须再验证此\Term{twisted-root-datum}{扭根数据}为\Term{reduced}{既约}的；这已在第 XIX 讲 3.10 中证明。
+
+\textbf{1.11。} 设 $T=\mathrm D_S(M)$ 为已\Term{trivialization}{平凡化}的\Term{torus}{环面}，以 $M^*$ 表示 $M$ 的\Term{duality}{对偶}\Term{abelian-group}{阿贝尔群}，则有\Term{canonical}{典范}\Term{isomorphism}{同构}（参见第 VIII 讲 1.5）
+\[\operatorname{Hom}_{S\text{-gr}}(T,\mathbb G_{m,S})\xrightarrow\sim M_S,\qquad\operatorname{Hom}_{S\text{-gr}}(\mathbb G_{m,S},T)\xrightarrow\sim M_S^*,\]
+从而有群\Term{isomorphism}{同构}
+\[\operatorname{Hom}_{S\text{-gr}}(T,\mathbb G_{m,S})\xrightarrow\sim\operatorname{Hom}_{\mathrm{loc.const.}}(S,M),\]
+\[\operatorname{Hom}_{S\text{-gr}}(\mathbb G_{m,S},T)\xrightarrow\sim\operatorname{Hom}_{\mathrm{loc.const.}}(S,M^*).\]
+若上述\Term{isomorphism}{同构}把 $T$ 的\Term{character}{特征标}（相应地，\Term{group-morphism}{群态射} $\mathbb G_{m,S}\to T$）变为从 $S$ 到 $M$（相应地，$M^*$）的常值映射，则称它相对于给定\Term{trivialization}{平凡化}为常值。
+
+\textbf{1.12。} 沿用上述记号，设 $(M,M^*,R,R^*)$ 为\Term{root-datum}{根数据}（第 XXI 讲）。则 $(R_S,R_S^*)$ 为 $T$ 中的\Term{twisted-root-datum}{扭根数据}。反之，若 $(\mathscr R,\mathscr R^*)$ 为\Term{torus}{环面} $T$ 中的\Term{twisted-root-datum}{扭根数据}，则此\Term{root-datum}{根数据}的\Term{splitting}{分裂}是指一个通常意义的\Term{root-datum}{根数据} $(M,M^*,R,R^*)$ 和一个\Term{isomorphism}{同构} $T\simeq\mathrm D_S(M)$，后者将 $(\mathscr R,\mathscr R^*)$ 变为 $(R_S,R_S^*)$。
+\begin{SGAresult}{定义}{1.13}
+设 $S$ 为\Term{scheme}{概形}，$G$ 为 $S$-\Term{reductive-group}{约化群}，$T$ 为 $G$ 的\Term{maximal-torus}{极大环面}。$G$ 相对于 $T$ 的\Term{splitting}{分裂}是指：
+
+(i) \Term{abelian-group}{阿贝尔群} $M$ 和\Term{isomorphism}{同构} $T\simeq\mathrm D_S(M)$；
+
+(ii) $G$ 关于 $T$ 的一个\Term{root-system}{根系} $R$（第 XIX 讲 3.6），
+
+满足以下两条件：
+\SourcePage{113}
+(D1) $S$ \Term{nonempty}{非空}，且\Term{root}{根} $\alpha\in R$（相应地，相应的\Term{coroot}{余根}）对应于 $S$ 到 $M$（相应地，$M^*$）的常值函数。
+
+(D2) $\mathfrak g^\alpha$（$\alpha\in R$）为自由 $\mathcal O_S$-模。
+
+若存在 $G$ 相对于 $T$ 的\Term{splitting}{分裂}，则称 $G$ 相对于 $T$ \Term{separable}{可分}裂。$G$ 的\Term{splitting}{分裂}是指 $G$ 的一个\Term{maximal-torus}{极大环面} $T$ 及 $G$ 相对于 $T$ 的一个\Term{splitting}{分裂}。若 $G$ 有\Term{splitting}{分裂}，则称 $G$ \Term{separable}{可分}裂。带有\Term{splitting}{分裂}的 $S$-\Term{reductive-group}{约化群}称为 $S$-\Term{split-group}{分裂群}；用 $(G,T,M,R)$ 一类记号表示，无混淆时也简记为 $G$。
+\end{SGAresult}
+条件 (D1) 蕴含 $R$（相应地，$R^*$）\Term{canonical}{典范}地与 $M$（相应地，$M^*$）的一个\Term{subset}{子集}相等同。
+\begin{SGAresult}{命题}{1.14} 设 $S$ 为\Term{nonempty}{非空}\Term{scheme}{概形}，$(G,T,M,R)$ 为 $S$-\Term{split-group}{分裂群}，则
+\[\mathcal R(G,T,M,R)=(M,M^*,R,R^*)\]
+为\Term{reduced}{既约}\Term{root-datum}{根数据}（第 XXI 讲 1.1 和 2.1.3）；它是 1.10 中\Term{twisted-root-datum}{扭根数据}的一个\Term{splitting}{分裂}。\end{SGAresult}
+这是 1.10 和第 XIX 讲 3.7 的直接推论。为简便起见，有时记 $\mathcal R(G,T,M,R)=\mathcal R(G)$。我们将系统使用第 XXI 讲的记号 $V,V(R),W,\ldots$。
+
+\textbf{注记 1.15。} a) 若 $S$ \Term{connected-nonempty}{连通非空}（相应地，$\operatorname{Pic}(S)=0$），则条件 (D1)（相应地，(D2)）自动成立。
+
+b) 若 $(G,T,M,R)$ 为 $S$-\Term{split-group}{分裂群}，则对任意 $S'\to S$，$S'\ne\varnothing$，$(G_{S'},T_{S'},M,R)$ 为 $S'$-\Term{split-group}{分裂群}，且 $\mathcal R(G,T,M,R)=\mathcal R(G_{S'},T_{S'},M,R)$。
+
+\textbf{1.16。} 设 $T=\mathrm D_S(M)$ 为已\Term{trivialization}{平凡化}的\Term{torus}{环面}。$T$ 的\Term{lie-algebra}{李代数} $\mathfrak t$ \Term{canonical}{典范}地等同于（第 II 讲 5.1.1）
+\[\mathfrak t\simeq M^*\otimes\mathcal O_S.\]
+对任意\Term{group-morphism}{群态射} $u:T\to\mathbb G_{m,S}$，$\operatorname{Lie}(u)$ 为\Term{linear-form}{线性形式}
+\[\operatorname{Lie}(u):\mathfrak t\longrightarrow\mathcal O_S=\operatorname{Lie}(\mathbb G_{m,S}/S).\]
+特别地，若 $u$ 由 $\alpha\in M$ 定义，则 $\operatorname{Lie}(u)$ 为 $\alpha$ 在 $M^*\otimes\mathcal O_S$ 上定义的\Term{linear-form}{线性形式} $\alpha$：
+\[\alpha(m\otimes x)=(m,\alpha)x.\]
+对称地，对任意\Term{group-morphism}{群态射} $h:\mathbb G_{m,S}\to T$，$\operatorname{Lie}(h)$ 为 $\mathcal O_S$-\Term{morphism}{态射} $\mathcal O_S=\operatorname{Lie}(\mathbb G_{m,S}/S)\to\mathfrak t$，由\Term{section}{截面} $H=\operatorname{Lie}(h)(1)\in\Gamma(S,\mathfrak t)$ \Term{canonical}{典范}地定义。特别地，若 $h$ 由 $m\in M^*$ 定义，则
+\[H=\operatorname{Lie}(h)(1)=m\otimes1.\]
+\SourcePage{114}
+比较两种定义，特别得到 $\alpha(H)=(h,\alpha)\cdot1\in\Gamma(S,\mathcal O_S)$。
+
+\textbf{1.17。} 这些定义尤其适用于 $T$ 为\Term{split-group}{分裂群}的\Term{maximal-torus}{极大环面}的情形。每个\Term{root}{根} $\alpha\in R$ 定义一个\Term{infinitesimal-root}{无穷小根} $\alpha\in\operatorname{Hom}_{\mathcal O_S}(\mathfrak t,\mathcal O_S)$，满足
+\[\alpha(m\otimes x)=(m,\alpha)x.\]
+每个\Term{coroot}{余根} $\alpha\in R$ 定义一个\Term{infinitesimal-coroot}{无穷小余根}
+\[H_\alpha\in\Gamma(S,\mathfrak t),\qquad H_\alpha=\alpha^*\otimes1.\]
+对 $\alpha,\beta\in R$ 有 $\alpha(H_\beta)=(\beta^*,\alpha)\cdot1$，特别地 $\alpha(H_\alpha)=2$。因此，若 $2$ 在 $S$ 上\Term{invertible}{可逆}，则 $\alpha$ 与 $H_\alpha$ 在每条\Term{fiber}{纤维}上均非零。
+
+\SGAsection{2}{分裂的存在性；约化群的型}
+\begin{SGAresult}{命题}{2.1} 设 $S$ 为\Term{scheme}{概形}，$G$ 为 $S$-\Term{reductive-group}{约化群}，$T$ 为 $G$ 的\Term{maximal-torus}{极大环面}。假设 $T$ \Term{splitting}{分裂}。则 $G$ 相对于 $T$ \Term{local-scheme}{局部}\Term{separable}{可分}裂：对任意 $s_0\in S$，存在 $s_0$ 的\Term{open-neighborhood}{开邻域} $U$，使 $U$-群 $G_U$ 相对于 $T_U$ \Term{separable}{可分}裂。\end{SGAresult}
+事实上，写作 $T\simeq\mathrm D_S(M)$ 及 $\mathfrak g=\coprod_{m\in M}\mathfrak g^m$。令 $R=\{m\in M\mid m\ne0,\ \mathfrak g^m(s_0)\ne0\}$。缩小 $S$，以 $s_0$ 的某\Term{open-neighborhood}{开邻域}代之，可假设 $\mathfrak g^\alpha$（$\alpha\in R$）自由，且 $\mathfrak g^m$ 在 $m\ne0$、$m\notin R$ 时为零。于是
+\[\mathfrak g=\mathfrak t\oplus\coprod_{\alpha\in R}\mathfrak g^\alpha,\]
+其中 $\mathfrak g^\alpha$ 为秩 $1$ \Term{free-module}{自由模}。因此 $R$ 为 $G$ 关于 $T$ 的\Term{root-system}{根系}（第 XIX 讲 3.6）。$\alpha\in R$ 的相应\Term{coroot}{余根} $\alpha^*$ 等同于 $S$ 上取值于 $M^*$ 的\Term{locally-constant}{局部常值}函数。进一步缩小 $S$ 可令它们为常值，证明完成。注意，此证明立即给出：
+\begin{SGAresult}{命题}{2.2} 设 $S$ 为\Term{connected-nonempty}{连通非空}\Term{scheme}{概形}且 $\operatorname{Pic}(S)=0$，例如 $\operatorname{Spec}(\mathbb Z)$ 或\Term{local-scheme}{局部}\Term{scheme}{概形}（特别是域的谱）。若 $S$-\Term{reductive-group}{约化群} $G$ 具有\Term{splitting}{分裂}\Term{maximal-torus}{极大环面} $T$，则 $G$ 相对于 $T$ \Term{separable}{可分}裂。\end{SGAresult}
+由 2.1 以及\Term{reductive-group}{约化群}在\Term{etale-topology}{平展拓扑}下\Term{local-scheme}{局部}具有\Term{maximal-torus}{极大环面}（第 XIX 讲 2.5），立即得：
+\SourcePage{115}
+\begin{SGAresult}{推论}{2.3} 设 $S$ 为\Term{scheme}{概形}，$G$ 为 $S$-\Term{reductive-group}{约化群}（相应地，再给定 $G$ 的\Term{maximal-torus}{极大环面} $T$）。则在 $S$ 上的\Term{etale-topology}{平展拓扑}下，$G$ \Term{local-scheme}{局部}\Term{separable}{可分}裂（相应地，相对于 $T$ \Term{local-scheme}{局部}\Term{separable}{可分}裂）。\end{SGAresult}
+\begin{SGAresult}{推论}{2.4} 设 $k$ 为域，$G$ 为 $k$-\Term{reductive-group}{约化群}。存在\Term{finite-separable-extension}{有限可分扩张} $K/k$，使 $G_K$ \Term{separable}{可分}裂。\end{SGAresult}
+\textbf{注记 2.5。} 利用 2.1 和第 XIX 讲注记 2.9，立即证明：设 $G=(G,T,M,R)$ 为 $S$-\Term{split-group}{分裂群}；存在 $S$ 的\Term{open-cover}{开覆盖} $\{U_i\}$，使每个\Term{split-group}{分裂群} $G_{U_i}$ 均由一个\Term{noetherian-ring}{诺特环}（实际可取\Term{finite-type}{有限型} $\mathbb Z$-\Term{algebra}{代数}）上的\Term{split-group}{分裂群}经\Term{base-change}{基变换}而来。我们还将证明，$S$ 上每个\Term{split-group}{分裂群}已由一个 $\mathbb Z$-\Term{split-group}{分裂群}而来（第 XXV 讲）。
+
+\textbf{2.6。} 设 $k$ 为\Term{algebraically-closed-field}{代数闭域}，$G$ 为 $k$-\Term{reductive-group}{约化群}。已知（例如 2.4）$G$ 存在\Term{splitting}{分裂}。设 $(G,T,M,R)$ 和 $(G,T',M',R')$ 为 $G$ 的两个\Term{splitting}{分裂}；则\Term{root-datum}{根数据} $\mathcal R(G,T,M,R)$ 与 $\mathcal R(G,T',M',R')$ \Term{isomorphism}{同构}。
+事实上，首先可归结为 $T=T'$：存在 $g\in G(k)$ 使 $T'=\operatorname{int}(g)T$，而易验证经 $G$ 的\Term{automorphism}{自同构}搬移一个\Term{splitting}{分裂}，所得\Term{root-datum}{根数据}与原\Term{root-datum}{根数据}\Term{isomorphism}{同构}。但 $S=\operatorname{Spec}(k)$ \Term{connected}{连通}，故\Term{isomorphism}{同构} $\mathrm D_k(M)\xrightarrow\sim T\xrightarrow\sim\mathrm D_k(M')$ 来自唯一\Term{isomorphism}{同构} $M\simeq M'$；同理，$G$ 关于 $T$ 至多有一个\Term{root-system}{根系}。
+\begin{SGAresult}{定义}{2.6.1}\footnote{编者注：为供后文引用，增添了编号 2.6.1。} 若 $G$ 为 $k$-\Term{reductive-group}{约化群}（$k$ 为\Term{algebraically-closed-field}{代数闭域}），则称 $G$ 的任一\Term{splitting}{分裂}所定义\Term{root-datum}{根数据}的\Term{isomorphism}{同构}类为 $G$ 的\Term{type}{型}；若 $G$ 为第 IX 讲 1.4 意义下型为 $M$ 的\Term{torus}{环面}，则它作为\Term{reductive-group}{约化群}的\Term{type}{型}由平凡\Term{root-datum}{根数据} $(M,M^*,\varnothing,\varnothing)$ 给出。\end{SGAresult}
+由 1.15 b)\footnote{编者注：已纠正原文对 1.17 的引用。}，\Term{type}{型}在\Term{base-field}{基域}的\Term{algebraically-closed}{代数闭}\Term{group-extension}{扩张}下不变。
+\begin{SGAresult}{定义}{2.7} 若 $G$ 为 $S$-\Term{reductive-group}{约化群}，$s\in S$，则称 $\overline s$-\Term{reductive-group}{约化群} $G_{\overline s}$ 的\Term{type}{型}为 $G$ 在 $s$ 处的\Term{type}{型}。\end{SGAresult}
+对任意 $S'\to S$ 及映到 $s\in S$ 的 $s'\in S'$，$G_{S'}$ 在 $s'$ 处的\Term{type}{型}等于 $G$ 在 $s$ 处的\Term{type}{型}。
+若 $G$ \Term{separable}{可分}裂，且 $(G,T,M,R)$ 为其\Term{splitting}{分裂}，则由 1.15 b)\footnote{编者注：已纠正原文对 1.17 的引用。}，$G$ 在 $s$ 处的\Term{type}{型}为 $\mathcal R(G,T,M,R)$ 的\Term{isomorphism}{同构}类。由 2.3 立即得到：
+\SourcePage{116}
+\begin{SGAresult}{命题}{2.8} 设 $G$ 为 $S$-\Term{reductive-group}{约化群}（$S\ne\varnothing$）。函数 $s\mapsto G\text{ 在 }s\text{ 处的型}$ 在 $S$ 上\Term{locally-constant}{局部常值}。特别地，存在 $S$ 到\Term{nonempty}{非空}开\Term{subscheme}{子概形}的划分，使 $G$ 在每部分上具有常\Term{type}{型}。更准确地，设 $E$ 为 $G$ 的\Term{fiber}{纤维}的\Term{type}{型}的\Term{set}{集合}；对 $t\in E$，令 $S_t$ 为 $G$ 具有\Term{type}{型} $t$ 的点 $s\in S$ 的\Term{set}{集合}；则 $(S_t)_{t\in E}$ 为 $S$ 的一个划分，各 $S_t$ 均\Term{open-and-closed}{开且闭}（并\Term{nonempty}{非空}）。\end{SGAresult}
+
+\SGAsection{3}{Weyl 群}
+\textbf{3.1。} 设 $S$ 为\Term{scheme}{概形}，$G$ 为 $S$-\Term{reductive-group}{约化群}，$T$ 为 $G$ 的\Term{maximal-torus}{极大环面}。则
+\[W_G(T)=\operatorname{Norm}_G(T)/T\]
+为\Term{finite}{有限}\Term{etale}{平展} $S$-群（第 XIX 讲 2.5）。\Term{morphism}{态射} $n\mapsto\operatorname{int}(n)$ 经取商诱导\Term{canonical}{典范}\Term{monomorphism}{单态射}（它也是\Term{open-immersion}{开浸入}）
+\[W_G(T)\longrightarrow\operatorname{Aut}_{S\text{-gr}}(T).\]
+\textbf{3.2。} 现假设 $G$ 相对于 $T$ \Term{separable}{可分}裂。选取一个\Term{splitting}{分裂} $(G,T,M,R)$。则有\Term{canonical}{典范}\Term{isomorphism}{同构}（第 VIII 讲 1.5）
+\[\operatorname{Aut}_{S\text{-gr}}(T)\simeq(\operatorname{Aut}_{\mathrm{gr}}(M))_S.\]
+特别地，若 $W$ 为\Term{root-datum}{根数据} $\mathcal R(G)$ 的\Term{weyl-group}{Weyl 群}（第 XXI 讲 1.1.8），则有\Term{monomorphism}{单态射} $W_S\to\operatorname{Aut}_{S\text{-gr}}(T)$。
+
+\textbf{3.3。} 对每个\Term{root}{根} $\alpha\in R$，反射 $s_\alpha\in W$ 在 $M$ 上按 $s_\alpha(x)=x-(\alpha^*,x)\alpha$ \Term{action}{作用}，因而经上述\Term{morphism}{态射}在 $T$ 上按 $s_\alpha(t)=t\cdot\alpha^*(\alpha(t))^{-1}$ \Term{action}{作用}。另一方面，因假设 $\mathfrak g^\alpha$ 自由，存在 $X\in\Gamma(S,\mathfrak g^\alpha)^\times$。考虑 $w_\alpha(X)\in\operatorname{Norm}_G(T)(S)$（第 XX 讲 3.1），有（同上）
+\[\operatorname{int}(w_\alpha(X))(t)=s_\alpha(t).\]
+由于 $W$ 由 $s_\alpha$（$\alpha\in R$）生成，以上说明，若把 $W$ 和 $\operatorname{Norm}_G(T)(S)/T(S)$ 看作 $T$ 的\Term{automorphism}{自同构}群，则
+\[W\subset\operatorname{Norm}_G(T)(S)/T(S)\subset W_G(T)(S).\]
+\SourcePage{117}
+由与 $W$ 相伴的\Term{constant-group}{常群} $W_S$ 的定义（参见 I 1.8），得到\Term{commutative-diagram}{交换图}
+\[\begin{tikzcd}W_S\arrow[rr]\arrow[dr]&&W_G(T)\arrow[dl]\\&\operatorname{Aut}_{S\text{-gr}}(T).&\end{tikzcd}\]
+\begin{SGAresult}{命题}{3.4} 设 $S$ 为\Term{scheme}{概形}，$(G,T,M,R)$ 为 $S$-\Term{split-group}{分裂群}，$W$ 为\Term{root-datum}{根数据} $\mathcal R(G)$ 的\Term{weyl-group}{Weyl 群}。则\Term{canonical}{典范}\Term{monomorphism}{单态射}
+\[W_S\longrightarrow W_G(T)=\operatorname{Norm}_G(T)/T\]
+为\Term{isomorphism}{同构}。\end{SGAresult}
+事实上，两者均为 $S$ 上\Term{etale}{平展}群；只须验证对每个 $s\in S$，$W_S(\overline s)\to W_G(T)(\overline s)$ 为\Term{isomorphism}{同构}。\footnote{编者注：因 $W_S$ 与 $W_G(T)=\operatorname{Norm}_G(T)/T$ 在 $S$ 上\Term{etale}{平展}，\Term{morphism}{态射} $f:W_S\to W_G(T)$ 为\Term{etale}{平展}（EGA IV$_4$，17.3.4）；若各 $f_{\overline s}$ 又为\Term{isomorphism}{同构}，则由同上 17.9.1，$f$ 为满的\Term{open-immersion}{开浸入}，故为\Term{isomorphism}{同构}。} 而后一断言例如由 Bible，§11.3，定理 2 得出。
+
+\textbf{注记 3.5。} 利用 2.3，上述命题重新证明了 $S$-\Term{reductive-group}{约化群} $G$ 的\Term{maximal-torus}{极大环面}的\Term{weyl-group}{Weyl 群}在 $S$ 上\Term{finite}{有限}（第 XIX 讲 2.5 (ii)）。\footnote{编者注：设 $T$ 为 $G$ 的\Term{maximal-torus}{极大环面}。$W_G(T)$ 在 $S$ 上\Term{finite}{有限}这一性质对 (fpqc) \Term{topology}{拓扑}是\Term{local-scheme}{局部}的（EGA IV$_2$，2.7.1），从而对\Term{etale-topology}{平展拓扑}亦然。由 2.3 可假设 $G$ 相对于 $T$ \Term{splitting}{分裂}，此时由 3.4 得出。}
+
+\textbf{3.6。} 在 3.1 的条件下，对任意 $w\in W_G(T)(S)$，以 $N_w$\footnote{编者注：已将 $Q_w$ 改作 $N_w$，正如 XX 3.0 中将 $Q$ 改作 $N^\times$。} 表示下列\Term{fiber-product}{纤维积}：
+\[\begin{tikzcd}N_w\arrow[r]\arrow[d]&\operatorname{Norm}_G(T)\arrow[d]\\S\arrow[r,"w"]&W_G(T).\end{tikzcd}\]
+它是 $\operatorname{Norm}_G(T)$ 的开闭\Term{subscheme}{子概形}，在 $T$ 的左\Term{action}{作用}（相应地，\Term{right-action}{右作用}）$(t,q)\mapsto tq$（相应地，$(q,t)\mapsto qt$）下为\Term{principal-homogeneous-space}{主齐性纤维丛}。若 $n\in N_w(S)$，则
+\[N_{ww'}=n\cdot N_{w'},\qquad N_{w'w}=N_{w'}\cdot n.\]
+\SourcePage{118}
+\textbf{3.7。} 特别地，若 $\alpha$ 为 $G$ 关于 $T$ 的\Term{root}{根}，则 $N_{s_\alpha}$ 即第 XX 讲 3.0 中记作 $N^\times$ 的\Term{object}{对象}。若 $\mathfrak g^\alpha$ 在 $S$ 上自由，则 $N_{s_\alpha}(S)\ne\varnothing$。由 3.4 和\Term{splitting}{分裂}的条件 (D2) 得出：
+\begin{SGAresult}{推论}{3.8} 在 3.4 的条件下，\Term{morphism}{态射}
+\[\operatorname{Norm}_G(T)(S)\longrightarrow W_G(T)(S)=\operatorname{Hom}_{\mathrm{loc.cons.}}(S,W)\]
+为\Term{surjectivity}{满射}。特别地，对任意 $w\in W$，存在 $n_w\in\operatorname{Norm}_G(T)(S)$ 使 $\operatorname{int}(n_w)|T=w$。\end{SGAresult}
+\SGAsection{4}{分裂群的同态}
+\textbf{4.1. \Term{big-cell}{大胞腔}。}
+\textbf{4.1.1。} 设 $(G,T,M,R)$ 为 $S$-\Term{split-group}{分裂}\Term{reductive-group}{约化群}。选取\Term{root-datum}{根数据} $\mathcal R(G)$ 的一个\Term{positive-roots}{正根系} $R_+$（第 XXI 讲 3.2.1），令 $R_-=-R_+$。在 $R_+$（相应地，$R_-$）上选取全序，考虑由 $G$ 中乘法诱导的\Term{morphism}{态射}
+\[u:\prod_{\alpha\in R_-}U_\alpha\mathbin{\times_S}T\mathbin{\times_S}\prod_{\alpha\in R_+}U_\alpha\longrightarrow G.\]
+这是\Term{open-immersion}{开浸入}。事实上，两端均在 $S$ 上\Term{flat}{平坦}且\Term{finitely-presented}{有限呈示}，只须在每个\Term{geometric-fibre}{几何纤维}上验证（SGA 1，I 5.7 及 VIII 5.4）；故归结为 $S$ 是\Term{algebraically-closed-field}{代数闭域}的谱。由 Bible，§13.4，定理 3 的推论 2，$u$ 为\Term{radiciel}{根性}且\Term{dense}{稠密}的\Term{morphism}{态射}；又因 $u$ 在原点的切映射为\Term{isomorphism}{同构}（\Term{root-system}{根系}的定义），$u$ 为\Term{birational}{双有理}。$G$ \Term{normal}{正规}，故可应用 \Term{zariski-main-theorem}{Zariski 主定理}（EGA III$_1$，4.4.9），得 $u$ 为\Term{open-immersion}{开浸入}。
+现证其像 $\Omega$ 与 $R_+$（相应地，$R_-$）上所选次序无关。因需比较 $G$ 的\Term{open-subset}{开集}，只须证明它们有相同\Term{geometric-point}{几何点}，故仍可假设 $S$ 为\Term{algebraically-closed-field}{代数闭域}的谱。此时断言正是 Bible，§13，命题 1 (c) 及定理 1 (a)。由此证明了：
+\begin{SGAresult}{命题}{4.1.2} 设 $(G,T,M,R)$ 为 $S$-\Term{split-group}{分裂群}，$R_+$ 为 $R$ 的\Term{positive-roots}{正根系}。存在 $G$ 的\Term{open-subset}{开集} $\Omega_{R_+}$，使对 $R_+$（相应地，$R_-$）上的任意全序，由 $G$ 中乘法诱导的\Term{morphism}{态射}
+\[\prod_{\alpha\in R_-}U_\alpha\mathbin{\times_S}T\mathbin{\times_S}\prod_{\alpha\in R_+}U_\alpha\longrightarrow G\]
+为像等于 $\Omega_{R_+}$ 的\Term{open-immersion}{开浸入}。\end{SGAresult}
+\SourcePage{119}
+\textbf{注记 4.1.3。} 4.1.2 可表述如下：对每个 $\alpha\in R$，选取\Term{vector-group}{向量群}的\Term{isomorphism}{同构} $p_\alpha:\mathbb G_{a,S}\xrightarrow\sim U_\alpha$（参见 1.19）；则\Term{morphism}{态射}（令 $N=\operatorname{Card}(R_+)=\operatorname{Card}(R_-)$）
+\[\mathbb G_{a,S}^{N}\mathbin{\times_S}T\mathbin{\times_S}\mathbb G_{a,S}^{N}\longrightarrow G,\quad ((x_\alpha)_{\alpha\in R_-},t,(x_\alpha)_{\alpha\in R_+})\longmapsto\prod_{\alpha\in R_-}p_\alpha(x_\alpha)\cdot t\cdot\prod_{\alpha\in R_+}p_\alpha(x_\alpha)\]
+为\Term{open-immersion}{开浸入}，其像仅依赖于 $R_+$（与 $p_\alpha$ 及 $R_+,R_-$ 上次序的选择无关）。
+
+\textbf{记号 4.1.4。} 记 $\Omega_{R_+}=\prod_{\alpha\in R_-}U_\alpha\cdot T\cdot\prod_{\alpha\in R_+}U_\alpha$。\footnote{编者注：并称其为相应于 $R_+$ 的\Term{big-cell}{大胞腔}。}
+\begin{SGAresult}{命题}{4.1.5} \Term{scheme}{概形} $\Omega_{R_+}$ 在 $S$ 上\Term{finitely-presented}{有限呈示}（因而在 $G$ 中为\Term{retrocompact}{逆紧}的），并且相对于 $S$ 在 $G$ 中\Term{universal}{普遍}\Term{schematically-dense}{概形稠密}（参见第 XVIII 讲 1）。\end{SGAresult}
+第一断言显然。于是\footnote{编者注：以下补充了原文的细节。}，$\Omega_{R_+}$ 在 $S$ 上\Term{flat}{平坦}且\Term{finitely-presented}{有限呈示}，并含\Term{unit-section}{单位截面}，故与 $G$ 的每条\Term{fiber}{纤维}相交于\Term{nonempty}{非空}\Term{open-subset}{开集}，因而\Term{dense}{稠密}；第二断言遂由第 XVIII 讲 1.3 得出。
+\begin{SGAresult}{推论}{4.1.6} 设 $(G,T,M,R)$ 为 $S$-\Term{split-group}{分裂}\Term{reductive-group}{约化群}。则
+\[\operatorname{Centr}(G)=\bigcap_{\alpha\in R}\operatorname{Ker}(\alpha).\]
+因此，$\operatorname{Centr}(G)$ 可由 $G$ 的\Term{diagonalizable}{可对角化}\Term{closed-subgroup}{闭子群}表示。\footnote{编者注：增添了此句。}\end{SGAresult}
+第二断言立即由第一断言得出。为证第一断言，可引用第 XII 讲 4.8 和 4.11，也可直接如下论证。\footnote{编者注：以下补充了原文的细节。} 设 $S'\to S$。若 $t\in T(S')$ 且对每个 $\alpha\in R$ 有 $\alpha(t)=1$，则 $\operatorname{int}(t)$ 在 $T_{S'}$ 及各 $(U_\alpha)_{S'}$ 上诱导恒等，从而在 $(\Omega_{R_+})_{S'}$ 上诱导恒等，再由\Term{schematically-dense}{概形稠密}性知在 $G_{S'}$ 上亦然，故 $t\in\operatorname{Centr}(G)(S')$。反之，由 $\operatorname{Centr}_{G_{S'}}(T_{S'})=T_{S'}$（第 XIX 讲 2.8），若 $g\in G(S')$ \Term{centralizes}{中心化} $T_{S'}$ 及各 $(U_\alpha)_{S'}$，它即为 $T_{S'}$ 的一个使所有 $\alpha\in R$ 消失的\Term{section}{截面}。
+\begin{SGAresult}{推论}{4.1.7} 设 $S$ 为\Term{scheme}{概形}，$G$ 为 $S$-\Term{reductive-group}{约化群}。则 $G$ 的\Term{center}{中心}可由 $G$ 的\Term{multiplicative-type}{乘法型}\Term{closed-subgroup}{闭子群}表示；它也是如下意义的“$G$ 的\Term{maximal-torus}{极大环面}之交”：对任意 $S'\to S$，$\operatorname{Centr}(G)(S')$ 是所有 $g\in G(S')$ 的\Term{set}{集合}，使对任意 $S''\to S'$，其在 $G(S'')$ 中的\Term{inverse-image}{逆像}属于所有 $T(S'')$，其中 $T$ 遍历 $G_{S''}$ 的\Term{maximal-torus}{极大环面}。\end{SGAresult}
+\SourcePage{120}
+结合 2.3，第一断言由 4.1.6 通过\Term{descent}{下降}得出。\footnote{编者注：事实上，\Term{center}{中心}可由 $G$ 的\Term{closed-subscheme}{闭子概形}表示，对 (fpqc) \Term{topology}{拓扑}是\Term{local-scheme}{局部}的（SGA 1，VIII 5.2 和 5.4），故对\Term{etale-topology}{平展拓扑}亦然；“\Term{multiplicative-type}{乘法型}”性质也如此。} 现证第二断言。设 $H$ 为上述意义的“$G$ 的\Term{maximal-torus}{极大环面}之交”。显然 $\operatorname{Centr}(G)\subset H$。\footnote{编者注：以下补充了原文的细节。} 由\Term{descent}{下降}，只须在 $G$ \Term{splitting}{分裂}时证明 $\operatorname{Centr}(G)=H$。$H$ 包含于通常意义的 $G$ 的\Term{maximal-torus}{极大环面}之交，故断言由下述注记得出：若 $(G,T,M,R)$ 为一个\Term{splitting}{分裂}，$\alpha\in R$ 且 $X\in\Gamma(S,\mathfrak g^\alpha)^\times$，则 $\operatorname{int}(\exp_\alpha(X))(T)\cap T=\operatorname{Ker}(\alpha)$，这由直接计算可见。（更一般的陈述亦见第 XII 讲 8.6 和 8.8。）
+
+\textbf{注记 4.1.8。} 以下在\Term{splitting}{分裂}情形中一律将 $T$ 与 $\mathrm D_S(M)$ 等同。于是 $\operatorname{Centr}(G)$ 即 $\mathrm D_S(M/\Gamma_0(R))$，其中 $\Gamma_0(R)$ 是 $R$ 在 $M$ 中生成的\Term{subgroup}{子群}（第 XXI 讲 1.1.6）。若 $\{\alpha_1,\ldots,\alpha_n\}$ 是 $R$ 的\Term{simple-roots}{单根系}，则立即有（第 XX 讲 1.19）
+\[\operatorname{Centr}(G)=\bigcap_i\operatorname{Ker}(\alpha_i)=\bigcap_i\operatorname{Centr}(Z_{\alpha_i}).\]
+\begin{SGAresult}{命题}{4.1.9} 设 $S$ 为\Term{scheme}{概形}，$(G,T,M,R)$ 为 $S$-\Term{split-group}{分裂群}，$Q$ 为 $S$-\Term{torus}{环面}，$\alpha_0$ 为 $Q$ 的\Term{character}{特征标}，$\mathcal L$ 为\Term{invertible}{可逆} $\mathcal O_S$-模，
+\[f:Q\longrightarrow T,\qquad p:\mathrm W(\mathcal L)\longrightarrow G\]
+为\Term{group-morphism}{群态射}，对任意 $q\in Q(S')$、$x\in\mathrm W(\mathcal L)(S')$、$S'\to S$ 满足点集关系 $p(\alpha_0(q)x)=\operatorname{int}(f(q))\cdot p(x)$。假设 $f$ 如下\Term{separated}{分离} $R$ 的元素：若 $\alpha,\alpha'\in R$ 且 $m,m'\in\mathbb Z$，则 $m\alpha\circ f=m'\alpha'\circ f$ 蕴含 $m\alpha=m'\alpha'$。\footnote{编者注：这\Term{equivalence}{等价}于：若 $\alpha,\alpha'\in R$、$m,m'\in\mathbb Z$，且对 $S$ 的每个\Term{geometric-point}{几何点} $\overline s$ 有 $(m\alpha\circ f)_{\overline s}=(m'\alpha'\circ f)_{\overline s}$，则 $m\alpha=m'\alpha'$。特别地，此\Term{separated}{分离}假设在\Term{base-change}{基变换}下\Term{stable}{稳定}。} 最后设 $s\in S$ 满足 $(\alpha_0)_s\ne e$ 且 $p_s\ne e$。
+
+则存在含 $s$ 的 $S$ 的\Term{open-subset}{开集} $U$、整数 $q>0$ 使 $x\mapsto x^q$ 为 $\mathbb G_{a,U}$ 的\Term{endomorphism}{自同态}、\Term{root}{根} $\alpha\in R$，以及 $\mathcal O_U$-模\Term{isomorphism}{同构}
+\[h:(\mathcal L|U)^{\otimes q}\xrightarrow\sim\mathfrak g^\alpha|U,\]
+使 (i) $(\alpha\circ f)_U=(q\alpha_0)_U$；(ii) 对任意 $X\in\mathrm W(\mathcal L)(S')$、$S'\to U$，有 $p(X)=\exp_\alpha(h(X^q))$。此外，一旦选定 $U$，$q,\alpha,h$ 均唯一确定。
+\end{SGAresult}
+缩小 $S$ 可假设 $\alpha_0$ 在每条\Term{fiber}{纤维}上非零。选取 $R$ 的\Term{positive-roots}{正根系} $R_+$，令 $V=p^{-1}(\Omega_{R_+})$。这是 $\mathrm W(\mathcal L)$ 中含\Term{zero-section}{零截面}的\Term{open-subset}{开集}，且对任意 $q\in Q(S')$、$S'\to S$，在乘以 $\alpha_0(q)$ 下\Term{stable}{稳定}。由于 $\alpha_0$ 在每条\Term{fiber}{纤维}上非平凡，立即得 $V=\mathrm W(\mathcal L)$，故 $p$ 通过 $\Omega_{R_+}$ \Term{resolution}{分解}。选取
+\SourcePage{121}
+$R_+,R_-$ 上任意次序；以下所有乘积均依此次序进行。于是有唯一\Term{morphism}{态射}
+\[a_\alpha:\mathrm W(\mathcal L)\to U_\alpha\quad(\alpha\in R),\qquad b:\mathrm W(\mathcal L)\to T,\]
+使 $p(x)=\prod_{\alpha\in R_-}a_\alpha(x)\cdot b(x)\cdot\prod_{\alpha\in R_+}a_\alpha(x)$。写出在 $Q$ 下的\Term{covariant}{协变}条件，立即得
+\[a_\alpha(\alpha_0(q)x)=\alpha(f(q))a_\alpha(x)\quad(\alpha\in R),\qquad b(\alpha_0(q)x)=b(x),\]
+对任意 $x\in\mathrm W(\mathcal L)(S')$、$q\in Q(S')$、$S'\to S$ 成立。第二条件立即给出 $b=e$。
+现取 $\alpha\in R$ 使 $(a_\alpha)_s\ne e$（存在这样的 $\alpha$，因假设 $p_s\ne e$）。应用第 XIX 讲 4.12 (a)，知存在整数 $n>0$ 使 $(\alpha\circ f)_s=(n\alpha_0)_s$。缩小 $S$ 可假设 $\alpha\circ f=n\alpha_0$（第 IX 讲 5.3）。但对任意 $\alpha'\in R$、$\alpha'\ne\alpha$，由关于 $f$ 的假设（以及与 $\alpha$ 成比例的\Term{root}{根}只有 $\alpha,-\alpha$），对任意整数 $m>0$ 均有 $(\alpha'\circ f)_s\ne m\alpha_0$。再对 $a_{\alpha'}$ 应用第 XIX 讲 4.12 (a)，知 $a_{\alpha'}$ 在 $S$ 的一个\Term{neighborhood}{邻域}内为零；$R$ \Term{finite}{有限}，故进一步缩小 $S$，可令所有 $\alpha'\in R$、$\alpha'\ne\alpha$ 的 $a_{\alpha'}$ 为零。于是 $p=a_\alpha$，可依次应用第 XIX 讲 4.12 (b)、(c)，得所述结论（唯一性断言显然）。
+
+\textbf{注记 4.1.10。} 尤其当 $f$ 满（即\Term{faithfully-flat}{忠实平坦}）时，4.1.9 对 $f$ 的条件成立。
+\begin{SGAresult}{命题}{4.1.11} 设 $(G,T,M,R)$ 为 $S$-\Term{split-group}{分裂群}，$R_+$ 为 $R$ 的\Term{positive-roots}{正根系}，$\Omega_{R_+}$ 为相应\Term{big-cell}{大胞腔}。
+
+(i) 设 $H$ 为对 (fppf) \Term{separated}{分离}的 $S$-群\Term{functor}{函子}。\footnote{编者注：回顾（第 IV 讲 4.3.5），$S$-\Term{presheaf}{预层} $H$ 对\Term{topology}{拓扑} $\mathcal T$ \Term{separated}{分离}，指对任意 $S'\to S$ 及对 $\mathcal T$ \Term{covering}{覆盖}的 $S$-\Term{morphism}{态射}族 $(S_i'\to S')_{i\in I}$，映射 $H(S')\to\prod_i H(S_i')$ 为\Term{injectivity}{单射}。} 若两个\Term{group-morphism}{群态射} $f,g:G\rightrightarrows H$ 在 $\Omega_{R_+}$ 上相同，则 $f=g$。
+
+(ii) 设 $H$ 为 (fppf) 的 $S$-群\Term{sheaf}{层}，$f:\Omega_{R_+}\to H$ 为满足下列条件的 $S$-\Term{morphism}{态射}：对任意 $S'\to S$ 及 $x,y\in\Omega_{R_+}(S')$，若 $xy\in\Omega_{R_+}(S')$，则 $f(xy)=f(x)f(y)$。于是存在\Term{group-morphism}{群态射} $f:G\to H$ 延拓 $f$（由 (i) 知其唯一）。\end{SGAresult}
+由 4.1.5，(i)（相应地，(ii)）立即由第 XVIII 讲 2.2（相应地，2.3 和 2.4）得出。
+\SourcePage{122}
+\textbf{注记 4.1.12。} 若 $\alpha\in R_+$，则
+\[\Omega_{R_+}\cap Z_\alpha=U_{-\alpha}\cdot T\cdot U_\alpha.\tag{$\dagger$}\]
+\footnote{编者注：以下补充了原文的细节。} 事实上，对任意 $S'\to S$，若 $g=\prod_{\beta\in R_-}p_\beta(x_\beta)\cdot t\cdot\prod_{\beta\in R_+}p_\beta(x_\beta)\in\Omega_{R_+}(S')$，且 $t'\in T_\alpha(S'')$，则
+\[t'gt'^{-1}=\prod_{\beta\in R_-}p_\beta(\beta(t')x_\beta)\cdot t\cdot\prod_{\beta\in R_+}p_\beta(\beta(t')x_\beta).\]
+$\alpha,-\alpha$ 是 $R$ 中仅有的在 $T_\alpha$ 上取值 $1$ 的元素，故 $g$ 属于 $Z_\alpha=\operatorname{Centr}(T_\alpha)$ 当且仅当 $\beta\ne\pm\alpha$ 时 $x_\beta=0$。
+由 ($\dagger$) 及 XX 2.1，若 $X\in\Gamma(X,\mathfrak g^\alpha)$、$Y\in\Gamma(S,\mathfrak g^{-\alpha})$，则
+\[\exp_\alpha(X)\exp_\alpha(Y)\in\Omega_{R_+}(S)\quad\Longleftrightarrow\quad1+XY\text{ 可逆}.\]
+
+\textbf{4.2. \Term{split-group}{分裂群}的\Term{morphism}{态射}。}
+\begin{SGAresult}{定义}{4.2.1} 设 $S$ 为\Term{nonempty}{非空}\Term{scheme}{概形}，$(G,T,M,R)$、$(G',T',M',R')$ 为两个 $S$-\Term{split-group}{分裂群}。若 $S$-\Term{group-morphism}{群态射} $f:G\to G'$ 在 $T$ 上的\Term{restriction}{限制}\Term{resolution}{分解}为 $f_T:T\to T'$，且 $f_T=\mathrm D_S(h)$，其中\Term{group-morphism}{群态射} $h:M'\to M$ 满足下列条件，则称 $f$ 与\Term{splitting}{分裂}相容，或定义一个\Term{split-group-morphism}{分裂群态射}：
+
+存在\Term{bijection}{双射} $d:R\xrightarrow\sim R'$\footnote{编者注：将记号 $u:R\to R'$ 改作 $d:R\to R'$。}，并对每个 $\alpha\in R$ 存在整数 $q(\alpha)>0$，使 $x\mapsto x^{q(\alpha)}$ 为 $\mathbb G_{a,S}$ 的\Term{endomorphism}{自同态}，且
+\[h(d(\alpha))=q(\alpha)\alpha,\qquad{}^th(\alpha^*)=q(\alpha)d(\alpha)^*.\]
+\end{SGAresult}
+\textbf{注记 4.2.2。} 显然，$h,d$ 及 $q(\alpha)$（$\alpha\in R$）由 $f$ 唯一确定。记 $h=\mathcal R(f)$。称 $q(\alpha)$ 为 $f$（或 $h$）的\Term{root-exponent}{根指数}。
+设 $p$ 为在 $S$ 上为零的素数（若存在）；若无此素数，令 $p=1$。则 $\mathcal R(f)$ 为第 XXI 讲 6.8 意义下\Term{reduced}{既约}\Term{root-datum}{根数据}的 $p$-\Term{morphism}{态射}。这样定义了从 $S$-\Term{split-group}{分裂群}\Term{category}{范畴}到\Term{reduced}{既约}\Term{root-datum}{根数据}\Term{category}{范畴}（赋以 $p$-\Term{morphism}{态射}）的\Term{functor}{函子} $\mathcal R$。
+\begin{SGAresult}{命题}{4.2.3} 在 4.2.1 的条件下，有以下性质：
+
+(i) 对任意 $\alpha\in R$，存在唯一 $\mathcal O_S$-模\Term{isomorphism}{同构}
+\[f_\alpha:(\mathfrak g^\alpha)^{\otimes q(\alpha)}\xrightarrow\sim\mathfrak g'^{d(\alpha)},\]
+使对任意 $X\in\mathrm W(\mathfrak g^\alpha)(S')$、$S'\to S$ 有
+\[f(\exp_\alpha(X))=\exp_{d(\alpha)}(f_\alpha(X^{q(\alpha)})).\]
+
+(ii) 对任意 $\alpha\in R$，有 $q(-\alpha)=q(\alpha)$，且 $f_\alpha,f_{-\alpha}$ 互为\Term{contravariant}{反变}\Term{duality}{对偶}。
+\SourcePage{123}
+(iii) 对任意 $\alpha\in R$、$Z\in\mathrm W(\mathfrak g^\alpha)^*(S')$、$S'\to S$，有
+\[f(w_\alpha(Z))=w_{d(\alpha)}(Z^{q(\alpha)}).\]
+\end{SGAresult}
+由假设，图
+\[\begin{tikzcd}\mathbb G_{m,S}\arrow[r,"\alpha^*"]\arrow[d,"q(\alpha)"']&T\arrow[r,"\alpha"]\arrow[d,"f_T"]&\mathbb G_{m,S}\arrow[d,"q(\alpha)"]\\\mathbb G_{m,S}\arrow[r,"d(\alpha)^*"']&T'\arrow[r,"d(\alpha)"']&\mathbb G_{m,S}\end{tikzcd}\]
+交换。故 $f$ 将 $\operatorname{Ker}(\alpha)$ 映入 $\operatorname{Ker}(d(\alpha))$，从而将 $T_\alpha$ 映入 $T'_{d(\alpha)}$，进而将 $Z_\alpha$ 映入 $Z'_{d(\alpha)}$。只须对 $Z_\alpha,Z'_{d(\alpha)}$ 应用第 XX 讲 3.10、3.11 即可。
+\begin{SGAresult}{命题}{4.2.4} \Term{morphism}{态射} $f$ 诱导从 $\operatorname{Norm}(T)$ 到 $\operatorname{Norm}_{G'}(T')$ 的\Term{morphism}{态射} $f_N$，从而诱导 $f_W:W_G(T)\to W_{G'}(T')$；后者为\Term{isomorphism}{同构}。更准确地，以 $d:W(\mathcal R(G))=W\to W'=W(\mathcal R(G'))$ 表示延拓 $s_\alpha\mapsto s_{d(\alpha)}$ 的\Term{isomorphism}{同构}（第 XXI 讲 6.8.4），则有交换的\Term{isomorphism}{同构}图：
+\[\begin{tikzcd}W_G(T)\arrow[r,"f_W","\sim"']&W_{G'}(T')\\W_S\arrow[u,"\sim"]\arrow[r,"d_S","\sim"']&W'_S\arrow[u,"\sim"']\end{tikzcd}\]
+\end{SGAresult}
+这立即由 3.4、第 XXI 讲 6.8.4 和上面的 (iii) 得出。
+
+\textbf{注记 4.2.5。} 用 4.2.3 的记号，$f$ 在 $\Omega_{R_+}$ 上的\Term{restriction}{限制}（$R_+$ 为一个\Term{positive-roots}{正根系}）可显式写出：它将 $\Omega_{R_+}$ 映入 $\Omega'_{d(R_+)}$（由第 XXI 讲 6.8.7，$d(R_+)$ 为 $R'$ 的\Term{positive-roots}{正根系}），且由点集公式给出：
+\[\begin{aligned}
+f\left(\prod_{\alpha\in R_-}\exp_\alpha(X_\alpha)\cdot t\cdot\prod_{\alpha\in R_+}\exp_\alpha(X_\alpha)\right)
+={}&\prod_{\alpha\in R_-}\exp_{d(\alpha)}(f_\alpha(X_\alpha^{q(\alpha)}))\\&\cdot f_T(t)\cdot\prod_{\alpha\in R_+}\exp_{d(\alpha)}(f_\alpha(X_\alpha^{q(\alpha)})).
+\end{aligned}\]
+\begin{SGAresult}{命题}{4.2.6} (i) $f$ 满（此时\Term{equivalence}{等价}于\Term{faithfully-flat}{忠实平坦}，参见 VI$_B$ 3.11）当且仅当 $f_T$ 满。
+
+(ii) 有 $\operatorname{Ker}(f)\subset\Omega_{R_+}$。\end{SGAresult}
+证明 (i)：若 $f$ 满，则 $f_T(T)=f(T)$ 为 $G'$ 的\Term{maximal-torus}{极大环面}。事实上，$f(T)$ 为\Term{maximal-torus}{极大环面} $T'$ 的子\Term{torus}{环面}（第 IX 讲 6.8）；为验证 $f(T)=T'$，归结到\Term{algebraically-closed-field}{代数闭域}情形，此时即 Bible，§7.3，定理 3 (a)。
+\SourcePage{124}
+若 $f_T$ 满，则上述公式说明 $f$ 诱导 $\Omega=\Omega_{R_+}$ 到 $\Omega'=\Omega'_{d(R_+)}$ 的\Term{surjectivity}{满射}。\footnote{编者注：以下详细写出了对第 VI 讲的引用。} 由于 $G'$ 的\Term{fiber}{纤维}\Term{connected}{连通}，得 $f$ 满（参见第 VI$_A$ 讲 0.5）。
+证明 (ii)，为此暂承认下文将证的结果（5.7.4）：对每个 $w\in W$，选取代表它的 $n_w\in\operatorname{Norm}_G(T)(S)$，则\Term{open-subset}{开集} $n_w\Omega$（$w\in W$）\Term{covering}{覆盖} $G$。只须证明 $\operatorname{Ker}(f)\cap n_w\Omega\ne\varnothing$ 蕴含 $w=1$。若 $x\in\Omega(S')$、$S'\to S$ 且 $f(n_wx)=1$，则 $f(x)=f(n_w)^{-1}$；而 $f(x)\in\Omega'(S')$，$f(n_w)^{-1}\in\operatorname{Norm}_{G'}(T')(S')$。由 4.2.4，归结为证明：
+\begin{SGAresult}{引理}{4.2.7} 在 4.1.2 的条件下，$\Omega\cap\operatorname{Norm}_G(T)=T$。\end{SGAresult}
+设 $x=\prod_{\alpha\in R_-}p_\alpha(x_\alpha)\cdot t\cdot\prod_{\alpha\in R_+}p_\alpha(x_\alpha)=vtu\in\Omega(S')$。若 $x$ \Term{normalized}{正规化} $T_{S'}$，则对任意 $t'\in T(S')$ 有 $xt'x^{-1}=t''\in T(S')$，即 $xt'=t''x$，写成
+\[v(tt')(t'^{-1}ut')=(t''vt''^{-1})(t''t)u.\]
+得 $t'^{-1}ut'=u$，故 $u\in\operatorname{Centr}_G(T)(S')=T(S')$，即 $u=1$。同理 $v=1$。
+\begin{SGAresult}{推论}{4.2.8} 有
+\[\operatorname{Ker}(f)=\prod_{\alpha\in R_-}K_\alpha\cdot\operatorname{Ker}(f_T)\cdot\prod_{\alpha\in R_+}K_\alpha,\]
+其中对每个 $\alpha\in R$，$K_\alpha$ 为\Term{finite}{有限} $S$-群
+\[K_\alpha=\operatorname{Ker}(U_\alpha\to U_\alpha^{\otimes q(\alpha)})\simeq\alpha_{q(\alpha),S}.\]
+\end{SGAresult}
+为应用此推论，作如下定义。
+\begin{SGAresult}{定义}{4.2.9} 设 $S$ 为\Term{scheme}{概形}，$G,G'$ 为两个 $S$-\Term{reductive-group}{约化群}。\Term{faithfully-flat}{忠实平坦}且\Term{finite}{有限}的 $S$-\Term{group-morphism}{群态射} $f:G\to G'$（即满且其核在 $S$ 上\Term{finite}{有限}）称为\Term{isogeny}{同源}。若此外 $\operatorname{Ker}(f)$ 为 $G$ 的\Term{central-subgroup}{中心子群}，则称 $f$ 为\Term{central-isogeny}{中心同源}。\end{SGAresult}
+\begin{SGAresult}{命题}{4.2.10} 设 $f:G\to G'$ 为\Term{split-group-morphism}{分裂群态射}。$f$ 为\Term{isogeny}{同源}（相应地，\Term{central-isogeny}{中心同源}）当且仅当 $f_T$ 为\Term{isogeny}{同源}，即 $\mathcal R(f)$ 为\Term{cokernel}{余核}\Term{finite}{有限}的\Term{injectivity}{单射}（相应地，此外对每个 $\alpha\in R$ 有 $q(\alpha)=1$）。\end{SGAresult}
+由 4.2.8，$\operatorname{Ker}(f)$ 在 $S$ 上\Term{finite}{有限}当且仅当 $\operatorname{Ker}(f_T)$ 在 $S$ 上\Term{finite}{有限}，且 $\operatorname{Ker}(f)\subset T$ 当且仅当所有 $q(\alpha)$ 均为 $1$（此时 $\operatorname{Ker}(f)$ 为\Term{multiplicative-type}{乘法型}\Term{normal-subgroup}{正规子群}，故为\Term{central-subgroup}{中心子群}，参见第 IX 讲 5.5）。
+\SourcePage{125}
+\textbf{注记 4.2.11。} a) 因而 $f:G\to G'$ 为\Term{central-isogeny}{中心同源}当且仅当 $\mathcal R(f):\mathcal R(G')\to\mathcal R(G)$ 为第 XXI 讲 6.2 意义的\Term{isogeny}{同源}；此时还满足（沿用该处记号）
+\[\operatorname{Ker}(f)=\mathrm D_S(\mathrm K(\mathcal R(f))),\qquad\mathrm K(\mathcal R(f))=\operatorname{Coker}(\mathcal R(f)).\]
+b) 若 $G,G'$ \Term{semisimple}{半单}，则每个\Term{split-group-morphism}{分裂群态射} $G\to G'$ 均为\Term{isogeny}{同源}。
+
+c) 若 $f:G\to G'$ \Term{faithfully-flat}{忠实平坦}且\Term{finite}{有限}，$G$ 为\Term{reductive-group}{约化群}（相应地，\Term{semisimple}{半单群}），则 $G'$ 亦然。事实上，$G'$ 在 $S$ 上\Term{finitely-presented}{有限呈示}（第 V 讲 9.1）、\Term{affine}{仿射}（EGA II 6.7.1）、\Term{smooth}{光滑}（第 VI 讲 9.2），其\Term{geometric-fibre}{几何纤维}由第 XIX 讲 1.7 为\Term{connected}{连通}\Term{reductive-group}{约化群}（相应地，\Term{semisimple}{半单群}）。
+
+定义 4.2.1 似乎任意；下述命题说明其合理性（为简便，只对\Term{semisimple}{半单群}陈述）。若 $S$-\Term{reductive-group}{约化群}的\Term{morphism}{态射} $f:G\to G'$ 与 $G,G'$ 的某些\Term{splitting}{分裂}相容，则称它\Term{separable}{可分}裂。于是有：
+\begin{SGAresult}{命题}{4.2.12} 设 $S$ 为\Term{scheme}{概形}，$G,G'$ 为两个 $S$-\Term{semisimple}{半单群}，$f:G\to G'$ 为\Term{group-morphism}{群态射}，$s\in S$。以下条件\Term{equivalence}{等价}：
+
+(i) $\operatorname{Ker}f_{\overline s}$ \Term{finite}{有限}（$\Leftrightarrow e$ 在 $\operatorname{Ker}f(\overline s)$ 中孤立），且 $f_{\overline s}$ 满，即 $f_{\overline s}$ 为\Term{isogeny}{同源}。
+
+(ii) $f_{\overline s}$ \Term{separable}{可分}裂。
+
+(iii) 存在\Term{covering}{覆盖} $s$ 的\Term{etale}{平展}\Term{morphism}{态射} $S'\to S$，使 $f_{S'}:G_{S'}\to G'_{S'}$ \Term{separable}{可分}裂。
+\end{SGAresult}
+显然有 (iii) $\Leftrightarrow$ (ii)；(ii) $\Rightarrow$ (i) 由 4.2.10 (b) 得出（此处用到 $G,G'$ \Term{semisimple}{半单}的假设；其他蕴含对\Term{reductive-group}{约化群}仍成立）。
+现证 (i) $\Rightarrow$ (iii)。可假设 $G,G'$ \Term{splitting}{分裂}，且 $f$ 诱\Term{derived-morphism}{导态射} $f_T:T\to T'$（2.3 和第 XIX 讲 2.8）；缩小 $S$，可假设 $f_T=\mathrm D_S(h)$，其中 $h:M'\to M$ 为\Term{group-morphism}{群态射}。取 $\alpha\in R$，考虑复合
+\[p:\mathrm W(\mathfrak g^\alpha)\xrightarrow{\exp_\alpha}G\xrightarrow{f}G'.\]
+因 $\operatorname{Ker}(p_s)$ \Term{finite}{有限}，$p_s\ne e$。又 $f_{Ts}$ 满，故可应用 4.1.9：存在含 $s$ 的 $S$ 的\Term{open-subset}{开集} $V_\alpha$、\Term{root}{根} $\alpha'\in R'$、整数 $q(\alpha)$ 使 $x\mapsto x^{q(\alpha)}$ 为 $\mathbb G_{a,V_\alpha}$ 的\Term{endomorphism}{自同态}，及 $\mathcal O_{V_\alpha}$-模\Term{isomorphism}{同构}
+\[f_\alpha:(\mathfrak g^\alpha)^{\otimes q(\alpha)}|V_\alpha\longrightarrow\mathfrak g'^{\alpha'}|V_\alpha,\]
+使 $f(\exp_\alpha(X_\alpha))=\exp_{d(\alpha)}(f_\alpha(X_\alpha^{q(\alpha)}))$ 且 $\alpha'\circ f_T=h(\alpha')=q(\alpha)\alpha$。可将 $S$ 换成所有 $V_\alpha$（$\alpha\in R$）之交。令 $\alpha'=d(\alpha)$。$d:R\to R'$ 显然为\Term{bijection}{双射}，因为 $h$ 的核\Term{finite}{有限}（由于 $f_{Ts}$ 满）。只须再证明
+\SourcePage{126}
+$f_T\circ\alpha^*=q(\alpha)\alpha'^*$，这可对第 XX 讲 3.11 的论证作直接修改得到。
+无论如何，证明过程中已得 (i) $\Rightarrow$ (iii)。因此：
+\begin{SGAresult}{推论}{4.2.13} 设 $S$ 为\Term{scheme}{概形}，$f:G\to G'$ 为\Term{reductive-group}{约化群}的\Term{isogeny}{同源}。则 $f$ 在\Term{etale-topology}{平展拓扑}下\Term{local-scheme}{局部}\Term{separable}{可分}裂。\end{SGAresult}
+
+\textbf{4.3. \Term{reductive-group}{约化群}的\Term{center}{中心}商。} 先考虑一个特例。
+\begin{SGAresult}{命题}{4.3.1} 设 $S$ 为\Term{scheme}{概形}，$(G,T,M,R)$ 为 $S$-\Term{split-group}{分裂群}，$N$ 为 $M$ 的含 $R$ 的\Term{subgroup}{子群}，$Q=\mathrm D_S(M/N)\subset\operatorname{Centr}(G)$。则：
+
+(i) $G'=G/Q$ 为 $S$-\Term{reductive-group}{约化群}，$T'=T/Q$ 为其\Term{maximal-torus}{极大环面}；
+
+(ii) 若将 $T'$ 与 $\mathrm D_S(N)$ 等同，则 $R\subset N$ 是 $G'$ 关于 $T'$ 的\Term{root-system}{根系}，$(G',T',N,R)$ 为 $G$ 的\Term{splitting}{分裂}，且 $\mathcal R(G')$ \Term{canonical}{典范}地等同于诱导\Term{root-datum}{根数据}（第 XXI 讲 6.5）$\mathcal R(G)_N$；
+
+(iii) \Term{canonical}{典范}\Term{morphism}{态射} $G\to G'$ 与\Term{splitting}{分裂}相容，其\Term{root-exponent}{根指数}为 $1$，并经\Term{functor}{函子}性给出\Term{canonical}{典范}\Term{morphism}{态射}（同上）$\mathcal R(G)_N\to\mathcal R(G)$。
+\end{SGAresult}
+已知 $G'=G/Q$ 可由 $S$ 上\Term{affine}{仿射}的群\Term{scheme}{概形}表示（第 VIII 讲 5.7），它在 $S$ 上\Term{smooth}{光滑}（第 VI$_B$ 讲 9.2），\Term{geometric-fibre}{几何纤维}\Term{connected}{连通}且\Term{reductive-group}{约化}（作为\Term{reductive-group}{约化群}的商，见第 XIX 讲 1.7）；故 $G'$ 为 $S$-\Term{reductive-group}{约化群}。
+显然 $T'=T/Q\simeq\mathrm D_S(N)$ 为其\Term{maximal-torus}{极大环面}。再注意，选取 $R$ 的\Term{positive-roots}{正根系} $R_+$ 后，4.2 的\Term{open-subset}{开集} $\Omega_{R_+}$ 在 $Q$ 下\Term{stable}{稳定}，且有\Term{canonical}{典范}\Term{isomorphism}{同构}
+\[\Omega_{R_+}/Q\simeq\prod_{\alpha\in R_-}U_\alpha\mathbin{\times_S}(T/Q)\mathbin{\times_S}\prod_{\alpha\in R_+}U_\alpha,\]
+而 $\Omega_{R_+}/Q$ 为 $G'$ 中含\Term{unit-section}{单位截面}的\Term{open-subset}{开集}（参见第 IV 讲 4.7.2 和 6.4.1）。因此，以 $\mathfrak g'$ 表示 $G'$ 的\Term{lie-algebra}{李代数}，仍以 $\alpha$ 表示 $\alpha$ 在 $T/Q$ 上诱导的\Term{character}{特征标}（\Term{equivalence}{等价}地，在 $T/Q=\mathrm D_S(N)$ 的等同下由 $\alpha\in N$ 定义），则\Term{canonical}{典范}\Term{morphism}{态射} $\mathfrak g\to\mathfrak g'$ 对每个 $\alpha\in R$ 诱导\Term{isomorphism}{同构} $\mathfrak g^\alpha\xrightarrow\sim\mathfrak g'^\alpha$。这证明 $R$ 为 $G'$ 关于 $T'$ 的\Term{root-system}{根系}，其余证明无困难。
+\begin{SGAresult}{推论}{4.3.2} 设 $S$ 为\Term{scheme}{概形}，$G$ 为 $S$-\Term{reductive-group}{约化群}，$Q$ 为 $G$ 的\Term{multiplicative-type}{乘法型}\Term{normal-subgroup}{不变子群}。则 $Q$ 在 $G$ 中为\Term{central-subgroup}{中心子群}，商 $G/Q$ 可由 $S$-\Term{reductive-group}{约化群}表示，且\Term{canonical}{典范}\Term{morphism}{态射} $G\to G/Q$ 在\Term{etale-topology}{平展拓扑}下\Term{local-scheme}{局部}\Term{separable}{可分}裂（\Term{root-exponent}{根指数}均为 $1$）。\end{SGAresult}
+\SourcePage{127}
+第一断言由第 IX 讲 5.5 得出；其余对\Term{etale-topology}{平展拓扑}是\Term{local-scheme}{局部}的，归结为 4.3.1。
+\begin{SGAresult}{定义}{4.3.3} 设 $G$ 为 $S$-\Term{reductive-group}{约化群}。若对每个 $s\in S$，$G$ 在 $s$ 处的\Term{type}{型}由一个\Term{adjoint}{伴随}（相应地，\Term{simply-connected}{单连通}）\Term{root-datum}{根数据}给出，即（第 XXI 讲 6.2.6）$M$ 由 $R$ 生成（相应地，$M^*$ 由 $R^*$ 生成），则称 $G$ 为\Term{adjoint}{伴随}的（相应地，\Term{simply-connected}{单连通}的）。\end{SGAresult}
+\begin{SGAresult}{命题}{4.3.4} (i) \Term{adjoint}{伴随}（相应地，\Term{simply-connected}{单连通}）\Term{reductive-group}{约化群}为\Term{semisimple}{半单群}。
+
+(ii) 若 $T$ 为\Term{adjoint}{伴随}（相应地，\Term{simply-connected}{单连通}）\Term{reductive-group}{约化群} $G$ 的\Term{maximal-torus}{极大环面}，$\alpha$ 为 $G$ 关于 $T$ 的\Term{root}{根}，则\Term{infinitesimal-root}{无穷小根} $\alpha$ 在每条\Term{fiber}{纤维}上非零（相应地，$\alpha^*$ 为\Term{monomorphism}{单态射}，且\Term{infinitesimal-coroot}{无穷小余根} $H_\alpha$ 在每条\Term{fiber}{纤维}上非零）。\end{SGAresult}
+(i) 显然；(ii) 可在\Term{geometric-fibre}{几何纤维}上验证，并立即由第 XXI 讲 6.2.8 得出。
+\begin{SGAresult}{命题}{4.3.5} (i) \Term{reductive-group}{约化群} $G$ 为\Term{adjoint}{伴随}的当且仅当 $\operatorname{Centr}(G)=\{e\}_S$。
+
+(ii) 对任意\Term{reductive-group}{约化群} $G$，\Term{quotient-group}{商群} $G/\operatorname{Centr}(G)$ 为\Term{adjoint}{伴随}\Term{reductive-group}{约化群}。\end{SGAresult}
+可假设 $G$ \Term{splitting}{分裂}，此时 (i) 显然（因 $\operatorname{Centr}(G)=\mathrm D_S(M/\Gamma_0(R))$），而 (ii) 由 4.3.1 得出。
+\begin{SGAresult}{定义}{4.3.6} 设 $G$ 为 $S$-\Term{reductive-group}{约化群}。称 $G/\operatorname{Centr}(G)$ 为 $G$ 的\Term{adjoint-group}{伴随群}，记作 $\operatorname{ad}(G)$。称 $\operatorname{Centr}(G)$ 的\Term{maximal-torus}{极大环面}（由第 XII 讲 1.12 唯一）为 $G$ 的\Term{radical}{根基}，记作 $\operatorname{rad}(G)$。称商 $G/\operatorname{rad}(G)$ 为 $G$ 的相伴\Term{semisimple}{半单群}。\end{SGAresult}
+上述定义与\Term{base-change}{基变换}相容。若 $s\in S$，$\operatorname{rad}(G)_s$ 确为通常意义的 $G_s$ 的\Term{radical}{根基}（第 XIX 讲 1.6）。
+
+\textbf{4.3.7。} 若 $(G,T,M,R)$ 为\Term{split-group}{分裂群}，则 $\operatorname{rad}(G)=\mathrm D_S(M/N)$，其中 $N=M\cap V(R)$；故 $G$ 的相伴\Term{semisimple}{半单群}（以及 $G$ 的\Term{adjoint-group}{伴随群}）均带有\Term{canonical}{典范}\Term{splitting}{分裂}（4.3.1），且有\Term{split-group}{分裂群}图
+\[G\longrightarrow\operatorname{ss}(G)\longrightarrow\operatorname{ad}(G),\]
+对应于\Term{canonical}{典范}\Term{root-datum}{根数据}图（第 XXI 讲 6.5.5）
+\[\operatorname{ad}(\mathcal R(G))\longrightarrow\operatorname{ss}(\mathcal R(G))\longrightarrow\mathcal R(G).\]
+\textbf{注记 4.3.8。} 设 $(G,T,M,R)$ 为\Term{adjoint}{伴随}（相应地，\Term{simply-connected}{单连通}）$S$-\Term{split-group}{分裂群}，$\Delta$ 为 $R$ 的\Term{simple-roots}{单根系}。则族 $\{\alpha\}_{\alpha\in\Delta}$，相应地 $\{\alpha^*\}_{\alpha\in\Delta}$，诱导\Term{isomorphism}{同构}
+\[T\xrightarrow\sim(\mathbb G_{m,S})^\Delta,\qquad\text{相应地 }(\mathbb G_{m,S})^\Delta\xrightarrow\sim T.\]
+\SourcePage{128}
+事实上，$M=\Gamma_0(R)$（相应地，$\ldots$），且 $\Delta$ 为自由\Term{abelian-group}{阿贝尔群} $\Gamma_0(R)$ 的一组基（第 XXI 讲 3.1.8）。
+
+\textbf{注记 4.3.9。} 由定义，\Term{reductive-group}{约化群}的\Term{radical}{根基}为\Term{characteristic-subgroup}{特征子群}（即在 $\operatorname{Aut}_{S\text{-gr}}(G)$ 下\Term{stable}{稳定}）。
+\SGAsection{5}{(R) 型子群}
+我们特别关心\Term{reductive-group}{约化群}，但下面某些结果更一般地适用于较大的群类：(RR) 型群。
+
+\textbf{5.1. (RR) 型群。}
+\begin{SGAresult}{定义}{5.1.1} 设 $S$ 为\Term{scheme}{概形}，$G$ 为 $S$-群\Term{scheme}{概形}。若 $G$ 满足下列条件，则称它为 (RR) 型：
+
+(i) $G$ 在 $S$ 上\Term{smooth}{光滑}、\Term{finitely-presented}{有限呈示}，且\Term{fiber}{纤维}\Term{connected}{连通}。
+
+(ii) $G$ 在 (fpqc) \Term{topology}{拓扑}下\Term{local-scheme}{局部}具有\Term{maximal-torus}{极大环面}。
+
+(iii) 对任意 $s\in S$、$G_{\overline s}$ 的任一\Term{maximal-torus}{极大环面} $T$ 及 $G_{\overline s}$ 关于 $T_{\overline s}$ 的任一\Term{root}{根}（第 XIX 讲 1.10），$\operatorname{Lie}(G_{\overline s})^\alpha$ 秩为 $1$（作为 $\kappa(\overline s)$ 上的\Term{vector-space}{向量空间}）。
+
+(iv) 对任意 $s\in S$ 及 $G_{\overline s}$ 的任一\Term{maximal-torus}{极大环面} $T$，以 $R$ 表示 $G_{\overline s}$ 关于 $T$ 的\Term{root}{根}的\Term{set}{集合}，以 $\Gamma_0(R)$ 表示 $R$ 在 $\operatorname{Hom}_{\overline s\text{-gr}}(T,\mathbb G_{m,\overline s})$ 中生成的\Term{subgroup}{子群}；则任一\Term{root}{根} $\alpha\in R$ 在自由\Term{abelian-group}{阿贝尔群} $\Gamma_0(R)$ 中的\Term{content}{整除度}\footnote{编者注：\Term{root}{根} $\alpha$ 的\Term{content}{整除度}是 $\mathbb Z$ 的\Term{ideal}{理想} $\{f(\alpha),f\in\Gamma_0(R)^*\}$ 的正\Term{generator}{生成元}；它是满足 $\alpha/c\in\Gamma_0(R)$ 的最大整数 $c>0$。}（故为正整数）在 $S$ 上\Term{invertible}{可逆}。
+\end{SGAresult}
+\textbf{回顾 5.1.1.1。}\footnote{编者注：增添了此回顾。} 若 $G$ 为\Term{algebraically-closed-field}{代数闭域} $k$ 上的\Term{smooth}{光滑}\Term{connected}{连通}\Term{algebraic-group}{代数群}，$G$ 的\Term{cartan-subgroup}{Cartan 子群}是 $G$ 的一个\Term{maximal-torus}{极大环面}的\Term{centralizer}{中心化子}（XII 1.0），这样的\Term{subgroup}{子群}\Term{smooth}{光滑}且\Term{connected}{连通}：这一结论及\Term{cartan-subgroup}{Cartan 子群}的其他刻画，在 $G$ \Term{affine}{仿射}时见 Bible，§7.1，定理 1，一般情形见第 XII 讲定理 6.6。若 $S$ 为任意\Term{scheme}{概形}，$G$ 为\Term{smooth}{光滑}\Term{finite-type}{有限型} $S$-群，$G$ 的\Term{cartan-subgroup}{Cartan 子群}是指 $G$ 的一个\Term{smooth}{光滑} $S$-\Term{subgroup}{子群} $C$，使对任意 $s\in S$，$C_{\overline s}$ 为 $G_{\overline s}$ 的\Term{cartan-subgroup}{Cartan 子群}（XII 定义 3.1）。
+
+\textbf{注记 5.1.2。} a) 由第 XII 讲 7.1（其中 $G$ \Term{separated}{分离}的假设在此由\Term{fiber}{纤维}\Term{connected}{连通}得到，参见第 VI$_B$ 讲 5.5），(i)、(ii) 蕴含 $G$ 在\Term{etale-topology}{平展拓扑}下\Term{local-scheme}{局部}具有\Term{maximal-torus}{极大环面}（相应地，\Term{cartan-subgroup}{Cartan 子群}），且它们在\Term{etale-topology}{平展拓扑}下\Term{local-scheme}{局部}\Term{conjugacy}{共轭}。
+
+b) $G$ 的\Term{cartan-subgroup}{Cartan 子群}\Term{fiber}{纤维}\Term{connected}{连通}（第 XII 讲 6.6）。
+
+c) 若 $G$ 在 $S$ 上\Term{affine}{仿射}，则 (i)、(ii) 分别\Term{equivalence}{等价}于：
+
+(i') $G$ 在 $S$ 上\Term{smooth}{光滑}且\Term{fiber}{纤维}\Term{connected}{连通}。
+
+(ii') $G$ 的\Term{fiber}{纤维}的\Term{reductive-rank}{约化秩}\Term{locally-constant}{局部常值}（第 XII 讲 1.7）。
+\SourcePage{129}
+d) 由第 XII 讲 8.8 (c)、(d)，$G$ 具有\Term{reductive-center}{约化中心} $Z$，且对任意 $s\in S$，用 (iv) 的记号，\footnote{编者注：原文写作“在 (iv) 的条件下”，但 (iv) 的最后一个条件在此似未用到。} 有 $Z_{\overline s}=\bigcap_{\alpha\in R}\operatorname{Ker}(\alpha)$，故
+\[\operatorname{Hom}_{\overline s\text{-gr}}((T/Z)_{\overline s},\mathbb G_{m,\overline s})\simeq\Gamma_0(R).\]
+e) 条件 (iv) 特别在下述两情形成立：(1) $S$ \Term{characteristic}{特征}为 $0$；(2) 每个\Term{root}{根}均为\Term{root}{根}所生成群中的不可除元素。
+
+f) (RR) 型性质在\Term{base-change}{基变换}下\Term{stable}{稳定}，并对 (fpqc) \Term{topology}{拓扑}是\Term{local-scheme}{局部}的。
+
+由注记 (c)、(e) 立即得到：
+\begin{SGAresult}{命题}{5.1.3} \Term{reductive-group}{约化群}是 (RR) 型群。\end{SGAresult}
+\begin{SGAresult}{命题}{5.1.4} 设 $S$ 为\Term{scheme}{概形}，$G$ 为 (RR) 型 $S$-群，$Q$ 为 $G$ 的一个在 $S$ 上\Term{finitely-presented}{有限呈示}的\Term{central-subgroup}{中心子群}，使商 $G/Q$ \Term{representable-functor}{可表示}（例如 $G$ 在 $S$ 上\Term{affine}{仿射}而 $Q$ 为\Term{multiplicative-type}{乘法型}（IX 2.3），或 $S$ 为阿廷\Term{scheme}{概形}（VI$_A$ 3.3.2））；则 $G/Q$ 为 (RR) 型 $S$-群。\end{SGAresult}
+事实上，$G/Q$ 在 $S$ 上\Term{smooth}{光滑}（第 VI$_B$ 讲 9.2）、\Term{finitely-presented}{有限呈示}（第 V 讲 9.1）且\Term{fiber}{纤维}\Term{connected}{连通}，故满足 (i)。另一方面，(ii) 由第 XII 讲 7.6 得出；只须验证 (iii)、(iv)。记 $G'=G/Q$，令 $u:G\to G'$ 为\Term{canonical}{典范}\Term{morphism}{态射}，$T'=u(T)$ 为 $T$ 的像，即 $G'$ 的\Term{maximal-torus}{极大环面}（第 XII 讲 7.1 (e)）；对 $\alpha\in R$，仍以 $\alpha$ 表示 $\alpha$ 定义的 $T'$ 的\Term{character}{特征标}（由 5.1.2 (d)，$Q\cap T\subset\bigcap_{\alpha\in R}\operatorname{Ker}(\alpha)$）。先证：
+\begin{SGAresult}{引理}{5.1.5} 在 5.1.4 的条件下，设 $T=\mathrm D_S(M)$ 为 $G$ 的已\Term{trivialization}{平凡化}\Term{maximal-torus}{极大环面}，假设 $\mathfrak g=\operatorname{Lie}(G)$ 在 $\operatorname{Ad}(T)$ 下\Term{resolution}{分解}为
+\[\mathfrak g=\mathfrak g^0\oplus\coprod_{\alpha\in R}\mathfrak g^\alpha,\qquad R\subset M-\{0\},\]
+其中对任意 $s\in S$、$\alpha\in R$ 有 $\mathfrak g^\alpha(s)\ne0$（故每个 $\mathfrak g^\alpha$ 为\Term{invertible}{可逆} $\mathcal O_S$-模，且对所有 $s\in S$，$R$ 为 $G_{\overline s}$ 关于 $T_{\overline s}$ 的\Term{root}{根}的\Term{set}{集合}）。
+则 $G'$ 的\Term{lie-algebra}{李代数} $\mathfrak g'$ 在 $\operatorname{Ad}(T')$ 下\Term{resolution}{分解}为
+\[\mathfrak g'=\mathfrak g'^0\oplus\coprod_{\alpha\in R}\mathfrak g'^\alpha,\]
+且 $\operatorname{Lie}(u)$ 诱导 $\mathfrak g^\alpha$ 到 $\mathfrak g'^\alpha$ 的\Term{isomorphism}{同构}。
+\end{SGAresult}
+\SourcePage{130}
+令 $p=\operatorname{Lie}(u):\mathfrak g\to\mathfrak g'$。立即有 $p(\mathfrak g^\alpha)\subset\mathfrak g'^\alpha$（$\alpha\in R$）及 $p(\mathfrak g^0)\subset\mathfrak g'^0$。由于
+\[\operatorname{Ker}(p)=\operatorname{Lie}(Q)\subset\operatorname{Lie}(\operatorname{Centr}_G(T))=\mathfrak g^0,\]
+对每个 $\alpha\in R$，$p$ 诱导 $\mathfrak g^\alpha\to\mathfrak g'^\alpha$ 的\Term{monomorphism}{单态射}。
+为证明引理，只须在 $S$ 为\Term{algebraically-closed-field}{代数闭域}的谱时证明；由上述说明，此时只须证明 $\operatorname{rk}(\mathfrak g')=\operatorname{rk}(\mathfrak g'^0)+\operatorname{Card}(R)$。令 $C=\operatorname{Centr}_G(T)$、$C'=\operatorname{Centr}_{G'}(T')$；由第 XII 讲 7.1 (e)，$u$ 诱导核为 $Q$ 的\Term{faithfully-flat}{忠实平坦}\Term{morphism}{态射} $C\to C'$，故 $\dim C'+\dim Q=\dim C$。但 $G,G',C,C'$ 均\Term{smooth}{光滑}，故
+\[\begin{aligned}
+\dim G&=\operatorname{rk}(\mathfrak g)=\operatorname{rk}(\mathfrak g^0)+\operatorname{Card}(R)=\dim C+\operatorname{Card}(R)\\
+&=\dim Q+\dim C'+\operatorname{Card}(R)=\dim Q+\operatorname{rk}(\mathfrak g'^0)+\operatorname{Card}(R),\\
+\operatorname{rk}(\mathfrak g')&=\dim G'=\dim G-\dim Q.
+\end{aligned}\]
+因而 $\operatorname{rk}(\mathfrak g')=\operatorname{rk}(\mathfrak g'^0)+\operatorname{Card}(R)$，即所求关系。
+回到 5.1.4 的证明；可假设 $S$ 为\Term{algebraically-closed-field}{代数闭域}的谱。令 $T$ 为 $G$ 的\Term{maximal-torus}{极大环面}；应用 5.1.5，立即得到 $G/Q$ 的 (iii)、(iv)。为应用上述命题，引入一个定义。
+\begin{SGAresult}{定义}{5.1.6} 若 $S$-群\Term{scheme}{概形} $G$ 为 (RR) 型，并另满足条件（强于 (iv)）
+
+(iv') 对任意 $s\in S$ 及 $G_{\overline s}$ 的任一\Term{maximal-torus}{极大环面} $T$，$G_{\overline s}$ 关于 $T$ 的每个\Term{root}{根}在 $\operatorname{Hom}_{\overline s\text{-gr}}(T,\mathbb G_{m,\overline s})$ 中的\Term{content}{整除度}在 $S$ 上\Term{invertible}{可逆}，
+
+则称 $G$ 为 (RA) 型。
+\end{SGAresult}
+\textbf{注记 5.1.7。} a) \Term{adjoint}{伴随} $S$-\Term{reductive-group}{约化群}为 (RA) 型。
+
+b) 若 $S$ \Term{characteristic}{特征}为 $0$，则每个 (RR) 型群均为 (RA) 型。
+
+c) (RA) 型性质在\Term{base-change}{基变换}下\Term{stable}{稳定}，且对 (fpqc) \Term{topology}{拓扑}是\Term{local-scheme}{局部}的。
+
+上述注记 (a) 可推广为：
+\begin{SGAresult}{命题}{5.1.8} 设 $S$ 为\Term{scheme}{概形}，$G$ 为 (RR) 型 $S$-群，$Z$ 为其\Term{reductive-center}{约化中心}，并假设商 $G/Z$ \Term{representable-functor}{可表示}（例如 $G$ 在 $S$ 上\Term{affine}{仿射}，或 $S$ 为阿廷\Term{scheme}{概形}）；则 $G/Z$ 为 (RA) 型。\end{SGAresult}
+这立即由 5.1.4、5.1.5 及 5.1.2 (d) 得出。
+
+\textbf{注记 5.1.9。} 若 $G$ 为 (RR) 型，$T$ 为 $G$ 的\Term{maximal-torus}{极大环面}，则可应用第 XIX 讲 6.3。特别地，$W_G(T)$ 在 $S$ 上\Term{etale}{平展}、\Term{quasi-finite}{拟有限}且\Term{separated}{分离}。
+\SourcePage{131}
+\textbf{5.2. (R) 型\Term{subgroup}{子群}。}
+\begin{SGAresult}{定义}{5.2.1} 设 $S$ 为\Term{scheme}{概形}，$G$ 为\Term{smooth}{光滑}、\Term{finitely-presented}{有限呈示}且\Term{fiber}{纤维}\Term{connected}{连通}的 $S$-群\Term{scheme}{概形}，\footnote{编者注：$G$（相应地，$H$）在 $S$ 上\Term{finitely-presented}{有限呈示}的假设自动成立，因为它在 $S$ 上\Term{smooth}{光滑}且\Term{fiber}{纤维}\Term{connected}{连通}，故在 $S$ 上\Term{quasi-compact}{拟紧}且\Term{separated}{分离}（VI$_B$ 5.5），从而\Term{finitely-presented}{有限呈示}。} $H$ 为 $G$ 的一个群\Term{subscheme}{子概形}。若满足以下条件，则称 $H$ 为 (R) 型：
+
+(i) $H$ 在 $S$ 上\Term{smooth}{光滑}、\Term{finitely-presented}{有限呈示}且\Term{fiber}{纤维}\Term{connected}{连通}。\footnote{编者注：参见上一个编者注中对 $H$ 的说明。}
+
+(ii) 对任意 $s\in S$，$H_{\overline s}$ 含 $G_{\overline s}$ 的一个\Term{cartan-subgroup}{Cartan 子群}。
+
+此概念在\Term{base-change}{基变换}下\Term{stable}{稳定}，并对 (fpqc) \Term{topology}{拓扑}是\Term{local-scheme}{局部}的。
+\end{SGAresult}
+\textbf{回顾 5.2.2。}（参见第 XII 讲 7.9。）在上述条件下：
+
+a) $H=\operatorname{Norm}_G(H)^0$。
+
+b) 若 $G$ 在\Term{etale-topology}{平展拓扑}下\Term{local-scheme}{局部}具有\Term{cartan-subgroup}{Cartan 子群}（相应地，\Term{maximal-torus}{极大环面}），则 $H$ 亦然，且 $H$ 的\Term{cartan-subgroup}{Cartan 子群}（相应地，\Term{maximal-torus}{极大环面}）也是 $G$ 的\Term{cartan-subgroup}{Cartan 子群}（相应地，\Term{maximal-torus}{极大环面}）。
+
+\textbf{例 5.2.3。} a) \Term{borel-subgroup}{Borel 子群}：$G$ 的\Term{borel-subgroup}{Borel 子群}是指 (R) 型\Term{subgroup}{子群} $H$，其\Term{geometric-fibre}{几何纤维}为 $G$ 的相应\Term{geometric-fibre}{几何纤维}的\Term{borel-subgroup}{Borel 子群}。\footnote{编者注：这\Term{equivalence}{等价}于 $H$ 为 $G$ 的\Term{smooth}{光滑}\Term{subgroup}{子群}，各\Term{geometric-fibre}{几何纤维} $H_{\overline s}$ 均为 $G_{\overline s}$ 的\Term{borel-subgroup}{Borel 子群}，因为 $G_{\overline s}$ 的每个\Term{borel-subgroup}{Borel 子群}均\Term{connected}{连通}且含 $G_{\overline s}$ 的一个\Term{cartan-subgroup}{Cartan 子群}。}
+
+b) \Term{parabolic-subgroup}{抛物子群}：$G$ 的\Term{parabolic-subgroup}{抛物子群}是指其\Term{geometric-fibre}{几何纤维}含\Term{borel-subgroup}{Borel 子群}的 (R) 型\Term{subgroup}{子群}。
+
+下面的命题给出其他例子。
+\begin{SGAresult}{命题}{5.2.4} 设 $G$ 如 5.2.1，$K\subset H$ 为 $G$ 的两个群\Term{subscheme}{子概形}，并假设 $H$ 为 (R) 型。则 $K$ 为 $H$ 的 (R) 型\Term{subgroup}{子群}当且仅当它为 $G$ 的 (R) 型\Term{subgroup}{子群}。\end{SGAresult}
+\footnote{编者注：以下补充了细节。} 事实上，设 $s\in S$。因 $H$ 为 (R) 型，$H_{\overline s}$ 的每个\Term{maximal-torus}{极大环面}均为 $G_{\overline s}$ 的\Term{maximal-torus}{极大环面}，故\Term{cartan-subgroup}{Cartan 子群}亦如此。
+\begin{SGAresult}{命题}{5.2.5} 设 $G$ 如 5.2.1，$T$ 为 $G$ 的\Term{maximal-torus}{极大环面}，$Q$ 为 $T$ 的子\Term{torus}{环面}，$Z=\operatorname{Centr}_G(Q)$。若 $H$ 为 $G$ 的含 $T$ 的 (R) 型\Term{subgroup}{子群}，则 $H\cap Z$ 为 $Z$ 的 (R) 型\Term{subgroup}{子群}。\end{SGAresult}
+先回顾，$Z$ 为 $G$ 的\Term{finitely-presented}{有限呈示}\Term{closed-subgroup}{闭群子概形}（第 XI 讲 6.11），其\Term{fiber}{纤维}\Term{connected}{连通}（第 XII 讲 6.6），并在 $S$ 上\Term{smooth}{光滑}（第 XI 讲 2.4），故满足定义 5.2.1 对 $G$ 的条件。同理，$H\cap Z$
+\SourcePage{132}
+\Term{finitely-presented}{有限呈示}、\Term{smooth}{光滑}且\Term{fiber}{纤维}\Term{connected}{连通}（因 $H\cap Z=\operatorname{Centr}_H(Q)$）；此外，$H\cap Z\supset\operatorname{Centr}_G(T)$。
+\begin{SGAresult}{命题}{5.2.6} 设 $S$ 为\Term{scheme}{概形}，$G$ 为 (RR) 型（相应地，(RA) 型）$S$-群，$H$ 为 $G$ 的 (R) 型\Term{subgroup}{子群}。则 $H$ 为 (RR) 型（相应地，(RA) 型）$S$-群。\end{SGAresult}
+(i) 显然，(ii) 由 5.2.2 (b) 得出，(iii)、(iv)（相应地，(iv')）只须在 $S$ 为\Term{algebraically-closed-field}{代数闭域}的谱时验证。此时 $H$ 含 $G$ 的\Term{maximal-torus}{极大环面} $T$（因而也含 $C=\operatorname{Centr}_G(T)$\footnote{编者注：由假设，$H$ 对 $G$ 的某个\Term{maximal-torus}{极大环面} $T'$ 含 $\operatorname{Centr}_G(T')$；$T,T'$ 在 $H$ 中\Term{conjugacy}{共轭}，故 $H$ 亦含 $C=\operatorname{Centr}_G(T)$。}），所求断言立即由下述引理得出。
+\begin{SGAresult}{引理}{5.2.7} 设 $S$ 为\Term{scheme}{概形}，$G$ 为 (RR) 型 $S$-群，$T$ 为 $G$ 的\Term{maximal-torus}{极大环面}，给定\Term{trivialization}{平凡化} $T\simeq\mathrm D_S(M)$，假设
+\[\mathfrak g=\mathfrak g^0\oplus\coprod_{\alpha\in R}\mathfrak g^\alpha\]
+（此时各 $\mathfrak g^\alpha$ 均为\Term{invertible}{可逆} $\mathcal O_S$-模）。设 $H$ 为含 $C=\operatorname{Centr}_G(T)$（即含 $T$）的 (R) 型\Term{subgroup}{子群}。则 $\mathfrak h=\operatorname{Lie}(H/S)$ 在 $S$ 上\Term{local-scheme}{局部}形如
+\[\mathfrak g^0+\coprod_{\alpha\in R'}\mathfrak g^\alpha=\mathfrak g_{R'}.\]
+更准确地，对每个 $s\in S$，令 $R'(s)=\{\alpha\in R\mid\mathfrak g^\alpha(s)\subset\mathfrak h(s)\}$。则 $R'(s)$ 为 $s$ 的\Term{locally-constant}{局部常值}函数；若在 $S$ 的\Term{open-subset}{开集} $U$ 上 $R'(s)=R'$，则
+\[\mathfrak h_U=\mathfrak g_U^0\oplus\coprod_{\alpha\in R'}\mathfrak g_U^\alpha.\]
+\end{SGAresult}
+事实上，$\mathfrak h$ 为 $\mathfrak g$ 的\Term{local-scheme}{局部}\Term{direct-summand}{直和因子}\Term{submodule}{子模}，含 $\mathfrak g^0$ 且在 $T$ 下\Term{stable}{稳定}。
+
+\textbf{5.3. 两个 (R) 型\Term{subgroup}{子群}的\Term{strict-transporter}{严格运输子}；应用。}
+\textbf{回顾 5.3.0。}\footnote{编者注：增添了此回顾，5.3.1 和 5.3.4 的证明将用到它。} 设 $S$ 为\Term{scheme}{概形}，$G$ 为\Term{smooth}{光滑} $S$-群，$\mathfrak g=\operatorname{Lie}(G/S)$，$\mathfrak h$ 为 $\mathfrak g$ 中\Term{local-scheme}{局部}为\Term{direct-summand}{直和因子}的 $\mathcal O_S$-\Term{submodule}{子模}。$\mathcal O_S$-\Term{algebra}{代数} $\mathcal A=\operatorname{Sym}(\omega^1_{G/S})$ \Term{locally-free}{局部自由}，故 $S$-\Term{scheme}{概形} $\operatorname{Lie}(G/S)=\mathrm W(\mathfrak g)=\operatorname{Spec}(\mathcal A)$ 为第 VIII 讲 6.1 意义下\Term{essentially-free}{本质自由}的。因 $\mathrm W(\mathfrak h)$ 为 $\operatorname{Lie}(G/S)$ 的\Term{closed-subscheme}{闭子概形}且在其上\Term{finitely-presented}{有限呈示}，$N=\operatorname{Norm}_G(\mathfrak h)$ 可由 $G$ 的\Term{closed-subgroup}{闭群子概形}表示，且在 $G$ 上\Term{finitely-presented}{有限呈示}，见第 VIII 讲 6.5 (a)。（亦见第 VI$_B$ 讲增补 6.2.3、6.2.4 (a)。）另一方面，由第 II 讲 5.3.1，有
+\[\operatorname{Lie}(N/S)=\operatorname{Norm}_{\operatorname{Lie}(G/S)}(\mathfrak h).\]
+最后，由第 VI$_B$ 讲 3.10，若 $N$ 在\Term{unit-section}{单位截面}各点处于 $S$ 上\Term{smooth}{光滑}，则群子\Term{functor}{函子} $N^0$（定义于 VI$_B$ 3.1）可由 $N$ 的一个在 $S$ 上\Term{smooth}{光滑}的开群\Term{subscheme}{子概形}表示。
+\SourcePage{133}
+\begin{SGAresult}{命题}{5.3.1} 设 $S$ 为\Term{scheme}{概形}，$G$ 为 (RA) 型 $S$-群（5.1.6），$H$ 为 $G$ 的 (R) 型\Term{subgroup}{子群}，$\mathfrak g\supset\mathfrak h$ 为它们的\Term{lie-algebra}{李代数}。则 $\operatorname{Norm}_G(\mathfrak h)$（由 5.3.0 可由 $G$ 的在 $S$ 上\Term{finitely-presented}{有限呈示}的\Term{closed-subscheme}{闭子概形}表示）在\Term{unit-section}{单位截面}各点处于 $S$ 上\Term{smooth}{光滑}，且
+\[\operatorname{Norm}_G(\mathfrak h)^0=H.\]
+\end{SGAresult}
+\begin{proof}\footnote{编者注：以下补充了原文的细节。} 令 $N=\operatorname{Norm}_G(\mathfrak h)$、$\mathfrak n=\operatorname{Lie}(N/S)$。有 $H\subset N$，且由第 II 讲 5.3.1，对任意 $s\in S$ 有
+\[\mathfrak h(s)\subset\mathfrak n(s)=\operatorname{Norm}_{\mathfrak g(s)}(\mathfrak h(s)).\]
+但由下面的 5.3.2，$\mathfrak h(s)=\operatorname{Norm}_{\mathfrak g(s)}(\mathfrak h(s))$；$H$ 在 $S$ 上\Term{smooth}{光滑}，故 $\dim_{\kappa(s)}\mathfrak h(s)=\dim H_s$（参见 [DG70]，§II.5，定理 2.1）。于是
+\[\dim_{\kappa(s)}\mathfrak n(s)=\dim_{\kappa(s)}\mathfrak h(s)=\dim H_s\leq\dim N_s,\]
+故 $N_s^0=H_s^0=H_s$（$H$ \Term{fiber}{纤维}\Term{connected}{连通}）。从而群子\Term{functor}{函子} $N^0$（定义于 VI$_B$ 3.1）由\Term{smooth}{光滑} $S$-群 $H$ 表示。这样，只待下述引理即可证明 5.3.1。\end{proof}
+\begin{SGAresult}{引理}{5.3.2} 在 5.2.7 的条件下，若 $G$ 为 (RA) 型，则对每个 $s\in S$，
+\[\operatorname{Norm}_{\mathfrak g(s)}(\mathfrak h(s))=\mathfrak h(s).\]
+\end{SGAresult}
+归结到 $S$ 为域的谱，故对某个 $R'\subset R$ 有 $\mathfrak h=\mathfrak g_{R'}$。但已有 $\operatorname{Transp}_{\mathfrak g}(\mathfrak t,\mathfrak h)=\mathfrak h$。事实上，若 $H\in\mathfrak t$、$X\in\mathfrak g^\alpha$，则 $[H,X]=\alpha(H)X$，其中 $\alpha:\mathfrak t\to\mathcal O_S$ 为 $\alpha$ 的\Term{derived-morphism}{导出态射}。而条件 (iv') 恰好说对所有 $\alpha\in R$，$\alpha\ne0$。
+\begin{SGAresult}{推论}{5.3.3} 设 $S$ 为\Term{scheme}{概形}，$G$ 为 (RA) 型 $S$-群，$H,H'$ 为 $G$ 的两个 (R) 型\Term{subgroup}{子群}，$\mathfrak h,\mathfrak h'$ 为它们的\Term{lie-algebra}{李代数}。则 $H=H'\Longleftrightarrow\mathfrak h=\mathfrak h'$。\end{SGAresult}
+\begin{SGAresult}{推论}{5.3.4} 在 5.2.7 的条件下，若 $G$ 为 (RA) 型，则映射
+\[H\longmapsto\operatorname{Lie}(H/S),\qquad\mathfrak h\longmapsto\operatorname{Norm}_G(\mathfrak h)^0\]
+在下列两\Term{set}{集合}间给出\Term{bijection}{双射}：$G$ 的含 $T$ 的 (R) 型\Term{subgroup}{子群}的\Term{set}{集合}；$\mathfrak g$ 的含 $\mathfrak g^0$、在 $T$ 下\Term{stable}{稳定}且其在 $G$ 中的\Term{normalizer}{正规化子}在\Term{unit-section}{单位截面}各点处于 $S$ 上\Term{smooth}{光滑}的\Term{lie-subalgebra}{李子代数}的\Term{set}{集合}。
+\end{SGAresult}
+\footnote{编者注：增添了以下证明。} 设 $\mathfrak h$ 为满足上述性质的 $\mathfrak g$ 的\Term{lie-subalgebra}{李子代数}。由 5.3.0，$H=\operatorname{Norm}_G(\mathfrak h)^0$ 为\Term{smooth}{光滑} $S$-群\Term{scheme}{概形}。又因 $C=\operatorname{Centr}_G(T)$ 保持每个 $\mathfrak g^\alpha$ \Term{stable}{稳定}且\Term{fiber}{纤维}\Term{connected}{连通}（XII 6.6），故 $C\subset H$。因此
+\SourcePage{134}
+$H$ 为 $G$ 的 (R) 型\Term{subgroup}{子群}。由第 II 讲 5.3.1，$\operatorname{Lie}(H)=\operatorname{Norm}_{\mathfrak g}(\mathfrak h)$。最后，由 5.3.2 的证明，$\operatorname{Norm}_{\mathfrak g}(\mathfrak h)=\mathfrak h$。
+\begin{SGAresult}{推论}{5.3.5} 设 $S$ 为\Term{scheme}{概形}，$G$ 为 (RR) 型 $S$-群（5.1.1），$T$ 为 $G$ 的\Term{maximal-torus}{极大环面}，$H,H'$ 为 $G$ 的两个含 $T$ 的 (R) 型\Term{subgroup}{子群}。则 $H=H'\Longleftrightarrow\mathfrak h=\mathfrak h'$。\end{SGAresult}
+由\Term{finitely-presented}{有限呈示}假设，照常（参见 EGA IV$_3$，§8 和第 VI$_B$ 讲 §10）归结到 $S$ \Term{noetherian}{诺特}；此时只须验证 $\mathfrak h=\mathfrak h'$ 蕴含对任意 $S'$ 为 $S$ 的某\Term{local-ring}{局部环}的\Term{artinian-quotient}{阿廷商}的谱都有 $H_{S'}=H'_{S'}$。\footnote{编者注：事实上，设 $g\in G$ 在 $S$ 中的像为 $s$，$\mathfrak m$ 为 $\mathcal O_{G,g}$ 的\Term{maximal-ideal}{极大理想}，$\mathfrak n$ 为 $\mathcal O_{S,s}$ 的\Term{maximal-ideal}{极大理想}，$I$（相应地，$I'$）为 $\mathcal O_{G,g}$ 到 $\mathcal O_{H,g}$（相应地，$\mathcal O_{H',g}$）的\Term{morphism}{态射}之核（若 $g\notin H$，相应地 $g\notin H'$，则后者为零环）。因 $\mathcal O_{G,g}$ \Term{noetherian}{诺特}，$I,I'$ 在 $\mathfrak m$-\Term{adic-topology}{进拓扑}下闭，从而在 $\mathfrak n$-\Term{adic-topology}{进拓扑}下也闭，故只须证明对每个 $n\in\mathbb N$，$I+\mathfrak n^n\mathcal O_{G,g}=I'+\mathfrak n^n\mathcal O_{G,g}$。} 故归结到 $S$ 阿廷且可应用 5.1.8。令 $u:G\to G'=G/Z$ 为\Term{canonical}{典范}\Term{morphism}{态射}，$T'=T/Z$ 为 $G'$ 中对应于 $T$ 的\Term{maximal-torus}{极大环面}。由第 XII 讲 7.12，存在 $G'$ 的含 $T'$ 的 (R) 型\Term{subgroup}{子群} $H_1,H'_1$，使 $H=u^{-1}(H_1)$、$H'=u^{-1}(H'_1)$。只须证 $H_1=H'_1$。但由 5.2.7 及 5.1.5，有 $\operatorname{Lie}(H_1)=\operatorname{Lie}(H'_1)$，遂归结为 5.3.3。
+
+\textbf{注记 5.3.6。} 当 $G$ 并非 (RA) 型时，$H,H'$ 含同一\Term{maximal-torus}{极大环面}这一点对 5.3.5 的成立至关重要。例如：$k$ \Term{characteristic}{特征}为 $2$ 时 $\mathrm{SL}_{2,k}$ 的\Term{maximal-torus}{极大环面}。\footnote{编者注：事实上，若 $k$ \Term{algebraically-closed}{代数闭}，则 $G=\mathrm{SL}_{2,k}$ 的所有\Term{maximal-torus}{极大环面}在 $G(k)$ 下\Term{conjugacy}{共轭}，且\Term{lie-algebra}{李代数}都为直线 $k\operatorname{id}\subset\mathrm M_2(k)$（它在 $G$ 的\Term{action}{作用}下不变）。}
+\begin{SGAresult}{推论}{5.3.7} 设 $S$ 为\Term{scheme}{概形}，$G$ 为 (RR) 型 $S$-群，$T$ 为 $G$ 的\Term{maximal-torus}{极大环面}，$H,H'$ 为 $G$ 的两个含 $T$ 的 (R) 型\Term{subgroup}{子群}。使 $H_s=H'_s$ 的 $s\in S$ 的\Term{set}{集合} $U$ 在 $S$ 中\Term{open-and-closed}{开且闭}，且 $H_U=H'_U$。\end{SGAresult}
+这立即由 5.3.5 和 5.2.7 得出。
+\begin{SGAresult}{推论}{5.3.8} 给定 (RR) 型群 $G$ 中的\Term{maximal-torus}{极大环面} $T$，“含 $T$ 的 (R) 型\Term{subgroup}{子群}\Term{functor}{函子}”为\Term{formally-unramified}{形式非分歧}（第 XI 讲 1.1）。\end{SGAresult}
+\begin{SGAresult}{定理}{5.3.9} 设 $G$ 为 (RR) 型 $S$-群（5.1.1），$H,H'$ 为两个 (R) 型\Term{subgroup}{子群}（5.2.1）。以 $\operatorname{Transt}_G(H,H')$ 表示 $H$ 到 $H'$ 的\Term{strict-transporter}{严格运输子}，定义为
+\[\operatorname{Transt}_G(H,H')(S')=\{g\in G(S')\mid\operatorname{int}(g)H_{S'}=H'_{S'}\}.\]
+则 $\operatorname{Transt}_G(H,H')$ 可由 $G$ 的\Term{closed-subscheme}{闭子概形}表示，它在 $S$ 上\Term{smooth}{光滑}且\Term{finitely-presented}{有限呈示}。
+\end{SGAresult}
+\SourcePage{135}
+$\operatorname{Transt}_G(H,H')$ 可由 $G$ 的在 $S$ 上\Term{finitely-presented}{有限呈示}的\Term{closed-subscheme}{闭子概形}表示，由第 XI 讲 6.11 (a) 得出。为证它在 $S$ 上\Term{smooth}{光滑}，须证明：若 $S$ \Term{affine}{仿射}，$S_0$ 为\Term{nilpotent-ideal}{幂零理想} $J$ 定义的\Term{closed-subscheme}{闭子概形}，$g_0\in G(S_0)$ 且 $\operatorname{int}(g_0)H_0=H'_0$，则存在映到 $g_0$ 的 $g\in G(S)$，满足 $\operatorname{int}(g)H=H'$。\Term{smooth}{光滑}性对\Term{etale-topology}{平展拓扑}是\Term{local-scheme}{局部}的，故可假设 $H$ 含 $G$ 的\Term{maximal-torus}{极大环面} $T$。
+此时 $T_0$ 为 $H_0$ 的\Term{maximal-torus}{极大环面}，故 $\operatorname{int}(g_0)T_0$ 为 $H'_0$ 的\Term{maximal-torus}{极大环面}。由第 IX 讲 3.6 bis，存在 $H'$ 的\Term{torus}{环面} $T'$ 使 $T'_0=\operatorname{int}(g_0)T_0$；由第 IX 讲 3.3 bis，存在映到 $g_0$ 的 $g\in G(S)$，使 $\operatorname{int}(g)T=T'$。以 $\operatorname{int}(g)H$ 代替 $H$，便可假设 $H,H'$ 含同一\Term{maximal-torus}{极大环面} $T$，且 $H_0=H'_0$。由 5.3.7，$H=H'$。证毕。
+\begin{SGAresult}{推论}{5.3.10} 设 $G$ 为 (RR) 型 $S$-群，$H$ 为 $G$ 的 (R) 型\Term{subgroup}{子群}。则 $\operatorname{Norm}_G(H)$ 可由 $G$ 的\Term{closed-subgroup}{闭群子概形}表示，它在 $S$ 上\Term{finitely-presented}{有限呈示}且\Term{smooth}{光滑}。\end{SGAresult}
+现用第 XI 讲中由 5.2 bis 推得 5.4 bis 的论证，得到：
+\begin{SGAresult}{推论}{5.3.11} 在 5.3.9 的假设下，以下条件\Term{equivalence}{等价}：
+
+(i) $H,H'$ 在\Term{etale-topology}{平展拓扑}下\Term{local-scheme}{局部}在 $G$ 中\Term{conjugacy}{共轭}。
+
+(i bis) 对 (fpqc) \Term{topology}{拓扑}亦然。
+
+(ii) 对任意 $s\in S$，$H_{\overline s}$ 与 $H'_{\overline s}$ 由 $G(\overline s)$ 的某元素\Term{conjugacy}{共轭}。
+
+(ii bis) \Term{structural-morphism}{结构态射} $\operatorname{Transt}_G(H,H')\to S$ 满。
+
+(iii) $\operatorname{Transt}_G(H,H')$ 在\Term{smooth}{光滑}且\Term{finitely-presented}{有限呈示}的 $S$-群\Term{scheme}{概形} $\operatorname{Norm}_G(H)$ 的\Term{action}{作用}下为\Term{principal-homogeneous-space}{主齐性纤维丛}。
+\end{SGAresult}
+仅指出，非显然的断言 (iii) $\Rightarrow$ (i) 即 Hensel 引理。
+现用 Bible，§6.4，定理 4（即 [Ch05]，§6.5，定理 5）及 §9.3，定理 1，由 5.3.10 和 5.3.11 得到：
+\begin{SGAresult}{推论}{5.3.12} 设 $G$ 为 (RR) 型 $S$-群。$G$ 的\Term{borel-subgroup}{Borel 子群}在 $G$ 中闭、等于自身的\Term{normalizer}{正规化子}，且在\Term{etale-topology}{平展拓扑}下\Term{local-scheme}{局部}\Term{conjugacy}{共轭}。\end{SGAresult}
+\begin{SGAresult}{定义}{5.3.13} 设 $S$ 为\Term{scheme}{概形}，$G$ 为\Term{smooth}{光滑}、\Term{finitely-presented}{有限呈示}且\Term{fiber}{纤维}\Term{connected}{连通}的 $S$-群\Term{scheme}{概形}。\footnote{编者注：参见编者注 (22)。} $G$ 的\Term{killing-pair}{Killing 对}是指一对 $T\subset B$，其中 $T$ 为 $G$ 的\Term{maximal-torus}{极大环面}，$B$ 为 $G$ 的含 $T$ 的\Term{borel-subgroup}{Borel 子群}。\end{SGAresult}
+现用 $B$ 中\Term{maximal-torus}{极大环面}的\Term{conjugacy}{共轭}性（例如参见 5.1.2 (a) 和 5.2.6），得到：
+\begin{SGAresult}{推论}{5.3.14} 设 $G$ 为 (RR) 型 $S$-群。$G$ 的\Term{killing-pair}{Killing 对}在\Term{etale-topology}{平展拓扑}下\Term{local-scheme}{局部}\Term{conjugacy}{共轭}。\end{SGAresult}
+\SourcePage{136}
+\begin{SGAresult}{推论}{5.3.15} 设 $G$ 为 (RR) 型 $S$-群，$T$ 为 $G$ 的\Term{maximal-torus}{极大环面}，$W_G(T)=\operatorname{Norm}_G(T)/\operatorname{Centr}_G(T)$ 为相应\Term{weyl-group}{Weyl 群}（第 XIX 讲 6.3）。“$G$ 的含 $T$ 的\Term{borel-subgroup}{Borel 子群}\Term{functor}{函子}”在 $W_G(T)$ 下为\Term{formally-principal-homogeneous}{形式主齐性}的。\end{SGAresult}
+这立即由 5.3.14 及下述事实得出：若 $B$ 为 $G$ 的含 $T$ 的\Term{borel-subgroup}{Borel 子群}，则
+\[\operatorname{Norm}_G(T)\cap B=\operatorname{Centr}_G(T),\]
+参见第 XIV 讲 4.4。
+\begin{SGAresult}{命题}{5.3.16} 设 $G$ 为 (RR) 型 $S$-群，$H$ 为 (R) 型\Term{subgroup}{子群}，$N=\operatorname{Norm}_G(H)$ 为其\Term{normalizer}{正规化子}（5.3.10）。设 $T$ 为 $H$ 的\Term{maximal-torus}{极大环面}，$W_H(T),W_N(T)$ 为相应\Term{weyl-group}{Weyl 群}（由第 XIX 讲 6.3，它们\Term{etale}{平展}、\Term{quasi-finite}{拟有限}且\Term{separated}{分离}）。则有如下\Term{etale-topology}{平展拓扑}下的\Term{sheaf}{层}的\Term{exact-sequence}{正合列}（\Term{morphism}{态射}由 $\operatorname{Norm}_H(T)\to\operatorname{Norm}_N(T)\to N/H$ 诱导）：
+\[1\longrightarrow W_H(T)\longrightarrow W_N(T)\longrightarrow N/H\longrightarrow1.\]
+\end{SGAresult}
+唯一非显然处是最后一\Term{arrow}{箭头}为\Term{epimorphism}{满态射}。设 $n\in N(S')$、$S'\to S$。$H$ 的两个\Term{maximal-torus}{极大环面} $T,\operatorname{int}(n)T$ 在\Term{etale-topology}{平展拓扑}下\Term{local-scheme}{局部}在 $H$ 中\Term{conjugacy}{共轭}。故存在\Term{covering-family}{覆盖族} $\{S_i'\to S'\}$，并对每个 $i$ 有 $h_i\in H(S_i')$，使 $\operatorname{int}(h_i)T=\operatorname{int}(n)T$。于是 $nh_i^{-1}\in\operatorname{Norm}_N(T)$，遂得所求结论。
+
+\textbf{注记 5.3.17。} 可如下描述 $W_N(T)$：假设已归结到 5.2.7 的情形，且 $\mathfrak h=\mathfrak g_{R'}$。则 $W_N(T)=\operatorname{Norm}_W(R')$，即 $W=W_G(T)$ 的那些在 $R$ 上\Term{action}{作用}时\Term{normalized}{正规化} $R'$ 的\Term{section}{截面}所构成的\Term{sheaf}{层}。事实上，由 5.3.5，
+\[\operatorname{Norm}_N(T)=\operatorname{Norm}_G(H)\cap\operatorname{Norm}_G(T)=\operatorname{Norm}_G(\mathfrak h)\cap\operatorname{Norm}_G(T).\]
+\begin{SGAresult}{推论}{5.3.18} 设 $G$ 为 (RR) 型 $S$-群，$H$ 为 (R) 型\Term{subgroup}{子群}。假设“$G$ 的\Term{weyl-group}{Weyl 群}\Term{finite}{有限}”，即对任意 $S'\to S$ 及 $G_{S'}$ 的任一\Term{maximal-torus}{极大环面} $T$，\Term{etale}{平展} $S'$-\Term{scheme}{概形} $\operatorname{Norm}_{G_{S'}}(T)/\operatorname{Centr}_{G_{S'}}(T)$ \Term{finite}{有限}（第 XIX 讲 6.3 (iii)）。下列条件\Term{equivalence}{等价}：
+
+(i) $H$ 在 $G$ 中闭。
+
+(ii) $\operatorname{Norm}_G(H)/H$ 可由\Term{finite}{有限}\Term{etale}{平展} $S$-\Term{scheme}{概形}表示。
+
+(iii) “$H$ 的\Term{weyl-group}{Weyl 群}\Term{finite}{有限}”。
+\end{SGAresult}
+可假设 $H$ 具有\Term{maximal-torus}{极大环面} $T$。由 5.3.10，$N=\operatorname{Norm}_G(H)$ 在 $G$ 中闭，故 $W_N(T)$ 在 $W_G(T)$ 中闭，从而在 $S$ 上\Term{finite}{有限}。显然 (i) $\Rightarrow$ (iii)，而由 5.3.16 的\Term{exact-sequence}{正合列}有 (iii) $\Rightarrow$ (ii)。最后 (ii) $\Rightarrow$ (i)，因为若 $N/H$ \Term{finite}{有限}，则它\Term{separated}{分离}，故 $H$ 在 $N$ 中闭，从而在 $G$ 中闭。
+
+\textbf{注记 5.3.19。} 当 $G$ 为\Term{reductive-group}{约化群}时，上述关于 $H$ 的条件似乎总成立。下面将在大多数情形中证明。
+\SourcePage{137}
+\textbf{5.4. \Term{split-reductive-group}{分裂约化群}的 (R) 型\Term{subgroup}{子群}：一般性。}
+\textbf{5.4.1。} 若 $H$ 为\Term{reductive-group}{约化群} $G$ 的 (R) 型\Term{subgroup}{子群}，则 $H$ 在\Term{etale-topology}{平展拓扑}下\Term{local-scheme}{局部}含 $G$ 的\Term{maximal-torus}{极大环面}（5.2.2）。由 2.3，可在\Term{etale-topology}{平展拓扑}下\Term{local-scheme}{局部}假设 $G$ 相对于此\Term{torus}{环面}\Term{splitting}{分裂}。故设 $(G,T,M,R)$ 为 $S$-\Term{split-group}{分裂群}，$H$ 为 $G$ 的含 $T$ 的 (R) 型\Term{subgroup}{子群}。由 5.3.5，此\Term{subgroup}{子群}由其\Term{lie-algebra}{李代数}刻画，而该\Term{lie-algebra}{李代数}（5.2.7）在 $S$ 上\Term{local-scheme}{局部}形如 $\mathfrak g_{R'}$：
+\[\mathfrak g_{R'}=\mathfrak t\oplus\coprod_{\alpha\in R'}\mathfrak g^\alpha.\]
+\begin{SGAresult}{定义}{5.4.2} 设 $(G,T,M,R)$ 为 $S$-\Term{split-group}{分裂群}。若 $\mathfrak g_{R'}$ 为 $G$ 的一个含 $T$ 的 (R) 型\Term{subgroup}{子群}的\Term{lie-algebra}{李代数}，则称 $R$ 的\Term{subset}{子集} $R'$ 为 (R) 型。此\Term{subgroup}{子群}由 $R'$ 唯一确定，记作 $H_{R'}$。\end{SGAresult}
+\begin{SGAresult}{引理}{5.4.3} 在上述条件下，有以下\Term{equivalence-relation}{等价关系}：
+\[\begin{aligned}
+H\cap Z_\alpha=T&\Longleftrightarrow\alpha\notin R',\ -\alpha\notin R',\\
+H\supset U_\alpha&\Longleftrightarrow\alpha\in R',\\
+H\cap U_\alpha=e&\Longleftrightarrow\alpha\notin R',\\
+H\supset Z_\alpha&\Longleftrightarrow\alpha\in R',\ -\alpha\in R'.
+\end{aligned}\]
+\end{SGAresult}
+由 5.2.5，$H\cap Z_\alpha$ 为 $Z_\alpha$ 的 (R) 型\Term{subgroup}{子群}；而由 5.3.5，$Z_\alpha$ 的含 $T$ 的 (R) 型\Term{subgroup}{子群}\Term{local-scheme}{局部}等于下列\Term{subgroup}{子群}之一：$T,T\cdot U_\alpha,T\cdot U_{-\alpha},Z_\alpha$。
+\begin{SGAresult}{引理}{5.4.4} 在 5.4.2 的条件下，设 $R_+$ 为\Term{positive-roots}{正根系}；在 $R'\cap R_+$ 和 $R'\cap(-R_+)$ 上选取次序。则由 $G$ 中乘法诱导的\Term{morphism}{态射}
+\[\Omega_{R_+,R'}=\prod_{\alpha\in R'\cap(-R_+)}U_\alpha\mathbin{\times_S}T\mathbin{\times_S}\prod_{\alpha\in R'\cap R_+}U_\alpha\longrightarrow G\]
+诱导\Term{open-immersion}{开浸入} $\Omega_{R_+,R'}\to H_{R'}$。
+\end{SGAresult}
+由 5.4.3，此\Term{morphism}{态射}通过 $H_{R'}$ \Term{resolution}{分解}，因而诱导\Term{immersion}{浸入} $\Omega_{R_+,R'}\to H_{R'}$。再如 4.1.1 论证即可。
+\begin{SGAresult}{命题}{5.4.5} 设 $(G,T,M,R)$ 为 $S$-\Term{split-group}{分裂群}，$R',R''$ 为 $R$ 的两个 (R) 型\Term{subset}{子集}。
+
+(i) $H_{R'}\cap H_{R''}$ 在\Term{unit-section}{单位截面}各点处\Term{smooth}{光滑}，$R'\cap R''$ 为 (R) 型，且
+\[(H_{R'}\cap H_{R''})^0=H_{R'\cap R''}.\]
+
+(ii) 有\Term{equivalence-relation}{等价关系} $H_{R'}\subset H_{R''}\Longleftrightarrow R'\subset R''$。
+\end{SGAresult}
+\SourcePage{138}
+(ii) 立即由 (i) 得出。为证 (i)，只须证 $H_{R'}\cap H_{R''}$ 在\Term{unit-section}{单位截面}各点处\Term{smooth}{光滑}：其\Term{neutral-component}{单位分支}（参见第 VI$_B$ 讲 3.10）将是含 $T$ 的 (R) 型群，因而等于 $H_{R'\cap R''}$；但
+\[\Omega_{R_+,R'}\cap\Omega_{R_+,R''}=\Omega_{R_+,R'\cap R''}\]
+为 $H_{R'}\cap H_{R''}$ 中含\Term{unit-section}{单位截面}且在 $S$ 上\Term{smooth}{光滑}的\Term{open-subset}{开集}。
+\begin{SGAresult}{推论}{5.4.6} 设 $S$ 为\Term{scheme}{概形}，$G$ 为 $S$-\Term{reductive-group}{约化群}，$T$ 为 $G$ 的\Term{maximal-torus}{极大环面}，$s$ 为 $S$ 的一点。若 $H,H'$ 为 $G$ 的两个含 $T$ 的 (R) 型\Term{subgroup}{子群}，且 $H_s\subset H'_s$，则存在含 $s$ 的 $S$ 的\Term{open-subset}{开集} $U$，使 $H_U\subset H'_U$。\end{SGAresult}
+可假设 $G$ 相对于 $T$ \Term{splitting}{分裂}，此时立即由 5.4.5 (ii) 得出。
+这使我们要问：$R$ 的哪些\Term{subset}{子集} $R'$ 是 (R) 型？可假设群为\Term{adjoint}{伴随}群；此时须验证 $\mathfrak g_{R'}$ 为\Term{lie-algebra}{李代数}，且其\Term{normalizer}{正规化子}在\Term{unit-section}{单位截面}各点处\Term{smooth}{光滑}。最重要的情形由下述定理给出。
+\begin{SGAresult}{定理}{5.4.7} $R$ 的每个\Term{closed-root-subset}{闭子集} $R'$ 均为 (R) 型。（回顾第 XXI 讲 3.1.4，$R'\subset R$ 称为\Term{closed-root-subset}{闭的}，指 $\alpha,\beta\in R'$ 且 $\alpha+\beta\in R$ 蕴含 $\alpha+\beta\in R'$。）\end{SGAresult}
+\textbf{注记 5.4.8。} 后面将见（第 XXIII 讲 6.6），若 $6\cdot1_S\ne0$\footnote{编者注：实际上只须 $2,3$ 在 $S$ 上非零（参见所引处）。}（例如 $S$ 具有一个异于 $2,3$ 的\Term{residue-characteristic}{剩余特征}），则 $\mathfrak g_{R'}$ 为\Term{lie-algebra}{李代数}已蕴含 $R'$ \Term{closed-root-subset}{闭}，故 $R'$ 为 (R) 型当且仅当它\Term{closed-root-subset}{闭}。定理 5.4.7 因此给出了全部“与\Term{characteristic}{特征}无关”的 (R) 型\Term{subset}{子集}。
+先证：
+\begin{SGAresult}{引理}{5.4.9} 对每个 $\alpha\in R$ 选取 $X_\alpha\in\Gamma(S,\mathfrak g^\alpha)^\times$。设 $\alpha,\beta\in R$ 且 $\alpha+\beta\ne0$，$q$ 为使 $\alpha+i\beta\in R$ 的最大整数 $i$。存在唯一确定的\Term{section}{截面} $M_{\alpha,\beta,i}\in\Gamma(S,\mathcal O_S)$，使对任意 $x\in\mathbb G_a(S')$、$S'\to S$，有
+\[\operatorname{Ad}(\exp_\alpha(xX_\alpha))(X_\beta)=X_\beta+\sum_{i=1}^q M_{\alpha,\beta,i}x^iX_{\beta+i\alpha}.\]
+\end{SGAresult}
+事实上，$x\mapsto\operatorname{Ad}(\exp_\alpha(xX_\alpha))(X_\beta)$ 定义\Term{morphism}{态射} $\mathbb G_{a,S}\to\mathrm W(\mathfrak g)\simeq\mathbb G_{a,S}^m$。故存在唯一确定的\Term{section}{截面} $Y_n\in\Gamma(S,\mathfrak g)$，使
+\[\operatorname{Ad}(\exp_\alpha(xX_\alpha))(X_\beta)=\sum_{n\geq0}x^nY_n.\]
+让 $T$ 的\Term{section}{截面} $t$ 所定义的\Term{inner-automorphism}{内自同构}\Term{action}{作用}，立即得
+\[\operatorname{Ad}(t)(Y_n)=\beta(t)\alpha(t)^nY_n,\]
+故 $Y_n\in\Gamma(S,\mathfrak g^{\beta+n\alpha})$。$\alpha,\beta$ 不成比例，故所有 $\beta+n\alpha$ 都不为零；因此，$n>q$ 时 $Y_n=0$，而
+\SourcePage{139}
+$0\leq n\leq q$ 时 $Y_n=M_{\alpha,\beta,n}X_{\beta+n\alpha}$，其中 $M_{\alpha,\beta,n}\in\mathbb G_a(S)$ 唯一确定。在所得公式中取 $x=0$，得 $Y_0=X_\beta$，证明完成。
+
+\textbf{注记 5.4.10。} 对上述公式在 $x=0$ 处求导，得到
+\[[X_\alpha,X_\beta]=\begin{cases}N_{\alpha,\beta}X_{\alpha+\beta},\quad N_{\alpha,\beta}=M_{\alpha,\beta,1},&\alpha+\beta\in R,\\0,&\alpha+\beta\notin R,\ \alpha+\beta\ne0.\end{cases}\]
+现证 5.4.7。若 $R'$ 为 $R$ 的\Term{closed-root-subset}{闭子集}，则由 5.4.10 及第 XX 讲 2.10 的公式 (3)，$\mathfrak g_{R'}$ 为 $\mathfrak g$ 的\Term{lie-subalgebra}{李子代数}。由 5.4.9 和第 XX 讲 2.10 的公式 (2)，每个 $\alpha\in R'$ 的 $U_\alpha$ 均\Term{normalized}{正规化} $\mathfrak g_{R'}$。选取\Term{positive-roots}{正根系} $R_+$，并考虑 4.1.2 的\Term{open-subset}{开集} $\Omega_{R_+}$；设 $\Omega_{R_+,R'}$ 为 $\Omega_{R_+}$ 的如下\Term{closed-subscheme}{闭子概形}：
+\[\Omega_{R_+,R'}=\left(\prod_{\alpha\in R'\cap(-R_+)}U_\alpha\right)\cdot T\cdot\left(\prod_{\alpha\in R'\cap R_+}U_\alpha\right).\]
+\Term{canonical}{典范}\Term{immersion}{浸入} $\Omega_{R_+,R'}\to G$ \Term{resolution}{分解}为 $i:\Omega_{R_+,R'}\to\operatorname{Norm}_G(\mathfrak g_{R'})$。假设 $G$ \Term{adjoint}{伴随}；由 5.3.2，$i$ 在\Term{unit-section}{单位截面}各点处的切映射为\Term{bijection}{双射}；特别地，\Term{morphism}{态射} $i$ 在\Term{unit-section}{单位截面}各点处\Term{etale}{平展}，从而在这些点处为\Term{local-scheme}{局部}\Term{immersion}{浸入}\footnote{编者注：由 EGA IV$_4$，17.11.2，$i$ 在\Term{unit-section}{单位截面}各点处\Term{etale}{平展}（且 $\operatorname{Norm}_G(\mathfrak g_{R'})$ 在\Term{unit-section}{单位截面}各点处\Term{smooth}{光滑}）。此外，设 $V$ 为 $\Omega_{R_+,R'}$ 中 $i$ \Term{etale}{平展}的最大\Term{open-subset}{开集}；因 $i$ 为\Term{monomorphism}{单态射}，$i_V$ 为\Term{open-immersion}{开浸入}（同上，17.9.1）。}，故 $\operatorname{Norm}_G(\mathfrak g_{R'})$ 在\Term{unit-section}{单位截面}各点处\Term{smooth}{光滑}，这就是所需证明的结论。

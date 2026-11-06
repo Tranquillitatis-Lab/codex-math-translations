@@ -1,0 +1,841 @@
+\chapter{凝聚代数层的对偶定理}
+\chapterintro{Théorèmes de dualité pour les faisceaux algébriques cohérents}{Bourbaki，第149号报告，1957年5月}
+\providecommand{\dHom}{\mathcal{H}\!om}
+\providecommand{\dExt}{\mathcal{E}\!xt}
+\providecommand{\dTor}{\mathcal{T}\!or}
+\providecommand{\dOO}{\mathcal{O}}
+\origpage{14}{149-01}
+以下结果受 Serre 的“\term{代数对偶定理}{algebraic duality theorem}{théorème de dualité algébrique}”启发，分别发现于1955年冬和1956年冬。借助\term{射影空间}{projective space}{espace projectif}上同调的一些相当初等的结果[3]，并充分运用 Cartan--Eilenberg 的\term{同调代数}{homological algebra}{algèbre homologique}，具体采用[2]中的表述，就能很简洁地证明这些结果。
+
+\section{模层的 Ext（[2]，第3、4章）}
+设 $X$ 是一个\term{拓扑空间}{topological space}{espace topologique}，其上给定一个含幺环层 $\dOO$，不要求这些环交换。考虑 $\dOO$ 模层（也简称 $\dOO$ 模）构成的\term{阿贝尔范畴}{abelian category}{catégorie abélienne} $\mathcal C^{\dOO}$。已知这个范畴的每个对象都有\term{内射分解}{injective resolution}{résolution injective}，因此可以在其中定义具有通常形式性质的 Ext 函子。为避免混淆，我们用 $\operatorname{Hom}_{\dOO}(X;A,B)$，或简记 $\operatorname{Hom}(X;A,B)$，表示从 $A$ 到 $B$ 的 $\dOO$ 同态组成的阿贝尔群；用 $\dHom_{\dOO}(A,B)$ 表示从 $A$ 到 $B$ 的同态芽组成的层，其中 $A,B\in\mathcal C^{\dOO}$。固定 $A\in\mathcal C^{\dOO}$，定义函子 $h_A$ 和 $\underline h_A$，其值分别落在阿贝尔群范畴 $\mathcal C$ 和 $X$ 上的阿贝尔层范畴 $\mathcal C^{\mathbf Z}$ 中：
+\begin{equation}
+h_A(B)=\operatorname{Hom}_{\dOO}(X;A,B),\qquad
+\underline h_A(B)=\dHom_{\dOO}(A,B).
+\tag{1.1}\label{d-1.1}
+\end{equation}
+函子 $h_A$ 和 $\underline h_A$ 都是\term{左正合}{left exact}{exact à gauche}的\term{协变函子}{covariant functor}{foncteur covariant}。它们的\term{右导出函子}{right derived functor}{foncteur dérivé droit}分别记为 $\operatorname{Ext}_{\dOO}^{p}(X;A,B)$ 和 $\dExt_{\dOO}^{p}(A,B)$。按定义，
+\begin{equation}
+\begin{aligned}
+\operatorname{Ext}_{\dOO}^{p}(X;A,B)
+&=(R^ph_A)(B)=H^p\bigl(\operatorname{Hom}_{\dOO}(X;A,C(B))\bigr),\\
+\dExt_{\dOO}^{p}(A,B)
+&=(R^p\underline h_A)(B)=H^p\bigl(\dHom_{\dOO}(A,C(B))\bigr).
+\end{aligned}\tag{1.2}\label{d-1.2}
+\end{equation}
+这里 $R^p$ 表示取右导出函子，$C(B)$ 是 $B$ 在 $\mathcal C^{\dOO}$ 中的任意一个内射分解。用 $\Gamma:\mathcal C^{\mathbf Z}\to\mathcal C$ 表示“截面”函子。回顾一下，它的右导出函子记为 $B\mapsto H^p(X,B)$：
+
+\origpage{15}{149-02}
+\begin{equation}
+H^p(X,B)=(R^p\Gamma)(B)=H^p\bigl(\Gamma(C(B))\bigr).
+\tag{1.3}
+\end{equation}
+显然 $h_A=\Gamma\underline h_A$；另一方面，可以验证 $\underline h_A$ 把内射对象映为对 $\Gamma$ \term{无上同调}{acyclic}{acyclique}的对象。由熟知的方法可得：
+\begin{statement}{命题 1}
+对每个 $\dOO$ 模 $A$，在 $\mathcal C^{\dOO}$ 上存在一个\term{上同调谱函子}{cohomological spectral functor}{foncteur spectral cohomologique}，收敛于分次函子 $\operatorname{Ext}_{\dOO}^{*}(X;A,B)$，其初始项为
+\begin{equation}
+E_2^{p,q}(A,B)=H^p\bigl(X,\dExt_{\dOO}^{q}(A,B)\bigr).
+\tag{1.4}
+\end{equation}
+\end{statement}
+由此可以得到\term{边缘同态}{edge homomorphism}{edge-homomorphisme}以及一个五项正合列，这里不再写出。
+\begin{statement}{推论 1}
+若 $A$ 局部同构于 $\dOO^n$，则有由谱序列的边缘同态给出的\term{典范同构}{canonical isomorphism}{isomorphisme canonique}
+\begin{equation}
+\operatorname{Ext}_{\dOO}^{p}(X;A,B)\simeq
+H^p\bigl(X,\dHom_{\dOO}(A,B)\bigr).
+\tag{1.5}
+\end{equation}
+特别地，有典范同构
+\begin{equation}
+\operatorname{Ext}_{\dOO}^{p}(X;\dOO,B)=H^p(X,B).
+\tag{1.6}
+\end{equation}
+\end{statement}
+要运用这些结果，还需要能够具体算出 $\dExt_{\dOO}^{p}(A,B)$。这些函子可以局部计算；也就是说，若 $U$ 是 $X$ 的开集，则
+\[
+\dExt_{\dOO}^{p}(A,B)|_U
+=\dExt_{\dOO|_U}^{p}(A|_U,B|_U).
+\]
+这是因为内射 $\dOO$ 模限制到 $U$ 后仍是内射 $\dOO|_U$ 模。此外，固定 $x\in X$，有函子性的同态
+\begin{equation}
+\dHom_{\dOO}(A,B)_x\longrightarrow
+\operatorname{Hom}_{\dOO_x}(A_x,B_x),
+\tag{1.7}
+\end{equation}
+它们唯一地延拓成关于 $B$ 的\term{上同调函子}{cohomological functor}{foncteur cohomologique}之间的同态
+\begin{equation}
+\dExt_{\dOO}^{p}(A,B)_x\longrightarrow
+\operatorname{Ext}_{\dOO_x}^{p}(A_x,B_x).
+\tag{1.8}\label{d-1.8}
+\end{equation}
+\begin{statement}{命题 2}
+若 $A$ 在 $x$ 的某邻域中同构于一个同态 $\dOO^m\to\dOO^n$ 的余核，则对每个 $p$，式\eqref{d-1.8}都是同构。特别地，$A$ 为\term{凝聚模层}{coherent module sheaf}{faisceau de modules cohérent}时满足这一条件[3]。
+\end{statement}
+\translatornote{本命题原文指称“(1.7) 对每个 $p$ 都是同构”，而 (1.7) 只是不含 $p$ 的零次同态；这里按其紧接的带次数同态 (1.8) 排印。这是公式编号的笔误。}
+
+\origpage{16}{149-03}
+\begin{statement}{命题 3}
+设 $L_*=(L_i)$ 是 $\dOO$ 模 $A$ 的一个\term{左分解}{left resolution}{résolution gauche}，其中每个 $L_i$ 都局部同构于某个 $\dOO^n$。则 $\dExt_{\dOO}^{*}(A,B)$ 可与 $H^*\bigl(\dHom_{\dOO}(L_*,B)\bigr)$ 等同，而 $\operatorname{Ext}_{\dOO}^{*}(X;A,B)$ 可与 $X$ 关于复形 $\dHom_{\dOO}(L_*,B)$ 的\term{超上同调}{hypercohomology}{hypercohomologie}等同。
+\end{statement}
+证明是标准的：取 $B$ 的内射分解 $C(B)$，考虑\term{双复形}{double complex}{bicomplexe} $\dHom_{\dOO}(L_*,C(B))$，以及从 $\dHom_{\dOO}(L_*,B)$ 和 $\dHom_{\dOO}(A,C(B))$ 到它的自然同态。
+
+最后指出，(1.2) 中引入的两个 Ext 函子不仅对 $B$ 是上同调函子，而且是\term{上同调双函子}{cohomological bifunctor}{bifoncteur cohomologique}：对 $B$ 协变，对 $A$ 反变。
+
+\section{Ext 中的复合运算}
+本节结果由 Cartier 与 Yoneda 各自独立得到；详见 Cartier 的报告[1]。设 $\mathcal C$ 为阿贝尔范畴，$K,L$ 是 $\mathcal C$ 中的两个\term{分次对象}{graded object}{objet gradué}。用 $\operatorname{Hom}(K,L)$ 表示如下分次阿贝尔群：其 $n$ 次分量由从 $K$ 到 $L$ 的 $n$ 次\term{齐次同态}{homogeneous homomorphism}{homomorphisme homogène}组成，也就是同态族 $(u_i)$，其中 $u_i:K^i\to L^{i+n}$。若 $K,L$ 是\term{复形}{complex}{complexe}（为明确起见，令微分算子次数为 $+1$），在 $\operatorname{Hom}(K,L)$ 上引入微分算子
+\begin{equation}
+\delta(u)=du+(-1)^{n+1}ud,\qquad n=\deg(u).
+\tag{2.1}
+\end{equation}
+这样它便成为微分次数为 $+1$ 的复形。$n$ 次\term{闭元}{cycle}{cycle}是与 $d$ 按齐次算子的符号约定反交换的 $n$ 次算子。于是可以考虑 $H^*(\operatorname{Hom}(K,L))$，它只依赖于 $K,L$ 的\term{同伦类型}{homotopy type}{type d'homotopie}，可记为 $H^*(K,L)$。再取第三个复形 $M$，同态的复合给出与微分相容的\term{配对}{pairing}{accouplement}
+$\operatorname{Hom}(K,L)\times\operatorname{Hom}(L,M)\to\operatorname{Hom}(K,M)$；取上同调便得到配对
+\begin{equation}
+H^*(K,L)\times H^*(L,M)\longrightarrow H^*(K,M),
+\qquad(u,v)\longmapsto vu.
+\tag{2.2}
+\end{equation}
+这些配对显然满足结合律。特别地，$H^*(K,K)$ 是含幺的\term{分次结合环}{graded associative ring}{anneau gradué associatif}；$H^*(K,L)$ 是它的分次右模，$H^*(L,K)$ 是它的分次左模，等等。在零次，(2.2) 就是复形同态的复合。最后，一个复形正合列
+
+\origpage{18}{149-04}
+\[
+0\longrightarrow K'\longrightarrow K\longrightarrow K''\longrightarrow0,
+\]
+若对每个 $i$，$K'^i$ 都可与 $K^i$ 的一个\term{直和因子}{direct summand}{facteur direct}等同，就给出群复形 $\operatorname{Hom}(K'',L)$ 等组成的正合列，进而给出\term{上边缘算子}{coboundary operator}{opérateur cobord}
+$H^i(K',L)\to H^{i+1}(K'',L)$。同样，可以定义相对于 $L$ 的一个正合列的上边缘算子。配对 (2.2) 按通常的意义与这些上边缘算子相容。
+
+现在假设 $\mathcal C$ 的每个对象 $A$ 都有内射分解 $C(A)$。运用双复形定理的某个变体便可看出
+\[
+H^*(C(A),C(B))=H^*\bigl(\operatorname{Hom}(C(A),C(B))\bigr)
+\]
+典范同构于
+\[
+H^*\bigl(\operatorname{Hom}(A,C(B))\bigr)=\operatorname{Ext}^*(A,B).
+\]
+上面考虑的上边缘算子给出 Ext 的上边缘同态。此外，配对 (2.2) 在这里给出满足结合律且与上边缘同态相容的配对
+\begin{equation}
+\operatorname{Ext}^*(A,B)\times\operatorname{Ext}^*(B,C)
+\longrightarrow\operatorname{Ext}^*(A,C).
+\tag{2.3}
+\end{equation}
+特别地，$\operatorname{Ext}^*(A,A)$ 是含幺的分次结合环，等等。（用类似的方法还可证明，Ext 函子作用在任意函子的导出函子上；这里用不到这一事实。）
+
+当所考虑的范畴是 $X$ 上 $\dOO$ 模的范畴 $\mathcal C^{\dOO}$ 时，就得到配对
+\begin{equation}
+\operatorname{Ext}_{\dOO}^{p}(X;A,B)\times
+\operatorname{Ext}_{\dOO}^{q}(X;B,C)
+\longrightarrow\operatorname{Ext}_{\dOO}^{p+q}(X;A,C),
+\tag{2.4}
+\end{equation}
+并可按上述方式把它们写得更具体。此外，把上述构造中的阿贝尔群范畴换成 $X$ 上的阿贝尔层范畴，把 $\operatorname{Hom}$ 函子换成 $\dHom$ 函子，便得到具有同样形式性质、但这次具有“局部性质”的配对
+\begin{equation}
+\dExt_{\dOO}^{p}(A,B)\times\dExt_{\dOO}^{q}(B,C)
+\longrightarrow\dExt_{\dOO}^{p+q}(A,C).
+\tag{2.5}
+\end{equation}
+注意到同态 (1.8) 与 Ext 之间的配对相容，就能进一步明确这些局部配对。
+
+\origpage{19}{149-05}
+最后回顾，函子 $H^p(X,A)$ 之间也有乘法结构，即\term{杯积}{cup product}{cup-produit}。命题1中的谱序列与这些乘法结构相容。更准确地说，有从谱序列 $E(A,B)$ 与 $E(B,C)$ 到谱序列 $E(A,C)$ 的配对；在收敛项上，它就是整体 Ext 之间的配对，在初始项上，它是由杯积及局部 Ext 的配对在 (1.4) 右端诱导的配对。特别地，由此可知边缘同态
+\begin{equation}
+\operatorname{Ext}_{\dOO}^{n}(X;A,B)\longrightarrow
+H^0\bigl(X,\dExt_{\dOO}^{n}(A,B)\bigr),\tag{2.6}
+\end{equation}
+\begin{equation}
+H^n\bigl(X,\dHom_{\dOO}(A,B)\bigr)\longrightarrow
+\operatorname{Ext}_{\dOO}^{n}(X;A,B)\tag{2.7}
+\end{equation}
+都与乘法结构相容。因此，若只考虑局部同构于某个 $\dOO^m$ 的层，利用同构 (1.5)，就可以用杯积完全描述整体 Ext 之间的复合。
+
+\section{局部上同调的若干结果}
+设 $\Lambda$ 是含幺交换环，$J$ 是其理想。我们将对可变的 $\Lambda$ 模 $M$ 定义函子性的同态
+\begin{equation}
+\begin{aligned}
+\operatorname{Ext}_{\Lambda}^{p}(\Lambda/J,M)
+&\longrightarrow\operatorname{Hom}_{\Lambda}
+\left(\bigwedge^p(J/J^2),M\otimes\Lambda/J\right),\\
+\operatorname{Tor}^{\Lambda}_{p}(\Lambda/J,M)
+&\longleftarrow\bigwedge^p(J/J^2)\otimes
+\operatorname{Hom}_{\Lambda}(\Lambda/J,M).
+\end{aligned}\tag{3.1}
+\end{equation}
+这里的张量积和外积都在环 $\Lambda$ 上取；不过 $J/J^2$ 实际上是 $\Lambda/J$ 模，它作为 $\Lambda$ 模或 $\Lambda/J$ 模的\term{外幂}{exterior power}{puissance extérieure}相同。定义同态 (3.1)，相当于对 $J$ 中的任意一组元素 $\mathbf x=(x_1,\ldots,x_p)$ 定义同态 $\varphi_{\mathbf x}$：
+\begin{equation}
+\begin{aligned}
+\varphi_{\mathbf x}:\operatorname{Ext}_{\Lambda}^{p}(\Lambda/J,M)&\longrightarrow M\otimes\Lambda/J,\\
+\varphi_{\mathbf x}:\operatorname{Hom}_{\Lambda}(\Lambda/J,M)&\longrightarrow\operatorname{Tor}^{\Lambda}_{p}(\Lambda/J,M),
+\end{aligned}\tag{3.2}
+\end{equation}
+使之满足以下条件：
+
+\origpage{20}{149-06}
+\begin{enumerate}[label=\roman*.]
+\item $\varphi_{x_1,\ldots,x_p}$ 对元素组 $x_i\in J$ 的依赖是 $\Lambda$ 多重线性且交替的；
+\item 只要有一个 $x_i$ 属于 $J^2$，$\varphi_{x_1,\ldots,x_p}$ 就为零。
+\end{enumerate}
+事实上，条件 ii 由 i 推出，因为当 $a\in J$ 时，$a\varphi_{\mathbf x}=0$；只须注意 (3.2) 中所有模都被 $J$ 零化。
+
+为定义 $\varphi_{\mathbf x}$，考虑复形 $K_{\mathbf x}$：其底层 $\Lambda$ 模为 $\bigwedge\Lambda^p$，微分算子为内乘 $i_{\mathbf x}$，其中把 $\mathbf x$ 看成 $\Lambda^p$ 上分量为 $x_1,\ldots,x_p$ 的线性形式。微分的次数为 $-1$，复形处于非负次数，其零次同调为 $\Lambda/(x_1\Lambda+\cdots+x_p\Lambda)$。因为 $x_i\in J$，得到一个\term{增广}{augmentation}{augmentation} $K_{\mathbf x,0}\to\Lambda/J$。因此 $K_{\mathbf x}$ 是增广模为 $\Lambda/J$ 的\term{自由增广复形}{augmented free complex}{complexe libre augmenté}。由熟知的方法得到同态
+\[
+\operatorname{Ext}_{\Lambda}^{*}(H_0(K_{\mathbf x}),M)
+\longrightarrow H^*\bigl(\operatorname{Hom}_{\Lambda}(K_{\mathbf x},M)\bigr),
+\]
+\[
+\operatorname{Tor}^{\Lambda}_{*}(H_0(K_{\mathbf x}),M)
+\longleftarrow H_*(K_{\mathbf x}\otimes M).
+\]
+再与增广同态 $H_0(K_{\mathbf x})\to\Lambda/J$ 在 Ext 和 Tor 上诱导的同态复合，得到
+\begin{equation}
+\begin{aligned}
+\psi_{\mathbf x}:\operatorname{Ext}_{\Lambda}^{*}(\Lambda/J,M)
+&\longrightarrow H^*\bigl(\operatorname{Hom}_{\Lambda}(K_{\mathbf x},M)\bigr),\\
+\psi_{\mathbf x}:\operatorname{Tor}^{\Lambda}_{*}(\Lambda/J,M)
+&\longleftarrow H_*(K_{\mathbf x}\otimes M).
+\end{aligned}\tag{3.3}
+\end{equation}
+立即可以看出，在最高次数 $p$，右端的上同调为 $M/(x_1M+\cdots+x_pM)$；同调则是 $M$ 中被每个 $x_i$ 零化的元素所成的集合。因为 $x_i\in J$，得到同态
+\begin{equation}
+\begin{aligned}
+H^p\bigl(\operatorname{Hom}_{\Lambda}(K_{\mathbf x},M)\bigr)&\longrightarrow M\otimes\Lambda/J,\\
+H_p(K_{\mathbf x}\otimes M)&\longleftarrow\operatorname{Hom}_{\Lambda}(\Lambda/J,M).
+\end{aligned}\tag{3.4}
+\end{equation}
+把 (3.3)、(3.4) 中的同态复合，就得到我们要定义的 (3.2)。验证条件 i 比较繁琐，但没有困难。
+
+\origpage{21}{149-07}
+\begin{statement}{命题 4}
+设 $\Lambda$ 是含幺交换环，$(x_1,\ldots,x_p)$ 是其元素列，满足：对 $1\leq i\leq p$，$x_i$ 在商环 $\Lambda/(x_1,\ldots,x_{i-1})$ 中的像不是零因子。令 $J=(x_1,\ldots,x_p)$。则 $J/J^2$ 是自由 $\Lambda/J$ 模，以各 $x_i$ 的典范像为基；复形 $K_{\mathbf x}$ 是 $\Lambda/J$ 的自由分解；对每个 $\Lambda$ 模 $M$，(3.1) 中 $p$ 次的同态都是双射。只要 $JM=0$，任意次数 $i$ 中定义的类似同态也都是双射。
+\end{statement}
+（关键在于 $K_{\mathbf x}$ 的正次数同调消失，其余结论都由此推出；在给定条件下，这是一条熟知的事实。）
+
+\begin{statement}{推论 1}
+设 $\Lambda,J$ 如上。再假设 $\Lambda$ 是\term{完美域}{perfect field}{corps parfait} $k$ 上 $n$ 维的\term{正则仿射代数}{regular affine algebra}{algèbre affine régulière}，且 $\Lambda/J$ 也是正则仿射代数。用 $\Omega^1(\Lambda)$、$\Omega^1(\Lambda/J)$ 表示其\term{Kähler 微分模}{module of Kähler differentials}{module de différentielles de Kähler}。则有与\term{局部化}{localization}{localisation}相容的典范同构
+\begin{equation}
+\operatorname{Ext}_{\Lambda}^{p}
+\bigl(\Omega^{n-p}(\Lambda/J),\Omega^n(\Lambda)\bigr)=\Lambda/J.
+\tag{3.5}
+\end{equation}
+\end{statement}
+事实上，$\Omega^{n-p}(\Lambda/J)$ 是秩为1的局部自由 $\Lambda/J$ 模，$\Omega^n(\Lambda)$ 也是秩为1的局部自由 $\Lambda$ 模，因而左端等于
+\[
+\operatorname{Ext}_{\Lambda}^{p}(\Lambda/J,\Lambda)
+\otimes\Omega^{n-p}(\Lambda/J)'\otimes\Omega^n(\Lambda),
+\]
+这里撇号表示作为 $\Lambda/J$ 模的对偶。后两个因子的张量积可与 $\bigwedge^p(J/J^2)$ 等同，所以整个式子等同于
+\[
+\operatorname{Ext}_{\Lambda}^{p}
+\left(\Lambda/J,\bigwedge^p(J/J^2)\right),
+\]
+由命题又等同于
+\[
+\operatorname{Hom}_{\Lambda}
+\left(\bigwedge^p(J/J^2),\bigwedge^p(J/J^2)\right),
+\]
+即 $\Lambda/J$。特别地，$\operatorname{Ext}_{\Lambda}^{p}(\Omega^{n-p}(\Lambda/J),\Omega^n(\Lambda))$ 中有一个对应于 $\Lambda/J$ 的单位元的特定元素，称为理想 $J$ 在 $\Lambda$ 中的\term{基本类}{fundamental class}{classe fondamentale}。（实际上，它可以在宽得多的条件下定义。）可以把推论1改写得更几何、更整体化：
+\translatornote{原文在此把两个最高次微分模称为自由模，并把 $\Omega^n(\Lambda)$ 的秩写成 $n$。正确的局部陈述是二者均局部自由且秩为1：若 $e_1,\ldots,e_n$ 是 $\Omega^1(\Lambda)$ 的一组局部基，则 $e_1\wedge\cdots\wedge e_n$ 是其最高外幂的一组单元素局部基。上述计算可逐点局部化进行，典范同构随后粘合，故无需额外假设这些线丛整体自由。}
+
+\begin{statement}{推论 2}
+设 $X$ 是代数闭域 $k$ 上的\term{非奇异代数簇}{nonsingular variety}{variété non singulière}，$Y$ 是 $X$ 的非奇异\term{闭子簇}{closed subvariety}{sous-variété fermée}。$\dOO_X$ 是 $X$ 的局部环层，$\dOO_Y$ 是 $Y$ 的局部环层，并看成 $\dOO_X$ 的商层。设 $\dim X=n$，$\dim Y=n-p$。
+
+\origpage{22}{149-08}
+以 $\Omega_X$、$\Omega_Y$ 分别表示 $X$、$Y$ 上\term{正则微分形式}{regular differential form}{forme différentielle régulière}的芽层。则有典范同构
+\begin{equation}
+\dExt_{\dOO_X}^{p}(\Omega_Y^{n-p},\Omega_X^n)=\dOO_Y,
+\tag{3.6}
+\end{equation}
+或者等价地，
+\begin{equation}
+\dExt_{\dOO_X}^{p}(\dOO_Y,\Omega_X^n)=\Omega_Y^{n-p}.
+\tag{3.6 bis}
+\end{equation}
+\end{statement}
+当 $Y$ 为奇异代数簇时，可以用 (3.6 bis) 定义 $\Omega_Y^{n-p}$。更准确地说：
+\begin{statement}{命题 5}
+设 $Y$ 是 $n$ 维非奇异代数簇 $X$ 中一个维数为 $q=n-p$ 的代数子集。设 $F$ 是 $X$ 上\term{支集}{support}{support}包含于 $Y$ 的\term{凝聚代数层}{coherent algebraic sheaf}{faisceau algébrique cohérent}，$L$ 是 $X$ 上的局部自由代数层。则当 $i<p$ 时，$\dExt_{\dOO_X}^{i}(F,L)=0$；而在 $i=p$ 时，有典范同构
+\begin{equation}
+\dExt_{\dOO_X}^{p}(F,L)=
+\dHom_{\dOO_X}\bigl(F,\dExt_{\dOO_X}^{p}(\dOO_X/J,L)\bigr),
+\tag{3.7}
+\end{equation}
+其中 $J$ 是 $X$ 上任意一个零化 $F$ 且零点集为 $Y$ 的\term{理想层}{sheaf of ideals}{faisceau d'idéaux}。特别地，若 $F$ 是 $Y$ 上的凝聚代数层，则
+\begin{equation}
+\dExt_{\dOO_X}^{p}(F,L)=
+\dHom_{\dOO_Y}\bigl(F,\dExt_{\dOO_X}^{p}(\dOO_Y,L)\bigr).
+\tag{3.7 bis}
+\end{equation}
+最后，仍设 $F$ 是 $Y$ 上的凝聚代数层，则层
+\[
+E^i(F)=\dExt_{\dOO_X}^{p+i}(F,\Omega_X^n)
+\]
+与把代数空间 $Y$ 嵌入非奇异代数簇 $X$ 的方式无关。
+\end{statement}
+问题是局部的，所以可假设 $X$ 仿射且 $L=\dOO_X$。这样就化为交换代数、甚至局部代数的问题：若 $\Lambda$ 是 $n$ 维\term{正则局部环}{regular local ring}{localité régulière}，$M$ 是支集维数不超过 $q=n-p$ 的 $\Lambda$ 模，须证 $i<p$ 时 $\operatorname{Ext}_{\Lambda}^{i}(M,\Lambda)=0$，且
+\[
+\operatorname{Ext}_{\Lambda}^{p}(M,\Lambda)
+=\operatorname{Hom}_{\Lambda}\bigl(M,\operatorname{Ext}_{\Lambda}^{p}(\Lambda/J,\Lambda)\bigr),
+\]
+其中 $J$ 是任意一个零化 $M$、且“维数”不超过 $q$ 的理想。对第一点，对 $q$ 归纳：直接作一次\term{逐层分解}{dévissage}{dévissage}，可归结为 $M=\Lambda/J$ 的情形；再把 $J$ 换成一个更小的理想，结合归纳假设及 Ext 的正合列，就归结为 $J$ 由命题4那样的一个“\term{参数系}{system of parameters}{système de paramètres}”生成的情形，此时结论显然成立。由此还可推出，若 $J$ 是固定的、其“维数”不超过 $q$ 的理想，
+
+\origpage{23}{149-09}
+则 $\Lambda/J$ 模范畴上的反变函子 $E(M)=\operatorname{Ext}_{\Lambda}^{p}(M,\Lambda)$ 是左正合的；此外，它把直和变成直积，从而很容易得到
+\[
+E(M)=\operatorname{Hom}_{\Lambda}\bigl(M,E(\Lambda/J)\bigr).
+\]
+最后，命题5的末一断言更为微妙：它由 $E^i(F)$ 的内在刻画推出，而这个刻画需要一个不能在此展开的\term{局部对偶定理}{local duality theorem}{théorème de dualité locale}。
+\translatornote{此处原文写作 $E(M)=\operatorname{Hom}_{\Lambda}(M,E(\Lambda))$；右端应为 $E(\Lambda/J)$。例如取 $\Lambda=k[t]_{(t)}$、$J=(t)$、$p=1$、$M=k$，则 $E(M)=\operatorname{Ext}^1_{\Lambda}(k,\Lambda)\simeq k$，而 $E(\Lambda)=\operatorname{Ext}^1_{\Lambda}(\Lambda,\Lambda)=0$。另一方面，范畴中秩一自由对象为 $\Lambda/J$，用其有限表示及 $E$ 的左正合性即可得到正文所写的正确公式。}
+
+\begin{statement}{推论}
+令 $\omega_Y^q=\dExt_{\dOO_X}^{p}(\dOO_Y,\Omega_X^n)$。则对 $Y$ 上的凝聚代数层 $F$，有函子性的同构
+\begin{equation}
+\dExt_{\dOO_X}^{p}(F,\Omega_X^n)=\dHom_{\dOO_Y}(F,\omega_Y^q).
+\tag{3.8}
+\end{equation}
+\end{statement}
+
+\section{与子簇相伴的上同调类}
+以下一直用 $X$ 表示定义在域 $k$ 上的 $n$ 维代数集。为简单起见，设 $k$ 代数闭。除第6节外，都假设 $X$ 非奇异。以 $\dOO_X$ 表示 $X$ 上的局部环层，以 $\Omega_X^*=\bigoplus_p\Omega_X^p$ 表示 $X$ 上微分形式的芽层。若 $Y$ 是 $X$ 的闭子集，就把 $Y$ 上的凝聚代数层与 $X$ 上在 $Y$ 外为零的凝聚层等同；$\dOO_Y$ 和 $\Omega_Y$ 尤其如此。
+\begin{statement}{引理 1}
+设 $F$ 是 $X$ 上支集维数不超过 $n-p$ 的凝聚代数层，$L$ 是 $X$ 上的局部自由凝聚代数层。则 $i<p$ 时 $\operatorname{Ext}_{\dOO_X}^{i}(X;F,L)=0$，并有典范同构
+\begin{equation}
+\operatorname{Ext}_{\dOO_X}^{p}(X;F,L)
+=H^0\bigl(X,\dExt_{\dOO_X}^{p}(F,L)\bigr).
+\tag{4.1}
+\end{equation}
+若 $F$ 是 $X$ 的一个维数不超过 $n-p$ 的闭子集 $Y$ 上的凝聚代数层，则有典范同构
+\begin{equation}
+\dExt_{\dOO_X}^{p}(F,L)=
+\dHom_{\dOO_X}\bigl(F\otimes L'\otimes\Omega_X^n,\omega_Y^{n-p}\bigr),
+\tag{4.1 bis}
+\end{equation}
+其中 $\omega_Y^{n-p}$ 是命题5的推论中定义的 $Y$ 上的层；当 $Y$ 非奇异时，它可与 $\Omega_Y^{n-p}$ 等同。
+\end{statement}
+公式 (4.1) 由命题1的谱序列及命题5立即得到。根据 (3.8)，可写成
+
+\origpage{24}{149-10}
+\begin{align*}
+\dExt_{\dOO_X}^{p}(F,L)
+&=L\otimes(\Omega_X^n)'\otimes\dExt_{\dOO_X}^{p}(F,\Omega_X^n)\\
+&=L\otimes(\Omega_X^n)'\otimes\dHom_{\dOO_X}(F,\omega_Y^q)\\
+&=\dHom_{\dOO_X}(F\otimes L'\otimes\Omega_X^n,\omega_Y^q),
+\end{align*}
+其中 $q=n-p$，这就得到 (4.1 bis)。
+
+特别地，取 $F=\dOO_Y$、$L=\Omega_X^p$，并注意到 $\Omega_X^n\otimes(\Omega_X^p)'=\Omega_X^{n-p}$，可得典范同构
+\begin{equation}
+\operatorname{Ext}_{\dOO_X}^{p}(X;\dOO_Y,\Omega_X^p)
+=\operatorname{Hom}_{\dOO_X}(X;\Omega_X^{n-p},\omega_Y^{n-p}).
+\tag{4.2}
+\end{equation}
+为简单起见，现在设 $Y$ 非奇异，因而 $\omega_Y^{n-p}=\Omega_Y^{n-p}$。有从 $\Omega_X^{n-p}$ 到 $\Omega_Y^{n-p}$ 的自然同态，从而给出层 $\dExt_{\dOO_X}^{p}(\dOO_Y,\Omega_X^p)$ 的一个典范截面 $s_Y$。如果 $Y$ 的各个分支都为 $n-p$ 维，就称它为该层的\term{基本截面}{fundamental section}{section fondamentale}。根据 (4.1)，这个截面定义 $\operatorname{Ext}_{\dOO_X}^{p}(X;\dOO_Y,\Omega_X^p)$ 中的一个元素。自然同态 $\dOO_X\to\dOO_Y$ 又定义同态
+\[
+\operatorname{Ext}_{\dOO_X}^{p}(X;\dOO_Y,\Omega_X^p)
+\longrightarrow\operatorname{Ext}_{\dOO_X}^{p}(X;\dOO_X,\Omega_X^p)
+=H^p(X,\Omega_X^p).
+\]
+这样就得到 $H^p(X,\Omega_X^p)$ 中的一个元素，记为 $P_X(Y)$，称为 $Y$ 在 $X$ 中的\term{上同调类}{cohomology class}{classe de cohomologie}。因此，它由截面 $s_Y$ 经以下同态图得到：
+\begin{equation}
+\begin{gathered}
+H^p(X,\Omega_X^p)=\operatorname{Ext}_{\dOO_X}^{p}(X;\dOO_X,\Omega_X^p)
+\longleftarrow\operatorname{Ext}_{\dOO_X}^{p}(X;\dOO_Y,\Omega_X^p),\\
+\operatorname{Ext}_{\dOO_X}^{p}(X;\dOO_Y,\Omega_X^p)
+\xrightarrow{\sim}H^0\bigl(X,\dExt_{\dOO_X}^{p}(\dOO_Y,\Omega_X^p)\bigr).
+\end{gathered}\tag{4.3}
+\end{equation}
+称由 $X$ 中所有 $n-p$ 维非奇异不可约子簇生成的自由阿贝尔群的元素为 $n-p$ 维\term{非奇异闭链}{nonsingular cycle}{cycle non singulier}。于是映射 $Y\mapsto P_X(Y)$ 延拓为一个从 $X$ 上 $n-p$ 维非奇异闭链群到 $H^p(X,\Omega_X^p)$ 的群同态。
+
+设 $Z^{n-p}$、$Z'^{n-p'}$ 分别为 $n-p$、$n-p'$ 维非奇异闭链。如果 $Z$ 的每个分支都与 $Z'$ 的每个分支\term{横截相交}{intersect transversely}{se couper transversalement}，就说这两个闭链横截相交。此时\term{交闭链}{intersection cycle}{cycle d'intersection} $Z\cdot Z'$ 有定义，是 $n-p-p'$ 维的非奇异闭链。我们有：
+
+\origpage{25}{149-11}
+\begin{statement}{定理 1}
+若非奇异闭链 $Z^{n-p}$ 和 $Z'^{n-p'}$ 横截相交，则
+\begin{equation}
+P_X(Z\cdot Z')=P_X(Z)\cdot P_X(Z'),\tag{4.4}
+\end{equation}
+其中右端的积是杯积
+\[
+H^p(X,\Omega_X^p)\times H^{p'}(X,\Omega_X^{p'})
+\longrightarrow H^{p+p'}(X,\Omega_X^{p+p'}).
+\]
+这里假设 $X$ 同构于某射影空间的一个\term{局部闭子集}{locally closed subset}{partie localement fermée}。
+\end{statement}
+末一假设只用来保证 $X$ 上每个凝聚代数层都是某局部自由凝聚代数层的商（Serre），从而有局部自由层构成的左分解。为证明定理1，可以假设 $Z,Z'$ 为横截相交的非奇异不可约子簇 $Y,Y'$。取 $\dOO_Y$ 的一个局部自由左分解 $L_*$。由命题3，同态图 (4.3) 可与下图等同：
+\[
+\begin{gathered}
+R^p\Gamma(\Omega_X^p)
+\xleftarrow{\alpha}\mathbb H^p\bigl(X,\dHom_{\dOO_X}(L_*,\Omega_X^p)\bigr),\\
+\mathbb H^p\bigl(X,\dHom_{\dOO_X}(L_*,\Omega_X^p)\bigr)
+\xrightarrow[\sim]{\beta}\Gamma\bigl(H^p(\dHom_{\dOO_X}(L_*,\Omega_X^p))\bigr).
+\end{gathered}
+\]
+这里 $\Gamma$ 是 $X$ 上阿贝尔层范畴中的“截面群”函子，$\mathbb H^p$ 表示这个函子的 $p$ 次超上同调（原文记为 $\underline R^p\Gamma$），而 $R^p\Gamma$ 是其 $p$ 次导出函子。为简单起见，可以假设 $L_0=\dOO_X$，增广 $L_0\to\dOO_Y$ 是自然同态。此时 $\alpha$ 由复形同态 $\dOO_X\to L_*$ 诱导；其中把 $\dOO_X$ 看成集中在零次的复形，并利用当层复形 $K$ 集中在零次时 $\mathbb H^p(X,K)=R^p\Gamma(K_0)$。同态 $\beta$ 是熟知的边缘同态。对 $\dOO_{Y'}$ 的局部自由分解 $L_*'$ 也取类似的图，再考虑下面的配对交换图。为使图式清楚，记
+\[
+\begin{aligned}
+C&=\dHom_{\dOO_X}(L_*,\Omega_X^p),&
+C'&=\dHom_{\dOO_X}(L_*',\Omega_X^{p'}),\\
+D&=\dHom_{\dOO_X}(L_*\otimes L_*',\Omega_X^{p+p'}),&a&=p+p'.
+\end{aligned}
+\]
+再记 $Q=R^p\Gamma(\Omega_X^p)$、$Q'=R^{p'}\Gamma(\Omega_X^{p'})$，$G=\Gamma H^p(C)$、$G'=\Gamma H^{p'}(C')$。原图中两行之间的配对合并写作：
+\begin{equation}
+\begin{tikzcd}[column sep=small,row sep=large]
+Q\otimes Q'\arrow[d]
+&\mathbb H^p(X,C)\otimes\mathbb H^{p'}(X,C')\arrow[l]\arrow[r,"\sim"]\arrow[d]
+&G\otimes G'\arrow[d]\\
+R^a\Gamma(\Omega_X^a)&\mathbb H^a(X,D)\arrow[l]\arrow[r,"\sim"]
+&\Gamma H^a(D).
+\end{tikzcd}\tag{4.5}
+\end{equation}
+
+\origpage{26}{149-12}
+右边两列的配对由层复形的配对
+\[
+\dHom_{\dOO_X}(L_*,\Omega_X^p)\times
+\dHom_{\dOO_X}(L_*',\Omega_X^{p'})
+\longrightarrow\dHom_{\dOO_X}(L_*\otimes L_*',\Omega_X^{p+p'})
+\]
+诱导，后者借助\term{外积}{exterior product}{produit extérieur} $\Omega_X^p\times\Omega_X^{p'}\to\Omega_X^{p+p'}$ 定义。第一列的配对是相对于外积的杯积。我们断言，(4.5) 最后一行可与将 (4.3) 中的 $Y$ 换成 $Y\cap Y'$、$p$ 换成 $p+p'$ 后所得的同构图等同。为此，只须证明 $L\otimes L'$ 是 $\dOO_{Y\cap Y'}$ 的分解；它显然局部自由。事实上，
+\[
+H_0(L\otimes L')=\dOO_Y\otimes\dOO_{Y'}=\dOO_{Y\cap Y'},
+\]
+且对 $i>0$，由 $Y,Y'$ 横截相交得到
+\[
+H_i(L\otimes L')=\dTor_i^{\dOO_X}(\dOO_Y,\dOO_{Y'})=0.
+\]
+现在，定理1归结为公式
+\begin{equation}
+s_Y\cdot s_{Y'}=s_{Y\cdot Y'},\tag{4.6}
+\end{equation}
+其中左端的乘法是 (4.5) 最后一列的配对。公式 (4.6) 纯属局部性质：把 $L_*,L_*'$ 取为命题4中考虑的分解，便可毫无困难地验证。同样还可用更简单的证明得到 $Z\mapsto P_X(Z)$ 与\term{笛卡尔积}{Cartesian product}{produit cartésien}相容：
+\begin{equation}
+P_{X\times X'}(Z\times Z')=P_X(Z)\otimes P_{X'}(Z').\tag{4.7}
+\end{equation}
+这里 $Z,Z'$ 分别为非奇异代数簇 $X,X'$ 上的非奇异闭链，$Z\times Z'$ 看成 $X\times X'$ 上的非奇异闭链。由 (4.4)、(4.7) 还可推出，$P_X(Z)$ 与非奇异代数簇的态射 $f:X\to X'$ 所定义的“逆像”运算相容：
+\begin{equation}
+P_X(f^{-1}(Z'))=f^*(P_{X'}(Z')).\tag{4.8}
+\end{equation}
+本式适用于 $X'$ 上的非奇异闭链 $Z'$，并要求 $f$ 与 $Z'$ “横截”，也就是说，$f$ 的图像在 $X\times X'$ 中与闭链 $X\times Z'$ 横截相交。
+
+\origpage{27}{149-13}
+\begin{statement}{推论 1}
+设 $X,X'$ 是某射影空间中的两个非奇异局部闭代数簇，并设 $X'$ \term{完备}{complete}{complète}。令 $U$ 是 $X\times X'$ 上的非奇异闭链，$a,b$ 是 $X'$ 的两个点，满足 $U$ 与闭链 $X\times\{a\}$、$X\times\{b\}$ 都横截相交。令 $Z,Z'$ 是 $X$ 上由
+\[
+Z\times\{a\}=(X\times\{a\})\cdot U,\qquad
+Z'\times\{b\}=(X\times\{b\})\cdot U
+\]
+确定的非奇异闭链。则 $P_X(Z)=P_X(Z')$。
+\end{statement}
+事实上，令 $f_a:X\to X\times X'$ 为 $f_a(x)=(x,a)$。由 (4.8) 有 $P(Z)=f_a^*(P(U))$，同样 $P(Z')=f_b^*(P(U))$。运用\term{Künneth 公式}{Künneth formula}{formule de Künneth}
+\[
+H^*(X\times X',\Omega_{X\times X'}^*)
+=H^*(X,\Omega_X^*)\otimes H^*(X',\Omega_{X'}^*),
+\]
+并注意 $H^0(X',\dOO_{X'})$ 仅由标量组成，便容易得到 $f_a^*=f_b^*$，从而得出结论。
+
+对每个 $x\in X$，$\{x\}$ 都是 $X$ 中余维为 $n$ 的非奇异子簇，故确定 $H^n(X,\Omega_X^n)$ 中的元素 $\varepsilon_x$。若 $X$ 是非奇异射影代数簇，由推论1，$\varepsilon_x$ 与所取的点 $x$ 无关；记为 $\varepsilon_X$，称为 $H^n(X,\Omega_X^n)$ 的基本类。
+
+\begin{statement}{注}
+要建立一个完善的理论，需要对任意闭链 $Z$ 定义 $P_X(Z)$，并对闭链的\term{适当相交}{proper intersection}{intersection propre}证明定理1。（写作本报告时，这件事在完全一般的情形下尚未完成。）如果承认已经做到这一点，推论1就变成：若 $Z,Z'$ 是两个\term{代数等价}{algebraically equivalent}{algébriquement équivalents}的闭链，则 $P_X(Z)=P_X(Z')$。这一陈述似乎不能由前面的论证直接推出，即便 $Z,Z'$ 都非奇异也是如此。
+\end{statement}
+
+\section{对偶理论}
+本节中，$X$ 表示 $n$ 维非奇异射影代数簇。
+\begin{statement}{定理 2}
+$H^n(X,\Omega_X^n)$ 的基本类 $\varepsilon_X$ 构成这个向量空间的一组基。
+\end{statement}
+证明将在下面给出。由此便可把 $H^n(X,\Omega_X^n)$ 与域 $k$ 等同。现在考虑第2节的配对，特别得到
+
+\origpage{28}{149-14}
+\[
+\operatorname{Ext}_{\dOO_X}^{p}(X;\dOO_X,F)\times
+\operatorname{Ext}_{\dOO_X}^{n-p}(X;F,\Omega_X^n)
+\longrightarrow\operatorname{Ext}_{\dOO_X}^{n}(X;\dOO_X,\Omega_X^n),
+\]
+也就是说，
+\begin{equation}
+H^p(X,F)\times\operatorname{Ext}_{\dOO_X}^{n-p}(X;F,\Omega_X^n)
+\longrightarrow H^n(X,\Omega_X^n).
+\tag{5.1}
+\end{equation}
+根据定理2，这个配对定义一个同态
+\begin{equation}
+\operatorname{Ext}_{\dOO_X}^{n-p}(X;F,\Omega_X^n)
+\longrightarrow H^p(X,F)'.\tag{5.2}
+\end{equation}
+这个同态对 $F$ 具有函子性，并与正合列 $0\to F'\to F\to F''\to0$ 所对应的上边缘同态交换。
+\begin{statement}{定理 3}
+同态 (5.2) 是同构。
+\end{statement}
+特别地，重新得到 Serre 的结果：
+\begin{statement}{推论}
+设 $E$ 是 $X$ 上的\term{代数向量丛}{algebraic vector bundle}{fibré vectoriel algébrique}，$\dOO_X(E)$ 是 $E$ 的\term{正则截面}{regular section}{section régulière}芽层。则有典范同构
+\begin{equation}
+H^p(X,\dOO_X(E))'=H^{n-p}\bigl(X,\Omega_X^n\otimes\dOO_X(E')\bigr).
+\tag{5.3}
+\end{equation}
+\end{statement}
+只须运用定理3以及命题1的推论1。
+
+定理2、3将由下面的陈述推出：
+\begin{statement}{(D)}
+由配对 (5.1) 诱导的同态
+\begin{equation}
+\operatorname{Ext}_{\dOO_X}^{n-p}(X;F,\Omega_X^n)
+\longrightarrow H^p(X,F)'\otimes L,
+\qquad L=H^n(X,\Omega_X^n),\tag{5.2 bis}
+\end{equation}
+是同构。
+\end{statement}
+先说明 (D) 蕴含定理2。设 $k_x=\dOO_{\{x\}}$ 是单点代数簇 $x\in X$ 的局部环层，考虑典范同态 $\dOO_X\to k_x$ 及其诱导的同态
+\begin{equation}
+H^0(X,\dOO_X)\longrightarrow H^0(X,k_x).\tag{5.3}
+\end{equation}
+利用 (D)，它的转置可与同态
+\begin{equation}
+\operatorname{Ext}_{\dOO_X}^{n}(X;k_x,\Omega_X^n)\otimes L'
+\longrightarrow\operatorname{Ext}_{\dOO_X}^{n}(X;\dOO_X,\Omega_X^n)\otimes L'
+\tag{5.4}
+\end{equation}
+等同。后者由 $\dOO_X\to k_x$ 在 Ext 上诱导的同态
+\begin{equation}
+\operatorname{Ext}_{\dOO_X}^{n}(X;k_x,\Omega_X^n)
+\longrightarrow\operatorname{Ext}_{\dOO_X}^{n}(X;\dOO_X,\Omega_X^n)
+=H^n(X,\Omega_X^n)\tag{5.5}
+\end{equation}
+得到。
+
+\origpage{29}{149-15}
+由于上面的 (5.3) 是同构，(5.4) 也是同构，因而 (5.5) 也是同构。由 (4.2)，$s_{\{x\}}$ 是 $\operatorname{Ext}_{\dOO_X}^{n}(X;k_x,\Omega_X^n)$ 的一组基，所以它的像 $\varepsilon_X$ 确实是 $H^n(X,\Omega_X^n)$ 的一组基。
+
+现在只须证明 (D)。下面几个引理概括了一些初等事实，(D) 将纯形式地由它们推出。各引理中，设 $X$ 是 $r$ 维射影空间 $P$ 的一个闭子集，可有奇点。用 $\dOO_P(m)$ 表示[3]中记为 $\dOO(m)$ 的 $P$ 上的层，用 $\dOO_X(m)$ 表示 $X$ 上的类似层。
+\begin{statement}{引理 2}
+当 $X=P$ 且 $F=\dOO_P(m)$ 时，陈述 (D) 成立。
+\end{statement}
+这个引理可直接计算验证。$H^i(P,\dOO_P(m))$ 的具体计算见[3]，但也可以用更初等的方法完成。为写清配对 (5.1) 而需要计算的杯积
+\[
+H^i(P,\dOO_P(m))\times H^j(P,\dOO_P(n))
+\longrightarrow H^{i+j}(P,\dOO_P(m+n))
+\]
+也没有困难。
+\begin{statement}{引理 3}
+$X$ 上每个凝聚代数层 $F$ 都同构于某层 $\dOO_X(-m)^k$ 的商层，而且可以令 $m$ 任意大。
+\end{statement}
+这是因为 $m$ 充分大时，$F\otimes\dOO_X(m)$ “由其截面生成”，参见[3]。
+\begin{statement}{引理 4}
+设 $i>0$。则 $m$ 充分大时 $H^{r-i}(P,\dOO_P(-m))=0$；而且，对 $X$ 上每个凝聚代数层 $B$，$m$ 充分大时有 $\operatorname{Ext}_{\dOO_X}^{i}(X;\dOO_X(-m),B)=0$。
+\end{statement}
+第一条陈述由前面提到的具体计算得出。对第二条，注意由命题1的推论1，有同构
+\[
+\operatorname{Ext}_{\dOO_X}^{i}(X;\dOO_X(-m),B)
+=H^i(X,B\otimes\dOO_X(m)),
+\]
+于是结论由[3]中的一个熟知结果得到。结合前两个引理可得：
+\begin{statement}{推论}
+设 $i>0$。则 $P$ 上凝聚代数层范畴中的函子 $F\mapsto H^{r-i}(P,F)$ 是\term{可余抹去的}{coeffaceable}{coeffaçable}；$X$ 上凝聚代数层范畴中的函子 $\operatorname{Ext}_{\dOO_X}^{i}(X;F,B)$ 也一样。
+\end{statement}
+
+\origpage{30}{149-16}
+\begin{statement}{引理 5}
+设 $A,B$ 是 $X$ 上的凝聚代数层，记 $A(m)=A\otimes\dOO_X(m)$。则 $m$ 充分大时，典范同态
+\begin{gather*}
+\operatorname{Ext}_{\dOO_X}^{i}(X;A(-m),B)
+\longrightarrow H^0\bigl(X,\dExt_{\dOO_X}^{i}(A(-m),B)\bigr)\\
+=H^0\bigl(X,\dExt_{\dOO_X}^{i}(A,B)(m)\bigr)
+\end{gather*}
+是同构。
+\end{statement}
+这是命题1的谱序列用于 $A(-m),B$ 后的直接结论，因为
+\[
+E_2^{p,q}(A(-m),B)
+=H^p\bigl(X,\dExt_{\dOO_X}^{q}(A(-m),B)\bigr)
+=H^p\bigl(X,\dExt_{\dOO_X}^{q}(A,B)(m)\bigr),
+\]
+在 $p>0$ 且 $m$ 充分大时为零。
+
+先证明 $X=P$ 时的 (D)。首先证明 $p=n$ 时 (5.2 bis) 是同构：此时两边都是左正合函子，因为 $H^{r+1}(P,F)=0$；由引理3，只须对 $F=\dOO_P(-m)$ 证明，而这正是引理2的内容。同态 (5.2 bis) 具有函子性且与上边缘算子相容；当 $p<n$ 时，(5.2 bis) 两边都是关于 $F$ 的可余抹去函子，这是引理4推论的内容。因此，由标准论证，(5.2 bis) 对所有 $p$ 都是同构。这就证明了射影空间的对偶定理。
+
+现在设 $X$ 为任意非奇异的情形。由 $P$ 的对偶定理，有同构
+\[
+H^n(X,F)'=H^n(P,F)'=
+\operatorname{Ext}_{\dOO_P}^{r-n}(P;F,\Omega_P^r).
+\]
+由第4节的引理1，最后一项可与
+\[
+\operatorname{Hom}_{\dOO_P}(P;F,\omega_X^n)
+=\operatorname{Hom}_{\dOO_X}(X;F,\Omega_X^n)
+=\operatorname{Ext}_{\dOO_X}^{0}(X;F,\Omega_X^n)
+\]
+等同，故得到同构
+\begin{equation}
+H^n(X,F)'=\operatorname{Hom}_{\dOO_X}(X;F,\Omega_X^n)
+=\operatorname{Ext}_{\dOO_X}^{0}(X;F,\Omega_X^n).
+\tag{5.6}
+\end{equation}
+取 $F=\Omega_X^n$，得到同构
+\begin{equation}
+\gamma:H^n(X,\Omega_X^n)\xrightarrow{\sim}k.\tag{5.7}
+\end{equation}
+
+\origpage{31}{149-17}
+可以验证，利用 (5.7) 令 $L=k$ 后，同构 (5.6) 就是 $p=n$ 时的 (5.2 bis)。因此，(5.2 bis) 在 $p=n$ 时是同构。要证明它对所有 $p$ 都是同构，仍只须证明当 $p<n$ 时两边都是关于 $F$ 的可余抹去函子。由引理3，更强地，只须证明令 $F=\dOO_X(-m)$ 且 $m$ 充分大时两边都为零。对第一边，这是引理4；对第二边，利用 $P$ 上的对偶定理写成
+\[
+H^p(X,\dOO_X(-m))'
+=\operatorname{Ext}_{\dOO_P}^{r-p}(P;\dOO_X(-m),\Omega_P^r).
+\]
+当 $p<n$ 且 $m$ 充分大时，右端为零。这由引理5（其中令 $X=P$）以及如下事实得到：$\dOO_X$ 作为 $P$ 上的凝聚代数层，其同调维数不超过 $r-n$，因为 $X$ 非奇异。因此
+\[
+\dExt_{\dOO_P}^{r-p}(\dOO_X,\Omega_P^r)=0\qquad(p<n).
+\]
+
+\section{奇异代数簇的对偶定理}
+设 $X$ 是 $r$ 维射影空间 $P$ 中一个 $n$ 维闭子集。这里公式 (5.6) 应写成
+\begin{equation}
+H^n(X,F)'\simeq\operatorname{Hom}_{\dOO_X}(X;F,\omega_X^n)
+=\operatorname{Ext}_{\dOO_X}^{0}(X;F,\omega_X^n),\tag{6.1}
+\end{equation}
+其中置
+\begin{equation}
+\omega_X^n=E^0(\dOO_X)=\dExt_{\dOO_P}^{r-n}(\dOO_X,\Omega_P^r).
+\tag{6.2}
+\end{equation}
+如命题5所述，这样引入的层实际上与所选的 $X$ 到非奇异代数簇 $P$ 的嵌入无关。在 (6.1) 中取 $F=\omega_X^n$，得到
+\begin{equation}
+H^n(X,\omega_X^n)'\simeq
+\operatorname{Hom}_{\dOO_X}(X;\omega_X^n,\omega_X^n).
+\tag{6.2}
+\end{equation}
+因而 $H^n(X,\omega_X^n)'$ 中存在一个对应于 $\omega_X^n$ 自身的恒等同态的特定元素：
+\begin{equation}
+\gamma:H^n(X,\omega_X^n)\longrightarrow k.\tag{6.3}
+\end{equation}
+
+\origpage{32}{149-18}
+现在考虑由 Ext 的复合定义的配对
+\begin{equation}
+H^p(X,F)\times\operatorname{Ext}_{\dOO_X}^{n-p}(X;F,\omega_X^n)
+\longrightarrow H^n(X,\omega_X^n),\tag{6.4}
+\end{equation}
+再与 (6.3) 中的 $\gamma$ 复合，得到具有函子性且与上边缘算子相容的同态
+\begin{equation}
+\operatorname{Ext}_{\dOO_X}^{n-p}(X;F,\omega_X^n)
+\longrightarrow H^p(X,F)',\tag{6.5}
+\end{equation}
+它推广了 (5.2)。可以验证，当 $p=n$ 时，所得的正是同构 (6.1)。在这些约定下，有：
+\begin{statement}{定理 3 bis}
+给定整数 $k\geq0$，关于 $X$ 的下列四个条件等价：
+\begin{enumerate}[label=\roman*.]
+\item 对 $n-k\leq p\leq n$，函子性的同态 (6.5) 是同构；
+\item 对 $n-k\leq p<n$，$m$ 充分大时 $H^p(X,\dOO_X(-m))=0$；
+\item 对 $n-k\leq p<n$，$X$ 上凝聚代数层范畴中的函子 $H^p(X,F)$ 可余抹去；
+\item 当 $0<i\leq k$ 时，$E^i(\dOO_X)=\dExt_{\dOO_P}^{r-n+i}(\dOO_X,\Omega_P^r)=0$。
+\end{enumerate}
+\end{statement}
+\begin{proof}
+由引理4，i 推出 ii；由引理3，ii 推出 iii。再运用熟知的标准论证得到 iii 推出 i，因为这时 (6.5) 两边在 $n-k\leq p<n$ 时都是可余抹去函子，第一边的这一性质由引理4保证。最后证明 ii 与 iv 等价，它由下面命题的推论得出。
+\end{proof}
+\begin{statement}{命题 6}
+设 $F$ 是 $X$ 上的凝聚代数层，$i$ 是整数。则 $m$ 充分大时，有同构
+\begin{equation}
+H^i(X,F(-m))'\simeq H^0\bigl(X,E^{n-i}(F)(m)\bigr),\tag{6.6}
+\end{equation}
+其中置（比较第3节的命题5）
+\begin{equation}
+E^j(F)=\dExt_{\dOO_P}^{r-n+j}(F,\Omega_P^r).\tag{6.7}
+\end{equation}
+\end{statement}
+事实上，由 $P$ 上的对偶定理，(6.6) 左端同构于
+\[
+\operatorname{Ext}_{\dOO_P}^{r-i}(P;F(-m),\Omega_P^r)。
+\]
+于是 (6.6) 由引理5得到。
+
+\origpage{33}{149-19}
+\begin{statement}{推论}
+$m$ 充分大时 $H^i(X,F(-m))=0$ 的充要条件是 $E^{n-i}(F)=0$。
+\end{statement}
+回顾一下，$E^j(F)$ 实际上与所选的射影嵌入无关。推论中的条件纯属局部性质，所以如果对 $F$ 成立，对任意局部同构于某个 $F^m$ 的层也成立。特别地，若这个条件对 $\dOO_X$ 成立，就对每个局部自由凝聚代数层成立。例如，$X$ 非奇异时，对所有 $i<n$ 都是如此；$X$ 没有退化成单点的分支时，对 $i=0$ 是如此；$X$ \term{正规}{normal}{normale}且所有分支的维数都大于1时，对 $i=0,1$ 是如此（参见[3]）。要使它对所有 $i<k$ 成立，按定义，其充要条件是局部环 $\dOO_x$（$x\in X$）的“\term{同调余维}{homological codimension}{codimension homologique}”不小于 $k$，这一概念参见[4]。当 $k=n$ 时，由定理3 bis，这意味着 $X$ 的对偶定理成立，即 (6.5) 对所有 $p,F$ 都是同构。可以对局部环 $\dOO_x$ 给出许多等价条件（Nagata），例如它们满足 Cohen--Macaulay 的\term{等维定理}{equidimensionality theorem}{théorème d'équidimensionnalité}。一个满足这些条件的例子是：$X$ 局部是某非奇异环境代数簇中的“\term{完全交}{complete intersection}{intersection complète}”。
+
+\section{Poincaré 对偶}
+设 $X$ 是 $n$ 维非奇异射影代数簇。则 $H^*(X)=H^*(X,\Omega_X^*)$ 是有限维的\term{双分次反交换代数}{bigraded anticommutative algebra}{algèbre anticommutative bigraduée}。我们按总次数分次，因此 $H^{p,q}(X)=H^p(X,\Omega_X^q)$ 的次数是 $p+q$。$H^*(X)$ 的次数介于 $0$ 与 $2n$。由定理2及定理3的推论，$H^*(X)$ 是一个 $2n$ 维的“\term{Poincaré 代数}{Poincaré algebra}{algèbre de Poincaré}”，即 $H^{2n}(X)$ 给定了与基域 $k$ 的同构，而乘积
+\[
+H^m(X)\times H^{2n-m}(X)\longrightarrow H^{2n}(X)\simeq k
+\]
+给出 $H^m(X)$ 与 $H^{2n-m}(X)$ 之间的对偶。此外，若 $Y$ 是另一个非奇异射影代数簇，凝聚代数层的 Künneth 公式给出
+\begin{equation}
+H^*(X\times Y)=H^*(X)\otimes H^*(Y),\tag{7.1}
+\end{equation}
+这个同构与 Poincaré 代数结构相容。此外，$H^*(X)$ 作为分次交换代数是关于 $X$ 的\term{反变函子}{contravariant functor}{foncteur contravariant}：态射 $f:Y\to X$ 显然定义一个分次代数同态
+
+\origpage{34}{149-20}
+\begin{equation}
+f^*:H^*(X)\longrightarrow H^*(Y).\tag{7.2}
+\end{equation}
+因为这些都是 Poincaré 代数，取转置得到向量空间同态
+\begin{equation}
+f_*:H^*(Y)\longrightarrow H^*(X).\tag{7.3}
+\end{equation}
+第4节已经说明，$f^*$ 对非奇异闭链所对应的上同调类的作用，几何上就是取闭链逆像所对应的上同调类。在目前情形下，还需要证明 (7.3) 同样对应于闭链的“\term{正像}{direct image}{image directe}”运算。至少在适当的非奇异性条件下，这可以由下述特例推出。
+\begin{statement}{定理 4}
+若 $f$ 是非奇异子簇 $Y^m$ 到 $X^n$ 的包含映射，以 $1_Y$ 表示 $H(Y)$ 的单位元，则
+\begin{equation}
+f_*(1_Y)=P_X(Y),\tag{7.4}
+\end{equation}
+右端是与 $Y$ 相伴的 $X$ 中的上同调类。
+\end{statement}
+这个公式等价于
+\begin{equation}
+\langle\xi^{m,m},P_X(Y)\rangle\,\varepsilon_Y=f^*(\xi^{m,m}),
+\qquad \xi^{m,m}\in H^m(X,\Omega_X^m),\tag{7.4 bis}
+\end{equation}
+其中 $\varepsilon_Y$ 是 $H^m(Y,\Omega_Y^m)$ 中的基本元素；对非奇异射影代数簇而言，这也给出了与 $Y$ 相伴的上同调类的另一种定义。为证明定理4，借助定理3，可以把同态
+\[
+H^m(X,\Omega_X^m)\longrightarrow H^m(Y,\Omega_Y^m)=H^m(X,\Omega_Y^m)
+\]
+的转置解释为同态链
+\begin{equation}
+\begin{gathered}
+H^{n-m}(X,\Omega_X^{n-m})\xrightarrow{\sim}
+\operatorname{Ext}_{\dOO_X}^{n-m}(X;\Omega_X^m,\Omega_X^n)\\
+\longleftarrow\operatorname{Ext}_{\dOO_X}^{n-m}(X;\Omega_Y^m,\Omega_X^n)
+\xrightarrow{\sim}\operatorname{Hom}_{\dOO_X}(X;\Omega_Y^m,\Omega_Y^m).
+\end{gathered}\tag{7.5}
+\end{equation}
+可以验证，$H^m(Y,\Omega_Y^m)$ 的对偶中的元素 $1_Y$，恰与右端中对应于 $\Omega_Y^m$ 的恒等自同态的元素相同；另一方面，这个元素在 $H^{n-m}(X,\Omega_X^{n-m})$ 中的像正是 $P_X(Y)$。这些相容性其实在第4节就可以提出，而且对任意非奇异代数簇都成立；例如第二个相容性由下述典范同态图的交换性得到。
+
+\origpage{35}{149-21}
+为使图式紧凑，记 $c=n-m$，并置
+\[
+\begin{aligned}
+U&=\operatorname{Ext}_{\dOO_X}^{c}(X;\Omega_X^m,\Omega_X^n),\\
+V&=\operatorname{Ext}_{\dOO_X}^{c}(X;\Omega_Y^m,\Omega_X^n),\\
+W&=\operatorname{Hom}_{\dOO_X}(X;\Omega_Y^m,\Omega_Y^m),\\
+U_0&=\operatorname{Ext}_{\dOO_X}^{c}(X;\dOO_X,\Omega_X^c),\\
+V_0&=\operatorname{Ext}_{\dOO_X}^{c}(X;\dOO_Y,\Omega_X^c),\\
+W_0&=\operatorname{Hom}_{\dOO_X}(X;\Omega_X^m,\Omega_Y^m).
+\end{aligned}
+\]
+于是原交换图重绘为
+\begin{equation}
+\begin{tikzcd}[column sep=huge,row sep=large]
+U\arrow[d]&V\arrow[l]\arrow[r,"\sim"]\arrow[d]&W\arrow[d]\\
+U_0&V_0\arrow[l]\arrow[r,"\sim"]&W_0.
+\end{tikzcd}\tag{7.6}
+\end{equation}
+这样就得到了与紧致定向流形上的 Poincaré 对偶形式体系完全对应的理论。特别地，定理4使我们能确定 $X\times X$ 中与\term{对角线}{diagonal}{diagonale}相伴的上同调类。再用熟知的论证，例如可推出一个\term{Lefschetz 公式}{Lefschetz formula}{formule de Lefschetz}：
+\begin{statement}{定理 5}
+设 $f$ 是非奇异射影代数簇 $X$ 的\term{自同态}{endomorphism}{endomorphisme}，其\term{不动点}{fixed point}{point fixe}的\term{重数}{multiplicity}{multiplicité}都为1。则不动点个数与 $f$ 在各 $H^i(X)$ 上诱导的自同态的\term{迹}{trace}{trace}的交错和，模 $k$ 的特征同余。
+\end{statement}
+这里对 $f$ 所加的限制，源于第4节注中提到的困难。不过，若 $f$ 与某个所有不动点重数都为1的自同态“同伦”，Lefschetz 公式仍成立。
+
+\section{对偶定理的推广}
+设 $X$ 为非奇异代数簇，且其上每个凝聚代数层 $F$ 都同构于某个局部自由凝聚代数层的商；$X$ 是某射影空间的局部闭子集时，这个条件成立。于是，每个凝聚代数层 $F$ 都有局部自由层组成的有限分解 $L$。给定两个这样的分解，总能找到第三个分解，以及从它到前两个分解、与增广相容的同态。同样，若 $L$ 是 $F$ 的一个有限局部自由分解，又给定同态 $F'\to F$，则存在 $F'$ 的一个有限局部自由分解 $L'$，以及与 $F'\to F$ 相容的同态 $L'\to L$；若 $F'\to F$ 满射，还可令 $L'\to L$ 满射。因此，给定整数 $r,s\geq0$，可以定义两个关于自变量 $A_1,\ldots,A_r;B_1,\ldots,B_s$ 的上同调\term{多函子}{multifunctor}{multifoncteur}。
+
+\origpage{36}{149-22}
+各自变量在 $X$ 上的凝聚代数层范畴中变化；两个多函子的值分别落在 $X$ 上的凝聚代数层范畴和 $H^0(X,\dOO_X)$ 模范畴中。定义为
+\begin{equation}
+\begin{aligned}
+\underline T_r^{s*}(A_1,\ldots,A_r;B_1,\ldots,B_s)
+&=H^*\bigl(\dHom_{\dOO_X}(\mathcal A,\mathcal B)\bigr),\\
+T_r^{s*}(A_1,\ldots,A_r;B_1,\ldots,B_s)
+&=\mathbb H^*\bigl(X,\dHom_{\dOO_X}(\mathcal A,\mathcal B)\bigr),\\
+\mathcal A&=L(A_1)\otimes\cdots\otimes L(A_r),\\
+\mathcal B&=L(B_1)\otimes\cdots\otimes L(B_s).
+\end{aligned}\tag{8.1}
+\end{equation}
+这里 $L(F)$ 是凝聚代数层 $F$ 的一个有限局部自由分解；$\mathbb H^*(X,K)$ 表示 $X$ 关于层复形 $K$ 的超上同调，原文记为 $\underline R^*\Gamma(K)$。若 $r=0$ 或 $s=0$，则相应的 $L(A_i)$ 或 $L(B_j)$ 的张量积取为 $\dOO_X$。特别地，$\underline T_0^0$ 和 $T_0^0$ 是不含自变量的分次函子：$\underline T_0^0$ 集中在零次，等于层 $\dOO_X$；$T_0^0$ 则等于 $H^*(X,\dOO_X)$。对第一行而言，(8.1) 右端与分解的选取无关是显然的，因为此时问题是局部的；对第二行，结合前面的概括性说明以及层复形
+\[
+K=\dHom_{\dOO_X}\bigl(L(A_1)\otimes\cdots,L(B_1)\otimes\cdots\bigr)
+\]
+的超上同调谱序列即可得到。该谱序列收敛于 $X$ 关于 $K$ 的超上同调，初始项是 $H^p(X,H^q(K))$，也就是
+\begin{equation}
+E_2^{p,q}=H^p\bigl(X,(\underline T_r^s)^q(A_1,\ldots,A_r;B_1,\ldots,B_s)\bigr).
+\tag{8.2}
+\end{equation}
+这也说明谱序列本身与分解的选取无关，其收敛项为 (8.1) 中定义整体函子的那一项。注意每个正合列 $0\to F'\to F\to F''\to0$ 都可以用有限局部自由复形的一个正合列来分解，便容易定义相对于各自变量 $A_i,B_j$ 的上边缘算子。
+
+在函子族 $\underline T_r^{s*}$ 以及 $T_r^{s*}$ 中，可以定义与张量演算类似的运算，由定义式 (8.1) 立即写出。比如有推广第2节复合运算的\term{复合}{composition}{composition}。以 $\mathbf A,\mathbf B$ 表示各自的自变量组，则此运算为
+\begin{equation}
+\begin{aligned}
+T_r^{s*}(\mathbf A;\mathbf B)\times T_{r'}^{s'*}(\mathbf A';\mathbf B')
+\longrightarrow T_{r+r'}^{s+s'*}(\mathbf A,\mathbf A';\mathbf B,\mathbf B').
+\end{aligned}\tag{8.3}
+\end{equation}
+它满足显然的结合律，并与函子性的同态、上边缘同态以及谱序列相容。同样还有\term{对称运算}{symmetry operation}{opération de symétrie}，具体写法留给读者。此外，只要某个自变量 $A_i$ 等于某个 $B_j$，就有\term{缩并}{contraction}{contraction}运算：
+
+\origpage{37}{149-23}
+\begin{equation}
+\begin{aligned}
+&T_r^{s*}(A_1,\ldots,A_{i-1},C,A_{i+1},\ldots,A_r;
+B_1,\ldots,B_{j-1},C,B_{j+1},\ldots,B_s)\\
+&\hspace{3em}\longrightarrow
+T_{r-1}^{s-1,*}(A_1,\ldots,\widehat A_i,\ldots,A_r;
+B_1,\ldots,\widehat B_j,\ldots,B_s).
+\end{aligned}\tag{8.4}
+\end{equation}
+若某个自变量 $A_i$ 是局部自由层，则可以删去它，代价是把某个 $A_j$（$j\ne i$）换成 $A_j\otimes A_i$，或把某个 $B_k$ 换成 $B_k\otimes A_i'$，其中 $A_i'=\dHom_{\dOO_X}(A_i,\dOO_X)$。当某个自变量 $B_j$ 局部自由时，也有类似的计算规则。特别地，总可以删去等于 $\dOO_X$ 的自变量。若除了至多一个 $B_i$ 之外，所有自变量都局部自由，上述规则便给出函子性的同构
+\begin{equation}
+T_r^{s*}(A_1,\ldots,A_r;B_1,\ldots,B_s)
+=H^*(X,A_1'\otimes\cdots\otimes A_r'\otimes B_1\otimes\cdots\otimes B_s).
+\tag{8.5}
+\end{equation}
+这是因为可归结为 $r=0,s=1$ 的情形，此时结论显然；也可以直接运用初始项为 (8.2) 的谱序列。对 $\underline T_r^s$ 也有与上述运算对应的运算。这些运算之间的关系，与张量演算中相应运算的关系一样。
+
+设 $X$ 的维数为 $n$。依次施行一次张量复合 (8.3)，再对重复自变量作缩并 (8.4)，得到配对
+\begin{equation}
+\begin{aligned}
+&(T_r^s)^p(A_1,\ldots;B_1,\ldots)\\
+&\quad\times(T_s^r)^{n-p}(B_1,\ldots;A_1,\ldots,A_r\otimes\Omega_X^n)
+\longrightarrow H^n(X,\Omega_X^n).
+\end{aligned}\tag{8.6}
+\end{equation}
+\begin{statement}{定理 6}
+若 $X$ 是非奇异射影代数簇，则配对 (8.6) 给出对偶。
+\end{statement}
+这可以纯形式地由定理3的推论得到。事实上，该推论容易推出：若 $K$ 是局部自由凝聚代数层组成的复形，则 $X$ 关于 $K$ 的超上同调与 $X$ 关于 $K'\otimes\Omega_X^n$ 的超上同调，由自然配对
+\begin{equation}
+\mathbb H^p(X,K)\times\mathbb H^{n-p}(X,K'\otimes\Omega_X^n)
+\longrightarrow H^n(X,\Omega_X^n)
+\tag{8.7}
+\end{equation}
+相互对偶。运用初始项为 $H^p(H^q(X,K))$ 的谱序列，以及 $K'\otimes\Omega_X^n$ 的类似谱序列，就能看出这一点。再用定义 (8.1)，定理6便由此得到。
+
+\origpage{38}{149-24}
+\begin{statement}{注}
+\begin{enumerate}[label=\arabic*°.]
+\item 对定理6之前的定义，并不需要 $X$ 非奇异，因为并非必须只使用有限分解。不过，若 $X$ 有奇点，就不能预先断言 $(\underline T_r^s)^p(A_1,\ldots;B_1,\ldots)$ 是凝聚层，因为层复形
+\[
+\dHom_{\dOO_X}\bigl(L(A_1)\otimes\cdots,L(B_1)\otimes\cdots\bigr)
+\]
+的某个给定总次数中会出现无穷多个分量。
+\item 容易验证，在 (8.1) 中，可以把某一个 $L(B_i)$ 换成 $B_i$。结合命题3，这就说明
+\begin{equation}
+\begin{aligned}
+\underline T_1^{1*}(A;B)&=\dExt_{\dOO_X}^{*}(A,B),\\
+T_1^{1*}(A;B)&=\operatorname{Ext}_{\dOO_X}^{*}(X;A,B).
+\end{aligned}\tag{8.8}
+\end{equation}
+特别地，在 (8.6) 中取 $r=s=1$、$A_1=\dOO_X$，就重新得到定理3。公式 (8.8) 还蕴含
+\[
+T_0^{1*}(B)=H^*(X,B),\qquad
+T_1^{0*}(A)=\operatorname{Ext}_{\dOO_X}^{*}(X;A,\dOO_X).
+\]
+\item 由 (8.1) 可见，一般而言，函子 $\underline T_r^{s*}$ 和 $T_r^{s*}$ 既有正次数分量，也有负次数分量。利用注2，若 $\dim X=n$，则 $\underline T_r^{s*}$ 非零分量的次数范围在 $s>0$ 时为 $-(s-1)n$ 至 $rn$，在 $s=0$ 时为 $0$ 至 $rn$；$T_r^{s*}$ 非零分量的次数范围在 $s>0$ 时为 $-(s-1)n$ 至 $(r+1)n$，在 $s=0$ 时为 $0$ 至 $(r+1)n$。（如果我没有算错，当 $r>0$ 时，后两个范围甚至可分别缩至 $-(s-1)n$ 至 $rn$，以及 $0$ 至 $rn$。）
+\end{enumerate}
+\end{statement}
+
+\section*{参考文献}
+\addcontentsline{toc}{section}{参考文献}
+\begin{enumerate}[label={[\arabic*]}]
+\item CARTIER, Pierre. \emph{Les groupes $\operatorname{Ext}^s(A,B)$}（$\operatorname{Ext}^s(A,B)$ 群）. Séminaire A. Grothendieck: Algèbre homologique，第1卷，1957年，第3号。
+\item GROTHENDIECK, Alexandre. \emph{Sur quelques points d'algèbre homologique}（同调代数中的若干问题）. Tohoku Mathematical Journal，第9卷，1957年，第119--183页。
+\item SERRE, Jean-Pierre. \emph{Faisceaux algébriques cohérents}（凝聚代数层）. Annals of Mathematics，第61卷，1955年，第197--278页。
+\item SERRE, Jean-Pierre. \emph{Sur la dimension homologique des anneaux et des modules noethériens}（诺特环与诺特模的同调维数）. Proceedings of the International Symposium on Algebraic Number Theory [1955, Tokyo et Nikko]. Tokyo: Science Council of Japan，1956年，第175--189页。
+\end{enumerate}
+
+\origpage{39}{149-25}
+\section*{补遗}
+\addcontentsline{toc}{section}{补遗}
+第13页注中指出的困难，现在已经完全解决；关键在于把对偶定理推广到任意代数簇，包括带任意奇点的代数簇。这个理论可以在“\term{概形理论}{scheme theory}{théorie des schémas}”的一般框架中表述，详见 J. Dieudonné 与 A. Grothendieck 正在撰写的《\emph{Éléments de géométrie algébrique}》（《代数几何原理》）。下面一文也给出了一些说明：
+\begin{quote}
+GROTHENDIECK, A. \emph{Cohomology theory of algebraic varieties}（代数簇的上同调理论）. Congrès international des Mathématiciens，1958年，Edinburgh（即将出版）。
+\end{quote}
+\begin{flushright}1959年4月\end{flushright}

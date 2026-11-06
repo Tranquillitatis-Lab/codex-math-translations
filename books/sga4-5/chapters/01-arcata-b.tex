@@ -1,0 +1,753 @@
+\origpage{45}{39}
+\section{固有态射的换基定理}\label{I:4}
+\subsection{引言}\label{I:4-1}
+本章证明下述定理，并介绍它的应用。
+\begin{theorem}\label{I:4-1-1}
+设 $f:X\to S$ 是概形间的\term{固有态射}{proper morphism}{morphisme propre}，$\sF$ 是 $X$ 上的阿贝尔\term{挠层}{torsion sheaf}{faisceau de torsion}。那么，对任意 $q\geqslant0$，$\eR^qf_*\sF$ 在 $S$ 的几何点 $s$ 处的茎，同构于 $f$ 在 $s$ 处的纤维 $X_s=X\otimes_S\spec k(s)$ 的上同调 $\h^q(X_s,\sF)$。
+\end{theorem}
+对于拓扑空间之间固有且分离的连续映射 $f:X\to S$（分离是指 $X\times_SX$ 中的对角线闭），以及 $X$ 上的阿贝尔层 $\sF$，相应结论既熟知又初等：由于 $f$ 是闭映射，当 $V$ 遍历 $s$ 的邻域时，$f^{-1}(V)$ 构成 $X_s$ 的邻域基；而且可以验证，当 $U$ 遍历 $X_s$ 的邻域时，
+\[
+\h^\bullet(X_s,\sF)=\varinjlim_U\h^\bullet(U,\sF).
+\]
+在实际情形中，$X_s$ 往往还有一个邻域基 $\cU$，使得 $X_s$ 是每个 $U\in\cU$ 的形变收缩核。因此，当 $\sF$ 是常值层时，有 $\h^\bullet(X_s,\sF)=\h^\bullet(U,\sF)$。形象地说，特殊纤维吞下了一般纤维。
+
+概形情形的证明要精细得多，而且必须假设 $\sF$ 是挠层（\cite[XII.2]{sga4}）。根据 $\eR^qf_*\sF$ 的茎的描述（\ref{I:2-3-3}），定理（\ref{I:4-1-1}）实质上等价于以下定理。
+\begin{theorem}\label{I:4-1-2}
+设 $A$ 是\term{严格 Hensel 局部环}{strictly Henselian local ring}{anneau local strictement hensélien}，$S=\spec(A)$；设 $f:X\to S$ 是固有态射，$X_0$ 是它的闭纤维。那么，对 $X$ 上任意阿贝尔挠层 $\sF$ 和任意 $q\geqslant0$，有
+\[
+\h^q(X,\sF)\iso\h^q(X_0,\sF).
+\]
+\end{theorem}
+通过取极限，只需证明 $A$ 是有限型 $\dZ$-代数在某素理想处的严格 Hensel 化的情形。首先处理 $q=0$ 或 $1$、$\sF=\dZ/n$ 的情况（\ref{I:4-2}）。利用\term{可构造层}{constructible sheaf}{faisceau constructible}（\ref{I:4-3}）的一个论证，还能说明只需考虑 $\sF$ 为常值层的情况。另一方面，分解归约（\ref{I:3-4-3}）使我们可以假设 $X_0$ 是曲线；这时只剩下 $q=2$ 的情形（\ref{I:4-4}）需要证明。
+
+除其他应用（\ref{I:4-6}）外，这个定理还使我们能够定义固有支撑上同调（\ref{I:4-5}）。
+
+\origpage{46}{40}
+\subsection{\texorpdfstring{$q=0$}{q=0} 或 \texorpdfstring{$1$}{1} 且 \texorpdfstring{$\sF=\dZ/n$}{F=Z/n} 时的证明}\label{I:4-2}
+$q=0$ 且 $\sF$ 为常值层时的结论，等价于下面的命题（\term{Zariski 连通性定理}{Zariski connectedness theorem}{théorème de connexion de Zariski}）。
+\begin{proposition}\label{I:4-2-1}
+设 $A$ 是 Noether Hensel 局部环，$S=\spec(A)$；设 $f:X\to S$ 是固有态射，$X_0$ 是它的闭纤维。那么，连通分支集合 $\pi_0(X)$ 与 $\pi_0(X_0)$ 一一对应。
+\end{proposition}
+等价地，只需证明同时为开集和闭集的子集所组成的集合 $\operatorname{Of}(X)$ 与 $\operatorname{Of}(X_0)$ 一一对应。已知 $\operatorname{Of}(X)$ 与 $\Gamma(X,\sO_X)$ 的幂等元集合一一对应，$\operatorname{Of}(X_0)$ 与 $\Gamma(X_0,\sO_{X_0})$ 的幂等元集合也一一对应。因此，只需证明典范映射
+\[
+\operatorname{Idem}\Gamma(X,\sO_X)\longrightarrow\operatorname{Idem}\Gamma(X_0,\sO_{X_0})
+\]
+为双射。
+
+记 $\fm$ 为 $A$ 的极大理想，$\Gamma(X,\sO_X)^\wedge$ 为 $\Gamma(X,\sO_X)$ 关于 $\fm$-进拓扑的完备化；对每个整数 $n\geqslant0$，置 $X_n=X\otimes_AA/\fm^{n+1}$。由固有态射的有限性定理 \cite[III.3.2]{ega}，$\Gamma(X,\sO_X)$ 是有限 $A$-代数。由于 $A$ 是 Hensel 环，典范映射
+\[
+\operatorname{Idem}\Gamma(X,\sO_X)\longrightarrow\operatorname{Idem}\Gamma(X,\sO_X)^\wedge
+\]
+是双射。特别地，典范映射
+\[
+\operatorname{Idem}\Gamma(X,\sO_X)^\wedge\longrightarrow\varprojlim_n\operatorname{Idem}\Gamma(X_n,\sO_{X_n})
+\]
+也是双射。而 $X_n$ 与 $X_0$ 有相同的底拓扑空间，所以对每个 $n$，典范映射
+\[
+\operatorname{Idem}\Gamma(X_n,\sO_{X_n})\longrightarrow\operatorname{Idem}\Gamma(X_0,\sO_{X_0})
+\]
+都是双射。证明完成。
+
+由于 $\h^1(X,\dZ/n)$ 与 $X$ 的群为 $\dZ/n$ 的 Galois 平展覆盖的同构类集合一一对应，$q=1$、$\sF=\dZ/n$ 时的定理由下面的命题推出。
+\begin{proposition}\label{I:4-2-2}
+设 $A$ 是 Noether Hensel 局部环，$S=\spec(A)$；设 $f:X\to S$ 是固有态射，$X_0$ 是它的闭纤维。那么，限制函子
+\[
+\operatorname{Rev.et}(X)\longrightarrow\operatorname{Rev.et}(X_0)
+\]
+是\term{范畴等价}{equivalence of categories}{équivalence de catégories}。
+\end{proposition}
+（若 $X_0$ 连通，并选定了 $X_0$ 的一个几何点为基点，这就是说，投有限基本群之间的典范映射 $\pi_1(X_0)\to\pi_1(X)$ 为双射。）
+
+命题（\ref{I:4-2-1}）说明这个函子是全忠实的。事实上，若 $X'$ 和 $X''$ 是 $X$ 的两个平展覆盖，则从 $X'$ 到 $X''$ 的一个 $X$-态射由其图像确定，而该图像是 $X'\times_XX''$ 中同时为开集和闭集的子集。
+
+因此，只需说明 $X_0$ 的每个平展覆盖 $X'_0$ 都能延拓为 $X$ 的平展覆盖。已知平展覆盖不受幂零元影响 \cite[ch.1]{sga1}，所以对每个 $n\geqslant0$，$X'_0$ 都能唯一地提升为 $X_n$ 的平展覆盖 $X'_n$；也就是说，它能提升为 $X$ 沿 $X_0$ 的形式完备化 $\fX$ 的平展覆盖 $\fX'$。由 Grothendieck 关于形式凝聚层代数化的定理（存在性定理，\cite[III.5]{ega}），$\fX'$ 是 $\bar X=X\otimes_A\hat A$ 的某个平展覆盖 $\bar X'$ 的形式完备化。
+
+通过取极限，只需证明 $A$ 是有限型 $\dZ$-代数的 Hensel 化的情形。这时，可对函子
+\[
+\sF:(\textnormal{$A$-代数})\longrightarrow(\textnormal{集合})
+\]
+应用 Artin 逼近定理；这个函子把 $A$-代数 $B$ 映到 $X\otimes_AB$ 的平展覆盖的同构类集合。它确实是局部有限呈示的：若 $(B_i)$ 是 $A$-代数的滤过归纳系，$B=\varinjlim B_i$，则 $\sF(B)=\varinjlim\sF(B_i)$。根据 Artin 定理，给定 $\bar\xi\in\sF(\hat A)$（此处取 $\bar X'$ 的同构类），就存在 $\xi\in\sF(A)$，使它与 $\bar\xi$ 在 $\sF(A/\fm)$ 中的像相同。换言之，存在 $X$ 的平展覆盖 $X'$，其在 $X_0$ 上的限制同构于 $X'_0$。
+
+\subsection{可构造层}\label{I:4-3}
+本节考虑 Noether 概形 $X$，并把 $\et X$ 上的阿贝尔层简称为 $X$ 上的层。
+\begin{definition}\label{I:4-3-1}
+若 $X$ 上的层 $\sF$ 可由 $X$ 的一个平展覆盖表示，则称 $\sF$ \term{局部常值且可构造}{locally constant constructible}{localement constant constructible}（简记 l.c.c.）。
+\end{definition}
+\begin{definition}\label{I:4-3-2}
+若 $X$ 上的层 $\sF$ 满足下列等价条件，则称它\term{可构造}{constructible}{constructible}：
+\begin{enumerate}[\indent (i)]
+\item 存在 $X$ 的有限个子概形 $X_i$，其像覆盖 $X$，并使 $\sF$ 在每个 $X_i$ 上的限制局部常值且可构造。
+\item 存在有限个有限态射 $p_i:X_i'\to X$，以及每个 $X_i'$ 上的常值可构造层 $C_i$（即由有限阿贝尔群定义的常值层），和一个单态射 $\sF\to\prod p_{i*}C_i$。
+\end{enumerate}
+\end{definition}
+容易验证，$X$ 上的可构造层构成一个阿贝尔范畴。此外，若 $u:\sF\to\sG$ 是层同态，且 $\sF$ 可构造，则层 $\im(u)$ 也可构造。
+\begin{lemma}\label{I:4-3-3}
+每个挠层 $\sF$ 都是可构造层的\term{滤过归纳极限}{filtered direct limit}{limite inductive filtrante}。
+\end{lemma}
+事实上，若 $j:U\to X$ 是 $X$ 上的有限型平展概形，则满足 $n\xi=0$ 的元素 $\xi\in\sF(U)$ 定义一个层同态 $j_!\const{\dZ/n}\to\sF$。其像（即使 $\xi$ 成为局部截面的最小子层）是 $\sF$ 的可构造子层。显然，$\sF$ 是这类子层的归纳极限。
+\begin{definition}\label{I:4-3-4}
+设 $\cC$ 是阿贝尔范畴，$T$ 是定义在 $\cC$ 上、取值于阿贝尔群范畴的函子。若对每个对象 $A\in\cC$ 和每个 $\alpha\in T(A)$，都存在 $\cC$ 中的单态射 $u:A\to M$，使 $T(u)\alpha=0$，则称 $T$ 在 $\cC$ 中\term{可消灭}{effaceable}{effaçable}。
+\end{definition}
+\begin{lemma}\label{I:4-3-5}
+对 $q>0$，函子 $\h^q(X,-)$ 在 $X$ 上可构造层的范畴中可消灭。
+\end{lemma}
+只需注意：若 $\sF$ 是可构造层，则必有某整数 $n>0$，使 $\sF$ 是 $\dZ/n$-模层。存在单态射 $\sF\hookrightarrow\sG$，其中 $\sG$ 是 $\dZ/n$-模层，且 $\h^q(X,\sG)=0$ 对所有 $q>0$ 成立。例如，可取 Godement 分解 $\prod_{x\in X}i_{x*}\sF_{\bar x}$ 为 $\sG$，其中 $x$ 遍历 $X$ 的点，$i_x:\bar x\to X$ 是中心在 $x$ 的几何点。根据（\ref{I:4-3-3}），$\sG$ 是可构造层的归纳极限；再利用 $\h^q(X,-)$ 与归纳极限可交换，即得引理。
+\begin{lemma}\label{I:4-3-6}
+设 $\varphi^\bullet:T^\bullet\to{T'}^\bullet$ 是定义在阿贝尔范畴 $\cC$ 上、取值于阿贝尔群范畴的上同调函子间的态射。假设 $T^q$ 对 $q>0$ 可消灭；设 $\cE$ 是 $\cC$ 的一族对象，且 $\cC$ 中每个对象都包含于某个属于 $\cE$ 的对象。那么，下列条件等价：
+\begin{enumerate}[\indent (i)]
+\item 对任意 $q\geqslant0$ 和任意 $A\in\ob\cC$，$\varphi^q(A)$ 为双射。
+\item 对任意 $M\in\cE$，$\varphi^0(M)$ 为双射，且 $\varphi^q(M)$ 对所有 $q>0$ 为满射。
+\item 对任意 $A\in\ob\cC$，$\varphi^0(A)$ 为双射，且 ${T'}^q$ 对所有 $q>0$ 可消灭。
+\end{enumerate}
+\end{lemma}
+证明对 $q$ 作归纳，没有困难。
+\begin{proposition}\label{I:4-3-7}
+设 $X_0$ 是 $X$ 的子概形。假设对每个正整数 $n$ 和每个 $X$ 上的有限概形 $X'$，典范映射
+\[
+\h^q(X',\dZ/n)\longrightarrow\h^q(X'_0,\dZ/n),\qquad X'_0=X'\times_XX_0,
+\]
+在 $q=0$ 时为双射，在 $q>0$ 时为满射。那么，对 $X$ 上每个挠层 $\sF$ 和每个 $q\geqslant0$，典范映射
+\[
+\h^q(X,\sF)\longrightarrow\h^q(X_0,\sF)
+\]
+都是双射。
+\end{proposition}
+通过取极限，只需证明 $\sF$ 可构造的情形。应用引理（\ref{I:4-3-6}）：取 $\cC$ 为 $X$ 上可构造层的范畴，$T^q=\h^q(X,-)$，${T'}^q=\h^q(X_0,-)$；$\cE$ 则取为形如 $\prod p_{i*}C_i$ 的可构造层的集合，其中 $p_i:X_i'\to X$ 为有限态射，$C_i$ 为 $X_i'$ 上的有限常值层。
+
+\subsection{证明的完成}\label{I:4-4}
+利用曲线纤维化方法（\ref{I:3-4-3}），可归约到相对维数 $\leqslant1$ 的情形。根据上一节，只需证明：若 $S$ 是 Noether 严格 Hensel 局部环的谱，$f:X\to S$ 是固有态射，其闭纤维 $X_0$ 的维数 $\leqslant1$，而 $n$ 是正整数\translatornote{原文在此及上一命题中写作 $n\geqslant0$。本论证使用的是挠系数 $\dZ/n$，所以此处取 $n>0$；$n=0$ 时 $\dZ/n=\dZ$，已超出所要证明的挠系数换基定理。}，则典范同态
+\[
+\h^q(X,\dZ/n)\longrightarrow\h^q(X_0,\dZ/n)
+\]
+在 $q=0$ 时为双射，在 $q>0$ 时为满射。
+
+$q=0$ 和 $1$ 的情形已在上文处理，而 $q\geqslant3$ 时有 $\h^q(X_0,\dZ/n)=0$，所以只需处理 $q=2$。显然可假设 $n$ 为素数幂。若 $n=p^r$，其中 $p$ 为 $S$ 的剩余域的特征，则 Artin--Schreier 理论给出 $\h^2(X_0,\dZ/p^r)=0$。若 $n=\ell^r$、$\ell\ne p$，则由 Kummer 理论得到交换图
+\[\xymatrix{
+\pic(X)\ar[d]\ar[r]^-\alpha&\h^2(X,\dZ/\ell^r)\ar[d]\\
+\pic(X_0)\ar[r]^-\beta&\h^2(X_0,\dZ/\ell^r)
+}\]
+其中 $\beta$ 为满射（第 \ref{I:3} 章已对代数闭域上的光滑曲线证明这一点；类似论证适用于可分闭域上的任意曲线）。
+
+因此，要完成证明，只需说明下面的命题。
+\begin{proposition}\label{I:4-4-1}
+设 $S$ 为 Noether Hensel 局部环的谱，$f:X\to S$ 为固有态射，其闭纤维 $X_0$ 的维数 $\leqslant1$。那么，典范限制映射
+\[
+\pic(X)\longrightarrow\pic(X_0)
+\]
+是满射。（实际上，只要 $f$ 分离且有限型即可。）
+\end{proposition}
+为简化证明，假设 $X$ 整，尽管这并非必要。$X_0$ 上每个可逆层都对应于一个 Cartier 除子（因为 $X_0$ 是曲线，因而拟射影），所以只需说明典范映射 $\Div(X)\to\Div(X_0)$ 是满射。
+
+$X_0$ 上每个除子都是一些支撑集中在单个非孤立闭点上的除子的线性组合。取这样的点 $x$，取 $\sO_{X_0,x}$ 中非可逆的正则元 $t_0$，并设 $D_0$ 是支撑集中在 $x$、局部方程为 $t_0$ 的除子。取 $x$ 在 $X$ 中的一个开邻域 $U$，使存在提升 $t_0$ 的截面 $t\in\Gamma(U,\sO_U)$。设 $Y$ 是 $U$ 中由 $t=0$ 定义的闭子集。适当缩小 $U$，可以假设 $Y\cap X_0$ 中只有点 $x$。于是，$Y$ 在 $x$ 处对 $S$ 拟有限；由于 $S$ 是 Hensel 局部环的谱，可得 $Y=Y_1\amalg Y_2$，其中 $Y_1$ 对 $S$ 有限，$Y_2$ 不与 $X_0$ 相交。此外，$X$ 在 $S$ 上分离，故 $Y_1$ 在 $X$ 中闭。
+
+再将 $U$ 缩小为 $x$ 的一个开邻域，可假设 $Y=Y_1$，即 $Y$ 在 $X$ 中闭。定义 $X$ 上提升 $D_0$ 的除子 $D$：令 $D|X\setminus Y=0$，$D|U=\dv(t)$。这一定义有意义，因为 $t$ 在 $U\setminus Y$ 上可逆。
+\subsubsection{备注}\label{I:4-4-2}
+当 $f$ 固有时，也可仿照命题（\ref{I:4-2-2}）的证明。事实上，由于 $X_0$ 是曲线，将 $X_0$ 上的可逆层提升到 $X_0$ 的各阶无穷小邻域 $X_n$ 没有障碍，因而可提升到 $X$ 沿 $X_0$ 的形式完备化 $\fX$。再依次应用 Grothendieck 存在性定理与 Artin 逼近定理，即可得证。
+
+\subsection{固有支撑上同调}\label{I:4-5}
+\begin{definition}\label{I:4-5-1}
+设 $X$ 是域 $k$ 上的分离有限型概形。根据 Nagata 定理，存在 $k$ 上的固有概形 $\bar X$ 及开浸入 $j:X\to\bar X$。对 $X$ 上每个挠层 $\sF$，记 $j_!\sF$ 为 $\sF$ 在 $\bar X$ 上的\term{零延拓}{extension by zero}{prolongement par zéro}，定义\term{固有支撑上同调}{cohomology with proper support}{cohomologie à support propre}群为
+\[
+\h_c^q(X,\sF)=\h^q(\bar X,j_!\sF).
+\]
+\end{definition}
+说明这个定义与所选\term{紧化}{compactification}{compactification} $j:X\to\bar X$ 无关。设 $j_1:X\to\bar X_1$ 和 $j_2:X\to\bar X_2$ 为两个紧化。映射 $x\mapsto(j_1(x),j_2(x))$ 将 $X$ 映到 $\bar X_1\times\bar X_2$；$X$ 在此映射下的像的闭包 $\bar X_3$ 也是 $X$ 的紧化。于是有交换图
+\[\xymatrix{
+&\bar X_1\\
+X\ar[ur]^-{j_1}\ar[rr]^-{(j_1,j_2)}\ar[dr]_-{j_2}&&\bar X_3\ar[ul]_-{p_1}\ar[dl]^-{p_2}\\
+&\bar X_2
+}\]
+其中 $p_1,p_2$ 为自然投影在 $\bar X_3$ 上的限制，都是固有态射。因此，只需处理有交换图
+\[\xymatrix{
+X\ar[r]^-{j_2}\ar[dr]_-{j_1}&\bar X_2\ar[d]^-p\\
+&\bar X_1
+}\]
+且 $p$ 为固有态射的情形。
+\begin{lemma}\label{I:4-5-2}
+有 $p_*(j_{2!}\sF)=j_{1!}\sF$；当 $q>0$ 时，有 $\eR^qp_*(j_{2!}\sF)=0$。
+\end{lemma}
+先指出，这个引理足以推出结论。由态射 $p$ 的 Leray 谱序列，对每个 $q\geqslant0$ 都有
+\[
+\h^q(\bar X_2,j_{2!}\sF)=\h^q(\bar X_1,j_{1!}\sF).
+\]
+要证明引理，对 $p$ 应用换基定理（\ref{I:4-1-1}），逐纤维考察即可。结论是直接的：在 $X$ 的点之上，$p$ 为同构；而在 $\bar X_1\setminus X$ 的点之上，$j_{2!}\sF$ 在 $p$ 的纤维上为零。
+\subsubsection{}\label{I:4-5-3}
+同样，若 $f:X\to S$ 是 Noether 概形之间的分离有限型态射，则存在固有态射 $\bar f:\bar X\to S$ 及开浸入 $j:X\to\bar X$。对 $X$ 上任意挠层 $\sF$，定义\term{固有支撑高阶正像}{higher direct image with proper support}{image directe supérieure à support propre} $\eR^qf_!$ 为
+\[
+\eR^qf_!\sF=\eR^q\bar f_*(j_!\sF).
+\]
+如前可验证，这一定义与所选紧化无关。
+\begin{theorem}\label{I:4-5-4}
+设 $f:X\to S$ 是 Noether 概形间的分离有限型态射，$\sF$ 是 $X$ 上的挠层。那么，$\eR^qf_!\sF$ 在 $S$ 的几何点 $s$ 处的茎，同构于 $f$ 的纤维 $X_s$ 的固有支撑上同调 $\h_c^q(X_s,\sF)$。
+\end{theorem}
+这只是固有态射换基定理（\ref{I:4-1-1}）的一个变体。更一般地，若
+\[\xymatrix{
+X\ar[d]^-f&X'\ar[l]_-{g'}\ar[d]^-{f'}\\
+S&S'\ar[l]^-g
+}\]
+是 Cartesian 图，则有典范同构
+\begin{equation*}\tag{4.5.4.1}\label{I:eq:4-5-4-1}
+g^*(\eR^qf_!\sF)\simeq\eR^qf'_!({g'}^*\sF).
+\end{equation*}
+
+\origpage{56}{50}
+\subsection{应用}\label{I:4-6}
+\begin{theorem}[消失定理]\label{I:4-6-1}
+设 $f:X\to S$ 是分离有限型态射，其纤维维数均 $\leqslant n$；设 $\sF$ 是 $X$ 上的挠层。那么，当 $q>2n$ 时，$\eR^qf_!\sF=0$。
+\end{theorem}
+根据换基定理，可假设 $S$ 是可分闭域的谱。若 $\dim X=n$，则存在 $X$ 的仿射开集 $U$，使 $\dim(X\setminus U)<n$。这时有正合列
+\[
+0\longrightarrow\sF_U\longrightarrow\sF\longrightarrow\sF_{X\setminus U}\longrightarrow0.
+\]
+对 $n$ 作归纳，只需证明 $X=U$ 为仿射概形的情形。再用曲线纤维化方法（\ref{I:3-4-1}）和换基定理，归约到可分闭域上的曲线；对曲线，所需结论由 Tsen 定理（\ref{I:3-3-6}）推出。
+\begin{theorem}[有限性定理]\label{I:4-6-2}
+设 $f:X\to S$ 是分离有限型态射，$\sF$ 是 $X$ 上的可构造层。那么，层 $\eR^qf_!\sF$ 可构造。
+\end{theorem}
+这里只考虑 $\sF$ 被某个在 $X$ 上可逆的整数消去的情形。
+
+证明可归约到如下情况：$\sF$ 为常值层 $\const{\dZ/n}$，$f:X\to S$ 为固有光滑态射，其纤维是亏格为 $g$ 的几何连通曲线。当 $n$ 在 $X$ 上可逆时，层 $\eR^qf_*\sF$ 局部自由且秩有限；$q>2$ 时为零（\ref{I:4-6-1}）。将 $\dZ/n$ 换为与之在 $S$ 上局部同构的层 $\dmu_n$，则有典范等式
+\begin{equation*}\tag{4.6.2.1}\label{I:eq:4-6-2-1}
+\begin{aligned}
+\eR^0f_*\dmu_n&=\dmu_n,\\
+\eR^1f_*\dmu_n&=\const\pic(X/S)_n,\\
+\eR^2f_*\dmu_n&=\dZ/n.
+\end{aligned}
+\end{equation*}
+\begin{theorem}[与经典上同调的比较]\label{I:4-6-3}
+设 $f:X\to S$ 是 $\dC$ 上有限型概形之间的分离态射，$\sF$ 是 $X$ 上的挠层。以上标 $\an{(-)}$ 表示过渡到通常拓扑空间的函子，以 $\eR^q\an f_!$ 表示沿 $\an f$ 的固有支撑正像函子的导出函子。则
+\[
+\an{(\eR^qf_!\sF)}\simeq\eR^q\an f_!\an\sF.
+\]
+特别地，当 $S$ 为一点、$\sF$ 为常值层 $\dZ/n$ 时，
+\[
+\h_c^q(X,\dZ/n)\simeq\h_c^q(\an X,\dZ/n).
+\]
+\end{theorem}
+利用换基定理作分解归约，可归约到 $X$ 是固有光滑曲线、$S$ 为一点、$\sF=\dZ/n$ 的情形。此时所考察的上同调群在 $q\ne0,1,2$ 时均为零。应用 \cite{se55}：当 $X$ 在 $\dC$ 上固有时，$\pi_0(X)=\pi_0(\an X)$，且 $\pi_1(X)$ 是 $\pi_1(\an X)$ 的投有限完备化，因而得到 $q=0,1$ 的结论。对 $q=2$，利用 Kummer 正合列，以及同样由 \cite{se55} 得到的等式 $\pic(X)=\pic(\an X)$。
+\begin{theorem}[仿射概形的上同调维数]\label{I:4-6-4}
+设 $X$ 是可分闭域上的有限型仿射概形，$\sF$ 是 $X$ 上的挠层。那么，当 $q>\dim(X)$ 时，有 $\h^q(X,\sF)=0$。
+\end{theorem}
+这个十分优美的证明见 \cite[XIV \S2,3]{sga4}。
+\subsubsection{备注}\label{I:4-6-5}
+在某种意义上，这个定理起到了 Morse 理论的作用。考虑经典情形：$X$ 是 $\dC$ 上的光滑仿射概形，嵌入标准仿射空间 $\dC^N$。那么，对几乎每个点 $p\in\dC^N$，$X$ 上的“到 $p$ 的距离”是 Morse 函数，其临界点的指标小于 $\dim(X)$。因此，$X$ 可通过粘接指标小于 $\dim(X)$ 的柄得到\translatornote{此处的“小于”应改为“不超过”，即指标 $\leqslant\dim_{\dC}X$；Morse 理论通常使用距离的平方。严格不等式一般不成立：光滑仿射曲线 $X=\dG_{m,\dC}$ 的 $\h^1(X^{\mathrm{an}},\dZ)=\dZ$，若只用指标严格小于 $1$ 的柄，则只能得到 $0$ 维胞腔复形，不可能产生这个一阶上同调。}，由此得到（\ref{I:4-6-4}）的经典对应结论。
+
+\origpage{58}{52}
+\section{光滑态射的局部无环性}\label{I:5}
+设 $X$ 是复解析流形，$f:X\to D$ 是到圆盘的态射。记 $[0,t]$ 为 $D$ 中端点为 $0,t$ 的闭线段，$(0,t]$ 为相应半开线段。若 $f$ 光滑，则包含映射
+\[
+j:f^{-1}\bigl((0,t]\bigr)\hookrightarrow f^{-1}\bigl([0,t]\bigr)
+\]
+是同伦等价：可以把特殊纤维 $X_0=f^{-1}(0)$ 推入 $f^{-1}([0,t])$。
+
+实际情形中，当 $t$ 足够小时，$f^{-1}((0,t])$ 在 $(0,t]$ 上是纤维丛，因而包含映射
+\[
+X_t=f^{-1}(t)\hookrightarrow f^{-1}\bigl((0,t]\bigr)
+\]
+也是同伦等价。由此得到的映射同伦类
+\[
+\cosp:X_0\hookrightarrow f^{-1}\bigl([0,t]\bigr)
+\xleftarrow\sim f^{-1}\bigl((0,t]\bigr)\xleftarrow\sim X_t
+\]
+称为\term{余特殊化态射}{cospecialization morphism}{morphisme de cospécialisation}。形象地说，对于光滑态射，一般纤维吞下了特殊纤维。
+
+现在不再要求 $f$ 光滑，但仍假设 $f^{-1}((0,t])$ 在 $(0,t]$ 上是纤维丛。只要 $j_*\dZ=\dZ$，且 $\eR^qj_*\dZ=0$ 对 $q>0$ 成立，仍可在上同调上定义态射 $\cosp^\bullet$。在这些假设下，$j$ 的 Leray 谱序列给出
+\[
+\h^\bullet\bigl(f^{-1}([0,t]),\dZ\bigr)
+\iso\h^\bullet\bigl(f^{-1}((0,t]),\dZ\bigr),
+\]
+而 $\cosp^\bullet$ 定义为复合映射
+\[
+\begin{aligned}
+\cosp^\bullet:\h^\bullet(X_t,\dZ)
+&\xleftarrow\sim\h^\bullet\bigl(f^{-1}((0,t]),\dZ\bigr)\\
+&\xleftarrow\sim\h^\bullet\bigl(f^{-1}([0,t]),\dZ\bigr)
+\longrightarrow\h^\bullet(X_0,\dZ).
+\end{aligned}
+\]
+$\eR^qj_*\dZ$ 在点 $x\in X_0$ 处的茎可如下计算。在一个环境空间中，取以 $x$ 为中心、半径 $\varepsilon$ 足够小的球 $B_\varepsilon$；再对足够小的 $\eta$，置 $E=X\cap B_\varepsilon\cap f^{-1}(\eta t)$。这称为 $x$ 处的\term{消没循环簇}{vanishing-cycle variety}{variété des cycles évanescents}。有
+\[
+\begin{aligned}
+(\eR^qj_*\dZ)_x
+&\xleftarrow\sim\h^q\bigl(X\cap B_\varepsilon\cap f^{-1}((0,\eta t]),\dZ\bigr)\\
+&\xrightarrow\sim\h^q(E,\dZ).
+\end{aligned}
+\]
+因此，只要消没循环簇无环，即 $\h^0(E,\dZ)=\dZ$ 且 $\h^q(E,\dZ)=0$ 对所有 $q>0$ 成立，就能在上同调上定义余特殊化态射。此时称 $f$ \term{局部无环}{locally acyclic}{localement acyclique}。
+
+本章讨论这一情形在光滑概形态射的平展上同调中的对应理论。在这个框架下，必须限于阶数与各剩余特征互素的挠系数。第 \ref{I:5-1} 节讨论局部无环态射与余特殊化箭头的一般性质；第 \ref{I:5-2} 节证明光滑态射局部无环；第 \ref{I:5-3} 节把这一结论与上一章的结果结合，得到两个应用：上同调群的特殊化定理（固有光滑态射的几何纤维的上同调局部常值），以及光滑态射换基定理。
+
+以下固定一个整数 $n$；“概形”一律指 $n$ 在其上可逆的概形。“几何点”始终指“代数几何点”（\ref{I:2-3-1}）$x:\spec(k)\to X$，其中 $k$ 代数闭。
+
+\origpage{60}{54}
+\subsection{局部无环态射}\label{I:5-1}
+\subsubsection{记号}\label{I:5-1-1}
+给定概形 $S$ 及其几何点 $s$，记 $\widetilde S^s$ 为 $S$ 在 $s$ 处的严格局部化的谱。
+\begin{definition}\label{I:5-1-2}
+若 $S$ 的几何点 $t$ 由 $\widetilde S^s$ 的某个点的剩余域的代数闭包定义，则称 $t$ 为 $s$ 的\term{泛化}{generization}{générisation}。此时也称 $s$ 为 $t$ 的\term{特殊化}{specialization}{spécialisation}；相应的 $S$-态射 $t\to\widetilde S^s$ 称为特殊化箭头。
+\end{definition}
+\begin{definition}\label{I:5-1-3}
+设 $f:X\to S$ 为概形态射，$s$ 为 $S$ 的几何点，$t$ 为 $s$ 的一个泛化，$x$ 为位于 $s$ 之上的 $X$ 的几何点，并置
+\[
+\widetilde X_t^x=\widetilde X^x\times_{\widetilde S^s}t.
+\]
+称 $\widetilde X_t^x$ 为 $f$ 在 $x$ 处的消没循环簇。
+
+若每个消没循环簇 $\widetilde X_t^x$ 的约化上同调均为零，即
+\begin{equation*}\tag{5.1.3.1}\label{I:eq:5-1-3-1}
+\hat\h^\bullet(\widetilde X_t^x,\dZ/n)=0,
+\end{equation*}
+亦即 $\h^0(\widetilde X_t^x,\dZ/n)=\dZ/n$，且 $\h^q(\widetilde X_t^x,\dZ/n)=0$ 对 $q>0$ 成立，则称 $f$ 局部无环。
+\end{definition}
+\begin{lemma}\label{I:5-1-4}
+设 $f:X\to S$ 为局部无环态射，$g:S'\to S$ 为拟有限态射，或拟有限态射的逆极限。那么，$f$ 换基得到的态射 $f':X'\to S'$ 也局部无环。
+\end{lemma}
+事实上，容易验证，$f'$ 的每个消没循环簇都是 $f$ 的消没循环簇。
+\begin{lemma}\label{I:5-1-5}
+设 $f:X\to S$ 为局部无环态射。对 $S$ 的任意几何点 $t$，考虑 Cartesian 图
+\[\xymatrix{
+X_t\ar[r]^-{\varepsilon'}\ar[d]&X\ar[d]^-f\\
+t\ar[r]^-\varepsilon&S
+}\]
+则有 $\varepsilon'_*\dZ/n=f^*\varepsilon_*\dZ/n$，且当 $q>0$ 时，$\eR^q\varepsilon'_*\dZ/n=0$。
+\end{lemma}
+设 $\bar S$ 为 $\varepsilon(t)$ 的闭包，$S'$ 为 $\bar S$ 在 $k(t)$ 中的正规化，并考虑 Cartesian 图
+\[\xymatrix{
+X_t\ar[r]^-{i'}\ar[d]&X'\ar[r]^-{\alpha'}\ar[d]^-{f'}&X\ar[d]^-f\\
+t\ar[r]^-i&S'\ar[r]^-\alpha&S
+}\]
+$S'$ 的局部环是分式域可分闭的正规环，因而严格 Hensel。由 $f'$ 的局部无环性（\ref{I:5-1-4}），有 $i'_*\dZ/n=\dZ/n$，$\eR^qi'_*\dZ/n=0$（$q>0$）。由于 $\alpha$ 为整态射，得到
+\[
+\begin{aligned}
+\eR^q\varepsilon'_*\dZ/n
+&=\alpha'_*\eR^qi'_*\dZ/n
+=\alpha'_*{f'}^*\eR^qi_*\dZ/n\\
+&=f^*\alpha_*\eR^qi_*\dZ/n
+=f^*\eR^q\varepsilon_*\dZ/n,
+\end{aligned}
+\]
+引理得证。
+\subsubsection{}\label{I:5-1-6}
+给定局部无环态射 $f:X\to S$ 及特殊化箭头 $t\to\widetilde S^s$，下面定义称为余特殊化箭头的典范同态
+\[
+\cosp^\bullet:\h^\bullet(X_t,\dZ/n)\longrightarrow\h^\bullet(X_s,\dZ/n),
+\]
+它把一般纤维 $X_t=X\times_St$ 与特殊纤维 $X_s=X\times_Ss$ 的上同调联系起来。
+
+考虑由 $f$ 换基得到的 Cartesian 图
+\[\xymatrix{
+X_t\ar[d]\ar[r]^-{\varepsilon'}&\widetilde X\ar[d]^-{f'}&\ar[l]X_s\ar[d]\\
+t\ar[r]^-\varepsilon&\widetilde S^s&\ar[l]s
+}\]
+由（\ref{I:5-1-4}），$f'$ 仍局部无环。根据局部无环性的定义，层 $\eR^q\varepsilon'_*\dZ/n$ 在 $X_s$ 上的限制，$q=0$ 时为 $\dZ/n$，$q>0$ 时为零。由（\ref{I:5-1-5}），更知道 $\eR^q\varepsilon'_*\dZ/n=0$ 对所有 $q>0$ 成立。定义 $\cosp^\bullet$ 为复合箭头
+\begin{equation*}\tag{5.1.6.1}\label{I:eq:5-1-6-1}
+\h^\bullet(X_t,\dZ/n)\simeq\h^\bullet(\widetilde X,\varepsilon'_*\dZ/n)
+\longrightarrow\h^\bullet(X_s,\dZ/n).
+\end{equation*}
+\paragraph{变体}
+设 $\bar S$ 为 $\varepsilon(t)$ 在 $\widetilde S^s$ 中的闭包，$S'$ 为 $\bar S$ 在 $k(t)$ 中的正规化，$X'/S'$ 为 $X/S$ 换基得到的概形。图式 \eqref{I:eq:5-1-6-1} 也可写为
+\[
+\h^\bullet(X_t,\dZ/n)\simeq\h^\bullet(X',\dZ/n)\longrightarrow\h^\bullet(X_s,\dZ/n).
+\]
+\begin{theorem}\label{I:5-1-7}
+设 $S$ 为局部 Noether 概形，$s$ 为其几何点，$f:X\to S$ 为态射。假设：
+\begin{enumerate}[\indent a)]
+\item $f$ 局部无环；
+\item 对每个特殊化态射 $t\to\widetilde S^s$ 和每个 $q\geqslant0$，余特殊化箭头 $\h^q(X_t,\dZ/n)\to\h^q(X_s,\dZ/n)$ 为双射。
+\end{enumerate}
+那么，对所有 $q\geqslant0$，典范同态 $(\eR^qf_*\dZ/n)_s\to\h^q(X_s,\dZ/n)$ 为双射。
+\end{theorem}
+证明中显然可以假设 $S=\widetilde S^s$。实际上，我们将说明：对 $S$ 上任意 $\dZ/n\dZ$-模层 $\sF$，典范同态
+\[
+\varphi^q(\sF):(\eR^qf_*f^*\sF)_s\longrightarrow\h^q(X_s,f^*\sF)
+\]
+都是双射。
+
+每个 $\dZ/n\dZ$-模层都是可构造 $\dZ/n\dZ$-模层的滤过归纳极限（\ref{I:4-3-3}）。此外，每个可构造 $\dZ/n\dZ$-模层都能嵌入形如 $\prod i_{\lambda*}C_\lambda$ 的层，其中 $i_\lambda:t_\lambda\to S$ 是 $s$ 的有限个泛化，$C_\lambda$ 为 $t_\lambda$ 上有限秩自由 $\dZ/n\dZ$-模。根据余特殊化箭头的定义，条件 b) 表明：当 $\sF$ 具有这种形式时，同态 $\varphi^q(\sF)$ 为双射。
+
+结论由引理（\ref{I:4-3-6}）的下面这个变体推出。
+\begin{lemma}\label{I:5-1-8}
+设 $\cC$ 是存在滤过归纳极限的阿贝尔范畴，$\varphi^\bullet:T^\bullet\to{T'}^\bullet$ 是定义在 $\cC$ 上、取值于阿贝尔群范畴且与滤过归纳极限可交换的上同调函子间的态射。假设 $\cC$ 中存在两族对象 $\cD$ 和 $\cE$，满足：
+\begin{enumerate}[\indent a)]
+\item $\cC$ 中每个对象都是属于 $\cD$ 的对象的滤过归纳极限；
+\item 每个属于 $\cD$ 的对象都包含于一个属于 $\cE$ 的对象。
+\end{enumerate}
+那么，下列条件等价：
+\begin{enumerate}[\indent (i)]
+\item 对任意 $q\geqslant0$ 和任意 $A\in\ob\cC$，$\varphi^q(A)$ 为双射；
+\item 对任意 $q\geqslant0$ 和任意 $M\in\cE$，$\varphi^q(M)$ 为双射。
+\end{enumerate}
+\end{lemma}
+证明时，先取归纳极限，再对 $q$ 作归纳，并对正合列 $0\to A\to M\to A'\to0$ 所诱导的上同调长正合列组成的交换图反复应用五引理；这里 $A\in\cD$，$M\in\cE$，$A'\in\ob\cC$。
+\begin{corollary}\label{I:5-1-9}
+设 $S$ 为 Noether 严格 Hensel 局部环的谱，$f:X\to S$ 为局部无环态射。假设对 $S$ 的每个几何点 $t$，有 $\h^0(X_t,\dZ/n)=\dZ/n$，且 $\h^q(X_t,\dZ/n)=0$ 对 $q>0$ 成立（换言之，$f$ 的几何纤维均无环）。那么，$f_*\dZ/n=\dZ/n$，且 $\eR^qf_*\dZ/n=0$ 对 $q>0$ 成立。
+\end{corollary}
+\begin{corollary}\label{I:5-1-10}
+设 $f:X\to Y$ 和 $g:Y\to Z$ 为局部 Noether 概形之间的态射。若 $f$ 和 $g$ 都局部无环，则 $g\circ f$ 也局部无环。
+\end{corollary}
+可假设 $X,Y,Z$ 都严格局部，$f,g$ 都是局部态射。只需说明：若 $z$ 是 $Z$ 的代数几何点，则 $\h^0(X_z,\dZ/n)=\dZ/n$，且 $\h^q(X_z,\dZ/n)=0$ 对 $q>0$ 成立。
+
+由于 $g$ 局部无环，有 $\h^0(Y_z,\dZ/n)=\dZ/n$，且 $\h^q(Y_z,\dZ/n)=0$ 对 $q>0$ 成立。另一方面，态射 $f_z:X_z\to Y_z$ 局部无环（\ref{I:5-1-4}），其几何纤维都是 $f$ 的消没循环簇，因而无环。由（\ref{I:5-1-9}），$\eR^q{f_z}_*\dZ/n=0$ 对 $q>0$ 成立，而 ${f_z}_*\dZ/n$ 是 $Y_z$ 上茎为 $\dZ/n$ 的常值层。应用 $f_z$ 的 Leray 谱序列即得结论。
+
+\subsection{光滑态射的局部无环性}\label{I:5-2}
+\begin{theorem}\label{I:5-2-1}
+光滑态射局部无环。
+\end{theorem}
+设 $f:X\to S$ 为光滑态射。这个断言对 $X$ 和 $S$ 的平展拓扑是局部的，所以可假设 $X$ 为 $S$ 上 $d$ 维标准仿射空间。通过取极限，可假设 $S$ 为 Noether 概形；再由局部无环性的传递性（\ref{I:5-1-10}），只需处理 $d=1$。
+
+设 $s$ 为 $S$ 的几何点，$x$ 为 $X$ 的几何点，其中心是 $X_s$ 的闭点。只需说明态射 $\widetilde X^x\to\widetilde S^s$ 的几何纤维无环。以下置 $S=\widetilde S^s=\spec(A)$，$X=\widetilde X^x$。有 $X\simeq\spec A\{T\}$，其中 $A\{T\}$ 是 $A[T]$ 在 $s$ 之上 $T=0$ 处的 Hensel 化。
+
+若 $t$ 为 $S$ 的几何点，则纤维 $X_t$ 是 $t$ 上光滑仿射曲线的逆极限。因此，$q\geqslant2$ 时 $\h^q(X_t,\dZ/n)=0$；只需证明 $n$ 与 $S$ 的剩余特征互素时，$\h^0(X_t,\dZ/n)=\dZ/n$，$\h^1(X_t,\dZ/n)=0$。这由以下两个命题推出。
+\origpage{65}{59}
+\begin{proposition}\label{I:5-2-2}
+设 $A$ 为严格 Hensel 局部环，$S=\spec(A)$，$X=\spec A\{T\}$。那么，$X\to S$ 的几何纤维连通。
+\end{proposition}
+通过取极限，可归约到 $A$ 为有限型 $\dZ$-代数的严格 Hensel 化的情形。
+
+设 $\bar t$ 是 $S$ 的几何点，中心在 $t$；设 $k'$ 是 $k(\bar t)$ 中 $k(t)$ 的有限可分扩张。置 $t'=\spec(k')$，$X_{t'}=X\times_S\spec(k')$。必须验证：无论 $\bar t,t'$ 如何，$X_{t'}$ 都连通（这里“连通”包含非空的要求）。设 $A'$ 为 $A$ 在 $k'$ 中的正规化，即 $k'$ 中在 $A$ 于 $k(t)$ 的像上整的元素所成的环。有
+\[
+A\{T\}\otimes_AA'\iso A'\{T\}.
+\]
+事实上，左端为 Hensel 局部环（因为 $A'$ 在 $A$ 上有限，且为局部环），并且是 $A'[T]=A[T]\otimes_AA'$ 上局部平展代数的极限。因此，$X_{t'}$ 也是 $X'=\spec(A'\{T\})$ 在 $S'=\spec(A')$ 的点 $t'$ 处的纤维。局部概形 $X'$ 正规，因而整；其局部化 $X_{t'}$ 仍整，更是连通的。
+\begin{proposition}\label{I:5-2-3}
+设 $A$ 为严格 Hensel 局部环，$S=\spec(A)$，$X=\spec(A\{T\})$。设 $\bar t$ 为 $S$ 的几何点，$X_{\bar t}$ 为相应几何纤维。那么，$X_{\bar t}$ 的每个阶数与 $A$ 的剩余域特征互素的 Galois 平展覆盖都平凡。
+\end{proposition}
+\begingroup
+\renewcommand{\thesubsubsection}{\thesection.\arabic{subsection}.3.1}
+\begin{lemma}[二维 Zariski--Nagata 纯性定理]\label{I:5-2-4}
+设 $C$ 是二维正则局部环，$C'$ 是有限正规 $C$-代数，且在 $\spec(C)$ 的闭点的补开集上平展。那么，$C'$ 在 $C$ 上平展。
+\end{lemma}
+\endgroup
+\translatornote{按字面理解，这个表述还需补充 $C'$ 作为 $C$-模无挠，或等价地要求其每个不可约分支都支配 $\spec(C)$。否则，令 $\fm$ 为 $C$ 的极大理想，取 $C'=C\times(C/\fm)$：它是有限正规 $C$-代数，在闭点外同构于 $C$，却因含有非平坦的直和项 $C/\fm$ 而不平展。补上无挠条件后，各极大理想处的局部环均为二维正规局部环，深度为 $2$，以下 Auslander--Buchsbaum 公式的论证即可成立。下文把 $C'$ 取为有限扩张中的正规化，自动满足这个条件。}
+事实上，$C'$ 正规且二维，故 $\operatorname{prof}(C')=2$。由
+\[
+\operatorname{prof}(C')+\dim\operatorname{proj}(C')=\dim(C)=2
+\]
+可知，$C'$ 在 $C$ 上自由。于是，$C'$ 在其上分歧的 $C$ 的点集由一个方程，即判别式，定义；由于其中不含高度为 $1$ 的点，这个集合为空。
+\begingroup
+\renewcommand{\thesubsubsection}{\thesection.\arabic{subsection}.3.2}
+\begin{lemma}[Abhyankar 引理的一个特例]\label{I:5-2-5}
+设 $S=\spec(V)$ 是\term{离散赋值环谱}{trait}{trait}，$\pi$ 为一致化参数，$\eta$ 为 $S$ 的泛点；$X$ 在 $S$ 上光滑、不可约且相对维数为 $1$；$\widetilde X_\eta$ 是 $X_\eta$ 的 Galois 平展覆盖，其次数 $n$ 在 $S$ 上可逆；置 $S_1=\spec(V[\pi^{1/n}])$。以下标 $(-)_1$ 表示从 $S$ 到 $S_1$ 的换基。那么，$\widetilde X_{1\eta}$ 可延拓为 $X_1$ 的平展覆盖。
+\end{lemma}
+\endgroup
+设 $\widetilde X_1$ 为 $X_1$ 在 $\widetilde X_{1\eta}$ 中的正规化。考虑 $X$ 在特殊纤维 $X_s$ 的泛点处的局部环所构成的离散赋值环：根据它们的温和惯性群的结构，$\widetilde X_1$ 在一般纤维以及特殊纤维的各泛点处对 $X_1$ 平展。由（\ref{I:5-2-4}），它处处平展。
+\begingroup
+\renewcommand{\thesubsubsection}{\thesection.\arabic{subsection}.3.3}
+\subsubsection{}\label{I:5-2-6}
+\endgroup
+现在证明（\ref{I:5-2-3}）。记 $t$ 为 $\bar t$ 的中心。可以把 $A$ 换成它在 $k(\bar t)$ 中 $k(t)$ 的某个有限可分扩张 $k(t')$ 内的正规化（参见 \ref{I:5-2-2}）。再预先取一次极限，便可假设：
+\begin{enumerate}[\indent a)]
+\item $A$ 正规且 Noether，$t$ 为 $S$ 的泛点；
+\item 所考察的 $X_{\bar t}$ 的平展覆盖来自 $X_t$ 的平展覆盖；
+\item 它来自 $S$ 的某个非空开集 $U$ 的原像 $X_U$ 的平展覆盖 $\widetilde X_U$（由 b) 推出，因为 $t$ 是各 $U$ 的极限）；
+\item $U$ 的补集的余维 $\geqslant2$（为此可扩大 $k(t)$：对 $S\setminus U$ 中在 $S$ 内余维为 $1$ 的有限多个点的离散赋值局部环，应用 \ref{I:5-2-5}）；
+\item 覆盖 $\widetilde X_U$ 在子概形 $T=0$ 上平凡（为此可再次扩大 $k(t)$）。
+\end{enumerate}
+当这些条件满足时，下面将看到覆盖 $\widetilde X_U$ 平凡。
+\begingroup
+\renewcommand{\thesubsubsection}{\thesection.\arabic{subsection}.3.4}
+\begin{lemma}\label{I:5-2-7}
+设 $A$ 为严格 Hensel 正规 Noether 局部环，$U$ 为 $\spec(A)$ 的开集，其补集余维 $\geqslant2$；设 $V$ 为 $U$ 在 $X=\spec(A\{T\})$ 中的原像，$V'$ 为 $V$ 的平展覆盖。若 $V'$ 在 $T=0$ 上平凡，则 $V'$ 平凡。
+\end{lemma}
+\endgroup
+设 $B=\Gamma(V',\sO)$。由于 $V'$ 是 $V$ 在 $\spec(B)$ 中的原像，只需证明 $B$ 在 $A\{T\}$ 上有限平展（这时它必分裂，因为 $A\{T\}$ 严格 Hensel）。置 $\widehat X=\spec(A\llbracket T\rrbracket)$，以上标 $(-)^\wedge$ 表示从 $X$ 到 $\widehat X$ 的换基。概形 $\widehat X$ 在 $X$ 上忠实平坦，所以
+\[
+\Gamma(\widehat V',\sO)=B\otimes_{A\{T\}}A\llbracket T\rrbracket,
+\]
+只需证明这个环 $\widehat B$ 在 $A\llbracket T\rrbracket$ 上有限平展。
+
+设 $V_m$（相应地 $V'_m$）是 $\widehat V$（相应地 $\widehat V'$）中由 $T^{m+1}=0$ 定义的子概形。按假设，$V'_0$ 是 $V_0$ 的平凡覆盖，即 $V_0$ 的 $n$ 个副本的和。由于平展覆盖不受幂零元影响，$V'_m/V_m$ 也如此。因此得到
+\[
+\varphi:\Gamma(\widehat V',\sO)\longrightarrow\varprojlim_m\Gamma(V'_m,\sO)
+=\left(\varprojlim_m\Gamma(V_m,\sO)\right)^n.
+\]
+根据假设，$U$ 的补集的深度 $\geqslant2$，故 $\Gamma(V_m,\sO)=A[T]/(T^{m+1})$，从而 $\varphi$ 是 $\widehat B$ 到 $A\llbracket T\rrbracket^n$ 的同态。在 $U$ 上，它给出 $\widehat V'/\widehat V$ 的 $n$ 个相异截面，所以 $\widehat V'$ 平凡，是 $\widehat V$ 的 $n$ 个副本的和。$\widehat V$ 在 $\widehat X$ 中的补集仍有余维 $\geqslant2$，因而深度 $\geqslant2$，故 $\widehat B=A\llbracket T\rrbracket^n$。引理得证。
+
+\origpage{68}{62}
+\subsection{应用}\label{I:5-3}
+\begin{theorem}[上同调群的特殊化]\label{I:5-3-1}
+设 $f:X\to S$ 为固有且局部无环的态射，例如固有光滑态射。那么，层 $\eR^qf_*\dZ/n$ 局部常值且可构造；对每个特殊化箭头 $t\to\widetilde S^s$，余特殊化箭头 $\h^q(X_t,\dZ/n)\to\h^q(X_s,\dZ/n)$ 为双射。
+\end{theorem}
+这由余特殊化箭头的定义、有限性定理和固有态射换基定理直接推出。
+\begin{theorem}[光滑态射换基]\label{I:5-3-2}
+设有 Cartesian 图
+\[\xymatrix{
+X'\ar[r]^-{g'}\ar[d]^-{f'}&X\ar[d]^-f\\
+S'\ar[r]^-g&S
+}\]
+其中 $g$ 光滑。对 $X$ 上任意阶数与 $S$ 的各剩余特征互素的挠层 $\sF$，有
+\[
+g^*\eR^qf_*\sF\iso\eR^qf'_*({g'}^*\sF).
+\]
+\end{theorem}
+先取 $X$ 的开覆盖，归约到 $X$ 仿射的情形；再通过取极限，归约到 $X$ 在 $S$ 上有限型的情形。此时 $f$ 分解为开浸入 $j:X\to\bar X$ 与固有态射 $\bar f:\bar X\to S$ 的复合。利用 $\bar f\circ j$ 的 Leray 谱序列和固有态射换基定理，只需证明 $X\to S$ 为开浸入的情况。
+
+在此情形中，若 $\sF=\varepsilon_*C$，其中 $\varepsilon:t\to X$ 为 $X$ 的几何点，则定理是（\ref{I:5-1-5}）的推论。一般情况再由引理（\ref{I:5-1-8}）推出。
+\begin{corollary}\label{I:5-3-3}
+设 $K/k$ 为可分闭域的扩张，$X$ 为 $k$-概形，$n$ 为与 $k$ 的特征互素的整数。那么，对所有 $q\geqslant0$，典范映射 $\h^q(X,\dZ/n)\to\h^q(X_K,\dZ/n)$ 为双射。
+\end{corollary}
+只需注意，$\bar K$ 是光滑 $\bar k$-代数的归纳极限。
+\begin{theorem}[相对纯性]\label{I:5-3-4}
+设有交换图
+\begin{equation*}\tag{5.3.4.1}\label{I:eq:5-3-4-1}
+\xymatrix{
+U\ar@{^{(}->}[r]^-j\ar[dr]&X\ar[d]^-f&\ar@{_{(}->}[l]_-iY\ar[dl]^-h\\
+&S
+}
+\end{equation*}
+其中 $f$ 光滑且相对纯维数为 $N$，$h$ 光滑且相对纯维数为 $N-1$，$i$ 为闭嵌入，$U=X\setminus Y$。当 $n$ 与 $S$ 的各剩余特征互素时，有
+\[
+\begin{aligned}
+j_*\dZ/n&=\dZ/n,\\
+\eR^1j_*\dZ/n&=\dZ/n(-1)_Y,\\
+\eR^qj_*\dZ/n&=0\qquad(q\geqslant2).
+\end{aligned}
+\]
+\end{theorem}
+这里，$\dZ/n(-1)$ 表示 $\dmu_n$ 的 $\dZ/n$-对偶。若 $t$ 为 $Y$ 的局部方程，则同构 $\eR^1j_*\dZ/n\simeq\dZ/n(-1)_Y$ 由映射 $a:\dZ/n\to\eR^1j_*\dmu_n$ 定义；它将 $1$ 映到 $t$ 的 $n$ 次根所构成的 $\dmu_n$-扭子的类。
+
+问题是局部的，因而可将 $(X,Y)$ 换成局部同构的一对概形，例如
+\[\xymatrix{
+\dA_T^1\ar@{^{(}->}[r]^-j\ar[dr]_-g&\dP_T^1\ar[d]^-f&\ar@{_{(}->}[l]_-iT\ar[dl]\\
+&T
+}\]
+其中 $T=\dA_S^{N-1}$，$i$ 为无穷远截面。将推论（\ref{I:5-1-9}）用于 $g$，得到 $\eR^qg_*\dZ/n$ 在 $q=0$ 时为 $\dZ/n$，在 $q>0$ 时为零。另一方面，由 \eqref{I:eq:4-6-2-1}，
+\[
+\eR^qf_*\dZ/n=
+\begin{cases}
+\dZ/n&q=0,\\
+0&q=1,\\
+\dZ/n(-1)&q=2,\\
+0&q>2.
+\end{cases}
+\]
+容易验证 $j_*\dZ/n=\dZ/n$；当 $q>0$ 时，$\eR^qj_*\dZ/n$ 都集中在 $i(T)$ 上。因此，Leray 谱序列
+\[
+E_2^{pq}=\eR^pf_*\eR^qj_*\dZ/n\ \Rightarrow\ \eR^{p+q}g_*\dZ/n
+\]
+化为
+\[\xymatrix{
+i^*\eR^qj_*\dZ/n&0&\cdots\\
+i^*\eR^1j_*\dZ/n\ar[drr]^-{d_2}&0&\cdots\\
+\dZ/n&0&\dZ/n(-1)&0&\cdots
+}\]
+所以 $q\geqslant2$ 时 $\eR^qj_*\dZ/n=0$，而 $\eR^1j_*\dZ/n$ 是 $T$ 上一个局部自由秩一层的零延拓，该层经 $d_2$ 同构于 $\dZ/n(-1)$。上面定义的映射 $a$ 是单射（逐纤维即可验证），因而是同构。这证明了（\ref{I:5-3-4}）。
+\subsubsection{}\label{I:5-3-5}
+以下无环性定理（\ref{I:5-2-1}）的应用，其证明见 \cite[XVI.4,5]{sga4}。
+\begingroup
+\renewcommand{\thesubsubsection}{\thesection.\arabic{subsection}.5.1}
+\begin{theorem}\label{I:5-3-6}
+设 $f:X\to S$ 为 $\dC$ 上有限型概形之间的态射，$\sF$ 为 $X$ 上的可构造层。那么，
+\[
+\an{(\eR^qf_*\sF)}\simeq\eR^q\an f_*(\an\sF).
+\]
+（参见 \ref{I:4-6-3}：对于通常上同调，必须假设 $\sF$ 可构造，仅假设为挠层不够。）
+\end{theorem}
+\endgroup
+\begingroup
+\renewcommand{\thesubsubsection}{\thesection.\arabic{subsection}.5.2}
+\begin{theorem}\label{I:5-3-7}
+设 $f:X\to S$ 为特征 $0$ 的域 $k$ 上有限型概形之间的态射，$\sF$ 为 $X$ 上的可构造层。那么，$\eR^qf_*\sF$ 也可构造。
+\end{theorem}
+\endgroup
+证明使用奇点消解和（\ref{I:5-3-4}）。\cite[XIX.5]{sga4} 将结论推广到特征 $0$ 的优秀概形之间的有限型态射。本书给出另一种不依赖奇点消解的证明（\nameref{VII}，\ref{VII:1-1}）；它适用于域上或 Dedekind 环上有限型概形之间的态射。
+
+\origpage{72}{66}
+\section{Poincaré 对偶}\label{I:6}
+\subsection{引言}\label{I:6-1}
+设 $X$ 是纯 $N$ 维定向拓扑流形，并假设 $X$ 有有限开覆盖 $\cU=(U_i)_{1\leqslant i\leqslant K}$，使任意非空的有限交 $U_{i_0}\cap\cdots\cap U_{i_k}$ 都同胚于球。对这样的流形，\term{Poincaré 对偶定理}{Poincaré duality theorem}{théorème de dualité de Poincaré}可表述如下。
+\begin{enumerate}[\indent A.]
+\item $X$ 的上同调就是覆盖 $\cU$ 所对应的 Čech 上同调，即复形
+\begin{equation*}\tag{1}\label{I:eq:6-1}
+0\longrightarrow\dZ^{A_0}\longrightarrow\dZ^{A_1}\longrightarrow\cdots
+\end{equation*}
+的上同调，其中
+\[
+A_k=\{(i_0,\dotsc,i_k):i_0<\cdots<i_k,\ U_{i_0}\cap\cdots\cap U_{i_k}\ne\varnothing\}.
+\]
+\item 对 $a=(i_0,\dotsc,i_k)\in A_k$，置 $U_a=U_{i_0}\cap\cdots\cap U_{i_k}$，记 $j_a$ 为 $U_a$ 到 $X$ 的包含映射。$X$ 上的常值层 $\dZ$ 有如下左分解：
+\begin{equation*}\tag{2}\label{I:eq:6-2}
+\xymatrix{
+\cdots\ar[r]&\displaystyle\bigoplus_{a\in A_1}j_{a!}\dZ\ar[r]&\displaystyle\bigoplus_{a\in A_0}j_{a!}\dZ\ar[r]\ar[d]&0\\
+&&\dZ.
+}
+\end{equation*}
+紧支撑上同调 $\h_c^\bullet(X,j_{a!}\dZ)$ 就是定向球 $U_a$ 的固有支撑上同调：
+\[
+\h_c^i(X,j_{a!}\dZ)=
+\begin{cases}0&i\ne N,\\\dZ&i=N.\end{cases}
+\]
+\end{enumerate}
+因此，对复形 \eqref{I:eq:6-2} 及固有支撑上同调应用超上同调谱序列，可知 $\h_c^i(X)$ 是复形
+\begin{equation*}\tag{3}\label{I:eq:6-3}
+\cdots\longrightarrow\dZ^{A_1}\longrightarrow\dZ^{A_0}\longrightarrow0
+\end{equation*}
+的第 $(i-N)$ 个上同调群。这个复形是复形 \eqref{I:eq:6-1} 的对偶，Poincaré 对偶由此得到。
+
+这一构造的关键在于：
+\begin{enumerate}[\indent a)]
+\item 存在固有支撑上同调理论；
+\item 纯 $N$ 维流形 $X$ 的每个点 $x$ 都有一个开邻域基，其元素 $U$ 满足
+\begin{equation*}\tag{4}\label{I:eq:6-4}
+\h_c^i(U)=\begin{cases}0&i\ne N,\\\dZ&i=N.\end{cases}
+\end{equation*}
+\end{enumerate}
+平展上同调中的 Poincaré 对偶可仿照这个模式构造。若 $X$ 是代数闭域 $k$ 上的光滑纯 $N$ 维概形，$n$ 在 $X$ 上可逆，$x$ 是 $X$ 的闭点，则关键在于计算遍历 $x$ 的平展邻域 $U$ 所取的逆极限：
+\begin{equation*}\tag{5}\label{I:eq:6-5}
+\varprojlim_U\h_c^i(U,\dZ/n)=
+\begin{cases}0&i\ne2N,\\\dZ/n&i=2N.\end{cases}
+\end{equation*}
+正如拓扑流形中要先直接处理开球（甚至只需处理区间 $(0,1)$）的情况一样，这里也要先直接处理曲线（\ref{I:6-2}）。再利用光滑态射的局部无环性定理，将 \eqref{I:eq:6-5} 归约到这个特例（\ref{I:6-3}）。
+
+同构 \eqref{I:eq:6-4} 和 \eqref{I:eq:6-5} 不是典范的：它们依赖于 $X$ 的\term{定向}{orientation}{orientation}的选择。若 $n$ 在概形 $X$ 上可逆，则 $\dmu_n$ 是局部自由秩一的 $\dZ/n$-模层；记其第 $N$ 个张量幂（$N\in\dZ$）为 $\dZ/n(N)$。\eqref{I:eq:6-5} 第二行的内在形式为
+\begin{equation*}\tag{5'}\label{I:eq:6-5'}
+\varprojlim_U\h_c^{2N}(U,\dZ/n(N))=\dZ/n.
+\end{equation*}
+$\dZ/n(N)$ 称为 $X$ 的\term{定向层}{orientation sheaf}{faisceau d'orientation}。由于 $\dZ/n(N)$ 是常值层，且同构于 $\dZ/n$，可将它移到上同调符号之外，写成
+\begin{equation*}\tag{5''}\label{I:eq:6-5''}
+\varprojlim_U\h_c^{2N}(U,\dZ/n)=\dZ/n(-N).
+\end{equation*}
+因此，Poincaré 对偶将表现为 $\h^i(X,\dZ/n)$ 与 $\h_c^{2N-i}(X,\dZ/n)$ 之间取值于 $\dZ/n(-N)$ 的完美对偶。
+
+\origpage{74}{68}
+\subsection{曲线的情形}\label{I:6-2}
+\subsubsection{}\label{I:6-2-1}
+设 $\bar X$ 为代数闭域 $k$ 上的光滑射影曲线，$n$ 在 $\bar X$ 上可逆。当 $\bar X$ 连通时，（\ref{I:3-3-5}）的证明给出典范同构
+\[\xymatrix{
+\h^2(\bar X,\dmu_n)=\pic(\bar X)/n\pic(\bar X)\ar[r]^-{\deg}_-\sim&\dZ/n.
+}\]
+设 $D$ 为 $\bar X$ 的约化除子，$X=\bar X\setminus D$：
+\[\xymatrix{
+X\ar@{^{(}->}[r]^-j&\bar X&\ar@{_{(}->}[l]_-iD.
+}\]
+正合列 $0\to j_!\dmu_n\to\dmu_n\to i_*\dmu_n\to0$，以及 $i>0$ 时的等式 $\h^i(\bar X,i_*\dmu_n)=\h^i(D,\dmu_n)=0$，给出同构
+\[\xymatrix@C=12pt{
+\h_c^2(X,\dmu_n)=\h^2(\bar X,j_!\dmu_n)\ar[r]^-\sim&\h^2(\bar X,\dmu_n)\ar[r]^-\sim&\dZ/n.
+}\]
+当 $\bar X$ 不连通时，同样有
+\[
+\h_c^2(X,\dmu_n)=(\dZ/n)^{\pi_0(X)}.
+\]
+以求和映射定义\term{迹态射}{trace morphism}{morphisme trace}：
+\[\xymatrix{
+\tr:\h_c^2(X,\dmu_n)\simeq(\dZ/n)^{\pi_0(X)}\ar[r]^-\Sigma&\dZ/n.
+}\]
+\begin{theorem}\label{I:6-2-2}
+配对 $\tr(a\smallsmile b)$ 将两个群 $\h^i(X,\dZ/n)$ 和 $\h_c^{2-i}(X,\dmu_n)$ 中的每一个，与另一个的 $\dZ/n$-值对偶等同。
+\end{theorem}
+\paragraph{超越方法的证明}
+若 $\bar X$ 是离散赋值环谱 $S$ 上的光滑射影曲线，$j:X\hookrightarrow\bar X$ 是 $S$ 上平展除子 $D$ 的补集的包含映射，则 $X/S$ 的特殊几何纤维与一般几何纤维的上同调（相应地，固有支撑上同调）“相同”，即它们是 $S$ 上局部常值层的茎。这由 $\bar X$ 和 $D$ 的相应事实推出：对固有支撑上同调使用正合列 $0\to j_!\dZ/n\to\dZ/n\to{\dZ/n}_D\to0$；对通常上同调则使用公式 $j_*\dZ/n=\dZ/n$、$\eR^1j_*\dZ/n\simeq{\dZ/n}_D(-1)$、$\eR^ij_*\dZ/n=0$（$i\geqslant2$）（\ref{I:5-3-4}）。
+
+这个特殊化原理将（\ref{I:6-2-2}）归约到 $k$ 的特征为 $0$ 的情况，再由（\ref{I:5-3-3}）归约到 $k=\dC$。最后，当 $k=\dC$ 时，$\h^\bullet(X,\dZ/n)$ 和 $\h_c^\bullet(X,\dmu_n)$ 等于经典拓扑空间 $X_{\mathrm{cl}}$ 上计算的同名群；经同构
+\[
+\dZ/n\longrightarrow\dmu_n,\qquad x\longmapsto\exp\left(\frac{2\pi ix}{n}\right),
+\]
+迹态射等同于“在基本类上积分”。因此，（\ref{I:6-2-2}）由 $X_{\mathrm{cl}}$ 的 Poincaré 对偶推出。
+\subsubsection{代数方法的证明}\label{I:6-2-3}
+一种十分简洁的证明见（\nameref{V}，第 \ref{V:2} 节）。这里给出另一种与 Jacobian 簇的自对偶有关的证明。
+
+沿用（\ref{I:6-2-1}）的记号。可以并且以下将假设 $X$ 连通。$i=0,2$ 的情形显然，故还可假设 $i=1$。通过正合列
+\[
+0\longrightarrow{}_D\dG_m\longrightarrow\dG_m\longrightarrow i_*\dG_m\longrightarrow0
+\]
+定义 ${}_D\dG_m$，即 $\dG_m$ 中模 $D$ 同余于 $1$ 的截面。群 $\h^1(\bar X,{}_D\dG_m)$ 分类 $\bar X$ 上在 $D$ 上平凡化的可逆层。它是 $\pic_D(\bar X)$ 的点群，是以次数给出的 $\dZ$ 被 Rosenlicht 广义 Jacobian 簇 $\pic_D^0(\bar X)$ 的点群所作的扩张；这个广义 Jacobian 簇对应于 $D$ 每个点处导子均为 $1$ 的情形。$\pic_D^0(\bar X)$ 本身又是阿贝尔簇 $\pic^0(\bar X)$ 被环面 $\dG_m^D/(\text{对角 }\dG_m)$ 所作的扩张。
+\begin{enumerate}[\indent a)]
+\item 正合列 $0\to j_!\dmu_n\to{}_D\dG_m\xrightarrow{n}{}_D\dG_m\to0$ 给出同构
+\begin{equation*}\tag{6.2.3.1}\label{I:eq:6-2-3-1}
+\h_c^1(X,\dmu_n)=\pic_D^0(\bar X)_n.
+\end{equation*}
+\item 将 $x\in X(k)$ 映到 $\bar X$ 上可逆层 $\sO(x)$ 的类，并以 $1$ 在 $D$ 上平凡化的映射，来自态射
+\[
+f:X\longrightarrow\pic_D(\bar X).
+\]
+\end{enumerate}
+以下固定基点 $0$，置 $f_0(x)=f(x)-f(0)$。对每个同态 $v:\pic_D^0(\bar X)_n\to\dZ/n$，记 $\bar v\in\h^1(\pic_D^0(\bar X),\dZ/n)$ 为下述类经 $v$ 的像：这个类属于 $\h^1(\pic_D^0(\bar X),\pic_D^0(\bar X)_n)$，由扩张
+\[\xymatrix@C=12pt{
+0\ar[r]&\pic_D^0(\bar X)_n\ar[r]&\pic_D^0(\bar X)\ar[r]^-n&\pic_D^0(\bar X)\ar[r]&0
+}\]
+所定义的扭子给出。几何类域论（参见 Serre \cite{se59}）说明，映射 $v\mapsto f_0^*(\bar v)$，即
+\begin{equation*}\tag{6.2.3.2}\label{I:eq:6-2-3-2}
+\hom(\pic_D^0(\bar X)_n,\dZ/n)\longrightarrow\h^1(X,\dZ/n),
+\end{equation*}
+为同构。要从 \eqref{I:eq:6-2-3-1} 和 \eqref{I:eq:6-2-3-2} 推出（\ref{I:6-2-2}），还需知道
+\begin{equation*}\tag{6.2.3.3}\label{I:eq:6-2-3-3}
+\tr\bigl(u\smallsmile f_0^*(\bar v)\bigr)=-v(u).
+\end{equation*}
+这一相容性在（\nameref{V}，3.2.4）中证明。
+
+\origpage{76}{70}
+\subsection{一般情形}\label{I:6-3}
+设 $X$ 为代数闭域 $k$ 上的光滑纯 $N$ 维代数簇。为陈述 Poincaré 对偶定理，首先需定义迹态射
+\[
+\tr:\h_c^{2N}(X,\dZ/n(N))\longrightarrow\dZ/n.
+\]
+其定义需从曲线情形作一番繁复的分解归约，见 \cite[XVIII \S2]{sga4}。于是有以下定理。
+\begin{theorem}\label{I:6-3-1}
+配对 $\tr(a\smallsmile b)$ 将两个群 $\h_c^i(X,\dZ/n(N))$ 和 $\h^{2N-i}(X,\dZ/n)$ 中的每一个，与另一个的对偶等同。
+\end{theorem}
+设 $x\in X$ 为闭点，$X_x$ 为 $X$ 在 $x$ 处的严格局部化。当 $U$ 遍历 $x$ 的平展邻域时，定义
+\begin{equation*}\tag{1}\label{I:eq:6-3-1-1}
+\h_c^\bullet(X_x,\dZ/n)=\varprojlim_U\h_c^\bullet(U,\dZ/n).
+\end{equation*}
+更妥当的做法是考虑\term{pro 对象}{pro-object}{pro-objet} $\text{``}\varprojlim\text{''}\h_c^\bullet(U,\dZ/n)$；不过，这里的群都是有限群，两种做法的差别无关紧要。正如引言中试图说明的那样，（\ref{I:6-3-1}）由以下事实推出：
+\begin{equation*}\tag{2}\label{I:eq:6-3-1-2}
+\begin{aligned}
+\h_c^i(X_x,\dZ/n)&=0\qquad(i\ne2N),\\
+\tr:\h_c^{2N}(X_x,\dZ/n(N))&\iso\dZ/n\quad\text{为同构。}
+\end{aligned}
+\end{equation*}
+$N=0$ 时显然。设 $N>0$，取纯 $N-1$ 维光滑概形 $Y$ 在某个闭点处的严格局部化 $Y_y$，并取本质光滑、相对维数为一的态射 $f:X_x\to Y_y$。证明利用 $f$ 的固有支撑上同调 Leray 谱序列，归约到曲线情形。由于所考察的“固有支撑上同调”由 \eqref{I:eq:6-3-1-1} 这类极限定义，这样的谱序列的存在涉及若干取极限问题；\cite[XVIII]{sga4} 对此作了过于详细的讨论。这里仅进行计算。
+
+对 $Y_y$ 的每个几何点 $z$，有
+\[
+(\eR^if_!\dZ/n)_z=\h_c^i(f^{-1}(z),\dZ/n).
+\]
+几何纤维 $f^{-1}(z)$ 是代数闭域上光滑曲线的逆极限，满足 Poincaré 对偶。由光滑态射的局部无环性定理，其通常上同调为
+\[
+\h^i(f^{-1}(z),\dZ/n)=\begin{cases}\dZ/n&i=0,\\0&i>0.\end{cases}
+\]
+因此，由对偶性，
+\[
+\h_c^i(f^{-1}(z),\dZ/n)=\begin{cases}\dZ/n(-1)&i=2,\\0&i\ne2.\end{cases}
+\]
+Leray 谱序列于是给出
+\[
+\h_c^i(X_x,\dZ/n(N))=\h_c^{i-2}(Y_y,\dZ/n(N-1)).
+\]
+对 $N$ 作归纳，得到结论。
+
+\origpage{78}{72}
+\subsection{变体及应用}\label{I:6-4}
+在平展上同调中，可以建立与凝聚上同调中相仿的“\term{对偶形式体系}{duality formalism}{formalisme de dualité}”，即满足各种相容性和伴随公式的函子 $\eR f_*$、$\eR f_!$、$f^*$、$\eR f^!$。用这种语言，上一节的结论可改述如下：若 $f:X\to S$ 光滑且相对纯维数为 $N$，而 $S=\spec(k)$、$k$ 代数闭，则
+\[
+\eR f^!\dZ/n=\dZ/n[2N](N).
+\]
+这个结论不需要对 $S$ 作假设。它还有如下推论。
+\begin{corollary}\label{I:6-4-1}
+若 $f$ 光滑且相对纯维数为 $N$，层 $\eR^if_!\dZ/n$ 局部常值，则层 $\eR^if_*\dZ/n$ 也局部常值，且
+\[
+\eR^if_*\dZ/n=\const\hom\bigl(\eR^{2N-i}f_!\dZ/n(N),\dZ/n\bigr).
+\]
+\end{corollary}
+特别地，在推论的假设下，层 $\eR^if_*\dZ/n$ 可构造。由此可以证明：若 $S$ 在一个域或 Dedekind 环的谱上有限型，则对每个有限型态射 $f:X\to S$ 及 $X$ 上每个可构造层 $\sF$，层 $\eR^if_*\sF$ 都可构造（\nameref{VII}，\ref{VII:1-1}）。\translatornote{这句话须保留本节关于系数阶数可逆的约定；在任意特征中，不能对不受限制的可构造挠层如此断言。例如，设 $k$ 为特征 $p>0$ 的代数闭域，$j:\dG_{m,k}\hookrightarrow\dA^1_k$。常值层 $\dZ/p$ 可构造，但 $(\eR^1j_*\dZ/p)_0$ 无限维。事实上，令 $K$ 为 $k[t]_{(t)}$ 的严格 Hensel 化的分式域，Artin--Schreier 正合列给出该茎 $K/\{a^p-a:a\in K\}$。诸 $t^{-m}$（$m>0$ 且 $p\nmid m$）的类在 $\dF_p$ 上线性无关：任一非零有限线性组合的极点阶数不被 $p$ 整除，而 $a^p-a$ 若有极点，其阶数必被 $p$ 整除。因而 $\eR^1j_*\dZ/p$ 不可构造。要求系数被某个在基底上可逆的整数消去，即可适用所引有限性定理。}
+
+\origpage{80}{74}
+\section*{参考文献}
+\addcontentsline{toc}{section}{参考文献（Arcata）}
+\begin{description}
+\item[{[1]}] M. Artin, \emph{Grothendieck topologies}（油印讲义），Harvard University，1962。
+\item[{[2]}] M. Artin, \emph{Algebraic approximation of structures over complete local rings}, Publ. Math. I.H.E.S., no.~36，1959，25--58 页。
+\item[{[3]}] M. Artin, \emph{Théorèmes de représentabilité pour les espaces algébriques}（第 VII 章：平展上同调的有限性定理），Presses de l'Université de Montréal，1973。
+\item[{[4]}] M. Artin, A. Grothendieck, J.-L. Verdier, \emph{Théorie des topos et cohomologie étale des schémas}, SGA~4, Lecture Notes in Mathematics, nos.~269, 270, 305, Springer，1972/73。
+\item[{[5]}] J. Giraud, \emph{Analysis situs (d'après Artin et Grothendieck)}, Séminaire Bourbaki, 1962/63, exp.~266。
+\item[{[6]}] A. Grothendieck, \emph{Technique de descente et théorèmes d'existence en géométrie algébrique. I. Généralités. Descente par morphismes fidèlement plats}, Séminaire Bourbaki, 1959/60, exp.~190。
+\item[{[7]}] A. Grothendieck, \emph{Revêtements étales et groupe fondamental}, SGA~1, Lecture Notes in Mathematics, no.~224, Springer，1971。
+\item[{[8]}] A. Grothendieck, J. Dieudonné, \emph{Éléments de géométrie algébrique}, Publ. Math. I.H.E.S., nos.~4, 8, 11, 17, 20, 24, 28, 32，1960/67（文中简记 EGA）。
+\item[{[9]}] M. Nagata, \emph{Imbedding of an abstract variety in a complete variety}, J. Math. Kyoto Univ., 2-1，1962，1--10 页。
+\item[{[10]}] M. Nagata, \emph{Generalisation of the imbedding problem}, J. Math. Kyoto Univ., 3-1，1963，89--102 页。
+\item[{[11]}] M. Raynaud, \emph{Anneaux locaux henséliens}, Lecture Notes in Mathematics, no.~169, Springer，1970。
+\item[{[12]}] J.-P. Serre, \emph{Géométrie algébrique et géométrie analytique}, Ann. de l'Institut Fourier, t.~VI，1956，1--12 页（文中简记 GAGA）。
+\item[{[13]}] J.-P. Serre, \emph{Corps locaux}, Paris, Hermann，1968。
+\item[{[14]}] J.-P. Serre, \emph{Cohomologie galoisienne}, Lecture Notes in Mathematics, no.~5, Springer，1965。
+\item[{[15]}] J.-P. Serre, \emph{Groupes algébriques et corps de classes}, Paris, Hermann，1959。
+\item[{[16]}] C. Tsen, \emph{Divisionsalgebren über Funktionenkörper}, Nachr. Ges. Wiss. Göttingen，1933，335--339 页。
+\end{description}

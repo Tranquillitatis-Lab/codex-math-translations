@@ -1,0 +1,383 @@
+\SourcePage{284}
+\SGAchapter{IV}{赋环拓扑斯的 Grothendieck 群}{Groupes de Grothendieck des topos annelés}
+\begin{center}L. Illusie\end{center}
+\SGAsection{1}{Grothendieck 群的回顾与一般性质}
+\textbf{1.1。}设 $C$ 为\Term{triangulated-category}{三角范畴}。回顾（第 I 讲 6.3 及 SGA 5 VIII 2），从 $\operatorname{ob}C$ 到\Term{abelian-group}{阿贝尔群} $G$ 的映射 $f$ 称为\Term{additive-map}{加性的}，如果对每个\Term{distinguished-triangle}{可区别三角形} $E'\to E\to E''\to E'[1]$ 都有 $f(E)=f(E')+f(E'')$。从 $\operatorname{ob}C$ 到 $G$ 的\Term{additive-map}{加性映射}构成一个\Term{abelian-group}{阿贝尔群}，它\Term{functorial}{函子性地}依赖于 $G$。这样得到的\Term{functor}{函子}由一个\Term{abelian-group}{阿贝尔群} $k(C)$ 及一个泛\Term{additive-map}{加性映射} $\operatorname{cl}_C:\operatorname{ob}C\to k(C)$ 表示（在不致混淆时记作 $\operatorname{cl}$）。
+
+群 $k(C)$ 对\Term{exact-functor}{正合函子}而言\Term{functorial}{函子性地}依赖于 $C$。若 $C,C'$ 为\Term{triangulated-category}{三角范畴}，则从 $C$ 到 $C'$ 的两个\Term{isomorphism}{同构}的\Term{exact-functor}{正合函子}诱导相同的\Term{homomorphism}{同态} $k(C)\to k(C')$；特别地，若 $u:C\to C'$ 是一个给出\Term{equivalence-of-categories}{范畴等价}的\Term{exact-functor}{正合函子}，则 $k(u):k(C)\to k(C')$ 是\Term{isomorphism}{同构}。
+
+\begin{SGAresult}{\Term{lemma}{引理}}{1.2}
+设 $C$ 为\Term{triangulated-category}{三角范畴}，$L\in\operatorname{ob}C$。
+
+ a) 对每个 $n\in\mathbf Z$，有
+\[\operatorname{cl}(L[n])=(-1)^n\operatorname{cl}(L).\]
+若 $L',L''$ 为 $C$ 的\Term{object}{对象}，且 $L\simeq L'\oplus L''$，则 $\operatorname{cl}(L)=\operatorname{cl}(L')+\operatorname{cl}(L'')$。
+
+ b) 假设存在 $n\in\mathbf Z$，使 $\coprod_{i\geq0}L[2ni]$ \Term{representable-functor}{可表示}。则 $\operatorname{cl}(L)=0$。
+\end{SGAresult}
+\begin{proof}
+a) 直接由定义得出（参见 SGA 5 VIII 2）。对于 b)，只须注意到
+\SourcePage{285}
+\[\coprod_{i\geq0}L[2ni]\simeq L\oplus\left(\coprod_{i\geq0}L[2ni]\right)[2n],\]
+再应用 a)。
+\end{proof}
+
+\begin{SGAresult}{\Term{lemma}{引理}}{1.3}
+设 $C$ 为\Term{triangulated-category}{三角范畴}，$A$ 为一个\Term{thick-subcategory}{厚子范畴}（[V] I 2.1）。包含\Term{functor}{函子}与取商\Term{functor}{函子}给出\Term{exact-sequence}{正合列}
+\[k(A)\longrightarrow k(C)\longrightarrow k(C/A)\longrightarrow0.\]
+\end{SGAresult}
+\begin{proof}见 SGA 5 VIII 3.1。\end{proof}
+
+\begin{SGAresult}{\Term{lemma}{引理}}{1.4}
+设 $A$ 为\Term{additive-category}{加性范畴}（相应地，为\Term{abelian-category}{阿贝尔范畴}），$f$ 为 $\operatorname{ob}K^b(A)$（相应地，$\operatorname{ob}D^b(A)$）上的\Term{additive-map}{加性函数}（1.1）。对于 $E\in\operatorname{ob}K^b(A)$（相应地，$\operatorname{ob}D^b(A)$），有
+\[f(E)=\sum_i(-1)^if(E^i)\qquad\left(\text{相应地，}\ f(E)=\sum_i(-1)^if(H^i(E))\right).\]
+\end{SGAresult}
+\begin{proof}留给读者作为练习。\end{proof}
+
+\textbf{1.5。}设 $C$ 为\Term{abelian-category}{阿贝尔范畴}，$A$ 为 $C$ 的一个对\Term{finite}{有限}\Term{direct-sum}{直和}\Term{stable}{稳定}的\Term{full-subcategory}{全子范畴}。从 $\operatorname{ob}A$ 到\Term{abelian-group}{阿贝尔群} $G$ 的映射 $f$ 称为\Term{additive-map}{加性的}，如果对 $C$ 中每个\Term{degree}{次数}\Term{bounded}{有界}、\Term{set-component}{分量}属于 $A$ 的\Term{acyclic-complex}{无上同调复形} $E$，都有 $\sum_i(-1)^if(E^i)=0$。当 $A$ 对\Term{epimorphism}{满态射}的\Term{kernel}{核}\Term{stable}{稳定}时（第 I 讲 1.2），这\Term{equivalence}{等价}于说，对 $C$ 中每个各项均属于 $A$ 的\Term{exact-sequence}{正合列} $0\to L'\to L\to L''\to0$，都有 $f(L)=f(L')+f(L'')$。从 $\operatorname{ob}A$ 到 $G$ 的\Term{additive-map}{加性映射}构成一个\Term{functorial}{函子性地}依赖于 $G$ 的\Term{abelian-group}{阿贝尔群}。记 $K^{b,\phi}(A)$ 为 $K^b(A)$ 中由\Term{acyclic-complex}{无上同调复形}构成的\Term{thick-subcategory}{厚子范畴}。由（1.3）及（1.4）容易\Term{pushout}{推出}，由 $\operatorname{cl}_{K^b(A)/K^{b,\phi}(A)}$（1.1）诱导的映射
+\[\operatorname{cl}_A:\operatorname{ob}A\longrightarrow k\bigl(K^b(A)/K^{b,\phi}(A)\bigr)\tag{1.5.1}\]
+\SourcePage{286}
+是泛\Term{additive-map}{加性映射}；也就是说，这一对 $\bigl(k(K^b(A)/K^{b,\phi}(A)),\operatorname{cl}_A\bigr)$ 表示将每个\Term{abelian-group}{阿贝尔群} $G$ 对应于从 $\operatorname{ob}A$ 到 $G$ 的\Term{additive-map}{加性映射}所构成的\Term{abelian-group}{阿贝尔群}的\Term{functor}{函子}。令
+\[k\bigl(K^b(A)/K^{b,\phi}(A)\bigr)=k(A).\tag{1.5.2}\]
+（为避免对所在的\Term{abelian-category}{阿贝尔范畴}产生歧义时，写作 $k(A,C)$ 而非 $k(A)$。）\footnote{记号 $k(A)$ 曾在第 I 讲 6.3 中用来表示群 $k(K^b(A))$；\Term{generic}{一般}而言，它与（1.5.2）定义的群并不\Term{isomorphism}{同构}。所以我们在此改变约定：本讲中的记号 $k(A)$ 专指（1.5.2）定义的群。}特别地，当 $A=C$ 时，有
+\[k(D^b(C))=k(C).\tag{1.5.3}\]
+
+\begin{SGAresult}{\Term{lemma}{引理}}{1.6}
+设 $C$ 为\Term{abelian-category}{阿贝尔范畴}，$A$ 为一个\Term{thick-subcategory}{厚子范畴}（即对\Term{kernel}{核}、\Term{cokernel}{余核}及\Term{extension}{扩张}\Term{stable}{稳定}的\Term{full-subcategory}{全子范畴}）。记 $D_A(C)$ 为 $D(C)$ 中由满足对每个 $i$ 都有 $H^i(E)\in\operatorname{ob}A$ 的\Term{object}{对象} $E$ 构成的\Term{full-subcategory}{全子范畴}。则 $D_A(C)$ 是 $D(C)$ 的一个\Term{triangulated-category}{三角子范畴}（[V] I 1.2.3），而\Term{canonical}{典范}\Term{functor}{函子} $D^b(A)\to D_A^b(C)=D^b(C)\cap D_A(C)$ 诱导\Term{isomorphism}{同构}
+\[k(A)\longrightarrow k(D_A^b(C)),\]
+其中 $k(A)$ 由（1.5.2）定义。
+\end{SGAresult}
+\begin{proof}
+第一个断言是\Term{cohomology}{上同调}\Term{exact-sequence}{正合列}的直接推论。对于第二个断言，考虑映射 $f:\operatorname{ob}D_A^b(C)\to k(A)$，定义为
+\[f(E)=\sum_i(-1)^i\operatorname{cl}_A(H^i(E)),\]
+其中 $\operatorname{cl}_A$ 是映射（1.5.1）。由\Term{cohomology}{上同调}\Term{exact-sequence}{正合列}，$f$ 是\Term{additive-map}{加性的}（1.1），因而定义\Term{homomorphism}{同态}
+\[\varphi:k(D_A^b(C))\longrightarrow k(A).\]
+\SourcePage{287}
+由（1.4）立即得出，$\varphi$ 是\Term{canonical}{典范}\Term{homomorphism}{同态} $k(A)\to k(D_A^b(C))$ 的逆。
+\end{proof}
+
+\textbf{注记 1.6.1。}在（1.6）的情形下，\Term{canonical}{典范}\Term{functor}{函子} $D^b(A)\to D_A^b(C)$ \Term{generic}{一般}并非\Term{equivalence-of-categories}{范畴等价}。例如，取 $S$ 为\Term{scheme}{概形}，$C$ 为 $\mathscr O_S$-\Term{module}{模}的\Term{category}{范畴}，$A$ 为\Term{quasi-coherent}{拟凝聚} $\mathscr O_S$-\Term{module}{模}的\Term{category}{范畴}，便可看出这一点（第 II 讲附录 I 0.3）。不过也请参阅判别准则（第 II 讲 2.1.3）。
+
+\begin{SGAresult}{定义}{1.7}
+设 $C$ 为\Term{triangulated-category}{三角范畴}（相应地，为\Term{abelian-category}{阿贝尔范畴}），$C'$ 为 $\operatorname{ob}C$ 的一个\Term{subset}{子集}。若对每个\Term{distinguished-triangle}{可区别三角形} $E'\to E\to E''\to E'[1]$（相应地，每个\Term{exact-sequence}{正合列} $0\to E'\to E\to E''\to0$），只要 $E',E,E''$ 中有两项属于 $C'$，第三项也属于 $C'$，我们就称 $C'$ 为\Term{exact-subset}{正合子集}（参见 EGA III 3.1.1）。若 $\operatorname{ob}C$ 是包含 $C'$ 的最小\Term{exact-subset}{正合子集}，则称 $C'$ 在 $\operatorname{ob}C$ 中\Term{dense-subset}{稠密}。
+\end{SGAresult}
+
+\begin{SGAresult}{\Term{lemma}{引理}}{1.8}
+设 $C$ 为\Term{triangulated-category}{三角范畴}（相应地，为\Term{abelian-category}{阿贝尔范畴}），$C'$ 为 $\operatorname{ob}C$ 的一个\Term{dense-subset}{稠密子集}。则 $E\in C'$ 时的元素 $\operatorname{cl}_C(E)$ 生成 $k(C)$。
+\end{SGAresult}
+\begin{proof}
+令 $C_0=C'$；对 $i\geq1$，递归定义 $C_i$ 为 $C$ 中出现在某个\Term{distinguished-triangle}{可区别三角形}（相应地，某个短\Term{exact-sequence}{正合列}）中的\Term{object}{对象}的\Term{set}{集合}，其中有两项属于 $C_{i-1}$。各 $C_i$ 构成 $\operatorname{ob}C$ 的一个递增\Term{filtration}{滤过}，由假设它是穷尽的。对 $i\geq0$，记 $k(C)_i$ 为 $k(C)$ 中由 $E\in C_i$ 时的元素 $\operatorname{cl}_C(E)$ \Term{generated-subgroup}{生成的子群}。直接由定义可见，对每个 $i\geq0$ 都有 $k(C)_i=k(C)_{i+1}$，从而 $k(C)_i=k(C)_0$。现取 $x\in k(C)$；
+\SourcePage{288}
+容易看出，可写成 $x=\operatorname{cl}(E')-\operatorname{cl}(E'')$，其中 $E',E''\in\operatorname{ob}C$（在非\Term{lie-bracket}{括号}中的情形，甚至可使 $E''=0$）。因\Term{filtration}{滤过} $(C_i)$ 穷尽，存在整数 $i\geq0$ 使 $E',E''$ 均属于 $C_i$，于是 $x\in k(C)_i=k(C)_0$，结论得证。
+\end{proof}
+
+\begin{SGAresult}{练习}{1.9}
+设 $C$ 为\Term{abelian-category}{阿贝尔范畴}，$A$ 为对\Term{finite}{有限}\Term{direct-sum}{直和}、\Term{subobject}{子对象}和\Term{quotient-object}{商对象}\Term{stable}{稳定}的\Term{full-subcategory}{全子范畴}，且 $\operatorname{ob}A$ 在 $\operatorname{ob}C$ 中\Term{dense-subset}{稠密}。则由 $\operatorname{ob}A$ 上的\Term{additive-map}{加性函数} $E\mapsto\operatorname{cl}_C(E)$ 定义的\Term{homomorphism}{同态} $k(A,C)\to k(C)$（参见（1.5））是\Term{isomorphism}{同构}。
+\end{SGAresult}
+\textbf{提示。}令 $A_0=A$；对 $i\geq1$，定义 $A_i$ 为 $C$ 中由两个 $C_{i-1}$ 的\Term{object}{对象}的\Term{extension}{扩张}构成的\Term{full-subcategory}{全子范畴}。证明 $A_i$ 满足与 $A$ 相同的假设，再证明\Term{canonical}{典范}\Term{homomorphism}{同态} $\varinjlim_i k(A_i,C)\to k(C)$ 是\Term{isomorphism}{同构}（所需结论随即得出）。
+
+\SGAsection{2}{赋环拓扑斯的函子 $K_\bullet$ 与 $K^\bullet$}
+\textbf{2.1。}设 $(X,A)$ 为\Term{ringed-topos}{赋环拓扑斯}。回顾下列记号：
+$D^b({}_AX)_{\mathrm{coh}}$：左 $A$-\Term{module}{模}的\Term{pseudo-coherent}{伪凝聚}且\Term{cohomology}{上同调}\Term{bounded}{有界}的\Term{complex}{复形}\Term{category}{范畴}（第 I 讲 2.15）。
+
+$D({}_AX)_{\mathrm{parf}}$：左 $A$-\Term{module}{模}的具有\Term{finite}{有限}\Term{perfect-amplitude}{完美振幅}的\Term{complex}{复形}\Term{category}{范畴}（第 I 讲 5.8.4）。
+
+$\operatorname{Loclib}({}_AX)$：左 $A$-\Term{module}{模}中\Term{local-scheme}{局部}为\Term{finite-type}{有限型}\Term{free-module}{自由模}的\Term{direct-summand}{直和因子}的\Term{category}{范畴}（第 II 讲 2.0）。
+
+$\operatorname{Coh}({}_AX)$：\Term{coherent}{凝聚}左 $A$-\Term{module}{模}的\Term{category}{范畴}（相对于\Term{finite-type}{有限型}\Term{free-module}{自由} $A$-\Term{module}{模}的\Term{category}{范畴}）（第 I 讲 3.1）。
+\SourcePage{289}
+后两个\Term{category}{范畴}是左 $A$-\Term{module}{模}\Term{category}{范畴} $\operatorname{Mod}({}_AX)$ 的\Term{full-subcategory}{全子范畴}；前两个是 $D({}_AX)=D(\operatorname{Mod}({}_AX))$ 的\Term{full-subcategory}{全}\Term{triangulated-category}{三角子范畴}。
+
+\begin{SGAresult}{定义}{2.2}
+设 $(X,A)$ 为\Term{ringed-topos}{赋环拓扑斯}。除非另有说明，令
+\[K_\bullet({}_AX)=k(D^b({}_AX)_{\mathrm{coh}}),\qquad K^\bullet({}_AX)=k(D({}_AX)_{\mathrm{parf}}),\]
+其中 $k(\ )$ 如（1.1）所定义；并令
+\[K_\bullet({}_AX)_{\text{naïf}}=k(\operatorname{Coh}({}_AX)),\qquad K^\bullet({}_AX)_{\text{naïf}}=k(\operatorname{Loclib}({}_AX)),\]
+其中 $k(\ )$ 如（1.5.2）所定义，所在的\Term{abelian-category}{阿贝尔范畴}为 $\operatorname{Mod}({}_AX)$。\footnote{在不会导致混淆时，允许省略下标 $A$。有时也会略去下标“naïf”，但会明确说明。}我们称 $K_\bullet({}_AX)$（相应地，$K^\bullet({}_AX)$）为左 $A$-\Term{module}{模}的\Term{pseudo-coherent}{伪凝聚}\Term{complex}{复形}（相应地，\Term{perfect-complex}{完美复形}）的\Term{grothendieck-group}{Grothendieck 群}；称 $K_\bullet({}_AX)_{\text{naïf}}$（相应地，$K^\bullet({}_AX)_{\text{naïf}}$）为\Term{coherent}{凝聚}（相应地，\Term{locally-free}{局部自由}）左 $A$-\Term{module}{模}的\Term{grothendieck-group}{Grothendieck 群}。
+\end{SGAresult}
+
+\textbf{注记 2.3。}a) 可以定义 $K_\bullet(\ )$ 与 $K^\bullet(\ )$ 的变体，令
+\[K_\bullet^{\mathrm{loc}}({}_AX)=k(D^{\mathrm{locb}}({}_AX)_{\mathrm{coh}})\]
+（其中“locb”表示“\Term{cohomology}{上同调}\Term{local-scheme}{局部}\Term{bounded}{有界}”），以及
+\[K^\bullet_{\mathrm{loc}}({}_AX)=k(D({}_AX)_{\mathrm{parf}}).\]
+当 $X$ 的\Term{final-object}{终对象}\Term{quasi-compact}{拟紧}时，这些群与（2.2）所定义的群一致；不过\Term{generic}{一般}说来，它们不大适用于交点计算。
+\SourcePage{290}
+b) 群 $K_\bullet({}_AX)_{\text{naïf}}$ 实际上只有在 $A$ \Term{coherent}{凝聚}时才有意义（否则，\Term{coherent}{凝聚}\Term{sheaf}{层}可能少得很……）。
+
+c) 考虑“过大”的\Term{triangulated-category}{三角范畴}的 $k$ 没有意义。例如，从（1.2 b)）容易\Term{pushout}{推出}
+\[k(D({}_AX))=k(D^-({}_AX))=k(D^+({}_AX))=k(D^b({}_AX))=k(D^-({}_AX)_{\mathrm{coh}})=0\]
+（对于最后一个等式，只须注意，$L\in\operatorname{ob}D^-({}_AX)_{\mathrm{coh}}$ 蕴含 $\coprod_{i\geq0}L[2i]\in\operatorname{ob}D^-({}_AX)_{\mathrm{coh}}$）。
+
+\textbf{2.4。\Term{coherent}{凝聚}\Term{ringed-sheaf}{环层}的情形。}设 $(X,A)$ 为\Term{ringed-topos}{赋环拓扑斯}，并假设 $A$ 作为左 $A$-\Term{module}{模}是\Term{coherent}{凝聚}的（第 I 讲 3.1 及 3.6）。每个\Term{coherent}{凝聚}左 $A$-\Term{module}{模}都是\Term{pseudo-coherent}{伪凝聚}\Term{complex}{复形}（第 I 讲 3.5），所以有一个\Term{fully-faithful}{全忠实}\Term{functor}{函子}
+\[\operatorname{Coh}({}_AX)\lhook\joinrel\longrightarrow D^b({}_AX)_{\mathrm{coh}}.\tag{2.4.1}\]
+而由第 I 讲 3.4，$\operatorname{Coh}({}_AX)$ 是 $\operatorname{Mod}({}_AX)$ 的\Term{thick-subcategory}{厚子范畴}；又由第 I 讲 3.5，$D^b({}_AX)_{\mathrm{coh}}$ 是 $D^b({}_AX)$ 中由满足对每个 $i$ 都有 $H^i(L)\in\operatorname{ob}\operatorname{Coh}({}_AX)$ 的\Term{object}{对象} $L$ 构成的\Term{full-subcategory}{全子范畴}。因此，由（1.6）得知，由（2.4.1）定义的\Term{homomorphism}{同态}
+\[K_\bullet({}_AX)_{\text{naïf}}\longrightarrow K_\bullet({}_AX)\tag{2.4.2}\]
+是\Term{isomorphism}{同构}。
+
+\textbf{2.5。\Term{homomorphism}{同态} $K^\bullet\to K_\bullet$。}设 $(X,A)$ 为\Term{ringed-topos}{赋环拓扑斯}。包含\Term{functor}{函子} $D({}_AX)_{\mathrm{parf}}\hookrightarrow D^b({}_AX)_{\mathrm{coh}}$ 定义\Term{homomorphism}{同态}
+\[K^\bullet({}_AX)\longrightarrow K_\bullet({}_AX).\tag{2.5.1}\]
+\Term{generic}{一般}而言，它既非\Term{injectivity}{单射}也非\Term{surjectivity}{满射}。不过，作如下假设：
+\SourcePage{291}
+(i) $X$ 的\Term{final-object}{终对象}是\Term{quasi-compact}{拟紧}的；
+
+(ii) $X$ 有\Term{enough-points}{足够多的点}，且对 $X$ 的每个点 $x$，每个左 $A_x$-\Term{module}{模}均有\Term{finite}{有限}\Term{tor-dimension}{Tor 维数}。
+
+这时，由第 I 讲 5.10，有 $D({}_AX)_{\mathrm{parf}}=D^b({}_AX)_{\mathrm{coh}}$，\Term{homomorphism}{同态}（2.5.1）是\Term{isomorphism}{同构}。例如，由\Term{regular-local-ring}{正则局部环}\Term{ringed}{赋环}的\Term{compact-space}{紧空间}满足假设 (i)、(ii)。
+
+\textbf{2.6。$K^\bullet$ 与 $K^\bullet$ 之间的\Term{pairing}{配对}（非交换情形）。}设
+\[f:(X',A')\longrightarrow(X,A)\]
+为\Term{ringed-topos}{赋环拓扑斯}的\Term{morphism}{态射}。记 $\operatorname{Mod}({}_{A'}X'_A)$ 为左侧\Term{action}{作用}为 $A'$、右侧\Term{action}{作用}为 $f^{-1}(A)$ 的\Term{bimodule}{双模}\Term{category}{范畴}，$\operatorname{Loclib}_{A'}({}_{A'}X'_A)$ 为其中由作为左 $A'$-\Term{module}{模}属于 $\operatorname{Loclib}({}_{A'}X')$ 的\Term{object}{对象}构成的\Term{full-subcategory}{全子范畴}。与（2.2）类似，令
+\[K^\bullet_{\text{naïf}}({}_{A'}X'_A)_{A'}=k\bigl(\operatorname{Loclib}_{A'}({}_{A'}X'_A)\bigr).\]
+\Term{tensor-product}{张量积}
+\begin{align*}
+\otimes_A:\operatorname{Mod}({}_{A'}X'_A)\times\operatorname{Mod}({}_AX)&\longrightarrow\operatorname{Mod}({}_{A'}X'),\\
+(E',E)&\longmapsto E'\otimes_{f^{-1}(A)}f^{-1}(E)
+\end{align*}
+诱导\Term{functor}{函子}
+\[\operatorname{Loclib}_{A'}({}_{A'}X'_A)\times\operatorname{Loclib}({}_AX)\longrightarrow\operatorname{Loclib}({}_{A'}X').\tag{2.6.1}\]
+从（2.6.1）得出的映射 $(E',E)\mapsto\operatorname{cl}(E'\otimes_AE)$ 在（1.5）的意义下是\Term{bilinear-map}{双加性的}，因而定义\Term{homomorphism}{同态}
+\[K^\bullet_{\text{naïf}}({}_{A'}X'_A)_{A'}\otimes K^\bullet_{\text{naïf}}({}_AX)\longrightarrow K^\bullet_{\text{naïf}}({}_{A'}X').\tag{2.6.2}\]
+记 $D({}_{A'}X'_A)$ 为 $\operatorname{Mod}({}_{A'}X'_A)$ 的\Term{derived-category}{导出范畴}，$D({}_{A'}X'_A)_{A'\text{-}\mathrm{parf}}$ 为其中由相对于 $A'$ 具有\Term{finite}{有限}\Term{perfect-amplitude}{完美振幅}的\Term{complex}{复形}（即视为 $D({}_{A'}X')$ 的\Term{object}{对象}时具有此性质）构成的\Term{full-subcategory}{全子范畴}，并如（2.2）中那样令
+\[K^\bullet({}_{A'}X'_A)_{A'}=k\bigl(D({}_{A'}X'_A)_{A'\text{-}\mathrm{parf}}\bigr).\]
+\SourcePage{292}
+包含\Term{functor}{函子}显然定义\Term{homomorphism}{同态}
+\[K^\bullet_{\text{naïf}}({}_{A'}X'_A)_{A'}\longrightarrow K^\bullet({}_{A'}X'_A)_{A'},\tag{2.6.3.1}\]
+\[K^\bullet_{\text{naïf}}({}_AX)\longrightarrow K^\bullet({}_AX),\tag{2.6.3.2}\]
+\[K^\bullet_{\text{naïf}}({}_{A'}X')\longrightarrow K^\bullet({}_{A'}X').\tag{2.6.3.3}\]
+另一方面，我们知道（第 I 讲 4.18、4.19），$\otimes_A$ 的\Term{derived-functor}{导出函子}
+\[\mathbin{\overset{\mathbf L}{\otimes}}_A:D^-({}_{A'}X'_A)\times D^-({}_AX)\longrightarrow D^-({}_{A'}X')\]
+诱导（\Term{exact-functor}{正合}）\Term{functor}{函子}
+\[D({}_{A'}X'_A)_{A'\text{-}\mathrm{parf}}\times D({}_AX)_{\mathrm{parf}}\longrightarrow D({}_{A'}X')_{\mathrm{parf}}.\tag{2.6.4}\]
+后者定义\Term{homomorphism}{同态}
+\[K^\bullet({}_{A'}X'_A)_{A'}\otimes K^\bullet({}_AX)\longrightarrow K^\bullet({}_{A'}X').\tag{2.6.5}\]
+由于\Term{functor}{函子}（2.6.1）由（2.6.4）诱导，\Term{homomorphism}{同态}（2.6.2）和（2.6.5）与\Term{homomorphism}{同态}（2.6.3.1）、（2.6.3.2）、（2.6.3.3）相容。换言之，有\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}[column sep=large]
+K^\bullet_{\text{naïf}}({}_{A'}X'_A)_{A'}\otimes K^\bullet_{\text{naïf}}({}_AX)\arrow[r]\arrow[d]&K^\bullet_{\text{naïf}}({}_{A'}X')\arrow[d]\\
+K^\bullet({}_{A'}X'_A)_{A'}\otimes K^\bullet({}_AX)\arrow[r]&K^\bullet({}_{A'}X')
+\end{tikzcd}\tag{2.6.6}
+\]
+其中上下两条水平\Term{arrow}{箭头}分别为（2.6.2）、（2.6.5），竖直\Term{arrow}{箭头}由（2.6.3.1）、（2.6.3.2）、（2.6.3.3）定义。
+
+\SourcePage{293}
+\textbf{2.7。$K^\bullet$ 的\Term{contravariant}{反变}规律与\Term{ring-structure}{环结构}。}下面明确写出\Term{pairing}{配对}（2.6）的几个重要特例（当然，也很容易直接研究它们）。
+
+a) 设 $f:(X',A')\to(X,A)$ 为\Term{ringed-topos}{赋环拓扑斯}的\Term{morphism}{态射}。\Term{functor}{函子} $Lf^*:D^-({}_AX)\to D^-({}_{A'}X')$ 将 $D({}_AX)_{\mathrm{parf}}$ 映入 $D({}_{A'}X')_{\mathrm{parf}}$（相应地，将 $\operatorname{Loclib}({}_AX)$ 映入 $\operatorname{Loclib}({}_{A'}X')$）（第 I 讲 4.19.1），并定义\Term{homomorphism}{同态}
+\[f^*:K^\bullet({}_AX)\longrightarrow K^\bullet({}_{A'}X')\tag{2.7.1}\]
+\[\text{（相应地，}\ f^*:K^\bullet({}_AX)_{\text{naïf}}\longrightarrow K^\bullet({}_{A'}X')_{\text{naïf}}\text{）}.\tag{2.7.2}\]
+它还可以解释为（2.6.2）（相应地，（2.6.5））中乘以 $\operatorname{cl}(A')$ 的运算。有\Term{commutative-diagram}{交换图}（（2.6.6）的特例）
+\[\begin{tikzcd}
+K^\bullet({}_AX)_{\text{naïf}}\arrow[r,"f^*"]\arrow[d]&K^\bullet({}_{A'}X')_{\text{naïf}}\arrow[d]\\
+K^\bullet({}_AX)\arrow[r,"f^*"]&K^\bullet({}_{A'}X')
+\end{tikzcd}\]
+其中左右竖直\Term{arrow}{箭头}分别为（2.6.3.2）和（2.6.3.3）。
+
+设 $g:(X,A)\to(X'',A'')$ 为\Term{ringed-topos}{赋环拓扑斯}的\Term{morphism}{态射}。\Term{inverse-image-functor}{逆像函子}的\Term{transitivity}{传递性}说明，（2.7.1）（相应地，（2.7.2））型的\Term{homomorphism}{同态}满足关系
+\[(gf)^*=f^*g^*.\tag{2.7.3}\]
+所以，$K^\bullet({}_AX)$（相应地，$K^\bullet({}_AX)_{\text{naïf}}$）是 $(X,A)$ 的\Term{contravariant-functor}{反变函子}。
+
+b) 设 $(X,\mathscr O_X)$ 为\Term{commutatively-ringed-topos}{交换赋环拓扑斯}。由\Term{tensor-product}{张量积}的\Term{associativity}{结合性}与\Term{commutativity}{交换性}，\Term{homomorphism}{同态}（2.6.5）（相应地，（2.6.2））（其中取 $A=\mathscr O_X$、$(X',A')=(X,A)$、$f=\operatorname{Id}$）赋予 $K^\bullet(X)$（相应地，$K^\bullet(X)_{\text{naïf}}$）一个有\Term{identity-element}{单位元}的\Term{commutative-ring}{交换环}结构
+\SourcePage{294}
+（$1=\operatorname{cl}(\mathscr O_X)$），且\Term{canonical}{典范}\Term{homomorphism}{同态}（2.6.3.2）
+\[K^\bullet(X)_{\text{naïf}}\longrightarrow K^\bullet(X)\]
+是保\Term{identity-element}{单位元}的\Term{ring-homomorphism}{环同态}。
+
+设 $f:(X,\mathscr O_X)\to(Y,\mathscr O_Y)$ 为\Term{commutatively-ringed-topos}{交换赋环拓扑斯}的\Term{morphism}{态射}。\Term{tensor-product}{张量积}与\Term{inverse-image}{逆像}的相容性表明，\Term{homomorphism}{同态}
+\[f^*:K^\bullet(Y)\longrightarrow K^\bullet(X)\]
+\[\text{（相应地，}\ f^*:K^\bullet(Y)_{\text{naïf}}\longrightarrow K^\bullet(X)_{\text{naïf}}\text{）}\]
+是保\Term{identity-element}{单位元}的\Term{ring-homomorphism}{环同态}。
+
+\textbf{2.8。从 $K^\bullet$ 到 $H^0(\ ,\mathbf Z)$ 的\Term{augmentation}{增广}。}设 $(X,\mathscr O_X)$ 为\Term{locally-ringed-topos}{局部赋环拓扑斯}（第 I 讲 2.15.1）。回顾，我们已经定义了（第 I 讲 6.11 至 6.14）一个（保\Term{identity-element}{单位元}的）\Term{ring-homomorphism}{环同态}
+\[i:H^0(X,\mathbf Z)\longrightarrow K^\bullet(X)_{\text{naïf}},\]
+因而赋予 $K^\bullet(X)_{\text{naïf}}$（也通过\Term{canonical}{典范}\Term{homomorphism}{同态} $K^\bullet(X)_{\text{naïf}}\to K^\bullet(X)$ 赋予 $K^\bullet(X)$）一个 $H^0(X,\mathbf Z)$ 上的（有\Term{identity-element}{单位元}的）\Term{algebra}{代数}结构。此外（同上），\Term{algebra}{代数} $K^\bullet(X)_{\text{naïf}}$（相应地，$K^\bullet(X)$）由\Term{rank}{秩}给出到 $H^0(X,\mathbf Z)$ 的\Term{augmentation}{增广}，且\Term{canonical}{典范}\Term{homomorphism}{同态} $K^\bullet(X)_{\text{naïf}}\to K^\bullet(X)$ 是\Term{augmented-algebra}{增广代数}的\Term{homomorphism}{同态}。
+
+设 $f:(X,\mathscr O_X)\to(Y,\mathscr O_Y)$ 为\Term{locally-ringed-topos}{局部赋环拓扑斯}的\Term{morphism}{态射}。\Term{homomorphism}{同态} $f^*:K^\bullet(Y)\to K^\bullet(X)$ 及 $f^*:K^\bullet(Y)_{\text{naïf}}\to K^\bullet(X)_{\text{naïf}}$ 与前述\Term{augmented-algebra}{增广代数}结构相容（第 I 讲 6.12、6.13）；这可表述为下图的\Term{commutativity}{交换性}（其中 $\operatorname{rg}$ 表示\Term{rank}{秩}）：
+\SourcePage{295}
+\[\begin{tikzcd}[column sep=small]
+H^0(Y,\mathbf Z)\arrow[r,"i"]\arrow[d]&K^\bullet(Y)_{\text{naïf}}\arrow[r]\arrow[d]&K^\bullet(Y)\arrow[r,"\operatorname{rg}"]\arrow[d]&H^0(Y,\mathbf Z)\arrow[d]\\
+H^0(X,\mathbf Z)\arrow[r,"i"]&K^\bullet(X)_{\text{naïf}}\arrow[r]&K^\bullet(X)\arrow[r,"\operatorname{rg}"]&H^0(X,\mathbf Z).
+\end{tikzcd}\]
+\textasteriskcentered\ 我们将在本讨论班后续部分（第 V 讲 3.9.1 及第 VI 讲）看到，$K^\bullet(X)_{\text{naïf}}$ 可以赋予比到 $H^0(X,\mathbf Z)$ 的\Term{augmented-algebra}{增广代数}更丰富的结构，即一个到视为\Term{binomial-ring}{二项式环}（第 V 讲 2.8）的 $H^0(X,\mathbf Z)$ 的\Term{augmentation}{增广} $\lambda$-\Term{algebra}{代数}结构；该结构与\Term{inverse-image}{逆像}\Term{homomorphism}{同态}相容。Deligne [5]\SGAsourcegap{本讲参考文献未列出所引文献 [5] 的条目；现有原本未给出该引注所需的文献信息。}最近证明，$K^\bullet(X)$ 也可赋予类似结构（至少当 $X$ 的\Term{characteristic}{特征}为 $p\geq0$ 时如此），且\Term{canonical}{典范}\Term{homomorphism}{同态} $K^\bullet(X)_{\text{naïf}}\to K^\bullet(X)$ 是\Term{augmentation}{增广} $\lambda$-\Term{algebra}{代数}的\Term{homomorphism}{同态}，从而肯定地回答了 Grothendieck 的一个猜想（第 XIV 讲 1）。\ \textasteriskcentered
+
+\textbf{2.9。$K^\bullet$ 与 $K^\bullet_{\text{naïf}}$ 的比较。}设 $(X,A)$ 为\Term{ringed-topos}{赋环拓扑斯}。\Term{generic}{一般}没有理由认为\Term{canonical}{典范}\Term{homomorphism}{同态}
+\[K^\bullet(X)_{\text{naïf}}\longrightarrow K^\bullet(X)\]
+是\Term{injectivity}{单射}或\Term{surjectivity}{满射}。不过，第 II 讲的“整体\Term{resolution}{消解}存在性准则”表明，在下列情形它是\Term{isomorphism}{同构}：
+
+(i) $X$ 是一个\Term{separated}{分离}或\Term{noetherian-scheme}{诺特}的\Term{divisorial-scheme}{除子型概形}的 Zariski \Term{topos}{拓扑斯}（且 $A=\mathscr O_X$）（第 II 讲 2.2.9）；
+
+(ii) $X$ 是\Term{compact-space}{紧空间}定义的\Term{topos}{拓扑斯}，且 $A$ 是\Term{soft-sheaf}{软层}（第 II 讲 2.3.2）；
+
+(iii) $X$ 是\Term{final-object}{终对象}\Term{quasi-compact}{拟紧}的 \Term{stein-topos}{Stein 拓扑斯}，且 $A=\mathscr O_X$（第 II 讲 2.4.5）。
+
+\SourcePage{296}
+\textbf{2.10。$K^\bullet$ 与 $K_\bullet$ 之间的\Term{pairing}{配对}。}设 $(X,\mathscr O_X)$ 为\Term{commutatively-ringed-topos}{交换赋环拓扑斯}。我们知道（第 I 讲 5.8.4 b)）有\Term{pairing}{配对}
+\[\mathbin{\overset{\mathbf L}{\otimes}}_A:D(X)_{\mathrm{parf}}\times D^b(X)_{\mathrm{coh}}\longrightarrow D^b(X)_{\mathrm{coh}}.\]
+它定义\Term{homomorphism}{同态}
+\[K^\bullet(X)\otimes K_\bullet(X)\longrightarrow K_\bullet(X).\tag{2.10.1}\]
+由\Term{tensor-product}{张量积}的\Term{associativity}{结合性}可见，（2.10.1）赋予 $K_\bullet(X)$ 一个 $K^\bullet(X)$-\Term{module}{模}结构。更\Term{generic}{一般}地，若 $f:(X,\mathscr O_X)\to(Y,\mathscr O_Y)$ 为\Term{commutatively-ringed-topos}{交换赋环拓扑斯}的\Term{morphism}{态射}，则可通过\Term{homomorphism}{同态} $f^*:K^\bullet(Y)\to K^\bullet(X)$ 将 $K_\bullet(X)$ 视为 $K^\bullet(Y)$-\Term{module}{模}。
+
+\textbf{2.11。$K_\bullet$ 的\Term{covariant}{协变}规律与\Term{projection-formula}{投影公式}。}设 $(X,A)$ 为\Term{ringed-topos}{赋环拓扑斯}。与 $K^\bullet({}_AX)$ 的情形不同，群 $K_\bullet({}_AX)$ 对 $(X,A)$ 没有自然的\Term{variance}{变性}。不过，在\Term{algebraic-geometry}{代数几何}与\Term{analytic-geometry}{解析几何}中，对于\Term{proper}{固有}\Term{morphism}{态射}，$K_\bullet(X)$ 往往对 $X$ 是\Term{covariant-functor}{协变}的。下面说明这一点。
+
+\textbf{2.11.1。}设 $f:X\to Y$ 为\Term{quasi-compact}{拟紧}\Term{scheme}{概形}之间的\Term{proper}{固有}且\Term{pseudo-coherent}{伪凝聚}\Term{morphism}{态射}（第 III 讲 1.2）。若 $f$ 的\Term{finiteness}{有限性}猜想（第 III 讲 2.1）成立，特别地（第 III 讲 2.2），若 $Y$ 是\Term{noetherian-scheme}{诺特概形}（此时 $f$ 的\Term{pseudo-coherent}{伪凝聚}假设自动满足（第 III 讲 1.3））或 $f$ 是\Term{projective-morphism}{射影态射}，则由第 III 讲 2.6，\Term{functor}{函子} $Rf_*$ 诱导\Term{functor}{函子}
+\[Rf_*:D^b(X)_{\mathrm{coh}}\longrightarrow D^b(Y)_{\mathrm{coh}}.\]
+它定义\Term{homomorphism}{同态}
+\[f_*:K_\bullet(X)\longrightarrow K_\bullet(Y).\tag{2.11.1.1}\]
+\SourcePage{297}
+这个\Term{homomorphism}{同态}是 $K^\bullet(Y)$-\Term{linear}{线性}的（参见（2.10）），也就是说，对 $y\in K^\bullet(Y)$、$x\in K_\bullet(X)$，有\Term{projection-formula}{投影公式}
+\[f_*(xy)=y f_*(x).\tag{2.11.1.2}\]
+事实上，若 $x=\operatorname{cl}(E)$，其中 $E\in\operatorname{ob}D^b(X)_{\mathrm{coh}}$，且 $y=\operatorname{cl}(M)$，其中 $M\in\operatorname{ob}D(Y)_{\mathrm{parf}}$，则有（第 III 讲 3.7）
+\[Rf_*(E)\mathbin{\overset{\mathbf L}{\otimes}}M\simeq Rf_*\bigl(E\mathbin{\overset{\mathbf L}{\otimes}}M\bigr).\]
+最后，若 $g:Y\to Z$ 是满足与 $f$ 相同假设、且\Term{finiteness}{有限性}猜想（第 III 讲 2.1）对它成立的\Term{morphism}{态射}，则\Term{direct-image-functor}{直像函子}的\Term{transitivity}{传递性}给出\Term{homomorphism}{同态}（2.11.1.1）的公式
+\[g_*f_*=(gf)_*.\tag{2.11.1.3}\]
+
+\textbf{2.11.2。}设 $f:X\to Y$ 为\Term{finite-dimensional}{有限维}\Term{analytic-space}{解析空间}的\Term{proper}{固有}\Term{morphism}{态射}。由 Grauert 的\Term{finiteness-theorem}{有限性定理} [2]，$Rf_*$ 将 $D^b(X)_{\mathrm{coh}}$ 映入 $D^b(Y)_{\mathrm{coh}}$，从而定义\Term{homomorphism}{同态}
+\[f_*:K_\bullet(X)\longrightarrow K_\bullet(Y).\tag{2.11.2.1}\]
+与它在\Term{algebra}{代数}情形下的类似物（2.11.1.1）一样，它是 $K^\bullet(Y)$-\Term{linear}{线性}的，即公式（2.11.1.2）成立；这由\Term{derived-category}{导出范畴}层面的\Term{projection-formula}{投影公式}（第 III 讲 5.9 b)）得出。同样也有传递公式（2.11.1.3）。
+
+\textbf{2.11.3。}一旦离开\Term{algebra}{代数}或解析的框架，$K_\bullet$ 对\Term{proper}{固有}\Term{morphism}{态射}的这种\Term{covariant-functor}{协变性}便不再成立。确实，设 $f:X\to Y$ 为以复\Term{continuous}{连续}函数\Term{sheaf}{层}\Term{ringed}{赋环}的\Term{topological-space}{拓扑空间}之间的\Term{proper}{固有}\Term{morphism}{态射}。当 $E\in\operatorname{ob}D^b(X)_{\mathrm{coh}}$ 时，\Term{generic}{一般}并没有 $Rf_*(E)\in\operatorname{ob}D^b(Y)_{\mathrm{coh}}$；仅取 $E=\mathscr O_X$、$Y$ 为一个点，就已看得很清楚。事实上，$K_\bullet$ 的定义（2.2）
+\SourcePage{298}
+似乎主要适合\Term{algebraic-geometry}{代数几何}与\Term{analytic-geometry}{解析几何}的需要，而\Term{topological-space}{拓扑空间}的 $K_\bullet$ 的良好定义仍有待找到。此外，看来还须走出 $\mathscr O_X$-\Term{linear}{线性}\Term{complex}{复形}的框架，为一个\Term{morphism}{态射} $f:X\to Y$（\Term{topological-space}{拓扑空间}的，或相应地\Term{mixed-manifold}{混合流形}的（第 II 讲附录 II），等等）定义一类适当的、$X$ 上\Term{topology}{拓扑}向量\Term{sheaf}{层}的\Term{complex}{复形}；例如，当 $f$ 是\Term{mixed-manifold}{混合流形}的结构\Term{morphism}{态射}时，这一类应包含 $X$ 上相对于 $Y$ 的\Term{elliptic-complex}{椭圆复形}。第 II 讲附录 II 的\Term{finiteness-theorem}{有限性定理}，以及 Grothendieck 在 [3] 中证明的一个类似\Term{theorem}{定理}（其中假设 $Y$ 是一个点），都提示了这一方向。
+
+\textbf{2.12。$K^\bullet$ 与 $K_\bullet$ 的非通常\Term{variance}{变性}。}设 $f:(X,A)\to(Y,B)$ 为\Term{ringed-topos}{赋环拓扑斯}之间的\Term{finite}{有限}\Term{tor-dimension}{Tor 维数}\Term{morphism}{态射}（第 III 讲 3.1）。\Term{functor}{函子} $Lf^*:D^-({}_BY)\to D^-({}_AX)$ 将 $D^b({}_BY)$ 映入 $D^b({}_AX)$，因而将 $D^b({}_BY)_{\mathrm{coh}}$ 映入 $D^b({}_AX)_{\mathrm{coh}}$（第 I 讲 2.16.1），于是定义\Term{homomorphism}{同态}
+\[f^*:K_\bullet({}_BY)\longrightarrow K_\bullet({}_AX).\tag{2.12.1}\]
+若 $A,B$ 均交换，则\Term{inverse-image}{逆像}与\Term{tensor-product}{张量积}交换说明，\Term{homomorphism}{同态}（2.12.1）与 $K_\bullet(Y)$ 和 $K_\bullet(X)$ 分别作为 $K^\bullet(Y)$-\Term{module}{模}和 $K^\bullet(X)$-\Term{module}{模}的结构相容（2.10）；换言之，对 $\alpha\in K^\bullet(Y)$、$y\in K_\bullet(Y)$，有公式
+\[f^*(\alpha y)=\alpha f^*(y).\tag{2.12.2}\]
+若 $g:(Y,B)\to(Z,C)$ 为\Term{ringed-topos}{赋环拓扑斯}之间的\Term{finite}{有限}\Term{tor-dimension}{Tor 维数}\Term{morphism}{态射}，则\Term{inverse-image-functor}{逆像函子}的\Term{transitivity}{传递性}说明，\Term{homomorphism}{同态}（2.12.1）满足公式
+\[(gf)^*=f^*g^*.\tag{2.12.1.1}\]
+\SourcePage{299}
+现在假设处于（2.11.1）（相应地，（2.11.2））的情形，且 $f$ 具有\Term{finite}{有限}\Term{tor-dimension}{Tor 维数}。这时（第 III 讲 4.8.1 及 5.9 b)），\Term{functor}{函子} $Rf_*$ 将 $D(X)_{\mathrm{parf}}$ 映入 $D(Y)_{\mathrm{parf}}$，因而定义\Term{homomorphism}{同态}
+\[f_*:K^\bullet(X)\longrightarrow K^\bullet(Y).\tag{2.12.3}\]
+它\Term{generic}{一般}不是\Term{ring-homomorphism}{环同态}。不过，对 $y\in K_\bullet(Y)$（相应地，$K^\bullet(Y)$）、$x\in K^\bullet(X)$，有公式
+\[f_*\bigl(f^*(y)x\bigr)=y f_*(x),\tag{2.12.4}\]
+其中 $f^*$ 为\Term{homomorphism}{同态}（2.12.1）（相应地，（2.7.1））。证明与（2.11.1.2）的证明类似。若 $g:Y\to Z$ 是满足与 $f$ 相同假设的\Term{morphism}{态射}，则\Term{homomorphism}{同态}（2.12.3）满足传递公式
+\[g_*f_*=(gf)_*.\tag{2.12.3.1}\]
+\Term{homomorphism}{同态}（2.12.3）是\Term{algebraic-geometry}{代数几何}和\Term{analytic-geometry}{解析几何}中的 \Term{riemann-roch-theorem}{Riemann--Roch 定理}的一个基本组成部分（关于解析情形的提示，见第 0 讲 5）。假设 $X,Y$ 为\Term{separated}{分离}的\Term{divisorial-scheme}{除子型概形}（第 II 讲 2.2.5）（例如，当 $X,Y$ 具有\Term{ample-sheaf}{丰沛}\Term{invertible-sheaf}{可逆层}时就是如此）。那么由（2.9 (i)），$K^\bullet(X)$（相应地，$K^\bullet(Y)$）可与 $K^\bullet(X)_{\text{naïf}}$（相应地，$K^\bullet(Y)_{\text{naïf}}$）等同，因而（2.12.3）定义\Term{homomorphism}{同态}
+\[f_*:K^\bullet(X)_{\text{naïf}}\longrightarrow K^\bullet(Y)_{\text{naïf}}.\tag{2.12.3'}\]
+正如第 0 讲 3.1 已经解释过的，（2.12.3'）的定义绝非先验显然的。从本讨论班的角度看，它甚至是第 I 讲至第 IV 讲这一系列\Term{generic}{一般}论述的主要\Term{motive}{动机}之一。
+
+\SourcePage{300}
+\SGAsection{3}{概形的 Grothendieck 群的补充性质}
+\footnote{本节结果不会用于第 V 讲至第 VIII 讲。}
+\begin{SGAresult}{命题}{3.1.0}
+设
+\[\begin{tikzcd}
+X\arrow[d,"f"']&X'\arrow[l,"g"']\arrow[d,"f'"]\\
+Y&Y'\arrow[l,"h"]
+\end{tikzcd}\]
+为\Term{scheme}{概形}的\Term{cartesian-square}{笛卡儿方块}，其中 $Y$ \Term{quasi-compact}{拟紧}，$f$ \Term{quasi-compact}{拟紧}且\Term{quasi-separated}{拟分离}；设 $E\in\operatorname{ob}D^b(X)$ 为\Term{cohomology}{上同调}\Term{quasi-coherent}{拟凝聚}的\Term{complex}{复形}。假设 $X$ 和 $Y'$ 在 $Y$ 上\Term{tor-independent}{Tor 无关}（第 III 讲 1.5）。再假设以下两者至少有一成立：$h$ 具有\Term{finite}{有限}\Term{tor-dimension}{Tor 维数}，或 $E$ 相对于 $f$ 具有\Term{finite}{有限}\Term{flat-amplitude}{平坦振幅}。在这些条件下，\Term{base-change-morphism}{基变换箭头}（参见 SGA 4 XVII 4）
+\[Lh^*Rf_*E\longrightarrow Rf'_*Lg^*E\]
+有定义，且为\Term{isomorphism}{同构}。
+\end{SGAresult}
+\begin{proof}
+为定义该\Term{arrow}{箭头}，使用 $h$ 的\Term{trivial-duality}{平凡对偶}公式（SGA 4 XVII 2.3），即对 $L\in\operatorname{ob}D^-(Y)$、$M\in\operatorname{ob}D^+(Y')$，有\Term{canonical}{典范}的\Term{functorial}{函子性}\Term{isomorphism}{同构}
+\[\operatorname{Hom}(Lh^*L,M)\xrightarrow{\sim}\operatorname{Hom}(L,Rh_*M).\tag{*}\]
+利用第 III 讲 3.5.2 及 3.7.1，容易验证 $Lg^*E\in\operatorname{ob}D^b(X')$，且 $Rf_*E\in\operatorname{ob}D^-(Y)$；故将（*）用于 $L=Rf_*E$ 和 $M=Rf'_*Lg^*E$，便归结为定义一个\Term{arrow}{箭头}
+\[Rf_*E\longrightarrow Rf_*Rg_*Lg^*E.\]
+取它为\Term{adjunction-morphism}{伴随箭头} $E\to Rg_*Lg^*E$ 在 $Rf_*$ 下的像；该\Term{adjunction-morphism}{伴随箭头}来自 $g$ 的\Term{trivial-duality}{平凡对偶}公式。这样，\Term{base-change-morphism}{基变换箭头}
+\SourcePage{301}
+已经定义，只须证明它是\Term{isomorphism}{同构}。为此，首先可假设 $Y,Y'$ 为\Term{affine-scheme}{仿射概形}。接着，利用 $X$ 的一个开\Term{covering}{覆盖}的 Leray \Term{spectral-sequence}{谱序列}，归结到 $X,X'$ 都\Term{affine-scheme}{仿射}的情形。于是有一个环的\Term{cocartesian-square}{余笛卡儿方块}
+\[\begin{tikzcd}
+B\arrow[r]&B'\\
+A\arrow[u]\arrow[r]&A'\arrow[u]
+\end{tikzcd}\]
+且可假设 $E$ 由一个\Term{bounded-above}{上有界}的 $B$-\Term{module}{模}\Term{complex}{复形}定义。$A'$ 与 $B$ 在 $A$ 上\Term{tor-independent}{Tor 无关}，即
+\[B\mathbin{\overset{\mathbf L}{\otimes}}_A A'\xrightarrow{\sim}B',\]
+因而在 $D(A')$ 中有
+\[E\mathbin{\overset{\mathbf L}{\otimes}}_A A'\xrightarrow{\sim}E\mathbin{\overset{\mathbf L}{\otimes}}_B B',\]
+命题得证。
+\end{proof}
+
+将（3.1.0）用\Term{grothendieck-group}{Grothendieck 群}来表述，便得到：
+\begin{SGAresult}{命题}{3.1.1}
+设
+\[\begin{tikzcd}
+X\arrow[d,"f"']&X'\arrow[l,"g"']\arrow[d,"f'"]\\
+Y&Y'\arrow[l,"h"]
+\end{tikzcd}\]
+\SourcePage{302}
+为\Term{scheme}{概形}的\Term{cartesian-square}{笛卡儿方块}。假设 $Y,Y'$ \Term{quasi-compact}{拟紧}，$X,Y'$ 在 $Y$ 上\Term{tor-independent}{Tor 无关}（第 III 讲 1.5），$f$ \Term{proper}{固有}且\Term{pseudo-coherent}{伪凝聚}，且\Term{finiteness}{有限性}猜想（第 III 讲 2.1）对 $f,f'$ 成立（例如 $Y,Y'$ 为\Term{noetherian-scheme}{诺特概形}，或 $f$ 是\Term{projective-morphism}{射影态射}）。若 $f$ 是\Term{perfect-morphism}{完美的}（相应地，$h$ 具有\Term{finite}{有限}\Term{tor-dimension}{Tor 维数}），则对 $x\in K^\bullet(X)$（相应地，$K_\bullet(X)$），有
+\[h^*f_*(x)=f'_*g^*(x),\]
+其中 $h^*,g^*$ 由（2.7.1）（相应地，（2.12.1））定义，$f_*,f'_*$ 由（2.12.3）（相应地，（2.11.1.1））定义（注意，由第 III 讲 4.7.1，若 $f$ \Term{perfect-morphism}{完美}，则 $f'$ 也\Term{perfect-morphism}{完美}；而由第 III 讲 3.5.1，若 $h$ 具有\Term{finite}{有限}\Term{tor-dimension}{Tor 维数}，则 $g$ 也具有\Term{finite}{有限}\Term{tor-dimension}{Tor 维数}）。
+\end{SGAresult}
+
+\textbf{3.2。$K^\bullet_{\text{naïf}}$ 与 $K_\bullet$ 的取\Term{limit}{极限}。}设 $(X_i,f_{ij})_{i\in I}$ 为\Term{quasi-compact}{拟紧}且\Term{quasi-separated}{拟分离}\Term{scheme}{概形}的一个\Term{filtered}{滤过}\Term{projective-system}{投射系统}，其过渡\Term{morphism}{态射}均为\Term{affine-morphism}{仿射态射}（参见 EGA IV 8.2.2）。令 $X=\varprojlim_i X_i$，并记 $f_i:X\to X_i$ 为\Term{canonical}{典范}\Term{homomorphism}{同态}。
+
+\textbf{3.2.1。}\Term{homomorphism}{同态}（2.7.2）$f_i^*:K^\bullet(X_i)_{\text{naïf}}\to K^\bullet(X)_{\text{naïf}}$ 由于传递公式（2.7.3）而定义\Term{homomorphism}{同态}
+\[\varinjlim_i K^\bullet(X_i)_{\text{naïf}}\longrightarrow K^\bullet(X)_{\text{naïf}}.\tag{3.2.1.1}\]
+我断言，\Term{homomorphism}{同态}（3.2.1.1）是\Term{isomorphism}{同构}。事实上，设 $E$ 为\Term{finite-type}{有限型}\Term{locally-free}{局部自由} $\mathscr O_X$-\Term{module}{模}。由 EGA IV 8.5.2 及 8.5.5，存在一个指标 $i$ 及一个\Term{finite-type}{有限型}\Term{locally-free}{局部自由} $\mathscr O_{X_i}$-\Term{module}{模} $E_i$，使 $E\simeq f_i^*(E_i)$。由 EGA IV 8.5.2.5，$\operatorname{cl}(E_i)$ 在 $\varinjlim_i K^\bullet(X_i)_{\text{naïf}}$ 中的像不依赖于 $E_i$ 的选择，记为 $u(E)$。由 EGA IV 8.5.2 及 8.5.6，这样定义的映射
+\[u:\operatorname{ob}\operatorname{Loclib}(X)\longrightarrow\varinjlim_i K^\bullet(X_i)_{\text{naïf}}\]
+是\Term{additive-map}{加性的}（1.5）；
+\SourcePage{303}
+所以它定义\Term{homomorphism}{同态} $K^\bullet(X)_{\text{naïf}}\to\varinjlim_i K^\bullet(X_i)_{\text{naïf}}$，而由 EGA IV 8.5.2 立即可见，它是（3.2.1.1）的逆。这证明了我们的断言。
+
+\textbf{3.2.2。}同样定义一个\Term{canonical}{典范}\Term{homomorphism}{同态}
+\[\varinjlim_i K^\bullet(X_i)\longrightarrow K^\bullet(X).\tag{3.2.2.1}\]
+利用 Deligne 的\Term{localization}{局部化}技巧（SGA 4 XVII），可知 $X$ 上的\Term{perfect-complex}{完美复形}\Term{category}{范畴}与类似的\Term{category}{范畴} $\operatorname{Parf}(X_i)$ 的 $\operatorname*{Lim}_{\longrightarrow}$ \Term{equivalence-of-categories}{等价}，由此同样得到（3.2.2.1）是\Term{isomorphism}{同构}。
+
+\textbf{3.2.3。}假设各 $X_i$ 及 $X$ 为\Term{noetherian-scheme}{诺特概形}，且\Term{morphism}{态射} $f_{ij}$ \Term{flat}{平坦}（于是各 $f_i$ 也如此）。则\Term{homomorphism}{同态}（2.12.1）$f_i^*:K_\bullet(X_i)\to K_\bullet(X)$ 定义\Term{isomorphism}{同构}
+\[\varinjlim_i K_\bullet(X_i)\xrightarrow{\sim}K_\bullet(X).\tag{3.2.2.1}\]
+证明与（3.2.1）类似，利用（2.4）中 $K_\bullet(X)\simeq K_\bullet(X)_{\text{naïf}}$ 可用 $X$ 上的\Term{coherent}{凝聚}\Term{sheaf}{层}来计算这一事实。
+
+由（2.7 a)）和（2.12.2），各 $K_\bullet(X_i)$ 在 $K^\bullet(X_i)_{\text{naïf}}$ 上的\Term{module}{模}结构与\Term{inverse-image}{逆像} $f_{ij}^*$ 相容；因此，取\Term{limit}{极限}可得 $\varinjlim_i K_\bullet(X_i)$ 具有 $\varinjlim_i K^\bullet(X_i)_{\text{naïf}}$ 上的\Term{module}{模}结构。通过\Term{isomorphism}{同构}（3.2.1.1）与（3.2.2.1），这个结构与 $K_\bullet(X)$ 在 $K^\bullet(X)_{\text{naïf}}$ 上的\Term{module}{模}结构相容。换言之，有\Term{commutative-diagram}{交换图}，其中竖直\Term{arrow}{箭头}由（3.2.1.1）、（3.2.2.1）定义：
+\[\begin{tikzcd}[column sep=large]
+\varinjlim_i K^\bullet(X_i)_{\text{naïf}}\otimes\varinjlim_i K_\bullet(X_i)\arrow[r]\arrow[d,"\simeq"']&\varinjlim_i K_\bullet(X_i)\arrow[d,"\simeq"]\\
+K^\bullet(X)_{\text{naïf}}\otimes K_\bullet(X)\arrow[r]&K_\bullet(X).
+\end{tikzcd}\]
+
+\SourcePage{304}
+\textbf{3.3。相对 Grothendieck 群。}
+
+\textbf{3.3.1。}设 $f:X\to Y$ 为\Term{scheme}{概形}之间的\Term{locally-finite-type}{局部有限型}\Term{morphism}{态射}。令
+\[K^\bullet(f)=k(D(f)_{\mathrm{parf}}),\qquad K_\bullet(f)=k(D^b(f)_{\mathrm{coh}}),\]
+其中 $D^b(f)_{\mathrm{coh}}$ 表示相对于 $f$ \Term{pseudo-coherent}{伪凝聚}且\Term{cohomology}{上同调}\Term{bounded}{有界}的\Term{complex}{复形}\Term{category}{范畴}（第 III 讲 1.2），$D(f)_{\mathrm{parf}}$ 表示相对于 $f$ 具有\Term{finite}{有限}\Term{perfect-amplitude}{完美振幅}的\Term{complex}{复形}\Term{category}{范畴}（第 III 讲 4.2）。在不会产生歧义时，有时将 $K^\bullet(f)$（相应地，$K_\bullet(f)$）写为 $K^\bullet(X/Y)$（相应地，$K_\bullet(X/Y)$）。
+
+群 $K^\bullet(f)$ 和 $K_\bullet(f)$ 不具有其“绝对”类似物 $K^\bullet(X)$ 和 $K_\bullet(X)$ 那样丰富的结构，因为\Term{tensor-product}{张量积}\Term{generic}{一般}并不定义\Term{homomorphism}{同态} $K^\bullet(f)\otimes K^\bullet(f)\to K^\bullet(f)$（相应地，$K^\bullet(f)\otimes K_\bullet(f)\to K_\bullet(f)$）。不过，它们满足一些有意义的\Term{variance}{变性}性质，我们下面逐一考察。
+
+\textbf{3.3.2。}设
+\[\begin{tikzcd}[column sep=small]
+X\arrow[rr,"f"]\arrow[dr,"h"']&&Y\arrow[dl,"g"]\\
+&S&
+\end{tikzcd}\]
+为\Term{scheme}{概形}之间的\Term{locally-finite-type}{局部有限型}\Term{morphism}{态射}构成的\Term{commutative-triangle}{交换三角形}。
+
+\textbf{3.3.2.1。}若 $g$ \Term{pseudo-coherent}{伪凝聚}，则 $K_\bullet(f)=K_\bullet(h)$（第 III 讲 1.12）。若 $g$ \Term{smooth}{光滑}且 $X$ \Term{quasi-compact}{拟紧}，则 $K^\bullet(f)=K^\bullet(h)$（第 III 讲 4.4.1）。
+
+\textbf{3.3.2.2。}由第 III 讲 1.11 及 4.5，\Term{functor}{函子} $\mathbin{\overset{\mathbf L}{\otimes}}_Y$ 定义\Term{pairing}{配对}
+\[D(f)_{\mathrm{parf}}\times D^b(g)_{\mathrm{coh}}\longrightarrow D^b(h)_{\mathrm{coh}},\]
+\[D(f)_{\mathrm{parf}}\times D(g)_{\mathrm{parf}}\longrightarrow D(h)_{\mathrm{parf}},\]
+并诱导\Term{homomorphism}{同态}
+\[K^\bullet(f)\otimes K_\bullet(g)\longrightarrow K_\bullet(h),\qquad K^\bullet(f)\otimes K^\bullet(g)\longrightarrow K^\bullet(h).\]
+\SourcePage{305}
+由此特别得到（取 $X=Y$、$f=\operatorname{Id}$），$K_\bullet(g)$ 是 $K^\bullet(Y)$-\Term{module}{模}。另一方面，若 $f$ \Term{perfect-morphism}{完美}，则乘以 $\operatorname{cl}(\mathscr O_X)\in K^\bullet(f)$ 定义 $K^\bullet(Y)$-\Term{linear}{线性}的\Term{homomorphism}{同态}
+\[f^*:K_\bullet(Y/S)\longrightarrow K_\bullet(X/S),\qquad f^*:K^\bullet(Y/S)\longrightarrow K^\bullet(X/S).\]
+
+\textbf{3.3.2.3。}假设 $S$ \Term{quasi-compact}{拟紧}，$X,Y$ 在 $S$ 上为\Term{finite-type}{有限型}，且 $f$ \Term{proper}{固有}。若\Term{finiteness}{有限性}猜想（第 III 讲 2.1）成立，特别地，若 $Y$ 为\Term{noetherian-scheme}{诺特概形}或 $f$ 为\Term{projective-morphism}{射影态射}，则\Term{functor}{函子} $Rf_*$ 将 $D^b(h)_{\mathrm{coh}}$ 映入 $D^b(g)_{\mathrm{coh}}$，因而定义\Term{homomorphism}{同态}
+\[f_*:K_\bullet(X/S)\longrightarrow K_\bullet(Y/S).\]
+若 $f$ 还是\Term{perfect-morphism}{完美的}，则 $Rf_*$ 将 $D(h)_{\mathrm{parf}}$ 映入 $D(g)_{\mathrm{parf}}$（第 III 讲 4.8），并定义\Term{homomorphism}{同态}
+\[f_*:K^\bullet(X/S)\longrightarrow K^\bullet(Y/S).\]
+由\Term{projection-formula}{投影公式}（第 III 讲 3.7）得到公式
+\[f_*(\alpha x)=\alpha f_*(x),\]
+其中 $f$ \Term{proper}{固有}，$\alpha\in K^\bullet(S)$、$x\in K_\bullet(X)$（相应地，$f$ \Term{proper}{固有}且\Term{perfect-morphism}{完美}，$\alpha\in K_\bullet(S)$、$x\in K^\bullet(X/S)$）。
+
+\textbf{3.3.2.4。}假设 $S$ 为\Term{noetherian-scheme}{诺特概形}，$X,Y$ 在 $S$ 上为\Term{finite-type}{有限型}，且 $f$ \Term{compactifiable}{可紧化}且\Term{perfect-morphism}{完美}。这时（第 III 讲 4.9.1），\Term{functor}{函子} $f^!$ 将 $D(g)_{\mathrm{parf}}$ 映入 $D(h)_{\mathrm{parf}}$，并定义\Term{homomorphism}{同态}
+\[f^!:K^\bullet(Y/S)\longrightarrow K^\bullet(X/S).\]
+
+\textbf{3.3.3。}在第 III 讲 4.7 的假设下，\Term{functor}{函子} $\mathbin{\overset{\mathbf L}{\otimes}}_S$ 定义\Term{pairing}{配对}
+\[D(f_1)_{\mathrm{parf}}\times D^b(f_2)_{\mathrm{coh}}\longrightarrow D^b(f)_{\mathrm{coh}},\]
+\[D(f_1)_{\mathrm{parf}}\times D(f_2)_{\mathrm{parf}}\longrightarrow D(f)_{\mathrm{parf}},\]
+并诱导\Term{homomorphism}{同态}
+\[K^\bullet(f_1)\otimes K_\bullet(f_2)\longrightarrow K_\bullet(f),\qquad K^\bullet(f_1)\otimes K^\bullet(f_2)\longrightarrow K^\bullet(f).\]
+\SourcePage{306}
+（当然，取 $X_i=Y_i=S$ 时，便得到 $K_\bullet(S)$ 的 $K^\bullet(S)$-\Term{module}{模}结构。）
+
+若 $X$ 在 $S$ 上\Term{flat}{平坦}，则由此对 $n\geq1$ 得到\Term{homomorphism}{同态}
+\[K^\bullet(X/S)^{\otimes n}\longrightarrow K^\bullet((X/S)^n),\]
+它们在某种意义上应当代替 $K^\bullet(X/S)$ 所缺少的\Term{ring-structure}{环结构}。
+
+\SGAsection{}{参考文献}
+\begin{description}
+\item[{[1]}] Deligne, P.，秘密文稿（\emph{papiers secrets}）。
+\item[{[2]}] Grauert, H.，\emph{Ein Theorem der Analytischen Garbentheorie \ldots}（解析层论的一个\Term{theorem}{定理}……），\emph{Pub. Math. IHES}，第 5 号（1960）。
+\item[{[3]}] Grothendieck, A.，\emph{Théorèmes de finitude pour la cohomologie des faisceaux}（\Term{sheaf-cohomology}{层上同调}的\Term{finiteness-theorem}{有限性定理}），\emph{Bull. Soc. Math. France}，84，1956，1--7 页。
+\item[{[V]}] Verdier, J.-L.，\emph{Catégories dérivées}（\Term{derived-category}{导出范畴}），IHES（1964），油印本。
+\end{description}

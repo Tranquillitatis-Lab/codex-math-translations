@@ -1,0 +1,298 @@
+\chapter{下降技术与代数几何中的存在定理：Picard 概形的存在定理}
+\chapterintro{Technique de descente et théorèmes d'existence en géométrie algébrique. V. Les schémas de Picard. Théorèmes d'existence}{Bourbaki，第232号报告；1962年2月}
+\providecommand{\pePic}{\underline{\operatorname{Pic}}}
+\providecommand{\peH}{\overline H^0}
+
+\origpage{167}{232-01}
+\section*{1. 相对 Picard 群与函子}
+对任意\term{预概形}{prescheme}{préschéma}（更一般地，对任意\term{赋环空间}{ringed space}{espace annelé}）$X$，我们把 $X$ 上\term{可逆模}{invertible module}{Module inversible}（即局部同构于 $\mathcal O_X$ 的模）的同构类所成的群称为 $X$ 的（绝对）\term{Picard 群}{Picard group}{groupe de Picard}，记作 $\operatorname{Pic}(X)$。因此有典范同构
+\begin{equation}\operatorname{Pic}(X)\xrightarrow{\sim}H^1(X,\mathcal O_X^*).\tag{1.1}\end{equation}
+这里 $\mathcal O_X^*$ 是 $\mathcal O_X$ 的单位元\term{层}{sheaf}{faisceau}；事实上，它可与标准\term{可逆模}{invertible module}{Module inversible} $\mathcal O_X$ 的\term{自同构}{automorphism}{automorphisme}\term{层}{sheaf}{faisceau}等同。显然，$X\mapsto\operatorname{Pic}(X)$ 是关于 $X$ 的\term{反变函子}{contravariant functor}{foncteur contravariant}，且同构 (1.1) 具有函子性。
+
+若 $X$ 是另一个\term{预概形}{prescheme}{préschéma} $S$ 上的\term{预概形}{prescheme}{préschéma}，则由上述构造，当 $S'$ 在 $S$ 上\term{预概形}{prescheme}{préschéma}的\term{范畴}{category}{catégorie} $(\mathrm{Sch})_{/S}$ 中变化时，得到\term{反变函子}{contravariant functor}{foncteur contravariant} $S'\mapsto\operatorname{Pic}(X\times_S S')$。这个函子不可能是“\term{可表的}{representable}{représentable}”[4，II，A]：我们要分类的\term{可逆模}{invertible module}{Module inversible}存在非平凡\term{自同构}{automorphism}{automorphisme}，因此该函子并非“具有局部性质”[5，IV，5.4]。所以应使它“局部化”。为此，对任意\term{相对预概形}{relative prescheme}{préschéma relatif} $X/S$，一般地引入一个具有相对性质的群
+\begin{equation}\operatorname{Pic}'(X/S)=H^0\bigl(S,R^1f_*(\mathcal O_X^*)\bigr),\tag{1.2}\end{equation}
+其中 $f:X\to S$ 是\term{结构态射}{structure morphism}{morphisme structural}（参见 [4，II，C，3]）。在所引之处，这个群称为\term{相对 Picard 群}{relative Picard group}{groupe de Picard relatif}；出于下文将说明的原因，这里最好称它为 $X/S$ 的\term{限制相对 Picard 群}{restricted relative Picard group}{groupe de Picard relatif restreint}。当 $S'$ 在 $(\mathrm{Sch})_{/S}$ 中变化时，$S'\mapsto\operatorname{Pic}'(X\times_S S'/S')$ 是关于 $S'$ 的\term{反变函子}{contravariant functor}{foncteur contravariant}，也记作 $\pePic'_{X/S}$；它实质上由下式定义：
+\begin{equation}\pePic'_{X/S}(S')=\operatorname{Pic}'(X\times_S S'/S').\tag{1.3}\end{equation}
+\translatornote{原文公式(1.3)右端的 $\operatorname{Pic}$ 漏印撇号；上文已将此函子定义为\term{限制相对 Picard 群}{restricted relative Picard group}{groupe de Picard relatif restreint} $\operatorname{Pic}'$ 所给的函子，故这里据定义补上。}
+
+\origpage{168}{232-02}
+现在这个函子“具有局部性质”，因为构造时正是以此为目的。直观地说，(1.3) 的右端可解释为：以参数\term{预概形}{prescheme}{préschéma} $S'/S$ 为指标、由 $X/S$（的各纤维）上的\term{可逆层}{invertible sheaf}{faisceau inversible}的类组成的“代数族”所成的集合。若函子 $\pePic'$ \term{可表}{representable}{représentable}，则把代表它的 $S$ 上\term{预概形}{prescheme}{préschéma}记作 $\operatorname{Pic}_{X/S}$，称为 $X$ 在 $S$ 上的\term{Picard 预概形}{Picard prescheme}{préschéma de Picard}。于是
+\begin{equation}\operatorname{Hom}_S(S',\operatorname{Pic}_{X/S})\xrightarrow{\sim}\pePic'_{X/S}(S')=\operatorname{Pic}'(X\times_S S'/S').\tag{1.4}\end{equation}
+不过，在一些重要情形中，$\pePic'_{X/S}$ 不\term{可表}{representable}{représentable}（例如域 $k$ 上没有 $k$-\term{有理点}{rational point}{point rationnel}的 Brauer--Severi 簇），但相对 \term{Picard 预概形}{Picard prescheme}{préschéma de Picard}仍有自然的定义。原因在于：从绝对 \term{Picard 群}{Picard group}{groupe de Picard} $\operatorname{Pic}(X\times_S S')$ 构造函子 $\pePic'$ 时，所作的局部化还不够充分；确切地说，$\pePic'$ 一般并不“与\term{忠实平坦下降}{faithfully flat descent}{descente fidèlement plate}相容”。下面具体说明。
+
+设 $(\mathfrak M)$ 为所有\term{忠实平坦}{faithfully flat}{fidèlement plat}且\term{拟紧}{quasi-compact}{quasi-compact}的\term{预概形}{prescheme}{préschéma}态射所成的集合。这个集合在\term{基变换}{base change}{changement de base}及复合下稳定。设 $P$ 是从 $(\mathrm{Sch})_{/S}$ 到集合\term{范畴}{category}{catégorie}的\term{反变函子}{contravariant functor}{foncteur contravariant}；对每个属于 $(\mathfrak M)$ 的 $S$-态射 $u:T'\to T$，考虑图式
+\begin{equation}P(T)\longrightarrow P(T')\rightrightarrows P(T'\times_T T'),\tag{1.5}\end{equation}
+它是将函子 $P$ 作用于下列图式所得的：
+\[
+\begin{tikzcd}[column sep=large]
+T & T'\arrow[l,"u"'] & T'\times_T T'\arrow[l,shift left=.6ex,"\operatorname{pr}_1"]\arrow[l,shift right=.6ex,"\operatorname{pr}_2"'].
+\end{tikzcd}
+\]
+若 $P$ \term{可表}{representable}{représentable}，则\term{下降理论}{descent theory}{théorie de la descente} [4，I，B，定理2] 表明，对每个 $u\in(\mathfrak M)$，图式 (1.5) 都是\term{正合的}{exact}{exact}。我们把这一事实表述为 $P$ 与 $(\mathfrak M)$ 相容；在当前情形中，就是 $P$“与\term{忠实平坦下降}{faithfully flat descent}{descente fidèlement plate}相容”。也可以说，$(\mathrm{Sch})_{/S}$ 上的“\term{预层}{presheaf}{préfaisceau}”$P$，对于集合 $(\mathfrak M)$ 所给出的局部化概念，是一个“\term{层}{sheaf}{faisceau}”。对于任意 $P$，一个标准过程可以为它赋予一个“\term{层}{sheaf}{faisceau}”$\mathcal P$ 及函子同态 $P\to\mathcal P$，并使其具有显然意义下的泛性质；在通常的拓扑局部化情形，这一过程是熟知的。$\mathcal P$ 可按以下方式具体计算。为定义 $\mathcal P(T)$，对每个 $T$ 上的 $T'$，且 $u:T'\to T$ 属于 $(\mathfrak M)$，
+
+\origpage{169}{232-03}
+以 $\peH(T'/T,P)$ 表示 $P(T')$ 中满足下述条件的元素 $\xi$ 所成的子集：设 $\xi_1,\xi_2$ 为 $\xi$ 在 $P(T'\times_T T')$ 中的两个像，则存在态射 $v:T''\to T'\times_T T'$，$v\in(\mathfrak M)$，使 $\xi_1$ 与 $\xi_2$ 在 $P(T'')$ 中的像相同。
+
+［注意：这样定义的集合 $\peH$，比 [4，I，A，4(a)] 中引入的集合 $H^0(T'/T,P)$ 更大。］固定 $T$，让 $T'$ 变化（仍要求 $u\in(\mathfrak M)$）；在 $T'$ 的集合上赋予由支配关系定义的预序后，$\peH(T'/T,P)$ 构成\term{归纳系统}{inductive system}{système inductif}。令
+\begin{equation}\mathcal P(T)=\varinjlim_{T'}\peH(T'/T,P).\tag{1.6}\end{equation}
+这个表达式关于 $T$ 的函子作用可直接写出。
+
+当 $P(T)=\operatorname{Pic}(X\times_S T)$ 时，(1.6) 所定义的 $(\mathrm{Sch})_{/S}$ 上的\term{反变函子}{contravariant functor}{foncteur contravariant}，称为 $X$ 在 $S$ 上的\term{相对 Picard 函子}{relative Picard functor}{foncteur de Picard relatif}，记作 $\pePic_{X/S}$；群 $\pePic_{X/S}(S)$ 称为 $X$ 在 $S$ 上的\term{相对 Picard 群}{relative Picard group}{groupe de Picard relatif}，记作 $\operatorname{Pic}(X/S)$。于是有显然的双射
+\begin{equation}\pePic_{X/S}(T)\xrightarrow{\sim}\operatorname{Pic}(X\times_S T/T).\tag{1.7}\end{equation}
+因此，$\operatorname{Pic}(X/S)$ 的一个元素可由某个群 $\operatorname{Pic}(X\times_S S')$ 的元素 $\xi'$ 给出，其中 $S'\to S$ \term{忠实平坦}{faithfully flat}{fidèlement plat}且\term{拟紧}{quasi-compact}{quasi-compact}，并且可以找到\term{忠实平坦}{faithfully flat}{fidèlement plat}且\term{拟紧}{quasi-compact}{quasi-compact}的态射 $S''\to S'\times_S S'$，使 $\xi'$ 在 $\operatorname{Pic}(X\times_S S'')$ 中的两个逆像相同。满足上述条件的 $\operatorname{Pic}(X\times_S S')$ 的元素 $\xi'$ 与 $\operatorname{Pic}(X\times_S S_1)$ 的元素 $\xi_1$ 定义 $\operatorname{Pic}(X/S)$ 中同一个元素，当且仅当存在\term{忠实平坦}{faithfully flat}{fidèlement plat}且\term{拟紧}{quasi-compact}{quasi-compact}的态射 $S'_1\to S'\times_S S_1$，使这两个元素在 $\operatorname{Pic}(X\times_S S'_1)$ 中的像相等。继续使用前面引入的函子 $P'=\pePic'_{X/S}$ 往往更方便。立即可见，典范态射 $P\to P'$ 诱导一个同构
+\begin{equation}\mathcal P\xrightarrow{\sim}\mathcal P',\tag{1.8}\end{equation}
+从而得到用 $P'=\pePic'_{X/S}$ 描述 $\pePic_{X/S}$ 的方法，这通常更方便。由下文2.3，在上述 $\operatorname{Pic}(X/S)$ 的具体描述中，如果把 $P$ 换成 $P'$，那么至少在该处列明的条件下，确实可以取
+
+\origpage{170}{232-04}
+$S''=S'\times_S S'$、$S'_1=S'\times_S S_1$。
+
+若函子 $\pePic_{X/S}$ \term{可表}{representable}{représentable}，就说 $X/S$ 存在一个 \term{Picard 预概形}{Picard prescheme}{préschéma de Picard}；代表这个函子的 $S$ 上\term{预概形}{prescheme}{préschéma}称为 $X$ 在 $S$ 上的\term{Picard 预概形}{Picard prescheme}{préschéma de Picard}，仍记作 $\operatorname{Pic}_{X/S}$。显然，只要 $P'=\pePic'_{X/S}$ \term{可表}{representable}{représentable}即可：此时 $P'$ 本身已经是一个“\term{层}{sheaf}{faisceau}”，且 (1.8) 表明，态射 $P'\to\mathcal P'$ 可等同于典范态射
+\begin{equation}\pePic'_{X/S}\longrightarrow\pePic_{X/S},\tag{1.9}\end{equation}
+而这时它是同构。因此，我们的术语与先前 (1.4) 所引入的术语相容。一般地，当 $\operatorname{Pic}_{X/S}$ 存在时，它由下列函子同构刻画：
+\begin{equation}\operatorname{Hom}_S(S',\operatorname{Pic}_{X/S})\xrightarrow{\sim}\operatorname{Pic}(X\times_S S'/S').\tag{1.10}\end{equation}
+
+\section*{2. 各种相对与绝对 Picard 群之间的关系}
+\begin{statement}{命题 2.1}
+设 $f:X\to S$ 是满足 $\mathcal O_S\xrightarrow{\sim}f_*(\mathcal O_X)$ 的态射。则有\term{正合列}{exact sequence}{suite exacte}
+\[0\longrightarrow\operatorname{Pic}(S)\longrightarrow\operatorname{Pic}(X)\longrightarrow\operatorname{Pic}'(X/S).\]
+若 $X$ 在 $S$ 上存在一个\term{截面}{section}{section}，则最后一个态射是满射，即有同构
+\[\operatorname{Pic}'(X/S)\simeq\operatorname{Pic}(X)/\operatorname{Pic}(S).\]
+\end{statement}
+该\term{正合列}{exact sequence}{suite exacte}可视为关于 $f$ 及 $\mathcal O_X^*$ 的 Leray 谱序列所对应的低次\term{正合列}{exact sequence}{suite exacte}。第二个断言同样是形式的。
+
+\begin{statement}{命题 2.2}
+设 $f:X\to S$ 是\term{拟紧}{quasi-compact}{quasi-compact}且\term{分离}{separated}{séparé}的态射，满足 $\mathcal O_S\xrightarrow{\sim}f_*(\mathcal O_X)$，并设 $S'\to S$ 是\term{忠实平坦}{faithfully flat}{fidèlement plat}且\term{拟紧}{quasi-compact}{quasi-compact}的态射。则：
+\begin{enumerate}
+\item[(i)] $\operatorname{Pic}'(X/S)\to\operatorname{Pic}'(X\times_S S'/S')$ 是单射；
+\item[(ii)] 若 $X$ 在 $S$ 上局部存在\term{截面}{section}{section}（即每个 $s\in S$ 都有一个开邻域 $U$，使 $X|U$ 在 $U$ 上存在\term{截面}{section}{section}），则下列图式是\term{正合的}{exact}{exact}：
+\[\operatorname{Pic}'(X/S)\longrightarrow\operatorname{Pic}'(X\times_S S'/S')\rightrightarrows\operatorname{Pic}'(X\times_S S''/S''),\]
+\end{enumerate}
+\origpage{171}{232-05}
+其中 $S''=S'\times_S S'$。
+\end{statement}
+借助\term{忠实平坦下降}{faithfully flat descent}{descente fidèlement plate}的基本性质，第一个断言可由以下一般性观察推出：若态射 $f:X\to S$ 满足 $\mathcal O_S\xrightarrow{\sim}f_*(\mathcal O_X)$，则由 $S$ 上\term{有限型}{finite type}{type fini}\term{局部自由模}{locally free module}{Module localement libre}的\term{范畴}{category}{catégorie}到 $X$ 上\term{有限型}{finite type}{type fini}\term{局部自由模}{locally free module}{Module localement libre}\term{范畴}{category}{catégorie}的函子 $\mathcal F\mapsto f^*(\mathcal F)$ 是\term{全忠实的}{fully faithful}{pleinement fidèle}；其本质像由 $X$ 上满足以下条件的模 $\mathcal G$ 构成：$f_*(\mathcal G)$ \term{局部自由}{locally free}{localement libre}，且典范同态
+\[f^*\bigl(f_*(\mathcal G)\bigr)\longrightarrow\mathcal G\]
+为同构。第二个断言已在 [4，I，B，4] 中用\term{下降理论}{descent theory}{théorie de la descente}证明。
+
+命题2.2也\term{可表}{representable}{représentable}述如下。
+\begin{statement}{推论 2.3}
+在2.2的条件下，典范同态 (1.9) $\pePic'_{X/S}\to\pePic_{X/S}$ 是单射；若 $X$ 在 $S$ 上局部存在\term{截面}{section}{section}，它甚至是双射。（因此，在后一种情形，\term{相对 Picard 群}{relative Picard group}{groupe de Picard relatif} $\operatorname{Pic}(X/S)$ 与\term{限制相对 Picard 群}{restricted relative Picard group}{groupe de Picard relatif restreint} $\operatorname{Pic}'(X/S)$ 相同。）
+\end{statement}
+结合2.1可得：
+\begin{statement}{推论 2.4}
+在2.2的条件下，有\term{正合列}{exact sequence}{suite exacte}
+\[0\longrightarrow\operatorname{Pic}(S)\longrightarrow\operatorname{Pic}(X)\longrightarrow\operatorname{Pic}(X/S).\]
+若 $X$ 在 $S$ 上存在一个\term{截面}{section}{section}，则最后的同态是满射；即有同构
+\[\operatorname{Pic}(X/S)\simeq\operatorname{Pic}(X)/\operatorname{Pic}(S).\]
+\end{statement}
+
+\paragraph{注 2.5}
+设态射 $f:X\to S$ 满足 $\mathcal O_S\xrightarrow{\sim}f_*(\mathcal O_X)$，$g$ 是 $X$ 在 $S$ 上的一个\term{截面}{section}{section}。若 $\mathcal L$ 是 $X$ 上的\term{可逆模}{invertible module}{Module inversible}，就把同构 $\mathcal O_S\xrightarrow{\sim}g^*(\mathcal L)$ 称为 $\mathcal L$ 的一个\term{刚性化}{rigidification}{rigidification}（相对于 $g$）；把赋予了这样的\term{刚性化}{rigidification}{rigidification}的 $X$ 上\term{可逆模}{invertible module}{Module inversible} $\mathcal L$ 称为相对于 $g$ \term{刚性化}{rigidification}{rigidification}的\term{可逆模}{invertible module}{Module inversible}。这种结构的任意\term{自同构}{automorphism}{automorphisme}均平凡，且 $\operatorname{Pic}'(X/S)$ 可与 $X$ 上相对于 $g$ \term{刚性化}{rigidification}{rigidification}的\term{可逆模}{invertible module}{Module inversible}的同构类集合等同。\translatornote{原文这里写作“$S$ 上”的\term{刚性化}{rigidification}{rigidification}\term{可逆模}{invertible module}{Module inversible}，应为“$X$ 上”。\term{刚性化}{rigidification}{rigidification}的数据是 $X$ 上\term{可逆模}{invertible module}{Module inversible} $\mathcal L$ 及 $\mathcal O_S\simeq g^*\mathcal L$；如果把\term{可逆模}{invertible module}{Module inversible}放在 $S$ 上，$g^*\mathcal L$ 便不符合此处的定义域。译文据定义订正。}（正是这一事实，使得可以使用\term{下降理论}{descent theory}{théorie de la descente}证明2.2(ii)。）这就给出了 $\operatorname{Pic}(X/S)$ 的另一种解释，至少当 $f$ 还\term{拟紧}{quasi-compact}{quasi-compact}且\term{分离}{separated}{séparé}时如此，因为此时由2.3有 $\operatorname{Pic}(X/S)\simeq\operatorname{Pic}'(X/S)$。
+
+\origpage{172}{232-06}
+\paragraph{注 2.6}
+设 $f:X\to S$ 是2.2中的态射，且 $S'\to S$ 是\term{忠实平坦}{faithfully flat}{fidèlement plat}且\term{拟紧}{quasi-compact}{quasi-compact}的态射，并存在 $S$-态射 $S'\to X$；换言之，$X'=X\times_S S'$ 在 $S'$ 上存在\term{截面}{section}{section}。令 $S''=S'\times_S S'$、$X''=X\times_S S''$，考虑\term{正合列}{exact sequence}{suite exacte}
+\[\operatorname{Pic}(X/S)\longrightarrow\operatorname{Pic}(X'/S')\rightrightarrows\operatorname{Pic}(X''/S'').\]
+应用2.4，得到\term{正合列}{exact sequence}{suite exacte}
+\[\operatorname{Pic}(X/S)\longrightarrow\operatorname{Pic}(X')/\operatorname{Pic}(S')\rightrightarrows\operatorname{Pic}(X'')/\operatorname{Pic}(S'').\]
+特别地，\term{相对 Picard 群}{relative Picard group}{groupe de Picard relatif}的每个元素已经“来自”$\operatorname{Pic}(X')$ 的一个元素。这样便大大简化了前节对\term{相对 Picard 群}{relative Picard group}{groupe de Picard relatif}的描述；对 $X$ 在 $S$ 上的 Picard 函子也一样，因为对任意 $S$ 上的 $T$，都可以把上述讨论应用于 $X\times_S T/T$ 及态射 $T'=S'\times_S T\to T$。例如，若 $f$ 本身\term{忠实平坦}{faithfully flat}{fidèlement plat}，就可以取 $S'=X$。因此，当 $f$ 还\term{为有限型}{of finite type}{de type fini}（分别为\term{光滑的}{smooth}{simple}，等等）时，在描述\term{相对 Picard 函子}{relative Picard functor}{foncteur de Picard relatif} $T\mapsto\operatorname{Pic}(X\times_S T/T)$ 时，只须考虑\term{有限型}{finite type}{type fini}（分别为\term{光滑}{smooth}{simple}，等等）的\term{基变换}{base change}{changement de base} $T'\to T$。若 $f$ 是\term{射影}{projective}{projectif}且\term{平坦}{flat}{plat}的，$S$ \term{局部诺特}{locally noetherian}{localement noethérien}，则可以证明，上述 $S'\to S$ 可选成如下形式：$S'$ 是各个 $S'_i$ 的\term{不交并}{disjoint union}{somme disjointe}，其中 $S'_i$ 是 $S$ 的一族覆盖开集 $S_i$ 的\term{平坦覆盖}{flat covering}{revêtement plat}；若 $f$ 还是\term{可分的}{separable}{séparable}，则可取 $S'_i$ 在 $S_i$ 上\term{平展}{étale}{étale}。
+
+\section*{3. 主要存在定理的陈述}
+目前还没有一个涵盖 \term{Picard 预概形}{Picard prescheme}{préschéma de Picard}所有已知存在情形的定理陈述，甚至连猜想形式的陈述也没有。一个可以说“实际上必要”的条件，是 $f:X\to S$ \term{固有}{proper}{propre}且\term{平坦}{flat}{plat}；其中\term{固有性}{properness}{propreté}保证了一些根本性的有限性性质。这些条件并不充分，即使 $S$ 是域 $k$（不妨取复数域 $\mathbb C$）上的\term{对偶数}{dual numbers}{nombres duaux}代数 $k[t]/(t^2)$ 的谱，且 $X$ 为一维，也仍是如此。在撰写本报告时，关于 \term{Picard 预概形}{Picard prescheme}{préschéma de Picard}的最重要的存在定理，均由以下定理推出。
+\begin{statement}{定理 3.1}
+设 $f:X\to S$ 是\term{局部诺特}{locally noetherian}{localement noethérien}\term{预概形}{prescheme}{préschéma}之间的态射。假设：
+\begin{enumerate}
+\item[(i)] $f$ \term{射影}{projective}{projectif}；
+\origpage{173}{232-07}
+\item[(ii)] $f$ \term{平坦}{flat}{plat}；
+\item[(iii)] $f$ 的\term{几何纤维}{geometric fiber}{fibre géométrique}均为\term{整的}{integral}{intègre}。
+\end{enumerate}
+在这些条件下，$\operatorname{Pic}_{X/S}$ 存在。
+\end{statement}
+下面两节将概述其证明。证明还将同时说明：设 $\xi$ 为 $\operatorname{Pic}_{X/S}$ 中对应于 $X/S$ 上一个\term{甚丰层}{very ample sheaf}{faisceau très ample} $\mathcal O_X(1)$ 的\term{截面}{section}{section}（即由\term{射影}{projective}{projectif}浸入 $X\to\mathbb P(\mathcal E)$ 诱导的\term{层}{sheaf}{faisceau}）。则 $\operatorname{Pic}_{X/S}$ 存在一个开子集 $U$，它是一族在 $S$ 上\term{拟射影}{quasi-projective}{quasi-projectif}的开子集的\term{不交并}{disjoint union}{somme disjointe}；$U$ 在按 $\xi$ 的平移下稳定，且 $\operatorname{Pic}_{X/S}$ 是开集 $U-n\xi$ 的递增并（这些开集都与 $U$ 同构）。特别地，在3.1的条件下，$\operatorname{Pic}_{X/S}$ 在 $S$ 上\term{分离}{separated}{séparé}。
+
+\paragraph{注 3.2}
+一些例子说明（例如取 $S$ 为\term{离散赋值环}{discrete valuation ring}{anneau de valuation discrète}的谱、$X$ 在 $S$ 上相对维数为1），若在3.1中删去假设(iii)，代之以较弱的条件：对每个 $s\in S$，同态
+\[k(s)\longrightarrow H^0(X_s,\mathcal O_{X_s})\]
+是同构，则 $\operatorname{Pic}_{X/S}$ 在 $S$ 上未必\term{分离}{separated}{séparé}。这既可能发生在 $f$ 的\term{几何纤维}{geometric fiber}{fibre géométrique}均\term{既约}{reduced}{réduit}，但一个\term{整的}{integral}{intègre}几何一般纤维经特殊化“裂成”两个\term{不可约分支}{irreducible component}{composante irréductible}的情形，也可能发生在\term{几何纤维}{geometric fiber}{fibre géométrique}均不可约，但一个\term{整的}{integral}{intègre}几何一般纤维特殊化为“多重纤维”的情形。第一种情形，例如一条二次曲线退化为两条相交直线；D.~Mumford 为我提供了第二种情形的例子，其中一条椭圆曲线退化为一条二重椭圆曲线。这些例子在任意特征下都成立。
+
+\paragraph{注 3.3}
+在3.1的条件下，我不知道 $\operatorname{Pic}_{X/S}$ 是否为一族在 $S$ 上\term{有限型}{finite type}{type fini}、从而\term{拟射影}{quasi-projective}{quasi-projectif}的开集的\term{不交并}{disjoint union}{somme disjointe}。\translatornote{作者在本书\hyperref[orig:9]{评论 C-07}中补充：Mumford 已对这里提出的问题给出肯定回答。这里保留报告写作时的叙述。}注意，像 Hilbert \term{概形}{scheme}{schéma}的情形 [4，IV] 一样，考虑\term{Hilbert 多项式}{Hilbert polynomial}{polynôme de Hilbert} $Q\in\mathbb Q[t]$，可以将 $\operatorname{Pic}_{X/S}$ 分解成各个开集 $\operatorname{Pic}^Q_{X/S}$ 的\term{不交并}{disjoint union}{somme disjointe}；这些开集在 $S$ 上\term{拟射影}{quasi-projective}{quasi-projectif}，似乎是合理的。至少当 $f$ 是\term{光滑态射}{smooth morphism}{morphisme simple}时，我们将在下一篇报告中看到这一点。应当注意：若把假设(i)改成“$X$ 在 $S$ 上局部\term{射影}{projective}{projectif}”（这已足以保证3.1成立，因为 $\operatorname{Pic}_{X/S}$ 的存在问题显然是 $S$ 上的局部问题），反而很容易
+
+\origpage{174}{232-08}
+给出 $\operatorname{Pic}_{X/S}$ 含有在 $S$ 上并非\term{有限型}{finite type}{type fini}的\term{连通分支}{connected component}{composante connexe}的例子。比如，设 $X_0$ 是\term{代数闭域}{algebraically closed field}{corps algébriquement clos} $k$ 上的\term{非奇异}{nonsingular}{non singulier}\term{射影}{projective}{projectif}代数簇，配有\term{自同构}{automorphism}{automorphisme} $u$ 及其\term{Néron--Severi 群}{Néron--Severi group}{groupe de Néron-Severi}中的元素 $\xi$，使 $u^n(\xi)$ 两两不同。例如，可取 $X_0$ 为椭圆曲线 $E$ 与自身的乘积，$u$ 为 $E\times E$ 的\term{自同构}{automorphism}{automorphisme} $(x,y)\mapsto(x,y+x)$。设 $S$ 是在两点 $a,b$ 相交的两条\term{非奇异}{nonsingular}{non singulier}不可约曲线的并。$S$ 上存在一个以 $\mathbb Z$ 为群的连通\term{主覆盖}{principal covering}{revêtement principal} $P$；利用 $u$ 所定义的 $\mathbb Z$ 在 $X_0$ 上的作用，可以构造 $S$ 上以 $X_0$ 为纤维的\term{伴随纤维丛}{associated bundle}{fibré associé}（在 $S-\{a\}$ 及 $S-\{b\}$ 上平凡）；在上述具体例子中，它事实上是 $S$ 上的\term{阿贝尔概形}{abelian scheme}{schéma abélien}。容易看出，$\operatorname{Pic}_{X/S}$ 同样是由 $P$ 及通过 $u$ 给出的 $\mathbb Z$ 在 $\operatorname{Pic}_{X_0/k}$ 上的作用所构造的\term{伴随纤维丛}{associated bundle}{fibré associé}，并且它包含一个同构于 $P\times\operatorname{Pic}^0_{X_0/k}$ 的\term{连通分支}{connected component}{composante connexe}，其中 $\operatorname{Pic}^0$ 表示 $\operatorname{Pic}$ 中单位元所在的\term{连通分支}{connected component}{composante connexe}；该分支在 $S$ 上不是\term{有限型}{finite type}{type fini}。［对3.3中所考虑的那些在 $S$ 上不\term{分离}{separated}{séparé}的 \term{Picard 预概形}{Picard prescheme}{préschéma de Picard}，若干情形中也会出现类似现象。］
+
+\section*{4. 相对 Cartier 除子与射影丛}
+我们只需要使用正除子；在本节余下部分，均省略“正”这个限定词。
+
+设 $X$ 为\term{预概形}{prescheme}{préschéma}。$X$ 上的一个\term{Cartier 除子}{Cartier divisor}{diviseur de Cartier}（为简便也称 $X$ 上的除子），是 $X$ 的一个闭子\term{预概形}{prescheme}{préschéma} $D$，它的定义理想 $\mathcal J$ 是\term{可逆模}{invertible module}{Module inversible}，即局部由 $\mathcal O_X$ 的一个\term{非零因子}{non-zero-divisor}{non diviseur de zéro}\term{截面}{section}{section}生成。给 $D$ 配上\term{可逆模}{invertible module}{Module inversible}
+\[\mathcal L(D)=\mathcal J^{-1};\]
+典范单射 $\mathcal J\hookrightarrow\mathcal O_X$ 给出典范同态
+\[s_D:\mathcal O_X\longrightarrow\mathcal J^{-1}=\mathcal L(D),\qquad\text{即 }s_D\in\Gamma(X,\mathcal L(D)).\]
+此外，给定一个除子，实质上等价于给定 $X$ 上的\term{可逆模}{invertible module}{Module inversible} $\mathcal L$ 及其一个处处为\term{非零因子}{non-zero-divisor}{non diviseur de zéro}的\term{截面}{section}{section} $s$。反过来，给这样一对 $(\mathcal L,s)$ 配上 $s$ 的“除子”，记作 $\operatorname{div}(s)$。对于 $X$ 上给定的\term{可逆模}{invertible module}{Module inversible} $\mathcal L$，定义 $\mathcal L$ 的除子 $D$ 所成的集合
+
+\origpage{175}{232-09}
+与商集 $\Gamma(X,\mathcal L)^*/\Gamma(X,\mathcal O_X^*)$ 一一对应；这里 $\Gamma(X,\mathcal L)^*$ 是 $\Gamma(X,\mathcal L)$ 中处处为\term{非零因子}{non-zero-divisor}{non diviseur de zéro}的\term{截面}{section}{section}所成的子集。
+
+现在设有\term{局部有限型}{locally of finite type}{localement de type fini}态射 $f:X\to S$，并为简便起见，假设 $S$ \term{局部诺特}{locally noetherian}{localement noethérien}。设 $\mathcal J$ 是 $X$ 上的\term{凝聚理想}{coherent ideal}{Idéal cohérent}，$D$ 是它所定义的 $X$ 的子\term{概形}{scheme}{schéma}，$x\in X$，$s=f(x)$。可以证明，下列条件等价：
+\begin{enumerate}
+\item[(i)] $\mathcal J$ 在 $x$ 处可逆（即 $\mathcal J_x$ 由 $\mathcal O_{X,x}$ 的一个正则元生成），且 $D$ 在 $x$ 处在 $S$ 上\term{平坦}{flat}{plat}；
+\item[(ii)] $X$ 与 $D$ 在 $x$ 处在 $S$ 上\term{平坦}{flat}{plat}，且 $D_s$ 在点 $x$ 处是纤维 $X_s$ 上的 \term{Cartier 除子}{Cartier divisor}{diviseur de Cartier}；
+\item[(iii)] $X$ 在 $x$ 处在 $S$ 上\term{平坦}{flat}{plat}，且 $\mathcal J_x$ 由一个元素 $f_x$ 生成，后者在 $X_s$ 上诱导一个\term{非零因子}{non-zero-divisor}{non diviseur de zéro}芽。
+\end{enumerate}
+\translatornote{若允许 $x\notin D$，原文条件(i)须补入“$X$ 在 $x$ 处在 $S$ 上\term{平坦}{flat}{plat}”，才能与(ii)、(iii)等价。例如，取 $S=\operatorname{Spec}k[\varepsilon]/(\varepsilon^2)$、$X=\operatorname{Spec}k$、$D=\varnothing$。此时 $\mathcal J=\mathcal O_X$ 由\term{非零因子}{non-zero-divisor}{non diviseur de zéro}1生成，空\term{概形}{scheme}{schéma} $D$ 在 $S$ 上\term{平坦}{flat}{plat}，所以(i)成立；但 $X\to S$ 不\term{平坦}{flat}{plat}，因而(ii)、(iii)不成立。补上上述\term{平坦}{flat}{plat}性后，等价关系就是相对有效 \term{Cartier 除子}{Cartier divisor}{diviseur de Cartier}的通常局部\term{平坦}{flat}{plat}性判据。后文实际用于 $X/S$ \term{平坦}{flat}{plat}的情形，不受这一遗漏影响。}
+这时称 $D$ 在所考虑的点是 $X/S$ 上的一个\term{相对 Cartier 除子}{relative Cartier divisor}{diviseur de Cartier relatif}，或简称 $X/S$ 上的相对除子。由(i)可知，在 $x$ 邻近的点，$D$ 仍是相对除子。因此，若 $X$ 与 $D$ 在 $S$ 上\term{平坦}{flat}{plat}，且 $D$ 在 $S$ 上\term{固有}{proper}{propre}，则满足 $D_s$ 是 $X_s$ 中 \term{Cartier 除子}{Cartier divisor}{diviseur de Cartier}（即 $D$ 在 $X_s$ 的各点是\term{相对 Cartier 除子}{relative Cartier divisor}{diviseur de Cartier relatif}）的 $s\in S$ 构成 $S$ 的一个开子集。此外，上述定义已经保证，\term{相对 Cartier 除子}{relative Cartier divisor}{diviseur de Cartier relatif}的概念在任意\term{基变换}{base change}{changement de base} $S'\to S$ 下稳定。于是，考虑 $X/S$ 上相对除子的集合 $\operatorname{Div}(X/S)$，以及当 $S'$ 在 $S$ 上变化时由下式定义的\term{反变函子}{contravariant functor}{foncteur contravariant}：
+\[\underline{\operatorname{Div}}_{X/S}(S')=\operatorname{Div}(X\times_S S'/S').\]
+假设 $X$ 在 $S$ 上\term{平坦}{flat}{plat}且\term{固有}{proper}{propre}。由\term{相对 Cartier 除子}{relative Cartier divisor}{diviseur de Cartier relatif}的刻画(ii)，$\underline{\operatorname{Div}}_{X/S}$ 可视为 [4，IV] 中定义的函子 $\underline{\operatorname{Hilb}}_{X/S}$ 的子函子；由以上说明，包含态射
+\[\underline{\operatorname{Div}}_{X/S}\longrightarrow\underline{\operatorname{Hilb}}_{X/S}\]
+“可由\term{开浸入}{open immersion}{immersion ouverte}表示”（参见 [5，IV，3.13]）。应用 [4，IV] 的主要存在定理，得到：
+\origpage{176}{232-10}
+\begin{statement}{命题 4.1}
+假设 $f:X\to S$ \term{射影}{projective}{projectif}且\term{平坦}{flat}{plat}。则函子 $\underline{\operatorname{Div}}_{X/S}$ \term{可表}{representable}{représentable}；更确切地说，它可由 $\operatorname{Hilb}_{X/S}$ 的一个开子集表示。
+\end{statement}
+对于 $X/S$ 上给定的\term{甚丰层}{very ample sheaf}{faisceau très ample} $\mathcal O_X(1)$，使用 $\operatorname{Hilb}_{X/S}$ 按 \term{Hilbert 多项式}{Hilbert polynomial}{polynôme de Hilbert} $Q\in\mathbb Q[t]$ 分解成开集 $\operatorname{Hilb}^Q_{X/S}$ 的典范分解，还可得到类似分解
+\[\operatorname{Div}_{X/S}=\coprod_{Q\in\mathbb Q[t]}\operatorname{Div}^Q_{X/S},\]
+其中各项是两两不交、在 $S$ 上\term{拟射影}{quasi-projective}{quasi-projectif}的开集。
+
+另一方面，利用映射 $D\mapsto\mathcal L(D)$，得到函子同态
+\[\underline{\operatorname{Div}}_{X/S}\longrightarrow\pePic_{X/S}.\tag{+}\]
+我们将研究这个同态，并将看到，在相当一般的条件下它是相对\term{可表的}{representable}{représentable} [5，IV，3]。因此，从 $\pePic_{X/S}(S')$ 的一个元素 $\xi$ 出发，并为简化记号，设 $S'=S$，证明它所对应的 $\underline{\operatorname{Div}}_{X/S}$ 的子函子\term{可表}{representable}{représentable}。先考虑 $\xi$ 由 $X$ 上\term{可逆模}{invertible module}{Module inversible} $\mathcal L$ 给出的情形。假设 $X$ 在 $S$ 上\term{固有}{proper}{propre}且\term{平坦}{flat}{plat}，并且 $X/S$ 的\term{几何纤维}{geometric fiber}{fibre géométrique}均为\term{整的}{integral}{intègre}；这还蕴含 [2，III，§7]
+\[\mathcal O_S\xrightarrow{\sim}f_*(\mathcal O_X),\]
+且该关系在任意\term{基变换}{base change}{changement de base} $S'\to S$ 后仍成立。于是，使 $\mathcal L(D)$ 与 $\mathcal L$ 定义 $\operatorname{Pic}(X/S)=\pePic_{X/S}(S)$ 中同一元素的 $X/S$ 上\term{相对 Cartier 除子}{relative Cartier divisor}{diviseur de Cartier relatif} $D$，亦即由2.4，使 $\mathcal L(D)$ 与 $\mathcal L$ 在 $S$ 上局部同构的那些除子，与商\term{层}{sheaf}{faisceau} $f_*(\mathcal L)^*/\mathcal O_S^*$ 的\term{截面}{section}{section}一一对应。这个对应与\term{基变换}{base change}{changement de base}相容。
+
+另一方面，所引之处（另见 [6]）中“Künneth 型”的一般性讨论表明：$X/S$ 的\term{固有性}{properness}{propreté}和 $\mathcal L$ 在 $S$ 上的\term{平坦}{flat}{plat}性，蕴含 $S$ 上存在一个在唯一同构意义下确定的\term{凝聚模}{coherent module}{Module cohérent} $\mathcal Q$，及\term{层}{sheaf}{faisceau}的同构
+\[f_*(\mathcal L)\xrightarrow{\sim}\mathcal H om_{\mathcal O_S}(\mathcal Q,\mathcal O_S),\]
+并且 $\mathcal Q$ 的构造与\term{基变换}{base change}{changement de base}相容。\translatornote{原式的下标印作 $\mathcal O_X$，应为 $\mathcal O_S$：$\mathcal Q$ 与 $\mathcal O_S$ 都是 $S$ 上的模，故此处为 $\mathcal O_S$-模的\term{层}{sheaf}{faisceau} Hom。所谓唯一性须连同表示上同调函子的自然同构一并理解；仅凭\term{射影丛}{projective bundle}{fibré projectif}本身不能唯一恢复 $\mathcal Q$，因为对 $S$ 上任意\term{可逆模}{invertible module}{Module inversible} $\mathcal N$，$\mathbb P(\mathcal Q\otimes\mathcal N)\simeq\mathbb P(\mathcal Q)$。}
+这里 $f_*(\mathcal L)^*$ 表示 $f_*(\mathcal L)$ 的集合子\term{层}{sheaf}{faisceau}：它在 $U$ 上的\term{截面}{section}{section}，是 $f^{-1}(U)$ 上的那些定义 $f^{-1}(U)/U$ 上\term{相对 Cartier 除子}{relative Cartier divisor}{diviseur de Cartier relatif}的 $\mathcal L$ 的\term{截面}{section}{section}，
+
+\origpage{177}{232-11}
+也就是在各 $X_s$（$s\in U$）上诱导\term{非零因子}{non-zero-divisor}{non diviseur de zéro}\term{截面}{section}{section}的那些\term{截面}{section}{section}。利用纤维 $X_s$ \term{整的}{integral}{intègre}假设，这只意味着所诱导的纤维\term{截面}{section}{section}不恒为零；用局部同态 $\mathcal Q\to\mathcal O_S$ 来说，就是这些同态为满射（Nakayama 引理）。这说明，$f_*(\mathcal L)^*/\mathcal O_S^*$ 的\term{截面}{section}{section}集合与 $\mathcal Q$ 的可逆商模集合一一对应；根据\term{凝聚模}{coherent module}{Module cohérent} $\mathcal Q$ 所对应的\term{射影丛}{projective bundle}{fibré projectif} $\mathbb P(\mathcal Q)$ 的定义（参见 [5，V，2]），这也就是 $\mathbb P(\mathcal Q)$ 在 $S$ 上的\term{截面}{section}{section}集合。这个描述与逆像的构造相容，因而得到以下定理。
+
+\begin{statement}{定理 4.3}
+设 $f:X\to S$ 是\term{几何纤维}{geometric fiber}{fibre géométrique}均为\term{整的}{integral}{intègre}\term{固有}{proper}{propre}\term{平坦}{flat}{plat}态射，$S$ \term{局部诺特}{locally noetherian}{localement noethérien}，$\mathcal L$ 是 $X$ 上的\term{可逆模}{invertible module}{Module inversible}。对任意 $S$ 上的 $S'$，令 $T(S')$ 为 $X\times_S S'/S'$ 上满足下述条件的相对除子 $D$ 所成的集合：$\mathcal L(D)$ 与 $\mathcal L\otimes_{\mathcal O_S}\mathcal O_{S'}$ 在 $S'$ 上局部同构（即两者定义 $\operatorname{Pic}(X\times_S S'/S')$ 中同一个元素）。则 $S$ 上存在上述在唯一同构意义下确定的\term{凝聚模}{coherent module}{Module cohérent} $\mathcal Q$，使函子 $T$ 可由\term{射影丛}{projective bundle}{fibré projectif} $\mathbb P(\mathcal Q)$ 表示。
+\end{statement}
+
+\begin{statement}{推论 4.4}
+若进一步假设 $f$ \term{射影}{projective}{projectif}，则函子同态 $\underline{\operatorname{Div}}_{X/S}\to\pePic_{X/S}$ 可由\term{射影}{projective}{projectif}态射表示。
+\end{statement}
+事实上，若 $X$ 在 $S$ 上存在\term{截面}{section}{section}（分别为局部存在\term{截面}{section}{section}），由4.3及2.1，以上同态可由\term{射影丛}{projective bundle}{fibré projectif}（分别为局部\term{射影丛}{projective bundle}{fibré projectif}）表示。当 $f$ \term{拟射影}{quasi-projective}{quasi-projectif}时，利用 $X$ 在 $S$ 上局部的有限\term{平坦}{flat}{plat}\term{拟截面}{quasi-section}{quasi-section}，可通过下降方法容易地归结到前一种情形。
+
+\paragraph{注 4.5}
+在4.3的条件下，$S$ 上的模 $\mathcal Q$ 一般并不\term{局部自由}{locally free}{localement libre}；这表现为 $\mathcal Q$ 的剩余纤维的维数，也就是 $H^0(X_s,\mathcal L_s)$ 的维数，随 $s\in S$ 变化可能发生跳跃。给定\term{局部诺特}{locally noetherian}{localement noethérien}\term{预概形}{prescheme}{préschéma} $S$ 上的\term{凝聚模}{coherent module}{Module cohérent} $\mathcal Q$，容易验证，对给定的 $s\in S$，$\mathcal Q$ 在 $s$ 处自由，当且仅当 $\mathbb P(\mathcal Q)$ 在 $s$ 上方各点在 $S$ 上\term{平坦}{flat}{plat}（此时，它在这些点甚至在 $S$ 上\term{光滑}{smooth}{simple}）。在当前情形中，$\mathcal Q$ 如上由 $\mathcal L$ 定义，这也意味着，直像 $f_*(\mathcal L)$ 的构造“在 $s$ 附近与\term{基变换}{base change}{changement de base}交换”，
+
+\origpage{178}{232-12}
+或等价地，$f_*(\mathcal L)\otimes_{\mathcal O_S}k(s)\to H^0(X_s,\mathcal L_s)$ 为满射。例如，当 $H^1(X_s,\mathcal L_s)=0$ 时就是如此。只要所涉及的\term{预概形}{prescheme}{préschéma}存在，这些判据特别可应用于泛情形 $\operatorname{Div}_{X/S}\to\operatorname{Pic}_{X/S}$；它们给出该态射在 $\operatorname{Div}_{X/S}$ 某个给定点\term{光滑的}{smooth}{simple}充要条件，以及一个充分条件。
+
+\section*{5. 主要存在定理的证明}
+在3.1的条件下，选取 $X/S$ 上的一个甚丰模 $\mathcal O_X(1)$，并设 $\xi$ 为 $\operatorname{Pic}(X/S)$ 中对应的元素。简记 $\underline P(S')=\operatorname{Pic}(X\times_S S'/S')$，先为简便假设 $X/S$ 存在\term{截面}{section}{section}。令 $\underline P^+(S')$ 为 $\underline P(S')$ 中由 $X\times_S S'$ 上满足下列条件的\term{可逆模}{invertible module}{Module inversible} $\mathcal L$ 的类组成的部分：
+\begin{align*}
+R^if'_*(\mathcal L(n))&=0&&\text{对 }i>0\text{ 及一切 }n\geq0,\\
+f'_*(\mathcal L(n))&\ne0&&\text{对一切 }n\geq0\text{ 处处成立}.
+\end{align*}
+这些条件在\term{基变换}{base change}{changement de base}下稳定，因而定义 $\underline P$ 的子函子 $\underline P^+$；显然，它在按 $\xi$ 的平移下稳定。使用 Serre 的“定理A与B”[2，III，2]及一般性讨论 [5，IV，5]，容易看出 $\underline P$ \term{可表}{representable}{représentable}，当且仅当 $\underline P^+$ \term{可表}{representable}{représentable}；此时，$\underline P^+$ 可由代表 $\underline P$ 的\term{预概形}{prescheme}{préschéma} $\operatorname{Pic}_{X/S}$ 的一个开集 $U$ 表示，且后者是各开集 $U-n\xi$ 的递增并。
+
+简记 $\underline D=\underline{\operatorname{Div}}_{X/S}$，并令 $\underline D^+$ 为 $\underline P^+$ 在典范态射 $\underline D\to\underline P$ 下的逆像。于是有态射
+\[\underline D^+\longrightarrow\underline P^+.\tag{+}\]
+我们已经知道，$\underline D^+$ 可由\term{预概形}{prescheme}{préschéma} $D=\operatorname{Div}_{X/S}$ 的一个开集 $D^+$ 表示（$D$ 的存在由4.1保证）。由4.3容易推出，态射(+)可由满的\term{光滑}{smooth}{simple}\term{射影}{projective}{projectif}态射表示；更确切地说，它可由处处非零的\term{局部自由模}{locally free module}{Module localement libre}所对应的\term{射影丛}{projective bundle}{fibré projectif}表示。理由是：当 $X\times_S S'$ 上的 $\mathcal L$ 满足本节开头的条件时，$f'_*(\mathcal L)$ 是处处非零的\term{局部自由模}{locally free module}{Module localement libre}，且其构造与\term{基变换}{base change}{changement de base}交换；在4.3的记号下，$\mathcal Q$ 此时与 $f'_*(\mathcal L)$ 的对偶同构。利用一般判据 [5，IV，4.7]，我们将由此推出 $\underline P^+$ \term{可表}{representable}{représentable}。在所引之处，我们取 $\mathfrak C$ 为所有忠实
+\origpage{179}{232-13}
+\term{平坦}{flat}{plat}且\term{拟紧}{quasi-compact}{quasi-compact}的\term{预概形}{prescheme}{préschéma}态射所成的集合（由 [4，I，B]，它们确实都是\term{有效满态射}{effective epimorphism}{épimorphisme effectif}）。所引之处的条件(a)，即(+)可由属于 $\mathfrak C$ 的态射表示，刚才已经验证；条件(b)表示函子 $\underline P^+$ 与\term{忠实平坦}{faithfully flat}{fidèlement plat}\term{拟紧}{quasi-compact}{quasi-compact}下降相容，也是直接成立的。余下须证明其中的条件(c)：由 $\mathfrak C$-\term{可表}{representable}{représentable}态射(+)导出的\term{预概形}{prescheme}{préschéma} $D^+$ 上的等价关系 $R$ 是 $\mathfrak C$-有效的，即它是有效的，且 $D^+\to D^+/R$ 属于 $\mathfrak C$。为此，先注意到，$D^+$ 中对应各个虚 \term{Hilbert 多项式}{Hilbert polynomial}{polynôme de Hilbert} $Q\in\mathbb Q[t]$ 的开集 $D^{+Q}$ 在 $R$ 下稳定（因为 $R$ 的纤维连通）。所以只须证明，对每个 $Q$，$D^{+Q}$ 上诱导的等价关系 $R^Q$ 是 $\mathfrak C$-有效的。而现在 $D^{+Q}$ \term{拟射影}{quasi-projective}{quasi-projectif}，等价关系 $R^Q$ 又\term{射影}{projective}{projectif}且\term{平坦}{flat}{plat}。因此满足 [4，III，6.1] 的适用条件，该结果便给出所要的结论。
+
+在 $X/S$ 未必存在\term{截面}{section}{section}的一般情形，容易借助下降技术归结到上述情形；或者也可以在 $\underline P^+$ 的定义中作相应修改后，重做上述证明。
+
+\paragraph{注 5.1}
+这里采用的方法，实质上就是 Matsusaka 构造 Picard 簇的\term{射影}{projective}{projectif}方法。所引用的 [4，III] 中保证有效取商的结果，也很容易从 Hilbert \term{概形}{scheme}{schéma}存在定理推出（例如参见 [6]）。（在经典处理中，这些商是使用 Chow 坐标构造的。）注意，$\operatorname{Pic}_{X/S}$ 的开集 $\operatorname{Pic}^+_{X/S}$ 的构造，以及按定义所考虑的\term{可逆模}{invertible module}{Module inversible}的\emph{除子}的 \term{Hilbert 多项式}{Hilbert polynomial}{polynôme de Hilbert}将其分解为各个在 $S$ 上\term{拟射影}{quasi-projective}{quasi-projectif}的开集 $\operatorname{Pic}^{+Q}_{X/S}$，都与\term{基变换}{base change}{changement de base}相容；因此可以应用下降技术。
+
+\paragraph{注 5.2}
+不能排除如下可能性：只要 $f:X\to S$ \term{固有}{proper}{propre}且\term{平坦}{flat}{plat}，且对所有 $s\in S$，同态 $k(s)\to H^0(X_s,\mathcal O_{X_s})$ 都为同构，则 $\operatorname{Pic}_{X/S}$ 就存在。（此处最后一个条件也意味着 $\mathcal O_S\xrightarrow{\sim}f_*(\mathcal O_X)$，且该关系在任意\term{基变换}{base change}{changement de base} $S'\to S$ 后仍成立。）\translatornote{这是原报告提出的存在性设想。作者在\hyperref[orig:9]{评论 C-07}中明确指出：该设想是错误的；Mumford 证明了一个稍弱的存在定理。因此，这句话应按历史背景阅读，不能用作本书已经证明的存在定理。}至少在解析空间的框架内，当 $f$ 还\term{射影}{projective}{projectif}时，确能用另一种方法证明这一点；该方法（若我没有记错，出自 Chow）在 [5，IX，3.1] 中有说明。这种方法不再对除子\term{概形}{scheme}{schéma}的一个开集中某个\term{固有}{proper}{propre}\term{平坦}{flat}{plat}的等价关系
+
+\origpage{180}{232-14}
+取商，而改为在 $X$ 到 $\mathbb P^r_S$ 的浸入\term{概形}{scheme}{schéma}上，对\term{射影}{projective}{projectif}群取商。利用 Mumford 关于\term{射影}{projective}{projectif}群取商的结果 [8]，这种方法大概能够推广到\term{概形}{scheme}{schéma}情形；目前，只有在 $X$ 在 $S$ 上有“大量局部\term{截面}{section}{section}”时才有写成的证明，例如 $X$ 在一个\term{完备局部环}{complete local ring}{anneau local complet}上可分，且该环的\term{剩余域}{residue field}{corps résiduel}代数闭时。\translatornote{这里“\term{剩余域}{residue field}{corps résiduel}代数闭”按作者\hyperref[orig:9]{评论 C-07}补入；作者指出，Mumford 的反例说明这一条件不可省略。}原则上，这种方法适用范围更广，因为在某些 \term{Picard 预概形}{Picard prescheme}{préschéma de Picard}不\term{分离}{separated}{séparé}、因而第一种方法必然失效的情形，它也能给出 \term{Picard 预概形}{Picard prescheme}{préschéma de Picard}的存在性。（从技术上说，困难来自以下事实：当 $f$ 的\term{几何纤维}{geometric fiber}{fibre géométrique}不再整时，4.3中考虑的函子不再由\term{射影丛}{projective bundle}{fibré projectif} $\mathbb P(\mathcal Q)$ 本身表示，而由它的一个开集表示；这就引出了对一个\term{平坦}{flat}{plat}但不\term{固有}{proper}{propre}的等价关系取商这一棘手问题。）
+
+\paragraph{注 5.3}
+注意，这里给出的证明既不借助事先构造曲线或曲线族的\term{Jacobi 簇}{Jacobian variety}{jacobienne}，也不借助\term{阿贝尔簇}{abelian variety}{variété abélienne}或\term{阿贝尔概形}{abelian scheme}{schéma abélien}理论；因此，它与 Lang 的书 [7] 或 Chevalley 的报告 [1] 等传统论述有本质区别，后者沿用了 A.~Weil 所勾画的路线。即使对\term{代数闭域}{algebraically closed field}{corps algébriquement clos}上（不妨说复数域上）\term{非奇异}{nonsingular}{non singulier}曲线的 \term{Jacobi 簇}{Jacobian variety}{jacobienne}，这里给出的构造也是已知唯一能够得到我们在第1节中作为定义采用的那些很强性质的构造；这些性质实质上就是 Chevalley 的性质，但把含有\term{幂零元}{nilpotent element}{élément nilpotent}的“参数簇”也考虑在内。Picard \term{概形}{scheme}{schéma}的构造应先于\term{阿贝尔簇}{abelian variety}{variété abélienne}理论，而不应置于其后，这一点原则上就很清楚：一般的 Picard \term{概形}{scheme}{schéma}既不是\term{阿贝尔概形}{abelian scheme}{schéma abélien}，也不能归结为\term{阿贝尔概形}{abelian scheme}{schéma abélien}。\term{代数闭域}{algebraically closed field}{corps algébriquement clos}上奇异曲线的情形已经表明这一点；在那里出现的是 Rosenlicht 的“\term{广义 Jacobi 簇}{generalized Jacobian}{jacobienne généralisée}”，它们并不是\term{阿贝尔簇}{abelian variety}{variété abélienne}。此外，一旦有了 Picard \term{概形}{scheme}{schéma}的一般理论，\term{阿贝尔簇}{abelian variety}{variété abélienne}，乃至更一般的\term{阿贝尔概形}{abelian scheme}{schéma abélien}理论，就会大大简化。特别地，\term{阿贝尔概形}{abelian scheme}{schéma abélien}的\term{对偶理论}{duality theory}{théorie de dualité}，尤其 Cartier 型结果，几乎都变成了形式推论（例如参见 [10]）。
+
+\origpage{181}{232-15}
+\paragraph{注 5.4}
+关于一条曲线退化为奇异曲线时其 \term{Jacobi 簇}{Jacobian variety}{jacobienne}的 Igusa“相容性原理”，只有把它理解为未必在 $S$ 上\term{光滑的}{smooth}{simple}相对曲线\term{概形}{scheme}{schéma} $X/S$ 的 Picard \term{概形}{scheme}{schéma}存在定理，才能得到恰当的认识。因此，当特殊化后的曲线为整时（用经典术语说，就是重数为1的不可约曲线），它是主要存在定理3.1的特例。注意，目前在特殊纤维曲线可约时，即使各分支的重数都为1，亦即特殊纤维曲线在\term{剩余域}{residue field}{corps résiduel}上可分，这一情形仍不在已知存在定理的范围内；例外是在一个\term{剩余域}{residue field}{corps résiduel}代数闭的完备\term{离散赋值环}{discrete valuation ring}{anneau de valuation discrète}上的情形，参见5.2。在\term{概形}{scheme}{schéma}理论中，对亏格 $g$ 的曲线的模\term{概形}{scheme}{schéma}作 Baily--Satake“\term{紧化}{compactification}{compactification}”的几何构造时，这个存在性问题肯定会出现。（目前，凭借 Igusa 的工作，这种\term{紧化}{compactification}{compactification}只在 $g=1$ 时已知。）
+
+\section*{6. 相对存在定理}
+下面概述若干有用的情形：某些 Picard \term{概形}{scheme}{schéma}的存在性蕴含另一些 Picard \term{概形}{scheme}{schéma}的存在性。这样，就能从主要定理3.1推出其他一些存在定理。
+
+\begin{statement}{命题 6.1}
+设 $f:X\to S$ 是\term{平坦}{flat}{plat}\term{射影}{projective}{projectif}态射，在其\term{Stein 分解}{Stein factorization}{factorisation de Stein} $f=f''f'$ 中，态射 $f':X\to S'$ \term{平坦}{flat}{plat}且\term{几何纤维}{geometric fiber}{fibre géométrique}均整（因而满足3.1的假设），而\term{有限态射}{finite morphism}{morphisme fini} $f'':S'\to S$ \term{平坦}{flat}{plat}。则 $\operatorname{Pic}_{X/S}$ 存在；并且用 [4，II，C，2] 引入的记号，有典范同构
+\[\operatorname{Pic}_{X/S}\xrightarrow{\sim}\prod_{S'/S}\operatorname{Pic}_{X/S'}.\]
+\end{statement}
+为证明这一点，先建立函子同构
+\[\pePic_{X/S}\xrightarrow{\sim}\prod_{S'/S}\pePic_{X/S'}.\]
+然后应用3.1得到 $\pePic_{X/S'}$ \term{可表}{representable}{représentable}，并利用第3节指出的 $\operatorname{Pic}_{X/S'}$ 的结构（它蕴含 $\operatorname{Pic}_{X/S'}$ 在 $S$ 上任一纤维的任意有限子集，都包含在某个\term{仿射}{affine}{affine}开集中），得到 $\prod_{S'/S}\operatorname{Pic}_{X/S'}$ 存在。
+\origpage{182}{232-16}
+例如，当\term{概形}{scheme}{schéma} $X$ 是一族满足3.1条件的 $S$ 上\term{概形}{scheme}{schéma} $X_i$ 的\term{不交并}{disjoint union}{somme disjointe}时，6.1就化为显然的陈述
+\[\operatorname{Pic}_{X/S}\xrightarrow{\sim}\prod_i\operatorname{Pic}_{X_i/S}.\]
+
+\begin{statement}{推论 6.2}
+设 $f:X\to S$ 是\term{射影}{projective}{projectif}\term{平坦}{flat}{plat}态射，\term{几何纤维}{geometric fiber}{fibre géométrique}均局部整（例如\term{射影}{projective}{projectif}且\term{正规的}{normal}{normal}态射），则 $\operatorname{Pic}_{X/S}$ 存在。
+\end{statement}
+在这一情形，$S'$ 还是 $S$ 的\term{平展覆盖}{étale covering}{revêtement étale}（只要 $f$ 可分，即\term{平坦}{flat}{plat}且\term{几何纤维}{geometric fiber}{fibre géométrique}\term{既约}{reduced}{réduit}，这一点就成立）。利用 $\operatorname{Pic}_{X/S'}$ 的类似结构，可验证第3节陈述的关于 $\operatorname{Pic}_{X/S}$ 的结构定理仍然成立。
+
+另一方面，下降过程给出一个相对存在定理。它的适用范围，还取决于 [4，I，A(c)] 提出的非\term{平坦}{flat}{plat}下降问题的解答。这里只具体说明其一个特例。
+\begin{statement}{命题 6.3}
+设 $f:X\to S$ 是\term{固有}{proper}{propre}态射，$X_1,X_2$ 是 $X$ 的两个在 $S$ 上\term{平坦}{flat}{plat}的子\term{预概形}{prescheme}{préschéma}，由\term{凝聚理想}{coherent ideal}{Idéal cohérent} $\mathcal J_1,\mathcal J_2$ 定义，满足 $\mathcal J_1\cap\mathcal J_2=(0)$，且 $\mathcal O_X/(\mathcal J_1+\mathcal J_2)$ 在 $S$ 上\term{平坦}{flat}{plat}（即 $X$ 中子\term{预概形}{prescheme}{préschéma} $X_1$ 与 $X_2$ 的上确界是 $X$，下确界 $Z$ 在 $S$ 上\term{平坦}{flat}{plat}）。再假设对每个 $s\in S$，同态
+\[k(s)\longrightarrow H^0\bigl((X_i)_s,\mathcal O_{(X_i)_s}\bigr),\qquad i=1,2,\]
+均为双射。则自然的函子同态
+\[\pePic_{X/S}\longrightarrow\pePic_{X_1/S}\times\pePic_{X_2/S}\]
+可由\term{仿射}{affine}{affine}态射表示。因此，若 $\operatorname{Pic}_{X_1/S}$ 与 $\operatorname{Pic}_{X_2/S}$ 存在，则 $\operatorname{Pic}_{X/S}$ 也存在，且典范态射
+\[\operatorname{Pic}_{X/S}\longrightarrow\operatorname{Pic}_{X_1/S}\times\operatorname{Pic}_{X_2/S}\]
+是\term{仿射}{affine}{affine}的。
+\end{statement}
+借助\term{忠实平坦下降}{faithfully flat descent}{descente fidèlement plate}，可归结到 $Z$ 在 $S$ 上存在\term{截面}{section}{section}的情形；这个\term{截面}{section}{section}也给出 $X,X_1,X_2$ 在 $S$ 上的\term{截面}{section}{section}，从而如2.5所述，消除所考虑结构的\term{自同构}{automorphism}{automorphisme}。\translatornote{这里还须区分 $Z$ 的空纤维。由于 $Z\to S$ \term{固有}{proper}{propre}、\term{平坦}{flat}{plat}且有限表示，它的像 $V$ 在 $S$ 中既开又闭。在 $V$ 上可用 $Z\to V$ 作\term{忠实平坦}{faithfully flat}{fidèlement plat}\term{拟紧}{quasi-compact}{quasi-compact}\term{基变换}{base change}{changement de base}，取得\term{截面}{section}{section}；在补集 $S\setminus V$ 上，$X_1$ 与 $X_2$ 不相交，$X=X_1\amalg X_2$，所述 Picard 函子态射直接为同构。这样即可补全原文“可归结”的步骤。}于是，证明只需注意：给定 $X$ 上一个“\term{刚性化}{rigidification}{rigidification}的”\term{可逆模}{invertible module}{Module inversible}
+
+\origpage{183}{232-17}
+$\mathcal L$，等价于给定三元组 $(\mathcal L_1,\mathcal L_2,u)$，其中 $\mathcal L_i$ 是 $X_i$ 上“\term{刚性化}{rigidification}{rigidification}的”\term{可逆模}{invertible module}{Module inversible}，而 $u$ 是 $\mathcal L_1|Z$ 与 $\mathcal L_2|Z$ 之间与\term{刚性化}{rigidification}{rigidification}相容的同构。只需验证，对固定的 $\mathcal L_1,\mathcal L_2$，给定 $u$ \term{可表}{representable}{représentable}达为 $S$ 上某个适当的\term{仿射}{affine}{affine} $S$-\term{概形}{scheme}{schéma}的\term{截面}{section}{section}；这是容易的。由6.3容易推出：
+
+\begin{statement}{推论 6.4}
+设 $X$ 是域 $k$ 上\term{固有}{proper}{propre}且\term{可分的}{separable}{séparable}\term{概形}{scheme}{schéma}，$X_i$ 为 $X$ 的\term{不可约分支}{irreducible component}{composante irréductible}。若各 $\operatorname{Pic}_{X_i/k}$ 存在，则 $\operatorname{Pic}_{X/k}$ 也存在，且典范态射
+\[\operatorname{Pic}_{X/k}\longrightarrow\prod_i\operatorname{Pic}_{X_i/k}\]
+是\term{仿射}{affine}{affine}的。
+\end{statement}
+结合6.2，例如可知，当 $X$ 是域 $k$ 上\term{射影}{projective}{projectif}且\term{可分的}{separable}{séparable}\term{概形}{scheme}{schéma}时，$\operatorname{Pic}_{X/k}$ 总存在。当 $X$ 在 $k$ 上不再可分时，借助 Oort [11] 的一个论证，也有归约结果。该方法同样适用于任意底\term{概形}{scheme}{schéma}（例如，这对在下一篇报告中证明3.3所预告的有限性结果很有用）。为避免过于技术性的陈述，这里只考虑底为域的情形。
+
+\begin{statement}{命题 6.5}
+设 $X$ 是域 $k$ 上\term{固有}{proper}{propre}的\term{概形}{scheme}{schéma}，$X_0$ 是一个与它有相同底\term{层}{sheaf}{faisceau}集合的子\term{概形}{scheme}{schéma}（即由 $X$ 上的一个\term{幂零理想}{nilpotent ideal}{Idéal nilpotent}定义）。则函子态射 $\pePic_{X/k}\to\pePic_{X_0/k}$ 可由\term{仿射}{affine}{affine}态射表示。特别地，若 $\operatorname{Pic}_{X_0/k}$ 存在，则 $\operatorname{Pic}_{X/k}$ 也存在，且态射 $\operatorname{Pic}_{X/k}\to\operatorname{Pic}_{X_0/k}$ 是\term{仿射}{affine}{affine}的。
+\end{statement}
+结合6.4，容易得到：
+\begin{statement}{推论 6.6}
+设 $X$ 是域 $k$ 上的\term{射影}{projective}{projectif}\term{预概形}{prescheme}{préschéma}，则 $\operatorname{Pic}_{X/k}$ 存在。
+\end{statement}
+
+\paragraph{注 6.6}
+对于域 $k$ 上任意\term{固有}{proper}{propre}\term{概形}{scheme}{schéma} $X$，$\operatorname{Pic}_{X/k}$ 都存在，这是极其可信的。\translatornote{作者在\hyperref[orig:9]{评论 C-07}中说明：这里的问题刚刚由 Murre 给出了肯定回答，下一篇报告开头也提到此事。推论和随后的注在原文中都编号6.6；这里保留原编号。}在这一问题中，上述结果使我们归结到 $k$ 代数闭、$X$ \term{整的}{integral}{intègre}情形。此时已知，存在 $k$ 上\term{射影}{projective}{projectif}的整\term{概形}{scheme}{schéma} $X'$ 及\term{支配态射}{dominant morphism}{morphisme dominant} $g:X'\to X$（Chow 引理）。由于已知 $\pePic_{X'/k}$ \term{可表}{representable}{représentable}，因而只须证明对应的函子态射
+
+\origpage{184}{232-18}
+$\pePic_{X/k}\to\pePic_{X'/k}$ \term{可表}{representable}{représentable}（而且想必可由\term{仿射}{affine}{affine}态射表示）。这引出了目前尚未解决的非\term{平坦}{flat}{plat}下降问题。注意，当 $X$ 在\term{代数闭域}{algebraically closed field}{corps algébriquement clos} $k$ 上\term{固有}{proper}{propre}且整时，把函子 $\pePic_{X/k}$ 限制到\term{既约}{reduced}{réduit}\term{预概形}{prescheme}{préschéma}，确实得到一个\term{可表}{representable}{représentable}函子：Chevalley [1] 在 $X$ \term{正规}{normal}{normal}时证明了这一点，Seshadri [12] 则通过下降方法处理了一般情形。但用我们的记号，这些作者构造的\term{概形}{scheme}{schéma}并非 $\operatorname{Pic}_{X/k}$，而是其对应的\term{既约}{reduced}{réduit}\term{概形}{scheme}{schéma} $(\operatorname{Pic}_{X/k})_{\mathrm{red}}$。
+
+\paragraph{注 6.7}
+更一般地，设 $f:X'\to X$ 是两个 $k$ 上\term{固有}{proper}{propre}\term{预概形}{prescheme}{préschéma}之间的满态射。对非\term{平坦}{flat}{plat}下降的考虑，使人猜想 $\operatorname{Pic}_{X/k}\to\operatorname{Pic}_{X'/k}$ 是\term{仿射}{affine}{affine}态射；这特别蕴含，在除去单位元的\term{连通分支}{connected component}{composante connexe}后，所对应的 \term{Néron--Severi 群}{Néron--Severi group}{groupe de Néron-Severi}之间的同态模去挠元后为单射。当 $X$ 与 $X'$ 均\term{非奇异}{nonsingular}{non singulier}时，这可由相交理论验证。在其他情形，答案似乎还不知道。\translatornote{作者在\hyperref[orig:9]{评论 C-07}中说明：本注的问题有肯定答案，并指向下一篇报告评论的最后一段。这里保留原报告中问题尚未解决时的表述。}
+
+\paragraph{注 6.8}
+与人们可能想到的相反，考虑含有\term{幂零元}{nilpotent element}{élément nilpotent}的代数\term{概形}{scheme}{schéma}的 Picard \term{概形}{scheme}{schéma}，在许多问题中是有用乃至必不可少的。例如，设 $X$ 是\term{射影}{projective}{projectif}\term{概形}{scheme}{schéma}，不妨假设它\term{在底域上光滑}{smooth over the ground field}{simple sur k}，$Y$ 是一个\term{超平面截面}{hyperplane section}{section hyperplane}；就应当考虑 $Y$ 的各阶“\term{无穷小邻域}{infinitesimal neighborhood}{voisinage infinitésimal}”$X_n$ 及其 Picard \term{概形}{scheme}{schéma} $\operatorname{Pic}_{X_n/k}$。\translatornote{这里按作者\hyperref[orig:9]{评论 C-07}，将原文“正则”（régulier）订正为“在 $k$ 上\term{光滑}{smooth}{simple}”（simple sur k）。在不完美域上，正则性与\term{在底域上光滑}{smooth over the ground field}{simple sur k}并不等价，所以这项勘误涉及实质性的假设。}若 $X$ 不可约且维数 $\geq4$（分别为 $\geq3$），则当 $n$ 充分大时，典范态射
+\[\operatorname{Pic}_{X/k}\longrightarrow\operatorname{Pic}_{X_n/k}\]
+是同构（分别在 \term{Néron--Severi 群}{Néron--Severi group}{groupe de Néron-Severi}的挠子群的逆像上诱导同构）。这个结果将在下一篇报告对 Picard \term{概形}{scheme}{schéma}的定性研究中派上用场。同样，考虑某些含有\term{幂零元}{nilpotent element}{élément nilpotent}的曲线的 Picard \term{概形}{scheme}{schéma}，并使用形式几何的基本定理 [3]，可以在\term{等特征}{equal characteristic}{égales caractéristiques}情形验证 Mumford 的一个猜想：对任意二维完备\term{正规}{normal}{normal}诺特局部环 $A$，$A$ 的\term{除子类群}{divisor class group}{groupe des classes de diviseurs}可以视为\term{剩余域}{residue field}{corps résiduel} $k$ 上某个
+
+\origpage{185}{232-19}
+\term{代数群}{algebraic group}{groupe algébrique} $G$ 的 $k$-\term{有理点}{rational point}{point rationnel}集合（此外，一旦在 $A$ 中选定一个\term{代表域}{coefficient field}{corps de représentants}，$G$ 就被典范地确定）。对于任意维数的 $A$，有理由相信，$k$ 上存在一个\term{代数逆极限群}{pro-algebraic group}{pro-groupe algébrique}，起到上述 $G$ 的作用；当能够对 $\operatorname{Spec}(A)$ 作“\term{奇点消解}{resolution of singularities}{désingularisation}”时，它可构造为 $k$ 上适当的含\term{幂零元}{nilpotent element}{élément nilpotent}的\term{射影}{projective}{projectif}\term{概形}{scheme}{schéma}的 Picard \term{概形}{scheme}{schéma}的\term{逆极限}{projective limit}{limite projective}。
+
+\section*{参考文献}
+\begin{enumerate}[label={[\arabic*]},leftmargin=2.6em]
+\item Chevalley, Claude.《论 Picard 理论》（Sur la théorie de Picard），\emph{Amer. J. of Math.}，第82卷，1960年，第435--490页。
+\item Grothendieck, A. 与 Dieudonné, J.《代数几何原理》（Éléments de géométrie algébrique），第一章及后续各章。巴黎：法国大学出版社，1960--1961年（高等科学研究所《数学出版物》第4、8卷，等等）。
+\item Grothendieck, Alexander.《形式几何与代数几何》（Géométrie formelle et géométrie algébrique），\emph{Séminaire Bourbaki}，第11卷，1958/59年，第182号，28页。
+\item Grothendieck, Alexander.《下降技术与代数几何中的存在定理》I--IV（Techniques de descente et théorèmes d'existence en géométrie algébrique），\emph{Séminaire Bourbaki}，第12卷，1959/60年，第190号，29页；第195号，22页；第13卷，1960/61年，第212号，20页；第221号，28页。
+\item Grothendieck, Alexander.《解析几何中的构造技术》I--X（Techniques de construction en géométrie analytique），\emph{Séminaire Cartan}，第13卷，1960/61年：“复解析结构的形变”，第7--17号。
+\item Grothendieck, Alexander.《代数几何讨论班》（Séminaire de géométrie algébrique），Lichtenbaum 整理，哈佛大学，1961年（待刊）。
+\item Lang, Serge.《阿贝尔簇》（Abelian varieties）。纽约：Interscience Publishers，1959年（Interscience Tracts in Pure and Applied Mathematics，第7卷）。
+\item Mumford, D.《几何不变量理论中的一个初等定理》（An elementary theorem in geometric invariant theory），\emph{Bull. Amer. Math. Soc.}，第67卷，1961年，第483--486页。
+\item Mumford, D.《代数曲面的正规奇点的拓扑及一个光滑性判据》（The topology of normal singularities of an algebraic surface and a criterion for simplicity）。巴黎：法国大学出版社，1961年（高等科学研究所《数学出版物》第9卷）。
+\item Mumford, D. 与 Tate, J.《代数几何讨论班》（Séminaire de géométrie algébrique），哈佛大学，1962年春季学期（待刊）。
+\item Oort, F.《论 Picard 概形》（Sur le schéma de Picard），\emph{Bull. Soc. Math. France}，第90卷，1962年（待刊）。
+\item Seshadri, C. S. 学位论文，拟发表于 \emph{Annali di Matematica}。
+\end{enumerate}

@@ -1,0 +1,509 @@
+\SGAchapter{IX}{平展态射的下降：在基本群中的应用}{Descente des morphismes étales. Application au groupe fondamental}
+\SourcePage{193}
+\SGAsection{1}{平展态射的回顾}
+这里先回顾第 I 讲所发展的\Term{etale-morphism}{平展态射}的性质，列出以下将要用到的结果，并借此去掉理论中多余的 Noether 假设。即使只关心 Noether \Term{scheme}{概形}，\Term{descent}{下降}技术也会迫使我们引入非 Noether \Term{scheme}{概形}，例如 $\operatorname{Spec}(\widehat A\otimes_A\widehat A)$，其中 $A$ 是 Noether \Term{local-ring}{局部环}。为了能够使用\Term{fibred-category}{纤维范畴}的语言，定义\Term{etale-morphism}{平展态射}等概念时，不应附加 Noether 限制。不愿核实或接受下列命题在没有 Noether 假设时仍然成立的读者，也可只在第 I 讲的 Noether 假设下接受它们；但在后面各节的命题中须同时加上相应的 Noether 假设，并对推理中出现的非 Noether \Term{scheme}{概形}使用下面的定义 1.1。
+
+\begin{SGAresult}{定义}{1.1}
+设 $f:X\to S$ 是\Term{prescheme}{预概形}的\Term{morphism}{态射}，$x$ 是 $X$ 的一点。如果存在 $s=f(x)$ 的\Term{affine}{仿射}\Term{open-neighborhood}{开邻域} $U$、$x$ 的位于 $U$ 上方的\Term{affine}{仿射}\Term{open-neighborhood}{开邻域} $V$、\Term{affine}{仿射} Noether \Term{scheme}{概形} $U_0$、\Term{affine}{仿射}\Term{etale}{平展} $U_0$-\Term{scheme}{概形} $V_0$（第 I 讲）、\Term{morphism}{态射} $U\to U_0$，以及 $U$-\Term{isomorphism}{同构}
+\[
+V\xrightarrow{\sim}V_0\times_{U_0}U,
+\]
+则称 $f$ 在 $x$ 处\Term{etale}{平展}，或称 $X$ 在 $x$ 处在 $S$ 上\Term{etale}{平展}。
+\end{SGAresult}
+当 $S$ \Term{locally-noetherian}{局部 Noether} 时，这一术语与第 I 讲中的术语一致。同样，如果 $f$ 在 $X$ 的每一点 $x$ 处都\Term{etale}{平展}，便称 $f$ \Term{etale}{平展}，或称 $X$ 在 $S$ 上\Term{etale}{平展}。采用这些定义后，下列命题很容易归结为 Noether 情形；该情形已在第 I 讲第 4、5、7 节证明。细节可参阅 EGA IV。\footnote{确切地说，见 EGA IV 17、18。}
+
+\SourcePage{194}
+\begin{SGAresult}{注记}{1.2}
+若 $f$ 在 $x$ 处\Term{etale}{平展}，则 $f$“在 $x$ 处\Term{finite-presentation}{有限表示}”（VIII 3.5）；$x$ 在\Term{fibre}{纤维} $f^{-1}(s)$ 中的\Term{local-ring}{局部环}是 $k(s)$ 的\Term{finite}{有限}\Term{separable-extension}{可分扩张}；并且 $f$ 在 $x$ 处\Term{flat}{平坦}。可以证明，逆命题也成立。因此定义 1.1 与 $S$ \Term{locally-noetherian}{局部 Noether} 时的定义相同，只须将“在 $x$ 处\Term{finite-type}{有限型}”改为“在 $x$ 处\Term{finite-presentation}{有限表示}”。这一结果的证明较为细致，而上述刻画又不便直接用于证明下面的性质，因此这里没有采用它来定义\Term{etale-morphism}{平展态射}。
+\end{SGAresult}
+首先显然有：
+\begin{SGAresult}{命题}{1.3}
+若 $f:X\to S$ \Term{etale}{平展}，则对任意\Term{base-change}{基变换} $S'\to S$，由它导出的\Term{morphism}{态射} $f':X'\to S'$ 也\Term{etale}{平展}。
+\end{SGAresult}
+因此可以说，\Term{etale-morphism}{平展态射}构成 $\mathrm{Sch}$ 中的\Term{arrow-category}{箭头范畴}的一个\Term{fibre}{纤维}子\Term{category}{范畴}（参见 VI 11 a)）。本讲的目的，就是研究这个在 $\mathrm{Sch}$ 上的\Term{fibred-category}{纤维范畴}的\Term{exactness}{正合性}质。
+\begin{SGAresult}{命题}{1.4}
+设 $f:X\to S$ 是\Term{prescheme}{预概形}的\Term{morphism}{态射}。它是\Term{open-immersion}{开浸入}的充要条件是：它\Term{etale}{平展}且\Term{radicial}{根性}。
+\end{SGAresult}
+参见 I 5.1。因此，若 $X$ 在 $S$ 上\Term{etale}{平展}，则 $X$ 在 $S$ 上的任一\Term{section}{截面}都是\Term{open-immersion}{开浸入}；再次使用 1.4，得到：
+\begin{SGAresult}{推论}{1.5}
+设 $X$ 是\Term{etale}{平展} $S$-\Term{prescheme}{预概形}。$X$ 在 $S$ 上的\Term{section}{截面}集合，与满足下列条件的 $X$ 的开子集 $\Gamma$ 之间一一对应：由结构\Term{morphism}{态射}诱导的\Term{morphism}{态射} $\Gamma\to S$ \Term{radicial}{根性}且\Term{surjectivity}{满射}。
+\end{SGAresult}
+此外，若 $X$ 在 $S$ 上\Term{separated}{分离}，则 $\Gamma$ 在 $X$ 中既开又闭，不过这里不需要这一点。作一个显然的\Term{base-change}{基变换}，可将 1.5 写成下面表面上更一般的形式：
+\begin{SGAresult}{推论}{1.6}
+设 $X,Y$ 是两个 $S$-\Term{prescheme}{预概形}，$Y$ 在 $S$ 上\Term{etale}{平展}。给每个 $S$-\Term{morphism}{态射} $f:X\to Y$ 配以其图的底层子集 $\Gamma_f\subset X\times_S Y$，所得映射 $f\mapsto\Gamma_f$ 是一个\Term{bijection}{双射}：它把 $\operatorname{Hom}_S(X,Y)$ 映到所有满足下列条件的开子集 $\Gamma\subset X\times_S Y$ 所成的集合：由 $\operatorname{pr}_1$ 诱导的\Term{morphism}{态射} $\Gamma\to X$ \Term{radicial}{根性}且\Term{surjectivity}{满射}。
+\end{SGAresult}
+\begin{SGAresult}{命题}{1.7}
+设 $S_0$ 是由一个\Term{quasi-coherent}{拟凝聚}\Term{nilpotent}{幂零}元理想定义的 $S$ 的子\Term{prescheme}{预概形}，即 $S_0$ 与 $S$ 有相同的底层集合。则\Term{functor}{函子} $X\mapsto X\times_S S_0$ 给出 $S$ 上\Term{etale}{平展}\Term{prescheme}{预概形}\Term{category}{范畴}与 $S_0$ 上\Term{etale}{平展}\Term{prescheme}{预概形}\Term{category}{范畴}之间的\Term{equivalence-of-categories}{范畴等价}。
+\end{SGAresult}
+
+\SourcePage{195}
+这一\Term{functor}{函子}的\Term{fully-faithful}{全忠实}性直接由 1.6 得到；它的\Term{essentially-surjective}{本质满}性包含在 I 8.3 中。还应注意，在上述等价下，$X$ 在 $S$ 上\Term{finite-type}{有限型}，即\Term{quasi-finite}{拟有限}（分别地，\Term{finite}{有限}，即为 $S$ 的\Term{etale-covering}{平展覆盖}），当且仅当 $X_0$ 在 $S_0$ 上满足同样的条件；\Term{separated}{分离}性也如此。这些都是直接的，也包含在下面的 2.4 中。
+\begin{SGAresult}{推论}{1.8}
+设 $A$ 是完备 Noether \Term{local-ring}{局部环}，\Term{residue-field}{剩余域}为 $k$。则\Term{functor}{函子} $B\mapsto B\otimes_A k$ 给出 $A$ 上\Term{finite}{有限}\Term{etale}{平展}代数\Term{category}{范畴}与 $k$ 上\Term{finite}{有限}\Term{etale}{平展}代数\Term{category}{范畴}之间的等价；后者的对象就是\Term{finite}{有限}多个 $k$ 的\Term{finite}{有限}\Term{separable-extension}{可分扩张}的直积。
+\end{SGAresult}
+\begin{SGAresult}{命题}{1.9}
+$X$ 是 $S$ 的\Term{etale-covering}{平展覆盖}，即在 $S$ 上\Term{finite}{有限}且\Term{etale}{平展}，当且仅当 $X$ 与 $S$ 上某个代数层 $\mathcal A$ 的谱 $S$-\Term{isomorphism}{同构}，其中 $\mathcal A$ 作为\Term{module-sheaf}{模层}是\Term{finite-type}{有限型}\Term{locally-free}{局部自由}的，且对每个 $s\in S$，$\mathcal A_s\otimes_{O_s}k(s)$ 是 $k(s)$ 上的\Term{separable}{可分}代数，因而在这里是 $k(s)$ 的\Term{finite}{有限}\Term{separable-extension}{可分扩张}的直积。
+\end{SGAresult}
+最后，下列结果较不初等，它综合了 I 8.4 与代数几何中层的存在定理（EGA III 5；亦参见 [1] 定理 3）。
+\begin{SGAresult}{定理}{1.10}
+设 $S$ 是一个完备 Noether \Term{local-ring}{局部环}的谱，$X$ 是\Term{proper}{固有} $S$-\Term{scheme}{概形}，$X_0$ 是 $X$ 在 $S$ 的\Term{closed-point}{闭点}处的\Term{fibre}{纤维}，因而 $X_0$ 是 $X$ 的闭子\Term{scheme}{概形}。则限制\Term{functor}{函子} $X'\mapsto X'\times_X X_0$ 给出 $X$ 的\Term{etale-covering}{平展覆盖}\Term{category}{范畴}与 $X_0$ 的\Term{etale-covering}{平展覆盖}\Term{category}{范畴}之间的等价。
+\end{SGAresult}
+
+\SGAsection{2}{淹没态射与普遍淹没态射}
+\begin{SGAresult}{定义}{2.1}
+若\Term{prescheme}{预概形}\Term{morphism}{态射} $g:S'\to S$ 是\Term{surjectivity}{满射}，并使 $S$ 成为 $S'$ 的\Term{quotient-topology}{商拓扑空间}，即只要子集 $U\subset S$ 的原像 $f^{-1}(U)$ 是开的，$U$ 就是开的，则称 $g$ 是\Term{submersive}{淹没}的。若对每个\Term{morphism}{态射} $T\to S$，由 $f$ 作\Term{base-change}{基变换}得到的\Term{morphism}{态射} $f':T'=S'\times_S T\to T$ 都是\Term{submersive}{淹没}的，则称 $f$ 是\Term{universally-submersive}{普遍淹没}的。
+\end{SGAresult}
+显然，两个\Term{submersive}{淹没}\Term{morphism}{态射}（分别地，\Term{universally-submersive}{普遍淹没}\Term{morphism}{态射}）的复合仍然\Term{submersive}{淹没}（分别地，\Term{universally-submersive}{普遍淹没}）；对\Term{universally-submersive}{普遍淹没}\Term{morphism}{态射}作\Term{base-change}{基变换}，仍得到\Term{universally-submersive}{普遍淹没}\Term{morphism}{态射}——定义本就是为此设计的。若 $fg$ \Term{submersive}{淹没}（分别地，\Term{universally-submersive}{普遍淹没}），则 $f$ 也如此。
+\begin{SGAresult}{例}{2.2}
+a) 一个开或闭的\Term{epimorphism}{满态射}是\Term{submersive}{淹没}\Term{morphism}{态射}；因此，\Term{universally-closed}{普遍闭}或\Term{universally-open}{普遍开}的\Term{epimorphism}{满态射}是\Term{universally-submersive}{普遍淹没}\Term{morphism}{态射}。
+\end{SGAresult}
+\SourcePage{196}
+例如，\Term{proper}{固有}\Term{epimorphism}{满态射}是\Term{universally-submersive}{普遍淹没}\Term{morphism}{态射}。另一方面，\Term{faithfully-flat}{忠实平坦}且\Term{quasi-compact}{拟紧}的\Term{morphism}{态射}也是\Term{universally-submersive}{普遍淹没}\Term{morphism}{态射}（VIII 4.3）。这将是我们最关心的两种情形。
+
+对\Term{submersive}{淹没}或\Term{universally-submersive}{普遍淹没}\Term{morphism}{态射} $g:S'\to S$，可以应用 VIII 4.3 的推理；特别得到：
+\begin{SGAresult}{命题}{2.3}
+设 $g:S'\to S$ \Term{submersive}{淹没}。则下列映射图\Term{exact}{正合}：
+\[
+\begin{tikzcd}[column sep=large]
+\operatorname{Ouv}(S)\arrow[r]&\operatorname{Ouv}(S')\arrow[r,shift left=.6ex]\arrow[r,shift right=.6ex]&\operatorname{Ouv}(S'').
+\end{tikzcd}
+\]
+其中 $S''=S'\times_S S'$，$\operatorname{Ouv}(X)$ 表示\Term{prescheme}{预概形} $X$ 的开子集集合。
+\end{SGAresult}
+\begin{SGAresult}{命题}{2.4}
+设 $g:S'\to S$ 是\Term{universally-submersive}{普遍淹没}\Term{morphism}{态射}，$f:X\to Y$ 是 $S$-\Term{morphism}{态射}，$f':X'\to Y'$ 是它经\Term{base-change}{基变换}得到的 $S'$-\Term{morphism}{态射}。若 $f'$ 是开（分别地，闭）\Term{morphism}{态射}，则 $f$ 也如此。$f$ 是\Term{universally-open}{普遍开}、\Term{universally-closed}{普遍闭}或\Term{separated}{分离}\Term{morphism}{态射}，当且仅当 $f'$ 有相应性质。若进一步假设 $g$ \Term{quasi-compact}{拟紧}且 $f$ \Term{locally-finite-type}{局部有限型}，则 $f$ \Term{proper}{固有}当且仅当 $f'$ \Term{proper}{固有}。
+\end{SGAresult}
+最后一点如下证明：若 $f'$ \Term{proper}{固有}，因而\Term{quasi-compact}{拟紧}，则 $f$ \Term{quasi-compact}{拟紧}（VIII 3.3），而它已是\Term{locally-finite-type}{局部有限型}，所以\Term{finite-type}{有限型}。另一方面，根据前述结论，它\Term{separated}{分离}且\Term{universally-closed}{普遍闭}，故\Term{proper}{固有}。
+\begin{SGAresult}{命题}{2.5}
+设 $S'$ 在完备 Noether \Term{local-ring}{局部环}的谱 $S$ 上\Term{finite-type}{有限型}，并假设 $S$ 的\Term{closed-point}{闭点} $s$ 处的\Term{fibre}{纤维}\Term{finite}{有限}。因此，这一\Term{fibre}{纤维}中各点 $s'$ 在 $S'$ 中的\Term{local-ring}{局部环}都在 $A=O_s$ 上\Term{finite}{有限}。令 $S''$ 为这些 $O_{S',s'}$ 的谱的不交和，视为一个\Term{finite}{有限} $S$-\Term{scheme}{概形}。则 $g:S'\to S$ \Term{universally-submersive}{普遍淹没}的充要条件是结构\Term{morphism}{态射} $S''\to S'$ 为\Term{surjectivity}{满射}。
+\end{SGAresult}
+由于存在自然的 $S$-\Term{morphism}{态射} $S''\to S'$，而\Term{finite}{有限}\Term{epimorphism}{满态射}根据 2.2 是\Term{universally-submersive}{普遍淹没}的，所述条件是充分的。因此只须证明：若 $S''\to S'$ 不是\Term{surjectivity}{满射}，则 $g$ 不\Term{universally-submersive}{普遍淹没}。事实上，设 $t$ 是 $S$ 中不在 $S''$ 的像内的一点，则存在一个 $S$-\Term{scheme}{概形} $T$，它是\Term{discrete-valuation-ring}{离散赋值环}的谱，在 $S$ 中的像为 $\{s,t\}$。注意，$S''$ 在 $S'$ 中的像是开的，因为\Term{morphism}{态射} $S''\to S'$ 是\Term{local-isomorphism}{局部同构}；此外，此像包含 $S'_s$，而与 $S'_t$ 不相交。因此，它在 $T'=S'\times_S T$ 中的原像是开的，且恰等于 $T$ 的\Term{closed-point}{闭点}的原像。这说明 $T'\to T$ 不\Term{submersive}{淹没}，从而 $S'\to S$ 不\Term{universally-submersive}{普遍淹没}。
+
+\SourcePage{197}
+\begin{SGAresult}{注记}{2.6}
+利用 IV 6.3 中判定 Noether 空间的\Term{constructible}{可构造}子集何时为开的准则，容易得到下列赋值判据：若 $g:S'\to S$ \Term{finite-type}{有限型}，且 $S$ \Term{locally-noetherian}{局部 Noether}，则 $g$ \Term{universally-submersive}{普遍淹没}，当且仅当对每个为\Term{discrete-valuation-ring}{离散赋值环}之谱的 $S$-\Term{scheme}{概形} $T$，置 $T'=S'\times_S T$ 后，$T$ 的\Term{closed-point}{闭点}在 $T'$ 中的原像都不是开的。
+\end{SGAresult}
+
+\SGAsection{3}{平展预概形之间的态射的下降}
+\begin{SGAresult}{命题}{3.1}
+设 $g:S'\to S$ 是\Term{prescheme}{预概形}的\Term{epimorphism}{满态射}，$X,Y$ 是两个 $S$ 上的\Term{prescheme}{预概形}，$X',Y'$ 是它们在 $S'$ 上的原像。若 $Y$ 在 $S$ 上\Term{unramified}{非分歧}，则典范映射
+\[
+\operatorname{Hom}_S(X,Y)\longrightarrow\operatorname{Hom}_{S'}(X',Y')
+\]
+是\Term{injectivity}{单射}。
+\end{SGAresult}
+事实上，根据 1.6，只要知道 $S$-\Term{morphism}{态射} $f:X\to Y$ 的图的底层集合 $\Gamma$，就知道 $f$；这里 $\Gamma$ 是 $Z=X\times_S Y$ 的子集。由于
+\[
+Z'=Z\times_S S'=X'\times_{S'}Y'\longrightarrow Z
+\]
+是\Term{surjectivity}{满射}——因为 $S'\to S$ 是\Term{surjectivity}{满射}——知道 $\Gamma$ 在 $X'\times_{S'}Y'$ 中的原像，便知道 $\Gamma$。而这一原像恰是 $f'$ 的图的底层集合。由此得出结论。
+
+$Z$ 的一个子集 $\Gamma$ 是某个 $S$-\Term{morphism}{态射} $f:X\to Y$ 的图，当且仅当它是开的，且由 $\operatorname{pr}_1$ 诱导的\Term{morphism}{态射} $\Gamma\to Y$ \Term{radicial}{根性}且\Term{surjectivity}{满射}，参见第 1 节。若第一项性质成立，则第二项性质成立当且仅当 $\Gamma$ 在 $Z'$ 中的原像 $\Gamma'$ 满足相同条件（VIII 3.1）。最后，若知道 $Z'\to Z$ \Term{submersive}{淹没}，特别地，当 $S'\to S$ \Term{universally-submersive}{普遍淹没}时便是如此，则 $\Gamma$ 开当且仅当 $\Gamma'$ 开。因此，$\operatorname{Hom}_S(X,Y)$ 与满足下列条件的 $Z'$ 的开子集 $\Gamma'$ 所成的集合一一对应：投影\Term{morphism}{态射} $\operatorname{pr}_1:Z'\to X'$ \Term{radicial}{根性}且\Term{surjectivity}{满射}（即对应于一个 $S'$-\Term{morphism}{态射} $f':X'\to Y'$），并且 $\Gamma'$ 对 $Z'\to Z$ 所定义的等价关系是饱和的。后一条件就是说，$\Gamma'$ 经两个投影在
+\[
+Z''=Z'\times_Z Z'=Z\times_S S'',\qquad S''=S'\times_S S'
+\]
+中的原像相等。而这两个原像恰是从 $f'$ 沿两个投影 $S''\to S'$ 作\Term{base-change}{基变换}得到的两个 $S''$-\Term{morphism}{态射} $X''\to Y''$ 的图。这样便得到：
+\begin{SGAresult}{命题}{3.2}
+设 $g:S'\to S$ 是\Term{prescheme}{预概形}的\Term{universally-submersive}{普遍淹没}\Term{morphism}{态射}，$S''=S'\times_S S'$；$X,Y$ 是两个 $S$-\Term{prescheme}{预概形}，$X',Y'$ 是它们在 $S'$ 上的原像，$X'',Y''$ 是它们在 $S''$ 上的原像。若 $Y$ 在 $S$ 上\Term{etale}{平展}，则下列典范映射图\Term{exact}{正合}：
+\SourcePage{198}
+\[
+\begin{tikzcd}[column sep=large]
+\operatorname{Hom}_S(X,Y)\arrow[r]&\operatorname{Hom}_{S'}(X',Y')\arrow[r,shift left=.6ex]\arrow[r,shift right=.6ex]&\operatorname{Hom}_{S''}(X'',Y'').
+\end{tikzcd}
+\]
+\end{SGAresult}
+取 $X,Y$ 都在 $S$ 上\Term{etale}{平展}，得到下列命题；反过来它也给出 3.2。甚至只取 $X=S$ 就足够，因为在 3.2 中总可以通过\Term{base-change}{基变换} $X\to S$ 归结到这种情形。
+\begin{SGAresult}{推论}{3.3}
+\Term{prescheme}{预概形}的\Term{universally-submersive}{普遍淹没}\Term{morphism}{态射}，是相对\Term{etale}{平展}\Term{prescheme}{预概形}所成\Term{fibred-category}{纤维范畴}的\Term{descent-morphism}{下降态射}。
+\end{SGAresult}
+不过，我不知道它是否必定是这一\Term{fibred-category}{纤维范畴}的\Term{effective-descent-morphism}{有效下降态射}；即使再假设 $S$ 为 Noether、$g$ \Term{finite-type}{有限型}，且只考虑\Term{etale-covering}{平展覆盖}，我也不知道。下一节仍将给出一些有用的有效性准则。
+\begin{SGAresult}{推论}{3.4}
+设 $g:S'\to S$ 是\Term{universally-submersive}{普遍淹没}\Term{morphism}{态射}，其\Term{fibre}{纤维} $g^{-1}(s)$“\Term{geometrically-connected}{几何连通}”，即对任意\Term{group-extension}{扩张} $K/k(s)$，$g^{-1}(s)\otimes_{k(s)}K$ 都\Term{connected}{连通}。则只要 $S$ \Term{connected}{连通}，$S'$ 就\Term{connected}{连通}；并且由 $g$ 定义的从 $S$ 上\Term{etale}{平展}\Term{prescheme}{预概形}\Term{category}{范畴}到 $S'$ 上\Term{etale}{平展}\Term{prescheme}{预概形}\Term{category}{范畴}的\Term{functor}{函子}是\Term{fully-faithful}{全忠实}的。
+\end{SGAresult}
+$S'$ 中既开又闭的子集，对 $g$ 所定义的集合论等价关系是饱和的，因为各\Term{fibre}{纤维}\Term{connected}{连通}。因此它是 $S$ 的某个子集的原像；由于 $g$ \Term{submersive}{淹没}，这个子集必既开又闭。所以，$S$ \Term{connected}{连通}时 $S'$ 也\Term{connected}{连通}。这还蕴含以下结果：两个\Term{fibre}{纤维}普遍\Term{connected}{连通}的\Term{morphism}{态射}的复合 $fg$，若 $f$ \Term{universally-submersive}{普遍淹没}，则其\Term{fibre}{纤维}仍普遍\Term{connected}{连通}；若 $S$ 上的 $S'_1,S'_2$ 的\Term{fibre}{纤维}普遍\Term{connected}{连通}，$S'_1\times_S S'_2$ 也如此。特别地，在 3.4 的条件下，$S''$ 在 $S$ 上的\Term{fibre}{纤维}普遍\Term{connected}{连通}。
+
+现设 $X,Y$ 在 $S$ 上\Term{etale}{平展}，$u':X'\to Y'$ 是 $S'$-\Term{morphism}{态射}；我们证明它与\Term{descent-datum}{下降数据}相容，这将结合 3.3 给出所需结论。设 $u''_1,u''_2:X''\to Y''$ 是由 $u'$ 导出的两个 $S''$-\Term{morphism}{态射}。$u''_1$ 与 $u''_2$ 的重合子\Term{prescheme}{预概形}是 $S''$ 的一个诱导开子\Term{prescheme}{预概形}，并在每个\Term{fibre}{纤维}中是闭的，因为它是 $Y''$ 在 $S''$ 上的对角\Term{prescheme}{预概形}的原像。\footnote{注意，$S'$ 在 $S$ 上的\Term{fibre}{纤维}是\Term{separated}{分离}的！}因此，它是 $S$ 的某个子集的原像。由于它包含 $S''$ 中的对角线，它就等于 $S''$，于是 $u''_1=u''_2$，证毕。
+
+\SGAsection{4}{平展预概形的下降：有效性准则}
+\begin{SGAresult}{命题}{4.1}
+设 $g:S'\to S$ \Term{faithfully-flat}{忠实平坦}且\Term{quasi-compact}{拟紧}。则 $g$ 是相对\Term{etale}{平展}、\Term{separated}{分离}且\Term{finite-type}{有限型}\Term{prescheme}{预概形}所成\Term{fibred-category}{纤维范畴}的\Term{effective-descent-morphism}{有效下降态射}。
+\end{SGAresult}
+
+\SourcePage{199}
+事实上，根据 3.3 或 VIII 5.2，它是这一\Term{fibred-category}{纤维范畴}的\Term{descent-morphism}{下降态射}。剩下要证明：若 $X'$ 在 $S'$ 上\Term{etale}{平展}、\Term{separated}{分离}且\Term{finite-type}{有限型}，并带有相对于 $g:S'\to S$ 的\Term{descent-datum}{下降数据}，则此资料在上述\Term{fibred-category}{纤维范畴}中有效。容易看出，$S$ 上的一个\Term{prescheme}{预概形} $X$ 在 $S$ 上\Term{etale}{平展}，当且仅当它在 $S'$ 上\Term{etale}{平展}（根据定义 1.1 及 VIII 3.6）。所以，$X$ 在 $S$ 上\Term{etale}{平展}、\Term{separated}{分离}且\Term{finite-type}{有限型}，当且仅当 $X'$ 在 $S'$ 上如此；例如参见 2.4。因此，只须保证 $X$ 上的\Term{descent-datum}{下降数据}在 $\mathrm{Sch}$ 的箭头所成的\Term{fibred-category}{纤维范畴}中有效。而根据 VIII 6.2、6.6，$X'$ 在 $S'$ 上\Term{quasi-affine-morphism}{拟仿射}，故可用 VIII 7.9 得出结论。还应注意，若只讨论相对\Term{etale}{平展}且\Term{finite}{有限}的\Term{prescheme}{预概形}，证明所需的结果更少，因为这时可直接引用 VIII 2.1。
+\begin{SGAresult}{推论}{4.2}
+设 $g:S'\to S$ 是\Term{universally-submersive}{普遍淹没}\Term{morphism}{态射}，$X'$ 是一个\Term{etale}{平展}、\Term{separated}{分离}且\Term{finite-type}{有限型}的 $S'$-\Term{prescheme}{预概形}，并带有相对于 $g$ 的\Term{descent-datum}{下降数据}。设 $S_1\to S$ \Term{faithfully-flat}{忠实平坦}且\Term{quasi-compact}{拟紧}，$S'_1,X'_1$ 由 $S',X'$ 经这一\Term{base-change}{基变换}得到；于是 $S'_1\to S_1$ \Term{universally-submersive}{普遍淹没}，而 $X'_1$ 在 $S'_1$ 上\Term{etale}{平展}、\Term{separated}{分离}且\Term{finite-type}{有限型}，并带有相对于 $g_1:S'_1\to S_1$ 的\Term{descent-datum}{下降数据}。则 $X'$ 上的\Term{descent-datum}{下降数据}有效，当且仅当 $X'_1$ 上的\Term{descent-datum}{下降数据}有效。
+\end{SGAresult}
+这是\Term{category}{范畴}中的\Term{descent}{下降}理论 [D] 结合 4.1、3.3 的结果。同理可证明：
+\begin{SGAresult}{推论}{4.3}
+设 $g:S'\to S$ 是\Term{universally-submersive}{普遍淹没}\Term{morphism}{态射}，$X'$ 是\Term{etale}{平展} $S'$-\Term{prescheme}{预概形}，并带有相对于 $g$ 的\Term{descent-datum}{下降数据}；$(S_i)$ 是 $S$ 的一个开\Term{covering}{覆盖}。则此\Term{descent-datum}{下降数据}有效，当且仅当对每个 $i$，$X'_i=X\times_S S_i$ 上相应的\Term{descent-datum}{下降数据}对于\Term{morphism}{态射} $g_i:S'_i=S'\times_S S_i\to S_i$ 都有效。
+\end{SGAresult}
+最后这一结果使我们得到一个局部有效性准则：
+\begin{SGAresult}{命题}{4.4}
+设 $g:S'\to S$ \Term{finite-presentation}{有限表示}（VIII 3.6）且\Term{universally-submersive}{普遍淹没}，$X'$ 是 $S'$ 上\Term{etale}{平展}且\Term{finite-presentation}{有限表示}的\Term{prescheme}{预概形}，并带有相对于 $g$ 的\Term{descent-datum}{下降数据}；再设 $a\in S$。存在 $a$ 的\Term{open-neighborhood}{开邻域} $U$，使得 $X'_U=X'\times_S U$ 上相应的\Term{descent-datum}{下降数据}对于\Term{morphism}{态射}
+\[
+g_U:S'_U=S'\times_S U\longrightarrow S_U=U
+\]
+有效，当且仅当 $X'_a=X'\times_S\operatorname{Spec}(O_a)$ 上相应的\Term{descent-datum}{下降数据}对于\Term{morphism}{态射}
+\[
+g_a:S'_a=S'\times_S\operatorname{Spec}(O_a)\longrightarrow S_a=\operatorname{Spec}(O_a)
+\]
+有效。
+\end{SGAresult}
+
+\SourcePage{200}
+必要性显然，只证充分性。此时有一个 $S_a$ 上\Term{etale}{平展}且\Term{finite-type}{有限型}的\Term{prescheme}{预概形} $X_a$，以及与\Term{descent-datum}{下降数据}相容的\Term{isomorphism}{同构}
+\[
+X'_a\xrightarrow{\sim}X_a\times_{S_a}S'_a.\tag{*}
+\]
+由关于环的\Term{inductive-limit}{归纳极限}上定义的\Term{prescheme}{预概形}的一般而容易的推论，可以找到 $a$ 的\Term{open-neighborhood}{开邻域} $U$、$U=S_U$ 上\Term{etale}{平展}且\Term{finite-type}{有限型}的\Term{prescheme}{预概形} $X_U$，以及 $S_a$-\Term{isomorphism}{同构} $X_a\xrightarrow{\sim}X_U\times_{S_U}S_a$。这里所用的环是 $A_f$，其中 $A$ 是 $a$ 的一个\Term{affine}{仿射}\Term{open-neighborhood}{开邻域}的环，$f$ 遍历 $A$ 中不属于与 $a$ 对应的\Term{prime-ideal}{素理想}的元素。此外，将 $U$ 取充分小后，可以假定\Term{isomorphism}{同构} (*) 来自一个\Term{isomorphism}{同构}
+\[
+X'_U\xrightarrow{\sim}X_U\times_{S_U}S'_U.
+\]
+这个\Term{isomorphism}{同构}未必与\Term{descent-datum}{下降数据}相容；但再缩小 $U$ 后，它便与\Term{descent-datum}{下降数据}相容。证明完成。
+\begin{SGAresult}{推论}{4.5}
+在 4.4 的条件下，$X'$ 上的\Term{descent-datum}{下降数据}有效，当且仅当对每个 $a\in S$，$X'_a$ 上相应的\Term{descent-datum}{下降数据}对于\Term{morphism}{态射} $S'_a=S'\times_S\operatorname{Spec}(O_a)\to\operatorname{Spec}(O_a)$ 都有效。若 $S$ \Term{locally-noetherian}{局部 Noether}，且 $X'$ 在 $S'$ 上\Term{separated}{分离}，则在这一判据中也可将 $O_a$ 换成它的\Term{completion}{完备化}。
+\end{SGAresult}
+第一项断言来自 4.4、4.3；第二项由此结合 4.2 得到。再次使用 4.2，以及下述事实：对每个 Noether \Term{local-ring}{局部环} $A$，都可找到完备 Noether \Term{local-ring}{局部环} $B$ 和\Term{local-homomorphism}{局部同态} $A\to B$，使 $B$ 在 $A$ 上\Term{flat}{平坦}，且 $B/\mathfrak mB$ 是 $A$ 的\Term{residue-field}{剩余域} $k=A/\mathfrak m$ 的一个给定\Term{group-extension}{扩张}；由此得到：
+\begin{SGAresult}{推论}{4.6}
+在 4.4 的条件下，再假设 $X'$ 在 $S'$ 上\Term{separated}{分离}，且 $S$ \Term{locally-noetherian}{局部 Noether}。则 $X'$ 上的\Term{descent-datum}{下降数据}有效，当且仅当对每个 $S$ 上的\Term{prescheme}{预概形} $S_1$，只要它是\Term{residue-field}{剩余域}\Term{algebraically-closed}{代数闭}的完备\Term{local-ring}{局部环}的谱，$X'_1=X'\times_S S_1$ 上相应的\Term{descent-datum}{下降数据}对于\Term{morphism}{态射} $g_1:S'_1\to S_1$ 都有效。
+\end{SGAresult}
+\begin{SGAresult}{定理}{4.7}
+设 $g:S'\to S$ \Term{finite}{有限}、\Term{surjectivity}{满射}且\Term{finite-presentation}{有限表示}；当 $S$ \Term{locally-noetherian}{局部 Noether} 时，最后一个假设由其余假设推出。\footnote{实际上可以证明，只要 $g$ 是\Term{integral-morphism}{整态射}就够了；可用 EGA IV 8 式的极限过程归结为正文中的情形。}则 $g$ 是相对\Term{etale}{平展}、\Term{separated}{分离}且\Term{finite-type}{有限型}\Term{prescheme}{预概形}所成\Term{fibred-category}{纤维范畴}的\Term{effective-descent-morphism}{有效下降态射}。
+\end{SGAresult}
+
+\SourcePage{201}
+要证明的是：若 $X'$ 在 $S'$ 上\Term{etale}{平展}、\Term{separated}{分离}且\Term{finite-type}{有限型}，并带有相对于 $g$ 的\Term{descent-datum}{下降数据}，则这一资料有效。利用 4.3，容易归结到 $S$ 为 Noether 的情形。再由 4.5，可假设 $S$ 是一个 Noether \Term{local-ring}{局部环}的谱，特别有
+\[
+\dim S=n<+\infty.
+\]
+现对 $\dim S=n$ 归纳；$n<0$ 时断言显然。设 $n\geq0$，且定理在维数 $n'<n$ 时已证。由 4.6，可归结到 $S$ 为完备\Term{local-ring}{局部环}的谱的情形；于是 $S'$ 是\Term{finite}{有限}多个完备\Term{local-ring}{局部环}之谱的并。因此有
+\[
+X'=X'_1\sqcup X'_2,
+\]
+其中 $X'_1$ 在 $S'$ 上\Term{finite}{有限}，$X'_2$ 在 $S'$ 的任一\Term{closed-point}{闭点}上方都没有点。考虑与\Term{descent-datum}{下降数据}对应、并与 $p_1,p_2:S''\rightrightarrows S'$ 相容的\Term{morphism}{态射}
+\[
+q_1,q_2:X''\rightrightarrows X'.
+\]
+立刻看出
+\[
+X''=q_i^{-1}(X'_1)\sqcup q_i^{-1}(X'_2),\qquad i=1,2
+\]
+是 $X''$ 在 $S''$ 上的相应典范分解。这蕴含 $q_1^{-1}(X'_1)=q_2^{-1}(X'_1)$，从而 $X'_1,X'_2$ 都带有诱导的\Term{descent-datum}{下降数据}。令 $T$ 为从 $S$ 中删去\Term{closed-point}{闭点}所得的开子集，则 $T'=S'\times_S T$ 是从 $S'$ 中删去全部\Term{closed-point}{闭点}所得的部分；而完全位于 $T'$ 上方的 $X'_2$ 带有相对于 $g$ 所诱导\Term{morphism}{态射} $T'\to T$ 的\Term{descent-datum}{下降数据}。此\Term{morphism}{态射}\Term{finite}{有限}且\Term{surjectivity}{满射}，并且 $\dim T<\dim S=n$，所以根据归纳假设，这一\Term{descent-datum}{下降数据}有效。因此，只须证明 $X'_1$ 上的\Term{descent-datum}{下降数据}有效，现在便可假设 $X'$ 在 $S'$ 上\Term{etale}{平展}且\Term{finite}{有限}。注意，若在 4.7 中只考虑\Term{etale-covering}{平展覆盖}，上述归纳推理就不需要了。
+
+现令 $S_0$ 为 $A$ 的\Term{residue-field}{剩余域}的谱，$S'_0=S'\times_S S_0$，并同样由 $S'$ 在 $S$ 上的二重、三重\Term{fibre}{纤维}积 $S'',S'''$ 定义 $S''_0,S'''_0$。根据 1.8，\Term{morphism}{态射} $S_0\to S$、$S'_0\to S'$ 等分别在 $S$ 与 $S_0$、$S'$ 与 $S'_0$ 等的\Term{etale-covering}{平展覆盖}\Term{category}{范畴}之间诱导等价。由\Term{category}{范畴}中\Term{descent}{下降}理论的一般推论 [D]，$g:S'\to S$ 是\Term{etale-covering}{平展覆盖}所成\Term{fibred-category}{纤维范畴}的\Term{effective-descent-morphism}{有效下降态射}，当且仅当 $g_0:S'_0\to S_0$ 也是。后者确实如此，例如它是 4.1 的特例。证明完成。
+\begin{SGAresult}{推论}{4.8}
+若只假设 $S'\to S$ \Term{universally-submersive}{普遍淹没}、\Term{finite-type}{有限型}且\Term{quasi-finite}{拟有限}，并假设 $S$ \Term{locally-noetherian}{局部 Noether}，则 4.7 的结论仍成立。
+\end{SGAresult}
+
+\SourcePage{202}
+事实上，由 4.6 可假设 $S$ 为完备 Noether \Term{local-ring}{局部环}的谱。于是根据 2.5，存在\Term{finite}{有限}\Term{epimorphism}{满态射} $S_1\to S$ 和一个 $S$-\Term{morphism}{态射} $S_1\to S'$。由 4.7，$S_1\to S$ 是所讨论\Term{fibred-category}{纤维范畴}的普遍严格\Term{descent-morphism}{下降态射}；而 $S'\to S$ 是该\Term{fibred-category}{纤维范畴}的普遍\Term{descent-morphism}{下降态射}，所以 4.8 由一般推论 [D] 得出。
+\begin{SGAresult}{推论}{4.9}
+设 $g:S'\to S$ \Term{finite-type}{有限型}、\Term{surjectivity}{满射}且\Term{universally-open}{普遍开}，$S$ \Term{locally-noetherian}{局部 Noether}。则 $g$ 是相对\Term{etale}{平展}、\Term{separated}{分离}且\Term{finite-type}{有限型}\Term{prescheme}{预概形}所成\Term{fibred-category}{纤维范畴}的\Term{effective-descent-morphism}{有效下降态射}。
+\end{SGAresult}
+如 4.7 那样，可归结到 $S$ 是完备 Noether \Term{local-ring}{局部环} $A$ 的谱。设 $A_1$ 是 $A$ 上的\Term{finite}{有限}代数，谱为 $S_1$，且 $S_1\to S$ \Term{finite}{有限}且\Term{surjectivity}{满射}。因此，由 4.7，它是所讨论\Term{fibred-category}{纤维范畴}的普遍\Term{effective-descent-morphism}{有效下降态射}。一般定理 [D] 于是说明，$g$ 是上述\Term{fibred-category}{纤维范畴}的\Term{effective-descent-morphism}{有效下降态射}，当且仅当相应\Term{morphism}{态射} $g_1:S'_1=S'\times_S S_1\to S_1$ 也是。后者满足与 $g$ 相同的假设，所以只须对 $S_1$ 而非 $S$ 证明 4.9。先取 $A_1$ 为所有 $A/\mathfrak p_i$ 的直积，其中 $\mathfrak p_i$ 遍历 $A$ 的\Term{minimal-prime-ideal}{极小素理想}，便归结到 $A$ 为\Term{integral-domain}{整环}的情形。再可证明，\footnote{参见 EGA IV 14.3.13、14.5.4。}$S'$ 中存在一个整子\Term{scheme}{概形} $S_1$，它在 $S$ 上\Term{quasi-finite}{拟有限}，\Term{dominant}{支配} $S$，并经过 $S'$ 在 $S$ 的\Term{closed-point}{闭点} $y$ 上的\Term{fibre}{纤维}中的一点；这里用到 $S'$ 在\Term{locally-noetherian}{局部 Noether} 整\Term{scheme}{概形} $S$ 上\Term{universally-open}{普遍开}且\Term{finite-type}{有限型}，以及 $S'_y\ne\varnothing$。由于 $A$ 完备，$S_1$ 在 $S$ 上\Term{finite}{有限}；又因它\Term{dominant}{支配} $S$，\Term{morphism}{态射} $S_1\to S$ 是\Term{surjectivity}{满射}。再次以 $S_1$ 替换 $S$，便归结到 $S'$ 在 $S$ 上有\Term{section}{截面}的情形，此时断言显然。
+\begin{SGAresult}{定理}{4.10}
+设 $g:S'\to S$ 是\Term{finite}{有限}、\Term{radicial}{根性}、\Term{surjectivity}{满射}且\Term{finite-presentation}{有限表示}的\Term{morphism}{态射}；若 $S$ \Term{locally-noetherian}{局部 Noether}，最后一个条件是多余的。\footnote{甚至只须 $g$ 为整、\Term{radicial}{根性}且\Term{surjectivity}{满射}的\Term{morphism}{态射}；用 EGA IV 8 式的简单归约即可回到正文的情形，参见 SGA 4 VIII 1.1。}则原像\Term{functor}{函子}在 $S$ 上\Term{etale}{平展}\Term{prescheme}{预概形}\Term{category}{范畴}与 $S'$ 上\Term{etale}{平展}\Term{prescheme}{预概形}\Term{category}{范畴}之间诱导等价。
+\end{SGAresult}
+$S'$ 到 $S'\times_S S'$ 及 $S'\times_S S'\times_S S'$ 的\Term{diagonal-morphism}{对角态射}都是满\Term{immersion}{浸入}，因此根据 1.9，分别在这些\Term{fibre}{纤维}积上的\Term{etale}{平展}\Term{prescheme}{预概形}\Term{category}{范畴}与 $S'$ 上\Term{etale}{平展}\Term{prescheme}{预概形}\Term{category}{范畴}之间诱导等价。由\Term{descent}{下降}理论的一般推论 [D]，每个 $S'$ 上的\Term{etale}{平展}\Term{prescheme}{预概形} $X'$ 都带有唯一一个相对于 $g:S'\to S$ 的\Term{descent-datum}{下降数据}。因此，3.3 说明，沿 $g$ 的原像\Term{functor}{函子}，从 $S$ 上\Term{etale}{平展}\Term{prescheme}{预概形}\Term{category}{范畴}到 $S'$ 上\Term{etale}{平展}\Term{prescheme}{预概形}\Term{category}{范畴}，是\Term{fully-faithful}{全忠实}的。
+\SourcePage{203}
+只须再证明它\Term{essentially-surjective}{本质满}，即每个 $S'$ 上的\Term{etale}{平展}\Term{prescheme}{预概形} $X'$ 都\Term{isomorphism}{同构}于某个 $S$ 上\Term{etale}{平展}\Term{prescheme}{预概形} $X$ 的原像。这一问题显然在 $S$ 和 $X'$ 上都是局部的，因此可假设 $S,S',X'$ 都\Term{affine}{仿射}。这时 $X'$ 在 $S'$ 上\Term{separated}{分离}且\Term{finite-type}{有限型}，便可应用有效性准则 4.7。
+\begin{SGAresult}{推论}{4.11}
+将关于 $g$ 的假设改为：$g$ \Term{faithfully-flat}{忠实平坦}、\Term{quasi-compact}{拟紧}且\Term{radicial}{根性}，4.9 的结论仍然成立。
+\end{SGAresult}
+证明相同，只须以 4.1 代替 4.7。应当注意，4.7 的证明是“初等”的，因为它没有使用\Term{proper}{固有}\Term{morphism}{态射}的\Term{finite}{有限}性定理及比较定理（EGA III 3、4、5）。下列结果就不同了：
+\begin{SGAresult}{定理}{4.12}
+设 $g:S'\to S$ \Term{proper}{固有}、\Term{surjectivity}{满射}且\Term{finite-presentation}{有限表示}；若 $S$ \Term{locally-noetherian}{局部 Noether}，最后一项假设由第一项推出。则 $g$ 是\Term{prescheme}{预概形}的\Term{etale-covering}{平展覆盖}所成\Term{fibred-category}{纤维范畴}的\Term{effective-descent-morphism}{有效下降态射}。
+\end{SGAresult}
+由 3.3、2.2，只须证明：对每个带有相对于 $g:S'\to S$ 的\Term{descent-datum}{下降数据}的 $S'$ 的\Term{etale-covering}{平展覆盖} $X'$，此资料有效。利用 4.3，容易归结到 $S$ 为 Noether 的情形；再用 4.6，便可假设 $S$ 是完备 Noether \Term{local-ring}{局部环} $A$ 的谱。照常引入 $S'',S'''$，令 $S_0$ 为 $A$ 的\Term{residue-field}{剩余域}的谱，$S'_0,S''_0,S'''_0$ 为 $S',S'',S'''$ 经\Term{base-change}{基变换} $S_0\to S$ 所得，即它们在 $S$ 的\Term{closed-point}{闭点}处的\Term{fibre}{纤维}。根据 1.10，\Term{morphism}{态射} $S_0\to S$、$S'_0\to S'$ 等，在靶\Term{scheme}{概形}的\Term{etale-covering}{平展覆盖}\Term{category}{范畴}与源\Term{scheme}{概形}的\Term{etale-covering}{平展覆盖}\Term{category}{范畴}之间诱导等价。因此，$g:S'\to S$ 是\Term{prescheme}{预概形}的\Term{etale-covering}{平展覆盖}所成\Term{fibred-category}{纤维范畴}的严格\Term{descent-morphism}{下降态射}，当且仅当 $g_0:S'_0\to S_0$ 是；后者由 4.1 确实成立。这样便证明了 4.12。在这段推理中，只需使用 1.10 中\Term{functor}{函子}的\Term{fully-faithful}{全忠实}性；这一点不需要代数几何中\Term{coherent-sheaf}{凝聚层}的存在定理。
+
+\SGAsection{5}{用基本群表述}
+设
+\[
+g:S'\longrightarrow S
+\]
+是\Term{prescheme}{预概形}的\Term{etale-covering}{平展覆盖}所成\Term{fibred-category}{纤维范畴}的\Term{effective-descent-morphism}{有效下降态射}，例如它可以是\Term{proper}{固有}、\Term{surjectivity}{满射}且\Term{finite-presentation}{有限表示}的\Term{morphism}{态射}（4.12），或\Term{faithfully-flat}{忠实平坦}且\Term{quasi-compact}{拟紧}的\Term{morphism}{态射}。照常引入 $S'',S'''$，并分别用 $\mathcal C,\mathcal C',\mathcal C'',\mathcal C'''$ 表示 $S,S',S'',S'''$ 的\Term{etale-covering}{平展覆盖}\Term{category}{范畴}。
+\SourcePage{204}
+于是有下列 2-\Term{exact}{正合}的\Term{category}{范畴}图：
+\[
+\begin{tikzcd}[column sep=large]
+\mathcal C\arrow[r,"p^*"]&\mathcal C'\arrow[r,shift left=.6ex,"p_1^*"]\arrow[r,shift right=.6ex,"p_2^*"']&\mathcal C''\arrow[r,shift left=1.2ex,"p_{21}^*"]\arrow[r,"p_{32}^*" description]\arrow[r,shift right=1.2ex,"p_{31}^*"']&\mathcal C'''
+\end{tikzcd}\tag{*}
+\]
+它对应于图
+\[
+\begin{tikzcd}[column sep=large]
+S&S'\arrow[l,"p"']&S''\arrow[l,shift left=.6ex,"p_1"']\arrow[l,shift right=.6ex,"p_2"]&S'''\arrow[l,shift left=1.2ex,"p_{21}"']\arrow[l,"p_{32}" description]\arrow[l,shift right=1.2ex,"p_{31}"] .
+\end{tikzcd}
+\]
+假设\Term{prescheme}{预概形} $S,S',S'',S'''$ 都是\Term{connected}{连通}\Term{prescheme}{预概形}的不交和。它们\Term{locally-connected}{局部连通}时便如此，特别是\Term{locally-noetherian}{局部 Noether} 时如此；例如，当 $S'$ 在\Term{locally-noetherian}{局部 Noether} 的 $S$ 上\Term{finite-type}{有限型}时就如此。于是 (*) 中的\Term{category}{范畴} $\mathcal C,\mathcal C',\ldots$ 都是\Term{multigalois-category}{多重 Galois 范畴}（V 9），每个都由一族紧致\Term{totally-disconnected}{全不连通}\Term{topological-group}{拓扑群}描述，即相应\Term{prescheme}{预概形} $S,S',S'',S'''$ 的各\Term{connected-component}{连通分支}的\Term{fundamental-group}{基本群}。为简化，假设 $S$ \Term{connected}{连通}；下面将给出一种计算其\Term{fundamental-group}{基本群}的方法，所用数据来自以 $\mathcal C',\mathcal C'',\mathcal C'''$ 为\Term{fibre}{纤维}的\Term{fibred-category}{纤维范畴}，并用描述这些\Term{category}{范畴}的\Term{fundamental-group}{基本群}将它具体化。
+
+读者应注意，这一方法实际上适用于一般的\Term{multigalois-category}{多重 Galois 范畴}，并不要求它们来自给定的\Term{prescheme}{预概形} $S,S',S'',S'''$。它类似于拓扑学中熟知的方法：若\Term{topological-space}{拓扑空间} $S$ 是闭子空间 $S_i$ 的局部\Term{finite}{有限}并，或开子空间 $S_i$ 的任意并，则可借助 $S_i$ 及 $S_i\cap S_j$ 的\Term{connected-component}{连通分支}的\Term{fundamental-group}{基本群}来计算 $S$ 的\Term{fundamental-group}{基本群}。当然，\Term{prescheme}{预概形}中的类似情形也属于\Term{descent}{下降}的一般框架，只须引入各 $S_i$ 的不交和 $S'$ 及典范\Term{morphism}{态射} $g:S'\to S$。
+
+置
+\[
+E'=\pi_0(S'),\qquad E''=\pi_0(S''),\qquad E'''=\pi_0(S'''),
+\]
+其中 $\pi_0$ 是“\Term{connected-component}{连通分支}集合”\Term{functor}{函子}。由于 $S'$ 在 $S$ 上的各\Term{fibre}{纤维}积构成 $\mathrm{Sch}$ 中的一个单纯对象，经 $\pi_0$ 后便得到一个\Term{simplicial-set}{单纯集合}，其维数 $0,1,2$ 的分量分别为 $E',E'',E'''$。我们将使用单纯映射
+\[
+q_i=\pi_0(p_i)\quad(i=1,2),\qquad
+q_{ij}=\pi_0(p_{ij})\quad((i,j)=(2,1),(3,2),(3,1)),
+\]
+即下图中的映射：
+\[
+\begin{tikzcd}[column sep=large]
+E'&E''\arrow[l,shift left=.6ex,"q_1"']\arrow[l,shift right=.6ex,"q_2"]&E'''\arrow[l,shift left=1.2ex,"q_{21}"']\arrow[l,"q_{32}" description]\arrow[l,shift right=1.2ex,"q_{31}"] .
+\end{tikzcd}\tag{1}
+\]
+$E'$ 的对象写成带一个撇号的形式，如 $s'$；$E''$、$E'''$ 的对象分别带两个、三个撇号。$S$ \Term{connected}{连通}这一事实\Term{representable}{可表}为 $\pi_0(K)=0$，其中 $K$ 是由 $g:S'\to S$ 定义的\Term{simplicial-set}{单纯集合}；也\Term{representable}{可表}为：由映射对 $(q_1,q_2)$ 在 $E'$ 上生成的等价关系具有传递性。
+
+\SourcePage{205}
+固定选择一个元素 $s'_0\in E'$，并对每个 $s'\in E'$ 选择一个元素 $\overline{s'}\in E''$，使\footnote{应注意，这里暗中假定存在的元素 $\overline{s'}$ 并非总存在。因此，按所述形式陈述的定理 5.1 并非适用于所有情形。不过，不难依照正文的方法修改这一命题，使之给出适用于所有情形的计算方法。特别是，该定理的各个推论按原来的形式仍然成立。}
+\[
+q_1(\overline{s'})=s'_0,\qquad q_2(\overline{s'})=s',
+\]
+从而明确体现 $S$ 的\Term{connected}{连通}性。对每个 $s'\in E'$，在 $S'$ 的\Term{connected-component}{连通分支} $s'$ 中选择一个\Term{geometric-point}{几何点} $\underline{s'}$。实际上，这个点将通过\Term{multigalois-category}{多重 Galois 范畴} $\mathcal C'$ 上相应的\Term{fiber-functor}{纤维函子} $F'_{s'}$ 起作用。该\Term{functor}{函子}的\Term{automorphism}{自同构}群，即 $S'$ 在 $\underline{s'}$ 处的\Term{fundamental-group}{基本群}，记为 $\pi_{s'}$。同样选择 $\underline{s''},\underline{s'''}$，从而得到\Term{functor}{函子} $F''_{s''},F'''_{s'''}$ 和\Term{fundamental-group}{基本群} $\pi_{s''},\pi_{s'''}$。于是
+\[
+\pi_{s'}=\pi_1(S',\underline{s'}),\quad
+\pi_{s''}=\pi_1(S'',\underline{s''}),\quad
+\pi_{s'''}=\pi_1(S''',\underline{s'''}).
+\]
+对每个 $s''\in E''$，$p_1(\underline{s''})$ 与 $\underline{q_1(s'')}$ 在同一个\Term{connected-component}{连通分支}中，所以存在\Term{functor}{函子}\Term{isomorphism}{同构} $F''_{s''}\circ p_1^*\xrightarrow{\sim}F'_{s'}$，即从 $p_1(\underline{s''})$ 到 $\underline{q_1(s'')}$ 的一个“路径类”。对 $q_2$ 及各 $q_{ij}$ 也有同样的论断。选择全部这些路径类：
+\[
+F''_{s''}\circ p_i^*\xrightarrow{\sim}F'_{q_i(s'')},\qquad
+F'''_{s'''}\circ p_{ij}^*\xrightarrow{\sim}F'''_{q_{ij}(s''')},
+\]
+其中 $i=1,2$，$(i,j)=(2,1),(3,2),(3,1)$。特别地，这就给出\Term{group-homomorphism}{群同态}
+\[
+q_i^{s''}:\pi_{s''}\longrightarrow\pi_{q_i(s'')},\qquad
+q_{ij}^{s'''}:\pi_{s'''}\longrightarrow\pi_{q_{ij}(s''')},\tag{2}
+\]
+指标 $i,(i,j)$ 的取值同上。最后，回顾以 $\mathcal C',\mathcal C'',\mathcal C'''$ 为\Term{fibre}{纤维}的\Term{cleaved-category}{带劈分的范畴}结构，其中还包含\Term{functor}{函子}\Term{isomorphism}{同构}
+\[
+\begin{gathered}
+p_{21}^*p_1^*\xrightarrow{\sim}p_{31}^*p_1^*,\qquad
+p_{21}^*p_2^*\xrightarrow{\sim}p_{32}^*p_1^*,\qquad
+p_{31}^*p_2^*\xrightarrow{\sim}p_{32}^*p_2^*.
+\end{gathered}
+\]
+这些\Term{isomorphism}{同构}来自各式两端分别与 $u_i^*$（$i=1,2,3$）的\Term{isomorphism}{同构}，其中 $u_i$ 是 $S'''$ 到 $S'$ 的三个投影。将这些资料写开，对每个 $s'''$ 可得到确定的元素
+\[
+a_i^{s'''}\in\pi_{v_i(s''')},\tag{3}
+\]
+其中 $v_i:E'''\to E'$（$i=1,2,3$）由 $v_i=\pi_0(u_i)$ 定义。这些元素满足条件
+\[
+q_1^{s''_1}q_{21}^{s'''}
+=\operatorname{int}(a_1^{s'''})q_1^{s''_2}q_{31}^{s'''},
+\qquad
+\begin{gathered}s''_1=q_{21}(s'''),\\s''_2=q_{31}(s'''),\end{gathered}
+\]
+以及涉及 $a_2,a_3$ 的两个类似条件。读者还应注意，资料 (1)、(2)、(3) 足以重建所讨论的以 $\mathcal C',\mathcal C'',\mathcal C'''$ 为\Term{fibre}{纤维}的\Term{fibred-category}{纤维范畴}，精确到\Term{fibred-category}{纤维范畴}等价。
+
+\SourcePage{206}
+因此，原则上它们也足以重建 $\mathcal C$，精确到等价，从而重建其\Term{fundamental-group}{基本群}，精确到\Term{isomorphism}{同构}。实际将确定的是 $S$ 在\Term{geometric-point}{几何点} $p(\underline{s'_0})$ 处的\Term{fundamental-group}{基本群}，即 $F'_{s'_0}\circ p^*$ 的\Term{automorphism}{自同构}群。
+
+注意，给定 $\mathcal C'$ 的一个对象 $X'$，本质上等价于给定一族\Term{finite}{有限}集 $X'_{s'}$（$s'\in E'$），每个都带有 $\pi_{s'}$ 的连续作用。这样的对象上的一个\Term{gluing-datum}{粘合数据}，等价于对每个 $s''\in E''$ 给出\Term{bijection}{双射}
+\[
+\varphi_{s''}:X'_{q_1(s'')}\xrightarrow{\sim}X'_{q_2(s'')},
+\]
+且与 $\pi_{s''}$ 的作用相容；$\pi_{s''}$ 借助\Term{homomorphism}{同态} $q_i^{s''}:\pi_{s''}\to\pi_{q_i(s'')}$ 作用在两端。先取形如 $\overline{s'}$ 的 $s''$，可见这样的资料定义了\Term{bijection}{双射}
+\[
+\psi_{s'}:X'_{s'_0}=F'_0(X')\longrightarrow X'_{s'},
+\]
+由此可将所有 $X'_{s'}$ 与同一个集合 $F'_0(X')=X'_{s'_0}$ 识别；从此所有群 $\pi_{s'}$ 都作用在该集合上。如此一来，\Term{bijection}{双射} $\varphi_{s''}$ 就对应于\Term{bijection}{双射}
+\[
+g_{s''}:F'_0(X')\xrightarrow{\sim}F'_0(X'),
+\]
+它们一方面满足与 $\pi_{s''}$ 的交换关系
+\[
+\text{a)}\quad
+g_{s''}q_1^{s''}(g'')=q_2^{s''}(g'')g_{s''}
+\qquad(s''\in E'',\ g''\in\pi_{s''}),
+\]
+另一方面满足关系
+\[
+\text{b)}\quad g_{\overline{s'}}=g_{\overline{s'_0}}\qquad(s'\in E'),
+\]
+后者表达了我们识别各个 $X_{s'}$ 的方式。将这样的\Term{gluing-datum}{粘合数据}成为\Term{descent-datum}{下降数据}的条件写开，得到关系
+\[
+\text{c)}\quad
+a_3^{s'''}g_{q_{31}(s''')}a_1^{s'''}
+=g_{q_{32}(s''')}a_2^{s'''}g_{q_{21}(s''')}
+\qquad(s'''\in E''').
+\]
+这给出以下两个\Term{category}{范畴}之间的等价：一是带有\Term{descent-datum}{下降数据}的 $\mathcal C'$ 的对象所成的\Term{category}{范畴}；二是带有各群 $\pi_{s'}$ 的连续作用，并带有满足关系 a)、b)、c) 的\Term{bijection}{双射} $g_{s''}$ 的\Term{finite}{有限}集所成的\Term{category}{范畴}。令 $G$ 为由各群 $\pi_{s'}$ 及新生成元 $g_{s''}$ 生成、满足关系 a)、b)、c) 的群；令 $\pi$ 为 $G$ 对下述\Term{finite-index}{有限指数}子群的商的\Term{inverse-limit}{投射极限}：这些子群在各群 $\pi_{s'}$ 中的原像都是开子群。也称 $\pi$ 为由各 $\pi_{s'}$ 及 $g_{s''}$ 生成并满足关系 a)、b)、c) 的\Term{galois-type-group}{Galois 型群}。立刻看出，上述\Term{category}{范畴}也等价于带有\Term{topological-group}{拓扑群} $\pi$ 的连续作用的\Term{finite}{有限}集\Term{category}{范畴}。由此证明了下列命题：
+\begin{SGAresult}{定理}{5.1}
+设\Term{prescheme}{预概形}\Term{morphism}{态射} $g:S'\to S$ 是\Term{prescheme}{预概形}的\Term{etale-covering}{平展覆盖}所成\Term{fibred-category}{纤维范畴}的\Term{effective-descent-morphism}{有效下降态射}（参见 4.9、4.12）。
+\SourcePage{207}
+假设 $S$ \Term{connected}{连通}，且 $S'$、其二重\Term{fibre}{纤维}积 $S''$、三重\Term{fibre}{纤维}积 $S'''$ 都是\Term{connected}{连通}\Term{prescheme}{预概形}的不交和。例如，当 $S'$ 在\Term{locally-noetherian}{局部 Noether} 且\Term{connected}{连通}的 $S$ 上\Term{finite-type}{有限型}时如此。如上选择：$S',S'',S'''$ 的每个\Term{connected-component}{连通分支}中的一个\Term{geometric-point}{几何点}、若干路径类、一个 $s'_0\in E'$，以及对每个 $s'\in E'$，一个在 $E'$ 中的两个像为 $s'_0,s'$ 的 $s''\in E''$。这里 $E',E'',E'''$ 分别表示 $S',S'',S'''$ 的\Term{connected-component}{连通分支}集合。则 $S$ 在 $\underline{s'_0}$ 的像这个\Term{geometric-point}{几何点}处的\Term{fundamental-group}{基本群}，典范\Term{isomorphism}{同构}于由各 $\pi_{s'}=\pi_1(S',\underline{s'})$（$s'\in E'$）及生成元 $g_{s''}$（$s''\in E''$）生成，并满足上述关系 a)、b)、c) 的 \Term{galois-type-group}{Galois 型群}；这些关系涉及群 $\pi_{s''}=\pi_1(S'',\underline{s''})$ 的元素，以及前面引入的元素 $a_i^{s'''}$（$i=1,2,3$，$s'''\in E'''$）。
+\end{SGAresult}
+\begin{SGAresult}{推论}{5.2}
+假设 $S',S''$ 只有\Term{finite}{有限}多个\Term{connected-component}{连通分支}，且 $S'$ 的各\Term{connected-component}{连通分支}的\Term{fundamental-group}{基本群}都拓扑\Term{finitely-generated}{有限生成}。则 $S$ 的\Term{fundamental-group}{基本群}拓扑\Term{finitely-generated}{有限生成}。
+\end{SGAresult}
+例如，我们以后将证明：\Term{algebraically-closed-field}{代数闭域}上的\Term{normal}{正规}\Term{projective}{射影}\Term{scheme}{概形}的\Term{fundamental-group}{基本群}拓扑\Term{finitely-generated}{有限生成}。利用 Chow 引理及代数\Term{scheme}{概形}的\Term{normalization}{正规化}，可由此推出\Term{algebraically-closed-field}{代数闭域}上的任意\Term{proper}{固有}\Term{scheme}{概形}也有同样性质。
+\begin{SGAresult}{推论}{5.3}
+假设 $S',S'',S'''$ 都只有\Term{finite}{有限}多个\Term{connected-component}{连通分支}，$S'$ 的各\Term{connected-component}{连通分支}的\Term{fundamental-group}{基本群}都拓扑\Term{finite-presentation}{有限表示}，且 $S''$ 的各\Term{connected-component}{连通分支}的\Term{fundamental-group}{基本群}都拓扑\Term{finitely-generated}{有限生成}。则 $S$ 的\Term{fundamental-group}{基本群}拓扑\Term{finite-presentation}{有限表示}。
+\end{SGAresult}
+还应注意，将 4.9 限于\Term{etale-covering}{平展覆盖}，可以表述为：Noether \Term{prescheme}{预概形}之间的\Term{finite}{有限}、\Term{radicial}{根性}\Term{epimorphism}{满态射}诱导\Term{fundamental-group}{基本群}的\Term{isomorphism}{同构}。形象地说，\Term{fundamental-group}{基本群}是\Term{prescheme}{预概形}的拓扑不变量。更一般地，可借助 5.1 明确写出\Term{prescheme}{预概形}上的一些具有简单拓扑意义的操作对\Term{fundamental-group}{基本群}的作用，例如沿\Term{finite}{有限}点集将\Term{prescheme}{预概形}“捏合”。比如得到：
+\begin{SGAresult}{推论}{5.4}
+设 $g:S'\to S$ \Term{finite}{有限}且\Term{finite-presentation}{有限表示}，$T$ 是 $S$ 的一个\Term{discrete}{离散}子集。对每个 $s\in S$，令 $n(s)$ 为\Term{fibre}{纤维} $g^{-1}(s)$ 中的“\Term{geometric-point}{几何点}数”；它也\Term{representable}{可表}为 $g^{-1}(s)$ 在 $k(s)$ 上的\Term{separable}{可分}次数，即其各\Term{residue-field}{剩余域}\Term{group-extension}{扩张}的\Term{separable}{可分}次数之和。假设对 $s\in S-T$，有 $n(s)=1$。对每个 $s\in T$，令 $K_s$ 为 $k(s)$ 的一个\Term{algebraically-closed}{代数闭}\Term{group-extension}{扩张}，$I_s$ 为 $S'$ 的取值于 $K_s$ 的\Term{geometric-point}{几何点}集合，这是一个有 $n(s)$ 个元素的集合；令 $I'_s$ 为从 $I_s$ 中删去一个选定点所得的集合，$I'$ 为各 $I'_s$ 的并。
+\SourcePage{208}
+假设 $S'$ \Term{connected}{连通}。则 $S$ 的\Term{fundamental-group}{基本群}\Term{isomorphism}{同构}于由 $S'$ 的\Term{fundamental-group}{基本群}及生成元 $g_i$（$i\in I'$）生成而不加任何其他条件的 \Term{galois-type-group}{Galois 型群}。
+\end{SGAresult}
+证明细节留给读者。所得命题只是将下述事实译为群论语言：$S$ 的\Term{etale-covering}{平展覆盖}\Term{category}{范畴} $\mathcal C$，等价于由 $S'$ 的\Term{etale-covering}{平展覆盖} $X'$ 及下列附加资料组成的\Term{category}{范畴}——对每个 $s\in T$，在 $X'$ 于 $g^{-1}(s)$ 的取值于 $K_s$ 的各点处的 $n(s)$ 个\Term{fibre}{纤维}之间，给定一个传递的\Term{bijection}{双射}系统。采用这一内在表述时，自然不再需要假设 $S'$ \Term{connected}{连通}。
+\begin{SGAresult}{例}{5.5}
+容易证明，\Term{algebraically-closed-field}{代数闭域} $k$ 上的有理曲线 $\mathbb P^1_k$ 是\Term{simply-connected}{单连通}的。\footnote{参见第 XI 讲 1.1。}因此，恰有一个具有 $n$ 个解析分支的二重点的完备有理曲线，其\Term{fundamental-group}{基本群}是由 $n-1$ 个生成元生成的自由 \Term{galois-type-group}{Galois 型群}。特别地，在普通二重点的情形，得到\Term{fundamental-group}{基本群} $\widehat{\mathbb Z}$，正如 I 11 a) 中所宣布的。相反，尖点的存在并不影响\Term{fundamental-group}{基本群}，因为尖点是“\Term{geometrically-unibranch}{几何单分支}”的点。
+\end{SGAresult}
+\begin{SGAresult}{推论}{5.6}
+设 $g:S'\to S$ 是\Term{prescheme}{预概形}的\Term{universally-submersive}{普遍淹没}\Term{morphism}{态射}，\Term{fibre}{纤维}\Term{geometrically-connected}{几何连通}，且 $S$ \Term{connected}{连通}。则 $S'$ \Term{connected}{连通}；在 $S'$ 中选择一个\Term{geometric-point}{几何点} $s'$，以 $s$ 表示其在 $S$ 中的像，则\Term{homomorphism}{同态}
+\[
+\pi_1(S',s')\longrightarrow\pi_1(S,s)
+\]
+是\Term{surjectivity}{满射}。若 $g$ 是\Term{prescheme}{预概形}的\Term{etale-covering}{平展覆盖}所成\Term{fibred-category}{纤维范畴}的\Term{effective-descent-morphism}{有效下降态射}（参见 4.12），引入 $S''=S'\times_S S'$ 的\Term{geometric-point}{几何点} $s''=\operatorname{diag}(s')$，以及由两个投影诱导的\Term{homomorphism}{同态}
+\[
+p_{1*},p_{2*}:\pi_1(S'',s'')\longrightarrow\pi_1(S',s'),
+\]
+则 $\pi_1(S,s)$ \Term{isomorphism}{同构}于这一对\Term{morphism}{态射}在 \Term{galois-type-group}{Galois 型群}\Term{category}{范畴}中的\Term{cokernel}{余核}，即 $\pi_1(S',s')$ 对下述闭\Term{normal-subgroup}{正规子群}的商：此子群由所有形如 $p_{1*}(g'')p_{2*}(g'')^{-1}$、$g''\in\pi_1(S'',s'')$ 的元素生成。
+\end{SGAresult}
+事实上，由 3.4 已知，\Term{functor}{函子} $X\mapsto X\times_S S'$ 从 $S$ 的\Term{etale-covering}{平展覆盖}\Term{category}{范畴}到 $S'$ 的\Term{etale-covering}{平展覆盖}\Term{category}{范畴}是\Term{fully-faithful}{全忠实}的，这等价于相应的\Term{fundamental-group}{基本群}\Term{homomorphism}{同态}是满\Term{homomorphism}{同态}（V 6.9）。最后一项断言直接来自 5.1 的描述。
+
+\SourcePage{209}
+\begin{SGAresult}{注记}{5.7}
+目前还不知道，\Term{algebraically-closed-field}{代数闭域} $k$ 上\Term{proper}{固有}\Term{scheme}{概形}的\Term{fundamental-group}{基本群}是否拓扑\Term{finite-presentation}{有限表示}。\footnote{在特征 $p>0$、\Term{genus}{亏格} $g\geq2$ 的\Term{smooth}{光滑}曲线的情形，这似乎很不可能。不过，若将 $\pi_1$ 换为其最大素于 $p$ 的商，则看来熟知的技术能够给出肯定答案，甚至不必假设\Term{proper}{固有}性。参见 J. P. Murre 正在准备的一项工作。}利用 5.3、熟知的超平面\Term{section}{截面}技术及\Term{normal}{正规}曲面的\Term{resolution-singularities}{奇点消解}，可归结到 $k$ 上的\Term{smooth}{光滑}曲面。这样至少能够借助超越方法，证明在特征零时答案是肯定的，而无须承认奇异代数簇的可三角剖分性。在特征 $p>0$ 时，主要困难似乎在于曲线的情形；这里我们只知道其\Term{fundamental-group}{基本群}是经典情形下所出现的\Term{fundamental-group}{基本群}的商（参见下一讲），但对于作商所用的核知道得很少。
+\end{SGAresult}
+\begin{SGAresult}{注记}{5.8}
+除了 5.4、5.6，还可以写出 5.1 具有特别简单形式的其他特例。有趣的一种情形是：$S$ 是 $S'$ 对\Term{finite}{有限}\Term{automorphism}{自同构}群 $\Gamma$ 的商。此时，$S'$ 的\Term{etale-covering}{平展覆盖}\Term{equivalence-of-categories}{范畴等价}于满足下述条件的 $S'$ 的\Term{etale-covering}{平展覆盖} $X'$ 所成的\Term{category}{范畴}：群 $\Gamma$ 作用在 $X'$ 上，与它在 $S'$ 上的作用相容，并且对每个 $s'\in S'$ 及每个 $g\in\Gamma_{s'}$，$g$ 在\Term{fibre}{纤维} $X'_{s'}$ 上的作用\Term{trivial-bundle}{平凡}；其中 $\Gamma_{s'}$ 是 $s'$ 在 $\Gamma$ 中的\Term{inertia-group}{惯性群}。
+
+若 $S'$ \Term{connected}{连通}，可将这一命题解释如下。令 $\mathcal C'_0$ 为带有 $\Gamma$ 的作用且与 $S'$ 上的作用相容的 $S'$ 的\Term{etale-covering}{平展覆盖}所成的\Term{category}{范畴}，但不必满足上述关于 $S'$ 各点\Term{inertia-group}{惯性群}的条件。容易看出，这是一个\Term{galois-category}{Galois 范畴}（V 5）；对 $S'$ 的每个\Term{geometric-point}{几何点} $a'$，$\mathcal C'_0$ 上的\Term{fiber-functor}{纤维函子} $X'\mapsto X'_{a'}$ 是一个\Term{fundamental-functor}{基本函子}。令 $\pi_1(S',\Gamma;a')=G$ 为这一\Term{functor}{函子}的\Term{automorphism}{自同构}群，赋予通常的拓扑。于是有典范\Term{exact-sequence}{正合列}
+\[
+e\longrightarrow\pi_1(S',a')\longrightarrow G\longrightarrow\Gamma\longrightarrow e.
+\]
+这是 V 6.13 的特例：在那里取 $S$ 为由 $\Gamma$ 定义的 $S'$ 的\Term{trivial-bundle}{平凡}\Term{covering}{覆盖} $S'\times\Gamma$，并赋予显然的 $\Gamma$ 作用。此外，对 $S'$ 的每个\Term{geometric-point}{几何点} $b'$，有\Term{isomorphism}{同构}
+\[
+\pi_1(S',\Gamma;b')\longrightarrow G=\pi_1(S',\Gamma;a'),
+\]
+此\Term{isomorphism}{同构}精确到由 $\pi_1(S',a')$ 给出的\Term{inner-automorphism}{内自同构}。由于 $\Gamma_{b'}$ 自然映入左端，便得到\Term{homomorphism}{同态}
+\[
+u_{b'}:\Gamma_{b'}\longrightarrow G,
+\]
+同样精确到由 $\pi_1(S',a')$ 给出的\Term{inner-automorphism}{内自同构}；它与典范\Term{homomorphism}{同态} $G\to\Gamma$ 的复合恰是典范嵌入 $\Gamma_{b'}\to\Gamma$。在这些记号下，\Term{fundamental-group}{基本群} $\pi_1(S,a)$ 典范\Term{isomorphism}{同构}于 $G=\pi_1(S',\Gamma;a')$ 对由各\Term{homomorphism}{同态} $\Gamma_{b'}\to G$ 的像生成的闭\Term{normal-subgroup}{正规子群}的商。
+\SourcePage{210}
+特别地，$\pi_1(S',a')$ 在 $\pi_1(S,a)$ 中的像是\Term{normal-subgroup}{正规子群}，相应商群\Term{isomorphism}{同构}于 $\Gamma$ 的某个商。还可以减少所引入的“关系”的数目：对每个 $g\in\Gamma$、$g\ne e$，引入 $S$ 的\Term{automorphism}{自同构} $\operatorname{id}_S$ 与 $g$ 的重合子\Term{prescheme}{预概形} $S'_g$；在 $S'_g$ 的每个\Term{connected-component}{连通分支}中选择一个\Term{geometric-point}{几何点} $b'_{g,i}$，再选择一个相应\Term{homomorphism}{同态} $\pi_1(S',\Gamma;b'_{g,i})\to G$，从而得到 $g$ 在 $G$ 中的提升 $\overline g_i$。只须将 $G$ 对由所有 $\overline g_i$ 生成的闭\Term{normal-subgroup}{正规子群}取商即可。
+
+当 $a'$ 在 $\Gamma$ 下不变时，容易看出 $\Gamma$ 自然作用在 $\pi_1(S',a')$ 上，$G$ 可与相应的\Term{semidirect-product}{半直积}识别。将 $\Gamma$ 与 $G$ 的一个子群识别，在前面引入的关系中取 $b'=a'$，就得到对 $g\in I$ 的关系“$g=e$”。因此，若 $S'$ 有一个被 $I$ 固定的\Term{geometric-point}{几何点} $a'$，即存在一点 $s'$，其\Term{inertia-group}{惯性群}为 $\Gamma$，则 $\pi_1(S,a)$ 是下述群的一个商：从 $\pi_1(S',a')$ 出发，将 $\Gamma$ 的作用“变为\Term{trivial-bundle}{平凡}”，得到一个 Galois 型商群。若再假设对每个 $g\in G$，惯性集合 $S'_g$ 都\Term{connected}{连通}，从而经过 $a'$ 的支点，则 $\pi_1(S,a)$ 甚至\Term{isomorphism}{同构}于这一群。后一断言已包含在上面对要加入 $G$ 的关系所作的第二种描述中。
+
+特别地，取 $S'$ 为\Term{algebraically-closed-field}{代数闭域}上\Term{connected}{连通}\Term{prescheme}{预概形}的笛卡尔幂 $X^n$，取 $\Gamma$ 为按通常方式作用的对称群 $\mathfrak S_n$，于是 $S$ 为 $S$ 的第 $n$ 次对称幂，此时上述结果适用。选择一个支点位于对角线上的\Term{geometric-point}{几何点} $a'$，便满足前面的条件，因为所有惯性集合 $S'_g$ 都包含对角线。利用下一讲将要证明的事实——若 $X$ 在 $k$ 上\Term{proper}{固有}且\Term{connected}{连通}，则 $X^n$ 的\Term{fundamental-group}{基本群}可与 $\pi_1(X)^n$ 识别——得到下列有趣结果：若 $X$ 在\Term{algebraically-closed-field}{代数闭域} $k$ 上\Term{proper}{固有}且\Term{connected}{连通}，则它的第 $n$ 次对称幂（$n\geq2$）的\Term{fundamental-group}{基本群}，\Term{isomorphism}{同构}于 $X$ 的\Term{fundamental-group}{基本群}的\Term{abelianization}{交换化}。我不知道代数拓扑中的类似事实是否已知；它应当能用同一种\Term{descent}{下降}方法证明。
+
+例如，取 $X$ 为有理曲线 $X=\mathbb P^1_k$，就利用 $\mathbb P^1_k$ 的\Term{simply-connected}{单连通}性，再次证明了 $\mathbb P^r_k$ \Term{simply-connected}{单连通}。再取 $X$ 为 $k$ 上的\Term{smooth}{光滑}曲线，$n\geq2g-1$，则 $\operatorname{Symm}^n(X)$ 在 Jacobian 簇 $J$ 上成\Term{fibre}{纤维}，\Term{fibre}{纤维}为\Term{projective-space}{射影空间}，因此与 $J$ 有相同的\Term{fundamental-group}{基本群}，正如将借助下面两讲的结果看到的。这样，不经逐步归约便重新得到熟知的事实：$X$ 的 Jacobian 簇的\Term{fundamental-group}{基本群}，\Term{isomorphism}{同构}于 $X$ 的\Term{fundamental-group}{基本群}的\Term{abelianization}{交换化}。
+\end{SGAresult}
+
+\SGAsection{6}{一个基本正合列：沿纤维相对连通的态射下降}
+\SourcePage{211}
+\begin{SGAresult}{定理}{6.1}
+设 $S$ 是 Artin 环 $A$ 的谱，\Term{residue-field}{剩余域}为 $k$；$\overline k$ 为 $k$ 的一个\Term{algebraic-closure}{代数闭包}；$X$ 是 $S$-\Term{prescheme}{预概形}；$X_0=X\otimes_A k$，$\overline X_0=X\otimes_A\overline k$；$\overline a$ 为 $\overline X$ 的一个\Term{geometric-point}{几何点}，$a$ 为它在 $X$ 中的像，$b$ 为它在 $S$ 中的像。假设 $X_0$ \Term{quasi-compact}{拟紧}且在 $k$ 上\Term{geometrically-connected}{几何连通}。注意，若 $X$ 在 $S$ 上\Term{proper}{固有}，这意味着 $H^0(X_0,O_{X_0})$ 是一个 Artin \Term{local-ring}{局部环}，且其\Term{residue-field}{剩余域}在 $k$ 上\Term{radicial}{根性}。则典范\Term{homomorphism}{同态}列
+\[
+e\longmapsto\pi_1(\overline X_0,\overline a)
+\longrightarrow\pi_1(X,a)\longrightarrow\pi_1(S,b)\longrightarrow e
+\]
+\Term{exact}{正合}，并且
+\[
+\pi_1(S,b)\xleftarrow{\sim}\pi_1(k,\overline k)
+=\overline k\text{ 在 }k\text{ 上的 Galois 群}.
+\]
+\end{SGAresult}
+由于删去\Term{nilpotent}{幂零}元不会改变\Term{fundamental-group}{基本群}，可以假设 $A=k$，此时最后那个\Term{isomorphism}{同构}已经显然。令 $k'$ 为 $k$ 在 $\overline k$ 中的\Term{separable-closure}{可分闭包}，考虑 $X'=X\otimes_k k'$ 以及 $\overline a$ 在 $X'$ 中的像 $a'$。有典范\Term{homomorphism}{同态}列
+\[
+e\longmapsto\pi_1(\overline X_0,\overline a)
+\longrightarrow\pi_1(X',a')\longrightarrow\pi_1(S',b')\longrightarrow e,
+\]
+其中 $S'=\operatorname{Spec}(k')$。由图
+\[
+\begin{tikzcd}[column sep=large,row sep=large]
+S&X\arrow[l]&\overline X_0\arrow[l]\\
+S'\arrow[u]&X'\arrow[l]\arrow[u]&\overline X_0\arrow[l]\arrow[u,equal]
+\end{tikzcd}
+\]
+得到从这一列到 $X/k$ 相应\Term{homomorphism}{同态}列的典范\Term{homomorphism}{同态}。另一方面，根据 4.11，这个群列的\Term{homomorphism}{同态}是\Term{isomorphism}{同构}。因此，只须证明第二个\Term{homomorphism}{同态}列\Term{exact}{正合}，也就是说，可以假设 $k$ \Term{perfect}{完美}。设 $k_i$ 为 $\overline k/k$ 中的\Term{finite}{有限} Galois 子\Term{group-extension}{扩张}，置 $X_i=X\otimes_k k_i$，$a_i$ 为 $\overline a$ 在 $X_i$ 中的像。自然\Term{homomorphism}{同态}
+\[
+\pi_1(\overline X_0,\overline a)\xrightarrow{\sim}\varprojlim_i\pi_1(X_i,a_i)
+\]
+是\Term{isomorphism}{同构}，核实留给读者。这只意味着 $\overline X$ 的任一\Term{etale-covering}{平展覆盖}都来自某个 $X_i$ 的\Term{etale-covering}{平展覆盖}，且精确到再转到某个 $X_j$（$j\geq i$）后，这样的\Term{covering}{覆盖}本质唯一。另一方面，令 $\pi_i$ 为 $k_i$ 在 $k$ 上的 Galois 群，即 $S_i=\operatorname{Spec}(k_i)$ 的 $S$-\Term{automorphism}{自同构}群的反群。由于\Term{functor}{函子} $S'\mapsto X\times_S S'$ 从 $S$ 的\Term{etale-covering}{平展覆盖}\Term{category}{范畴}到 $X$ 的\Term{etale-covering}{平展覆盖}\Term{category}{范畴}是\Term{fully-faithful}{全忠实}的（3.4），$\pi_i$ 也\Term{isomorphism}{同构}于 $X$ 的\Term{connected}{连通}\Term{principal-covering}{主覆盖} $X_i$ 的 $X$-\Term{automorphism}{自同构}群的反群。
+
+\SourcePage{212}
+因此由 V 6.13，有\Term{exact-sequence}{正合列}
+\[
+e\longmapsto\pi_1(X_i,a_i)\longrightarrow\pi_1(X,a)\longrightarrow\pi_i\longrightarrow e.
+\]
+对这些\Term{exact-sequence}{正合列}关于 $i$ 取\Term{inverse-limit}{投射极限}，由于我们处在 \Term{galois-type-group}{Galois 型群}\Term{category}{范畴}中，所得的列仍然\Term{exact}{正合}；这恰是 6.1 所考虑的列。证明完成。
+
+6.1 中右端\Term{exactness}{正合性}的几何表述如下：
+\begin{SGAresult}{推论}{6.2}
+沿用前面的记号，设 $X'$ 是 $X$ 的\Term{etale-covering}{平展覆盖}，$\overline X'_0$ 为 $\overline X_0$ 的相应\Term{etale-covering}{平展覆盖}。下列条件等价：
+\begin{enumerate}[label=(\roman*)]
+\item 存在 $S$ 上\Term{etale}{平展}的 $S'$ 及 $X$-\Term{isomorphism}{同构} $X'\xrightarrow{\sim}X\times_S S'$；根据 3.4，这样的 $S'$ 精确到唯一\Term{isomorphism}{同构}而确定。
+\item $\overline X'_0$ 在 $\overline X_0$ 上\Term{completely-decomposed}{完全分解}。
+\end{enumerate}
+若 $X'$ \Term{connected}{连通}，上述条件还等价于：
+\par\noindent (ii bis) $\overline X'_0$ 在 $\overline X_0$ 上有一个\Term{section}{截面}。
+\end{SGAresult}
+注意，最后这一补充是关键的；(i) 与 (ii) 的等价只表示 $\pi_1(S,b)$ 是 $\pi_1(X,a)$ 对由 $\pi_1(\overline X_0,\overline a)$ 的像所生成的闭\Term{normal-subgroup}{正规子群}的商，并不表示是对这个像本身的商。在上述条件下，称 $X'$ 是 $X$ 的一个\Term{geometrically-trivial-covering}{几何平凡覆盖}。
+\begin{SGAresult}{注记}{6.3}
+在命题 6.1 中，不能将 $\overline k$ 换成 $k$ 的任意\Term{algebraically-closed}{代数闭}\Term{group-extension}{扩张}，即使已假设 $k$ \Term{algebraically-closed}{代数闭}也不行。换言之，若 $X$ 是\Term{algebraically-closed-field}{代数闭域} $k$ 上的\Term{connected}{连通}代数\Term{scheme}{概形}，一般不能说将 $k$ 换成\Term{algebraically-closed}{代数闭}\Term{group-extension}{扩张}后，其\Term{fundamental-group}{基本群}不变。例如，在特征 $p>0$ 时，$k$ 上的\Term{affine}{仿射}直线已经不满足此结论；这是因为无穷远点处的“高阶\Term{ramified}{分歧}”现象使\Term{fundamental-group}{基本群}具有某种“连续”结构。不过，下一讲将看到，若 $X$ 在 $k$ 上\Term{proper}{固有}，这类现象就不可能发生。还将用超越方法证明，$k$ 的特征为零时也如此。
+\end{SGAresult}
+\begin{SGAresult}{推论}{6.4}
+假设 $a$ 的支点 $x\in X$ 在 $k$ 上有理，更一般地，假设它的\Term{residue-field}{剩余域}在 $k$ 上\Term{radicial}{根性}。则\Term{exact-sequence}{正合列} 6.1 \Term{splitting}{分裂}。
+\end{SGAresult}
+可以假设 $S=\operatorname{Spec}(k)$。若 $x$ 在 $k$ 上有理，它对应于 $X$ 在 $S$ 上的一个\Term{section}{截面} $S\to X$，将 $b$ 变为 $a$，并定义\Term{homomorphism}{同态} $\pi_1(S,b)\to\pi_1(X,a)$，这就是所求的\Term{splitting}{分裂}。若 $k(x)$ 在 $k$ 上\Term{radicial}{根性}，则作\Term{base-extension}{基扩张} $\operatorname{Spec}(k(x))\to\operatorname{Spec}(k)$，归结到前一种情形。
+
+\SourcePage{213}
+\begin{SGAresult}{定理}{6.5}
+设 $f:X\to S$ 是\Term{proper}{固有}、\Term{surjectivity}{满射}且\Term{finite-presentation}{有限表示}的\Term{morphism}{态射}，其\Term{fibre}{纤维}\Term{geometrically-connected}{几何连通}；$X'$ 是 $X$ 上\Term{finite-presentation}{有限表示}且\Term{proper}{固有}的\Term{prescheme}{预概形}；$s\in S$；$F=X_s$ 为 $X$ 在 $s$ 处的\Term{fibre}{纤维}；$F'_1$ 为 $X'$ 在 $s$ 处的\Term{fibre}{纤维} $F'=X'_s$ 的一个\Term{connected-component}{连通分支}。存在 $F'_1$ 在 $X'$ 中的\Term{open-neighborhood}{开邻域} $X'_1$、一个\Term{etale}{平展} $S$-\Term{scheme}{概形} $S'_1$ 及 $X$-\Term{isomorphism}{同构} $X'_1\xrightarrow{\sim}S'_1\times_S X$，当且仅当 $X'$ 在 $F'_1$ 的各点处在 $X$ 上\Term{etale}{平展}，且 $F'_1$ 是 $F$ 的一个\Term{geometrically-trivial-covering}{几何平凡覆盖}。
+\end{SGAresult}
+条件的必要性显然，只证充分性。容易归结到 $S$ 为 Noether 的情形。考虑 $f$ 的\Term{stein-factorization}{Stein 分解} $X\to T\to S$，其中 $T$ 为 $S$ 上代数层 $f_*(O_X)$ 的谱。由于 $X$ 在 $S$ 上的各\Term{fibre}{纤维}\Term{geometrically-connected}{几何连通}且 $f$ \Term{surjectivity}{满射}，\Term{morphism}{态射} $T\to S$ \Term{finite}{有限}、\Term{surjectivity}{满射}且\Term{radicial}{根性}，因此由 4.10，$T$ 上的每个\Term{etale}{平展}\Term{prescheme}{预概形} $T'$ 都是 $S$ 上某个\Term{etale}{平展}\Term{prescheme}{预概形} $S'$ 的原像。由此，只须在 6.5 中以 $T$ 替换 $S$ 来证明，也就是可以假设 $f_*(O_X)=O_S$。再考虑\Term{proper}{固有}\Term{morphism}{态射} $h:X'\to S$ 的 \Term{stein-factorization}{Stein 分解} $X'\to S'\to S$，其中 $S'$ 是代数层 $h_*(O_{X'})$ 的谱。\Term{morphism}{态射} $X'\to X$、$X'\to S'$ 定义一个典范\Term{morphism}{态射}
+\[
+X'\longrightarrow X\times_S S',
+\]
+所需断言包含在下述命题中：
+\begin{SGAresult}{推论}{6.6}
+设 $f:X\to S$ 为\Term{locally-noetherian}{局部 Noether} \Term{prescheme}{预概形}之间的\Term{proper}{固有}\Term{morphism}{态射}，满足 $f_*(O_X)=O_S$；$X'$ 是 $X$ 上的\Term{proper}{固有}\Term{prescheme}{预概形}。考虑 $X'\to S$ 的 \Term{stein-factorization}{Stein 分解} $X'\to S'\to S$ 及典范\Term{morphism}{态射} $X'\to X\times_S S'$。设 $s\in S$，$s'$ 是 $S'$ 中位于 $s$ 上方的一点，对应于 $X'$ 在 $s$ 处的\Term{fibre}{纤维} $X'_s$ 的一个\Term{connected-component}{连通分支} $F'_1$。\Term{morphism}{态射} $X'\to X\times_S S'$ 在 $s'$ 的某个\Term{open-neighborhood}{开邻域} $U'$ 上方为\Term{isomorphism}{同构}且 $U'$ 在 $S$ 上\Term{etale}{平展}，当且仅当 $X'$ 在 $F'_1$ 的各点处在 $X$ 上\Term{etale}{平展}，且 $F'_1$ 是\Term{fibre}{纤维} $F=X_s$ 的一个\Term{geometrically-trivial-covering}{几何平凡覆盖}。
+\end{SGAresult}
+必要性仍显然，只证充分性。结论也可以表述为：a) 从 $X'\to X\times_S S'$ 经\Term{base-change}{基变换} $\operatorname{Spec}(\widehat O_{s'})\to S'$ 所得的\Term{morphism}{态射}是\Term{isomorphism}{同构}；b) $S'$ 在 $s'$ 处在 $S$ 上\Term{etale}{平展}，即 $\widehat O_{s'}$ 在 $\widehat O_s$ 上\Term{etale}{平展}。用这一形式，便看出结论在\Term{base-change}{基变换} $\operatorname{Spec}(\widehat O_s)\to S$ 下不变。假设在此\Term{base-change}{基变换}下也稳定，所以可以假设 $S$ 是完备 Noether \Term{local-ring}{局部环}的谱。显然还可假设 $X'$ \Term{connected}{连通}，这在此处蕴含 $S'=\operatorname{Spec}(O_{s'})$，$F'=F'_1$。
+
+$X'$ 在 $X$ 上\Term{etale}{平展}的点所成的集合是开的，并包含\Term{fibre}{纤维} $X'_{s'}=F'$；由于 $X'$ 在 $S$ 上\Term{proper}{固有}，便知 $X'$ 在 $X$ 上\Term{etale}{平展}。它在 $F=X_s$ 上诱导一个\Term{isomorphism}{同构}于 $F\otimes_{k(s)}L$ 的\Term{etale-covering}{平展覆盖}，其中 $L$ 在 $k(s)$ 上\Term{etale}{平展}。根据 1.10，它\Term{isomorphism}{同构}于一个形如 $X\times_S T$ 的\Term{covering}{覆盖}，其中 $T$ 在 $S$ 上\Term{etale}{平展}。
+\SourcePage{214}
+注意，这里也只须使用 1.10 中\Term{functor}{函子}的\Term{fully-faithful}{全忠实}性；它来自以下事实：$X$ 上\Term{coherent-sheaf}{凝聚层}之间的形式\Term{isomorphism}{同构}来自这些层的一个\Term{isomorphism}{同构}。因此，若 $T$ 由 $A$ 上的\Term{finite}{有限}代数 $B$ 定义，则 $X'$ 可与 $X$ 上代数层 $O_X\otimes_A B$ 的谱识别。由 $f_*(O_X)=O_S$，立刻得到 $h_*(O_{X'})$ 由 $B$ 定义，因而典范\Term{homomorphism}{同态} $X'\to X\times_S S'$ 正是上述\Term{isomorphism}{同构} $X'\xrightarrow{\sim}X\times_S T$。证明完成。
+\begin{SGAresult}{推论}{6.7}
+在 6.5 的条件下，存在 $S$ 上\Term{etale}{平展}的\Term{prescheme}{预概形} $S'$ 及 $X$-\Term{isomorphism}{同构} $X'\xrightarrow{\sim}X\times_S S'$，当且仅当 $X'$ 在 $X$ 上\Term{etale}{平展}，且对每个 $s\in S$，$X'_{s'}$ 都是 $X_s$ 的\Term{geometrically-trivial-covering}{几何平凡覆盖}。
+\end{SGAresult}
+事实上，若如此，$X'$ 是一些开子集 $X'_i$ 的并，每个 $X'_i$ 都\Term{isomorphism}{同构}于 $S$ 上某个\Term{etale}{平展}\Term{prescheme}{预概形} $S'_i$ 的原像。容易看出，这些 $S'_i$ 可以\Term{gluing}{粘合}为 $S$ 上\Term{etale}{平展}的 $S'$，并得到\Term{isomorphism}{同构} $X'\xrightarrow{\sim}X\times_S S'$。例如，也可以说，各 $X'_i$ 带有相对于 $X\to S$ 的\Term{descent-datum}{下降数据}；它们必然\Term{gluing}{粘合}为整个 $X'$ 上相对于 $X\to S$ 的\Term{descent-datum}{下降数据}。由于这一资料在每个 $X'_i$ 上有效，容易看出它本身也有效，这里用到一个第 4 节忘记写出的推论。6.7 还\Term{representable}{可表}述如下：
+\begin{SGAresult}{推论}{6.8}
+设 $f:X\to S$ \Term{proper}{固有}、\Term{surjectivity}{满射}且\Term{finite-presentation}{有限表示}，\Term{fibre}{纤维}\Term{geometrically-connected}{几何连通}。则 $f$ 是相对\Term{etale}{平展}且\Term{finite}{有限}的\Term{prescheme}{预概形}所成\Term{fibred-category}{纤维范畴}的\Term{effective-descent-morphism}{有效下降态射}。\Term{functor}{函子} $S'\mapsto X\times_S S'$ 给出以下\Term{category}{范畴}之间的等价：$S$ 上\Term{etale}{平展}且\Term{finite}{有限}的\Term{prescheme}{预概形}\Term{category}{范畴}；以及 $X$ 上\Term{etale}{平展}且\Term{finite}{有限}，并在每个\Term{fibre}{纤维} $X_s$ 上诱导\Term{geometrically-trivial-covering}{几何平凡覆盖}的\Term{prescheme}{预概形}\Term{category}{范畴}。
+\end{SGAresult}
+\begin{SGAresult}{注记}{6.9}
+设 $f:X\to S$ 是\Term{proper}{固有}\Term{epimorphism}{满态射}，$Y$ \Term{locally-noetherian}{局部 Noether}。则 $f$ 分解为一个满足 6.8 假设的\Term{morphism}{态射} $X\to S'$，以及一个可应用 4.7 的\Term{finite}{有限}\Term{epimorphism}{满态射} $S'\to S$。因此，它是相对\Term{etale}{平展}且\Term{finite}{有限}的\Term{prescheme}{预概形}所成\Term{fibred-category}{纤维范畴}的两个普遍\Term{effective-descent-morphism}{有效下降态射}的复合。可由此得出，$f$ 本身也是这一\Term{fibred-category}{纤维范畴}的普遍\Term{effective-descent-morphism}{有效下降态射}。这样以另一种方法重新得到了 4.12。
+\end{SGAresult}
+\begin{SGAresult}{注记}{6.10}
+若将 $f$ \Term{proper}{固有}这一假设换为：$X$ 在 $S$ 上\Term{finite-type}{有限型}并有一个 $S$ 上的\Term{section}{截面}，因而 $f$ \Term{universally-submersive}{普遍淹没}且是相对\Term{etale}{平展}\Term{prescheme}{预概形}所成\Term{fibred-category}{纤维范畴}的\Term{descent-morphism}{下降态射}，那么 6.7 的结论就不再成立；即使 $S$ 是\Term{discrete-valuation-ring}{离散赋值环}的谱，且 $X'$ 是 $X$ 的\Term{etale-covering}{平展覆盖}，也如此。为说明这一点，取 $S$ 上\Term{proper}{固有}的 $Z$，其一般\Term{fibre}{纤维}是\Term{nonsingular}{非奇异}有理曲线，特殊\Term{fibre}{纤维} $Z_0$ 由两条相交直线组成。
+\SourcePage{215}
+例如，若 $t$ 是赋值环 $A$ 的一个一致化元，可取 $\mathbb P^2_A$ 中由齐次方程 $x^2+y^2+tz^2=0$ 定义的闭子\Term{scheme}{概形} $Z$，其中 $x,y,z$ 是齐次坐标。令 $X$ 为从 $Z\cup\mathbb P^2_k$ 中删去 $Z_0$ 的奇点 $a$ 所得的补集。$X$ 的\Term{fibre}{纤维}为 $\mathbb P^1_k$ 和 $\mathbb P^2_k-a$，因而几何\Term{simply-connected}{单连通}，即这样的\Term{fibre}{纤维}的每个\Term{etale-covering}{平展覆盖}都是几何\Term{trivial-bundle}{平凡}的。然而，按第 4 节的方法，将 $Z-a$ 及 $\mathbb P^2_k-a$ 的\Term{trivial-bundle}{平凡}\Term{covering}{覆盖}\Term{gluing}{粘合}，便容易构造出并非来自 $S$ 的\Term{etale-covering}{平展覆盖}的 $X$ 的\Term{etale-covering}{平展覆盖}。
+
+另一方面，将 6.7 的\Term{proper}{固有}性假设换为 $X$ 在 $S$ 上\Term{universally-open}{普遍开}且\Term{finite-presentation}{有限表示}，其结论可能仍成立。\footnote{这现在已经得到证明，只须 $g$ \Term{universally-open}{普遍开}且\Term{surjectivity}{满射}；参见 SGA 4 XV 1.15。}至少，如果假设 $X$ 在 $S$ 上的各\Term{fibre}{纤维}几何\Term{irreducible}{不可约}，而不仅仅\Term{geometrically-connected}{几何连通}，这一结论成立。这里只指出，关于这个问题，可以归结到 $S$ 为\Term{residue-field}{剩余域}\Term{algebraically-closed}{代数闭}的完备\Term{discrete-valuation-ring}{离散赋值环}之谱的情形。
+\end{SGAresult}
+6.7 的\Term{fundamental-group}{基本群}表述如下：
+\begin{SGAresult}{推论}{6.11}
+设 $f:X\to S$ \Term{proper}{固有}、\Term{surjectivity}{满射}且\Term{finite-presentation}{有限表示}，\Term{fibre}{纤维}\Term{geometrically-connected}{几何连通}。假设 $X$ \Term{connected}{连通}，因而 $S$ \Term{connected}{连通}。设 $a$ 是 $X$ 的\Term{geometric-point}{几何点}，$b$ 是其在 $S$ 中的像。对每个 $s\in S$，选择 $k(s)$ 的一个\Term{algebraic-closure}{代数闭包} $\overline{k(s)}$、$S_s$ 的一个取值于此\Term{group-extension}{扩张}的\Term{geometric-point}{几何点} $a_s$，以及一个从 $a_s$ 到 $a$ 的路径类，从而得到\Term{homomorphism}{同态} $\pi_1(\overline X_s,a_s)\to\pi_1(X,a)$，其中
+\[
+\overline X_s=X_s\otimes_{k(s)}\overline{k(s)}.
+\]
+则\Term{homomorphism}{同态} $\pi_1(X,a)\to\pi_1(S,b)$ 为\Term{surjectivity}{满射}，其核是由各 $\pi_1(\overline X_s,a_s)$ 的像生成的 $\pi_1(X,a)$ 的闭\Term{normal-subgroup}{正规子群}。
+\end{SGAresult}
+\begin{SGAresult}{注记}{6.12}
+在 6.7 的条件下，假设 $S$ 为 Noether。容易看出，使 $S'_{s'}$ 在 $X_s$ 上几何\Term{trivial-bundle}{平凡}的点 $s\in S$ 所成的集合是\Term{constructible}{可构造}的；若 $X'$ 在 $X$ 上\Term{proper}{固有}，则由 6.6 可见它甚至是开的。因此，若 $S$ 是 Jacobson \Term{prescheme}{预概形}，例如在某个域上\Term{finite-type}{有限型}，或者 $X'$ 在 $X$ 上\Term{proper}{固有}，则为核实 6.7 的条件，只须考虑 $S$ 的\Term{closed-point}{闭点} $s$。同样，此时在 6.11 中也只须取 $S$ 的\Term{closed-point}{闭点}所对应的 $\pi_1(\overline X_s,a_s)$。
+\end{SGAresult}
+
+\SGAsection{7}{参考文献}
+\begin{description}[leftmargin=2.5em,labelwidth=2em]
+\item[{[D]}] J. Giraud，\textit{Méthode de la descente}，Mémoire n\textsuperscript{o} 2 de la Soc. Math. Fr.，1964。
+\item[{[1]}] A. Grothendieck，\textit{Géométrie Algébrique et Géométrie Formelle}，Séminaire Bourbaki，t. 11，1959，n\textsuperscript{o} 182。
+\end{description}
+\SourcePage{216}

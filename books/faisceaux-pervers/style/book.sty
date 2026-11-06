@@ -1,0 +1,74 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{style/book}[2026/11/06 Perverse sheaves Chinese edition]
+\RequirePackage[a4paper,paperwidth=185mm,paperheight=255mm,inner=22mm,outer=20mm,top=23mm,bottom=24mm,headheight=14pt,headsep=8mm,footskip=12mm]{geometry}
+\RequirePackage{fontspec}
+\setmainfont{texgyrepagella-regular.otf}[BoldFont=texgyrepagella-bold.otf,ItalicFont=texgyrepagella-italic.otf,BoldItalicFont=texgyrepagella-bolditalic.otf]
+\setsansfont{texgyreheros-regular.otf}[BoldFont=texgyreheros-bold.otf,ItalicFont=texgyreheros-italic.otf]
+\setmonofont{lmmono10-regular.otf}
+\setCJKmainfont{FandolSong-Regular.otf}[BoldFont=FandolSong-Bold.otf,ItalicFont=FandolKai-Regular.otf]
+\setCJKsansfont{FandolHei-Regular.otf}[BoldFont=FandolHei-Bold.otf]
+\setCJKmonofont{FandolFang-Regular.otf}
+\RequirePackage{amsmath,amssymb,amsfonts,mathtools,bm}
+\RequirePackage{newpxmath}
+\SetSymbolFont{operators}{normal}{OT1}{zpltlf}{m}{n}
+\SetSymbolFont{operators}{bold}{OT1}{zpltlf}{b}{n}
+\SetMathAlphabet{\mathrm}{normal}{OT1}{zpltlf}{m}{n}
+\SetMathAlphabet{\mathbf}{normal}{OT1}{zpltlf}{b}{n}
+\SetMathAlphabet{\mathit}{normal}{OT1}{zpltlf}{m}{it}
+% Explicit OT1 math accents avoid inherited Unicode text-accent slots.
+\let\hat\relax\DeclareMathAccent{\hat}{\mathalpha}{operators}{94}
+\let\acute\relax\DeclareMathAccent{\acute}{\mathalpha}{operators}{19}
+\let\grave\relax\DeclareMathAccent{\grave}{\mathalpha}{operators}{18}
+\let\tilde\relax\DeclareMathAccent{\tilde}{\mathalpha}{operators}{126}
+\let\bar\relax\DeclareMathAccent{\bar}{\mathalpha}{operators}{22}
+\let\check\relax\DeclareMathAccent{\check}{\mathalpha}{operators}{20}
+\let\breve\relax\DeclareMathAccent{\breve}{\mathalpha}{operators}{21}
+\let\mathring\relax\DeclareMathAccent{\mathring}{\mathalpha}{operators}{23}
+
+\RequirePackage{xcolor,graphicx,booktabs,longtable,array,tabularx,ragged2e,needspace,multicol,enumitem}
+\RequirePackage{tikz,tikz-cd}
+\usetikzlibrary{arrows.meta,calc,patterns,decorations.pathmorphing,positioning,backgrounds}
+\RequirePackage{fancyhdr,etoolbox,xparse}
+\definecolor{Ink}{HTML}{203A48}
+\definecolor{Teal}{HTML}{27696C}
+\definecolor{Gold}{HTML}{B39A64}
+\definecolor{Mist}{HTML}{EFF4F3}
+\definecolor{Paper}{HTML}{FAFAF7}
+\RequirePackage[unicode,bookmarksnumbered,bookmarksopen=true,bookmarksopenlevel=0,colorlinks=true,linkcolor=Teal,urlcolor=Teal,citecolor=Teal,pdfborder={0 0 0},pdfdisplaydoctitle=true]{hyperref}
+\hypersetup{pdftitle={反常层},pdfauthor={A. A. Beilinson, J. Bernstein, P. Deligne, O. Gabber},pdfsubject={Faisceaux pervers 中文全译；据2018年再版}}
+\pdfstringdefDisableCommands{\def\term#1#2{#2}\def\SourcePage#1{}\def\C{C}\def\F{F}\def\ell{l}}
+\ctexset{chapter={name={第,章},number=\arabic{chapter},format=\raggedright\sffamily\bfseries\color{Ink}\LARGE,beforeskip=15pt,afterskip=25pt,aftername=\quad},section={format=\raggedright\sffamily\bfseries\large\color{Ink},beforeskip=18pt,afterskip=9pt},subsection={format=\raggedright\sffamily\bfseries\color{Ink}}}
+\linespread{1.20}
+\setlength{\parindent}{2em}
+\setlength{\parskip}{3pt plus 1pt}
+\setlength{\emergencystretch}{2em}
+\setlength{\abovedisplayskip}{9pt plus 3pt minus 3pt}
+\setlength{\belowdisplayskip}{9pt plus 3pt minus 3pt}
+\setlist{nosep,leftmargin=2em,topsep=5pt}
+\setlist[enumerate,1]{label=(\roman*),ref=\roman*}
+\allowdisplaybreaks[2]
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE]{\small\sffamily\color{Ink}反常层}
+\fancyhead[RO]{\small\sffamily\color{Ink}\nouppercase{\leftmark}}
+\fancyfoot[LE,RO]{\small\sffamily\color{Ink}\thepage}
+\fancyfoot[LO,RE]{\scriptsize\sffamily\color{Gold}FAISCEAUX PERVERS}
+\renewcommand{\headrulewidth}{0.3pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancypagestyle{plain}{\fancyhf{}\fancyfoot[LE,RO]{\small\sffamily\color{Ink}\thepage}\renewcommand{\headrulewidth}{0pt}}
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter\quad #1}{}}
+\newcommand{\SourcePage}[1]{\hypertarget{sourcepage:#1}{}\label{sourcepage:#1}}
+\newcommand{\UnnumberedChapter}[1]{\chapter*{#1}\addcontentsline{toc}{chapter}{#1}\markboth{#1}{#1}}
+\newcommand{\D}{\mathrm{D}}
+\newcommand{\Z}{\mathbb Z}\newcommand{\Q}{\mathbb Q}\newcommand{\R}{\mathbb R}\newcommand{\C}{\mathbb C}\newcommand{\F}{\mathbb F}
+\DeclareMathOperator{\Hom}{Hom}\DeclareMathOperator{\RHom}{RHom}
+\DeclareMathOperator{\Ext}{Ext}\DeclareMathOperator{\Spec}{Spec}\DeclareMathOperator{\Supp}{Supp}\DeclareMathOperator{\Ker}{Ker}\DeclareMathOperator{\Coker}{Coker}\DeclareMathOperator{\im}{Im}\DeclareMathOperator{\id}{id}\DeclareMathOperator{\gr}{gr}\DeclareMathOperator{\Gal}{Gal}\DeclareMathOperator{\Tr}{Tr}\DeclareMathOperator{\rank}{rank}\DeclareMathOperator{\IC}{IC}
+\newcommand{\qed}{\hfill\ensuremath{\square}}
+% Every occurrence has a unique target; the glossary contains all return links.
+\newcounter{termocc}
+\makeatletter
+\newcommand{\TermOccurrence}[2]{\csgappto{termback@#1}{\hyperlink{occ:#2}{\pageref*{occ:#2}}\penalty0\hspace{0.55em}}}
+\DeclareRobustCommand{\term}[2]{\ifmmode #2\else\ifmeasuring@ #2\else\stepcounter{termocc}\hypertarget{occ:\arabic{termocc}}{}\protected@write\@auxout{}{\string\newlabel{occ:\arabic{termocc}}{{}{\thepage}{}{occ:\arabic{termocc}}{}}}\protected@write\@auxout{}{\string\TermOccurrence{#1}{\arabic{termocc}}}\hyperlink{term:#1}{#2}\fi\fi}
+\newcommand{\GlossaryEntry}[4]{\par\addvspace{8pt}\Needspace{4\baselineskip}\noindent\hypertarget{term:#1}{}\begin{tabularx}{\textwidth}{@{}>{\RaggedRight\arraybackslash}p{.23\textwidth}>{\RaggedRight\arraybackslash}X>{\RaggedRight\arraybackslash}X@{}}\textbf{#2} & #3 & #4\\\end{tabularx}\par\nobreak\noindent{\scriptsize\color{Teal}正文出现页：\ifcsdef{termback@#1}{\csuse{termback@#1}}{\textcolor{gray}{本版正文未出现}}\par}\noindent\textcolor{Gold!45}{\rule{\textwidth}{.25pt}}\par}
+\makeatother
+\newcommand{\MakeGlossary}{\UnnumberedChapter{中—英—法技术名词对照表}\noindent 本表按英文词条排序。正文中的技术名词可点击跳到对应词条；词条下方的每个页码均可点击返回相应出现位置，同页多次出现分别保留链接。\par\bigskip\begingroup\small\setlength{\tabcolsep}{5pt}\noindent\begin{tabularx}{\textwidth}{@{}p{.23\textwidth}XX@{}}\toprule\textbf{中文}&\textbf{English}&\textbf{Français}\\\bottomrule\end{tabularx}\input{style/glossary-entries.tex}\endgroup}

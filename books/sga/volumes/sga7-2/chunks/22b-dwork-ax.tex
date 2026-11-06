@@ -1,0 +1,855 @@
+\SourcePage{424}
+\SGAsection{4}{用 Dwork 方法计算超曲面的 zeta 函数}
+\textbf{4.0。}设
+\[
+f(X)=f(X_1,\ldots,X_{n+2})\in\mathbf F_q[X]\quad\text{为次数 }d\text{ 的齐次多项式},\tag{4.0.1}
+\]
+其零点定义\Term{hypersurface}{超曲面} $V\subset\mathbf P^{n+1}$。以 $V^*$ 表示 $V$ 中 $\prod_{i=1}^{n+2}X_i$ \Term{invertible}{可逆}的\Term{open-subscheme}{开子概形}，以 $V^*_{\mathrm{aff}}$ 表示 $V^*$ 的\Term{affine-cone}{仿射锥}。选取一个非平凡\Term{additive-character}{加性特征}
+\[
+\chi:\mathbf F_{q^\nu}\longrightarrow\mu_p(C),\tag{4.0.2}
+\]
+其中 $C$ 为一个固定的\Term{characteristic-zero}{特征零}\Term{algebraically-closed-field}{代数闭域}（例如 $C=\mathbf C$）。于是
+\[
+\text{对 }x\in\mathbf F_{q^\nu},\qquad
+\sum_{y\in\mathbf F_{q^\nu}}\chi(xy)=
+\begin{cases}q^\nu&x=0,\\0&x\ne0.\end{cases}\tag{4.0.3}
+\]
+所以，对 $x=(x_1,\ldots,x_{n+2})\in(\mathbf F_{q^\nu}^{*})^{n+2}$，有
+\SourcePage{425}
+\[
+1+\sum_{x_0\in\mathbf F_{q^\nu}^{*}}\chi(x_0f(x))
+=\sum_{x_0\in\mathbf F_{q^\nu}}\chi(x_0f(x))
+=\begin{cases}q^\nu&f(x)=0,\\0&\text{否则}.\end{cases}\tag{4.0.4}
+\]
+对 $x\in(\mathbf F_{q^\nu}^{*})^{n+2}$ 求和，得到
+\[
+\operatorname{card}V^*_{\mathrm{aff}}(\mathbf F_{q^\nu})
+=\frac1{q^\nu}\sum_{x\in(\mathbf F_{q^\nu}^{*})^{n+2}}
+\left\{1+\sum_{x_0\in\mathbf F_{q^\nu}^{*}}\chi(x_0f(x))\right\}.\tag{4.0.5}
+\]
+又因为
+\[
+\operatorname{card}V^*_{\mathrm{aff}}(\mathbf F_{q^\nu})
+=(q^\nu-1)\operatorname{card}V^*(\mathbf F_{q^\nu}),\tag{4.0.6}
+\]
+故 (4.0.5) 可改写为
+\[
+(q^\nu-1)\operatorname{card}V^*(\mathbf F_{q^\nu})
+=\frac{(q^\nu-1)^{n+2}}{q^\nu}
++\frac1{q^\nu}\sum_{(x_0,x)\in(\mathbf F_{q^\nu}^{*})^{n+3}}\chi(x_0f(x)).\tag{4.0.7}
+\]
+把\Term{homogeneous-polynomial}{齐次式} $f(X)$ 显式写成\Term{monomial}{单项式}之和：
+\[
+f(X)=\sum_w a_wX^w,\tag{4.0.8}
+\]
+其中 $w=(w_1,\ldots,w_{n+2})$，$\sum w_i=d$，且 $X^w\overset{\mathrm{def}}=X_1^{w_1}\cdots X_{n+2}^{w_{n+2}}$。于是 (4.0.7) 又写成
+\[
+(q^\nu-1)\operatorname{card}V^*(\mathbf F_{q^\nu})
+=\frac{(q^\nu-1)^{n+2}}{q^\nu}
++\frac1{q^\nu}\sum_{(x_0,x)\in(\mathbf F_{q^\nu}^{*})^{n+3}}\prod_w\chi(a_wx_0x^w).\tag{4.0.9}
+\]
+\textbf{4.1。}现在要具体说明这个“取值于\Term{characteristic-zero}{特征零}中的\Term{additive-character}{加性特征}”。自然会想直接取
+\[
+\chi:x\longmapsto\exp\bigl(2\pi i\operatorname{tr}_{\mathbf F_{q^\nu}/\mathbf F_p}(x)\bigr)
+=\xi_p^{\operatorname{tr}_{\mathbf F_{q^\nu}/\mathbf F_p}(x)}.\tag{4.1.0}
+\]
+\SourcePage{426}
+以 $\Omega$ 表示 $\mathbf Q_p$ 的\Term{algebraic-closure}{代数闭包}，以 $\operatorname{ord}$ 表示其\Term{valuation}{赋值}：
+\[
+\Omega=\overline{\mathbf Q}_p,\tag{4.1.1}
+\]
+\[
+\operatorname{ord}:\Omega^*\longrightarrow\mathbf Q
+\quad\text{为赋值，归一化为 }\operatorname{ord}(p)=1,\tag{4.1.2}
+\]
+\[
+\xi_p\in\Omega\quad\text{为一个本原 }p\text{ 次单位根}.\tag{4.1.3}
+\]
+可以看到（参见 [2]），存在
+\[
+\pi\in\mathbf Q_p(\xi_p),\qquad\operatorname{ord}(\pi)=\frac1{p-1},\tag{4.1.4}
+\]
+使得
+\[
+\sum_{n\ge0}\frac{\pi^{p^n}}{p^n}=0.\tag{4.1.5}
+\]
+（注意：立即可见左端在 $\mathbf Q_p(\xi_p)$ 中收敛。）定义 \Term{artin-hasse-exponential}{Artin--Hasse 指数}
+\[
+E(X)=\exp\left(\sum_{n\ge0}\frac{X^{p^n}}{p^n}\right)\in\mathbf Q_p[[X]],\tag{4.1.6}
+\]
+奇妙的是，它实际上属于 $\mathbf Z_p[[X]]$。再定义
+\[
+\Theta(X)=E(\pi X),\tag{4.1.7}
+\]
+其基本性质归纳如下。
+\begin{SGAresult}{\Term{lemma}{引理}}{4.2}
+\[
+\Theta(X)=\sum B_nX^n,\qquad B_0=1,\quad A_1=\pi,\quad
+\operatorname{ord}(B_n)\ge\frac n{p-1}.\tag{4.2.1}
+\]
+\[
+\Theta(1)=\xi_p,\quad\text{为一个本原 }p\text{ 次单位根}.\tag{4.2.2}
+\]
+设 $t\in\Omega$，且对某个给定的整数 $a>0$，有 $t=t^{p^a}$（即 $t$ 为 $W(\mathbf F_{q^a})\subset\Omega$ 中的一个“\Term{teichmuller-representative}{Teichmüller 代表}”）。则
+\[
+\sum_{j=0}^{a-1}t^{p^j}\in\mathbf Z_p,\tag{4.2.3}
+\]
+因而可以定义\Term{formal-power-series}{形式幂级数} $(\Theta(X))^{\sum_{j=0}^{a-1}t^{p^j}}$，并有\Term{formal-power-series}{形式幂级数}恒等式
+\SourcePage{427}
+\[
+\prod_{j=0}^{a-1}\Theta(t^{p^j}X)
+=(\Theta(X))^{\sum_{j=0}^{a-1}t^j}.\tag{4.2.3.1}
+\]
+\end{SGAresult}
+\begin{proof}
+由于 $E(X)\in\mathbf Z_p[[X]]$，(4.2.1) 由定义即得。至于 (4.2.2)，由 $\pi$ 的选取 (4.1.5)，有
+\[
+\log(\Theta(1))=0,\tag{4.2.4}
+\]
+而由 (4.2.1)，有
+\[
+\operatorname{ord}(\Theta(1)-1)=\frac1{p-1}.\tag{4.2.5}
+\]
+由 (4.2.4)，存在整数 $n\ge0$，使 $\Theta(1)^{p^n}=1$（这就是对数的核的刻画）；(4.2.5) 则\Term{pushout}{推出} $n=1$。至于 (4.2.3.1)，只要证明 $\sum_{j=0}^{a-1}t^{p^j}\in\mathbf Z_p$，取对数后便由直接计算得到。立即可见，$t^{p^j}$（$0\le j\le a-1$）为 $t\in W(\mathbf F_{q^a})$ 在 $\mathbf Z_p$ 上的\Term{conjugacy}{共轭}元，故
+\[
+\sum_{j=0}^{a-1}t^{p^j}=\operatorname{Tr}_{W(\mathbf F_{q^a})/\mathbf Z_p}(t)\in\mathbf Z_p.
+\]
+\end{proof}
+在 (4.2.3.1) 两端取 $X=1$，便得到：
+\begin{SGAresult}{推论}{4.3}
+设 $t\in\Omega$ 满足 $t^{p^a}=t$，以 $\bar t\in\mathbf F_{p^a}$ 表示其\Term{residue-class}{剩余类}，则
+\[
+\prod_{j=0}^{a-1}\Theta(t^{p^j})
+=\xi_p^{\operatorname{tr}_{\mathbf F_{p^a}/\mathbf F_p}(\bar t)}.\tag{4.3.1}
+\]
+\end{SGAresult}
+\SourcePage{428}
+\textbf{4.4。}回忆 $\mathbf Q_p(\xi_p)$ 的\Term{ring-of-integers}{整数环}的\Term{residue-field}{剩余域}为 $\mathbf F_p$。令
+\[
+K=\mathbf Q_p(\xi_p)\text{ 的剩余域为 }\mathbf F_q\text{ 的非分歧扩张},\tag{4.4.0}
+\]
+\[
+\tau\in\operatorname{Gal}(K/\mathbf Q_p(\xi_p))\quad\text{为“Frobenius”},\tag{4.4.1}
+\]
+即\Term{reduced}{约化}为 $\mathbf F_q/\mathbf F_p$ 的 Frobenius \Term{automorphism}{自同构} $x\mapsto x^p$ 的\Term{automorphism}{自同构}。设
+\[
+F(X)=\sum_w A_wX^w\in K[X_1,\ldots,X_{n+2}]\tag{4.4.2}
+\]
+为 $f(X)$ 的\Term{lifting}{提升}，其系数满足 $A_w^q=A_w$。结合 (4.3.1)、(4.0.9) 以及 $\chi$ 的定义 (4.1.0)，得到
+\[
+\begin{aligned}
+{}&(q^\nu-1)\operatorname{card}V^*(\mathbf F_{q^\nu})-\frac{(q^\nu-1)^{n+2}}{q^\nu}\\
+&\quad=\frac1{q^\nu}\sum_{(x_0,x)\in(\mu_{q^\nu-1}(\Omega))^{n+3}}
+\prod_w\prod_{j=0}^{\operatorname{ord}(q^\nu)-1}
+\Theta(A_w^{p^j}x_0^{p^j}x^{p^jw}).
+\end{aligned}\tag{4.4.3}
+\]
+定义 $H(X)=H(X_0,\ldots,X_{n+2})\in K[[X_0,\ldots,X_{n+2}]]$ 为
+\[
+H(X)=\prod_w\Theta(A_wX_0X_1^{w_1}\cdots X_{n+2}^{w_{n+2}}).\tag{4.4.4}
+\]
+令 $\operatorname{Gal}(K/\mathbf Q_p(\xi_p))$ 通过对系数的\Term{action}{作用}而\Term{action}{作用}于 $K[[X_0,\ldots,X_{n+2}]]$；$\sigma\in\operatorname{Gal}(K/\mathbf Q_p(\xi_p))$ 的\Term{action}{作用}记为
+\[
+G(X)\longmapsto G^\sigma(X).\tag{4.4.5}
+\]
+\SourcePage{429}
+特别地，
+\[
+H^{\tau^j}(X)=\prod_w\Theta(A_w^{\tau^j}X_0X_1^{w_1}\cdots X_{n+2}^{w_{n+2}}).
+\]
+由于 $A_w^{\tau^j}=A_w^{p^j}$，(4.4.3) 可改写为
+\[
+\begin{aligned}
+(q^\nu-1)\operatorname{card}V^*(\mathbf F_{q^\nu})
+={}&\frac{(q^\nu-1)^{n+2}}{q^\nu}\\
+&+\frac1{q^\nu}\sum_{(x_0,x)\in(\mu_{q^\nu-1}(\Omega))^{n+3}}
+\prod_{j=0}^{\operatorname{ord}(q^\nu)-1}H^{\tau^j}(x^{p^j}).
+\end{aligned}\tag{4.4.6}
+\]
+\textbf{4.5。}现在把 (4.4.6) 中的和表示为\Term{trace}{迹}。对每个 $b\in\mathbf Q$，定义一个 $p$ 进 \Term{banach-algebra}{Banach 代数}：
+\[
+L(b)=K[[X_0,\ldots,X_{n+2}]]\text{ 中由下述级数组成的子环},\tag{4.5.1}
+\]
+这些\Term{formal-power-series}{形式幂级数}形如
+\[
+\sum_{dU_0=\sum_{i\ge1}U_i}B_UX_0^{U_0}X_1^{U_1}\cdots X_{n+2}^{U_{n+2}},
+\qquad U=(U_0,\ldots,U_{n+2}),\tag{4.5.2}
+\]
+且满足
+\[
+\inf_U(\operatorname{ord}(B_U)-bU_0)>-\infty.\tag{4.5.3}
+\]
+对如下\Term{valuation}{赋值}函数（即\Term{norm}{范数}对数的相反数），它是一个 $p$ 进\Term{banach-algebra}{Banach 代数}：
+\[
+\inf_U(\operatorname{ord}(B_U)-bU_0)=\operatorname{ord}\left(\sum B_UX^U\right).\tag{4.5.4}
+\]
+由 (4.4.4) 和 (4.2.1) 可验证
+\[
+H(X)\in L\left(\frac1{p-1}\right).
+\]
+\SourcePage{430}
+引入一些\Term{operator}{算子}。对每个整数 $k>0$，引入 $K$ 上\Term{banach-space}{Banach 空间}的\Term{continuous}{连续}\Term{operator}{算子}
+\[
+\begin{aligned}
+\Psi_k:L(b)&\longrightarrow L(kb),\\
+\Psi_k\left(\sum B_UX^U\right)&=\sum B_{kU}X^U.
+\end{aligned}\tag{4.5.5}
+\]
+对每对 $(b,b')$，$b'<b$，有一个“\Term{restriction}{限制}”\Term{operator}{算子}，它是\Term{completely-continuous}{完全连续}的（即\Term{finite-rank-operator}{有限秩算子}的一致\Term{limit}{极限}）：
+\[
+\begin{aligned}
+L(b)&\xrightarrow{\text{“限制”}}L(b'),\\
+\sum B_UX^U&\longmapsto\sum B_UX^U.
+\end{aligned}\tag{4.5.6}
+\]
+\Term{algebra}{代数} $L(b)$ 的每个元素 $G$ 给出乘以 $G$ 的\Term{continuous}{连续}\Term{endomorphism}{自同态}
+\[
+\begin{aligned}
+G:L(b)&\longrightarrow L(b),\\
+\eta&\longmapsto\eta G.
+\end{aligned}\tag{4.5.7}
+\]
+这些\Term{operator}{算子}之间有如下\Term{lemma}{引理}所述的关系，其证明见 [2]（亦参见 [4]）。
+\SourcePage{431}
+\begin{SGAresult}{\Term{lemma}{引理}}{4.5.8（Dwork 迹\Term{lemma}{引理}）}
+设 $b\in\mathbf Q$，$b>0$，$k\in\mathbf Z$，$k\ge2$，且 $G\in L(b/k)$。则复合
+\[
+L(b)\xrightarrow{\text{“限制”}}L(b/k)\xrightarrow{\times G}L(b/k)\xrightarrow{\Psi_k}L(b),
+\]
+记作 $\Psi_k\circ G$，是\Term{completely-continuous}{完全连续}的，其\Term{trace}{迹}（参见 [4]）由下式给出：
+\[
+\operatorname{tr}(\Psi_k\circ G)=\frac1{(k-1)^{n+2}}
+\sum_{x\in(\mu_{k-1}(\Omega))^{n+3}}G(x).\tag{4.5.9}
+\]
+\end{SGAresult}
+把此\Term{lemma}{引理}用于
+\[
+k=q^\nu,\qquad G(X)=\prod_{j=0}^{\operatorname{ord}(q^\nu)-1}H^{\tau^j}(X^{p^j})
+\in L\left(\frac p{(p-1)q^\nu}\right),\qquad b=\frac1{p-1},
+\]
+则 (4.4.6) 可写成
+\[
+\begin{aligned}
+(q-1)\operatorname{card}V^*(\mathbf F_{q^\nu})
+={}&\frac{(q^\nu-1)^{n+2}}{q^\nu}\\
+&+\frac{(q^\nu-1)^{n+3}}{q^\nu}\operatorname{tr}\left(
+\Psi_q\prod_{j=0}^{\operatorname{ord}(q^\nu)-1}H^{\tau^j}(X^{p^j})\,\middle|\,
+L\left(\frac1{p-1}\right)\right).
+\end{aligned}\tag{4.5.10}
+\]
+令 $L^\circ(b)$ 为 $L(b)$ 中“在 $0$ 处为零”，即“没有常数项”的元素所成的\Term{ideal}{理想}。它在 $\Psi_k\circ G$ 下\Term{stable}{稳定}，且显然有
+\[
+\operatorname{tr}(\Psi_k\circ G)=G(0)+\operatorname{tr}(\Psi_k\circ G\mid L^\circ).\tag{4.5.11}
+\]
+由于 $H(0)=1$，(4.5.10) 改写为
+\[
+\begin{aligned}
+\operatorname{card}V^*(\mathbf F_{q^\nu})
+={}&(q^\nu-1)^{n+1}\\
+&+\frac{(q^\nu-1)^{n+2}}q\operatorname{tr}\left(
+\Psi_q\prod_{j=0}^{\operatorname{ord}(q^\nu)-1}H^{\tau^j}(X^{p^j})\,\middle|\,
+L^\circ\left(\frac1{p-1}\right)\right).
+\end{aligned}\tag{4.5.12}
+\]
+\SourcePage{432}
+现在考虑 $\tau^{-1}$-\Term{linear}{线性}\Term{operator}{算子}
+\[
+\tau^{-1}\circ\Psi_p\circ H(X):L(b)\longrightarrow L(b).\tag{4.5.13}
+\]
+其迭代由下式给出：
+\[
+(\tau^{-1}\circ\Psi_p\circ H(X))^a
+=\tau^{-a}\circ\Psi_{p^a}\circ H(X)H^\tau(X^p)\cdots H^{\tau^{a-1}}(X^{p^{a-1}}).\tag{5.4.14}
+\]
+注意，若 $\operatorname{ord}(q)\mid a$，则 $\tau^{-a}=\mathrm{id}$。据此定义 $\tau^{-1}$-\Term{linear}{线性}运算
+\[
+\begin{aligned}
+\alpha:L^\circ\left(\frac1{p-1}\right)&\longrightarrow L^\circ\left(\frac1{p-1}\right),\\
+\alpha&=\frac1p\tau^{-1}\circ\Psi_p\circ H(X).
+\end{aligned}\tag{4.5.15}
+\]
+于是 (4.5.12) 改写成
+\[
+\operatorname{card}V^*(\mathbf F_{q^\nu})=(q^\nu-1)^{n+1}
++(q^\nu-1)^{n+2}\operatorname{tr}\left(\alpha^{\operatorname{ord}(q^\nu)}\,\middle|\,
+L^\circ\left(\frac1{p-1}\right)\right).\tag{4.5.16}
+\]
+记
+\[
+S=\{1,\ldots,n+2\}.\tag{4.5.17}
+\]
+对每个\Term{nonempty}{非空}\Term{subset}{子集} $A\subset S$，定义 $L(b)$ 的一个\Term{vector-subspace}{子空间}：
+\[
+\begin{split}
+L^A(b)=\bigl\{\textstyle\sum B_UX^U\in L(b):\;&\text{对每个 }B_U\ne0\text{ 的单项式 }X^U,\\
+&U_i>0\text{ 恰好发生于 }U_0\text{ 及 }U_j\ (j\in A)\bigr\}.
+\end{split}\tag{4.5.18}
+\]
+有
+\[
+L^\circ(b)=\bigoplus_{\substack{A\subset S\\A\ne\varnothing}}L^A(b).\tag{4.5.19}
+\]
+\SourcePage{433}
+而对每个\Term{nonempty}{非空}\Term{subset}{子集} $B\subset S$，有
+\[
+\bigoplus_{A\supset B}L^A(b)
+=L(b)\cap\left(\prod_{i\in B}X_i\right)K[[X]].\tag{4.5.20}
+\]
+显然，每个\Term{vector-subspace}{子空间} $\bigoplus_{A\supset B}L^A(b)$ 都在 $\alpha$ 下\Term{stable}{稳定}；因而 $\bigoplus_{A\supsetneq B}L^A(b)$ 也是如此，因为它是上述类型\Term{vector-subspace}{子空间}的和。定义
+\[
+\begin{split}
+\alpha_B={}&\alpha\text{ 在下述空间上诱导的 }\tau^{-1}\text{-线性自同态：}\\
+&\left(\bigoplus_{A\supset B}L^A\left(\frac1{p-1}\right)\right)
+\Big/\left(\bigoplus_{A\supsetneq B}L^A\left(\frac1{p-1}\right)\right)
+\simeq L^B\left(\frac1{p-1}\right).
+\end{split}\tag{4.5.21}
+\]
+显式地，$\alpha_B$ 由公式
+\[
+\alpha_B=\frac{\tau^{-1}}p\Psi_pH_B(X)\tag{4.5.22}
+\]
+给出，且 $L^B$ 在此运算下\Term{stable}{稳定}；其中 $H_B(X)$ 由 $H(X)$ 将一切 $i\notin\{0\}\cup B$ 对应的 $X_i$ 代为 $0$ 而得。再把 (4.5.16) 改写为
+\[
+\operatorname{card}V^*(\mathbf F_{q^\nu})=(q^\nu-1)^{n+1}
++(q^\nu-1)^{n+2}\sum_{\substack{A\subset S\\A\ne\varnothing}}
+\operatorname{tr}(\alpha_A^{\operatorname{ord}(q^\nu)}).\tag{4.5.2.3}
+\]
+对\Term{nonempty}{非空} $A\subset S$，定义\Term{hypersurface}{超曲面}
+\[
+V_A\subset\mathbf P^{\operatorname{card}(A)-1}
+\simeq\mathbf P^{n+1}\cap\{X_i=0\quad\forall i\notin A\},\tag{4.5.24}
+\]
+其定义方程为 $f_A(X)$，即在 $f(X)$ 中对 $i\notin A$ 代入 $X_i=0$ 所得的\Term{polynomial}{多项式}。
+\SourcePage{434}
+由 $f(X)$ 构造级数 $H$ 的过程与把某些变量代为 $0$ 的运算相容。因此，对每个\Term{nonempty}{非空} $A\subset S$，(4.5.23) 给出
+\[
+\operatorname{card}V_A^*(\mathbf F_{q^\nu})
+=(q^\nu-1)^{\operatorname{card}(A)-1}
++(q^\nu-1)^{\operatorname{card}(A)}\sum_{B\subset A}\operatorname{tr}(\alpha_B^{\operatorname{ord}(q^\nu)}).\tag{4.5.25}
+\]
+另一方面，
+\[
+\operatorname{card}V(\mathbf F_{q^\nu})
+=\sum_{\substack{A\subset S\\A\ne\varnothing}}\operatorname{card}V_A^*(\mathbf F_{q^\nu}).\tag{4.5.26}
+\]
+经简单求和，(4.5.25) 给出
+\[
+\begin{aligned}
+\operatorname{card}V(\mathbf F_{q^\nu})
+={}&1+q^\nu+q^{2\nu}+\cdots+q^{\nu(\operatorname{card}(S)-1)}\\
+&+\sum_{\substack{B\subset S\\B\ne\varnothing}}
+(q^\nu-1)^{\operatorname{card}(B)}q^{\nu\operatorname{card}(S-B)}
+\operatorname{tr}(\alpha_B^{\operatorname{ord}(q^\nu)}).
+\end{aligned}\tag{4.5.27}
+\]
+注意，$\alpha_B$ 是 $\tau^{-1}$-\Term{linear}{线性}的，所以 $\alpha_B^{\operatorname{ord}(q)}$ 是 $K$-\Term{linear}{线性}的。于是定义\Term{characteristic-series}{特征级数} $\Delta_B(t)\in1+tK[[t]]$：
+\[
+\Delta_B(t)=\det\left(1-t\alpha_B^{\operatorname{ord}(q)}\,\middle|\,
+L^B\left(\frac1{p-1}\right)\right).\tag{4.5.28}
+\]
+引入 $1+tK[[t]]$ 的\Term{endomorphism}{自同态}
+\[
+\varphi:g(t)\longmapsto g^\varphi(t)=g(qt),\tag{4.5.29}
+\]
+以及
+\[
+\delta=1-\varphi:g(t)\longmapsto g^\delta(t)=g(t)/g(qt).\tag{4.5.30}
+\]
+\SourcePage{435}
+由于
+\[
+Z(t,V/\mathbf F_q)=\exp\left(\sum_{\nu\ge1}\operatorname{card}V(\mathbf F_{q^\nu})\frac{t^\nu}{\nu}\right),\tag{4.5.31}
+\]
+且
+\[
+\det(1-t\alpha_B^{\operatorname{ord}(q)})
+=\exp\left(-\sum_{\nu\ge1}\operatorname{tr}(\alpha_B^{\nu\operatorname{ord}(q)})\frac{t^\nu}{\nu}\right),\tag{4.5.32}
+\]
+故 (4.5.27) 可改写为
+\[
+Z(t,V/\mathbf F_q)\prod_{i=0}^{n+1}(1-q^it)
+=\prod_{j=1}^{n+2}\left(\prod_{\substack{B\subset S\\\operatorname{card}(B)=j}}\Delta_B(t)\right)^{-(-\delta)^j\varphi^{n+2-j}}.\tag{4.5.23}
+\]
+\textbf{4.6。}现在研究级数 $\Delta_B$ 的\Term{integrality}{整性}。令
+\[
+\mathscr O=K\text{ 的整数环},\tag{4.6.1}
+\]
+并在 $1+t\mathscr O[[t]]$ 上定义\Term{filtration}{滤过}
+\[
+F^i(1+t\mathscr O[[t]])=1+q^it\mathscr O[[q^it]]
+=\varphi^i(1+t\mathscr O[[t]]).\tag{4.6.2}
+\]
+有
+\[
+\varphi(F^i)\subset F^{i+1},\tag{4.6.3}
+\]
+\[
+\delta(F^i)\subset F^i,\tag{4.6.4}
+\]
+\[
+\delta\text{ 在 }F^i/F^{i+1}\text{ 上诱导恒等映射}.\tag{4.6.5}
+\]
+\begin{SGAresult}{\Term{lemma}{引理}}{4.6.6}
+有 $\Delta_B(t)\in1+t\mathscr O[[t]]$；若整数 $j$ 满足
+\[
+jd<\operatorname{card}(B),\tag{4.6.7}
+\]
+则
+\[
+\Delta_B\in F^j(1+t\mathscr O[[t]]).\tag{4.6.8}
+\]
+\end{SGAresult}
+\SourcePage{436}
+\begin{proof}
+\Term{banach-space}{Banach 空间} $L^B(1/(p-1))$ 都是 Serre [7] 意义下的“$B(I)$ 型”，即有“\Term{orthonormal-basis}{标准正交基}”，具体就是属于该\Term{space}{空间}的\Term{monomial}{单项式}
+\[
+\pi^{U_0}X_0^{U_0}X_1^{U_1}\cdots X_{n+2}^{U_{n+2}}.\tag{4.6.9}
+\]
+这里“\Term{orthonormal-basis}{标准正交基}”按定义意指
+\[
+\operatorname{ord}\left(\sum C_U\pi^{U_0}X_0^{U_0}\cdots X_{n+2}^{U_{n+2}}\right)
+=\min_U\operatorname{ord}(C_U).\tag{4.6.10}
+\]
+令
+\[
+R_B=L^B\left(\frac1{p-1}\right)\text{ 中由赋值 }\ge0\text{ 的元素组成的 }\mathscr O\text{-子模}.\tag{4.6.11}
+\]
+要证明此\Term{lemma}{引理}，只须证明
+\[
+jd<\operatorname{card}(B)\quad\Longrightarrow\quad
+\alpha_B^{\operatorname{ord}(q)}R_B\subset q^jR_B;\tag{4.6.12}
+\]
+更强地，只须证明
+\[
+jd<\operatorname{card}(B)\quad\Longrightarrow\quad\alpha_B(R_B)\subset p^jR_B.\tag{4.6.13}
+\]
+由 (4.5.22)，有
+\[
+\alpha_B=\frac{\tau^{-1}}p\Psi_p\circ H_B(X).\tag{4.6.14}
+\]
+由于
+\[
+H(X)\in L\left(\frac1{p-1}\right),\qquad\operatorname{ord}(H(X))\ge0,\tag{4.6.15}
+\]
+有
+\[
+H_B(X)\cdot R_B\subset R_B,\tag{4.6.16}
+\]
+并且显然
+\[
+\tau^{-1}(R_B)=R_B.\tag{4.6.17}
+\]
+\SourcePage{437}
+所以 (4.6.13) 将由下式\Term{pushout}{推出}：
+\[
+jd<\operatorname{card}(B)\quad\Longrightarrow\quad\Psi_p(R_B)\subset p^{j+1}R_B.\tag{4.6.18}
+\]
+逐个\Term{monomial}{单项式}验证 (4.6.18)。有
+\[
+\begin{gathered}
+\Psi_p(\pi^{U_0}X_0^{U_0}\cdots X_{n+2}^{U_{n+2}})=0,
+\quad\text{除非对每个 }i\text{ 都有 }p\mid U_i,\\
+\Psi_p(\pi^{pU_0}X_0^{pU_0}\cdots X_{n+2}^{pU_{n+2}})
+=\pi^{(p-1)U_0}\underbrace{\pi^{U_0}X_0^{U_0}\cdots X_{n+2}^{U_{n+2}}}_{\in R_B}.
+\end{gathered}\tag{4.6.19}
+\]
+而 $X_0^{U_0}\cdots X_{n+2}^{U_{n+2}}\in L^B(1/(p-1))$ 的条件是
+\[
+\begin{cases}
+dU_0=\sum_{i\ge1}U_i,\\
+\text{对 }i\ge1,\quad U_i>0\Longleftrightarrow i\in B.
+\end{cases}\tag{4.6.20}
+\]
+特别地，
+\[
+dU_0\ge\operatorname{card}(B).\tag{4.6.21}
+\]
+所以
+\[
+\operatorname{ord}(\pi^{(p-1)U_0})=U_0\ge\frac{\operatorname{card}(B)}d>j.\tag{4.6.22}
+\]
+又因为 $U_0\in\mathbf Z$，故
+\[
+\operatorname{ord}(\pi^{(p-1)U_0})=U_0\ge j+1.\tag{4.6.23}
+\]
+把这一点与 (4.6.19) 结合，就得到 (4.6.18)。
+\end{proof}
+\SourcePage{438}
+\SGAsection{5}{Ax 的一个定理}
+参见 [1]，亦参见 [4] 第 7 节。
+\begin{SGAresult}{\Term{theorem}{定理}}{5.0}
+设 $V$ 为定义在 $\mathbf F_q$ 上的 $\mathbf P^{n+1}$ 中的一个\Term{degree}{次数} $d>0$ 的\Term{hypersurface}{超曲面}，$j$ 为整数。若
+\[
+jd<n+2,\tag{5.0.1}
+\]
+则
+\[
+Z(t,V/\mathbf F_q)\prod_{i=0}^{n+1}(1-q^it)\in1+q^jt\mathbf Z[[q^jt]],\tag{5.0.2}
+\]
+并且
+\[
+Z(t,V/\mathbf F_q)\prod_{i=0}^{n+1}(1-q^it)\tag{5.0.3}
+\]
+的每个零点或极点的倒数都为 $q^j$ 乘以一个\Term{algebraic-integer}{代数整数}的\Term{form}{形式}。
+\end{SGAresult}
+\begin{SGAresult}{\Term{theorem}{定理}}{5.0.bis}
+设 $V_{\mathrm{aff}}$ 为 $\mathbf A^{n+2}$ 中由定义在 $\mathbf F_q$ 上的\Term{degree}{次数}为 $d$ 的\Term{homogeneous-polynomial}{齐次式}定义的\Term{hypersurface}{超曲面}。若
+\[
+jd<n+2,\tag{5.0.7}
+\]
+则
+\[
+Z(t,V_{\mathrm{aff}}/\mathbf F_q)\in1+q^jt\mathbf Z[[q^jt]].\tag{5.0.5}
+\]
+特别地，
+\[
+\operatorname{card}(V_{\mathrm{aff}}(\mathbf F_q))\equiv0\pmod{q^j},\tag{5.0.6}
+\]
+从而
+\[
+\operatorname{card}(V(\mathbf F_q))\ge\frac{q^j-1}{q-1}>0.\tag{5.0.6 bis}
+\]
+（这改进了 Chevalley--Warning \Term{theorem}{定理} [8]。）
+\end{SGAresult}
+\SourcePage{439}
+\begin{proof}
+取\Term{zeta-function}{zeta 函数}中 $t$ 的系数，即可看出 (5.0.5) 蕴含 (5.0.6)。断言 (5.0.4) 与 (5.0.2) \Term{equivalence}{等价}，因为
+\[
+\operatorname{card}V_{\mathrm{aff}}(\mathbf F_{q^\nu})
+=1+(q^\nu-1)\operatorname{card}V(\mathbf F_{q^\nu}),\tag{5.0.7}
+\]
+故
+\[
+Z(t,V_{\mathrm{aff}}/\mathbf F_q)=\frac{Z(t,V/\mathbf F_q)}{Z(qt,V/\mathbf F_q)(1-t)},\tag{5.0.8}
+\]
+且
+\[
+Z(t,V/\mathbf F_q)=\prod_{i\ge0}\bigl[(1-q^it)Z(q^it,V_{\mathrm{aff}}/\mathbf F_q)\bigr].\tag{5.0.9}
+\]
+再由 Fatou \Term{theorem}{定理} [3] 及\Term{zeta-function}{zeta 函数}的有理性，(5.0.2) 与 (5.0.3) 也\Term{equivalence}{等价}。由于
+\[
+Z(t,V/\mathbf F_q)\in\mathbf Z[[t]],\tag{5.0.10}
+\]
+只须证明
+\[
+Z(t,V/\mathbf F_q)\prod_{i=0}^{n+1}(1-q^it)\in F^j(1+t\mathscr O[[t]]).\tag{5.0.11}
+\]
+由 (4.5.33) 及 (4.6.4)--(4.6.5)，只须对\Term{nonempty}{非空} $B\subset\{1,\ldots,n+2\}$ 证明
+\[
+\Delta_B(t)\in F^{j+\operatorname{card}(B)-(n+2)}.\tag{5.0.12}
+\]
+只要证明如下断言，便可应用\Term{lemma}{引理} (4.4.6) 完成证明：
+\[
+jd<n+2\quad\Longrightarrow\quad
+(j+\operatorname{card}(B)-(n+2))d<\operatorname{card}(B).\tag{5.0.13}
+\]
+它可改写为
+\SourcePage{440}
+\[
+jd<n+2\quad\Longrightarrow\quad(j-(n+2))d<\operatorname{card}(B)(1-d).\tag{5.0.14}
+\]
+但
+\[
+\inf_{\substack{B\subset\{1,\ldots,n+2\}\\B\ne\varnothing}}
+\operatorname{card}(B)(1-d)=(n+2)(1-d),
+\]
+所以只须证明
+\[
+jd<n+2\quad\Longrightarrow\quad(j-(n+2))d<(n+2)(1-d),\tag{5.0.15}
+\]
+而这确实成立。
+\end{proof}
+\textbf{注记 5.1。}条件
+\[
+jd<n+2\tag{5.1.1}
+\]
+有一个\Term{cohomology}{上同调}解释。设 $V$ 为\Term{degree}{次数} $d$、\Term{dimension}{维数} $n$ 的\Term{smooth}{光滑}\Term{hypersurface}{超曲面}。与第 XI 讲 2.1 一样，对 $a+b=n$，置
+\[
+h_0^{a,b}=\dim H^b(V,\Omega_V^a)-\delta_{a,b}=\dim E^{a,b}(V),\tag{5.1.2}
+\]
+其中 $E^{a,b}(V)$ 为“\Term{vanishing-hodge-cohomology}{消失 Hodge 上同调}”的\Term{bidegree}{双次数} $(a,b)$ \Term{set-component}{分量}（比较第 XVII 讲 5.4.4）：
+\[
+E^{a,b}(V)=\operatorname{Coker}\left(H^b(\mathbf P^{n+1},\Omega_{\mathbf P^{n+1}}^a)
+\hookrightarrow H^b(V,\Omega_V^a)\right).\tag{5.1.3}
+\]
+于是，由第 XI 讲 2.8，
+\[
+jd<n+2\quad\Longleftrightarrow\quad
+\bigl[h_0^{a,n-a}=0\text{，当 }a<j\text{ 及 }a>n-j\bigr].\tag{5.1.4}
+\]
+也就是说，这一条件意味着 $V$ 的“\Term{vanishing-hodge-cohomology}{消失 Hodge 上同调}”
+\SourcePage{441}
+\[
+E_{\mathrm{DR}}^n(V)=\operatorname{Coker}\left(H_{\mathrm{Hdg}}^n(\mathbf P^{n+1})
+\hookrightarrow H_{\mathrm{Hdg}}^n(V)\right)
+\]
+的“\Term{hodge-level}{Hodge 水平}”（第 XI 讲 2.7）$\le n-2j$，即其\Term{hodge-coniveau}{Hodge 余层次} $\ge j$。另一方面，结论也意味着 Frobenius $\mathfrak F_q$ 在 $\ell$ 进\Term{vanishing-cohomology}{消失上同调}（$\ell\ne p$）上的\Term{eigenvalue}{特征值}是被 $q^j$ 整除的\Term{algebraic-integer}{代数整数}（第 XXI 讲 A.2）。因此 Ax 的结果 5.0 支持如下猜想；这一猜想由\Term{motive}{动机}\Term{level}{层次}的思想所提示，把经典的 Hodge 猜想 [5] 与 Tate 猜想 [5] 联系起来。
+\begin{SGAresult}{猜想}{5.2}
+设 $f:X\to S$ 为\Term{proper}{固有}\Term{smooth-morphism}{光滑态射}，$S$ 为 $\operatorname{Spec}(\mathbf Z)$ 上\Term{finite-type}{有限型}、\Term{dominant}{支配} $\operatorname{Spec}(\mathbf Z)$ 的\Term{integral-scheme}{整概形}，$i,j$ 为整数。假设 $f$ 的\Term{generic-fibre}{一般纤维}的 $H^i$ 的\Term{hodge-coniveau}{Hodge 余层次} $\ge j$。则对每个点 $s\in S$，$H^i(X_{\bar s},\mathbf Q_\ell)$ 的\Term{coniveau}{余层次}（第 XX 讲 2.0.6）$\ge j$；从而（第 XX 讲 2.2），若 $s$ 为 $S$ 的\Term{closed-point}{闭点}，则 Frobenius 在 $H^i(X_{\bar s},\mathbf Q_\ell)$ 上的\Term{eigenvalue}{特征值}是被 $q^j$ 整除的\Term{algebraic-integer}{代数整数}，其中 $q=\operatorname{card}(k(s))$。
+\end{SGAresult}
+\SGAsection{6}{完成同余公式的证明}
+由 (4.6.6) 和 (4.6.3)--(4.6.4)，(4.5.24) 给出如下同余公式：
+\[
+Z(t,V/\mathbf F_q)(1-t)\equiv\Delta_S(t)^{(-1)^{n+1}}
+\pmod{1+qt\mathscr O[[t]]}.\tag{6.0.1}
+\]
+下面模 $\pi\mathscr O[[t]]$ 计算 $\Delta_S(t)$。定义（参见 (4.6.11)）
+\[
+W_S=R_B\otimes_{\mathscr O}\mathbf F_q,\tag{6.0.2}
+\]
+\SourcePage{442}
+\[
+\bar\alpha_S:W_S\longrightarrow W_S\quad\text{为 }\alpha_S\text{ 诱导的 }\tau^{-1}\text{-线性运算},\tag{6.0.3}
+\]
+\[
+R_S(i)=R_S\text{ 中关于 }X_0\text{ 次数为 }i\text{ 的元素组成的子模},\tag{6.0.4}
+\]
+\[
+W_S(i)=R_S(i)\otimes_{\mathscr O}\mathbf F_q.\tag{6.0.5}
+\]
+\begin{SGAresult}{命题}{6.0.6}
+有包含关系
+\[
+\alpha_S(R_S)\subset R_S(1)+pR_S.
+\]
+\end{SGAresult}
+\begin{proof}
+有\Term{resolution}{分解}式 (4.6.14)
+\[
+\alpha_S=\tau^{-1}\circ\frac1p\Psi_p\circ H(X).\tag{6.0.7}
+\]
+已知（参见 (4.6.15)）
+\[
+H(X)\cdot R_S\subset R_S,\tag{6.0.8}
+\]
+而显然
+\[
+\tau^{-1}(R_S(1)+pR_S)=R_S(1)+pR_S.\tag{6.0.9}
+\]
+所以只须验证
+\[
+\frac1p\Psi_pR_S\subset R_S(1)+pR_S,\tag{6.0.10}
+\]
+而这由 (4.6.19) 显然成立。
+\end{proof}
+\begin{SGAresult}{推论}{6.0.11}
+有包含关系
+\[
+\bar\alpha_SW_S\subset W_S(1).
+\]
+\end{SGAresult}
+\SourcePage{443}
+\begin{SGAresult}{推论}{6.0.12}
+有同余式
+\[
+\Delta_S(t)\equiv\det(1-t(\bar\alpha_S)^{\operatorname{ord}(q)}\mid W_S(1))
+\pmod{\pi\mathscr O[[t]]}.
+\]
+\end{SGAresult}
+\begin{SGAresult}{命题}{6.1}
+$\tau^{-1}$-\Term{linear}{线性}运算 $\bar\alpha_S:W_S(1)\to W_S(1)$ 等于运算
+\[
+\tau^{-1}\Psi_p\circ(X_0f(X))^{p-1}.\tag{6.1.1}
+\]
+\end{SGAresult}
+\begin{proof}
+写成
+\[
+H(X)=1+\sum_{i\ge1}H_i(X),\tag{6.1.2}
+\]
+其中
+\[
+H_i(X)\text{ 关于 }X_0\text{ 的次数为 }i.\tag{6.1.3}
+\]
+再由 (4.6.19)，有
+\[
+\frac1p\Psi_pR_S(i)\subset pR_S\quad\text{若 }i\ne p.\tag{6.1.4}
+\]
+由于
+\[
+H_i(X)\cdot R_S(j)\subset R_S(i+j),\tag{6.1.5}
+\]
+故
+\[
+\left(\alpha_S-\frac{\tau^{-1}}p\Psi_pH_{p-1}(X)\right)(R_S(1))\subset pR_S.\tag{6.1.6}
+\]
+所以
+\[
+\left[(\alpha_S)^{\operatorname{ord}(q)}-
+\left(\frac{\tau^{-1}}p\Psi_pH_{p-1}(X)\right)^{\operatorname{ord}(q)}\right]R_S(1)
+\subset pR_S.\tag{6.1.7}
+\]
+现在计算 $H_{p-1}(X)$。由 (4.4.4)，有
+\SourcePage{444}
+\[
+\begin{aligned}
+H(X)&=\prod_w\Theta(A_wX_0X^w)\\
+&=\prod_w\exp\left(\sum_{n\ge0}\frac{(\pi A_wX_0X^w)^{p^n}}{p^n}\right)\\
+&=\prod_w\prod_{n\ge0}\exp\left(\frac{(\pi A_wX_0X^w)^{p^n}}{p^n}\right)\\
+&\equiv\prod_w\exp(\pi A_wX_0X^w)\pmod{\text{次数 }p}\\
+&\equiv\exp\left(\pi\sum_wA_wX_0X^w\right)\pmod{\text{次数 }p}\\
+&\equiv\exp(\pi X_0F(X))\pmod{\text{次数 }p}.
+\end{aligned}\tag{6.1.8}
+\]
+因而
+\[
+H_{p-1}(X)=\frac{\pi^{p-1}X_0^{p-1}}{(p-1)!}F(X)^{p-1}.\tag{6.1.9}
+\]
+容易看出
+\[
+\frac{\pi^{p-1}}p\equiv-1\pmod p,\tag{6.1.10}
+\]
+所以
+\[
+\frac1pH_{p-1}(X)\equiv(X_0f(X))^{p-1}\pmod p,\tag{6.1.11}
+\]
+这就完成了 6.1 的证明。
+\end{proof}
+\begin{SGAresult}{推论}{6.1.12}
+\Term{linear}{线性}\Term{operator}{算子}
+\[
+(\bar\alpha_S)^{\operatorname{ord}(q)}:W_S(1)\longrightarrow W_S(1)
+\]
+就是 $\Psi_q\circ(X_0f(X))^{q-1}$。
+\end{SGAresult}
+\SourcePage{445}
+\begin{proof}
+由 (6.1.1)，
+\[
+\begin{aligned}
+(\bar\alpha_S)^{\operatorname{ord}(q)}
+&=(\tau^{-1}\Psi_p\circ(X_0f(X))^{p-1})^{\operatorname{ord}(q)}\\
+&=\Psi_q\prod_{j=0}^{\operatorname{ord}(a)-1}
+\bigl(X_0^{p^j}f^{\tau^j}(X^{p^j})\bigr)^{p-1}\\
+&=\Psi_q\prod_{j=0}^{\operatorname{ord}(q)-1}(X_0f(X))^{p^j(p-1)}\\
+&=\Psi_q\circ(X_0f(X))^{q-1}.
+\end{aligned}
+\]
+\end{proof}
+结合 (6.1.12)、(6.0.12) 及 (6.0.1)，得到：
+\begin{SGAresult}{推论}{6.1.13}
+有模 $p$ 的同余式
+\[
+Z(t,V/\mathbf F_q)\equiv
+\frac{\det(1-t\Psi_q(X_0f(X))^{q-1}\mid W_S(1))^{(-1)^{n+1}}}{1-t}.
+\]
+\end{SGAresult}
+\textbf{6.2。}剩下要计算 $\mathscr O_V$ 的\Term{cohomology-group}{上同调群}。置
+\[
+\mathfrak F_q=\mathscr O_V\text{ 中的“取 }q\text{ 次幂”运算}.\tag{6.2.1}
+\]
+在 $\mathbf P^{n+1}=\mathbf P$ 上有\Term{sheaf}{层}的\Term{exact-sequence}{正合列}
+\[
+0\longrightarrow\mathscr O_{\mathbf P}(-d)\xrightarrow{f}\mathscr O_{\mathbf P}
+\longrightarrow\mathscr O_V\longrightarrow0,\tag{6.2.2}
+\]
+且下图交换：
+\[
+\begin{tikzcd}[column sep=large]
+0\arrow[r]&\mathscr O_{\mathbf P}(-d)\arrow[r,"f"]\arrow[d,"f^{q-1}\mathfrak F_q"']
+&\mathscr O_{\mathbf P}\arrow[r]\arrow[d,"\mathfrak F_q"]
+&\mathscr O_V\arrow[r]\arrow[d,"\mathfrak F_q"]&0\\
+0\arrow[r]&\mathscr O_{\mathbf P}(-d)\arrow[r,"f"]&\mathscr O_{\mathbf P}\arrow[r]&\mathscr O_V\arrow[r]&0
+\end{tikzcd}\tag{6.2.3}
+\]
+\SourcePage{446}
+由于
+\[
+\begin{cases}
+H^0(\mathbf P^{n+1},\mathscr O_{\mathbf P})\simeq\mathbf F_q,\\
+H^i(\mathbf P^{n+1},\mathscr O_{\mathbf P})=0& i\ne0,\\
+H^i(\mathbf P^{n+1},\mathscr O_{\mathbf P}(-d))=0& i\ne0,n+1,
+\end{cases}\tag{6.2.4}
+\]
+由 (6.2.2) 的\Term{long-exact-sequence}{上同调长正合列}，得到
+\[
+\begin{cases}
+H^0(V,\mathscr O_V)\simeq\mathbf F_q,\\
+H^i(V,\mathscr O_V)=0& i\ne0,n,\\
+H^n(V,\mathscr O_V)\simeq H^{n+1}(\mathbf P^{n+1},\mathscr O_{\mathbf P}(-d)).
+\end{cases}\tag{6.2.5}
+\]
+\Term{commutative-diagram}{交换图} (6.2.3) 因而给出
+\[
+\det(1-t\mathfrak F_q\mid H^0(V,\mathscr O_V))=1-t,\tag{6.2.6}
+\]
+以及
+\[
+\begin{split}
+&\det(1-t\mathfrak F_q\mid H^n(V,\mathscr O_V))\\
+&\qquad=\det(1-t(f^{q-1}\mathfrak F_q)\mid H^{n+1}(\mathbf P^{n+1},\mathscr O_{\mathbf P}(-d))).
+\end{split}\tag{6.2.7}
+\]
+只剩下要证明
+\[
+\begin{split}
+&\det(1-t(f^{q-1}\mathfrak F_q)\mid H^{n+1}(\mathbf P^{n+1},\mathscr O_{\mathbf P}(-d)))\\
+&\qquad=\det(1-t(\Psi_q\circ(X_0f(X))^{q-1})\mid W_S(1)),
+\end{split}\tag{6.2.8}
+\]
+这是下述命题的推论。
+\begin{SGAresult}{命题}{6.3}
+有\Term{isomorphism}{同构}
+\[
+W_S(1)\simeq\operatorname{Hom}_{\mathbf F_q}
+\bigl(H^{n+1}(\mathbf P^{n+1},\mathscr O_{\mathbf P}(-d)),\mathbf F_q\bigr),\tag{6.3.1}
+\]
+在此\Term{isomorphism}{同构}下，\Term{operator}{算子}
+\[
+\Psi_q\circ(X_0f(X))^{q-1}:W_S(1)\longrightarrow W_S(1)\tag{6.3.2}
+\]
+\SourcePage{447}
+是\Term{operator}{算子}
+\[
+f(X)^{q-1}\mathfrak F_q:
+H^{n+1}(\mathbf P^{n+1},\mathscr O_{\mathbf P}(-d))
+\longrightarrow H^{n+1}(\mathbf P^{n+1},\mathscr O_{\mathbf P}(-d))\tag{6.3.3}
+\]
+的\Term{transpose}{转置}。
+\end{SGAresult}
+\begin{proof}
+用 $\mathbf P^{n+1}$ 的标准\Term{covering}{覆盖}计算\Term{cohomology-group}{上同调群} $H^{n+1}(\mathbf P^{n+1},\mathscr O_{\mathbf P}(-d))$，得到
+\[
+\begin{aligned}
+{}&H^{i+1}(\mathbf P^{n+1},\mathscr O_{\mathbf P}(-d))\\
+&\quad=\text{以单项式 }X_1^{W_1}\cdots X_{n+2}^{W_{n+2}}\text{ 为基的 }\mathbf F_q\text{-向量空间，}\\
+&\qquad\qquad W_i\in\mathbf Z,\quad\sum W_i=-d,\\
+&\quad=\text{以还满足下列条件的单项式 }X_1^{W_1}\cdots X_{n+2}^{W_{n+2}}
+\text{ 为基的 }\mathbf F_q\text{-子空间：}\\
+&\qquad\qquad\exists i\text{ 使 }W_i\ge0.
+\end{aligned}\tag{6.3.4}
+\]
+另一方面，$W_S(1)=R_S(1)\otimes_{\mathscr O}\mathbf F_q$，并有
+\[
+\begin{split}
+R_S(i)={}&\text{以单项式 }(\pi X_0)X_1^{U_1}\cdots X_{n+2}^{U_{n+2}}
+\text{ 为基的自由 }\mathscr O\text{-模，}\\
+&\sum U_i=d,\quad U_i>0\quad\forall i.
+\end{split}\tag{6.3.5}
+\]
+由
+\[
+(\ ,\ ):W_S(1)\times H^{n+1}(\mathbf P^{n+1},\mathscr O_{\mathbf P}(-d))
+\longrightarrow\mathbf F_q\tag{6.3.6}
+\]
+和
+\[
+\begin{split}
+&\left(\pi X_0X_1^{U_1}\cdots X_{n+2}^{U_{n+2}}\text{ 的类},\ X_1^{W_1}\cdots X_{n+2}^{W_{n+2}}\right)\\
+&\qquad=\begin{cases}1&\text{对每个 }i\text{ 均有 }U_i=-W_i,\\0&\text{否则}\end{cases}
+\end{split}\tag{6.3.7}
+\]
+定义的\Term{pairing}{配对}显然为 $\mathbf F_q$-\Term{vector-space}{向量空间}的\Term{perfect-duality}{完美对偶}。容易看出 $\Psi_q\circ(X_0f(X))^{q-1}$ 为 $f(X)^{q-1}\mathfrak F_q$ 的\Term{transpose}{转置}，这就证明了 6.3。
+\end{proof}
+\SourcePage{448}
+\SGAsection{}{参考文献}
+\begin{enumerate}
+\item[{[1]}] AX, J.，\emph{\Term{finite-field}{有限域}上\Term{polynomial}{多项式}的零点}（Zeroes of Polynomials Over Finite Fields），Amer. J. Math. \textbf{86}，1964，255--261。
+\item[{[2]}] DWORK, B.，\emph{\Term{algebraic-variety}{代数簇} \Term{zeta-function}{zeta 函数}的有理性}（On the Rationality of the Zeta Function of an Algebraic Variety），Amer. J. Math. \textbf{82}，1960，631--648。
+\item[{[3]}] DWORK, B.，\emph{一个\Term{algebraic-variety}{代数簇}}（An Algebraic Variety），载 Proc. of the Woods-Hole Summer Institute 1964（油印本）。
+\item[{[4]}] DWORK, B.，\emph{\Term{hypersurface}{超曲面}的 \Term{zeta-function}{zeta 函数}，II}（On the Zeta Function of Hypersurface II），Ann. Math. (2)，\textbf{80}，1964，227--299。
+\item[{[5]}] GROTHENDIECK, A.，\emph{Brauer 群，III}（Le Groupe de Brauer III），载 \emph{\Term{scheme}{概形}\Term{cohomology}{上同调}十讲}（Dix Exposés sur la Cohomologie des Schémas），North Holland Pub. Co，1968。
+\item[{[6]}] SERRE, J.-P.，\emph{\Term{algebraic-group}{代数群}与类域}（Groupes Algébriques et Corps de Classes），Hermann，Paris，1959。
+\item[{[7]}] SERRE, J.-P.，\emph{$p$ 进 \Term{banach-space}{Banach 空间}的\Term{completely-continuous}{完全连续}\Term{endomorphism}{自同态}}（Endomorphismes Complètement Continus des Espaces de Banach p-Adiques），Pub. Math. I.H.E.S. 第 12 号，1962。
+\item[{[8]}] CHEVALLEY, C.，\emph{Artin 先生的一个假设的证明}（Démonstration d'une hypothèse de M. Artin），Abhandlungen Math. Sem. Hamburg，\textbf{11}，1936，73--75。
+\end{enumerate}

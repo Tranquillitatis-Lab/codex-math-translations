@@ -1,0 +1,716 @@
+\article{约化群}{Reductive groups}{T. A. Springer}{1}{3--27}
+本文综述约化群（reductive groups）理论，假定读者具备线性代数群（linear algebraic groups）的基础知识，大致相当于 Borel 在1965年 Boulder 会议报告 [2] 的第1--5节。\nobreak\footnote{原文 AMS（MOS）学科分类（1970）：主要 20G15、22E15。}
+
+第1、2节讨论约化群的“根数据”（root datum）概念，它对 $L$ 群理论十分重要。这些结果在现有文献中较为分散（Grothendieck--Demazure 讨论班 [17] 后半部分在更一般的框架下处理了这些问题），因此本文说明如何从已有系统论述的半单群理论推导这些结果。第3、4节回顾约化群的相对理论，内容与 [2，第6节] 有较多重合。
+
+第5节讨论一类有用的 Lie 群，即“自伴”（selfadjoint）群，并说明如何利用约化群的代数理论证明这类群的一些熟知性质。感谢 A. Borel 的宝贵建议，并感谢 J. J. Duistermaat 对第5节内容的评论。
+
+\origsection{1}{根数据与根系（Root data and root systems）}
+根数据是根系概念的一个小幅推广，在约化群理论中很有用。[17，报告 XXI] 以“donnée radicielle”之名引入了这一概念。下面简述其要点，细节见该文献；根系理论参阅 [7]。
+\origsubsection{1.1}{根数据（Root data）}
+根数据是四元组 $\Psi=(X,\Phi,X^\vee,\Phi^\vee)$：$X,X^\vee$ 是有限生成自由阿贝尔群，通过配对 $X\times X^\vee\to\Z$ 互为对偶；该配对记为 $\langle\,\cdot\,,\,\cdot\,\rangle$；$\Phi\subset X,\Phi^\vee\subset X^\vee$ 是有限子集，且有双射 $\alpha\mapsto\alpha^\vee$ 将二者对应。对 $\alpha\in\Phi$，分别定义 $X,X^\vee$ 的自同态
+\[
+ s_\alpha(x)=x-\langle x,\alpha^\vee\rangle\alpha,
+ \qquad s_{\alpha^\vee}(u)=u-\langle\alpha,u\rangle\alpha^\vee.
+\]
+要求满足两条公理：
+\begin{enumerate}
+\item[(RD1)] 对所有 $\alpha\in\Phi$，$\langle\alpha,\alpha^\vee\rangle=2$；
+\item[(RD2)] 对所有 $\alpha\in\Phi$，$s_\alpha(\Phi)\subset\Phi$，$s_{\alpha^\vee}(\Phi^\vee)\subset\Phi^\vee$。
+\end{enumerate}
+由(RD1)，$s_\alpha^2=\operatorname{id}$、$s_\alpha(\alpha)=-\alpha$，对 $s_{\alpha^\vee}$ 类似。由定义可见，若 $\Psi$ 为根数据，则 $\Psi^\vee=(X^\vee,\Phi^\vee,X,\Phi)$ 也为根数据，称为其对偶（dual）。
+
+令 $Q$ 为 $X$ 中由 $\Phi$ 生成的子群，$X_0$ 为与 $\Phi^\vee$ 正交的子群。令 $V=Q\otimes\Q$、$V_0=X_0\otimes\Q$。类似定义 $X^\vee$ 的子群 $Q^\vee,X_0^\vee$ 及向量空间 $V^\vee,V_0^\vee$。若 $X_0=\{0\}$，称 $\Psi$ 半单（semisimple）；若 $\Phi$ 为空，称其为环面型（toral）。
+\begin{originaltheorem}{1.2. 引理}
+$Q\cap X_0=\{0\}$，且 $Q+X_0$ 在 $X$ 中指数有限。
+\end{originaltheorem}
+\begin{proof}
+这一结果见 [17]。下面简述证明，先定义同态 $p:X\to X^\vee$ 为
+\[
+ p(x)=\sum_{\alpha\in\Phi}\langle x,\alpha^\vee\rangle\alpha^\vee.
+\]
+因为 $\langle x,p(x)\rangle=\sum_{\alpha\in\Phi}\langle x,\alpha^\vee\rangle^2$，有 $X_0=\ker p$。对 $\alpha\in\Phi$，有 $p(\alpha)=\tfrac12\langle\alpha,p(\alpha)\rangle\alpha^\vee$，它可由以下恒等式对 $\beta\in\Phi$ 求和得到：
+\[
+ \langle\alpha,\beta^\vee\rangle^2\alpha^\vee
+ =\langle\alpha,\beta^\vee\rangle\beta^\vee
+ +\langle\alpha,s_{\alpha^\vee}(\beta^\vee)\rangle s_{\alpha^\vee}(\beta^\vee).
+\]
+因此 $p\otimes\operatorname{id}:V\to V^\vee$ 为满射，$\dim V^\vee\le\dim V$。由对称性维数相等，故 $Q\cap\ker p=\{0\}$，结论随即得到。
+\end{proof}
+\origsubsection{1.3}{根系（Root systems）}
+由1.2的证明，$V^\vee$ 可识别为 $V$ 的对偶空间，仍用 $\langle\,\cdot\,,\,\cdot\,\rangle$ 表示配对。将 $\Phi$ 视为 $\Phi\otimes1\subset V$，并假定非空，则 $\Phi$ 是 [7] 意义下的根系，即：
+\begin{enumerate}
+\item[(RS1)] $\Phi$ 有限、张成 $V$，且 $0\notin\Phi$；
+\item[(RS2)] 对每个 $\alpha\in\Phi$，存在 $\alpha^\vee\in V^\vee$ 使 $\langle\alpha,\alpha^\vee\rangle=2$，且按前式定义的 $s_\alpha$ 保持 $\Phi$ 稳定；
+\item[(RS3)] 每个 $\alpha\in\Phi$ 均满足 $\alpha^\vee(\Phi)\subset\Z$。
+\end{enumerate}
+$s_\alpha$ 生成 $V$ 的一个有限线性变换群，称为 $\Phi$ 的 Weyl 群（Weyl group）$W(\Phi)$。
+
+若根数据 $\Psi=(X,\Phi,X^\vee,\Phi^\vee)$ 非环面型，则称 $\Phi\subset V$ 为 $\Psi$ 的根系。$W(\Phi)$ 可识别为1.1的 $s_\alpha$ 生成的 $X$ 自同构群，以及 $s_{\alpha^\vee}$ 生成的 $X^\vee$ 自同构群。下面的判据有时很有用。
+\begin{originaltheorem}{1.4. 引理}
+(RD2)等价于：(RD2$'$)(a) 对每个 $\alpha\in\Phi$，$s_\alpha(\Phi)\subset\Phi$；(b) 各 $s_\alpha$ 生成有限群。
+\end{originaltheorem}
+\begin{proof}
+只需从(RD2$'$)推出(RD2)的第二条。取 $\alpha,\beta\in\Phi$。$s_\alpha s_\beta s_\alpha$ 与 $s_{s_\alpha(\beta)}$ 都是所生成群中的对合。直接计算可得
+\[
+ s_{s_\alpha(\beta)}s_\alpha s_\beta s_\alpha(x)
+ =x+\bigl(\langle x,{}^ts_\alpha(\beta^\vee)\rangle
+ -\langle x,s_\alpha(\beta)^\vee\rangle\bigr)s_\alpha(\beta),
+\]
+其中 ${}^ts_\alpha$ 是转置。因
+\[
+ \langle s_\alpha(\beta),{}^ts_\alpha(\beta^\vee)\rangle
+ -\langle s_\alpha(\beta),s_\alpha(\beta)^\vee\rangle
+ =\langle\beta,\beta^\vee\rangle-\langle s_\alpha(\beta),s_\alpha(\beta)^\vee\rangle=0,
+\]
+上式自同构为幺幂（unipotent）。它属于有限群，故必为恒等。于是 $s_\alpha(\beta)^\vee={}^ts_\alpha(\beta^\vee)$；注意 $s_{\alpha^\vee}={}^ts_\alpha$ 即得结论。
+\end{proof}
+\origsubsection{1.5}{根系的性质（Properties of root systems）}
+设 $\Phi\subset V$ 为根系，下述性质的证明见 [7]。
+
+(a) 若 $\alpha,\lambda\alpha\in\Phi$，则 $\lambda=\pm1,\pm\tfrac12,\pm2$。若 $\Phi$ 中与任意 $\alpha$ 成比例的根只有 $\pm\alpha$，称根系约化（reduced）。由任意根系都可得到两个约化根系：在每对长度不同而方向相同的根中，统一保留较短者，或统一保留较长者。
+
+(b) 若 $V=V'\oplus V''$、$\Phi=\Phi'\cup\Phi''$，称 $\Phi$ 为根系 $\Phi'\subset V'$、$\Phi''\subset V''$ 的直和。不能分解为两个非空子根系直和的根系称为不可约（irreducible）。每个根系均为不可约根系的直和。
+
+(c) 约化不可约根系只有通常的 $A_n$（$n\ge1$）、$B_n$（$n\ge2$）、$C_n$（$n\ge3$）、$D_n$（$n\ge4$）、$E_6,E_7,E_8,F_4,G_2$。
+
+(d) 每个维数 $n$ 都有一个不可约非约化根系，记为 $BC_n$（见下）。
+
+\paragraph*{例。} (i) $B_n$。取 $V=\Q^n$，标准基 $\{e_1,\ldots,e_n\}$，则 $V^\vee=\Q^n$ 具有对偶基 $\{e_1^\vee,\ldots,e_n^\vee\}$。有
+\[
+ B_n=\{\pm e_i\pm e_j\ (i<j),\ \pm e_i\ (1\le i,j\le n)\}.
+\]
+若 $\alpha=\pm e_i\pm e_j$，则 $\alpha^\vee=\pm e_i^\vee\pm e_j^\vee$；若 $\alpha=\pm e_i$，则 $\alpha^\vee=\pm2e_i^\vee$。$W(B_n)$ 由以一切可能方式置换坐标并改变其符号的线性变换组成。$\alpha^\vee$ 组成 $C_n$ 型不可约根系，且 $W(C_n)\cong W(B_n)$。
+
+(ii) 同样记号下，$BC_n=\{\pm e_i\pm e_j\ (i<j),\ \pm e_i,\ \pm2e_i\ (1\le i,j\le n)\}$，且 $W(BC_n)=W(B_n)$。
+\origsubsection{1.6}{Weyl 室（Weyl chambers）}
+将根系 $\Phi\subset V$ 视为 $V_{\R}=V\otimes_{\Q}\R$ 的子集。与某个 $\alpha^\vee$ 正交的超平面称为奇异（singular）超平面。所有奇异超平面之并的补集的连通分支称为 Weyl 室 $C$。它确定根的一个次序：$\alpha>0$ 当且仅当对所有 $x\in C$ 都有 $\langle x,\alpha^\vee\rangle>0$。
+
+若 $\alpha\in\Phi$ 不能写成两个正根之和，则称其为关于这一次序的简单根（simple root）。\footnote{\textbf{译者注（本次校订）：}这里还须要求 $\alpha$ 为正根。简单根是不能写成两个正根之和的正根；若省略正性条件，所有负根都会满足所述条件。}简单根集 $\Delta$ 称为 $\Phi$ 的一组基（basis）。有：
+
+(a) $W(\Phi)$ 在 Weyl 室集合上单可迁地作用。
+
+(b) $s_\alpha$（$\alpha\in\Delta$）生成 $W(\Phi)$；更精确地，$(W,(s_\alpha)_{\alpha\in\Delta})$ 为 Coxeter 系（见 [7]）。
+
+(c) 每个根都是简单根的整线性组合，且系数同号。
+
+(d) 若不能写成不交并 $\Delta=\Delta'\cup\Delta''$，其中 $(\Delta'+\Delta'')\cap\Delta=\varnothing$，称 $\Delta$ 连通。那么 $\Phi$ 不可约当且仅当 $\Delta$ 连通。连通的 $\Delta$ 给出连通 Dynkin 图，见 [7]。\footnote{\textbf{译者注（本次校订）：}上面的判据应写为 $(\Delta'+\Delta'')\cap\Phi=\varnothing$，即分属两部分的简单根之和都不是根。原式中的 $\Delta$ 应为 $\Phi$；两个正简单根之和本来就不可能是简单根，原式因而无法判断连通性。}
+\paragraph*{1.7.} 下面汇集后文所需的几个根数据事实。根数据的直和按分量定义即可，这里略去具体定义。接着讨论根数据之间的态射。后文只需用到下面的情形；更一般的情形见 [7]，另见2.11(ii)、2.12。
+
+设 $\Psi=(X,\Phi,X^\vee,\Phi^\vee)$、$\Psi'=(X',\Phi',(X')^\vee,(\Phi')^\vee)$ 为根数据。同态 $f:X'\to X$ 若满足：(a) 单射且像在 $X$ 中指数有限；(b) $f$ 诱导 $\Phi'\to\Phi$ 双射，转置 ${}^tf$ 诱导 $\Phi^\vee\to(\Phi')^\vee$ 双射，则称为 $\Psi'$ 到 $\Psi$ 的同源（isogeny）。此时 ${}^tf:X^\vee\to(X')^\vee$ 也为余核有限的单射，且 $\operatorname{coker}f$ 与 $\operatorname{coker}({}^tf)$ 对偶。
+
+\paragraph*{例。} 给定 $\Psi$，构造 $\Psi'$ 及 $X\to X'$ 的同源，称为 $\Psi$ 的典范同源（canonical isogeny）。对 $X$ 的子群 $L$，以 $\overline L$ 表示 $L$ 在 $X$ 中的饱和化，即包含 $L$ 且 $\overline L/L$ 有限的最大子群。$L=\overline L$ 当且仅当 $L$ 为直和项。
+
+取1.1中的 $X_0,Q$。由1.2，$\Phi$ 可视为 $X/X_0$ 的子集，且 $\Psi'_1=(X/X_0,\Phi,\overline{Q^\vee},\Phi^\vee)$ 为半单根数据。类似地，$\Psi'_2=(X/\overline Q,\varnothing,X_0^\vee,\varnothing)$ 为环面型根数据。令 $\Psi'=\Psi'_1\oplus\Psi'_2$，典范同源为自然同态 $f:X\to(X/X_0)\oplus(X/\overline Q)$。
+\paragraph*{1.8.} 设 $\Phi$ 为 $\Q$ 向量空间 $V$ 中的根系。对偶空间中的 $\alpha^\vee$ 也组成根系 $\Phi^\vee$，称为对偶或逆根系（dual or inverse root system）。满足 $X\subset V,X^\vee\subset V^\vee$ 的半单根数据 $(X,\Phi,X^\vee,\Phi^\vee)$ 只有有限多个。事实上，以 $Q,Q^\vee$ 表示由 $\Phi,\Phi^\vee$ 生成的格，令
+\[
+ P=\{x\in V:\langle x,\alpha^\vee\rangle\in\Z,\ \alpha\in\Phi\},
+\]
+并类似定义 $P^\vee\subset V^\vee$。则 $Q\subset P$，$P/Q$ 为有限群，且与 $P^\vee/Q^\vee$ 对偶。$X$ 必介于 $Q,P$ 之间，每个这样的 $X$ 都对应唯一介于 $Q^\vee,P^\vee$ 的 $X^\vee$，使四元组为根数据。
+\paragraph*{1.9.} 设根数据 $\Psi$ 的根系 $\Phi\subset V$ 约化，$\Delta$ 为其基，则 $\Delta^\vee=\{\alpha^\vee:\alpha\in\Delta\}$ 是对偶根系的基。
+
+称六元组 $\Psi_0=(X,\Phi,\Delta,X^\vee,\Phi^\vee,\Delta^\vee)$ 为带基根数据（based root datum），其中根系约化。由于 $\Delta,\Delta^\vee$ 唯一确定 $\Phi,\Phi^\vee$，也可将它视为四元组 $\Psi_0=(X,\Delta,X^\vee,\Delta^\vee)$；以下采用此写法。
+
+\origsection{2}{约化群：绝对理论（Reductive groups: absolute theory）}
+\paragraph*{2.1.} 设 $G$ 为连通约化线性代数群。本节考虑绝对情形，即不涉及定义域，可将 $G$ 视为某个 $\GL(n,\Omega)$ 的子群，$\Omega$ 代数闭（见 [2]）。对 $G$ 的子环面 $S$，让 $S$ 通过伴随表示作用于 $G$ 的 Lie 代数 $\mathfrak g$。此表示的权中，所有非平凡的 $S$ 特征组成 $G$ 关于 $S$ 的根系，记为 $\Phi(G,S)$。
+\origsubsection{2.2}{$G$ 的根数据（The root datum of $G$）}
+固定极大环面 $T\subset G$，为 $(G,T)$ 定义根数据 $\psi(G,T)=(X,\Phi,X^\vee,\Phi^\vee)$，也记为 $\psi(G)$。
+
+$X=X^*(T)$ 是 $T$ 的有理特征（rational characters）群，为有限秩自由阿贝尔群。$X^\vee=X_*(T)$ 是 $T$ 的乘法单参数子群（one-parameter multiplicative subgroups）群，即代数群同态 $\GL_1\to T$ 的群。配对由 $x(u(t))=t^{\langle x,u\rangle}$（$x\in X^*(T),u\in X_*(T),t\in\Omega^\times$）确定。
+
+取 $\Phi=\Phi(G,T)$。还须定义 $\Phi^\vee$。对 $\alpha\in\Phi$，令 $T_\alpha$ 为 $\ker\alpha$ 的单位连通分支，它为余维一子环面。$G$ 中 $T_\alpha$ 的中心化子 $Z_\alpha$ 是以 $T$ 为极大环面的连通约化群，其导出群（derived group）$G_\alpha$ 为秩一半单群，即同构于 $\SL(2)$ 或 $\operatorname{PSL}(2)$。存在唯一同态 $\alpha^\vee:\GL_1\to G_\alpha$，满足
+\[
+ T=(\operatorname{Im}\alpha^\vee)T_\alpha,\qquad\langle\alpha,\alpha^\vee\rangle=2.
+\]
+这些 $\alpha^\vee$ 组成 $\Phi^\vee$。
+
+(RD1)已含于定义。用1.4证明(RD2)：取正规化 $T_\alpha$ 的 $n_\alpha\in G_\alpha-T_\alpha$，则 $n_\alpha^2\in T_\alpha$，\footnote{\textbf{译者注（本次校订）：}这里的秩一 Weyl 群代表元应取自 $N_{G_\alpha}(T\cap G_\alpha)\setminus(T\cap G_\alpha)$，并有 $n_\alpha^2\in T\cap G_\alpha$；它也正规化 $T$。$T_\alpha=(\ker\alpha)^0$ 被整个 $G_\alpha$ 中心化，不能在此充当秩一极大环面。例如在 $\SL_2$ 中，$T_\alpha=\{1\}$，通常的代表元的平方为 $-I$。}对 $x\in X,t\in T$，有
+\[
+ x(n_\alpha tn_\alpha^{-1})=t^{s_\alpha(x)}.
+\]
+事实上，在 $G_\alpha$ 内可证存在 $u\in X^\vee$，使左端为 $t^{x-\langle x,u\rangle\alpha}$。继而证明 $\langle\alpha,u\rangle=2$，且若 $\langle x,\alpha^\vee\rangle=0$，则 $\langle x,u\rangle=0$。于是(RD2$'$)成立，$\psi(G)$ 是根数据，其根系 $\Phi$ 约化。以上事实见 [3] 或 [14]。
+\paragraph*{2.3.} 对每个 $\alpha\in\Phi$，对应一个代数群同态 $x_\alpha:\Ga\to G_\alpha$，满足
+\[
+ tx_\alpha(u)t^{-1}=x_\alpha(t^\alpha u),\qquad t\in T,u\in\Omega.
+\]
+令 $U_\alpha=\operatorname{Im}x_\alpha$，取其非零切向量 $X_\alpha\in\mathfrak g$，则
+\[
+ \mathfrak g=\Lie(T)\oplus\sum_{\alpha\in\Phi}\Omega X_\alpha.
+\]
+若 $B$ 为包含 $T$ 的 Borel 子群，则存在唯一的根次序（见1.6），使 $B$ 由 $T$ 与所有 $\alpha>0$ 的 $U_\alpha$ 生成；所有包含 $T$ 的 Borel 子群均由此得到。于是三元组 $(G,B,T)$ 对应带基根数据
+\[
+ \psi_0(G,B,T)=(X^*(T),\Delta,X_*(T),\Delta^\vee),
+\]
+也记为 $\psi_0(G)$；$\Delta$ 为 $B$ 所确定次序的简单根基。
+\origsubsection{2.4}{同源（Isogenies）}
+代数群的同源 $\phi:G\to G'$ 是具有有限核的满有理同态。
+
+\paragraph*{例。} (i) 典范同态 $\SL(2)\to\operatorname{PSL}(2)$。这里将后者视为 $2\times2$ 矩阵空间中形如 $x\mapsto gxg^{-1}$（$g\in\SL(2)$）的线性变换群。若 $\operatorname{char}\Omega=2$，它是抽象群的同构，但不是代数群的同构。
+
+(ii) 若 $G$ 定义于有限域 $\F_q$，Frobenius 同源 $G\to G$ 将所有坐标取 $q$ 次幂；同样，它是抽象群的同构而非代数群的同构。
+
+设 $G,G'$ 连通约化，$T$ 为 $G$ 的极大环面。若同源 $\phi:G\to G'$ 在每个 $U_\alpha$ 上的限制都是到其像的代数群同构，就称它为中心同源（central isogeny）；等价地，对每个 $\alpha\in\Phi$，都有 $d\phi(X_\alpha)\ne0$。$T'=\phi(T)$ 为 $G'$ 的极大环面，称 $\phi$ 为 $(G,T)$ 到 $(G',T')$ 的中心同源。以 $f(\phi):X^*(T')\to X^*(T)$ 表示其诱导同态。
+\begin{originaltheorem}{2.5. 命题}
+(i) 若 $\phi$ 为中心同源，则 $f(\phi)$ 是 $\psi(G',T')$ 到 $\psi(G,T)$ 的同源。
+
+(ii) 若中心同源 $\phi,\phi':(G,T)\to(G',T')$ 满足 $f(\phi)=f(\phi')$，则存在 $t\in T$，使 $\phi'=\phi\circ\operatorname{Int}(t)$。
+\end{originaltheorem}
+\begin{proof}
+$f(\phi)$ 满足1.7(a)，等价于 $T\to T'$ 满且核有限。有根系双射 $\alpha\mapsto\alpha'$，使 $\phi(U_\alpha)=U_{\alpha'}$，或适当选择 $X_{\alpha'}$ 后 $d\phi(X_\alpha)=X_{\alpha'}$。于是 $\Ad(\phi(t))X_{\alpha'}=\alpha(t)X_{\alpha'}$，故 $f(\phi)(\alpha')=\alpha$。进一步 ${}^tf(\phi)(\alpha^\vee)=(\alpha')^\vee$，例如可由此前证明中的 ${}^ts_\alpha=s_{\alpha^\vee}$ 得到。(i)得证。
+
+取 $\Phi$ 的基 $\Delta$。已知 $T$ 与 $\alpha\in\Delta$ 的 $U_\alpha$ 生成 $G$。\footnote{\textbf{译者注（本次校订）：}生成 $G$ 时须同时取正、负简单根的根子群，即 $T$ 与 $U_{\pm\alpha}$（$\alpha\in\Delta$）。只取 $U_\alpha$（$\alpha\in\Delta$）所生成的群包含在对应的 Borel 子群中。中心同源的唯一性还利用秩一子群内正、负根子群之间的关系。}因此，同源由它在这些子群上的限制完全确定。$f(\phi)$ 决定 $T\to T'$，故剩下的自由度仅在于如何选择各个同构 $U_\alpha\simeq U_{\alpha'}$，(ii)随即得到。
+\end{proof}
+\paragraph*{2.6.} 设 $\phi:(G,T)\to(G',T')$ 为中心同源。则 $\ker\phi\subset T$，为有限群，同构于 $\Hom(X/\operatorname{Im}f(\phi),\Omega^\times)$。令 $p$ 为 $\Omega$ 的特征指数（characteristic exponent），则此核同构于 $X/\operatorname{Im}f(\phi)$ 的 $p$ 正则部分。因此有分解
+\[
+ G\xrightarrow{\pi}G/\ker\phi\xrightarrow{\rho}G',
+\]
+$\pi$ 为典范同态；当 $p=1$ 时 $\rho$ 为同构，当 $p>1$ 时为纯不可分同源（purely inseparable isogeny），亦即抽象群同构。令 $\mathfrak t=\Lie(T)$，则 $\ker d\phi\subset\mathfrak t$，且 $\mathfrak t=X^\vee\otimes_{\Z}\Omega$。于是 $\ker d\phi$ 同构于
+\[
+ f(\phi)^\vee\otimes\operatorname{id}:X^\vee\otimes\Omega\to(X')^\vee\otimes\Omega
+\]
+的核，亦同构于
+$\bigl((X')^\vee/(p(X')^\vee+\operatorname{Im}f(\phi)^\vee)\bigr)\otimes_{\F_p}\Omega$。
+所以 $\ker d\phi=0$ 当且仅当 $\operatorname{coker}(f(\phi))^\vee$（与 $\operatorname{coker}f(\phi)$ 对偶）的阶与 $p$ 互素。
+
+若 $p>1$，$\ker d\phi$ 是 $\mathfrak g$ 的 $\Ad(G)$ 稳定中心限制子代数（restricted subalgebra）。取 $G$ 模 $\ker d\phi$ 的商（见 [3，第376页]），可进一步分解 $\phi$ 为
+\[
+ G\xrightarrow{\sigma}G/\ker d\phi\xrightarrow{\tau}G',
+\]
+其中 $\sigma$ 为该处的典范中心同源。这些观察给出分解
+\begin{equation}
+ G=G_0\xrightarrow{\pi_0}G_1\xrightarrow{\pi_1}G_2
+ \xrightarrow{\pi_2}\cdots\longrightarrow G_{s-1}\xrightarrow{\pi_{s-1}}G_s=G',
+ \tag{1}
+\end{equation}
+其中 $\phi=\pi_{s-1}\circ\cdots\circ\pi_0$。令 $\phi_i=\pi_{s-1}\circ\cdots\circ\pi_i$（$i\ge1$），则 $G_1=G/\ker\phi$，$G_{i+1}=G_i/\ker d\phi_i$（$1\le i\le s-1$），各 $\pi_i$ 为典范同源。此外，若
+\[
+ \begin{tikzcd}
+ G\arrow[r,"\phi"]\arrow[d]&G'\arrow[d]\\
+ \widetilde G\arrow[r,"\widetilde\phi"]&\widetilde G'
+ \end{tikzcd}
+\]
+为同源的交换图，可以协调选择这两个同源的分解，使下图交换
+\begin{equation}
+ \begin{tikzcd}[column sep=small]
+ G=G_0\arrow[r]\arrow[d]&G_1\arrow[r]\arrow[d]&\cdots\arrow[r]&G_{s-1}\arrow[r]\arrow[d]&G_s=G'\arrow[d]\\
+ \widetilde G=\widetilde G_0\arrow[r]&\widetilde G_1\arrow[r]&\cdots\arrow[r]&\widetilde G_{s-1}\arrow[r]&\widetilde G_s=\widetilde G'
+ \end{tikzcd}
+ \tag{2}
+\end{equation}
+第一条竖直箭头一经给定，其余竖直箭头就唯一确定。
+\begin{originaltheorem}{2.7. 引理}
+设 $\phi,\phi_1$ 分别为 $(G,T)$ 到 $(G',T')$、$(G'_1,T'_1)$ 的中心同源。若 $\operatorname{Im}f(\phi)=\operatorname{Im}f(\phi_1)$，则 $(G',T')\cong(G'_1,T'_1)$。
+\end{originaltheorem}
+\begin{proof}
+令 $G''\subset G'\times G'_1$ 为 $g\mapsto(\phi(g),\phi_1(g))$ 的像，以 $\psi:G\to G''$ 表示诱导同态。$\psi$ 及两个投影 $\pi_1:G''\to G'$、$\pi_2:G''\to G'_1$ 都为连通约化群的中心同源。在环面中直接核查得 $\ker\pi_i=\{e\}$，$\ker d\pi_i=\{0\}$（$i=1,2$）。故两个投影都是同构，即得引理。
+\end{proof}
+\begin{originaltheorem}{2.8. 引理}
+若 $\Psi'$ 为根数据，$f:\Psi'\to\psi(G,T)$ 为同源，则存在 $(G',T')$ 及中心同源 $\phi:(G,T)\to(G',T')$，使 $\Psi'=\psi(G',T')$ 且 $f(\phi)=f$。
+\end{originaltheorem}
+由 $f$ 可依次恢复 (1) 中的 $G_i$，因而定义 $G'$。细节省略。
+\begin{originaltheorem}{2.9. 定理}
+(i) 对任意根系约化的根数据 $\Psi$，存在连通约化群 $G$ 及极大环面 $T$，使 $\Psi=\psi(G,T)$；$(G,T)$ 唯一至同构。
+
+(ii) 设 $\Psi=\psi(G,T)$、$\Psi'=\psi(G',T')$。若 $f:\Psi'\to\Psi$ 为同源，则存在中心同源 $\phi:(G,T)\to(G',T')$，使 $f(\phi)=f$。任意两个这样的 $\phi$ 相差 $G$ 的某个内自同构 $\operatorname{Int}(t)$，$t\in T$。
+\end{originaltheorem}
+\begin{proof}
+令 $f:\Psi\to\Psi'$ 为1.7的典范同源。由2.8，只须对 $\Psi$ 半单或环面型证明(i)的存在性。在环面型情形（$\Phi=\varnothing$），取 $G=T=\Hom(X,\Omega^\times)$。在半单情形，结论来自半单群理论中的存在定理；这一结果可用 Chevalley 群理论证明（见 [18] 或 [6，A部分]）。(i)的唯一性是(ii)的一部分。
+
+利用2.7、2.8，先将(ii)归结为 $f$ 是同构。$G$ 半单时，这是 Chevalley 基本同构定理，证明如 [10，报告24] 或 [14，第XI章]。$G$ 为环面时容易处理。一般情形下，有中心同源 $G_1\times S\to G$、$G'_1\times S'\to G'$，其中 $G_1,G'_1$ 为导出群，$S,S'$ 为环面，使相应根数据同源为1.7的典范同源（另见2.15）。于是 $f$ 定义同源 $f_1:\psi(G'_1\times S')\to\psi(G_1\times S)$，可假定存在中心同源 $\phi_1:G_1\times S\to G'_1\times S'$ 满足 $f(\phi_1)=f_1$。
+
+以 $G_1\times S,G'_1\times S',G,G'$ 分别代替 (2) 中的 $G,\widetilde G,G',\widetilde G'$，并以 $\phi_1$ 为第一根箭头，完成交换图。最右侧的箭头由 $\phi_1$ 唯一确定，它就是所求的同构。(ii)最后一点来自2.5(ii)。
+\end{proof}
+\paragraph*{2.10. 注记。} (i) 半单情形中，2.9(i)的存在性归于 Chevalley［Séminaire Bourbaki，报告219，1960--1961］。他构造 $\Z$ 上群概形 $G_0$，使 $G=G_0\times_{\Z}k$。这一构造也见 [6，A部分]。[17，报告XXIV] 以基概形代替域 $k$，推广了2.9。
+
+(ii) 2.9(ii)中的中心同源存在定理，是一般同源存在定理的特例。下面简述一般情形。设 $\phi:G\to G'$ 为连通约化群同源，$\phi(T)=T'$，令 $f:X^*(T')\to X^*(T)$ 为诱导同态。取2.3的 $x_\alpha,x_{\alpha'}$。可证明存在双射 $\alpha\mapsto\alpha'$ 及函数 $q:\Phi\to\{p^n:n\in\N\}$（$p$ 为特征指数），可适当正规化使
+\[
+ \phi(x_\alpha(t))=x_{\alpha'}(t^{q(\alpha)}).
+\]
+于是
+\[
+ f(\alpha')=q(\alpha)\alpha,\qquad{}^tf(\alpha^\vee)=q(\alpha)(\alpha')^\vee.
+\]
+若 $\phi$ 是中心同源，则所有 $q(\alpha)=1$；若为2.4的 Frobenius 同源，则 $f$ 是乘 $q$，各 $q(\alpha)=q$。[17，报告XXI] 称这样的 $f$ 为 $p$ 态射（$p$-morphism）。将2.9(ii)假设换成 $f$ 为 $p$ 态射，结论中容许任意同源 $\phi$，即得推广。证明类似，归结到同构情形。半单 $G$ 的结果归于 Chevalley [10，报告23]。
+
+\paragraph*{$p$ 态射的例子。} $p=2$，$G$ 为 $B_2$ 型半单群，采用1.5记号，有 $f(e_1)=e_1+e_2$，$f(e_2)=e_1-e_2$。关于 $p$ 态射的分类，可参见 [17，报告XXI，第71页]。
+\paragraph*{2.11.} 设 $\phi:G\to G'$ 为连通约化代数群同态，$T,T'$ 为极大环面，$\phi(T)\subset T'$，并假定 $\operatorname{Im}\phi$ 在 $G'$ 中正规。下面简述两个根数据 $\psi(G,T)$ 与 $\psi(G',T')$ 之间的关系。令 $f:X'\to X$ 为 $T\to T'$ 的对偶，一般而言，$f$ 既不必单射，也不必满射。令 $\Phi_1=\Phi\cap\operatorname{Im}f$、$\Phi_2=\Phi-\Phi_1$，则 $\Phi=\Phi_1\sqcup\Phi_2$ 为正交分解\footnote{\textbf{译者注（本次校订）：}若允许不可分同态，$\Phi_1$ 的定义须将 $\operatorname{Im}f$ 换为它在 $X$ 中的饱和化，等价地取 $\Phi\cap\operatorname{span}_{\Q}(\operatorname{Im}f)$。例如对特征 $p$ 下 $\SL_3$ 的 Frobenius 同源，$f=p\operatorname{id}$，根未必属于 $pX$，但它们全都属于参与同源的根系。}，即 $\langle\Phi_1,\Phi_2^\vee\rangle=\langle\Phi_2,\Phi_1^\vee\rangle=0$。类似令 $\Phi'_2=\Phi'\cap\ker f$、$\Phi'_1=\Phi'-\Phi'_2$，亦得正交分解。有双射 $\Phi_1\to\Phi'_1$ 及 $q:\Phi_1\to\{p^n:n\in\N\}$，使
+\[
+ f(\alpha')=q(\alpha)\alpha,\qquad{}^tf(\alpha^\vee)=q(\alpha)(\alpha')^\vee
+ \quad(\alpha\in\Phi_1).
+\]
+此外 $f(\alpha)=0$（$\alpha\in\Phi'_2$），${}^tf(\alpha^\vee)=0$（$\alpha\in\Phi_2$）。
+\paragraph*{2.12.} 由2.9(i)，对约化根系的带基根数据 $\Psi_0$，存在2.3的三元组 $(G,B,T)$ 使 $\psi_0(G,B,T)=\Psi_0$，且在同构意义下唯一，但同构本身并不典范；事实上带基根数据有非平凡自同构。
+
+与此相关的还有下面的结果。令 $\psi_0(G,B,T)=\psi_0(G)$，对每个 $\alpha\in\Delta$ 固定 $u_\alpha\in U_\alpha-\{e\}$。由2.5(ii)容易得到：
+\begin{originaltheorem}{2.13. 命题}
+$\Aut\psi_0(G)$ 同构于保持 $B,T$ 及 $\{u_\alpha\}_{\alpha\in\Delta}$ 稳定的 $G$ 自同构群 $\Aut(G,\allowbreak B,\allowbreak T,\allowbreak\{u_\alpha\}_{\alpha\in\Delta})$。
+\end{originaltheorem}
+\begin{originaltheorem}{2.14. 推论}
+存在分裂正合列（split exact sequence）
+\[
+ \{1\}\longrightarrow\operatorname{Int}(G)\longrightarrow\Aut(G)
+ \longrightarrow\Aut\psi_0(G)\longrightarrow\{1\}.
+\]
+\end{originaltheorem}
+事实上，2.13的同构给出一个分裂，任意两个这样的分裂相差 $\operatorname{Int}(t)$（$t\in T$）。
+\paragraph*{2.15.} 设 $G$ 为连通约化群，极大环面为 $T$，根数据为 $(X,\Phi,X^\vee,\Phi^\vee)$。有分解 $G=G'\cdot S$，其中 $G'$ 是 $G$ 的导出群，为半单群；$S$ 是中心 $C$ 的单位连通分支，为环面。$T=T'\cdot S$，$T'$ 为 $G'$ 的极大环面。用1.1、1.7记号，容易验证：
+
+(a) $\psi(G',T')=(X/X_0,\Phi,\overline{Q^\vee},\Phi^\vee)$，其中由1.2将 $\Phi$ 视为 $X/X_0$ 的子集。
+
+(b) 特征群 $\Hom_{\mathrm{alg.gr.}}(C,\Omega^\times)=X/Q$，且 $X^*(S)=X/\overline Q$、$X_*(S)=X_0^\vee$。
+
+(c) 同源 $G'\times S\to G$ 定义 $(G,T)$ 的典范同源（见1.7）。此前2.5(ii)的证明已用到这一事实。
+
+所以 $G$ 半单当且仅当其根数据半单。此时若 $X=Q$，称 $G$ 为伴随型（adjoint）；若 $X=P$（1.8的记号），称其单连通（simply connected）。由2.5(ii)及1.8，半单 $G$ 为伴随型（或单连通），当且仅当任意中心同源 $G\to G'$（或 $G'\to G$）均为同构。对一般约化群还有：
+\[
+ \begin{array}{ll}
+ \text{(d)}&G'\text{ 伴随型}\iff X=Q\oplus X_0\iff X^\vee=P^\vee\oplus X_0^\vee;\\
+ \text{(e)}&G'\text{ 单连通}\iff P\subset X+(X_0\otimes\Q)\iff\overline{Q^\vee}=Q^\vee;\\
+ \text{(f)}&G\text{ 的中心连通}\iff Q=\overline Q\iff
+ P^\vee\subset X^\vee+(X_0^\vee\otimes\Q).
+ \end{array}
+\]
+
+\origsection{3}{约化群：相对理论（Reductive groups: relative theory）}
+现在引入基域（ground field）$k\subset\Omega$。记 $k$ 在 $\Omega$ 中的代数闭包为 $\bar k$，可分闭包为 $k_s$。定义于 $k$ 的线性代数群称为 $k$ 群（$k$-group），其 $k$ 有理点群记为 $G(k)$（而不采用 [2] 中的 $G_k$）。对 $k$ 代数 $A$，以 $G(A)$ 表示 $\Hom_k(k[G],A)$ 所成群（见 [2]）。
+\origsubsection{3.1}{代数群的形式（Forms of algebraic groups）}
+参见 [16，III，第1节]。设 $G,G'$ 为 $k$ 群；若在 $\Omega$ 上同构，称 $G'$ 为 $G$ 的 $k$ 形式（$k$-form）。例如 $k=\R$ 时，$\operatorname U(n)$ 是 $\GL(n)$ 的 $\R$ 形式。
+
+$k$ 形式可以如下描述。$k$ 群 $G$ 由 $G(k_s)$ 完全确定：若 $G\to\GL(n)$ 是定义于 $k$ 的闭嵌入，那么 $\GL(n,k_s)$ 的子群 $G(k_s)$ 确定 $G$ 至 $k$ 同构。$G$ 定义于 $k$ 这一性质体现为 Galois 群 $\Gamma_k=\Gal(k_s/k)$ 在 $G(k_s)$ 上的作用。$G$ 的形式 $G'$ 可如下描述至 $k$ 同构。识别 $G'(k_s)=G(k_s)$ 后，存在从 $\Gamma_k$ 到 $G$ 的 $k_s$ 自同构群的连续函数 $c:s\mapsto c_s$（前者赋 Krull 拓扑，后者赋离散拓扑），满足
+\begin{equation}
+ c_{st}=c_s\cdot s(c_t),\qquad s,t\in\Gamma_k,
+ \tag{*}
+\end{equation}
+使 $\Gamma_k$ 在 $G'(k_s)$ 上的作用由原作用“扭曲”（twisting）而来：$s*g=c_s(s\cdot g)$。$G'$ 与 $G$ 为 $k$ 同构，当且仅当存在自同构 $c$，使 $c_s=c^{-1}\cdot sc$。若所有 $c_s$ 都是内自同构，称 $G'$ 为 $G$ 的内形式（inner form）。
+
+若群 $C$ 带 $\Gamma_k$ 作用，满足(*)的连续函数称为取值于 $C$ 的 $1$ 上循环（$1$-cocycles）。按关系
+\[
+ (c_s)\sim(c'_s)\iff\text{存在 }c\in C,\quad c'_s=c^{-1}c_s(sc)
+\]
+所得等价类组成 $1$ 上同调集（$1$-cohomology set）$H^1(k,C)$，其中，以常上循环 $c_s=e$ 的等价类为基点，记作 $1$。
+\origsubsection{3.2}{约化 $k$ 群（Reductive $k$-groups）}
+设 $G$ 连通约化。若它含有定义于 $k$ 的 Borel 子群，称其拟分裂（quasi-split），这一条件对 $G$ 的结构有很强的限制。若具有定义于 $k$ 且 $k$ 分裂的极大环面，称其在 $k$ 上分裂（split），此时必拟分裂。
+
+\paragraph*{例。} $G=\operatorname{SO}(F)$（见 [2，第15--16页]）拟分裂而不分裂，当且仅当底层向量空间维数 $n$ 为偶数，且指数为 $n/2-1$。由2.14的分裂可知，每个 $G$ 都是某个拟分裂群的内形式。
+
+取定义于 $k_s$ 的 Borel 子群 $B$ 及极大环面 $T\subset B$，对应带基根数据为 $\psi_0(G)=(X,\Delta,X^\vee,\Delta^\vee)$。对 $s\in\Gamma_k$，存在 $g_s\in G(k_s)$，使
+\[
+ \operatorname{int}(g_s)(sB)=B,\qquad\operatorname{int}(g_s)(sT)=T.
+\]
+于是 $\operatorname{int}(g_s)\circ s$ 给出仅依赖于 $s$ 的 $T$ 自同构，因为陪集 $Tg_s$ 唯一。它确定 $X$ 的自同构 $\mu_G(s)$，并置换 $\Delta$，因为它固定 $B$。容易验证 $\mu_G:\Gamma_k\to\Aut\psi_0(G)$ 为同态。若 $G'$ 为 $G$ 的 $k$ 形式，则 $\mu_G=\mu_{G'}$ 当且仅当二者互为内形式。
+\origsubsection{3.3}{基域限制（Restriction of the base field）}
+参见 [22，1.3]。设 $l\subset k_s$ 为 $k$ 的有限可分扩张，$G$ 为 $l$ 群。存在 $k$ 群 $H=R_{l/k}G$，由以下性质刻画 [2，1.4]：对任意 $k$ 代数 $A$，$H(A)=G(A\otimes_kl)$。特别地 $H(k)=G(l)$。以 $\Sigma$ 表示 $k$ 嵌入 $l\to k_s$ 的集合，则 $H(k_s)=G(k_s)^\Sigma$。$\Gamma_k$ 的作用如下：若 $\phi\in G(k_s)^\Sigma$ 为函数，$s\in\Gamma_k$，则对 $\sigma\in\Sigma$，\nobreak\footnote{\textbf{译者注（本次校订）：}这里的 Galois 作用不能仅写成指标置换。严格地说，$H_{k_s}$ 是各共轭群 ${}^{\sigma}G$ 的乘积，Galois 作用还包含系数上的半线性作用。若 $G$ 本身由 $k$ 上的群基扩张而来，并据此识别各因子，则通常的左作用为 $(s\cdot\phi)(\sigma)=s\bigl(\phi(s^{-1}\sigma)\bigr)$。即使 $l=k$，原式也漏掉了 $G(k_s)$ 上的 Galois 作用。下文对根数据的作用也须相应计入各因子的下降作用。}
+\[
+ (s\cdot\phi)(\sigma)=\phi(s\cdot\sigma).
+\]
+称 $R_{l/k}G$ 为 $G$ 从 $l$ 到 $k$ 的基域限制。$G$ 连通或约化时，$R_{l/k}G$ 亦然。
+
+若 $G$ 连通约化，固定3.2中定义于 $k_s$ 的 $B,T$。$H$ 含 Borel 子群 $B_1=B^\Sigma$ 及极大环面 $T_1=T^\Sigma$，相应带基根数据为 $\psi_0(R_{l/k}G)=\psi_0(G)^\Sigma$。$\Gamma_k$ 在格 $X^\Sigma$ 上的作用仍为 $(s\cdot\phi)(\sigma)=\phi(s\cdot\sigma)$。
+\origsubsection{3.4}{各向异性约化群（Anisotropic reductive groups）}
+连通约化 $k$ 群若没有非平凡的 $k$ 分裂 $k$ 子环面，称为在 $k$ 上各向异性（anisotropic）。
+
+\paragraph*{例。} (i) 设 $F$ 为 $k$ 向量空间上的非退化二次型，$\operatorname{char}k\ne2$。$G=\operatorname{SO}(F)$ 为特殊正交群，即 $\operatorname O(F)$ 的单位连通分支。$G$ 各向异性当且仅当 $F$ 不在 $k$ 上表示零；证明见 [2，第13页]。
+
+(ii) 若 $k$ 是非离散局部紧域，$G$ 各向异性当且仅当 $G(k)$ 紧。
+
+(iii) 对任意域 $k$，$G$ 各向异性当且仅当 $G(k)$ 中没有非单位幺幂元，且 $k$ 有理特征群 $\Hom_k(G,\GL_1)$ 平凡。
+\origsubsection{3.5}{约化 $k$ 群的性质（Properties of reductive $k$-groups）}
+以下结果参见 [5]。设 $G$ 连通约化，$S$ 为极大 $k$ 分裂环面，即在所有 $k$ 分裂的 $k$ 子环面中按包含关系取极大者。任意两个这样的环面均在 $k$ 上共轭，即由 $G(k)$ 的元素共轭。其维数称为 $G$ 的 $k$ 秩（$k$-rank）。
+
+$\Phi(G,S)$（见2.1）称为相对根系（relative root system），记为 ${}_k\Phi$ 或 ${}_k\Phi(G)$。它确实是 [7] 意义的根系，位于 $X^*(S)\otimes\Q$ 中由它张成的子空间 $V$ 内。其 Weyl 群称为相对 Weyl 群（relative Weyl group），记为 ${}_kW$。以 $N(S),Z(S)$ 分别表示正规化子和中心化子，均为 $k$ 子群。$N(S)/Z(S)$ 作用于 ${}_k\Phi,V$，且可与 ${}_kW$ 自然等同。每个陪集都有 $N(S)(k)$ 中的代表元。
+
+$Z(S)$ 是连通约化 $k$ 群，其导出群 $Z(S)'$ 半单且各向异性。利用这个导出群和相对根系，可以在一定程度上恢复 $G$；细节见 [19]。Lie 代数有分解
+\[
+ \mathfrak g=\mathfrak g_0+\sum_{\alpha\in{}_k\Phi}\mathfrak g_\alpha,
+ \qquad\mathfrak g_\alpha=\{X\in\mathfrak g:\Ad(s)X=s^\alpha X,\ s\in S\}.
+\]
+$\mathfrak g_0=\Lie Z(S)$。对 $\alpha\in{}_k\Phi$，有唯一被 $S$ 正规化、Lie 代数为 $\mathfrak g_\alpha$ 的幺幂 $k$ 子群 $U_\alpha$。\footnote{\textbf{译者注（本次校订）：}相对根系非约化时，须把同一正射线上的倍根空间一起计入。通常的根子群 $U_{(\alpha)}$ 的 Lie 代数为 $\mathfrak g_\alpha\oplus\mathfrak g_{2\alpha}$（若 $2\alpha$ 不是根，则第二项为零）；单独的 $\mathfrak g_\alpha$ 未必对 Lie 括号封闭。本章5.17正采用这一写法。}
+
+绝对情形 $k=\Omega$ 时，$S$ 为极大环面，根系和根子群即通常的情形。若 $G$ 在 $k$ 上分裂，$S$ 仍为极大环面，相对根系等于绝对根系。一般地，${}_k\Phi$ 不必约化，$\dim\mathfrak g_\alpha=\dim U_\alpha$ 也未必为1。
+\origsubsection{3.6}{抛物子群（Parabolic subgroups）}
+回忆：代数群 $G$ 的抛物子群，是满足以下条件的闭子群 $P$： $G/P$ 为射影簇（projective variety）。等价地，$P$ 包含一个 Borel 子群。
+
+对3.5的 $G$，极小抛物 $k$ 子群都在 $k$ 上共轭。取其中一个 $P$，则存在极大 $k$ 分裂环面 $S$，使 $P=Z(S)\cdot R_u(P)$ 为 $k$ 群半直积，$R_u(P)$ 为幺幂根基。存在 ${}_k\Phi$ 的一个次序，使 $P$ 由 $Z(S)$ 和正根的 $U_\alpha$ 生成。包含固定 $S$ 的极小抛物 $k$ 子群对应相对根系的 Weyl 室，且相对 Weyl 群在其上单可迁作用。
+
+固定次序及基 ${}_k\Delta$。对 $\theta\subset{}_k\Delta$，令 $P_\theta$ 为由 $Z(S)$ 及下述 $U_\alpha$ 生成的子群：$\alpha$ 按简单根展开时，不在 $\theta$ 中的简单根的系数均非负。则 $P_{{}_k\Delta}=G$，$P_\varnothing=P$，$P_\theta\supset P$。这些是包含 $P$ 的标准抛物子群（standard parabolic subgroups）。任意抛物 $k$ 子群都在 $k$ 上共轭于唯一 $P_\theta$。
+
+令 $S_\theta$ 为 $\bigcap_{\alpha\in\theta}\ker\alpha$ 的单位连通分支，则它为 $k$ 分裂环面，且 $P_\theta=Z(S_\theta)\cdot R_u(P_\theta)$ 为半直积。幺幂根基由所有不是 $\theta$ 中根的线性组合的正根 $\alpha$ 对应的 $U_\alpha$ 生成。
+
+若 $Q$ 是任意抛物 $k$ 子群，幺幂根基为 $V$，则 $Q$ 的 Levi 子群（Levi subgroup）是使 $Q=L\cdot V$ 为 $k$ 群半直积的 $k$ 子群 $L$。以上表明它存在，且任意两个在 $k$ 上共轭。若 $A$ 为 $L$ 中心的极大 $k$ 分裂环面，则 $L=Z(A)$。任给 $G$ 的 $k$ 分裂子环面 $A$，存在具有 Levi 子群 $L$ 的抛物 $k$ 子群 $Q$。两个这样的 $Q$ 未必在 $k$ 上共轭（当 $A$ 极大分裂时则共轭）。若两个抛物 $k$ 子群各有一个 Levi 子群，且这两个 Levi 子群在 $k$ 上共轭，就称这两个抛物子群相伴（associated），这给出等价关系。
+
+若 $Q_1,Q_2$ 为抛物 $k$ 子群，则 $(Q_1\cap Q_2)R_u(Q_1)$ 仍为包含在 $Q_1$ 中的抛物 $k$ 子群；它等于 $Q_1$ 当且仅当 $Q_1$ 有一个 Levi 子群包含 $Q_2$ 的一个 Levi 子群。若 $Q_1\cap Q_2$ 同时是二者的 Levi 子群，称其相对（opposite）。
+\origsubsection{3.7}{$G(k)$ 的 Bruhat 分解（Bruhat decomposition）}
+取3.5的 $P,S$，令 $U=R_u(P)$，对 $w\in{}_kW$ 取代表元 $n_w\in N(S)(k)$。Bruhat 分解断言 $G(k)$ 是双陪集 $U(k)n_wP(k)$ 的不交并。
+
+更精确地，有 $U$ 的两个 $k$ 子群 $U'_w,U''_w$，使 $U=U'_w\times U''_w$ 为 $k$ 簇的乘积，且 $U''_w\times P\to Un_wP$，$(x,y)\mapsto xn_wy$ 为同构。于是
+\[
+ (G/P)(k)=G(k)/P(k)=\bigcup_{w\in{}_kW}\pi(U''_w(k)),
+\]
+其中 $\pi:G\to G/P$ 为投影。\footnote{\textbf{译者注（本次校订）：}上式应为 $\bigcup_w\pi(U''_w(k)n_w)$。每个胞腔都须带上对应的 Weyl 群代表元；由于 $U''_w\subset U\subset P$，原式中的 $\pi(U''_w(k))$ 只有基点 $P$。}$k=\Omega$ 时，这给出射影簇 $G/P$ 的胞腔分解（cellular decomposition）。
+
+对 $\theta\subset{}_k\Delta$，以 $W_\theta$ 表示由 $\theta$ 中根对应的反射生成的子群。对 $\theta,\theta'$，有双陪集双射
+\[
+ P_\theta(k)\backslash G(k)/P_{\theta'}(k)
+ \simeq W(\theta)\backslash{}_kW/W(\theta').
+\]
+以 $\Sigma$ 表示由 ${}_k\Delta$ 决定的生成元集。除代数几何部分外，上述断言均来自 $(G(k),\allowbreak P(k),\allowbreak Z(S)(k),\allowbreak\Sigma)$ 为 [7] 意义的 Tits 系这一事实。\footnote{\textbf{译者注（本次校订）：}这个 Tits 系的第三项应为 $N(S)(k)$，而非 $Z(S)(k)$。其 Weyl 群是 $N(S)(k)/Z(S)(k)$；若将第三项写成中心化子，就得不到前述相对 Weyl 群。}
+\origsubsection{3.8}{Tits 建筑（The Tits building）}
+设 $G$ 为连通约化 $k$ 群。如下定义单纯复形（simplicial complex）$\mathcal B$，即 $(G,k)$ 的单纯 Tits 建筑。
+
+其顶点是 $G$ 的极大真抛物 $k$ 子群。不同顶点 $P_1,\ldots,P_n$ 定义一个单形当且仅当 $P=P_1\cap\cdots\cap P_n$ 为抛物子群，此时各 $P_i$ 由 $P$ 唯一确定。因此，单形与真抛物 $k$ 子群一一对应。记对应单形为 $\sigma_P$，则 $\sigma_P$ 是 $\sigma_{P'}$ 的面当且仅当 $P'\subset P$。极大单形对应极小抛物 $k$ 子群，称为室（chambers）。室的余维一面称为墙（wall）。两个不同的室若有公共墙，称相邻（adjacent）。任意两室可用长廊（gallery）相连，即有 $\sigma=\sigma_0,\ldots,\sigma_s=\sigma'$，各相继两室相邻。显然 $G(k)$ 作用于 $\mathcal B$。
+
+对这一抽象单纯复形取几何实现，可以证明 $\mathcal B$ 具有球面楔和（bouquet of spheres）的同伦型。建筑的更多细节见 [20]。
+\paragraph*{3.9. 例。} (i) 以上结果适用于绝对情形 $k=\Omega$，特别地有3.6的抛物子群性质和3.7的 Bruhat 分解。
+
+(ii) $G=\GL(n)$，$k$ 任意。这是约化 $k$ 群，其 Lie 代数由全体 $n\times n$ 矩阵组成。取 $S$ 为对角矩阵群，它既为极大 $k$ 分裂环面，也为绝对意义的极大环面。令 $e_i\in X=X^*(S)$ 将对角矩阵映到第 $i$ 个对角元，则 $(e_i)$ 为 $X$ 的基。根系由 $e_i-e_j$（$i\ne j$）组成，并与相对根系相同。根数据为
+\[
+ X=\Z^n,\quad X^\vee=\Z^n,\quad
+ \Phi=\{e_i-e_j\}_{i\ne j},\quad
+ \Phi^\vee=\{e_i^\vee-e_j^\vee\}_{i\ne j},
+\]
+其中 $(e_i^\vee)$ 为对偶基。
+
+上三角矩阵群 $B$ 是极小抛物 $k$ 子群，也是 Borel 子群，其幺幂根基为对角元全为1的上三角群。$B$ 确定的基为 $(e_i-e_{i+1})_{1\le i\le n-1}$。Weyl 群等于相对 Weyl 群，同构于置换基 $(e_i)$ 的对称群 $\mathfrak S_n$。包含 $B$ 的抛物子群为分块矩阵群
+\[
+ \begin{pmatrix}
+ A_{11}&A_{12}&\cdots&A_{1s}\\
+ 0&A_{22}&\cdots&\vdots\\
+ \vdots&\ddots&\ddots&\vdots\\
+ 0&0&\cdots&A_{ss}
+ \end{pmatrix},
+\]
+其中 $A_{ij}$ 为 $n_i\times n_j$ 矩阵，$\sum n_i=n$，各 $A_{ii}$ 可逆。幺幂根基是其中所有 $A_{ii}=1$ 的矩阵，Levi 子群 $L$ 则由 $i\ne j$ 时 $A_{ij}=0$ 的矩阵组成。$L$ 的中心由 $S$ 中使除分块边界的 $e_{n_i}-e_{n_i+1}$ 之外的简单根均平凡的元素组成。因此按3.6记号，$P=P_\theta$，$\theta$ 为这些边界根在 $\Delta$ 中的补集。\footnote{\textbf{译者注（本次校订）：}若 $n_i$ 表示第 $i$ 个块的大小，分块边界的位置应为 $N_i=n_1+\cdots+n_i$（$i<s$）。因此相应边界根是 $e_{N_i}-e_{N_i+1}$，原文写成 $e_{n_i}-e_{n_i+1}$ 少了累加。}
+
+上述结构还有如下几何描述。设 $V=\Omega^n$。旗（flag）为不同子空间组成的链 $0=V_0\subset V_1\subset\cdots\subset V_s=V$。若各 $V_i$ 定义于 $k$，即有由 $k^n$ 向量组成的基，称为 $k$ 旗。$G$ 作用于所有旗，抛物子群恰为旗的稳定子。抛物子群与旗一一对应，$k$ 子群对应 $k$ 旗。$G/P$ 的点为与 $P$ 对应的旗同型的旗，即各级子空间维数固定。
+
+因此 Tits 建筑也可用旗描述：单形对应非平凡 $k$ 旗（$s>1$）。$\sigma_f$ 是 $\sigma_{f'}$ 的面当且仅当 $f'$ 加细 $f$。室对应极大旗（$s=n,\dim V_i=i$），顶点对应 $V$ 的非平凡 $k$ 子空间。因此建筑的组合结构反映射影空间 $\mathbf P_{n-1}(k)$ 中的关联关系。最小的非平凡例子是 $n=3,k=\F_2$，此时建筑为14个顶点、21条边的图，图见 [20，第210页]。
+
+(iii) 设 $\operatorname{char}k\ne2$，$V$ 为代数几何意义的 $k$ 向量空间，$F$ 为定义于 $k$ 的非退化二次型。在 $V(k)$ 的适当基下，
+\[
+ F(x_1,\ldots,x_n)=x_1x_n+x_2x_{n-1}+\cdots+x_qx_{n-q+1}
+ +F_0(x_{q+1},\ldots,x_{n-q}),
+\]
+其中 $F_0$ 各向异性，即它在 $k$ 上只有零向量这一个零点。$F$ 的指数 $q$ 为 $V(k)$ 的极大各向同性子空间维数。$G=\operatorname{SO}(F)$ 为连通半单 $k$ 群，其极大 $k$ 分裂环面由如下矩阵给出：\nobreak\footnote{\textbf{译者注（本次校订）：}按照上面二次型中 $x_i$ 与 $x_{n+1-i}$ 的配对方式，矩阵末尾的逆元应倒序排列为 $t_q^{-1},\ldots,t_1^{-1}$，这样每一项 $x_i x_{n+1-i}$ 才保持不变。}
+\[
+ \diag(t_1,\ldots,t_q,1,\ldots,1,t_1^{-1},\ldots,t_q^{-1}).
+\]
+$Z(S)$ 为 $S$ 与各向异性群 $\operatorname{SO}(F_0)$ 的直积。极小抛物子群和相对根系的描述见 [2，第16页]；若 $2q\ne n$，相对根系为 $B_q$ 型，否则为 $D_q$ 型。若 $q<\lfloor n/2\rfloor$，总有维数大于1的 $U_\alpha$（3.5记号）。与 $\GL(n)$ 类似，抛物 $k$ 子群是各向同性 $k$ 旗的稳定子，即旗中所有子空间对 $F$ 均各向同性。
+
+\origsection{4}{特殊的域（Special fields）}
+设 $G$ 为 $k$ 群，本节讨论某些特殊 $k$ 的特有性质。
+\origsubsection{4.1}{$\R$ 与 $\C$}
+若 $G$ 为 $\C$ 群，$G(\C)$ 具有典范复 Lie 群结构。它连通当且仅当 $G$ 在 Zariski 拓扑下连通；可由 Bruhat 引理导出，参见4.2。若 $k=\R$，$G(\R)$ 则典范地为 Lie 群。
+\begin{originaltheorem}{4.2. 引理}
+(i) $G(\R)$ 紧当且仅当 $G^0$ 是约化各向异性 $\R$ 群；(ii) $G(\R)$ 只有有限多个连通分支。
+\end{originaltheorem}
+(i)容易建立。对(ii)，只须在 $G$ 连通约化时证明；通过 Bruhat 引理归结到 $G$ 紧或为环面的情形，此时结论显然。即使 $G$ 在 Zariski 拓扑下连通，$G(\R)$ 也未必连通，简单例子是 $\GL(n)$。若 $G$ 为 $\C$ 群，实 Lie 群 $R_{\C/\R}(G)(\R)$（见3.3）就是将复 Lie 群 $G(\C)$ 视为实 Lie 群所得的群。
+\origsubsection{4.3}{有限域（Finite fields）}
+令 $k=\F_q$，$\bar k$ 为代数闭包，$F:x\mapsto x^q$ 为 Frobenius 自同构。基本结果是 Lang 定理 [6，第171页]。
+\begin{originaltheorem}{4.4. 定理}
+若 $G$ 为连通 $k$ 群，则 $g\mapsto g^{-1}(Fg)$ 是 $G(\bar k)$ 到自身的满映射。
+\end{originaltheorem}
+利用 $G$ 是某个拟分裂 $k$ 群的内形式，可推出每个连通约化 $k$ 群均拟分裂，进而给出单 $k$ 群的完整分类。在继续讨论局部域、整体域之前，先略谈环上的群概形。
+\origsubsection{4.5}{环上的群（Groups over rings）}
+$k$ 群的乘法、求逆由代数簇态射 $\mu:G\times G\to G$、$\rho:G\to G$ 描述（见 [2，第4页]），在坐标代数上，它们对应于 $k$ 代数同态 $\mu^*:k[G]\to k[G]\otimes_kk[G]$、$\rho^*:k[G]\to k[G]$，满足表达群公理的一系列性质，此处略去。于是线性代数群可用坐标代数描述。
+
+这一描述不要求 $k$ 是域。将 $k$ 换为交换环 $\mathfrak o$，得到“$\mathfrak o$ 上的线性代数群”，通常称为仿射群概形（affine group scheme）$G$，简称 $\mathfrak o$ 群。它可视为函子，参见 [2，第4页]。记函子在 $\mathfrak o$ 处取值为 $G(\mathfrak o)$，即 $\mathfrak o$ 点群。
+
+设坐标代数为 $\mathfrak o[G]$。对 $\mathfrak o$ 代数 $\mathfrak o'$，经基扩张得到 $\mathfrak o'$ 群 $G\times_{\mathfrak o}\mathfrak o'$，代数为 $\mathfrak o[G]\otimes_{\mathfrak o}\mathfrak o'$。设 $\mathfrak m$ 为极大理想，$k(\mathfrak m)=\mathfrak o/\mathfrak m$ 为 $\mathfrak o$ 代数。
+
+\paragraph*{定义。} 若 $G\times_{\mathfrak o}k(\mathfrak m)$ 为 $k(\mathfrak m)$ 群，称 $G$ 在 $\mathfrak m$ 处有好约化（good reduction）。若在所有极大理想处都有好约化，称 $G$ 光滑（smooth）。
+
+\paragraph*{坏约化的例子。} $\mathfrak o=\Z$，取矩阵 $\bigl(\begin{smallmatrix}a&b\\2b&a\end{smallmatrix}\bigr)$ 所成群，$a^2-2b^2=1$。则 $\Z[G]=\Z[X,Y]/(X^2-2Y^2-1)$，且
+\[
+ \Z[G]\otimes\F_2\cong\F_2[X,Y]/(X^2).
+\]
+它含幂零元，不能是 $\F_2$ 上线性代数群的坐标环。
+
+若 $G$ 为 $k$ 群、$\mathfrak o\subset k$，存在光滑 $\mathfrak o$ 群 $G_0$ 使 $G\cong G_0\times_{\mathfrak o}k$，则称 $G$ 可定义于 $\mathfrak o$（definable over $\mathfrak o$）。略微滥用记号，对 $\mathfrak o$ 代数 $\mathfrak o'$ 有时写 $G(\mathfrak o')$ 代替 $G_0(\mathfrak o')$。代数簇可定义于 $\mathfrak o$ 的概念也可类似定义。例如由 Chevalley 定理，复连通半单群可定义于 $\Z$ [6，A，第4节]。
+\origsubsection{4.6}{局部域（Local fields）}
+设 $k$ 为局部域，$\mathfrak o$ 为整数环，$\mathfrak m$ 为其极大理想，剩余域记为 $F$。Bruhat 和 Tits 对局部域上的约化群作了深入研究，目前只发表了其中一部分成果 [9]，概述见 [8]。本论文集 Tits 的文章 [21] 更详细介绍 Bruhat--Tits 理论，尤其是约化 $k$ 群的建筑与极大紧子群理论。这里只列出其中几个结果。
+\begin{originaltheorem}{4.7. 引理}
+若 $G$ 为连通约化 $k$ 群，则存在非分歧扩张（unramified extension）$l/k$，使 $G$ 在 $l$ 上拟分裂。
+\end{originaltheorem}
+这可由 $k$ 的极大非分歧扩张的上同调维数至多为1导出，见 [16，第II-11页]。$G(k)$ 为局部紧拓扑群，甚至为 $k$ 上的 Lie 群；其紧性等价于单位连通分支 $G^0$ 约化且各向异性。Bruhat--Tits 理论表明，若 $G$ 连通、单连通且为单 $k$ 群，则存在中心为 $k$ 的有限维除代数（division algebra）$D$，使 $G(k)\cong\SL(1,D)$。\footnote{\textbf{译者注（本次校订）：}这一分类结论须加上 $G$ 在 $k$ 上各向异性的条件；否则，例如分裂群 $\SL_2(k)$ 就不满足结论。若“单 $k$ 群”只指 $k$ 上概单，而非绝对概单，还须允许有限扩张 $l/k$ 上的 $\SL_1(D)$ 通过基域限制得到的群，其中 $D$ 的中心为 $l$。}
+
+若 $G$ 连通约化且可定义于 $\mathfrak o$（$G$ 在 $k$ 上分裂时总如此，见 [8，第31页]），$G(\mathfrak o)$ 为 $G(k)$ 的紧子群，且约化映射 $G(\mathfrak o)\to G(F)$ 为满射。
+\origsubsection{4.8}{整体域（Global fields）}
+令 $k$ 为整体域。对赋值 $v$，以 $k_v$ 表示相应完备化；$v$ 非阿基米德时，以 $\mathfrak o_v$ 表示整数环。若非空有限赋值集 $S$ 包含所有阿基米德赋值，以 $\mathfrak o_S$ 表示 $k$ 中在 $S$ 外整的元素组成的环，它是 Dedekind 环。设 $G$ 连通约化。
+\begin{originaltheorem}{4.9. 引理}
+(i) 存在 $S$ 使 $G$ 可定义于 $\mathfrak o_S$；(ii) 几乎所有 $v$ 都使 $G\times_kk_v$ 拟分裂。
+\end{originaltheorem}
+\begin{proof}
+(i)容易建立。令 $C$ 为 $G$ 的内自同构群，它是半单 $k$ 群，识别为其 $k_s$ 点群。存在 $\gamma\in H^1(k,C)$，使得用其代表上循环 $c$ 扭曲 $G$ 后所得的群 $G_c$ 是拟分裂的（见3.1）。这正是 $G$ 为拟分裂群内形式的另一说法。$c$ 在 $k$ 上定义 $C$ 的主齐性空间（principal homogeneous space）$C_c$，即带定义于 $k$ 的单可迁 $C$ 作用的代数簇，见 [16，第I-58页]。$\gamma=1$ 当且仅当 $C_c$ 有 $k$ 有理点。故只须证明几乎所有 $v$ 都使 $\gamma$ 在 $H^1(k_v,C\times_kk_v)$ 的像平凡，即 $C_c$ 有 $k_v$ 有理点。
+
+对几乎所有非阿基米德 $v$，$C,C_c$ 均可定义于 $\mathfrak o_v$，写作 $C_0\times_{\mathfrak o_v}k_v$、$C_{c,0}\times_{\mathfrak o_v}k_v$，且约化群 $C_0\times_{\mathfrak o_v}F_v$ 连通。由4.4，$C_{c,0}\times_{\mathfrak o_v}F_v$ 有 $F_v$ 有理点；应用相应形式的 Hensel 引理，可得到 $C_{c,0}$ 的 $\mathfrak o_v$ 点，从而有 $k_v$ 点。即得(ii)。
+\end{proof}
+\origsubsection{4.10}{阿代尔化（Adelization）}
+令 $A$ 为 $k$ 的阿代尔环（adele ring），它是 $k$ 代数，故 $G(A)$ 有定义。取 $k$ 上嵌入 $G\hookrightarrow\GL_n$，则 $g\mapsto(g,g^{-1})$ 将 $G(A)$ 双射到 $A^{n^2+1}\oplus A^{n^2+1}$ 的一个闭子集。赋予 $G(A)$ 由这一嵌入诱导的拓扑，便得到一个局部紧群，即 $G$ 的阿代尔群（adele group），并含 $G(k)$ 为离散子群。拓扑不依赖嵌入的选择。
+
+另一种定义是：取满足4.9(i)的 $S_0$。每个有限 $S\supset S_0$ 对应局部紧群
+\[
+ G(A_S)=\prod_{v\notin S}G(\mathfrak o_v)\times\prod_{v\in S}G(k_v).
+\]
+若 $S\subset S'$，则 $G(A_S)\subset G(A_{S'})$。定义 $G(A)=\operatorname{inj\,lim}_{S\supset S_0}G(A_S)$，不依赖 $S_0$。每个 $v$ 都有嵌入 $G(k_v)\to G(A)$。
+
+\paragraph*{例。} (a) $G=\GL(1)$ 时，$G(A)$ 是伊代尔（idèles）群，即 $A$ 的单位群。(b) $k=\Q,G=\SL(n)$，可以验证
+\[
+ G(A)=\SL(n,\R)\cdot\left(\prod_p\SL(n,\Z_p)\right)\cdot G(\Q),
+\]
+因而有连续满射 $G(A)/G(\Q)\to\SL(n,\R)/\SL(n,\Z)$。更精确地，对正整数 $N$ 定义同余子群（congruence subgroup）$\Gamma(N)=\{\gamma\in\SL(n,\Z):\gamma\equiv1\pmod N\}$，则
+\[
+ G(A)/G(\Q)=\operatorname{proj\,lim}_N\SL(n,\R)/\Gamma(N).
+\]
+(c) 若 $G$ 为 $\Q$ 群，固定 $\Q$ 嵌入 $G\hookrightarrow\GL(n)$ 及格 $L\subset\Q^n$，令 $\Gamma\subset G(\Q)$ 为稳定 $L$ 的元素之群。$G(A)/G(\Q)$ 与 $G(\R)/\Gamma$ 有类似前例的联系，见 [1]。
+
+$G$ 连通约化时，$G(A)/G(k)$ 的主要结果如下。设 $X$ 为 $k$ 有理特征群。对 $\chi\in X$，定义特征 $|\chi|:G(A)\to\R^\times$ 为
+\[
+ |\chi|((g_v))=\prod_v|\chi(g_v)|_v,
+\]
+绝对值已正规化以满足乘积公式（product formula）。令 $G(A)^0$ 为所有这些特征的核的交。由乘积公式，$G(k)\subset G(A)^0$。
+\begin{originaltheorem}{4.11. 定理}
+(i) $G(A)^0/G(k)$ 有有限不变体积；(ii) 若 $G$ 半单，此商紧当且仅当 $G$ 在 $k$ 上各向异性。
+\end{originaltheorem}
+这是约化理论（reduction theory）的推论：数域情形归于 Borel、Harish-Chandra，函数域情形归于 Harder，见 [1]、[11]。注意，基域限制使问题归结到 $k=\Q$ 或 $k=\F_q(T)$。
+
+\origsection{5}{一类 Lie 群（A class of Lie groups）}
+本节讨论一类与约化 $\R$ 群的实点群密切相关的 Lie 群，即本论文集 Wallach 文章中的群类（另见 [12]）。我们将简要说明如何利用前述代数性质研究这类 Lie 群。特征零域上的代数群，若其 Zariski 单位连通分支约化，就称其约化。
+\paragraph*{5.1.} 设 $G$ 为 Lie 群，Lie 代数为 $\mathfrak g$，单位连通分支为 $G^0$。以 ${}^0G$ 表示所有连续同态 $G\to\R_+^\times$ 的核的交，它是闭正规子群，商 $G/{}^0G$ 为向量群（vector group）。若向量子群 $V\subset G$ 满足 $G={}^0G\cdot V$、${}^0G\cap V=\{e\}$，称其为分裂分量（split component）。此后假设：
+
+(1) 存在约化 $\R$ 群 $\mathbf G$ 及核有限的态射 $\nu:G\to\mathbf G(\R)$，其像为开子群。
+
+于是 $\nu$ 将 $\mathfrak g$ 同构到 $\Lie\mathbf G$ 的实点所成的 Lie 代数，常将二者识别。$\nu(G)^0=\mathbf G(\R)^0$，且 $G^0$ 在 $G$ 中指数有限，因为4.2(ii)及 $\ker\nu$ 有限。
+
+(2) $G$ 在 $\mathfrak g_{\C}=\mathfrak g\otimes_{\R}\C$ 自同构群中的像，位于 $\mathbf G^0$ 的像中。
+
+允许有限覆盖主要为了包含亚辛群（metaplectic group）及所有中心有限的连通半单群。(2)主要保证 $G$ 在 $\mathfrak g$ 泛包络代数的中心上平凡作用。
+\paragraph*{5.2.} 设 $\theta_0$ 为 $\GL(n,\R)$ 的自同构 $g\mapsto{}^tg^{-1}$。以 $\mathfrak s$ 表示实对称矩阵，$S_0$ 表示正定非退化实对称矩阵。则
+\[
+ \exp:x\mapsto1+x+x^2/2!+\cdots
+\]
+为 $\mathfrak s$ 到 $S_0$ 的同构。每个 $s\in S_0$ 位于唯一一个同构于 $\R$、包含于 $S_0$ 的解析单参数子群中。\footnote{\textbf{译者注（本次校订）：}这里应要求 $s\ne1$；相应子群为 $\{\exp(t\log s):t\in\R\}$。当 $s=1$ 时，它位于所有这样的子群中，因而没有所述唯一性。后面的论证在 $s=1$ 时直接成立。}任何包含 $s$、在 $\theta_0$ 下稳定且只有有限个连通分支的 Lie 子群，都包含这一单参数子群。
+\begin{originaltheorem}{5.3. 引理}
+设 $\mathbf G\subset\GL(n,\C)$ 为 $\theta_0$ 稳定的 $\R$ 子群。则：(i) 对 $s\in S_0\cap\mathbf G(\R)$，存在 $\theta_0$ 稳定、$\R$ 分裂环面 $\mathbf S\subset\mathbf G$，使 $s\in\mathbf S(\R)^0$；(ii) 对 $X\in\mathfrak s\cap\Lie\mathbf G$，存在 $\theta_0$ 稳定、$\R$ 分裂子环面，其 Lie 代数含 $X$；(iii) $\mathbf G$ 约化。
+\end{originaltheorem}
+\begin{proof}
+$s$ 生成的无穷子群的 Zariski 闭包是具有所需性质的环面。将(i)应用于 $\exp X$ 得(ii)。若 $\mathbf U$ 为幺幂根基，$s\in\mathbf U(\R)$，则 $s$ 与 $(\theta_0s)s^{-1}$ 均幺幂，而后者由(i)亦半单，故为1，从而 $s=1$。因此 $\mathbf U=\{1\}$，得(iii)。
+\end{proof}
+\paragraph*{5.4.} 按定义，$\GL(n,\R)$ 的 Cartan 对合（Cartan involution）是经内自同构共轭于 $\theta_0$ 的自同构。取5.1的 $G,\mathbf G$ 及 $\R$ 嵌入 $\mathbf G\subset\GL(n,\C)$，则 $\nu(G)$ 被某个 Cartan 对合稳定。换言之，适当共轭后，可以假设它在 $\theta_0$ 下稳定，此时称为自伴（selfadjoint），见 [1]、[15]。令 $\mathfrak k,\mathfrak s$ 分别为 $\theta$ 在 $\mathfrak g$ 中的 $+1,-1$ 特征空间，$K$ 为 $\nu(G)$ 中不动点集的逆像。
+\begin{originaltheorem}{5.5. 命题}
+$\mathfrak g$ 的自同构 $\theta$ 唯一延拓为 $G$ 的自同构，不动点集为 $K$。映射 $\mu:K\times\mathfrak s\to G$，$(k,x)\mapsto k\exp x$ 为解析流形同构。
+\end{originaltheorem}
+这些自同构称为 $G$ 的 Cartan 对合，关于 $G^0$ 元素的内自同构组成一个共轭类。$G=K\cdot S$（$S=\exp\mathfrak s$）称为 Cartan 分解（Cartan decomposition）。
+\begin{proof}
+共轭后取 $\theta=\theta_0$。$G=\GL(n,\R)$ 时，$K=\operatorname O(n),S=S_0$，结论为实矩阵极分解（polar decomposition）。先设 $\nu$ 为恒等映射。写 $g=ks$，$k\in\operatorname O(n),s\in S_0$，则 $s^2=(\theta_0g)^{-1}g\in G$。由5.2，经过 $s^2$ 的唯一单参数群在 $G$ 中，故该单参数群中 $s^2$ 的唯一平方根 $s$ 也在 $G$ 中，进而 $k\in G$。因此 $\mu$ 满射，单射性来自极分解唯一性。由 $\mathfrak g=\mathfrak k+\mathfrak s$，各点切映射双射，故为解析同构，$G$ 拓扑上为 $K$ 与欧氏空间的乘积。
+
+一般地，取 Lie 代数为 $\mathfrak g$ 的单连通群 $\widetilde G$，令 $\widetilde K$ 为 Lie 代数为 $\mathfrak k$ 的解析子群，$\pi:\widetilde G\to G^0$ 为自然投影。由于 $K$ 的单位连通分支与 $G^0$ 有相同的基本群，$\widetilde K$ 为 $K$ 的万有覆盖，故 $\ker\pi\subset\widetilde K$。$\theta$ 延拓到 $\widetilde G$ 后逐点固定 $\widetilde K$，因而在 $\ker\pi$ 上平凡，下降到 $G^0$。对 $\nu(G)$ 的结论给出 $G=KS=KG^0$。$\ker\nu$ 在 $\mathfrak g$，从而在 $G^0$ 上平凡作用，于是 $\theta:G^0\to G^0$ 显然延拓为逐点固定 $K$ 的 $G$ 自同构，其余结论随即得到。
+\end{proof}
+\begin{originaltheorem}{5.6. 推论}
+(i) $K$ 是 $G$ 的极大紧子群；(ii) $K$ 与 $G$ 的每个连通分支相交。
+\end{originaltheorem}
+$G$ 拓扑上为 $K$ 与连通空间 $S$ 的乘积，故得(ii)。每个 $s\ne1$ 生成无穷离散子群，故得(i)。此后固定稳定 $\nu(G)$ 的 Cartan 对合，并以相同符号表示5.5所得的 $G$ 的对合。
+\paragraph*{5.7.} 令 $C$ 为 $G$ 的中心。它仍满足(1)、(2)，且 $\theta$ 稳定；相应代数群为 $\mathbf G$ 的中心。与 $S$ 对应的部分是向量群 $V$，事实上是 $C$ 中极大的 $\theta$ 稳定向量子群。令 $G_1$ 为导出群。
+\begin{originaltheorem}{5.8. 引理}
+(i) ${}^0G=KG_1$，且 $V$ 为 $G$ 的分裂分量；(ii) ${}^0G$ 满足(1)、(2)，并且 $\theta$ 稳定。
+\end{originaltheorem}
+$KG_1$ 是包含于 ${}^0G$ 的 $\theta$ 稳定闭正规子群。$\mathfrak g$ 是 $KG_1,V$ 的 Lie 代数直和，得(i)。对(ii)，取 $\nu({}^0G)$ 在 $\mathbf G$ 中的 Zariski 闭包作为代数群，其单位连通分支与 $\mathbf G^0$ 只在中心部分有所不同，故亦满足(2)，稳定性显然。
+\origsubsection{5.9}{抛物子群（Parabolic subgroups）}
+若 $\mathfrak p\subset\mathfrak g$ 的复化是 $\mathbf G^0$ 某抛物 $\R$ 子群的 Lie 代数，称其为抛物子代数。$G$ 中一个抛物子代数的正规化子称为抛物子群 $P$，该子代数即其 Lie 代数。它们对应于 $\mathbf G^0$ 的抛物 $\R$ 子群。
+
+设 $\mathbf P$ 是这样的子群，幺幂根基为 $\mathbf N$，令 $\mathbf L=\mathbf P\cap\theta\mathbf P$。
+\begin{originaltheorem}{5.10. 引理}
+(i) $\mathbf L$ 为 $\mathbf P$ 的 Levi 子群；(ii) $\mathbf G$ 的 Lie 代数是 $\mathbf N,\theta\mathbf N,\mathbf L$ 的 Lie 代数的直和。
+\end{originaltheorem}
+由5.3(iii)，$\mathbf L$ 约化。$\mathbf L\mathbf N$ 是包含于 $\mathbf P$ 的抛物 $\R$ 子群，幺幂根基为 $\mathbf N$，故等于 $\mathbf P$（见3.6）。由此得(i)，而(ii)来自 $\mathbf P,\theta\mathbf P$ 为相对抛物子群。
+\paragraph*{5.11.} 设 $\mathbf S$ 为 $\mathbf L$ 中心的极大 $\R$ 分裂环面，令 $A=\nu^{-1}(\mathbf S(\R))^0$、$N=\nu^{-1}(\mathbf N(\R))^0$。$A$ 为 $\theta$ 稳定向量群，故 $\theta a=a^{-1}$。令 $P$ 为 $\mathbf P$ 对应的抛物子群，$L=P\cap\theta P$，$M={}^0L$。则 $L$ 是 $A$ 在 $G$ 中的中心化子，且 $L,M$ 都 $\theta$ 稳定。
+\begin{originaltheorem}{5.12. 命题}
+(i) $L$ 满足5.1(1)、(2)，$A$ 为 $L$ 及 $P$ 的分裂分量；(ii) $(m,a,n)\mapsto man$ 定义 $M\times A\times N$ 到 $P$ 的解析微分同胚。
+\end{originaltheorem}
+\begin{proof}
+令 $\mathbf H$ 为 $\mathbf G$ 中 $\mathbf S$ 的中心化子，则 $\nu(L)\subset\mathbf H$。其单位连通分支 $\mathbf H^0$ 约化，且等于 $\mathbf H\cap\mathbf G^0$，因为 Zariski 连通代数群中环面的中心化子连通，见 [3，第271页]。故 $L$ 满足(1)、(2)。(i)的后半部分也容易验证。由 $\mathbf P=\mathbf L\mathbf N$ 得 $P=LN=MAN$，进而得(ii)。
+\end{proof}
+称此分解为 $P$ 的 Langlands 分解（Langlands decomposition），相应 Lie 代数分解为 $\mathfrak p=\mathfrak m+\mathfrak a+\mathfrak n$。抛物对（parabolic pair）指 $P$ 与如上 $A$ 组成的 $(P,A)$。
+\origsubsection{5.13}{极小抛物子群（Minimal parabolic subgroups）}
+若 $P$ 极小，则 $\mathbf P$ 为 $\mathbf G^0$ 的极小抛物 $\R$ 子群，$\mathbf L$ 的导出群为各向异性半单群，故 $M$ 紧。因其 $\theta$ 稳定，$M\subset K$，从而 $M=K\cap P$。设 $\Phi$ 为 $(\mathbf G,\mathbf S)$ 的根系。对 $\alpha\in\Phi$，令
+\[
+ \mathfrak g_\alpha=\{X:\Ad(a)X=a^\alpha X,\ a\in A\}
+ =\{X:[H,X]=d\alpha(H)X,\ H\in\mathfrak a\}.
+\]
+存在根次序使 $\mathfrak n=\sum_{\alpha>0}\mathfrak g_\alpha$，$\theta\mathfrak n=\sum_{\alpha<0}\mathfrak g_\alpha$。
+\begin{originaltheorem}{5.14. 引理}
+(i) 有直和分解 $\mathfrak g=\mathfrak a+\mathfrak m+\mathfrak n+\theta\mathfrak n$，以及 $\mathfrak g=\mathfrak k+\mathfrak a+\mathfrak n$；(ii) $\mathfrak a$ 是 $\mathfrak s$ 中极大交换子代数。
+\end{originaltheorem}
+由5.10(ii)得第一个分解。于是 $\mathfrak k$ 为 $\mathfrak m$ 与所有 $X+\theta X$（$X\in\mathfrak n$）组成空间的直和，故 $\mathfrak k\cap\mathfrak n=0$ 且 $\mathfrak k+\mathfrak n=\mathfrak m+\mathfrak n+\theta\mathfrak n$，得第二式。类似地，$\mathfrak s$ 为 $\mathfrak a$ 与所有 $X-\theta X$ 组成空间的直和。$\mathfrak a$ 不与 $\mathfrak n+\theta\mathfrak n$ 中任何非零元素交换，得(ii)。由此也看出 $\Phi$ 是对称对（symmetric pair）$(G,K)$ 的根系，见 [13，第VII章]。
+\begin{originaltheorem}{5.15. 命题（Iwasawa 分解）}
+$(k,a,n)\mapsto kan$ 是 $K\times A\times N$ 到 $G$ 的解析微分同胚。
+\end{originaltheorem}
+\begin{proof}
+以 $\phi$ 记该映射。(a) 像为闭集：$AN$ 闭且 $G/AN$ 紧，因为 $G/P,M$ 紧。取投影 $\pi:G\to G/AN$，由 $K$ 紧，$\operatorname{im}(\pi\circ\phi)$ 闭，故 $\operatorname{im}\phi=\pi^{-1}\operatorname{im}(\pi\circ\phi)$ 闭。(b) 像与每个连通分支相交，因为 $K$ 如此。(c) 由 $\mathfrak g=\mathfrak k+\mathfrak a+\mathfrak n$，各点切映射均双射。因此，$\phi$ 的像既开又闭，并且与每个连通分支相交，所以 $\phi$ 是满射。
+
+只须证 $kan=a_1$ 蕴含 $a=a_1,k=n=e$。此时有 $\theta n=a^2na_1^{-2}$，后者的 $\nu$ 像幺幂，故 $a^2=a_1^2$，$a=a_1$，继而 $\theta n\in N\cap\theta N=\{e\}$。即得结论。
+\end{proof}
+\begin{originaltheorem}{5.16. 推论}
+对任意抛物子群 $P\subset G$，有 $G=KP$。
+\end{originaltheorem}
+令 $W$ 为 $\Phi$ 的 Weyl 群，即 $(\mathbf G^0,\mathbf S)$ 的相对 Weyl 群，见3.5：
+\[
+ W=N_{\mathbf G^0(\R)}(\mathbf S)/Z_{\mathbf G^0(\R)}(\mathbf S).
+\]
+\begin{originaltheorem}{5.17. 引理}
+$M$ 与 $G$ 的每个连通分支相交。
+\end{originaltheorem}
+只须处理 $\nu(G)=\mathbf G^0(\R)$。由 Bruhat 引理，每个连通分支都与 $N=N_{\mathbf G^0(\R)}(\mathbf S)$ 相交。取由 $P$ 确定次序的简单根 $\alpha$，令 $\mathbf U_{(\alpha)}$ 为 Lie 代数是 $(\mathfrak g_\alpha)_{\C}+(\mathfrak g_{2\alpha})_{\C}$ 的幺幂群（$2\alpha\notin\Phi$ 时第二项为零），令 $\mathbf U_{(-\alpha)}=\theta\mathbf U_{(\alpha)}$。已知
+$\mathbf U_{(\alpha)}(\R)\mathbf U_{(-\alpha)}(\R)\mathbf U_{(\alpha)}(\R)$ 含有代表 $\alpha$ 对应反射的 $N$ 元素。故 $N\subset Z_{\mathbf G^0(\R)}(\mathbf S)G^0$，得结论。由此 $W=N_G(A)/Z_G(A)$。
+\begin{originaltheorem}{5.18. 引理}
+$W\cong(K\cap N_G(A))/M$。
+\end{originaltheorem}
+取 $g=kan\in N_G(A)$，则 $(\theta n)^{-1}a^2n\in N_G(A)$。取 $w_0\in N_{\mathbf G^0(\R)}(\mathbf S)$ 代表 $W$ 的最长元素，则 $\theta n^{-1}=w_0n_1w_0^{-1}$，某 $n_1\in N$。于是 $n_1w_0^{-1}a^2n\in w_0^{-1}N_G(A)$。Bruhat 引理的唯一性推出 $n_1=e$，故 $n=e$，即得结论。因此 $W$ 也为对称空间 $G/K$ 的 Weyl 群，见 [13，第244页]。
+\begin{originaltheorem}{5.19. 命题（Cartan 分解）}
+$G=KAK$。
+\end{originaltheorem}
+命题由5.5和下面的引理推出。这里 $S$ 如前，注意 $K$ 正规化 $S$。
+\begin{originaltheorem}{5.20. 引理}
+$S=\bigcup_{k\in K}kAk^{-1}$。
+\end{originaltheorem}
+\begin{proof}
+只须对 $\nu(G)$ 证明，即设 $\nu=\operatorname{id}$。取 $s\in S$，它位于 $\mathbf G^0$ 的某个 $\theta$ 稳定 $\R$ 分裂环面 $\mathbf S_1$ 中。$\mathbf S$ 极大分裂，故 $\mathbf S_1$ 经 $\mathbf G^0(\R)$ 中元素共轭到 $\mathbf S$ 的子环面（见3.5）。由5.17可将共轭元取在 $\mathbf G^0(\R)^0$，故在 $G$ 中。于是有 $g\in G$ 使 $a_1=g^{-1}sg\in A$。写 $g=kan$，得到
+\[
+ n^{-1}a^{-2}\theta n\,a_1=a_1n^{-1}a^{-2}\theta n.
+\]
+如5.18再次用 Bruhat 唯一性，得 $a_1$ 与 $n$ 交换，故 $s$ 经 $K$ 共轭于 $A$ 元素。
+\end{proof}
+\paragraph*{5.21.} 最后初等地讨论对称空间 $G/K$ 的几何。将其与 $S$ 识别，见5.5；$G$ 的作用为 $x\cdot s=xs(\theta x)^{-1}$。对 $X\in\mathfrak s$，定义 $\|X\|^2=\Tr(X^2)$，给出 $K$ 不变欧氏距离。指数映射 $\exp:\mathfrak s\to S$ 为微分同胚，其逆记为 $\log$。在 $A$ 上定义欧氏度量
+\[
+ d(a,b)=\|\log a-\log b\|,
+\]
+从而给出欧氏仿射空间结构。以下可假设 $\nu=\operatorname{id}$。
+\begin{originaltheorem}{5.22. 引理}
+设 $s,t\in S$。(i) 存在 $x\in G$，使 $x\cdot s,x\cdot t\in A$；(ii) 若 $x'$ 也具有此性质，则存在正规化 $A$ 的 $n\in G$，使 $x^{-1}nx'$ 固定 $s,t$。
+\end{originaltheorem}
+(i)来自5.20。证明(ii)时可设 $x'=e$，从而 $s,t\in A$。令 $x\cdot s=a,x\cdot t=b$。则 $a^{-1/2}xs^{1/2}$ 与 $b^{-1/2}xt^{1/2}$ 都属于 $K$，故 $st^{-1}$ 与 $ab^{-1}$ 在 $G$ 中共轭。Bruhat 唯一性表明二者可经 Weyl 群元素共轭，得(ii)。
+\begin{originaltheorem}{5.23. 引理}
+若 $x\in G$ 且 $x\cdot A=A$，则 $x$ 在 $G$ 中正规化 $A$。
+\end{originaltheorem}
+在5.22(ii)中取 $x'=e$、$s$ 为 $A$ 正则元、$t=e$，可设 $x\in K$，且 $xs(\theta x)^{-1}=xsx^{-1}=s$。因 $s$ 正则，$x$ 中心化 $A$，即得断言。
+\paragraph*{5.24.} 平移 $x\cdot A$ 称为 $S$ 的公寓（apartments）。由5.23，每个公寓 $\mathcal A$ 有唯一欧氏仿射结构，使任何 $a\mapsto x\cdot a$ 形式的双射 $A\to\mathcal A$ 为仿射同构。由5.22(i)，任意两点都位于同一个公寓中；由(ii)，任意两个不同的点 $s,t$ 所确定的直线及其一维仿射结构与公寓的选择无关，称为 $S$ 的测地线（geodesics）。因此可定义测地线段 $[st]$ 及其间点。还存在唯一 $G$ 不变函数 $d:S\times S\to\R$，其在 $A\times A$ 上为5.21的距离。
+\begin{originaltheorem}{5.25. 命题}
+(i) $d$ 是 $S$ 上的距离；(ii) 若 $d(s,t)=d(s,u)+d(u,t)$，则 $u\in[st]$；(iii) 闭球 $\{x:d(x,a)\le r\}$ 紧。
+\end{originaltheorem}
+只须对 $G=\GL(n,\R)$ 证明，(i)、(ii)见本节附录，(iii)容易。
+\begin{originaltheorem}{5.26. 命题}
+每个 $s\in S$ 对应唯一对合解析微分同胚 $\sigma_s:S\to S$，满足：(a) 对 $d$ 为等距映射；(b) 唯一不动点为 $s$；(c) 保持经过 $s$ 的所有测地线稳定。且 $\sigma_{x\cdot s}=x\circ\sigma_s\circ x^{-1}$。
+\end{originaltheorem}
+可取 $s=e$。经过 $e,\exp X$ 的测地线为 $\exp(\xi X)$（$\xi\in\R$）。因 $d(e,\exp(\xi X))$ 正比于 $|\xi|$，$\sigma_e$ 只能为 $t\mapsto t^{-1}$。它显然满足条件，最后关系由其余条件推出。
+\begin{originaltheorem}{5.27. 引理}
+设 $s\ne s'$，$m$ 为 $[ss']$ 的中点，$t$ 不在经过 $s,s'$ 的测地线上。则
+\[
+ d(t,m)<\tfrac12d(t,s)+\tfrac12d(t,s').
+\]
+\end{originaltheorem}
+取 $\sigma=\sigma_m$，则 $\sigma s=s'$，并有
+\[
+ 2d(t,m)=d(t,\sigma(t))\le d(t,s)+d(\sigma(t),s)=d(t,s)+d(t,s').
+\]
+若取等号，由5.25(ii)，$s$ 在 $[t,\sigma(t)]$ 上，$s'=\sigma s$ 也如此，故 $s,s',t$ 共线，与假设矛盾。
+
+对 $S$ 的子集 $C$，以 $I(C)$ 表示保持 $C$ 稳定的所有 $S$ 等距变换所成群。
+\begin{originaltheorem}{5.28. 引理}
+若 $C$ 紧，则 $I(C)$ 在 $S$ 中有不动点。
+\end{originaltheorem}
+\begin{proof}
+令 $r=\inf_{x\in S}\sup_{y\in C}d(x,y)$，则
+\[
+ F=\{x\in S:\sup_{y\in C}d(x,y)=r\}
+\]
+为递减集族 $F_n=\{x:\sup_{y\in C}d(x,y)\le r+1/n\}$ 的交。各集非空且由5.25(iii)紧，故交非空。若 $a\ne b$ 均在 $F$，令 $m$ 为中点。由5.27，对 $y\in C$，有 $d(m,y)<\tfrac12d(a,y)+\tfrac12d(b,y)=r$，矛盾。因此 $F$ 仅一点，显然被 $I(C)$ 固定。\footnote{\textbf{译者注（本次校订）：}此处应假设 $C$ 非空，且需补足两步。上式的最后一个等号一般应为 $\le r$；当 $y$ 不在 $a,b$ 所在的测地线上时，5.27给出 $d(m,y)<r$。当三点共线时，由 $d(a,y),d(b,y)\le r$ 直接得到 $d(m,y)\le r-d(a,b)/2<r$。最后利用 $C$ 的紧性以及 $y\mapsto d(m,y)$ 的连续性，才能推出 $\sup_{y\in C}d(m,y)<r$，从而矛盾。}
+\end{proof}
+\begin{originaltheorem}{5.29. 定理}
+$G$ 的任意紧子群 $M$ 在 $S$ 中有不动点。
+\end{originaltheorem}
+将5.28应用到 $M$ 的任一轨道即得。
+\begin{originaltheorem}{5.30. 推论}
+$M$ 共轭于 $K$ 的子群。
+\end{originaltheorem}
+\begin{originaltheorem}{5.31. 推论}
+$G$ 的所有极大紧子群共轭。
+\end{originaltheorem}
+\paragraph*{5.32. 注记。} (1) 讨论对称空间时，我们比通常更强调它与 $p$ 进约化群的 Bruhat--Tits 建筑 $\mathcal B$ 的类比，具体如下。
+
+(a) $S$ 与 $\mathcal B$ 一样，可通过粘合公寓得到，见 [21，2.1]。
+
+(b) 我们以建筑情形相同的方法引入距离、测地线，见 [9，2.5]、[21，2.3]。建筑距离的讨论中，向公寓的收缩（retractions）起重要作用。$S$ 中也可引入这样的收缩，例如附录的 $\rho$。
+
+(c) 不动点定理5.29在建筑情形也有对应，见 [8，3.2.4]。
+
+(d) 利用强凸性质5.27证明5.29的方法来自 J. J. Duistermaat。也可用 [8] 中证明建筑对应结果的方法（另见 [21，2.3]），需要中点 $m\in[x,y]$ 满足
+\[
+ d(x,z)^2+d(y,z)^2\ge2d(m,z)^2+\tfrac12d(x,y)^2.
+\]
+本情形中亦可证明此式，例如利用指数映射 $\mathfrak s\to S$ 增大距离。
+
+\origsection{}{附录：$G=\GL(n,\R)$ 时5.25的证明}
+此时 $A$ 为正对角矩阵群。只须证明：对 $a,b\in A,s\in S$，有 $d(a,b)\le d(a,s)+d(s,b)$，等号当且仅当 $s\in[ab]$。
+
+熟知对 $s\in S$，存在唯一 $\rho(s)\in A$ 及上三角幺幂矩阵 $u(s)$，使 $s={}^tu(s)\rho(s)u(s)$。若 $a\in A$，则 $\rho(asa)=\rho(a)^2\rho(s)$。我们证明：
+\begin{originaltheorem}{引理}
+$d(\rho(s),e)\le d(s,e)$，等号当且仅当 $s\in A$。
+\end{originaltheorem}
+由引理，对所有 $a\in A$ 都有 $d(\rho(s),a)\le d(s,a)$。于是
+\[
+ d(a,b)\le d(a,\rho(s))+d(\rho(s),b)\le d(a,s)+d(s,b),
+\]
+得三角不等式，等号情形容易处理。
+
+只须证引理。设 $a_1\ge\cdots\ge a_n$ 为 $s$ 的特征值，$b_1\ge\cdots\ge b_n$ 为 $\rho(s)$ 的特征值。需证明
+\[
+ \sum_{i=1}^n(\log b_i)^2\le\sum_{i=1}^n(\log a_i)^2.
+\]
+这类结果已知，例如 H. Weyl, Ges. Abh. Bd. IV，第390页。采用 Weyl 方法：令 $g=\rho(s)^{1/2}u(s)$，则 $s={}^tgg$。存在 $v\in\R^n$ 使 $gv=b_1^{1/2}v$，故以标准内积表示，有
+\[
+ b_1(v,v)=(v,sv)\le a_1(v,v),
+\]
+所以 $b_1\le a_1$。在外幂上同样论证，得到
+$b_1\cdots b_p\le a_1\cdots a_p$（$1\le p\le n-1$），而 $b_1\cdots b_n=a_1\cdots a_n$。可设此乘积为1。
+
+令 $V\subset\R^n$ 为坐标和为零的子空间。令 $\alpha_i=e_i-e_{i+1}$（标准基，$1\le i<n$），定义 $\omega_i\in V$ 使 $(\omega_i,e_j)=\delta_{ij}$；$\omega_i$ 是 $e_1+\cdots+e_i$ 到 $V$ 的投影。\footnote{\textbf{译者注（本次校订）：}定义式应为 $(\omega_i,\alpha_j)=\delta_{ij}$（$1\le i,j<n$），而非 $(\omega_i,e_j)=\delta_{ij}$。事实上，所述投影为 $e_1+\cdots+e_i-\frac{i}{n}(e_1+\cdots+e_n)$，它与 $\alpha_j=e_j-e_{j+1}$ 的内积正是 $\delta_{ij}$。下文所谓“正系数”应理解为非负系数。}令 $x=(\log a_1,\ldots,\log a_n)$，$y=(\log b_1,\ldots,\log b_n)$，则
+\[
+ (x,\alpha_i)\ge0,\quad(y,\alpha_i)\ge0,\quad(x-y,\omega_i)\ge0,
+ \qquad1\le i<n.
+\]
+需证 $(y,y)\le(x,x)$。但
+\[
+ (x,x)-(y,y)=(x-y,x-y)+2(y,x-y).
+\]
+$y$ 是各 $\omega_i$ 的正系数线性组合，$x-y$ 是各 $\alpha_i$ 的类似组合，故 $(y,x-y)\ge0$，不等式显然。
+
+等式 $(x,x)=(y,y)$ 只有在 $x=y$ 时才能成立，此时 $\Tr(s)=\Tr(\rho(s))$。但若 $u(s)\ne e$，则显然
+\[
+ \Tr({}^tu(s)\rho(s)u(s))>\Tr(\rho(s)).
+\]
+所以迹相等蕴含 $\rho(s)=s$，引理得证。
+
+\begin{thebibliography}{22}
+\bibitem[1]{c01-1} A. Borel, \textit{Some finiteness properties of adele groups over number fields}, Inst. Hautes Études Sci. Publ. Math. \textbf{16} (1963), 5--30.
+\bibitem[2]{c01-2} A. Borel, \textit{Linear algebraic groups}, Algebraic Groups and Discontinuous Subgroups, Proc. Sympos. Pure Math., vol. 9, Amer. Math. Soc., Providence, R. I., 1966, pp. 3--20.
+\bibitem[3]{c01-3} A. Borel, \textit{Linear algebraic groups}, Benjamin, New York, 1969.
+\bibitem[4]{c01-4} A. Borel and Harish-Chandra, \textit{Arithmetic subgroups of algebraic groups}, Ann. of Math. (2) \textbf{75} (1962), 485--535.
+\bibitem[5]{c01-5} A. Borel and J. Tits, \textit{Groupes réductifs}, Inst. Hautes Études Sci. Publ. Math. \textbf{27} (1975), 55--150.
+\bibitem[6]{c01-6} A. Borel et al., \textit{Seminar in algebraic groups and related finite groups}, Lecture Notes in Math., vol. 131, Springer-Verlag, Berlin, 1970.
+\bibitem[7]{c01-7} N. Bourbaki, \textit{Groupes et algèbres de Lie}, Hermann, Paris, 1968, Chapters IV, V, VI.
+\bibitem[8]{c01-8} F. Bruhat and J. Tits, \textit{Groupes algébriques simples sur un corps local}, Proc. Driebergen Conference on Local Fields, Springer-Verlag, Berlin, 1972, pp. 23--36.
+\bibitem[9]{c01-9} F. Bruhat and J. Tits, \textit{Groupes réductifs sur un corps local. I}, Inst. Hautes Études Sci. Publ. Math. \textbf{41} (1972), 5--252.
+\bibitem[10]{c01-10} C. Chevalley, \textit{Séminaire sur la classification des groupes de Lie algébriques}, Paris, 1956--58.
+\bibitem[11]{c01-11} G. Harder, \textit{Minkowskische Reduktionstheorie über Funktionenkörpern}, Invent. Math. \textbf{7} (1969), 33--54.
+\bibitem[12]{c01-12} Harish-Chandra, \textit{Harmonic analysis on real reductive groups. I}, J. Functional Analysis \textbf{19} (1975), 104--204.
+\bibitem[13]{c01-13} S. Helgason, \textit{Differential geometry and symmetric spaces}, Academic Press, New York, 1969.
+\bibitem[14]{c01-14} J. E. Humphreys, \textit{Linear algebraic groups}, Grad. Texts in Math., vol. 21, Springer-Verlag, Berlin, 1975.
+\bibitem[15]{c01-15} G. D. Mostow, \textit{Self-adjoint groups}, Ann. of Math. (2) \textbf{62} (1955), 44--55.
+\bibitem[16]{c01-16} J.-P. Serre, \textit{Cohomologie galoisienne}, Lecture Notes in Math., vol. 5, Springer-Verlag, Berlin, 1964.
+\bibitem[17]{c01-17} SGA 3: \textit{Schémas en groupes (séminaire dirigé par A. Grothendieck)}, Lecture Notes in Math., vol. 153, Springer-Verlag, Berlin, 1970.
+\bibitem[18]{c01-18} R. Steinberg, \textit{Lectures on Chevalley groups}, Yale University, 1968.
+\bibitem[19]{c01-19} J. Tits, \textit{Classification of algebraic semi-simple groups}, Algebraic Groups and Discontinuous Subgroups, Proc. Sympos. Pure Math., vol. 9, Amer. Math. Soc., Providence, R. I., 1966, pp. 33--62.
+\bibitem[20]{c01-20} J. Tits, \textit{On buildings and their applications}, Proc. Internat. Congr. Math. (Vancouver, 1974), vol. I, Canad. Math. Soc., 1975, pp. 209--221.
+\bibitem[21]{c01-21} J. Tits, \textit{Reductive groups over local fields}, 本论文集第1册，29--69页.
+\bibitem[22]{c01-22} A. Weil, \textit{Adeles and algebraic groups}, Institute for Advanced Study, Princeton, N. J., 1961.
+\end{thebibliography}
+\noindent Mathematisch Instituut der Rijksuniversiteit, Utrecht（乌得勒支国立大学数学研究所）。

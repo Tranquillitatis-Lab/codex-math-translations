@@ -1,0 +1,783 @@
+\chapter{下降技术与代数几何中的存在定理：一般性与忠实平坦下降}
+\chapterintro{Technique de descente et théorèmes d'existence en géométrie algébrique. I. Généralités. Descente par morphismes fidèlement plats}{Bourbaki，第190号报告，1959年12月}
+\origpage{68}{190-01}
+从技术角度看，本报告及其后续报告可以看作围绕 Hilbert 著名的“定理90”展开的种种变奏。把\term{下降}{descent}{descente}方法引入代数几何，似乎应归功于 A.~Weil；他称之为“基域下降”。不过，Weil 只考虑域的有限可分扩张。随后，P.~Cartier 处理了高度为1的\term{纯不可分扩张}{purely inseparable extension}{extension radicielle}。由于当时缺少概形语言，尤其是所允许考虑的环中没有幂零元，Cartier 无法表述这两种情形在本质上的一致性。
+
+目前看来，下面介绍的一般下降技术，必要时结合“形式几何”的基本定理（见[3]），构成代数几何中大多数存在定理的基础。还应指出，这套技术肯定可以移植到“解析几何”中。我们希望，在不久的将来，解析几何专家能够证明下一报告II中形式几何存在定理的解析对应物。无论如何，Kodaira--Spencer 最近的工作已经清楚表明，需要采用更接近概形理论的方法，当然还须辅以超越方法：他们的方法似乎不适合在“\term{模空间}{moduli space}{variété de modules}”的奇点附近定义和研究模空间。
+
+本报告I讨论最初等的下降情形，即标题所指的情形。不过，下面定理1、2、3的应用已经很多。我们仅举出其中几个例子，并不试图在这里把它们表述得尽可能一般。
+
+我们将直接使用概形语言，相关内容参见前述报告及[2]。但特别提醒读者：本报告中的\term{预概形}{prescheme}{pré-schéma}不一定是 Noether 的，
+\origpage{69}{190-02}
+\term{态射}{morphism}{morphisme}也不一定是有限型的。例如，若 $A$ 是 Noether 局部环，$\widehat A$ 是其完备化，我们就要考虑非 Noether 环 $\widehat A\otimes_A\widehat A$，以及上述各环之间的包含关系所对应的仿射概形态射。
+
+\section*{A. 范畴论预备知识}
+\addcontentsline{toc}{section}{A. 范畴论预备知识}
+\subsection*{1. 纤维范畴、下降资料与下降态射}
+\begin{statement}{a. 定义1.1}
+以 $C$ 为底的\term{纤维范畴}{fibered category}{catégorie fibrée} $\mathcal F$ 由下列资料组成：一个范畴 $C$；对每个 $X\in C$，一个范畴 $\mathcal F_X$；对每个 $C$ 中的态射 $f:X\to Y$，一个\term{函子}{functor}{foncteur}
+\[
+f^*:\mathcal F_Y\longrightarrow\mathcal F_X,
+\qquad f^*(\xi)=\xi\times_Y X\quad(\xi\in\mathcal F_Y),
+\]
+其中 $X$ 看作“$C$ 中在 $Y$ 上的对象”，即带有态射 $f$ 的对象；最后，对每对可复合态射 $X\xrightarrow fY\xrightarrow gZ$，给定函子同构
+\[
+c_{f,g}:(gf)^*\longrightarrow f^*g^*.
+\]
+这些资料须满足：
+\begin{enumerate}[label=(\roman*)]
+\item $\mathrm{id}^*=\mathrm{id}$；
+\item 当 $f$ 或 $g$ 是恒等同构时，$c_{f,g}$ 是恒等同构；
+\item 对三个可复合态射 $X\xrightarrow fY\xrightarrow gZ\xrightarrow hT$，由各个 $c_{u,v}$ 构成的下列同构图交换：
+\end{enumerate}
+\[
+\begin{tikzcd}[column sep=large]
+(h(gf))^*=((hg)f)^* \arrow[r] \arrow[d] & f^*(hg)^* \arrow[d]\\
+(gf)^*h^* \arrow[r] & (f^*g^*)h^*=f^*(g^*h^*).
+\end{tikzcd}
+\]
+\end{statement}
+\begin{statement}{例1}
+设 $C$ 中存在\term{纤维积}{fiber product}{produit fibré}。令 $\mathcal F_X$ 为 $C$ 中在 $X$ 上的对象组成的范畴，并把态射 $f:X\to Y$ 对应的函子 $f^*:\mathcal F_Y\to\mathcal F_X$ 定义为 $Z\mapsto Z\times_YX$，便得到以 $C$ 为底的纤维范畴。
+\end{statement}
+\begin{statement}{例2}
+设 $C$ 为预概形范畴，对每个 $X\in C$，令 $\mathcal F_X$ 为 $X$ 上的\term{拟凝聚模层}{quasi-coherent sheaf of modules}{faisceau quasi-cohérent de modules}组成的范畴。若 $f:X\to Y$ 是预概形态射，则 $f^*:\mathcal F_Y\to\mathcal F_X$ 是模层的
+\origpage{70}{190-03}
+\term{逆像函子}{inverse-image functor}{foncteur image inverse}。这样便得到以 $C$ 为底的纤维范畴。
+\end{statement}
+\begin{statement}{b. 定义1.2}
+集合映射图
+\[
+\begin{tikzcd}
+E\arrow[r,"u"]&E'\arrow[r,shift left=.6ex,"v_1"]\arrow[r,shift right=.6ex,"v_2"']&E''
+\end{tikzcd}
+\]
+称为\term{正合}{exact}{exact}的，如果 $u$ 给出 $E$ 到集合 $\{x'\in E':v_1(x')=v_2(x')\}$ 的双射。
+\end{statement}
+\begin{statement}{定义1.3}
+设 $\mathcal F$ 是以 $C$ 为底的纤维范畴，考虑 $C$ 中的态射图
+\[
+\begin{tikzcd}
+S&S'\arrow[l,"\alpha"']&S''\arrow[l,shift left=.6ex,"\beta_1"]\arrow[l,shift right=.6ex,"\beta_2"']
+\end{tikzcd}\tag{+}
+\]
+满足 $\alpha\beta_1=\alpha\beta_2$。若对 $\mathcal F_S$ 中任意两个对象 $\xi,\eta$，下列集合映射图正合，就称此图为 $\mathcal F$-正合的：
+\[
+\begin{tikzcd}[column sep=small]
+\operatorname{Hom}(\xi,\eta)\arrow[r,"\alpha^*"]&
+\operatorname{Hom}(\alpha^*\xi,\alpha^*\eta)\arrow[r,shift left=.6ex,"\beta_1^*"]\arrow[r,shift right=.6ex,"\beta_2^*"']&
+\operatorname{Hom}(\gamma^*\xi,\gamma^*\eta),
+\end{tikzcd}
+\]
+其中 $\gamma=\alpha\beta_1=\alpha\beta_2$。为简化记号，已通过 $c_{\beta_i,\alpha}$ 把 $\beta_i^*\alpha^*$ 与 $(\alpha\beta_i)^*=\gamma^*$ 等同。
+\end{statement}
+\begin{statement}{定义1.4}
+设 $\mathcal F$ 是以 $C$ 为底的纤维范畴，$\beta_1,\beta_2:S''\to S'$ 是 $C$ 中的两个态射，$\xi'\in\mathcal F_{S'}$。$\xi'$ 上相对于 $(\beta_1,\beta_2)$ 的\term{粘合资料}{gluing datum}{donnée de recollement}，是指从 $\beta_1^*(\xi')$ 到 $\beta_2^*(\xi')$ 的一个同构。若 $\xi',\eta'\in\mathcal F_{S'}$ 各自带有粘合资料，则态射 $u:\xi'\to\eta'$ 称为与粘合资料相容的，如果下图交换：
+\[
+\begin{tikzcd}
+\beta_1^*(\xi')\arrow[r]\arrow[d,"\beta_1^*(u)"']&\beta_2^*(\xi')\arrow[d,"\beta_2^*(u)"]\\
+\beta_1^*(\eta')\arrow[r]&\beta_2^*(\eta').
+\end{tikzcd}
+\]
+\end{statement}
+这样，$\mathcal F_{S'}$ 中带有相对于 $(\beta_1,\beta_2)$ 的粘合资料的对象组成一个范畴。若 $\alpha:S'\to S$ 满足 $\alpha\beta_1=\alpha\beta_2$，则对任意 $\xi\in\mathcal F_S$，对象 $\xi'=\alpha^*(\xi)$
+\origpage{71}{190-04}
+自然带有粘合资料，因为
+\[
+\beta_i^*\alpha^*(\xi)\simeq(\alpha\beta_i)^*(\xi)=\gamma^*(\xi),
+\qquad\gamma=\alpha\beta_1=\alpha\beta_2.
+\]
+而且，若 $u:\xi\to\eta$ 是 $\mathcal F_S$ 中的态射，则
+\[
+\alpha^*(u):\alpha^*(\xi)\longrightarrow\alpha^*(\eta)
+\]
+与上述典范粘合资料相容。由此得到从 $\mathcal F_S$ 到 $\mathcal F_{S'}$ 中带有相对于 $(\beta_1,\beta_2)$ 的粘合资料的对象所组成的范畴的一个典范函子。
+
+于是，定义1.3还可以表述为：其中的图(+)是 $\mathcal F$-正合的，当且仅当上述函子\term{全忠实}{fully faithful}{pleinement fidèle}，即它给出 $\mathcal F_S$ 与上述带粘合资料的对象范畴的一个子范畴之间的等价。
+\begin{statement}{定义1.5}
+$\xi'\in\mathcal F_{S'}$ 上的粘合资料称为相对于 $\alpha$ \term{有效}{effective}{effective}的，如果带有此资料的 $\xi'$ 同构于某个 $\alpha^*(\xi)$，其中 $\xi\in\mathcal F_S$。
+\end{statement}
+当图(+)为 $\mathcal F$-正合时，这一定义中的 $\xi$ 在唯一同构的意义下唯一确定；并且 $\mathcal F_S$ 等价于 $\mathcal F_{S'}$ 中带有有效粘合资料的对象所组成的范畴。
+
+c. 最重要的情形是
+\[
+S''=S'\times_SS',
+\]
+$\beta_i$ 为投向两个因子的投影 $p_1,p_2$。现在假设 $C$ 中存在纤维积。要使 $\xi'\in\mathcal F_{S'}$ 上的粘合资料 $\varphi:p_1^*(\xi')\to p_2^*(\xi')$ 有效，立刻得到两个必要条件：
+\begin{enumerate}[label=(\roman*)]
+\item $\Delta^*(\varphi)=\mathrm{id}_{\xi'}$，其中 $\Delta:S'\to S'\times_SS'$ 为对角态射，并已将 $\Delta^*p_i^*(\xi')$ 与 $(p_i\Delta)^*(\xi')=\xi'$ 等同；
+\item $p_{31}^*(\varphi)=p_{32}^*(\varphi)\,p_{21}^*(\varphi)$，
+\end{enumerate}
+\origpage{72}{190-05}
+其中 $p_{ij}$ 为从 $S'\times_SS'\times_SS'$ 到其第 $i$、第 $j$ 个因子组成的部分乘积的典范投影。
+\begin{statement}{定义1.6}
+$\xi'\in\mathcal F_{S'}$ 上相对于态射 $\alpha:S'\to S$ 的\term{下降资料}{descent datum}{donnée de descente}，是指相对于两典范投影 $p_1,p_2:S'\times_SS'\to S'$ 的、满足上述条件(i)、(ii)的粘合资料。
+\end{statement}
+\begin{statement}{定义1.7}
+若态射图
+\[
+\begin{tikzcd}
+S&S'\arrow[l,"\alpha"']&S'\times_SS'\arrow[l,shift left=.6ex,"p_1"]\arrow[l,shift right=.6ex,"p_2"']
+\end{tikzcd}
+\]
+是 $\mathcal F$-正合的（定义1.3），就称 $\alpha:S'\to S$ 为 $\mathcal F$-\term{下降态射}{descent morphism}{morphisme de descente}。若进而 $\mathcal F_{S'}$ 中任意对象上的下降资料均有效，就称其为\term{严格下降态射}{strict descent morphism}{morphisme de descente strict}。
+\end{statement}
+最后这个条件可以更形象地表述为：给出 $\mathcal F_S$ 的一个对象，和给出 $\mathcal F_{S'}$ 的一个带有下降资料的对象，“是同一回事”。
+
+注意，若 $\mathcal F$-下降态射 $\alpha:S'\to S$ 有一个\term{截面}{section}{section} $s:S\to S'$，即 $\alpha s=\mathrm{id}_S$，它便是严格下降态射。事实上，若 $\xi'\in\mathcal F_{S'}$ 带有相对于 $\alpha$ 的下降资料，则它来自 $\xi=s^*(\xi')$。
+
+ d. 引入以 $C$ 中在 $S$ 上的对象 $T$ 为参数的集合
+\[
+\operatorname{Hom}_S(T,S')=S'(T)
+\]
+后，上述概念可以更直观地表述。将其元素记为 $t,t'$ 等。给定 $\xi'\in\mathcal F_{S'}$，每个 $t\in S'(T)$ 对应 $\mathcal F_T$ 中的对象 $t^*(\xi')$，也记作 $\xi'_t$。于是，$\xi'$ 上相对于 $(p_1,p_2)$ 的粘合资料，就是对每个在 $S$ 上的 $T$ 以及每对 $t,t'\in S'(T)$，给出一个同构
+\[
+\varphi_{t',t}:\xi'_t\longrightarrow\xi'_{t'},
+\]
+并使它在 $T$ 变化时满足显然的函子性条件。1.c中的条件(i)、(ii)相应地写成
+\[
+\varphi_{t,t}=\mathrm{id}_{\xi'_t}\qquad\text{对所有 $T$ 和 $t\in S'(T)$}.
+\tag{i bis}
+\]
+\origpage{73}{190-06}
+\[
+\varphi_{t,t''}=\varphi_{t,t'}\varphi_{t',t''}
+\qquad\text{对所有 $T$ 及 $t,t',t''\in S'(T)$}.
+\tag{ii bis}
+\]
+在(ii bis)中取 $t=t'=t''$，即得 $\varphi_{t,t}^2=\varphi_{t,t}$；由于按假设 $\varphi_{t,t}$ 是同构，便推出(i bis)。所以(i bis)实际上是(ii bis)的推论，因而(i)也是(ii)的推论。不过，若不事先假定 $\varphi_{t,t'}$ 都是同构，即不假定 $\varphi:p_1^*(\xi')\to p_2^*(\xi')$ 是同构，则(ii bis)未必推出(i bis)；但两者合起来仍可推出 $\varphi_{t,t'}$ 是同构，因为
+\[
+\varphi_{t,t'}\varphi_{t',t}=\varphi_{t,t}=\mathrm{id}_{\xi'_t}.
+\]
+
+\subsection*{2. 正合图与严格满态射、下降态射：例子}
+\begin{statement}{a. 定义2.1}
+设 $C$ 为一个范畴。$C$ 中的态射图
+\[
+\begin{tikzcd}
+T\arrow[r,"\alpha"]&T'\arrow[r,shift left=.6ex,"\beta_1"]\arrow[r,shift right=.6ex,"\beta_2"']&T''
+\end{tikzcd}
+\]
+称为正合的，如果对所有 $Z\in C$，相应的集合映射图
+\[
+\begin{tikzcd}[column sep=small]
+\operatorname{Hom}(Z,T)\arrow[r]&\operatorname{Hom}(Z,T')\arrow[r,shift left=.6ex]\arrow[r,shift right=.6ex]&\operatorname{Hom}(Z,T'')
+\end{tikzcd}
+\]
+正合（定义1.2）。这时称 $(T,\alpha)$，或略滥用术语，称 $T$ 为态射对 $(\beta_1,\beta_2)$ 的\term{等化子}{equalizer}{noyau}。
+\end{statement}
+显然，等化子在唯一同构的意义下唯一确定。若 $C$ 为集合范畴，这一定义与定义1.2相容。对偶地，定义 $C$ 中的态射图
+\[
+\begin{tikzcd}
+S&S'\arrow[l,"\alpha"']&S''\arrow[l,shift left=.6ex,"\beta_1"]\arrow[l,shift right=.6ex,"\beta_2"']
+\end{tikzcd}
+\]
+的正合性，并称 $(S,\alpha)$ 为态射对 $(\beta_1,\beta_2)$ 的\term{余等化子}{coequalizer}{conoyau}。
+\begin{statement}{定义2.2}
+态射 $\alpha:S'\to S$ 称为\term{严格满态射}{strict epimorphism}{épimorphisme strict}，如果它是\term{满态射}{epimorphism}{épimorphisme}，并且对任意态射 $u:S'\to Z$，下面这个使 $u$ 分解为 $S'\to S\to Z$ 的必要条件也是充分条件：对每个 $S''\in C$ 以及每对满足 $\alpha\beta_1=\alpha\beta_2$ 的态射 $\beta_1,\beta_2:S''\to S'$，都有 $u\beta_1=u\beta_2$。
+\end{statement}
+如果存在纤维积 $S'\times_SS'$，这等价于说
+\[
+\begin{tikzcd}
+S&S'\arrow[l,"\alpha"']&S'\times_SS'\arrow[l,shift left=.6ex,"p_1"]\arrow[l,shift right=.6ex,"p_2"']
+\end{tikzcd}
+\]
+\origpage{74}{190-07}
+正合，即 $S$ 为 $(p_1,p_2)$ 的余等化子。在任何情形下，余等化子态射都是严格满态射。还应注意，一个同时为\term{单态射}{monomorphism}{monomorphisme}的严格满态射必为同构。对偶的\term{严格单态射}{strict monomorphism}{monomorphisme strict}概念，留给读者自行展开。
+
+为了说明 $\mathcal F$-下降态射与严格满态射这两个概念的关系，再引入下列定义。
+\begin{statement}{定义2.3}
+态射 $\alpha:S'\to S$ 称为\term{泛满态射}{universal epimorphism}{épimorphisme universel}，分别称为\term{泛严格满态射}{universal strict epimorphism}{épimorphisme strict universel}，如果对每个在 $S$ 上的对象 $T$，纤维积 $T'=S'\times_ST$ 存在，而且投影 $T'\to T$ 为满态射，分别为严格满态射。
+\end{statement}
+在性质非常好的范畴中，例如集合范畴、拓扑空间上的集合层范畴、Abel 范畴等，以上四种满性概念彼此相同；但在预概形范畴，或某个非空预概形 $S$ 上的预概形范畴中，它们却两两不同，即使只考虑在 $S$ 上有限的 $S$-概形也是如此。
+\begin{statement}{定义2.4}
+态射 $\alpha:S'\to S$ 称为下降态射，分别称为严格下降态射，如果它是 $\mathcal F$-下降态射，分别为严格 $\mathcal F$-下降态射（定义1.7），其中 $\mathcal F$ 是 $C$ 的对象之上的 $C$ 中对象所构成的纤维范畴（第1节例1）。
+\end{statement}
+\begin{statement}{命题2.1}
+若 $C$ 中存在有限积和有限纤维积，则 $C$ 中的下降态射恰好就是泛严格满态射。
+\end{statement}
+\begin{statement}{b. 例}
+设 $C$ 为预概形范畴，$S\in C$，$S'$、$S''$ 是在 $S$ 上有限的两个预概形。换言之，它们对应 $S$ 上的代数层 $\mathcal A'$、$\mathcal A''$，其底层模层拟凝聚且为有限型；若 $S$ 局部 Noether，也就是说它们是凝聚层。设 $\alpha:S'\to S$ 为结构态射，$\beta_1,\beta_2:S''\to S'$ 是由代数同态 $\mathcal A'\to\mathcal A''$ 给出的两个 $S$-态射，这两个同态仍记为 $\beta_1,\beta_2$。利用有限态射是闭映射这一事实，即 Cohen--Seidenberg 第一定理，容易证明：$C$ 中的图
+\[
+\begin{tikzcd}
+S&S'\arrow[l,"\alpha"']&S''\arrow[l,shift left=.6ex,"\beta_1"]\arrow[l,shift right=.6ex,"\beta_2"']
+\end{tikzcd}\tag{+}
+\]
+正合，当且仅当 $S$ 上的层图
+\origpage{75}{190-08}
+\[
+\begin{tikzcd}
+\mathcal O_S=\mathcal A\arrow[r,"\alpha"]&\mathcal A'\arrow[r,shift left=.6ex,"\beta_1"]\arrow[r,shift right=.6ex,"\beta_2"']&\mathcal A''
+\end{tikzcd}
+\]
+正合。特别地，若有限态射 $\alpha:S'\to S$ 对应于 $S$ 上的代数层 $\mathcal A'$，则 $\alpha$ 是严格满态射，当且仅当层图
+\[
+\begin{tikzcd}
+\mathcal O_S=\mathcal A\arrow[r]&\mathcal A'\arrow[r,shift left=.6ex,"p_1"]\arrow[r,shift right=.6ex,"p_2"']&\mathcal A'\otimes_{\mathcal A}\mathcal A'
+\end{tikzcd}
+\]
+正合；而它是满态射，当且仅当 $\mathcal A\to\mathcal A'$ 单射。若 $S$ 为环 $A$ 的仿射概形，从而 $S'$ 为有限 $A$-代数 $A'$ 的仿射概形，则 $S'\to S$ 为严格满态射，当且仅当 $A\to A'$ 把 $A$ 同构地映到 $A'$ 中由满足
+\[
+1_{A'}\otimes_Ax'-x'\otimes_A1_{A'}=0
+\]
+的 $x'\in A'$ 所组成的子环；它是满态射，当且仅当 $A\to A'$ 单射。正如已经指出的，即使 $S$ 是 Artin 局部环的概形，有限满态射 $S'\to S$ 也未必是严格满态射。不过可以证明：若 $S$ 为 Noether 预概形，则任意有限满态射 $S'\to S$ 都是有限多个严格满态射的复合，其中各态射仍是有限的。顺带可见，两个严格满态射的复合未必是严格满态射。
+\end{statement}
+
+c. 若(+)是有限态射组成的正合图，则对任意\term{平坦}{flat}{plat}预概形态射 $T\to S$，经此\term{基变换}{base change}{changement de base}所得的图仍正合。因此，若 $X,Y$ 是两个 $S$-预概形，且 $X$ 在 $S$ 上平坦，则下列集合映射图正合：
+\[
+\begin{tikzcd}[column sep=small]
+\operatorname{Hom}_S(X,Y)\arrow[r]&\operatorname{Hom}_{S'}(X',Y')\arrow[r,shift left=.6ex]\arrow[r,shift right=.6ex]&\operatorname{Hom}_{S''}(X'',Y''),
+\end{tikzcd}
+\]
+其中 $X',Y'$ 是 $X,Y$ 在 $S'$ 上的逆像，$X'',Y''$ 是它们在 $S''$ 上的逆像。特别地，设 $\mathcal F$ 为以预概形范畴 $C$ 为底的纤维范畴，且 $\mathcal F_X$ 为平坦 $X$-预概形的范畴，则(+)是 $\mathcal F$-正合的。不作平坦性假设时，这一结果不成立；尤其，有限严格满态射未必是下降态射。同样，如果 $\mathcal F_X$ 为 $X$ 上的平坦拟凝聚层所组成的范畴，(+)也为 $\mathcal F$-正合的，
+\origpage{76}{190-09}
+这里平坦性假设同样不可缺少。
+
+在这两种情形中，$S'$ 上的平坦对象所带粘合资料是否有效，都是微妙的问题；特别地，取 $S''=S'\times_SS'$ 时，下降资料的有效性也是如此。在各个特殊情形下回答这一问题，正是这一系列报告的主要目的之一。报告人不知道：对任意有限严格满态射 $S'\to S$，$S'$ 上平坦拟凝聚层的所有下降资料是否都有效，即使 $S$ 是 Artin 局部环的谱，且只考虑秩1局部自由层，也仍不知道。
+
+更一般地，设 $A$ 为环，$A'$ 为 $A$-代数，这里所有环均交换，且映射图
+\[
+A\longrightarrow A'\rightrightarrows A'\otimes_AA'
+\]
+正合。这又等价于说，$A,A'$ 的谱之间的态射 $S'\to S$ 为 $\mathcal F$-下降态射，其中 $\mathcal F$ 是平坦拟凝聚层的纤维范畴。设 $M'$ 是平坦 $A'$-模，带有到 $A$ 的下降资料，即 $A'\otimes_AA'$-模同构
+\[
+\varphi:M'\otimes_AA'\xrightarrow{\ \sim\ }A'\otimes_AM'
+\]
+满足1.c的条件(i)、(ii)；其模论形式留给读者写出。此资料相对于平坦拟凝聚层的纤维范畴是否有效？令 $M$ 为 $M'$ 中满足
+\[
+\varphi(x'\otimes_A1_{A'})=1_{A'}\otimes_Ax'
+\]
+的 $x'$ 所组成的集合；这是 $M'$ 的一个 $A$-子模。典范单射 $M\to M'$ 给出 $A'$-模同态 $M\otimes_AA'\to M'$。$\varphi$ 的有效性恰好是说：$M$ 为平坦 $A$-模，且此同态为同构。
+\begin{statement}{注}
+上述讨论没有对(+)中各态射作平坦性假设；为了得到下降技术，我们不得不对所考虑的 $S,S'$ 上的对象要求平坦性。在后面的第2部分，我们将假设 $\alpha:S'\to S$ 平坦，从而得到一种下降技术，其中 $S,S'$ 上的对象不再需要满足任何平坦性条件。无论哪种情形，总有一个平坦性假设参与其中。这是平坦性概念在代数几何中之所以重要的主要原因之一；当人们仅考虑基域时，这种作用无从显现，因为域上的任何东西本来就是平坦的！
+\end{statement}
+
+\origpage{77}{190-10}
+\subsection*{3. 对平展态射的应用}
+设 $A$ 为局部环，$B$ 为 $A$ 上的局部代数，其极大理想在 $A$ 上的逆像为 $A$ 的极大理想。若满足下列条件，就说 $B$ 在 $A$ 上\term{平展}{étale}{étalé}，而不用其他文献中的“非分歧”一词：
+\begin{enumerate}[label=(\roman*)]
+\item $B$ 在 $A$ 上平坦；
+\item $B/\mathfrak mB$ 是 $A/\mathfrak m=k$ 的有限可分扩张，其中 $\mathfrak m$ 是 $A$ 的极大理想。
+\end{enumerate}
+当 $A,B$ 为 Noether 环且 $k$ 代数闭时，这等价于延拓 $A\to B$ 的完备化同态 $\widehat A\to\widehat B$ 为同构。有限型态射 $f:T\to S$ 称为在 $x\in T$ 处平展，或称 $T$ 在 $x$ 处于 $S$ 上平展，如果 $\mathcal O_x$ 在 $\mathcal O_{f(x)}$ 上平展。若 $f$ 在所有 $x\in T$ 处平展，就称 $f$ 为\term{平展态射}{étale morphism}{morphisme étale}，也称为一个平展映射（étalement），或称 $T$ 在 $S$ 上平展。注意，若 $S$ 局部 Noether，则 $T$ 中 $f$ 平展的点组成开集；利用 Zariski 主定理，还能通过一个熟知类型的方程，进一步描述 $T/S$ 在这种点附近的结构。
+
+当 $S$ 为复数域上的有限型概形时，它对应 Serre [5]意义下的一个解析空间 $\overline S$；差别仅在于其结构层可能含幂零元，这不会对[5]产生实质影响。容易看出，$f$ 平展，当且仅当 $\overline f:\overline T\to\overline S$ 平展，即 $\overline T$ 中每点都有一个邻域，使 $\overline f$ 将该邻域同构地映到 $\overline S$ 的一个开集。特别地，$S$ 的任意\term{平展覆盖}{étale covering}{revêtement étale} $T$，即有限平展态射 $f:T\to S$，都对应 $\overline S$ 的一个平展覆盖 $\overline T$；而且 $\overline T$ 连通，当且仅当 $T$ 连通[5]。
+
+此外，容易看出，若 $T,T'$ 是 $S$ 上的两个平展概形，则自然映射
+\[
+\operatorname{Hom}_S(T,T')\longrightarrow
+\operatorname{Hom}_{\overline S}(\overline T,\overline T')
+\]
+为双射。换言之，从 $S$ 上平展概形范畴到 $\overline S$ 上平展解析空间范畴的函子 $T\mapsto\overline T$ 全忠实，因此给出前一范畴与后一范畴的一个子范畴之间的等价。Grauert--Remmert 的一个定理[2]说明：若 $S$ 正规，由此得到 $S$ 的平展覆盖范畴与 $\overline S$ 的有限平展覆盖范畴之间的等价。也就是说，$\overline S$ 的任意平展覆盖 $\mathcal T$ 都在 $\overline S$ 上同构于某个 $\overline T$，其中 $T$ 为 $S$ 的平展覆盖。
+
+下面说明，无须假设 $S$ 正规，Grauert--Remmert 定理仍然成立。先设 $S'\to S$ 为有限严格满态射，并假设该定理已对 $S'$ 证明，
+\origpage{78}{190-11}
+我们来证明它对 $S$ 也成立。设 $\mathcal T$ 为 $\overline S$ 的平展覆盖，考虑它在 $\overline {S'}$ 上的逆像 $\mathcal T'$。它对应 $\overline {S'}$ 上的凝聚解析代数层 $\mathcal A'_{\mathrm{an}}$，后者是定义 $\mathcal T$ 的 $\overline S$ 上代数层 $\mathcal A_{\mathrm{an}}$ 的逆像。按假设，$\mathcal T'$ 来自 $S'$ 的平展覆盖 $T'$，即 $\mathcal A'_{\mathrm{an}}$ 来自 $S'$ 上的凝聚代数层 $\mathcal A'$。另一方面，$\mathcal A'_{\mathrm{an}}$ 带有相对于 $\overline {S'}\to\overline S$ 的典范下降资料，即其在
+\[
+\overline {S'}\times_{\overline S}\overline {S'}
+=\overline{S'\times_SS'}
+\]
+上的两个逆像之间满足条件(i)、(ii)的同构。根据前述讨论，这个同构来自相应代数层之间的同构，即来自 $\mathcal A'$ 上相对于 $S'\to S$ 的下降资料。容易验证，后者有效，因为 $\mathcal A'_{\mathrm{an}}$ 上的资料有效，而按上一节的具体描述，下降资料的有效性可以局部地在有关模的完备化上判定。于是得到 $S$ 上的凝聚代数层 $\mathcal A$，它定义 $S$ 的覆盖 $T$，正是所求的覆盖。
+
+显然，如果 $S'\to S$ 仅仅是有限多个有限严格满态射的复合，上述结果仍成立。根据第2节提到的分解结果，这就是说任意有限满态射都适用。对约化概形 $S$，即 $\mathcal O_S$ 不含非零幂零元的情形，引入其正规化 $S'$，便知 Grauert--Remmert 定理仍然成立。再由此容易推广到一般情形。
+
+完全类似的证明，再次利用有限满态射的上述分解，以及下降资料有效性所具有的“形式”性质，可以证明下述结果。设 $S$ 为局部 Noether 预概形，$S'\to S$ 为有限、满射、\term{根态射}{radicial morphism}{morphisme radiciel}；等价地，它是有限型态射，且对任意在 $S$ 上的 $T$，态射 $T'=S'\times_ST\to T$ 都是同胚，也就是 $S'\to S$ 为\term{泛同胚}{universal homeomorphism}{homéomorphisme universel}。对任意在 $S$ 上平展的 $T$，考虑其逆像 $T'=T\times_SS'$，后者在 $S'$ 上平展。那么，函子 $T\mapsto T'$ 给出 $S$ 上平展预概形 $T$ 的范畴与 $S'$ 上平展预概形 $T'$ 的范畴之间的等价。证明所用的是：对 $S$ 上的两个平展预概形 $T_1,T_2$，
+\[
+\operatorname{Hom}_S(T_1,T_2)\longrightarrow
+\operatorname{Hom}_{S'}(T'_1,T'_2)
+\]
+为双射，这容易直接验证；并且，当 $S'=(S,\mathcal O_S/\mathcal I)$，
+\origpage{79}{190-12}
+$\mathcal I$ 为 $\mathcal O_S$ 的幂零凝聚理想层时，该定理成立（[4]，引理6）。注意，这里并未假设所考虑的 $T$ 在 $S$ 上有限。特别地，这一结果说明：态射 $S'\to S$ 诱导 $S'$ 的基本群到 $S$ 的基本群的同构，即“预概形基本群的拓扑不变性”。
+
+\subsection*{4. 与一阶上同调的关系}
+a. 设 $C$ 中任意两个对象都有乘积，$T\in C$。对每个非空有限集 $I$，可以考虑 $T^I$；令 $I$ 变化，便得到非空有限集范畴到 $C$ 的一个函子，即 $C$ 中的一个\term{单纯对象}{simplicial object}{objet simplicial}，记为 $K_T$。\translatornote{原文称 $I\mapsto T^I$ 为“协变函子”，此处应按反变理解：映射 $u:I\to J$ 通过坐标拉回给出 $T^J\to T^I$。限制到有限有序集所成的单纯范畴，恰得这里所需的单纯对象；而 $T\mapsto K_T$ 仍是协变的。}
+它协变地依赖于 $T$；而且，若 $u,v:T\to T'$ 为两个态射，则对应的态射 $K_T\to K_{T'}$ 同伦。若 $\operatorname{Hom}(T,T')\ne\varnothing$，便说 $T$ \term{支配}{dominate}{domine} $T'$。这是 $C$ 上的一个向上滤过的预序关系。由前述事实可知，若 $T$ 支配 $T'$，则单纯对象态射 $K_T\to K_{T'}$ 有一个典范的同伦类。特别地，若 $T,T'$ 彼此支配，则 $K_T,K_{T'}$ 同伦等价。
+
+现设 $F$ 是从 $C$ 到 Abel 范畴 $C'$ 的函子；为确定起见，取为反变函子。于是
+\[
+C^*(T,F)=F(K_T)
+\]
+是 $C'$ 中的\term{余单纯对象}{cosimplicial object}{objet cosimplicial}，因而按熟知的方式定义 $C'$ 中的一个上链复形。取其上同调，得到
+\[
+H^*(T,F)=H^*(C^*(T,F))=H^*(F(K_T)).
+\]
+若可能混淆，可在 $H^*$ 下标明 $C$。这是关于 $T$ 的上同调函子，其随 $T$ 变化的方向由上述 $K_T$ 的性质决定。确切地说，固定 $F$，令 $T$ 在按支配关系预序化的 $C$ 中变化，$H^*(T,F)$ 构成 $C'$ 中分次对象的一个归纳系统。特别地，若 $T,T'$ 彼此支配，则 $H^*(T,F)$ 与 $H^*(T',F)$ 典范同构。
+
+假设 $C$ 中存在纤维积。固定 $S\in C$ 后，可将上述构造用于 $C$ 中在 $S$ 上的对象所组成的范畴 $C_S$。为表明使用的是 $C_S$，可把 $C^*(T,F)$、$H^*(T,F)$ 写成 $C^*(T/S,F)$、$H^*(T/S,F)$。
+\origpage{80}{190-13}
+于是，$C^*(T/S,F)$ 是 $C'$ 中的上链复形，其 $n$ 次项为
+\[
+F(\underbrace{T\times_ST\times_S\cdots\times_ST}_{n+1\text{ 个因子}}).
+\]
+
+与通常一样，不必假定 $C'$ 为 Abel 范畴，也可以定义 $H^0(T/S,F)$：它是两投影 $p_1,p_2:T\times_ST\to T$ 所对应的态射对
+\[
+F(T)\rightrightarrows F(T\times_ST)
+\]
+的等化子（定义2.1），只要该等化子存在。特别地，有一个自然态射，称为\term{增广态射}{augmentation morphism}{morphisme d'augmentation}，
+\[
+F(S)\longrightarrow H^0(T/S,F).
+\]
+在良好情形下，它是同构；特别地，当 $T\to S$ 为严格满态射且 $F$“左正合”时如此。同样，当 $F$ 取值于某范畴 $C''$ 中的群对象范畴时，也可以定义 $H^1(T/S,F)$。当 $C''$ 为集合范畴，即 $F$ 取值为不一定交换的通常群时，$H^1(T/S,F)$ 是 $C^1(T/S,F)=F(T\times_ST)$ 中由满足
+\[
+F(p_{31})(g)=F(p_{32})(g)\,F(p_{21})(g)
+\]
+的 $g$ 所组成的子集 $Z^1(T/S,F)$，在作用群 $F(T)$ 下的轨道集。\translatornote{原文把 $Z^1$ 称为“子群”，但在非交换情形下一般仅为子集；这里的商也应理解为轨道集。例如，在后文例1所涵盖的群上同调情形，取 $\Gamma=\mathbb Z/2\mathbb Z$ 平凡作用于 $S_3$。把非平凡元分别映到两个不同换位，得到两个1-余圈；它们的逐点乘积把该元映到一个3-循环，已不是1-余圈。因此1-余圈不对逐点乘法封闭。}
+该群在 $C^1(T/S,F)$ 上的作用，因而在其子集 $Z^1(T/S,F)$ 上的作用，写成
+\[
+f(g')\cdot g=F(p_2)(g')\,g\,F(p_1)(g')^{-1}.
+\]
+
+b. 例如，设 $\mathcal F$ 为以 $C$ 为底的纤维范畴。对 $\xi,\eta\in\mathcal F_S$ 以及任意在 $S$ 上的 $S'$，令
+\[
+F_{\xi,\eta}(S')=
+\operatorname{Hom}(\xi\times_SS',\eta\times_SS').
+\]
+这定义了从 $C_S$ 到集合范畴的反变函子。对每对 $\xi,\eta\in\mathcal F_S$，增广态射
+\[
+F_{\xi,\eta}(S)\longrightarrow H^0(S'/S,F_{\xi,\eta})
+\]
+均为同构，恰好意味着 $\alpha:S'\to S$ 是 $\mathcal F$-下降态射（定义1.7）。
+
+c. 同样，对 $\xi\in\mathcal F_S$ 及 $C$ 中任意在 $S$ 上的 $S'$，令
+\[
+G_\xi(S')=\operatorname{Aut}(\xi\times_SS'),
+\]
+便定义了从 $C_S$ 到群范畴的反变函子。
+\origpage{81}{190-14}
+于是，$Z^1(S'/S,G_\xi)$ 典范地等同于 $\xi'=\xi\times_SS'$ 上相对于 $S'\to S$ 的下降资料集合（定义1.6）；$H^1(S'/S,G_\xi)$ 则等同于如下对象的同构类集合：$\mathcal F_{S'}$ 中带有相对于 $\alpha:S'\to S$ 的下降资料，且忘掉此资料后与 $\xi'=\xi\times_SS'$ 同构的对象。
+
+因此，若 $\alpha:S'\to S$ 为 $\mathcal F$-下降态射，见(b)，则 $H^1(S'/S,G_\xi)$ 包含如下集合：$\mathcal F_S$ 中满足 $\eta\times_SS'\simeq\xi\times_SS'$ 的对象 $\eta$ 的同构类集合。这个包含关系为等式，当且仅当 $\xi'=\xi\times_SS'$ 上相对于 $\alpha$ 的所有下降资料都有效。特别地，$\alpha$ 为严格 $\mathcal F$-下降态射时就是如此。
+\begin{statement}{注}
+$C^*(T/S,F)$ 这种上链复形包括大多数熟知的标准复形，例如 Čech 上同调和群上同调的复形。它们在代数几何中作用重要，尤其是在预概形的“Weil 上同调”中。
+\end{statement}
+\begin{statement}{d. 例1}
+设 $S'$ 为 $S\in C$ 上的对象，$\Gamma$ 为 $S'$ 的一个自同构群，并假设 $S'$ 是“$S$ 上以 $\Gamma$ 为群的形式主对象”，即自然态射
+\[
+\Gamma\times S'\longrightarrow S'\times_SS'
+\]
+为同构。这里 $\Gamma\times S'$ 表示 $\Gamma$ 个 $S'$ 的直和，并假设 $C$ 中存在此处用到的直和。设 $F$ 为从 $C$ 到 Abel 群范畴的反变函子。则 $C^*(S'/S,F)$ 典范同构于标准齐次上链的单纯群 $C^*(\Gamma,F(S'))$，从而
+\[
+H^*(S'/S,F)\simeq H^*(\Gamma,F(S'))
+\]
+也是典范同构。
+\end{statement}
+\begin{statement}{e. 例2}
+设 $C$ 为预概形范畴。用 $G_a$，即\term{加法群}{additive group}{groupe additif}，表示从 $C$ 到 Abel 群范畴的反变函子
+\[
+G_a(X)=H^0(X,\mathcal O_X).
+\]
+同样，定义\term{乘法群}{multiplicative group}{groupe multiplicatif}函子
+\[
+G_m(X)=H^0(X,\mathcal O_X)^*,
+\]
+即环 $H^0(X,\mathcal O_X)$ 的可逆元群。更一般地，定义 $n$ 阶\term{一般线性群}{general linear group}{groupe linéaire}函子 $\operatorname{GL}(n)$ 为
+\origpage{82}{190-15}
+\[
+\operatorname{GL}(n)(X)=\operatorname{GL}(n,H^0(X,\mathcal O_X)).
+\]
+它取值于群范畴，$n>1$ 时未必交换；$n=1$ 时就是 $G_m$。还可以将 $\operatorname{GL}(n)$ 解释为(c)中的自同构函子：取以 $C$ 为底的纤维范畴 $\mathcal F$，其中 $\mathcal F_X$ 为 $X$ 上\term{局部自由层}{locally free sheaf}{faisceau localement libre}的范畴，则
+\[
+\operatorname{GL}(n)(X)=\operatorname{Aut}_{\mathcal F_X}(\mathcal O_X^n).
+\]
+因此，根据(b)，若 $\alpha:S'\to S$ 为 $\mathcal F$-下降态射（比较第2节(c)），则 $H^1(S'/S,\operatorname{GL}(n))$ 包含 $S$ 上那些在 $S'$ 上的逆像同构于 $\mathcal O_{S'}^n$ 的局部自由层的同构类集合。这个包含关系为等式，当且仅当 $\mathcal O_{S'}^n$ 上相对于 $\alpha$ 的所有下降资料都有效。若 $S$ 为局部环的谱，由于 $S$ 上每个局部自由层都平凡，后一有效性条件就是
+\[
+H^1(S'/S,\operatorname{GL}(n))=(e).
+\]
+
+注意，对于态射 $\alpha:S'\to S$，下列条件等价：
+\begin{enumerate}[label=(\roman*)]
+\item 增广同态 $H^0(S,\mathcal O_S)=G_a(S)\to H^0(S'/S,G_a)$ 为同构；
+\item $S'\to S$ 为 $\mathcal F$-下降态射，其中 $\mathcal F$ 为上述以 $C$ 为底的纤维范畴。
+\end{enumerate}
+若 $S'\to S$ 有限，则它们还等价于：
+\begin{enumerate}[label=(\roman*),start=3]
+\item $S'\to S$ 为严格满态射，见第2节(c)。
+\end{enumerate}
+\translatornote{上述等价须把(i)理解为在 $S$ 的每个开集上均成立的局部条件，或在仿射底的相应模论情形下使用；仅要求所写的一个全局截面同构不够。例如令 $S=\mathbb P^1_k$，$S'$ 为一个 $k$-有理点。此时 $S'\times_SS'=S'$，且 $\Gamma(S,\mathcal O_S)=k=\Gamma(S',\mathcal O_{S'})$，所以全局条件(i)成立；但 $\operatorname{Hom}(\mathcal O_S,\mathcal O_S(1))\simeq k^2$ 到拉回后的 $k$ 的映射不是单射，故(ii)不成立，有限态射 $S'\to S$ 也不是满态射。若在每个开集上要求(i)，便得到结构层的等化子条件；局部平凡化局部自由层的 Hom 层后即可推出(ii)，有限情形再由第2节(b)推出(iii)。}
+
+现设 $S=\operatorname{Spec}A$，$S'=\operatorname{Spec}A'$，则
+\[
+C^n(S'/S,G_a)=C^n(A'/A,G_a)=\bigotimes_A^{n+1}A'.
+\]
+余边界算子 $C^n(A'/A,G_a)\to C^{n+1}(A'/A,G_a)$ 为各面算子的交错和，其中
+\[
+\partial_i(x_0\otimes x_1\otimes\cdots\otimes x_n)
+=x_0\otimes\cdots\otimes x_{i-1}\otimes1_{A'}\otimes x_i\otimes\cdots\otimes x_n.
+\]
+同样，$C^n(S'/S,G_m)=C^n(A'/A,G_m)$ 等同于 $(\bigotimes_A^{n+1}A')^*$，其单纯运算由 $C^*(S'/S,G_a)$ 的运算诱导。$C^*(A'/A,\operatorname{GL}(n))$ 的单纯运算也可同样写出。
+
+在报告人所知的所有情形中，只要 $S'\to S$ 为 $\mathcal F$-下降态射，即 $A\to A'\rightrightarrows A'\otimes_AA'$ 正合，比较第2节(c)，就有
+\[
+H^i(A'/A,G_a)=0\quad(i>0),
+\]
+且当 $A$ 为局部环时，$H^1(A'/A,G_m)=0$，更一般地 $H^1(A'/A,\operatorname{GL}(n))=(e)$。
+
+应注意，Hilbert“定理90”无非是关系式
+\origpage{83}{190-16}
+\[
+H^1(S'/S,G_m)=0,
+\]
+其中 $A$ 为域，$A'$ 为其有限 Galois 扩张，见例1。它还可以表述为：在这种情形下，$S'\to S$ 对秩1局部自由层的纤维范畴为严格下降态射。应当以这一形式推广 Hilbert 定理，同时改变对态射 $S'\to S$ 和所考虑的拟凝聚层的假设。
+
+最后，设 $A$ 为极大理想为 $\mathfrak m$ 的 Artin 局部环，$A'$ 为 $A$-代数；对每个整数 $k>0$，令
+\[
+A_k=A/\mathfrak m^{k+1},\qquad A'_k=A'/\mathfrak m^{k+1}A'.
+\]
+下列性质等价：
+\begin{enumerate}[label=(\roman*)]
+\item 对所有 $k$，$H^1(A'_k/A_k,G_a)=0$；
+\item 对所有 $k$，$H^1(A'_k/A_k,G_m)=0$；
+\item 对所有 $k,n$，$H^1(A'_k/A_k,\operatorname{GL}(n))=(e)$。
+\end{enumerate}
+若 $S'\to S$ 为严格满态射，上述条件甚至还说明：对于 $A'$ 上的自由模，无论有限型与否，$S'\to S$ 都是严格下降态射。
+\end{statement}
+\begin{statement}{注}
+当 $S,S'$ 分别为域 $A,A'$ 的概形时，群 $H^i(S'/S,G_m)$ 的定义归功于 Amitsur。$H^2(S'/S,G_m)$ 尤其值得关注，它是 Brauer 群的一个“整体”变体；关于这种变体，可参见[1]第VII章。
+\end{statement}
+
+\section*{B. 沿忠实平坦态射的下降}
+\addcontentsline{toc}{section}{B. 沿忠实平坦态射的下降}
+\subsection*{1. 下降定理的陈述}
+\begin{statement}{定义1.1}
+预概形态射 $\alpha:S'\to S$ 称为平坦的，如果对每个 $x'\in S'$，$\mathcal O_{x'}$ 为 $\mathcal O_{\alpha(x')}$ 上的平坦模，即 $\mathcal O_{x'}\otimes_{\mathcal O_{\alpha(x')}}M$ 关于 $\mathcal O_{\alpha(x')}$-模 $M$ 为正合函子。态射称为\term{忠实平坦}{faithfully flat}{fidèlement plat}的，如果它平坦且满射。
+\end{statement}
+例如，若 $S=\operatorname{Spec}A$，$S'=\operatorname{Spec}A'$，则 $S'$ 在 $S$ 上平坦，当且仅当 $A'$ 为平坦 $A$-模；$S'$ 在 $S$ 上忠实平坦，当且仅当 $A'$ 为忠实平坦 $A$-模，即函子 $M\mapsto A'\otimes_AM$ 正合且忠实。按 Serre [6] 的术语，这也就是说 $(A,A')$ 为平坦偶。若 $S'$ 在 $S$ 上忠实平坦，则 $S$ 上拟凝聚层的逆像函子正合且忠实；换言之，$S$ 上拟凝聚层同态组成的序列
+\origpage{84}{190-17}
+正合，当且仅当其在 $S'$ 上的逆像正合。特别地，$S$ 上拟凝聚层的同态为单态射、满态射、同构，当且仅当其在 $S'$ 上的逆像分别如此。将此性质限制到 $S$ 的任意开集上，它仍然成立；以这样的局部形式表述时，此性质刻画忠实平坦态射。
+\begin{statement}{定义1.2}
+态射 $\alpha:S'\to S$ 称为\term{拟紧}{quasi-compact}{quasi-compact}的，如果 $S$ 的任意拟紧开集 $U$ 的逆像拟紧，即为有限个仿射开集的并。
+\end{statement}
+显然，只须对 $S$ 的仿射开集检验这一性质。例如，\term{仿射态射}{affine morphism}{morphisme affine}是拟紧的；所谓仿射态射，是指每个仿射开集的逆像仍为仿射开集的态射。
+
+平坦态射、忠实平坦态射、拟紧态射这三个类各自对复合与基扩张稳定，当然也都包含同构。
+\begin{statement}{定理1}
+设 $\alpha:S'\to S$ 是忠实平坦且拟紧的预概形态射。则对拟凝聚层的纤维范畴 $\mathcal F$（A，第1节例2），$\alpha$ 为严格下降态射（A，定义1.7）。
+\end{statement}
+这一陈述包含两点：
+\begin{enumerate}[label=(\roman*)]
+\item 若 $F,G$ 为 $S$ 上的两个拟凝聚层，$F',G'$ 为其在 $S'$ 上的逆像，则自然同态
+\[
+\operatorname{Hom}(F,G)\longrightarrow\operatorname{Hom}(F',G')
+\]
+将左边双射地映到右边由与典范下降资料相容的同态 $F'\to G'$ 组成的子群。也就是说，沿 $S''=S'\times_SS'$ 到 $S'$ 的两个投影拉回后，得到的是同一个同态 $F''\to G''$。
+\item $S'$ 上任意带有相对于 $\alpha:S'\to S$ 的下降资料（A，定义1.6）的拟凝聚层 $F'$，连同这一资料，都同构于 $S$ 上某个拟凝聚层 $F$ 的逆像。
+\end{enumerate}
+在(i)中取 $F=\mathcal O_S$，得到：
+\begin{statement}{推论1}
+设 $G$ 为 $S$ 上的拟凝聚层，$G',G''$ 分别为其在 $S'$ 和 $S''=S'\times_SS'$ 上的逆像，$p_1,p_2$ 是从 $S''$ 到 $S'$ 的两投影，则下列集合映射图
+\origpage{85}{190-18}
+\[
+\begin{tikzcd}
+\Gamma(G)\arrow[r,"\alpha^*"]&\Gamma(G')\arrow[r,shift left=.6ex,"p_1^*"]\arrow[r,shift right=.6ex,"p_2^*"']&\Gamma(G'')
+\end{tikzcd}
+\]
+正合（A，定义1.2）。
+\end{statement}
+另一方面，结合(i)、(ii)及定义1.1，得到：
+\begin{statement}{推论2}
+设 $G$ 同推论1。则 $G$ 的拟凝聚子层，与 $G'$ 中沿 $p_1,p_2$ 拉回到 $S''$ 后给出 $G''$ 的同一个子层的拟凝聚子层，彼此一一对应。
+\end{statement}
+当然，也有用商层表述的等价结论。如前所见（A，第4节(e)），定理1应看作 Hilbert“定理90”的推广，并以各种一阶上同调表述为其特殊情形。
+
+证明时，容易归结到 $S=\operatorname{Spec}A$、$S'=\operatorname{Spec}A'$。对(i)，又容易归结为证明推论1，即对任意 $A$-模 $M$，图
+\[
+M=A\otimes_AM\longrightarrow A'\otimes_AM
+\rightrightarrows A'\otimes_AA'\otimes_AM
+\]
+正合。这是下述更一般引理的推论。
+\begin{statement}{引理1.1}
+设 $A'$ 为忠实平坦 $A$-代数。则对任意 $A$-模 $M$，带有 $M$-增广的复形 $C^*(A'/A,G_a)\otimes_AM$（见A，第4节(e)）是 $M$ 的一个\term{消解}{resolution}{résolution}。
+\end{statement}
+只须证明，把上述增广复形沿 $A\to A'$ 作基扩张后所得的复形具有同样的结论。也就是用 $A'$ 代替 $A$，用 $A'\otimes_AA'$ 代替 $A'$ 后验证该结论；于是归结为存在一个 $A$-代数同态 $A'\to A$ 的情形，或用几何语言说，$S'$ 在 $S$ 上有截面的情形。这时结论由A，第4节(a)的一般讨论得到。顺便指出下面的推论，它推广了 Galois 上同调中的一个熟知结论，比较A，第4节(e)。
+\begin{statement}{推论}
+若 $A'$ 在 $A$ 上忠实平坦，则
+\[
+H^0(A'/A,G_a)=A,\qquad H^i(A'/A,G_a)=0\quad(i\ge1).
+\]
+\end{statement}
+定理1(ii)的证明与(i)类似：归结到 $S'$ 在 $S$ 上有截面的情形，此时由(i)即可推出，见A，第1节(c)。
+
+显然，可以在拟凝聚层或层系上加入各种附加结构，从而任意变换定理1及其推论。例如，在 $S$ 上给出一个拟凝聚交换代数层，
+\origpage{86}{190-19}
+“等价于”在 $S'$ 上给出这样的代数层，并赋予其相对于 $\alpha:S'\to S$ 的下降资料。考虑到 $S$ 上这样的拟凝聚层与在 $S$ 上仿射的预概形之间的函子对应，便得到下一定理的第二个断言。
+\begin{statement}{定理2}
+设 $\alpha:S'\to S$ 同定理1。则 $\alpha$ 是下降态射（一般并不严格），见A，定义2.4；而对于预概形之上的仿射概形的纤维范畴，它是严格下降态射，见A，定义1.7。
+\end{statement}
+第一个断言的含义如下：设 $X,Y$ 是 $S$ 上的两个预概形，$X',Y'$ 是其在 $S'$ 上的逆像，$X'',Y''$ 是其在 $S''=S'\times_SS'$ 上的逆像，则自然映射图
+\[
+\begin{tikzcd}[column sep=small]
+\operatorname{Hom}_S(X,Y)\arrow[r,"\alpha^*"]&\operatorname{Hom}_{S'}(X',Y')\arrow[r,shift left=.6ex,"p_1^*"]\arrow[r,shift right=.6ex,"p_2^*"']&\operatorname{Hom}_{S''}(X'',Y'')
+\end{tikzcd}
+\]
+正合。即 $\alpha^*$ 将 $\operatorname{Hom}_S(X,Y)$ 双射地映到 $\operatorname{Hom}_{S'}(X',Y')$ 中那些与 $X',Y'$ 的典范下降资料相容的态射所组成的部分；相容性就是指沿 $S''$ 到 $S'$ 的两个投影所得的逆像相等。当 $Y$ 在 $S$ 上仿射时，这容易由定理1推论1得到。一般情形则须把定理1与下述结果结合。
+\begin{statement}{引理1.2}
+设 $\alpha:S'\to S$ 忠实平坦且拟紧。则 $S$ 等同于 $S'$ 的一个\term{商拓扑空间}{quotient topological space}{espace topologique quotient}。也就是说，若 $U\subset S$ 且 $\alpha^{-1}(U)$ 开，则 $U$ 开。
+\end{statement}
+为了补充定理2，还须给出 $S'$-预概形 $X'$ 上下降资料的有效性判据，此时并不假设 $X'$ 在 $S'$ 上仿射。先注意，这种下降资料未必有效：即使 $S$ 是域 $k$ 的谱，$S'$ 是 $k$ 的某个二次扩张 $k'$ 的谱，$X'$ 是 $S'$ 上二维固有代数概形，仍可能如此。按 Serre 的说法，利用 Nagata 的非射影曲面便可看出这一点。
+
+要使 $X'/S'$ 上相对于忠实平坦拟紧态射 $\alpha:S'\to S$ 的下降资料有效，充要条件是：$X'$ 可由在 $S'$ 上仿射、且在此下降资料下“稳定”的开集 $X'_i$ 覆盖。如果 $\alpha$ 为根态射，即单射且各剩余域扩张纯不可分，那么不论 $X'/S'$ 及其下降资料是什么，肯定都满足这一条件。
+\origpage{87}{190-20}
+还可以证明，若 $\alpha:S'\to S$ 有限，且 $X'$ 中位于 $X'\to S$ 同一纤维内的每个有限子集，都包含在 $X'$ 的一个在 $S$ 上仿射的开集中，则同样如此；这就是 Weil 判据。特别地，若 $X'/S'$ \term{拟射影}{quasi-projective}{quasi-projectif}，便满足此条件。这时还可以证明，“下降后”的预概形 $X/S$ 也拟射影；若 $X'/S'$ \term{射影}{projective}{projectif}，则 $X/S$ 也射影。综上：
+\begin{statement}{定理3}
+设 $\alpha:S'\to S$ 是忠实平坦且拟紧的预概形态射。若 $\alpha$ 为根态射，则它是严格下降态射。若 $\alpha$ 有限，则相对于预概形之上的拟射影预概形，或射影预概形的纤维范畴，它是严格下降态射。
+\end{statement}
+\begin{statement}{注}
+我不知道第二个断言中 $\alpha$ 有限这一假设是否必要。不过，用“形式的”方法至少可以验证，它可替换为下述看起来较弱的假设：$S$ 的每点都有一个开邻域 $U$，存在 $U$ 上有限且忠实平坦的 $U'$，以及一个 $S$-态射 $U'\to S'$。
+
+不属于上述情形的典型例子是：$S=\operatorname{Spec}A$，$S'=\operatorname{Spec}\widehat A$，其中 $A$ 为 Noether 局部环，$\widehat A$ 为其完备化；或者 $S'$ 在 $S$ 上拟有限，即局部同构于某个有限 $S$-概形的开集，却不有限。在这两种情形下，报告人也不知道下述问题的答案：设 $X$ 为 $S$-概形，且 $X'=X\times_SS'$ 在 $S'$ 上射影，那么 $X$ 是否在 $S$ 上射影？
+\end{statement}
+
+\subsection*{2. 对态射的某些性质之下降的应用}
+设 $P$ 是预概形态射的一个类，$\alpha:S'\to S$ 为预概形态射，$f:X\to Y$ 为 $S$-预概形态射，$f':X'\to Y'$ 为沿 $\alpha$ 拉回所得的态射。我们可以问：“$f'\in P$”是否推出“$f\in P$”？当假设 $\alpha$ 忠实平坦且拟紧时，在许多重要情形下，答案是肯定的；其中拟紧性假设有时是多余的。
+
+当 $P$ 为满射态射、根态射时，由 $\alpha$ 的满射性容易直接看出这一点；当 $P$ 为平坦态射、忠实平坦态射、\term{光滑态射}{smooth morphism}{morphisme simple}时，由 $\alpha$ 的忠实平坦性得到；有限型态射的情形也容易直接看出。利用定理1、2及引理1.2，还可知下列各类也有同样性质：同构、\term{开浸入}{open immersion}{immersion ouverte}、\term{闭浸入}{closed immersion}{immersion fermée}、\term{浸入}{immersion}{immersion}（此时假设 $f$ 有限型且 $Y$ 局部 Noether）、仿射态射、有限态射、拟有限态射、开态射、闭态射、同胚、\term{分离态射}{separated morphism}{morphisme séparé}、
+\origpage{88}{190-21}
+\term{固有态射}{proper morphism}{morphisme propre}。尚未弄清的唯一重要情形，是第1节注中已提到的射影态射与拟射影态射。
+
+\subsection*{3. 沿有限忠实平坦态射的下降}
+设 $\alpha:S'\to S$ 为有限态射，对应 $S$ 上的代数层 $\mathcal A'$；假设其底层模层局部自由、有限型，且处处不为零。于是 $\alpha$ 忠实平坦且拟紧，可以应用上述结果。给出 $S'$ 上的拟凝聚层 $F'$，等价于给出 $S$ 上的拟凝聚层 $\alpha_*(F')$，并赋予其 $\mathcal A'$-模结构；注意 $\mathcal A'=\alpha_*(\mathcal O_{S'})$。为简便，这个 $S$ 上的层仍记为 $F'$。
+
+同样，$F'$ 在 $S'\times_SS'$ 上的两个逆像 $p_i^*(F')$，对应拟凝聚的 $(\mathcal A'\otimes_{\mathcal O_S}\mathcal A')$-模层
+\[
+F'\otimes_{\mathcal O_S}\mathcal A',\qquad
+\mathcal A'\otimes_{\mathcal O_S}F'.
+\]
+给出从前者到后者的 $S'\times_SS'$ 上的同态，等价于给出一个 $\mathcal A'\otimes\mathcal A'$-模同态。由于 $\mathcal A'$ 局部自由，这又等价于给出一个 $\mathcal A'\otimes\mathcal A'$-模同态
+\[
+\mathcal U=\mathcal H\!om_{\mathcal O_S}(\mathcal A',\mathcal A')
+=\mathcal A'\otimes\check{\mathcal A}'
+\longrightarrow\mathcal H\!om_{\mathcal O_S}(F',F'),
+\]
+其中 $\check{\mathcal A}'$ 为对偶模层。换言之，对 $\mathcal U$ 在开集 $V$ 上的每个截面 $\xi$，给出 $\mathcal O_S$-模同态 $T_\xi:F'|_V\to F'|_V$，满足
+\[
+T_{f\xi}(x)=fT_\xi(x),\qquad
+T_{\xi f}(x)=T_\xi(fx),
+\tag{3.1}
+\]
+这里 $f,x$ 分别是 $\mathcal A',F'$ 在 $V$ 的某个开子集上的截面。下降资料的条件(i)、(ii)（A，第1节(c)）分别成为
+\[
+T_{1_{\mathcal U}}x=x,\qquad\text{即 }T_{1_{\mathcal U}}=\mathrm{id}_{F'},
+\tag{3.2}
+\]
+\[
+T_{\xi\eta}=T_\xi T_\eta.
+\tag{3.3}
+\]
+也就是说，$F'$ 上的下降资料等价于 $\mathcal O_S$-代数层 $\mathcal U=\mathcal H\!om_{\mathcal O_S}(\mathcal A',\mathcal A')$ 在 $\mathcal O_S$-代数层 $\mathcal H\!om_{\mathcal O_S}(F',F')$ 中的一个表示，并满足(3.1)的两个线性条件。
+
+若 $S'$ 上的拟凝聚层之间有一个配对
+\[
+F'_1\times F'_2\longrightarrow F'_3,
+\]
+可将其理解为 $S$ 上的 $\mathcal A'$-模层之间的配对，
+\origpage{89}{190-22}
+又在各 $F'_i$ 上给定由同态
+\[
+T^{(i)}:\mathcal U\longrightarrow
+\mathcal H\!om_{\mathcal O_S}(F'_i,F'_i)\qquad(i=1,2,3)
+\]
+定义的粘合资料，则这些资料与给定配对相容，当且仅当下面的条件成立。
+
+对 $\mathcal U$ 在某开集上的任意截面 $\xi$，令
+\[
+\Delta\xi=\sum_i\xi'_i\otimes_{\mathcal A'}\xi''_i
+\]
+为 $\mathcal U\otimes_{\mathcal A'}\mathcal U$ 中由下式定义的截面，这里 $\mathcal U$ 按其左模结构视为 $\mathcal A'$-模：
+\[
+\xi(fg)=\sum_i\xi'_i(f)\,\xi''_i(g),
+\]
+其中 $f,g$ 为 $\mathcal A'$ 在更小开集上的两个截面。要求对相应更小开集上的截面 $x,y$，有
+\[
+T^{(3)}_\xi(xy)=\sum_i T^{(1)}_{\xi'_i}(x)\,T^{(2)}_{\xi''_i}(y).
+\tag{3.4}
+\]
+也可以说，各同态 $T^{(i)}$ 相对于给定配对，与 $\mathcal U$ 的\term{对角映射}{diagonal map}{application diagonale}相容。特别地，公式(3.1)--(3.4)使我们能够用带有对角映射的代数之表示，来解释 $S'$ 上拟凝聚代数层的下降资料；限制到交换代数，也就是解释仿射 $S'$-概形的下降资料。
+
+进而，可以类似地解释任意 $S'$-预概形 $X'$ 上的下降资料。给出这样的 $X'$，等价于给出 $S$ 上的预概形 $X'$，以及一个 $\mathcal O_S$-代数同态
+\[
+\mathcal A'\longrightarrow\mathcal O_{X'}.
+\]
+而 $X'$ 上的下降资料等价于给出与 $h:X'\to S'$ 相容的层同态
+\[
+\mathcal U\longrightarrow
+\mathcal H\!om_{h^{-1}(\mathcal O_S)}(\mathcal O_{X'},\mathcal O_{X'}),
+\]
+满足与上述(3.1)--(3.4)相类似的条件。
+\begin{statement}{例1（“Weil”）}
+假设 $S'/S$ 是 Galois 群为 $\Gamma$ 的 Galois 平展覆盖，见A，第3节及第4节(d)。则 $S'$ 上拟凝聚层 $F'$ 的下降资料，分别地，$S'$-预概形 $X'$ 的下降资料，等价于给出 $\Gamma$ 通过 $(S',F')$ 的自同构，分别通过 $(S',X')$ 的自同构的一个表示，并要求它与 $\Gamma$ 在 $S'$ 上的作用相容。
+\origpage{90}{190-23}
+这是一个“形式的”结果，即可用范畴语言证明。不过，从本节的观点看，它也由 $\mathcal U$ 的显式结构推出，包括其环结构、环同态 $\mathcal A'\to\mathcal U$ 及对角映射；这些结构可由下述事实完全确定：作为左 $\mathcal A'$-模，$\mathcal U$ 有一组基，由对应 $\Gamma$ 各元素的 $\mathcal U$ 的截面组成。
+\end{statement}
+\begin{statement}{例2（“Cartier”）}
+设 $p$ 为素数，假设 $p\mathcal O_S=0$，即 $\mathcal O_S$ 的特征为 $p$，并假设 $\mathcal A'^p\subset\mathcal O_S=\mathcal A$，即 $S'/S$ 为高度1的根态射。还假设 $\mathcal A'$ 作为 $\mathcal A$ 上的代数层局部有一个 $p$-基，即一族截面 $(x_i)$，使 $\mathcal A'$ 由 $x_i$ 生成，且仅有关系 $x_i^p=0$。\translatornote{原文在此明确写作 $x_i^p=0$，这是截断多项式代数的特殊情形。通常的相对 $p$-基允许关系 $x_i^p=a_i\in\mathcal A$，并要求次数分别小于 $p$ 的单项式构成 $\mathcal A$-模基。例如 $k(t^{1/p})/k(t)$ 的生成元满足 $x^p=t$，不可能满足 $x^p=0$。下述关于导子、受限包络代数和下降联络的表述，在这种通常的 $p$-基情形下仍成立：对 $x_i$ 的偏导构成导子模的基，并由次数小于 $p$ 的偏导单项式给出所需的端同态代数基。}
+假设指标集有限，其基数为 $n$。令 $\mathcal L$ 为 $\mathcal A'$ 的 $\mathcal A$-导子层；它是秩 $n$ 的局部自由 $\mathcal A'$-模层，而且是 $\mathcal A$ 上的 $p$-Lie 代数层，但不是 $\mathcal A'$ 上的 $p$-Lie 代数层，满足
+\[
+[X,fY]=X(f)Y+f[X,Y].
+\tag{3.5}
+\]
+\begin{statement}{引理}
+$\mathcal U=\mathcal H\!om_{\mathcal O_S}(\mathcal A',\mathcal A')$ 作为带有代数同态 $\mathcal A'\to\mathcal U$ 的 $\mathcal O_S$-代数，由左 $\mathcal A'$-子模 $\mathcal L$ 生成，并附加关系
+\[
+\begin{cases}
+Xf-fX=X(f),\\
+XY-YX=[X,Y],\\
+X^p=X^{(p)}.
+\end{cases}
+\tag{3.6}
+\]
+\end{statement}
+由此引理，$S'$ 上拟凝聚层 $F'$ 的下降资料，等价于对每个 $X\in\mathcal L$，给出 $F'$ 的一个 $\mathcal O_S$-端同态 $\overline X$，并满足
+\[
+\overline{fX}=f\overline X,
+\tag{3.7}
+\]
+\[
+\overline X(fx)=X(f)x+f\overline X(x),
+\tag{3.8}
+\]
+\[
+[\overline X,\overline Y]=\overline{[X,Y]},
+\tag{3.9}
+\]
+\[
+\overline{X^{(p)}}=\overline X^{\,p}.
+\tag{3.10}
+\]
+这可以称作 $F'$ 上一个\term{线性联络}{linear connection}{connexion linéaire}，它没有曲率，并且与 $p$ 次幂相容。$S'$-预概形 $X'$ 上的下降资料也可同样具体写出：这里将关系(3.4)替换为 $\overline X$ 是 $\mathcal O_{X'}$ 的导子这一条件。由于 $S'\to S$ 为根态射，定理3保证，任何这样的下降资料都
+\origpage{91}{190-24}
+有效，因而定义一个 $S$-预概形 $X$。应注意，对 $F'$ 或 $X'$ 并未作任何平坦性、非奇异性或有限性假设。
+\end{statement}
+
+\subsection*{4. 对有理性判据的应用}
+设 $X$ 为 $S$-预概形，$\mathcal O_X$ 在 $S$ 上的直接像为 $\mathcal O_S$。这一性质在任意平坦基扩张 $S'\to S$ 后仍成立。若 $F$ 为 $X$ 上的\term{可逆层}{invertible sheaf}{faisceau inversible}，即秩1局部自由层，则 $F$ 的自同构可等同于 $\mathcal O_X$ 的可逆截面，因而与 $\mathcal O_S$ 的可逆截面一一对应。
+
+现设 $s$ 为 $X$ 在 $S$ 上的一个截面。形象地说，$F$ 在 $s$ 之上的截面，是指 $S$ 上可逆层 $s^*(F)$ 的截面。由前述事实可知，若 $F_1,F_2$ 是 $X$ 上的两个可逆层，各自带有在 $s$ 之上的截面，且 $F_1,F_2$ 同构，则存在唯一一个 $F_1\to F_2$ 的同构与这些截面相容，即把第一个截面映到第二个截面。\translatornote{这里以及下文的“标记截面”必须理解为处处非零的截面，即 $s^*F\simeq\mathcal O_S$ 的平凡化；若允许任意截面，唯一性断言不成立。例如取 $X=S=\operatorname{Spec}\mathbb Q$、$F_1=F_2=\mathcal O_S$，两者均标记零截面，则每个非零有理数给出的乘法自同构都保持这一标记。对于处处非零截面，任意两个候选同构之比为 $S$ 上的一个单位，而标记截面的相容性迫使此单位为1，这补足了唯一性论证。}
+
+此外，不依赖于 $s$，约定 $X$ 上的两个可逆层 $F_1,F_2$ 等价，是指 $S$ 每点都有一个开邻域 $U$，使 $F_1,F_2$ 在 $X|_U$ 上的限制同构。于是，$X$ 上任意可逆层 $F$ 都等价于某个在 $s$ 之上带有标记截面的可逆层 $F_1$；记结构态射为 $\pi:X\to S$，可取
+\[
+F_1=F\otimes\pi^*(s^*F)^{-1}.
+\]
+而 $F_1$ 在同构的意义下唯一确定。换言之，可逆层按等价关系的分类，与带标记截面的可逆层按同构关系的分类相同。
+
+这些性质在平坦基扩张 $\alpha:S'\to S$ 后仍成立，只须把 $s$ 换成其逆像 $s'$。结合定理1，便得：
+\begin{statement}{有理性判据}
+设 $X/S$ 如上，并有截面 $s$；设 $\alpha:S'\to S$ 忠实平坦且拟紧，$F'$ 为 $X'=X\times_SS'$ 上的可逆层。要使 $F'$ 等价于 $X$ 上某个可逆层 $F$ 在 $X'$ 上的逆像，充要条件是它在
+\[
+X'\times_XX'=X\times_S(S'\times_SS')
+\]
+上的两个逆像 $p_1^*(F')$、$p_2^*(F')$ 等价。若此条件成立，则 $F$ 在等价的意义下唯一确定。这时称 $F'$ 在 $S$ 上\term{有理}{rational}{rationnel}。
+\end{statement}
+在上一节例1或例2的情形，按照这一原理，便得到 Weil 或 Cartier 的有理性判据。注意，这两位作者只考虑 $S,S'$
+\origpage{92}{190-25}
+为域的谱的情形；特别地，$S$ 为局部环的谱，上面引入的等价关系就是同构关系。在第一种情形，$F'$ 在 $S$ 上有理，当且仅当它在 $\Gamma$ 各元素作用下的变换都与 $F'$ 等价。
+
+为了在第二种情形表述有理性判据，一般地考虑 $X'/X$ 的对角态射
+\[
+X'\longrightarrow X''=X'\times_XX',
+\]
+令 $\mathcal I$ 为 $X''$ 上对应的理想层。层 $\mathcal I/\mathcal I^2$ 可等同于其在 $X'$ 上的逆像 $\Omega^1_{X'/X}$，即 $X'$ 相对于 $X$ 的一阶微分层。由于 $F'_i=p_i^*(F')$，$i=1,2$，在对角线上的限制都同构于 $F'$，它们彼此同构。也就是说，$F''=F'_1(F'_2)^{-1}$ 在对角线上的限制平凡。因此，$F''$ 在 $(X'',\mathcal O_{X''}/\mathcal I^2)$ 上的限制，在同构的意义下由一个确定的元素
+\[
+\xi\in H^1(X'',\mathcal I/\mathcal I^2)
+=H^1(X',\Omega^1_{X'/X})
+\]
+给出。在这里有
+\[
+\Omega^1_{X'/X}=\Omega^1_{S'/S}\otimes_{\mathcal O_S}\mathcal O_X.
+\]
+因此，若 $\Omega^1_{S'/S}$ 局部自由，例如 Cartier 情形，则 $\xi$ 给出 $S'$ 上 $R^1f'_*(\mathcal O_{X'})\otimes\Omega^1_{S'/S}$ 的一个截面，称为可逆层 $F'$ 在 $X'/S$ 上的\term{Atiyah--Cartier 类}{Atiyah--Cartier class}{classe de Atiyah-Cartier}。它的消失，是 $F'$ 沿
+\[
+(X'',\mathcal O_{X''}/\mathcal I^2)
+=X\times_S(S'',\mathcal O_{S''}/\mathcal J^2)
+\]
+到 $X'$ 的两个投影所得的逆像彼此等价的充要条件；这里 $S''=S'\times_SS'$，$\mathcal J$ 是对角态射 $S'\to S'\times_SS'$ 定义的理想层。
+
+因而，要使 $F'$ 在 $X''=X\times_SS''$ 本身上的两个逆像等价，这个类消失显然是必要条件；它也是 $F'$ 等价于 $X$ 上某个可逆层 $F$ 的逆像的必要条件。此外，Atiyah--Cartier 类还可解释为一个障碍：它度量在 $S'$ 上局部地为 $F'$ 构造相对于 $X'/X$ 的导子之联络是否可能。而这样的联络只要给定与 $S'/S$ 的导子在 $X'$ 上的自然延拓相对应的 $F'$ 的导子，就已确定。由此结合上一节的讨论，容易推出：在上一节例2的情形，若 $X/S$ 有截面，则 Atiyah--Cartier 类消失也是 $F'$ 在 $S$ 上有理的充分条件。
+
+\subsection*{5. 对 Abel 概形中基概形之限制的应用}
+设 $S$ 为预概形。$S$ 上的\term{Abel 概形}{abelian scheme}{schéma abélien}，是指在 $S$ 上光滑且固有的概形 $X$，
+\origpage{93}{190-26}
+其在每个 $x\in S$ 处的纤维都是 $\kappa(x)$ 上 Abel 簇的概形。假设 $S$ 为 Noether 且\term{正则}{regular}{régulier}的，即其各局部环均正则。利用 Murre 的连通性定理[4]，至少在该定理当时已获证明的“等特征”情形下，可以说明 $X$ 在 $S$ 上的任意有理截面处处有定义，即实际上是截面。这推广了 Weil 的一个经典定理。
+
+更一般地，若 $X'$ 为 $S$ 上的光滑概形，则从 $X'$ 到 $X$ 的每个 $S$-有理映射都处处有定义。由此得到下述推广 Igusa--Lang 结果的结论：设 $S$ 为 Noether 正则预概形，$K$ 为其有理函数环，这是若干域的直积；设 $X$ 为 $K$ 上的 Abel 概形。若 $X$ 同构于形如 $X_0\times_S\operatorname{Spec}K$ 的 $K$-概形，其中 $X_0$ 为 $S$ 上的 Abel 概形，则 $X_0$ 在与该泛纤维同构相容的唯一同构的意义下唯一确定。
+
+利用这一唯一性结果，可见 $X$ 中限制基的问题在 $S$ 上是局部的；因此只须知道如何限制到 $\operatorname{Spec}\mathcal O_x$，$x\in S$。同样可见，若 $\alpha:S'\to S$ 是有限型光滑态射，$K'$ 为 $S'$ 的有理函数环，而且
+\[
+X\otimes_KK'\simeq X'_0\times_{S'}\operatorname{Spec}K',
+\]
+则 $X'_0$ 带有相对于 $\alpha$ 的典范下降资料。结合定理3，得到：
+\begin{statement}{命题5.1}
+设 $S$ 为 Noether、正则、不可约预概形，其有理函数域为 $K$；设 $K'$ 为 $K$ 的有限扩张，在 $S$ 上非分歧，$S'$ 为 $S$ 在 $K'$ 中的正规化，因而是 $S$ 的平展覆盖。设 $X$ 为 $K$ 上的 Abel 概形，且
+\[
+X\otimes_KK'\simeq X'_0\times_{S'}\operatorname{Spec}K',
+\]
+其中 $X'_0$ 为 $S'$ 上的射影 Abel 概形。则
+\[
+X\simeq X_0\times_S\operatorname{Spec}K,
+\]
+其中 $X_0$ 为 $S$ 上的射影 Abel 概形。
+\end{statement}
+\begin{statement}{注}
+报告人不知道，能否把 $S'\to S$ 为满射平展覆盖这一使我们能够应用定理3的假设，替换为它是有限型、光滑、满射态射的假设，即使进一步假设它为平展态射，也不知道。也不知道不假设 $X'_0$ 在 $S'$ 上射影时，此命题是否仍成立；射影性条件也许自动满足。
+\end{statement}
+
+\subsection*{6. 对局部平凡性及等平凡性判据的应用}
+设 $S$ 为预概形，$G$ 为 $S$ 上的\term{群预概形}{group prescheme}{pré-schéma en groupes}，$P$ 为 $S$ 上带有 $G$ 右作用的预概形。若由这一作用得到的熟知态射
+\[
+G\times_SP\longrightarrow P\times_SP
+\]
+\origpage{94}{190-27}
+为同构，就称 $P$ 为 $G$ 下的形式主齐性对象。以下假设 $G$ 在 $S$ 上平坦，因而忠实平坦；并把 $G$ 下的\term{主齐性纤维丛}{principal homogeneous bundle}{fibré principal homogène}一词，留给在 $S$ 上忠实平坦且拟紧的形式主齐性对象 $P$。
+
+显然，这等价于说：存在忠实平坦且拟紧的基扩张 $S'\to S$，使 $G'=G\times_SS'$ 下的形式主齐性对象 $P'=P\times_SS'$ 平凡，即同构于 $G'$，也就是有一个截面。特别地，可以取 $S'=P$。
+
+还应注意，若 $S$ 局部 Noether，则 $P$ 忠实平坦，等价于对每个 $s\in S$，
+\[
+\overline P_s=P\times_S\operatorname{Spec}\widehat{\mathcal O}_s
+\]
+在 $\widehat{\mathcal O}_s$ 上忠实平坦。其中 $\widehat{\mathcal O}_s$ 表示局部环 $\mathcal O_s$ 的完备化，这一结论来自 $\widehat{\mathcal O}_s$ 在 $\mathcal O_s$ 上忠实平坦。此外，若 $P$ 在局部 Noether 的 $S$ 上有限型，则满足上述条件的 $s$ 所成集合为\term{可构造集}{constructible set}{ensemble constructible}。所以，若 $S$ 为 Jacobson 预概形，例如域上的有限型概形，更一般地 Jacobson 环上的有限型概形，就只须对 $S$ 的闭点检验此条件。
+
+这样便归结到基为完备局部环 $A$ 的谱的情形。当 $S=\operatorname{Spec}A$，$A$ 为完备 Noether 局部环，且 $P$ 在 $S$ 上有限型时，$P/S$ 忠实平坦，也等价于存在 $S$ 上有限平坦的 $S'$，使 $P'$ 平凡。若 $G$ 还在 $S$ 上光滑，则可以要求 $S'$ 在 $S$ 上平展。因此，如果 $A$ 的剩余域还代数闭，即“几何情形”，$P$ 在 $A$ 上忠实平坦，当且仅当它平凡。由此，当 $S$ 是代数闭域上的代数预概形，$G$ 在 $S$ 上有限型且光滑时，$P$ 在 $S$ 上忠实平坦这一条件，等价于 Serre 的解析平凡性条件(SLF)（[6]，第1-12页）。
+
+还可以对 $P$ 引入更强的、具有“局部平凡性”性质的条件。特别地，若对每个 $s\in S$，存在其开邻域 $U$ 和一个有限忠实平坦态射 $U'\to U$，使 $P'=P\times_SU'$ 平凡，就称 $P$ 为\term{等平凡}{isotrivial}{isotrivial}的；若可要求 $U'\to U$ 为满射平展覆盖，就称其为\term{严格等平凡}{strictly isotrivial}{strictement isotrivial}的。这里的术语不同于 Serre [6]：他把我们称为严格等平凡的情形称为局部等平凡。严格等平凡性主要适用于 $G$ 在 $S$ 上光滑的情形，在其他情形下却是不合适的概念。
+
+若 $G$ 在 $S$ 上仿射，则根据第2节，$G$ 下的任意主齐性纤维丛 $P$ 都在 $S$ 上仿射。因此，由定理2，可以沿忠实平坦且拟紧的态射下降
+\origpage{95}{190-28}
+这样的纤维丛。特别地，取 $G=\operatorname{GL}(n)_S$，它的定义是：$S$-预概形上的群值函子
+\[
+S'\longmapsto\operatorname{Hom}_S(S',G)
+\]
+等同于A，第4节(e)中的函子
+\[
+\operatorname{GL}(n)(S')=\operatorname{GL}(n,H^0(S',\mathcal O_{S'})).
+\]
+利用下列事实：
+\begin{enumerate}[label=(\roman*)]
+\item 每个 $G$ 下的主齐性纤维丛，分别地，每个 $S$ 上的秩 $n$ 局部自由层，在适当的忠实平坦拟紧基扩张后，都同构于“平凡”对象 $G$，分别为 $\mathcal O_S^n$；
+\item 这类对象，即 $G$ 下的主齐性纤维丛、分别为秩 $n$ 局部自由层，均可沿此类态射下降；
+\item $S'/S$ 上平凡纤维丛的自同构群，与 $S'$ 上平凡秩 $n$ 局部自由层的自同构群函子性地同构，
+\end{enumerate}
+便“形式地”得出：在 $S$，或任意 $S'/S$ 上，给出群为 $G$ 的主齐性纤维丛，和给出秩 $n$ 局部自由层，是“同一回事”。更确切地说，两个纤维范畴等价。特别地：
+\begin{statement}{命题6.1}
+群为 $\operatorname{GL}(n)_S$ 的每个主齐性纤维丛都局部平凡。
+\end{statement}
+由熟知的论证，对结构群 $\operatorname{SL}(n)_S$、$\operatorname{Sp}(n)_S$ 及这类群的乘积，也可得到同样结果。还可推出：若 $F$ 为 $G=\operatorname{GL}(n)_S$ 的闭子群，在 $S$ 上平坦，商 $G/F$ 存在，而且 $G$ 是 $G/F$ 上群为 $F\times_S(G/F)$ 的等平凡主齐性纤维丛，分别为严格等平凡的，则每个群为 $F$ 的主齐性纤维丛都等平凡，分别为严格等平凡。
+
+这适用于迄今所使用的 $S$ 上所有“线性群”。特别地，适用于 $G=S\times_k\Gamma$ 的情形，其中 $S$ 为域 $k$ 上的预概形，$\Gamma$ 为 $k$ 上经典意义下的线性群，尤其在 $k$ 上光滑。因此，这为此类群解决了 Serre 的一个问题，见所引文献。
+
+还应指出，对于已知的大多数 $S$ 上光滑群，无论线性与否，至少对于上述 $S\times_k\Gamma$ 形式的群，都可以证明：每个等平凡主齐性纤维丛都严格等平凡。考虑到由 Cartier 式下降（第3节例2）得到的主齐性纤维丛显然等平凡，这尤其解决了 Serre 的另一个问题（同上，第1-14页）。
+\begin{statement}{注}
+除商概形 $G/F$ 的存在问题之外，这些问题的一项根本困难在于：对于忠实平坦但不有限的态射，缺少下降资料的有效性判据。
+\end{statement}
+
+\origpage{96}{190-29}
+\section*{本报告参考文献}
+\begin{enumerate}[label={[\arabic*]}]
+\item J.~Dieudonné 与 A.~Grothendieck，\emph{Éléments de géométrie algébrique}（《代数几何原理》），将刊于 IHÉS 的 \emph{Publications mathématiques}。
+\item H.~Grauert 与 R.~Remmert，\emph{Komplexe Räume}（《复空间》），\emph{Math. Annalen}，第136卷，1958年，第245--318页。
+\item A.~Grothendieck，\emph{Géométrie formelle et géométrie algébrique}（《形式几何与代数几何》），\emph{Séminaire Bourbaki}，第11卷，1958/59年，第182号报告。
+\item J.~P.~Murre，\emph{On a connectedness theorem for a birational transformation at a simple point}（《关于非奇异点处双有理变换的一个连通性定理》），\emph{Amer. J. Math.}，第80卷，1958年，第3--15页。
+\item J.-P.~Serre，\emph{Géométrie algébrique et géométrie analytique}（《代数几何与解析几何》），\emph{Ann. Inst. Fourier Grenoble}，第6卷，1955--56年，第1--42页。
+\item J.-P.~Serre，\emph{Espaces fibrés algébriques}（《代数纤维空间》），\emph{Séminaire Chevalley}，第2卷，1958年，\emph{Anneaux de Chow et applications}（《Chow 环及其应用》），第1号报告。
+\end{enumerate}

@@ -1,0 +1,672 @@
+\SourcePage{189}
+\SGAchapter{XIII}{代数群与 Lie 代数的正则元素}{Éléments réguliers des groupes algébriques et des algèbres de Lie}
+\begin{center}A. Grothendieck\end{center}
+\footnote{（0）2008 年 12 月 1 日的 xy 版本。}
+\SGAsection{1}{带作用的簇的一个辅助引理}
+设 $S$ 是\Term{prescheme}{预概形}，$G$ 是一个在 $S$-\Term{prescheme}{预概形} $V$ 上\Term{left-action}{左作用}的 $S$-\Term{group-prescheme}{群预概形}，$W$ 是 $V$ 的一个\Term{closed}{闭} $S$-\Term{subprescheme}{子预概形}，$N$ 是它在 $G$ 中的\Term{stabilizer}{稳定子}：这是 $G$ 的一个\Term{subgroup}{子群}，其在 $S$ 上任意 $S'$ 中取值的点为满足 $g\cdot W_{S'}=W_{S'}$ 的 $g\in G(S')$。在 $(\mathrm{Sch}/S)$ 上赋予\Term{fpqc-topology}{忠实平坦拟紧拓扑}，并将 $G,V,M$ 与相应的\Term{sheaf}{层}等同（参见第 IV 讲）。因此我们将在 $(\mathrm{Sch})/S$ 上的\Term{sheaf}{层}\Term{category}{范畴}中推理；本节的“\Term{local-scheme}{局部}”一词均指刚指定的\Term{topology}{拓扑}。注意 $N$ 是一个\Term{sheaf}{层}。考虑\Term{quotient-sheaf}{商层} $G/N$；它显然\Term{isomorphism}{同构}于下述\Term{functor}{函子}：对 $S$ 上的每个 $S'$，赋予 $V_{S'}$ 的那些在\Term{local-scheme}{局部}可由 $G$ \Term{conjugacy}{共轭}于 $W_{S'}$ 的\Term{subsheaf}{子层} $W'$ 所成的\Term{set}{集合}。令 $X$ 为 $G/N\times_S V$ 的\Term{subsheaf}{子层}，它在任意这样的 $S'$ 上的值为二元组 $(W',v)$ 的\Term{set}{集合}，其中 $W'$ 如上，$v$ 是 $W'$ 在 $S'$ 上的\Term{section}{截面}（因而也是 $V_{S'}$ 在 $S'$ 上的\Term{section}{截面}）。令 $Z$ 是 $X$ 在 $G\times_S V$ 中的\Term{inverse-image}{逆像}，得到\Term{cartesian-diagram}{笛卡尔图}
+\[
+\begin{tikzcd}
+Z \arrow[r]\arrow[d,hook] &X\arrow[d,hook,"i"]\\
+G\times_S V\arrow[r]&G/N\times_S V.
+\end{tikzcd}\tag{x}
+\]
+这里 $i$ 是\Term{canonical}{典范}\Term{immersion}{浸入}，下方横\Term{arrow}{箭头}来自\Term{canonical}{典范}\Term{morphism}{态射} $G\to G/N$。后者将 $g\in G(S')$ 对应到 $V_{S'}$ 的\Term{subsheaf}{子层} $g\cdot W_{S'}$，所以 $Z(S')$ 就是满足 $v\in g\cdot W_{S'}(S')$ 的 $(g,v)\in G(S')\times V(S')$ 的\Term{set}{集合}。因此有\Term{sheaf}{层}的\Term{isomorphism}{同构}
+\[G\times_S W\xrightarrow{\sim}Z,\qquad(g,w)\longmapsto(g,g\cdot w).
+\]
+\SourcePage{190}
+于是前面的\Term{cartesian-diagram}{笛卡尔图}给出\Term{cartesian-diagram}{笛卡尔图}
+\[
+\begin{tikzcd}
+G\times_S W\arrow[r,"q"]\arrow[d,"\lambda"]&X\arrow[d,"i"]\\
+G\times_S V\arrow[r]&G/N\times_S V,
+\end{tikzcd}\tag{xx}
+\]
+其中 $\lambda(g,w)=(g,g\cdot w)$，所以 $q(g,w)=(\bar g,g\cdot w)$；$\bar g$ 表示 $g$ 在\Term{canonical}{典范}映射 $G(S')\to(G/N)(S')$ 下的像。最后由图（x）可见，$Z\to X$ 使 $Z$ 成为以 $X$ 为底、以 $N$ 为群的\Term{principal-bundle}{主丛}，\Term{right-action}{右作用}为 $(g,v)\cdot n=(gn,v)$。因此，在（xx）中，$q:G\times_S W\to X$ 使 $G\times_S W$ 成为以 $X$ 为底、以 $N$ 为群的\Term{principal-bundle}{主丛}，\Term{right-action}{右作用}为
+\[(g,w)\cdot n=(gn,n^{-1}\cdot w).\]
+将以上主要\Term{morphism}{态射}归纳为下图：
+\[
+\begin{tikzcd}[column sep=large]
+&G\times_S W\arrow[d,"q"]\arrow[dr,"\varphi"]&\\
+G/N&X\arrow[l,"p"']\arrow[r,"\psi"]\arrow[d,hook,"i"]&V\\
+&G/N\times_S V\arrow[ul,dashed,"\mathrm{pr}_1"]\arrow[ur,dashed,"\mathrm{pr}_2"']&
+\end{tikzcd}\tag{D}
+\]
+其中 $\psi=\mathrm{pr}_2\circ i$，$\varphi=\psi\circ q$，即 $\varphi(g,w)=g\cdot w$。若 $v$ 是 $V$ 在 $S$ 上的\Term{section}{截面}，$X$ 中由 $\psi$ 取此\Term{section}{截面}\Term{inverse-image}{逆像}所得的\Term{subsheaf}{子层} $X_v$ 满足：$X_v(S')$ 是 $V_{S'}$ 的那些\Term{local-scheme}{局部}由 $G$ \Term{conjugacy}{共轭}于 $W_{S'}$、且包含 $V_{S'}$ 的\Term{section}{截面} $v_{S'}$ 的\Term{subsheaf}{子层} $W'$ 的\Term{set}{集合}。另一方面，$G\times_S W$ 中由 $\varphi$ 取 $v$ \Term{inverse-image}{逆像}所得的\Term{subsheaf}{子层}\Term{isomorphism}{同构}于 $G$ 的\Term{subsheaf}{子层} $M_v$，其中 $M_v(S')$ 为满足 $v_{S'}\in g\cdot W(S')$，即 $g^{-1}v_{S'}\in W(S')$ 的 $g\in G(S')$ 的\Term{set}{集合}。若 $v$ 是 $W$ 的\Term{section}{截面}，而不仅是 $V$ 的\Term{section}{截面}，则 $M_v$ 显然包含 $N$。
+
+这些描述未使用 $G,V,W$ 的\Term{representable}{可表示性}（甚至未使用所考虑的\Term{site}{景}是借助\Term{prescheme}{预概形}定义的！）。现在假设 $N$ \Term{representable}{可表示}，且在 $S$ 上\Term{faithfully-flat}{忠实平坦}、\Term{quasi-compact}{拟紧}，并且 $G/N$ \Term{representable}{可表示}。当 $S$ 是域的谱、$G$ 在 $k$ 上\Term{finite-type}{有限型}时，已知此假设必然成立（第 VIII 讲第 6 节及第 VI\textsubscript{B} 讲 11.18）。利用\Term{fpqc-descent}{忠实平坦拟紧下降}理论以及 $Z\to G\times_S V$ 是\Term{closed-immersion}{闭浸入}，由\Term{cartesian-diagram}{笛卡尔图}（xx）可知 $X$ \Term{representable}{可表示}：它由 $G\times_S V$ 的\Term{closed}{闭}\Term{subprescheme}{子预概形} $Z$ 沿\Term{faithfully-flat}{忠实平坦}、\Term{quasi-compact}{拟紧}\Term{morphism}{态射} $G\times_S V\to G/N\times_S V$ \Term{descent}{下降}得到。因此（D）是 $S$ 上的\Term{prescheme}{预概形}\Term{morphism}{态射}图。
+
+以下假设 $S$ 是域 $k$ 的谱，且 $G,V,W$ 在 $k$ 上\Term{finite-type}{有限型}。令 $\mathfrak n$ 为 $N$ 的\Term{lie-algebra}{Lie 代数}，则 $\dim N\leq\operatorname{rang}\mathfrak n$，等号成立当且仅当 $N$ 在 $k$ 上\Term{smooth}{光滑}（第 VI 讲\footnote{编者注：未能确定此处所引文献；可参阅 M. Demazure 与 P. Gabriel，\textit{Groupes algébriques I}，Masson（1970），\Term{theorem}{定理} II.5.2.1。}）。
+\SourcePage{191}
+设 $a\in W(k)$，考虑前面定义的 $G$ 的\Term{subscheme}{子概形} $M_a$；它包含 $N$ 且\Term{isomorphism}{同构}于 $\varphi^{-1}(a)$。记它在 $N$ 的单位元 $e$ 处的\Term{zariski-tangent-space}{Zariski 切空间}为 $\mathfrak m_a$，于是
+\[\mathfrak n\subset\mathfrak m_a,\qquad \dim N\leq\operatorname{rang}\mathfrak n\leq\mathfrak m_a.\tag{1}\]
+\begin{SGAresult}{\Term{lemma}{引理}}{1.1}
+沿用以上记号。
+
+ a）考虑下列条件：
+
+（i）$\mathfrak n=\mathfrak m_a$，且 $N$ 在 $k$ 上\Term{smooth}{光滑}。
+
+（i bis）$\dim N=\operatorname{rang}_k\mathfrak m_a$。
+
+（ii）\Term{morphism}{态射} $\psi:X\to V$ 在 $(\bar e,a)$ 处\Term{unramified}{非分歧}。
+
+（iii）$M_a$ 与 $N$ 在 $e$ 的一个\Term{neighborhood}{邻域}中相同。
+
+则有蕴含关系 $\text{（i）}\Leftrightarrow\text{（i bis）}\Rightarrow\text{（ii）}\Leftrightarrow\text{（iii）}$。
+
+ b）假设 $\varphi:G\times_S W\to V$ 在 $(e,a)$ 处\Term{smooth}{光滑}。则 $M_a$ 在 $e$ 处在 $k$ 上\Term{smooth}{光滑}，而 $\psi$ 在 $(\bar e,a)$ 处\Term{smooth}{光滑}。
+\end{SGAresult}
+\begin{proof}
+a）由关系式（1），以及前面指出的 $N$ 在 $k$ 上\Term{smooth}{光滑}当且仅当 $\dim N=\operatorname{rang}_k\mathfrak n$，立即得到（i）与（i bis）\Term{equivalence}{等价}。另一方面，考虑\Term{inclusion-morphism}{包含态射} $N\to M_a$；众所周知\footnote{编者注：例如参见 EGA IV\textsubscript{4}，\Term{theorem}{定理} 17.11.1 d）。}，若 $N$ 在 $e$ 处在 $k$ 上\Term{smooth}{光滑}且在 $e$ 处的切映射为\Term{surjectivity}{满射}，则 $N\to M_a$ 在 $e$ 处\Term{smooth}{光滑}；由于它是\Term{immersion}{浸入}，所以在 $e$ 处为\Term{isomorphism}{同构}。这表明（i）蕴含（iii）。为证明（ii）与（iii）\Term{equivalence}{等价}，如上考虑 $X_a=\psi^{-1}(a)$，利用\Term{isomorphism}{同构} $M_a\simeq\varphi^{-1}(a)\simeq q^{-1}(X_a)$，得到使 $M_a$ 成为群 $N_{X_a}$ 的\Term{principal-homogeneous-bundle}{主齐性丛}的\Term{morphism}{态射} $p_a:M_a\to X_a$。考虑图
+\[
+\begin{tikzcd}
+M_a\arrow[d,"p_a"]&N\arrow[l,"j_a"']\arrow[d]\\
+X_a\arrow[r,"j'_a"]&S=\operatorname{Spec}(k),
+\end{tikzcd}
+\]
+其中 $\operatorname{Spec}(k)\to X_n$ 由 $X$ 的点 $(\bar e,a)$ 定义，$j_a:N\to M_a$ 是\Term{canonical}{典范}\Term{immersion}{浸入}。说 $\psi$ 在 $(\bar e,a)$ 处\Term{unramified}{非分歧}，就是说 $j'_a$ 是\Term{open-immersion}{开浸入}，亦即它\Term{induction-isomorphism}{诱导同构} $S\xrightarrow{\sim}\operatorname{Spec}(\mathscr O_{X_a,a})$。由于 $p_a$ \Term{flat}{平坦}，这\Term{equivalence}{等价}于说由\Term{base-change}{基变换} $\operatorname{Spec}(\mathscr O_{M_a,e})\to\operatorname{Spec}(\mathscr O_{X_a,b})$ 从上述\Term{morphism}{态射}得到的\Term{morphism}{态射}是\Term{isomorphism}{同构}。而后者正是 $\operatorname{Spec}(\mathscr O_{N,e})\to\operatorname{Spec}(\mathscr O_{M_a,e})$，故（ii）与（iii）\Term{equivalence}{等价}。
+
+还应注意，该证明表明（ii）、（iii）蕴含下述表面上比（iii）更强的条件：
+
+（iii bis）$N$ 是 $M$ 的既开又闭\Term{subscheme}{子概形}。
+\SourcePage{192}
+ b）第一项断言来自 $M_a$ \Term{isomorphism}{同构}于 $\varphi^{-1}(a)$；第二项来自 $q$ \Term{flat}{平坦}且 $q(e,a)=(\bar e,a)$。
+\end{proof}
+\SGAsection{2}{稠密性定理与 G 的正则点理论}
+将上一节的构造和记号用于以下情形：$G$ 是 $k$ 上\Term{connected}{连通}\Term{smooth}{光滑}的\Term{algebraic-group}{代数群}，$V=G$，$G$ 以\Term{inner-automorphism}{内自同构}\Term{action}{作用}于其上，$W$ 是 $G$ 的\Term{connected}{连通}\Term{smooth}{光滑}\Term{algebraic-subgroup}{代数子群} $H$。记 $G,H$ 的\Term{lie-algebra}{Lie 代数}为 $\mathfrak g,\mathfrak h$，$H$ 在 $G$ 中的\Term{normalizer}{正规化子}为 $N$，$N$ 的\Term{lie-algebra}{Lie 代数}为 $\mathfrak n$。对 $a\in G(k)$，仍如第 1 节以 $M_a$ 表示它到 $H$ 的\Term{transporter}{输运子}的逆，因而 $a\in H(k)$ 时 $N\subset M_a$；此时以 $\mathfrak m_a$ 表示 $M_a$ 在 $G$ 的单位元 $e$ 处的\Term{zariski-tangent-space}{Zariski 切空间}。注意
+\[\mathfrak h\subset\mathfrak n\subset\mathfrak m_a\subset\mathfrak g\qquad(a\in H(k)).\]
+我们将用到：
+\begin{SGAresult}{\Term{lemma}{引理}}{2.0}
+$H=N^0$ 的充要条件是 $(\mathfrak g/\mathfrak h)^H=0$（左端指由\Term{adjoint-representation}{伴随表示}\Term{derive}{导出}的 $H$ 的\Term{action}{作用}下的\Term{invariant}{不变量}子\Term{space}{空间}）。此条件成立时，$N$ \Term{smooth}{光滑}且 $\dim X=\dim G$。无论如何，总有 $\dim X\leq\dim G$，且等号成立当且仅当 $H$ 在 $N$ 中的指数\Term{finite}{有限}。
+\end{SGAresult}
+\begin{proof}
+已经看到（第 II 讲 5.2.3（i）），$\mathfrak n$ 等于 $(\mathfrak g/\mathfrak h)^H$ 在\Term{morphism}{态射} $\mathfrak g\to\mathfrak g/\mathfrak h$ 下的\Term{inverse-image}{逆像}，因此 $(\mathfrak g/\mathfrak h)^H=0$ \Term{equivalence}{等价}于 $\mathfrak h=\mathfrak n$；由于 $H$ 是\Term{algebraic-group}{代数群} $N$ 的\Term{smooth}{光滑}\Term{connected}{连通}\Term{algebraic-subgroup}{代数子群}，这也\Term{equivalence}{等价}于 $H=N^0$（参见第 VI 讲第 2 节）。显然这蕴含 $N$ \Term{smooth}{光滑}。另一方面，
+\[\dim X=(\dim G-\dim N)+\dim H=\dim G-(\dim N-\dim H),\]
+所以 $\dim X\leq\dim G$，等号成立当且仅当 $\dim H=\dim N$，即 $H$ 在 $N$ 中指数\Term{finite}{有限}。特别地，$H=N^0$ 时即如此。\Term{lemma}{引理} 2.0 得证。
+\end{proof}
+\begin{SGAresult}{\Term{theorem}{定理}}{2.1}
+设 $G$ 是\Term{algebraically-closed-field}{代数闭域} $k$ 上\Term{smooth}{光滑}\Term{connected}{连通}的\Term{algebraic-group}{代数群}，$H$ 是\Term{connected}{连通}\Term{smooth}{光滑}\Term{algebraic-subgroup}{代数子群}，$N$ 为其\Term{normalizer}{正规化子}，$\mathfrak g,\mathfrak h,\mathfrak n$ 为相应的\Term{lie-algebra}{Lie 代数}，$X=G\times^N H$ 是第 1 节引入的\Term{scheme}{概形}（这是 $G/N$ 上、典型\Term{fiber}{纤维}为 $H$ 的丛），$\psi:X\to G$ 是\Term{canonical}{典范}\Term{morphism}{态射}（它的像也是由 $\varphi(g,h)=\operatorname{int}(g)h=ghg^{-1}$ 定义的 $\varphi:G\times H\to G$ 的像）。以下条件全部\Term{equivalence}{等价}：
+
+（i）$H$ 包含 $G$ 的一个\Term{cartan-subgroup}{Cartan 子群} $C$（第 XII 讲第 1 节）。
+
+（i bis）$H$ 与 $G$ 的\Term{reductive-rank}{约化秩}、\Term{nilpotent-rank}{幂零秩}分别相同（第 XII 讲第 1 节）。
+
+（ii）$H$ 包含 $G$ 的一个\Term{maximal-torus}{极大环面} $T$，且 $(\mathfrak g/\mathfrak h)^T=0$。
+\SourcePage{193}
+（iii）包含某一给定\Term{maximal-torus}{极大环面}的 $H$ 的\Term{conjugacy}{共轭}所成的\Term{set}{集合}\Term{finite}{有限}且\Term{nonempty}{非空}，而且 $H$ 在其\Term{normalizer}{正规化子}中指数\Term{finite}{有限}。
+
+（iv）存在 $a\in H(k)$，它仅包含在 $H$ 的\Term{finite}{有限}多个\Term{conjugacy}{共轭}中（或仅要求 $\psi^{-1}(a)$ 有一个\Term{isolated-point}{孤立点}），且 $H$ 在其\Term{normalizer}{正规化子}中指数\Term{finite}{有限}。
+
+（iv bis）\Term{morphism}{态射} $\psi:X\to G$ \Term{generically-quasi-finite}{泛拟有限}（即 $X$ 有一\Term{dense-open-set}{稠密开集}，$\psi$ 在其上\Term{quasi-finite}{拟有限}），且 $H$ 在其\Term{normalizer}{正规化子}中指数\Term{finite}{有限}。
+
+（v）$G$ 有一\Term{dense-open-set}{稠密开集} $U$，使对每个 $x\in U(k)$，包含 $x$ 的 $H$ 的\Term{conjugacy}{共轭}所成的\Term{set}{集合}\Term{finite}{有限}且\Term{nonempty}{非空}；亦即 $\psi:X\to G$ \Term{dominant}{支配}且\Term{generically-quasi-finite}{泛拟有限}。
+
+（vi）$G$ 有一\Term{dense-open-set}{稠密开集} $U$，使每个 $x\in U(k)$ 都包含在 $H$ 的某个\Term{conjugacy}{共轭}中；亦即 $\psi:X\to G$ \Term{dominant}{支配}。
+
+（vii）存在 $a\in H(k)$，使 $\mathfrak g/\mathfrak h$ 中 $\operatorname{ad}_{\mathfrak g/\mathfrak h}(a)$ 的\Term{fixed-point}{不动点}子\Term{space}{空间}为零。
+
+此外，这些条件蕴含 $H$ 是其自身的\Term{connected-normalizer}{连通正规化子}，即 $N$ \Term{smooth}{光滑}且 $\dim H=\dim N$；并且 $\psi:X\to G$ \Term{generically-etale}{泛平展}。
+\end{SGAresult}
+\begin{proof}
+由 2.0，$\dim X\leq\dim G$，等号成立当且仅当 $\dim H=\dim N$，即 $H$ 在 $N$ 中指数\Term{finite}{有限}。由 $\dim X\leq\dim G$ 可知，$\psi$ \Term{dominant}{支配}当且仅当它\Term{dominant}{支配}且\Term{generically-quasi-finite}{泛拟有限}，也当且仅当它\Term{generically-quasi-finite}{泛拟有限}且 $\dim X=\dim G$。由 2.0，最后这个等式也表示 $H$ 在 $N$ 中指数\Term{finite}{有限}，故（vi）、（v）、（iv bis）\Term{equivalence}{等价}。（iv）与（iv bis）\Term{equivalence}{等价}是直接的。
+
+（i）与（i bis）的\Term{equivalence}{等价}性由定义立即得到，留给读者。另一方面，若 $H$ 包含 $G$ 的\Term{cartan-subgroup}{Cartan 子群} $C$，它就包含 $C$ 的\Term{maximal-torus}{极大环面} $T$，而 $T$ 也是 $G$ 的\Term{maximal-torus}{极大环面}。$C$ 是 $T$ 的\Term{centralizer}{中心化子}，故其\Term{lie-algebra}{Lie 代数} $\mathfrak c$ 满足
+\[\mathfrak c=\mathfrak g^T\]
+（第 II 讲 5.2.3（ii））。因此，由 $H\supset C$，从而 $\mathfrak h\supset\mathfrak n$，可得 $\mathfrak h\subset\mathfrak g^T$；依第 I 讲 4.7.3，这\Term{equivalence}{等价}于关系式
+\[(\mathfrak g/\mathfrak h)^T=0.\tag{x}\]
+反过来，假设 $H$ 包含\Term{maximal-torus}{极大环面} $T$ 且上述关系成立，即 $\mathfrak h\supset\mathfrak n$。我们断言 $H$ 包含 $T$ 的\Term{centralizer}{中心化子} $C$，这样便得到（i）$\Leftrightarrow$（ii）。这来自下面的\Term{lemma}{引理}。
+\end{proof}
+\begin{SGAresult}{\Term{lemma}{引理}}{2.1.1}
+设 $G$ 是域 $k$ 上的\Term{smooth}{光滑}\Term{algebraic-group}{代数群}，$T$ 是 $G$ 的\Term{multiplicative-type}{乘法型}\Term{subgroup}{子群}，$C$ 是它的\Term{connected-centralizer}{连通中心化子}（$G$ \Term{connected}{连通}且 $T$ 是\Term{torus}{环面}时，它就等于 $T$ 的\Term{centralizer}{中心化子}，第 XII 讲 6.6 b）），$H$ 是 $G$ 的包含 $T$ 的\Term{smooth}{光滑}\Term{subgroup}{子群}。$H$ 包含 $C$ 当且仅当它的\Term{lie-algebra}{Lie 代数} $\mathfrak h$ 包含 $C$ 的\Term{lie-algebra}{Lie 代数} $\mathfrak c$。
+\end{SGAresult}
+\SourcePage{194}
+\begin{proof}
+已知（第 XI 讲 2.4）$\operatorname{Centr}_G(T)$ 在 $k$ 上\Term{smooth}{光滑}，故 $C$ 在 $k$ 上\Term{smooth}{光滑}；同样 $\operatorname{Centr}_H(T)$ 在 $k$ 上\Term{smooth}{光滑}。又 $\operatorname{Centr}_H(T)=\operatorname{Centr}_G(T)\cap H$ 的\Term{lie-algebra}{Lie 代数}是 $\mathfrak h\cap\mathfrak c$，所以假设表明\Term{smooth}{光滑}群 $\operatorname{Centr}_G(T)$ 的\Term{smooth}{光滑}\Term{subgroup}{子群} $\operatorname{Centr}_H(T)$ 与它有相同的\Term{lie-algebra}{Lie 代数}，从而包含前者的\Term{connected-component}{连通分支} $C$，故 $H$ 包含 $C$。
+\end{proof}
+\begin{proof}[\Term{theorem}{定理} 2.1 的证明（续）]
+证明（i）与（iii）\Term{equivalence}{等价}，\Term{equivalence}{等价}于证明：若 $H$ 包含 $G$ 的\Term{maximal-torus}{极大环面} $T$，则条件 $H\supset C$（如上所见，它也\Term{equivalence}{等价}于（x））\Term{equivalence}{等价}于 $H$ 在其\Term{normalizer}{正规化子}中指数\Term{finite}{有限}且包含 $T$ 的 $H$ 的\Term{conjugacy}{共轭}\Term{finite}{有限}。若 $H$ 包含 $C$，即（x）成立，则更有
+\[(\mathfrak g/\mathfrak h)^H=0.\tag{xx}\]
+已知 $\mathfrak n$ 是前式左端在\Term{canonical-homomorphism}{典范同态} $\mathfrak g\to\mathfrak g/\mathfrak h$ 下的\Term{inverse-image}{逆像}（第 II 讲 5.2.3（i）），故由 2.0 此关系也表示 $H=N^0$，特别地 $H$ 在其\Term{normalizer}{正规化子}中指数\Term{finite}{有限}。考虑\Term{subgroup}{子群}图
+\[
+\begin{tikzcd}
+T\arrow[r]&N(T)\cap H\arrow[r]\arrow[d]&H\arrow[d]\\
+&N(T)\cap N(H)\arrow[r]\arrow[d]&N(H)\\
+&N(T).&
+\end{tikzcd}
+\]
+由 $H$ 中\Term{maximal-torus}{极大环面}的\Term{conjugacy}{共轭}\Term{theorem}{定理}（第 XII 讲 6.6 a）），包含 $T$ 的每个 $H$ 的\Term{conjugacy}{共轭}都可用 $N(T)(k)$ 的元素从 $H$ \Term{conjugacy}{共轭}得到。因此这些\Term{conjugacy}{共轭}与 $N(T)/(N(T)\cap N(H))$ 的 $k$-值点一一对应。由于 $H\supset C$，有 $N(T)\cap H\supset C$，故此\Term{set}{集合}是\Term{finite}{有限}\Term{set}{集合} $(N(T)/C)(k)$ 的一个商，因而\Term{finite}{有限}。这证明（i）$\Rightarrow$（iii）。反过来，假设（iii），即 $N(T)/(N(T)\cap N(H))$ 及 $N(H)/H$ \Term{finite}{有限}。再次利用 $H$ 中的\Term{conjugacy}{共轭}\Term{theorem}{定理}，由上图诱导的\Term{homomorphism}{同态}
+\[\frac{N(T)\cap N(H)}{N(T)\cap H}\longrightarrow N(H)/H\]
+在 $k$-值点上是\Term{bijection}{双射}（事实上它是\Term{isomorphism}{同构}）。既然后者\Term{finite}{有限}，前者也\Term{finite}{有限}，故 $N(T)\cap H$ 在 $N(T)$ 中指数\Term{finite}{有限}，从而包含 $C=N(T)^0$，故 $H\supset C$。于是（i）、（i bis）、（ii）、（iii）\Term{equivalence}{等价}。
+
+证明（ii）$\Rightarrow$（vii）。（ii）与（vii）显然都在\Term{algebraically-closed}{代数闭}\Term{base-field-extension}{基域扩张} $k\to k'$ 下\Term{invariant}{不变}，因此可设 $k$ 在其\Term{prime-subfield}{素子域}上有无限\Term{transcendence-degree}{超越次数}。此时众所周知（且可立即核实），存在 $a\in T(K)$，使它生成的 $T(K)$ 的\Term{subgroup}{子群}在 Zariski \Term{topology}{拓扑}下在 $T$ 中\Term{dense}{稠密}。
+\SourcePage{195}
+容易得到 $(\mathfrak g/\mathfrak h)^T=(\mathfrak g/\mathfrak h)^{\operatorname{ad}(a)}$；由假设左端为零，故（vii）成立。
+
+（vii）$\Rightarrow$（vi）包含在下述进一步明确 2.1 的结果中。
+\end{proof}
+\begin{SGAresult}{推论}{2.2}
+设 $G$ 是域 $k$ 上的\Term{smooth}{光滑}\Term{algebraic-group}{代数群}，$H$ 是\Term{smooth}{光滑}\Term{algebraic-subgroup}{代数子群}，$N$ 是它在 $G$ 中的\Term{normalizer}{正规化子}，$\varphi:G\times H\to G$ 由 $\varphi(g,h)=\operatorname{ad}(g)h=ghg^{-1}$ 定义；$\psi:X=G\times^N H\to G$ 是 $\varphi$ 取商后得到的\Term{morphism}{态射}（参见第 1 节），$a\in H(k)$。以下条件\Term{equivalence}{等价}：
+
+（i）$\varphi$ 在 $(e,a)$ 处\Term{smooth}{光滑}。
+
+（ii）$\psi$ 在 $(\bar e,a)$ 处\Term{etale}{平展}，且 $N$ 在 $k$ 上\Term{smooth}{光滑}。
+
+（iii）$(\mathfrak g/\mathfrak h)^{\operatorname{ad}(a)}=0$（$\mathfrak g,\mathfrak h$ 为 $G,H$ 的\Term{lie-algebra}{Lie 代数}）。
+
+这些条件蕴含 $H^0=N^0$。
+\end{SGAresult}
+\begin{proof}
+$\varphi$ 是\Term{smooth}{光滑} $k$-\Term{prescheme}{预概形}之间的\Term{morphism}{态射}，已知它在一个 $k$-\Term{rational-point}{有理点}处\Term{smooth}{光滑}\Term{equivalence}{等价}于该点处切映射\Term{surjectivity}{满射}。直接计算表明，在将 $G,H$ 各点的\Term{tangent-space}{切空间}按惯例与其\Term{lie-algebra}{Lie 代数}等同后，该切映射写成
+\[d\varphi(\xi,\eta)=(\mathrm{id}-\operatorname{ad}(a))\cdot\xi+\eta,\]
+视为从 $\mathfrak g\times\mathfrak h$ 到 $\mathfrak g$ 的映射。其\Term{surjectivity}{满射}性\Term{equivalence}{等价}于 $\mathrm{id}-\operatorname{ad}(a)$ 在 $\mathfrak g/\mathfrak h$ 上为\Term{surjectivity}{满射}，即（iii）。而（iii）更蕴含 $(\mathfrak g/\mathfrak h)^H=0$，即 $H^0=N^0$（参见 2.0，其所在节开头的\Term{connected}{连通}假设在此无须使用）。于是 $N$ \Term{smooth}{光滑}且 $\dim H=\dim N$，故 $\dim X=\dim G$。由于 $q:G\times H\to X$ \Term{flat}{平坦}且 $\psi=\varphi\circ q$ 在 $(e,a)$ 处\Term{smooth}{光滑}，可知 $\psi$ 在 $q(e,a)=(\bar e,a)$ 处\Term{smooth}{光滑}，再由\Term{dimension}{维数}可知它在那里\Term{etale}{平展}。这就证明了（i）$\Leftrightarrow$（iii）$\Rightarrow$（ii）。另一方面（ii）$\Rightarrow$（i），因为 $N$ 的\Term{smooth}{光滑}性蕴含 $q$ 的\Term{smooth}{光滑}性。
+\end{proof}
+\begin{proof}[\Term{theorem}{定理} 2.1 的证明（续）]
+最后证明（vi）$\Rightarrow$（i），结合已证蕴含关系即可完成\Term{theorem}{定理}的证明。先设 $G$ \Term{affine}{仿射}。取 $G$ 的\Term{nonempty}{非空}\Term{open-subset}{开集} $U$，使 $x\in U(k)$ 蕴含 $x$ 包含于 $H$ 的某个\Term{conjugacy}{共轭}。取 $G$ 的\Term{cartan-subgroup}{Cartan 子群} $C$。将（i）$\Rightarrow$（iv）用于 $C$ 代替 $H$（这是 Borel 的“\Term{dense}{稠密}性\Term{theorem}{定理}”），可找到与 $U$ 相交的 $C$ 的一个\Term{conjugacy}{共轭}。因此可设 $U\cap C\ne\varnothing$，即 $C$ 中存在\Term{nonempty}{非空}\Term{open-subset}{开集} $V$，使每个 $x\in V(k)$ 都包含于 $H$ 的某个\Term{conjugacy}{共轭}。写成乘积
+\[C=T\cdot C_u,\]
+其中 $T$ 是 $C$ 的\Term{maximal-torus}{极大环面}（也是 $G$ 的\Term{maximal-torus}{极大环面}），$C_u$ 是 $C$ 的\Term{unipotent}{幺幂}部分，$T$ 在 $C$ 的\Term{center}{中心}中（BIBLE 6，\Term{theorem}{定理} 2）。仍可设 $k$ 在其\Term{prime-subfield}{素子域}上有无限\Term{transcendence-degree}{超越次数}，从而可以在 $V$ 向 $T$ 的\Term{projection}{投影}中（此\Term{projection}{投影}是 $T$ 的\Term{nonempty}{非空}\Term{open-subset}{开集}）取 $t\in T(k)$，即 $t\cdot C_u\cap V\ne\varnothing$，且使 $t$“生成”$T$。包含乘积 $t\cdot u$（$t\in T(k),u\in C_u(k)$）的每个\Term{algebraic-subgroup}{代数子群}都包含两个因子（BIBLE 4，\Term{theorem}{定理} 3）。按上述方式选取 $t$，并取 $t\cdot u\in V(k)$，
+\SourcePage{196}
+就有 $H$ 的一个\Term{conjugacy}{共轭}包含 $t$，从而包含 $T$。因此可以先设
+\[T\subset H.\]
+设 $W$ 为 $V$ 在 $u\mapsto t\cdot u$ 下的\Term{inverse-image}{逆像}，这是 $C_u$ 的一个\Term{open-subset}{开集}。则对 $(T\cdot W)(k)$ 的每个元素 $x$，都存在 $H$ 的某个\Term{conjugacy}{共轭}同时包含 $T$ 和 $x$。如前所述，这样的\Term{conjugacy}{共轭}具有 $\operatorname{int}(g)\cdot H$ 的\Term{form}{形式}，其中 $g\in N(T)(k)$。考虑\Term{morphism}{态射}
+\[f:N(T)\times H\longrightarrow G,\qquad f(g,h)=\operatorname{int}(g)\cdot h=ghg^{-1}.\]
+其像包含 $T\cdot W$。由于 $C$ 在 $N(T)$ 中指数\Term{finite}{有限}，$N(T)$ 是\Term{finite}{有限}多个\Term{translation}{平移} $C\cdot g_i$（$g_i\in N(T)(k)$）的并，所以 $C=T\cdot C_u$ 有一\Term{dense-open-set}{稠密开集} $V'$，包含在 $(C\cdot g_i)\times H$ 经过 $f$ 的像中。用 $\operatorname{int}(g_i)\cdot H$ 代替 $H$ 后，可设 $g_i=e$，即 $f(C\times H)\supset V'$。因此对任意 $u\in V'(k)$，存在 $v\in C(k),h\in H(k)$，使
+\[v^{-1}hv=u,\qquad\text{从而 }vuv^{-1}\in H(k).\]
+令
+\[C'=C\cap H=\operatorname{Centr}_H(T),\]
+则 $vuv^{-1}\in C'$，从而 $\operatorname{int}(v)\cdot C'\to u$。这证明 $C'$ 在 $C$ 中的所有\Term{conjugacy}{共轭}（由 $C(k)$ 的元素\Term{conjugacy}{共轭}）之并\Term{dense}{稠密}。因此，正如先前对 $(G,H)$ 所见，$C'$ 在它在 $C$ 中的\Term{normalizer}{正规化子}中指数\Term{finite}{有限}。由 BIBLE 7 第 1 节的\Term{lemma}{引理}，得到 $C'=C$，因而 $C=H$。这证明了 $G$ \Term{affine}{仿射}时的（vi）$\Rightarrow$（i）。
+
+一般情形对 $n=\dim G$ 归纳，$n=0$ 时断言显然。令 $Z$ 是 $G$ 的\Term{center}{中心}，分两种情形。
+
+1）$\dim(Z\cap H)>0$。令 $G'=G/(Z\cap H)$，则 $\dim G'<n$，而关于 $H$ 的假设（vi）蕴含它在 $G'$ 中的像 $H'$ 满足同一条件。因此 $H'$ 包含 $G'$ 的一个\Term{cartan-subgroup}{Cartan 子群} $C'$，从而 $H$ 包含 $C'$ 的\Term{inverse-image}{逆像} $C$；由第 XII 讲 6.6 e），它是一个\Term{cartan-subgroup}{Cartan 子群}。
+
+2）$\dim(Z\cap H)=0$。\Term{canonical}{典范}\Term{morphism}{态射} $H\to G/Z$ 是\Term{finite}{有限}\Term{morphism}{态射}；第 XII 讲 6.1 表明 $G/Z$ \Term{affine}{仿射}，故 $H$ \Term{affine}{仿射}，从而 $H$ 到\Term{abelian-variety}{阿贝尔簇}的每个\Term{homomorphism}{同态}均为零（甚至 $H$ 到\Term{abelian-variety}{阿贝尔簇}的每个\Term{prescheme}{预概形}\Term{morphism}{态射}均为零）。这是因为\Term{algebraically-closed-field}{代数闭域}上的\Term{affine}{仿射}\Term{smooth}{光滑}\Term{connected}{连通}\Term{algebraic-group}{代数群}是\Term{rational-variety}{有理簇}；也可以只利用它是其 \Term{borel-subgroup}{Borel 子群}之并（BIBLE 6，\Term{theorem}{定理} 5 b）），以及结构\Term{theorem}{定理} BIBLE 6.2、6.3 很容易\Term{pushout}{推出}\Term{affine}{仿射}\Term{smooth}{光滑}\Term{connected}{连通}\Term{solvable}{可解}群为\Term{rational-variety}{有理簇}。现在使用 Chevalley 的 $G$ 的结构\Term{theorem}{定理}：$G$ 是\Term{abelian-variety}{阿贝尔簇} $A$ 被\Term{affine}{仿射}\Term{smooth}{光滑}群的\Term{extension}{扩张}。由于 $H$ \Term{affine}{仿射}，它在 $A$ 中的像为零；另一方面，这个像等于 $A$，因为它在 $A$ 中的\Term{conjugacy}{共轭}之并必须\Term{dense}{稠密}。因此 $A=0$，故 $G$ \Term{affine}{仿射}，归结到已经处理的情形。\Term{theorem}{定理} 2.1 的证明完成。
+\end{proof}
+\begin{SGAresult}{推论}{2.3}
+假设 2.1 的\Term{equivalence}{等价}条件成立。
+\SourcePage{197}
+ a）设 $k(X)$（相应地 $k(G)$）为 $X$（相应地 $G$）的\Term{rational-function-field}{有理函数域}，则 $k(X)$ 是 $k(G)$ 的\Term{finite}{有限}\Term{separable-extension}{可分扩张}。记其\Term{degree}{次数}为 $d$。
+
+ b）设 $T$ 是 $G$ 的包含在 $H$ 中的\Term{maximal-torus}{极大环面}（由 2.1（ii）存在），$C$ 为对应的 $G$ 的\Term{cartan-subgroup}{Cartan 子群}。则 $C\subset H$。此外，$\operatorname{Norm}_G(T)$ 是 $G$ 的\Term{smooth}{光滑}\Term{subgroup}{子群}，$\operatorname{Norm}_G(T)\cap\operatorname{Norm}_G(H)=\operatorname{Norm}_{\operatorname{Norm}_G(H)}(T)$ 是它的\Term{smooth}{光滑}\Term{subgroup}{子群}，指数\Term{finite}{有限}且等于 a）中定义的 $d$。包含给定\Term{maximal-torus}{极大环面}或给定\Term{cartan-subgroup}{Cartan 子群}的 $H$ 的\Term{conjugacy}{共轭}数目等于 $d$。
+
+ c）令 $U$ 是 $G$ 的最大\Term{open-subset}{开集}，使 $\psi:X\to G$ 诱导的\Term{morphism}{态射} $\psi^{-1}(U)\to U$ \Term{finite}{有限}且\Term{etale}{平展}。则 $U$ 是\Term{dense-open-set}{稠密开集}；对 $g\in G(k)$，有 $g\in U(k)$ 当且仅当包含 $g$ 的 $H$ 的\Term{conjugacy}{共轭}恰有 $d$ 个，也当且仅当存在至少 $d$ 个包含 $g$ 的互异\Term{conjugacy}{共轭} $H_i$，使对每个 $i$ 都有 $(\mathfrak g/\mathfrak h_i)^{\operatorname{ad}(g)}=0$（其中 $\mathfrak h_i=\operatorname{Lie}(H_i)$）。
+\end{SGAresult}
+\begin{proof}
+a）来自 $\psi$ \Term{generically-etale}{泛平展}（2.1 末尾的断言）；这也蕴含 c）引入的\Term{open-subset}{开集} $U$ \Term{nonempty}{非空}，即\Term{dense}{稠密}，并给出所述的 $U(k)$ 元素的两种刻画：这里利用 $\psi$ \Term{separated}{分离}、$X$ \Term{integral}{整}、$G$ \Term{integral}{整}且\Term{normal}{正规}（SGA1 第 I 讲 10.11），以及 $(\mathfrak g/\mathfrak h_i)^{\operatorname{ad}(g)}=0$ 表示 $\psi$ 在 $\psi^{-1}(g)$ 中对应于 $H_i$ 的点 $x_i$ 处\Term{etale}{平展}。
+
+若 $H$ 包含 $G$ 的\Term{maximal-torus}{极大环面} $T$，则 $T$ 在 $H,G$ 中的\Term{centralizer}{中心化子}同维且\Term{smooth}{光滑}\Term{connected}{连通}（第 XII 讲 6.6 b）），故二者相等，从而证明 $C\subset G$。又已知 $T$ 在包含它的\Term{smooth}{光滑}群中的\Term{normalizer}{正规化子}是\Term{smooth}{光滑}的（第 XI 讲 2.4 bis），所以 $\operatorname{Norm}_G(T)$ 及 $\operatorname{Norm}_{\operatorname{Norm}_G(H)}(T)$ 均\Term{smooth}{光滑}（注意 2.1 陈述的末尾已经指出 $N=\operatorname{Norm}_G(H)$ \Term{smooth}{光滑}）。而 $\operatorname{Norm}_N(T)$ 包含 $C$，后者在 $N(T)$ 中指数\Term{finite}{有限}，故它在 $N(T)$ 中指数\Term{finite}{有限}。由 $H$ 中\Term{maximal-torus}{极大环面}的\Term{conjugacy}{共轭}\Term{theorem}{定理}，此指数等于包含 $T$ 的 $H$ 的\Term{conjugacy}{共轭}的数目，也就是包含 $C$ 的这些\Term{conjugacy}{共轭}的数目。由 2.1（i）$\Rightarrow$（vi）用于 $C$ 代替 $H$，$C$ 在 $G$ 中的\Term{conjugacy}{共轭}之并\Term{dense}{稠密}；c）定义的\Term{open-subset}{开集} $U$ 显然在\Term{inner-automorphism}{内自同构}下\Term{stable}{稳定}，所以 $C\cap U\ne\varnothing$。如在 2.1 的（vi）$\Rightarrow$（ii）的证明中那样推理，可知在作一个无碍的\Term{base-field-extension}{基域扩张}后，存在 $g\in(C\cap U)(k)$，使每个包含 $g$ 的 $H$ 的\Term{conjugacy}{共轭}都包含 $T$，从而也包含 $C$。因此包含 $C$ 的 $H$ 的\Term{conjugacy}{共轭}正是包含 $g$ 的\Term{conjugacy}{共轭}；由于 $g\in U(k)$，其数目等于 $d$。这完成 b）的证明。注意，实际上我们证明了：包含 $T$ 的 $H$ 的\Term{conjugacy}{共轭}所成的\Term{set}{集合}，是群
+\[W_G(T)=\operatorname{Norm}_G(T)/\operatorname{Centr}_G(T)\]
+的\Term{rational-point}{有理点}群的一个\Term{homogeneous-space}{齐性空间}；特别地这证明
+\[d\leq G\text{ 的\ Weyl 群的阶}.\]
+\end{proof}
+\begin{SGAresult}{推论}{2.4}
+沿用 2.1 的记号，以下条件\Term{equivalence}{等价}：
+
+（i）$\psi:X\to G$ 是\Term{birational-morphism}{双有理态射}。
+\SourcePage{198}
+（ii）包含 $G$ 的某一给定\Term{cartan-subgroup}{Cartan 子群}的 $H$ 的\Term{conjugacy}{共轭}有且仅有一个。
+
+（iii）$H$ 包含 $G$ 的\Term{cartan-subgroup}{Cartan 子群} $C$，且 $\operatorname{Norm}_G(H)\supset\operatorname{Norm}_G(C)$。
+
+（iv）$G$ 有一\Term{nonempty}{非空}\Term{open-subset}{开集} $V$，使 $g\in V(k)$ 蕴含 $g$ 恰包含在 $H$ 的一个\Term{conjugacy}{共轭}中。
+\end{SGAresult}
+由 2.1 与 2.3 即明。
+\begin{SGAresult}{推论}{2.5}
+假设 2.4 的条件成立，且 $g\in G(k)$。以下条件\Term{equivalence}{等价}：
+
+（i）$g\in U(k)$，其中 $U$ 由 2.3 c）定义；即 $g$ 包含在 $H$ 的一个且仅一个\Term{conjugacy}{共轭}中。
+
+（ii）包含 $g$ 的 $H$ 的\Term{conjugacy}{共轭}所成的\Term{set}{集合}\Term{finite}{有限}且\Term{nonempty}{非空}。
+
+（iii）“包含 $g$ 的 $H$ 的\Term{conjugacy}{共轭}”\Term{scheme}{概形} $\psi^{-1}(g)$ 包含一个\Term{isolated-point}{孤立点}。
+
+（iv）存在包含 $g$ 的 $H$ 的\Term{conjugacy}{共轭} $H'$，且 $(\mathfrak g/\mathfrak h')^{\operatorname{ad}(g)}=0$，其中 $\mathfrak h'=\operatorname{Lie}(H')$。
+
+最后，$U$ 也是 $G$ 的最大\Term{open-subset}{开集}，使 $\psi$ \Term{induction-isomorphism}{诱导同构} $\psi^{-1}(U)\xrightarrow{\sim}U$。
+\end{SGAresult}
+\begin{proof}
+（i）、（ii）、（iii）的\Term{equivalence}{等价}性及最后一项断言，来自对\Term{birational-morphism}{双有理态射} $\psi:X\to G$ 应用“主\Term{theorem}{定理}”\footnote{编者注：\Term{zariski-main-theorem}{Zariski 主定理}！}，这里利用了 $G$ 的\Term{normal}{正规}性。由 2.1 最后一项断言对 $X$ 中 $\psi$ 在其处\Term{etale}{平展}的点的刻画，立即得到这些条件与（iv）\Term{equivalence}{等价}。
+\end{proof}
+\begin{SGAresult}{\Term{theorem}{定理}}{2.6}
+设 $G$ 是\Term{algebraically-closed-field}{代数闭域} $k$ 上\Term{smooth}{光滑}\Term{connected}{连通}的\Term{algebraic-group}{代数群}，$C$ 是与\Term{maximal-torus}{极大环面} $T$ 对应的\Term{cartan-subgroup}{Cartan 子群}，$N=\operatorname{Norm}_G(C)=\operatorname{Norm}_G(T)$（参见第 XII 讲 8.4）。令 $X=G\times^N C$，其中 $N$ 在左因子 $G$ 上按\Term{right-translation}{右平移}\Term{action}{作用}，在右因子 $C$ 上按\Term{inner-automorphism}{内自同构}\Term{action}{作用}；$\psi:X\to G$ 为\Term{canonical}{典范}\Term{morphism}{态射}。
+
+ a）$\psi$ 是\Term{birational-morphism}{双有理态射}。
+
+ b）设 $U$ 是 $G$ 的最大\Term{open-subset}{开集}，使 $\psi$ \Term{induction-isomorphism}{诱导同构} $\psi^{-1}(U)\xrightarrow{\sim}U$（参见 2.5）。令
+\[\rho=\rho_\nu(G)=\dim C\]
+为 $G$ 的\Term{nilpotent-rank}{幂零秩}。则对每个 $g\in G(k)$，$\operatorname{ad}(g)$ 在 $\mathfrak g$ 上的\Term{characteristic}{特征}值 $1$ 的\Term{multiplicity}{重数}至少为 $\rho$；该\Term{multiplicity}{重数}等于 $\rho$ 的充要条件是 $g\in U(k)$。
+\end{SGAresult}
+\begin{proof}
+由于条件 2.1（i）成立，可以应用 2.4（iii）$\Rightarrow$（i），即得 a）。在 BIBLE 7 中（当 $G$ \Term{affine}{仿射}时），$U(k)$ 的点称为 $G(k)$ 的\Term{regular-point}{正则点}。我们沿用这个术语，将 $U$ 称作 $G$ 的\Term{regular-point}{正则点}\Term{open-subset}{开集}。（注意，BIBLE 中证明该\Term{set}{集合}本身为\Term{open-subset}{开集}的论证不正确；但本讲已在更一般的条件下得到这一点。）
+\SourcePage{199}
+为证明 b），对每个 $g\in G(k)$ 引入\Term{characteristic-polynomial}{特征多项式}
+\[P(\operatorname{ad}(g),t)=t^n+c_1(g)t^{n-1}+\cdots+c_n(g).\]
+将 $k$ 换成任意 $k$-\Term{algebra}{代数}，即可看出 $c_i(g)$ 来自唯一确定的\Term{section}{截面}
+\[c_i\in\Gamma(G,\mathscr O_G).\]
+若 $g\in G(k)$ 包含在某个\Term{cartan-subgroup}{Cartan 子群}中（例如 $g$ 为\Term{regular-element}{正则元素}），不妨设该\Term{subgroup}{子群}为 $C$。由 2.5（iv），有 $(\mathfrak g/\mathfrak c)^{\operatorname{ad}(g)}=0$ 当且仅当 $g$ \Term{regular-element}{正则}（其中 $\mathfrak c$ 为 $C$ 的\Term{lie-algebra}{Lie 代数}）。另一方面，$C$ \Term{nilpotent}{幂零}，故 $\operatorname{ad}_{\mathfrak c}(g)$ 显然仅有\Term{characteristic}{特征}值 $1$。于是 $\operatorname{ad}_{\mathfrak g}(g)$ 的\Term{characteristic}{特征}值 $1$ 的\Term{multiplicity}{重数}至少为 $\rho$，且恰等于 $\dim C=\rho$ 当且仅当 $g$ \Term{regular-element}{正则}。特别地，上述\Term{polynomial}{多项式}可被 $(t-1)^\rho$ 整除。整除关系可用\Term{polynomial}{多项式}各系数之间的整系数线性关系表达，而这些关系在 $g\in U(k)$ 时成立；$U$ 为\Term{dense-open-set}{稠密开集}且 $G$ \Term{reduced}{既约}，故它们对所有 $g$ 都成立。事实上，在 $\Gamma(G,\mathscr O_G)$ 上的\Term{polynomial}{多项式}环中有关系式
+\[t^n+c_1t^{n-1}+c_0=(t-1)^\rho(t^{n-\rho}+b_1t^{n-\rho-1}+\cdots+b_{n-\rho}).\tag{$\dagger$}\]
+特别地，对每个 $g\in G(K)$，$\operatorname{ad}(g)$ 的\Term{characteristic}{特征}值 $1$ 的\Term{multiplicity}{重数}至少为 $\rho$。已知 $g$ \Term{regular-element}{正则}时等号成立，下面证明逆命题。先设 $G$ \Term{affine}{仿射}，把 $g$ 写成其\Term{semisimple}{半单}部分与\Term{unipotent}{幺幂}部分的乘积（BIBLE 4，第 4 节）
+\[g=g_sg_u.\]
+则
+\[\operatorname{ad}(g)=\operatorname{ad}(g_s)\operatorname{ad}(g_u)\]
+是 $\operatorname{ad}(g)$ 的相应\Term{resolution}{分解}（同上，\Term{theorem}{定理} 3 的推论），所以 $\operatorname{ad}(g)$ 与 $\operatorname{ad}(g_s)$ 的\Term{characteristic}{特征}值及\Term{multiplicity}{重数}相同，特别地\Term{characteristic}{特征}值 $1$ 的\Term{multiplicity}{重数}相同。另一方面，BIBLE 7，\Term{theorem}{定理} 2 的推论 1 表明，$g$ \Term{regular-element}{正则}当且仅当 $g_s$ \Term{regular-element}{正则}。故为证明 b），可设 $g=g_s$，即 $g$ \Term{semisimple}{半单}；由 BIBLE 6，\Term{theorem}{定理} 5 c），它包含于一个\Term{maximal-torus}{极大环面}，因而包含于一个\Term{cartan-subgroup}{Cartan 子群}，归结到已处理的情形。这证明了 $G$ \Term{affine}{仿射}时的 b）。一般情形令 $Z=\operatorname{Centr}(G)_{\mathrm{r\text{é}d}}$。由第 XII 讲 6.6 e），$G$ 的\Term{cartan-subgroup}{Cartan 子群}是 $G'=G/Z$ 的\Term{cartan-subgroup}{Cartan 子群}的\Term{inverse-image}{逆像}，所以 $g$ 在 $G$ 中\Term{regular-element}{正则}当且仅当其像 $g'$ 在 $G'$ 中\Term{regular-element}{正则}。又 $Z$ \Term{smooth}{光滑}，故 $G'$ 的\Term{lie-algebra}{Lie 代数} $\mathfrak g'$ 就是 $\mathfrak g/\mathfrak z$，其中 $\mathfrak z=\operatorname{Lie}(Z)$，而 $\operatorname{ad}(g')$ 就是 $\operatorname{ad}(g)_{\mathfrak g/\mathfrak z}$。因此 $\operatorname{ad}(g)$ 的\Term{characteristic}{特征}值 $1$ 的\Term{multiplicity}{重数}等于 $d=\dim Z$ 加上 $\operatorname{ad}(g')$ 的\Term{characteristic}{特征}值 $1$ 的\Term{multiplicity}{重数}。立即可知，前一个\Term{multiplicity}{重数}等于 $G$ 的\Term{nilpotent-rank}{幂零秩}当且仅当后一个\Term{multiplicity}{重数}等于 $G'$ 的\Term{nilpotent-rank}{幂零秩}。于是归结到 $G'$ 的情形，而由第 XII 讲 6.1，$G'$ \Term{affine}{仿射}，这已处理完毕。\Term{theorem}{定理} 2.6 得证。
+\end{proof}
+\SourcePage{200}
+\begin{SGAresult}{推论}{2.7}
+沿用前述证明的记号\footnote{编者注：参见上面的（$\dagger$）。}，令
+\[b=1+b_1+\cdots+b_{n-\rho}\in\Gamma(G,\mathscr O_G).\]
+则 $G$ 的\Term{regular-point}{正则点}\Term{open-subset}{开集}为 $U=G_b$（即 $G$ 中 $b$ \Term{invertible}{可逆}的点所成的\Term{set}{集合}）；特别地，若 $G$ \Term{affine}{仿射}，则 $U$ 是\Term{affine}{仿射}\Term{open-subset}{开集}。
+\end{SGAresult}
+\begin{SGAresult}{推论}{2.8}
+设 $H$ 是 $G$ 的\Term{smooth}{光滑}\Term{connected}{连通}\Term{algebraic-subgroup}{代数子群}，包含 $G$ 的一个\Term{cartan-subgroup}{Cartan 子群}。
+
+ a）设 $C$ 是 $H$ 的\Term{algebraic-subgroup}{代数子群}。则 $C$ 是 $H$ 的\Term{cartan-subgroup}{Cartan 子群}当且仅当它是 $G$ 的\Term{cartan-subgroup}{Cartan 子群}。
+
+ b）设 $g\in G(k)$，$d$ 为 2.3 引入的整数。$g$ 是 $G$ 的\Term{regular-point}{正则点}的充要条件是包含 $g$ 的 $H$ 的\Term{conjugacy}{共轭} $H_i$ 恰有 $d$ 个，且 $g$ 对每个 $i$ 都是 $H_i$ 的\Term{regular-element}{正则元素}；也\Term{equivalence}{等价}于包含 $g$ 的 $H$ 的\Term{conjugacy}{共轭}至多有 $d$ 个，且 $g$ 在其中一个中\Term{regular-element}{正则}。若如此，$C$ 为 $G$ 中唯一包含 $g$ 的\Term{cartan-subgroup}{Cartan 子群}，则包含 $g$ 的 $H$ 的\Term{conjugacy}{共轭}正是包含 $C$ 的\Term{conjugacy}{共轭}。
+
+ c）设 $g\in H(k)$，则 $g$ 在 $G$ 中\Term{regular-element}{正则}当且仅当它在 $H$ 中\Term{regular-element}{正则}且
+\[(\mathfrak g/\mathfrak h)^{\operatorname{ad}(g)}=0.\]
+\end{SGAresult}
+\begin{proof}
+证明 a）。对 $C$ 的两个假设中的任意一个，$C$ 的唯一\Term{maximal-torus}{极大环面} $T$ 都是 $H,G$ 的\Term{maximal-torus}{极大环面}，因为 $H$ 与 $G$ 的\Term{reductive-rank}{约化秩}相同。因此 $\operatorname{Centr}_H(T)\subset\operatorname{Centr}_G(T)$ 是同维的\Term{smooth}{光滑}\Term{connected}{连通}群，故相等。所以 $C$ 等于其中任一个的条件相同，a）得证。
+
+证明 b）。先设 $g$ 在 $G$ 中\Term{regular-element}{正则}，$C$ 为 $G$ 中唯一包含 $g$ 的\Term{cartan-subgroup}{Cartan 子群}。由 2.3 b），包含 $C$ 的 $H$ 的\Term{conjugacy}{共轭} $H_i$ 恰有 $d$ 个。由于 $(\mathfrak g/\mathfrak c)^{\operatorname{ad}(g)}=0$，即 $\operatorname{ad}(g)$ 在 $\mathfrak g/\mathfrak c$ 上没有\Term{characteristic}{特征}值 $+1$，更有 $(\mathfrak g/\mathfrak h_i)^{\operatorname{ad}(g)}=0$。由 2.3 c），包含 $g$ 的 $H$ 的\Term{conjugacy}{共轭}恰有 $d$ 个，就是这些 $H_i$。对这样的 $H_i$，包含 $g$ 的一个\Term{cartan-subgroup}{Cartan 子群}由 a）也是 $G$ 的包含 $g$ 的\Term{cartan-subgroup}{Cartan 子群}，因而等于 $C$，所以 $g$ 在 $H_i$ 中\Term{regular-element}{正则}。反过来，假设包含 $g$ 的 $H$ 的\Term{conjugacy}{共轭} $H_i$ 至多有 $d$ 个，且 $g$ 在其中一个中\Term{regular-element}{正则}；不妨设它就是 $H$。来证 $g$ 在 $G$ 中\Term{regular-element}{正则}。$g$ 在 $H$ 中\Term{regular-element}{正则}，故包含于 $H$ 的唯一\Term{cartan-subgroup}{Cartan 子群} $C$，由 a）它也是 $G$ 的\Term{cartan-subgroup}{Cartan 子群}。若 $C'$ 是 $G$ 的包含 $g$ 的\Term{cartan-subgroup}{Cartan 子群}，来证 $C'=C$（这将证明 $g$ 在 $C$ 中\Term{regular-element}{正则}）。由 2.3 b），包含 $C'$ 的 $H$ 的\Term{conjugacy}{共轭}恰有 $d$ 个；这些\Term{conjugacy}{共轭}都包含 $g$，故必为各 $H_i$。因此每个 $H_i$，特别是 $H$，都包含 $C'$。
+\SourcePage{201}
+于是 $C,C'$ 是 $H$ 的两个\Term{cartan-subgroup}{Cartan 子群}（由 a）），包含 $H$ 的同一\Term{regular-element}{正则元素} $g$，因而相等。
+
+证明 c）。对\Term{finite-dimensional}{有限维}\Term{vector-space}{向量空间}的\Term{endomorphism}{自同态} $u$，以 $\nu(u)$ 表示 $\mathrm{id}-u$ 的\Term{nullity}{零度}\footnote{编者注：即其\Term{nil-space}{广义零空间}的\Term{dimension}{维数}。}，则有
+\[\nu(\operatorname{ad}(g)_{\mathfrak g})=\nu(\operatorname{ad}(g)_{\mathfrak h})+\nu(\operatorname{ad}(g)_{\mathfrak g/\mathfrak h}).\]
+右端两项分别不小于 $H$ 的\Term{nilpotent-rank}{幂零秩}（由 a），它等于 $G$ 的\Term{nilpotent-rank}{幂零秩} $\rho$）与 $0$。因此 $\nu(\operatorname{ad}(g)_{\mathfrak g})=\rho$ 当且仅当 $\nu(\operatorname{ad}(g)_{\mathfrak h})=\rho$ 且 $\nu(\operatorname{ad}(g)_{\mathfrak g/\mathfrak h})=0$；即 $g$ 在 $G$ 中\Term{regular-element}{正则}当且仅当它在 $H$ 中\Term{regular-element}{正则}且 $\operatorname{ad}(g)_{\mathfrak g/\mathfrak h}$ 没有非零\Term{invariant}{不变量}。
+\end{proof}
+\textbf{注记 2.9。}在 2.1 的陈述中，即便要求\Term{normalizer}{正规化子}还\Term{smooth}{光滑}，即 $H=N^0$，甚至 $G$ \Term{affine}{仿射}\Term{solvable}{可解}，也不能把（iii）弱化为只要求 $H$ 包含一个\Term{maximal-torus}{极大环面}且在其\Term{normalizer}{正规化子}中指数\Term{finite}{有限}。例如，令 $G$ 为形如
+\[g=\begin{pmatrix}t&a&c\\0&1&b\\0&0&1\end{pmatrix}\]
+的矩阵所成的群，$H$ 为上述矩阵中 $b=c=0$ 者所成的\Term{subgroup}{子群}（注意，此处 $G$ 的\Term{cartan-subgroup}{Cartan 子群}由 $a=c=0$ 的矩阵 $g$ 构成）。
+
+\textbf{注记 2.10。}设 $G$ 是 $k$ 上的\Term{smooth}{光滑}\Term{algebraic-group}{代数群}，$H$ 是\Term{smooth}{光滑}\Term{algebraic-subgroup}{代数子群}，但不再假设 $H,G$ \Term{connected}{连通}。假设 $H^0$ 包含 $G^0$ 的一个\Term{cartan-subgroup}{Cartan 子群}。于是 $(\mathfrak g/\mathfrak h)^H\subset(\mathfrak g/\mathfrak h)^{H^0}=0$，因而 $H^0=N^0$（$N$ 为 $H$ 的\Term{normalizer}{正规化子}），特别地 $N$ \Term{smooth}{光滑}。不过很容易构造 $G$ \Term{connected}{连通}而 $H$ 有一个\Term{connected-component}{连通分支} $H_i$ 的例子，使所有 $h\in H_i(k)$ 都不满足 $(\mathfrak g/\mathfrak h)^{\operatorname{ad}(h)}=0$；即从 $G\times H_i$ 到 $G$ 的\Term{morphism}{态射} $(g,h)\mapsto\operatorname{ad}(g)\cdot h$ 在任何点都不\Term{etale}{平展}（甚至不\Term{quasi-finite}{拟有限}）（例如取 $H$ 为 $\operatorname{SL}(2)_k$ 中\Term{maximal-torus}{极大环面}的\Term{normalizer}{正规化子}）。同样，即便 $H$ 在\Term{finite}{有限}群 $G'=G/G^0$ 中的像 $H'$ 等于 $G'$，$H$ 在 $G$ 中的\Term{conjugacy}{共轭}之并也不一定\Term{dense}{稠密}（取 $G$ 为 $\mathbf Z/2\mathbf Z$ 与 $G^0=\operatorname{SL}(2)_k$ 的\Term{semidirect-product}{半直积}，前者按“对称”\Term{action}{作用}于后者；取 $H$ 为\Term{semidirect-product}{半直积} $\mathbf Z/2\mathbf Z\cdot T$，其中 $T$ 是 $G^0$ 的\Term{maximal-torus}{极大环面}）。反之，若不预先假设 $H^0$ 包含 $G^0$ 的\Term{cartan-subgroup}{Cartan 子群}，而假设 $H$ 在 $G$ 中的\Term{conjugacy}{共轭}之并\Term{dense}{稠密}，则 $H^0$ 必包含 $G^0$ 的一个\Term{cartan-subgroup}{Cartan 子群}。为核实这一点，显然可以假设 $G$ \Term{connected}{连通}，然后重用 2.1（vi）$\Rightarrow$（i）的证明即可，该证明无须假设 $H$ \Term{connected}{连通}。
+\SourcePage{202}
+\SGAsection{3}{任意基预概形的情形}
+先设\Term{base}{基底}是一个域 $k$，不要求\Term{algebraically-closed}{代数闭}。条件 2.1（i bis）、（iv bis）、（v）、（vi）在\Term{base-field-extension}{基域扩张}下\Term{invariant}{不变}，故通过 $k$ 的\Term{algebraic-closure}{代数闭包} $\bar k$，可知它们彼此\Term{equivalence}{等价}，且\Term{equivalence}{等价}于 $H_{\bar k}$ 包含 $G_{\bar k}$ 的一个\Term{cartan-subgroup}{Cartan 子群}。此条件成立时，沿用 2.3 的记号，$k(X)$ 仍是 $k(G)$ 的\Term{finite}{有限}\Term{separable-extension}{可分扩张}，其\Term{degree}{次数} $d$ 在任何\Term{base-field-extension}{基域扩张}下都\Term{invariant}{不变}。若 $U$ 为 $G$ 的最大\Term{open-subset}{开集}，使 $\psi$ 诱导\Term{finite}{有限}\Term{etale}{平展}\Term{morphism}{态射} $\psi^{-1}(U)\to U$，则 $U$ 的形成与\Term{base-field-extension}{基域扩张}可交换。若 $\psi$ \Term{birational-morphism}{双有理}，则 $U$ 也是 $G$ 的最大\Term{open-subset}{开集}，使 $\psi$ \Term{induction-isomorphism}{诱导同构} $\psi^{-1}(U)\xrightarrow{\sim}U$；此时若 $g\in U(k)$，则存在唯一的 $G$ 的\Term{subgroup}{子群} $H'$，使它在 $k$ 的\Term{algebraic-closure}{代数闭包} $\bar k$ 上与 $H$ \Term{conjugacy}{共轭}，且 $H'\ni g$。
+
+称 $g\in G(k)$ 是\Term{regular-point}{正则点}，若它作为 $G(\bar k)=G_{\bar k}(\bar k)$ 的元素是\Term{regular-element}{正则}的。更一般地，2.7 的构造给出 $G$ 的一个\Term{open-subset}{开集}，其形成与任意\Term{base-field-extension}{基域扩张}可交换，称为 $G$ 的\Term{regular-point}{正则点}\Term{open-subset}{开集}；它也由以下性质刻画：对 $k$ 的每个\Term{algebraically-closed}{代数闭}\Term{field-extension}{扩域} $K$ 和每个 $g\in G(K)$，$g$ 是 $G_K$ 的\Term{regular-point}{正则点}当且仅当 $g\in U(K)$。若 $g\in U(k)$\footnote{编者注：将 $G(k)$ 改为 $U(k)$。}，则 $g$ 包含在 $G$ 的唯一\Term{cartan-subgroup}{Cartan 子群}中；下面将在更一般的条件下证明这一点。
+
+设 $G$ 是\Term{prescheme}{预概形} $S$ 上\Term{smooth}{光滑}、\Term{separated}{分离}、\Term{finite-type}{有限型}且\Term{fiber}{纤维}\Term{connected}{连通}的\Term{group-prescheme}{群预概形}。考虑\Term{functor}{函子} $\mathscr C:(\mathrm{Sch})_{/S}^{\circ}\to(\mathrm{Ens})$，定义为
+\[\mathscr C(S')=G_{S'}\text{ 的\ Cartan 子群（第 XII 讲 3.1）所成的集合}.\]
+假设此\Term{functor}{函子}由 $S$ 上的一个\Term{smooth}{光滑}\Term{prescheme}{预概形}表示；第 XV 讲将给出此性质成立的充要条件。不过我们已经知道，若 $G$ 在 $S$ 上\Term{affine}{仿射}且\Term{reductive-rank}{约化秩}\Term{locally-constant}{局部常值}（第 XII 讲 3.3），或更一般地，若 $G$ 对 \Term{fpqc-topology}{fpqc 拓扑}\Term{local-scheme}{局部}具有一个\Term{maximal-torus}{极大环面}（第 XII 讲 7.1 a）），例如 $S$ 为域的谱时，此假设成立。
+
+设 $X$ 为 $\mathscr C$-\Term{group-prescheme}{群预概形} $G_{\mathscr C}$ 的\Term{cartan-subgroup}{Cartan 子群}，即 $G$ 的“\Term{versal}{万有}\Term{cartan-subgroup}{Cartan 子群}”。作为 $S$ 上的\Term{prescheme}{预概形}，$X$ 因而表示如下\Term{functor}{函子}：
+\[\begin{aligned}
+X(S')=\{(C,g)\mid{}& C\text{ 是 }G_{S'}\text{ 的\ Cartan 子群，}\\
+&g\text{ 是 }C\text{ 在 }S'\text{ 上的截面}\}.
+\end{aligned}\]
+考虑\Term{canonical-projection}{典范投影}\Term{morphism}{态射} $(C,g)\mapsto g$：
+\[\psi:X\longrightarrow G.\]
+于是有：
+\begin{SGAresult}{\Term{theorem}{定理}}{3.1}
+在上述关于 $G$ 的条件下，沿用上述记号，令 $U$ 为 $G$ 中使 $g$ 是其\Term{fiber}{纤维} $G_s$ 的\Term{regular-element}{正则元素}的点 $g$ 所成的\Term{set}{集合}。
+\SourcePage{203}
+则 $U$ 为\Term{open-subset}{开集}，且也是 $G$ 的最大\Term{open-subset}{开集}，使 $\psi$ \Term{induction-isomorphism}{诱导同构}
+\[\psi^{-1}(U)\xrightarrow{\sim}U.\]
+\end{SGAresult}
+\begin{proof}
+先证明 $U$ 为\Term{open-subset}{开集}。$\mathscr C$ 由 $S$ 上的\Term{smooth}{光滑}\Term{prescheme}{预概形}表示，且它的\Term{structural-morphism}{结构态射}显然\Term{surjectivity}{满射}，由此立即得到 $G$ 对\Term{etale-topology}{平展拓扑}\Term{local-scheme}{局部}具有一个\Term{cartan-subgroup}{Cartan 子群}，且 $G$ 的\Term{fiber}{纤维}的\Term{nilpotent-rank}{幂零秩}\Term{locally-constant}{局部常值}。$G$ 的\Term{fiber}{纤维}\Term{dimension}{维数}也\Term{locally-constant}{局部常值}；在 $S$ 上\Term{localization}{局部化}后，可以设二者分别恒为 $\rho,n$。考虑 \Term{killing-polynomial}{Killing 多项式}
+\[P_G(t)=t^n+c_1t^{n-1}+\cdots+c_n\in A[t],\qquad A=\Gamma(G,\mathscr O_G).\]
+此\Term{polynomial}{多项式}\Term{restriction}{限制}到 $G$ 的各\Term{fiber}{纤维} $G_s$，特别是 $S$ 的\Term{maximal-point}{极大点}上的\Term{fiber}{纤维}时，可被 $(t-1)^\rho$ 整除。也就是说，$c_i$ 的某些整系数线性组合在各\Term{fiber}{纤维} $G_s$ 上为零。当 $S$ \Term{reduced}{既约}时（为了证明 $U$ 为\Term{open-subset}{开集}，可以这样假设），这些组合本身便为零，因此 \Term{killing-polynomial}{Killing 多项式}本身可被 $(t-1)^\rho$ 整除，写成
+\[P_G(t)=(t-1)^\rho(t^{n-\rho}+b_1t^{n-r-1}+\cdots+b_{n-\rho}).\]
+令 $b$ 为第二个因子的各系数 $b_0=1,b_1,\ldots,b_{n-\rho}$ 之和；将 2.7 用于 $G$ 的各\Term{fiber}{纤维}，得 $U=G_b$，这就证明 $U$ 为\Term{open-subset}{开集}。
+
+为证明 $\psi^{-1}(U)\to U$ 为\Term{isomorphism}{同构}，由 SGA1 第 I 讲 5.7，只须逐\Term{fiber}{纤维}核实，归结到\Term{base}{基底}为域的情形，并可设它\Term{algebraically-closed}{代数闭}。此时 $G$ 有一个\Term{cartan-subgroup}{Cartan 子群} $C$；令 $N$ 为其\Term{normalizer}{正规化子}，由\Term{conjugacy}{共轭}\Term{theorem}{定理}（第 XII 讲 7.1 a）、b）），$\mathscr C$ 可与 $G/N$ 等同，而此处的\Term{morphism}{态射} $\psi:X\to G$ 正是第 2 节定义的\Term{morphism}{态射}。应用 2.6 b）即可。同一推理也表明 $U$ 是 $G$ 的最大\Term{open-subset}{开集}，使 $\psi$ \Term{induction-isomorphism}{诱导同构} $\psi^{-1}(U)\to U$。
+\end{proof}
+\begin{SGAresult}{推论}{3.2}
+在 3.1 的条件下，设 $g$ 是 $G$ 的一个\Term{regular-section}{正则截面}，即对每个 $s\in S$，$g(s)$ 都是 $G_s$ 的\Term{regular-point}{正则点}。则 $G$ 有一个且仅一个\Term{cartan-subgroup}{Cartan 子群} $C$，使 $g$ 是 $C$ 的\Term{section}{截面}。
+\end{SGAresult}
+\begin{proof}
+关于 $g$ 的假设表示它是 $U$ 的\Term{section}{截面}，结论则表示它有唯一的\Term{lifting}{提升}为 $X$ 的\Term{section}{截面}；这正是 $\psi^{-1}(U)\to U$ 为\Term{isomorphism}{同构}的另一种表述。
+\end{proof}
+现在注意，$G_{\mathscr C}$ 的\Term{cartan-subgroup}{Cartan 子群} $X$ 的\Term{open-subset}{开集} $\psi^{-1}(U)$，正是 $X$ 中在 $G_{\mathscr C}$ 中\Term{regular-element}{正则}的点（即在各自\Term{fiber}{纤维}中\Term{regular-element}{正则}的点）所成的\Term{open-subset}{开集}。于是 $G$ 的\Term{regular-point}{正则点}\Term{dense-open-set}{稠密开集} $U$ 在\Term{prescheme}{预概形} $\mathscr C$ 上具有一个自然的“\Term{fibration}{纤维化}”，其\Term{fiber}{纤维}为 $G_{\mathscr C}$ 各\Term{fiber}{纤维}的\Term{cartan-subgroup}{Cartan 子群}的\Term{dense-open-set}{稠密开集}，
+\SourcePage{204}
+即它们在 $G$ 中的\Term{regular-point}{正则点}\Term{open-subset}{开集}。例如可得下述结果（下一讲还将大大加强它）：
+\begin{SGAresult}{推论}{3.3}
+设 $G$ 是域 $k$ 上\Term{smooth}{光滑}\Term{connected}{连通}的\Term{algebraic-group}{代数群}，$\mathscr T$ 是 $G$ 的\Term{maximal-torus-scheme}{极大环面概形}（\Term{isomorphism}{同构}于 $G$ 的\Term{cartan-subgroup-scheme}{Cartan 子群概形}）。则 $G$ 的\Term{function-field}{函数域} $k(G)$ \Term{isomorphism}{同构}于 $\mathscr T$ 的\Term{function-field}{函数域} $k(\mathscr T)$ 上某个\Term{smooth}{光滑}\Term{connected}{连通}\Term{affine}{仿射}\Term{nilpotent}{幂零}\Term{algebraic-group}{代数群} $C$ 的\Term{function-field}{函数域}，即 $C=$“$G$ 的泛\Term{cartan-subgroup}{Cartan 子群}”。若 $G$ \Term{affine}{仿射}且\Term{unipotent-rank}{幺幂秩}为零，即 $G_{\bar k}$ 的\Term{cartan-subgroup}{Cartan 子群}是\Term{torus}{环面}，则 $k(G)$ 是 $k(\mathscr T)$ 的\Term{unirational-extension}{单有理扩张}。
+\end{SGAresult}
+当然，“$G$ 的泛\Term{cartan-subgroup}{Cartan 子群}”是滥用语言，所指的是 $G_{k(\mathscr T)}$ 的那个\Term{cartan-subgroup}{Cartan 子群}，即 $X$ 在 $\mathscr T$ 上的泛\Term{fiber}{纤维}。只须再证 3.3 的最后一项断言，而它包含在下面这个众所周知的结果中（归于 Chevalley）：
+\begin{SGAresult}{\Term{lemma}{引理}}{3.4}
+设 $k$ 是域，$T$ 是 $k$ 上的\Term{torus}{环面}，$k(T)$ 是 $T$ 的\Term{rational-function-field}{有理函数域}。则 $k(T)$ 是 $k$ 的\Term{unirational-extension}{单有理扩张}，即包含在 $k$ 的某个\Term{purely-transcendental-extension}{纯超越扩张}中。
+\end{SGAresult}
+\begin{proof}
+取 $k$ 的\Term{finite}{有限}\Term{separable-extension}{可分扩张} $k'$，使 $T$ 在其上\Term{split}{分裂}\footnote{编者注：déploie（？），或“$T$ 在其上为\Term{splitting}{分裂}的”。}（第 X 讲 1.4）。于是 $T\otimes_k k'$ 是\Term{rational-variety}{有理簇}，即具有与\Term{affine-space}{仿射空间} $\mathbf A^n_{k'}$ 的\Term{dense-open-set}{稠密开集}\Term{isomorphism}{同构}的\Term{dense-open-set}{稠密开集}。因此
+\[T'=\prod_{\operatorname{Spec}(k')/\operatorname{Spec}(k)}T_{k'}/\operatorname{Spec}(k')\]
+是\Term{rational-variety}{有理簇}，因为它具有与 $\prod_{\operatorname{Spec}(k')/\operatorname{Spec}(k)}\mathbf A^n_{k'}$ 的\Term{dense-open-set}{稠密开集}\Term{isomorphism}{同构}的\Term{dense-open-set}{稠密开集}，后者\Term{isomorphism}{同构}于 $k$ 上的 $mn$ 维\Term{affine-space}{仿射空间}，其中 $m=[k':k]$。考虑 $T'$ 到 $T$ 的\Term{norm}{范数}\Term{homomorphism}{同态}（只要 $T$ 为 $k$ 上的交换\Term{group-scheme}{群概形}便可定义）。复合 $T\to T'\to T$ 是 $T$ 上的 $m$ 次幂映射，因而\Term{dominant}{支配}，故 $T'\to T$ \Term{dominant}{支配}。这证明 $T$ \Term{unirational}{单有理}。
+\end{proof}
+回到 3.1 的条件，并进一步假设 $G$ 对 \Term{fpqc-topology}{fpqc 拓扑}\Term{local-scheme}{局部}具有一个\Term{maximal-torus}{极大环面}（第 XII 讲 7.1）。设 $Y$ 为 $G$ 的\Term{cartan-subgroup}{Cartan 子群} $X$ 的\Term{maximal-torus}{极大环面}，则\Term{morphism}{态射} $\psi:X\to G$ 诱\Term{derived-morphism}{导态射} $Y\to G$，其像作为\Term{set}{集合}由 $G$ 的各\Term{fiber}{纤维}中的\Term{semisimple}{半单}元素组成（第 XII 讲第 8 节）。最后由 3.1，$\psi$ 在 $Y$ 的\Term{regular-point}{正则点}\Term{open-subset}{开集} $Y^{\mathrm{r\text{é}g}}$ 上的\Term{restriction}{限制}诱导\Term{closed-immersion}{闭浸入}
+\[Y^{\mathrm{r\text{é}g}}\longrightarrow U=G^{\mathrm{r\text{é}g}}.\]
+将 $Z=Y^{\mathrm{r\text{é}g}}$ 作为 $S$ 上\Term{functor}{函子}的意义写出，得到：
+\begin{SGAresult}{推论}{3.5}
+设 $G$ 为\Term{prescheme}{预概形} $S$ 上\Term{smooth}{光滑}、\Term{separated}{分离}、\Term{finite-type}{有限型}且\Term{fiber}{纤维}\Term{connected}{连通}的 $S$-\Term{group-prescheme}{群预概形}，且对 \Term{fpqc-topology}{fpqc 拓扑}\Term{local-scheme}{局部}具有一个\Term{maximal-torus}{极大环面}。定义\Term{functor}{函子} $Z:(\mathrm{Sch})_{/S}^{\circ}\to(\mathrm{Ens})$ 为：$Z(S')$ 是 $G_{S'}$ 在 $S'$ 上的那些包含于 $G_{S'}$ 的某个\Term{maximal-torus}{极大环面}中的\Term{regular-section}{正则截面}所成的\Term{set}{集合}。
+\SourcePage{205}
+则 $Z$ 可由 3.1 引入的 $G$ 的\Term{open-subset}{开集} $U=G^{\mathrm{r\text{é}g}}$ 的一个\Term{closed}{闭}\Term{subprescheme}{子预概形}表示，且此\Term{subprescheme}{子预概形}在 $S$ 上\Term{smooth}{光滑}。
+\end{SGAresult}
+最后记下进一步明确\Term{dense}{稠密}性\Term{theorem}{定理} 2.1（i）$\Rightarrow$（vi）的结果：
+\begin{SGAresult}{推论}{3.6}
+在 3.5 的条件下，设 $C$ 是 $G$ 的一个\Term{cartan-subgroup}{Cartan 子群}，考虑\Term{morphism}{态射}
+\[\varphi:Z\times C\longrightarrow G,\qquad\varphi(g,h)=\operatorname{ad}(g)h=ghg^{-1}.\]
+则 $\varphi$ \Term{dominant}{支配}。
+\end{SGAresult}
+\begin{proof}
+显然只须逐\Term{fiber}{纤维}证明，归结到 $S$ 为\Term{algebraically-closed-field}{代数闭域}的谱的情形。设 $T$ 为 $C$ 的\Term{maximal-torus}{极大环面}，$t_0\in T(k)$ 在 $G$ 中\Term{regular-element}{正则}，$c_0\in C(k)$ 在 $G$ 中\Term{regular-element}{正则}。考虑 $\varphi^{-1}(\varphi(t_0,c_0))$；它的 $k$-\Term{rational-point}{有理点}为满足
+\[\operatorname{ad}(t)c=\operatorname{ad}(t_0)c_0,\qquad\text{即 }c=\operatorname{ad}(t^{-1}t_0)c_0\]
+的二元组 $(t,c)$，其中 $t\in Z(k),c\in C(k)$。它们与满足 $\operatorname{ad}(t^{-1}t_0)c_0\in C$ 的 $t\in Z(k)$ 一一对应。因 $c_0$ \Term{regular-element}{正则}，这也就是说 $t^{-1}t_0\in N$（$C$ 的\Term{normalizer}{正规化子}），即 $t\in N$。仅取满足 $t\in C(k)$ 的 $t\in Z(k)$，便得到此\Term{fiber}{纤维}的一个既开又闭部分。因此，我们找到了 $\varphi^{-1}\varphi(t_0,c_0)$ 的一个与 $T$ \Term{isomorphism}{同构}的\Term{connected-component}{连通分支}（注意，把 $k$-值点换为任意 $k$-\Term{prescheme}{预概形}中的值点，就可看出上述\Term{set-theory}{集合论}推理确实给出\Term{scheme}{概形}\Term{isomorphism}{同构}）。故 $\varphi$ 的泛\Term{fiber}{纤维}\Term{dimension}{维数} $\leq\dim T$，因而
+\[\dim\operatorname{Im}(\varphi)\geq\dim(Z\times C)-\dim T=\dim Z+\dim C-\dim T.\]
+又有 $\dim Z=\dim Y=\dim\mathscr C+\dim T=\dim G-\dim C+\dim T$，终于得到 $\dim\operatorname{Im}(\varphi)\geq\dim G$，故 $\varphi$ \Term{dominant}{支配}。
+\end{proof}
+\textbf{注记 3.7。}上述推理还表明，在 $\varphi(t_0,c_0)$ 上的\Term{fiber}{纤维}中，$(t_0,c_0)$ 所在的\Term{connected-component}{连通分支}\Term{isomorphism}{同构}于 $T$，特别地它在 $k$ 上\Term{smooth}{光滑}，且与泛\Term{fiber}{纤维}同维。这蕴含 $\varphi$ 实际上在 $(t_0,c_0)$ 处\Term{smooth}{光滑}（应当也能通过计算切映射核实）。因此，在 3.6 的条件下，诱\Term{derived-morphism}{导态射} $Z\times_S C^{\mathrm{r\text{é}g}}\to G^{\mathrm{r\text{é}g}}$ 是\Term{smooth}{光滑}\Term{morphism}{态射}，其中 $C^{\mathrm{r\text{é}g}}=C\cap G^{\mathrm{r\text{é}g}}$。同样可见，类似\Term{morphism}{态射} $Z\times T^{\mathrm{r\text{é}g}}\to Z$（$T$ 是 $G$ 的\Term{maximal-torus}{极大环面}）是\Term{smooth}{光滑}的；更一般地，对 $C$ 的任意\Term{smooth}{光滑}\Term{connected}{连通}\Term{normal-subgroup}{正规}\Term{algebraic-subgroup}{代数子群} $H$，若它包含 $G(k)$ 的一个\Term{regular-element}{正则元素} $c_0$，则 $Z\times H\to G$ 的像在 $G\times H\to G$ 的像中\Term{dense}{稠密}。
+\SGAsection{4}{域上的 Lie 代数：秩、正则元素、Cartan 子代数}
+本讲余下部分将重新讨论 Chevalley 在其著作《Théorie des Groupes de Lie III》（Act. Sc. Ind. 1226，巴黎，1955）中发展的理论，\Term{scheme}{概形}技术将使我们能够去掉\Term{characteristic}{特征}为零的假设。
+\SourcePage{206}
+本节先回顾一些众所周知的概念和结果。
+
+设 $\mathfrak g$ 是环 $k$ 上的\Term{lie-algebra}{Lie 代数}。对任意 $a\in\mathfrak g$，以 $\operatorname{ad}(a)$ 表示 $\mathfrak g$ 的\Term{endomorphism}{自同态}
+\[\operatorname{ad}(a)\cdot x=[a,x],\]
+它是\Term{lie-algebra}{Lie 代数} $\mathfrak g$ 的一个\Term{derivation}{导子}。对 $\mathfrak g$ 的任意\Term{derivation}{导子} $D$，$D$ 的\Term{nil-space}{广义零空间}，即 $D$ 的各次迭代的核之并，是 $\mathfrak g$ 的\Term{lie-subalgebra}{Lie 子代数}；这由 Leibniz 公式即可看出：
+\[D^m([x,y])=\sum_{0\leq p\leq m}\binom mp[D^px,D^{m-p}y].\]
+记
+\[\operatorname{Nil}(a,\mathfrak g)=\operatorname{ad}(a)\text{ 的广义零空间}=\bigcup_{m\geq0}\operatorname{Ker}\operatorname{ad}(a)^m.\]
+不会混淆时，简记为 $\operatorname{Nil}(a)$，称作 $a$（在 $\mathfrak g$ 中）的\Term{nil-space}{广义零空间}。
+\begin{SGAresult}{命题}{4.1}
+每个 $a\in\mathfrak g$ 的\Term{nil-space}{广义零空间} $\operatorname{Nil}(a,\mathfrak g)$ 是 $\mathfrak g$ 的一个\Term{lie-subalgebra}{Lie 子代数}，且等于自身的\Term{normalizer}{正规化子}。
+\end{SGAresult}
+\begin{proof}
+只须证明它等于自身的\Term{normalizer}{正规化子}，即 $\mathfrak g/\operatorname{Nil}$ 中被 $\operatorname{Nil}$ 在 $\mathfrak g/\operatorname{Nil}$ 上的\Term{adjoint-representation}{伴随表示}\Term{annihilate}{零化}的每个元素均为零。这是显然的，因为此商中被 $\operatorname{Ad}(a)$ \Term{annihilate}{零化}的每个元素都为零。
+\end{proof}
+本节以下假设 $k$ 为域，$\mathfrak g$ 在 $k$ 上\Term{finite-dimensional}{有限维}。以 $\mathbf W(\mathfrak g)$ 表示 $\mathfrak g$ 所定义的 $k$-\Term{scheme}{概形}；它在 $k$-\Term{algebra}{代数} $A$ 中的点是 $\mathfrak g\otimes_k A$ 的元素。对 $a\in\mathfrak g$，$\operatorname{ad}(a)$ 的\Term{characteristic-polynomial}{特征多项式}也称为 $a$ 在 $\mathfrak g$ 中的\Term{characteristic-polynomial}{特征多项式}或\Term{killing-polynomial}{Killing 多项式}，写作
+\[P_{\mathfrak g}(a,t)=t^n+c_1(a)t^{n-1}+\cdots+c_n(a),\]
+其中 $n=\operatorname{rang}_k\mathfrak g$，$c_i(a)\in k$。对任意 $k$-\Term{algebra}{代数} $A$，也可在 $a\in\mathfrak g\otimes_k A$\footnote{编者注：已将 $\mathbf W\otimes_k A$ 改为 $\mathfrak g\otimes_k A$。} 时考虑这个\Term{polynomial}{多项式}，由此可知 $c_i(a)$ 来自 $\mathbf W(\mathfrak g)$ 的\Term{structure-sheaf}{结构层}的唯一确定的\Term{section}{截面} $c_i$，即\Term{symmetric-algebra}{对称代数} $A=\operatorname{Sym}_k(\mathfrak g^\vee)$ 的元素；$\mathfrak g^\vee$ 是 $k$-模 $\mathfrak g$ 的\Term{duality}{对偶}。（$k$ 为无限域时，知道对应的\Term{polynomial}{多项式}函数 $\mathfrak g\to k$ 即可确定 $c_i$；但 $k$ 为\Term{finite-field}{有限域}时并非如此。）设 $r$ 为使\Term{killing-polynomial}{Killing 多项式}
+\[P_{\mathfrak g}(t)=t^n+c_1t^{n-1}+\cdots+c_n\in A[t]\]
+可被 $t^r$ 整除的最大整数，即
+\[P_{\mathfrak g}(t)=t^n+c_1t^{n-1}+\cdots+c_{n-r}t^r,\qquad c_{n-r}\ne0.\]
+整数 $r$ 称为\Term{lie-algebra}{Lie 代数} $\mathfrak g$ 的\Term{nilpotent-rank}{幂零秩}。它在\Term{base-field-extension}{基域扩张}下\Term{invariant}{不变}。
+\SourcePage{207}
+\begin{SGAresult}{命题}{4.2}
+设 $r$ 为 $\mathfrak g$ 的\Term{nilpotent-rank}{幂零秩}，$a\in\mathfrak g$。则
+\[\operatorname{rang}_k\operatorname{Nil}(a,\mathfrak g)\geq r,\]
+且等号成立当且仅当 $c_{n-r}(a)\ne0$。此时，$\operatorname{Nil}(a,\mathfrak g)$ 是\Term{nilpotent}{幂零}\Term{lie-algebra}{Lie 代数}（5.7 b）还将证明，当 $\mathfrak g$ 是 $k$ 上\Term{smooth}{光滑}\Term{algebraic-group}{代数群} $G$ 的\Term{lie-algebra}{Lie 代数}时，逆命题成立）。
+\end{SGAresult}
+\begin{proof}
+第一项断言显然，因为由定义，$\operatorname{rang}_k\operatorname{Nil}(a,\mathfrak g)$ 等于 $P_{\mathfrak g}(a,t)$ 的零根\Term{multiplicity}{重数}。来证若 $c_{n-r}(a)\ne0$，则 $\operatorname{Nil}(a)$ \Term{nilpotent}{幂零}；这也就是说对任意 $x\in\operatorname{Nil}(a)$，$\operatorname{ad}_{\operatorname{Nil}(a)}(x)$ 是\Term{nilpotent}{幂零}\Term{endomorphism}{自同态}。可设 $k$ \Term{algebraically-closed}{代数闭}。$\operatorname{ad}(a)_{\mathfrak g/\operatorname{Nil}(a)}$ \Term{injectivity}{单射}，因此 $\mathbf W(\operatorname{Nil}(a))$ 有一\Term{nonempty}{非空}\Term{open-subset}{开集} $U$，使对任意 $x\in U(k)$，$\operatorname{ad}(x)_{\mathfrak g/\operatorname{Nil}(a)}$ \Term{injectivity}{单射}，从而 $\operatorname{Nil}(x)\subset\operatorname{Nil}(a)$。还可设 $U$ 包含于 $c_{n-r}$ 不为零的点所成的\Term{open-subset}{开集}，因为由 $c_{n-r}(a)\ne0$ 此\Term{open-subset}{开集}\Term{nonempty}{非空}。此时 $\operatorname{Nil}(x)$ 与 $\operatorname{Nil}(a)$ 同维，故 $\operatorname{Nil}(x)=\operatorname{Nil}(a)$。因此对每个 $x\in U(k)$，$\operatorname{ad}(x)_{\operatorname{Nil}(a)}$ \Term{nilpotent}{幂零}；由\Term{algebra}{代数}恒等式的延拓原理，这对每个 $x\in\operatorname{Nil}(a)$ 仍成立，所以 $\operatorname{Nil}(a)$ \Term{nilpotent}{幂零}。
+\end{proof}
+若 $c_{n-r}(a)\ne0$，即 $\operatorname{rang}_k\operatorname{Nil}(a,\mathfrak g)=r$，则称 $\mathfrak g$ 的元素 $a$ 是\Term{regular-element}{正则元素}。当 $k$ 为无限域时，这也表示 $\operatorname{rang}_k\operatorname{Nil}(a,\mathfrak g)$ 随 $a\in\mathfrak g$ 变化取最小可能值。无论如何，$\mathfrak g$ 的\Term{regular-element}{正则元素}这一概念在\Term{base-field-extension}{基域扩张}下\Term{invariant}{不变}；而 $\mathbf W(\mathfrak g)$ 中\Term{regular-point}{正则}的点（即来自于 $\mathbf W(\mathfrak g)$ 在适当的 $k$ 的\Term{field-extension}{扩域}中取值的\Term{regular-point}{正则点}的点）所成的\Term{set}{集合}为\Term{open-subset}{开集}，因为它等于 $\mathbf W(\mathfrak g)_{c_{n-r}}$，即 $c_{n-r}$ \Term{invertible}{可逆}的点所成的\Term{set}{集合}。
+\begin{SGAresult}{推论}{4.3}
+设 $a$ 是 $\mathfrak g$ 的\Term{regular-element}{正则元素}，$\mathfrak h$ 是包含 $a$ 的 $\mathfrak g$ 的\Term{lie-subalgebra}{Lie 子代数}。则 $\mathfrak h$ \Term{nilpotent}{幂零}当且仅当 $\mathfrak h\subset\operatorname{Nil}(a,\mathfrak g)$；特别地，$\operatorname{Nil}(a,\mathfrak g)$ 是 $\mathfrak g$ 的一个\Term{maximal-nilpotent-subalgebra}{极大幂零子代数}。
+\end{SGAresult}
+\begin{proof}
+$\operatorname{Nil}(a)$ \Term{nilpotent}{幂零}，故 $\mathfrak h\subset\operatorname{Nil}(a)$ 蕴含 $\mathfrak h$ \Term{nilpotent}{幂零}；反之，若 $\mathfrak h$ \Term{nilpotent}{幂零}，它就包含在其元素 $a$ 的\Term{nil-space}{广义零空间}中，即 $\mathfrak h\subset\operatorname{Nil}(a)$。
+\end{proof}
+\begin{SGAresult}{命题}{4.4}
+设 $k$ 为无限域，$\mathfrak d$ 是 $\mathfrak g$ 的\Term{lie-subalgebra}{Lie 子代数}。考虑以下条件：
+
+（i）$\mathfrak d$ 是\Term{maximal-nilpotent-subalgebra}{极大幂零子代数}，且包含 $\mathfrak g$ 的一个\Term{regular-element}{正则元素}。
+
+（i bis）$\mathfrak d$ 形如 $\operatorname{Nil}(a,\mathfrak g)$，其中 $a$ 是 $\mathfrak g$ 的\Term{regular-element}{正则元素}。
+
+（ii）$\mathfrak d$ \Term{nilpotent}{幂零}，且形如 $\operatorname{Nil}(a,\mathfrak g)$，其中 $a\in\mathfrak g$。
+
+（ii bis）$\mathfrak d$ \Term{nilpotent}{幂零}，且存在 $a\in\mathfrak d$ 使 $\operatorname{ad}(a)_{\mathfrak g/\mathfrak d}$ \Term{injectivity}{单射}。
+
+（iii）$\mathfrak d$ \Term{nilpotent}{幂零}且等于自身的\Term{normalizer}{正规化子}。
+\SourcePage{208}
+则有蕴含关系
+\[\text{（i）}\Leftrightarrow\text{（i bis）}\Rightarrow\text{（ii）}\Leftrightarrow\text{（ii bis）}\Leftrightarrow\text{（iii）}.\]
+（5.7 a）将证明，若 $\mathfrak g$ 是\Term{smooth}{光滑}\Term{algebraic-group}{代数群}的\Term{lie-algebra}{Lie 代数}，则以上条件全部\Term{equivalence}{等价}。）
+\end{SGAresult}
+\begin{proof}
+由 4.3，（i）与（i bis）的\Term{equivalence}{等价}性显然，且它们显然蕴含（ii）。（ii）与（ii bis）的\Term{equivalence}{等价}性，以及（ii bis）$\Rightarrow$（iii）（参见 4.1）也都显然。只须证明（iii）$\Rightarrow$（ii bis）；这是唯一用到 $k$ 为无限域的步骤，它立即来自下面的\Term{lemma}{引理}。
+\end{proof}
+\begin{SGAresult}{\Term{lemma}{引理}}{4.5}
+设 $\mathfrak d$ 是无限域 $k$ 上的\Term{nilpotent}{幂零}\Term{lie-algebra}{Lie 代数}，\Term{action}{作用}于\Term{finite-dimensional}{有限维}\Term{vector-space}{向量空间} $V$。假设对每个 $x\in\mathfrak d$，\Term{endomorphism}{自同态} $u(x)$ 都不是\Term{injectivity}{单射}。则存在被 $\mathfrak d$ \Term{annihilate}{零化}的非零元素 $v\in V$。
+\end{SGAresult}
+\begin{proof}
+可以设 $k$ \Term{algebraically-closed}{代数闭}且 $\mathfrak d$ \Term{finite-dimensional}{有限维}。已知此时 $V$ 是\Term{finite}{有限}多个非零\Term{stable}{稳定}向量子\Term{space}{空间} $V_i$（$1\leq i\leq n$）的\Term{direct-sum}{直和}，使对每个 $i$ 和 $x\in\mathfrak d$，$u(x)|_{V_i}$ 仅有一个\Term{characteristic}{特征}值 $\lambda_i(x)$（参见 Bourbaki，《Groupes et Algèbres de Lie》，第 I 章，\S 4，习题 22）。以 $c_i(x)$ 表示 $u(x)|_{V_i}$ 的\Term{characteristic-polynomial}{特征多项式}的常数项，于是 $\lambda_i(x)=0$ 当且仅当 $c_i(x)=0$。$c_i$ 是 $\mathfrak d$ 上的\Term{polynomial}{多项式}函数，而假设表示 $\mathfrak d$ 是各 $c_i$ 的零点集之并。因此某个 $c_i$ 恒为零；用 $V_i$ 代替 $V$，归结到对每个 $x\in\mathfrak d$，$u(x)$ 都\Term{nilpotent}{幂零}的情形。这时 Engel \Term{theorem}{定理}（Bourbaki，同上，\Term{theorem}{定理} 1）表明存在被 $\mathfrak d$ \Term{annihilate}{零化}的非零 $v\in V$。
+\end{proof}
+容易看出，在 $k$ 仍为无限域时，4.4 的条件（i）、（i bis）在任意\Term{base-field-extension}{基域扩张}下\Term{invariant}{不变}。若它们成立，则称 $\mathfrak d$ 是 $\mathfrak g$ 的\Term{cartan-subalgebra}{Cartan 子代数}；一般情形（$k$ 未必无限）下，若 $\mathfrak d$ 在某个（因而任意）无限\Term{base-field-extension}{基域扩张} $k\to k'$ 后成为\Term{cartan-subalgebra}{Cartan 子代数}，也称它是 $\mathfrak g$ 的\Term{cartan-subalgebra}{Cartan 子代数}。因此它\Term{nilpotent}{幂零}且等于自身的\Term{normalizer}{正规化子}。
+\begin{SGAresult}{命题}{4.6}
+ a）设 $a\in\mathfrak g$。若 $a$ \Term{regular-element}{正则}，则它包含在 $\mathfrak g$ 的一个且仅一个\Term{cartan-subalgebra}{Cartan 子代数}中（6.1 d）将证明，当 $k$ \Term{algebraically-closed}{代数闭}且 $\mathfrak g$ 是\Term{smooth}{光滑}\Term{algebraic-group}{代数群}的\Term{lie-algebra}{Lie 代数}时，逆命题也成立）。
+
+ b）设 $\mathfrak d$ 是 $\mathfrak g$ 的\Term{cartan-subalgebra}{Cartan 子代数}，$a\in\mathfrak d$。则 $a$ 在 $\mathfrak g$ 中\Term{regular-element}{正则}当且仅当 $\operatorname{ad}(a)_{\mathfrak g/\mathfrak d}$ \Term{injectivity}{单射}。
+\end{SGAresult}
+\begin{proof}
+a）若 $a$ \Term{regular-element}{正则}，则 $\operatorname{Nil}(a,\mathfrak g)$ 是 $\mathfrak g$ 的\Term{cartan-subalgebra}{Cartan 子代数}（因为这在 $k$ 的无限\Term{field-extension}{扩域} $k'$ 上成立）；由 4.3 立即可知，$\mathfrak g$ 中包含 $a$ 的任意\Term{cartan-subalgebra}{Cartan 子代数}都等于它。对 b），注意 $\operatorname{ad}(a)_{\mathfrak g}$ 的\Term{nullity}{零度}\footnote{编者注：即\Term{nil-space}{广义零空间}的\Term{dimension}{维数}。}等于 $\operatorname{ad}(a)_{\mathfrak d}$ 与 $\operatorname{ad}(a)_{\mathfrak g/\mathfrak d}$ 的\Term{nullity}{零度}之和；前者为 $r$，故总和等于 $r$ 当且仅当 $\operatorname{ad}(a)_{\mathfrak g/\mathfrak d}$ \Term{injectivity}{单射}。
+\end{proof}
+\SourcePage{209}
+\begin{SGAresult}{推论}{4.7}
+设 $a$ 是 $\mathfrak g$ 的\Term{regular-element}{正则元素}，$\mathfrak d$ 是 $\mathfrak g$ 中包含 $a$ 的\Term{cartan-subalgebra}{Cartan 子代数}，$A$ 为 $k$-\Term{algebra}{代数}；$\mathfrak g_A$ 和 $\mathfrak d_A\subset\mathfrak g_A$ 为由 $\mathfrak g,\mathfrak d$ 经\Term{base-change}{基变换}得到的 $A$-\Term{lie-algebra}{Lie 代数}，$a_A$ 为 $a$ 在 $\mathfrak g_A$ 中的像。设 $u$ 是 $\mathfrak g_A$ 的\Term{automorphism}{自同构}。则 $u(\mathfrak d_A)=\mathfrak d_A$ 当且仅当 $u(a_A)\in\mathfrak d_A$。
+\end{SGAresult}
+\begin{proof}
+必要性显然，证明充分性。若此条件成立，则 $\mathfrak d'=u(\mathfrak d_A)$ 是包含 $a_A$ 的\Term{lie-subalgebra}{Lie 子代数}，其中每个元素 $b$ 都使 $\operatorname{ad}(b)_{\mathfrak d}$ \Term{nilpotent}{幂零}（因为 $\mathfrak d'$ \Term{isomorphism}{同构}于 $\mathfrak d_A$，而后者有此性质，这由 Bourbaki，《Groupes et Algèbres de Lie》，第 I 章，\S 4，定义 1 的“\Term{nilpotent}{幂零}”定义立即得到）。取 $b=a_A$，则\Term{nil-space}{广义零空间} $\operatorname{Nil}(b,\mathfrak g_A)$ 包含 $\mathfrak d'$；另一方面它等于 $\mathfrak d_A$。由于 $\mathfrak d'$ \Term{local-scheme}{局部}是模 $\mathfrak g_A$ 的\Term{direct-summand}{直和因子}（$\mathfrak d$ 具有此性质），从而也是 $\mathfrak d_A$ 的\Term{direct-summand}{直和因子}，且它是与后者同秩 $r$ 的\Term{projective-module}{投射模}，故二者相等。
+\end{proof}
+\begin{SGAresult}{命题}{4.8}
+设 $\mathfrak h$ 是 $\mathfrak g$ 的\Term{lie-subalgebra}{Lie 子代数}。
+
+ a）若 $k$ 无限，则以下条件\Term{equivalence}{等价}：
+
+（i）$\mathfrak h$ 包含 $\mathfrak g$ 的一个\Term{cartan-subalgebra}{Cartan 子代数} $\mathfrak d$。
+
+（ii）$\mathfrak h$ 包含 $\mathfrak g$ 的一个\Term{regular-element}{正则元素} $a$，以及一个使 $\operatorname{ad}(b)_{\mathfrak g/\mathfrak h}$ \Term{injectivity}{单射}的元素 $b$。
+
+（iii）$\mathfrak h$ 与 $\mathfrak g$ 的\Term{nilpotent-rank}{幂零秩}相同，且包含 $\mathfrak g$ 的一个\Term{regular-element}{正则元素}。
+
+这些条件在\Term{base-field}{基域} $k$ 的\Term{group-extension}{扩张}下\Term{invariant}{不变}。
+
+ b）假设这些条件在适当的无限\Term{field-extension}{扩域} $k'$ 上成立。设 $a\in\mathfrak h$，则 $a$ 在 $\mathfrak g$ 中\Term{regular-element}{正则}当且仅当它在 $\mathfrak h$ 中\Term{regular-element}{正则}且 $\operatorname{ad}(a)_{\mathfrak g/\mathfrak h}$ \Term{injectivity}{单射}；即当且仅当 $\operatorname{Nil}(a,\mathfrak h)=\operatorname{Nil}(a,\mathfrak g)$ 且它是 $\mathfrak h$ 的\Term{cartan-subalgebra}{Cartan 子代数}。
+
+ c）在 b）的条件下，设 $\mathfrak d$ 是 $\mathfrak h$ 的\Term{lie-subalgebra}{Lie 子代数}。为使它成为 $\mathfrak h$ 的\Term{cartan-subalgebra}{Cartan 子代数}，只须它是 $\mathfrak g$ 的\Term{cartan-subalgebra}{Cartan 子代数}（5.8 将证明，若 $\mathfrak g$ 是\Term{smooth}{光滑}\Term{algebraic-group}{代数群} $G$ 的\Term{lie-algebra}{Lie 代数}、$\mathfrak h$ 是 $G$ 的\Term{smooth}{光滑}\Term{algebraic-subgroup}{代数子群} $H$ 的\Term{lie-algebra}{Lie 代数}，则此条件也必要）。
+\end{SGAresult}
+\begin{proof}
+a）的条件（ii）、（iii）显然在\Term{base-field}{基域} $k$（假设无限）的\Term{group-extension}{扩张}下\Term{invariant}{不变}；而在 b）、c）的陈述中可以假设 $k$ 无限，以下便这样做。若 $\mathfrak h$ 包含\Term{cartan-subalgebra}{Cartan 子代数} $\mathfrak d=\operatorname{Nil}(a,\mathfrak g)$，则 $a$ 是 $\mathfrak g$ 的一个\Term{regular-element}{正则元素}，且 $\operatorname{ad}(a)_{\mathfrak g/\mathfrak h}$ \Term{injectivity}{单射}，故（i）$\Rightarrow$（ii）。反之，若（ii）成立，则 $\mathfrak h$ 中“充分一般”的元素 $a$ 同时满足（ii）中的两个条件，因此 $\operatorname{Nil}(a,\mathfrak g)$ 是 $\mathfrak g$ 的\Term{cartan-subalgebra}{Cartan 子代数}且包含在 $\mathfrak h$ 中，即（i）成立。因此（i）、（ii）\Term{equivalence}{等价}。假设它们成立，令 $a$ 在 $\mathfrak h$ 中变化，则
+\[\operatorname{rang}_k\operatorname{Nil}(a,\mathfrak g)=\operatorname{rang}_k\operatorname{Nil}(a,\mathfrak h)+\operatorname{rang}_k\operatorname{Nil}(\operatorname{ad}(a)_{\mathfrak g/\mathfrak h}).\tag{x}\]
+右端两项分别不小于 $r'=\mathfrak h$ 的\Term{nilpotent-rank}{幂零秩}和 $0$；而且 $\mathfrak h$ 的“充分一般”元素使两个等号都成立\footnote{编者注：将“等号”改成“两个等号”。}。此外，$\operatorname{rang}_k\operatorname{Nil}(a,\mathfrak g)\geq r=\mathfrak g$ 的\Term{nilpotent-rank}{幂零秩}，
+\SourcePage{210}
+等号对 $\mathfrak h$ 的“充分一般”元素成立，且成立当且仅当 $a$ 在 $\mathfrak g$ 中\Term{regular-element}{正则}。由此可得 $r=r'$，而 $a$ \Term{regular-element}{正则}当且仅当（x）右端两项分别等于 $r'$ 和 $0$，即当且仅当 $a$ 在 $\mathfrak h$ 中\Term{regular-element}{正则}且 $\operatorname{ad}(a)_{\mathfrak g/\mathfrak h}$ \Term{injectivity}{单射}。这证明 b）；c）只要取 $\mathfrak d$ 中在 $\mathfrak g$ 中\Term{regular-element}{正则}的元素 $a$，使 $\operatorname{Nil}(a,\mathfrak g)=\mathfrak d$，即可得到。前述结果还表明（i）$\Rightarrow$（iii）。最后，（iii）$\Rightarrow$（i），因为在（iii）下，$\mathfrak h$ 的充分一般元素 $a$ 在 $\mathfrak h$ 和 $\mathfrak g$ 中都\Term{regular-element}{正则}，故 $\operatorname{Nil}(a,\mathfrak h)\subset\operatorname{Nil}(a,\mathfrak g)$ 分别为 $\mathfrak h,\mathfrak g$ 的\Term{cartan-subalgebra}{Cartan 子代数}；它们在 $k$ 上同秩，因而相等，这就证明（i）。4.8 得证。
+\end{proof}
+\SGAsection{5}{光滑代数群的 Lie 代数的情形：稠密性定理}
+设 $G$ 是域 $k$ 上的\Term{smooth}{光滑}\Term{algebraic-group}{代数群}，$\mathfrak g$ 是其\Term{lie-algebra}{Lie 代数}，$\mathfrak h$ 是 $\mathfrak g$ 的\Term{lie-subalgebra}{Lie 子代数}。令 $G$ 通过\Term{adjoint-representation}{伴随表示}\Term{action}{作用}于 $\mathbf W(\mathfrak g)$，并考虑\Term{subscheme}{子概形} $\mathbf W(\mathfrak h)$。第 1 节的构造使我们引入
+\[N=\operatorname{Norm}_G(\mathfrak h)=\operatorname{Norm}_G(\mathbf W(\mathfrak h)),\]
+这是 $G$ 的一个\Term{algebraic-subgroup}{代数子群}（未必\Term{smooth}{光滑}）；再令
+\[\mathfrak n=\operatorname{Lie}(N),\]
+并考虑\Term{scheme}{概形}
+\[X=G\times^N\mathbf W(\mathfrak h),\]
+它是 $X=G\times\mathbf W(\mathfrak h)$ 关于 $N$ 的\Term{right-action}{右作用} $(g,x)\cdot n=(gn,\operatorname{Ad}(n^{-1})x)$ 的商。考虑\Term{canonical}{典范}\Term{morphism}{态射}
+\[
+\begin{tikzcd}
+G\times\mathbf W(\mathfrak h)\arrow[d,"q"']\arrow[dr,"\varphi"]&\\
+X\arrow[r,"\psi"']&\mathbf W(\mathfrak g).
+\end{tikzcd}
+\]
+\begin{SGAresult}{\Term{theorem}{定理}}{5.1}
+沿用以上记号，设 $k$ 为无限域。考虑下列条件：
+
+（i）$\mathfrak h$ 包含 $\mathfrak g$ 的一个\Term{cartan-subalgebra}{Cartan 子代数} $\mathfrak d$。
+
+（ii）存在 $a\in\mathfrak h$ 使 $\operatorname{ad}(a)_{\mathfrak g/\mathfrak h}$ \Term{injectivity}{单射}。
+
+（iii）$\varphi:G\times\mathbf W(\mathfrak h)\to\mathbf W(\mathfrak g)$ \Term{generically-smooth}{泛光滑}。
+
+（iv）前述\Term{morphism}{态射} $\varphi$（或\Term{equivalence}{等价}地 $\psi:X\to\mathbf W(\mathfrak g)$）\Term{dominant}{支配}，且 $\mathfrak h$ 与 $\mathfrak g$ 的\Term{nilpotent-rank}{幂零秩}相同。
+
+（v）$\psi:X\to\mathbf W(\mathfrak g)$ \Term{generically-smooth}{泛光滑}，且 $\mathfrak h=\mathfrak n$。
+
+（vi）$\psi:X\to\mathbf W(\mathfrak g)$ \Term{dominant}{支配}，且 $\mathfrak h=\mathfrak n$。
+
+（vii）$\psi:X\to\mathbf W(\mathfrak g)$ \Term{dominant}{支配}。
+
+（viii）$\psi:X\to\mathbf W(\mathfrak g)$ \Term{dominant}{支配}，且 $N$ \Term{smooth}{光滑}。
+\SourcePage{211}
+（ix）$\psi:X\to\mathbf W(\mathfrak g)$ \Term{dominant}{支配}，$\mathfrak h=\mathfrak n$，且 $\mathfrak h$ 是 $G$ 的某个\Term{smooth}{光滑}\Term{algebraic-subgroup}{代数子群} $H$ 的\Term{lie-algebra}{Lie 代数}。
+
+（x）$\psi:X\to\mathbf W(\mathfrak g)$ \Term{generically-quasi-finite}{泛拟有限}，且 $\mathfrak n=\mathfrak h$。
+
+（xi）$\psi:X\to\mathbf W(\mathfrak g)$ \Term{generically-etale}{泛平展}，且 $\mathfrak n=\mathfrak h$。
+
+（xii）存在 $G$ 的一个\Term{smooth}{光滑}\Term{algebraic-subgroup}{代数子群} $H$，其\Term{lie-algebra}{Lie 代数}为 $\mathfrak h$，且 $\mathfrak h$ 包含 $\mathfrak g$ 的一个\Term{cartan-subalgebra}{Cartan 子代数} $\mathfrak d$。
+
+（xiii）存在 $a\in\mathfrak h$，使 $N$ 与 $a$ 到 $\mathfrak h$ 的\Term{transporter}{输运子} $M_a$（参见第 1 节）在 $e$ 的一个\Term{neighborhood}{邻域}中相同，且 $\mathfrak n=\mathfrak h$。
+
+则有如下蕴含图：
+\[
+\begin{tikzcd}[column sep=small,row sep=large]
+\text{（xi）}\arrow[rr,Leftrightarrow]&&\text{（xii）}\arrow[r,Leftrightarrow]\arrow[d,Rightarrow]&\text{（xiii）}\arrow[r,Rightarrow]&\text{（viii）}\arrow[r,Leftrightarrow]&\text{（ix）}\arrow[r,Leftrightarrow]\arrow[d,Rightarrow]&\text{（x）}\\
+\text{（i）}\arrow[r,Leftrightarrow]&\text{（ii）}\arrow[r,Leftrightarrow]&\text{（iii）}\arrow[r,Leftrightarrow]&\text{（iv）}\arrow[r,Rightarrow]&\text{（v）}\arrow[r,Rightarrow]&\text{（vi）}\arrow[r,Rightarrow]&\text{（vii）}.
+\end{tikzcd}
+\]
+当 $k$ 的\Term{characteristic}{特征}为零时，所有这些条件\Term{equivalence}{等价}。最后，
+\[\text{（xi）}\Leftrightarrow[\text{（i）且（viii）}]\Leftrightarrow[\text{（v）且（viii）}].\]
+\end{SGAresult}
+\begin{proof}
+先注意显然的蕴含关系
+\[\text{（v）}\Rightarrow\text{（vi）}\Rightarrow\text{（vii）},\qquad
+\text{（ix）}\Rightarrow\text{（vi）},\qquad
+\text{（xi）}\Leftrightarrow[\text{（x）且（v）}].\]
+证明（i）至（iv）\Term{equivalence}{等价}且蕴含（v）。（i）$\Rightarrow$（ii）显然。另一方面，$k$ \Term{algebraically-closed}{代数闭}时，（iii）表示 $G\times\mathbf W(\mathfrak h)$ 有一个 $k$-\Term{rational-point}{有理点}，使 $\varphi$ 在该点处的切映射为\Term{surjectivity}{满射}；显然可设此点形如 $(e,a)$，$a\in\mathfrak h$，因为可以用 $G(k)$ 的适当\Term{action}{作用}将它变换成此\Term{form}{形式}。由此可知，当 $k$ 无限但未必\Term{algebraically-closed}{代数闭}时，这个显然足以保证\Term{generically-smooth}{泛光滑}的条件仍然必要。切映射容易计算：将 $\mathbf W(\mathfrak h)$ 在 $a$ 处的\Term{tangent-space}{切空间}与 $\mathfrak h$ 等同后，它是从 $\mathfrak g\times\mathfrak h$ 到 $\mathfrak g$ 的映射
+\[(\xi,x)\longmapsto[\xi,a]+x.\]
+它\Term{surjectivity}{满射}也就是说 $\operatorname{ad}(a)_{\mathfrak g/\mathfrak h}$ \Term{surjectivity}{满射}，或\Term{equivalence}{等价}地\Term{injectivity}{单射}。这证明（ii）、（iii）\Term{equivalence}{等价}。此外，（ii）显然蕴含 $\mathfrak h=\mathfrak n$；（iii）蕴含 $\psi$ \Term{generically-smooth}{泛光滑}，因为若 $\varphi$ 在点 $u$ 处\Term{smooth}{光滑}，则由于 $q$ \Term{flat}{平坦}，$\psi$ 在 $q(u)$ 处\Term{smooth}{光滑}。所以（ii）、（iii）蕴含（v）。再证明它们蕴含（i）。由于 $\psi$ \Term{dominant}{支配}，而 $\mathfrak g$ 的\Term{regular-point}{正则点}构成\Term{dense-open-set}{稠密开集}，$\mathfrak h$ 包含 $\mathfrak g$ 的\Term{regular-element}{正则元素}；因此 $\mathfrak h$ 的“充分一般”元素 $b$ 在 $\mathfrak g$ 中\Term{regular-element}{正则}，且满足 $\operatorname{ad}(b)_{\mathfrak g/\mathfrak h}$ \Term{injectivity}{单射}，故 $\operatorname{Nil}(b,\mathfrak g)\subset\mathfrak h$。于是 $\mathfrak h$ 包含\Term{cartan-subalgebra}{Cartan 子代数} $\mathfrak d=\operatorname{Nil}(b,\mathfrak g)$。因此（i）、（ii）、（iii）\Term{equivalence}{等价}。最后，（i）$\Leftrightarrow$（iv）：已经指出，若 $\mathfrak h$ 包含\Term{cartan-subalgebra}{Cartan 子代数}，则它与 $\mathfrak g$ 同秩（4.6），故（i）$\Rightarrow$（iv）；反之若（iv）成立，
+\SourcePage{212}
+则 $\mathfrak h$ 包含 $\mathfrak g$ 的\Term{regular-element}{正则元素}，又与 $\mathfrak g$ 同秩，由 4.6 它包含一个\Term{cartan-subalgebra}{Cartan 子代数}。
+
+证明（viii）至（x）的\Term{equivalence}{等价}性。先注意以下事实。
+\end{proof}
+\begin{SGAresult}{\Term{lemma}{引理}}{5.2}
+ a）若 $N$ \Term{smooth}{光滑}，则 $\dim X\leq\dim G$；等号成立当且仅当 $\mathfrak h=\mathfrak n$。
+
+ b）若 $\mathfrak h=\mathfrak n$，则 $\dim X\geq\dim G$；等号成立当且仅当 $N$ \Term{smooth}{光滑}。
+\end{SGAresult}
+\begin{proof}
+这些断言立即来自公式
+\[\dim X=\dim G-\dim N+\dim_k\mathfrak h\]
+及 $\dim N=\dim_k\mathfrak n$ \Term{equivalence}{等价}于 $N$ \Term{smooth}{光滑}这一事实。
+\end{proof}
+\begin{proof}[\Term{theorem}{定理} 5.1 的证明（续）]
+由此，（viii）$\Rightarrow$（x），因为（viii）蕴含 $\dim X\geq\dim G$，由 5.2 a）得到\Term{dimension}{维数}相等且 $\mathfrak h=\mathfrak n$，从而（x）成立；同样应用 5.2 b）可得（x）$\Rightarrow$（viii）。另一方面，（viii）蕴含（ix），因为它蕴含 $\mathfrak h=\mathfrak n$，故 $\mathfrak h$ 是 $G$ 的\Term{smooth}{光滑}\Term{algebraic-subgroup}{代数子群} $N$ 的\Term{lie-algebra}{Lie 代数}。反之，（ix）$\Rightarrow$（viii）：$H$ \Term{normalization}{正规化}其\Term{lie-algebra}{Lie 代数} $\mathfrak h$，故包含于 $N$；$H$ \Term{smooth}{光滑}且与 $N$ 有相同的\Term{lie-algebra}{Lie 代数}，所以 $N$ \Term{smooth}{光滑}。
+
+最后证明（xi）、（xii）、（xiii）\Term{equivalence}{等价}且蕴含（iii），从而建立整个蕴含图。有（xi）$\Leftrightarrow$（xiii），因为若 $\mathfrak n=\mathfrak h$，则由 5.2 b）有 $\dim X\geq\dim G$，所以考虑到 $\mathbf W(\mathfrak g)$ \Term{normal}{正规}，（xi）\Term{equivalence}{等价}于 $\psi$ \Term{generically-unramified}{泛非分歧}；仿照前面（ii）$\Leftrightarrow$（iii）的证明，利用 1.1（ii）$\Leftrightarrow$（iii），它又\Term{equivalence}{等价}于（xiii）。由已经证明的关系，（xi）$\Rightarrow$（x）$\Rightarrow$（viii），所以（xi）蕴含 $N$ \Term{smooth}{光滑}，即 $q:G\times\mathbf W(\mathfrak h)\to X$ \Term{smooth}{光滑}。于是复合 $\varphi=\psi\circ q$ \Term{generically-smooth}{泛光滑}，即（iii）成立。又（iii）$\Rightarrow$（i），故（xi）也蕴含（xii）\footnote{编者注：因为取 $H=N$ 即可。}。最后（xii）$\Rightarrow$（xi）：显然（xii）$\Rightarrow$（i），且已见（i）$\Rightarrow$（iii）$\Rightarrow$（v），故（xii）$\Rightarrow$（v），进而也有（xii）$\Rightarrow$（ix）。又已见（ix）$\Rightarrow$（x），故（xii）$\Rightarrow$［（v）且（x）］，从而（xii）$\Rightarrow$（xi），因为\Term{generically-etale}{泛平展}等于\Term{generically-smooth}{泛光滑}加上\Term{generically-quasi-finite}{泛拟有限}。
+
+最后，当 $k$ 的\Term{characteristic}{特征}为零时，（vii）$\Rightarrow$（viii），因为由 Cartier \Term{theorem}{定理}，$N$ 自动\Term{smooth}{光滑}（第 VI\textsubscript{B} 讲 1.6.1）；并且［（viii）且（x）］$\Rightarrow$（xi），因为在\Term{characteristic-zero}{特征零}时，\Term{integral}{整}\Term{prescheme}{预概形}之间的\Term{morphism}{态射}\Term{generically-etale}{泛平展}\Term{equivalence}{等价}于\Term{dominant}{支配}且\Term{generically-quasi-finite}{泛拟有限}。这说明在此情形（i）至（xiii）全部\Term{equivalence}{等价}。
+\end{proof}
+\begin{SGAresult}{推论}{5.3}
+在\Term{equivalence}{等价}条件（viii）至（x）下，$G$ 有唯一的\Term{smooth}{光滑}\Term{connected}{连通}\Term{algebraic-subgroup}{代数子群} $H$，
+\SourcePage{213}
+其\Term{lie-algebra}{Lie 代数}为 $\mathfrak h$，且
+\[\operatorname{Norm}_G(H)=\operatorname{Norm}_G(\mathfrak h)=N,\qquad H=N^0.\]
+\end{SGAresult}
+\begin{proof}
+$H=N^0$ 满足要求；另一方面，若 $H$ 满足这些要求，则由于 $H$ \Term{normalization}{正规化}其\Term{lie-algebra}{Lie 代数} $\mathfrak h$，有 $H\subset N$。这是两个\Term{smooth}{光滑}群之间的包含，二者\Term{lie-algebra}{Lie 代数}相同，且 $H$ \Term{connected}{连通}，故 $H=N^0$。关于等式 $\operatorname{Norm}_G(H)=\operatorname{Norm}_G(\mathfrak h)$，可设 $k$ \Term{algebraically-closed}{代数闭}；由刚证明的结果，立即得到两个群的 $k$-值点相同。另一方面，包含关系 $H\subset\operatorname{Norm}_G(H)\subset N$ 表明 $\operatorname{Norm}_G(H)$ 与 $N$ 有相同的\Term{lie-algebra}{Lie 代数}，故二者相等。
+\end{proof}
+\begin{SGAresult}{推论}{5.4}
+在\Term{equivalence}{等价}条件（i）至（iv）下，设 $a\in\mathfrak h$。则以下条件\Term{equivalence}{等价}，且当 $a$ 在 $\mathfrak g$ 中\Term{regular-element}{正则}时它们成立：
+
+（i）$\varphi$ 在 $(e,a)$ 处\Term{smooth}{光滑}。
+
+（ii）$M_a=\operatorname{Transp}_G(a,\mathfrak h)$ 在 $e$ 处\Term{smooth}{光滑}，且 $\dim_e(M_a)=\operatorname{rang}_k\mathfrak h$。
+
+（iii）$\operatorname{ad}(a)_{\mathfrak g/\mathfrak h}$ \Term{injectivity}{单射}（或\Term{equivalence}{等价}地\Term{bijection}{双射}）。
+
+在\Term{equivalence}{等价}条件（xi）至（xiii）下，令 $H$ 为 5.3 考虑的 $G$ 的\Term{algebraic-subgroup}{代数子群}。则上述条件也\Term{equivalence}{等价}于：
+
+（iv）$\psi$ 在 $(\bar e,a)$ 处\Term{etale}{平展}。
+
+（v）令 $M_a^0$ 为 $a$ 到 $\mathfrak h$ 的\Term{transporter}{输运子} $M_a$ 中 $e$ 所在的\Term{connected-component}{连通分支}，赋予 $M_a$ 诱导的结构，则
+\[H=M_a^0.\]
+\end{SGAresult}
+\begin{proof}
+（i）$\Rightarrow$（ii）显然，因为 $M_a$ \Term{isomorphism}{同构}于\Term{fiber}{纤维} $\varphi^{-1}(a)$，点 $e$ 对应于 $(e,a)$。有（ii）$\Rightarrow$（i）：（ii）蕴含 $\varphi$ 在 $(e,a)$ 处“\Term{equidimensional}{等维}”（即经过该点的\Term{fiber}{纤维}的\Term{dimension}{维数}等于泛\Term{fiber}{纤维}\Term{dimension}{维数}），由于 $G\times\mathbf W(\mathfrak h)$ 与 $\mathbf W(\mathfrak g)$ 均\Term{regular-scheme}{正则}，这蕴含它在 $(e,a)$ 处\Term{flat}{平坦}；又其\Term{fiber}{纤维}在该点\Term{smooth}{光滑}，故\Term{morphism}{态射}\Term{smooth}{光滑}。（i）与（iii）的\Term{equivalence}{等价}性已在 5.1 的证明中由切映射的直接计算得到。4.8 b）还已证明“$a$ 在 $\mathfrak g$ 中\Term{regular-element}{正则}”蕴含（iii）。在条件（xi）至（xiii）下，$q:G\times\mathbf W(\mathfrak h)\to X$ \Term{smooth}{光滑}（因为 $N$ \Term{smooth}{光滑}），所以（i）\Term{equivalence}{等价}于 $\psi$ 在 $(\bar e,a)$ 处\Term{smooth}{光滑}；又 $\psi$ \Term{generically-etale}{泛平展}，故这\Term{equivalence}{等价}于（iv）。最后，如 1.1 证明末尾指出的，（iv）蕴含 $N$ 是 $M_a$ 的一个既开又闭部分上诱导的\Term{prescheme}{预概形}，由此得（v）；而（v）显然蕴含（ii）（或由 1.1 得（v）$\Rightarrow$（iv），因为 $\psi$ \Term{dominant}{支配}且 $\mathbf W(\mathfrak g)$ \Term{normal}{正规}，所以这里“\Term{unramified}{非分歧}”\Term{equivalence}{等价}于“\Term{etale}{平展}”）。5.4 得证。
+\end{proof}
+\begin{SGAresult}{推论}{5.5}
+设 $G$ 是域 $k$ 上的\Term{smooth}{光滑}\Term{algebraic-group}{代数群}，$H$ 是\Term{smooth}{光滑}\Term{algebraic-subgroup}{代数子群}，其\Term{lie-algebra}{Lie 代数} $\mathfrak h$ 包含 $G$ 的\Term{lie-algebra}{Lie 代数} $\mathfrak g$ 的一个\Term{cartan-subalgebra}{Cartan 子代数}（至少在 $k$ 的某个适当\Term{field-extension}{扩域}上如此）。设 $K$ 是 $G$ 的\Term{connected}{连通}\Term{algebraic-subgroup}{代数子群}（未必\Term{smooth}{光滑}），\Term{lie-algebra}{Lie 代数}为 $\mathfrak k$；假设 $\mathfrak k$ 包含 $\mathfrak g$ 的一个\Term{regular-element}{正则元素} $a$（至少在 $k$ 的某个适当\Term{field-extension}{扩域}上如此）。则 $H$ 包含 $K$ 当且仅当 $\mathfrak h$ 包含 $\mathfrak k$。
+\end{SGAresult}
+\SourcePage{214}
+\begin{proof}
+由 5.4（iii）$\Rightarrow$（v），有 $H=M_a^0$（注意，此关系在\Term{base-field-extension}{基域扩张}下\Term{invariant}{不变}，所以无需\Term{base-field}{基域}无限的假设也成立！）。另一方面，$\mathfrak k\subset\mathfrak h$ 显然蕴含 $K\subset M_a$；$K$ \Term{connected}{连通}，故 $K\subset M_a^0$，从而 $K\subset H$。
+\end{proof}
+\begin{SGAresult}{推论}{5.6}
+设 $G,H$ 如 5.5，$K$ 为 $G$ 的\Term{algebraic-subgroup}{代数子群}；假设 $H$ \Term{connected}{连通}且 $K$ \Term{smooth}{光滑}。则 $K$ 包含 $H$ 当且仅当 $\mathfrak k$ 包含 $\mathfrak h$。
+\end{SGAresult}
+\begin{proof}
+若 $\mathfrak k\supset\mathfrak h$，则 $K$ 满足 5.5 对 $H$ 所作的假设，而 $H$ 显然满足 5.5 对 $K$ 所作的条件。于是由 5.5 得到结论。
+\end{proof}
+\begin{SGAresult}{推论}{5.7}
+设 $\mathfrak g$ 是域 $k$ 上的\Term{smooth}{光滑}\Term{algebraic-group}{代数群} $G$ 的\Term{lie-algebra}{Lie 代数}。则：
+
+ a）设 $\mathfrak d$ 是 $\mathfrak g$ 的\Term{lie-subalgebra}{Lie 子代数}。它是\Term{cartan-subalgebra}{Cartan 子代数}的充要条件是 $\mathfrak d$ \Term{nilpotent}{幂零}且等于自身的\Term{normalizer}{正规化子}。
+
+ b）设 $a\in\mathfrak g$。则 $a$ \Term{regular-element}{正则}的充要条件是 $\operatorname{Nil}(a,\mathfrak g)$ \Term{nilpotent}{幂零}。
+\end{SGAresult}
+\begin{proof}
+作\Term{base-field-extension}{基域扩张}后可设 $k$ 无限。由 4.4，a）归结为证明：若 $\mathfrak d$ \Term{nilpotent}{幂零}且包含一个使 $\operatorname{ad}(a)_{\mathfrak g/\mathfrak d}$ \Term{injectivity}{单射}的元素 $a$，则 $\mathfrak d$ 是\Term{cartan-subalgebra}{Cartan 子代数}。由 5.1（ii）$\Rightarrow$（i），$\mathfrak d$ 包含一个\Term{cartan-subalgebra}{Cartan 子代数} $\mathfrak d'=\operatorname{Nil}(a,\mathfrak g)$；由 4.3 及 $\mathfrak d$ 的\Term{nilpotent}{幂零}性，得到 $\mathfrak d=\mathfrak d'$。为证明 b），由 a）可知 $\operatorname{Nil}(a,\mathfrak g)$ 是 $\mathfrak g$ 的\Term{cartan-subalgebra}{Cartan 子代数}，所以 $a$ \Term{regular-element}{正则}。
+\end{proof}
+\begin{SGAresult}{推论}{5.8}
+设 $G$ 是域 $k$ 上的\Term{smooth}{光滑}\Term{algebraic-group}{代数群}，$H$ 是\Term{smooth}{光滑}\Term{algebraic-subgroup}{代数子群}，$\mathfrak g,\mathfrak h$ 为相应\Term{lie-algebra}{Lie 代数}。假设作适当\Term{base-field-extension}{基域扩张}后，$\mathfrak h$ 包含 $\mathfrak g$ 的一个\Term{cartan-subalgebra}{Cartan 子代数}。设 $\mathfrak d$ 是 $\mathfrak h$ 的\Term{lie-subalgebra}{子代数}，则它是 $\mathfrak h$ 的\Term{cartan-subalgebra}{Cartan 子代数}当且仅当它是 $\mathfrak g$ 的\Term{cartan-subalgebra}{Cartan 子代数}。
+\end{SGAresult}
+\begin{proof}
+由 4.8 c），只须证明：若 $\mathfrak d$ 是 $\mathfrak h$ 的\Term{cartan-subalgebra}{Cartan 子代数}，则也是 $\mathfrak g$ 的\Term{cartan-subalgebra}{Cartan 子代数}。为此，只须在可以假设的 $k$ \Term{algebraically-closed}{代数闭}的情形下，证明 $\mathfrak d$ 包含一个在 $\mathfrak g$ 中\Term{regular-element}{正则}的元素 $a$。由于 $\mathfrak h$ 有一\Term{dense-open-set}{稠密开集}由 $\mathfrak g$ 的\Term{regular-point}{正则点}构成，将 5.1（i）$\Rightarrow$（vii）用于 $(\mathfrak h,\mathfrak d)$，即可得到断言。
+\end{proof}
+\SGAsection{6}{与光滑代数群有关的 Cartan 子代数和 (C) 型子群}
+为简化起见，下述\Term{theorem}{定理}只讨论\Term{base-field}{基域}\Term{algebraically-closed}{代数闭}的情形（任意基\Term{prescheme}{预概形}的情形将在下一讲处理）。
+\begin{SGAresult}{\Term{theorem}{定理}}{6.1}
+设 $G$ 是\Term{algebraically-closed-field}{代数闭域} $k$ 上的\Term{smooth}{光滑}\Term{algebraic-group}{代数群}，$\mathfrak g$ 是其\Term{lie-algebra}{Lie 代数}。则：
+\SourcePage{215}
+ a）$\mathfrak g$ 的\Term{cartan-subalgebra}{Cartan 子代数}彼此\Term{conjugacy}{共轭}。
+
+ b）设 $\mathfrak d$ 为 $\mathfrak g$ 的一个\Term{cartan-subalgebra}{Cartan 子代数}。它在 $G$ 中的\Term{normalizer}{正规化子} $N$ \Term{smooth}{光滑}，且 $D=N^0$ 是 $G$ 中唯一的、\Term{lie-algebra}{Lie 代数}为 $\mathfrak d$ 的\Term{smooth}{光滑}\Term{connected}{连通}\Term{subgroup}{子群}。有
+\[\operatorname{Norm}_G(\mathfrak d)=\operatorname{Norm}_G(D)=N,\qquad\text{因而 }D=\operatorname{Norm}_G(D)^0.\]
+ c）对 b）中的 $\mathfrak d$，如第 5 节令 $X=G\times^N\mathbf W(\mathfrak d)$，并考虑\Term{canonical}{典范}\Term{morphism}{态射}
+\[\psi:X\longrightarrow\mathbf W(\mathfrak g)\]
+（它在 $a\in\mathfrak g$ 上的\Term{fiber}{纤维}的 $k$-值点为 $\mathfrak g$ 中包含 $a$ 的\Term{cartan-subalgebra}{Cartan 子代数}所成的\Term{set}{集合}）。则 $\psi$ 是\Term{birational-morphism}{双有理态射}。
+
+ d）沿用 c）的记号，设 $U$ 是 $\mathbf W(\mathfrak g)$ 的最大\Term{open-subset}{开集}，使 $\psi$ \Term{induction-isomorphism}{诱导同构}
+\[\psi^{-1}(U)\xrightarrow{\sim}U.\]
+则对 $a\in\mathfrak g$，下列条件\Term{equivalence}{等价}：
+
+（i）$a\in U(k)$。
+
+（ii）$a$ 包含于 $\mathfrak g$ 的一个且仅一个\Term{cartan-subalgebra}{Cartan 子代数}。
+
+（iii）$\mathfrak g$ 中包含 $a$ 的\Term{cartan-subalgebra}{Cartan 子代数}所成的\Term{set}{集合}\Term{finite}{有限}且\Term{nonempty}{非空}。
+
+（iv）\Term{fiber}{纤维} $\psi^{-1}(a)$ 有一个\Term{isolated-point}{孤立点}。
+
+（v）（若 $a\in\mathfrak d$）\Term{morphism}{态射} $\psi$ 在点 $(\bar e,a)$ 处\Term{etale}{平展}（或只要求\Term{quasi-finite}{拟有限}）。
+
+（vi）$a$ 是 $\mathfrak g$ 的\Term{regular-element}{正则元素}。
+
+（vii）沿用 5.4（iii）的记号，有 $N=M_a$。
+\end{SGAresult}
+\begin{proof}
+在 $\mathfrak h$ 为 $\mathfrak g$ 的\Term{cartan-subalgebra}{Cartan 子代数} $\mathfrak d$ 时应用 5.1，证明其中最强的条件（xi）至（xiii）成立。这一点是显然的：既可由 4.7 得到（xiii），因为它蕴含对包含于 $\mathfrak d$ 的 $\mathfrak g$ 的\Term{regular-element}{正则元素} $a$，有 $N=M_a$；也可使用\Term{form}{形式}（xi）$=$（x）$+$（i），其中（i）显然，而（x）来自 $\mathfrak g$ 的一个\Term{regular-point}{正则点}仅包含在 $\mathfrak g$ 的一个\Term{cartan-subalgebra}{Cartan 子代数}中（4.6 a）），因此更只能包含在 $\mathfrak d$ 的一个\Term{conjugacy}{共轭}中。于是 b）由 5.3 得到；c）来自 $\psi$ \Term{generically-etale}{泛平展}，以及 $\mathfrak g$ 的充分\Term{generic-point}{一般点}（准确地说，\Term{regular-point}{正则点}）仅包含于 $\mathfrak g$ 的一个\Term{cartan-subalgebra}{Cartan 子代数}。在这些条件下，将 \Term{zariski-main-theorem}{Zariski 主定理}用于\Term{separated}{分离}\Term{birational-morphism}{双有理态射} $\psi$，注意 $\mathbf W(\mathfrak g)$ \Term{normal}{正规}而 $X$ \Term{integral}{整}，立即得到关于 $a$ 的条件（i）至（v）的\Term{equivalence}{等价}性。（v）与（vi）的\Term{equivalence}{等价}性是 5.4（iii）$\Leftrightarrow$（iv）的特例：用适当 $g\in G(k)$ 变换 $a$，归结到 $a\in\mathfrak d$，并利用 4.6 b）。此外由 5.4，（v）、（vi）也\Term{equivalence}{等价}于 $N\supset M_a^0$；由已引用的 4.7，这甚至蕴含 $N=M$。d）得证。
+
+当然，b）、c）以及（i）、（iv）、（v）、（vi）、（vii）的\Term{equivalence}{等价}性对任意\Term{base-field}{基域}仍成立。现在使用 $k$ \Term{algebraically-closed}{代数闭}来证明 a）。由 5.1（i）$\Rightarrow$（vii），$\psi:X\to\mathbf W(\mathfrak g)$ \Term{dominant}{支配}，因此 $\mathbf W(\mathfrak g)$ 有一\Term{dense-open-set}{稠密开集} $V$，使每个 $a\in V(k)$ 都是 $X(k)$ 的一个元素的像，
+\SourcePage{216}
+即包含在 $\mathfrak d$ 的某个\Term{conjugacy}{共轭}中。将此结果用于 $\mathfrak g$ 的另一个\Term{cartan-subalgebra}{Cartan 子代数} $\mathfrak d'$，可取 $V$ 使 $V(k)$ 的每个元素都分别\Term{conjugacy}{共轭}于 $\mathfrak d$ 的一个元素和 $\mathfrak d'$ 的一个元素。在 $V(k)$ 中取一个\Term{regular-element}{正则元素}，则 $\mathfrak d'$ 的某个\Term{conjugacy}{共轭} $\mathfrak d''$ 包含 $\mathfrak d$ 的一个在 $\mathfrak g$ 中\Term{regular-element}{正则}的元素，由 4.6 a）有 $\mathfrak d''=\mathfrak d$。6.1 的证明完成。
+\end{proof}
+\begin{SGAresult}{定义}{6.2}
+设 $G$ 是域 $k$ 上的\Term{smooth}{光滑}\Term{algebraic-group}{代数群}。称 $G$ 的一个\Term{smooth}{光滑}\Term{connected}{连通}\Term{algebraic-subgroup}{代数子群}为 $G$ 的\Term{type-c-subgroup}{(C) 型子群}，若其\Term{lie-algebra}{Lie 代数}是 $\mathfrak g$ 的\Term{cartan-subalgebra}{Cartan 子代数}。称其\Term{lie-algebra}{Lie 代数} $\mathfrak g$ 的\Term{nilpotent-rank}{幂零秩}为 $G$ 的\Term{infinitesimal-rank}{无穷小秩}；它等于 $G$ 的任意\Term{type-c-subgroup}{(C) 型子群}的\Term{dimension}{维数}。
+\end{SGAresult}
+由 6.1 b）立即得到：
+\begin{SGAresult}{推论}{6.3}
+在 6.2 的条件下，映射 $D\mapsto\mathfrak d=\operatorname{Lie}D$ 给出 $G$ 的\Term{type-c-subgroup}{(C) 型子群}与 $\mathfrak g$ 的\Term{cartan-subalgebra}{Cartan 子代数} $\mathfrak d$ 之间的一一对应。若 $D$ 是 $G$ 的\Term{type-c-subgroup}{(C) 型子群}，则 $D$ 是自身的\Term{connected-normalizer}{连通正规化子}：
+\[D=\operatorname{Norm}_G(D)^0.\]
+\end{SGAresult}
+结合 6.1 a）与 6.3，得到：
+\begin{SGAresult}{推论}{6.4}
+若 $k$ \Term{algebraically-closed}{代数闭}，则 $G$ 的\Term{type-c-subgroup}{(C) 型子群}彼此\Term{conjugacy}{共轭}。
+\end{SGAresult}
+\begin{SGAresult}{推论}{6.5}
+设 $G$ 是\Term{algebraically-closed-field}{代数闭域} $k$ 上的\Term{smooth}{光滑}\Term{algebraic-group}{代数群}，$H$ 是 $G$ 的\Term{smooth}{光滑}\Term{algebraic-subgroup}{代数子群}，$\mathfrak g,\mathfrak h$ 为相应\Term{lie-algebra}{Lie 代数}。则 $\mathfrak h$ 包含 $\mathfrak g$ 的一个\Term{cartan-subalgebra}{Cartan 子代数}当且仅当 $H$ 包含 $G$ 的一个\Term{type-c-subgroup}{(C) 型子群} $D$。
+\end{SGAresult}
+\begin{proof}
+充分性显然；必要性也成立，因为由 5.5，$H\supset D$ 当且仅当 $\mathfrak h\supset\mathfrak d$。
+\end{proof}
+\textbf{注记 6.6。}a）注意，6.5 描述的 $G$ 的\Term{connected}{连通}\Term{subgroup}{子群} $H$ 与 $\mathfrak g$ 中满足 5.1 最强条件（xii）的\Term{lie-subalgebra}{Lie 子代数} $\mathfrak h$ 一一对应；由 5.5，这些\Term{subgroup}{子群}之间的包含关系已经可以从它们的\Term{lie-algebra}{Lie 代数}中识别。
+
+ b）仍设 $k$ \Term{algebraically-closed}{代数闭}，$D$ 为 $G$ 的\Term{type-c-subgroup}{(C) 型子群}。容易证明 $D$ 包含 $G$ 的一个\Term{cartan-subgroup}{Cartan 子群} $C$：令 $V=\mathfrak g/\mathfrak d$，则对 $\mathfrak d$ 的“一般”元素 $a$，$\operatorname{ad}(a)$ 在 $V$ 上\Term{injectivity}{单射}（只要 $a$ 在 $\mathfrak g$ 中\Term{regular-element}{正则}即可）。容易由此得到，对“一般”的 $g\in D(k)$，$\operatorname{Ad}(g)$ 在 $V$ 上的\Term{action}{作用}没有非零\Term{invariant}{不变量}，于是可以应用 2.1（vii）$\Rightarrow$（i）。事实上，下一讲将给出更精确的结果：$G$ 的每个\Term{cartan-subgroup}{Cartan 子群} $C$ 都包含于 $G$ 的一个且仅一个\Term{type-c-subgroup}{(C) 型子群}中。
+
+ c）一般而言，应注意区别\Term{cartan-subgroup}{Cartan 子群}与\Term{type-c-subgroup}{(C) 型子群}：$G$ 的\Term{type-c-subgroup}{(C) 型子群}是\Term{cartan-subgroup}{Cartan 子群}
+\SourcePage{217}
+当且仅当它\Term{nilpotent}{幂零}（因为\Term{cartan-subgroup}{Cartan 子群}是\Term{maximal-nilpotent-subgroup}{极大幂零子群}）。但可能 $\mathfrak g$ \Term{nilpotent}{幂零}而 $G$ 不\Term{nilpotent}{幂零}，例如\Term{characteristic}{特征}为 $2$ 的 $k$ 上的 $\operatorname{SL}(2)_k$；这时 $\mathfrak g$ 的\Term{cartan-subalgebra}{Cartan 子代数}都等于 $\mathfrak g$。即 $G$ \Term{connected}{连通}时，它是自身的\Term{type-c-subgroup}{(C) 型子群}，却不是 $G$ 的\Term{cartan-subgroup}{Cartan 子群}！不过第 XIV 讲将证明，若 $G$ 是\Term{adjunction}{伴随}\Term{semisimple-group}{半单群}，则它的\Term{type-c-subgroup}{(C) 型子群}就是它的\Term{cartan-subgroup}{Cartan 子群}。同样，在\Term{characteristic-zero}{特征零}时，对 $k$ 上的\Term{smooth}{光滑}\Term{algebraic-group}{代数群} $G$ 无须额外\Term{restriction}{限制}，同一结论仍成立。这立即来自如下事实：\Term{characteristic-zero}{特征零}时，\Term{connected}{连通}\Term{algebraic-group}{代数群}的\Term{lie-algebra}{Lie 代数}\Term{nilpotent}{幂零}当且仅当该群\Term{nilpotent}{幂零}。后一个事实又立即来自：\Term{characteristic-zero}{特征零}时，\Term{connected}{连通}\Term{algebraic-group}{代数群} $G$ 的\Term{center}{中心} $Z$ 的\Term{lie-algebra}{Lie 代数}是 $\mathfrak g$ 的\Term{center}{中心}；因为先验地得到的是 $G$ 的\Term{adjoint-representation}{伴随表示}在 $\mathfrak g$ 中的\Term{invariant}{不变量}\Term{space}{空间}，而 $G$ \Term{connected}{连通}且 $k$ 的\Term{characteristic}{特征}为零，所以这些也是 $\mathfrak g$ 的\Term{adjoint-representation}{伴随表示}在\Term{infinitesimal}{无穷小}意义下的“\Term{invariant}{不变量}”，即 $\mathfrak g$ 的\Term{center}{中心}；再由 Cartier \Term{theorem}{定理}（参见第 VI\textsubscript{B} 讲 1.6.1），$Z$ \Term{smooth}{光滑}。
+\SourcePage{218}
+% 原 PDF 第 218 页为空白页。

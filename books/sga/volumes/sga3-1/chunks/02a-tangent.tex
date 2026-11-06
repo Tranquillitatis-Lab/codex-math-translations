@@ -1,0 +1,807 @@
+\SourcePage{55}
+\SGAchapter{II}{切丛——Lie 代数}{Fibrés tangents -- Algèbres de Lie}
+\begin{center}M. Demazure\end{center}
+本讲拟在\Term{scheme}{概形}理论中构造经典理论中的\Term{tangent-bundle}{切丛}与\Term{lie-algebra}{Lie 代数}的对应物。不过，不限于严格意义下的\Term{scheme}{概形}，而同时考察\Term{scheme}{概形}\Term{category}{范畴}上某些未必\Term{representable}{可表示}的\Term{functor}{函子}（例如 $\operatorname{Hom}$、$\operatorname{Norm}$ 等\Term{functor}{函子}），将是有益的。正如上一讲已经说明的（参见 I，1.1），我们把一个\Term{scheme}{概形}与其对应的\Term{functor}{函子}等同。
+
+另一方面，以下构造超出了\Term{scheme}{概形}理论的范围。例如，作若干细节修改后，它们在带有\Term{nilpotent}{幂零}元素的\Term{analytic-space}{解析空间}理论中也同样成立。
+
+开始这一构造之前，我们须先提出几个一般定义，以补充 I，1.7 中的定义。
+
+\SGAsection{1}{函子 $\underline{\operatorname{Hom}}_{Z/S}(X,Y)$}
+沿用 I，1.1 的记号。把\Term{category}{范畴} $\mathscr C$ 等同于 $\widehat{\mathscr C}=\operatorname{Hom}(\mathscr C^\circ,(\mathrm{Ens}))$ 的一个\Term{full-subcategory}{全子范畴}（特别地，略去原先用以在书写上区分 $\widehat{\mathscr C}$ 的\Term{object}{对象}与 $\mathscr C$ 的\Term{object}{对象}的下划线\footnote{编者注（1）：本版中用粗体 $\mathbf F,\mathbf G,\mathbf V,\mathbf W$ 表示，参见第 I 讲。不过，对 $\underline{\operatorname{Norm}}$ 和 $\underline{\operatorname{Centr}}$ 之类的\Term{functor}{函子}（参见 5.2），原文保留了下划线；本版又为\Term{functor}{函子} $\underline{\operatorname{Lie}}$ 加上下划线，以区分\Term{functor}{函子} $\underline{\operatorname{Lie}}(G/S)$ 与 $\Gamma(S,\mathcal O_S)$-\Term{lie-algebra}{Lie 代数} $\operatorname{Lie}(G/S)=\underline{\operatorname{Lie}}(G/S)(S)$；后者例如在第 VIIA 讲中使用。}）。
+
+考虑以下情形：$\widehat{\mathscr C}$ 的四个\Term{object}{对象}记为 $S,X,Y,Z$，其中第一个实际上是 $\mathscr C$ 的\Term{object}{对象}；$X,Y$ 在 $Z$ 上，而 $Z$ 在 $S$ 上：
+\SourcePage{56}
+\[
+\begin{tikzcd}[column sep=small]
+X\arrow[dr,"p_X"']&&Y\arrow[dl,"p_Y"]\\
+&Z\arrow[d]&\\
+&S.&
+\end{tikzcd}
+\]
+\begin{SGAresult}{定义}{1.1}
+用下式定义 $\widehat{\mathscr C}_{/S}$ 的一个\Term{object}{对象}，记为 $\underline{\operatorname{Hom}}_{Z/S}(X,Y)$：对 $\mathscr C_{/S}$ 的每个\Term{object}{对象} $S'$，令
+\[
+\underline{\operatorname{Hom}}_{Z/S}(X,Y)(S')
+=\operatorname{Hom}_{Z_{S'}}(X_{S'},Y_{S'})
+=\operatorname{Hom}_Z(X\times_S S',Y).\tag{1}
+\]
+\end{SGAresult}
+立即可见，$\underline{\operatorname{Hom}}_{Z/S}(X,Y)$ 正是 $\underline{\operatorname{Hom}}_S(X,Y)$ 中由与 $p_X,p_Y$ 相容的\Term{morphism}{态射}组成的\Term{subobject}{子对象}，也就是说，它是下面一对\Term{morphism}{态射}的\Term{equalizer}{等化子}：
+\[
+\underline{\operatorname{Hom}}_S(X,Y)\rightrightarrows
+\underline{\operatorname{Hom}}_S(X,Z),
+\]
+其中第一个由与 $p_Y$ 复合定义，第二个则为“像”是 $p_X$ 的常\Term{morphism}{态射}。
+
+另一方面，仿照 I，1.7 可知，对 $\widehat{\mathscr C}$ 中在 $S$ 上的任一\Term{object}{对象} $T$，有自然\Term{bijection}{双射}\footnote{编者注（2）：我们详细展开了（2）、（3）、（4）；特别地，（4）将在 3.11 中使用。}
+\[
+\operatorname{Hom}_S(T,\underline{\operatorname{Hom}}_{Z/S}(X,Y))
+\simeq\operatorname{Hom}_Z(X\times_S T,Y).\tag{2}
+\]
+此外，由 I，1.7.1，若 $E,F$ 是 $\widehat{\mathscr C}$ 中在 $Z$ 上的\Term{object}{对象}，则有
+\[
+\operatorname{Hom}_Z(E,\underline{\operatorname{Hom}}_Z(F,Y))
+\simeq\operatorname{Hom}_Z(E\times_Z F,Y)
+\simeq\operatorname{Hom}_Z(F,\underline{\operatorname{Hom}}_Z(E,Y)).
+\]
+将此用于 $E=X$、$F=Z\times_S T$，便对 $\widehat{\mathscr C}_{/S}$ 的每个\Term{object}{对象} $T$ 得到自然\Term{bijection}{双射}
+\[
+\begin{aligned}
+\operatorname{Hom}_S(T,\underline{\operatorname{Hom}}_{Z/S}(X,Y))
+&\simeq\operatorname{Hom}_Z(X\times_S T,Y)\\
+&\simeq\begin{cases}
+\operatorname{Hom}_Z(Z\times_S T,\underline{\operatorname{Hom}}_Z(X,Y)),\\
+\operatorname{Hom}_Z(X,\underline{\operatorname{Hom}}_Z(Z\times_S T,Y)).
+\end{cases}
+\end{aligned}\tag{3}
+\]
+这些\Term{bijection}{双射}还关于 $T$ 具有\Term{functorial}{函子性}，因而得到 $S$-\Term{functor}{函子}的\Term{isomorphism}{同构}：
+\[
+\begin{tikzcd}[column sep=small]
+\underline{\operatorname{Hom}}_S(T,\underline{\operatorname{Hom}}_{Z/S}(X,Y))
+\arrow[rr,"\sim"]\arrow[dr,"\simeq"']&&
+\underline{\operatorname{Hom}}_{Z/S}(X,\underline{\operatorname{Hom}}_Z(Z\times_S T,Y))\\
+&\underline{\operatorname{Hom}}_{Z/S}(X\times_S T,Y)\arrow[ur,"\simeq"']&
+\end{tikzcd}\tag{4}
+\]
+指出定义的两个特例。若 $Z=S$，则有
+\[
+\underline{\operatorname{Hom}}_{S/S}(X,Y)=\underline{\operatorname{Hom}}_S(X,Y).
+\]
+\SourcePage{57}
+另一方面，当 $X=Z$ 时，置
+\[
+\prod_{Z/S}Y=\underline{\operatorname{Hom}}_{Z/S}(Z,Y),\tag{5}
+\]
+于是由定义有
+\[
+\left(\prod_{Z/S}Y\right)(S')
+=\operatorname{Hom}_Z(Z\times_S S',Y)\simeq\Gamma(Y_{S'}/Z_{S'}).
+\]
+\Term{functor}{函子} $\prod_{Z/S}:\widehat{\mathscr C}_{/Z}\to\widehat{\mathscr C}_{/S}$ 是从 $S$ 到 $Z$ 的\Term{base-change}{基变换}\Term{functor}{函子}的\Term{right-adjoint}{右伴随}：对每个 $S$-\Term{functor}{函子} $U$，有
+\[
+\operatorname{Hom}_S\left(U,\prod_{Z/S}Y\right)
+=\operatorname{Hom}_Z(U\times_S Z,Y).
+\]
+（若 $\mathscr C=(\mathrm{Sch})$ 且 $Z$ 是 $S$-\Term{scheme}{概形}，则\Term{functor}{函子} $\prod_{Z/S}$ 称为“\Term{weil-restriction}{Weil 标量限制}”。）\footnote{编者注（3）：以上两句为增补。} 还应注意，我们有\Term{isomorphism}{同构}
+\[
+\underline{\operatorname{Hom}}_{Z/S}(X,Y)
+\simeq\underline{\operatorname{Hom}}_{X/S}(X,Y\times_Z X)
+=\prod_{X/S}(Y\times_Z X),\tag{6}
+\]
+特别地，当 $Z=S$ 时，得到\Term{isomorphism}{同构}
+\[
+\underline{\operatorname{Hom}}_S(X,Y)\simeq\prod_{X/S}Y_X.\tag{7}
+\]
+\begin{SGAresult}{注记}{1.2}
+\Term{functor}{函子} $Y\mapsto\underline{\operatorname{Hom}}_{Z/S}(X,Y)$ 在以下意义下与\Term{product}{积}交换：有\Term{functorial}{函子性}\Term{isomorphism}{同构}
+\[
+\underline{\operatorname{Hom}}_{Z/S}(X,Y\times_Z Y')
+\simeq\underline{\operatorname{Hom}}_{Z/S}(X,Y)\times_S
+\underline{\operatorname{Hom}}_{Z/S}(X,Y').\tag{$*$}
+\]
+由此可知，若 $Y$ 是一个 $Z$-\Term{group}{群}（相应地，$Z$-\Term{ring}{环}，等等），则 $\underline{\operatorname{Hom}}_{Z/S}(X,Y)$ 是一个 $S$-\Term{group}{群}（相应地，$S$-\Term{ring}{环}，等等）。
+\end{SGAresult}
+\begin{SGAresult}{注记}{1.3}
+\footnote{编者注（4）：此注记为增补，将用于推论 3.11.1。} 此外，设 $\pi:M\to Y$ 是取值于 $\mathbf O_Y$-\Term{module}{模}的 $Y$-\Term{functor}{函子}（参见 I，4.3.3.1）。置 $H=\underline{\operatorname{Hom}}_{Z/S}(X,Y)$。那么，$\underline{\operatorname{Hom}}_{Z/S}(X,M)$ 带有自然的 $\mathbf O_H$-\Term{module}{模}结构；更确切地说，对每个在 $H$ 上的 $H'$，$\operatorname{Hom}_H(H',\underline{\operatorname{Hom}}_{Z/S}(X,M))$ 带有自然的 $\mathbf O(H'\times_S X)$-\Term{module}{模}结构。
+\end{SGAresult}
+事实上，以 $m:M\times_Y M\to M$ 和 $\lambda:\mathbf O_Y\times_Y M\to M$ 表示定义 $Y$-\Term{abelian-group}{交换群}结构与 $\mathbf O_Y$-\Term{module}{模}结构的\Term{morphism}{态射}。设 $H'$ 是在 $H=\underline{\operatorname{Hom}}_{Z/S}(X,Y)$ 上的一个 $S$-\Term{scheme}{概形}，也就是说，给定了一个 $Z$-\Term{morphism}{态射} $f:X\times_S H'\to Y$，使 $X\times_S H'$ 成为 $Y$-\Term{object}{对象}。那么，
+\[
+\operatorname{Hom}_H(H',\underline{\operatorname{Hom}}_{Z/S}(X,M))
+\]
+是满足 $\pi\circ\phi=f$ 的 $Z$-\Term{morphism}{态射} $\phi:X\times_S H'\to M$ 所成的\Term{set}{集合}，亦即 $Y$-\Term{morphism}{态射} $X\times_S H'\to M$ 所成的\Term{set}{集合}。
+\SourcePage{58}
+若 $\phi,\psi$ 是这样的两个\Term{morphism}{态射}，则把 $\phi+\psi$ 定义为复合的 $Y$-\Term{morphism}{态射}
+\[
+X\times_S H'\xrightarrow{\phi\times\psi}M\times_Y M\xrightarrow m M,
+\]
+并可验证，这使 $\underline{\operatorname{Hom}}_{Z/S}(X,M)$ 带有在 $H=\underline{\operatorname{Hom}}_{Z/S}(X,Y)$ 上的\Term{abelian-group}{交换群}结构。\footnote{编者注（5）：当然，若 $M$ 是一个 $Y$-\Term{group}{群}（未必交换），并置 $\phi\cdot\psi=m\circ(\phi\times\psi)$，这便使 $\underline{\operatorname{Hom}}_{Z/S}(X,M)$ 成为 $\underline{\operatorname{Hom}}_{Z/S}(X,Y)$ 上的\Term{group}{群}。}
+
+同样，若 $a$ 是 $\mathbf O(X\times_S H')$ 的元素，即一个 $S$-\Term{morphism}{态射} $a:X\times_S H'\to\mathbf O_S$，则把 $a\phi$ 定义为复合 $\lambda\circ(a\times\phi)$，其中 $a\times\phi$ 表示从 $X\times_S H'$ 到 $\mathbf O_Y\times_Y M\simeq\mathbf O_S\times_S M$、\Term{set-component}{分量}为 $a$ 与 $\phi$ 的 $Y$-\Term{morphism}{态射}；可以验证，这使 $\operatorname{Hom}_H(H',\underline{\operatorname{Hom}}_{Z/S}(X,M))$ 带有关于 $H$-\Term{object}{对象} $H'$ 具有\Term{functorial}{函子性}的 $\mathbf O(X\times_S H')$-\Term{module}{模}结构。
+
+\SGAsection{2}{概形 $I_S(\mathcal M)$}
+\begin{SGAresult}{定义}{2.1}
+设 $S$ 是\Term{scheme}{概形}，$\mathcal M$ 是\Term{quasi-coherent}{拟凝聚} $\mathcal O_S$-\Term{module}{模}。以 $D_{\mathcal O_S}(\mathcal M)$ 表示\Term{quasi-coherent}{拟凝聚} $\mathcal O_S$-\Term{algebra}{代数} $\mathcal O_S\oplus\mathcal M$（其中把 $\mathcal M$ 看作\Term{square-zero-ideal}{平方零理想}）。以 $I_S(\mathcal M)$ 表示 $S$-\Term{scheme}{概形} $\operatorname{Spec}D_{\mathcal O_S}(\mathcal M)$。\footnote{编者注（6）：注意 $I_S(\mathcal M)$ 与 $S$ 有相同的底\Term{space}{空间}。}
+
+特别地，记 $D_{\mathcal O_S}=D_{\mathcal O_S}(\mathcal O_S)$、$I_S=I_S(\mathcal O_S)$，分别称其为 $S$ 上的\Term{dual-number-algebra}{对偶数代数}和 $S$ 上的\Term{dual-number-scheme}{对偶数概形}。
+\end{SGAresult}
+于是 $\mathcal M\mapsto I_S(\mathcal M)$ 是从\Term{quasi-coherent}{拟凝聚} $\mathcal O_S$-\Term{module}{模}\Term{category}{范畴}到 $S$-\Term{scheme}{概形}\Term{category}{范畴}的\Term{contravariant-functor}{反变函子}。特别地，\Term{morphism}{态射} $0\to\mathcal M$ 与 $\mathcal M\to0$ 分别定义\Term{structure-morphism}{结构态射} $\rho:I_S(\mathcal M)\to I_S(0)=S$ 以及它的一个\Term{section}{截面} $\varepsilon_{\mathcal M}$，称为\Term{zero-section}{零截面}。\footnote{编者注（7）：与 3.1.1 比较。}
+
+\textbf{2.1.1.}\footnote{编者注（8）：以下详细展开了原文，并增添了编号 2.1.1 至 2.1.3。} 因为 $\mathcal M\mapsto I_S(\mathcal M)$ 是\Term{contravariant-functor}{反变函子}，每个 $a\in\operatorname{End}_{\mathcal O_S}(\mathcal M)$ 都定义 $I_S(\mathcal M)$ 的一个 $S$-\Term{endomorphism}{自同态} $a^*$，且有 $1^*=\operatorname{id}$、$(ab)^*=b^*\circ a^*$、$0^*=\varepsilon_{\mathcal M}\circ\rho$ 和 $a^*\circ\varepsilon_{\mathcal M}=\varepsilon_{\mathcal M}$。因此，$S$-\Term{scheme}{概形} $I_S(\mathcal M)$ 带有\Term{multiplicative-monoid}{乘法幺半群} $\operatorname{End}_{\mathcal O_S}(\mathcal M)$ 的一个\Term{right-action}{右作用}，此\Term{action}{作用}与来自\Term{morphism}{态射} $\mathcal M'\to\mathcal M$ 的 $S$-\Term{morphism}{态射} $I_S(\mathcal M)\to I_S(\mathcal M')$ 交换；特别地，\Term{operator}{算子} $a^*$ 保持 $I_S(\mathcal M)$ 的\Term{zero-section}{零截面}。
+
+对每个 $a\in\operatorname{End}_{\mathcal O_S}(\mathcal M)$、$f:S'\to S$ 和 $m\in I_S(\mathcal M)(S')$，记 $m\cdot a=a^*(m)$；于是 $m\cdot1=m$、$(m\cdot a)\cdot b=m\cdot(ab)$、$m\cdot0=\varepsilon_{\mathcal M}(\rho(m))$，而当 $m=\varepsilon_{\mathcal M}(f)$ 时，有 $m\cdot a=m$。\footnote{编者注（9）：后文主要考察 $a\in\mathbf O(S)$ 以\Term{homothety}{位似}\Term{action}{作用}于 $\mathcal M$ 的情形。例如，若 $\mathcal M$ 是秩为 $r$ 的\Term{free-module}{自由} $\mathcal O_S$-\Term{module}{模}，则对每个 $S'\to S$，$\operatorname{Hom}_S(S',I_S(\mathcal M))$ 等同于满足对任意 $i,j$ 都有 $\varepsilon_i\varepsilon_j=0$ 的 $r$ 元组 $(\varepsilon_1,\ldots,\varepsilon_r)\in\mathbf O(S')$ 所成的\Term{set}{集合}，且对每个 $a\in\mathbf O(S)$，有 $(\varepsilon_1,\ldots,\varepsilon_r)\cdot a=(a\varepsilon_1,\ldots,a\varepsilon_r)$。}
+\SourcePage{59}
+\begin{SGAresult}{注记}{2.1.2}
+$I_S(\mathcal M)$ 的形成与\Term{base-extension}{基扩张}交换：有\Term{canonical-isomorphism}{典范同构}
+\[
+I_S(\mathcal M)_{S'}\simeq I_{S'}(\mathcal M\otimes_{\mathcal O_S}\mathcal O_{S'}).
+\]
+为简化记号，记 $I_{S'}(\mathcal M)=I_S(\mathcal M)_{S'}$；更一般地，若 $X$ 是一个 $S$-\Term{functor}{函子}（未必\Term{representable}{可表示}），则记 $I_X(\mathcal M)=I_S(\mathcal M)\times_S X$。
+\end{SGAresult}
+\textbf{2.1.3.}\footnote{编者注（10）：此段为增补，将在 3.4.2 和 4.6.2 中使用。} 由以上所述，$\mathbf O(S')$ 的\Term{multiplicative-monoid}{乘法幺半群}\Term{action}{作用}于 $S'$-\Term{scheme}{概形} $I_{S'}(\mathcal M)$，且关于 $\mathcal M$ 具有\Term{functorial}{函子性}；换言之，$S$-\Term{scheme}{概形} $I_S(\mathcal M)$ 带有\Term{operator-monoid}{算子幺半群}为 $\mathbf O_S$ 的\Term{object}{对象}结构，此结构关于 $\mathcal M$ 具有\Term{functorial}{函子性}。因而有 $S$-\Term{scheme}{概形}的\Term{morphism}{态射}
+\[
+\lambda:I_S(\mathcal M)\times_S\mathbf O_S\longrightarrow I_S(\mathcal M),
+\]
+满足显然的条件。对每个 $S$-\Term{functor}{函子} $X$，通过\Term{base-change}{基变换}得到 $X$-\Term{functor}{函子}的\Term{morphism}{态射}
+\[
+\lambda_X:I_X(\mathcal M)\times_S\mathbf O_S\longrightarrow I_X(\mathcal M),
+\]
+使 $S$-\Term{functor}{函子} $I_X(\mathcal M)$ 成为\Term{operator-monoid}{算子幺半群}为 $\mathbf O(X)$ 的\Term{object}{对象}：每个元素 $a\in\mathbf O(X)=\operatorname{Hom}_S(X,\mathbf O_S)$ 都定义 $I_X(\mathcal M)$ 的一个 $X$-\Term{endomorphism}{自同态}
+\[
+a^*=\lambda_X\circ\bigl(\operatorname{id}_{I_X(\mathcal M)}\times(a\circ\operatorname{pr}_X)\bigr).
+\]
+具体地，若 $x\in X(S')$、$m\in I_S(\mathcal M)(S')=I_{S'}(\mathcal M)(S')$，则 $a(x)=a\circ x$ 属于 $\mathbf O(S')$，且有
+\[
+(m,x)\cdot a=(m\cdot a(x),x).
+\]
+此\Term{action}{作用}关于 $\mathcal M$ 具有\Term{functorial}{函子性}并保持\Term{zero-section}{零截面} $\varepsilon_{\mathcal M}:X\to I_X(\mathcal M)$，即对每个 $a\in\mathbf O(X)$，有 $a^*\circ\varepsilon_{\mathcal M}=\varepsilon_{\mathcal M}$。
+
+此外，此\Term{action}{作用}在以下意义下“关于 $X$ 具有\Term{functorial}{函子性}”：若 $\pi:Y\to X$ 是 $S$-\Term{functor}{函子}的\Term{morphism}{态射}，$u:\mathbf O(X)\to\mathbf O(Y)$ 是相应的\Term{ring}{环}\Term{morphism}{态射}（即对每个 $a\in\mathbf O(X)=\operatorname{Hom}_S(X,\mathbf O_S)$，有 $u(a)=a\circ\pi\in\mathbf O(Y)$），则下图交换：
+\[
+\begin{tikzcd}
+I_X(\mathcal M)\arrow[r,"a^*"]&I_X(\mathcal M)\\
+I_Y(\mathcal M)\arrow[u,"\pi"]\arrow[r,"u(a)^*"']&I_Y(\mathcal M)\arrow[u,"\pi"'].
+\end{tikzcd}
+\]
+\textbf{2.2.} 现设 $\mathcal M,\mathcal N$ 为两个\Term{quasi-coherent}{拟凝聚} $\mathcal O_S$-\Term{module}{模}。\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}[column sep=small]
+&\mathcal M\oplus\mathcal N\arrow[dl]\arrow[dr]&\\
+\mathcal M\arrow[dr]&&\mathcal N\arrow[dl]\\
+&0&
+\end{tikzcd}
+\]
+\SourcePage{60}
+定义一个 $S$-\Term{scheme}{概形}的\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}[column sep=small]
+&I_S(\mathcal M\oplus\mathcal N)&\\
+I_S(\mathcal M)\arrow[ur]&&I_S(\mathcal N)\arrow[ul]\\
+&S\arrow[ul,"\varepsilon_{\mathcal M}"]\arrow[uu,"\varepsilon_{\mathcal M\oplus\mathcal N}" description]\arrow[ur,"\varepsilon_{\mathcal N}"']&.
+\end{tikzcd}\tag{$*$}
+\]
+\begin{SGAresult}{命题}{2.2}
+对每个 $S$-\Term{scheme}{概形} $X$，将\Term{functor}{函子} $\underline{\operatorname{Hom}}_S(-,X)$ \Term{action}{作用}于图（$*$）所得的 $S$ 上\Term{functor}{函子}图是\Term{cartesian-diagram}{笛卡尔图}：
+\[
+\begin{tikzcd}[column sep=small]
+&\underline{\operatorname{Hom}}_S(I_S(\mathcal M\oplus\mathcal N),X)\arrow[dl]\arrow[dr]&\\
+\underline{\operatorname{Hom}}_S(I_S(\mathcal M),X)\arrow[dr]&&\underline{\operatorname{Hom}}_S(I_S(\mathcal N),X)\arrow[dl]\\
+&\underline{\operatorname{Hom}}_S(S,X)=X&.
+\end{tikzcd}
+\]
+\end{SGAresult}
+\begin{proof}
+须验证，对每个 $S'\to S$，取这些\Term{functor}{函子}在 $S'$ 上的值所得到的\Term{set}{集合}图是\Term{cartesian-diagram}{笛卡尔图}。因为 $I_S(\mathcal P)$ 的形成在上述意义下与\Term{base-extension}{基扩张}交换，只须对 $S'=S$ 验证，也就是说，只须验证下列\Term{set}{集合}图为\Term{cartesian-diagram}{笛卡尔图}：
+\[
+\begin{tikzcd}[column sep=small]
+&X(I_S(\mathcal M\oplus\mathcal N))\arrow[dl]\arrow[dd,"X(\varepsilon_{\mathcal M\oplus\mathcal N})" description]\arrow[dr]&\\
+X(I_S(\mathcal M))\arrow[dr,"X(\varepsilon_{\mathcal M})"']&&X(I_S(\mathcal N))\arrow[dl,"X(\varepsilon_{\mathcal N})"]\\
+&X(S)&.
+\end{tikzcd}
+\]
+而若 $x\in X(S)$，由 SGA 1，III，5.1\footnote{编者注（11）：也可参见第 III 讲的增补 0.1.8。} 可知，$X(\varepsilon_{\mathcal M})^{-1}(x)$ 关于 $\mathcal M$ \Term{functorial}{函子性}地\Term{isomorphism}{同构}于
+\[
+\operatorname{Hom}_{\mathcal O_S}(x^*(\Omega^1_{X/S}),\mathcal M),
+\]
+其中 $\Omega^1_{X/S}$ 表示 $X$ 相对于 $S$ 的\Term{relative-differential-sheaf}{相对微分层}。最后这个关于 $\mathcal M$ 的\Term{functor}{函子}显然把 $\mathcal O_S$-\Term{module}{模}的\Term{direct-sum}{直和}变为相应\Term{set}{集合}的\Term{product}{积}，结论随之成立。
+\end{proof}
+\SourcePage{61}
+\begin{SGAresult}{推论}{2.2.1}
+设 $X$ 是 $S$-\Term{scheme}{概形}，$\mathcal M$ 是\Term{finite-free-module}{有限型自由} $\mathcal O_S$-\Term{module}{模}。\Term{functor}{函子} $\underline{\operatorname{Hom}}_S(I_S(\mathcal M),X)$ 作为 $X$ 上的\Term{functor}{函子}，\Term{isomorphism}{同构}于\Term{finite}{有限}个 $\underline{\operatorname{Hom}}_S(I_S,X)$ 的副本在 $X$ 上的\Term{product}{积}。
+\end{SGAresult}
+\textbf{说明 2.2.2。} 由命题的证明可知，$\underline{\operatorname{Hom}}_S(I_S,X)$ 作为 $X$-\Term{functor}{函子}\Term{isomorphism}{同构}于 $\mathbf V(\Omega^1_{X/S})$（I，4.6.1），因而由\Term{vector-fibration}{向量纤维化}\footnote{编者注（12）：参见第 I 讲的编者注（33）。} $\mathbf V(\Omega^1_{X/S})$ \Term{representable}{表示}。
+
+\SGAsection{3}{切丛与条件（E）}
+本节中，除非另有说明，字母 $\mathcal M,\mathcal M',\mathcal N$ 等始终表示\Term{finite-free-module}{有限型自由} $\mathcal O_S$-\Term{module}{模}（即\Term{isomorphism}{同构}于\Term{finite}{有限}个 $\mathcal O_S$ 副本的\Term{direct-sum}{直和}）。
+
+我们将一贯使用第 I 讲中已说明的各种等同；因此，“$S$ 上的\Term{functor}{函子}”既可指带有一个到 $S\ (=h_S)$ 的\Term{morphism}{态射}的\Term{functor}{函子}，也可指 $S$ 上\Term{object}{对象}\Term{category}{范畴}上的\Term{functor}{函子}。同样地说“$S$ 上取值于\Term{group}{群}的\Term{functor}{函子}”，等等。
+\begin{SGAresult}{定义}{3.1}
+设 $S$ 是\Term{scheme}{概形}，$\mathcal M$ 是\Term{finite-free-module}{有限型自由} $\mathcal O_S$-\Term{module}{模}，$X$ 是 $S$ 上的\Term{functor}{函子}。$S$-\Term{functor}{函子}
+\[
+\mathrm T_{X/S}(\mathcal M)=\underline{\operatorname{Hom}}_S(I_S(\mathcal M),X)
+\]
+称为 $X$ 在 $S$ 上相对于 $\mathcal O_S$-\Term{module}{模} $\mathcal M$ 的\Term{tangent-bundle}{切丛}，记为 $\mathrm T_{X/S}(\mathcal M)$。特别地，\Term{functor}{函子}
+\[
+\mathrm T_{X/S}=\mathrm T_{X/S}(\mathcal O_S)=\underline{\operatorname{Hom}}_S(I_S,X)
+\]
+称为 $X$ 在 $S$ 上的\Term{tangent-bundle}{切丛}，记为 $\mathrm T_{X/S}$。\footnote{编者注（13）：当 $S=\operatorname{Spec}(k)$ 且 $X$ 是 $k$-\Term{scheme}{概形}时，有 $\mathrm T_{X/S}(S')=\operatorname{Hom}_S(S'\otimes_k k[\varepsilon],X)=X(S'\otimes_k k[\varepsilon])$；因而重新得到\Term{tangent-bundle}{切丛}的一个通常定义。}
+\end{SGAresult}
+于是 $\mathcal M\mapsto\mathrm T_{X/S}(\mathcal M)$ 是从\Term{finite-free-module}{有限型自由} $\mathcal O_S$-\Term{module}{模}\Term{category}{范畴}到 $S$-\Term{functor}{函子}\Term{category}{范畴}的\Term{covariant-functor}{协变函子}。特别地，\Term{morphism}{态射}\footnote{编者注（14）：已将“$0\to\mathcal M$ 与 $\mathcal M\to0$”改为“$\mathcal M\to0$ 与 $0\to\mathcal M$”。} $\mathcal M\to0$ 与 $0\to\mathcal M$ 分别定义一个 $S$-\Term{morphism}{态射}
+\[
+\pi_{\mathcal M}:\mathrm T_{X/S}(\mathcal M)\longrightarrow\mathrm T_{X/S}(0)\simeq X
+\]
+以及它的一个\Term{section}{截面} $\tau_0$，称为\Term{zero-section}{零截面}。
+\begin{SGAresult}{注记}{3.1.1}
+\footnote{编者注（15）：3.1.1 与 3.1.2 两段为增补。} 应当注意，\Term{projection}{投影} $\pi_{\mathcal M}:\mathrm T_{X/S}(\mathcal M)\to X$ 由\Term{zero-section}{零截面} $\varepsilon_{\mathcal M}:S\to I_S(\mathcal M)$ 诱导，而\Term{zero-section}{零截面} $\tau_0:X\to\mathrm T_{X/S}(\mathcal M)$ 由\Term{structure-morphism}{结构态射} $\rho:I_S(\mathcal M)\to S$ 诱导；亦即，对每个点 $t\in\mathrm T_{X/S}(\mathcal M)(S')$（相应地，$x\in X(S')$），若其对应于 $S$-\Term{morphism}{态射} $f:S'\times_S I_S(\mathcal M)\to X$（相应地，$g:S'\to X$），则有 $\pi(t)=f\circ(\operatorname{id}_{S'}\times\varepsilon_{\mathcal M})$（相应地，$\tau_0(x)=g\circ(\operatorname{id}_{S'}\times\rho)$）。
+\end{SGAresult}
+\SourcePage{62}
+由 3.1 可知，$\mathcal M\mapsto\mathrm T_{X/S}(\mathcal M)$ 是从\Term{finite-free-module}{有限型自由} $\mathcal O_S$-\Term{module}{模}\Term{category}{范畴}到 $X$ 上\Term{functor}{函子}\Term{category}{范畴}的\Term{covariant-functor}{协变函子}。特别地，$\mathbf O(S)$ 是 $X$-\Term{functor}{函子} $\mathrm T_{X/S}(\mathcal M)$ 的一个\Term{operator-monoid}{算子幺半群}，并保持“关于 $\mathcal M$ 的\Term{functorial}{函子性}”。
+\begin{SGAresult}{评注}{3.1.2}
+以上所述特别包含如下事实。对每个 $S$-\Term{morphism}{态射} $\phi:X'\to X$，置
+\[
+\Sigma(X',\mathcal M)=\operatorname{Hom}_X(X',\mathrm T_{X/S}(\mathcal M)).
+\]
+\Term{multiplicative-monoid}{乘法幺半群} $\operatorname{End}_{\mathcal O_S}(\mathcal M)$ 在 $\Sigma(X',\mathcal M)$ 上有一个\Term{action}{作用}，记为 $(\lambda,x)\mapsto\lambda*x$，使得 $\lambda*(\mu*x)=(\lambda\mu)*x$、$1*x=x$ 和 $0*x=\tau_0\circ\phi$，其中 $\tau_0$ 是\Term{zero-section}{零截面} $X\to\mathrm T_{X/S}(\mathcal M)$。同样，$\operatorname{End}_{\mathcal O_S}(\mathcal M\oplus\mathcal M)$ 在 $\Sigma(X',\mathcal M\oplus\mathcal M)$ 上也有一个\Term{action}{作用}。\footnote{编者注（16）：实际上，只考察 $\mathbf O(S)$（相应地，$\mathbf O(S)\times\mathbf O(S)$）在 $\Sigma(X',\mathcal M)$（相应地，$\Sigma(X',\mathcal M\oplus\mathcal M)$）上的\Term{action}{作用}；参见下文及 3.6 的证明。}
+
+此外，设 $m:\mathcal M\oplus\mathcal M\to\mathcal M$（相应地，$\delta:\mathcal M\to\mathcal M\oplus\mathcal M$）是 $\mathcal M$ 的加法（相应地，\Term{diagonal-map}{对角映射}），以 $m_{X'}:\Sigma(X',\mathcal M\oplus\mathcal M)\to\Sigma(X',\mathcal M)$ 和 $\delta_{X'}:\Sigma(X',\mathcal M)\to\Sigma(X',\mathcal M\oplus\mathcal M)$ 表示由 $m$ 与 $\delta$ 诱导的\Term{morphism}{态射}。对 $\lambda,\mu\in\mathbf O(S)$，以 $\ell_\lambda$（相应地，$\ell_{\lambda,\mu}$）表示 $\mathcal M$ 中乘以 $\lambda$（相应地，$\mathcal M\oplus\mathcal M$ 中乘以 $(\lambda,\mu)$）的映射。因为 $m\circ\ell_{\lambda,\lambda}=\ell_\lambda\circ m$ 且 $m\circ\ell_{\lambda,\mu}\circ\delta=\ell_{\lambda+\mu}$，故对每个 $z\in\Sigma(X',\mathcal M\oplus\mathcal M)$ 与 $x\in\Sigma(X',\mathcal M)$，有
+\[
+\lambda*m(z)=m((\lambda,\lambda)*z),\qquad
+m((\lambda,\mu)*\delta(x))=(\lambda+\mu)*x.\tag{$\dagger$}
+\]
+\end{SGAresult}
+\begin{SGAresult}{定义}{3.2}
+设 $u\in X(S)=\operatorname{Hom}_S(S,X)=\Gamma(X/S)$。将 $X$-\Term{functor}{函子} $\mathrm T_{X/S}(\mathcal M)$ 沿\Term{morphism}{态射} $u:S\to X$ 取\Term{inverse-image}{逆像}所得的 $S$-\Term{functor}{函子}，称为 $X$ 在 $S$ 上于点 $u$ 处相对于 $\mathcal M$ 的\Term{tangent-space}{切空间}，记为 $\mathrm L^u_{X/S}(\mathcal M)$：
+\[
+\begin{tikzcd}
+\mathrm L^u_{X/S}(\mathcal M)\arrow[r]\arrow[d]&\mathrm T_{X/S}(\mathcal M)\arrow[d,"\pi"]\\
+S\arrow[r,"u"']&X.
+\end{tikzcd}
+\]
+特别地，$\mathrm L^u_{X/S}(\mathcal O_S)$ 记为 $\mathrm L^u_{X/S}$；它是 $X$ 在 $S$ 上于点 $u$ 处的\Term{tangent-space}{切空间}。
+\end{SGAresult}
+\begin{SGAresult}{注记}{3.2.1}
+\footnote{编者注（17）：此注记为增补。} 由 3.1.1 可知，对每个 $t:S'\to S$，$\mathrm L^u_{X/S}(\mathcal M)(S')$ 是满足 $f\circ\varepsilon_{\mathcal M}=u\circ t$ 的 $S$-\Term{morphism}{态射} $f:I_{S'}(\mathcal M)\to X$ 所成的\Term{set}{集合}，其中 $\varepsilon_{\mathcal M}:S'\to I_{S'}(\mathcal M)$ 是\Term{zero-section}{零截面}。
+\end{SGAresult}
+立即指出：
+\begin{SGAresult}{命题}{3.3}
+若 $X$ 可由一个记为 $\widetilde X$ 的 $S$-\Term{scheme}{概形}\Term{representable}{表示}，则 $\mathrm T_{X/S}(\mathcal M)$ 与 $\mathrm L^u_{X/S}(\mathcal M)$ 均\Term{representable}{可表示}。特别地，$\mathrm T_{X/S}$ 与 $\mathrm L^u_{X/S}$ 分别由 $\widetilde X$ 上与 $S$ 上的\Term{vector-fibration}{向量纤维化} $\mathbf V(\Omega^1_{\widetilde X/S})$ 与 $\mathbf V(u^*(\Omega^1_{\widetilde X/S}))$ \Term{representable}{表示}。
+\end{SGAresult}
+\SourcePage{63}
+\begin{proof}
+显然只须对 $\mathrm T_{X/S}(\mathcal M)$ 证明命题，$\mathrm L^u_{X/S}(\mathcal M)$ 的相应结论可由取\Term{inverse-image}{逆像}得到。由推论 2.2.1，甚至只须对 $\mathrm T_{X/S}$ 证明，而此时命题正是 2.2.2 中指出的注记。
+\end{proof}
+\begin{SGAresult}{注记}{3.3.1}
+由此命题可对表示 $\mathrm L^u_{X/S}$ 的\Term{vector-fibration}{向量纤维化}作特别简单的描述：$X$ 在 $S$ 上的\Term{section}{截面} $u$ 的像是\Term{locally-closed}{局部闭}的\footnote{编者注（18）：参见 EGA I，5.3.11。}，因而由 $X$ 的某个\Term{open-subset}{开集}上的诱导\Term{scheme}{概形}中的一个\Term{quasi-coherent}{拟凝聚}\Term{ideal}{理想} $\mathfrak m$ 定义。商 $\mathfrak m/\mathfrak m^2$ 可视为 $S$ 上的\Term{quasi-coherent}{拟凝聚}\Term{module}{模}。它正是定义所求\Term{vector-fibration}{向量纤维化}的\Term{module}{模}。
+
+例如，设 $X$ 是域 $k$ 上的\Term{algebraic-scheme}{代数概形}，$u$ 是 $X$ 的一个 $k$-\Term{rational-point}{有理点}。设 $\mathfrak m$ 为\Term{local-ring}{局部环} $\mathcal O_{X,u}$ 的\Term{maximal-ideal}{极大理想}，$\mathfrak t$ 为 $\mathfrak m/\mathfrak m^2$ 的\Term{dual-vector-space}{对偶} $k$-\Term{vector-space}{向量空间}；它是 $\mathcal O_{X,u}$ 在点 $u$ 处的\Term{zariski-tangent-space}{Zariski 切空间}。于是采用 I，4.6.5.1 的记号，有
+\[
+\mathrm L^u_{X/k}=\mathbf V(\mathfrak m/\mathfrak m^2)=\mathbf W(\mathfrak t).
+\]
+\end{SGAresult}
+结束这段插叙，回到一般情形。首先注意，$\mathrm L^u_{X/S}(\mathcal M)$ 是从\Term{finite-free-module}{有限型自由} $\mathcal O_S$-\Term{module}{模}\Term{category}{范畴}到 $S$ 上\Term{functor}{函子}\Term{category}{范畴}的\Term{covariant-functor}{协变函子}。特别地，$\mathbf O(S)$ 是 $S$-\Term{functor}{函子} $\mathrm L^u_{X/S}(\mathcal M)$ 的一个\Term{operator}{算子}\Term{set}{集合}，保持关于 $\mathcal M$ 的\Term{functorial}{函子性}。\footnote{编者注（19）：参见 3.1.2。}
+\begin{SGAresult}{命题}{3.4}
+$\mathrm T_{X/S}(\mathcal M)$ 与 $\mathrm L_{X/S}(\mathcal M)$ 的形成同\Term{base-extension}{基扩张}交换：对每个 $S$-\Term{scheme}{概形} $S'$，有关于 $\mathcal M$ 的\Term{functorial}{函子性}\Term{isomorphism}{同构}
+\[
+\begin{aligned}
+\mathrm T_{X_{S'}/S'}(\mathcal M\otimes\mathcal O_{S'})&\xrightarrow\sim\mathrm T_{X/S}(\mathcal M)_{S'},\\
+\mathrm L^{u'}_{X_{S'}/S'}(\mathcal M\otimes\mathcal O_{S'})&\xrightarrow\sim\mathrm L^u_{X/S}(\mathcal M)_{S'},\qquad u'=u_{S'}.
+\end{aligned}
+\]
+\end{SGAresult}
+\begin{proof}
+这立即由 $\underline{\operatorname{Hom}}$ 与\Term{base-extension}{基扩张}交换得出。
+\end{proof}
+\begin{SGAresult}{推论}{3.4.1}
+$X$-\Term{functor}{函子} $\mathrm T_{X/S}(\mathcal M)$（相应地，$S$-\Term{functor}{函子} $\mathrm L^u_{X/S}(\mathcal M)$）自然带有以 $\mathbf O_X$（相应地，$\mathbf O_S$）为\Term{operator}{算子}的\Term{object}{对象}结构，且此结构关于 $\mathcal M$ 具有\Term{functorial}{函子性}。
+\end{SGAresult}
+\begin{proof}
+先对 $\mathrm L^u_{X/S}(\mathcal M)$ 证明。对 $S$ 上的每个 $S'$，$\mathbf O(S')$ \Term{action}{作用}于 $\mathcal M\otimes\mathcal O_{S'}$，因而也\Term{action}{作用}于 $\mathrm L^{u'}_{X_{S'}/S'}(\mathcal M\otimes\mathcal O_{S'})=\mathrm L^u_{X/S}(\mathcal M)_{S'}$；可验证，此\Term{action}{作用}关于 $S'$ 具有\Term{functorial}{函子性}。因而，如所断言的那样，它使 $\mathrm L^u_{X/S}(\mathcal M)$ 带有以 $\mathbf O_S$ 为\Term{operator}{算子}的\Term{functor}{函子}结构。
+
+对 $\mathrm T_{X/S}(\mathcal M)$，情形稍复杂。对每个在 $X$ 上的 $X'$，置 $\mathrm T_{X/S}(\mathcal M)_{X'}=\mathrm T_{X/S}(\mathcal M)\times_X X'$；须在
+\[
+\mathrm T_{X/S}(\mathcal M)_{X'}(X')=\operatorname{Hom}_X(X',\mathrm T_{X/S}(\mathcal M))
+\]
+上赋予以 $\mathbf O(X')$ 为\Term{operator-monoid}{算子幺半群}的\Term{set}{集合}结构，并使其关于 $X'$ 具有\Term{functorial}{函子性}。
+\SourcePage{64}
+为此构造下图，其中 $X_{X'}$ 表示 $X\times_S X'$，$f'$ 表示由 $f:X'\to X$ 定义的 $X_{X'}$ 在 $X'$ 上的\Term{section}{截面}：
+\[
+\begin{tikzcd}[column sep=small,row sep=large]
+&\mathrm T_{X_{X'}/X'}(\mathcal M)\arrow[dl]\arrow[dd] &\\
+\mathrm T_{X/S}(\mathcal M)\arrow[dd]&&\mathrm T_{X/S}(\mathcal M)_{X'}\arrow[ul]\arrow[ll]\arrow[dd]\\
+&X_{X'}\arrow[dl]&\\
+X\arrow[dr]&&X'\arrow[ul,"f'"']\arrow[ll,"f"]\arrow[dl]\\
+&S&
+\end{tikzcd}
+\]
+此图与 3.2.1 合起来表明\footnote{编者注（20）：以下详细展开了原文。}，$\mathrm T_{X/S}(\mathcal M)_{X'}(X')$ 等同于
+\[
+\mathrm L^{f'}_{X_{X'}/X'}(\mathcal M)(X')
+=\{\text{$X'$-态射 }\psi:I_{X'}(\mathcal M)\to X_{X'}\mid\psi\circ\varepsilon_{\mathcal M}=f'\},
+\]
+其中每个 $a\in\mathbf O(X')$ 通过在 $I_{X'}(\mathcal M)$ 上的\Term{action}{作用}而\Term{action}{作用}于该\Term{set}{集合}；即采用 2.1.1 的记号，有 $a\psi=\psi\circ a^*$，亦即对每个 $X''\to X'$ 与 $x\in I_{X'}(\mathcal M)(X'')$，有 $(a\psi)(x)=\psi(x\cdot a)$。于是容易验证，此构造关于 $X'$ 具有\Term{functorial}{函子性}。
+
+命题 3.4 中的\Term{isomorphism}{同构}按构造分别为 $\mathbf O_{X_{S'}}$-\Term{object}{对象}结构和 $\mathbf O_{S'}$-\Term{object}{对象}结构的\Term{isomorphism}{同构}。
+\end{proof}
+\begin{SGAresult}{注记}{3.4.2}
+\footnote{编者注（21）：注记 3.4.2 与 3.4.3 为增补。} $\mathbf O_X$ 在 $\mathrm T_{X/S}(\mathcal M)$ 上的\Term{action}{作用}也可更简单地描述如下。对每个 $f:X'\to X$，有
+\[
+\operatorname{Hom}_X(X',\mathrm T_{X/S}(\mathcal M))
+=\{\phi\in\operatorname{Hom}_S(I_{X'}(\mathcal M),X)\mid\phi\circ\varepsilon_{\mathcal M}=f\},
+\]
+而在 2.1.3 中已经看到，把 $I_{X'}(\mathcal M)$ 看作 $S$-\Term{functor}{函子}时，它带有\Term{monoid}{幺半群} $\mathbf O(X')$ 的\Term{action}{作用}，保持\Term{zero-section}{零截面} $\varepsilon_{\mathcal M}:X'\to I_{X'}(\mathcal M)$。因此，若以 $a^*$ 表示由 $a\in\mathbf O(X')$ 定义的 $I_{X'}(\mathcal M)$ 的 $X'$-\Term{endomorphism}{自同态}，则有 $a\phi=\phi\circ a^*$；即对每个 $S'\to S$ 和 $(m,x')\in\operatorname{Hom}_S(S',I_S(\mathcal M)\times_S X')$，有
+\[
+(a\phi)(m,x')=\phi(m\cdot a(x'),x')
+\]
+（注意 $a^*\circ\varepsilon_{\mathcal M}=\varepsilon_{\mathcal M}$，故 $(a\phi)\circ\varepsilon_{\mathcal M}=\phi\circ\varepsilon_{\mathcal M}=f$）。
+
+同样，$\mathbf O_S$ 在 $\mathrm L^u_{X/S}(\mathcal M)$ 上的\Term{action}{作用}可描述如下。对每个 $t:S'\to S$，$\mathrm L^u_{X/S}(\mathcal M)(S')$ 是满足 $\phi\circ\varepsilon_{\mathcal M}=u\circ t$ 的 $S$-\Term{morphism}{态射} $\phi:I_{S'}(\mathcal M)\to X$ 所成的\Term{set}{集合}；对此种 $\phi$ 及 $a\in\mathbf O(S')$，有 $a\phi=\phi\circ a^*$。
+\end{SGAresult}
+\begin{SGAresult}{注记}{3.4.3}
+3.1.2 中的观察也适用于 $\mathbf O_S$ 在 $\mathrm L^u_{X/S}(\mathcal M)$ 上的\Term{action}{作用}与 $\mathbf O_X$ 在 $\mathrm T_{X/S}(\mathcal M)$ 上的\Term{action}{作用}。
+\end{SGAresult}
+\SourcePage{65}
+\begin{SGAresult}{定义}{3.5}
+设 $S$ 是\Term{scheme}{概形}，$X$ 是 $S$-\Term{functor}{函子}。若对 $S$ 上的每个 $S'$ 及任意两个\Term{finite-free-module}{有限型自由} $\mathcal O_{S'}$-\Term{module}{模} $\mathcal M,\mathcal N$，把 $X$ \Term{action}{作用}于 2.1 中定义的图（$*$）所得的\Term{set}{集合}图
+\[
+\begin{tikzcd}[column sep=small]
+&X(I_{S'}(\mathcal M\oplus\mathcal N))\arrow[dl]\arrow[dr]&\\
+X(I_{S'}(\mathcal M))\arrow[dr]&&X(I_{S'}(\mathcal N))\arrow[dl]\\
+&X(S')&
+\end{tikzcd}
+\]
+是\Term{cartesian-diagram}{笛卡尔图}，便称 $X$ 相对于 $S$ 满足\Term{condition-e}{条件（E）}。\footnote{编者注（22）：不满足\Term{condition-e}{条件（E）}的 $S$-\Term{functor}{函子}与 $S$-\Term{group}{群}的例子，见 6.2 和 6.3。}
+\end{SGAresult}
+\textbf{3.5.1.} \Term{equivalence}{等价}地说，\Term{functor}{函子} $\mathcal M\mapsto\mathrm T_{X/S}(\mathcal M)$ 把\Term{finite-free-module}{有限型自由} $\mathcal O_S$-\Term{module}{模}的\Term{direct-sum}{直和}变为 $X$-\Term{functor}{函子}的\Term{product}{积}；\footnote{编者注（23）：以下为增补。} 此时，对每个 $u\in\Gamma(X/S)$，\Term{functor}{函子} $\mathcal M\mapsto\mathrm L^u_{X/S}(\mathcal M)=S\times_X\mathrm T_{X/S}(\mathcal M)$ 也有同样性质。
+
+命题 2.2 表明，每个\Term{representable}{可表示}\Term{functor}{函子}都满足\Term{condition-e}{条件（E）}。简写：有时把“$X$ 相对于 $S$ 满足\Term{condition-e}{条件（E）}”说成“$X/S$ 满足\Term{condition-e}{条件（E）}”。
+
+若 $X/S$ 满足\Term{condition-e}{条件（E）}，则\Term{functor}{函子} $\mathcal M\mapsto\mathrm T_{X/S}(\mathcal M)$ 与\Term{product}{积}交换，因而把\Term{group}{群}变为\Term{group}{群}。特别地，$\mathrm T_{X/S}(\mathcal M)$ 是一个 $X$-\Term{abelian-group}{交换群}。同理，$\mathrm L^u_{X/S}(\mathcal M)$ 是一个 $S$-\Term{abelian-group}{交换群}。
+\begin{SGAresult}{命题}{3.6}
+若 $X/S$ 满足（E），则 $\mathrm T_{X/S}(\mathcal M)$（相应地，$\mathrm L^u_{X/S}(\mathcal M)$）上的\Term{abelian-group}{交换群}结构与 $\mathbf O_X$（相应地，$\mathbf O_S$）的\Term{action}{作用}，使 $\mathrm T_{X/S}(\mathcal M)$（相应地，$\mathrm L^u_{X/S}(\mathcal M)$）带有 $\mathbf O_X$-\Term{module}{模}（相应地，$\mathbf O_S$-\Term{module}{模}）结构。
+\end{SGAresult}
+\begin{proof}
+$\mathbf O_X$（相应地，$\mathbf O_S$）的\Term{action}{作用}关于 $\mathcal M$ 具有\Term{functorial}{函子性}，所以保持由 $\mathcal M$ 的\Term{abelian-group}{交换群}结构通过\Term{functorial}{函子性}得到的\Term{abelian-group}{交换群}结构。\footnote{编者注（24）：以下作了详细展开。} 事实上，沿用 3.1.2 的记号。$\mathrm T_{X/S}(\mathcal M)$ 的 $X$-\Term{abelian-group}{交换群}结构由下列复合定义：
+\[
+\mathrm T_{X/S}(\mathcal M)\times_X\mathrm T_{X/S}(\mathcal M)
+\simeq\mathrm T_{X/S}(\mathcal M\oplus\mathcal M)
+\xrightarrow m\mathrm T_{X/S}(\mathcal M),
+\]
+另一方面，\Term{morphism}{态射}
+\[
+\mathrm T_{X/S}(\mathcal M)\xrightarrow\delta
+\mathrm T_{X/S}(\mathcal M\oplus\mathcal M)
+\simeq\mathrm T_{X/S}(\mathcal M)\times_X\mathrm T_{X/S}(\mathcal M)
+\]
+\SourcePage{66}
+是\Term{diagonal-morphism}{对角态射}。结合注记 3.4.3，由 3.1.2 中的等式（$\dagger$），得到对每个 $f:X'\to X$、$x,y\in\operatorname{Hom}_X(X',\mathrm T_{X/S}(\mathcal M))$ 及 $\lambda,\mu\in\mathbf O(X')$，有
+\[
+\lambda(x+y)=\lambda x+\lambda y,\qquad
+(\lambda+\mu)x=\lambda x+\mu x.
+\]
+\end{proof}
+\begin{SGAresult}{注记}{3.6.1}
+若 $X$ \Term{representable}{可表示}，则一方面它满足（E），另一方面 $\mathrm T_{X/S}$ 与 $\mathrm L^u_{X/S}$ 都由\Term{vector-fibration}{向量纤维化}\Term{representable}{表示}；此时，以上运算与由\Term{vector-fibration}{向量纤维化}结构所得的运算相同（参见 I，4.6）。\footnote{编者注（25）：即对每个 $S$-\Term{morphism}{态射} $f:X'\to X$，通过等同
+\[
+\operatorname{Hom}_X(X',\mathrm T_{X/S}(\mathcal M))
+\simeq\operatorname{Hom}_{\mathcal O_{X'}}(f^*(\Omega^1_{X/S}),\mathcal M\otimes_{\mathcal O_S}\mathcal O_{X'}),
+\]
+$\mathbf O(X')$ 在左端上的\Term{action}{作用}对应于它在右端上的自然\Term{action}{作用}；这由 SGA 1，III，5.1 的证明得出（也可参见第 III 讲的增补 0.1.8）。}
+\end{SGAresult}
+\begin{SGAresult}{命题}{3.4 bis}
+若 $X/S$ 满足（E），则 $X_{S'}/S'$ 也满足（E），且 3.4 中的\Term{isomorphism}{同构}保持 $\mathbf O_{X_{S'}}$-\Term{module}{模}结构以及相应的 $\mathbf O_{S'}$-\Term{module}{模}结构。
+\end{SGAresult}
+无须另作说明。
+\begin{SGAresult}{命题}{3.7}
+\Term{functor}{函子} $\mathrm T_{X/S}(\mathcal M)$ 与 $\mathrm L^u_{X/S}(\mathcal M)$ 关于 $X$ 具有\Term{functorial}{函子性}，即若 $f:X\to X'$ 是 $S$-\Term{morphism}{态射}，则有\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}
+\mathrm T_{X/S}(\mathcal M)\arrow[r,"\mathrm T(f)"]\arrow[d]&\mathrm T_{X'/S}(\mathcal M)\arrow[d]\\
+X\arrow[r]&X'
+\end{tikzcd}
+\qquad
+\begin{tikzcd}[column sep=small]
+\mathrm L^u_{X/S}(\mathcal M)\arrow[rr,"\mathrm L(f)"]\arrow[dr]&&\mathrm L^{f\circ u}_{X'/S}(\mathcal M)\arrow[dl]\\
+&S&.
+\end{tikzcd}
+\]
+此外，若 $f$ 是\Term{monomorphism}{单态射}，则 $\mathrm T(f)$ 与 $\mathrm L(f)$ 也都是\Term{monomorphism}{单态射}。\footnote{编者注（26）：上一句为增补。}
+\end{SGAresult}
+\begin{proof}
+$\mathrm T(f)$ 与 $\mathrm L(f)$ 的存在性及最后一个断言，立即由定义得出。图的\Term{commutativity}{交换性}则由这些\Term{morphism}{态射}关于 $\mathcal M$ 的\Term{functorial}{函子性}以及 $\mathrm T_{X/S}(0)=X$ 得出。
+\end{proof}
+\begin{SGAresult}{注记}{3.7.1}
+\footnote{编者注（27）：增添了 $X,X'$ \Term{representable}{可表示}的假设，并详细展开了下文。} 假设 $X,X'$ \Term{representable}{可表示}，设\Term{free-module}{自由} $\mathcal O_S$-\Term{module}{模} $\mathcal M$ 的秩为 $r$。由 2.2.2，$\mathrm T_{X/S}(\mathcal M)$ \Term{isomorphism}{同构}于 $r$ 个 $\mathbf V(\Omega^1_{X/S})$ 副本在 $X$ 上的\Term{product}{积}；$\mathrm T_{X'/S}(\mathcal M)$ 也有类似描述。因此，当 $f$ 为\Term{open-immersion}{开浸入}时，或更一般地，当 $f^*(\Omega^1_{X'/S})=\Omega^1_{X/S}$ 时，例如 $f$ 为\Term{etale}{平展}时，上述方块是\Term{cartesian-diagram}{笛卡尔图}；在这些条件下，有 $S$-\Term{functor}{函子}的\Term{isomorphism}{同构}
+\[
+\mathrm L^u_{X/S}(\mathcal M)\xrightarrow\sim\mathrm L^{f\circ u}_{X'/S}(\mathcal M).
+\]
+\end{SGAresult}
+\SourcePage{67}
+一般地，3.7 中的\Term{cartesian-square}{笛卡尔方块}定义了一个 $X$-\Term{functor}{函子}的\Term{morphism}{态射}：
+\[
+\begin{tikzcd}[column sep=small]
+\mathrm T_{X/S}(\mathcal M)\arrow[rr]\arrow[dr]&&\mathrm T_{X'/S}(\mathcal M)\times_{X'}X\arrow[dl]\\
+&X&.
+\end{tikzcd}
+\]
+\begin{SGAresult}{命题}{3.7 bis}
+设 $f:X\to X'$ 是 $S$-\Term{morphism}{态射}；若 $X,X'$ 相对于 $S$ 满足（E），则
+\[
+\mathrm T_{X/S}(\mathcal M)\xrightarrow{\mathrm T(f)}\mathrm T_{X'/S}(\mathcal M)_X,
+\qquad\text{相应地，}\quad
+\mathrm L^u_{X/S}(\mathcal M)\xrightarrow{\mathrm L(f)}\mathrm L^{f\circ u}_{X'/S}(\mathcal M),
+\]
+是 $\mathbf O_X$-\Term{module}{模}（相应地，$\mathbf O_S$-\Term{module}{模}）的\Term{morphism}{态射}。
+\end{SGAresult}
+由命题 3.7 及关于 $\mathcal M$ 的\Term{functorial}{函子性}得出。
+\begin{SGAresult}{命题}{3.8}
+设 $X,Y$ 是 $S$ 上的两个\Term{functor}{函子}。有关于 $\mathcal M$ 的\Term{functorial}{函子性}\Term{isomorphism}{同构}
+\[
+\mathrm T_{X/S}(\mathcal M)\times_S\mathrm T_{Y/S}(\mathcal M)
+\xrightarrow\sim\mathrm T_{(X\times_S Y)/S}(\mathcal M),\tag{3.8.1}
+\]
+\[
+\mathrm L^u_{X/S}(\mathcal M)\times_S\mathrm L^v_{Y/S}(\mathcal M)
+\xrightarrow\sim\mathrm L^{(u,v)}_{(X\times_S Y)/S}(\mathcal M).\tag{3.8.2}
+\]
+\end{SGAresult}
+\begin{proof}
+\footnote{编者注（28）：以下作了详细展开。} 第一个\Term{isomorphism}{同构}由 1.2（$*$）得出，第二个由第一个沿 $(u,v):S\to X\times_S Y$ 作\Term{base-change}{基变换}得到。
+\end{proof}
+\begin{SGAresult}{注记}{3.8.0}
+注意，（3.8.1）也\Term{solvable}{可解}释为 $X\times_S Y$-\Term{functor}{函子}的\Term{isomorphism}{同构}
+\[
+\bigl(\mathrm T_{X/S}(\mathcal M)\times_X(X\times_S Y)\bigr)
+\times_{X\times_S Y}
+\bigl(\mathrm T_{Y/S}(\mathcal M)\times_Y(X\times_S Y)\bigr)
+\xrightarrow\sim\mathrm T_{(X\times_S Y)/S}(\mathcal M).
+\]
+\end{SGAresult}
+\begin{SGAresult}{推论}{3.8.1}
+若 $X/S$ 带有由\Term{finite}{有限}\Term{cartesian-product}{笛卡尔积}定义的\Term{algebraic-structure}{代数结构}，则 $\mathrm T_{X/S}(\mathcal M)$ 也带有同类结构，且\Term{projection}{投影} $\mathrm T_{X/S}(\mathcal M)\to X$ 是这种结构的\Term{morphism}{态射}。
+\end{SGAresult}
+\begin{SGAresult}{命题}{3.8 bis}
+若 $X/S,Y/S$ 满足（E），则 $(X\times_S Y)/S$ 满足（E），且（3.8.1）（相应地，（3.8.2））是 $\mathbf O_{X\times_S Y}$-\Term{module}{模}（相应地，$\mathbf O_S$-\Term{module}{模}）的\Term{isomorphism}{同构}。
+\end{SGAresult}
+\begin{proof}
+\footnote{编者注（29）：此证明为增补。} 假设 $X/S,Y/S$ 满足（E）。那么，由 3.5.1 与（3.8.1），$(X\times_S Y)/S$ 也满足（E）。证明（3.8.1）是 $\mathbf O_{X\times_S Y}$-\Term{module}{模}的\Term{isomorphism}{同构}。
+\SourcePage{68}
+设 $(x,y):Z\to X\times_S Y$ 是 $S$-\Term{morphism}{态射}；由 3.4.2，只须证明把 $(\phi,\psi)$ 对应到 $\phi\times\psi$ 的映射
+\[
+\begin{aligned}
+{}&\{\phi\in\operatorname{Hom}_S(I_Z(\mathcal M),X)\mid\phi\circ\varepsilon_{\mathcal M}=x\}
+\times\{\psi\in\operatorname{Hom}_S(I_Z(\mathcal M),Y)\mid\psi\circ\varepsilon_{\mathcal M}=y\}\\
+&\hspace{3em}\longrightarrow
+\{\theta\in\operatorname{Hom}_S(I_Z(\mathcal M),X\times_S Y)\mid\theta\circ\varepsilon_{\mathcal M}=(x,y)\}
+\end{aligned}
+\]
+是 $\mathbf O(Z)$-\Term{module}{模}的\Term{morphism}{态射}。但这是显然的，因为若 $a\in\mathbf O(Z)$，则 $a\cdot(\phi,\psi)=(\phi\circ a^*,\psi\circ a^*)$ 被映到
+\[
+(\phi\circ a^*)\times(\psi\circ a^*)=(\phi\times\psi)\circ a^*=a\cdot(\phi\times\psi).
+\]
+同样，利用 3.2.1，可证明（3.8.2）是 $\mathbf O_S$-\Term{module}{模}的\Term{isomorphism}{同构}。
+\end{proof}
+\textbf{3.9.0.}\footnote{编者注（30）：此段为增补，旨在解释引入 $S$-$H$-\Term{functor}{函子}概念的缘由。} 若 $X$ 是 $S$-\Term{group}{群}，并以 $e:S\to X$ 表示其\Term{unit-section}{单位截面}，则记
+\[
+\underline{\operatorname{Lie}}(X/S,\mathcal M)=\mathrm L^e_{X/S}(\mathcal M),
+\]
+即 $\underline{\operatorname{Lie}}(X/S,\mathcal M)$ 由下列\Term{cartesian-diagram}{笛卡尔方块}定义：
+\[
+\begin{tikzcd}
+\underline{\operatorname{Lie}}(X/S,\mathcal M)\arrow[r,"i"]\arrow[d]&\mathrm T_{X/S}(\mathcal M)\arrow[d,"p"]\\
+S\arrow[r,"e"']&X.
+\end{tikzcd}
+\]
+由推论 3.8.1，\Term{projection}{投影} $p:\mathrm T_{X/S}(\mathcal M)\to X$ 是 $S$-\Term{group}{群}的\Term{morphism}{态射}；因此，$\underline{\operatorname{Lie}}(X/S,\mathcal M)$ 带有 $S$-\Term{group}{群}结构，并通过 $i$ \Term{isomorphism}{同构}于 $p$ 的\Term{kernel}{核}。
+
+若 $X/S$ 还满足\Term{condition-e}{条件（E）}，则在命题 3.9 中我们将看到，$\underline{\operatorname{Lie}}(X/S,\mathcal M)$ 上由 $X$ 的结构诱导的 $S$-\Term{group}{群}结构，与由关于 $\mathcal M$ 的\Term{functorial}{函子性}诱导的\Term{abelian-group}{交换群}结构（参见 3.5.1）相同。实际上，此结果在更弱的假设下成立：只须 $X$ 是取值于\Term{monoid}{幺半群}的 $S$-\Term{functor}{函子}，或更一般地，是取值于 $H$-\Term{set}{集合}的 $S$-\Term{functor}{函子}（定义见下文）。
+\begin{SGAresult}{定义}{3.9.0.1}
+a）引入以下术语：\footnote{编者注（31）：这受\Term{topology}{拓扑}学中 $H$-\Term{space}{空间}概念的启发。} 一个\Term{h-set}{$H$-集合}是带有双侧\Term{identity-element}{单位元}的合成运算的\Term{set}{集合} $X$，其\Term{identity-element}{单位元}记为 $e_X$，或简记为 $e$。若 $f:X\to Y$ 是\Term{h-set}{$H$-集合}的\Term{morphism}{态射}，则其\Term{kernel}{核} $\operatorname{Ker}f$ 为 $f^{-1}(e_Y)$；它是 $X$ 的一个\Term{h-set}{子 $H$-集合}。
+
+b）\Term{category}{范畴} $\mathscr C$ 中的\Term{h-object}{$H$-对象}按通常方式定义：它是 $\mathscr C$ 的一个\Term{object}{对象} $X$，带有\Term{morphism}{态射} $X\times X\to X$，并且 $X$ 有一个（在\Term{final-object}{终对象}上的）\Term{section}{截面}，具有双侧\Term{identity-element}{单位元}的性质。因此，每个 $\mathscr C$-\Term{monoid}{幺半群}，特别是每个 $\mathscr C$-\Term{group}{群}，都是 $\mathscr C$-\Term{h-object}{$H$-对象}。特别地，\Term{scheme}{概形} $S$ 上的\Term{functor}{函子}\Term{category}{范畴}中的\Term{h-object}{$H$-对象}称为 $S$-$H$-\Term{functor}{函子}。
+\SourcePage{69}
+c）若 $X$ 是一个 $S$-$H$-\Term{functor}{函子}（例如，$S$-\Term{group}{群}），并以 $e:S\to X$ 表示 $X$ 的\Term{unit-section}{单位截面}，则记
+\[
+\underline{\operatorname{Lie}}(X/S,\mathcal M)=\mathrm L^e_{X/S}(\mathcal M),
+\qquad
+\underline{\operatorname{Lie}}(X/S)=\underline{\operatorname{Lie}}(X/S,\mathcal O_S).
+\]
+\end{SGAresult}
+现在明确写出 3.8.1 的以下特例。\footnote{编者注（32）：推论 3.9.0.2 为增补，将在 4.1 中使用。}
+\begin{SGAresult}{推论}{3.9.0.2}
+若 $X$ 是一个 $S$-$H$-\Term{functor}{函子}（相应地，一个 $S$-\Term{group}{群}），则 $\mathrm T_{X/S}(\mathcal M)$ 与 $\underline{\operatorname{Lie}}(X/S,\mathcal M)$ 也都是 $S$-$H$-\Term{functor}{函子}（相应地，$S$-\Term{group}{群}），并有 $S$-$H$-\Term{functor}{函子}（相应地，$S$-\Term{group}{群}）的\Term{morphism}{态射}
+\[
+\begin{tikzcd}
+\underline{\operatorname{Lie}}(X/S,\mathcal M)\arrow[r,"i"]&\mathrm T_{X/S}(\mathcal M)\arrow[r,shift left=.6ex,"p"]&X\arrow[l,shift left=.6ex,"s"] ,
+\end{tikzcd}
+\]
+其中 $i$ 是从 $\underline{\operatorname{Lie}}(X/S)(\mathcal M)$ 到 $\operatorname{Ker}p$ 的\Term{isomorphism}{同构}，$s$ 是 $p$ 的一个\Term{section}{截面}。
+\end{SGAresult}
+\begin{SGAresult}{命题}{3.9}
+设 $X$ 是相对于 $S$ 满足（E）的 $S$-$H$-\Term{functor}{函子}。$\underline{\operatorname{Lie}}(X/S,\mathcal M)$ 上来自 $X$ 的 $S$-$H$-\Term{functor}{函子}结构，与 3.5.1 中定义的 $S$-\Term{group}{群}结构相同。
+\end{SGAresult}
+由上文可知，$\underline{\operatorname{Lie}}(X/S,\mathcal M)$ 是 $\mathbf O_S$-\Term{module}{模}\Term{category}{范畴}中的一个\Term{h-object}{$H$-对象}。因而命题将由以下\Term{lemma}{引理}得出：\footnote{编者注（33）：其灵感来自证明 $H$-\Term{space}{空间}的\Term{fundamental-group}{基本群}为\Term{abelian-group}{交换群}的标准证明。}
+\begin{SGAresult}{\Term{lemma}{引理}}{3.10}
+设 $\mathscr C$ 是一个\Term{category}{范畴}。设 $G$ 是 $\mathscr C$-\Term{h-object}{$H$-对象}\Term{category}{范畴}中的一个\Term{h-object}{$H$-对象}；也就是说，$G$ 是一个 $\mathscr C$-\Term{h-object}{$H$-对象}（将其合成运算记为 $f:G\times G\to G$），并带有一个 $\mathscr C$-\Term{h-object}{$H$-对象}的\Term{morphism}{态射} $h:G\times G\to G$。\footnote{编者注（34）：$G\times G$ 带有运算 $(G\times G)\times(G\times G)\to G\times G$，$((x,z),(y,t))\mapsto(f(x,y),f(z,t))$。} 则 $f=h$，且 $f$ 是交换的。
+\end{SGAresult}
+\begin{proof}
+将各\Term{functor}{函子}取在一个可变自变量上的值，便按通常方式归结为当 $\mathscr C$ 为\Term{set}{集合}\Term{category}{范畴}时验证\Term{lemma}{引理}。于是有\Term{set}{集合} $G$ 和两个映射 $f,h:G\times G\to G$，满足
+\[
+h(f(x,y),f(z,t))=f(h(x,z),h(y,t)).
+\]
+另一方面，有 $G$ 的两个元素 $e,u$，满足 $f(e,x)=f(x,e)=x$、$h(u,x)=h(x,u)=x$。首先可见
+\[
+h(f(u,y),f(x,u))=f(x,y)=h(f(x,u),f(u,y)).
+\]
+特别地，取 $y=e$ 和相应地 $x=e$，分别得到
+\[
+\begin{aligned}
+x&=f(x,e)=h(f(u,e),f(x,u))=h(u,f(x,u))=f(x,u),\\
+y&=f(e,y)=h(f(e,u),f(u,y))=h(u,f(u,y))=f(u,y),
+\end{aligned}
+\]
+将此代回原来的等式，得到
+\[
+h(y,x)=f(x,y)=h(x,y).
+\]
+这证明了\Term{lemma}{引理}，也证明了命题 3.9。于是由 3.9 得到以下推论。
+\end{proof}
+\SourcePage{70}
+\begin{SGAresult}{推论}{3.9.1}
+若 $X$ 是相对于 $S$ 满足（E）的 $S$-$H$-\Term{functor}{函子}，则 $X(I_S(\mathcal M))$ 中\Term{projection}{投影}到 $X(S)$ 的\Term{identity-element}{单位元}的每个元素都\Term{invertible}{可逆}。
+\end{SGAresult}
+\begin{SGAresult}{推论}{3.9.2}
+若 $X$ 是相对于 $S$ 满足（E）的 $S$-\Term{monoid}{幺半群}，则 $X(I_S(\mathcal M))$ 的一个元素\Term{invertible}{可逆}，当且仅当它在 $X(S)$ 中的像\Term{invertible}{可逆}。
+\end{SGAresult}
+\begin{SGAresult}{推论}{3.9.3}
+若 $X$ 是相对于 $S$ 满足（E）的 $S$-\Term{group}{群}，则 $\underline{\operatorname{Lie}}(X/S,\mathcal M)$ 上的两种 $S$-\Term{group}{群}运算相同。
+\end{SGAresult}
+\begin{SGAresult}{推论}{3.9.4}
+\footnote{编者注（35）：此推论为增补，扩充了下文的注记 4.1.1.2。} 设 $G$ 是相对于 $S$ 满足（E）的 $S$-\Term{group}{群}。对 $n\in\mathbb Z$，设 $n_G:G\to G$ 是由 $g\mapsto g^n$ 定义的 $S$-\Term{functor}{函子}\Term{morphism}{态射}。则\Term{derived-morphism}{导出态射} $\mathrm L(n_G):\underline{\operatorname{Lie}}(G/S)\to\underline{\operatorname{Lie}}(G/S)$ 是“乘以 $n$”，即把每个 $x\in\underline{\operatorname{Lie}}(G/S)(S')$ 对应到 $nx$ 的映射。
+\end{SGAresult}
+\begin{proof}
+首先注意，$n_G$ 一般不是\Term{group}{群}\Term{morphism}{态射}，但它保持\Term{unit-section}{单位截面} $e:S\to G$，故\Term{derived-morphism}{导出态射} $\mathrm L(n_G)$ 确实把 $\underline{\operatorname{Lie}}(G/S)=\mathrm L^e_{X/S}$ 映到自身。以 $i$ 表示包含映射 $\underline{\operatorname{Lie}}(G/S)\hookrightarrow\mathrm T_{G/S}$，则 $\mathrm L(n_G)$ 由下式定义：对每个 $S'\to S$ 及 $x\in\underline{\operatorname{Lie}}(G/S)(S')$，有 $i(\mathrm L(n_G)(x))=i(x)^n$。而由 3.9，$\underline{\operatorname{Lie}}(G/S)$ 上的两种\Term{group}{群}运算（来自\Term{condition-e}{条件（E）}的运算与来自 $G$ 的运算）相同，即 $i(x)^n=i(nx)$，故 $\mathrm L(n_G)(x)=nx$。
+\end{proof}
+在从命题 3.9 引出其他推论之前，先证明另一个\Term{functorial}{函子性}结果：
+\begin{SGAresult}{命题}{3.11}
+在第 1 节的情形下，有关于 $\mathcal M$ 的\Term{functorial}{函子性}\Term{isomorphism}{同构}
+\[
+\mathrm T_{\underline{\operatorname{Hom}}_{Z/S}(X,Y)/S}(\mathcal M)
+\xrightarrow\sim\underline{\operatorname{Hom}}_{Z/S}(X,\mathrm T_{Y/Z}(\mathcal M)).
+\]
+\end{SGAresult}
+\begin{proof}
+事实上，由定义（参见 3.1），有
+\[
+\mathrm T_{\underline{\operatorname{Hom}}_{Z/S}(X,Y)/S}(\mathcal M)
+=\underline{\operatorname{Hom}}_S(I_S(\mathcal M),\underline{\operatorname{Hom}}_{Z/S}(X,Y)).
+\]
+将 1.1 的\Term{isomorphism}{同构}（4）用于 $T=I_S(\mathcal M)$，有
+\[
+\begin{aligned}
+{}&\underline{\operatorname{Hom}}_S(I_S(\mathcal M),\underline{\operatorname{Hom}}_{Z/S}(X,Y))\\
+&\qquad\simeq\underline{\operatorname{Hom}}_{Z/S}(X,\underline{\operatorname{Hom}}_Z(Z\times_S I_S(\mathcal M),Y)).
+\end{aligned}
+\]
+结合\Term{isomorphism}{同构} $Z\times_S I_S(\mathcal M)\simeq I_Z(\mathcal M)$，得到
+\[
+\begin{aligned}
+\mathrm T_{\underline{\operatorname{Hom}}_{Z/S}(X,Y)/S}(\mathcal M)
+&\simeq\underline{\operatorname{Hom}}_{Z/S}(X,\underline{\operatorname{Hom}}_Z(I_Z(\mathcal M),Y))\\
+&=\underline{\operatorname{Hom}}_{Z/S}(X,\mathrm T_{Y/Z}(\mathcal M)).
+\end{aligned}
+\]
+\end{proof}
+\begin{SGAresult}{推论}{3.11.1}
+若 $Y/Z$ 满足（E），则 $\underline{\operatorname{Hom}}_{Z/S}(X,Y)/S$ 满足（E），且 3.11 的\Term{isomorphism}{同构}保持 $\underline{\operatorname{Hom}}_{Z/S}(X,Y)$ 上的 $\mathbf O$-\Term{module}{模}结构。\footnote{编者注（36）：置 $H=\underline{\operatorname{Hom}}_{Z/S}(X,Y)$，这特别表明 $\mathrm T_{H/S}(\mathcal M)$ 带有自然的 $\prod_{X\times_S H/H}\mathbf O_H$-\Term{module}{模}结构。编者觉得此结果颇为出人意料，因而详细展开了证明。}
+\end{SGAresult}
+\SourcePage{71}
+\begin{proof}
+设 $\mathcal M,\mathcal N$ 为两个\Term{finite-free-module}{有限型自由} $\mathcal O_S$-\Term{module}{模}。若 $Y/Z$ 满足（E），则
+\[
+\mathrm T_{Y/Z}(\mathcal M\oplus\mathcal N)
+\simeq\mathrm T_{Y/Z}(\mathcal M)\times_Y\mathrm T_{Y/Z}(\mathcal N).
+\]
+右端是 $\mathrm T_{Y/Z}(\mathcal M)\times_S\mathrm T_{Y/Z}(\mathcal N)$ 的\Term{subfunctor}{子函子}，通过 1.2（$*$）的\Term{isomorphism}{同构}，得到\Term{isomorphism}{同构}
+\[
+\begin{aligned}
+{}&\underline{\operatorname{Hom}}_{Z/S}(X,\mathrm T_{Y/Z}(\mathcal M\oplus\mathcal N))\\
+&\quad\simeq\underline{\operatorname{Hom}}_{Z/S}(X,\mathrm T_{Y/Z}(\mathcal M))
+\times_{\underline{\operatorname{Hom}}_{Z/S}(X,Y)}
+\underline{\operatorname{Hom}}_{Z/S}(X,\mathrm T_{Y/Z}(\mathcal N)).
+\end{aligned}
+\]
+与 3.11 结合，得到
+\[
+\begin{aligned}
+{}&\mathrm T_{\underline{\operatorname{Hom}}_{Z/S}(X,Y)/S}(\mathcal M\oplus\mathcal N)\\
+&\quad\simeq\mathrm T_{\underline{\operatorname{Hom}}_{Z/S}(X,Y)/S}(\mathcal M)
+\times_{\underline{\operatorname{Hom}}_{Z/S}(X,Y)}
+\mathrm T_{\underline{\operatorname{Hom}}_{Z/S}(X,Y)/S}(\mathcal N),
+\end{aligned}
+\]
+所以 $\underline{\operatorname{Hom}}_{Z/S}(X,Y)$ 相对于 $S$ 满足（E）。这证明了推论的第一个断言。
+
+再看第二个断言。记 $H=\underline{\operatorname{Hom}}_{Z/S}(X,Y)$，并给定一个 $S$-\Term{morphism}{态射} $\Delta:H'\to\underline{\operatorname{Hom}}_{Z/S}(X,Y)$，即一个 $Z$-\Term{morphism}{态射} $\delta:H'\times_S X\to Y$，从而使 $H'\times_S X$ 成为 $Y$-\Term{object}{对象}。
+
+一方面，有\Term{commutative-diagram}{交换图}
+\[
+\resizebox{\linewidth}{!}{\begin{tikzcd}[ampersand replacement=\&,column sep=small,row sep=large]
+\operatorname{Hom}_H(H',\underline{\operatorname{Hom}}_{Z/S}(X,\mathrm T_{Y/Z}(\mathcal M)))\arrow[r,hook]\arrow[d,equal]
+\&\operatorname{Hom}_S(H',\underline{\operatorname{Hom}}_{Z/S}(X,\mathrm T_{Y/Z}(\mathcal M)))\arrow[d,equal]\\
+\operatorname{Hom}_Y(H'\times_S X,\mathrm T_{Y/Z}(\mathcal M))\arrow[r,hook]\arrow[d,equal]
+\&\operatorname{Hom}_Z(H'\times_S X,\mathrm T_{Y/Z}(\mathcal M))\arrow[d,equal]\\
+\{\psi\in\operatorname{Hom}_Z(I_{H'\times_S X}(\mathcal M),Y)\mid\psi\circ\varepsilon_{\mathcal M}=\delta\}\arrow[r,hook]
+\&\operatorname{Hom}_Z(I_{H'\times_S X}(\mathcal M),Y).
+\end{tikzcd}}
+\]
+由 1.3，$\alpha\in\mathbf O(H'\times_S X)$ 在 $\Psi\in\operatorname{Hom}_Y(H'\times_S X,\mathrm T_{Y/Z}(\mathcal M))$ 上的\Term{action}{作用}如下给出：对每个 $U\to S$ 与 $(h,x)\in\operatorname{Hom}_S(U,H'\times_S X)$（此时 $U$ 通过 $\delta\circ(h,x)$ 在 $Y$ 上），有
+\[
+(\alpha\Psi)(h,x)=\alpha(h,x)\Psi(h,x),
+\]
+其中 $\alpha(h,x)\in\mathbf O(U)$ 通过 $\mathrm T_{Y/Z}(\mathcal M)$ 的 $\mathbf O_Y$-\Term{module}{模}结构\Term{action}{作用}于 $\Psi(h,x)\in\mathrm T_{Y/Z}(\mathcal M)(U)$。由 3.4.2，通过等同
+\[
+\operatorname{Hom}_Y(H'\times_S X,\mathrm T_{Y/Z}(\mathcal M))
+=\{\psi\in\operatorname{Hom}_Z(I_{H'\times_S X}(\mathcal M),Y)\mid\psi\circ\varepsilon_{\mathcal M}=\delta\},
+\]
+后一结构由下式给出：对每个 $(m,h,x)\in\operatorname{Hom}_S(U,I_S(\mathcal M)\times_S H'\times_S X)$，有
+\[
+(\alpha\psi)(m,h,x)=\psi(m\cdot\alpha(h,x),h,x).\tag{1}
+\]
+\SourcePage{72}
+另一方面，考虑\Term{tangent-space}{切空间} $\mathrm T_{H/S}(\mathcal M)=\underline{\operatorname{Hom}}_S(I_S(\mathcal M),H)$；有\Term{commutative-diagram}{交换图}
+\[
+\resizebox{\linewidth}{!}{\begin{tikzcd}[ampersand replacement=\&,column sep=small,row sep=large]
+\operatorname{Hom}_H(H',\mathrm T_{H/S}(\mathcal M))\arrow[r,hook]\arrow[d,equal]
+\&\operatorname{Hom}_S(H',\mathrm T_{H/S}(\mathcal M))\arrow[d,equal]\\
+\{\Phi\in\operatorname{Hom}_S(I_{H'}(\mathcal M),H)\mid\Phi\circ\varepsilon_{\mathcal M}=\Delta\}\arrow[r,hook]\arrow[d,equal,"{(*)}"']
+\&\operatorname{Hom}_S(I_{H'}(\mathcal M),H)\arrow[d,equal]\\
+\{\phi\in\operatorname{Hom}_Z(I_{H'\times_S X}(\mathcal M),Y)\mid\phi\circ\varepsilon_{\mathcal M}=\delta\}\arrow[r,hook]
+\&\operatorname{Hom}_Z(I_{H'\times_S X}(\mathcal M),Y),
+\end{tikzcd}}
+\]
+其中\Term{bijection}{双射}（$*$）如下给出（参见 1.1（2）与 I，1.7.1）：对每个 $U\to S$ 及 $(m,h,x)\in\operatorname{Hom}_S(U,I_S(\mathcal M)\times_S H'\times_S X)$（于是 $U$ 通过 $U\xrightarrow x X\to Z$ 在 $Z$ 上），有 $\Phi(m,h)\in\operatorname{Hom}_Z(X\times_S U,Y)$，且
+\[
+\phi(m,h,x)=\Phi(m,h)\circ(x\times\operatorname{id}_U)\in\operatorname{Hom}_Z(U,Y).\tag{$\dagger$}
+\]
+由 3.4.2（其中将 $X$ 换为 $\underline{\operatorname{Hom}}_{Z/S}(X,Y)$，$X'$ 换为 $H'$），$a\in\mathbf O(H')$ 在 $\Phi\in\operatorname{Hom}_S(I_{H'}(\mathcal M),H)$ 上的\Term{action}{作用}如下给出：对每个 $U\to S$ 及 $(m,h)\in\operatorname{Hom}_S(U,I_S(\mathcal M)\times_S H')$，有
+\[
+(a\Phi)(m,h)=\Phi(m\cdot a(h),h).
+\]
+因此，若 $\phi$（相应地，$a\phi$）是与 $\Phi$（相应地，$a\Phi$）对应的 $\operatorname{Hom}_Z(I_{H'\times_S X}(\mathcal M),Y)$ 的元素，则由（$\dagger$），有
+\[
+(a\phi)(m,h,x)=\Phi(m\cdot a(h),h)\circ(x\times\operatorname{id}_U)
+=\phi(m\cdot a(h),h,x).\tag{2}
+\]
+与（1）合起来，这表明 3.11.1 的\Term{isomorphism}{同构} $\mathrm T_{H/S}(\mathcal M)\xrightarrow\sim\underline{\operatorname{Hom}}_{Z/S}(X,\mathrm T_{Y/Z}(\mathcal M))$ 是 $\mathbf O(H)$-\Term{module}{模}的\Term{isomorphism}{同构}；此外，对每个 $H'\to H$，$\operatorname{Hom}_H(H',\mathrm T_{H/S}(\mathcal M))$ 的 $\mathbf O(H')$-\Term{module}{模}结构可关于 $H'$ \Term{functorial}{函子性}地扩充为一个 $\mathbf O(H'\times_S X)$-\Term{module}{模}结构。
+\end{proof}
+特别地，取 $Z=S$，便得到以下推论。
+\begin{SGAresult}{推论}{3.11.2}
+有关于 $\mathcal M$ 的\Term{functorial}{函子性}\Term{isomorphism}{同构}
+\[
+\mathrm T_{\underline{\operatorname{Hom}}_S(X,Y)/S}(\mathcal M)
+\xrightarrow\sim\underline{\operatorname{Hom}}_S(X,\mathrm T_{Y/S}(\mathcal M)).
+\]
+此外，若 $Y/S$ 满足（E），则 $\underline{\operatorname{Hom}}_S(X,Y)/S$ 满足（E），且上述\Term{isomorphism}{同构}保持 $\underline{\operatorname{Hom}}_S(X,Y)$ 上的 $\mathbf O$-\Term{module}{模}结构。
+\end{SGAresult}
+\footnote{编者注（37）：以下几句为增补。} 设 $u:X\to Y$ 是 $S$-\Term{morphism}{态射}；把它等同于常\Term{morphism}{态射} $u:S\to\underline{\operatorname{Hom}}_S(X,Y)$，其满足对每个 $f:S'\to S$，有 $u(f)=u$。立即可见，$u$ 与 $\underline{\operatorname{Hom}}_S(X,\mathrm T_{Y/S}(\mathcal M))\to\underline{\operatorname{Hom}}_S(X,Y)$ 的\Term{fiber-product}{纤维积}等同于 $\underline{\operatorname{Hom}}_{Y/S}(X,\mathrm T_{Y/S}(\mathcal M))$，其中 $X$ 通过 $u$ 在 $Y$ 上。因此，由 $\mathrm L^u_{\underline{\operatorname{Hom}}_S(X,Y)/S}(\mathcal M)$ 的定义及上一推论，得到：
+\SourcePage{73}
+\begin{SGAresult}{推论}{3.11.3}
+设 $u:X\to Y$ 是 $S$-\Term{morphism}{态射}。有关于 $\mathcal M$ 的\Term{functorial}{函子性}\Term{isomorphism}{同构}（右端的 $X$ 通过 $u$ 在 $Y$ 上）：
+\[
+\mathrm L^u_{\underline{\operatorname{Hom}}_S(X,Y)/S}(\mathcal M)
+\xrightarrow\sim\underline{\operatorname{Hom}}_{Y/S}(X,\mathrm T_{Y/S}(\mathcal M)).
+\]
+若 $Y/S$ 满足（E），则这是 $\mathbf O_S$-\Term{module}{模}的\Term{isomorphism}{同构}。\footnote{编者注（38）：此句为增补。}
+\end{SGAresult}
+特别地，当 $Y=X$ 时，$\underline{\operatorname{End}}_S(X)$ 是取值于\Term{monoid}{幺半群}的 $S$-\Term{functor}{函子}，因而更是一个 $S$-$H$-\Term{functor}{函子}；回忆 $\underline{\operatorname{Lie}}(\underline{\operatorname{End}}_S(X)/S,\mathcal M)$ 表示 $\mathrm L^e_{\underline{\operatorname{End}}_S(X)/S}(\mathcal M)$，其中 $e$ 是\Term{unit-section}{单位截面}（参见 3.9.0.1），便得到：
+\begin{SGAresult}{推论}{3.11.4}
+有关于 $\mathcal M$ 的\Term{functorial}{函子性}\Term{isomorphism}{同构}
+\[
+\underline{\operatorname{Lie}}(\underline{\operatorname{End}}_S(X)/S,\mathcal M)
+\xrightarrow\sim\prod_{X/S}\mathrm T_{X/S}(\mathcal M);
+\]
+若 $Y/S$ 满足（E），则这是 $\mathbf O_S$-\Term{module}{模}的\Term{isomorphism}{同构}。\footnote{编者注（38）：此句为增补。}
+\end{SGAresult}
+\begin{SGAresult}{注记}{3.11.5}
+\footnote{编者注（39）：此注记为增补。} 假设 $X/S$ 满足（E）。那么，$\prod_{X/S}\mathrm T_{X/S}(\mathcal M)=\underline{\operatorname{Hom}}_{X/S}(X,\mathrm T_{X/S}(\mathcal M))$ 带有一个 $\bigl(\prod_{X/S}\mathbf O_X\bigr)$-\Term{module}{模}结构，即对每个 $S'\to S$，
+\[
+\begin{aligned}
+{}&\underline{\operatorname{Hom}}_{X/S}(X,\mathrm T_{X/S}(\mathcal M))(S')\\
+&\quad=\{\psi\in\operatorname{Hom}_X(I_{S'}(\mathcal M)\times_S X,X)
+\mid\psi\circ(\varepsilon_{\mathcal M}\times\operatorname{id}_X)=\operatorname{pr}_X\}
+\end{aligned}
+\]
+带有关于 $S'$ 具有\Term{functorial}{函子性}的 $\mathbf O(X\times_S S')$-\Term{module}{模}结构。可由 3.6 及\Term{functor}{函子} $\prod_{X/S}$ 的性质（参见 1.2）得出，也可由 3.11.1 的证明得出。
+\end{SGAresult}
+现在从几何上解释\Term{tangent-bundle}{切丛}的定义。\footnote{编者注（40）：以下简化了原文。} 设 $U$ 是 $S$-\Term{functor}{函子}；由 I，1.7.2，有关于 $\mathcal M$ 的\Term{functorial}{函子性}\Term{isomorphism}{同构}
+\[
+\begin{aligned}
+\mathrm T_{X/S}(\mathcal M)(U)
+&=\operatorname{Hom}_S(U,\underline{\operatorname{Hom}}_S(I_S(\mathcal M),X))\\
+&\simeq\operatorname{Hom}_S(I_S(\mathcal M),\underline{\operatorname{Hom}}_S(U,X))\\
+&\simeq\operatorname{Hom}_{I_S(\mathcal M)}(U_{I_S(\mathcal M)},X_{I_S(\mathcal M)}).
+\end{aligned}
+\]
+特别地，\Term{morphism}{态射} $\mathcal M\to0$ 给出\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}[column sep=small]
+\operatorname{Hom}_S(U,\mathrm T_{X/S}(\mathcal M))\arrow[r,"\sim"]\arrow[d,"\pi_{\mathcal M}"']&
+\operatorname{Hom}_{I_S(\mathcal M)}(U_{I_S(\mathcal M)},X_{I_S(\mathcal M)})\arrow[d]\\
+\operatorname{Hom}_S(U,X)\arrow[r,"\text{恒等}"']&\operatorname{Hom}_S(U,X),
+\end{tikzcd}
+\]
+其中第二个竖\Term{arrow}{箭头}由\Term{base-change}{基变换} $\varepsilon_{\mathcal M}:S\to I_S(\mathcal M)$ 得到。\footnote{编者注（41）：通过\Term{isomorphism}{同构} $\operatorname{Hom}_{I_S(\mathcal M)}(U_{I_S(\mathcal M)},X_{I_S(\mathcal M)})\simeq\operatorname{Hom}_S(U\times_S I_S(\mathcal M),X)$，这\Term{equivalence}{等价}于注记 3.1.1。同样，3.12 \Term{equivalence}{等价}于注记 3.4.2 的第一部分。}
+
+因而：
+\SourcePage{74}
+\begin{SGAresult}{命题}{3.12}
+设 $h_0:U\to X$ 是 $S$-\Term{morphism}{态射}。则 $\operatorname{Hom}_X(U,\mathrm T_{X/S}(\mathcal M))$ 等同于从 $U_{I_S(\mathcal M)}$ 到 $X_{I_S(\mathcal M)}$、在 $U$ 上\Term{restriction}{限制}为 $h_0$ 的 $I_S(\mathcal M)$-\Term{morphism}{态射}所成的\Term{set}{集合}（这里通过 $\operatorname{id}_U\times_S\varepsilon_{\mathcal M}$ 将 $U$ 看作 $U\times_S I_S(\mathcal M)$ 的\Term{subobject}{子对象}）。
+\end{SGAresult}
+特别地，取 $U=X$、$h_0=\operatorname{id}_X$，得到：\footnote{编者注（42）：以下详细展开了原文。}
+\begin{SGAresult}{推论}{3.12.1}
+\Term{set}{集合} $\Gamma(\mathrm T_{X/S}(\mathcal M)/X)$ 等同于 $X_{I_S(\mathcal M)}$ 中在 $X$ 上诱导恒等的 $I_S(\mathcal M)$-\Term{endomorphism}{自同态} $\phi$ 所成的\Term{set}{集合}，也就是说，使下图交换的 $\phi$ 所成的\Term{set}{集合}：\footnote{编者注（43）：当 $\mathcal M=\mathcal O_X$ 时，它们称为 $X$ 的“\Term{infinitesimal-endomorphism}{无穷小自同态}”；见本讲末尾的 6.2。}
+\[
+\begin{tikzcd}
+I_X(\mathcal M)\arrow[r,"\phi"]&I_X(\mathcal M)\\
+X\arrow[u,"\varepsilon_{\mathcal M}"]\arrow[r,"\operatorname{id}"']&X\arrow[u,"\varepsilon_{\mathcal M}"'].
+\end{tikzcd}
+\]
+\end{SGAresult}
+另一方面，由 3.11.2，有 $\Gamma(\mathrm T_{X/S}(\mathcal M)/X)\simeq\underline{\operatorname{Lie}}(\underline{\operatorname{End}}_S(X)/S,\mathcal M)(S)$；\footnote{编者注（44）：以下详细展开了原文。} 若 $X/S$ 还满足（E），则 $\underline{\operatorname{End}}_S(X)/S$ 满足（E），故由 3.6，$\underline{\operatorname{Lie}}(\underline{\operatorname{End}}_S(X)/S,\mathcal M)$ 是 $\mathbf O_S$-\Term{module}{模}（事实上，由 3.11.5，它还是 $\bigl(\prod_{X/S}\mathbf O_X\bigr)$-\Term{module}{模}）。应用 3.9，便得到：
+\begin{SGAresult}{命题}{3.13}
+若 $X/S$ 满足（E），则\Term{abelian-group}{交换群} $\Gamma(\mathrm T_{X/S}(\mathcal M)/X)$ 等同于 $X_{I_S(\mathcal M)}$ 中在 $X$ 上诱导恒等的 $I_S(\mathcal M)$-\Term{endomorphism}{自同态}所成的\Term{set}{集合}。因此，$X_{I_S(\mathcal M)}$ 中每个在 $X$ 上诱导恒等的 $I_S(\mathcal M)$-\Term{endomorphism}{自同态}都是\Term{automorphism}{自同构}。
+\end{SGAresult}
+\begin{SGAresult}{推论}{3.13.1}
+设 $u:X\to Y$ 是 $S$-\Term{isomorphism}{同构}，且 $Y/S$ 满足（E）。从 $X_{I_S(\mathcal M)}$ 到 $Y_{I_S(\mathcal M)}$、延拓 $u$ 的每个 $I_S(\mathcal M)$-\Term{morphism}{态射}都是\Term{isomorphism}{同构}。
+\end{SGAresult}
+\begin{SGAresult}{推论}{3.13.2}
+若 $Y/S$ 满足（E），则\Term{monomorphism}{单态射} $\underline{\operatorname{Isom}}_S(X,Y)\to\underline{\operatorname{Hom}}_S(X,Y)$ 对每个 $u\in\underline{\operatorname{Isom}}_S(X,Y)$ 都诱导\Term{isomorphism}{同构}
+\[
+\mathrm L^u_{\underline{\operatorname{Isom}}_S(X,Y)/S}(\mathcal M)
+\xrightarrow\sim\mathrm L^u_{\underline{\operatorname{Hom}}_S(X,Y)/S}(\mathcal M).
+\]
+\end{SGAresult}
+\begin{proof}
+\footnote{编者注（45）：此证明为增补。} 须证明对每个 $S'\to S$，
+\[
+\mathrm L^u_{\underline{\operatorname{Isom}}_S(X,Y)/S}(\mathcal M)(S')
+\longrightarrow\mathrm L^u_{\underline{\operatorname{Hom}}_S(X,Y)/S}(\mathcal M)(S')
+\]
+是\Term{bijection}{双射}。由\Term{base-change}{基变换}（参见 3.4），只须对 $S'=S$ 证明。此时，$\mathrm L^u_{\underline{\operatorname{Hom}}_S(X,Y)/S}(\mathcal M)(S)$（相应地，$\mathrm L^u_{\underline{\operatorname{Isom}}_S(X,Y)/S}(\mathcal M)(S)$）是延拓 $u$ 的 $I_S(\mathcal M)$-\Term{morphism}{态射}（相应地，\Term{automorphism}{自同构}）$X_{I_S(\mathcal M)}\to Y_{I_S(\mathcal M)}$ 所成的\Term{set}{集合}，应用上一推论即可。
+\end{proof}
+\SourcePage{75}
+\begin{SGAresult}{推论}{3.13.3}
+若 $X/S$ 满足（E），则\Term{monomorphism}{单态射} $\underline{\operatorname{Aut}}_S(X)\to\underline{\operatorname{End}}_S(X)$ 对每个 $u\in\underline{\operatorname{Aut}}_S(X)$ 都诱导\Term{isomorphism}{同构}
+\[
+\mathrm L^u_{\underline{\operatorname{Aut}}_S(X)/S}(\mathcal M)
+\xrightarrow\sim\mathrm L^u_{\underline{\operatorname{End}}_S(X)/S}(\mathcal M).
+\]
+特别地，有
+\[
+\underline{\operatorname{Lie}}(\underline{\operatorname{Aut}}_S(X)/S,\mathcal M)
+\xrightarrow\sim\underline{\operatorname{Lie}}(\underline{\operatorname{End}}_S(X)/S,\mathcal M)
+\xrightarrow\sim\prod_{X/S}\mathrm T_{X/S}(\mathcal M),
+\]
+从而 $\underline{\operatorname{Lie}}(\underline{\operatorname{Aut}}_S(X)/S,\mathcal M)$ 带有 $\bigl(\prod_{X/S}\mathbf O_X\bigr)$-\Term{module}{模}结构。\footnote{编者注（46）：以上后一句为增补。}
+\end{SGAresult}
+\textbf{3.14.} 最后假设 $X$ \Term{representable}{可表示}。\footnote{编者注（47）：增添了对 2.2.2 的回顾，并详细展开了下文。} 此时，由 2.2.2 已知 $X$-\Term{functor}{函子} $\mathrm T_{X/S}$ 由 $\mathbf V(\Omega^1_{X/S})$ \Term{representable}{表示}，因而有\Term{bijection}{双射}
+\[
+\Gamma(\mathrm T_{X/S}/X)\simeq\operatorname{Hom}_X(\Omega^1_{X/S},\mathcal O_X)
+\simeq\operatorname{D\text{é}r}_{\mathcal O_S}(\mathcal O_X).
+\]
+这也可以由上文推导如下。由 3.13，$\Gamma(\mathrm T_{X/S}/X)$ 等同于 $X$ 的\Term{infinitesimal-endomorphism}{无穷小自同态}所成的\Term{set}{集合}（即 $X_{I_S}$ 中在 $X$ 上诱导恒等的 $I_S$-\Term{endomorphism}{自同态}）。而 $X$ 与 $X_{I_S}$ 有相同的底\Term{topological-space}{拓扑空间}，相应的\Term{sheaf-of-rings}{环层}为 $\mathcal O_X$ 与 $D_{\mathcal O_X}=\mathcal O_X\oplus\mathcal M$，其中把 $\mathcal M=\mathcal O_X$ 看作\Term{square-zero-ideal}{平方零理想}。以 $\pi:D_{\mathcal O_X}\to\mathcal O_X$ 表示在 $\mathcal M$ 上为零的 $\mathcal O_X$-\Term{algebra}{代数}\Term{morphism}{态射}；由此可知，给定 $X$ 的一个\Term{infinitesimal-endomorphism}{无穷小自同态}，\Term{equivalence}{等价}于给定满足 $\pi\circ\phi=\operatorname{id}_{\mathcal O_X}$ 的 $\mathcal O_S$-\Term{algebra}{代数}\Term{morphism}{态射} $\phi:\mathcal O_X\to D_{\mathcal O_X}$，这又\Term{equivalence}{等价}于给定\Term{sheaf-of-rings}{环层} $\mathcal O_X$ 的一个 $\mathcal O_S$-\Term{derivation}{导子}。
+
+此外，容易看出，若 $D,D'\in\operatorname{D\text{é}r}_{\mathcal O_S}(\mathcal O_X)$，并以 $\phi_D$ 表示对应于 $D$ 的\Term{infinitesimal-endomorphism}{无穷小自同态}，则有
+\[
+\phi_{D+D'}=\phi_D\circ\phi_{D'}.
+\]
+这表明等同
+\[
+\{\text{$X$ 的无穷小自同态}\}\simeq\operatorname{D\text{é}r}_{\mathcal O_S}(\mathcal O_X)
+\]
+是\Term{abelian-group}{交换群}的\Term{isomorphism}{同构}。结合 3.13（及 3.11.5），便构造了\Term{abelian-group}{交换群}（甚至 $\mathbf O(X)$-\Term{module}{模}）的\Term{isomorphism}{同构}
+\[
+\Gamma(\mathrm T_{X/S}/X)\xrightarrow\sim\operatorname{D\text{é}r}_{\mathcal O_S}(\mathcal O_X),
+\]
+从而重新得到用\Term{structure-sheaf}{结构层}的\Term{derivation}{导子}解释\Term{tangent-vector-field}{切向量场}的经典解释。\footnote{编者注（48）：此外，此\Term{isomorphism}{同构}关于 $S$ 具有\Term{functorial}{函子性}：若 $S'\to S$，置 $X'=X_{S'}$，则有 $\underline{\operatorname{Lie}}(\underline{\operatorname{Aut}}_S(X)/S)(S')\simeq\Gamma(\mathrm T_{X'/S'}/X')\simeq\operatorname{D\text{é}r}_{\mathcal O_{S'}}(\mathcal O_{X'})$。} 还应注意，$\Gamma(\mathrm T_{X/S}/X)$ 等于 $H^0(X,\mathfrak g_{X/S})$，其中 $\mathfrak g_{X/S}$ 为 $\Omega^1_{X/S}$ 的\Term{dual-module}{对偶模}。

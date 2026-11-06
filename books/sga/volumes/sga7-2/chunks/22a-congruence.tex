@@ -1,0 +1,475 @@
+\SGAchapter{XXII}{zeta 函数的一个同余公式}{Une formule de congruence pour la fonction $\zeta$}
+\begin{center}N. Katz\end{center}
+\SourcePage{411}
+\SGAsection{0}{引言}
+设 $X$ 是 $\mathbf F_q$ 上的\Term{proper}{固有}\Term{scheme}{概形}。将其\Term{zeta-function}{zeta 函数}看作 $\mathbf Z[[T]]$ 的元素，便可将它模 $p$ \Term{reduced}{约化}；我们的目标是计算这一模 $p$ 的\Term{reduced}{约化}。所得表达式正是从“Woods Hole”型\Term{fixed-point-formula}{不动点公式}出发可以预期的\Term{form}{形式}，即某个适当的“Frobenius”在以下三个\Term{cohomology}{上同调}\Term{space}{空间}中任意一个上的\Term{characteristic-polynomial}{特征多项式}的\Term{alternating}{交错}乘积：
+\begin{enumerate}
+\item \Term{coherent-cohomology}{凝聚上同调} $H^i(X,\mathcal O_X)$（3.1.1）；
+\item \Term{de-rham-cohomology}{De Rham 上同调} $H^i_{\mathrm{DR}}(X)=\mathbb H^i(X,\Omega_X^\bullet)$（3.1.1）；
+\item \Term{etale-cohomology}{平展上同调} $H^i_{\text{ét}}(X,\mathbf Z/p\mathbf Z)$（3.1.2）。
+\end{enumerate}
+应将这个表达式视为 Woods Hole \Term{trace-formula}{迹公式}的一个特殊情形的加强：这个特殊情形取\Term{structure-sheaf}{结构层}和 Frobenius \Term{endomorphism}{自同态}。事实上，这一情形是同余公式的推论（见 3.2.1）。
+
+本讲的方法完全是初等的：先归结到\Term{hypersurface}{超曲面}的情形，再把 Dwork 对\Term{hypersurface}{超曲面}真正的\Term{zeta-function}{zeta 函数}所作的计算“模 $p$ \Term{reduced}{约化}”。
+\SourcePage{412}
+仔细进行这一“\Term{reduced}{约化}”，便得到 Ax [1] 对著名的 Warning--Chevalley \Term{theorem}{定理} [8] 所作的加强 5.0.6（Dwork 也在\Term{smooth}{光滑}情形得到了这一加强，[4, \S 7]）。
+
+Deligne 刚找到另一种完全采用\Term{cohomology}{上同调}、体现 SGA~5 精神的方法，它还适用于“扭系数”，应将收入 SGA~5 的再版；这一方法以“Woods Hole”型\Term{trace-formula}{迹公式}和 Deligne 的“\Term{symmetric}{对称} \Term{kunneth-formula}{Künneth 公式}”（SGA~4，第 XVII 讲 5.5.21）为基础。
+
+\SGAsection{1}{关于“$p$ 线性”运算的回顾}
+\textbf{1.0。}设 $V$ 是\Term{characteristic}{特征} $p>0$ 的域 $k$ 上的\Term{finite-dimensional}{有限维}\Term{vector-space}{向量空间}。用 $q$ 表示 $p$ 的一个幂。映射
+\[
+\varphi:V\longrightarrow V \tag{1.0.1}
+\]
+称为 \Term{q-linear}{$q$ 线性的}，如果它是\Term{additive}{加性}的，且满足
+\[
+\varphi(\lambda v)=\lambda^q\varphi(v)\qquad
+\forall\lambda\in k,\ v\in V. \tag{1.0.2}
+\]
+\textbf{1.0.3。}须注意，一个 \Term{q-linear}{$q$ 线性}\Term{endomorphism}{自同态}的第 $n$ 次迭代 $\varphi^n$ 是 $q^n$ \Term{linear}{线性}的；而且当 $k$ 不是\Term{perfect-field}{完美域}时，\Term{q-linear}{$q$ 线性}\Term{endomorphism}{自同态}的像 $\varphi(V)$ 未必是一个 $k$ \Term{vector-subspace}{向量子空间}。
+
+\textbf{1.0.4。}对于每个\Term{field-extension}{域扩张} $K/k$，$V$ 的一个 \Term{q-linear}{$q$ 线性}\Term{endomorphism}{自同态} $\varphi$ 唯一地给出 $V_K=V\otimes_k K$ 的一个 \Term{q-linear}{$q$ 线性}\Term{endomorphism}{自同态} $\varphi_K$，满足
+\[
+\varphi_K(\mu\otimes v)=\mu^q\varphi(v)
+\qquad\text{其中 }\mu\in K,\ v\in V. \tag{1.0.5}
+\]
+\SourcePage{413}
+\textbf{1.0.6。}若 $V$ 的 \Term{q-linear}{$q$ 线性}\Term{endomorphism}{自同态} $\varphi$ 的像生成整个 $k$ \Term{vector-space}{向量空间} $V$，则称 $\varphi$ 为\Term{semisimple}{半单的}；若它有某次迭代为零，则称它为\Term{nilpotent}{幂零的}。
+
+定义下列在 $\varphi$ 下\Term{stable}{稳定}的 $k$ \Term{vector-subspace}{向量子空间}：
+\[
+V_{\mathrm{ss}}=\bigcap_{n\geq1}
+\bigl(\text{由 }\varphi^n(V)\text{ 生成的 }k\text{ 向量子空间}\bigr), \tag{1.0.7}
+\]
+\[
+V_{\mathrm{nilp}}=\bigcup_{n\geq1}
+\bigl(\varphi^n:V\longrightarrow V\text{ 的核}\bigr). \tag{1.0.8}
+\]
+显然，$\varphi$ 在 $V_{\mathrm{ss}}$ 上的\Term{restriction}{限制}是\Term{semisimple}{半单的}，而它在 $V_{\mathrm{nilp}}$ 上的\Term{restriction}{限制}是\Term{nilpotent}{幂零的}。若 $k$ 是\Term{perfect-field}{完美域}，则
+\[
+V=V_{\mathrm{ss}}\oplus V_{\mathrm{nilp}}; \tag{1.0.9}
+\]
+但若 $k$ 不是\Term{perfect-field}{完美域}，(1.0.9) 就不再成立，因为存在是\Term{injective}{单射}却不是\Term{semisimple}{半单的}的 \Term{q-linear}{$q$ 线性}\Term{endomorphism}{自同态}。
+
+对于任意\Term{field-extension}{域扩张} $K/k$，有
+\[
+(V_K)_{\mathrm{ss}}=V_{\mathrm{ss}}\otimes_k K. \tag{1.0.10}
+\]
+\begin{SGAresult}{命题}{1.1}
+设 $\varphi$ 是\Term{separably-closed}{可分闭}域 $k$ 上\Term{finite-dimensional}{有限维}\Term{vector-space}{向量空间} $V$ 的一个 \Term{q-linear}{$q$ 线性}\Term{endomorphism}{自同态}。若 $\varphi$ 是\Term{semisimple}{半单的}，则令
+\[
+V^{1-\varphi}=\varphi\text{ 的不动点组成的 }\mathbf F_q\text{ 向量空间}
+=\operatorname{Ker}(1-\varphi),
+\]
+便有
+\[
+V\xleftarrow{\ \sim\ }V^{1-\varphi}\otimes_{\mathbf F_q}k. \tag{1.1.1}
+\]
+\end{SGAresult}
+\SourcePage{414}
+\begin{SGAresult}{推论}{1.1.2}
+\[
+V^{1-\varphi^n}\xleftarrow{\ \sim\ }
+V^{1-\varphi}\otimes_{\mathbf F_q}\mathbf F_{q^n}.
+\]
+\end{SGAresult}
+\begin{proof}[证明（Lang，见 [6]，第 119 页）]
+取 $V$ 的一组 $k$ \Term{basis}{基} $\underline e$，并写成
+\[
+\varphi(\underline e)=A\underline e,\qquad A\in\operatorname{GL}(n,k). \tag{1.1.3}
+\]
+用
+\[
+F:\operatorname{GL}(n,k)\longrightarrow\operatorname{GL}(n,k) \tag{1.1.4}
+\]
+表示“将坐标取 $q$ 次幂”的映射。于是对 $g\in\operatorname{GL}(n,k)$，$g\underline e$ 是 $V$ 的一组由 $\varphi$ 的\Term{fixed-point}{不动点}组成的\Term{basis}{基}，当且仅当
+\[
+F(g)Ag^{-1}=1. \tag{1.1.5}
+\]
+用 $\bar k$ 表示 $k$ 的一个\Term{algebraic-closure}{代数闭包}。群 $\operatorname{GL}(n,\bar k)$ 按以下方式\Term{action}{作用}在\Term{variety}{簇} $\operatorname{GL}(n,\bar k)$ 上：
+\[
+\begin{aligned}
+\operatorname{GL}(n,\bar k)\times\operatorname{GL}(n,\bar k)
+&\longrightarrow\operatorname{GL}(n,\bar k),\\
+(g,A)&\longmapsto F(g)Ag^{-1}.
+\end{aligned} \tag{1.1.6}
+\]
+固定 $A$ 时，由计算\Term{tangent-map}{切映射}可知，映射
+\[
+g\longmapsto F(g)Ag^{-1} \tag{1.1.7}
+\]
+是\Term{etale}{平展的}，因而各条\Term{orbit}{轨道}都是开的。由于 $\operatorname{GL}(n,\bar k)$ 是\Term{irreducible}{不可约的}，所以只有一条\Term{orbit}{轨道}；换言之，映射
+\[
+\begin{aligned}
+\operatorname{GL}(n,\bar k)&\longrightarrow\operatorname{GL}(n,\bar k),\\
+g&\longmapsto F(g^{-1})g
+\end{aligned} \tag{1.1.8}
+\]
+\SourcePage{415}
+是\Term{surjective}{满射}。它又是\Term{etale}{平展的}，且 $k$ 是\Term{separably-closed}{可分闭}的，故映射
+\[
+\begin{aligned}
+\operatorname{GL}(n,k)&\longrightarrow\operatorname{GL}(n,k),\\
+g&\longmapsto F(g^{-1})g
+\end{aligned} \tag{1.1.9}
+\]
+是\Term{surjective}{满射}。这就是说，$V$ 有一组由 $\varphi$ 的\Term{fixed-point}{不动点}组成的 $k$ \Term{basis}{基}。由于 $\varphi$ 是 \Term{q-linear}{$q$ 线性的}，显然 $\varphi$ 的每个\Term{fixed-point}{不动点}均属于这组 $k$ \Term{basis}{基}所生成的 $\mathbf F_q$ \Term{vector-space}{向量空间}，这就证明了 1.1。
+\end{proof}
+\begin{SGAresult}{推论}{1.1.10}
+设 $\varphi$ 是\Term{separably-closed}{可分闭}域 $k$ 上\Term{finite-dimensional}{有限维}\Term{vector-space}{向量空间} $V$ 的一个 \Term{q-linear}{$q$ 线性}\Term{endomorphism}{自同态}。则有\Term{canonical-isomorphism}{典范同构}
+\[
+V_{\mathrm{ss}}\xleftarrow{\ \sim\ }
+V^{1-\varphi}\otimes_{\mathbf F_q}k. \tag{1.1.11}
+\]
+\end{SGAresult}
+事实上，只需将 1.1 应用于 $V_{\mathrm{ss}}$。
+
+\begin{SGAresult}{命题}{1.2}
+设 $\varphi$ 是\Term{separably-closed}{可分闭}域 $k$ 上\Term{finite-dimensional}{有限维}\Term{vector-space}{向量空间}的一个 \Term{q-linear}{$q$ 线性}\Term{endomorphism}{自同态}。则\Term{additive}{加性}映射
+\[
+1-\varphi:V\longrightarrow V
+\]
+是\Term{surjective}{满射}。
+\end{SGAresult}
+\begin{proof}
+有\Term{abelian-group}{交换群}的\Term{exact-sequence}{正合列}
+\[
+0\longrightarrow V_{\mathrm{ss}}\longrightarrow V
+\longrightarrow V/V_{\mathrm{ss}}\longrightarrow0,
+\]
+\SourcePage{416}
+$1-\varphi$ \Term{action}{作用}在其上。根据“\Term{snake-lemma}{蛇引理}”，只须分别处理 $V_{\mathrm{ss}}$ 和 $V/V_{\mathrm{ss}}$：前者由 1.1，取一组由\Term{fixed-point}{不动点}组成的\Term{basis}{基}即显然成立；后者上 $\varphi$ 是\Term{nilpotent}{幂零的}，故 $1-\varphi$ 是\Term{invertible}{可逆}的。
+\end{proof}
+
+\SGAsection{2}{凝聚上同调与平展上同调}
+\begin{SGAresult}{命题}{2.0}
+设 $\bar X$ 是\Term{separably-closed}{可分闭}域 $k$ 上的\Term{proper}{固有}\Term{scheme}{概形}，并用
+\[
+\overline{\mathfrak F}_p:
+H^\bullet(\bar X,\mathcal O_{\bar X})\longrightarrow
+H^\bullet(\bar X,\mathcal O_{\bar X}) \tag{2.0.1}
+\]
+表示由
+\[
+\overline{\mathfrak F}_p:\mathcal O_{\bar X}\longrightarrow\mathcal O_{\bar X},
+\qquad\overline{\mathfrak F}_p(f)=f^p \tag{2.0.2}
+\]
+诱导的 \Term{p-linear}{$p$ 线性}映射。用
+\[
+H^\bullet_{\text{ét}}(\bar X,\mathbf Z/p\mathbf Z)
+\]
+表示以\Term{constant-sheaf}{常值层} $\mathbf Z/p\mathbf Z$ 为系数的\Term{etale-cohomology}{平展上同调}群。则有\Term{canonical-isomorphism}{典范同构}
+\[
+H^i_{\text{ét}}(\bar X,\mathbf Z/p\mathbf Z)
+\xrightarrow{\ \sim\ }
+H^i(\bar X,\mathcal O_{\bar X})^{1-\overline{\mathfrak F}_p}. \tag{2.0.3}
+\]
+\end{SGAresult}
+\begin{proof}
+在 $\bar X_{\text{ét}}$ 上有\Term{sheaf}{层}的\Term{exact-sequence}{正合列}
+\[
+0\longrightarrow\mathbf Z/p\mathbf Z\longrightarrow\mathcal O_{\bar X}
+\xrightarrow{\,1-\overline{\mathfrak F}_p\,}\mathcal O_{\bar X}
+\longrightarrow0, \tag{2.0.4}
+\]
+它给出\Term{cohomology}{上同调}\Term{exact-sequence}{正合列}
+\[
+\cdots\longrightarrow H^i_{\text{ét}}(\bar X,\mathbf Z/p\mathbf Z)
+\longrightarrow H^i_{\text{ét}}(\bar X,\mathcal O_{\bar X})
+\xrightarrow{\,1-\overline{\mathfrak F}_p\,}
+H^i_{\text{ét}}(\bar X,\mathcal O_{\bar X})\longrightarrow\cdots. \tag{2.0.5}
+\]
+有 $H^i_{\text{ét}}(\bar X,\mathcal O_{\bar X})\simeq H^i(\bar X,\mathcal O_{\bar X})$；由于 $\bar X$ 是\Term{proper}{固有的}，这是\Term{finite-dimensional}{有限维} $k$ \Term{vector-space}{向量空间}。应用 1.2，便得到\Term{exact-sequence}{正合列}
+\SourcePage{417}
+\[
+0\longrightarrow H^i_{\text{ét}}(\bar X,\mathbf Z/p\mathbf Z)
+\longrightarrow H^i(\bar X,\mathcal O_{\bar X})
+\xrightarrow{\,1-\overline{\mathfrak F}_p\,}
+H^i(\bar X,\mathcal O_{\bar X})\longrightarrow0, \tag{2.0.6}
+\]
+证毕。
+\end{proof}
+利用 1.1.10，由 2.0 得出：
+\begin{SGAresult}{推论}{2.1}
+对于\Term{separably-closed}{可分闭}域 $k$ 上的\Term{proper}{固有}\Term{scheme}{概形} $\bar X$，有
+\[
+H^i(\bar X,\mathcal O_{\bar X})_{\mathrm{ss}}
+\xleftarrow{\ \sim\ }
+H^i_{\text{ét}}(\bar X,\mathbf Z/p\mathbf Z)\otimes_{\mathbf F_p}k. \tag{2.1.1}
+\]
+\end{SGAresult}
+\textbf{2.2。}现在设 $f:X\longrightarrow\operatorname{Spec}(\mathbf F_q)$ 是 $\mathbf F_q$ 上的\Term{proper}{固有}\Term{scheme}{概形}。用 $k$ 表示 $\mathbf F_q$ 的一个\Term{algebraic-closure}{代数闭包}，并令
+\[
+\bar X=X\times_{\mathbf F_q}k. \tag{2.2.1}
+\]
+$\operatorname{Spec}(\mathbf F_q)$ 上的\Term{etale-sheaf}{平展层} $R^if_*(\mathbf Z/p\mathbf Z)$ 可等同于被视作 $\operatorname{Gal}(k/\mathbf F_q)$ \Term{module}{模}的 $H^i(\bar X,\mathbf Z/p\mathbf Z)$。用
+\[
+\mathfrak F_q:H^i(X,\mathcal O_X)\longrightarrow H^i(X,\mathcal O_X) \tag{2.2.2}
+\]
+表示由
+\[
+\mathfrak F_q:\mathcal O_X\longrightarrow\mathcal O_X,
+\qquad\mathfrak F_q(f)=f^q \tag{2.2.3}
+\]
+诱导的\Term{linear}{线性}运算（它是 \Term{q-linear}{$q$ 线性的}，但这里是在 $\mathbf F_q$ 上！）。
+\begin{SGAresult}{命题}{2.2.4}
+用 $\varphi_q\in\operatorname{Gal}(k/\mathbf F_q)$ 表示“Frobenius”元素，$\varphi_q(\lambda)=\lambda^q$，并设 $i\in\mathbf Z$。有\Term{characteristic-polynomial}{特征多项式}的恒等式
+\[
+\det_{\mathbf F_p}\bigl(1-t\varphi_q^{-1}\mid
+H^i_{\text{ét}}(\bar X,\mathbf Z/p\mathbf Z)\bigr)
+=\det_{\mathbf F_q}\bigl(1-t\mathfrak F_q\mid H^i(X,\mathcal O_X)\bigr), \tag{2.2.4.1}
+\]
+其中左边是 $\pi_1(\operatorname{Spec}(\mathbf F_q))$ 中的元素 $\varphi_q^{-1}$ \Term{action}{作用}于 Galois \Term{module}{模} $H^i(\bar X,\mathbf Z/p\mathbf Z)$ 的\Term{characteristic-polynomial}{特征多项式}。
+\end{SGAresult}
+事实上，2.2.4 是下述命题的推论。
+\SourcePage{418}
+\begin{SGAresult}{命题}{2.2.5}
+设 $X$ 在 $\operatorname{Spec}(\mathbf F_q)$ 上\Term{proper}{固有}。有\Term{canonical-isomorphism}{典范同构}
+\[
+H^i(X,\mathcal O_X)_{\mathrm{ss}}\otimes_{\mathbf F_q}k
+\xrightarrow{\ \sim\ }
+H^i_{\text{ét}}(\bar X,\mathbf Z/p\mathbf Z)\otimes_{\mathbf F_p}k, \tag{2.2.6}
+\]
+它将左边的\Term{automorphism}{自同构} $\mathfrak F_q\otimes_{\mathbf F_q}k$ 化为右边的\Term{automorphism}{自同构} $\varphi_q^{-1}\otimes_{\mathbf F_p}k$（后者也\Term{solvable}{可解}释为\Term{endomorphism}{自同态} $\operatorname{fr}_q^{X*}\otimes_{\mathbf F_p}k$，其中 $\operatorname{fr}_q^X:\bar X\longrightarrow\bar X$ 是 Frobenius 的 $k$ \Term{endomorphism}{自态射}；见 SGA~5，第 XVIII 讲 2.3.4）。
+\end{SGAresult}
+\begin{proof}
+由于
+\[
+H^i(\bar X,\mathcal O_{\bar X})\simeq
+H^i(X,\mathcal O_X)\otimes_{\mathbf F_q}k, \tag{2.2.7}
+\]
+由 1.0.10 有
+\[
+H^i(\bar X,\mathcal O_{\bar X})_{\mathrm{ss}}\simeq
+H^i(X,\mathcal O_X)_{\mathrm{ss}}\otimes_{\mathbf F_q}k, \tag{2.2.8}
+\]
+故将\Term{isomorphism}{同构} 2.2.8 与 2.1.1 复合，就得到\Term{isomorphism}{同构} 2.2.6。
+
+根据 2.2.7，\Term{q-linear}{$q$ 线性}运算
+\[
+\mathfrak F_q:H^i(X,\mathcal O_X)\longrightarrow H^i(X,\mathcal O_X) \tag{2.2.9}
+\]
+有一个 \Term{q-linear}{$q$ 线性}\Term{group-extension}{扩张}（见 1.0.5）
+\[
+\overline{\mathfrak F}_q:H^i(\bar X,\mathcal O_{\bar X})
+\longrightarrow H^i(\bar X,\mathcal O_{\bar X}), \tag{2.2.10}
+\]
+也有一个 $k$ \Term{linear}{线性}\Term{group-extension}{扩张}，仍记为 $\mathfrak F_q$：
+\[
+\mathfrak F_q:H^i(\bar X,\mathcal O_{\bar X})
+\longrightarrow H^i(\bar X,\mathcal O_{\bar X}). \tag{2.2.11}
+\]
+\SourcePage{419}
+用
+\[
+\varphi_q:H^i(\bar X,\mathcal O_{\bar X})
+\longrightarrow H^i(\bar X,\mathcal O_{\bar X}) \tag{2.2.12}
+\]
+表示其\Term{fixed-point}{不动点}组成 $H^i(X,\mathcal O_X)$ 的那个 \Term{q-linear}{$q$ 线性}运算。在 2.2.7 的\Term{isomorphism}{同构}下，\Term{operator}{算子} $\mathfrak F_q$、$\varphi_q$ 和 $\overline{\mathfrak F}_q$ 也分别写作
+$\mathfrak F_q\otimes\operatorname{id}_k$、$\operatorname{id}\otimes\varphi_q$、$\mathfrak F_q\otimes\varphi_k$，因而两两交换，并有
+\[
+\overline{\mathfrak F}_q=\varphi_q\mathfrak F_q
+=\mathfrak F_q\circ\varphi_q. \tag{2.2.13}
+\]
+它们还都与 $\overline{\mathfrak F}_p$ 交换，故 $\mathfrak F_q$ 和 $\varphi_q$ \Term{action}{作用}在
+$H^i(\bar X,\mathcal O_{\bar X})^{1-\overline{\mathfrak F}_q}$
+及 $H^i(\bar X,\mathcal O_{\bar X})^{1-\overline{\mathfrak F}_p}$ 上。由 2.2.13，$\mathfrak F_q$ 与 $\varphi_q$ 在
+$H^i(\bar X,\mathcal O_{\bar X})^{1-\overline{\mathfrak F}_q}$ 上互为逆运算。所以，$\mathfrak F_q$ 在
+\[
+H^i(\bar X,\mathcal O_{\bar X})_{\mathrm{ss}}
+\simeq H^i(\bar X,\mathcal O_{\bar X})^{1-\overline{\mathfrak F}_q}
+\otimes_{\mathbf F_q}k
+\qquad\text{（见 1.1.11）}
+\]
+上的运算，是 $\varphi_q\otimes k$ 在
+\[
+H^i(\bar X,\mathcal O_{\bar X})^{1-\overline{\mathfrak F}_q}
+\otimes_{\mathbf F_q}k
+\]
+上的运算的逆。写成
+\[
+H^i(\bar X,\mathcal O_{\bar X})^{1-\overline{\mathfrak F}_q}
+\simeq H^i(\bar X,\mathcal O_{\bar X})^{1-\overline{\mathfrak F}_p}
+\otimes_{\mathbf F_p}\mathbf F_q, \tag{2.2.14}
+\]
+则 $H^i(\bar X,\mathcal O_{\bar X})^{1-\overline{\mathfrak F}_q}$ 的\Term{automorphism}{自同构} $\varphi_q$ 经 2.2.14 化为
+$H^i(\bar X,\mathcal O_{\bar X})^{1-\overline{\mathfrak F}_p}\otimes_{\mathbf F_p}\mathbf F_q$ 的\Term{automorphism}{自同构} $\varphi_q\otimes\mathbf F_q$。
+因此，$H^i(\bar X,\mathcal O_{\bar X})_{\mathrm{ss}}$ 的\Term{automorphism}{自同构} $\mathfrak F_q\otimes k$ 经 2.1.1 化为
+$H^i_{\text{ét}}(\bar X,\mathbf Z/p\mathbf Z)\otimes_{\mathbf F_p}k$ 的\Term{automorphism}{自同构} $\varphi_q^{-1}\otimes k$。这就完成了 2.2.5 的证明。
+\end{proof}
+
+\SourcePage{420}
+\SGAsection{3}{同余公式：陈述与初等的等价性}
+在此感谢 Grothendieck 和 Deligne 向我解释了 3.1.1 的变式 (6.1.2)、(3.1.1.2) 和 (3.1.3)。
+
+\textbf{3.0。}设 $X$ 是 $\mathbf F_q$ 上的\Term{finite-type}{有限型}\Term{scheme}{概形}。\Term{closed-point}{闭点} $y\in X$ 的\Term{degree}{次数}定义为其\Term{residue-field}{剩余域}\Term{group-extension}{扩张} $\mathbf F_q(y)/\mathbf F_q$ 的\Term{degree}{次数}。用公式
+\[
+Z(t,X/\mathbf F_q)=\prod_y(1-t^{\deg(y)})^{-1} \tag{3.0.1}
+\]
+将 $X/\mathbf F_q$ 的\Term{zeta-function}{zeta 函数}定义为 $\mathbf Z[[t]]$ 的元素（另见 SGA~5，第 XIII 讲 3.1）。
+
+所谓“模 $p$ 的\Term{zeta-function}{zeta 函数}”，始终是指 $Z(t,X/\mathbf F_q)$ 经“模 $p\mathbf Z[[t]]$ \Term{reduced}{约化}”映射
+\[
+\mathbf Z[[t]]\longrightarrow\mathbf F_q[[t]]
+\]
+在 $\mathbf F_q[[t]]$ 中的像。
+\begin{SGAresult}{\Term{theorem}{定理}}{3.1}
+设 $X$ 是 $\mathbf F_q$ 上的\Term{proper}{固有}\Term{scheme}{概形}。则
+\[
+Z(t,X/\mathbf F_q)\equiv
+\prod_{i\geq0}\det\bigl(1-t\mathfrak F_q\mid H^i(X,\mathcal O_X)\bigr)^{(-1)^{i+1}}
+\pmod p, \tag{3.1.1}
+\]
+或者，由 2.2.4，与之\Term{equivalence}{等价}地，
+\[
+Z(t,X/\mathbf F_q)\equiv
+\prod_{i\geq0}\det\bigl(1-t\varphi_q^{-1}\mid
+H^i_{\text{ét}}(\bar X,\mathbf Z/p\mathbf Z)\bigr)^{(-1)^{i+1}}
+\pmod p. \tag{3.1.2}
+\]
+\end{SGAresult}
+\begin{SGAresult}{推论}{3.2}
+设 $X$ 是 $\mathbf F_q$ 上的\Term{proper}{固有}\Term{scheme}{概形}。则
+\[
+\sum_{i\geq0}(-1)^i\operatorname{trace}
+\bigl(\mathfrak F_q\mid H^i(X,\mathcal O_X)\bigr)
+\equiv\#X(\mathbf F_q)\pmod p, \tag{3.2.1}
+\]
+或者，由 2.2.4，与之\Term{equivalence}{等价}地，
+\SourcePage{421}
+\[
+\sum_{i\geq0}(-1)^i\operatorname{tr}
+\bigl(\varphi_q^{-1}\mid H^i_{\text{ét}}(\bar X,\mathbf Z/p\mathbf Z)\bigr)
+\equiv\#X(\mathbf F_q)\pmod p. \tag{3.2.2}
+\]
+\end{SGAresult}
+在同余式 3.1.1 和 3.1.2 中取 $t$ 的系数即可。
+
+\begin{SGAresult}{\Term{theorem}{定理}}{3.3}
+设 $X$ 是 $\mathbf F_q$ 上的\Term{proper}{固有}\Term{scheme}{概形}。用 $H^i_{\mathrm{DR}}(X/\mathbf F_q)$ 表示 $\mathfrak F_q$ \Term{action}{作用}于其上的 $\mathbf F_q$ \Term{vector-space}{向量空间} $\mathbb H^i(X,\Omega^\bullet_{X/\mathbf F_q})$。有
+\[
+Z(t,X/\mathbf F_q)\equiv
+\prod_{i\geq0}\det\bigl(1-t\mathfrak F_q\mid
+H^i_{\mathrm{DR}}(X/\mathbf F_q)\bigr)^{(-1)^{i+1}}\pmod p. \tag{3.3.1}
+\]
+\end{SGAresult}
+事实上，利用\Term{spectral-sequence}{谱序列}
+\[
+E_1^{p,q}=H^q(X,\Omega^p_{X/\mathbf F_q})
+\Longrightarrow H^{p+q}_{\mathrm{DR}}(X/\mathbf F_q), \tag{3.3.2}
+\]
+$\mathfrak F_q$ 通过由 $\operatorname{fr}_q^X:X\longrightarrow X$ \Term{derive}{导出}的\Term{endomorphism}{自同态}
+$\mathfrak F_q=\operatorname{fr}_p^{X*}$ \Term{action}{作用}于其上，并使 $q\ne0$ 时的 $E_1^{p,q}$ 为零，由此可见 3.3.1 与 3.1.1 \Term{equivalence}{等价}。
+
+再给出一个小补充。取“\Term{semisimple}{半单部分}”（见 1.0.7）是\Term{exact-functor}{正合函子}，故由 3.3.2 得到\Term{spectral-sequence}{谱序列}
+\[
+(E_1^{p,q})_{\mathrm{ss}}\Longrightarrow
+H^{p+q}_{\mathrm{DR}}(X/\mathbf F_q)_{\mathrm{ss}}. \tag{3.3.3}
+\]
+由于 $q\ne0$ 时 $(E_1^{p,q})_{\mathrm{ss}}=0$，故对每个 $i$ 得到一个与 $\mathfrak F_q$ 交换的\Term{isomorphism}{同构}
+\[
+H^i_{\mathrm{DR}}(X/\mathbf F_q)_{\mathrm{ss}}
+\xrightarrow{\ \sim\ }H^i(X,\mathcal O_X)_{\mathrm{ss}}, \tag{3.3.4}
+\]
+从而
+\[
+\det\bigl(1-t\mathfrak F_q\mid H^i_{\mathrm{DR}}(X/\mathbf F_q)\bigr)
+\equiv\det\bigl(1-t\mathfrak F_q\mid H^i(X,\mathcal O_X)\bigr). \tag{3.3.5}
+\]
+\SourcePage{422}
+\begin{SGAresult}{\Term{theorem}{定理}}{3.4}
+设 $X$ 是 $\mathbf F_q$ 上的\Term{separated}{分离}\Term{finite-type}{有限型}\Term{scheme}{概形}。用 $H_c^i$ 表示\Term{proper-support-cohomology}{固有支撑}\Term{etale-cohomology}{平展上同调}（SGA~4，第 XVII 讲 5.1.9 (iii)），则有
+\[
+Z(t,X/\mathbf F_q)\equiv
+\prod_{i\geq0}\det\bigl(1-t\varphi_q^{-1}\mid
+H_c^i(\bar X,\mathbf Z/p\mathbf Z)\bigr)^{(-1)^{i+1}}\pmod p. \tag{3.4.1}
+\]
+\end{SGAresult}
+先证明 3.4.1 与 3.1.1 的\Term{equivalence}{等价}性。暂且记
+\[
+Z(X)\quad\text{代替}\quad Z(t,X/\mathbf F_q), \tag{3.4.2}
+\]
+\[
+Z'(X)\quad\text{代替}\quad
+\prod_i\det\bigl(1-t\varphi_q^{-1}\mid
+H_c^i(\bar X,\mathbf Z/p\mathbf Z)\bigr)^{(-1)^{i+1}}. \tag{3.4.3}
+\]
+\begin{SGAresult}{\Term{lemma}{引理}}{3.5}
+若 $\{U_i\}$ 是 $X$ 的一个由\Term{open-subscheme}{开子概形}组成的\Term{finite}{有限}\Term{covering}{覆盖}，则
+\[
+Z'(X)=\prod_{j\geq0}\prod_{1\leq i_0<\cdots<i_j\leq n}
+Z'(U_{i_0}\cap\cdots\cap U_{i_j})^{(-1)^j}. \tag{3.5.1}
+\]
+\end{SGAresult}
+\begin{proof}
+这由\Term{localization}{局部化}\Term{spectral-sequence}{谱序列}（SGA~4，第 XVII 讲 6.2.10）
+\[
+E_1^{a,b}=\bigoplus_{i_0<\cdots<i_b}
+H_c^a(\bar U_{i_0}\cap\cdots\cap\bar U_{i_b},\mathbf Z/p\mathbf Z)
+\Longrightarrow H_c^{-a+b}(\bar X,\mathbf Z/p\mathbf Z)
+\]
+容易得到。也可应用下面的 3.6，对 $n$ 归纳得到。
+\end{proof}
+\begin{SGAresult}{\Term{lemma}{引理}}{3.6}
+若 $U$ 是 $X$ 的一个\Term{open-subset}{开集}，$Y$ 是\Term{closed-subset}{闭集} $X-U$，则
+\[
+Z'(X)=Z'(U)Z'(Y). \tag{3.6.1}
+\]
+\end{SGAresult}
+\begin{proof}
+这由\Term{cohomology}{上同调}\Term{exact-sequence}{正合列}
+\[
+\cdots\longrightarrow H_c^i(\bar U,\mathbf Z/p\mathbf Z)
+\longrightarrow H_c^i(\bar X,\mathbf Z/p\mathbf Z)
+\longrightarrow H_c^i(\bar Y,\mathbf Z/p\mathbf Z)
+\longrightarrow\cdots \tag{3.6.2}
+\]
+得到。
+\end{proof}
+\SourcePage{423}
+\begin{SGAresult}{\Term{lemma}{引理}}{3.7（Möbius）}
+设 $B$ 是\Term{finite-set}{有限集合}，$\{A_i\}$ 是其一个由\Term{subset}{子集}组成的\Term{finite}{有限}\Term{covering}{覆盖}。则
+\[
+\operatorname{card}(B)=\sum_{j\geq0}(-1)^j
+\sum_{i_0<\cdots<i_j}\operatorname{card}(A_{i_0}\cap\cdots\cap A_{i_j}). \tag{3.7.1}
+\]
+\end{SGAresult}
+\begin{proof}
+对于\Term{discrete-space}{离散空间} $B$ 的有理\Term{cohomology}{上同调}和开\Term{covering}{覆盖} $\{A_i\}$，有 Leray \Term{spectral-sequence}{谱序列}
+\[
+E_1^{p,q}=\bigoplus_q H^p(A_{i_0}\cap\cdots\cap A_{i_q},\mathbf Q)
+\Longrightarrow H^{p+q}(B,\mathbf Q),
+\]
+然后计算 $B$ 的 \Term{euler-poincare-characteristic}{Euler--Poincaré 示性数}即可。
+\end{proof}
+\begin{SGAresult}{\Term{lemma}{引理}}{3.8}
+若 $\{U_i\}$ 是 $X$ 的一个由\Term{subscheme}{子概形}组成的\Term{finite}{有限}\Term{covering}{覆盖}，则
+\[
+Z(X)=\prod_{j\geq0}\prod_{i_0<\cdots<i_j}
+Z(U_{i_0}\cap\cdots\cap U_{i_j})^{(-1)^j}. \tag{3.8.1}
+\]
+\end{SGAresult}
+\begin{proof}
+有公式
+\[
+\operatorname{card}\bigl(X(\mathbf F_{q^n})\bigr)
+=\sum_{r\mid n}r\cdot\operatorname{card}\{y\in X\mid\deg(y)=r\}, \tag{3.8.2}
+\]
+它给出
+\[
+Z(X)=\exp\left(\sum_{n\geq1}\operatorname{card}\bigl(X(\mathbf F_{q^n})\bigr)
+\frac{t^n}{n}\right), \tag{3.8.3}
+\]
+再由 3.7.1 得出结论。
+\end{proof}
+\begin{SGAresult}{\Term{lemma}{引理}}{3.9}
+假定公式 3.4.1（或者\Term{equivalence}{等价}地，3.1.2，也就是 3.1.1）对\Term{projective}{射影}\Term{hypersurface}{超曲面} $X$ 成立。则它对一切\Term{separated}{分离}\Term{finite-type}{有限型}的 $X$ 成立。
+\end{SGAresult}
+\SourcePage{424}
+\begin{proof}
+由 3.8 和 3.6，3.4.1 对\Term{hypersurface}{超曲面}的补集 $\mathbf P^n-H$ 成立。由于
+\[
+\bigcap_i(\mathbf P^n-H_i)=\mathbf P^n-\bigcup_iH_i
+\]
+仍是一个\Term{hypersurface}{超曲面}的补集，$\mathbf P^n-\bigcap_iH_i$ 的开\Term{covering}{覆盖} $\{\mathbf P^n-H_i\}$ 使我们可以应用 3.8 和 3.5，得出 3.1.3 对 $\mathbf P^n-\bigcap_iH_i$ 成立。由 3.8 和 3.6，3.4.1 对 $\bigcap_iH_i$ 成立，即对每个\Term{projective}{射影}的 $X$ 成立。再次应用 3.8 和 3.5，得到 3.1.3 对每个\Term{quasi-projective}{拟射影}的 $X$ 成立，特别地，对每个\Term{affine}{仿射}的 $X$ 成立。最后，对于\Term{separated}{分离}\Term{finite-type}{有限型}的 $X$，取一个由\Term{affine}{仿射}\Term{open-subset}{开集}组成的\Term{finite}{有限}\Term{covering}{覆盖}，并应用 3.8 和 3.5。
+\end{proof}

@@ -1,0 +1,533 @@
+% PDF 123
+\sourcepage{119}{123}
+函数在 $x$ 处的芽所成的集合自然带有环结构。把每个 $r\in\mathbb R$ 与取值为 $r$ 的局部常值函数的芽 $\widetilde f_x$ 等同起来，就把 $\mathbb R$ 嵌入芽环 $\mathcal O_{X,x}$，成为它的一个子域（$r\ne s$ 时，相应的芽也不相同）。映射 $f_U\mapsto\widetilde f_x$ 是含幺交换环同态。再者，取值映射
+\[
+\widetilde f_x\longmapsto\widetilde f_x(x)
+\]
+也是到实数域的环同态，它的核 $\mathfrak m_x$ 是 $\mathcal O_{X,x}$ 的极大理想。事实上，若 $f_U(x)\ne0$，那么在 $x$ 的某个开邻域中它仍处处非零，因而相应的芽 $\widetilde f_x$ 可逆，即 $\widetilde f_x^{-1}\in\mathcal O_{X,x}$。换言之，集合
+\[
+\mathcal O_{X,x}^{*}=\{\widetilde f_x\in\mathcal O_{X,x}\mid\widetilde f_x(x)\ne0\}
+\]
+恰好由 $\mathcal O_{X,x}$ 的全部可逆元组成，其补集
+\[
+\mathfrak m_x=\{\widetilde f_x\in\mathcal O_{X,x}\mid\widetilde f_x(x)=0\}
+\]
+是一个极大理想。具有这种性质的含幺交换环称为\textbf{局部环}，正是因为它们自然出现于流形的局部研究中，也就是在任意固定点 $x\in X$ 的充分小邻域内的研究中。\footnote{第8节将依照录音，简要介绍局部环的纯代数处理。这里先引述 Grothendieck 的一段话，帮助理解：“我提醒大家，含幺交换环为局部环，当且仅当它恰有一个极大理想。也可以说，其中不可逆元的集合对加法封闭，因而构成一个理想（因为在任意环 $A$ 中，若 $a\in A$ 不可逆，则对任意 $\lambda\in A$，$\lambda a$ 也不可逆）；这个理想就是唯一的极大理想。还可以表述为：对任意两个元素 $f,g\in A$，若 $f+g$ 可逆，则 $f,g$ 中至少一个可逆。乘以这个和的逆元，又等价于说：对任意 $f$，$f$ 和 $1-f$ 中至少一个可逆。把 $f$ 换成 $-f$，便得到 $f$ 和 $1+f$ 中至少一个可逆。”}
+
+显然，对于一对相对应的点 $x\in X$、$F(x)\in Y$，都可以把 $F(x)$ 处的任意芽拉回为 $x$ 处的芽：
+\[
+\widetilde f_{F(x)}\longmapsto\widetilde f_{F(x)}\circ F,
+\]
+并保持其取值。换言之，得到两个局部环之间的映射 $\mathcal O_{Y,F(x)}\to\mathcal O_{X,x}$，使下图交换：
+\begin{equation}\tag{7.3}
+\begin{tikzcd}[ampersand replacement=\&]
+\mathcal O_{Y,F(x)} \arrow[r,"F^*"] \arrow[d] \& \mathcal O_{X,x} \arrow[d]\\
+\mathbb R \arrow[r,"\id_{\mathbb R}"',equal] \& \mathbb R.
+\end{tikzcd}
+\end{equation}
+% PDF 124
+\sourcepage{120}{124}
+这里的竖箭头把芽送到它在相应点 $F(x)$ 或 $x$ 处的值。特别地，若一个芽在 $F(x)$ 处为零，那么它的像在 $x$ 处也为零。也就是说：$\mathcal O_{Y,F(x)}$ 的极大理想在 $F^*$ 下的像，包含在 $\mathcal O_{X,x}$ 的极大理想 $\mathfrak m$ 中；等价地，$\mathcal O_{X,x}$ 的极大理想的逆像 $F^{*-1}(\mathfrak m)$，就是 $\mathcal O_{Y,F(x)}$ 的极大理想。\footnote{这一情形启发了两个局部环之间的局部同态的代数定义。设 $\mathfrak m,\mathfrak m'$ 分别是局部环 $\mathcal O,\mathcal O'$ 的极大理想，$h:\mathcal O\to\mathcal O'$ 为任意同态。由于 $\mathcal O$ 中 $\mathfrak m$ 以外的元素均可逆，故 $h^{-1}(\mathfrak m')\subseteq\mathfrak m$，但素理想 $h^{-1}(\mathfrak m')\in\Spec\mathcal O$ 未必等于 $\mathfrak m$。称 $h$ 是局部的，若 $h^{-1}(\mathfrak m')=\mathfrak m$；这等价于正像 $h(\mathfrak m)$ 包含在 $\mathfrak m'$ 中。后面还会依照录音回到这一点。}
+
+这些考虑提示了赋环空间态射的适当定义。设 $(X,\mathcal O_X)$、$(Y,\mathcal O_Y)$ 是两个赋环空间。\footnote{即 $X,Y$ 是拓扑空间，$\mathcal O_X,\mathcal O_Y$ 是其上的环层；这里并不要求它们是局部环层。}一个态射
+\[
+(X,\mathcal O_X)\xrightarrow{G}(Y,\mathcal O_Y)
+\]
+是一个二元组 $G=(f,\theta)$，其中 $f:X\to Y$ 是底拓扑空间之间的连续映射，而 $\theta:\mathcal O_Y\to\mathcal O_X$ 是层之间的一个 $f$-同态；特别地，对每个 $x\in X$，它给出环同态
+\[
+\theta:\mathcal O_{Y,f(x)}\longrightarrow\mathcal O_{X,x}.
+\]
+于是显然可以构造\textbf{赋环空间范畴} $\mathsf{Rs}$：对象为上述 $(X,\mathcal O_X)$，态射如刚才所定义。
+
+前面的例子说明，对于局部赋环空间，应当怎样进一步加强态射的定义。一个赋环空间 $(X,\mathcal O_X)$ 称为\textbf{局部赋环空间}，如果每个点 $x$ 处的茎 $\mathcal O_{X,x}$ 都是局部环。
+% PDF 125
+\sourcepage{121}{125}
+局部赋环空间构成赋环空间范畴 $\mathsf{Rs}$ 的一个子范畴 $\mathsf{Lrs}$，但它不是满子范畴。具体说来，若 $(X,\mathcal O_X)$、$(Y,\mathcal O_Y)$ 属于 $\Ob(\mathsf{Lrs})$，则 $\mathsf{Rs}$ 中的态射
+\[
+(X,\mathcal O_X)\xrightarrow{G}(Y,\mathcal O_Y)
+\]
+属于 $\mathsf{Lrs}$，当且仅当 $G=(f,\theta)$ 是局部的，即对每个 $x\in X$，诱导的两个局部环之间的同态
+\[
+\mathcal O_{Y,f(x)}\xrightarrow{\theta}\mathcal O_{X,x}
+\]
+都是局部同态。这也就是说，它满足下面两个等价条件中的任意一个（参见前面的脚注）：极大理想 $\mathfrak m_{f(x)}$ 的正像包含在 $\mathfrak m_x$ 中，
+\begin{equation}\tag{7.4}
+\theta_x(\mathfrak m_{f(x)})\subseteq\mathfrak m_x;
+\end{equation}
+或者
+\begin{equation}\tag{7.5}
+\theta_x^{-1}(\mathfrak m_x)=\mathfrak m_{f(x)}.
+\end{equation}
+
+\textbf{历史说明。}局部赋环空间很自然地出现于各类流形的研究中（参见第一章第0节）。例如，对于复解析流形 $(X,\mathcal O_X)$，$\mathcal O_{X,x}$ 就是局部全纯函数在 $x$ 处的芽环。Serre 在 FAC 一文中把它们引入了代数闭域上的经典代数几何。FAC 意义下的仿射代数簇 $(X,\mathcal O_X)$ 是如下特例：$X$ 是一个无非零幂零元的有限生成 $k$-代数 $A$ 的极大谱，
+\[
+X=\Max A,\qquad A=k[\xi_1,\xi_2,\ldots,\xi_m],\qquad\operatorname{Nil}A=0.
+\]
+特别地，$X$ 不可约当且仅当 $A$ 是整环。$\mathcal O_X$ 是 $X$ 上局部正则函数的芽所成的层；这些局部正则函数，也就是把旧有的“有理”函数或亚纯函数限制在它们没有极点、也没有“不定点”的 Zariski 开集上所得的函数，换言之，限制在它们确实有定义的地方。
+% PDF 126
+\sourcepage{122}{126}
+\Section{8}{关于分式环、分式模、局部环与局部化的插论}
+[这里先介绍 Grothendieck 为构造 $X=\Spec A$ 上的结构层 $\widetilde A$，以及任意 $A$-模 $M$ 所对应的 $\widetilde A$-模层 $\widetilde M$ 而给出的一些预备知识。\footnote{所有 $A$-模（$A\in\Ob\G$）均为幺模，即对任意 $m\in M$，$1m=m$。这里 $M$ 是 $A$-模范畴 $\mathsf M_A$ 的对象，乘以 $1$ 给出 $A$-模的恒等同态。}实质上，我们将用几种不同的方法，构造以乘法集 $S\subseteq A$ 中元素为分母的分式环
+\[
+S^{-1}A=\{a/s\mid a\in A,\ s\in S\}
+\]
+和分式模
+\[
+S^{-1}M=\{m/s\mid m\in M,\ s\in S\}.
+\]
+主要关心的情形是 $S_f=\{f^n\mid n\ge0\}$，以及对 $\mathfrak p\in\Spec A$ 取 $S=A\setminus\mathfrak p$。$S_f^{-1}A,S_f^{-1}M$ 简记为 $A_f,M_f$。]
+
+“……我们将按照这一办法[即第二章第3节的办法]\footnote{若读者希望直接接着读 Grothendieck 的讲述，不受我这些插话的打断，可继续读本章第9节。原书这里误印为第一章第3节。}构造一个环层；同时还要构造更一般的东西，即某个模层 $\widetilde M$，其茎记为 $\widetilde M_x$（$x\in X=\Spec A$）。我们从一个 $A$-模 $M$ 出发（以后也会让 $M$ 变化），给 $M$ 配上一个层 $\widetilde M$。当 $M=A$[把 $A$ 看成自身上的 $A$-模]时，$\widetilde M$ 就是我们要找的结构层 $\widetilde A$。
+
+我们要构造函子 $f\mapsto\widetilde M(f)$（$f\in A$）。$\widetilde M(f)$ 将是模 $M$ 关于乘法集 $S_f=\{f^n\mid n\ge0\}$ 的局部化 $M_f$。它可以有几种不同的描述。下面先稍微插入一些交换代数知识。\footnote{详尽论述可见 EGA I（IHÉS 版）第0章，第13--14页。}
+
+$M_f$ 可以描述为 $M$ 的若干副本的归纳极限。以非负整数 $\alpha$ 为指标，令 $M_\alpha=M$，并以乘以 $f$ 的映射把 $M_\alpha$ 送入 $M_{\alpha+1}$：
+\begin{equation}\tag{8.1}
+M_\alpha\xrightarrow{\ f\ }M_{\alpha+1}\qquad(\alpha\ge0).
+\end{equation}
+% PDF 127
+\sourcepage{123}{127}
+这样，$M_f$ 是 $A$-模的归纳极限（参见第二章）：
+\begin{equation}\tag{8.2}
+M_f=\varinjlim_\alpha M_\alpha,
+\end{equation}
+所以它也是一个 $A$-模。由于可以把 $M$ 看成这个系统的起点 $M_0$，自然得到典范同态
+\begin{equation}\tag{8.3}
+S_f:M\longrightarrow M_f.
+\end{equation}
+
+这样，我们由 $f\in A$ 构造出了另一个模 $M_f$。暂时固定 $M$，让 $f$ 变化。现在用一个泛性质来刻画 (8.3)。注意，在模 $M_f$ 中，乘以 $f$ 的运算变得可逆了。[提示：考察过渡态射 (8.1) 的极限。此外，(8.3) 中的映射 $S_f$ 对于“乘以 $f$ 变得可逆”这一性质是泛的。]
+
+准确地说，若 $\varphi:M\to N$ 是 $A$-同态，并且数乘映射 $n\mapsto fn$（$n\in N$）为双射（即同构），则存在唯一的同态 $M_f\to N$，使图
+\begin{equation}\tag{8.4}
+\begin{tikzcd}[ampersand replacement=\&]
+M\arrow[r,"S_f"]\arrow[dr,"\varphi"']\&M_f\arrow[d,dashed]\\
+\&N
+\end{tikzcd}
+\end{equation}
+交换。因此，$M_f$ 是一个泛问题的解：把 $M$ 映到那些乘以 $f$ 为同构的 $A$-模中。由此可见，$M_f$ 对 $M$ 具有函子性。也就是说，给定一个同态 $M\to N$[在 $A$-模范畴 $\mathsf M_A$ 中]，就存在唯一同态 $M_f\to N_f$，使下图交换：
+% PDF 128
+\sourcepage{124}{128}
+\begin{equation}\tag{8.5}
+\begin{tikzcd}[ampersand replacement=\&]
+M\arrow[r]\arrow[d,"S_f"']\&N\arrow[d,"S_f"]\\
+M_f\arrow[r,dashed]\&N_f.
+\end{tikzcd}
+\end{equation}
+这是因为复合映射 $M\to N\to N_f$ 的目标中，乘以 $f$ 为可逆运算，所以该复合映射唯一地通过 $M_f$ 分解。\footnote{原书此句末写成通过 $N_f$ 分解；由图 (8.5) 及泛性质，应为通过 $M_f$ 分解。}
+
+至此，我们已有两种描述 $M_f$ 的方法：把它视为归纳极限，或把它视为某个泛问题的解。还可以给出第三种描述：把 $M_f$ 看成形式分式 $x/f^n$ 的集合，
+\begin{equation}\tag{8.6}
+M_f=\{x/f^n\mid x\in M,\ n\ge0\}.
+\end{equation}
+也就是以 $M$ 中的元素为分子、以 $f$ 的非负整数次幂为分母的形式商所成的集合。模结构中的加法和数乘按自然的方式定义：
+\begin{equation}\tag{8.7}
+\frac{x}{f^n}+\frac{x'}{f^{n'}}=
+\frac{f^{n'}x+f^nx'}{f^{n+n'}},
+\end{equation}
+\begin{equation}\tag{8.8}
+\lambda\frac{x}{f^n}=\frac{\lambda x}{f^n}\qquad(\lambda\in A).
+\end{equation}
+
+但首先须在二元组 $(x,f^n)$、$(x',f^{n'})$ 之间定义一个等价关系，以表明何时 $x/f^n=x'/f^{n'}$。我们自然想用“交叉相乘”的办法，要求 $xf^{n'}-x'f^n=0$。不过，这还不能给出所需的等价关系。必须记住：乘以 $f$ 应当在像中成为双射。因而，应当要求存在某个 $m\ge0$，使
+\begin{equation}\tag{8.9}
+f^m(xf^{n'}-x'f^n)=0.
+\end{equation}
+反过来，(8.9) 确实定义了一个等价关系。换言之：
+% PDF 129
+\sourcepage{125}{129}
+可把 $x/f^n$ 定义为二元组 $(x,f^n)$（$n\ge0$）关于如下等价关系的等价类：
+\begin{equation}\tag{8.10}
+(x,f^n)\sim(x',f^{n'})
+\quad\Longleftrightarrow\quad
+\text{存在 }m\ge0\text{ 使 (8.9) 成立}.
+\end{equation}
+(8.7)、(8.8) 的运算是良定义的，容易验证，留给读者。
+
+现在可以证明，乘以 $f$ 在局部化模中是可逆运算。首先它是满射，因为
+\[
+\frac{x}{f^n}=f\frac{x}{f^{n+1}}.
+\]
+它也是单射，因为 $f(x/f^n)=(fx)/f^n=0$ 等价于存在某个 $m\ge0$ 使 $f^m(fx)=f^{m+1}x=0$，而这又等价于 $x/f^n=0$。于是便建立起这种分式演算。此外，可以把 $S_f:M\to M_f$\footnote{原书这里把定义域、值域写成 $A\to A_f$；此处仍在一般模的讨论中，故写出相应的一般形式。}定义为 $x\mapsto x/1$（$1=f^0$），等价地，也可写为 $x\mapsto f^nx/f^n$。
+
+这一分式描述与前面的描述实质相同，因为复合映射
+\[
+M=M_0\longrightarrow M_1\longrightarrow\cdots\longrightarrow M_n
+\]
+把 $x$ 映为 $f^nx$。
+
+当 $M=A$[把它看成 $A$-代数]时，这个构造给出 $A$-模同态 $A\to A_f$。不过，$A_f$ 不仅是 $A$-模，还是 $A$-代数，其乘法定义为
+\begin{equation}\tag{8.11}
+\frac{x}{f^n}\frac{y}{f^{n'}}=\frac{xy}{f^{n+n'}}.
+\end{equation}
+\footnote{读者应验证：此乘法是良定义的，不依赖代表元的选取，并满足环公理。}
+再者，对任意 $M$，$M_f$ 都是一个 $A_f$-模。这也有几种说明方法。例如，乘积 $(a/f^m)(u/f^n)$（$a\in A,u\in M$）可良好地定义为 $au/f^{m+n}$。另一种说明如下。
+% PDF 130
+\sourcepage{126}{130}
+环 $A_f$ 是由下面的泛性质所刻画的 $A$-代数：任意到含幺环 $R$（不必交换）的环同态 $\varphi:A\to R$，只要使 $\varphi(f)$ 可逆，就唯一地通过 $A_f$ 分解，使图
+\begin{equation}\tag{8.12}
+\begin{tikzcd}[ampersand replacement=\&]
+A\arrow[r]\arrow[dr,"\varphi"']\&A_f\arrow[d,dashed]\\
+\&R
+\end{tikzcd}
+\end{equation}
+交换。
+
+现在，取 $R$ 为一个阿贝尔群 $N$ 的自同态环 $\End(N)$。给出同态 $A\to R$，就相当于在 $N$ 上给出一个 $A$-模结构。若这一结构使 $f$ 在 $N$ 上的作用为同构，就意味着 $N$ 带有一个 $A_f$-模结构；反之亦然：在 $N$ 上给出 $A_f$-模结构，与给出使 $f$ 的作用为同构的 $A$-模结构，是一回事。把这一点应用于 $M_f$，便知 $A$-模 $M_f$ 自然成为 $A_f$-模，因为 $f$ 在 $M_f$ 上的作用是同构。
+
+我们已经用几种方法描述了 $M_f$ 上的 $A_f$-模结构。现在看看 $f\in A$ 变化时的情形。假设
+\begin{equation}\tag{8.13}
+X_f\subseteq X_g,
+\end{equation}
+我们要定义一个 $A$-同态
+\begin{equation}\tag{8.14}
+M_g\longrightarrow M_f.
+\end{equation}
+我们将证明：存在唯一的 $A$-同态，使图
+\begin{equation}\tag{8.15}
+\begin{tikzcd}[ampersand replacement=\&]
+M\arrow[r,equal]\arrow[d]\&M\arrow[d]\\
+M_g\arrow[r,dashed]\&M_f
+\end{tikzcd}
+\end{equation}
+% PDF 131
+\sourcepage{127}{131}
+交换；其中的竖箭头是 $M$ 到其局部化模 $M_g,M_f$ 的典范同态。只须证明乘以 $g$ 在 $M_f$ 上是同构，映射便可通过 $M_g$ 分解。事实上，由包含关系 (8.13)，有形如 $f^n=gh$ 的恒等式（$n\ge0,h\in A$）；而 $f$ 在 $M_f$ 上已变得可逆，因此 $g$ 的作用在 $M_f$ 上也可逆。
+
+另一方面，固定满足 (8.13) 的 $f,g$ 后，这个映射 $M_g\to M_f$ 对 $M$ 也是函子性的。由诱导映射 (8.14) 的唯一性，还得到传递性：若
+\begin{equation}\tag{8.16}
+X_f\subseteq X_g\subseteq X_h,
+\end{equation}
+则下图交换：
+\begin{equation}\tag{8.17}
+\begin{tikzcd}[ampersand replacement=\&]
+M_h\arrow[r]\arrow[dr,dashed]\&M_g\arrow[d]\\
+\&M_f.
+\end{tikzcd}
+\end{equation}
+因为唯一确定的虚线箭头必然等于另外两个箭头的复合。
+
+[为了准确理解第9节中构造层 $\widetilde A,\widetilde M$ 的全部细节，还须了解关于任意乘法集 $S\subseteq A$ 的局部化，即分式模、分式环的性质。这一交换代数构造，可以看成整环 $I$ 的分式域 $\Omega$ 的构造的广泛推广。记 $I^*=I\setminus\{0\}$。分式 $a/b\in\Omega$（$a\in I,b\in I^*$）是 $I\times I^*$ 关于等价关系
+\begin{equation}\tag{8.18}
+(a_1,b_1)\sim(a_2,b_2)\quad\Longleftrightarrow\quad a_1b_2-a_2b_1=0
+\end{equation}
+的等价类。典范映射 $I\to\Omega$ 定义为
+% PDF 132
+\sourcepage{128}{132}
+\begin{equation}\tag{8.19}
+a\longmapsto a/1.
+\end{equation}
+若 $A\in\Ob\G$ 不是整环，条件 (8.18)，即交叉乘积相等，一般不能定义所需的等价关系。然而，只须把 $I^*$ 换成 $A$ 的任意乘法集 $S$，便可推广这种“分式演算”。乘法集在素理想的定义中已经出现过（参见第一章）。回顾其定义：$A$ 的子集 $S$ 称为\textbf{乘法封闭的}，当且仅当
+\[
+(a,b)\in S\times S\ \Longrightarrow\ ab\in S,\qquad 1\in S.
+\]
+这两个条件可以合为一个条件：$S$ 中任意有限族元素的乘积仍属于 $S$。在这里，$A$ 的单位元是 $S$ 中空族元素的乘积。\footnote{若 $J$ 是非空有限集，$\varphi$ 是以 $J$ 为指标的 $A$ 中元素族，即映射 $\varphi:J\to A$，则记 $\Pi_\varphi=\prod_{j\in J}\varphi(j)$。若 $\varphi_1,\varphi_2$ 是两个非空有限族，则 $\Pi_{\varphi_1+\varphi_2}=\Pi_{\varphi_1}\Pi_{\varphi_2}$，其中 $+$ 表示族的并置。为使该性质对 $J=\varnothing$ 仍成立，注意存在唯一映射 $\varnothing\to A$，并且 $\varphi+\varnothing=\varphi$，故规定 $\Pi_{\varnothing}=1$。}
+
+任意 $A\in\Ob\G$ 中总有这样的集合，例如可以取 $S=A$。几个不平凡的例子是：
+\begin{enumerate}[label=\arabic*)]
+\item 若 $\mathfrak p\in\Spec A$，则 $S=A\setminus\mathfrak p$ 是乘法集。这正是素理想定义的表述：$\mathfrak p$ 为素理想，当且仅当它的补集乘法封闭。
+\item 任意环 $A\in\Ob\G$ 中非零因子的全体是乘法集。
+\item 设 $f\in A$，则
+\begin{equation}\tag{8.20}
+S_f=\{f^n\mid n\in\mathbb Z,\ n\ge0\}
+\end{equation}
+% PDF 133
+\sourcepage{129}{133}
+是一个乘法集。$f=0,1$ 时，原书分别写为 $S_0=\{0\}$、$S_1=\{1\}$。\footnote{译注：依照 (8.20) 以及乘法集必须含 $1$ 的定义，非零环中应为 $S_0=\{1,0\}$；这里保留原书的写法并指出这一遗漏。}
+\end{enumerate}
+整环的原始情形是这一构造的特例，因为 $A$ 是整环，当且仅当 $(0)\in\Spec A$。
+
+$A$ 中任意非空族乘法集的交仍是乘法集。特别地，对任意 $T\subseteq A$，所有包含 $T$ 的乘法集组成一个非空族（至少有 $A$ 本身），它们的交就是包含 $T$ 的最小乘法集 $S_T$。$S_T$ 恰由 $T$ 中元素的所有有限乘积组成。
+
+乘法集的重要性在于如下性质。设 $S$ 为 $A$ 中任意乘法集，并给定 $(a_i,s_i)\in A\times S$（$i=1,2$）。规定 $(a_1,s_1)\sim(a_2,s_2)$ 当且仅当存在 $s\in S$，使
+\begin{equation}\tag{8.21}
+s(a_1s_2-a_2s_1)=0.
+\end{equation}
+则 $\sim$ 是一个等价关系。\footnote{自反性与对称性显然。传递性来自如下计算：若 $(a,s)\sim(a',s')$、$(a',s')\sim(a'',s'')$，则存在 $t,t'\in S$，使 $t(as'-a's)=0$、$t'(a's''-a''s')=0$；从而 $tt's'(a''s-s''a)=0$，而 $tt's'\in S$。}当 $A$ 为整环且 $S=A\setminus\{0\}$ 时，(8.21) 就是 (8.18)。记商集 $(A\times S)/\!\sim$ 为 $S^{-1}A$，以提醒我们：它由分子在 $A$ 中、分母在 $S$ 中的“分式”$a/s$ 组成。准确地说，$a/s$ 表示 $(a,s)\in A\times S$ 的 $\sim$ 等价类。
+
+通常的运算法则
+\[
+\frac{a_1}{s_1}+\frac{a_2}{s_2}=\frac{a_1s_2+a_2s_1}{s_1s_2},\qquad
+\frac{a_1}{s_1}\frac{a_2}{s_2}=\frac{a_1a_2}{s_1s_2}
+\]
+赋予 $S^{-1}A$ 自然的含幺交换环结构，其中零元和单位元分别为 $0/1$、$1/1$。由 $a\mapsto a/1$ 定义的自然映射 $A\to S^{-1}A$ 是 $\G$ 中的态射；记为 $/1_S$，固定 $S$ 时也简记为 $/1$。]
+% PDF 134
+\sourcepage{130}{134}
+[\textbf{注意。}不能不加说明地写成 $a=a/1$，因为对任意 $S$，映射 $/1$ 不一定是单射。事实上，很容易求出 $/1_S$ 的核：$a/1=0/1$ 当且仅当存在 $s\in S$ 使 $sa=0$。因此，$/1_S$ 是单射，当且仅当 $S$ 不包含零因子。
+
+$S^{-1}A$ 称为 $A$ 的、分母取自 $S$ 的\textbf{分式环}。特别地，若 $S$ 是 $A$ 中所有非零因子的集合，则 $S^{-1}A$ 称为 $A$ 的\textbf{全分式环}，它不一定是域。此时 $/1_S$ 为单射，因而可把 $A$ 嵌入 $S^{-1}A$。
+
+关于乘法集 $S_f=\{f^n\mid n\ge0\}$ 的分式环，对于构造任意 $A\in\G$ 所对应的仿射概形 $(\Spec A,\widetilde A)$ 的结构层 $\widetilde A$，起着十分重要的作用。
+
+环 $S^{-1}A$ 与态射 $/1_S:A\to S^{-1}A$ 都称为\textbf{局部化}；$S^{-1}A$ 也称为环 $A$ 在 $S$ 处的局部化。局部化态射 $/1_S$ 具有以下泛性质：每个 $s\in S$ 的像 $s/1$ 都在 $S^{-1}A$ 中可逆，确切地说，$(s/1)(1/s)=1/1$。此外，设 $\varphi:A\to B$ 为 $\G$ 中任意态射，使每个 $s\in S$ 的像 $\varphi(s)$ 在 $B$ 中可逆，则存在唯一态射 $u:S^{-1}A\to B$，使下图交换：
+\begin{equation}\tag{8.19}
+\begin{tikzcd}[ampersand replacement=\&]
+A\arrow[r,"{/1_S}"]\arrow[dr,"\varphi"']\&S^{-1}A\arrow[d,dashed,"u"]\\
+\&B.
+\end{tikzcd}
+\end{equation}
+\footnote{此处沿用原书重复使用的公式编号 (8.19)。}
+设 $S\hookrightarrow T$ 是 $A$ 中两个乘法集之间的包含。它诱导的包含 $A\times S\hookrightarrow A\times T$ 与相应的等价关系
+% PDF 135
+\sourcepage{131}{135}
+$\sim_S$、$\sim_T$ 相容，因而诱导一个同态 $S^{-1}A\to T^{-1}A$。
+
+构造 $\widetilde A$ 时需要的一个重要特例是：$T\supseteq S$ 为由 $S$ 得到的\textbf{饱和乘法集} $\overline S$，定义为
+\[
+\overline S=\{a\in A\mid\text{存在 }s\in S,\ b\in A\text{ 使 }s=ab\}.
+\]
+也就是说，$\overline S$ 由 $S$ 中元素的所有因子组成。\footnote{请验证，$\overline S$ 乘法封闭，且包含 $S$；这两点都是直接的。}它的重要性质是：典范同态
+\[
+S^{-1}A\longrightarrow\overline S^{-1}A
+\]
+为同构。此外，$\overline{\overline S}=\overline S$。
+
+事实上，在任意 $S^{-1}A$ 中都有 $a/s=at/(st)$（$t\in S$）。若 $a/\bar s\in\overline S^{-1}A$，则存在 $t\in\overline S$，使 $\bar st\in S$，因而
+\[
+\frac a{\bar s}=\frac{at}{\bar st}\in S^{-1}A.
+\]
+故 $S^{-1}A\simeq\overline S^{-1}A$。证毕。
+
+\textbf{例。}对每个 $\mathfrak p\in\Spec A$，局部化环 $(A\setminus\mathfrak p)^{-1}A$ 简记为 $A_{\mathfrak p}$，通常称为 $A$ 在 $\mathfrak p$ 处的局部化。特别地，若 $(0)\in\Spec A$（即 $A$ 是整环），则 $A_{(0)}$ 就是 $A$ 的分式域。
+
+这一名称确有道理，因为 $A_{\mathfrak p}\in\G$ 的确是局部环。
+
+[第7节讨论赋环空间与局部赋环空间时，我们已经遇到过局部环。下面依照录音，简要回顾局部环的代数处理。]
+
+\textbf{关于局部环的插论。}\footnote{已熟悉这些知识、而主要关心分式环与局部化的读者，可以略去这段插论。}
+
+“……设 $\mathcal O$ 为一个环（仍照惯例，指含幺交换环，即 $\mathcal O\in\Ob\G$）。
+% PDF 136
+\sourcepage{132}{136}
+称 $\mathcal O$ 为局部环，当且仅当 $\mathcal O$ 中恰有一个极大理想 $\mathfrak m$。\footnote{许多文献把 Noether 条件也列入定义。例如 Nagata 的定义为：$\mathcal O$ 为局部环，当且仅当它是 Noether 环，且 $\mathcal O^*=\mathcal O\setminus\mathfrak m$；仅满足后一条件的环则称为拟局部环。Grothendieck 倾向于摆脱 Noether 性的限制。例如在这里，任意 $A$ 的局部化 $A_{\mathfrak p}$ 未必是 Noether 环。因此，当局部环满足 Noether 条件时，我们会明确称它为 Noether 局部环。}提醒大家，存在极大理想的环必为非零环；Krull 定理也保证了非零含幺交换环至少有一个极大理想。若喜欢几何语言，可以用谱来表述：$A$ 的极大理想与 $\Spec A$ 的闭点一一对应。因此，$\mathcal O$ 为局部环，当且仅当 $\Spec\mathcal O$ 恰有一个闭点。
+
+设 $\mathcal O\in\Ob\G$，$\mathfrak m$ 是 $\mathcal O$ 的一个理想。$\mathcal O$ 为以 $\mathfrak m$ 为极大理想的局部环，当且仅当
+\[
+\mathcal O^*=\mathcal O\setminus\mathfrak m.
+\]
+\footnote{另一个刻画局部环的条件如下，证明留给读者：$\mathcal O\in\Ob\G$ 为局部环，当且仅当对任意 $f\in\mathcal O$，$f$ 和 $1-f$ 中至少一个可逆。}
+这是因为：在任意环 $A\in\Ob\G$ 中（不必为局部环），元素 $f$ 可逆，当且仅当它不属于任何极大理想，即 $fA=A$ 为单位理想。这是 Krull 定理的推论：若不存在包含 $fA$ 的极大理想，则商环 $A/fA$ 为零，也就有 $A=fA$。反之，若 $\mathcal O^*=\mathcal O\setminus\mathfrak m$，则商环 $\mathcal O/\mathfrak m$ 是域，因为其中每个非零元都是某个可逆元 $f\in\mathcal O^*$ 的像。$\mathcal O$ 的任意真理想 $\mathfrak a$ 都包含在 $\mathfrak m$ 中；否则，若 $f\in\mathfrak a\setminus\mathfrak m$，则 $f$ 可逆，从而 $\mathfrak a=\mathcal O$，矛盾。
+
+域 $k(\mathfrak m)=\mathcal O/\mathfrak m$ 称为局部环 $\mathcal O$ 的\textbf{剩余域}。
+% PDF 137
+\sourcepage{133}{137}
+一个自然的例子是：对每个 $\mathfrak p\in\Spec A$，$A_{\mathfrak p}$ 确实是局部环，其极大理想为 $\mathfrak m=\mathfrak pA_{\mathfrak p}$。\footnote{局部化映射 $A\to A_{\mathfrak p}$ 赋予 $A_{\mathfrak p}$ 典范的 $A$-代数结构，因而对 $B\subseteq A$，$BA_{\mathfrak p}\subseteq A_{\mathfrak p}$ 这个集合的含义是明确的。}
+
+$A_{\mathfrak p}$ 中的元素 $a$ 是一个分式 $f/g$（$f,g\in A,g\notin\mathfrak p$）。$a\in\mathfrak pA_{\mathfrak p}$，当且仅当它可写成分子 $f\in\mathfrak p$ 的形式 $f/g=f(1/g)$。显然 $\mathfrak pA_{\mathfrak p}$ 是 $A_{\mathfrak p}$ 的理想。$a$ 不属于 $\mathfrak pA_{\mathfrak p}$，当且仅当它不能写成上述形式，也就是 $a=f/g$ 且 $f,g\notin\mathfrak p$。这时 $a$ 可逆，逆元为 $a^{-1}=g/f$。
+
+\Section{9}{层 $\widetilde M$、$\widetilde A$ 的定义}
+“……于是，我们在由 $A$ 中元素 $f$ 所成的有序范畴上得到了一个 $A$-模预层 $\widetilde M$（相应地，一个 $A$-代数预层 $\widetilde A$）：
+\begin{equation}\tag{9.1}
+f\longmapsto M_f\quad\text{（或 }f\longmapsto A_f\text{）},\qquad f\in A.
+\end{equation}
+其实，我们可以像 Dieudonné 的书（EGA I，Springer 版，定义1.3.4，第198页）中那样，取其相伴层[作为 $\widetilde M,\widetilde A$ 的定义]，这样便已足够……不过，我们要直接证明预层 $\widetilde A,\widetilde M$ 已经是层。”\footnote{这里实际证明了更强的结论：$\widetilde M,\widetilde A$ 是 $\Spec A$ 的谱拓扑的基本开集所成的景 $\mathcal B$ 上的层，参见第二章第3节。}
+
+[也就是说，对 $\Spec A$ 中任意由基本开集构成的开覆盖
+\begin{equation}\tag{9.2}
+X_f=\bigcup_{i\in I}X_{f_i},
+\end{equation}
+由函子性可定义图
+\begin{equation}\tag{9.3}
+0\longrightarrow M_f\xrightarrow{\prod\rho_i}
+\prod_{i\in I}M_{f_i}\mathrel{\substack{\longrightarrow\\[-.5ex]\longrightarrow}}
+\prod_{i,j}M_{f_if_j}\longrightarrow0
+\end{equation}
+以及
+\begin{equation}\tag{9.3$'$}
+0\longrightarrow A_f\xrightarrow{\prod\rho_i}
+\prod_{i\in I}A_{f_i}\mathrel{\substack{\longrightarrow\\[-.5ex]\longrightarrow}}
+\prod_{i,j}A_{f_if_j}\longrightarrow0.
+\end{equation}
+需要证明，对任意 $f\in A$ 和任意覆盖 (9.2)，这些图都是正合的。\footnote{译注：图中最后的 $\to0$ 沿用原书。这里所谓“正合”是层条件的等化子意义：第一个映射为单射，且它的像恰为后面两个限制映射相等的元素所成的集合；不要求到重叠开集上截面之积的映射为满射。}]
+
+在这门课中，也在他的大多数出版物中，Grothendieck 都把这一正合性条件作为层的定义，因为这种定义更有范畴性：可以把 $\operatorname{Op}(X)$ 换成任意具有纤维积的范畴。概括地说，$X$ 上的层就是满足正合性条件的预层。
+
+这种处理不显式引入“茎”；对于任意的“景”（即 Grothendieck 拓扑）而言，这十分方便，因为在那里，茎并不居于首要地位。
+% PDF 138
+\sourcepage{134}{138}
+[设 $U\in\Ob\mathcal B$ 是 $X=\Spec A$ 的任意基本开集。按定义，至少存在一个 $f\in A$，使 $U=X_f$，但这样的 $f$ 不一定唯一。例如 $X_f=X_{f^n}$（$n\ge1$），而 $f\ne f^n$ 的例子很多。看起来依赖代表元 $f$ 的模与环 $M_f,A_f$，实际上只依赖 $U=X_f$：因为乘法集 $S_f=\{f^n\mid n\ge0\}$ 定义的环，与饱和乘法集 $S_U$ 定义的环相同，而 $S_U$ 只依赖于 $U$。换言之，若 $U=X_f$，则任意分式 $m/s\in S_U^{-1}M$（相应地 $a/s\in S_U^{-1}A$）都可写成 $m'/f^n$（相应地 $a'/f^n$）的形式。因此可把 (9.1) 换成
+\begin{equation}\tag{9.1$'$}
+U\longmapsto\widetilde M(U)\quad
+\text{（或 }U\longmapsto\widetilde A(U)\text{）},\qquad U\in\Ob\mathcal B.
+\end{equation}
+这里把 $S_U^{-1}M,S_U^{-1}A$ 简记为 $M(U),A(U)$。同时把 (9.2) 换成
+\begin{equation}\tag{9.2$'$}
+U=\bigcup_{i\in I}U_i,\qquad U_i=X_{f_i}.
+\end{equation}
+于是，过渡态射 $M_f\to M_{f_i}$（相应地 $A_f\to A_{f_i}$）可内在地写成 $M(U)\to M(U_i)$（相应地 $A(U)\to A(U_i)$），不依赖 $f,f_i$ 的选取。换句话说，$\widetilde M,\widetilde A$ 的函子性质的确不依赖于任何代表元的选择。第3节中的准备，使这些表述之间的转换变得十分容易。]
+
+要证明 $\widetilde M$ 是层，只须对任意 $f\in A$，证明图 (9.3) 正合。由于这里的基本开集为拟紧集，可以假设 $I$ 有限。证明自然分为两步。
+% PDF 139
+\sourcepage{135}{139}
+\textbf{1）$\prod\rho_i$ 为单射，即第一处正合性。}
+
+设 $x/f^n\in M_f$，且对所有 $i\in I$，它的像 $\rho_i(x/f^n)$ 都为零。须证 $x/f^n=0$。若 $\rho_i(x/f^n)=(x/f^n)/1\in M_{f_i}$ 为零，就存在 $m_i\ge0$，使
+\[
+f_i^{m_i}(x/f^n)=(f_i^{m_i}x)/f^n=0\quad\text{于 }M_f.
+\]
+因此又存在 $m_i'\ge0$，使 $f^{m_i'}f_i^{m_i}x=0$。由于 $I$ 有限，可用 $m=\max_{i\in I}m_i'$ 代替各个 $m_i'$，得到
+\begin{equation}\tag{9.4}
+f^mf_i^{m_i}x=0.
+\end{equation}
+另一方面，由覆盖关系 $X_f=\bigcup_{i\in I}X_{f_i^{m_i}}$，存在一个关系
+\[
+f^{m'}=\sum_{i\in I}g_if_i^{m_i}.
+\]
+与 (9.4) 合并即得 $f^{m+m'}x=0$，所以 $x/f^n$ 在 $M_f$ 中为零。证毕。这就证明了 (9.3) 第一处的正合性。
+
+\textbf{2）(9.3) 在中间项处的正合性。}
+
+设 $x_i/f_i^{n_i}\in M_{f_i}$（$i\in I$）满足相容条件：对每对 $i,j\in I$，
+\begin{equation}\tag{9.5}
+\rho^{f_i}_{f_if_j}(x_i/f_i^{n_i})
+=\rho^{f_j}_{f_if_j}(x_j/f_j^{n_j})\quad\text{于 }M_{f_if_j}.
+\end{equation}
+由于 $I$ 有限，只须给各个分子、分母同时乘以 $f_i$ 的适当次幂，就可令所有 $n_i$ 相同，记为 $n$。再由 $M_{f_i}=M_{f_i^n}$（$n\ge1$），可换用 $f_i^n$ 作为代表元，从而假设 $n=1$。于是，相容条件化为
+\begin{equation}\tag{9.6}
+(f_if_j)^{m_{ij}}(f_jx_i-f_ix_j)=0,
+\qquad m_{ij}\in\mathbb Z,\quad m_{ij}\ge0.
+\end{equation}
+同样，可把有限多个 $m_{ij}$ 换成一个固定的 $m>0$：
+% PDF 140
+\sourcepage{136}{140}
+\begin{equation}\tag{9.6$'$}
+(f_if_j)^m(f_jx_i-f_ix_j)=0,
+\end{equation}
+或者写成
+\begin{equation}\tag{9.6$''$}
+f_j^{m+1}y_i-f_i^{m+1}y_j=0,
+\end{equation}
+其中 $y_i=f_i^mx_i$（$i\in I$），即 $x_i/f_i=y_i/f_i^{m+1}$。这样，(9.6$'$) 就化到了原书所说的“$m=1$ 的情形”。\footnote{译注：确切地说，把 $f_i^{m+1}$ 换记为新的基本开集代表元之后，就得到了没有额外乘子、分母为一次幂的相容关系。若仍以 (9.6) 中指数 $m$ 的含义计数，这应是 $m=0$ 的形式。}
+
+令 $y=\sum_{i\in I}g_iy_i$，其中同前，$f^n=\sum_{i\in I}g_if_i^{m+1}$。于是
+\begin{equation}\tag{9.7}
+f^ny_i=
+\left(\sum_{j\in I}g_jf_j^{m+1}\right)y_i
+=f_i^{m+1}\left(\sum_{j\in I}g_jy_j\right)
+=f_i^{m+1}y.
+\end{equation}
+这等价于 $\rho_i(y/f^n)=y_i/f_i^{m+1}$，其中 $y/f^n\in M_f$。证毕。
+
+\textbf{注。}前面的构造表明：$A$-模 $M$ 关于变化的元素 $f\in A$ 的局部化，也可以理解为拓扑意义的局部化，即取某个层 $\widetilde M$ 在较小的基本开集 $X_f\in\Ob\mathcal B$ 上的截面。
+
+特别地，有
+\begin{equation}\tag{9.8}
+\widetilde M(X)=M_1=M
+\end{equation}
+[这是关于 $A$ 的单位元的局部化]。因此，可把 $M$ 看成 $\Spec A$ 上的层 $\widetilde M$ 的整体连续截面所成的 $A$-模[也就是说，我们“恢复”了 $M$]，而局部化映射
+% PDF 141
+\sourcepage{137}{141}
+$M=M_1\to M_f$，则解释为拓扑意义上到基本开集 $X_f$ 的限制。\footnote{依照 EGA I，Springer 版命题1.3.6（第199页），上述非正式描述可以精确表述为：开集 $X_f$ 可典范地与局部化环 $A_f$ 的谱 $\Spec A_f$ 等同，而由 $A_f$-模 $M_f$ 所对应的层可与限制层 $\widetilde M|_{X_f}$ 等同。}
+
+在 $M=A$ 的情形，$\widetilde A(X)=A_1=A$，即原来的环 $A$ 同构于 $X$ 上的结构层 $\widetilde A=\mathcal O_X$ 的整体连续截面环。
+
+\begin{quote}
+若要赋予交换代数以几何意义，那么，利用 $\Spec A$ 上的层论作出的这一解释至关重要。
+\end{quote}
+
+\Section{10}{将 $\G^{\op}$ 与仿射概形范畴等同}
+[我们知道，含幺交换环范畴 $\G$ 的对偶范畴 $\G^{\op}$，同构于仿射代数空间范畴 $\Aff$（参见第一章）；等价地，同构于协变可表函子 $\G\to\Sets$ 所成的范畴。确切地说，每个 $A\in\Ob\G$ 对应于仿射代数空间 $\mathfrak X_A=V_A$，即可表函子
+\[
+k\longmapsto\Hom_{\G}(A,k),\qquad k\in\Ob\G.
+\]
+Grothendieck 对 $\G^{\op}$ 的第二种解释更具几何意味，它利用仿射概形来实现：
+
+每个 $A\in\Ob\G$ 对应一个仿射概形 $(\Spec A,\widetilde A)$，即一个局部赋环空间，其底拓扑空间为谱
+\[
+\Spec A=\{\mathfrak p\mid\mathfrak p\text{ 为 }A\text{ 的素理想}\},
+\]
+赋以谱拓扑（参见第2节），而 $\widetilde A$ 是第9节定义的结构层。反过来，$(\Spec A,\widetilde A)$ 又把 $A$ 恢复为结构层的整体截面环 $A=\Gamma(\Spec A,\widetilde A)$。$\G$ 中任意环同态
+\begin{equation}\tag{10.1}
+f:A\longrightarrow B
+\end{equation}
+都诱导局部赋环空间范畴 $\mathsf{Lrs}$（参见第7节）中的态射
+\begin{equation}\tag{10.2}
+f^*:(\Spec B,\widetilde B)\longrightarrow(\Spec A,\widetilde A),
+\end{equation}
+其中 $f^*=(\Spec f,\widetilde f)$ 由底拓扑空间之间的连续映射
+\begin{equation}\tag{10.3}
+\Spec f:\Spec B\longrightarrow\Spec A
+\end{equation}
+% PDF 142
+\sourcepage{138}{142}
+以及结构层之间的 $\Spec f$-态射（参见第7节）
+\begin{equation}\tag{10.4}
+\widetilde f:\widetilde A\longrightarrow\widetilde B
+\end{equation}
+组成。反过来，两个局部赋环空间之间的任意态射
+\[
+G=(\varphi,\theta):(\Spec B,\widetilde B)\longrightarrow(\Spec A,\widetilde A)
+\]
+都在两个结构层的整体截面环之间诱导同态 $G^*:A\to B$，并且
+\begin{equation}\tag{10.5}
+\Spec G^*=\varphi,\qquad\widetilde{G^*}=\theta.
+\end{equation}
+换句话说，\textbf{仿射概形构成局部赋环空间范畴 $\mathsf{Lrs}$ 的一个满子范畴；它可以与 $\G$ 的对偶范畴 $\G^{\op}$ 等同。}
+
+这两个函子 $f\mapsto(\Spec f,\widetilde f)$ 和 $(\varphi,\theta)\mapsto G^*$，给出了交换代数语言与局部赋环空间的几何语言之间的完整对应；它们对环与几何对象的方向是反变的。]
+
+我们已经看到，给每个含幺交换环 $A$ 配上赋环空间 $(X,\mathcal O_X)$，
+\begin{equation}\tag{10.6}
+A\longmapsto(X,\mathcal O_X),\qquad X=\Spec A,\quad\mathcal O_X=\widetilde A,
+\end{equation}
+便可把 $A$ 恢复为结构层的整体截面环[即 $A\simeq\Gamma(X,\mathcal O_X)$]。因此，确实可以确信：借助这一几何对象[仿射概形 $(\Spec A,\widetilde A)$]，我们已经重新取得关于 $A$ 的全部信息；等价地，也重新取得了相应仿射代数空间 $\mathfrak X_A$ 的全部信息[参见第一章]。不过，要进一步安心，还须说明环之间的态射[在 $\G$ 中]，等价地，仿射代数空间之间的态射，如何用谱来解释。因此，现在给定同态
+\begin{equation}\tag{10.7}
+u:A\longrightarrow B
+\end{equation}
+[在 $\G$ 中]，考察对应的谱之间的映射。
+% PDF 143
+\sourcepage{139}{143}
+\begin{equation}\tag{10.8}
+\varphi:X\longrightarrow Y,
+\end{equation}
+其中 $X=\Spec B$、$Y=\Spec A$，而 $\varphi=\Spec u=u^*$ 把 $B$ 的每个素理想 $\mathfrak p$ 送到它的逆像 $u^{-1}(\mathfrak p)\in Y$。\footnote{译注：原书此处写成 $u^{-1}(\mathfrak p)\in X$，但逆像是 $A$ 的素理想，故应属于 $Y=\Spec A$。}我们已经知道[参见第4节]，这是从 $X$ 到 $Y$ 的连续映射。
+
+现在考察：这一映射与 $A$-模、$B$-模所对应的 $Y$ 上和 $X$ 上的层有何联系。先从结构层 $\mathcal O_X,\mathcal O_Y$ 开始。映射 $\varphi$ 自然诱导一个环层同态
+\begin{equation}\tag{10.9}
+\widetilde\varphi:\mathcal O_Y\longrightarrow\mathcal O_X,
+\end{equation}
+方向与 $\varphi$ 相反；等价地，得到环层 $\mathcal O_Y$ 到 $\mathcal O_X$ 沿 $\varphi$ 的正像 $\varphi_*(\mathcal O_X)$ 的自然同态。要定义 $\widetilde\varphi$，只须先在预层上定义它：对每个 $f\in A$，定义环同态
+\begin{equation}\tag{10.10}
+\Gamma(Y_f,\mathcal O_Y)\longrightarrow
+\Gamma(\varphi^{-1}(Y_f),\mathcal O_X).
+\end{equation}
+\footnote{注意，$\Gamma(\varphi^{-1}(Y_f),\mathcal O_X)$ 就是 $\mathcal O_X$ 在 $Y$ 上的正像层 $\varphi_*(\mathcal O_X)$ 在 $Y_f$ 上的截面环，参见第7节。}
+它联系了两个层在开集 $Y_f\subseteq Y$、$\varphi^{-1}(Y_f)\subseteq X$ 上的截面。为具体写出 (10.10)，利用
+\[
+\Gamma(Y_f,\mathcal O_Y)=A_f
+\]
+（$A$ 关于 $f$ 的局部化），以及第4节证明的公式
+\[
+\varphi^{-1}(Y_f)=X_{u(f)},
+\]
+即得 $\Gamma(\varphi^{-1}(Y_f),\mathcal O_X)=B_{u(f)}$。也就是说，
+% PDF 144
+\sourcepage{140}{144}
+我们有一个由 $u$ 诱导的同态
+\begin{equation}\tag{10.11}
+A_f\longrightarrow B_{u(f)}\ (=B_f).
+\end{equation}
+\footnote{等式 $B_{u(f)}=B_f$ 表示：环 $B\in\Ob\G$ 在 $u(f)$ 处的局部化，典范同构于把 $B$ 视为 $A$-模后关于 $f$ 的局部化。这个容易的证明留给读者。}
+这些同态与过渡映射相容。即若 $Y_g\subseteq Y_f$，则下图交换：\footnote{原书此处基本开集的记号写作 $X_g\subseteq X_f$；由于 $f,g\in A$，这里应理解为 $Y=\Spec A$ 中的基本开集。}
+\begin{equation}\tag{10.12}
+\begin{tikzcd}[ampersand replacement=\&]
+A_f\arrow[r]\arrow[d]\&B_{u(f)}=B_f\arrow[d]\\
+A_g\arrow[r]\&B_{u(g)}=B_g.
+\end{tikzcd}
+\end{equation}
+[其中的横箭头是 (10.11) 的形式，即 $x/f^n\mapsto u(x)/(u(f))^n$，竖箭头为限制态射。]这意味着 $\varphi$ 可看成赋环空间态射[参见第7节]
+\[
+(X,\mathcal O_X)\longrightarrow(Y,\mathcal O_Y).
+\]
+
+\textbf{注。}已知对应的赋环空间态射 $(X,\mathcal O_X)\to(Y,\mathcal O_Y)$，就可以重建同态 $u:A\to B$，因为 $u$ 正是它在整体截面环之间诱导的同态
+\[
+\Gamma(Y,\mathcal O_Y)\longrightarrow\Gamma(X,\mathcal O_X).
+\]
+只须取 $f=1$，于是 $u(f)=1$、$Y=Y_1$、$X=X_1$。换言之，我们已经相当直接地看到：环同态可解释为赋环空间态射的特殊情形，即有单射
+\begin{equation}\tag{10.13}
+\Hom_{\G}(A,B)\hookrightarrow
+\Hom_{\mathsf{Rs}}\bigl((X,\mathcal O_X),(Y,\mathcal O_Y)\bigr).
+\end{equation}
+
+现在要说明：[在赋环空间范畴 $\mathsf{Rs}$ 中]，来自环同态的态射具有什么特殊性质。这里须回忆，$(X,\mathcal O_X)$、$(Y,\mathcal O_Y)$ 都是局部赋环空间[即 $\mathsf{Lrs}$ 的对象]，也就是说，

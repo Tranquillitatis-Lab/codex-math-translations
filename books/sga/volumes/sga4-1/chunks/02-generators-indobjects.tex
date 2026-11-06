@@ -1,0 +1,937 @@
+\SourcePage{34}
+\SGAsection{7}{生成子范畴与余生成子范畴}
+\begin{SGAresult}{定义}{7.1}
+设 $E$ 是一个\Term{category}{范畴}，$C$ 是 $E$ 的一个\Term{full-subcategory}{满子范畴}。若对 $E$ 的每个\Term{object}{对象} $X$，$E$ 中所有以 $X$ 为靶、以 $X'\in\operatorname{ob}C$ 为源的\Term{arrow}{箭头}构成一个\Term{epimorphic-family}{满态射族}（分别为\Term{strict-epimorphic-family}{严格满态射族}）（1.3），则称 $C$ 是 $E$ 中\Term{generating-by-strict-epimorphisms}{由严格满态射生成的子范畴}（分别为\Term{generating-by-epimorphisms}{由满态射生成的子范畴}）。若对每个\Term{arrow}{箭头} $u:Y\to X$（分别对 $E$ 的每个\Term{monomorphism}{单态射}、每个\Term{strict-monomorphism}{严格单态射}（10.5）），只要对每个 $X'\in\operatorname{ob}C$，相应映射
+\[
+\operatorname{Hom}(X',Y)\longrightarrow\operatorname{Hom}(X',X)
+\]
+为\Term{bijection}{双射}，就有 $u$ 为\Term{isomorphism}{同构}，则称 $C$ 是 $E$ 的\Term{generating-subcategory}{生成子范畴}（分别为\Term{generating-for-monomorphisms}{对单态射生成的子范畴}、\Term{generating-for-strict-monomorphisms}{对严格单态射生成的子范畴}）。最后，若 $E$ 的\Term{object}{对象}族 $(X_i)$ 所生成的\Term{full-subcategory}{满子范畴} $C$ 由\Term{strict-epimorphism}{严格满态射}生成（分别等等），便称该族\Term{generating-family}{由严格满态射生成}（分别等等）。
+\end{SGAresult}
+\textbf{7.1.1.} 注意，用各 $X'\in\operatorname{ob}C$ 所\Term{representable-functor}{表示}的\Term{functor}{函子}族 $(h_{X'})_{X'\in\operatorname{ob}C}$，其中
+\[
+h_{X'}:E\longrightarrow(\mathrm{Ens})\qquad(X'\in\operatorname{ob}C),
+\]
+\SourcePage{35}
+可将 $C$ 生成（分别对\Term{monomorphism}{单态射}生成、对\Term{strict-monomorphism}{严格单态射}生成）的条件，表述为族 $(h_{X'})$ 是\Term{conservative-family}{保守族}（分别对\Term{monomorphism}{单态射}\Term{conservative-functor}{保守}、对\Term{strict-monomorphism}{严格单态射}\Term{conservative-functor}{保守}）（6.1）。定义还立即给出：$C$ 由\Term{epimorphism}{满态射}生成，当且仅当族 $(h_{X'})_{X'\in\operatorname{ob}C}$ 是\Term{faithful-family}{忠实族}（6.1）。下面（7.2 (i)）还将给出 $C$ 由\Term{strict-epimorphism}{严格满态射}生成这一条件的类似解释。
+
+\textbf{7.1.2.} 同 6.1 中引入的概念一样，7.1 的概念主要在 $E$ 具有适当的\Term{exactness}{正合性}时有用；此时，所引入的各个概念有很强的倾向成为彼此\Term{equivalence}{等价}的概念（7.3）。因此，几乎无须问 7.1 中哪一个概念最重要：在最重要的情形下，它们彼此相同，“\Term{generating-subcategory}{生成子范畴}”一词便可任意解释为 7.1 中的任意一种性质（例如第一种；我们将看到（7.2 (ii)），它是其中最强的一种）。
+
+\textbf{7.1.3.} 设 $E$ 为一个 $\mathcal U$-\Term{category}{范畴}，考虑\Term{canonical-functor}{典范函子}
+\[
+\varphi:E\longrightarrow\widehat C=\mathscr{H}\!om(C,\mathcal U\text{-}\mathrm{Ens}).\tag{7.1.3.1}
+\]
+它是\Term{functor}{函子} $E\to\widehat E\to\widehat C$ 的复合，其中第一个是\Term{canonical-functor}{典范函子}（1.3.3），第二个是\Term{restriction}{限制}到 $C$ 的\Term{functor}{函子}。显然，说上述\Term{functor}{函子} $\varphi$ 是\Term{conservative-functor}{保守的}（分别为\Term{faithful-functor}{忠实的}），\Term{equivalence}{等价}于说，在 $X'\in\operatorname{ob}C$ 变化时，\Term{functor}{函子}
+\[
+h_{X'}:X\longmapsto\operatorname{Hom}(X',X)=\varphi(X)(X')
+\]
+构成一个\Term{conservative-family}{保守族}（分别为\Term{faithful-family}{忠实族}），也就是（7.1.2）说 $C$ 生成（分别由\Term{epimorphism}{满态射}生成）。同样，$\varphi$ 对\Term{monomorphism}{单态射}\Term{conservative-functor}{保守}（分别对\Term{strict-monomorphism}{严格单态射}\Term{conservative-functor}{保守}），当且仅当族 $h_{X'}$（$X'\in\operatorname{ob}C$）对\Term{monomorphism}{单态射}\Term{conservative-functor}{保守}（分别对\Term{strict-monomorphism}{严格单态射}\Term{conservative-functor}{保守}），即当且仅当 $E$ 的\Term{subcategory}{子范畴} $C$ 对\Term{monomorphism}{单态射}生成（分别对\Term{strict-monomorphism}{严格单态射}生成）。
+
+\begin{SGAresult}{命题}{7.2}
+设 $E$ 是一个 $\mathcal U$-\Term{category}{范畴}，$C$ 是一个\Term{full-subcategory}{满子范畴}。
+
+(i) 下列条件\Term{equivalence}{等价}：
+
+ a) $C$ 是\Term{generating-by-strict-epimorphisms}{由严格满态射生成的子范畴}。
+
+ b) 对每个 $X\in\operatorname{ob}E$，以 $C_{/X}$ 表示 $E_{/X}$ 中由源 $X'\in\operatorname{ob}C$ 的\Term{arrow}{箭头} $X'\to X$ 构成的\Term{full-subcategory}{满子范畴}，则从\Term{inclusion-functor}{包含函子} $j:C_{/X}\to E$ 到 $C_{/X}$ 上取值为 $X$ 的常\Term{functor}{函子}的自然\Term{arrow}{箭头}，使 $X$ 成为 $j$ 的\Term{inductive-limit}{归纳极限}：
+\[
+X\xleftarrow{\sim}\varinjlim_{C_{/X}}X'.
+\]
+\SourcePage{36}
+ c) (7.1.3.1) 中的\Term{canonical-functor}{典范函子} $\varphi$ 是\Term{fully-faithful-functor}{全忠实的}。
+
+(ii) 7.1 中各个概念之间有下列蕴涵：
+\[
+\begin{tikzcd}[column sep=large,row sep=large]
+\begin{gathered}1)\ C\text{ 由严格满态射生成}\\(\varphi\text{ 全忠实})\end{gathered}\arrow[dr,Rightarrow]&\\
+\begin{gathered}2)\ C\text{ 由满态射生成}\\(\varphi\text{ 忠实})\end{gathered}&\begin{gathered}3)\ C\text{ 生成}\\(\varphi\text{ 保守})\end{gathered}\arrow[d,Rightarrow]\\
+&\begin{gathered}4)\ C\text{ 对单态射生成}\\(\varphi\text{ 对单态射保守})\end{gathered}\arrow[d,Rightarrow]\\
+&\begin{gathered}5)\ C\text{ 对严格单态射生成}\\(\varphi\text{ 对严格单态射保守})\end{gathered}
+\end{tikzcd}
+\]
+(iii) 还有下列带条件的蕴涵：
+
+ a) 若在 $E$ 中，\Term{epimorphism}{满态射}\Term{arrow}{箭头}族都是\Term{strict-epimorphic-family}{严格满态射族}，则有 $2)\Rightarrow1)$。若 $E$ 中的\Term{monomorphism}{单态射}都是严格的，则有 $5)\Rightarrow4)$。
+
+ b) 若在 $E$ 中，\Term{arrow}{箭头}对的\Term{kernel}{核}（分别为\Term{fibre-product}{纤维积}）都是\Term{representable-functor}{可表示}的，则有 $3)\Rightarrow2)$（分别为 $4)\Rightarrow3)$）。
+
+ c) 若 $E$ 中每个具有相同靶 $X$ 的\Term{morphism}{态射}族 $X_i\to X$ 都\Term{decomposable}{可分解}为\Term{strict-epimorphic-family}{严格满态射族}（分别为\Term{epimorphic-family}{满态射族}）$X_i\to Y$，后接一个\Term{monomorphism}{单态射}（分别为\Term{strict-monomorphism}{严格单态射}）$Y\to X$，则有 $4)\Rightarrow1)$（分别为 $5)\Rightarrow2)$）。
+\end{SGAresult}
+先指出以下推论。
+\begin{SGAresult}{推论}{7.3}
+6.1 中所考虑（并在上面 (ii) 的蕴涵图中重述）的所有概念，在以下任一情形中都是\Term{equivalence}{等价}的：
+
+(i) 在 $E$ 中，双\Term{arrow}{箭头}的核和\Term{fibre-product}{纤维积}都是\Term{representable-functor}{可表示}的，\Term{monomorphism}{单态射}都是严格的，\Term{epimorphism}{满态射}\Term{arrow}{箭头}族都是\Term{strict-epimorphic-family}{严格满态射族}。
+
+(ii) 在 $E$ 中，每个同靶\Term{arrow}{箭头}族 $(X_i\to X)_{i\in I}$ 都\Term{decomposable}{可分解}为\Term{epimorphic-family}{满态射族} $(X_i\to Y)$，后接一个\Term{monomorphism}{单态射} $Y\to X$；$E$ 中每个\Term{monomorphism}{单态射}都是严格的，且每个\Term{epimorphism}{满态射}\Term{arrow}{箭头}族都是严格的。
+\end{SGAresult}
+\begin{proof}
+在情形 (i) 中，由 b) 得 $4)\Rightarrow3)$ 和 $3)\Rightarrow2)$，由 a) 得 $5)\Rightarrow4)$ 和 $2)\Rightarrow1)$。
+\SourcePage{37}
+在情形 (ii) 中，由 c) 得 $4)\Rightarrow1)$ 和 $5)\Rightarrow2)$。于是由 6.2 (ii) 的蕴涵图得出结论。
+\end{proof}
+\begin{proof}[7.2 的证明]
+(i) 蕴涵 b)$\Rightarrow$a) 直接由定义得到。证明 a)$\Rightarrow$b)。在假设 a) 下，要证明对任意 $X,Y\in\operatorname{ob}E$，任何以 $X'\in\operatorname{ob}C_{/X}$ 为指标的\Term{arrow}{箭头}系统
+\[
+u_{X'}:X'\longrightarrow Y,
+\]
+只要对 $C_{/X}$ 中每个\Term{arrow}{箭头} $f:X''\to X'$ 都有 $u_{X'}f=u_{X''}$，就能经由一个\Term{arrow}{箭头} $X\to Y$ \Term{resolution}{分解}；由假设 a)，该\Term{arrow}{箭头}必然唯一。根据 a)，只须验证：对 $E_{/X}$ 的任意\Term{object}{对象} $Z$，及其中任意一对\Term{morphism}{态射} $v':Z\to X'$、$v'':Z\to X''$（$X',X''$ 属于 $C_{/X}$），有 $u_{X'}v'=u_{X''}v''$。又由 a)，以 $X'''\in\operatorname{ob}C$ 为源的\Term{arrow}{箭头} $w:X'''\to Z$ 构成\Term{epimorphic-family}{满态射族}，因此只须验证对每个这样的 $w$ 有
+\[
+(u_{X'}v')w=(u_{X''}v'')w.
+\]
+此式也可写成 $u_{X'}(v'w)=u_{X''}(v''w)$，它直接来自对族 $u$ 的假设。
+
+现在证明 b) 与 c) \Term{equivalence}{等价}。注意，对每个 $X\in\operatorname{ob}E$，$\widehat C$ 的\Term{object}{对象} $\varphi(X)$ 是\Term{canonical-functor}{典范函子} $\widehat C_{/\varphi(X)}\to\widehat C$ 在 $\widehat C$ 中的\Term{inductive-limit}{归纳极限}（3.4）；而 $\widehat C_{/\varphi(X)}$ \Term{canonical-isomorphism}{典范同构}于 $C_{/X}$，故在 $\widehat C$ 中有
+\[
+\varphi(X)=\varinjlim_{C_{/X}}X',
+\]
+这里将 $C$ 的\Term{object}{对象} $X'$ 与它所表示的\Term{functor}{函子} $\in\widehat C$ 等同。因此，对 $E$ 的另一个\Term{object}{对象} $Y$，有\Term{canonical-isomorphism}{典范同构}
+\[
+\begin{aligned}
+\operatorname{Hom}(\varphi(X),\varphi(Y))
+&\simeq\varprojlim_{C_{/X}}\operatorname{Hom}(X',\varphi(Y))
+\simeq\varprojlim_{C_{/X}}\varphi(Y)(X')\quad(1.4)\\
+&\simeq\varprojlim_{C_{/C}}\operatorname{Hom}(X',Y).
+\end{aligned}\tag{*}
+\]
+于是 $\varphi$ 所定义的映射
+\[
+\operatorname{Hom}(X,Y)\longrightarrow\operatorname{Hom}(\varphi(X),\varphi(Y))
+\]
+经由 (*) 两端之间的\Term{isomorphism}{同构}，恰是从 7.2 (i) b) 中以 $C_{/X}$ 为指标的\Term{arrow}{箭头}\Term{inductive-system}{归纳系统} $X'\to X$ 得到的映射
+\[
+\operatorname{Hom}(X,Y)\longrightarrow\varprojlim_{C_{/X}}\operatorname{Hom}(X',Y).
+\]
+因而，在 $X$ 固定时，第一个映射对每个 $Y$ 都是\Term{bijection}{双射}，当且仅当 $X$ 是\Term{inclusion-functor}{包含函子} $j:C_{/X}\to E$ 的\Term{inductive-limit}{归纳极限}。这就证明了 b) 与 c) \Term{equivalence}{等价}。
+\SourcePage{38}
+(ii) 蕴涵 $1)\Rightarrow2)$ 和 $3)\Rightarrow4)\Rightarrow5)$ 由定义显然成立。由 (i)，性质 1) 可以解释为 $\varphi$ \Term{fully-faithful-functor}{全忠实}；又因\Term{fully-faithful-functor}{全忠实}\Term{functor}{函子}是\Term{conservative-functor}{保守}的，便得到 $1)\Rightarrow3)$。我们已经注意到（7.1.1），3) 正是说 $\varphi$ \Term{conservative-functor}{保守}。
+
+(iii) 断言 a) 是同义反复。断言 b) 来自将 6.2 (i)（分别为 6.2 (iv)）应用于\Term{functor}{函子} $\varphi$，并注意到后者是\Term{left-exact}{左正合的}。最后证明 c)。对 $X\in\operatorname{ob}E$，考虑所有 $X_i\in\operatorname{ob}C$ 的\Term{morphism}{态射} $X_i\to X$ 所成的族；根据对 $E$ 的假设，该族\Term{decomposable}{可分解}为\Term{effective-epimorphic-family}{有效满态射族}（分别为\Term{epimorphic-family}{满态射族}）$X_i\to Y$，后接一个\Term{monomorphism}{单态射}（分别为\Term{strict-monomorphism}{严格单态射}）$Y\to X$。于是，假设 4)（分别为 5)）蕴涵 $Y\to X$ 为\Term{isomorphism}{同构}，故所考虑的族是\Term{strict-epimorphic-family}{严格满态射族}（分别为\Term{epimorphic-family}{满态射族}）。
+\end{proof}
+\begin{SGAresult}{命题}{7.4}
+设 $E$ 为一个\Term{category}{范畴}，$C$ 为 $E$ 的\Term{full-subcategory}{满子范畴}，$X$ 为 $E$ 的\Term{object}{对象}。假设 $C$ 在 $E$ 中生成（分别假设 $C$ 对\Term{monomorphism}{单态射}生成，且 $X$ 的任意两个\Term{subobject}{子对象}在 $X$ 上的\Term{fibre-product}{纤维积}在 $E$ 中\Term{representable-functor}{可表示}）。那么，$X$ 的一个\Term{strict-subobject}{严格子对象}（10.11）（分别为一个\Term{subobject}{子对象}）$X'$，由对每个 $T\in\operatorname{ob}C$ 给出 $\operatorname{Hom}(T,X')$ 在 $\operatorname{Hom}(T,X)$ 中的像这个\Term{subset}{子集}所确定。因此，$X$ 的\Term{strict-subobject}{严格子对象}集（分别为\Term{subobject}{子对象}集）的\Term{cardinal}{基数}不超过
+\[
+\prod_{T\in\operatorname{ob}C}2^{\operatorname{card}\operatorname{Hom}(T,X)};
+\]
+若 $X\in\operatorname{ob}C$，则它不超过 $2^{\operatorname{card}\operatorname{Fl}C}$。
+\end{SGAresult}
+\begin{proof}
+先证明括号中的断言。设 $X',X''$ 是 $X$ 的两个\Term{subobject}{子对象}，对每个 $T\in\operatorname{ob}C$，$\operatorname{Hom}(T,X')$ 与 $\operatorname{Hom}(T,X'')$ 在 $\operatorname{Hom}(T,X)$ 中的像相等。那么它们也等于 $\operatorname{Hom}(T,X''')$ 的像，其中 $X'''$ 是 $X',X''$ 在 $X$ 上的\Term{fibre-product}{纤维积}。由于 $C$ 对\Term{monomorphism}{单态射}生成，\Term{monomorphism}{单态射} $X'''\to X'$ 和 $X'''\to X''$ 都是\Term{isomorphism}{同构}。因此，$X'$ 与 $X''$ 相等，它们各自都等于 $X$ 的\Term{subobject}{子对象} $X'''$。
+
+再证明非括号中的断言。按照\Term{strict-subobject}{严格子对象}的定义，只须验证：知道对每个 $T\in\operatorname{ob}C$，$\operatorname{Hom}(T,X')$ 在 $\operatorname{Hom}(T,X)$ 中这个\Term{subset}{子集}，就能知道哪些双\Term{arrow}{箭头} $X\mathrel{\substack{\xrightarrow{u}\\[-.6ex]\xrightarrow[v]{}}}T$ 满足 $ui=vi$，其中 $i:X'\to X$ 是\Term{canonical}{典范}\Term{embedding}{嵌入}。由于 $C$ 生成，关系 $ui=vi$ \Term{equivalence}{等价}于对每个 $f\in\operatorname{Hom}(T,X')$ 有 $(ui)f=(vi)f$，即对每个来自 $\operatorname{Hom}(T,X')$ 的 $g\in\operatorname{Hom}(T,X)$（即 $g=if$，$f\in\operatorname{Hom}(T,X')$），有 $ug=vg$。这就证明了断言。
+\end{proof}
+\begin{SGAresult}{推论}{7.5}
+设 $E$ 为一个\Term{category}{范畴}，$C$ 为一个生成\Term{full-subcategory}{满子范畴}，$X$ 为 $C$ 的\Term{object}{对象}。那么 $X$ 的一个\Term{strict-quotient}{严格商}（10.8）$X'$，由对每个 $T\in\operatorname{ob}C$ 给出 $\operatorname{Hom}(T,X)^2$ 中满足 $qu=qv$ 的对 $(u,v)$ 所成的\Term{subset}{子集}而确定，这里 $q:X\to X'$ 是\Term{canonical}{典范}\Term{morphism}{态射}。因此，$X$ 的\Term{strict-quotient}{严格商}集的\Term{cardinal}{基数}不超过
+\[
+\prod_{T\in\operatorname{ob}C}2^{\operatorname{card}(\operatorname{Hom}(T,X))^2}.
+\]
+\end{SGAresult}
+\SourcePage{39}
+\begin{proof}
+根据定义，$X$ 的一个\Term{strict-quotient}{严格商} $X'$，由对 $E$ 的每个\Term{object}{对象} $Y$ 给出 $\operatorname{Hom}(Y,X)\times\operatorname{Hom}(Y,X)$ 中满足 $qu=qv$ 的对 $(u,v)$ 所成的\Term{subset}{子集}而确定，其中 $q:X\to X'$ 是\Term{canonical}{典范}\Term{morphism}{态射}。由于 $C$ 生成，关系 $qu=qv$ \Term{equivalence}{等价}于对每个以 $C$ 中\Term{object}{对象} $T$ 为源的\Term{morphism}{态射} $f:T\to Y$ 都有 $(qu)f=(qv)f$。这个关系又写成 $q(uf)=q(vf)$，从而证明了 7.5 的第一个断言。第二个断言随即得到。
+\end{proof}
+\textbf{7.5.1.} 可以将 7.5 推广：对 $E$ 的\Term{object}{对象}族 $(X_i)_{i\in I}$，引入这个族在 $E$ 中的\Term{strict-quotient}{严格商}的概念，即指 $E$ 中的\Term{strict-epimorphic-family}{严格满态射族} $(p_i:X_i\to X')_{i\in I}$。这里约定，如同通常的商，若对两族 $(p_i:X_i\to X')$ 和 $(q_i:X_i\to X'')$，存在一个\Term{isomorphism}{同构} $v:X'\to X''$（它必然唯一），使得对每个 $i\in I$ 有 $fp_i=q_i$，就将这两族等同。采用这个术语，7.5 的证明原样给出下述变式。
+\begin{SGAresult}{变式}{7.5.2}
+设 $E,C$ 如 7.5，$(X_i)_{i\in I}$ 为 $E$ 的一个\Term{object}{对象}族。那么 $(X_i)_{i\in I}$ 在 $E$ 中的一个\Term{strict-quotient}{严格商} $X'$（7.5.1），由对每个 $T\in\operatorname{ob}C$ 及每对 $(i,j)\in I\times I$ 给出 $\operatorname{Hom}(T,X_i)\times\operatorname{Hom}(T,X_j)$ 中满足 $p_i u=p_j v$ 的对 $(u,v)$ 所成的\Term{subset}{子集}而确定，这里对每个 $i\in I$，$p_i:X_i\to X'$ 表示\Term{canonical}{典范}\Term{morphism}{态射}。因此，$(X_i)_{i\in I}$ 在 $E$ 中的\Term{strict-quotient}{严格商}集的\Term{cardinal}{基数}不超过
+\[
+\prod_{T\in\operatorname{ob}C}\prod_{i,j\in I}
+2^{\operatorname{card}\operatorname{Hom}(T,X_i)\times\operatorname{card}\operatorname{Hom}(T,X_j)}.
+\]
+\end{SGAresult}
+\textbf{7.5.3.} 立刻可见，若仅假设 $C$ 对\Term{strict-monomorphism}{严格单态射}生成，类似结论仍然成立，只要假设积 $X_i\times X_j$ \Term{representable-functor}{可表示}，并只考虑\Term{object}{对象}族 $(X_i)_{i\in I}$ 的\Term{effective-quotient}{有效商}，即那些使\Term{fibre-product}{纤维积} $X_i\times_{X'}X_j$ 在 $E$ 中\Term{representable-functor}{可表示}的\Term{strict-quotient}{严格商} $X'$（若 $E$ 对\Term{fibre-product}{纤维积}\Term{stable}{稳定}，这便不构成\Term{restriction}{限制}）。
+\begin{SGAresult}{命题}{7.6}
+设 $E$ 为一个\Term{category}{范畴}，$C$ 为 $E$ 中由\Term{epimorphism}{满态射}生成的\Term{full-subcategory}{满子范畴}（7.1），$\Pi_\circ$ 是一个无穷\Term{cardinal}{基数}且 $\Pi_\circ\geq\operatorname{card}\operatorname{Fl}C$，$\Pi\geq\Pi_\circ$ 是一个\Term{cardinal}{基数}，$(u_i:X_i\to X)_{i\in I}$ 是 $E$ 中由\Term{quarrable-morphism}{可作基变换的态射}（10.7）构成的\Term{universally-epimorphic-family}{普遍满态射族}（10.3），其源 $X_i\in\operatorname{ob}C$，且 $\operatorname{card}I\leq\Pi$。那么
+\[
+\operatorname{card}\operatorname{Fl}C_{/X}\leq\Pi^{\Pi_\circ}.
+\]
+\end{SGAresult}
+\begin{proof}
+设 $T\in\operatorname{ob}C$，只须证明
+\[
+\operatorname{card}\operatorname{Hom}(T,X)\leq\Pi^{\Pi_\circ},\tag{7.6.1}
+\]
+因为由此依次得到
+\[
+\operatorname{card}\operatorname{ob}C_{/X}\leq
+(\Pi^{\Pi_\circ})\times\operatorname{card}\operatorname{ob}C_{/X}
+\leq(\Pi^{\Pi_\circ})\times\Pi_\circ=\Pi^{\Pi_\circ},
+\]
+最后有 $\operatorname{card}\operatorname{Fl}C_{/X}\leq((\Pi^{\Pi_\circ})^2)\times\Pi_\circ=\Pi^{\Pi_\circ}$，因为对 $C_{/X}$ 的任意两个\Term{object}{对象} $S,T$，有
+\[
+\operatorname{card}\operatorname{Hom}_{C_{/X}}(S,T)
+\leq\operatorname{card}\operatorname{Hom}_C(S,T)\leq\Pi_\circ.
+\]
+为证明 7.5.3，先给出下面的引理。
+\end{proof}
+\SourcePage{40}
+\begin{SGAresult}{引理}{7.6.2}
+设 $J$ 为一个满足 $\operatorname{card}J=\Pi_\circ$ 的\Term{set}{集合}。对 $C$ 的每个\Term{object}{对象} $T$ 及每个\Term{homomorphism}{同态} $f:T\to X$，存在一个以 $S_j\in\operatorname{ob}C$ 为源的\Term{epimorphic-family}{满态射族} $(v_j:S_j\to T)_{j\in J}$，且对每个 $j\in J$，存在 $i(j)\in I$ 及 $g_j:S_j\to X_{i(j)}$，使得 $u_{i(j)}g_j=fv_j$。
+\end{SGAresult}
+\begin{proof}
+根据假设，族 $X_i\times_XT\to T$ 为\Term{epimorphic-family}{满态射族}；另一方面，由于 $C$ 由\Term{strict-epimorphism}{严格满态射}生成，对每个 $i$，以 $S\in\operatorname{ob}C$ 为源的\Term{arrow}{箭头} $S\to X_i\times_XT$ 构成\Term{epimorphic-family}{满态射族}。因此由\Term{transitivity}{传递性}，以 $\operatorname{ob}C$ 中的\Term{object}{对象}为源、且经由某个 $X_i\times_XT$ \Term{resolution}{分解}的\Term{arrow}{箭头} $v:S\to T$ 构成\Term{epimorphic-family}{满态射族}。这些恰是以 $C$ 中的\Term{object}{对象}为源，且存在 $i\in I$ 及 $g:S\to X_i$ 使得 $u_i g=fv$ 的\Term{arrow}{箭头} $v:S\to T$。由于这些\Term{arrow}{箭头} $v:S\to T$ 所成的\Term{set}{集合}包含于 $\operatorname{Fl}C$，故\Term{cardinal}{基数}不超过 $\Pi_\circ$，可用指标集 $J$ 来编号。引理得证。
+\end{proof}
+\begin{proof}[7.6 证明的继续]
+注意，\Term{morphism}{态射} $f:T\to X$ 由诸 $fv_j$ 决定，而后者由诸 $g_j$ 决定。因此，$\operatorname{card}\operatorname{Hom}(T,X)$ 不超过所有族 $(i(j),S_j,v_j,g_j)_{j\in J}$ 所成\Term{set}{集合}的\Term{cardinal}{基数}。映射 $J\to I$ 所成\Term{set}{集合}的\Term{cardinal}{基数}不超过 $\Pi^{\Pi_\circ}$；对每个固定的映射 $j\mapsto i(j)$，相应的族 $S_j,f_j,v_j$ 所成\Term{set}{集合}的\Term{cardinal}{基数}，不超过从 $J$ 到 $\operatorname{Fl}C\times\operatorname{Fl}C$ 的映射集的\Term{cardinal}{基数}，后者不超过 $\Pi_\circ^{\Pi_\circ}$，因为
+\[
+\operatorname{card}(\operatorname{Fl}C\times\operatorname{Fl}C)=\Pi_\circ^2=\Pi_\circ.
+\]
+于是，(7.6.1) 的左端不超过 $\Pi^{\Pi_\circ}\times\Pi_\circ^{\Pi_\circ}=\Pi^{\Pi_\circ}$，7.6 得证。
+\end{proof}
+\begin{SGAresult}{命题}{7.7}
+设 $E$ 为一个\Term{fibre-product}{纤维积}\Term{representable-functor}{可表示}的\Term{category}{范畴}，$(X_\alpha)_{\alpha\in A}$ 是 $E$ 的一个生成\Term{object}{对象}族，$(\varphi_i)_{i\in I}$ 是一个\Term{functor}{函子}族 $\varphi_i:E\to E_i$，各\Term{functor}{函子}都与\Term{fibre-product}{纤维积}交换。族 $(\varphi_i)$ \Term{conservative-functor}{保守}（5.1）的充要条件是：对每个 $\alpha\in A$ 及每个不同于 $X_\alpha$ 的\Term{subobject}{子对象} $X'$，存在 $i\in I$，使 $\varphi_i(X')\to\varphi_i(X_\alpha)$ 不是\Term{isomorphism}{同构}。在这种情形下，若 $E$ 是一个 $\mathcal U$-\Term{category}{范畴}，且 $A$ 是 $\mathcal U$-小的，则存在 $I$ 的一个 $\mathcal U$-小\Term{subset}{子集} $J$，使 $(\varphi_j)_{j\in J}$ 本身已经是\Term{conservative-functor}{保守函子}族。
+\end{SGAresult}
+\begin{proof}
+所述条件对\Term{conservative-functor}{保守}性的必要性显然，现证明其充分性。由 6.1 (iv)，只须证明 $(\varphi_i)$ 对\Term{monomorphism}{单态射}\Term{conservative-functor}{保守}。设 $u:Y'\to Y$ 是 $E$ 中一个并非\Term{isomorphism}{同构}的\Term{monomorphism}{单态射}；要证明存在 $i\in I$，使 $\varphi_i(u)$ 不是\Term{isomorphism}{同构}。根据对 $(X_\alpha)$ 的假设，存在某个 $\alpha$ 及一个不经 $Y'$ \Term{resolution}{分解}的\Term{morphism}{态射} $X_\alpha\to Y$，换言之，$Y'$ 的\Term{inverse-image}{逆像} $X'$ 是 $X_\alpha$ 的一个不同于 $X_\alpha$ 的\Term{subobject}{子对象}。由假设，存在 $i\in I$，使 $\varphi_i(X')\to\varphi(X)$ 不是\Term{isomorphism}{同构}。由于
+\[
+\varphi_i(X')\simeq\varphi(X_\alpha)\times_{\varphi_i(Y)}\varphi_i(Y'),
+\]
+故 $\varphi_i(Y')\to\varphi_i(Y)$ 确实不是\Term{isomorphism}{同构}。7.7 的第二个断言，由第一个断言和 7.4 立即得到。
+\end{proof}
+\SourcePage{41}
+\begin{SGAresult}{推论}{7.7.1}
+设 $E$ 是\Term{fibre-product}{纤维积}\Term{representable-functor}{可表示}的 $\mathcal U$-\Term{category}{范畴}，且有一个 $\mathcal U$-小的生成\Term{object}{对象}族。那么，对 $E$ 的任意\Term{generating-family}{生成族} $(Y_i)_{i\in I}$，都存在一个 $\mathcal U$-小的生成子族 $(Y_j)_{j\in J}$（$\operatorname{card}J\in\mathcal U$）。
+\end{SGAresult}
+\begin{proof}
+只须将 7.7 应用于 $E$ 的一个 $\mathcal U$-小\Term{generating-family}{生成族} $(X_\alpha)_{\alpha\in A}$ 及由诸 $Y_i$ 表示的\Term{functor}{函子}族 $\varphi_i$（$i\in I$）。
+\end{proof}
+\begin{SGAresult}{命题}{7.8}
+设 $E$ 为一个\Term{category}{范畴}，$C$ 是由\Term{strict-epimorphism}{严格满态射}生成的\Term{full-subcategory}{满子范畴}，$D$ 为一个\Term{category}{范畴}，$\mathscr{H}\!om'(E,D)$ 是 $\mathscr{H}\!om(E,D)$ 中由那些与 $C_{/X}$ 型\Term{inductive-limit}{归纳极限}交换的\Term{functor}{函子}构成的\Term{full-subcategory}{满子范畴}，其中 $X$ 为 $E$ 的任意\Term{object}{对象}。那么\Term{functor}{函子} $F\mapsto F|C$ 诱导一个\Term{fully-faithful-functor}{全忠实}\Term{functor}{函子}
+\[
+\mathscr{H}\!om'(E,D)\longrightarrow\mathscr{H}\!om(C,D).
+\]
+因此，若 $\mathscr{H}\!om(C,D)$ 是一个 $\mathcal U$-\Term{category}{范畴}（1.1），例如（1.1.1 b)）$C$ 是 $\mathcal U$-小的且 $D$ 是 $\mathcal U$-\Term{category}{范畴}，则 $\mathscr{H}\!om(E,D)$ 也是一个 $\mathcal U$-\Term{category}{范畴}。
+\end{SGAresult}
+\begin{proof}
+设 $F,G:E\to D$ 为左端中的两个\Term{functor}{函子}，$u:F\to G$ 为一个\Term{homomorphism}{同态}。若在 $E$ 中 $X=\varinjlim X_i$，且 $F,G$ 都与这个\Term{inductive-limit}{归纳极限}交换，则 $u(X):F(X)\to G(X)$ 等同于\Term{morphism}{态射} $u(X_i):F(X_i)\to G(X_i)$ 的\Term{limit}{极限}，因此由诸 $u(X_i)$ 决定。结合 7.2 (i) 中 a)$\Rightarrow$b)，这表明 7.8 中的\Term{functor}{函子}是忠实的。反过来，给定\Term{homomorphism}{同态} $v:F|D\to G|D$，证明它来自一个\Term{homomorphism}{同态} $u:F\to G$。对每个 $X\in\operatorname{ob}E$，将
+\[
+u(X):F(X)=\varinjlim_{C_{/X}}F(X_i)\longrightarrow G(X)=\varinjlim_{C_{/X}}G(X_i)
+\]
+定义为诸 $v(X_i)$ 的\Term{inductive-limit}{归纳极限}。立刻可见，这确实给出了对 $X$ \Term{functorial}{函子性}的\Term{homomorphism}{同态}，因而给出了 $u:F\to G$；而且，由 $u$ 诱导的从 $F|C'$ 到 $G|C'$ 的\Term{morphism}{态射}就是 $v$。证明完成。
+\end{proof}
+\textbf{7.9. \Term{cogenerating-family}{余生成族}与\Term{cogenerating-subcategory}{余生成子范畴}。} 设 $E$ 为一个\Term{category}{范畴}，$C$ 为 $E$ 的一个\Term{full-subcategory}{满子范畴}。若 $E^\circ$ 的\Term{full-subcategory}{满子范畴} $C^\circ$ 由\Term{strict-epimorphism}{严格满态射}生成（分别等等），则称 $C$ \Term{cogenerating-by-strict-monomorphisms}{由严格单态射余生成}（分别\Term{cogenerating-by-monomorphisms}{由单态射余生成}、\Term{cogenerating-subcategory}{余生成}、对\Term{epimorphism}{满态射}余生成、对\Term{strict-epimorphism}{严格满态射}余生成）。对\Term{object}{对象}族使用类似术语。因此，本节关于\Term{generating-subcategory}{生成子范畴}及其变式（7.1）的所有结果，都给出\Term{duality}{对偶}概念的相应结果；读者可为自己的满足而自行表述。
+\begin{SGAresult}{命题}{7.10}
+设 $E$ 为一个\Term{category}{范畴}，$C$ 为一个生成\Term{full-subcategory}{满子范畴}（7.1），$D$ 为 $E$ 的一个\Term{full-subcategory}{满子范畴}。$D$ 余生成（7.9）的充要条件是：
+\SourcePage{42}
+对 $E$ 中每个以 $T\in\operatorname{ob}C$ 为源、且 $u\ne v$ 的双\Term{arrow}{箭头} $T\mathrel{\substack{\xrightarrow{u}\\[-.6ex]\xrightarrow[v]{}}}X$，存在一个以 $I\in\operatorname{ob}D$ 为靶的\Term{arrow}{箭头} $w:X\to I$，使得 $wu\ne wv$。
+\end{SGAresult}
+\begin{proof}
+根据定义，$D$ 余生成，是说对于 $E$ 中任意满足 $u\ne v$ 的双\Term{arrow}{箭头} $Y\mathrel{\substack{\xrightarrow{u}\\[-.6ex]\xrightarrow[v]{}}}X$，都存在一个\Term{arrow}{箭头} $w:X\to I$（$I\in\operatorname{ob}D$），使得 $wu\ne wv$。因此，7.10 只是说只须在 $Y\in\operatorname{ob}C$ 时检验此性质。由于 $C$ 生成，假设 $u\ne v$ 蕴涵存在 $f:T\to Y$，使得 $uf\ne vf$；于是由假设，存在一个以 $I\in\operatorname{ob}D$ 为靶的 $w:X\to I$，使 $w(uf)\ne w(vf)$，从而 $wu=wv$。
+\end{proof}
+\begin{SGAresult}{推论}{7.11}
+沿用 7.10 的记号，假设 $D$ 的\Term{object}{对象} $I$ 是 $E$ 的\Term{injective-object}{内射对象}，即对 $E$ 中每个\Term{monomorphism}{单态射} $X\to Y$，相应映射 $\operatorname{Hom}(Y,I)\to\operatorname{Hom}(X,I)$ 都是\Term{surjectivity}{满射}。再假设 $E$ 中每个双\Term{arrow}{箭头} $T\mathrel{\substack{\xrightarrow{u}\\[-.6ex]\xrightarrow[v]{}}}X$ 都\Term{decomposable}{可分解}为\Term{epimorphism}{满态射}（分别为\Term{effective-epimorphism}{有效满态射}）双\Term{arrow}{箭头} $Y\mathrel{\substack{\xrightarrow{u'}\\[-.6ex]\xrightarrow[v']{}}}X$，后接\Term{monomorphism}{单态射} $i:X'\to X$。那么，在 7.10 的 $D$ 余生成的判据中，可以只考虑\Term{epimorphism}{满态射}（分别为\Term{effective-epimorphism}{有效满态射}）的双\Term{arrow}{箭头} $(u,v)$。
+\end{SGAresult}
+由此得到：
+\begin{SGAresult}{推论}{7.12}
+设 $E$ 为一个 $\mathcal U$-\Term{category}{范畴}，它有一个小的\Term{generating-subcategory}{生成子范畴} $C$，且 $E$ 的每个\Term{object}{对象}都是一个以 $E$ 的\Term{injective-object}{内射对象}为靶的\Term{monomorphism}{单态射}的源。再假设，对每个 $T\in\operatorname{ob}C$，$E$ 中的和 $T\amalg T$ \Term{representable-functor}{可表示}，而且每个以 $T\amalg T$ 为源的\Term{morphism}{态射}都\Term{decomposable}{可分解}为一个\Term{effective-epimorphism}{有效满态射}，后接一个\Term{monomorphism}{单态射}。那么，$E$ 有一个小的余生成\Term{full-subcategory}{满子范畴} $D$。准确地说，可取 $D$ 使得
+\[
+\operatorname{card}\operatorname{ob}D\leq
+\prod_{T,T'\in\operatorname{ob}C}2^{\operatorname{card}(\operatorname{Hom}(T',T\amalg T))^2}.
+\]
+\end{SGAresult}
+\begin{proof}
+由 7.11，只须对每个 $T\in\operatorname{ob}C$ 及 $T\amalg T$ 的每个\Term{effective-quotient}{有效商} $X$，选择 $X$ 到 $E$ 的某个\Term{injective-object}{内射对象} $I$ 的一个\Term{embedding}{嵌入}，再取这些 $I$ 所生成的 $E$ 的\Term{full-subcategory}{满子范畴}为 $D$。结论于是由 7.5 得到。
+\end{proof}
+\textbf{例 7.13。} 因此，要利用小的\Term{generating-subcategory}{生成子范畴}构造小的\Term{cogenerating-subcategory}{余生成子范畴}，就要寻找使 $\mathcal U$-\Term{category}{范畴} $E$ 有“\Term{enough-injectives}{足够多的内射对象}”的条件，即使每个\Term{object}{对象}都能（由一个\Term{monomorphism}{单态射}）\Term{embedding}{嵌入}\Term{injective-object}{内射对象}的条件。众所周知 [Tohoku]，具有小\Term{generating-family}{生成族}及\Term{exact}{正合}的（小）\Term{filtered-inductive-limit}{滤过归纳极限}的\Term{abelian-category}{阿贝尔} $\mathcal U$-\Term{category}{范畴}满足此条件（所引文献的公理 AB 5）。所引文献中的构造并不本质上依赖于\Term{abelian-category}{阿贝尔范畴}，
+\SourcePage{43}
+它也适用于\Term{topological-space}{拓扑空间} $X\in\mathcal U$ 上的 $\mathcal U$-\Term{set}{集合}\Term{sheaf}{层}\Term{category}{范畴}。这里不陈述使该构造成立的\Term{exactness}{正合性}性质，只指出，在 $X$ 上\Term{set-sheaf}{集合层}\Term{category}{范畴}这一特殊情形中，可以如下立即归结到所引文献的情形。注意，若 $\mathcal O_X$ 是 $X$ 上的一个\Term{ring-sheaf}{环层}，则 $\mathcal O_X$-\Term{module-category}{模范畴}中的每个\Term{injective-object}{内射对象} $I$，作为\Term{set-sheaf}{集合层}\Term{category}{范畴}中的\Term{object}{对象}也是\Term{injective}{内射}的。事实上，若 $F$ 是\Term{set-sheaf}{集合层}，而 $\mathcal O_X[F]$ 是“由 $F$ 生成的自由 $\mathcal O_X$-模”，则按定义有一个\Term{set-sheaf}{集合层}\Term{homomorphism}{同态}
+\[
+F\longrightarrow\mathcal O_X[F],\tag{*}
+\]
+它给出一个关于 $F$ \Term{functorial}{函子性}的\Term{isomorphism}{同构}
+\[
+\operatorname{Hom}_{\mathcal O_X}(\mathcal O_X[F],I)
+\xrightarrow{\sim}\operatorname{Hom}(F,I).
+\]
+由于\Term{functor}{函子} $F\mapsto\mathcal O_X[F]$ 显然将\Term{monomorphism}{单态射}变为\Term{monomorphism}{单态射}，立即得到：若 $I$ 是\Term{injective}{内射} $\mathcal O_X$-模，则它也是\Term{injective}{内射}\Term{set-sheaf}{集合层}。因此，若\Term{morphism}{态射} (*) 是\Term{monomorphism}{单态射}（取 $\mathcal O_X$ 为取值于环 $A\ne0$ 的常\Term{ring-sheaf}{环层}时就是如此），那么将 $\mathcal O_X[F^*]$ \Term{embedding}{嵌入}\Term{injective}{内射} $\mathcal O_X$-模 $I$，便给出 $F$ 到 $I$ 的底层\Term{injective}{内射}\Term{set-sheaf}{集合层}的\Term{embedding}{嵌入}。
+
+同一个论证原样适用于 $\mathcal U$-景上 $\mathcal U$-\Term{set-sheaf}{集合层}\Term{category}{范畴}；这将在下一讲引入。小的\Term{cogenerating-subcategory}{余生成子范畴}的存在，其意义主要在于下面的\Term{representability}{可表示性}判据 8.12.7。
+
+\SGAsection{8}{Ind 对象与 pro 对象}
+\textbf{8.1. \Term{cofinal-functor}{共尾函子}与\Term{cofinal-subcategory}{共尾子范畴}。}
+\begin{SGAresult}{定义}{8.1.1}
+设
+\[
+\varphi:I\longrightarrow I'\tag{8.1.1.1}
+\]
+为一个\Term{functor}{函子}。若对任意\Term{category}{范畴} $C$ 及任意\Term{functor}{函子} $u:I'\to C$，将 $\varinjlim u$ 和 $\varinjlim u\circ\varphi$ 视为 $\mathscr{H}\!om(G(\mathcal V\text{-}\mathrm{Ens}))^\circ$ 中的\Term{object}{对象}（2.1、2.3.1）（其中 $\mathcal V$ 为一个使 $I,I'\in\mathcal V$ 且 $C$ 为 $\mathcal V$-\Term{category}{范畴}的\Term{universe}{宇宙}），\Term{canonical}{典范}\Term{morphism}{态射}
+\[
+\varinjlim u\circ\varphi\longrightarrow\varinjlim u\tag{8.1.1.2}
+\]
+为\Term{isomorphism}{同构}，则称 $\varphi$ 是\Term{cofinal-functor}{共尾函子}。若 $\varphi$ 是 $I'$ 的一个\Term{subcategory}{子范畴}的\Term{inclusion-functor}{包含函子}，则当 $\varphi$ \Term{cofinal}{共尾}时，称 $I$ 为\Term{cofinal-subcategory}{共尾子范畴}。
+\end{SGAresult}
+\SourcePage{44}
+\textbf{8.1.2.} 注意，对给定的 $\varphi,u$，(8.1.1.2) 的\Term{bijection}{双射}性不依赖于\Term{universe}{宇宙} $\mathcal V$ 的选择。
+
+回到 (8.1.1.2) 中各项的定义（2.1、2.3.1），可见，$\varphi$ \Term{cofinal}{共尾}还意味着：对每个使 $I,I'$ 为 $\mathcal V$-小的\Term{universe}{宇宙} $\mathcal V$，及每个\Term{functor}{函子}
+\[
+v:I'^\circ\longrightarrow(\mathcal V\text{-}\mathrm{Ens}),
+\]
+\Term{canonical-homomorphism}{典范同态}
+\[
+\varprojlim v\longrightarrow\varprojlim v\circ\varphi\tag{8.1.2.1}
+\]
+为\Term{isomorphism}{同构}，即为\Term{bijection}{双射}。为看出此条件确属必要，只须令 $v=v^\circ$，注意它也意味着在定义 8.1.1 中取 $C=(\mathcal V\text{-}\mathrm{Ens})^\circ$ 时条件成立（此时 (8.1.1.2) 中所考虑的\Term{inductive-limit}{归纳极限}在 $C$ 中\Term{representable-functor}{可表示}）。
+
+\textbf{8.1.2.2.} 由定义立即可知，两个\Term{cofinal-functor}{共尾函子}的复合仍然\Term{cofinal}{共尾}。
+\begin{SGAresult}{命题}{8.1.3}
+设 $\varphi:I\to I'$ 为一个\Term{functor}{函子}。
+
+ a) $\varphi$ \Term{cofinal}{共尾}的一个必要条件是它满足：
+
+ F 1) 对 $I'$ 的每个\Term{object}{对象} $i'$，存在 $I$ 的一个\Term{object}{对象} $i$，使 $\varphi(i)$ 大于等于 $i'$（即 $\operatorname{Hom}(i',\varphi(i))\ne\varnothing$）。
+
+ b) 假设 $I$ \Term{filtered-category}{滤过}。则 $\varphi$ \Term{cofinal}{共尾}的充要条件是它满足 F 1) 及以下条件：
+
+ F 2) 对 $I$ 的每个\Term{object}{对象} $i$，以及 $I'$ 中每个以 $\varphi(i)$ 为靶的双\Term{arrow}{箭头} $i'\mathrel{\substack{\xrightarrow{f'}\\[-.6ex]\xrightarrow[g']{}}}\varphi(i)$，存在 $I$ 中的一个\Term{arrow}{箭头} $h:i\to j$，使 $\varphi(h)f'=\varphi(h)g'$。
+
+此外，若 $\varphi$ \Term{cofinal}{共尾}，则 $I'$ \Term{filtered}{滤过}。
+
+ c) 假设 $I'$ \Term{filtered}{滤过}，且 $\varphi$ \Term{fully-faithful-functor}{全忠实}。则 $\varphi$ \Term{cofinal}{共尾}的充要条件是它满足 a) 的 F 1)。这还蕴涵 $I$ \Term{filtered}{滤过}。
+\end{SGAresult}
+\begin{proof}
+对于 a) 和 b) 的必要性，只在 $u$ 为\Term{canonical}{典范}\Term{inclusion-functor}{包含函子}（1.3.3）
+\[
+u:I'\hookrightarrow\widehat{I'}
+\]
+的情形使用定义 8.1.1（已选定一个使 $I,I'$ 为 $\mathcal U$-小的\Term{universe}{宇宙} $\mathcal U$）。此时可将 (8.1.1.2) 解释为 $\widehat{I'}$ 的一个\Term{arrow}{箭头}（3.1），其靶是 $I'$ 上的\Term{final-functor}{终函子}（3.4）。立即可见，F 1) 表示这个\Term{arrow}{箭头}是 $\widehat{I'}$ 的\Term{epimorphism}{满态射}，即对每个自变量都是\Term{surjectivity}{满射}（注意 $\widehat{I'}$ 中的\Term{inductive-limit}{归纳极限}是“逐个自变量”计算的）。这就证明了 a)。现设 $I$ \Term{filtered}{滤过}且 $\varphi$ \Term{cofinal}{共尾}。那么 $I$ \Term{filtered}{滤过}：事实上，$I'$ 的任意两个\Term{object}{对象}都有一个共同上界，这立即来自 $I$ 的同一性质及 F 1)；
+\SourcePage{45}
+只须再证明 2.7 中的条件 PS 2)，即对 $I'$ 中任意双\Term{arrow}{箭头}
+\[
+f',g':i'\rightrightarrows j',
+\]
+存在 $I'$ 中的\Term{arrow}{箭头} $h':j'\to k'$，使 $h'f'=h'g'$。由 F 1)，可假设 $k'$ 具有 $\varphi(i)$ 的形式。但是，根据 $\varphi$ \Term{cofinal}{共尾}的假设，对 $I'$ 的每个\Term{object}{对象} $i'$，$\varinjlim_i\operatorname{Hom}(i',\varphi(i))$ 都是单元素\Term{set}{集合}；由\Term{set}{集合}中的\Term{filtered-inductive-limit}{滤过归纳极限}的标准描述（2.8.1），这就蕴涵存在 $I$ 中的\Term{arrow}{箭头} $h:i\to j$，使 $\varphi(h)f'=\varphi(h)g'$。这既证明了 $I'$ \Term{filtered}{滤过}，同时也证明了条件 F 2)。
+
+为证明 b) 中所述条件足以使 $\varphi$ \Term{cofinal}{共尾}，使用定义的 8.1.2 形式。立即可见，条件 F 1) 蕴涵 (8.1.2.1) 为\Term{monomorphism}{单态射}，即对每个自变量都是\Term{injectivity}{单射}；条件 F 2) 与 F 1) 合用则保证它为\Term{bijection}{双射}（注意 $\widehat{I'^\circ}$ 中的\Term{projective-limit}{逆极限}是逐个自变量计算的）。这就证明了 b)。
+
+最后，若 $I'$ \Term{filtered}{滤过}且 $\varphi$ \Term{fully-faithful-functor}{全忠实}，则条件 F 1) 显然蕴涵 $I$ \Term{filtered}{滤过}，并且蕴涵 F 2)。于是 c) 来自 a) 与 b)。
+\end{proof}
+\textbf{8.1.4.} 当 $I'$ 是\Term{filtered-category}{滤过范畴}，$I$ 是 $I'$ 的\Term{full-subcategory}{满子范畴}时，由 8.1.3 c) 可见，$I$ 在 $I'$ 中\Term{cofinal}{共尾}的条件，只依赖于\Term{preordered-set}{预序集} $\operatorname{Ob}I'$ 中的\Term{subset}{子集} $\operatorname{Ob}I$（其\Term{preorder}{预序关系}为“$x\leq y$”$\Leftrightarrow$“$\operatorname{Hom}(x,y)\ne\varnothing$”）。若 $J'$ 为一个\Term{preordered-set}{预序集}，$J$ 为其\Term{subset}{子集}，有时称 $J$ 为 $J'$ 的\Term{cofinal-subset}{共尾子集}，如果 $J'$ 的每个元素都不大于 $J$ 的某个元素。当 $J'$ \Term{filtered}{滤过}时，这就意味着相应\Term{category}{范畴}之间的\Term{inclusion-functor}{包含函子} $J\hookrightarrow J'$ \Term{cofinal}{共尾}。
+
+\textbf{8.1.5.} 以下只在\Term{category}{范畴} $I,I'$ 均\Term{filtered-category}{滤过的}情形使用\Term{cofinal-functor}{共尾函子}的概念。经典上，甚至只考虑与\Term{preordered-set}{预序集}\Term{correspondence}{对应}的\Term{category}{范畴}（即给定源和靶，至多有一个\Term{arrow}{箭头}）。但这一\Term{restriction}{限制}在应用中颇不方便，因为许多应用中自然出现的\Term{filtered-category}{滤过范畴}并不是\Term{ordered-category}{有序范畴}。不过，下述由 P. Deligne 得到的结果表明，这两种观点并无本质差别。
+\begin{SGAresult}{命题}{8.1.6}
+设 $I$ 是一个小的\Term{filtered-category}{滤过范畴}。那么，存在一个小的\Term{ordered-set}{有序集} $E$ 及一个\Term{cofinal-functor}{共尾函子} $\varphi:E\to I$，其中 $E$ 也表示与\Term{ordered-set}{有序集} $E$ \Term{correspondence}{对应}的\Term{category}{范畴}。
+\end{SGAresult}
+\begin{proof}
+先假设\Term{preordered-set}{预序集} $\operatorname{Ob}I$ 没有最大元素。称 $I$ 的\Term{subdiagram}{子图}为一个二元组 $D=(O,F)$，其中 $F$ 为 $\operatorname{Fl}(I)$ 的\Term{subset}{子集}，
+\SourcePage{46}
+$O$ 为 $\operatorname{Ob}I$ 的\Term{subset}{子集}，且每个 $f\in F$ 的源与靶都属于 $O$。若对每个 $x\in D_0$，$D$ 中以 $x$ 为源、以 $y$ 为靶的\Term{arrow}{箭头}集 $\operatorname{Hom}(x,e)\cap F$ 恰有一个元素 $f_x$，对 $D$ 中每个\Term{arrow}{箭头} $g:x\to y$ 都有 $f_x=f_y\circ g$，且 $f_e=\operatorname{id}_e$，则称 $O$ 的元素 $e$ 是\Term{subdiagram}{子图} $D$ 的\Term{final-object}{终对象}。设 $E$ 为 $I$ 的所有具有唯一终元素 $\varphi(D)$ 的\Term{finite}{有限}\Term{subdiagram}{子图} $D$ 所成的\Term{set}{集合}，按包含关系排序。若 $D,D'\in E$ 且 $D\subset D'$，则 $D'$ 中存在唯一的以 $\varphi(D)$ 为源、以 $\varphi(D')$ 为靶的\Term{arrow}{箭头} $\varphi(D',D)$；若 $E$ 中有包含关系 $D\subset D'\subset D''$，则显然
+\[
+\varphi(D'',D)=\varphi(D'',D')\varphi(D',D),\qquad
+\varphi(D,D)=\operatorname{id}_{\varphi(D)}.
+\]
+于是得到\Term{functor}{函子} $\varphi:E\to I$，只须证明 $E$ \Term{filtered}{滤过}且 $\varphi$ \Term{cofinal}{共尾}。由 8.1.3 b)，须作三个验证。
+
+1) 8.1.3 的条件 F 1)：对任意 $i\in I$，取仅由\Term{object}{对象} $i$ 及其恒等\Term{arrow}{箭头}构成的\Term{subdiagram}{子图} $D$，则 $i\leq\varphi(D)=i$。这个条件 F 1) 同时表明 $E\ne\varnothing$。
+
+2) 条件 F 2)：对任意 $i\in\operatorname{Ob}I$、$D\in E$ 及双\Term{arrow}{箭头} $i\rightrightarrows\varphi(D)$，找出包含 $D$ 的一个\Term{subdiagram}{子图} $D'\in E$，使 $\varphi(D',D):\varphi(D)\to\varphi(D')$ 等化这个双\Term{arrow}{箭头}。由于 $I$ \Term{filtered}{滤过}，存在 $I$ 的\Term{object}{对象} $j$ 及一个等化此双\Term{arrow}{箭头}的\Term{arrow}{箭头} $f:\varphi(D)\to j$。由于 $I$ 没有最大元素，可设 $j$ 严格大于 $\varphi(D)$；因而 $j$ 与 $D$ 的所有其他\Term{object}{对象}不同。取 $D'$ 为 $I$ 的如下\Term{subdiagram}{子图}：其\Term{object}{对象}集为 $O\cup\{j\}$，其\Term{arrow}{箭头}集由 $D$ 的\Term{arrow}{箭头}、各复合\Term{arrow}{箭头}
+\[
+x\xrightarrow{f_x}\varphi(D)\xrightarrow f j
+\]
+及 $\operatorname{id}_j$ 构成，其中 $x$ 遍历 $D$ 的\Term{object}{对象}，$f_x$ 为 $D$ 中以 $x$ 为源、以 $\varphi(D)$ 为靶的唯一\Term{arrow}{箭头}。显然，$D'$ 是 $I$ 的\Term{finite}{有限}\Term{subdiagram}{子图}，且有唯一\Term{final-object}{终对象} $j$，故 $D'\in E$，并满足所需条件。
+
+3) 任意两个\Term{subdiagram}{子图} $D,D'\subset E$ 都包含在同一个 $D''\in E$ 中。事实上，可找出 $\varphi(D)$ 和 $\varphi(D')$ 的一个严格共同上界 $j$：
+\[
+\begin{tikzcd}[column sep=large]
+\varphi(D)\arrow[dr,"f"]&\\
+&j\\
+\varphi(D')\arrow[ur,"f'"']&
+\end{tikzcd}
+\]
+取 $D''$ 的\Term{object}{对象}集为 $D,D'$ 的\Term{object}{对象}集与 $\{j\}$ 的并；\Term{arrow}{箭头}集为 $D,D'$ 的\Term{arrow}{箭头}集、复合 $f\circ f_x$（$x$ 为 $D$ 的\Term{object}{对象}）和 $f'\circ f'_{x'}$（$x'$ 为 $D'$ 的\Term{object}{对象}）所成的\Term{set}{集合}，以及 $\{\operatorname{id}_j\}$ 的并。这确实给出 $E$ 的一个\Term{finite}{有限}\Term{subdiagram}{子图}。说明适当选取 $g:j\to j'$，将 $j,f,f'$ 换成 $j',gf,gf'$ 后，
+\SourcePage{47}
+可以使 $j$ 成为 $D'$ 的\Term{final-object}{终对象}。\Term{equivalence}{等价}地，对同时是 $D$ 和 $D'$ 的\Term{object}{对象}的每个 $x$，应有 $ff_x=f'f'_{x'}$。这里只须用一个 $g:j\to j'$ 等化\Term{finite}{有限}多个双\Term{arrow}{箭头}；由于 $I$ \Term{filtered}{滤过}，这是可能的。
+
+以上证明了所考虑的情形。一般情形归结到此情形：引入自然数\Term{ordered-set}{有序集} $\mathbf N$ 所\Term{correspondence}{对应}的\Term{filtered-category}{滤过范畴} $\mathbf N$，注意 $\mathbf N\times I$ \Term{filtered}{滤过}、没有最大元素，且\Term{projection}{投影} $\mathbf N\times I\to I$ 是\Term{cofinal-functor}{共尾函子}。
+\end{proof}
+\begin{SGAresult}{推论}{8.1.7}
+设 $I$ 是一个 $\mathcal U$-\Term{category}{范畴}。存在一个小的\Term{filtered}{滤过}\Term{ordered-set}{有序集} $E$ 及\Term{cofinal-functor}{共尾函子} $E\to I$ 的充要条件是：$I$ \Term{filtered}{滤过}，且 $\operatorname{Ob}I$ 有一个小的\Term{cofinal-subset}{共尾子集} $I_0$（8.1.4）。
+\end{SGAresult}
+\begin{proof}
+必要性来自 8.1.3 a)；充分性来自将 8.1.6 应用于 $I_0$ 所定义的 $I$ 的\Term{full-subcategory}{满子范畴}。
+\end{proof}
+\begin{SGAresult}{定义}{8.1.8}
+设 $I$ 是一个\Term{filtered-category}{滤过范畴}。若 $I$ 是一个 $\mathcal U$-\Term{category}{范畴}，并满足 8.1.7 的\Term{equivalence}{等价}条件，则称 $I$ \Term{essentially-small}{本质小}。
+\end{SGAresult}
+
+\textbf{8.2. Ind \Term{object}{对象}与 ind \Term{representable-functor}{可表示函子}。}
+
+\textbf{8.2.1.} 以下固定一个 $\mathcal U$-\Term{category}{范畴} $C$，并始终借助\Term{canonical-functor}{典范函子}（1.3.1）
+\[
+h:C\hookrightarrow\widehat C\tag{8.2.1.1}
+\]
+将它视为\Term{embedding}{嵌入} $\mathcal U$-\Term{presheaf}{预层}\Term{category}{范畴} $\widehat C$。称任意\Term{functor}{函子}
+\[
+\varphi:I\longrightarrow C\tag{8.2.1.2}
+\]
+为 $C$ 的一个 \Term{ind-object}{ind 对象}（或 $C$ 的\Term{inductive-system}{归纳系统}），其中 $I$ 是一个\Term{filtered-category}{滤过范畴}（2.7），称为该 \Term{ind-object}{ind 对象}的\Term{index-category}{指标范畴}。
+除此以外，$I$ 可以任意，特别地，并不要求 $I$ 是 $\mathcal U$-\Term{category}{范畴}。通常方便将 \Term{ind-object}{ind 对象} $\varphi$ 用带指标的记号 $(X_i)_{i\in\operatorname{ob}I}$ 表示，甚至（再一次滥用记号）写成 $(X_i)_{i\in I}$、$(X_i)_i$ 或 $(X_i)$，其中对 $i\in\operatorname{ob}I$ 有 $X_i=\varphi(i)$。这种滥用与经典的由\Term{filtered}{滤过}\Term{ordered-set}{有序集}编号的\Term{inductive-system}{归纳系统}记号完全一样，后者也不写出\Term{transition-morphism}{转移态射}。称诸 $X_i$ 为 \Term{ind-object}{ind 对象} $\mathcal X$ 的\Term{component-object}{分量对象}。须注意，在这里的一般情形中，\Term{inductive-system}{归纳系统}的“\Term{transition-morphism}{转移态射}”$\varphi(f)$ 是由 $I$ 的\Term{arrow}{箭头}集 $\operatorname{Fl}I$ 编号的，而该\Term{set}{集合}通常不能等同于 $\operatorname{Ob}I\times\operatorname{Ob}I$ 的一个\Term{subset}{子集}；换言之，给定 $i,j$ 且 $j$ 大于等于 $i$ 时，从 $X_i$ 到 $X_j$ 可能有不止一个\Term{transition-morphism}{转移态射}。
+\SourcePage{48}
+\textbf{8.2.2.} $C$ 的 \Term{ind-object}{ind 对象} $\mathcal X=(X_i)_{i\in I}$ 中，最有用的是\Term{index-category}{指标范畴} $I$ \Term{essentially-small}{本质小}（8.1.8）的那些；这样的 \Term{ind-object}{ind 对象}称为\Term{essentially-small-ind-object}{本质小的 ind 对象}。对这样的 $(X_i)_{i\in I}$，利用 $\widehat C$ 中小\Term{inductive-limit}{归纳极限}\Term{representable-functor}{可表示}这一事实（3.1），可考虑
+\[
+L(\mathcal X)\overset{\mathrm{def}}=\varinjlim h\cdot\mathcal X
+=\varinjlim_iX_i\in\operatorname{ob}\widehat C,\tag{8.2.2.1}
+\]
+其中最后的\Term{limit}{极限}在 $\widehat C$ 中取。因此，$L(\mathcal X)$ 是 $C$ 上的\Term{presheaf}{预层}
+\[
+L(\mathcal X):Y\longmapsto\varinjlim_i\operatorname{Hom}(Y,X_i).\tag{8.2.2.2}
+\]
+称这个\Term{presheaf}{预层}为 $C$ 的 \Term{ind-object}{ind 对象} $\mathcal X=(X_i)_{i\in I}$ 所 \Term{ind-represented-presheaf}{ind 表示的预层}。若 $C$ 上的\Term{presheaf}{预层} $F$ \Term{isomorphism}{同构}于某个\Term{essentially-small-ind-object}{本质小的 ind 对象}所 \Term{ind-represented-presheaf}{ind 表示的预层} $L(\mathcal X)$，则称 $F$ 是 \Term{ind-representable-presheaf}{ind 可表示预层}。由 8.1.6，在这个定义中可假设 $I$ 是\Term{small-category}{小范畴}，甚至假设 $I$ \Term{correspondence}{对应}于一个属于 $\mathcal U$ 的\Term{ordered-set}{有序集}。
+
+\textbf{8.2.3.} 考虑由\Term{functor}{函子} $\varphi:I\to C$ 给出的 \Term{ind-object}{ind 对象} $\mathcal X=(X_i)_{i\in I}$，并设
+\[
+u:I'\longrightarrow I
+\]
+为一个\Term{functor}{函子}，其中 $I'$ 是另一个\Term{filtered-category}{滤过范畴}。则\Term{functor}{函子} $\varphi\circ u$ 是 $C$ 的一个以 $I'$ 为\Term{index-category}{指标范畴}的 \Term{ind-object}{ind 对象} $\mathcal X'$，用指标记号写成 $(X_{u(i')})_{i'\in I'}$；称它为借助\Term{functor}{函子} $u$，从 $(X_i)_{i\in I}$ \Term{change-of-index-category}{变换指标范畴}所得的 $C$ 的 \Term{ind-object}{ind 对象}。若 $I,I'$（即 $\mathcal X,\mathcal X'$）都\Term{essentially-small}{本质小}，则在它们分别 \Term{ind-represented-presheaf}{ind 表示的预层}之间有一个\Term{canonical}{典范}\Term{morphism}{态射}
+\[
+L(\mathcal X')=\varinjlim_{i'}X_{u(i')}
+\longrightarrow L(\mathcal X)=\varinjlim_iX_i.\tag{8.2.3.1}
+\]
+若 $u$ \Term{cofinal}{共尾}（8.1.1），则 $\mathcal X$ \Term{essentially-small}{本质小}当且仅当 $\mathcal X'$ \Term{essentially-small}{本质小}（8.1.7），且上述\Term{homomorphism}{同态} (8.2.3.1) 为\Term{isomorphism}{同构}
+\[
+L(\mathcal X')\simeq L(\mathcal X).\tag{8.2.3.2}
+\]
+\textbf{8.2.4.} 设
+\[
+\mathcal X=(X_i)_{i\in I},\qquad\mathcal Y=(Y_j)_{j\in J}\tag{8.2.4.1}
+\]
+是 $C$ 的两个\Term{essentially-small-ind-object}{本质小的 ind 对象}，分别由（\Term{filtered}{滤过}且\Term{essentially-small}{本质小}的）\Term{category}{范畴} $I,J$ 编号。称所 \Term{ind-represented-presheaf}{ind 表示的预层}之间的任意\Term{morphism}{态射}
+\[
+L(\mathcal X)\longrightarrow L(\mathcal Y)\tag{8.2.4.2}
+\]
+为 \Term{ind-object}{ind 对象} $\mathcal X$ 到 \Term{ind-object}{ind 对象} $\mathcal Y$ 的一个\Term{ind-object-morphism}{态射}。置
+\[
+\operatorname{Hom}_{\mathrm{ind\text{-}ob}}(\mathcal X,\mathcal Y)
+=\operatorname{Hom}_{\widehat C}(L(\mathcal X),L(\mathcal Y)).\tag{8.2.4.3}
+\]
+\SourcePage{49}
+（无混淆之虞时，省略 $\operatorname{Hom}$ 的下标 $\mathrm{ind\text{-}ob}$。）将 $C$ 的 \Term{ind-object}{ind 对象}的\Term{morphism}{态射}的复合，定义为它们 \Term{ind-represented-presheaf}{ind 表示的预层}的\Term{morphism}{态射}的复合。若 $\mathcal V\supset\mathcal U$ 是包含 $\mathcal U$ 的\Term{universe}{宇宙}，且只考虑属于 $\mathcal V$ 的\Term{essentially-small}{本质小} \Term{ind-object}{ind 对象}，则这些\Term{object}{对象}构成一个\Term{category}{范畴}的\Term{object}{对象}集，其\Term{arrow}{箭头}集由三元组 $(\mathcal X,\mathcal Y,u)$ 构成，其中 $\mathcal X,\mathcal Y$ 是属于 $\mathcal V$ 的\Term{essentially-small}{本质小} \Term{ind-object}{ind 对象}，$u:\mathcal X\to\mathcal Y$ 是 \Term{ind-object}{ind 对象}的\Term{morphism}{态射}，即一个\Term{morphism}{态射} $L(\mathcal X)\to L(\mathcal Y)$。所得的\Term{category}{范畴}记作
+\[
+\operatorname{Ind}_{\mathcal V}(C,\mathcal U).\tag{8.2.4.4}
+\]
+当 $\mathcal V=\mathcal U$ 时，简记为
+\[
+\operatorname{Ind}_{\mathcal U}(C)\quad\text{或}\quad\operatorname{Ind}(C),\tag{8.2.4.5}
+\]
+并称为 $C$ 的相对于 $\mathcal U$ 的 \Term{category-of-ind-objects}{ind 对象范畴}；无混淆之虞时省略 $\mathcal U$。
+
+显然，若 $\mathcal V\subset\mathcal V'$ 是包含 $\mathcal U$ 的两个\Term{universe}{宇宙}，则 $\operatorname{Ind}_{\mathcal V}(C,\mathcal U)$ 为 $\operatorname{Ind}_{\mathcal V'}(C,\mathcal U)$ 的\Term{full-subcategory}{满子范畴}；由 8.2.3，\Term{inclusion-functor}{包含函子}是\Term{equivalence-of-categories}{范畴等价}：
+\[
+\operatorname{Ind}_{\mathcal V}(C,\mathcal U)
+\xrightarrow{\approx}\operatorname{Ind}_{\mathcal V'}(C,\mathcal U).\tag{8.2.4.6}
+\]
+特别地，$C$ 的每个\Term{essentially-small}{本质小} \Term{ind-object}{ind 对象}都定义了 $\operatorname{Ind}(C)$ 的一个元素，精确到唯一\Term{isomorphism}{同构}。这说明了实践中常见的一种语言滥用的合理性，即把 $C$ 的任意\Term{essentially-small}{本质小} \Term{ind-object}{ind 对象}与 $\operatorname{Ind}(C)$ 的一个\Term{object}{对象}等同。
+
+由定义立即可见，对每个\Term{universe}{宇宙} $\mathcal V$，都有一个\Term{fully-faithful-functor}{全忠实}的\Term{canonical-functor}{典范函子}
+\[
+L:\operatorname{Ind}_{\mathcal V}(C,\mathcal U)\longrightarrow\widehat C.\tag{8.2.4.7}
+\]
+由 (8.2.4.6)，只要知道其中任意一个，特别是知道\Term{canonical-functor}{典范函子}
+\[
+L:\operatorname{Ind}(C)\longrightarrow\widehat C,\tag{8.2.4.8}
+\]
+便可知道所有这些\Term{functor}{函子}，精确到唯一\Term{isomorphism}{同构}。由于此\Term{functor}{函子}\Term{fully-faithful-functor}{全忠实}，常用它将左端的一个\Term{object}{对象}与它所 pro 表示的\Term{functor}{函子}等同，甚至将 $\operatorname{Ind}(C)$ 与其在 $\widehat C$ 中由 \Term{ind-representable-presheaf}{ind 可表示预层}构成的\Term{essential-image}{本质像}等同。但应注意，这种等同的弊端显著多于利用\Term{functor}{函子} $h$（8.2.1.1）把 $C$ 与 $\widehat C$ 的\Term{full-subcategory}{满子范畴}等同的类似做法，因为与 $h$ 不同，\Term{functor}{函子} (8.2.4.8) 通常在\Term{object}{对象}上并非\Term{injectivity}{单射}。
+\SourcePage{50}
+\textbf{8.2.5.} 用所考虑的 \Term{ind-object}{ind 对象}的\Term{indexed-expression}{指标表达式} (8.2.4.1)，将定义 (8.2.4.3) 具体写出。由定义 (8.2.2.1) 得
+\[
+\begin{aligned}
+\operatorname{Hom}(\mathcal X,\mathcal Y)
+&\simeq\varprojlim_i\operatorname{Hom}(X_i,\mathcal Y)
+\overset{\mathrm{def}}=\varprojlim_i\operatorname{Hom}(X_i,L(\mathcal Y))\\
+&=\varprojlim_i\varinjlim_j\operatorname{Hom}_C(X_i,Y_j),
+\end{aligned}
+\]
+最后一个等式来自将 (8.2.2.2) 应用于 $\mathcal Y$。因此得到\Term{canonical}{典范}\Term{bijection}{双射}
+\[
+\operatorname{Hom}((X_i)_{i\in I},(Y_j)_{j\in J})
+\simeq\varprojlim_{i\in I}\varinjlim_{j\in J}\operatorname{Hom}_C(X_i,Y_j).\tag{8.2.5.1}
+\]
+让读者自行借此公式写出 \Term{ind-object-morphism}{ind 对象态射}的复合。注意，此公式立即表明，\Term{ind-object}{ind 对象}的\Term{homomorphism}{同态}集 $\operatorname{Hom}(\mathcal X,\mathcal Y)$ 是 $\mathcal U$-小的，即\Term{category}{范畴} (8.2.4.4) 都是 $\mathcal U$-\Term{category}{范畴}。由 (8.2.4.6)，这也就是说 $\operatorname{Ind}(C)$ 是 $\mathcal U$-\Term{category}{范畴}，即当 $I,J\in\mathcal U$ 时，(8.2.5.1) 的右端是小的；这又立即来自 $C$ 为 $\mathcal U$-\Term{category}{范畴}，因而各 $\operatorname{Hom}_C(X_i,Y_j)$ 都是小的。
+
+\textbf{8.2.6.} 设 $I$ 为一个\Term{essentially-small}{本质小}的\Term{filtered-category}{滤过范畴}。由 (8.2.5.1)，或者由\Term{functor}{函子} $I\to\widehat C$ 的\Term{inductive-limit}{归纳极限}关于该\Term{functor}{函子}的\Term{functorial}{函子性}，可见有一个\Term{canonical-functor}{典范函子}
+\[
+\mathscr{H}\!om(I,C)\longrightarrow\operatorname{Ind}(C).\tag{8.2.6.1}
+\]
+应注意，此\Term{functor}{函子}一般并非\Term{fully-faithful-functor}{全忠实}，甚至并非忠实。
+
+\textbf{注记 8.2.7。} 8.2.4 的定义使两个（\Term{essentially-small}{本质小}）\Term{ind-object}{ind 对象}\Term{isomorphism}{同构}的概念很清楚：这也意味着它们所 \Term{ind-represented-presheaf}{ind 表示的预层}\Term{isomorphism}{同构}。须注意，与形如 $\mathscr{H}\!om(I,C)$ 的\Term{category}{范畴}中的\Term{isomorphism}{同构}概念相比，这种\Term{isomorphism}{同构}概念非常弱。因此，可对一个 \Term{ind-object}{ind 对象}施加的许多相当自然的条件（例如其\Term{set-component}{分量}属于某个给定的\Term{strictly-full-subcategory}{严格满子范畴}，或者它是严格的——见下面 8.12），并不在\Term{isomorphism}{同构}下保持不变。故若要使用对 \Term{ind-object}{ind 对象}的\Term{isomorphism}{同构}不变的概念，必须将有关概念“\Term{saturation}{饱和}化”：从满足所考虑条件的\Term{object}{对象}构成的 $\operatorname{Ind}(C)$ 的\Term{subcategory}{子范畴}，转到它所生成的\Term{strictly-full-subcategory}{严格满子范畴}。例如，参见下面（8.4）引入的\Term{essentially-constant-ind-object}{本质常值} \Term{ind-object}{ind 对象}的概念。
+
+\begin{SGAresult}{习题}{8.2.8}
+设 $\mathcal U\subset\mathcal V$ 为两个\Term{universe}{宇宙}，$C$ 为一个属于 $\mathcal V$ 的 $\mathcal U$-\Term{category}{范畴}。以 $\operatorname{SysInd}(C)$ 表示如下\Term{category}{范畴}：
+
+ a) $\operatorname{SysInd}(C)$ 的\Term{object}{对象}是\Term{functor}{函子} $\varphi:I\to C$，其中 $I$ 是一个属于 $\mathcal V$ 的本质 $\mathcal U$-小的\Term{filtered-category}{滤过范畴}。
+\SourcePage{51}
+ b) 对 $\operatorname{SysInd}(C)$ 的两个\Term{object}{对象} $(I,\varphi)$、$(J,\psi)$，从 $(I,\varphi)$ 到 $(J,\psi)$ 的\Term{morphism}{态射}是一个二元组 $(m,u)$，其中 $m:I\to J$ 是\Term{functor}{函子}，$u:\varphi\to\psi\circ m$ 是\Term{morphism-of-functors}{函子态射}。$\operatorname{SysInd}(C)$ 中\Term{morphism}{态射}的复合按显然的方式定义。
+
+以 $S$ 表示 $\operatorname{SysInd}(C)$ 中所有满足 $m$ \Term{cofinal}{共尾}且 $u$ 为\Term{isomorphism}{同构}的\Term{morphism}{态射} $(m,u):(I,\varphi)\to(J,\Psi)$ 所成的\Term{set}{集合}。设 $(I,\varphi)$ 为 $\operatorname{SysInd}(C)$ 的一个\Term{object}{对象}。$I$ 的\Term{arrow-category}{箭头范畴} $\operatorname{Fl}(I)$ 有两个到 $I$ 的自然\Term{functor}{函子}，即源和靶；两者还有\Term{canonical-functor}{典范函子}\Term{morphism}{态射} $v:\mathrm{source}\to\mathrm{but}$ 相联系。因此，$\operatorname{SysInd}(C)$ 中有两个从 $(\operatorname{Fl}(I),\varphi\circ\mathrm{source})$ 到 $(I,\varphi)$ 的\Term{morphism}{态射}：
+\[
+\begin{aligned}
+p_1(I,\varphi)&=(\mathrm{source},\operatorname{id}),\\
+p_2(I,\varphi)&=(\mathrm{but},\varphi^*v:\varphi\circ\mathrm{source}\to\varphi\circ\mathrm{but}).
+\end{aligned}
+\]
+以 $p:\operatorname{SysInd}(C)\to\operatorname{Ind}(C)$ 表示显然的\Term{functor}{函子}。设 $B$ 为一个\Term{category}{范畴}。证明，\Term{functor}{函子} $F\mapsto F\circ p$：
+\[
+\mathscr{H}\!om(\operatorname{Ind}(C),B)\longrightarrow
+\mathscr{H}\!om(\operatorname{SysInd}(C),B)
+\]
+是\Term{fully-faithful-functor}{全忠实}的；且\Term{functor}{函子} $G:\operatorname{SysInd}(C)\to B$ 属于其\Term{essential-image}{本质像}，当且仅当它具有以下两条性质：
+
+1) 对每个 $s\in S$，$F(s)$ 是 $B$ 中的\Term{isomorphism}{同构}。
+
+2) 对 $\operatorname{SysInd}(C)$ 的每个\Term{object}{对象} $(I,\varphi)$，有 $F(p_1(I,\varphi))=F(p_2(I,\varphi))$。
+\end{SGAresult}
+
+\textbf{8.3. Ind \Term{representable-functor}{可表示函子}的刻画。}
+\begin{SGAresult}{命题}{8.3.1}
+设 $F$ 是 $C$ 上的一个 \Term{ind-representable-presheaf}{ind 可表示预层}。那么，$F$ \Term{left-exact}{左正合}，即（2.3.2）对每个\Term{finite-category}{有限范畴} $J$，及每个使 $\varinjlim\varphi$ \Term{representable-functor}{可表示}（即 $\varprojlim\varphi^\circ$ \Term{representable-functor}{可表示}）的\Term{functor}{函子} $\varphi:J\to C$，\Term{canonical}{典范}映射
+\[
+F(\varinjlim\varphi)\longrightarrow\varprojlim F\circ\varphi
+\]
+是\Term{bijection}{双射}。
+\end{SGAresult}
+\begin{proof}
+\Term{representable-functor}{可表示}\Term{presheaf}{预层}显然\Term{left-exact}{左正合}；由 2.8，这样的\Term{functor}{函子}的任意\Term{filtered-inductive-limit}{滤过归纳极限}也\Term{left-exact}{左正合}。
+\end{proof}
+\textbf{8.3.2.} 对 $C$ 上的\Term{presheaf}{预层} $F$，以下常要使用\Term{category}{范畴}
+\[
+C_{/F}\hookrightarrow\widehat C_{/F},\tag{8.3.2.1}
+\]
+它指右端中由以 $C$ 中的\Term{object}{对象}为源的\Term{arrow}{箭头} $X\to F$ 所构成的\Term{full-subcategory}{满子范畴}。由 1.4，此\Term{category}{范畴}的\Term{object}{对象}等同于二元组 $(X,u)$，其中 $X$ 为 $C$ 的\Term{object}{对象}，$u\in F(X)$。从 $(X,u)$ 到 $(X',u')$ 的\Term{morphism}{态射}\Term{solvable}{可解}释为 $C$ 中满足 $F(f)(u')=u$ 的\Term{arrow}{箭头} $f:X\to X'$。“忘却靶”的\Term{functor}{函子} $\widehat C_{/F}\to\widehat C$ 诱导一个（称为\Term{canonical}{典范}的）\Term{functor}{函子}
+\[
+C_{/F}\longrightarrow C,\tag{8.3.2.2}
+\]
+\SourcePage{52}
+它已在 3.4 中出现；那里证明了，这个\Term{functor}{函子}的\Term{inductive-limit}{归纳极限}在 $\widehat C$ 中存在（无须对 $C_{/F}$ 施加任何小性条件！），且\Term{canonical-isomorphism}{典范同构}于 $F$。
+
+\textbf{8.3.2.3.} 注意，若 $C$ 中的\Term{finite}{有限}\Term{inductive-limit}{归纳极限}\Term{representable-functor}{可表示}，且 $F$ \Term{left-exact}{左正合}（即将它们变为 $(\mathrm{Ens})$ 中的\Term{finite}{有限}\Term{projective-limit}{逆极限}），则 $C_{/F}$ 中亦然，因而（2.7.1）$C_{/F}$ \Term{filtered}{滤过}。更一般地，若 $C$ 中两个\Term{object}{对象}的和及双\Term{arrow}{箭头}的\Term{cokernel}{余核}\Term{representable-functor}{可表示}，且 $F$ 将它们分别变为积和核，则 $C_{/F}$ 对同样类型的\Term{finite}{有限}\Term{inductive-limit}{归纳极限}\Term{stable}{稳定}；因此，它\Term{filtered}{滤过}当且仅当它\Term{nonempty}{非空}，也即当且仅当\Term{functor}{函子} $F$ 不是取值为 $\varnothing$ 的常\Term{functor}{函子}。
+\begin{SGAresult}{定理}{8.3.3}
+设 $C$ 为一个 $\mathcal U$-\Term{category}{范畴}，$F\in\operatorname{ob}\widehat C$，即 $F:C^\circ\to(\mathcal U\text{-}\mathrm{Ens})$ 是 $C$ 上的一个 $\mathcal U$-\Term{presheaf}{预层}。下列条件\Term{equivalence}{等价}：
+
+(i) $F$ 是 ind \Term{representable-functor}{可表示}的（8.2.2）。
+
+(ii) \Term{category}{范畴} $C_{/F}$（8.3.2）\Term{filtered}{滤过}且\Term{essentially-small}{本质小}。
+
+(iii) （若 $C$ 中的\Term{finite}{有限}\Term{inductive-limit}{归纳极限}\Term{representable-functor}{可表示}。）\Term{functor}{函子} $F$ \Term{left-exact}{左正合}，且 $\operatorname{ob}C_{/F}$ 有一个小的\Term{cofinal-subset}{共尾子集}（8.1.4）。
+
+(iii bis) （若 $C$ 中两个\Term{object}{对象}的和以及双\Term{arrow}{箭头}的\Term{cokernel}{余核}\Term{representable-functor}{可表示}。）\Term{functor}{函子} $F$ 将 $C$ 中两个\Term{object}{对象}的和变为积，将 $C$ 中双\Term{arrow}{箭头}的\Term{cokernel}{余核}变为核；\Term{category}{范畴} $C_{/F}$ \Term{nonempty}{非空}，即 $F$ 不是取值为 $\varnothing$ 的常\Term{functor}{函子}；最后，存在 $C_{/F}$ 的一个小\Term{object}{对象}族，使 $C_{/F}$ 的每个\Term{object}{对象} $X$ 都不大于某个\Term{object}{对象} $X_i$，即存在一个 $F$-\Term{morphism}{态射} $X_i\to X$。
+
+(iv) （若\Term{category}{范畴} $C$ \Term{equivalence}{等价}于一个\Term{small-category}{小范畴}。）\Term{category}{范畴} $C_{/F}$ \Term{filtered}{滤过}。
+
+(v) （若\Term{category}{范畴} $C$ \Term{equivalence}{等价}于一个\Term{small-category}{小范畴}，且其中的\Term{filtered-inductive-limit}{滤过归纳极限}\Term{representable-functor}{可表示}。）\Term{functor}{函子} $F$ \Term{left-exact}{左正合}。
+\end{SGAresult}
+\begin{proof}
+(i)$\Rightarrow$(ii)。设 $F$ 由 $(X_i)_{i\in I}$ ind 表示，其中 $I$ 小。证明 $C_{/F}$ \Term{filtered}{滤过}。设 $X,X'$ 是 $C_{/F}$ 的两个\Term{object}{对象}，即 $C$ 的\Term{object}{对象}连同\Term{morphism}{态射} $X\to F$、$X'\to F$；证明它们在 $C_{/F}$ 中有共同上界。这两个\Term{morphism}{态射}来自\Term{morphism}{态射} $X\to X_i$、$X'\to X_{i'}$；将 $i,i'$ 换为 $\operatorname{Ob}I$ 中的共同上界后，可设 $i=i'$，然后取带有\Term{canonical}{典范}\Term{morphism}{态射} $X_i\to F$ 的\Term{object}{对象} $X_i$ 为 $X,X'$ 的共同上界。再设 \SourcePage{53}$X\mathrel{\substack{\xrightarrow f\\[-.6ex]\xrightarrow[g]{}}}X'\xrightarrow hF$ 为 $C_{/F}$ 中的双\Term{arrow}{箭头}，证明它可被 $C_{/F}$ 的某个\Term{arrow}{箭头} $X'\to X''$ 等化。$h:X'\to F$ 由一个\Term{morphism}{态射} $h_i:X'\to X_i$ 给出，条件 $hf=hg$ 意味着存在 $I$ 中的 $\alpha:i\to j$，使 $\varphi(\alpha)(h_i f)=\varphi(\alpha)(h_i g)$；即将 $h_i$ 换为 $\varphi(\alpha)h_i$ 后便等化了 $f,g$。这证明 $C_{/F}$ \Term{filtered}{滤过}。它随即是\Term{essentially-small}{本质小}的，因为\Term{object}{对象} $(X_i\to F)_{i\in\operatorname{Ob}I}$ 在 $\operatorname{Ob}C_{/F}$ 中构成一个小的\Term{cofinal}{共尾}族。
+
+(ii)$\Rightarrow$(i)。置 $I=C_{/F}$，考虑\Term{canonical-functor}{典范函子}（8.3.2.1）
+\[
+\varphi:I=C_{/F}\longrightarrow F.
+\]
+已知 $C$ 的这个 \Term{ind-object}{ind 对象}所表示的\Term{presheaf}{预层}为 $F$（3.4），故依定义（8.2.2），$F$ 是 ind \Term{representable-functor}{可表示}的。
+
+(ii)$\Leftrightarrow$(iii)。事实上，(ii)$\Rightarrow$(iii)，因为 ind \Term{representable-functor}{可表示函子}\Term{left-exact}{左正合}（8.3.1）；而 (iii)$\Rightarrow$(ii)，因为已经指出（8.3.1），$F$ \Term{left-exact}{左正合}蕴涵 $C_{/F}$ \Term{filtered}{滤过}，再由定义 8.1.8 得到此\Term{category}{范畴}\Term{essentially-small}{本质小}。
+
+(ii)$\Leftrightarrow$(iii bis) 与 (ii)$\Leftrightarrow$(iii) 的证明相同。
+
+\Term{equivalence}{等价} (ii)$\Leftrightarrow$(iv) 和 (iii)$\Leftrightarrow$(v) 显然成立，因为当 $C$ \Term{equivalence}{等价}于\Term{small-category}{小范畴}时，$C_{/F}$ 显然也\Term{equivalence}{等价}于\Term{small-category}{小范畴}，因而只要\Term{filtered}{滤过}，就自动\Term{essentially-small}{本质小}。8.3.3 得证。
+\end{proof}
+\textbf{注记 8.3.4。} 设 $F:C'\to C''$ 是 $\mathcal U$-\Term{category}{范畴}间的\Term{functor}{函子}。看来，\Term{left-exact}{左正合}性概念（2.3.2）在实践中几乎只有当 $C'$ 中的\Term{finite}{有限}\Term{projective-limit}{逆极限}\Term{representable-functor}{可表示}时才有意义。在 $C''=(\mathcal U\text{-}\mathrm{Ens})$ 且 $C'$ 为 $\mathcal U$-小的情形，将 $C'$ 写成 $C^\circ$（即 $C=C'^\circ$），应当认为，一般情况下替代\Term{left-exact}{左正合}性的“正确概念”是 $F$ 的 ind \Term{representability}{可表示性}（将其视为 $C^\circ$ 上的\Term{presheaf}{预层}）；也即 $F$ 作为 $C'$ 上\Term{functor}{函子}的 pro \Term{representability}{可表示性}，见 8.10。当 $C'$ 中\Term{finite}{有限}\Term{projective-limit}{逆极限}\Term{representable-functor}{可表示}，即 $C$ 中\Term{finite}{有限}\Term{inductive-limit}{归纳极限}\Term{representable-functor}{可表示}时，这个概念确实与\Term{left-exact}{左正合}性相同（8.3.3）。若不再假设 $C'$ 为 $\mathcal U$-小，或至少\Term{equivalence}{等价}于一个 $\mathcal U$-\Term{small-category}{小范畴}，则\Term{functor}{函子} $F$ 的\Term{left-exact}{左正合}性与 pro \Term{representability}{可表示性}未必相同，即使 $C'$ 中\Term{finite}{有限}\Term{projective-limit}{逆极限}\Term{representable-functor}{可表示}也是如此（参见 8.12.9）。事实上，在这种情况下，似乎应将\Term{left-exact}{左正合}而非 ind \Term{representable-functor}{可表示}的\Term{functor}{函子}看成病态的，而“好的”\Term{object}{对象}仍是 ind \Term{representable-functor}{可表示函子}；比较 8.13.3。对于\Term{functor}{函子} $F:C'\to C''$，其中 $C',C''$ 又是任意的 $\mathcal U$-\Term{category}{范畴}，我们将在下面（8.11.5）更一般地提出一个“改进”\Term{left-exact}{左正合}性的概念，即\Term{functor}{函子}存在 pro \Term{adjoint-functors}{伴随函子}的概念。
+
+\textbf{8.4. 常值与\Term{essentially-constant-ind-object}{本质常值}的 \Term{ind-object}{ind 对象}。} 选一个终\Term{category}{范畴} $\boldsymbol{\cdot}$，即 $\operatorname{Ob}\boldsymbol{\cdot}$ 和 $\operatorname{Fl}\boldsymbol{\cdot}$ 都为单元素\Term{set}{集合}（例如，若要一个\Term{canonical}{典范}的选择，可取 $(\mathrm{Ens})$ 中仅由空集构成的\Term{full-subcategory}{满子范畴}）。它显然是小的\Term{filtered-category}{滤过范畴}。对 $C$ 的\Term{object}{对象} $X$，相应地取以 $\boldsymbol{\cdot}$ 为指标、值为 $X$ 的\Term{constant-ind-object}{常值 ind 对象} $c(X)$。
+\SourcePage{54}
+显然，当 $X$ 变化时，得到一个\Term{fully-faithful-functor}{全忠实}\Term{functor}{函子}
+\[
+c:C\longrightarrow\operatorname{Ind}(C),\tag{8.4.1}
+\]
+它在\Term{object}{对象}上还是\Term{injectivity}{单射}；利用它，将 $C$ 与 $\operatorname{Ind}(C)$ 的一个\Term{full-subcategory}{满子范畴}等同。注意，\Term{composite-functor}{复合函子}
+\[
+C\xrightarrow c\operatorname{Ind}(C)\xrightarrow L\widehat C\tag{8.4.2}
+\]
+是\Term{canonical-functor}{典范函子} $h$（8.2.1.1）。
+
+\textbf{8.4.3.} 更一般地，设 $I$ 为一个\Term{filtered-category}{滤过范畴}。$I$ 上取值为 $C$ 的\Term{object}{对象} $X$ 的常\Term{functor}{函子}，也称为以 $I$ 为指标、值为 $X$ 的\Term{constant-ind-object}{常值 ind 对象}。显然，若 $I$ \Term{essentially-small}{本质小}，则此 \Term{ind-object}{ind 对象} ind 表示 $X$ 所表示的\Term{functor}{函子} $h(X)$，故该 \Term{ind-object}{ind 对象}\Term{isomorphism}{同构}于 $c(X)$。
+
+\textbf{8.4.4.} 若 $C$ 的 \Term{ind-object}{ind 对象} $\mathcal X$（在适当的 $\mathcal V,\mathcal V'$ 所\Term{correspondence}{对应}的\Term{category}{范畴} $\operatorname{Ind}_{\mathcal V}(C,\mathcal V')$ 中）\Term{isomorphism}{同构}于形如 $c(X)$、$X\in\operatorname{ob}C$ 的 \Term{ind-object}{ind 对象}，则称其\Term{essentially-constant-ind-object}{本质常值}。此时，\Term{object}{对象} $X$ 精确到\Term{canonical-isomorphism}{典范同构}被确定，称为该\Term{essentially-constant-ind-object}{本质常值} \Term{ind-object}{ind 对象}的\Term{value-of-ind-object}{值}。因此，依定义，(8.4.1) 的\Term{functor}{函子} $c$ 诱导 $C$ 与 $\operatorname{Ind}(C)$ 中由\Term{essentially-constant-ind-object}{本质常值} \Term{ind-object}{ind 对象}构成的\Term{full-subcategory}{满子范畴}的\Term{equivalence}{等价}；后者就是 $c$ 的\Term{essential-image}{本质像}。
+
+显然，\Term{constant-ind-object}{常值 ind 对象}\Term{essentially-constant-ind-object}{本质常值}；反过来只在 $C$ 为空或为\Term{point-category}{单点范畴}这一\Term{trivial-bundle}{平凡}情形下才成立。
+
+\textbf{8.5. $\operatorname{Ind}(C)$ 中的\Term{filtered-inductive-limit}{滤过归纳极限}。}
+\begin{SGAresult}{命题}{8.5.1}
+设 $C$ 为一个 $\mathcal U$-\Term{category}{范畴}。$\operatorname{Ind}(C)$ 中的小\Term{filtered-inductive-limit}{滤过归纳极限}\Term{representable-functor}{可表示}，且\Term{canonical-functor}{典范函子}（8.2.4.8）
+\[
+L:\operatorname{Ind}(C)\longrightarrow\widehat C
+\]
+与它们交换。
+\end{SGAresult}
+由于 $L$ \Term{fully-faithful-functor}{全忠实}，命题的断言\Term{equivalence}{等价}于下述断言。
+\begin{SGAresult}{推论}{8.5.2}
+Ind \Term{representable-functor}{可表示}\Term{presheaf}{预层}的任意小\Term{filtered-inductive-limit}{滤过归纳极限}（在 $\widehat C$ 中）仍然是 ind \Term{representable-functor}{可表示}的。
+\end{SGAresult}
+这容易由判据 8.3.3 (ii) 得到。验证细节留给读者。
+\SourcePage{55}
+\textbf{8.5.3.} $\operatorname{Ind}(C)$ 中\Term{filtered-inductive-limit}{滤过归纳极限}的“同义反复”情形，是从 $C$ 的一个\Term{essentially-small}{本质小} \Term{ind-object}{ind 对象} $\mathcal X=(X_i)_{i\in I}$ 出发。此时，在 $\widehat C$ 中，因而也在 $\operatorname{Ind}(C)$ 中（或在 $\widehat C$ 中），有
+\[
+\mathcal X=\varinjlim_I X_i.\tag{8.5.3.1}
+\]
+写这个公式时须注意，这里不是 $C$ 中的\Term{inductive-limit}{归纳极限}；即使后者存在，它在 $\operatorname{Ind}(C)$ 中也并不\Term{isomorphism}{同构}于 $\mathcal X$：\Term{canonical-functor}{典范函子}（8.4.1）$c:C\to\operatorname{Ind}(C)$ 一般不与\Term{filtered-inductive-limit}{滤过归纳极限}交换（参见下面 8.5.5）。
+
+为避免 (8.5.3.1) 写法中可能的混淆，“某些作者”（即 P. Deligne）更愿意写成
+\[
+\mathcal X=\text{“}\varinjlim_I\text{”}\,X_i,\tag{8.5.3.2}
+\]
+其中引号表示\Term{inductive-limit}{归纳极限}在 \Term{category-of-ind-objects}{ind 对象范畴} $\operatorname{Ind}(C)$ 中取。引申开来，还可用带引号的 $\varinjlim$ 表示 $\operatorname{Ind}(C)$ 中的任意\Term{inductive-limit}{归纳极限}运算（不要求所考虑的 $\operatorname{Ind}(C)$ 中\Term{inductive-system}{归纳系统}的\Term{set-component}{分量}属于 $c:C\to\operatorname{Ind}(C)$ 的像或\Term{essential-image}{本质像}）。
+
+\textbf{8.5.4.} 为计算\Term{functor}{函子}
+\[
+\varphi:J\longrightarrow\operatorname{Ind}(C)\tag{8.5.4.1}
+\]
+的\Term{inductive-limit}{归纳极限}或\Term{projective-limit}{逆极限}（这里 $J$ 是任意\Term{category}{范畴}），常常方便用一个\Term{functor}{函子}
+\[
+\Phi:J\times I\longrightarrow C\tag{8.5.4.2}
+\]
+来具体表示 $\varphi$，其中 $I$ 是\Term{essentially-small}{本质小}的\Term{filtered-category}{滤过范畴}，最好是小的\Term{filtered-category}{滤过范畴}。这样的 $\Phi$ 确实定义一个\Term{functor}{函子}
+\[
+J\longmapsto(i\longmapsto\Phi(j,i)):J\longmapsto\mathscr{H}\!om(I,C),
+\]
+再与\Term{canonical}{典范}\Term{arrow}{箭头}（8.2.6.1）$\mathscr{H}\!om(I,C)\to\operatorname{Ind}(C)$ 复合，得到\Term{functor}{函子}
+\[
+J\longmapsto(i\longmapsto\Phi(j,i)):J\longrightarrow\operatorname{Ind}(C).\tag{8.5.4.3}
+\]
+若相应\Term{functor}{函子} (8.5.4.3) \Term{isomorphism}{同构}于 $\varphi$，可称 $\Phi$ 是 $\varphi$ 的一个以（\Term{filtered}{滤过}）\Term{category}{范畴} $I$ 为指标的\Term{indexed-expression}{指标表达式}。下面（8.8）将研究给定\Term{functor}{函子} $\varphi$ 存在\Term{indexed-expression}{指标表达式}的一般条件；这里只从已给为指标形式 (8.5.4.3) 的\Term{functor}{函子} $\varphi$ 出发，限于 $J$ 为小\Term{filtered-category}{滤过范畴}的情形，说明如何计算带引号的 $\varinjlim\varphi=\varinjlim_j\varphi(j)$。公式 (8.5.3.2) 及\Term{inductive-limit}{归纳极限}的结合律（2.5.0）立即给出这个\Term{limit}{极限}的“同义反复式计算”：
+\SourcePage{56}
+\[
+\text{“}\varinjlim_J\text{”}\,\varphi
+=\text{“}\varinjlim_{J\times I}\text{”}\,\Phi,\tag{8.5.4.4}
+\]
+即
+\[
+\text{“}\varinjlim_j\text{”}\,(i\longmapsto\Phi(j,i))
+=\text{“}\varinjlim_{j,i}\text{”}\,\Phi(j,i).\tag{8.5.4.5}
+\]
+因此，所求的\Term{inductive-system}{归纳系统}正是 $\Phi$ 本身，其\Term{index-category}{指标范畴}为 $J\times I$；由于 $J,I$ 均\Term{filtered}{滤过}，该\Term{category}{范畴}确实\Term{filtered}{滤过}。
+\begin{SGAresult}{习题}{8.5.5}
+设 $C$ 为一个 $\mathcal U$-\Term{category}{范畴}。
+
+ a) 证明下列条件\Term{equivalence}{等价}：
+
+(i) $C$ 中的小\Term{inductive-limit}{归纳极限}\Term{representable-functor}{可表示}，且\Term{functor}{函子} $c:C\to\operatorname{Ind}(C)$ 与它们交换。
+
+(iii) \Term{functor}{函子} $c$ 是\Term{equivalence-of-categories}{范畴等价}。
+
+(ii) $C$ 中的小\Term{inductive-limit}{归纳极限}\Term{representable-functor}{可表示}，且对每个 $X\in\operatorname{Ob}C$，\Term{functor}{函子} $Y\mapsto\operatorname{Hom}(X,Y)$ 与这些\Term{limit}{极限}交换。
+
+(iv) $C$ 中的小\Term{filtered-inductive-limit}{滤过归纳极限}\Term{representable-functor}{可表示}，且\Term{functor}{函子} $\varinjlim c:\operatorname{Ind}C\to C$（参见 8.7.1.5）\Term{fully-faithful-functor}{全忠实}（或者说，是\Term{equivalence}{等价}）。
+
+ b) 若 $C$ 为\Term{finite-category}{有限范畴}，证明上述条件\Term{equivalence}{等价}于：$C$ 中每个\Term{projector}{投影子}（10.6）的像在 $C$ 中\Term{representable-functor}{可表示}。
+\end{SGAresult}
+
+\textbf{8.6. 将\Term{functor}{函子}\Term{group-extension}{扩张}到 \Term{ind-object}{ind 对象}。}
+
+\textbf{8.6.1.} 设
+\[
+f:C\longrightarrow C'\tag{8.6.1.1}
+\]
+是 $\mathcal U$-\Term{category}{范畴}之间的\Term{functor}{函子}。对 $C$ 的每个 \Term{ind-object}{ind 对象} $\varphi:I\to C$（$I$ 为\Term{filtered-category}{滤过范畴}），\Term{composite-functor}{复合函子} $f\circ\varphi$ 是 $C'$ 的 \Term{ind-object}{ind 对象}，也记作 $\operatorname{Ind}(f)(\varphi)$。用指标记号，若 $\varphi$ 写成 $\mathcal X=(X_i)_{i\in I}$，则得到
+\[
+\operatorname{Ind}(f)(X_i)_{i\in I}=(f(X_i))_{i\in I}.\tag{8.6.1.2}
+\]
+设 $\mathcal Y=(Y_j)_{j\in J}$ 是 $C$ 的另一个\Term{inductive-system}{归纳系统}。于是有显然的映射，也记为 $u\mapsto\operatorname{Ind}(f)(u)$：
+\[
+\begin{aligned}
+\operatorname{Hom}(\mathcal X,\mathcal Y)
+=\varprojlim_i\varinjlim_j\operatorname{Hom}(X_i,Y_j)&\longrightarrow
+\operatorname{Hom}(\operatorname{Ind}(f)(\mathcal X),\operatorname{Ind}(f)(\mathcal Y))\\
+&\simeq\varprojlim_i\varinjlim_j\operatorname{Hom}(f(X_i),f(Y_j)).
+\end{aligned}\tag{8.6.1.3}
+\]
+\SourcePage{57}
+参照 \Term{ind-object-morphism}{ind 对象态射}的复合公式（8.2.5；该公式未写出），立刻可见这些映射与\Term{morphism}{态射}的复合相容。因而对每个\Term{universe}{宇宙} $\mathcal V$，得到一个\Term{functor}{函子}
+\[
+\operatorname{Ind}(f):\operatorname{Ind}_{\mathcal V}(C,\mathcal U)
+\longrightarrow\operatorname{Ind}_{\mathcal V}(C',\mathcal U)\tag{8.6.1.4}
+\]
+（记号见 (8.2.4.5)），特别地得到\Term{functor}{函子}
+\[
+\operatorname{Ind}(f):\operatorname{Ind}(C)\longrightarrow\operatorname{Ind}(C').\tag{8.6.1.5}
+\]
+若再有一个\Term{functor}{函子} $g:C'\to C''$，显然有 ind \Term{category}{范畴}（或 $\operatorname{Ind}_{\mathcal V}$，任选）之间的\Term{functor}{函子}恒等式
+\[
+\operatorname{Ind}(gf)=\operatorname{Ind}(g)\circ\operatorname{Ind}(f),\tag{8.6.1.6}
+\]
+对 $C'=C$，还有那条恒久的公式
+\[
+\operatorname{Ind}(\operatorname{id}_C)=\operatorname{id}_{\operatorname{Ind}(C)}.\tag{8.6.1.7}
+\]
+形象地说，\Term{category}{范畴} $\operatorname{Ind}(C)$ 对 $C$ 有（\Term{covariant}{协变}的）\Term{functorial}{函子性}依赖。\footnote[3]{关于在某些条件下的\Term{contravariant}{反变}依赖，参见 8.11。}让读者自行将此依赖明确为 2-\Term{functorial}{函子性}：对每对 $\mathcal U$-\Term{category}{范畴} $C,C'$ 定义一个\Term{canonical-functor}{典范函子}
+\[
+\operatorname{Ind}(f):\mathscr{H}\!om(C,C')\longrightarrow
+\mathscr{H}\!om(\operatorname{Ind}(C),\operatorname{Ind}(C')),\tag{8.6.1.8}
+\]
+并说明恒等\Term{isomorphism}{同构} (8.6.1.6)、(8.6.1.7) 的\Term{functorial}{函子性}质。
+
+\textbf{8.6.2.} 回到\Term{functor}{函子} (8.6.1.1)，考虑相应\Term{functor}{函子}（5.1）
+\[
+f_!:\widehat C\longrightarrow\widehat{C'}\tag{8.6.2.1}
+\]
+以及函\Term{subdiagram}{子图}
+\[
+\begin{tikzcd}[column sep=large,row sep=large]
+\operatorname{Ind}(C)\arrow[r,"\operatorname{Ind}(f)"]\arrow[d,"L_C"']&\operatorname{Ind}(C')\arrow[d,"L_{C'}"]\\
+\widehat C\arrow[r,"f_!"']&\widehat{C'}
+\end{tikzcd}\tag{8.6.2.2}
+\]
+其中竖直\Term{arrow}{箭头}为 (8.2.4.8) 的\Term{canonical-functor}{典范函子} $L$。由于\Term{functor}{函子} $f_!$“延拓 $f$”且与\Term{inductive-limit}{归纳极限}交换（5.4.3），而 $L_C,L_{C'}$ 与小\Term{filtered-inductive-limit}{滤过归纳极限}交换（8.5.1），
+\SourcePage{58}
+由 (8.5.3.2)，对 $C$ 的每个 \Term{ind-object}{ind 对象} $(X_i)_{i\in I}$，在 $\widehat{C'}$ 中有\Term{canonical-isomorphism}{典范同构}
+\[
+f_!(L_C((X_i)_{i\in I}))\simeq\varinjlim_i f_!L_C(X_i)
+\simeq\varinjlim_i L_{C'}f(X_i)=L_{C'}((f(X_i))_{i\in I}),
+\]
+即有\Term{canonical-isomorphism}{典范同构}
+\[
+f_!L_C(\mathcal X)\simeq L_{C'}(\operatorname{Ind}(f)(\mathcal X)).
+\]
+由读者验证，后者具有\Term{functorial}{函子性}，即\Term{correspondence}{对应}于\Term{canonical-isomorphism}{典范同构}
+\[
+f_!L_C\simeq L_{C'}\circ\operatorname{Ind}(f).\tag{8.6.2.3}
+\]
+换言之，方形图 (8.6.2.2) 精确到\Term{canonical-isomorphism}{典范同构}交换。由于 $f_!$ 与小\Term{inductive-limit}{归纳极限}交换，结合 8.5.1，得到：
+\begin{SGAresult}{命题}{8.6.3}
+设 $f:C\to C'$ 为 $\mathcal U$-\Term{category}{范畴}间的\Term{functor}{函子}。那么\Term{functor}{函子}
+\[
+\operatorname{Ind}(f):\operatorname{Ind}(C)\longrightarrow\operatorname{Ind}(C')
+\]
+与\Term{filtered-inductive-limit}{滤过归纳极限}交换。此外，它使下图交换：
+\[
+\begin{tikzcd}[column sep=large,row sep=large]
+C\arrow[r,"f"]\arrow[d,"c_C"']&C'\arrow[d,"c_{C'}"]\\
+\operatorname{Ind}(C)\arrow[r,"\operatorname{Ind}(f)"']&\operatorname{Ind}(C')
+\end{tikzcd}
+\]
+其中竖直\Term{arrow}{箭头} $c_C,c_{C'}$ 为\Term{canonical-functor}{典范函子}（8.4.1）。
+\end{SGAresult}
+最后一个断言由定义显然成立，列在这里是为了方便引用。此外注意，由刚才 (8.6.2.3) 的证明，8.6.3 中的性质将 $\operatorname{Ind}(f)$ 刻画为由\Term{functor}{函子} $f_!$（8.6.2.1）所诱导的\Term{functor}{函子}，精确到唯一\Term{isomorphism}{同构}。
+\begin{SGAresult}{命题}{8.6.4}
+沿用 8.6.3 的记号。
+
+ a) $\operatorname{Ind}(f)$ 忠实（分别\Term{fully-faithful-functor}{全忠实}）的充要条件是 $f$ 忠实（分别\Term{fully-faithful-functor}{全忠实}）。
+
+ b) $\operatorname{Ind}(f)$ 为\Term{equivalence-of-categories}{范畴等价}的充要条件是：$f$ \Term{fully-faithful-functor}{全忠实}，且 $C'$ 的每个\Term{object}{对象}都\Term{isomorphism}{同构}于 $f$ 的像中某个\Term{object}{对象}的一个\Term{direct-factor}{直因子}（10.6）。
+\end{SGAresult}
+\begin{proof}
+\SourcePage{59}
+ a) 必要性显然来自 $f$ 由 $\operatorname{Ind}(f)$ 诱导这一事实。充分性只须在\Term{homomorphism}{同态}集 $\operatorname{Hom}(\mathcal X,\mathcal Y)$ 上使用 $\operatorname{Ind}(f)$ 的形式 (8.6.1.3)，并记住，\Term{set}{集合}的\Term{filtered-inductive-limit}{滤过归纳极限}及任意\Term{projective-limit}{逆极限}都将\Term{monomorphism}{单态射}变为\Term{monomorphism}{单态射}，将\Term{isomorphism}{同构}变为\Term{isomorphism}{同构}。
+
+ b) 可先设 $g$ 从而 $\operatorname{Ind}(f)$ \Term{fully-faithful-functor}{全忠实}。由于 $\operatorname{Ind}(C')$ 的每个\Term{object}{对象}都是 $C'$ 中\Term{object}{对象}的小\Term{filtered-inductive-limit}{滤过归纳极限}，由 $\operatorname{Ind}(f)$ 的\Term{fully-faithful-functor}{全忠实}性可知，该\Term{functor}{函子}\Term{essentially-surjective}{本质满射}，当且仅当 $C'$ 的每个\Term{object}{对象} $X'$ 都属于其\Term{essential-image}{本质像}。若有\Term{isomorphism}{同构}
+\[
+X'\xrightarrow{\sim}\text{“}\varinjlim\text{”}\,f(X_i),
+\]
+则此\Term{isomorphism}{同构}经由某个 $f(X_i)$ \Term{resolution}{分解}，从而 $X'$ 是 $f(X_i)$ 的\Term{direct-factor}{直因子}；这证明了 b) 的必要性。至于充分性，利用 $\operatorname{Ind}(f)$ 的\Term{fully-faithful-functor}{全忠实}性，它立即来自下述推论。
+\end{proof}
+\begin{SGAresult}{推论}{8.6.5}
+在 $\operatorname{Ind}(E)$ 中，\Term{projector}{投影子}（10.6）的像\Term{representable-functor}{可表示}，且\Term{functor}{函子} $\operatorname{Ind}(f):\operatorname{Ind}(C)\to\operatorname{Ind}(C')$ 与这些像的形成交换。
+\end{SGAresult}
+事实上，$\operatorname{Ind}(C)$ 中的小\Term{filtered-inductive-limit}{滤过归纳极限}\Term{representable-functor}{可表示}（8.5.1），且 $\operatorname{Ind}(f)$ 与它们交换（8.6.3）；再注意，\Term{projector}{投影子} $p:X\to X$ 的像\Term{solvable}{可解}释为以 $\mathbf N$ 为指标的\Term{filtered}{滤过}\Term{inductive-system}{归纳系统}
+\[
+X\xrightarrow pX\xrightarrow pX\longrightarrow\cdots
+\]
+的\Term{inductive-limit}{归纳极限}；也\Term{solvable}{可解}释为显然\Term{constructible}{可构造}的一个\Term{functor}{函子}在\Term{filtered-category}{滤过范畴} $P$ 上的\Term{inductive-limit}{归纳极限}，其中 $P$ 只有一个\Term{object}{对象}，并有一个非恒等\Term{arrow}{箭头} $\Pi$，满足 $\Pi^2=\Pi$。
+
+\textbf{8.7. \Term{functor}{函子} $\varinjlim_C:\operatorname{Ind}(C)\to C$。\Term{category}{范畴} $\operatorname{Ind}(C)$ 的泛刻画。}
+
+\textbf{8.7.1.} 回到一个 $\mathcal U$-\Term{category}{范畴} $C$ 及\Term{canonical-functor}{典范函子}
+\[
+c:C\longrightarrow\operatorname{Ind}(C).\tag{8.7.1.1}
+\]
+设 $\mathcal X=(X_i)_{i\in I}$ 为 $\operatorname{Ind}(C)$ 的一个\Term{object}{对象}。由\Term{representable-functor}{可表示}\Term{inductive-limit}{归纳极限}的定义（2.1、2.1.1），立即可知，$\varinjlim_iX_i$ 在 $C$ 中\Term{representable-functor}{可表示}，当且仅当 $c$ 的\Term{left-adjoint}{左伴随}在 $\mathcal X$ 处有定义；且此时 $\varinjlim_iX_i$（在 $C$ 中计算）恰是这个\Term{left-adjoint}{左伴随}在 $\mathcal X$ 处的值：
+\[
+\operatorname{Hom}_C(\varinjlim_iX_i,Y)
+\simeq\operatorname{Hom}_{\operatorname{Ind}(C)}((X_i)_{i\in I},c(Y)).\tag{8.7.1.2}
+\]
+若以
+\[
+\operatorname{Ind}(C)'\subset\operatorname{Ind}(C)\tag{8.7.1.3}
+\]
+\SourcePage{60}
+表示 $\operatorname{Ind}(C)$ 中由那些在 $C$ 中存在\Term{inductive-limit}{归纳极限}的 \Term{ind-object}{ind 对象}构成的\Term{full-subcategory}{满子范畴}，则由上述观察，此\Term{subcategory}{子范畴}是严格满的，并且有\Term{canonical-functor}{典范函子}
+\[
+\varinjlim_C:\operatorname{Ind}(C)'\longrightarrow C,\tag{8.7.1.4}
+\]
+它在 $\operatorname{Ind}(C)'$ 的每个\Term{object}{对象} $(X_i)_{i\in I}$ 上的值，就是该\Term{object}{对象}在 $C$ 中的\Term{inductive-limit}{归纳极限}。特别地，当 $C$ 中的小\Term{filtered-inductive-limit}{滤过归纳极限}\Term{representable-functor}{可表示}时，便得到自然\Term{functor}{函子}
+\[
+\varinjlim_C:\operatorname{Ind}(C)\longrightarrow C.\tag{8.7.1.5}
+\]
+\textbf{8.7.1.6.} 当然，也可在 $\operatorname{Ind}_{\mathcal V}(C,\mathcal U)'$、$\operatorname{Ind}_{\mathcal V}(C,\mathcal U)$ 型\Term{category}{范畴}上定义上述\Term{functor}{函子}；但由 (8.2.4.6)，只要知道前述\Term{correspondence}{对应}于 $\mathcal V=\mathcal U$ 的\Term{functor}{函子}，它们就已被确定，精确到唯一\Term{isomorphism}{同构}。
+
+\textbf{8.7.1.7.} 从上述将 $\varinjlim_C$ 构造为\Term{left-adjoint}{左伴随}\Term{functor}{函子}的方法，立即可知，该\Term{functor}{函子}与任意\Term{inductive-limit}{归纳极限}交换，特别是与小\Term{filtered-inductive-limit}{滤过归纳极限}交换（后者在 $\operatorname{Ind}(C)$ 中\Term{representable-functor}{可表示}（8.5.1））。还应注意，$\operatorname{Ind}(C)'$ 总包含 $c$ 的\Term{essential-image}{本质像}（由\Term{essentially-constant-ind-object}{本质常值} \Term{ind-object}{ind 对象}构成），且有关于 $X\in\operatorname{ob}\operatorname{Ind}(C)'$ \Term{functorial}{函子性}的\Term{canonical-isomorphism}{典范同构}
+\[
+\varinjlim_C c(X)\simeq X,\tag{8.7.1.8}
+\]
+即在 $C$ 对小\Term{inductive-limit}{归纳极限}\Term{stable}{稳定}这一有利情形中，有\Term{canonical-isomorphism}{典范同构}
+\[
+\varinjlim_C\circ c\simeq\operatorname{id}_C.\tag{8.7.1.9}
+\]
+\textbf{8.7.2.} 现在考虑\Term{functor}{函子}
+\[
+f:C\longrightarrow E,\tag{8.7.2.1}
+\]
+其中 $E$ 为小\Term{inductive-limit}{归纳极限}\Term{representable-functor}{可表示}的 $\mathcal U$-\Term{category}{范畴}，因而有一个\Term{functor}{函子} $\varinjlim_E:\operatorname{Ind}(E)\to E$。又因已经定义（8.6）$\operatorname{Ind}(f):\operatorname{Ind}(C)\to\operatorname{Ind}(E)$，可考虑复合
+\[
+\overline f=\varinjlim_E\circ\operatorname{Ind}(f):\operatorname{Ind}(C)\longrightarrow E,\tag{8.7.2.2}
+\]
+有时称为 $f$ 到 \Term{ind-object}{ind 对象}的\Term{canonical-extension}{典范延拓}（但切勿与 $\operatorname{Ind}(f)$ 混淆！）。作为两个与小\Term{filtered-inductive-limit}{滤过归纳极限}交换的\Term{functor}{函子}的复合（8.6.3、8.7.1.7），此\Term{functor}{函子}自身也与小\Term{filtered-inductive-limit}{滤过归纳极限}交换。此外，将\Term{isomorphism}{同构} (8.7.1.9)
+\SourcePage{61}
+应用于 $E$，再用 (8.6.2.3)，可知 $\overline f$ 延拓 $f$，精确到\Term{isomorphism}{同构}，即存在\Term{canonical-isomorphism}{典范同构}
+\[
+\overline f\circ c_C\simeq f.\tag{8.7.2.3}
+\]
+又因为 $\operatorname{Ind}(C)$ 的每个\Term{object}{对象}都是 $C$ 中\Term{object}{对象}的小\Term{filtered-inductive-limit}{滤过归纳极限}，显然，上述两条性质也刻画了 $\overline f$，精确到唯一\Term{isomorphism}{同构}。可以将这一点加以明确，同时在小\Term{filtered-inductive-limit}{滤过归纳极限}\Term{representable-functor}{可表示}的 $\mathcal U$-\Term{category}{范畴} $E$ 中，得到 $\operatorname{Ind}(C)$ 的一个精确到\Term{equivalence}{等价}的泛刻画。若 $E,F$ 是两个这样的 $\mathcal U$-\Term{category}{范畴}，以
+\[
+\mathscr{H}\!om(E,F)'\subset\mathscr{H}\!om(E,F)\tag{8.7.2.4}
+\]
+表示其中由与小\Term{filtered-inductive-limit}{滤过归纳极限}交换的\Term{functor}{函子}构成的\Term{full-subcategory}{满子范畴}。于是有：
+\begin{SGAresult}{命题}{8.7.3}
+设 $C$ 为一个 $\mathcal U$-\Term{category}{范畴}，使用上述记号 (8.7.2.4)。则\Term{canonical-functor}{典范函子}
+\[
+c_C:C\longrightarrow\operatorname{Ind}(C)
+\]
+在所有以 $C$ 为源、以小\Term{filtered-inductive-limit}{滤过归纳极限}\Term{representable-functor}{可表示}的 $\mathcal U$-\Term{category}{范畴}为靶的\Term{functor}{函子}中是 \Term{two-universal}{2-泛的}。换言之，$\operatorname{Ind}(C)$ 是这样的\Term{category}{范畴}（8.2.5、8.5.1），且对每个这样的\Term{category}{范畴} $E$，\Term{functor}{函子}
+\[
+g\longmapsto g\circ c_C:
+\mathscr{H}\!om(\operatorname{Ind}(C),E)'\longrightarrow\mathscr{H}\!om(C,E)\tag{8.7.3.1}
+\]
+是\Term{equivalence-of-categories}{范畴等价}。
+\end{SGAresult}
+\begin{proof}
+为证明最后一点，只须验证 (8.7.2.2) 所定义的映射 $f\mapsto\overline f$ 可以明确为\Term{functor}{函子}
+\[
+f\longmapsto\overline f=\varinjlim_E\cdot\operatorname{Ind}(f):
+\mathscr{H}\!om(C,E)\longrightarrow\mathscr{H}\!om(\operatorname{Ind}(C),E)',\tag{8.7.3.2}
+\]
+且此\Term{functor}{函子}是 (8.7.3.1) 的\Term{quasi-inverse-functor}{拟逆}。验证本质上显然，细节留给读者。也可以先由 7.8 推出 (8.7.3.1) \Term{fully-faithful-functor}{全忠实}，再由 (8.7.2.3) 推出它\Term{essentially-surjective}{本质满射}。
+\end{proof}
+\textbf{8.7.4.} 再考虑 $\mathcal U$-\Term{category}{范畴}间的\Term{functor}{函子}
+\[
+f:C\longrightarrow E,\tag{8.7.4.1}
+\]
+其中 $E$ 为小\Term{filtered-inductive-limit}{滤过归纳极限}\Term{representable-functor}{可表示}的 $\mathcal U$-\Term{category}{范畴}，于是有\Term{functor}{函子}
+\[
+\overline f:(X_i)_{i\in I}\longmapsto\varinjlim_i f(X_i):\operatorname{Ind}(C)\longrightarrow E.\tag{8.7.4.2}
+\]
+下面研究 $f$ 上的什么条件能保证 $\overline f$ \Term{fully-faithful-functor}{全忠实}，或者是\Term{equivalence-of-categories}{范畴等价}。由于 $f$ \Term{isomorphism}{同构}于复合 $\overline f\circ c_C$，而 $c_C:C\to\operatorname{Ind}(C)$ \Term{fully-faithful-functor}{全忠实}，可知 $\overline f$ \Term{fully-faithful-functor}{全忠实}
+\SourcePage{62}
+的必要条件是 $f$ \Term{fully-faithful-functor}{全忠实}。将 $C$ 换成其在 $E$ 中的\Term{essential-image}{本质像}，可见，假设 $f$ 是 $E$ 的一个\Term{subcategory}{子范畴} $C$ 的\Term{inclusion-functor}{包含函子}，本质上不损失一般性；为简化记号，以下作此假设。
+\begin{SGAresult}{命题}{8.7.5}
+沿用 8.7.4 的记号。
+
+ a) \Term{functor}{函子} $\overline f$ \Term{fully-faithful-functor}{全忠实}的充要条件是：
+
+(i) $C$ 的每个\Term{object}{对象} $X$ 都满足下述条件：
+
+(PF) 对 $C$ 中的每个小\Term{filtered}{滤过}\Term{inductive-system}{归纳系统} $(Y_i)_{i\in I}$，设其在 $E$ 中的\Term{inductive-limit}{归纳极限}为 $\varinjlim_iY_i$，则\Term{canonical}{典范}映射
+\[
+\varinjlim_i\operatorname{Hom}(X,Y_i)
+\longrightarrow\operatorname{Hom}(X,\varinjlim_iY_i)\tag{8.7.5.1}
+\]
+是\Term{bijection}{双射}。
+
+ b) \Term{functor}{函子} $\overline f$ 为\Term{equivalence-of-categories}{范畴等价}的充要条件是 $C$ 满足条件 (i)，并满足以下两个条件：
+
+(ii) $C$ 是 $E$ 中\Term{generating-by-strict-epimorphisms}{由严格满态射生成的子范畴}（7.1）。
+
+(iii) 对 $E$ 的每个\Term{object}{对象} $X$，$E_{/X}$ 中由那些源属于 $\operatorname{Ob}C$ 的 $X$ 上方\Term{object}{对象} $X'$ 构成的\Term{full-subcategory}{满子范畴} $C_{/X}$，\Term{filtered}{滤过}且\Term{essentially-small}{本质小}。
+
+特别地，若 $C$ \Term{equivalence}{等价}于一个\Term{small-category}{小范畴}，且 $C$ 中的\Term{finite}{有限}\Term{inductive-limit}{归纳极限}\Term{representable-functor}{可表示}，而\Term{inclusion-functor}{包含函子} $f:C\to E$ 与它们交换（即对每个\Term{finite-category}{有限范畴} $J$ 及每个\Term{functor}{函子} $\varphi:J\to C$，$f\varphi$ 的\Term{inductive-limit}{归纳极限}\Term{representable-functor}{可表示}，且在 $E$ 中\Term{isomorphism}{同构}于 $C$ 的某个\Term{object}{对象}），则条件 (iii) 成立。
+\end{SGAresult}
+\begin{proof}
+ a) 沿用条件 (i) 的记号，若以 $\mathcal Y$ 表示 \Term{ind-object}{ind 对象} $(Y_i)$，以 $\mathcal X$ 表示由 $X$ 定义的\Term{constant-ind-object}{常值 ind 对象}，则 (8.7.5.1) 恰是\Term{canonical}{典范}映射
+\[
+\operatorname{Hom}(\mathcal X,\mathcal Y)\longrightarrow
+\operatorname{Hom}(\overline f(\mathcal X),\overline f(\mathcal Y)),
+\]
+因此，若 $\overline f$ \Term{fully-faithful-functor}{全忠实}，此映射确为\Term{bijection}{双射}。反过来，若 $\mathcal X=(X_j)_{j\in J}$ 和 $\mathcal Y=(Y_i)_{i\in I}$ 是 $E$ 的任意两个 \Term{ind-object}{ind 对象}，则映射
+\[
+u:\operatorname{Hom}(\mathcal X,\mathcal Y)\longrightarrow
+\operatorname{Hom}(\overline f(\mathcal X),\overline f(\mathcal Y))
+\]
+是各映射 $u_j:\operatorname{Hom}(\mathcal X_j,\mathcal Y)\to\operatorname{Hom}(\overline f(\mathcal X_j),\mathcal Y)$ 关于 $j$ 的\Term{projective-limit}{逆极限}，其中 $\mathcal X_j$ 为值为 $X_j$ 的\Term{constant-ind-object}{常值 ind 对象}。因此，若诸 $u_j$ 为\Term{bijection}{双射}，则 $u$ 为\Term{bijection}{双射}，故 (i) 蕴涵 $\overline f$ \Term{fully-faithful-functor}{全忠实}。
+
+ b) 假设 (i)、(ii)、(iii) 成立，证明 $\overline f$ 为\Term{equivalence}{等价}。只须再证明它\Term{essentially-surjective}{本质满射}，即 $E$ 的每个\Term{object}{对象} $X$ 都在其\Term{essential-image}{本质像}中。假设 (ii) 表示 $\varinjlim_{C_{/X}}Z\to X$ 是\Term{isomorphism}{同构}，而 (iii) 表示\Term{category}{范畴} $C_{/X}$ \Term{filtered}{滤过}且\Term{essentially-small}{本质小}；故 $X$ 为自然\Term{functor}{函子} $C_{/X}\to E$ 所定义的 $E$ 的 \Term{ind-object}{ind 对象}之像。反过来，假设 $\overline f$ 是
+\SourcePage{63}
+\Term{equivalence}{等价}，则由 a)，只须验证 (ii)、(iii)。可以假设 $E=\operatorname{Ind}(C)$，并将 $C$ 与 $E$ 的\Term{subcategory}{子范畴} $c(C)$ 等同。但已知（8.3.3 (ii)），对每个 $X\in\operatorname{Ind}(C)$，若愿意可将其与它所 ind 表示的 $C^\circ$ 上\Term{functor}{函子} $F$ 等同，则 $C_{/X}=C_{/F}$ 是\Term{essentially-small}{本质小}的\Term{filtered-category}{滤过范畴}（这证明了 (iii)），且\Term{functor}{函子} $C_{/F}\to\widehat C$ 在 $\widehat C$ 中的\Term{inductive-limit}{归纳极限}是 $F$。由于 $F=X$ 在 $E$ 中，故在 $\widehat C$ 的\Term{full-subcategory}{满子范畴} $E$ 中更是如此；这证明了 (ii)。还须证明 b) 的最后一个断言。对 $C$ 所作的假设显然蕴涵\Term{category}{范畴} $C_{/X}$ 中\Term{finite}{有限}\Term{inductive-limit}{归纳极限}\Term{representable-functor}{可表示}，因而 $C_{/X}$ \Term{filtered}{滤过}。
+\end{proof}
+\textbf{注记 8.7.5.2。} 刚才的论证更一般地表明：条件 (i) 成立时，\Term{fully-faithful-functor}{全忠实}\Term{functor}{函子} $\overline f$（8.7.4.2）的\Term{essential-image}{本质像}由满足以下条件的 $X\in\operatorname{ob}E$ 构成：\Term{category}{范畴} $C_{/X}$ \Term{filtered}{滤过}且\Term{essentially-small}{本质小}（若 $C$ 满足 b) 末尾所述条件，则此条件自动成立），且\Term{canonical-functor}{典范函子} $C_{/X}\to E$ 的\Term{inductive-limit}{归纳极限}为 $X$。
+\begin{SGAresult}{推论}{8.7.6}
+以 $E_{\mathrm{PF}}$ 表示 $E$ 中由满足 8.7.5 a) 的条件 (PF) 的\Term{object}{对象}构成的\Term{full-subcategory}{满子范畴}。那么，对每个在 $E$ 中具有\Term{inductive-limit}{归纳极限} $X$ 的\Term{functor}{函子} $J\to E_{\mathrm{PF}}$（$J$ 为\Term{finite-category}{有限范畴}），有 $X\in\operatorname{ob}E_{\mathrm{PF}}$。由\Term{inclusion-functor}{包含函子} $g:E_{\mathrm{PF}}\hookrightarrow E$ 得到的\Term{canonical-functor}{典范函子} $(X_i)_{i\in I}\mapsto\varinjlim_{E,i}X_i$
+\[
+\overline g:\operatorname{Ind}(E_{\mathrm{PF}})\longrightarrow E\tag{8.7.6.1}
+\]
+是\Term{fully-faithful-functor}{全忠实}的；若 $E$ 中\Term{finite}{有限}\Term{inductive-limit}{归纳极限}\Term{representable-functor}{可表示}，且 $E_{\mathrm{PF}}$ \Term{equivalence}{等价}于一个\Term{small-category}{小范畴}，则\Term{functor}{函子} $\overline f$ 的\Term{essential-image}{本质像}由使\Term{canonical}{典范}\Term{morphism}{态射} $\varinjlim_{(E_{\mathrm{PF}})_{/X}}Y\to X$ 为\Term{isomorphism}{同构}的 $E$ 的\Term{object}{对象} $X$ 构成。若再假设 $E$ 的\Term{subcategory}{子范畴} $E_{\mathrm{PF}}$ 由\Term{strict-epimorphism}{严格满态射}生成（7.1），则\Term{functor}{函子} (8.7.6.1) 为\Term{equivalence-of-categories}{范畴等价}。
+\end{SGAresult}
+这些事实按所给顺序都由 8.7.5 显然得到，其中第一个断言使用 2.8。
+\begin{SGAresult}{推论}{8.7.7}
+假设 $E$ 中\Term{finite}{有限}\Term{inductive-limit}{归纳极限}\Term{representable-functor}{可表示}。设 $C$ 为 $E$ 的一个\Term{equivalence}{等价}于\Term{small-category}{小范畴}的\Term{full-subcategory}{满子范畴}，考虑\Term{functor}{函子} $(X_i)_{i\in I}\mapsto\varinjlim_{E,i}X_i$：
+\[
+\overline f:\operatorname{Ind}(C)\longrightarrow E.\tag{8.7.7.1}
+\]
+令 $E_{\mathrm{PF}}$ 如 8.7.6。下列条件\Term{equivalence}{等价}：
+
+(i) \Term{functor}{函子} $\overline f:\operatorname{Ind}(C)\to E$ 是\Term{equivalence}{等价}。
+\SourcePage{64}
+(ii) $E$ 中的\Term{subcategory}{子范畴} $C$ 由\Term{strict-epimorphism}{严格满态射}生成，包含于 $E_{\mathrm{PF}}$，且 $E_{\mathrm{PF}}$ 的每个\Term{object}{对象}在 $E$ 中（或在 $E_{\mathrm{PF}}$ 中；由 8.7.6，这是\Term{equivalence}{等价}的）\Term{isomorphism}{同构}于 $C$ 的某个\Term{object}{对象}的一个\Term{direct-factor}{直因子}。
+
+当 $E$ 的\Term{subcategory}{子范畴} $C$ 对\Term{direct-factor}{直因子}\Term{stable}{稳定}（10.6）时，上述条件还\Term{equivalence}{等价}于下列条件：
+
+(ii bis) $C=E_{\mathrm{PF}}$，且 $C$ 在 $E$ 中由\Term{strict-epimorphism}{严格满态射}生成。
+
+(iii) $E$ 的\Term{subcategory}{子范畴} $C$ 由\Term{strict-epimorphism}{严格满态射}生成，包含于 $E_{\mathrm{PF}}$，且其中\Term{finite}{有限}\Term{inductive-limit}{归纳极限}\Term{representable-functor}{可表示}。
+
+若再有 $E$ 中\Term{finite}{有限}\Term{inductive-limit}{归纳极限}\Term{representable-functor}{可表示}，这些条件又\Term{equivalence}{等价}于：
+
+(iii bis) $E$ 的\Term{subcategory}{子范畴} $C$ 由\Term{strict-epimorphism}{严格满态射}生成，包含于 $E_{\mathrm{PF}}$，且在 $E$ 中对\Term{finite}{有限}\Term{inductive-limit}{归纳极限}\Term{stable}{稳定}（\Term{equivalence}{等价}地，对\Term{finite}{有限}和及双\Term{arrow}{箭头}的\Term{cokernel}{余核}\Term{stable}{稳定}）。
+\end{SGAresult}
+\begin{proof}
+已知（8.7.5）条件 (i) 蕴涵 $C\subset E_{\mathrm{PF}}$ 且 $C$ 由\Term{strict-epimorphism}{严格满态射}生成；再证明，此时 $E_{\mathrm{PF}}$ 的每个\Term{object}{对象} $X$ 都\Term{isomorphism}{同构}于 $C$ 的某个\Term{object}{对象}的一个\Term{direct-factor}{直因子}。事实上，已知 $X$ 是 $C$ 中\Term{object}{对象}在 $E$ 中的一个\Term{filtered-inductive-limit}{滤过归纳极限} $\varinjlim_iX_i$；根据 $E_{\mathrm{PF}}$ 的定义，对适当的 $i$，\Term{canonical-homomorphism}{典范同态} $X_i\to X$ 有一个左逆，从而 $X$ 确为 $C$ 的\Term{object}{对象} $X_i$ 的\Term{direct-factor}{直因子}。这证明 (i)$\Rightarrow$(ii)（事实上不需要对 $C$ 或 $E$ 作假设）。证明 (ii)$\Rightarrow$(i)。由于 $C$ \Term{equivalence}{等价}于一个\Term{small-category}{小范畴}，且 $E_{\mathrm{PF}}$ 的每个\Term{object}{对象}都是 $C$ 中\Term{object}{对象}的\Term{direct-factor}{直因子}，可见 $E_{\mathrm{PF}}$ 也\Term{equivalence}{等价}于\Term{small-category}{小范畴}；故由 8.7.6，\Term{functor}{函子} (8.7.6.1) 是\Term{equivalence-of-categories}{范畴等价}，再将 8.6.4 b) 应用于包含 $E\hookrightarrow E_{\mathrm{PF}}$，便得到结论。
+
+当 $C$ 的每个\Term{object}{对象}在 $E$ 中的\Term{direct-factor}{直因子}都属于 $C$ 时，显然 (ii)$\Leftrightarrow$(ii bis)。另一方面，由 8.7.6，(ii bis) 蕴涵 (iii)，分别蕴涵 (iii bis)。最后，由 8.7.5，(iii)（从而 (iii bis)）蕴涵 (i)。证明完成。
+\end{proof}
+\begin{SGAresult}{习题}{8.7.8}
+（\Term{karoubi-envelope}{Karoubi 包络}。）设 $C$ 为一个 $\mathcal U$-\Term{category}{范畴}，$E=\operatorname{Ind}(C)$，$E_{\mathrm{PF}}\supset C$ 为 8.7.6 中定义的 $E$ 的\Term{full-subcategory}{满子范畴}。
+
+ a) 证明 $E_{\mathrm{PF}}$ 中\Term{projector}{投影子}的像\Term{representable-functor}{可表示}，且 $E_{\mathrm{PF}}$ 的每个\Term{object}{对象}都是 $C$ 中某个\Term{object}{对象}的\Term{direct-factor}{直因子}。
+
+ b) 称一个\Term{category}{范畴} $F$ 为 \Term{karoubian-category}{Karoubi 范畴}，若其中\Term{projector}{投影子}的像\Term{representable-functor}{可表示}。设
+\[
+\varphi:C\longrightarrow K
+\]
+是一个\Term{fully-faithful-functor}{全忠实}\Term{functor}{函子}，$K$ 为 \Term{karoubian-category}{Karoubi 范畴}，且 $K$ 的每个\Term{object}{对象}都是 $C$ 的像中某个\Term{object}{对象}的\Term{direct-factor}{直因子}。证明，$\varphi$ 在从 $C$ 到 \Term{karoubian-category}{Karoubi 范畴}的所有\Term{functor}{函子}中是 \Term{two-universal}{2-泛}的；准确地说，对每个 \Term{karoubian-category}{Karoubi 范畴} $F$，\Term{functor}{函子}
+\[
+g\longmapsto g\circ\varphi:\mathscr{H}\!om(K,F)\longrightarrow\mathscr{H}\!om(K,F)
+\]
+\SourcePage{65}
+为\Term{equivalence-of-categories}{范畴等价}。（使用任意\Term{functor}{函子}都与\Term{projector}{投影子}的像交换这一事实。）配备 $\varphi$ 的\Term{category}{范畴} $K$，由上述性质确定到\Term{equivalence}{等价}（该\Term{equivalence}{等价}本身确定到唯一\Term{isomorphism}{同构}），称为 $C$ 的 \Term{karoubi-envelope}{Karoubi 包络} $\widetilde C$。（亦比较第 IV 讲 7.5。）
+
+ c) 由 a)、b) 推出：$\operatorname{Ind}(C)_{\mathrm{PF}}$，配备由 $c:C\to\operatorname{Ind}(C)$ 诱导的\Term{functor}{函子} $C\to\operatorname{Ind}(C)_{\mathrm{PF}}$，成为 $C$ 的一个 \Term{karoubi-envelope}{Karoubi 包络}。
+
+ d) 证明每个\Term{functor}{函子} $f:C\to C'$ 都以本质唯一的方式延拓成 \Term{karoubi-envelope}{Karoubi 包络}之间的\Term{functor}{函子} $\widetilde f:\widetilde C\to\widetilde{C'}$；若如 c) 那样选取这些 \Term{karoubi-envelope}{Karoubi 包络}，则 $\widetilde f$ 是由 $\operatorname{Ind}(f):\operatorname{Ind}(C)\to\operatorname{Ind}(C')$ 诱导的\Term{functor}{函子}。证明 8.5.4 b) 的各条件还\Term{equivalence}{等价}于：$\widetilde f$ 是\Term{equivalence-of-categories}{范畴等价}。
+\end{SGAresult}
+\begin{SGAresult}{习题}{8.7.9}
+设 $E$ 为一个 $\mathcal U$-\Term{category}{范畴}。
+
+ a) 证明下列条件\Term{equivalence}{等价}：
+
+(i) $E$ \Term{equivalence}{等价}于形如 $\operatorname{Ind}(C)$ 的\Term{category}{范畴}，其中 $C$ 为一个 $\mathcal U$-\Term{category}{范畴}。
+
+(i bis) 同 (i)，并要求 $C$ 为 \Term{karoubian-category}{Karoubi 范畴}（8.7.8 b)）。
+
+(ii) $E$ 的\Term{subcategory}{子范畴} $E_{\mathrm{PF}}$（8.7.6）由\Term{strict-epimorphism}{严格满态射}生成，且对 $E$ 的每个\Term{object}{对象} $X$，$(E_{\mathrm{PF}})_{/X}$ 是一个\Term{essentially-small}{本质小}的\Term{filtered-category}{滤过范畴}。
+
+证明，若 $C$ 为一个使 $E$ \Term{equivalence}{等价}于 $\operatorname{Ind}(C)$ 的 Karoubi $\mathcal U$-\Term{category}{范畴}，则 $C$ \Term{equivalence}{等价}于 $E_{\mathrm{PF}}$（\Term{equivalence}{等价}确定到唯一\Term{isomorphism}{同构}）。在以下两个 \Term{two-category}{2-范畴}之间建立一个 2-\Term{equivalence}{等价}：一个由满足上述条件的\Term{category}{范畴} $E$ 以及它们之间与小\Term{filtered-inductive-limit}{滤过归纳极限}交换的\Term{functor}{函子}构成；另一个由 Karoubi $\mathcal U$-\Term{category}{范畴}及其间任意\Term{functor}{函子}构成。
+
+ b) 证明下列条件\Term{equivalence}{等价}：
+
+(i) $E$ \Term{equivalence}{等价}于形如 $\operatorname{Ind}(C)$ 的\Term{category}{范畴}，其中 $C$ 为\Term{finite}{有限}\Term{inductive-limit}{归纳极限}\Term{representable-functor}{可表示}的 $\mathcal U$-\Term{category}{范畴}。
+
+(i bis) 同 (i)，但还要求 $C$ 为 \Term{karoubian-category}{Karoubi 范畴}。
+
+(ii) $E$ 中\Term{finite}{有限}\Term{inductive-limit}{归纳极限}\Term{representable-functor}{可表示}；$E$ 的\Term{subcategory}{子范畴} $E_{\mathrm{PF}}$ 由\Term{strict-epimorphism}{严格满态射}生成；且对 $E$ 的每个\Term{object}{对象} $X$，存在 $\operatorname{Ob}(E_{\mathrm{PF}})_{/X}$ 的一个小\Term{subset}{子集} $I$，使 $(E_{\mathrm{PF}})_{/X}$ 的每个\Term{object}{对象}都不大于 $I$ 中的某个\Term{object}{对象}。（使用 8.9.5 b)。）
+\end{SGAresult}

@@ -1,0 +1,741 @@
+% 第一篇，原书第4—38页；以扫描本为底本，保留原转写标签。
+\chapter{平展上同调：基本起点}\label{I}
+\blfootnote{P.\ Deligne 主讲，J.F.\ Boutot 撰写。}
+\origpage{10}{4}
+本文整理自 P.\ Deligne 于1974年8月在 Arcata 举行的美国数学会代数几何暑期学校上所作的六次报告，总题为“Inputs of etale cohomology”。第七次报告则成为本书中的《迹公式报告》。这些报告旨在给出\term{平展上同调}{étale cohomology}{cohomologie étale}基本定理的证明，摆脱 SGA~4 中包裹着它们的繁复抽象形式论。我们既不追求最一般的定理表述，也不逐一展开证明所需的、有时颇为巧妙的\term{分解归约}{dévissage}{dévissage}；着重讨论的是经过一切归约以后仍须处理的那些“不可再约”的情形。
+
+本文不以原创性自许；我们希望它能帮助读者有效地使用 SGA~4 的三卷著作。
+
+\noindent\textbf{约定。}本篇只考虑\term{拟紧}{quasi-compact}{quasi-compact}（即有限个仿射开子集之并）且\term{拟分离}{quasi-separated}{quasi-séparé}（即任意两个仿射开子集的交都是拟紧的）的\term{概形}{scheme}{schéma}，并将它们简称为概形。
+
+\section{Grothendieck 拓扑}\label{I:1}
+\origpage{12}{6}
+\term{Grothendieck 拓扑}{Grothendieck topology}{topologie de Grothendieck}最初作为 Grothendieck 的\term{下降}{descent}{descente}理论的基础而出现（参见 SGA~1 VI、VIII）；相应上同调理论的应用则是后来的事。本章也沿着同一路径展开：先将经典的\term{局部化}{localization}{localisation}、局部性质和\term{黏合}{gluing}{recollement}等概念形式化（\ref{I:1-1}、\ref{I:1-2}、\ref{I:1-3}），由此提炼出 Grothendieck 拓扑的一般概念（\ref{I:1-6}）；为了说明在代数几何中引入它的理由，我们证明一个\term{忠实平坦下降}{faithfully flat descent}{descente fidèlement plate}定理（\ref{I:1-4}），它推广了经典的 Hilbert 第90定理（\ref{I:1-5}）。
+
+关于这一形式理论，读者可在 Giraud \cite{gi64} 中找到更完整而简明的叙述。M.\ Artin 的讲义“Grothendieck topologies”\cite{ar62}（第I至III章）也仍然有用。SGA~4 第I至VI讲共866页，在研究某些特殊拓扑——例如产生\term{晶体上同调}{crystalline cohomology}{cohomologie cristalline}的拓扑——时十分宝贵；但若只想使用与经典直觉如此接近的平展拓扑，则不必先把这些内容读完。
+
+\subsection{筛}\label{I:1-1}
+设 $X$ 是拓扑空间，$f:X\to\dR$ 是 $X$ 上的实值函数。$f$ 的连续性是一个局部性质：换言之，只要 $f$ 在 $X$ 的每个充分小的开子集上连续，它就在整个 $X$ 上连续。为了将“局部性质”这一概念形式化，先引入几个定义。
+
+称由 $X$ 的开子集组成的集合 $\cU$ 为一个\term{筛}{sieve}{crible}，如果对任意 $U\in\cU$ 及开子集 $V\subset U$，都有 $V\in\cU$。如果筛中所有开子集的并等于 $X$，则称该筛是\term{覆盖筛}{covering sieve}{crible couvrant}。
+
+给定 $X$ 的一族开子集 $\{U_i\}$，由 $\{U_i\}$ 生成的筛，按定义是所有包含于某个 $U_i$ 中的开子集 $U$ 构成的集合。
+
+设性质 $P(U)$ 对 $X$ 的每个开子集 $U$ 都有定义。如果对任意开子集 $U$ 及其任意覆盖筛 $\cU$，$P(U)$ 成立当且仅当对每个 $V\in\cU$ 都有 $P(V)$ 成立，则称 $P$ 是\term{局部性质}{local property}{propriété locale}。例如，给定 $f:X\to\dR$，性质“$f$ 在 $U$ 上连续”就是局部性质。
+
+\subsection{层}\label{I:1-2}
+下面明确“在 $X$ 上局部给定一个函数”的含义。
+
+\subsubsection{从筛的观点看}\label{I:1-2-1}
+设 $\cU$ 是 $X$ 的开子集构成的一个筛。在 $X$ 上 $\cU$-局部给定一个函数，是指对每个 $U\in\cU$ 给定 $U$ 上的函数 $f_U$，使得只要 $V\subset U$，就有 $f_V=f_U|V$。
+
+\subsubsection{从 Čech 的观点看}\label{I:1-2-2}
+如果筛 $\cU$ 由 $X$ 的一族开子集 $U_i$ 生成，那么 $\cU$-局部给定一个函数，等价于在每个 $U_i$ 上给定函数 $f_i$，满足
+$f_i|{U_i\cap U_j}=f_j|{U_i\cap U_j}$。
+
+换言之，若 $Z=\coprod U_i$，则 $\cU$-局部给定一个函数，等价于在 $Z$ 上给定一个函数，它在自然投影 $Z\to X$ 的每条纤维上取常值。
+
+\subsubsection{}\label{I:1-2-3}
+连续函数构成一个\term{层}{sheaf}{faisceau}。这就是说，对 $X$ 的任意开子集 $V$、$V$ 的任意覆盖筛 $\cU$，以及任意 $\cU$-局部给定的函数 $\{f_U\}$，如果每个 $f_U$ 都在 $U$ 上连续，那么存在唯一的 $V$ 上连续函数 $f$，使得对所有 $U\in\cU$ 都有 $f|U=f_U$。
+
+\subsection{栈}\label{I:1-3}
+现在明确“在 $X$ 上局部给定一个\term{向量丛}{vector bundle}{fibré vectoriel}”的含义。
+
+\subsubsection{从筛的观点看}\label{I:1-3-1}
+设 $\cU$ 是 $X$ 的开子集构成的筛。在 $X$ 上 $\cU$-局部给定一个向量丛，是指给定以下资料：
+\begin{enumerate}[\indent a)]
+\item 对每个 $U\in\cU$，给定 $U$ 上的向量丛 $E_U$；
+\item 若 $V\subset U$，给定同构 $\rho_{U,V}:E_V\iso E_U|V$；
+\item 上述同构满足：若 $W\subset V\subset U$，则图
+\[\xymatrix{
+ E_W\ar[r]^-{\rho_{U,W}}\ar[dr]_-{\rho_{V,W}} & E_U|W\\
+ & E_V|W\ar[u]_-{\rho_{U,V}|W}
+}\]
+交换，即 $\rho_{U,W}=(\rho_{U,V}|W)\circ\rho_{V,W}$。
+\end{enumerate}
+
+\subsubsection{从 Čech 的观点看}\label{I:1-3-2}
+如果筛 $\cU$ 由一族开子集 $U_i$ 生成，则 $\cU$-局部给定一个向量丛，等价于给定：
+\begin{enumerate}[\indent a)]
+\item 每个 $U_i$ 上的向量丛 $E_i$；
+\item 记 $U_{ij}=U_i\cap U_j=U_i\times_X U_j$，给定同构 $\rho_{ji}:E_i|U_{ij}\iso E_j|U_{ij}$；
+\item 这些同构满足：记 $U_{ijk}=U_i\times_X U_j\times_X U_k$，则图
+\[\xymatrix{
+ E_i|U_{ijk}\ar[r]^-{\rho_{ki}|U_{ijk}}\ar[dr]_-{\rho_{ji}|U_{ijk}} & E_k|U_{ijk}\\
+ & E_j|U_{ijk}\ar[u]_-{\rho_{kj}|U_{ijk}}
+}\]
+交换，即在 $U_{ijk}$ 上有 $\rho_{ki}=\rho_{kj}\circ\rho_{ji}$。
+\end{enumerate}
+
+换言之，若 $Z=\coprod U_i$，$\pi:Z\to X$ 是自然投影，则 $\cU$-局部给定一个向量丛，等价于给定：
+\begin{enumerate}[\indent a)]
+\item $Z$ 上的向量丛 $E$；
+\item 对 $Z$ 中满足 $\pi(x)=\pi(y)$ 的任意两点 $x,y$，给定纤维间的同构 $\rho_{yx}:E_x\iso E_y$，它连续地依赖于 $(x,y)$；
+\item 这些同构满足：对满足 $\pi(x)=\pi(y)=\pi(z)$ 的任意三点 $x,y,z$，有 $\rho_{zx}=\rho_{zy}\circ\rho_{yx}$。
+\end{enumerate}
+
+\subsubsection{}\label{I:1-3-3}
+$X$ 上的向量丛 $E$ 确定一个 $\cU$-局部给定的向量丛 $E_\cU$，即 $E$ 在 $\cU$ 各对象上的限制 $E_U$ 构成的系统。“向量丛是局部性质的概念”可表述为：对 $X$ 的每个覆盖筛 $\cU$，函子 $E\mapsto E_\cU$ 给出 $X$ 上向量丛范畴与 $\cU$-局部给定的向量丛范畴之间的\term{范畴等价}{equivalence of categories}{équivalence de catégories}。
+
+\subsubsection{}\label{I:1-3-4}
+在 \ref{I:1-1} 中将“$X$ 的开子集”换成“$X$ 的子集”，就得到 $X$ 的子空间筛的概念。在这一框架下同样有黏合定理。例如，设 $X$ 是正规拓扑空间，$\cC$ 是由 $X$ 的一个局部有限闭覆盖所生成的子空间筛，则从 $X$ 上向量丛到 $\cC$-局部给定的向量丛的函子 $E\mapsto E_\cC$ 是范畴等价。
+
+在代数几何中，进一步考虑“$X$ 上方空间的筛”也很有用；下一节就来讨论这一点。
+
+\subsection{忠实平坦下降}\label{I:1-4}
+\origpage{15}{9}
+\subsubsection{}\label{I:1-4-1}
+在概形的情形中，Zariski 拓扑对于研究非线性问题还不够细，因此在上述定义中，需要用更一般的态射代替开浸入。从这一观点看，下降技术就是局部化技术。因此，下面的下降命题可以表述为：所考虑的性质在忠实平坦拓扑下都是局部性质。（一个概形态射称为\term{忠实平坦}{faithfully flat}{fidèlement plat}的，是指它既平坦又满射。）
+
+\begin{proposition}\label{I:1-4-2}
+设 $A$ 是环，$B$ 是忠实平坦的 $A$-代数，则：
+\begin{enumerate}[(i)]
+\item $A$-模序列 $\Sigma=(M'\to M\to M'')$ 正合，只须由标量扩张到 $B$ 得到的序列 $\Sigma_{(B)}$ 正合。
+\item $A$-模 $M$ 是有限生成的（分别是有限表示的、平坦的、有限秩局部自由的、可逆的〔即秩一局部自由的〕），只须 $B$-模 $M_{(B)}$ 具有相应性质。
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+(i) 由 $B$ 的平坦性，函子 $M\mapsto M_{(B)}$ 正合，所以只须证明：非零 $A$-模 $N$ 经标量扩张后仍非零。若 $N\ne0$，则 $N$ 含有非零循环子模 $A/\fa$；于是 $N_{(B)}$ 含有循环子模 $(A/\fa)_{(B)}=B/\fa B$。由结构态射 $\varphi:\spec(B)\to\spec(A)$ 的满射性，这个子模非零（若 $V(\fa)$ 非空，则 $\varphi^{-1}(V(\fa))=V(\fa B)$ 也非空）。
+
+(ii) 对 $M_{(B)}$ 中任意有限一族元素 $(x_i)$，都存在 $M$ 的有限生成子模 $M'$，使得 $M'_{(B)}$ 包含各 $x_i$。\translatornote{原文此处写“任意一族”，应补上“有限”。例如取 $A=B=\dZ$、$M=\bigoplus_{i\geq1}\dZ e_i$，则全体基向量 $e_i$ 不可能同时包含在一个有限生成子模中。这里实际只对 $M_{(B)}$ 的有限生成元族使用该断言；每个生成元都是有限个纯张量之和，取其中出现的有限多个 $M$ 中元素所生成的子模即可。}若 $M_{(B)}$ 有限生成，且 $(x_i)$ 是其生成元，则 $M'_{(B)}=M_{(B)}$，所以 $M'=M$，从而 $M$ 有限生成。
+
+若 $M_{(B)}$ 有限表示，由上述结论可取满射 $A^n\to M$。记其核为 $N$，则 $B$-模 $N_{(B)}$ 有限生成，故 $N$ 也有限生成，因此 $M$ 有限表示。关于“平坦”的断言由 (i) 立即得到；“有限秩局部自由”等价于“平坦且有限表示”，而秩可通过将标量扩张到域来检验。
+\end{proof}
+
+\subsubsection{}\label{I:1-4-3}
+设 $X$ 是概形，$\cS$ 是一类对 $X$ 上纤维积封闭的 $X$-概形。子类 $\cU\subset\cS$ 称为 $X$ 上的筛（相对于 $\cS$），如果对任意 $X$-概形态射 $\varphi:V\to U$，只要 $U,V\in\cS$ 且 $U\in\cU$，就有 $V\in\cU$。由 $\cS$ 中一族 $X$-概形 $\{U_i\}$ 生成的筛，是所有能作为 $X$-概形映到某个 $U_i$ 的 $V\in\cS$ 构成的类。
+
+\subsubsection{}\label{I:1-4-4}
+设 $\cU$ 是 $X$ 上的筛。所谓在 $X$ 上 $\cU$-局部给定一个\term{拟凝聚模}{quasi-coherent module}{module quasi-cohérent}，是指给定：
+\begin{enumerate}[\indent a)]
+\item 每个 $U\in\cU$ 上的拟凝聚模 $E_U$；
+\item 对每个 $U\in\cU$ 以及 $\cS$ 中的每个 $X$-概形态射 $\varphi:V\to U$，给定同构 $\rho_\varphi:E_V\iso\varphi^*E_U$；
+\item 这些同构满足：若 $\psi:W\to V$ 是 $\cS$ 中的 $X$-概形态射，则图
+\[\xymatrix{
+ E_W\ar[r]^-{\rho_{\varphi\circ\psi}}\ar[dr]_-{\rho_\psi}&\psi^*\varphi^*E_U\\
+ &\psi^*E_V\ar[u]_-{\psi^*\rho_\varphi}
+}\]
+交换，即 $\rho_{\varphi\circ\psi}=(\psi^*\rho_\varphi)\circ\rho_\psi$。
+\end{enumerate}
+
+若 $E$ 是 $X$ 上的拟凝聚模，以 $E_\cU$ 表示如下 $\cU$-局部给定的模：在 $\varphi_U:U\to X$ 上取值为 $\varphi_U^*E$；对于任意态射 $\psi:V\to U$，限制同构 $\rho_\psi$ 取为典范同构
+$E_V=(\varphi_U\circ\psi)^*E\iso\psi^*\varphi_U^*E=\psi^*E_U$。
+
+\begin{theorem}\label{I:1-4-5}
+设 $\{U_i\}\subset\cS$ 是有限一族平坦的 $X$-概形，且各 $U_i$ 的像覆盖 $X$；记 $\cU$ 为它们生成的筛。则函子 $E\mapsto E_\cU$ 给出 $X$ 上拟凝聚模范畴与 $\cU$-局部给定的拟凝聚模范畴之间的等价。
+\end{theorem}
+\begin{proof}
+这里只处理 $X$ 仿射、且 $\cU$ 由一个忠实平坦于 $X$ 的仿射 $X$-概形 $U$ 生成的情形。一般情形归约到此是形式上的。置 $X=\spec(A)$、$U=\spec(B)$。
+
+若态射 $U\to X$ 有一个截面，则 $X$ 属于筛 $\cU$，结论显然成立。我们将归约到这一情形。
+
+一个 $\cU$-局部给定的拟凝聚模确定 $U$、$U\times_XU$、$U\times_XU\times_XU$ 上的模 $M'$、$M''$、$M'''$，以及这些空间之间每个投影态射 $p$ 所对应的同构 $\rho:p^*M^\bullet\simeq M^\bullet$；这给出一个\term{笛卡尔图}{cartesian diagram}{diagramme cartésien}
+\[\xymatrix{
+ M^*:M'\ar@<2pt>[r]\ar@<-2pt>[r]&M''\ar[r]\ar@<4pt>[r]\ar@<-4pt>[r]&M'''
+}\]
+它位于下图之上：
+\[\xymatrix{
+ U_*:U&U\times_XU\ar@<2pt>[l]\ar@<-2pt>[l]&U\times_XU\times_XU\ar[l]\ar@<4pt>[l]\ar@<-4pt>[l]\text{。}
+}\]
+反过来，$M^*$ 决定这个 $\cU$-局部给定的模：对 $V\in\cU$，存在 $\varphi:V\to U$，置 $M_V=\varphi^*M'$；对于 $\varphi_1,\varphi_2:V\to U$，有自然等同
+$\varphi_1^*M'\simeq(\varphi_1\times\varphi_2)^*M''\simeq\varphi_2^*M'$。
+利用 $M'''$ 可知这些等同相容，因而定义是合理的。总之，$\cU$-局部给定一个模，等价于在 $U_*$ 上给定一个笛卡尔图 $M^*$。
+
+译成代数语言，给定 $M^*$ 等价于给定一个模的笛卡尔图
+\[\xymatrix{
+ M'\ar@<3pt>[r]|-{\partial_0}\ar@<-3pt>[r]|-{\partial_1}&M''\ar@<6pt>[r]|-{\partial_0}\ar[r]|-{\partial_1}\ar@<-6pt>[r]|-{\partial_2}&M'''
+}\]
+它位于环图
+\[\xymatrix{
+ B\ar@<3pt>[r]|-{\partial_0}\ar@<-3pt>[r]|-{\partial_1}&B\otimes_AB\ar@<6pt>[r]|-{\partial_0}\ar[r]|-{\partial_1}\ar@<-6pt>[r]|-{\partial_2}&B\otimes_AB\otimes_AB
+}\]
+之上。（具体说，有 $\partial_i(bm)=\partial_i(b)\cdot\partial_i(m)$，并满足诸如 $\partial_0\partial_1=\partial_0\partial_0$ 的通常恒等式；“笛卡尔”是指态射
+$\partial_i:M'\otimes_{B,\partial_i}(B\otimes_AB)\to M''$ 以及
+$M''\otimes_{B\otimes_AB,\partial_i}(B\otimes_AB\otimes_AB)\to M'''$ 都是同构。）
+
+函子 $E\mapsto E_\cU$ 变为将 $A$-模 $M$ 映到下图的函子：
+\[\xymatrix{
+ M^*=(M\otimes_AB\ar@<2pt>[r]\ar@<-2pt>[r]&M\otimes_AB\otimes_AB\ar@<-4pt>[r]\ar[r]\ar@<4pt>[r]&M\otimes_AB\otimes_AB\otimes_AB)\text{。}
+}\]
+它的右伴随函子为
+\[\xymatrix{
+ (M'\ar@<2pt>[r]\ar@<-2pt>[r]&M''\ar@<-4pt>[r]\ar[r]\ar@<4pt>[r]&M''')\ar@{|->}[r]&\ker(M'\ar@<2pt>[r]\ar@<-2pt>[r]&M'')\text{。}
+}\]
+因此须证明两个伴随态射
+\[
+ M\longrightarrow\ker(M\otimes_AB\rightrightarrows M\otimes_AB\otimes_AB)
+\]
+及
+\[
+ \ker(M'\rightrightarrows M'')\otimes_AB\longrightarrow M'
+\]
+都是同构。由（\ref{I:1-4-2}.i），只须在一次忠实平坦基变换 $A\to A'$ 后证明这一点，此时 $B$ 变为 $B'=B\otimes_AA'$。取 $A'=B$，便归约到 $U\to X$ 有截面的情形。
+\end{proof}
+
+\subsection{一个特例：Hilbert 第90定理}\label{I:1-5}
+\subsubsection{}\label{I:1-5-1}
+设 $k$ 是域，$k'$ 是 $k$ 的 Galois 扩张，$G=\gal(k'/k)$。则同态\translatornote{这里的张量分解及随后的论证按有限 Galois 扩张 $k'/k$ 理解。无限情形下，下式的像甚至不一定落在直和中：$1\otimes1$ 对应所有分量都为 $1$ 的族。有限情形由有限可分扩张的分解定理得到该同构；一般无限 Galois 扩张的 Hilbert 第90定理则使用连续上同调，一个连续 $1$-上闭链由有限 Galois 子扩张上的上闭链给出，再应用有限情形即可。}
+\begin{align*}
+ k'\otimes_kk'&\longrightarrow\bigoplus_{\sigma\in G}k',\\
+ x\otimes y&\longmapsto\{x\cdot\sigma(y)\}_{\sigma\in G}
+\end{align*}
+为双射。
+
+由此可知，对 $\spec(k)$ 上由 $\spec(k')$ 生成的筛局部给定一个模，等价于给定带有 $G$ 的\term{半线性作用}{semilinear action}{action semi-linéaire}的 $k'$-向量空间，即：
+\begin{enumerate}[\indent a)]
+\item 一个 $k'$-向量空间 $V'$；
+\item 对每个 $\sigma\in G$，给定 $V'$ 的加法群的自身态射 $\varphi_\sigma$，对任意 $\lambda\in k'$、$v\in V'$ 满足 $\varphi_\sigma(\lambda v)=\sigma(\lambda)\varphi_\sigma(v)$；
+\item 这些态射满足：对任意 $\sigma,\tau\in G$，有 $\varphi_{\tau\sigma}=\varphi_\tau\circ\varphi_\sigma$。
+\end{enumerate}
+
+记 $V={V'}^G$ 为 $G$ 作用下的不变量群，它是一个 $k$-向量空间。由定理 \ref{I:1-4-5}，有：
+\begin{proposition}\label{I:1-5-2}
+$V$ 在 $V'$ 中的包含映射确定同构 $V\otimes_kk'\iso V'$。
+\end{proposition}
+
+特别地，若 $V'$ 是一维的，取非零向量 $v'\in V'$，则 $\varphi_\sigma$ 由常数 $c(\sigma)\in{k'}^\times$ 确定，其中 $\varphi_\sigma(v')=c(\sigma)v'$；条件 c) 变为
+\[
+ c(\tau\sigma)=c(\tau)\cdot\tau(c(\sigma))\text{。}
+\]
+由上面的命题，存在非零不变向量 $v=\mu v'$，其中 $\mu\in{k'}^\times$。因而对每个 $\sigma\in G$ 都有
+\[
+ c(\sigma)=\mu\cdot\sigma(\mu^{-1})\text{。}
+\]
+换言之，每个取值于 ${k'}^\times$ 的 $1$-上闭链都是\term{上边缘}{coboundary}{cobord}：
+\begin{corollary}\label{I:1-5-3}
+$\h^1(G,{k'}^\times)=0$。
+\end{corollary}
+
+\subsection{Grothendieck 拓扑}\label{I:1-6}
+\origpage{21}{15}
+现在将前几节的定义改写到一个抽象框架中，同时涵盖拓扑空间和概形这两种情形。
+
+\subsubsection{}\label{I:1-6-1}
+设 $\cS$ 是范畴，$U$ 是其对象。$U$ 上的筛，是指 $\ob(\cS/U)$ 的一个子集 $\cU$，使得若 $\varphi:V\to U$ 属于 $\cU$，且 $\psi:W\to V$ 是 $\cS$ 中的态射，则 $\varphi\circ\psi:W\to U$ 也属于 $\cU$。
+
+给定一族态射 $\{\varphi_i:U_i\to U\}$，由 $U_i$ 生成的筛，按定义是所有经过某个 $\varphi_i$ 分解的态射 $\varphi:V\to U$ 构成的集合。
+
+若 $\cU$ 是 $U$ 上的筛，$\varphi:V\to U$ 是态射，则 $\cU$ 在 $V$ 上的限制 $\cU_V$，按定义是由满足 $\varphi\circ\psi:W\to U$ 属于 $\cU$ 的所有态射 $\psi:W\to V$ 构成的 $V$ 上的筛。
+
+\subsubsection{}\label{I:1-6-2}
+在 $\cS$ 上给定一个 Grothendieck 拓扑，是指对 $\cS$ 的每个对象 $U$，给定一组 $U$ 上的筛 $C(U)$，称为覆盖筛，并要求满足以下公理：
+\begin{enumerate}[\indent a)]
+\item $U$ 的恒等态射所生成的筛是覆盖筛。
+\item 若 $\cU$ 是 $U$ 上的覆盖筛，$V\to U$ 是态射，则 $\cU_V$ 是覆盖筛。
+\item 局部覆盖的筛是覆盖筛。也就是说，若 $\cU$ 是 $U$ 上的覆盖筛，而 $\cU'$ 是 $U$ 上的筛，且对每个属于 $\cU$ 的 $V\to U$，$\cU'_V$ 都是覆盖筛，则 $\cU'$ 是覆盖筛。
+\end{enumerate}
+
+一个配备 Grothendieck 拓扑的范畴称为\term{景}{site}{site}。
+
+\subsubsection{}\label{I:1-6-3}
+给定景 $\cS$，$\cS$ 上的\term{预层}{presheaf}{préfaisceau}是指从 $\cS$ 到集合范畴的反变函子 $\sF$。对 $\cS$ 的对象 $U$，$\sF(U)$ 的元素称为 $\sF$ 在 $U$ 上的\term{截面}{section}{section}。对任意态射 $V\to U$ 及 $s\in\sF(U)$，以 $s|V$（$s$ 在 $V$ 上的限制）表示 $s$ 在 $\sF(V)$ 中的像。
+
+若 $\cU$ 是 $U$ 上的筛，则 $\cU$-局部给定一个截面，是指对每个属于 $\cU$ 的 $V\to U$，给定截面 $s_V\in\sF(V)$，使得对任意态射 $W\to V$ 都有 $s_V|W=s_W$。若对 $\cS$ 的每个对象 $U$、$U$ 上的每个覆盖筛 $\cU$，以及每个 $\cU$-局部给定的截面 $\{s_V\}$，都存在唯一的截面 $s\in\sF(U)$，使得对每个属于 $\cU$ 的 $V\to U$ 都有 $s|V=s_V$，则称 $\sF$ 为层。
+
+将集合范畴换成阿贝尔群范畴，就类似地定义了\term{阿贝尔层}{abelian sheaf}{faisceau abélien}。可以证明，$\cS$ 上阿贝尔层的范畴是一个有足够多内射对象的阿贝尔范畴。层序列 $\sF\xrightarrow f\sG\xrightarrow g\sH$ 正合，是指对 $\cS$ 的每个对象 $U$ 及满足 $g(s)=0$ 的每个 $s\in\sG(U)$，局部存在 $t$ 使 $f(t)=s$：即存在 $U$ 上的覆盖筛 $\cU$，且对每个 $V\in\cU$，存在 $\sF$ 在 $V$ 上的截面 $t_V$，满足 $f(t_V)=s|V$。
+
+\subsubsection{例}\label{I:1-6-4}
+前面已经见过两个例子。
+\begin{enumerate}[\indent a)]
+\item 设 $X$ 是拓扑空间，$\cS$ 是以 $X$ 的开子集为对象、以自然包含映射为态射的范畴。与 $X$ 的通常拓扑相应的 Grothendieck 拓扑定义如下：开子集 $U$ 上的筛 $\cU$ 是覆盖筛，当且仅当它所包含的开子集之并等于 $U$。显然，$\cS$ 上的层范畴等价于通常意义下 $X$ 上的层范畴。
+\item 设 $X$ 是概形，$\cS$ 是 $X$ 上概形的范畴。$\cS$ 上的 \term{fpqc 拓扑}{fpqc topology}{topologie fpqc}（fidèlement plate quasi-compacte，忠实平坦拟紧拓扑）是如下 Grothendieck 拓扑：$X$-概形 $U$ 上的筛是覆盖筛，当且仅当它由有限一族平坦态射生成，且这些态射的像覆盖 $U$。
+\end{enumerate}
+
+\subsubsection{上同调}\label{I:1-6-5}
+始终假设范畴 $\cS$ 有一个终对象 $X$。阿贝尔层 $\sF$ 的\term{整体截面}{global section}{section globale}群，记为 $\Gamma\sF$ 或 $\h^0(X,\sF)$，定义为群 $\sF(X)$。函子 $\sF\mapsto\Gamma\sF$ 是从 $\cS$ 上阿贝尔层范畴到阿贝尔群范畴的左正合函子，以 $\h^i(X,-)$ 表示其导出函子（或卫星函子）。这些\term{上同调群}{cohomology group}{groupe de cohomologie}刻画了从局部走向整体的障碍。按定义，若 $0\to\sF\to\sG\to\sH\to0$ 是阿贝尔层的正合列，则有上同调长正合列
+\[\xymatrix{
+ 0\ar[r]&\h^0(X,\sF)\ar[r]&\h^0(X,\sG)\ar[r]&\h^0(X,\sH)\ar[r]&\h^1(X,\sF)\ar[r]&\cdots\\
+ \ldots\ar[r]&\h^n(X,\sF)\ar[r]&\h^n(X,\sG)\ar[r]&\h^n(X,\sH)\ar[r]&\h^{n+1}(X,\sF)\ar[r]&\cdots
+}\]
+
+\subsubsection{}\label{I:1-6-6}
+给定 $\cS$ 上的阿贝尔层 $\sF$，所谓 $\sF$-\term{扭子}{torsor}{torseur}，是指带有 $\sF$ 作用 $\sF\times\sG\to\sG$ 的层 $\sG$，使得局部地（限制到覆盖终对象 $X$ 的某个筛的每个对象上），带 $\sF$ 作用的 $\sG$ 同构于带典范平移作用 $\sF\times\sF\to\sF$ 的 $\sF$。
+
+可以证明，$\h^1(X,\sF)$ 可解释为 $\sF$-扭子的同构类集合。
+
+\section{平展拓扑}\label{I:2}
+\origpage{24}{18}
+将上一章的定义专用于概形 $X$ 的\term{平展拓扑}{étale topology}{topologie étale}（\ref{I:2-1}、\ref{I:2-2}、\ref{I:2-3}）。当 $X$ 是一个域 $K$ 的谱时，相应的上同调与 $K$ 的\term{Galois 上同调}{Galois cohomology}{cohomologie galoisienne}相同（\ref{I:2-4}）。
+
+\subsection{平展拓扑}\label{I:2-1}
+首先回顾\term{平展态射}{étale morphism}{morphisme étale}的概念。
+
+\begin{definition}\label{I:2-1-1}
+设 $A$ 是交换环。称 $A$-代数 $B$ 是平展的，如果 $B$ 是有限表示的 $A$-代数，并满足下列等价条件：
+\begin{enumerate}[\indent a)]
+\item 对任意 $A$-代数 $C$ 及 $C$ 中任意平方为零的理想 $J$，典范映射
+\[
+ \hom_{A\textnormal{-alg}}(B,C)\longrightarrow\hom_{A\textnormal{-alg}}(B,C/J)
+\]
+是双射。
+\item $B$ 是平坦 $A$-模，且 $\Omega_{B/A}=0$，其中 $\Omega_{B/A}$ 表示相对微分模。
+\item 设 $B=A[X_1,\dotsc,X_n]/I$ 是 $B$ 的一个表示。对于 $A[X_1,\dotsc,X_n]$ 中每个包含 $I$ 的素理想 $\fp$，都存在多项式 $P_1,\dotsc,P_n\in I$，使得 $I_\fp$ 由 $P_1,\dotsc,P_n$ 的像生成，且 $\det(\partial P_i/\partial X_j)\notin\fp$。
+\end{enumerate}
+\end{definition}
+参见 \cite[I]{sga1} 或 \cite[V]{ra70}。
+
+称概形态射 $f:X\to S$ 是平展的，如果对任意 $x\in X$，$f(x)$ 有仿射开邻域 $U=\spec(A)$，而 $x$ 在 $X\times_SU$ 中有仿射开邻域 $V=\spec(B)$，使 $B$ 为平展 $A$-代数。
+
+\subsubsection{例}\label{I:2-1-2}
+\begin{enumerate}[\indent a)]
+\item 若 $A$ 是域，则 $A$-代数 $B$ 平展，当且仅当它是 $A$ 的有限可分扩张的有限乘积。
+\item 若 $X$ 和 $S$ 是 $\dC$ 上的有限型概形，则态射 $f:X\to S$ 平展，当且仅当其\term{解析化}{analytification}{analytisé} $f^{\text{an}}:X^{\text{an}}\to S^{\text{an}}$ 是局部同构。
+\end{enumerate}
+
+\subsubsection{性质汇集}\label{I:2-1-3}
+\begin{enumerate}[\indent a)]
+\item （基变换）若 $f:X\to S$ 平展，则对任意态射 $S'\to S$，$f_{S'}:X\times_SS'\to S'$ 也平展。
+\item （复合）两个平展态射的复合仍为平展态射。
+\item 若 $f:X\to S$ 和 $g:Y\to S$ 都平展，则每个从 $X$ 到 $Y$ 的 $S$-态射都平展。
+\item （下降）设 $f:X\to S$ 是态射。如果存在忠实平坦态射 $S'\to S$，使 $f_{S'}:X\times_SS'\to S'$ 平展，则 $f$ 也平展。
+\end{enumerate}
+
+\subsubsection{}\label{I:2-1-4}
+设 $X$ 是概形，$\cS$ 是平展 $X$-概形的范畴。由（\ref{I:2-1-3}.c），$\cS$ 中每个态射都平展。$\cS$ 上的平展拓扑定义如下：$U$ 上的筛为覆盖筛，当且仅当它由有限一族态射 $\varphi_i:U_i\to U$ 生成，且各 $\varphi_i$ 的像覆盖 $U$。由 $\cS$ 配备平展拓扑得到的景称为 $X$ 的\term{平展景}{étale site}{site étale}，记为 $\et X$。
+
+\subsection{层的例子}\label{I:2-2}
+\subsubsection{常值层}\label{I:2-2-1}
+设 $C$ 是阿贝尔群。为简便起见，假设 $X$ 是诺特概形。以 $\const C_X$（无歧义时也简记为 $C$）表示由 $U\mapsto C^{\pi_0(U)}$ 定义的\term{常值层}{constant sheaf}{faisceau constant}，其中 $\pi_0(U)$ 是 $U$ 的连通分支组成的有限集合。最重要的情形是 $C=\dZ/n$。按定义，有
+\[
+ \h^0(X,\dZ/n)=\left(\dZ/n\right)^{\pi_0(X)}\text{。}
+\]
+此外，$\h^1(X,\dZ/n)$ 是 $\dZ/n$-扭子的同构类集合（\ref{I:1-6-6}），也就是群为 $\dZ/n$ 的 $X$ 的 Galois 平展覆盖的同构类集合。特别地，若 $X$ 连通，并在选定基点后记其\term{基本群}{fundamental group}{groupe fondamental}为 $\pi_1(X)$，则
+\[
+ \h^1(X,\dZ/n)=\hom(\pi_1(X),\dZ/n)\text{。}
+\]
+
+\subsubsection{乘法群}\label{I:2-2-2}
+以 $\dG_{m,X}$（无歧义时简记为 $\dG_m$）表示由 $U\mapsto\Gamma(U,\sO_U^\times)$ 定义的层。忠实平坦下降定理（\ref{I:1-4-5}）保证它确实是一个层。按定义，
+\[
+ \h^0(X,\dG_m)=\h^0(X,\sO_X)^\times\text{；}
+\]
+特别地，若 $X$ 约化、连通，且固有于代数闭域 $k$，则
+\[
+ \h^0(X,\dG_m)=k^\times\text{。}
+\]
+
+\begin{proposition}\label{I:2-2-3}
+有同构
+\[
+ \h^1(X,\dG_m)=\pic(X)\text{，}
+\]
+其中 $\pic(X)$ 为 $X$ 上\term{可逆层}{invertible sheaf}{faisceau inversible}的同构类构成的群。
+\end{proposition}
+\begin{proof}
+用 $*$ 表示如下函子：对 $X$ 上的可逆层 $\sL$，赋予 $\et X$ 上的预层 $\sL^*$，其定义是：对平展态射 $\varphi:U\to X$，
+\[
+ \sL^*(U)=\operatorname{Isom}_U(\sO_U,\varphi^*\sL)\text{。}
+\]
+由（\ref{I:1-4-2}.i）及（\ref{I:1-4-5}）的全忠实性，这一预层是层，而且是一个 $\dG_m$-扭子。立即可验证：
+\begin{enumerate}[\indent a)]
+\item 函子 $*$ 与平展局部化相容；
+\item 它给出平凡可逆层（即同构于 $\sO_X$ 的层）的范畴与平凡 $\dG_m$-扭子范畴之间的等价；$\sL$ 平凡，当且仅当 $\sL^*$ 平凡。
+\end{enumerate}
+此外，由（\ref{I:1-4-2}.ii）及（\ref{I:1-4-5}），
+\begin{enumerate}[\indent a)]
+\setcounter{enumi}{2}
+\item 可逆层的概念在平展拓扑下是局部的。
+\end{enumerate}
+由 a)、b)、c) 可形式地推出：$*$ 是 $X$ 上可逆层范畴与 $\et X$ 上 $\dG_m$-扭子范畴之间的等价；它就给出所求的同构。
+
+其逆等价可如下构造：若 $\sT$ 是 $\dG_m$-扭子，则存在由有限个成员组成的平展覆盖 $\{U_i\}$，使各扭子 $\sT/U_i$ 平凡。于是，对于 $\{U_i\}$ 所生成的筛 $\cU\subset\et X$ 中的每个平展 $X$-概形 $V$，$\sT$ 在 $V$ 上平凡。由 b)，在每个 $V\in\cU$ 上，$\sT|V$ 对应一个可逆层 $\sL_V$；由 a)，这些 $\sL_V$ 构成一个 $\cU$-局部给定的可逆层 $\sL_\cU$。再由 c)，它来自 $X$ 上的可逆层 $\sL(\sT)$；$\sT\mapsto\sL(\sT)$ 即为所求的 $*$ 的逆函子。
+\end{proof}
+
+\subsubsection{单位根}\label{I:2-2-4}
+对于整数 $n>0$，$\dG_m$ 中 $n$ 次幂映射的核称为\term{$n$ 次单位根层}{sheaf of $n$th roots of unity}{faisceau des racines $n$-ièmes de l'unité}，记为 $\dmu_n$。若 $X$ 是可分闭域 $k$ 上的概形，且 $n$ 在 $k$ 中可逆，则选定本原 $n$ 次单位根 $\zeta\in k$ 后，映射 $i\mapsto\zeta^i$ 给出 $\dZ/n$ 到 $\dmu_n$ 的同构。
+
+以 $\dmu_n$ 为系数与以 $\dG_m$ 为系数的上同调之间的关系，由以下正合列所诱导的上同调长正合列给出。
+
+\begin{theorem}[Kummer 理论]\label{I:2-2-5}
+若 $n$ 在 $X$ 上可逆，则 $\dG_m$ 中的 $n$ 次幂映射为层的满态射。因此有正合列
+\[
+ 0\longrightarrow\dmu_n\longrightarrow\dG_m\longrightarrow\dG_m\longrightarrow0\text{。}
+\]
+\end{theorem}
+\begin{proof}
+设 $U\to X$ 平展，$a\in\dG_m(U)=\Gamma(U,\sO_U^\times)$。由于 $n$ 在 $U$ 上可逆，方程 $T^n-a=0$ 可分；也就是说，$U'=\spec\bigl(\sO_U[T]/(T^n-a)\bigr)$ 在 $U$ 上平展。此外，$U'\to U$ 满射，且 $a$ 在 $U'$ 上有 $n$ 次根，由此得到结论。
+\end{proof}
+
+\subsection{茎与正像}\label{I:2-3}
+\origpage{28}{22}
+\subsubsection{}\label{I:2-3-1}
+$X$ 的\term{几何点}{geometric point}{point géométrique}是指态射 $\bar x\to X$，其中 $\bar x$ 为可分闭域 $k(\bar x)$ 的谱。常略去态射而将其简记为 $\bar x$。若 $x$ 是 $\bar x$ 在 $X$ 中的像，则称 $\bar x$ 以 $x$ 为中心。若 $k(\bar x)$ 是剩余域 $k(x)$ 的代数扩张，则称 $\bar x$ 是 $X$ 的代数几何点。
+
+$\bar x$ 的\term{平展邻域}{étale neighborhood}{voisinage étale}是指交换图
+\[\xymatrix{
+ &U\ar[d]\\
+ \bar x\ar[ur]\ar[r]&X\text{，}
+}\]
+其中 $U\to X$ 平展。
+
+$X$ 在 $\bar x$ 处的\term{严格局部化}{strict localization}{localisé strict}是环
+$\sO_{X,\bar x}=\varinjlim\Gamma(U,\sO_U)$，归纳极限遍历 $\bar x$ 的平展邻域。它是严格 Hensel 局部环，其剩余域是 $X$ 在 $x$ 处的剩余域 $k(x)$ 在 $k(\bar x)$ 中的可分闭包。它在平展拓扑中起着局部环的作用。
+
+\subsubsection{}\label{I:2-3-2}
+对于 $\et X$ 上的层 $\sF$，$\sF$ 在 $\bar x$ 处的\term{茎}{stalk}{fibre}定义为集合（或群等）$\sF_{\bar x}=\varinjlim\sF(U)$，归纳极限仍遍历 $\bar x$ 的平展邻域。
+
+层同态 $\sF\to\sG$ 是单态射、满态射或同构，当且仅当它在 $X$ 的每个几何点处诱导的茎上的同态 $\sF_{\bar x}\to\sG_{\bar x}$ 具有相应性质。若 $X$ 是代数闭域上的有限型概形，则只须在 $X$ 的有理点处检验。
+
+\subsubsection{}\label{I:2-3-3}
+设 $f:X\to Y$ 是概形态射，$\sF$ 是 $\et X$ 上的层。$\sF$ 沿 $f$ 的\term{正像}{direct image}{image directe} $f_*\sF$ 是 $\et Y$ 上的层，定义为：对每个平展 $Y$-概形 $V$，
+$f_*\sF(V)=\sF(X\times_YV)$。函子
+$f_*:\sh(\et X)\to\sh(\et Y)$ 左正合。其右导出函子 $\eR^qf_*$ 称为\term{高阶正像}{higher direct image}{image directe supérieure}。若 $\bar y$ 是 $Y$ 的几何点，则
+\[
+ (\eR^qf_*\sF)_{\bar y}=\varinjlim\h^q(V\times_YX,\sF)\text{，}
+\]
+归纳极限遍历 $\bar y$ 的平展邻域 $V$。
+
+设 $\sO_{Y,\bar y}$ 是 $Y$ 在 $\bar y$ 处的严格局部化，置
+$\widetilde Y=\spec(\sO_{Y,\bar y})$、$\widetilde X=X\times_Y\widetilde Y$。可以如下将 $\sF$ 延拓到 $\et{\widetilde X}$ 上（这是一般逆像概念的一个特例）：若 $\widetilde U$ 是 $\widetilde X$ 上的平展概形，则存在 $\bar y$ 的平展邻域 $V$，以及 $X\times_YV$ 上的平展概形 $U$，使 $\widetilde U=U\times_V\widetilde Y$；定义
+\[
+ \sF(\widetilde U)=\varinjlim\sF(U\times_VV')\text{，}
+\]
+其中归纳极限遍历所有支配 $V$ 的 $\bar y$ 的平展邻域 $V'$。依此定义，有
+\[
+ (\eR^qf_*\sF)_{\bar y}=\h^q(\widetilde X,\sF)\text{。}
+\]
+
+函子 $f_*$ 有左伴随 $f^*$，称为\term{逆像}{inverse image}{image réciproque}函子。若 $\bar x$ 是 $X$ 的几何点，$f(\bar x)$ 为它在 $Y$ 中的像，则
+$(f^*\sF)_{\bar x}=\sF_{f(\bar x)}$。这一公式说明 $f^*$ 是正合函子。因此 $f_*$ 将内射层映为内射层；复合函子 $\Gamma\circ f_*$（分别为 $g_*f_*$）的谱序列给出以下结论。
+
+\begin{theorem}[Leray 谱序列]\label{I:2-3-4}
+设 $\sF$ 是 $\et X$ 上的阿贝尔层，$f:X\to Y$ 是概形态射（分别地，给定概形态射 $X\xrightarrow fY\xrightarrow gZ$）。则有\term{谱序列}{spectral sequence}{suite spectrale}
+\begin{align*}
+ E_2^{pq}&=\h^p(Y,\eR^qf_*\sF)\Rightarrow\h^{p+q}(X,\sF),\\
+ \text{（分别为）}\qquad E_2^{pq}&=\eR^pg_*\eR^qf_*\sF\Rightarrow\eR^{p+q}(gf)_*\sF\text{。}
+\end{align*}
+\end{theorem}
+
+\begin{corollary}\label{I:2-3-5}
+若对任意 $q>0$ 都有 $\eR^qf_*\sF=0$，则对每个 $p\geq0$ 都有
+$\h^p(Y,f_*\sF)=\h^p(X,\sF)$（分别地，$\eR^pg_*(f_*\sF)=\eR^p(gf)_*\sF$）。
+\end{corollary}
+
+特别地，这适用于以下情形。
+
+\begin{proposition}\label{I:2-3-6}
+设 $f:X\to Y$ 是有限态射（乃至经由取极限推广到整态射），$\sF$ 是 $X$ 上的阿贝尔层。则对每个 $q>0$ 都有 $\eR^qf_*\sF=0$。
+\end{proposition}
+
+事实上，设 $\bar y$ 是 $Y$ 的几何点，$\widetilde Y$ 是 $Y$ 在 $\bar y$ 处的严格局部化的谱，$\widetilde X=X\times_Y\widetilde Y$。由前面的结果，只须证明对每个 $q>0$ 都有 $\h^q(\widetilde X,\sF)=0$。而 $\widetilde X$ 是若干严格 Hensel 局部环的乘积的谱（参见 \cite[I]{ra70}），每个平展满射 $\widetilde X$-概形都有截面，所以函子 $\Gamma(\widetilde X,-)$ 正合，结论随之成立。
+
+\subsection{Galois 上同调}\label{I:2-4}
+\origpage{30}{24}
+下面说明，当 $X=\spec(K)$ 是域的谱时，平展上同调与 Galois 上同调一致。
+
+\subsubsection{}\label{I:2-4-1}
+先看一个拓扑类比。若 $K$ 是 $\dC$ 上整仿射代数簇 $Y=\spec(A)$ 的函数域，则
+$K=\varinjlim_{f\in A,\,f\ne0}A[1/f]$。
+
+换言之，$X=\varprojlim U$，其中 $U$ 遍历 $Y$ 的非空开子集。已知可以取到任意小的 Zariski 开子集，使其在经典拓扑下为 $K(\pi,1)$ 空间。因此，将 $\spec(K)$ 本身看作一个 $K(\pi,1)$ 并不奇怪；这里 $\pi$ 是 $X$ 的代数基本群，也就是 $\bar K/K$ 的 Galois 群，其中 $\bar K$ 为 $K$ 的可分闭包。
+
+\subsubsection{}\label{I:2-4-2}
+更确切地，设 $K$ 是域，$\bar K$ 是 $K$ 的可分闭包，$G=\gal(\bar K/K)$ 带其 Galois 拓扑。对每个有限平展 $K$-代数 $A$（即有限可分扩张的有限乘积），赋予有限集合 $\hom_K(A,\bar K)$。Galois 群 $G$ 通过一个离散因而有限的商群作用在此集合上。若 $A=K[T]/(F)$，则该集合等同于多项式 $F$ 在 $\bar K$ 中的根的集合。Galois 理论的 Grothendieck 表述断言：
+
+\begin{proposition}\label{I:2-4-3}
+将平展代数 $A$ 映为 $\hom_K(A,\bar K)$ 的函子
+\[
+ \left\{\begin{array}{c}\textnormal{有限平展}\\\textnormal{$K$-代数}\end{array}\right\}
+ \longrightarrow
+ \left\{\begin{array}{c}\textnormal{带 $G$ 的连续作用}\\\textnormal{的有限集合}\end{array}\right\}
+\]
+是范畴反等价。
+\end{proposition}
+
+由此可以类似地描述 $\spec(K)$ 的平展拓扑上的层：
+
+\begin{proposition}\label{I:2-4-4}
+将层 $\sF$ 映为其在几何点 $\spec(\bar K)$ 处的茎 $\sF_{\bar K}$ 的函子
+\[
+ \left\{\begin{array}{c}\textnormal{$\spec(K)$ 上}\\\textnormal{的平展层}\end{array}\right\}
+ \longrightarrow
+ \left\{\begin{array}{c}\textnormal{带 $G$ 的}\\\textnormal{连续作用的集合}\end{array}\right\}
+\]
+是范畴等价。
+\end{proposition}
+
+称 $G$ 在集合 $E$ 上连续作用，是指 $E$ 中每个元素的稳定子都是 $G$ 的开子群。逆向函子有显然的描述：设 $A$ 是有限平展 $K$-代数，$U=\spec(A)$，$U(\bar K)=\hom_K(A,\bar K)$ 是与 $A$ 对应的 $G$-集合，则
+$\sF(U)=\hom_{G\text{-集合}}(U(\bar K),\sF_{\bar K})$。
+
+特别地，若 $X=\spec(K)$，则 $\sF(X)=\sF_{\bar K}^G$。限制到阿贝尔层，再取导出函子，即得到典范同构
+\[
+ \h^q(\et X,\sF)=\h^q(G,\sF_{\bar K})\text{。}
+\]
+
+\subsubsection{例}\label{I:2-4-5}
+\begin{enumerate}[\indent a)]
+\item 常值层 $\dZ/n$ 对应于带 $G$ 平凡作用的 $\dZ/n$。
+\item 单位根层 $\dmu_n$ 对应于带 $G$ 自然作用的群 $\dmu_n(\bar K)$，即 $\bar K$ 中的 $n$ 次单位根群。
+\item 层 $\dG_m$ 对应于带 $G$ 自然作用的群 $\bar K^\times$。
+\end{enumerate}
+
+\section{曲线的上同调}\label{I:3}
+\origpage{33}{27}
+对于拓扑空间，可以利用 Künneth 公式和单纯剖分作分解归约，将上同调的计算归结为区间 $I=[0,1]$；在此有 $\h^0(I,\dZ)=\dZ$，且 $q>0$ 时 $\h^q(I,\dZ)=0$。
+
+在我们这里，归约最后得到的对象要复杂一些：它们是代数闭域上的曲线。本章就来计算这些曲线的上同调。与拓扑情形相比，情况更复杂，因为这里只能在 $q>2$ 时保证上同调群为零。计算的关键是这种曲线的函数域的 Brauer 群为零，即 Tsen 定理（\ref{I:3-2}）。
+
+\subsection{Brauer 群}\label{I:3-1}
+先回顾它的经典定义。
+
+\begin{definition}\label{I:3-1-1}
+设 $K$ 是域，$A$ 是有限维 $K$-代数。若满足以下等价条件，则称 $A$ 是 $K$ 上的\term{中心单代数}{central simple algebra}{algèbre simple centrale}：
+\begin{enumerate}[\indent a)]
+\item $A$ 没有非平凡双边理想，且其中心为 $K$；
+\item 存在有限 Galois 扩张 $K'/K$，使 $A_{K'}=A\otimes_KK'$ 同构于 $K'$ 上的方阵代数；
+\item $A$ 在 $K$ 上同构于某个以 $K$ 为中心的\term{除环}{division ring}{corps gauche}上的方阵代数。
+\end{enumerate}
+\end{definition}
+
+如果由 c) 对应于这类代数的两个除环在 $K$ 上同构，则称这两个代数等价。若两个代数的维数相同，这就等价于它们在 $K$ 上同构。张量积在等价类集合上诱导一个阿贝尔群结构。这个群就是经典意义下 $K$ 的\term{Brauer 群}{Brauer group}{groupe de Brauer}，记为 $\br(K)$。
+
+\subsubsection{}\label{I:3-1-2}
+以 $\br(n,K)$ 表示如下 $K$-代数 $A$ 的 $K$-同构类集合：存在 $K$ 的有限 Galois 扩张 $K'$，使 $A_{K'}$ 同构于 $K'$ 上的 $n\times n$ 方阵代数 $M_n(K')$。按定义，$\br(K)$ 是子集 $\br(n,K)$（$n\in\dN$）的并。设 $\bar K$ 是 $K$ 的代数闭包，$G=\gal(\bar K/K)$。\translatornote{原文这里写“代数闭包”；在一般非完美域上，本节1.2—1.5中以 Galois 上同调描述 $\br(K)$ 的各式，应将其中的 $\bar K$ 换为可分闭包 $K^s$，并取 $G=\gal(K^s/K)$，否则可能丢失特征 $p$ 的挠部分。本篇此前只作拟紧、拟分离的约定，并未假设 $K$ 完美。具体地，取 $K=\dF_p(s)((t))$。方程 $\alpha^p-\alpha=s$ 在 $\dF_p(s)$ 上给出次数为 $p$ 的循环扩张：若 $s=b^p-b$，则 $s$ 在无穷远处阶数为 $1$ 的极点，与 $b^p-b$ 的极点阶数必被 $p$ 整除矛盾。因此 $L=\dF_p(s)(\alpha)((t))$ 是 $K$ 的不分歧循环扩张，次数为 $p$。对任意 $z\in L^\times$，$v_t(N_{L/K}z)=p\,v_t(z)$，所以 $t$ 不是范数。由循环代数的分裂判别，$ (L/K,\sigma,t)$ 给出 $\br(K)$ 中非零的 $p$ 挠类。另一方面，代数闭包 $\bar K$ 的乘法群上，$p$ 次幂是同构，故在 $\h^2(G,\bar K^\times)$ 上乘 $p$ 也是同构，这个群没有非零 $p$ 挠。因此原式不能在这一例子中成立。改用 $K^s$ 后，有限平展分裂、扭曲和范数的论证均恢复有效。下面仍保留原文的 $\bar K$ 记号；使用上述 Brauer 群识别时，应按此可分闭包约定理解。}
+集合 $\br(n,K)$ 就是 $M_n(\bar K)$ 的各个“形式”构成的集合，因此典范地同构于 $\h^1(G,\aut(M_n(\bar K)))$。
+
+已知 $M_n(\bar K)$ 的每个自同构都是内自同构。因此 $\aut(M_n(\bar K))$ 可等同于射影线性群 $\pgl(n,\bar K)$，并有典范双射
+\[
+ \theta_n:\br(n,K)\iso\h^1(G,\pgl(n,\bar K))\text{。}
+\]
+另一方面，正合列
+\begin{equation*}\tag{3.1.2.1}\label{I:eq:3-1-2-1}
+ 1\longrightarrow\bar K^\times\longrightarrow\gl(n,\bar K)\longrightarrow\pgl(n,\bar K)\longrightarrow1
+\end{equation*}
+给出上边缘算子
+\[
+ \Delta_n:\h^1(G,\pgl(n,\bar K))\longrightarrow\h^2(G,\bar K^\times)\text{。}
+\]
+复合 $\theta_n$ 与 $\Delta_n$，得到映射
+\[
+ \delta_n:\br(n,K)\longrightarrow\h^2(G,\bar K^\times)\text{。}
+\]
+容易验证，各映射 $\delta_n$ 彼此相容，并给出群同态
+\[
+ \delta:\br(K)\longrightarrow\h^2(G,\bar K^\times)\text{。}
+\]
+
+\begin{proposition}\label{I:3-1-3}
+同态 $\delta:\br(K)\to\h^2(G,\bar K^\times)$ 是双射。
+\end{proposition}
+这由下面两个引理推出。
+
+\begin{lemma}\label{I:3-1-4}
+映射 $\Delta_n:\h^1(G,\pgl(n,\bar K))\to\h^2(G,\bar K^\times)$ 是单射。
+\end{lemma}
+
+由 \cite{se94} 中命题 I-44 的推论，只须验证：每当用 $\h^1(G,\pgl(n,\bar K))$ 的一个元素扭曲正合列（\ref{I:eq:3-1-2-1}）时，中间群的 $\h^1$ 都平凡。这个中间群是某个 $K$ 上秩为 $n^2$ 的中心单代数 $A$ 的乘法群的 $\bar K$-点群。为了证明 $\h^1(G,A_{\bar K}^\times)=0$，将 $A^\times$ 解释为秩一自由 $A$-模 $L$ 的自同构群，将 $\h^1$ 解释为 $L$ 的“形式”构成的集合，即在 $K$ 上秩为 $n^2$ 的 $A$-模的集合；这些模自动为自由模。
+
+\begin{lemma}\label{I:3-1-5}
+设 $\alpha\in\h^2(G,\bar K^\times)$，$K'$ 是包含在 $\bar K$ 中的 $K$ 的有限扩张，$n=[K':K]$，$G'=\gal(\bar K/K')$。若 $\alpha$ 在 $\h^2(G',\bar K^\times)$ 中的像为零，则 $\alpha$ 属于 $\Delta_n$ 的像。
+\end{lemma}
+
+先注意到
+\[
+ \h^2(G',\bar K^\times)\simeq\h^2(G,(\bar K\otimes_KK')^\times)\text{。}
+\]
+（从几何观点看，若记 $x=\spec(K)$、$x'=\spec(K')$，$\pi:x'\to x$ 为典范态射，则 $q>0$ 时 $\eR^q\pi_*(\dG_{m,x'})=0$，所以 $q\geq0$ 时有 $\h^q(x',\dG_{m,x'})\simeq\h^q(x,\pi_*\dG_{m,x'})$。）
+
+另一方面，选择 $K'$ 作为 $K$-向量空间的一组基，可定义同态
+\[
+ (\bar K\otimes_KK')^\times\longrightarrow\gl(n,\bar K)\text{，}
+\]
+它将元素 $x$ 映为 $\bar K\otimes_KK'$ 上的乘 $x$ 自身态射。由此得到行正合的交换图
+\[\xymatrix{
+ 1\ar[r]&\bar K^\times\ar[r]\ar@{=}[d]&(\bar K\otimes_KK')^\times\ar[r]\ar[d]&(\bar K\otimes_KK')^\times/\bar K^\times\ar[r]\ar[d]&1\\
+ 1\ar[r]&\bar K^\times\ar[r]&\gl(n,\bar K)\ar[r]&\pgl(n,\bar K)\ar[r]&1
+}\]
+取上同调，得到交换图
+\[\xymatrix{
+ \h^1(G,(\bar K\otimes_KK')^\times/\bar K^\times)\ar[r]\ar[d]&\h^2(G,\bar K^\times)\ar[r]\ar@{=}[d]&\h^2(G,(\bar K\otimes_KK')^\times)\\
+ \h^1(G,\pgl(n,\bar K))\ar[r]^-{\Delta_n}&\h^2(G,\bar K^\times)\text{，}
+}\]
+引理由此成立。
+
+Brauer 群的结构，尤其是它是否为零，对于 Galois 上同调极其重要；下面的命题说明了这一点。
+
+\begin{proposition}\label{I:3-1-6}
+设 $K$ 是域，$\bar K$ 是 $K$ 的代数闭包，$G=\gal(\bar K/K)$。假设对 $K$ 的每个有限扩张 $K'$ 都有 $\br(K')=0$，则：
+\begin{enumerate}[\indent i)]
+\item 对每个 $q>0$，$\h^q(G,\bar K^\times)=0$；
+\item 对每个挠 $G$-模 $\sF$ 及每个 $q\geq2$，$\h^q(G,\sF)=0$。
+\end{enumerate}
+\end{proposition}
+证明参见 J.-P.\ Serre 的《Corps locaux》或《Cohomologie galoisienne》\cite{se94}。
+
+\subsection{Tsen 定理}\label{I:3-2}
+\origpage{36}{30}
+\begin{definition}\label{I:3-2-1}
+称域 $K$ 是 $C_1$ 域，如果每个次数 $d<n$ 的非常值齐次多项式 $f(x_1,\dotsc,x_n)$ 都有一个非平凡零点。
+\end{definition}
+
+\begin{proposition}\label{I:3-2-2}
+若域 $K$ 是 $C_1$ 域，则 $\br(K)=0$。
+\end{proposition}
+
+须证每个中心为 $K$ 且在 $K$ 上有限维的除环 $D$ 都等于 $K$。设 $D$ 在 $K$ 上的维数为 $r^2$，$\operatorname{Nrd}:D\to K$ 为\term{约化范数}{reduced norm}{norme réduite}。
+
+（对于 $K$ 的平展拓扑，$D$ 局部地同构于矩阵代数 $M_r$，但这种同构不是典范的；约化范数局部地就是行列式。由于 $M_r$ 的每个自同构都是内自同构，且相似矩阵的行列式相同，这个映射不依赖于所选的 $D$ 与 $M_r$ 之间的同构。由局部唯一性，这个在平展拓扑下局部定义的映射下降为映射 $\operatorname{Nrd}:D\to K$。）
+
+$\operatorname{Nrd}$ 的唯一零点是 $D$ 的零元，因为当 $x\ne0$ 时，$\operatorname{Nrd}(x)\cdot\operatorname{Nrd}(x^{-1})=1$。另一方面，取 $D$ 在 $K$ 上的一组基 $\{e_1,\dotsc,e_{r^2}\}$，写 $x=\sum x_ie_i$，则函数 $\operatorname{Nrd}(x)$ 可写成次数为 $r$ 的齐次多项式 $\operatorname{Nrd}(x_1,\dotsc,x_{r^2})$（在平展拓扑下局部考察即可看出）。由于 $K$ 是 $C_1$ 域，必有 $r^2\leq r$，即 $r=1$，所以 $D=K$。
+
+\begin{theorem}[Tsen]\label{I:3-2-3}
+设 $k$ 是代数闭域，$K$ 是 $k$ 的超越次数为 $1$ 的扩张，则 $K$ 是 $C_1$ 域。
+\end{theorem}
+
+先假设 $K=k(X)$。设
+\[
+ f(T)=\sum a_{i_1,\dotsc,i_n}T_1^{i_1}\dotsm T_n^{i_n}
+\]
+是系数在 $k(X)$ 中、次数为 $d<n$ 的齐次多项式。将所有系数乘以公分母，可设它们都属于 $k[X]$。置 $\delta=\sup\deg(a_{i_1,\dotsc,i_n})$。用待定系数法在 $k[X]$ 中寻找非平凡零点：将每个 $T_i$（$i=1,\dotsc,n$）写成关于 $X$ 的次数不超过 $N$ 的多项式。代入后，令所得关于 $X$ 的多项式各项系数为零，便把方程 $f(T)=0$ 化为关于这些多项式 $T_i(X)$ 的 $n(N+1)$ 个系数的一组齐次方程。代入所得多项式的次数至多为 $\delta+Nd$，所以共有 $\delta+Nd+1$ 个方程、$n(N+1)$ 个变量。由于 $k$ 代数闭，只要 $n(N+1)>Nd+\delta+1$，这组方程就有非平凡解；在 $d<n$ 时，取 $N$ 充分大即可。
+
+一般情形显然只须处理 $K$ 为 $k$ 的纯超越扩张 $k(X)$ 的有限扩张的情况。设 $f(T)=f(T_1,\dotsc,T_n)$ 是 $K$ 上次数为 $d<n$ 的齐次多项式。记 $s=[K:k(X)]$，取 $K$ 在 $k(X)$ 上的一组基 $e_1,\dotsc,e_s$。引入 $sn$ 个新变量 $U_{ij}$，令 $T_i=\sum_jU_{ij}e_j$。要使 $f(T)$ 在 $K$ 中有非平凡零点，只须多项式
+\[
+ g(U_{ij})=N_{K/k(X)}(f(T))
+\]
+在 $k(X)$ 中有非平凡零点。\translatornote{原文此处将范数下标印作 $K/k$；由于 $K/k$ 的超越次数为 $1$，不能使用有限扩张的域范数。按此处的论证，范数应取自次数为 $s$ 的有限扩张 $K/k(X)$。修正后，$g$ 确实是关于 $sn$ 个变量的次数为 $sd$ 的齐次多项式，且域范数只在零元上取零值，故其非平凡零点给出 $f$ 的非平凡零点。}而 $g$ 是含 $sn$ 个变量、次数为 $sd$ 的齐次多项式，因此由已证的 $k(X)$ 情形得到结论。
+
+\begin{corollary}\label{I:3-2-4}
+设 $k$ 是代数闭域，$K$ 是 $k$ 的超越次数为 $1$ 的扩张，则平展上同调群 $\h^q(\spec(K),\dG_m)$ 对每个 $q>0$ 都为零。
+\end{corollary}
+
+\subsection{光滑曲线的上同调}
+\origpage{38}{32}
+从现在起，除非特别说明，所讨论的上同调群一律是平展上同调群。
+
+\begin{proposition}\label{I:3-3-1}
+设 $k$ 是代数闭域，$X$ 是 $k$ 上的连通非奇异射影曲线，则
+\begin{align*}
+ \h^0(X,\dG_m)&=k^\times,\\
+ \h^1(X,\dG_m)&=\pic(X),\\
+ \h^q(X,\dG_m)&=0\qquad(q\geq2)\text{。}
+\end{align*}
+\end{proposition}
+
+设 $\eta$ 为 $X$ 的泛点，$j:\eta\to X$ 为典范态射，$\dG_{m,\eta}$ 为 $X$ 的函数域 $K(X)$ 的乘法群。对 $X$ 的每个闭点 $x$，记 $i_x:x\to X$ 为典范浸入，$\dZ_x$ 为 $x$ 上取值为 $\dZ$ 的常值层。于是 $j_*\dG_{m,\eta}$ 是 $X$ 上非零亚纯函数层，而 $\bigoplus_{x\in X}i_{x*}\dZ_x$ 是\term{除子层}{sheaf of divisors}{faisceau des diviseurs}，因此有层的正合列
+\begin{equation*}\tag{3.3.1.1}\label{I:eq:3-3-1-1}
+\xymatrix{
+ 0\ar[r]&\dG_m\ar[r]&j_*\dG_{m,\eta}\ar[r]^-{\dv}&\displaystyle\bigoplus_{x\in X}i_{x*}\dZ_x\ar[r]&0\text{。}
+}
+\end{equation*}
+
+\begin{lemma}\label{I:3-3-2}
+对每个 $q>0$，$\eR^qj_*\dG_{m,\eta}=0$。
+\end{lemma}
+
+只须证明这个层在 $X$ 每个闭点 $x$ 处的茎为零。设 $\tilde\sO_{X,x}$ 是 $X$ 在 $x$ 处的 Hensel 化，$K$ 是 $\tilde\sO_{X,x}$ 的分式域，则
+\[
+ \spec(K)=\eta\times_X\spec(\tilde\sO_{X,x})\text{，}
+\]
+所以 $(\eR^qj_*\dG_{m,\eta})_x=\h^q(\spec(K),\dG_m)$。
+
+由于 $K$ 是 $k(X)$ 的代数扩张，因此也是 $k$ 的超越次数为 $1$ 的扩张；引理由（\ref{I:3-2-4}）得到。
+
+\begin{lemma}\label{I:3-3-3}
+对每个 $q>0$，$\h^q(X,j_*\dG_{m,\eta})=0$。
+\end{lemma}
+
+事实上，由（\ref{I:3-3-2}）和 $j$ 的 Leray 谱序列，对任意 $q\geq0$ 有
+\[
+ \h^q(X,j_*\dG_{m,\eta})=\h^q(\eta,\dG_{m,\eta})\text{。}
+\]
+当 $q>0$ 时，右边由（\ref{I:3-2-4}）为零。
+
+\begin{lemma}\label{I:3-3-4}
+对每个 $q>0$，$\h^q\bigl(X,\bigoplus_{x\in X}i_{x*}\dZ_x\bigr)=0$。
+\end{lemma}
+
+事实上，对 $X$ 的每个闭点 $x$，由于 $i_x$ 是有限态射（\ref{I:2-3-6}），$q>0$ 时有 $\eR^qi_{x*}\dZ_x=0$，并且
+\[
+ \h^q(X,i_{x*}\dZ_x)=\h^q(x,\dZ_x)\text{。}
+\]
+因为 $x$ 是代数闭域的谱，右边在 $q>0$ 时为零。（由此也看出，该引理对 $X$ 上任意\term{摩天楼层}{skyscraper sheaf}{faisceau gratte-ciel}也成立。）
+
+由以上引理及正合列（\ref{I:eq:3-3-1-1}），得到
+\[
+ \h^q(X,\dG_m)=0\qquad(q\geq2)\text{，}
+\]
+以及低阶上同调正合列
+\begin{multline*}
+ 1\longrightarrow\h^0(X,\dG_m)\longrightarrow\h^0(X,j_*\dG_{m,\eta})\\
+ \longrightarrow\h^0\Bigl(X,\bigoplus_{x\in X}i_{x*}\dZ_x\Bigr)\longrightarrow\h^1(X,\dG_m)\longrightarrow1\text{，}
+\end{multline*}
+它就是正合列
+\[
+ 1\longrightarrow k^\times\longrightarrow k(X)^\times\longrightarrow\Div(X)\longrightarrow\pic(X)\longrightarrow1\text{。}
+\]
+由命题 \ref{I:3-3-1}，还可得到 $X$ 以 $\dZ/n$ 为系数的上同调群的合理取值，其中 $n$ 与 $k$ 的特征互素。
+
+\begin{corollary}\label{I:3-3-5}
+若 $X$ 的亏格为 $g$，且 $n$ 在 $k$ 中可逆，则 $q>2$ 时 $\h^q(X,\dZ/n)=0$；当 $q=0,1,2$ 时，它们分别是秩为 $1,2g,1$ 的自由 $\dZ/n$-模。将 $\dZ/n$ 换成与之同构的群 $\dmu_n$，则有典范同构
+\begin{align*}
+ \h^0(X,\dmu_n)&=\dmu_n,\\
+ \h^1(X,\dmu_n)&=\pic^0(X)_n,\\
+ \h^2(X,\dmu_n)&=\dZ/n\text{。}
+\end{align*}
+\end{corollary}
+
+由于 $k$ 代数闭，$\dZ/n$ 与 $\dmu_n$ 同构，但这种同构不是典范的。由 Kummer 正合列
+\[
+ 0\longrightarrow\dmu_n\longrightarrow\dG_m\longrightarrow\dG_m\longrightarrow0
+\]
+及命题 \ref{I:3-3-1}，得到 $q>2$ 时 $\h^q(X,\dZ/n)=0$，以及低阶正合列
+\[\xymatrix{
+ 0\ar[r]&\h^0(X,\dmu_n)\ar[r]&k^\times\ar[r]^-n&k^\times\ar[r]&0
+}\]
+\[\xymatrix{
+ 0\ar[r]&\h^1(X,\dmu_n)\ar[r]&\pic(X)\ar[r]^-n&\pic(X)\ar[r]&\h^2(X,\dmu_n)\ar[r]&0\text{。}
+}\]
+此外，有正合列
+\[\xymatrix{
+ 0\ar[r]&\pic^0(X)\ar[r]&\pic(X)\ar[r]^-{\deg}&\dZ\ar[r]&0\text{，}
+}\]
+且 $\pic^0(X)$ 可等同于一个 $g$ 维阿贝尔簇——$X$ 的 Jacobi 簇——的 $k$-有理点群。在这样的群上，乘 $n$ 映射是满射，而其核是秩为 $2g$ 的自由 $\dZ/n\dZ$-模（因为 $n$ 在 $k$ 中可逆）；推论随即成立。
+
+通过一个运用“迹方法”的巧妙分解归约，还可得到以下推论。
+
+\begin{proposition}[{\cite[IX 5.7]{sga4}}]\label{I:3-3-6}
+设 $k$ 是代数闭域，$X$ 是 $k$ 上的代数曲线，$\sF$ 是 $X$ 上的\term{挠层}{torsion sheaf}{faisceau de torsion}，则：
+\begin{enumerate}[\indent i)]
+\item $q>2$ 时，$\h^q(X,\sF)=0$；
+\item 若 $X$ 仿射，则甚至在 $q>1$ 时就有 $\h^q(X,\sF)=0$。
+\end{enumerate}
+\end{proposition}
+证明以及“迹方法”的介绍，均参见 \cite[IX 5]{sga4}。
+
+\subsection{分解归约}\label{I:3-4}
+\origpage{42}{36}
+计算维数大于 $1$ 的代数簇的上同调时，使用以曲线为纤维的纤维化，便可归结为研究纤维维数不超过 $1$ 的态射。这一原则有几种变体，下面列举其中若干。
+
+\subsubsection{}\label{I:3-4-1}
+设 $A$ 是有限型 $k$-代数，$a_1,\dotsc,a_n$ 为其生成元。置
+$X_0=\spec(k)$、$X_i=\spec(k[a_1,\dotsc,a_i])$、$X_n=\spec(A)$，则典范包含
+$k[a_1,\dotsc,a_i]\to k[a_1,\dotsc,a_i,a_{i+1}]$ 给出态射
+$X_n\to X_{n-1}\to\cdots\to X_1\to X_0$，其纤维维数均不超过 $1$。
+
+\subsubsection{}\label{I:3-4-2}
+对于光滑态射，可以说得更精确。若概形态射 $f:X\to S$ 可以嵌入交换图
+\[\xymatrix{
+ X\ar@{^{(}->}[r]^-j\ar[dr]_-f&\bar X\ar[d]^-{\bar f}&\ar@{_{(}->}[l]_-i\ar[dl]^-gY\\
+ &S
+}\]
+并满足以下条件，则称它是\term{初等纤维化}{elementary fibration}{fibration élémentaire}：
+\begin{enumerate}[\indent i)]
+\item $j$ 是在每条纤维中稠密的开浸入，且 $X=\bar X\setminus Y$；
+\item $\bar f$ 光滑且射影，其几何纤维均为不可约的一维概形；
+\item $g$ 是平展覆盖，且没有空纤维。
+\end{enumerate}
+
+称 $S$-概形 $X$ 是相对于 $S$ 的一个\term{良好邻域}{good neighborhood}{bon voisinage}，如果存在 $S$-概形 $X=X_n,\dotsc,X_0=S$，以及初等纤维化 $f_i:X_i\to X_{i-1}$（$i=1,\dotsc,n$）。可以证明 \cite[XI 3.3]{sga4}：若 $X$ 是代数闭域 $k$ 上的光滑概形，则 $X$ 的每个有理点都有一个开邻域，它是相对于 $\spec(k)$ 的良好邻域。
+
+\subsubsection{}\label{I:3-4-3}
+对固有态射 $f:X\to S$，可作如下分解归约。由 Chow 引理，存在交换图
+\[\xymatrix{
+ X\ar[dr]_-f&\ar[l]_-\pi\ar[d]^-{\bar f}\bar X\\
+ &S
+}\]
+其中 $\pi$、$\bar f$ 均为射影态射，且 $\pi$ 在 $X$ 的某个稠密开子集上是同构。在 $S$ 上局部考察，$\bar X$ 是标准射影空间 $\dP_S^n$ 的闭子概形。
+
+对后者，考虑投影 $\varphi:\dP_S^n\dashrightarrow\dP_S^1$，它将齐次坐标 $(x_0,x_1,\dotsc,x_n)$ 映为 $(x_0,x_1)$。这是一个有理映射，定义在由齐次方程 $x_0=x_1=0$ 给出的闭子概形 $Y\simeq\dP_S^{n-2}$ 之外。令 $u:P\to\dP_S^n$ 为以 $Y$ 为中心的\term{爆破}{blow-up}{éclatement}；$u$ 的纤维维数不超过 $1$。此外，存在自然态射 $v:P\to\dP_S^1$ 延拓有理映射 $\varphi$，并使 $P$ 成为一个局部同构于标准射影空间 $\dP^{n-1}$ 的 $\dP_S^1$-概形；后者又可以投影到一个 $\dP^1$ 上，依此类推。
+
+\subsubsection{}\label{I:3-4-4}
+可以用一个\term{Lefschetz 铅笔}{Lefschetz pencil}{pinceau de Lefschetz}扫过光滑射影簇 $X$。沿铅笔轴与 $X$ 的交作爆破，得到的 $\widetilde X$ 映到 $\dP^1$；这一投影的纤维，就是铅笔中的各个超平面在 $X$ 上截出的超平面截面。

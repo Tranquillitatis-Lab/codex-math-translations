@@ -1,0 +1,2046 @@
+\article{自守表示、Shimura 簇与动机：一个童话}{Automorphic Representations, Shimura Varieties, and Motives. Ein Märchen}{R. P. Langlands}{2}{205--246}
+
+\origsection{1}{导言（Introduction）}
+我原本打算综述 Shimura 簇（Shimura varieties）的 zeta 函数研究中的问题，后来才发现，这一计划过于庞大。受时间和精力所限，本报告的范围大为缩小。我只考察两个问题：一个关于 Shimura 簇的共轭（conjugation），另一个属于连续上同调（continuous cohomology）领域。乍看之下，二者似乎相距甚远：前者属于算术，后者属于表示论；二者却都源于无穷位处 zeta 函数的研究。
+
+第六节将共轭问题表述为一个猜想；它的现有形式经过了多次修改。早先的尝试都交给 Rapoport 审阅，却都被认为有欠缺：它们过于不精确，甚至原则上也不适合用 Shimura 的下降方法（methods of descent）证明。目前的表述既回应了他的批评，也与 Shimura 猜想相容；我还没有找到其他同样合适的表述。
+
+陈述猜想之前，需要先作一些构造。这些构造还揭示了我先前未曾注意到的联系。把这些构造与 Deligne 将 Shimura 簇视作动机族（families of motives）的参数簇（parameter varieties）的观点结合起来，便提示我们引入一个群，本文称它为 Taniyama 群（Taniyama group）；这个群或许对研究 CM 型动机（motives of CM-type）十分重要。它将在第五节定义，并讨论我们预期它应具有的性质。
+
+随着动机（motives）和 Taniyama 群的引入，本报告逐渐超出了最初的设想。一两个具体猜想牵出了许多相互关联的推测与假设，好奇心又促使我们沿着这些线索继续探索。
+
+第四节回顾 Deligne 的思想。要理解它们，至少需要了解猜想性动机理论所依据的 Tannaka 范畴（tannakian categories）的基本形式体系，例如 [40] 第二章的主要结果。
+
+本次暑期研究班建立在这样一种信念之上：自守表示（automorphic representations）与动机有密切联系。通常这种联系通过 $L$ 函数表达，还没有人提出直接的联系。函子性原理（principle of functoriality）及 Tannaka 范畴的形式体系或许能提供这种联系。第二节以高度推测性的方式讨论这一可能。
+
+然而，有一小类自守表示肯定不能纳入这个形式体系。我称其为异常表示（anomalous representations），并在第三节详细讨论 Kurokawa 的一个例子，以便更清楚地揭示其意义。虽然异常表示只占自守表示的一小部分，却经常出现，尤其在连续上同调研究中如此，于是我们又回到了出发点。前面的探索由此回到主线：借助所得概念，我们便能理解第七节那些局部例子的整体意义；那一节处理原来两个问题中的第二个。
+
+无论如何，我已经超出了原定任务，受诱惑去描绘事物可能有的样子，以及在我目前看来很可能有的样子。实际情形也许不同。尽管如此，在日常处理技术难题时，保有一个可供参照的整体图景仍然有益，条件是不要对它过分依恋，而应努力确保它持续符合事实，并在必要时准备放弃。本报告的观点无论如何并非我个人独有；我只是把自己的观察和思考与他人的思想以及普遍接受的信条融合起来。
+
+我也想引起人们对某些具体问题的注意，在这些问题上，专家的建议会大有帮助。我希望各节相对独立，使熟悉连续上同调而不熟悉算术的读者，可以略过前几页，直接读第七节，了解 Shimura 簇研究需要这一理论提供什么；也使熟悉 Shimura 簇而不熟悉自守表示或动机的人，能先在第四节找到 Serre 群（Serre group）的定义，在第五节找到 Taniyama 群的定义，然后阅读第六节。
+
+最后说明本报告未讨论的内容。这里不回顾 Kazhdan [26] 和 Shih [46] 关于 Shimura 簇共轭的研究，它们对本文所提问题的意义尚不清楚。也不讨论 $L$ 不可区分性（$L$-indistinguishability）；目前所知不多，另有一篇讲稿 [44] 介绍。非紧性带来的问题也略去不谈。关于紧化（compactification）及非紧商的上同调已有大量材料，但还没有人尝试将其用于研究 zeta 函数。我最遗憾的遗漏，是未讨论 Shimura 簇模素数的约化 [36]。从 Ihara 关于曲线的工作出发，这里有许多内容可谈，特别是有限域代数闭包中的几何点集合的结构。我希望将来另作报告。
+\footnotetext{AMS（MOS）主题分类（1970）：14G10、14F99。原文版权：1979 年，美国数学会。}
+
+\origsection{2}{自守表示（Automorphic representations）}
+我们目前的知识，还不足以确立表达自守表示与动机之间关系的语言。不过，Tannaka 范畴的语言 [40] 似乎很有希望，值得用几页篇幅指出，在把它应用于自守表示研究之前，必须解决哪些问题。
+
+先概述两类表示的分类：$F$ 为局部域（local field）时 $\GL(n,F)$ 的不可约容许表示（irreducible admissible representations），以及 $F$ 为整体域（global field）时 $\GL(n,\A_F)$ 的自守表示。其他讲稿（[3]、[5]、[35]、[48]，另参见 [7]、[31]）已有介绍。两种情形中，表示 $\pi$ 都有中心特征（central character）$\omega$，并且
+$z\mapsto|\omega(z)|$ 都可由 $Z(F)$ 或 $Z(\A_F)$ 唯一延拓为
+$\GL(n,F)$ 或 $\GL(n,\A_F)$ 的正值特征 $\nu$。
+
+若 $F$ 为局部域，且对 $\pi$ 及其对偶的空间中任意 $K$ 有限向量（$K$-finite vectors）$u,v$，函数
+$\nu^{-1}(g)\langle\pi(g)u,v\rangle$ 在商
+$Z(F)\backslash\GL(n,F)$ 上平方可积，就称 $\pi$ 为尖点表示（cuspidal）。为了构造任意不可约容许表示，从 $n$ 的一个分拆
+$\{n_1,\ldots,n_r\}$ 以及 $\GL(n_i,F)$ 的尖点表示 $\pi_1,\ldots,\pi_r$ 出发。若
+$\omega_i$ 是 $\pi_i$ 的中心特征，则存在实数 $s_i$，使中心中每个 $z$ 满足
+$|\omega_i(z)|=|z|^{s_i}$；这个中心同构于 $F^\times$。改变分拆的顺序，可假定
+$s_1\ge\cdots\ge s_r$。\footnote{\textbf{译者注（本次校订）：}按上文 $|\omega_i(z)|=|z|^{s_i}$ 的定义，标准模分类中应排列的是 $s_i/n_i$。因为把 $\GL(n_i)$ 的酉中心特征表示扭曲为 $\pi_i\otimes|\det|^{t_i}$ 后，中心上的绝对值变为 $|z|^{n_it_i}$，故 $t_i=s_i/n_i$。下文唯一不可约商的结论需要按这些 $t_i$ 递减排列。}这个分拆定义 $\GL(n)$ 的标准抛物子群（standard parabolic subgroup）$P$，而 $\sigma=\bigotimes_i\pi_i$ 定义 $M(F)$ 的表示，因为 $P$ 的 Levi 因子（Levi factor）$M$ 同构于
+$\GL(n_1)\times\cdots\times\GL(n_r)$。$\sigma$ 按通常方式给出 $G(F)$ 的诱导表示（induced representation）$I_\sigma$。它未必不可约，但有唯一的不可约商，记为
+$\pi_1\boxplus\cdots\boxplus\pi_r$。每个表示都有这一形式，并且
+\[
+\pi_1\boxplus\cdots\boxplus\pi_r\simeq\pi'_1\boxplus\cdots\boxplus\pi'_s
+\]
+当且仅当 $r=s$，并且重新编号后有 $\pi_i\simeq\pi'_i$。采用这一记号，每个表示都唯一分解为尖点表示的形式和。若所有 $s_i$ 都为 $0$，就称
+$\pi_1\boxplus\cdots\boxplus\pi_r$ 为缓增表示（tempered）。显然也能形式地定义任意有限个表示的和。
+
+事实上，可形式地定义一个 Abel 范畴（abelian category）$\Pi(F)$，其对象为随
+$n$ 变化的全部 $\GL(n,F)$ 的不可约容许表示。若
+$\pi=\pi_1\boxplus\cdots\boxplus\pi_r$，
+$\pi'=\pi'_1\boxplus\cdots\boxplus\pi'_s$，其中 $\pi_i,\pi'_j$ 尖点，则定义
+\[
+\Hom(\pi,\pi')=\bigoplus_{\{i,j\mid\pi_i\simeq\pi'_j\}}\C.
+\]
+态射的复合按通常的矩阵乘法定义。缓增表示构成子范畴 $\Pi^\circ(F)$。
+
+若 $F$ 为整体域，且 $\pi$ 是 $\GL(n,\A_F)$ 在满足下述条件的可测尖点形式 $\varphi$ 所成空间上的表示的一个组成因子，就称 $\pi$ 为尖点表示：
+\begin{enumerate}
+\item[(a)] $\varphi(zg)=\omega(z)\varphi(g)$，$z\in Z(\A_F)$；
+\item[(b)] $\displaystyle\int_{Z(\A_F)G(F)\backslash G(\A_F)}\nu^{-2}(g)|\varphi(g)|^2\,dg<\infty$。
+\end{enumerate}
+若 $n_1,\ldots,n_r$ 是 $n$ 的分拆，$\pi_i$ 是 $\GL(n_i,\A_F)$ 的尖点表示，仍可调整次序使
+$s_1\ge\cdots\ge s_r$，再构造诱导表示 $I_\sigma$。每个自守表示都是某个
+$I_\sigma$ 的成员。要得到完整的分类，还需要进一步的结果。下面的陈述或许最终可由
+Jacquet、Shalika 和 Piatetskii-Shapiro 的研究得到，但一般情形尚未证明。
+
+\begin{originaltheorem}{陈述 A}
+若 $\pi$ 同时是 $I_\sigma$ 和 $I_{\sigma'}$ 的成员，则分拆
+$\{n_1,\ldots,n_r\}$ 和 $\{n'_1,\ldots,n'_s\}$ 的项数相同，且重新编号之后有
+$n_i=n'_i$、$\pi_i\simeq\pi'_i$。
+\end{originaltheorem}
+
+若 $\pi_i=\bigotimes_v\pi_i(v)$，则 $I_\sigma$ 的一个成员为
+$\pi=\bigotimes_v\pi(v)$，其局部分量为
+$\pi(v)=\pi_1(v)\boxplus\cdots\boxplus\pi_r(v)$。将此表示记为
+$\pi=\pi_1\boxplus\cdots\boxplus\pi_r$，但这一记号的唯一性有待陈述 A 来保证。称此形式的表示为等压表示（isobaric），仍可用它们定义一个 Abel 范畴 $\Pi(F)$。
+
+约定：若每个尖点表示 $\pi_i$ 的中心特征为酉特征（unitary central character），也就是每个
+$s_i=0$，就称 $\pi=\pi_1\boxplus\cdots\boxplus\pi_r$ 为缓增。但这一用语只有在证明以下陈述后才是适当的；它是 Howe--Piatetskii-Shapiro 及 Kurokawa 的例子出现以后，我们仍能坚持的 Ramanujan 猜想的最强形式。
+
+\begin{originaltheorem}{陈述 B}
+若 $\pi=\bigotimes_v\pi(v)$ 是中心特征为酉特征的尖点表示，则每个因子 $\pi(v)$ 都缓增。
+\end{originaltheorem}
+
+缓增表示构成 $\Pi(F)$ 的子范畴 $\Pi^\circ(F)$。我们希望 $\Pi(F)$ 和 $\Pi^\circ(F)$ 的定义满足以下要求：若 $v$ 是 $F$ 的一个赋值，就有把 $\pi$ 送到其因子
+$\pi(v)$ 的函子
+$\Pi(F)\to\Pi(F_v)$、$\Pi^\circ(F)\to\Pi^\circ(F_v)$。然而，在没有态射的自然定义时，并没有唯一的方式定义
+$\Hom(\pi,\pi')\to\Hom(\pi(v),\pi'(v))$。
+
+若 $I_\sigma$ 可约，则除了
+$\pi_1\boxplus\cdots\boxplus\pi_r$ 外，它还有其他组成因子；称这些自守表示为异常表示。虽然函子性原理或许适用于它们，但能否把它们置入 Tannaka 框架十分可疑。注意，陈述 A 与强重数一定理（strong multiplicity one）意味着：对任意自守表示
+$\pi$，存在唯一的等压表示 $\pi'$，使几乎所有 $v$ 处有 $\pi(v)\sim\pi'(v)$。
+
+若 $F$ 为整体域，Tannaka 形式体系的目标，是提供一个 $\C$ 上约化群，使它的
+$n$ 维表示（更准确地说，它们的等价类）与 $\GL(n,\A_F)$ 的等压自守表示一一对应。这一假设性的群必定非常大，是有限维群的逆极限（projective limit）。记为
+$G_{\Pi(F)}$。
+
+代数群 $G_{\Pi(F)}$ 在 $\C$ 上的有限维表示范畴
+$\operatorname{Rep}(G_{\Pi(F)})$ 当然为 Abel 范畴，而且其中还能定义张量积。此外，它还有一个到 $\C$ 上有限维向量空间范畴的函子。这个函子把表示 $(\varphi,X)$ 送到其底层向量空间 $X$，即忘去群的作用。张量积满足某些结合性、交换性等条件，而这个称为纤维函子（fibre functor）的函子与两个范畴中的张量积及其他运算相容。
+
+[40] 的一个定理（但不是其主要定理）反过来断言：一个带有张量积及纤维函子的 Abel 范畴，只要满足某些自然公理，就等价于某个约化群的表示范畴。因此，要引入
+$G_{\Pi(F)}$，似乎必须给每一对 $\GL(n,\A)$ 的尖点表示 $\pi$ 与
+$\GL(n',\A)$ 的尖点表示 $\pi'$，配以 $\GL(nn',\A)$ 的等压表示
+$\pi\boxtimes\pi'$。一般地，若
+$\pi=\pi_1\boxplus\cdots\boxplus\pi_r$，
+$\pi'=\pi'_1\boxplus\cdots\boxplus\pi'_s$，就规定
+\[
+\pi\boxtimes\pi'=\mathop{\boxplus}_{i,j}(\pi_i\boxtimes\pi'_j).
+\]
+还须给 $\GL(n,\A)$ 的每个等压表示 $\pi$（$n=1,2,\ldots$）配以一个
+$n$ 维复向量空间 $X(\pi)$，并给出同构
+\[
+X(\pi\boxplus\pi')\simeq X(\pi)\oplus X(\pi'),\qquad
+X(\pi\boxtimes\pi')\simeq X(\pi)\otimes X(\pi').
+\]
+必须满足许多条件，其中一个值得明确指出。设 $\pi,\pi'$ 尖点，且
+$\pi\boxtimes\pi'=\mathop{\boxplus}_{i=1}^r\pi_i$，$\pi_i$ 尖点。则集合
+$\{\pi_1,\ldots,\pi_r\}$ 包含 $\GL(1,\A)$ 的平凡表示，当且仅当
+$\pi'$ 是 $\pi$ 的逆反表示（contragredient）；此时平凡表示恰出现一次。
+
+目前我不知道如何定义空间 $X(\pi)$，甚至没有坚实理由相信函子
+$\pi\mapsto X(\pi)$ 存在。尽管引入 $G_{\Pi(F)}$ 的尝试未必成功，它可能带来的收获仍值得一试。此外还希望证明，若 $\pi,\pi'$ 缓增，则
+$\pi\boxtimes\pi'$ 也缓增，从而引入分类缓增自守表示的群
+$G_{\Pi^\circ(F)}$。若 $\Omega_F^+$ 为乘法型群（group of multiplicative type），其有理特征模为拓扑群 $F^\times\backslash I_F$ 的正值特征所成的模，则
+\[
+G_{\Pi(F)}=G_{\Pi^\circ(F)}\times\Omega_F^+.
+\]
+
+也希望用类似过程，为局部域 $F$ 引入群 $G_{\Pi(F)}$ 和 $G_{\Pi^\circ(F)}$，分别分类
+$\GL(n,F)$（$n=1,2,\ldots$）的不可约容许表示与缓增表示。显然，希望这一形式体系满足：若
+$F_v$ 为 $F$ 的完备化，就有同态
+$G_{\Pi(F_v)}\to G_{\Pi(F)}$ 和
+$G_{\Pi^\circ(F_v)}\to G_{\Pi^\circ(F)}$，分别对偶于
+$\Pi(F)\to\Pi(F_v)$ 及 $\Pi^\circ(F)\to\Pi^\circ(F_v)$。
+
+若 $F$ 为局部域，$\GL(n,F)$ 表示的猜想性分类 [3]（在 $F$ 阿基米德时已验证），就具体描述了范畴
+$\Pi(F)$ 及其乘积 $\boxtimes$。$F$ 阿基米德且 $W_F$ 为其 Weil 群时，
+$\Pi(F)$ 等价于 $W_F$ 在复向量空间 $X$ 上的连续半单表示的范畴。张量积为通常的
+$(\sigma,X)\otimes(\sigma',X')=(\sigma\otimes\sigma',X\otimes X')$，纤维函子为
+$(\sigma,X)\mapsto X$。故 $G_{\Pi(F)}$ 是拓扑群 $W_F$ 的某种代数包（algebraic hull）。特别地，有同态
+$W_F\to G_{\Pi(F)}(\C)$，其像 Zariski 稠密。对应于 $\Pi^\circ(F)$ 的子范畴由那些满足 $\sigma(W_F)$ 相对紧的表示 $(\sigma,X)$ 组成。
+
+若 $F$ 非阿基米德，则不应取 Weil 群，而应取直积
+$W'_F=\SL(2,\C)\times W_F$。至少猜想地，应把 $\sigma$ 换成
+$W'_F$ 的连续半单表示，且它在 $\SL(2,\C)$ 上的限制为复解析表示。为了得到与
+$\Pi^\circ(F)$ 等价的范畴，应只取 $\sigma(W_F)$ 相对紧的 $\sigma$。注意，为了得到半单范畴，我们把 Borel 和 Tate [47] 使用的群 $WD_F$ 换成了
+$W'_F$。若 $w\mapsto|w|$ 是 Weil 群通常的正值特征，则显然有
+$WD_F\to W'_F$ 的同态，把 $w\in W_F\subset WD_F$ 映到
+\[
+\begin{pmatrix}|w|^{1/2}&0\\0&|w|^{-1/2}\end{pmatrix}\times w.
+\]
+
+注意，根据这些分类，有代数群同态
+\[
+G_{\Pi(F)}\to\Gal(\overline F/F),\qquad
+G_{\Pi^\circ(F)}\to\Gal(\overline F/F),
+\]
+其中右边的群是有限群的逆极限。除非 $F$ 为整体域时也有类似同态，否则函子性原理不可能成立。
+
+设 $\Omega_F,\Omega_F^+,\Omega_F^0$ 是乘法型群，其有理特征模分别为
+$F^\times$（$F$ 整体时则为 $F^\times\backslash I_F$）的全部特征、全部正值特征、全部酉特征所成的模。于是
+$\Omega_F=\Omega_F^+\times\Omega_F^0$，并且将有同态
+\[
+G_{\Pi(F)}\to\Omega_F,\qquad G_{\Pi^\circ(F)}\to\Omega_F^0.
+\]
+若 $F$ 为非阿基米德局部域，还可把各类特征模换成同类的非分歧特征（unramified characters）模，来定义
+$\Omega_{\mathrm{un}},\Omega_{\mathrm{un}}^+,\Omega_{\mathrm{un}}^0$。这些群包含一个指定的
+$\C$ 点，即 Frobenius 元 $\Phi$，它就是 $F^\times$ 中一个素元（uniformizing parameter）的像。无论如何，此形式体系肯定允许给代数群 $G_{\Pi(F)}$ 在
+$\C$ 上的任意表示 $\sigma$ 定义 $L$ 函数 $L(s,\sigma)$；若 $\sigma$ 对应
+$\GL(n,\A_F)$ 的表示 $\pi$，就有 $L(s,\sigma)=L(s,\pi)$。
+
+然而，希望引入 $G_{\Pi(F)}$、$G_{\Pi^\circ(F)}$ 及相应形式体系的理由还在于，它们能帮助我们精确表述实质性问题。例如设
+$\pi=\bigotimes_v\pi_v$ 是 $\GL(n,\A)$ 的等压表示，且每个因子 $\pi_v$ 缓增。对几乎所有
+$v$，$\pi_v$ 非分歧，对应 $\GL(n,\C)$ 中共轭类
+$\{g_v\}=\{g(\pi_v)\}$。由于 $\pi_v$ 缓增，此共轭类与酉群 $U(n)$ 相交，因此可将它视为 $U(n)$ 中的共轭类。Chebotarev 定理或 Sato--Tate 猜想的一般解析类似物，应是描述这些共轭类渐近分布的定理或猜想。
+
+设上述形式体系存在，$\pi$ 对应 $G_{\Pi^\circ(F)}$ 的表示 $\sigma$。像
+$\sigma(G_{\Pi^\circ(F)}(\C))$ 为 $\GL(n,\C)$ 的一个约化子群 $H(\C)$，有极大紧子群
+$K_H$。对几乎所有 $v$，$\sigma_v$ 通过
+$G_{\Pi^\circ(F_v)}\to\Omega_{\mathrm{un}}^0$ 分解，且 $\sigma_v(\Phi_v)$ 有定义。由于它在
+$H(\C)$ 中的共轭类与 $K_H$ 相交，就定义 $K_H$ 中的共轭类，记为
+$\{\sigma_v(\Phi_v)\}$。当然有 $\{\sigma_v(\Phi_v)\}\subseteq\{g_v\}$，所以可由前者的渐近分布推知后者的渐近分布。$K_H$ 的共轭类空间上有自然概率测度：若
+$X$ 为一组共轭类且 $Y=\bigcup_{x\in X}x$ 在 $K_H$ 中可测，就取
+$\operatorname{meas}X=\operatorname{meas}Y$。由此自然猜想，$\{\sigma_v(\Phi_v)\}$ 按这一测度渐近分布。为验证这一猜想，必须证明：对
+$G_{\Pi^\circ(F)}$ 在 $\C$ 上的任意表示 $\rho$，$L(s,\rho)$ 在 $s=1$ 处的极点阶数，等于该群的平凡表示在 $\rho$ 中出现的重数。如果
+$G_{\Pi^\circ(F)}$ 的存在得到确立，从 Jacquet 和 Shalika 最近的结果 [25] 推出这一结论应当不难。
+
+在这一形式体系中，函子性原理断言：若 $F$ 为局部域，$G$ 为 $F$ 上约化群，则
+$G(F)$ 的任意一个 $L$ 包，都与 $\C$ 上代数群同态
+$\varphi:G_{\Pi(F)}\to{}^LG$ 相联系，使下图交换：
+\[
+\begin{tikzcd}
+G_{\Pi(F)}\arrow[r,"\varphi"]\arrow[dr] & {}^LG\arrow[d]\\
+&\Gal(\overline F/F).
+\end{tikzcd}
+\]
+若以 $G_{\Pi^\circ(F)}$ 代替 $G_{\Pi(F)}$，则 $L$ 包应当缓增。若 $F$ 为整体域，就须谨慎一些。若
+$L$ 包 $\Pi$ 中的 $\pi=\bigotimes_v\pi_v$ 总是具有缓增局部因子，则它应对应于
+$\varphi:G_{\Pi^\circ(F)}\to{}^LG$。否则未必如此，原因在下一节讨论 Kurokawa 的例子 [29] 后或许会更清楚。若存在表示
+\[
+\psi:{}^LG\to\GL(n)\times\Gal(\overline F/F),
+\]
+而函子性原理给出的像 $\psi_*(\Pi)$ 不是等压的，那么 $\Pi$ 就不可能与任何
+$\varphi$ 相联系。
+
+尽管如此，仍可希望在局部与整体两种情形证明：只要
+$\varphi:G_{\Pi(F)}\to{}^LG$ 与到 Galois 群的同态交换，就有一个 $L$ 包与之相联系。
+若 $G$ 非拟分裂，还须考虑 $\varphi$ 相对于抛物子群的局部行为 [3]。对阿基米德域，得到的就是通常的分类。
+
+已研究的少数例子 [44] 提示，$\Pi$ 中各元素在自守形式空间中出现的重数，需要借助 $\varphi$ 来描述。
+
+希望定义群 $G_{\Pi(F)}$ 的主要理由，是它提供了目前可见的唯一一种完全表达自守形式与猜想性动机理论 [40] 的关系的方式。局部域或整体域 $F$ 上的动机范畴是
+$\Q$ 线性的 Tannaka 范畴，但不总有 $\Q$ 上的纤维函子，即使有，也很少有唯一的自然定义的纤维函子。因此 Tannaka 对偶性给它配的不是
+$\Q$ 上的群，而是一个类似群的对象，按近年流行起来的乡野术语叫“叠束”（gerbe，原意为一捆麦穗）。在
+$\C$ 上，这个对象变成群 $G_{\operatorname{Mot}(F)}$，而动机与自守表示之间的关系，大概可由一个定义在
+$\C$ 上的同态
+$\rho_F:G_{\Pi(F)}\to G_{\operatorname{Mot}(F)}$ 的存在来恰当地表达。
+$F$ 可以是局部域，也可以是整体域。局部与整体同态应彼此相容，并与 $L$ 函数的形成相容。
+$F$ 为数域时，$\rho_F$ 的像与核可能都很大（参见 [43] 的 C.6.2），而 $F$ 为局部域时则可能都较小。
+
+\origsection{3}{异常表示（Anomalous representations）}
+由于异常表示给 Shimura 簇 zeta 函数的研究带来某些困难，在继续之前，有必要先形成一些直观认识。上一节的简短评述提示：若对某个同态
+$\psi:{}^LG\to\GL(n,\C)\times\Gal(\overline F/F)$，函子性原理将约化群
+$G$ 的自守表示 $\pi$，更准确地说将包含它的 $L$ 包 $\Pi$，送到
+$\GL(n,\A)$ 的异常表示，就应称 $\pi$ 或 $\Pi$ 为异常的。
+Howe--Piatetskii-Shapiro [19] 对 Ramanujan 猜想的反例，或许在此意义下异常。
+
+写本文时他们的论文不在手边，因此只好用另一个例子检验这一想法。这是 Kurokawa 发现的一个十分显式的例子。取
+$G$ 为 $\Q$ 上四变量的射影辛群（projective symplectic group）。其 $L$ 群为
+${}^LG^\circ$（四变量辛群）与 $\Gal(\overline\Q/\Q)$ 的直积。由于本节处理的群全都分裂，可忽略
+$\Gal(\overline\Q/\Q)$ 因子。
+
+令 $G_1$ 为 $\Q$ 上 $\operatorname{PGL}(2)$ 与自身的乘积，故
+${}^LG_1^\circ=\SL(2,\C)\times\SL(2,\C)$；令 $G_2$ 为 $\Q$ 上的 $\GL(4)$。
+定义 $\varphi_1:{}^LG_1^\circ\to{}^LG$ 为同态
+\[
+\begin{pmatrix}\alpha_1&\beta_1\\\gamma_1&\delta_1\end{pmatrix}
+\times\begin{pmatrix}\alpha_2&\beta_2\\\gamma_2&\delta_2\end{pmatrix}
+\longmapsto
+\begin{pmatrix}
+\alpha_1&0&\beta_1&0\\
+0&\alpha_2&0&\beta_2\\
+\gamma_1&0&\delta_1&0\\
+0&\gamma_1&0&\delta_2
+\end{pmatrix},
+\]
+\footnote{译注：右侧矩阵第四行第二项原书印作 $\gamma_1$，此处照录；按两个 $2\times2$ 块的嵌入结构，该项应对应第二个矩阵中的 $\gamma_2$。}
+并令 $\varphi_2$ 为 ${}^LG^\circ$ 到 ${}^LG_2^\circ=\GL(4,\C)$ 的标准嵌入。
+
+为分析 Kurokawa 的例子，须把他的陈述改写成表示论语言。下面列出所需事实；熟悉离散系列（discrete series）的读者可以自行验证。具体做法是针对这里的特例，展开 [17]、[18] 的若干结果以及 [31] 的相关定义。
+
+$G(\A)$ 的自守表示 $\pi=\bigotimes_v\pi_v$ 与 [39] 经典意义下权 $k$ 的全纯形式（holomorphic form）相联系，当且仅当
+$\pi_\infty$ 属于全纯离散系列，且落在 $L$ 包 $\Pi_{\psi(k)}$ 中，其中
+$\psi(k)$ 在 $\C^\times\subseteq W_{\C/\R}$ 上的限制为
+\[
+z\longmapsto\diag\big(z^\lambda\overline z^{-\lambda},
+ z^\mu\overline z^{-\mu},z^{-\lambda}\overline z^\lambda,
+ z^{-\mu}\overline z^\mu\big),
+\qquad\lambda=(2k-3)/2,\quad\mu=\tfrac12.
+\]
+由于 $G$ 为射影群，$k$ 必为偶数。注意
+$z^\lambda\overline z^{-\lambda}$ 须按
+$z^{2\lambda}(z\overline z)^{-\lambda}
+=\overline z^{-2\lambda}(z\overline z)^\lambda$ 来计算。最终将取 $k=10$。
+
+另一方面，$\operatorname{PGL}(2,\A)$ 的自守表示 $\pi=\bigotimes_v\pi_v$ 与权
+$2k-2$ 的全纯形式相联系，当且仅当 $\pi_\infty$ 属于离散系列及 $L$ 包
+$\Pi_{\varphi(k)}$，其中
+\[
+\varphi(k):z\longmapsto
+\begin{pmatrix}z^\lambda\overline z^{-\lambda}&0\\
+0&z^{-\lambda}\overline z^\lambda\end{pmatrix},
+\]
+$\lambda$ 同上。特别地，$\varphi_1$ 将实际上只含一个表示的 $L$ 包
+$\Pi_{\varphi(k)}\otimes\Pi_{\varphi(2)}$ 送入 $\Pi_{\psi(k)}$。
+
+我们要把函子性原理应用于 $\varphi_1$ 及 $G_1(\A)$ 的一个很特殊的自守表示
+$\pi$。它必为两个 $\operatorname{PGL}(2,\A)$ 表示的张量积
+$\pi'\otimes\pi''$。$\pi'_\infty,\pi''_\infty$ 均属离散系列，前者在
+$\Pi_{\varphi(10)}$，后者在 $\Pi_{\varphi(2)}$。事实上 $\pi'$ 是与权 $18$ 的尖点形式相联系的自守表示，而
+$\pi''$ 是异常表示；更精确地说，它拉回到 $\GL(2,\A)$ 所得的表示
+$\widetilde\pi''$ 异常。为构造它，从 $2$ 的分拆 $\{1,1\}$ 及
+$\GL(1,\A)$ 的两个特征
+\[
+\eta:x\longmapsto|x|^{1/2},\qquad\nu:x\longmapsto|x|^{-1/2}
+\]
+出发，再按上一节的方法构造 $\GL(2,\A)$ 的诱导表示。其任意成员
+$\widetilde\pi''$ 都通过 $\operatorname{PGL}(2,\A)$ 的一个表示分解。我们这样选择
+$\widetilde\pi''$：使 $\pi''_\infty\in\Pi_{\varphi(2)}$，且对所有 $p$，
+$\widetilde\pi''_p=\eta_p\boxplus\nu_p$。这个表示显然异常。
+
+表示 $\pi$ 非分歧。因此，$G(\A)$ 的自守表示 $\pi^\circ$ 属于由
+$\pi,\varphi_1$ 及函子性原理定义的 $L$ 包 $\varphi_{1*}(\{\pi\})$，当且仅当对所有
+$p$，$\pi_p^\circ$ 非分歧且 $\pi_p^\circ\in\varphi_{1*}(\{\pi_p\})$，并且
+$\pi_\infty^\circ\in\Pi_{\psi(10)}$。取 $\pi^\circ$ 为权 $10$ 的尖点形式
+$\chi_{10}$ [39] 所定义的表示，则 $\pi_\infty^\circ\in\Pi_{\psi(10)}$。
+按定义 [3]，关系 $\pi_p^\circ\in\varphi_{1*}(\{\pi_p\})$ 是关于 Hecke 算子特征值的陈述。
+Kurokawa [29] 对小素数验证了这些陈述。所需等式如此复杂，不可能仅是巧合，因而可以相当有把握地假定
+$\pi^\circ\in\varphi_{1*}(\{\pi\})$。
+
+无论如何，$\pi^\circ$ 肯定是 Ramanujan 猜想的反例。若
+$\varphi=\varphi_2\circ\varphi_1$，则函子性原理应用于 $\pi,\varphi$，与应用于
+$\pi^\circ,\varphi_2$，得到同一个 $L$ 包。由于 $G_2=\GL(4)$，这个包只有一个表示。容易看出它异常，并且几乎处处等价于等压表示
+$\pi'\boxplus\eta\boxplus\nu$。故 $\pi^\circ$ 本身按本节开始的意义也异常。
+
+\origsection{4}{Shimura 簇（Shimura varieties）}
+本节回顾 Shimura 簇的定义（暂取在 $\C$ 上）及其与动机的联系。这里采用 Deligne 的观点，以下大部分内容取自他的论文
+[9]、[10]，或得自与他的谈话。当然 Saavedra Rivano 的著作 [40] 仍是基本参考；其中可找到以下许多事实和定义。
+
+回忆定义 Shimura 簇所需的数据，是 $\Q$ 上连通约化群 $G$ 及定义在 $\R$ 上的同态
+$h:\mathcal R\to G$。这里 $\mathcal R=\operatorname{Res}_{\C/\R}\GL(1)$。
+在 $\C$ 上有典范同构 $\GL(1)\times\GL(1)\simeq\mathcal R$，因此可谈
+$h$ 在第一或第二因子上的限制。真正重要的不是 $h$ 本身，而是集合
+\[
+\mathfrak H=\{\Ad g\circ h:g\in G(\R)\};
+\]
+最好直接用 $h$ 表示 $\mathfrak H$ 的任意元素。回忆 $(G,h)$ 须满足三个条件
+[10，第 1.5 节]：
+\begin{enumerate}
+\item[(a)] 若 $w$ 为对角映射 $\GL(1)\to\GL(1)\times\GL(1)$，则同态
+$h\circ w$ 取值于中心。
+\item[(b)] $G(\C)$ 的 Lie 代数 $\mathfrak G$ 分解为直和
+$\mathfrak G=\mathfrak p+\mathfrak k+\overline{\mathfrak p}$，并且对
+$z=(z_1,z_2)\in\mathcal R(\C)$，
+\[
+\Ad h(z)(X)=
+\begin{cases}
+z_1^{-1}z_2X,&X\in\mathfrak p,\\
+X,&X\in\mathfrak k,\\
+z_1z_2^{-1}X,&X\in\overline{\mathfrak p}.
+\end{cases}
+\]
+事实上这些直和项随 $h$ 改变；需要明确写出依赖时，记作
+$\mathfrak p_h,\mathfrak k_h,\overline{\mathfrak p}_h$。
+\item[(c)] $h(i,-i)$ 在伴随群（adjoint group）上的伴随作用为 Cartan 对合（Cartan involution）。
+\end{enumerate}
+由于 $G(\R)$ 通过共轭作用于实流形 $\mathfrak H$，$\mathfrak G$ 的每个元素定义
+$\mathfrak H$ 上一个复向量场。令 $X_h$ 为与 $X$ 对应的向量场在
+$h\in\mathfrak H$ 处的值。$\mathfrak H$ 的复结构定义为：$h$ 处全纯切空间为
+$\{X_h:X\in\overline{\mathfrak p}\}$，反全纯切空间为
+$\{X_h:X\in\mathfrak p\}$。
+
+若 $\A_f$ 为 $\Q$ 的无穷分量为 $0$ 的阿代尔环，$K$ 是 $G(\A_f)$ 的紧开子群，则
+$G(\A_f)/K$ 离散，$X_K=\mathfrak H\times G(\A_f)/K$ 是带有
+$G(\Q)$ 左作用的复流形。若 $K$ 足够小，则任何有不动点的
+$\gamma\in G(\Q)$ 都属于 $Z(\Q)\cap K$，从而固定整个流形。始终假设
+$K$ 足够小，于是
+\[
+\operatorname{Sh}_K(\C)=G(\Q)\backslash\mathfrak H\times G(\A_f)/K
+\]
+为复流形。Baily--Borel 已证明，它是 $\C$ 上代数簇
+$\operatorname{Sh}_K=\operatorname{Sh}_K(G,h)=\operatorname{Sh}_K(G,\mathfrak H)$ 的复点集。
+
+Deligne 预期 $\operatorname{Sh}_K$ 经常会是 $\C$ 上某个动机族的模空间（moduli space）。有些情形确实如此，此时动机来自 Abel 簇（abelian varieties），但一般情形肯定还不能证明。不过，回顾支持这一解释的理由，仍能带来许多启发。其要点是，
+$\operatorname{Sh}_K(\C)$ 是一族极化 Hodge 结构（polarized Hodge structures）的参数空间；困难在于证明这些 Hodge 结构全都来自动机。
+
+实 Hodge 结构（real Hodge structure）$V$ 是有限维实向量空间 $V_\R$，连同其复化的分解
+$V_\C=\bigoplus_{p,q\in\Z}V^{p,q}$，满足
+$V^{q,p}=\overline{V^{p,q}}$。实 Hodge 结构构成 $\R$ 上的 Tannaka 范畴，相应的群为
+$\mathcal R$。事实上，给实 Hodge 结构 $V$ 配以 $\mathcal R$ 的表示 $\sigma$，定义为
+\begin{equation}
+\sigma(z_1,z_2)v=z_1^{-p}z_2^{-q}v,\qquad v\in V^{p,q}.\tag{4.1}
+\end{equation}
+关系 $V^{q,p}=\overline{V^{p,q}}$ 保证 $\sigma$ 定义在 $\R$ 上。反过来，每个定义在
+$\R$ 上的 $\mathcal R$ 表示都给出 Hodge 结构，其中 $V^{p,q}$ 的元素由 (4.1) 定义。
+若 $p+q\ne n$ 时 $V^{p,q}=0$，就称 $V$ 的权（weight）为 $n$。任何 Hodge 结构当然都分解为
+$V=\bigoplus_nV^n$，其中 $V^n$ 权为 $n$。
+
+不过我们关心的是极化有理 Hodge 结构的范畴。有理 Hodge 结构（rational Hodge structure）
+$V$ 由有限维 $\Q$ 向量空间 $V_\Q$、直和分解
+$V_\Q=\bigoplus_nV_\Q^n$，以及 $V_\R^n=V_\Q^n\otimes_\Q\R$ 上权为
+$n$ 的实 Hodge 结构组成。有理 Hodge 结构范畴有一个指定的权 $-2$ 对象，即 Tate 对象（Tate object）
+$\Q(1)$。其底层有理向量空间为 $\Q(1)_\Q=2\pi i\Q\subseteq\C$，且按定义
+$\Q(1)^{-1,-1}=\Q(1)_\C$。
+
+通常似乎把 $\Q(n)=\Q(1)^{\otimes n}$ 的底层向量空间等同于
+$(2\pi i)^n\Q$，把 $\Q(n)_\R$ 等同于 $(2\pi i)^n\R\subseteq\C$。
+选择因子 $2\pi i$ 的理由在这里无须关注；带着这些因子并不麻烦。
+
+若 $V$ 为有理 Hodge 结构，$\sigma$ 为相应的 $\mathcal R$ 表示，令
+$C$ 为 $\sigma(-i,i)$ 在 $V_\R$ 上的作用。若 $V$ 权为 $n$，其极化（polarization）是满足以下条件的双线性形式
+$P:V\times V\to\Q(-n)$：
+\begin{enumerate}
+\item[(a)] 对所有 $u,v\in V_\C$ 及 $r\in\mathcal R(\C)$，
+$P(\sigma(r)u,\sigma(r)v)=\sigma(r)P(u,v)$。因此这个形式与 Hodge 结构相容。
+\item[(b)] $P(v,u)=(-1)^nP(u,v)$。
+\item[(c)] $V_\R$ 上的实值形式 $(2\pi i)^nP(u,Cv)$ 对称且正定。
+\end{enumerate}
+若每个齐次分量（homogeneous component）都容许极化，就称有理 Hodge 结构可极化（polarizable）；整个结构的极化由各齐次分量的极化给出。可极化 Hodge 结构的范畴
+$\mathcal{HOD}(\Q)$ 是 Tannaka 范畴，具有自然纤维函子
+$\omega_{\operatorname{Hod}}:V\mapsto V_\Q$，以及相应的群
+$G_{\operatorname{Hod}}$。该群约化，但巨大无比；但它具有较易处理的有限维商群。
+
+若 $V$ 为可极化有理 Hodge 结构，可取由 $V$ 与 $\Q(1)$ 通过反复取对偶、和、张量积及子对象生成的 Tannaka 范畴。相应的群称为
+$V$ 的 Mumford--Tate 群（Mumford--Tate group），记为 $\mathcal{MT}(V)$。
+\footnote{\textbf{译者注（本次校订）：}这里给出了两种并不总相同的定义。通常的 Mumford--Tate 群由 $V$ 生成的张量范畴定义，等于下文所述 $\GL(V)$ 中包含 Hodge 同态像的最小 $\Q$ 子群；额外加入 $\Q(1)$ 后，一般得到 $V\oplus\Q(1)$ 的 Mumford--Tate 群。例如 $V=\Q(0)$ 时，前者为平凡群，后者为 $\Gm$。若保留前面的定义，下文的自同构群应相应改为 $\GL(V\oplus\Q(1))$。}它有限维且约化，并且有定义在 $\Q$ 上的满射
+$G_{\operatorname{Hod}}\to\mathcal{MT}(V)$。若 $\sigma$ 为与 $V$ 相联系的
+$\mathcal R$ 表示，则 $\mathcal{MT}(V)$ 就是 $V$ 的底层有理向量空间的自同构群中，包含
+$\sigma(\mathcal R)$ 的最小的定义在 $\Q$ 上的子群 [37]。所以它连通。
+
+那些 $\mathcal{MT}(V)$ 为交换群的可极化有理 Hodge 结构，在 Shimura 簇研究中格外重要，称为
+CM 型（CM type）。关于 $\mathcal{MT}(V)$ 的第二种描述表明，这类 Hodge 结构组成的范畴对和与张量积封闭，因此是 Tannaka 范畴。相应的群在
+[41] 中有详细研究，通常称为 Serre 群。虽然可能增加与 [41] 比较的困难（Serre 自己采用不同记号），这里仍把它记为
+$\mathcal S$。
+
+$\mathcal S$ 不难描述。令 $\overline\Q$ 为 $\C$ 中 $\Q$ 的代数闭包，
+$\iota\in\Gal(\overline\Q/\Q)$ 为复共轭。为构造 $\mathcal S$ 的有理特征模
+$X^*(\mathcal S)$，从 $\Gal(\overline\Q/\Q)$ 上局部常值整数值函数的模
+$M$ 出发。Galois 群通过右平移作用，并且
+\[
+X^*(\mathcal S)=\{\lambda\in M:
+(\sigma-1)(\iota+1)\lambda=(\iota+1)(\sigma-1)\lambda=0,
+\ \forall\sigma\in\Gal(\overline\Q/\Q)\}.
+\]
+特别地，若 $\lambda\in X^*(\mathcal S)$，则
+\[
+(\sigma-1)\lambda(1)+(\sigma-1)\lambda(\iota)=0,
+\]
+因为左边就是 $(\iota+1)(\sigma-1)\lambda(1)$。$\mathcal R$ 的有理特征格典范同构于
+$\Z\oplus\Z$，而与将 $\lambda$ 送到 $(\lambda(1),\lambda(\iota))$ 的同态
+$X^*(\mathcal S)\to X^*(\mathcal R)$ 对偶的同态
+$h_0:\mathcal R\to\mathcal S$ 定义在 $\R$ 上。复合
+$h_0\circ w:\GL(1)\to\mathcal S$ 对偶于将 $\lambda$ 送到
+$\lambda(1)+\lambda(\iota)$ 的同态 $X^*(\mathcal S)\to\Z$，并定义在 $\Q$ 上。
+
+容易验证，用特征模定义的这个群正是前面由 Hodge 结构得到的 Serre 群。
+$h_0$ 和 $h_0\circ w$ 的存在保证 $\mathcal S$ 的每个 $\Q$ 上表示都定义一个有理 Hodge 结构。只须证明表示不可约时，这个结构可极化。为得到不可约表示，取
+$\lambda\in X^*(\mathcal S)$，按
+\[
+\Gal(\overline\Q/F)=\{\sigma\in\Gal(\overline\Q/\Q):\sigma\lambda=\lambda\}
+\]
+定义域 $F$。表示的底层空间为 $F$ 所定义的 $\Q$ 向量空间，而表示
+$r=r_\lambda$ 用符号写为 $r_\lambda(s):x\in F\mapsto\lambda(s)x$。相应 Hodge 结构的权为
+$-(\lambda(1)+\lambda(\iota))=n$。存在 $\alpha\in F$，使
+$\iota(\alpha)=(-1)^n\alpha$ 且 $(-1)^{\lambda(\iota)}i^n\alpha$ 全正。一个可行的极化为
+\[
+P(u,v)=(2\pi i)^{-n}\operatorname{Tr}_{F/\Q}(u\alpha\iota(v)).
+\]
+
+反过来，设有理 Hodge 结构 $V$ 的 Mumford--Tate 群 $\mathcal{MT}(V)$ 交换。由于有同态
+$\mathcal R\to\mathcal{MT}(V)$，$\mathcal R$ 的由 $z\mapsto(z,1)$ 定义的余权（coweight）
+$\GL(1)\to\mathcal R$，也定义 $\mathcal{MT}(V)$ 的余权 $\nu^\vee$。
+$\mathcal{MT}(V)$ 的余权格 $Y_*$ 是由 $\nu^\vee$ 生成的
+$\Gal(\overline\Q/\Q)$ 模。\footnote{\textbf{译者注（本次校订）：}严格地说，应取 $\nu^\vee$ 的 Galois 轨道所生成子模的饱和化；等价地，在张量 $\Q$ 后谈生成。最小子环面的定义只保证有理张成性，并不保证整格上生成。例如 $\Q(2)$ 的 Hodge 余特征在 $\Gm$ 的余特征格 $\Z$ 中为 $2$，它只生成 $2\Z$。下文关于特征格单射的结论仍成立。}将 $\nu\in Y^*$ 送到由
+\[
+\lambda(\sigma)=\langle\sigma\nu,\nu^\vee\rangle,
+\qquad\sigma\in\Gal(\overline\Q/\Q)
+\]
+给出的元素 $\lambda$，就定义了有理特征格 $Y^*$ 到 $X^*(\mathcal S)$ 的单射。
+对偶同态 $\mathcal S\to\mathcal{MT}(V)$ 为满射，$V$ 由 $\mathcal S$ 的有理表示定义。
+
+回到 Shimura 簇 $\operatorname{Sh}_K(\C)$，说明如何给它配上有理 Hodge 结构族。令
+$G_0$ 为 $G$ 的最大商群，要求其中心的每个余权 $\nu^\vee$ 都满足
+$(\sigma-1)(\iota+1)\nu^\vee=(\iota+1)(\sigma-1)\nu^\vee=0$。
+令 $\xi$ 为 $G$ 在 $V$ 上的、通过 $G_0$ 分解的有理表示。
+
+给 $X_K$ 中每个 $x=(h,g)$ 配以三元组 $(V^x,\mathfrak P^x,\varphi^x)$。
+$V^x$ 是有理 Hodge 结构，其底层空间为 $V_\Q^x=V_\Q$，Hodge 结构由
+$\mathcal R$ 的表示 $\xi\circ h$ 定义。第三项 $\varphi^x$ 是同构
+$V_{\A_f}^x\to V_{\A_f}$，由 $v\mapsto\xi(g)^{-1}v$ 给出，只在模去与
+$\xi(K)$ 的元素的复合的意义下有定义。$V_\Q^x$ 的齐次分量不依赖于 $x$，可记为
+$V_\Q^n$。由 [11] 引理 2.8，若 $x\in X_K$，至少存在一族双线性形式
+\[
+P_n^x:V_\Q^n\times V_\Q^n\to\Q(-n)_\Q,
+\]
+它在 $G$ 的导出群下不变，并给出 $V^x$ 的极化。令 $\mathfrak P^x$ 为所有这类极化的集合。若
+$\gamma\in G(\Q)$，$P^x\in\mathfrak P^x$，$x'=\gamma x$，则由
+\[
+P_n^{x'}:(u,v)\longmapsto P_n^x(\xi(\gamma^{-1})u,\xi(\gamma^{-1})v)
+\]
+给出的族 $P^{x'}$ 属于 $\mathfrak P^{x'}$。
+
+为把它与动机族联系起来，还须验证 $X_K$ 上的族 $\{V^x\}$ 是 [9] 意义下的有理 Hodge 结构族。需要验证两点。令
+$V_{p,q}^x$ 为 $V_\C^x$ 中型为 $(p,q)$ 的子空间，置
+$V_p^x=\bigoplus_{p'\ge p}V_{p',q'}^x$。必须说明空间
+$V_p^x\subseteq V_\C$ 随 $x$ 全纯变化。换言之，若 $v(x)$ 是 $V_p^x$ 的任意局部截面，
+$Y$ 是任意反全纯向量场，则 $Yv(x)$ 仍取值于 $V_p^x$。还须证明横截性条件（transversality）：对同样的
+$v(x)$ 及任意全纯向量场 $Y$，$Yv(x)$ 的值属于 $V_{p-1}^x$。
+
+不妨假设 $v(x)$ 取值于 $V_{p,q}^x$。于是固定 $x^\circ=(h^\circ,g_f^\circ)$，若
+$Y$ 为 $X\in\mathfrak G$ 定义的向量场，就须说明：$X\in\mathfrak p_{h^\circ}$ 时
+$Yv(x^\circ)\in V_p^x$，$X\in\overline{\mathfrak p}_{h^\circ}$ 时
+$Yv(x^\circ)\in V_{p-1}^x$。令 $K_{h^\circ}$ 为 $h^\circ$ 在 $G(\R)$ 中的稳定子。将
+$X_K$ 表示为商 $G(\A)/K_{h^\circ}K$，把 $v(x)$ 提升为 $G(\A)$ 上的函数，写为
+\[
+(g,g_f)\longmapsto\xi(g)u(g,g_f),\qquad g\in G(\R),\quad g_f\in G(\A_f).
+\]
+函数 $u$ 取值于固定空间 $V_{p,q}^{x^\circ}$。并且
+\[
+Yv(x^\circ)=\xi(X)u(1,g_f^\circ)+Xu(1,g_f^\circ).
+\]
+对所有 $X\in\mathfrak G$，第二项属于 $V_{p,q}^{x^\circ}$。若
+$X\in\mathfrak p$，则 $\xi(X)V_{p,q}^{x^\circ}\subseteq V_{p+1,q-1}^{x^\circ}$；若
+$X\in\overline{\mathfrak p}$，则
+$\xi(X)V_{p,q}^{x^\circ}\subseteq V_{p-1,q+1}^{x^\circ}$。
+
+若 $\gamma\in G(\Q)$ 且 $x'=\gamma x$，则 $v\mapsto\xi(\gamma)v$ 给出
+$(V^x,\mathfrak P^x,\varphi^x)$ 与 $(V^{x'},\mathfrak P^{x'},\varphi^{x'})$ 的同构。因此，若
+$s\in S_K(\C)$，集合 $\{(V^x,\mathfrak P^x,\varphi^x):x\mapsto s\}$ 中任意两个元素典范同构，可取
+$(V^s,\mathfrak P^s,\varphi^s)$ 为其中任一个，将原来的族改看成底空间
+$S_K(\C)$ 上带附加数据的有理 Hodge 结构族。这个族的底层有理向量空间组成的局部常值层（locally constant sheaf）
+$F_\xi(\Q)$，为 $V_\Q\times X_K$ 对 $G(\Q)$ 的作用
+$\gamma:(v,x)\mapsto(\xi(\gamma)v,\gamma x)$ 所取的商。为使此商良定义，群
+$K$ 必须足够小，因为这样对所有 $h$，$G(\Q)\cap K_hK$ 都包含在 $\xi$ 的核中（参见
+[41] 的 II.A.2）。$\xi$ 通过 $G_0$ 分解的条件，正是在此处发挥作用。
+
+处理动机时，不必显式地将极化作为模问题的一部分；但为了在层 $F_\xi(\Q)$ 的上同调群上引入 Hodge 结构，必须验证：在
+$S_K(\C)$ 的每个连通分支上，都可定义局部常值截面 $s\mapsto P^s$。令
+$G^\circ(\R)$ 为 $G(\R)$ 的单位连通分支，取 $X_K$ 中一点 $x^\circ=(h,g_f)$。若
+\[
+X_K^\circ=\{(\Ad g\circ h,g_fk):g\in G^\circ(\R),\ k\in K\},
+\]
+则它在 $S_K(\C)$ 中的像为开集。若 $x,x'\in X_K^\circ$ 且 $x'=\gamma x$，则
+$\gamma$ 属于
+\begin{equation}
+G(\Q)\cap G^\circ(\R)K_hg_fKg_f^{-1}.\tag{4.2}
+\end{equation}
+只须找到一族 $P=\{P_n\}$，使对所有 $x\in X_K^\circ$，有 $P\in\mathfrak P^x$，并使
+$\gamma$ 属于 (4.2) 时 $P_n(\xi(\gamma)u,\xi(\gamma)v)=P_n(u,v)$。任取
+$P\in\mathfrak P^{x^\circ}$，则对所有 $x\in X_K^\circ$ 都有 $P\in\mathfrak P^x$。显然存在
+$G$ 到 $V^n$ 的一般线性群的同态 $\lambda_n$，使
+\[
+P_n(\xi(\gamma)u,\xi(\gamma)v)=P_n(\lambda_n(\gamma)u,v).
+\]
+若 $\gamma\in G^\circ(\R)K_h$，则 $\lambda(\gamma)$ 的特征值均为正。此外，
+$\lambda$ 在 $G$ 的导出群上平凡，并通过 $G_0$ 分解。故由 [41] 的 II.A.2，各
+$\lambda_n$ 在整个 (4.2) 上均为恒等映射。
+
+虽然已经为任意 $G$ 定义了族 $(V^s,\mathfrak P^s,\varphi^s)$，但显然，除非
+$G=G_0$，$S_K(\C)$ 不会成为模空间；因此本节以下假设 $G=G_0$。最好完全用 Tannaka 范畴语言表述模问题。可以去掉极化，只保留对
+$(V^s,\varphi^s)$ 或 $(V^x,\varphi^x)$；但现在必须强调，对 $G$ 在 $\Q$ 上的每个有限维表示
+$\xi$ 都定义了这个对。因此将表示记作 $(\xi,V(\xi))$，将对记作
+$(V^x(\xi),\varphi^x(\xi))$。
+
+在 $G$ 的有限维表示范畴 $\mathcal{REP}(G)$ 上，有自然纤维函子
+$\omega_{\operatorname{Rep}(G)}:(\xi,V(\xi))\mapsto V(\xi)_\Q$，而
+$\eta^x:(\xi,V(\xi))\mapsto V^x(\xi)$ 是从 $\mathcal{REP}(G)$ 到
+$\mathcal{HOD}(\Q)$ 的张量函子（$\otimes$-functor），满足
+$\omega_{\operatorname{Hod}}\circ\eta^x=\omega_{\operatorname{Rep}(G)}$。由于
+$\mathcal{HOD}(\Q)$ 与 $\mathcal{REP}(G_{\operatorname{Hod}})$ 是同一范畴，
+$\eta^x$ 定义同态 [40，II.3.3.1]
+$\phi^x:G_{\operatorname{Hod}}\to G$，并可由
+$(\xi,V(\xi))\mapsto(\xi\circ\phi^x,V(\xi))$ 定义。从 $\eta^x$ 的角度看，$\varphi^x$ 是两个纤维函子之间的同构
+\[
+\varphi^x:\omega_{\operatorname{Hod}}^{\A_f}\circ\eta^x
+\longrightarrow\omega_{\operatorname{Rep}(G)}^{\A_f}.
+\]
+从 $\phi^x$ 的角度看，这两个纤维函子则相同，因为它们都由
+$\omega_{\operatorname{Hod}}\circ\eta^x=\omega_{\operatorname{Rep}(G)}$ 与 $\A_f$ 作张量积得到；于是
+$\varphi^x$ 可理解为 $\omega_{\operatorname{Rep}(G)}^{\A_f}$ 的自同构。
+这种同构由 $g^{-1}\in G(\A_f)$ 给出 [40，II.3]。这就是 $x=(h,g)$ 中的
+$g$。只有陪集 $gK\subseteq G(\A_f)$ 良定义。
+
+以上讨论最终给出以下描述：$X_K$ 参数化对 $(\phi,g)$，其中
+$\phi$ 为定义在 $\Q$ 上的 $G_{\operatorname{Hod}}\to G$ 同态，$g\in G(\A_f)$ 只在模去
+$K$ 的元素的右乘的意义下确定。此外，$\phi$ 须满足：
+\begin{originaltheorem}{条件 H}
+$\phi$ 与典范同态 $\mathcal R\to G_{\operatorname{Hod}}$ 的复合属于 $\mathfrak H$。
+\end{originaltheorem}
+若 $\gamma\in G(\Q)$，称 $(\phi,g)$ 与 $(\Ad\gamma\circ\phi,\gamma g)$ 等价。
+簇 $\operatorname{Sh}_K(\C)$ 参数化这些对的等价类。
+
+一个重要的 Tannaka 范畴是域 $k$ 上的动机范畴 $\mathcal{MOT}(k)$。除非假设代数几何中的某些称为标准猜想（standard conjectures）的猜想，目前还不能构造它 [40]。
+它关于 $k$ 协变，而带 Hodge 结构的有理上同调给出张量函子
+$h_{BH}:\mathcal{MOT}(\C)\to\mathcal{HOD}(\Q)$。范畴
+$\mathcal{MOT}(\C)$ 连同有理上同调纤维函子 $\omega_{\operatorname{Mot}(\C)}$ 也定义
+$\Q$ 上的群 $G_{\operatorname{Mot}(\C)}$，而 $h_{BH}$ 对偶于定义在 $\Q$ 上的同态
+$h_{BH}^*:G_{\operatorname{Hod}}\to G_{\operatorname{Mot}(\C)}$。
+
+Deligne 的构造隐含着如下希望：任何满足 H 的同态
+$\phi':G_{\operatorname{Hod}}\to G$ 都是复合 $\phi'=\phi\circ h_{BH}^*$。根据 Hodge 猜想，
+$\phi$ 将唯一确定 [40，VI.4.5]，于是 $\operatorname{Sh}_K(\C)$ 成为对
+$(\phi,g)$ 的模空间，其中 $g$ 同前，但 $\phi$ 现在为定义在 $\Q$ 上且满足下述条件的
+$G_{\operatorname{Mot}(\C)}\to G$ 同态：
+\begin{originaltheorem}{条件 H$'$}
+$\phi$ 与典范同态 $\mathcal R\to G_{\operatorname{Mot}(\C)}$ 的复合属于 $\mathfrak H$。
+\end{originaltheorem}
+即使这一描述成立，Shimura 簇的研究仍有重要问题有待解决。这里的模问题尚未具有通常的代数几何形式，尤其是它的定义域仍不明确。这个困难可说得更具体。
+
+设 $\tau$ 为 $\C$ 的自同构，则 $\tau^{-1}$ 定义张量函子
+$\eta(\tau):\mathcal{MOT}(\C)\to\mathcal{MOT}(\C)$。令
+$G_{\operatorname{Mot}(\C)}^\tau$ 为由 $\mathcal{MOT}(\C)$ 及纤维函子
+$\omega_{\operatorname{Mot}(\C)}\circ\eta(\tau)$ 定义的群。
+$\eta(\tau)$ 的对偶为 $\Q$ 上同构
+\[
+\phi(\tau):G_{\operatorname{Mot}(\C)}\longrightarrow G_{\operatorname{Mot}(\C)}^\tau.
+\]
+同态 $\phi$ 对偶于张量函子 $\eta:\mathcal{REP}(G)\to\mathcal{MOT}(\C)$，纤维函子
+$\omega_{\operatorname{Mot}(\C)}\circ\eta(\tau)\circ\eta$ 定义 $\Q$ 上的群
+$G^{\tau,\phi}$。张量函子 $\eta$ 再定义对偶
+\[
+\phi^\tau:G_{\operatorname{Mot}(\C)}^\tau\to G^{\tau,\phi},
+\qquad\phi'=\phi^\tau\circ\phi(\tau):G_{\operatorname{Mot}(\C)}\to G^{\tau,\phi}.
+\]
+此外，两个纤维函子 $\omega_{\operatorname{Mot}(\C)}^{\A_f}$ 和
+$\omega_{\operatorname{Mot}(\C)}^{\A_f}\circ\eta(\tau)$ 典范同构。因此有典范同构
+$G(\A_f)\to G^{\tau,\phi}(\A_f)$。令 $g'$ 为 $g$ 的像。
+
+所得的对 $(\phi',g')$ 似乎又给出了模问题的一个解。困难在于 $G^{\tau,\phi}$ 可能不是
+$G$；即使是，$\phi'$ 与典范同态的复合也未必在 $\mathfrak H$ 中。以下两节的目的之一，就是发现
+$G^{\tau,\phi}$ 可能是什么。
+
+\origsection{5}{Taniyama 群（The Taniyama group）}
+有一类 Shimura 簇特别容易研究，即 $G$ 为环面 $T$ 的情形。此时 $\mathfrak H$ 退化为单点
+$\{h\}$。对 $T(\A_f)$ 的每个紧开子群 $U$，流形
+$\operatorname{Sh}_U(\C)$ 是有限集，$\operatorname{Sh}_U=\operatorname{Sh}_U(T,h)$ 为零维。
+一般地，$(G,\mathfrak H)$ 的一个特殊点（special point）指一对 $(T,h)$，其中
+$T\subseteq G$、$h\in\mathfrak H$。若 $U=K\cap T(\A_f)$，则
+$\operatorname{Sh}_U(\C)$ 是 $\operatorname{Sh}_K(\C)$ 的子集，其中的点传统上称为特殊点；我仍沿用这一用法。但最好优先考虑对
+$(T,h)$，而不是它在 $\operatorname{Sh}_K(\C)$ 中所定义的点。下一节想描述关于
+Shimura 簇及其特殊点的若干未解问题。为表述它们，必须定义一些 Galois 上闭链。
+Deligne 向我指出，最初的构造特别给出了 $\Gal(\overline\Q/\Q)$ 被 Serre 群
+$\mathcal S$ 扩张的一个具体扩张；我冒昧地称其为 Taniyama 群，记作 $\mathcal T$。
+Rapoport 指出，借助 $\mathcal T$，往往可以方便地定义所需的上闭链，因此先构造这个群。
+
+$\mathcal S$ 为 $\Q$ 上代数群，$\mathcal T$ 也将定义在 $\Q$ 上。因此将有正合列
+\begin{equation}
+1\longrightarrow\mathcal S\longrightarrow\mathcal T
+\longrightarrow\Gal(\overline\Q/\Q)\longrightarrow1.\tag{5.1}
+\end{equation}
+回忆 $X^*(\mathcal S)$ 为 $\Gal(\overline\Q/\Q)$ 上某些函数所成的模，而赋予
+$\mathcal S$ 以 $\Q$ 上群结构的 Galois 作用，由右平移定义。仍可用左平移定义
+$\Gal(\overline\Q/\Q)$ 在 $\mathcal S$ 上的代数作用；(5.1) 隐含的正是这一作用。
+该扩张不在 $\Q$ 上分裂，但在每个 $l$ 进域 $\Q_l$ 上都有典范分裂
+$\Gal(\overline\Q/\Q)\to\mathcal T(\Q_l)$，合起来给出
+$\Gal(\overline\Q/\Q)\to\mathcal T(\A_f)$。
+
+不直接处理 $\mathcal S$，而选择 $\Q$ 的有限 Galois 扩张 $L$，令
+$\mathcal S^L$ 为 $\mathcal S$ 的商群，其有理特征格由
+$X^*(\mathcal S)$ 中在 $G(\overline\Q/L)$ 下不变的函数组成，并定义扩张
+\begin{equation}
+1\longrightarrow\mathcal S^L\longrightarrow\mathcal T^L
+\longrightarrow\Gal(L^{\mathrm{ab}}/\Q)\longrightarrow1,\tag{5.2}
+\end{equation}
+然后提升到 $\Gal(\overline\Q/\Q)$，再取极限。
+
+为说明构造的动机，假定扩张已定义，且
+$\mathcal T^L\to\Gal(L^{\mathrm{ab}}/\Q)$ 有截面 $\tau\mapsto a(\tau)$，满足
+$a(\tau)\in\mathcal T^L(L)$。令
+$a(\tau_1)a(\tau_2)=d_{\tau_1,\tau_2}a(\tau_1\tau_2)$，其中
+$d_{\tau_1,\tau_2}\in\mathcal S^L(L)$，并满足
+\begin{equation}
+\tau_1(d_{\tau_2,\tau_3})d_{\tau_1,\tau_2\tau_3}
+=d_{\tau_1,\tau_2}d_{\tau_1\tau_2,\tau_3}.\tag{5.3}
+\end{equation}
+注意 Galois 群元素扮演两种角色：首先是 $\mathcal T^L$ 的商群元素；其次是
+$L^{\mathrm{ab}}$ 的自同构，因而（由于 $\mathcal T^L$ 定义在 $\Q$ 上）作用于
+$\mathcal T^L(L^{\mathrm{ab}})$。在第一种角色中用 $\tau$，必要时加下标；第二种用
+$\rho$ 或 $\sigma$。
+
+有 $\rho(a(\tau))=c_\rho(\tau)a(\tau)$，其中
+$c_\rho(\tau)\in\mathcal S^L(L)$。显然\footnote{\textbf{译者注（本次校订）：}依照紧前的定义，左端应写为 $c_{\rho\sigma}(\tau)$；多出的 $a$ 使函数的自变量与定义不符。}
+\begin{equation}
+c_{\rho\sigma}(a(\tau))=\rho(c_\sigma(\tau))c_\rho(\tau).\tag{5.4}
+\end{equation}
+另外
+\begin{equation}
+d_{\tau_1,\tau_2}c_\rho(\tau_1)\tau_1(c_\rho(\tau_2))
+=\rho(d_{\tau_1,\tau_2})c_\rho(\tau_1\tau_2).\tag{5.5}
+\end{equation}
+反过来，若有满足 (5.3)--(5.5) 的族 $\{c_\rho(\tau)\}$ 和
+$\{d_{\tau_1,\tau_2}\}$，就能在 $\Q$ 上构造 $\mathcal T^L$ 及其截面 $a$。
+
+任意分裂 $\Gal(L^{\mathrm{ab}}/\Q)\to\mathcal T(\A_f)$ 都形如
+$\tau\mapsto b(\tau)a(\tau)$，其中 $b(\tau)\in\mathcal S^L(\A_f(L))$。为使其为分裂，必须有
+\begin{equation}
+b(\tau_1)\tau_1(b(\tau_2))d_{\tau_1,\tau_2}=b(\tau_1\tau_2).\tag{5.6}
+\end{equation}
+为使 $b(\tau)a(\tau)$ 属于 $\mathcal T^L(\A_f)$，必须有
+\begin{equation}
+\rho(b(\tau))c_\rho(\tau)=b(\tau).\tag{5.7}
+\end{equation}
+反过来，任何满足 (5.6)、(5.7) 的族 $\{b(\tau)\}$ 都定义一个分裂。因此我们的任务是构造
+$\{b(\tau)\}$、$\{c_\rho(\tau)\}$ 和 $\{d_{\tau_1,\tau_2}\}$。
+
+$\mathcal S$ 为 $G_{\operatorname{Hod}}$ 的商群，因此有典范同态
+$h:\mathcal R\to\mathcal S$。$\mathcal R$ 在 $\C$ 上典范同构于
+$\GL(1)\times\GL(1)$。将 $h$ 限制到第一因子，得到 $\mathcal S$ 的余权
+$\mu$，称为典范余权。若 $\lambda\in X^*(\mathcal S)$，则
+$\langle\lambda,\mu\rangle=\lambda(1)$。由于 $\mathcal S^L$ 为 $\mathcal S$ 的商群，
+$\mu$ 也定义它的余权，为方便仍记 $\mu$。若 $\nu$ 为 $\mathcal S^L$ 的任意余权，
+$x$ 为 $L$ 或 $\A_f(L)$ 的任意可逆元，则 $x^\nu$ 表示
+$\mathcal S^L(L)$ 或 $\mathcal S^L(\A_f(L))$ 中满足
+$\lambda(x^\nu)=x^{\langle\lambda,\nu\rangle}$（对所有 $\lambda\in X^*(\mathcal S^L)$）的元素。
+回忆 $\Gal(L/\Q)$ 或 $\Gal(L^{\mathrm{ab}}/\Q)$ 在
+$X^*(\mathcal S^L)$ 以及余权格
+$X_*(\mathcal S^L)=\Hom(X^*(\mathcal S^L),\Z)$ 上有两个作用。
+把由右平移定义的作用写成 $\nu\mapsto\sigma\nu$，由左平移定义的写成
+$\nu\mapsto\nu\tau$。于是
+$\langle\lambda,\sigma\mu\rangle=\lambda(\sigma^{-1})$，而
+$\langle\lambda,\mu\tau\rangle=\lambda(\tau)$，因为左平移作用中出现逆元；并有
+$\mu\tau^{-1}=\tau\mu$。此外，
+$\sigma(x^\mu)=\sigma(x)^{\sigma\mu}$，而 $\tau(x^\mu)=x^{\mu\tau}$。
+必须强调这些记号特点，因为在某些地方，区分 $\rho,\sigma$ 与 $\tau$ 的约定不再足够。
+
+研究 Shimura 簇时，最好把 $\overline\Q$ 取为 $\C$ 中 $\Q$ 的代数闭包；下面就这样做。
+这等于将 $\Q$ 的无穷赋值延拓到 $\overline\Q$。Weil 群的一个性质将起重要作用。
+设 $v$ 为 $\overline\Q$ 的一个赋值，从而也为 $\Q$ 的赋值，
+$\Q_v,\overline\Q_v$ 为相应的完备化。最终 $v$ 将由包含
+$\overline\Q\subseteq\C$ 给出，此时 $\Q_v=\R$、$\overline\Q_v=\C$。
+无论如何，若 $F$ 是 $\overline\Q$ 中 $\Q$ 的任意有限 Galois 扩域，就有嵌入
+\begin{equation}F_v^\times\hookrightarrow C_F,\tag{5.8}\end{equation}
+\begin{equation}\Gal(F_v/\Q_v)\hookrightarrow\Gal(F/\Q).\tag{5.9}\end{equation}
+局部与整体 Weil 群 $W_{F_v/\Q_v}$、$W_{F/\Q}$ 定义为扩张
+\[
+1\to F_v^\times\to W_{F_v/\Q_v}\to\Gal(F_v/\Q_v)\to1,
+\qquad
+1\to C_F\to W_{F/\Q}\to\Gal(F/\Q)\to1.
+\]
+可把箭头 (5.8)、(5.9) 嵌入交换图
+\[
+\begin{tikzcd}[column sep=small]
+1\arrow[r]&F_v^\times\arrow[r]\arrow[d]&W_{F_v/\Q_v}\arrow[r]\arrow[d,"I_F"]&\Gal(F_v/\Q_v)\arrow[r]\arrow[d]&1\\
+1\arrow[r]&C_F\arrow[r]&W_{F/\Q}\arrow[r]&\Gal(F/\Q)\arrow[r]&1.
+\end{tikzcd}
+\]
+还可选择中间的箭头，使其与扩域相容，取极限后得到
+$I:W_{\Q_v}\to W_\Q$。固定的是 $W_{\Q_v}$ 在 $W_\Q$ 中的像，而
+$I_F$ 可以改为 $w\mapsto xI_F(w)x^{-1}$，其中 $x\in C_F$，且对所有
+$\sigma\in\Gal(F_v/\Q_v)$，有 $x\sigma(x)^{-1}\in F_v^\times$。
+
+现在令 $v$ 为 $\overline\Q\subseteq\C$ 给出的赋值。令
+$F_\infty^\times=\prod_{w\mid v}F_w^\times$。自然映射
+$F_\infty^\times\to C_F$ 为嵌入，有时就将前者看成后者的子群。
+将 $\tau\in\Gal(\overline\Q/\Q)$ 提升到 $W_\Q$，再投影到 $W_{L/\Q}$，得到元素
+$w=w(\tau)$，它在模去连通分支的意义下良定义，特别地，在模去
+$L_\infty^\times$ 的闭包的意义下良定义。
+
+为 $W_{L/\Q}$ 中 $C_L$ 的陪集选代表 $w_\sigma$，
+$\sigma\in\Gal(L/\Q)$，满足：
+\begin{enumerate}
+\item[(a)] $w_1=1$；
+\item[(b)] 若 $\sigma\in\Gal(L_v/\Q_v)$，则 $w_\sigma\in W_{L_v/\Q_v}$；
+\item[(c)] 若 $\rho\in\Gal(L/\Q)$ 且 $\sigma\in\Gal(L_v/\Q_v)$，则
+$w_\rho w_\sigma=a_{\rho,\sigma}w_{\rho\sigma}$，$a_{\rho,\sigma}\in L_\infty^\times$。
+\end{enumerate}
+为安排最后一条，可为陪集 $\Gal(L/\Q)/\Gal(L_v/\Q_v)$ 选代表集
+$\mathfrak f$，并在 $\sigma\in\Gal(L_v/\Q_v)$ 时令
+$w_{\eta\sigma}=w_\eta w_\sigma$。假设 $1\in\mathfrak f$。这样还有：
+\begin{enumerate}
+\item[(d)] 若 $\{a_{\rho,\sigma}\}$ 为
+$w_\rho w_\sigma=a_{\rho,\sigma}w_{\rho\sigma}$ 所定义的上闭链，则
+$a_{\eta,\sigma}=1$，$\eta\in\mathfrak f$、$\sigma\in\Gal(L_v/\Q_v)$。
+\end{enumerate}
+若 $w\in W_{L/\Q}$，写
+$w_\sigma w=c_\sigma(w)w_{\sigma\tau}$，$c_\sigma(w)\in C_L$。
+$w=w(\tau)$ 时置
+\[
+b_0(\tau)=\prod_{\sigma\in\Gal(L/\Q)}c_\sigma(w)^{\sigma\mu}.
+\]
+它属于 $C_L\otimes X_*(\mathcal S^L)$，但目前依赖于 $w$ 的选取。
+可以证明，在模去 $L_\infty^\times\otimes X_*(\mathcal S^L)$ 后，它便与这些选择无关，并且在扩张
+$L$ 时具有正确的相容行为。
+
+先考察 $w$ 的选取。另一种选择必形如 $uw$，其中
+$u=\lim_nu_n$，$u_n$ 属于 $L_\infty^\times U$ 的像，$U$ 为 $L$ 的单位群中由一个强同余条件定义的子群。
+但 [41，II.A.2] 对所有 $v\in U$，
+\[
+\prod_{\sigma\in\Gal(\overline\Q/\Q)}\sigma(v)^{\sigma\mu}=1.
+\]
+\footnote{译注：此处乘积的指标按原书印刷照录；本段所用余权与场数据均通过有限商 $\Gal(L/\Q)$ 给出。}
+因此
+\[
+\prod_\sigma c_\sigma(uw)^{\sigma\mu}
+=\left(\prod_\sigma\sigma(u)^{\sigma\mu}\right)
+ \left(\prod_\sigma c_\sigma(w)^{\sigma\mu}\right)
+\]
+模 $L_\infty^\times\otimes X_*(\mathcal S^L)$ 与
+$\prod_\sigma c_\sigma(w)^{\sigma\mu}$ 同余。
+
+若把代表 $w_\sigma$ 换成 $e_\sigma w_\sigma$，则 $a_{\rho,\sigma}$ 换成
+\[
+a'_{\rho,\sigma}=e_\rho\rho(e_\sigma)e_{\rho\sigma}^{-1}a_{\rho,\sigma}.
+\]
+若 $\sigma\in\Gal(L_v/\Q_v)$，则 $e_\sigma\in L_v^\times$，
+$\rho(e_\sigma)\in L_\infty^\times$。因为 $a_{\rho,\sigma}$ 与
+$a'_{\rho,\sigma}$ 此时均须属于 $L_\infty^\times$，可知
+$e_\rho\equiv e_{\rho\sigma}\pmod{L_\infty^\times}$。此外，
+$c_\sigma(w)$ 换成 $c'_\sigma(w)=e_\sigma e_{\sigma\tau}^{-1}c_\sigma(w)$，
+$b_0(\tau)$ 换成\footnote{\textbf{译者注（本次校订）：}由紧前的 $c'_\sigma=e_\sigma e_{\sigma\tau}^{-1}c_\sigma$ 和 $b_0=\prod_\sigma c_\sigma^{\sigma\mu}$，这里的乘子应取所印乘子的逆，即 $\prod_\sigma e_\sigma^{\sigma\mu}e_{\sigma\tau}^{-\sigma\mu}$。下文证明该乘子在所取商中为 $1$，所以不变性的结论不受影响。}
+\[
+b'_0(\tau)=\left\{\prod_\sigma e_{\sigma\tau}^{\sigma\mu}
+ e_\sigma^{-\sigma\mu}\right\}b_0(\tau).
+\]
+这个因子可写成
+\[
+\prod_\sigma e_\sigma^{\sigma(\tau^{-1}-1)\mu}
+\equiv\prod_{\eta\in\mathfrak f}\prod_{\sigma\in\Gal(L_v/\Q_v)}
+e_\eta^{\eta\sigma(\tau^{-1}-1)\mu}.
+\]
+由于
+\[
+\sum_{\sigma\in\Gal(L_v/\Q_v)}\sigma(1-\tau^{-1})\mu
+=(1+\iota)(1-\tau^{-1})\mu=0,
+\]
+这种改变不影响 $b_0(\tau)$。这里用同一符号表示
+$\tau\in\Gal(\overline\Q/\Q)$ 在 $\Gal(L/\Q)$ 中的像；以后仍如此。
+
+若改变 $I$，则 $w$ 换成 $xwx^{-1}$，其中 $x\in C_L$，且对所有
+$\sigma\in\Gal(L_v/\Q_v)$，$x\sigma(x)^{-1}\in L_v^\times$。此时
+$c_\sigma(xwx^{-1})=\sigma(x)\sigma\tau(x^{-1})c_\sigma(w)$，并有
+\[
+\prod_\sigma\sigma(x)^{-\sigma\mu}\sigma\tau(x)^{\sigma\mu}
+=\prod_\sigma\sigma(x)^{\sigma(\tau^{-1}-1)\mu}.
+\]
+由于 $\sigma\in\Gal(L_v/\Q_v)$ 时
+$\sigma(x)\equiv x\pmod{L_\infty^\times}$，与前面同样的论证说明 $b_0(\tau)$ 不变。
+
+最后设 $L\subseteq L'$。此时
+$b'_0(\tau)\in C_{L'}\otimes X_*(\mathcal S^{L'})$ 与
+$b_0(\tau)\in C_L\otimes X_*(\mathcal S^L)$ 都已定义，须验证从前者所在群到后者所在群的典范映射把前者送到后者。
+$L_v$ 或为 $\R$，或为 $\C$，两种情况须分别处理。先设 $L_v=\C$，故
+$\Gal(L'/L)\cap\Gal(L'_v/\Q_v)=\{1\}$。由于这两个 $b_0$ 不依赖陪集代表的选择，可选取最便于验证相容性的代表。令
+$\mathfrak e$ 为包含 $1$ 的双陪集
+$\Gal(L'/L)\backslash\Gal(L'/\Q)/\Gal(L'_v/\Q_v)$ 的代表集。
+每个 $\sigma\in\Gal(L'/\Q)$ 可唯一地写为
+$\sigma=\zeta\eta\rho$，其中
+$\zeta\in\Gal(L'/L)$、$\eta\in\mathfrak e$、$\rho\in\Gal(L'_v/\Q_v)$。
+可假设 $w'_\sigma=w'_\zeta w'_\eta w'_\rho$，$w'_1=1$ 且
+$w'_\rho\in W_{L'_v/\Q_v}$。令 $w'$、$w$ 分别为相对于 $L'$、$L$ 的
+$w(\tau)$。在典范映射 $\pi:W_{L'/\Q}\to W_{L/\Q}$ 下，$w'$ 映到 $w$。
+若 $\sigma\in\Gal(L/\Q)$，它唯一提升到 $\Gal(L'/\Q)$ 中形如 $\eta\rho$ 的元素。假设
+$w_\sigma$ 为 $w'_\eta w'_\rho$ 的像。因此，若
+\[
+w'_\eta w'_\rho w'=d_{\eta,\rho}(w')w'_{\eta'}w'_{\rho'},
+\qquad d_{\eta,\rho}(w')\in W_{L'/L},
+\]
+则 $c_\sigma(w)=\pi(d_{\eta,\rho}(w'))$。另一方面，若
+$\sigma_1=\zeta\eta\rho\in\Gal(L'/\Q)$，则
+$w'_\zeta d_{\eta,\rho}(w')=c_{\sigma_1}(w')w'_{\zeta'}$。
+故按 $\pi$ 的定义，
+\[
+c_\sigma(w)=\prod_{\sigma_1\mapsto\sigma}c_{\sigma_1}(w').
+\]
+这就立即推出 $b_0(\tau)$ 是 $b'_0(\tau)$ 的像。
+
+若 $L_v=\R$，则 $X^*(\mathcal S^L)\simeq\Z$，Galois 群的作用平凡。设把
+$w_\sigma$ 换成 $e_\sigma w_\sigma$，$e_\sigma\in C_L$，则
+$c_\sigma(w)$ 换成 $e_\sigma e_{\sigma\tau}^{-1}$。由于
+\[
+\prod_\sigma(e_\sigma e_{\sigma\tau}^{-1})^{\sigma\mu}
+=\prod_\sigma(e_\sigma e_{\sigma\tau}^{-1})^\mu=1,
+\]
+这不影响 $b_0(\tau)$；定义它时不必要求 $\{w_\sigma\}$ 满足 (a)、(b)、(c)。定义
+$b'_0(\tau)$ 时，可能仍须谨慎选择 $w'_\sigma$，但由于只关心它在
+$\mathcal S^L$ 中的像，也可忽略这些限制。为
+$\Gal(L'/L)\backslash\Gal(L'/\Q)$ 选代表集 $\mathfrak e$，写
+$\sigma=\rho\eta$，$\rho\in\Gal(L'/L)$、$\eta\in\mathfrak e$，取
+$w'_\sigma=w'_\rho w'_\eta$。若 $\sigma\in\Gal(L/\Q)$ 是 $\eta$ 的像，取
+$w_\sigma=\pi(w'_\eta)$。此后的论证与前面一样。
+
+令 $\widetilde b(\tau)$ 为 $b_0(\tau)$ 到
+$I_L\otimes X_*(\mathcal S^L)=\mathcal S^L(\A(L))$ 的提升，$b(\tau)$ 为它在
+$\mathcal S^L(\A_f(L))$ 中的投影。$b(\tau)$ 模 $\mathcal S^L(L)$ 良定义；将看到，这点不确定性不造成困难。但必须固定一个选择。首先验证\footnote{\textbf{译者注（本次校订）：}下式与 (5.6) 的约定互为逆。由 (5.6) 应有 $d_{\tau_1,\tau_2}=b(\tau_1\tau_2)\bigl(b(\tau_1)\tau_1(b(\tau_2))\bigr)^{-1}$；构造扩张及其分裂时须统一采用这一约定。}
+\[
+d_{\tau_1,\tau_2}=b(\tau_1)\tau_1(b(\tau_2))b(\tau_1\tau_2)^{-1}
+\]
+属于 $\mathcal S^L(L)$。为此可任意选取
+$\widetilde b(\tau_1),\widetilde b(\tau_2),\widetilde b(\tau_1\tau_2)$。
+把 $c_\sigma(w_1),c_\sigma(w_2)$ 提升为 $I_L$ 中的
+$\widetilde c_\sigma(w_1),\widetilde c_\sigma(w_2)$，取
+\[
+\widetilde b(\tau_1)=\prod_\sigma\widetilde c_\sigma(w_1)^{\sigma\mu},
+\qquad\widetilde b(\tau_2)=\prod_\sigma\widetilde c_\sigma(w_2)^{\sigma\mu}.
+\]
+由于 $c_\sigma(w_1w_2)=c_\sigma(w_1)c_{\sigma\tau_1}(w_2)$，可取
+$\widetilde c_\sigma(w_1w_2)=\widetilde c_\sigma(w_1)\widetilde c_{\sigma\tau_1}(w_2)$。
+因为
+\[
+\tau_1^{-1}(\widetilde b(\tau_2))
+=\prod_\sigma\widetilde c_\sigma(w_2)^{\sigma\tau_1^{-1}\mu}
+=\prod_\sigma\widetilde c_{\sigma\tau_1}(w_2)^{\sigma\mu},
+\]
+此时元素 $d_{\tau_1,\tau_2}$ 为 $1$。
+
+最后须证明由 (5.7) 定义的 $c_\rho(\tau)$ 属于 $\mathcal S^L(L)$，于是 (5.4)、(5.5) 立即成立。只须说明，对任意
+$w\in W_{L/\Q}$、$\rho\in\Gal(L/\Q)$，
+\begin{equation}
+\left\{\prod_\sigma c_\sigma(w)^{\sigma\mu}\right\}
+\left\{\prod_\sigma\rho(c_\sigma(w))^{-\rho\sigma\mu}\right\}
+\tag{5.10}
+\end{equation}
+属于 $L_\infty^\times\otimes X_*(\mathcal S^L)$。设 $w=w_1w_2$，$w_1$ 投影为
+$\tau_1\in\Gal(L/\Q)$，则 $c_\sigma(w)=c_\sigma(w_1)c_{\sigma\tau_1}(w_2)$，(5.10) 等于
+\[
+\left\{\prod_\sigma c_\sigma(w_1)^{\sigma\mu}
+\rho(c_\sigma(w_1))^{-\rho\sigma\mu}\right\}
+\tau_1\left\{\prod_\sigma c_\sigma(w_2)^{\sigma\mu}
+\rho(c_\sigma(w_2))^{-\rho\sigma\mu}\right\}.
+\]
+因此，只须对 $w\in C_L$ 和 $w=w_\tau$ 验证。前者有
+$c_\sigma(w)=\sigma(w)$，且
+$\prod_\sigma\sigma(w)^{\sigma\mu}=\prod_\sigma\rho\sigma(w)^{\rho\sigma\mu}$，故 (5.10) 为
+$1$。后者有 $c_\sigma(w)=a_{\sigma,\tau}$，并且
+\begin{equation}
+\prod_\sigma a_{\sigma,\tau}^{\sigma\mu}
+\rho(a_{\sigma,\tau})^{-\rho\sigma\mu}
+=\prod_\sigma a_{\rho,\sigma}^{\rho\sigma(\tau^{-1}-1)\mu}.\tag{5.11}
+\end{equation}
+但由 (c)，$a_{\rho,\sigma}\equiv a_{\rho,\sigma\iota}\pmod{L_\infty^\times}$。
+由于 $(1+\iota)(1-\tau^{-1})\mu=0$，(5.11) 的右边属于所要求的群。
+
+$b(\tau)$ 虽为 $\tau\in\Gal(\overline\Q/\Q)$ 定义，却只依赖于它在
+$\Gal(L^{\mathrm{ab}}/\Q)$ 中的像，因此群 $\mathcal T^L$ 和 $\mathcal T$ 现在已完全定义。
+容易看出，$b(\tau)$ 的不确定性对应于截面 $a(\tau)$ 的选择的不确定性。
+
+若 $E\subseteq\overline\Q$ 为 $\Q$ 的有限扩张，令 $\mathcal T_E$ 为
+$\Gal(\overline\Q/E)$ 在 $\mathcal T$ 中的逆像。若 $E\subseteq L^{\mathrm{ab}}$，也可引入
+$\mathcal T_E^L$。群 $\mathcal T_L^L$ 已由 Serre [41] 引入，用来表述 Taniyama 的若干思想。他已清楚说明其算术意义，但他的定义与这里的形式颇有不同，因此有必要说明两者的等价性。
+
+若 $x$ 是 $L$ 的伊代尔（idele），则
+$\psi(x)=\prod_{\sigma\in\Gal(L/\Q)}\sigma(x)^{\sigma\mu}$ 属于
+$\mathcal S^L(\A(L))$。由 [41] 的 II.4，伊代尔群 $I_L$ 有开子群 $U$，使
+$x\in U\cap L^\times$ 时 $\psi(x)=1$。$I_L$ 到 $\Gal(L^{\mathrm{ab}}/L)$ 的标准映射限制到
+$U$；若 $\tau=\tau(x)$ 为 $x$ 的像，可取 $w(\tau)$ 为 $x$ 在 $C_L$ 中的像。此时
+$\psi(x)$ 为 $b_0(\tau)$ 到 $\mathcal S^L(\A(L))$ 的提升。但它只依赖 $\tau$，因此可取
+$\widetilde b(\tau)=\psi(x)$。若 $\tau,\tau_1,\tau_2$ 属于 $U$ 的像
+$\Gal(L^{\mathrm{ab}}/F)$，则 $d_{\tau_1,\tau_2}=1$ 且 $c_\rho(\tau)=1$；这里
+$F$ 为 $U$ 所定义的 $L$ 的有限扩域。事实上，对所有
+$\tau\in\Gal(L^{\mathrm{ab}}/L)$ 都有 $c_\rho(\tau)=1$。为
+$\Gal(L^{\mathrm{ab}}/F)\backslash\Gal(L^{\mathrm{ab}}/L)$ 选代表集 $\mathfrak e$，令
+$\widetilde b(\tau\eta)=\widetilde b(\tau)\widetilde b(\eta)$，其中
+$\tau\in\Gal(L^{\mathrm{ab}}/F)$、$\eta\in\mathfrak e$。一般地，
+$d_{\tau_1,\tau_2}$ 于是只依赖于 $\tau_1,\tau_2$ 在 $\Gal(F/L)$ 中的像，而
+$\mathcal T_L^L$ 可由扩张
+\[
+1\to\mathcal S^L\to\mathcal T_U\to\Gal(F/L)\to1
+\]
+拉回到 $\Gal(L^{\mathrm{ab}}/L)$ 得到。这里 $\mathcal T_U$ 是
+$\mathcal T_L^L$ 模正规子群 $\{a(\tau):\tau\in\Gal(L^{\mathrm{ab}}/F)\}$ 的商。
+Serre 直接定义的正是 $\mathcal T_U$，他记作 $S_{\mathfrak m}$。
+
+映射 $\psi$ 定义从 $L^\times/(L^\times\cap U)\simeq L^\times U/L^\times$ 到
+$\mathcal S^L(L)$ 的同态。\footnote{\textbf{译者注（本次校订）：}商群分母在这里有误。第二同构定理给出 $L^\times/(L^\times\cap U)\simeq L^\times U/U$；相应地，下图上行中间应为 $I_L/U$。后面的 (5.12) 也不能直接按所写公式定义在 $I_L/L^\times$ 上，因为取 $x\in L^\times$ 时，公式的值为一般非平凡的 $\psi(x)$。可先在 $I_L$ 上定义，再复合到 $\mathcal T_U$ 并对 $U$ 取商。}要验证 $\mathcal T_U$ 为 Serre 研究的群，只须将其嵌入交换图
+\[
+\begin{tikzcd}[column sep=small]
+1\arrow[r]&L^\times U/L^\times\arrow[r]\arrow[d]&I_L/L^\times\arrow[r]\arrow[d]&I_L/L^\times U\arrow[r]\arrow[d,"\sim"]&1\\
+1\arrow[r]&\mathcal S^L(L)\arrow[r]&\mathcal T_U(L)\arrow[r]&\Gal(F/L)\arrow[r]&1.
+\end{tikzcd}
+\]
+右侧箭头为 $x\mapsto\tau(x)^{-1}$。不必先取商，可直接定义同态
+\begin{equation}
+I_L/L^\times\longrightarrow\mathcal T_L^L(L).\tag{5.12}
+\end{equation}
+中间的箭头由它与投影 $\mathcal T_L^L(L)\to\mathcal T_U(L)$ 复合得到。(5.12) 为
+\[
+x\longmapsto\left\{\prod_\sigma\sigma(x)^{\sigma\mu}\right\}
+\widetilde b(\tau)^{-1}a(\tau)^{-1},
+\]
+其中 $\tau$ 为 $x$ 在 $\Gal(L^{\mathrm{ab}}/L)$ 中的像。我们的分裂
+$\Gal(L^{\mathrm{ab}}/L)\to\mathcal T_L^L(\Q_l)$ 与
+$\mathcal T_L^L(\Q_l)\to\mathcal T_U(\Q_l)$ 的复合，要么是 Serre 的
+$\varepsilon_l$，要么是其逆；大概是其逆，因为我们的约定使 Frobenius 元在代数簇上同调上的特征值大于或等于
+$1$。
+
+上闭链 $\rho\mapsto c_\rho(\tau)$ 在每个有限位都成为平凡的，但在无穷位 $v$ 处未必平凡。事实上，在 Tate--Nakayama 对偶性给出的同构
+\[
+H^1(\Gal(L_v/\Q_v),\mathcal S^L(L_v))
+\simeq H^{-1}(\Gal(L_v/\Q_v),X_*(\mathcal S^L))
+\]
+下，它对应于右边群中由 $(1-\tau^{-1})\mu$ 代表的元素。
+仍将 $\tau$ 在 $\Gal(L/\Q)$ 中的像记作 $\tau$，并可假设 $w(\tau)=w_\tau$，因为
+$\{c_\rho(\tau)\}$ 的类只依赖这一像。按 (5.11) 后的讨论，
+\[
+\prod_\sigma a_{\rho,\sigma}^{\rho\sigma(\tau^{-1}-1)\mu}
+=\prod_{\eta\in\mathfrak f}(a_{\rho,\eta}a_{\rho,\eta\iota}^{-1})^{\rho\eta(\tau^{-1}-1)\mu}
+=e_\rho(\tau)
+\]
+属于 $L_\infty^\times\otimes X_*(\mathcal S^L)=\mathcal S^L(L_\infty)$。
+按定义，$\{c_\rho(\tau)\}$ 与 $\{e_\rho(\tau)\}$ 的类在
+$H^1(\Gal(L/\Q),\mathcal S^L(\A(L)))$ 中互为逆。因此只须计算
+$\rho\in\Gal(L_v/\Q_v)$ 时 $e_\rho(\tau)$ 在 $\mathcal S^L(L_v)$ 中的投影。
+
+首先，若选择满足 (d) 的陪集代表，则
+\[
+a_{\rho,\eta}a_{\rho,\eta\iota}^{-1}
+=\rho(a_{\eta,\iota}^{-1})a_{\rho\eta,\iota}=a_{\rho\eta,\iota}.
+\]
+若 $\rho\eta=\eta_1\rho_1$，则
+\[
+a_{\rho\eta,\iota}=a_{\eta_1\rho_1,\iota}
+=\eta_1(a_{\rho_1,\iota})a_{\eta_1,\rho_1\iota}
+ a_{\eta_1,\rho_1}^{-1}=\eta_1(a_{\rho_1,\iota}).
+\]
+因为 $a_{\rho_1,\iota}\in L_v^\times$，右边在 $L_v^\times$ 中的投影仅当
+$\eta_1=1$ 时可能不为 $1$。此时 $\eta=1$，故投影为
+\[
+a_{\rho,\iota}^{\rho\iota(\tau^{-1}-1)\mu}
+=\prod_{\sigma\in\Gal(L_v/\Q_v)}a_{\rho,\sigma}^{\rho\sigma(\tau^{-1}-1)\mu},
+\]
+与我们的断言相符。
+
+设 $T$ 为 $\Q$ 上环面，带有余权 $\mu$，使对每个
+$\tau\in\Gal(\overline\Q/\Q)$，
+\begin{equation}
+(1+\iota)(\tau-1)\mu=(\tau-1)(1+\iota)\mu=0.\tag{5.13}
+\end{equation}
+则存在唯一同态 $\psi:\mathcal S\to T$，使其与 $\mathcal S$ 的典范余权的复合为
+$\mu$。可将上闭链 $\rho\mapsto c_\rho(\tau)$ 从 $\mathcal S$ 转移到 $T$，得到
+$\{c_\rho(\tau,\mu)\}$ 及 $b(\tau,\mu)\in T(\A_f(L))$。但若 $T$ 与
+$h:\mathcal R\to T$ 定义 Shimura 簇，$\mu$ 为 $h$ 在 $\mathcal R$ 第一因子上的限制，则
+(5.13) 未必成立。尽管如此，可重复上述构造，对所有满足
+$(1+\iota)(\tau^{-1}-1)\mu=0$ 的 $\tau$ 定义这些对象。
+为了处理 $G\ne G_0$ 的 Shimura 簇 $\operatorname{Sh}(G,h)$，需要这一推广。
+还需注意，虽然 $\{c_\rho(\tau,\mu)\}$ 不受 $w(\tau)$ 选择的不确定性影响，
+$b(\tau,\mu)$ 却会受影响。但若 $Z$ 为 $G$ 的中心，全部不确定性都落在
+$Z(\A_f)\cap K$ 中，因而可忽略。
+
+若 $E\subseteq\C$，$E$ 上的动机的相应 Hodge 结构为 CM 型时，也称该动机为 CM 型。
+它们构成 Tannaka 范畴 $\operatorname{CM}(E)$，有由有理上同调给出的自然纤维函子
+$\omega_{\operatorname{CM}(E)}$。由于预期自然函子
+$\operatorname{CM}(\overline\Q)\to\operatorname{CM}(\C)$ 是等价，不妨假设
+$E\subseteq\overline\Q$。按上一节末尾表达的希望，应有等价
+$\eta:\operatorname{CM}(\overline\Q)\to\mathcal{REP}(\mathcal S)$ 及同构
+$\omega_{\operatorname{Rep}(\mathcal S)}\circ\eta\to\omega_{\operatorname{CM}(\overline\Q)}$，使我们能将
+$\mathcal S$ 等同于范畴 $\operatorname{CM}(\overline\Q)$ 与纤维函子所定义的群
+$G_{\operatorname{CM}(\overline\Q)}$。若 $E\subseteq\overline\Q$，希望也能以同样方式将
+$\mathcal T_E$ 与 $G_{\operatorname{CM}(E)}$ 等同。
+
+这些等同还应满足以下相容性质。首先，若 $F\subseteq E$，则应有交换图
+\[
+\begin{tikzcd}
+\mathcal S\arrow[r]&\mathcal T_E\arrow[r]&\mathcal T_F\\
+G_{\operatorname{CM}(\overline\Q)}\arrow[u,"\sim"]\arrow[r]&
+G_{\operatorname{CM}(E)}\arrow[u,"\sim"]\arrow[r]&G_{\operatorname{CM}(F)}\arrow[u,"\sim"].
+\end{tikzcd}
+\]
+其他性质描述起来更复杂。设 $\tau\in\Gal(\overline\Q/\Q)$ 把 $E$ 送到 $E'$。
+$\tau^{-1}$ 自然定义从 $\operatorname{CM}(E')$ 到 $\operatorname{CM}(E)$ 的张量函子
+$\eta(\tau)$。令 $G_{\operatorname{CM}(E')}^\tau$ 为范畴
+$\operatorname{CM}(E')$ 与函子 $\omega_{\operatorname{CM}(E)}\circ\eta(\tau)$ 所定义的群。
+其对偶为同构 $\phi(\tau):G_{\operatorname{CM}(E)}\to G_{\operatorname{CM}(E')}^\tau$。
+用表示说，$\eta(\tau)$ 给 $G_{\operatorname{CM}(E')}$ 的每个表示
+$(\xi',V(\xi'))$ 配以 $G_{\operatorname{CM}(E)}$ 的表示 $(\xi,V(\xi))$。
+由于两个纤维函子在 $\overline\Q$ 上同构，存在与和及张量积相容的一族同构
+$\psi(\xi'):V(\xi')_{\overline\Q}\to V(\xi)_{\overline\Q}$。
+若 $\psi'(\xi')$ 是另一种可能选择，则存在 $t\in\mathcal T_{E'}(\overline\Q)$，使
+$\psi'(\xi')=\psi(\xi')\xi'(t)$。最后，两个函子的 $\A_f$ 版本来自 $l$ 进上同调，故典范同构，从而有典范同构族
+$\psi_{\A_f}(\xi'):V(\xi')_{\A_f}\to V(\xi)_{\A_f}$。
+
+另一方面，设 $a(\tau)\in\mathcal T(\overline\Q)$ 映到 $\tau$，且
+$\sigma(a(\tau))=c_\sigma(\tau)a(\tau)$。可用 $a(\tau)$ 给
+$\mathcal T_{E'}$ 的每个表示 $(\xi',V(\xi'))$ 配以 $\mathcal T_E$ 的表示
+$(\xi,V(\xi))$。空间 $V(\xi)$ 由上闭链
+$\{\xi'(c_\sigma(\tau)^{-1})\}$ 对 $V(\xi')$ 扭曲（twisting）得到；表示
+$\xi$ 为 $t\mapsto\xi'(a(\tau)ta(\tau)^{-1})$。通过上述群的等同，这个函子应与
+$\eta(\tau)$ 给出的函子同构。此外，$\psi(\xi')$ 的一种可能选择，应是
+$V(\xi)$ 定义中隐含的同构
+$\psi_0(\xi'):V(\xi')_{\overline\Q}\to V(\xi)_{\overline\Q}$。
+若 $b(\tau)a(\tau)$ 为 $\tau$ 在典范分裂
+$\Gal(\overline\Q/\Q)\to\mathcal T(\A_f)$ 下的像，则应有
+$\psi_{\A_f}(\xi')=\psi_0(\xi')\circ\xi'(b(\tau))^{-1}$。
+
+若 $\tau\in\Gal(\overline\Q/E)$，则 $E'=E$，$\eta(\tau)$ 是恒等函子。因此，从
+$\operatorname{Rep}(\mathcal T_{E'})=\operatorname{Rep}(\mathcal T_E)$ 到
+$\operatorname{Rep}(\mathcal T_E)$ 的函子 $(\xi',V(\xi'))\mapsto(\xi,V(\xi))$，必须与恒等函子典范同构。最后一个似乎独立于前述性质的要求是：这个同构应由
+$\xi'\mapsto\xi$ 及 $\psi_0(\xi')\circ\xi'(a(\tau)):V(\xi')\to V(\xi)$ 给出。
+注意此时 $a(\tau)\in\mathcal T_E$，这些变换定义在 $\Q$ 上。
+
+我假定这一切成立，只是想看看它导向哪里，尤其想看看它对上一节引入的
+$G^{\tau,\phi}$ 群提示什么。为此先要验证若干引理。本节最后描述 Taniyama 群的一个性质，其意义由
+Casselman 向我指出。为了说明 CM 型动机（特别是 CM 型 Abel 簇）的 zeta 函数可表达为与
+Weil 群表示相联系的 $L$ 函数之积，需要这一性质。
+
+要点是，$\Q$ 的 Weil 群 $W_\Q$ 到 $\mathcal T(\C)$ 有自然同态 $\varphi$，因而对
+$\Q$ 的任意有限扩域 $F$，有同态 $\varphi_F:W_F\to\mathcal T_F(\C)$。
+为定义它，先在有限层定义 $W_{L/\Q}\to\mathcal T^L(\C)$，然后取极限。
+
+暂时固定满足 (a)、(b)、(c) 的陪集代表 $w_\sigma$。若 $w\in W_{L/\Q}$，定义
+$b_0(w)=\prod_{\sigma\in\Gal(L/\Q)}c_\sigma(w)^{\sigma\mu}$。若 $\tau$ 是
+$w$ 在 $\Gal(L^{\mathrm{ab}}/\Q)$ 中的像，则
+$b_0(w)\equiv b_0(\tau)\pmod{L_\infty^\times\otimes X_*(\mathcal S^L)}$，可将
+$b_0(w)$ 提升为 $b(w)\in\mathcal S^L(\A(L))$，使其在
+$\mathcal S^L(\A_f(L))$ 中的投影为 $b(\tau)$。简单计算表明，若
+$\tau_1,\tau_2$ 为 $w_1,w_2$ 的像，则
+$b(w_1)\tau_1(b(w_2))b(w_1w_2)^{-1}\in\mathcal S^L(L)$。
+其有限阿代尔投影等于 $d_{\tau_1,\tau_2}$，故它本身也等于该元素。
+若 $b_v(w)$ 为 $b(w)$ 在 $\mathcal S^L(L_v)=\mathcal S^L(\C)$ 中的投影，就可定义
+$\varphi:w\mapsto b_v(w)a(\tau)$。改变陪集代表 $w_\sigma$，则 $\varphi$ 换成
+$\varphi'=\Ad a\circ\varphi$，$a\in\mathcal S^L(\C)$，但这无关紧要。
+
+若 $G_{W_F}$ 是 $W_F$ 的连续有限维复半单表示的 Tannaka 范畴所定义的
+$\C$ 上群，则 $\varphi_F$ 是嵌入 $W_F\to G_{W_F}(\C)$ 与代数同态
+$\psi_F:G_{W_F}\to\mathcal T_F$ 的复合。此外，若函子性原理成立，就有满射
+$G_{\Pi(F)}\to G_{W_F}$，并可期待下图
+\[
+\begin{tikzcd}
+G_{\Pi(F)}\arrow[r,"\rho_F"]\arrow[d]&G_{\operatorname{Mot}(F)}\arrow[d]\\
+G_{W_F}\arrow[r,"\psi_F"]&\mathcal T_F
+\end{tikzcd}
+\]
+中两条复合箭头相差 $\Ad s$，其中 $s\in\mathcal S(\C)\subseteq\mathcal T_F(\C)$。
+
+\origsection{6}{Shimura 簇的共轭（Conjugation of Shimura varieties）}
+本节主要目的是提出关于 Shimura 簇共轭的一个猜想。支持这一猜想的初步理由是：它表述简洁，能推出研究阿基米德位处 zeta 函数所需的结论，也与现有结果相容。陈述前需要若干引理；将看到，这些引理结合 Taniyama 群的假设性性质，提示了第四节末问题的答案。这个答案反过来又给猜想新的启发，由此形成一套相互协调的假设；最终仍须证明这些假设确实成立。
+
+首先给出一个足够一般的构造，使它适用于所有 Shimura 簇，也涵盖尚未与动机联系起来的情形。设
+$(G,\mathfrak H)$ 定义 Shimura 簇，$T,\overline T$ 为 $G$ 中定义在 $\Q$ 上的两个 Cartan 子群（Cartan subgroups），
+$h:\mathcal R\to T$、$\overline h:\mathcal R\to\overline T$ 均属于 $\mathfrak H$。
+令 $\mu,\overline\mu$ 为将 $h,\overline h$ 限制到 $\mathcal R$ 第一因子得到的余权，选取使
+$T,\overline T$ 分裂的有限 Galois 扩张 $L$。对
+$\tau\in\Gal(\overline\Q/\Q)$，余权
+$(1+\iota)(\tau^{-1}-1)\mu$ 和
+$(1+\iota)(\tau^{-1}-1)\overline\mu$ 都为中心余权，且相等。照前面选
+$w=w(\tau)$，置
+\[
+b_0(\tau,\mu)=\prod_\sigma c_\sigma(w)^{\sigma\mu},\qquad
+b_0(\tau,\overline\mu)=\prod_\sigma c_\sigma(w)^{\sigma\overline\mu}.
+\]
+令 $\widetilde b(\tau,\mu)$ 和 $\widetilde b(\tau,\overline\mu)$ 分别为其在
+$T(\A(L))$ 和 $\overline T(\A(L))$ 中的提升，令
+$B(\tau)=B(\tau,\mu,\overline\mu)$ 为
+$\widetilde b(\tau,\overline\mu)^{-1}\widetilde b(\tau,\mu)$ 在
+$G(\A_f(L))$ 中的投影。虽然可能无法定义上闭链
+$\{c_\rho(\tau,\mu)\}$，但若 $\mu_{\mathrm{ad}}$ 为 $\mu$ 与到伴随群的投影的复合，就可定义
+$\{c_\rho(\tau,\mu_{\mathrm{ad}})\}$。
+
+先验证：只要满足前述条件 (a)、(b)、(c)，$B(\tau)$ 确实不依赖于
+$w$ 和陪集代表的选择。若把 $w_\sigma$ 换成 $e_\sigma w_\sigma$，则除
+$L_\infty^\times\otimes X_*(T)$ 中的一个因子外，$b_0(\tau,\mu)$ 乘以
+$\prod_{\eta\in\mathfrak f}e_\eta^{\eta(1+\iota)(\tau^{-1}-1)\mu}$，另一个
+$b_0$ 则乘以将 $\mu$ 换为 $\overline\mu$ 的相同表达式。按假设，两项都在中心且相等，所以不影响
+$B(\tau)$。若将 $w$ 换成 $xwx^{-1}$，其中对
+$\sigma\in\Gal(L_v/\Q_v)$ 有 $x\sigma(x^{-1})\in L_v^\times$，则
+$b_0(\tau,\mu)$ 乘以一个 $L_\infty^\times\otimes X_*(T)$ 中元素与
+$\prod_\eta x^{\eta(1+\iota)(\tau^{-1}-1)\mu\tau}$ 的乘积。另一个 $b_0$ 有类似变化，因而
+$B(\tau)$ 不变。也容易说明扩大 $L$ 不改变它；论证仍基本同处理 $b(\tau)$ 时一样。
+
+$B(\tau)$ 确实依赖于两个提升的选择。固定后，一致地用它们定义
+$c_\rho(\tau,\mu_{\mathrm{ad}})$、$c_\rho(\tau,\overline\mu_{\mathrm{ad}})$；当
+$(1+\iota)(\tau^{-1}-1)\mu=(1+\iota)(\tau^{-1}-1)\overline\mu=0$ 时，也用来定义
+$c_\rho(\tau,\mu)$、$c_\rho(\tau,\overline\mu)$。于是
+$c_\rho(\tau,\mu_{\mathrm{ad}})$ 是
+$\rho(\widetilde b(\tau,\mu)^{-1})\widetilde b(\tau,\mu)$ 在
+$G_{\mathrm{ad}}(\A_f(L))$ 中的投影。采用这些约定，$B(\tau)$ 的不确定性不会妨碍下一构造。
+
+令 $G^{\tau,\mu},G^{\tau,\overline\mu}$ 为用上闭链
+$\{c_\rho(\tau,\mu_{\mathrm{ad}})^{-1}\}$ 和
+$\{c_\rho(\tau,\overline\mu_{\mathrm{ad}})^{-1}\}$ 扭曲 $G$ 得到的群。将验证：
+\begin{originaltheorem}{第一比较引理（First lemma of comparison）}
+\begin{enumerate}
+\item[(i)] 若 $c_\rho=c_\rho(\tau,\mu_{\mathrm{ad}})$，则
+$\gamma_\rho=B(\tau)\Ad(c_\rho^{-1})(\rho(B(\tau)^{-1}))$ 属于 $G^{\tau,\mu}(L)$。
+\item[(ii)] $G^{\tau,\mu}(L)$ 中的上闭链 $\{\gamma_\rho\}$ 为上边界（bounds）。
+\item[(iii)] 若 $(1+\iota)(\tau^{-1}-1)\mu=(1+\iota)(\tau^{-1}-1)\overline\mu=0$，则
+$\gamma_\rho=c_\rho(\tau,\overline\mu)^{-1}c_\rho(\tau,\mu)$。
+\end{enumerate}
+\end{originaltheorem}
+第三条显然，只须处理前两条。$\gamma_\rho$ 可由
+\begin{equation}
+\widetilde b(\tau,\overline\mu)^{-1}\rho(\widetilde b(\tau,\overline\mu))
+\rho(\widetilde b(\tau,\mu)^{-1})\widetilde b(\tau,\mu)\tag{6.1}
+\end{equation}
+在 $G(\A_f(L))$ 中的投影得到。由此清楚可见，将 $w(\tau)$ 换成
+$xw(\tau)$，$x\in C_L$，不改变 $\gamma_\rho$。故可假设 $w=w_\tau$，仍用
+$\tau$ 表示其在 $\Gal(L/\Q)$ 中的像。此时须说明
+\[
+\widetilde b(\tau,\overline\mu)^{-1}\rho(\widetilde b(\tau,\overline\mu))
+\equiv\widetilde b(\tau,\mu)^{-1}\rho(\widetilde b(\tau,\mu))
+\pmod{G(L_\infty)G(L)}.
+\]
+由 (5.11) 容易推出，若 $\widetilde a_{\rho,\eta}$ 为
+$a_{\rho,\eta}$ 到 $I_L$ 的提升，则两边均同余于
+\[
+\prod_\eta\widetilde a_{\rho,\eta}^{\rho\eta(1+\iota)(1-\tau^{-1})\mu}
+=\prod_\eta\widetilde a_{\rho,\eta}^{\rho\eta(1+\iota)(1-\tau^{-1})\overline\mu}.
+\]
+所需等式随即成立。
+
+为证第二条，将应用 Hasse 原理（Hasse's principle），但这需要 $G$ 的导出群
+$G_{\mathrm{der}}$ 单连通。令 $G_{\mathrm{sc}}$ 为它的单连通覆盖。Cartan 子群 $T$ 定义
+$T_{\mathrm{der}}$ 及 $T_{\mathrm{sc}}$。有嵌入
+$X_*(T_{\mathrm{sc}})\to X_*(T)$，且
+$G_{\mathrm{der}}=G_{\mathrm{sc}}$ 当且仅当商无挠（torsion-free）。若能构造
+$\Gal(L/\Q)$ 模的交换图
+\[
+\begin{tikzcd}[column sep=small]
+0\arrow[r]&X_*(T_{\mathrm{sc}})\arrow[r]\arrow[d,equal]&Q\arrow[r]\arrow[d]&P\arrow[r]\arrow[d]&0\\
+0\arrow[r]&X_*(T_{\mathrm{sc}})\arrow[r]&X_*(T)\arrow[r]&M\arrow[r]&0
+\end{tikzcd}
+\]
+其中 $P$ 无挠，$P\to M$ 为满射且其核为自由模，
+且是自由的 $\Gal(L/\Q)$ 模，就可用它定义 $G$ 的中心扩张 $G'$，使
+$X_*(T')=Q$。于是 $G'_{\mathrm{der}}=G'_{\mathrm{sc}}=G_{\mathrm{sc}}$，并且
+$G'(\R)\to G(\R)$ 满射。为构造此图，选择 $\Gal(L/\Q)$ 模的正合列
+$0\to N\to P\to M\to0$，其中 $P$ 无挠，$N$ 自由。$Q$ 就是
+$X_*(T)\oplus P$ 中那些在 $M$ 中具有同一像的对 $(x,p)$ 所组成的集合。
+
+将 $\mu$ 提升为 $\mu'=(\mu,\nu)$，$\nu\in P$。若
+$\overline\mu=\Ad g\circ\mu$，$g$ 为 $g'$ 的像，置
+$\overline\mu'=\Ad g'\circ\mu'$。若断言对
+$\mu',\overline\mu',G'$ 成立，就对 $\mu,\overline\mu,G$ 成立。因此可假设
+$G_{\mathrm{der}}$ 单连通。
+
+$B(\tau)$ 有两类不确定性。可换为 $tB(\tau)$，$t\in\overline T(L)$，则
+$\{\gamma_\rho\}$ 换为
+$\{t\gamma_\rho\Ad(c_\rho^{-1})(\rho(t)^{-1})\}$，其上同调类不变。也可换为
+$B(\tau)t$，$t\in T(L)$。此时 $c_\rho$ 换为
+$c'_\rho=\rho(t_{\mathrm{ad}}^{-1})c_\rho t_{\mathrm{ad}}$，其中
+$t_{\mathrm{ad}}$ 为 $t$ 在 $G_{\mathrm{ad}}$ 中的像；$\gamma_\rho$ 换为
+\[
+\gamma'_\rho=\gamma_\rho\Ad(c_\rho^{-1})(\rho(t^{-1}))t.
+\]
+若 $\gamma_\rho=\delta\Ad(c_\rho^{-1})(\rho(\delta^{-1}))$，则
+\[
+\gamma'_\rho=(\delta t)\Ad((c'_\rho)^{-1})(\rho(\delta t)^{-1}).
+\]
+故 $B(\tau)$ 的不确定性不影响断言 (ii)。
+
+证明 (ii) 时，可以通过一系列中间余权，逐步比较给定的 $\mu$ 与 $\overline\mu$。为此应先检查
+(ii) 的成立定义了等价关系。交换 $\mu,\overline\mu$，$\gamma_\rho$ 换为其逆；若
+$\gamma_\rho=\delta\Ad(c_\rho^{-1})(\rho(\delta^{-1}))$，则
+\[
+\gamma_\rho^{-1}=\delta^{-1}\Ad(\overline c_\rho^{-1})(\rho(\delta)).
+\]
+为证传递性，引入记号 $\gamma_\rho(\overline\mu,\mu)$ 和 $c_\rho(\mu)$。设
+\[
+\gamma_\rho(\mu_2,\mu_3)=t\Ad(c_\rho(\mu_3)^{-1})(\rho(t^{-1})),
+\qquad
+\gamma_\rho(\mu_1,\mu_2)=s\Ad(c_\rho(\mu_2)^{-1})(\rho(s^{-1})).
+\]
+注意
+\[
+\gamma_\rho(\mu_2,\mu_3)\Ad(c_\rho(\mu_3)^{-1})(\rho(s^{-1}))
+\gamma_\rho(\mu_2,\mu_3)^{-1}
+=\Ad(c_\rho(\mu_2)^{-1})(\rho(s^{-1})),
+\]
+以及 $\gamma_\rho(\mu_1,\mu_3)=\gamma_\rho(\mu_1,\mu_2)\gamma_\rho(\mu_2,\mu_3)$，便容易推出\footnote{\textbf{译者注（本次校订）：}此处 $\Ad$ 中应为 $c_\rho(\mu_3)^{-1}$，与前面定义扭曲 Galois 作用和上边界的公式一致。}
+\[
+\gamma_\rho(\mu_1,\mu_3)=st\Ad(c_\rho(\mu_3))(\rho(st)^{-1}).
+\]
+传递性证明后，回到原记号。若 $\overline\mu$ 与 $\mu$ 在 $G(\Q)$ 下共轭，例如
+$\overline\mu=\Ad x\circ\mu$，则
+$\gamma_\rho=x\Ad(c_\rho^{-1})(x^{-1})
+=x\Ad(c_\rho^{-1})(\rho(x^{-1}))$，当然为上边界。一般两者不在 $G(\Q)$ 下共轭，但在
+$G(\R)$ 下共轭。由于 $G(\Q)$ 在 $G(\R)$ 中稠密，利用传递性可假设它们在
+$G_{\mathrm{der}}(\R)$ 下共轭。
+
+此时单连通假设发挥作用。若谨慎选择
+$\widetilde b(\tau,\mu)$、$\widetilde b(\tau,\overline\mu)$，用
+$c_\sigma(w)$ 到 $I_L$ 的提升定义它们，则 $B(\tau)$ 及 $\gamma_\rho$ 都在
+$G_{\mathrm{der}}^{\tau,\mu}$ 中。此外，其中的上闭链在每个有限位显然为上边界。应用
+Hasse 原理，只须再验证无穷位。
+
+先作与研究 $\{c_\rho(\tau)\}$ 时类似的计算。对 $\rho\in\Gal(L/\Q)$，置
+\[
+e_\rho(\tau,\mu)=\prod_{\eta\in\mathfrak f}
+a_{\rho\eta,\iota}^{\rho\eta(\tau^{-1}-1)\mu},
+\]
+并类似定义 $e_\rho(\tau,\overline\mu)$。$\{\gamma_\rho\}$ 在
+$G_{\mathrm{der}}^{\tau,\mu}(L_\infty)$ 中的投影上同调于
+$e_\rho(\tau,\overline\mu)e_\rho(\tau,\mu)^{-1}$。若
+$\rho\in\Gal(L_v/\Q_v)$，$e_\rho(\tau,\mu)$ 在 $G^{\tau,\mu}(L_v)$ 中的投影为
+\[
+f_\rho(\tau,\mu)=\prod_{\sigma\in\Gal(L_v/\Q_v)}
+a_{\rho,\sigma}^{\rho\sigma(\tau^{-1}-1)\mu}.
+\]
+所以只须证明 $f_\rho(\tau,\overline\mu)f_\rho(\tau,\mu)^{-1}$ 在
+$G^{\tau,\mu}(L_v)$ 中为上边界。回忆定义该群的上闭链为
+\[
+h_\rho=\prod_{\sigma\in\Gal(L_v/\Q_v)}
+a_{\rho,\sigma}^{\rho\sigma(\tau^{-1}-1)\mu_{\mathrm{ad}}}.
+\]
+简记 $\{\prod_\sigma a_{\rho,\sigma}^{\rho\sigma\nu}\}=\{\alpha_\rho(\nu)\}$。
+若 $x\in G(\R)$，写 $x(\mu)=\Ad x\circ\mu$。若 $x(\overline\mu)=\mu$，则
+\[
+xf_\rho(\tau,\overline\mu)f_\rho(\tau,\mu)^{-1}
+\Ad h_\rho(\rho(x^{-1}))
+=\alpha_\rho((x\tau^{-1}x^{-1}-\tau^{-1})\mu),
+\]
+因为 $\rho(x)=x$ 且
+$f_\rho(\tau,\mu)^{-1}\Ad h_\rho(x^{-1})=x^{-1}f_\rho(\tau,\mu)^{-1}$。
+若 $w$ 属于 $G_{\mathrm{der}}(L_v)$ 中 $T_{\mathrm{der}}$ 的正规化子（normalizer），则
+\begin{equation}
+w\Ad h_\rho(\rho(w^{-1}))
+=w\rho(w^{-1})\alpha_\rho((w-1)(\tau^{-1}-1)\mu).\tag{6.2}
+\end{equation}
+但 $\{w\rho(w^{-1})\}$ 为 $T_{\mathrm{der}}(L_v)$，也即
+$T_{\mathrm{der}}^{\tau,\mu}(L_v)$ 中的上同调类；两群相同。[45] 证明它等价于
+$\{\alpha_\rho((w-1)\mu)\}$。因此 (6.2) 在
+$G_{\mathrm{der}}^{\tau,\mu}(L_v)$ 中的类为
+$\{\alpha_\rho((w-1)\tau^{-1}\mu)\}$。可取 $w$，使它在 $T$ 的权上的作用与
+$x\tau^{-1}x^{-1}\tau$ 相同，验证即完成。
+
+沿用刚才的论证，再验证一个事实。设 Weyl 群中有 $\omega$，使
+\begin{equation}\omega\mu=\tau^{-1}\mu.\tag{6.3}\end{equation}
+则 $(1+\iota)(\tau^{-1}-1)\mu=0$，并定义了
+$\{c_\rho(\tau)^{-1}\}=\{c_\rho(\tau,\mu)^{-1}\}$。它在 $G(L)$ 中为上边界。
+仍只须在 $G_{\mathrm{der}}$ 单连通时验证，不过这次为达到单连通所作的修改略有不同。
+不再要求 $P\to M$ 满射或其核自由，而须有 $\nu\in P$ 映到 $\mu$，并在
+$\Gal(\overline\Q/E)$ 下不变。
+
+对至少一个 $\omega$ 满足 (6.3) 的所有 $\tau$ 构成群。令
+$E=E(G,h)=E(G,\mathfrak H)$ 为其不动域，则 $E\subseteq L$。
+为应用 Hasse 原理，须安排 $\{c_\rho(\tau)\}$ 属于 $G_{\mathrm{der}}(L)$，且显然在
+$G_{\mathrm{der}}(\A_f(L))$ 中为上边界。由于它只依赖于 $\tau$ 在
+$\Gal(L/\Q)$ 中的像，可在 $w=w_\tau$ 时计算。若 $\mathcal G$ 为
+$\Gal(L/\Q)/\Gal(L/E)$ 的代表集，则
+\[
+b_0(\tau)=\prod_{\nu\in\mathcal G}\prod_{\sigma\in\Gal(L/E)}
+a_{\nu\sigma,\tau}^{\nu\sigma\mu}.
+\]
+写 $a_{\nu\sigma,\tau}=\nu(a_{\sigma,\tau})a_{\nu,\sigma\tau}a_{\nu,\sigma}^{-1}$ 及
+$\nu\sigma\mu=\nu\mu+\nu(\sigma-1)\mu$。
+$\sigma\in\Gal(L/E)$ 时，$\nu(\sigma-1)\mu$ 是导出群的权，故
+$\prod_\nu\prod_\sigma a_{\nu\sigma,\tau}^{\nu(\sigma-1)\mu}$ 可提升至
+$T_{\mathrm{der}}(\A(L))$。另一方面，
+$\prod_\nu\prod_\sigma a_{\nu,\sigma\tau}^{\nu\mu}a_{\nu,\sigma}^{-\nu\mu}=1$。
+若 $a=\prod_\sigma a_{\sigma,\tau}$，则 $a\in C_E$，提升为 $a'\in I_E$；而
+$\prod_\nu\nu(a)^{\nu\mu}$ 提升为属于 $T(\A)$ 的
+$\prod_\nu\nu(a')^{\nu\mu}$。若 $\widetilde a_{\nu\sigma,\tau}$ 是
+$a_{\nu\sigma,\tau}$ 到 $I_L$ 的提升，则可选择 $c_\rho(\tau)$ 使模
+$T(L_\infty)$ 有
+\begin{equation}
+c_\rho(\tau)\equiv
+\left\{\prod_{\nu,\sigma}\rho(\widetilde a_{\nu\sigma,\tau})^{-\rho\nu(\sigma-1)\mu}\right\}
+\left\{\prod_{\nu,\sigma}\widetilde a_{\nu\sigma,\tau}^{\nu(\sigma-1)\mu}\right\}.
+\tag{6.4}
+\end{equation}
+
+还须验证这样定义的逆上闭链在无穷位为上边界。(6.4) 右边在
+$C_L\otimes X_*(T_{\mathrm{der}})$ 中的投影为
+\[
+\prod_{\nu,\sigma}a_{\rho,\nu\sigma}^{\rho\nu\sigma(\tau^{-1}-1)\mu}
+=\prod_{\sigma\in\Gal(L/\Q)}a_{\rho,\sigma}^{\rho\sigma(\tau^{-1}-1)\mu}.
+\]
+因此，将逆上闭链限制到 $\Gal(L_v/\Q_v)$ 并投影至 $T_{\mathrm{der}}(L_v)$，得到一个上同调于
+$\{\alpha_\rho((\tau^{-1}-1)\mu)\}=\{\alpha_\rho((\omega-1)\mu)\}$ 的类。
+已指出，[45] 证明后者在 $G_{\mathrm{der}}(L_v)$ 中为上边界。
+
+(6.3) 还会给出一个推论。在此之前，先暂时放下这一条件，讨论一般的 $(T,h)$ 或 $(T,\mu)$。已给 $(T,\mu)$ 与 $\tau$ 配以 $G$ 的扭曲形式
+$G^{\tau,\mu}$。$G$ 中 $T$ 的扭曲平凡，且 $T^\tau=T$ 是该群的 Cartan 子群。
+令 $\mu^\tau=\tau^{-1}\mu$。存在唯一的定义在 $\R$ 上、第一因子上的限制为
+$\mu^\tau$ 的同态 $h^\tau:\mathcal R\to T^\tau$。
+
+\begin{originaltheorem}{断言}
+对 $(G^{\tau,\mu},h^\tau)$ 定义 Shimura 簇。
+\end{originaltheorem}
+$T$ 在 $G$ 中的根与 $T^\tau$ 在 $G^{\tau,\mu}$ 中的根相同，但紧根与非紧根（compact and noncompact roots）的分类不同。
+$T$ 的根 $\gamma$ 在 $G$ 中为紧或非紧，依
+$(-1)^{\langle\gamma,\mu\rangle}$ 为 $1$ 或 $-1$ 而定。
+为了定义 Shimura 簇，$\gamma$ 作为 $T^\tau$ 的根须依
+$(-1)^{\langle\gamma,\tau^{-1}\mu\rangle}$ 为 $1$ 或 $-1$ 而紧或非紧。
+[34] 引理 A.8 的证明所用思想说明，从 $(T,G)$ 变到 $(T^\tau,G^{\tau,\mu})$ 时，根的类型改变，当且仅当
+$(-1)^{\langle\gamma,\tau^{-1}\mu-\mu\rangle}=-1$。
+
+现在几乎可以提出关于 Shimura 簇共轭的猜想了。讨论猜想及其推论后，将说明如何用
+Taniyama 群与动机启发式地支持它。
+
+回忆 $\operatorname{Sh}_K(\C)=G(\Q)\backslash\mathfrak H\times G(\A_f)/K$。
+若 $g\in G(\A_f)$，$K_1=g^{-1}Kg$，则右乘 $g$ 定义态射
+$\mathfrak F(g):\operatorname{Sh}_K(\C)\to\operatorname{Sh}_{K_1}(\C)$。
+它是代数态射，称为 Hecke 对应（Hecke correspondence）。若 $\tau$ 为 $\C$ 的自同构，置
+$\operatorname{Sh}_K^\tau(G,h)=\operatorname{Sh}_K^\tau
+=\operatorname{Sh}_K\otimes_{\tau^{-1}}\C$；目前 Shimura 簇只定义在 $\C$ 上。
+于是有 $\mathfrak F^\tau(g):\operatorname{Sh}_K^\tau\to\operatorname{Sh}_{K_1}^\tau$。
+
+若 $G=T$ 为环面、$K=U$，则 $\operatorname{Sh}_U$ 零维。仍用 $\tau$ 表示它定义的
+$\Gal(\overline\Q/\Q)$ 元素。令 $U^\tau=U$，则\footnote{\textbf{译者注（本次校订）：}这里两处阿代尔商都漏了左侧的 $T(\Q)$：应为 $\operatorname{Sh}_U(\C)=T(\Q)\backslash T(\A_f)/U$，右侧同理。这正是第四节定义在环面情形的特例；不取 $T(\Q)$ 的商，一般不会得到前文所说的有限集。}
+\[
+\operatorname{Sh}_U(\C)=T(\A_f)/U=T^\tau(\A_f)/U^\tau
+=\operatorname{Sh}_{U^\tau}.
+\]
+这给出同构 $\operatorname{Sh}_U(T,h)\to\operatorname{Sh}_{U^\tau}(T^\tau,h^\tau)$。
+此外，有从 $\operatorname{Sh}_U^\tau(T,h)$ 的复点到 $\operatorname{Sh}_U(T,h)$ 的复点的自然映射
+$\tau$。按下图交换性定义 $\varphi_\tau=\varphi_\tau(U,T,h)$：
+\[
+\begin{tikzcd}
+&\operatorname{Sh}_U(T,h)\arrow[dd]\\
+\operatorname{Sh}_U^\tau(T,h)\arrow[ur,"\tau"]\arrow[dr,"\varphi_\tau"']&\\
+&\operatorname{Sh}_{U^\tau}(T^\tau,h^\tau).
+\end{tikzcd}
+\]
+一般 $G^{\tau,\mu}$ 与 $G$ 不同。但前者由
+$\{c_\rho(\tau,\mu_{\mathrm{ad}})^{-1}\}$ 定义，且在
+$G_{\mathrm{ad}}(\A_f(L))$ 中有
+\[
+c_\rho(\tau,\mu_{\mathrm{ad}})^{-1}
+=b(\tau,\mu_{\mathrm{ad}})^{-1}\rho(b(\tau,\mu_{\mathrm{ad}})).
+\]
+故 $g\mapsto g^\tau=\Ad(b(\tau,\mu_{\mathrm{ad}})^{-1})(g)$ 定义
+$G(\A_f)$ 与 $G^{\tau,\mu}(\A_f)$ 的同构。
+
+\begin{originaltheorem}{猜想（Conjecture）}
+存在定义在 $\C$ 上的一族双正则映射（biregular maps）
+$\varphi_\tau=\varphi_\tau(K,G,h)$，$K\subseteq G(\A_f)$，将
+$\operatorname{Sh}_K^\tau(G,h)$ 送到
+$\operatorname{Sh}_{K^\tau}(G^{\tau,\mu},h^\tau)$，使下列图交换：
+\[
+\begin{tikzcd}[column sep=small]
+\operatorname{Sh}_U(T,h)\arrow[r,hook]&\operatorname{Sh}_K(G,h)\\
+\operatorname{Sh}_U^\tau(T,h)\arrow[u,"\tau"]\arrow[r,hook]\arrow[d,"\varphi_\tau"']&
+\operatorname{Sh}_K^\tau(G,h)\arrow[u,"\tau"]\arrow[d,"\varphi_\tau"]\\
+\operatorname{Sh}_{U^\tau}(T^\tau,h^\tau)\arrow[r,hook]&
+\operatorname{Sh}_{K^\tau}(G^{\tau,\mu},h^\tau).
+\end{tikzcd}\tag{a}
+\]
+这里 $U=T(\A_f)\cap K$，左列的 $\varphi_\tau$ 为 $\varphi_\tau(U,T,h)$；以及
+\[
+\begin{tikzcd}[column sep=small]
+\operatorname{Sh}_K^\tau(G,h)\arrow[r,"\mathfrak F^\tau(g)"]\arrow[d,"\varphi_\tau"']&
+\operatorname{Sh}_{K_1}^\tau(G,h)\arrow[d,"\varphi_\tau"]\\
+\operatorname{Sh}_{K^\tau}(G^{\tau,\mu},h^\tau)\arrow[r,"\mathfrak F(g^\tau)"']&
+\operatorname{Sh}_{K_1^\tau}(G^{\tau,\mu},h^\tau).
+\end{tikzcd}\tag{b}
+\]
+\end{originaltheorem}
+
+这种表述依赖于具体的 $T$ 以及通过 $T$ 分解的 $h$。若选另一对
+$(\overline T,\overline h)$，得到另一群 $G^{\tau,\overline\mu}$ 及另一族
+$\overline\varphi_\tau=\overline\varphi_\tau(K,G,\overline h)$。
+为使猜想完整，还须说明这两族映射之间的关系。注意，满足 (a)、(b) 的族至多一个。
+
+已给两对数据配以上闭链 $\{\gamma_\rho\}$，它在 $G^{\tau,\mu}(L)$ 中为上边界。
+写 $\gamma_\rho=u\Ad(c_\rho^{-1})(\rho(u^{-1}))$，则 $g\mapsto ugu^{-1}$ 定义
+$G^{\tau,\mu}(\Q)$ 与 $G^{\tau,\overline\mu}(\Q)$、以及其有限阿代尔点群之间的同构。
+置 ${}^uK^\tau=uK^\tau u^{-1}$。
+
+\begin{originaltheorem}{第二比较引理（Second lemma of comparison）}
+同态 $\Ad u\circ h^\tau$ 在 $G^{\tau,\overline\mu}(\R)$ 下共轭于
+$\overline h^\tau$。
+\end{originaltheorem}
+若将 $u$ 换为同样平凡化 $\{\gamma_\rho\}$ 在 $\Gal(L_v/\Q_v)$ 上的限制的
+$v\in G(L_v)=G(\C)$ 时命题成立，则对 $u$ 也成立。考察上闭链第二性质的证明，可取
+$v\in x^{-1}wT(L_v)$，$x,w$ 同该证明。由于
+$x^{-1}w(\tau^{-1}\mu)=\tau^{-1}\overline\mu$，有
+$\Ad v\circ h^\tau=\overline h^\tau$。
+
+于是 $\Ad u$ 将 $\mathfrak H^\tau$ 送到 $\overline{\mathfrak H}^{\tau}$，定义双射
+\[
+G^{\tau,\mu}(\Q)\backslash\mathfrak H^\tau\times G^{\tau,\mu}(\A_f)/K^\tau
+\longrightarrow
+G^{\tau,\overline\mu}(\Q)\backslash\overline{\mathfrak H}^\tau
+\times G^{\tau,\overline\mu}(\A_f)/{}^uK^\tau
+\]
+以及同构
+$\psi:\operatorname{Sh}_{K^\tau}(G^{\tau,\mu},h^\tau)
+\to\operatorname{Sh}_{{}^uK^\tau}(G^{\tau,\overline\mu},\overline h^\tau)$。
+由于 $u$ 与 $B(\tau)$ 都在 $G^{\tau,\mu}(\A_f(L))$ 中平凡化同一上闭链，有
+$y\in G^{\tau,\mu}(\A_f)$ 使 $u=B(\tau)y$。令 $\varphi=\psi\circ\mathfrak F(y)$。
+
+\begin{originaltheorem}{猜想的补充（Supplement to the conjecture）}
+下图交换：
+\[
+\begin{tikzcd}[column sep=small]
+&\operatorname{Sh}_K^\tau(G,h)\arrow[dl,"\varphi_\tau"']\arrow[dr,"\overline\varphi_\tau"]&\\
+\operatorname{Sh}_{K^\tau}(G^{\tau,\mu},h^\tau)\arrow[rr,"\varphi"']&&
+\operatorname{Sh}_{K^\tau}(G^{\tau,\overline\mu},\overline h^\tau).
+\end{tikzcd}
+\]
+\end{originaltheorem}
+
+猜想当然蕴含 Shimura 簇的共轭仍为 Shimura 簇。连同补充，它蕴含通常形式的
+Shimura 猜想 [10]。为验证这一点，应用关于定义域下降的 Weil 判据 [49]。
+需要对 $\C$ 在 $E(G,h)$ 上的自同构 $\rho$ 定义一族同构
+$f_\rho:\operatorname{Sh}_K^\rho(G,h)\to\operatorname{Sh}_K(G,h)$，满足
+$f_{\sigma\rho}=f_\rho f_\sigma^\rho$。
+
+选择 Cartan 子群 $T$ 及通过它分解的 $h$。已知 $\tau$ 固定 $E(G,h)$ 时，
+$\{c_\rho(\tau,\mu)^{-1}\}$ 有定义，并在 $G(L)$ 中为上边界。
+写 $c_\rho(\tau,\mu)^{-1}=v\rho(v^{-1})$，则
+$g\mapsto vgv^{-1}$ 为 $G(\Q)$ 与 $G^{\tau,\mu}(\Q)$ 的同构。此前的方法容易说明：
+$\Ad v\circ h$ 在 $G^{\tau,\mu}(\R)$ 下共轭于 $h^\tau$。
+故 $\Ad v$ 定义同构 $\mathfrak H\to\mathfrak H^\tau$，进而由
+\[
+G(\Q)\backslash\mathfrak H\times G(\A_f)/K
+\longrightarrow G^{\tau,\mu}(\Q)\backslash\mathfrak H^\tau
+\times G^{\tau,\mu}(\A_f)/{}^vK
+\]
+得到同构 $S_K(G,h)\to S_{{}^vK}(G^{\tau,\mu},h^\tau)$。
+另一方面，$zv=b(\tau,\mu)^{-1}$，$z\in G^{\tau,\mu}(\A_f)$。按下图交换性定义 $f_\tau$：
+\[
+\begin{tikzcd}[column sep=small]
+\operatorname{Sh}_K^\tau(G,h)\arrow[r,"f_\tau"]\arrow[d,"\varphi_\tau"']&S_K(G,h)\arrow[d]\\
+\operatorname{Sh}_{K^\tau}(G^{\tau,\mu},h^\tau)\arrow[r,"\mathfrak F(z)"']&
+\operatorname{Sh}_{{}^vK}(G^{\tau,\mu},h^\tau).
+\end{tikzcd}
+\]
+
+由猜想及其补充推出 $f_\tau$ 不依赖于 $T,h$ 的选择，并满足上述上闭链条件，所需计算冗长却常规，这里略去。
+
+至此 $S_K$ 一直视为 $\C$ 上的簇。现在由下降判据，可在 $E(G,h)$ 上定义它们，使
+$f_\tau$ 就是恒等映射。仍须验证所得模型为典范模型（canonical models），但由构造显然只须考虑
+$G=T$ 为环面的情形。设 $a$ 为 $w=w_\tau$ 转移（transfer）到 $C_E$ 的像，
+$a'$ 为到 $I_E$ 的提升。此前证明 $c_\rho(\tau,\mu)$ 平凡的过程，实际上说明可取它为
+$1$，并取
+$b=b(\tau,\mu)=\prod_{\nu\in\Gal(L/\Q)/\Gal(L/E)}\nu(a')^{\nu\mu}$。
+取 $v=1$、$z=b^{-1}$，则对所有固定 $E(T,h)$ 的 $\tau$，复合
+\[
+\operatorname{Sh}_U(T,h)\xrightarrow{\tau^{-1}}\operatorname{Sh}_U(T,h)
+\xrightarrow{\mathfrak F(b)}\operatorname{Sh}_U(T,h)
+\]
+为恒等映射，而这恰是 $\operatorname{Sh}(T,h)$ 为典范模型的条件。
+
+设 $E(G,h)\subseteq\R$。取 $\operatorname{Sh}_K$ 的典范模型，则复共轭定义复流形
+$\operatorname{Sh}_K(\C)$ 的对合 $\theta$。必须用
+$\operatorname{Sh}_K(\C)=G(\Q)\backslash\mathfrak H\times G(\A_f)/K$
+具体描述这个对合；猜想的目的之一就是提供这种描述。
+
+选一个特殊点 $(T,h)$。若 $E(G,h)\subseteq\R$，可定义
+$b(\iota,\mu)$ 及 $\{c_\rho(\iota,\mu)\}$。但用于定义 $b$ 的陪集代表满足的条件
+(c) 意味着 $b(\iota,\mu)=1$。还可取 $c_\rho(\iota,\mu)=1$，从而也可取
+$v=1$。因此 $h$ 与 $h^\iota$ 在 $G(\R)$ 中共轭。由于
+$K_{h^\iota}=K_h$，映射
+$\eta:\Ad g\circ h^\iota\mapsto\Ad g\circ h$ 是 $\mathfrak H$ 到自身的良定义映射。
+
+\begin{originaltheorem}{猜想的推论（Consequence of the conjecture）}
+对合 $\theta$ 可具体实现为 $G(\Q)\backslash\mathfrak H\times G(\A_f)/K$ 到自身的映射
+$(h,g)\mapsto(\eta(h),g)$。
+\end{originaltheorem}
+我们比较的是两个与所有 $\mathfrak F(g)$，$g\in G(\A_f)$，交换的连续映射，故只须说明它们在
+$S_U(T^\iota,h^\iota)$ 中由 $(h^\iota,1)$ 代表的点上一致。
+由于 $f_\iota$ 为恒等映射且 $v=z=1$，$\varphi_\iota$ 将此点送到
+$\operatorname{Sh}_{K^\iota}(G^{\iota,\mu},h^\iota)=\operatorname{Sh}_K(G,h)$ 中仍由
+$(h^\iota,1)$ 代表的点。由猜想 (a) 立即知，$\iota$ 将这个点送到 $(h,1)$。
+
+对每个 $T,\mu$，令 $\nu(\mu)$ 为从 $\mathcal{REP}(G)$ 到
+$\mathcal{REP}(G^{\tau,\mu})$ 的纤维函子，它把 $(\xi',V(\xi'))$ 送到
+$(\xi,V(\xi))$，其中 $\xi=\xi'$，而 $V(\xi)$ 是将 $V(\xi')$ 的 Galois 作用改为
+$\sigma:x\mapsto\xi'(c_\sigma(\tau,\mu)^{-1})\sigma(x)$ 所得的空间。
+若 $(\overline T,\overline h)$ 是另一特殊点，并按下图定义 $\nu(\mu,\overline\mu)$：
+\[
+\begin{tikzcd}
+\mathcal{REP}(G^{\tau,\mu})\arrow[dd,"{\nu(\mu,\overline\mu)}"']&\\
+&\mathcal{REP}(G)\arrow[ul,"\nu(\mu)"']\arrow[dl,"\nu(\overline\mu)"]\\
+\mathcal{REP}(G^{\tau,\overline\mu})&
+\end{tikzcd}
+\]
+则由第一比较引理，两个纤维函子
+$\omega_{\operatorname{Rep}(G^{\tau,\mu})}$ 与
+$\omega_{\operatorname{Rep}(G^{\tau,\overline\mu})}\circ\nu(\mu,\overline\mu)$ 同构。
+
+另一方面，第四节末给每对 $(\phi,g)$ 配了群 $G^{\tau,\phi}$ 与对
+$(\phi',g')$。$G$ 与 $G^{\tau,\phi}$ 来自同一 Tannaka 范畴，因此有范畴等价
+$\nu(\phi):\mathcal{REP}(G)\to\mathcal{REP}(G^{\tau,\phi})$，在模去同构的意义下确定。
+若 $\phi$ 通过 Serre 群分解，就可通过 $G$ 的 Cartan 子群 $\overline T$ 分解，定义其余权
+$\overline\mu$。Taniyama 群的假设性性质意味着，可取
+$G^{\tau,\phi}=G^{\tau,\overline\mu}$ 且 $\nu(\phi)=\nu(\overline\mu)$。
+于是下图在函子同构意义下交换：
+\[
+\begin{tikzcd}
+\mathcal{REP}(G^{\tau,\mu})\arrow[dd,"{\nu(\mu,\phi)}"']&\\
+&\mathcal{REP}(G)\arrow[ul,"\nu(\mu)"']\arrow[dl,"\nu(\phi)"]\\
+\mathcal{REP}(G^{\tau,\phi})&
+\end{tikzcd}
+\]
+并且两个纤维函子
+$\omega_{\operatorname{Rep}(G^{\tau,\mu})}$ 与
+$\omega_{\operatorname{Rep}(G^{\tau,\phi})}\circ\nu(\mu,\phi)$ 同构。
+选定同构，得到 $\Q$ 上同构 $G^{\tau,\phi}\to G^{\tau,\mu}$ [40，II.3.3]。
+与 $\phi'$ 复合，得同态 $\phi'':G_{\operatorname{Mot}(\C)}\to G^{\tau,\mu}$。
+特殊点十分丰富，这提示我们：对所有 $\phi$ 都可能存在 $\nu(\mu,\phi)$，并使上述两个纤维函子同构。
+
+第二比较引理结合 Taniyama 群的假设性性质意味着：若 $\phi$ 通过 Serre 群分解，则
+$\phi''$ 与典范同态 $\mathcal R\to G_{\operatorname{Mot}(\C)}$ 的复合属于
+$\mathfrak H^\tau$。同样可猜测或希望一般情形也如此。
+
+若 $\varphi_\tau$ 为猜想中的双正则映射，则
+$\varphi_\tau\circ\tau^{-1}$ 定义从 $\operatorname{Sh}_K(G,h)$ 的复点集到
+$\operatorname{Sh}_{K^\tau}(G^{\tau,\mu},h^\tau)$ 的复点集的映射。
+想法是，它通过一个能在模问题内部定义的过程，将 $(\phi,g)$ 送到
+$(\phi'',g'')$。至少在目前的假设层面，已经看到如何得到 $\phi''$。
+
+为得 $g''$，注意有两个同构
+\begin{equation}
+\omega_{\operatorname{Rep}(G^{\tau,\phi})}^{\A_f}\circ\nu(\mu,\phi)
+\longrightarrow\omega_{\operatorname{Rep}(G^{\tau,\mu})}^{\A_f}.\tag{6.5}
+\end{equation}
+一个由选定的 $\Q$ 上同构扩标量至 $\A_f$ 得到；另一个由较长的复合得到。
+初始的 $g$ 给同构
+$\omega_{\operatorname{Mot}(\C)}^{\A_f}\circ\eta
+\to\omega_{\operatorname{Rep}(G)}^{\A_f}$。
+典范同构
+$\omega_{\operatorname{Mot}(\C)}^{\A_f}\circ\eta(\tau)
+\to\omega_{\operatorname{Mot}(\C)}^{\A_f}$ 可与 $\eta$ 复合。
+最后，定义给出
+$\omega_{\operatorname{Rep}(G^{\tau,\phi})}\circ\nu(\phi)$ 到
+$\omega_{\operatorname{Mot}(\C)}^{\A_f}\circ\eta(\tau)\circ\eta$ 的同构。
+合起来得到同构
+\begin{equation}
+\omega_{\operatorname{Rep}(G^{\tau,\phi})}^{\A_f}\circ\nu(\phi)
+\longrightarrow\omega_{\operatorname{Rep}(G)}^{\A_f}.\tag{6.6}
+\end{equation}
+另有同构
+\begin{equation}
+\omega_{\operatorname{Rep}(G)}^{\A_f}
+\longrightarrow\omega_{\operatorname{Rep}(G^{\tau,\mu})}^{\A_f}\circ\nu(\mu),\tag{6.7}
+\end{equation}
+由 $V(\xi')\to V(\xi)$ 的同构
+$x\mapsto\xi'(b(\tau,\mu)^{-1})x$ 给出。复合 (6.6) 与 (6.7)，得到 (6.5) 两个纤维函子间的第二个同构。
+按一般原理，它可由第一个与 $G^{\tau,\mu}(\A_f)$ 中某个元素 $(g'')^{-1}$ 复合得到
+[40，第 II 节]。
+
+若能以某种方式证明映射
+$\psi_\tau:(\phi,g)\mapsto(\phi'',g'')$ 确有定义，那么为证猜想及补充，只须再验证
+$\psi_\tau\circ\tau$ 复解析。本节的目的，是说明这些构造如何相互配合；真正驱动整个论证的关键仍有待寻找。
+
+\origsection{7}{连续上同调（Continuous cohomology）}
+若 $G=G_0$，则按第四节的原则，应可给 $\operatorname{Sh}_K(\C)$ 的每点配以对
+$(\phi,g)$ 的等价类，其中 $\phi$ 为定义在 $\Q$ 上的
+$G_{\operatorname{Mot}(\C)}\to G$ 同态；若 $\eta$ 为相应的张量函子
+$\mathcal{REP}(G)\to\mathcal{MOT}(\C)$，则 $g$ 定义同构
+$\omega_{\operatorname{Mot}(\C)}^{\A_f}\circ\eta
+\to\omega_{\operatorname{Rep}(G)}^{\A_f}$。
+一般有映射 $\operatorname{Sh}_K(G,h)\to\operatorname{Sh}_{K_0}(G_0,h_0)$，通过拉回仍可给每点配对
+$(\phi,g)$，其中 $g\in G(\A_f)$，但 $\phi$ 现在将动机群映到 $G_0$。
+
+若 $(\xi,V(\xi))$ 为 $G_0$ 的 $\Q$ 上表示，等价地是 $G$ 的通过 $G_0$ 分解的表示，则给每点
+$s$ 配以由 $\xi\circ\phi$ 定义的动机 $M(s,\xi)$，并配以 $g$ 定义的同构
+\[
+\omega_{\operatorname{Mot}(\C)}^{\A_f}(M(s,\xi))\simeq V(\xi)_{\A_f}.
+\]
+簇 $\operatorname{Sh}_K(G,h)$ 及此动机族都应定义在 $E=E(G,h)$ 上。
+现在假设这个簇是固有的（proper）。理想情况下，可以构造族 $M(\ ,\xi)$ 的上同调群
+$M^i$，$0\le i\le2\dim\operatorname{Sh}_K$；它们仍为动机，这次定义在 $E$ 上，因而对应
+$G_{\operatorname{Mot}(E)}$ 的表示 $\sigma^i$。若第二节的形式体系成立，可将
+$\sigma^i$ 与 $\rho_F$ 复合，得到 $G_{\Pi(E)}$ 的表示
+$\rho^i=\sigma^i\otimes\rho_F$。\footnote{\textbf{译者注（本次校订）：}这里是同态的复合，且基域为 $E$，故应写 $\rho^i=\sigma^i\circ\rho_E$，而非张量积。}基本问题就只是描述像
+$\rho^i(G_{\Pi(E)})$。
+
+但我们还没有这一整套形式体系，而研究 Shimura 簇的主要理由之一，正是希望在处理它提出的具体算术问题时，获得有助于构造这套体系的认识。
+这些一般原则与假设可以指引我们提出一些能够着手研究的问题，再由答案检验原有设想。
+
+先注意，即使 $M^i$ 尚未定义，仍可直接用现有数据定义 zeta 函数
+$Z(z,M^i)$。它为以 $E$ 的赋值为指标的乘积 $\prod_vZ_v(z,M^i)$。
+非阿基米德位处，可用与 $\xi$ 相联系的 $l$ 进层 $F_\xi(\Q_l)$ 的第 $i$ 个上同调群上的
+Galois 群 $l$ 进表示定义，如 [30]、[34]。目前主要关心阿基米德因子，无须细说。
+
+$E\subseteq\C$，其阿基米德赋值由 $\C$ 或 $\overline\Q$ 的自同构作用于 $E$ 得到。
+先定义由 $E\subseteq\C$ 给出的赋值 $v$ 处的因子 $Z_v(z,M^i)$。
+已经给 $\xi$ 配了 $\operatorname{Sh}_K(\C)$ 上局部常值层 $F_\xi(\Q)$，并在
+$F_\xi(\C)=F_\xi(\Q)\otimes\C$ 上有一个极化 Hodge 结构的解析族。
+Deligne 的构造 [12]、[50] 因而在
+$H^i=H^i(\operatorname{Sh}_K(\C),F_\xi(\C))$ 上定义 Hodge 结构。
+
+按 Serre [42] 的思想，因子 $Z_v(z,M^i)$ 将定义为 $L(s,\rho^i)$，其中
+$\rho^i$ 是 Weil 群 $W_{\C/E_v}$ 在 $H^i$ 上的表示。Hodge 结构定义
+$\mathcal R(\R)$ 的表示；因为 $\C^\times=\mathcal R(\R)$，可用它定义
+$\rho^i$ 在 $\C^\times\subseteq W_{\C/E_v}$ 上的作用。若 $E_v=\C$，这样已经完全定义。
+若 $E_v=\R$，还须定义 $\rho^i(w)$，其中 $w$ 是投影到复共轭且平方为 $-1$ 的 Weil 群元素。
+
+由于 $\operatorname{Sh}_K$ 定义在 $E$ 上，复共轭也定义了流形上的对合 $\theta$。
+需要一个二阶映射 $\psi:\theta^*F\to F$，$F=F_\xi(\C)$，使每条纤维上有
+\[
+\theta^*F_s^{p,q}=F_{\theta(s)}^{p,q}\longrightarrow F_s^{q,p}.
+\]
+相应的上同调映射 $\iota^*$ 将 $H^{p,q}$ 送到 $H^{q,p}$，规定
+$\rho^i(w)=(-1)^p\iota^*$。
+
+为定义 $\psi$，须假设上一节所述猜想的推论成立；若干情形可直接证明。
+于是 $\theta$ 可由映射 $(h,g)\mapsto(\eta(h),g)$ 取商得到。
+给定 $(h,g)$，其像及 $(\eta(h),g)$ 的像处的纤维都可等同于 $V(\xi)_\C$，
+$\psi$ 就是恒等映射。
+
+若以自同构 $\tau$ 给出的 $\tau^{-1}:E\to\C$ 代替嵌入
+$E\subseteq\C$，则复流形换为 $\operatorname{Sh}_K^\tau(\C)$；借助
+$\varphi_\tau$，可将它等同于与
+$\operatorname{Sh}_{K^\tau}(G^{\tau,\mu},h^\tau)$ 相联系的流形。
+因此，相应赋值处的 zeta 因子，可把 $G,h,E$ 分别换成
+$G^{\tau,\mu},h^\tau,\tau^{-1}(E)=E(G^{\tau,\mu},h)$，并取后者在 $\C$ 中的包含赋值来计算。
+空间 $V(\xi)$ 也须用 $\{\xi(c_\sigma(\tau,\mu)^{-1})\}$ 扭曲。
+
+定义了 $Z(z,M^i)$ 后，眼前的问题是证明它可表示成与自守表示相联系的 $L$ 函数之积：
+\begin{equation}
+Z(z,M^i)=\prod_jL(z-a_j,\pi_j,r_j).\tag{7.1}
+\end{equation}
+其中 $a_j\in\C$ 为平移，$\pi_j$ 为某个群 $H_j$ 的自守表示，$r_j$ 为
+${}^LH_j$ 的表示。首先须判定哪些 $H_j,\pi_j,r_j$ 出现在乘积中。
+
+第一步用连续上同调理论计算层 $F_\xi(\C)$ 的上同调群及其 Hodge 结构，进而计算
+$Z_v(z,M^i)$，$v$ 仍由 $E\subseteq\C$ 给出。结合对 $G$ 的自守表示的
+$L$ 包的分析 [44]，寻找至少在两边都替换成 $v$ 处因子时成立的 (7.1) 型恒等式。
+[34] 详细讨论了一个例子。找到后，须验证其他赋值处的局部因子。若另一个赋值
+$v'$ 为阿基米德位，则连续上同调可用 $G^{\tau,\mu}$ 的自守表示计算它；这个群与
+$G$ 相差一个内扭曲（inner twisting）。要作比较，需要先建立 $G$ 与这个群之间的函子性对应，并掌握其具体形式。
+这与 $L$ 包研究相联，主要为解析问题，因为预期迹公式会提供有效手段 [23]。
+
+在有限位处，直接处理 (7.1) 困难。出于拓扑中熟悉的理由，将左边换成
+\begin{equation}
+Z(z)=\prod_iZ(z,M^i)^{(-1)^i},\tag{7.2}
+\end{equation}
+并相应修改右边。至少在无分歧或分歧至多较温和时，右边可用迹公式分析
+[8]、[14]、[30]。对于真正非交换的情况，目前我看不到一般方法，虽然
+Deligne 为 $\GL(2)$ 发现了一种颇为奇特的方法 [13]。
+
+若无分歧，(7.2) 在有限位的因子可用 $l$ 进上同调的不动点公式（fixed point formulae）分析。
+除组合困难 [28] 外，关键是在 $E$ 的素位 $\mathfrak p$ 的剩余域代数闭包
+$\overline\kappa_{\mathfrak p}$ 中，对 $\operatorname{Sh}_K(G,h)$ 的几何点集及其上 Frobenius 作用有相当明确的描述
+[32]。Ihara [20] 首先应用此想法，此后又对 Shimura 曲线的这个集合的结构深入研究
+[21]、[22]。
+
+有分歧时工作尚少。首先须在相对简单的例子中分析簇如何发生坏约化（bad reduction）。
+曲线已有若干有趣发现 [8]、[14]、[15]，高维簇的行为更为复杂；不过，研究约化的工具已经具备，可以着手开展。
+
+以上各步都不容易。$L$ 包研究尚处萌芽期，即使组合问题也要相当的巧思才能解决
+[27]。具体例子仍能提供许多启发。连续上同调理论本身也处于发展初期，本节旨在指出
+Shimura 簇研究中出现、应由成熟理论解决的若干问题。
+
+先引入在以下讨论中起基本作用的 ${}^LG$ 的表示 $r$。
+${}^LG={}^LG^\circ\rtimes\Gal(\overline\Q/\Q)$。若 $T$ 是 $G$ 的一个 $\Q$ 上 Cartan 子群，则
+$T$ 的余权格 $X_*(T)$ 与 ${}^LT^\circ$ 的权格 $X^*({}^LT^\circ)$ 之间有同构，在模去
+Weyl 群元素的意义下确定。特别地，若 $(T,h)$ 是特殊点，则 $\mu$ 定义后者中的轨道
+$\Theta$，它不依赖 $(T,h)$。令 $r^\circ$ 为 ${}^LG^\circ$ 的极端权（extreme weights）集合为
+$\Theta$ 的表示。Galois 群作用于 ${}^LT^\circ$ 的权，保持优势权（dominant weights）集合。
+$\Gal(\overline\Q/E)$ 固定 $\Theta$，因而固定其中的优势元素 $\mu^\vee$。
+可将 $r^\circ$ 延拓到 ${}^LG^\circ\rtimes\Gal(\overline\Q/E)$，使后者在
+$\mu^\vee$ 的权空间上平凡作用。延拓仍记为 $r^\circ$，定义诱导表示
+\[
+r=\Ind({}^LG,{}^LG^\circ\rtimes\Gal(\overline\Q/E),r^\circ).
+\]
+
+令 $d=\dim\operatorname{Sh}_K(G,h)$。预期 (7.2) 等于若干函数
+\begin{equation}L(z-d/2,\pi,\rho)\tag{7.3}\end{equation}
+的乘积，其中 $\pi$ 为 [33] 中与 $G$ 相联系的某个群 $H$ 的自守表示。
+一般有嵌入 $\phi:{}^LH\hookrightarrow{}^LG$，而 $\rho$ 是 $r\circ\phi$ 的子表示。
+
+对 $\Q$ 的任意赋值 $w$，令 $r_w$ 为 $r$ 在
+${}^LG_w={}^LG^\circ\rtimes\Gal(\overline\Q_w/\Q_w)$ 上的限制，记号中隐含嵌入
+$\overline\Q\subseteq\overline\Q_w$。双陪集
+$\Gal(\overline\Q/E)\backslash\Gal(\overline\Q/\Q)/\Gal(\overline\Q_w/\Q_w)$
+参数化 $E$ 中位于 $w$ 之上的赋值，且 $r_w=\bigoplus_{v\mid w}r_v$，其中
+\[
+r_v=\Ind({}^LG_w,{}^LG^\circ\rtimes\Gal(\overline\Q_w/E_v),r_v^\circ),
+\qquad r_v^\circ(\tau)=r^\circ(\sigma_v\tau\sigma_v^{-1}),
+\]
+$\sigma_v$ 是定义 $v$ 的陪集中的某个元素。$\rho$ 也分解为
+$\rho=\bigoplus_{v\mid w}\rho_v$，而 (7.3) 为
+$\prod_w\prod_{v\mid w}L(z-d/2,\pi_w,\rho_v)$；对应于 $v$ 的因子为
+$L(z-d/2,\pi_w,\rho_v)$。
+
+以下只关心 $E\subseteq\C$ 给出的赋值 $v$，故用 $r,\rho$ 代替
+$r_v,\rho_v$。并把 $G(\A)$（或 $H(\A)$）的自守表示写为
+$\pi\otimes\pi_f$，其中 $\pi$ 为 $G(\R)$ 的表示，$\pi_f$ 为 $G(\A_f)$ 的表示。
+
+$G(\R)$ 的任意不可约表示 $\pi$ 都属于某个 $L$ 包 $\Pi_\varphi$，其中
+$\varphi:W_{\C/\R}\to{}^LG$。若 $\alpha$ 是将
+$W_{\C/\R}\to\R$ 与绝对值复合得到的特征，令
+$\psi_1(\pi)=\alpha^{-d/2}\otimes(r\circ\varphi)$，则
+$L(s-d/2,\pi,r)=L(s,\psi_1(\pi))$。
+
+另一方面，设 $\pi\otimes\pi_f$ 是 $G(\A)$ 的自守表示，作用于自守形式空间的子空间
+$U\otimes U_f$。若 $h\in\mathfrak H$，根据连续上同调的原则 [4]，它对
+$\operatorname{Sh}_K(\C)$ 以 $F_\xi(\C)$ 为系数的第 $i$ 维上同调的贡献为\footnote{\textbf{译者注（本次校订）：}一般情形的贡献应为 $H^i(\mathfrak g,K_h;U\otimes V(\xi))\otimes U_f^K$。式 (7.4) 写出的是计算这一相对李代数上同调的复形的第 $i$ 项，尚须取微分的核再模去像；只有在相应微分消失或已作适当调和代表识别时，才能直接以该 $\Hom$ 空间代替上同调。}
+\begin{equation}
+\Hom_{K_h}(\Lambda^i(\mathfrak g/\mathfrak k)\otimes\widetilde V,U)\otimes U_f^K.
+\tag{7.4}
+\end{equation}
+这里 $\mathfrak k$ 是 $K_h$ 的 Lie 代数，$\widetilde V$ 是 $V(\xi)$ 的对偶，
+$U_f^K$ 是 $U_f$ 中 $K$ 不变向量的空间。
+
+定义 Hodge 结构的 $z\in\C^\times=\mathcal R(\R)$ 的作用将
+$\varphi\otimes u$ 送到 $\varphi'\otimes u$，其中
+\[
+\varphi'(X\otimes\widetilde v)
+=\varphi(\eta(z)X\otimes\widetilde\xi(h(z^{-1}))\widetilde v).
+\]
+这里 $X\mapsto\eta(z)X$ 是将 $p$ 个全纯向量与 $q$ 个反全纯向量的外积乘以
+$z^{-p}\overline z^{-q}$ 的作用。因此
+$\eta(z)=\Ad h(z^{-1})\circ\eta(\overline z)$，并有
+\[
+\varphi'(X\otimes\widetilde v)
+=\pi(h(z^{-1}))\varphi(\eta(\overline z)X\otimes\widetilde v).
+\]
+若 $E\subseteq\R$，可将 $\C^\times$ 的作用延拓为
+$W_{\C/\R}=W_{\C/E_v}$ 的作用。取 $n\in G(\R)$ 使
+$\Ad n\circ h=h^\iota$，则投影到 $\iota$、平方为 $-1$ 的 Weil 群元素将
+$\varphi\otimes u$ 送到 $\varphi'\otimes u$，其中\footnote{\textbf{译者注（本次校订）：}下式给出复共轭对合的作用。要表示平方为 $-1$ 的 Weil 群元素，还须按本节前面的约定，在 $(p,q)$ 分量上乘以 $(-1)^p$。否则该作用的平方为 $1$，而 $-1\in\C^\times$ 在该分量上的作用为 $(-1)^{p+q}$，在奇权时不符。}
+\[
+\varphi'(X\otimes\widetilde v)
+=\pi(n)\varphi(\Ad(n^{-1})(X)\otimes\widetilde\xi(n^{-1})\widetilde v).
+\]
+
+两种情形中，$W_{\C/E_v}$ 在 (7.4) 上的表示都分解为
+$\psi^i(\pi)\otimes1$，其中 $\psi^i(\pi)$ 作用于上述 $\Hom_{K_h}$ 空间。
+令 $\psi_2(\pi)$ 为 $W_{\C/\R}$ 表示环中元素
+\[
+\psi_2(\pi)=\bigoplus_i(-1)^i\Ind(W_{\C/\R},W_{\C/E_v},\psi^i(\pi)).
+\]
+令 $m(\pi_f,K)=\dim U_f^K$。若对所有 $\pi$ 都有
+\begin{equation}\psi_2(\pi)=m(\pi)\psi_1(\pi),\tag{7.5}\end{equation}
+就可期待关系
+\begin{equation}
+Z(z)=\prod_\pi L(z-d/2,\pi,r)^{m(\pi_\infty)m(\pi_f,K)}.\tag{7.6}
+\end{equation}
+这里只此一次把 $\pi$ 看成 $G(\A)$ 的表示，其无穷分量记为
+$\pi_\infty$，$r$ 为 ${}^LG$ 的表示。但 (7.5) 并非总成立，必须发现
+$\psi_1(\pi)$ 与 $\psi_2(\pi)$ 的真正关系，这将为把 (7.2) 正确写成自守
+$L$ 函数之积提供线索。
+
+令 $\Pi(\xi)=\{\pi_1,\ldots,\pi_r\}$ 为与 $\xi$ 具有同样中心特征及无穷小特征（infinitesimal character）的离散系列表示集。
+则 $\Pi(\xi)=\Pi$ 为一个 $L$ 包 $\Pi_\varphi$，各 $\psi_1(\pi_i)$ 相同，记为
+$\psi_1(\Pi)$。这些表示的连续上同调已完全了解 [4]，证明下列引理是一个简单练习。
+\begin{originaltheorem}{引理（Lemma）}
+$\displaystyle\bigoplus_{j=1}^r\psi_2(\pi_j)=(-1)^d\psi_1(\Pi)$。
+\end{originaltheorem}
+因此，当 $L$ 包有多个元素时，(7.5) 失败。为修正 (7.6)，须将 $r$ 换成一个子表示。
+但 $r$ 作为 ${}^LG$ 表示一般不可约，所以须引入 [33] 的 ${}^LH$ 群，开始研究
+$L$ 不可区分性。
+
+即使引入 $L$ 不可区分性，修正 (7.6) 仍有另一项困难：还需要证明 $\psi_2(\pi)$ 的每个不可约分量都出现在 $\psi_1(\pi)$ 中，而这一点也并非总能成立。
+
+这在 Casselman [6] 与 Milne [36] 考察的最简单例子中就已出现，只是他们没有必要特别指出。
+设 $G$ 是 $\Q$ 上一个在无穷处分裂、在 $p$ 处不分裂的四元数代数对应的群。
+令 $\pi_f=\pi_p\otimes\pi^p$，假设 $\pi\otimes\pi_f$ 在中心上平凡，
+$\pi_p$ 一维且在 $G(\Q_p)$ 的极大紧子群 $K_p$ 上平凡，$\pi$ 或一维，或为离散系列的第一个元素。
+取 $\xi$ 平凡。若 $K=K^pK_p$，则 $L(s-\tfrac12,\pi\otimes\pi_f,r)$ 应以指数
+$\pm m(\pi^p,K^p)$ 出现在 $Z(s,\operatorname{Sh}_K)$ 中；这里
+$m(\pi^p,K^p)$ 为 $K^p$ 的平凡表示在 $\pi_f^p$ 中出现的重数。$\pi$ 一维时取正号，为离散系列首项时取负号。
+如 Casselman 与 Milne 在讲稿中所示，此结论在局部几乎处处成立。
+
+$\pi$ 为离散系列时，大概也不难证明 $p$ 处局部陈述成立，因为此时它贡献于第一维上同调，且
+$\pi_p=\pi(\sigma_p)$，其中 $\sigma_p$ 为加厚 Weil 群（thickened Weil group）的特殊表示。特别地，
+\[
+L(z-\tfrac12,\pi_p,r)=\frac1{1-\varepsilon/p^z},\qquad|\varepsilon|=1.
+\]
+但若 $\pi$ 一维，它贡献于零维及二维上同调，相应的局部 zeta 贡献应为
+\[
+\left\{\frac1{(1-\varepsilon/p^z)(1-\varepsilon p/p^z)}\right\}^{m(\pi^p,K^p)}.
+\]
+括号里的因子不是 $L(z-\tfrac12,\pi_p,r)$。
+
+解决困难的关键是认识到，当 $\pi$，从而 $\pi\otimes\pi_f$ 一维时，根本不应使用
+$L(z-\tfrac12,\pi\otimes\pi_f,r)$，而应使用
+$L(z-\tfrac12,\pi'\otimes\pi'_f,r)$，其中 $\pi'\otimes\pi'_f$ 为
+$G'(\A)=\GL(2,\A)$ 的一维表示，由与 $\pi\otimes\pi_f$ 相同的伊代尔类群（idele-class group）特征定义。
+由于几乎所有 $v$ 处有 $G'(\Q_v)\sim G(\Q_v)$ 且 $\pi'_v\sim\pi_v$，若只考察几乎处处的局部 zeta 函数，就察觉不到用错表示的问题。
+
+第二、三节讨论的意义由此显现。$\pi\otimes\pi_f$ 以及由函子性原理与它相联系的
+$G'(\A)$ 表示 $\pi''\otimes\pi''_f$ 都异常，因为几乎所有 $v$ 处的
+$\pi''_v$ 一维，但 $\pi''_p$ 无穷维。几乎处处与后者等价的等压表示是
+$\pi'\otimes\pi'_f$。第二节的讨论已隐含异常表示与动机无关；所以现在必须抛弃
+$\pi\otimes\pi_f$、换成 $\pi'\otimes\pi'_f$，并不意外。
+
+本例 $\pi$ 本身未变，因为 $G(\R)\sim G'(\R)$ 且 $\pi\sim\pi'$。一般却应预期也须修改
+$\pi$。因此适当因子不是 $L(z-d/2,\pi\otimes\pi_f,r)$，而是
+$L(z-d/2,\pi'\otimes\pi'_f,r)$，其中后者是由 $G$ 内扭曲得到的群
+$G'$ 的自守表示，且仍要求 $\pi'_v$ 几乎处处等价于 $\pi_v$。
+
+目前重点是无穷位，因此先寻找 $\pi'$ 的可能取值；更准确地说，是寻找相应 $L$ 包 $\{\pi'\}=\Pi'$。看来须满足两条，第一条来自函数方程的相容性。
+\begin{enumerate}
+\item[(a)] 设 $\pi\in\Pi_\varphi$，$\{\pi'\}=\Pi_{\varphi'}$。对 $\R$ 的任意加法特征
+$\psi$ 及 ${}^LG={}^LG'$ 的任意表示 $\sigma$，
+\[
+\varepsilon'(z,\sigma\circ\varphi,\psi)
+=\varepsilon(z,\sigma\circ\varphi,\psi)
+\frac{L(1-z,\sigma\circ\varphi)}{L(z,\sigma\circ\varphi)}
+\]
+等于
+\[
+\varepsilon'(z,\sigma\circ\varphi',\psi)
+=\varepsilon(z,\sigma\circ\varphi',\psi)
+\frac{L(1-z,\sigma\circ\varphi')}{L(z,\sigma\circ\varphi')}.
+\]
+\item[(b)] 可以在 $\psi_1(\pi')$ 中找到直和项 $\psi_0(\pi')$，使
+$\psi_2(\pi)=\alpha\psi_0(\pi')$，$\alpha\in\Z$。
+\end{enumerate}
+这些条件只是试探性的，以后也许须修改，但足以说明问题。
+
+第一条只涉及 $\varphi,\varphi'$。先构造一些满足它的对。固定
+$w\in W_{\C/\R}$，投影为 $\iota$ 且 $w^2=-1$。可假设
+$\varphi(w)=a\times\iota$，其中 $a$ 位于 ${}^LG^\circ$ 中 ${}^LT^\circ$ 的正规化子中。
+于是 $\varphi(w)$ 也正规化 ${}^LT^\circ$。令 $\varphi(\iota)$ 表示它在权格或余权格上定义的变换。
+还可假设 $\varphi$ 将 $\C^\times$ 映入 ${}^LT^\circ$，且
+\[
+\varphi(z)=z^\Lambda\overline z^{\varphi(\iota)\Lambda},\qquad
+\Lambda\in X_*({}^LT^\circ)\otimes\C,\quad
+\Lambda-\varphi(\iota)\Lambda\in X_*({}^LT^\circ).
+\]
+类似定义 $\varphi'$：$\varphi'(w)=a'\times\iota$，$a'$ 在正规化子中，且
+$\varphi'(z)=z^\Lambda\overline z^{\varphi'(\iota)\Lambda}$。注意二者的 $\Lambda$ 相同；给定的
+$a$ 换为现在须定义的 $a'$。
+
+假设 $\varphi(\iota)$ 将每条根送到其负根。选
+$\lambda\in X_*({}^LT^\circ)$，\footnote{\textbf{译者注（本次校订）：}这里的 $\lambda$ 应允许取值于 $X_*({}^LT^\circ)\otimes\C$。若限定为整余特征，则对每个整权 $\lambda^\vee$，$e^{2\pi i\langle\lambda,\lambda^\vee\rangle}=1$，无法表示下文所需的一般取值。}使对与所有根正交的权 $\lambda^\vee$，有
+$\lambda^\vee(a)=e^{2\pi i\langle\lambda,\lambda^\vee\rangle}$。
+取 $a'\in{}^LT^\circ$，使同样的权满足
+$\lambda^\vee(a')=e^{2\pi i\langle\lambda',\lambda^\vee\rangle}$。
+$\lambda'$ 尚待定义。也用 $a$ 表示其在 $X_*({}^LT^\circ)\otimes\C$ 上的算子，令
+$q$ 为正根和的一半，规定
+\[
+\lambda'=\frac{1+a}{2}\lambda
+-\frac{(1-a)(1+\varphi'(\iota))}{8}\Lambda+\frac q2.
+\]
+注意 $\varphi'(\iota)$ 的作用与 $\iota$ 相同。已假设 $\varphi$ 为良定义同态，故 [31]
+\[
+\lambda+\varphi(\iota)\lambda
+\equiv\frac{\Lambda-\varphi(\iota)\Lambda}{2}-q
+\pmod{X_*({}^LT^\circ)}.
+\]
+为说明 $\varphi'$ 也良定义，须验证\footnote{\textbf{译者注（本次校订）：}右端应使用 $\varphi'(\iota)$，即 $(\Lambda-\varphi'(\iota)\Lambda)/2$；紧接下文的计算所得正是这一表达式，它也是检验 $\varphi'$ 为同态所需的条件。}
+\begin{equation}
+\lambda'+\varphi'(\iota)\lambda'
+\equiv\frac{\Lambda-\varphi(\iota)\Lambda}{2}
+\pmod{X_*({}^LT^\circ)}.\tag{7.7}
+\end{equation}
+从等式 $a\varphi'(\iota)=\varphi'(\iota)a=\varphi(\iota)$、
+$a(1+\varphi(\iota))=1+\varphi(\iota)$ 出发，并注意两种变换的平方均为恒等，推出
+(7.7) 左边等于
+\[
+\frac{(1+\varphi'(\iota))(1+\varphi(\iota))\lambda}{2}
+-\frac{(1-a)(1+\varphi'(\iota))}{4}\Lambda+q,
+\]
+因为 $(1+\varphi'(\iota))q/2=q$。此和又同余于
+\[
+\frac{1-\varphi(\iota)}2\Lambda
+-\frac{(1-a)(1+\varphi'(\iota))}{4}\Lambda
+=\frac{1-\varphi'(\iota)}2\Lambda.
+\]
+所以，只要 $\varphi$ 有定义且 $\varphi(\iota)$ 把每条根变为负根，就能构造
+$\varphi'$。下列引理在此一般性下成立。
+\begin{originaltheorem}{引理（Lemma）}
+对 ${}^LG$ 的 Weil 形式的任意表示 $\sigma$，以及 $\R$ 的任意非平凡特征 $\psi$，有
+$\varepsilon'(\tau,\sigma\circ\varphi,\psi)
+=\varepsilon'(\tau,\sigma\circ\varphi',\psi)$。
+\end{originaltheorem}
+证明是基于 [31] 引理 3.2 的证明及 [24] 第 5、6 章的计算，但颇长，不值得在此列出。
+
+也可以从由 $a'\in{}^LT^\circ$ 定义的 $\varphi'$ 出发，逆转过程，得到
+$\lambda,a$。更一般地，若 ${}^LM,{}^LM'$ 为 ${}^LG$ 的两个抛物子群，
+$\varphi:W_{\C/\R}\to{}^LM$ 的像不在 ${}^LM$ 的任何真抛物子群中，可先得到像落在
+${}^LM$（从而也落在 ${}^LG$ 或 ${}^LM'$）的极小抛物子群中的 $\varphi''$，然后逆转过程，得到
+$\varphi':W_{\C/\R}\to{}^LM'$，其像不落在任何真抛物子群中。
+
+现在只想用几个例子说明：给定某个 $\Pi_\varphi$ 中的 $\pi$，如何选择上述
+$\varphi'$，使 $\Pi_{\varphi'}$ 的元素满足 (b)。关键问题是这种选择能否总是作出；这还需要更多例子或一般定理来判定。
+
+若 $\xi\otimes\pi$ 的全部连续上同调为零，(b) 容易满足：取
+$\varphi'=\varphi$、$\alpha=0$。最简单的非平凡例子是 $\xi,\pi$ 都平凡。
+设 $\pi\in\Pi_\varphi$，则 $\varphi(z)=z^q\overline z^{\varphi(\iota)q}$，
+$q$ 仍为正根和的一半。若 ${}^LM$ 为对应 $G$ 在 $\R$ 上极小抛物子群的抛物子群，则
+$\varphi$ 的像在 ${}^LM$ 中，而 $\varphi(\iota)$ 将 ${}^LT^\circ$ 在 ${}^LM$ 中每条根送到负根。
+如上定义 $\varphi'$，取 $a'\in{}^LT^\circ$。$G'$ 可取为 $G$ 在 $\R$ 上的拟分裂形式。
+$\pi$ 的连续上同调全在偶数维，且全为某个 $(p,p)$ 型。它与紧对偶（compact dual）的上同调相同，可用
+Schubert 胞腔（Schubert cells）计算。容易验证，对 $\pi'\in\Pi_{\varphi'}$，仅依赖于
+$\varphi'$ 的表示 $\psi_1(\pi')$ 等价于 $\psi_2(\pi)$。
+
+若 $G$ 在 $\R$ 上非拟分裂，则 $\varphi'\ne\varphi$。此时 $G$ 当然在 $\Q$ 上也非拟分裂，
+$G(\A)$ 的平凡表示异常。又一次看到，从 $\pi$ 到 $\pi'$ 的转变，是从异常表示到非异常表示的转变的局部表现。
+
+另一些有趣例子是 Borel--Wallach 札记 [4] 第 XI 章讨论的
+$\operatorname{PSU}(n,1)$ 的表示 $\pi=J_{i,j}$。取 $\xi$ 平凡。此时
+$\psi_2(\pi)$ 为从 $\C^\times$ 的一个表示诱导来的表示乘以 $(-1)^{i+j}$，所用表示的权为
+\begin{equation}
+z^{-i}\overline z^{-j},\quad z^{-i-1}\overline z^{-j-1},\quad\ldots,\quad
+z^{-(n-j)}\overline z^{-(n-i)}.\tag{7.8}
+\end{equation}
+这里 $0\le i+j\le n-1$，$i,j\ge0$。Borel 和 Wallach 在一处说得含糊，或许这里
+$i,j$ 的角色须互换，但这无关紧要。
+
+群 ${}^LG^\circ$ 为 $\SL(n+1,\C)$，可取 ${}^LT^\circ$ 为对角矩阵群，
+$r^\circ$ 为标准表示。由 [4] 易推知，$\pi\in\Pi_\varphi$ 时，
+$\varphi(z)=z^\Lambda\overline z^{\varphi(\iota)\Lambda}$，$z\in\C^\times$，其中
+\begin{align*}
+\Lambda=(&n/2-i,\ n/2,\ n/2-1,\ldots,n/2-i+1,\ n/2-i-1,\ldots,\\
+&-n/2+j+1,\ -n/2+j-1,\ldots,-n/2,\ -n/2+j).
+\end{align*}
+出现的数为 $n/2,n/2-1,\ldots,-n/2$，只是顺序稍不寻常。
+$\varphi(\iota)$ 给出的变换为
+\[
+(x_1,\ldots,x_{n+1})\longmapsto(-x_{n+1},-x_2,\ldots,-x_n,-x_1).
+\]
+这里把 $X_*({}^LT^\circ)\otimes\C$ 的元素表示为 $n+1$ 个复数组成的序列，其和为零。
+
+为明确起见，设 $i\le j$。选择 $\varphi'$，使 $\varphi'(\iota)$ 将
+$(x_1,\ldots,x_{n+1})$ 送到
+\[
+(-x_{n+1},-x_n,\ldots,-x_{n-i+1},-x_{n-j},\ldots,-x_{i+2},
+-x_{n-j+1},\ldots,-x_{n-i},-x_{i+1},\ldots,-x_1).
+\]
+省略号中的指标每次按一递减或递增。若 $\pi'\in\Pi_{\varphi'}$，则
+$\psi_1(\pi')$ 从 $\C^\times$ 的权如下的表示诱导得到：
+\begin{equation}
+\begin{aligned}
+&z^{-i}\overline z^{-j},\ 1,\ z^{-1}\overline z^{-1},\ldots,
+ z^{-i+1}\overline z^{-j+1};\\
+&z^{-i-1}\overline z^{-j-1},\ldots,
+ z^{-(n-j-1)}\overline z^{-(n-i-1)};\\
+&z^{-(n-j+1)}\overline z^{-(j-1)},\ldots,z^{-(n-i)}\overline z^{-i};\\
+&z^{-(n-i+1)}\overline z^{-(n-i+1)},\ldots,z^{-n}\overline z^{-n},
+ z^{-(n-j)}\overline z^{-(n-i)}.
+\end{aligned}\tag{7.9}
+\end{equation}
+由于 (7.8) 包含于 (7.9)，条件 (b) 得以满足。
+
+应指出，为满足 (b) 而选择的 $\psi_0(\pi')$，除 $i,j$ 某些退化取值外，必为
+$\psi_1(\pi')$ 的真子表示。我希望 $L$ 不可区分性能够顾及此现象。例如，令
+$\varepsilon\in{}^LT^\circ$ 的对角元为\footnote{\textbf{译者注（本次校订）：}所列矩阵的行列式为 $(-1)^{i+j}$；当 $i+j$ 为奇数时，它不属于此处的 $\SL(n+1,\C)$。因此，关于 $\varepsilon\in{}^LT^\circ$ 的陈述需要修正，另选同时满足行列式为 $1$ 及所需交换关系的元素，再相应描述其特征空间。}
+\[
+1,\ \overbrace{-1,-1,\ldots,-1}^{i},\ 1,\ldots,1,\
+\overbrace{-1,\ldots,-1}^{j},\ 1,
+\]
+则 $\varepsilon$ 与 $\varphi'(W_{\C/\R})$ 交换，可取
+$\psi_0(\pi')$ 为 $\psi_1(\pi')$ 在 $r(\varepsilon)$ 的 $+1$ 特征空间上的限制。
+
+\begin{thebibliography}{50}
+\bibitem[1]{c33-1} J. Arthur, \textit{Eisenstein series and the trace formula}, 本论文集，第一册，253--274 页。
+\bibitem[2]{c33-2} W. Baily and A. Borel, \textit{Compactification of arithmetic quotients of bounded symmetric domains}, Ann. of Math. (2) 84 (1966), 442--528.
+\bibitem[3]{c33-3} A. Borel, \textit{Automorphic $L$-functions}, 本论文集，第二册，27--61 页。
+\bibitem[4]{c33-4} A. Borel and N. Wallach, \textit{Seminar on the cohomology of discrete subgroups of semi-simple groups}, Institute for Advanced Study (1976/77).
+\bibitem[5]{c33-5} P. Cartier, \textit{Representations of $p$-adic groups: A survey}, 本论文集，第一册，111--155 页。
+\bibitem[6]{c33-6} W. Casselman, \textit{The Hasse--Weil $\zeta$-function of some moduli varieties of dimension greater than one}, 本论文集，第二册，141--163 页。
+\bibitem[7]{c33-7} W. Casselman, \textit{$\mathrm{GL}(n)$}, Algebraic Number Fields ($L$-Functions and Galois Properties), A. Fröhlich 编，Academic Press, New York, 1977.
+\bibitem[8]{c33-8} I. V. Cherednik, \textit{Algebraic curves uniformized by discrete arithmetical subgroups}, Uspehi Mat. Nauk 30 (1975), 183--184.（俄文）
+\bibitem[9]{c33-9} P. Deligne, \textit{Travaux de Griffiths}, Sém. Bourbaki (1970).
+\bibitem[10]{c33-10} P. Deligne, \textit{Travaux de Shimura}, Sém. Bourbaki (1971).
+\bibitem[11]{c33-11} P. Deligne, \textit{La conjecture de Weil pour les surfaces K3}, Invent. Math. 15 (1972), 206--226.
+\bibitem[12]{c33-12} P. Deligne, \textit{Théorie de Hodge. III}, Inst. Hautes Études Sci. Publ. Math. 44 (1974), 5--78.
+\bibitem[13]{c33-13} P. Deligne, 致 Piatetski-Shapiro 的信（Letter to Piatetski-Shapiro）。
+\bibitem[14]{c33-14} P. Deligne and M. Rapoport, \textit{Les schémas de modules de courbes elliptiques}, Modular Functions of One Variable. II, Lecture Notes in Math., vol. 349, Springer, New York, 1972, pp. 143--316.
+\bibitem[15]{c33-15} V. G. Drinfeld, \textit{Coverings of $p$-adic symmetric spaces}, Functional Anal. Appl. 10 (1976), 29--40.（俄文）
+\bibitem[16]{c33-16} J. Giraud, \textit{Cohomologie non-abélienne}, Springer-Verlag, Berlin and New York, 1971.
+\bibitem[17]{c33-17} Harish-Chandra, \textit{Representations of semi-simple Lie groups. VI}, Amer. Math. J. 78 (1956), 564--628.
+\bibitem[18]{c33-18} Harish-Chandra, \textit{Discrete series for semi-simple Lie groups. I}, Acta Math. 113 (1965), 241--318; II, 116 (1966), 1--111.
+\bibitem[19]{c33-19} R. Howe and I. Piatetski-Shapiro, \textit{A counterexample to the ``generalized Ramanujan conjecture'' for (quasi-) split groups}, 本论文集，第一册，315--322 页。
+\bibitem[20]{c33-20} Y. Ihara, \textit{Hecke polynomials as congruence $\zeta$-functions in elliptic modular case}, Ann. of Math. (2) 85 (1967), 267--295.
+\bibitem[21]{c33-21} Y. Ihara, \textit{On congruence monodromy problems}, vols. 1, 2, Lecture notes from Tokyo Univ., 1968, 1969.
+\bibitem[22]{c33-22} Y. Ihara, \textit{Some fundamental groups in the arithmetic of algebraic curves over finite fields}, Proc. Nat. Acad. Sci. 72 (1975).
+\bibitem[23]{c33-23} S. Gelbart and H. Jacquet, \textit{Forms of $\mathrm{GL}(2)$ from the analytic point of view}, 本论文集，第一册，213--251 页。
+\bibitem[24]{c33-24} H. Jacquet and R. P. Langlands, \textit{Automorphic forms on $\mathrm{GL}(2)$}, Lecture Notes in Math., vol. 114, Springer, New York, 1970.
+\bibitem[25]{c33-25} H. Jacquet and J. Shalika, \textit{A non-vanishing theorem for zeta-functions of $\mathrm{GL}(n)$}, Invent. Math. 38 (1976).
+\bibitem[26]{c33-26} D. Kazhdan, \textit{On arithmetic varieties}, Lie Groups and Their Representations, Halsted, New York, 1975.
+\bibitem[27]{c33-27} R. Kottwitz, 学位论文（Thesis），Harvard Univ., 1977.
+\bibitem[28]{c33-28} R. Kottwitz, \textit{Combinatorics and Shimura varieties mod $p$}, 本论文集，第二册，185--192 页。
+\bibitem[29]{c33-29} N. Kurokawa, \textit{Examples of eigenvalues of Hecke operators in Siegel modular forms}, 1977（预印本）。
+\bibitem[30]{c33-30} R. P. Langlands, \textit{Modular forms and $l$-adic representations}, Modular Forms of One Variable. II, Lecture Notes in Math., vol. 349, Springer, New York, 1973, pp. 361--500.
+\bibitem[31]{c33-31} R. P. Langlands, \textit{On the classification of irreducible representations of real algebraic groups}, Institute for Advanced Study, Princeton, N. J., 1973.
+\bibitem[32]{c33-32} R. P. Langlands, \textit{Some contemporary problems with origins in the Jugendtraum}, Proc. Sympos. Pure Math., vol. 28, Amer. Math. Soc., Providence, R. I., 1976, pp. 401--418.
+\bibitem[33]{c33-33} R. P. Langlands, \textit{Stable conjugacy: definitions and lemmas}, Canad. J. Math.（待刊）。
+\bibitem[34]{c33-34} R. P. Langlands, \textit{On the zeta-functions of some simple Shimura varieties}, Canad. J. Math.（待刊）。
+\bibitem[35]{c33-35} R. P. Langlands, \textit{On the notion of automorphic representation}, 本论文集，第一册，203--207 页。
+\bibitem[36]{c33-36} J. Milne, \textit{Points on Shimura varieties mod $p$}, 本论文集，第二册，165--184 页。
+\bibitem[37]{c33-37} D. Mumford, \textit{Families of abelian varieties}, Proc. Sympos. Pure Math., vol. 9, Amer. Math. Soc., Providence, R. I., 1966, pp. 347--351.
+\bibitem[38]{c33-38} I. Piatetski-Shapiro, \textit{Multiplicity one theorems}, 本论文集，第一册，209--212 页。
+\bibitem[39]{c33-39} H. Resnikoff and R. L. Saldaña, \textit{Some properties of Fourier coefficients of Eisenstein series of degree two}, Crelle 265 (1974), 90--109.
+\bibitem[40]{c33-40} N. Saavedra Rivano, \textit{Catégories tannakiennes}, Lecture Notes in Math., vol. 265, Springer, New York, 1972.
+\bibitem[41]{c33-41} J.-P. Serre, \textit{Abelian $l$-adic representations and elliptic curves}, Benjamin, New York, 1968.
+\bibitem[42]{c33-42} J.-P. Serre, \textit{Facteurs locaux des fonctions zêta des variétés algébriques (définitions et conjectures)}, Sém. Delange-Pisot-Poitou, 1970.
+\bibitem[43]{c33-43} J.-P. Serre, \textit{Représentations $l$-adiques}, Algebraic Number Theory, Tokyo, 1977.
+\bibitem[44]{c33-44} D. Shelstad, \textit{Notes on $L$-indistinguishability}, 本论文集，第二册，193--203 页。
+\bibitem[45]{c33-45} D. Shelstad, \textit{Orbital integrals and a family of groups attached to a real reductive group}, 1977（预印本）。
+\bibitem[46]{c33-46} K.-Y. Shih, \textit{Conjugations of arithmetic automorphic function fields}, 1977（预印本）。
+\bibitem[47]{c33-47} J. Tate, \textit{Number theoretic background}, 本论文集，第二册，3--26 页。
+\bibitem[48]{c33-48} N. Wallach, \textit{Representations of reductive Lie groups}, 本论文集，第一册，71--86 页。
+\bibitem[49]{c33-49} A. Weil, \textit{The field of definition of a variety}, Amer. J. Math. 78 (1956), 509--524.
+\bibitem[50]{c33-50} S. Zucker, \textit{Hodge theory with degenerating coefficients. I}, 1977（预印本）。
+\end{thebibliography}
+\noindent 高等研究院（The Institute for Advanced Study）。

@@ -1,0 +1,589 @@
+\SGAchapter{VI}{函子 $\operatorname{Ext}^{\bullet}_Z(X;F,G)$ 与 $\underline{\operatorname{Ext}}^{\bullet}_Z(F,G)$}{Les foncteurs Ext}
+\SourcePage{65}
+\SGAsection{1}{一般性质}
+\textbf{1.1。}设 $(X,\mathscr O_X)$ 是一个\Term{ringed-space}{赋环空间}，$Z$ 是 $X$ 的一个\Term{locally-closed}{局部闭}\Term{subset}{子集}。设 $F,G$ 是 $\mathscr O_X$-模，以 $\operatorname{Ext}^i_Z(X;F,G)$（分别以 $\underline{\operatorname{Ext}}^i_Z(F,G)$）表示\Term{functor}{函子}
+\[
+ G\longmapsto\Gamma_Z\bigl(\underline{\operatorname{Hom}}_{\mathscr O_X}(F,G)\bigr)
+ \quad\text{（分别为 }G\longmapsto\underline\Gamma_Z\bigl(\underline{\operatorname{Hom}}_{\mathscr O_X}(F,G)\bigr)\text{）}
+\]
+的第 $i$ 个\Term{derived-functor}{导出函子}。
+\begin{SGAresult}{引理}{1.2}
+层 $\underline{\operatorname{Ext}}^i_Z(F,G)$ \Term{canonical}{典范}\Term{isomorphism}{同构}于\Term{presheaf}{预层}
+$U\mapsto\operatorname{Ext}^i_{Z\cap U}(U;F|_U,G|_U)$ 的\Term{associated-sheaf}{伴随层}。
+\end{SGAresult}
+\begin{proof}
+这由（[Tôhoku], 3.7.2）以及 $\Gamma(U;\underline\Gamma_Z(\underline{\operatorname{Hom}}_{\mathscr O_X}(F,G)))$ \Term{canonical}{典范}\Term{isomorphism}{同构}于 $\Gamma_{Z\cap U}(\underline{\operatorname{Hom}}_{\mathscr O_X|_U}(F|_U,G|_U))$ 得到。
+\end{proof}
+\begin{SGAresult}{定理（切除定理）}{1.3}
+设 $V$ 是 $X$ 中包含 $Z$ 的一个\Term{open-subset}{开集}，则有\Term{cohomological-functor}{上同调函子}的\Term{isomorphism}{同构}
+\[
+ \operatorname{Ext}^{\bullet}_X(X;F,G)\simeq
+ \operatorname{Ext}^{\bullet}_V(V;F|_V,G|_V).\tag{1.3.1}
+\]
+\end{SGAresult}
+\begin{proof}
+事实上，若 $G^{\bullet}$ 是 $G$ 的一个\Term{injective-resolution}{内射消解}，则 $G^{\bullet}|_V$ 是 $G|_V$ 的一个\Term{injective-resolution}{内射消解}。定理随即得出。
+\end{proof}
+\textbf{1.4。}设 $\mathscr O_{X,Z}$ 是由以下条件定义的 $\mathscr O_X$-模（[Godement], 2.9.2）：$\mathscr O_{X,Z}|_{X-Z}=0$，$\mathscr O_{X,Z}|_Z=\mathscr O_X|_Z$。我们已经看到，对每个 $\mathscr O_X$-模 $H$，存在\Term{functorial}{函子性}\Term{isomorphism}{同构}
+$\Gamma_Z(H)\simeq\operatorname{Hom}_{\mathscr O_X}(\mathscr O_{X,Z},H)$。
+由此得到关于 $F,G$ 的\Term{functorial}{函子性}\Term{isomorphism}{同构}：
+\begin{align}
+\Gamma_Z\bigl(\underline{\operatorname{Hom}}_{\mathscr O_X}(F,G)\bigr)
+&\simeq\operatorname{Hom}_{\mathscr O_X}\bigl(\mathscr O_{X,Z},\underline{\operatorname{Hom}}_{\mathscr O_X}(F,G)\bigr),\tag{1.4.1}\\
+\Gamma_Z\bigl(\underline{\operatorname{Hom}}_{\mathscr O_X}(F,G)\bigr)
+&\simeq\operatorname{Hom}_{\mathscr O_X}(\mathscr O_{X,Z}\otimes_{\mathscr O_X}F,G),\tag{1.4.2}\\
+\Gamma_Z\bigl(\underline{\operatorname{Hom}}_{\mathscr O_X}(F,G)\bigr)
+&\simeq\operatorname{Hom}_{\mathscr O_X}\bigl(F,\underline{\operatorname{Hom}}_{\mathscr O_X}(\mathscr O_{X,Z},G)\bigr)
+ =\operatorname{Hom}_{\mathscr O_X}(F,\underline\Gamma_Z(G)).\tag{1.4.3}
+\end{align}
+特别地，由 (1.4.2) 得到关于 $F,G$ 的 $\partial$-\Term{functorial}{函子性}\Term{isomorphism}{同构}
+\[
+\theta:\operatorname{Ext}^i_{\mathscr O_X}(\mathscr O_{X,Z}\otimes_{\mathscr O_X}F,G)
+\xrightarrow{\sim}\operatorname{Ext}^i_Z(X;F,G).
+\]
+\SourcePage{66}
+\textbf{1.5。}按定义，\Term{functor}{函子} $G\mapsto\Gamma_Z(\underline{\operatorname{Hom}}_{\mathscr O_X}(F,G))$ 是\Term{functor}{函子} $G\mapsto\underline{\operatorname{Hom}}_{\mathscr O_X}(F,G)$ 与\Term{functor}{函子} $\Gamma_Z$ 的复合。由于 $\Gamma_Z$ 是\Term{left-exact}{左正合}的（第 I 讲 1.9），当 $G$ \Term{injective}{内射}时 $\underline{\operatorname{Hom}}_{\mathscr O_X}(F,G)$ 是\Term{flasque}{松弛}的，而 $\Gamma_Z$ 在\Term{flasque}{松弛}层上\Term{exact}{正合}（第 I 讲 2.12），由（[Tôhoku], 2.4.1）可知，存在收敛到 $\operatorname{Ext}^{\bullet}_Z(X;F,G)$ 的\Term{spectral-functor}{谱函子}，其初始项为 $H^p_Z(X,\underline{\operatorname{Ext}}^q_{\mathscr O_X}(F,G))$。
+
+另一方面，由 (1.4.3) 可知，$\Gamma_Z(\underline{\operatorname{Hom}}_{\mathscr O_X}(F,G))$ 是 $\underline\Gamma_Z$ 与\Term{functor}{函子} $H\mapsto\operatorname{Hom}_{\mathscr O_X}(F,H)$ 的复合。
+由于\Term{functor}{函子} $\underline\Gamma_Z$ 将\Term{injective-object}{内射对象}变为\Term{injective-object}{内射对象}（第 I 讲 1.4），由（[Tôhoku], 2.4.1）可知，存在收敛到 $\operatorname{Ext}^{\bullet}_Z(X;F,G)$ 的\Term{spectral-functor}{谱函子}，其初始项为 $\operatorname{Ext}^p_{\mathscr O_X}(X;F,\underline H^q_Z(G))$。
+
+最后，由 (1.4.2) 和 $\operatorname{Ext}$ 的\Term{spectral-sequence}{谱序列}可知，存在收敛到 $\operatorname{Ext}^{\bullet}_Z(X;F,G)$ 的\Term{spectral-functor}{谱函子}，其初始项为 $H^p(X;\underline{\operatorname{Ext}}^{\bullet}_Z(F,G))$。因此有：
+\begin{SGAresult}{定理}{1.6}
+存在三个收敛到 $\operatorname{Ext}^{\bullet}_Z(X;F,G)$ 的\Term{spectral-functor}{谱函子}，其初始项分别为
+\begin{align}
+&H^p_Z(X,\underline{\operatorname{Ext}}^q_{\mathscr O_X}(F,G)),\tag{1.6.1}\\
+&H^p(X,\underline{\operatorname{Ext}}^q_Z(F,G)),\tag{1.6.2}\\
+&\operatorname{Ext}^p_{\mathscr O_X}(X;F,\underline H^q_Z(G)).\tag{1.6.3}
+\end{align}
+\end{SGAresult}
+\textbf{1.7。}现设 $Z'$ 是 $Z$ 的一个\Term{closed-subset}{闭子集}，并令 $Z''=Z-Z'$。有\Term{exact-sequence}{正合列}
+\[
+0\longrightarrow\mathscr O_{X,Z''}\longrightarrow\mathscr O_{X,Z}
+\longrightarrow\mathscr O_{X,Z'}\longrightarrow0,\tag{1.7.1}
+\]
+它推广了（[Godement], 2.9.3）中的\Term{exact-sequence}{正合列}。这个\Term{exact-sequence}{正合列}\Term{local-scheme}{局部}\Term{splitting}{分裂}，因而对每个 $\mathscr O_X$-模 $F$，还有\Term{exact-sequence}{正合列}
+\[
+0\longrightarrow F\otimes_{\mathscr O_X}\mathscr O_{X,Z''}
+\longrightarrow F\otimes_{\mathscr O_X}\mathscr O_{X,Z}
+\longrightarrow F\otimes_{\mathscr O_X}\mathscr O_{X,Z'}\longrightarrow0.\tag{1.7.2}
+\]
+现设 $G$ 是一个 $\mathscr O_X$-模；对\Term{exact-sequence}{正合列} (1.7.2) 施以\Term{functor}{函子} $\operatorname{Hom}_{\mathscr O_X}(\bullet,G)$，由 (1.4.2) 和 $\operatorname{Ext}$ 的\Term{exact-sequence}{正合列}得到下述定理。
+\begin{SGAresult}{定理}{1.8}
+设 $Z$ 是 $X$ 的\Term{locally-closed}{局部闭}\Term{subset}{子集}，$Z'$ 是 $Z$ 的\Term{closed-subset}{闭子集}，$Z''=Z-Z'$。则有关于 $F,G$ 的\Term{functorial}{函子性}\Term{exact-sequence}{正合列}
+\[
+\begin{aligned}
+0&\longrightarrow\operatorname{Hom}_{Z'}(F,G)\longrightarrow\operatorname{Hom}_Z(F,G)
+\longrightarrow\operatorname{Hom}_{Z''}(F,G)\longrightarrow\operatorname{Ext}^1_{Z'}(F,G)\longrightarrow\cdots\\
+&\quad\cdots\longrightarrow\operatorname{Ext}^i_Z(F,G)\longrightarrow\operatorname{Ext}^i_{Z''}(F,G)
+\longrightarrow\operatorname{Ext}^{i+1}_{Z'}(F,G)\longrightarrow\cdots.
+\end{aligned}
+\]
+\end{SGAresult}
+\begin{SGAresult}{推论}{1.9}
+设 $Y$ 是 $X$ 的\Term{closed-subset}{闭子集}，$U=X-Y$。则有关于 $F,G$ 的\Term{functorial}{函子性}\Term{exact-sequence}{正合列}
+\[
+\begin{aligned}
+0&\longrightarrow\operatorname{Hom}_Y(F,G)\longrightarrow\operatorname{Hom}_{\mathscr O_X}(F,G)
+\longrightarrow\operatorname{Hom}_{\mathscr O_X|_U}(F|_U,G|_U)\longrightarrow\operatorname{Ext}^1_Y(F,G)\longrightarrow\cdots\\
+&\quad\cdots\longrightarrow\operatorname{Ext}^i_{\mathscr O_X}(F,G)
+\longrightarrow\operatorname{Ext}^i_{\mathscr O_X|_U}(F|_U,G|_U)
+\longrightarrow\operatorname{Ext}^{i+1}_Y(F,G)\longrightarrow\cdots.
+\end{aligned}
+\]
+\end{SGAresult}
+\SourcePage{67}
+\begin{proof}
+此推论是定理 (1.3) 和定理 (1.8) 的直接结果。
+\end{proof}
+\SGAsection{2}{在预概形上的拟凝聚层中的应用}
+\begin{SGAresult}{命题}{2.1}
+设 $X$ 是一个\Term{locally-noetherian}{局部诺特}\Term{prescheme}{预概形}；对 $X$ 的每个\Term{locally-closed}{局部闭}\Term{subset}{子集} $Z$、每个\Term{coherent}{凝聚}模 $F$ 和 $X$ 上的每个\Term{quasi-coherent}{拟凝聚}模 $G$，$\underline{\operatorname{Ext}}^i_Z(F,G)$ 都是\Term{quasi-coherent}{拟凝聚}的。
+\end{SGAresult}
+\begin{proof}
+与 (1.6.3) 相同地可证，模 $\underline{\operatorname{Ext}}^i_Z(F,G)$ 是一个\Term{spectral-sequence}{谱序列}的\Term{limit}{极限}项，其初始项为 $\underline{\operatorname{Ext}}^p_{\mathscr O_X}(F,\underline H^q_Z(G))$。由第 II 讲推论 3，$\underline H^q_Z(G)$ 是\Term{quasi-coherent}{拟凝聚}的；由于 $F$ \Term{coherent}{凝聚}，$\underline{\operatorname{Ext}}^p_{\mathscr O_X}(F,\underline H^q_Z(G))$ 也\Term{quasi-coherent}{拟凝聚}。命题随即得到。
+\end{proof}
+\textbf{2.2。}现设 $Y$ 是 $X$ 的\Term{closed-subprescheme}{闭子预概形}，$\mathscr I$ 是 $Y$ 的一个\Term{ideal-of-definition}{定义理想}。设整数 $m,n$ 满足 $m\geq n\geq0$；以 $i_{n,m}$ 表示\Term{canonical}{典范}映射 $\mathscr O_{Y_m}=\mathscr O_X/\mathscr I^{m+1}\to\mathscr O_X/\mathscr I^{n+1}=\mathscr O_{Y_n}$，以 $j_n$ 表示映射 $\mathscr O_{X,Y}\to\mathscr O_{Y_n}$。$(\mathscr O_{Y_n},i_{n,m})$ 构成一个\Term{projective-system}{逆系}，且 $j_n$ 与 $i_{n,m}$ 相容。
+施以\Term{functor}{函子} $\operatorname{Ext}^i_{\mathscr O_X}(F\otimes\bullet,G)$，得到\Term{morphism}{态射}
+\[
+\varphi':\varinjlim_n\operatorname{Ext}^i_{\mathscr O_X}(X;F\otimes\mathscr O_{Y_n},G)
+\longrightarrow\operatorname{Ext}^i_{\mathscr O_X}(X;F\otimes\mathscr O_{X,Y},G);
+\]
+这是关于 $G$ 的\Term{cohomological-functor}{上同调函子}\Term{morphism}{态射}。因此，$\varphi'$ 与 $\theta$（见 1.4）的复合\Term{morphism}{态射}
+\[
+\varphi:\varinjlim_n\operatorname{Ext}^i_{\mathscr O_X}(X;F\otimes\mathscr O_{Y_n},G)
+\longrightarrow\operatorname{Ext}^i_Y(X;F,G)
+\]
+也是关于 $G$ 的\Term{cohomological-functor}{上同调函子}\Term{morphism}{态射}。同样定义
+\[
+\underline\varphi:\varinjlim_n\underline{\operatorname{Ext}}^i_{\mathscr O_X}(F\otimes\mathscr O_{Y_n},G)
+\longrightarrow\underline{\operatorname{Ext}}^i_Y(X;F,G).
+\]
+\begin{SGAresult}{定理}{2.3}
+设 $X$ 是\Term{locally-noetherian}{局部诺特}\Term{prescheme}{预概形}，$Y$ 是由\Term{coherent}{凝聚}\Term{ideal}{理想} $\mathscr I$ 定义的 $X$ 的\Term{closed-subset}{闭子集}，$F$ 是\Term{coherent}{凝聚}模，$G$ 是\Term{quasi-coherent}{拟凝聚}模。则：
+\begin{enumerate}
+\item[a)] $\underline\varphi$ 是\Term{isomorphism}{同构}。
+\item[b)] 若 $X$ \Term{noetherian}{诺特}，则 $\varphi$ 是\Term{isomorphism}{同构}。
+\end{enumerate}
+\end{SGAresult}
+\begin{proof}
+b) 的证明，借助\Term{spectral-sequence}{谱序列} 1.6.2，与第 II 讲 6b) 的证明几乎逐字相同，故不再重复。
+为证明 a)，由 (2.1) 可以假设 $X$ \Term{affine}{仿射}，其环为 $A$，$F$（分别为 $G$）由一个 $A$-模 $M$（分别为 $N$）定义，$\mathscr I$ 由一个\Term{ideal}{理想} $I$ 定义。只须证明由 $\underline\varphi$ 导出的\Term{homomorphism}{同态}
+\SourcePage{68}
+\[
+\varinjlim_n\operatorname{Ext}^i_A(M/I^nM,N)
+\longrightarrow\operatorname{Ext}^i_Y(X,F,G)\tag{2.3.1}
+\]
+是\Term{isomorphism}{同构}。
+事实上，$i=0$ 时，可将 (2.3.1) 的两端\Term{canonical}{典范}地等同于 $\operatorname{Hom}_A(M,N)$ 中由被 $I$ 的某个幂消去的元素所成的\Term{submodule}{子模}。此时\Term{homomorphism}{同态} (2.3.1) 就是恒等映射。
+
+\Term{functor}{函子} $N\mapsto\varinjlim_n\operatorname{Ext}^{\bullet}_A(M/I^nM,N)$ 是一个\Term{universal-delta-functor}{普遍 $\partial$-函子}。我们将证明\Term{functor}{函子} $N\mapsto\operatorname{Ext}^{\bullet}_Y(M,N)$ 也如此。事实上，若 $N$ 是\Term{injective-module}{内射模}，由（9 和 11），当 $q\neq0$ 时，$\underline H^q_Y(N)=0$；由第 IV 讲 2.2，$\underline H^0_Y(N)$ 是\Term{injective}{内射}的。
+因此，若 $p+q\neq0$，则 $\operatorname{Ext}^p_{\mathscr O_X}(X;M,\underline H^q_Y(N))=0$；故由 (1.6.3)，当 $i\neq0$ 且 $N$ \Term{injective}{内射}时，$\operatorname{Ext}^i_Y(M,N)=0$。证明完成。
+\end{proof}
+\textbf{参考文献}
+
+与第 I 讲末所列文献相同，分别引用为 [Tôhoku] 和 [Godement]。
+
+\SGAchapter{VII}{消失判据与层 $\underline{\operatorname{Ext}}^i_Y(F,G)$ 的凝聚性条件}{Critères de nullité, conditions de cohérence des faisceaux Ext}
+\SourcePage{69}
+\SGAsection{1}{对 $i<n$ 的研究}
+先证明一个引理。
+\begin{SGAresult}{引理}{1.1}
+设 $X$ 是\Term{locally-noetherian}{局部诺特}\Term{prescheme}{预概形}，$Y$ 是 $X$ 的\Term{closed-subset}{闭子集}，$G$ 是\Term{quasi-coherent}{拟凝聚} $\mathscr O_X$-模。假设对每个\Term{support}{支集}包含在 $Y$ 内的\Term{coherent}{凝聚} $\mathscr O_X$-模 $F$，都有
+\[\underline{\operatorname{Ext}}^{n-1}(F,G)=0.\]
+则对每个\Term{coherent}{凝聚} $\mathscr O_X$-模 $F$ 和 $X$ 的每个\Term{closed-subset}{闭子集} $Z$，只要 $Y\supset\operatorname{Supp}F\cap Z$，便有
+\[\underline{\operatorname{Ext}}^n_Z(F,G)\simeq\underline{\operatorname{Hom}}(F,\underline H^n_Y(G)).\]
+\end{SGAresult}
+\begin{proof}
+首先注意到
+\[\underline{\operatorname{Ext}}^i_Z(F,G)=\underline{\operatorname{Ext}}^i_{Z\cap\operatorname{Supp}F}(F,G)\]
+（这是\Term{trivial-bundle}{平凡}的，见第 VI 讲）。先对 $Z=X$，也就是 $\operatorname{Supp}F\subset Y$ 的情形证明。定义在\Term{support}{支集}包含于 $Y$ 的\Term{coherent}{凝聚} $\mathscr O_X$-模\Term{category}{范畴}上的\Term{functor}{函子}
+\[F\longmapsto\underline{\operatorname{Ext}}^n(F,G)\]
+是\Term{left-exact}{左正合}的。根据第 IV 讲 1.3，它由
+\[I=\varinjlim_k\underline{\operatorname{Ext}}^n(\mathscr O_X/\mathscr I^{k+1},G)\]
+表示，其中 $\mathscr I$ 是 $Y$ 的\Term{ideal-of-definition}{定义理想}。而由第 II 讲 6，已知
+\[\underline H^n_Y(G)\simeq\varinjlim_k\underline{\operatorname{Ext}}^n(\mathscr O_X/\mathscr I^{k+1},G).\]
+由此得到 $Z=X$ 时的结论。再由第 VI 讲 2.3，已知
+\[\underline{\operatorname{Ext}}^n_Z(F,G)\simeq\varinjlim_k\underline{\operatorname{Ext}}^n(F/\mathscr J^{k+1}F,G),\]
+\SourcePage{70}
+其中 $\mathscr J$ 是 $Z$ 的\Term{ideal-of-definition}{定义理想}。若 $Z\cap\operatorname{Supp}F\subset Y$，则 $F/\mathscr J^{k+1}F$ 的\Term{support}{支集}包含于 $Y$；由刚刚证明的结果，有
+\[\underline{\operatorname{Ext}}^n_Z(F,G)\simeq\varinjlim_k\underline{\operatorname{Hom}}(F/\mathscr J^{k+1}F,\underline H^n_Y(G)).\]
+剩下须说明，当 $Z\cap\operatorname{Supp}F\subset Y$ 时，自然\Term{homomorphism}{同态}
+\[\varinjlim_k\underline{\operatorname{Hom}}(F/\mathscr J^{k+1}F,\underline H^n_Y(G))\longrightarrow\underline{\operatorname{Hom}}(F,\underline H^n_Y(G))\]
+是\Term{isomorphism}{同构}。$X$ 可由\Term{noetherian}{诺特}\Term{affine}{仿射}\Term{open-subset}{开集}\Term{covering}{覆盖}，故归结为 $X$ \Term{affine}{仿射}\Term{noetherian}{诺特}的情形；此时 $F(X)$ 是\Term{finitely-generated}{有限型} $\mathscr O_X(X)$-模，且 $\operatorname{Supp}\underline H^n_Y(G)\subset Y$。因此每个\Term{homomorphism}{同态} $u:F(X)\to\underline H^n_Y(G)(X)$ 都被 $\mathscr I$ 的某个幂消去，从而也被 $\mathscr J$ 的某个幂消去。证毕。
+\end{proof}
+\begin{SGAresult}{命题}{1.2}
+设 $X$ 是\Term{locally-noetherian}{局部诺特}\Term{prescheme}{预概形}，$Y$ 是 $X$ 的\Term{closed-subset}{闭子集}，$G$ 是\Term{quasi-coherent}{拟凝聚} $\mathscr O_X$-模，$n$ 是整数。无论 $X$ 的\Term{closed-subset}{闭子集} $Z,S$ 如何，只要 $Z\cap S=Y$，下列条件便\Term{equivalence}{等价}：
+\begin{enumerate}
+\item[(i)] 当 $i<n$ 时，$\underline H^i_Y(G)=0$；
+\item[(ii)] 存在\Term{support}{支集}为 $S$ 的\Term{coherent}{凝聚} $\mathscr O_X$-模 $F$，使得当 $i<n$ 时，$\underline{\operatorname{Ext}}^i_Z(F,G)=0$；
+\item[(iii)] 对每个\Term{support}{支集}包含于 $S$ 的\Term{coherent}{凝聚} $\mathscr O_X$-模 $F$（即 $\operatorname{Supp}F\cap Z=\operatorname{Supp}F\cap Y$），当 $i<n$ 时有 $\underline{\operatorname{Ext}}^i_Z(F,G)=0$；
+\item[(iv)] 对每个\Term{coherent}{凝聚} $\mathscr O_X$-模 $F$，当 $i<n$ 时有 $\underline{\operatorname{Ext}}^i_Y(F,G)=0$。
+\end{enumerate}
+此外，若这些条件成立，则对每个\Term{coherent}{凝聚} $\mathscr O_X$-模 $F$ 及 $X$ 的每个\Term{closed-subset}{闭子集} $Z'$，只要 $Z'\cap\operatorname{Supp}F=Y\cap\operatorname{Supp}F$，便有\Term{isomorphism}{同构}
+\[\underline{\operatorname{Ext}}^n_Z(F,G)\simeq\underline{\operatorname{Ext}}^n_Y(F,G)\simeq\underline{\operatorname{Hom}}(F,\underline H^n_Y(G)).\]
+\end{SGAresult}
+\begin{proof}
+用归纳法证明。$n<0$ 时命题显然。假设对 $n<q$ 命题已证。若 $n=q$ 时，对上述两个\Term{subset}{子集} $Z,S$ 有一个条件成立，则由归纳假设，对于 $X$ 的每个\Term{closed-subset}{闭子集} $Z'$ 和每个\Term{coherent}{凝聚} $\mathscr O_X$-模 $F$，只要 $Z'\cap\operatorname{Supp}F=Y\cap\operatorname{Supp}F$，便有\Term{isomorphism}{同构}
+\[
+\underline{\operatorname{Ext}}^{q-1}_{Z'}(F,G)\simeq\underline{\operatorname{Hom}}(F,\underline H^{q-1}_Y(G))\simeq\underline{\operatorname{Ext}}^{q-1}_Y(F,G).\tag{1.1}
+\]
+于是：
+(i)$\Rightarrow$(iv)，因为在 (1.1) 中取 $Z'=Y$；
+(iv)$\Rightarrow$(iii)，因为在 (1.1) 中取 $Z'=Z$；
+(iii)$\Rightarrow$(ii)，因为取 $F=\mathscr O_S$；
+\SourcePage{71}
+(ii)$\Rightarrow$(i)，因为在 (1.1) 中取 $Z'=Z$，得到 $\underline{\operatorname{Hom}}(F,\underline H^{q-1}_Y(G))=0$；再注意到
+\[\operatorname{Supp}\underline H^{q-1}_Y(G)\subset Y=Z\cap S\subset S=\operatorname{Supp}F,\]
+并应用下述引理。
+\end{proof}
+\begin{SGAresult}{引理}{1.3}
+设 $X$ 是\Term{prescheme}{预概形}，$P$ 是\Term{coherent}{凝聚} $\mathscr O_X$-模，$H$ 是\Term{quasi-coherent}{拟凝聚} $\mathscr O_X$-模，并且
+\[\underline{\operatorname{Hom}}(P,H)=0,\qquad\operatorname{Supp}P\supset\operatorname{Supp}H.\]
+则 $H=0$。
+\end{SGAresult}
+\begin{proof}
+只须在 $X$ \Term{affine}{仿射}时证明引理，因为\Term{affine}{仿射}\Term{open-subset}{开集}构成 $X$ 的\Term{topology}{拓扑}基，且假设在限制到\Term{open-subset}{开集}后保持成立。此时归结为 $A$-模的问题，其中 $X=\operatorname{Spec}(A)$。应用公式（它只要求 $M$ 为\Term{finitely-generated}{有限型}）：
+\[\operatorname{Ass}\operatorname{Hom}_A(P,H)=\operatorname{Supp}P\cap\operatorname{Ass}H.\]
+已知 $\operatorname{Ass}H\subset\operatorname{Supp}H\subset\operatorname{Supp}P$，而 $\operatorname{Ass}\operatorname{Hom}_A(P,H)=\varnothing$；因此 $\operatorname{Ass}H=\varnothing$，从而 $H=0$。
+\end{proof}
+为完成命题的证明，只须注意 (iv) 使我们可以应用 1.1。
+\begin{SGAresult}{推论}{1.4}
+设 $G$ 是\Term{coherent}{凝聚}且为 \Term{cohen-macaulay}{Cohen--Macaulay} 的 $\mathscr O_X$-模，$n\in\mathbf Z$。1.2 中的条件\Term{equivalence}{等价}于
+\[\text{(v)}\qquad\operatorname{codim}(Y\cap\operatorname{Supp}G,\operatorname{Supp}G)\geq n.\]
+\end{SGAresult}
+\begin{proof}
+先回忆，称一个 $\mathscr O_X$-模为 \Term{cohen-macaulay}{Cohen--Macaulay} 模，是指对每个 $x\in X$，其\Term{stalk}{茎} $G_x$ 都是 \Term{cohen-macaulay}{Cohen--Macaulay} 的 $\mathscr O_{X,x}$-模，即对每个 $x\in S=\operatorname{Supp}G$ 有
+\[\operatorname{prof}G_x=\dim G_x=\dim\mathscr O_{S,x}.\tag{1.2}\]
+由第 III 讲命题 3.3，1.2 的条件 (i) \Term{equivalence}{等价}于
+\[\operatorname{prof}_YG=\inf_{x\in Y}\operatorname{prof}G_x\geq n,\tag{1.3}\]
+因而也\Term{equivalence}{等价}于
+\[\operatorname{prof}_YG=\inf_{x\in Y\cap S}\operatorname{prof}G_x\geq n,\]
+因为零模的\Term{depth}{深度}是无穷。又按定义，
+\[\operatorname{codim}(Y\cap S,S)=\inf_{x\in S\cap Y}\dim\mathscr O_{S,x},\]
+故应用公式 (1.2) 即得结论。
+\end{proof}
+我们现在证明一个结果，以便由某些消失判据推出所要研究的\Term{coherent}{凝聚}性条件。
+\SourcePage{72}
+\begin{SGAresult}{引理}{1.5}
+设 $X$ 是\Term{locally-noetherian}{局部诺特}\Term{prescheme}{预概形}。设 $T^*$ 是定义在\Term{coherent}{凝聚} $\mathscr O_X$-模\Term{category}{范畴}上、取值于 $\mathscr O_X$-模\Term{category}{范畴}的\Term{contravariant}{反变}\Term{exact}{正合} $\partial$-\Term{functor}{函子}。设 $Y$ 是 $X$ 的\Term{closed-subset}{闭子集}，$i\in\mathbf Z$。假设对每个\Term{support}{支集}包含于 $Y$ 的\Term{coherent}{凝聚} $\mathscr O_X$-模 $F$，$T^iF$ 与 $T^{i-1}F$ 都\Term{coherent}{凝聚}。设 $F$ 是\Term{coherent}{凝聚} $\mathscr O_X$-模。则 $T^iF$ \Term{coherent}{凝聚}的充要条件是 $T^iF''$ \Term{coherent}{凝聚}，其中
+\[F''=F/\underline\Gamma_Y(F).\]
+\end{SGAresult}
+\begin{proof}
+事实上，由于 $X$ \Term{locally-noetherian}{局部诺特}，$F'=\underline\Gamma_Y(F)$ \Term{coherent}{凝聚}；$T^*$ 的\Term{cohomology}{上同调}\Term{exact-sequence}{正合列}给出
+\[T^{i-1}F'\longrightarrow T^iF''\longrightarrow T^iF\longrightarrow T^iF',\]
+两端的项\Term{coherent}{凝聚}，故得到结论。
+\end{proof}
+\begin{SGAresult}{引理}{1.6}
+若 $F,G$ \Term{coherent}{凝聚}且 $\operatorname{Supp}F\subset Y$，则 $\underline{\operatorname{Ext}}^i_Y(F,G)$ \Term{coherent}{凝聚}。
+\end{SGAresult}
+\begin{proof}
+事实上，$\underline{\operatorname{Ext}}^i_Y(F,G)$ \Term{isomorphism}{同构}于 $\underline{\operatorname{Ext}}^i(F,G)$。而且以下事实对每个\Term{ringed-space}{赋环空间} $X$ 都成立：若 $Z$ 是包含 $Y\cap\operatorname{Supp}F$ 的\Term{closed-subset}{闭子集}，则 $\underline{\operatorname{Ext}}^i_Z(F,G)$ \Term{isomorphism}{同构}于 $\underline{\operatorname{Ext}}^i_Y(F,G)$（见第 VI 讲）。
+\end{proof}
+\begin{SGAresult}{命题}{1.7}
+假设 $F,G$ \Term{coherent}{凝聚}，令 $\operatorname{Supp}F=S$，$S'=\overline{S\cap(X-Y)}$。若对每个 $x\in Y\cap S'$ 都有 $\operatorname{prof}G_x\geq n$，则当 $i<n$ 时，$\underline{\operatorname{Ext}}^i_Y(F,G)$ \Term{coherent}{凝聚}。
+\end{SGAresult}
+\begin{proof}
+事实上，由 1.6 可对 $T^*(F)=\underline{\operatorname{Ext}}^*_Y(F,G)$ 应用 1.5。令 $F''=F/\underline\Gamma_Y(F)$，则 $\operatorname{Supp}F''=S'$。由第 III 讲 3.3，关于 $G$ 的\Term{depth}{深度}的假设保证当 $i<n$ 时 $\underline H^i_{Y\cap S'}(G)$ 消失；由 1.2 得到当 $i<n$ 时 $T^iF''$ 消失，再由 1.5 即得结论。
+\end{proof}
+\SGAsection{2}{对 $i>n$ 的研究}
+设 $X$ 是\Term{locally-noetherian}{局部诺特}\Term{regular}{正则}\Term{prescheme}{预概形}，即其所有\Term{local-ring}{局部环}均\Term{regular}{正则}。设 $Y$ 是 $X$ 的\Term{closed-subset}{闭子集}，$F,G$ 是两个\Term{coherent}{凝聚} $\mathscr O_X$-模。令 $S=\operatorname{Supp}F$，$S'=\overline{S\cap(X-Y)}$，并令
+\[
+m=\sup_{x\in Y\cap S}\dim\mathscr O_{X,x},\qquad
+n=\sup_{x\in Y\cap S'}\dim\mathscr O_{X,x};
+\]
+于是 $n\leq m$。
+\begin{SGAresult}{命题}{2.1}
+在上述情形下：
+\begin{enumerate}
+\item[(1)] 当 $i>m$ 时，$\underline{\operatorname{Ext}}^i_Y(F,G)=0$；
+\item[(2)] 当 $i>n$ 时，$\underline{\operatorname{Ext}}^i_Y(F,G)$ \Term{coherent}{凝聚}。
+\end{enumerate}
+\end{SGAresult}
+\SourcePage{73}
+\begin{proof}
+先注意到，当 $\operatorname{Supp}F\subset Y$ 时，$\underline{\operatorname{Ext}}^i_Y(F,G)$ 对所有 $i$ 都\Term{coherent}{凝聚}。此外，像上面那样令 $F''=F/\underline\Gamma_Y(F)$，则 $\operatorname{Supp}F''=S'$，故 (2) 由 (1) 和 1.3 得到。
+为证明 (1)，先注意到
+\[\underline{\operatorname{Ext}}^i_Y(F,G)\simeq\varinjlim_k\underline{\operatorname{Ext}}^i(F/\mathscr J^kF,G),\]
+其中 $\mathscr J$ 是 $Y$ 的\Term{ideal-of-definition}{定义理想}。另一方面，由 A. Grothendieck《Sur quelques points d'algèbre homologique》，\emph{Tôhoku Mathematical Journal} 9 (1957), pp.~119--221 的定理 4.2.2，$\underline{\operatorname{Ext}}$ 与取\Term{stalk}{茎}可交换，至少在 $X$ 是\Term{locally-noetherian}{局部诺特}\Term{prescheme}{预概形}且第一个变元\Term{coherent}{凝聚}时如此；\Term{direct-limit}{归纳极限}也与取\Term{stalk}{茎}交换，因而对每个 $x\in X$ 得到\Term{isomorphism}{同构}
+\[(\underline{\operatorname{Ext}}^i_Y(F,G))_x\simeq\varinjlim_k\operatorname{Ext}^i_{\mathscr O_{X,x}}((F/\mathscr J^kF)_x,G_x).\]
+由于 $\operatorname{Supp}\underline{\operatorname{Ext}}^i_Y(F,G)\subset S\cap Y$，为得到结论，只须注意到 $x\in Y\cap S$ 蕴含 $\dim\mathscr O_{X,x}\leq m$，因而
+\[\operatorname{Ext}^i_{\mathscr O_{X,x}}((F/\mathscr J^kF)_x,G_x)=0\quad\text{若 }i>m,\]
+因为\Term{regular-local-ring}{正则局部环}的\Term{global-cohomological-dimension}{整体上同调维数}等于其\Term{dimension}{维数}。\footnote{参见 EGA $0_{\mathrm{IV}}$ 17.3.1。}
+\end{proof}
+设 $X$ 是\Term{locally-noetherian}{局部诺特}\Term{prescheme}{预概形}；对 $X$ 的每个\Term{subset}{子集} $P$，令
+\[D(P)=\{\dim\mathscr O_{X,p}\mid p\in P\}.\]
+\begin{SGAresult}{引理}{2.2}
+若 $P$ 是 $A$ 的一个\Term{connected}{连通}子\Term{prescheme}{预概形}的底空间，则 $D(P)$ 是一个区间。
+\end{SGAresult}
+\begin{proof}
+事实上，设 $a$ 与 $B$ 属于 $D(P)$，对应于 $P$ 的点 $p,q$。证明存在 $P$ 中的一列点 $(p=p_1,\ldots,p_n=q)$，使得对 $1\leq i<n$ 有 $\dim\mathscr O_{X,p_i}-\dim\mathscr O_{X,p_{i+1}}=1$；这将说明 $D(P)$ 包含区间 $[p,q]$。为此注意，$p,q$ 可由 $P$ 的一列\Term{irreducible-component}{不可约分支}连接，使相邻的两个分支相交。归结为 $p$ 是 $P$ 的一个\Term{irreducible-component}{不可约分支} $Q$ 的\Term{generic-point}{泛点}且 $q\in Q$ 的情形；于是将它们视为 $\mathscr O_q$ 的\Term{ideal}{理想}时有 $q\supset p$，这时由\Term{dimension}{维数}的定义即得结论。
+\end{proof}
+\begin{SGAresult}{命题}{2.3}
+设 $X$ 是\Term{locally-noetherian}{局部诺特}\Term{regular}{正则}\Term{prescheme}{预概形}，$Y$ 是 $X$ 的\Term{closed-subset}{闭子集}，$F$ 是\Term{coherent}{凝聚} $\mathscr O_X$-模。令 $P=Y\cap\overline{\operatorname{Supp}F\cap(X-Y)}$。设 $n\in\mathbf Z$ 且 $n\notin D(P)$。则 $\underline{\operatorname{Ext}}^n_Y(F,\mathscr O_X)$ \Term{coherent}{凝聚}。
+\end{SGAresult}
+\SourcePage{74}
+\begin{proof}
+结论是\Term{local-scheme}{局部}的，假设在限制到\Term{open-subset}{开集}后保持成立。由于 $P$ 闭，因而\Term{locally-noetherian}{局部诺特}，从而\Term{locally-connected}{局部连通}；因此可假设 $X$ \Term{affine}{仿射}且\Term{noetherian}{诺特}，而 $P$ \Term{connected}{连通}。令 $D(P)=[a,b[$，由前一引理这样写是允许的；若 $n>b$，由 2.1 得到结论；若 $n<a$，则对每个 $x\in P$，有 $n<\dim\mathscr O_{X,x}=\operatorname{prof}\mathscr O_{X,x}$，由 1.7 得到结论。
+\end{proof}
+
+\SGAchapter{VIII}{有限性定理}{Le théorème de finitude}
+\SourcePage{75}
+\SGAsection{1}{一个双对偶谱序列}
+\footnote{熟悉 Verdier 的\Term{derived-category}{导出范畴}语言的读者会认出，这是与一个\Term{biduality}{双对偶}\Term{isomorphism}{同构}相联系的\Term{spectral-sequence}{谱序列}。参见 SGA 6 I。}
+先陈述我们所要达到的结果。
+\begin{SGAresult}{命题}{1.1}
+设 $A$ 是\Term{noetherian-ring}{诺特环}，$I$ 是 $A$ 的一个\Term{ideal}{理想}。令 $X=\operatorname{Spec}(A)$，$Y=V(I)$。设 $M$ 是\Term{finitely-generated}{有限型}且\Term{projective-dimension}{投射维数}\Term{finite}{有限}的 $A$-模，$F=\widetilde M$ 是与 $M$ 关联的 $\mathscr O_X$-模。
+\begin{enumerate}
+\item[1)] 存在\Term{spectral-sequence}{谱序列}
+\[H_Y(X,F)\Longleftarrow\operatorname{Ext}^p_Y(\operatorname{Ext}^{-q}(M,A),A).\]
+\item[2)] 存在\Term{spectral-sequence}{谱序列}
+\[\underline H_Y(X,F)\Longleftarrow\underline{\operatorname{Ext}}^p_Y(\underline{\operatorname{Ext}}^{-q}(F,\mathscr O_X),\mathscr O_X).\]
+\end{enumerate}
+\end{SGAresult}
+当然，2) 可由 1) 推出，只须注意，若 $M,N$ 是两个\Term{finitely-generated}{有限型} $A$-模，令 $F=\widetilde M$，$G=\widetilde N$，则有\Term{isomorphism}{同构}
+\[
+\underline H_Y(F)\simeq\widetilde{H_Y(X,F)},\qquad
+\underline{\operatorname{Ext}}_Y(F,G)\simeq\widetilde{\operatorname{Ext}_Y(F,G)},\qquad
+\underline{\operatorname{Ext}}_{\mathscr O_X}(F,G)\simeq\widetilde{\operatorname{Ext}_A(M,N)}.
+\]
+设 $\mathcal C$ 是 $A$-模\Term{category}{范畴}，$\mathbf{Ab}$ 是\Term{abelian-group}{阿贝尔群}\Term{category}{范畴}。设\Term{functor}{函子} $\mathsf F:\mathcal C\to\mathbf{Ab}$ 定义为
+\[M\longmapsto\Gamma_Y(\widetilde M).\]
+由第 II 讲已知，存在 $\partial$-\Term{functor}{函子}的\Term{isomorphism}{同构}
+\[H^*_Y(X,\widetilde M)\simeq R^*\mathsf F(M).\]
+\SourcePage{76}
+此外，设 $\operatorname{Ext}^*_Y$ 是
+\[\mathsf F\circ\operatorname{Hom}:\mathcal C^{\mathrm o}\times\mathcal C\longrightarrow\mathbf{Ab}\]
+关于第二个变元的右\Term{derived-functor}{导出函子}。由第 VI 讲已知，存在 $\partial$-\Term{functor}{函子}的\Term{isomorphism}{同构}
+\[\operatorname{Ext}^*_Y(M,N)\simeq\operatorname{Ext}^*_Y(\widetilde M,\widetilde N).\]
+最后记住第 VI 讲的下述结果：若 $C$ 是\Term{injective}{内射} $A$-模，$N$ 是\Term{finitely-generated}{有限型} $A$-模，则层 $\underline{\operatorname{Hom}}(\widetilde N,\widetilde C)\simeq\widetilde{\operatorname{Hom}(N,C)}$ 是\Term{flasque}{松弛}的，故 $R^1\mathsf F(\operatorname{Hom}(N,C))=0$。
+
+剩下须证明以下结果。
+\begin{SGAresult}{引理}{1.2}
+设 $A$ 是\Term{noetherian-ring}{诺特环}，$\mathcal C$ 是 $A$-模\Term{category}{范畴}。设 $\mathsf F:\mathcal C\to\mathbf{Ab}$ 是\Term{additive}{加性}\Term{left-exact}{左正合}\Term{functor}{函子}，使得对每个\Term{finitely-generated}{有限型} $A$-模 $N$ 及每个\Term{injective}{内射} $A$-模 $C$，都有 $R^1\mathsf F(\operatorname{Hom}(N,C))=0$。设 $M$ 是\Term{finitely-generated}{有限型}且\Term{projective-dimension}{投射维数}\Term{finite}{有限}的 $A$-模。存在\Term{spectral-sequence}{谱序列}
+\[R^*\mathsf F(M)\Longleftarrow\operatorname{Ext}^p_{\mathsf F}(\operatorname{Ext}^{-q}(M,A),A),\]
+其中 $\operatorname{Ext}^p_{\mathsf F}$ 表示 $\mathsf F\circ\operatorname{Hom}$ 的第 $p$ 个右\Term{derived-functor}{导出函子}。
+\end{SGAresult}
+\begin{proof}
+我们只考虑\Term{differential}{微分}次数为 $+1$ 的\Term{complex}{复形}。由对 $M$ 的假设，存在 $M$ 的一个\Term{finite}{有限}长\Term{projective-resolution}{投射消解}
+\[u:L^{\bullet}\longrightarrow M,\]
+而且各 $L^p$ 都是\Term{finitely-generated}{有限型}模，当 $p\notin[-n,0]$ 时 $L^p=0$。另设 $v:M\to I^{\bullet}$ 是 $M$ 的\Term{injective-resolution}{内射消解}。我断言
+\[v\circ u:L^{\bullet}\longrightarrow I^{\bullet}\tag{1.1}\]
+是 $L^{\bullet}$ 的\Term{injective-resolution}{内射消解}。须先说明这意味着什么。
+\end{proof}
+\begin{SGAresult}{定义}{1.3}
+设 $X^{\bullet}$ 是一个 $A$-模\Term{complex}{复形}；$X^{\bullet}$ 的\Term{injective-resolution}{内射消解}，是指一个\Term{complex}{复形}\Term{homomorphism}{同态}
+\[x:X^{\bullet}\longrightarrow CX^{\bullet},\]
+使得对每个 $p\in\mathbf Z$，$CX^p$ 都\Term{injective}{内射}，且 $x$ 在\Term{homology}{同调}上诱导\Term{isomorphism}{同构}。
+\end{SGAresult}
+\begin{SGAresult}{命题}{1.4}
+每个\Term{bounded-below}{左有界}\Term{complex}{复形}，即存在 $q\in\mathbf Z$ 使得当 $p<q$ 时 $X^p=0$ 的\Term{complex}{复形}，都有\Term{injective-resolution}{内射消解}。此外，若 $u:X^{\bullet}\to Y^{\bullet}$ 是（\Term{bounded-below}{左有界}）\Term{complex}{复形}的\Term{homomorphism}{同态}，$x:X^{\bullet}\to CX^{\bullet}$、$y:Y^{\bullet}\to CY^{\bullet}$ 分别是 $X^{\bullet}$、$Y^{\bullet}$ 的\Term{injective-resolution}{内射消解}，则存在一个在\Term{homotopy}{同伦}意义下唯一的\Term{complex}{复形}\Term{homomorphism}{同态}
+\[Cu:CX^{\bullet}\longrightarrow CY^{\bullet},\]
+\SourcePage{77}
+使下图在\Term{homotopy}{同伦}意义下交换：
+\[
+\begin{tikzcd}
+X^{\bullet}\arrow[r,"x"]\arrow[d,"u"']&CX^{\bullet}\arrow[d,"Cu"]\\
+Y^{\bullet}\arrow[r,"y"']&CY^{\bullet}.
+\end{tikzcd}
+\]
+\end{SGAresult}
+证明留给读者。\footnote{另参见 H. Cartan 与 S. Eilenberg，\emph{Homological Algebra}，Princeton Math. Series, vol.~19, Princeton University Press, 1956。}
+
+回忆第 V 讲引进的一个记号。
+\textbf{记号。}设 $X^{\bullet},Y^{\bullet}$ 是两个\Term{complex}{复形}。以 $\operatorname{Hom}^{\bullet}(X^{\bullet},Y^{\bullet})$ 表示\Term{simple-complex}{单复形}，其 $n$ 次分量为
+\[(\operatorname{Hom}^{\bullet}(X^{\bullet},Y^{\bullet}))^n
+=\prod_{-p+q=n}\operatorname{Hom}(X^p,Y^q),\]
+也记作 $\operatorname{Hom}^n(X^{\bullet},Y^{\bullet})$，\Term{differential}{微分}由下式给出：
+\[
+\partial_n:\operatorname{Hom}^n(X^{\bullet},Y^{\bullet})\longrightarrow
+\operatorname{Hom}^{n+1}(X^{\bullet},Y^{\bullet}),\qquad
+\partial_n=d'+(-1)^{n+1}d'',
+\]
+其中 $d',d''$ 是由 $X^{\bullet},Y^{\bullet}$ 的\Term{differential}{微分}所诱导的（次数为 $+1$ 的）\Term{differential}{微分}。
+
+令 $A^{\bullet}$ 是由 $p\neq0$ 时 $A^p=0$ 以及 $A^0=A$ 定义的\Term{complex}{复形}，设
+\[a:A^{\bullet}\longrightarrow CA^{\bullet}\]
+是 $A^{\bullet}$ 的一个\Term{injective-resolution}{内射消解}。考虑\Term{double-complex}{双复形}
+\[Q^{p,q}=\operatorname{Hom}(\operatorname{Hom}(L^{-q},A),CA^p).\tag{1.2}\]
+\Term{double-complex}{双复形} $\mathsf FQ^{\bullet\bullet}$ 的第一个\Term{spectral-sequence}{谱序列}将给出引理 1.2 的结论。
+令
+\[L'^{\bullet}=\operatorname{Hom}^{\bullet}(L^{\bullet},A^{\bullet}),\tag{1.3}\]
+以及
+\[P^{\bullet}=\operatorname{Hom}^{\bullet}(L'^{\bullet},CA^{\bullet}).\tag{1.4}\]
+容易看出，$P^{\bullet}$ 是与 $Q^{\bullet\bullet}$ 相联系的\Term{simple-complex}{单复形}。计算\Term{spectral-sequence}{谱序列}的\Term{limit}{极限}项，即 $\mathsf FP^{\bullet}$ 的\Term{homology}{同调}。为此，利用 $L^{\bullet}$ 在每一次数上都是\Term{finitely-generated}{有限型}\Term{projective-module}{投射模}这一事实，可证明 $L^{\bullet}$ \Term{isomorphism}{同构}于 $\operatorname{Hom}^{\bullet}(L'^{\bullet},A^{\bullet})$。由\Term{homomorphism}{同态} $a:A^{\bullet}\to CA^{\bullet}$ 得到\Term{homomorphism}{同态}
+\[b:\operatorname{Hom}^{\bullet}(L'^{\bullet},A^{\bullet})\longrightarrow
+\operatorname{Hom}^{\bullet}(L'^{\bullet},CA^{\bullet}),\]
+也就是一个\Term{homomorphism}{同态}
+\[c:L^{\bullet}\longrightarrow P^{\bullet}.\tag{1.5}\]
+\SourcePage{78}
+\begin{proof}[引理 1.2 的证明（续）]
+这样，利用 $L'^{\bullet}$ 在每一次数上都是\Term{finitely-generated}{有限型}\Term{projective-module}{投射模}且\Term{bounded-below}{左有界}这一事实，容易看出 (1.5) 是 $L^{\bullet}$ 的\Term{injective-resolution}{内射消解}。应用命题 1.4，可知 $P^{\bullet}$ 与 $I^{\bullet}$ \Term{homotopy-equivalence}{同伦等价}，其中 $I^{\bullet}$ 是上面 (1.1) 中引进的 $M$ 的\Term{injective-resolution}{内射消解}。由此得到，\Term{double-complex}{双复形} $\mathsf FQ^{\bullet\bullet}$ 的第一个\Term{spectral-sequence}{谱序列}的\Term{limit}{极限}项，即 $H^*(\mathsf FP^{\bullet})$，\Term{isomorphism}{同构}于 $R^*\mathsf F(M)$。
+
+\Term{double-complex}{双复形} $\mathsf FQ^{\bullet\bullet}$ 的第一个\Term{spectral-sequence}{谱序列}的初始项为
+\[E^{p,q}_2={}'H^p({}''H^q(\mathsf FQ^{\bullet\bullet})).\]
+对每个 $p\in\mathbf Z$，$CA^p$ 都\Term{injective}{内射}。由关于 $\mathsf F$ 的假设，\Term{functor}{函子}（限制在\Term{finitely-generated}{有限型}模\Term{category}{范畴}上）
+\[N\longmapsto\mathsf F\operatorname{Hom}(N,CA^p)\]
+是\Term{exact}{正合}的。由此得到\Term{isomorphism}{同构}
+\[{}''H^q(\mathsf F\operatorname{Hom}(L'^{\bullet},CA^p))
+\simeq\mathsf F\operatorname{Hom}(H^{-q}(L'^{\bullet}),CA^p).\]
+根据 $\operatorname{Ext}^*_{\mathsf F}$ 作为 $\mathsf F\circ\operatorname{Hom}$ 的\Term{derived-functor}{导出函子}的定义，得到\Term{isomorphism}{同构}
+\[E^{p,q}_2\simeq\operatorname{Ext}^p_{\mathsf F}(H^q(L'^{\bullet}),A).\]
+而 $L'^{\bullet}=\operatorname{Hom}^{\bullet}(L^{\bullet},A^{\bullet})$，其中 $L^{\bullet}$ 是 $M$ 的\Term{projective-resolution}{投射消解}，故有\Term{isomorphism}{同构}
+\[\operatorname{Ext}^q(M,A)\simeq H^q(L'^{\bullet}),\]
+这就给出结论。证毕。
+\end{proof}
+\SGAsection{2}{有限性定理}
+\begin{SGAresult}{定理}{2.1}
+\footnote{编者注：在稍一般的情形中，一个类似的陈述见 Mme Raynaud：Raynaud M.，《Théorèmes de Lefschetz en cohomologie des faisceaux cohérents et en cohomologie étale. Application au groupe fondamental》，\emph{Ann. Sci. Éc. Norm. Sup.} (4) 7 (1974), pp.~29--52，命题 II.2.1。}
+设 $X$ 是\Term{locally-noetherian}{局部诺特}\Term{prescheme}{预概形}，$Y$ 是 $X$ 的\Term{closed-subset}{闭子集}，$F$ 是\Term{coherent}{凝聚} $\mathscr O_X$-模。假设 $X$ \Term{local-scheme}{局部}可\Term{immersion}{嵌入}一个\Term{regular}{正则}\Term{prescheme}{预概形}。\footnote{此条件可推广为：在 $X$ 上\Term{local-scheme}{局部}存在一个“\Term{dualizing-complex}{对偶化复形}”，其意义见 R. Hartshorne，\emph{Residues and duality}（第 IV 讲原书第 46 页脚注 (*) 中所引）。}
+设 $i\in\mathbf Z$。假设：
+
+ a) 对每个 $x\in U=X-Y$，有
+\[H^{i-c(x)}(F_x)=0,\]
+\SourcePage{79}
+其中令\footnote{编者注：与第 V 讲一样，$H^*(F_x)$ 表示\Term{local-cohomology}{局部上同调} $H^*_{\mathfrak m_x}(F_x)$。}
+\[c(x)=\operatorname{codim}(\overline{\{x\}}\cap Y,\overline{\{x\}}).\tag{2.1}\]
+则：
+
+ b) $\underline H^i_Y(F)$ \Term{coherent}{凝聚}。
+\end{SGAresult}
+\begin{SGAresult}{推论}{2.2}
+\footnote{编者注：严格说来，这是下述证明的推论，而不是上述陈述的推论。蕴含 c)$\Rightarrow$a) 是同义反复。反向蕴含并非如此，但可由证明得到。具体说，像下文一样，用可\Term{immersion}{嵌入}\Term{regular}{正则}\Term{scheme}{概形}的\Term{open-subset}{开集}\Term{covering}{覆盖} $X$，按下文所述可归结为 $X=\operatorname{Spec}(A)$ \Term{affine}{仿射}\Term{regular}{正则}且 $F=\widetilde M$，其中 $M$ 是\Term{projective-dimension}{投射维数}\Term{finite}{有限}的 $A$-模。在这种情形中，将证明 a)、c) 分别\Term{equivalence}{等价}于\Term{duality}{对偶}条件 a')、c')。再证明 c') 蕴含条件 d)（见下文），而后者蕴含 a')。参见 2.4 后的讨论。}
+在前一定理的假设下，条件 a) \Term{equivalence}{等价}于：
+
+ c) 对每个满足 $c(x)=1$ 的 $x\in U$，有 $H^{i-1}(F_x)=0$。
+\end{SGAresult}
+\begin{SGAresult}{推论}{2.3}
+设 $X$ 是\Term{locally-noetherian}{局部诺特}且\Term{local-scheme}{局部}可\Term{immersion}{嵌入}\Term{regular}{正则}\Term{prescheme}{预概形}的\Term{prescheme}{预概形}，$Y$ 是 $X$ 的\Term{closed-subset}{闭子集}，$F$ 是\Term{coherent}{凝聚} $\mathscr O_X$-模，$n$ 是整数。下列条件\Term{equivalence}{等价}：
+\begin{enumerate}
+\item[(i)] 对每个 $x\in U$，有 $\operatorname{prof}F_x>n-c(x)$；
+\item[(ii)] 对每个满足 $c(x)=1$ 的 $x\in U$，有 $\operatorname{prof}F_x\geq n$；
+\item[(iii)] 对每个 $i\in\mathbf Z$，若 $i\leq n$，则 $\underline H^i_Y(F)$ \Term{coherent}{凝聚}；
+\item[(iv)] 当 $i<n$ 时，$R^ii_*(F|_U)$ \Term{coherent}{凝聚}。\footnote{编者注：此条件原来仅见于证明正文，未列入推论的陈述；由于第 3 节要用到，故将其补入。}
+\end{enumerate}
+\end{SGAresult}
+\begin{proof}
+先假设，当 $X$ 是\Term{noetherian}{诺特}\Term{regular-ring}{正则环} $A$ 的谱且 $F$ 是由\Term{projective-dimension}{投射维数}\Term{finite}{有限}的 $A$-模关联的层时，这些结果已知。
+
+首先注意，若 $(X_j)_{j\in J}$ 是 $X$ 的一个开\Term{covering}{覆盖}，各\Term{open-subset}{开集}可\Term{immersion}{嵌入}\Term{regular}{正则}\Term{scheme}{概形}，则上述每个条件都\Term{equivalence}{等价}于将 $X$ 换成 $X_j$、$Y$ 换成 $Y_j=Y\cap X_j$、$F$ 换成 $F|_{X_j}$ 后所得类似条件的合取。事实上，只有涉及 $c(x)$ 的条件可能有困难。设 $x\in U$。若 $x\in X_j$，令
+\[c_j(x)=\operatorname{codim}(X_j\cap\overline{\{x\}}\cap Y,X_j\cap\overline{\{x\}}),\]
+则必有 $c_j(x)\geq c(x)$。设 $y\in\overline{\{x\}}\cap Y$ “给出\Term{codimension}{余维}”，即满足 $c(x)=\dim\mathscr O_{\overline{\{x\}},y}$；设 $X_j$ 是\Term{covering}{覆盖}中包含 $y$ 的一个\Term{open-subset}{开集}，则 $x\in X_j$，故 $c_j(x)=c(x)$。因此，各 $X_j$ 上的 a) 蕴含 $X$ 上的 a)。
+\SourcePage{80}
+此时我们只得到部分逆命题，即 $X$ 上的 a) 蕴含那些满足 $c(x)=c_j(x)$ 的 $X_j$ 上的 a)，这对我们的目的已经足够。\footnote{编者注：事实上，$X$ 上的 a) 蕴含所有 $X_j$ 上的 a)，如原文所说，但为此须仔细阅读后面的证明。这个蕴含在此时似乎并非形式的。事实上，以下标 $J$ 表示某一性质 a)、b) 或 c) 对所有 $X_j$ 的合取。下面的证明将得出 c$_J$)$\Rightarrow$a$_J$)（即蕴含链 c')$\Rightarrow$d)$\Rightarrow$a')）。而 a)$\Rightarrow$c) 是同义反复，且 c)$\Leftrightarrow$c$_J$)，故 a)$\Rightarrow$a$_J$)。}
+
+选择 $X$ 的一个由可\Term{immersion}{嵌入}\Term{regular}{正则}\Term{prescheme}{预概形}的\Term{open-subset}{开集}所成的\Term{covering}{覆盖}。应用上述结果，可假设 $X$ 是某个\Term{regular}{正则} $X'$ 中的\Term{closed-subprescheme}{闭子预概形}。这时向 $X'$ 的归约是直接的。
+
+因此可假设 $X$ \Term{regular}{正则}，甚至通过用\Term{affine}{仿射}\Term{open-subset}{开集}\Term{covering}{覆盖} $X$，还可假设它\Term{affine}{仿射}。下述引理将说明可以假设 $F=\widetilde M$，其中 $M$ 的\Term{projective-dimension}{投射维数}\Term{finite}{有限}。
+\end{proof}
+\begin{SGAresult}{引理}{2.4}
+设 $X$ 是\Term{noetherian}{诺特}\Term{regular}{正则}\Term{prescheme}{预概形}，$F$ 是\Term{coherent}{凝聚} $\mathscr O_X$-模。将每个 $x\in X$ 映为 $F_x$ 的\Term{projective-dimension}{投射维数}的函数有上界。
+\end{SGAresult}
+\begin{proof}
+事实上，设 $x\in X$，$U$ 是 $x$ 的一个\Term{affine}{仿射}\Term{open-neighborhood}{开邻域}。设 $L^{\bullet}$ 是模 $F(U)$ 的\Term{projective-resolution}{投射消解}，其中各 $L^i$ 为\Term{finitely-generated}{有限型}。按假设，环 $\mathscr O_{X,x}$ \Term{regular}{正则}，故 $F_x$ 的\Term{projective-dimension}{投射维数}\Term{finite}{有限}；记此整数为 $d$。令
+\[K=\ker(L^{-d}\longrightarrow L^{-d+1}).\]
+模 $K_x$ 自由，因为 $d$ 是 $F_x$ 的\Term{projective-dimension}{投射维数}（[M]，第 VI 章命题 2.1）。由（EGA $0_{\mathrm I}$ 5.4.1 勘误），可知 $\mathscr O_U$-模 $\widetilde K$ 在 $x$ 的某个邻域 $U'\subset U$ 上自由。选择 $f\in\mathscr O_X(U)$，使得 $x\in D(f)\subset U'$，于是有 $M_{f'}$ 的一个\Term{projective-resolution}{投射消解}（$M=F(U)$）：
+\[0\longrightarrow K_f\longrightarrow(L^{d-1})_f\longrightarrow\cdots\longrightarrow M_f\longrightarrow0,\]
+这证明所研究的函数是\Term{upper-semicontinuous}{上半连续}的。由于 $X$ \Term{quasi-compact}{拟紧}，结论随之得出。
+\end{proof}
+\begin{proof}[定理与推论的证明（续）]
+以下假设 $X$ \Term{affine}{仿射}\Term{noetherian}{诺特}\Term{regular}{正则}，且 $F=\widetilde M$，其中 $M$ 是\Term{finitely-generated}{有限型} $A$-模，因而\Term{projective-dimension}{投射维数}必\Term{finite}{有限}。我们分几步进行。首先找出一个与 a) \Term{equivalence}{等价}的条件 d)，并证明它也\Term{equivalence}{等价}于 c)。然后利用上一节的\Term{spectral-sequence}{谱序列}证明 d)$\Rightarrow$b)。这样只剩下证明 (iii)$\Rightarrow$(ii)；事实上，(i)$\Leftrightarrow$(ii)$\Rightarrow$(iii) 直接由 a)$\Leftrightarrow$c)$\Rightarrow$b) 得到。
+
+设 $x\in U$；按假设，$\mathscr O_{X,x}$ 是\Term{regular-local-ring}{正则局部环}。以 $D$ 表示关于\Term{local-ring}{局部环} $\mathscr O_{X,x}$ 的\Term{dualizing-functor}{对偶化函子}，由第 V 讲 2.1，得到
+\[DH^{i-c(x)}(F_x)\simeq\operatorname{Ext}^{d(x)-i}_{\mathscr O_{X,x}}(F_x,\mathscr O_{X,x}),\]
+\SourcePage{81}
+其中令
+\[d(x)=\dim\mathscr O_{X,x}+c(x)=\dim\mathscr O_{X,x}+\operatorname{codim}(\overline{\{x\}}\cap Y,\overline{\{x\}}).\tag{2.2}\]
+$X$ \Term{noetherian}{诺特}且 $F$ \Term{coherent}{凝聚}，因此
+\[DH^{i-c(x)}(F_x)\simeq(\underline{\operatorname{Ext}}^{d(x)-i}_{\mathscr O_X}(F,\mathscr O_X))_x.\tag{2.3}\]
+此外，一个模为零的充要条件是其\Term{duality}{对偶}为零（见原书第 54 页编者注 (4)）。对每个 $q\in\mathbf Z$，令
+\[
+\begin{cases}
+S_q=\operatorname{Supp}\underline{\operatorname{Ext}}^q_{\mathscr O_X}(F,\mathscr O_X),\\
+S'_q=S_q\cap U,\qquad(U=X-Y),\\
+Z_q=\overline{S'_q}\cap Y.
+\end{cases}\tag{2.4}
+\]
+由公式 (2.3)，a) 和 c) 分别\Term{equivalence}{等价}于：
+
+ a') 对每个 $q\in\mathbf Z$ 和每个 $x\in S'_q$，有 $q+i\neq d(x)$。
+
+ c') 对每个 $q\in\mathbf Z$ 和每个 $x\in S'_q$，若 $c(x)=1$，则 $q+i\neq d(x)$。
+
+上面所说的条件 d) 如下：
+
+ d) 对每个 $q\in\mathbf Z$ 和每个 $y\in Z_q$，有 $q+i\neq\dim\mathscr O_{X,y}$。
+
+这些条件\Term{equivalence}{等价}：a')$\Rightarrow$c') 不言自明。
+
+ d)$\Rightarrow$a')。事实上，设 $q\in\mathbf Z$，$x\in S'_q$；取 $y\in\overline{\{x\}}\cap Y$，\footnote{编者注：以下各处点的\Term{closure}{闭包}均赋予\Term{reduced-structure}{约化结构}。}使其“给出\Term{codimension}{余维}”，即满足
+\[\dim\mathscr O_{\overline{\{x\}},y}=\operatorname{codim}(\overline{\{x\}}\cap Y,\overline{\{x\}})=c(x).\tag{2.5}\]
+由 $X$ 在 $y$ 处\Term{regular}{正则}，推出
+\[\dim\mathscr O_{X,y}=d(x)\qquad\text{（见 (2.2)）}.\tag{2.6}\]
+但 $y\in\overline{\{x\}}$，故 $y\in Z_q$，从而得到结论。
+
+ c')$\Rightarrow$d)。设 $q\in\mathbf Z$，$y\in Z_q$。暂且承认存在 $x\in S'_q$，使得
+\[y\in\overline{\{x\}},\qquad\dim\mathscr O_{\overline{\{x\}},y}=1\]
+（也称 $x$ 紧随 $y$）。于是 $c(x)=1$，因为 $x\notin Y$，所以 $y$ “给出 $\overline{\{x\}}\cap Y$ 在 $\overline{\{x\}}$ 中的\Term{codimension}{余维}”。由 c') 得
+\[q+i\neq d(x).\]
+注意到 $d(x)=\dim\mathscr O_{X,y}$（2.6），即得结论。刚才承认的结果表述为下述引理。
+\end{proof}
+\SourcePage{82}
+\begin{SGAresult}{引理}{2.5}
+设 $X$ 是\Term{locally-noetherian}{局部诺特}\Term{prescheme}{预概形}，$Y$ 是 $X$ 的\Term{closed-subset}{闭子集}。令 $U=X-Y$，并假设 $U$ 在 $X$ 中\Term{dense}{稠密}。对每个 $y\in Y$，存在“紧随它”的 $x\in U$，即满足
+\[y\in\overline{\{x\}},\qquad\dim\mathscr O_{\overline{\{x\}},y}=1.\]
+\end{SGAresult}
+我们应用此引理时，取 $X$ 为\Term{prescheme}{预概形} $\overline{S'_q}$，取 $Y$ 为\Term{subset}{子集} $Y\cap\overline{S'_q}$。
+\begin{proof}[2.5 的证明]
+存在 $x\in U$ 使得 $y\in\overline{\{x\}}$；因此在满足 $y\in\overline{\{x\}}$ 的 $x\in U$ 中，选择使 $\dim\mathscr O_{\overline{\{x\}},y}=r$ 最小的一个。须证明 $r=1$。按 $x$ 的选取，$\operatorname{Spec}(\mathscr O_{\overline{\{x\}},y})$ 中每个异于 $x$ 的点 $z$ 都在 $Y$ 内，所以 $\{x\}$ 在 $\operatorname{Spec}(\mathscr O_{\overline{\{x\}},y})$ 中开。由此得到结论。
+\end{proof}
+\begin{proof}[定理与推论的证明（续）]
+第二步是由 d) 推出 b)。令 $D(Z_q)=\{\dim\mathscr O_{X,y}\mid y\in Z_q\}$。由 d) 知，对每个 $q\in\mathbf Z$，有 $q+i\notin D(Z_q)$。应用第 VII 讲 2.3，得到
+\[\underline{\operatorname{Ext}}^{q+i}_Y(\underline{\operatorname{Ext}}^q(F,\mathscr O_X),\mathscr O_X)\quad\text{凝聚}.\]
+上一节的\Term{spectral-sequence}{谱序列}的初始项为
+\[E^{p,q}_2=\underline{\operatorname{Ext}}^p_Y(\underline{\operatorname{Ext}}^{-q}(F,\mathscr O_X),\mathscr O_X).\]
+可知对满足 $p+q=i$ 的每个 $p\in\mathbf Z$、$q\in\mathbf Z$，$E^{p,q}_2$ 均\Term{coherent}{凝聚}。而满足 $p+q=i$ 的对 $(p,q)$ 只有\Term{finite}{有限}多个，且此\Term{spectral-sequence}{谱序列}收敛到 $\underline H^*_Y(F)$，故得到结论。
+
+还须证明 (iii)$\Rightarrow$(ii)。以
+\[i:U\longrightarrow X\]
+表示 $U$ 在 $X$ 中的\Term{canonical}{典范}\Term{immersion}{嵌入}。考虑\Term{closed-subset}{闭子集} $Y$ 的\Term{homology}{同调}\Term{exact-sequence}{正合列}（第 I 讲 2.11），可知 (iii) \Term{equivalence}{等价}于：
+
+ (iv) 当 $i<n$ 时，$R^ii_*(F|_U)$ \Term{coherent}{凝聚}。
+
+事实上，有\Term{exact-sequence}{正合列}
+\[0\longrightarrow\underline H^0_Y(F)\longrightarrow F\longrightarrow i_*(F|_U)\longrightarrow\underline H^1_Y(F)\longrightarrow0.\]
+$\underline H^0_Y(F)$ 是\Term{coherent}{凝聚}层 $F$ 的\Term{quasi-coherent}{拟凝聚}\Term{subsheaf}{子层}，因此\Term{coherent}{凝聚}。故 $\underline H^1_Y(F)$ \Term{coherent}{凝聚}当且仅当 $i_*(F|_U)$ \Term{coherent}{凝聚}。另一方面，若 $p>0$，则\Term{closed-subset}{闭子集} $Y$ 的\Term{cohomology}{上同调}\Term{exact-sequence}{正合列}简化为\Term{isomorphism}{同构}
+\[R^pi_*(F|_U)\xrightarrow{\sim}\underline H^{p+1}_Y(F).\]
+我们将证明 (iv)$\Rightarrow$(ii)。为此回忆 (ii)：对每个满足 $c(x)=1$ 的 $x\in U$，有 $\operatorname{prof}F_x\geq n$。
+
+对 $n$ 用归纳法。$n=0$ 时，两个条件都是空的。
+\SourcePage{83}
+$n=1$ 时，假设 $i_*(F|_U)$ \Term{coherent}{凝聚}。用反证法，假设存在 $x\in U$，使得 $c(x)=1$ 且 $\operatorname{prof}F_x=0$，即 $x\in\operatorname{Ass}F_x$。取 $y\in\overline{\{x\}}\cap Y$，使得 $\dim\mathscr O_{\overline{\{x\}},y}=1$。令
+\[A=\mathscr O_{X,y},\qquad X'=\operatorname{Spec}(A).\]
+作\Term{flat}{平坦}\Term{base-change}{基变换} $v:X'\to X$：
+\[
+\begin{tikzcd}
+U'=X'\times_XU\arrow[r,"v'"]\arrow[d,"i'"']&U\arrow[d,"i"]\\
+X'\arrow[r,"v"']&X.
+\end{tikzcd}\tag{2.7}
+\]
+\Term{morphism}{态射} $i$ 是\Term{separated}{分离}的（因为它是\Term{immersion}{嵌入}），且为\Term{finitely-generated}{有限型}（因为它是\Term{open-immersion}{开嵌入}，且 $X$ \Term{locally-noetherian}{局部诺特}），\Term{base-change}{基变换}又是\Term{flat}{平坦}的，因此由（EGA III 1.4.15）有\Term{isomorphism}{同构}
+\[v^*(i_*(F|_U))\simeq i'_*(v'^*(F|_U)).\tag{2.8}\]
+以 $\underline x$（分别以 $\underline y$）表示 $A$ 中与 $x$（分别与 $y$）对应的\Term{ideal}{理想}。
+
+令 $G=v'^*(F|_U)$；$G$ \Term{coherent}{凝聚}，且 $\underline x\in\operatorname{Ass}G$，故存在\Term{monomorphism}{单态射} $\mathscr O_{\overline{\{x\}}}\to G$，从而 $i'_*(\mathscr O_{\overline{\{x\}}}|_{U'})$ \Term{coherent}{凝聚}。由 $y$ 的选取，$\dim A/\underline x=1$，因此 $\mathscr O_{\overline{\{x\}}}$ 的\Term{support}{支集}仅为 $\overline{\{x\}}=\{x\}\cup\{y\}$，因为作为\Term{scheme}{概形}有 $\overline{\{x\}}=\operatorname{Spec}(A/\underline x)$。于是
+\[(\mathscr O_{\overline{\{x\}}}|_{U'})(U')=\operatorname{Frac}(A/\underline x),\]
+即 $A/\underline x$ 的\Term{fraction-field}{分式环}，且
+\[i'_*(\mathscr O_{\overline{\{x\}}}|_{U'})(X')=\operatorname{Frac}(A/\underline x).\]
+但 $\operatorname{Frac}(A/\underline x)$ 不是\Term{finitely-generated}{有限型} $A$-模，因为 $\underline x$ 不是 $A$ 的\Term{maximal-ideal}{极大理想}。得到矛盾。
+
+假设 $n>1$，并且对所有 $n'<n$ 结论已知。由归纳假设，对每个满足 $c(x)=1$ 的 $x\in U$，有 $x\notin\operatorname{Ass}F_x$。设 $x$ 是这样的点，取 $y\in\overline{\{x\}}\cap Y$，使 $x$ 紧随 $y$，即 $\dim\mathscr O_{\overline{\{x\}},y}=1$。作\Term{base-change}{基变换} $v:\operatorname{Spec}(\mathscr O_{X,y})\to X$，沿用图 (2.7) 的记号。应用（EGA III 1.4.15），得到\Term{isomorphism}{同构}
+\[v^*(R^pi_*(F|_U))\simeq R^pi'_*(v'^*(F|_U)),\qquad p\in\mathbf Z.\]
+这样归结为 $X$ 是\Term{local-ring}{局部环} $A$ 的谱，且 $\underline x$ 是 $A$ 中的一个一维\Term{prime-ideal}{素理想}，即 $\dim A/\underline x=1$ 的情形。令 $F'=\underline\Gamma_Y(F)$，$F''=F/F'$。可见 $F_x\simeq F''_x$，且 $y\notin\operatorname{Ass}F''$。另一方面，$F'|_U=0$，故由 $R^pi_*$ 的\Term{exact-sequence}{正合列}，得到\Term{isomorphism}{同构}
+\[R^pi_*(F|_U)\simeq R^pi_*(F''|_U),\qquad p\in\mathbf Z.\]
+\SourcePage{84}
+由于 $n>1$，可知 $x,y$ 都不属于 $\operatorname{Ass}F''$。而 $\underline x,\underline y$ 是 $A$ 中仅有的包含 $\underline x$ 的\Term{prime-ideal}{素理想}；由此（第 III 讲 2.1）可知，存在元素 $g\in\underline x$，它是 $M$-\Term{regular}{正则}的，其中令 $F=\widetilde M$，$M=F(X)$。于是有\Term{exact-sequence}{正合列}
+\[0\longrightarrow M\xrightarrow{g'}M\longrightarrow N\longrightarrow0,\]
+其中 $g'$ 表示 $M$ 中乘以 $g$ 的位似。由\Term{homology}{同调}\Term{exact-sequence}{正合列}可见：
+\[R^pi_*(\widetilde N|_U)\quad\text{在 }p<n-1\text{ 时凝聚},\]
+因此由归纳假设，$\operatorname{prof}(\widetilde N)_x\geq n-1$，从而 $\operatorname{prof}F_x\geq n$。证毕。
+\end{proof}
+\SGAsection{3}{应用}
+由这些结果，可得一个\Term{coherent}{凝聚}层在非\Term{proper}{固有}\Term{morphism}{态射}下的\Term{higher-direct-image}{高阶直像}的\Term{coherent}{凝聚}性条件。
+\begin{SGAresult}{定理}{3.1}
+设 $f:X\to Y$ 是\Term{prescheme}{预概形}\Term{morphism}{态射}。假设 $Y$ \Term{locally-noetherian}{局部诺特}且 $f$ \Term{proper}{固有}。假设 $X$ \Term{local-scheme}{局部}可\Term{immersion}{嵌入}\Term{regular}{正则}\Term{prescheme}{预概形}。设 $n\in\mathbf Z$，$U$ 是 $X$ 的一个\Term{open-subset}{开集}，$F$ 是\Term{coherent}{凝聚} $\mathscr O_U$-模。假设对每个满足
+\[\operatorname{codim}(\overline{\{x\}}\cap(X-U),\overline{\{x\}})=1\]
+的 $x\in U$，都有 $\operatorname{prof}F_x\geq n$。则当 $p<n$ 时，$\mathscr O_Y$-模 $R^p(f\circ g)_*(F)$ \Term{coherent}{凝聚}，其中 $g$ 是 $U$ 在 $X$ 中的\Term{canonical}{典范}\Term{immersion}{嵌入}。
+\end{SGAresult}
+\begin{proof}
+事实上，有一个 Leray \Term{spectral-sequence}{谱序列}，其\Term{limit}{极限}项为 $R^*(f\circ g)_*(F)$，初始项为
+\[E^{p,q}_2=R^pf_*(R^qg_*(F)).\]
+另一方面，存在\Term{coherent}{凝聚} $\mathscr O_X$-模 $G$，使 $G|_U\simeq F$（EGA I 9.4.3）。由上一节可知，原书第 74 页的条件 (iv) 成立，即当 $q<n$ 时，$R^qg_*(G|_U)$ \Term{coherent}{凝聚}。对 $f$ 和层 $R^qg_*(F)$ 应用 EGA III 3.2.1 的\Term{finiteness-theorem}{有限性定理}，得当 $q<n$ 时 $E^{p,q}_2$ \Term{coherent}{凝聚}，从而得到结论。
+\end{proof}
+\begin{SGAresult}{命题}{3.2}
+设 $X$ 是\Term{locally-noetherian}{局部诺特}且\Term{local-scheme}{局部}可\Term{immersion}{嵌入}\Term{regular}{正则}\Term{prescheme}{预概形}的\Term{prescheme}{预概形}。设 $U$ 是 $X$ 的\Term{open-subset}{开集}，$i:U\to X$ 是\Term{canonical}{典范}\Term{immersion}{嵌入}，$n\in\mathbf Z$。最后设 $F$ 是\Term{coherent}{凝聚}且为 \Term{cohen-macaulay}{Cohen--Macaulay} 的 $\mathscr O_U$-模（在 $U$ 上！）。下列条件\Term{equivalence}{等价}：
+\begin{enumerate}
+\item[(a)] 当 $p<n$ 时，$R^pi_*(F)$ \Term{coherent}{凝聚}；
+\item[(b)] 对 $F$ 的\Term{support}{支集} $S$ 的\Term{closure}{闭包} $\overline S$ 的每个\Term{irreducible-component}{不可约分支} $S'$，有
+\[\operatorname{codim}(S'\cap(X-U),S')>n.\]
+\end{enumerate}
+\end{SGAresult}
+\begin{proof}
+取\Term{coherent}{凝聚} $\mathscr O_X$-模 $G$，使 $G|_U\simeq F$（EGA I 9.4.3）。对 $G$ 应用推论 2.3，可知条件 (a) \Term{equivalence}{等价}于 (c)：
+\SourcePage{85}
+对每个 $x\in S$，有 $\operatorname{prof}F_x>n-c(x)$，其中
+\[c(x)=\operatorname{codim}(\overline{\{x\}}\cap Y,\overline{\{x\}}).\]
+(a)$\Rightarrow$(b)。事实上，设 $S'$ 是 $\overline S$ 的一个\Term{irreducible-component}{不可约分支}，$s$ 是它的\Term{generic-point}{泛点}。由于 $F$ 是 \Term{cohen-macaulay}{Cohen--Macaulay} 的，有 $\operatorname{prof}F_s=\dim\mathscr O_{S,s}=0$。又 $\overline{\{s\}}=S'$，故得到结论。
+
+(b)$\Rightarrow$(a)。设 $x\in S$，取 $\overline S$ 的一个包含 $x$ 的\Term{irreducible-component}{不可约分支} $S'$，设 $s$ 是 $S'$ 的\Term{generic-point}{泛点}。由于 $F$ 是 \Term{cohen-macaulay}{Cohen--Macaulay} 的，已知
+\[\operatorname{prof}F_x=\dim\mathscr O_{\overline{\{s\}},x}.\]
+若 $c(x)=+\infty$，则无须证明。否则存在 $y\in Y\cap\overline{\{x\}}$，使
+\[c(x)=\dim\mathscr O_{\overline{\{x\}},y}.\]
+按假设，$\mathscr O_{X,y}$ 是一个\Term{regular-local-ring}{正则局部环}的商，故
+\[\dim\mathscr O_{\overline{\{s\}},y}=\dim\mathscr O_{\overline{\{s\}},x}+\dim\mathscr O_{\overline{\{x\}},y}>n.\]
+证毕。
+\end{proof}
+\textbf{参考文献}
+
+[M] H. Cartan 与 S. Eilenberg，\emph{Homological Algebra}，Princeton Math. Series, vol.~19, Princeton University Press, 1956。
+\SourcePage{86}
+% 原 PDF 第 86 页为空白页。

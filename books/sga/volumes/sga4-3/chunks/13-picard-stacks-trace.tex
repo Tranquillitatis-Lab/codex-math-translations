@@ -1,0 +1,628 @@
+\SourcePage{338}
+\SGAsection{1.4}{严格交换的 Picard 叠}
+为了用一个“泛系数公式”表述 1.3 的结果，需要若干“一般\Term{topology}{拓扑}”结果。本小节的结果来自 A.~Grothendieck 致 J.~L.~Verdier 的一封信（1966）的启发。下述\Term{bifunctor}{双函子}的结合性和交换性概念由 Mac Lane 引入。
+
+\textbf{1.4.1。}设 $C$ 为\Term{category}{范畴}，$F:C\times C\to C$ 为\Term{functor}{函子}，且
+\[\sigma:F(F(X,Y),Z)\xrightarrow\sim F(X,F(Y,Z))\]
+为\Term{trifunctor}{三函子}的\Term{isomorphism}{同构}。如果下列条件成立，就称 $(F,\sigma)$ 为结合\Term{functor}{函子}，或称 $\sigma$ 为 $F$ 上的结合性资料。
+
+(Ass) 对任意\Term{object}{对象}族 $(X_i)_{i\in I}$，记 $e:I\to M(I)$ 为 $I$ 到它所生成的自由\Term{monoid}{幺半群}（无单位元）的\Term{canonical}{典范}映射，则存在映射 $\underline F:M(I)\to\operatorname{Ob}C$、\Term{isomorphism}{同构} $a_i:\underline F(e_i)\xrightarrow\sim X_i$ 和 $a_{g,h}:\underline F(gh)\xrightarrow\sim F(\underline F(g),\underline F(h))$，使下图交换：
+\[\begin{tikzcd}[column sep=small]
+\underline F(f(gh))\arrow[r,"{a_{f,gh}}"]\arrow[d,equal]&F(\underline F(f),\underline F(gh))\arrow[r,"{a_{g,h}}"]&F(\underline F(f),F(\underline F(g),\underline F(h)))\\
+\underline F((fg)h)\arrow[r,"{a_{fg,h}}"]&F(\underline F(fg),\underline F(h))\arrow[r,"{a_{f,g}}"]&F(F(\underline F(f),\underline F(g)),\underline F(h))\arrow[u,"\sigma"']
+\end{tikzcd}\tag{1.4.1.1}\]
+我们不必使用如下事实：(Ass) \Term{equivalence}{等价}于“五边形公理”，即下图交换（保留原图的\Term{object}{对象}书写）：
+\[\begin{tikzcd}[column sep=small]
+&F(F(X,Y),F(Z,T))\arrow[dl,leftrightarrow]\arrow[dr,leftrightarrow]&\\
+F(X,F(Y,F(Z,T)))\arrow[d,leftrightarrow]&&F(F(F(X,Y),Z),T)\arrow[d,leftrightarrow]\\
+F(X,F(Y,F(Z,T)))\arrow[rr,leftrightarrow]&&F(F(F(X,Y),Z),T).
+\end{tikzcd}\]
+现在给定\Term{functor}{函子}\Term{isomorphism}{同构}
+\[\sigma_{X,Y,Z}:F(F(X,Y),Z)\xrightarrow\sim F(X,F(Y,Z)),\qquad
+\tau_{X,Y}:F(X,Y)\xrightarrow\sim F(Y,X).\]
+若下列条件成立，就说 $\sigma,\tau$ 使 $F$ 成为结合且严格交换的\Term{functor}{函子}。
+\SourcePage{339}
+(Ass.s.Com) 对任意\Term{object}{对象}族 $(X_i)_{i\in I}$，记 $e:I\to N(I)$ 为到 $I$ 生成的自由交换\Term{monoid}{幺半群}（无单位元）的\Term{canonical}{典范}映射，则存在映射 $\underline F:N(I)\to\operatorname{Ob}C$ 及\Term{isomorphism}{同构} $a_i:\underline F(e_i)\xrightarrow\sim X_i$、$a_{g,h}:\underline F(gh)\xrightarrow\sim F(\underline F(g),\underline F(h))$，使图 (1.4.1.1) 以及下图交换：
+\[\begin{tikzcd}
+\underline F(gh)\arrow[r,"{a_{g,h}}"]\arrow[d,equal]&F(\underline F(g),\underline F(h))\arrow[d,"\tau"]\\
+\underline F(hg)\arrow[r,"{a_{h,g}}"]&F(\underline F(k),\underline F(g)).
+\end{tikzcd}\tag{1.4.1.2}\]
+我们不必使用如下事实：该公理\Term{equivalence}{等价}于下列四个条件的合取：1）五边形公理；2）$\tau_{X,X}:X+X\to X+X$ 为恒等；3）$\tau_{Y,X}\circ\tau_{X,Y}:X+Y\to Y+X\to X+Y$ 为恒等；4）六边形公理，即下图交换：
+\[\begin{tikzcd}[column sep=small]
+&X+(Y+Z)\arrow[dr,"\tau"]&\\
+(X+Y)+Z\arrow[ur,"\sigma"]\arrow[d,"\tau"]&&X+(Z+Y)\\
+Z+(X+Y)\arrow[dr,"\sigma"']&&(X+Z)+Y\arrow[u,"\sigma"']\\
+&(Z+X)+Y\arrow[ur,"\tau"']&
+\end{tikzcd}\]
+须注意，条件 2）在实际中并不常成立（这就是“严格交换”这一名称的由来）。
+\begin{SGAresult}{定义}{1.4.2}
+严格交换的 Picard \Term{category}{范畴} $P$ 是一个\Term{nonempty}{非空}\Term{category}{范畴}，其中所有\Term{morphism}{态射}都是\Term{isomorphism}{同构}，配备\Term{functor}{函子} $+:P\times P\to P:(X,Y)\mapsto X+Y$ 及\Term{functor}{函子}\Term{isomorphism}{同构}
+\[\sigma:(X+Y)+Z\xrightarrow\sim X+(Y+Z),\qquad\tau:X+Y\xrightarrow\sim Y+X,\]
+使 $+$ 成为结合且严格交换的\Term{functor}{函子}，并且对每个 $X\in\operatorname{Ob}P$，\Term{functor}{函子} $Y\mapsto X+Y$ 为\Term{category-equivalence}{范畴等价}。
+\end{SGAresult}
+读者可以验证：
+\SourcePage{340}
+\begin{SGAresult}{引理}{1.4.3}
+若 $(X_i)_{i\in I}$ 是严格交换的 Picard \Term{category}{范畴} $P$ 中的\Term{object}{对象}族，则存在映射 $\Sigma:\mathbf Z^{(I)}\to\operatorname{Ob}P$，\Term{isomorphism}{同构} $a_i:\Sigma(e_i)\xrightarrow\sim X_i$ 及 $a_{n,m}:\Sigma(n+m)\xrightarrow\sim\Sigma(n)+\Sigma(m)$，使 (1.4.1.1)、(1.4.1.2) 型的图交换。系统 $(\Sigma,(a_i),(a_{n,m}))$ 在唯一\Term{isomorphism}{同构}意义下唯一，并\Term{functorial}{函子性}地依赖于 $(X_i)_{i\in I}$。
+\end{SGAresult}
+\textbf{1.4.4。}严格交换的 Picard \Term{category}{范畴}在唯一\Term{isomorphism}{同构}意义下恰有一个单位\Term{object}{对象}；这里可将它定义为一对 $(e,\varphi)$，其中 $e$ 为\Term{object}{对象}而 $\varphi:e+e\xrightarrow\sim e$。若 $(e,\varphi)$ 为单位\Term{object}{对象}，则存在唯一的\Term{functor}{函子}\Term{isomorphism}{同构} $\alpha_s:e+X\xrightarrow\sim X$ 使下图交换：
+\[\begin{tikzcd}
+e+(e+X)\arrow[r,leftrightarrow]\arrow[d,"e+\alpha_s"']&(e+e)+X\arrow[d,"\varphi"]\\e+X\arrow[r,equal]&e+X.
+\end{tikzcd}\]
+同样定义 $\alpha_d:X+e\xrightarrow\sim X$，$\varphi$ 同时是 $\alpha_s$ 与 $\alpha_d$ 的特例；$\tau$ 交换 $\alpha_s,\alpha_d$。群 $\operatorname{Aut}(e)$ 是\Term{abelian-group}{交换群}；对每个 $X$，\Term{functor}{函子} $X+$ 与 $+X$ 给出 $\operatorname{Aut}(e)$ 和 $\operatorname{Aut}(X)$ 之间相同的\Term{isomorphism}{同构}。
+\begin{SGAresult}{定义}{1.4.5}
+\Term{site}{景} $S$ 上的严格交换的 \Term{picard-stack}{Picard 叠} $P$ 是 $S$ 上的一个\Term{groupoid}{群胚}\Term{stack}{叠}（Giraud [1]），配备\Term{functor}{函子} $+:P\times_S P\to P$ 及\Term{functor}{函子}\Term{isomorphism}{同构}
+\[\tau_{x,y}:x+y\to y+x,\qquad\sigma_{x,y,z}:(x+y)+z\to x+(y+z),\]
+使得对每个 $U\in\operatorname{Ob}S$，$P(U)$ 都成为严格交换的 Picard \Term{category}{范畴}。
+\end{SGAresult}
+下文只说 \Term{picard-stack}{Picard 叠}，不再注明“严格交换”。由 1.4.4，每个 \Term{picard-stack}{Picard 叠} $P$ 都有全局“单位\Term{object}{对象}”$e$，且 $\operatorname{Aut}(e)$ 是交换\Term{sheaf}{层}。
+\textbf{1.4.6。}\Term{picard-stack}{Picard 叠}间的\Term{additive-functor}{加性函子} $F:P_1\to P_2$ 是一个 $S$-\Term{functor}{函子}（必为\Term{cartesian-functor}{笛卡尔函子}），配备\Term{functor}{函子}\Term{isomorphism}{同构} $F(x+y)\xrightarrow\sim F(x)+F(y)$，
+\SourcePage{341}
+使下图交换：
+\[\begin{tikzcd}F(x+y)\arrow[r]\arrow[d,"F(\tau)"']&F(x)+F(y)\arrow[d,"\tau"]\\F(y+x)\arrow[r]&F(y)+F(x)\end{tikzcd}\]
+以及
+\[\begin{tikzcd}[column sep=small]
+F((x+y)+z)\arrow[r]\arrow[d,"F(\sigma)"']&F(x+y)+F(z)\arrow[r]&(F(x)+F(y))+F(z)\arrow[d,"\sigma"]\\
+F(x+(y+z))\arrow[r]&F(x)+F(y+z)\arrow[r]&F(x)+(F(y)+F(z)).
+\end{tikzcd}\]
+\Term{additive-functor}{加性函子}的\Term{morphism}{态射} $u:F\to G$ 是使下图交换的 $S$-\Term{morphism-of-functors}{函子态射}（自动为\Term{isomorphism}{同构}）：
+\[\begin{tikzcd}F(x+y)\arrow[r,"u_{x+y}"]\arrow[d]&G(x+y)\arrow[d]\\F(x)+F(y)\arrow[r,"u_x+u_y"]&G(x)+G(y).\end{tikzcd}\]
+\textbf{1.4.7。}若 $P_1,P_2$ 为 $S$ 上的两个 \Term{picard-stack}{Picard 叠}，则 $\operatorname{HOM}(P_1,P_2)$ 是如下 \Term{picard-stack}{Picard 叠}：a）在 $U\in\operatorname{Ob}S$ 上的\Term{object}{对象}是 $P_1|U$ 到 $P_2|U$ 的\Term{additive-functor}{加性函子}，\Term{morphism}{态射}为\Term{additive-functor}{加性函子}的\Term{morphism}{态射}；b）两\Term{additive-functor}{加性函子}的和定义为 $(F_1+F_2)(x)=F_1(x)+F_2(x)$，其结构\Term{isomorphism}{同构}使下图交换：
+\[\begin{tikzcd}[column sep=tiny]
+(F_1+F_2)(x+y)\arrow[r,"\text{结构}"]\arrow[d,equal]&(F_1+F_2)(x)+(F_1+F_2)(y)\arrow[d,equal]\\
+F_1(x+y)+F_2(x+y)\arrow[d]&F_1(x)+F_2(x)+F_1(y)+F_2(y)\\
+F_1(x)+F_1(y)+F_2(x)+F_2(y)\arrow[ur,"\tau"']&
+\end{tikzcd}\]
+c）结合性、交换性\Term{isomorphism}{同构}由 $P_2$ 中相应的\Term{isomorphism}{同构}定义。
+\SourcePage{342}
+\textbf{1.4.8。}给定三个 \Term{picard-stack}{Picard 叠} $P_1,P_2,P$，从 $P_1\times_S P_2$ 到 $P$ 的双\Term{additive-functor}{加性函子}，是配备\Term{functor}{函子}\Term{isomorphism}{同构}
+\[F(x_1+y_1,x_2)\xrightarrow\sim F(x_1,x_2)+F(y_1,x_2),\quad F(x_1,x_2+y_2)\xrightarrow\sim F(x_1,x_2)+F(x_1,y_2)\]
+的 $S$-\Term{functor}{函子} $F$，满足：a）固定 $x_1$（相应地 $x_2$）时，$F(x_1,*)$（相应地 $F(*,x_2)$）满足 1.4.3 的相容性；b）对 $U\in\operatorname{Ob}S$、$x_1,y_1\in\operatorname{Ob}P_1(U)$、$x_2,y_2\in\operatorname{Ob}P_2(U)$，下图交换（右上和式按原图保留）：
+\[\begin{tikzcd}[column sep=tiny]
+F(x_1+y_1,x_2+y_2)\arrow[r]\arrow[d]&F(x_1+y_1,x_2)+F(x_1+y_1,y_2)\arrow[d]\\
+F(x_1,x_2+y_2)+F(y_1,x_2+y_2)\arrow[d]&F(x_1,x_2)+F(y_1,x_2)+F(y_1,x_2)+F(y_1,y_2)\\
+F(x_1,x_2)+F(x_1,y_2)+F(y_1,x_2)+F(y_1,y_2)\arrow[ur,"\tau"']&
+\end{tikzcd}\]
+例如\Term{canonical-functor}{典范函子} $\operatorname{HOM}(P_1,P_2)\times P_1\to P_2:(F,x)\mapsto F(x)$ 为双\Term{additive}{加性}。仿照 1.4.7，$P_1\times P_2$ 到 $P$ 的双\Term{additive-functor}{加性函子}组成一个 \Term{picard-stack}{Picard 叠} $\operatorname{HOM}(P_1,P_2;P)$。将在 1.4.20 看到，存在“2-泛”的双\Term{additive-functor}{加性函子} $P_1\times P_2\to P_1\otimes P_2$；更确切地，存在 \Term{picard-stack}{Picard 叠} $P_1\otimes P_2$ 和双\Term{additive-functor}{加性函子} $\otimes$，使对每个 \Term{picard-stack}{Picard 叠} $P$，由它定义的\Term{functor}{函子}
+\[\operatorname{HOM}(P_1\otimes P_2,P)\to\operatorname{HOM}(P_1,P_2;P)\tag{1.4.8.1}\]
+为\Term{equivalence}{等价}。此\Term{stack}{叠}在唯一\Term{equivalence}{等价}（唯一\Term{isomorphism}{同构}意义下）意义下唯一。
+\textbf{1.4.9。}设 $u:S_1\to S_2$ 为\Term{site}{景}的\Term{morphism}{态射}。$S_1$ 上 \Term{picard-stack}{Picard 叠} $P$ 的\Term{direct-image}{正像} $u_*P$ 是 $S_2$ 上由 $u_*P(V)=P(u^*V)$ 定义的 \Term{picard-stack}{Picard 叠}。它在 $V$ 上的\Term{object}{对象}为 $P$ 在 $u^*V$ 上的\Term{object}{对象}；\Term{morphism}{态射}、加法和相容\Term{isomorphism}{同构}也来自 $P$。\Term{direct-image}{正像} $u_*$ 是一个 2-\Term{functor}{函子}。
+\SourcePage{343}
+\textbf{1.4.10。}\Term{site}{景} $S$ 上的 Picard 预叠，是 $S$ 上的预叠 $P$（Giraud [1]），配备 $+:P\times_S P\to P$ 和结合、交换\Term{isomorphism}{同构} $\sigma,\tau$，使每个 $P(U)$ 都是（严格交换的）Picard \Term{category}{范畴}。两 Picard 预叠之间的\Term{additive-functor}{加性函子}，以及它们组成的 Picard 预叠 $\operatorname{HOM}(P_1,P_2)$，有显然的定义（参见 1.4.6、1.4.7）。若 $j:P\to aP$ 为 $P$ 生成的\Term{stack}{叠}，则在本质唯一的\Term{equivalence}{等价}意义下，恰有一对由 $aP$ 上的 \Term{picard-stack}{Picard 叠}结构和 $j$ 上的\Term{additive-functor}{加性函子}结构组成的资料。赋予这些资料的 $(j,aP)$ 称为 $P$ 生成的 \Term{picard-stack}{Picard 叠}。对任意 \Term{picard-stack}{Picard 叠} $P_1$ 有\Term{equivalence}{等价}
+\[\operatorname{HOM}(aP,P_1)\xrightarrow\sim\operatorname{HOM}(P,P_1).\tag{1.4.10.1}\]
+\textbf{1.4.11。}记 $C^{[-1,0]}(S)$ 为 $S$ 上交换\Term{sheaf}{层}的\Term{complex}{复形} $K$ 所组成的\Term{category}{范畴}，其中 $K^i=0$（$i\notin[-1,0]$）。对\Term{complex}{复形} $K:(d:K^{-1}\to K^0)$，赋予如下 Picard 预叠 $\operatorname{pch}(K)$：
+(I) $\operatorname{Ob}\operatorname{pch}(K)(U)=K^0(U)$；(II) $x,y\in K^0(U)$ 间的\Term{arrow}{箭头}为满足 $df=y-x$ 的 $f\in K^{-1}(U)$；(III) \Term{arrow}{箭头}复合为 $K^{-1}(U)$ 的加法；(IV) \Term{functor}{函子} $+$ 由 $K^0(U)$、$K^{-1}(U)$ 的加法给出；(V) 结合、交换\Term{isomorphism}{同构}由 $K^{-1}(U)$ 的零元给出。记 $\operatorname{ch}(K)$ 为它生成的 \Term{picard-stack}{Picard 叠}（1.4.10）。\Term{sheaf}{层} $H^0(K)$ \Term{solvable}{可解}释为下列\Term{adjunction}{伴随}\Term{sheaf}{层}：
+\[H^0(K)\simeq a\bigl(U\mapsto\operatorname{ch}(K)(U)\text{ 中对象的同构类群}\bigr).\tag{1.4.11.1}\]
+另一方面，$H^{-1}(K)\simeq\operatorname{Aut}(e)$。\hfill(1.4.11.2)
+
+\textbf{1.4.12。}\Term{complex}{复形}\Term{morphism}{态射} $f:K\to L$ 诱导\Term{additive-functor}{加性函子} $\operatorname{pch}(f)$，进而诱导 $\operatorname{ch}(f):\operatorname{ch}(K)\to\operatorname{ch}(L)$。
+\SourcePage{344}
+由 (1.4.11.1)、(1.4.11.2)，$\operatorname{ch}(f)$ 为\Term{equivalence}{等价}当且仅当 $f$ 为\Term{quasi-isomorphism}{拟同构}。由 (1.4.10.1)，对\Term{morphism}{态射} $f,g:K\to L$ 有
+\[\operatorname{Hom}(\operatorname{ch}(f),\operatorname{ch}(g))\xrightarrow\sim\operatorname{Hom}(\operatorname{pch}(f),\operatorname{pch}(g)).\]
+\Term{morphism-of-functors}{函子态射} $h:\operatorname{pch}(f)\to\operatorname{pch}(g)$ 是\Term{sheaf}{层}的\Term{morphism}{态射} $h:K^0\to L^{-1}$，满足
+\[g(x)-f(x)=dh(x),\tag{1.4.12.1}\]
+并对每个满足 $y-x=du$ 的三元组 $(x,y,u)$ 有
+\[h(y)+f(u)=g(u)+h(x).\tag{1.4.12.2}\]
+$h$ 为\Term{additive-functor}{加性函子}\Term{morphism}{态射}意味着
+\[h(x+y)=h(x)+h(y).\tag{1.4.12.3}\]
+利用此式，可将 (1.4.12.2) 写成 $g(u)-f(u)=hdu$。\hfill(1.4.12.2$'$)
+
+故这些条件恰说明 $h$ 是 $f$ 到 $g$ 的\Term{homotopy}{同伦}，并且
+\[\operatorname{Hom}(\operatorname{ch}(f),\operatorname{ch}(g))\simeq\{H:K\to L\text{ 的同伦}\mid g-f=dH+Hd\}.\tag{1.4.12.4}\]
+\begin{SGAresult}{引理}{1.4.13}
+(I) 对每个 \Term{picard-stack}{Picard 叠} $P$，存在\Term{complex}{复形} $K$ 使 $P=\operatorname{ch}(K)$。
+(II) 对每个\Term{additive-functor}{加性函子} $F:\operatorname{ch}(K)\to\operatorname{ch}(L)$，存在\Term{quasi-isomorphism}{拟同构} $k:K'\to K$ 及\Term{morphism}{态射} $\ell:K'\to L$，使 $F\simeq\operatorname{ch}(\ell)\operatorname{ch}(k)^{-1}$。
+\end{SGAresult}
+\begin{proof}
+先证 (I)。取族 $(k_i,U_i)_{i\in I}$，满足 (a) $k_i\in\operatorname{Ob}P(U_i)$；(b) $P$ 的每个\Term{object}{对象}\Term{local-isomorphism}{局部同构}于某个 $k_i$ 的\Term{inverse-image}{逆像}。令 $K^0=\bigoplus_i\mathbf Z_{U_i}$。由 1.4.3，存在\Term{additive-functor}{加性函子} $F:\operatorname{ch}(0\to K^0)\to P$ 将 $\mathbf Z_{U_i}$ 的基 $e_i$ 映为 $k_i$。令 $K^{-1}$ 为由\Term{local-scheme}{局部}\Term{section}{截面} $x\in K^0$ 及\Term{isomorphism}{同构} $t:F(0)\xrightarrow\sim F(x)$ 构成的二元组\Term{sheaf}{层}。加法定义为 $(x_1,t_1)+(x_2,t_2)=(x_1+x_2,t)$，其中 $t$ 使下图交换：
+\[\begin{tikzcd}F(0)+F(0)\arrow[r,"t_1+t_2"]&F(x_1)+F(x_2)\\F(0+0)\arrow[u,leftrightarrow]\arrow[r,"t"]&F(x_1+x_2)\arrow[u,leftrightarrow]\end{tikzcd}\]
+定义 $d:K^{-1}\to K^0$ 为 $d(x,t)=x$；它是\Term{additive}{加性}的。
+\SourcePage{345}
+若 $y-x=dt$，存在唯一\Term{morphism}{态射} $F(t)$ 使下图交换：
+\[\begin{tikzcd}F(x)\arrow[r,"F(t)"]\arrow[d,leftrightarrow]&F(y)\arrow[d,leftrightarrow]\\F(0)+F(x)\arrow[r,"t+F(x)"]&F(y-x)+F(x).\end{tikzcd}\]
+可验证该构造给出\Term{equivalence}{等价} $F:\operatorname{ch}(K)\to P$。
+
+再证 (II)。对给定\Term{additive-functor}{加性函子} $F$，存在族 $(k_i,\ell_i,\alpha_i,U_i)$，使 (c) $k_i\in K^0(U_i)$、$\ell_i\in L^0(U_i)$，且 $\alpha_i$ 为 $F(k_i)$ 和 $\ell_i$ 之间的\Term{morphism}{态射}；(d) 以 $k_i$ 为坐标的\Term{homomorphism}{同态} $k^0:\bigoplus_i\mathbf Z_{U_i}\to K^0$ 为\Term{epimorphism}{满态射}。令 $K'^0=\bigoplus_i\mathbf Z_{U_i}$，令 $\ell^0:K'^0\to L^0$ 为坐标为 $\ell_i$ 的\Term{homomorphism}{同态}。由 $F$ 的\Term{additive}{加性}，恰有一族\Term{isomorphism}{同构} $\alpha_x:Fk^0(x)\xrightarrow\sim\ell^0(x)$（$x$ 为 $K'^0$ 的\Term{local-scheme}{局部}\Term{section}{截面}），满足 (e) 对 $\mathbf Z_{U_i}$ 的\Term{section}{截面} $e_i=1$，$\alpha_{e_i}=\alpha_i$；(f) 下图交换：
+\[\begin{tikzcd}Fk^0(x+y)\arrow[r,"\alpha_{x+y}"]\arrow[d,leftrightarrow]&\ell^0(x+y)\arrow[d,equal]\\Fk^0(x)+Fk^0(y)\arrow[r,"\alpha_x+\alpha_y"]&\ell^0(x)+\ell^0(y).\end{tikzcd}\]
+令 $K'^{-1}=K^{-1}\times_{K^0}K'^0$；由 (d)，显然的\Term{complex}{复形}\Term{arrow}{箭头} $k:K'\to K$ 为\Term{quasi-isomorphism}{拟同构}。若 $x,y\in K'^0(U)$、$t\in K'^{-1}(U)$ 满足 $y-x=dt$，则存在唯一\Term{section}{截面} $\ell^{-1}(t;x,y)\in L^{-1}(U)$ 给出使下图交换的\Term{morphism}{态射}：
+\[\begin{tikzcd}F(k^0(x))\arrow[r,"F(k^{-1}(t))"]\arrow[d,"\alpha_x"']&F(k^0(y))\arrow[d,"\alpha_y"]\\\ell^0(x)\arrow[r,"{\ell^{-1}(t;x,y)}"]&\ell^0(y).\end{tikzcd}\]
+$F$ 为\Term{functor}{函子}给出 (h)
+\[\ell^{-1}(t;x,y)+\ell^{-1}(t';y,z)=\ell^{-1}(t+t';x,z).\]
+$F$ 的\Term{additive}{加性}\Term{isomorphism}{同构}的\Term{functorial}{函子性}给出
+\SourcePage{346}
+(i) $\ell^{-1}(t_1+t_2;x_1+x_2,y_1+y_2)=\ell^{-1}(t_1;x_1,y_1)+\ell^{-1}(t_1;x_2,y_2)$（保留原文末项的 $t_1$）。由 (h)，
+\[\ell^{-1}(0;x,x)+\ell^{-1}(0;x,x)=\ell^{-1}(0;x,x),\quad\text{即 }\ell^{-1}(0;x,x)=0.\]
+再由 (i)，$\ell^{-1}(t;x,y)$ 只依赖于 $t$，记为 $\ell^{-1}(t)$，且对 $t$ \Term{additive}{加性}。故 $\ell=(\ell^{-1},\ell^0)$ 是\Term{complex}{复形}\Term{morphism}{态射}；由 (f)、(g)，\Term{arrow}{箭头} $\alpha$ 组成\Term{additive-functor}{加性函子}\Term{isomorphism}{同构} $F\circ\operatorname{ch}(k)=\operatorname{ch}(\ell)$。
+\end{proof}
+\textbf{1.4.14。}令 $\operatorname{Ch}^{\flat}(S)$ 为以小 \Term{picard-stack}{Picard 叠}为\Term{object}{对象}、以\Term{additive-functor}{加性函子}\Term{isomorphism-class}{同构类}为\Term{arrow}{箭头}的\Term{category}{范畴}。构造 $\operatorname{ch}$ 给出从 $C^{[-1,0]}(S)$ 到此\Term{category}{范畴}的\Term{functor}{函子}。令 $D^{[-1,0]}(S)$ 为 $S$ 的\Term{derived-category}{导出范畴}中由 $H^i(K)=0$（$i\ne0,-1$）的\Term{complex}{复形}组成的\Term{subcategory}{子范畴}。由 1.4.12、1.4.13 有：
+\begin{SGAresult}{命题}{1.4.15}
+\Term{functor}{函子} $\operatorname{ch}$ 诱导\Term{category-equivalence}{范畴等价} $\operatorname{ch}:D^{[-1,0]}(S)\xrightarrow\sim\operatorname{Ch}^{\flat}(S)$。
+\end{SGAresult}
+记其逆\Term{equivalence}{等价}为 $\flat$。对每个 \Term{picard-stack}{Picard 叠} $P$，$P^\flat\in D^{[-1,0]}(S)$ 在\Term{equivalence}{等价}的\Term{isomorphism-class}{同构类}意义下决定 $P$。
+\begin{SGAresult}{引理}{1.4.16}
+设 $L\in C^{[-1,0]}(S)$ 且 $L^{-1}$ 为\Term{injective}{内射}。
+(I) $\operatorname{pch}(L)$ 已是\Term{stack}{叠}。
+(II) 对 $K\in C^{[-1,0]}(S)$，每个\Term{additive-functor}{加性函子} $F:\operatorname{ch}(K)\to\operatorname{ch}(L)$ 都\Term{isomorphism}{同构}于某个\Term{complex}{复形}\Term{morphism}{态射} $f:K\to L$ 给出的 $\operatorname{ch}(f)$。
+\end{SGAresult}
+\begin{proof}
+(I) 对 $U\in\operatorname{Ob}S$ 和 $x\in\operatorname{Ob}\operatorname{ch}(L)(U)$，由 $L^0|U$ 的\Term{local-scheme}{局部}\Term{section}{截面} $\ell$ 及 $x$ 与 $\ell$ 之间的\Term{isomorphism}{同构}组成的二元组\Term{sheaf}{层}是 $L^{-1}$ 下的\Term{principal-homogeneous-space}{主齐性空间}。因此它有\Term{section}{截面}，$j:\operatorname{pch}(L)\to\operatorname{ch}(L)$ 在\Term{object}{对象}\Term{isomorphism-class}{同构类}上\Term{surjectivity}{满射}，从而为\Term{equivalence}{等价}。
+(II) 取\Term{injective}{内射}\Term{complex}{复形} $L'$ 及\Term{quasi-isomorphism}{拟同构} $\varphi:L\to L'$，使 $\varphi^i$ 在 $i\le-1$ 时为\Term{isomorphism}{同构}。由 1.4.13 和 [C.D.]，存在\Term{homotopy}{同伦}意义下交换的图
+\[\begin{tikzcd}L\arrow[r,"\varphi","\approx"']&L'\\K'\arrow[u,"f_0"]\arrow[r,"\Psi","\approx"']&K\arrow[u,"f_1"']\end{tikzcd}\]
+使 $F\simeq\operatorname{ch}(f_0)\operatorname{ch}(\Psi)^{-1}$。又 $K=\tau_{\le0}K$、$L=\tau_{\le0}L'$，故 $f_1$ \Term{resolution}{分解}经过 $f:K\to L$，且 $F\simeq\operatorname{ch}(f)$。
+\end{proof}
+\SourcePage{347}
+该引理结合 1.4.12 给出下列推论，从而细化 1.4.15。
+\begin{SGAresult}{推论}{1.4.17}
+构造 $\operatorname{ch}$ 给出如下两个 \Term{two-category}{2-范畴}的\Term{equivalence}{等价}：a）$S$ 上的 \Term{picard-stack}{Picard 叠}的 \Term{two-category}{2-范畴}；b）\Term{object}{对象}与 1-\Term{arrow}{箭头}来自 $C^{[-1,0]}(S)$ 中由 $L^{-1}$ \Term{injective}{内射}的\Term{complex}{复形}组成的\Term{full-subcategory}{满子范畴}，2-\Term{arrow}{箭头}为\Term{arrow}{箭头}之间的\Term{homotopy}{同伦}：$\operatorname{Hom}(f,g)=\{H\mid g-f=dH+Hd\}$。
+\end{SGAresult}
+\textbf{构造 1.4.18。}有 $\operatorname{HOM}(P_1,P_2)^\flat\simeq\tau_{\le0}R\mathcal Hom(P_1^\flat,P_2^\flat)$。事实上，若 $K,L\in C^{[-1,0]}(S)$ 且 $L^{-1}$ \Term{injective}{内射}，由 1.4.16 (II)、1.4.12 有
+\[\operatorname{ch}(\tau_{\le0}\mathcal Hom(K,L))\xrightarrow\sim\operatorname{HOM}(\operatorname{ch}(K),\operatorname{ch}(L)),\tag{1.4.18.1}\]
+由此得到\Term{functorial}{函子性}的构造 1.4.18。
+
+\textbf{构造 1.4.19。}若 $f:S_1\to S_2$ 为\Term{site}{景}的\Term{morphism}{态射}，则 $(f_*P)^\flat\simeq\tau_{\le0}Rf_*(P^\tau)$。取 $L\in C^{[-1,0]}$ 且 $L^{-1}$ \Term{injective}{内射}。由 1.4.16 (I)，
+\[\operatorname{ch}(f_*L)\xrightarrow\sim f_*\operatorname{ch}(L),\tag{1.4.19.1}\]
+由此得到\Term{functorial}{函子性}的构造 1.4.19。我们不必使用下列构造。
+
+\textbf{构造 1.4.20。}1.4.8 中所许诺的\Term{tensor-product}{张量积}存在，并且
+\[(P_1\otimes P_2)^\flat\simeq\tau_{\ge-1}(P_1^\flat\mathbin{\otimes^{L}}P_2^\flat).\]
+仿照 1.4.12 和 1.4.13 (II)，可以验证，对任意 $K_1,K_2,L\in C^{[-1,0]}(S)$：
+(a) 每个 $f\in\operatorname{Hom}(K_1\otimes K_2,L)\simeq\operatorname{Hom}(\tau_{\ge-1}(K_1\otimes K_2),L)$ 定义双\Term{additive-functor}{加性函子} $\operatorname{ch}(f)\in\operatorname{HOM}(\operatorname{ch}(K_1),\operatorname{ch}(K_2);\operatorname{ch}(L))$；\Term{morphism-of-functors}{函子态射}可与\Term{homotopy}{同伦}等同。
+(b) 对每个双\Term{additive-functor}{加性函子} $F$，存在\Term{quasi-isomorphism}{拟同构} $k_i:K'_i\to K_i$ 和 $f:K'_1\otimes K'_2\to L$，使 $F\simeq\operatorname{ch}(f)\circ(\operatorname{ch}(k_1)^{-1},\operatorname{ch}(k_2)^{-1})$。
+若 $K_1^0$ 或 $K_2^0$ \Term{flat}{平坦}，且 $K_1'^0$ 或 $K_2'^0$ 也\Term{flat}{平坦}，则
+\[k_1\otimes k_2:\tau_{\ge-1}(K'_1\otimes K'_2)\to\tau_{\ge-1}(K_1\otimes K_2)\]
+为\Term{quasi-isomorphism}{拟同构}。因此 $\operatorname{ch}(\tau_{\ge-1}(K_1\otimes K_2))$ 满足\Term{universal-property}{泛性质} (1.4.8.1)，得到 $\otimes$ 的存在性及\Term{functorial}{函子性}的构造 1.4.20。
+\SourcePage{348}
+\textbf{1.4.21。}设 $G$ 为交换\Term{sheaf}{层}，$G[1]$ 为仅在 $-1$ 次为 $G$ 的\Term{complex}{复形}。预叠 $\operatorname{pch}(G[1])$ 可与 $G$ 下平凡\Term{torsor}{挠子}的预叠等同，故 $\operatorname{ch}(G[1])$“就是”$G$ 下\Term{torsor}{挠子}的\Term{stack}{叠}，其加法为通常的加法。
+\textbf{1.4.22。}设 $K\in C^{[-1,0]}(S)$，$G$ 为交换\Term{sheaf}{层}。$K$ 由 $G$ 的\Term{group-extension}{扩张}
+\[E:\quad0\to G[0]\xrightarrow\alpha E\xrightarrow\beta K\to0\]
+在 Brauer 加法下组成 \Term{picard-stack}{Picard 叠} $\operatorname{EXT}(K,G)$。每个\Term{group-extension}{扩张} $E$ 给出从 $\operatorname{ch}(K)$ 到 $\operatorname{ch}(G[1])$ 的\Term{additive-functor}{加性函子}，将 $K^0$ 的\Term{local-scheme}{局部}\Term{section}{截面} $x$ 映为\Term{torsor}{挠子} $\beta^{-1}(x)$。读者可验证：
+\begin{SGAresult}{命题}{1.4.23}
+上述构造给出 \Term{picard-stack}{Picard 叠}的\Term{equivalence}{等价}
+$\operatorname{EXT}(K,G)\xrightarrow\sim\operatorname{HOM}(\operatorname{ch}(K),\operatorname{ch}(G[1]))$。
+\end{SGAresult}
+\textbf{1.4.24。}设 $F$ 为\Term{site}{景} $S$ 的\Term{object}{对象}；仍用 $F$ 表示它定义的\Term{sheaf}{层}，用 $\mathbf Z^{(F)}$ 表示生成的交换\Term{sheaf}{层}。设 $C$ 为 $S$ 上的 \Term{picard-stack}{Picard 叠}。容易验证（参见 1.4.3），给定下列任一资料“是一样的”：a）\Term{additive-functor}{加性函子} $H:\operatorname{ch}(\mathbf Z^{(F)})\to C$；b）\Term{stack}{叠}的\Term{morphism}{态射} $(F\text{ 的局部截面的叠，态射仅为恒等})\to C$；c）$C(F)$ 的一个\Term{object}{对象}。
+为应用 1.4.9，假定 $S$ 中存在\Term{fiber-product}{纤维积}，令 $f:S/F\to S$ 为\Term{canonical}{典范}的\Term{site}{景}\Term{morphism}{态射}。上述构造给出\Term{equivalence}{等价}
+\[\operatorname{HOM}(\operatorname{ch}(\mathbf Z^{(F)}),C)\xrightarrow\sim f_*f^*C.\tag{1.4.24.1}\]
+由构造 $\flat$ 得到的\Term{isomorphism}{同构}
+\[\tau_{\le0}R\mathcal Hom(\mathbf Z^{(F)},C^\flat)\xrightarrow\sim\tau_{\le0}Rf_*f^*C^\flat\]
+也可从更一般的\Term{isomorphism}{同构}推出：
+\[R\mathcal Hom(\mathbf Z^{(F)},K)\xrightarrow\sim Rf_*f^*K\qquad(K\in\operatorname{Ob}D^+(S)).\tag{1.4.24.2}\]
+\SGAsection{1.5}{泛系数公式}
+\SourcePage{349}
+\textbf{1.5.1。}设 $f:X\to S$ 为 $S$ 上\Term{projective}{射影}且\Term{smooth}{光滑}的曲线。记 $\operatorname{PIC}(X/S)$ 为 $S$ 的大 fppf \Term{site}{景}（XVII 0.10）上，$X$ 上\Term{invertible}{可逆}\Term{sheaf}{层}的\Term{stack}{叠}的\Term{direct-image}{正像}（1.4.9）。有
+\[\operatorname{PIC}(X/S)=f_*\operatorname{ch}(\mathbf G_m[1]),\tag{1.5.1.1}\]
+\[\operatorname{PIC}(X/S)^\flat=\tau_{\le0}Rf_*(\mathbf G_m[1]).\tag{1.5.1.2}\]
+$X$ 的每个\Term{section}{截面} $t$ 定义\Term{invertible}{可逆}\Term{sheaf}{层} $\mathcal O(t)$。采用 1.4.24 的记号（参见 a $\leftrightarrow$ b），此构造与任意\Term{base-change}{基变换}相容，故定义 \Term{picard-stack}{Picard 叠}的\Term{morphism}{态射}
+\[\operatorname{ch}\mathbf Z^{(X)}\to\operatorname{PIC}(X/S).\tag{1.5.1.3}\]
+对任意 \Term{picard-stack}{Picard 叠} $C$，(1.5.1.3)、(1.4.24.1) 给出\Term{additive-functor}{加性函子}
+\[\operatorname{HOM}(\operatorname{PIC}(X/S),C)\to\operatorname{HOM}(\operatorname{ch}\mathbf Z^{(X)},C)\xrightarrow\sim f_*f^*C.\tag{1.5.1.4}\]
+施以构造 $\flat$，(1.5.1.3) 给出\Term{morphism}{态射}
+\[\mathbf Z^{(X)}\to\tau_{\le0}Rf_*\mathbf G_m[1]\to Rf_*\mathbf G_m[1],\tag{1.5.1.5}\]
+而由 (1.4.24.2)，(1.5.1.4) 的对应物是\Term{morphism}{态射}
+\[R\mathcal Hom(\tau_{\le0}Rf_*(\mathbf G_m[1]),K)\to Rf_*f^*K.\tag{1.5.1.6}\]
+若 $C=\operatorname{ch}(G[1])$ 是满足 (1.3.1.1) 的群 $G$ 下\Term{torsor}{挠子}的\Term{stack}{叠}，定理 1.3.10 断言 (1.5.1.4) 为\Term{equivalence}{等价}；其逆\Term{equivalence}{等价}将 $G_X$ 下\Term{torsor}{挠子} $K$ 映为\Term{additive-functor}{加性函子} $\langle x,K]$。这\Term{equivalence}{等价}于由 (1.5.1.4) 或 (1.5.1.6) 得到的\Term{morphism}{态射}
+\[\tau_{\le1}R\mathcal Hom(\tau_{\le0}Rf_*(\mathbf G_m[1]),G)\to\tau_{\le1}Rf_*f^*G\tag{1.5.1.7}\]
+为\Term{isomorphism}{同构}。
+\begin{SGAresult}{定理（泛系数公式）}{1.5.2}
+设 $f:X\to S$ 为\Term{projective}{射影}且\Term{smooth}{光滑}曲线，$C$ 为 $S_{\mathrm{fppf}}$ 上的 \Term{picard-stack}{Picard 叠}，$K=C^\flat$（1.4.15）。假定 $K$ 在 $D^+(S_{\mathrm{fppf}})$ 中\Term{local-isomorphism}{局部同构}于形如 $G^{-1}\to G^0$ 的\Term{complex}{复形}，其中 $G^i$ 满足 (1.3.1.1)。则
+(I) \Term{functor}{函子} $\operatorname{HOM}(\operatorname{PIC}(X/S),C)\to f_*f^*C$ 为 \Term{picard-stack}{Picard 叠}的\Term{equivalence}{等价}。\hfill(1.5.2.1)
+\SourcePage{350}
+(II) 由 (1.5.1.6) 或 (1.5.1.4) 得到的\Term{morphism}{态射}
+\[\tau_{\le0}R\mathcal Hom(\tau_{\le0}Rf_*(\mathbf G_m[1]),K)\to\tau_{\le0}Rf_*f^*K\tag{1.5.2.2}\]
+为\Term{isomorphism}{同构}。
+\end{SGAresult}
+此定理使 $\tau_{\le0}Rf_*(\mathbf G_m[1])$ 扮演经典泛系数公式中\Term{homology}{同调}的角色。
+\begin{proof}
+对每个 $C$，显然 (I) $\leftrightarrow$ (II)，且两者在 $S$ 上都是\Term{local-nature}{局部性质}。$C=\operatorname{ch}(G[1])$ 的情形已如上所述由 1.3.10 得到。只须证明，若 $K=(d:G^{-1}\to G^0)$，且 (1.5.2.2) 对 $G^{-1}[1]$、$G^0[1]$ 都为\Term{isomorphism}{同构}，那么对 $K$ 也如此。将\Term{cohomology}{上同调}\Term{long-exact-sequence}{长正合列}
+\[0\to R^{-1}f_*K\to f_*G^{-1}\to f_*G^0\to R^0f_*K\to R^1f_*G^{-1}\to R^1f_*G^0\]
+与 (1.5.2.2) 左端的类似\Term{long-exact-sequence}{长正合列}比较，应用\Term{five-lemma}{五引理}即可。
+\end{proof}
+\textbf{1.5.3。}设 $u:X\to Y$ 为 $S$ 上\Term{projective}{射影}且\Term{smooth}{光滑}曲线间的\Term{flat-morphism}{平坦态射}，\Term{structural-morphism}{结构态射}分别为 $f_1:X\to S$、$f_2:Y\to S$，满足 $f_1=f_2u$。则下列\Term{additive-functor}{加性函子}图本质交换：
+\[\begin{tikzcd}\mathbf Z^{(X)}\arrow[r]\arrow[d,"u"']&\operatorname{PIC}(X/S)\arrow[d,"N_{X/Y}"]\\\mathbf Z^{(Y)}\arrow[r]&\operatorname{PIC}(Y/S).\end{tikzcd}\tag{1.5.3.1}\]
+故对每个 \Term{picard-stack}{Picard 叠} $C$，下图本质交换：
+\[\begin{tikzcd}\operatorname{HOM}(\operatorname{PIC}(Y/S),C)\arrow[r]\arrow[d,"{\operatorname{HOM}(N_{X/Y},C)}"']&f_{2*}f_2^*C\arrow[d,"u^*"]\\\operatorname{HOM}(\operatorname{PIC}(X/S),C)\arrow[r]&f_{1*}f_1^*C.
+\end{tikzcd}\tag{1.5.3.2}\]
+\SourcePage{351}
+对 $K\in D^+(S)$，下图交换：
+\[\begin{tikzcd}[column sep=small]R\mathcal Hom(\tau_{\le0}Rf_{2*}\mathbf G_m[1],K)\arrow[r]\arrow[d,"{R\mathcal Hom(N_{X/Y},K)}"']&Rf_{2*}f_2^*K\arrow[d,"u^*"]\\R\mathcal Hom(\tau_{\le0}Rf_{1*}\mathbf G_m[1],K)\arrow[r]&Rf_{1*}f_1^*K.\end{tikzcd}\tag{1.5.3.3}\]
+现设 $G$ 为满足 (1.3.1.1) 的交换\Term{sheaf}{层}。迹 XVII 6.3 给出\Term{additive-functor}{加性函子}
+\[\operatorname{Tr}_u:f_{1*}f_1^*\operatorname{ch}(G[1])\to f_{2*}f_2^*\operatorname{ch}(G[1]),\tag{1.5.3.4}\]
+而 1.3.8.6 给出使下图本质交换的\Term{isomorphism}{同构}：
+\[\begin{tikzcd}[column sep=small]
+\operatorname{HOM}(\operatorname{PIC}(X/S),\operatorname{ch}(G[1]))\arrow[d,"{\operatorname{HOM}(u^*,\operatorname{ch}(G[1]))}"']&f_{1*}f_1^*\operatorname{ch}(G[1])\arrow[l]\arrow[d,"\operatorname{Tr}_u"]\\
+\operatorname{HOM}(\operatorname{PIC}(Y/S),\operatorname{ch}(G[1]))&f_{2*}f_2^*\operatorname{ch}(G[1])\arrow[l]
+\end{tikzcd}\tag{1.5.3.5}\]
+因此下图交换：
+\[\begin{tikzcd}[column sep=small]
+\tau_{\le1}R\mathcal Hom(\tau_{\le0}Rf_{1*}\mathbf G_m[1],G)\arrow[d,"{R\mathcal Hom(u^*,G)}"']&\tau_{\le1}Rf_{1*}f_1^*G\arrow[l,"\sim"']\arrow[d,"\operatorname{Tr}_u"]\\
+\tau_{\le1}R\mathcal Hom(\tau_{<0}Rf_{2*}\mathbf G_m[1],G)&\tau_{\le1}Rf_{2*}f_2^*G\arrow[l,"\sim"']
+\end{tikzcd}\tag{1.5.3.6}\]
+\textbf{1.5.4。}采用 1.5.2 的记号，设 $G$ 满足 1.3.1.1。在 $S$ 的\Term{etale}{平展}\Term{topology}{拓扑}下，\Term{local-scheme}{局部}有非\Term{canonical}{典范}\Term{resolution}{分解}
+\[\tau_{\le0}Rf_*\mathbf G_m[1]=f_*\mathbf G_m[1]+R^1f_*\mathbf G_m.\]
+在 \Term{picard-stack}{Picard 叠}层面，可将每个\Term{invertible}{可逆}\Term{sheaf}{层}\Term{isomorphism-class}{同构类}映为该类中沿 $X/S$ 的适当\Term{section}{截面}\Term{rigidity}{刚性}化的\Term{invertible}{可逆}\Term{sheaf}{层}，以此定义\Term{section}{截面} $\operatorname{ch}(R^1f_*\mathbf G_m)\to f_*\operatorname{ch}(\mathbf G_m[1])$。故 (1.5.2.2) 给出\Term{isomorphism}{同构}
+\[\mathcal Hom(R^1f_*\mathbf G_m,G)\xrightarrow\sim\mathcal Hom_S(X,G)\tag{1.5.4.1}\]
+\SourcePage{352}
+及\Term{exact-sequence}{正合列}
+\[0\to\mathcal Ext^1(R^1f_*\mathbf G_m,G)\to R^1f_*G\to\mathcal Hom(f_*\mathbf G_m,G)\to0.\tag{1.5.4.2}\]
+这些\Term{morphism}{态射}解释如下：a）(1.5.4.1) 以及 (1.5.4.2) 的第一个\Term{morphism}{态射}由 $X\to\operatorname{Pic}_{X/S}$ 的\Term{canonical}{典范}映射定义；b）(1.5.4.2) 的第二个\Term{morphism}{态射}是次数 (1.3.7.2)。\Term{etale}{平展}\Term{local-scheme}{局部}有非\Term{canonical}{典范}\Term{resolution}{分解} $\operatorname{Pic}_{X/S}\simeq\operatorname{Pic}^0_{X/S}\times\mathbf Z^k$，故
+\[\mathcal Ext^1(R^1f_*\mathbf G_m,G)\xrightarrow\sim\mathcal Ext^1(\operatorname{Pic}^0_{X/S},G),\]
+而 (1.5.4.2) 也可写成
+\[0\;\mathcal Ext^1(\operatorname{Pic}^0_{X/S},G)\to R^1f_*G\to\mathcal Hom(f_*\mathbf G_m,G)\to0.\tag{1.5.4.3}\]
+\textbf{1.5.5。}在 (1.5.2.2) 取 $K=\mathbf G_m[1]$，定理 1.5.2 就成为 $\tau_{\le0}(Rf_*\mathbf G_m[1])$ 的\Term{autoduality}{自对偶}定理。表示该\Term{object}{对象}的任一\Term{complex}{复形}均有\Term{canonical}{典范}的三步\Term{filtered}{滤过}，其逐次商在唯一\Term{quasi-isomorphism}{拟同构}意义下为
+\[\operatorname{Pic}_{X/S}/\operatorname{Pic}^0_{X/S},\qquad\operatorname{Pic}^0_{X/S},\qquad(f_*\mathbf G_m)[1].\]
+上述\Term{autoduality}{自对偶}对应于第一项与 $f_*\mathbf G_m$ 之间取值于 $\mathbf G_m$ 的\Term{duality}{对偶}，以及 $\operatorname{Pic}^0_{X/S}$ 上取值于 $\mathbf G_m[1]$ 的\Term{autoduality}{自对偶}（Jacobian 的\Term{autoduality}{自对偶}）。
+\textbf{1.5.6。}对于不假定\Term{proper}{固有}的\Term{smooth}{光滑}曲线 $f:X\to S$，情况明显较差。\Term{additive-group}{加法群}的行为似乎无法控制。不过，对从 $S$ 上\Term{proper}{固有}曲线删去一个在 $S$ 上\Term{finite}{有限}的部分所得的\Term{smooth}{光滑}曲线，若 $G$ 为扭性\Term{etale}{平展}\Term{sheaf}{层}，其扭性与 $S$ 的\Term{residue-characteristic}{剩余特征}互素，则前述论证仍适用。可以希望 $p$-扭性\Term{etale}{平展}\Term{sheaf}{层}也有合理行为；见 Serre [1] 第 VI 章第 11 节，第 126 页。此处定理 1.2.2 的角色由\Term{acyclic}{无环}性定理 XV 2.2 扮演，后者给出下列推论。
+\begin{SGAresult}{引理}{1.5.7}
+设 $p:X\to S$ 为 $S$ 上标准\Term{affine-space}{仿射空间}的\Term{projection}{投影}，$G$ 为 $S_{\mathrm{ét}}$ 上的交换扭性\Term{sheaf}{层}，其扭性与\Term{residue-characteristic}{剩余特征}互素。仍用 $G$ 表示其到 $S_{\mathrm{fppf}}$ 的\Term{inverse-image}{逆像}。则 $p^*$ 给出 $S_{\mathrm{ét}}$（或 $S_{\mathrm{fppf}}$，两者相同，Grothendieck [1]）上 $G$ 下\Term{torsor}{挠子}\Term{category}{范畴}与 $X$ 上 $G_X$ 下\Term{torsor}{挠子}\Term{category}{范畴}的\Term{equivalence}{等价}。
+\end{SGAresult}
+\SourcePage{353}
+\textbf{1.5.8。}设 $\bar f:\bar X\to S$ 为\Term{finite-presentation}{有限表示}的\Term{proper}{固有}\Term{morphism}{态射}，\Term{fiber}{纤维}纯一维；$Y\subset\bar X$ 为在 $S$ 上\Term{finite}{有限}、由\Term{ideal}{理想} $\mathfrak m$ 定义的子\Term{scheme}{概形}，且 $X=\bar X-Y$ 为 $S$ 上\Term{smooth}{光滑}曲线。另设 $G$ 为 $S_{\mathrm{ét}}$ 上与\Term{residue-characteristic}{剩余特征}互素的扭性\Term{sheaf}{层}，仍用 $G$ 表示其在 $S$ 的大 fppf \Term{site}{景}上的\Term{inverse-image}{逆像}。
+令 $\mathbf G_m(\mathfrak m)$ 为 $\mathbf G_{m\bar X}$ 中在 $Y$ 上等于 1 的\Term{section}{截面}所成的子\Term{sheaf}{层}。其下的\Term{torsor}{挠子}就是 $\bar X$ 上沿 $Y$ \Term{trivialization}{平凡化}的\Term{invertible}{可逆}\Term{sheaf}{层}。$X$ 上在 $S$ 上\Term{finite}{有限}的每个\Term{relative-divisor}{相对除子}都定义这样的\Term{invertible}{可逆}\Term{sheaf}{层}。在 $S$ 上\Term{etale}{平展}\Term{local-scheme}{局部}，存在此类\Term{divisor}{除子}使所得\Term{invertible}{可逆}\Term{sheaf}{层}相对\Term{ample}{丰沛}。
+\begin{SGAresult}{引理}{1.5.9}
+在 1.5.8 的假设下，设 $S$ \Term{affine}{仿射}，$\mathcal O_{\bar X}(1)$ 为沿 $Y$ \Term{trivialization}{平凡化}的相对\Term{ample}{丰沛}\Term{invertible}{可逆}\Term{sheaf}{层}，$M$ 亦为沿 $Y$ \Term{trivialization}{平凡化}的\Term{invertible}{可逆}\Term{sheaf}{层}。对每个 $s\in S$，存在整数 $n_0$，使对任意 $n\ge n_0$ 及 $\bar X_s$ 上在 $Y_s$ 等于 1 的 $M(n)\otimes k(s)$ 的\Term{section}{截面} $m_s$，存在 $M(n)$ 在 $Y$ 上等于 1 的\Term{section}{截面} $m$ \Term{lifting}{提升} $m_s$。
+\end{SGAresult}
+\begin{proof}
+可归约到 $S$ 为\Term{noetherian}{诺特}\Term{scheme}{概形}（因为\Term{surjective-morphism}{满射态射}族经\Term{base-change}{基变换}仍为\Term{surjective-morphism}{满射态射}族）。令 $N$ 为 $M$ 中在 $\bar X_s$ 和 $Y$ 上为零的\Term{local-scheme}{局部}\Term{section}{截面}所成的\Term{coherent}{凝聚}\Term{sheaf}{层}。对每个 $n$，问题的\Term{local-scheme}{局部}解组成 $N(n)$ 下的\Term{principal-homogeneous-space}{主齐性空间}，故\Term{lifting}{提升} $m_s$ 的障碍位于 $H^1(\bar X,N(n))=H^0(S,R^1\bar f_*N(n))$。而 $n$ 充分大时 $R^1\bar f_*N(n)=0$（EGA III 2.2.1）。
+\end{proof}
+\textbf{1.5.10。}设 $L$ 为 $\bar X$ 上沿 $Y$ \Term{trivialization}{平凡化}的\Term{invertible}{可逆}\Term{sheaf}{层}，$s\in S$。考虑条件：
+\textbf{1.5.10.1。}$\bar X_s$ 上每个在 $Y_s$ 等于 1 的 $L\otimes k(s)$ \Term{section}{截面}，都能\Term{lifting}{提升}为 $s$ 的某\Term{neighborhood}{邻域}的\Term{inverse-image}{逆像} $U$ 上在 $Y\cap U$ 等于 1 的 $L$ \Term{section}{截面}。
+\textbf{1.5.10.2。}存在 $L\otimes k(s)$ 在 $\bar X_s$ 上的四个\Term{section}{截面} $m_i$，在 $Y$ 上等于 1，并在 $X_s$ 的每个\Term{irreducible-component}{不可约分支}的\Term{generic-point}{一般点}上\Term{linearly-independent}{线性无关}。
+再分别对 $L$ 的\Term{section}{截面} $m$、\Term{section}{截面}对 $(m_1,m_2)$ 和\Term{section}{截面}三元组 $(m_1,m_2,m_3)$ 考虑条件：
+\textbf{1.5.10.3。}$m$ 在 $Y$ 上等于 1，且方程 $m=0$ 定义的子\Term{scheme}{概形} $Z(m)\subset X$ 为 $S$ 上\Term{relative-divisor}{相对除子}（即在 $S$ 上\Term{quasi-finite}{拟有限}，从而\Term{finite}{有限}，因为 $X=\bar X-Y$ 在 $S$ 上\Term{smooth}{光滑}）。
+\textbf{1.5.10.4。}记 $\lambda$ 为\Term{affine}{仿射}直线 $g:\mathbf E^1_S\to S$ 的\Term{canonical}{典范}坐标。$g'^*L$ 的\Term{section}{截面} $\lambda m_1+(1-\lambda)m_2$ 满足 (1.5.10.3)。
+\textbf{1.5.10.5。}同样，$\lambda m_1+\mu m_2+(1-\lambda-\mu)m_3$ 满足 (1.5.10.3)。
+由\Term{general-position}{一般位置}论证验证下列引理，留给读者。
+\SourcePage{354}
+\begin{SGAresult}{引理}{1.5.11}
+设 $L$ 为 $\bar X$ 上沿 $Y$ \Term{trivialization}{平凡化}的\Term{invertible}{可逆}\Term{sheaf}{层}，$\bar s$ 为 $S$ 的\Term{geometric-point}{几何点}、像为 $s$。若 $L$ 在 $s$ 满足 (1.5.10.1)、(1.5.10.2)，则：
+(I) 若 $L$ 的 $n$ 个\Term{section}{截面} $m_i$ 满足 (1.5.10.3)，存在 $\bar s$ 的\Term{etale}{平展}\Term{neighborhood}{邻域} $U$ 和 $L|\bar f^{-1}(U)$ 的\Term{section}{截面} $k$，使各对 $(m_i,k)$ 满足 (1.5.10.4)。
+(II) 若四个\Term{section}{截面} $m_1,m_2,k_1,k_2$ 使各对 $(m_i,k_j)$ 满足 (1.5.10.4)，则存在这样的 $U,k$，使三元组 $(m_i,k_j,k)$ 满足 (1.5.10.5)。
+\end{SGAresult}
+若 $k(s)$ 无限，只取 Zariski \Term{neighborhood}{邻域}就够了。
+\textbf{1.5.12。}现设 $L$ 为 $\bar X$ 上沿 $Y$ \Term{rigidity}{刚性}化的\Term{invertible}{可逆}\Term{sheaf}{层}，$K$ 为 $X$ 上的 $G$-\Term{torsor}{挠子}，$G$ 如 1.5.7。我们要定义 $S$ 上的 $G$-\Term{torsor}{挠子} $\langle L,K]$，推广 1.3 的构造，并对 $L$ \Term{additive}{加性}。
+若 $(m_1,m_2)$ 满足 (1.5.10.4)，采用 1.5.10.3、1.5.10.4 的记号，$g'^*K$ 从 $\lambda m_1+(1-\lambda)m_2=0$ 到 $\mathbf E^1_S$ 的迹为\Term{torsor}{挠子} $K_{1,2}$。沿 $\lambda=0$（相应地 $1$）的\Term{inverse-image}{逆像}为 $K_2=\operatorname{Tr}_{Z(m_2)/S}(K)$（相应地 $K_1=\operatorname{Tr}_{Z(m_1)/S}(K)$）。由 1.5.7，$K_{1,2}$ \Term{canonical}{典范}地为 $S$ 上某 $G$-\Term{torsor}{挠子}的\Term{inverse-image}{逆像}，故得到 $K_1,K_2$ 的\Term{canonical-isomorphism}{典范同构}。
+若 $m_1,m_2,k$ 使 $(m_i,k)$ 满足 (1.5.10.4)，复合又给出\Term{isomorphism}{同构}
+\[\Psi_k:K_1=\operatorname{Tr}_{Z(m_1)/S}(K)\xrightarrow\sim K_2=\operatorname{Tr}_{Z(m_2)/S}(K).\tag{1.5.12.1}\]
+若 $E$ 为 $X$ 上在 $S$ 上\Term{finite}{有限}的\Term{relative-divisor}{相对除子}，则 $m'_i=m_i\otimes1$ 是 $L\otimes\mathcal O(E)$ 满足 (1.5.10.3) 的\Term{section}{截面}，并且（$i=0,1$）
+\[K'_i=\operatorname{Tr}_{Z(m'_i)/S}(K)\simeq K_i+\operatorname{Tr}_{E/S}(K).\tag{1.5.12.2}\]
+\Term{isomorphism}{同构} $\Psi_{k\otimes1}$ 从 $\Psi_k$ 得到：
+\[\Psi_{k\otimes1}=\Psi_k+\operatorname{id}_{\operatorname{Tr}_{E/S}(K)}.\tag{1.5.12.3}\]
+要证明 $\Psi_k$ 不依赖 $k$，只须在每个 $s$ 的\Term{etale}{平展}\Term{neighborhood}{邻域}上证明；利用 (1.5.12.3)、1.5.9，归约到 (1.5.10.1)、(1.5.10.2) 成立。用 1.5.11 (II) 的记号，$\Psi_{\lambda k_i+(1-\lambda)k}-\Psi_{k_i}$ 是 $\mathbf E^1_S\to G$ 的\Term{morphism}{态射}，在 $\lambda=1$ 为零，故恒为零。因此 $\Psi_{k_i}=\Psi_k$，从而 $\Psi_{k_1}=\Psi_{k_2}$。
+对满足 1.5.10.3 的 $m_1,m_2$，令 $K_i=\operatorname{Tr}_{Z(m_i)/S}(K)$。为定义 $\Psi_{m_2,m_1}:K_1\to K_2$，只须在各 $s$ 的\Term{etale}{平展}\Term{neighborhood}{邻域}上作与\Term{base-change}{基变换}相容的定义。若 $E$ 使 $L\otimes\mathcal O(E)$ 满足 (1.5.10.1)、(1.5.10.2)（见 1.5.9），
+\SourcePage{355}
+且各对 $(m_i\otimes1,k)$ 满足 (1.5.10.4)，则令
+\[\Psi_{m_2,m_1}+\operatorname{Tr}_{E/S}(K)=\Psi_k.\]
+由此定义 $\Psi_{m_2,m_1}$；用 1.5.11 (I) 可验证 $\Psi_{m_3,m_2}\Psi_{m_2,m_1}=\Psi_{m_3,m_1}$。构造与\Term{base-change}{基变换}相容。若存在满足 (1.5.10.3) 的\Term{section}{截面} $m$，定义
+\[\langle L,K]=\operatorname{Tr}_{Z(m)/S}(K).\]
+按上述结果，此\Term{torsor}{挠子}在\Term{canonical-isomorphism}{典范同构}意义下不依赖 $m$。
+一般情况下，只须在各 $s$ 的\Term{etale}{平展}\Term{neighborhood}{邻域}上以与\Term{base-change}{基变换}相容的方式定义。若如上 $L\otimes\mathcal O(E)$ 满足 (1.5.10.1)、(1.5.10.2)，则它有满足 (1.5.10.3) 的\Term{section}{截面}，定义
+\[\langle L,K]=\langle L\otimes\mathcal O(E),K]-\operatorname{Tr}_{E/S}(K).\]
+\textbf{1.5.13。}在 1.5.8 的假设下，若 $x,y$ 为 $\bar f_*\mathbf G_m(\mathfrak m)$ 的\Term{section}{截面}，则当 $\lambda$ 位于 $S$ 上\Term{affine}{仿射}直线的某个各\Term{fiber}{纤维}\Term{nonempty}{非空}的\Term{open-subset}{开集}中时，$\lambda x+(1-\lambda)y$ 仍为\Term{section}{截面}。这可表述为：
+\textbf{1.5.13.1。}“$\bar f_*\mathbf G_m(\mathfrak m)$ 按弧\Term{connected}{连通}”。
+\Term{affine}{仿射}直线的任一各\Term{fiber}{纤维}\Term{nonempty}{非空}\Term{open-subset}{开集}到 $G$ 的\Term{morphism}{态射}都是常值，故不存在 $\bar f_*\mathbf G_m(\mathfrak m)\to G$ 的非平凡\Term{homomorphism}{同态}，$L$ 的\Term{automorphism}{自同构}在 $\langle L,K]$ 上\Term{trivial-action}{平凡作用}。因此该\Term{torsor}{挠子}只依赖 $K$ 和 $L$ 所定义的 $R^1\bar f_*\mathbf G_m(\mathfrak m)$ 的\Term{section}{截面}。整体化后，对它的\Term{section}{截面} $\lambda$ 可定义\Term{signature}{符号} $\langle\lambda,K]$；它对 $\lambda$ \Term{additive}{加性}，因而对应于 $R^1\bar f_*\mathbf G_m(\mathfrak m)$ 由 $G$ 的\Term{group-extension}{扩张} $e(K)$（参见 1.4.23 或 SGA 7 VII 1.1.6、1.2）。$e(K)$ 的形成与任意\Term{base-change}{基变换}及\Term{torsor}{挠子}加法相容，给出\Term{additive-functor}{加性函子}
+\[e:f_*\operatorname{ch}(G[1])\to\operatorname{EXT}(R^1\bar f_*\mathbf G_m(\mathfrak m),G).\]
+令 $j:X\to R^1\bar f_*\mathbf G_m(\mathfrak m)$ 为 $t\mapsto[\mathcal O(t)]$ 的\Term{canonical}{典范}映射。沿 $j$ 的\Term{inverse-image}{逆像}为\Term{additive-functor}{加性函子}
+\[j^*:\operatorname{EXT}(R^1\bar f_*\mathbf G_m(\mathfrak m),G)\to f_*\operatorname{ch}(G[1]),\]
+显然 $j^*e\simeq\operatorname{Id}$。仿照 1.3.10、1.5.2 可验证，在 fppf \Term{topology}{拓扑}下有：
+\SourcePage{356}
+\begin{SGAresult}{命题}{1.5.14}
+在 1.5.8 的假设下，1.5.13 的\Term{functor}{函子} $e,j$ 互为逆\Term{equivalence}{等价}。由 1.4.19、1.4.23 得到\Term{isomorphism}{同构}
+\[\operatorname{Ext}^1(R^1\bar f_*\mathbf G_m(\mathfrak m),G)\xrightarrow\sim H^1(X,G).\]
+\end{SGAresult}
+\textbf{1.5.15。}设 $f_i:X_i\to S$（$i=1,2$）为按 1.5.8 \Term{compactification}{紧化}的曲线。设 $u:\bar X_1\to\bar X_2$ 使 $Y_1$ 为 $u^{-1}Y_2$ 的子\Term{scheme}{概形}，并诱导 $X_1\to X_2$ 的\Term{finite}{有限}\Term{flat-morphism}{平坦态射}。对 $\bar X_2$ 上\Term{invertible}{可逆}\Term{sheaf}{层} $L$ 及 $X_1$ 上\Term{torsor}{挠子} $K$，有
+\[\langle L,\operatorname{tr}_{X_1/X_2}(K)]\xrightarrow\sim\langle u^*L,K],\]
+由此得到\Term{commutative-diagram}{交换图}
+\[\begin{tikzcd}[column sep=small]\operatorname{Ext}^1(R^1\bar f_{1*}\mathbf G_m(\mathfrak m),G)\arrow[r,"\sim"]\arrow[d,"{\operatorname{Ext}^1(u^*,\operatorname{Id})}"']&H^1(X_1,G)\arrow[d,"\operatorname{Tr}_{X_1/X_2}"]\\\operatorname{Ext}^1(R^1\bar f_{2*}\mathbf G_m(\mathfrak m),G)\arrow[r,"\sim"]&H^1(X_2,G).\end{tikzcd}\tag{1.5.15.1}\]
+若 $u:\bar X_1\to\bar X_2$ \Term{finite}{有限}\Term{flat}{平坦}且 $Y_1\subset u^{-1}Y_2$（作为\Term{scheme}{概形}），对 $\bar X_1$ 上\Term{invertible}{可逆}\Term{sheaf}{层} $L$ 和 $X_2$ 上\Term{torsor}{挠子} $K$ 有
+\[\langle L,u^*K]\xrightarrow\sim\langle N_{X_1/X_2}L,K],\]
+由此得到\Term{commutative-diagram}{交换图}
+\[\begin{tikzcd}[column sep=small]\operatorname{Ext}^1(R^1\bar f_{2*}\mathbf G_m(\mathfrak m),G)\arrow[r,"\sim"]\arrow[d,"{\operatorname{Ext}^1(N_{X_1/X_2},\operatorname{Id})}"']&H^1(X_2,G)\arrow[d,"u^*"]\\\operatorname{Ext}^1(R^1\bar f_{1*}\mathbf G_m(\mathfrak m),G)\arrow[r,"\sim"]&H^1(X_1,G).\end{tikzcd}\tag{1.5.15.2}\]
+当然也可以用 \Term{picard-stack}{Picard 叠}表述更精确的结果。
+\SGAsection{1.6}{一个消去定理}
+本小节从 1.6.6 的第二个证明起至末尾，可独立于第 1 节的第 2 至 5 小节阅读。
+\begin{SGAresult}{引理}{1.6.1}
+设 $X$ 为\Term{scheme}{概形}，$Y$ 为\Term{ideal}{理想} $\mathfrak m$ 定义的闭子\Term{scheme}{概形}，补集为 $U$，$U\overset j\hookrightarrow X\overset i\hookleftarrow Y$。
+\SourcePage{357}
+令 $\mathbf G_m(\mathfrak m)$ 为如下 fpqc \Term{sheaf}{层}：在 $X$-\Term{scheme}{概形} $X_1$ 上的\Term{section}{截面}为 $\mathcal O_{X_1}^*$ 中在 $Y$ 的\Term{inverse-image}{逆像}上等于 1 的\Term{section}{截面}。若 $n\ge1$ 在 $X$ 上\Term{invertible}{可逆}，则
+\[0\to j_!\mu_n\to\mathbf G_m(\mathfrak m)\xrightarrow n\mathbf G_m(\mathfrak m)\to0\]
+是 $X$ 的大\Term{etale}{平展}\Term{site}{景}（XVII 0.10）上的\Term{exact-sequence}{正合列}。
+\end{SGAresult}
+\begin{proof}
+令 $i:Y\to X$ 亦表示所诱导的大\Term{etale}{平展}\Term{site}{景}的\Term{morphism}{态射}，$i^*(X_1/X)=X_1\times_XY$。\Term{functor}{函子} $i_*$ \Term{exact}{正合}。下图各列以及末两行\Term{exact}{正合}（IX 3.2），故首行也\Term{exact}{正合}：
+\[\begin{tikzcd}[column sep=small]
+&0\arrow[d]&0\arrow[d]&0\arrow[d]\\
+0\arrow[r]&j_!\mu_n\arrow[r]\arrow[d]&\mathbf G_m(\mathfrak m)\arrow[r,"n"]\arrow[d]&\mathbf G_m(\mathfrak m)\arrow[r]\arrow[d]&0\\
+0\arrow[r]&\mu_n\arrow[r]\arrow[d]&\mathbf G_m\arrow[r,"n"]\arrow[d]&\mathbf G_m\arrow[r]\arrow[d]&0\\
+0\arrow[r]&i_*\mu_n\arrow[r]\arrow[d]&i_*\mathbf G_m\arrow[r,"n"]\arrow[d]&i_*\mathbf G_m\arrow[r]\arrow[d]&0\\&0&0&0
+\end{tikzcd}\tag{1.6.1.1}\]
+\end{proof}
+\textbf{1.6.2。}设 $k$ 为域，$G'_1\to G'_2\to G\to G''_2\to G''_1$ 为 $\operatorname{Spec}(k)$ 的大 fppf \Term{site}{景}上交换\Term{sheaf}{层}的\Term{exact-sequence}{正合列}。回顾：若 $G'_1,G'_2$ \Term{representable}{可表}且为\Term{finite-type}{有限型}，$G''_2,G''_1$ \Term{representable}{可表}且\Term{locally-finite-type}{局部有限型}，则 $G$ \Term{representable}{可表}且\Term{locally-finite-type}{局部有限型}。
+若 $P$ 为 $k$ 上\Term{finite-type}{有限型}交换\Term{connected}{连通}\Term{algebraic-group}{代数群}，$n$ 在 $k$ 中\Term{invertible}{可逆}，则
+\[0\to{}_nP\to P\xrightarrow nP\to0\tag{1.6.2.1}\]
+\Term{exact}{正合}。若 $G$ 为被 $n$ 消去的\Term{finite}{有限}\Term{etale}{平展}\Term{abelian-group}{交换群}，则\Term{exact-sequence}{正合列}
+\[\operatorname{Hom}(P,G)\to\operatorname{Hom}({}_nP,G)\xrightarrow j\operatorname{Ext}^1(P,G)\xrightarrow n\operatorname{Ext}^1(P,G)\]
+的首群和末\Term{arrow}{箭头}为零，故有\Term{isomorphism}{同构}
+\[j:\operatorname{Hom}({}_nP,G)\xrightarrow\sim\operatorname{Ext}^1(P,G).\tag{1.6.2.2}\]
+\SourcePage{358}
+\textbf{1.6.3。}在 1.6.1 的假设下，设 $X$ 在域 $k$ 的谱上\Term{proper}{固有}，记 $p:X\to k$。\Term{exact-sequence}{正合列} $0\to\mathbf G_m(\mathfrak m)\to\mathbf G_m\to i_*\mathbf G_m\to0$ 定义 $\operatorname{Spec}(k)$ 上 fppf \Term{sheaf}{层}的\Term{cohomology}{上同调}\Term{exact-sequence}{正合列}，其直接解释很容易：
+\[0\to p_*\mathbf G_m(\mathfrak m)\to p_*\mathbf G_{mX}\to(pi)_*\mathbf G_{mY}\xrightarrow jR^1p_*\mathbf G_m(\mathfrak m)\to\operatorname{Pic}_{X/k}\to\operatorname{Pic}_{Y/k}.\tag{1.6.3.1}\]
+$p_*\mathbf G_{mX},p_*\mathbf G_{mY}$ 由\Term{finite-type}{有限型}群\Term{scheme}{概形}表示，$\operatorname{Pic}_{X/k},\operatorname{Pic}_{Y/k}$ 由\Term{locally-finite-type}{局部有限型}群\Term{scheme}{概形}表示。由 1.6.2，$p_*\mathbf G_m(\mathfrak m),R^1p_*\mathbf G_m(\mathfrak m)$ \Term{representable}{可表}；由 (1.3.13.1)，前者由\Term{connected}{连通}（\Term{finite-type}{有限型}）群\Term{scheme}{概形}表示，后者\Term{locally-finite-type}{局部有限型}。
+\begin{SGAresult}{定义}{1.6.4}
+记表示 $R^1p_*\mathbf G_m(\mathfrak m)$ 的群\Term{scheme}{概形}为 $\operatorname{Pic}_{\mathfrak m,X/k}$，其单位\Term{connected-component}{连通分支}为 $\operatorname{Pic}^0_{\mathfrak m,X/k}$；记\Term{quotient-group}{商群} $\operatorname{Pic}_{\mathfrak m,X/k}/\operatorname{Pic}^0_{\mathfrak m,X/k}$ 的扭\Term{subgroup}{子群}在 $\operatorname{Pic}_{\mathfrak m,X/k}$ 中的\Term{inverse-image}{逆像}为 $\operatorname{Pic}^\tau_{\mathfrak m,X/k}$。
+\end{SGAresult}
+它表示由预\Term{sheaf}{层} $S\mapsto\{S\times_kX\text{ 上沿 }S\times_kY\text{ 平凡化的可逆模的同构类}\}$ 生成的 fppf \Term{sheaf}{层}（1.5.8）。对\Term{algebraically-closed-field}{代数闭域} $k$ 及在 $k$ 中\Term{invertible}{可逆}的 $n$，\Term{kummer-exact-sequence}{Kummer 正合列} 1.4.1 给出\Term{isomorphism}{同构}
+\[H_c^1(U,\mu_n)\xrightarrow\sim{}_n\operatorname{Pic}^\tau_{\mathfrak m,X/k}(k).\tag{1.6.4.1}\]
+\textbf{1.6.5。}设 $X$ 为\Term{algebraically-closed-field}{代数闭域} $k$ 上\Term{smooth}{光滑}曲线，$\bar X$ 为以 $X$ 为\Term{dense-open-set}{稠密开集}的\Term{projective}{射影}\Term{smooth}{光滑}曲线，$Y\subset\bar X$ 使 $X=\bar X-Y$，其\Term{ideal-of-definition}{定义理想}为 $\mathfrak m$；$n$ 在 $k$ 中\Term{invertible}{可逆}，$G$ 为被 $n$ 消去的\Term{finite}{有限}\Term{abelian-group}{交换群}。$\operatorname{Pic}_{\mathfrak m,\bar X/k}$ 非\Term{canonical}{典范}地为其\Term{neutral-component}{单位分支}与\Term{free-commutative-group}{自由交换群}的积。由 (1.6.4.1)、(1.6.2.2)、1.5.14 得到\Term{canonical}{典范}\Term{composition-isomorphism}{复合同构}
+\[\begin{aligned}
+\operatorname{Hom}(H_c^1(X,\mu_n),G)&\xleftarrow\sim\operatorname{Hom}({}_n\operatorname{Pic}^\tau_{\mathfrak m,\bar X/k}(k),G)=\operatorname{Hom}({}_n\operatorname{Pic}^0_{\mathfrak m,\bar X/k},G)\\
+&\xrightarrow\sim\operatorname{Ext}^1(\operatorname{Pic}^0_{\mathfrak m,\bar X/k},G)\xleftarrow\sim\operatorname{Ext}^1(\operatorname{Pic}_{\mathfrak m,\bar X/k},G)\xrightarrow\sim H^1(X,G).
+\end{aligned}\]
+\SourcePage{359}
+若 $u:X\to Y$ 为 $k$ 上\Term{smooth}{光滑}曲线间的\Term{finite-morphism}{有限态射}，由 XVII 6.3、(1.5.15.2)，下图交换：
+\[\begin{tikzcd}\operatorname{Hom}(H_c^1(Y,\mu_n),G)\arrow[r,"\sim"]\arrow[d,"{\operatorname{Hom}(\operatorname{Tr}_u,G)}"']&H^1(Y,G)\arrow[d,"u^*"]\\\operatorname{Hom}(H_c^1(X,\mu_n),G)\arrow[r,"\sim"]&H^1(X,G).\end{tikzcd}\tag{1.6.5.1}\]
+\begin{SGAresult}{引理}{1.6.6}
+设 $X$ 为\Term{algebraically-closed-field}{代数闭域} $k$ 上\Term{smooth}{光滑}曲线，$n$ 在 $k$ 中\Term{invertible}{可逆}，$u:X'\to X$ 为温和\Term{etale}{平展}\Term{covering}{覆盖}。则 $\operatorname{Tr}_u:H_c^1(X',\mathbf Z/n)\to H_c^1(X,\mathbf Z/n)$ 非\Term{canonical}{典范}地\Term{isomorphism}{同构}于 $u^*:H^1(X,\mathbf Z/n)\to H^1(X',\mathbf Z/n)$ 的\Term{transpose}{转置}。
+\end{SGAresult}
+\begin{proof}[第一个证明]
+因 $\mu_n\simeq\mathbf Z/n$，这是 (1.6.5.1) 在 $G=\mathbf Z/n$ 时的特例。
+\end{proof}
+\begin{proof}[第二个证明]
+若 $k=\mathbf C$，\Term{comparison-theorem}{比较定理}将两\Term{morphism}{态射}等同于\Term{continuous-map}{连续映射} $u:X'(\mathbf C)\to X(\mathbf C)$ 定义的类似\Term{morphism}{态射}
+\[\operatorname{Tr}_u:H_c^1(X'(\mathbf C),\mathbf Z/n)\to H_c^1(X(\mathbf C),\mathbf Z/n),\quad
+u^*:H^1(X(\mathbf C),\mathbf Z/n)\to H^1(X'(\mathbf C),\mathbf Z/n).\]
+由 \Term{poincare-duality}{Poincaré 对偶}，它们互为\Term{transpose}{转置}。由 Lefschetz 原理，结论对任意\Term{characteristic-zero}{特征零}的 $k$ 仍成立（所考察的\Term{cohomology-group}{上同调群}在\Term{algebraically-closed}{代数闭}\Term{base-field-extension}{基域扩张}下不变）。
+若 $k$ \Term{characteristic}{特征}为 $p>0$，令 $W(k)$ 为 Witt 向量环，$\bar X$ 为 $X$ 的\Term{projective}{射影}\Term{smooth}{光滑}\Term{completion}{完备化}。由 SGA 1 III 7.4，$\bar X$ \Term{lifting}{提升}为 $W(k)$ 上\Term{projective}{射影}\Term{smooth}{光滑}曲线 $\bar X_1$。由\Term{smooth}{光滑}性，$S=\bar X-X$ 的每点 $s_i$ 都\Term{lifting}{提升}为 $\bar X_1$ 上\Term{section}{截面} $s'_i$。令 $S_1=\bigcup_i s'_i(\operatorname{Spec}W(k))$，$X_1=\bar X_1-S_1$。回顾（SGA 1 XII），$X'$ 可\Term{lifting}{提升}为 $X_1$ 的\Term{etale}{平展}\Term{covering}{覆盖} $X'_1$，且 $X'_1$ 由 $W(k)$ 上\Term{projective}{射影}\Term{smooth}{光滑}曲线 $\bar X'_1$ 删去\Term{finite}{有限}个互\Term{disjoint}{不相交}\Term{section}{截面}的并 $S'_1$ 得到。
+\SourcePage{360}
+\[\begin{tikzcd}X'_1\arrow[r,"u_1"]\arrow[dd,"f'_1"']&X_1\arrow[dd,"f_1"]&X'\arrow[l]\arrow[r,"u"]\arrow[dd]&X\arrow[l]\arrow[dd]\\\\\operatorname{Spec}W(k)\arrow[r,equal]&\operatorname{Spec}W(k)&\operatorname{Spec}k\arrow[l]\arrow[r,equal]&\operatorname{Spec}k.\end{tikzcd}\]
+\Term{etale}{平展}\Term{sheaf}{层} $R^1f_{1*}\mathbf Z/n,R^1f'_{1*}\mathbf Z/n,R^1f_{1!}\mathbf Z/n,R^1f'_{1!}\mathbf Z/n$ 都\Term{locally-constant}{局部常值}，形成与\Term{base-change}{基变换}相容；这可从联系 $\bar X_1,X_1,S_1$ 及 $\bar X'_1,X'_1,S'_1$ 的\Term{cohomology}{上同调}\Term{exact-sequence}{正合列}看出。因此
+\[\operatorname{Tr}_{u_1}:R^1f'_{1!}\mathbf Z/n\to R^1f_{1!}\mathbf Z/n,\quad
+u_1^*:R^1f_{1*}\mathbf Z/n\to R^1f'_{1*}\mathbf Z/n\]
+的几何\Term{special-fiber}{特殊纤维}与\Term{geometric-generic-fibre}{几何一般纤维}\Term{isomorphism}{同构}，归约到已处理的\Term{characteristic-zero}{特征零}情形。
+\end{proof}
+\begin{SGAresult}{引理}{1.6.7}
+设 $X$ 为\Term{characteristic-exponent}{特征指数} $p$ 的\Term{algebraically-closed-field}{代数闭域} $k$ 上\Term{connected}{连通}\Term{smooth}{光滑}曲线，$n$ 与 $p$ 互素。存在次数整除 $n$ 的某个幂的主\Term{covering}{覆盖}（即\Term{finite}{有限}\Term{etale}{平展} Galois \Term{surjectivity}{满射}）$u:X'\to X$，使 $\operatorname{Tr}_u:H_c^1(X',\mathbf Z/n)\to H_c^1(X,\mathbf Z/n)$ 为零。
+\end{SGAresult}
+\begin{proof}
+回顾 $H^1(X,\mathbf Z/n)$ \Term{finite}{有限}（IX 4.6 或 XVI 5.2）。取 $X$ 的最大\Term{connected}{连通}交换主\Term{covering}{覆盖} $u:X'\to X$，其 Galois 群被 $n$ 消去（该群记为 $H_1(X,\mathbf Z/n)$）。由构造，$u^*:H^1(X,\mathbf Z/n)\to H^1(X',\mathbf Z/n)$ 为零；由 1.6.6，$\operatorname{Tr}_u$ 也为零。
+\end{proof}
+回顾下列引理（EGA IV 15.6.5）。
+\SourcePage{361}
+\begin{SGAresult}{引理}{1.6.8}
+设 $f:X\to S$ 为\Term{smooth}{光滑}\Term{morphism}{态射}，$x$ 为 $f$ 的\Term{section}{截面}。存在包含 $x$ 的 Zariski \Term{open-subset}{开集} $U\subset X$，使 $f|U$ 的\Term{geometric-fibre}{几何纤维}\Term{connected}{连通}。
+\end{SGAresult}
+\begin{SGAresult}{基本引理}{1.6.9}
+设 $f:X\to S$ 为\Term{compactifiable}{可紧化}（XVII 3.2）的\Term{smooth}{光滑}曲线（1.1.2），$x$ 为 $X$ 的\Term{geometric-point}{几何点}、像为 $s$，$n\ge1$ 在 $S$ 上\Term{invertible}{可逆}。存在 $s$ 的\Term{etale}{平展}\Term{neighborhood}{邻域} $V$ 以及 $x$ 在 $f^{-1}(V)=V\times_SX$ 中的\Term{etale}{平展}\Term{neighborhood}{邻域} $U$，
+\[\begin{tikzcd}x\arrow[r]\arrow[d]&U\arrow[r,"u"]\arrow[dr,"f'"']&f^{-1}(V)\arrow[r]\arrow[d,"f_V"]&X\arrow[d,"f"]\\s\arrow[rr]&&V\arrow[r]&S,\end{tikzcd}\tag{1.6.9.1}\]
+使 $R^0f'_!\mathbf Z/n=0$，\Term{arrow}{箭头} $\operatorname{Tr}_u:R^1f'_!\mathbf Z/n\to R^1f_{V!}\mathbf Z/n$（XVII 6.2）为零，且\Term{trace-morphism}{迹态射} $\operatorname{Tr}_{f'}:R^2f'_!\mathbf Z/n(1)\to\mathbf Z/n$ 为\Term{isomorphism}{同构}。
+\end{SGAresult}
+\begin{proof}
+$f'$ \Term{quasi-affine-morphism}{拟仿射}足以使 $R^0f'_!\mathbf Z/n=0$；\Term{geometric-fibre}{几何纤维}\Term{connected}{连通}足以使迹为\Term{isomorphism}{同构}（1.1.9）。借助 1.6.8，在 $S$ 上\Term{etale}{平展}\Term{local-scheme}{局部}容易获得这两性质。只须对 $X$ \Term{geometric-fibre}{几何纤维}\Term{connected}{连通}的情形，构造使上述 $\operatorname{Tr}_u$ 为零的图 (1.6.9.1)；再缩小 $U,V$ 即可满足其余性质。
+问题在 $s$ 附近\Term{local-scheme}{局部}；由 XVII 5.2.6（\Term{base-change}{基变换}）可立即归约到 $S$ \Term{noetherian}{诺特}。取\Term{limit}{极限}并利用 XVII 5.3.6（\Term{constructibility}{可构造性}），再归约到 $S$ \Term{strictly-local}{严格局部}\Term{noetherian}{诺特}，\Term{closed-point}{闭点}为 $s$ 的像。
+对 $S$ 的\Term{geometric-point}{几何点} $t$，由 1.6.7 存在次数与 $k(s)$ 的\Term{characteristic-exponent}{特征指数} $p$ 互素的主\Term{covering}{覆盖} $u:X_{1t}\to X_t$，使 $\operatorname{Tr}_u:H_c^1(X_{1t},\mathbf Z/n)\to H_c^1(X_t,\mathbf Z/n)$ 为零。由\Term{acyclic}{无环}性定理 XV 2.1（或 XV 2.6），存在 $x$ 在 $X$ 中的\Term{etale}{平展}\Term{neighborhood}{邻域} $v:U\to X$，使 $X_{1t}$ 在 $U_t$ 上\Term{splitting}{分裂}，故 $v_t:U_t\to X_t$ \Term{resolution}{分解}经过 $X_{1t}$，于是 $\operatorname{Tr}_{v_t}:H_c^1(U_t,\mathbf Z/n)\to H_c^1(X_t,\mathbf Z/n)$ 仍为零。
+\SourcePage{362}
+因此对每个\Term{geometric-point}{几何点} $t$，存在\Term{structural-morphism}{结构态射} $f'=fv$ 的\Term{etale}{平展}\Term{neighborhood}{邻域} $v:U\to X$，使
+\[\operatorname{Tr}_v:R^1f'_!\mathbf Z/n\to R^1f_!\mathbf Z/n\tag{1.6.9.2}\]
+在 $t$ 的\Term{fiber}{纤维}为零（XVII 5.2.6）。当 $U$ 变化时，这些像构成\Term{constructible}{可构造}\Term{sheaf}{层} $R^1f_!\mathbf Z/n$ 的递减\Term{filtered}{滤过}子\Term{sheaf}{层}系统，在任意\Term{geometric-point}{几何点}最终为零。\Term{noetherian-induction}{诺特归纳}表明此类系统总\Term{stable}{稳定}，\Term{stable}{稳定}值为零。因此存在 $U$ 使 (1.6.9.2) 为零，证明完毕。
+\end{proof}
+\SGAsection{2}{迹态射}
+本节证明定理 2.9、2.12。2.9 的证明仅使用第 1 节的第 1 小节。
+\begin{SGAresult}{引理}{2.1}
+设 $f:X\to S$ 为\Term{relative-dimension}{相对维数} $\le d$ 的\Term{compactifiable-morphism}{可紧化态射}（XVII 3.2.1），$j:U\hookrightarrow X$ 为\Term{finite-type}{有限型}开子\Term{scheme}{概形}，其补集逐\Term{fiber}{纤维}\Term{dimension}{维数} $<d$（例如 $U$ 逐\Term{fiber}{纤维}\Term{dense}{稠密}）。若 $F$ 为 $X$ 上扭性\Term{sheaf}{层}，则\Term{canonical}{典范}\Term{arrow}{箭头} $R^{2d}(fj)_!j^*F\xrightarrow\sim R^{2d}f_!F$ 为\Term{isomorphism}{同构}。
+\end{SGAresult}
+\begin{proof}
+令 $i$ 为 $Y=X-U$ 的包含。由 XVII 5.1.16.2 有\Term{exact-sequence}{正合列}
+\[R^{2d-1}(fi)_!i^*F\to R^{2d}(fj)_!j^*F\to R^{2d}f_!F\to R^{2d}(fi)_!i^*F,\]
+两端由 XVII 5.2.8.1 为零。
+\end{proof}
+\begin{SGAresult}{引理}{2.2}
+设 $f:X\to S$ \Term{compactifiable}{可紧化}、\Term{relative-dimension}{相对维数} $\le d$，$(u_i:X_i\to X)$ 为\Term{etale}{平展}、\Term{separated}{分离}、\Term{finite-type}{有限型}\Term{morphism}{态射}族，$u_{ij}:X_{ij}=X_i\times_XX_j\to X$。对 $X$ 上每个扭性\Term{sheaf}{层} $F$，由 XVII 6.2.7.2 的\Term{arrow}{箭头}组成的列
+\[\bigoplus_{i,j}R^{2d}(fu_{ij})_!u_{ij}^*F\rightrightarrows\bigoplus_iR^{2d}(fu_i)_!u_i^*F\to R^{2d}f_!F\to0\]
+\Term{exact}{正合}。
+\end{SGAresult}
+\begin{proof}直接由 $R^{2d}f_!$ 的\Term{right-exact}{右正合}性及 XVII 6.2.9 得到。\end{proof}
+\SourcePage{363}
+\begin{SGAresult}{引理}{2.3}
+设 $f:X\to S$ 为\Term{finite-presentation}{有限表示}\Term{flat-morphism}{平坦态射}。$X$ 中 $f$ 为 Cohen--Macaulay 的\Term{open-subset}{开集}（EGA IV 6.8.1、12.2.1 (vii)）相对\Term{finite-presentation}{有限表示}，且逐\Term{fiber}{纤维}\Term{dense}{稠密}。
+\end{SGAresult}
+\begin{proof}
+问题在 $S$ 上\Term{local-scheme}{局部}，可归约到 $S$ \Term{noetherian}{诺特}，得到第一断言。第二断言逐\Term{fiber}{纤维}检验，故可设 $S$ 为域的谱。$X$ 的\Term{maximal-point}{极大点}处的\Term{local-ring}{局部环}为 Artin 环，因而为 Cohen--Macaulay；因该性质是开性质，断言成立。
+\end{proof}
+\begin{SGAresult}{引理}{2.4}
+设 $f:X\to S$ 为\Term{finite-presentation}{有限表示}、\Term{flat}{平坦}、Cohen--Macaulay \Term{morphism}{态射}，$S$ \Term{quasi-separated}{拟分离}。$X$ 的每点有 Zariski \Term{open-neighborhood}{开邻域} $U$，使存在从 $U$ 到标准\Term{vector-bundle}{向量丛} $\mathbf E^d_S$ 的\Term{quasi-finite}{拟有限}、\Term{flat}{平坦}、\Term{finite-presentation}{有限表示} $S$-\Term{morphism}{态射}。
+\end{SGAresult}
+\begin{proof}这是 EGA IV 15.4.3 的特例。\end{proof}
+\begin{SGAresult}{引理}{2.5}
+设 $u=(u_1,\ldots,u_d)$、$v=(v_1,\ldots,v_d)$ 为\Term{dimension}{维数} $d$、\Term{maximal-ideal}{极大理想} $\mathfrak m$ 的 Cohen--Macaulay \Term{local-ring}{局部环} $A$ 的两组\Term{system-of-parameters}{参数系}。存在\Term{system-of-parameters}{参数系}序列 $w_0,\ldots,w_n$，使 $w_0=u,w_n=v$，且每个 $w_{i+1}$ 由 $w_i$ 改变一个参数得到。
+\end{SGAresult}
+\begin{proof}
+对 $d$ 归纳；$d<2$ 时断言无须证明，故设 $d\ge2$。$x\in\mathfrak m$ 为 $A/u_1$-\Term{regular}{正则}（相应地 $A/v_1$-\Term{regular}{正则}），当且仅当它不属于 $\operatorname{Ass}(A/u_1)$（相应地 $\operatorname{Ass}(A/v_1)$）的任何成员。\Term{finite}{有限}个不等于 $\mathfrak m$ 的\Term{prime-ideal}{素理想}的并不可能为 $\mathfrak m$，故有 $x\in\mathfrak m$ 同时为这两模的\Term{regular}{正则}元，并存在\Term{system-of-parameters}{参数系} $a=(u_1,x,\ldots)$、$b=(v_1,x,\ldots)$。分别在 $A/u_1$ 中对 $u-\{u_1\},a-\{u_1\}$，在 $A/x$ 中对 $a-\{x\},b-\{x\}$，在 $A/v_1$ 中对 $b-\{v_1\},v-\{v_1\}$ 应用归纳假设即可。
+\end{proof}
+\begin{SGAresult}{引理}{2.6}
+设 $X$ 为\Term{algebraically-closed-field}{代数闭域} $k$ 上\Term{finite-type}{有限型} Cohen--Macaulay \Term{scheme}{概形}，$u,v:X\to\mathbf E^d_k$ 为到标准\Term{vector-bundle}{向量丛}的\Term{quasi-finite}{拟有限}\Term{flat-morphism}{平坦态射}。$X$ 的每个\Term{closed-point}{闭点} $x$ 有 Zariski \Term{open-neighborhood}{开邻域} $U$，其上存在\Term{morphism}{态射}序列 $w_0,\ldots,w_n:U\to\mathbf E^d_k$，使 $w_0=u|U,w_n=v|U$，且 $w_{i+1}$ 与 $w_i$ 只相差一个坐标。
+\end{SGAresult}
+\begin{proof}
+先设 $u(x)=v(x)=0$。将 $x$ 映到零的\Term{quasi-finite}{拟有限}\Term{flat-morphism}{平坦态射}在 $x$ 的芽可与\Term{local-ring}{局部环} $\mathcal O_{X,x}$ 的\Term{system-of-parameters}{参数系}等同，故由 2.5 得结论。一般情形，先用\Term{morphism}{态射}链
+\[u-(u_1(x),\ldots,u_i(x),0,\ldots,0)\quad\text{（相应地 }v-(v_1(x),\ldots,v_i(x),0,\ldots,0)\text{）}\]
+连接 $u$ 与 $u-u(x)$（相应地 $v$ 与 $v-v(x)$）。
+\end{proof}
+\SourcePage{364}
+\textbf{2.7。}给定可复合的 $S$-\Term{compactifiable-morphism}{可紧化态射} $X\xrightarrow gY\xrightarrow fS$，设 $f$ \Term{relative-dimension}{相对维数} $\le d$、$g$ \Term{relative-dimension}{相对维数} $\le e$。对 $X$ 上扭性\Term{sheaf}{层} $F$，复合\Term{spectral-sequence}{谱序列}
+\[R^pf_!R^qg_!F\Longrightarrow R^{p+q}(fg)_!F\tag{2.7.1}\]
+给出\Term{isomorphism}{同构}（最高次圈的论证）
+\[R^{2d}f_!R^{2e}g_!F\simeq R^{2(d+e)}(fg)_!F.\tag{2.7.2}\]
+\textbf{2.8。}设 $a^d:\mathbf E^d_S\to S$ 为\Term{coherent}{凝聚}\Term{scheme}{概形}（即\Term{quasi-compact}{拟紧}\Term{quasi-separated}{拟分离}）$S$ 上的标准\Term{vector-bundle}{向量丛}。对 $S$ 上与\Term{residue-characteristic}{剩余特征}互素的扭性\Term{sheaf}{层} $F$，按 $d$ 归纳定义\Term{trace-morphism}{迹态射}
+\[\operatorname{Tr}_{a^d}:R^{2d}a^d_!F(d)\xrightarrow\sim F.\tag{2.8.1}\]
+$d=0$ 时取恒等，$d=1$ 时取\Term{isomorphism}{同构} (1.1.6)（参见 1.1.9）。最后有\Term{canonical-isomorphism}{典范同构} $\mathbf E^{d+1}_S=\mathbf E^1_S\times_S\mathbf E^d_S=\mathbf E^1_{\mathbf E^d_S}$，定义 $\operatorname{Tr}_{a^{d+1}}$ 为 $\operatorname{Tr}_{a^d_S}$ 与 $Ra^d_{S!}(\operatorname{Tr}_{a^1_{\mathbf E^d_S}})$ 的复合（参见 2.9 的图 Var 3）。(2.8.1) 的源、靶的形成与任意\Term{base-change}{基变换}相容。因此\Term{action}{作用}于 $\mathbf E^d_S$ 的任意 $S$-\Term{algebraic-group}{代数群}都\Term{action}{作用}于这些\Term{sheaf}{层}；\Term{connected}{连通}\Term{algebraic-group}{代数群}必\Term{trivial-action}{平凡作用}。故包含在\Term{affine}{仿射}群中的坐标\Term{permutation-group}{置换群}在其源、靶上\Term{trivial-action}{平凡作用}。
+\textbf{2.8.2。}\Term{isomorphism}{同构} (2.8.1) 在坐标置换下不变。这也可利用杯积解释 (2.8.1) 来验证（XVII 5.4.2.2、5.4.3.5）。
+\begin{SGAresult}{定理}{2.9}
+考虑三元组 $(f,d,F)$，其中 $f:X\to Y$ 为\Term{compactifiable-morphism}{可紧化态射}（XVII 6.3），$d$ 为整数，$F$ 为 $Y$ 上与\Term{residue-characteristic}{剩余特征}互素的扭性\Term{sheaf}{层}；$f$ 满足：
+$(*)_d$ 存在\Term{open-subset}{开集} $U\subset X$，使 $f|U$ 为\Term{finite-presentation}{有限表示}\Term{flat-morphism}{平坦态射}、\Term{fiber}{纤维}\Term{dimension}{维数} $\le d$，且 $X-U$ 的\Term{fiber}{纤维}\Term{dimension}{维数} $<d$。
+恰有一种方式给每个这样的三元组赋予\Term{trace-morphism}{迹态射}
+\[\operatorname{Tr}_f:R^{2d}f_!f^*F(d)\to F,\]
+\SourcePage{365}
+使下列条件成立。
+
+(Var 1)（\Term{functorial}{函子性}）\Term{trace-morphism}{迹态射}对 $F$ \Term{functorial}{函子性}。
+
+(Var 2)（与\Term{base-change}{基变换}相容）对任意\Term{cartesian-square}{笛卡尔方块}
+\[\begin{tikzcd}X'\arrow[r,"g'"]\arrow[d,"f'"']&X\arrow[d,"f"]\\Y'\arrow[r,"g"]&Y\end{tikzcd}\]
+其中 $Y'$ \Term{quasi-compact}{拟紧}\Term{quasi-separated}{拟分离}，下图交换；水平\Term{isomorphism}{同构}为\Term{base-change-morphism}{基变换箭头}（XVII 5.5.2.1）：
+\[\begin{tikzcd}[column sep=small]
+R^{2d}f'_!f'^*g^*F(d)\arrow[r,equal]\arrow[d,"\operatorname{Tr}_{f'}"']&R^{2d}f'_!g'^*f^*F(d)&g^*R^{2d}f_!f^*F(d)\arrow[l,"\sim"']\arrow[d,"g^*(\operatorname{Tr}_f)"]\\
+g^*F\arrow[rr,equal]&&g^*F.
+\end{tikzcd}\]
+(Var 3)（与复合相容）给定可复合的 $Z$-\Term{compactifiable-morphism}{可紧化态射} $X\xrightarrow gY\xrightarrow fZ$，$f$ 满足 $(*)_d$、$g$ 满足 $(*)_e$，且 $F$ 为 $Z$ 上扭性\Term{sheaf}{层}，则 $fg$ 满足 $(*)_{d+e}$，下图交换，其中竖直\Term{isomorphism}{同构}为 (2.7.2)：
+\[\begin{tikzcd}[column sep=small]
+R^{2d}f_!R^{2e}g_!g^*f^*F(d)(e)\arrow[r,"R^{2d}f_!(\operatorname{Tr}_g)"]\arrow[d,"\sim"']&R^{2d}f_!f^*F(d)\arrow[d,"\operatorname{Tr}_f"]\\
+R^{2(d+e)}(fg)_!(fg)^*F(d+e)\arrow[r,"\operatorname{Tr}_{fg}"]&F.
+\end{tikzcd}\]
+(Var 4)（\Term{normalized}{归一化}）(I) 若 $f$ \Term{finite}{有限}\Term{locally-free}{局部自由}、秩为 $n$，$d=0$，则复合
+\[F\to f_*f^*F=f_!f^*F\xrightarrow{\operatorname{tr}_f}F\]
+是乘以 $n$。(II) 若 $f:\mathbf E^1_Y\to Y$ 为标准\Term{affine}{仿射}直线，$d=1$，则迹 $R^2f_!f^*F(1)\to F$ 为\Term{isomorphism}{同构} (2.8.1)。
+\end{SGAresult}
+\begin{proof}
+a）$d=0$ 时，条件 $(*)_d$ 是 $f$ \Term{quasi-finite}{拟有限}\Term{flat}{平坦}且\Term{finite-presentation}{有限表示}。由 XVII 6.2.3，迹必须等于该处构造的\Term{morphism}{态射}。
+\SourcePage{366}
+若 $f$ 为标准\Term{affine-space}{仿射空间} $\mathbf A^d_S$ 的\Term{projection}{投影}，由 (Var 4 (II)) 和 (Var 3)，$\operatorname{Tr}_f$ 必为\Term{isomorphism}{同构} (2.8.1)。
+
+b）设\Term{compactifiable-morphism}{可紧化态射} $f:X\to Y$ 满足条件 $(\star)_d$：存在\Term{quasi-finite}{拟有限}、\Term{flat}{平坦}、\Term{finite-presentation}{有限表示}的 $Y$-\Term{morphism}{态射} $u:X\to\mathbf E^d_Y$。记 (2.8.1) 与 XVII 6.2.3 的迹按 (Var 3)“复合”所得的\Term{morphism}{态射}为
+\[t(f,u)=\operatorname{Tr}_{a^d}\circ R^{2d}a^d_!(\operatorname{Tr}_u).\]
+它满足 (Var 1)、(Var 2)。由\Term{base-change}{基变换}，为证明它只依赖 $f,d$ 而不依赖 $u$，只须设 $Y=\operatorname{Spec}k$、$k$ \Term{algebraically-closed}{代数闭}。由 2.2，问题在 $X$ 上\Term{local-scheme}{局部}；由 2.6，只须比较仅相差一个坐标的 $u,v$；由 2.8.2，可设为第一坐标。令 $E=\mathbf E^{d-1}_Y$，得到\Term{commutative-diagram}{交换图}
+\[\begin{tikzcd}[column sep=small]
+&\mathbf E^1_E\arrow[dr,"a"]&\\
+X\arrow[ur,"u"]\arrow[rr,"x"]\arrow[d,"f"']\arrow[rrr,"v",bend left=10]&&E\arrow[dll,"w"]&\mathbf E^1_E\arrow[l,"a"]\\
+Y&&&
+\end{tikzcd}\]
+由构造（2.8），$\operatorname{Tr}_{wa}=\operatorname{Tr}_w\circ R^{2(d-1)}w_!(\operatorname{Tr}_a)$，因此 $t(f,u)$ 是 $\operatorname{Tr}_w$ 与 $t(x,u)$ 的“复合”：
+\[\begin{aligned}
+t(f,u)&=\operatorname{Tr}_{wa}\circ R^{2d}(wa)_!(\operatorname{Tr}_u)\\
+&=\operatorname{Tr}_w\circ R^{2(d-1)}w_!(\operatorname{Tr}_a)\circ R^{2d}(wa)_!(\operatorname{Tr}_u)\\
+&=\operatorname{Tr}_w\circ R^{2(d-1)}w_!(\operatorname{Tr}_a\circ R^2a_!(\operatorname{Tr}_u)).
+\end{aligned}\]
+又由 1.1.7，$t(x,u)$ 就是 1.1.6 的 $\operatorname{Tr}_x$，故 $t(x,u)=t(x,v)=\operatorname{Tr}_x$，从而 $t(f,u)=t(f,v)$。将此\Term{morphism}{态射}记为 $\operatorname{Tr}_f$。由 XVII 6.2.3，它满足 (Var 1)、(Var 2)、$e=0$ 时的 (Var 3)、(Var 4)。凡此定义适用时，它必等于所求的迹（若后者存在）。
+\SourcePage{367}
+c）设 $f:X\to Y$ 为\Term{compactifiable}{可紧化}、Cohen--Macaulay、\Term{finite-presentation}{有限表示}、\Term{flat}{平坦}、纯\Term{relative-dimension}{相对维数} $d$ 的\Term{morphism}{态射}。取\Term{quasi-compact}{拟紧}\Term{open-subset}{开集}\Term{covering}{覆盖} $(U_i)$，使每个 $U_i$ 都有到 $\mathbf E^d_Y$ 的\Term{quasi-finite}{拟有限}\Term{flat}{平坦} $Y$-\Term{morphism}{态射}（2.4）。由 2.2 和 b），恰有一个 $\operatorname{Tr}_f$ 使下图交换，采用 2.2 的记号（原图的 $\bigotimes$ \Term{signature}{符号}照录）：
+\[\begin{tikzcd}[column sep=tiny]
+\bigotimes_{i,j}R^{2d}(fu_{ij})_!(fu_{ij})^*F(d)\arrow[r,shift left]\arrow[r,shift right]&\bigotimes_iR^{2d}(fu_i)_!(fu_i)^*F(d)\arrow[r]\arrow[dr,"\bigotimes_i\operatorname{Tr}_{fu_i}"']&R^{2d}f_!f^*F(d)\arrow[d,"\operatorname{Tr}_f"]\\&&F.
+\end{tikzcd}\]
+该迹不依赖\Term{open-cover}{开覆盖}的选择（将两\Term{covering}{覆盖}与其并比较）；由 b）立即知它满足 (Var 1)、(Var 2)、$e=0$ 时的 (Var 3)、(Var 4)。
+
+d）设\Term{compactifiable-morphism}{可紧化态射} $f:X\to Y$ 满足 $(*)_d$，$j:U\hookrightarrow X$ 为所保证的\Term{open-subset}{开集}。由 2.3，\Term{contractible}{可缩}小 $U$ 使 $fj$ 为 Cohen--Macaulay、纯\Term{dimension}{维数} $d$。由 2.1，\Term{canonical}{典范}\Term{arrow}{箭头}
+\[R^{2d}(fj)_!(fj)^*F(d)\xrightarrow\sim R^{2d}f_!f^*F(d)\]
+为\Term{isomorphism}{同构}，定义
+\[\operatorname{Tr}_f:R^{2d}f_!f^*F(d)\xleftarrow\sim R^{2d}(fj)_!(fj)^*F(d)\xrightarrow{\operatorname{Tr}_{fj}}F.\]
+由 c）中 $e=0$ 的 (Var 3)，立即知它不依赖 $U$。它满足 (Var 1)、(Var 2)、$e=0$ 时的 (Var 3)、(Var 4)，且是唯一可能满足所列条件的\Term{morphism}{态射}。只须证明一般的 (Var 3)；由前述论证，可只考虑满足 $(\star)_d,(\star)_e$ 的 $(f,d),(g,e)$。
+想把下述论证整理得更精细的读者，可先验证：
+\begin{SGAresult}{引理}{2.9.1}
+设 $X\xrightarrow hY\xrightarrow gZ\xrightarrow fT$ 为三个可复合的 $T$-\Term{compactifiable-morphism}{可紧化态射}，分别满足 $(*)_m,(*)_\ell,(*)_k$。若 $(f,g)$、$(g,h)$ 满足 (Var 3)，则 $(f,gh)$ 满足 (Var 3) 当且仅当 $(fg,h)$ 满足 (Var 3)。
+\end{SGAresult}
+结论中的条件也就是说，$\operatorname{Tr}_{fgh}$ 是 $\operatorname{Tr}_f,\operatorname{Tr}_g,\operatorname{Tr}_h$ 的“复合”。
+\SourcePage{368}
+e）取\Term{commutative-diagram}{交换图}
+\[\begin{tikzcd}X\arrow[r,"v"]\arrow[dr,"g"']&\mathbf E^e_Y\arrow[r,"u'"]\arrow[d,"c"]&\mathbf E^{d+e}_Z\arrow[d,"b"]\\&Y\arrow[r,"u"]\arrow[dr,"f"']&\mathbf E^d_Z\arrow[d,"a"]\\&&Z.
+\end{tikzcd}\]
+$fg$ 的迹为 $ab$ 与 $u'v$ 的迹的“复合”；由 $ab$ 的构造及对 $u'v$ 应用 XVII 6.2.3，这也是 $a,b,u',v$ 的迹的“复合”。另一方面，$f,g$ 的迹的“复合”为 $a,u,c,v$ 的迹的“复合”。因此只须验证：对\Term{cartesian-diagram}{笛卡尔图}
+\[\begin{tikzcd}\mathbf E^e_S\arrow[r,"u'"]\arrow[d,"b'"']&\mathbf E^e_T\arrow[d,"b"]\\S\arrow[r,"u"]&T\end{tikzcd}\tag{2.9.2}\]
+其中 $u$ \Term{quasi-finite}{拟有限}\Term{flat}{平坦}且\Term{finite-presentation}{有限表示}，由 (2.8.1)、XVII 6.2 的迹组成的下图交换：
+\[\begin{tikzcd}[column sep=small]
+R^{2e}b_!u'_!u'^*b^*F(e)\arrow[r,"R^{2e}b_!(\operatorname{Tr}_{u'})"]\arrow[d,equal]&R^{2e}b_!b^*F(e)\arrow[r,"\operatorname{Tr}_b"]&F\arrow[d,equal]\\
+u_!R^{2e}b'_!b'^*u^*F(e)\arrow[r,"u_!(\operatorname{Tr}_{b'})"]&u_!u^*F\arrow[r,"\operatorname{Tr}_u"]&F.
+\end{tikzcd}\tag{2.9.3}\]
+由\Term{base-change}{基变换}，只须对 $T$ 为\Term{algebraically-closed-field}{代数闭域} $k$ 的谱验证。若 $S$ 为各 $S_i$ 的\Term{disjoint-union}{不交并}，只须对基为 $u_i:S_i\to T$ 的图验证 (2.9.3)。故可设 $S=\operatorname{Spec}A$，其中 $A$ 为\Term{finite}{有限}次数 $n=[A:k]$ 的 Artin \Term{local-scheme}{局部} $k$-\Term{algebra}{代数}。利用\Term{functor}{函子} $u^*$（相应地 $u'^*$）将 $T$（相应地 $\mathbf E^e_T$）上的\Term{sheaf}{层}与 $S$（相应地 $\mathbf E^e_S$）上的\Term{sheaf}{层}等同（VIII 1.1）后，由 (2.8.1) 与\Term{base-change}{基变换}的相容性，$\operatorname{Tr}_b$ 等同于 $\operatorname{Tr}_{b'}$，而 $\operatorname{Tr}_u,\operatorname{Tr}_{u'}$ 等同于乘以 $n$，故结论成立。这完成 2.9 的证明。
+\end{proof}
+证明过程中还得到：
+\SourcePage{369}
+\begin{SGAresult}{命题}{2.10}
+\Term{trace-morphism}{迹态射} XVII 6.2.3、XVII 1.1.6 及 (2.8.1) 都是 2.9 的\Term{trace-morphism}{迹态射}的特例。
+\end{SGAresult}
+\textbf{注记 2.10.1。}不难证明，2.9 的迹为\Term{isomorphism}{同构}当且仅当 $f$ 的每个\Term{geometric-fibre}{几何纤维}恰有一个 $d$ 维\Term{irreducible-component}{不可约分支}，且其“\Term{multiplicity}{重数}”与 $n$ 互素。这里不直接证明；它将立即由第 3 节的“整体\Term{duality-theorem}{对偶定理}”推出。
+\textbf{2.11。}设 $f:X\to S$、$g:Y\to S$ 为两个 $S$-\Term{compactifiable-morphism}{可紧化态射}，分别满足 $(*)_d,(*)_e$。
+\[\begin{tikzcd}&X\times_SY\arrow[dl,"\operatorname{pr}_1"']\arrow[dr,"\operatorname{pr}_2"]\arrow[dd,"f\times g"]&\\X\arrow[dr,"f"']&&Y\arrow[dl,"g"]\\&S&\end{tikzcd}\]
+Künneth \Term{isomorphism}{同构}（XVII 5.4.3）
+\[Rf_!(\mathbf Z/n)\mathbin{\otimes^L_{\mathbf Z/n}}Rg_!(\mathbf Z/n)\xrightarrow\sim R(f\times g)_!(\mathbf Z/n)\]
+\Term{induction-isomorphism}{诱导同构}
+\[R^{2d}f_!\mathbf Z/n\otimes R^{2e}g_!\mathbf Z/n\xrightarrow\sim R^{2(d+e)}(f\times g)_!\mathbf Z/n.\tag{2.11.1}\]
+显然 $f\times g$ 满足 $(*)_{d+e}$；有如下相容性：
+\begin{SGAresult}{命题}{2.12}
+下图交换，其首个水平\Term{arrow}{箭头}为 (2.11.1) 的扭转\Term{form}{形式}：
+\[\begin{tikzcd}[column sep=small]
+R^{2d}f_!\mathbf Z/n(d)\otimes R^{2e}g_!\mathbf Z/n(e)\arrow[r,"\sim"]\arrow[d,"\operatorname{Tr}_f\otimes\operatorname{Tr}_g"']&R^{2(d+e)}(f\times g)_!\mathbf Z/n(d+e)\arrow[d,"\operatorname{Tr}_{f\times g}"]\\\mathbf Z/n\arrow[r,equal]&\mathbf Z/n.
+\end{tikzcd}\tag{2.12.1}\]
+\end{SGAresult}
+\begin{proof}
+使用 (Var 3) 及 XVII 5.4.3 的证明中所用 Künneth \Term{arrow}{箭头}的不对称解释（XVII 5.4.3.5）即可。
+\end{proof}
+\SourcePage{370}
+\textbf{2.13。}设 $f:X\to S$ 为满足 $(*)_d$ 的 $S$-\Term{compactifiable-morphism}{可紧化态射}，$A$ 为 $S$ 上环\Term{sheaf}{层}，$n$ 为 $S$ 上\Term{invertible}{可逆}且 $nA=0$ 的整数。对每个 $K\in D(S,A)$，有（XVII 5.2.6）
+\[K\mathbin{\otimes^L_{\mathbf Z/n}}Rf_!\mathbf Z/n(d)\xrightarrow\sim Rf_!(f^*K(d)).\tag{2.13.1}\]
+迹 $\operatorname{Tr}_f:R^{2d}f_!\mathbf Z/n(d)\to\mathbf Z/n$ 也\Term{solvable}{可解}释为\Term{morphism}{态射} $\operatorname{Tr}_f:Rf_!\mathbf Z/n(d)[2d]\to\mathbf Z/n$。与 $K$ 张量后，利用 (2.13.1) 定义\Term{trace-morphism}{迹态射}
+\[\operatorname{Tr}_f:Rf_!(f^*K(d)[2d])\to K.\tag{2.13.2}\]
+将在 3.2.5 看到，下述定理本质上\Term{equivalence}{等价}于\Term{etale}{平展}\Term{cohomology}{上同调}的整体\Term{duality-theorem}{对偶定理}。
+\begin{SGAresult}{定理}{2.14}
+设 $f:X\to S$ 为\Term{smooth}{光滑}且\Term{compactifiable}{可紧化}的纯\Term{relative-dimension}{相对维数} $d$ \Term{morphism}{态射}，$n\ge1$ 在 $S$ 上\Term{invertible}{可逆}。对 $X$ 的任意\Term{geometric-point}{几何点} $x$（像为 $s$），存在 $s$ 在 $S$ 中的\Term{etale}{平展}\Term{neighborhood}{邻域} $V$，及 $x$ 在 $f^{-1}(V)$ 中的\Term{etale}{平展}\Term{neighborhood}{邻域} $U$，
+\[\begin{tikzcd}U\arrow[r,"j"]\arrow[dr,"f'_V"']&f^{-1}(V)\arrow[r]\arrow[d,"f_V"]&X\arrow[d,"f"]\\&V\arrow[r]&S,
+\end{tikzcd}\tag{2.14.1}\]
+使\Term{morphism}{态射} $R^if'_{V!}\mathbf Z/n\to R^if_{V!}\mathbf Z/n$（XVII 6.2.7.2）在 $i<2d$ 时为零，且 $\operatorname{Tr}_{f'_V}:R^{2d}f'_{V!}\mathbf Z/n(d)\to\mathbf Z/n$ 为\Term{isomorphism}{同构}。
+\end{SGAresult}
+先证明：
+\begin{SGAresult}{引理}{2.14.2}
+设 $\mathcal A$ 为交换\Term{category}{范畴}，$k\ge0$ 为整数，$(K_i)_{0\le i\le2k}$ 为 $D^b(\mathcal A)$ 中\Term{object}{对象}，满足 $H^p(K_i)=0$（$p\notin[0,k]$），$f_i:K_i\to K_{i+1}$（$0\le i\le2k-1$）为\Term{morphism}{态射}，复合为 $f$。若对 $p<k$ 有 $H^p(f_i)=0$，则在
+\SourcePage{371}
+$D^b(\mathcal A)$ 中存在从\Term{complex}{复形} $H^k(K_0)[-k]$（只在 $k$ 次为 $H^k(K_0)$）到 $K_{2k}$ 的\Term{morphism}{态射} $\varphi$，使下图交换：
+\[\begin{tikzcd}K_0\arrow[r,"f"]\arrow[d]&K_{2k}\\\sigma_{\ge k}(K_0)\arrow[r,equal]&H^k(K_0)[-k].\arrow[u,"\varphi"']\end{tikzcd}\]
+\end{SGAresult}
+\begin{proof}
+$k=0$ 时显然。按 $k$ 归纳，将归纳假设用于 $\sigma_{\ge1}(K_i)[1]$，得到\Term{morphism}{态射} $\varphi':H^k(K_0)[-k]\to\sigma_{\ge1}K_{2k-2}$，使下图交换，其中 $f'=f_{2k-3}\cdots f_0$：
+\[\begin{tikzcd}K_0\arrow[r,"f'"]\arrow[d]&\sigma_{\ge1}K_{2k-2}\\\sigma_{\ge k}(K_0)\arrow[r,equal]&H^k(K_0)[-k].\arrow[u,"\varphi'"']\end{tikzcd}\]
+对每个\Term{complex}{复形} $L$，\Term{distinguished-triangle}{区别三角}形
+\[\begin{tikzcd}&\sigma_{\ge1}(L)\arrow[dl]&\\\sigma_{\le0}(L)\arrow[rr]&&L\arrow[ul]\end{tikzcd}\]
+对每个\Term{complex}{复形} $M$ 给出\Term{exact-sequence}{正合列}
+\[\cdots\to\operatorname{Hom}(M,\sigma_{\le0}L)\to\operatorname{Hom}(M,L)\to\operatorname{Hom}(M,\sigma_{\ge1}L)\xrightarrow j\operatorname{Ext}^1(M,\sigma_{\le0}L).\]
+特别地，有下图（原图的圈号用带括号的数字表示）：
+\[\resizebox{\linewidth}{!}{\begin{tikzcd}[ampersand replacement=\&,column sep=tiny]
+\operatorname{Hom}(\sigma_{\ge k}K_0,\sigma_{\le0}K_{2k-2})\arrow[r]\arrow[d]\&(5)\ \operatorname{Hom}(\sigma_{>k}K_0,\sigma_{\le0}K_{2k-2})\arrow[r]\arrow[d]\&(3)\ \operatorname{Hom}(\sigma_{\ge k}K_0,\sigma_{\ge1}K_{2k-2})\arrow[r]\arrow[d]\&(4)\ \operatorname{Ext}^1(\sigma_{\ge k}K_0,\sigma_{\le0}K)\arrow[d]\\
+(7)\ \operatorname{Hom}(K_0,\sigma_{\le0}K_{2k-2})\arrow[r]\&(1)\ \operatorname{Hom}(K_0,K_{2k-2})\arrow[r]\&(2),(6)\ \operatorname{Hom}(K_0,\sigma_{\ge1}K_{2k-2})\arrow[r]\&\operatorname{Ext}^1(K_0,\sigma_{\le0}K_{2k-2})
+\end{tikzcd}}\tag{2.14.3}\]
+此图映到关于 $K_{2k-1},K_{2k}$ 的类似图。由假设，(1) 中的\Term{morphism}{态射} $f'$ 在 (2) 中的像可\Term{lifting}{提升}到 (3)。(3) 中元素\Term{lifting}{提升}到 (5) 的障碍 (4)，在关于 $K_{2k-1}$ 的图 (2.14.3) 中像为零。因此在新图中 (3) 可\Term{lifting}{提升}到 (5)；(1) 与 (5) 的像之差在 (6) 中像为零，因而来自 (7) 中的元素。该元素在关于 $K_{2k}$ 的图 2.12.3 中像为零；故在这个新图中，$f$ 为 (5) 的像，问题解决。
+\end{proof}
+对给定 $d$，先证明 2.14 蕴含：
+\SourcePage{372}
+\begin{SGAresult}{推论}{2.14.4}
+在 2.14 的假设下，存在图 (2.14.1)，使 XVII 6.2.4 的\Term{morphism}{态射}在 $D^b(V,\mathbf Z/n)$ 中有\Term{resolution}{分解}
+\[\begin{tikzcd}Rf'_{V!}\mathbf Z/n(d)\arrow[rr]\arrow[dr,"t"']&&Rf_{V!}\mathbf Z/n(d)\\&\mathbf Z/n[-2d]\arrow[ur,"\varphi"']&\end{tikzcd}\]
+其中 $t$ 为\Term{arrow}{箭头}
+\[t:Rf'_{V!}\mathbf Z/n(d)\to\sigma_{\ge2d}Rf'_{V!}\mathbf Z/n(d)=H^{2d}(Rf'_{V!}\mathbf Z/n(d))[-2d]\xrightarrow{\operatorname{Tr}}\mathbf Z/n[-2d].\]
+\end{SGAresult}
+\begin{proof}
+置 $f'_0=f$，递归构造 $4d$ 个满足 2.14 的图 (2.14.1)：
+\[\begin{tikzcd}U'_{i+1}\arrow[r]\arrow[dr]&f_i'^{-1}(V'_{i+1})\arrow[r]\arrow[d]&U'_i\arrow[d,"f'_i"]\\&V'_{i+1}\arrow[r]&V'_i.\end{tikzcd}\]
+令 $V=V'_{4d}$、$U_i=U'_i\times_{V'_i}V$，得到图
+\[\begin{tikzcd}[column sep=small]U_{4d}\arrow[r]\arrow[ddrrr,"f_{4d}"']&\cdots\arrow[r]&U_1\arrow[r]\arrow[ddr,"f_1"']&U_0\arrow[r]\arrow[dd,"f_0"]&X\arrow[dd,"f"]\\\\&&&V\arrow[r]&S,\end{tikzcd}\]
+其中 $U_0=f^{-1}(V)$，\Term{arrow}{箭头} $R^if_{k+1!}\mathbf Z/n(d)\to R^if_{k!}\mathbf Z/n(d)$ 为零，而 $\operatorname{Tr}:R^{2d}f_{4d!}\mathbf Z/n(d)\to\mathbf Z/n$ 为\Term{isomorphism}{同构}。由 2.14.2，取 $U=U_{4d}$ 即得推论。
+\end{proof}
+\begin{proof}[定理 2.14 的证明]
+现在可对 $d$ 归纳。$d=0$ 时显然，$d=1$ 的情形就是 1.4.7。故设 $d\ge2$。问题在 $X,S$ 上\Term{local-scheme}{局部}，可设 $f=gh$，其中 $g,h$ 为\Term{smooth}{光滑}\Term{compactifiable}{可紧化}、纯\Term{relative-dimension}{相对维数}分别为 $d',d''$ 的\Term{morphism}{态射}，且 $d',d''<d=d'+d''$。对 $g$ 以及由 $h$ 经\Term{base-change}{基变换}得到的\Term{morphism}{态射}应用 2.14.4，
+\SourcePage{373}
+得到图
+\[\begin{tikzcd}U\arrow[r,"u"]\arrow[dr,"h'_0"']&f^{-1}W\arrow[r]\arrow[d,"h_0"]&X\arrow[d,"h"]\\V\arrow[r,"v"]\arrow[dr,"g'_0"']&g^{-1}W\arrow[r]\arrow[d,"g_0"]&Y\arrow[d,"g"]\\&W\arrow[r]&S,
+\end{tikzcd}\]
+使\Term{morphism}{态射}（XVII 6.2.7.3）有\Term{resolution}{分解}
+\[Rh'_{0!}\mathbf Z/n(d'')\xrightarrow{\operatorname{Tr}}\mathbf Z/n[-2d'']\xrightarrow\varphi Rh_{0!}\mathbf Z/n(d''),\]
+\[Rg'_{0!}\mathbf Z/n(d')\xrightarrow{\operatorname{Tr}}\mathbf Z/n[-2d']\xrightarrow\Psi Rg_{0!}\mathbf Z/n(d'),\]
+且 $\operatorname{Tr}_{h'_0},\operatorname{Tr}_{g'_0}$ 为\Term{isomorphism}{同构}。令 $h_1,h'_1$ 为 $h_0,h'_0$ 经\Term{base-change}{基变换} $V$ 所得的\Term{morphism}{态射}，$f'=g'_0h'_1$、$f_W=g_0h_0$。下图交换：
+\[\begin{tikzcd}[column sep=small]
+Rf'_!\mathbf Z/n(d)\arrow[rr]\arrow[d,equal]&&Rf_{W!}\mathbf Z/n(d)\arrow[d,equal]\\
+Rg'_{0!}Rh'_{1!}\mathbf Z/n(d)\arrow[r]&Rg_{0!}Rh'_{0!}\mathbf Z/n(d)\arrow[r]&Rg_{0!}Rh_{0!}\mathbf Z/n(d),
+\end{tikzcd}\]
+下图也交换（$t$ 为前述迹\Term{arrow}{箭头}）：
+\[\begin{tikzcd}[column sep=small]
+Rg'_{0!}Rh'_{1!}\mathbf Z/n(d)\arrow[d,equal]\arrow[ddd,bend right=40]&&\\
+Rg'_{0!}v^*Rh'_{0!}\mathbf Z/n(d)\arrow[r,"Rg'_{0!}v^*(t)(d')"]\arrow[dd]&Rg'_{0!}\mathbf Z/n(d')[-2d'']\arrow[d,"{t[-2d'']}"]&\\
+&\mathbf Z/n[-2d]\arrow[d,"{\varphi[-2d'']}"]&\\
+Rg_{0!}Rh'_{0!}\mathbf Z/n(d)\arrow[r,"Rg_{0!}(t)(d')"']\arrow[rr,bend right=18]&Rg_{0!}\mathbf Z/n(d')[-2d'']\arrow[r,"Rg_{0!}(\Psi)(d')"']&Rg_{0!}Rh_{0!}\mathbf Z/n(d).
+\end{tikzcd}\]
+\SourcePage{374}
+因此，对图
+\[\begin{tikzcd}U_1\arrow[r]\arrow[dr,"f'"']&f^{-1}W\arrow[r]\arrow[d,"f_W"]&X\arrow[d,"f"]\\&W\arrow[r]&S,\end{tikzcd}\]
+从 $Rf'_!\mathbf Z/n(d)$ 到 $Rf_{W!}\mathbf Z/n(d)$ 的\Term{canonical}{典范}\Term{arrow}{箭头}\Term{resolution}{分解}经过 $\mathbf Z/n[-2d]$，故 $R^if'_!\mathbf Z/n(d)\to R^if_{W!}\mathbf Z/n(d)$ 在 $i<2d$ 时为零。最后，$\operatorname{Tr}_{f'}$ 是\Term{isomorphism}{同构}，因为它为\Term{isomorphism}{同构} $\operatorname{Tr}_{g'_0}$ 与 $Rg'_{0!}\operatorname{Tr}_{h'_1}$ 的复合。这完成 2.14 的证明。
+\end{proof}

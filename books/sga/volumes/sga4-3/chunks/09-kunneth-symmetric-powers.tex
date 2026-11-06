@@ -1,0 +1,666 @@
+\SourcePage{235}
+\SGAsection{5.4}{Künneth 公式}
+\SourcePage{236}
+\textbf{5.4.1。}设有\Term{site}{景}的\Term{commutative-diagram}{交换图}（0.11）
+\begin{equation}\tag{5.4.1.1}
+\begin{tikzcd}[column sep=small]
+ &Z'\arrow[dl,"p'"']\arrow[dr,"q'"]\arrow[dd,"h"]&\\
+ X'\arrow[dd,"f"']&&Y'\arrow[dd,"g"]\\
+ &Z\arrow[dl,"p"']\arrow[dr,"q"]&\\
+ X\arrow[dr]&&Y\arrow[dl]\\&S&
+\end{tikzcd}
+\end{equation}
+假定 $S$ 配备环\Term{sheaf}{层} $\mathscr A$，其\Term{center}{中心}为 $\mathscr C$；这些\Term{sheaf}{层}在（5.4.1.1）中各\Term{site}{景}上的\Term{inverse-image}{逆像}仍记作 $\mathscr A$、$\mathscr C$。
+若 $K$ 是 $X$ 上的右 $\mathscr A$-模\Term{sheaf}{层}，$L$ 是 $Y$ 上的左 $\mathscr A$-模\Term{sheaf}{层}，置
+\[K\boxtimes_{\mathscr A}L=p^*K\otimes_{\mathscr A}q^*L\]
+（\Term{external-tensor-product}{外张量积}）。对于 $X'$ 上的 $K$、$Y'$ 上的 $L$ 同样定义。现在设 $K$ 是 $X'$ 上的右 $\mathscr A$-模\Term{sheaf}{层}，$L$ 是 $Y'$ 上的左 $\mathscr A$-模\Term{sheaf}{层}。\Term{base-change}{基变换}\Term{arrow}{箭头}（第 XII 讲 4.1）给出
+\begin{equation}\tag{5.4.1.2}
+\begin{cases}p^*f_*K\longrightarrow h_*p'^*K,\\q^*g_*L\longrightarrow h_*q'^*L,\end{cases}
+\end{equation}
+由此通过\Term{tensor-product}{张量积}得到\Term{arrow}{箭头}
+\begin{equation}\tag{5.4.1.3}
+f_*K\boxtimes_{\mathscr A}g_*L\longrightarrow
+ h_*p'^*K\otimes_{\mathscr A}h_*q'^*L\longrightarrow h_*(K\boxtimes_{\mathscr A}L).
+\end{equation}
+假定\Term{functor}{函子}
+\[\begin{aligned}
+ Rf_* &:D^+(X',\mathscr A^\circ)\longrightarrow D^+(X,\mathscr A^\circ),\\
+ Rg_* &:D^+(Y',\mathscr A)\longrightarrow D^+(Y,\mathscr A),\\
+ Rh_* &:D^+(Z',\mathscr C)\longrightarrow D^+(Z,\mathscr C)
+\end{aligned}\]
+具有\Term{finite}{有限}\Term{cohomological-dimension}{上同调维数}，因而延拓到整个\Term{derived-category}{导出范畴}。于是对于 $K\in\operatorname{Ob}D^-(X',\mathscr A^\circ)$、$L\in\operatorname{Ob}D^-(Y',\mathscr A)$，自然应当定义 Künneth \Term{arrow}{箭头}
+\begin{equation}\tag{5.4.1.4}
+ Rf_*K\overset L\boxtimes_{\mathscr A}Rg_*L\longrightarrow Rh_*(K\overset L\boxtimes_{\mathscr A}L).
+\end{equation}
+我们只在所考虑的\Term{site}{景}有\Term{enough-points}{足够多的点}时定义它，以便使用 4.2.10 和 4.2.8。由 4.2.10，只须对关于\Term{functor}{函子} $(K,L)\mapsto K\boxtimes_{\mathscr A}L$ 左展开的对 $(K,L)$ 定义它，其中 $K,L$ 分别对 $f_*,g_*$ 右展开且有上界。
+\SourcePage{237}
+设 $K_1$ 是 $f_*K$ 的\Term{flat}{平坦}\Term{resolution}{解消}，$L_1$ 是 $g_*L$ 的\Term{flat}{平坦}\Term{resolution}{解消}，$u:K\overset L\boxtimes L\to M$ 是 $K\overset L\boxtimes L$ 的一个对\Term{functor}{函子} $Rh_*$ 展开的\Term{resolution}{解消}。有\Term{morphism}{态射}
+\[\begin{aligned}
+Rf_*K\overset L\boxtimes_{\mathscr A}Rg_*L&\simeq K_1\boxtimes_{\mathscr A}L_1\longrightarrow f_*K\boxtimes_{\mathscr A}g_*L\\
+&\longrightarrow h_*(K\boxtimes_{\mathscr A}L)\longrightarrow h_*M\simeq Rh_*(K\overset L\boxtimes_{\mathscr A}L),
+\end{aligned}\]
+将（5.4.1.4）定义为其复合。这个\Term{arrow}{箭头}具有以下\Term{characteristic}{特征}性质，其证明与 4.2.13 完全类似。
+
+\textbf{5.4.1.5。}设 $K\in\operatorname{Ob}C^-(X',\mathscr A^\circ)$、$L\in\operatorname{Ob}C^-(Y',\mathscr A)$。置 $K_1=f_*K$、$L_1=g_*K$、$M_2=K\boxtimes L$。则下图交换：
+\[\begin{tikzcd}[column sep=small]
+Rf_*K\overset L\boxtimes_{\mathscr A}Rg_*L\arrow[rrr]&&&Rh_*(K\overset L\boxtimes_{\mathscr A}L)\arrow[d]\\
+K_1\overset L\boxtimes_{\mathscr A}L_k\arrow[u]\arrow[r]&K_1\boxtimes L_1\arrow[r]&h_*M_2\arrow[r]&Rh_*M_2 .
+\end{tikzcd}\]
+若改从\Term{morphism}{态射} $K_1\to f_*K$、$L_1\to g_*K$、$K\boxtimes L\to M_2$ 出发，也有类似的交换性（参见 4.2.13）。5.4.1.5 的交换性使得 Künneth \Term{morphism}{态射}各种相容性的验证原则上成为容易的事。
+
+\textbf{5.4.2。}设有\Term{scheme}{概形}的\Term{commutative-diagram}{交换图}（5.4.1.1），$\mathscr A$ 是 $S$ 上的挠\Term{sheaf}{层}。假定 $f,g$ \Term{compactifiable}{可紧化}（3.2.1），$Z=X\times_S Y$、$Z'=X'\times_S Y'$。把 $f,g$ \Term{resolution}{分解}为\Term{proper}{固有}\Term{morphism}{态射}与\Term{open-immersion}{开浸入}的复合，得到图
+\[\begin{tikzcd}
+X'\arrow[d,"j_1"']\arrow[dd,bend right=45,"f"']\arrow[r,"p'"]&Z'\arrow[d,"j_3"]&Y'\arrow[l,"q'"']\arrow[d,"j_2"]\arrow[dd,bend left=45,"g"]\\
+\overline X'\arrow[d,"\overline f"']\arrow[r,"\overline p"]&\overline Z'\arrow[d,"\overline h"]&\overline Y'\arrow[l,"\overline q"']\arrow[d,"\overline g"]\\
+X&Z\arrow[l,"p"]\arrow[r,"q"']&Y .
+\end{tikzcd}\]
+这里置 $\overline Z'=\overline X'\times_S\overline Y'$。对于 $X',Y'$ 上的\Term{complex}{复形} $K,L$，有一个性质平凡的\Term{isomorphism}{同构}
+\begin{equation}\tag{5.4.2.1}j_{3!}(K\boxtimes_{\mathscr A}L)\xrightarrow\sim j_{1!}K\boxtimes_{\mathscr A}j_{2!}L.\end{equation}
+\SourcePage{238}
+把此\Term{isomorphism}{同构}的逆与对应于 $(\overline f,\overline g,\overline h,j_{1!}K,j_{2!}L)$ 的 Künneth \Term{arrow}{箭头}（5.4.1.4）“复合”，对于 $K\in\operatorname{Ob}D^-(X',\mathscr A)$、$L\in\operatorname{Ob}D^-(Y',\mathscr A)$ 得到 Künneth \Term{arrow}{箭头}
+\begin{equation}\tag{5.4.2.2}Rf_!K\overset L\boxtimes Rg_!L\longrightarrow Rh_!(K\overset L\boxtimes L),\end{equation}
+可验证它不依赖所选的\Term{compactification}{紧化}。
+\begin{SGAresult}{定理}{5.4.3}在 5.4.2 的假设下，具有\Term{proper}{固有}\Term{support}{支集}的\Term{cohomology}{上同调}的 Künneth \Term{arrow}{箭头}（5.4.2.2）是\Term{isomorphism}{同构}。\end{SGAresult}
+\begin{proof}
+(a) 由构造，只须当 $f,g$（从而 $h$）\Term{proper}{固有}时验证。
+
+(b) 设有\Term{commutative-diagram}{交换图}
+\begin{equation}\tag{5.4.3.1}\begin{tikzcd}
+X_1\arrow[r,"p_1"]\arrow[d]&S_1\arrow[r,"q_1"]\arrow[d]&Y_1\arrow[d]\\
+X\arrow[r,"p"]&S\arrow[r,"q"]&Y .
+\end{tikzcd}\end{equation}
+令 $Z_1=X_1\times_{S_1}Y_1$、$X'_1=X'\times_X X_1$、$Y'_1=Y'\times_Y Y_1$，以及 $Z'_1=X'_1\times_{S_1}Y'_1=Z'\times_{Z_1}Z_1$。于是有图（5.4.1）之间的\Term{morphism}{态射}
+\[(S_1,X_1,Y_1,Z_1,X'_1,Y'_1,Z'_1)\longrightarrow(S,X,Y,Z,X',Y',Z'),\]
+其中各\Term{arrow}{箭头}统一记作 $C$。我们承认：
+\begin{SGAresult}{引理}{5.4.3.2}下图交换：
+\[\begin{tikzcd}[column sep=small]
+C^*(Rf_!K\overset L\boxtimes_{\mathscr A}Rg_!L)\arrow[r,equal]\arrow[d]&C^*Rf_!K\overset L\boxtimes_{\mathscr A}C^*Rg_!L\arrow[r,"\sim"]&Rf_{1!}C^*K\overset L\boxtimes_{\mathscr A}Rg_{1!}C^*L\arrow[d]\\
+C^*Rh_!(K\overset L\boxtimes_{\mathscr A}L)\arrow[r,"\sim"]&Rh_!(C^*(K\overset L\boxtimes_{\mathscr A}L))\arrow[r,equal]&Rh_!(C^*K\overset L\boxtimes_{\mathscr A}L).
+\end{tikzcd}\]
+\end{SGAresult}
+此图中，水平\Term{arrow}{箭头}是\Term{base-change}{基变换}\Term{arrow}{箭头}，竖直\Term{arrow}{箭头}是所考虑的两个图（5.4.1.1）的 Künneth \Term{arrow}{箭头}。
+为证明 5.4.3，只须证明 Künneth \Term{arrow}{箭头}在 $Z$ 的每个\Term{geometric-point}{几何点}处为\Term{isomorphism}{同构}。由 5.4.3.2，只须在任意一个使 $S_1$ 成为\Term{algebraically-closed-field}{代数闭域}的谱、$p_1,q_1$ 成为\Term{isomorphism}{同构}的\Term{base-change}{基变换}（5.4.3.1）之后验证。
+\SourcePage{239}
+作此\Term{base-change}{基变换}后，图（5.4.1.1）化为
+\begin{equation}\tag{5.4.3.3}\begin{tikzcd}
+&X\times_S Y\arrow[dl,"p"']\arrow[dr,"q"]\arrow[dd,"f\times g"]&\\
+X\arrow[dr,"f"']&&Y\arrow[dl,"g"]\\&S&
+\end{tikzcd}\end{equation}
+而 Künneth \Term{arrow}{箭头}化为\Term{arrow}{箭头}（5.4.4.1）
+\begin{equation}\tag{5.4.3.4}k:Rf_!K\overset L\otimes Rg_!L\longrightarrow R(f\times g)_!(K\overset L\boxtimes L).\end{equation}
+(c) 设图（5.4.3.3）中的 $f,g$ \Term{proper}{固有}。我们承认：
+\begin{SGAresult}{引理}{5.4.3.5}下图交换：
+\[\begin{tikzcd}
+Rf_!K\overset L\otimes_{\mathscr A}Rg_!L\arrow[r]\arrow[d]&R(f\times g)_!(K\overset L\boxtimes_{\mathscr A}L)\arrow[d,equal]\\
+Rf_!(K\overset L\boxtimes_{\mathscr A}f^*Rg_!L)\arrow[r]&Rf_!Rp_!(p^*K\otimes q^*L).
+\end{tikzcd}\]
+\end{SGAresult}
+其中水平\Term{arrow}{箭头}分别为 Künneth \Term{arrow}{箭头}和\Term{base-change}{基变换}\Term{arrow}{箭头}，竖直\Term{arrow}{箭头}分别为沿 $f$ 的\Term{base-change}{基变换}\Term{arrow}{箭头}及\Term{transitivity-isomorphism}{传递性同构}。定理 5.5.9 是此引理和 4.3.1 的推论。
+有勇气的读者可以验证，即使 $f,g$ 不一定\Term{proper}{固有}，此引理仍成立。
+\end{proof}
+\textbf{5.4.4。}设 $S$ 为\Term{scheme}{概形}，$f_i:X'_i\to X_i$（$i\in I$）为\Term{finite}{有限}族\Term{compactifiable}{可紧化}的 $S$-\Term{scheme}{概形}\Term{morphism}{态射}，$X$ 为各 $X_i$ 在 $S$ 上的积，$X'$ 为各 $X'_i$ 在 $S$ 上的积，$f:X'\to X$ 为各 $f_i$ 的积。若如 5.4.1 那样给 $S$ 配备 $\mathscr A$，并给各 $X_i,X'_i$ 配备 $\mathscr A$ 的\Term{inverse-image}{逆像}，则更一般地有\Term{isomorphism}{同构}
+\begin{equation}\tag{5.4.4.1}
+\mathop{\boxtimes}\limits_{i\in I}^{L}Rf_{i!}(K_i)\xrightarrow\sim Rf_!\left(\mathop{\boxtimes}\limits_{i\in I}^{L}K_i\right),
+\end{equation}
+其中 $K_i\in\operatorname{Ob}D^-(X'_i,\mathscr A)$。此\Term{isomorphism}{同构}以及（5.4.4.1）两边的定义，都不需要在 $I$ 上选择全序。
+\SourcePage{240}
+\SGAsection{5.5}{对称幂的上同调}
+本节的主要结果是定理 5.5.21；特别地，它用\Term{algebraically-closed-field}{代数闭域} $k$ 上\Term{scheme}{概形} $X$ 的具有\Term{proper}{固有}\Term{support}{支集}的\Term{cohomology}{上同调}，给出 $X$ 的\Term{symmetric-power}{对称幂}在适当系数（例如 $\mathbf Z/n\mathbf Z$）下的具有\Term{proper}{固有}\Term{support}{支集}的\Term{cohomology}{上同调}。此定理在\Term{semisimple}{半单}纯\Term{topology}{拓扑}中的类似结论是熟知的，至少对于取值于\Term{commutative-ring}{交换环} $A$ 的\Term{cohomology}{上同调}如此；它可在\Term{semisimple}{半单}纯\Term{cochain}{上链}层次验证。事实上，若 $X_*$ 为\Term{semisimplicial-set}{半单纯集}，则其第 $n$ 个\Term{symmetric-power}{对称幂} $(X_*)^n/G_n$ 的\Term{geometric-realization}{几何实现}与 $X_*$ 的\Term{geometric-realization}{几何实现}的第 $n$ 个\Term{symmetric-power}{对称幂}之间有\Term{canonical}{典范}的\Term{continuous}{连续}\Term{bijection}{双射}，而且此\Term{bijection}{双射}在\Term{cohomology}{上同调}上\Term{induction-isomorphism}{诱导同构}。
+
+\textbf{5.5.1。}回顾\Term{flat}{平坦}模的一些性质（归于 D. Lazard）、\Term{functor}{函子} $\mathrm{TS}^n$ 和 $\Gamma^n$ 的一些性质（归于 Roby），以及非\Term{additive-functor}{加性函子}的\Term{derived-functor}{导出函子}的一些性质（归于 Dold 和 Puppe）。
+
+\textbf{5.5.1.1。}环 $A$ 上的每个\Term{flat}{平坦}模都是\Term{finitely-generated}{有限生成}\Term{free-module}{自由模}的\Term{filtered-colimit}{滤过归纳极限}（Lazard [1, I 1.2]）。此结果蕴含下列各点。
+
+\textbf{5.5.1.2。}\Term{functor}{函子} $\varinjlim$ 是 $A$ 上\Term{finitely-generated}{有限生成}\Term{free-module}{自由模}（相应地，\Term{finitely-generated}{有限生成}\Term{projective-module}{投射模}）\Term{category}{范畴}的 Ind \Term{object}{对象}（第 I 讲 8.1）\Term{category}{范畴}与 $A$ 上\Term{flat}{平坦}\Term{module-category}{模范畴}之间的\Term{equivalence}{等价}。
+
+\textbf{5.5.1.3。}若 $A,B$ 为两个环，则每个把\Term{finitely-generated}{有限生成}\Term{free-module}{自由模}变为\Term{flat}{平坦}模、并与\Term{filtered-colimit}{滤过归纳极限}交换的\Term{functor}{函子} $T:\operatorname{Mod}(A)\to\operatorname{Mod}(B)$，都把\Term{flat}{平坦}模变为\Term{flat}{平坦}模（Lazard [1, I 1.5]）。
+
+\textbf{5.5.1.4。}每个 $L''$ \Term{flat}{平坦}的 $A$-模\Term{exact-sequence}{正合列}
+\[0\longrightarrow L'\longrightarrow L\longrightarrow L''\longrightarrow0\]
+都是\Term{split-exact}{分裂正合}列的\Term{inductive-limit}{归纳极限}（Lazard [1, I 2.3]）。
+
+\textbf{5.5.2。}设 $A$ 为\Term{commutative-ring}{交换环}，$M$ 为 $A$-模。
+
+\textbf{5.5.2.1。}对每个整数 $n$，以 $\mathrm{TS}^n(M)$（或 $\mathrm{TS}^n_A(M)$）表示 $M$ 的 $n$ 次对称张量模。记 $G_n$ 为 $n$ 次\Term{symmetric-group}{对称群}，按定义
+\[\mathrm{TS}^n(M)=(\mathop{\otimes}\nolimits^n M)^{G_n}.\]
+若 $B$ 为 $A$-\Term{algebra}{代数}，则 $\mathrm{TS}^n(B)$ 为 $\bigotimes^n B$ 的子\Term{algebra}{代数}。若 $B$ 还交换，则按定义 $\operatorname{Spec}(\mathrm{TS}^n(B))$ 是 $\operatorname{Spec}(B)$ 在 $\operatorname{Spec}(A)$ 上的第 $n$ 个\Term{symmetric-power}{对称幂}：
+\[\operatorname{Spec}(\mathrm{TS}^n_A(B))=\operatorname{Sym}^n_{\operatorname{Spec}(A)}(\operatorname{Spec}(B))\overset{\mathrm{dfn}}=(\operatorname{Spec}(B)/\operatorname{Spec}(A))^n/G_n.\]
+\SourcePage{241}
+\textbf{5.5.2.2。}回顾（Roby [1, I 1, 第 226 页]），从 $A$-模 $M$ 到 $A$-模 $N$ 的\Term{polynomial-law}{多项式律} $f$，是对每个交换 $A$-\Term{algebra}{代数} $A'$ 给出一个映射 $f_{A'}:M\otimes_A A'\to N\otimes_A A'$，使对每个 $A$-\Term{algebra}{代数}\Term{homomorphism}{同态} $u:A'\to A''$，下图交换：
+\[\begin{tikzcd}
+M\otimes_A A'\arrow[r,"f_{A'}"]\arrow[d,"u"']&N\otimes_A A'\arrow[d,"u"]\\
+M\otimes_A A''\arrow[r,"f_{A''}"]&N\otimes_A A'' .
+\end{tikzcd}\]
+若对每个 $a'\in A'$ 恒有
+\[f_{A'}(a'x)=a'^n f_{A'}(x),\]
+则称\Term{polynomial-law}{多项式律} $f$ 为 $n$ 次\Term{homogeneous}{齐次}的（Roby [1, I 1, 第 226 页]）。这种\Term{polynomial-law}{多项式律}也称为 $n$ 次映射（二次、三次……）；其\Term{set}{集合}记作
+\[\operatorname{Hom}_{n\text{ 次}}(M,N).\]
+更一般地，若 $(M_i)_{i\in I}$ 是\Term{finite}{有限}族 $A$-模，$\mathbf n=(n_i)_{i\in I}$ 为一族整数，则从各模 $M_i$ 到 $N$ 的多重次数为 $\mathbf n$ 的多\Term{homogeneous}{齐次}\Term{polynomial-law}{多项式律}，是从 $\sum M_i$ 到 $N$ 的\Term{polynomial-law}{多项式律}，使对 $a_i\in A'$ 恒有
+\[f_{A'}((a_ix_i)_{i\in I})=\prod_{i\in I}a_i^{n_i}\cdot f_{A'}((x_i)_{i\in I}).\]
+以 $\operatorname{Hom}_{\mathbf n\text{ 次}}((M_i),N)$ 表示这些\Term{polynomial-law}{多项式律}的\Term{set}{集合}。
+
+\textbf{5.5.2.3。}对每个模 $M$，从 $A$-模到\Term{set}{集合}的\Term{covariant-functor}{协变函子}
+\[N\longmapsto\operatorname{Hom}_{n\text{ 次}}(M,N)\]
+可由一个配备泛 $n$ 次映射 $\gamma^n:M\to\Gamma^n(M)$ 的 $A$-模 $\Gamma^n(M)$（或 $\Gamma^n_A(M)$）表示（Roby [1, IV 1, 第 226 页]）。给定 5.5.2.2 中的 $(M_i)_{i\in I}$ 和 $\mathbf n$，\Term{covariant-functor}{协变函子}
+\[N\longmapsto\operatorname{Hom}_{\mathbf n\text{ 次}}((M_i),N)\]
+由模 $\bigotimes_{i\in I}\Gamma^{n_i}(M_i)$ 表示，它配备泛多\Term{homogeneous}{齐次}\Term{polynomial-law}{多项式律} $(m_i)\mapsto\bigotimes_{i\in I}\gamma^{n_i}(m_i)$（多重次数为 $\mathbf n$）。
+
+\textbf{5.5.2.4。}\Term{functor}{函子} $\mathrm{TS}^n$ 和 $\Gamma^n$ 与\Term{filtered-colimit}{滤过归纳极限}交换（第二个见 Roby [1, IV 6, 第 275 页]）。它们把\Term{free-module}{自由模}变成\Term{free-module}{自由模}，因此把\Term{flat}{平坦}模变成\Term{flat}{平坦}模（5.5.1.2）。
+\SourcePage{242}
+\textbf{5.5.2.5。}由 $m\mapsto\bigotimes^n m$ 给出的从 $M$ 到 $\mathrm{TS}^n(M)$ 的 $n$ 次映射，定义一个称为\Term{canonical}{典范}映射的 $\varphi:\Gamma^n(M)\to\mathrm{TS}^n(M)$，满足
+\[\varphi(\gamma^n(m))=\mathop{\otimes}\nolimits^n m.\]
+对\Term{finitely-generated}{有限生成}\Term{free-module}{自由模} $M$，此映射是\Term{isomorphism}{同构}（Roby [1, IV, 第 272 页]），所以对\Term{flat}{平坦}模 $M$ 亦然（5.5.2.4 和 5.5.1.1）。
+设 $M$ 为 $A$-模，$P$ 为\Term{exact-sequence}{正合列}
+\[P:P_1\xrightarrow d P_0\xrightarrow\varepsilon M\longrightarrow0.\]
+令 $P'_1=P_1\times P_0$，令 $j_0,j_1:P'_1\to P_0$ 分别为坐标为 $(d,\mathrm{Id})$ 和 $(0,\mathrm{Id})$ 的\Term{morphism}{态射}。于是列
+\[\begin{tikzcd}
+\Gamma^n(P'_1)\arrow[r,shift left,"\Gamma^n(j_0)"]\arrow[r,shift right,"\Gamma^n(j_1)"']&\Gamma^n(P_0)\arrow[r]&\Gamma^n(M)\arrow[r]&0
+\end{tikzcd}\]
+\Term{exact}{正合}（Roby [1, 第 284 页]）。当 $P$ 为 $M$ 的\Term{flat}{平坦}展示时，由此得到用\Term{functor}{函子} $\mathrm{TS}^n$ 描述\Term{functor}{函子} $\Gamma^n$ 的方式：
+\begin{equation}\tag{5.5.2.5.1}\mathrm{TS}^n(P'_1)\rightrightarrows\mathrm{TS}^n(P_0)\longrightarrow\Gamma^n(M)\longrightarrow0.\end{equation}
+\textbf{5.5.2.6。}若 $M=M'\oplus M''$，则 $n$ 次映射
+\[m\longmapsto(\gamma^{n'}m\otimes\gamma^{n''}m)_{n'+n''=n}\]
+定义一个称为\Term{canonical-isomorphism}{典范同构}的\Term{isomorphism}{同构}（Roby [1, III 4]）
+\begin{equation}\tag{5.5.2.6.1}\Gamma^n(M)\xrightarrow\sim\sum_{n'+n''=n}\Gamma^{n'}(M)\otimes\Gamma^{n''}(M).\end{equation}
+若 $\Sigma$ 为\Term{exact-sequence}{正合列}
+\[\Sigma:0\longrightarrow M'\longrightarrow M\longrightarrow M''\longrightarrow0,\]
+则模 $\Gamma^n(M)$ 配备\Term{canonical}{典范}的递减\Term{filtration}{滤过}以及\Term{morphism}{态射}
+\begin{equation}\tag{5.5.2.6.2}\Gamma^i(M'')\otimes\Gamma^{n-i}(M')\longrightarrow\operatorname{Gr}^i(\Gamma^n(M)).\end{equation}
+这些数据的\Term{characteristic}{特征}是关于 $\Sigma$ \Term{functorial}{函子性}，并且当 $\Sigma$ \Term{separable}{可分}裂时与（5.5.2.6.1）满足显然的相容性。当 $\Sigma$ \Term{separable}{可分}裂时，（5.5.2.6.2）的\Term{arrow}{箭头}为\Term{isomorphism}{同构}；所以当 $M''$ \Term{flat}{平坦}时也是\Term{isomorphism}{同构}（5.5.1.4）。
+
+\textbf{5.5.2.7。}\Term{functor}{函子} $\Gamma^n$ 与标量\Term{group-extension}{扩张}交换（Roby [1, III 3, 第 262 页]）（$\mathrm{TS}^n$ 的类似性质一般不成立）。
+\SourcePage{243}
+\textbf{5.5.2.8。}若 $u:M_1\times M_2\to N$ 为\Term{bilinear}{双线性}映射，则 $\gamma^n\circ u$ 是双次数为 $(n,n)$ 的双\Term{homogeneous}{齐次}\Term{polynomial-law}{多项式律}，因而定义（5.5.2.3）$u_n:\Gamma^n(M_1)\otimes\Gamma^n(M_2)\to\Gamma^n(N)$，满足 $u_n(\gamma^nx\otimes\gamma^ny)=\gamma^nu(x,y)$。特别地，若 $B$ 为 $A$-\Term{algebra}{代数}，则乘积 $B\times B\to B$ 在 $\Gamma^n(B)$ 上诱导乘积。此乘积使 $\Gamma^n(B)$ 成为 $A$-\Term{algebra}{代数}，而从 $\Gamma^n(B)$ 到 $\mathrm{TS}^n(B)$ 的\Term{canonical}{典范}映射是\Term{algebra}{代数}\Term{homomorphism}{同态}。
+
+\textbf{5.5.3。}设 $\mathscr A$ 为\Term{abelian-category}{阿贝尔范畴}。以 $\operatorname{ssimpl}^+(\mathscr A)$ 表示 $\mathscr A$ 的余\Term{semisimplicial-object}{半单纯对象}\Term{category}{范畴}，以 $C^{\geq0}(\mathscr A)$ 表示满足 $i<0\Rightarrow K^i=0$ 的\Term{differential}{微分}\Term{complex}{复形} $K$ 的\Term{category}{范畴}，以 $K^{\geq0}(\mathscr A)$ 表示 $C^{\geq0}(\mathscr A)$ 在 $K(\mathscr A)$ 中的像。若 $K\in\operatorname{Ob}\operatorname{ssimpl}^+(\mathscr A)$，相伴的\Term{normalized-complex}{正规化复形} $N(K)\in\operatorname{Ob}C^{\geq0}(\mathscr A)$ 定义为
+\begin{equation}\tag{5.5.3.1}\begin{cases}
+N(K)^n=\text{从 }K^n\text{ 到 }K^{n-1}\text{ 的各退化算子的核之交},\\
+d=\sum(-1)^i\partial_i.
+\end{cases}\end{equation}
+若仍以 $K$ 表示\Term{set-component}{分量}为 $K^n$、\Term{differential}{微分}为 $d=\sum(-1)^i\partial_i$ 的\Term{complex}{复形}，则 $N(K)$ 是 $K$ 的一个为\Term{direct-summand}{直和因子}的子\Term{complex}{复形}，而且 $K/N(K)$ \Term{homotopy}{同伦}于零。由 Dold--Puppe [1]，\Term{functor}{函子} $N$ 为\Term{category-equivalence}{范畴等价}
+\[N:\operatorname{ssimpl}^+(\mathscr A)\longrightarrow C^{\geq0}(\mathscr A).\]
+此\Term{equivalence}{等价}及其逆把\Term{homotopy}{同伦}\Term{morphism}{态射}变为\Term{homotopy}{同伦}\Term{morphism}{态射}。此外，对每个 $K\in\operatorname{Ob}\operatorname{ssimpl}^+(\mathscr A)$，$K^n$ 为若干 $N(K)^i$（$i\leq n$）的副本之和；若 $P$ 是 $\mathscr A$ 中\Term{object}{对象}的性质，且对\Term{finite}{有限}和与\Term{direct-summand}{直和因子}\Term{stable}{稳定}，则各 $K^i$ 在 $i\leq n$ 时具有 $P$，当且仅当各 $N(K)^i$ 在 $i\leq n$ 时具有 $P$。
+Dold 和 Puppe 利用\Term{equivalence}{等价} $N$，将从 $\mathscr A$ 到任意\Term{category}{范畴} $\mathscr B$ 的每个\Term{functor}{函子} $T:\mathscr A\to\mathscr B$（未必\Term{additive}{加性}）\Term{group-extension}{扩张}为从 $C^{\geq0}(\mathscr A)$ 到 $C^{\geq0}(\mathscr B)$ 的\Term{functor}{函子} $C^{\geq0}(T)$（或简称 $T$）：
+\begin{equation}\tag{5.5.3.2}C^{\geq0}(T)=NTN^{-1}.\end{equation}
+\Term{functor}{函子} $C^{\geq0}(T)$ 通过取商定义
+\begin{equation}\tag{5.5.3.3}T\quad\text{或}\quad K^{\geq0}(T):K^{\geq0}(\mathscr A)\longrightarrow K^{\geq0}(\mathscr B).\end{equation}
+\textbf{5.5.3.4。}若 $T$ 的次数 $\leq n$，即第 $(n+1)$ 个“交叉效应”（cross effect）为零（Dold--Puppe [1, 4.18, 第 232 页]），则对每个满足 $i>m\Rightarrow K^i=0$ 的 $K\in\operatorname{Ob}C^{\geq0}(\mathscr A)$，有 $i>nm\Rightarrow[T(K)]^i=0$（Dold--Puppe [1, 4.2.3, 第 233 页]）。
+\SourcePage{244}
+\textbf{5.5.3.5。}特别地，若 $T$ 是从 $A$-\Term{module-category}{模范畴}到 $B$-\Term{module-category}{模范畴}的\Term{finite}{有限}次\Term{functor}{函子}，且把\Term{flat}{平坦}\Term{object}{对象}变为\Term{flat}{平坦}\Term{object}{对象}，则\Term{bounded}{有界}\Term{flat}{平坦}\Term{complex}{复形}的像也是\Term{bounded}{有界}\Term{flat}{平坦}\Term{complex}{复形}。
+\begin{SGAresult}{引理}{5.5.4}设 $\mathscr A$ 为\Term{abelian-category}{阿贝尔范畴}。
+
+(i) $K^{\geq0}(\mathscr A)$ 中的\Term{quasi-isomorphism}{拟同构}允许左、\Term{right-calculus-of-fractions}{右分式演算}。
+
+(ii) 将 $K^{\geq0}(\mathscr A)$ 中的\Term{quasi-isomorphism}{拟同构}取逆所得\Term{category}{范畴}与 $D^{\geq0}(\mathscr A)$ 之间的显然\Term{functor}{函子}为\Term{equivalence}{等价}。
+\end{SGAresult}
+\Term{functor}{函子} $\tau_{\geq0}:C(\mathscr A)\to C^{\geq0}(\mathscr A)$（1.1.13）通过取商定义\Term{functor}{函子} $\tau_{\geq0}:K(\mathscr A)\to K^{\geq0}(\mathscr A)$，它为 $K^{\geq0}(\mathscr A)$ 到 $\mathscr A$ 的包含的\Term{left-adjoint}{左伴随}。\Term{functor}{函子} $\tau_{\geq0}$ 把\Term{quasi-isomorphism}{拟同构}变成\Term{quasi-isomorphism}{拟同构}，且\Term{adjoint}{伴随箭头} $X\to\tau_{\geq0}(X)$ 为\Term{quasi-isomorphism}{拟同构}当且仅当 $i<0$ 时 $H^i(X)=0$。因此引理 5.5.4 由 Verdier [9] 及下述引理的 (i)、(ii) 得出，其证明留给读者。
+\begin{SGAresult}{引理}{5.5.4.1}设 $\mathscr K$ 为\Term{category}{范畴}，$\mathscr K_0$ 为\Term{full-subcategory}{满子范畴}，$S$ 为 $\mathscr K$ 中的\Term{morphism}{态射}\Term{set}{集合}，等于 $\mathscr K(S^{-1})$ 的\Term{isomorphism}{同构}\Term{set}{集合}的\Term{inverse-image}{逆像}（参见 [Gab. Zis 1, 第 1 章]），$S_0$ 为其在 $\mathscr K_0$ 中的迹。假定 $\mathscr K_0$ 到 $\mathscr K$ 的包含 $i$ 有\Term{left-adjoint}{左伴随} $\tau$，且 $\tau(S)\subset S_0$。
+
+(i) 从 $\mathscr K_0(S_0^{-1})$ 到 $\mathscr K(S^{-1})$ 的显然\Term{functor}{函子}\Term{fully-faithful}{全忠实}，且以 $\tau$ 为\Term{left-adjoint}{左伴随}。
+
+(ii) 若 $\mathscr K(S^{-1})$ 可用左分式（相应地，右分式）演算计算，则 $\mathscr K_0(S_0^{-1})$ 也有此性质。
+
+若包含 $i$ 未必有\Term{left-adjoint}{左伴随}，且以 $\tau$ 表示定义于部分\Term{object}{对象}上的 $i$ 的\Term{left-adjoint}{左伴随函子}，则有：
+
+(iii) 若 $\mathscr K(S^{-1})$ 可用左分式（相应地，右分式）演算计算，且对每个终点（相应地，起点）在 $\mathscr K_0$ 中的 $u\in S$，$\tau(u)$ 有定义且属于 $S_0$，则 $\mathscr K_0(S_0^{-1})$ 允许左分式（相应地，右分式）演算，而且\Term{functor}{函子} $\mathscr K_0(S_0^{-1})\to\mathscr K(S^{-1})$ \Term{fully-faithful}{全忠实}。
+\end{SGAresult}
+\textbf{5.5.5。}设 $T:\mathscr A\to\mathscr B$ 为\Term{abelian-category}{阿贝尔范畴}之间的\Term{functor}{函子}。如 1.2.1，以公式
+\[LT(K)=\text{“}\varprojlim_{s:K'\to K}\text{”}\,T(K'),\qquad RT(K)=\text{“}\varinjlim_{s:K\to K'}\text{”}\,T(K')\]
+定义 $T$ 的\Term{derived-functor}{导出函子}
+\[LT:D^{\geq0}(\mathscr A)\longrightarrow\operatorname{Pro}(D^{\geq0}(\mathscr B)),\qquad RT:D^{\geq0}(\mathscr A)\longrightarrow\operatorname{Ind}(D^{\geq0}(\mathscr B)),\]
+\SourcePage{245}
+其中 $s$ 遍历终点（相应地，起点）为 $K$ 的\Term{quasi-isomorphism}{拟同构}的\Term{filtered-category}{滤过范畴}。
+若 $LT(K)$（相应地，$RT(K)$）\Term{representable-functor}{可表示}，称 $T$ 在 $K$ 处可左\Term{derive}{导出}（相应地，可右\Term{derive}{导出}）。若下述\Term{canonical}{典范}\Term{arrow}{箭头}为\Term{isomorphism}{同构}，则称 $K$ 对 $T$ 左展开（相应地，右展开），或滥用术语称对 $LT$（相应地，$RT$）展开：
+\[LT(K)\xrightarrow\sim TK\qquad(\text{相应地， }TK\xrightarrow\sim RT(K)).\]
+\begin{SGAresult}{命题}{5.5.6}设 $F$ 是从环 $A$ 上的\Term{module-category}{模范畴}到\Term{abelian-category}{阿贝尔范畴} $\mathscr B$ 的\Term{functor}{函子}。假定 $\mathscr B$ 中的\Term{filtered-colimit}{滤过归纳极限}\Term{representable-functor}{可表示}且\Term{exact}{正合}，$F$ 与\Term{filtered-colimit}{滤过归纳极限}交换。则每个由\Term{flat}{平坦}模组成的\Term{bounded}{有界}\Term{complex}{复形} $M^\bullet\in\operatorname{Ob}K^{\geq0}(A)$ 都对 $LF$ 展开。\end{SGAresult}
+此命题直接由定义、下述将于 5.5.6.4 证明的引理，以及如下事实得出：\Term{set-component}{分量}\Term{flat}{平坦}、$N^\bullet\in C^{b,\geq0}(A)$ 的\Term{quasi-isomorphism}{拟同构} $u:N^\bullet\to M^\bullet$，在终点为 $M^\bullet$ 的\Term{quasi-isomorphism}{拟同构}\Term{category}{范畴}中组成\Term{cofinal}{共尾}集。
+\begin{SGAresult}{引理}{5.5.6.1}设 $u:N^\bullet\to M^\bullet$ 为 $C^{b,\geq0}(A)$ 中两个\Term{flat}{平坦}\Term{complex}{复形}之间的\Term{quasi-isomorphism}{拟同构}。则 $F(u)$ 为\Term{quasi-isomorphism}{拟同构}。\end{SGAresult}
+\begin{SGAresult}{引理}{5.5.6.2}设 $\mathscr A$ 为\Term{additive-category}{加性范畴}，$d$ 为 $\mathbf Z$ 中有上界的区间。以 $C^d$（相应地，$C^{d,b}$、$K^d$、$K^{d,b}$）表示在 $i\notin d$ 各次为零的\Term{complex}{复形}的\Term{category}{范畴}（相应地，还要求\Term{bounded}{有界}；相应地，模去\Term{homotopy}{同伦}）。有\Term{equivalence}{等价}
+\[\ell:\operatorname{Ind}(C^{d,b}(\mathscr A))\xrightarrow\sim C^d(\operatorname{Ind}\mathscr A);\]
+此\Term{equivalence}{等价}的逆诱导\Term{functor}{函子}
+\[\ell':K^d(\operatorname{Ind}\mathscr A)\longrightarrow\operatorname{Ind}(K^{d,b}(\mathscr A)).\]
+\end{SGAresult}
+A) 证明 $\ell$ \Term{fully-faithful}{全忠实}。设 $K$ 为 $\mathscr A$ 中\Term{object}{对象}组成的\Term{bounded}{有界}\Term{complex}{复形}，$L=\text{“}\varinjlim\text{”}L_\alpha$ 为 Ind \Term{complex}{复形}。有
+\[\begin{aligned}
+\operatorname{Hom}(K,L)&\overset{\mathrm{dfn}}=\varinjlim\operatorname{Hom}(K,L_\alpha)=\varinjlim Z^0(\operatorname{Hom}^\bullet(K,L_\alpha))\\
+&\simeq Z^0\varinjlim_\alpha\operatorname{Hom}^\bullet(K,L_\alpha)\xrightarrow\sim Z^0\operatorname{Hom}^\bullet(K,\ell L)=\operatorname{Hom}(K,\ell L).
+\end{aligned}\]
+倒数第二个\Term{isomorphism}{同构}来自 $K$ \Term{finite}{有限}，故 $\varinjlim$ 与从\Term{double-complex}{双复形}到\Term{simple-complex}{单复形}的过程交换。这就证明了断言。
+
+B) 以下颇为繁琐的验证留给读者：从任意选取的一个次数起，由左向右构造“足够多”的\Term{bounded}{有界}\Term{complex}{复形}，使其映入给定的有上界 Ind \Term{object}{对象}\Term{complex}{复形} $K$，以验证 $\ell$ \Term{essentially-surjective}{本质满}；并以类似方式展开下述一点。
+\SourcePage{246}
+C) 若 $\ell f:\ell\varinjlim K_\alpha\to\ell\varinjlim L_\beta$ \Term{homotopy}{同伦}于零，$f=dH+Hd$，则对每个 $\alpha$，$H$ 可\Term{lifting}{提升}为 $H^i_\alpha:K^i_\alpha\to L^i_{\beta(\alpha)}$；当 $\beta$ \Term{large-relative-to-cardinal}{足够大}时，它定义 $f_\alpha:K_\alpha\to L_{\beta(\alpha)}$ 到零的\Term{homotopy}{同伦}。
+
+\textbf{5.5.6.3。}设 $A$ 为环，$d$ 为 $\mathbf Z$ 的有上界区间，$P(A)$ 为\Term{finitely-generated}{有限生成}\Term{projective-module}{投射} $A$-模的\Term{category}{范畴}，$\operatorname{Pl}(A)$ 为\Term{flat}{平坦} $A$-模的\Term{category}{范畴}。以 $D^{\mathrm{Tor}\subset d}(A)$ 表示 $C^d(\operatorname{Pl}(A))$ 在 $D(A)$ 中的像，以 $D^{\mathrm{parf}\subset d}(A)$ 表示 $C^{d,b}(P(A))$ 在 $D(A)$ 中的像。由 5.5.1.2，有 $\operatorname{Pl}(A)\simeq\operatorname{Ind}P(A)$。另一方面，$K^{d,b}(P(A))\simeq D^{\mathrm{parf}\subset d}(A)$。由 5.5.6.2 及 $H^i$ 与\Term{filtered-colimit}{滤过归纳极限}交换的事实，得到\Term{functor}{函子}的\Term{commutative-diagram}{交换图}
+\[\begin{tikzcd}
+C^d(\operatorname{Pl}(A))\arrow[d]&\operatorname{Ind}C^{d,b}(P(A))\arrow[l,"{\varinjlim}","\sim"']\arrow[d]\\
+K^d(\operatorname{Pl}(A))\arrow[r,"\ell'"]\arrow[d]&\operatorname{Ind}K^{d,b}(P(A))\arrow[d]\\
+D^{\mathrm{Tor}\subset d}(A)\arrow[r,"\ell''"]&\operatorname{Ind}D^{\mathrm{parf}\subset d}(A).
+\end{tikzcd}\]
+\textbf{5.5.6.4。}证明 5.5.6.1。采用 5.5.6.3 的记号，若 $d=[0,k]$，由于 $F$ 与 $\varinjlim$ 交换，有\Term{commutative-diagram}{交换图}
+\[\begin{tikzcd}
+K^d(\operatorname{Pl}(A))\arrow[r,"\ell'"]\arrow[d,"K^{\geq0}(F)"']&\operatorname{Ind}K^d(P(A))\arrow[d,"\operatorname{Ind}(K^{\geq0}(F))"]\\
+K^+(\mathscr B)\arrow[d,"H^i"']&\operatorname{Ind}K^+(\mathscr B)\arrow[d,"\operatorname{Ind}(H^i)"]\\
+\mathscr B&\operatorname{Ind}\mathscr B\arrow[l,"{\varinjlim}"] .
+\end{tikzcd}\]
+若 $u$ 如 5.5.6.1，则由 5.5.6.3，$\ell'(u)$ 为\Term{isomorphism}{同构}，所以 $H^iK^{\geq0}(F)(u)$ 为\Term{isomorphism}{同构}，证毕。
+
+\textbf{5.5.7。}设 $X$ 为\Term{scheme}{概形} $S$ 上的\Term{scheme}{概形}，$k$ 为整数。假定\Term{symmetric-power}{对称幂} $\operatorname{Sym}^k_S(X)$ 已定义。不愿作此假设的读者可置身于\Term{algebraic-space}{代数空间}\Term{category}{范畴}（Artin [1]）。给 $S$ 配备\Term{commutative-ring}{交换环}\Term{sheaf}{层} $\mathscr A$。从 5.5.19 起，将假定 $\mathscr A$ 为挠的。滥用记号，在任意 $S$-\Term{scheme}{概形}上仍以 $\mathscr A$ 表示其\Term{inverse-image}{逆像}。
+设 $F$ 为 $X$ 上的模\Term{sheaf}{层}；$F$ 的 $n$ 个副本的\Term{external-tensor-product}{外张量积} $\boxtimes^kF$ 是 $X^k/S$ 上的\Term{sheaf}{层}，且\Term{symmetric-group}{对称群} $G_k$ 在 $X^k/S$ 上的\Term{action}{作用}使它\Term{equivariant}{等变}。取\Term{invariants}{不变量}，便在 $\operatorname{Sym}^k_S(X)$ 上定义\Term{sheaf}{层} $\mathrm{TS}^k_{\mathrm{ext}}(F)$，
+\SourcePage{247}
+称为 $F$ 的\Term{external-symmetric-tensor-power}{外对称张量幂}。
+为逐点推理，使用下述方式描述的 $\operatorname{Sym}^k_S(X)$ 的点是有益的。
+
+\textbf{5.5.7.1。}设 $s$ 为 $S$ 的\Term{geometric-point}{几何点}。$\operatorname{Sym}_S(X)$ 的一个取值于 $k(s)$ 的点 $x$ 定义 $\operatorname{Sym}_S(X)$ 的\Term{geometric-point}{几何点}。以 $(x_1\ldots x_k)$ 表示 $(X/S)^k$ 的一个取值于 $k(s)$、像为 $x$ 的点，以 $y_1,\ldots,y_\ell$ 表示序列 $x_1,\ldots,x_k$ 中互不相同的元素，以 $n_i$（$1\leq i\leq\ell$）表示 $y_i$ 在该序列中的\Term{multiplicity}{重数}（$\sum n_i=k$）。
+使用 5.5.7.1 的记号，并以 $G$ 表示\Term{symmetric-group}{对称群}，有
+\begin{equation}\tag{5.5.7.2}\mathrm{TS}^k_{\mathrm{ext}}(F)_x\simeq\left(\bigotimes_{i=1}^{\ell}(\mathop{\otimes}\nolimits^{n_i}F_{y_i})\right)^{\prod_{i=1}^{\ell}G_{n_i}},\end{equation}
+各\Term{tensor-product}{张量积}均取在 $\mathscr A_S$ 上。特别地，对\Term{flat}{平坦}的 $F$，由 5.5.2.5 有
+\begin{equation}\tag{5.5.7.3}\mathrm{TS}^k_{\mathrm{ext}}(F)_x\xleftarrow\sim\bigotimes_{i=1}^{\ell}\Gamma^{n_i}F_{y_i}.\end{equation}
+这里对 $\ell$ 作归纳，并利用 $\Gamma^{n_i}F_{y_i}$ 的\Term{flat}{平坦}性（5.5.2.4）及如下事实：若\Term{finite-group}{有限群} $G$（相应地，$H$）\Term{action}{作用}于 $A$-模 $M$（相应地，$N$），且 $M,N^H$ \Term{flat}{平坦}，则 $M^G\otimes_A N^H\xrightarrow\sim(M\otimes_A N)^{G\times H}$。
+
+\textbf{5.5.8。}设 $F$ 为 $X$ 上的模，$P$ 为 $F$ 的\Term{flat}{平坦}展示
+\[P:P_1\longrightarrow P_0\longrightarrow F\longrightarrow0.\]
+如 5.5.2.5 定义 $P'_1,j_0,j_1$，将 $\Gamma^k_{\mathrm{ext}}(F)$（外 $\Gamma$ \Term{functor}{函子}）定义为双\Term{arrow}{箭头} $(\mathrm{TS}^k_{\mathrm{ext}}(j_0),\mathrm{TS}^k_{\mathrm{ext}}(j_1))$ 的\Term{cokernel}{余核}。使用 5.5.7.1 的记号，由（5.5.7.3）和 5.5.2.5 得到\Term{isomorphism}{同构}
+\begin{equation}\tag{5.5.8.1}\Gamma^k_{\mathrm{ext}}(F)_x\simeq\bigotimes_{i=1}^{\ell}\Gamma^{n_i}(F_{y_i}).\end{equation}
+由此公式可知，先验地\Term{functorial}{函子性}依赖于 $P$ 的 $\Gamma^k_{\mathrm{ext}}(F)$，在唯一\Term{isomorphism}{同构}意义下只依赖于 $F$。
+
+\textbf{5.5.9。}有\Term{functorial}{函子性}\Term{morphism}{态射}
+\[\alpha:\Gamma^k_{\mathrm{ext}}(F)\longrightarrow\mathrm{TS}^k_{\mathrm{ext}}(F).\]
+对 $(\Gamma,\alpha)$ 的\Term{characteristic}{特征}是以下两条性质：
+
+(i) 当 $F$ \Term{flat}{平坦}时，$\alpha$ 为\Term{isomorphism}{同构}。
+
+(ii) 使用 5.5.2.5 的记号，对 $F$ 的每个展示 $P_1\xrightarrow dP_0\xrightarrow\varepsilon F\to0$，列
+\[\Gamma^k_{\mathrm{ext}}(P'_1)\rightrightarrows\Gamma^k_{\mathrm{ext}}(P_0)\longrightarrow\Gamma^k_{\mathrm{ext}}(F)\longrightarrow0\]
+\Term{exact}{正合}。此外还有：
+\SourcePage{248}
+(iii) \Term{functor}{函子} $\mathrm{TS}^k,\Gamma^k$ 与\Term{filtered-colimit}{滤过归纳极限}交换（由（5.5.7.2）、（5.5.8.1）和 5.5.2.4）。
+
+(iv) \Term{functor}{函子} $\Gamma^k$ 与基环的任意\Term{group-extension}{扩张} $\mathscr A\to\mathscr A'$ 交换。
+
+(v) \Term{functor}{函子} $\Gamma^k$ 与任意\Term{base-change}{基变换} $S'\to S$ 交换：对每个\Term{cartesian-square}{笛卡儿方块}
+\[\begin{tikzcd}X'\arrow[r,"g'"]\arrow[d,"f'"']&X\arrow[d,"f"]\\S'\arrow[r,"g"]&S,\end{tikzcd}\]
+有 $\operatorname{Sym}^k_g(g')^*\Gamma^k_{\mathrm{ext}}\simeq\Gamma^k_{\mathrm{ext}}g'^*$，见（5.5.8.1）及 5.5.2.7。
+
+(vi) \Term{functor}{函子} $\Gamma^k$ 与沿任意\Term{radicial}{根性}\Term{morphism}{态射} $i:X'\to X$（例如\Term{closed-immersion}{闭浸入}）的\Term{inverse-image}{逆像}交换：有
+\[\operatorname{Sym}^k_S(i)^*\Gamma^k_{\mathrm{ext}}\simeq\Gamma^k_{\mathrm{ext}}i^*\]
+（5.5.8.1）。
+
+(vii) 对\Term{immersion}{浸入} $j:X'\to X$，有
+\[\operatorname{Sym}^k_S(j)_!\Gamma^k_{\mathrm{ext}}\simeq\Gamma^k_{\mathrm{ext}}j_!\]
+（5.5.8.1）。
+
+\textbf{5.5.10。}设 $k_1,k_2,k=k_1+k_2$ 为三个非负整数。有\Term{finite-morphism}{有限态射}（\SGAsourcegap{原 PDF 第248页此处\Term{lie-bracket}{括号}内引注为空。}）
+\[\vee_{k_1k_2}:\operatorname{Sym}^{k_1}_S(X)\times_S\operatorname{Sym}^{k_2}_S(X)\longrightarrow\operatorname{Sym}^k_S(X).\]
+若 $F_i$（$i=1,2$）为 $\operatorname{Sym}^{k_i}_S(X)$ 上的模，则以 $F_1\vee F_2$ 表示 $\operatorname{Sym}^k_S(X)$ 上的\Term{sheaf}{层}
+\[F_1\vee F_2=\vee_{k_1k_2*}(F_1\boxtimes F_2).\]
+\textbf{5.5.11。}设有 $X$ 上模的\Term{exact-sequence}{正合列}
+\[\Sigma:0\longrightarrow F'\longrightarrow F\longrightarrow F''\longrightarrow0.\]
+使用 5.5.7.1 的记号，由（5.5.8.1）及 5.5.2.6，$\Gamma^k_{\mathrm{ext}}(F)_x$ 上有\Term{filtration}{滤过}及\Term{morphism}{态射}
+\[\sum_{\sum_{\alpha=1}^{\ell}i_\alpha=i}\bigotimes_{\alpha=1}^{\ell}\Gamma^{i_\alpha}(F'_{y_\alpha})\otimes\bigotimes_{\alpha=1}^{\ell}\Gamma^{n_i-i_\alpha}(F''_{y_\alpha})\longrightarrow\operatorname{Gr}^i(\Gamma^k_{\mathrm{ext}}(F)_x).\]
+左端正是 $(\Gamma^i_{\mathrm{ext}}(F')\vee\Gamma^{k-i}_{\mathrm{ext}}(F''))_x$。容易验证，这些逐点构造的数据来自 $\Gamma^k_{\mathrm{ext}}(F)$ 的唯一一个有 $k+1$ 级的\Term{filtration}{滤过}及唯一的\Term{morphism}{态射}
+\begin{equation}\tag{5.5.11.1}\Gamma^i_{\mathrm{ext}}(F')\vee\Gamma^{k-i}_{\mathrm{ext}}(F'')\longrightarrow\operatorname{Gr}^i(\Gamma^k_{\mathrm{ext}}(F)).\end{equation}
+\SourcePage{249}
+若\Term{exact-sequence}{正合列} $\Sigma$ \Term{splitting}{分裂}，则更准确地有（从（5.5.2.6.2）逐点验证）
+\begin{equation}\tag{5.5.11.2}\Gamma^k_{\mathrm{ext}}(F'\oplus F'')\simeq\sum_{k_1+k_2=k}\Gamma^{k_1}_{\mathrm{ext}}(F')\vee\Gamma^k_{\mathrm{ext}}(F'').\end{equation}
+若\Term{exact-sequence}{正合列} $\Sigma$ 逐点\Term{separable}{可分}裂，或 $F''$ \Term{flat}{平坦}，则\Term{morphism}{态射}（5.5.11.1）为\Term{isomorphism}{同构}（参见 5.5.1.4）。
+
+\textbf{5.5.12。}设 $u:X\to Y$ 为 $S$-\Term{scheme}{概形}\Term{morphism}{态射}。假定\Term{symmetric-power}{对称幂} $\operatorname{Sym}^k_S(X)$ 和 $\operatorname{Sym}^k_S(Y)$ 存在。设 $F$ 为 $X$ 上的模，$G$ 为 $Y$ 上的模，$v\in\operatorname{Hom}(u^*G,F)\simeq\operatorname{Hom}(G,u_*F)$ 为从 $F$ 到 $G$ 的 $u$-\Term{homomorphism}{同态}（0.2）。若 $\prod^nu$ 为 $u$ 的第 $n$ 个\Term{cartesian}{笛卡儿}幂，则\Term{homomorphism}{同态} $v$ 诱导从 $\boxtimes^n F$ 到 $\boxtimes^n G$ 的 $\prod^nu$-\Term{homomorphism}{同态} $\boxtimes^nv$。取\Term{invariants}{不变量}，便定义
+\[\mathrm{TS}^n(v):\mathrm{TS}^n_{\mathrm{ext}}(F)\xrightarrow[\operatorname{Sym}^n_S(u)]{}\mathrm{TS}^n_{\mathrm{ext}}(G).\]
+由定义 5.5.8 可知，存在唯一一个关于 $(F,G,v)$ \Term{functorial}{函子性}的 $\operatorname{Sym}^n(u)$-\Term{homomorphism}{同态} $\Gamma^n_{\mathrm{ext}}(v)$，
+\begin{equation}\tag{5.5.12.0}\Gamma^n_{\mathrm{ext}}(v):\Gamma^n_{\mathrm{ext}}(F)\xrightarrow[\operatorname{Sym}^n_S(u)]{}\Gamma^n_{\mathrm{ext}}(G),\end{equation}
+使下图交换（\Term{arrow}{箭头}的这种不常见的意义见（0.2））：
+\[\begin{tikzcd}
+\Gamma^n_{\mathrm{ext}}(F)\arrow[r,"{\Gamma^n_{\mathrm{ext}}(v)\text{ 在 }\operatorname{Sym}^n_S(u)\text{ 上}}"]&\Gamma^n_{\mathrm{ext}}(G)\\
+\mathrm{TS}^n_{\mathrm{ext}}(F)\arrow[u,"{\alpha\text{ 在 }\mathrm{Id}\text{ 上}}"]\arrow[r,"{\mathrm{TS}^n_{\mathrm{ext}}(v)\text{ 在 }\operatorname{Sym}^n_S(u)\text{ 上}}"']&\mathrm{TS}^n_{\mathrm{ext}}(G)\arrow[u,"{\alpha\text{ 在 }\mathrm{Id}\text{ 上}}"'].
+\end{tikzcd}\]
+我们主要将此\Term{arrow}{箭头}用作“\Term{symmetric-kunneth}{对称 Künneth 箭头}”：当 $G=u_*F$、$v$ 为\Term{canonical}{典范}\Term{arrow}{箭头}时，$\Gamma^n_{\mathrm{ext}}(v)$ 等同于模\Term{homomorphism}{同态}
+\begin{equation}\tag{5.5.12.1}k^n:\Gamma^n_{\mathrm{ext}}(u_*F)\longrightarrow\operatorname{Sym}^n(u)_*\Gamma^n_{\mathrm{ext}}(F).\end{equation}
+\textbf{5.5.13。}考虑以下条件：
+\SourcePage{250}
+\textbf{5.5.13.1。}$K\in\operatorname{Ob}K^{b,\geq0}(X,\mathscr A)$，且对 $X$ 的每个\Term{geometric-point}{几何点} $x$，\Term{complex}{复形} $K_x$ \Term{homotopy}{同伦}于一个\Term{flat}{平坦}模\Term{complex}{复形} $L_x\in\operatorname{Ob}C^{b,\geq0}(\mathscr A_x)$。
+\begin{SGAresult}{引理}{5.5.13.2}由 \Term{tor-dimension}{Tor 维数} $\leq0$ 的\Term{complex}{复形}组成的 $D^b(X,\mathscr A)$ 的\Term{subcategory}{子范畴} $D^{b,\mathrm{tor}\leq0}(X,\mathscr A)$，\Term{equivalence}{等价}于在满足（5.5.13.1）的\Term{complex}{复形} $K\in\operatorname{Ob}K^{b,\geq0}(X,\mathscr A)$ 的\Term{category}{范畴}中将\Term{quasi-isomorphism}{拟同构}取逆所得到的\Term{category}{范畴}。此构造可任意采用左分式或\Term{right-calculus-of-fractions}{右分式演算}。\end{SGAresult}
+设 $\mathscr P$ 为 $K^-(X,\mathscr A)$ 中由逐点\Term{homotopy}{同伦}于\Term{flat}{平坦}模\Term{complex}{复形}的\Term{complex}{复形}组成的\Term{subcategory}{子范畴}。已知（Verdier [C.D]），$D^-(X,\mathscr A)$ 可由 $\mathscr P$ 将\Term{quasi-isomorphism}{拟同构}取逆得到，且允许左、\Term{right-calculus-of-fractions}{右分式演算}。于是对 $K^{b,\geq0}(X,\mathscr A)\cap\mathscr P$ 到 $\mathscr P$ 的包含应用 5.5.4.1。事实上，若 $K$ 的 \Term{tor-dimension}{Tor 维数} $\leq0$，且逐点\Term{homotopy}{同伦}于\Term{flat}{平坦}模\Term{complex}{复形} $L_x$，则 $\tau_{\geq0}(K)$ 逐点\Term{homotopy}{同伦}于各 $\tau_{\geq0}(L_x)$，而后者仍为\Term{flat}{平坦}模\Term{complex}{复形}，故 $\tau_{\geq0}(K)$ 满足 5.5.13.1。
+
+\textbf{5.5.14。}由 5.5.6.1、（5.5.7.2）或（5.5.8.1）及 5.5.2.4，满足（5.5.13.1）的\Term{complex}{复形}之间的每个\Term{quasi-isomorphism}{拟同构} $v:K'\to K$ 诱导\Term{quasi-isomorphism}{拟同构}
+\[\mathrm{TS}^k(v):\mathrm{TS}^k_{\mathrm{ext}}(K')\xrightarrow\sim\mathrm{TS}^k_{\mathrm{ext}}(K),\qquad
+\Gamma^k(v):\Gamma^k_{\mathrm{ext}}(K')\xrightarrow\sim\Gamma^k_{\mathrm{ext}}(K).\]
+由此，\Term{functor}{函子} $\Gamma^k,\mathrm{TS}^k$ 在 $D^b(X,\mathscr A)$ 的\Term{subcategory}{子范畴} $D^{b,\mathrm{tor}\leq0}(X,\mathscr A)$ 上\Term{derivable-category}{可导出}（5.5.5），且满足 5.5.13.1 的\Term{complex}{复形}对这些\Term{functor}{函子}左展开。由 5.5.2.4，$\Gamma^k,\mathrm{TS}^k$ 诱导\Term{functor}{函子}
+\begin{align}
+L\mathrm{TS}^k &:D^{b,\mathrm{tor}\leq0}(X,\mathscr A)\longrightarrow D^{b,\mathrm{tor}\leq0}(\operatorname{Sym}^k_S(X),\mathscr A),\tag{5.5.14.1}\\
+L\Gamma^k &:D^{b,\mathrm{tor}\leq0}(X,\mathscr A)\longrightarrow D^{b,\mathrm{tor}\leq0}(\operatorname{Sym}^k_S(X),\mathscr A).\tag{5.5.14.2}
+\end{align}
+此外，由 5.5.9 (i)，\Term{canonical}{典范}\Term{morphism}{态射} $\alpha$（5.5.9）诱导（5.5.14.1）与（5.5.14.2）两\Term{functor}{函子}之间的\Term{isomorphism}{同构}
+\begin{equation}\tag{5.5.14.3}\alpha:L\Gamma^k\xrightarrow\sim L\mathrm{TS}^k.\end{equation}
+\textbf{5.5.14.4。}5.5.9 (iv)、(v)、(vi)、(vii) 的\Term{isomorphism}{同构}传到\Term{derived-category}{导出范畴}，定义如下\Term{isomorphism}{同构}：
+
+(iv$'$) 对 $\mathscr A$-\Term{algebra}{代数} $\mathscr A'$，有
+\[L\Gamma^k_{\mathrm{ext}\mathscr A}(K)\overset L\otimes\mathscr A'\simeq L\Gamma^k_{\mathrm{ext}\mathscr A'}(K\overset L\otimes_{\mathscr A}\mathscr A').\]
+(v$'$) 对每个\Term{base-change}{基变换} $g:S'\to S$，有
+\[\operatorname{Sym}^k_g(g')^*L\Gamma^k_{\mathrm{ext}}K\simeq L\Gamma^k_{\mathrm{ext}}(g'^*K).\]
+\SourcePage{251}
+(vi$'$) 对每个\Term{radicial}{根性}\Term{morphism}{态射} $i:X'\to X$，有
+\[\operatorname{Sym}^k_S(i)^*L\Gamma^k_{\mathrm{ext}}K\simeq L\Gamma^k_{\mathrm{ext}}i^*K.\]
+(vii$'$) 对\Term{immersion}{浸入} $j:X'\to X$，有
+\[\operatorname{Sym}^k_S(j)_!L\Gamma^k_{\mathrm{ext}}\simeq L\Gamma^k_{\mathrm{ext}}j_!.\]
+\textbf{5.5.15。}设有 $C^{\geq0}(X,\mathscr A)$ 中\Term{flat}{平坦}\Term{complex}{复形}的\Term{exact-sequence}{正合列}
+\[0\longrightarrow K'\longrightarrow K\longrightarrow K''\longrightarrow0,\]
+并应用\Term{functor}{函子} $\Gamma^k_{\mathrm{ext}}$（5.5.3）。如 5.5.11，得到 $\operatorname{Sym}^k_S(X)$ 上的\Term{semisimple}{半单}纯模 $\Gamma^k_{\mathrm{ext}}(N^{-1}K)$ 的一个\Term{filtration}{滤过}，其相继商为\Term{semisimple}{半单}纯模 $\Gamma^{k'}_{\mathrm{ext}}(N^{-1}K')\vee\Gamma^{k''}_{\mathrm{ext}}(N^{-1}K'')$（$k'+k''=k$）。
+传到\Term{derived-category}{导出范畴}，得到 $L\Gamma^k_{\mathrm{ext}}(K)$ 可由一个带\Term{filtration}{滤过}的\Term{complex}{复形}表示，其相继商表示\Term{derived-category}{导出范畴}中的\Term{object}{对象} $L\Gamma^i_{\mathrm{ext}}(K')\overset L\vee L\Gamma^{k-i}_{\mathrm{ext}}(K'')$（应用 5.5.2.4 和 Eilenberg--Zilber--Cartier 定理：双\Term{semisimplicial-object}{半单纯对象}与其对角在 $K$ 中\Term{isomorphism}{同构}，Dold--Puppe [1, 2.9, 第 213 页]）。在\Term{derived-category}{导出范畴}中，此构造已可从满足 5.5.13.1 的\Term{complex}{复形}的\Term{exact-sequence}{正合列}出发进行。
+
+$^*$用更内蕴的语言说，设 $\Delta$ 为 $D^{b,\mathrm{tor}\leq0}(X,\mathscr A)$ 中\Term{object}{对象}的“真三角形”，即“带\Term{filtration}{滤过}的\Term{derived-category}{导出范畴}”中的\Term{object}{对象}，使得 $i\ne0,1$ 时 $\operatorname{Gr}^i(\Delta)=0$，且 $\operatorname{Gr}^i(\Delta)\in\operatorname{Ob}D^{b,\mathrm{tor}\leq0}(X,\mathscr A)$（Deligne，见 Verdier [2] 的附录，或第 VI B 讲 2.5.1、2.5.2）。
+前述构造给出 $\operatorname{Sym}^k_S(X)$ 的带\Term{filtration}{滤过}的\Term{derived-category}{导出范畴}中的\Term{object}{对象} $L\Gamma^k_{\mathrm{ext}}(\Delta)$，以及\Term{isomorphism}{同构}
+\[\operatorname{Gr}^i(L\Gamma^k_{\mathrm{ext}}(\Delta))\simeq L\Gamma^i_{\mathrm{ext}}(\operatorname{Gr}^1(\Delta))\overset L\vee L\Gamma^{k-i}_{\mathrm{ext}}(\operatorname{Gr}^0(\Delta)),\]
+并且以 $|\ |$ 表示带\Term{filtration}{滤过}\Term{complex}{复形}的底层\Term{complex}{复形}时，有\Term{isomorphism}{同构}
+\[|L\Gamma^k_{\mathrm{ext}}(\Delta)|\simeq L\Gamma^k_{\mathrm{ext}}(|\Delta|).\quad{}^*\]
+\begin{SGAresult}{引理}{5.5.16}设 $N$ 为整数。\Term{category}{范畴} $D^{b,\mathrm{tor}\leq0}(X,\mathscr A)$ 可由满足下述 (i)、(ii) 的\Term{complex}{复形} $K\in\operatorname{Ob}K^{b,\geq0}(X,\mathscr A)$ 的\Term{category}{范畴}将\Term{quasi-isomorphism}{拟同构}取逆得到：
+
+(i) 条件（5.5.13.1）。
+
+(ii) 对与\Term{topos}{拓扑斯}\Term{isomorphism}{同构} $f:\widetilde X_{\text{ét}}\to T$ 有关的每个\Term{cohomological-dimension}{上同调维数} $\leq N$ 的\Term{direct-image}{正像}\Term{functor}{函子}，\Term{complex}{复形} $K$ 都是展开的。
+\end{SGAresult}
+允许\Term{right-calculus-of-fractions}{右分式演算}由 5.5.13 以及如下事实得出：利用\Term{truncation}{截断}的\Term{canonical}{典范}松\Term{resolution}{解消}（4.2.9），每个满足 (i) 的\Term{complex}{复形} $K$ 都映入一个同时满足 (i)、(ii) 的\Term{complex}{复形}。
+\SourcePage{252}
+\textbf{5.5.17。}设 $u:X\to Y$ 为 $S$-\Term{scheme}{概形}\Term{morphism}{态射}。假定 $\operatorname{Sym}^n_S(X)$、$\operatorname{Sym}^n_S(Y)$ 存在；存在整数 $N$，使\Term{functor}{函子} $u_*$ 在 $\mathscr A$-\Term{module-category}{模范畴}上的\Term{dimension}{维数} $\leq N$；而\Term{functor}{函子} $Ru_*$ 把 \Term{tor-dimension}{Tor 维数} $\leq0$ 的\Term{bounded}{有界}\Term{complex}{复形}变为 \Term{tor-dimension}{Tor 维数} $\leq0$ 的\Term{complex}{复形}。若 $u$ \Term{proper}{固有}、$\mathscr A$ 为挠的、$Y$ \Term{coherent}{凝聚}（即\Term{quasi-compact}{拟紧}、\Term{quasi-separated}{拟分离}），则后两个条件自动成立（5.2.8.1、5.2.10）。
+设 $K\in\operatorname{Ob}K^{b,\geq0}(X,\mathscr A)$ 满足 5.5.16 的条件 (i)、(ii)，其中 $N$ 如上。由 5.5.14，\Term{arrow}{箭头} $\beta:L\Gamma^n_{\mathrm{ext}}(K)\xrightarrow\sim\Gamma^n_{\mathrm{ext}}(K)$ 为\Term{quasi-isomorphism}{拟同构}。同样，\Term{arrow}{箭头} $\gamma:u_*K\xrightarrow\sim Ru_*K$ 为\Term{quasi-isomorphism}{拟同构}。
+将从 $L\Gamma^n_{\mathrm{ext}}Ru_*(K)$ 到 $R\operatorname{Sym}^n(u)_*L\Gamma^n_{\mathrm{ext}}(K)$ 的\Term{symmetric-kunneth}{对称 Künneth 箭头}定义为复合
+\begin{equation}\tag{5.5.17.1}\begin{aligned}
+k^n:L\Gamma^n_{\mathrm{ext}}Ru_*K&\xleftarrow[\gamma]{\sim}L\Gamma^n u_*K\longrightarrow\Gamma^n_{\mathrm{ext}}u_*K\\
+&\xrightarrow{5.5.12.1}\operatorname{Sym}^n_S(u)_*\Gamma^n_{\mathrm{ext}}(K)\longrightarrow R\operatorname{Sym}^n_S(u)_*\Gamma^n_{\mathrm{ext}}(K)\\
+&\xleftarrow[\beta]{\sim}R\operatorname{Sym}^n_S(u)_*L\Gamma^n_{\mathrm{ext}}(K).
+\end{aligned}\end{equation}
+由 5.5.16，\Term{morphism}{态射}（5.5.17.1）定义从 $D^{b,\mathrm{tor}\leq0}(X,\mathscr A)$ 到 $D^+(\operatorname{Sym}^n_S(Y),\mathscr A)$ 的\Term{functor}{函子}之间的\Term{morphism}{态射}
+\begin{equation}\tag{5.5.17.2}k^n:L\Gamma^n_{\mathrm{ext}}Ru_*\longrightarrow R\operatorname{Sym}^n_S(u)_*L\Gamma^n_{\mathrm{ext}},\end{equation}
+仍称为\Term{symmetric-kunneth}{对称 Künneth 态射}。此\Term{morphism}{态射}由下述性质 5.5.18 刻画。
+
+\textbf{5.5.17.3。}设 $S,X,Y,u$ 如上，$K\in\operatorname{Ob}C^{b,\geq0}(X,\mathscr A)$ 为 \Term{tor-dimension}{Tor 维数} $\leq0$ 的\Term{complex}{复形}，$K_1\in\operatorname{Ob}C^{b,\geq0}(Y,\mathscr A)$，$K_2\in\operatorname{Ob}C^b(\operatorname{Sym}^n_S(X),\mathscr A)$。设 $v$ 是从 $K$ 到 $K_1$ 的 $u$-\Term{homomorphism}{同态}（0.2），$t$ 是从 $\Gamma^n_{\mathrm{ext}}(K)$ 到 $K_2$ 的\Term{homomorphism}{同态}（为通常意义，下同）。有\Term{morphism}{态射}
+\[\begin{aligned}
+a)\quad&\Gamma^n_{\mathrm{ext}}(v):\Gamma^n_{\mathrm{ext}}(K_1)\to\operatorname{Sym}^n_S(u)_*\Gamma^n_{\mathrm{ext}}(K)\quad(5.5.12.0),\\
+b)\quad&\operatorname{Sym}^n_S(u)_*(t):\operatorname{Sym}^n_S(u)_*\Gamma^n_{\mathrm{ext}}(K)\to\operatorname{Sym}^n_S(u)_*K_2,
+\end{aligned}\]
+其复合为 $\varphi_0:\Gamma^n_{\mathrm{ext}}(K_1)\to\operatorname{Sym}^n_S(u)_*K_2$，它通过复合定义
+\[\varphi:L\Gamma^n_{\mathrm{ext}}(K_1)\longrightarrow R\operatorname{Sym}^n(u)_*K_2.\]
+此外，$v,t$ 还诱导：
+\SourcePage{253}
+\[v':K_1\longrightarrow Ru_*K,\qquad t':L\Gamma^n_{\mathrm{ext}}K\longrightarrow K_2.\]
+于是有：
+\begin{SGAresult}{命题}{5.5.18}在 5.5.17.3 的假设下，以下图在 $D^+(\operatorname{Sym}_S(Y),\mathscr A)$ 中交换：
+\[\begin{tikzcd}
+L\Gamma^n_{\mathrm{ext}}Ru_*K\arrow[r,"{k^n\text{（对称 Künneth）}}"]&R\operatorname{Sym}^n_S(u)_*L\Gamma^n_{\mathrm{ext}}K\arrow[d,"R\operatorname{Sym}^n_S(u)_*(t')"]\\
+L\Gamma^n_{\mathrm{ext}}K_1\arrow[u,"L\Gamma^n_{\mathrm{ext}}(v')"]\arrow[r,"\varphi"']&R\operatorname{Sym}^n_S(u)_*K_2.
+\end{tikzcd}\]
+\end{SGAresult}
+证明与 5.4.1.5 完全相同，留给读者。
+
+\textbf{5.5.19。从现在起假定 $\mathscr A$ 为挠的。}设 $u:X\to Y$ 为\Term{compactifiable}{可紧化}的 $S$-\Term{scheme}{概形}\Term{morphism}{态射}：
+\[\begin{tikzcd}
+&X\arrow[dl,"j"']\arrow[dr,"u"]&\\
+\overline X\arrow[rr,"\overline u"]\arrow[dr]&&Y\arrow[dl]\\&S&.
+\end{tikzcd}\]
+假定 $\operatorname{Sym}^n_S(X)$、$\operatorname{Sym}^n_S(\overline X)$、$\operatorname{Sym}^n_S(Y)$ 存在。对 $X$ 上每个模 $F$，有
+\begin{equation}\tag{5.5.19.1}\Gamma^n_{\mathrm{ext}}(j_!F)\simeq\operatorname{Sym}^n_S(j)_!\Gamma^n_{\mathrm{ext}}(F),\end{equation}
+此\Term{isomorphism}{同构}平凡地传到\Term{derived-category}{导出范畴}。定义从 $D^{b,\mathrm{tor}\leq0}(X,\mathscr A)$ 到 $D^{b,\mathrm{tor}\leq0}(\operatorname{Sym}^n_S(Y),\mathscr A)$ 的\Term{functor}{函子}之间的\Term{symmetric-kunneth}{对称 Künneth 态射}
+\begin{equation}\tag{5.5.19.2}k^n_u\quad\text{或}\quad k^n:L\Gamma^n_{\mathrm{ext}}Ru_!\longrightarrow R\operatorname{Sym}_S(u)_!L\Gamma^n_{\mathrm{ext}}\end{equation}
+\SourcePage{254}
+为如下复合：
+\[\begin{aligned}
+L\Gamma^n_{\mathrm{ext}}Ru_!&\overset{\mathrm{dfn}}\simeq L\Gamma^n_{\mathrm{ext}}R\overline u_*j_!\xrightarrow{(5.5.17.2)}R\operatorname{Sym}^n_S(\overline u)_*L\Gamma^n_{\mathrm{ext}}j_!\\
+&\xrightarrow[(5.5.19.1)]{\sim}R\operatorname{Sym}^n_S(\overline u)_*\operatorname{Sym}^n_S(j)_!L\Gamma^n_{\mathrm{ext}}\\
+&\xrightarrow{(5.5.13.5\ (\mathrm{vii}'))}R\operatorname{Sym}^n_S(u)_!L\Gamma^n_{\mathrm{ext}}.
+\end{aligned}\]
+\textbf{5.5.20。}下列验证留给读者；原则上利用 5.5.18 即容易完成。
+
+\textbf{5.5.20.1（内蕴性）。}\Term{morphism}{态射}（5.5.19.2）不依赖于 $u$ 的\Term{compactification}{紧化} $\overline u$ 的选择。
+
+\textbf{5.5.20.2（\Term{transitivity}{传递性}）。}设有 $S$-\Term{scheme}{概形}图 $X\xrightarrow uY\xrightarrow vZ$，其中 $u,v$ \Term{quasi-projective-morphism}{拟射影}；假定 $\operatorname{Sym}^n_S(Z)$ 存在（因而 $\operatorname{Sym}^n_S(Y)$、$\operatorname{Sym}^n_S(X)$ 也存在，SGA 1 第 V 讲 1.7，EGA II 4.5.4）。则以下\Term{functor}{函子}图交换：
+\[\begin{tikzcd}[column sep=small]
+L\Gamma^n_{\mathrm{ext}}R(vu)_!\arrow[rr,"k^n_{vu}"]\arrow[d,equal]&&R\operatorname{Sym}^n_S(vu)_!L\Gamma^n_{\mathrm{ext}}\arrow[d,equal]\\
+L\Gamma^n_{\mathrm{ext}}Rv_!Ru_!\arrow[r,"k^n_v"']&R\operatorname{Sym}^n_S(v)_!L\Gamma^n_{\mathrm{ext}}Ru_!\arrow[r,"k^n_u"']&R\operatorname{Sym}^n_S(v)_!R\operatorname{Sym}^n_S(u)_!L\Gamma^n_{\mathrm{ext}}.
+\end{tikzcd}\]
+\textbf{5.5.20.3。}\Term{symmetric-kunneth}{对称 Künneth 态射}与 5.5.9 (iv)、(v)、(vi) 类型的\Term{base}{基底}或\Term{space}{空间}的变换相容。更确切地，有以下与\Term{morphism}{态射} 5.5.13.5 (iv$'$)、(v$'$)、(vi$'$) 的相容性。
+
+(iv$''$) 对每个 $\mathscr A$-\Term{algebra}{代数} $\mathscr A'$，以及每个\Term{quasi-projective-morphism}{拟射影} $S$-\Term{morphism}{态射} $u:X\to Y$，下图交换：
+\[\begin{tikzcd}[column sep=tiny]
+L\Gamma^n_{\mathrm{ext}}Ru_!(K)\overset L\otimes_{\mathscr A}\mathscr A'\arrow[r,"\sim"]\arrow[d,"k^n_u"']&L\Gamma^n_{\mathrm{ext}}(Ru_!(K)\overset L\otimes_{\mathscr A}\mathscr A')\arrow[r,"\sim"]&L\Gamma^n_{\mathrm{ext}}Ru_!(K\overset L\otimes_{\mathscr A}\mathscr A')\arrow[d,"k^n_u"]\\
+R\operatorname{Sym}^n_S(u)_!L\Gamma^n_{\mathrm{ext}}(K)\overset L\otimes_{\mathscr A}\mathscr A'\arrow[r,"\sim"]&R\operatorname{Sym}^n_S(u)_!(\Gamma^n_{\mathrm{ext}}(K)\overset L\otimes_{\mathscr A}\mathscr A')\arrow[r,"\sim"]&R\operatorname{Sym}^n_S(u)_!L\Gamma^n_{\mathrm{ext}}(K\overset L\otimes_{\mathscr A}\mathscr A').
+\end{tikzcd}\]
+(v$''$) 对每个\Term{base-change}{基变换} $g:S'\to S$，给出\Term{cartesian-diagram}{笛卡儿图}
+\SourcePage{255}
+\[\begin{tikzcd}
+X'\arrow[r,"g'"]\arrow[d,"u'"']\arrow[dd,bend right=40]&X\arrow[d,"u"]\arrow[dd,bend left=40]\\
+Y'\arrow[r,"g''"]\arrow[d]&Y\arrow[d]\\
+S'\arrow[r,"g"]&S,
+\end{tikzcd}\]
+以下与 (iv$''$) 完全类似的\Term{functor}{函子}图交换：
+\[\begin{tikzcd}[column sep=tiny]
+\operatorname{Sym}^n_g(g'')^*L\Gamma^n_{\mathrm{ext}}Ru_!\arrow[r,"\sim"]\arrow[d,"k^n_u"']&L\Gamma^n_{\mathrm{ext}}g''^*Ru_!\arrow[r,"\sim"]&L\Gamma^n_{\mathrm{ext}}Ru'_!g'^*\arrow[d,"k^n_{u'}"]\\
+\operatorname{Sym}^n_g(g'')^*R\operatorname{Sym}^n_S(u)_!L\Gamma^n_{\mathrm{ext}}\arrow[r,"\sim"]&R\operatorname{Sym}^n_S(u')_!\operatorname{Sym}^n_g(g')^*L\Gamma^n_{\mathrm{ext}}\arrow[r,equal]&R\operatorname{Sym}^n_S(u')_!L\Gamma^n_{\mathrm{ext}}g'^* .
+\end{tikzcd}\]
+(vi$''$) 对每个\Term{radicial}{根性}\Term{base-change}{基变换} $g:Y'\to Y$，给出 $S$-\Term{scheme}{概形}的\Term{cartesian-diagram}{笛卡儿图}
+\[\begin{tikzcd}X'\arrow[r,"g'"]\arrow[d,"u'"']&X\arrow[d,"u"]\\Y'\arrow[r,"g"]&Y,\end{tikzcd}\]
+以下\Term{functor}{函子}图交换：
+\[\begin{tikzcd}[column sep=tiny]
+\operatorname{Sym}^n_S(g)^*L\Gamma^n_{\mathrm{ext}}Ru_!\arrow[r,"\sim"]\arrow[d,"k^n_u"']&L\Gamma^n_{\mathrm{ext}}g^*Ru_!\arrow[r,"\sim"]&L\Gamma^n_{\mathrm{ext}}Ru'_!g'^*\arrow[d,"k^n_{u'}"]\\
+\operatorname{Sym}^n_S(g)^*R\operatorname{Sym}^n_S(u_!)\arrow[r,"\sim"]&R\operatorname{Sym}^n_S(u')_!g'^*L\Gamma^n_{\mathrm{ext}}\arrow[r,"\sim"]&R\operatorname{Sym}^n_S(u')_!L\Gamma^n_{\mathrm{ext}}g'^*.
+\end{tikzcd}\]
+\begin{SGAresult}{定理}{5.5.21（对称 Künneth 公式）}设 $S$ 为\Term{coherent}{凝聚}（即\Term{quasi-compact}{拟紧}、\Term{quasi-separated}{拟分离}）\Term{scheme}{概形}，配备一个\Term{fiber}{纤维}为\Term{noetherian-ring}{诺特环}的交换挠环\Term{sheaf}{层} $\mathscr A$。每个 $S$-\Term{scheme}{概形}都配备 $\mathscr A$ 的\Term{inverse-image}{逆像}。设 $u:X\to Y$ 为\Term{quasi-projective-morphism}{拟射影} $S$-\Term{scheme}{概形}之间的\Term{morphism}{态射}。对任意整数 $n\geq0$ 及 $K\in\operatorname{Ob}D^{b,\mathrm{tor}\leq0}(X,\mathscr A)$，\Term{symmetric-kunneth}{对称 Künneth 箭头}（5.5.17.2）
+\[k^n:L\Gamma^n_{\mathrm{ext}}Ru_!K\longrightarrow R\operatorname{Sym}^n_S(u)_!L\Gamma^n_{\mathrm{ext}}K\]
+是 $D^{b,\mathrm{tor}\leq0}(\operatorname{Sym}^n_S(Y),\mathscr A)$ 中的\Term{isomorphism}{同构}。
+\end{SGAresult}
+\SourcePage{256}
+本定理的证明将占据 5.5 的全部余下部分。
+
+\textbf{注记 5.5.21.1。}\Term{quasi-projective-morphism}{拟射影}性假设仅用于保证 $u$ 有\Term{compactification}{紧化} $\overline u$，
+\[X\xrightarrow j\overline X\xrightarrow{\overline u}Y,\]
+使得对所有 $n$，\Term{scheme}{概形} $\operatorname{Sym}^n_S(X)$、$\operatorname{Sym}^n_S(\overline X)$、$\operatorname{Sym}^n_S(Y)$ 均存在。\Term{algebraic-space}{代数空间}的语言应当能将此假设替换为仅仅要求 $u$ \Term{compactifiable}{可紧化}。
+证明的第一部分通过逐步剖分将 5.5.21 归结为一个“\Term{irreducible}{不可约}”情形：
+\begin{SGAresult}{引理}{5.5.22}下述特殊情形蕴含定理 5.5.21：
+
+$(*)$ 对每个\Term{algebraically-closed-field}{代数闭域} $k$、每条 $k$ 上的\Term{projective}{射影}\Term{smooth}{光滑}曲线 $X$ 及每个素数 $\ell$，\Term{symmetric-kunneth}{对称 Künneth 箭头}（取 $Y=S=\operatorname{Spec}(k)$、$\mathscr A=\mathbf Z/\ell$、$K=\mathbf Z/\ell$ 得到；见下文解释）
+\begin{equation}\tag{5.5.22.1}L\Gamma^n(R\Gamma(X,\mathbf Z/\ell))\longrightarrow R\Gamma(\operatorname{Sym}^n_k(X),\mathbf Z/\ell)\end{equation}
+均为\Term{isomorphism}{同构}（$n\geq0$）。
+\end{SGAresult}
+在（5.5.22.1）中，\Term{signature}{符号} $\Gamma$ 不幸被赋予两种用途：在 $R\Gamma$ 中，它表示“\Term{global-section}{整体截面}”\Term{functor}{函子}；在 $L\Gamma^n$ 中，它表示\Term{functor}{函子} 5.5.2.3。此公式使用\Term{isomorphism}{同构} $\Gamma^n_{\mathrm{ext}}(\mathbf Z/\ell)\simeq\mathbf Z/\ell$。
+给定如 5.5.21 中的 $S,X,Y,u,\mathscr A$。
+\begin{SGAresult}{引理}{5.5.22.2}设有 $C^{b,\geq0}(X,\mathscr A)$ 中 \Term{tor-dimension}{Tor 维数} $\leq0$ 的\Term{complex}{复形}的\Term{exact-sequence}{正合列}
+\[0\longrightarrow K'\longrightarrow K\longrightarrow K''\longrightarrow0.\]
+若对应于 $K',K,K''$ 中任意两个\Term{complex}{复形}的 Künneth \Term{arrow}{箭头} $k^n$（$n\geq0$）都是\Term{isomorphism}{同构}，则对应于第三个\Term{complex}{复形}的 Künneth \Term{arrow}{箭头}也都是\Term{isomorphism}{同构}。
+\end{SGAresult}
+先归结到 $u$ \Term{projective}{射影}且\Term{complex}{复形} $K',K,K''$ 满足 5.5.16 的条件 (i)、(ii) 的情形，其中 $N$ 至少为 $u$ 的\Term{fiber}{纤维}\Term{dimension}{维数}的两倍。此时\Term{symmetric-kunneth}{对称 Künneth 箭头}由（5.5.17.1）给出。
+对 $n$ 归纳，证明若对 $i\leq n$ 及 $K',K,K''$ 中的两个\Term{complex}{复形}，\Term{arrow}{箭头} $k^i$ 均为\Term{isomorphism}{同构}，则对第三个\Term{complex}{复形}，\Term{arrow}{箭头} $k^i$（$i\leq n$）亦均为\Term{isomorphism}{同构}。
+为此注意，由 5.5.14，\Term{morphism}{态射}
+\begin{equation}\tag{a}k^n:L\Gamma^n_{\mathrm{ext}}Ru_*K\longrightarrow R\operatorname{Sym}^n(u)_*L\Gamma^n_{\mathrm{ext}}K\end{equation}
+可由一个\Term{finite}{有限}\Term{filtration}{滤过}\Term{complex}{复形}之间的\Term{morphism}{态射} $k'^n:K_0\to K_1$ 表示，
+\SourcePage{257}
+此\Term{morphism}{态射}在相继商上诱导的\Term{arrow}{箭头}\Term{isomorphism}{同构}于如下复合\Term{arrow}{箭头}
+\begin{equation}\tag{$b_i$}L\Gamma^i_{\mathrm{ext}}Ru_*K'\overset L\vee L\Gamma^{n-i}_{\mathrm{ext}}Ru_*K''\longrightarrow R\operatorname{Sym}^n(u)_*(L\Gamma^i_{\mathrm{ext}}K'\overset L\vee L\Gamma^{n-i}_{\mathrm{ext}}K''):\end{equation}
+\[\begin{aligned}
+{}&L\Gamma^i_{\mathrm{ext}}Ru_*K'\overset L\vee L\Gamma^{n-i}_{\mathrm{ext}}Ru_*K''\\
+&\xrightarrow{k^i\overset L\vee k^{n-i}}R\operatorname{Sym}^i(u)_*L\Gamma^i_{\mathrm{ext}}K'\overset L\vee R\operatorname{Sym}^{n-i}(u)_*L\Gamma^{n-i}_{\mathrm{ext}}K''\\
+&\overset{\mathrm{dfn}}=\vee_{i,n-i*}(R\operatorname{Sym}^i(u)_*L\Gamma^i_{\mathrm{ext}}K'\overset L\boxtimes R\operatorname{Sym}^{n-i}(u)_*L\Gamma^{n-i}_{\mathrm{ext}}K'')\\
+&\xrightarrow[5.4.3]{\sim}\vee_{i,n-i*}R(\operatorname{Sym}^i(u)\times\operatorname{Sym}^{n-i}(u))_*(L\Gamma^i_{\mathrm{ext}}K'\overset L\boxtimes L\Gamma^{n-i}_{\mathrm{ext}}K'')\\
+&=R\operatorname{Sym}^n(u)_*\vee_{i,n-i*}(L\Gamma^i_{\mathrm{ext}}K'\overset L\boxtimes L\Gamma^{n-i}_{\mathrm{ext}}K'')\\
+&\overset{\mathrm{dfn}}=R\operatorname{Sym}^n(u)_*(L\Gamma^i_{\mathrm{ext}}K'\overset L\vee L\Gamma^{n-i}_{\mathrm{ext}}K'').
+\end{aligned}\]
+由归纳假设（及 Künneth 公式），当 $i\ne0,n$ 时，这些\Term{arrow}{箭头}为\Term{quasi-isomorphism}{拟同构}。因此下述三个断言中的任意两个蕴含第三个：(a) 为\Term{quasi-isomorphism}{拟同构}；$(b_0)$ 为\Term{quasi-isomorphism}{拟同构}；$(b_n)$ 为\Term{quasi-isomorphism}{拟同构}。这正是所讨论的三个\Term{arrow}{箭头}，证毕。
+
+\textbf{5.5.22.3。}假定 5.5.22 中的断言 $(*)$ 成立，证明 5.5.21。设 $S,X,Y,\mathscr A,K,u$ 如 5.5.21。问题在 $S$ 上是\Term{local-scheme}{局部}的，可假定 $S$ \Term{affine}{仿射}。每个\Term{complex}{复形} $K$ 都是形如 $i_!i^*K$ 的\Term{complex}{复形}的相继\Term{group-extension}{扩张}，其中 $i$ 为 $X$ 中一个\Term{affine}{仿射}\Term{locally-closed}{局部闭}部分的包含。通过逐步剖分（5.5.22.2），可假定 $K=i_!K_1$，其中 $i:X_1\to X$ 为源\Term{affine}{仿射}的\Term{immersion}{浸入}。相容性 5.5.20.2 允许将 $X,K$ 替换为 $X_1,K_1$，从而假定 $u$ \Term{affine}{仿射}。把 $u$ \Term{resolution}{分解}为\Term{fiber}{纤维}\Term{dimension}{维数} $\leq1$ 的\Term{morphism}{态射}的复合 $u=u_1\cdots u_k$。相容性 5.5.20.2 表明，只须证明对应于各 $u_i$ 及任意\Term{complex}{复形} $K$ 的\Term{arrow}{箭头} $k^n$ 为\Term{isomorphism}{同构}。这样归结到 $S$ \Term{affine}{仿射}、$u$ \Term{relative-dimension}{相对维数} $\leq1$ 的情形。
+
+\textbf{5.5.22.4。}要使 $k^n$ 为\Term{isomorphism}{同构}，只须其在 $\operatorname{Sym}^n_S(Y)$ 的\Term{geometric-fibre}{几何纤维}上的\Term{restriction}{限制}为\Term{isomorphism}{同构}；故由相容性 5.5.20.3 (v$''$)，可假定 $S$ 为\Term{algebraically-closed-field}{代数闭域} $k$ 的谱。
+
+\textbf{5.5.22.5。}对 $\operatorname{Sym}^n_k(Y)$ 的每个\Term{rational-point}{有理点} $y$，存在 $Y$ 的\Term{finite}{有限}\Term{reduced}{既约}部分 $Y_0$，使 $x$ 落在 $\operatorname{Sym}^n_k(Y_0)$ 的像中。故由相容性 5.5.20.3 (vi$''$)，可假定 $Y$ 为\Term{finite}{有限}个 $\operatorname{Spec}(k)$ 的和。
+
+\textbf{5.5.22.6。}若 $Y=\coprod Y_i$，则 $X$ 上每个\Term{complex}{复形} $K$ 都是集中在某个\Term{scheme}{概形} $X_i=u^{-1}(Y_i)$ 上的\Term{complex}{复形}之和。通过逐步剖分（5.5.22.2）及相容性 5.5.20.3 (vi$''$)，只须对每个\Term{morphism}{态射} $u_i:X_1\to Y_i$ 证明 5.5.21。由 5.5.22.5，这使我们归结到
+\[Y=S=\operatorname{Spec}(k),\quad k\text{ 代数闭},\quad\dim X\leq1.\]
+\SourcePage{258}
+现在\Term{sheaf}{层} $\mathscr A$ 化为\Term{noetherian-ring}{诺特环} $A$。以下命题将允许归结到 $A$ 为域的情形。
+\begin{SGAresult}{命题}{5.5.23}设 $A$ 为（交换）\Term{noetherian-ring}{诺特环}，$K\in\operatorname{Ob}D^-(A)$ 为有上界的 $A$-模\Term{complex}{复形}，$n$ 为整数。以下条件\Term{equivalence}{等价}：
+
+(1) $K$ 的 \Term{tor-dimension}{Tor 维数} $\leq n$。
+
+(2) 对每个 $x\in\operatorname{Spec}(A)$ 及每个 $i<-n$，$H^i(K\overset L\otimes_A k(x))=0$。
+\end{SGAresult}
+(i)$\Rightarrow$(ii) 显然。假定 (ii)。为证明 (i)，我们对 $\operatorname{Spec}(A)$ 的闭集 $F$ 作\Term{noetherian-induction}{诺特归纳}，证明：若模 $N$ 在 $x\notin F$ 时满足 $N_x=0$，则 $i<-n$ 时 $H^i(K\overset L\otimes_A N)=0$。
+设 $I$ 为定义 $F$ 且使 $A/I$ \Term{reduced}{既约}的唯一\Term{ideal}{理想}，$N_k$ 为 $N$ 中被 $I^k$ 消灭的\Term{submodule}{子模}。有 $N=\varinjlim N_k$。由于 Tor \Term{functor}{函子}与\Term{filtered-colimit}{滤过归纳极限}交换，可归结到存在 $k$ 使 $N=N_k$ 的情形；此时 $N$ 为被 $I$ 消灭的模的相继\Term{group-extension}{扩张}，于是\Term{cohomology}{上同调}\Term{long-exact-sequence}{长正合列}使我们归结到 $N$ 已是 $A/I$-模的情形。
+设 $\eta$ 为 $F$ 的一个\Term{maximal-point}{极大点}，通过\Term{exact-sequence}{正合列}
+\begin{equation}\tag{5.5.23.1}0\longrightarrow M_1\longrightarrow N\xrightarrow i N\otimes k(\eta)\longrightarrow M_2\longrightarrow0\end{equation}
+定义 $A/I$-模 $M_1,M_2$。有 $(M_j)_\eta=0$（$j=1,2$）。若对每个不含 $\eta$ 的闭集 $G\subset F$，以 $M_{j,G}$ 表示 $M_j$ 中\Term{support}{支集}在 $G$ 内的\Term{section}{截面}组成的\Term{submodule}{子模}，则
+\[M_j=\varinjlim_{\eta\notin G}M_{j,G}.\]
+由归纳假设并取\Term{limit}{极限}，得到 $i<-n$ 时 $H^i(K\overset L\otimes_A M_j)=0$。
+模 $N\otimes k(\eta)$ 为 $k(\eta)$-\Term{vector-space}{向量空间}，因而为 $k(\eta)$ 的副本之和。由假设，$i<-n$ 时有
+\[H^i(K\overset L\otimes(N\otimes k(\eta)))=0.\]
+若 $I$ 为（5.5.23.1）中\Term{arrow}{箭头} $i$ 的像，则有\Term{exact-sequence}{正合列}
+\[\begin{aligned}
+H^{i-1}(K\overset L\otimes M_2)&\longrightarrow H^i(K\overset L\otimes I)\longrightarrow H^i(K\overset L\otimes(N\otimes k(\eta))),\\
+H^i(K\overset L\otimes M_1)&\longrightarrow H^i(K\overset L\otimes N)\longrightarrow H^i(K\overset L\otimes I),
+\end{aligned}\]
+由此得 $i<-n$ 时 $H^i(K\overset L\otimes N)=0$，证毕。
+\SourcePage{259}
+\begin{SGAresult}{推论}{5.5.24}要使 $D^-(A)$ 中的\Term{arrow}{箭头} $u:K\to L$ 为\Term{isomorphism}{同构}，只须对每个 $x\in\operatorname{Spec}(A)$，\Term{arrow}{箭头}
+\[u_x:K\overset L\otimes_A k(x)\longrightarrow L\overset L\otimes_A k(x)\]
+在 $D^-(k(x))$ 中为\Term{isomorphism}{同构}。
+\end{SGAresult}
+设 $M$ 为 $u$ 的锥（mapping cylinder）。由假设，对每个 $x\in\operatorname{Spec}(A)$，有 $M\overset L\otimes_A k(x)=0$。故由 5.5.23，$M=0$，$u$ 为\Term{isomorphism}{同构}。
+
+\textbf{5.5.25.1。}继续在 5.5.23 处中断的 5.5.22 的证明。由相容性 5.5.20.3 (iv$''$) 和 5.5.24，对应于 $K\in\operatorname{Ob}D^{b,\mathrm{tor}\geq0}(X,A)$ 的\Term{morphism}{态射} $k^n$ 是\Term{isomorphism}{同构}，当且仅当对 $x\in\operatorname{Spec}(A)$，对应于各 $K\overset L\otimes_A k(x)\in\operatorname{Ob}D^{b,\mathrm{tor}\geq0}(X,k(x))$ 的\Term{morphism}{态射} $k^n$ 均为\Term{isomorphism}{同构}。由此归结到 $A$ 为\Term{characteristic}{特征} $\ell>0$ 的域。
+
+\textbf{5.5.25.2。}\Term{exact-sequence}{正合列}（$C$ 表示锥）
+\[0\longrightarrow K[-1]\longrightarrow CK[-1]\longrightarrow K\longrightarrow0\]
+表明，\Term{arrow}{箭头} $k^n$ 对 $K$ 均为\Term{isomorphism}{同构}，当且仅当对 $K[-1]$ 均为\Term{isomorphism}{同构}（5.5.22.2）。
+
+\textbf{5.5.25.3。}\Term{exact-sequence}{正合列}
+\[0\longrightarrow\sigma_{\geq n}K\longrightarrow K\longrightarrow\sigma_{\leq n}K\longrightarrow0\]
+表明，要使\Term{flat}{平坦}\Term{complex}{复形} $K$ 的 Künneth \Term{arrow}{箭头}为\Term{isomorphism}{同构}，只须将 $K$ 的各\Term{set-component}{分量}置于零次后相应的\Term{arrow}{箭头}为\Term{isomorphism}{同构}（5.5.22.2）及（5.5.25.2）。
+
+\textbf{5.5.25.4。}因此设 $F$ 为 $A$-\Term{vector-space}{向量空间}\Term{sheaf}{层}。此\Term{sheaf}{层}是\Term{constructible}{可构造}\Term{sheaf}{层}的\Term{inductive-limit}{归纳极限}（第 IX 讲 2.7.2），而由于 $A$ 为域，这些\Term{sheaf}{层}自动\Term{flat}{平坦}。取\Term{limit}{极限}，便归结到 $K$ \Term{constructible}{可构造}且集中于零次的情形。
+
+\textbf{5.5.25.5。}若\Term{complex}{复形} $K$ 为\Term{complex}{复形} $L$ 的\Term{direct-summand}{直和因子}，则对应于 $K$ 的\Term{morphism}{态射} $k^n$ 是对应于 $L$ 的\Term{morphism}{态射} $k^n$ 的\Term{direct-summand}{直和因子}，所以后者为\Term{isomorphism}{同构}时前者也为\Term{isomorphism}{同构}。因此可以应用迹方法（第 IX 讲 5.8），只须处理 $F=j_!A_{X'}$、$j:X'\to X$ \Term{quasi-finite}{拟有限}的情形。相容性 5.5.20.2 允许把 $X$ 换为 $X'$，从而归结到
+\[\dim X\leq1,\qquad K=A_X.\]
+\textbf{5.5.25.6。}可假定 $X$ \Term{reduced}{既约}。若 $j:U\to X$ 为 $X$ 的\Term{smooth}{光滑}\Term{open-subset}{开集}，其补集为 $i:F\to X$，则\Term{exact-sequence}{正合列}
+\[0\longrightarrow j_!j^*A_X\longrightarrow A_X\longrightarrow i_!i^*A_X\longrightarrow0\]
+\SourcePage{260}
+通过逐步剖分使我们归结到 $X$ 为\Term{smooth}{光滑}曲线或\Term{finite}{有限}集的情形。此外，由公式
+\[A_X=A\overset L\otimes_{\mathbf Z/\ell}(\mathbf Z/\ell)_X\]
+及 5.5.20.3 (iv$''$)，可归结到 $A_X=\mathbf Z/\ell$ 的情形。
+若 $X$ 为曲线，将 $X$ \Term{embedding}{嵌入}相应的\Term{projective}{射影}\Term{smooth}{光滑}曲线，再次逐步剖分，归结到下述两种情形之一：
+
+(i) $X$ 为\Term{projective}{射影}\Term{smooth}{光滑}曲线，$Y=S=\operatorname{Spec}(k)$，$k$ \Term{algebraically-closed}{代数闭}，$A=\mathbf Z/\ell$、$K=\mathbf Z/\ell$。
+
+(ii) $X$ 为\Term{finite}{有限}个 $\operatorname{Spec}(k)$ 的和，$Y=S=\operatorname{Spec}(k)$（$k$ \Term{algebraically-closed}{代数闭}），$A=\mathbf Z/\ell$、$K=\mathbf Z/\ell$。
+
+最后将 $\mathbf Z/\ell_X$ 按 $X$ 的\Term{connected-component}{连通分支} $X'$ \Term{resolution}{分解}为各\Term{sheaf}{层} $\mathbf Z/\ell_{X'}$，使 (i)、(ii) 均归结到 $X$ \Term{connected}{连通}。此时 (ii) 平凡。这就证明了 5.5.22。
+\begin{SGAresult}{引理}{5.5.26}定理 5.5.21 是 5.5.22 的断言 $(*)$ 的下述两个特殊情形的推论：
+
+情形 1。假定 $k=\mathbf C$。
+
+情形 2。假定 $k$ 的\Term{characteristic}{特征}为 $p>0$，且 $\ell=p$。
+\end{SGAresult}
+用 5.5.22 的记号，以 $p$ 表示 $k$ 的\Term{characteristic}{特征}。若 $p=0$，则 Lefschetz 原理（这里依赖相容性 5.5.20.3 (v$''$) 及第 XII 讲 5.4）允许归结到 $k=\mathbf C$。
+尚须处理 $p>0$ 且 $\ell\ne p$ 的情形。曲线 $X$ 可\Term{lifting}{提升}为 $k$ 上 Witt 向量环 $W(k)$ 上的曲线 $X'$（SGA 1 第 III 讲 7.4）。置 $S=\operatorname{Spec}(W(k))$，设有图
+\[\begin{tikzcd}
+X'_\eta\arrow[r]\arrow[d,"f_\eta"']&X'\arrow[d,"f'"]&X\arrow[l]\arrow[d,"f"]\\
+\eta\arrow[r]&S&\operatorname{Spec}(k)\arrow[l],
+\end{tikzcd}\]
+并以 $f^n,f'^n,f^n_\eta$ 分别表示 $\operatorname{Sym}^n_k(X)$、$\operatorname{Sym}^n_S(X')$、$\operatorname{Sym}^n_\eta(X'_\eta)$ 到 $\operatorname{Spec}(k),S,\eta$ 的\Term{projection}{投影}。已知 $f'^n$ 为\Term{projective}{射影}\Term{smooth}{光滑}\Term{morphism}{态射}（\Term{projective}{射影}性显然；对于\Term{smooth}{光滑}性，最简单是归结到 $X'=\mathbf P^1_S$，此时由初等\Term{symmetric-function}{对称函数}定理有 $\operatorname{Sym}^n_S(X')\simeq\mathbf P^n$）。由\Term{specialization}{特殊化}定理第 XVI 讲 2.2，\Term{sheaf}{层} $R^if'^n_*(\mathbf Z/\ell)$ 在 $S$ 上\Term{locally-constant}{局部常值}。\Term{sheaf}{层} $L^i\Gamma^n(Rf'_*\mathbf Z/\ell)$ 亦然。因此，要验证对应于 $k$ 上 $X$ 的\Term{arrow}{箭头}（5.5.22.1）为\Term{isomorphism}{同构}，由 5.5.20.3 (v$''$)，只须证明 $X$ 在 $S$ 上的几何\Term{generic-fiber}{泛纤维} $X_{\overline\eta}$ 的类似断言。
+\SourcePage{261}
+域 $k(\overline\eta)$ 的\Term{characteristic}{特征}为零，结合第一次归约，即证明 5.5.26。
+为了在 5.5.26 的两个特殊情形下证明 5.5.21，我们将把\Term{symmetric-kunneth}{对称 Künneth 态射}一方面与其超越类似物（5.5.27、5.5.28）比较，另一方面与其\Term{coherent}{凝聚}类似物（5.5.29 至 5.5.37）比较。
+
+\textbf{5.5.27。}若 $p:X\to S$ 为\Term{topological-space}{拓扑空间}之间的\Term{continuous-map}{连续映射}，$S$ 配备\Term{commutative-ring}{交换环}\Term{sheaf}{层} $\mathscr A$，则构造 5.5.7、5.5.8 原样适用，定义从 $X$ 上的模到 $\operatorname{Sym}^n_S(X)=X^n/G_n$ 上的模的\Term{functor}{函子} $\Gamma^n_{\mathrm{ext}}$。5.5.7 至 5.5.18 的一系列性质都可移植。类似地，若 $S,X,Y$ 为\Term{local-scheme}{局部}紧\Term{hausdorff-space}{分离拓扑空间}，
+\[\begin{tikzcd}X\arrow[r,"u"]\arrow[dr]&Y\arrow[d]\\&S,\end{tikzcd}\]
+且 $u$ 的\Term{fiber}{纤维}的\Term{cohomological-dimension}{上同调维数}\Term{bounded}{有界}，则具有\Term{proper}{固有}\Term{support}{支集}的\Term{cohomology}{上同调}的\Term{symmetric-kunneth}{对称 Künneth 态射}的性质 5.5.19、5.5.20 也可移植。
+若 $p:X\to S$ 为 $\mathbf C$ 上\Term{finite-type}{有限型}\Term{scheme}{概形}之间的\Term{morphism}{态射}，则\Term{functor}{函子} $\Gamma^n,L\Gamma^n$ 与“转到超越情形”的\Term{functor}{函子}交换。最后，若 $X,Y,S,\mathscr A,K$ 如 5.5.21，$S$ 在 $\mathbf C$ 上\Term{separated}{分离}且\Term{finite-type}{有限型}，并以 $\varepsilon$ 统指形如 $\varepsilon:X_{\mathrm{cl}}\to X_{\text{ét}}$ 的\Term{site}{景}\Term{morphism}{态射}，则下图交换：
+\begin{equation}\tag{5.5.27.1}\begin{tikzcd}
+\varepsilon^*L\Gamma^n_{\mathrm{ext}}Ru_!K\arrow[r,"k^k"]\arrow[d]&\varepsilon^*R\operatorname{Sym}^n_S(u)_!L\Gamma^n_{\mathrm{ext}}K\arrow[d]\\
+L\Gamma^n_{\mathrm{ext}}Ru^{\mathrm{an}}_!\varepsilon^*K\arrow[r,"{k^{n\,\mathrm{an}}}"']&R\operatorname{Sym}^n_S(u^{\mathrm{an}})_!L\Gamma^n_{\mathrm{ext}}\varepsilon^*K.
+\end{tikzcd}\end{equation}
+\textbf{5.5.28。}由相容性（5.5.27.1）及\Term{comparison-theorem}{比较定理}的一个初等情形（第 XI 讲 4.4 或第 XVI 讲 4.1），为处理 5.5.26 的情形 1，只须验证：若 $X$ 为\Term{nonsingular}{非奇异}复\Term{projective}{射影}曲线，则（5.5.22.1）的\Term{topology}{拓扑}类似物是\Term{isomorphism}{同构}。
+\Term{topological-space}{拓扑空间} $X^{\mathrm{an}}$ 可三角剖分（此处这件事是平凡的，因为 $X$ 为 Riemann 球面的\Term{ramified}{分歧}\Term{covering}{覆盖}）。逐步剖分引理 5.5.22.2 的\Term{topology}{拓扑}类似物使我们归结到证明：$(*)$ 若 $D$ 为闭单纯形（\Term{dimension}{维数}为 $0,1$ 或 $2$），则\Term{topology}{拓扑}\Term{symmetric-kunneth}{对称 Künneth 箭头}
+\begin{equation}\tag{5.5.28.1}k^n:L\Gamma^nR\Gamma(D,\mathbf Z/\ell)\longrightarrow R\Gamma(\operatorname{Sym}^n(D),\mathbf Z/\ell)\end{equation}
+是\Term{isomorphism}{同构}。
+\SourcePage{262}
+有 $R\Gamma(D,\mathbf Z/\ell)=\mathbf Z/\ell$ 置于零次，因此
+\[L\Gamma^nR\Gamma(D,\mathbf Z/\ell)=\mathbf Z/\ell\quad\text{置于零次}.\]
+另一方面，$\operatorname{Sym}^n(D)$ \Term{contractible}{可缩}，仍有
+\[R\Gamma(\operatorname{Sym}^n(D),\mathbf Z/\ell)=\mathbf Z/\ell\quad\text{置于零次}.\]
+所以（5.5.28.1）两边的 $H^i$ 均为零，而在 $H^0$ 上诱导的\Term{arrow}{箭头}等同于 $\mathbf Z/\ell$ 的恒等映射。
+
+\textbf{5.5.29。}为我们所考虑的应用起见，宜把\Term{scheme}{概形} $X$ 上的\Term{quasi-coherent}{拟凝聚}\Term{sheaf}{层}看作 $X$ 的\Term{etale}{平展}\Term{site}{景}上\Term{quasi-coherent}{拟凝聚}的 $\mathscr O$-模\Term{sheaf}{层}。
+设 $p:X\to X$ 为\Term{quasi-projective-morphism}{拟射影}\Term{scheme}{概形}\Term{morphism}{态射}（参见 5.5.21.1）\footnote{以下直至包括 5.5.34 在内的全部内容，只假定 $X,Y$ 具有相对于 $S$ \Term{ample}{丰沛}的\Term{invertible}{可逆}\Term{sheaf}{层}即成立（无须假定 $X,Y$ 在 $S$ 上\Term{finite-type}{有限型}）。}。若 $F$ 为 $X_{\text{ét}}$ 上的 $\mathscr O_X$-模\Term{sheaf}{层}，则：
+
+a) 以 $\bigotimes^nF$ 表示 $(X/S)^n_{\text{ét}}$ 上的模\Term{sheaf}{层}，它为 $F$ 在 $(X/S)^n_{\text{ét}}$ 上各\Term{inverse-image}{逆像} $\mathscr O_{(X/S)^n}$-模的\Term{tensor-product}{张量积}。
+
+b) \Term{sheaf}{层} $\bigotimes^nF$ 是 $G_n$-\Term{equivariant}{等变}的。取\Term{invariants}{不变量}，它在 $\operatorname{Sym}^n_S(X)$ 上定义\Term{sheaf}{层} $\mathrm{TS}^n_{\mathrm{ext}}(F)$：若 $\sigma$ 为 $(X/S)^n$ 到 $\operatorname{Sym}^n_S(X)$ 的\Term{projection}{投影}，则
+\begin{equation}\tag{5.5.29.1}\mathrm{TS}^n_{\mathrm{ext}}(F)=(\sigma_*\mathop{\otimes}\nolimits^nF)^{G_n}.\end{equation}
+假定 $p$ \Term{flat}{平坦}；如 5.5.8，定义\Term{functor}{函子} $\Gamma^m_{\mathrm{ext}}$ 为\Term{functor}{函子} $\mathrm{TS}^n_{\mathrm{ext}}$ 的第零个左\Term{derived-functor}{导出函子}。使用 5.5.2.5 和 5.5.8 的记号，若 $P_1\to P_0\to F\to0$ 为 $F$ 的\Term{flat}{平坦}展示，则列
+\[\begin{tikzcd}
+\mathrm{TS}^n_{\mathrm{ext}}(P'_1)\arrow[r,shift left,"j_0"]\arrow[r,shift right,"j_1"']&\mathrm{TS}^n_{\mathrm{ext}}(P_0)\arrow[r]&\Gamma^n_{\mathrm{ext}}(F)
+\end{tikzcd}\]
+\Term{exact}{正合}。若 $x$ 为如 5.5.7.1 中的 $\operatorname{Sym}^n_S(X)$ 的\Term{geometric-point}{几何点}，则（参见（5.5.8.1））
+\begin{equation}\tag{5.5.29.2}\Gamma^n_{\mathrm{ext}}(F)_x=\mathscr O_x\otimes_C\left(\bigotimes_{i=1}^{\ell}\Gamma^{n_i}_{\mathscr O_s}(F_{y_i})\right),\end{equation}
+其中 $C=\bigotimes_{i=1}^{\ell}\operatorname{Sym}^{n_i}_{\mathscr O_S}(\mathscr O_{y_i})$。
+\SourcePage{263}
+事实上，只须在 $F$ 的\Term{fiber}{纤维}自由的平凡情形验证此公式。注意 $\mathscr O_x$ 在 $C$ 上\Term{flat}{平坦}，因为它是 $C$ 在 $x$ 的像这个\Term{closed-point}{闭点}处的\Term{strict-henselization}{严格 Hensel 化}。
+
+\textbf{5.5.30。}假定 $X,S$ \Term{affine}{仿射}，$p$ \Term{flat}{平坦}，$F$ \Term{quasi-coherent}{拟凝聚}。设 $S=\operatorname{Spec}(A)$、$X=\operatorname{Spec}(B)$，令 $\mathrm F=H^0(X,F)$，于是 $F$ 为 $B$-模 $\mathrm F$ 所定义的\Term{sheaf}{层} $\widetilde{\mathrm F}$。由（5.5.29.1）可读出
+\[\mathrm{TS}^n_{\mathrm{ext}}(F)=\mathrm{TS}^n_A(\mathrm F)^{\sim},\]
+从而通过\Term{derive}{导出}得到
+\begin{equation}\tag{5.5.30.1}\Gamma^n_{\mathrm{ext}}(F)=\Gamma^n_A(\mathrm F)^{\sim}.\end{equation}
+因此\Term{functor}{函子} $\Gamma^n_{\mathrm{ext}}$ 表现为一个“相对于 $A$ 的”$\Gamma^n$ \Term{functor}{函子}，这已由（5.5.29.2）以\Term{local-scheme}{局部}\Term{form}{形式}表达。
+
+\textbf{5.5.31。}以 $D^{b,\mathrm{tor}_S\leq0}(X,\mathscr O_X)$ 表示 $D^b(X,\mathscr O_X)$ 中由下述 $\mathscr O_X$-模\Term{complex}{复形}组成的\Term{subcategory}{子范畴}：它们作为 $p^{-1}(\mathscr O_S)$-模\Term{complex}{复形}时的 \Term{tor-dimension}{Tor 维数} $\leq0$。
+考虑以下条件：
+
+\textbf{5.5.31.1。}$K\in\operatorname{Ob}C^{b,\geq0}(X,\mathscr O_X)$，且在 $X$ 的每个\Term{geometric-point}{几何点} $x$，$K_x$ \Term{homotopy}{同伦}于一个集中于非负次、在 $\mathscr O_{S,p(x)}$ 上\Term{flat}{平坦}的 $\mathscr O_{X,x}$-模\Term{complex}{复形}。
+由于\Term{morphism}{态射} $p$ \Term{flat}{平坦}，有“足够多”的在 $S$ 上\Term{flat}{平坦}的 $\mathscr O_X$-模，故可如 5.5.13.2 验证：$D^{b,\mathrm{tor}_S\leq0}(X,\mathscr O_X)$ 可由满足（5.5.31.1）的\Term{complex}{复形} $K\in\operatorname{Ob}K^{b,\geq0}(X,\mathscr O_X)$ 的\Term{category}{范畴}将\Term{quasi-isomorphism}{拟同构}取逆得到。
+由（5.5.29.2）及 5.5.6.1 可读出：若 $u:K\to L$ 为满足（5.5.31.1）的\Term{complex}{复形}之间的\Term{quasi-isomorphism}{拟同构}，则 $\Gamma^n_{\mathrm{ext}}(u)$（Dold--Puppe 意义下）仍为\Term{quasi-isomorphism}{拟同构}。因此\Term{functor}{函子} $\Gamma^n_{\mathrm{ext}}$ \Term{derivable-category}{可导出}为
+\begin{equation}\tag{5.5.31.2}L\Gamma^n_{\mathrm{ext}}:D^{b,\mathrm{tor}_S\leq0}(X,\mathscr O_X)\longrightarrow D^{b,\mathrm{tor}_S\leq0}(\operatorname{Sym}^n_S(X),\mathscr O_{\operatorname{Sym}^n_S(X)}).\end{equation}
+\textbf{5.5.32。}以 $D^{b,\mathrm{tor}_S\leq0}_{\mathrm{qcoh}}(X,\mathscr O_X)$ 表示 $D^{b,\mathrm{tor}_S\leq0}(X,\mathscr O_X)$ 中由\Term{cohomology}{上同调}\Term{quasi-coherent}{拟凝聚}的\Term{complex}{复形}组成的\Term{subcategory}{子范畴}。
+标准论证使我们能如 5.5.17 那样定义以下类型的\Term{symmetric-kunneth}{对称 Künneth 箭头}：设 $u:X\to Y$ 为在 $S$ 上\Term{quasi-projective-morphism}{拟射影}且\Term{flat}{平坦}的 $S$-\Term{scheme}{概形}之间的\Term{morphism}{态射}；对 $K\in\operatorname{Ob}D^{b,\mathrm{tor}_S\leq0}_{\mathrm{qcoh}}(X,\mathscr O_X)$，在 $D^{b,\mathrm{tor}_S\leq0}_{\mathrm{qcoh}}(\operatorname{Sym}^n_S(Y),\mathscr O)$ 中的\Term{symmetric-kunneth}{对称 Künneth 箭头} $k^n$ 为
+\begin{equation}\tag{5.5.32.1}k^n:L\Gamma^n_{\mathrm{ext}}Ru_*K\longrightarrow R\operatorname{Sym}^n_S(u)_*L\Gamma^n_{\mathrm{ext}}K.\end{equation}
+我们把将用到的（5.5.32.1）的\Term{form}{形式}性质的验证留给读者，特别是以下性质：
+\SourcePage{264}
+\begin{SGAresult}{引理}{5.5.33}若 $S$ 的\Term{characteristic}{特征}为 $p>0$，且 $u:X\to S$ \Term{proper}{固有}、\Term{flat}{平坦}，则\Term{symmetric-kunneth}{对称 Künneth 箭头}（5.5.17.2）与（5.5.32.1）的下图交换（$Y=S$，$K=\mathbf Z/p$ 或 $\mathscr O_X$）：
+\[\begin{tikzcd}
+L\Gamma^n_{\mathbf Z/p}Ru_*(\mathbf Z/p)\arrow[r,"k^n"]\arrow[d]&R\operatorname{Sym}^n_S(u)_*(\mathbf Z/p)\arrow[d]\\
+L\Gamma^n_{\mathscr O}Ru_*(\mathscr O)\arrow[r,"k^n"']&R\operatorname{Sym}^n_S(u)_*\mathscr O.
+\end{tikzcd}\]
+\end{SGAresult}
+\begin{SGAresult}{命题}{5.5.34}在 5.5.32 的假设下，\Term{symmetric-kunneth}{对称 Künneth 箭头}（5.5.32.1）是\Term{isomorphism}{同构}。\end{SGAresult}
+\begin{proof}
+a) 问题在 $S$ 上是\Term{local-scheme}{局部}的，可假定 $S$ \Term{affine}{仿射}。
+
+b) 对 $\operatorname{Sym}^n_S(Y)$ 的每个点 $x$，存在 $Y$ 的\Term{affine-open}{仿射开集} $Y_1$，使 $x\in\operatorname{Sym}^n_S(Y_1)$。\Term{localization}{局部化}后，可假定 $Y$ \Term{affine}{仿射}。
+
+c) 所考虑类型的每个\Term{complex}{复形} $K$ 都可由一个在 $i<0$ 各次为零的 $S$ 上\Term{quasi-coherent}{拟凝聚}模\Term{complex}{复形} $K_0$ 表示。若 $\mathscr U$ 为 $X$ 的\Term{affine}{仿射}\Term{covering}{覆盖}，则 $K$ 有一个\Term{finite}{有限}\Term{resolution}{解消}，各项是形如 $j_*j^*K$ 的\Term{complex}{复形}的和，$j$ 为\Term{affine-open}{仿射开集}的包含（交错 \Term{cech-complex}{Čech 复形}）。利用逐步剖分引理 5.5.22.2 的\Term{quasi-coherent}{拟凝聚}类似物，可归结到存在\Term{affine-open}{仿射开集} $j:X_1\hookrightarrow X$ 和 $K_1\in D^{b,\mathrm{tor}_S\leq0}_{\mathrm{qcoh}}(X_1,\mathscr O)$，使 $K=Rj_*K_1$ 的情形。
+
+d) 由\Term{transitivity}{传递性} 5.5.20.2 的\Term{quasi-coherent}{拟凝聚}类似物，只须对 $uj$ 和 $j$ 证明 5.5.34。对 $j$ 应用归约 b)，最后归结到 $X,Y,S$ 均\Term{affine}{仿射}的情形。此时可用一个\Term{set-component}{分量}\Term{flat}{平坦}且\Term{quasi-coherent}{拟凝聚}的\Term{complex}{复形} $K_2\in C^{b,\geq0}(X,\mathscr O_X)$ 表示 $K$（\SGAsourcegap{原 PDF 第264页此处\Term{lie-bracket}{括号}内引注为空。}）。计算\Term{functor}{函子} $Ru_*,L\Gamma^n$ 时无须再对 $K_2$ 作\Term{resolution}{解消}；余下只须注意，由（5.5.30.1），对 $X$ 上\Term{quasi-coherent}{拟凝聚}的 $F$，有
+\[\Gamma^n_{\mathrm{ext}}u_*F\xrightarrow\sim\operatorname{Sym}^n_S(u)_*\Gamma^n_{\mathrm{ext}}F,\]
+两边均等同于 $\Gamma^n_A(\mathrm F)^{\sim}$，其中 $F=\widetilde{\mathrm F}$。证毕。
+\end{proof}
+\textbf{5.5.35。}处理 5.5.26 的情形 2。使用 5.5.22 的记号，下图交换（5.5.33）：
+\begin{equation}\tag{5.5.35.1}\begin{tikzcd}
+L\Gamma^n(R\Gamma(X,\mathbf Z/p))\arrow[r,"k^n","\text{\textcircled{1}}"']\arrow[d]&R\Gamma(\operatorname{Sym}^n_k(X),\mathbf Z/p)\arrow[d]\\
+L\Gamma^n(R\Gamma(X,\mathscr O))\arrow[r,"k^n","\text{\textcircled{2}}"']&R\Gamma(\operatorname{Sym}^n_k(X),\mathscr O),
+\end{tikzcd}\end{equation}
+由 5.5.34，\Term{arrow}{箭头}\textcircled{2}为\Term{isomorphism}{同构}。Frobenius \Term{endomorphism}{自同态}
+\SourcePage{265}
+$F:x\mapsto x^p$ 在 $R\Gamma(X,\mathscr O)$ 和 $R\Gamma(\operatorname{Sym}^n_k(X),\mathscr O)$ 上 $p$-线性地\Term{action}{作用}，因而也在 $L\Gamma^n(R\Gamma(X,\mathscr O))$ 上 $p$-线性地\Term{action}{作用}。可验证 $k^n$ 与 $F$ 交换。
+Artin--Schreier 理论给出\Term{exact-sequence}{正合列}
+\[0\longrightarrow H^i(X,\mathbf Z/p)\longrightarrow H^i(X,\mathscr O)\xrightarrow{F-I}H^i(X,\mathscr O)\longrightarrow\mathscr O,\]
+对 $\operatorname{Sym}^n_S(X)$ 亦然。要由\textcircled{2}为\Term{isomorphism}{同构}推出\textcircled{1}为\Term{isomorphism}{同构}，尚须验证：
+\begin{SGAresult}{引理}{5.5.36}设 $k$ 为\Term{characteristic}{特征} $p>0$ 的\Term{perfect-field}{完美域}，$K\in C^{\geq0}(\mathbf Z/p)$ 为\Term{finite}{有限}维 $\mathbf Z/p$-\Term{vector-space}{向量空间}的\Term{complex}{复形}，$L\in C^{\geq0}(k)$ 为\Term{finite}{有限}维 $k$-\Term{vector-space}{向量空间}的\Term{complex}{复形}，$F$ 为 $L$ 的 $p$-线性\Term{endomorphism}{自同态}，$u:K\to L$ 为\Term{morphism}{态射}。假定 $H^*(Fu)=H^*(u)$，且列
+\[0\longrightarrow H^i(K)\longrightarrow H^i(L)\xrightarrow{F-I}H^i(L)\longrightarrow0\]
+\Term{exact}{正合}。则列
+\[0\longrightarrow H^i(\Gamma^nK)\longrightarrow H^i(\Gamma^nL)\xrightarrow{F-I}H^i(\Gamma^nL)\longrightarrow0\]
+\Term{exact}{正合}。
+\end{SGAresult}
+由于 $H^*(Fu)=H^*(u)$ 且 $\mathbf Z/p$ 为域，存在\Term{homotopy}{同伦}
+\[Fu-u=dH+Hd.\]
+域 $k$ \Term{perfect}{完美}，故可写成 $FH_0-H_0=H$。以 $u-(dH_0+H_0d)$ 替换 $u$ 后，可假定 $Fu=u$。
+将每个配备 $p$-线性\Term{endomorphism}{自同态} $F$ 的 $k$-\Term{vector-space}{向量空间} $V$ 映到满足 $Fv=v$ 的各 $v\in V$ 组成的 $\mathbf Z/p$-\Term{vector-space}{向量空间} $V^{\mathrm S}$ 的\Term{functor}{函子} $\mathrm S$ 是\Term{exact-functor}{正合函子}。因此假设意味着\Term{morphism}{态射} $K\to L^{\mathrm S}$ 为\Term{quasi-isomorphism}{拟同构}。余下须证明\Term{functor}{函子} $\mathrm S$ 与\Term{functor}{函子} $\Gamma^n$ 交换。这一点容易由下述熟知引理得出，其证明留给读者。
+\begin{SGAresult}{引理}{5.5.37}\Term{perfect-field}{完美域} $k$ 上配备 $p$-线性\Term{endomorphism}{自同态} $F$ 的\Term{finite}{有限}维\Term{vector-space}{向量空间} $V$ 有唯一\Term{resolution}{分解}
+\[V=V_0+V_n,\]
+其中 $V^{\mathrm S}\otimes k\xrightarrow\sim V_0$、$F(V_n)\subset V_n$，且 $F|_{V_n}$ \Term{nilpotent}{幂零}。
+\end{SGAresult}
+这就完成了 5.5.21 的证明。

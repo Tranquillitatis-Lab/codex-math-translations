@@ -1,0 +1,478 @@
+\SGAchapter{V}{基本群：一般理论}{Le groupe fondamental : généralités}
+\SourcePage{103}
+\SGAsection{0}{引言}
+本研讨班接续 1960 年的研讨班。引用后者时采用 I 9.7 这样的记号，表示代数几何研讨班第 I 讲第 9.7 条。1961 年各讲的编号接续 1960 年。引用 Dieudonné--Grothendieck 的《代数几何基础》时，采用（EGA I 8.7.3）这样的记号。
+本讲归纳了 1960 年最后几讲尚未整理成文的内容，并略作补充。
+与 1961 年一样，我们通常只考虑\Term{locally-noetherian}{局部诺特}\Term{prescheme}{预概形}，尽管这一限制往往并不重要。第 VI 讲将引用 Bourbaki 研讨班第 190 号报告所概述的\Term{faithfully-flat-descent}{忠实平坦下降}理论。待读者有机会认识这项技术对\Term{fundamental-group}{基本群}理论的用处之后，如有必要，我们会另用一讲更详细地介绍它。\footnote{参见第 VI 讲和第 VIII 讲。}
+\SGAsection{1}{带有限算子群的预概形与商预概形}
+设 $X$ 是\Term{prescheme}{预概形}，$G$ 是通过\Term{automorphism}{自同构}作用于 $X$ 的\Term{finite-group}{有限群}；为确定起见，假设它右作用于 $X$。若 $X$ 是环为 $A$ 的\Term{affine}{仿射}\Term{prescheme}{预概形}，则 $G$ 通过\Term{automorphism}{自同构}左作用于 $A$。
+对每个\Term{prescheme}{预概形} $Z$，$G$ 左作用于 $\operatorname{Hom}(X,Z)$，因此可以考虑 $G$-不变\Term{morphism}{态射}的集合 $\operatorname{Hom}(X,Z)^G$。它\Term{functorial}{函子性}地依赖于 $Z$，因而可以问这一\Term{functor}{函子}是否\Term{representable}{可表}，即是否\Term{isomorphism}{同构}于 $Z\mapsto\operatorname{Hom}(Y,Z)$ 这样的\Term{functor}{函子}。
+\SourcePage{104}
+这意味着可以找到\Term{prescheme}{预概形} $Y$ 及 $G$-不变\Term{morphism}{态射} $p:X\to Y$，使得对每个 $Z$，相应映射
+\[\operatorname{Hom}(Y,Z)\longrightarrow\operatorname{Hom}(X,Z)^G,\qquad g\longmapsto gp\]
+是\Term{bijection}{双射}。此时称 $(Y,p)$ 为 $X$ 关于 $G$ 的\Term{quotient-prescheme}{商预概形}（它在唯一\Term{isomorphism}{同构}的意义下确定）。
+\begin{SGAresult}{命题}{1.1}
+设\Term{finite-group}{有限群} $G$ 左作用于环 $A$，$B=A^G$ 是\Term{invariant-subring}{不变子环}，$X=\operatorname{Spec}(A)$，$Y=\operatorname{Spec}(B)$，$p:X\to Y$ 是典范\Term{morphism}{态射}（显然 $G$-不变）。则：
+\begin{enumerate}
+\item[(i)] $A$ 在 $B$ 上整，即 $p$ 是\Term{integral-morphism}{整态射}。
+\item[(ii)] $p$ 是满的，其\Term{fibre}{纤维}恰为 $G$ 的\Term{orbit}{轨道}，$Y$ 的拓扑是 $X$ 的\Term{quotient-topology}{商拓扑}。
+\item[(iii)] 设 $x\in X$，$y=p(x)$，$G_x$ 是 $x$ 的\Term{stabilizer}{稳定子}，则 $k(x)$ 是 $k(y)$ 的代数拟 Galois \Term{group-extension}{扩张}，且 $G_x\to\operatorname{Gal}(k(x)/k(y))$ 的典范映射是满的；这里右端表示 $k(x)$ 的 $k(y)$-\Term{automorphism}{自同构}群。
+\item[(iv)] $(Y,p)$ 是 $X$ 关于 $G$ 的\Term{quotient-prescheme}{商预概形}。
+\end{enumerate}
+\end{SGAresult}
+(i)、(ii)、(iii) 是交换代数中的熟知结论，\footnote{参见 N. Bourbaki，《交换代数》第 5 章第 1 节和第 2 节定理 2。}这里列出仅供备忘，关于拓扑的断言除外；后者来自以下一般事实：\Term{integral-morphism}{整态射}是\Term{closed-morphism}{闭态射}，即把闭集映为闭集。这是 Cohen--Seidenberg 定理的简单推论。立即指出：
+\begin{SGAresult}{推论}{1.2}
+在上述条件下，自然\Term{homomorphism}{同态} $\mathcal O_Y\to p_*(\mathcal O_X)^G$ 是\Term{isomorphism}{同构}。
+\end{SGAresult}
+这直接来自对 $B=A^G$ 的每个\Term{multiplicative-set}{乘法封闭子集} $S$ 都成立的公式
+\[(S^{-1}A)^G=S^{-1}(A^G),\]
+只需取由 $B$ 的一个元素 $f$ 生成的 $S$ 即可。（这一公式也有模的版本，更一般地对\Term{flat}{平坦}的\Term{base-change}{基变换} $A\to A'$ 成立。）
+(ii) 和推论 1.2 容易推出 (iv)；更一般地，有：
+\begin{SGAresult}{命题}{1.3}
+设 $X$ 是带\Term{finite-group}{有限自同构群} $G$ 的\Term{prescheme}{预概形}，$p:X\to Y$ 是 $G$-不变\Term{affine-morphism}{仿射态射}，且 $\mathcal O_Y\xrightarrow{\sim}p_*(\mathcal O_X)^G$。则 1.1 的结论 (i)、(ii)、(iii)、(iv) 仍成立。
+\end{SGAresult}
+\SourcePage{105}
+事实上，证明 (i)、(ii)、(iii) 时可设 $Y$，因而 $X$，都是\Term{affine}{仿射}的。若其环分别为 $B,A$，假设就给出 $B=A^G$，于是应用 1.1 即可。证明 (iv) 则使用 (ii) 及 $\mathcal O_Y=p_*(\mathcal O_X)^G$。
+\begin{SGAresult}{推论}{1.4}
+在 1.3 的条件下，对 $Y$ 的每个开集 $U$，$U$ 是 $X|U=p^{-1}(U)$ 关于 $G$ 的商。
+\end{SGAresult}
+事实上，$p$ 诱导的 $p^{-1}(U)\to U$ 满足与 $p$ 相同的假设。
+若 $X$ 是 $Z$-\Term{prescheme}{预概形}，且 $G$ 的作用都是 $Z$-\Term{automorphism}{自同构}，则由 (iv)，$Y$ 是 $Z$-\Term{prescheme}{预概形}。于是：
+\begin{SGAresult}{推论}{1.5}
+$X$ 在 $Z$ 上\Term{affine}{仿射}（分别地，\Term{separated}{分离}）的充要条件是 $Y$ 如此。若 $X$ 在 $Z$ 上\Term{finite-type}{有限型}，则它在 $Y$ 上\Term{finite}{有限}；若进一步 $Z$ \Term{locally-noetherian}{局部诺特}，则 $Y$ 在 $Z$ 上\Term{finite-type}{有限型}。
+\end{SGAresult}
+由于 $X$ 在 $Y$ 上\Term{affine}{仿射}，因而\Term{separated}{分离}，$Y$ 在 $Z$ 上\Term{affine}{仿射}或\Term{separated}{分离}时，$X$ 亦然。反之，设 $X$ 在 $Z$ 上\Term{affine}{仿射}，证明 $Y$ 也如此：由 1.4 可设 $Z$ \Term{affine}{仿射}，从而只须证明 $X$ \Term{affine}{仿射}时 $Y$ 亦\Term{affine}{仿射}；这由 1.1 中 $Y=\operatorname{Spec}(A)^G$ 的显式确定得到。同样，$p:X\to Y$ 是\Term{integral-morphism}{整态射}，故是\Term{universally-closed}{普遍闭}的，并且是满的；所以 $X$ 在 $Z$ 上\Term{separated}{分离}蕴含 $Y$ 在 $Z$ 上\Term{separated}{分离}（应抽出一个引理！）。事实上，在图
+\[\begin{tikzcd}X\times_ZX\arrow[r,"p\times_Zp"]&Y\times_ZY\\X\arrow[u,"\Delta_{X/Z}"]\arrow[r,"p"]&Y\arrow[u,"\Delta_{Y/Z}"']\end{tikzcd}\]
+中，上面的\Term{morphism}{态射}是闭的，因而把 $X\times_ZX$ 的闭对角线映为 $Y\times_ZY$ 的闭子集；由于 $p$ 满，这个子集正是后者的对角线。
+若 $X$ 在 $Z$ 上\Term{finite-type}{有限型}，则它在 $Y$ 上亦\Term{finite-type}{有限型}，再由它在 $Y$ 上已是整的，知它在 $Y$ 上\Term{finite}{有限}。再设 $Z$ \Term{locally-noetherian}{局部诺特}，证明 $Y$ 在 $Z$ 上\Term{finite-type}{有限型}。由 1.4 可设 $Z$ \Term{affine}{仿射}。$X$ 的\Term{topological-space}{拓扑空间}\Term{quasi-compact}{拟紧}且 $p:X\to Y$ 满，所以 $Y$ 亦\Term{quasi-compact}{拟紧}，从而是\Term{finite}{有限}个\Term{affine-open}{仿射开集}的并。由 1.4 化为 $Y$，因而 $X$，都\Term{affine}{仿射}的情形。此时 $X$ 的环 $A$ 是 $Z$ 的\Term{noetherian-ring}{诺特环} $C$ 上的\Term{finite-type}{有限型}代数，而熟知 $B=A^G$ 也是 $C$ 上的\Term{finite-type}{有限型}代数：$A$ 在 $B$ 的某个\Term{finite-type}{有限型} $C$-子代数 $B'$ 上整，因而\Term{finite}{有限}；$B'$ \Term{noetherian}{诺特}，所以 $B$ 在 $B'$ 上亦\Term{finite}{有限}，因而在 $C$ 上\Term{finite-type}{有限型}。
+\begin{SGAresult}{推论}{1.6}
+$X$ 是\Term{affine}{仿射}的（分别地，是\Term{scheme}{概形}）的充要条件是 $Y$ 如此。
+\end{SGAresult}
+\SourcePage{106}
+\begin{SGAresult}{定义}{1.7}
+设\Term{finite-group}{有限群} $G$ 右作用于\Term{prescheme}{预概形} $X$。若存在具有 1.3 所列性质的\Term{morphism}{态射} $p:X\to Y$，则称 $G$ 的作用\Term{admissible-action}{可容许}（于是 $X/G$ 存在且\Term{isomorphism}{同构}于 $Y$）。
+\end{SGAresult}
+\begin{SGAresult}{命题}{1.8}
+设\Term{finite-group}{有限群} $G$ 右作用于\Term{prescheme}{预概形} $X$。该作用\Term{admissible-action}{可容许}的充要条件是 $X$ 是 $G$-不变\Term{affine-open}{仿射开集}的并；等价地，$X$ 中 $G$ 的每条\Term{orbit}{轨道}都包含于某个\Term{affine-open}{仿射开集}。
+\end{SGAresult}
+后一条件显然由前一条件推出；它反过来也推出前者。事实上，设 $T$ 是一条\Term{orbit}{轨道}，$U$ 是包含它的\Term{affine-open}{仿射开集}。$U$ 在各 $g\in G$ 下的像之交是 $G$-稳定开集 $U'$，包含 $T$ 且包含于 $U$。由于在 $U$ 中每个\Term{finite}{有限}子集都有\Term{affine-open}{仿射开邻域}构成的基本邻域系，存在包含 $T$ 且包含于 $U'$ 的\Term{affine-open}{仿射开集} $V$。它在各 $g\in G$ 下的像也是\Term{affine}{仿射}的，都包含于\Term{separated}{分离}的 $U'$ 中，所以这些像的交 $U''$ 是 $G$-不变且包含 $T$ 的\Term{affine-open}{仿射开集}。
+1.8 的条件是必要的，因为可取\Term{covering}{覆盖} $Y$ 的\Term{affine-open}{仿射开集} $Y_i$ 的\Term{inverse-image}{逆像} $X_i$。它也是充分的：由 1.1 构造 $Y_i=X_i/G$；在每个 $Y_i$ 中，$X_i\cap X_j$ 的像是开集 $Y_{ij}$，由 1.4 它与 $X_{ij}/G$ 等同。因此有\Term{isomorphism}{同构} $Y_{ij}\xrightarrow{\sim}Y_{ji}$，可借此\Term{gluing}{粘合} $Y_i$ 得到 $Y$。Serre 更愿意直接构造 $X$ 关于 $G$ 的\Term{quotient-topology}{商拓扑}空间 $Y$，赋予它\Term{sheaf}{层} $p_*(\mathcal O_X)^G$，再证明 $Y$ 成为\Term{prescheme}{预概形}，且满足 1.3 的条件。
+\begin{SGAresult}{推论}{1.7}
+若 $G$ 在 $X$ 上的作用\Term{admissible-action}{可容许}，则 $G$ 的每个子群 $H$ 的作用也\Term{admissible-action}{可容许}（所以 $X/H$ 存在）。
+\end{SGAresult}
+也可在 1.3 的情形下直接证明：总可假设 $X$ 在某个 $Z$ 上\Term{affine}{仿射}，且各 $s\in G$ 通过 $Z$-\Term{automorphism}{自同构}作用（例如取 $Z=Y$）。事实上：
+\begin{SGAresult}{推论}{1.8}
+设 $X$ 在 $Z$ 上\Term{affine}{仿射}，且 $G$ 的作用都是 $Z$-\Term{automorphism}{自同构}。则 $G$ 在 $X$ 上的作用\Term{admissible-action}{可容许}。若 $X$ 由\Term{quasi-coherent}{拟凝聚}代数\Term{sheaf}{层} $\mathcal A$ 定义，则 $Y$ 由其 $G$-不变\Term{sheaf}{层} $\mathcal A^G$ 定义。
+\end{SGAresult}
+\begin{SGAresult}{命题}{1.9}
+设 $G$ \Term{admissible-action}{可容许}地作用于 $X$，且 $X/G=Y$ 是 $Z$ 上的\Term{prescheme}{预概形}。作\Term{base-change}{基变换} $Z'\to Z$，令 $X'=X\times_ZZ'$，$Y'=Y\times_ZZ'$，则 $G$ 经结构转移作用于 $X'$，且 $p':X'\to Y'$ 不变。若 $Z'$ 在 $Z$ 上\Term{flat}{平坦}，则 $p'$ 仍满足 1.3 的假设，即 $\mathcal O_{Y'}\to p'_*(\mathcal O_{X'})^G$ 是\Term{isomorphism}{同构}（$p'$ 无论如何都是\Term{affine-morphism}{仿射态射}）。所以 $G$ 在 $X'$ 上的作用\Term{admissible-action}{可容许}，且
+\[(X/G)\times_ZZ'\simeq(X\times_ZZ')/G.\]
+\end{SGAresult}
+\SourcePage{107}
+显然可设 $Z=Y$，并进一步化为 $Y,Y'$ 都\Term{affine}{仿射}的情形。只须证明：若 $B$ 是 $G$ 在 $A$ 中作用的\Term{invariant-subring}{不变子环}，$B'$ 是\Term{flat}{平坦} $B$-代数，则 $B'$ 是 $A'=A\otimes_BB'$ 的不变子代数。这立即成立，因为\Term{exact-sequence}{正合列}
+\[0\longrightarrow B\xrightarrow{i}A\xrightarrow{j}A^{(G)}\]
+在与 $B'$ 张量之后仍\Term{exact}{正合}；末项表示 $A$ 的一个幂，$j(x)$ 是各 $s\cdot x-x$（$s\in G$）组成的族。
+应注意，\Term{flat}{平坦}假设对结果成立是必不可少的；特别地，若 $Y'$ 是 $Y$ 的\Term{closed-subprescheme}{闭子预概形}（例如甚至是 $Y$ 的一个\Term{closed-point}{闭点}），$X'$ 是其在 $X$ 中的\Term{inverse-image}{逆像}，则 $Y'$ 一般不能与 $X'/G$ 等同。不过我们将看到，$X$ 在 $Y$ 上\Term{etale}{平展}时确实可以这样等同。
+最后介绍一套既方便又简单的形式处理。设 $Y$ 是\Term{prescheme}{预概形}。由于\Term{prescheme}{预概形}\Term{category}{范畴}中存在\Term{coproduct}{直和}，对任意集合 $E$，可考虑由 $E$ 索引、各项均为 $Y$ 的族 $(Y_i)_{i\in E}$ 的\Term{coproduct}{和预概形}，记作 $Y\times E$。其特征为
+\[\operatorname{Hom}(Y\times E,Z)=\operatorname{Hom}(E,\operatorname{Hom}(Y,Z)).\tag{*}\]
+右端第一个 $\operatorname{Hom}$ 显然指集合 $E$ 到 $\operatorname{Hom}(Y,Z)$ 的映射集。有典范\Term{morphism}{态射} $Y\times E\to Y$，使 $Y\times E$ 成为 $Y$ 上的\Term{prescheme}{预概形}。由于\Term{prescheme}{预概形}\Term{category}{范畴}中的\Term{fibre-product}{纤维积}与\Term{coproduct}{直和}交换，若 $Y$ 在 $Z$ 上，则作\Term{base-change}{基变换} $Z'\to Z$ 有
+\[(Y\times E)\times_ZZ'=(Y\times_ZZ')\times E\]
+（主要用于 $Z=Y$）。另一方面，由定义直接得到
+\[(Y\times E)\times F=Y\times(E\times F)=(Y\times E)\times_Y(Y\times F)\]
+（最后一个等式还要用到上述交换性）。
+固定 $Y$，可以把 $Y\times E$ 看作从集合到 $Y$-\Term{prescheme}{预概形}的\Term{functor}{函子}。由上式它与\Term{finite-product}{有限积}交换（所以例如每个通常的群 $G$ 都对应于 $Y$ 上的\Term{group-scheme}{群概形} $Y\times G$；若 $Y$ \Term{finite}{有限}，它在 $Y$ 上\Term{finite}{有限}，等等）。更一般地，这个\Term{functor}{函子}\Term{left-exact}{左正合}，不过这里不需要。它显然也与\Term{coproduct}{直和}交换；由定义式 (*) 可见它还\Term{right-exact}{右正合}。特别地，若\Term{finite-group}{有限群} $G$ 右作用于 $E$，则它右作用于 $Y\times E$，且
+\[(Y\times E)/G=Y\times(E/G),\]
+其中左端的商实际上满足 1.3 的条件（这是直接的）。
+\SourcePage{108}
+\SGAsection{2}{分解群与惯性群：平展情形}
+设\Term{finite-group}{有限群} $G$ 右作用于\Term{prescheme}{预概形} $X$。对 $x\in X$，称其\Term{stabilizer}{稳定子} $G_d(x)$ 为 $x$ 的\Term{decomposition-group}{分解群}。它典范地左作用于\Term{residue-field}{剩余域} $k(x)$；其中作用\Term{trivial-bundle}{平凡}的元素组成的集合称为 $x$ 的\Term{inertia-group}{惯性群}，记作 $G_i(x)$。
+设 $G$ 在 $X$ 上的作用\Term{admissible-action}{可容许}，且 $Y$ 是 $Z$ 上的\Term{prescheme}{预概形}。固定 $z\in Z$，取 $k(z)$ 的一个\Term{algebraically-closed}{代数闭}扩域 $\Omega$，其\Term{transcendence-degree}{超越次数}大于所有 $k(x)/k(z)$ 的\Term{transcendence-degree}{超越次数}，其中 $x$ 遍历 $z$ 上方的 $X$ 中各点。$\operatorname{Spec}(\Omega)$ 可看作 $Z$-\Term{scheme}{概形}；$X$ 的 $\Omega$-值点对应于 $k(z)$-代数\Term{homomorphism}{同态} $k(x)\to\Omega$，其中 $x$ 在 $z$ 上方。由于 $\Omega$ 取得足够大，$z$ 上方的每个 $x$ 都是某个 $\Omega$-值点的落点。以 $X(\Omega),Y(\Omega)$ 分别表示 $X,Y$ 的 $\Omega$-值点集合，则有自然映射 $X(\Omega)\to Y(\Omega)$。$G$ 作用于 $X(\Omega)$，该映射 $G$-不变。1.3 的结论 (ii)、(iii) 还可解释为：此映射满，并将 $Y(\Omega)$ 与 $X(\Omega)/G$ 等同。若 $x$ 是 $a\in X(\Omega)$ 的落点，则 $a$ 在 $G$ 中的\Term{stabilizer}{稳定子}正是\Term{inertia-group}{惯性群} $G_i(x)$。事实上，无须假设 $\Omega$“足够大”，这些结论仍然成立；该假设只是为了保证 $z$ 上方每一点的\Term{inertia-group}{惯性群}都可刻画为一个“几何”\Term{stabilizer}{稳定子}。例如立即得到：
+\begin{SGAresult}{命题}{2.1}
+作\Term{base-change}{基变换} $Z'\to Z$，令 $X'=X\times_ZZ'$。若 $x'\in X'$ 在 $X$ 中的像为 $x$，则 $G_i(x)=G_i(x')$。
+\end{SGAresult}
+只须在上述讨论中取 $k(z')$ 的一个足够大的扩域为 $\Omega$，其中 $z,z'$ 分别是 $x,x'$ 在 $Z,Z'$ 中的像。
+\begin{SGAresult}{命题}{2.2}
+在 1.3 的条件下，设 $Y$ \Term{locally-noetherian}{局部诺特}，$X$ 在 $Y$ 上\Term{finite}{有限}。取子群 $H\subset G$，令 $X'=X/H$（参见 1.7）；设 $x\in X$，$x'$、$y$ 分别为它在 $X'$、$Y$ 中的像。
+\begin{enumerate}
+\item[(i)] 若 $H\supset G_d(x)$，则\Term{homomorphism}{同态} $\mathcal O_y\to\mathcal O_{x'}$ 诱导\Term{completion}{完备化}之间的\Term{isomorphism}{同构}。
+\item[(ii)] 若 $H\supset G_i(x)$，则\Term{homomorphism}{同态} $\mathcal O_y\to\mathcal O_{x'}$ \Term{etale}{平展}，即 $X'$ 在 $x'$ 处于 $Y$ 上\Term{etale}{平展}。
+\end{enumerate}
+\end{SGAresult}
+令 $Y_1=\operatorname{Spec}(\widehat{\mathcal O_y})$，作\Term{base-change}{基变换} $Y_1\to Y$，得 $X_1=X\times_YY_1$，它在 $Y_1$ 上\Term{finite}{有限}，且有 $G$ 的作用；由 1.9，商为 $Y_1$。设 $y_1$ 是 $y$ 上方 $Y_1$ 中唯一的点。由于 $k(y)=k(y_1)$，$X$ 在 $y$ 的\Term{fibre}{纤维}与 $X_1$ 在 $y_1$ 的\Term{fibre}{纤维}\Term{isomorphism}{同构}，因此 $x$ 上方有唯一点 $x_1$。
+\SourcePage{109}
+又由 1.9，$X_1/H=X'_1=X'\times_YY_1$。设 $x'_1$ 是 $x_1$ 在 $X'_1$ 中的像，它在 $x'$ 上方；由于 $X'$ 在 $Y$ 上\Term{finite-type}{有限型}，容易验证 $\mathcal O_{x'}\to\mathcal O_{x'_1}$ 在\Term{completion}{完备化}上诱导\Term{isomorphism}{同构}。所以化为 $Y$ 是某个完备\Term{local-ring}{局部环} $B$ 的谱的情形；此时 $X$ 是\Term{finite}{有限} $B$-代数 $A$ 的谱，$A$ 是\Term{finite}{有限}个\Term{local-ring}{局部环} $A_x$ 的乘积，分别对应于 $Y$ 上方的各点 $x_i$。若 $A_0$ 对应于 $x=x_0$，则 $A$ 与函数环 $\operatorname{Hom}_{G_d}(G,A_0)$ 等同，其中的函数满足 $f(st)=sf(t)$（$s\in G_d$），$G$ 的作用为 $(uf)(t)=f(tu)$。于是对任意子群 $H$，$A^H$ 是满足
+\[f(stu)=sf(t)\qquad(s\in G_d,\ u\in H)\]
+的函数 $f:G\to A_0$ 构成的环。它是\Term{semilocal-ring}{半局部环}，各局部分量对应于 $G$ 中的\Term{double-coset}{双陪集} $G_daH$；由 $a\in G$ 确定的\Term{double-coset}{双陪集}通过 $f\mapsto f(a)$ 对应于 $A_0$ 的子环 $A_0^{H(a)}$，其中 $H(a)=G_d\cap aHa^{-1}$。$A^H$ 中对应于 $x$ 的像 $x'$ 的局部分量，正对应于单位元所在的\Term{double-coset}{双陪集} $G_dH$，所以是 $A_0^{G_d\cap H}$。若 $G_d\subset H$，得到 $A_0^{G_d}=A^G=B$，这证明 (i)。为证明 (ii)，可对 $A$ 作适当的\Term{finite}{有限}\Term{flat}{平坦}\Term{group-extension}{扩张}，并使用 2.1，化为\Term{residue-field}{剩余域}\Term{group-extension}{扩张} $k(x)/k(y)$ \Term{trivial-bundle}{平凡}的情形。此时 $G_i(x)=G_d(x)$，归入前一情形。
+\begin{SGAresult}{推论}{2.3}
+在 2.2 的条件下，若 $G_i(x)=(e)$，则 $X$ 在 $x$ 处于 $Y$ 上\Term{etale}{平展}。所以若每个 $x\in X$ 都满足 $G_i(x)=(e)$，则 $X\to Y$ 是\Term{etale-morphism}{平展态射}。
+\end{SGAresult}
+还有一个部分逆命题：
+\begin{SGAresult}{推论}{2.4}
+设 $X$ \Term{connected}{连通}，$G$ 在 $X$ 上\Term{faithful-action}{忠实作用}。则 $p:X\to Y=X/G$ \Term{etale}{平展}的充要条件是 $X$ 各点的\Term{inertia-group}{惯性群}都只含单位元。此时 $G$ 与 $Y$-\Term{scheme}{概形} $X$ 的全体 $Y$-\Term{automorphism}{自同构}构成的群等同。
+\end{SGAresult}
+由 2.3 可假设 $X$ 在 $Y$ 上\Term{etale}{平展}。若 $s\in G$ 属于某个 $G_i(x)$，由 I 5.4，$s$ 在 $G$ 上\Term{trivial-bundle}{平凡}作用；既然作用忠实，$s$ 就是单位元，从而第一条成立。若 $u$ 是 $X$ 的 $Y$-\Term{automorphism}{自同构}，任取 $x\in X$。由 1.3，存在 $s\in G$ 使 $s(x)=u(x)$，且诱导与 $u$ 相同的\Term{residue-field}{剩余域}\Term{homomorphism}{同态} $k(x)/k(x')$。由同一出处得 $s=u$，证明完成。
+\textbf{注记 2.5。}推论 2.4 中，$G$ \Term{faithful-action}{忠实作用}的假设显然并非多余；$X$ \Term{connected}{连通}的假设也一样。例如取 $X=Y\times E$，其中 $E$ 是\Term{finite}{有限}集，$G$ 是 $E$ 的置换群，
+\SourcePage{110}
+则 $G$ 的作用具有大量惯性，但 $(Y\times E)/G=Y\times(E/G)=Y$，而 $X$ 在 $Y$ 上\Term{etale}{平展}。若 $G$ 严格小于 $E$ 的全对称群，但仍在 $E$ 上传递作用，则还会有不来自 $G$ 的 $X$ 的 $Y$-\Term{automorphism}{自同构}。
+没有惯性的典型例子是 $Y\times G$：让 $G$ 经第二因子上的右平移作用于它。带右算子群 $G$ 的 $Y$-\Term{prescheme}{预概形} $X$ 若与 $Y\times G$ \Term{isomorphism}{同构}，便称它为\Term{trivial-bundle}{平凡}的。
+为联系带\Term{finite}{有限}算子群的\Term{prescheme}{预概形}与\Term{category}{范畴}中的\Term{principal-bundle}{主丛}概念，下面的讨论很有用。（后续研讨班并不需要这一联系，但它在其他场合很重要。）固定底\Term{prescheme}{预概形} $Y$，在 $Y$-\Term{prescheme}{预概形}\Term{category}{范畴}中工作。对\Term{finite-group}{有限群} $G$，简记 $G_Y=Y\times G$，它是 $Y$ 上的\Term{finite}{有限}\Term{group-scheme}{群概形}（参见第 1 节）。若 $X$ 是 $Y$-\Term{prescheme}{预概形}，有 $X\times_YG_Y=X\times G$（同上）。因此给出 $Y$-\Term{morphism}{态射} $X\times_YG_Y\to X$，等价于给出 $Y$-\Term{morphism}{态射} $X\times G\to X$，也就是对每个 $g\in G$ 给出 $T_g:X\to X$。容易看出，这些 $T_g$ 在 $X$ 上定义右算子群 $G$ 的结构，即 $T_{gg'}=T_{g'}T_g$、$T_e=\operatorname{id}_X$，当且仅当相应 $Y$-\Term{morphism}{态射} $X\times_YG_Y\to X$ 在 $X$ 上定义一个以 $Y$-\Term{group-scheme}{群概形}为算子的 $Y$-\Term{prescheme}{预概形}结构（按\Term{category}{范畴} $\mathcal C$ 中带 $\mathcal C$-\Term{group-action}{群作用}对象的一般定义）。设此条件成立。回忆，若典范\Term{morphism}{态射}
+\[X\times_YG_Y\longrightarrow X\times_YX\]
+为\Term{isomorphism}{同构}，则称 $X$ 在 $G_Y$ 下是\Term{formally-principal-homogeneous}{形式主齐性的}；\footnote{现在通常称 $X$ 是 $G_Y$ 下的伪\Term{torsor}{挠子}。}此\Term{morphism}{态射}的两个分量分别为 $\operatorname{pr}_1$ 和乘法\Term{morphism}{态射} $\pi:X\times_YG_Y\to X$。在这里，把首项与 $X\times G$ 等同，则所考虑的\Term{morphism}{态射}把每个 $g\in G$ 对应到
+\[(\operatorname{id}_X,T_g)=(\operatorname{id}_X\times_YT_g)\Delta_{X/Y}:X\longrightarrow X\times_YX.\]
+所以 $X$ 在 $G_Y$ 下\Term{formally-principal-homogeneous}{形式主齐性}，也就是说 $X\times_YX$ \Term{isomorphism}{同构}于对角线在 $G\times G$ 中各 $(e,g)$ 下的像之\Term{coproduct}{直和}；这里 $G\times G$ 以显然方式作用于 $X\times_YX$，$e$ 是 $G$ 的单位元。
+\SourcePage{111}
+若不想区分左右，并希望公式也适用于多于两个 $X$ 因子的积，则可以表述为典范\Term{morphism}{态射}
+\[X\times_G(G\times G)\longrightarrow X\times_YX\]
+为\Term{isomorphism}{同构}。该\Term{morphism}{态射}由每对 $(g,g')$ 所对应的
+\[(T_g,T_{g'})=(T_g\times_YT_{g'})\Delta_{X/Y}:X\longrightarrow X\times_YX\]
+得到，$G$ 在 $G\times G$ 上的左作用经对角\Term{homomorphism}{同态}给出，即 $s(g,g')=(sg,sg')$。
+\Term{principal-homogeneous}{主齐性}空间的概念由\Term{formally-principal-homogeneous}{形式主齐性}空间加上一个额外公理得到；该公理保证 $X$ 关于 $G_Y$ 的“商”存在，并正是\Term{category}{范畴}的右单位对象，此处即 $Y$。这一公理可因语境而异。在“\Term{descent}{下降}”方法中，最方便的表述往往是：要求带算子的对象经过适当且类型明确的\Term{base-change}{基变换}后变为“\Term{trivial-bundle}{平凡}”，即\Term{isomorphism}{同构}于积 $X\times_YG_Y$（此处即 $X\times G$）；实际应选择允许使用\Term{descent}{下降}技术的\Term{base-change}{基变换}类型。参见 Grothendieck，《代数几何中的\Term{descent}{下降}技术与存在定理》，Bourbaki 研讨班第 190 号报告，第 26--28 页。\footnote{\Term{flat}{平坦}\Term{descent}{下降}理论参见第 VIII 讲。}沿此思路，指出群为 $G$ 的\Term{principal-homogeneous}{主齐性丛}（按上述文献的意义）的下述刻画：
+\begin{SGAresult}{命题}{2.6}
+设 $Y$ 是\Term{locally-noetherian}{局部诺特}\Term{prescheme}{预概形}，$X$ 是带\Term{finite-group}{有限右算子群} $G$ 的 $Y$-\Term{prescheme}{预概形}。下列条件等价：
+\begin{enumerate}
+\item[(i)] $X$ 在 $Y$ 上\Term{finite}{有限}，$Y=X/G$，且 $X$ 各点的\Term{inertia-group}{惯性群}都只含单位元。
+\item[(ii)] 存在\Term{faithfully-flat}{忠实平坦}且\Term{quasi-compact}{拟紧}的\Term{base-change}{基变换} $Y_1\to Y$，使 $X_1=X\times_YY_1$ 是\Term{trivial-bundle}{平凡}的带算子 $Y_1$-\Term{prescheme}{预概形}，即\Term{isomorphism}{同构}于 $Y_1\times G$。
+\item[(ii bis)] 同 (ii)，但要求 $Y_1\to Y$ \Term{finite}{有限}、\Term{etale}{平展}且满。
+\item[(iii)] $X$ 在 $G_Y$ 下\Term{formally-principal-homogeneous}{形式主齐性}，且在 $Y$ 上\Term{faithfully-flat}{忠实平坦}、\Term{quasi-compact}{拟紧}。
+\end{enumerate}
+\end{SGAresult}
+\textbf{证明：}(i)$\Rightarrow$(ii bis)：取 $Y_1=X$。注意 $X\to Y$ 由 2.3 确实\Term{finite}{有限}、\Term{etale}{平展}且满。下述推论将说明 $X_1$ 在 $Y_1$ 上\Term{trivial-bundle}{平凡}。
+\begin{SGAresult}{推论}{2.7}
+若 (i) 成立，且 $X$ 在 $Y$ 上有\Term{section}{截面}，则 $X$ 是\Term{trivial-bundle}{平凡}的带算子空间。
+\end{SGAresult}
+\SourcePage{112}
+事实上，该\Term{section}{截面}给出一个 $G$-\Term{morphism}{态射} $X\times G\to X$。由于 $G$ 在 $X$ 的\Term{fibre}{纤维}上传递作用，它满；由于作用无惯性，它单。最后，由于 $X$ 在 $Y$ 上\Term{etale}{平展}，由 I 5.3 它是局部\Term{isomorphism}{同构}，因而是\Term{isomorphism}{同构}。
+(ii bis) 显然推出 (ii)；(ii) 推出 (i)，因为 (i) 的各项性质在\Term{faithfully-flat}{忠实平坦}\Term{quasi-compact}{拟紧}\Term{base-change}{基变换}下“不变”（“\Term{finite}{有限}”参见上述 Bourbaki 报告；\Term{inertia-group}{惯性群}应用 2.1；至于 $Y=X/G$，则应用 1.9 对\Term{faithfully-flat}{忠实平坦}\Term{base-change}{基变换}的逆命题，我们先前忘了把它明确写出）。
+证明 (i)$\Rightarrow$(ii bis) 时已经顺便证明了 (i)$\Rightarrow$(iii)。最后 (iii)$\Rightarrow$(ii)，因为 (iii) 的第一个假设正是说作\Term{base-change}{基变换} $Y_1=X$ 后，$X$ 变为\Term{trivial-bundle}{平凡}；而 $X$ 在 $Y$ 上\Term{faithfully-flat}{忠实平坦}、\Term{quasi-compact}{拟紧}，故得 (ii)。
+\begin{SGAresult}{定义}{2.8}
+满足 2.6 中各等价条件的带右算子群 $G$ 的 $Y$-\Term{prescheme}{预概形} $X$，称为 $Y$ 的\Term{principal-covering}{主覆盖}，其\Term{galois-group}{Galois 群}为 $G$。
+\end{SGAresult}
+\SGAsection{3}{平展覆盖的自同构与态射}
+\begin{SGAresult}{命题}{3.1}
+设 $Y$ \Term{locally-noetherian}{局部诺特}，$X$ 在 $Y$ 上\Term{etale}{平展}、\Term{separated}{分离}且\Term{finite-type}{有限型}，\Term{finite-group}{有限群} $G$ 经 $Y$-\Term{automorphism}{自同构}作用于 $X$。则 $G$ 的作用\Term{admissible-action}{可容许}，且\Term{quotient-prescheme}{商预概形} $X/G$ 在 $Y$ 上\Term{etale}{平展}。
+\end{SGAresult}
+虽然未假设 $X$ 在 $Y$ 上\Term{finite}{有限}，但 $X$ 在 $Y$ 上拟\Term{projective}{射影}，所以由 1.8，$X/G$ 存在。先证明：
+\begin{SGAresult}{推论}{3.2}
+$X\to X/G$ 是\Term{etale-morphism}{平展态射}。
+\end{SGAresult}
+显然可设 $G$ 在 $X$ 的\Term{connected-component}{连通分支}集上传递作用，再考虑某个\Term{connected-component}{连通分支}的\Term{stabilizer}{稳定子}，就可进一步设 $X$ \Term{connected}{连通}。最后可设 $G$ \Term{faithful-action}{忠实作用}。像 2.4 那样可见 $G$ 的作用无惯性，于是由 2.3，$X\to X/G$ \Term{etale}{平展}。再应用下述引理，即得结论。
+\begin{SGAresult}{引理（对第 I 讲的补遗）}{3.3}
+设 $X\to X'\to Y$ 是\Term{finite-type}{有限型}\Term{morphism}{态射}，$x\in X$，$x',y$ 是它的像。设 $Y$ \Term{locally-noetherian}{局部诺特}。若三个\Term{morphism}{态射}中的两个在所标点处\Term{etale}{平展}，则第三个也如此。
+\end{SGAresult}
+只剩 $X\to X'$ 和 $X\to Y$ 在 $x$ 处\Term{etale}{平展}时，证明 $X'\to Y$ 在 $x'$ 处\Term{etale}{平展}（这正是 3.1 所需的情形）。对底 $Y$ 作适当\Term{flat}{平坦}\Term{group-extension}{扩张}，可化为\Term{residue-field}{剩余域}\Term{group-extension}{扩张} $k(x)/k(y)$ \Term{trivial-bundle}{平凡}的情形。考虑\Term{homomorphism}{同态} $\mathcal O_y\to\mathcal O_{x'}\to\mathcal O_x$
+\SourcePage{113}
+及其\Term{completion}{完备化}。假设意味着 $\widehat{\mathcal O_y}\to\widehat{\mathcal O_x}$ 和 $\widehat{\mathcal O_{x'}}\to\widehat{\mathcal O_x}$ 都是\Term{isomorphism}{同构}，所以 $\widehat{\mathcal O_y}\to\widehat{\mathcal O_{x'}}$ 也如此，引理得证。
+\begin{SGAresult}{推论}{3.4}
+若 $X$ 在 $Y$ 上\Term{finite}{有限}且\Term{etale}{平展}，则 $X/G$ 在 $Y$ 上也\Term{finite}{有限}且\Term{etale}{平展}。
+\end{SGAresult}
+\begin{SGAresult}{命题}{3.5}
+设 $X,X'$ 是 $Y$ 的两个\Term{etale-covering}{平展覆盖}。则每个 $Y$-\Term{morphism}{态射} $f:X\to X'$ 都分解为满\Term{etale-morphism}{平展态射} $X\to X''$ 与典范\Term{immersion}{浸入} $X''\to X'$ 的复合，其中 $X''$ 是 $X'$ 中既开又闭的子集。
+\end{SGAresult}
+由 I 4.8，$f$ \Term{etale}{平展}，因而是开\Term{morphism}{态射}；另一方面 $X$ 在 $Y$ 上\Term{finite}{有限}，所以 $f$ 闭，故 $f(X)=X''$ 在 $X'$ 中既开又闭，证明完成。（注意：$X'$ 无须是\Term{etale-covering}{平展覆盖}，只须在 $Y$ 上\Term{unramified}{非分歧}即可。）
+\begin{SGAresult}{推论}{3.6}
+沿用上述记号，$X\to X'$ 是\Term{prescheme}{预概形}\Term{category}{范畴}中的\Term{strict-epimorphism}{严格满态射}，而 $X'\to X''$ 是\Term{prescheme}{预概形}\Term{category}{范畴}中的\Term{monomorphism}{单态射}（甚至是\Term{strict-monomorphism}{严格单态射}）。
+\end{SGAresult}
+第一条按定义是说\Term{morphism}{态射}列
+\[\begin{tikzcd}X\times_{X''}X\arrow[r,shift left=.6ex,"\operatorname{pr}_1"]\arrow[r,shift right=.6ex,"\operatorname{pr}_2"']&X\arrow[r]&X''\end{tikzcd}\]
+\Term{exact-sequence}{正合}；这容易由 $X\to X''$ \Term{finite}{有限}且\Term{faithfully-flat}{忠实平坦}得到（参见 Grothendieck，上引文献）。关于 $X''\to X'$ 的对偶断言更加直接。
+推论 3.6 将用于下一节的\Term{fundamental-group}{基本群}理论；不喜欢\Term{strict-epimorphism}{严格满态射}概念的读者，可以自行改用某个变式。这里只顺便指出：在任意\Term{category}{范畴}中，若 $f=f'f''$，其中 $f''$ 是\Term{strict-epimorphism}{严格满态射}、$f'$ 是\Term{monomorphism}{单态射}，则这种分解必在唯一\Term{isomorphism}{同构}意义下唯一。不过也可能同时存在具有对偶性质的分解 $f=f_1f_2$，其中 $f_2$ 是\Term{epimorphism}{满态射}、$f_1$ 是\Term{strict-monomorphism}{严格单态射}（亦在唯一\Term{isomorphism}{同构}意义下唯一），却不\Term{isomorphism}{同构}于前一分解。例如在拓扑向量空间\Term{category}{范畴}（愿意的话可要求\Term{separated}{分离}）中，取像 $u(X)$ 不闭的\Term{morphism}{态射} $u:X\to X'$ 即可。
+\begin{SGAresult}{命题}{3.7}
+设 $Y$ 是\Term{connected}{连通}\Term{locally-noetherian}{局部诺特}\Term{prescheme}{预概形}，$y\in Y$，$\Omega$ 是 $k(y)$ 的\Term{algebraically-closed}{代数闭}扩域。对每个 $Y$ 上的 $X$，以 $X(\Omega)$ 表示其 $\Omega$-值点集合。若 $X,X'$ 是 $Y$ 的\Term{etale-covering}{平展覆盖}，$Y$-\Term{morphism}{态射} $u:X\to X'$ 诱导\Term{isomorphism}{同构} $X(\Omega)\to X'(\Omega)$，则 $u$ 是\Term{isomorphism}{同构}。
+\end{SGAresult}
+\SourcePage{114}
+立即可化为 $X'$ \Term{connected}{连通}的情形。由于 $X\to X'$ \Term{finite}{有限}且\Term{etale}{平展}，其\Term{fibre}{纤维}中的\Term{geometric-number-of-points}{几何点数}是常数，且此数等于 1 当且仅当该\Term{morphism}{态射}为\Term{isomorphism}{同构}。而这个数也是 $X(\Omega)\to X'(\Omega)$ 的每条\Term{fibre}{纤维}的元素个数，因此结论成立。
+\SGAsection{4}{Galois 理论的公理条件}
+设 $\mathcal C$ 是\Term{category}{范畴}，$F$ 是从 $\mathcal C$ 到\Term{finite}{有限}集\Term{category}{范畴}的\Term{covariant-functor}{协变函子}。假设满足下列条件：
+\begin{description}
+\item[(G 1)] $\mathcal C$ 有\Term{final-object}{终对象}，\footnote{回忆，若对每个 $X\in\mathcal C$，$\operatorname{Hom}(X,e)$ 恰有一个元素，则称 $e$ 为\Term{final-object}{终对象}。\Term{initial-object}{始对象}以对偶方式定义。}且任意两个对象在第三个对象上方的\Term{fibre-product}{纤维积}存在。（亦即 $\mathcal C$ 中存在\Term{finite-inverse-limit}{有限投射极限}。）
+\item[(G 2)] $\mathcal C$ 中存在\Term{finite}{有限}\Term{coproduct}{和}（所以也存在起空集作用的\Term{initial-object}{始对象} $\varnothing_{\mathcal C}$），且对象关于\Term{finite-group}{有限自同构群}的商存在。
+\item[(G 3)] 每个\Term{morphism}{态射} $u:X\to Y$ 都\Term{separable}{可分}解为 $X\xrightarrow{u'}Y'\xrightarrow{u''}Y$，其中 $u'$ 为\Term{strict-epimorphism}{严格满态射}，$u''$ 为\Term{monomorphism}{单态射}，并是到 $Y$ 的一个\Term{direct-summand}{直和项}的\Term{isomorphism}{同构}。
+\item[(G 4)] $F$ \Term{left-exact}{左正合}，即把右单位对象映为右单位对象，且与\Term{fibre-product}{纤维积}交换。
+\item[(G 5)] $F$ 与\Term{finite}{有限}\Term{coproduct}{直和}交换，把\Term{strict-epimorphism}{严格满态射}映为\Term{epimorphism}{满态射}，并与对\Term{finite-group}{有限自同构群}取商交换。
+\item[(G 6)] 若 $u:X\to Y$ 满足 $F(u)$ 为\Term{isomorphism}{同构}，则 $u$ 为\Term{isomorphism}{同构}。
+\end{description}
+我们的目标是构造一个\Term{topological-group}{拓扑群} $\pi$，它是\Term{finite-group}{有限群}的\Term{inverse-limit}{投射极限}，并构造 $\mathcal C$ 与 $\mathcal C(\pi)$ 的\Term{equivalence-of-categories}{范畴等价}。这里 $\mathcal C(\pi)$ 是带 $\pi$ 连续作用的\Term{finite}{有限}集\Term{category}{范畴}；连续作用意味着每个点的\Term{stabilizer}{稳定子}是开子群，等价地，作用可通过某个\Term{discrete}{离散}商群给出。所构造的等价应把给定 $F$ 化为 $\mathcal C(\pi)$ 到\Term{finite}{有限}集\Term{category}{范畴}的显然的包含\Term{functor}{函子}。立即注意，任意\Term{topological-group}{拓扑群} $\pi$ 所定义的 $\mathcal C(\pi)$ 连同上述包含\Term{functor}{函子}确实满足 (G 1)--(G 6)。
+分若干步进行。
+\textbf{a)} 对 $\mathcal C$ 中的 $u:X\to Y$，$u$ 是\Term{monomorphism}{单态射}当且仅当 $F(u)$ 是\Term{monomorphism}{单态射}。（使用 (G 1)、(G 4)、(G 6)。）事实上，$u$ 为\Term{monomorphism}{单态射}，意味着投影 $\operatorname{pr}_1:X\times_YX\to X$ 为\Term{isomorphism}{同构}。
+\SourcePage{115}
+\textbf{b)} $\mathcal C$ 的每个对象 $X$ 都是\Term{artinian-object}{阿廷对象}。
+事实上，若 $X'\to X''\to X$ 都是\Term{monomorphism}{单态射}，且 $F(X')$、$F(X'')$ 在 $F(X)$ 中的像相同，则由 a)，$F(X')\to F(X'')$ 是\Term{isomorphism}{同构}，由 (G 6)，$X'\to X''$ 是\Term{isomorphism}{同构}。
+\textbf{c)} \Term{functor}{函子} $F$ \Term{strictly-prorepresentable}{严格 pro-可表}。（参见 Grothendieck，《代数几何中的\Term{descent}{下降}技术与存在定理》II，Bourbaki 研讨班第 195 号报告，1960 年 2 月。）事实上，按该文命题 3.1，这由 b) 和 (G 4) 推出。因此可找到 $\mathcal C$ 中由滤过有序集 $I$ 索引的\Term{inverse-system}{投射系}
+\[P=(P_i)_{i\in I},\]
+把它看作 $\mathcal C$ 的\Term{pro-object}{pro-对象}，并有\Term{functorial}{函子性}\Term{isomorphism}{同构}
+\[F(X)=\operatorname{Hom}_{\operatorname{Pro}(\mathcal C)}(P,X)=\varinjlim_i\operatorname{Hom}_{\mathcal C}(P_i,X).\tag{*}\]
+这一\Term{isomorphism}{同构}由元素 $\varphi\in\varprojlim_iF(P_i)=F(P)$ 实现。还可设转移\Term{homomorphism}{同态} $\varphi_{ji}:P_i\to P_j$（$i\geq j$）都是\Term{epimorphism}{满态射}，并且每个\Term{epimorphism}{满态射} $P_i\to P'$ 都等价于某个适当 $j\leq i$ 对应的 $P_i\to P_j$（这使\Term{inverse-system}{投射系} $P$ 在本质上唯一确定）。
+若对象 $X\in\mathcal C$ 不\Term{isomorphism}{同构}于两个均不\Term{isomorphism}{同构}于\Term{initial-object}{始对象} $\varnothing_{\mathcal C}$ 的对象之和，则称它\Term{connected}{连通}。
+\textbf{d)} 各 $P_i$ 都\Term{connected}{连通}，且不\Term{isomorphism}{同构}于 $\varnothing_{\mathcal C}$。
+若 $X$ 是左单位对象，对空族的\Term{coproduct}{直和}应用 (G 5) 得 $F(X)=\varnothing$，由 (G 6) 反之亦然。因此，若 $X'$ 不是左单位对象，即 $F(X')\neq\varnothing$，则不存在 $X'\to X$ 的\Term{morphism}{态射}。所以若某个 $P_i$ 是左单位对象，$i$ 就是滤过有序指标集 $I$ 的最大元素；公式 (*) 便意味着对每个 $X$，$F(X)=\operatorname{Hom}(P_i,X)$ 都是单元素集，但 $F(\varnothing_{\mathcal C})=\varnothing$，矛盾。因此 $P_i\not\simeq\varnothing_{\mathcal C}$。
+若 $P_i=A\amalg B$，由 (G 5)，$F(P_i)=F(A)\amalg F(B)$。特别地，按 (*) 对应于恒等\Term{homomorphism}{同态} $P_i\to P_i$ 的元素 $a_i\in F(P_i)$ 落于 $F(A)\amalg F(B)$ 中，不妨设在 $F(A)$ 中。这意味着存在 $j\geq i$，使 $\varphi_{ij}:P_j\to P_i$ 经 $P_j\to A\to P_i=A\amalg B$ 分解，第二箭头为典范\Term{morphism}{态射}。因此 $F(P_j)\to F(P_i)$ 经 $F(P_j)\to F(A)\to F(P_i)=F(A)\amalg F(B)$ 分解。由 (G 5)，$F(P_j)\to F(P_i)$ 满，故 $F(B)=\varnothing$，从而 $B\simeq\varnothing_{\mathcal C}$。
+\textbf{e)} 若 $u:X\to Y$，$X\not\simeq\varnothing_{\mathcal C}$ 且 $Y$ \Term{connected}{连通}，则 $u$ 是\Term{strict-epimorphism}{严格满态射}。\Term{connected}{连通}对象的每个\Term{endomorphism}{自态射}都是\Term{automorphism}{自同构}。
+\SourcePage{116}
+考虑 (G 3) 的分解。由于 $X\neq\varnothing_{\mathcal C}$，由 (G 6)，$F(X)\neq\varnothing$，故 $F(Y')\neq\varnothing$，从而 $Y'\neq\varnothing_{\mathcal C}$；$Y$ \Term{connected}{连通}，所以 $Y'$ 与 $Y$ 等同，因而 $u$ 是\Term{strict-epimorphism}{严格满态射}。若 $u$ 是\Term{connected}{连通}对象 $X$ 的\Term{endomorphism}{自态射}，证明它是\Term{automorphism}{自同构}。可设 $X\not\simeq\varnothing_{\mathcal C}$，则由刚才的结果，$u$ 是\Term{strict-epimorphism}{严格满态射}，所以由 (G 5)，$F(u)$ 是\Term{epimorphism}{满态射}。$F(X)$ \Term{finite}{有限}，故 $F(u)$ \Term{bijection}{双射}，由 (G 6)，$u$ 是\Term{automorphism}{自同构}。特别地，各 $P_i$ 的每个\Term{endomorphism}{自态射}都是\Term{automorphism}{自同构}。
+\textbf{f)} 关于 $P_i$ 的下列条件等价：(i) 自然\Term{injectivity}{单射} $\operatorname{Hom}(P_i,P_i)\to\operatorname{Hom}(P,P_i)\simeq F(P_i)$ 也是\Term{surjectivity}{满射}，即对每个 $u:P\to P_i$，存在 $v:P_i\to P_i$ 使 $u=v\varphi_i$，其中 $\varphi_i:P\to P_i$ 为典范\Term{homomorphism}{同态}；(ii) $\operatorname{Aut}(P_i)$ 在 $F(P_i)$ 上传递作用；(iii) $\operatorname{Aut}(P_i)$ 在 $F(P_i)$ 上\Term{simply-transitive}{单传递作用}。
+事实上，把 $\operatorname{Hom}(P,P_i)$ 与 $F(P_i)$ 等同，(i) 中的映射就是 $v\mapsto F(v)(\varphi_i)$。由于 $\operatorname{Hom}(P_i,P_i)=\operatorname{Aut}(P_i)$ 且该映射已为\Term{injectivity}{单射}，三者等价。满足 f) 中这些等价条件的 $P_i$ 称为\Term{galois-object}{Galois 对象}。
+\textbf{g)} 对每个 $X\in\mathcal C$，存在\Term{galois-object}{Galois 对象} $P_i$，使每个 $u\in\operatorname{Hom}(P,X)$ 都经 $P\xrightarrow{\varphi_i}P_i\to X$ 分解。
+令 $J=\operatorname{Hom}(P,X)=F(X)$，这是\Term{finite}{有限}集，所以存在 $P_j$，使每个 $u:P\to X$ 都经 $P\to P_j\to X$ 分解。换言之，自然\Term{morphism}{态射}
+\[P\longrightarrow X^J\qquad(J=\operatorname{Hom}(P,X))\]
+经 $P\xrightarrow{\varphi_j}P_j\to X^J$ 分解。由 (G 3)，$P_j\to X^J$ 分解为\Term{strict-epimorphism}{严格满态射}后接\Term{monomorphism}{单态射}，前者可取为 $\varphi_{ij}:P_j\to P_i$。因此只须证明 $P_i$ 为\Term{galois-object}{Galois 对象}。取 $k\geq j$，使每个 $P\to P_i$ 都经 $P\xrightarrow{\varphi_k}P_k\to P_i$ 分解。注意自然\Term{morphism}{态射} $P_k\to X^J$ 仍经
+\[P_k\xrightarrow{\varphi_{ik}}P_i\xrightarrow{U}X^J\]
+分解，其中第一箭头由 e) 是\Term{strict-epimorphism}{严格满态射}，第二箭头为\Term{monomorphism}{单态射}。给定 $\psi:P_k\to P_i$，要证明存在 $P_i$ 的\Term{endomorphism}{自态射} $v$ 使 $\psi=v\varphi_{ik}$。对每个 $u\in\operatorname{Hom}(P_i,X)$，$u\psi\in\operatorname{Hom}(P_k,X)$，因此有唯一 $u'\in\operatorname{Hom}(P_i,X)$ 使 $u\psi=u'\varphi_{ik}$。由于 $\psi$ 由 e) 为\Term{epimorphism}{满态射}，此 $u\mapsto u'$ 是 $J$ 到自身的\Term{injectivity}{单射}；$J$ \Term{finite}{有限}，故为\Term{bijection}{双射}。
+\SourcePage{117}
+该\Term{bijection}{双射}定义\Term{isomorphism}{同构} $\alpha:X^J\xrightarrow{\sim}X^J$，使下图交换：
+\[\begin{tikzcd}P_k\arrow[r,"\varphi_{ik}"]\arrow[d,equal]&P_i\arrow[r,"U"]&X^J\arrow[d,"\alpha", "\sim"']\\P_k\arrow[r,"\psi"]&P_i\arrow[r,"U"]&X^J\end{tikzcd}\]
+由\Term{strict-epimorphism}{严格满态射}后接\Term{monomorphism}{单态射}分解的唯一性，再由 e) 知 $\psi$ 也是\Term{strict-epimorphism}{严格满态射}，可找到 $v:P_i\to P_i$ 使全图交换，证毕。
+特别地，\Term{galois-object}{Galois 对象} $P_i$ 构成 $(P_j)$ 中的\Term{cofinal-system}{共尾系}。对\Term{galois-object}{Galois 对象} $P_i$ 有 $\operatorname{Hom}(P,P_i)=\operatorname{Hom}(P_i,P_i)=\operatorname{Aut}(P_i)$，故取极限得到
+\[\operatorname{Hom}(P,P)=\varprojlim_i\operatorname{Hom}(P,P_i)=\varprojlim_i\operatorname{Hom}(P_i,P_i)=\varprojlim_i\operatorname{Aut}(P_i),\]
+其中只对\Term{galois-object}{Galois 对象} $P_i$ 取\Term{inverse-limit}{投射极限}。由 $\operatorname{Hom}(P,P_i)=F(P_i)$，再由 $F$ 把\Term{epimorphism}{满态射}映为\Term{epimorphism}{满态射}，上述\Term{inverse-system}{投射系}的转移\Term{homomorphism}{同态}满。综上得到：
+\textbf{h)} 有
+\[\operatorname{Hom}(P,P)=\operatorname{Aut}(P)=\varprojlim_iF(P_i)=\varprojlim_i\operatorname{Aut}(P_i),\]
+这里对\Term{galois-object}{Galois 对象} $P_i$ 取\Term{inverse-limit}{投射极限}。
+特别地，$\operatorname{Aut}(P)$ 表为\Term{finite-group}{有限群}\Term{inverse-system}{投射系}的\Term{inverse-limit}{投射极限}，且转移\Term{homomorphism}{同态}满。赋予它\Term{discrete}{离散}拓扑的\Term{inverse-limit}{投射极限}拓扑。把 $\operatorname{Aut}(P)$ 的\Term{opposite-group}{相反群}记作 $\pi$，称为（带 $F$ 的 $\mathcal C$ 的）\Term{fundamental-group}{基本群}。它右作用于 $P$，并是各\Term{finite-group}{有限群} $\pi_i$ 的\Term{inverse-limit}{投射极限}；$\pi_i$ 右作用于\Term{galois-object}{Galois 对象} $P_i$，且为 $\operatorname{Aut}(P_i)$ 的\Term{opposite-group}{相反群}。
+由\Term{functorial}{函子性}\Term{isomorphism}{同构} $F(X)=\operatorname{Hom}(P,X)$ 及 $\pi$ 的定义，可见 $\pi$ 左作用于 $F(X)$，且由 g) 该作用连续（使用 g) 的记号，实际上是 $\pi_i$ 作用于 $F(X)$）。显然，对 $\mathcal C$ 中每个 $u:X\to Y$，$F(u):F(X)\to F(Y)$ 与 $\pi$ 的作用相容。因此此后可把 $F$ 看作\Term{covariant-functor}{协变函子}
+\[F:\mathcal C\longrightarrow\mathcal C(\pi),\]
+其中 $\mathcal C(\pi)$ 是带 $\pi$ 连续左作用的\Term{finite}{有限}集\Term{category}{范畴}。
+\SourcePage{118}
+现在定义反向\Term{functor}{函子} $G:\mathcal C\leftarrow\mathcal C(\pi)$，令
+\[G(E)=P\times_\pi E,\]
+其中 $P\times_\pi E$ 是由下式概括的\Term{universal-problem}{泛问题}的解：
+\[\operatorname{Hom}_{\mathcal C}(P\times_\pi E,X)\xrightarrow{\sim}\operatorname{Hom}_\pi(E,\operatorname{Hom}(P,X)).\]
+右端把 $\operatorname{Hom}(P,X)=F(X)$ 看作带 $\pi$ 左作用的集合。须证明 $P\times_\pi E$ 存在。
+\textbf{i)} 设 $Q\in\mathcal C$ 带\Term{finite-group}{有限群} $G$ 的右作用，$E$ 是带 $G$ 左作用的\Term{finite}{有限}集。则 $G\times_GE$ 存在，且典范映射
+\[F(Q)\times_GE\longrightarrow F(Q\times_GE)\]
+是\Term{isomorphism}{同构}。
+由 (G 2)，$\mathcal C$ 中存在\Term{finite}{有限}\Term{coproduct}{直和}；由 (G 5)，$F$ 与它们交换，因此立即化为 $G$ 在 $E$ 上传递作用的情形。事实上，若 $E_j$ 是各\Term{orbit}{轨道}，有 $Q\times_GE=\coprod_jQ\times_GE_j$。任取 $a\in E$，设 $H$ 为其\Term{stabilizer}{稳定子}；由定义立即可见 $Q\times_GE$ 与 $Q/H$ 等同。由 (G 2) 得存在性，由 (G 5) 得 $F$ 的交换性质。
+\textbf{j)} 设 $E\in\mathcal C(\pi)$，$P_i$ 为\Term{galois-object}{Galois 对象}，且 $\pi_i$ 已作用于 $E$。则 $P_i\times_{\pi_i}E$ 存在，并有典范\Term{isomorphism}{同构}
+\[E\xrightarrow{\sim}F(P_i\times_{\pi_i}E).\]
+若 $j\geq i$ 且 $P_j$ 为\Term{galois-object}{Galois 对象}，则典范\Term{homomorphism}{同态} $P_j\times_{\pi_j}E\to P_i\times_{\pi_i}E$ 是\Term{isomorphism}{同构}。
+第一条是 i) 的特例：$\pi_i$ 在带标记点 $\varphi_i$ 的 $F(P_i)$ 上\Term{simply-transitive}{单传递作用}，故 $F(P_i)\times_{\pi_i}E\simeq E$。第二条例如可用 (G 6) 证明。
+对每个 $j$，令 $\mathcal C_j$ 为 $\mathcal C$ 的\Term{full-subcategory}{满子范畴}，其对象为使 $\operatorname{Hom}(P_j,X)\to\operatorname{Hom}(P,X)\simeq F(X)$ \Term{bijection}{双射}的 $X$。由 g)，$\mathcal C$ 是各 $\mathcal C_j$ 的滤过并。因此对 $X\in\mathcal C_j$，
+\[\begin{aligned}\operatorname{Hom}_\pi(E,\operatorname{Hom}(P,X))&\simeq\operatorname{Hom}_\pi(E,\operatorname{Hom}(P_j,X))\\&\simeq\operatorname{Hom}_{\pi_j}(E,\operatorname{Hom}(P_j,X))\\&\simeq\operatorname{Hom}(P_j\times_{\pi_j}E,X).\end{aligned}\]
+结合 j) 的最后一条，得到关于 $X\in\mathcal C_j$ 的\Term{functorial}{函子性}\Term{isomorphism}{同构}
+\[\operatorname{Hom}_\pi(E,\operatorname{Hom}(P,X))\simeq\operatorname{Hom}(P_i\times_{\pi_i}E,X).\]
+\SourcePage{119}
+对每个 $j$ 都成立，而且各 $j$ 对应的\Term{functorial}{函子性}\Term{isomorphism}{同构}互相诱导，故有：
+\textbf{k)} 在 j) 的条件下，典范\Term{morphism}{态射}的复合
+\[E\longrightarrow\operatorname{Hom}(P_i,P_i\times_{\pi_i}E)\longrightarrow\operatorname{Hom}(P,P_i\times_{\pi_i}E)\]
+使 $P_i\times_{\pi_i}E$ 成为定义 $P\times_\pi E$ 的\Term{universal-problem}{泛问题}的解；即后者存在，且有\Term{isomorphism}{同构} $P\times_\pi E\xrightarrow{\sim}P_i\times_{\pi_i}E$。
+至此完成 $G(E)$ 的构造。另一方面有\Term{natural-transformation}{函子同态} $\alpha:\operatorname{id}_{\mathcal C(\pi)}\to FG$，即关于 $E\in\mathcal C(\pi)$ 的\Term{functorial}{函子性}\Term{homomorphism}{同态}
+\[\alpha(E):E\longrightarrow FG(E)=F(P\times_\pi E),\]
+它是典范\Term{morphism}{态射} $E\to F(P)\times_\pi E\to F(P\times_\pi E)$ 的复合，首项来自标记点 $\varphi\in F(P)$。由 j)、k) 得：
+\textbf{l)} \Term{homomorphism}{同态} $\alpha$ 是\Term{isomorphism}{同构}。
+类似地定义\Term{natural-transformation}{函子同态} $\beta:GF\to\operatorname{id}_{\mathcal C}$，即关于 $X\in\mathcal C$ 的\Term{functorial}{函子性}\Term{homomorphism}{同态}
+\[\beta(X):P\times_\pi F(X)\longrightarrow X,\]
+使它对应于典范\Term{isomorphism}{同构} $\operatorname{Hom}(P,X)\xrightarrow{\sim}F(X)$ 的逆 $\pi$-\Term{homomorphism}{同态} $F(X)\to\operatorname{Hom}(P,X)$。
+\textbf{m)} 复合
+\[F(X)\xrightarrow{\alpha(F(X))}FGF(X)\xrightarrow{F(\beta(X))}F(X),\]
+\[G(E)\xrightarrow{G(\alpha(E))}GFG(E)\xrightarrow{\beta(G(E))}G(E)\]
+均为恒等\Term{isomorphism}{同构}。
+按部就班计算即可。
+结合 l) 得：
+\textbf{n)} \Term{homomorphism}{同态} $\beta$ 是\Term{isomorphism}{同构}。
+于是得到预期结果：
+\SourcePage{120}
+\begin{SGAresult}{定理}{4.1}
+设\Term{category}{范畴} $\mathcal C$ 满足本节开头的 (G 1)、(G 2)、(G 3)，从 $\mathcal C$ 到\Term{finite}{有限}集\Term{category}{范畴}的\Term{covariant-functor}{协变函子} $F$ 满足 (G 4)、(G 5)、(G 6)。则上述典范构造给出互为\Term{quasi-inverse}{拟逆}的\Term{equivalence-of-categories}{范畴等价} $F:\mathcal C\to\mathcal C(\pi)$ 和 $G:\mathcal C(\pi)\to\mathcal C$。更准确地，存在 $\mathcal C$ 的\Term{pro-object}{pro-对象} $P$ 及\Term{functorial}{函子性}\Term{isomorphism}{同构} $F(X)\xleftarrow{\sim}\operatorname{Hom}(P,X)$；$\pi$ 是 $P$ 的\Term{automorphism}{自同构}群的\Term{opposite-group}{相反群}，赋予适当拓扑，使 $\pi$ 连续作用于 $\operatorname{Hom}(P,X)\simeq F(X)$。最后，$G(E)\simeq P\times_\pi E$。
+\end{SGAresult}
+\textbf{注记 4.2。}若分别用下列条件替换 (G 2)、(G 5)，则 (G 1)--(G 6) 的表述更简单，也更令人满意：
+\begin{description}\item[(G' 2)] $\mathcal C$ 中存在\Term{finite-direct-limit}{有限归纳极限}。
+\item[(G' 5)] $F$ \Term{right-exact}{右正合}，即与\Term{finite-direct-limit}{有限归纳极限}交换。
+\end{description}
+这些条件表面上比 (G 2)、(G 5) 强，但由结构定理 4.1，(G 1)--(G 6) 立即推出它们。不过在我们关注的情形中，验证 (G 2)、(G 5) 看起来确实比验证 (G' 2)、(G' 5) 简单。不知 (G 3) 中 $u''$ 到 $Y$ 的一个\Term{direct-summand}{直和项}为\Term{isomorphism}{同构}这一要求，能否省去。
+\SGAsection{5}{Galois 范畴}
+\begin{SGAresult}{定义}{5.1}
+若\Term{category}{范畴} $\mathcal C$ 等价于某个 $\mathcal C(\pi)$，其中 $\pi$ 是\Term{finite-group}{有限群}的\Term{inverse-limit}{投射极限}，即一个\Term{totally-disconnected}{全不连通}的紧群，则称 $\mathcal C$ 为\Term{galois-category}{Galois 范畴}。
+\end{SGAresult}
+$\mathcal C(\pi)$ 的定义见第 4 节开头。由定理 4.1，$\mathcal C$ 为\Term{galois-category}{Galois 范畴}，当且仅当它满足 (G 1)--(G 3)，并存在从 $\mathcal C$ 到\Term{finite}{有限}集\Term{category}{范畴}且满足 (G 4)--(G 6) 的\Term{functor}{函子} $F$（用一般术语来说，$F$ \Term{exact-functor}{正合}且\Term{conservative-functor}{保守}）。这样的\Term{functor}{函子}称为\Term{galois-category}{Galois 范畴} $\mathcal C$ 的\Term{fundamental-functor}{基本函子}。\footnote{采用更直观的“\Term{fibre-functor}{纤维函子}”一词似乎更好。}它由某个\Term{pro-object}{pro-对象} pro-表示，记为 $P_F$。若\Term{pro-object}{pro-对象} $P$ 的对应\Term{functor}{函子} $F$ 是\Term{fundamental-functor}{基本函子}，便称 $P$ 为\Term{fundamental-pro-object}{基本 pro-对象}。于是 $\mathcal C$ 的\Term{fundamental-functor}{基本函子}\Term{category}{范畴}与\Term{fundamental-pro-object}{基本 pro-对象}\Term{category}{范畴}\Term{anti-equivalence}{反等价}；若 $F,P$ 相对应，则 $\operatorname{Aut}F$ \Term{isomorphism}{同构}于 $\operatorname{Aut}P$ 的\Term{opposite-group}{相反群}，所以前节记为 $\pi$ 的群正是 $\operatorname{Aut}P$。回忆，上一节从给定的\Term{fundamental-functor}{基本函子} $F$ 出发，构造了 $\mathcal C$ 与 $\mathcal C(\pi)$ 的等价（其中 $\pi=\operatorname{Aut}(F)$），将 $F$ 化为 $\mathcal C(\pi)_x$ 到\Term{finite}{有限}集\Term{category}{范畴}的典范\Term{functor}{函子}。
+\SourcePage{121}
+在标准情形 $\mathcal C=\mathcal C(\pi)$、$F$ 为典范\Term{functor}{函子}时，对应的\Term{fundamental-pro-object}{基本 pro-对象}就是 $\pi$ 的\Term{discrete}{离散}商群 $\pi_i$ 组成的\Term{inverse-system}{投射系}。
+将 $\mathcal C(\pi)$ 的\Term{pro-object}{pro-对象}\Term{category}{范畴}明确写出可能很有用。结果如下：
+\begin{SGAresult}{命题}{5.2}
+\Term{category}{范畴} $\operatorname{Pro}\mathcal C(\pi)$ 典范地等价于\Term{category}{范畴} $\mathcal C'(\pi)$，后者的对象是带\Term{topological-group}{拓扑群} $\pi$ 作用的紧\Term{totally-disconnected}{全不连通}空间。
+\end{SGAresult}
+由于后者包含 $\mathcal C(\pi)$ 为\Term{full-subcategory}{满子范畴}（对应于紧\Term{discrete}{离散}带算子空间），且其中存在\Term{inverse-limit}{投射极限}，总有典范\Term{functor}{函子} $g:\operatorname{Pro}\mathcal C(\pi)\to\mathcal C'(\pi)$，把\Term{inverse-system}{投射系} $Q=(Q_i)$ 映为 $X=\varprojlim_iQ_i$。要定义反向\Term{functor}{函子}，只须定义从 $\mathcal C'(\pi)$ 到\Term{left-exact}{左正合}\Term{functor}{函子} $\mathcal C\to\mathbf{Ens}$ 的\Term{category}{范畴}的\Term{contravariant-functor}{反变函子}；对 $X\in\mathcal C'(\pi)$，取 $h(X)(E)=\operatorname{Hom}(X,E)$，其中 $\operatorname{Hom}$ 在 $\mathcal C'(\pi)$ 中取。由定义立即看出 $h,g$ 互为\Term{adjoint-functors}{伴随函子}，且 $hg$ 典范地\Term{isomorphism}{同构}于 $\operatorname{Pro}\mathcal C(\pi)$ 的恒等\Term{functor}{函子}。
+为证明 $g,h$ 互为\Term{quasi-inverse}{拟逆}，只须证明 $\mathcal C'(\pi)$ 的每个对象都\Term{isomorphism}{同构}于某个 $g(Q)$，$Q\in\operatorname{Pro}\mathcal C(\pi)$。亦即每个带\Term{topological-group}{拓扑群} $\pi$ 作用的紧\Term{totally-disconnected}{全不连通}空间 $X$ 都\Term{isomorphism}{同构}于\Term{finite}{有限}\Term{discrete}{离散}带算子空间的\Term{inverse-limit}{投射极限}。忘掉算子后，$X$ 是其\Term{finite}{有限}\Term{discrete}{离散}商的\Term{inverse-limit}{投射极限}，故只须在这些商中找一个 $\pi$-不变\Term{cofinal-system}{共尾系}。为此，只须证明每个这样的商 $X'$ 在 $\pi$ 作用下仅有\Term{finite}{有限}个变换像：取这些变换像的上确界，就得到\Term{dominant}{支配} $X'$ 的不变商。换言之，只须存在 $\pi$ 的\Term{open-normal-subgroup}{正规开子群} $\pi'$，使其中各元素保持 $X'$ 不变。
+$X'$ 对应于 $X$ 的一个\Term{finite}{有限}开分割 $(X_i)$。由连续性及 $\pi$ 的紧性，单位元有邻域 $V$，使 $s\in V$ 蕴含对所有 $i$，$sX_i\subset X_i$，从而 $s$ 保持 $X'$ 不变。又知 $\pi$ 的\Term{open-normal-subgroup}{正规开子群}构成单位元的基本邻域系，证明完成。
+还可更简单地看出，$\operatorname{Ind}\mathcal C(\pi)$ 典范地等价于带 $\pi$ 连续作用的集合\Term{category}{范畴}。这里不需要这一事实。
+\begin{SGAresult}{命题}{5.3}
+设 $\mathcal C$ 是\Term{galois-category}{Galois 范畴}，$F$ 是其\Term{fundamental-functor}{基本函子}，$P=(P_i)$ 是按通常方式规范化的对应\Term{pro-object}{pro-对象}。对象 $X\in\mathcal C$ \Term{connected}{连通}的充要条件是 $\pi$ 在 $E=F(X)$ 上传递作用。
+\end{SGAresult}
+\SourcePage{122}
+化为标准情形 $\mathcal C=\mathcal C(\pi)$，$F$ 为典范\Term{functor}{函子}，结论便是直接的。
+\begin{SGAresult}{推论}{5.4}
+关于 $X$ 的下列条件等价：(i) $X$ \Term{connected}{连通}且 $X\not\simeq\varnothing_{\mathcal C}$；(ii) $\pi$ 在 $E=F(X)$ 上传递作用且 $F(X)\neq\varnothing$；(iii) $X$ \Term{isomorphism}{同构}于某个 $P_i$。
+\end{SGAresult}
+(i) 与 (iii) 的等价也容易直接由第 4 节 e) 得出。
+\begin{SGAresult}{命题}{5.5}
+设 $Q=(Q_i)_{i\in I}$ 是按通常方式规范化的 $\mathcal C$ 的\Term{pro-object}{pro-对象}，$G(X)=\operatorname{Hom}(Q,X)$ 是对应的从 $\mathcal C$ 到 $\mathbf{Ens}$ 的\Term{functor}{函子}。下列条件等价：
+\begin{enumerate}
+\item[(i)] $G$ 与\Term{finite}{有限}\Term{coproduct}{直和}交换。
+\item[(ii)] $G$ 与两个对象的\Term{coproduct}{和}交换。
+\item[(iii)] 各 $Q_i$ \Term{connected}{连通}且 $Q_i\not\simeq\varnothing_{\mathcal C}$。
+\item[(iv)] $Q$ \Term{isomorphism}{同构}于 $\pi/H$，其中 $H$ 为 $\pi$ 的闭子群。
+\item[(v)] $G$ \Term{isomorphism}{同构}于由 $\pi$ 的某个闭子群 $H$ 定义的\Term{functor}{函子} $E\mapsto E^H$，其中 $E^H$ 是 $H$-不变元集合。
+\end{enumerate}
+\end{SGAresult}
+注意，在 (iv)、(v) 中假设已选择一个\Term{fundamental-functor}{基本函子}，以便把 $\mathcal C$ 与 $\mathcal C(\pi)$ 等同。
+\begin{proof}
+可设 $\mathcal C=\mathcal C(\pi)$。(i)$\Rightarrow$(ii) 显然，(ii)$\Rightarrow$(iii) 的证明与第 4 节 d) 相同。证明 (iii)$\Rightarrow$(iv)：$\varprojlim_iQ_i$ 是非空\Term{finite}{有限}集的\Term{inverse-limit}{投射极限}，故非空。取其中一点 $a$，它定义带算子空间的\Term{homomorphism}{同态} $\pi\to Q$；由于 $\pi$ 由 5.3 在每个 $Q_i$ 上传递作用，复合 $\pi\to Q\to Q_i$ 都满，所以此\Term{homomorphism}{同态}满。设 $H$ 为 $a$ 的\Term{stabilizer}{稳定子}，则得到\Term{isomorphism}{同构} $\pi/H\xrightarrow{\sim}Q$。(iv)$\Rightarrow$(v) 及 (v)$\Rightarrow$(i) 又都是直接的。
+\end{proof}
+\begin{SGAresult}{命题}{5.6}
+设 $\mathcal C$ 是\Term{galois-category}{Galois 范畴}，$P$ 是\Term{fundamental-pro-object}{基本 pro-对象}，$F$ 为对应的\Term{fundamental-functor}{基本函子}。另设 $P'=(P'_i)_{i\in I}$ 是规范形的\Term{pro-object}{pro-对象}，$F'(X)=\operatorname{Hom}(P',X)$ 为对应的从 $\mathcal C$ 到 $\mathbf{Ens}$ 的\Term{functor}{函子}。下列条件等价：
+\begin{enumerate}
+\item[(i)] $P'\simeq P$，亦即 $F'\simeq F$。
+\item[(ii)] $P'$ 是\Term{fundamental-pro-object}{基本 pro-对象}，亦即 $F'$ 是\Term{fundamental-functor}{基本函子}。
+\item[(iii)] $F'$ 把两个对象的\Term{coproduct}{和}映为\Term{coproduct}{和}，且 $X\not\simeq\varnothing_{\mathcal C}$ 蕴含 $F(X)\neq\varnothing$。
+\item[(iv)] $\mathcal C$ 中\Term{connected}{连通}且不等于 $\varnothing_{\mathcal C}$ 的对象，恰是\Term{isomorphism}{同构}于某个 $P'_i$ 的对象。
+\end{enumerate}
+\end{SGAresult}
+显然 (i)$\Rightarrow$(iii)、(i)$\Rightarrow$(ii)；由 5.4（以 $P'$ 代 $P$）有 (ii)$\Rightarrow$(iv)。此外，由 5.5，(iii) 或 (iv) 都意味着 $P'$ 形如 $\pi/H$，$H$ 是 $\pi$ 的闭子群。
+\SourcePage{123}
+在 (iii) 的情形，对 $\pi$ 的每个\Term{open-normal-subgroup}{正规开子群} $\pi'$ 都存在 $\pi$-\Term{homomorphism}{同态} $P'=\pi/H\to\pi/\pi'$，所以 $H\subset\pi'$，因而 $H=(0)$，于是得到 (i)，证毕。
+\begin{SGAresult}{推论}{5.7}
+\Term{galois-category}{Galois 范畴} $\mathcal C$ 的各\Term{fundamental-pro-object}{基本 pro-对象}彼此\Term{isomorphism}{同构}，各\Term{fundamental-functor}{基本函子}彼此\Term{isomorphism}{同构}。
+\end{SGAresult}
+换言之，\Term{fundamental-functor}{基本函子}\Term{category}{范畴}是\Term{connected-groupoid}{连通群胚} $\Gamma$，可称为\Term{galois-category}{Galois 范畴} $\mathcal C$ 的\Term{fundamental-groupoid}{基本群胚}。若 $\mathcal C=\mathcal C(\pi)$，则\Term{fundamental-groupoid}{基本群胚}中一个对象的\Term{automorphism}{自同构}群\Term{isomorphism}{同构}于 $\pi$，此\Term{isomorphism}{同构}精确到\Term{inner-automorphism}{内自同构}而确定。（\Term{groupoid}{群胚}指其中所有\Term{morphism}{态射}都是\Term{isomorphism}{同构}的\Term{category}{范畴}；\Term{connected-groupoid}{连通群胚}指所有对象彼此\Term{isomorphism}{同构}的\Term{groupoid}{群胚}。）$\mathcal C$ 的\Term{fundamental-pro-object}{基本 pro-对象}构成一个\Term{connected-groupoid}{连通群胚}，等价于\Term{fundamental-groupoid}{基本群胚}的相反\Term{groupoid}{群胚}。
+若 $F,F'$ 对应于\Term{fundamental-pro-object}{基本 pro-对象} $P,P'$，则 $\operatorname{Hom}(F,F')=\operatorname{Isom}(F,F')$ 有时记作 $\pi_{F',F}$，起着“从 $F$ 到 $F'$ 的道路类集合”的作用。特别地，$\pi_{F,F}=\pi_F$ 正是上节构造的以 $F$ 为基点的\Term{fundamental-group}{基本群}。对应于 $F$ 的\Term{pro-object}{pro-对象} $P$ 则起着 $\mathcal C$ 的\Term{final-object}{终对象} $e_{\mathcal C}$ 在 $F$ 处的\Term{universal-covering}{万有覆盖}的作用。
+也许更方便的是，不选择\Term{fundamental-groupoid}{基本群胚} $\Gamma$ 的特定对象 $F$，直接用 $\Gamma$ 描述 $\mathcal C$（精确到等价）。对每个 $X\in\mathcal C$，有 $\Gamma$ 上取值于 $\mathbf{Ens}$ 的\Term{functor}{函子} $E_X$，定义为 $E_X(F)=F(X)$。拓扑中称这样的\Term{functor}{函子}为\Term{groupoid}{群胚}上的\Term{local-system}{局部系统}。$F(X)=E_X(F)$ 可称为 $X$ 在 $F$ 处的\Term{fibre}{纤维}，$E_X$ 称为 $X$ 的\Term{fibre-functor}{纤维函子}。$E_X$ 满足下述性质：对每个 $F$，$E_X(F)$ 是\Term{finite}{有限}集，\Term{topological-group}{拓扑群} $\pi_F=\operatorname{Aut}(F)$ 在其上连续作用。对给定的从\Term{fundamental-groupoid}{基本群胚}到 $\mathbf{Ens}$ 的\Term{covariant-functor}{协变函子} $\xi$，这一条件等价于只对某个任意固定的 $F$ 验证同一条件。于是：
+\begin{SGAresult}{命题}{5.8}
+$X\mapsto E_X$ 给出 $\mathcal C$ 与下述\Term{category}{范畴}的等价：从 $\mathcal C$ 的\Term{fundamental-groupoid}{基本群胚} $\Gamma$ 到 $\mathbf{Ens}$、满足上述条件的\Term{covariant-functor}{协变函子}所成的\Term{category}{范畴}。
+\end{SGAresult}
+事实上，取 $\Gamma$ 中对象 $F_0$，令 $\pi_0=\operatorname{Aut}(F_0)$，立即可见 $\xi\mapsto\xi(F_0)$ 给出 5.8 中第二个\Term{category}{范畴}与 $\mathcal C(\pi_0)$ 的等价。另一方面，它与 $X\mapsto E_X$ 的复合就是自然等价 $\mathcal C\to\mathcal C(\pi_0)$。所以 $X\mapsto E_X$ 本身也是等价。
+\SourcePage{124}
+\begin{SGAresult}{推论}{5.9}
+$\operatorname{Pro}\mathcal C$ 典范地等价于从\Term{fundamental-groupoid}{基本群胚} $\Gamma$ 到\Term{topological-space}{拓扑空间}\Term{category}{范畴}且满足下述条件的\Term{covariant-functor}{协变函子} $\xi$ 的\Term{category}{范畴}：对 $\Gamma$ 的每个对象 $F$，$\xi(F)$ 是带\Term{topological-group}{拓扑群} $\pi_F$ 作用的紧\Term{totally-disconnected}{全不连通}空间。
+\end{SGAresult}
+同样，只须对一个 $F$ 验证这一条件。证明与 5.8 相同。
+\textbf{注记 5.10。}设 $(F_s)_{s\in S}$ 是\Term{fundamental-groupoid}{基本群胚} $\Gamma$ 的对象族。对 $s,s'\in S$，令 $\operatorname{Hom}(s,s')=\operatorname{Hom}(F_s,F_{s'})$，则 $S$ 自身成为\Term{connected-groupoid}{连通群胚}，$s\mapsto F_s$ 成为从 $S$ 到 $\Gamma$ 的\Term{fully-faithful}{全忠实}\Term{functor}{函子} $f$。考虑从 $\mathcal C$ 到\Term{functor}{函子}\Term{category}{范畴} $\operatorname{Hom}(S,\mathbf{Ens})$ 的 $X\mapsto E_X\circ f$，便得到 5.8（以及 5.9）将 $\Gamma$ 换成 $S$ 的变式。当 $S$ 为单点时，这一表述化为定理 4.1；当 $S$ 为 $\Gamma$ 的全部对象之集时，它正是 5.8。
+现在使用 5.9 定义 $\mathcal C$ 的一个典范\Term{pro-object}{pro-对象}。考虑从 $\Gamma$ 到\Term{topological-space}{拓扑空间}\Term{category}{范畴}（甚至到\Term{topological-group}{拓扑群}\Term{category}{范畴}）的\Term{functor}{函子}
+\[f:F\longmapsto\operatorname{Aut}(F)=\pi_F.\]
+它满足 5.8 中的条件：$f(F)$ 作为带 $\pi_F$ 作用的空间，就是 $\pi_F$ 经\Term{inner-automorphism}{内自同构}作用于自身。于是 $f$ 对应于唯一\Term{isomorphism}{同构}意义下确定的 $\mathcal C$ 的\Term{pro-object}{pro-对象}；它甚至是 $\mathcal C$ 的\Term{pro-group}{pro-群}，称为 $\mathcal C$ 的\Term{fundamental-pro-group}{基本 pro-群}，起着\Term{fundamental-group}{基本群}\Term{local-system}{局部系统}的作用。因此，它是由关于 $F$ 的\Term{functorial}{函子性}\Term{isomorphism}{同构} $F(\Pi)\simeq\pi_F$ 定义的\Term{pro-group}{pro-群} $\Pi$。
+对任意\Term{pro-object}{pro-对象} $X$，有典范\Term{morphism}{态射} $\Pi\times X\to X$，使 $X$ 成为 $\operatorname{Pro}\mathcal C$ 中带左算子群 $G$ 的对象。只须注意，对变动的 $F$ 有典范映射
+\[\Pi(F)\times X(F)\longrightarrow X(F),\]
+即
+\[\operatorname{Aut}(F)\times E_X(F)\longrightarrow E_X(F),\qquad\text{或}\quad\pi_F\times F(X)\longrightarrow F(X),\]
+\SourcePage{125}
+它关于 $F$ 具有\Term{functorial}{函子性}。它关于 $X$ 也具有\Term{functorial}{函子性}，所以对任意\Term{pro-object}{pro-对象}\Term{morphism}{态射} $X\to Y$，下图交换：
+\[\begin{tikzcd}\Pi\times X\arrow[r]\arrow[d]&X\arrow[d]\\\Pi\times Y\arrow[r]&Y\end{tikzcd}\]
+\textbf{注记 5.11。}不可混淆\Term{fundamental-pro-object}{基本 pro-对象} $P$ 与\Term{fundamental-pro-group}{基本 pro-群}：前者没有赋予群结构且\Term{connected}{连通}，后者则是\Term{pro-group}{pro-群}，通常不\Term{connected}{连通}。准确地说，$G$ \Term{connected}{连通}当且仅当 $\pi_F$ 经\Term{inner-automorphism}{内自同构}在自身上传递作用，即 $\pi$ 只含单位元，亦即 $\mathcal C$ 等价于\Term{finite}{有限}集\Term{category}{范畴}。另一个本质区别是 $G$ 在唯一\Term{isomorphism}{同构}意义下确定，而 $P$ 只在非唯一\Term{isomorphism}{同构}意义下确定。
+设 $E$ 为\Term{finite}{有限}集，考虑\Term{groupoid}{群胚} $\Gamma$ 上值为 $E$ 的常\Term{functor}{函子}。由 5.8，它定义 $\mathcal C$ 的对象 $E_{\mathcal C}$；它也可解释为\Term{final-object}{终对象} $e_{\mathcal C}$ 的 $E$ 份拷贝的\Term{coproduct}{和}。可把 $E_{\mathcal C}$ 看作从\Term{finite}{有限}集\Term{category}{范畴}到 $\mathcal C$ 的\Term{functor}{函子}；该\Term{functor}{函子}\Term{exact-functor}{正合}，所以把\Term{finite-group}{有限群}映为 $\mathcal C$-群，等等。若 $X\in\mathcal C$ 带\Term{finite-group}{有限群} $G$ 的右作用，则可将其看作带 $\mathcal C$-右算子群 $G_{\mathcal C}$ 的对象。因此依带 $\mathcal C$-\Term{group-action}{群作用}对象的一般术语，若 $X$ 在 $G_{\mathcal C}$ 下\Term{formally-principal-homogeneous}{形式主齐性}，即由右作用诱导的典范\Term{morphism}{态射}
+\[X\times G_{\mathcal C}\longrightarrow X\times X\]
+为\Term{isomorphism}{同构}，就称 $X$ 在 $G$ 下\Term{formally-principal-homogeneous}{形式主齐性}。若它在 $G_{\mathcal C}$ 下\Term{principal-homogeneous}{主齐性}，即形式上如此且商 $X/G=X/G_{\mathcal C}=e_{\mathcal C}$，则称它在 $G$ 下\Term{principal-homogeneous}{主齐性}。
+固定\Term{fundamental-functor}{基本函子}，得到 $\mathcal C\simeq\mathcal C(\pi)$；$X$ 对应于带 $\pi$ 连续左作用的集合 $E=F(X)$。给 $X$ 以 $G$ 的右作用，就是给 $E$ 以 $G$ 的右作用，使之与 $\pi$ 的作用交换。立即看出，$X$ 在 $G$ 下\Term{principal-homogeneous}{主齐性}，当且仅当集合 $E$ 是 $G$ 下的\Term{principal-homogeneous}{主齐性}空间，即 $G$ 在 $E$ 上\Term{simply-transitive}{单传递作用}。（$X$ \Term{formally-principal-homogeneous}{形式主齐性}，则等价于 $E$ \Term{principal-homogeneous}{主齐性}或为空。）与 5.3 比较可见，若 $X$ 在 $G$ 下\Term{principal-homogeneous}{主齐性}且\Term{connected}{连通}，给定的从 $G$ 到 $\operatorname{Aut}(X)$ 的\Term{opposite-group}{相反群}的\Term{homomorphism}{同态}就是\Term{isomorphism}{同构}。而一个对象 $X\in\mathcal C$ \Term{connected}{连通}且在 $\operatorname{Aut}(X)$ 的\Term{opposite-group}{相反群}下\Term{principal-homogeneous}{主齐性}，当且仅当按第 4 节的记号，它\Term{isomorphism}{同构}于某个\Term{galois-object}{Galois 对象} $P_i$。
+\SourcePage{126}
+在标准情形 $\mathcal C=\mathcal C(\pi)$，这意味着 $X$ \Term{isomorphism}{同构}于 $\pi$ 关于某个\Term{normal-subgroup}{正规子群}的商。
+仍设给定\Term{fundamental-functor}{基本函子} $F$。给出一个在\Term{finite}{有限}右作用群 $G$ 下\Term{principal-homogeneous}{主齐性}的 $X$，以及一点 $a\in F(X)$，等价于给出 $\pi$ 到 $G$ 的一个\Term{homomorphism}{同态}。事实上，对这样的\Term{homomorphism}{同态}，取 $E=G$：$\pi$ 经给定 $\pi\to G$ 以及 $G$ 的左平移左作用于它，$G$ 经右平移右作用于它，标记点 $a$ 取为 $G$ 的单位元。由前面的讨论，每个具有上述性质的三元组 $(X,G,a)$ 都以本质唯一的方式如此得到，因为带标记点的 $G$-\Term{principal-homogeneous}{主齐性}集合可与 $G$ 等同。因此从\Term{finite-group}{有限群}\Term{category}{范畴}到 $\mathbf{Ens}$ 的\Term{functor}{函子} $G\mapsto\operatorname{Hom}(\pi,G)$ 有了直接的几何解释；它由 $\pi$ pro-表示，所以考察它也提供了由 $F$ 构造群 $\pi$ 的另一种方式。
+\SGAsection{6}{Galois 范畴之间的正合函子}
+\begin{SGAresult}{命题}{6.1}
+设 $\mathcal C,\mathcal C'$ 是两个\Term{galois-category}{Galois 范畴}，$H:\mathcal C\to\mathcal C'$ 是\Term{covariant-functor}{协变函子}，$F'$ 为 $\mathcal C'$ 的\Term{fundamental-functor}{基本函子}，令 $F=F'\circ H$。下列条件等价：
+\begin{enumerate}
+\item[(i)] $H$ \Term{exact-functor}{正合}，即\Term{left-exact}{左正合}且\Term{right-exact}{右正合}。
+\item[(ii)] $H$ \Term{left-exact}{左正合}，把\Term{finite}{有限}\Term{coproduct}{和}映为\Term{finite}{有限}\Term{coproduct}{和}，把\Term{epimorphism}{满态射}映为\Term{epimorphism}{满态射}（或者说，把不\Term{isomorphism}{同构}于 $\varnothing_{\mathcal C}$ 的对象映为不\Term{isomorphism}{同构}于 $\varnothing_{\mathcal C'}$ 的对象）。
+\item[(iii)] $F$ 为 $\mathcal C$ 的\Term{fundamental-functor}{基本函子}。
+\end{enumerate}
+\end{SGAresult}
+(i)$\Rightarrow$(ii) 是\Term{category}{范畴}的一般事实。(ii) 的第一种表述推出第二种：对象 $X\in\mathcal C$ 不\Term{isomorphism}{同构}于 $\varnothing_{\mathcal C}$，当且仅当 $X\to e_{\mathcal C}$ 是\Term{epimorphism}{满态射}；注意假设 $F$ \Term{left-exact}{左正合}，故将 $e_{\mathcal C}$ 映为 $e_{\mathcal C'}$。(ii) 的第二种表述推出 (iii)，因为 $F$ \Term{left-exact}{左正合}，故 pro-\Term{representable}{可表}，可应用 5.6 的判据 (iii)。最后，由 $F$ \Term{exact-functor}{正合}且\Term{conservative-functor}{保守}（即满足第 4 节公理 (G 6)），得 (iii)$\Rightarrow$(i)。
+设 $\Gamma,\Gamma'$ 分别是 $\mathcal C,\mathcal C'$ 的\Term{fundamental-groupoid}{基本群胚}。若 $H$ \Term{exact-functor}{正合}，则 $F'\mapsto F'\circ H$ 给出 $\Gamma'$ 到 $\Gamma$ 的\Term{functor}{函子}，记作 ${}^tH$：
+\[{}^tH(F')(X)=F'(H(X)).\]
+采用第 6 节引入的记号 $F(X)=E_X(F)$，也可写成
+\[E_{H(X)}(F')=E_X({}^tH(F')).\]
+\SourcePage{127}
+结合 5.8 或 4.1，此式表明，一旦知道对应\Term{functor}{函子} ${}^tH$，\Term{exact-functor}{正合函子} $H$ 就在唯一\Term{isomorphism}{同构}意义下确定。固定 $F'$，令 $F={}^tH(F')$，则 ${}^tH$ 定义\Term{homomorphism}{同态}
+\[{}^tH:\pi_{F'}\longrightarrow\pi_F\qquad(F={}^tH(F')=F'\circ H),\]
+其中 $\pi_{F'}=\operatorname{Aut}(F')$，$\pi_F=\operatorname{Aut}(F)$。由上式并结合 5.8，此\Term{homomorphism}{同态}具有如下性质：对每个带 $\pi_F$ 连续作用的\Term{finite}{有限}集 $E$，$\pi_{F'}$ 经此\Term{homomorphism}{同态}也连续作用于 $E$。对 $\pi_F$ 关于其\Term{open-normal-subgroup}{正规开子群}的各商应用这一点，可见该条件也就是说此\Term{homomorphism}{同态}连续。
+反之，给定 $\Gamma$ 的对象 $F$、$\Gamma'$ 的对象 $F'$ 以及连续\Term{homomorphism}{同态} $u:\pi_{F'}\to\pi_F$，它对应于显然\Term{exact-functor}{正合}的\Term{functor}{函子} $\mathcal C(\pi)\to\mathcal C(\pi')$，所以由 4.1 对应于\Term{exact-functor}{正合函子} $H:\mathcal C\to\mathcal C'$，使 ${}^tH:\pi_{F'}\to\pi_F$ 正好等于 $u$。也可从\Term{functor}{函子} $U:\Gamma'\to\Gamma$ 出发，代替群\Term{homomorphism}{同态}；要求对每个 $F'\in\Gamma'$（或某个 $F'$，两者等价），对应\Term{homomorphism}{同态} $\pi_{F'}\to\pi_F$ 连续。这样的\Term{functor}{函子}\Term{isomorphism}{同构}于某个 ${}^tH$，其中\Term{exact-functor}{正合函子} $H:\mathcal C\to\mathcal C'$ 在唯一\Term{isomorphism}{同构}意义下确定。因而：
+\begin{SGAresult}{推论}{6.2}
+\Term{galois-category}{Galois 范畴}间的\Term{functor}{函子} $H:\mathcal C\to\mathcal C'$ \Term{exact-functor}{正合}，当且仅当存在等价 $\mathcal C(\pi)\to\mathcal C$ 和 $\mathcal C'\to\mathcal C(\pi')$，将 $H$ 化为与\Term{topological-group}{拓扑群}\Term{homomorphism}{同态} $\pi'\to\pi$ 对应的\Term{functor}{函子} $\mathcal C(\pi)\to\mathcal C(\pi')$。
+\end{SGAresult}
+\begin{SGAresult}{推论}{6.3}
+设 $\mathcal C,\mathcal C'$ 为\Term{galois-category}{Galois 范畴}，$\Gamma,\Gamma'$ 为其\Term{fundamental-groupoid}{基本群胚}。则从 $\mathcal C$ 到 $\mathcal C'$ 的\Term{exact-functor}{正合函子}\Term{category}{范畴}，等价于满足如下条件的\Term{functor}{函子} $U:\Gamma'\to\Gamma$ 的\Term{category}{范畴}：对每个 $F'\in\Gamma'$（或某个 $F'$，两者等价），令 $F=U(F')$，则 $U$ 定义的\Term{homomorphism}{同态} $\pi_{F'}=\operatorname{Aut}(F')\to\pi_F=\operatorname{Aut}(F)$ 连续。
+\end{SGAresult}
+考虑 $\mathcal C$ 的\Term{fundamental-pro-group}{基本 pro-群} $\Pi$。\Term{exact-functor}{正合函子} $H$ 把它映为 $\mathcal C'$ 的\Term{pro-group}{pro-群} $H(\Pi)$。我们定义\Term{homomorphism}{同态} $\Pi'\to H(\Pi)$，
+\SourcePage{128}
+其中 $\Pi'$ 为 $\mathcal C'$ 的\Term{fundamental-pro-group}{基本 pro-群}，要求对 $\Gamma'$ 的每个对象 $F'$，相应\Term{homomorphism}{同态}
+\[F'(\Pi')=\pi_{F'}\longrightarrow F'(H(\Pi))=\pi_F\qquad(F=F'\circ H={}^tH(F'))\]
+等于自然\Term{homomorphism}{同态} $\operatorname{Aut}(F')\to\operatorname{Aut}(F'\circ H)$。后者关于 $F'$ 具有\Term{functorial}{函子性}，所以由 5.8 确实定义 $\mathcal C'$ 的\Term{pro-object}{pro-对象}\Term{homomorphism}{同态}，且实际为\Term{pro-group}{pro-群}\Term{homomorphism}{同态}，称为 $H$ 的关联\Term{homomorphism}{同态}。
+再设 $H'$ 是从 $\mathcal C'$ 到另一个\Term{galois-category}{Galois 范畴} $\mathcal C''$ 的\Term{exact-functor}{正合函子}，显然
+\[{}^t(H'H)={}^tH\,{}^tH'.\]
+这里是\Term{functor}{函子}的恒等，而不只是典范\Term{isomorphism}{同构}。关联的\Term{fundamental-pro-group}{基本 pro-群}\Term{homomorphism}{同态}也有类似的传递性质。
+现在用对应\Term{homomorphism}{同态} $u:\pi_{F'}\to\pi_F$（其中 $F'=F'\circ H$）解释\Term{exact-functor}{正合函子} $H$ 的性质。为方便起见，引入带\Term{fundamental-functor}{基本函子} $F$ 的\Term{galois-category}{Galois 范畴} $\mathcal C$ 中的\Term{pointed-object}{带点对象}：它按定义是一个对象 $X$ 连同一个元素 $a\in F(X)$。因此它可解释为一个带 $\pi_F$ 连续左作用及一个标记点 $a$ 的\Term{finite}{有限}集。由 5.3，$\mathcal C$ 的\Term{connected}{连通}\Term{pointed-object}{带点对象}与 $\pi_F$ 的开子群等同。若开子群 $U,V$ 分别对应于\Term{connected}{连通}\Term{pointed-object}{带点对象} $X,Y$，则存在保持基点的\Term{homomorphism}{同态} $X\to Y$ 当且仅当 $U\subset V$，且该\Term{homomorphism}{同态}唯一。由于 $F=F'\circ H$，$H$ 自然把\Term{pointed-object}{带点对象}映为\Term{pointed-object}{带点对象}。另一方面，$\pi_F$ 这样的群的闭子群是包含它的所有开子群之交；因此对两个闭子群 $M,N$，$M\subset N$ 当且仅当每个包含 $N$ 的开子群也包含 $M$。利用这些注记，容易证明以下结果：
+\begin{SGAresult}{命题}{6.4}
+设 $X$ 为 $\mathcal C$ 的\Term{connected}{连通}\Term{pointed-object}{带点对象}，对应于 $\pi_F$ 的开子群 $U$。$U$ 包含 $u(\pi_{F'})$（分别地，包含由 $u(\pi_{F'})$ 生成的闭\Term{normal-subgroup}{正规子群}）的充要条件是 $H(X)$ 有保持基点的\Term{section}{截面}（分别地，$H(X)$ \Term{completely-decomposed}{完全分解}）。
+\end{SGAresult}
+\Term{galois-category}{Galois 范畴} $\mathcal C$ 中对象 $X$ 的\Term{section}{截面}，省略的含义是在\Term{final-object}{终对象}上方的\Term{section}{截面}，指 $e_{\mathcal C}\to X$ 的\Term{morphism}{态射}；等价于给出 $F(X)$ 中一个 $\pi_F$-不变元素 $a$。若 $X$ 带点，则称\Term{section}{截面}保持基点，是指它与 $X,e_{\mathcal C}$ 的带点结构相容，
+\SourcePage{129}
+即 $a$ 正是 $F(X)$ 的标记点。这样的\Term{section}{截面}唯一，且存在当且仅当 $F(X)$ 的标记点为 $\pi_F$-不变元。最后，若一个对象\Term{isomorphism}{同构}于若干\Term{final-object}{终对象}的\Term{coproduct}{和}，即 $\pi_F$ 在 $F(X)$ 上\Term{trivial-bundle}{平凡}作用，则称它\Term{completely-decomposed}{完全分解}。对带点 $X$，这一条件显然强于存在保持基点的\Term{section}{截面}。命题 6.4 直接由这些定义与注记得到。
+\begin{SGAresult}{推论}{6.5}
+$u$ \Term{trivial-bundle}{平凡}的充要条件是：对每个 $X\in\mathcal C$，$H(X)$ 都\Term{completely-decomposed}{完全分解}。
+\end{SGAresult}
+\begin{SGAresult}{命题}{6.6}
+设 $X'$ 为 $\mathcal C'$ 的\Term{connected}{连通}\Term{pointed-object}{带点对象}，对应于 $\pi_{F'}$ 的开子群 $U'$。$U'$ 包含 $\ker u$ 的充要条件是存在 $\mathcal C$ 的\Term{connected}{连通}\Term{pointed-object}{带点对象} $X$，以及从 $H(X)$ 的带点\Term{connected-component}{连通分支} $X'_0$ 到 $X'$ 的保持基点的\Term{homomorphism}{同态}（亦即 $X$ 作为\Term{pointed-object}{带点对象}，\Term{isomorphism}{同构}于 $\mathcal C$ 中某个\Term{pointed-object}{带点对象}的\Term{inverse-image}{逆像}之中性\Term{connected-component}{连通分支}的一个商）。若 $u$ 满，上述条件还等价于：$X$ \Term{isomorphism}{同构}于某个 $H(X)$，其中 $X$ 是 $\mathcal C$ 的\Term{pointed-object}{带点对象}。
+\end{SGAresult}
+（\Term{galois-category}{Galois 范畴}中\Term{pointed-object}{带点对象} $X$ 的中性\Term{connected-component}{连通分支}，指其唯一的\Term{connected}{连通}带点\Term{subobject}{子对象}；由 5.3，它对应于 $F(X)$ 的标记点在 $\pi_F$ 下的\Term{orbit}{轨道}。）由于 $U'$ 包含 $\ker u$ 与 $X'$ 的带点方式无关（另选标记点相当于把 $U$ 换成其共轭子群），得到：
+\begin{SGAresult}{推论}{6.7}
+$U'$ 包含 $\ker u$，当且仅当存在对象 $X\in\mathcal C$（可要求\Term{connected}{连通}）以及从 $H(X)$ 的某个\Term{connected-component}{连通分支}到 $X'$ 的\Term{morphism}{态射}。若 $u$ 满，也就意味着 $X'$ \Term{isomorphism}{同构}于某个 $H(X)$。
+\end{SGAresult}
+\begin{SGAresult}{推论}{6.8}
+$u$ 单的充要条件是：对每个 $X'\in\mathcal C'$，存在 $X\in\mathcal C$ 以及从 $H(X)$ 的某个\Term{connected-component}{连通分支}到 $X'$ 的\Term{homomorphism}{同态}。
+\end{SGAresult}
+\begin{SGAresult}{命题}{6.9}
+下列条件等价：(i) $u:\pi_{F'}\to\pi_F$ 满；(ii) 对 $\mathcal C$ 的每个\Term{connected}{连通}对象 $X$，$H(X)$ \Term{connected}{连通}；(iii) $H$ \Term{fully-faithful}{全忠实}。
+\end{SGAresult}
+最后一个条件是说，对 $\mathcal C$ 的任意两个对象 $X,Y$，自然映射
+\[\operatorname{Hom}(X,Y)\longrightarrow\operatorname{Hom}(H(X),H(Y))\]
+为\Term{bijection}{双射}。
+\SourcePage{130}
+\begin{SGAresult}{推论}{6.10}
+$u$ 为\Term{isomorphism}{同构}的充要条件是 $H$ 为\Term{equivalence-of-categories}{范畴等价}，亦即满足下列两个条件：
+\begin{enumerate}\item[a)] 对 $\mathcal C$ 的每个\Term{connected}{连通}对象 $X$，$H(X)$ \Term{connected}{连通}；\item[b)] $\mathcal C'$ 的每个对象都\Term{isomorphism}{同构}于某个 $H(X)$。
+\end{enumerate}
+\end{SGAresult}
+\begin{SGAresult}{命题}{6.11}
+设 $H:\mathcal C\to\mathcal C'$、$H':\mathcal C\to\mathcal C''$ 为\Term{galois-category}{Galois 范畴}间的\Term{exact-functor}{正合函子}，$F''$ 为 $\mathcal C''$ 的\Term{fundamental-functor}{基本函子}。令 $F'=F''H'$、$F=F'H$，考虑关联\Term{homomorphism}{同态}
+\[u':\pi_{F''}\longrightarrow\pi_{F'},\qquad u:\pi_{F'}\longrightarrow\pi_F.\]
+$\ker u\subset\operatorname{Im}u'$，即 $uu'$ 是\Term{trivial-bundle}{平凡}\Term{homomorphism}{同态}，的充要条件是：对每个 $X\in\mathcal C$，$H'(H(X))$ \Term{completely-decomposed}{完全分解}。$\ker u\supset\operatorname{Im}u'$ 的充要条件是：对每个满足 $H'(X')$ 存在保持基点\Term{section}{截面}的\Term{connected}{连通}\Term{pointed-object}{带点对象} $X'\in\mathcal C'$，存在 $X\in\mathcal C$ 及 $H(X)$ 的某个\Term{connected-component}{连通分支}到 $X'$ 的\Term{homomorphism}{同态}。
+\end{SGAresult}
+第一条来自 6.4 的最后一个断言。第二条结合 6.4 与 6.6 得到。
+\textbf{注记 6.12。}在 6.8 的条件下，一般不能说 $X'$ \Term{isomorphism}{同构}于某个 $H(X)$。可以证明，$\mathcal C'$ 的每个\Term{connected}{连通}对象（从而每个对象）都\Term{isomorphism}{同构}于某个 $H(X)$ 的充要条件是 $u$ 将 $\pi_{F'}$ \Term{isomorphism}{同构}地映到 $\pi_F$ 的某个\Term{direct-factor}{直因子}子群。不过实际中，会利用适当的从 $\mathcal C'$ 到 $\mathcal C$ 的\Term{exact-functor}{正合函子}，直接构造一个\Term{homomorphism}{同态} $\pi_F\to\pi_{F'}$，它是 $u$ 的右逆。
+\begin{SGAresult}{命题}{6.13}
+设 $\mathcal C$ 为带\Term{fundamental-functor}{基本函子} $F$ 的\Term{galois-category}{Galois 范畴}，$S\in\mathcal C$ \Term{connected}{连通}，$\mathcal C'$ 为 $\mathcal C$ 中 $S$ 上方对象所成的\Term{category}{范畴}。则 $\mathcal C'$ 为\Term{galois-category}{Galois 范畴}，且 $X\mapsto H(X)=X\times S$ 是从 $\mathcal C$ 到 $\mathcal C'$ 的\Term{exact-functor}{正合函子}。设 $a\in F(S)$，定义从 $\mathcal C'$ 到\Term{finite}{有限}集\Term{category}{范畴}的\Term{functor}{函子}
+\[F'(X')=\text{映射 }F(X')\longrightarrow F(S)\text{ 下 }a\text{ 的逆像}.\]
+则有\Term{isomorphism}{同构} $F\simeq F'\circ H$，且对应\Term{homomorphism}{同态} $u:\pi_{F'}\to\pi_F$ 将 $\pi_{F'}$ \Term{isomorphism}{同构}地映到 $\pi_F$ 中标记元素 $a\in F(X)$ 的\Term{stabilizer}{稳定子}开子群 $U$。
+\end{SGAresult}
+证明留给读者。
+\SourcePage{131}
+\SGAsection{7}{预概形的情形}
+设 $S$ 是\Term{locally-noetherian}{局部诺特}且\Term{connected}{连通}的\Term{prescheme}{预概形}，$a:\operatorname{Spec}(\Omega)\to S$ 是 $S$ 的一个\Term{geometric-point}{几何点}，其取值域 $\Omega$ \Term{algebraically-closed}{代数闭}。令 $\mathcal C$ 为 $S$ 的\Term{etale-covering}{平展覆盖}\Term{category}{范畴}。对其对象 $X$，即 $S$ 的\Term{etale-covering}{平展覆盖}，令 $F(X)$ 为 $X$ 中位于 $a$ 上方的\Term{geometric-point}{几何点}集合。于是 $F$ 成为从 $\mathcal C$ 到\Term{finite}{有限}集\Term{category}{范畴}的\Term{functor}{函子}。
+性质 (G 1)--(G 6) 均成立：(G 1) 包含在 I 4.6 的各项性质中；(G 2) 来自 3.4；(G 3) 来自 3.5；(G 4) 由定义直接成立；(G 5) 来自 3.5 和第 2 节开头；最后 (G 6) 已在 3.7 证明。因此第 4、5、6 节的结果都适用。
+特别地，可定义表示 $F$ 的\Term{pro-object}{pro-对象} $P$，称为 $S$ 在点 $a$ 处的\Term{universal-covering}{万有覆盖}，以及\Term{topological-group}{拓扑群} $\pi=\operatorname{Aut}(F)=\operatorname{Aut}^{0}P$，称为 $S$ 在 $a$ 处的\Term{fundamental-group}{基本群}，记为 $\pi_1(S,a)$。\Term{functor}{函子} $F$ 定义 $\mathcal C$ 与带 $\pi=\pi_1(S,a)$ 连续作用的\Term{finite}{有限}集\Term{category}{范畴}的等价。因此，对\Term{covering}{覆盖}通常作的\Term{finite}{有限}\Term{inverse-limit}{投射极限}和\Term{direct-limit}{归纳极限}运算（积、\Term{fibre-product}{纤维积}、和、取商等），都可解释为 $\mathcal C(\pi)$ 中的相应运算，即带 $\pi$ 作用的\Term{finite}{有限}集上的显然运算。
+由于\Term{etale-covering}{平展覆盖}的拓扑\Term{connected-component}{连通分支}也是\Term{etale-covering}{平展覆盖}，对象 $X$ 在 $\mathcal C$ 中\Term{connected}{连通}当且仅当其\Term{topological-space}{拓扑空间}\Term{connected}{连通}；由 5.3，也就是 $\pi_1$ 在 $F(X)$ 上传递作用。注意 $X$ 已在 $S$ 上\Term{flat}{平坦}且\Term{quasi-compact}{拟紧}，故其\Term{faithfully-flat}{忠实平坦}且\Term{quasi-compact}{拟紧}的充要条件是 $X\to S$ 满，即它是 $\mathcal C$ 中的\Term{epimorphism}{满态射}，亦即 $X\neq\varnothing$。所以由 2.6 (iii)，$X$ 是群为 $G$ 的 $S$ 的\Term{principal-covering}{主覆盖}，当且仅当它在 $\mathcal C$ 中是 $G$ 下的\Term{principal-homogeneous}{主齐性}空间（按第 5 节的定义）。
+若 $a'$ 是 $S$ 的另一个\Term{geometric-point}{几何点}（对应于\Term{algebraically-closed}{代数闭}域 $\Omega'$，可不同于 $\Omega$，甚至可有不同特征），它定义另一个从 $\mathcal C$ 到\Term{finite}{有限}集\Term{category}{范畴}的\Term{fibre-functor}{纤维函子} $F'=F_{a'}$，亦\Term{exact-functor}{正合}，所以\Term{isomorphism}{同构}于 $F=F_a$。因而各 $a$ 对应的\Term{fundamental-group}{基本群} $\pi_1(S;a)$ 彼此\Term{isomorphism}{同构}。以 $\pi_1(S;a,a')$ 表示对应\Term{fibre-functor}{纤维函子}之间所有\Term{isomorphism}{同构}（亦即所有\Term{homomorphism}{同态}）$F_a\to F_{a'}$ 组成的集合，便得到一个\Term{groupoid}{群胚}，其对象集是 $S$ 的\Term{geometric-point}{几何点}集，各\Term{fundamental-group}{基本群}就是对象的\Term{automorphism}{自同构}群。
+\SourcePage{132}
+集合 $\pi_1(S;a',a)$ 可称为从 $a$ 到 $a'$ 的道路类集合。这些类自然可以复合。最后，可定义 $\mathcal C$ 中的\Term{pro-group}{pro-群} $\Pi_1^S$，称为 $S$ 的\Term{fundamental-pro-group}{基本 pro-群}或 $S$ 上的\Term{fundamental-group}{基本群}\Term{local-system}{局部系统}；它在唯一\Term{isomorphism}{同构}意义下由关于\Term{geometric-point}{几何点} $a$ 的\Term{functorial}{函子性}\Term{isomorphism}{同构}
+\[F_a(\Pi_1^S)=\pi_1(S;a)\]
+确定（参见注记 5.10）。特别地，若 $s$ 为 $S$ 的一个普通点，$G$ 在 $s$ 的\Term{fibre}{纤维}是 $k(s)$ 上的\Term{pro-group}{pro-群}，是 $k(s)$ 上\Term{finite}{有限}\Term{etale}{平展}群的\Term{inverse-limit}{投射极限}；可称其为 $S$ 在普通点 $s$ 处的\Term{fundamental-group}{基本群}，记为 $\pi_1(S,s)$。按定义，它在 $k(s)$ 的\Term{algebraically-closed}{代数闭}扩域 $\Omega$ 中的值点，正是 $\pi_1(S;a)$ 的元素，$a$ 为此扩域定义的\Term{geometric-point}{几何点}。特别地，取 $S$ 为域的谱，对每个域 $k$ 都典范且\Term{functorial}{函子性}地关联一个 $k$ 上的\Term{pro-group}{pro-群}，可记为 $\pi_1(k)$；它是 $k$ 上\Term{finite}{有限}\Term{etale}{平展}群的\Term{inverse-limit}{投射极限}，其在 $k$ 的\Term{algebraically-closed}{代数闭}扩域 $\Omega$ 中的值点，与拓扑\Term{galois-group}{Galois 群} $\operatorname{Gal}(\overline k/k)$ 的元素等同，其中 $\overline k$ 为 $k$ 在 $\Omega$ 中的 Galois 闭包（参见 8.1）。群 $\pi_1(k)$ 似乎还没有引起代数学家的注意。
+再设 $f:S'\to S$ 是两个\Term{connected}{连通}\Term{locally-noetherian}{局部诺特}\Term{prescheme}{预概形}之间的\Term{morphism}{态射}，$a'$ 是 $S'$ 的\Term{geometric-point}{几何点}，$a=f(a')$ 为其在 $S$ 中的直接像。则“\Term{inverse-image}{逆像}”\Term{functor}{函子}诱导
+\[f^\bullet:\mathcal C(S)\longrightarrow\mathcal C(S'),\]
+即从 $S$ 的\Term{etale-covering}{平展覆盖}\Term{category}{范畴}到 $S'$ 的\Term{etale-covering}{平展覆盖}\Term{category}{范畴}的\Term{functor}{函子}。并有\Term{functor}{函子}\Term{isomorphism}{同构} $F_a\simeq F_{a'}\circ f^\bullet$，所以 $f^\bullet$ 是\Term{exact-functor}{正合函子}，第 6 节的结果适用。特别地，有典范\Term{homomorphism}{同态}
+\[u=\pi_1(f;a'):\pi_1(S',a')\longrightarrow\pi_1(S;a)\qquad(a'=f(a)),\]
+由它可把\Term{inverse-image}{逆像}\Term{functor}{函子}重建为对算子群的限制运算。因此 $f^\bullet$ 的性质可以通过关联群\Term{homomorphism}{同态}的性质简单表述，如第 6 节所详述。特别地，若 $S'$ 是 $S$ 的\Term{etale-covering}{平展覆盖}，则 $u$ 将 $\pi_1(S',a')$ \Term{isomorphism}{同构}地映到 $\pi_1(S,a)$ 中定义\Term{connected}{连通}带点\Term{etale-covering}{平展覆盖} $S'$ 的开子群，即 $a'\in F_a(S')$ 在 $\pi_1(S;A)$ 中的\Term{stabilizer}{稳定子} $U$。
+\SourcePage{133}
+若希望同时解释各个\Term{geometric-point}{几何点} $a'$ 对应的 $\pi_1(f;a')$，则应按第 6 节，考虑 $S$ 上\Term{pro-group}{pro-群}的\Term{homomorphism}{同态}
+\[\Pi_1(f):\Pi_1^{S'}\longrightarrow f^\bullet(\Pi_1^S),\]
+再取它在\Term{geometric-fibre}{几何纤维}上的相应\Term{homomorphism}{同态}。
+\SGAsection{8}{底预概形正规的情形}
+\begin{SGAresult}{命题}{8.1}
+设 $S$ 是域 $k$ 的谱，$\Omega$ 是 $k$ 的\Term{algebraically-closed}{代数闭}扩域，定义 $S$ 的 $\Omega$-值\Term{geometric-point}{几何点} $a$。设 $\overline k$ 为 $k$ 在 $\Omega$ 中的\Term{separable-closure}{可分闭包}。则 $\pi_1(S,a)$ 与 $\overline k/k$ 的拓扑\Term{galois-group}{Galois 群}之间有典范\Term{isomorphism}{同构}。
+\end{SGAresult}
+设 $k'$ 为 $k$ 在 $\Omega$ 中的\Term{algebraically-closed}{代数闭}包，它对应于 $S$ 的 $k'$-值\Term{geometric-point}{几何点} $b$。自然\Term{functor}{函子}\Term{homomorphism}{同态} $F_b\to F_a$ 显然为\Term{isomorphism}{同构}，因为 $k$ 的一个\Term{finite}{有限}\Term{separable-extension}{可分扩张}到 $\Omega$ 的 $k$-\Term{homomorphism}{同态}必取值于 $\overline k$，更取值于 $k'$。另一方面，$k'/k$ 的 $k$-\Term{automorphism}{自同构}群 $\pi'$ 自然作用于 $F_b$，给出\Term{homomorphism}{同态} $\pi'\to\operatorname{Aut}(F_b)\xrightarrow{\sim}\operatorname{Aut}(F_a)=\pi_1(S;a)$。又熟知从 $\pi'$ 到 $\overline k/k$ 的\Term{automorphism}{自同构}群 $\pi$ 的自然\Term{homomorphism}{同态}为\Term{isomorphism}{同构}。由此得到典范\Term{homomorphism}{同态} $\pi\to\pi_1(S;a)$；只须证明它是\Term{isomorphism}{同构}。它单，因为核中元素是一个在所有\Term{finite}{有限}\Term{separable}{可分}子\Term{group-extension}{扩张}上均诱导恒等的 $\overline k/k$ 的\Term{automorphism}{自同构}，故必\Term{trivial-bundle}{平凡}。它满，因为若 $X$ 为 $S$ 的\Term{connected}{连通}\Term{etale-covering}{平展覆盖}，由\Term{finite}{有限}\Term{separable-extension}{可分扩张} $L/k$ 定义，则熟知 $\pi$ 在 $L$ 到 $k'$ 的 $k$-\Term{homomorphism}{同态}集上传递作用。
+\begin{SGAresult}{命题}{8.2}
+设 $S$ 为\Term{connected}{连通}、\Term{locally-noetherian}{局部诺特}且\Term{normal}{正规}的\Term{prescheme}{预概形}，$K=k(s)$ 为其\Term{function-field}{函数域}，即\Term{generic-point}{泛点} $s$ 的\Term{residue-field}{剩余域}。设 $\Omega$ 是 $K$ 的\Term{algebraically-closed}{代数闭}扩域，定义 $S'=\operatorname{Spec}(K)$ 的\Term{geometric-point}{几何点} $a'$ 及 $S$ 的\Term{geometric-point}{几何点} $a$。则 $\pi_1(S';a')\to\pi_1(S;a)$ 满。将前一个群与 $K$ 在 $\Omega$ 中的\Term{separable-closure}{可分闭包} $\overline K$ 的\Term{galois-group}{Galois 群}等同（参见 8.1）后，上述\Term{homomorphism}{同态}的核按 Galois 理论，对应于 $\overline K/K$ 中由 $K$ 在 $\Omega$ 内所有在 $S$ 上\Term{unramified}{非分歧}的\Term{finite}{有限}\Term{group-extension}{扩张}组成的子\Term{group-extension}{扩张}。
+\end{SGAresult}
+第一条意味着 $S$ 的\Term{connected}{连通}\Term{etale-covering}{平展覆盖} $X$ 在 $S'$ 上的\Term{inverse-image}{逆像}\Term{connected}{连通}，即 $X$ \Term{integral-scheme}{整}；这正是 I 10.1。上述\Term{homomorphism}{同态}的核由 $\overline K/K$ 的那些在各集合 $F_a(X)$ 上诱导恒等的\Term{automorphism}{自同构}组成，这里可设\Term{etale-covering}{平展覆盖} $X$ \Term{connected}{连通}。
+\SourcePage{134}
+这意味着这些\Term{automorphism}{自同构}在 $\overline K/K$ 的所有在 $S$ 上\Term{unramified}{非分歧}的\Term{finite}{有限}子\Term{group-extension}{扩张}上诱导恒等，最后一条因而成立。
+\textbf{注记。}由于\Term{normal}{正规}\Term{prescheme}{预概形} $S$ 的\Term{fundamental-group}{基本群}具有上述通常 Galois 理论的解释，这一情形下的定义早已为人所知。
+\SGAsection{9}{不连通预概形：多重 Galois 范畴}
+设 $S$ 是\Term{locally-noetherian}{局部诺特}\Term{prescheme}{预概形}，$(S_i)_{i\in I}$ 是其\Term{connected-component}{连通分支}。则 $S$ 的\Term{etale-covering}{平展覆盖}\Term{category}{范畴} $\mathcal C(S)$ 等价于各 $\mathcal C(S_i)$ 的积\Term{category}{范畴}。在每个 $S_i$ 中选定\Term{geometric-point}{几何点}后，各 $\mathcal C(S_i)$ 都可用 $S_i$ 的\Term{fundamental-group}{基本群}解释。
+在对\Term{etale-morphism}{平展态射}应用\Term{descent}{下降}理论时，对每个 $S_i$ 都选择一个\Term{geometric-point}{几何点}有时不便。此时更方便的是使用 5.8 的自然推广：把 $\mathcal C(S)$ 解释为 $S$ 的\Term{geometric-point}{几何点}\Term{groupoid}{群胚}上的\Term{functor}{函子}\Term{category}{范畴}。这一\Term{groupoid}{群胚}看作 $S$ 的各\Term{connected-component}{连通分支}所对应\Term{groupoid}{群胚}之和；所考虑的\Term{functor}{函子}取值于\Term{finite}{有限}集\Term{category}{范畴}，且满足类似 5.8 所用的连续性条件。实际会取 $S$ 的\Term{geometric-point}{几何点}族 $(a_t)_{t\in E}$，使每个\Term{connected-component}{连通分支} $S_i$ 至少包含其中一点；于是如同 5.10，可用以 $E$ 为底集合的相应\Term{groupoid}{群胚}，代替所有\Term{geometric-point}{几何点}的\Term{groupoid}{群胚}。
+这些讨论自然应纳入一般定义：研究等价于若干形如 $\mathcal C(\pi)$ 的\Term{category}{范畴}之积的\Term{category}{范畴}，可称之为\Term{multigalois-category}{多重 Galois 范畴}。细节留给读者。

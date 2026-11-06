@@ -1,0 +1,607 @@
+\SourcePage{215}
+\SGAchapter{XXIV}{约化群的自同构}{Automorphismes des groupes réductifs}
+\begin{center}M. Demazure\end{center}
+本讲第一部分（第 1 至 5 节）直接来自这样一个事实：\Term{reductive-group}{约化群}有“足够多的\Term{outer-automorphism}{外自同构}”；这一事实又是\Term{pinned-group}{钉扎群}\Term{isomorphism}{同构}定理的最弱\Term{form}{形式}的推论。第二部分（第 6、7 节）给出上一讲较精确结果的两个应用；特别是第 7 节使用\Term{generator}{生成元}与关系定理的显式\Term{form}{形式}。最后，附录（第 8 节）给出正文所用的“Galois”\Term{cohomology}{上同调}结果。
+先说明\Term{cohomology}{上同调}记号：若 $S$ 是\Term{scheme}{概形}，$G$ 是 $S$-\Term{group-scheme}{群概形}，则 $H^1(S,G)$ 表示对 (fpqc) \Term{topology}{拓扑}计算的 $S$ 上系数为 $G$ 的第一\Term{cohomology}{上同调}\Term{set}{集合}；它也是 $G$ 下\Term{principal-homogeneous}{主齐性} (fpqc) \Term{sheaf}{层}的\Term{isomorphism}{同构}类\Term{set}{集合}。以 $H^1_{\text{ét}}(S,G)$ 表示\Term{etale}{平展}\Term{topology}{拓扑}的相应\Term{set}{集合}，即 $H^1(S,G)$ 中由\Term{quasi-isotrivial}{拟等平凡}（即在\Term{etale}{平展}\Term{topology}{拓扑}下\Term{locally-trivial}{局部平凡}）的 $G$ 下齐性\Term{sheaf}{层}的类组成的部分。以 $\operatorname{Fib}(S,G)$ 表示 $H^1(S,G)$ 中由\Term{representable}{可表}\Term{sheaf}{层}（\Term{principal-homogeneous-bundle}{主齐性丛}）的类组成的部分。于是有包含关系
+\[
+H^1_{\text{ét}}(S,G)\subset H^1(S,G),\qquad \operatorname{Fib}(S,G)\subset H^1(S,G).
+\]
+若 $G$ 下每个\Term{principal-homogeneous}{主齐性}\Term{sheaf}{层}均\Term{representable}{可表}（例如 $G$ 在 $S$ 上拟\Term{affine}{仿射}时，参见 SGA 1，VIII 7.9），则 $\operatorname{Fib}(S,G)=H^1(S,G)$。
+若 $S'\to S$ 是 (fpqc) \Term{topology}{拓扑}的\Term{covering}{覆盖}\Term{morphism}{态射}，则以 $H^1(S'/S,G)$ 表示\Term{canonical}{典范}映射 $H^1(S,G)\to H^1(S',G_{S'})$ 的核。已知 $H^1(S'/S,G)$ 可以用单纯方法计算（TDTE I，§ A.4）；因而，当 $S'\to S$ 是\Term{etale}{平展}\Term{topology}{拓扑}的\Term{covering}{覆盖}时，$H^1(S'/S,G)$ 也是 $H^1_{\text{ét}}(S,G)\to H^1_{\text{ét}}(S',G_{S'})$ 的核。
+最后，按照第 VIII 讲 4.5，我们把以下断言称为“定理 90”：“$\mathbb G_{m,S}$ 下每个\Term{principal-homogeneous}{主齐性}\Term{sheaf}{层}均\Term{representable}{可表}且\Term{locally-trivial}{局部平凡}”。这\Term{equivalence}{等价}于“$H^1(S,\mathbb G_{m,S})=\operatorname{Pic}(S)$”，也\Term{equivalence}{等价}于“当 $S$ \Term{local-scheme}{局部}（更一般地，半\Term{local-scheme}{局部}）时，$H^1(S,\mathbb G_{m,S})=0$”。
+
+\SourcePage{216}
+\SGAsection{1}{约化群的自同构概形}
+\textbf{1.0.} 先补充说明上一讲的若干定义。设 $S$ 为\Term{nonempty}{非空}\Term{scheme}{概形}，$G$ 为 $S$-\Term{reductive-group}{约化群}，$\mathcal R=(M,M^*,R,R^*,\Delta)$ 为\Term{reduced-root-datum}{约化}\Term{pinning}{钉扎}\Term{root-datum}{根数据}（第 XXIII 讲 1.5）。$G$ 的 $\mathcal R$ 型\Term{pinning}{钉扎}，或 $\mathcal R$-\Term{pinning}{钉扎}，指以下资料：
+(i) 从 $D_S(M)$ 到 $G$ 的一个\Term{maximal-torus}{极大环面} $T$ 的\Term{isomorphism}{同构}（\Term{equivalence}{等价}地，一个像为 $G$ 的\Term{maximal-torus}{极大环面} $T$ 的\Term{monomorphism}{单态射} $D_S(M)\to G$），使 $R$ 等同于 $G$ 相对于 $T$ 的一个\Term{root-system}{根系}（第 XIX 讲 3.6），使 $R^*$ 等同于相应\Term{coroot}{余根}的\Term{set}{集合}；
+(ii) 对每个 $\alpha\in\Delta$，给定 $X_\alpha\in\Gamma(S,\mathfrak g^\alpha)^\times$。
+$G$ 有 $\mathcal R$-\Term{pinning}{钉扎}的充要条件是它可\Term{split}{分裂}且型为 $\mathcal R$（第 XXII 讲 2.7）。
+若 $u:G\to G'$ 是 $S$-\Term{reductive-group}{约化群}的\Term{isomorphism}{同构}，则 $G$ 的每个 $\mathcal R$-\Term{pinning}{钉扎} $\mathcal E$ 经“\Term{transport-of-structure}{结构搬运}”给出 $G'$ 的 $\mathcal R$-\Term{pinning}{钉扎} $u(\mathcal E)$。若 $v:\mathcal R'\to\mathcal R$ 是\Term{pinning}{钉扎}\Term{root-datum}{根数据}的\Term{isomorphism}{同构}，则 $G$ 的每个 $\mathcal R'$-\Term{pinning}{钉扎} $\mathcal E$ 经\Term{transport-of-structure}{结构搬运}给出 $G$ 的 $\mathcal R$-\Term{pinning}{钉扎} $v(\mathcal E)$。
+\Term{pinned-group}{钉扎群}指三元组 $(G,\mathcal R,\mathcal E)$，其中 $G$ 为 $S$-\Term{reductive-group}{约化群}，$\mathcal R$ 为\Term{reduced-root-datum}{约化}\Term{pinning}{钉扎}\Term{root-datum}{根数据}，$\mathcal E$ 为 $G$ 的 $\mathcal R$ 型\Term{pinning}{钉扎}。从 $(G,\mathcal R,\mathcal E)$ 到 $(G',\mathcal R',\mathcal E')$ 的\Term{pinned-group}{钉扎群}\Term{isomorphism}{同构}指一对 $(u,v)$，其中 $u:G\to G'$ 为\Term{isomorphism}{同构}，$v:\mathcal R'\to\mathcal R$ 为\Term{pinning}{钉扎}\Term{root-datum}{根数据}\Term{isomorphism}{同构}，满足 $u(\mathcal E)=v(\mathcal E')$。\footnote[1]{编者注：因而，对每个 $\alpha\in R'$，$\operatorname{Lie}(u)(X_{v(\alpha)})=X'_\alpha$。}
+\textbf{注意。} 若 $S$ \Term{nonempty}{非空}，则 $v$ 由 $u$ 唯一确定；此时也略去这一差别，说 $u$ 是\Term{pinned-group}{钉扎群}的\Term{isomorphism}{同构}。特别地，$(G,\mathcal R,\mathcal E)$ 的\Term{automorphism}{自同构}就是 $G$ 的一个\Term{automorphism}{自同构} $u$，使存在 $\mathcal R$ 的\Term{automorphism}{自同构} $v$ 满足 $u(\mathcal E)=v(\mathcal E)$；因此它\Term{normalization}{正规化} $T$，在 $T$ 上诱导形如 $D_S(h)$ 的\Term{automorphism}{自同构}（其中 $h$ 为 $M$ 的\Term{automorphism}{自同构}），并置换 $X_\alpha$，$\alpha\in\Delta$。（容易看出，这些条件也刻画了 $(G,\mathcal R,\mathcal E)$ 的\Term{automorphism}{自同构}。）
+有显然的\Term{contravariant}{反变}\Term{functor}{函子}
+\[\mathcal R:\quad(G,\mathcal R,\mathcal E)\longmapsto\mathcal R,\qquad(u,v)\longmapsto v.\]
+上一讲的主要结果（第 XXIII 讲 4.1）表明，这是\Term{fully-faithful}{全忠实}\Term{functor}{函子}（下一讲还将说明它是\Term{category-equivalence}{范畴等价}）。特别地，$(G,\mathcal R,\mathcal E)$ 的\Term{automorphism}{自同构}群与\Term{pinning}{钉扎}\Term{root-datum}{根数据} $\mathcal R$ 的\Term{automorphism}{自同构}群\Term{canonical}{典范}\Term{isomorphism}{同构}（参见第 XXIII 讲 5.5）。
+\textbf{1.1.} 设 $S$ 为\Term{scheme}{概形}；给 $(\mathrm{Sch})/S$ 赋予 (fpqc) \Term{topology}{拓扑}，并考虑 $S$-群\Term{sheaf}{层} $\operatorname{Aut}_{S\text{-gr.}}(G)$，其中 $G$ 为 $S$-\Term{group-scheme}{群概形}。
+\SourcePage{217}
+有 $S$-群\Term{sheaf}{层}的\Term{exact-sequence}{正合列}
+\[1\longrightarrow\operatorname{Centr}(G)\longrightarrow G\xrightarrow{\operatorname{int}}\operatorname{Aut}_{S\text{-gr.}}(G),\]
+它定义\Term{monomorphism}{单态射}
+\[j:G/\operatorname{Centr}(G)\longrightarrow\operatorname{Aut}_{S\text{-gr.}}(G).\]
+$j$ 的像\Term{sheaf}{层}是 $G$ 的\Term{inner-automorphism}{内自同构}\Term{sheaf}{层}；$G$ 的\Term{automorphism}{自同构} $u$ 为\Term{inner-automorphism}{内自同构}，当且仅当存在\Term{covering-family}{覆盖族} $\{S_i\to S\}$，以及每个 $i$ 对应的 $g_i\in G(S_i)$，使 $\operatorname{int}(g_i)=u_{S_i}$。此时，若 $v$ 为 $G$ 的另一个\Term{automorphism}{自同构}，立即可见 $\operatorname{int}(v)u=vuv^{-1}$ 是由族 $g'_i=v(g_i)$ 定义的\Term{inner-automorphism}{内自同构}。因此 $j$ 的像在 $\operatorname{Aut}_{S\text{-gr.}}(G)$ 中\Term{normal}{正规}。\Term{quotient-group}{商群}\Term{sheaf}{层}记为 $\operatorname{Autext}(G)$，称为 $G$ 的\Term{outer-automorphism}{外自同构}\Term{sheaf}{层}。于是有\Term{exact-sequence}{正合列}
+\[1\longrightarrow G/\operatorname{Centr}(G)\longrightarrow\operatorname{Aut}_{S\text{-gr.}}(G)\longrightarrow\operatorname{Autext}(G)\longrightarrow1.\]
+以上定义均与\Term{base-change}{基变换}相容，并且自然适用于任意\Term{site}{景}。
+\textbf{1.2.} 设 $S$ 为\Term{scheme}{概形}，$(G,\mathcal R,\mathcal E)$ 为\Term{pinned-group}{钉扎}\Term{reductive-group}{约化群}。设 $E$ 是\Term{pinning}{钉扎}\Term{root-datum}{根数据} $\mathcal R$ 的\Term{automorphism}{自同构}（抽象）群，即 $\mathcal R$ 中\Term{normalization}{正规化} $\Delta$ 的\Term{automorphism}{自同构}群。由第 XXIII 讲 5.5，有\Term{canonical}{典范}\Term{monomorphism}{单态射}
+\[E\longrightarrow\operatorname{Aut}_{S\text{-gr.}}(G),\]
+把 $h\in E$ 对应于满足 $\mathcal R(u)=h$ 的唯一\Term{pinned-group}{钉扎群}\Term{automorphism}{自同构} $u$。它\Term{canonical}{典范}地定义\Term{sheaf}{层}的\Term{monomorphism}{单态射}
+\[a:E_S\longrightarrow\operatorname{Aut}_{S\text{-gr.}}(G).\tag{*}\]
+$G$ 的\Term{automorphism}{自同构} $u$ 是 $a$ 的像\Term{sheaf}{层}的\Term{section}{截面}的充要条件如下：
+(i) $u$ \Term{normalization}{正规化} $T$。已知此时 $u$ 置换 $G$ 相对于 $T$ 的根。若 $\alpha\in R$，则 $u(\alpha):t\mapsto\alpha(u^{-1}(t))$ 在 $S$ 上\Term{local-scheme}{局部}地形如 $t\mapsto\beta(t)$，其中 $\beta\in R$。第二个条件于是写成：
+(ii) 若 $\alpha\in\Delta$，$U$ 为 $S$ 的\Term{open-subset}{开集}，且 $u(\alpha)_U\in R$，则 $u(\alpha)_U\in\Delta$，并且
+\[\operatorname{Lie}(u_U)(X_\alpha)_U=(X_{u(\alpha)})_U.\]
+定义立即表明，$a(E_S)$ 的\Term{section}{截面}\Term{normalization}{正规化}由\Term{pinning}{钉扎}定义的 $G$ 的\Term{subgroup}{子群} $T,B,B^-,U,U^-$。有了这些定义，得到：
+\begin{SGAresult}{定理}{1.3}
+设 $S$ 为\Term{scheme}{概形}，$G$ 为 $S$-\Term{reductive-group}{约化群}。考虑 $S$-群\Term{sheaf}{层}的\Term{canonical}{典范}\Term{exact-sequence}{正合列}\footnote[2]{编者注：回顾 $\operatorname{ad}(G)=G/\operatorname{Centr}(G)$ 是 $G$ 的\Term{adjoint-group}{伴随群}，参见 XXII 4.3.6。}
+\[1\longrightarrow\operatorname{ad}(G)\longrightarrow\operatorname{Aut}_{S\text{-gr.}}(G)\xrightarrow p\operatorname{Autext}(G)\longrightarrow1.\]
+\SourcePage{218}
+(i) $\operatorname{Aut}_{S\text{-gr.}}(G)$ 可由在 $S$ 上\Term{smooth}{光滑}且\Term{separated}{分离}的 $S$-\Term{scheme}{概形}表示。
+(ii) $\operatorname{Autext}(G)$ 可由\Term{finitely-generated}{有限生成}的\Term{twisted-constant}{扭常值} $S$-\Term{scheme}{概形}表示（第 X 讲 5.1）。
+(iii) 若 $G$ 可\Term{split}{分裂}，则以上\Term{exact-sequence}{正合列}\Term{splitting}{分裂}。更精确地，对 $G$ 的每个\Term{pinning}{钉扎}，\Term{morphism}{态射}（参见 1.2 (*)）
+\[p\circ a:E_S\longrightarrow\operatorname{Autext}(G)\]
+为\Term{isomorphism}{同构}。
+\end{SGAresult}
+先说明怎样由以下引理推出定理。
+\begin{SGAresult}{引理}{1.4}
+在 (iii) 的假设下，$\operatorname{Aut}_{S\text{-gr.}}(G)$ 是\Term{semidirect-product}{半直积} $a(E_S)\cdot\operatorname{ad}(G)$。\footnote[3]{编者注：这里及下文将记号 $\operatorname{int}(G)$ 换成了 $\operatorname{ad}(G)$。}
+\end{SGAresult}
+当 $G$ 可\Term{split}{分裂}时，引理立即给出定理。由于 $G$ 在\Term{etale}{平展}\Term{topology}{拓扑}下\Term{local-scheme}{局部}可\Term{split}{分裂}（第 XXII 讲 2.3），故在 (fppf) \Term{topology}{拓扑}下也如此，而后者对\Term{twisted-constant}{扭常值}\Term{morphism}{态射}的\Term{fibre-category}{纤维范畴}是“\Term{effective-descent}{有效下降}”的（第 X 讲 5.5），由此推出一般情形的 (ii)（参见第 IV 讲 4.6.8）。为推出 (i)，注意 $\operatorname{ad}(G)$ 在 $S$ 上\Term{affine}{仿射}，所以只要 $\operatorname{Aut}_{S\text{-gr.}}(G)$ \Term{representable}{可表}，$p$ 就是\Term{affine}{仿射}\Term{morphism}{态射}；再对\Term{affine}{仿射}\Term{scheme}{概形}使用\Term{descent}{下降}即可。\footnote[4]{编者注：参见 SGA 1，VIII 2.1。}
+因此只须证明 1.4。为此，只须证明：
+\begin{SGAresult}{引理}{1.5}
+若 $(\mathcal R,\mathcal E)$ 和 $(\mathcal R',\mathcal E')$ 是 $S$-\Term{reductive-group}{约化群} $G$ 的两个\Term{pinning}{钉扎}，则存在唯一的 $G$ 在 $S$ 上的\Term{inner-automorphism}{内自同构} $u$ 将一个变成另一个（即存在 $v:\mathcal R'\xrightarrow\sim\mathcal R$，使 $u(\mathcal E)=v(\mathcal E')$，参见 1.0）。
+\end{SGAresult}
+\textbf{1.5.1. 唯一性。} 只须证明：若 $G$ 为 $S$-\Term{pinned-group}{钉扎群}，且 $\operatorname{int}(g)$ 是\Term{pinned-group}{钉扎群}\Term{automorphism}{自同构}（$g\in G(S)$），则 $\operatorname{int}(g)=\mathrm{id}$。首先 $\operatorname{int}(g)T=T$，$\operatorname{int}(g)B=B$，所以
+\[g\in\operatorname{Norm}_G(T)(S)\cap\operatorname{Norm}_G(B)(S)=T(S)\]
+（例如参见第 XXII 讲 5.6.1）。故 $\operatorname{int}(g)$ \Term{normalization}{正规化}每个 $U_\alpha$，并且对每个 $\alpha\in\Delta$ 有
+\[\operatorname{Lie}(\operatorname{int}(g))X_\alpha=\operatorname{Ad}(g)X_\alpha=\alpha(g)X_\alpha.\]
+于是 $\alpha(g)=1$（$\alpha\in\Delta$），故
+\[g\in\bigcap_{\alpha\in\Delta}(\operatorname{Ker}\alpha)(S)=\operatorname{Centr}(G)(S)\]
+（第 XXII 讲 4.1.8）。证毕。
+\textbf{1.5.2. 存在性。} 只须在 (fpqc) \Term{topology}{拓扑}下\Term{local-scheme}{局部}证明。设两个\Term{pinning}{钉扎}为
+\[(T,M,R,\Delta,(X_\alpha)_{\alpha\in\Delta}),\qquad(T',M',R',\Delta',(X'_{\alpha'})_{\alpha'\in\Delta'}).\]
+由\Term{maximal-torus}{极大环面}的\Term{conjugacy}{共轭}性，可设 $T=T'$。适当\Term{restriction}{限制} $S$ 后，可设\Term{isomorphism}{同构} $D_S(M)\simeq D_S(M')$ 来自把 $R$ 送到 $R'$ 的\Term{isomorphism}{同构} $M\simeq M'$，于是归结为 $T=T'$，$M=M'$，$R=R'$ 的情形。由于\Term{simple-root}{单根}系在 \Term{weyl-group}{Weyl 群}下\Term{conjugacy}{共轭}（第 XXI 讲 3.3.7），还可设 $\Delta=\Delta'$。
+\SourcePage{219}
+于是，对每个 $\alpha\in\Delta$，存在标量 $z_\alpha\in\mathbb G_m(S)$ 使 $X'_\alpha=z_\alpha X_\alpha$；只须在 (fpqc) 下\Term{local-scheme}{局部}构造 $T$ 的\Term{section}{截面} $t$，使每个 $\alpha\in\Delta$ 满足 $\alpha(t)=z_\alpha$。而以 $\{\alpha,\alpha\in\Delta\}$ 为\Term{set-component}{分量}的\Term{morphism}{态射} $T\to(\mathbb G_{m,S})^\Delta$ 是\Term{injectivity}{单射} $\mathbb Z^\Delta\to M$ 的\Term{duality}{对偶}，故\Term{faithfully-flat}{忠实平坦}。这就完成了 1.5.2 从而 1.3 的证明。
+\begin{SGAresult}{推论}{1.6}
+设 $S$ 为\Term{scheme}{概形}，$G$ 为 $S$-\Term{reductive-group}{约化群}。下列条件\Term{equivalence}{等价}：
+(i) $\operatorname{Aut}_{S\text{-gr.}}(G)$ 在 $S$ 上\Term{affine}{仿射}（相应地，\Term{finite-type}{有限型}、\Term{finite-presentation}{有限呈示}、\Term{quasi-compact}{拟紧}）。
+(ii) $\operatorname{Autext}(G)$ 在 $S$ 上\Term{finite}{有限}。
+(iii) 对每个 $s\in S$，$\operatorname{rgred}(G_s)-\operatorname{rgss}(G_s)\leq1$。
+\end{SGAresult}
+事实上，$\operatorname{ad}(G)$ 在 $S$ 上\Term{affine}{仿射}、\Term{flat}{平坦}且\Term{finite-presentation}{有限呈示}，故 $p:\operatorname{Aut}_{S\text{-gr.}}(G)\to\operatorname{Autext}(G)$ \Term{affine}{仿射}、\Term{faithfully-flat}{忠实平坦}且\Term{finite-presentation}{有限呈示}。若 $\operatorname{Autext}(G)$ 在 $S$ 上\Term{finite}{有限}，则它在 $S$ 上\Term{affine}{仿射}，$\operatorname{Aut}_{S\text{-gr.}}(G)$ 也如此，故 (ii)$\Rightarrow$(i)。若 $\operatorname{Aut}_{S\text{-gr.}}(G)$ 在 $S$ 上\Term{quasi-compact}{拟紧}，则它在 $S$ 上\Term{finite-presentation}{有限呈示}（因为它总在 $S$ 上\Term{local-scheme}{局部}\Term{finite-presentation}{有限呈示}且\Term{separated}{分离}）；由第 V 讲 9.1，$\operatorname{Autext}(G)$ 在 $S$ 上\Term{finite-presentation}{有限呈示}，故\Term{finite}{有限}，因而 (i)$\Rightarrow$(ii)。最后，为证 (ii) 与 (iii) \Term{equivalence}{等价}，可设 $G$ 已\Term{split}{分裂}，归结为第 XXI 讲 6.7.8。
+\begin{SGAresult}{推论}{1.7}
+设 $S$ 为\Term{scheme}{概形}，$G$ 为 $S$-\Term{reductive-group}{约化群}。则 $\operatorname{Aut}_{S\text{-gr.}}(G)^0\simeq\operatorname{ad}(G)$。
+\end{SGAresult}
+\begin{SGAresult}{推论}{1.8}
+设 $S$ 为\Term{scheme}{概形}，$G$ 为 $S$-\Term{reductive-group}{约化群}，$H$ 为在 $S$ 上\Term{smooth}{光滑}、\Term{affine}{仿射}且\Term{fiber}{纤维}\Term{connected}{连通}的 $S$-\Term{group-scheme}{群概形}。则 $S$-\Term{functor}{函子} $\operatorname{Isom}_{S\text{-gr.}}(G,H)$ 可由在 $S$ 上\Term{smooth}{光滑}且\Term{separated}{分离}的 $S$-\Term{scheme}{概形}表示（若 $G$ \Term{semisimple}{半单}，则在 $S$ 上\Term{affine}{仿射}）。
+\end{SGAresult}
+事实上，设 $U$ 是使 $H_s$ \Term{reduced}{约化}的 $S$ 中点 $s$ 的\Term{set}{集合}；它是\Term{open-subset}{开集}（第 XIX 讲 2.6）。若 $S'$ 为 $S$-\Term{scheme}{概形}，则 $H_{S'}$ \Term{reduced}{约化}当且仅当 $S'\to S$ 经过 $U$ \Term{resolution}{分解}。因此\Term{canonical}{典范}\Term{morphism}{态射} $\operatorname{Isom}_{S\text{-gr.}}(G,H)\to S$ 经过 $U$ \Term{resolution}{分解}。可设 $S=U$，归结为：
+\begin{SGAresult}{推论}{1.9}
+设 $S$ 为\Term{scheme}{概形}，$G,G'$ 为两个 $S$-\Term{reductive-group}{约化群}。则 $F=\operatorname{Isom}_{S\text{-gr.}}(G,G')$ 可由在 $S$ 上\Term{smooth}{光滑}且\Term{separated}{分离}的 $S$-\Term{scheme}{概形}表示（若 $G$ 或 $G'$ \Term{semisimple}{半单}，则为\Term{affine}{仿射}）。此外，$S$ \Term{resolution}{分解}为两个开子\Term{scheme}{概形} $S_1,S_2$ 之和，使 $F_{S_1}=\varnothing$，而 $F_{S_2}$ 是 $\operatorname{Aut}_{S_2\text{-gr.}}(G'_{S_2})$ 下的左\Term{principal-homogeneous-bundle}{主齐性丛}（相应地，是 $\operatorname{Aut}_{S_2\text{-gr.}}(G_{S_2})$ 下的右\Term{principal-homogeneous-bundle}{主齐性丛}）。
+\end{SGAresult}
+\SourcePage{220}
+事实上，设 $S_2$ 是 $G,G'$ 同型的点的\Term{set}{集合}，$S_1$ 为其补集。由于\Term{reductive-group}{约化群}的型是\Term{locally-constant}{局部常值}函数，$S_1,S_2$ 都开。显然 $F_{S_1}=\varnothing$，可设 $S=S_2$。由第 XXIII 讲 5.6，$F$ 是 $\operatorname{Aut}_{S\text{-gr.}}(G)$ 下在\Term{etale}{平展}\Term{topology}{拓扑}下\Term{locally-trivial}{局部平凡}的\Term{principal-homogeneous}{主齐性}\Term{sheaf}{层}。因此 $F'=F/\operatorname{ad}(G)$ 是 $\operatorname{Autext}(G)$ 下在\Term{etale}{平展}\Term{topology}{拓扑}下\Term{locally-trivial}{局部平凡}的\Term{principal-homogeneous}{主齐性}\Term{sheaf}{层}，故\Term{representable}{可表}（第 X 讲 5.5）。由于 $\operatorname{ad}(G)$ \Term{affine}{仿射}，$F$ 也\Term{representable}{可表}。
+注意，证明中还得到：
+\begin{SGAresult}{推论}{1.10}
+设 $S$ 为\Term{scheme}{概形}，$G,G'$ 为在每个 $s\in S$ 处同型的两个 $S$-\Term{reductive-group}{约化群}。则 $\operatorname{ad}(G)$ 自由地\Term{right-action}{右作用}于 $\operatorname{Isom}_{S\text{-gr.}}(G,G')$，商\Term{sheaf}{层}
+\[\operatorname{Isomext}(G,G')=\operatorname{Isom}_{S\text{-gr.}}(G,G')/\operatorname{ad}(G)\]
+可由\Term{twisted-constant}{扭常值} $S$-\Term{scheme}{概形}表示，并且是 $\operatorname{Autext}(G)$ 下的\Term{principal-homogeneous-bundle}{主齐性丛}（故若 $G$ \Term{semisimple}{半单}，它在 $S$ 上\Term{finite}{有限}）。此外，$u\mapsto u^{-1}$ 定义的\Term{isomorphism}{同构} $\operatorname{Isom}_{S\text{-gr.}}(G,G')\simeq\operatorname{Isom}_{S\text{-gr.}}(G',G)$ 诱导\Term{isomorphism}{同构} $\operatorname{Isomext}(G,G')\simeq\operatorname{Isomext}(G',G)$。
+\end{SGAresult}
+\textbf{注记 1.11。} 若 $\operatorname{Isomext}(G,G')(S)\ne\varnothing$，则称 $G$ 为 $G'$ 的\Term{inner-form}{内扭形式}；此时 $G'$ 也是 $G$ 的\Term{inner-form}{内扭形式}，且可将 $\operatorname{Isom}_{S\text{-gr.}}(G,G')$ 的结构群\Term{reduced}{约化}到 $\operatorname{ad}(G)$。更精确地，设 $u\in\operatorname{Isomext}(G,G')(S)$，视为\Term{section}{截面} $u:S\to\operatorname{Isomext}(G,G')$。以
+\[\operatorname{Isomint}_u(G,G')\]
+表示\Term{canonical}{典范}\Term{morphism}{态射} $\operatorname{Isom}_{S\text{-gr.}}(G,G')\to\operatorname{Isomext}(G,G')$ 下 $u$ 的像这一闭子\Term{scheme}{概形}的\Term{inverse-image}{逆像}。$\operatorname{ad}(G)$ 在其上的自然\Term{action}{作用}赋予它\Term{principal-homogeneous-bundle}{主齐性丛}结构；沿 $\operatorname{ad}(G)\to\operatorname{Aut}(G)$ \Term{group-extension}{扩张}结构群后，得到 $\operatorname{Isom}_{S\text{-gr.}}(G,G')$。\footnote[5]{编者注：将 $\operatorname{ad}(G)\to\operatorname{Autext}(G)$ 改为 $\operatorname{ad}(G)\to\operatorname{Aut}(G)$。}
+由 Hensel 引理（第 XI 讲 1.11），1.8 立即给出：
+\begin{SGAresult}{推论}{1.12}
+设 $S$ 为 Hensel \Term{local-scheme}{局部}\Term{scheme}{概形}，$G$ 为 $S$-\Term{reductive-group}{约化群}，$G'$ 为\Term{smooth}{光滑}\Term{affine}{仿射}且\Term{fiber}{纤维}\Term{connected}{连通}的 $S$-群，$s$ 为 $S$ 的\Term{closed-point}{闭点}。若 $G_s,G'_s$ 是\Term{isomorphism}{同构}的 $\kappa(s)$-\Term{algebraic-group}{代数群}，则 $G,G'$ \Term{isomorphism}{同构}。更精确地，每个 $\kappa(s)$-\Term{isomorphism}{同构} $G_s\simeq G'_s$ 均来自 $S$-\Term{isomorphism}{同构} $G\simeq G'$。
+\end{SGAresult}
+现在对域上的\Term{duality}{对偶}数\Term{scheme}{概形}应用 1.7（相应地，1.12），由第 III 讲 2.10（相应地，3.10）推出以下推论的 (i)（相应地，(ii)）。
+\begin{SGAresult}{推论}{1.13}
+设 $k$ 为域，$G$ 为 $k$-\Term{reductive-group}{约化群}。
+\SourcePage{221}
+(i) 若 $G$ 为\Term{adjoint-group}{伴随群}，则 $H^1(G,\operatorname{Lie}(G/k))=0$。\footnote[6]{编者注：修正了原文，原文陈述 (i) 时未假设 $G$ 为\Term{adjoint-group}{伴随群}。由 $H^i(G,-)$ 是 $\operatorname{Hom}_G(k,-)$ 的\Term{derive}{导出}\Term{functor}{函子}这一刻画（第 I 讲 5.3.1，亦见 [Ja87]，I 4.16），对任意 $G$-模 $V$ 有 $H^i(G,V)=\operatorname{Ext}^i_G(k,V)$；若 $\operatorname{car}(k)=p>0$，$G=\operatorname{SL}_{p,k}$，则 $\operatorname{Lie}(\operatorname{GL}_p/k)$ 是 $k$ 由 $\mathfrak g=\operatorname{Lie}(\operatorname{SL}_p/k)$ 的非平凡\Term{group-extension}{扩张}，故 $H^1(G,\mathfrak g)\ne0$。亦见下文增补 1.15.1。}
+(ii) $H^2(G,\operatorname{Lie}(G/k))=0$。
+\end{SGAresult}
+\textbf{注记 1.14。} (i) 关于 $H^1$ 的断言早已知晓（Chevalley）；关于 $H^2$ 的断言，Chevalley 已在分类的大多数情形中证明。
+(ii) 实际上，1.13 与\Term{algebraically-closed-field}{代数闭域}上的唯一性定理合起来，本质上\Term{equivalence}{等价}于唯一性定理。因此，1.13 的直接证明将给出从 Chevalley 在域上的唯一性定理推出一般唯一性定理的方法。
+任意\Term{scheme}{概形}上存在所有型的\Term{reductive-group}{约化群}（第 XXV 讲），这表明把 $k$-\Term{reductive-group}{约化群} $G$ \Term{lifting}{提升}到\Term{residue-field}{剩余域}为 $k$ 的 Artin 环上的障碍为零；由第 III 讲 3.8，这些障碍是
+\[H^3(G,\operatorname{Lie}(G/k)\otimes V)\simeq H^3(G,\operatorname{Lie}(G/k))\otimes V\]
+中的元素，其中 $V$ 为某个 $k$-\Term{vector-space}{向量空间}，赋予 $G$ 的\Term{trivial-action}{平凡作用}。这似乎暗示 $H^3(G,\operatorname{Lie}(G/k))=0$。同样，若这一事实成立，其直接证明无疑将给出从域上的存在性定理（Chevalley 的 Tôhoku 论文）推出一般存在性定理的方法。
+\begin{SGAresult}{推论}{1.15}
+设 $k$ 为域，\footnote[7]{编者注：将“\Term{scheme}{概形}”换成“域”。}$G$ 为 $k$-\Term{reductive-group}{约化群}。将 $k$ 视为平凡 $G$-模，则 $H^1(G,k)=H^2(G,k)=0$。
+\end{SGAresult}
+\begin{proof}
+\footnote[8]{编者注：由于对 1.13 所作的修正，这里给出 $H^1$ 情形的另一证明。此外，G. Kempf 的一个定理给出：对所有 $i>0$，$H^i(G,k)=0$，参见 [Ja87]，II 4.5、4.11。}
+由于 $H^i(G_{\bar k},\bar k)=H^i(G,k)\otimes\bar k$，可设 $k$ \Term{algebraically-closed}{代数闭}。$H^1(G,k)$ 的元素就是 $k$-群\Term{morphism}{态射} $\varphi:G\to\mathbb G_{a,k}$。此时 $\varphi(G)=G/\operatorname{Ker}(\varphi)$ 是 $\mathbb G_{a,k}$ 的\Term{smooth}{光滑}、\Term{connected}{连通}、\Term{reduced}{约化}\Term{subgroup}{子群}（参见 XIX 1.7），故为平凡群。因此 $H^1(G,k)=0$。
+再考虑 $k$-\Term{reductive-group}{约化群} $H=G\times_k\mathbb G_{m,k}$。有 $\operatorname{Lie}(H/k)=\operatorname{Lie}(G/k)\oplus k$，这一\Term{resolution}{分解}在 $H$ 下\Term{stable}{稳定}。对任意 $H$-模 $V$，有
+\[H^i(H,V)=H^i(G,H^0(\mathbb G_{m,k},V))\]
+（这来自把 $H^i(H,-)$ 刻画为 $H^0(H,-)=H^0(G,H^0(\mathbb G_{m,k},-))$ 的\Term{derive}{导出}\Term{functor}{函子}，以及 $H^0(\mathbb G_{m,k},-)$ 的\Term{exactness}{正合性}，参见第 I 讲 5.3.1、5.3.3）。特别地，对每个 $i$ 有
+\[H^i(H,\operatorname{Lie}(H/k))=H^i(G,\operatorname{Lie}(G/k))\oplus H^i(G,k).\]
+\SourcePage{222}
+对\Term{reductive-group}{约化群} $H$ 应用 1.13 (ii)，即得 $H^2(G,k)=0$。
+\end{proof}
+\begin{SGAresult}{推论}{1.15.1}
+\footnote[9]{编者注：根据 Gabber 的意见增添此推论，以精确说明 1.13 (i)。}
+设 $k$ 为域，$G$ 为 $k$-\Term{reductive-group}{约化群}，$Z$ 为其\Term{center}{中心}，$\mathcal R=(M,M^*,R,R^*)$ 为 $G$ 的型。则
+\[H^1(G,\operatorname{Lie}(G/k))\simeq\operatorname{Ext}^1_{\mathbb Z}(M/\Gamma_0(R),k).\]
+特别地，$H^1(G,\operatorname{Lie}(G/k))=0$ 当且仅当 $Z$ 在 $k$ 上\Term{smooth}{光滑}。
+\end{SGAresult}
+\begin{proof}
+设 $\mathfrak g$（相应地，$\mathfrak z,\mathfrak g^{\mathrm{ad}}$）为 $G$（相应地，$Z,G^{\mathrm{ad}}=G/Z$）的 \Term{lie-algebra}{Lie 代数}。由 1.15 及其证明有
+\[H^1(G,\mathfrak g)=H^1(G^{\mathrm{ad}},\mathfrak g)\simeq H^1(G^{\mathrm{ad}},\mathfrak g/\mathfrak z).\]
+令 $C=\operatorname{Coker}(\mathfrak g\to\mathfrak g^{\mathrm{ad}})$，有\Term{exact-sequence}{正合列}
+\[0\longrightarrow\mathfrak g/\mathfrak z\longrightarrow\mathfrak g^{\mathrm{ad}}\longrightarrow C\longrightarrow0.\]
+因为 $H^1(G^{\mathrm{ad}},\mathfrak g^{\mathrm{ad}})=0$（1.13），$H^0(G^{\mathrm{ad}},\mathfrak g^{\mathrm{ad}})=0$（参见第 II 讲 5.2.3），得到
+\[H^1(G^{\mathrm{ad}},\mathfrak g/\mathfrak z)\simeq H^0(G^{\mathrm{ad}},C).\]
+计算右端时可设 $k$ \Term{algebraically-closed}{代数闭}。设 $(G,T,M,R)$ 为 $G$ 的一个\Term{split}{分裂}结构；则 $Z=D_k(M/\Gamma_0(R))$，且 $C$ 等同于
+\[\operatorname{Coker}\bigl(\operatorname{Hom}_{\mathbb Z}(M,k)\longrightarrow\operatorname{Hom}_{\mathbb Z}(\Gamma_0(R),k)\bigr)\simeq\operatorname{Ext}^1_{\mathbb Z}(M/\Gamma_0(R),k),\]
+赋予 $G^{\mathrm{ad}}$ 的\Term{trivial-action}{平凡作用}。推论随即成立，因为 $Z$ 在 $k$ 上不\Term{smooth}{光滑}当且仅当 $\operatorname{car}(k)=p>0$ 且 $M/\Gamma_0(R)$ 有 $p$-挠元（第 IX 讲 2.1）。
+\end{proof}
+\begin{SGAresult}{定义}{1.16}
+设 $S$ 为\Term{scheme}{概形}，$G$ 为 $S$-\Term{reductive-group}{约化群}。$G$ 在 $S$ 上的\Term{form}{形式}指在 (fpqc) \Term{topology}{拓扑}下\Term{local-scheme}{局部}\Term{isomorphism}{同构}于 $G$ 的 $S$-\Term{group-scheme}{群概形} $G'$（\Term{equivalence}{等价}地，$G'$ 在\Term{etale}{平展}\Term{topology}{拓扑}下\Term{local-scheme}{局部}\Term{isomorphism}{同构}于 $G$，又\Term{equivalence}{等价}于 $G'$ 为在 $S$ 每点处与 $G$ 同型的 $S$-\Term{reductive-group}{约化群}，参见第 XXIII 讲 5.6）。
+\end{SGAresult}
+\begin{SGAresult}{推论}{1.17}
+设 $S$ 为\Term{scheme}{概形}，$G$ 为 $S$-\Term{reductive-group}{约化群}。
+(i) \Term{functor}{函子} $G'\mapsto\operatorname{Isom}_{S\text{-gr.}}(G,G')$ 给出 $G$ 在 $S$ 上的\Term{form}{形式}的\Term{category}{范畴}与 $\operatorname{Aut}_{S\text{-gr.}}(G)$ 下\Term{principal-homogeneous-bundle}{主齐性丛}\Term{category}{范畴}的\Term{equivalence}{等价}。
+(ii) 若 $S'\to S$ 是\Term{covering}{覆盖}\Term{morphism}{态射}，则被 $S'$ \Term{trivialization}{平凡化}的\Term{form}{形式}与被 $S'$ \Term{trivialization}{平凡化}的丛相对应。
+(iii) $\operatorname{Aut}_{S\text{-gr.}}(G)$ 下每个\Term{principal-homogeneous}{主齐性}\Term{sheaf}{层}均\Term{representable}{可表}且\Term{quasi-isotrivial}{拟等平凡}（即在\Term{etale}{平展}\Term{topology}{拓扑}下\Term{locally-trivial}{局部平凡}）。
+\end{SGAresult}
+\SourcePage{223}
+第一条断言在\Term{sheaf}{层}\Term{category}{范畴}（例如 (fpqc) \Term{sheaf}{层}\Term{category}{范畴}）中是\Term{form}{形式}的。另一方面，每个在 (fpqc) 下\Term{local-scheme}{局部}\Term{isomorphism}{同构}于 $G$ 的\Term{sheaf}{层}均\Term{representable}{可表}（因为 $G$ 在 $S$ 上\Term{affine}{仿射}），且在\Term{etale}{平展}\Term{topology}{拓扑}下\Term{local-scheme}{局部}\Term{isomorphism}{同构}于 $G$。最后，由 1.8，对 $G$ 的每个\Term{form}{形式} $G'$，$S$-\Term{sheaf}{层} $\operatorname{Isom}_{S\text{-gr.}}(G,G')$ \Term{representable}{可表}。推论立即成立。
+\begin{SGAresult}{推论}{1.18}
+\Term{reductive-group}{约化群} $G$ 在 $S$ 上的\Term{form}{形式}的\Term{isomorphism}{同构}类\Term{set}{集合}与
+\[H^1(S,\operatorname{Aut}_{S\text{-gr.}}(G))=H^1_{\text{ét}}(S,\operatorname{Aut}_{S\text{-gr.}}(G))=\operatorname{Fib}(S,\operatorname{Aut}_{S\text{-gr.}}(G))\]
+\Term{isomorphism}{同构}。若 $S'\to S$ 是\Term{covering}{覆盖}\Term{morphism}{态射}，则由被 $S'$ \Term{trivialization}{平凡化}的\Term{form}{形式}组成的\Term{subset}{子集}\Term{isomorphism}{同构}于 $H^1(S'/S,\operatorname{Aut}_{S\text{-gr.}}(G))$。
+\end{SGAresult}
+\begin{SGAresult}{推论}{1.19}
+设 $S$ 为\Term{scheme}{概形}，$\mathcal R$ 为\Term{reduced-root-datum}{约化}\Term{pinning}{钉扎}\Term{root-datum}{根数据}，且 $G^{\mathrm{Ép}}_S(\mathcal R)$ 存在\footnote[10]{编者注：参见 XXIII，定义 5.11。}（这一条件自动满足，参见第 XXV 讲）。记
+\[A_S(\mathcal R)=\operatorname{Aut}_{S\text{-gr.}}(G^{\mathrm{Ép}}_S(\mathcal R))=\operatorname{ad}(G^{\mathrm{Ép}}_S(\mathcal R))\cdot E(\mathcal R)_S.\]
+(i) $\mathcal R$ 型 $S$-\Term{reductive-group}{约化群}（第 XXII 讲 2.7）的\Term{isomorphism}{同构}类\Term{set}{集合}，由第 XXIII 讲 5.12，\Term{isomorphism}{同构}于
+\[H^1(S,A_S(\mathcal R))=H^1_{\text{ét}}(S,A_S(\mathcal R))=\operatorname{Fib}(S,A_S(\mathcal R)).\]
+(ii) 若 $S'\to S$ 是\Term{covering}{覆盖}\Term{morphism}{态射}，则由在 $S'$ 上可\Term{split}{分裂}的群的类组成的\Term{subset}{子集}\Term{isomorphism}{同构}于 $H^1(S'/S,A_S(\mathcal R))$。
+\end{SGAresult}
+\textbf{注记 1.20。} 沿用上述记号，每个 $\mathcal R$ 型 $S$-\Term{reductive-group}{约化群}\Term{canonical}{典范}地对应于 $A_S(\mathcal R)$ 下的右\Term{principal-homogeneous-bundle}{主齐性丛}
+\[P=\operatorname{Isom}_{S\text{-gr.}}(G^{\mathrm{Ép}}_S(\mathcal R),G).\]
+注意 $P$ \Term{solvable}{可解}释为“$G$ 的 $\mathcal R$ 型\Term{pinning}{钉扎}\Term{scheme}{概形}”（参见 1.0）。此外，$P$ 也是 $\operatorname{Aut}_{S\text{-gr.}}(G)$ 下的左\Term{principal-homogeneous-bundle}{主齐性丛}；上述描述立即显出这一结构。
+\begin{SGAresult}{命题}{1.21}
+设 $S$ 为 Hensel \Term{local-scheme}{局部}\Term{scheme}{概形}，$s$ 为其\Term{closed-point}{闭点}。\Term{functor}{函子} $G\mapsto G_s$ 诱导从 $S$-\Term{reductive-group}{约化群}的\Term{isomorphism}{同构}类\Term{set}{集合}到 $\kappa(s)$-\Term{reductive-group}{约化群}的\Term{isomorphism}{同构}类\Term{set}{集合}的\Term{bijection}{双射}。特别地，对每个 $S$-\Term{reductive-group}{约化群} $G$，存在\Term{etale}{平展}\Term{finite}{有限}\Term{surjectivity}{满射} $S'\to S$ 使 $G_{S'}$ 可\Term{split}{分裂}。
+\end{SGAresult}
+\begin{proof}
+利用 $G^{\mathrm{Ép}}_S(\mathcal R)$ 的存在性（第 XXV 讲），归结为证明：记 $H=A_S(\mathcal R)$，则\Term{canonical}{典范}映射 $\operatorname{Fib}(S,H)\to\operatorname{Fib}(\kappa(s),H_s)$
+\SourcePage{224}
+是\Term{bijection}{双射}（并且 $\operatorname{Fib}(S,H)$ 的每个元素均具有上述性质）。$H$ 的每个\Term{finite}{有限}\Term{subset}{子集}都包含在一个\Term{affine}{仿射}\Term{open-subset}{开集}中（这对\Term{constant-group}{常值群}显然，而 $H$ 在一个\Term{constant-group}{常值群}上\Term{affine}{仿射}）；故可使用附录中证明的结果（8.1）。
+\end{proof}
+\SGAsection{2}{自同构与子群}
+引入记号：若 $H=\operatorname{Aut}_{S\text{-gr.}}(G)$，$X$ 为 $G$ 的子\Term{functor}{函子}，则记
+\[\operatorname{Aut}_{S\text{-gr.}}(G,X)=\operatorname{Norm}_H(X),\qquad\operatorname{Aut}_{S\text{-gr.}}(G,\mathrm{id}_X)=\operatorname{Centr}_H(X).\]
+若 $Y$ 为 $G$ 的第二个子\Term{functor}{函子}，同样定义 $\operatorname{Aut}_{S\text{-gr.}}(G,X,Y)=\operatorname{Aut}_{S\text{-gr.}}(G,X)\cap\operatorname{Aut}_{S\text{-gr.}}(G,Y)$。若 $G'$ 为第二个 $S$-群，$X'$ 为 $G$ 的子\Term{functor}{函子}，则以 $\operatorname{Isom}_{S\text{-gr.}}(G,X;G',X')$ 表示由以下条件定义的 $\operatorname{Isom}_{S\text{-gr.}}(G,G')$ 的子\Term{functor}{函子}：对每个 $S'\to S$，
+\[\operatorname{Isom}_{S\text{-gr.}}(G,X;G',X')(S')=\{u\in\operatorname{Isom}_{S\text{-gr.}}(G,G')(S')\mid u(X_{S'})=X'_{S'}\}.\]
+同样定义 $\operatorname{Isom}_{S\text{-gr.}}(G,X,Y;G',X',Y')$ 等。\footnote[11]{编者注：这里展开了上述定义（原文只说：“同样定义 $\operatorname{Aut}_{S\text{-gr.}}(G,X,Y),\ldots,\operatorname{Isom}_{S\text{-gr.}}(G,X;G',X'),\ldots$”）。}
+\begin{SGAresult}{命题}{2.1}
+设 $S$ 为\Term{scheme}{概形}，$G$ 为 $S$-\Term{reductive-group}{约化群}，$T$ 为 $G$ 的\Term{maximal-torus}{极大环面}（相应地，$B$ 为 $G$ 的 \Term{borel-subgroup}{Borel 子群}；或 $B\supset T$ 为 $G$ 的\Term{killing-pair}{Killing 对}）。以 $T^{\mathrm{ad}}$（相应地，$B^{\mathrm{ad}}$）表示 $\operatorname{ad}(G)$ 中对应于 $T$（相应地，$B$）的\Term{maximal-torus}{极大环面}（相应地，\Term{borel-subgroup}{Borel 子群}）：
+\[B^{\mathrm{ad}}\simeq B/\operatorname{Centr}(G)=B/\operatorname{Centr}(B),\qquad T^{\mathrm{ad}}\simeq T/\operatorname{Centr}(G).\]
+则 $\operatorname{Aut}_{S\text{-gr.}}(G,T)$（相应地，$\operatorname{Aut}_{S\text{-gr.}}(G,B)$，$\operatorname{Aut}_{S\text{-gr.}}(G,B,T)$）可由 $\operatorname{Aut}_{S\text{-gr.}}(G)$ 的在 $S$ 上\Term{smooth}{光滑}的闭子\Term{scheme}{概形}表示，且定理 1.3 的\Term{exact-sequence}{正合列}诱导\Term{exact-sequence}{正合列}
+\begin{gather*}
+1\longrightarrow\operatorname{Norm}_{\operatorname{ad}(G)}(T^{\mathrm{ad}})\longrightarrow\operatorname{Aut}_{S\text{-gr.}}(G,T)\longrightarrow\operatorname{Autext}(G)\longrightarrow1,\\
+1\longrightarrow B^{\mathrm{ad}}\longrightarrow\operatorname{Aut}_{S\text{-gr.}}(G,B)\longrightarrow\operatorname{Autext}(G)\longrightarrow1,\\
+1\longrightarrow T^{\mathrm{ad}}\longrightarrow\operatorname{Aut}_{S\text{-gr.}}(G,B,T)\longrightarrow\operatorname{Autext}(G)\longrightarrow1.
+\end{gather*}
+\end{SGAresult}
+\begin{proof}
+由闭子\Term{scheme}{概形}的\Term{descent}{下降}，\footnote[12]{编者注：参见 SGA 1，VIII 1.9。}立即归结为 $G$ 已\Term{pinning}{钉扎}、$B\supset T$ 为其\Term{canonical}{典范}\Term{killing-pair}{Killing 对}的情形（参见第 XXII 讲 5.5.5 (iv)）。由于 1.2 的群 $E$ \Term{normalization}{正规化} $B,T$，结果立即由 $\operatorname{ad}(G)$ 中的\Term{normalization}{正规化}定理推出（第 XXII 讲 5.3.12、5.6.1）。
+\end{proof}
+现在使用\Term{conjugacy}{共轭}定理（参见第 XXIII 讲 5.12），仿照第 1 节的论证，得到：
+\SourcePage{225}
+\begin{SGAresult}{推论}{2.2}
+设 $S$ 为\Term{scheme}{概形}，$G,G'$ 为在每一点处同型的两个 $S$-\Term{reductive-group}{约化群}。设 $B\supset T$（相应地，$B'\supset T'$）为 $G$（相应地，$G'$）的\Term{killing-pair}{Killing 对}。
+(i) $S$-\Term{functor}{函子} $\operatorname{Isom}_{S\text{-gr.}}(G,T;G',T')$ 可由 $\operatorname{Isom}_{S\text{-gr.}}(G,G')$ 的\Term{smooth}{光滑}闭子\Term{scheme}{概形}表示，且在 $\operatorname{Aut}_{S\text{-gr.}}(G,T)$ 下\Term{principal-homogeneous}{主齐性}。此外，$\operatorname{Norm}_{\operatorname{ad}(G)}(T^{\mathrm{ad}})$ \Term{free-action}{自由作用}于这一\Term{scheme}{概形}，并有\Term{canonical}{典范}\Term{isomorphism}{同构}
+\[\operatorname{Isom}_{S\text{-gr.}}(G,T;G',T')/\operatorname{Norm}_{\operatorname{ad}(G)}(T^{\mathrm{ad}})\simeq\operatorname{Isomext}(G,G').\]
+(ii) $S$-\Term{functor}{函子} $\operatorname{Isom}_{S\text{-gr.}}(G,B;G',B')$ 可由 $\operatorname{Isom}_{S\text{-gr.}}(G,G')$ 的\Term{smooth}{光滑}闭子\Term{scheme}{概形}表示，且在 $\operatorname{Aut}_{S\text{-gr.}}(G,B)$ 下\Term{principal-homogeneous}{主齐性}。此外，$B^{\mathrm{ad}}$ \Term{free-action}{自由作用}于这一\Term{scheme}{概形}，并有\Term{canonical}{典范}\Term{isomorphism}{同构}
+\[\operatorname{Isom}_{S\text{-gr.}}(G,B;G',B')/B^{\mathrm{ad}}\simeq\operatorname{Isomext}(G,G').\]
+(iii) $S$-\Term{functor}{函子} $\operatorname{Isom}_{S\text{-gr.}}(G,B,T;G',B',T')$ 可由 $\operatorname{Isom}_{S\text{-gr.}}(G,G')$ 的\Term{smooth}{光滑}闭子\Term{scheme}{概形}表示，且在 $\operatorname{Aut}_{S\text{-gr.}}(G,B,T)$ 下\Term{principal-homogeneous}{主齐性}。此外，$T^{\mathrm{ad}}$ \Term{free-action}{自由作用}于这一\Term{scheme}{概形}，并有\Term{canonical}{典范}\Term{isomorphism}{同构}
+\[\operatorname{Isom}_{S\text{-gr.}}(G,B,T;G',B',T')/T^{\mathrm{ad}}\simeq\operatorname{Isomext}(G,G').\]
+\end{SGAresult}
+再次仿照第 1 节论证，得到：
+\begin{SGAresult}{推论}{2.3}
+设 $S$ 为\Term{scheme}{概形}，$G$ 为 $S$-\Term{reductive-group}{约化群}，$B\supset T$ 为 $G$ 的\Term{killing-pair}{Killing 对}。\Term{functor}{函子}
+\[(G',T')\longmapsto\operatorname{Isom}_{S\text{-gr.}}(G,T;G',T'),\]
+相应地，
+\[(G',B')\longmapsto\operatorname{Isom}_{S\text{-gr.}}(G,B;B',B'),\]
+相应地，
+\[(G',B',T')\longmapsto\operatorname{Isom}_{S\text{-gr.}}(G,B,T;G',B',T'),\]
+给出如下两个\Term{category}{范畴}的\Term{equivalence}{等价}：一边是二元组 $(G;T')$（相应地，二元组 $(G',B')$、三元组 $(G',B',T')$）的\Term{category}{范畴}，其中 $G'$ 是 $G$ 的\Term{form}{形式}，$T'$ 是 $G'$ 的\Term{maximal-torus}{极大环面}（相应地，$B'$ 为 $G'$ 的 \Term{borel-subgroup}{Borel 子群}；$B'\supset T'$ 为 $G'$ 的\Term{killing-pair}{Killing 对}）；另一边是 $S$-群 $H$ 下\Term{principal-homogeneous-bundle}{主齐性丛}的\Term{category}{范畴}，其中 $H=\operatorname{Aut}_{S\text{-gr.}}(G,T)$（相应地，$H=\operatorname{Aut}_{S\text{-gr.}}(G,B)$、$H=\operatorname{Aut}_{S\text{-gr.}}(G,B,T)$）。
+此外，$H$ 下每个\Term{principal-homogeneous}{主齐性}\Term{sheaf}{层}均\Term{representable}{可表}且\Term{quasi-isotrivial}{拟等平凡}，所以
+\[H^1(S,H)=H^1_{\text{ét}}(S,H)=\operatorname{Fib}(S,H).\]
+\end{SGAresult}
+\textbf{注记 2.4。} 在 2.2 的条件下，\Term{set}{集合}意义上记为 $u\mapsto u(T)$（相应地，$u\mapsto u(B)$、$u\mapsto(u(B),u(T))$）的\Term{morphism}{态射}诱导\Term{isomorphism}{同构}
+\begin{align*}
+\operatorname{Isom}_{S\text{-gr.}}(G,G')/\operatorname{Aut}_{S\text{-gr.}}(G,T)&\simeq\operatorname{Tor}(G'),\\
+\text{相应地}\quad\operatorname{Isom}_{S\text{-gr.}}(G,G')/\operatorname{Aut}_{S\text{-gr.}}(G,B)&\simeq\operatorname{Bor}(G'),\\
+\text{相应地}\quad\operatorname{Isom}_{S\text{-gr.}}(G,G')/\operatorname{Aut}_{S\text{-gr.}}(G,B,T)&\simeq\operatorname{Kil}(G').
+\end{align*}
+\SourcePage{226}
+证明是直接的：只须在 (fpqc) 下\Term{local-scheme}{局部}证明，所以可设 $G\simeq G'$，于是归结为第 XXII 讲 5.8.3 (iii)。
+\textbf{注记 2.5。} 上述结果立即\Term{solvable}{可解}释为结构群的\Term{restriction}{限制}：若 $G'$ 是 $G$ 的\Term{form}{形式}，对应于\Term{principal-bundle}{主丛} $\operatorname{Isom}_{S\text{-gr.}}(G,G')$，则给定此丛的结构群到 $\operatorname{Aut}_{S\text{-gr.}}(G,T)$ 的一个\Term{restriction}{限制}，\Term{equivalence}{等价}于给定 $G'$ 的\Term{maximal-torus}{极大环面} $T'$；上述\Term{bijection}{双射}，一边是 2.4 中的\Term{bijection}{双射}，另一边是映射 $T'\mapsto\operatorname{Isom}_{S\text{-gr.}}(G,T;G',T')$。\Term{borel-subgroup}{Borel 子群}和\Term{killing-pair}{Killing 对}的情形相同。
+\begin{SGAresult}{命题}{2.6}
+设 $S$ 为\Term{scheme}{概形}，$G,G'$ 为在每点处同型的两个 $S$-\Term{reductive-group}{约化群}，$T$（相应地，$T'$）为 $G$（相应地，$G'$）的\Term{maximal-torus}{极大环面}。则 $T^{\mathrm{ad}}$ \Term{free-action}{自由作用}于 $\operatorname{Isom}_{S\text{-gr.}}(G,T;G',T')$，商
+\[P=\operatorname{Isom}_{S\text{-gr.}}(G,T;G',T')/T^{\mathrm{ad}}\]
+\Term{representable}{可表}，并且是 $A=\operatorname{Aut}_{S\text{-gr.}}(G,T)/T^{\mathrm{ad}}$ 下的\Term{principal-homogeneous-bundle}{主齐性丛}；$A$ 可由\Term{twisted-constant}{扭常值} $S$-\Term{scheme}{概形}表示，是 $\operatorname{Autext}(G)$ 由 $W_{\operatorname{ad}(G)}(T^{\mathrm{ad}})=\operatorname{Norm}_{\operatorname{ad}(G)}(T^{\mathrm{ad}})/T^{\mathrm{ad}}$ 的\Term{group-extension}{扩张}。此外，若令 $A$ 以显然的方式\Term{action}{作用}于 $T$，则与 $P$ 关联的丛正是 $T'$。
+\end{SGAresult}
+\begin{proof}
+第一部分立即来自前面的结果。为证第二部分，注意有显然的\Term{morphism}{态射} $P\times_ST\to T'$，由 $(u,t)\mapsto u(t)$ 定义；为证明它在对 $A$ 取商后诱导\Term{isomorphism}{同构}，仍可设 $(G,T)\simeq(G',T')$，此时结论直接成立。
+\end{proof}
+完全类似地，有：
+\begin{SGAresult}{命题}{2.7}
+设 $S$ 为\Term{scheme}{概形}，$G,G'$ 为在每点处同型的两个 $S$-\Term{reductive-group}{约化群}，$B\supset T$（相应地，$B'\supset T'$）为 $G$（相应地，$G'$）的\Term{killing-pair}{Killing 对}。令 $\operatorname{Aut}_{S\text{-gr.}}(G,B,T)/T^{\mathrm{ad}}\simeq\operatorname{Autext}(G)$ 以显然的方式\Term{action}{作用}于 $T$，则与 $\operatorname{Isomext}(G,G')$ 关联的丛正是 $T'$。
+\end{SGAresult}
+\begin{SGAresult}{推论}{2.8}
+设 $G,G'$ 为互为\Term{inner-form}{内扭形式}的两个 $S$-\Term{reductive-group}{约化群}，$B\supset T$（相应地，$B'\supset T'$）为 $G$（相应地，$G'$）的\Term{killing-pair}{Killing 对}。则 $T,T'$ \Term{isomorphism}{同构}。
+\end{SGAresult}
+\textbf{注记 2.9。} 一般不能断言 $B,B'$ \Term{isomorphism}{同构}；不过它们互为\Term{inner-form}{内扭形式}（参见第 5 节）。
+可以发展上述结果的“$\operatorname{Isomint}$”变体。\footnote[13]{编者注：回顾 $\operatorname{Isomint}_u(G,G')$ 定义于 1.11。}这里指出一个：
+\SourcePage{227}
+\begin{SGAresult}{命题}{2.10}
+设 $S$ 为\Term{scheme}{概形}，$G,G'$ 为在每点处同型的两个 $S$-\Term{reductive-group}{约化群}，$B\supset T$（相应地，$B'\supset T'$）为 $G$（相应地，$G'$）的\Term{killing-pair}{Killing 对}。设 $u\in\operatorname{Isomext}(G,G')(S)$，考虑
+\[\operatorname{Isomint}_u(G,B,T;G',B',T')=\operatorname{Isom}_{S\text{-gr.}}(G,B,T;G',B',T')\cap\operatorname{Isomint}_u(G,G').\]
+这是\Term{smooth}{光滑}\Term{affine}{仿射}的 $S$-\Term{scheme}{概形}，且为 $T^{\mathrm{ad}}$ 下的\Term{principal-homogeneous-bundle}{主齐性丛}。特别地，它的 $S$-点\Term{set}{集合}\Term{nonempty}{非空}，当且仅当 $H^1(S,T^{\mathrm{ad}})$ 中相应元素为零。
+\end{SGAresult}
+结束本节前，证明以后将用到的两个结果。
+\begin{SGAresult}{命题}{2.11}
+设 $S$ 为\Term{scheme}{概形}，$G$ 为 $S$-\Term{reductive-group}{约化群}，$T$ 为 $G$ 的\Term{maximal-torus}{极大环面}。显然的\Term{morphism}{态射}
+\[T^{\mathrm{ad}}\xrightarrow\sim\operatorname{Aut}_{S\text{-gr.}}(G,\mathrm{id}_T)\]
+是\Term{isomorphism}{同构}。
+\end{SGAresult}
+这由上述陈述推出；而且在 1.5.2 的证明中已给出直接证明。
+\begin{SGAresult}{推论}{2.12}
+在上述条件下，二元组 $(G',f)$ 的\Term{category}{范畴}与 $T^{\mathrm{ad}}$ 下\Term{principal-homogeneous-bundle}{主齐性丛}的\Term{category-equivalence}{范畴等价}；这里 $G'$ 为 $G$ 的\Term{form}{形式}，$f$ 为 $T$ 到 $G'$ 的某个\Term{maximal-torus}{极大环面}的\Term{isomorphism}{同构}。
+\end{SGAresult}
+\begin{SGAresult}{推论}{2.13}
+若 $H^1(S,T^{\mathrm{ad}})=0$，且 $G'$ 是 $G$ 的一个具有与 $T$ \Term{isomorphism}{同构}的\Term{maximal-torus}{极大环面}的\Term{form}{形式}，则 $G'$ 与 $G$ \Term{isomorphism}{同构}。
+\end{SGAresult}
+\begin{SGAresult}{推论}{2.14}
+设 $S$ 为满足 $\operatorname{Pic}(S)=0$ 的\Term{scheme}{概形}，$G$ 为型常值的 $S$-\Term{reductive-group}{约化群}。$G$ 可\Term{split}{分裂}当且仅当它有\Term{split-torus}{分裂极大环面}。
+\end{SGAresult}
+设 $G$ 为\Term{reductive-group}{约化群}，$\operatorname{rad}(G)$ 为其\Term{radical}{根基}（第 XXII 讲 4.3.9）；由于 $\operatorname{rad}(G)$ 在 $G$ 中为\Term{center}{中心}\Term{characteristic-subgroup}{特征子群}，有\Term{canonical}{典范}\Term{morphism}{态射}
+\[q:\operatorname{Autext}(G)\longrightarrow\operatorname{Aut}_{S\text{-gr.}}(\operatorname{rad}(G)).\]
+\begin{SGAresult}{命题}{2.15}
+设 $G$ 为 $S$-\Term{reductive-group}{约化群}。以下序列\Term{exact}{正合}：
+\[1\longrightarrow\operatorname{ad}(G)\longrightarrow\operatorname{Aut}_{S\text{-gr.}}(G;\mathrm{id}_{\operatorname{rad}(G)})\xrightarrow p\operatorname{Autext}(G)\xrightarrow q\operatorname{Aut}_{S\text{-gr.}}(\operatorname{rad}(G)),\]
+且 $\operatorname{Ker}(q)=\operatorname{Im}(p)$ 是 $\operatorname{Autext}(G)$ 的开闭子\Term{scheme}{概形}，在 $S$ 上\Term{finite}{有限}。
+\end{SGAresult}
+可设 $G$ 已\Term{split}{分裂}。第一条断言直接成立，第二条来自第 XXI 讲 6.7.5、6.7.7。记 $H=\operatorname{Aut}_{S\text{-gr.}}(G,\mathrm{id}_{\operatorname{rad}(G)})$，得到：
+\SourcePage{228}
+\begin{SGAresult}{推论}{2.16}
+二元组 $(G',f)$ 的\Term{category}{范畴}与某个 $S$-\Term{group-scheme}{群概形} $H$ 下\Term{principal-bundle}{主丛}的\Term{category-equivalence}{范畴等价}；其中 $G'$ 为 $G$ 的\Term{form}{形式}，$f$ 为 $\operatorname{rad}(G)$ 到 $G'$ 的\Term{radical}{根基}的\Term{isomorphism}{同构}。这里 $H$ 满足\Term{exact-sequence}{正合列}
+\[1\longrightarrow\operatorname{ad}(G)\longrightarrow H\longrightarrow F\longrightarrow1,\]
+其中 $S$-群 $F$ 在 $S$ 上\Term{etale}{平展}且\Term{finite}{有限}。
+\end{SGAresult}
+\SGAsection{3}{约化群的 Dynkin 概形；拟分裂群}
+\textbf{3.1.} 回顾（第 XXI 讲 7.4.1），\Term{dynkin-diagram}{Dynkin 图}是一个\Term{finite}{有限}集，带有由一组不同元素的\Term{ordered-pair}{有序对}（连接）和一个到 $\{1,2,3\}$ 的映射（长度）定义的结构。每个\Term{reduced-root-datum}{约化}\Term{pinning}{钉扎}\Term{root-datum}{根数据} $\mathcal R$ 对应于\Term{dynkin-diagram}{Dynkin 图} $\Delta(\mathcal R)$，其\Term{underlying-set}{底集}是\Term{simple-root}{单根}\Term{set}{集合}。
+\textbf{3.2.} 设 $S$ 为\Term{scheme}{概形}。$S$-\Term{dynkin-scheme}{Dynkin 概形}是\Term{finite}{有限}\Term{twisted-constant}{扭常值} $S$-\Term{scheme}{概形} $\Delta$，带有由 $\Delta\times_S\Delta$ 的一个与\Term{diagonal}{对角线}交集为空的子\Term{scheme}{概形} $L$ 及\Term{morphism}{态射} $\Delta\to\{1,2,3\}_S$ 定义的结构。对每个 $S'\to S$，$\Delta(S')$ 自然具有\Term{dynkin-diagram}{Dynkin 图}结构。
+立即可定义两个\Term{dynkin-scheme}{Dynkin 概形}的\Term{isomorphism}{同构}、\Term{dynkin-scheme}{Dynkin 概形}的\Term{base-extension}{基扩张}、与\Term{dynkin-diagram}{Dynkin 图}关联的常值\Term{dynkin-scheme}{Dynkin 概形}。\Term{dynkin-scheme}{Dynkin 概形}上对\Term{etale}{平展}\Term{topology}{拓扑}的每个\Term{descent-datum}{下降资料}均\Term{effective}{有效}。
+\textbf{3.3.} 我们要给每个 $S$-\Term{reductive-group}{约化群} $G$ 关联一个 $S$-\Term{dynkin-scheme}{Dynkin 概形}。先设 $G$ 在 $S$ 上可\Term{split}{分裂}。对 $G$ 的每个\Term{pinning}{钉扎} $\mathcal E$，以 $\Delta(\mathcal E)$ 表示与 $\mathcal E$ 所定义的\Term{pinning}{钉扎}\Term{root-datum}{根数据}关联的常值\Term{dynkin-scheme}{Dynkin 概形}。若 $\mathcal E,\mathcal E'$ 为两个\Term{pinning}{钉扎}，由 1.5，存在唯一的 $G$ 在 $S$ 上的\Term{inner-automorphism}{内自同构}将 $\mathcal E$ 变成 $\mathcal E'$；它定义\Term{isomorphism}{同构} $a_{\mathcal E\mathcal E'}:\Delta(\mathcal E)\xrightarrow\sim\Delta(\mathcal E')$。这些\Term{isomorphism}{同构}显然构成传递系，故可把各 $\Delta(\mathcal E)$ 等同（即取\Term{inductive-limit}{归纳极限}）；所得常值\Term{dynkin-scheme}{Dynkin 概形}记为 $\operatorname{Dyn}(G)$。若 $G$ 为任意 $S$-\Term{reductive-group}{约化群}，则存在\Term{etale}{平展}\Term{topology}{拓扑}的\Term{covering-family}{覆盖族} $\{S_i\to S\}$ 使 $G_{S_i}$ 可\Term{split}{分裂}。同前论证，在 $\operatorname{Dyn}(G_{S_i})$ 上有\Term{canonical}{典范}\Term{descent-datum}{下降资料}，由\Term{descent}{下降}得到 $S$-\Term{dynkin-scheme}{Dynkin 概形} $\operatorname{Dyn}(G)$。
+\textbf{3.4.} 这一构造满足以下性质（本质上这些性质也刻画它）：
+(i) 每个 $S$-\Term{reductive-group}{约化群}对应于\Term{dynkin-scheme}{Dynkin 概形} $\operatorname{Dyn}(G)$；每个\Term{isomorphism}{同构} $u:G\xrightarrow\sim G'$ \Term{functor}{函子}性地对应于\Term{isomorphism}{同构} $\operatorname{Dyn}(u):\operatorname{Dyn}(G)\xrightarrow\sim\operatorname{Dyn}(G')$。
+\SourcePage{229}
+(ii) 若 $S'$ 为 $S$-\Term{scheme}{概形}，$G$ 为 $S$-\Term{reductive-group}{约化群}，则
+\[\operatorname{Dyn}(G\times_SS')\simeq\operatorname{Dyn}(G)\times_SS'.\]
+(iii) 若 $\mathcal E$ 为 $G$ 的\Term{pinning}{钉扎}，定义的\Term{pinning}{钉扎}\Term{root-datum}{根数据}的\Term{dynkin-diagram}{Dynkin 图}为 $\Delta$，则 $\operatorname{Dyn}(G)\simeq\Delta_S$。
+(iv) 若 $u$ 为 $G$ 的\Term{inner-automorphism}{内自同构}，则 $\operatorname{Dyn}(u)$ 为 $\operatorname{Dyn}(G)$ 的恒等\Term{automorphism}{自同构}。
+\textbf{3.5.} 设 $S$ 为\Term{scheme}{概形}，$G$ 为 $S$-\Term{reductive-group}{约化群}。显然，$\operatorname{Dyn}(G)$ 的\Term{dynkin-scheme}{Dynkin 概形}结构\Term{automorphism}{自同构}\Term{functor}{函子} $\operatorname{Aut}_{\mathrm{Dyn}}(\operatorname{Dyn}(G))$ 可由\Term{finite}{有限}\Term{twisted-constant}{扭常值} $S$-\Term{scheme}{概形}表示。由 3.4 (i)、(ii)，有\Term{canonical}{典范}\Term{morphism}{态射}
+\[\operatorname{Aut}_{S\text{-gr.}}(G)\longrightarrow\operatorname{Aut}_{\mathrm{Dyn}}(\operatorname{Dyn}(G)),\]
+由 (iv)，它经过\Term{morphism}{态射} $\operatorname{Autext}(G)\to\operatorname{Aut}_{\mathrm{Dyn}}(\operatorname{Dyn}(G))$ \Term{resolution}{分解}。更一般地，若 $G,G'$ 为两个 $S$-\Term{reductive-group}{约化群}，有\Term{canonical}{典范}\Term{morphism}{态射}
+\[\operatorname{Isomext}(G,G')\longrightarrow\operatorname{Isom}_{\mathrm{Dyn}}(\operatorname{Dyn}(G),\operatorname{Dyn}(G')).\]
+特别地，若 $G'$ 为 $G$ 的\Term{inner-form}{内扭形式}（1.11），则\Term{dynkin-scheme}{Dynkin 概形} $\operatorname{Dyn}(G),\operatorname{Dyn}(G')$ \Term{isomorphism}{同构}。
+\textbf{3.6.} 若 $G$ \Term{semisimple}{半单}（相应地，为\Term{adjoint-group}{伴随群}或\Term{simply-connected}{单连通}群），则\Term{morphism}{态射}
+\[\operatorname{Autext}(G)\longrightarrow\operatorname{Aut}_{\mathrm{Dyn}}(\operatorname{Dyn}(G))\]
+是\Term{monomorphism}{单态射}（相应地，\Term{isomorphism}{同构}）。事实上，可设 $G$ 已\Term{pinning}{钉扎}，归结为\Term{reduced-root-datum}{约化}\Term{pinning}{钉扎}\Term{root-datum}{根数据}的相应结果（参见第 XXI 讲 7.4.5）。
+$\operatorname{Isom}$ 也有类似结果；特别地，两个\Term{adjunction}{伴随}\Term{semisimple}{半单} $S$-群（相应地，\Term{simply-connected}{单连通}\Term{semisimple}{半单} $S$-群）互为\Term{inner-form}{内扭形式}当且仅当它们的\Term{dynkin-scheme}{Dynkin 概形}\Term{isomorphism}{同构}。
+\textbf{3.7.} 与\Term{reductive-group}{约化群}关联的\Term{dynkin-scheme}{Dynkin 概形}还可用另一种方法构造。设 $\mathcal R$ 为\Term{reduced-root-datum}{约化}\Term{pinning}{钉扎}\Term{root-datum}{根数据}，$G$ 为 $\mathcal R$ 型 $S$-\Term{reductive-group}{约化群}；以 $\Delta(\mathcal R)$ 表示 $\mathcal R$ 定义的\Term{dynkin-diagram}{Dynkin 图}。由 3.5，有\Term{canonical}{典范}\Term{morphism}{态射}
+\[A_S(\mathcal R)=\operatorname{Aut}_{S\text{-gr.}}(G^{\mathrm{Ép}}_S(\mathcal R))\longrightarrow\operatorname{Aut}_{\mathrm{Dyn}}(\Delta(\mathcal R)_S).\]
+由 1.17，$G$ 对应于 $A_S(\mathcal R)$ 下的\Term{principal-homogeneous-bundle}{主齐性丛} $\operatorname{Isom}_{S\text{-gr.}}(G^{\mathrm{Ép}}_S(\mathcal R),G)$。其关联的 $\operatorname{Aut}_{\mathrm{Dyn}}(\Delta(\mathcal R)_S)$-丛对应于 $\Delta(\mathcal R)_S$ 在 $S$ 上的一个\Term{form}{形式}，即 $\operatorname{Dyn}(G)$。换言之，此关联丛就是 $\operatorname{Isom}_{\mathrm{Dyn}}(\Delta(\mathcal R)_S,\operatorname{Dyn}(G))$。以后一\Term{form}{形式}表述时，证明是直接的。
+
+\SourcePage{230}
+\textbf{3.8. \Term{dynkin-scheme}{Dynkin 概形}与 Killing 对。} 设 $S$ 为\Term{scheme}{概形}，$G$ 为 $S$-\Term{reductive-group}{约化群}，$B\supset T$ 为 $G$ 的\Term{killing-pair}{Killing 对}。有\Term{canonical}{典范}\Term{morphism}{态射}
+\[i:\operatorname{Dyn}(G)\longrightarrow\operatorname{Hom}_{S\text{-gr.}}(T,\mathbb G_{m,S}),\]
+将 $\operatorname{Dyn}(G)$ 等同于“$B$ 相对于 $T$ 的\Term{simple-root}{单根}\Term{scheme}{概形}”；它由\Term{pinning}{钉扎}情形立即经\Term{descent}{下降}定义。并且，给定 $T,i$ 可以重构 $B$（“\Term{simple-root}{单根}系与正\Term{root-system}{根系}一一对应”）。
+由上述 $D=\operatorname{Dyn}(G)$ 的描述，$B_D$ 相对于 $T_D$ 有一个\Term{canonical}{典范}根 $\alpha_D$：它是 $D$ 的恒等\Term{morphism}{态射}在 $i(D)$ 下的像。由此得到\Term{canonical}{典范}\Term{invertible}{可逆} $\mathcal O_D$-模 $\mathfrak g^D$：
+\[\mathfrak g^D=(\mathfrak g\otimes_{\mathcal O_S}\mathcal O_D)^{\alpha_D}.\]
+在\Term{pinning}{钉扎}情形，有 $D=\coprod_{\alpha\in\Delta}S_\alpha$，其中每个 $S_\alpha$ 为 $S$ 的一个副本，$\mathfrak g^D$ 即在每个 $S_\alpha$ 上诱导 $\mathfrak g^\alpha$ 的 $\mathcal O_D$-模。
+\textbf{3.9. \Term{quasi-pinning}{拟钉扎}；\Term{quasi-pinned-group}{拟钉扎群}。} 若 $G$ 为 $S$-\Term{reductive-group}{约化群}，$G$ 的\Term{quasi-pinning}{拟钉扎}指以下资料：
+(i) $G$ 的\Term{killing-pair}{Killing 对} $B\supset T$；
+(ii) \Term{section}{截面} $X\in\Gamma(\operatorname{Dyn}(G),\mathfrak g^D)^\times$。
+若一个 $S$-\Term{reductive-group}{约化群}有\Term{quasi-pinning}{拟钉扎}，称其可\Term{quasi-split}{拟分裂}。带有\Term{quasi-pinning}{拟钉扎}的\Term{reductive-group}{约化群}称为\Term{quasi-pinned-group}{拟钉扎群}。
+设 $B\supset T$ 为 $S$-\Term{reductive-group}{约化群} $G$ 的\Term{killing-pair}{Killing 对}，则 $G$ 关于此\Term{killing-pair}{Killing 对}可\Term{quasi-pinning}{拟钉扎}，当且仅当 $\mathfrak g^D$ 有处处非零的\Term{section}{截面}，即 $\mathfrak g^D$ 所定义的 $\operatorname{Pic}(\operatorname{Dyn}(G))$ 中的元素为零。特别地，若 $S$ 半\Term{local-scheme}{局部}，则 $\operatorname{Dyn}(G)$ 也半\Term{local-scheme}{局部}，故 $\operatorname{Pic}(\operatorname{Dyn}(G))=0$。于是：
+\begin{SGAresult}{命题}{3.9.1}
+设 $S$ 为半\Term{local-scheme}{局部}\Term{scheme}{概形}，$G$ 为 $S$-\Term{reductive-group}{约化群}。$G$ 可\Term{quasi-split}{拟分裂}当且仅当它有 \Term{borel-subgroup}{Borel 子群}。
+\end{SGAresult}
+\begin{proof}
+\footnote[14]{编者注：这里详细说明了对第 XXII 讲 5.9.7 的引用。}$S$ \Term{affine}{仿射}，因此由第 XXII 讲 5.9.7 的第一条断言，若 $G$ 有 \Term{borel-subgroup}{Borel 子群} $B$，也有\Term{killing-pair}{Killing 对} $B\supset T$。再由 $\operatorname{Pic}(D)=0$，$\mathfrak g^D$ 有处处非零的\Term{section}{截面} $X$。
+\end{proof}
+仍设 $A$ 为\Term{semilocal-ring}{半局部环}，$S=\operatorname{Spec}(A)$。注意，对每个 $S$-\Term{reductive-group}{约化群} $G$，\Term{morphism}{态射} $\operatorname{Bor}(G)\to S$ \Term{surjectivity}{满射}（因为每个 $s\in S$ 的 $G_{\bar s}$ 有 \Term{borel-subgroup}{Borel 子群}）、\Term{smooth}{光滑}且\Term{projective}{射影}（第 XXII 讲 5.8.3），
+\SourcePage{231}
+所以在对基作\Term{etale}{平展}\Term{finite}{有限}\Term{surjectivity}{满射}\Term{group-extension}{扩张}后有\Term{section}{截面}。\footnote[15]{编者注：原文引向尚未出版的 EGA IV，§24。这里要用“Bertini 定理”。以下详述 O. Gabber 告知我们的论证。设 $X\to S$ 为\Term{surjectivity}{满射}、\Term{smooth}{光滑}且\Term{projective}{射影}的\Term{morphism}{态射}；用 $S$ 的一个\Term{connected}{连通}分支代替 $S$ 后，可设 $X/S$ 处处\Term{relative-dimension}{相对维数}为 $d$（参见 EGA IV$_4$，17.10.2）。还可设 $X$ 为\Term{projective-space}{射影空间} $\mathbb P^n_S=\mathbb P(E)$ 的闭子\Term{scheme}{概形}，其中 $E$ 为秩 $n+1$ 的自由 $A$-模（参见 EGA II，5.3.3）。设 $s_1,\ldots,s_r$ 为 $S$ 的\Term{closed-point}{闭点}；由 Bertini 定理（例如 [Jou83]，I 6.10），积 $P=\mathbb P(E^*)^d$ 中存在\Term{fiber}{纤维}\Term{nonempty}{非空}的\Term{open-subset}{开集} $U$，使对 $U_{s_i}$ 的每个点 $u=(f_1,\ldots,f_d)$，$X_{\kappa(u)}$ 与 $u$ 所定义的 $\mathbb P^n_{\kappa(u)}$ 中 $d$ 个\Term{hyperplane}{超平面}的交在 $\kappa(u)$ 上\Term{etale}{平展}。适当缩小 $U$ 后，可设 $U$ 为\Term{affine}{仿射}\Term{space}{空间} $\mathbb A^{nd}_S$ 中某个次数 $m>0$ 的多项式 $Q$ 的零点集 $V(Q)$ 的补集。容易对变量数归纳看出，若 $|\kappa(s_i)|>m$，则 $V(Q)$ 不可能包含 $\mathbb A^{nd}_{s_i}$ 的所有\Term{rational-point}{有理点}。由于 $A\to\prod_i\kappa(s_i)$ \Term{surjectivity}{满射}，可找\Term{monic-polynomial}{首一多项式} $R\in A[X]$，次数为 $m$，其在 $\kappa(s_i)[X]$ 中的像在 $\kappa(s_i)$ \Term{finite}{有限}时\Term{irreducible}{不可约}，在 $\kappa(s_i)$ 无限时有 $m$ 个不同的根。令 $A'=A[X]/(R)$，$S'=\operatorname{Spec}(A')$，则 $S'\to S$ \Term{etale}{平展}、\Term{finite}{有限}且\Term{surjectivity}{满射}，其每个\Term{closed-point}{闭点} $s'_1,\ldots,s'_t$ 的\Term{residue-field}{剩余域}\Term{cardinal}{基数}均 $\geq2^m$。于是 $U$ 在 $S'$ 每个\Term{closed-point}{闭点}上有\Term{rational-point}{有理点} $u_i$，由于 $A'\to\prod_i\kappa(s_i)$ \Term{surjectivity}{满射}，它们\Term{lifting}{提升}为 $P_{S'}$ 的\Term{section}{截面} $u$。以 $Z$ 表示 $X_{S'}$ 与 $u$ 所定义的 $\mathbb P^n_{S'}$ 中 $d$ 个\Term{hyperplane}{超平面}的交，$V$ 表示 $Z$ 中使 $Z$ 在 $S'$ 上\Term{etale}{平展}的点构成的\Term{open-subset}{开集}。由 EGA IV$_3$，11.3.8，对每个 $i$，$V$ 包含\Term{fiber}{纤维} $Z_{s'_i}$；由于 $\pi:Z\to S'$ \Term{proper}{固有}，闭集 $\pi(Z-V)$ 为空，故 $V=Z$。于是 $Z\to S'$ \Term{surjectivity}{满射}、\Term{etale}{平展}且\Term{proper}{固有}，故\Term{finite}{有限}；复合 $Z\to S$ 也如此，从而得到 $X\to S$ 所需的\Term{section}{截面}。}
+由此得到：
+\begin{SGAresult}{推论}{3.9.2}
+设 $S$ 为半\Term{local-scheme}{局部}\Term{scheme}{概形}，$G$ 为 $S$-\Term{reductive-group}{约化群}。存在\Term{etale}{平展}\Term{finite}{有限}\Term{surjectivity}{满射} $S'\to S$ 使 $G_{S'}$ 可\Term{quasi-split}{拟分裂}。
+\end{SGAresult}
+\textbf{注记 3.9.3。} 在上述条件下，设 $T$ 为 $G$ 的\Term{maximal-torus}{极大环面}（参见第 XIV 讲 3.20）；还可要求 $G_{S'}$ 相对于 $T_{S'}$ 可\Term{quasi-split}{拟分裂}：只须对“包含 $T$ 的 \Term{borel-subgroup}{Borel 子群}\Term{scheme}{概形}”应用上述论证，它在 $S$ 上\Term{finite}{有限}且\Term{etale}{平展}（第 XXII 讲 5.5.5 (ii)）。
+\textbf{3.10.} 设 $\mathcal E,\mathcal E'$ 是 $S$-\Term{reductive-group}{约化群} $G$ 的两个\Term{quasi-pinning}{拟钉扎}。存在唯一的 $G$ 的\Term{inner-automorphism}{内自同构}将 $\mathcal E$ 变成 $\mathcal E'$。事实上，立即归结为\Term{split}{分裂}情形，而此时已证明该断言（1.5；只须注意，对 $G$ 的\Term{inner-automorphism}{内自同构}而言，保持\Term{pinning}{钉扎}与保持其底层\Term{quasi-pinning}{拟钉扎}\Term{equivalence}{等价}）。与第 1 节一样可得，$S$-\Term{reductive-group}{约化群} $G$ 的\Term{quasi-pinning}{拟钉扎}定义\Term{exact-sequence}{正合列}的\Term{splitting}{分裂} $h$：
+\[\begin{tikzcd}
+1\arrow[r]&\operatorname{ad}(G)\arrow[r]&\operatorname{Aut}_{S\text{-gr.}}(G)\arrow[r,shift right,"p"']&\operatorname{Autext}(G)\arrow[l,shift right,"h"']\arrow[r]&1.
+\end{tikzcd}\]
+$h$ 的像是 $\operatorname{Aut}_{S\text{-gr.}}(G)$ 中保持此\Term{quasi-pinning}{拟钉扎}的\Term{subgroup}{子群}。同样，若 $G,G'$ 为两个 $S$-\Term{quasi-pinned-group}{拟钉扎群}，则自然定义 $\operatorname{Isom}_{S\text{-gr.}}(G,G')$ 的子\Term{functor}{函子} $\operatorname{Isom}_{S\text{-gr.\ q\text{-}ép.}}(G,G')$；
+\SourcePage{232}
+$\operatorname{Isom}_{S\text{-gr.}}(G,G')$ 到 $\operatorname{Isomext}(G,G')$ 的\Term{projection}{投影}诱导\Term{isomorphism}{同构}
+\[\operatorname{Isom}_{S\text{-gr.\ q\text{-}ép.}}(G,G')\xrightarrow\sim\operatorname{Isomext}(G,G').\tag{*}\]
+\begin{SGAresult}{定理}{3.11}
+设 $S$ 为\Term{scheme}{概形}，$\mathcal R$ 为\Term{reduced-root-datum}{约化}\Term{pinning}{钉扎}\Term{root-datum}{根数据}，且 $G^{\mathrm{Ép}}_S(\mathcal R)$ 存在（参见第 XXV 讲），$E$ 为 $\mathcal R$ 的\Term{automorphism}{自同构}群。考虑以下三个\Term{category}{范畴}：
+(i) $\underline{\operatorname{Rev}}$：$S$ 上群为 $E$ 的\Term{principal-galois-covering}{主 Galois 覆盖}的\Term{category}{范畴}（\Term{morphism}{态射}为\Term{isomorphism}{同构}）。
+(ii) $\underline{\operatorname{Redext}}$：\Term{object}{对象}是 $\mathcal R$ 型 $S$-\Term{reductive-group}{约化群}（第 XXII 讲 2.7），从 $G$ 到 $G'$ 的\Term{morphism}{态射}是 $\operatorname{Isomext}(G,G')(S)$ 的元素。
+(iii) $\underline{\operatorname{Qép}}$：$\mathcal R$ 型 $S$-\Term{quasi-pinned-group}{拟钉扎约化群}的\Term{category}{范畴}（\Term{morphism}{态射}为保持\Term{quasi-pinning}{拟钉扎}的\Term{isomorphism}{同构}）。
+三个\Term{category-equivalence}{范畴等价}；更精确地，有在\Term{isomorphism}{同构}意义下交换的\Term{functor}{函子}图
+\[\begin{tikzcd}
+\underline{\operatorname{Rev}}\arrow[rr,"\operatorname{qép}"]&&\underline{\operatorname{Qép}}\arrow[dl,"i"]\\
+&\underline{\operatorname{Redext}}\arrow[ul,"\operatorname{rev}"]&.
+\end{tikzcd}\]
+\end{SGAresult}
+下面描述这三个\Term{functor}{函子}，图的交换性留给读者验证。
+\textbf{3.11.1. \Term{functor}{函子} $i$。} 这是显然的\Term{functor}{函子}：$i(G)=G$，$i(f)$ 是 $f$ 在 3.10 (*) 的\Term{isomorphism}{同构}下的像。
+\textbf{3.11.2. \Term{functor}{函子} $\operatorname{qép}$。} 设 $S'$ 为 $S$ 上群为 $E$ 的\Term{principal-galois-covering}{主 Galois 覆盖}。设 $(G,T,M,R,\Delta,(X_\alpha)_{\alpha\in\Delta})$ 为 $G=G^{\mathrm{Ép}}_S(\mathcal R)$ 的\Term{pinning}{钉扎}，$(X'_\alpha)_{\alpha\in\Delta}$ 为 $G'=G_{S'}=G^{\mathrm{Ép}}_{S'}(\mathcal R)$ 的相应\Term{pinning}{钉扎}。由第 XXIII 讲 5.5 bis，存在唯一的 $S$-群\Term{morphism}{态射}
+\[\theta:E\longrightarrow\operatorname{Aut}_{S\text{-gr.}}(G^{\mathrm{Ép}}_S(\mathcal R))=A(\mathcal R)(S),\]
+使每个 $h\in E$ 的 $\theta(h)$ 在 $T$ 上诱导 $D_S(h)$，且对每个 $\alpha\in\Delta$ 有 $\operatorname{Lie}(\theta(h))(X_\alpha)=X_{h(\alpha)}$。结合 $E$ 在 $S'$ 上的\Term{action}{作用}，得到 $E$ 在 $G'$ 上的\Term{action}{作用}，它与 $E$ 在 $S'$ 上的\Term{action}{作用}相容，并保持 $G'$ 的\Term{canonical}{典范}\Term{quasi-pinning}{拟钉扎}。\footnote[16]{编者注：上面对原文作了展开，以说明 $E$ 在 $G'$ 上的\Term{action}{作用}由 $E$ 在 $G^{\mathrm{Ép}}_{S'}(\mathcal R)$ 上的自然\Term{action}{作用}与 $S'$ 上的给定\Term{action}{作用}合成而得。$G'$ 的\Term{canonical}{典范}\Term{killing-pair}{Killing 对}被此\Term{action}{作用}保持，以下\Term{quasi-pinning}{拟钉扎}也被保持：$\Gamma(\Delta_{S'},\operatorname{Lie}(G'/S')^{\Delta_{S'}})$ 的元素 $\widetilde X'$，它在标号为 $\alpha$ 的 $S'$ 副本上等于 $X'_\alpha$（事实上，$E$ 在 $\Delta_{S'}$ 上通过置换 $S'$ 的副本\Term{action}{作用}，故每个 $h\in E$ 均满足 $h(\widetilde X')=\widetilde X'$）。}
+由于 $S'\to S$ 是 (fpqc) \Term{topology}{拓扑}的\Term{covering}{覆盖}，
+\SourcePage{233}
+它对\Term{affine}{仿射}\Term{morphism}{态射}的\Term{fibre-category}{纤维范畴}是\Term{effective-descent}{有效下降}\Term{morphism}{态射}；把 Galois \Term{descent}{下降}所得的 $S$-\Term{quasi-pinned-group}{拟钉扎群}记为
+\[\operatorname{qép}(S')=G^{\mathrm{qÉp}}_{S'/S}(\mathcal R).\]
+\footnote[17]{编者注：例如参见 TDTE I，第 22 页，例 1。也可以如下描述 $\operatorname{qép}(S')$。约定 $E$ 左\Term{action}{作用}于 $S'$。由于 $E$ \Term{action}{作用}于 $G=G^{\mathrm{Ép}}_S(\mathcal R)$，可用 $E$-\Term{torsor}{挠子} $S'/S$ \Term{twisting}{扭曲} $G$，即对左\Term{action}{作用} $h\cdot(s',g)=(h(s'),h(g))$ 形成 $S'\times_SG$ 的 (fpqc) 商\Term{sheaf}{层}。由于 $G$ 在 $S$ 上\Term{affine}{仿射}，此\Term{sheaf}{层}可由 $S$-群 $G^\sharp$ 表示，它是 $G$ 的一个“扭”\Term{form}{形式}，且 $D^\sharp=\operatorname{Dyn}(G^\sharp)$ 是常值\Term{dynkin-scheme}{Dynkin 概形} $\Delta_S$ 由\Term{torsor}{挠子} $S'/S$ \Term{twisting}{扭曲}所得。由于 $E$ \Term{normalization}{正规化} $B,T$，同样得到 $G^\sharp$ 的\Term{killing-pair}{Killing 对} $(B^\sharp,T^\sharp)$。另一方面，设 $\mathfrak g=\operatorname{Lie}(G/S)$，$\mathfrak g^\sharp=\operatorname{Lie}(G^\sharp/S)$；对每个 $U\to S$，$\mathfrak g^\sharp$ 在 $U$ 上的\Term{section}{截面}是 $E$-\Term{equivariant}{等变}的 $S$-\Term{morphism}{态射} $U\times_SS'\to\mathbf W(\mathfrak g)$。由于 $D^\sharp\times_SS'$ 与带\Term{action}{作用} $h\cdot(\alpha,s')=(h(\alpha),h(s'))$ 的 $\Delta\times S'$ 是 $E$-\Term{isomorphism}{同构}的，\Term{morphism}{态射} $(\alpha,s')\mapsto X_\alpha$ 给出 $\mathfrak g^\sharp$ 在 $D^\sharp$ 上的\Term{section}{截面}，且是\Term{quasi-pinning}{拟钉扎}，即 $(\mathfrak g^\sharp\otimes_{\mathcal O_S}\mathcal O_{D^\sharp})^{D^\sharp}$ 的处处非\Term{zero-section}{零截面}（参见 3.8）。}
+\textbf{3.11.3. \Term{functor}{函子} $\operatorname{rev}$。} 设 $G$ 为 $\mathcal R$ 型 $S$-\Term{reductive-group}{约化群}。记
+\[\operatorname{rev}(G)=\operatorname{Isomext}(G^{\mathrm{Ép}}_S(\mathcal R),G),\]
+它是 $E_S$ 下的\Term{principal-homogeneous-bundle}{主齐性丛}（参见 1.10、1.19），即 $\underline{\operatorname{Rev}}$ 的\Term{object}{对象}。
+展开 3.11 的一个推论：
+\begin{SGAresult}{推论}{3.12}
+对每个 $S$-\Term{reductive-group}{约化群} $G$，存在 $S$-\Term{quasi-pinned-group}{拟钉扎群} $G_{\mathrm{q\text{-}ép.}}$ 和一个“外\Term{isomorphism}{同构}” $u\in\operatorname{Isomext}(G_{\mathrm{q\text{-}ép.}},G)(S)$。二元组 $(G_{\mathrm{q\text{-}ép.}},u)$ 在唯一\Term{isomorphism}{同构}意义下唯一。
+\end{SGAresult}
+事实上，可设 $G$ 的型为常值 $\mathcal R$，取 $G_{\mathrm{q\text{-}ép.}}=G^{\mathrm{qÉp}}_{\operatorname{rev}(G)/S}(\mathcal R)$。
+\textbf{3.12.1.} 注意，给定 $u$ 可以\Term{canonical}{典范}地定义 $S$-\Term{scheme}{概形}（参见 1.11）
+\[Q=\operatorname{Isomint}_u(G_{\mathrm{q\text{-}ép.}},G),\]
+\footnote[18]{编者注：以 $\operatorname{Isomint}$ 代替 $\operatorname{Isomint}_u$（参见 1.11），因为二元组 $(G_{\mathrm{q\text{-}ép.}},u)$ 在唯一\Term{isomorphism}{同构}意义下唯一。}
+它是 $\operatorname{ad}(G_{\mathrm{q\text{-}ép.}})$ 下的\Term{principal-homogeneous-bundle}{主齐性丛}，给定它“\Term{equivalence}{等价}于”给定 $G_{\mathrm{q\text{-}ép.}}$ 的\Term{inner-form}{内扭形式} $G$。而且 $Q$ 就是“$G$ 的\Term{quasi-pinning}{拟钉扎}\Term{scheme}{概形}”；这一定义说明了它在 $\operatorname{ad}(G)$ 下的左\Term{principal-homogeneous-bundle}{主齐性丛}结构（3.10）——比较 1.20。
+\begin{SGAresult}{命题}{3.13}
+设 $S$ 为\Term{scheme}{概形}，$G$ 为\Term{adjunction}{伴随}（相应地，\Term{simply-connected}{单连通}）的\Term{semisimple}{半单} $S$-群，$B\supset T$ 为 $G$ 的\Term{killing-pair}{Killing 对}，$\operatorname{Dyn}(G)$ 为 $G$ 的 $S$-\Term{dynkin-scheme}{Dynkin 概形}。存在 $S$-\Term{group-scheme}{群概形}的\Term{canonical}{典范}\Term{isomorphism}{同构}
+\[T\xrightarrow\sim\prod_{\operatorname{Dyn}(G)/S}\mathbb G_{m,\operatorname{Dyn}(G)}.\]
+\end{SGAresult}
+\SourcePage{234}
+（回顾，按定义右端是将 $S'\to S$ 对应于 $\mathbb G_m(\operatorname{Dyn}(G)\times_SS')$，即 $\mathbb G_m(\operatorname{Dyn}(G_{S'}))$ 的 $S$-\Term{functor}{函子}；参见第 II 讲 §1。）
+\begin{proof}[第一种证明]
+为简便起见，对\Term{adjunction}{伴随}情形作证明。考虑复合\Term{morphism}{态射}
+\[T\longrightarrow\prod_{D/S}T_D\longrightarrow\prod_{D/S}\mathbb G_{m,D},\]
+第一个\Term{morphism}{态射}为\Term{canonical}{典范}\Term{morphism}{态射}，第二个为 $\prod_{D/S}\alpha_D$，其中记 $D=\operatorname{Dyn}(G)$。为检验此\Term{morphism}{态射}为\Term{isomorphism}{同构}，可设 $G$ 已\Term{split}{分裂}；此时它就是以各 $\alpha\in\Delta$ 为\Term{set-component}{分量}的\Term{morphism}{态射} $T\to(\mathbb G_{m,S})^\Delta$，而后者是\Term{isomorphism}{同构}（第 XXII 讲 4.3.8）。
+\end{proof}
+\begin{proof}[第二种证明]
+由 2.8、3.5、3.11，可设 $G=G^{\mathrm{qÉp}}_{S'/S}(\mathcal R)$，$T$ 为其\Term{canonical}{典范}\Term{maximal-torus}{极大环面}。在 $S'$ 上，由第 XXII 讲 4.3.8，有由\Term{simple-root}{单根}（相应地，单\Term{coroot}{余根}）定义的\Term{isomorphism}{同构} $T_{S'}\to(\mathbb G_{m,S'})^\Delta$。群 $E$ 通过置换 $\Delta$ \Term{action}{作用}于右端。而由 $E\to\operatorname{Aut}(\Delta)$ 与 $S'/S$ 关联的丛是 $\operatorname{Dyn}(G)$（3.7），立即得到结论。
+\end{proof}
+利用附录 8.1，推出：
+\begin{SGAresult}{推论}{3.14}
+在上述条件下，有
+\[H^1(S,T)\xrightarrow\sim H^1(\operatorname{Dyn}(G),\mathbb G_m)\xrightarrow\sim\operatorname{Pic}(\operatorname{Dyn}(G)).\]
+特别地，若 $S$ 半\Term{local-scheme}{局部}，则 $H^1(S,T)=0$。
+\end{SGAresult}
+\textbf{注记 3.15。} 设 $S$ 为\Term{scheme}{概形}，$G$（相应地，$G'$）为 $S$-\Term{reductive-group}{约化群}，$B\supset T$（相应地，$B'\supset T'$）为其\Term{killing-pair}{Killing 对}，$u\in\operatorname{Isomext}(G,G')(S)$。令（参见 2.10）
+\[P=\operatorname{Isomint}_u(G,B,T;G',B',T');\]
+它是 $T^{\mathrm{ad}}$ 下的\Term{principal-homogeneous-bundle}{主齐性丛}，\Term{action}{作用}为 $(f,t)\mapsto f\circ\operatorname{int}(t)$。
+另一方面，设 $D=\operatorname{Dyn}(G)=\operatorname{Dyn}(G')$（借助 $u$ 等同，见 3.5），设 $L=\operatorname{Isom}_D(\mathfrak g^D,\mathfrak g'^D)$ 为\Term{invertible}{可逆} $\mathcal O_D$-模
+\[\operatorname{Hom}_{\mathcal O_D}(\mathfrak g^D,\mathfrak g'^D)=\mathfrak g'^D\otimes(\mathfrak g^D)^\vee\]
+定义的 $\mathbb G_{m,D}$ 下\Term{principal-homogeneous-bundle}{主齐性丛}。每个 $f\in P(S')$ 定义从 $\mathfrak g^D\otimes_{\mathcal O_S}\mathcal O_{S'}$ 到 $\mathfrak g'^D\otimes_{\mathcal O_S}\mathcal O_{S'}$ 的\Term{isomorphism}{同构}，故有\Term{canonical}{典范}\Term{morphism}{态射}
+\[P\longrightarrow\prod_{D/S}L.\]
+此\Term{morphism}{态射}为\Term{isomorphism}{同构}，并与上面定义的\Term{action}{作用}群\Term{isomorphism}{同构} $T^{\mathrm{ad}}\xrightarrow\sim\prod_{D/S}\mathbb G_{m,D}$ 相容。事实上，只须在两个群均已\Term{pinning}{钉扎}时检验，此时容易。
+\SourcePage{235}
+特别地，由此可知，在 3.14 的\Term{isomorphism}{同构}
+\[H^1(S,T^{\mathrm{ad}})\xrightarrow\sim\operatorname{Pic}(\operatorname{Dyn}(G))\]
+中，丛 $P$ 的类变成 $c\ell(\mathfrak g'^D)-c\ell(\mathfrak g^D)$。因此 $P$ 平凡当且仅当 $\mathfrak g'^D$ 与 $\mathfrak g^D$ \Term{isomorphism}{同构}。若 $(G,B,T)$ 可\Term{quasi-split}{拟分裂}，例如取 $G=G'_{\mathrm{q\text{-}ép.}}$ 并赋予\Term{canonical}{典范}\Term{killing-pair}{Killing 对}，则 $P$ 的类的像正是 3.9 中定义的 $G'$ 的\Term{quasi-split}{拟分裂}障碍。
+\textbf{3.16. 对称变换}
+\textbf{3.16.1.} 设 $S$ 为\Term{scheme}{概形}，$G$ 为 $S$-\Term{reductive-group}{约化群}，$B\supset T$ 为 $G$ 的\Term{killing-pair}{Killing 对}。回顾（第 XXII 讲 5.9.1），$G$ 有唯一的 \Term{borel-subgroup}{Borel 子群} $B^-$ 满足 $B\cap B^-=T$。若 $X\in\Gamma(D,\mathfrak g^D)^\times$ 定义 $G$ 相对于 $(B,T)$ 的\Term{quasi-pinning}{拟钉扎}（3.9），则 $Y=-X^{-1}\in\Gamma(D,(\mathfrak g^D)^\vee)^\times$ 定义 $G$ 相对于 $(B^-,T)$ 的\Term{quasi-pinning}{拟钉扎}；称其为\Term{opposite-pinning}{相反拟钉扎}。
+若 $\mathcal R$ 为\Term{reduced-root-datum}{约化}\Term{pinning}{钉扎}\Term{root-datum}{根数据}，$\mathcal E$ 为 $S$-\Term{reductive-group}{约化群} $G$ 的 $\mathcal R$-\Term{pinning}{钉扎}，如下定义与 $\mathcal E$ \Term{opposite-pinning}{相反的钉扎} $\mathcal E^-$：保留同一个\Term{maximal-torus}{极大环面} $T$，取\Term{isomorphism}{同构} $D_S(M)\xrightarrow\sim T$ 的相反，并用 $Y_\alpha=-X_\alpha^{-1}\in\Gamma(S,\mathfrak g^{-\alpha})^\times$（$\alpha\in\Delta$）“\Term{pinning}{钉扎}”。$\mathcal E^-$ 的底层\Term{quasi-pinning}{拟钉扎}就是 $\mathcal E$ 的底层\Term{quasi-pinning}{拟钉扎}的\Term{opposite-pinning}{相反拟钉扎}。
+\textbf{注记。} 用第 XIX 讲 3.1 的记号，若令
+\[w_\alpha(X_\alpha)=\exp(X_\alpha)\exp(-X_\alpha^{-1})\exp(X_\alpha),\]
+则 $w_\alpha(X_\alpha)=w_{-\alpha}(Y_\alpha)$（同处 3.1 (vi)）。
+\begin{SGAresult}{命题}{3.16.2}
+设 $S$ 为\Term{scheme}{概形}，$G$ 为 $S$-\Term{reductive-group}{约化群}。
+(i) 设 $T$ 为 $G$ 的\Term{maximal-torus}{极大环面}，存在唯一的
+\[i_T\in\bigl(\operatorname{Aut}_{S\text{-gr.}}(G,T)/T^{\mathrm{ad}}\bigr)(S)\subset\operatorname{Aut}_{S\text{-gr.}}(T),\]
+使 $T$ 的每个\Term{section}{截面} $t$ 满足 $i_T(t)=t^{-1}$。
+(ii) 设 $(B,T)$ 为 $G$ 的\Term{killing-pair}{Killing 对}，存在唯一\Term{section}{截面}
+\[w_{B,T}\in(\operatorname{Norm}_G(T)/T)(S)=W_G(T)(S)\]
+满足 $\operatorname{int}(w_{B,T})(B)=B^-$（这里作了显然的记号简化）。
+(iii) 设 $Q=(B,T,X)$ 为 $G$ 的\Term{quasi-pinning}{拟钉扎}，$Q^-=(B^-,T,Y)$ 为\Term{opposite-pinning}{相反拟钉扎}；存在唯一的 $G$ 的\Term{inner-automorphism}{内自同构}
+\[n_Q\in\operatorname{Norm}_{\operatorname{ad}(G)}(T^{\mathrm{ad}})(S)\subset\operatorname{Aut}_{S\text{-gr.}}(G)\]
+满足 $n_Q(Q)=Q^-$，即 $n_Q(T)=T$，$n_Q(B)=B^-$，$n_Q(X)=Y$。
+(iv) 设 $(\mathcal R,\mathcal E)$ 为 $G$ 的\Term{pinning}{钉扎}，$(\mathcal R,\mathcal E^-)$ 为\Term{opposite-pinning}{相反钉扎}；存在唯一的 $G$ 的\Term{automorphism}{自同构}
+\[u_{\mathcal E}\in\operatorname{Aut}_{S\text{-gr.}}(G,T)\subset\operatorname{Aut}_{S\text{-gr.}}(G)\]
+满足 $u_{\mathcal E}(\mathcal E)=\mathcal E^-$，即对 $T$ 的每个\Term{section}{截面} $t$ 有 $u_{\mathcal E}(t)=t^{-1}$，对每个 $\alpha\in\Delta$ 有 $\operatorname{Ad}(u_{\mathcal E})X_\alpha=Y_\alpha$。
+\end{SGAresult}
+\SourcePage{236}
+\begin{proof}
+(ii) 来自第 XXII 讲 5.5.5 (ii)，然后 (iii) 来自 3.10，(iv) 来自第 XXIII 讲 4.1。最后，证明 (i) 时可设 $G$ 已\Term{pinning}{钉扎}。存在性例如由 (iv) 得到；唯一性来自如下事实：$G$ 的一个在 $T$ 上诱导恒等的\Term{automorphism}{自同构}由 $T^{\mathrm{ad}}$ 的一个\Term{section}{截面}给出（2.11）。
+\end{proof}
+\begin{SGAresult}{推论}{3.16.3}
+有 $i_T^2=w_{B,T}^2=n_Q^2=u_{\mathcal E}^2=e$。此外，若 $G\ne e$，则 $i_T$（相应地，$u_{\mathcal E}$）不等于 $e$；若 $G$ 不是\Term{torus}{环面}，则 $w_{B,T}$（相应地，$n_Q$）不等于 $e$。
+\end{SGAresult}
+\begin{SGAresult}{推论}{3.16.4}
+在 (iii)（相应地，(iv)）的情形，$n_Q$ \Term{projection}{投影}到 $w_{B,T}$（相应地，$u_{\mathcal E}$ \Term{projection}{投影}到 $i_T$），所用\Term{canonical}{典范}\Term{morphism}{态射}为
+\[\operatorname{Norm}_{\operatorname{ad}(G)}(T^{\mathrm{ad}})\longrightarrow W_{\operatorname{ad}(G)}(T^{\mathrm{ad}})\simeq W_G(T),\]
+相应地，$\operatorname{Aut}_{S\text{-gr.}}(G,T)\to\operatorname{Aut}_{S\text{-gr.}}(G,T)/T^{\mathrm{ad}}$。
+\end{SGAresult}
+\begin{SGAresult}{推论}{3.16.5}
+以上定义与\Term{base-extension}{基扩张}相容，且对\Term{isomorphism}{同构}具有\Term{functor}{函子}性（其意义是显然的）。
+\end{SGAresult}
+\begin{SGAresult}{命题}{3.16.6}
+(i) 对每个\Term{scheme}{概形} $S$ 上的\Term{reductive-group}{约化群} $G$，可唯一地定义元素 $s_G\in\operatorname{Autext}(G)(S)$，使此构造对 $G$ 的\Term{isomorphism}{同构}具有\Term{functor}{函子}性、与\Term{base-change}{基变换}相容，并且每当 $T$ 为 $S$-\Term{reductive-group}{约化群} $G$ 的\Term{maximal-torus}{极大环面}时，$s_G$ 是 $i_T$ 在\Term{canonical}{典范}\Term{morphism}{态射}
+\[\operatorname{Aut}_{S\text{-gr.}}(G,T)/T^{\mathrm{ad}}\longrightarrow\operatorname{Autext}(G)\]
+下的像。
+(ii) $s_G^2=e$，且 $s_G$ 是 $\operatorname{Autext}(G)$ 的\Term{center}{中心}元素。
+(iii) 在 3.16.2 (ii) 的条件下，若将 $\operatorname{Aut}_{S\text{-gr.}}(G,B,T)/T^{\mathrm{ad}}$ 与 $\operatorname{Autext}(G)$ 等同（2.2），则
+\[w_{B,T}i_T=i_Tw_{B,T}=s_G.\]
+(iv) 在 3.16.2 (iv) 的条件下，若将 $\operatorname{Aut}_{S\text{-gr.\text{-}ép}}(G,\mathcal R,\mathcal E)$ 与 $\operatorname{Autext}(G)$ 等同（1.3 (iii)），则
+\[n_{\mathcal E}u_{\mathcal E}=u_{\mathcal E}n_{\mathcal E}=s_G.\]
+\end{SGAresult}
+\begin{proof}
+(i) 由\Term{descent}{下降}容易证明。另一方面，$i_T$ 显然是 $\operatorname{Aut}_{S\text{-gr.}}(T)$ 的平方为 $e$ 的\Term{center}{中心}\Term{section}{截面}，立即得到 (ii)；(iii) 由 (iv) 经\Term{descent}{下降}得到。最后，在 (iv) 的条件下，显然 $n_{\mathcal E}u_{\mathcal E}=u_{\mathcal E}n_{\mathcal E}$，且这一 $G$ 的\Term{automorphism}{自同构}保持\Term{pinning}{钉扎}；在上述等同下，它等于其在 $\operatorname{Autext}(G)$ 中的像；而 $n_{\mathcal E}$ 是\Term{inner-automorphism}{内自同构}，$u_{\mathcal E}$ \Term{projection}{投影}到 $s_G$。
+\end{proof}
+\SourcePage{237}
+\textbf{注记 3.16.7。} (i) 利用 (iii)，可在分类的每个情形显式确定 $s_G$：对每个\Term{irreducible}{不可约}\Term{pinning}{钉扎}\Term{root-datum}{根数据}，只须把关于原点的对称与 \Term{weyl-group}{Weyl 群}中的对称复合，即与满足 $w_0(\Delta)=-\Delta$ 的 \Term{weyl-group}{Weyl 群}元素 $w_0$ 复合。所得结果如下：除 $A_n$（$n\geq2$）、$D_n$（$n$ 奇数）、$E_6$ 外，均有 $s_G=1$；在这些例外情形，$s_G$ 是唯一非平凡的“\Term{outer-automorphism}{外自同构}”。
+(ii) \Term{automorphism}{自同构} $u_{\mathcal E}$ 正是\Term{semisimple}{半单} \Term{lie-algebra}{Lie 代数}理论中构造“紧实\Term{form}{形式}”所用的\Term{automorphism}{自同构}。
+\textbf{注记 3.16.8。} 在 3.16.1 中定义了 $G$ 的\Term{quasi-pinning}{拟钉扎}的 $S$-\Term{scheme}{概形} $Q=\operatorname{Isomint}(G_{\mathrm{q\text{-}ép.}},G)$ 上的一个对合（参见 3.12.1）。由从 $G_{\mathrm{q\text{-}ép.}}$ 到 $G$ 的\Term{transport-of-structure}{结构搬运}立即可见，这一对合由 $\operatorname{ad}(G_{\mathrm{q\text{-}ép.}})(S)$ 的一个元素\Term{action}{作用}给出，即由 $G_{\mathrm{q\text{-}ép.}}$ 的\Term{canonical}{典范}\Term{quasi-pinning}{拟钉扎}定义的元素 $n_0$（3.16.2 (iii)）。
+同样，在 $G$ 的 $\mathcal R$-\Term{pinning}{钉扎}的 $S$-\Term{scheme}{概形}
+\[P=\operatorname{Isom}_{S\text{-gr.}}(G^{\mathrm{Ép}}_S(\mathcal R),G)\]
+上定义了对合（参见 1.20）。同前论证，此对合由 $G^{\mathrm{Ép}}_S(\mathcal R)$ 的\Term{automorphism}{自同构} $u_0$ 的\Term{action}{作用}给出，后者由 $G^{\mathrm{Ép}}_S(\mathcal R)$ 的\Term{canonical}{典范}\Term{pinning}{钉扎}定义（3.16.2 (iv)）。
+\SGAsection{4}{约化群及其主丛的等平凡性}
+\textbf{4.1. 定义；\Term{isotrivial}{等平凡}性定理}
+\begin{SGAresult}{定义}{4.1.1}
+设 $S$ 为\Term{scheme}{概形}，$G$ 为 $S$-\Term{group-scheme}{群概形}，$P$ 为 $G$ 下的\Term{principal-homogeneous-bundle}{主齐性丛}。称 $P$ \Term{locally-isotrivial}{局部等平凡}（相应地，\Term{semilocally-isotrivial}{半局部等平凡}），若对每个点 $s\in S$（相应地，包含于一个\Term{affine}{仿射}\Term{open-subset}{开集}的每个\Term{finite}{有限}点集 $F\subset S$），存在包含 $s$（相应地，$F$）的 $S$ 的\Term{open-subset}{开集} $U$，以及\Term{etale}{平展}\Term{finite}{有限}\Term{surjectivity}{满射} $S'\to U$，使 $P_{S'}$ 平凡。
+\end{SGAresult}
+\begin{SGAresult}{定义}{4.1.2}
+设 $S$ 为\Term{scheme}{概形}，$G$ 为 $S$-\Term{reductive-group}{约化群}。称 $G$ \Term{locally-isotrivial}{局部等平凡}（相应地，\Term{semilocally-isotrivial}{半局部等平凡}），若对每个点 $s\in S$（相应地，包含于一个\Term{affine}{仿射}\Term{open-subset}{开集}的每个\Term{finite}{有限}点集 $F\subset S$），存在包含 $s$（相应地，$F$）的\Term{open-subset}{开集} $U\subset S$ 及\Term{etale}{平展}\Term{finite}{有限}\Term{surjectivity}{满射} $S'\to U$，使 $G_{S'}$ 可\Term{split}{分裂}。
+\end{SGAresult}
+\textbf{注记 4.1.3。} (i) 按定义，1.17 的\Term{category-equivalence}{范畴等价}保持\Term{locally-isotrivial}{局部等平凡性}（相应地，\Term{semilocally-isotrivial}{半局部等平凡性}）。
+(ii) 在 4.1.1 的条件上再加 $G$ 在 $S$ 上\Term{local-scheme}{局部}\Term{finite-presentation}{有限呈示}。则\Term{principal-bundle}{主丛} $P$（或\Term{reductive-group}{约化群} $G$）\Term{locally-isotrivial}{局部等平凡}（相应地，\Term{semilocally-isotrivial}{半局部等平凡}），当且仅当对每个 $S'\to S$，$S'$ \Term{local-scheme}{局部}（相应地，半\Term{local-scheme}{局部}）时，$P_{S'}$ \Term{isotrivial}{等平凡}（或 $G_{S'}$ \Term{isotrivial}{等平凡}），即存在\Term{etale}{平展}\Term{finite}{有限}\Term{surjectivity}{满射} $S''\to S'$，使 $P_{S''}$ 平凡（或 $G_{S''}$ \Term{split}{分裂}）。
+(iii) 对\Term{torus}{环面}，定义 4.1.2 与第 IX 讲 1.1 的定义一致。
+
+\SourcePage{238}
+\textbf{4.1.4.} 回顾（第 XXII 讲 4.3、6.2），对每个\Term{reductive-group}{约化群} $G$，我们已引入群 $\operatorname{rad}(G)$、$\operatorname{corad}(G)$、$\operatorname{dér}(G)$。$\operatorname{rad}(G),\operatorname{corad}(G)$ 是\Term{torus}{环面}，当 $G$ 已\Term{split}{分裂}时为平凡\Term{split}{分裂}的；此外，有\Term{isogeny}{同源} $\operatorname{rad}(G)\to\operatorname{corad}(G)$。$S$-群 $\operatorname{dér}(G)$ \Term{semisimple}{半单}，且 $G/\operatorname{dér}(G)=\operatorname{corad}(G)$；故对 $G$ 下每个\Term{principal-homogeneous-bundle}{主齐性丛} $P$，$P/\operatorname{dér}(G)$ 是 $\operatorname{corad}(G)$ 下的\Term{principal-homogeneous-bundle}{主齐性丛}。于是有：
+\begin{SGAresult}{定理}{4.1.5}
+设 $S$ 为\Term{scheme}{概形}，$G$ 为型常值的 $S$-\Term{reductive-group}{约化群}。
+(i) 以下条件\Term{equivalence}{等价}：
+(a) $G$ \Term{locally-isotrivial}{局部等平凡}（相应地，\Term{semilocally-isotrivial}{半局部等平凡}）。
+(b) \Term{torus}{环面} $\operatorname{rad}(G)$ 有此性质。
+(b$'$) \Term{torus}{环面} $\operatorname{corad}(G)$ 有此性质。
+(c) 与 $G$ 关联的 $S$ 的 \Term{galois-covering}{Galois 覆盖}（3.11）有此性质。
+若 $T$ 为 $G$ 的\Term{maximal-torus}{极大环面}，这些条件还\Term{equivalence}{等价}于：
+(d) \Term{torus}{环面} $T$ \Term{locally-isotrivial}{局部等平凡}（相应地，\Term{semilocally-isotrivial}{半局部等平凡}）。
+(ii) 设 $P$ 为 $G$ 下的\Term{principal-homogeneous-bundle}{主齐性丛}；$P$ \Term{locally-isotrivial}{局部等平凡}（相应地，\Term{semilocally-isotrivial}{半局部等平凡}）当且仅当 $\operatorname{corad}(G)$-\Term{principal-bundle}{主丛} $P/\operatorname{dér}(G)$ 有此性质。
+\end{SGAresult}
+\begin{SGAresult}{推论}{4.1.6}
+若 $G$ \Term{semisimple}{半单}，或 $S$ \Term{locally-noetherian}{局部 Noether} 且\Term{normal}{正规}（更一般地，\Term{geometrically-unibranch}{几何单分支}），则 (i) 的条件成立。若 $G$ \Term{locally-isotrivial}{局部等平凡}（相应地，\Term{semilocally-isotrivial}{半局部等平凡}），则 (ii) 的条件成立。
+\end{SGAresult}
+对于 (i)，第一条断言从 (b) 显然可见，第二条来自 (c) 及第 X 讲 5.14、5.15。对于 (ii)，只须注意由定理 90，\Term{split-torus}{分裂环面}下的\Term{principal-bundle}{主丛}\Term{semilocally-isotrivial}{半局部等平凡}。
+\textbf{4.2. 证明：\Term{semisimple}{半单}情形}
+先证明以下结果，供后文引用。
+\begin{SGAresult}{命题}{4.2.1}
+设 $S$ 为\Term{scheme}{概形}，$G$ 为 $S$-\Term{reductive-group}{约化群}，$T$ 为 $G$ 的\Term{maximal-torus}{极大环面}（相应地，$B$ 为 \Term{borel-subgroup}{Borel 子群}；$B\supset T$ 为\Term{killing-pair}{Killing 对}），$P$ 为 $G$ 下的\Term{principal-homogeneous-bundle}{主齐性丛}，$G'$ 为与 $P$ 关联的 $G$ 的\Term{twisted-form}{扭形式}（经\Term{morphism}{态射} $\operatorname{int}:G\to\operatorname{Aut}_{S\text{-gr.}}(G)$）。有\Term{canonical}{典范}\Term{isomorphism}{同构}
+\[P/\operatorname{Norm}_G(T)\xrightarrow\sim\operatorname{Tor}(G'),\qquad P/B\xrightarrow\sim\operatorname{Bor}(G'),\qquad P/T\xrightarrow\sim\operatorname{Kil}(G').\]
+\end{SGAresult}
+\begin{proof}
+由构造，$G'$ 是 $P\times_SG$ 对 $G$ 的某个\Term{action}{作用}的商，\Term{action}{作用}为 $(p,g')g=(pg,g^{-1}g'g)$。所以有\Term{morphism}{态射} $P\times_SG\to G'$，即\Term{morphism}{态射} $P\to\operatorname{Hom}_S(G,G')$，它立即可见经过
+\[f:P\longrightarrow\operatorname{Isom}_{S\text{-gr.}}(G,G')\]
+\Term{resolution}{分解}。
+\SourcePage{239}
+（检验时可设 $G=P$，此时 $G'=G$，$f=\operatorname{int}$。）\Term{set}{集合}映射 $p\mapsto f(p)(T)$ 定义\Term{morphism}{态射} $P\to\operatorname{Tor}(G')$。要检验它如所断言的那样诱导\Term{isomorphism}{同构} $P/\operatorname{Norm}_G(T)\xrightarrow\sim\operatorname{Tor}(G')$，仍可设 $P=G$，归结为第 XXII 讲 5.8.3 (iii)。（实际上，应将所引处换成本陈述。）对 $\operatorname{Bor}$ 和 $\operatorname{Kil}$ 作相同论证。
+\end{proof}
+\begin{SGAresult}{命题}{4.2.2}
+设 $S$ 为半\Term{local-scheme}{局部}\Term{scheme}{概形}，$G$ 为型常值的\Term{semisimple}{半单} $S$-群。
+(i) $G$ \Term{isotrivial}{等平凡}。
+(ii) $G$ 下每个\Term{principal-bundle}{主丛}均\Term{isotrivial}{等平凡}。
+\end{SGAresult}
+\begin{proof}
+先证 (i)。对基作\Term{etale}{平展}\Term{finite}{有限}\Term{surjectivity}{满射}\Term{group-extension}{扩张}后，由 3.9.2 可设 $G$ 已\Term{quasi-split}{拟分裂}。但此时由构造 $G$ \Term{isotrivial}{等平凡}（3.10，群 $E$ \Term{finite}{有限}）。为证 (ii)，由 (i) 可设 $G$ 已\Term{split}{分裂}；于是归结为：
+\end{proof}
+\begin{SGAresult}{引理}{4.2.3}
+设 $S$ 为半\Term{local-scheme}{局部}\Term{scheme}{概形}。\Term{split}{分裂}\Term{reductive-group}{约化群}下每个\Term{principal-bundle}{主丛}均\Term{isotrivial}{等平凡}。
+\end{SGAresult}
+\begin{proof}
+用 4.2.1 的记号，其中 $B\supset T$ 表示\Term{split}{分裂}群 $G$ 的\Term{canonical}{典范}\Term{killing-pair}{Killing 对}。由 3.9.2，对基作\Term{etale}{平展}\Term{finite}{有限}\Term{surjectivity}{满射}\Term{group-extension}{扩张}后，$S$-\Term{scheme}{概形} $\operatorname{Kil}(G')$ 有\Term{section}{截面}。因而可将 $G$ 的结构群\Term{reduced}{约化}到 $T$；而 $T$ 已\Term{split}{分裂}，故 $H^1(S,T)=0$（定理 90）。
+\end{proof}
+\begin{SGAresult}{推论}{4.2.4}
+设 $S$ 为\Term{scheme}{概形}，
+\[1\longrightarrow G\longrightarrow G'\longrightarrow G''\longrightarrow1\]
+为 $S$-\Term{group-scheme}{群概形}的 (fpqc) \Term{exact-sequence}{正合列}，其中 $G$ \Term{semisimple}{半单}且型常值。设 $P$ 为 $G'$ 下的\Term{principal-homogeneous-bundle}{主齐性丛}，假设关联\Term{sheaf}{层} $P/G$ \Term{representable}{可表}（例如 $G''$ 在 $S$ 上\Term{affine}{仿射}）。则 $P$ \Term{locally-isotrivial}{局部等平凡}（相应地，\Term{semilocally-isotrivial}{半局部等平凡}）当且仅当 $P/G$ 作为 $G''$ 下的丛有此性质。\footnote[19]{编者注：将“丛”换成“\Term{sheaf}{层}”，并在后面将 $G'$ 换成 $G''$。}
+\end{SGAresult}
+\begin{proof}
+若 $P$ 平凡，则 $P/G$ 也平凡，这证明必要性。反过来，设 $S$ \Term{local-scheme}{局部}（相应地，半\Term{local-scheme}{局部}），$P/G$ \Term{isotrivial}{等平凡}，从而被 $S$ 的\Term{etale}{平展}\Term{finite}{有限}\Term{surjectivity}{满射}\Term{group-extension}{扩张} $S'$ \Term{trivialization}{平凡化}。由 $S$ 扩基到 $S'$ 后，可将 $P_{S'}$ 的结构群\Term{reduced}{约化}到 $G_{S'}$。但 $S'$ 仍半\Term{local-scheme}{局部}，$G_{S'}$ \Term{semisimple}{半单}且型常值，因此所得丛\Term{isotrivial}{等平凡}（4.2.2）。
+\end{proof}
+\SourcePage{240}
+\textbf{4.3. 证明：一般情形。} 先注意，对\Term{exact-sequence}{正合列}
+\[1\longrightarrow\operatorname{dér}(G)\longrightarrow G\longrightarrow\operatorname{corad}(G)\longrightarrow1\]
+应用 4.2.4，立即得到 4.1.5 (ii)。因此证明 (i)。若 $G$ 已\Term{split}{分裂}，则 $\operatorname{rad}(G)$、$\operatorname{corad}(G)$ 及 $\operatorname{rev}(G)$ 均已\Term{split}{分裂}，故 (a) 蕴含 (b)、(b$'$)、(c)。
+\textbf{4.3.1.} 有 (c)$\Rightarrow$(a)。设 $\mathcal R$ 为 $G$ 的型，有\Term{exact-sequence}{正合列}
+\[1\longrightarrow\operatorname{ad}(G^{\mathrm{Ép}}_S(\mathcal R))\longrightarrow A_S(\mathcal R)\longrightarrow E_S\longrightarrow1.\]
+对丛 $P=\operatorname{Isom}_{S\text{-gr.}}(G^{\mathrm{Ép}}_S(\mathcal R))$ 及关联丛 $\operatorname{rev}(G)=P/\operatorname{ad}(G^{\mathrm{Ép}}_S(\mathcal R))$ 应用 4.2.4，得到 (c)$\Rightarrow$(a)。
+\textbf{4.3.2.} 有 (b)$\Rightarrow$(a)。只须证明若 $\operatorname{rad}(G)$ 已\Term{split}{分裂}，则 $G$ \Term{semilocally-isotrivial}{半局部等平凡}。设 $G_0=G^{\mathrm{Ép}}_S(\mathcal R)$；考虑二元组 $(G',f)$ 的\Term{category}{范畴}，其中 $G'$ 为 $G_0$ 的\Term{form}{形式}，$f$ 为 $\operatorname{rad}(G')$ 到 $\operatorname{rad}(G)$ 的\Term{isomorphism}{同构}。已知（2.16），此\Term{category-equivalence}{范畴等价}于某个 $S$-群 $H$ 下\Term{principal-homogeneous-bundle}{主齐性丛}的\Term{category}{范畴}，其中 $H$ 为一个\Term{finite}{有限}\Term{twisted-constant}{扭常值}群由\Term{semisimple}{半单}群的\Term{group-extension}{扩张}。只须证明 $H$ 下每个\Term{principal-bundle}{主丛}均\Term{semilocally-isotrivial}{半局部等平凡}，而这立即来自 4.2.4。
+\textbf{4.3.3.} 有 (b$'$)$\Rightarrow$(a)。可同前论证（而且会出现同一个群 $H$）。也可直接看出 (b) 与 (b$'$) \Term{equivalence}{等价}：与一个\Term{local-scheme}{局部}\Term{split}{分裂}\Term{torus}{环面}\Term{isogeny}{同源}的\Term{torus}{环面}也\Term{local-scheme}{局部}\Term{split}{分裂}（参见第 IX 讲 2.11 (iii)）。
+\textbf{4.3.4.} 有 (d)$\Rightarrow$(a)。只须证明具有\Term{split}{分裂}\Term{maximal-torus}{极大环面}且型常值的群\Term{semilocally-isotrivial}{半局部等平凡}；这立即来自 2.14。
+\textbf{4.3.5.} 有 (a)$\Rightarrow$(d)。只须证明\Term{split}{分裂}群的\Term{maximal-torus}{极大环面}\Term{semilocally-isotrivial}{半局部等平凡}。更精确地，有：
+\begin{SGAresult}{引理}{4.3.6}
+设 $S$ 为半\Term{local-scheme}{局部}\Term{scheme}{概形}，$G$ 为 $S$-\Term{reductive-group}{约化群}，$T_0$ 为 $G$ 的\Term{split}{分裂}\Term{maximal-torus}{极大环面}，$W_0=\operatorname{Norm}_G(T_0)/T_0$（这是\Term{locally-constant}{局部常值} $S$-群，若 $G$ 型常值，则由 2.14 它为常值），$T$ 为 $G$ 的\Term{maximal-torus}{极大环面}。存在在 $W_0$ 下\Term{principal-homogeneous}{主齐性}的\Term{morphism}{态射} $S'\to S$（故\Term{etale}{平展}、\Term{finite}{有限}且\Term{surjectivity}{满射}；若 $G$ 型常值，甚至为\Term{principal-galois-covering}{主 Galois 覆盖}），使 $T_{S'}$ 与 $(T_0)_{S'}$ 由 $G(S')$ 的某个元素\Term{conjugacy}{共轭}（特别地，$T_{S'}$ 已\Term{split}{分裂}）。
+\end{SGAresult}
+\begin{proof}
+已知 $\operatorname{Transp}_G(T_0,T)$ 为 $\operatorname{Norm}_G(T_0)$ 下的\Term{principal-homogeneous-bundle}{主齐性丛}（例如参见第 XI 讲 5.4 bis）。令 $S'=\operatorname{Transp}_G(T_0,T)/T_0$，这是 $W_0$ 下的\Term{principal-homogeneous-bundle}{主齐性丛}。将基从 $S$ \Term{group-extension}{扩张}到 $S'$，可将 $\operatorname{Transp}_G(T_0,T)$ 的结构群\Term{reduced}{约化}到 $T_0$。但 $S'$ 半\Term{local-scheme}{局部}，$T_0$ 已\Term{split}{分裂}，所以 $\operatorname{Transp}_G(T_0,T)$ 在 $S'$ 上有\Term{section}{截面}。
+\end{proof}
+\SourcePage{241}
+\textbf{4.4. \Term{maximal-torus}{极大环面}存在性的应用}
+使用 Grothendieck 的\Term{maximal-torus}{极大环面}存在性定理（第 XIV 讲 3.20），可大为精确化上述结果。先陈述：
+\begin{SGAresult}{定理}{4.4.1}
+设 $S$ 为半\Term{local-scheme}{局部}\Term{scheme}{概形}，$\mathcal R$ 为\Term{reduced-root-datum}{约化}\Term{pinning}{钉扎}\Term{root-datum}{根数据}，$W$ 为其 \Term{weyl-group}{Weyl 群}，$E$ 为其\Term{automorphism}{自同构}群。（回顾，$E$ 自然\Term{action}{作用}于 $W$，\Term{semidirect-product}{半直积} $A=W\cdot E$ 等同于忘掉\Term{pinning}{钉扎}后的 $\mathcal R$ 的\Term{automorphism}{自同构}群，参见第 XXI 讲 6.7.2。）
+(i) $G^{\mathrm{Ép}}_S(\mathcal R)$ 下每个\Term{principal-homogeneous-bundle}{主齐性丛}均被 $S$ 上群为 $W$ 的\Term{principal-galois-covering}{主 Galois 覆盖} $S'\to S$ \Term{trivialization}{平凡化}。
+(ii) 设 $G$ 为 $\mathcal R$ 型 $S$-\Term{reductive-group}{约化群}，$\operatorname{rev}(G)=\operatorname{Isomext}(G^{\mathrm{Ép}}_S(\mathcal R),G)$ 为其关联的 $S$ 上群为 $E$ 的 \Term{galois-covering}{Galois 覆盖}。设 $W_0$ 为与 $\operatorname{rev}(G)$ 关联的 $W_S$ 的\Term{form}{形式}。存在\Term{morphism}{态射} $S'\to S$，它是 $W_0$ 下的\Term{principal-homogeneous-bundle}{主齐性丛}，使 $G_{S'}$ 可\Term{quasi-split}{拟分裂}（即有 \Term{borel-subgroup}{Borel 子群}）。
+(iii) 每个 $\mathcal R$ 型 $S$-\Term{reductive-group}{约化群}均由群为 $A$ 的\Term{principal-galois-covering}{主 Galois 覆盖} $\overline S\to S$ \Term{split}{分裂}。
+\end{SGAresult}
+先陈述：
+\begin{SGAresult}{命题}{4.4.2}
+设 $S$ 为\Term{scheme}{概形}，$G$ 为 $S$-\Term{reductive-group}{约化群}，$T$ 为 $G$ 的\Term{maximal-torus}{极大环面}，$P$ 为 $G$ 下的\Term{principal-homogeneous-bundle}{主齐性丛}，$G'$ 为与 $P$ 关联的 $G$ 的\Term{twisted-form}{扭形式}（由 4.2.1 有\Term{canonical}{典范}\Term{isomorphism}{同构} $P/\operatorname{Norm}_G(T)\xrightarrow\sim\operatorname{Tor}(G')$）。设 $T'$ 为 $G'$ 的\Term{maximal-torus}{极大环面}，定义复合\Term{morphism}{态射}
+\[S\longrightarrow\operatorname{Tor}(G')\xrightarrow\sim P/\operatorname{Norm}_G(T).\]
+考虑\Term{canonical}{典范}\Term{morphism}{态射} $P\to P/T\to P/\operatorname{Norm}_G(T)$，并沿上述\Term{morphism}{态射}取\Term{inverse-image}{逆像}：
+\[\begin{tikzcd}
+P\arrow[r]&P/T\arrow[r]&P/\operatorname{Norm}_G(T)\\
+H\arrow[u]\arrow[r]&S'\arrow[u]\arrow[r]&S\arrow[u]
+\end{tikzcd}\]
+则 $S'$（相应地，$H$）是在 $S$（相应地，$S'$）上 $W_G(T)$（相应地，$T_{S'}$）下的\Term{principal-homogeneous-bundle}{主齐性丛}。此外，令 $W_G(T)$ 以显然的方式\Term{action}{作用}于 $T$，则与 $S'$ 关联的丛\Term{isomorphism}{同构}于 $T'$。
+\end{SGAresult}
+前两条断言显然；最后一条的证明与 2.6 中相应断言相同。
+\begin{SGAresult}{推论}{4.4.3}
+设 $S$ 为半\Term{local-scheme}{局部}\Term{scheme}{概形}，$G$ 为 $S$-\Term{reductive-group}{约化群}，$T$ 为 $G$ 的\Term{maximal-torus}{极大环面}。假设满足以下两个条件之一：
+(i) $T$ 已\Term{split}{分裂}。
+\SourcePage{242}
+(ii) $T$ 包含于 $G$ 的一个 \Term{borel-subgroup}{Borel 子群}，且 $G$ 为\Term{adjoint-group}{伴随群}或\Term{simply-connected}{单连通}群。
+再设 $P$ 为 $G$ 下的\Term{principal-homogeneous-bundle}{主齐性丛}。存在 $S$-\Term{scheme}{概形} $S'$，它为 $W_G(T)$ 下的\Term{principal-homogeneous-bundle}{主齐性丛}，且 $P_{S'}$ 平凡。
+\end{SGAresult}
+\begin{proof}
+若 $G'$ 为与 $P$ 关联的 $G$ 的\Term{form}{形式}，则 $G'$ 有\Term{maximal-torus}{极大环面} $T'$（第 XIV 讲 3.20）。沿用上一命题的记号，有 $H^1(S',T_{S'})=0$（(i) 用定理 90，(ii) 用 3.14）。所以\Term{morphism}{态射} $H\to S'$ 有\Term{section}{截面}，因而 $P_{S'}$ 也在 $S'$ 上有\Term{section}{截面}。
+\end{proof}
+\begin{proof}[定理 4.4.1 的证明]
+(i) 是上一推论的特例（取带\Term{canonical}{典范}\Term{split-torus}{分裂环面}的 $G=G^{\mathrm{Ép}}_S(\mathcal R)$）。证明 (ii)。已知（3.12）$G$ 是
+\[G_0=G^{\mathrm{qÉp}}_{\operatorname{rev}(G)/S}(\mathcal R)\]
+的\Term{inner-form}{内扭形式}。若 $T_0$ 为 $G_0$ 的\Term{canonical}{典范}\Term{maximal-torus}{极大环面}，则 $W_{G_0}(T_0)$ 正是陈述中的 $W_0$。$G_0$ 的\Term{form}{形式} $G$ 对应于 $\operatorname{ad}(G_0)$ 下的\Term{principal-homogeneous-bundle}{主齐性丛} $P$，其中 $P=\operatorname{Isomint}(G_0,G)$。群 $W_{\operatorname{ad}(G_0)}(T_0^{\mathrm{ad}})$ 与 $W_0$ \Term{canonical}{典范}\Term{isomorphism}{同构}；对 $(\operatorname{ad}(G_0),T_0^{\mathrm{ad}},P)$ 应用 4.4.3，得到所需结果，其中 4.4.3 的假设 (ii) 确实满足。
+最后证明 (iii)。沿用 (ii) 的记号，有图
+\[\begin{tikzcd}
+\operatorname{rev}(G)\arrow[d,"E_S"']&\\
+S&S'\arrow[l,"W_0"]
+\end{tikzcd}\]
+已知 $G_{S'}$ \Term{isomorphism}{同构}于 $(G_0)_{S'}$，且 $(G_0)_{\operatorname{rev}(G)}$ 可\Term{split}{分裂}。令 $\overline S=S'\times_S\operatorname{rev}(G)$，则 $G_{\overline S}$ 确实可\Term{split}{分裂}；只须再检验 $\overline S$ 是 $S$ 上群为 $A$ 的\Term{principal-galois-covering}{主 Galois 覆盖}。这来自下面更一般的引理（它自然适用于任意\Term{site}{景}）。
+\end{proof}
+\begin{SGAresult}{引理}{4.4.4}
+设 $S$ 为\Term{scheme}{概形}，$G,H$ 为两个 $S$-\Term{group-scheme}{群概形}，$G\to\operatorname{Aut}_{S\text{-gr.}}(H)$ 为 $G$ 在 $H$ 上的\Term{action}{作用}，$E$ 为 $G$-\Term{principal-homogeneous-bundle}{主齐性丛}，$F$ 为 $H_0$-\Term{principal-homogeneous-bundle}{主齐性丛}，其中 $H_0$ 为与 $E$ 关联的 $H$ 的\Term{form}{形式}。则 $E\times_SF$ 自然具有\Term{semidirect-product}{半直积} $H\cdot G$ 下\Term{principal-homogeneous-bundle}{主齐性丛}的结构。
+\end{SGAresult}
+\begin{proof}
+以 $(e,g)\mapsto eg$（相应地，$(f,u)\mapsto fu$）表示 $G$ 在 $E$ 上（相应地，$H_0$ 在 $F$ 上）的\Term{right-action}{右作用}。以
+\[p:E\times_SH\longrightarrow H_0\]
+表示\Term{canonical-projection}{典范投影}（按定义，$H_0$ 是 $E\times_SH$ 对\Term{action}{作用} $(e,h)g=(eg,g^{-1}hg)$ 的 $G$ 的商）。考虑\Term{morphism}{态射}
+\[r:E\times_SF\times_SH\times_SG\longrightarrow E\times_SF,\]
+\SourcePage{243}
+它在\Term{set}{集合}意义下定义为
+\[r(e,f,h,g)=(eg,fp(e,h)).\]
+\Term{morphism}{态射} $r$ 确实定义\Term{semidirect-product}{半直积} $H\cdot G$ 在 $E\times_SF$ 上的\Term{action}{作用}。事实上，在\Term{set}{集合}意义下有
+\[r(r(e,f,h,g)h',g')=(egg',fp(e,h)p(eg,h'));\]
+而
+\[p(e,h)p(eg,h')=p(e,h)p(e,gh'g^{-1})=p(e,hgh'g^{-1}),\]
+故
+\[r(r(e,f,h,g),h',g')=r(e,f,hgh'g^{-1},gg'),\]
+这就是所需结论。现在为证明此运算确实给出\Term{principal-homogeneous-bundle}{主齐性丛}的运算，可设 $E,F$ 平凡，此时立即可见 $E\times_SF$ 也是平凡丛。
+\end{proof}

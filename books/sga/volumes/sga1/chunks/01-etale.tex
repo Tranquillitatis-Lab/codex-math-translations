@@ -1,0 +1,536 @@
+\SGAchapter{I}{平展态射}{Morphismes étales}
+\SourcePage{17}
+为简化叙述，至少从第 2 节之后起，我们假定所讨论的所有\Term{prescheme}{预概形}都是\Term{locally-noetherian}{局部诺特}的。
+
+\SGAsection{1}{微分计算的概念}
+设 $X$ 是 $Y$ 上的一个\Term{prescheme}{预概形}，以 $\Delta_{X/Y}$ 或 $\Delta$ 表示\Term{diagonal-morphism}{对角态射} $X\to X\times_Y X$。这是一个\Term{immersion}{浸入}，因而是 $X$ 到 $X\times_Y X$ 的某个开集 $V$ 中的\Term{closed-immersion}{闭浸入}。以 $\mathcal I_X$ 表示 $V$ 中与对角线对应的闭子\Term{prescheme}{预概形}的理想。（注意：若要作内在的处理，而不假定 $X$ 在 $Y$ 上\Term{separated}{分离}——作出这个假定未免荒唐——就应考虑 $\mathcal O_{X\times X}$ 在 $X$ 上的集合论\Term{inverse-image}{逆像}，并以 $\mathcal I_X$ 表示其中的\Term{augmentation-ideal}{增广理想}……）\Term{sheaf}{层} $\mathcal I_X/\mathcal I_X^2$ 可以看作 $X$ 上的一个\Term{quasi-coherent}{拟凝聚层}，记作 $\Omega^1_{X/Y}$。若 $X\to Y$ 为\Term{finite-type}{有限型}，它也是\Term{finite-type}{有限型}的。它对于\Term{base-change}{基变换} $Y'\to Y$ 有良好的相容性。再引入\Term{sheaf}{层}
+\[
+ \mathcal O_{X\times_Y X}/\mathcal I_X^{n+1}=\mathcal P^n_{X/Y}.
+\]
+这些都是 $X$ 上的环\Term{sheaf}{层}，使 $X$ 成为一个\Term{prescheme}{预概形}，可以记作 $\Delta^n_{X/Y}$，称为 $X/Y$ 的第 $n$ 阶\Term{infinitesimal-neighborhood}{无穷小邻域}。有关它们的一整套基本性质虽然篇幅颇长，却都十分\Term{trivial-bundle}{平凡}\footnote{参见 EGA IV 16.3。}；稳妥的做法是等到讨论\Term{smooth}{光滑态射}、确有用处时再讲。
+
+\SGAsection{2}{拟有限态射}
+\begin{SGAresult}{命题}{2.1}
+设 $A\to B$ 为一个\Term{local-homomorphism}{局部同态}（注意，从现在起，环都假定为\Term{noetherian-ring}{诺特环}），$\mathfrak m$ 为 $A$ 的\Term{maximal-ideal}{极大理想}。下列条件等价：
+\begin{enumerate}
+\item[(i)] $B/\mathfrak m B$ 在 $k=A/\mathfrak m$ 上\Term{finite}{有限}维。
+\item[(ii)] $\mathfrak m B$ 是一个\Term{ideal-of-definition}{定义理想}，且 $B/r(B)=k(B)$ 是 $k=k(A)$ 的一个\Term{group-extension}{扩张}。
+\item[(iii)] $B$ 的\Term{completion}{完备化} $\widehat B$ 在 $A$ 的\Term{completion}{完备化} $\widehat A$ 上\Term{finite}{有限}。
+\end{enumerate}
+\end{SGAresult}
+\SourcePage{18}
+此时称 $B$ 在 $A$ 上\Term{quasi-finite}{拟有限}。若 $\mathcal O_x$ 在 $\mathcal O_{f(x)}$ 上\Term{quasi-finite}{拟有限}，就称\Term{morphism}{态射} $f\colon X\to Y$ 在 $x$ 处\Term{quasi-finite}{拟有限}（或称 $Y$-\Term{prescheme}{预概形} $f$ 在 $x$ 处\Term{quasi-finite}{拟有限}）。这也等价于 $x$ 是其\Term{fiber}{纤维} $f^{-1}(x)$ 中的孤立点。若\Term{morphism}{态射}在每一点都\Term{quasi-finite}{拟有限}，就称它\Term{quasi-finite}{拟有限}\footnote{在 EGA II 6.2.3 中，还要求 $f$ 为\Term{finite-type}{有限型}。}。
+\begin{SGAresult}{推论}{2.2}
+若 $A$ 完备，则\Term{quasi-finite}{拟有限}等价于\Term{finite}{有限}。
+\end{SGAresult}
+对于\Term{quasi-finite}{拟有限}\Term{morphism}{态射}，本来也可以列出通常的 (i)、(ii)、(iii)、(iv)、(v) 那一套性质，不过这里似乎没有必要。
+
+\SGAsection{3}{非分歧态射，或称净态射}
+\begin{SGAresult}{命题}{3.1}
+设 $f\colon X\to Y$ 为\Term{finite-type}{有限型}\Term{morphism}{态射}，$x\in X$，$y=f(x)$。下列条件等价：
+\begin{enumerate}
+\item[(i)] $\mathcal O_x/\mathfrak m_y\mathcal O_x$ 是 $k(y)$ 的一个\Term{finite}{有限}\Term{separable-extension}{可分扩张}。
+\item[(ii)] $\Omega^1_{X/Y}$ 在 $x$ 处为零。
+\item[(iii)] \Term{diagonal-morphism}{对角态射} $\Delta_{X/Y}$ 在 $x$ 的某个邻域上是\Term{open-immersion}{开浸入}。
+\end{enumerate}
+\end{SGAresult}
+对于 (i)$\Rightarrow$(ii)，由 Nakayama 引理立即归结到 $Y=\operatorname{Spec}(k)$、$X=\operatorname{Spec}(k')$ 的情形；此时结论众所周知，也可直接由\Term{separable}{可分}性的定义得到。(ii)$\Rightarrow$(iii) 可由一个借助 Krull 定理给出的、简洁易用的\Term{open-immersion}{开浸入}刻画得到。对于 (iii)$\Rightarrow$(i)，仍归结到 $Y=\operatorname{Spec}(k)$、且\Term{diagonal-morphism}{对角态射}处处为\Term{open-immersion}{开浸入}的情形。此时须证 $X$ \Term{finite}{有限}，且其环为 $k$ 上的\Term{separable}{可分}代数；为此可进一步假定 $k$ \Term{algebraically-closed}{代数闭}。但这样 $X$ 的每个\Term{closed-point}{闭点}都是孤立点，因为该点就是由 $x$ 定义的\Term{morphism}{态射} $X\to X\times_k X$ 对对角线所取的\Term{inverse-image}{逆像}，于是 $X$ \Term{finite}{有限}。现在可设 $X$ 只含一点，其环为 $A$；则 $A\otimes_k A\to A$ 为\Term{isomorphism}{同构}，因而 $A=k$，证毕。
+\begin{SGAresult}{定义}{3.2}
+a) 满足上述条件时，称 $f$ 在 $x$ 处\Term{net}{净}，或称在 $x$ 处\Term{unramified}{非分歧}；也称 $X$ 在 $Y$ 上于 $x$ 处\Term{net}{净}，或\Term{unramified}{非分歧}。
+
+b) 设 $A\to B$ 为\Term{local-homomorphism}{局部同态}。若 $B/r(A)B$ 是 $A/r(A)$ 的\Term{finite}{有限}\Term{separable-extension}{可分扩张}，即 $r(A)B=r(B)$ 且 $k(B)$ 是 $k(A)$ 的\Term{separable-extension}{可分扩张}，就称这个\Term{homomorphism}{同态}\Term{net}{净}，或\Term{unramified}{非分歧}；也称 $B$ 是 $A$ 上的\Term{net}{净}局部代数，或\Term{unramified}{非分歧}局部代数\footnote{参见第 III 讲 1.2 中的补正。}。
+\end{SGAresult}
+\textbf{注记。}仅从 $A$、$B$ 的\Term{completion}{完备化}就能判断 $B$ 是否在 $A$ 上\Term{net}{净}。\Term{net}{净}蕴含\Term{quasi-finite}{拟有限}。
+\begin{SGAresult}{推论}{3.3}
+$f$ 为\Term{net}{净}\Term{morphism}{态射}的点构成开集。
+\end{SGAresult}
+
+\SourcePage{19}
+\begin{SGAresult}{推论}{3.4}
+设 $X'$、$X$ 是 $Y$ 上的\Term{finite-type}{有限型}\Term{prescheme}{预概形}，$g\colon X'\to X$ 是一个 $Y$-\Term{morphism}{态射}。若 $X$ 在 $Y$ 上\Term{net}{净}，则图\Term{morphism}{态射} $\Gamma_g\colon X'\to X\times_Y X$ 为\Term{open-immersion}{开浸入}。
+\end{SGAresult}
+事实上，它是\Term{diagonal-morphism}{对角态射} $X\to X\times_Y X$ 沿
+\[
+ g\times_Y\operatorname{id}_{X'}\colon X'\times_Y X\longrightarrow X\times_Y X
+\]
+所取的\Term{inverse-image}{逆像}。
+
+也可引入 $\Omega^1_{X/Y}$ 的零化理想 $\mathfrak d_{X/Y}$，称为 $X/Y$ 的\Term{different-ideal}{不同理想}；它定义了 $X$ 的一个闭子\Term{prescheme}{预概形}，其底\Term{sheaf}{层}集合正是 $X/Y$ \Term{ramified}{分歧}、即非\Term{net}{净}的点集。
+\begin{SGAresult}{命题}{3.5}
+\begin{enumerate}
+\item[(i)] \Term{immersion}{浸入}是\Term{net}{净}\Term{morphism}{态射}。
+\item[(ii)] 两个\Term{net}{净}\Term{morphism}{态射}的复合仍然\Term{net}{净}。
+\item[(iii)] \Term{net}{净}\Term{morphism}{态射}经\Term{base-change}{基变换}后仍然\Term{net}{净}。
+\end{enumerate}
+\end{SGAresult}
+从条件 (ii) 或 (iii) 都看得出来（我觉得后者更有意思）。当然也可进一步写成逐点的表述；不过，除定义 b) 的框架外，这种推广只是表面上的，而且乏味。照例得到如下推论：
+\begin{SGAresult}{推论}{3.6}
+\begin{enumerate}
+\item[(iv)] 两个\Term{net}{净}\Term{morphism}{态射}的\Term{fiber-product}{纤维积}仍是\Term{net}{净}\Term{morphism}{态射}。
+\item[(v)] 若 $gf$ \Term{net}{净}，则 $f$ \Term{net}{净}。
+\item[(vi)] 若 $f$ \Term{net}{净}，则 $f_{\mathrm{red}}$ \Term{net}{净}。
+\end{enumerate}
+\end{SGAresult}
+\begin{SGAresult}{命题}{3.7}
+设 $A\to B$ 为\Term{local-homomorphism}{局部同态}，并假定\Term{residue-field}{剩余域}\Term{group-extension}{扩张} $k(B)/k(A)$ \Term{trivial-bundle}{平凡}，或者 $k(A)$ \Term{algebraically-closed}{代数闭}。则 $B/A$ \Term{net}{净}，当且仅当 $\widehat B$ 作为 $\widehat A$-代数是 $\widehat A$ 的商。
+\end{SGAresult}
+\textbf{注记。}
+\begin{itemize}
+\item 不假定\Term{residue-field}{剩余域}\Term{group-extension}{扩张}\Term{trivial-bundle}{平凡}时，可对 $A$ 作适当的\Term{finite}{有限}\Term{flat}{平坦}\Term{group-extension}{扩张}，消去这一\Term{residue-field}{剩余域}\Term{group-extension}{扩张}，从而归结到\Term{trivial-bundle}{平凡}的情形。
+\item 可以给出如下例子：$A$ 是曲线的一个普通二重点的\Term{local-ring}{局部环}，$B$ 是其\Term{normalization}{正规化}上某点的\Term{local-ring}{局部环}。此时 $A\subset B$，$B$ 在 $A$ 上\Term{net}{净}且\Term{residue-field}{剩余域}\Term{group-extension}{扩张}\Term{trivial-bundle}{平凡}，而 $\widehat A\to\widehat B$ \Term{surjectivity}{满射}但不\Term{injectivity}{单射}。因此还需加强\Term{net}{净}性的概念。
+\end{itemize}
+
+\SGAsection{4}{平展态射与平展覆盖}
+我们暂且承认所需的关于\Term{flat}{平坦态射}的全部事实；必要时，稍后再作证明\footnote{参见第 IV 讲。}。
+\SourcePage{20}
+\begin{SGAresult}{定义}{4.1}
+a) 设 $f\colon X\to Y$ 为\Term{finite-type}{有限型}\Term{morphism}{态射}。若 $f$ 在 $x$ 处\Term{flat}{平坦}且\Term{net}{净}，就称它在 $x$ 处\Term{etale}{平展}。若 $f$ 在每一点都\Term{etale}{平展}，就称它\Term{etale}{平展}。也称 $X$ 在 $Y$ 上于 $x$ 处\Term{etale}{平展}，或称它是在 $x$ 处\Term{etale}{平展}的 $Y$-\Term{prescheme}{预概形}，等等。
+
+b) 设 $f\colon A\to B$ 为\Term{local-homomorphism}{局部同态}。若 $B$ 在 $A$ 上\Term{flat}{平坦}且\Term{unramified}{非分歧}，就称 $f$ \Term{etale}{平展}，或称 $B$ 在 $A$ 上\Term{etale}{平展}\footnote{参见第 III 讲 1.2 中的补正。}。
+\end{SGAresult}
+\begin{SGAresult}{命题}{4.2}
+$B/A$ \Term{etale}{平展}，当且仅当 $\widehat B/\widehat A$ \Term{etale}{平展}。
+\end{SGAresult}
+事实上，这对“\Term{net}{净}”与“\Term{flat}{平坦}”两个条件分别成立。
+\begin{SGAresult}{推论}{4.3}
+设 $f\colon X\to Y$ 为\Term{finite-type}{有限型}\Term{morphism}{态射}，$x\in X$。$f$ 在 $x$ 处是否\Term{etale}{平展}，只取决于\Term{local-homomorphism}{局部同态} $\mathcal O_{f(x)}\to\mathcal O_x$，甚至只取决于相应\Term{completion}{完备化}之间的\Term{homomorphism}{同态}。
+\end{SGAresult}
+\begin{SGAresult}{推论}{4.4}
+设\Term{residue-field}{剩余域}\Term{group-extension}{扩张} $k(A)\to k(B)$ \Term{trivial-bundle}{平凡}，或 $k(A)$ \Term{algebraically-closed}{代数闭}。则 $B/A$ \Term{etale}{平展}，当且仅当 $\widehat A\to\widehat B$ 是\Term{isomorphism}{同构}。
+\end{SGAresult}
+将\Term{flat}{平坦}性与 3.7 结合即可。
+\begin{SGAresult}{命题}{4.5}
+设 $f\colon X\to Y$ 为\Term{finite-type}{有限型}\Term{morphism}{态射}。它为\Term{etale}{平展}\Term{morphism}{态射}的点构成开集。
+\end{SGAresult}
+事实上，这对“\Term{net}{净}”与“\Term{flat}{平坦}”分别成立。此命题表明，研究在某处\Term{etale}{平展}的\Term{finite-type}{有限型}\Term{morphism}{态射}时，可以不再坚持采用“逐点”的表述。
+\begin{SGAresult}{命题}{4.6}
+\begin{enumerate}
+\item[(i)] \Term{open-immersion}{开浸入}是\Term{etale}{平展}\Term{morphism}{态射}。
+\item[(ii)] 两个\Term{etale}{平展}\Term{morphism}{态射}的复合仍然\Term{etale}{平展}。
+\item[(iii)] \Term{etale}{平展}性在\Term{base-change}{基变换}下保持。
+\end{enumerate}
+\end{SGAresult}
+事实上，(i) 显然；对于 (ii)、(iii)，只须注意“\Term{net}{净}”与“\Term{flat}{平坦}”分别具有这些性质。其实，对于\Term{local-homomorphism}{局部同态}，即使不加\Term{finite}{有限}性条件，也有相应的表述；无论如何，这些都应写入那部“大部头”中（先从\Term{net}{净}的情形开始）。
+\begin{SGAresult}{推论}{4.7}
+两个\Term{etale}{平展}\Term{morphism}{态射}的\Term{fiber-product}{纤维积}也\Term{etale}{平展}。
+\end{SGAresult}
+\begin{SGAresult}{推论}{4.8}
+设 $X$、$X'$ 在 $Y$ 上为\Term{finite-type}{有限型}，$g\colon X\to X'$ 为 $Y$-\Term{morphism}{态射}。若 $X'$ 在 $Y$ 上\Term{unramified}{非分歧}，$X$ 在 $Y$ 上\Term{etale}{平展}，则 $g$ \Term{etale}{平展}。
+\end{SGAresult}
+事实上，$g$ 是图\Term{morphism}{态射} $\Gamma_g\colon X\to X\times_Y X'$ 与投影\Term{morphism}{态射}的复合；前者由 3.4 是\Term{open-immersion}{开浸入}，后者由\Term{etale}{平展}\Term{morphism}{态射} $X\to Y$ 经“\Term{base-change}{基变换}” $X'\to Y$ 得到，故\Term{etale}{平展}。
+
+\SourcePage{21}
+\begin{SGAresult}{定义}{4.9}
+所谓 $Y$ 的\Term{etale-covering}{平展覆盖}（分别地，\Term{unramified-covering}{净覆盖}），是指一个在 $Y$ 上\Term{finite}{有限}且\Term{etale}{平展}（分别地，\Term{net}{净}）的 $Y$-\Term{scheme}{概形} $X$。
+\end{SGAresult}
+第一个条件表示 $X$ 由 $Y$ 上的一个\Term{coherent}{凝聚}代数\Term{sheaf}{层} $\mathcal B$ 定义。此时第二个条件表示 $\mathcal B$ \Term{locally-free}{局部自由}（\Term{net}{净}的情形则没有这一要求），而且对于任意 $y\in Y$，\Term{fiber}{纤维} $\mathcal B(y)=\mathcal B_y\otimes_{\mathcal O_y}k(y)$ 都是 $k(y)$ 上的\Term{separable}{可分}代数，即若干\Term{finite}{有限}\Term{separable-extension}{可分扩张}的\Term{finite}{有限}直积。
+\begin{SGAresult}{命题}{4.10}
+设 $X$ 是 $Y$ 的一个次数为 $n$ 的\Term{flat}{平坦}\Term{covering}{覆盖}（这个术语本应在 4.9 中定义），由一个\Term{coherent}{凝聚}且\Term{locally-free}{局部自由}的代数\Term{sheaf}{层} $\mathcal B$ 定义。以通常的方法定义\Term{trace}{迹}\Term{homomorphism}{同态} $\mathcal B\to\mathcal A$，它是一个 $\mathcal A$-模\Term{homomorphism}{同态}，其中 $\mathcal A=\mathcal O_Y$。则 $X$ \Term{etale}{平展}，当且仅当相应的\Term{bilinear-form}{双线性型} $\operatorname{tr}_{\mathcal B/\mathcal A}(xy)$ 定义了 $\mathcal B$ 到 $\check{\mathcal B}$ 的\Term{isomorphism}{同构}；等价地，当且仅当\Term{discriminant}{判别式}\Term{section}{截面}
+\[
+ d_{X/Y}=d_{\mathcal B/\mathcal A}
+ \in\Gamma\!\left(Y,\bigwedge^n\check{\mathcal B}\otimes_{\mathcal A}\bigwedge^n\check{\mathcal B}\right)
+\]
+可逆；也等价于该\Term{section}{截面}定义的\Term{discriminant}{判别式}理想为单位理想。
+\end{SGAresult}
+事实上，可归结到 $Y=\operatorname{Spec}(k)$ 的情形；此时这是一个熟知的\Term{separable}{可分}性判据，过渡到 $k$ 的\Term{algebraically-closed}{代数闭}包后便一目了然。
+\textbf{注记。}下面将在不预先假定 $X$ 在 $Y$ 上\Term{flat}{平坦}、而改加\Term{normal}{正规}性假定的情形下，得到一个较不\Term{trivial-bundle}{平凡}的表述。
+
+\SGAsection{5}{平展态射的基本性质}
+\begin{SGAresult}{定理}{5.1}
+设 $f\colon X\to Y$ 为\Term{finite-type}{有限型}\Term{morphism}{态射}。则 $f$ 为\Term{open-immersion}{开浸入}，当且仅当它\Term{etale}{平展}且\Term{radicial}{根性}。
+\end{SGAresult}
+回顾一下，\Term{radicial}{根性}是指：\Term{injectivity}{单射}，且\Term{residue-field}{剩余域}\Term{group-extension}{扩张}为\Term{purely-inseparable-extension}{纯不可分扩张}（也可以说，\Term{morphism}{态射}经任意\Term{base-change}{基变换}后仍为\Term{injectivity}{单射}）。必要性显然，只须证明充分性。给出两个不同的证明：第一个较短，第二个更初等。
+
+1) \Term{flat}{平坦}\Term{morphism}{态射}是开映射，因此将 $Y$ 换成 $f(X)$ 后，可设 $f$ 是到其上的同胚。经任意\Term{base-change}{基变换}，$f$ 仍然\Term{flat}{平坦}、\Term{radicial}{根性}且\Term{surjectivity}{满射}，因而仍是同胚，尤其是闭映射。故 $f$ 为\Term{proper}{固有态射}，从而\Term{finite}{有限}（参见 Chevalley 定理），由一个\Term{coherent}{凝聚}代数\Term{sheaf}{层} $\mathcal B$ 定义。$\mathcal B$ \Term{locally-free}{局部自由}，且由假定处处\Term{rank}{秩}为 $1$，因此 $X=Y$，证毕。
+
+2) 可设 $X$、$Y$ \Term{affine}{仿射}。进一步，很容易归结到证明：若 $Y=\operatorname{Spec}(A)$，$A$ 为\Term{local-ring}{局部环}，而且 $f^{-1}(y)$ 非空，其中 $y$ 是 $Y$ 的\Term{closed-point}{闭点}，则 $X=Y$。事实上，这将表明每个 $y\in f(X)$ 都有一个\Term{open-neighborhood}{开邻域} $U$，使 $X|_U=U$。写 $X=\operatorname{Spec}(B)$，须证 $A=B$。由于 $\widehat A$ 在 $A$ 上\Term{faithfully-flat}{忠实平坦}，只须将 $A$ 换成 $\widehat A$，将 $B$ 换成 $B\otimes_A\widehat A$ 后证明相应命题。
+\SourcePage{22}
+故可设 $A$ 完备。设 $x$ 为 $y$ 上方的点。由推论 2.2，$\mathcal O_x$ 在 $A$ 上\Term{finite}{有限}；又因它在 $A$ 上\Term{flat}{平坦}且\Term{radicial}{根性}，故与 $A$ 相同。因此有 $X=Y\amalg X'$（不交并）。由于 $X$ 在 $Y$ 上\Term{radicial}{根性}，$X'$ 为空，证明完成。
+\begin{SGAresult}{推论}{5.2}
+设\Term{morphism}{态射} $f\colon X\to Y$ 既是\Term{closed-immersion}{闭浸入}，又\Term{etale}{平展}。若 $X$ \Term{connected}{连通}，则 $f$ 把 $X$ \Term{isomorphism}{同构}地映到 $Y$ 的一个\Term{connected-component}{连通分支}上。
+\end{SGAresult}
+事实上，$f$ 也是\Term{open-immersion}{开浸入}。由此得到：
+\begin{SGAresult}{推论}{5.3}
+设 $X$ 是\Term{net}{净}的 $Y$-\Term{scheme}{概形}，$Y$ \Term{connected}{连通}。则 $X$ 在 $Y$ 上的任一\Term{section}{截面}都将 $Y$ \Term{isomorphism}{同构}地映到 $X$ 的一个\Term{connected-component}{连通分支}上。因此，这些\Term{section}{截面}与那些满足投影 $X_i\to Y$ 为\Term{isomorphism}{同构}的\Term{connected-component}{连通分支} $X_i$ 一一对应；由 5.1，这也等价于该投影\Term{surjectivity}{满射}且\Term{radicial}{根性}。特别地，\Term{section}{截面}由它在任一点的值确定。
+\end{SGAresult}
+只须证明第一条。由 5.2，只须注意到\Term{section}{截面}是\Term{closed-immersion}{闭浸入}（因为 $X$ 在 $Y$ 上\Term{separated}{分离}），且由 4.8 \Term{etale}{平展}。
+\begin{SGAresult}{推论}{5.4}
+设 $X$、$Y$ 为 $S$ 上的两个\Term{prescheme}{预概形}，$X$ 在 $S$ 上\Term{net}{净}且\Term{separated}{分离}，$Y$ \Term{connected}{连通}。设 $f,g$ 为从 $Y$ 到 $X$ 的两个 $S$-\Term{morphism}{态射}，$y$ 为 $Y$ 的一点；假定 $f(y)=g(y)=x$，且 $f$、$g$ 定义的\Term{residue-field}{剩余域}\Term{homomorphism}{同态} $k(x)\to k(y)$ 相同（即“$f$ 与 $g$ 在 $y$ 处几何地相等”）。则 $f=g$。
+\end{SGAresult}
+将 $X$ 换成 $X\times_S Y$，即可归结到 $Y=S$，此时结论来自 5.3。
+
+下面是 5.3 的一个特别重要的变体。
+\begin{SGAresult}{定理}{5.5}
+设 $S$ 为\Term{prescheme}{预概形}，$X$、$Y$ 为两个 $S$-\Term{prescheme}{预概形}，$S_0$ 为与 $S$ 有相同底\Term{sheaf}{层}空间的闭子\Term{prescheme}{预概形}。记 $X_0=X\times_S S_0$、$Y_0=Y\times_S S_0$，即 $X$、$Y$ 在 $S_0$ 上的“限制”。假定 $X$ 在 $S$ 上\Term{etale}{平展}，则自然映射
+\[
+ \operatorname{Hom}_S(Y,X)\longrightarrow\operatorname{Hom}_{S_0}(Y_0,X_0)
+\]
+为\Term{bijection}{双射}。
+\end{SGAresult}
+仍可归结到 $Y=S$；此时结论由 5.3 中对 $X/Y$ 的\Term{section}{截面}所作的“拓扑”描述得到。
+
+\textbf{附释。}这一结果同时给出了\Term{morphism}{态射}的唯一性与存在性。当 $X$、$Y$ 都取为 $S$ 上的\Term{etale}{平展}\Term{scheme}{概形}时，也\Term{representable}{可表}述为：从\Term{etale}{平展} $S$-\Term{scheme}{概形}\Term{category}{范畴}到\Term{etale}{平展} $S_0$-\Term{scheme}{概形}\Term{category}{范畴}的\Term{functor}{函子} $X\mapsto X_0$ 是\Term{fully-faithful}{全忠实}的，即在前者与后者的一个\Term{full-subcategory}{满子范畴}之间建立\Term{category-equivalence}{范畴等价}。下面将看到，它实际上给出了这两个\Term{category}{范畴}之间的等价；这将是一个\Term{etale}{平展} $S$-\Term{scheme}{概形}的存在定理。
+
+\SourcePage{23}
+以下形式的 5.5 在表面上更一般，使用起来往往也更方便。
+\begin{SGAresult}{推论}{5.6（提升的延拓定理）}
+考虑\Term{morphism}{态射}组成的\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}
+ X\arrow[d] & Y_0\arrow[l]\arrow[d]\\
+ S & Y\arrow[l]
+\end{tikzcd}
+\]
+其中 $X\to S$ \Term{etale}{平展}，$Y_0\to Y$ 为\Term{bijection}{双射}\Term{closed-immersion}{闭浸入}。则存在唯一的\Term{morphism}{态射} $Y\to X$，使相应的两个三角形交换。
+\end{SGAresult}
+事实上，将 $S$ 换成 $Y$、$X$ 换成 $X\times_S Y$，即可归结到 $Y=S$；此时就是 5.5 中 $Y=S$ 的特例。
+
+再指出 5.1 的一个直接推论。前面没有把它列为第一个推论，是为了不打断 5.1 后展开的思路。
+\begin{SGAresult}{命题}{5.7}
+设 $X$、$X'$ 为 $Y$ 上\Term{finite-type}{有限型}且\Term{flat}{平坦}的两个\Term{prescheme}{预概形}，$g\colon X\to X'$ 为 $Y$-\Term{morphism}{态射}。则 $g$ 为\Term{open-immersion}{开浸入}（分别地，为\Term{isomorphism}{同构}），当且仅当对每个 $y\in Y$，\Term{fiber}{纤维}上诱导的\Term{morphism}{态射}
+\[
+ g\otimes_Y k(y)\colon X\otimes_Y k(y)\longrightarrow X'\otimes_Y k(y)
+\]
+具有相应性质。
+\end{SGAresult}
+只须证明充分性。\Term{surjectivity}{满射}性具有这一性质，所以可归结到\Term{open-immersion}{开浸入}的情形。由 5.1，须验证 $g$ \Term{radicial}{根性}且\Term{etale}{平展}：前者显然，后者来自下面的推论 5.9。
+\begin{SGAresult}{推论}{5.8}
+（应移至第 3 节。）设 $X$、$X'$ 为两个 $Y$-\Term{prescheme}{预概形}，$g\colon X\to X'$ 为 $Y$-\Term{morphism}{态射}，$x$ 为 $X$ 的一点，$y$ 为它在 $Y$ 上的投影。则 $g$ 在 $x$ 处\Term{quasi-finite}{拟有限}（分别地，\Term{net}{净}），当且仅当 $g\otimes_Y k(y)$ 在 $x$ 处如此。
+\end{SGAresult}
+事实上，为判断是否在 $x$ 处\Term{quasi-finite}{拟有限}、分别地是否\Term{net}{净}，所需考虑的两个 $k(g(x))$-代数，对于 $g$ 与 $g\otimes_Y k(y)$ 是相同的。
+\begin{SGAresult}{推论}{5.9}
+沿用 5.8 的记号，假定 $X$、$X'$ 在 $Y$ 上\Term{flat}{平坦}且为\Term{finite-type}{有限型}。则 $g$ 在 $x$ 处\Term{flat}{平坦}（分别地，\Term{etale}{平展}），当且仅当 $g\otimes_Y k(y)$ 在 $x$ 处如此。
+\end{SGAresult}
+这里把“\Term{flat}{平坦}”的表述列出只是为了备查；它是\Term{flat}{平坦}性的基本判据之一\footnote{参见第 IV 讲 5.9。}。\Term{etale}{平展}的情形由它结合 5.8 得到。
+
+\SourcePage{24}
+\SGAsection{6}{在完备局部环的平展扩张中的应用}
+本节是\Term{formal-prescheme}{形式预概形}的一些结果的特例，后者应写入那部“大部头”。不过，这里可以更省力地处理，无须用到第 7 节中\Term{etale}{平展}\Term{morphism}{态射}的局部显式描述，而后者要用主定理。也许仅凭这一点，就足以让本节保留在这里，即使在那部“大部头”中也如此。
+\begin{SGAresult}{定理}{6.1}
+设 $A$ 为完备\Term{local-ring}{局部环}（当然是\Term{noetherian-ring}{诺特环}），\Term{residue-field}{剩余域}为 $k$。对任一 $A$-代数 $B$，令 $R(B)=B\otimes_A k$，并视为 $k$-代数；它\Term{functorial}{函子性}地依赖于 $B$。则 $R$ 在 $A$ 上\Term{finite}{有限}且\Term{etale}{平展}的 $A$-代数\Term{category}{范畴}与 $k$ 上\Term{finite}{有限}\Term{rank}{秩}\Term{separable}{可分}代数\Term{category}{范畴}之间给出\Term{category-equivalence}{范畴等价}。
+\end{SGAresult}
+首先，此\Term{functor}{函子}\Term{fully-faithful}{全忠实}，这来自下面更一般的事实。
+\begin{SGAresult}{推论}{6.2}
+设 $B$、$B'$ 为两个在 $A$ 上\Term{finite}{有限}的 $A$-代数。若 $B$ 在 $A$ 上\Term{etale}{平展}，则典范映射
+\[
+ \operatorname{Hom}_{A\text{-alg}}(B,B')\longrightarrow
+ \operatorname{Hom}_{k\text{-alg}}\bigl(R(B),R(B')\bigr)
+\]
+为\Term{bijection}{双射}。
+\end{SGAresult}
+将 $A$ 换成 $A/\mathfrak m^n$，可归结到 $A$ 为\Term{artinian-ring}{阿廷环}的情形；此时就是 5.5 的一个特例。
+
+还须证明，对每个\Term{finite}{有限}\Term{separable}{可分}的 $k$-代数 $L$（何不称为\Term{etale}{平展}代数？这样更简短），存在一个在 $A$ 上\Term{etale}{平展}的 $B$，使 $R(B)$ 与 $L$ \Term{isomorphism}{同构}。可设 $L$ 是 $k$ 的\Term{separable-extension}{可分扩张}。于是它有一个生成元 $x$，即\Term{isomorphism}{同构}于 $k[t]/Fk[t]$，其中 $F\in k[t]$ 为\Term{monic-polynomial}{首一多项式}。把 $F$ 提升为 $A[t]$ 中的一个\Term{monic-polynomial}{首一多项式} $F_1$，再取 $B=A[t]/F_1A[t]$ 即可。
+
+\SGAsection{7}{非分歧态射和平展态射的局部构造}
+\begin{SGAresult}{命题}{7.1}
+设 $A$ 为\Term{noetherian-ring}{诺特环}，$B$ 为 $A$ 上的\Term{finite}{有限}代数，$u$ 为 $B$ 在 $A$ 上的一个生成元，$F\in A[t]$ 满足 $F(u)=0$（不要求 $F$ 首一）。令 $u'=F'(u)$，其中 $F'$ 为导多项式。设 $\mathfrak q$ 为 $B$ 中不含 $u'$ 的\Term{prime-ideal}{素理想}，$\mathfrak p$ 为它在 $A$ 中的收缩。则 $B_{\mathfrak q}$ 在 $A_{\mathfrak p}$ 上\Term{net}{净}。
+\end{SGAresult}
+换言之，记 $Y=\operatorname{Spec}(A)$、$X=\operatorname{Spec}(B)$、$X_{u'}=\operatorname{Spec}(B_{u'})$，则 $X_{u'}$ 在 $Y$ 上\Term{unramified}{非分歧}。这一断言由下面更精确的表述得到。
+\begin{SGAresult}{推论}{7.2}
+$B/A$ 的\Term{different-ideal}{不同理想}包含 $u'B$；若自然\Term{homomorphism}{同态} $A[t]/FA[t]\to B$（将 $t$ 映为 $u$）是\Term{isomorphism}{同构}，则二者相等。
+\end{SGAresult}
+\SourcePage{25}
+设 $J$ 为\Term{homomorphism}{同态} $C=A[t]\to B$ 的核。它包含 $FA[t]$，并在 7.2 的第二种情形下与之相等。由于这个\Term{homomorphism}{同态}\Term{surjectivity}{满射}，$\Omega^1_{B/A}$ 可与 $\Omega^1_{C/A}$ 对由 $J\Omega^1_{C/A}$ 及 $d(J)$ 生成的子模所取的商相识别（本应在第 1 节写明\Term{homomorphism}{同态} $d$ 的定义，以及多项式代数的 $\Omega^1$ 的计算）。借助基 $dt$，把 $\Omega^1_{C/A}$ 与 $C$ 相识别，便得到 $B/B\cdot J'$。因此，\Term{different-ideal}{不同理想}由 $J'$ 生成，其中 $J'$ 是所有 $G\in J$ 的导数在 $B$ 中的像所成的集合；而且只须取一组生成 $J$ 的 $G$。因为 $F\in J$，分别地 $F$ 生成 $J$，结论即得。（注意，本应把 7.2 列为命题，把 7.1 列为推论。）由此得到：
+\begin{SGAresult}{推论}{7.3}
+在 7.1 的条件下，再设 $F$ 首一且 $A[t]/FA[t]\to B$ 为\Term{isomorphism}{同构}。则 $B_{\mathfrak q}$ 在 $A_{\mathfrak p}$ 上\Term{etale}{平展}，当且仅当 $\mathfrak q$ 不含 $u'$。
+\end{SGAresult}
+事实上，$B$ 在 $A$ 上\Term{flat}{平坦}，所以\Term{etale}{平展}等价于\Term{net}{净}，可应用 7.2。
+\begin{SGAresult}{推论}{7.4}
+在 7.3 的条件下，$B$ 在 $A$ 上\Term{etale}{平展}，当且仅当 $u'$ 可逆；也等价于 $F$、$F'$ 在 $A[t]$ 中生成单位理想。
+\end{SGAresult}
+最后一个判据由前一个判据结合 $B$ 中的 Nakayama 引理得到。
+
+满足推论 7.4 所述性质的\Term{monic-polynomial}{首一多项式} $F\in A[t]$ 称为\Term{separable-polynomial}{可分多项式}。若 $F$ 不首一，至少应要求其首项系数可逆；当 $A$ 是域时，这就回到了通常的定义。
+\begin{SGAresult}{推论}{7.5}
+设 $B$ 为\Term{local-ring}{局部环} $A$ 上的\Term{finite}{有限}代数，并假定 $K(A)$ 无限，或 $B$ 为\Term{local-ring}{局部环}。设 $n$ 为 $L=B\otimes_A K(A)$ 在 $K(A)=k$ 上的\Term{rank}{秩}。则 $B$ 在 $A$ 上\Term{net}{净}（分别地，\Term{etale}{平展}），当且仅当 $B$ \Term{isomorphism}{同构}于 $A[t]/FA[t]$ 的一个商（分别地，\Term{isomorphism}{同构}于 $A[t]/FA[t]$），其中 $F$ 是首一\Term{separable-polynomial}{可分多项式}，且可取为 $n$ 次（分别地，必为 $n$ 次）。
+\end{SGAresult}
+只须证明必要性。设 $B$ 在 $A$ 上\Term{net}{净}，则 $L$ 在 $k$ 上\Term{separable}{可分}。由假定，$L/k$ 有一个生成元 $\xi$，所以 $\xi^i$（$0\leq i<n$）是 $L$ 的一组 $k$-基。取 $u\in B$ 提升 $\xi$；由 Nakayama 引理，$u^i$（$0\leq i<n$）生成 $A$-模 $B$，分别地构成它的一组基。特别地，可取\Term{monic-polynomial}{首一多项式} $F\in A[t]$，使 $F(u)=0$，且 $B$ \Term{isomorphism}{同构}于 $A[t]/FA[t]$ 的一个商，分别地\Term{isomorphism}{同构}于它。最后，将 7.4 应用于 $L/k$，知 $F$、$F'$ 模去 $\mathfrak m A[t]$ 后生成 $A[t]$；于是由 $A[t]/FA[t]$ 中的 Nakayama 引理，$F$、$F'$ 生成 $A[t]$，证明完成。
+\begin{SGAresult}{定理}{7.6}
+设 $A$ 为\Term{local-ring}{局部环}，$A\to\mathcal O$ 为\Term{local-homomorphism}{局部同态}，且 $\mathcal O$ \Term{isomorphism}{同构}于某个\Term{finite-type}{有限型} $A$-代数的\Term{localization}{局部化}。假定 $\mathcal O$ 在 $A$ 上\Term{net}{净}。则存在一个在 $A$ 上整的 $A$-代数 $B$、$B$ 的一个\Term{maximal-ideal}{极大理想} $\mathfrak n$、$B$ 在 $A$ 上的一个生成元 $u$，以及\Term{monic-polynomial}{首一多项式} $F\in A[t]$，使得 $F'(u)\notin\mathfrak n$，且 $\mathcal O$ 作为 $A$-代数\Term{isomorphism}{同构}于 $B_{\mathfrak n}$。若 $\mathcal O$ 在 $A$ 上\Term{etale}{平展}，则可取 $B=A[t]/FA[t]$。
+\end{SGAresult}
+\SourcePage{26}
+当然，这些条件也是充分的。先指出下面两个好用的推论。
+\begin{SGAresult}{推论}{7.7}
+$\mathcal O$ 在 $A$ 上\Term{net}{净}，当且仅当 $\mathcal O$ \Term{isomorphism}{同构}于一个同类的、在 $A$ 上\Term{etale}{平展}的代数的商。
+\end{SGAresult}
+事实上，取 $\mathcal O'=B'_{\mathfrak n'}$，其中 $B'=A[t]/FA[t]$，$\mathfrak n'$ 为 $\mathfrak n$ 在 $B'$ 中的\Term{inverse-image}{逆像}即可。
+\begin{SGAresult}{推论}{7.8}
+设 $f\colon X\to Y$ 为\Term{finite-type}{有限型}\Term{morphism}{态射}，$x\in X$。则 $f$ 在 $x$ 处\Term{net}{净}，当且仅当存在 $x$ 的一个\Term{open-neighborhood}{开邻域} $U$，使 $f|_U$ \Term{separable}{可分}解为 $U\to X'\to Y$，其中第一个箭头为\Term{closed-immersion}{闭浸入}，第二个箭头为\Term{etale}{平展}\Term{morphism}{态射}。
+\end{SGAresult}
+这只是 7.7 的直接翻译。
+
+说明一下，7.6 中那些术语堆成的结论怎样由主要断言推出：由 7.7，存在满\Term{homomorphism}{同态} $\mathcal O'\to\mathcal O$，其中 $\mathcal O$ 具有所需性质；但由于 $\mathcal O'$、$\mathcal O$ 都在 $A$ 上\Term{etale}{平展}，由 4.8，\Term{morphism}{态射} $\mathcal O'\to\mathcal O$ \Term{etale}{平展}，因而为\Term{isomorphism}{同构}。
+
+\textbf{7.6 的证明。}这里沿用 Chevalley 讨论班中的一个证明。由主定理，可写成 $\mathcal O=B_{\mathfrak n}$，其中 $B$ 为 $A$ 上的\Term{finite}{有限}代数，$\mathfrak n$ 为其\Term{maximal-ideal}{极大理想}。于是 $B/\mathfrak n=K(\mathcal O)$ 为 $k$ 的\Term{separable-extension}{可分扩张}，因而是单生成\Term{group-extension}{扩张}。设 $\mathfrak n_i$（$1\leq i\leq r$）为 $B$ 中除 $\mathfrak n$ 以外的\Term{maximal-ideal}{极大理想}，则可取 $u\in B$，使它属于全部 $\mathfrak n_i$，且其在 $B/\mathfrak n$ 中的像为生成元。又有
+\[
+ B/\mathfrak n=B_{\mathfrak n}/\mathfrak n B_{\mathfrak n}
+ =B_{\mathfrak n}/\mathfrak m B_{\mathfrak n},
+\]
+其中 $\mathfrak m$ 为 $A$ 的\Term{maximal-ideal}{极大理想}。暂且承认下面的引理。
+\begin{SGAresult}{引理}{7.9}
+设 $A$ 为\Term{local-ring}{局部环}，$B$ 为 $A$ 上的\Term{finite}{有限}代数，$\mathfrak n$ 为 $B$ 的\Term{maximal-ideal}{极大理想}。设 $u\in B$ 在 $B_{\mathfrak n}/\mathfrak m B_{\mathfrak n}$ 中的像作为 $k=A/\mathfrak m$-代数的生成元生成该代数，且 $u$ 属于 $B$ 中除 $\mathfrak n$ 之外的所有\Term{maximal-ideal}{极大理想}。令 $B'=B[u]$、$\mathfrak n'=\mathfrak n B'$。则典范\Term{homomorphism}{同态} $B'_{\mathfrak n'}\to B_{\mathfrak n}$ 为\Term{isomorphism}{同构}。
+\end{SGAresult}
+\begin{SGAresult}{引理}{7.10}
+（本应列为 7.1 的推论，并放在它所蕴含的 7.5 之前。）设 $B$ 是由一个元素 $u$ 生成的\Term{finite}{有限} $A$-代数，$\mathfrak n$ 是 $B$ 的\Term{maximal-ideal}{极大理想}，且 $B_{\mathfrak n}$ 在 $A$ 上\Term{unramified}{非分歧}。则存在\Term{monic-polynomial}{首一多项式} $F\in A[t]$，使 $F(u)=0$ 且 $F'(u)\notin\mathfrak n$。
+\end{SGAresult}
+事实上，设 $n$ 为 $k$-代数 $L=B\otimes_A k$ 的\Term{rank}{秩}；由 Nakayama 引理，存在一个 $n$ 次\Term{monic-polynomial}{首一多项式} $F\in A[t]$，使 $F(u)=0$。设 $f$ 为 $F$ 模 $\mathfrak m$ \Term{reduced}{约化}所得的多项式，则 $L$ 作为 $k$-代数\Term{isomorphism}{同构}于 $k[t]/fk[t]$。故由 7.3，$f'(\xi)$ 不属于 $L$ 中对应于 $\mathfrak n$ 的\Term{maximal-ideal}{极大理想}，其中 $\xi$ 为 $t$ 在 $L$ 中的像，也就是 $u$ 在 $L$ 中的像。
+\SourcePage{27}
+由于 $f'(\xi)$ 是 $F'(u)$ 的像，证明完成。
+
+现在，把 7.9 与 7.10 结合，就得到定理 7.6。只剩下证明 7.9。令 $S'=B'\setminus\mathfrak n'$，则 $B'S'^{-1}=B'_{\mathfrak n'}$。
+\[
+\begin{tikzcd}
+ B\arrow[r] & BS'^{-1}\arrow[r] & BS^{-1}=B_{\mathfrak n}\\
+ B'\arrow[u]\arrow[r] & B'S'^{-1}=B'_{\mathfrak n'}\arrow[u]
+\end{tikzcd}
+\]
+同样，令 $S=B\setminus\mathfrak n$，则 $BS^{-1}=B_{\mathfrak n}$。于是有自然\Term{homomorphism}{同态} $BS'^{-1}\to BS^{-1}=B_{\mathfrak n}$。证明它是\Term{isomorphism}{同构}，也就是证明 $S$ 中的元素在 $BS'^{-1}$ 中可逆；换言之，后者的每个\Term{maximal-ideal}{极大理想} $\mathfrak p$ 都不与 $S$ 相交，即在 $B$ 上诱导 $\mathfrak n$。事实上，由于 $BS'^{-1}$ 在 $B'S'^{-1}=B'_{\mathfrak n'}$ 上\Term{finite}{有限}，$\mathfrak p$ 在后者上诱导其唯一的\Term{maximal-ideal}{极大理想} $\mathfrak n'B'_{\mathfrak n'}$，因而在 $B'$ 上诱导\Term{maximal-ideal}{极大理想} $\mathfrak n'$。又因为 $B$ 在 $B'$ 上\Term{finite}{有限}，$\mathfrak p$ 在 $B$ 上诱导的理想 $\mathfrak q$ 位于 $\mathfrak n'$ 上方，必为\Term{maximal-ideal}{极大理想}，并且不含 $u$，所以等于 $\mathfrak n$。这里使用了 $u$ 属于 $B$ 中除 $\mathfrak n$ 外全部\Term{maximal-ideal}{极大理想}这一事实。
+
+再证 $BS'^{-1}=B'S'^{-1}$。由于前者在后者上\Term{finite}{有限}，由 Nakayama 引理，只须证明模 $\mathfrak n'BS'^{-1}$ 后相等；更强地，只须证明模 $\mathfrak m BS'^{-1}$ 后相等。而
+\[
+ BS'^{-1}/\mathfrak m BS'^{-1}
+ =B_{\mathfrak n}/\mathfrak m B_{\mathfrak n}
+\]
+作为 $k$-代数由 $u$ 生成，这里用了 $u$ 的另一条性质。因此，$B'$，更不用说 $B'S'^{-1}$，在其中的像就是全环，因为该像是包含 $k$ 及 $u$ 的像的子环。
+
+\textbf{注记。}应该可以把定理 7.6 写成 $\mathcal O$ 只需半局部的形式，从而同时涵盖 7.5：假定 $\mathcal O/\mathfrak m\mathcal O$ 为单生成 $k$-代数；于是可取 $u\in B$，其在 $B/\mathfrak m B$ 中的像为生成元，且 $u$ 属于 $B$ 中所有并非来自 $\mathcal O$ 的\Term{maximal-ideal}{极大理想}。引理 7.9、7.10 应当可以毫无困难地作相应调整。更一般地，……
+
+\SGAsection{8}{平展概形的无穷小提升及其在形式概形中的应用}
+\begin{SGAresult}{命题}{8.1}
+设 $Y$ 为\Term{prescheme}{预概形}，$Y_0$ 为其子\Term{prescheme}{预概形}，$X_0$ 为\Term{etale}{平展} $Y_0$-\Term{scheme}{概形}，$x$ 为 $X_0$ 的一点。则存在\Term{etale}{平展} $Y$-\Term{scheme}{概形} $X$、$x$ 在 $X_0$ 中的邻域 $U_0$，以及一个 $Y_0$-\Term{isomorphism}{同构} $U_0\xrightarrow{\sim}X\times_Y Y_0$。
+\end{SGAresult}
+事实上，设 $y$ 为 $x$ 在 $Y_0$ 上的投影，将 7.6 应用于 $y$、$x$ 分别在 $Y_0$、$X_0$ 中的\Term{local-ring}{局部环}之间的\Term{etale}{平展}\Term{local-homomorphism}{局部同态} $A_0\to B_0$，得到\Term{isomorphism}{同构}
+\[
+ B_0=(C_0)_{\mathfrak n_0},\qquad C_0=A_0[t]/F_0A_0[t],
+\]
+其中 $F_0$ 首一，$\mathfrak n_0$ 为 $C_0$ 中不含 $F'_0(t)$ 的类的\Term{maximal-ideal}{极大理想}。设 $A$ 为 $y$ 在 $Y$ 中的\Term{local-ring}{局部环}，取\Term{monic-polynomial}{首一多项式} $F\in A[t]$，使它经满\Term{homomorphism}{同态} $A\to A_0$ 映为 $F_0$（提升 $F_0$ 的系数即可）。
+\SourcePage{28}
+再令 $C=A[t]/FA[t]$，$\mathfrak n$ 为 $\mathfrak n_0$ 经自然满\Term{homomorphism}{同态} $C\to C\otimes_A A_0=C_0$ 所取的\Term{inverse-image}{逆像}。令
+\[
+ B=C_{\mathfrak n}.
+\]
+由构造及 7.1，立即可知 $B$ 在 $A$ 上\Term{etale}{平展}，且有\Term{isomorphism}{同构} $B\otimes_A A_0=A_0$。由第 I 章，存在\Term{finite-type}{有限型} $Y$-\Term{scheme}{概形} $X$ 及 $X$ 中位于 $y$ 上方的一点 $z$，使 $\mathcal O_z$ 作为 $A$-代数\Term{isomorphism}{同构}于 $C$。由于后者在 $A=\mathcal O_y$ 上\Term{etale}{平展}，适当缩小 $X$ 后，可设 $X$ 在 $Y$ 上\Term{etale}{平展}。令 $X'_0=X\times_Y Y_0$，则 $z$ 在 $X'_0$ 中的\Term{local-ring}{局部环}可与 $\mathcal O_z\otimes_A A_0=B\otimes_A A_0$ 相识别，因而\Term{isomorphism}{同构}于 $B_0$。根据同一处的结论，这个\Term{isomorphism}{同构}由 $x$ 在 $X_0$ 中的某个邻域 $U_0$ 到 $z$ 在 $X'_0$ 中的某个邻域的\Term{isomorphism}{同构}给出；适当缩小 $X$，可设后一个邻域就是 $X'_0$。证明完成。
+\begin{SGAresult}{推论}{8.2}
+若\Term{residue-field}{剩余域} $k(y)$ 无限，则对\Term{etale-covering}{平展覆盖}也有类似表述。
+\end{SGAresult}
+证明相同，只须以 7.5 代替 7.6。
+\begin{SGAresult}{定理}{8.3}
+在 5.5 中考虑的\Term{functor}{函子}是\Term{category-equivalence}{范畴等价}。
+\end{SGAresult}
+由定理 5.5，只须证明每个\Term{etale}{平展} $S_0$-\Term{scheme}{概形} $X_0$ 都\Term{isomorphism}{同构}于某个形如 $X\times_S S_0$ 的 $S_0$-\Term{scheme}{概形}，其中 $X$ 为\Term{etale}{平展} $S$-\Term{scheme}{概形}。$X$ 的底\Term{sheaf}{层}\Term{topological-space}{拓扑空间}必然与 $X_0$ 的相同，而且 $X_0$ 可识别为 $X$ 的一个闭子\Term{prescheme}{预概形}。因此，问题等价于：在 $X_0$ 的底\Term{sheaf}{层}\Term{topological-space}{拓扑空间} $|X_0|$ 上，找一个 $f_0^*(\mathcal O_S)$-代数\Term{sheaf}{层} $\mathcal O_X$，其中 $f_0$ 为投影 $X_0\to S_0$，这里视为底\Term{sheaf}{层}空间之间的连续映射，使 $|X_0|$ 成为\Term{etale}{平展} $S$-\Term{prescheme}{预概形} $X$；并找一个代数\Term{homomorphism}{同态} $\mathcal O_X\to\mathcal O_{X_0}$，使它与标量\Term{sheaf}{层}间的\Term{homomorphism}{同态} $f_0^*(\mathcal O_S)\to f_0^*(\mathcal O_{S_0})$ 相容，并诱导\Term{isomorphism}{同构}
+\[
+ \mathcal O_X\otimes_{f_0^*(\mathcal O_S)}f_0^*(\mathcal O_{S_0})
+ \xrightarrow{\sim}\mathcal O_{X_0}.
+\]
+这样，$X$ 就是一个\Term{reduced}{约化}到 $X_0$ 的\Term{etale}{平展} $S$-\Term{prescheme}{预概形}；由于 $X_0$ 在 $S_0$ 上\Term{separated}{分离}，$X$ 在 $S$ 上也\Term{separated}{分离}，因此 $X$ 满足要求。又若 $(U_i)$ 是 $X_0$ 的一个开\Term{covering}{覆盖}，并且在各个 $U_i$ 上已找到问题的解，则由唯一性定理 5.5，这些解可\Term{gluing}{粘合}，也就是说，定义它们的代数\Term{sheaf}{层}连同相应的增广\Term{homomorphism}{同态}可\Term{gluing}{粘合}。立即可见，这样在 $S$ 上构造出的环空间是一个\Term{etale}{平展} $S$-\Term{prescheme}{预概形} $X$，并带有\Term{isomorphism}{同构} $X\times_S S_0\xleftarrow{\sim}X_0$。所以只须局部找到解，而这由 8.1 保证。
+\begin{SGAresult}{推论}{8.4}
+设 $\mathfrak S$ 为\Term{locally-noetherian}{局部诺特}\Term{formal-prescheme}{形式预概形}，带有\Term{ideal-of-definition}{定义理想} $\mathcal J$；令 $S_0=(|\mathfrak S|,\mathcal O_{\mathfrak S}/\mathcal J)$ 为相应的通常\Term{prescheme}{预概形}。则从 $\mathfrak S$ 的\Term{etale-covering}{平展覆盖}\Term{category}{范畴}到 $S_0$ 的\Term{etale-covering}{平展覆盖}\Term{category}{范畴}的\Term{functor}{函子} $\mathfrak X\mapsto\mathfrak X\times_{\mathfrak S}S_0$ 是\Term{category-equivalence}{范畴等价}。
+\end{SGAresult}
+
+\SourcePage{29}
+当然，\Term{formal-prescheme}{形式预概形} $\mathfrak S$ 的\Term{etale-covering}{平展覆盖}，是指 $\mathfrak S$ 的一个\Term{covering}{覆盖}，即一个由\Term{coherent}{凝聚}代数\Term{sheaf}{层} $\mathcal B$ 定义的、$\mathfrak S$ 上的\Term{formal-prescheme}{形式预概形}，其中 $\mathcal B$ \Term{locally-free}{局部自由}，且其剩余\Term{fiber}{纤维} $\mathcal B_s\otimes_{\mathcal O_s}k(s)$ 为 $k(s)$ 上的\Term{separable}{可分}代数。记 $S_n=(|\mathfrak S|,\mathcal O_{\mathfrak S}/\mathcal J^{n+1})$ 为通常的\Term{prescheme}{预概形}，则给定 $\mathfrak S$ 上的\Term{coherent}{凝聚}代数\Term{sheaf}{层} $\mathcal B$，等价于给定各 $S_n$ 上的一列\Term{coherent}{凝聚}代数\Term{sheaf}{层} $\mathcal B_n$，以及满足传递性的\Term{homomorphism}{同态}系 $\mathcal B_m\to\mathcal B_n$（$m\geq n$），它们定义\Term{isomorphism}{同构}
+\[
+ \mathcal B_m\otimes_{\mathcal O_{S_m}}\mathcal O_{S_n}
+ \xrightarrow{\sim}\mathcal B_n.
+\]
+显然，$\mathcal B$ \Term{locally-free}{局部自由}，当且仅当各 $\mathcal B_n$ 在 $S_n$ 上都\Term{locally-free}{局部自由}；而且，\Term{separable}{可分}性条件成立，当且仅当它对 $\mathcal B_0$ 成立，也等价于对全部 $\mathcal B_n$ 成立。因此，$\mathcal B$ 在 $\mathfrak S$ 上\Term{etale}{平展}，当且仅当各 $\mathcal B_n$ 在 $S_n$ 上\Term{etale}{平展}。由此，8.4 立即由 8.3 得到。
+
+\textbf{注记。}8.4 中没有必要只限于\Term{covering}{覆盖}。不过，眼下用到的只有这种情形。
+
+\SGAsection{9}{性质的保持}
+设 $A\to B$ 为\Term{etale}{平展}\Term{local-homomorphism}{局部同态}。这里考察这样的若干情形：$A$ 的某一性质蕴含 $B$ 的同一性质，或反之。其中一些命题仅由 $B$ 在 $A$ 上\Term{quasi-finite}{拟有限}且\Term{flat}{平坦}这一事实就能推出；这里只“回顾”其中几条。$A$、$B$ 具有相同的 \Term{krull-dimension}{Krull 维数}和相同的\Term{depth}{深度}（用仍通行的术语来说，就是 Serre 的“\Term{cohomology}{上同调}\Term{codimension}{余维数}”）。例如，由此可知，$A$ 为 Cohen--Macaulay 环，当且仅当 $B$ 如此。又，对 $B$ 中任一\Term{prime-ideal}{素理想} $\mathfrak q$，设其在 $A$ 中的收缩为 $\mathfrak p$，则只要假定 $B$ 为\Term{finite-type}{有限型} $A$-代数的\Term{localization}{局部化}，$B_{\mathfrak q}$ 就仍然在 $A_{\mathfrak p}$ 上\Term{quasi-finite}{拟有限}且\Term{flat}{平坦}；这是因为\Term{finite-type}{有限型}\Term{morphism}{态射}为\Term{quasi-finite}{拟有限}、分别地为\Term{flat}{平坦}的点集是开集。此外，$A$ 的每个\Term{prime-ideal}{素理想} $\mathfrak p$ 都是 $B$ 的某个\Term{prime-ideal}{素理想} $\mathfrak q$ 的收缩，因为 $B$ 在 $A$ 上\Term{faithfully-flat}{忠实平坦}。例如，由此可知，$\mathfrak p$、$\mathfrak q$ 的\Term{height}{高度}相同；也可知 $A$ 没有\Term{embedded-prime-ideal}{嵌入素理想}，当且仅当 $B$ 没有\Term{embedded-prime-ideal}{嵌入素理想}。
+
+因此，下面只讨论对\Term{etale}{平展}\Term{morphism}{态射}而言更特殊的命题。
+\begin{SGAresult}{命题}{9.1}
+设 $A\to B$ 为\Term{etale}{平展}\Term{local-homomorphism}{局部同态}。则 $A$ 为\Term{regular}{正则}环，当且仅当 $B$ 为\Term{regular}{正则}环。
+\end{SGAresult}
+事实上，设 $k$、$L$ 分别为 $A$、$B$ 的\Term{residue-field}{剩余域}。由于 $B$ 在 $A$ 上\Term{flat}{平坦}，且 $L=B\otimes_A k$，即 $\mathfrak n=\mathfrak m B$（其中 $\mathfrak m$、$\mathfrak n$ 为 $A$、$B$ 的\Term{maximal-ideal}{极大理想}），$B$ 上的 $\mathfrak m$-进滤过就是其 $\mathfrak n$-进滤过，因而有
+\[
+ \operatorname{gr}^*(B)=\operatorname{gr}^*(A)\otimes_k L.
+\]
+\SourcePage{30}
+因此，$\operatorname{gr}^*(B)$ 为 $L$ 上的多项式代数，当且仅当 $\operatorname{gr}^*(A)$ 为 $k$ 上的多项式代数。证毕。（注意，这里没有用到 $L/k$ \Term{separable}{可分}。）
+\begin{SGAresult}{推论}{9.2}
+设 $f\colon X\to Y$ 为\Term{etale}{平展}\Term{morphism}{态射}。若 $Y$ \Term{regular}{正则}，则 $X$ \Term{regular}{正则}；若 $f$ \Term{surjectivity}{满射}，逆命题也成立。
+\end{SGAresult}
+\begin{SGAresult}{命题}{9.2}
+设 $f\colon X\to Y$ 为\Term{etale}{平展}\Term{morphism}{态射}。若 $Y$ \Term{reduced}{约化}，则 $X$ 也\Term{reduced}{约化}；若 $f$ \Term{surjectivity}{满射}，逆命题也成立。
+\end{SGAresult}
+这等价于下面的推论。
+\begin{SGAresult}{推论}{9.3}
+设 $f\colon A\to B$ 为\Term{etale}{平展}\Term{local-homomorphism}{局部同态}，且 $B$ \Term{isomorphism}{同构}于一个\Term{finite-type}{有限型} $A$-代数的\Term{localization}{局部化}。则 $A$ \Term{reduced}{约化}，当且仅当 $B$ \Term{reduced}{约化}。
+\end{SGAresult}
+必要性显然，因为 $A\to B$ \Term{injectivity}{单射}（$B$ 在 $A$ 上\Term{faithfully-flat}{忠实平坦}）。证明充分性：设 $\mathfrak p_i$ 为 $A$ 的\Term{minimal-prime-ideal}{极小素理想}。由假定，自然映射 $A\to\prod_i A/\mathfrak p_i$ \Term{injectivity}{单射}；与\Term{flat}{平坦} $A$-模 $B$ 张量，得到 $B\to\prod_i B/\mathfrak p_iB$ \Term{injectivity}{单射}，因而只须证明各 $B/\mathfrak p_iB$ \Term{reduced}{约化}。由于它在 $A/\mathfrak p_i$ 上\Term{etale}{平展}，可归结到 $A$ 为\Term{integral-domain}{整环}的情形。设 $K$ 为其\Term{field-of-fractions}{分式域}。由于 $A\to K$ \Term{injectivity}{单射}，而 $B$ 在 $A$ 上\Term{flat}{平坦}，$B\to B\otimes_A K$ 也\Term{injectivity}{单射}，只须证明后一个环\Term{reduced}{约化}。又因为 $B$ 是\Term{finite-type}{有限型} $A$-代数的\Term{localization}{局部化}，它就是某个在 $Y=\operatorname{Spec}(A)$ 上\Term{finite-type}{有限型}且\Term{etale}{平展}的\Term{scheme}{概形} $X=\operatorname{Spec}(C)$ 上一点 $x$ 的\Term{local-ring}{局部环}。因此，$B\otimes_A K$ 是 $X\otimes_A K$ 的环 $C\otimes_A K$ 关于适当\Term{multiplicative-set}{乘法闭集}的\Term{localization}{局部化}。$X\otimes_A K$ 在 $K$ 上\Term{etale}{平展}，其环就是\Term{finite}{有限}多个域（$K$ 的\Term{separable-extension}{可分扩张}）的直积，故 $B\otimes_A K$ 也是如此，证毕。
+\begin{SGAresult}{推论}{9.4}
+设 $f\colon A\to B$ 为\Term{etale}{平展}\Term{local-homomorphism}{局部同态}，并假定 $A$ \Term{analytically-reduced}{解析约化}，即\Term{completion}{完备化} $\widehat A$ 没有\Term{nilpotent-element}{幂零元素}。则 $B$ \Term{analytically-reduced}{解析约化}，尤其\Term{reduced}{约化}。
+\end{SGAresult}
+事实上，$\widehat B$ 在 $\widehat A$ 上\Term{finite}{有限}且\Term{etale}{平展}，应用 9.3 即可。
+\begin{SGAresult}{定理}{9.5}
+设 $f\colon A\to B$ 为\Term{local-homomorphism}{局部同态}，且 $B$ \Term{isomorphism}{同构}于某个\Term{finite-type}{有限型} $A$-代数的\Term{localization}{局部化}。则：
+\begin{enumerate}
+\item[(i)] 若 $f$ \Term{etale}{平展}，则 $A$ \Term{normal}{正规}当且仅当 $B$ \Term{normal}{正规}。
+\item[(ii)] 若 $A$ \Term{normal}{正规}，则 $f$ \Term{etale}{平展}当且仅当 $f$ \Term{injectivity}{单射}且\Term{net}{净}；此时由 (i)，$B$ \Term{normal}{正规}。
+\end{enumerate}
+\end{SGAresult}
+对 (i) 给出两个不同的证明。第一个使用\Term{quasi-finite}{拟有限}\Term{flat}{平坦}\Term{morphism}{态射}的某些性质，即本节开头回顾的那些性质，而不用 7.6，因而也不用主定理；第二个证明则相反。
+\SourcePage{31}
+至于 (ii)，似乎无论如何都需要主定理。
+
+\textbf{第一个证明。}使用如下关于维数不为零的\Term{noetherian}{诺特}\Term{local-ring}{局部环} $A$ \Term{normal}{正规}性的充要条件。
+
+\textbf{Serre 判据。}(i) 对 $A$ 的每个\Term{height}{高度}为 $1$ 的\Term{prime-ideal}{素理想} $\mathfrak p$，$A_{\mathfrak p}$ \Term{normal}{正规}，等价地，\Term{regular}{正则}；(ii) 对 $A$ 的每个\Term{height}{高度}至少为 $2$ 的\Term{prime-ideal}{素理想} $\mathfrak p$，有 $\operatorname{depth}A_{\mathfrak p}\geq2$\footnote{参见 EGA IV 5.8.6。}。
+
+这里暂且承认此判据，它原本应列在讨论\Term{flat}{平坦}性的段落中。它的主要优点在于，无须预先假定 $A$ \Term{reduced}{约化}，更无须假定它是\Term{integral-domain}{整环}。这里已可假定 $\dim A=\dim B\neq0$。
+
+根据本节开头的回顾，$A$ 中\Term{height}{高度}为 $1$、分别地\Term{height}{高度}至少为 $2$ 的\Term{prime-ideal}{素理想} $\mathfrak p$，恰为 $B$ 中\Term{height}{高度}为 $1$、分别地\Term{height}{高度}至少为 $2$ 的\Term{prime-ideal}{素理想} $\mathfrak q$ 的收缩。最后，若 $\mathfrak p$ 与 $\mathfrak q$ 对应，则 $B_{\mathfrak q}$ 在 $A_{\mathfrak p}$ 上\Term{etale}{平展}，因而具有相同\Term{depth}{深度}，且由 9.1，$B_{\mathfrak q}$ \Term{regular}{正则}当且仅当 $A_{\mathfrak p}$ \Term{regular}{正则}。应用 Serre 判据便知，$A$ \Term{normal}{正规}当且仅当 $B$ \Term{normal}{正规}。
+
+\textbf{第二个证明。}设 $B$ \Term{normal}{正规}，$L$ 为其\Term{field-of-fractions}{分式域}，$K$ 为 $A$ 的\Term{field-of-fractions}{分式域}（因为 $B$ 是\Term{integral-domain}{整环}，$A$ 也是\Term{integral-domain}{整环}）。在 9.3 的证明中已经看到，$B\otimes_A K$ 是\Term{finite}{有限}多个域的直积；由于它包含在 $L$ 中，故本身是域，又因为它包含 $B$，所以它就是 $L$。$K$ 中在 $A$ 上整的元素也在 $B$ 上整，故由 $B$ \Term{normal}{正规}而属于 $B$，进而属于 $A$，因为 $B\cap K=A$；最后一个等式来自 $B$ 在 $A$ 上\Term{faithfully-flat}{忠实平坦}。
+
+现设 $A$ \Term{normal}{正规}，证明 $B$ \Term{normal}{正规}。由 7.6，可写成 $B=B'_{\mathfrak n}$，其中 $B'=A[t]/FA[t]$，而 $F$、$\mathfrak n$ 如 7.6。于是 $L=B\otimes_A K$ 是 $B'\otimes_A K=K[t]/FK[t]$ 的某个\Term{localization}{局部化}，并且是若干域的直积，各域均为 $K$ 的\Term{finite}{有限}\Term{separable-extension}{可分扩张}。同每次对\Term{artinian-ring}{阿廷环}关于\Term{multiplicative-set}{乘法闭集}作\Term{localization}{局部化}时一样，这个直积是 $B'_K$ 的一个\Term{direct-factor}{直因子}，因而对应于 $K[t]$ 中的一个分解 $F=F_1F_2$，并且 $L$ 中对应于 $t$ 的生成元已被 $F_1$ 零化。由于 $A$ \Term{normal}{正规}，若将 $F_i$ 取为首一，就有 $F_i\in A[t]$。注意 $B\to L=B\otimes_A K$ \Term{injectivity}{单射}，因为 $A\to K$ \Term{injectivity}{单射}且 $B$ 在 $A$ 上\Term{flat}{平坦}；因而在 $B$ 中已有 $F_1(u)=0$，其中 $u$ 为 $t$ 在 $L$ 中的类。若原先把 $F$ 取为次数最小的一个，就得到 $F_2=1$。（注意，由于 $F_1(u)=0$，有
+\[
+ F'(u)=F'_1(u)F_2(u)+F_1(u)F'_2(u)=F'_1(u)F_2(u),
+\]
+故由 $F'(u)\neq0$ 得 $F'_1(u)\neq0$。）所以有
+\[
+ L=B\otimes_A K=K[t]/FK[t].\tag{$*$}
+\]
+\SourcePage{32}
+因此 $F$ 在 $K[t]$ 中\Term{separable}{可分}，但在 $A[t]$ 中当然未必\Term{separable}{可分}。（注意，目前实质上只证明了：在 7.6 中，可以选取 $F$、$\mathfrak n$，使得在此处记号下 $B'\to B'_{\mathfrak n}=B$ \Term{injectivity}{单射}；为此用了 $A$ \Term{normal}{正规}。不知道去掉\Term{normal}{正规}性假定后是否仍成立。）
+
+现在回顾下面这个熟知的引理，它摘自 Serre 去年的课程。
+\begin{SGAresult}{引理}{9.6}
+设 $K$ 为环，$F\in K[t]$ 为首一\Term{separable-polynomial}{可分多项式}，$L=K[t]/FK[t]$，$u$ 为 $t$ 在 $L$ 中的类，因而 $F'(u)$ 为 $L$ 的可逆元素。令 $n=\deg F$，则有公式
+\[
+\begin{aligned}
+ \operatorname{tr}_{L/K}\bigl(u^i/F'(u)\bigr)&=0 &&(0\leq i<n-1),\\
+ \operatorname{tr}_{L/K}\bigl(u^{n-1}/F'(u)\bigr)&=1.
+\end{aligned}
+\]
+\end{SGAresult}
+\begin{SGAresult}{推论}{9.7}
+矩阵 $(u^j\cdot u^i/F'(u))_{0\leq i,j\leq n-1}$ 的行列式为 $(-1)^{n(n-1)/2}$，因此在 $K$ 的任一子环 $A$ 中都可逆。
+\end{SGAresult}
+\begin{SGAresult}{推论}{9.8}
+设 $A$ 为 $K$ 的子环，$V$ 为 $L$ 中由 $u^i$（$0\leq i\leq n-1$）生成的 $A$-模，$V'$ 为 $L$ 中由满足下述条件的 $x\in L$ 构成的 $A$-子模：对每个 $y\in V$ 均有 $\operatorname{tr}_{L/K}(xy)\in A$，也就是对 $y=u^i$（$0\leq i\leq n-1$）如此。则 $V'$ 是以 $u^i/F'(u)$（$0\leq i\leq n-1$）为基的 $A$-模。
+\end{SGAresult}
+\begin{SGAresult}{推论}{9.9}
+设 $K$ 为\Term{normal}{正规}\Term{integral-domain}{整环} $A$ 的\Term{field-of-fractions}{分式域}，且 $F$ 的系数属于 $A$。则在 9.8 的记号下，$V'$ 包含 $A$ 在 $L$ 中的\Term{normal-closure}{正规闭包} $A'$；因此 $A'$ 包含在 $A[u]/F'(u)$ 中，从而也包含在 $A[u][F'(u)^{-1}]$ 中。
+\end{SGAresult}
+将最后一个推论用于前面证明所得到的情形：$F'(u)$ 在 $B$ 中可逆，而 $B$ 包含 $A[u]$，故 $B$ 包含 $A'$。由主定理，或由 $B=A[u]_{\mathfrak n}$ 这一事实，$B$ 是 $A'$ 的一个\Term{localization}{局部化}。由于 $A'$ \Term{normal}{正规}，$B$ 也\Term{normal}{正规}。
+
+\textbf{(ii) 的证明。}与刚才的证明一样，可在 7.6 中选择 $F$，使等式 $(*)$ 仍成立。表面上唯一的障碍是，现在不再假定 $B$ 在 $A$ 上\Term{flat}{平坦}，因而不能断言 $B\to L$ \Term{injectivity}{单射}，所以这一推理首先只能用于 $B$ 在该\Term{homomorphism}{同态}下的像 $B_1$。立即可知 $B_1$ 在 $A$ 上\Term{flat}{平坦}，因为它是一个自由 $A$-代数的\Term{localization}{局部化}。由 4.8，\Term{morphism}{态射} $B\to B_1$ \Term{etale}{平展}，因而是\Term{isomorphism}{同构}，证明完成。
+
+从行文安排看，应当交换后两个证明的次序，并把引理及其推论中的形式计算放在独立的一节中。
+\begin{SGAresult}{推论}{9.10}
+设 $f\colon X\to Y$ 为\Term{etale}{平展}\Term{morphism}{态射}。若 $Y$ \Term{normal}{正规}，则 $X$ \Term{normal}{正规}；若 $f$ \Term{surjectivity}{满射}，逆命题成立。
+\end{SGAresult}
+\SourcePage{33}
+\begin{SGAresult}{推论}{9.11}
+设 $f\colon X\to Y$ 为\Term{dominant}{占优态射}，$Y$ \Term{normal}{正规}，$X$ \Term{connected}{连通}。若 $f$ \Term{net}{净}，则 $f$ \Term{etale}{平展}，因此 $X$ \Term{normal}{正规}，进而因其\Term{connected}{连通}而\Term{irreducible}{不可约}。
+\end{SGAresult}
+设 $U$ 为 $f$ \Term{etale}{平展}的点集。它是开集，只须证明它也是闭集且非空。$U$ 包含 $Y$ 的\Term{generic-point}{泛点}的\Term{inverse-image}{逆像}，因为域上的代数\Term{unramified}{非分歧}当且仅当\Term{etale}{平展}；又因 $X$ \Term{dominant}{占优}于 $Y$，故 $U$ 非空。若 $x$ 属于 $U$ 的闭包，则它属于 $U$ 的某个\Term{irreducible-component}{不可约分支} $U_i$ 的闭包，因而属于 $X$ 的一个与 $U$ 相交的\Term{irreducible-component}{不可约分支} $X_i=\overline{U_i}$。这个分支\Term{dominant}{占优}于 $Y$，因为在 $Y$ 上\Term{flat}{平坦}的 $U$ 的每个分支都\Term{dominant}{占优}于 $Y$。所以，若 $y$ 为 $x$ 在 $Y$ 上的投影，则 $\mathcal O_y\to\mathcal O_x$ \Term{injectivity}{单射}，因为 $\mathcal O_y$ 为\Term{integral-domain}{整环}。由于 $\mathcal O_y$ \Term{normal}{正规}，且 $\mathcal O_y\to\mathcal O_x$ \Term{net}{净}，可由 9.5(ii) 得到结论。
+\begin{SGAresult}{推论}{9.12}
+设 $f\colon X\to Y$ 为\Term{finite-type}{有限型}\Term{dominant}{占优}\Term{morphism}{态射}，$Y$ \Term{normal}{正规}，$X$ \Term{irreducible}{不可约}。则 $f$ \Term{etale}{平展}的点集恰为 $\Omega^1_{X/Y}$ 的\Term{support}{支集}的补集，也就是\Term{different-ideal}{不同理想} $\mathfrak d_{X/Y}$ 所定义的子\Term{prescheme}{预概形}在 $X$ 中的补集。
+\end{SGAresult}
+这正是第 4 节注记中所说的那个“较不\Term{trivial-bundle}{平凡}”的表述。
+
+\textbf{注记。}不假定底\Term{scheme}{概形}\Term{normal}{正规}时，切不可认为\Term{irreducible}{不可约}\Term{scheme}{概形}的\Term{connected}{连通}\Term{etale-covering}{平展覆盖}也一定\Term{irreducible}{不可约}。第 11 节将研究这一问题。
+
+\SGAsection{10}{正规概形的平展覆盖}
+\begin{SGAresult}{命题}{10.1}
+设 $X$ 为\Term{normal}{正规}\Term{connected}{连通}\Term{scheme}{概形} $Y$ 上的\Term{etale}{平展}\Term{separated}{分离}\Term{prescheme}{预概形}，$Y$ 的\Term{function-field}{函数域}为 $K$。则 $X$ 的\Term{connected-component}{连通分支} $X_i$ 均为\Term{integral-scheme}{整概形}，其\Term{function-field}{函数域} $K_i$ 均为 $K$ 的\Term{finite}{有限}\Term{separable-extension}{可分扩张}；$X_i$ 可识别为 $X$ 在 $K_i$ 中的\Term{normalization}{正规化}的一个非空开子集。因此 $X$ 可识别为 $Y$ 在 $R(X)=L=\prod K_i$ 中的\Term{normalization}{正规化}的一个稠密开子集。
+\end{SGAresult}
+由 9.10，$X$ \Term{normal}{正规}，尤其其\Term{local-ring}{局部环}都是\Term{integral-domain}{整环}，因而 $X$ 的\Term{connected-component}{连通分支}\Term{irreducible}{不可约}。由于 $X_i$ \Term{normal}{正规}，且在 $Y$ 上\Term{finite}{有限}并\Term{dominant}{占优}，主定理的一个特例——其实几乎是\Term{trivial-bundle}{平凡}的——表明，$X_i$ 是 $X$ 在 $X$ 的\Term{function-field}{函数域} $K_i$ 中的\Term{normalization}{正规化}的一个开子集。
+\begin{SGAresult}{推论}{10.2}
+在 10.1 的条件下，$X$ 在 $Y$ 上\Term{finite}{有限}，即为 $Y$ 的一个\Term{etale-covering}{平展覆盖}，当且仅当 $X$ \Term{isomorphism}{同构}于 $Y$ 在 $L=R(X)$ 中的\Term{normalization}{正规化} $Y'$，其中 $R(X)$ 为 $X$ 上的\Term{rational-function-ring}{有理函数环}。
+\end{SGAresult}
+\SourcePage{34}
+事实上，已知这一\Term{normalization}{正规化}在 $Y$ 上\Term{finite}{有限}，因为 $Y$ \Term{normal}{正规}且 $R/K$ \Term{separable}{可分}；反之，若 $X$ 在 $Y$ 上\Term{finite}{有限}，它在 $Y'$ 上也\Term{finite}{有限}，所以它在 $Y'$ 中的像是闭集，而另一方面这个像又是稠密的。
+
+$K$ 上的\Term{finite}{有限}\Term{rank}{秩}代数 $L$ 称为在 $X$ 上\Term{unramified}{非分歧}，或在 $X$ 已明确时简称在 $K$ 上\Term{unramified}{非分歧}，是指 $L$ 为 $K$ 上的\Term{separable}{可分}代数，即若干\Term{separable-extension}{可分扩张} $K_i$ 的直积，并且 $Y$ 在 $L$ 中的\Term{normalization}{正规化} $Y'$（即 $Y$ 在各 $K_i$ 中的\Term{normalization}{正规化}的不交并）在 $Y$ 上\Term{unramified}{非分歧}，由 9.11 也就是\Term{etale}{平展}。因此有：
+\begin{SGAresult}{推论}{10.3}
+对每个在 $Y$ 上\Term{finite}{有限}、且每个\Term{irreducible-component}{不可约分支}都\Term{dominant}{占优}于 $Y$ 的 $X$，以 $R(X)$ 表示 $X$ 上的\Term{rational-function-ring}{有理函数环}，即 $X$ 的各\Term{irreducible-component}{不可约分支}的\Term{generic-point}{泛点}处的\Term{local-ring}{局部环}的直积。这样，$X\mapsto R(X)$ 就是一个取值于 $K=R(Y)$ 上\Term{finite}{有限}\Term{rank}{秩}代数的\Term{functor}{函子}。它在 $Y$ 的\Term{connected}{连通}\Term{etale-covering}{平展覆盖}\Term{category}{范畴}与 $K$ 的在 $Y$ 上\Term{unramified}{非分歧}的\Term{group-extension}{扩张} $L$ 所成\Term{category}{范畴}之间建立\Term{category-equivalence}{范畴等价}。
+\end{SGAresult}
+逆\Term{functor}{函子}为\Term{normalization}{正规化}\Term{functor}{函子}。
+
+设 $Y$ \Term{affine}{仿射}，由\Term{function-field}{函数域}为 $K$ 的\Term{normal}{正规}环 $A$ 定义。设 $L$ 为 $K$ 的一个\Term{finite}{有限}\Term{group-extension}{扩张}，且为若干域的直积。按定义，$Y$ 在 $L$ 中的\Term{normalization}{正规化} $Y'$ \Term{isomorphism}{同构}于 $\operatorname{Spec}(A')$，其中 $A'$ 为 $A$ 在 $L$ 中的\Term{normalization}{正规化}。$L$ 在 $Y$ 上\Term{unramified}{非分歧}，就是说 $A'$ 在 $A$ 上\Term{unramified}{非分歧}，或说\Term{etale}{平展}。若 $A$ 为\Term{local-ring}{局部环}，这又等价于各\Term{local-ring}{局部环} $A'_{\mathfrak n}$ 都在\Term{local-ring}{局部环} $A$ 上\Term{unramified}{非分歧}，即\Term{etale}{平展}；这里 $\mathfrak n$ 遍历 $A'$ 的\Term{finite}{有限}个\Term{maximal-ideal}{极大理想}，也就是其在 $A$ 上收缩为\Term{maximal-ideal}{极大理想} $\mathfrak m$ 的\Term{prime-ideal}{素理想}。最后注意，\Term{discriminant}{判别式}判据 4.10 在此也适用。更一般地，在 $X$ \Term{dominant}{占优}于 $Y$、而 $Y$ 仍假定局部为\Term{integral-scheme}{整概形}时，无须预先假定\Term{flat}{平坦}性，此判据的一个变体应表述为：$A\to B$ 及 $B\to B\otimes_A K=L$ 都是\Term{injectivity}{单射}——所以 $\operatorname{tr}_{L/K}$ 有定义——且 $\operatorname{tr}_{L/K}(xy)$ 诱导一个非退化\Term{bilinear-form}{双线性型} $B\times B\to A$；也就是说，存在 $x_i\in B$（$1\leq i\leq n$，$n$ 为 $L$ 在 $K$ 上的\Term{rank}{秩}），使对每个 $i,j$ 都有 $\operatorname{tr}(x_ix_j)\in A$，且 $\det(\operatorname{tr}(x_ix_j))$ 在 $A$ 中可逆。
+
+性质组 4.6 立即给出经典框架中\Term{unramified}{非分歧}性的如下性质组。
+\begin{SGAresult}{命题}{10.4}
+设 $Y$ 为\Term{function-field}{函数域}为 $K$ 的\Term{normal}{正规}整\Term{prescheme}{预概形}。
+\begin{enumerate}
+\item[(i)] $K$ 在 $Y$ 上\Term{unramified}{非分歧}。
+\item[(ii)] 若 $L$ 为 $K$ 的一个在 $Y$ 上\Term{unramified}{非分歧}的\Term{group-extension}{扩张}，$Y'$ 为\Term{function-field}{函数域}为 $L$、\Term{dominant}{占优}于 $Y$ 的\Term{normal}{正规}\Term{prescheme}{预概形}，例如 $Y$ 在 $L$ 中的\Term{normalization}{正规化}，而 $M$ 为 $L$ 的一个在 $Y'$ 上\Term{unramified}{非分歧}的\Term{group-extension}{扩张}，则 $M/K$ 在 $X$ 上\Term{unramified}{非分歧}。这是\Term{unramified}{非分歧}性的传递性。
+\item[(iii)] 设 $Y'$ 为\Term{dominant}{占优}于 $Y$ 的\Term{normal}{正规}整\Term{prescheme}{预概形}，\Term{function-field}{函数域}\Term{group-extension}{扩张}为 $K'/K$。若 $L$ 为 $K$ 的一个在 $Y$ 上\Term{unramified}{非分歧}的\Term{group-extension}{扩张}，则 $L\otimes_K K'$ 是 $K'$ 的一个在 $Y'$ 上\Term{unramified}{非分歧}的\Term{group-extension}{扩张}。这是平移性质。
+\end{enumerate}
+\end{SGAresult}
+此外，还有：
+\SourcePage{35}
+\begin{SGAresult}{推论}{10.5}
+在 (iii) 的条件下，若 $Y=\operatorname{Spec}(A)$、$Y'=\operatorname{Spec}(A')$，则 $Y'$ 在 $L'=L\otimes_K K'$ 中的\Term{normalization}{正规化} $\overline{A'}$ 可与 $\overline A\otimes_A A'$ 相识别，其中 $\overline A$ 为 $A$ 在 $L$ 中的\Term{normalization}{正规化}。
+\end{SGAresult}
+通常，人们不愿考虑非\Term{integral-domain}{整环}，即便是若干域的直积也不例外，所以常把平移性质写成下面较弱的形式。
+\begin{SGAresult}{推论}{10.6}
+在 (iii) 的条件下，设 $L_1$ 为 $L/K$（在 $Y$ 上\Term{unramified}{非分歧}）与 $K'/K$ 的一个合成\Term{group-extension}{扩张}。则 $L_1/K'$ 在 $Y'$ 上\Term{unramified}{非分歧}。在 $Y=\operatorname{Spec}(A)$、$Y'=\operatorname{Spec}(A')$ 时，还有
+\[
+ \overline{A'}=A[\overline A,A'],
+\]
+即 $A'$ 在 $L_1$ 中的\Term{normalization}{正规化}环 $\overline{A'}$，就是由 $A'$ 及 $A$ 在 $L$ 中的\Term{normalization}{正规化} $\overline A$ 生成的 $A$-代数。
+\end{SGAresult}
+若无\Term{unramified}{非分歧}性假定，最后这一事实一般不成立，即使对数域的合成\Term{group-extension}{扩张}也不成立。
+
+本节最后，将解释\Term{etale-covering}{平展覆盖}这一概念如何对应于它的直观图像：在所考虑的点 $y\in Y$ 上方，应有“最多数目”的点，尤其不应有“几个点重合”在 $y$ 上方。为了在所需的一般性下证明这方面的结果，这里暂且承认下面的命题 10.7；它的证明将写入那部“大部头”的第 IV 章第 15 节，使用 Chevalley 的\Term{constructible-set}{可构造集}技术，以及一点\Term{descent}{下降}理论。
+
+\Term{finite-type}{有限型}\Term{morphism}{态射} $f\colon X\to Y$ 称为\Term{universally-open}{普遍开}的，是指对任意\Term{base-change}{基变换} $Y'\to Y$，其中 $Y'$ \Term{locally-noetherian}{局部诺特}，\Term{morphism}{态射} $f'\colon X'=X\times_Y Y'\to Y'$ 都是开映射，即把开集映为开集。事实上，只须考虑 $Y'$ 在 $Y$ 上为\Term{finite-type}{有限型}的情形，甚至只须考虑 $Y'$ 形如 $Y[t_1,\ldots,t_r]$ 的情形，其中 $t_i$ 为不定元。\Term{universally-open}{普遍开}的\Term{morphism}{态射}当然是开映射，但逆命题不成立。另一方面，若 $f$ 为开映射，且 $X$、$Y$ 都\Term{irreducible}{不可约}，则 $f$ 的全部\Term{fiber}{纤维}的全部分支均有相同维数，即泛\Term{fiber}{纤维} $f^{-1}(z)$ 的维数，其中 $z$ 为 $Y$ 的\Term{generic-point}{泛点}。最后，若 $Y$ \Term{normal}{正规}，这最后一个条件就足以推出 $f$ \Term{universally-open}{普遍开}，这是 Chevalley 定理。例如，由此可知，若 $f\colon X\to Y$ 为\Term{quasi-finite}{拟有限}\Term{morphism}{态射}，$Y$ \Term{normal}{正规}且\Term{irreducible}{不可约}，则 $f$ \Term{universally-open}{普遍开}，等价地为开映射，当且仅当 $X$ 的每个\Term{irreducible-component}{不可约分支}都\Term{dominant}{占优}于 $Y$。也回顾一下：\Term{finite-type}{有限型}\Term{flat}{平坦}\Term{morphism}{态射}是开映射，因此也\Term{universally-open}{普遍开}。在这些准备之后，“回顾”如下命题。
+\begin{SGAresult}{命题}{10.7}
+设 $f\colon X\to Y$ 为\Term{quasi-finite}{拟有限}、\Term{separated}{分离}且\Term{universally-open}{普遍开}的\Term{morphism}{态射}。对每个 $y\in Y$，以 $n(y)$ 表示“\Term{fiber}{纤维} $f^{-1}(y)$ 的\Term{geometric-number-of-points}{几何点数}”，即对 $x\in f^{-1}(y)$ 的\Term{residue-field}{剩余域}\Term{group-extension}{扩张} $k(x)/k(y)$ 的可\Term{grading}{分次}数求和。则 $Y$ 上的函数 $y\mapsto n(y)$ 为上半连续。它在点 $y$ 的某个邻域内为常数，也就是说 $n(y)=n(z_i)$，其中 $z_i$ 为 $Y$ 的包含 $y$ 的各\Term{irreducible-component}{不可约分支}的\Term{generic-point}{泛点}，必须满足如下条件：存在 $y$ 的一个邻域 $U$，使 $X|_U$ 在 $U$ 上\Term{finite}{有限}\footnote{参见 EGA IV 15.5.1。}。
+\end{SGAresult}
+\SourcePage{36}
+\begin{SGAresult}{推论}{10.8}
+若 $y\mapsto n(y)$ 为常数，且 $Y$ \Term{geometrically-unibranch}{几何单分支}\footnote{定义见下面第 11 节，原书正文第 21 页。}，则 $X$ 的\Term{irreducible-component}{不可约分支}两两不交。
+\end{SGAresult}
+\begin{SGAresult}{命题}{10.9}
+设 $f\colon X\to Y$ 为\Term{etale}{平展}\Term{separated}{分离}\Term{morphism}{态射}。沿用 10.7 的记号，函数 $y\mapsto n(y)$ 为上半连续。它在点 $y$ 的某个邻域内为常数，即 $n(y)=n(z_i)$，其中 $z_i$ 为 $Y$ 的包含 $y$ 的各\Term{irreducible-component}{不可约分支}的\Term{generic-point}{泛点}，当且仅当存在 $y$ 的\Term{open-neighborhood}{开邻域} $U$，使 $X|_U$ 在 $U$ 上\Term{finite}{有限}，即为 $U$ 的\Term{etale-covering}{平展覆盖}。
+\end{SGAresult}
+\begin{SGAresult}{推论}{10.10}
+设 $f\colon X\to Y$ 为\Term{etale}{平展}\Term{separated}{分离}\Term{morphism}{态射}，$Y$ \Term{connected}{连通}。则 $f$ \Term{finite}{有限}，即使 $X$ 成为 $Y$ 的\Term{etale-covering}{平展覆盖}，当且仅当 $f$ 的全部\Term{fiber}{纤维}具有相同的\Term{geometric-number-of-points}{几何点数}。
+\end{SGAresult}
+在 10.7 及其推论中，没有对 $Y$ 作\Term{normal}{正规}性假定。若加上这一假定，可得到更强的表述，而它通常被用作\Term{covering}{覆盖}\Term{unramified}{非分歧}性的定义。
+\begin{SGAresult}{定理}{10.11}
+设 $f\colon X\to Y$ 为\Term{quasi-finite}{拟有限}\Term{separated}{分离}\Term{morphism}{态射}。假定 $Y$ \Term{irreducible}{不可约}，$X$ 的每个分支都\Term{dominant}{占优}于 $Y$，且 $X$ \Term{reduced}{约化}，即 $\mathcal O_X$ 无\Term{nilpotent-element}{幂零元素}。设 $n$ 为 $X$ 在 $Y$ 上的次数，即 $X$ 的各\Term{irreducible-component}{不可约分支} $X_i$ 的\Term{function-field}{函数域} $K_i$ 在 $Y$ 的\Term{function-field}{函数域} $K$ 上的次数之和。设 $y$ 为 $Y$ 的一个\Term{normal}{正规}点。则 $X$ 中位于 $y$ 上方的\Term{geometric-number-of-points}{几何点数} $n(y)\leq n$，且等号成立当且仅当存在 $y$ 的一个\Term{open-neighborhood}{开邻域} $U$，使 $X|_U$ 为 $U$ 的\Term{etale-covering}{平展覆盖}。
+\end{SGAresult}
+“仅当”显然，现证明“当”。设 $z$ 为 $Y$ 的\Term{generic-point}{泛点}，则
+\[
+ n(z)=\sum_i[K_i:K]_{\mathrm{sep}}\leq n,
+\]
+且由 10.7，有 $n(y)\leq n(z)\leq n$；等号成立时，对 $y$ 的某个适当邻域 $U$，$X|_U$ 在 $U$ 上\Term{finite}{有限}。因此可设 $X$ 在 $Y$ 上\Term{finite}{有限}，且 $Y$ 上的函数 $n(y')$ 为常数。再由 10.8，$X$ 为其\Term{irreducible-component}{不可约分支}的不交并；要证它在 $y$ 处\Term{unramified}{非分歧}，可归结到 $X$ \Term{irreducible}{不可约}、因而为\Term{integral-scheme}{整概形}的情形。最后可设 $Y=\operatorname{Spec}(\mathcal O_y)$。于是，定理归结为下面这个经典表述。
+
+\SourcePage{37}
+\begin{SGAresult}{推论}{10.12}
+设 $A$ 为\Term{normal}{正规}\Term{local-ring}{局部环}（照例是\Term{noetherian-ring}{诺特环}），\Term{function-field}{函数域}为 $K$；$L$ 为 $K$ 的\Term{finite}{有限}\Term{group-extension}{扩张}，次数为 $n$，可\Term{grading}{分次}数为 $n_s$；$B$ 为 $L$ 的一个在 $A$ 上\Term{finite}{有限}、且\Term{field-of-fractions}{分式域}为 $L$ 的子环；$\mathfrak m$ 为 $A$ 的\Term{maximal-ideal}{极大理想}。设 $n'$ 为 $B/\mathfrak m B$ 在 $A/\mathfrak m A=k$ 上的可\Term{grading}{分次}数，即此环的各\Term{residue-field}{剩余域}\Term{group-extension}{扩张}的可\Term{grading}{分次}数之和。则 $n'\leq n_s$，从而 $n'\leq n$。最后一个不等式取等号，当且仅当 $B$ 在 $A$ 上\Term{unramified}{非分歧}，即\Term{etale}{平展}。
+\end{SGAresult}
+只须证明 $n'=n$ 蕴含 $B$ 在 $A$ 上\Term{etale}{平展}。回顾一下 $k$ 无限时的证明：只须证明 $R=B/\mathfrak m B$ 在 $k$ 上\Term{separable}{可分}。若不然，由一个熟知的引理，存在 $R$ 中的元素 $a$，它在 $k$ 上的\Term{minimal-polynomial}{极小多项式}次数大于 $n'$。这个元素来自 $B$ 中的某个 $x$；$x$ 作为 $L$ 的元素，在 $K$ 上的\Term{minimal-polynomial}{极小多项式}次数至多为 $n$。另一方面，因为 $A$ \Term{normal}{正规}，该\Term{minimal-polynomial}{极小多项式}的系数都属于 $A$，故模 $\mathfrak m$ \Term{reduced}{约化}后得到\Term{monic-polynomial}{首一多项式} $F\in k[t]$，其次数至多为 $n=n'$，且 $F(a)=0$，矛盾。
+
+在一般情形下，$k$ 可能\Term{finite}{有限}。回到几何语言，考虑在 $Y$ 上\Term{faithfully-flat}{忠实平坦}的 $Y'=\operatorname{Spec}(A[t])$，以及 $Y'$ 在 $y$ 上的\Term{fiber}{纤维} $\operatorname{Spec}(k[t])$ 的\Term{generic-point}{泛点} $y'$。立即可见，$X$ 在 $Y$ 上于 $y$ 处\Term{net}{净}，当且仅当 $X'=X\times_Y Y'=\operatorname{Spec}(B[t])$ 在 $Y'$ 上于 $y'$ 处\Term{net}{净}。另一方面，由 $y'$ 的选取，其\Term{residue-field}{剩余域}为 $k(t)$，因而无限。又因 $y'$ 是 $Y'$ 的\Term{normal}{正规}点，便归结到前一种情形。
+
+\SGAsection{11}{若干补充}
+前面已经说过，\Term{integral-scheme}{整概形}的\Term{connected}{连通}\Term{etale-covering}{平展覆盖}未必是\Term{integral-scheme}{整概形}。下面给出两个例子。
+
+a) 设 $C$ 为有普通二重点 $x$ 的代数曲线，$C'$ 为其\Term{normalization}{正规化}，$a$、$b$ 为 $C'$ 中位于 $x$ 上方的两点。取 $C'$ 的两个副本 $C'_i$（$i=1,2$），分别以 $a_i$、$b_i$ 表示 $C'_i$ 中对应于 $a$、$b$ 的点。在和曲线 $C'_1\amalg C'_2$ 中，一方面将 $a_1$ 与 $b_2$ 识别，另一方面将 $a_2$ 与 $b_1$ 识别。识别过程的细节留给读者；它将写在那部“大部头”的第 VI 章，而对\Term{algebraically-closed}{代数闭}域上的曲线，Serre 关于代数曲线的书中已有论述。这样得到的曲线 $C''$ \Term{connected}{连通}而可约，并且是 $C$ 的一个 $2$ 次\Term{etale-covering}{平展覆盖}。读者可验证，更一般地，$C$ 的\Term{connected}{连通}“Galois”\Term{etale-covering}{平展覆盖} $C''$，若其\Term{inverse-image}{逆像} $C''\times_C C'$ 是 $C'$ 的\Term{trivial-bundle}{平凡}\Term{covering}{覆盖}，即\Term{isomorphism}{同构}于若干个 $C'$ 副本的和，则必为次数 $n$ 的“循环”\Term{covering}{覆盖}；而对每个整数 $n>0$，都能构造一个\Term{connected}{连通}的 $n$ 次循环\Term{etale-covering}{平展覆盖}。用后面将发展的\Term{fundamental-group}{基本群}语言来说，$\pi_1(C)$ 对由 $\pi_1(C')\to\pi_1(C)$ 的像生成的闭\Term{normal-subgroup}{正规子群}所取的商，\Term{isomorphism}{同构}于 $\mathbb Z$ 的\Term{completion}{完备化}；这里的\Term{homomorphism}{同态}由投影诱导。
+\SourcePage{38}
+更准确地，应该可以证明，$C$ 的\Term{fundamental-group}{基本群}\Term{isomorphism}{同构}于 $C'$ 的\Term{fundamental-group}{基本群}与 $\mathbb Z$ 的\Term{completion}{完备化}的\Term{topological-free-product}{拓扑自由积}。顺便指出，正是这类问题催生了\Term{scheme}{概形}的“\Term{descent}{下降理论}”。
+
+b) 设 $A$ 为完备局部\Term{integral-domain}{整环}。由 Nagata 的结果，其\Term{normalization}{正规化} $A'$ 在 $A$ 上\Term{finite}{有限}，所以是完备半\Term{local-ring}{局部环}，又因其为\Term{integral-domain}{整环}，实际上是\Term{local-ring}{局部环}。假定它定义的\Term{residue-field}{剩余域}\Term{group-extension}{扩张} $L/k$ 不是\Term{purely-inseparable-extension}{纯不可分扩张}；反之，就称 $A$ \Term{geometrically-unibranch}{几何单分支}，详见下文。例如，$\mathbb R[[s,t]]/(s^2+t^2)\mathbb R[[s,t]]$ 就是这种情形，这里 $\mathbb R$ 为实数域。取 $k$ 的一个\Term{finite}{有限} Galois \Term{group-extension}{扩张} $k'$，使 $L\otimes_k k'$ 分解；再取一个\Term{finite}{有限}\Term{etale}{平展} $A$-代数 $B$，对应于\Term{residue-field}{剩余域}\Term{group-extension}{扩张} $k'$。回顾一下，这样的 $B$ 本质上唯一。于是 $B'=A'\otimes_A B$ 在 $B$ 上的剩余代数为 $L\otimes_k k'$，它不是\Term{local-ring}{局部环}，所以 $B'$ 不是\Term{local-ring}{局部环}；又因它完备，故有\Term{zero-divisor}{零因子}。$B'$ 包含在 $B$ 的\Term{total-ring-of-fractions}{全分式环}中：因为它在 $A'$ 上自由，故在 $A'$ 上\Term{torsion-free}{无挠}，从而在 $A$ 上\Term{torsion-free}{无挠}，因而包含在
+\[
+ B'\otimes_A K=B'_{(K)}=A'_{(K)}\otimes_K B_{(K)}=B_{(K)}
+\]
+中，这里用了 $A'_{(K)}=K$。所以 $B$ 不是\Term{integral-domain}{整环}。在环 $\mathbb R[s,t]/(s^2+t^2)\mathbb R[s,t]$ 的情形，取 $k'/k=\mathbb C/\mathbb R$，得到的 $B$ 是平面上两条相交直线在交点处的\Term{local-ring}{局部环}。
+
+另需注意，若\Term{integral-scheme}{整概形} $Y$ 有一个\Term{connected}{连通}而非\Term{irreducible}{不可约}的\Term{etale-covering}{平展覆盖} $X$，则 $X$ 的每个\Term{irreducible-component}{不可约分支}都给出一个\Term{dominant}{占优}于 $Y$、却不在 $Y$ 上\Term{etale}{平展}的\Term{unramified}{非分歧}\Term{covering}{覆盖} $X'$。在例 a) 中，由此可知 $C'$ 在 $C$ 上\Term{unramified}{非分歧}，但在 $a$、$b$ 两点处不\Term{etale}{平展}。事实上，直接考察 $x$、$a$ 处\Term{local-ring}{局部环}的\Term{completion}{完备化}也可看出这一点：从“形式”观点看，$C'$ 在 $a$ 处可识别为 $C$ 在 $x$ 处的一个闭子\Term{scheme}{概形}，即 $C$ 经过 $x$ 的两条“分支”之一。
+
+从 a)、b) 可见，9.5(i)、(ii) 的结论失效，直接与 $Y$ 的一个点在\Term{normalization}{正规化}中“\Term{splitting}{分裂}”为不同的点有关。在 b) 中，\Term{residue-field}{剩余域}\Term{group-extension}{扩张}不是纯不\Term{separable}{可分}这一事实，也应作这种几何解释。确切地说，若局部\Term{integral-domain}{整环} $A$ 的\Term{normalization}{正规化}只有一个\Term{maximal-ideal}{极大理想}，且对应的\Term{residue-field}{剩余域}\Term{group-extension}{扩张}为\Term{purely-inseparable-extension}{纯不可分扩张}，就称 $A$ \Term{geometrically-unibranch}{几何单分支}；若整\Term{prescheme}{预概形}的一点 $y$ 的\Term{local-ring}{局部环}\Term{geometrically-unibranch}{几何单分支}，就称 $y$ \Term{geometrically-unibranch}{几何单分支}。例如，\Term{normal}{正规}点、曲线的普通尖点等都如此。似乎只要 $Y$ 有一个非单分支点，就总有一个\Term{connected}{连通}而非\Term{irreducible}{不可约}的\Term{etale-covering}{平展覆盖}；至少在例 b) 中，当 $Y$ 是完备\Term{local-ring}{局部环}的谱时，我们已经证明了这一点。另一方面，可以证明：若 $Y$ 的全部点都\Term{geometrically-unibranch}{几何单分支}，则每个在 $Y$ 上\Term{unramified}{非分歧}、\Term{connected}{连通}且\Term{dominant}{占优}于 $Y$ 的\Term{prescheme}{预概形}都是\Term{etale}{平展}且\Term{irreducible}{不可约}的。证明沿用 9.5 的证明，并使用定理 8.3 的如下推广；后面将借助\Term{descent}{下降}技术证明它\footnote{参见第 IX 讲 4.10。一个更直接的证明见 EGA IV 18.10.3，它使用 9.5 对\Term{geometrically-unibranch}{几何单分支}\Term{local-ring}{局部环}的一个变体。}。
+\SourcePage{39}
+设 $Y'\to Y$ 为\Term{finite}{有限}、\Term{radicial}{根性}且\Term{surjectivity}{满射}的\Term{morphism}{态射}，也就是可称为“\Term{universal-homeomorphism}{普遍同胚}”的\Term{morphism}{态射}。考虑从 $Y$-\Term{prescheme}{预概形}到 $Y'$-\Term{prescheme}{预概形}的\Term{functor}{函子} $X\mapsto X\times_Y Y'=X'$。此\Term{functor}{函子}在\Term{etale}{平展} $Y$-\Term{scheme}{概形}\Term{category}{范畴}与\Term{etale}{平展} $Y'$-\Term{scheme}{概形}\Term{category}{范畴}之间诱导\Term{category-equivalence}{范畴等价}。例如，可将这一结果用于 $Y'$ 为 $Y$ 的\Term{normalization}{正规化}的情形，其中假定 $Y$ 单分支，且 $Y'$ 在 $Y$ 上\Term{finite}{有限}——实际遇到的各种情形都如此；也可用于某个“夹在” $Y$ 与其\Term{normalization}{正规化}之间的 $Y''$，此时\Term{normalization}{正规化}不再需要在 $Y$ 上\Term{finite}{有限}。
+\SourcePage{40}
+% 原 PDF 页40为空白页，无待译正文。

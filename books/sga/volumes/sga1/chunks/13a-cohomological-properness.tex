@@ -1,0 +1,830 @@
+\SGAchapter{XIII}{集合层及非交换群层的上同调固有性}{Propreté cohomologique des faisceaux d’ensembles et des faisceaux de groupes non commutatifs}
+\SourcePage{275}
+\begin{center}M. Raynaud 女士\footnote{根据 A. Grothendieck 未发表的笔记。}\end{center}
+本讲利用\Term{etale-cohomology}{平展上同调}推广第 IX、X 讲的某些结果，同时说明如何将 SGA 5 II 中对于非交换\Term{group-sheaf}{群层}仍有意义的结果推广到这类层。假定读者熟悉 SGA 4 中介绍的\Term{etale-cohomology}{平展上同调}概念。
+
+主要结果（2.4）给出一种重要的非\Term{proper}{固有}\Term{morphism}{态射} $f:U\to S$，它“在维数 $\leqslant1$ 时\Term{cohomologically-proper}{上同调固有}”；也就是说，对于 $U$ 上某些\Term{group-sheaf}{群层} $F$（按\Term{etale-topology}{平展拓扑}理解），$f_*F$ 和 $R^1f_*F$ 的形成与任意\Term{base-change}{基变换} $S'\to S$ 交换。事实上，设 $X$ 在 $S$ 上\Term{proper}{固有}，$D$ 是 $X$ 上相对于 $S$ 的\Term{relative-normal-crossings-divisor}{相对正规交叉除子}，而 $U$ 是其补开集；至少在 $F$ 为\Term{finite}{有限}常层且其阶素于 $S$ 的各\Term{residue-characteristic}{剩余特征}时，上述性质成立。如果不再要求 $F$ 的阶素于这些\Term{residue-characteristic}{剩余特征}，只需将 $R^1f_*F$ 换成\Term{subsheaf}{子层} $R^1_tf_*F$，即可得到类似的结果；此\Term{subsheaf}{子层}由仅考虑那些“在 $X$ 上相对于 $S$ \Term{tame-ramification}{温和分歧}”的 $F$-\Term{torsor}{挠子}而得。特别地，由此可以证明：在\Term{separably-closed}{可分闭}域上的\Term{proper}{固有}\Term{smooth}{光滑}代数曲线中删去\Term{finite}{有限}多个\Term{closed-point}{闭点}后，所得曲线的\Term{tame-fundamental-group}{温和分歧基本群}在拓扑意义下\Term{finitely-generated}{有限生成}（2.12）。
+
+第 4 节讨论\Term{homotopy-exact-sequence}{同伦正合列}和 Künneth 公式。最后，附录给出第 X 讲 3.6 中所证 Abhyankar 引理的若干有用变式。
+
+\SGAsection{0}{叠理论回顾}
+以下使用 [1]、[2] 中的\Term{stack}{叠}（champ）理论，并只考虑\Term{scheme}{概形}的\Term{etale}{平展}景。给定\Term{scheme}{概形} $X$，记其\Term{etale}{平展}景为 $X_{\text{ét}}$。
+\SourcePage{276}
+回顾：$X$ 上的一个叠 $F$ 是 $X_{\text{ét}}$ 上的一个\Term{fibred-category}{纤维范畴}，满足下列条件：对每个在 $X$ 上\Term{etale}{平展}的\Term{scheme}{概形} $X'$ 和\Term{fiber}{纤维} $F_{X'}$ 中每对对象 $x,y$，\Term{presheaf}{预层} $\underline{\operatorname{Hom}}_{X'}(x,y)$ 是层；而且，对于每个\Term{etale}{平展}\Term{epimorphism}{满态射} $X''\to X'$，$F_{X''}$ 中任何带有相对于 $X''\to X'$ 的\Term{descent-datum}{下降数据}的对象，都是 $F_{X'}$ 中某对象的\Term{inverse-image}{逆像}。
+
+记 $F/X'$ 的\Term{cartesian-section}{笛卡尔截面}\Term{category}{范畴}为 $F(X')$。更一般地，若 $\operatorname{Sch}_X$ 是 $X$ 上的\Term{scheme}{概形}\Term{category}{范畴}，配备\Term{etale-topology}{平展拓扑}，则叠 $F$ 可以延拓为 $\operatorname{Sch}_X$ 上的叠 $F$；对于任意\Term{morphism}{态射} $f:X'\to X$，仍用 $F(X')$ 表示这一叠在 $X'$ 上的\Term{cartesian-section}{笛卡尔截面}\Term{category}{范畴}。
+
+\Term{gerbe}{凝集}（gerbe）是满足下列条件的叠：对每个在 $X$ 上\Term{etale}{平展}的\Term{scheme}{概形} $X'$，以及 $F_{X'}$ 中任意一对对象 $x,y$，从 $x$ 到 $y$ 的每个\Term{morphism}{态射}都是\Term{isomorphism}{同构}，且 $x,y$ \Term{local-isomorphism}{局部同构}；此外，$X_{\text{ét}}$ 中使 $F_{X'}$ 非空的对象 $X'$ 所成的集合是 $X_{\text{ét}}$ 的一个加细。例如，一个\Term{group-sheaf}{群层}下的\Term{torsor}{挠子}所成的叠是\Term{gerbe}{凝集}，而且具有一个\Term{cartesian-section}{笛卡尔截面}。反过来，具有\Term{section}{截面}的\Term{gerbe}{凝集}，即 $F_X$ 中存在对象 $x$ 的\Term{gerbe}{凝集}，等价于\Term{group-sheaf}{群层} $\operatorname{Aut}_X(x)$ 下的\Term{torsor}{挠子}叠。
+
+叠 $F$ 的子\Term{gerbe}{凝集}和\Term{maximal-subgerbe}{极大子凝集}有显然的定义。给定 $F(X)$ 的一个\Term{cartesian-section}{笛卡尔截面} $x$，存在唯一的\Term{maximal-subgerbe}{极大子凝集} $G_x$，使 $x$ 通过 $G_x$ 分解。称 $G_x$ 为 $x$ 生成的子\Term{gerbe}{凝集}；按定义，它是一个\Term{trivial-gerbe}{平凡凝集}。由
+\[
+SF(X')=\{F|X'\text{ 的极大子凝集}\}
+\]
+定义的\Term{presheaf}{预层} $SF$ 是一个层，称为 $F$ 的\Term{maximal-subgerbe}{极大子凝集}层。设 $O$ 为\Term{presheaf}{预层}
+\[
+O(X')=\{F_{X'}\text{ 中对象的同构类}\}.
+\]
+将 $F_{X'}$ 中每个对象 $x$ 对应到它在 $F|X'$ 中生成的\Term{maximal-subgerbe}{极大子凝集}，便得到\Term{morphism}{态射}
+\[O\longrightarrow SF.\]
+根据 [2, III 2.1.4]，这一\Term{morphism}{态射}使 $SF$ 成为 $O$ 的相伴层。
+
+若对每个在 $X$ 上\Term{etale}{平展}的\Term{scheme}{概形} $X'$ 和 $F_{X'}$ 中每个对象 $x$，层 $\operatorname{Aut}_{X'}(x)$ 都是\Term{constructible}{可构造}的（分别为\Term{ind-l-finite}{归纳 $L$-有限}的，其中 $L$ 是一组素数），则称叠 $F$ 具有相应性质 [2, VII 2.2.1]。若叠\Term{constructible}{可构造}，且其\Term{maximal-subgerbe}{极大子凝集}层也\Term{constructible}{可构造}，则称该叠为\Term{one-constructible}{1-可构造}的。
+
+\SGAsection{1}{上同调固有性}
+\textbf{1.0.} 设 $S$ 为\Term{scheme}{概形}，$f:X\to Y$ 为 $S$-\Term{scheme}{概形}之间的\Term{morphism}{态射}。对于 $S$-\Term{scheme}{概形} $S'$，考虑下列图，其中各方块均为\Term{cartesian-square}{笛卡尔方块}：
+\SourcePage{277}
+\[
+\begin{tikzcd}
+X\arrow[d,"f"']&X'\arrow[l,"h"']\arrow[d,"f'"]\\
+Y\arrow[d]&Y'\arrow[l,"g"']\arrow[d]\\
+S&S'\arrow[l]
+\end{tikzcd}\tag{1.0.1}
+\]
+若 $Y_1$ 为 $Y$ 上的\Term{etale}{平展}\Term{scheme}{概形}，置 $X_1=X\times_Y Y_1$、$Y'_1=Y'\times_Y Y_1$，并考虑\Term{cartesian-square}{笛卡尔方块}
+\[
+\begin{tikzcd}
+X_1\arrow[d,"f_1"']&X'_1\arrow[l,"h_1"']\arrow[d,"f'_1"]\\
+Y_1&Y'_1\arrow[l,"g_1"']
+\end{tikzcd}\tag{1.0.2}
+\]
+\begin{SGAresult}{定义}{1.1}
+设 $F$ 为 $X$ 上的叠。如果对于每个 $S$-\Term{scheme}{概形} $S'$，由叠的\Term{inverse-image}{逆像}的\Term{universal-property}{泛性质}显然定义的典范\Term{functor}{函子}
+\[
+g^*f_*F\longrightarrow f'_*h^*F\qquad\text{（见 (1.0.1)）}
+\]
+是\Term{faithful-functor}{忠实函子}（分别为\Term{fully-faithful}{全忠实函子}、\Term{category-equivalence}{范畴等价}），就称 $(F,f)$ 相对于 $S$ 在维数 $\leqslant-1$（分别为 $\leqslant0$、$\leqslant1$）时\Term{cohomologically-proper}{上同调固有}。
+\end{SGAresult}
+若 $S$ 不会引起混淆，特别是在 $S=Y$ 时，简称\Term{cohomologically-proper}{上同调固有}。
+
+\textbf{1.2.} 设 $F$ 为 $X$ 上的\Term{set-sheaf}{集合层}，$\Phi$ 为它的相伴\Term{discrete-category}{离散范畴}叠；即对于每个在 $X$ 上\Term{etale}{平展}的\Term{scheme}{概形} $X_1$，其上的\Term{fiber}{纤维}是对象集为 $F(X_1)$ 的\Term{discrete-category}{离散范畴}。若 $(\Phi,f)$ 相对于 $S$ 在维数 $\leqslant0$（分别为 $\leqslant1$）时\Term{cohomologically-proper}{上同调固有}，就称 $(F,f)$ 相对于 $S$ 在维数 $\leqslant-1$（分别为 $\leqslant0$）时\Term{cohomologically-proper}{上同调固有}。
+
+典范\Term{morphism}{态射}
+\[g^*f_*F\longrightarrow f'_*h^*F\tag{1.2.1}\]
+在取相伴\Term{discrete-category}{离散范畴}叠后给出典范\Term{morphism}{态射}
+\[g^*f_*\Phi\longrightarrow f'_*h^*\Phi.\]
+因此，$(F,f)$ 相对于 $S$ 在维数 $\leqslant-1$（分别为 $\leqslant0$）时\Term{cohomologically-proper}{上同调固有}，等价于说：对于每个 $S$-\Term{scheme}{概形} $S'$，\Term{morphism}{态射} (1.2.1) 为\Term{injectivity}{单射}（分别为\Term{bijection}{双射}）。
+
+\SourcePage{278}
+\textbf{1.3.} 设 $F$ 为 $X$ 上的\Term{group-sheaf}{群层}，$\Phi$ 为 $X$ 上以 $F$ 为群的\Term{torsor}{挠子}所成的叠 [1, II 2.3.2]。若 $(\Phi,f)$ 相对于 $S$ 在维数 $\leqslant-1$（分别为 $\leqslant0$、$\leqslant1$）时\Term{cohomologically-proper}{上同调固有}，就称 $(F,f)$ 相对于 $S$ 在相同维数范围内\Term{cohomologically-proper}{上同调固有}。这一条件可以具体表述如下。
+\begin{SGAresult}{命题}{1.3.1}
+沿用 (1.0.1)、(1.0.2) 的记号。设 $F$ 为 $X$ 上的\Term{group-sheaf}{群层}，用 $F'$（分别为 $F_1$、$F'_1$ 等）表示 $F$ 在 $X'$（分别为 $X_1$、$X'_1$ 等）上的\Term{inverse-image}{逆像}。则下列条件等价。
+\begin{enumerate}[label=(\roman*)]
+\item $(F,f)$ 相对于 $S$ 在维数 $\leqslant-1$（分别为 $\leqslant0$、$\leqslant1$）时\Term{cohomologically-proper}{上同调固有}。
+\item 对每个\Term{morphism}{态射} $S'\to S$、每个在 $Y$ 上\Term{etale}{平展}的\Term{scheme}{概形} $Y_1$、每个 $X_1$ 上的 $F_1$-\Term{torsor}{挠子} $P$，若 ${}^PF_1$ 表示由 $P$ 扭曲 $F_1$ 所得的群 [1, II 4.1.2.3]，则典范\Term{morphism}{态射}
+\[a_0:g_1^*(f_{1*}({}^PF_1))\longrightarrow f'_{1*}({}^{P'}F'_1)\]
+为\Term{injectivity}{单射}（分别为：$a_0$ 是\Term{bijection}{双射}且典范\Term{morphism}{态射}
+\[a_1:g^*(R^1f_*F)\longrightarrow R^1f'_*F'\]
+为\Term{injectivity}{单射}；$a_0$ 和 $a_1$ 均为\Term{bijection}{双射}）。
+\end{enumerate}
+\noindent(ii bis) 对每个\Term{morphism}{态射} $S'\to S$、每个在 $Y$ 上\Term{etale}{平展}的\Term{scheme}{概形} $Y_1$、每个 $X_1$ 上的 $F_1$-\Term{torsor}{挠子} $P$，以及每个 ${}^PF_1$-\Term{torsor}{挠子} $R$，典范\Term{morphism}{态射}
+\[\alpha_0:g_1^*(f_{1*}R)\longrightarrow f'_{1*}R'\]
+为\Term{injectivity}{单射}（分别为：$\alpha_0$ 是\Term{bijection}{双射}；$\alpha_0$ 及\Term{morphism}{态射}
+\[\alpha_1:g_1^*(R^1f_{1*}({}^PF_1))\longrightarrow R^1f'_{1*}({}^{P'}F'_1)\]
+均为\Term{bijection}{双射}）。
+\end{SGAresult}
+\begin{proof}
+(i)$\Rightarrow$(ii bis)。根据 [1, II 4.2.5]，每个 ${}^PF_1$-\Term{torsor}{挠子} $R$ 均可写成
+\[R=Q\overset{F_1}{\wedge}P^\circ,\]
+其中 $Q$ 为 $F_1$-\Term{torsor}{挠子}，$P^\circ$ 为 $P$ 的相反\Term{torsor}{挠子}。于是 $R'\simeq Q'\overset{F'_1}{\wedge}P'^\circ$。设 $\Phi$ 为 $F$-\Term{torsor}{挠子}叠，$x,y$（分别为 $x',y'$）为\Term{fibre-category}{纤维范畴} $(g^*f_*\Phi)_{Y'_1}$（分别为 $(f'_*\Phi')_{Y'_1}$）中与 $P,Q$（分别与 $P',Q'$）对应的对象。由
+\[Q\overset{F_1}{\wedge}P^\circ\simeq\underline{\operatorname{Hom}}_{F_1}(P,Q)\]
+得到典范\Term{isomorphism}{同构}
+\[
+\begin{aligned}
+\underline{\operatorname{Hom}}_{Y'_1}(x,y)&\simeq g_1^*f_{1*}(Q\overset{F_1}{\wedge}P^\circ),\\
+\underline{\operatorname{Hom}}_{Y'_1}(x',y')&\simeq f'_{1*}(Q'\overset{F'_1}{\wedge}P'^\circ).
+\end{aligned}
+\]
+所以 $\alpha_0$ 可识别为\Term{morphism}{态射}
+\[\underline{\operatorname{Hom}}_{Y'_1}(x,y)\longrightarrow\underline{\operatorname{Hom}}_{Y'_1}(x',y').\]
+\SourcePage{279}
+于是，若 $(F,f)$ 相对于 $S$ 在维数 $\leqslant-1$ 时\Term{cohomologically-proper}{上同调固有}，则 $\alpha_0$ 为\Term{injectivity}{单射}；若它在维数 $\leqslant0$ 时\Term{cohomologically-proper}{上同调固有}，则 $\alpha_0$ 为\Term{bijection}{双射}。
+
+现在设 $(F,f)$ 相对于 $S$ 在维数 $\leqslant1$ 时\Term{cohomologically-proper}{上同调固有}，即典范\Term{morphism}{态射}
+\[\varphi:g^*f_*\Phi\longrightarrow f'_*\Phi'\]
+是等价。设 $G$ 为叠 $f_*\Phi$ 的\Term{maximal-subgerbe}{极大子凝集}层 [1, III 2.1.8]；于是有\Term{isomorphism}{同构} $G\simeq R^1f_*F$。由于 $g^*G$ 是 $g^*f_*\Phi$ 的\Term{maximal-subgerbe}{极大子凝集}层 [2, III 2.1.5.5]，\Term{morphism}{态射} $\alpha_1$ 是将 $\varphi|Y'_1$ 取\Term{maximal-subgerbe}{极大子凝集}层而得的\Term{morphism}{态射}，故为\Term{isomorphism}{同构}。
+
+(ii bis)$\Rightarrow$(ii)。只需证明：若各\Term{morphism}{态射} $\alpha_0$ 为\Term{bijection}{双射}，则各 $a_1$ 为\Term{injectivity}{单射}。设 $Y'_1$ 为 $Y'$ 上的\Term{etale}{平展}\Term{scheme}{概形}，$s,t$ 是 $g^*(R^1f_*F)(Y'_1)$ 中的两个元素，它们在 $R^1f'_*F'(Y'_1)$ 中有相同的像，现证 $s=t$。这一断言对于 $Y'_1$ 的\Term{etale-topology}{平展拓扑}是局部的；结合\Term{inverse-image}{逆像} $g^*(R^1f_*F)$ 的定义，可以设 $Y'_1$ 是某个 $Y$ 上\Term{etale}{平展}\Term{scheme}{概形} $Y_1$ 的\Term{inverse-image}{逆像}，而 $s,t$ 来自 $X_1$ 上的\Term{torsor}{挠子} $P,Q$。此时对 $s,t$ 的假设表示：$P,Q$ 在 $X'_1$ 上的\Term{inverse-image}{逆像} $P',Q'$ 对于 $Y'_1$ 的\Term{etale-topology}{平展拓扑}\Term{local-isomorphism}{局部同构}。置 $R=\underline{\operatorname{Hom}}_{F_1}(P,Q)$，则
+\[g_1^*f_{1*}R\longrightarrow f'_{1*}R'\]
+为\Term{bijection}{双射}，说明 $P,Q$ 对于 $Y_1$ 的\Term{etale-topology}{平展拓扑}\Term{local-isomorphism}{局部同构}，故 $s=t$。
+
+(ii)$\Rightarrow$(i)。为证 $\varphi$ 忠实（分别为\Term{fully-faithful}{全忠实}），只需证明：若 $Y_1$ 为 $Y$ 上的\Term{etale}{平展}\Term{scheme}{概形}，$P,Q$ 为 $X_1$ 上的两个 $F_1$-\Term{torsor}{挠子}，$x,y$（分别为 $x',y'$）是 $(g^*f_*\Phi)_{Y'_1}$（分别为 $(f'_*\Phi')_{Y'_1}$）中与 $P,Q$（分别与 $P',Q'$）对应的对象，则
+\[a:\operatorname{Hom}(x,y)\longrightarrow\operatorname{Hom}(x',y')\]
+为\Term{injectivity}{单射}（分别为\Term{bijection}{双射}）。而 $a$ 可识别为典范\Term{morphism}{态射}
+\[
+H^0(Y'_1,g_1^*f_{1*}(Q\overset{F_1}{\wedge}P^\circ))\longrightarrow
+H^0(Y'_1,f'_{1*}(Q'\overset{F'_1}{\wedge}P'^\circ)).
+\]
+若 $\operatorname{Hom}(x,y)\ne\varnothing$，则 $Q\overset{F_1}{\wedge}P^\circ$ 是一个在 $Y_1$ 上\Term{locally-trivial}{局部平凡}的 ${}^PF_1$-\Term{torsor}{挠子}；故 $f_{1*}(Q\overset{F_1}{\wedge}P^\circ)$ 是 $f_{1*}({}^PF_1)$ 下的\Term{torsor}{挠子}，且 $g_1^*f_{1*}(Q\overset{F_1}{\wedge}P^\circ)$ 为\Term{trivial-bundle}{平凡}\Term{torsor}{挠子}。于是 $a$ 可识别为典范\Term{morphism}{态射}
+\[H^0(Y_1,g_1^*f_{1*}({}^PF_1))\longrightarrow H^0(Y'_1,f'_{1*}({}^{P'}F'_1)).\]
+若 $\operatorname{Hom}(x',y')\ne\varnothing$ 且 $a_1$ 为\Term{injectivity}{单射}，也有同样的结论；因为此时 $Q'\overset{F'_1}{\wedge}P'^\circ$ \Term{trivial-bundle}{平凡}，由 $a_1$ 的\Term{injectivity}{单射}性可知 $P,Q$ 在 $Y_1$ 上\Term{local-isomorphism}{局部同构}。
+\SourcePage{280}
+由此可见，若 $a_0$ 为\Term{injectivity}{单射}（分别为 $a_0$ 为\Term{bijection}{双射}且 $a_1$ 为\Term{injectivity}{单射}），则 $\varphi$ 忠实（分别为\Term{fully-faithful}{全忠实}）。
+
+还需证明：若 $a_0,a_1$ 均为\Term{bijection}{双射}，则 $\varphi$ 是\Term{essentially-surjective}{本质满射}。设 $Y''$ 为 $Y'$ 上的\Term{etale}{平展}\Term{scheme}{概形}，$X''=X'\times_{Y'}Y''$，$P''$ 为 $X''$ 上的 $F''=F'|X''$-\Term{torsor}{挠子}。我们将证明，存在 $(g^*f_*\Phi)_{Y''}$ 中的元素 $x$，其在 $(f'_*\Phi')_{Y''}$ 中的像\Term{isomorphism}{同构}于 $P''$。设 $p''$ 为 $P''$ 的类。由 $a_1$ 的\Term{surjectivity}{满射}性，可以找到\Term{etale}{平展}\Term{epimorphism}{满态射} $Y''_1\to Y''$、\Term{etale-morphism}{平展态射} $Y_1\to Y$ 及\Term{morphism}{态射} $Y''_1\to Y'_1$，并找到 $X_1$ 上的 $F_1$-\Term{torsor}{挠子} $P_1$，使其在 $X''_1$ 上的\Term{inverse-image}{逆像} $P''_1$ \Term{isomorphism}{同构}于 $P''$ 的\Term{inverse-image}{逆像}。利用 $\varphi$ 的\Term{fully-faithful}{全忠实}性可知，$(g^*f_*\Phi)_{Y''_1}$ 中对应于 $P''_1$ 的对象 $x_1$ 带有相对于 $Y''_1\to Y''$ 的\Term{descent-datum}{下降数据}，故来自 $(g^*f_*\Phi)_{Y''}$ 中的元素 $x$。由于 $x$ 在 $(f'_*\Phi')_{Y''}$ 中的像为 $P''$，这就证明了 $\varphi$ 的\Term{essentially-surjective}{本质满射}性，从而完成证明。
+\end{proof}
+
+\begin{SGAresult}{例}{1.4}
+设 $f:X\to Y$ 为\Term{proper-morphism}{固有态射}。由 [2, VII 2.2.2] 可知，对 $X$ 上每个\Term{ind-finite}{归纳有限}叠 $F$，偶 $(F,f)$ 都相对于 $Y$ 在维数 $\leqslant1$ 时\Term{cohomologically-proper}{上同调固有}。特别地，对于 $X$ 上每个\Term{set-sheaf}{集合层}（分别为\Term{group-sheaf}{群层}、\Term{ind-finite}{归纳有限}\Term{group-sheaf}{群层}）$F$，$(F,f)$ 在维数 $\leqslant0$（分别为 $\leqslant0$、$\leqslant1$）时\Term{cohomologically-proper}{上同调固有}。
+\end{SGAresult}
+\textbf{注记 1.5。}
+a) 设 $F$ 为 $X$ 上的\Term{group-sheaf}{群层}，且 $(F,f)$ 相对于 $S$ 在维数 $\leqslant-1$（分别为 $\leqslant0$）时\Term{cohomologically-proper}{上同调固有}。若将 $F$ 看作\Term{set-sheaf}{集合层}，则 $(F,f)$ 在相同的维数范围内相对于 $S$ \Term{cohomologically-proper}{上同调固有}，但反过来不成立。
+
+例如，设 $Y$ 为\Term{strictly-local}{严格局部}\Term{discrete-valuation-ring}{离散赋值环}的谱，$t$ 为其\Term{closed-point}{闭点}，$s$ 为其\Term{generic-point}{泛点}；$f:X\to Y$ 是 $Y$ 上非空但闭\Term{fiber}{纤维}为空的\Term{scheme}{概形}；$F$ 是 $X$ 上非\Term{trivial-bundle}{平凡}的常\Term{group-sheaf}{群层}，$P$ 为 $F$-\Term{torsor}{挠子}，并满足 $H^0(X_s,{}^PF|X_s)=1$。将 ${}^PF$ 看作\Term{set-sheaf}{集合层}时，$({}^PF,f)$ 相对于 $Y$ 在维数 $\leqslant-1$ 时\Term{cohomologically-proper}{上同调固有}。若把它看作\Term{group-sheaf}{群层}，则有\Term{isomorphism}{同构} ${}^{P^\circ}({}^PF)\simeq F$；由于典范\Term{morphism}{态射}
+\[H^0(X,F)\longrightarrow H^0(X_t,F|X_t)=1\]
+不是\Term{injectivity}{单射}，可知 $({}^PF,f)$ 相对于 $Y$ 在维数 $\leqslant-1$ 时并不\Term{cohomologically-proper}{上同调固有}。
+
+b) 设 $f$ 是\Term{coherent-morphism}{凝聚态射}，即\Term{quasi-compact}{拟紧}且\Term{quasi-separated}{拟分离}。设 $F$ 为 $X$ 上的叠。对于 $Y'$ 的每个\Term{geometric-point}{几何点} $\bar y$，记 $Y$（分别为 $Y'$）在 $\bar y$ 处的\Term{strict-localization}{严格局部化}为 $\bar Y$（分别为 $\bar Y'$），并置 $\bar X=X\times_Y\bar Y$、$\bar X'=X'\times_{Y'}\bar Y'$，等等。则 $(F,f)$ 相对于 $S$ 在维数 $\leqslant-1$（分别为 $\leqslant0$、$\leqslant1$）时\Term{cohomologically-proper}{上同调固有}，当且仅当：对每个 $S$-\Term{scheme}{概形} $S'$ 和 $Y'$ 的每个\Term{geometric-point}{几何点} $\bar y$，典范\Term{functor}{函子}
+\SourcePage{281}
+\[\bar F(\bar X)\longrightarrow\bar F'(\bar X')\]
+忠实（分别为\Term{fully-faithful}{全忠实}、等价）。
+
+事实上，给定 $S$-\Term{scheme}{概形} $S'$，\Term{functor}{函子}
+\[g^*f_*F\longrightarrow f'_*F'\]
+忠实（分别为\Term{fully-faithful}{全忠实}、等价），当且仅当它在 $Y'$ 的各\Term{geometric-point}{几何点} $\bar y'$ 处诱导的\Term{fibre-functor}{纤维函子}具有相应性质 [2, III 2.1.5.9]。因此断言由\Term{coherent-morphism}{凝聚态射}下叠的\Term{direct-image}{直像}的\Term{geometric-fibre}{几何纤维}计算公式 [2, VII 2.1.5] 得出。
+
+c) 设 $F$ 为 $X$ 上的叠。$(F,f)$ 相对于 $S$ 在维数 $\leqslant-1$（分别为 $\leqslant0$、$\leqslant1$）时\Term{cohomologically-proper}{上同调固有}这一性质，对 $Y$ 的\Term{etale-topology}{平展拓扑}是局部的。
+
+设 $S'$ 为 $S$-\Term{scheme}{概形}，$F'$ 为 $F$ 在 $X'$ 上的\Term{inverse-image}{逆像}（见 (1.0.1)）。若 $(F,f)$ 相对于 $S$ 在维数 $\leqslant1$ 时\Term{cohomologically-proper}{上同调固有}，则 $(F',f')$ 也如此。但若 $(F,f)$ 相对于 $S$ 在维数 $\leqslant-1$（分别为 $\leqslant0$）时\Term{cohomologically-proper}{上同调固有}，则 $(F',f')$ 未必仍然如此。
+
+例如，设 $S'$ 为\Term{discrete-valuation-ring}{离散赋值环}，$f':E_{S'}\to S'$ 为 $S'$ 上的\Term{affine-space}{仿射空间}，$x$ 是 $E_{S'}$ 中位于 $S'$ \Term{generic-point}{泛点}之上的\Term{closed-point}{闭点}；设 $F'$ 为 $E_{S'}$ 上的\Term{set-sheaf}{集合层}，它在 $E_{S'}-\{x\}$ 上的限制是单元素常层，而在 $x$ 之上的\Term{geometric-point}{几何点}处的\Term{fiber}{纤维}有两个元素。则 $(F',f')$ 相对于 $S'$ 在维数 $\leqslant-1$ 时并不\Term{cohomologically-proper}{上同调固有}。令 $S=S'[Z]$，$f:E_S\to S$ 为 $S$ 上的\Term{affine-space}{仿射空间}，$T$ 为 $X=E_S$ 中不与闭集 $Z=0$ 相交、且 $f(T)$ 包含 $S$ \Term{generic-point}{泛点}的闭集。设 $G$ 为 $F'$ 在 $X$ 上的\Term{inverse-image}{逆像}，$F$ 为将 $G|X-T$ 用空集延拓所得的 $X$ 上的层。则 $(F,f)$ 相对于 $S$ 在维数 $\leqslant-1$ 时\Term{cohomologically-proper}{上同调固有}，但经过 $Z=0$ 所定义的\Term{base-change}{基变换} $S'\to S$ 后，就不再如此。
+
+d) 设 $F$ 为 $X$ 上的叠，且 $(F,f)$ 相对于 $Y$ 在维数 $\leqslant-1$（分别为 $\leqslant0$、$\leqslant1$）时\Term{cohomologically-proper}{上同调固有}。则对于 $Y$ 的每个\Term{geometric-point}{几何点} $\bar y$，典范\Term{functor}{函子}
+\[(f_*F)_{\bar y}\longrightarrow F(X_{\bar y})\]
+忠实（分别为\Term{fully-faithful}{全忠实}、\Term{category-equivalence}{范畴等价}）。
+
+\begin{SGAresult}{命题}{1.6}
+设 $f:X\to Y$、$g:Y\to Z$ 为两个 $S$-\Term{morphism}{态射}，$\Phi$ 为 $X$ 上的叠。
+
+1) 若 $(\Phi,f)$ 和 $(f_*\Phi,g)$ 相对于 $S$ 在维数 $\leqslant-1$（分别为 $\leqslant0$、$\leqslant1$）时\Term{cohomologically-proper}{上同调固有}，则 $(\Phi,gf)$ 也如此。
+
+2) 假设 $(\Phi,gf)$ 相对于 $S$ 在维数 $\leqslant-1$ 时\Term{cohomologically-proper}{上同调固有}（分别为：$(\Phi,gf)$ 在维数 $\leqslant0$、$(\Phi,f)$ 在维数 $\leqslant-1$ 时相对于 $S$ \Term{cohomologically-proper}{上同调固有}；$(\Phi,gf)$ 在维数 $\leqslant1$、$(\Phi,f)$ 在维数 $\leqslant0$ 时相对于 $S$ \Term{cohomologically-proper}{上同调固有}）。则 $(f_*\Phi,g)$ 相对于 $S$ 在维数 $\leqslant-1$（分别为 $\leqslant0$、$\leqslant1$）时\Term{cohomologically-proper}{上同调固有}。
+\end{SGAresult}
+\SourcePage{282}
+\begin{proof}
+对于每个 $S$-\Term{scheme}{概形} $S'$，考虑下图，其中各方块均为\Term{cartesian-square}{笛卡尔方块}：
+\[
+\begin{tikzcd}
+X'\arrow[r,"f'"]\arrow[d,"h"']&Y'\arrow[r,"g'"]\arrow[d,"k"']&Z'\arrow[r]\arrow[d,"m"']&S'\arrow[d]\\
+X\arrow[r,"f"']&Y\arrow[r,"g"']&Z\arrow[r]&S
+\end{tikzcd}\tag{1.6.1}
+\]
+典范\Term{morphism}{态射} $m^*(g_*f_*\Phi)\to g'_*f'_*(h^*\Phi)$ 可识别为下列典范\Term{morphism}{态射}的复合：
+\[m^*(g_*f_*\Phi)\xrightarrow{i}g'_*(k^*f_*\Phi)\xrightarrow{j}g'_*f'_*(h^*\Phi).\]
+1) 假设蕴含 $i,j$ 忠实（分别为\Term{fully-faithful}{全忠实}、等价），故 $ji$ 也具有相应性质。
+
+2) 假设蕴含 $ji$ 忠实（分别为：$ji$ \Term{fully-faithful}{全忠实}且 $j$ 忠实；$ji$ 为等价且 $j$ \Term{fully-faithful}{全忠实}），由此可知 $i$ 忠实（分别为\Term{fully-faithful}{全忠实}、等价）。
+\end{proof}
+
+\begin{SGAresult}{推论}{1.7}
+设 $f:X\to Y$、$g:Y\to Z$ 为两个 $S$-\Term{morphism}{态射}，$F$ 为 $X$ 上的\Term{group-sheaf}{群层}。假设 $(F,gf)$ 相对于 $S$ 在维数 $\leqslant-1$ 时\Term{cohomologically-proper}{上同调固有}（分别为：$(F,gf)$ 在维数 $\leqslant0$、$(F,f)$ 在维数 $\leqslant-1$ 时相对于 $S$ \Term{cohomologically-proper}{上同调固有}）。则 $(f_*F,g)$ 相对于 $S$ 在维数 $\leqslant-1$（分别为 $\leqslant0$）时\Term{cohomologically-proper}{上同调固有}。
+\end{SGAresult}
+\begin{proof}
+沿用 (1.6.1) 的记号；对每个在 $Y$ 上\Term{etale}{平展}的\Term{scheme}{概形} $Y_1$，用 $f_1,F_1$ 分别表示 $f,F$ 沿 $Y_1\to Y$ 的\Term{inverse-image}{逆像}。设 $\Phi$ 为 $F$-\Term{torsor}{挠子}叠，$\Psi$ 为 $f_*F$-\Term{torsor}{挠子}叠。有一个典范\Term{functor}{函子}
+\[\varphi:\Psi\longrightarrow f_*\Phi:\]
+对每个在 $Y$ 上\Term{etale}{平展}的\Term{scheme}{概形} $Y_1$ 及其上的 $f_{1*}F_1$-\Term{torsor}{挠子} $P$，将其对应到 $X_1$ 上的\Term{torsor}{挠子} $\widetilde P$；后者由 $f_1^*P$ 沿结构群\Term{morphism}{态射} $f_1^*f_{1*}F_1\to F_1$ \Term{group-extension}{扩张}结构群而得。\Term{functor}{函子} $\varphi$ \Term{fully-faithful}{全忠实}。事实上，若 $P,Q$ 是 $Y_1$ 上的两个 $f_{1*}F_1$-\Term{torsor}{挠子}，则有典范\Term{morphism}{态射}
+\[\underline{\operatorname{Isom}}_{f_{1*}F_1}(P,Q)\longrightarrow f_{1*}\bigl(\underline{\operatorname{Isom}}_{F_1}(\widetilde P,\widetilde Q)\bigr),\]
+\SourcePage{283}
+它局部为\Term{isomorphism}{同构}，因而是\Term{isomorphism}{同构}。由此得出典范\Term{morphism}{态射}
+\[\operatorname{Isom}_{f_{1*}F_1}(P,Q)\longrightarrow\operatorname{Isom}_{F_1}(\widetilde P,\widetilde Q)\]
+是\Term{isomorphism}{同构}，故 $\varphi$ \Term{fully-faithful}{全忠实}。
+
+有\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}[column sep=large]
+g'_*k^*\Psi\arrow[r,"i"]\arrow[d,"g'_*k^*(\varphi)"']&m^*(g_*\Psi)\arrow[d,"m^*g_*(\varphi)"]\\
+g'_*k^*(f_*\Phi)\arrow[r,"j"']&m^*(g_*f_*\Phi),
+\end{tikzcd}
+\]
+其中 $i,j$ 为\Term{base-change}{基变换}\Term{morphism}{态射}。由 1.6 2) 可知 $j$ 忠实（分别为\Term{fully-faithful}{全忠实}）。由于 $g'_*k^*(\varphi)$ 和 $m^*g_*(\varphi)$ \Term{fully-faithful}{全忠实}，从该图得出 $i$ 忠实（分别为\Term{fully-faithful}{全忠实}）。
+\end{proof}
+
+\begin{SGAresult}{推论}{1.8}
+设 $f:X\to Y$ 为\Term{coherent}{凝聚}的 $S$-\Term{morphism}{态射}，$g:Y\to Z$ 为\Term{proper}{固有}的 $S$-\Term{morphism}{态射}，$\Phi$ 为 $X$ 上的\Term{ind-finite}{归纳有限}叠 [2, VII 2.2.1]。若 $(\Phi,f)$ 相对于 $S$ 在维数 $\leqslant-1$（分别为 $\leqslant0$、$\leqslant1$）时\Term{cohomologically-proper}{上同调固有}，则 $(\Phi,gf)$ 也如此。
+\end{SGAresult}
+\begin{proof}
+由于 $f$ \Term{coherent}{凝聚}，$f_*\Phi$ 是\Term{ind-finite}{归纳有限}叠（SGA 4 IX 1.6 (ii)），故推论由 1.6 1) 和 1.4 得出。
+\end{proof}
+
+\begin{SGAresult}{推论}{1.9}
+设 $f:X\to Y$ 为整的 $S$-\Term{morphism}{态射}，$g:Y\to Z$ 为 $S$-\Term{morphism}{态射}。若 $F$ 为 $X$ 上的\Term{set-sheaf}{集合层}，则 $(f_*F,g)$ 相对于 $S$ 在维数 $\leqslant-1$（分别为 $\leqslant0$）时\Term{cohomologically-proper}{上同调固有}，当且仅当 $(F,gf)$ 具有相应性质。若 $F$ 为 $X$ 上的\Term{group-sheaf}{群层}，则 $(f_*F,g)$ 相对于 $S$ 在维数 $\leqslant-1$（分别为 $\leqslant0$、$\leqslant1$）时\Term{cohomologically-proper}{上同调固有}，当且仅当 $(F,gf)$ 具有相应性质。
+\end{SGAresult}
+\begin{proof}
+\Term{set-sheaf}{集合层}的断言由 1.6 以及 $(F,f)$ 相对于 $S$ 在维数 $\leqslant0$ 时\Term{cohomologically-proper}{上同调固有}这一事实得出。设 $F$ 为 $X$ 上的\Term{group-sheaf}{群层}，$\Phi$ 为 $F$-\Term{torsor}{挠子}叠。根据 SGA 4 VIII 5.8，每个 $F$-\Term{torsor}{挠子}在 $Y$ 上\Term{locally-trivial}{局部平凡}。由此可知，叠 $f_*\Phi$ 等价于 $f_*F$-\Term{torsor}{挠子}叠：对每个在 $Y$ 上\Term{etale}{平展}的\Term{scheme}{概形} $Y_1$，将 $X_1=X\times_Y Y_1$ 上的 $F|X_1$-\Term{torsor}{挠子} $P$ 对应到 $f_*F|Y_1$-\Term{torsor}{挠子} $f_*P$，便得到此等价。由于 $(F,f)$ 相对于 $S$ 在维数 $\leqslant1$ 时\Term{cohomologically-proper}{上同调固有}，推论遂由 1.6 得出。
+\end{proof}
+
+\textbf{定义 1.10。}
+\textbf{1.10.1.} 设 $E$ 为\Term{category}{范畴}，考虑图
+\[
+\begin{tikzcd}
+\Phi\arrow[r,"p"]&\Phi_1\arrow[r,shift left=.6ex,"p_1"]\arrow[r,shift right=.6ex,"p_2"']&\Phi_2,
+\end{tikzcd}
+\]
+\SourcePage{284}
+其中 $\Phi,\Phi_1,\Phi_2$ 是 $E$ 上的\Term{fibre-category}{纤维范畴}，箭头为\Term{fibre-category}{纤维范畴}的\Term{morphism}{态射}；并设给定\Term{functor}{函子}\Term{isomorphism}{同构}
+\[a:p_1p\xrightarrow{\sim}p_2p.\]
+若下列条件成立，就称上图\Term{exact-diagram}{正合}：
+
+a) 对 $\Phi$ 中每对对象 $x,y$，以及每个满足 $p_1(f)=p_2(f)$ 的\Term{morphism}{态射} $f:p(x)\to p(y)$（通过 $a$ 识别 $p_1p,p_2p$），存在唯一\Term{morphism}{态射} $g:x\to y$ 使 $p(g)=f$。
+
+\textbf{1.10.2.} 考虑图
+\[
+\begin{tikzcd}[column sep=large]
+\Phi\arrow[r,"p"]&\Phi_1\arrow[r,shift left=.6ex,"{p_1,p_2}"]\arrow[r,shift right=.6ex]&\Phi_2\arrow[r,shift left=1.2ex,"{p_{12},p_{23},p_{31}}"]\arrow[r]\arrow[r,shift right=1.2ex]&\Phi_3,
+\end{tikzcd}
+\]
+其中 $\Phi,\Phi_i$（$1\leqslant i\leqslant3$）是 $E$ 上的\Term{fibre-category}{纤维范畴}，各箭头为\Term{fibre-category}{纤维范畴}的\Term{morphism}{态射}。设给定\Term{functor}{函子}\Term{isomorphism}{同构}
+\[
+\begin{gathered}
+a:p_1p\xrightarrow{\sim}p_2p,\\
+a_1:p_{31}p_2\xrightarrow{\sim}p_{12}p_1,\quad
+a_2:p_{12}p_2\xrightarrow{\sim}p_{23}p_1,\quad
+a_3:p_{23}p_2\xrightarrow{\sim}p_{31}p_1,
+\end{gathered}
+\]
+使下图交换：
+\[
+\begin{tikzcd}[column sep=large]
+p_{23}p_1p\arrow[r,"\mathrm{id}.a"]&p_{23}p_2p\arrow[r,"a_3.\mathrm{id}"]&p_{31}p_1p\arrow[d,"\mathrm{id}.a"]\\
+p_{12}p_2p\arrow[u,"a_2.\mathrm{id}"]&p_{12}p_1p\arrow[l,"\mathrm{id}.a"]&p_{31}p_2p\arrow[l,"a_1.\mathrm{id}"]
+\end{tikzcd}
+\]
+识别 $p_1p,p_2p$，以及 $p_{31}p_2,p_{12}p_1$，等等。若以下条件成立，就称上图\Term{exact}{正合}。
+
+a) 与 1.10.1 的条件 a) 相同。
+
+b) 对每个 $\Phi_1$ 中的对象 $x_1$ 和每个\Term{isomorphism}{同构} $u:p_1(x_1)\xrightarrow{\sim}p_2(x_1)$，若
+\[p_{23}(u)p_{31}(u)=p_{12}(u)^{-1},\tag{1.10.2.1}\]
+则存在 $\Phi$ 中的对象 $x$ 和\Term{isomorphism}{同构} $i:p(x)\xrightarrow{\sim}x_1$，使下图交换：
+\[
+\begin{tikzcd}
+p_1p(x)\arrow[r,equal]\arrow[d,"p_1(i)"']&p_2p(x)\arrow[d,"p_2(i)"]\\
+p_1(x_1)\arrow[r,"u"',"\sim"]&p_2(x_1)
+\end{tikzcd}\tag{1.10.2.2}
+\]
+\textbf{1.10.3.} $E$ 上\Term{fibre-category}{纤维范畴}的\Term{exact}{正合}图之间的\Term{morphism}{态射}，有显然的定义。
+
+\SourcePage{285}
+\textbf{1.10.4.} 我们尤其要在 $E$ 为景、$\Phi,\Phi_i$（$1\leqslant i\leqslant3$）为 $E$ 上的叠时使用\Term{exact}{正合}图的概念。
+
+设 $f:E\to E'$ 为景\Term{morphism}{态射}，且有 $E$ 上叠的\Term{exact}{正合}图
+\[
+\begin{tikzcd}[column sep=large]
+\Phi\arrow[r,"p"]&\Phi_1\arrow[r,shift left=.6ex,"{p_1,p_2}"]\arrow[r,shift right=.6ex]&\Phi_2\arrow[r,shift left=1.2ex,"{p_{12},p_{23},p_{31}}"]\arrow[r]\arrow[r,shift right=1.2ex]&\Phi_3.
+\end{tikzcd}\tag{1.10.4.1}
+\]
+取\Term{direct-image}{直像}，便得到显然\Term{exact}{正合}的图
+\[
+\begin{tikzcd}[column sep=large]
+f_*\Phi\arrow[r]&f_*\Phi_1\arrow[r,shift left=.6ex]\arrow[r,shift right=.6ex]&f_*\Phi_2\arrow[r,shift left=1.2ex]\arrow[r]\arrow[r,shift right=1.2ex]&f_*\Phi_3.
+\end{tikzcd}
+\]
+若 $h:E''\to E$ 为景\Term{morphism}{态射}，同样得到\Term{exact}{正合}图
+\[
+\begin{tikzcd}[column sep=large]
+h^*\Phi\arrow[r,"p''"]&h^*\Phi_1\arrow[r,shift left=.6ex,"{p''_1,p''_2}"]\arrow[r,shift right=.6ex]&h^*\Phi_2\arrow[r,shift left=1.2ex,"{p''_{12},p''_{23},p''_{31}}"]\arrow[r]\arrow[r,shift right=1.2ex]&h^*\Phi_3.
+\end{tikzcd}
+\]
+先说明 1.10.2 的条件 a)。设 $F''$ 为 $E''$ 的对象，$x'',y''$ 为 $(h^*\Phi)_{F''}$ 的两个对象，$x''_1,y''_1$ 是它们在 $h^*\Phi_1$ 中的像，$x''_2,y''_2$ 是它们在 $h^*\Phi_2$ 中的像。设\Term{morphism}{态射} $u''_1:x''_1\to y''_1$ 满足 $p''_1(u''_1)=p''_2(u''_1)$；我们证明它来自唯一的\Term{morphism}{态射} $u'':x''\to y''$。问题在 $F''$ 上是局部的，故可设存在 $E$ 的对象 $F_1$、从 $F''$ 到 $F_1$ 沿 $h$ 的\Term{inverse-image}{逆像} $F''_1$ 的\Term{morphism}{态射}，以及 $\Phi_{F_1}$ 中的对象 $x,y$，它们在 $F''$ 上的\Term{inverse-image}{逆像}为 $x'',y''$。设 $x_1,y_1$（分别为 $x_2,y_2$）为 $x,y$ 在 $\Phi_1$（分别为 $\Phi_2$）中的像。可设 $u''_1$ 来自\Term{morphism}{态射} $u_1:x_1\to y_1$，且 $p_1(u_1)=p_2(u_1)$。由 (1.10.4.1) 的\Term{exactness}{正合性}，存在唯一的\Term{morphism}{态射} $u:x\to y$；其沿 $h$ 的\Term{inverse-image}{逆像}就是所求的 $u''$。
+
+1.10.2 的条件 b) 可类似说明。设 $x''_1$ 为 $(h^*\Phi_1)_{F''}$ 的对象，$u'':p''_1(x''_1)\to p''_2(x''_1)$ 为满足
+\[p''_{23}(u'')p''_{31}(u'')=p''_{12}(u'')^{-1}\]
+的\Term{morphism}{态射}。现证存在 $(h^*\Phi)_{F''}$ 中的对象 $x''$ 和\Term{isomorphism}{同构} $i'':p''(x'')\simeq x''_1$，使与 (1.10.2.2) 类似的图交换。由于问题在 $F''$ 上是局部的，可设有如上的对象 $F_1$、\Term{morphism}{态射} $F''\to F''_1$，以及 $(\Phi_1)_{F_1}$ 中的对象 $x_1$，其在 $(h^*\Phi_1)_{F''}$ 中的\Term{inverse-image}{逆像}为 $x''_1$。同样可设 $u''$ 来自满足 (1.10.2.2) 的\Term{morphism}{态射} $u:p_1(x_1)\to p_2(x_1)$。于是，由 (1.10.4.1) 的\Term{exactness}{正合性}，存在 $\Phi_{F_1}$ 中的对象 $x$，其沿 $h$ 的\Term{inverse-image}{逆像}就是满足要求的 $x''$。
+
+\textbf{例 1.11。}1) 设 $f:X_1\to X$ 为变动\Term{scheme}{概形}上的\Term{etale}{平展}层\Term{category}{范畴}的\Term{descent-morphism}{下降态射}，例如\Term{universally-submersive}{普遍浸没}\Term{morphism}{态射}（SGA 4 VIII 9.3）。置 $X_2=X_1\times_X X_1$，设 $g:X_2\to X$ 为典范投影，$F$ 为 $X$ 上的\Term{set-sheaf}{集合层}。由所引文献，得到\Term{set-sheaf}{集合层}的\Term{exact-sequence}{正合列}
+\[
+\begin{tikzcd}
+F\arrow[r]&f_*f^*F\arrow[r,shift left=.6ex]\arrow[r,shift right=.6ex]&g_*g^*F.
+\end{tikzcd}\tag{1.11.1}
+\]
+\SourcePage{286}
+若 $\Phi$ 为 $F$ 的相伴\Term{discrete-category}{离散范畴}叠，$\Phi_3$ 为 $X$ 上的终叠，即其各\Term{fiber}{纤维}只有一个对象及其恒等\Term{morphism}{态射}的叠，则 (1.11.1) 的\Term{exactness}{正合性}等价于下列叠图的\Term{exactness}{正合性}：
+\[
+\begin{tikzcd}[column sep=large]
+\Phi\arrow[r]&f_*f^*\Phi\arrow[r,shift left=.6ex]\arrow[r,shift right=.6ex]&g_*g^*\Phi\arrow[r,shift left=1.2ex]\arrow[r]\arrow[r,shift right=1.2ex]&\Phi_3.
+\end{tikzcd}
+\]
+2) 设 $f:X_1\to X$ 为变动\Term{scheme}{概形}上的\Term{etale}{平展}层\Term{category}{范畴}的\Term{effective-descent-morphism}{有效下降态射}；例如\Term{proper}{固有}\Term{epimorphism}{满态射}、整\Term{epimorphism}{满态射}，或局部\Term{finite-presentation}{有限表示}的\Term{faithfully-flat}{忠实平坦}\Term{morphism}{态射}（SGA 4 VIII 9.4）。令 $X_2=X_1\times_X X_1$，$g:X_2\to X$ 为典范投影，$X_3=X_1\times_X X_1\times_X X_1$，$h:X_3\to X$ 为典范\Term{morphism}{态射}。设 $\Phi$ 为 $X$ 上的叠，$\Phi_1=f_*f^*\Phi$、$\Phi_2=g_*g^*\Phi$、$\Phi_3=h_*h^*\Phi$。于是有\Term{exact}{正合}图
+\[
+\begin{tikzcd}
+\Phi\arrow[r]&\Phi_1\arrow[r,shift left=.6ex]\arrow[r,shift right=.6ex]&\Phi_2\arrow[r,shift left=1.2ex]\arrow[r]\arrow[r,shift right=1.2ex]&\Phi_3,
+\end{tikzcd}
+\]
+箭头为与各投影对应的典范\Term{morphism}{态射}。事实上，将 $\Phi$ 看作配备\Term{etale-topology}{平展拓扑}的 $\operatorname{Sch}_X$ 上的叠；根据 [2, VII 2.2.8]，对于 $\operatorname{Sch}_X$ 上以\Term{etale}{平展}层\Term{category}{范畴}的\Term{effective-descent-morphism}{有效下降态射}为\Term{covering}{覆盖}\Term{morphism}{态射}的最细拓扑，$\Phi$ 仍为叠。上图的\Term{exactness}{正合性}立即由此得出。
+
+\begin{SGAresult}{命题}{1.12}
+设 $S$ 为\Term{scheme}{概形}，$f:X\to Y$ 为 $S$-\Term{morphism}{态射}。
+
+1) 设 $X$ 上的叠有\Term{exact}{正合}图
+\[
+\begin{tikzcd}
+\Phi\arrow[r]&\Phi_1\arrow[r,shift left=.6ex]\arrow[r,shift right=.6ex]&\Phi_2.
+\end{tikzcd}
+\]
+若 $(\Phi_1,f)$ 相对于 $S$ 在维数 $\leqslant0$ 时\Term{cohomologically-proper}{上同调固有}，而 $(\Phi_2,f)$ 相对于 $S$ 在维数 $\leqslant-1$ 时\Term{cohomologically-proper}{上同调固有}，则 $(\Phi,f)$ 相对于 $S$ 在维数 $\leqslant0$ 时\Term{cohomologically-proper}{上同调固有}。
+
+2) 设 $X$ 上的叠有\Term{exact}{正合}图
+\[
+\begin{tikzcd}
+\Phi\arrow[r]&\Phi_1\arrow[r,shift left=.6ex]\arrow[r,shift right=.6ex]&\Phi_2\arrow[r,shift left=1.2ex]\arrow[r]\arrow[r,shift right=1.2ex]&\Phi_3.
+\end{tikzcd}
+\]
+若 $(\Phi,f)$ 相对于 $S$ 在维数 $\leqslant1$ 时\Term{cohomologically-proper}{上同调固有}，$(\Phi_2,f)$ 相对于 $S$ 在维数 $\leqslant0$ 时\Term{cohomologically-proper}{上同调固有}，且 $(\Phi_3,f)$ 相对于 $S$ 在维数 $\leqslant-1$ 时\Term{cohomologically-proper}{上同调固有}，则 $(\Phi,f)$ 相对于 $S$ 在维数 $\leqslant1$ 时\Term{cohomologically-proper}{上同调固有}。
+\end{SGAresult}
+\SourcePage{287}
+\begin{proof}
+对每个 $S$-\Term{scheme}{概形} $S'$，考虑\Term{commutative-diagram}{交换图}，其中各方块均为\Term{cartesian-square}{笛卡尔方块}：
+\[
+\begin{tikzcd}
+X'\arrow[r,"f'"]\arrow[d,"h"']&Y'\arrow[r]\arrow[d,"g"']&S'\arrow[d]\\
+X\arrow[r,"f"']&Y\arrow[r]&S.
+\end{tikzcd}
+\]
+证明 2)，1) 的证明类似。由于\Term{direct-image}{直像}、\Term{inverse-image}{逆像}\Term{functor}{函子}将叠的\Term{exact}{正合}图变成\Term{exact}{正合}图（1.10.4），有下列叠的\Term{exact}{正合}图之间的\Term{morphism}{态射}：
+\[
+\begin{tikzcd}[column sep=1.2em]
+g^*f_*\Phi\arrow[r,"\pi"]\arrow[d,"\varphi"']&g^*f_*\Phi_1\arrow[r,shift left=.6ex,"\pi_1"]\arrow[r,shift right=.6ex,"\pi_2"']\arrow[d,"\varphi_1"']&g^*f_*\Phi_2\arrow[r,shift left=1.2ex]\arrow[r]\arrow[r,shift right=1.2ex]\arrow[d,"\varphi_2"']&g^*f_*\Phi_3\arrow[d,"\varphi_3"]\\
+f'_*h^*\Phi\arrow[r]&f'_*h^*\Phi_1\arrow[r,shift left=.6ex]\arrow[r,shift right=.6ex]&f'_*h^*\Phi_2\arrow[r,shift left=1.2ex]\arrow[r]\arrow[r,shift right=1.2ex]&f'_*h^*\Phi_3.
+\end{tikzcd}
+\]
+由假设，$\varphi_1$ 是\Term{category-equivalence}{范畴等价}，$\varphi_2$ \Term{fully-faithful}{全忠实}，$\varphi_3$ 忠实。因此从上图可知，$\varphi$ 是等价。
+\end{proof}
+
+\begin{SGAresult}{命题}{1.13}
+设 $f:X\to Y$ 为 $S$-\Term{morphism}{态射}。
+
+1) 设 $X$ 上的\Term{set-sheaf}{集合层}有\Term{exact}{正合}图
+\[
+\begin{tikzcd}
+F\arrow[r]&G\arrow[r,shift left=.6ex]\arrow[r,shift right=.6ex]&H.
+\end{tikzcd}
+\]
+若 $(G,f)$ 相对于 $S$ 在维数 $\leqslant0$ 时\Term{cohomologically-proper}{上同调固有}，$(H,f)$ 相对于 $S$ 在维数 $\leqslant-1$ 时\Term{cohomologically-proper}{上同调固有}，则 $(F,f)$ 相对于 $S$ 在维数 $\leqslant0$ 时\Term{cohomologically-proper}{上同调固有}。
+
+2) 设 $F\to G$ 为 $X$ 上\Term{group-sheaf}{群层}的\Term{monomorphism}{单态射}。若 $Y_1$ 为 $Y$ 上的\Term{etale}{平展}\Term{scheme}{概形}，置 $X_1=Y_1\times_Y X$，用 $f_1$（分别为 $F_1,G_1$）表示 $f$（分别为 $F,G$）在 $Y_1$ 上的\Term{inverse-image}{逆像}（见 (1.0.2)）。若 $(G,f)$ 相对于 $S$ 在维数 $\leqslant0$（分别为 $\leqslant1$）时\Term{cohomologically-proper}{上同调固有}，且对于 $Y$ 上每个\Term{etale}{平展}\Term{scheme}{概形} $Y_1$ 和每个 $G_1$-\Term{torsor}{挠子} $Q$，$(Q/F_1,f_1)$ 相对于 $S$ 在维数 $\leqslant-1$（分别为 $\leqslant0$）时\Term{cohomologically-proper}{上同调固有}，则 $(F,f)$ 相对于 $S$ 在维数 $\leqslant0$（分别为 $\leqslant1$）时\Term{cohomologically-proper}{上同调固有}。
+
+3) 设 $F\to G$ 为 $X$ 上\Term{group-sheaf}{群层}的\Term{monomorphism}{单态射}。若 $(F,f)$ 相对于 $S$ 在维数 $\leqslant1$ 时\Term{cohomologically-proper}{上同调固有}，而 $(G,f)$ 相对于 $S$ 在维数 $\leqslant0$ 时\Term{cohomologically-proper}{上同调固有}，则对于每个 $G$-\Term{torsor}{挠子} $Q$，$(Q/F,f)$ 相对于 $S$ 在维数 $\leqslant0$ 时\Term{cohomologically-proper}{上同调固有}。
+\end{SGAresult}
+\SourcePage{288}
+\begin{proof}
+1) 设 $\Phi$（分别为 $\Phi_1,\Phi_2$）是 $F$（分别为 $G,H$）的相伴\Term{discrete-category}{离散范畴}叠，$\Phi_3$ 为 $X$ 上的终叠。于是有\Term{exact}{正合}图
+\[
+\begin{tikzcd}
+\Phi\arrow[r]&\Phi_1\arrow[r,shift left=.6ex]\arrow[r,shift right=.6ex]&\Phi_2\arrow[r,shift left=1.2ex]\arrow[r]\arrow[r,shift right=1.2ex]&\Phi_3.
+\end{tikzcd}
+\]
+由假设及 1.2，$(\Phi_1,f)$ 相对于 $S$ 在维数 $\leqslant1$ 时\Term{cohomologically-proper}{上同调固有}，$(\Phi_2,f)$ 相对于 $S$ 在维数 $\leqslant0$ 时\Term{cohomologically-proper}{上同调固有}。由于 $(\Phi_3,f)$ 显然相对于 $S$ 在维数 $\leqslant-1$ 时\Term{cohomologically-proper}{上同调固有}，1.12 表明 $(\Phi,f)$ 相对于 $S$ 在维数 $\leqslant1$ 时\Term{cohomologically-proper}{上同调固有}；亦即 $(F,f)$ 相对于 $S$ 在维数 $\leqslant0$ 时\Term{cohomologically-proper}{上同调固有}。
+
+2) 先证：若 $(G,f)$ 相对于 $S$ 在维数 $\leqslant0$ 时\Term{cohomologically-proper}{上同调固有}，且各 $(Q/F_1,f_1)$ 相对于 $S$ 在维数 $\leqslant-1$ 时\Term{cohomologically-proper}{上同调固有}，则 $(F,f)$ 相对于 $S$ 在维数 $\leqslant0$ 时\Term{cohomologically-proper}{上同调固有}。根据 1.3.1，只需证明：对于每个在 $Y$ 上\Term{etale}{平展}的\Term{scheme}{概形} $Y_1$ 和每个 $X_1$ 上的 $F_1$-\Term{torsor}{挠子} $P$，将 ${}^PF_1$ 看作\Term{set-sheaf}{集合层}时，$({}^PF_1,f_1)$ 相对于 $S$ 在维数 $\leqslant0$ 时\Term{cohomologically-proper}{上同调固有}；并且典范\Term{morphism}{态射}
+\[d:g^*(R^1f_*F)\longrightarrow R^1f'_*F'\]
+为\Term{injectivity}{单射}。第一个断言立即由 1) 得出，因为若 $Q$ 是 $P$ 沿结构群的\Term{group-extension}{扩张} $F_1\to G_1$ 所得的\Term{torsor}{挠子}，则有\Term{isomorphism}{同构}
+\[{}^QG_1/{}^PF_1\xrightarrow{\sim}Q/F_1.\]
+
+现证 $d$ 为\Term{injectivity}{单射}。只需证明：若 $Y_1$ 为 $Y$ 上的\Term{etale}{平展}\Term{scheme}{概形}，$P,\widetilde P$ 是两个 $F_1$-\Term{torsor}{挠子}，其在 $X'_1$ 上的\Term{inverse-image}{逆像} $P',\widetilde P'$ \Term{isomorphism}{同构}，则在对 $Y_1$ 作适当的\Term{etale}{平展}满\Term{group-extension}{扩张}后，$P,\widetilde P$ \Term{isomorphism}{同构}。选定\Term{isomorphism}{同构} $p':P'\xrightarrow{\sim}\widetilde P'$。设 $Q$（分别为 $\widetilde Q$）是 $P$（分别为 $\widetilde P$）沿结构群 $F_1\to G_1$ \Term{group-extension}{扩张}而得的\Term{torsor}{挠子}；$Q$（分别为 $\widetilde Q$）在 $X'_1$ 上的\Term{inverse-image}{逆像} $Q'$（分别为 $\widetilde Q'$），由 $P'$（分别为 $\widetilde P'$）沿结构群 $F'_1\to G'_1$ \Term{group-extension}{扩张}而得。设 $q':Q'\xrightarrow{\sim}\widetilde Q'$ 为同样由 $p'$ 得到的\Term{isomorphism}{同构}。由于 $(G,f)$ 相对于 $S$ 在维数 $\leqslant0$ 时\Term{cohomologically-proper}{上同调固有}，对 $Y_1$ 作\Term{etale}{平展}满\Term{group-extension}{扩张}后，可设 $q'$ 来\Term{automorphism}{自同构} $q:Q\xrightarrow{\sim}\widetilde Q$。\Term{torsor}{挠子} $P$（分别为 $\widetilde P$）对应于 $Q/F_1$ 的\Term{section}{截面} $x$（分别为 $\widetilde Q/F_1$ 的\Term{section}{截面} $\widetilde x$）；$P,\widetilde P$ \Term{isomorphism}{同构}，当且仅当存在\Term{isomorphism}{同构} $Q\xrightarrow{\sim}\widetilde Q$，使由它导出的\Term{isomorphism}{同构}
+\[e:H^0(X_1,Q/F_1)\longrightarrow H^0(X_1,\widetilde Q/F_1)\]
+将 $x$ 映到 $\widetilde x$。取上述\Term{isomorphism}{同构} $q$；$H^0(X_1,\widetilde Q/F_1)$ 中的\Term{section}{截面} $e(x),\widetilde x$ 在 $H^0(X'_1,\widetilde Q'/F'_1)$ 中有相同的像。由于 $(\widetilde Q/F_1,f_1)$ 相对于 $S$ 在维数 $\leqslant-1$ 时\Term{cohomologically-proper}{上同调固有}，对 $Y_1$ 作\Term{etale}{平展}满\Term{group-extension}{扩张}后，确有 $e(x)=\widetilde x$，故 $d$ 为\Term{injectivity}{单射}。
+
+\SourcePage{289}
+为完成证明，还需证明：若 $(G,f)$ 相对于 $S$ 在维数 $\leqslant1$ 时\Term{cohomologically-proper}{上同调固有}，且对于每个在 $Y$ 上\Term{etale}{平展}的\Term{scheme}{概形} $Y_1$ 和每个 $X_1$ 上的 $F_1$-\Term{torsor}{挠子} $Q$，$(Q/F_1,f_1)$ 相对于 $S$ 在维数 $\leqslant0$ 时\Term{cohomologically-proper}{上同调固有}，则 $d$ 为\Term{surjectivity}{满射}。设 $P'$ 为 $X'_1$ 上的 $F'_1$-\Term{torsor}{挠子}，$Q'$ 为它\Term{group-extension}{扩张}结构群后得到的 $G'_1$-\Term{torsor}{挠子}。给定 $P'$，等价于给定 $Q'$ 及 $H^0(X'_1,Q'/F'_1)$ 中的一个\Term{section}{截面} $x'$。由
+\[g^*(R^1f_*G)\longrightarrow R^1f'_*G'\]
+的\Term{surjectivity}{满射}性，对 $Y_1$ 作适当的\Term{etale}{平展}满\Term{group-extension}{扩张}后，存在 $G_1$-\Term{torsor}{挠子} $Q$，其在 $X'_1$ 上的\Term{inverse-image}{逆像}\Term{isomorphism}{同构}于 $Q'$。利用 $(Q/F_1,f_1)$ 相对于 $S$ 在维数 $\leqslant0$ 时\Term{cohomologically-proper}{上同调固有}，同样可设存在 $H^0(X_1,Q/F_1)$ 中的元素 $x$，其在 $H^0(X'_1,Q'/F'_1)$ 中的像为 $x'$。$Q$ 与 $x$ 决定一个 $F_1$-\Term{torsor}{挠子} $P$，其在 $X_1$ 上的\Term{inverse-image}{逆像}\Term{isomorphism}{同构}于 $P'$，故 $d$ 为\Term{surjectivity}{满射}。
+
+3) 先证 $(Q/F,f)$ 相对于 $S$ 在维数 $\leqslant-1$ 时\Term{cohomologically-proper}{上同调固有}。也就是说，给定任意 $S$-\Term{scheme}{概形} $S'$、$Y$ 上的\Term{etale}{平展}\Term{scheme}{概形} $Y_1$，若 $H^0(X_1,Q_1/F_1)$ 中两个元素 $x,\widetilde x$ 在 $H^0(X'_1,Q'_1/F'_1)$ 中的像 $x',\widetilde x'$ 相等，则对 $Y_1$ 作满\Term{group-extension}{扩张}后，$x=\widetilde x$。$x$（分别为 $\widetilde x$）对应一个 $F_1$-\Term{torsor}{挠子} $P$（分别为 $\widetilde P$），使 $Q_1$ 由 $P$（分别为 $\widetilde P$）沿结构群 $F_1\to G_1$ \Term{group-extension}{扩张}而得。由 $x'=\widetilde x'$ 得到\Term{isomorphism}{同构} $u':P'\xrightarrow{\sim}\widetilde P'$，且 $u'$ 在 $Q'_1$ 上诱导恒等\Term{isomorphism}{同构}。由于 $(F,f)$ 相对于 $S$ 在维数 $\leqslant0$ 时\Term{cohomologically-proper}{上同调固有}，对 $Y_1$ 作\Term{etale}{平展}满\Term{group-extension}{扩张}后，存在提升 $u'$ 的\Term{isomorphism}{同构} $u:P\to\widetilde P$；再由 $(G,f)$ 相对于 $S$ 在维数 $\leqslant-1$ 时\Term{cohomologically-proper}{上同调固有}，得出 $x=\widetilde x$。
+
+现证 $(Q/F,f)$ 相对于 $S$ 在维数 $\leqslant0$ 时\Term{cohomologically-proper}{上同调固有}。设 $Y''$ 为 $Y'$ 上的\Term{etale}{平展}\Term{scheme}{概形}，$x''\in H^0(X'',Q''/F'')$。$x''$ 对应于 $X''$ 上的一个 $F''$-\Term{torsor}{挠子} $P''$。由于 $(F,f)$ 相对于 $S$ 在维数 $\leqslant1$ 时\Term{cohomologically-proper}{上同调固有}，可以找到\Term{etale}{平展}\Term{epimorphism}{满态射} $Y''_1\to Y''$、$Y_1\to Y$，以及\Term{morphism}{态射} $Y''_1\to Y'_1$，并找到 $X_1$ 上的 $F_1$-\Term{torsor}{挠子} $P$，其在 $X''_1$ 上的\Term{inverse-image}{逆像}\Term{isomorphism}{同构}于 $P''$ 的\Term{inverse-image}{逆像}。再由 $(G,f)$ 相对于 $S$ 在维数 $\leqslant0$ 时\Term{cohomologically-proper}{上同调固有}，甚至可以选择 $Y''_1,Y_1$，使由 $P$ 沿结构群 $F_1\to G_1$ \Term{group-extension}{扩张}所得的\Term{torsor}{挠子}\Term{isomorphism}{同构}于 $Q_1$。$P$ 对应于 $H^0(X_1,Q_1/F_1)$ 中的元素 $x$，其在 $H^0(X''_1,Q''_1/F''_1)$ 中的像\Term{isomorphism}{同构}于 $x''$ 的\Term{inverse-image}{逆像}，证明完毕。
+\end{proof}
+
+\begin{SGAresult}{命题}{1.14}
+设 $f:X\to S$ 为 $S$-\Term{scheme}{概形}，$F$ 为 $X$ 上的\Term{set-sheaf}{集合层}或\Term{group-sheaf}{群层}（分别为归纳 $L$-\Term{group-sheaf}{群层}，其中 $L$ 是一组素数）。假设 $F$ \Term{locally-constant}{局部常}，$(F,f)$ 在维数 $\leqslant0$（分别为 $\leqslant1$）时\Term{cohomologically-proper}{上同调固有}，且 $f$ \Term{locally-zero-acyclic}{局部 0-无环}（分别为相对于 $L$ \Term{locally-one-aspherical}{局部 1-无球}）（SGA 4 XV 1.11）。则对于 $S$ 的\Term{geometric-point}{几何点}的每个\Term{specialization}{特殊化} $\bar s_1\to\bar s_2$，\Term{specialization-morphism}{特殊化态射}（SGA 4 VIII 7.1）
+\SourcePage{290}
+\[a_0:(f_*F)_{\bar s_2}\longrightarrow(f_*F)_{\bar s_1}\]
+为\Term{isomorphism}{同构}；若 $F$ 为\Term{group-sheaf}{群层}，则\Term{morphism}{态射}
+\[a_1:(R^1f_*F)_{\bar s_2}\longrightarrow(R^1f_*F)_{\bar s_1}\]
+为\Term{injectivity}{单射}（分别为 $a_0,a_1$ 均为\Term{isomorphism}{同构}）。
+\end{SGAresult}
+\begin{proof}
+逐字重复 SGA 4 XVI 2.3 的证明，只将其中“\Term{proper}{固有}”一词换成“\Term{cohomologically-proper}{上同调固有}”，即可得证。
+\end{proof}
+
+\begin{SGAresult}{推论}{1.15}
+设 $f:X\to S$ 为\Term{morphism}{态射}，$\Phi$ 为 $X$ 上的叠，$L$ 为一组素数。假设对于每个在 $X$ 上\Term{etale}{平展}的\Term{scheme}{概形} $X_1$ 和 $\Phi_{X_1}$ 中每对对象 $x,y$，层 $\underline{\operatorname{Hom}}_{X_1}(x,y)$ \Term{locally-constant}{局部常}，层 $\operatorname{Aut}_{X_1}(x)$ 为\Term{locally-constant}{局部常}的归纳 $L$-群，且 $\Phi$ 的\Term{maximal-subgerbe}{极大子凝集}层 $S\Phi$ [1, III 2.1.7] \Term{locally-constant}{局部常}。假设 $(\Phi,f)$ 在维数 $\leqslant1$ 时\Term{cohomologically-proper}{上同调固有}，$f$ 相对于 $L$ \Term{locally-one-aspherical}{局部 1-无球}。则对于 $S$ 的\Term{geometric-point}{几何点}的每个\Term{specialization}{特殊化} $\bar s_1\to\bar s_2$，\Term{specialization-morphism}{特殊化态射}
+\[a:(f_*\Phi)_{\bar s_2}\longrightarrow(f_*\Phi)_{\bar s_1}\]
+为\Term{category-equivalence}{范畴等价}。
+\end{SGAresult}
+\begin{proof}
+设 $\bar S_1$（分别为 $\bar S_2$）为 $S$ 在 $\bar s_1$（分别为 $\bar s_2$）处的\Term{strict-localization}{严格局部化}，$\bar X_2,\bar\Phi_2$（分别为 $\bar X_1,\bar\Phi_1$）为 $X_2,\Phi_2$ 在 $\bar S_2$ 上（分别为 $X_1,\Phi_1$ 在 $\bar S_1$ 上）的\Term{inverse-image}{逆像}。考虑\Term{cartesian-square}{笛卡尔方块}
+\[
+\begin{tikzcd}
+\bar X_1\arrow[r,"h"]\arrow[d,"\bar f_1"']&\bar X_2\arrow[d,"\bar f_2"]\\
+\bar S_1\arrow[r,"g"']&\bar S_2.
+\end{tikzcd}
+\]
+需证明\Term{functor}{函子} $\varphi:\bar\Phi_2(\bar X_2)\to\bar\Phi_1(\bar X_1)$ 为等价。\Term{functor}{函子} $\varphi$ \Term{fully-faithful}{全忠实}：事实上，对 $(\bar\Phi_2)_{\bar X_2}$ 的两个对象 $x,y$，典范\Term{morphism}{态射}
+\[\operatorname{Hom}_{\bar X_2}(x,y)\longrightarrow\operatorname{Hom}_{\bar X_1}(\varphi(x),\varphi(y))\]
+可识别为典范\Term{morphism}{态射}
+\[H^0(\bar X_2,\underline{\operatorname{Hom}}_{\bar X_2}(x,y))\longrightarrow H^0(\bar X_1,h^*(\underline{\operatorname{Hom}}_{\bar X_2}(x,y))).\]
+由 1.14，此\Term{morphism}{态射}是\Term{isomorphism}{同构}。
+\SourcePage{291}
+现证 $\varphi$ 为等价。设 $x_1$ 是 $\bar\Phi_1(\bar X_1)$ 的一个对象，$G_1$ 为 $x_1$ 生成的 $\bar\Phi_1$ 的\Term{maximal-subgerbe}{极大子凝集}。\Term{morphism}{态射}
+\[H^0(\bar X_2,S\bar\Phi_2)\longrightarrow H^0(\bar X_1,h^*(S\bar\Phi_2))=H^0(\bar X_1,S\bar\Phi_1)\]
+为\Term{bijection}{双射}，故存在 $\bar\Phi_2$ 的\Term{maximal-subgerbe}{极大子凝集} $G_2$，使 $h^*G_2$ \Term{isomorphism}{同构}于 $G_1$。于是只需证明\Term{functor}{函子} $G_2\to h_*h^*G_2$ 为等价。写成这种形式后，问题对于 $\bar X_2$ 的\Term{etale-topology}{平展拓扑}是局部的。因此可以设 $G_2$ 是 $G_2$ 中某对象的\Term{automorphism}{自同构}群下的\Term{torsor}{挠子}\Term{gerbe}{凝集}，此时断言由 1.14 得出。
+\end{proof}
+
+\begin{SGAresult}{推论}{1.16}
+沿用 1.14 的假设。若还假设 $F$ 是\Term{set-sheaf}{集合层}（分别为归纳 $L$-\Term{group-sheaf}{群层}），且 $f_*F$（分别为 $R^1f_*F$）\Term{constructible}{可构造}，则 $f_*F$（分别为 $R^1f_*F$）\Term{locally-constant}{局部常}。
+\end{SGAresult}
+\begin{proof}
+由 1.14 结合 SGA 4 IX 2.11 得出。
+\end{proof}
+
+\textbf{注记 1.17。}回顾：当 $f$ \Term{flat}{平坦}、各\Term{fiber}{纤维}\Term{separable}{可分}，且 $X,Y$ \Term{locally-noetherian}{局部 Noether} 时，$f$ \Term{locally-zero-acyclic}{局部 0-无环}（SGA 4 XV 4.1）；当 $f$ \Term{smooth}{光滑}、$L$ 为不同于 $S$ 的各\Term{residue-characteristic}{剩余特征}的素数所成的集合时，$f$ 相对于 $L$ \Term{locally-one-aspherical}{局部 1-无球}（SGA 4 XV 2.1）。
+
+\SGAsection{2}{上同调固有性的一个特例：相对正规交叉除子}
+\textbf{2.0.} 设 $R$ 为\Term{discrete-valuation-ring}{离散赋值环}，$K$ 为其\Term{field-of-fractions}{分式域}，$L$ 为\Term{etale}{平展} $K$-代数。于是 $L$ 是\Term{finite}{有限}多个域 $L_i$ 的直积，每个 $L_i$ 都是 $K$ 的\Term{etale}{平展}\Term{group-extension}{扩张}。设 $L'_i$ 为在 $L_i$ 的一个\Term{algebraic-closure}{代数闭包}中由 $L_i$ 生成的 Galois \Term{group-extension}{扩张}。若各 $L'_i$ 均在第 X 讲第 3 节的意义下\Term{tame-ramification}{温和分歧}，即 $L'_i|K$ 的\Term{inertia-group}{惯性群} $I_i$ 的阶素于 $R$ 的\Term{residue-characteristic}{剩余特征} $p$，就称 $L$ 在 $R$ 上\Term{tame-ramification}{温和分歧}。
+
+已知，在任何情形下，$I_i$ 都是一个阶素于 $p$ 的循环群被一个 $p$-群\Term{group-extension}{扩张}而得的群。（当 $R$ 的剩余\Term{group-extension}{扩张}\Term{separable}{可分}时，这由 [5, 第 IV 章命题 7 推论 4] 得出。该处的证明可以如下推广到一般情形。沿用该文献的假设和记号，但不要求剩余\Term{group-extension}{扩张}\Term{separable}{可分}。令 $H_i$ 为\Term{inertia-group}{惯性群} $G_0$ 的子群，由那些满足下列条件的 $s\in G_0$ 组成：对 $A_L$ 的每个素元 $\pi$，均有 $s\pi/\pi\in U^i$。则可知，$G_0/H_1$ 的阶素于 $p$，且当 $i\geqslant1$ 时，$H^i/H^{i+1}$ 为 $p$-群，由此得到所述结果。）
+
+\SourcePage{292}
+\textbf{2.0.1.} 在 $R$ \Term{strictly-local}{严格局部}时，有如下简单刻画：$K$-代数 $L$ 在 $R$ 上\Term{tame-ramification}{温和分歧}，当且仅当各次数 $[L_i:K]$ 素于 $p$。此外，若 $L$ 在 $R$ 上\Term{tame-ramification}{温和分歧}，则各 $L_i$ 都是 $K$ 的循环\Term{group-extension}{扩张}。事实上，$R$ \Term{strictly-local}{严格局部}时，$I_i$ 就是 $L'_i$ 在 $K$ 上的 Galois 群。如上所述，$I_i$ 是阶素于 $p$ 的循环群被 $p$-群\Term{group-extension}{扩张}而得的群。若 $L'_i$ 在 $R$ 上\Term{tame-ramification}{温和分歧}，则 $I_i$ 为阶素于 $p$ 的循环群，故 $[L_i:K]$ 素于 $p$，且 $L_i=L'_i$。反过来，若 $[L_i:K]$ 素于 $p$，则 $I_i$ 不可能包含非\Term{trivial-bundle}{平凡}的\Term{normal}{正规} $p$-子群；所以 $I_i$ 是阶素于 $p$ 的循环群，故 $L_i$ 在 $R$ 上\Term{tame-ramification}{温和分歧}。
+
+\textbf{2.0.2.} 设 $R$ 为\Term{discrete-valuation-ring}{离散赋值环}，$K$ 为其\Term{field-of-fractions}{分式域}，$L$ 为\Term{etale}{平展} $K$-代数；设 $\bar R$ 为 $R$ 的一个\Term{strict-localization}{严格局部化}，$\bar K$ 为其\Term{field-of-fractions}{分式域}，$\bar L=L\otimes_K\bar K$。则 $L$ 在 $R$ 上\Term{tame-ramification}{温和分歧}，当且仅当 $\bar L$ 在 $\bar R$ 上\Term{tame-ramification}{温和分歧}。事实上可归结到 $L$ 为域的情形。此时设
+\[\bar L=\prod_i\bar L_i,\]
+其中 $\bar L_i$ 是 $\bar K$ 的域\Term{group-extension}{扩张}；若 $L'$ 为由 $L$ 生成的 Galois \Term{group-extension}{扩张}，$\bar L'=L'\otimes_K\bar K$，同样有域的直积分解 $\bar L'=\prod_j\bar L'_j$，而每个 $\bar L_i$ 至少是一个 $\bar L'_j$ 的子\Term{group-extension}{扩张}。由于 $L'$ 为 $K$ 的 Galois \Term{group-extension}{扩张}，各 $\bar L'_j$ 都是 $\bar K$ 的 Galois \Term{group-extension}{扩张}。假设 $L$ 在 $R$ 上\Term{tame-ramification}{温和分歧}；由于 $\bar L'_j|\bar K$ 的 Galois 群\Term{isomorphism}{同构}于 $L'|K$ 的\Term{inertia-group}{惯性群}，各 $\bar L'_j$ 都在 $\bar R$ 上\Term{tame-ramification}{温和分歧}，故各 $\bar L_i$ 也如此。
+
+反过来，假设 $\bar L$ 在 $\bar R$ 上\Term{tame-ramification}{温和分歧}。对于每个 $j$，设 $v_j$ 为 $\bar L'_j$ 上延拓 $\bar K$ 的赋值的\Term{discrete}{离散}赋值，并仍用 $v_j$ 表示它在 $L'$ 上诱导的赋值。当 $j$ 变动时，$v_j$ 遍历 $L$ 上延拓 $K$ 的赋值的所有赋值。置 $G=\operatorname{Gal}(L'|K)$、$H=\operatorname{Gal}(L'|L)$；设 $I_j$ 为 $L'|K$ 在 $v_j$ 处的\Term{inertia-group}{惯性群}，$J_j$ 为 $L'|L$ 在 $v_j$ 处的\Term{inertia-group}{惯性群}。群 $I_i$ 为阶素于 $p$ 的循环群被 $p$-群 $P_j$ \Term{group-extension}{扩张}而得的群。由于各 $\bar L_i$ 在 $\bar R$ 上\Term{tame-ramification}{温和分歧}，$I_j/J_j$ 的阶素于 $p$，故 $P_j\subset J_j$。所以 $H$ 包含所有 $P_j$，从而也包含它们生成的群 $P$。而 $P$ 在 $G$ 中不变，因为 $G$ 的\Term{inner-automorphism}{内自同构}将各 $I_j$ 相互置换，也就将各 $P_j$ 相互置换。由此可知 $P$ 是包含于 $H$、且在 $G$ 中\Term{normal}{正规}的子群；由于 $L'$ 是由 $L$ 生成的 Galois \Term{group-extension}{扩张}，必有 $P=1$，这说明 $L$ 在 $R$ 上\Term{tame-ramification}{温和分歧}。
+
+更一般地，设 $R\to R'$ 为\Term{discrete-valuation-ring}{离散赋值环}之间的\Term{morphism}{态射}，$R$ 的素元 $\pi$ 的像为 $R'$ 的素元 $\pi'$，且剩余\Term{group-extension}{扩张} $k(R')|k(R)$ \Term{separable}{可分}。设 $K,K'$ 分别为 $R,R'$ 的\Term{field-of-fractions}{分式域}，$L$ 为\Term{etale}{平展} $K$-代数，$L'=L\otimes_K K'$。则 $L$ 在 $R$ 上\Term{tame-ramification}{温和分歧}，当且仅当 $L'$ 在 $R'$ 上\Term{tame-ramification}{温和分歧}。事实上可设 $R,R'$ \Term{strictly-local}{严格局部}；根据 2.0.1，只需证明当 $L$ 为域时 $L'$ 也为域。
+\SourcePage{293}
+设 $\widetilde R$ 为 $R$ 在 $L$ 中的\Term{normalization}{正规化}，$\widetilde\pi$ 为 $\widetilde R$ 的素元，$\widetilde R'=\widetilde R\otimes_RR'$。由于\Term{group-extension}{扩张} $k(\widetilde R)|k(R)$ \Term{radicial}{根性}、\Term{group-extension}{扩张} $k(R')|k(R)$ \Term{etale}{平展}，$k(\widetilde R)\otimes_{k(R)}k(R')$ 为域 [EGA IV 4.3.2、4.3.5]。这说明 $R'$ 是\Term{local-ring}{局部环}；由于 $\pi$ 在 $R'$ 中的像为 $\pi'$，有 $k(\widetilde R')=R'/(\widetilde\pi)$。故 $R'$ 为\Term{discrete-valuation-ring}{离散赋值环} [5, 第 I 章第 2 节命题 2]，从而 $L'$ 为域。
+
+\textbf{2.0.3.} 归结到\Term{strictly-local}{严格局部}情形后可见：\Term{tame-ramification}{温和分歧}代数的子代数\Term{tame-ramification}{温和分歧}；两个\Term{tame-ramification}{温和分歧}代数的\Term{tensor-product}{张量积}\Term{tame-ramification}{温和分歧}；\Term{tame-ramification}{温和分歧}代数在\Term{group-extension}{扩张}\Term{discrete-valuation-ring}{离散赋值环}后仍\Term{tame-ramification}{温和分歧}；若一个代数经过\Term{tame-ramification}{温和分歧}\Term{group-extension}{扩张}后变得\Term{tame-ramification}{温和分歧}，则它原本就\Term{tame-ramification}{温和分歧}。
+
+\textbf{2.1.} 设 $X$ 为 $S$-\Term{scheme}{概形}，$D$ 为 $X$ 上的有效\Term{divisor}{除子}。回顾（SGA 5 II 4.2），若存在 $\Gamma(X,O_X)$ 中元素的\Term{finite}{有限}族 $(f_i)_{i\in I}$，使
+\[D=\sum_{i\in I}\operatorname{div}(f_i),\]
+并满足下列条件，就称 $D$ 相对于 $S$ \Term{strict-relative-normal-crossings}{严格正规交叉}。
+
+\textbf{2.1.0.} 对 $\operatorname{Supp}D$ 中每个点 $x$，$X$ 在 $x$ 处关于 $S$ \Term{smooth}{光滑}；若 $I(x)$ 为满足 $f_i(x)=0$ 的 $i\in I$ 所成的集合，则\Term{subscheme}{子概形} $V((f_i)_{i\in I(x)})$ 在 $S$ 上\Term{smooth}{光滑}，且在 $X$ 中的余维为 $\operatorname{card}I(x)$。
+
+若 $D$ 对于 $X$ 的\Term{etale-topology}{平展拓扑}局部地\Term{strict-relative-normal-crossings}{严格正规交叉}，就称它相对于 $S$ \Term{normal-crossings}{正规交叉}。
+
+设 $D$ 为相对于 $S$ 的\Term{normal-crossings-divisor}{正规交叉除子}。置 $Y=\operatorname{Supp}D$、$U=X-Y$，记典范\Term{immersion}{浸入}为 $i:U\to X$。对 $S$ 的每个\Term{geometric-point}{几何点} $\bar s$ 及\Term{geometric-fibre}{几何纤维} $Y_{\bar s}$ 的每个极大点 $y$，环 $R=O_{X_{\bar s},y}$ 是\Term{discrete-valuation-ring}{离散赋值环}。本节以下使用下述技术性定义。
+
+\begin{SGAresult}{定义}{2.1.1}
+设 $F$ 为 $U$ 上的\Term{set-sheaf}{集合层}。若对于 $S$ 的每个\Term{geometric-point}{几何点} $\bar s$，下列条件成立，就称 $F$ 在 $X$ 上（沿 $D$）相对于 $S$ \Term{tame-ramification}{温和分歧}：对于 $Y_{\bar s}$ 的每个极大点 $y$，$F$ 在 $O_{X_{\bar s}}$ 的\Term{field-of-fractions}{分式域} $K$ 上的限制，可以由在 $O_{X_{\bar s},y}$ 上\Term{tame-ramification}{温和分歧}的\Term{etale}{平展} $K$-代数 $L$ 的谱表示。
+\end{SGAresult}
+在不会引起混淆时，通常略去术语中的 $D$。
+
+\begin{SGAresult}{定义}{2.1.2}
+若 $F$ 是 $U$ 上的\Term{group-sheaf}{群层}，且在 $X$ 上相对于 $S$ \Term{tame-ramification}{温和分歧}，用
+\[H^1_t(U,F)\]
+表示 $H^1(U,F)$ 中由那些在 $X$ 上相对于 $S$ \Term{tame-ramification}{温和分歧}的 $F$-\Term{torsor}{挠子}类组成的子集。
+\end{SGAresult}
+\SourcePage{294}
+设有 $S$-\Term{scheme}{概形}的\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}
+U\arrow[r,"i"]\arrow[d,"g"']&X\arrow[dl,"f"]\\
+T&
+\end{tikzcd}
+\]
+其中 $i$ 如 2.1 所述；用 $R^1_tg_*F$ 表示\Term{presheaf}{预层} $T'\mapsto H^1_t(U',F)$ 的相伴层，其中 $T'$ 遍历 $T$ 上的\Term{etale}{平展}\Term{scheme}{概形}，$U'=U\times_TT'$。$R^1_tg_*F$ 是 $R^1g_*F$ 的\Term{subsheaf}{子层}。
+
+注意，若 $g$ \Term{coherent}{凝聚}，$\bar t$ 为 $T$ 的\Term{geometric-point}{几何点}，$\bar T$ 为 $T$ 在 $\bar t$ 处的\Term{strict-localization}{严格局部化}，$\bar U=U\times_T\bar T$，则有\Term{isomorphism}{同构}
+\[(R^1_tg_*F)_{\bar t}\simeq H^1_t(\bar U,\bar F).\tag{2.1.2.1}\]
+
+\textbf{2.1.3.} 用 $C_t((U,X)/S)$，或简记 $C_t$，表示由 $U$ 的那些在 $X$ 上相对于 $S$ \Term{tame-ramification}{温和分歧}的\Term{etale-covering}{平展覆盖}组成的\Term{category}{范畴}。设 $U$ \Term{connected}{连通}，$a$ 为 $U$ 的一个\Term{geometric-point}{几何点}。令 $\Gamma_t$ 为\Term{functor}{函子}，将 $U$ 的一个在 $X$ 上相对于 $S$ \Term{tame-ramification}{温和分歧}的\Term{etale-covering}{平展覆盖} $U'$，对应到 $U'$ 中位于 $a$ 之上的\Term{geometric-point}{几何点}所成的集合。由 2.0 可知，$(C_t,\Gamma_t)$ 满足第 V 讲第 4 节的公理 $(G_1)$—$(G_6)$。因此 $\Gamma_t$ 由一个投对象表示，称为 $(U,X)$ 相对于 $S$、以 $a$ 为基点的\Term{tame-universal-covering}{温和分歧泛覆盖}。这一泛\Term{covering}{覆盖}的 $U$-\Term{automorphism}{自同构}群的\Term{opposite-group}{相反群}称为\Term{tame-fundamental-group}{温和分歧基本群}，记为
+\[\pi_1^t((U,X)/S,a),\qquad\text{或简记 }\pi_1^t(U,a),\text{ 甚至 }\pi_1^t(U).\]
+显然，它是\Term{fundamental-group}{基本群} $\pi_1(U,a)$ 的商群（第 V 讲 6.9）。
+
+\textbf{2.1.4.} 设 $F$ 为 $U$ 上的\Term{group-sheaf}{群层}，$P$ 为右 $F$-\Term{torsor}{挠子}，$Q$ 为左 $F$-\Term{torsor}{挠子}，并设 $P,Q$ 在 $X$ 上相对于 $S$ \Term{tame-ramification}{温和分歧}。则 $P\overset F\wedge Q$ 也如此。事实上，只需证明如下情形：$R$ 为\Term{field-of-fractions}{分式域}为 $K$ 的\Term{discrete-valuation-ring}{离散赋值环}，$F$ 为 $K$ 上\Term{finite}{有限}\Term{etale}{平展}\Term{group-scheme}{群概形}，$P,Q$ 为两个在 $R$ 上\Term{tame-ramification}{温和分歧}的 $F$-\Term{torsor}{挠子}，则 $P\overset F\wedge Q$ 也如此。而 $T=P\overset F\wedge Q$ 是 $P\times_KQ$ 的商；若 $L,M,N$ 分别为表示 $T,P,Q$ 的 $K$-代数，则 $L$ 为 $M\otimes_KN$ 的子代数，由 2.0.3 得知 $L$ 在 $R$ 上\Term{tame-ramification}{温和分歧}。
+
+由此可知：若 $F$ 为 $U$ 上的\Term{group-sheaf}{群层}，且存在一个在 $X$ 上相对于 $S$ \Term{tame-ramification}{温和分歧}的 $F$-\Term{torsor}{挠子}，则 $F$ 在 $X$ 上相对于 $S$ \Term{tame-ramification}{温和分歧}。事实上，$P$ 的相反\Term{torsor}{挠子} $P^\circ$ 作为\Term{set-sheaf}{集合层}\Term{isomorphism}{同构}于 $P$，故在 $X$ 上相对于 $S$ \Term{tame-ramification}{温和分歧}。
+\SourcePage{295}
+若 ${}^PF$ 是由 $P$ 扭曲 $F$ 所得的群，则有\Term{isomorphism}{同构}
+\[F\simeq P^\circ\overset{{}^PF}{\wedge}P,\]
+所以 $F$ 在 $X$ 上相对于 $S$ \Term{tame-ramification}{温和分歧}。
+
+与前面相同，若 $F\to F'$ 为 $U$ 上在 $X$ 上相对于 $S$ \Term{tame-ramification}{温和分歧}的\Term{group-sheaf}{群层}之间的\Term{morphism}{态射}，且 $P$ 为在 $X$ 上相对于 $S$ \Term{tame-ramification}{温和分歧}的 $F$-\Term{torsor}{挠子}，则由 $P$ 沿结构群 $F\to F'$ \Term{group-extension}{扩张}所得的\Term{torsor}{挠子} $P'$，也在 $X$ 上相对于 $S$ \Term{tame-ramification}{温和分歧}。特别地，典范\Term{morphism}{态射}
+\[H^1(U,F)\longrightarrow H^1(U,F')\]
+限制到 $H^1_t(U,F)$ 上，便给出典范\Term{morphism}{态射}
+\[H^1_t(U,F)\longrightarrow H^1_t(U,F').\]
+
+\textbf{2.1.5.} 设 $S'\to S$ 为\Term{morphism}{态射}，用 $U'$（分别为 $X'$ 等）表示 $U$（分别为 $X$ 等）在 $S'$ 上的\Term{inverse-image}{逆像}。若 $F$ 为 $U$ 上在 $X$ 上相对于 $S$ \Term{tame-ramification}{温和分歧}的\Term{set-sheaf}{集合层}，则由定义 2.1.1 及 2.0.3 可知，$F'$ 在 $X'$ 上相对于 $S'$ \Term{tame-ramification}{温和分歧}。
+
+若 $F$ 为 $U$ 上的\Term{group-sheaf}{群层}，则一个在 $X$ 上相对于 $S$ \Term{tame-ramification}{温和分歧}的 $F$-\Term{torsor}{挠子}在 $S'$ 上的\Term{inverse-image}{逆像}，是在 $X'$ 上相对于 $S'$ \Term{tame-ramification}{温和分歧}的 $F'$-\Term{torsor}{挠子}。特别地，有典范\Term{functor}{函子}
+\[C_t((U,X)/S)\longrightarrow C_t((U',X')/S').\tag{2.1.5.1}\]
+设 $U,U'$ \Term{connected}{连通}，$a$ 为 $U$ 的\Term{geometric-point}{几何点}，$a'$ 为 $U'$ 中位于 $a$ 之上的\Term{geometric-point}{几何点}；由此得到典范\Term{morphism}{态射}
+\[\pi_1^t(U',a')\longrightarrow\pi_1^t(U,a).\tag{2.1.5.2}\]
+若 $S'\to S$ 为\Term{morphism}{态射}，$h:T'\to T$ 为典范投影，则
+\[h^*(R^1g_*F)\longrightarrow R^1g'_*F'\]
+限制后给出典范\Term{morphism}{态射}
+\[h^*(R^1_tg_*F)\longrightarrow R^1_tg'_*F'.\tag{2.1.5.3}\]
+
+\textbf{2.1.6.} 设 $F$ 为 $U$ 上在 $X$ 上相对于 $S$ \Term{tame-ramification}{温和分歧}的\Term{group-sheaf}{群层}。沿用 2.1.2 的记号，有典范\Term{exact-sequence}{正合列}
+\[
+\begin{gathered}
+1\longrightarrow H^1(X,i_*F)\longrightarrow H^1_t(U,F)\longrightarrow H^0(X,R^1_ti_*F),\\
+1\longrightarrow R^1f_*(i_*F)\longrightarrow R^1_tg_*F\longrightarrow f_*(R^1_ti_*F).
+\end{gathered}\tag{2.1.6.1}
+\]
+\SourcePage{296}
+第一列来自\Term{exact-sequence}{正合列}（SGA 4 III 3.2）
+\[1\longrightarrow H^1(X,i_*F)\longrightarrow H^1(U,F)\longrightarrow H^0(X,R^1i_*F).\]
+事实上，只需说明 $H^1(X,i_*F)$ 在 $H^1(U,F)$ 中的像包含于 $H^1_t(U,F)$，且 $H^1_t(U,F)$ 在 $H^0(X,R^1i_*F)$ 中的像包含于 $H^0(X,R^1_ti_*F)$。一个 $i_*F$-\Term{torsor}{挠子}在 $U$ 上的\Term{inverse-image}{逆像}为 $i^*i_*F$-\Term{torsor}{挠子}，显然在 $X$ 上相对于 $S$ \Term{tame-ramification}{温和分歧}；故沿结构群 $i^*i_*F\to F$ \Term{group-extension}{扩张}后仍然如此，这便给出箭头 $H^1(X,i_*F)\to H^1_t(U,F)$。$H^1_t(U,F)$ 在 $H^0(X,R^1i_*F)$ 中的像包含于 $H^0(X,R^1_ti_*F)$，立即由 $R^1_ti_*F$ 的定义得出。由此得到第一条\Term{exact-sequence}{正合列}，第二条则通过\Term{localization}{局部化}由第一条得到。
+
+\textbf{2.2.} 沿用 2.1 的记号。若 $U$ 上的叠 $\Phi$ 对于 $X$ 和 $S$ 的\Term{etale-topology}{平展拓扑}局部地由 $S$ 上某个叠 $\Psi$ 取\Term{inverse-image}{逆像}而得，我们将定义 $\Phi$ 中\Term{tame-ramification}{温和分歧}对象的概念。
+
+先设 $G$ 为 $U$ 上的\Term{gerbe}{凝集}，并设给定\Term{etale}{平展}\Term{epimorphism}{满态射} $S_1\to S$、\Term{etale}{平展}\Term{epimorphism}{满态射} $X_2\to X\times_SS_1$、$S_1$ 上的\Term{trivial-gerbe}{平凡凝集} $H$，以及\Term{isomorphism}{同构}
+\[G|U_2\longrightarrow H|U_2,\]
+其中 $U_1=U\times_XX_1$、$U_2=U\times_XX_2$。选定 $H|X_2$ 的一个\Term{trivial-bundle}{平凡}化后，上述\Term{isomorphism}{同构}将 $G|U_2$ 识别为某\Term{group-sheaf}{群层} $F$ 下的\Term{torsor}{挠子}叠。若 $G_U$ 中元素 $x$ 在 $U_2$ 上的限制是一个在 $X$ 上相对于 $S$ \Term{tame-ramification}{温和分歧}的\Term{torsor}{挠子}，就称 $x$ 在 $X$ 上相对于 $S$ \Term{tame-ramification}{温和分歧}。根据 2.1.4，这一概念不依赖于 $H|X_2$ 的\Term{trivial-bundle}{平凡}化的选择。
+
+现设 $\Phi$ 为 $U$ 上的叠，并设给定\Term{etale}{平展}\Term{epimorphism}{满态射} $S_1\to S$、\Term{etale}{平展}\Term{epimorphism}{满态射} $X_2\to X\times_SS_1$、$S_1$ 上的叠 $\Psi$，以及\Term{isomorphism}{同构}
+\[i:\Phi|U_2\longrightarrow\Psi|U_2.\]
+设 $x\in\Phi_U$，$G_x$ 为 $x$ 所生成的 $\Phi$ 的\Term{maximal-subgerbe}{极大子凝集} [1, III 2.1.7]，$S\Phi$ 为 $\Phi$ 的\Term{maximal-subgerbe}{极大子凝集}层。\Term{isomorphism}{同构} $i$ 诱导\Term{isomorphism}{同构}
+\[S\Phi|U_2\longrightarrow S\Psi|U_2.\]
+根据下文 5.7，将 $S_1$ 换成适当的\Term{etale}{平展}满\Term{group-extension}{扩张}后，存在唯一的 $\Psi$ 的\Term{maximal-subgerbe}{极大子凝集} $H$，并可设它\Term{trivial-bundle}{平凡}，使 $i$ 定义一个\Term{isomorphism}{同构}
+\[G_x|U_2\longrightarrow H|U_2.\]
+若将 $x$ 看成带有上述\Term{isomorphism}{同构}的 $G_x$ 中的元素时，它在 $X$ 上相对于 $S$ \Term{tame-ramification}{温和分歧}，就称 $x$ 具有这一性质。
+
+\SourcePage{297}
+\textbf{2.2.1.} 设 $\Phi$ 为 $U$ 上的叠，局部地在 $X$ 和 $S$ 上由 $S$ 上某叠取\Term{inverse-image}{逆像}而得；又设有与 2.1.2 相同的图
+\[
+\begin{tikzcd}
+U\arrow[r,"i"]\arrow[d,"g"']&X\arrow[dl,"f"]\\
+T&
+\end{tikzcd}
+\]
+对 $T$ 上的每个\Term{etale}{平展}\Term{scheme}{概形} $T'$，令 $U'=U\times_TT'$，考虑 $(g_*\Phi)_{T'}=\Phi_{U'}$ 的子集 $(g_*^t\Phi)_{T'}$，由 $\Phi_{U'}$ 中那些在 $X$ 上相对于 $S$ \Term{tame-ramification}{温和分歧}的元素组成。$g_*\Phi$ 的全子\Term{category}{范畴}——其在 $T$ 上\Term{etale}{平展}\Term{scheme}{概形} $T'$ 之上的对象正是 $(g_*^t\Phi)_{T'}$ 的元素——称为 $\Phi$ 沿 $g$ 的\Term{tame-direct-image}{温和分歧直像}，记为 $g_*^t\Phi$。显然它是 $g_*\Phi$ 的子叠。
+
+\textbf{2.2.2.} 归结到\Term{torsor}{挠子}叠的情形可见：若 $\Phi$ 为 $U$ 上的叠，且对于 $S,X$ 的\Term{etale-topology}{平展拓扑}局部地是 $S$ 上某叠的\Term{inverse-image}{逆像}，则典范\Term{morphism}{态射}
+\[h^*(g_*\Phi)\longrightarrow g'_*\Phi'\]
+限制后给出典范\Term{morphism}{态射}
+\[h^*(g_*^t\Phi)\longrightarrow {g'}_*^t\Phi'.\]
+
+\textbf{注记 2.3。}
+a) 若 $F$ 为 $U$ 上\Term{locally-constant}{局部常}的\Term{constructible}{可构造}\Term{set-sheaf}{集合层}，要使 $F$ 在 $X$ 上相对于 $S$ \Term{tame-ramification}{温和分歧}，只需 2.1.1 的条件在位于 $S$ 的各极大点之上的\Term{geometric-point}{几何点}处成立。为此可设\Term{divisor}{除子} $D$ \Term{strict-relative-normal-crossings}{严格正规交叉}。层 $F$ 由 $U$ 的\Term{etale-covering}{平展覆盖} $V$ 表示。若 $\bar s$ 为 $S$ 的\Term{geometric-point}{几何点}，$y$ 为 $Y_{\bar s}$ 的极大点，记 $S$ 在 $\bar s$ 处的\Term{strict-localization}{严格局部化}为 $\bar S$，$X$ 在 $y$ 处的\Term{strict-localization}{严格局部化}为 $\bar X$，并置 $\bar U=U\times_X\bar X$、$\bar V=V\times_X\bar X$。若 2.1.1 的条件在位于 $S$ 的极大点之上的\Term{geometric-point}{几何点}处成立，则由下文 5.5，$\bar V$ 是 $\bar U$ 的在 $\bar X$ 上相对于 $\bar S$ \Term{tame-ramification}{温和分歧}的\Term{covering}{覆盖}；因而 $V$ 是 $U$ 的在 $X$ 上相对于 $S$ \Term{tame-ramification}{温和分歧}的\Term{etale-covering}{平展覆盖}。
+
+b) 设 $F$ 为 $U$ 上在 $X$ 上相对于 $S$ \Term{tame-ramification}{温和分歧}的\Term{group-sheaf}{群层}。若 $\bar s$ 为 $S$ 的\Term{geometric-point}{几何点}，$y$ 为 $Y_{\bar s}$ 的极大点，记 $O_{X_{\bar s},y}$ 的\Term{field-of-fractions}{分式域}为 $K$。假设对于每个 $\bar s$ 及每个 $y$，表示 $F|K$ 的谱所对应的 $K$-代数 $L$ 的秩素于 $O_{X_{\bar s}}$ 的\Term{residue-characteristic}{剩余特征} $p$。我们有时略不严格地说 $F$ \Term{prime-to-residue-characteristics}{素于 $S$ 的各剩余特征}。在这种情形下，每个 $F$-\Term{torsor}{挠子} $P$ 都在 $X$ 上相对于 $S$ \Term{tame-ramification}{温和分歧}。
+\SourcePage{298}
+事实上，设 $R$ 为 $O_{X_{\bar s},y}$ 在 $y$ 处的\Term{strict-localization}{严格局部化}，$K$ 为其\Term{field-of-fractions}{分式域}，$\bar F$ 为 $F$ 在 $K$ 上的\Term{inverse-image}{逆像}。先说明可以设 $\bar F$ 为常层。由于 $F$ 在 $X$ 上相对于 $S$ \Term{tame-ramification}{温和分歧}，$\bar F$ 由 $K$-代数 $L=\prod_iL_i$ 的谱表示，各 $L_i$ 是 $K$ 的次数素于 $p$ 的\Term{group-extension}{扩张}。因此可以找到 $K$ 的次数素于 $p$ 的\Term{group-extension}{扩张} $K'$，使 $F|K'$ 为常层。根据 2.0.3，为证 $P|K$ 在 $R$ 上\Term{tame-ramification}{温和分歧}，只需证明 $P|K'$ 在 $R$ 于 $K'$ 中的整闭包上\Term{tame-ramification}{温和分歧}，从而归结到 $F$ 为常层的情形。现在设 $F$ 为常层。表示 $P|K$ 的 $K$-代数 $H$ 是若干彼此\Term{isomorphism}{同构}的 $K$ 的\Term{group-extension}{扩张} $H_i$ 的直积。由于 $H$ 的秩素于 $p$，$[H_1:K]$ 也素于 $p$，这说明 $H$ 在 $X$ 上相对于 $S$ \Term{tame-ramification}{温和分歧}。
+
+c) 设 $X$ 为\Term{regular-scheme}{正则概形}，$D$ 为 $X$ 的\Term{normal-crossings-divisor}{正规交叉除子}（SGA 5 I 3.1.5），$U=X-\operatorname{Supp}D$，$F$ 为 $U$ 上的\Term{set-sheaf}{集合层}。若 $y$ 为 $\operatorname{Supp}D$ 的极大点，用 $K$ 表示 $O_{X,y}$ 的\Term{field-of-fractions}{分式域}。若对每个这样的 $y$，$F|K$ 可由在 $O_{X,y}$ 上\Term{tame-ramification}{温和分歧}的 $K$-代数表示，就称 $F$ 相对于 $D$ \Term{tame-ramification}{温和分歧}。
+
+\begin{SGAresult}{定理}{2.4}
+设 $f:X\to S$ 为 $S$-\Term{scheme}{概形}，$D$ 为 $X$ 上相对于 $S$ 的\Term{normal-crossings-divisor}{正规交叉除子}（2.1），$Y=\operatorname{Supp}D$、$U=X-Y$，$i:U\to X$ 为典范\Term{immersion}{浸入}。设 $F$ 为 $U$ 上的\Term{set-sheaf}{集合层}（分别为\Term{group-sheaf}{群层}），满足下列条件之一。
+
+a) 对于 $X$ 及 $S$ 的\Term{etale-topology}{平展拓扑}，$F$ 局部地是 $S$ 上某个\Term{set-sheaf}{集合层}（分别为\Term{constructible}{可构造}\Term{group-sheaf}{群层}）的\Term{inverse-image}{逆像}。
+
+b) $F$ 在 $U$ 上\Term{locally-constant}{局部常}且\Term{constructible}{可构造}，并在 $X$ 上相对于 $S$ \Term{tame-ramification}{温和分歧}。
+
+则有下列结论。
+
+1) $(F,i)$ 相对于 $S$ 在维数 $\leqslant0$ 时\Term{cohomologically-proper}{上同调固有}（分别为：对于每个\Term{morphism}{态射} $h:S'\to S$，若 $i':U'\to X'$ 为 $i$ 在 $S'$ 上的\Term{inverse-image}{逆像}，$F'=F|U'$、$k=h_{(X)}$，则典范\Term{morphism}{态射}
+\[\Psi:k^*(R^1_ti_*F)\longrightarrow R^1_ti'_*F'\]
+为\Term{isomorphism}{同构}）。若 $F$ 是素于 $S$ 各\Term{residue-characteristic}{剩余特征}的\Term{group-sheaf}{群层}（2.3 b)），并在 $X$ 上相对于 $S$ \Term{tame-ramification}{温和分歧}，则 $(F,i)$ 相对于 $S$ 在维数 $\leqslant1$ 时\Term{cohomologically-proper}{上同调固有}。
+
+2) 若 $F$ 是\Term{constructible}{可构造}的\Term{set-sheaf}{集合层}（分别为\Term{group-sheaf}{群层}），则 $i_*F$（分别为 $R^1_ti_*F$）\Term{constructible}{可构造}。
+\end{SGAresult}
+\SourcePage{299}
+\begin{proof}
+对于每个 $S$-\Term{scheme}{概形} $S'$，考虑下图，其中各方块均为\Term{cartesian-square}{笛卡尔方块}：
+\[
+\begin{tikzcd}[column sep=large,row sep=large]
+U\arrow[dr,"i"]\arrow[dd,"g"',bend right=15]&&U'\arrow[ll]\arrow[dr,"i'"]\arrow[dd,"g'",bend right=15]&\\
+&X\arrow[dl,"f"]&&X'\arrow[ll,"k"']\arrow[dl,"f'"]\\
+S&&S'\arrow[ll,"h"']&
+\end{tikzcd}
+\]
+问题对于 $X$ 的\Term{etale-topology}{平展拓扑}是局部的，故可设 $D$ 相对于 $S$ \Term{strict-relative-normal-crossings}{严格正规交叉}（2.1）；而且将 $X$ 缩小为 $Y$ 的一个邻域后，可设 $X$ 在 $S$ 上\Term{smooth}{光滑}。
+
+\textbf{2.4 1) 的证明。}
+\textbf{2.4.1. 满足 a) 的\Term{set-sheaf}{集合层}情形。}可以设 $F=g^*G$，其中 $G$ 为 $S$ 上的层。由 SGA 4 XVI 3.2，典范\Term{morphism}{态射}
+\[f^*G\longrightarrow i_*F\tag{2.4.1.1}\]
+为\Term{isomorphism}{同构}。对于每个 $S$-\Term{scheme}{概形} $h:S'\to S$，同样有\Term{isomorphism}{同构} $f'^*G'\to i'_*F'$；所以典范\Term{morphism}{态射}
+\[\varphi:k^*(i_*F)\longrightarrow i'_*F'\]
+可识别为自然\Term{isomorphism}{同构} $k^*f^*G\simeq f'^*G'$。
+
+\textbf{2.4.2. 满足 b) 的\Term{set-sheaf}{集合层}情形。}需证明 $\varphi$ 为\Term{isomorphism}{同构}；只需在 $X'$ 的每个\Term{geometric-point}{几何点} $\bar x'$ 处证明这一点。设 $\bar S$（分别为 $\bar X,\bar S',\bar X'$）是 $S$（分别为 $X,S',X'$）在 $\bar x'$ 处的\Term{strict-localization}{严格局部化}，并置 $\bar U=U_{(\bar X)}$、$\bar U'=U_{(\bar X')}$，等等。\Term{morphism}{态射} $\varphi_{\bar x}$ 可识别为典范\Term{morphism}{态射}
+\[\bar\varphi:H^0(\bar U,\bar F)\longrightarrow H^0(\bar U',\bar F').\]
+可以找到 $\bar U$ 的一个第 5.4 节所述类型的\Term{principal-covering}{主覆盖} $V$，使 $\bar F$ 在 $V$ 上的\Term{inverse-image}{逆像}为值为 $C$ 的常层。若 $\Pi$ 为 $V$ 在 $\bar U$ 上的 Galois 群，则 $\Pi$ 作用于 $\bar F|V$，且有
+\[H^0(\bar U,\bar F))\simeq H^0(V,C_V)^\Pi,\tag{2.4.2.1}\]
+其中右端表示 $H^0(V,C_V)$ 中在 $\Pi$ 下不变的元素所成的集合。由于 $V'=V\times_{\bar U}\bar U'$ 是 $\bar U'$ 的 Galois 群为 $\Pi'\simeq\Pi$ 的\Term{principal-covering}{主覆盖}，可知 $\bar\varphi$ 是从典范\Term{morphism}{态射}
+\[H^0(V,C_V)\longrightarrow H^0(V',C_{V'})\]
+取 $\Pi$-不变元而得的\Term{morphism}{态射}。
+\SourcePage{300}
+由于 $V,V'$ \Term{connected}{连通}（5.4），这一\Term{morphism}{态射}为\Term{isomorphism}{同构}，所以 $\bar\varphi$ 也为\Term{isomorphism}{同构}。
+
+注意，若 $\bar F$ 还为\Term{group-sheaf}{群层}，$P$ 是 $\bar U$ 上的 $\bar F$-\Term{torsor}{挠子}且相对于 $D$ \Term{tame-ramification}{温和分歧}，则由上述证明及 2.2 可知，$({}^P\bar F,\bar i)$ 相对于 $\bar S$ 在维数 $\leqslant0$ 时\Term{cohomologically-proper}{上同调固有}。
+
+\textbf{2.4.3. \Term{group-sheaf}{群层}的情形。}为证 $\Psi$ 是\Term{isomorphism}{同构}，只需证明：对于 $Y'$ 的每个\Term{geometric-point}{几何点} $\bar y'$，\Term{morphism}{态射}
+\[\Psi_{\bar y'}:(k^*(R^1_ti_*F))_{\bar y'}\longrightarrow(R^1_ti'_*F')_{\bar y'}\]
+是\Term{isomorphism}{同构}。根据 2.1.2，$\Psi_{\bar y'}$ 可识别为典范\Term{morphism}{态射}
+\[\bar\Psi:H^1_t(\bar U,\bar F)\longrightarrow H^1_t(\bar U',\bar F').\]
+设 $\widetilde U$ 为 $\bar U$ 的\Term{tame-universal-covering}{温和分歧泛覆盖}（2.1.3），$\widetilde F$ 为 $\bar F$ 在 $\widetilde U$ 上的\Term{inverse-image}{逆像}。在 a) 的情形由 5.7、在 b) 的情形由 5.5 可知，$H^1_t(\bar U,\bar F)$ 可识别为 $H^1(\bar U,\bar F)$ 中那些在 $\widetilde U$ 上\Term{inverse-image}{逆像}\Term{trivial-bundle}{平凡}的 $\bar F$-\Term{torsor}{挠子}的类所成的子集。另一方面，经典论证（参见第 IX 讲第 5 节，第 231 页）表明，$H^1(\bar U,\bar F)$ 中在 $\widetilde U$ 上\Term{inverse-image}{逆像}\Term{trivial-bundle}{平凡}的元素所成的集合，可识别为
+\[H^1\bigl(\pi_1^t(\bar U),H^0(\widetilde U,\widetilde F)\bigr).\]
+从而得到典范\Term{isomorphism}{同构}
+\[H^1_t(\bar U,\bar F)\xrightarrow{\sim}H^1\bigl(\pi_1^t(\bar U),H^0(\widetilde U,\widetilde F)\bigr).\tag{2.4.3.1}\]
+因此 $\bar\Psi$ 可识别为典范\Term{morphism}{态射}
+\[H^1\bigl(\pi_1^t(\bar U),H^0(\widetilde U,\widetilde F)\bigr)\longrightarrow H^1\bigl(\pi_1^t(\bar U'),H^0(\widetilde U',\widetilde F')\bigr).\]
+现证它是\Term{isomorphism}{同构}。根据 5.6，\Term{morphism}{态射} $\pi_1^t(\bar U')\to\pi_1^t(\bar U)$ 为\Term{isomorphism}{同构}；\Term{morphism}{态射} $H^0(\widetilde U,\widetilde F)\to H^0(\widetilde U',\widetilde F')$ 也为\Term{isomorphism}{同构}。在 b) 的情形这显然成立，因为 $\widetilde F$ 为常层，且 $\widetilde U,\widetilde U'$ \Term{connected}{连通}。在 a) 的情形，设 $\bar G$ 为 $\bar S$ 上使 $\bar F=\bar g^*\bar G$ 成立的\Term{constructible}{可构造}\Term{group-sheaf}{群层}；由于\Term{morphism}{态射} $\widetilde U\to\bar S$ 和 $\widetilde U'\to\bar S'$ 为 0-无环（5.7），有
+\[H^0(\widetilde U,\widetilde F)\simeq H^0(\bar S,\bar G)\simeq H^0(\bar S',\bar G')\simeq H^0(\widetilde U',\widetilde F'),\]
+所以 $\bar\Psi$ 为\Term{isomorphism}{同构}。2.4 1) 的最后一个断言由此结合 2.3 b) 得出。
+
+\textbf{2.4 2) 的证明。}满足 a) 的\Term{constructible}{可构造}\Term{set-sheaf}{集合层}情形，立即由 (2.4.1.1) 得出。设 $F=g^*G$ 为满足 a) 的\Term{group-sheaf}{群层}，其中 $G$ 为\Term{constructible}{可构造}层；可设 $S$ \Term{affine}{仿射}。设 $(S_j)_{j\in J}$ 为 $S$ 的\Term{finite}{有限}族\Term{reduced}{约化}\Term{closed-subscheme}{闭子概形}，其并\Term{covering}{覆盖} $S$，且 $G$ 在每个 $S_j$ 上的\Term{inverse-image}{逆像}\Term{locally-constant}{局部常}。结合 2.4 1)，为证 $R^1_ti_*F$ \Term{constructible}{可构造}，只需在每个\Term{base-change}{基变换} $S_j\to S$ 后证明这一点。因此归结到 $F$ \Term{locally-constant}{局部常}的情形 b)。
+
+\SourcePage{301}
+现在设 $F$ 为满足 b) 的\Term{set-sheaf}{集合层}或\Term{group-sheaf}{群层}。由于问题对于 $X$ 的\Term{etale-topology}{平展拓扑}是局部的，可设 $X$ 在 $S$ 上\Term{finite-presentation}{有限表示}；再取极限，可设 $X,S$ 为 Noether \Term{scheme}{概形}。
+
+设 $D=\sum_{1\leqslant i\leqslant r}\operatorname{div}f_i$；对于 $\operatorname{Supp}D$ 的每个点 $x$，若 $I(x)$ 为满足 $f_i(x)=0$ 的指标 $i$ 所成的集合，则\Term{subscheme}{子概形} $V((f_i)_{i\in I(x)})$ 在 $S$ 上\Term{smooth}{光滑}，且在 $X$ 中余维为 $\operatorname{card}I(x)$。设 $\mathcal P$ 为 $[1,r]$ 的子集所成的集合。对每个 $I\in\mathcal P$，置
+\[X_I=\left(\bigcap_{i\in I}V(f_i)\right)\cap\left(\bigcap_{i\notin I}X_{f_i}\right).\]
+设 $z\in X_I$。先限制到 $z$ 的一个\Term{etale}{平展}邻域后，可以找到 $X$ 中包含 $z$ 的开集 $W$，以及 $U\cap W$ 的一个在 $W$ 上相对于 $S$ \Term{tame-ramification}{温和分歧}的、形如 5.6.1 中所考虑的\Term{principal-covering}{主覆盖} $V$，使 $F$ 在 $V$ 上的\Term{inverse-image}{逆像}为值为 $C$ 的常层。设 $\pi$ 为\Term{covering}{覆盖} $V$ 的 Galois 群。由 (2.4.2.1)，对于 $X_I$ 的每个\Term{geometric-point}{几何点} $\bar x$ 有
+\[H^0(\bar U,\bar F)\simeq H^0(V,C_V)^\pi.\]
+由此可知，$i_*F|X_I\cap W$ \Term{locally-constant}{局部常}（SGA 4 IX 2.13），故 $i_*F$ \Term{constructible}{可构造}。
+
+最后，若 $F$ 为\Term{locally-constant}{局部常}\Term{group-sheaf}{群层}，我们证明 $R^1_ti_*F|X_I$ \Term{constructible}{可构造}。若 $\bar x$ 为 $X$ 的\Term{geometric-point}{几何点}，由 (2.4.3.1) 已得表达式
+\[H^1_t(\bar U,\bar F)\xrightarrow{\sim}H^1\bigl(\pi_1^t(\bar U),H^0(\widetilde U,\widetilde F)\bigr).\]
+若 $p$ 为 $\bar X$ 的\Term{residue-characteristic}{剩余特征}，根据 5.6 有
+\[\pi_1^t(\bar U)=\prod_{\ell\ne p}\mathbf Z_\ell(1)^{\operatorname{card}I}.\]
+记\Term{finite-group}{有限群} $H^0(\widetilde U,\widetilde F)$ 的阶的素因子所成的集合为 $L$，并置
+\[K=\prod_{\ell\in L-\{p\}\cap L}\mathbf Z_\ell(1)^{\operatorname{card}I}.\]
+根据 [4, 第 I 章第 5 节习题 2]，有
+\[H^1_t(\bar U,\bar F)\simeq H^1\bigl(K,H^0(\widetilde U,\widetilde F)\bigr).\]
+由于 $K$ 在拓扑意义下\Term{finitely-generated}{有限生成}，且 $H^0(\widetilde U,\widetilde F)$ \Term{finite}{有限}，首先可知层 $R^1_ti_*F|X_I$ 的各\Term{fiber}{纤维}\Term{finite}{有限}。另一方面，集合 $L$ 不依赖于点 $x$。对每个 $q\in L$，设 $X_{I,q}$ 为 $X_I$ 中由方程 $q=0$ 定义的闭集，$X_{I'}$ 为 $X_I$ 中各 $X_{I,q}$ 之并的补开集。则 $R^1_ti_*F|X_{I,q}$ 和 $R^1_ti_*F|X_{I'}$ \Term{locally-constant}{局部常}：事实上，$X_{I,q}$（分别为 $X_{I'}$）的\Term{geometric-point}{几何点}之间的\Term{specialization}{特殊化}箭头，在群 $K$ 上诱导\Term{isomorphism}{同构}（5.6.1），从而在集合 $H^1_t(\bar U,\bar F)$ 上也诱导\Term{isomorphism}{同构}；于是可应用 SGA 4 IX 2.13。
+\end{proof}
+
+\begin{SGAresult}{推论}{2.5}
+设 $f:X\to S$ 为\Term{morphism}{态射}，$D$ 为 $X$ 上相对于 $S$ 的\Term{normal-crossings-divisor}{正规交叉除子}（2.1），$Y=\operatorname{Supp}D$、$U=X-Y$，$i:U\to X$ 为典范\Term{immersion}{浸入}。设 $\Phi$ 为 $U$ 上的叠，并设给定\Term{etale}{平展}\Term{epimorphism}{满态射} $S_1\to S$、$X_2\to X\times_SS_1$，$S_1$ 上的叠 $\Psi$，以及\Term{isomorphism}{同构} $\Phi|U_2\simeq\Psi|U_2$（见 2.2）。
+\SourcePage{302}
+则对于每个\Term{morphism}{态射} $h:S'\to S$，令 $k=h_{(X)}$，典范\Term{functor}{函子}
+\[\varphi:k^*i_*\Phi\longrightarrow i'_*\Phi'\]
+\Term{fully-faithful}{全忠实}。若 $\Psi$ \Term{constructible}{可构造}，则典范\Term{functor}{函子}
+\[\psi:k^*i_*^t\Phi\longrightarrow {i'}_*^t\Phi'\]
+为\Term{category-equivalence}{范畴等价}。此外，若叠 $\Psi$ \Term{constructible}{可构造}（分别为 $\Psi$ 是 \Term{one-constructible}{1-可构造}叠，见第 0 节，且 $S$ \Term{locally-noetherian}{局部 Noether}），则 $i_*\Phi$ \Term{constructible}{可构造}（分别为 $i_*^t\Phi$ 是 \Term{one-constructible}{1-可构造}叠）。
+\end{SGAresult}
+\begin{proof}
+先证 $\varphi$ \Term{fully-faithful}{全忠实}。只需说明，对于 $X'$ 的每个\Term{geometric-point}{几何点} $\bar x'$，\Term{functor}{函子}
+\[\bar\varphi:\bar\Phi(\bar U)\longrightarrow\bar\Phi'(\bar U')\]
+\Term{fully-faithful}{全忠实}，这里沿用 2.4.2 的记号。设 $a,b$ 为 $\bar\Phi(\bar U)$ 的两个元素，$a',b'$ 为它们在 $\bar\varphi$ 下的像。由于\Term{morphism}{态射} $\bar U\to\bar S$ \Term{locally-zero-acyclic}{局部 0-无环}（5.7），有\Term{isomorphism}{同构}
+\[H^0(\bar U,S\bar\Phi)\xrightarrow{\sim}H^0(\bar S,S\bar\Psi).\]
+因此，$a,b$ 是 $\bar\Psi$ 中元素的\Term{inverse-image}{逆像}，从而 $F=\underline{\operatorname{Hom}}_{\bar U}(a,b)$ 也如此。由于层 $F'=\underline{\operatorname{Hom}}_{\bar U'}(a',b')$ 为 $F$ 在 $\bar U'$ 上的\Term{inverse-image}{逆像}，2.4.1 表明典范\Term{morphism}{态射}
+\[H^0(\bar U,F)\longrightarrow H^0(\bar U',F')\]
+为\Term{isomorphism}{同构}，故 $\bar\varphi$ \Term{fully-faithful}{全忠实}。
+
+再证：对于 $X'$ 的每个\Term{geometric-point}{几何点} $\bar x'$，\Term{functor}{函子}
+\[\bar\psi:\overline{i_*^t\Phi}(\bar X')\longrightarrow\overline{{i'}_*^t\Phi'}(\bar X')\]
+为等价。由上面已证的结果，$\bar\psi$ \Term{fully-faithful}{全忠实}。现证其\Term{essentially-surjective}{本质满射}。设 $a'$ 为 $\bar\Phi'(\bar U')$ 中在 $\bar X'$ 上相对于 $\bar S'$ \Term{tame-ramification}{温和分歧}的元素（2.2），需证明它是 $\bar\Phi(\bar U)$ 中一个\Term{tame-ramification}{温和分歧}元素的像。由 2.4 1)，典范\Term{morphism}{态射}
+\[H^0(\bar U,S\bar\Phi)\longrightarrow H^0(\bar U',S\bar\Phi')\]
+为\Term{isomorphism}{同构}。设 $G'$ 为 $a'$ 生成的 $\bar\Phi'$ 的\Term{maximal-subgerbe}{极大子凝集}，则存在 $\bar\Phi$ 的一个\Term{maximal-subgerbe}{极大子凝集} $G$，它是 $\bar S$ 上一个\Term{gerbe}{凝集}的\Term{inverse-image}{逆像}，且有\Term{isomorphism}{同构} $\bar m^*G\simeq G'$，其中 $\bar m$ 为\Term{morphism}{态射} $\bar U'\to\bar U$。典范\Term{functor}{函子}
+\[\bar k^*\bar i_*^tG\longrightarrow\bar {i'}_*^tG'\tag{*}\]
+是等价，因为 $G$ 可识别为由 $\bar S$ 上某\Term{constructible}{可构造}\Term{group-sheaf}{群层}取\Term{inverse-image}{逆像}所得的\Term{torsor}{挠子}\Term{gerbe}{凝集}，可以应用 2.4 1)。
+\SourcePage{303}
+由 (*) 可知，存在 $G(\bar U)$ 中一个在 $\bar X$ 上相对于 $\bar S$ \Term{tame-ramification}{温和分歧}的元素 $a$，其在 $\bar U'$ 上的\Term{inverse-image}{逆像}为 $a'$，故 $\psi$ 为等价。
+
+若 $\Psi$ \Term{constructible}{可构造}，则 $i_*\Phi$ 也\Term{constructible}{可构造}。事实上，$i_*\Phi$ 的对象 $x$ 对于 $S$ 的\Term{etale-topology}{平展拓扑}局部地是 $\Psi$ 中对象 $y$ 的\Term{inverse-image}{逆像}，由 (2.4.1.1) 得知 $\operatorname{Aut}(x)$ 是 $\operatorname{Aut}(y)$ 的\Term{inverse-image}{逆像}，因而\Term{constructible}{可构造}。最后，若 $\Psi$ 是 \Term{one-constructible}{1-可构造}叠，则由下文 6.3，$i_*^t\Phi$ 也如此。
+\end{proof}
+
+\begin{SGAresult}{推论}{2.6}
+沿用 2.4 的记号。设对于每个满足 $Y_s\ne\varnothing$ 的点 $s$，$S$ 在 $s$ 处的特征为零。则若 $F$ 为 $U$ 上\Term{locally-constant}{局部常}的\Term{constructible}{可构造}\Term{group-sheaf}{群层}（分别为 $U$ 上的\Term{constructible}{可构造}叠，且在 $X,S$ 上局部地是 $S$ 上某\Term{constructible}{可构造}叠的\Term{inverse-image}{逆像}），$(F,i)$ 相对于 $S$ 在维数 $\leqslant1$ 时\Term{cohomologically-proper}{上同调固有}。
+\end{SGAresult}
+\begin{proof}
+由于 $U$ 上每个\Term{constructible}{可构造}\Term{set-sheaf}{集合层}都在 $X$ 上相对于 $S$ \Term{tame-ramification}{温和分歧}，推论由 2.4（分别为 2.5）得出。
+\end{proof}
+
+\begin{SGAresult}{推论}{2.7}
+沿用 2.4 的记号，但还给定 $S$-\Term{scheme}{概形} $T$ 和\Term{proper-morphism}{固有态射} $p:X\to T$，并设 $X,T$ 在 $S$ 上\Term{finite-presentation}{有限表示}；置 $q=pi$。设 $F$ 为满足 2.4 的 a)、b) 之一的 $U$ 上的\Term{constructible}{可构造}\Term{set-sheaf}{集合层}（分别为满足 2.4 的 a)、b) 之一的\Term{group-sheaf}{群层}；又分别为 $U$ 上的叠，且在 $X,S$ 上局部地是 $S$ 上某\Term{constructible}{可构造}叠 $G$ 的\Term{inverse-image}{逆像}）。则有下列结论。
+
+1) $(F,q)$ 相对于 $S$ 在维数 $\leqslant0$ 时\Term{cohomologically-proper}{上同调固有}（分别为：对于每个\Term{morphism}{态射} $h:S'\to S$，若 $m=h_{(T)}$，则典范\Term{morphism}{态射}
+\[\Theta:m^*(R^1_tq_*F)\longrightarrow R^1_tq'_*F'\]
+为\Term{isomorphism}{同构}；又分别为：对于每个\Term{morphism}{态射} $S'\to S$，典范\Term{morphism}{态射}
+\[\xi:m^*(q_*^tF)\longrightarrow {q'}_*^tF'\]
+为等价）。
+
+2) 层 $q_*F$（分别为层 $R^1_tq_*F$；又分别为叠 $q_*^tF$）\Term{constructible}{可构造}。在最后一种情形，若还设 $S$ \Term{locally-noetherian}{局部 Noether}、$G$ 是 \Term{one-constructible}{1-可构造}叠，则 $q_*^tF$ 也为 \Term{one-constructible}{1-可构造}叠。
+\end{SGAresult}
+\begin{proof}
+第一部分立即由 2.4、2.5 及 1.8 的证明得出。现证 2)。若 $F$ 为满足 2.4 a) 或 2.4 b) 的 $U$ 上\Term{constructible}{可构造}\Term{set-sheaf}{集合层}，则由 2.4 2)，$i_*F$ \Term{constructible}{可构造}；所以 $q_*F=p_*(i_*F)$ 也\Term{constructible}{可构造}（SGA 4 XIV 1.1）。
+
+设 $F$ 为满足 2.4 a) 或 2.4 b) 的 $U$ 上\Term{constructible}{可构造}\Term{group-sheaf}{群层}，现证 $R^1_tq_*F$ \Term{constructible}{可构造}。取极限（EGA IV 8.10.5、17.7.8），并利用 1)，可设 $S$ 为 Noether \Term{scheme}{概形}。设 $\Phi$ 为 $X$ 上的叠，其在 $X$ 上每个\Term{etale}{平展}\Term{scheme}{概形} $X'$ 处的\Term{fiber}{纤维}，由 $U'=U\times_XX'$ 上以 $F|U$ 为群、且在 $X$ 上相对于 $S$ \Term{tame-ramification}{温和分歧}的\Term{torsor}{挠子}组成。
+\SourcePage{304}
+于是有 $S(i_*^t\Phi)\simeq R^1_ti_*F$；根据 2.4 2)，这一层\Term{constructible}{可构造}。由下文 6.3 可知 $S(p_*\Phi)$ \Term{constructible}{可构造}，即 $R^1_tq_*F$ \Term{constructible}{可构造}。
+
+最后，若 $F$ 为 $U$ 上的叠，且在 $X,S$ 上局部地是 $S$ 上某\Term{constructible}{可构造}叠的\Term{inverse-image}{逆像}，则 $i_*^tF$ \Term{constructible}{可构造}，故 $q_*^tF=p_*(i_*^tF)$ 也\Term{constructible}{可构造}。若还设 $S$ \Term{locally-noetherian}{局部 Noether}、$SG$ \Term{constructible}{可构造}，则根据 6.3，$S(i_*^tF)$ \Term{constructible}{可构造}；所以 $S(q_*i_*^tF)$，亦即 $S(q_*^tF)$，也\Term{constructible}{可构造}（6.2）。
+\end{proof}
+
+\begin{SGAresult}{推论}{2.8}
+设有\Term{scheme}{概形}的\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}
+U\arrow[r,"i"]\arrow[d,"g"']&X\arrow[dl,"f"]\\
+S&
+\end{tikzcd}
+\]
+其中 $U$ 为 $X$ 中一个相对于 $S$ 的\Term{normal-crossings-divisor}{正规交叉除子}的补开集，$f$ 是\Term{finite-presentation}{有限表示}的\Term{proper-morphism}{固有态射}。设 $L$ 为一组素数，假定 $g$ \Term{locally-zero-acyclic}{局部 0-无环}（分别为相对于 $L$ \Term{locally-one-aspherical}{局部 1-无球}）。则若 $F$ 是 $U$ 上的\Term{set-sheaf}{集合层}（分别为 $L$-\Term{group-sheaf}{群层}），\Term{locally-constant}{局部常}且\Term{constructible}{可构造}，并在 $X$ 上相对于 $S$ \Term{tame-ramification}{温和分歧}，则 $f_*F$（分别为 $R^1_tf_*F$）\Term{locally-constant}{局部常}且\Term{constructible}{可构造}，$(F,f)$ 相对于 $S$ 在维数 $\leqslant0$ 时\Term{cohomologically-proper}{上同调固有}（分别为 $R^1_tf_*F$ 的形成与每个\Term{base-change}{基变换} $S'\to S$ 交换）。在不取括号中条件的情形，若 $F$ 为\Term{group-sheaf}{群层}，则对于 $S$ 的\Term{geometric-point}{几何点}之间的每个\Term{specialization}{特殊化} $\bar s_1\to\bar s_2$，\Term{specialization-morphism}{特殊化态射}
+\[(R^1_tf_*F)_{\bar s_2}\longrightarrow(R^1_tf_*F)_{\bar s_1}\]
+为\Term{injectivity}{单射}。
+\end{SGAresult}
+\begin{proof}
+立即由 2.6 及 1.14 得出；取括号中条件时，则使用 $R^1_tf_*F$ 的相应版本，它的证明与 1.14 相同。
+\end{proof}
+
+\begin{SGAresult}{推论}{2.9}
+设有\Term{scheme}{概形}的\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}
+U\arrow[r,"i"]\arrow[d,"g"']&X\arrow[dl,"f"]\\
+S&
+\end{tikzcd}
+\]
+其中 $U$ 为 $X$ 中一个相对于 $S$ 的\Term{normal-crossings-divisor}{正规交叉除子}的补开集，$f$ 是\Term{finite-presentation}{有限表示}的\Term{proper}{固有}\Term{smooth-morphism}{光滑态射}。设 $L$ 为不同于 $S$ 各\Term{residue-characteristic}{剩余特征}的素数所成的集合，$F$ 为 $U$ 上\Term{locally-constant}{局部常}、\Term{constructible}{可构造}的 $L$-\Term{group-sheaf}{群层}，且在 $X$ 上相对于 $S$ \Term{tame-ramification}{温和分歧}。则 $R^1f_*F$ \Term{locally-constant}{局部常}且\Term{constructible}{可构造}，且 $(F,f)$ 相对于 $S$ 在维数 $\leqslant1$ 时\Term{cohomologically-proper}{上同调固有}。
+\end{SGAresult}
+\SourcePage{305}
+\begin{proof}
+由 2.8 及等式 $R^1_tf_*F=R^1f_*F$（2.3 b)）得出。
+\end{proof}
+
+\textbf{2.10.} 若 $U$ 为\Term{connected}{连通}\Term{scheme}{概形}，$a$ 为 $U$ 的\Term{geometric-point}{几何点}，$L$ 为一组素数，记
+\[\pi_1^L(U,a)\tag{2.10.0}\]
+为 $\pi_1(U,a)$ 的那些阶的所有素因子均属于 $L$ 的\Term{finite}{有限}商的\Term{projective-limit}{投极限}。
+
+我们将推广第 X 讲第 2 节，定义\Term{fundamental-group}{基本群}的\Term{specialization-morphism}{特殊化态射}。设 $g:U\to S$ 为\Term{geometric-fibre}{几何纤维}\Term{connected}{连通}的\Term{coherent-morphism}{凝聚态射}（分别为形如 $g=fi$ 的\Term{morphism}{态射}，其中 $f:X\to S$ 是\Term{finite-presentation}{有限表示}的\Term{proper-morphism}{固有态射}，$i:U\to X$ 是\Term{open-immersion}{开浸入}，且 $U$ 为 $X$ 中一个相对于 $S$ 的\Term{normal-crossings-divisor}{正规交叉除子}的补集，见 2.8）。设 $L$ 为一组素数，并在不取括号中条件的情形假设：对每个\Term{finite}{有限}常 $L$-群 $C$，$(C_U,g)$ 相对于 $S$ 在维数 $\leqslant1$ 时\Term{cohomologically-proper}{上同调固有}。设 $\bar s_1\to\bar s_2$ 为 $S$ 的\Term{geometric-point}{几何点}之间的\Term{specialization-morphism}{特殊化态射}，$\bar S$ 为 $S$ 在 $\bar s_2$ 处的\Term{strict-localization}{严格局部化}，$\bar U=U\times_S\bar S$。有\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}
+U_{\bar s_1}\arrow[r,"h_1"]\arrow[d]&\bar U\arrow[d,"\bar g"]&U_{\bar s_1}\arrow[l,"h_2"']\arrow[d]\\
+\bar s_1\arrow[r]&\bar S&\bar s_2\arrow[l]
+\end{tikzcd}
+\]
+若 $a_1$ 为 $U_{\bar s_1}$ 的\Term{geometric-point}{几何点}，$a_2$ 为 $U_{\bar s_2}$ 的\Term{geometric-point}{几何点}，则 $h_1,h_2$ 定义典范\Term{morphism}{态射}
+\[
+\begin{aligned}
+\pi_1&:\pi_1^L(U_{\bar s_1},a_1)\longrightarrow\pi_1^L(\bar U,a_1),\\
+\pi_2&:\pi_1^L(U_{\bar s_2},a_2)\longrightarrow\pi_1^L(\bar U,a_2)
+\end{aligned}
+\]
+（分别为
+\[
+\begin{aligned}
+\pi_1&:\pi_1^t(U_{\bar s_1},a_1)\longrightarrow\pi_1^t(\bar U,a_1),\\
+\pi_2&:\pi_1^t(U_{\bar s_2},a_2)\longrightarrow\pi_1^t(\bar U,a_2)
+\end{aligned}
+\]
+），见第 V 讲第 7 节及 (2.1.5.2)。由\Term{cohomological-properness}{上同调固有性}假设（分别由 2.8），$\pi_2$ 为\Term{isomorphism}{同构}。选定从 $a_1$ 到 $a_2$ 的一个道路类后，得到\Term{isomorphism}{同构}
+\[\pi_{12}:\pi_1^L(\bar U,a_1)\xrightarrow{\sim}\pi_1^L(\bar U,a_2)\]
+（分别为 $\pi_{12}:\pi_1^t(\bar U,a_1)\xrightarrow{\sim}\pi_1^t(\bar U,a_2)$），从而得到\Term{morphism}{态射} $\pi=\pi_2^{-1}\pi_{12}\pi_1$：
+\[\pi:\pi_1^L(U_{\bar s_1},a_1)\longrightarrow\pi_1^L(U_{\bar s_2},a_2)\]
+（分别为 $\pi:\pi_1^t(U_{\bar s_1},a_1)\to\pi_1^t(U_{\bar s_2},a_2)$）。改变从 $a_1$ 到 $a_2$ 的道路类，相当于将 $\pi$ 再复合 $\pi_1^L(X_{\bar s_2},a_2)$（分别为 $\pi_1^t(X_{\bar s_2},a_2)$）的一个\Term{inner-automorphism}{内自同构}。上述任一\Term{morphism}{态射}称为与 $\bar s_1\to\bar s_2$ 对应的\Term{fundamental-group}{基本群}的\Term{specialization-morphism}{特殊化态射}，简记为
+\SourcePage{306}
+\[\pi:\pi_1^L(X_{\bar s_1})\longrightarrow\pi_1^L(X_{\bar s_2})\]
+（分别为 $\pi:\pi_1^t(X_{\bar s_1})\to\pi_1^t(X_{\bar s_2})$）。
+
+\begin{SGAresult}{引理}{2.11}
+设 $f:X\to S$ 为\Term{finite-presentation}{有限表示}的\Term{proper-morphism}{固有态射}，$D$ 为 $X$ 上相对于 $S$ 的\Term{normal-crossings-divisor}{正规交叉除子}，$Y=\operatorname{Supp}D$、$U=X-Y$，$i:U\to X$ 为典范\Term{morphism}{态射}；设 $\bar s_1\to\bar s_2$ 为 $S$ 的\Term{geometric-point}{几何点}之间的\Term{specialization-morphism}{特殊化态射}，$y_1$ 为 $Y_{\bar s_1}$ 的\Term{geometric-point}{几何点}，$y_2$ 为 $Y_{\bar s_2}$ 的\Term{geometric-point}{几何点}，且 $y_1$ 在 $X$ 上的投影 $z_1$ 是 $y_2$ 的投影 $z_2$ 的一个\Term{generalization}{泛化}。设 $I_{y_1}$ 为 $\pi_1^t(U_{\bar s_1})$ 在 $y_1$ 处的一个\Term{inertia-group}{惯性子群}。则 $I_{y_1}$ 在\Term{specialization-morphism}{特殊化态射}
+\[\pi:\pi_1^t(U_{\bar s_1})\longrightarrow\pi_1^t(U_{\bar s_2})\]
+下的像，是 $\pi_1^t(U_{\bar s_2})$ 在 $y_2$ 处的\Term{inertia-group}{惯性子群}。
+\end{SGAresult}
+\begin{proof}
+设 $\bar X$（分别为 $\widetilde X$）是 $X$ 在 $y_2$（分别为 $y_1$）处的\Term{strict-localization}{严格局部化}，$\bar U=U\times_X\bar X$（分别为 $\widetilde U=U\times_X\widetilde X$）。有典范\Term{morphism}{态射} $\widetilde U\to\bar U$，由 1.10 得到\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}
+\pi_1^t(\widetilde U_{\bar s_1})\arrow[r,"\pi'"]\arrow[d]&\pi_1^t(\bar U_{\bar s_2})\arrow[d]\\
+\pi_1^t(U_{\bar s_1})\arrow[r,"\pi"']&\pi_1^t(U_{\bar s_2}),
+\end{tikzcd}
+\]
+其中 $\pi'$ 是典范\Term{morphism}{态射} $\pi_1^t(\widetilde U_{\bar s_1})\to\pi_1^t(\bar U_{\bar s_1})$ 与\Term{specialization-morphism}{特殊化态射}的复合。由于 $\pi_1^t(\widetilde U_{\bar s_1})$（分别为 $\pi_1^t(\bar U_{\bar s_1})$）是 $\pi_1^t(U_{\bar s_1})$ 在 $y_1$ 处（分别为 $\pi_1^t(U_{\bar s_2})$ 在 $y_2$ 处）的\Term{inertia-group}{惯性群}，只需证明 $\pi'$ 为\Term{surjectivity}{满射}，而这由 5.6 中所得的表达式得出。
+\end{proof}
+
+\begin{SGAresult}{推论}{2.12}
+设 $X$ 是特征 $p\geqslant0$ 的\Term{separably-closed}{可分闭}域 $k$ 上的\Term{connected}{连通}\Term{proper}{固有}\Term{smooth}{光滑}曲线，\Term{genus}{亏格}为 $g$。设 $U$ 是从 $X$ 中删去 $n$ 个互异\Term{closed-point}{闭点} $a_1,\dots,a_n$ 所得的开集。则\Term{tame-fundamental-group}{温和分歧基本群} $\pi_1^t(U)$（2.1.3）可由 $2g+n$ 个元素 $x_i,y_i,\sigma_j$（$1\leqslant i\leqslant g$、$1\leqslant j\leqslant n$）生成，使 $\sigma_j$ 为对应于 $a_j$ 的\Term{inertia-group}{惯性群}的一个生成元，且有关系
+\[\prod_{1\leqslant i\leqslant g}(x_iy_ix_i^{-1}y_i^{-1})\cdot\prod_{1\leqslant j\leqslant n}\sigma_j=1.\tag{*}\]
+对于每个阶素于 $p$ 的\Term{finite-group}{有限群} $G$，若它由满足关系 (*) 的元素 $\bar x_i,\bar y_i,\bar\sigma_j$ 生成，则存在 $U$ 的群为 $G$ 的\Term{etale-covering}{平展覆盖}，对应于将 $x_i,y_i,\sigma_j$ 分别映到 $\bar x_i,\bar y_i,\bar\sigma_j$ 的\Term{homomorphism}{同态} $\pi_1^t(U)\to G$。换言之，若 $p'$ 为不同于 $p$ 的素数所成的集合，则 $\pi_1^{p'}(U)$ 是由生成元 $x_i,y_i,\sigma_j$ 及唯一关系 (*) 生成的投 $p'$-群。
+\end{SGAresult}
+\SourcePage{307}
+\begin{proof}
+可设 $k$ \Term{algebraically-closed}{代数闭}。先设 $k$ 的特征为零。存在 $k$ 的\Term{algebraically-closed}{代数闭}子\Term{group-extension}{扩张} $k'$，它在 $\mathbf Q$ 上的\Term{transcendence-degree}{超越次数}\Term{finite}{有限}，并使 $X$ 来自定义在 $k'$ 上的\Term{proper}{固有}\Term{smooth}{光滑}曲线 $X'$ 的标量\Term{group-extension}{扩张}；还可设点 $a_1,\dots,a_n$ 来自 $X'$ 的有理点 $a'_1,\dots,a'_n$。由于 $k'$ 在 $\mathbf Q$ 上的\Term{transcendence-degree}{超越次数}\Term{finite}{有限}，可将 $k'$ 嵌入复数域 $\mathbf C$。置 $\widetilde U=U'\times_{k'}\mathbf C$。设 $k''$ 为 $k'$ 的一个\Term{algebraically-closed}{代数闭}\Term{group-extension}{扩张}，存在从 $k$、$\mathbf C$ 到 $k''$ 的 $k'$-\Term{morphism}{态射}。若 $g':U'\to k'$ 为结构\Term{morphism}{态射}，$F$ 为 $U''$ 上的\Term{finite}{有限}常\Term{group-sheaf}{群层}，则由 2.9，\Term{specialization-morphism}{特殊化态射}
+\[(R^1g'_*F')_{\mathbf C}\longrightarrow(R^1g'_*F')_{k''}\longleftarrow(R^1g'_*F')_k\]
+均为\Term{isomorphism}{同构}。用\Term{fundamental-group}{基本群}的语言来说，这表明存在模去\Term{inner-automorphism}{内自同构}后确定的\Term{isomorphism}{同构}
+\[\pi_1(U)\longrightarrow\pi_1(\widetilde U),\]
+而且显然该\Term{isomorphism}{同构}将对应于 $X'-U'$ 中某点的\Term{inertia-group}{惯性群}，变成对应于同一点的\Term{inertia-group}{惯性群}。因此可设 $k=\mathbf C$。此时由 Riemann 存在定理（第 XII 讲 5.2），\Term{fundamental-group}{基本群} $\pi_1(U)$ 恰为 $U$ 的\Term{associated-analytic-space}{相伴解析空间}的\Term{fundamental-group}{基本群}关于\Term{finite-index}{有限指数}子群拓扑的\Term{completion}{完备化}。而后者可用超越方法计算 [3, 第 7 章第 47 节]：它由 $2g+n$ 个元素 $x_i,y_i,\sigma_j$ 生成，$\sigma_j$ 是以 $a_j$ 为\Term{center}{中心}的小圆盘的\Term{local-fundamental-group}{局部基本群} $\pi_1(D_j)$ 的一个生成元的像，也就是对应于 $a_j$ 的\Term{inertia-group}{惯性群}的生成元；这些元素仅满足关系 (*)。
+
+若 $k$ 的特征为 $p>0$，则可找到\Term{residue-field}{剩余域}为 $k$、\Term{field-of-fractions}{分式域} $K$ 的特征为零的完备\Term{discrete-valuation-ring}{离散赋值环} $A$，以及 $S=\operatorname{Spec}A$ 上\Term{connected}{连通}、\Term{proper}{固有}、\Term{smooth}{光滑}的\Term{scheme}{概形} $X_1$，使 $X_1\times_S\operatorname{Spec}k\simeq X$（第 III 讲 7.4）。各点 $a_j$ 可提升为 $X_1$ 在 $S$ 上的\Term{section}{截面} $s_j$；令 $Y_{1j}$ 为底空间为 $s_j(S)$ 的\Term{reduced}{约化}\Term{closed-subscheme}{闭子概形}，$Y_1$ 为各 $Y_{1j}$ 的并，$U_1=X_1-Y_1$，$g_1:U_1\to S$ 为结构\Term{morphism}{态射}。设 $\bar K$ 为 $K$ 的一个\Term{algebraically-closed}{代数闭}\Term{group-extension}{扩张}，$\bar U=U_1\times_S\bar K$。若 $C$ 为\Term{finite}{有限}常群，则由 2.8，\Term{specialization-morphism}{特殊化态射}
+\[(R^1g_{1*}C_{U_1})_k\longrightarrow(R^1g_{1*}C_{U_1})_{\bar K}\]
+为\Term{injectivity}{单射}，且在 $C$ 的阶素于 $p$ 时为\Term{bijection}{双射}。用\Term{fundamental-group}{基本群}的语言来说，这表示\Term{specialization-morphism}{特殊化态射}（1.10）
+\[\pi:\pi_1(\bar U)\longrightarrow\pi_1^t(U)\]
+为\Term{surjectivity}{满射}，且\Term{specialization-morphism}{特殊化态射}
+\[\pi_1^{p'}(\bar U)\longrightarrow\pi_1^{p'}(U)\]
+为\Term{bijection}{双射}。
+\SourcePage{308}
+最后，若 $x_i,y_i,\sigma_j$ 是 $\pi_1(\bar U)$ 的生成元，且 $\sigma_j$ 为对应于 $\bar X$ 的点 $b_j=Y_{1j}(\bar K)$ 的\Term{inertia-group}{惯性群}的生成元，则由 1.11，$\pi(\sigma_j)$ 为对应于 $a_j$ 的\Term{inertia-group}{惯性群}的生成元，证明完毕。
+\end{proof}
+
+\textbf{[注记（2003 年增补，MR）。}设 $k$ 为特征 $p>0$ 的\Term{algebraically-closed-field}{代数闭域}，$X$ 为 $k$ 上\Term{genus}{亏格}为 $g$ 的\Term{connected}{连通}\Term{proper}{固有}\Term{smooth}{光滑}代数曲线，$U$ 为从 $X$ 中删去 $r\geqslant1$ 个有理点所得的\Term{affine-open}{仿射开集}。我们有\Term{fundamental-group}{基本群} $\pi_1(U)$，它的商群 $\pi_1^t(U)$ 分类 $U$ 的在 $X-U$ 各点处\Term{tame-ramification}{温和分歧}的\Term{finite-etale-cover}{有限平展覆盖}；以及 $\pi_1^t(U)$ 的商群 $\pi_1^{p'}(U)$，后者分类 $U$ 的 Galois 群阶素于 $p$ 的\Term{etale}{平展} \Term{galois-covering}{Galois 覆盖}。
+
+S. Abhyankar 在文章 \textit{Coverings of algebraic curves}（\textit{Amer. J. Math.} \textbf{79}，1957 年，第 825—856 页）中，提出了一些关于能够作为 $U$ 的\Term{finite-etale-cover}{有限平展覆盖}的 Galois 群的\Term{finite-group}{有限群}之结构的猜想。
+
+关于阶素于 $p$、可作为 $U$ 的\Term{connected}{连通}\Term{etale-covering}{平展覆盖}的 Galois 群的\Term{finite-group}{有限群}的猜想，已在推论 2.12 中得到证明及更精确的表述。在讨论 $\pi_1(U)$ 的\Term{finite}{有限}商之前，先对该群的“大小”作一些说明。设 $X=\operatorname{Spec}(A)$。已知 $\operatorname{Hom}_{\mathrm{cont}}(\pi_1(U),\mathbf Z/p\mathbf Z)$ 由 Artin–Schreier 理论描述（第 XI 讲推论 6.9）。这一群\Term{isomorphism}{同构}于 $A/\wp(A)$，其中 $\wp:A\to A$ 将 $a$ 映到 $a^p-a$。先设 $U$ 为\Term{affine}{仿射}直线 $\mathbf A^1$，其环为 $k[T]$。设 $E$ 为 $k[T]$ 中形如 $\sum_i a_iT^i$、且当 $p$ 整除 $i$ 时 $a_i=0$ 的元素所成的集合。显然复合映射
+\[E\longrightarrow k[T]\longrightarrow k[T]/\wp k[T]\]
+为\Term{bijection}{双射}。于是各系数 $a_i$（$(i,p)=1$）就像一个空间的坐标，该空间参数化\Term{affine}{仿射}直线的次数为 $p$ 的循环\Term{covering}{覆盖}。特别地，可知 $\pi_1(\mathbf A^1)$ 并非拓扑\Term{finitely-generated}{有限生成}；而且，若作\Term{algebraically-closed-field}{代数闭域}的\Term{group-extension}{扩张} $k\to k'$，则自然\Term{morphism}{态射}
+\[\pi_1(\mathbf A^1\times_k k')\longrightarrow\pi_1(\mathbf A^1)\]
+虽为\Term{surjectivity}{满射}，却并非\Term{bijection}{双射}，这与\Term{proper}{固有}情形不同。在一般情形，曲线 $U$ 可以实现为\Term{affine}{仿射}直线上的\Term{finite}{有限}\Term{scheme}{概形}，所以 $\pi_1(U)$ 也出现同样的现象。事实上，更一般地，对每个维数 $\geqslant1$ 的\Term{connected}{连通}、\Term{finite-type}{有限型}、\Term{affine}{仿射} $k$-\Term{scheme}{概形} $V$，其 $\pi_1(V)$ 亦如此。
+
+现在，对\Term{finite-group}{有限群} $G$，记 $G^{(p')}$ 为 $G$ 的阶素于 $p$ 的最大商群。若\Term{finite-group}{有限群} $G$ 是 $\pi_1(U)$ 的拓扑商，则 $G^{(p')}$ 必为 $\pi_1^{p'}(U)$ 的拓扑商；根据推论 2.12，原则上已知如何判定这一条件。Abhyankar 在上述文章中猜想，这一必要条件也充分。M. Raynaud 在\Term{affine}{仿射}直线情形、D. Harbater 在一般情形分别证明了这一猜想（\textit{Invent. Math.} \textbf{116}，1994 年，第 425—462 页；及 \textbf{117}，第 1—25 页）。例如，在\Term{affine}{仿射}直线情形，$\pi_1^{p'}(\mathbf A^1)=1$，所以\Term{finite-group}{有限群} $G$ 是 $\mathbf A^1$ 的\Term{connected}{连通}\Term{etale-covering}{平展覆盖}的 Galois 群，当且仅当
+\SourcePage{309}
+$G^{(p')}=1$，亦即当且仅当 $G$ 由其 Sylow $p$-子群生成。因此，阶为 $p$ 的倍数的任意\Term{finite}{有限}单群都符合条件。]

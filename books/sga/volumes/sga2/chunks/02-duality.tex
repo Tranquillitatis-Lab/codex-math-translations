@@ -1,0 +1,549 @@
+\SGAchapter{IV}{对偶化模与对偶化函子}{Modules et foncteurs dualisants}
+\SourcePage{41}
+\SGAsection{1}{模函子的一般性质}
+设 $A$ 为交换 \Term{noetherian-ring}{Noether 环}，$\underline{\mathcal C}$ 为\Term{finitely-generated}{有限型} $A$-模的\Term{category}{范畴}，$\underline{\mathcal C}'$ 为任意 $A$-模的\Term{category}{范畴}，$\underline{\mathrm{Ab}}$ 为\Term{abelian-group}{阿贝尔群}的\Term{category}{范畴}。本节旨在研究\Term{functor}{函子} $T:\underline{\mathcal C}^{\circ}\to\underline{\mathrm{Ab}}$ 的某些性质（假定这些\Term{functor}{函子}是\Term{additive}{加性}的）。
+注意，若 $M\in\operatorname{Ob}\underline{\mathcal C}$，则 $T(M)$ 可\Term{canonical}{典范}地赋予如下 $A$-模结构：若 $f_M$ 是 $f\in A$ 对应的 $M$ 的数乘\Term{homomorphism}{同态}，则 $A$ 通过 $f_{T(M)}$ \Term{action}{作用}于 $T(M)$。换言之，$T$ \Term{resolution}{分解}为
+\[
+\begin{tikzcd}
+\underline{\mathcal C}^{\circ}\arrow[rr,"T"]\arrow[dr,"T_{\circ}"']&&\underline{\mathrm{Ab}}\\
+&\underline{\mathcal C}'\arrow[ur]&
+\end{tikzcd}
+\]
+其中 $\underline{\mathcal C}'\to\underline{\mathrm{Ab}}$ 是\Term{canonical}{典范}\Term{functor}{函子}。下文总将 $T(M)$ 看成带有上述 $A$-模结构。
+将\Term{homomorphism}{同态} $\operatorname{Hom}_A(A,M)\to\operatorname{Hom}_A(T(M),T(A))$ 与\Term{isomorphism}{同构} $M\xrightarrow{\sim}\operatorname{Hom}_A(A,M)$ 复合，就得到下列彼此显然确定的\Term{homomorphism}{同态}：
+\[
+\begin{aligned}
+M&\longrightarrow\operatorname{Hom}_A(T(M),T(A)),\\
+M\times T(M)&\longrightarrow T(A),\\
+T(M)&\longrightarrow\operatorname{Hom}_A(M,T(A)).
+\end{aligned}
+\]
+由此定义\Term{contravariant-functor}{反变函子}的\Term{morphism}{态射}
+\[\varphi_T:T\longrightarrow\operatorname{Hom}_A(M,T(A)).\]
+\SourcePage{42}
+\begin{SGAresult}{命题}{1.1}
+下列两条性质\Term{equivalence}{等价}：
+\begin{enumerate}
+\item[(i)] $\varphi_T$ 是\Term{functor}{函子}的\Term{isomorphism}{同构}。
+\item[(ii)] $T$ \Term{left-exact}{左正合}。
+\end{enumerate}
+\end{SGAresult}
+\begin{proof}
+(i)$\Rightarrow$(ii) 显然。至于 (ii)$\Rightarrow$(i)，利用如下事实：对于从 $\underline{\mathcal C}^{\circ}$ 到 $\underline{\mathrm{Ab}}$ 的两个\Term{additive}{加性}\Term{left-exact}{左正合}\Term{functor}{函子} $F,F'$ 之间的\Term{morphism}{态射} $u:F\to F'$，若 $u(A)$ 是\Term{isomorphism}{同构}，则 $u$ 是\Term{isomorphism}{同构}（这里用到 $A$ 是 \Term{noetherian-ring}{Noether 环}，从而每个\Term{finitely-generated}{有限型} $A$-模都是\Term{finitely-presented}{有限呈示}模）。
+\end{proof}
+\textbf{注记 1.2。} 特别地，这表明\Term{functor}{函子} $T:\underline{\mathcal C}'{}^{\circ}\to\underline{\mathrm{Ab}}$ 中\Term{representable}{可表}的\Term{functor}{函子}，恰好是与任意\Term{projective-limit}{射影极限}交换的\Term{functor}{函子}（其指标为不必\Term{filtered}{滤过}的\Term{preordered-set}{预序集}）。
+
+以 $\operatorname{Hom}(\underline{\mathcal C}^{\circ},\underline{\mathrm{Ab}})_g$ 表示 $\operatorname{Hom}(\underline{\mathcal C}^{\circ},\underline{\mathrm{Ab}})$ 中以\Term{left-exact}{左正合}\Term{functor}{函子}为\Term{object}{对象}的\Term{full-subcategory}{全子范畴}，则我们已证明\Term{equivalence-of-categories}{范畴等价}
+\[\underline{\mathcal C}'\xrightarrow{\sim}\operatorname{Hom}(\underline{\mathcal C}^{\circ},\underline{\mathrm{Ab}})_g,\]
+其互为\Term{quasi-inverse}{拟逆}的\Term{functor}{函子}为
+\[H\longmapsto\operatorname{Hom}_A(-,H),\qquad T(A)\longleftarrow T.\]
+现设 $J$ 是 $A$ 的\Term{ideal}{理想}，$Y=V(J)\subset\operatorname{Spec}A$，并记 $\underline{\mathcal C}_Y$ 为 $\underline{\mathcal C}$ 中由满足 $\operatorname{Supp}M\subset Y$ 的\Term{finitely-generated}{有限型} $A$-模 $M$ 组成的\Term{full-subcategory}{全子范畴}。于是
+\[\underline{\mathcal C}_Y=\bigcup_n\underline{\mathcal C}^{(n)},\]
+其中 $\underline{\mathcal C}^{(n)}$ 是 $\underline{\mathcal C}_Y$ 中由满足 $J^nM=0$ 的模 $M$ 组成的\Term{full-subcategory}{全子范畴}。
+\begin{SGAresult}{命题}{1.3}
+沿用以上记号，设 $T:\underline{\mathcal C}_Y\to\underline{\mathrm{Ab}}$ 是\Term{functor}{函子}。对于 $H=\varinjlim T(A/J^n)$\footnote[1]{编者注：原文隐含了 $H$ 的定义。}，有自然\Term{morphism}{态射}
+\[\varphi_T:T\longrightarrow\operatorname{Hom}_A(-,H),\]
+且下列条件\Term{equivalence}{等价}：
+\begin{enumerate}
+\item[(i)] $\varphi_T$ 是\Term{isomorphism}{同构}。
+\item[(ii)] \Term{functor}{函子} $T$ \Term{left-exact}{左正合}。
+\end{enumerate}
+\end{SGAresult}
+\SourcePage{43}
+\begin{proof}
+a) $\varphi_T$ 的定义。设 $M\in\operatorname{Ob}\underline{\mathcal C}_Y$。存在整数 $n$ 使 $J^nM=0$。于是 $M$ 是 $A/J^n$-模；若 $T_n$ 表示 $T$ 在 $\underline{\mathcal C}^{(n)}$ 上的限制，则已知如何定义\Term{morphism}{态射}
+\[T_n\longrightarrow\operatorname{Hom}_A(-,H_n),\qquad H_n=T(A/J^n).\]
+从而
+\[T(M)=T_n(M)\longrightarrow\operatorname{Hom}_A(M,\varinjlim H_n)=\operatorname{Hom}_A(M,H),\]
+并得到 $\varphi_T:T\to\operatorname{Hom}_A(-,H)$。
+
+b) (i) 与 (ii) 的\Term{equivalence}{等价}性。显然 (i) 蕴含 (ii)。假设 (ii) 成立，取 $M\in\operatorname{Ob}\underline{\mathcal C}^{(n)}$。已知 $T_n(M)\xrightarrow{\sim}\operatorname{Hom}_A(M,H_n)$，故对于每个整数 $n'>n$，有
+\[T(M)=T_n(M)=T_{n'}(M)=\varinjlim T_n(M),\]
+于是 $T(M)=\varinjlim\operatorname{Hom}_A(M,H_n)$。由于这里是\Term{filtered}{滤过}\Term{inductive-limit}{归纳极限}，还有\Term{isomorphism}{同构}
+\[\varinjlim\operatorname{Hom}_A(M,H_n)\xrightarrow{\sim}\operatorname{Hom}_A(M,\varinjlim H_n)=\operatorname{Hom}_A(M,H).\]
+\end{proof}
+若 $\underline{\mathcal C}'_Y$ 表示\Term{support}{支集}包含于 $Y$、但不必\Term{finitely-generated}{有限型}的 $A$-模的\Term{category}{范畴}，则仍有自然\Term{equivalence-of-categories}{范畴等价}
+\[\underline{\mathcal C}'_Y\xrightarrow{\sim}\operatorname{Hom}(\underline{\mathcal C}_Y^{\circ},\underline{\mathrm{Ab}})_g.\]
+\textbf{应用。} 沿用以上记号，设
+\[T^*:\underline{\mathcal C}_Y^{\circ}\longrightarrow\underline{\mathrm{Ab}}\]
+为\Term{exact}{正合} $\partial$-\Term{functor}{函子}。对每个 $i\in\mathbb Z$，置 $H_n^i=T^i(A/J^n)$，$H^i=\varinjlim H_n^i$。
+\begin{SGAresult}{定理}{1.4}
+设 $n\in\mathbb Z$。若存在 $i_0\in\mathbb Z$，使所有 $i<i_0$ 均有 $T^i=0$，则下列三个条件\Term{equivalence}{等价}：
+\begin{enumerate}
+\item[(i)] 对所有 $i<n$，$T^i=0$。
+\item[(ii)] 对所有 $i<n$，$H^i=0$。
+\item[(iii)] 存在 $\underline{\mathcal C}_Y$ 中的模 $M_0$，使 $\operatorname{Supp}M_0=Y$，且对所有 $i<n$ 有 $T^i(M_0)=0$。
+\end{enumerate}
+\end{SGAresult}
+\begin{proof}
+显然 (i) 蕴含 (ii) 和 (iii)（取 $M_0=A/J$）。对 $n$ 归纳，证明 (ii) 蕴含 (i)。$n=i_0$ 时成立，现假设已证明到 $n$。再假设所有 $i<n+1$ 均有 $H^i=0$；由归纳假设，$i<n$ 时 $T^i=0$。而 $T^{n-1}=0$ 蕴含 $T^n$ \Term{left-exact}{左正合}，且
+\[T^n\xrightarrow{\sim}\operatorname{Hom}_A(-,H^n)=0.\]
+再证明 (iii) 蕴含 (ii)。$n=i_0$ 时仍成立；假设已证明到 $n$。设 $M_0$ 是 $\underline{\mathcal C}_Y$ 中的 $A$-模，满足 $\operatorname{Supp}M_0=Y$，且所有 $i<n+1$ 均有 $T^i(M_0)=0$。由归纳假设，所有 $i<n$ 均有 $H^i=0$；
+\SourcePage{44}
+只须证明 $H^n=0$。但“所有 $i<n$ 均有 $H^i=0$”蕴含 $T^{n-1}=0$，因而 $T^n\xrightarrow{\sim}\operatorname{Hom}_A(-,H^n)$。于是
+\[\operatorname{Ass}H^n=\operatorname{Ass}\operatorname{Hom}(M_0,H^n)=\operatorname{Supp}M_0\cap\operatorname{Ass}H^n=\operatorname{Ass}H^n,\]
+因为
+\[\operatorname{Ass}H^n\subset\operatorname{Supp}H^n\subset Y=\operatorname{Supp}M_0.\]
+因此 $T^n(M_0)=0\Longleftrightarrow\operatorname{Ass}H^n=\varnothing\Longleftrightarrow H^n=0$，证明完毕。
+\end{proof}
+\SGAsection{2}{正合函子的刻画}
+仍假设 $A$ 是交换 \Term{noetherian-ring}{Noether 环}。记号沿用命题 1.3：
+\[Y=V(J),\qquad T:\underline{\mathcal C}_Y^{\circ}\to\underline{\mathrm{Ab}},\qquad H=\varinjlim T(A/J^n).\]
+假设 $T$ \Term{left-exact}{左正合}，因而 $T(M)\xrightarrow{\sim}\operatorname{Hom}_A(M,H)$。
+\begin{SGAresult}{命题}{2.1}
+下列性质\Term{equivalence}{等价}：
+\begin{enumerate}
+\item[(i)] \Term{functor}{函子} $T$ \Term{exact}{正合}。
+\item[(ii)] $H$ 在 $\underline{\mathcal C}'$ 中是\Term{injective-object}{内射对象}。
+\end{enumerate}
+\end{SGAresult}
+\begin{proof}
+显然只须证明 (i) 蕴含 (ii)，即若\Term{functor}{函子} $\operatorname{Hom}_A(-,H)$ 在 $\underline{\mathcal C}_Y$ 上的限制\Term{exact}{正合}，则 $H$ \Term{injective}{内射}。由于 $A$ 是 \Term{noetherian-ring}{Noether 环}，为证明 $H$ \Term{injective}{内射}，只须证明：若\Term{finitely-generated}{有限型} $A$-模 $N$ 是\Term{finitely-generated}{有限型} $A$-模 $M$ 的\Term{submodule}{子模}，则任意\Term{homomorphism}{同态} $f:N\to H$ 都可延拓为\Term{homomorphism}{同态} $\overline f:M\to H$。
+由 $H$ 的定义及 $N$ 的\Term{finitely-generated}{有限型}性，存在整数 $n$ 使 $J^n\cdot f(N)=0$。在 $M,N$ 上赋予 $J$-\Term{adic-topology}{进拓扑}。$N$ 的 $J$-\Term{adic-topology}{进拓扑}与 $M$ 的 $J$-\Term{adic-topology}{进拓扑}所诱导的\Term{topology}{拓扑}\Term{equivalence}{等价}（Krull 定理）。因此存在 $V=J^k\cdot M$，使
+\[U=V\cap N\subset J^nN.\]
+于是有\Term{resolution}{分解}
+\[\begin{tikzcd}N\arrow[r]\arrow[d,"f"']&N/U\arrow[dl,"u"]\\H&\end{tikzcd}\]
+\SourcePage{45}
+$N/U$ 与 $M/V$ 均在 $\underline{\mathcal C}_Y$ 中，故由假设可将 $u$ 延拓为 $\overline u$：
+\[\begin{tikzcd}N/U\arrow[r,hook]\arrow[d,"u"']&M/V\arrow[dl,"\overline u"]\\H&\end{tikzcd}\]
+于是 $M\to M/V\xrightarrow{\overline u}H$ 就给出所求的延拓 $\overline f$。
+\end{proof}
+\begin{SGAresult}{推论}{2.2}
+设 $K$ 是\Term{injective}{内射} $A$-模，则 $K$ 中由被 $J$ 的某个适当\Term{nilpotent}{幂零}化的元素组成的\Term{submodule}{子模} $H_J^0(K)$ 是\Term{injective-module}{内射模}。
+\end{SGAresult}
+\begin{proof}
+只须证明\Term{functor}{函子} $\operatorname{Hom}_A(-,H_J^0(K))$ 在 $\underline{\mathcal C}_Y$ 上的限制\Term{exact}{正合}。设 $M\in\operatorname{Ob}\underline{\mathcal C}_Y$，存在 $k$ 使 $J^k\cdot M=0$，于是包含映射
+\[\operatorname{Hom}_A(-,H_J^0(K))\longrightarrow\operatorname{Hom}_A(M,K)\]
+是\Term{isomorphism}{同构}。由于 $\operatorname{Hom}_A(-,K)$ \Term{exact}{正合}，结论即得。
+\end{proof}
+\SGAsection{3}{左正合且每个 T(M) 都有限型的情形}
+仍设 $T:\underline{\mathcal C}_Y^{\circ}\to\underline{\mathrm{Ab}}$。从现在起假设 $T$ \Term{left-exact}{左正合}，且有\Term{resolution}{分解}
+\[\begin{tikzcd}\underline{\mathcal C}_Y^{\circ}\arrow[rr,"T"]\arrow[dr]&&\underline{\mathrm{Ab}}\\&\underline{\mathcal C}_Y\arrow[ur]&\end{tikzcd}\]
+其中 $\underline{\mathcal C}_Y\to\underline{\mathrm{Ab}}$ 同前，是\Term{forgetful-functor}{遗忘函子}。因此可以定义 $T(T(M))=T\circ T(M)$，且\Term{canonical}{典范}\Term{homomorphism}{同态}
+\[M\longrightarrow\operatorname{Hom}_A(\operatorname{Hom}_A(M,H),H)\]
+定义了\Term{homomorphism}{同态} $M\to T\circ T(M)$。
+\begin{SGAresult}{命题}{3.1}
+仍假设 $A$ 是 \Term{noetherian-ring}{Noether 环}。若再假设 $A/J$ 为 \Term{artinian-ring}{Artin 环}，则下列条件\Term{equivalence}{等价}：
+\begin{enumerate}
+\item[(i)] $T$ \Term{left-exact}{左正合}，且对每个 $M\in\operatorname{Ob}\underline{\mathcal C}_Y$，$T(M)$ \Term{finitely-generated}{有限型}，而 $M\to T\circ T(M)$ 是\Term{isomorphism}{同构}。
+\item[(ii)] $T$ \Term{exact}{正合}，且对每个对应于包含 $J$ 的\Term{maximal-ideal}{极大理想}的\Term{residue-field}{剩余域} $k$，有 $T(k)\xrightarrow{\sim}k$。
+\item[(iii)] 有 $T\xrightarrow{\sim}\operatorname{Hom}_A(-,H)$，其中 $H$ \Term{injective}{内射}，且对 (ii) 中每个 $k$，有 $\operatorname{Hom}_A(k,H)\xrightarrow{\sim}k$。
+\item[(iv)] $T$ \Term{exact}{正合}，且对每个 $M\in\operatorname{Ob}\underline{\mathcal C}_Y$，有 $\operatorname{long}T(M)=\operatorname{long}M$。
+\end{enumerate}
+\end{SGAresult}
+\SourcePage{46}
+\begin{proof}
+已证明 (ii) 与 (iii) \Term{equivalence}{等价}（命题 2.1）。证明 (ii) 蕴含 (iv)：首先，若 $M\in\operatorname{Ob}\underline{\mathcal C}_Y$，则 $M$ 是某个 \Term{artinian-ring}{Artin 环} $A/J^n$ 上的模，故 $\operatorname{long}M$ \Term{finite}{有限}。对 $M$ 的长度归纳。若 $\operatorname{long}M=1$，则 $M$ 是 (ii) 所适用的\Term{residue-field}{剩余域}，故 (iv) 成立。若 $\operatorname{long}M>1$，存在 $M$ 的\Term{submodule}{子模} $M'$，满足 $M'\ne0$ 且 $\operatorname{long}M'<\operatorname{long}M$。构造\Term{exact-sequence}{正合列}
+\[0\longrightarrow M'\longrightarrow M\longrightarrow M''\longrightarrow0.\]
+由 $T$ 的\Term{exact}{正合}性，有序列
+\[0\longrightarrow T(M')\longrightarrow T(M)\longrightarrow T(M'')\longrightarrow0,\]
+且 $\operatorname{long}T(M)=\operatorname{long}T(M')+\operatorname{long}T(M'')=\operatorname{long}M'+\operatorname{long}M''=\operatorname{long}M$。
+
+(ii) 蕴含 (i)：由 (ii) 蕴含 (iv)，对于 $\underline{\mathcal C}_Y$ 中的 $A$-模 $M$，有 $\operatorname{long}T(M)=\operatorname{long}M$；所以 $T(M)$ 长度\Term{finite}{有限}，从而\Term{finitely-generated}{有限型}。
+还须证明 $M\to T\circ T(M)$ 是\Term{isomorphism}{同构}，仍对 $\operatorname{long}M$ 归纳。当 $M=k$ 时成立。一般情形，写出两行均\Term{exact}{正合}的\Term{commutative-diagram}{交换图}：
+\[\begin{tikzcd}
+0\arrow[r]&M'\arrow[r]\arrow[d]&M\arrow[r]\arrow[d]&M''\arrow[r]\arrow[d]&0\\
+0\arrow[r]&T\circ T(M')\arrow[r]&T\circ T(M)\arrow[r]&T\circ T(M'')\arrow[r]&0,
+\end{tikzcd}\]
+其中 $M'$ 是 $M$ 的\Term{submodule}{子模}，$M'\ne0$ 且 $\operatorname{long}M'<\operatorname{long}M$。由归纳假设，两端\Term{arrow}{箭头}为\Term{isomorphism}{同构}，故 $M\to T\circ T(M)$ 是\Term{isomorphism}{同构}。
+
+(i) 蕴含 (ii)：设
+\[0\longrightarrow M'\longrightarrow M\longrightarrow M''\longrightarrow0\]
+是 $\underline{\mathcal C}_Y$ 中 $A$-模的\Term{exact-sequence}{正合列}，令 $Q$ 为 $T(M)\to T(M')$ 的\Term{cokernel}{余核}。将 $T$ \Term{action}{作用}于\Term{exact-sequence}{正合列}
+\[0\longrightarrow T(M')\longrightarrow T(M)\longrightarrow T(M'')\longrightarrow Q\longrightarrow0,\]
+得到
+\[\begin{tikzcd}
+0\arrow[r]&T(Q)\arrow[r]&T\circ T(M')\arrow[r]&T\circ T(M)\\
+&&M'\arrow[u,"\wr"]\arrow[r]&M\arrow[u,"\wr"]
+\end{tikzcd}\]
+于是 $T(Q)=0$，且 $Q\xrightarrow{\sim}T(T(Q))=0$。
+\SourcePage{47}
+另一方面，设 $k=A/\mathfrak m$ 为\Term{residue-field}{剩余域}，$J\subset\mathfrak m$。须证明 $T(k)\xrightarrow{\sim}k$。只须注意 $T(k)$ 是 $k$-\Term{vector-space}{向量空间}，由此得到
+\[\begin{aligned}
+T(k)&\simeq k\oplus V,\\
+T(T(k))&\simeq T(k)\oplus T(V)\simeq k\oplus V\oplus T(V)\simeq k,
+\end{aligned}\]
+从而 $V=0$。
+最后证明 (iv) 蕴含 (iii)：只须证明 $T(k)\xrightarrow{\sim}k$。由 $\operatorname{long}T(k)=\operatorname{long}k=1$，$T(k)=k'$ 是\Term{residue-field}{剩余域}，且
+\[\operatorname{Supp}k'=\operatorname{Supp}\operatorname{Hom}_A(k,H)\subset\operatorname{Supp}k.\]
+故 $k\simeq k'$。
+\end{proof}
+\textbf{注记 3.2。} 可以证明，条件 (iv) \Term{equivalence}{等价}于条件：
+\begin{enumerate}\item[(iv)$'$] 对每个 $M\in\operatorname{Ob}\underline{\mathcal C}_Y$，有 $\operatorname{long}T(M)=\operatorname{long}M$。\end{enumerate}
+\SGAsection{4}{对偶化模与对偶化函子}
+\begin{SGAresult}{定义}{4.1}
+设 $A$ 是 \Term{noetherian-local-ring}{Noether 局部环}，$\mathfrak m$ 为其\Term{maximal-ideal}{极大理想}。称满足命题 3.1 中各\Term{equivalence}{等价}条件的\Term{functor}{函子}
+\[T:\underline{\mathcal C}_{\mathfrak m}^{\circ}\longrightarrow\underline{\mathrm{Ab}}\]
+为 $A$ 的\Term{dualizing-functor}{对偶化函子}；这里对于 $Y=V(\mathfrak m)$，将 $\underline{\mathcal C}_Y$ 记作 $\underline{\mathcal C}_{\mathfrak m}$。若\Term{functor}{函子} $M\mapsto\operatorname{Hom}_A(M,I)$ 是\Term{dualizing-functor}{对偶化函子}，则称 $A$-模 $I$ 为 $A$ 的\Term{dualizing-module}{对偶化模}。
+\end{SGAresult}
+定义 4.1 可以推广到不再假设 $A$ 为\Term{local-ring}{局部环}的情形。
+\begin{SGAresult}{定义}{4.2}
+设 $A$ 为 \Term{noetherian-ring}{Noether 环}，$\overline{\underline{\mathcal C}}$ 为 $\underline{\mathcal C}$ 中由\Term{finite-length}{有限长度} $A$-模组成的\Term{full-subcategory}{全子范畴}。称从 $\overline{\underline{\mathcal C}}^{\circ}$ 到 $\overline{\underline{\mathcal C}}$ 的 $A$-线性\Term{functor}{函子} $T$ 为\Term{dualizing-functor}{对偶化函子}，如果它\Term{exact}{正合}，且\Term{functor}{函子}\Term{morphism}{态射}
+\[\operatorname{id}\longrightarrow T\circ T\]
+是\Term{isomorphism}{同构}。
+\end{SGAresult}
+我们将证明存在性定理，并证明表示这种\Term{functor}{函子}的模 $I$ 是\Term{locally-artinian-module}{局部 Artin 模}；还将证明，对于 $A$ 的每个\Term{maximal-ideal}{极大理想} $\mathfrak m$，$I$ 的\Term{socle}{基座}的 $\mathfrak m$-\Term{primary}{准素}分量的长度为 $1$。
+\begin{SGAresult}{命题}{4.3}
+设 $A,B$ 是 \Term{noetherian-local-ring}{Noether 局部环}，\Term{maximal-ideal}{极大理想}分别为 $\mathfrak m_A,\mathfrak m_B$，且 $B$ 为\Term{finite}{有限} $A$-\Term{algebra}{代数}。若 $I$ 是 $A$ 的\Term{dualizing-module}{对偶化模}，则 $\operatorname{Hom}_A(B,I)$ 是 $B$ 的\Term{dualizing-module}{对偶化模}。
+\end{SGAresult}
+\SourcePage{48}
+\begin{proof}
+令 $R:\underline{\mathcal C}_{\mathfrak m_B}\to\underline{\mathcal C}_{\mathfrak m_A}$ 为\Term{restriction-of-scalars}{限制标量}\Term{functor}{函子}；它\Term{exact}{正合}。设 $T:\underline{\mathcal C}_{\mathfrak m_A}\to\underline{\mathrm{Ab}}$ 为 $A$ 的\Term{dualizing-functor}{对偶化函子}；它\Term{exact}{正合}，且对每个 $M\in\operatorname{Ob}\underline{\mathcal C}_{\mathfrak m_A}$，自然\Term{homomorphism}{同态} $M\to T\circ T(M)$ 是\Term{isomorphism}{同构}，故 $T\circ R$ 是 $B$ 的\Term{dualizing-functor}{对偶化函子}。若 $I$ 表示 $T$，则由对每个 $B$-模 $M$ 都成立的经典公式
+\[\operatorname{Hom}_A(M,I)=\operatorname{Hom}_B(M,\operatorname{Hom}_A(B,I)),\]
+得 $\operatorname{Hom}_A(B,I)$ 是 $B$ 的\Term{dualizing-module}{对偶化模}。
+\end{proof}
+\begin{SGAresult}{推论}{4.4}
+设 $A$ 为 \Term{noetherian-local-ring}{Noether 局部环}，$\mathfrak a$ 为 $A$ 的\Term{ideal}{理想}，$B=A/\mathfrak a$。若 $I$ 是 $A$ 的\Term{dualizing-module}{对偶化模}，则 $\mathfrak a$ 在 $I$ 中的\Term{annihilator}{零化子}是 $B$ 的\Term{dualizing-module}{对偶化模}。
+\end{SGAresult}
+\begin{SGAresult}{引理}{4.5}
+设 $A$ 为 \Term{noetherian-local-ring}{Noether 局部环}，$I$ 为\Term{locally-artinian}{局部 Artin} 的 $A$-模。存在\Term{canonical}{典范}\Term{isomorphism}{同构}
+\[I\longrightarrow\widehat I=I\otimes_A\widehat A.\]
+\end{SGAresult}
+\begin{proof}
+令 $I_n$ 为 $\mathfrak m^n$ 在 $I$ 中的\Term{annihilator}{零化子}，其中 $\mathfrak m$ 为 $A$ 的\Term{maximal-ideal}{极大理想}。说 $I$ \Term{locally-artinian}{局部 Artin}，就是说 $I$ 是各 $I_n$ 的\Term{inductive-limit}{归纳极限}，且这些 $I_n$ 长度\Term{finite}{有限}。\Term{tensor-product}{张量积}与\Term{inductive-limit}{归纳极限}交换，因此可归结为 $I$ 是 \Term{artinian-module}{Artin 模}的情形。此时 $I$ 被\Term{maximal-ideal}{极大理想}的某个幂 $\mathfrak m^k$ 零化；故对 $p\ge k$ 有 $I\xrightarrow{\sim}I\otimes_A A/\mathfrak m^p$，从而 $I\xrightarrow{\sim}I\otimes_A\widehat A$，因为 $A$ 为 \Term{noetherian-ring}{Noether 环}而 $I$ \Term{finitely-generated}{有限型}。
+\end{proof}
+由此可知，从 $\widehat A$ 到 $A$ 的\Term{restriction-of-scalars}{限制标量}\Term{functor}{函子}与\Term{extension-of-scalars}{扩张标量}\Term{functor}{函子}，在\Term{locally-artinian}{局部 Artin} 的 $\widehat A$-模\Term{category}{范畴}和\Term{locally-artinian}{局部 Artin} 的 $A$-模\Term{category}{范畴}之间诱导互为\Term{quasi-inverse}{拟逆}的\Term{equivalence}{等价}。
+\begin{SGAresult}{命题}{4.6}
+设 $A$ 为 \Term{noetherian-local-ring}{Noether 局部环}，$\widehat A$ 为其\Term{completion}{完备化}，$I$ 为 $A$（相应地 $\widehat A$）的\Term{dualizing-module}{对偶化模}，而 $J$ 为 $I$ 的\Term{completion}{完备化}\footnote[2]{编者注：这里应理解为\Term{tensor-product}{张量积} $\widehat I=I\otimes_A\widehat A$（参见引理 4.5），即赋予 $I$ \Term{canonical}{典范}的 $\widehat A$-模结构，而不是 $\mathfrak m$-进\Term{completion}{完备化}。例如，设 $p$ 为素数，$A=\widehat A=\mathbb Z_p$ 为 $p$-进整数环。则\Term{residue-field}{剩余域} $k=\mathbb Z/p\mathbb Z$ 的\Term{injective-envelope}{内射包}是\Term{discrete}{离散}的 $\mathbb Z_p$-模 $\mathbb Q_p/\mathbb Z_p$，其 $p$-\Term{adic-topology}{进拓扑}\Term{completion}{完备化}为零。}（相应地，$J$ 是由\Term{restriction-of-scalars}{限制标量}得到的 $A$-模）。则 $J$ 为 $\widehat A$（相应地 $A$）的\Term{dualizing-module}{对偶化模}。此外，$I,J$ 的底层\Term{abelian-group}{阿贝尔群}\Term{isomorphism}{同构}。
+\end{SGAresult}
+\begin{proof}
+只须注意，\Term{locally-artinian}{局部 Artin} 的 $A$-模\Term{category}{范畴}与\Term{locally-artinian}{局部 Artin} 的 $\widehat A$-模\Term{category}{范畴}之间的\Term{equivalence}{等价}，在双\Term{functor}{函子} $\operatorname{Hom}_A(-,-)$ 与 $\operatorname{Hom}_{\widehat A}(-,-)$ 之间诱导\Term{isomorphism}{同构}，而\Term{dualizing-functor}{对偶化函子}或\Term{dualizing-module}{对偶化模}的刻画只涉及这些双\Term{functor}{函子}。
+\end{proof}
+\SourcePage{49}
+\begin{SGAresult}{定理}{4.7}
+设 $A$ 为 \Term{noetherian-local-ring}{Noether 局部环}。
+\begin{enumerate}
+\item[a)] 总存在\Term{dualizing-module}{对偶化模} $I$。
+\item[b)] 任意两个\Term{dualizing-module}{对偶化模}\Term{isomorphism}{同构}（\Term{isomorphism}{同构}不是\Term{canonical}{典范}的）。
+\item[c)] 模 $I$ 为\Term{dualizing-module}{对偶化模}的充要条件是：$I$ 为 $A$ 的\Term{residue-field}{剩余域} $k$ 的\Term{injective-envelope}{内射包}。
+\end{enumerate}
+\end{SGAresult}
+\textbf{注记 4.8。} 命题 4.6 可将问题归结为\Term{complete}{完备} \Term{noetherian-local-ring}{Noether 局部环}的情形。由 Cohen 的结构定理\footnote[3]{编者注：参见 Cohen I.S., ``On the structure and ideal theory of complete local rings'', \emph{Trans. Amer. Math. Soc.} 59 (1946), pp.~54--106。}，这样的环是\Term{regular-ring}{正则环}的商。命题 4.3 于是允许我们假设 $A$ \Term{regular}{正则}。如下文所见，这一观察可用来显式计算\Term{dualizing-module}{对偶化模}\begingroup\renewcommand{\thefootnote}{*}\footnote[1]{这是 Grothendieck 于 1957 年采用的方法。下面使用\Term{injective-envelope}{内射包}的方法似乎归功于 K.~Morita，``Duality for modules and its applications to the theory of rings with minimum conditions'', \emph{Sc. Rep. Tokyo Kyoiku Daigaku} 6 (1958/59), pp.~83--142。Morita 的工作独立于 Grothendieck 的工作，且远早于本次讨论班；它也不限于交换基环的情形。}\endgroup{}；不过，我们将用其他方法证明定理 4.7。
+
+\textbf{回顾。} 在证明定理以前，先回顾\Term{injective-envelope}{内射包}的概念。参见 Gabriel，巴黎 1961 年学位论文，\emph{Des Catégories Abéliennes}，第二章第 5 节。
+设 $\mathcal C$ 为\Term{abelian-category}{阿贝尔范畴}，其中\Term{inductive-limit}{归纳极限}存在且\Term{exact}{正合}\footnote[4]{编者注：当然，假定\Term{exact}{正合}的是小的\Term{filtered}{滤过}\Term{inductive-limit}{归纳极限}；还应假设存在\Term{generator}{生成元}。参见 [Tôhoku]。对于这里已经足够使用的模\Term{category}{范畴}，也可参阅 Bourbaki 的《\Term{algebra}{代数}》第 10 章。}（例如，$\mathcal C$ 为模\Term{category}{范畴}）。任意\Term{object}{对象} $M$ 都可嵌入\Term{injective-object}{内射对象}；称包含 $M$ 的极小\Term{injective-object}{内射对象}为 $M$ 的\Term{injective-envelope}{内射包}。它具有下列性质：
+\begin{enumerate}
+\item[(i)] 每个\Term{object}{对象} $M$ 都有\Term{injective-envelope}{内射包} $I$。
+\item[(ii)] 若 $I,J$ 是 $M$ 的两个\Term{injective-envelope}{内射包}，则 $I,J$ 之间存在\Term{isomorphism}{同构}（一般不唯一），其在 $M$ 上诱导恒等映射。
+\item[(iii)] $I$ 是 $M$ 的\Term{essential-extension}{本质扩张}，即 $P\subset I$ 且 $P\cap M=\{0\}$ 蕴含 $P=\{0\}$。此外，若 $I$ \Term{injective}{内射}且为 $M$ 的\Term{essential-extension}{本质扩张}，则 $I$ 是 $M$ 的\Term{injective-envelope}{内射包}。
+\end{enumerate}
+承认这些结果后，为证明定理 4.7，显然只须证明 c)。
+\SourcePage{50}
+\begin{proof}
+设 $I$ 为 $A$ 的\Term{dualizing-module}{对偶化模}。则 $I$ \Term{injective}{内射}，且 $\operatorname{Hom}_A(k,I)$ \Term{isomorphism}{同构}于 $k$。将\Term{isomorphism}{同构} $k\simeq\operatorname{Hom}_A(k,I)$ 与包含映射
+\[\operatorname{Hom}_A(k,I)\hookrightarrow\operatorname{Hom}_A(A,I)\simeq I\]
+复合，得到包含映射 $k\hookrightarrow I$。
+证明 $I$ 是 $k$ 的\Term{injective-envelope}{内射包}。设 $J$ 为\Term{injective-module}{内射模}，且 $k\subset J\subset I$。由于 $J$ \Term{injective}{内射}，存在 $I$ 的\Term{injective}{内射} $A$-\Term{submodule}{子模} $J'$，使 $I=J\oplus J'$。证明 $\operatorname{Hom}_A(k,J')=0$。有
+\[\operatorname{Hom}_A(k,I)\simeq\operatorname{Hom}_A(k,J)\oplus\operatorname{Hom}_A(k,J').\]
+$\operatorname{Hom}_A(k,J)$ 是 $\operatorname{Hom}_A(k,I)\simeq k$ 的非零向量子空间（因为它包含嵌入 $k\subset J$），故 $\operatorname{Hom}_A(k,J)\simeq k$，从而 $\operatorname{Hom}_A(k,J')=0$。
+对长度归纳可得，每个\Term{finite-length}{有限长度} $A$-模 $M$ 都有 $\operatorname{Hom}_A(M,J')=0$。由于 $I$ 是各模 $\operatorname{Hom}(A/\mathfrak m^n,I)$ 的\Term{inductive-limit}{归纳极限}（参见命题 1.3），而由假设这些模长度\Term{finite}{有限}，故\Term{projection}{投影} $I\to J'$ 为零，因而 $J'=0$。
+
+反过来，设 $I$ 是 $k$ 的\Term{injective-envelope}{内射包}。由 2.1 和 3.1 (ii)，为证明 $I$ 是\Term{dualizing-module}{对偶化模}，只须证明 $V=\operatorname{Hom}_A(k,I)$ \Term{isomorphism}{同构}于 $k$。有双重包含关系 $k\subset V\subset I$；$V$ 是 $k$-\Term{vector-space}{向量空间}，\Term{decomposable}{可分解}为 $k$ 与 $I$ 的某个向量子空间 $V'$ 的\Term{direct-sum}{直和}，且 $V'\cap k=0$。由于 $I$ 是 $k$ 的\Term{essential-extension}{本质扩张}，得 $V'=0$，故 $V=k$。
+\end{proof}
+\begin{SGAresult}{推论}{4.9}
+设 $A$ 为 \Term{noetherian-local-ring}{Noether 局部环}，则 $A$ 的每个\Term{dualizing-module}{对偶化模}都是\Term{locally-artinian-module}{局部 Artin 模}。
+\end{SGAresult}
+\begin{proof}
+设 $I$ 为\Term{dualizing-module}{对偶化模}；它是 $k$ 的\Term{injective-envelope}{内射包}。使用推论 2.2 的记号和结论。有
+\[k\subset H^0_{\mathfrak m}(I)\subset I,\]
+且 $H^0_{\mathfrak m}(I)$ \Term{injective}{内射}。因而 $I=H^0_{\mathfrak m}(I)$，所以 $I$ \Term{locally-artinian}{局部 Artin}。\footnote[5]{编者注：如前所见，也可以直接注意到 $I$ 是各模 $\operatorname{Hom}_A(A/\mathfrak m^n,I)$ 的\Term{inductive-limit}{归纳极限}。}
+\end{proof}
+\SourcePage{51}
+\SGAsection{5}{对偶化模理论的推论}
+\Term{functor}{函子}
+\[T=\operatorname{Hom}_A(-,I):\underline{\mathcal C}_{\mathfrak m}\longrightarrow\underline{\mathcal C}_{\mathfrak m}\]
+是\Term{anti-equivalence}{反等价}。事实上，$T\circ T$ \Term{isomorphism}{同构}于\Term{identity-functor}{恒等函子}，余下的论证是形式的。
+由此得到\Term{orthogonality}{正交}概念的通常性质：
+设 $M^*=\operatorname{Hom}_A(M,I)=T(M)$，$N\subset M$ 为\Term{submodule}{子模}。称 $M^*$ 中由在 $N$ 上为零的元素组成的\Term{submodule}{子模} $N'$ 为 $N$ 的\Term{orthogonal-submodule}{正交子模}。这样得到 $M$ 的\Term{submodule}{子模}\Term{set}{集合}与 $M^*$ 的\Term{submodule}{子模}\Term{set}{集合}之间的一个反序\Term{bijective}{双射}。特别地：
+\begin{itemize}
+\item $\operatorname{long}_M N=\operatorname{colong}_{M^*}N'$。
+\item \Term{cyclic-module}{单生成模}，即 $M/\mathfrak mM$ 的\Term{dimension}{维数}为 $0$ 或 $1$ 的模，在\Term{duality}{对偶}中对应于\Term{socle}{基座}长度为 $0$ 或 $1$ 的模。
+\item 若 $A$ 为 \Term{artinian-ring}{Artin 环}，则 $A$ 的\Term{ideal}{理想}对应于 $I$ 的\Term{submodule}{子模}。
+\end{itemize}
+等等。
+
+设 $A$ 为 \Term{noetherian-local-ring}{Noether 局部环}，$\mathcal D A$ 为满足下列条件的 $A$-模 $M$ 的\Term{category}{范畴}：对每个 $n\in\mathbb N$，$M^{(n)}=M/\mathfrak m^{n+1}M$ 长度\Term{finite}{有限}，且 $M=\varprojlim_n M^{(n)}$。设 $\widehat A$ 为 $A$ 的\Term{completion}{完备化}。\Term{restriction-of-scalars}{限制标量}\Term{functor}{函子}与\Term{completion}{完备化}\Term{functor}{函子}是 $\mathcal D A$ 与 $\mathcal D\widehat A$ 之间互为\Term{quasi-inverse}{拟逆}的\Term{equivalence}{等价}；在\Term{isomorphism}{同构}意义下，它们与所考察模的底层\Term{abelian-group}{阿贝尔群}的形成交换。以 $\mathcal C A$ 表示\Term{socle}{基座}\Term{dimension}{维数}\Term{finite}{有限}的\Term{locally-artinian}{局部 Artin} 的 $A$-模\Term{category}{范畴}。
+\begin{SGAresult}{命题}{5.1}
+设 $A$ 为 \Term{noetherian-local-ring}{Noether 局部环}，$I$ 为 $A$ 的\Term{dualizing-module}{对偶化模}。\Term{functor}{函子}
+\[\operatorname{Hom}_A(-,I):(\mathcal C A)^{\circ}\longrightarrow\mathcal D A\]
+及
+\[\operatorname{Hom}_{\widehat A}(-,I):\mathcal D A\longrightarrow(\mathcal C A)^{\circ}\]
+是互为\Term{quasi-inverse}{拟逆}的\Term{equivalence-of-categories}{范畴等价}。
+此外，通过 $\mathcal D A$ 与 $\mathcal D\widehat A$ 之间、以及 $\mathcal C A$ 与 $\mathcal C\widehat A$ 之间的\Term{equivalence-of-categories}{范畴等价}输送这些\Term{functor}{函子}，就得到\Term{functor}{函子} $\operatorname{Hom}_{\widehat A}(-,I)$。
+\end{SGAresult}
+\begin{proof}
+设 $X\in\operatorname{Ob}\mathcal C A$。由定义，
+\[X=\varinjlim_{k\in\mathbb N}X_k,\qquad X_k=\operatorname{Hom}_A(A/\mathfrak m^{k+1},X),\]
+因而
+\[\operatorname{Hom}_A(X,I)=\varprojlim\operatorname{Hom}_A(X_k,I).\]
+\SourcePage{52}
+所以 $Y=\varprojlim X_k$ 是\Term{finitely-generated}{有限型} $\widehat A$-模，这是 EGA $0_{\mathrm I}$ 7.2.9 的结论。顺便注意，$\mathcal D\widehat A$ 也就是\Term{finitely-generated}{有限型} $\widehat A$-模的\Term{category}{范畴}；或者说，$\mathcal D A$ 是\Term{complete}{完备}且在 $\widehat A$ 上\Term{finitely-generated}{有限型}的 $A$-模\Term{category}{范畴}。现设 $Y$ 为这样的模，$f:Y\to I$ 为 $\widehat A$-\Term{homomorphism}{同态}。$f$ 的像是\Term{finitely-generated}{有限型}\Term{submodule}{子模}，故被某个 $\mathfrak m^k$ 零化；这是因为每个 $x\in I$ 都被 $\mathfrak m$ 的某个\Term{nilpotent}{幂零}化。因此 $f$ 通过 $Y/\mathfrak m^kY$ \Term{resolution}{分解}，从而
+\[\begin{aligned}
+\operatorname{Hom}_{\widehat A}(Y,I)&=\varinjlim_k\operatorname{Hom}_{\widehat A}(Y^{(k)},I),\qquad Y^{(k)}=Y/\mathfrak m^{k+1}Y\\
+&=\varinjlim_k(Y^{(k)})^*
+\end{aligned}\]
+属于 $\operatorname{Ob}\mathcal C A$。由此立即可见，命题中的两个\Term{functor}{函子}互为\Term{quasi-inverse}{拟逆}。
+\end{proof}
+由上述讨论可知，将 $A$ 替换为 $\widehat A$，既不改变所考察的\Term{category}{范畴}和\Term{functor}{函子}，也不改变这些模的底层\Term{abelian-group}{阿贝尔群}。因此命题 5.1 \Term{representable}{可表}述如下：
+
+\Term{functor}{函子} $\operatorname{Hom}_{\widehat A}(-,I)$ 在\Term{finitely-generated}{有限型} $\widehat A$-模\Term{category}{范畴}上的限制，取值于\Term{socle}{基座}\Term{dimension}{维数}\Term{finite}{有限}的\Term{locally-artinian}{局部 Artin} 的 $\widehat A$-模\Term{category}{范畴}，且有\Term{quasi-inverse}{拟逆}\Term{functor}{函子}，即\Term{functor}{函子} $\operatorname{Hom}_{\widehat A}(-,I)$ 的限制。在这两个\Term{category}{范畴}的交中，两个\Term{functor}{函子}相同（当然如此！），并给出\Term{finite-length}{有限长度} $\widehat A$-模\Term{category}{范畴}的\Term{autoduality}{自对偶}。
+
+\textbf{例 5.2（Macaulay）。} 设 $A$ 为\Term{local-ring}{局部环}，\Term{residue-field}{剩余域}为 $k$。设 $k_0$ 为 $A$ 的子域，且 $k$ 是 $k_0$ 的\Term{finite-extension}{有限扩张}，$[k:k_0]=d$。任意\Term{finite-length}{有限长度} $A$-模都可看成\Term{finite}{有限}维 $k_0$-\Term{vector-space}{向量空间}，其\Term{dimension}{维数}等于 $d\cdot\operatorname{long}(M)$。于是\Term{functor}{函子} $T$：
+\[M\longmapsto\operatorname{Hom}_{k_0}(M,k_0)\]
+\Term{exact}{正合}且保持长度，故为 $A$ 的\Term{dualizing-functor}{对偶化函子}。相应的\Term{dualizing-module}{对偶化模}为
+\[A'=\varinjlim_n\operatorname{Hom}_{k_0}(A/\mathfrak m^n,k_0),\]
+即赋予 $\mathfrak m$-\Term{adic-topology}{进拓扑}的 $A$ 的\Term{topological-dual}{拓扑对偶}。
+
+\textbf{例 5.3。} 设 $A$ 为\Term{dimension}{维数} $n$ 的\Term{regular}{正则} \Term{noetherian-local-ring}{Noether 局部环}。设 $\mathfrak m$ 为其\Term{maximal-ideal}{极大理想}，$k$ 为其\Term{residue-field}{剩余域}。存在\Term{regular-system-of-parameters}{正则参数系} $(x_1,x_2,\ldots,x_n)$，它生成 $\mathfrak m$，并且是 $A$-\Term{regular-sequence}{正则序列}。因此可用 \Term{koszul-complex}{Koszul 复形}计算 $\operatorname{Ext}^i_A(k,A)$，得到
+\[\operatorname{Ext}^i_A(k,A)=0\quad(i\ne n),\qquad\operatorname{Ext}^n_A(k,A)\simeq k.\]
+由于 $A$ 的\Term{depth}{深度}为 $n$，对每个被 $\mathfrak m$ 的某个\Term{nilpotent}{幂零}化的 $M$，
+\SourcePage{53}
+当 $i<n$ 时有 $\operatorname{Ext}^i_A(M,A)=0$；当 $i>n$ 时也有 $\operatorname{Ext}^i_A(M,A)=0$，因为 $A$ 的\Term{global-cohomological-dimension}{整体上同调维数}等于 $n$。所以 $\operatorname{Ext}^n_A(-,A)$ \Term{exact}{正合}，且 $\operatorname{Ext}^n_A(k,A)\simeq k$。由此得到：
+\begin{SGAresult}{命题}{5.4}
+若 $A$ 为\Term{dimension}{维数} $n$ 的\Term{regular}{正则} \Term{noetherian-local-ring}{Noether 局部环}，则\Term{functor}{函子}
+\[M\longmapsto\operatorname{Ext}^n_A(M,A)\]
+是\Term{dualizing-functor}{对偶化函子}。相应的\Term{dualizing-module}{对偶化模}为
+\[I=\varinjlim_r\operatorname{Ext}^n_A(A/\mathfrak m^r,A),\]
+它\Term{isomorphism}{同构}于 $H^n_{\mathfrak m}(A)$（第 II 讲，定理 6）。\begingroup\renewcommand{\thefootnote}{*}\footnote[1]{设 $A$ 为环，$J$ 为 $A$ 的\Term{ideal}{理想}，$M$ 为 $A$-模，$i\in\mathbb Z$；置 $H^i_J(M)=H^i_Y(X,F)$，其中 $X=\operatorname{Spec}(A)$、$Y=V(J)$、$F=\widetilde M$。}\endgroup{}
+\end{SGAresult}
+\textbf{注记 5.5。} 若 $A$ 同时满足前两例的假设，则所得的两个\Term{dualizing-module}{对偶化模}\Term{isomorphism}{同构}。例如，假设 $A$ \Term{regular}{正则}、\Term{dimension}{维数}为 $n$、\Term{complete}{完备}且\Term{equal-characteristic}{等特征}。于是存在\Term{coefficient-field}{代表域} $K$。选定 $A$ 的\Term{system-of-parameters}{参数系} $(x_1,\ldots,x_n)$ 后，\Term{constructible}{可构造} $A$ 与\Term{formal-power-series-ring}{形式幂级数环} $K[[T_1,\ldots,T_n]]$ 之间的\Term{isomorphism}{同构}。如下文所见，由此得到两个\Term{dualizing-module}{对偶化模}之间的显式\Term{isomorphism}{同构}
+\[v:H^n_{\mathfrak m}(A)\longrightarrow A'.\]
+利用最高次数的\Term{complete}{完备}\Term{relative-differentials}{相对微分}模 $\Omega^n=\Omega^n(A/K)$，可以对此\Term{isomorphism}{同构}作内在解释。事实上，已知 $\Omega^n$ 有一组基，由元素 $dx_1\wedge dx_2\cdots\wedge dx_n$ 组成。由此有\Term{isomorphism}{同构}
+\[u:H^n_{\mathfrak m}(\Omega^n)\longrightarrow H^n_{\mathfrak m}(A).\]
+一个值得注意的事实是，复合
+\[vu=w:H^n_{\mathfrak m}(\Omega^n)\longrightarrow A'\]
+不再依赖于\Term{system-of-parameters}{参数系}的选择，并且与\Term{base-field}{基域}变换交换。
+为构造 $v$，用与 $x_i$ 对应的 \Term{koszul-complex}{Koszul 复形}计算 $H^n_{\mathfrak m}(A)$，得到
+\[H^n_{\mathfrak m}(A)=\varinjlim_r A/(x_1^r,\ldots,x_n^r).\]
+\Term{transition-homomorphism}{过渡同态}定义如下：置 $I_r=A/(x_1^r,\ldots,x_n^r)$，令 $e^r_{a_1,\ldots,a_n}$ 为 $x_1^{a_1}x_2^{a_2}\cdots x_n^{a_n}$ 在 $I_r$ 中的像。满足 $0\le a_i<r$ 的 $e^r_{a_1,\ldots,a_n}$ 构成 $I_r$ 的一组基。
+这样，若 $s$ 为整数，则\Term{transition-homomorphism}{过渡同态}
+\[t_{r,r+s}:I_r\longrightarrow I_{r+s}\]
+\SourcePage{54}
+为乘以 $x_1^sx_2^s\cdots x_n^s$，所以
+\[u_{r,r+s}(e^r_{a_1,\ldots,a_n})=e^{r+s}_{a_1+s,\ldots,a_n+s}.\]
+注意，给定从 $A$-模 $M$ 到 $A'$ 的 $A$-\Term{homomorphism}{同态} $w$，\Term{equivalence}{等价}于给定一个 $K$-\Term{linear-form}{线性形式} $w':M\to K$，它在每个\Term{finitely-generated}{有限型}\Term{submodule}{子模}上连续。当 $M=H^n_{\mathfrak m}(\Omega^n)$ 时，定义 $w$ 因而\Term{equivalence}{等价}于定义\Term{linear-form}{线性形式}
+\[\rho:H^n_{\mathfrak m}(\Omega^n)\longrightarrow K,\]
+称为\Term{residue-form}{留数形式}\begingroup\renewcommand{\thefootnote}{*}\footnote[1]{关于\Term{residue}{留数}概念的更详细研究，参见 R.~Hartshorne, \emph{Residues and Duality}, Lect. Notes in Math., vol.~20, Springer, 1966。}\endgroup{}。为构造 $\rho$，只须定义可以\Term{gluing}{粘合}的形式 $\rho_r:I_r\to K$，取
+\[\rho_r(e^r_{a_1,\ldots,a_n})=\begin{cases}1&\text{若对 }1\le i\le n\text{ 均有 }a_i=r-1,\\0&\text{否则。}\end{cases}\]
+\SourcePage{55}
+\SGAchapter{V}{局部对偶与 $H^i(M)$ 的结构}{Dualité locale et structure des $H^i(M)$}
+\SGAsection{1}{同态复形}
+\textbf{1.1。} 设 $F^{\bullet},G^{\bullet}$ 为两个\Term{graded-module}{分次模}，记
+\[\operatorname{Hom}^{\bullet}(F^{\bullet},G^{\bullet})\tag{1}\]
+为从 $F^{\bullet}$ 到 $G^{\bullet}$ 的\Term{graded-module}{分次模}\Term{homomorphism}{同态}所成的\Term{graded-module}{分次模}。于是
+\[\operatorname{Hom}^s(F^{\bullet},G^{\bullet})=\prod_k\operatorname{Hom}(F^k,G^{k+s}).\tag{2}\]
+设 $F^{\bullet}$（相应地 $G^{\bullet}$）为\Term{complex}{复形}，\Term{differential}{微分}为 $d_1$（相应地 $d_2$）。对 $h\in\operatorname{Hom}^s(F^{\bullet},G^{\bullet})$，置\footnote[1]{编者注：原来的符号约定不同；但它与第 VIII 讲的约定不相容。第 VIII 讲的约定似乎更合理，因为在这种约定下，零次\Term{cohomology}{上同调}就是从 $F^{\bullet}$ 到 $G^{\bullet}$ 的\Term{morphism}{态射}的\Term{homotopy-class}{同伦类}\Term{set}{集合}。下文的计算已作相应修改。}
+\[d(h)=h\circ d_1+(-1)^{s+1}d_2\circ h.\tag{3}\]
+显然 $d\circ d=0$，因此赋予 $d$ 的 $\operatorname{Hom}^{\bullet}(F^{\bullet},G^{\bullet})$ 是\Term{complex}{复形}。此\Term{complex}{复形}的\Term{cohomology-group}{上同调群}记作
+\[\underset{\sim}{H}^{\bullet}(F^{\bullet},G^{\bullet}).\tag{4}\]
+若 $G^{\bullet}$ 在每个次数都\Term{injective}{内射}，则
+\[F^{\bullet}\longmapsto\underset{\sim}{H}^{\bullet}(F^{\bullet},G^{\bullet})\]
+是\Term{exact}{正合} $\partial$-\Term{functor}{函子}。同样，对于任意 $F^{\bullet}$，
+\[G^{\bullet}\longmapsto\underset{\sim}{H}^{\bullet}(F^{\bullet},G^{\bullet})\]
+在每个次数都\Term{injective}{内射}的\Term{complex}{复形} $G^{\bullet}$ 的\Term{category}{范畴}上是\Term{exact}{正合} $\delta$-\Term{functor}{函子}。
+\SourcePage{56}
+\textbf{注记 1.2。} $\operatorname{Hom}^{\bullet}(F^{\bullet},G^{\bullet})$ 的\Term{cycle}{闭元}，是从 $F^{\bullet}$ 到 $G^{\bullet}$ 的\Term{homomorphism}{同态}，它们按次数的奇偶与\Term{differential}{微分}交换或反交换。$\operatorname{Hom}^{\bullet}(F^{\bullet},G^{\bullet})$ 的\Term{boundary}{边界}，是从 $F^{\bullet}$ 到 $G^{\bullet}$ 的\Term{null-homotopic}{零伦}\Term{homomorphism}{同态}。
+
+设 $A$ 为环，$M$（相应地 $N$）为 $A$-模，$R(M)$（相应地 $R(N)$）为 $M$（相应地 $N$）的\Term{injective-resolution}{内射消解}。则存在\Term{canonical}{典范}\Term{isomorphism}{同构}\footnote[2]{编者注：保留了原文奇特的编号。}
+\[\underset{\sim}{H}^s(R(M),R(N))\simeq\operatorname{Ext}^s(M,N).\tag{1.3}\]
+事实上，令 $i:M\to R(M)$ 为\Term{canonical}{典范}\Term{augmentation}{增广}，设 $h\in\operatorname{Hom}^s(R(M),R(N))$，以 $t_s$ 表示从 $\operatorname{Hom}^s(R(M),R(N))$ 到 $\operatorname{Hom}(M,R(N)^s)$ 的映射
+\[h\longmapsto h_0\circ i.\]
+族 $(t_s)_{s\ge0}$ 定义一个（通常的）\Term{complex}{复形}\Term{homomorphism}{同态}\footnote[3]{编者注：仍以 $M$ 表示将 $M$ 放在零次所成的\Term{complex}{复形} $M[0]$。}
+\[t:\operatorname{Hom}^{\bullet}(R(M),R(N))\longrightarrow\operatorname{Hom}^{\bullet}(M,R(N)),\]
+即 $(dh)_0\circ i=d_2\circ h_0\circ i$。
+容易证明，取\Term{cohomology}{上同调}后 $t$ 给出\Term{isomorphism}{同构}。特别地，
+\[\underset{\sim}{H}^{\bullet}(R(M),R(N))\]
+“不依赖于”所选的 $M$（相应地 $N$）的\Term{injective-resolution}{内射消解} $R(M)$（相应地 $R(N)$）。
+对于任意 $A$-模\Term{exact-sequence}{正合列}
+\[0\longrightarrow M'\longrightarrow M\longrightarrow M''\longrightarrow0,\tag{5}\]
+对应地取\Term{injective-resolution}{内射消解}的\Term{exact-sequence}{正合列}
+\[0\longrightarrow R(M')\longrightarrow R(M)\longrightarrow R(M'')\longrightarrow0.\tag{6}\]
+可以验证，\Term{isomorphism}{同构} (1.3) 与分别由 (6)、(5) 得到的\Term{homomorphism}{同态}
+\[\underset{\sim}{H}^s(R(M'),R(N))\longrightarrow\underset{\sim}{H}^{s+1}(R(M''),R(N)),\tag{8}\]
+\[\operatorname{Ext}^s(R(M'),R(N))\longrightarrow\operatorname{Ext}^{s+1}(R(M''),R(N))\tag{9}\]
+交换。
+设 $P$ 为第三个 $A$-模，$R(P)$ 为 $P$ 的\Term{injective-resolution}{内射消解}。\Term{graded}{分次}\Term{morphism}{态射}的复合给出\Term{pairing}{配对}
+\[\operatorname{Hom}^i(R(N),R(M))\times\operatorname{Hom}^j(R(M),R(P))\longrightarrow\operatorname{Hom}^{i+j}(R(N),R(P)),\tag{10}\]
+它定义\Term{pairing}{配对}
+\[\underset{\sim}{H}^i(R(N),R(M))\times\underset{\sim}{H}^j(R(M),R(P))\longrightarrow\underset{\sim}{H}^{i+j}(R(N),R(P)),\tag{11}\]
+\SourcePage{57}
+从而给出关于 $M$ 的\Term{functor}{函子}\Term{homomorphism}{同态}
+\[\underset{\sim}{H}^i(R(N),R(M))\longrightarrow\operatorname{Hom}\bigl(\underset{\sim}{H}^j(R(M),R(P)),\underset{\sim}{H}^{i+j}(R(N),R(P))\bigr).\tag{1.4}\]
+我们将说明，(1.4) 是关于 $M$ 的 $\delta$-\Term{functor}{函子}\Term{homomorphism}{同态}。\Term{exact-sequence}{正合列} (5)、(6) 给出\Term{commutative-diagram}{交换图}
+\[\resizebox{\textwidth}{!}{\begin{tikzcd}[ampersand replacement=\&,column sep=small]
+\operatorname{Hom}^i(R(N),R(M'))\arrow[r]\arrow[d]\&\operatorname{Hom}\bigl(\operatorname{Hom}^j(R(M'),R(P)),\operatorname{Hom}^{i+j}(R(N),R(P))\bigr)\arrow[d,"{\operatorname{Hom}(q,\operatorname{id})}"]\\
+\operatorname{Hom}^i(R(N),R(M))\arrow[r]\arrow[d,"p"']\&\operatorname{Hom}\bigl(\operatorname{Hom}^j(R(M),R(P)),\operatorname{Hom}^{i+j}(R(N),R(P))\bigr)\arrow[d]\\
+\operatorname{Hom}^i(R(N),R(M''))\arrow[r]\&\operatorname{Hom}\bigl(\operatorname{Hom}^j(R(M''),R(P)),\operatorname{Hom}^{i+j}(R(N),R(P))\bigr).
+\end{tikzcd}}\]
+设 $h\in\operatorname{Hom}^i(R(N),R(M''))$（相应地 $g\in\operatorname{Hom}^j(R(M'),R(P))$）为\Term{cycle}{闭元}，取 $h'\in\operatorname{Hom}^i(R(N),R(M))$（相应地 $g'\in\operatorname{Hom}^j(R(M),R(P))$），使 $p(h')=h$（相应地 $q(g')=g$）。则说 (1.4) 是关于 $M$ 的 $\delta$-\Term{functor}{函子}\Term{homomorphism}{同态}，就是说
+\[g\circ dh'-dg'\circ h\tag{12}\]
+是 $\operatorname{Hom}^{\bullet}(R(N),R(P))$ 中的\Term{coboundary}{上边界}。
+使用显然的记号，有
+\[\begin{aligned}
+dh'&=h'\circ d_1+(-1)^{i+1}d_2\circ h',\\
+dg'&=g'\circ d_2+(-1)^{j+1}d_3\circ g'.
+\end{aligned}\]
+因此 (12) 写成
+\[g\circ h'\circ d_1+(-1)^{i+1}g\circ d_2\circ h'-g'\circ d_2\circ h-(-1)^{j+1}d_3\circ g'\circ h.\]
+另一方面，$h,g$ 为\Term{cycle}{闭元}，故
+\[g\circ d_2=(-1)^j d_3\circ g,\qquad d_2\circ h=(-1)^i h\circ d_1.\]
+于是 (12) 最终写成
+\[d\bigl(g\circ h'+(-1)^{i+1}g'\circ h\bigr),\]
+证明完毕。因而 (1.3)、(1.4) 给出关于 $M$ 的 $\delta$-\Term{functor}{函子}\Term{homomorphism}{同态}
+\[\operatorname{Ext}^i(N,M)\longrightarrow\operatorname{Hom}\bigl(\operatorname{Ext}^j(M,P),\operatorname{Ext}^{i+j}(N,P)\bigr).\tag{1.5}\]
+\SourcePage{58}
+\SGAsection{2}{正则局部环的局部对偶定理}
+设 $A$ 为\Term{dimension}{维数} $r$ 的\Term{regular-local-ring}{正则局部环}，$\mathfrak m$ 为 $A$ 的\Term{maximal-ideal}{极大理想}，$M$ 为\Term{finitely-generated}{有限型} $A$-模。置 $H^i(M)=H^i_{\mathfrak m}(M)$（故 $H^i(M)=\varinjlim\operatorname{Ext}^i(A/\mathfrak m^k,M)$）。已知（第 IV 讲 5.4）$I=H^r(A)$ 为 $A$ 的\Term{dualizing-module}{对偶化模}，以 $D$ 表示相应的\Term{dualizing-functor}{对偶化函子}。在 (1.5) 中置 $N=A/\mathfrak m^k$、$P=A$，得到关于 $M$ 的 $\delta$-\Term{functor}{函子}\Term{homomorphism}{同态}
+\[\varphi_k:\operatorname{Ext}^i(A/\mathfrak m^k,M)\longrightarrow\operatorname{Hom}\bigl(\operatorname{Ext}^{r-i}(M,A),\operatorname{Ext}^r(A/\mathfrak m^k,A)\bigr).\tag{13}\]
+沿 $k$ 取\Term{inductive-limit}{归纳极限}，得到 $\delta$-\Term{functor}{函子}\Term{homomorphism}{同态}
+\[\varphi:H^i(M)\longrightarrow D(\operatorname{Ext}^{r-i}(M,A)).\tag{14}\]
+\begin{SGAresult}{定理}{2.1（\Term{local-duality}{局部对偶}定理）}
+上述\Term{functor}{函子}\Term{homomorphism}{同态} $\varphi$ 是\Term{isomorphism}{同构}。
+\end{SGAresult}
+\begin{proof}
+若 $i>r$，(14) 的右端显然为零；左端也为零，因为 $H^i(M)=\varinjlim_k\operatorname{Ext}^i(A/\mathfrak m^k,M)$，且各个 $\operatorname{Ext}^i(A/\mathfrak m^k,M)$ 均为零（\Term{syzygy-theorem}{合冲定理}）。
+若 $i=r$，由前述讨论，关于 $M$ 的两个\Term{functor}{函子} $H^r(M)$ 和 $D(\operatorname{Hom}(M,A))$ 都\Term{right-exact}{右正合}；由于 $A$ 为 \Term{noetherian-ring}{Noether 环}，$M$ \Term{finitely-generated}{有限型}，只须在 $M=A$ 时验证此\Term{isomorphism}{同构}，而这是显然的。
+现在对 $i$ 作\Term{descent}{下降}归纳。为证明 $\varphi$ 是\Term{functor}{函子}\Term{isomorphism}{同构}，只须注意，每个\Term{finitely-generated}{有限型}模都有\Term{finitely-presented}{有限呈示}，且当 $i<r$ 而 $M$ 为\Term{finitely-generated}{有限型}\Term{free-module}{自由模}时，(14) 两端都为零。右端显然如此；左端由于 $H^i$ 与\Term{finite}{有限}\Term{direct-sum}{直和}交换，只须证明 $i<r$ 时 $H^i(A)=0$。这由 $\operatorname{prof}(A)=r$ 及第 III 讲 3.4 得出。
+\end{proof}
+\SGAsection{3}{对 $H^i(M)$ 的结构的应用}
+\begin{SGAresult}{定理}{3.1}
+设 $A$ 为 \Term{noetherian-local-ring}{Noether 局部环}，$D$ 为 $A$ 的\Term{dualizing-functor}{对偶化函子}，$M$ 为非零\Term{finitely-generated}{有限型} $A$-模，\Term{dimension}{维数}为 $n$。则：
+\begin{enumerate}
+\item[(i)] 若 $i<0$ 或 $i>n$，则 $H^i(M)=0$。
+\item[(ii)] $\widehat{D(H^i(M))}$ 是\Term{finitely-generated}{有限型} $\widehat A$-模，\Term{dimension}{维数} $\le i$。
+\item[(iii)] $H^n(M)\ne0$；若 $A$ \Term{complete}{完备}，则 $D(H^n(M))$ 的\Term{dimension}{维数}为 $n$，且
+\[\operatorname{Ass}(D(H^n(M)))=\{\mathfrak p\in\operatorname{Ass}(M)\mid\dim A/\mathfrak p=n\}.\]
+\end{enumerate}
+\end{SGAresult}
+\begin{proof}
+设 $I$ 为与 $D$ 对应的\Term{dualizing-module}{对偶化模}。已知 $\widehat I$ 为 $\widehat A$ 的\Term{dualizing-module}{对偶化模}。另一方面，有
+\[\begin{aligned}
+\widehat{H^i(M)}&=H^i(\widehat M),\\
+\widehat{D(H^i(M))}&=\operatorname{Hom}(H^i(\widehat M),\widehat I),\\
+\dim\widehat M&=\dim M,
+\end{aligned}\]
+\SourcePage{59}
+故可假设 $A$ \Term{complete}{完备}。由 Cohen 的一个定理，每个\Term{complete}{完备}\Term{local-ring}{局部环}都是\Term{regular-local-ring}{正则局部环}的商。为归结到这一情形，需要下述引理。
+\end{proof}
+\begin{SGAresult}{引理}{3.2}
+设 $X$（相应地 $Y$）为\Term{ringed-space}{赋环空间}，$X'$（相应地 $Y'$）为 $X$（相应地 $Y$）的\Term{closed-subspace}{闭子空间}，$f:X\to Y$ 为\Term{ringed-space}{赋环空间}的\Term{morphism}{态射}，满足 $f^{-1}(Y')=X'$。设 $F$ 为 $\mathcal O_X$-模，以 $A$（相应地 $B$）表示环 $\Gamma(\mathcal O_X)$（相应地 $\Gamma(\mathcal O_Y)$），并以 $\overline f:B\to A$ 表示与 $f$ 对应的环\Term{homomorphism}{同态}。存在一个 $B$-模\Term{spectral-sequence}{谱序列}，其初始项为
+\[E_2^{p,q}=H^p_{Y'}(Y,R^qf_*(F)),\tag{15}\]
+收敛到 $B$-模 $H^{\bullet}_{X'}(X,F)_{[\overline f]}$。
+\end{SGAresult}
+\begin{proof}
+设 $\mathcal O_{Y,Y'}$ 为将\Term{sheaf}{层} $\mathcal O_Y|_{Y'}$ 在 $Y'$ 外\Term{extension-by-zero}{延拓为零}所得的\Term{sheaf}{层}（参见第 I 讲）。有 $B$-模\Term{isomorphism}{同构}
+\[\operatorname{Hom}(\mathcal O_{Y,Y'},f_*(F))\simeq\operatorname{Hom}(f^*(\mathcal O_{Y,Y'}),F)_{[\overline f]}.\tag{16}\]
+又有
+\[f^*(\mathcal O_{Y,Y'})=\mathcal O_{X,X'},\tag{17}\]
+并且若 $G$ 为\Term{injective}{内射} $\mathcal O_X$-模，则 $f_*(G)$ 为\Term{injective}{内射} $\mathcal O_Y$-模，至少当 $f$ \Term{flat}{平坦}时如此；将 $\mathcal O_X$ 等替换为\Term{constant-sheaf}{常值环层} $\mathbb Z$，即可容易地归结到此情形。因此复合\Term{functor}{函子}
+\[F\longmapsto\operatorname{Hom}(\mathcal O_{Y,Y'},f_*(F))\]
+的\Term{spectral-sequence}{谱序列}，其初始项为
+\[E_2^{p,q}=\operatorname{Ext}^p(Y;\mathcal O_{Y,Y'},R^qf_*(F)),\]
+由 (16)、(17) 收敛到
+\[\operatorname{Ext}^{\bullet}(X;\mathcal O_{X,X'},F)_{[\overline f]}.\]
+引理即由第 I 讲 13 bis 得出。
+\end{proof}
+\begin{proof}[定理 3.1 的证明（续）]
+现设 $f:B\to A$ 为\Term{local-ring}{局部环}的满\Term{homomorphism}{同态}。令 $f:\operatorname{Spec}(A)\to\operatorname{Spec}(B)$ 为相应的\Term{affine-scheme}{仿射概形}\Term{morphism}{态射}。置 $X=\operatorname{Spec}(A)$（相应地 $X'=\{\mathfrak m_A\}$），$Y=\operatorname{Spec}(B)$（相应地 $Y'=\{\mathfrak m_B\}$），设 $M$ 为 $A$-模，$\widetilde M$ 为相应的 $\mathcal O_X$-模。由于 $q>0$ 时 $R^qf_*(\widetilde M)=0$，\Term{spectral-sequence}{谱序列} (15) \Term{degeneration}{退化}，由 (3.2) 得到 $B$-模\Term{isomorphism}{同构}
+\[H^n_{\{\mathfrak m_B\}}(Y,f_*(\widetilde M))\simeq H^n_{\{\mathfrak m_A\}}(X,\widetilde M)_{[f]},\tag{18}\]
+从而有 $B$-模\Term{isomorphism}{同构}
+\[H^n_{\mathfrak m_B}(M_{[f]})\simeq H^n_{\mathfrak m_A}(M)_{[f]}.\tag{19}\]
+\SourcePage{60}
+另一方面，若 $D_A$（相应地 $D_B$）为 $A$（相应地 $B$）的\Term{dualizing-functor}{对偶化函子}，则
+\[D_A(M)_{[f]}\simeq D_B(M_{[f]}).\tag{20}\]
+最后，由环\Term{isomorphism}{同构}
+\[B/\operatorname{Ann}M_{[f]}\simeq A/\operatorname{Ann}M,\tag{21}\]
+可知所考虑的基环变换不改变问题。因此假设 $A$ \Term{regular}{正则}，\Term{dimension}{维数}为 $r$。
+由 (2.1)，有
+\[D(H^i(M))=\operatorname{Ext}^{r-i}(M,A).\tag{22}\]
+先证明以下性质\Term{equivalence}{等价}：
+\begin{enumerate}
+\item[(a)] $\dim\operatorname{Ext}^j(M,A)\le r-j$；
+\item[(b)] 对每个满足 $\dim A_{\mathfrak p}<j$ 的 $\mathfrak p\in X=\operatorname{Spec}(A)$，均有 $\operatorname{Ext}^j(M,A)_{\mathfrak p}=0$；
+\item[(c)] $\operatorname{codim}(\operatorname{Supp}(\operatorname{Ext}^j(M,A)),X)\ge j$。
+\end{enumerate}
+为证明 (a)$\Rightarrow$(b)，取 $\mathfrak p\in X$，$\dim A_{\mathfrak p}<j$，则 $\dim A/\mathfrak p>r-j$；由 (a)，$\operatorname{Ann}(\operatorname{Ext}^j(M,A))\not\subset\mathfrak p$，从而 $\operatorname{Ext}^j(M,A)_{\mathfrak p}=0$。设 $\mathfrak p\in\operatorname{Supp}(\operatorname{Ext}^j(M,A))$，则 $\operatorname{Ext}^j(M,A)_{\mathfrak p}\ne0$，故由 (b) 得 $\dim A_{\mathfrak p}\ge j$。因此
+\[\operatorname{codim}(\operatorname{Supp}(\operatorname{Ext}^j(M,A)),X)=\inf\{\dim A_{\mathfrak p}\mid\mathfrak p\in\operatorname{Supp}(\operatorname{Ext}^j(M,A))\}\ge j,\]
+即 (b)$\Rightarrow$(c)。最后，(c) 显然蕴含 (a)。
+现在证明定理。
+
+(i) 取 $A$ 的\Term{system-of-parameters}{参数系} $x=(x_1,\ldots,x_r)$，使 $i=1,\ldots,r-n$ 时 $x_i\in\operatorname{Ann}M$。令 $K^{\bullet}((x^k),M)$ 为 \Term{koszul-complex}{Koszul 复形}。容易看出，若 $i>n$，则当 $k<k'$ 时，映射 $K^i((x^k),M)\to K^i((x^{k'}),M)$ 为零。因此，$i>n$ 时
+\[H^i(M)=\varinjlim H^i((x^k),M)=0.\]
+另一方面，$i<0$ 时显然 $H^i(M)=0$，故 (i) 得证。
+
+(ii) 由于 $A$ \Term{regular}{正则}，$\dim A_{\mathfrak p}<j$ 蕴含 $A_{\mathfrak p}$ 的\Term{global-homological-dimension}{整体同调维数}严格小于 $j$，故
+\[\operatorname{Ext}^j(M,A)_{\mathfrak p}=\operatorname{Ext}^j_{A_{\mathfrak p}}(M_{\mathfrak p},A_{\mathfrak p})=0.\]
+这证明了 (b)，从而也证明了 (a)。(ii) 随即由 (22) 与 (a) 得出。
+
+(iii) 存在 $\mathfrak p\in\operatorname{Supp}(M)$，使 $\dim A_{\mathfrak p}=r-n$ 且 $\operatorname{Supp}(M_{\mathfrak p})=\{\mathfrak m_{A_{\mathfrak p}}\}$。$A$ \Term{regular}{正则}时 $A_{\mathfrak p}$ 也\Term{regular}{正则}，因此 $\operatorname{prof}A_{\mathfrak p}=r-n$，故
+\[\operatorname{Ext}^{r-n}_A(M,A)_{\mathfrak p}=\operatorname{Ext}^{r-n}_{A_{\mathfrak p}}(M_{\mathfrak p},A_{\mathfrak p})\ne0.\tag{23}\]
+结合 (22)，这既蕴含 $H^n(M)\ne0$，又蕴含 $\dim D(H^n(M))\ge n$；再由 (ii) 得
+\[\dim D(H^n(M))=n.\]
+\SourcePage{61}
+现令 $Y=\operatorname{Supp}(M)$。由 (i)，$D(H^n(M'))=\operatorname{Ext}^{r-n}(M',A)$ 在\Term{category}{范畴} $(\underline{\mathcal C}_Y)^{\circ}$ 上是关于 $M'$ 的\Term{left-exact}{左正合}\Term{functor}{函子}。因此存在 $A$-模 $H$ 以及关于 $M'$ 的\Term{functor}{函子}\Term{isomorphism}{同构}
+\[\operatorname{Ext}^{r-n}(M',A)=\operatorname{Hom}(M',H).\]
+设 $Y_i$，$i=1,\ldots,k$，为 $Y$ 中\Term{dimension}{维数}最大的\Term{irreducible-component}{不可约分支}。我们将说明，断言 $\operatorname{Ext}^{r-n}(M',A)\ne0$ \Term{equivalence}{等价}于：存在 $i$ 使 $\operatorname{Supp}M'\supset Y_i$。事实上，若 $\operatorname{Supp}M'\supset Y_i$，则 $\dim(M')=n$，故 $\operatorname{Ext}^{r-n}(M',A)\ne0$。
+若对所有 $i=1,\ldots,k$ 都有 $\operatorname{Supp}M'\not\supset Y_i$，则 $\dim M'<n$，
+\[D(H^n(M'))=\operatorname{Ext}^{r-n}(M',A)=0.\]
+由于
+\[\operatorname{Ass}(\operatorname{Ext}^{r-n}(M,A))=\operatorname{Supp}M\cap\operatorname{Ass}(H),\]
+可见 (iii) 中最后一条断言可由下述引理得出。
+\end{proof}
+\begin{SGAresult}{引理}{3.3}
+设 $X=\operatorname{Spec}(A)$，$Y$ 为 $X$ 的\Term{closed-subset}{闭子集}，$T:(\underline{\mathcal C}_Y)^{\circ}\to\underline{\mathrm{Ab}}$ 为\Term{left-exact}{左正合}\Term{functor}{函子}，$Y_i$，$i=1,\ldots,k$，为 $Y$ 的一族\Term{irreducible-component}{不可约分支}，且断言 $T(M)=0$ \Term{equivalence}{等价}于：对每个 $i$，$\operatorname{Supp}M\not\supset Y_i$。则 $T$ 可由一个模 $H$ 表示，且
+\[\operatorname{Ass}(H)=\bigcup_{i=1}^k\{y_i\},\]
+其中 $y_i$ 是 $Y_i$ 的\Term{generic-point}{泛点}，$i=1,\ldots,k$。
+\end{SGAresult}
+\begin{proof}
+设 $y\in Y$，构造一个 $A$-模 $M(y)$，使 $\operatorname{Supp}(M(y))=\overline{\{y\}}$。假设对所有 $i=1,\ldots,k$ 均有 $y\ne y_i$，则对每个 $i=1,\ldots,k$ 都有 $Y_i\not\subset\operatorname{Supp}(M(y))$，故 $T(M(y))=0$。于是
+\[\operatorname{Ass}(T(M(y)))=\operatorname{Supp}(M(y))\cap\operatorname{Ass}(H)=\varnothing,\]
+从而 $y\notin\operatorname{Ass}(H)$。若 $y=y_i$，则 $Y_i\subset\operatorname{Supp}(M(y))$，故 $T(M(y))\ne0$，因此
+\[\operatorname{Ass}(T(M(y)))=\operatorname{Supp}(M(y))\cap\operatorname{Ass}(H)\ne\varnothing.\]
+由证明的第一部分，这蕴含 $y\in\operatorname{Ass}(H)$，引理得证。
+\end{proof}
+\textbf{例 3.4。} 设 $A$ 为 \Term{noetherian-ring}{Noether 环}，$X=\operatorname{Spec}(A)$，$Y$ 为 $X$ 的\Term{closed-subset}{闭子集}，且 $X-Y$ \Term{affine}{仿射}。则对 $Y$ 的每个\Term{irreducible-component}{不可约分支} $Y_{\alpha}$，有 $\operatorname{codim}(Y_{\alpha},X)\le1$。
+事实上，将 $X$ 看成 $X$ 上的\Term{prescheme}{预概形}。取 $Y_{\alpha}$ 的\Term{generic-point}{泛点} $y_{\alpha}$，考虑\Term{morphism}{态射} $\operatorname{Spec}(\mathcal O_{X,y_{\alpha}})\to X$。将\Term{base-scheme}{基概形}从 $X$ \Term{group-extension}{扩张}到 $\operatorname{Spec}(\mathcal O_{X,y_{\alpha}})$ 所得的\Term{affine-scheme}{仿射概形}，\Term{canonical}{典范}\Term{isomorphism}{同构}于 $\operatorname{Spec}(\mathcal O_{X,y_{\alpha}})$。
+由 EGA I 3.2.7，若 $y_0$ 为 $Y_0=\operatorname{Spec}(\mathcal O_{X,y_{\alpha}})$ 的唯一\Term{closed-point}{闭点}，则 $Y_0-y_0$ \Term{affine}{仿射}。由 EGA III 1.3.1 得
+\[H^i(Y_0-y_0,\mathcal O_{Y_0})=0\qquad(i>0),\]
+\SourcePage{62}
+故由第 I 讲 2.9，
+\[H^{i-1}(\mathcal O_{X,y_{\alpha}})=H^i_{\{y_0\}}(Y_0,\mathcal O_{Y_0})=0\qquad(i\ge2).\]
+结合 3.1 (iii)，得到 $\dim\mathcal O_{X,y_{\alpha}}\le1$，故
+\[\operatorname{codim}(Y_{\alpha},X)=\inf_{y\in Y_{\alpha}}\dim\mathcal O_{X,y}\le1.\]
+证毕。
+
+设 $A$ 为 \Term{noetherian-local-ring}{Noether 局部环}，$\mathfrak m$ 为\Term{maximal-ideal}{极大理想}，$M$ 为\Term{finitely-generated}{有限型} $A$-模。假设 $A$ 是\Term{regular-local-ring}{正则局部环}的商。置 $X=\operatorname{Spec}(A)$，并对每个 $x\in X$ 置 $\mathfrak m_x=\mathfrak m_{A_x}$。
+\begin{SGAresult}{命题}{3.5}
+下列两个条件\Term{equivalence}{等价}：
+\begin{enumerate}
+\item[a)] $H^i(M)$ 长度\Term{finite}{有限}。
+\item[b)] $\forall x\in X-\{\mathfrak m\}$，$H^{i-\dim\overline{\{x\}}}_{\mathfrak m_x}(M_x)=0$。
+\end{enumerate}
+\end{SGAresult}
+\begin{proof}
+由 (3.2)，可假设 $A$ \Term{regular}{正则}。由 (2.1)，有
+\[H^i(M)=D(\operatorname{Ext}^{r-i}(M,A)),\]
+其中 $r=\dim A$。由第 IV 讲 4.7，a) \Term{equivalence}{等价}于\footnote[4]{编者注：事实上，须证明：若 $E$ 是\Term{finitely-generated}{有限型} $A$-模，且 $D(E)$ 长度\Term{finite}{有限}，则 $E$ 长度\Term{finite}{有限}。令 $K$（相应地 $Q$）为\Term{canonical}{典范}\Term{homomorphism}{同态} $\epsilon:E\to DD(E)$ 的核（相应地\Term{cokernel}{余核}）。$D(\epsilon)$ 与\Term{canonical}{典范}\Term{homomorphism}{同态} $\gamma:D(E)\to DDD(E)$ 的复合是 $D(E)$ 的恒等映射。因为 $D(E)$ 长度\Term{finite}{有限}，$\gamma$ 是\Term{isomorphism}{同构}，故 $D(\epsilon)$ 也是\Term{isomorphism}{同构}。由 $D$ \Term{exact}{正合}，$D(K),D(Q)$ 均为零。只须证明\Term{duality}{对偶}为零的 $A$-模 $M$ 必为零，就有 $E=DD(E)$，其与 $D(E)$ 一样长度\Term{finite}{有限}。事实上，设 $M_0$ 是 $M$ 的\Term{finitely-generated}{有限型}\Term{submodule}{子模}。由 $D$ 的\Term{exact}{正合}性，$D(M_0)$ 是 $D(M)$ 的商，因而为零。再由 $D$ 的\Term{exact}{正合}性，$D(M_0/\mathfrak m_A M_0)=0$；由\Term{biduality}{双对偶性}，\Term{finite-length-module}{有限长度模} $M_0/\mathfrak m_A M_0$ 为零。Nakayama 引理遂保证 $M_0=0$，最终得到 $M=0$。}
+\[\operatorname{Ext}^{r-i}(M,A)\text{ 长度有限。}\tag{24}\]
+而 (24) \Term{equivalence}{等价}于
+\[\forall x\in X-\{\mathfrak m\},\qquad\operatorname{Ext}^{r-i}(M,A)_x=0.\tag{25}\]
+另一方面，$A_x$ \Term{regular}{正则}，\Term{dimension}{维数}为 $r-\dim\overline{\{x\}}$，故由 (2.1)，
+\[\begin{aligned}
+H^{i-\dim\overline{\{x\}}}_{\mathfrak m_x}(M_x)
+&=D\bigl(\operatorname{Ext}^{(r-\dim\overline{\{x\}})-(i-\dim\overline{\{x\}})}_{A_x}(M_x,A_x)\bigr)\\
+&=D\bigl(\operatorname{Ext}^{r-i}_{A_x}(M_x,A_x)\bigr).
+\end{aligned}\tag{26}\]
+由 $M$ \Term{finitely-generated}{有限型}，有
+\[\operatorname{Ext}^{r-i}_A(M,A)_x=\operatorname{Ext}^{r-i}_{A_x}(M_x,A_x),\]
+命题得证。
+\end{proof}
+\SourcePage{63}
+\begin{SGAresult}{推论}{3.6}
+$H^i(M)$ 对 $i\le n$ 都长度\Term{finite}{有限}的充要条件是：对每个 $x\in X-\{\mathfrak m\}$，有
+\[\operatorname{prof}(M_x)>n-\dim\overline{\{x\}}.\]
+\end{SGAresult}
+\begin{proof}
+由 (3.5) 和第 III 讲 3.1 得出。
+\end{proof}
+\SourcePage{64}
+% 原 PDF 第 64 页为空白页。

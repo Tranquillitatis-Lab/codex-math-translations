@@ -1,0 +1,1109 @@
+\SGAchapter{VI}{纤维范畴与下降}{Catégories fibrées et descente}
+\SourcePage{135}
+\SGAsection{0}{引言}
+与上一讲引言中的预告相反，事实表明：即使只考虑特殊情形，如果不先相当仔细地建立一般\Term{category}{范畴}中\Term{descent}{下降}的语言，也无法在\Term{prescheme}{预概形}\Term{category}{范畴}中讨论\Term{descent}{下降}。
+
+“\Term{descent}{下降}”概念为对象的各种“\Term{gluing}{粘合}”过程，因而也为\Term{category}{范畴}的\Term{gluing}{粘合}，提供了统一框架。最经典的\Term{gluing}{粘合}情形是：给定\Term{topological-space}{拓扑空间} $X$ 及其开\Term{covering}{覆盖} $(X_i)$；对每个 $i$，在 $X_i$ 上给定一个（譬如说）\Term{fibred-space}{纤维空间} $E_i$；对每对 $(i,j)$，给定\Term{isomorphism}{同构}
+\[
+ f_{ji}:E_i|_{X_{ij}}\xrightarrow{\sim}E_j|_{X_{ij}},\qquad X_{ij}=X_i\cap X_j,
+\]
+并满足熟知的传递条件，简写为 $f_{kj}f_{ji}=f_{ki}$。这时我们知道，存在 $X$ 上的\Term{fibred-space}{纤维空间} $E$，由下述条件在\Term{isomorphism}{同构}意义下确定：有\Term{isomorphism}{同构} $f_i:E|_{X_i}\xrightarrow{\sim}E_i$，满足 $f_{ji}=f_jf_i^{-1}$（这里沿用通常的记号省略）。令 $X'$ 为各 $X_i$ 的不交并空间；它自然是 $X$ 上的\Term{fibred-space}{纤维空间}，即配有连续映射 $X'\to X$ 的空间。于是，给定各个 $E_i$，可以更简洁地理解为给定 $X'$ 上的\Term{fibred-space}{纤维空间} $E'$；给定各个 $f_{ji}$，则理解为在
+\[
+ X''=X'\times_X X'
+\]
+上 $E'$ 沿两个典范投影的\Term{inverse-image}{逆像} $E_1''$ 与 $E_2''$ 之间的一个\Term{isomorphism}{同构}。\Term{gluing}{粘合}条件便可写成三重\Term{fibre-product}{纤维积}
+\[
+ X'''=X'\times_X X'\times_X X'
+\]
+上\Term{fibred-space}{纤维空间} $E_1'''$ 与 $E_3'''$ 之间的\Term{isomorphism}{同构}所满足的一个等式；这里 $E_i'''$ 是 $E'$ 沿第 $i$ 个典范投影到 $X'''$ 上的\Term{inverse-image}{逆像}。由 $E'$ 和 $f$ 构造 $E$，正是\Term{descent}{下降}过程的典型例子。另外，给定 $X$ 上的\Term{fibred-space}{纤维空间} $E$，若存在 $X$ 的开\Term{covering}{覆盖} $(X_i)$，使 $E|_{X_i}$ \Term{isomorphism}{同构}于 $F\times X_i$，也就是说，使 $E$ 在 $X'=\coprod_iX_i$ 上的\Term{inverse-image}{逆像} $E'$ \Term{isomorphism}{同构}于 $X'\times F$，便说 $X$ 是\Term{fiber}{纤维}为 $F$ 的“\Term{locally-trivial}{局部平凡}”对象。
+
+\SourcePage{136}
+因此，对象的“\Term{gluing}{粘合}”与性质的“\Term{localization}{局部化}”都与某些\Term{base-change}{基变换} $X'\to X$ 的研究相联系。在代数几何中，许多其他类型的\Term{base-change}{基变换}，特别是\Term{faithfully-flat}{忠实平坦}\Term{morphism}{态射} $X'\to X$，也必须看作是关于 $X$“之上”的\Term{prescheme}{预概形}或其他对象的一种\Term{localization}{局部化}过程。这种\Term{localization}{局部化}的使用与普通的拓扑\Term{localization}{局部化}同样频繁，后者事实上只是前者的特殊情形。解析几何中也有类似情况，只是程度稍弱。
+
+大部分证明仅需直接核对，因此从略或只给出梗概；遇到证明中出现不够显然的\Term{commutative-diagram}{交换图}时，我们会将其明确写出。
+
+\SGAsection{1}{宇宙、范畴与范畴等价}
+为避免某些逻辑困难，我们在此接受“\Term{universe}{宇宙}”的概念：这是一个“足够大”的集合，集合论中通常的运算都不会使我们离开它；一条“\Term{universe}{宇宙}公理”保证每个对象都属于某个\Term{universe}{宇宙}。详情见 C.~Chevalley 与本讲报告人正在筹备的著作。\footnote{最终作者为 C.~Chevalley 和 P.~Gabriel。该书预定于公元 3000 年出版。在此之前，也可参看 SGA~4 第 I 讲。}因此，记号 $\mathbf{Ens}$ 指的不是所有集合组成的\Term{category}{范畴}（这种说法没有意义），而是属于某个给定\Term{universe}{宇宙}的集合所组成的\Term{category}{范畴}；这里不在记号中写出该\Term{universe}{宇宙}。同样，$\mathbf{Cat}$ 表示属于该\Term{universe}{宇宙}的\Term{category}{范畴}所组成的\Term{category}{范畴}；依定义，$\mathbf{Cat}$ 中对象 $X$ 到另一对象 $Y$ 的“\Term{morphism}{态射}”，就是 $X$ 到 $Y$ 的\Term{functor}{函子}。
+
+若 $\mathcal C$ 是\Term{category}{范畴}，记 $\operatorname{Ob}(\mathcal C)$ 为其对象集，$\operatorname{Fl}(\mathcal C)$ 为其箭头集（即\Term{morphism}{态射}集）。因此我们写 $X\in\operatorname{Ob}(\mathcal C)$，避免通常的记号滥用 $X\in\mathcal C$。若 $\mathcal C,\mathcal C'$ 是两个\Term{category}{范畴}，所谓从 $\mathcal C$ 到 $\mathcal C'$ 的\Term{functor}{函子}，总是通常所称的\Term{covariant-functor}{协变函子}；给定\Term{functor}{函子}时，也同时给定其定义域\Term{category}{范畴}与目标\Term{category}{范畴} $\mathcal C,\mathcal C'$。这些\Term{functor}{函子}组成的集合记为 $\operatorname{Hom}(\mathcal C,\mathcal C')$，它是一个\Term{category}{范畴} $\mathbf{Hom}(\mathcal C,\mathcal C')$ 的对象集。从 $\mathcal C$ 到 $\mathcal C'$ 的\Term{contravariant-functor}{反变函子}，按定义就是从 $\mathcal C$ 的\Term{opposite-category}{反范畴} $\mathcal C^\circ$ 到 $\mathcal C'$ 的\Term{functor}{函子}。
+
+我们接受\Term{functor}{函子} $F:\mathcal I\to\mathcal C$ 的\Term{projective-limit}{逆极限}与\Term{inductive-limit}{归纳极限}概念，特别是其最常见的特殊情形：笛卡尔积与\Term{fibre-product}{纤维积}，以及与之对偶的\Term{direct-sum}{直和}与\Term{amalgamated-sum}{合并和}，并接受这些运算通常的形式性质。
+
+\SourcePage{137}
+例如，在上面引入的\Term{category}{范畴} $\mathbf{Cat}$ 中，对于属于所选\Term{universe}{宇宙}的\Term{category}{范畴} $\mathcal I$，\Term{projective-limit}{逆极限}总是存在；\Term{category}{范畴}族 $(\mathcal C_i)$ 的\Term{projective-limit}{逆极限}\Term{category}{范畴} $\mathcal C$ 的对象集（分别地，箭头集），由各 $\mathcal C_i$ 的对象集（分别地，箭头集）取\Term{projective-limit}{逆极限}得到。最熟悉的例子是一个\Term{category}{范畴}族的积。下文会经常使用两个\Term{category}{范畴}在第三个\Term{category}{范畴}上的\Term{fibre-product}{纤维积}。
+
+关于\Term{category}{范畴}与\Term{functor}{函子}的一般知识，在上述筹备中的著作问世之前，可参看文献 [1]；它自然很不完备，即使对于本节略述的一般概念也是如此。
+
+借此机会，我们明确写出 [1] 中阐述得不够妥当的\Term{equivalence-of-categories}{范畴等价}概念。若对 $\mathcal C$ 的每对对象 $S,T$，映射
+\[
+ u\longmapsto F(u):\operatorname{Hom}(S,T)\longrightarrow
+ \operatorname{Hom}(F(S),F(T))
+\]
+都是\Term{injectivity}{单射}（分别地，\Term{bijection}{双射}），便称\Term{functor}{函子} $F:\mathcal C\to\mathcal C'$ 是\Term{faithful-functor}{忠实}的（分别地，\Term{fully-faithful-functor}{全忠实}的）。若 $F$ \Term{fully-faithful-functor}{全忠实}，且 $\mathcal C'$ 的每个对象 $S'$ 都\Term{isomorphism}{同构}于某个形如 $F(S)$ 的对象，便称 $F$ 是\Term{equivalence-of-categories}{范畴等价}。可以证明，这等价于存在 $F$ 的\Term{quasi-inverse}{拟逆函子} $G:\mathcal C'\to\mathcal C$，即 $GF$ \Term{isomorphism}{同构}于 $\operatorname{id}_{\mathcal C}$。在此情形下，给定\Term{functor}{函子} $G:\mathcal C'\to\mathcal C$ 与\Term{isomorphism}{同构}
+\[
+ \varphi:GF\longrightarrow\operatorname{id}_{\mathcal C'}
+\]
+等价于对每个 $S'\in\operatorname{Ob}(\mathcal C')$ 给定一对 $(S,u)$，其中 $S$ 是 $\mathcal C$ 的对象，$u:F(S)\to S'$ 是\Term{isomorphism}{同构}；这对数据就是 $(G(S),\varphi(S))$。（在这些记号下，存在唯一的\Term{functor}{函子} $\mathcal C'\to\mathcal C$，其对象映射为给定的 $S\mapsto G(S)$，并使 $S\mapsto\varphi(S)$ 成为\Term{functor}{函子}间\Term{homomorphism}{同态} $FG\to\operatorname{id}_{\mathcal C'}$。）最后，若 $G$ 是 $F$ 的\Term{quasi-inverse}{拟逆}，并选定\Term{isomorphism}{同构}
+\[
+ \varphi:FG\xrightarrow{\sim}\operatorname{id}_{\mathcal C'},\qquad
+ \psi:GF\xrightarrow{\sim}\operatorname{id}_{\mathcal C},
+\]
+那么 [1, I.1.2] 中对 $\varphi,\psi$ 所列的两个相容条件实际上彼此等价；对任意选定的 $\varphi$，都存在唯一的\Term{isomorphism}{同构} $\psi$ 使这些条件成立。
+
+\SGAsection{2}{一个范畴之上的范畴}
+设 $\mathcal E$ 是 $\mathbf{Univ}$ 中的\Term{category}{范畴}，因而是 $\mathbf{Cat}$ 的对象。考虑 $\mathbf{Cat}$ 中“$\mathcal E$ 之上的对象”组成的\Term{category}{范畴} $\mathbf{Cat}_{/\mathcal E}$。它的对象就是\Term{functor}{函子}
+\[
+ p:\mathcal F\longrightarrow\mathcal E.
+\]
+配有这一\Term{functor}{函子}的\Term{category}{范畴} $\mathcal F$，也称为 $\mathcal E$ 之上的\Term{category}{范畴}，或 $\mathcal E$-\Term{category}{范畴}。相应地，从 $\mathcal E$ 上的\Term{category}{范畴} $\mathcal F$ 到 $\mathcal E$ 上的\Term{category}{范畴} $\mathcal G$ 的 $\mathcal E$-\Term{functor}{函子}，指满足
+\[
+ f:\mathcal F\longrightarrow\mathcal G,\qquad qf=p
+\]
+的\Term{functor}{函子}。
+
+\SourcePage{138}
+其中 $p,q$ 分别是 $\mathcal F,\mathcal G$ 的投影\Term{functor}{函子}。因此，从 $\mathcal F$ 到 $\mathcal G$ 的 $\mathcal E$-\Term{functor}{函子}集，与 $\mathbf{Cat}_{/\mathcal E}$ 中源为 $\mathcal F$、目标为 $\mathcal G$ 的箭头集一一对应，但两者并不是同一个集合，因为仅给出上述 $f$ 并不能确定作为 $\mathcal E$ 上\Term{category}{范畴}的 $\mathcal F,\mathcal G$。不过，如在任意\Term{category}{范畴} $\mathcal C_{/S}$ 中一样，我们通常仍略去这一区别，将上述意义下的 $\mathcal E$-\Term{functor}{函子}等同于某个 $\mathbf{Cat}_{/\mathcal E}$ 中的箭头。
+
+从 $\mathcal F$ 到 $\mathcal G$ 的 $\mathcal E$-\Term{functor}{函子}集记为
+\[
+ \operatorname{Hom}_{\mathcal E}(\mathcal F,\mathcal G).
+\]
+显然，$\mathcal E$-\Term{functor}{函子}的复合仍是 $\mathcal E$-\Term{functor}{函子}；按定义，这一复合对应于 $\mathbf{Cat}_{/\mathcal E}$ 中箭头的复合。
+
+现在考虑两个 $\mathcal E$-\Term{functor}{函子} $f,g:\mathcal F\to\mathcal G$ 及\Term{functor}{函子}间\Term{homomorphism}{同态} $u:f\to g$。若对每个 $\xi\in\operatorname{Ob}(\mathcal F)$，都有
+\[
+ q(u(\xi))=\operatorname{id}_{p(\xi)},
+\]
+便称 $u$ 为 $\mathcal E$-\Term{homomorphism}{同态}，或“$\mathcal E$-\Term{functor}{函子}的\Term{homomorphism}{同态}”。换言之，令 $S=p(\xi)=qf(\xi)=qg(\xi)\in\operatorname{Ob}(\mathcal E)$，则 $\mathcal G$ 中的\Term{morphism}{态射}
+\[
+ u(\xi):f(\xi)\longrightarrow g(\xi)
+\]
+是一个 $\operatorname{id}_S$-\Term{morphism}{态射}。一般地，若 $\alpha:T\to S$ 是 $\mathcal E$ 中\Term{morphism}{态射}，$\mathcal G$ 是 $\mathcal E$ 上的\Term{category}{范畴}，投影\Term{functor}{函子}为 $q:\mathcal G\to\mathcal E$，则满足 $q(v)=\alpha$ 的 $\mathcal G$ 中\Term{morphism}{态射} $v$ 称为 $\alpha$-\Term{morphism}{态射}。若另有第三个 $\mathcal E$-\Term{functor}{函子} $h:\mathcal F\to\mathcal G$ 与 $\mathcal E$-\Term{homomorphism}{同态} $v:g\to h$，那么 $vu$ 也是 $\mathcal E$-\Term{homomorphism}{同态}。因此，$\mathcal F$ 到 $\mathcal G$ 的 $\mathcal E$-\Term{functor}{函子}及它们之间的 $\mathcal E$-\Term{homomorphism}{同态}组成所有\Term{functor}{函子}的\Term{category}{范畴} $\mathbf{Hom}(\mathcal F,\mathcal G)$ 的一个子\Term{category}{范畴}，称为从 $\mathcal F$ 到 $\mathcal G$ 的 $\mathcal E$-\Term{functor}{函子}\Term{category}{范畴}，记为
+\[
+ \mathbf{Hom}_{\mathcal E/-}(\mathcal F,\mathcal G).
+\]
+它也是一对\Term{functor}{函子}
+\[
+ R,S:\mathbf{Hom}(\mathcal F,\mathcal G)\rightrightarrows
+ \mathbf{Hom}(\mathcal F,\mathcal E)
+\]
+的核子\Term{category}{范畴}，其中 $R$ 是由 $\mathbf{Hom}(\mathcal F,\mathcal E)$ 的对象 $p$ 所定义的常值\Term{functor}{函子}，而 $S$ 是由 $q:\mathcal G\to\mathcal E$ 给出的\Term{functor}{函子} $f\mapsto q\circ f$。
+
+为结束这些一般讨论，还需通过 $\mathcal E$-\Term{functor}{函子}的复合，定义\Term{category}{范畴} $\mathbf{Hom}_{\mathcal E/-}(\mathcal F,\mathcal G)$ 之间的自然\Term{pairing}{配对}。
+
+\SourcePage{139}
+也就是说，当 $\mathcal F,\mathcal G,\mathcal H$ 为 $\mathcal E$ 上的三个\Term{category}{范畴}时，我们要定义“复合\Term{functor}{函子}”
+\[
+ \mathbf{Hom}_{\mathcal E/-}(\mathcal F,\mathcal G)\times
+ \mathbf{Hom}_{\mathcal E/-}(\mathcal G,\mathcal H)
+ \longrightarrow\mathbf{Hom}_{\mathcal E/-}(\mathcal F,\mathcal H),\tag{i}
+\]
+使它在对象上诱导 $\mathcal E$-\Term{functor}{函子} $f:\mathcal F\to\mathcal G$ 与 $g:\mathcal G\to\mathcal H$ 的复合映射 $(f,g)\mapsto gf$。为此，回忆有一个典范\Term{functor}{函子}
+\[
+ \mathbf{Hom}(\mathcal F,\mathcal G)\times\mathbf{Hom}(\mathcal G,\mathcal H)
+ \longrightarrow\mathbf{Hom}(\mathcal F,\mathcal H),\tag{ii}
+\]
+它在对象上就是\Term{functor}{函子}复合映射 $(f,g)\mapsto gf$；它将箭头 $(u,v)$，其中
+\[
+ u:f\longrightarrow f',\qquad v:g\longrightarrow g'
+\]
+分别是 $\mathbf{Hom}(\mathcal F,\mathcal G)$ 和 $\mathbf{Hom}(\mathcal G,\mathcal H)$ 中的箭头，映为箭头
+\[
+ v*u:gf\longrightarrow g'f',
+\]
+其定义为
+\[
+ (v*u)(\xi)=v(f'(\xi))\cdot g(u(\xi))
+ =g'(u(\xi))\cdot v(f(\xi)).
+\]
+熟知这样确实得到从 $gf$ 到 $g'f'$ 的\Term{homomorphism}{同态}；让 $f,g,u,v$ 变化，就得到\Term{functor}{函子} (ii)，也就是说，满足
+\[
+ \operatorname{id}_g*\operatorname{id}_f=\operatorname{id}_{gf},\tag{I}
+\]
+\[
+ (v'*u')\circ(v*u)=(v'\circ v)*(u'\circ u).\tag{II}
+\]
+还要回忆，典范\Term{pairing}{配对} (ii) 满足结合律：一方面，\Term{functor}{函子}复合满足 $(hg)f=h(gf)$；另一方面，\Term{functor}{函子}\Term{homomorphism}{同态}的复合积满足
+\[
+ (w*v)*u=w*(v*u),\tag{III}
+\]
+其中 $u:f\to f'$、$v:g\to g'$ 如上，此外还给定\Term{functor}{函子} $h,h':\mathcal H\to\mathcal K$ 之间的\Term{homomorphism}{同态} $w:h\to h'$。现在断言：当 $\mathcal F,\mathcal G$ 为 $\mathcal E$-\Term{category}{范畴}时，典范复合\Term{functor}{函子} (ii) 诱导\Term{functor}{函子} (i)。既然两个 $\mathcal E$-\Term{functor}{函子}的复合已知仍是 $\mathcal E$-\Term{functor}{函子}，只需说明，若 $u:f\to f'$、$v:g\to g'$ 是 $\mathcal E$-\Term{functor}{函子}之间的\Term{homomorphism}{同态}，那么 $v*u:gf\to g'f'$ 也是 $\mathcal E$-\Term{functor}{函子}的\Term{homomorphism}{同态}；这由定义立即可见。\Term{pairing}{配对} (i) 既然由\Term{pairing}{配对} (ii) 诱导，自然满足同样的结合律，即对于 $\mathcal E$-\Term{functor}{函子}及其 $\mathcal E$-\Term{homomorphism}{同态}，仍有 $(hg)f=h(gf)$ 和 $(w*v)*u=w*(v*u)$。
+
+为补充公式 (I)、(II)、(III)，再回忆
+\[
+ v*\operatorname{id}_{\mathcal F}=v,\qquad
+ \operatorname{id}_{\mathcal G}*u=u.\tag{IV}
+\]
+这里为了简便，若 $u$（分别地，$v$）为 $f$（分别地，$g$）的恒等\Term{automorphism}{自同构}，就将 $v*u$ 写成 $v*f$（分别地，$u*g$）。
+
+\SourcePage{140}
+由\Term{pairing}{配对} (i) 的定义可知，$\mathbf{Hom}_{\mathcal E/-}(\mathcal F,\mathcal G)$ 对 $\mathcal F,\mathcal G$ 为\Term{functor}{函子}，定义于积\Term{category}{范畴} $\mathbf{Cat}_{/\mathcal E}^{\circ}\times\mathbf{Cat}_{/\mathcal E}$，取值于 $\mathbf{Cat}$。确实，若 $g:\mathcal G\to\mathcal G_1$ 是 $\mathcal E$-\Term{functor}{函子}，即 $\mathbf{Hom}_{\mathcal E/-}(\mathcal G,\mathcal G_1)$ 的对象，在 (i) 中令 $\mathcal H=\mathcal G_1$，便得到\Term{functor}{函子}
+\[
+ g_*:\mathbf{Hom}_{\mathcal E/-}(\mathcal F,\mathcal G)
+ \longrightarrow\mathbf{Hom}_{\mathcal E/-}(\mathcal F,\mathcal G_1).
+\]
+同样，对 $\mathcal E$-\Term{functor}{函子} $f:\mathcal F_1\to\mathcal F$，定义\Term{functor}{函子}
+\[
+ f^*:\mathbf{Hom}_{\mathcal E/-}(\mathcal F,\mathcal G)
+ \longrightarrow\mathbf{Hom}_{\mathcal E/-}(\mathcal F_1,\mathcal G).
+\]
+为简便，也分别用 $f\mapsto g\circ f$ 与 $g\mapsto g\circ f$ 表示这些\Term{functor}{函子}；严格说，这些符号只表示相应的对象集映射。由上述结合律可知，这样确实得到所说的\Term{functor}{函子} $\mathbf{Cat}_{/\mathcal E}^{\circ}\times\mathbf{Cat}_{/\mathcal E}\to\mathbf{Cat}$。
+
+\SGAsection{3}{$\mathcal E$ 上范畴的基变换}
+因为 $\mathbf{Cat}$ 中存在关于 $\mathbf{Univ}$ 中\Term{category}{范畴} $\mathcal I$ 的\Term{projective-limit}{逆极限}，$\mathbf{Cat}_{/\mathcal E}$ 中也存在这样的极限；特别地，其中存在笛卡尔积，而它们可解释为 $\mathbf{Cat}$ 中的\Term{fibre-product}{纤维积}。沿用一般记号，若 $\mathcal F,\mathcal G$ 为 $\mathcal E$ 上的\Term{category}{范畴}，记
+\[
+ \mathcal F\times_{\mathcal E}\mathcal G
+\]
+为它们在 $\mathbf{Cat}_{/\mathcal E}$ 中的积，即它们在 $\mathbf{Cat}$ 中沿 $\mathcal E$ 的\Term{fibre-product}{纤维积}，并将其视为 $\mathcal E$ 上的\Term{category}{范畴}。因而 $\mathcal F\times_{\mathcal E}\mathcal G$ 配有两个 $\mathcal E$-\Term{functor}{函子} $\operatorname{pr}_1,\operatorname{pr}_2$；对任意 $\mathcal E$ 上的\Term{category}{范畴} $\mathcal H$，它们给出\Term{bijection}{双射}
+\[
+ \operatorname{Hom}_{\mathcal E}(\mathcal H,\mathcal F\times_{\mathcal E}\mathcal G)
+ \xrightarrow{\sim}\operatorname{Hom}_{\mathcal E}(\mathcal H,\mathcal F)\times
+ \operatorname{Hom}_{\mathcal E}(\mathcal H,\mathcal G).
+\]
+这\Term{bijection}{双射}事实上来自\Term{category}{范畴}\Term{isomorphism}{同构}
+\[
+ \mathbf{Hom}_{\mathcal E/-}(\mathcal H,\mathcal F\times_{\mathcal E}\mathcal G)
+ \xrightarrow{\sim}\mathbf{Hom}_{\mathcal E/-}(\mathcal H,\mathcal F)\times
+ \mathbf{Hom}_{\mathcal E/-}(\mathcal H,\mathcal G),
+\]
+即取两边的对象集。这里\Term{functor}{函子}的两个分量，是从左边到右边两个因子的\Term{functor}{函子} $h\mapsto\operatorname{pr}_1\circ h$ 与 $h\mapsto\operatorname{pr}_2\circ h$。读者可自行核对，这确实是一个\Term{isomorphism}{同构}；更一般地，凡是\Term{category}{范畴}的\Term{projective-limit}{逆极限}，都有类似结论，并不限于\Term{fibre-product}{纤维积}。
+
+另外，回忆第 1 节已说过，
+\[
+ \operatorname{Ob}(\mathcal F\times_{\mathcal E}\mathcal G)
+ =\operatorname{Ob}(\mathcal F)\times_{\operatorname{Ob}(\mathcal E)}\operatorname{Ob}(\mathcal G),
+\]
+\[
+ \operatorname{Fl}(\mathcal F\times_{\mathcal E}\mathcal G)
+ =\operatorname{Fl}(\mathcal F)\times_{\operatorname{Fl}(\mathcal E)}\operatorname{Fl}(\mathcal G),
+\]
+箭头的复合逐分量进行。
+
+\SourcePage{141}
+下文考虑\Term{functor}{函子} $\lambda:\mathcal E'\to\mathcal E$，并对每个 $\mathcal E$ 上的\Term{category}{范畴} $\mathcal F$，通过 $\operatorname{pr}_2$ 将 $\mathcal F\times_{\mathcal E}\mathcal E'$ 视为 $\mathcal E'$ 上的\Term{category}{范畴}。也就是说，将“\Term{fibre-product}{纤维积}”运算解释为“\Term{base-change}{基变换}”运算，并称 $\lambda:\mathcal E'\to\mathcal E$ 为“\Term{base-change}{基变换}\Term{functor}{函子}”。由熟知的一般事实，得到一个称为沿 $\lambda$ 的\Term{base-change}{基变换}\Term{functor}{函子}的\Term{functor}{函子}
+\[
+ \lambda^*:\mathbf{Cat}_{/\mathcal E}\longrightarrow\mathbf{Cat}_{/\mathcal E'}.
+\]
+它与“基的限制”\Term{functor}{函子}伴随；后一个\Term{functor}{函子}将配有投影 $p'$ 的 $\mathcal E'$ 上\Term{category}{范畴} $\mathcal F'$，通过 $p=\lambda p'$ 视为 $\mathcal E$ 上的\Term{category}{范畴}。正如一般\Term{category}{范畴}中\Term{base-change}{基变换}\Term{functor}{函子}的熟知性质，\Term{base-change}{基变换}\Term{functor}{函子}“与\Term{projective-limit}{逆极限}可交换”，特别地，将 $\mathcal E$ 上的\Term{fibre-product}{纤维积}变为 $\mathcal E'$ 上的\Term{fibre-product}{纤维积}。
+
+设 $\mathcal F,\mathcal G$ 为 $\mathcal E$ 上的两个\Term{category}{范畴}。要定义典范\Term{isomorphism}{同构}
+\[
+ \mathbf{Hom}_{\mathcal E'/-}(\mathcal F',\mathcal G')
+ \xrightarrow{\sim}\mathbf{Hom}_{\mathcal E/-}(\mathcal F\times_{\mathcal E}\mathcal E',\mathcal G),\tag{i}
+\]
+其中 $\mathcal F'=\mathcal F\times_{\mathcal E}\mathcal E'$、$\mathcal G'=\mathcal G\times_{\mathcal E}\mathcal E'$。考虑\Term{functor}{函子} $\operatorname{pr}_1:\mathcal G'=\mathcal G\times_{\mathcal E}\mathcal E'\to\mathcal G$，并用 $F\mapsto\operatorname{pr}_1\circ F$ 定义 (i)；这一表达式首先给出\Term{functor}{函子}
+\[
+ \mathbf{Hom}(\mathcal F',\mathcal G')\longrightarrow\mathbf{Hom}(\mathcal F',\mathcal G).\tag{ii}
+\]
+只需核对它在 (i) 的子\Term{category}{范畴}上诱导\Term{functor}{函子}，且所诱导的\Term{functor}{函子}为\Term{isomorphism}{同构}。(ii) 在对象上诱导\Term{bijection}{双射}
+\[
+ \operatorname{Hom}_{\mathcal E'}(\mathcal F',\mathcal G')\xrightarrow{\sim}
+ \operatorname{Hom}_{\mathcal E}(\mathcal F\times_{\mathcal E}\mathcal E',\mathcal G),
+\]
+正是\Term{base-change}{基变换}\Term{functor}{函子}的特征性质。于是还需证明：若 $F,G:\mathcal F'\to\mathcal G'$ 是 $\mathcal E'$-\Term{functor}{函子}，映射 $u\mapsto\operatorname{pr}_1\circ u$ 诱导\Term{bijection}{双射}
+\[
+ \operatorname{Hom}_{\mathcal E'}(F,G)\xrightarrow{\sim}
+ \operatorname{Hom}_{\mathcal E}(\operatorname{pr}_1\circ F,\operatorname{pr}_1\circ G).
+\]
+这可直接核对，留给读者。
+
+\SourcePage{142}
+由\Term{isomorphism}{同构} (i) 及上一节末尾的讨论，
+\[
+ \mathbf{Hom}_{\mathcal E'/-}(\mathcal F\times_{\mathcal E}\mathcal E',\mathcal G\times_{\mathcal E}\mathcal E')
+\]
+可视为关于 $\mathcal E',\mathcal F,\mathcal G$ 的\Term{functor}{函子}，从 $\mathbf{Cat}_{/\mathcal E}^{\circ}\times\mathbf{Cat}_{/\mathcal E}^{\circ}\times\mathbf{Cat}_{/\mathcal E}$ 到 $\mathbf{Cat}$；它\Term{isomorphism}{同构}于表达式 $\mathbf{Hom}_{\mathcal E/-}(\mathcal F\times_{\mathcal E}\mathcal E',\mathcal G)$ 所定义的\Term{functor}{函子}。特别地，固定 $\mathcal F,\mathcal G$，得到关于 $\mathcal E'$ 的\Term{functor}{函子}
+\[
+ \mathcal E'\longmapsto\mathbf{Hom}_{\mathcal E''/-}(\mathcal F',\mathcal G')
+ =\mathbf{Hom}_{\mathcal E'/-}(\mathcal F\times_{\mathcal E}\mathcal E',\mathcal G\times_{\mathcal E}\mathcal E').
+\]
+因而投影 $\mathcal E$-\Term{functor}{函子} $\lambda:\mathcal E'\to\mathcal E$ 给出一个\Term{morphism}{态射}，也就是\Term{functor}{函子}
+\[
+ \lambda^*_{\mathcal F,\mathcal G}:\mathbf{Hom}_{\mathcal E/-}(\mathcal F,\mathcal G)
+ \longrightarrow\mathbf{Hom}_{\mathcal E'/-}(\mathcal F',\mathcal G'),
+\]
+下面将其写明。在两边的对象集上，它就是映射
+\[
+ f\longmapsto f'=f\times_{\mathcal E}\mathcal E',
+\]
+表达了 $\mathcal F\times_{\mathcal E}\mathcal E'$ 对 $\mathcal E$ 上对象 $\mathcal F$ 的\Term{functor}{函子}性。再考虑两个 $\mathcal E$-\Term{functor}{函子} $f,g:\mathcal F\to\mathcal G$ 及其间的 $\mathcal E$-\Term{homomorphism}{同态} $u:f\to g$，我们明确写出相应的 $\mathcal E'$-\Term{homomorphism}{同态} $u':f'\to g'$。对每个
+\[
+ \xi'=(\xi,S')\in\operatorname{Ob}(\mathcal F'),\quad
+ \xi\in\operatorname{Ob}(\mathcal F),\quad S'\in\operatorname{Ob}(\mathcal E'),\quad
+ p(\xi)=\lambda(S')=S,
+\]
+$\mathcal G'$ 中的\Term{morphism}{态射}
+\[
+ u'(\xi'):f'(\xi')=(f(\xi),S')\longrightarrow g'(\xi')=(g(\xi),S')
+\]
+定义为 $u'(\xi')=(u(\xi),\operatorname{id}_{S'})$。这的确是 $\mathcal G'$ 中的 $S'$-\Term{morphism}{态射}，因为 $q(u(\xi))=\lambda(\operatorname{id}_{S'})=\operatorname{id}_S$。
+
+现在考虑任意 $\mathcal E$-\Term{functor}{函子} $\lambda':\mathcal E''\to\mathcal E'$ 及相应\Term{functor}{函子}
+\[
+ \mathbf{Hom}_{\mathcal E'/-}(\mathcal F\times_{\mathcal E}\mathcal E',\mathcal G\times_{\mathcal E}\mathcal E')
+ \longrightarrow\mathbf{Hom}_{\mathcal E''/-}(\mathcal F\times_{\mathcal E}\mathcal E'',\mathcal G\times_{\mathcal E}\mathcal E'').
+\]
+断言它正是从 $\mathcal E'$ 上的 $\mathcal F',\mathcal G'$ 出发，将 $\mathcal E''$ 视为 $\mathcal E'$ 上\Term{category}{范畴}，按上述方法得到的\Term{functor}{函子}。这里使用“\Term{base-change}{基变换}传递性”的\Term{isomorphism}{同构}
+\[
+ \mathcal F'\times_{\mathcal E'}\mathcal E''\xrightarrow{\sim}
+ \mathcal F''=\mathcal F\times_{\mathcal E}\mathcal E'',\qquad
+ \mathcal G'\times_{\mathcal E'}\mathcal E''\xrightarrow{\sim}
+ \mathcal G''=\mathcal G\times_{\mathcal E}\mathcal E''.
+\]
+
+\SourcePage{143}
+它们给出典范\Term{isomorphism}{同构}
+\[
+ \mathbf{Hom}_{\mathcal E''/-}(\mathcal F'\times_{\mathcal E'}\mathcal E'',\mathcal G'\times_{\mathcal E'}\mathcal E'')
+ \xrightarrow{\sim}\mathbf{Hom}_{\mathcal E''/-}(\mathcal F\times_{\mathcal E}\mathcal E'',\mathcal G\times_{\mathcal E}\mathcal E'').
+\]
+这种相容性的核对是直接的，留给读者。
+
+刚定义的\Term{functor}{函子}与上一节的\Term{pairing}{配对}相容。确切地说，若 $\mathcal F,\mathcal G,\mathcal H$ 是 $\mathcal E$ 上的\Term{category}{范畴}，并置
+\[
+ \mathcal F'=\mathcal F\times_{\mathcal E}\mathcal E',\quad
+ \mathcal G'=\mathcal G\times_{\mathcal E}\mathcal E',\quad
+ \mathcal H'=\mathcal H\times_{\mathcal E}\mathcal E',
+\]
+那么下列\Term{functor}{函子}图交换：
+\[
+\begin{tikzcd}[column sep=large]
+\mathbf{Hom}_{\mathcal E/-}(\mathcal F,\mathcal G)\times\mathbf{Hom}_{\mathcal E/-}(\mathcal G,\mathcal H)
+ \arrow[r]\arrow[d,"{\lambda^*_{\mathcal F,\mathcal G}\times\lambda^*_{\mathcal G,\mathcal H}}"']&
+\mathbf{Hom}_{\mathcal E/-}(\mathcal F,\mathcal H)\arrow[d,"{\lambda^*_{\mathcal F,\mathcal H}}"]\\
+\mathbf{Hom}_{\mathcal E'/-}(\mathcal F',\mathcal G')\times\mathbf{Hom}_{\mathcal E'/-}(\mathcal G',\mathcal H')
+ \arrow[r]&\mathbf{Hom}_{\mathcal E'/-}(\mathcal F',\mathcal H')
+\end{tikzcd}
+\]
+其中水平箭头是上一节定义的复合\Term{functor}{函子}。这一交换性可用两条公式表达：对 $f\in\operatorname{Hom}_{\mathcal E}(\mathcal F,\mathcal G)$、$g\in\operatorname{Hom}_{\mathcal E}(\mathcal G,\mathcal H)$，有
+\[
+ (gf)'=g'f',
+\]
+这只是\Term{base-change}{基变换}的\Term{functor}{函子}性；而当 $u:f\to f_1$ 为 $\mathbf{Hom}_{\mathcal E/-}(\mathcal F,\mathcal G)$ 中的箭头，$v:g\to g_1$ 为 $\mathbf{Hom}_{\mathcal E/-}(\mathcal G,\mathcal H)$ 中的箭头时，有
+\[
+ (v*u)'=v'*u'.
+\]
+由定义很容易核对后一条公式。
+
+下文主要关注 $\mathcal F=\mathcal E$ 时的 $\mathbf{Hom}_{\mathcal E/-}(\mathcal F,\mathcal G)$ 及其某些重要子\Term{category}{范畴}，为此引入专门记号：
+\[
+ \boldsymbol\Gamma(\mathcal G/\mathcal E)=\mathbf{Hom}_{\mathcal E/-}(\mathcal E,\mathcal G),\qquad
+ \Gamma(\mathcal G/\mathcal E)=\operatorname{Ob}(\boldsymbol\Gamma(\mathcal G/\mathcal E))
+ =\operatorname{Hom}_{\mathcal E}(\mathcal E,\mathcal G).
+\]
+
+\textbf{注记。}若 $\mathcal E$ 是\Term{point-category}{单点范畴}，即 $\operatorname{Ob}(\mathcal E)$ 与 $\operatorname{Fl}(\mathcal E)$ 都只有一个元素（也就是说，$\mathcal E$ 是 $\mathbf{Cat}$ 的\Term{final-object}{终对象}），那么给定 $\mathcal E$ 上的\Term{equivalence-of-categories}{范畴等价}于直接给定一个\Term{category}{范畴}，因为从 $\mathcal F$ 到 $\mathcal E$ 只有唯一\Term{functor}{函子}。更准确地说，这时 $\mathbf{Cat}_{/\mathcal E}$ \Term{isomorphism}{同构}于 $\mathbf{Cat}$，且 $\mathbf{Hom}_{\mathcal E/-}(\mathcal F,\mathcal G)$ 就是 $\mathbf{Hom}(\mathcal F,\mathcal G)$。回忆基本公式
+\[
+ \operatorname{Hom}(\mathcal H,\mathbf{Hom}(\mathcal F,\mathcal G))
+ \xrightarrow{\sim}\operatorname{Hom}(\mathcal F\times\mathcal H,\mathcal G),
+\]
+这是对三个变元都有\Term{functor}{函子}性的\Term{isomorphism}{同构}。它使我们可以在\Term{category}{范畴} $\mathbf{Cat}$ 内部公理化地解释 $\mathbf{Hom}(\mathcal F,\mathcal G)$。
+
+\SourcePage{144}
+因此，关于 $\mathbf{Hom}$ \Term{category}{范畴}的熟知公式，可看作适用于 $\mathbf{Cat}$ 这类\Term{category}{范畴}的一般公式的特例；这些\Term{category}{范畴}中存在由上述公式定义的“$\mathbf{Hom}$ 对象”。重新允许 $\mathcal E$ 任意时，$\mathbf{Hom}_{\mathcal E/-}(\mathcal F,\mathcal G)$ 也有类似解释，所依据的是
+\[
+ \operatorname{Hom}(\mathcal H,\mathbf{Hom}_{\mathcal E/-}(\mathcal F,\mathcal G))
+ \xrightarrow{\sim}\operatorname{Hom}_{\mathcal E}(\mathcal F\times\mathcal H,\mathcal G),
+\]
+这同样是对三个变元都有\Term{functor}{函子}性的\Term{isomorphism}{同构}。由此，第 2、3 节的形式性质，都是更一般结果的特殊情形；那些结果适用于存在对象 $\mathbf{Hom}_{\mathcal E/-}(\mathcal F,\mathcal G)$ 的\Term{category}{范畴}，其中 $\mathcal F,\mathcal G$ 是该\Term{category}{范畴}中第三个对象 $\mathcal E$ 之上的两个对象。
+
+\SGAsection{4}{纤维范畴；$\mathcal E$-范畴的等价}
+设 $\mathcal F$ 为 $\mathcal E$ 上的\Term{category}{范畴}，$S\in\operatorname{Ob}(\mathcal E)$。称 $\mathcal E$ 中由 $S$ 定义的单点子\Term{category}{范畴}在 $\mathcal F$ 中的\Term{inverse-image}{逆像}子\Term{category}{范畴} $\mathcal F_S$ 为 $\mathcal F$ 在 $S$ 处的\Term{fibre-category}{纤维范畴}。因此，$\mathcal F_S$ 的对象是满足 $p(\xi)=S$ 的 $\mathcal F$ 中对象 $\xi$，\Term{morphism}{态射}是满足 $p(u)=\operatorname{id}_S$ 的 $\mathcal F$ 中\Term{morphism}{态射} $u$，即 $\mathcal F$ 中的 $S$-\Term{morphism}{态射}。显然，$\mathcal F_S$ 典范\Term{isomorphism}{同构}于\Term{fibre-product}{纤维积} $\mathcal F\times_{\mathcal E}\{S\}$；这里 $\{S\}$ 为由 $S$ 定义的单点子\Term{category}{范畴}，并配有到 $\mathcal E$ 的包含\Term{functor}{函子}。由\Term{base-change}{基变换}的传递性，作\Term{base-change}{基变换} $\lambda:\mathcal E'\to\mathcal E$ 后，对每个 $S'\in\operatorname{Ob}(\mathcal E')$，投影 $\operatorname{pr}_1:\mathcal F'=\mathcal F\times_{\mathcal E}\mathcal E'\to\mathcal F$ 诱导\Term{isomorphism}{同构}
+\[
+ \mathcal F'_{S'}\xrightarrow{\sim}\mathcal F_S,\qquad S=\lambda(S').
+\]
+
+\begin{SGAresult}{命题}{4.1}
+设 $f:\mathcal F\to\mathcal G$ 为 $\mathcal E$-\Term{functor}{函子}。若 $f$ \Term{fully-faithful-functor}{全忠实}，则任意\Term{base-change}{基变换} $\mathcal E'\to\mathcal E$ 后，相应\Term{functor}{函子}
+\[
+ f':\mathcal F'=\mathcal F\times_{\mathcal E}\mathcal E'\longrightarrow
+ \mathcal G'=\mathcal G\times_{\mathcal E}\mathcal E'
+\]
+仍\Term{fully-faithful-functor}{全忠实}。
+\end{SGAresult}
+核对是直接的；更一般地，可以证明，\Term{fully-faithful-functor}{全忠实}\Term{functor}{函子}的任意\Term{projective-limit}{逆极限}仍是\Term{fully-faithful-functor}{全忠实}\Term{functor}{函子}；这里取的是 $f$ 与 $\mathcal E,\mathcal E'$ 上的恒等\Term{functor}{函子}。
+
+应注意，将 4.1 中的“\Term{fully-faithful-functor}{全忠实}”换成“\Term{equivalence-of-categories}{范畴等价}”，所得类似断言不成立，即使 $\mathcal G=\mathcal E$ 也如此。不过有：
+
+\begin{SGAresult}{命题}{4.2}
+设 $f:\mathcal F\to\mathcal G$ 为 $\mathcal E$-\Term{functor}{函子}。下列条件等价：
+
+\textup{(i)} 存在 $\mathcal E$-\Term{functor}{函子} $g:\mathcal G\to\mathcal F$ 与 $\mathcal E$-\Term{isomorphism}{同构}
+\[
+ gf\xrightarrow{\sim}\operatorname{id}_{\mathcal F},\qquad
+ fg\xrightarrow{\sim}\operatorname{id}_{\mathcal G}.
+\]
+\textup{(ii)} 对每个 $\mathcal E$ 上的\Term{category}{范畴} $\mathcal E'$，\Term{functor}{函子}
+\[
+ f'=f\times_{\mathcal E}\mathcal E':\mathcal F'=\mathcal F\times_{\mathcal E}\mathcal E'
+ \longrightarrow\mathcal G'=\mathcal G\times_{\mathcal E}\mathcal E'
+\]
+是\Term{equivalence-of-categories}{范畴等价}。
+
+\SourcePage{145}
+\textup{(iii)} $f$ 是\Term{equivalence-of-categories}{范畴等价}，并且对每个 $S\in\operatorname{Ob}(\mathcal E)$，$f$ 诱导的\Term{functor}{函子} $f_S:\mathcal F_S\to\mathcal G_S$ 都是\Term{equivalence-of-categories}{范畴等价}。
+
+\textup{(iii bis)} $f$ \Term{fully-faithful-functor}{全忠实}，且对每个 $S\in\operatorname{Ob}(\mathcal E)$ 与每个 $\eta\in\operatorname{Ob}(\mathcal G_S)$，存在 $\xi\in\operatorname{Ob}(\mathcal F_S)$ 及 $S$-\Term{isomorphism}{同构} $u:f(\xi)\to\eta$。
+\end{SGAresult}
+\begin{proof}
+显然，(i) 推出 $f$ 是\Term{equivalence-of-categories}{范畴等价}；\Term{equivalence-of-categories}{范畴等价}由同样的条件定义，只是不要求\Term{functor}{函子}\Term{isomorphism}{同构}为 $\mathcal E$-\Term{morphism}{态射}。由上一节的\Term{functor}{函子}性，条件 (i) 在\Term{base-change}{基变换} $\mathcal E'\to\mathcal E$ 后保持，因而 (i)$\Rightarrow$(ii)。取 $\mathcal E'=\mathcal E$ 与 $\mathcal E'=\{S\}$，立即得到 (ii)$\Rightarrow$(iii)；(iii)$\Rightarrow$(iii bis) 更为直接。只需证明 (iii bis)$\Rightarrow$(i)。
+
+对每个 $\eta\in\operatorname{Ob}(\mathcal G)$，选取 $g(\eta)\in\operatorname{Ob}(\mathcal F)$ 及\Term{isomorphism}{同构} $u(\eta):f(g(\eta))\to\eta$，使 $q(u(\eta))=\operatorname{id}_S$，其中 $S=q(\eta)$；由 (iii bis) 的第二个条件，这是可能的。由 $f$ \Term{fully-faithful-functor}{全忠实}这一熟知而直接的事实，$g$ 可唯一地扩充为 $\mathcal G$ 到 $\mathcal F$ 的\Term{functor}{函子}，使各 $u(\eta)$ 定义\Term{functor}{函子}\Term{homomorphism}{同态}（因而为\Term{isomorphism}{同构}）$u:fg\xrightarrow{\sim}\operatorname{id}_{\mathcal G}$。按构造，$g$ 是 $\mathcal E$-\Term{functor}{函子}，$u$ 是 $\mathcal E$-\Term{homomorphism}{同态}。这些数据确定一个\Term{functor}{函子}\Term{isomorphism}{同构} $v:gf\to\operatorname{id}_{\mathcal F}$，其特征条件为 $f*v=u*f$；立即可见它也是 $\mathcal E$-\Term{morphism}{态射}。证毕。
+\end{proof}
+
+\begin{SGAresult}{定义}{4.3}
+若上述条件成立，称 $f$ 为 $\mathcal E$ 上的\Term{equivalence-of-categories}{范畴等价}，或 $\mathcal E$-等价。
+\end{SGAresult}
+
+\begin{SGAresult}{推论}{4.4}
+设投影\Term{functor}{函子} $p:\mathcal F\to\mathcal E$ 是\Term{transportable-functor}{可搬运函子}，即对 $\mathcal E$ 中每个\Term{isomorphism}{同构} $\alpha:T\to S$ 与每个 $\xi\in\operatorname{Ob}(\mathcal F_T)$，都存在 $\mathcal F$ 中以 $\xi$ 为源的\Term{isomorphism}{同构} $u$，使 $p(u)=\alpha$。那么任何作为\Term{equivalence-of-categories}{范畴等价}的 $\mathcal E$-\Term{functor}{函子} $f:\mathcal F\to\mathcal G$，都是 $\mathcal E$-等价。
+\end{SGAresult}
+由判据 (iii bis) 即得。
+
+\begin{SGAresult}{推论}{4.5}
+设 $f:\mathcal F\to\mathcal G$ 为 $\mathcal E$-等价。则对每个 $\mathcal E$ 上的\Term{category}{范畴} $\mathcal H$，相应\Term{functor}{函子}
+\[
+ \mathbf{Hom}_{\mathcal E/-}(\mathcal G,\mathcal H)\longrightarrow
+ \mathbf{Hom}_{\mathcal E/-}(\mathcal F,\mathcal H),\qquad
+ \mathbf{Hom}_{\mathcal E/-}(\mathcal H,\mathcal F)\longrightarrow
+ \mathbf{Hom}_{\mathcal E/-}(\mathcal H,\mathcal G)
+\]
+（参看第 2 节）都是\Term{equivalence-of-categories}{范畴等价}。
+\end{SGAresult}
+由判据 (i) 作通常的论证即得。
+
+\SourcePage{146}
+\SGAsection{5}{笛卡尔态射、逆像与笛卡尔函子}
+设 $\mathcal F$ 为 $\mathcal E$ 上的\Term{category}{范畴}，投影\Term{functor}{函子}为 $p$。
+
+\begin{SGAresult}{定义}{5.1}
+考虑 $\mathcal F$ 中的\Term{morphism}{态射} $\alpha:\eta\to\xi$，并置
+\[
+ S=p(\xi),\qquad T=p(\eta),\qquad f=p(\alpha).
+\]
+若对每个 $\eta'\in\operatorname{Ob}(\mathcal F_T)$ 及每个 $f$-\Term{morphism}{态射} $u:\eta'\to\xi$，都存在唯一的 $T$-\Term{morphism}{态射} $\bar u:\eta'\to\eta$，使 $u=\alpha\circ\bar u$，便称 $\alpha$ 为\Term{cartesian-morphism}{笛卡尔态射}。
+\end{SGAresult}
+这就是说，对每个 $\eta'\in\operatorname{Ob}(\mathcal F_T)$，映射 $v\mapsto\alpha\circ v$ 给出\Term{bijection}{双射}
+\[
+ \operatorname{Hom}_T(\eta',\eta)\longrightarrow\operatorname{Hom}_f(\eta',\xi).\tag{i}
+\]
+也就是说，对 $(\eta,\alpha)$ \Term{representable-functor}{表示}右边关于 $\eta'$ 的\Term{functor}{函子} $\mathcal F_T^\circ\to\mathbf{Ens}$。若对给定的 $\mathcal E$ 中\Term{morphism}{态射} $f:T\to S$ 及给定的 $\xi\in\operatorname{Ob}(\mathcal F_S)$，存在这样的对 $(\eta,\alpha)$，即存在 $\mathcal F$ 中目标为 $\xi$ 且满足 $p(\alpha)=f$ 的\Term{cartesian-morphism}{笛卡尔态射} $\alpha$，那么 $\eta$ 在 $\mathcal F_T$ 中由此确定到唯一\Term{isomorphism}{同构}。此时称 $\xi$ 沿 $f$ 的\Term{inverse-image}{逆像}存在；配有笛卡尔 $f$-\Term{morphism}{态射} $\alpha:\eta\to\xi$ 的 $\mathcal F_T$ 中对象 $\eta$，称为 $\xi$ 沿 $f$ 的一个\Term{inverse-image}{逆像}。
+
+常常假定在\Term{inverse-image}{逆像}存在时已选定一个\Term{inverse-image}{逆像}（$\mathcal F$ 固定），并在不会混淆时将其记为 $f^*_{\mathcal F}(\xi)$，或简记为 $f^*(\xi)$、$\xi\times_ST$；下文将典范\Term{morphism}{态射} $\alpha:\eta\to\xi$ 记为 $\alpha_f(\xi)$。若对每个 $\xi\in\operatorname{Ob}(\mathcal F_S)$，沿 $f$ 的\Term{inverse-image}{逆像}都存在，也说在 $\mathcal F$ 中沿 $f$ 的\Term{inverse-image}{逆像}\Term{functor}{函子}存在；此时 $f^*(\xi)$ 关于 $\xi$ 成为从 $\mathcal F_S$ 到 $\mathcal F_T$ 的\Term{covariant-functor}{协变函子}。这源于 (i) 右边对 $\xi$ 的协变性；准确地说，它是 $\mathcal F_T^\circ\times\mathcal F_S\to\mathbf{Ens}$ 的\Term{functor}{函子}。$f^*(\xi)$ 的\Term{functor}{函子}性可具体写成：若有笛卡尔 $f$-\Term{morphism}{态射} $\alpha:\eta\to\xi$、$\alpha':\eta'\to\xi'$，以及 $S$-\Term{morphism}{态射} $\lambda:\xi\to\xi'$，则存在唯一的 $T$-\Term{morphism}{态射} $\mu:\eta\to\eta'$，使
+\[
+ \alpha'\mu=\lambda\alpha.
+\]
+这由 $\alpha'$ 为\Term{cartesian-morphism}{笛卡尔态射}即得。
+
+还要指出以下直接事实：若 $\mathcal F$ 中有\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}
+ \xi\arrow[d,"\lambda"']&\eta\arrow[l,"\alpha"']\arrow[d,"\mu"]\\
+ \xi'&\eta'\arrow[l,"\alpha'" ]
+\end{tikzcd}
+\]
+其中 $\alpha,\alpha'$ 为 $f$-\Term{morphism}{态射}，$\lambda$ 为 $S$-\Term{isomorphism}{同构}，$\mu$ 为 $T$-\Term{isomorphism}{同构}，那么 $\alpha$ 为\Term{cartesian-morphism}{笛卡尔态射}当且仅当 $\alpha'$ 为\Term{cartesian-morphism}{笛卡尔态射}。
+
+\SourcePage{147}
+\begin{SGAresult}{定义}{5.2}
+若 $\mathcal E$-\Term{functor}{函子} $F:\mathcal F\to\mathcal G$ 将\Term{cartesian-morphism}{笛卡尔态射}映为\Term{cartesian-morphism}{笛卡尔态射}，则称其为\Term{cartesian-functor}{笛卡尔函子}。记 $\mathbf{Hom}_{\mathrm{cart}}(\mathcal F,\mathcal G)$ 为 $\mathbf{Hom}_{\mathcal E/-}(\mathcal F,\mathcal G)$ 中由\Term{cartesian-functor}{笛卡尔函子}组成的全子\Term{category}{范畴}。
+\end{SGAresult}
+例如，通过恒等\Term{functor}{函子}将 $\mathcal E$ 视为 $\mathcal E$ 上的\Term{category}{范畴}时，其每个\Term{morphism}{态射}都是\Term{cartesian-morphism}{笛卡尔态射}；因此，从 $\mathcal E$ 到 $\mathcal F$ 的\Term{cartesian-functor}{笛卡尔函子}，就是将 $\mathcal E$ 的所有\Term{morphism}{态射}都映为\Term{cartesian-morphism}{笛卡尔态射}的\Term{section}{截面}\Term{functor}{函子} $F:\mathcal E\to\mathcal F$。这样的\Term{functor}{函子}称为 $\mathcal F$ 在 $\mathcal E$ 上的\Term{cartesian-section}{笛卡尔截面}。
+
+\begin{SGAresult}{命题}{5.3}
+\textup{(i)} $\mathcal E$-等价 $F:\mathcal F\to\mathcal G$ 是\Term{cartesian-functor}{笛卡尔函子}。
+
+\textup{(ii)} 设 $F,G:\mathcal F\to\mathcal G$ 是两个\Term{isomorphism}{同构}的 $\mathcal E$-\Term{functor}{函子}；若其中一个为\Term{cartesian-functor}{笛卡尔函子}，另一个也是。
+
+\textup{(iii)} \Term{cartesian-functor}{笛卡尔函子} $\mathcal F\to\mathcal G$ 与 $\mathcal G\to\mathcal H$ 的复合仍是\Term{cartesian-functor}{笛卡尔函子}。
+\end{SGAresult}
+断言 (iii) 由定义显然成立；(ii) 来自定义 5.2 之前的注记；(i) 由定义和判据 4.2 (iii) 容易得到。更准确地说，$\mathcal F$ 中\Term{morphism}{态射} $\alpha$ 为\Term{cartesian-morphism}{笛卡尔态射}，当且仅当 $F(\alpha)$ 为\Term{cartesian-morphism}{笛卡尔态射}。
+
+\begin{SGAresult}{推论}{5.4}
+设 $F:\mathcal F\to\mathcal G$ 为 $\mathcal E$-等价。则对每个 $\mathcal E$ 上的\Term{category}{范畴} $\mathcal H$，相应\Term{functor}{函子} $G\mapsto G\circ F$ 与 $G\mapsto F\circ G$ 诱导\Term{equivalence-of-categories}{范畴等价}
+\[
+ \mathbf{Hom}_{\mathrm{cart}}(\mathcal G,\mathcal H)\xrightarrow{\approx}
+ \mathbf{Hom}_{\mathrm{cart}}(\mathcal F,\mathcal H),\qquad
+ \mathbf{Hom}_{\mathrm{cart}}(\mathcal H,\mathcal F)\xrightarrow{\approx}
+ \mathbf{Hom}_{\mathrm{cart}}(\mathcal H,\mathcal G).
+\]
+\end{SGAresult}
+这由判据 4.2 (i) 与 5.3 (i)、(ii)、(iii) 按通常方法推出。还可进一步说，$\mathcal E$-\Term{functor}{函子} $G:\mathcal G\to\mathcal H$ 为\Term{cartesian-functor}{笛卡尔函子}，当且仅当 $G\circ F$ 为\Term{cartesian-functor}{笛卡尔函子}；同样，$\mathcal E$-\Term{functor}{函子} $G:\mathcal H\to\mathcal F$ 为\Term{cartesian-functor}{笛卡尔函子}，当且仅当 $F\circ G$ 为\Term{cartesian-functor}{笛卡尔函子}。
+
+由 5.4 (iii)可知，考虑 $\mathbf{Cat}_{/\mathcal E}$ 的子\Term{category}{范畴} $\mathbf{Cat}^{\mathrm{cart}}_{/\mathcal E}$，其对象与原\Term{category}{范畴}相同，\Term{morphism}{态射}为\Term{cartesian-functor}{笛卡尔函子}，便像第 2 节一样得到\Term{pairing}{配对}
+\[
+ \mathbf{Hom}_{\mathrm{cart}}(\mathcal F,\mathcal G)\times
+ \mathbf{Hom}_{\mathrm{cart}}(\mathcal G,\mathcal H)
+ \longrightarrow\mathbf{Hom}_{\mathrm{cart}}(\mathcal F,\mathcal H),
+\]
+它由第 2 节的\Term{pairing}{配对}诱导，使 $\mathbf{Hom}_{\mathrm{cart}}(\mathcal F,\mathcal G)$ 成为关于 $\mathcal F,\mathcal G$ 的\Term{functor}{函子}，从 $(\mathbf{Cat}^{\mathrm{cart}}_{/\mathcal E})^\circ\times\mathbf{Cat}^{\mathrm{cart}}_{/\mathcal E}$ 到 $\mathbf{Cat}$。我们主要在 $\mathcal F=\mathcal G$ 的情形需要这一说明。
+
+\begin{SGAresult}{定义}{5.5}
+设 $\mathcal F$ 为 $\mathcal E$ 上的\Term{category}{范畴}。用
+\[
+ \mathop{\mathbf{Lim}}\limits_{\longleftarrow}\mathcal F/\mathcal E
+\]
+表示笛卡尔 $\mathcal E$-\Term{functor}{函子} $\mathcal E\to\mathcal F$ 所组成的\Term{category}{范畴}，即 $\mathcal F$ 在 $\mathcal E$ 上的\Term{cartesian-section}{笛卡尔截面}\Term{category}{范畴}。
+\end{SGAresult}
+
+\SourcePage{148}
+由上述讨论，$\mathop{\mathbf{Lim}}\limits_{\longleftarrow}\mathcal F/\mathcal E$ 是关于 $\mathcal F$ 的\Term{functor}{函子}，从 $\mathbf{Cat}^{\mathrm{cart}}_{/\mathcal E}$ 到 $\mathbf{Cat}$。下文将讨论这一 $\mathop{\mathbf{Lim}}\limits_{\longleftarrow}$ 运算与\Term{category}{范畴}的\Term{projective-limit}{逆极限}概念之间的联系，并给出许多例子。
+
+\SGAsection{6}{纤维范畴与预纤维范畴；它们的积与基变换}
+\begin{SGAresult}{定义}{6.1}
+若 $\mathcal E$ 上的\Term{category}{范畴} $\mathcal F$ 满足下列两条公理，称 $\mathcal F$ 为\Term{fibred-category}{纤维范畴}，并称\Term{functor}{函子} $\mathcal F\to\mathcal E$ 为\Term{fiber}{纤维}化\Term{functor}{函子}：
+
+$\mathrm{Fib}_{\mathrm I}$：对 $\mathcal E$ 中每个\Term{morphism}{态射} $f:T\to S$，$\mathcal F$ 中沿 $f$ 的\Term{inverse-image}{逆像}\Term{functor}{函子}存在。
+
+$\mathrm{Fib}_{\mathrm {II}}$：两个\Term{cartesian-morphism}{笛卡尔态射}的复合仍为\Term{cartesian-morphism}{笛卡尔态射}。
+
+仅满足 $\mathrm{Fib}_{\mathrm I}$ 的 $\mathcal E$ 上\Term{category}{范畴} $\mathcal F$，称为 $\mathcal E$ 上的\Term{prefibred-category}{预纤维范畴}。
+\end{SGAresult}
+若 $\mathcal F$ 是 $\mathcal E$ 上的\Term{fibred-category}{纤维范畴}（分别地，\Term{prefibred-category}{预纤维范畴}），其子\Term{category}{范畴} $\mathcal G$ 若本身是 $\mathcal E$ 上的\Term{fibred-category}{纤维范畴}（分别地，\Term{prefibred-category}{预纤维范畴}），且包含\Term{functor}{函子}为\Term{cartesian-functor}{笛卡尔函子}，则称 $\mathcal G$ 为\Term{fiber}{纤维}子\Term{category}{范畴}（分别地，预\Term{fiber}{纤维}子\Term{category}{范畴}）。例如，若 $\mathcal G$ 为 $\mathcal F$ 的全子\Term{category}{范畴}，这等价于：对 $\mathcal E$ 中每个\Term{morphism}{态射} $f:T\to S$ 以及每个 $\xi\in\operatorname{Ob}(\mathcal G_S)$，$f^*_{\mathcal F}(\xi)$ 都与 $\mathcal G_T$ 中某个对象 $T$-\Term{isomorphism}{同构}。
+
+另一个有趣情形是：给定 $\mathcal E$ 上的\Term{fibred-category}{纤维范畴} $\mathcal F$，取 $\mathcal F$ 的子\Term{category}{范畴} $\mathcal G$，使其对象与 $\mathcal F$ 相同，\Term{morphism}{态射}为 $\mathcal F$ 的\Term{cartesian-morphism}{笛卡尔态射}；特别地，$\mathcal G_S$ 的\Term{morphism}{态射}是 $\mathcal F_S$ 的\Term{isomorphism}{同构}。立即可见，这的确是 $\mathcal F$ 的\Term{fiber}{纤维}子\Term{category}{范畴}，因为对于 $\mathcal F$ 中的笛卡尔 $f$-\Term{morphism}{态射} $\alpha$ 所给的\Term{bijection}{双射}
+\[
+ \operatorname{Hom}_T(\eta',\eta)\xrightarrow{\sim}\operatorname{Hom}_f(\eta',\xi),
+\]
+左边的 $T$-\Term{isomorphism}{同构}恰对应于右边的\Term{cartesian-morphism}{笛卡尔态射}。依定义，\Term{cartesian-section}{笛卡尔截面} $\mathcal E\to\mathcal F$ 与任意 $\mathcal E$-\Term{functor}{函子} $\mathcal E\to\mathcal G$ 一一对应。不过应注意，自然\Term{functor}{函子}
+\[
+ \mathbf{Hom}_{\mathcal E/-}(\mathcal E,\mathcal G)\longrightarrow
+ \mathbf{Hom}_{\mathrm{cart}}(\mathcal E,\mathcal F)
+ =\mathop{\mathbf{Lim}}\limits_{\longleftarrow}(\mathcal F/\mathcal E)
+\]
+是\Term{faithful-functor}{忠实}的，但一般并不\Term{fully-faithful-functor}{全忠实}，因而不是\Term{isomorphism}{同构}。
+
+\textbf{注记。}设 $\mathcal F$ 为 $\mathcal E$ 上的\Term{category}{范畴}。下列条件等价：(i) $\mathcal F$ 的所有\Term{morphism}{态射}都是\Term{cartesian-morphism}{笛卡尔态射}；(ii) $\mathcal F$ 是 $\mathcal E$ 上的\Term{fibred-category}{纤维范畴}，且每个 $\mathcal F_S$ 都是\Term{groupoid}{群胚}，即 $\mathcal F_S$ 中每个\Term{morphism}{态射}都是\Term{isomorphism}{同构}。此时称 $\mathcal F$ 为 $\mathcal E$ 上的\Term{category-fibred-in-groupoids}{群胚纤维范畴}；“模空间理论”中主要遇到的就是这种\Term{category}{范畴}。若 $\mathcal E$ 是\Term{groupoid}{群胚}，可以证明 (i)、(ii) 还等价于下述条件：(iii) $\mathcal F$ 是\Term{groupoid}{群胚}，且投影\Term{functor}{函子} $p:\mathcal F\to\mathcal E$ 可搬运。
+
+\SourcePage{149}
+这里“可搬运”见 4.4。例如，若 $\mathcal E,\mathcal F$ 是对象集各只有一点的\Term{groupoid}{群胚}，因而在\Term{isomorphism}{同构}意义下分别由群 $E,F$ 确定，且\Term{functor}{函子} $p:\mathcal F\to\mathcal E$ 由\Term{group-homomorphism}{群同态} $p:F\to E$ 定义，则 $\mathcal F$ 在 $\mathcal E$ 上为\Term{fibred-category}{纤维范畴}，当且仅当 $p$ \Term{surjectivity}{满射}，即 $p$ 给出群 $E$ 被群 $G=\operatorname{Ker}p$ 的一个\Term{group-extension}{扩张}。
+
+\begin{SGAresult}{命题}{6.2}
+设 $F:\mathcal F\to\mathcal G$ 为 $\mathcal E$-等价。$\mathcal F$ 是 $\mathcal E$ 上的\Term{fibred-category}{纤维范畴}（分别地，\Term{prefibred-category}{预纤维范畴}），当且仅当 $\mathcal G$ 也是。
+\end{SGAresult}
+由定义及上述说明容易推出：$\mathcal F$ 中\Term{morphism}{态射} $\alpha$ 为\Term{cartesian-morphism}{笛卡尔态射}，当且仅当 $F(\alpha)$ 为\Term{cartesian-morphism}{笛卡尔态射}。
+
+\begin{SGAresult}{命题}{6.3}
+设 $\mathcal F_1,\mathcal F_2$ 为 $\mathcal E$ 上的两个\Term{category}{范畴}，$\alpha=(\alpha_1,\alpha_2)$ 为 $\mathcal F=\mathcal F_1\times_{\mathcal E}\mathcal F_2$ 中的\Term{morphism}{态射}。$\alpha$ 是\Term{cartesian-morphism}{笛卡尔态射}，当且仅当其两个分量都是\Term{cartesian-morphism}{笛卡尔态射}。
+\end{SGAresult}
+确实，令 $\xi_i,\eta_i$ 分别为 $\alpha_i$ 的目标、源，令 $f:T\to S$ 为 $\mathcal E$ 中使 $\alpha_1,\alpha_2$ 都成为 $f$-\Term{morphism}{态射}的\Term{morphism}{态射}。对 $\mathcal F_T$ 中每个 $\eta'=(\eta'_1,\eta'_2)$，有\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}[column sep=large]
+\operatorname{Hom}_T(\eta',\eta)\arrow[r]\arrow[d]&\operatorname{Hom}_f(\eta',\xi)\arrow[d]\\
+\operatorname{Hom}_T(\eta'_1,\eta_1)\times\operatorname{Hom}_T(\eta'_2,\eta_2)\arrow[r]&
+\operatorname{Hom}_f(\eta'_1,\xi_1)\times\operatorname{Hom}_f(\eta'_2,\xi_2)
+\end{tikzcd}
+\]
+竖直箭头均为\Term{bijection}{双射}，因此一个水平箭头为\Term{bijection}{双射}当且仅当另一个也是。这已表明：若 $\alpha_1,\alpha_2$ 为\Term{cartesian-morphism}{笛卡尔态射}，即第二个水平箭头为\Term{bijection}{双射}，那么 $\alpha$ 也是。反过来，在上图中取 $\eta_i'=\eta_i$，便有 $\operatorname{Hom}_T(\eta_i',\eta_i)\ne\varnothing$；先取 $i=2$，得到 $\alpha_1$ 为\Term{cartesian-morphism}{笛卡尔态射}，再取 $i=1$，得到 $\alpha_2$ 为\Term{cartesian-morphism}{笛卡尔态射}。
+
+\begin{SGAresult}{推论}{6.4}
+设 $\mathcal F=\mathcal F_1\times_{\mathcal E}\mathcal F_2$，$F=(F_1,F_2):\mathcal G\to\mathcal F$ 为 $\mathcal E$-\Term{functor}{函子}。$F$ 为\Term{cartesian-functor}{笛卡尔函子}，当且仅当 $F_1,F_2$ 都为\Term{cartesian-functor}{笛卡尔函子}。因此有\Term{category}{范畴}\Term{isomorphism}{同构}
+\[
+ \mathbf{Hom}_{\mathrm{cart}}(\mathcal G,\mathcal F_1\times_{\mathcal E}\mathcal F_2)
+ \xrightarrow{\sim}\mathbf{Hom}_{\mathrm{cart}}(\mathcal G,\mathcal F_1)\times
+ \mathbf{Hom}_{\mathrm{cart}}(\mathcal G,\mathcal F_2).
+\]
+特别地，取 $\mathcal G=\mathcal E$，得到\Term{category}{范畴}\Term{isomorphism}{同构}
+\[
+ \mathop{\mathbf{Lim}}\limits_{\longleftarrow}(\mathcal F_1\times_{\mathcal E}\mathcal F_2/\mathcal E)
+ \xrightarrow{\sim}\mathop{\mathbf{Lim}}\limits_{\longleftarrow}(\mathcal F_1/\mathcal E)
+ \times\mathop{\mathbf{Lim}}\limits_{\longleftarrow}(\mathcal F_2/\mathcal E).
+\]
+\end{SGAresult}
+
+\begin{SGAresult}{推论}{6.5}
+设 $\mathcal F_1,\mathcal F_2$ 为 $\mathcal E$ 上的两个\Term{fibred-category}{纤维范畴}（分别地，\Term{prefibred-category}{预纤维范畴}），则其\Term{fibre-product}{纤维积} $\mathcal F=\mathcal F_1\times_{\mathcal E}\mathcal F_2$ 是 $\mathcal E$ 上的\Term{fibred-category}{纤维范畴}（分别地，\Term{prefibred-category}{预纤维范畴}）。
+\end{SGAresult}
+
+\SourcePage{150}
+这些结果也推广到 $\mathcal E$ 上任意一个\Term{category}{范畴}族的\Term{fibre-product}{纤维积}。
+
+\begin{SGAresult}{命题}{6.6}
+设 $\mathcal F$ 为 $\mathcal E$ 上的\Term{category}{范畴}，投影\Term{functor}{函子}为 $p$；设 $\lambda:\mathcal E'\to\mathcal E$ 为\Term{functor}{函子}，通过投影\Term{functor}{函子} $p'=p\times_{\mathcal E}\operatorname{id}_{\mathcal E'}$ 将 $\mathcal F'=\mathcal F\times_{\mathcal E}\mathcal E'$ 视为 $\mathcal E'$ 上的\Term{category}{范畴}。若 $\alpha'$ 为 $\mathcal F'$ 中的\Term{morphism}{态射}，则 $\alpha'$ 为\Term{cartesian-morphism}{笛卡尔态射}，当且仅当它在 $\mathcal F$ 中的像 $\alpha$ 为\Term{cartesian-morphism}{笛卡尔态射}。
+\end{SGAresult}
+证明是直接的，留给读者。
+
+\begin{SGAresult}{推论}{6.7}
+对 $\mathcal E$ 上\Term{category}{范畴}间的任意\Term{cartesian-functor}{笛卡尔函子} $F:\mathcal F\to\mathcal G$，\Term{functor}{函子} $F'=F\times_{\mathcal E}\mathcal E':\mathcal F'=\mathcal F\times_{\mathcal E}\mathcal E'\to\mathcal G'=\mathcal G\times_{\mathcal E}\mathcal E'$ 也是\Term{cartesian-functor}{笛卡尔函子}。
+\end{SGAresult}
+所以第 3 节考虑的\Term{functor}{函子} $\mathbf{Hom}_{\mathcal E/-}(\mathcal F,\mathcal G)\to\mathbf{Hom}_{\mathcal E'/-}(\mathcal F',\mathcal G')$ 诱导\Term{functor}{函子}
+\[
+ \mathbf{Hom}_{\mathrm{cart}}(\mathcal F,\mathcal G)\longrightarrow
+ \mathbf{Hom}_{\mathrm{cart}}(\mathcal F',\mathcal G').
+\]
+换言之，固定 $\mathcal F,\mathcal G$，可以将 $\mathbf{Hom}_{\mathrm{cart}}(\mathcal F\times_{\mathcal E}\mathcal E',\mathcal G\times_{\mathcal E}\mathcal E')$ 视为关于 $\mathcal E'$ 的\Term{functor}{函子}，从 $\mathbf{Cat}_{/\mathcal E}^{\circ}$ 到 $\mathbf{Cat}$。若再让 $\mathcal F,\mathcal G$ 变化，便得到从
+\[
+ \mathbf{Cat}_{/\mathcal E}^{\circ}\times(\mathbf{Cat}^{\mathrm{cart}}_{/\mathcal E})^\circ
+ \times\mathbf{Cat}^{\mathrm{cart}}_{/\mathcal E}
+\]
+到 $\mathbf{Cat}$ 的\Term{functor}{函子}。考虑第 3 节的\Term{isomorphism}{同构}
+\[
+ \mathbf{Hom}_{\mathcal E'/-}(\mathcal F',\mathcal G')\xrightarrow{\sim}
+ \mathbf{Hom}_{\mathcal E/-}(\mathcal F\times_{\mathcal E}\mathcal E',\mathcal G),
+\]
+那么，从 $\mathcal F'$ 到 $\mathcal G'$ 的笛卡尔 $\mathcal E'$-\Term{functor}{函子}，恰对应于如下 $\mathcal E$-\Term{functor}{函子} $\mathcal F\times_{\mathcal E}\mathcal E'\to\mathcal G$：凡\Term{morphism}{态射}的第一投影是 $\mathcal F$ 的\Term{cartesian-morphism}{笛卡尔态射}，它就将该\Term{morphism}{态射}映为 $\mathcal G$ 的\Term{cartesian-morphism}{笛卡尔态射}。取 $\mathcal F=\mathcal E$ 并更换记号，得到：
+
+\begin{SGAresult}{推论}{6.8}
+$\mathop{\mathbf{Lim}}\limits_{\longleftarrow}(\mathcal F'/\mathcal E')$ \Term{isomorphism}{同构}于 $\mathbf{Hom}_{\mathcal E/-}(\mathcal E',\mathcal F)$ 的一个全子\Term{category}{范畴}；其对象是将任意\Term{morphism}{态射}映为\Term{cartesian-morphism}{笛卡尔态射}的 $\mathcal E$-\Term{functor}{函子} $\mathcal E'\to\mathcal F$。特别地，若 $\mathcal F$ 为\Term{fibred-category}{纤维范畴}，$\widetilde{\mathcal F}$ 是 $\mathcal F$ 中\Term{morphism}{态射}恰为\Term{cartesian-morphism}{笛卡尔态射}的子\Term{category}{范畴}，则有\Term{bijection}{双射}
+\[
+ \operatorname{Ob}\mathop{\mathbf{Lim}}\limits_{\longleftarrow}(\mathcal F'/\mathcal E')
+ \xrightarrow{\sim}\operatorname{Hom}_{\mathcal E/-}(\mathcal E',\widetilde{\mathcal F}).
+\]
+\end{SGAresult}
+这明确说明了如何将 $\mathop{\mathbf{Lim}}\limits_{\longleftarrow}(\mathcal F\times_{\mathcal E}\mathcal E'/\mathcal E')$ 视为关于 $\mathcal E',\mathcal F$ 的\Term{functor}{函子}，从 $\mathbf{Cat}_{/\mathcal E}^{\circ}\times\mathbf{Cat}^{\mathrm{cart}}_{/\mathcal E}$ 到 $\mathbf{Cat}$。后面还会看到，在要求 $\mathcal F$ 为\Term{fibred-category}{纤维范畴}时，它对 $\mathcal E'$ 有更完整的\Term{functor}{函子}性。
+
+\begin{SGAresult}{推论}{6.9}
+设 $\mathcal F$ 为 $\mathcal E$ 上的\Term{fibred-category}{纤维范畴}（分别地，\Term{prefibred-category}{预纤维范畴}），则 $\mathcal F'=\mathcal F\times_{\mathcal E}\mathcal E'$ 是 $\mathcal E'$ 上的\Term{fibred-category}{纤维范畴}（分别地，\Term{prefibred-category}{预纤维范畴}）。
+\end{SGAresult}
+
+\SourcePage{151}
+\begin{SGAresult}{命题}{6.10}
+设 $\mathcal F,\mathcal G$ 为 $\mathcal E$ 上的\Term{prefibred-category}{预纤维范畴}，$F:\mathcal F\to\mathcal G$ 为笛卡尔 $\mathcal E$-\Term{functor}{函子}。$F$ \Term{faithful-functor}{忠实}（分别地，\Term{fully-faithful-functor}{全忠实}；为 $\mathcal E$-等价），当且仅当对每个 $S\in\operatorname{Ob}(\mathcal E)$，所诱导的\Term{functor}{函子} $F_S:\mathcal F_S\to\mathcal G_S$ \Term{faithful-functor}{忠实}（分别地，\Term{fully-faithful-functor}{全忠实}；为等价）。
+\end{SGAresult}
+由定义立即得到证明。
+
+为结束本节，给出\Term{fibred-category}{纤维范畴}的若干使用公理 $\mathrm{Fib}_{\mathrm{II}}$ 的性质。
+
+\begin{SGAresult}{命题}{6.11}
+设 $\mathcal F$ 为 $\mathcal E$ 上的\Term{prefibred-category}{预纤维范畴}。它是\Term{fibred-category}{纤维范畴}，当且仅当满足下述条件：
+
+$\mathrm{Fib}'_{\mathrm{II}}$：设 $\alpha:\eta\to\xi$ 为 $\mathcal F$ 中位于 $\mathcal E$ 的\Term{morphism}{态射} $f:T\to S$ 之上的\Term{cartesian-morphism}{笛卡尔态射}。对 $\mathcal E$ 中任意\Term{morphism}{态射} $g:U\to T$ 及每个 $\zeta\in\operatorname{Ob}(\mathcal F_U)$，映射 $u\mapsto\alpha\circ u$ 给出\Term{bijection}{双射}
+\[
+ \operatorname{Hom}_g(\zeta,\eta)\longrightarrow\operatorname{Hom}_{fg}(\zeta,\xi).
+\]
+\end{SGAresult}
+换言之，在 $\mathcal E$ 上的\Term{fibred-category}{纤维范畴}中，笛卡尔图由一个表面上强于定义的性质刻画；在上面的陈述中取 $g=\operatorname{id}_T$，就得到原定义。
+
+\begin{SGAresult}{推论}{6.12}
+设 $\mathcal F$ 为 $\mathcal E$ 上的\Term{category}{范畴}，$\alpha$ 是其中的\Term{morphism}{态射}。$\alpha$ 为\Term{isomorphism}{同构}的必要条件是 $p(\alpha)=f$ 为\Term{isomorphism}{同构}且 $\alpha$ 为\Term{cartesian-morphism}{笛卡尔态射}；若 $\mathcal F$ 在 $\mathcal E$ 上为\Term{fibred-category}{纤维范畴}，则逆命题也成立。
+\end{SGAresult}
+确实，若 $\alpha$ 是\Term{isomorphism}{同构}，$f=p(\alpha)$ 显然也是；对每个 $\eta'\in\operatorname{Ob}(\mathcal F_T)$，映射 $u\mapsto\alpha\circ u$ 给出\Term{bijection}{双射}
+\[
+ \operatorname{Hom}(\eta',\eta)\longrightarrow\operatorname{Hom}(\eta',\xi).
+\]
+因为 $f$ 为\Term{isomorphism}{同构}，左边的元素为 $T$-\Term{morphism}{态射}当且仅当其在右边的像为 $f$-\Term{morphism}{态射}，故得到\Term{bijection}{双射}
+\[
+ \operatorname{Hom}_T(\eta',\eta)\longrightarrow\operatorname{Hom}_f(\eta',\xi),
+\]
+证明了第一条断言。反之，设 $f$ 是\Term{isomorphism}{同构}，$\alpha$ 满足 $\mathrm{Fib}'_{\mathrm{II}}$ 中的条件；当 $\mathcal F$ 在 $\mathcal E$ 上为\Term{fibred-category}{纤维范畴}时，这就意味着 $\alpha$ 为\Term{cartesian-morphism}{笛卡尔态射}。于是立即可见，对每个 $\zeta\in\operatorname{Ob}(\mathcal F)$，映射 $u\mapsto\alpha\circ u$ 从 $\operatorname{Hom}(\zeta,\eta)$ 到 $\operatorname{Hom}(\zeta,\xi)$ 为\Term{bijection}{双射}，因此 $\alpha$ 是\Term{isomorphism}{同构}。
+
+\begin{SGAresult}{推论}{6.13}
+设 $\alpha:\eta\to\xi$ 与 $\beta:\zeta\to\eta$ 是 $\mathcal E$ 上\Term{fibred-category}{纤维范畴} $\mathcal F$ 中可复合的两个\Term{morphism}{态射}。若 $\alpha$ 为\Term{cartesian-morphism}{笛卡尔态射}，则 $\beta$ 为\Term{cartesian-morphism}{笛卡尔态射}当且仅当 $\alpha\beta$ 为\Term{cartesian-morphism}{笛卡尔态射}。
+\end{SGAresult}
+使用 6.11 中\Term{cartesian-morphism}{笛卡尔态射}的加强定义即得。
+
+\SourcePage{152}
+\SGAsection{7}{$\mathcal E$ 上带劈分的范畴}
+\begin{SGAresult}{定义}{7.1}
+设 $\mathcal F$ 为 $\mathcal E$ 上的\Term{category}{范畴}。$\mathcal F$ 在 $\mathcal E$ 上的一个\Term{cleavage}{劈分}，指一个函数，它对每个 $f\in\operatorname{Fl}(\mathcal E)$，指定 $\mathcal F$ 中沿 $f$ 的\Term{inverse-image}{逆像}\Term{functor}{函子}，记为 $f^*$。若 $f=\operatorname{id}_S$ 蕴含 $f^*=\operatorname{id}_{\mathcal F_S}$，便称该\Term{cleavage}{劈分}是\Term{normalized-cleavage}{正规化}的。配有\Term{cleavage}{劈分}（分别地，\Term{normalized-cleavage}{正规化}\Term{cleavage}{劈分}）的 $\mathcal E$ 上\Term{category}{范畴}，称为\Term{cleaved-category}{带劈分的范畴}（分别地，带\Term{normalized-cleavage}{正规化}\Term{cleavage}{劈分}的\Term{category}{范畴}）。
+\end{SGAresult}
+显然，$\mathcal F$ 可赋予\Term{cleavage}{劈分}，当且仅当它在 $\mathcal E$ 上为\Term{prefibred-category}{预纤维范畴}；此时它也可赋予\Term{normalized-cleavage}{正规化}\Term{cleavage}{劈分}。$\mathcal F$ 上的\Term{cleavage}{劈分}集，与 $\operatorname{Fl}(\mathcal F)$ 中满足下列条件的子集 $K$ 所成的集合一一对应：
+
+a) $K$ 的每个元素 $\alpha$ 都是\Term{cartesian-morphism}{笛卡尔态射}。
+
+b) 对 $\mathcal E$ 中每个\Term{morphism}{态射} $f:T\to S$ 及每个 $\xi\in\operatorname{Ob}(\mathcal F_S)$，$K$ 中存在唯一一个以 $\xi$ 为目标的 $f$-\Term{morphism}{态射}。
+
+$K$ 所定义的\Term{cleavage}{劈分}\Term{normalized-cleavage}{正规化}，当且仅当 $K$ 还满足：
+
+c) $\mathcal F$ 中的恒等\Term{morphism}{态射}都属于 $K$。
+
+$K$ 中的\Term{morphism}{态射}可称为这一\Term{cleavage}{劈分}的“\Term{transport-morphism}{搬运态射}”。
+
+$\mathcal E$ 上带\Term{cleavage}{劈分}\Term{category}{范畴}的\Term{isomorphism}{同构}概念是清楚的。更一般地，可以把带\Term{cleavage}{劈分} $\mathcal E$-\Term{category}{范畴}之间的\Term{morphism}{态射}，定义为保持\Term{transport-morphism}{搬运态射}的 $\mathcal E$-\Term{functor}{函子} $\mathcal F\to\mathcal G$；特别地，这些\Term{functor}{函子}都是\Term{cartesian-functor}{笛卡尔函子}。这样，$\mathcal E$ 上\Term{cleaved-category}{带劈分的范畴}成为一个\Term{category}{范畴}的对象，该\Term{category}{范畴}称为 $\mathcal E$ 上带\Term{cleavage}{劈分}\Term{category}{范畴}的\Term{category}{范畴}。读者可写明其中积的存在性：若 $\mathcal E$ 上\Term{category}{范畴} $\mathcal F$ 是一族各自带\Term{cleavage}{劈分}的 $\mathcal E$ 上\Term{category}{范畴} $\mathcal F_i$ 的积，那么 $\mathcal F$ 自然配有相应\Term{cleavage}{劈分}。也留给读者明确写出带\Term{cleavage}{劈分}\Term{category}{范畴}的\Term{base-change}{基变换}概念。
+
+将典范\Term{morphism}{态射}记为
+\[
+ \alpha_f(\xi):f^*(\xi)\longrightarrow\xi.
+\]
+如前所述，它对 $\xi$ 有\Term{functor}{函子}性，即有\Term{functor}{函子}\Term{homomorphism}{同态}
+\[
+ \alpha_f:i_Tf^*\longrightarrow i_S,
+\]
+其中对每个 $S\in\operatorname{Ob}(\mathcal E)$，$i_S:\mathcal F_S\to\mathcal F$ 为包含\Term{functor}{函子}。现在考虑 $\mathcal E$ 中的\Term{morphism}{态射} $f:T\to S$ 与 $g:U\to T$。
+
+\SourcePage{153}
+对 $\xi\in\operatorname{Ob}(\mathcal F_S)$，由 $(fg)^*(\xi)$ 的定义，存在唯一的 $U$-\Term{morphism}{态射}
+\[
+ c_{f,g}(\xi):g^*f^*(\xi)\longrightarrow(fg)^*(\xi),
+\]
+使下图交换：
+\[
+\begin{tikzcd}[column sep=large]
+ f^*(\xi)\arrow[d,"\alpha_f(\xi)"']&g^*(f^*(\xi))\arrow[l,"\alpha_g(f^*(\xi))"']\arrow[d,"{c_{f,g}(\xi)}"]\\
+ \xi&(fg)^*(\xi)\arrow[l,"\alpha_{fg}(\xi)"]
+\end{tikzcd}
+\]
+当 $\xi$ 变化时，该\Term{homomorphism}{同态}有\Term{functor}{函子}性，即给出从 $\mathcal F_S$ 到 $\mathcal F_U$ 的\Term{functor}{函子}之间的\Term{homomorphism}{同态}
+\[
+ c_{f,g}:g^*f^*\longrightarrow(fg)^*.
+\]
+立即有：
+
+\begin{SGAresult}{命题}{7.2}
+$\mathcal E$ 上\Term{cleaved-category}{带劈分的范畴} $\mathcal F$ 为\Term{fibred-category}{纤维范畴}，当且仅当所有 $c_{f,g}$ 都是\Term{isomorphism}{同构}。
+\end{SGAresult}
+取 $f$ 为\Term{isomorphism}{同构}，$g$ 为其逆，考虑\Term{isomorphism}{同构} $c_{f,g}$ 与 $c_{g,f}$，得到：
+
+\begin{SGAresult}{推论}{7.3}
+若 $\mathcal F$ 是 $\mathcal E$ 上带\Term{cleavage}{劈分}的\Term{fibred-category}{纤维范畴}，则对 $\mathcal E$ 中任意\Term{isomorphism}{同构} $f:T\to S$，$f^*$ 是从 $\mathcal F_S$ 到 $\mathcal F_T$ 的\Term{equivalence-of-categories}{范畴等价}。
+\end{SGAresult}
+
+\begin{SGAresult}{命题}{7.4}
+设 $\mathcal F$ 为 $\mathcal E$ 上\Term{cleaved-category}{带劈分的范畴}。有
+\[
+ \mathrm{A)}\quad
+ \begin{cases}
+ c_{f,\operatorname{id}_T}(\xi)=\alpha_{\operatorname{id}_T}(f^*(\xi)),\\
+ c_{\operatorname{id}_S,f}(\xi)=f^*(\alpha_{\operatorname{id}_S}(\xi)),
+ \end{cases}
+\]
+\[
+ \mathrm{B)}\quad c_{f,gh}(\xi)\cdot c_{g,h}(f^*(\xi))
+ =c_{fg,h}(\xi)\cdot h^*(c_{f,g}(\xi)).
+\]
+在这些公式中，$f,g,h$ 为 $V\to U\to T\to S$ 中的\Term{morphism}{态射}，而 $\xi$ 是 $\mathcal F_S$ 的对象。
+\end{SGAresult}
+若\Term{cleavage}{劈分}\Term{normalized-cleavage}{正规化}，前两条关系可简写为
+\[
+ \mathrm{A')}\qquad c_{f,\operatorname{id}_T}=\operatorname{id}_{f^*},\qquad
+ c_{\operatorname{id}_S,f}=\operatorname{id}_{f^*}.
+\]
+第三条关系可用下图的交换性表达：
+\[
+\begin{tikzcd}[column sep=large]
+ h^*g^*f^*(\xi)\arrow[r,"{c_{g,h}(f^*(\xi))}"]\arrow[d,"{h^*(c_{f,g}(\xi))}"']&
+ (gh)^*(f^*(\xi))\arrow[d,"{c_{f,gh}(\xi)}"]\\
+ h^*(fg)^*(\xi)\arrow[r,"{c_{fg,h}(\xi)}"']&(fgh)^*(\xi)
+\end{tikzcd}\tag{D}
+\]
+
+\SourcePage{154}
+对于\Term{fibred-category}{纤维范畴}，各 $c_{f,g}$ 均为\Term{isomorphism}{同构}，此交换性可直观理解为：连续使用形如 $c_{f,g}$ 的\Term{isomorphism}{同构}，不会产生“相互矛盾的等同”。利用\Term{functor}{函子}\Term{homomorphism}{同态}的卷积积，还可以不写自变量 $\xi$，将公式写成
+\[
+ c_{fg,h}\circ(h^**c_{f,g})=c_{f,gh}\circ(c_{g,h}*f^*).
+\]
+7.4 的前两条公式的证明是显然的，下面简述第三条的证明。除方块 (D) 外，考虑\Term{morphism}{态射}方块
+\[
+\begin{tikzcd}[column sep=large]
+ g^*f^*(\xi)\arrow[r,"\alpha_g(f^*(\xi))"]\arrow[d,"{c_{f,g}(\xi)}"']&
+ f^*(\xi)\arrow[d,"\alpha_f(\xi)"]\\
+ (fg)^*(\xi)\arrow[r,"\alpha_{fg}(\xi)"']&\xi
+\end{tikzcd}\tag{D'}
+\]
+它由 $c_{f,g}(\xi)$ 的定义交换。将 (D) 的顶点与 (D') 中相应顶点用下列形如 $\alpha$ 的\Term{morphism}{态射}连接：
+\[
+ \alpha_h(g^*f^*(\xi)),\quad\alpha_{gh}(f^*(\xi)),\quad
+ \alpha_h((fg)^*(\xi)),\quad\alpha_{fgh}(\xi).
+\]
+所得立方体的四个侧面也都交换。左侧面的交换性来自：(D) 的左列由 (D') 的左列施以 $h$ 得到，且 $\alpha_h$ 为\Term{functor}{函子}\Term{homomorphism}{同态}。其余三个侧面的交换性，则正是 (D) 中另外三条边上各运算 $c$ 的定义。因此，除顶面外，立方体的五个面都交换。于是，(D) 所给出的两个 $(fgh)$-\Term{morphism}{态射} $h^*g^*f^*(\xi)\to(fgh)^*(\xi)$，与 $\alpha_{fgh}(\xi):(fgh)^*(\xi)\to\xi$ 复合后相同；由 $(fgh)^*$ 的定义，它们相等。
+
+下文只考虑带\Term{normalized-cleavage}{正规化}\Term{cleavage}{劈分}的\Term{category}{范畴}。这样的\Term{category}{范畴}产生以下数据：
+
+a) 映射 $S\mapsto\mathcal F_S$，从 $\operatorname{Ob}(\mathcal E)$ 到 $\mathbf{Cat}$。
+
+b) 映射 $f\mapsto f^*$，对源为 $T$、目标为 $S$ 的每个 $f\in\operatorname{Fl}(\mathcal E)$，指定\Term{functor}{函子} $f^*:\mathcal F_S\to\mathcal F_T$。
+
+c) 映射 $(f,g)\mapsto c_{f,g}$，对 $\mathcal E$ 中每对箭头 $(f,g)$ 指定\Term{functor}{函子}\Term{homomorphism}{同态} $c_{f,g}:g^*f^*\to(fg)^*$。
+
+这些数据还满足上面公式 A')、B) 所表达的条件。注意：若不限制\Term{cleavage}{劈分}\Term{normalized-cleavage}{正规化}，就需再引入一个数据，即函数 $S\mapsto\alpha_S$，它对 $\mathcal E$ 中每个对象 $S$ 指定\Term{functor}{函子}\Term{homomorphism}{同态} $\alpha_S:(\operatorname{id}_S)^*\to\operatorname{id}_{\mathcal F_S}$；条件 A') 相应改成 A)。现在要说明，如何借助上述数据，在唯一\Term{isomorphism}{同构}意义下重构 $\mathcal E$ 上带\Term{normalized-cleavage}{正规化}\Term{cleavage}{劈分}的\Term{category}{范畴} $\mathcal F$。
+
+\SourcePage{155}
+\SGAsection{8}{由伪函子 $\mathcal E^\circ\to\mathbf{Cat}$ 定义的带劈分范畴}
+为简便，将满足 A')、B) 的上述 a)、b)、c) 数据称为从 $\mathcal E^\circ$ 到 $\mathbf{Cat}$ 的\Term{pseudofunctor}{伪函子}；严格说，应称为\Term{normalized-cleavage}{正规化}\Term{pseudofunctor}{伪函子}。上一节从 $\mathcal E$ 上带\Term{normalized-cleavage}{正规化}\Term{cleavage}{劈分}的\Term{category}{范畴}构造了\Term{pseudofunctor}{伪函子} $\mathcal E^\circ\to\mathbf{Cat}$，这里给出逆向构造。大部分细节，以及两个构造确实互为“逆”的核对，留给读者。准确地说，应将这些\Term{pseudofunctor}{伪函子}看作一个新\Term{category}{范畴}的对象，并证明这两个构造在该\Term{category}{范畴}与上一节定义的 $\mathcal E$ 上带\Term{cleavage}{劈分}\Term{category}{范畴}的\Term{category}{范畴}之间，给出互为\Term{quasi-inverse}{拟逆}的等价。
+
+令
+\[
+ \mathcal F_\circ=\coprod_{S\in\operatorname{Ob}(\mathcal E)}\operatorname{Ob}(\mathcal F(S)),
+\]
+即各集合 $\operatorname{Ob}(\mathcal F(S))$ 的不交并。为避免下文记号混淆，这里将给定\Term{pseudofunctor}{伪函子}在 $\mathcal E$ 的对象 $S$ 处的值记为 $\mathcal F(S)$，而不记为 $\mathcal F_S$。于是有显然的映射 $p_\circ:\mathcal F_\circ\to\operatorname{Ob}(\mathcal E)$。设
+\[
+ \bar\xi=(S,\xi),\quad\bar\eta=(T,\eta),\qquad
+ \xi\in\operatorname{Ob}(\mathcal F(S)),\quad\eta\in\operatorname{Ob}(\mathcal F(T))
+\]
+为 $\mathcal F_\circ$ 的两个元素，且 $f\in\operatorname{Hom}(T,S)$，置
+\[
+ h_f(\bar\eta,\bar\xi)=\operatorname{Hom}_{\mathcal F(T)}(\eta,f^*(\xi)).
+\]
+若还给定 $\mathcal E$ 中\Term{morphism}{态射} $g:U\to T$ 与 $\zeta\in\operatorname{Ob}(\mathcal F(U))$，则定义映射 $(u,v)\mapsto u\circ v$：
+\[
+ h_f(\bar\eta,\bar\xi)\times h_g(\bar\zeta,\bar\eta)\longrightarrow h_{fg}(\bar\zeta,\bar\xi),
+\]
+也就是映射
+\[
+ \operatorname{Hom}_{\mathcal F(T)}(\eta,f^*(\xi))\times
+ \operatorname{Hom}_{\mathcal F(U)}(\zeta,g^*(\eta))
+ \longrightarrow\operatorname{Hom}_{\mathcal F(U)}(\zeta,(fg)^*(\xi)),
+\]
+定义公式为
+\[
+ u\circ v=c_{f,g}(\xi)\cdot g^*(u)\cdot v.
+\]
+即 $u\circ v$ 是下列\Term{morphism}{态射}序列的复合：
+\[
+ \zeta\xrightarrow{u}g^*(\eta)\xrightarrow{g^*(u)}g^*f^*(\xi)
+ \xrightarrow{c_{f,g}(\xi)}(fg)^*(\xi).
+\]
+另一方面，置
+\[
+ h(\bar\eta,\bar\xi)=\coprod_{f\in\operatorname{Hom}(T,S)}h_f(\bar\eta,\bar\xi).
+\]
+
+\SourcePage{156}
+上述\Term{pairing}{配对}定义\Term{pairing}{配对}
+\[
+ h(\bar\eta,\bar\xi)\times h(\bar\zeta,\bar\eta)\longrightarrow h(\bar\zeta,\bar\xi),
+\]
+而 $h(\bar\eta,\bar\xi)$ 的定义给出显然的映射
+\[
+ p_{\bar\eta,\bar\xi}:h(\bar\eta,\bar\xi)\longrightarrow\operatorname{Hom}(T,S).
+\]
+可以核对以下各点。
+
+1) 各 $h(\bar\eta,\bar\xi)$ 中元素的复合满足结合律。
+
+2) 对每个 $\mathcal F_\circ$ 中的 $\bar\xi=(\xi,S)$，考虑
+\[
+ h_{\operatorname{id}_S}(\bar\xi,\bar\xi)
+ =\operatorname{Hom}_{\mathcal F(S)}(\operatorname{id}_S^*(\xi),\xi)
+ =\operatorname{Hom}_{\mathcal F(S)}(\xi,\xi)
+\]
+中的恒等元素及它在 $h(\bar\xi,\bar\xi)$ 中的像。对于各 $h(\bar\eta,\bar\xi)$ 中元素的复合，它是左、右单位元。
+
+以上已说明，令
+\[
+ \operatorname{Ob}(\mathcal F)=\mathcal F_\circ,\qquad
+ \operatorname{Fl}(\mathcal F)=\coprod_{\bar\xi,\bar\eta\in\mathcal F_\circ}h(\bar\eta,\bar\xi),
+\]
+就得到\Term{category}{范畴} $\mathcal F$。注意：不能直接将各集合 $h(\bar\eta,\bar\xi)$ 的并作为 $\operatorname{Fl}(\mathcal F)$，因为这些集合未必互不相交。此外还有：
+
+3) 映射 $p_\circ:\operatorname{Ob}(\mathcal F)\to\operatorname{Ob}(\mathcal E)$ 与 $p_1=(p_{\bar\eta,\bar\xi}):\operatorname{Fl}(\mathcal F)\to\operatorname{Fl}(\mathcal E)$ 定义\Term{functor}{函子} $p:\mathcal F\to\mathcal E$，从而 $\mathcal F$ 成为 $\mathcal E$ 上的\Term{category}{范畴}；而且显然的映射 $h_f(\bar\eta,\bar\xi)\to\operatorname{Hom}(\bar\eta,\bar\xi)$ 诱导\Term{bijection}{双射}
+\[
+ h_f(\bar\eta,\bar\xi)\xrightarrow{\sim}\operatorname{Hom}_f(\bar\eta,\bar\xi).
+\]
+
+4) 显然的映射 $\operatorname{Ob}(\mathcal F(S))\to\mathcal F_\circ=\operatorname{Ob}(\mathcal F)$ 与 $\operatorname{Fl}(\mathcal F(S))\to\operatorname{Fl}(\mathcal F)$，其中第二个由显然的映射
+\[
+ \operatorname{Hom}_{\mathcal F(S)}(\xi,\xi')=h_{\operatorname{id}_S}(\bar\xi,\bar\xi')
+ \longrightarrow\operatorname{Hom}(\bar\xi,\bar\xi')
+\]
+定义，给出\Term{isomorphism}{同构} $i_S:\mathcal F(S)\xrightarrow{\sim}\mathcal F_S$。
+
+5) 对 $\mathcal F$ 的每个对象 $\bar\xi=(S,\xi)$ 及 $\mathcal E$ 中每个\Term{morphism}{态射} $f:T\to S$，考虑 $\mathcal F_T$ 的元素 $\bar\eta=(T,\eta)$，其中 $\eta=f^*(\xi)$；再考虑 $\operatorname{Hom}(\bar\eta,\bar\xi)$ 中的元素 $\alpha_f(\bar\xi)$，它是 $\operatorname{id}_{f^*(\xi)}$ 沿
+\[
+ \operatorname{Hom}_{\mathcal F(T)}(f^*(\xi),f^*(\xi))
+ =h_f(\bar\eta,\bar\xi)\longrightarrow\operatorname{Hom}_f(\bar\eta,\bar\xi)
+\]
+的像。此元素为\Term{cartesian-morphism}{笛卡尔态射}，并且在 $f=\operatorname{id}_S$ 时为 $\bar\xi$ 上的恒等\Term{morphism}{态射}。换言之，所有 $\alpha_f(\bar\xi)$ 组成的集合，定义 $\mathcal F$ 在 $\mathcal E$ 上的\Term{normalized-cleavage}{正规化}\Term{cleavage}{劈分}。而且，由构造可知，下列\Term{functor}{函子}图交换：
+\[
+\begin{tikzcd}
+ \mathcal F(S)\arrow[r,"f^*"]\arrow[d,"i_S"']&\mathcal F(T)\arrow[d,"i_T"]\\
+ \mathcal F_S\arrow[r,"f^*_{\mathcal F}"']&\mathcal F_T
+\end{tikzcd}
+\]
+
+\SourcePage{157}
+其中 $f^*_{\mathcal F}$ 是相对于所选\Term{cleavage}{劈分}，$\mathcal F$ 中沿 $f$ 的\Term{inverse-image}{逆像}\Term{functor}{函子}。最后：
+
+6) \Term{pseudofunctor}{伪函子}所给的\Term{homomorphism}{同态} $c_{f,g}$，经各\Term{isomorphism}{同构} $i_S$ 变为与 $\mathcal F$ 的\Term{cleavage}{劈分}相联系的\Term{functor}{函子}\Term{homomorphism}{同态} $c_{f,g}$。
+
+这里只核对 1)；它或许比其他各点稍不显然。只需证明形如 $h_f(\bar\eta,\bar\xi)$ 的集合中元素的复合满足结合律。考虑 $\mathcal E$ 中\Term{morphism}{态射}
+\[
+ S\xleftarrow{f}T\xleftarrow{g}U\xleftarrow{h}V,
+\]
+以及分别属于 $\mathcal F(S),\mathcal F(T),\mathcal F(U),\mathcal F(V)$ 的对象 $\xi,\eta,\zeta,\tau$，最后考虑元素
+\[
+ \begin{aligned}
+ u&\in h_f(\bar\eta,\bar\xi)=\operatorname{Hom}_{\mathcal F(T)}(\eta,f^*(\xi)),\\
+ v&\in h_g(\bar\zeta,\bar\eta)=\operatorname{Hom}_{\mathcal F(U)}(\zeta,g^*(\eta)),\\
+ w&\in h_h(\bar\tau,\bar\zeta)=\operatorname{Hom}_{\mathcal F(V)}(\tau,h^*(\zeta)).
+ \end{aligned}
+\]
+要证明公式 $(u\circ v)\circ w=u\circ(v\circ w)$；这是 $\operatorname{Hom}_{\mathcal F(V)}(\tau,(fgh)^*(\xi))$ 中的等式。由定义，两边分别是下图沿上、下外边界的复合：
+\[
+\begin{tikzcd}[column sep=small,row sep=large]
+ \tau\arrow[r,"w"]\arrow[dr,"v\circ w"']&
+ h^*(\zeta)\arrow[r,"h^*(v)"]\arrow[rrr,bend left=25,"h^*(u\circ v)"]&
+ h^*g^*(\eta)\arrow[r,"h^*g^*(u)"]\arrow[d,"{c_{g,h}(\eta)}"']&
+ h^*g^*f^*(\xi)\arrow[r,"{h^*(c_{f,g}(\xi))}"]\arrow[d,"{c_{g,h}(f^*(\xi))}"']&
+ h^*(fg)^*(\xi)\arrow[d,"{c_{fg,h}(\xi)}"]\\
+ & (gh)^*(\eta)\arrow[r,equal]& (gh)^*(\eta)\arrow[r,"(gh)^*(u)"']&
+ (gh)^*f^*(\xi)\arrow[r,"{c_{f,gh}(\xi)}"']&(fgh)^*(\xi)
+\end{tikzcd}
+\]
+中间方块由于 $c_{g,h}$ 是\Term{functor}{函子}\Term{homomorphism}{同态}而交换，右侧方块由于\Term{pseudofunctor}{伪函子}的条件 B) 而交换，所需结论随即得到。
+
+当然，若所给\Term{pseudofunctor}{伪函子}本来就来自 $\mathcal E$ 上带\Term{normalized-cleavage}{正规化}\Term{cleavage}{劈分}的\Term{category}{范畴} $\mathcal F'$，还应说明如何得到 $\mathcal F'$ 与 $\mathcal F$ 之间的自然\Term{isomorphism}{同构}；细节留给读者。同样留给读者用\Term{pseudofunctor}{伪函子}的语言，解释带\Term{cleavage}{劈分}\Term{category}{范畴} $\mathcal F$ 沿\Term{base-change}{基变换}\Term{functor}{函子} $\mathcal E'\to\mathcal E$ 的\Term{inverse-image}{逆像}。
+
+\SourcePage{158}
+\SGAsection{9}{例：由函子 $\mathcal E^\circ\to\mathbf{Cat}$ 定义的带劈分范畴；$\mathcal E$ 上的分裂范畴}
+设有\Term{functor}{函子} $\varphi:\mathcal E^\circ\to\mathbf{Cat}$。令
+\[
+ \mathcal F(S)=\varphi(S),\qquad f^*=\varphi(f),\qquad c_{f,g}=\operatorname{id}_{(fg)^*},
+\]
+便得到一个\Term{pseudofunctor}{伪函子}。因此，上一节的构造给出 $\mathcal E$ 上\Term{cleaved-category}{带劈分的范畴} $\mathcal F$，称为与\Term{functor}{函子} $\varphi$ 相联系的\Term{category}{范畴}。$\mathcal E$ 上\Term{cleaved-category}{带劈分的范畴}\Term{isomorphism}{同构}于由某个\Term{functor}{函子} $\varphi:\mathcal E^\circ\to\mathbf{Cat}$ 定义的带\Term{cleavage}{劈分}\Term{category}{范畴}，显然当且仅当满足
+\[
+ (fg)^*=g^*f^*,\qquad c_{f,g}=\operatorname{id}_{(fg)^*}.
+\]
+用\Term{transport-morphism}{搬运态射}集 $K$ 的语言，这就是说，两个\Term{transport-morphism}{搬运态射}的复合仍是\Term{transport-morphism}{搬运态射}。$\mathcal E$ 上\Term{category}{范畴} $\mathcal F$ 的\Term{cleavage}{劈分}若满足上述条件，便称为 $\mathcal F$ 在 $\mathcal E$ 上的一个\Term{splitting}{分裂}；配有\Term{splitting}{分裂}的 $\mathcal E$ 上\Term{category}{范畴}称为 $\mathcal E$ 上的\Term{split-category}{分裂范畴}。因而这是带\Term{cleavage}{劈分}\Term{category}{范畴}的特殊情形。$\mathcal E$ 上\Term{split-category}{分裂范畴}的\Term{equivalence-of-categories}{范畴等价}于 $\mathbf{Hom}(\mathcal E^\circ,\mathbf{Cat})$。注意，$\mathcal E$ 上的\Term{split-category}{分裂范畴}自然也是\Term{cleaved-category}{带劈分的范畴}。
+
+若 $\mathcal F$ 是 $\mathcal E$ 上的\Term{fibred-category}{纤维范畴}，$\mathcal F$ 未必存在\Term{splitting}{分裂}。例如，设 $\operatorname{Ob}(\mathcal E)$ 和 $\operatorname{Ob}(\mathcal F)$ 都只有一个元素，而该对象的自\Term{homomorphism}{同态}集分别为群 $E,F$，则投影\Term{functor}{函子} $p$ 由\Term{group-homomorphism}{群同态} $p:F\to E$ 给定；因为 $p$ 是\Term{fiber}{纤维}化\Term{functor}{函子}，该\Term{homomorphism}{同态}\Term{surjectivity}{满射}。立即可核对，$\mathcal F$ 在 $\mathcal E$ 上的\Term{cleavage}{劈分}集，与满足 $ps=\operatorname{id}_E$ 的映射 $s:E\to F$ 所组成的集合一一对应，也就是与模满\Term{homomorphism}{同态} $p:F\to E$ 的核子群 $G$ 的各陪集的“代表系”一一对应。一个\Term{cleavage}{劈分}为\Term{splitting}{分裂}，当且仅当 $s$ 是\Term{group-homomorphism}{群同态}。因此，存在\Term{splitting}{分裂}意味着群 $E$ 被 $G$ 的\Term{group-extension}{扩张} $F$ \Term{trivial-bundle}{平凡}；当 $G$ 交换时，这\Term{representable}{可表}达为 $H^2(E,G)$ 中某个\Term{cohomology}{上同调}类为零，其中将 $G$ 视为带 $E$ 作用的群。
+
+不过，设 $\mathcal F$ 是 $\mathcal E$ 上的\Term{fibred-category}{纤维范畴}，且各 $\mathcal F_S$ 都是\Term{rigid-category}{刚性范畴}，即其每个对象的\Term{automorphism}{自同构}群都只有恒等元，那么容易证明 $\mathcal F$ 在 $\mathcal E$ 上存在\Term{splitting}{分裂}。确实，先注意到，用 $\mathcal E$-等价的\Term{category}{范畴}替换 $\mathcal F$ 并不改变\Term{splitting}{分裂}的存在性问题，从而在此可归结到各 $\mathcal F_S$ 都为刚性且\Term{reduced-category}{约化}的情形；\Term{reduced-category}{约化}是指 $\mathcal F_S$ 中两个\Term{isomorphism}{同构}对象必相同。若 $\mathcal G$ 为刚性\Term{reduced-category}{约化}\Term{category}{范畴}，那么对任意\Term{category}{范畴} $\mathcal H$，两个\Term{functor}{函子} $\mathcal H\to\mathcal G$ 之间的任何\Term{isomorphism}{同构}都是恒等\Term{isomorphism}{同构}。
+
+\SourcePage{159}
+因此，若 $\mathcal F$ 是 $\mathcal E$ 上的\Term{fibred-category}{纤维范畴}，且各\Term{fibred-category}{纤维范畴}都刚性且\Term{reduced-category}{约化}，那么 $\mathcal F$ 在 $\mathcal E$ 上只有唯一的\Term{cleavage}{劈分}，且它必为\Term{splitting}{分裂}。于是 $\mathcal F$ \Term{isomorphism}{同构}于某个\Term{functor}{函子} $\varphi:\mathcal E^\circ\to\mathbf{Cat}$ 定义的\Term{category}{范畴}，其中各 $\varphi(S)$ 都是刚性的\Term{discrete-category}{离散范畴}，且 $\varphi$ 在\Term{isomorphism}{同构}意义下确定。
+
+\SGAsection{10}{余纤维范畴与双纤维范畴}
+考虑配有投影\Term{functor}{函子} $p:\mathcal F\to\mathcal E$ 的 $\mathcal E$ 上\Term{category}{范畴} $\mathcal F$。它通过投影\Term{functor}{函子} $p^\circ:\mathcal F^\circ\to\mathcal E^\circ$，定义 $\mathcal E^\circ$ 上的\Term{category}{范畴} $\mathcal F^\circ$。若 $\mathcal F$ 中\Term{morphism}{态射} $\alpha:\eta\to\xi$ 作为 $\mathcal E^\circ$ 上 $\mathcal F^\circ$ 的\Term{morphism}{态射}为\Term{cartesian-morphism}{笛卡尔态射}，则称它为\Term{cocartesian-morphism}{余笛卡尔态射}。明确写出，这就是说，对 $\mathcal F_S$ 中每个对象 $\xi'$，映射 $u\mapsto u\circ\alpha$ 给出\Term{bijection}{双射}
+\[
+ \operatorname{Hom}_S(\xi,\xi')\longrightarrow\operatorname{Hom}_f(\eta,\xi').
+\]
+此时也说 $(\xi,\alpha)$ 是 $\mathcal E$ 上\Term{category}{范畴} $\mathcal F$ 中 $\eta$ 沿 $f$ 的一个\Term{direct-image}{正像}。若对 $\mathcal F_T$ 中每个 $\eta$，\Term{direct-image}{正像}都存在，便说沿 $f$ 的\Term{direct-image}{正像}\Term{functor}{函子}存在；选定后，将它记为 $f_*^{\mathcal F}$ 或 $f_*$。因此，它由 $\mathcal F_T^\circ\times\mathcal F_S$ 上的双\Term{functor}{函子}\Term{isomorphism}{同构}
+\[
+ \operatorname{Hom}_S(f_*(\eta),\xi)\xrightarrow{\sim}\operatorname{Hom}_f(\eta,\xi)
+\]
+确定。所以，若 $f_*$ 存在，则 $f^*$ 存在当且仅当 $f_*$ 有\Term{adjoint-functor}{伴随函子}，即存在\Term{functor}{函子} $f^*:\mathcal F_S\to\mathcal F_T$ 与双\Term{functor}{函子}\Term{isomorphism}{同构}
+\[
+ \operatorname{Hom}_S(f_*(\eta),\xi)\xrightarrow{\sim}
+ \operatorname{Hom}_T(\eta,f^*(\xi)).
+\]
+再设 $g:U\to T$ 为 $\mathcal E$ 中\Term{morphism}{态射}，且沿 $f,g,fg$ 的\Term{inverse-image}{逆像}、\Term{direct-image}{正像}都存在。考虑\Term{functor}{函子}\Term{homomorphism}{同态}
+\[
+ c^{f,g}:f_*g_*\longleftarrow(fg)_*,\qquad
+ c_{f,g}:g^*f^*\longrightarrow(fg)^*.
+\]
+若将 $f_*g_*$ 与 $g^*f^*$ 看作一对\Term{adjoint-functor}{伴随函子}，将 $(fg)_*$ 与 $(fg)^*$ 也看作一对\Term{adjoint-functor}{伴随函子}，就可看出上述两个\Term{homomorphism}{同态}互为伴随。因此，一个是\Term{isomorphism}{同构}当且仅当另一个是\Term{isomorphism}{同构}。特别地，有：
+
+\begin{SGAresult}{命题}{10.1}
+设 $\mathcal E$ 上\Term{category}{范畴} $\mathcal F$ 既预\Term{fiber}{纤维}又\Term{coprefibred-category}{余预纤维}。则它为\Term{fibred-category}{纤维范畴}，当且仅当它为\Term{cofibred-category}{余纤维范畴}。
+\end{SGAresult}
+当然，说 $\mathcal F$ 在 $\mathcal E$ 上\Term{coprefibred-category}{余预纤维}、余\Term{fiber}{纤维}，分别是指 $\mathcal F^\circ$ 在 $\mathcal E^\circ$ 上预\Term{fiber}{纤维}、\Term{fiber}{纤维}。若 $\mathcal F$ 在 $\mathcal E$ 上既\Term{fiber}{纤维}又余\Term{fiber}{纤维}，便称它为 $\mathcal E$ 上的\Term{bifibred-category}{双纤维范畴}。
+
+\SourcePage{160}
+\SGAsection{11}{若干例子}
+\textbf{a) $\mathcal E$ 的\Term{arrow-category}{箭头范畴}。}设 $\mathcal E$ 为\Term{category}{范畴}。用 $\boldsymbol\Delta^1$ 表示两元素全序集 $[0,1]$ 所联系的\Term{category}{范畴}；它有两个对象 $0,1$，除两个恒等\Term{morphism}{态射}外，还有源为 $0$、目标为 $1$ 的箭头 $(0,1)$。令
+\[
+ \mathbf{Fl}(\mathcal E)=\mathbf{Hom}(\boldsymbol\Delta^1,\mathcal E),
+\]
+称其为 $\mathcal E$ 的\Term{arrow-category}{箭头范畴}。$\boldsymbol\Delta^1$ 的对象 $1$ 定义典范\Term{functor}{函子} $\mathbf{Fl}(\mathcal E)\to\mathcal E$，称为目标\Term{functor}{函子}；由对象 $0$ 定义的\Term{functor}{函子}称为源\Term{functor}{函子}。对 $\mathcal E$ 的每个对象 $S$，\Term{fibred-category}{纤维范畴} $\mathbf{Fl}(\mathcal E)_S$ 典范\Term{isomorphism}{同构}于 $\mathcal E$ 中 $S$ 之上的对象所组成的\Term{category}{范畴} $\mathcal E_{/S}$。
+
+考虑 $\mathcal E$ 中\Term{morphism}{态射} $f:T\to S$。它给出典范\Term{functor}{函子}
+\[
+ f_*:\mathcal E_{/T}=\mathcal F_T\longrightarrow\mathcal E_{/S}=\mathcal F_S
+\]
+与\Term{functor}{函子}\Term{isomorphism}{同构} $\operatorname{Hom}_S(f_*(\eta),\xi)\xrightarrow{\sim}\operatorname{Hom}_f(\eta,\xi)$，从而使 $f_*$ 成为 $\mathcal F$ 中沿 $f$ 的\Term{direct-image}{正像}\Term{functor}{函子}。在此还有
+\[
+ (\operatorname{id}_S)_*=\operatorname{id}_{\mathcal F_S},\qquad
+ (fg)_*=f_*g_*,\qquad c^{f,g}=\operatorname{id}_{(fg)},
+\]
+即 $\mathcal F$ 配有 $\mathcal E$ 上的一个\Term{cosplitting}{余分裂}，从而当然在 $\mathcal E$ 上余\Term{fiber}{纤维}。注意，$\mathcal F$ 中的\Term{morphism}{态射}集与 $\mathcal E$ 中的交换方块集一一对应：
+\[
+\begin{tikzcd}
+ X\arrow[d,"u"']&Y\arrow[l,"f'"']\arrow[d,"v"]\\
+ S&T\arrow[l,"f"]
+\end{tikzcd}
+\]
+依定义，该\Term{morphism}{态射}为\Term{cartesian-morphism}{笛卡尔态射}，当且仅当方块在 $\mathcal E$ 中为\Term{cartesian-square}{笛卡尔方块}，即它将 $Y$ 表为 $X$ 与 $T$ 在 $S$ 上的\Term{fibre-product}{纤维积}。因此，\Term{inverse-image}{逆像}\Term{functor}{函子} $f^*$ 存在，当且仅当对 $S$ 上每个对象 $X$，\Term{fibre-product}{纤维积} $X\times_ST$ 存在。由 10.1，若 $\mathcal E$ 中任意两个对象在第三个对象上的积都存在，即 $\mathcal F$ 在 $\mathcal E$ 上预\Term{fiber}{纤维}，那么 $\mathcal F$ 事实上在 $\mathcal E$ 上为\Term{fibred-category}{纤维范畴}。
+
+\textbf{b) 可变空间上的\Term{presheaf}{预层}或\Term{sheaf}{层}的\Term{category}{范畴}。}令 $\mathcal E=\mathbf{Top}$ 为\Term{topological-space}{拓扑空间}\Term{category}{范畴}。若 $T$ 是\Term{topological-space}{拓扑空间}，用 $\mathcal U(T)$ 表示 $T$ 的开集\Term{category}{范畴}，其\Term{morphism}{态射}为包含映射。若 $\mathcal C$ 为\Term{category}{范畴}，\Term{functor}{函子} $\mathcal U(T)^\circ\to\mathcal C$ 称为 $T$ 上取值于 $\mathcal C$ 的\Term{presheaf}{预层}；若满足一个这里不再重述的\Term{left-exact}{左正合}性条件，则称为\Term{sheaf}{层}。
+
+\SourcePage{161}
+$T$ 上取值于 $\mathcal C$ 的\Term{presheaf}{预层}\Term{category}{范畴} $\mathcal P(T)$，按定义就是\Term{category}{范畴} $\mathbf{Hom}(\mathcal U(T)^\circ,\mathcal C)$；\Term{sheaf}{层}\Term{category}{范畴} $\mathcal F(T)$ 则是其中由满足\Term{sheaf}{层}条件的对象组成的全子\Term{category}{范畴}。若 $f:T\to S$ 为 $\mathcal E$ 中\Term{morphism}{态射}，即\Term{topological-space}{拓扑空间}的连续映射，保序映射 $U\mapsto f^{-1}(U)$ 给出\Term{functor}{函子} $\mathcal U(S)\to\mathcal U(T)$，进而给出\Term{functor}{函子}
+\[
+ f_*:\mathbf{Hom}(\mathcal U(T)^\circ,\mathcal C)\longrightarrow
+ \mathbf{Hom}(\mathcal U(S)^\circ,\mathcal C),
+\]
+称为沿 $f$ 的\Term{presheaf}{预层}\Term{direct-image}{正像}\Term{functor}{函子}。立即可见，\Term{sheaf}{层}的\Term{direct-image}{正像}仍是\Term{sheaf}{层}，因此\Term{functor}{函子} $f_*:\mathcal P(T)\to\mathcal P(S)$ 诱导\Term{functor}{函子} $f_*:\mathcal F(T)\to\mathcal F(S)$，仍用同一记号。若再有连续映射 $g:U\to T$，由\Term{functor}{函子}复合的结合律，还可立即核对恒等式
+\[
+ (gf)_*=g_*f_*,\qquad (\operatorname{id}_S)_*=\operatorname{id}_{\mathcal P(S)}.
+\]
+这样便得到从 $\mathcal E$ 到 $\mathbf{Cat}$ 的\Term{functor}{函子} $S\mapsto\mathcal P(S)$，分别地，$S\mapsto\mathcal F(S)$。实际上，我们关注相应\Term{functor}{函子}
+\[
+ S\longmapsto\mathcal P(S)^\circ,\qquad\text{分别地，}\quad
+ S\longmapsto\mathcal F(S)^\circ.
+\]
+它在\Term{topological-space}{拓扑空间}\Term{category}{范畴}上定义一个余\Term{fiber}{纤维}、甚至\Term{cosplitting}{余分裂}的\Term{category}{范畴}，称为取值于 $\mathcal C$ 的\Term{presheaf}{预层}（分别地，\Term{sheaf}{层}）的\Term{cofibred-category}{余纤维范畴}；这里省略了“在可变空间上”一语。将第 8 节的构造明确写出，可以看到：从 $T$ 上的\Term{presheaf}{预层} $\mathcal B$ 到 $S$ 上的\Term{presheaf}{预层} $\mathcal A$ 的\Term{morphism}{态射}，就是一对 $(f,u)$，其中 $f:T\to S$ 连续，$u:\mathcal A\to f_*(\mathcal B)$ 是 $\mathcal P(S)$ 中\Term{morphism}{态射}。因为 $\mathcal F$ 为 $\mathcal P$ 的全子\Term{category}{范畴}，此描述也适用于\Term{sheaf}{层}的\Term{morphism}{态射}。
+
+在最重要的情形中，$\mathcal E$ 上的 $\mathcal P,\mathcal F$ 也是\Term{fibred-category}{纤维范畴}；也就是说，对每个连续映射，\Term{direct-image}{正像}\Term{functor}{函子} $\mathcal P(T)\to\mathcal P(S)$ 与 $\mathcal F(T)\to\mathcal F(S)$ 有\Term{adjoint-functor}{伴随函子}，此伴随记为 $f^*$，分别称为沿连续映射 $f$ 的\Term{presheaf}{预层}\Term{inverse-image}{逆像}\Term{functor}{函子}、\Term{sheaf}{层}\Term{inverse-image}{逆像}\Term{functor}{函子}。例如，$\mathcal C=\mathbf{Ens}$ 时，这种\Term{functor}{函子}存在。可以证明，只要 $\mathcal C$ 中存在关于所考虑\Term{universe}{宇宙}内的图的\Term{inductive-limit}{归纳极限}，\Term{functor}{函子} $f^*:\mathcal P(S)\to\mathcal P(T)$ 就存在。对于 $\mathcal F$，问题稍困难。应注意，即使 $\mathcal C=\mathbf{Ens}$，一个本身为\Term{sheaf}{层}的\Term{presheaf}{预层}，其\Term{presheaf}{预层}\Term{inverse-image}{逆像}一般也不是\Term{sheaf}{层}。换言之，尽管两种\Term{functor}{函子}都记为 $f^*$，\Term{sheaf}{层}\Term{inverse-image}{逆像}\Term{functor}{函子}并不\Term{isomorphism}{同构}于\Term{presheaf}{预层}\Term{inverse-image}{逆像}\Term{functor}{函子}所诱导的\Term{functor}{函子}。
+
+\SourcePage{162}
+因此，$\mathcal F$ 是 $\mathcal P$ 的余\Term{fiber}{纤维}子\Term{category}{范畴}，但不是\Term{fiber}{纤维}子\Term{category}{范畴}，即包含\Term{functor}{函子} $\mathcal F\to\mathcal P$ 不是\Term{fiber}{纤维}化\Term{functor}{函子}。
+
+\Term{cofibred-category}{余纤维范畴} $\mathcal P$ 可由一个更一般的余\Term{fiber}{纤维}（或者更准确地说，\Term{fiber}{纤维}）\Term{category}{范畴}导出，其构造如下。对固定\Term{universe}{宇宙}中的每个\Term{category}{范畴} $\mathcal U$，令
+\[
+ \mathcal P(\mathcal U)=\mathbf{Hom}(\mathcal U,\mathcal C).
+\]
+自然地，$\mathcal U\mapsto\mathcal P(\mathcal U)$ 是从 $\mathbf{Cat}$ 到 $\mathbf{Cat}$ 的\Term{contravariant-functor}{反变函子}，因此定义 $\mathcal E=\mathbf{Cat}$ 上的\Term{split-category}{分裂范畴}，记为 $\mathbf{Cat}_{//\mathcal C}$。该\Term{category}{范畴}的对象为一对 $(\mathcal U,p)$，其中 $\mathcal U$ 是\Term{category}{范畴}，$p:\mathcal U\to\mathcal C$ 是\Term{functor}{函子}；从 $(\mathcal U,p)$ 到 $(\mathcal V,q)$ 的\Term{morphism}{态射}，本质上是一对 $(f,u)$，其中 $f:\mathcal U\to\mathcal V$ 是\Term{functor}{函子}，$u:p\to qf$ 是\Term{functor}{函子}\Term{homomorphism}{同态}。$\mathbf{Cat}_{//\mathcal C}$ 中\Term{morphism}{态射}的复合留给读者明确写出。投影\Term{functor}{函子}
+\[
+ \mathcal F=\mathbf{Cat}_{//\mathcal C}\longrightarrow\mathcal E=\mathbf{Cat}
+\]
+将 $(\mathcal U,p)$ 映为 $\mathcal U$；它在 $\mathcal U$ 处的\Term{fibred-category}{纤维范畴}\Term{isomorphism}{同构}于 $\mathbf{Hom}(\mathcal U,\mathcal C)$。若 $\mathcal C$ 中\Term{inductive-limit}{归纳极限}存在，容易证明 $\mathbf{Cat}$ 上的\Term{fibred-category}{纤维范畴} $\mathbf{Cat}_{//\mathcal C}$ 也余\Term{fiber}{纤维}，即可定义\Term{functor}{函子} $p:\mathcal U\to\mathcal C$ 沿\Term{functor}{函子} $f:\mathcal U\to\mathcal V$ 的\Term{direct-image}{正像}。\Term{presheaf}{预层}\Term{category}{范畴}由上述\Term{fibred-category}{纤维范畴}经\Term{base-change}{基变换}
+\[
+ \mathbf{Top}^\circ\longrightarrow\mathbf{Cat},\qquad S\longmapsto\mathcal U(S)
+\]
+得到，这是前面定义的\Term{functor}{函子}。所得为 $\mathbf{Top}^\circ$ 上的\Term{fibred-category}{纤维范畴}；再取\Term{opposite-category}{反范畴}，就得到 $\mathbf{Top}$ 上\Term{presheaf}{预层}的\Term{cofibred-category}{余纤维范畴} $\mathcal P$。\Term{functor}{函子}的\Term{inverse-image}{逆像}概念对应于\Term{presheaf}{预层}的\Term{direct-image}{正像}概念；\Term{functor}{函子}的\Term{direct-image}{正像}概念则对应于\Term{presheaf}{预层}的\Term{inverse-image}{逆像}概念。
+
+\textbf{c) \Term{object-with-operators}{带作用对象}之上的\Term{object-with-operators}{带作用对象}。}设 $\mathcal F$ 为 $\mathcal E$ 上的\Term{category}{范畴}，$S$ 为 $\mathcal E$ 中带群 $G$ 作用的对象；为明确起见，取左作用。这种\Term{object-with-operators}{带作用对象}可解释为由群 $G$ 定义的\Term{category}{范畴} $\mathcal E'$ 到 $\mathcal E$ 的\Term{functor}{函子} $\lambda:\mathcal E'\to\mathcal E$；$\mathcal E'$ 只有一个对象，其自\Term{homomorphism}{同态}群为 $G$。经\Term{base-change}{基变换}，它定义 $\mathcal E'$ 上的\Term{category}{范畴} $\mathcal F'$；若 $\mathcal F$ 在 $\mathcal E$ 上\Term{fiber}{纤维}、余\Term{fiber}{纤维}，$\mathcal F'$ 也分别如此。$\mathcal F'$ 在 $\mathcal E'$ 上的\Term{section}{截面}必为\Term{cartesian-section}{笛卡尔截面}，因为 $\mathcal E'$ 是\Term{groupoid}{群胚}，且由 6.12，$\mathcal F'$ 中每个\Term{isomorphism}{同构}都是\Term{cartesian-morphism}{笛卡尔态射}。这种\Term{section}{截面}也可解释为位于 $\lambda$ 之上的 $\mathcal E$-\Term{functor}{函子} $\mathcal E'\to\mathcal F$，或者解释为 $\mathcal F$ 中位于\Term{object-with-operators}{带作用对象} $S$“之上”的\Term{object-with-operators}{带作用对象} $\xi$。
+
+\textbf{d) 互为\Term{quasi-inverse}{拟逆}的\Term{adjoint-functor}{伴随函子}对；\Term{autoduality}{自对偶}。}若基\Term{category}{范畴} $\mathcal E$ 只有两个对象 $a,b$，除恒等箭头外，只有互逆的\Term{isomorphism}{同构} $f:a\to b$ 与 $g:b\to a$，即 $\mathcal E$ 是有两个对象的\Term{connected}{连通}刚性\Term{groupoid}{群胚}，
+
+\SourcePage{163}
+那么 $\mathcal E$ 上带\Term{normalized-cleavage}{正规化}\Term{cleavage}{劈分}的\Term{category}{范畴}，本质上等同于以下数据：两个\Term{category}{范畴} $\mathcal F_a,\mathcal F_b$，以及一对\Term{adjoint-functor}{伴随函子} $G:\mathcal F_a\to\mathcal F_b$、$F:\mathcal F_b\to\mathcal F_a$，它们均为\Term{equivalence-of-categories}{范畴等价}，因而互为\Term{quasi-inverse}{拟逆}。取 $\mathcal F$ 的\Term{fibred-category}{纤维范畴}为 $\mathcal F_a,\mathcal F_b$，取 $F=f^*$、$G=g^*$；两个\Term{isomorphism}{同构}
+\[
+ u:FG\xrightarrow{\sim}\operatorname{id}_{\mathcal F_a},\qquad
+ v:GF\xrightarrow{\sim}\operatorname{id}_{\mathcal F_b}
+\]
+就是 $c_{g,f}$ 与 $c_{f,g}$。$u,v$ 通常的两个相容条件，正是复合 $fgf$ 与 $gfg$ 对应的条件 7.4 B)。容易证明，这些条件足以保证确实得到\Term{pseudofunctor}{伪函子} $\mathcal E^\circ\to\mathbf{Cat}$。
+
+一个有趣的情形是
+\[
+ \mathcal F_b=\mathcal F_a^\circ,\qquad G=F^\circ,\qquad v=u^\circ.
+\]
+\Term{category}{范畴} $\mathcal C$ 中的\Term{autoduality}{自对偶}，指给定\Term{functor}{函子} $D:\mathcal C\to\mathcal C^\circ$ 与\Term{isomorphism}{同构} $u:DD^\circ\xrightarrow{\sim}\operatorname{id}_{\mathcal C}$，使 $u$ 及\Term{isomorphism}{同构} $u^\circ:D^\circ D\xrightarrow{\sim}\operatorname{id}_{\mathcal C^\circ}$ 将 $(D,D^\circ)$ 构成一对\Term{adjoint-functor}{伴随函子}，因而它们必互为\Term{quasi-inverse}{拟逆}。此条件写为
+\[
+ D(u(x))=u(D(x)),\qquad x\in\operatorname{Ob}(\mathcal C).
+\]
+
+\textbf{e) \Term{discrete-category}{离散范畴} $\mathcal E$ 上的\Term{category}{范畴}。}若 $\mathcal E$ 的所有箭头都是恒等箭头，便称 $\mathcal E$ 为\Term{discrete-category}{离散范畴}。因此，给定集合 $I=\operatorname{Ob}(\mathcal E)$ 就在唯一\Term{isomorphism}{同构}意义下确定 $\mathcal E$。给定 $\mathcal E$ 上的\Term{category}{范畴} $\mathcal F$，等价于在唯一\Term{isomorphism}{同构}意义下给定一族\Term{category}{范畴} $\mathcal F_i$（$i\in I$），即其各\Term{fibred-category}{纤维范畴}。每个 $\mathcal E$ 上的\Term{category}{范畴} $\mathcal F$ 都是\Term{fibred-category}{纤维范畴}，每个 $\mathcal E$-\Term{functor}{函子} $\mathcal F\to\mathcal G$ 都是\Term{cartesian-functor}{笛卡尔函子}，并有典范\Term{isomorphism}{同构}
+\[
+ \mathbf{Hom}_{\mathcal E/-}(\mathcal F,\mathcal G)\xrightarrow{\sim}
+ \prod_i\mathbf{Hom}(\mathcal F_i,\mathcal G_i).
+\]
+特别地，有
+\[
+ \boldsymbol\Gamma(\mathcal F/\mathcal E)
+ =\mathop{\mathbf{Lim}}\limits_{\longleftarrow}\mathcal F/\mathcal E
+ \xrightarrow{\sim}\prod_i\mathcal E_i.
+\]
+
+\textbf{f)} 设 $\mathcal E$ 恰有两个对象 $S,T$，除恒等\Term{morphism}{态射}外，还有一个\Term{morphism}{态射} $f:T\to S$。那么给定两个\Term{category}{范畴} $\mathcal F_S,\mathcal F_T$ 以及 $\mathcal F_T^\circ\times\mathcal F_S$ 上取值于 $\mathbf{Ens}$ 的双\Term{functor}{函子} $H(\eta,\xi)$，就在唯一 $\mathcal E$-\Term{isomorphism}{同构}意义下确定 $\mathcal E$ 上的\Term{category}{范畴} $\mathcal F$。确实，若先有 $\mathcal E$ 上的\Term{category}{范畴} $\mathcal F$，便取其两个\Term{fibred-category}{纤维范畴} $\mathcal F_S,\mathcal F_T$ 与双\Term{functor}{函子} $H(\eta,\xi)=\operatorname{Hom}_f(\eta,\xi)$。逆向构造留给读者明确写出。该\Term{category}{范畴}\Term{fiber}{纤维}（或预\Term{fiber}{纤维}，在此两者相同），当且仅当\Term{functor}{函子} $H$ 对变元 $\xi$ \Term{representable-functor}{可表示}；该\Term{category}{范畴}余\Term{fiber}{纤维}，当且仅当 $H$ 对变元 $\eta$ \Term{representable-functor}{可表示}。
+
+\SourcePage{164}
+\textbf{g)} 令 $\mathcal F=\mathcal C\times\mathcal E$，通过 $\operatorname{pr}_2$ 将其视为 $\mathcal E$ 上的\Term{category}{范畴}。则 $\mathcal F$ 在 $\mathcal E$ 上既\Term{fiber}{纤维}又余\Term{fiber}{纤维}，甚至配有典范\Term{splitting}{分裂}与典范\Term{cosplitting}{余分裂}，分别对应于 $\mathcal E$ 与 $\mathcal E^\circ$ 上取值于 $\mathbf{Cat}$、值为 $\mathcal C$ 的常值\Term{functor}{函子}。有
+\[
+ \boldsymbol\Gamma(\mathcal F/\mathcal E)\simeq\mathbf{Hom}(\mathcal E,\mathcal C),
+\]
+而 $\mathop{\mathbf{Lim}}\limits_{\longleftarrow}\mathcal F/\mathcal E$ 对应于其中由将任意\Term{morphism}{态射}映为\Term{isomorphism}{同构}的\Term{functor}{函子} $F:\mathcal E\to\mathcal C$ 组成的全子\Term{category}{范畴}。
+
+\SGAsection{12}{带劈分范畴上的函子}
+设 $\mathcal F$ 是 $\mathcal E$ 上带\Term{normalized-cleavage}{正规化}\Term{cleavage}{劈分}的\Term{category}{范畴}。对 $\mathcal E$ 的每个对象 $S$，用 $i_S:\mathcal F_S\to\mathcal F$ 表示包含\Term{functor}{函子}。于是，对 $\mathcal E$ 中每个\Term{morphism}{态射} $f:T\to S$，都有\Term{functor}{函子}\Term{homomorphism}{同态}
+\[
+ \alpha_f:i_Tf^*\longrightarrow i_S,
+\]
+其中 $f^*$ 是\Term{cleavage}{劈分}指定的沿 $f$ 的\Term{base-change}{基变换}\Term{functor}{函子} $\mathcal F_S\to\mathcal F_T$。现在设 $F:\mathcal F\to\mathcal C$ 为从 $\mathcal F$ 到某\Term{category}{范畴} $\mathcal C$ 的\Term{functor}{函子}；对每个 $S\in\operatorname{Ob}(\mathcal E)$，令
+\[
+ F_S=F\circ i_S:\mathcal F_S\longrightarrow\mathcal C,
+\]
+并对 $\mathcal E$ 中每个 $f:T\to S$，令
+\[
+ \varphi_f=F*\alpha_f:F_Tf^*\longrightarrow F_S.
+\]
+这样便将每个\Term{functor}{函子} $F:\mathcal F\to\mathcal C$ 对应到一族\Term{functor}{函子} $(F_S)$ 与一族\Term{functor}{函子}\Term{homomorphism}{同态} $(\varphi_f)$。它们满足：
+
+a) $\varphi_{\operatorname{id}_S}=\operatorname{id}_{F_S}$。
+
+b) 对 $\mathcal E$ 中两个\Term{morphism}{态射} $f:T\to S$、$g:U\to T$，下列\Term{functor}{函子}\Term{homomorphism}{同态}方块交换：
+\[
+\begin{tikzcd}[column sep=large]
+ F_Ug^*f^*\arrow[r,"{F_U*c_{f,g}}"]\arrow[d,"\varphi_g*f^*"']&
+ F_U(fg)^*\arrow[d,"\varphi_{fg}"]\\
+ F_Tf^*\arrow[r,"\varphi_f"']&F_S
+\end{tikzcd}
+\]
+第一条关系显然；第二条关系则通过对下面的\Term{commutative-diagram}{交换图}施以\Term{functor}{函子} $F$ 得到。
+
+\SourcePage{165}
+这里 $\xi$ 为 $\mathcal F_S$ 中可变对象：
+\[
+\begin{tikzcd}[column sep=large]
+ g^*f^*(\xi)\arrow[r,"{c_{f,g}(\xi)}"]\arrow[d,"\alpha_g(f^*(\xi))"']&
+ (fg)^*(\xi)\arrow[d,"\alpha_{fg}(\xi)"]\\
+ f^*(\xi)\arrow[r,"\alpha_f(\xi)"']&\xi
+\end{tikzcd}
+\]
+若 $G$ 是另一个\Term{functor}{函子} $\mathcal F\to\mathcal C$，给出\Term{functor}{函子} $G_S:\mathcal F_S\to\mathcal C$ 与\Term{functor}{函子}\Term{homomorphism}{同态} $\psi_f:G_Tf\to G_S$，而 $u:F\to G$ 是\Term{functor}{函子}\Term{homomorphism}{同态}，那么相应地有\Term{functor}{函子}\Term{homomorphism}{同态} $u*i_S$，即
+\[
+ u_S:F_S\longrightarrow G_S.
+\]
+立即可见，对 $\mathcal E$ 中每个\Term{morphism}{态射} $f:T\to S$，下列方块交换：
+\[
+\begin{tikzcd}[column sep=large]
+ F_Tf^*\arrow[r,"\varphi_f"]\arrow[d,"u_T*f^*"']&F_S\arrow[d,"u_S"]\\
+ G_Tf^*\arrow[r,"\psi_f"']&G_S
+\end{tikzcd}\tag{c}
+\]
+
+\begin{SGAresult}{命题}{12.1}
+设 $\mathcal H(\mathcal F,\mathcal C)$ 是如下\Term{category}{范畴}：其对象为一对族 $(F_S)$（$S\in\operatorname{Ob}(\mathcal F)$）与 $(\varphi_f)$（$f\in\operatorname{Fl}(\mathcal F)$），前者是\Term{functor}{函子} $\mathcal F_S\to\mathcal C$，后者是\Term{functor}{函子}\Term{homomorphism}{同态} $F_Tf^*\to F_S$，并满足 a)、b)；其\Term{morphism}{态射}为满足上述交换条件 c) 的\Term{homomorphism}{同态}族 $(u_S:F_S\to G_S)$（$S\in\operatorname{Ob}(\mathcal F)$），\Term{morphism}{态射}复合由\Term{functor}{函子} $\mathcal F_S\to\mathcal C$ 间\Term{homomorphism}{同态}的复合定义。那么上述两条对应法则定义\Term{category}{范畴}\Term{isomorphism}{同构}
+\[
+ K:\mathbf{Hom}(\mathcal F,\mathcal C)\xrightarrow{\sim}\mathcal H(\mathcal F,\mathcal C).
+\]
+\end{SGAresult}
+显然，它确实是从第一个\Term{category}{范畴}到第二个\Term{category}{范畴}的\Term{functor}{函子}。它\Term{fully-faithful-functor}{全忠实}：对给定的 $F,G$，映射 $\operatorname{Hom}(F,G)\to\operatorname{Hom}(K(F),K(G))$ 显然\Term{injectivity}{单射}；要证明\Term{surjectivity}{满射}，只需注意，交换条件 c) 表达了映射
+\[
+ u(\xi)=u_S(\xi):F(S)=F_S(\xi)\longrightarrow G(\xi)=G_S(\xi)
+\]
+对 $\mathcal F$ 中形如 $\alpha_f(\xi)$ 的\Term{homomorphism}{同态}具有\Term{functor}{函子}性。另一方面，在每个\Term{fibred-category}{纤维范畴}上已有\Term{functor}{函子}性，即对 $\mathcal F$ 中的 $T$-\Term{morphism}{态射}（$T\in\operatorname{Ob}(\mathcal E)$）有\Term{functor}{函子}性，因而对 $\mathcal F$ 中所有\Term{morphism}{态射}都有\Term{functor}{函子}性：每个 $f$-\Term{morphism}{态射}，其中 $f:T\to S$ 是 $\mathcal E$ 中\Term{morphism}{态射}，都唯一地分解为某个 $\alpha_f(\xi)$ 与一个 $T$-\Term{morphism}{态射}的复合。因此，只需证明 $K$ 在对象上为\Term{bijection}{双射}。上述论证已经说明其对象映射\Term{injectivity}{单射}。
+
+\SourcePage{166}
+还需证明\Term{surjectivity}{满射}。也就是说，从满足 a)、b) 的系统 $(F_S),(\varphi_f)$ 出发，用
+\[
+ F(\xi)=F_S(\xi),\qquad\xi\in\operatorname{Ob}(\mathcal F_S)\subset\operatorname{Ob}(\mathcal F)
+\]
+定义对象映射 $\operatorname{Ob}(\mathcal F)\to\operatorname{Ob}(\mathcal C)$；并对 $\mathcal E$ 中每个\Term{morphism}{态射} $f:T\to S$、$\mathcal F_S$ 中每个对象 $\xi$，以及目标为 $f^*(\xi)$ 的每个 $T$-\Term{morphism}{态射} $u'$，用
+\[
+ F(\alpha_f(\xi)u')=\varphi_f(\xi)F_T(u')
+\]
+定义箭头映射 $\operatorname{Fl}(\mathcal F)\to\operatorname{Fl}(\mathcal C)$，就得到从 $\mathcal F$ 到 $\mathcal C$ 的\Term{functor}{函子} $F$。确实，$F(\operatorname{id}_{\xi})=\operatorname{id}_{F(\xi)}$ 显然成立；只需证明乘法性 $F(uv)=F(u)F(v)$，其中 $u:\eta\to\xi$ 为 $f$-\Term{morphism}{态射}，$v:\zeta\to\nu$ 为 $g$-\Term{morphism}{态射}，而 $f:T\to S$、$g:U\to T$ 是 $\mathcal E$ 中\Term{morphism}{态射}。令 $w=uv$，则有
+\[
+ u=\alpha_f(\xi)u',\qquad v=\alpha_g(\eta)v',\qquad w=\alpha_{fg}(\xi)w',
+\]
+其中 $w'=c_{f,g}(\xi)g^*(u')v'$，参看第 8 节。
+
+在这些记号下，只需证明下图的外边界交换：
+\[
+\begin{tikzcd}[column sep=small,row sep=large]
+ F_U(\zeta)\arrow[r,"F_U(v')"]\arrow[dr,"F(v)"']\arrow[rrrr,bend left=25,"F(w')"]&
+ F_Ug^*(\eta)\arrow[r,"F_Ug^*(u')"]\arrow[d,"\varphi_g(\eta)"']&
+ F_Ug^*f^*(\xi)\arrow[rr,"{F_U(c_{f,g}(\xi))}"]\arrow[d,"\varphi_g(f^*(\xi))"']&&
+ F_U(fg)^*(\xi)\arrow[d,"\varphi_{fg}(\xi)"]\\
+ &F_T(\eta)\arrow[r,"F_T(u')"']\arrow[rrr,bend right=25,"F(u)"']&
+ F_Tf^*(\xi)\arrow[rr,"\varphi_f(\xi)"']&&F_S(\xi)
+\end{tikzcd}
+\]
+左侧三角形由 $F(v)$ 的定义交换；中间方块是将\Term{functor}{函子}\Term{homomorphism}{同态} $\alpha_g$ 应用于\Term{homomorphism}{同态} $u':\xi\to f(\eta)$ 所得，因而交换；右侧方块由条件 b) 交换。所需结论随即得到。
+
+现在设 $\mathcal C$ 也是 $\mathcal E$ 上带\Term{normalized-cleavage}{正规化}\Term{cleavage}{劈分}的\Term{category}{范畴}，此后记为 $\mathcal G$，并考虑从 $\mathcal F$ 到 $\mathcal G$ 的 $\mathcal E$-\Term{functor}{函子}。若 $F$ 是这样的\Term{functor}{函子}，它在\Term{fibred-category}{纤维范畴}上诱导\Term{functor}{函子} $F_S:\mathcal F_S\to\mathcal G_S$。另一方面，对 $\mathcal E$ 中每个\Term{morphism}{态射} $f:T\to S$ 与 $\mathcal F_S$ 中每个对象 $\xi$，$f$-\Term{morphism}{态射} $F(\alpha_f(\xi))$ 唯一地经 $T$-\Term{morphism}{态射}
+\[
+ \varphi_f(\xi):F_T(f^*_{\mathcal F}(\xi))\longrightarrow f^*_{\mathcal G}(F_S(\xi))
+\]
+分解。
+
+\SourcePage{167}
+下标 $\mathcal F$、$\mathcal G$ 用来指明取\Term{inverse-image}{逆像}\Term{functor}{函子}的带\Term{cleavage}{劈分}\Term{category}{范畴}。因此得到从 $\mathcal F_S$ 到 $\mathcal G_T$ 的\Term{functor}{函子}之间的\Term{homomorphism}{同态}
+\[
+ \varphi_f:F_Tf^*_{\mathcal F}\longrightarrow f^*_{\mathcal G}F_S.
+\]
+两个系统 $(F_S)$、$(\varphi_f)$ 满足下述条件：
+
+a') $\varphi_{\operatorname{id}_S}=\operatorname{id}_{F_S}$。
+
+b') 对 $\mathcal E$ 中两个\Term{morphism}{态射} $f:T\to S$ 与 $g:U\to T$，下列\Term{functor}{函子}\Term{homomorphism}{同态}图交换：
+\[
+\begin{tikzcd}[column sep=large,row sep=large]
+ F_Ug^*_{\mathcal F}f^*_{\mathcal F}\arrow[r,"{F_U*c^{\mathcal F}_{f,g}}"]\arrow[d,"\varphi_g*f^*_{\mathcal F}"']&
+ F_U(fg)^*_{\mathcal F}\arrow[dd,"\varphi_{fg}"]\\
+ g^*_{\mathcal G}F_Tf^*_{\mathcal F}\arrow[d,"g^*_{\mathcal G}*\varphi_f"']&\\
+ g^*_{\mathcal G}f^*_{\mathcal G}F_S\arrow[r,"{c^{\mathcal G}_{f,g}*F_S}"']&(fg)^*_{\mathcal G}F_S
+\end{tikzcd}
+\]
+核对留给读者；也请读者陈述并证明命题 12.1 的对应结果。该结果表明，如此得到从 $\mathcal F$ 到 $\mathcal G$ 的 $\mathcal E$-\Term{functor}{函子}集，与满足上述 a')、b') 的系统 $(F_S),(\varphi_f)$ 所成集合之间的一一对应。当然，在这一对应下，\Term{cartesian-functor}{笛卡尔函子}由各\Term{homomorphism}{同态} $\varphi_f$ 均为\Term{isomorphism}{同构}这一性质刻画。
+
+\textbf{注记。}当然，在大多数情况下，直接在\Term{fibred-category}{纤维范畴}上推理而不明确选取\Term{cleavage}{劈分}更为有利。特别地，这样便不必为 $\mathcal E$-\Term{functor}{函子}或笛卡尔 $\mathcal E$-\Term{functor}{函子}这些简单概念，使用上面那样繁重的解释。正是为了避免难以忍受的累赘，并得到更内在的陈述，我们才不得不放弃像 [2] 那样，从带\Term{cleavage}{劈分}\Term{category}{范畴}概念出发；[2] 将其称为“\Term{fibred-category}{纤维范畴}”。如今，带\Term{cleavage}{劈分}\Term{category}{范畴}退居次位，让位于这里的\Term{fibred-category}{纤维范畴}。况且，虽然目前受旧有思维习惯影响，通常仍采取相反做法，但在普遍性问题中，最终很可能会发现：不强调一个被假定为一劳永逸选定的解，而将所有解置于同等地位，才更为方便。
+
+\SGAsection{13}{参考文献}
+\noindent [1] A.~Grothendieck，\textit{Sur quelques points d'algèbre homologique}（《同调代数的若干问题》），\textit{Tôhoku Math. J.} \textbf{9} (1957)，119--221 页。
+
+\noindent [2] A.~Grothendieck，\textit{Technique de descente et Théorèmes d'existence, I}（《\Term{descent}{下降}技术与存在定理，I》），Séminaire Bourbaki，第 190 讲，1959 年 12 月。
+
+% 原 PDF 第168页为空白页，无待译正文。

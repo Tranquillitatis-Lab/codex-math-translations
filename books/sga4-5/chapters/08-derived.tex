@@ -1,0 +1,708 @@
+% 原书第262—311页；Jean-Louis Verdier
+\chapter{导出范畴：若干结果（初稿）}\label{VIII}
+\blfootnote{Jean-Louis Verdier 著。}
+\origpage{268}{262}
+\noindent\textbf{高等科学研究所}
+
+本文写于1963年。1976年仅作了极少量修改，并增补了若干脚注；所有修改均在脚注中注明。
+
+% 恢复原著内部两章的层次；不改变第八篇的总章计数。
+\begingroup
+\renewcommand{\thesection}{\S\,\arabic{section}}
+\renewcommand{\thesubsection}{\arabic{subsection}}
+\renewcommand{\thesubsubsection}{\arabic{subsection}-\arabic{subsubsection}}
+\section*{第一章：三角范畴}
+\addcontentsline{toc}{section}{第一章：三角范畴}
+\setcounter{section}{0}
+\section{定义与例子}\label{VIII:1}
+\origpage{270}{264}
+\subsection{三角范畴的定义}\label{VIII:1-1}
+\addtocounter{subsubsection}{-1}
+\subsubsection{}\label{VIII:1-1-0}
+设 $\cA$ 是\term{加性范畴}{additive category}{catégorie additive}，$T$ 是 $\cA$ 的加性自同构。对 $\cA$ 的两个对象 $X,Y$，记
+\[
+ \hom^i(X,Y)=\hom_\cA(X,T^i(Y)),\qquad i\in\dZ.
+\]
+设 $X,Y,Z$ 是 $\cA$ 的三个对象，$\alpha\in\hom^i(X,Y)$，$\beta\in\hom^j(Y,Z)$。定义复合 $\beta\circ\alpha\in\hom^{i+j}(X,Z)$ 为
+\[
+ \beta\circ\alpha=\beta\circ T^j(\alpha).
+\]
+\translatornote{原文此处的复合公式与前面规定的分次不相容：$\alpha:X\to T^iY$、$\beta:Y\to T^jZ$，因而右端一般无法复合。与该规定相容的公式应为 $\beta\circ\alpha:=T^i(\beta)\circ\alpha:X\to T^{i+j}Z$。它满足结合律，因为两种三重复合都等于 $T^{i+j}(\gamma)\circ T^i(\beta)\circ\alpha$。上式保留原书写法以便对照。}
+可以验证，这样得到一个新范畴，其对象间的态射群具有分次。略微滥用术语，我们称它为由\term{平移函子}{translation functor}{foncteur de translation} $T$ 分次的范畴 $\cA$。
+
+设 $\cA$ 是由平移函子 $T$ 分次的范畴。以后提到或写出一个态射而未说明其次数时，总是指零次态射。
+
+设 $\cA,\cA'$ 是分别由 $T,T'$ 分次的两个加性范畴，$F:\cA\to\cA'$ 是加性函子。若给定函子的一个同构\footnote{1976年修改：原文要求等式 $F\circ T=T'\circ F$。多变量函子的情形在 SGA 4 XVII 0.3 中讨论，其中有符号问题。}
+\[
+ F\circ T\simeq T'\circ F,
+\]
+就称 $F$ 是\term{分次函子}{graded functor}{foncteur gradué}。分次函子之间态射的定义见 \ref{VIII:4-1-1}。
+
+设 $\cA$ 是由 $T$ 分次的加性范畴。所谓\term{三角}{triangle}{triangle}，是三个对象 $X,Y,Z$ 以及三个态射 $u:X\to Y$、$v:Y\to Z$、$w:Z\to T(X)$ 的资料；其中 $\deg w=1$。三角记作 $(X,Y,Z,u,v,w)$，或用图表示为
+\[\xymatrix{
+ &Z\ar[dl]_-w\\
+ X\ar[rr]^-u&&Y\ar[lu]_-v
+}\qquad\deg(w)=1.
+\]
+设 $(X,Y,Z,u,v,w)$ 和 $(X',Y',Z',u',v',w')$ 是两个三角。从前者到后者的态射是三个态射 $f:X\to X'$、$g:Y\to Y'$、$h:Z\to Z'$，使下图交换：
+\[\xymatrix{
+ X\ar[r]^-u\ar[d]^-f&Y\ar[r]^-v\ar[d]^-g&Z\ar[r]^-w\ar[d]^-h&T(X)\ar[d]^-{T(f)}\\
+ X'\ar[r]^-{u'}&Y'\ar[r]^-{v'}&Z'\ar[r]^-{w'}&T(X')
+}\]
+\subsubsection{}\label{VIII:1-1-1}
+所谓\term{三角范畴}{triangulated category}{catégorie triangulée}，是由平移函子分次的加性范畴，并给定一族称为\term{特选三角}{distinguished triangle}{triangle distingué}的三角，满足以下公理。
+\paragraph{TR1}\phantomsection\hypertarget{VIII:TR1}{}
+与特选三角同构的三角也是特选三角。每个态射 $u:X\to Y$ 都包含在某个特选三角 $(X,Y,Z,u,v,w)$ 中。三角 $(X,X,0,\operatorname{id}_X,0,0)$ 是特选三角。
+\paragraph{TR2}\phantomsection\hypertarget{VIII:TR2}{}
+三角 $(X,Y,Z,u,v,w)$ 是特选三角，当且仅当三角
+\[(Y,Z,T(X),v,w,-T(u))\]
+是特选三角。
+\paragraph{TR3}\phantomsection\hypertarget{VIII:TR3}{}
+若 $(X,Y,Z,u,v,w)$、$(X',Y',Z',u',v',w')$ 是特选三角，则对每个态射 $(f,g):u\to u'$，都存在 $h:Z\to Z'$，使 $(f,g,h)$ 为三角的态射。
+\paragraph{TR4}\phantomsection\hypertarget{VIII:TR4}{}
+设
+\[\xymatrix{&Z'\ar[dl]|{\deg=1}\\X\ar[rr]^-u&&Y\ar[ul]_-i}
+\quad\xymatrix{&X'\ar[dl]|{\deg(j)=1}\\Y\ar[rr]^-v&&Z\ar[ul]}
+\quad\xymatrix{&Y'\ar[dl]|{\deg=1}\\X\ar[rr]^-w&&Z\ar[ul]}
+\]
+是三个特选三角，且 $w=v\circ u$。则存在 $f:Z'\to Y'$ 和 $g:Y'\to X'$，使得
+\begin{enumerate}
+\item $(\operatorname{id}_X,v,f)$ 是三角的态射；
+\item $(u,\operatorname{id}_Z,g)$ 是三角的态射；
+\item $(Z',Y',X',f,g,T(i)j)$ 是特选三角。
+\end{enumerate}
+设 $\cC,\cC'$ 是三角范畴。从 $\cC$ 到 $\cC'$ 的\term{正合函子}{exact functor}{foncteur exact}，指将特选三角映为特选三角的分次加性函子。正合函子之间的态射是分次函子之间的态射。
+
+由公理 \hyperlink{VIII:TR1}{TR1}、\hyperlink{VIII:TR2}{TR2}、\hyperlink{VIII:TR3}{TR3}，立即得到以下性质。
+\begin{proposition}\label{VIII:1-1-2}
+设 $(X,Y,Z,u,v,w)$ 是特选三角，$M$ 是同一三角范畴的对象。则有正合列
+\[\xymatrix@C=9pt{
+\cdots\ar[r]&\hom^i(M,X)\ar[r]^-{\hom(M,u)}&\hom^i(M,Y)\ar[r]^-{\hom(M,v)}&\hom^i(M,Z)\ar[r]^-{\hom(M,w)}&\hom^{i+1}(M,X)\ar[r]&\cdots}
+\]
+\[\xymatrix@C=9pt{
+\cdots\ar[r]&\hom^i(Z,M)\ar[r]^-{\hom(v,M)}&\hom^i(Y,M)\ar[r]^-{\hom(u,M)}&\hom^i(X,M)\ar[r]^-{\hom(w,M)}&\hom^{i+1}(Z,M)\ar[r]&\cdots}
+\]
+\end{proposition}
+由此还能推出以下一类结论：
+\begin{itemize}
+\item 若 $(f,g,h)$ 是特选三角之间的态射，且 $f,g$ 是同构，则 $h$ 也是同构。
+\item 在同一态射上构造的特选三角（\hyperlink{VIII:TR1}{TR1}）彼此同构，\emph{但这种同构一般并不唯一}。
+\item 若特选三角中的某个态射存在核或余核，则该三角分裂，即具有如下形式：
+\[\xymatrix{&Z+T(X)\ar[dl]\\X+Y\ar[rr]&&Y+Z\ar[ul]}.\]
+\item 两个特选三角之和仍是特选三角。（这里要用公理 \hyperlink{VIII:TR4}{TR4}。）
+\end{itemize}
+\subsection{例子}\label{VIII:1-2}
+\subsubsection{}\label{VIII:1-2-1}
+先固定若干记号。设 $\cA$ 是加性范畴，$\eC(\cA)$ 表示以下范畴：
+\begin{itemize}
+\item 对象为 $\cA$ 中次数不限、微分次数为 $+1$ 的\term{复形}{complex}{complexe}；
+\item 态射为保持次数并与微分交换的复形态射。
+\end{itemize}
+定义函子 $T$ 如下。对每个 $X^\bullet\in\eC(\cA)$，令
+\begin{align*}
+ T(X^\bullet)_i&=(X^\bullet)_{i+1},\\
+ d_i(T(X^\bullet))&=-d_{i+1}(X^\bullet).
+\end{align*}
+对于态射 $f:X^\bullet\to Y^\bullet$，态射 $T(f):T(X^\bullet)\to T(Y^\bullet)$ 由
+\[T(f)_i=f_{i+1}\]
+定义。立即可见，$T$ 是 $\eC(\cA)$ 的加性自同构。由此平移函子定义的 $n$ 次态射，恰好是使次数增加 $n$、并按 $n$ 的奇偶性与微分交换或反交换的态射。这就得到通常采用的定义。
+
+用 $\sC$ 表示下述三角族：三角 $(X^\bullet,Y^\bullet,Z^\bullet,u,v,w)$ 属于此族，当\footnote{1976年修改，以保证 \ref{VIII:1-2-4} 成立。}
+\begin{itemize}
+\item $Z^\bullet$ 是以下双复形对应的\term{单复形}{total complex}{complexe simple}：
+\[\xymatrix{\cdots\ar[r]&0\ar[r]&X^\bullet\ar[r]^-u&Y^\bullet\ar[r]&0\ar[r]&\cdots},\]
+其中 $Y^\bullet$ 中的对象第一重次数为零，$X^\bullet$ 中的对象第一重次数为 $-1$；
+\item $v$ 是下列双复形态射在“取对应单复形”函子下的像：
+\[\xymatrix{
+\cdots\ar[r]&0\ar[r]\ar[d]&0^\bullet\ar[r]\ar[d]&Y^\bullet\ar[r]\ar[d]&0\ar[r]\ar[d]&\cdots\\
+\cdots\ar[r]&0\ar[r]&X^\bullet\ar[r]&Y^\bullet\ar[r]&0\ar[r]&\cdots};\]
+\item $w$ 是下列双复形态射在同一函子下的像的相反数：
+\[\xymatrix{
+\cdots\ar[r]&0\ar[r]&X^\bullet\ar[r]&0\ar[r]&0\ar[r]&\cdots\\
+\cdots\ar[r]&0\ar[r]\ar[u]&X^\bullet\ar[r]\ar[u]&Y^\bullet\ar[r]\ar[u]&0\ar[r]\ar[u]&\cdots}.
+\]
+\end{itemize}
+\subsubsection{}\label{VIII:1-2-2}
+零伦态射的全体构成双边理想：若 $f,g$ 可复合，且其中一个零伦，则其复合也零伦；若 $f,g$ 都零伦，则 $f\oplus g$ 也零伦。对每对对象 $X^\bullet,Y^\bullet$，用 $\operatorname{Htp}(X^\bullet,Y^\bullet)$ 表示 $\hom_{\eC(\cA)}(X^\bullet,Y^\bullet)$ 中零伦态射构成的子群。于是令 $\eK(\cA)$ 为下述范畴：对象与 $\eC(\cA)$ 相同，从 $X^\bullet$ 到 $Y^\bullet$ 的态射群为
+\[
+ \hom_{\eC(\cA)}(X^\bullet,Y^\bullet)/\operatorname{Htp}(X^\bullet,Y^\bullet).
+\]
+$\eK(\cA)$ 中的复合由 $\eC(\cA)$ 中的复合取商得到。$\eK(\cA)$ 是加性范畴。平移函子 $T$ 可下降到商范畴，因为零伦态射的平移仍零伦。所得函子是 $\eK(\cA)$ 的加性自同构，仍记为 $T$。以后略微滥用记号，用 $\eK(\cA)$ 也表示由 $T$ 分次的该范畴。
+
+$\eK(\cA)$ 中的特选三角定义为与来自 $\sC$ 的三角\emph{同构}的三角。这族三角满足公理 \hyperlink{VIII:TR1}{TR1}、\hyperlink{VIII:TR2}{TR2}、\hyperlink{VIII:TR3}{TR3}、\hyperlink{VIII:TR4}{TR4}。仍用 $\eK(\cA)$ 表示赋予此三角结构的范畴。
+\subsubsection{}\label{VIII:1-2-3}
+此外还要定义一系列子范畴。
+\begin{itemize}
+\item 若一个复形只有有限多个负次数项可能非零，就称它\term{下有界}{bounded below}{borné inférieurement}。类似地定义上有界和有界复形。由这些对象族生成的 $\eK(\cA)$ 的满子范畴，分别记为 $\eK^+(\cA)$、$\eK^-(\cA)$、$\eK^b(\cA)$。它们是 $\eK(\cA)$ 的“三角子范畴”：若特选三角的两个对象属于该子范畴，则此三角同构于一个三个对象都属于该子范畴的三角。
+\item 现设 $\cA$ 是阿贝尔范畴。若一个复形只有有限多个负次数的上同调对象可能非零，就称它在上同调意义下下有界。类似地定义上同调意义下上有界、有界以及无上同调的复形。相应对象族生成的满子范畴记为 $\eK^{\infty,+}(\cA)$、$\eK^{\infty,-}(\cA)$、$\eK^{\infty,b}(\cA)$、$\eK^{\infty,\varnothing}(\cA)$。这些都是三角子范畴。
+
+还将使用 $\eK^{+,b}(\cA)$、$\eK^{+,\varnothing}(\cA)$ 等三角子范畴；上标中的第一个符号描述复形各项的有界性，第二个符号描述上同调对象的有界性。
+\item 不再要求 $\cA$ 为阿贝尔范畴。设 $O$ 是 $\cA$ 的一个对象集合，在同构和直和下稳定。用 $O(\cA)$ 表示由各次项均属于 $O$ 的复形生成的 $\eC(\cA)$ 的满子范畴；在 $\eK(\cA)$ 中相应的三角子范畴记为 $\underline O(\cA)$。当 $\cA$ 为阿贝尔范畴时，$O$ 可取为内射对象的集合 $I$，或投射对象的集合 $P$。
+\end{itemize}
+\subsubsection{}\label{VIII:1-2-4}
+$\eK(\cA)$ 完全由 $\eC(\cA)$ 及三角族 $\sC$ 确定。确切地说，从 $\eC(\cA)$ 到任一三角范畴的分次加性函子，只要把 $\sC$ 中的每个三角映为特选三角，就唯一地经由 $\eK(\cA)$ 分解，所得函子是正合的。
+
+对每个复形 $X^\bullet$，以 $\bar X^\bullet$ 表示把其微分置零所得的复形。三项序列
+\[\xymatrix{0\ar[r]&X^\bullet\ar[r]&Y^\bullet\ar[r]&Z^\bullet\ar[r]&0}\]
+称为\term{半分裂序列}{degreewise split sequence}{suite semi-scindée}，若序列
+\[\xymatrix{0\ar[r]&\bar X^\bullet\ar[r]&\bar Y^\bullet\ar[r]&\bar Z^\bullet\ar[r]&0}\]
+分裂，即同构于
+\[\xymatrix{0\ar[r]&\bar X^\bullet\ar[r]&\bar X^\bullet+\bar Z^\bullet\ar[r]&\bar Z^\bullet\ar[r]&0}.\]
+设 $0\to X^\bullet\xrightarrow{u}Y^\bullet\xrightarrow{v}Z^\bullet\to0$ 为半分裂序列。选择一个分裂，即对每个 $n$ 选择同构
+\[(Y^\bullet)^n\simeq(X^\bullet)^n+(Z^\bullet)^n.\]
+在此直和分解下，$Y^\bullet$ 的微分矩阵形如
+\[\begin{pmatrix}d_{X^\bullet}&\varphi_n\\0&d_{Z^\bullet}\end{pmatrix},\]
+其中 $\varphi_n:(Z^\bullet)^n\to(X^\bullet)^{n+1}$。这些 $\varphi_n$ 确定复形态射
+\[\varphi:Z^\bullet\to T(X^\bullet).\]
+改变分裂时，$\varphi$ 的同伦类不变。此外，若以 $\underline u,\underline v,\underline\varphi$ 表示相应态射在 $\eK(\cA)$ 中的像，则三角 $(X^\bullet,Y^\bullet,Z^\bullet,\underline u,\underline v,\underline\varphi)$ 为特选三角。用 $\mathsf{SSS}(\cA)$ 表示半分裂序列范畴，$\mathsf{TrK}(\cA)$ 表示 $\eK(\cA)$ 的特选三角范畴，以上构造给出函子
+\[\rho:\mathsf{SSS}(\cA)\to\mathsf{TrK}(\cA),\]
+它是本质满射。
+\subsection{上同调函子和正合函子的例子}\label{VIII:1-3}
+\begin{definition}
+设 $\cA$ 是三角范畴，$\cB$ 是阿贝尔范畴。加性函子 $F:\cA\to\cB$ 称为\term{上同调函子}{cohomological functor}{foncteur cohomologique}，若对每个特选三角 $(X,Y,Z,u,v,w)$，序列
+\[\xymatrix{F(X)\ar[r]^-{F(u)}&F(Y)\ar[r]^-{F(v)}&F(Z)}\]
+正合。
+\end{definition}
+函子 $F\circ T^i$ 常记为 $F^i$。由公理 \hyperlink{VIII:TR2}{TR2}，有双向无界的正合列
+\[\xymatrix{\cdots\ar[r]&F^i(X)\ar[r]&F^i(Y)\ar[r]&F^i(Z)\ar[r]&F^{i+1}(X)\ar[r]&\cdots}.\]
+\subsubsection{例子}\label{VIII:1-3-2}
+\begin{enumerate}
+\item 若 $\cA$ 是三角范畴，则对每个对象 $X$，函子 $\hom_\cA(X,-)$ 是上同调函子。函子 $\hom_\cA(-,X)$ 则是从 $\cA^\circ$ 到 $\mathsf{Ab}$ 的上同调函子。
+\item 设 $\cA$ 是阿贝尔范畴，$\eC(\cA)$ 为复形范畴。定义函子 $\h^0:\eC(\cA)\to\cA$：对复形 $X^\bullet$，令
+\[\h^0(X^\bullet)=\ker d^0/\im d^{-1}.\]
+$\h^0$ 将零伦态射映为零，因此唯一地经由 $\eK(\cA)$ 分解；所得函子仍记为 $\h^0:\eK(\cA)\to\cA$。
+\end{enumerate}
+\subsubsection{正合双函子的例子}\label{VIII:1-3-3}
+设 $\cA,\cA',\cA''$ 为三个加性范畴，
+\[P:\cA\times\cA'\to\cA''\]
+为双线性函子，即对每个变量分别加性。由此按以下方式得到双线性函子
+\[P^\ast:\eC(\cA)\times\eC(\cA')\to\eC(\cA'').\]
+设 $X^\bullet\in\eC(\cA)$，$Y^\bullet\in\eC(\cA')$，则 $P(X^\bullet,Y^\bullet)$ 是双复形。令 $P^\ast(X^\bullet,Y^\bullet)$ 为其对应的单复形。
+
+设 $f$ 为 $\eC(\cA)$（分别为 $\eC(\cA')$）中的零伦态射，$Z^\bullet$ 为 $\eC(\cA')$（分别为 $\eC(\cA)$）的对象，则 $P^\ast(f,Z^\bullet)$（分别为 $P^\ast(Z^\bullet,f)$）也零伦。因此 $P^\ast$ 唯一地诱导函子
+\[P^\bullet:\eK(\cA)\times\eK(\cA')\to\eK(\cA''),\]
+且 $P^\bullet$ 是正合双函子。
+\translatornote{对这里不限次数的复形，取双复形对应的单复形需要相应的无限直和或无限直积存在；任意加性范畴未必具备。若采用直和总复形，应补充 $\cA''$ 存在所需的可数直和，或限制到每条对角线上仅有限多个非零项的复形对。在后一条件下各次数只需有限直和，上述构造及零伦性论证均成立。下述 $\hom^\bullet$ 的通常构造则采用沿对角线的直积，而 $\mathsf{Ab}$ 中这些直积存在。}
+特别地，设 $\cA$ 为加性范畴，可取
+\begin{align*}
+ P:\cA^\circ\times\cA&\to\mathsf{Ab},\\
+ (X,Y)&\mapsto\hom(X,Y).
+\end{align*}
+以上构造给出函子
+\[\hom^\bullet:\eK(\cA)^\circ\times\eK(\cA)\to\eK(\mathsf{Ab}).\]
+它与 $\h^0:\eK(\mathsf{Ab})\to\mathsf{Ab}$ 复合后，显然就是 $\hom_{\eK(\cA)}$。
+\section{商范畴}\label{VIII:2}
+\subsection{厚子范畴与态射乘法系}\label{VIII:2-1}
+先给出两个定义。
+\begin{definition}\label{VIII:2-1-1}
+三角范畴 $\cA$ 的子范畴 $\cB$ 称为\term{厚子范畴}{thick subcategory}{sous-catégorie épaisse}，若它是满三角子范畴，并且满足以下性质：若态射 $f:X\to Y$ 经由 $\cB$ 的某个对象分解，且包含在特选三角 $(X,Y,Z,f,g,h)$ 中，其中 $Z\in\cB$，则 $X,Y$ 均属于 $\cB$。
+\end{definition}
+$\cA$ 的厚子范畴的集合记为 $\sN$。任意一族厚子范畴之交仍是厚子范畴。
+\begin{definition}
+设 $\cA$ 为三角范畴。若态射集合 $S$ 满足以下五条性质，就称它为\term{态射乘法系}{multiplicative system of morphisms}{système multiplicatif de morphismes}。
+\paragraph{FR1}\phantomsection\hypertarget{VIII:FR1}{}
+若 $f,g\in S$ 可复合，则 $f\circ g\in S$。每个对象 $X$ 的恒等态射都属于 $S$。
+\paragraph{FR2}\phantomsection\hypertarget{VIII:FR2}{}
+$\cA$ 中每个图
+\[\xymatrix{&Y\ar[d]^-{s\in S}\\Z\ar[r]^-f&X}\]
+都能补成交换图
+\[\xymatrix{P\ar[r]^-g\ar[d]^-{t\in S}&Y\ar[d]^-{s\in S}\\Z\ar[r]^-f&X}.\]
+反向箭头所得的对称性质也成立。
+\paragraph{FR3}\phantomsection\hypertarget{VIII:FR3}{}
+对两个态射 $f,g$，下述条件等价：
+\begin{enumerate}[\indent i)]
+\item 存在 $s\in S$，使 $s\circ f=s\circ g$；
+\item 存在 $t\in S$，使 $f\circ t=g\circ t$。
+\end{enumerate}
+\paragraph{FR4}\phantomsection\hypertarget{VIII:FR4}{}
+设 $T$ 为平移函子。若 $s\in S$，则 $T(s)\in S$。
+\paragraph{FR5}\phantomsection\hypertarget{VIII:FR5}{}
+设 $(X,Y,Z,u,v,w)$、$(X',Y',Z',u',v',w')$ 是两个特选三角，$f,g\in S$，且 $(f,g)$ 是从 $u$ 到 $u'$ 的态射。则存在 $h\in S$，使 $(f,g,h)$ 为三角的态射。
+\end{definition}
+态射乘法系称为\term{饱和}{saturated}{saturé}的，若满足：态射 $f$ 属于 $S$，当且仅当存在态射 $g,g'$，使 $g\circ f\in S$ 且 $f\circ g'\in S$。
+
+任意一族饱和乘法系之交仍是饱和乘法系。以 $\sS$ 表示饱和乘法系的集合。
+
+设 $\cB$ 为厚子范畴。用 $\varphi(\cB)$ 表示所有能包含在特选三角 $(X,Y,Z,f,g,h)$ 中、且 $Z\in\cB$ 的态射 $f$ 的集合。$\varphi(\cB)$ 是饱和乘法系。
+
+设 $S$ 为饱和乘法系。用 $\psi(S)$ 表示由下述对象 $Z$ 生成的满子范畴：$Z$ 包含在某个特选三角 $(X,Y,Z,f,g,h)$ 中，且 $f\in S$。此子范畴是厚子范畴。
+
+本节的主要结论是：$\varphi$ 给出从 $\sN$ 到 $\sS$ 的同构，并保持由包含关系定义的偏序。其逆同构就是 $\psi$。
+\subsection{泛性质问题}\label{VIII:2-2}
+设 $\cA,\cA'$ 为三角范畴，$F:\cA\to\cA'$ 为正合函子。用 $S(F)$ 表示被 $F$ 映为同构的态射集合，$\cB(F)$ 表示由被 $F$ 映为零对象的对象生成的满子范畴。则 $S(F)$ 为饱和乘法系，$\cB(F)$ 为厚子范畴，而且
+\[S(F)=\varphi(\cB(F)).\]
+现设 $\cA$ 为三角范畴，$\cB$ 为厚子范畴，$S=\varphi(\cB)$ 为对应的饱和乘法系。以下两个泛性质问题彼此等价。
+\paragraph{问题1}\phantomsection\hypertarget{VIII:prob1}{}
+寻找三角范畴 $\cA/\cB$ 和正合函子 $Q:\cA\to\cA/\cB$，使每个把 $\cB$ 的对象映为零对象的正合函子 $\cA\to\cA'$，都唯一地写成 $G\circ Q$，其中 $G$ 为正合函子。
+\paragraph{问题2}\phantomsection\hypertarget{VIII:prob2}{}
+寻找三角范畴 $\cA_S$ 和正合函子 $Q:\cA\to\cA_S$，使每个把 $S$ 中态射映为同构的正合函子 $\cA\to\cA'$，都唯一地写成 $G\circ Q$，其中 $G$ 为正合函子。
+
+（作者使用了这种过时而守旧的语言，还请读者见谅。）下一节将证明\hyperlink{VIII:prob2}{问题2}有解，因此相应的\hyperlink{VIII:prob1}{问题1}也有同一个解。
+\subsection{分式演算}\label{VIII:2-3}
+\subsubsection{}\label{VIII:2-3-1}
+设 $\cA$ 为三角范畴，$S$ 为饱和乘法系。记 $\cA[S^{-1}]$ 为相对于态射集 $S$ 的\term{分式范畴}{category of fractions}{catégorie de fractions}，$Q:\cA\to\cA[S^{-1}]$ 为典范函子。二元组 $(\cA[S^{-1}],Q)$ 解决以下问题：从 $\cA$ 到任一范畴（不一定加性）、将 $S$ 中态射映为同构的函子，都唯一地经由 $(\cA[S^{-1}],Q)$ 分解。无论态射集合 $S$ 满足什么条件，这样的二元组总存在，见原文所引 [C.G.G.]。\footnote{转写者说明：原文此处引用 [C.G.G.]，很可能指 Chevalley、Gabriel、Grothendieck 的佚失著作 \emph{Catégories et foncteurs}；\cite{sc72} 中提到过它。分式范畴可参见 \cite[1.1]{gz67}。}
+
+由于 $S$ 为饱和乘法系，满足 \hyperlink{VIII:FR1}{FR1}、\hyperlink{VIII:FR2}{FR2}、\hyperlink{VIII:FR3}{FR3}，故根据分式演算理论，$\cA[S^{-1}]$ 可由右分式演算或左分式演算得到。下面回顾右分式演算的构造；左分式演算只需反向所有箭头。
+\subsubsection{}\label{VIII:2-3-2}
+$\cA[S^{-1}]$ 的对象就是 $\cA$ 的对象。
+\begin{itemize}
+\item 对每个 $X\in\cA$，用 $S_X$ 表示以 $X$ 为终点、属于 $S$ 的箭头所成的范畴。每个对象 $Y$ 以关于 $Y$ 函子性的方式给出以下定义在反范畴 $S_X^\circ$ 上的集合值函子：
+\[H_Y:s\mapsto\hom(\operatorname{source}(s),Y).\]
+令
+\[\hom_{\cA[S^{-1}]}(X,Y)=\varinjlim_{S_X^\circ}H_Y.\]
+关于归纳极限，参见 \cite{ar62}。利用 \hyperlink{VIII:FR1}{FR1}、\hyperlink{VIII:FR2}{FR2}、\hyperlink{VIII:FR3}{FR3}，读者会欣然发现，范畴 $S_X^\circ$ 满足性质 L1、L2、L3。因此这些归纳极限具有滤过偏序集上归纳极限的一切良好性质。
+\item 设 $X,Y,Z\in\cA$，$a\in\hom_{\cA[S^{-1}]}(X,Y)$，$b\in\hom_{\cA[S^{-1}]}(Y,Z)$。选取 $s\in S_X$ 和代表 $a$ 的态射 $\underline a\in\hom(\operatorname{source}(s),Y)$，以及 $t\in S_Y$ 和代表 $b$ 的态射 $\underline b\in\hom(\operatorname{source}(t),Z)$。得到图
+\begin{equation*}\tag{1}\label{VIII:eq:2-3-2-1}
+\xymatrix{&\bullet\ar[dl]_-s\ar[dr]^-{\underline a}&&\bullet\ar[dl]_-t\ar[dr]^-{\underline b}\\X&&Y&&Z}.
+\end{equation*}
+由 \hyperlink{VIII:FR2}{FR2}，可将其补成
+\[\xymatrix{&&\bullet\ar[dl]_-{t'}\ar[dr]^-{\underline c}\\&\bullet\ar[dl]_-s\ar[dr]^-{\underline a}&&\bullet\ar[dl]_-t\ar[dr]^-{\underline b}\\X&&Y&&Z}.\]
+以 $b\circ a$ 表示态射 $\underline b\circ\underline c$ 在 $\hom_{\cA[S^{-1}]}(X,Z)$ 中的像，此处使用分母 $s\circ t'$。利用 \hyperlink{VIII:FR1}{FR1}、\hyperlink{VIII:FR2}{FR2}、\hyperlink{VIII:FR3}{FR3}，可验证它既不依赖于所选代表 $\underline a,\underline b$，也不依赖于补全图 \eqref{VIII:eq:2-3-2-1} 的方式。还可验证，这确实定义了范畴 $\cA[S^{-1}]$。
+\end{itemize}
+用 $Q$ 表示显然的函子 $\cA\to\cA[S^{-1}]$。
+
+由于 $\cA$ 加性，$\cA[S^{-1}]$ 也是加性范畴。利用 \hyperlink{VIII:FR4}{FR4} 可证明，$\cA[S^{-1}]$ 上存在唯一的平移函子，仍记为 $T$，满足
+\[Q\circ T=T\circ Q.\]
+最后，由 \hyperlink{VIII:FR5}{FR5} 可证明，$\cA[S^{-1}]$ 上存在唯一的三角结构，使 $Q$ 正合。其特选三角恰好是与 $\cA$ 的特选三角在 $Q$ 下的像同构的三角。将赋予此结构的范畴记为 $\cA_S$，则不难证明 $(\cA_S,Q)$ 是\hyperlink{VIII:prob2}{问题2}的解。
+\begin{definition}\label{VIII:2-3-3}
+设 $\cA$ 为三角范畴，$\cB$ 为厚子范畴，$(Q,\cA/\cB)$ 为 \S\ref{VIII:2-2} 中\hyperlink{VIII:prob1}{问题1}的解。称 $\cA/\cB$ 为 $\cA$ 对 $\cB$ 的\term{商范畴}{quotient category}{catégorie quotient}，称 $Q$ 为典范取商函子。更一般地，若 $\cN$ 为三角子范畴，$\underline\cN$ 为包含它的最小厚子范畴，则定义 $\cA/\cN:=\cA/\underline\cN$。
+\end{definition}
+\subsection{商范畴的性质}\label{VIII:2-4}
+\subsubsection{}\label{VIII:2-4-1}
+设 $\cA$ 为三角范畴，$H$ 为取值于阿贝尔范畴 $\cG$ 的上同调函子。以 $\cB_H$ 表示由所有平移都被 $H$ 映为零对象的对象生成的满子范畴，$S_H$ 表示所有平移都被 $H$ 映为同构的态射集合。则 $\cB_H$ 是厚子范畴，$S_H$ 为饱和乘法系，且 $S_H=\varphi(\cB_H)$（\S\ref{VIII:2-1}）。函子 $H$ 唯一地经由 $(Q,\cA/\cB_H)$ 分解。
+\begin{theorem}\label{VIII:2-4-2}
+设 $\cA$ 为三角范畴，$\cB$ 为三角子范畴，$\cN$ 为厚子范畴，$S=\varphi(\cN)$ 为对应的饱和乘法系。
+\begin{enumerate}[(a)]
+\item $\cN\cap\cB$ 是 $\cB$ 的厚子范畴，相应的乘法系为 $S\cap\cB$。
+\item 以下两条性质等价：
+\begin{enumerate}[(i)]
+\item 对每个 $X\in\cB$ 和每个 $s:R\to X$、$s\in S$，存在 $s':R'\to R$，使 $s\circ s'\in S\cap\cB$，且 $R'\in\operatorname{Ob}\cB$；
+\item 从 $\cB$ 的对象 $X$ 到 $\cN$ 的对象 $Y$ 的每个态射，都经由 $\cN\cap\cB$ 的某个对象分解。
+\end{enumerate}
+\item 将 (i)、(ii) 中的箭头反向所得的性质 (i)'、(ii)' 彼此等价。
+\item 若 (i)、(ii) 成立，或 (i)'、(ii)' 成立，则典范函子
+\[\cB/(\cN\cap\cB)\longrightarrow\cA/\cN\]
+忠实。由于此函子在对象上单射，它将 $\cB/(\cN\cap\cB)$ 实现为 $\cA/\cN$ 的子范畴。
+\item 若 $\cB$ 还是 $\cA$ 的满子范畴，则 $\cB/(\cN\cap\cB)$ 为 $\cA/\cN$ 的满子范畴。
+\end{enumerate}
+\end{theorem}
+\begin{corollary}\label{VIII:2-4-3}
+设 $\cA\subset\cB\subset\cC$ 为三个三角范畴，$\cA$ 是 $\cB$ 的厚子范畴，$\cB$ 是 $\cC$ 的厚子范畴。则 $\cA$ 是 $\cC$ 的厚子范畴，$\cB/\cA$ 是 $\cC/\cA$ 的厚子范畴。典范函子
+\[\cC/\cB\longrightarrow(\cC/\cA)/(\cB/\cA)\]
+是同构。
+\end{corollary}
+\subsection{取商函子的性质}\label{VIII:2-5}
+设 $\cA$ 为三角范畴，$\cB$ 为厚子范畴，$S$ 为对应乘法系，$Q:\cA\to\cA/\cB$ 为典范取商函子。
+\begin{proposition}\label{VIII:2-5-1}
+对 $\cA$ 的对象 $X,Y$，以下断言等价：
+\begin{enumerate}[(a)]
+\item 若态射 $f:X\to Y$ 满足：存在 $s:Z\to X$、$s\in S$，使 $f\circ s=0$，则 $f=0$；
+\item 若态射 $f:X\to Y$ 满足：存在 $s:Y\to Z$、$s\in S$，使 $s\circ f=0$，则 $f=0$；
+\item 经由 $\cB$ 的对象分解的每个态射 $f:X\to Y$ 都为零；
+\item 典范映射
+\[\hom_\cA(X,Y)\longrightarrow\hom_{\cA/\cB}(Q(X),Q(Y))\]
+单射。
+\end{enumerate}
+\end{proposition}
+\begin{proposition}\label{VIII:2-5-2}
+对 $\cA$ 的两个对象 $X,Y$，以下断言等价：
+\begin{enumerate}[(a)]
+\item 每个图（$s\in S$）
+\[\xymatrix{&Z\ar[dl]_-s\ar[dr]^-f\\X&&Y}\]
+都可补成图（$s,t\in S$）
+\[\xymatrix{&Z'\ar[d]_-t\\&Z\ar[dl]_-s\ar[dr]^-f\\X&&Y},\]
+使 $f\circ t$ 经由 $(X,s\circ t)$ 分解；
+\item 将 (a) 中箭头反向并交换 $X,Y$ 所得的断言；
+\item 每个满足 $g\circ f=0$、$N\in\cB$ 的图
+\[\xymatrix{X\ar[r]^-f&N\ar[r]^-g&Y}\]
+都可补成图
+\[\xymatrix{&N'\ar[d]^-i\\X\ar[ur]^-h\ar[r]^-f&N\ar[r]^-g&Y},\]
+使 $f=i\circ h$ 且 $g\circ i=0$；
+\item 将 (c) 中箭头反向并交换 $X,Y$ 所得的断言；
+\item 典范映射
+\[\hom_\cA(X,Y)\xrightarrow{Q}\hom_{\cA/\cB}(Q(X),Q(Y))\]
+满射。
+\end{enumerate}
+\end{proposition}
+\translatornote{(c) 中漏写了 $N'\in\cB$ 的要求，(d) 亦须作相应补充。没有此要求，取 $N'=X$、$h=\operatorname{id}_X$、$i=f$，(c) 就恒成立，而 (e) 一般不成立。例如令 $\cA$ 为有限生成自由 $\mathbb Z$-模的有界复形同伦范畴，$\cB$ 为上同调均为挠群的厚子范畴。局部化后，$\mathbb Z[0]$ 的自身态射包含有理数 $1/2$：乘以 $2$ 的态射之锥属于 $\cB$，所以它在商范畴中可逆；张量 $\mathbb Q$ 又表明此逆态射不来自任何整数自身态射。因此典范映射并不满。这里补上 $N'\in\cB$，即得到标准的满性判据。}
+\begin{proposition}\label{VIII:2-5-3}
+设 $X\in\cA$。以下断言等价：
+\begin{enumerate}[(a)]
+\item 对每个 $Y\in\cA$，典范映射
+\[\hom_\cA(X,Y)\xrightarrow{Q}\hom_{\cA/\cB}(Q(X),Q(Y))\]
+为同构；
+\item 从 $X$ 到 $\cB$ 的对象的每个态射都为零。
+\end{enumerate}
+同样，以下两条断言等价：
+\begin{enumerate}[(a)']
+\item 对每个 $Y\in\cA$，典范映射
+\[\hom_\cA(Y,X)\xrightarrow{Q}\hom_{\cA/\cB}(Q(Y),Q(X))\]
+为同构；
+\item 从 $\cB$ 的对象到 $X$ 的每个态射都为零。
+\end{enumerate}
+\end{proposition}
+\begin{definition}\label{VIII:2-5-4}
+满足上个命题中等价条件 (a)、(b) 的对象，称为 $\cA/\cB$ 上的\term{左自由对象}{left-free object}{objet libre à gauche}，或 $Q$-左自由对象。满足等价条件 (a)'、(b)' 的对象，称为 $\cA/\cB$ 上的\term{右自由对象}{right-free object}{objet libre à droite}，或 $Q$-右自由对象。这样的对象由 $Q(X)\in\operatorname{Ob}(\cA/\cB)$ 确定，精确到同构。
+\end{definition}
+\subsection{取商函子的伴随函子}\label{VIII:2-6}
+\begin{definition}\label{VIII:2-6-1}
+三角范畴 $\cA$ 的两个三角子范畴 $\cN,\cN'$ 称为\term{正交}{orthogonal}{orthogonal}的，若对每个 $X\in\cN$、$Y\in\cN'$，都有
+\[\hom_\cA(X,Y)=0.\]
+这时称 $\cN'$ 右正交于 $\cN$，$\cN$ 左正交于 $\cN'$。
+\end{definition}
+\begin{proposition}\label{VIII:2-6-2}
+设 $\cN$ 是三角范畴 $\cA$ 的三角子范畴。由满足下述条件的对象 $X$ 生成的满子范畴 $\cN^\bot$（分别为 $^\bot\cN$）是厚子范畴：对每个 $Y\in\cN$，都有 $\hom_\cA(Y,X)=0$（分别为 $\hom_\cA(X,Y)=0$）。略微滥用术语，称 $\cN^\bot$ 为 $\cN$ 的右正交子范畴。
+\end{proposition}
+据此，命题 \ref{VIII:2-5-3} 可改述如下。
+\begin{proposition}\label{VIII:2-6-3}
+设 $\cB\subset\cA$ 为厚子范畴。由 $\cA/\cB$ 上右自由对象（分别为左自由对象）生成的满子范畴，恰好是 $\cB$ 的右正交（分别为左正交）子范畴。
+\end{proposition}
+\begin{proposition}\label{VIII:2-6-4}
+设 $\cA$ 为三角范畴，$\cB$ 为厚子范畴，$\cB^\bot$ 为其右正交子范畴，$S(\cB),S(\cB^\bot)$ 为相应乘法系，$Q,Q^\bot$ 为相应典范取商函子。对对象 $X\in\cA$，考虑以下性质：
+\begin{enumerate}[(i)]
+\item 存在从 $X$ 到 $\cB^\bot$ 的某个对象的态射，属于 $S(\cB)$；
+\item 存在从 $\cB$ 的某个对象到 $X$ 的态射，属于 $S(\cB^\bot)$；
+\item 由以 $X$ 为起点、属于 $S(\cB)$ 的箭头组成的范畴 $S_X(\cB)$，有终对象；
+\item 由以 $X$ 为终点、属于 $S(\cB^\bot)$ 的箭头组成的范畴 $S^X(\cB^\bot)$，有始对象；
+\item $X$ 上方的 $\cB$ 的对象组成的范畴 $\cB/X$，有终对象；
+\item $X$ 下方的 $\cB^\bot$ 的对象组成的范畴 $\cB^\bot\backslash X$，有始对象。
+\end{enumerate}
+则有以下关系：
+\[\xymatrix@=0.5cm{
+&&&&(iv)\\
+(i)\ar@{<=>}[r]&(ii)\ar@{<=>}[r]&(iii)\ar@{<=>}[r]&(v)\ar@{=>}[ur]\ar@{=>}[dr]\\
+&&&&(vi)}.\]
+若还有 $^\bot(\cB^\bot)=\cB$，则上述所有性质等价。
+\end{proposition}
+设 $i:\cB\hookrightarrow\cA$ 为厚子范畴的包含函子，$Q:\cA\to\cA/\cB$ 为取商函子；$\cB^\bot$ 为右正交子范畴，$i^\bot,Q^\bot$ 为相应函子。由命题 \ref{VIII:2-6-4} 立即得到以下命题。
+\begin{proposition}\label{VIII:2-6-5}
+以下两条性质等价：
+\begin{enumerate}[(i)]
+\item $i$ 有右伴随函子；
+\item $Q$ 有右伴随函子。
+\end{enumerate}
+\end{proposition}
+将“右”换成“左”，命题仍成立。
+\begin{proposition}\label{VIII:2-6-6}
+以下两条性质等价：
+\begin{enumerate}[(i)]
+\item $i$ 有右伴随函子；
+\item $i^\bot$ 有左伴随函子，且 $\cB^\bot$ 的左正交子范畴等于 $\cB$。
+\end{enumerate}
+\end{proposition}
+\begin{proposition}\label{VIII:2-6-7}
+假设命题 \ref{VIII:2-6-5}、\ref{VIII:2-6-6} 中的性质成立。设 $i^\ast,Q^\ast$ 分别为 $i,Q$ 的右伴随，$^\ast i^\bot,^\ast Q^\bot$ 分别为 $i^\bot,Q^\bot$ 的左伴随。这些函子均正合，且有如下性质。
+
+存在函子同构 $Q^\ast\circ Q\iso i^\bot\circ{}^\ast i^\bot$，使下图交换：
+\[\xymatrix{&\operatorname{id}\ar[dl]\ar[dr]\\Q^\ast\circ Q\ar[rr]^\sim&&i^\bot\circ{}^\ast i^\bot}.\]
+斜箭头由伴随性质给出。
+
+同样，存在同构 $^\ast Q^\bot\circ Q^\bot\iso i\circ i^\ast$，使下图交换：
+\[\xymatrix{{}^\ast Q^\bot\circ Q^\bot\ar[rr]^-\sim\ar[dr]&&i\circ i^\ast\ar[dl]\\&\operatorname{id}}.\]
+最后，存在一个次数为 $1$ 的函子态射 $\partial:i^\bot\circ{}^\ast i^\bot\to i\circ i^\ast$，使以下三角为特选三角（$\deg\partial=1$）：
+\[\xymatrix{i^\bot\circ{}^\ast i^\bot\ar[rr]^-\partial&&i\circ i^\ast\ar[dl]\\&\operatorname{id}\ar[ul]}.\]
+这样的态射 $\partial$ 唯一，且满足
+\[\partial(TX)=-T\partial(X),\]
+其中 $X$ 为 $\cA$ 的对象，$T$ 为平移函子。
+\end{proposition}
+\section*{第二章：在阿贝尔范畴中的应用}
+\addcontentsline{toc}{section}{第二章：在阿贝尔范畴中的应用}
+\setcounter{section}{0}
+\renewcommand{\thesubsubsection}{\arabic{subsection}.\arabic{subsubsection}}
+% 本章第二节的两个推论在原著中单列为“推论1、推论2”。
+\newtheorem{derivedcorollary}{推论}
+\section{阿贝尔范畴的导出范畴}\label{VIII:3}
+\origpage{297}{291}
+\subsection{导出范畴}\label{VIII:3-1}
+沿用 \ref{VIII:1-2-3} 的记号，并增加下列记号。
+\subsubsection{记号}\label{VIII:3-1-1}
+设 $\cA$ 为阿贝尔范畴，令
+\begin{align*}
+\eD(\cA)&=\eK^{\infty,\infty}(\cA)/\eK^{\infty,\varnothing}(\cA),\\
+\eD^b(\cA)&=\eK^{b,b}(\cA)/\eK^{b,\varnothing}(\cA),\\
+\eD^+(\cA)&=\eK^{+,+}(\cA)/\eK^{+,\varnothing}(\cA),\\
+\eD^-(\cA)&=\eK^{-,-}(\cA)/\eK^{-,\varnothing}(\cA).
+\end{align*}
+\begin{proposition}\label{VIII:3-1-2}
+下图中的自然函子
+\[\xymatrix@=0.5cm{&\eD(\cA)\\\eD^+(\cA)\ar[ur]&&\eD^-(\cA)\ar[ul]\\&\eD^b(\cA)\ar[ul]\ar[ur]}\]
+均完全忠实。自然函子
+\begin{align*}
+\eD^b(\cA)=\eK^{b,b}(\cA)/\eK^{b,\varnothing}(\cA)&\longrightarrow\eK^{+,b}(\cA)/\eK^{+,\varnothing}(\cA),\\
+\eD^b(\cA)=\eK^{b,b}(\cA)/\eK^{b,\varnothing}(\cA)&\longrightarrow\eK^{-,b}(\cA)/\eK^{-,\varnothing}(\cA)
+\end{align*}
+是范畴等价。上述图中的函子在对象上单射，因而把 $\eD^b(\cA)$、$\eD^+(\cA)$、$\eD^-(\cA)$ 实现为 $\eD(\cA)$ 的满子范畴。
+\end{proposition}
+本命题的证明包含在定理 \ref{VIII:2-4-2} 中。
+\begin{definition}\label{VIII:3-1-3}
+称 $\eD(\cA)$ 为 $\cA$ 的\term{导出范畴}{derived category}{catégorie dérivée}。其中同构于 $\eD^b(\cA)$ 的对象的，称为有界对象；同构于 $\eD^+(\cA)$ 的对象的，称为左有界对象；同构于 $\eD^-(\cA)$ 的对象的，称为右有界对象。
+\end{definition}
+用 $D$ 表示典范函子
+\[D:\eC(\cA)\to\eD(\cA).\]
+它在 $\eC(\cA)$ 的满子范畴 $\cA$ 上的限制仍记为 $D$。此限制完全忠实。函子 $D$ 唯一地经由 $\eK(\cA)$ 分解。设 $X,Y\in\cA$。
+
+不难验证，对每个 $m>0$，群\translatornote{原书将 $m>0$ 误印为 $m\geq0$。当 $m=0$、$X=Y\ne0$ 时，该群包含非零恒等态射，因此必须排除 $m=0$。}
+\[\hom_{\eD(\cA)}(D(X),T^{-m}D(Y))\qquad\text{（$T$ 为平移函子）}\]
+为零。$\cA$ 的\term{上同调维数}{cohomological dimension}{dimension cohomologique}定义为满足下述条件的最小整数 $n$：对每个 $m>n$ 和每对对象 $X,Y\in\cA$，都有
+\[\hom_{\eD(\cA)}(D(X),T^mD(Y))=0.\]
+若不存在这样的整数，就称 $\cA$ 的上同调维数无穷。
+
+用 $\eI^+(\cA)$（分别为 $\eI(\cA)$）表示 $\eK^+(\cA)$（分别为 $\eK(\cA)$）中由各次项均内射的复形定义的满三角子范畴。
+\begin{proposition}\label{VIII:3-1-4}
+假设 $\cA$ 有足够多内射对象。自然函子
+\[Q^+:\eK^+(\cA)\to\eD^+(\cA)\]
+诱导范畴等价
+\[\eI^+(\cA)\longrightarrow\eD^+(\cA).\]
+其准逆函子是 $Q^+$ 的右伴随。
+\end{proposition}
+若 $\cA$ 的上同调维数还有限，则去掉上标 $+$ 后，断言仍成立。投射对象有类似结论。命题 \ref{VIII:3-1-4} 的证明基于 \ref{VIII:2-6-4}。
+
+以下命题进一步说明 $\eD(\cA)$ 的三角结构。设 $\eE(\cA)$ 为 $\eC(\cA)$ 的三项短正合列所成的范畴。半分裂短正合列范畴 $\mathsf{SSS}(\cA)$（\S\ref{VIII:1-2-4}）是它的满子范畴。前面已定义函子
+\[\rho:\mathsf{SSS}(\cA)\to\mathsf{TrK}(\cA),\]
+其中 $\mathsf{TrK}(\cA)$ 为 $\eK(\cA)$ 的特选三角范畴。由此得到函子
+\[\sigma:\mathsf{SSS}(\cA)\to\mathsf{TrD}(\cA),\]
+其中 $\mathsf{TrD}(\cA)$ 为 $\eD(\cA)$ 的特选三角范畴。
+\begin{proposition}\label{VIII:3-1-5}
+存在唯一的函子
+\[\Pi:\eE(\cA)\to\mathsf{TrD}(\cA),\]
+具有如下形式（$\deg\delta(S)=1$）：
+\[
+(S=0\to X^\bullet\xrightarrow{u}Y^\bullet\xrightarrow{v}Z^\bullet\to0)
+\longmapsto
+\xymatrix{&D(Z^\bullet)\ar[dl]_-{\delta(S)}\\D(X^\bullet)\ar[rr]^-{D(u)}&&D(Y^\bullet)\ar[ul]_-{D(v)}},
+\]
+并且在 $\mathsf{SSS}(\cA)$ 上的限制为 $\sigma$。\emph{此函子为本质满射。}
+\end{proposition}
+\begin{proposition}\label{VIII:3-1-6}
+典范上同调函子 $\h^0:\eK(\cA)\to\cA$ 唯一地经由一个函子
+\[\h^0:\eD(\cA)\to\cA\]
+分解，后者仍记为 $\h^0$。在 $\eD(\cA)$ 上，$\h^0$ 及其所有平移 $\h^i$ 构成\term{保守函子族}{conservative family of functors}{système conservatif}，即态射 $f:X^\bullet\to Y^\bullet$ 为同构，当且仅当对每个整数 $i$，态射
+\[\h^i(f):\h^i(X)\to\h^i(Y)\]
+均为同构。
+\end{proposition}
+\begin{definition}\label{VIII:3-1-7}
+$\eC(\cA)$（或 $\eK(\cA)$）中的态射 $f:X^\bullet\to Y^\bullet$ 称为\term{拟同构}{quasi-isomorphism}{quasi-isomorphisme}，若对每个整数 $i$，$\h^i(f):\h^i(X)\to\h^i(Y)$ 都是同构。
+\end{definition}
+由上个命题，拟同构恰好是在 $\eD(\cA)$ 中变为同构的态射。
+\begin{definition}\label{VIII:3-1-8}
+设 $\sigma$ 是 $\cA$ 的一个对象集合，$X^\bullet\in\eC(\cA)$（或 $\eK(\cA)$）。$X^\bullet$ 的一个 $\sigma$ 型\term{右消解}{right resolution}{résolution droite}（分别为左消解），是拟同构 $X^\bullet\to V^\bullet$（分别为 $V^\bullet\to X^\bullet$），其中 $V^\bullet$ 的各次项均属于 $\sigma$。当这些项均内射（分别为投射）时，称为\term{内射消解}{injective resolution}{résolution injective}（分别为投射消解）。
+\end{definition}
+在不会产生歧义时，可以省略“右”或“左”。
+\begin{proposition}\label{VIII:3-1-9}
+\begin{enumerate}
+\item 假设 $\cA$ 的每个对象都能嵌入 $\sigma$ 中的一个对象（分别地，都为 $\sigma$ 中一个对象的商）。则 $\eC^+(\cA)$（分别为 $\eC^-(\cA)$）的每个对象，都在 $\eC^+(\cA)$（分别为 $\eC^-(\cA)$）中有 $\sigma$ 型右消解（分别为左消解）。
+\item 再假设存在整数 $n$，使对每个正合列
+\begin{align*}
+Y^0&\to Y^1\to\cdots\to Y^{n-1}\to Y^n\to0\\
+\text{（分别为 }0&\to Y^n\to Y^{n-1}\to\cdots\to Y^1\to Y^0\text{）},
+\end{align*}
+只要 $Y^i\in\sigma$（$0\leq i\leq n-1$），就有 $Y^n\in\sigma$。则 $\eC(\cA)$ 的每个对象都有 $\sigma$ 型右消解（分别为左消解）。
+\end{enumerate}
+\end{proposition}
+\subsection{$\ext$ 的研究}\label{VIII:3-2}
+\origpage{303}{297}
+设 $X^\bullet,Y^\bullet\in\eC(\cA)$（分别为 $\eK(\cA)$），$D:\eC(\cA)\to\eD(\cA)$（分别为 $Q:\eK(\cA)\to\eD(\cA)$）为典范函子。
+\begin{definition}\label{VIII:3-2-1}
+称函子
+\[\hom_{\eD(\cA)}(D(X^\bullet),T^iD(Y^\bullet))\]
+（分别为 $\hom_{\eD(\cA)}(Q(X^\bullet),T^iQ(Y^\bullet))$）为\term{第 $i$ 超扩张函子}{hyper-Ext functor}{$i$-ème hyper-ext}，记作
+\[(X^\bullet,Y^\bullet)\longmapsto\ext^i(X^\bullet,Y^\bullet).\]
+\end{definition}
+\begin{proposition}\label{VIII:3-2-2}
+设 $0\to X^\bullet\to Y^\bullet\to Z^\bullet\to0$ 是 $\eC(\cA)$ 中的短正合列，$V^\bullet\in\eC(\cA)$。则有双向无界正合列
+\[\xymatrix@C=6pt{
+\cdots\ar[r]&\ext^i(V^\bullet,X^\bullet)\ar[r]&\ext^i(V^\bullet,Y^\bullet)\ar[r]&\ext^i(V^\bullet,Z^\bullet)\ar[r]^-\delta&\ext^{i+1}(V^\bullet,X^\bullet)\ar[r]&\cdots},\]
+\[\xymatrix@C=6pt{
+\cdots\ar[r]&\ext^i(Z^\bullet,V^\bullet)\ar[r]&\ext^i(Y^\bullet,V^\bullet)\ar[r]&\ext^i(X^\bullet,V^\bullet)\ar[r]^-\delta&\ext^{i+1}(Z^\bullet,V^\bullet)\ar[r]&\cdots}.\]
+\end{proposition}
+设 $X^\bullet,Y^\bullet\in\eK(\cA)$。以 $\mathsf{Qis}/X^\bullet$（分别为 $\mathsf{Qis}^+/X^\bullet$、$\mathsf{Qis}^-/X^\bullet$、$\mathsf{Qis}^b/X^\bullet$）表示终点为 $X^\bullet$、起点属于 $\eK(\cA)$（分别为 $\eK^+(\cA)$、$\eK^-(\cA)$、$\eK^b(\cA)$）的拟同构范畴。同样定义 $Y^\bullet/\mathsf{Qis}$、$Y^\bullet/\mathsf{Qis}^+$ 等范畴，其中拟同构的起点为 $Y^\bullet$。
+
+以下命题汇总 $\ext^i$ 的各种等价定义。
+\begin{proposition}\label{VIII:3-2-3}
+\begin{enumerate}
+\item 存在函子同构
+\begin{align*}
+\ext^0(X^\bullet,Y^\bullet)
+&=\hom_{\eD(\cA)}(Q(X^\bullet),Q(Y^\bullet))\\
+&\simeq\varinjlim_{(\mathsf{Qis}/X^\bullet)^\circ}\hom_{\eK(\cA)}(-,Y^\bullet)\\
+&\simeq\varinjlim_{Y^\bullet/\mathsf{Qis}}\hom_{\eK(\cA)}(X^\bullet,-)\\
+&\simeq\varinjlim_{(\mathsf{Qis}/X^\bullet)^\circ\times Y^\bullet/\mathsf{Qis}}\hom_{\eK(\cA)}(-,-).
+\end{align*}
+\item 若 $X^\bullet\in\eK^-(\cA)$，则
+\[\ext^0(X^\bullet,Y^\bullet)\iso\varinjlim_{(\mathsf{Qis}^-/X^\bullet)^\circ}\hom_{\eK(\cA)}(-,Y^\bullet).\]
+若 $Y^\bullet\in\eK^+(\cA)$，则
+\[\ext^0(X^\bullet,Y^\bullet)\iso\varinjlim_{Y^\bullet/\mathsf{Qis}^+}\hom_{\eK(\cA)}(X^\bullet,-).\]
+\item 若 $X^\bullet\in\eK^-(\cA)$ 且 $Y^\bullet\in\eK^b(\cA)$，则
+\[\ext^0(X^\bullet,Y^\bullet)\iso\varinjlim_{Y^\bullet/\mathsf{Qis}^b}\hom_{\eK(\cA)}(X^\bullet,-).\]
+若 $X^\bullet\in\eK^b(\cA)$ 且 $Y^\bullet\in\eK^+(\cA)$，则
+\[\ext^0(X^\bullet,Y^\bullet)\iso\varinjlim_{(\mathsf{Qis}^b/X^\bullet)^\circ}\hom_{\eK(\cA)}(-,Y^\bullet).\]
+\item 若 $\cA$ 有足够多内射对象，且 $Y^\bullet\in\eK^+(\cA)$，则 $Y^\bullet$ 有唯一的内射消解（精确到 $\eK^+(\cA)$ 中的同构）
+\[Y^\bullet\longrightarrow I(Y^\bullet),\]
+且
+\[\ext^0(X^\bullet,Y^\bullet)\iso\hom_{\eK(\cA)}(X^\bullet,I(Y^\bullet)).\]
+投射对象有类似结论。
+\item 若 $\cA$ 有足够多内射对象，且\emph{上同调维数有限}，则每个 $Y^\bullet\in\eK(\cA)$ 都有唯一的内射消解
+\[Y^\bullet\longrightarrow I(Y^\bullet),\]
+且
+\[\ext^0(X^\bullet,Y^\bullet)\iso\hom_{\eK(\cA)}(X^\bullet,I(Y^\bullet)).\]
+投射对象有类似结论。
+\end{enumerate}
+\end{proposition}
+\paragraph{备注。}将命题 \ref{VIII:3-2-3}(3) 的同构具体写出，就得到 Yoneda 的定义。
+\section{导出函子}\label{VIII:4}
+\origpage{306}{300}
+\subsection{导出函子的定义}\label{VIII:4-1}
+\begin{definition}\label{VIII:4-1-1}
+设 $\cC,\cC'$ 为两个分次范畴，其平移函子均记为 $T$；$F,G:\cC\to\cC'$ 为分次函子。所谓\term{分次函子的态射}{morphism of graded functors}{morphisme de foncteurs gradués}，是函子态射 $u:F\to G$，且对每个 $X\in\cC$，下图交换：
+\[\xymatrix{F(TX)\ar[r]^-{u(TX)}&G(TX)\\TF(X)\ar[r]^-{Tu(X)}\ar[u]_-\wr&TG(X)\ar[u]_-\wr}.\]
+\end{definition}
+设 $\cC,\cC'$ 为两个三角范畴，用 $\mathsf{Fex}(\cC,\cC')$ 表示从 $\cC$ 到 $\cC'$ 的正合函子范畴，态射为分次函子之间的态射。
+
+设 $\cA,\cB$ 为两个阿贝尔范畴，$\Phi:\eK^\ast(\cA)\to\eK^{\ast'}(\cB)$ 为正合函子，其中 $\ast,\ast'$ 分别表示 $+$、$-$、$b$ 或空白标记 $v$ 中的一个。典范函子 $Q:\eK^\ast(\cA)\to\eD^\ast(\cA)$ 通过复合给出函子
+\[\mathsf{Fex}(\eD^\ast(\cA),\eD^{\ast'}(\cB))\longrightarrow
+\mathsf{Fex}(\eK^\ast(\cA),\eD^{\ast'}(\cB)).\]
+再以 $Q':\eK^{\ast'}(\cB)\to\eD^{\ast'}(\cB)$ 表示典范函子，便得到从 $\mathsf{Fex}(\eD^\ast(\cA),\eD^{\ast'}(\cB))$ 到 $\mathsf{Ab}$ 的函子 $\%$（分别为 $\%'$）：
+\begin{align*}
+\Psi&\longmapsto\hom(Q'\circ\Phi,\Psi\circ Q),\\
+\text{（分别为 }\Psi&\longmapsto\hom(\Psi\circ Q,Q'\circ\Phi)\text{）。}
+\end{align*}
+\begin{definition}\label{VIII:4-1-2}
+若函子 $\%$（分别为 $\%'$）可表，就称 $\Phi$ 有\term{右全导出函子}{total right derived functor}{foncteur dérivé total à droite}（分别为左全导出函子）。代表此函子的对象称为 $\Phi$ 的右全导出函子（分别为左全导出函子），记为 $\eR\Phi$（分别为 $\eL\Phi$）。\footnote{\cite[XVII 1.2]{sga4} 给出了一个更便于使用、且实际等价的定义。}
+\end{definition}
+\subsubsection{记号}\label{VIII:4-1-3}
+设 $\cA,\cB$ 为阿贝尔范畴，$f:\cA\to\cB$ 为加性函子。函子 $\eK^+(f):\eK^+(\cA)\to\eK^+(\cB)$ 的右全导出函子记为 $\eR^+f$。类似地定义 $\eR^-f$、$\eR f$、$\eL^+f$、$\eL^-f$、$\eL f$。
+
+同样，设 $F:\eK^\ast(\cA)\to\cB$ 为上同调函子。典范取商函子 $Q:\eK^\ast(\cA)\to\eD^\ast(\cA)$ 通过复合定义函子
+\[\mathsf{Foco}(\eD^\ast(\cA),\cB)\longrightarrow\mathsf{Foco}(\eK^\ast(\cA),\cB),\]
+这里 $\mathsf{Foco}(-,-)$ 表示上同调函子范畴。由此得到函子
+\[\%,\%':\mathsf{Foco}(\eD^\ast(\cA),\cB)\to\mathsf{Ab},\]
+分别由 $G\mapsto\hom(F,G\circ Q)$ 和 $G\mapsto\hom(G\circ Q,F)$ 给出。
+\begin{definition}\label{VIII:4-1-4}
+若函子 $\%$（分别为 $\%'$）可表，就称 $F$ 有\term{右上同调导出函子}{right cohomological derived functor}{foncteur dérivé cohomologique à droite}（分别为左上同调导出函子）。代表此函子的对象称为右上同调导出函子（分别为左上同调导出函子），记为 $\eR F$（分别为 $\eL F$）。
+\end{definition}
+\subsubsection{记号}\label{VIII:4-1-5}
+设 $f:\cA\to\cB$ 为阿贝尔范畴之间的加性函子。函子
+\[\h^0\circ\eK^+f:\eK^+(\cA)\to\cB\]
+的右上同调导出函子记为 $\eR^+f$。在不致混淆时，将 $\eR^+f\circ T^i$ 记为 $\eR^if$，其中 $T$ 为平移函子。函子 $\h^0\circ\eK f$ 的右上同调导出函子记为 $\eR f$，在不致混淆时也将 $\eR f\circ T^i$ 记为 $\eR^if$。类似地定义 $\eL^-f$、$\eL f$、$\eL^if$。
+\subsubsection{备注}\label{VIII:4-1-6}
+下一节将看到：当范畴有足够多内射或投射对象、复形的有界性又适当时，上述定义包含导出函子的经典定义。不过这些定义更一般，没有额外假设时并不便于使用。例如，设 $f:\cA\to\cB$ 为加性函子，假设 $\eR^+f$ 和 $\eR f$ 都存在，我不知道怎样证明 $\eR f$ 在 $\eD^+(\cA)$ 上诱导 $\eR^+f$。若再假设右上同调导出函子 $\eR^+f$ 存在，我也不知道怎样证明 $\h^0\circ\eR^+f$ 与它同构。不过实际应用中，这些性质都会成立。
+\subsection{导出函子的存在性}\label{VIII:4-2}
+\begin{proposition}\label{VIII:4-2-1}
+沿用定义 \ref{VIII:4-1-4} 的假设。再设 $\cA$ 为一个 $\sU$-范畴，其中 $\sU$ 是包含整数集 $\dZ$ 的一个宇宙，且 $\cA$ 的对象集合属于 $\sU$。还假设 $\cB$ 是 $\sU$-阿贝尔群范畴，或更一般地，是任意 $\sU$-景上 $\sU$-阿贝尔群层的范畴。（所谓 $\sU$-景，是对象集合属于 $\sU$、并赋有拓扑的 $\sU$-范畴。）则 $F$ 有右上同调导出函子，可按以下方式计算。
+
+设 $X\in\eD^\ast(\cA)$，$\underline X$ 为其上方的 $\eK^\ast(\cA)$ 的对象。则有函子同构
+\[\eR F(X)=\varinjlim_{\underline X/\mathsf{Qis}^\ast}F(-).\]
+\end{proposition}
+特别地，对加性函子 $f:\cA\to\cB$，函子 $\eR f$、$\eR^+f$ 存在，并按上述方法计算。$\eR f$ 在 $\eD^+(\cA)$ 上诱导 $\eR^+f$。因此此时使用 $\eR^if$ 的记号不会混淆。
+\subsubsection{备注}\label{VIII:4-2-2}
+命题 \ref{VIII:4-2-1} 可在三角范畴框架下推广。要使该命题成立，对 $\cB$ 所需的假设，是按对象集合属于 $\sU$ 的伪滤过 $\sU$-范畴取归纳极限的存在性与正合性。至少在实际应用中，这一命题使右导出函子和左导出函子之间出现了不对称。
+% 原著“备注2.2”与随后“定理2.2”共用编号。
+\setcounter{subsubsection}{1}
+\begin{theorem}\label{VIII:4-2-3}
+资料如定义 \ref{VIII:4-1-2}。再给定 $\eK^\ast(\cA)$ 的满三角子范畴 $\cC$，以 $\cN$ 表示其中无上同调对象组成的满三角子范畴。假设
+\begin{enumerate}[(1)]
+\item $\Phi$ 将 $\cN$ 的每个对象映为 $\eK^{\ast'}(\cB)$ 的无上同调对象；
+\item 对每个 $X\in\eK^\ast(\cA)$，存在以 $X$ 为起点（分别为终点）、以 $\cC$ 的对象为终点（分别为起点）的拟同构。
+\end{enumerate}
+则有以下结论。
+\begin{enumerate}[a)]
+\item $\Phi$ 有右全导出函子（分别为左全导出函子）。
+\item $\eR\Phi$（分别为 $\eL\Phi$）可如下构造：$Q'\circ\Phi$ 在 $\cC$ 上的限制将 $\cN$ 的对象映为零，因此经由 $\cC/\cN$ 分解，得到函子 $\Phi':\cC/\cN\to\eD^{\ast'}(\cB)$。而自然函子 $\cC/\cN\to\eD^\ast(\cA)$ 为范畴等价（定理 \ref{VIII:2-4-2}），将 $\Phi'$ 与其准逆复合，即得到 $\eR\Phi$（分别为 $\eL\Phi$）。
+\item 设 $X\in\eK^\ast(\cA)$，$Y\in\cC$，$X\to Y$（分别为 $Y\to X$）为拟同构。则 $\eR\Phi\circ Q(X)$（分别为 $\eL\Phi\circ Q(X)$）同构于 $Q'\circ\Phi(Y)$。
+\item 函子 $X\mapsto\eR\Phi\circ Q(X)$（分别为 $X\mapsto\eL\Phi\circ Q(X)$）同构于
+\[
+ X\longmapsto\varinjlim_{X/\mathsf{Qis}^\ast}Q'\circ\Phi(-)
+\]
+（分别为按 $\mathsf{Qis}^\ast/X$ 取的逆极限
+$X\mapsto\varprojlim_{\mathsf{Qis}^\ast/X}Q'\circ\Phi(-)$）。
+\item 函子 $\h^0\circ\Phi:\eK^\ast(\cA)\to\cB$ 有右上同调导出函子（分别为左上同调导出函子），且它就是 $\h^0\circ\eR\Phi$（分别为 $\h^0\circ\eL\Phi$）。
+\end{enumerate}
+\end{theorem}
+\begin{derivedcorollary}\label{VIII:4-2-3-1}
+在上个定理中，设 $\ast=+$（分别为 $\ast=-$），且 $\cA$ 有足够多内射对象（分别为投射对象）。则可取内射复形（分别为投射复形）范畴为 $\cC$，应用定理 \ref{VIII:4-2-3}。若 $\cA$ 的上同调维数还有限，则无需限制 $\ast$，仍可取内射复形（分别为投射复形）范畴为 $\cC$ 应用该定理。
+\end{derivedcorollary}
+\begin{definition}\label{VIII:4-2-5}
+设 $f:\cA\to\cB$ 为阿贝尔范畴之间的加性函子。若 $\eR^+f$（分别为 $\eL^-f$）存在，且存在整数 $m\geq0$，使对每个 $n>m$，函子 $\eR^nf$（分别为 $\eL^{-n}f$）在经由 $D$ 来自 $\cA$ 的对象上为零，则称 $f$ 的右（分别为左）上同调维数有限。满足该条件的最小整数 $m$，称为 $f$ 的右（分别为左）上同调维数。若相应导出函子存在，但不存在这样的 $m$，就称其上同调维数无穷。
+
+若对每个 $n>0$ 都有 $\eR^nf(D(X))=0$（分别为 $\eL^{-n}f(D(X))=0$），则称 $X\in\cA$ 为右（分别为左）\term{$f$-无上同调对象}{$f$-acyclic object}{objet $f$-acyclique}。
+\end{definition}
+\begin{derivedcorollary}\label{VIII:4-2-3-2}
+资料如定义 \ref{VIII:4-2-5}。假设存在在直和下稳定的 $\cA$ 的对象集合 $\sigma$，满足：
+\begin{enumerate}
+\item 由 $\sigma$ 中对象构成的每个无上同调复形 $\in\operatorname{Ob}\eK^+(\cA)$（分别为 $\in\operatorname{Ob}\eK^-(\cA)$），都被 $f$ 映为无上同调复形；
+\item $\cA$ 的每个对象都能嵌入 $\sigma$ 的一个对象（分别地，都为 $\sigma$ 的一个对象的商）。
+\end{enumerate}
+则令 $\ast=+$（分别为 $\ast=-$），取各次项均属于 $\sigma$ 的复形范畴为 $\cC$，即可满足定理 \ref{VIII:4-2-3} 的假设。$\sigma$ 的元素都是右（分别为左）$f$-无上同调对象。
+
+若 $f$ 的右（分别为左）上同调维数还有限，则所有右（分别为左）$f$-无上同调对象的集合，除满足上述 (1)、(2) 外，还满足命题 \ref{VIII:3-1-9} 的条件 (2)。于是取各次项均为右（分别为左）$f$-无上同调对象的复形范畴为 $\cC$，可将定理 \ref{VIII:4-2-3} 用于函子 $\eK f$。函子 $\eR f$（分别为 $\eL f$）存在，其在 $\eD^+(\cA)$ 上诱导 $\eR^+f$（分别为 $\eL^+f$），在 $\eD^-(\cA)$ 上诱导 $\eR^-f$（分别为 $\eL^-f$）。
+\end{derivedcorollary}
+\translatornote{原书定义仅要求正次数导出函子消失，未要求 $f(X)\to\eR^0f(D(X))$ 为同构。在这一明确约定下，最后一段关于全部 $f$-无上同调对象的断言，需要补充右导出时 $f$ 左正合、左导出时 $f$ 右正合的假设；仅有加性不足。反例为 $f=(-)\otimes_{\mathbb Z}\mathbb Z/2$，定义在阿贝尔群范畴上。内射阿贝尔群可除，故 $f$ 在内射对象上为零，从而 $\eR^+f=0$：右上同调维数为零，且每个对象按原定义都 $f$-无上同调。然而正合列 $0\to\mathbb Z\xrightarrow{2}\mathbb Z\to\mathbb Z/2\to0$ 经 $f$ 后不正合，所以这些对象不满足条件 (1)。若补充左正合，则 $\eR^0f=f$，可以用长正合列和维数平移证明所需的稳定性及有限长消解性质；左导出情形对偶。}
+\subsection{积与复合}\label{VIII:4-3}
+设 $\cA$ 为阿贝尔范畴，$F:\eD(\cA)\to\mathsf{Ab}$ 为上同调函子，$X^\bullet,Y^\bullet\in\eC(\cA)$。$F$ 给出映射
+\[
+\ext^0(X^\bullet,Y^\bullet)\longrightarrow
+\hom_{\mathsf{Ab}}(F(D(X^\bullet)),F(D(Y^\bullet))),
+\]
+从而得到配对
+\[F(D(X^\bullet))\times\ext^0(X^\bullet,Y^\bullet)\longrightarrow F(D(Y^\bullet)).\]
+施加平移后，得到配对
+\[F^i(D(X^\bullet))\times\ext^j(X^\bullet,Y^\bullet)\longrightarrow F^{i+j}(D(Y^\bullet)).\]
+按定义，将这些配对用于上同调导出函子，就得到 \term{Yoneda积}{Yoneda product}{produit de Yoneda}。其性质可从此定义立即推出，这里不再展开。
+
+设 $\cA,\cA',\cA''$ 为三个阿贝尔范畴，$f:\cA\to\cA'$、$g:\cA'\to\cA''$ 为加性函子。假设 $\eR^+f$、$\eR^+g$ 存在。我不知道能否由此推出 $\eR^+(g\circ f)$ 存在；即使后者存在，以下公式一般也很可能不成立：
+\[\eR^+(g\circ f)\iso\eR^+g\circ\eR^+f.\]
+不过有以下命题。
+\begin{proposition}\label{VIII:4-3-1}
+假设 $\cA'$ 有足够多右 $g$-无上同调对象，$\cA$ 有足够多被 $f$ 映为右 $g$-无上同调对象的右 $f$-无上同调对象。则函子 $\eR^+(g\circ f)$ 存在，且有同构
+\[\eR^+(g\circ f)\iso\eR^+g\circ\eR^+f.\]
+\end{proposition}
+左导出函子有类似结论。
+\section{例子}\label{VIII:6}
+\origpage{315}{309}
+\subsection{函子 $\mathsf{Rhom}^\bullet$}\label{VIII:6-1}
+设 $\cA$ 为有足够多内射对象的阿贝尔范畴。
+
+若 $X^\bullet\in\eK(\cA)$、$Y^\bullet\in\eK^+(\cA)$，则函子 $Y^\bullet\mapsto\hom^\bullet(X^\bullet,Y^\bullet)$（\ref{VIII:1-3}）有右全导出函子（推论 \ref{VIII:4-2-3-1}），记为 $\rhom^\bullet(X^\bullet,-)$。
+对每个 $Y\in\eD^+(\cA)$，函子
+\begin{align*}
+\eK(\cA)&\to\eD(\mathsf{Ab}),\\
+X^\bullet&\mapsto\rhom^\bullet(X^\bullet,Y)
+\end{align*}
+正合，并在无上同调复形上为零，因此得到正合双函子
+\[\eD(\cA)^\circ\times\eD^+(\cA)\longrightarrow\eD(\mathsf{Ab}),\]
+记为 $\mathsf{Rhom}^\bullet$。
+
+当 $\cA$ 的上同调维数有限时，函子 $\mathsf{Rhom}^\bullet$ 可延拓到 $\eD(\cA)^\circ\times\eD(\cA)$（同上）。若 $\cA$ 还有足够多投射对象，也可对 $\hom$ 的第一个变量取导出函子。两种定义在共同的适用范围内一致。
+\subsection{层的 $\Tor$}\label{VIII:6-2}
+设 $E$ 为\term{赋环景}{ringed site}{site annelé}（特别地，可以是赋环拓扑空间），$\sA$ 为其环层，$\mathsf{Mod}(E)$ 为 $\sA$-模范畴。称对象 $X\in\mathsf{Mod}(E)$ 为 $\sA$-\term{平坦}{flat}{plat}的，若每个短正合列
+\[\xymatrix{0\ar[r]&Y'\ar[r]&Y\ar[r]&Y''\ar[r]&0}\]
+都给出正合列
+\[0\to Y'\otimes_\sA X\to Y\otimes_\sA X\to Y''\otimes_\sA X\to0.\]
+有足够多 $\sA$-平坦对象，例如对象 $\sA_U$ 的直和；其中 $U\in E$，$\sA_U$ 是将 $\sA$“在 $U$ 外作零延拓”得到的层。因此可应用定理 \ref{VIII:4-2-3}，定义函子
+\begin{align*}
+\eD^-(E,\sA)\times\eD^-(E,\sA)&\to\eD^-(E,\sA),\\
+(X,Y)&\mapsto X\lotimes Y,
+\end{align*}
+称为\term{全导出张量积}{derived tensor product}{produit tensoriel total dérivé}，它是张量积函子的左全导出函子。取上同调便定义出 $\Tor_i^\sA(X,Y)$，即局部超 Tor。
+
+$\mathsf{Mod}(E)$ 有足够多内射对象，因此可以对局部同态构成的复形 $\hom^\bullet(X,Y)$ 取导出函子，得到 $\mathsf{Rhom}(X,Y)$（$X\in\eD$、$Y\in\eD^+$）。
+
+设 $X,Y\in\eD^-(E,\sA)$、$Z\in\eD^+(E,\sA)$，则存在函子同构
+\[
+\hom_{\eD(E,\sA)}(X\lotimes Y,Z)
+\iso\hom_{\eD(E,\sA)}(X,\mathsf{Rhom}(Y,Z)).
+\]
+\subsection{逆像函子的左导出函子}\label{VIII:6-3}
+\origpage{317}{311}
+设 $f:E\to E'$ 是赋环拓扑空间的映射。逆像函子
+\[f^\ast:\mathsf{Mod}(E')\to\mathsf{Mod}(E)\]
+不一定正合。不过可以定义 $f^\ast$-平坦对象，且有足够多这样的对象。因此可以定义函子 $\eL^-f^\ast$。同样有以下对偶公式。
+
+设 $X\in\eD^-(E',\sA')$、$Y\in\eD^+(E,\sA)$，则有函子同构
+\[
+\hom_{\eD(E,\sA)}(\eL^-f^\ast(X),Y)
+\iso\hom_{\eD(E',\sA')}(X,\eR^+f_\ast(Y)).
+\]
+\translatornote{原书最后一句及公式将 $E$ 与 $E'$ 对调。由于 $f^\ast$ 的定义域为 $\mathsf{Mod}(E')$、值域为 $\mathsf{Mod}(E)$，而 $f_\ast$ 的方向相反，原式甚至不能配型。这里按这两个函子的定义域和值域修正；所得公式正是导出拉回与导出推前的伴随关系。取 $X$ 的有界上方平坦消解、$Y$ 的有界下方内射消解，将通常的 $f^\ast\dashv f_\ast$ 伴随用于相应 Hom 复形，即得到此同构。}
+
+\endgroup

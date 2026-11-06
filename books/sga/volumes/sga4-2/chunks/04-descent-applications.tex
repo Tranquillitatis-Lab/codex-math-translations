@@ -1,0 +1,981 @@
+% 第 Vbis 讲，第 3—5 节及参考文献；原 PDF 第 96—124 页。
+\SourcePage{96}
+\SGAsection{3}{下降判别准则}
+\textbf{3.0. 记号。} 以下始终沿用 (2.4) 的记号。总假定 $B$ 中的\Term{finite}{有限}\Term{fiber-product}{纤维积}均\Term{representable}{可表}。
+此外，假定 $B$ 满足下述条件：
+
+\textbf{3.0.0.} $B$ 中的\Term{direct-sum}{直和}存在，是不交的、\Term{universal}{普遍的}，并且构成 $E$-\Term{effective-descent}{有效下降}族和 $G^\circ$-\Term{effective-descent}{有效下降}族〔参见 [4] (9.23)、(9.25) 和 (9.27)〕。
+
+\textbf{3.0.1.} 先回顾\Term{category}{范畴}的\Term{semisimplicial-object}{半单纯对象}的一些经典记号〔参见 [3] 第 II 章及第 V 讲附录〕。
+设 $E$ 是一个具有\Term{finite}{有限}\Term{projective-limit}{投射极限}的\Term{category}{范畴}，以 $\Delta^\circ E$ 表示 $E$ 的\Term{semisimplicial-object}{半单纯对象}\Term{category}{范畴}〔参见 (1.2.6)〕。
+设 $n$ 为整数：以 $\Delta_n$（分别以 $\Delta_n^+$、$\Delta_n^-$）表示 $\Delta$（分别为 $\Delta^+$、$\Delta^-$）中由满足 $p\leq n$ 的\Term{object}{对象} $[p]$ 组成的\Term{full-subcategory}{满子范畴}。
+\Term{restriction-functor}{限制函子}
+\[
+i_n^*:\Delta^\circ E\longrightarrow\Delta_n^\circ E \tag{3.0.1.1}
+\]
+具有\Term{right-adjoint}{右伴随} $i_{n*}$，因为 $E$ 中存在\Term{finite}{有限}\Term{projective-limit}{投射极限}〔参见 (1.2.10)〕。记 $i_{n*}\circ i_n^*$ 为 $\operatorname{cosk}_n$，称为 $n$ 阶\Term{coskeleton}{余骨架函子}；滥用记号，也以 $\operatorname{cosk}_n$ 表示\Term{functor}{函子} $i_{n*}$。
+
+\SourcePage{97}
+对每个整数 $p$，以 $\Delta_{n[p]}$（分别以 $\Delta^+_{n[p]}$）表示 $\Delta_{[p]}$（分别为 $\Delta^+_{[p]}$）的\Term{full-subcategory}{满子范畴}：后者是 $\Delta$（分别为 $\Delta^+$）中位于 $[p]$ 之上的\Term{object}{对象}\Term{category}{范畴}，而所取的\Term{object}{对象}为满足 $q\leq n$ 的 $[p]$ 上\Term{object}{对象} $[q]$。下式的验证留给读者：
+\[
+(\operatorname{cosk}_n(X))_p=\varprojlim_{\Delta_{n[p]}}X_q
+ \xrightarrow{\sim}\varprojlim_{\Delta^+_{n[p]}}X_q. \tag{3.0.1.2}
+\]
+\textbf{3.0.2.} 设 $X,X'$ 为 $\Delta^\circ E$ 的两个\Term{object}{对象}，$f,g:X\rightrightarrows X'$ 为两个\Term{morphism}{态射}。一个从 $f$ 到 $g$ 的\Term{homotopy}{同伦}，是对每个 $n$ 给定一个映射
+\[
+h_n:\operatorname{Hom}_\Delta([n],[1])\longrightarrow\operatorname{Hom}_E(X_n,X'_n),
+\]
+并满足以下两个条件：
+\[
+h_n(\partial^1)=f_n,\qquad h_n(\partial^0)=g_n\quad\text{对所有 }n. \tag{3.0.2.1}
+\]
+\textbf{3.0.2.2.} 对 $\Delta$ 中每个\Term{arrow}{箭头} $[n]\to[p]$，下图交换：
+\[
+\begin{tikzcd}[column sep=small]
+\operatorname{Hom}_\Delta([p],[1])\arrow[r]\arrow[dd]&\operatorname{Hom}_E(X_p,X'_p)\arrow[dr]&\\
+&&\operatorname{Hom}_E(X_p,X'_p)\\
+\operatorname{Hom}_\Delta([n],[1])\arrow[r]&\operatorname{Hom}_E(X_n,X'_n)\arrow[ur]&
+\end{tikzcd}
+\]
+注意：这样在从 $X$ 到 $X'$ 的\Term{morphism}{态射}\Term{set}{集合}上引入的关系并不是\Term{equivalence-relation}{等价关系}；引入\Term{composite-homotopy}{复合同伦}的概念可以弥补这一缺点〔参见 [3] 第 III 章〕；我们不使用后一概念。
+
+\begin{SGAresult}{引理}{3.0.2.3}
+设 $X,X'$ 是 $\Delta^\circ E$ 的两个\Term{object}{对象}，$f,g:X\rightrightarrows X'$ 是两个\Term{morphism}{态射}，$F:E\to C$ 是一个\Term{functor}{函子}，其中 $C$ 是\Term{abelian-category}{阿贝尔范畴}。从 $f$ 到 $g$ 的\Term{simplicial-homotopy}{单纯同伦}在\Term{canonical}{典范}对应于 $F(f)$ 和 $F(g)$ 的\Term{cochain-complex}{上链复形}\Term{morphism}{态射}之间诱导一个\Term{homotopy}{同伦}。
+\end{SGAresult}
+\begin{proof}
+归结到 $C$ 是某个环上的模\Term{category}{范畴}的情形，然后应用 [[5] I (3.7.1)]。
+\end{proof}
+\begin{SGAresult}{引理}{3.0.2.4}
+设 $n$ 为整数，$X,X'$ 是 $\Delta^\circ E$ 的两个\Term{object}{对象}。设 $f,g$ 是从 $X$ 到 $X'$ 的两个\Term{morphism}{态射}，且当 $p<n$ 时 $f_p=g_p$。则存在从 $\operatorname{cosk}_n(f)$ 到 $\operatorname{cosk}_n(g)$ 的\Term{simplicial-homotopy}{单纯同伦}。
+\end{SGAresult}
+\begin{proof}
+对 $p<n$，将 $h_p:\operatorname{Hom}_\Delta([p],[1])\to\operatorname{Hom}(X_p,X'_p)$ 定义为取值 $f_p=g_p$ 的\Term{constant-map}{常映射}；再定义 $h_n:\operatorname{Hom}_\Delta([n],[1])\to\operatorname{Hom}(X_n,X'_n)$，使它把除 $\partial^0$ 以外的所有元素送到 $f_n$，而把 $\partial^0$ 送到 $g_n$。
+\SourcePage{98}
+然后注意，对于 $k>n$，有
+\[
+\operatorname{Hom}_\Delta([k],[1])=
+\varprojlim_{\substack{[q]\to[k]\\q\geq n}}\operatorname{Hom}([q],[1]),
+\]
+由此可\Term{canonical}{典范}地定义 $h_k$。
+\end{proof}
+
+\textbf{3.1. 从 1-\Term{cohomological-descent}{上同调下降}的观点比较两个\Term{augmentation}{增广}。}
+设 $S$ 是 $B$ 的\Term{object}{对象}：以 $\mathcal{H}om_{\mathrm{plat}}(D^\circ,B/S)$ 表示 $\mathcal{H}om(D^\circ,B/S)$ 中由\Term{flat-augmentation}{平坦增广}组成的\Term{full-subcategory}{满子范畴}〔参见 (1.2.6) 及 (2.4.3.1)〕。
+\begin{SGAresult}{命题}{3.1.1}
+设 $X\xrightarrow{u}C_S^D$ 和 $X'\xrightarrow{u'}C_S^D$ 是 $\mathcal{H}om_{\mathrm{plat}}(D^\circ,B/S)$ 的两个\Term{object}{对象}。设 $f:X\to X'$ 是 $S$ 上的\Term{morphism}{态射}（即 $\mathcal{H}om(D^\circ,B/S)$ 的\Term{morphism}{态射}）。它自然对应于一个\Term{natural-transformation}{函子态射}
+\[
+\eta_G^f:R_G^+\bar u'_*\circ L_G^+\bar u'^*
+\longrightarrow R_G^+\bar u_*\circ L^+\bar u^*,
+\]
+使下图交换：
+\[
+\begin{tikzcd}
+& R_G^+\bar u'_*\circ L_G^+\bar u'^*\arrow[dd,"\eta_G^f"]\\
+1_{D^+_{G_S}(S)}\arrow[ur]\arrow[dr]&\\
+& R_G^+\bar u_*\circ L_G^+\bar u^* .
+\end{tikzcd}
+\]
+此外，若 $D=\Delta$，则 $\eta_G^f$ 只依赖于 $f$ 在 $\mathcal{H}om(\Delta^\circ,B/S)$ 中的\Term{homotopy-class}{同伦类}〔参见 (3.0.2)〕。
+\end{SGAresult}
+\begin{proof}
+显然，为构造 $\eta_G^f$，可以假定 $G=\operatorname{Mod}(E^\circ,O)$。
+设 $I$ 为由如下图式类型定义的\Term{category}{范畴}：
+\[
+\overset{0}{x}\longrightarrow\overset{1}{x}. \tag{3.1.1.1}
+\]
+以 $r_0:D\to I\times D$（分别以 $r_1$）表示由 $r_0(i)=(0,i)$（分别为 $r_1(i)=(1,i)$）定义的\Term{fully-faithful-functor}{全忠实函子}。
+由\Term{canonical}{典范}\Term{isomorphism}{同构}
+\[
+\mathcal{H}om((I\times D)^\circ,B/S)\xrightarrow{\sim}
+\mathcal{H}om(I^\circ,\mathcal{H}om(D^\circ,B/S)), \tag{3.1.1.2}
+\]
+(3.1.1) 中的数据定义一个\Term{flat-augmentation}{平坦增广}
+\[
+XfX'\xrightarrow{ufu'}C_S^{I\times D}. \tag{3.1.1.3}
+\]
+\SourcePage{99}
+设 $F$ 为 $\operatorname{Mod}(E_S^\circ,O_S)$ 的\Term{object}{对象}，\Term{canonical}{典范}\Term{morphism}{态射}
+\[
+\varepsilon_{I\times D}^*(F)\longrightarrow
+\Gamma((ufu')_*)\circ\Gamma((ufu')^*)(\varepsilon_{I\times D}^*(F)) \tag{3.1.1.4}
+\]
+可以解释为 $\operatorname{Mod}((\overline{C_S^D})^\circ,O)$ 中的一个交换三角形：
+\[
+\begin{tikzcd}
+&\Gamma(u'_*)\circ\Gamma(u'^*)(\varepsilon_D^*(F))\arrow[dd]\\
+\varepsilon_D^*(F)\arrow[ur]\arrow[dr]&\\
+&\Gamma(u_*)\circ\Gamma(u^*)(\varepsilon_D^*(F)).
+\end{tikzcd}\tag{3.1.1.5}
+\]
+因而得到\Term{natural-transformation}{函子态射}
+$\bar u'_*\circ\bar u'^*\xrightarrow{\alpha_f}\bar u_*\circ\bar u^*$，使图
+\[
+\begin{tikzcd}
+&\bar u'_*\circ\bar u'^*\arrow[dd,"\alpha_f"]\\
+1_{\operatorname{Mod}(E_S^\circ,O_S)}\arrow[ur]\arrow[dr]&\\
+&\bar u_*\circ\bar u^*
+\end{tikzcd}\tag{3.1.1.6}
+\]
+交换。于是得到一个\Term{natural-transformation}{函子态射}，使图
+\[
+\begin{tikzcd}
+&K^+(\bar u'_*)\circ K^+(\bar u'^*)\arrow[dd,"K^+(\alpha_f)"]\\
+1_{K^+(E_S^\circ,O_S)}\arrow[ur]\arrow[dr]&\\
+&K^+(\bar u_*)\circ K^+(\bar u^*)
+\end{tikzcd}\tag{3.1.1.7}
+\]
+交换。
+\SourcePage{100}
+（注意，利用\Term{isomorphism}{同构} $K^+(\Gamma(f^*))\circ K^+(\bar u'^*)\xrightarrow{\sim}K^+(\bar u^*)$，也可以通过\Term{adjunction}{伴随}形式地得到 $K^+(\alpha_f)$。）
+设 $F^\bullet$ 为 $K^+(S)$ 的\Term{complex}{复形}，$\xi:K^+((ufu')^*)(F^\bullet)\to J^\bullet$ 为\Term{quasi-isomorphism}{拟同构}，使得对每个整数 $n$，$J^n$ 都逐\Term{object}{对象}\Term{totally-acyclic}{完全无上同调}〔参见 (1.3.13)〕。根据该处，\Term{canonical}{典范}\Term{arrow}{箭头}
+\[
+K^+(\bar u'^*)(F^\bullet)\longrightarrow r_1^*(J^\bullet),\qquad
+K^+(\bar u^*)(F^\bullet)\longrightarrow r_0^*(J^\bullet)
+\]
+是\Term{quasi-isomorphism}{拟同构}〔记号参见 (1.2.8)〕。于是得到\Term{morphism}{态射}
+\[
+R^+\bar u'_*\circ L^+\bar u'^*(F^\bullet)
+\xrightarrow{\eta^f(F^\bullet)}R^+\bar u_*\circ L^+\bar u^*(F^\bullet),
+\]
+使下图在 $D^+(S)$ 中交换：
+\[
+\resizebox{\textwidth}{!}{\begin{tikzcd}[ampersand replacement=\&,column sep=small,row sep=large]
+\&QK^+(\bar u'_*)(r_0^*J^\bullet)\arrow[rr,"\sim"]\arrow[dd]\&\&R^+\bar u'_*Q(r_0^*J^\bullet)\arrow[dd]\\
+QK^+(\bar u'_*)K^+(\bar u'^*)(F^\bullet)\arrow[ur]\arrow[rr]\arrow[dd,"Q(K^+(\alpha_f)(F^\bullet))"']\&\&R^+\bar u'_*L^+\bar u'^*(F^\bullet)\arrow[ur,"\sim"']\arrow[dd,dashed,"\eta^f(F^\bullet)"]\&\\
+\&QK^+(\bar u_*)(r_1^*J^\bullet)\arrow[rr,"\sim"]\&\&R^+\bar u_*Q(r_1^*J^\bullet)\\
+QK^+(\bar u_*)K^+(\bar u^*)(F^\bullet)\arrow[ur]\arrow[rr]\&\&R^+\bar u_*L^+\bar u^*(F^\bullet)\arrow[ur,"\sim"']\&
+\end{tikzcd}}\tag{3.1.1.8}
+\]
+显然，$\eta^f(F^\bullet)$ 与所选\Term{resolution}{解消}无关，并且可验证，当 $F^\bullet$ 在 $D^+(S)$ 中变化时，它关于 $F^\bullet$ 是\Term{functoriality}{函子性的}。
+为完成 (3.1.1) 的证明，只须证明下述引理。
+\end{proof}
+\begin{SGAresult}{引理}{3.1.1.9}
+设 $X\xrightarrow{u}C_S^\Delta$ 和 $X'\xrightarrow{u'}C_S^\Delta$ 为 $\mathcal{H}om_{\mathrm{plat}}(\Delta^\circ,B/S)$ 的两个\Term{object}{对象}。设 $f,g:X\to X'$ 为 $\mathcal{H}om(\Delta^\circ,B/S)$ 中的两个\Term{morphism}{态射}。若存在从 $f$ 到 $g$ 的\Term{simplicial-homotopy}{单纯同伦}，则 $\eta^f=\eta^g$。
+\end{SGAresult}
+\begin{proof}
+设 $h_n:\operatorname{Hom}_\Delta([n],[1])\to\operatorname{Hom}_{B/S}(X_n,X'_n)$ 为从 $f$ 到 $g$ 的\Term{simplicial-homotopy}{单纯同伦}。设 $\overline{I\times D}$ 为由 $I\times D$ 添加与 $h_n(\operatorname{Hom}([n],[1]))$ \Term{bijective}{双射}对应的\Term{arrow}{箭头} $(1,n)\to(0,n)$，以及 $h_n$ 对变化的 $n$ 的相容性所要求的关系而得到的\Term{category}{范畴}。引理的数据定义一个\Term{flat-augmentation}{平坦增广} $XfX'\xrightarrow{t}C_S^{\overline{I\times D}}$。设 $F^\bullet$ 为 $C^+(S)$ 的\Term{complex}{复形}，$J^\bullet$ 为 $C^+(t^*)(F^\bullet)$ 的一个\Term{resolution}{解消}，使得对于每个整数 $n$，$J^n$ 都逐\Term{object}{对象}\Term{totally-acyclic}{完全无上同调}。则存在
+\SourcePage{101}
+\[
+C^+(\Gamma(u'_*))(r_0^*J^\bullet)\rightrightarrows
+C^+(\Gamma(u_*))(r_1^+J^\bullet)
+\]
+之间的\Term{simplicial-homotopy}{单纯同伦}，从而在转到“凝缩”\Term{complex}{复形}时得到\Term{homotopy}{同伦}〔参见 (3.0.2.3)〕。
+\end{proof}
+\begin{SGAresult}{定义}{3.1.2}
+沿用 (3.1.1) 的记号，若 $\eta_G^f$ 为\Term{isomorphism}{同构}，就称 $f$ 为 $G$-1-\Term{cohomological-descent}{上同调下降}的\Term{equivalence}{等价}。
+\end{SGAresult}
+\textbf{3.1.3.} 以下以 $L_i:\Delta\to\Delta\times\Delta$（分别以 $c_i:\Delta\to\Delta\times\Delta$）表示由 $[n]\mapsto[n]\times[i]$（分别为 $[n]\mapsto[i]\times[n]$）定义的\Term{canonical}{典范}\Term{functor}{函子}。
+\begin{SGAresult}{命题}{3.1.4}
+设 $X\xrightarrow{u}C_S^{\Delta\times\Delta}$ 和 $X'\xrightarrow{u'}C_S^{\Delta\times\Delta}$ 为 $\mathcal{H}om_{\mathrm{plat}}((\Delta\times\Delta)^\circ,B/S)$ 的两个\Term{object}{对象}。设 $f:X\to X'$ 为 $S$ 上的\Term{morphism}{态射}。假定对每个整数 $i$，$f*\operatorname{id}_{L_i}:X\circ L_i\to X'\circ L_i$（分别为 $f*\operatorname{id}_{c_i}:X\circ c_i\to X'\circ c_i$）都是 $G$-1-\Term{cohomological-descent}{上同调下降}的\Term{equivalence}{等价}。则 $f$ 为 $G$-1-\Term{cohomological-descent}{上同调下降}的\Term{equivalence}{等价}。
+\end{SGAresult}
+\begin{proof}
+由 $\eta^f$ 的描述〔参见 (3.1.1) 的证明〕，只须证明某个三重\Term{complex}{复形}的\Term{morphism}{态射}在凝缩\Term{complex}{复形}的\Term{cohomology}{上同调}上诱导\Term{isomorphism}{同构}；一个标准的\Term{spectral-sequence}{谱序列}论证即可得出结论。
+\end{proof}
+\begin{SGAresult}{命题}{3.1.5}
+设 $X,X'$ 是 $\mathcal{H}om_{\mathrm{plat}}(\Delta^\circ,B/S)$ 的两个\Term{object}{对象}，$f:X\to X'$ 是一个\Term{natural-transformation}{函子态射}，使得 $f_n:X_n\to X'_n$ 是 $G$-1-\Term{cohomological-descent}{上同调下降}\Term{morphism}{态射}。则\Term{canonical}{典范}\Term{morphism}{态射} $[[X|_fX']]\to[[X'|_{\mathrm{id}}X']]$〔参见 (1.2.7)〕是 $G$-1-\Term{cohomological-descent}{上同调下降}的\Term{equivalence}{等价}。
+\end{SGAresult}
+\begin{proof}
+由 (3.1.4) 及下述引理得出；引理的证明留给读者。
+\end{proof}
+\begin{SGAresult}{引理}{3.1.5.1}
+设 $f:R\to S$ 为\Term{flat-morphism}{平坦态射}，$Y\xrightarrow{u}C_S^\Delta$ 和 $Y\xrightarrow{v}C_R^\Delta$ 为两个\Term{flat-augmentation}{平坦增广}，使下图在 $\mathcal{H}om(\Delta^\circ,B)$ 中交换：
+\[
+\begin{tikzcd}
+Y\arrow[rr,"v"]\arrow[dr,"u"']&&C_R^\Delta\arrow[dl,"f"]\\
+&C_S^\Delta&
+\end{tikzcd}
+\]
+若 $v$ 是 $G$-1-\Term{cohomological-descent}{上同调下降}\Term{augmentation}{增广}，则它是 $G$-1-\Term{cohomological-descent}{上同调下降}的\Term{equivalence}{等价}。
+\end{SGAresult}
+在应用中，我们将把 (3.1.4)、(3.1.5) 与下述结果结合使用。
+\SourcePage{102}
+\begin{SGAresult}{命题}{3.1.6}
+设 $X\xrightarrow{u}C_S^{\Delta\times\Delta}$ 为\Term{flat-augmentation}{平坦增广}。要使 $u$ 为 $G$-1-\Term{cohomological-descent}{上同调下降}\Term{augmentation}{增广}，只须对于每个整数 $i$，$X\circ L_i\xrightarrow{u*\operatorname{id}_{L_i}}C_S^\Delta$（分别为 $X\circ c_i\xrightarrow{u*\operatorname{id}_{c_i}}C_S^\Delta$）具有此性质。
+\end{SGAresult}
+\begin{proof}
+这由 $R_G^+\bar u_*$ 的显式构造得出〔参见 (2.3.10)〕。
+\end{proof}
+\begin{SGAresult}{推论}{3.1.7}
+设 $X\xrightarrow{u}C_S^\Delta$ 为\Term{augmentation}{增广}。$u$ 为 $G$-1-\Term{cohomological-descent}{上同调下降}的充要条件是 $[[X|_{\mathrm{id}}X]]\to C_S^{\Delta\times\Delta}$ 具有此性质。
+\end{SGAresult}
+
+\textbf{3.2. \Term{localization}{局部化}判别准则。}
+\begin{SGAresult}{命题}{3.2.1}
+设 $Y\xrightarrow{v}C_S^\Delta$ 为 $G$-1-\Term{cohomological-descent}{上同调下降}\Term{augmentation}{增广}。要使一个\Term{flat-augmentation}{平坦增广} $X\xrightarrow{u}C_S^\Delta$ 为 $G$-1-\Term{cohomological-descent}{上同调下降}的，只须它在所有\Term{base-change}{基变换} $Y_n\to S$ 后具有此性质。
+\end{SGAresult}
+\begin{proof}
+借助\Term{base-change}{基变换} $Y_n\to S$，构造向 $S$ \Term{augmentation}{增广}的双\Term{semisimplicial-object}{半单纯对象} $X\times_S Y$。由 (3.1.4) 和 (3.1.5.1)，\Term{canonical}{典范}\Term{morphism}{态射} $X\times_S Y\to[[X|_{\mathrm{id}}X]]$ 是 $G$-1-\Term{cohomological-descent}{上同调下降}的\Term{equivalence}{等价}；由 (3.1.7)，只须证明 $X\times_S Y$ 到 $S$ 的\Term{augmentation}{增广}为 $G$-1-\Term{cohomological-descent}{上同调下降}的。这由\Term{canonical}{典范}\Term{morphism}{态射} $X\times_S Y\to[[Y|_{\mathrm{id}}Y]]$ 为 $G$-1-\Term{cohomological-descent}{上同调下降}的\Term{equivalence}{等价}得出：再次使用 (3.1.4)、(3.1.5.1) 及 (3.1.7)。
+\end{proof}
+\textbf{3.2.2.} 设
+\[
+\begin{tikzcd}
+Y'\arrow[r,"g'"]\arrow[d,"f'"']&Y\arrow[d,"f"]\\
+X'\arrow[r,"g"']&X
+\end{tikzcd}\tag{3.2.2.1}
+\]
+为 $B$ 中的\Term{commutative-diagram}{交换图}，$F$ 为 $\operatorname{Mod}(E_S^\circ,O_S)$ 的\Term{object}{对象}。存在唯一的\Term{morphism}{态射}
+$\varphi(F):g_*(f^*(F))\to f'^*(g'_*(F))$，使下图（在 $\operatorname{Mod}(E^\circ,O)$ 中）交换：
+\SourcePage{103}
+\[
+\begin{tikzcd}
+&f^*(F)\arrow[r]\arrow[dl]&F\arrow[d]\\
+g_*(f^*(F))\arrow[dr]&&g'_*(F)\\
+&f'^*(g'_*(F))\arrow[ur]&
+\end{tikzcd}\tag{3.2.2.2}
+\]
+若再假定 (3.2.2.1) 中所有\Term{arrow}{箭头}均\Term{flat-morphism}{平坦}，则以同样方式定义一个称为\Term{base-change-morphism}{基变换态射}的\Term{morphism}{态射}：
+\[
+\xi_G:L_G^+g_*\circ R_G^+f^*\longrightarrow
+R_G^+f'^*\circ L_G^+g'_* . \tag{3.2.2.3}
+\]
+\begin{SGAresult}{定义}{3.2.2.4}
+若 $f,g,f',g'$ 均为\Term{flat-morphism}{平坦态射}且 $\xi_G$ 为\Term{isomorphism}{同构}，则称图 (3.2.2.1) 对 $G$ 满足\Term{base-change-theorem}{基变换定理}。
+\end{SGAresult}
+\textbf{3.2.3.} 设 $h:S\to S'$ 是 $B$ 中的\Term{flat-morphism}{平坦态射}，$X\xrightarrow{u}C_S^\Delta$ 和 $X'\xrightarrow{u'}C_{S'}^\Delta$ 为两个\Term{flat-augmentation}{平坦增广}。设 $f:X\to X'$ 为\Term{natural-transformation}{函子态射}，使图（在 $\mathcal{H}om(\Delta^\circ,B)$ 中）
+\[
+\begin{tikzcd}
+X\arrow[r,"f"]\arrow[d,"u"']&X'\arrow[d,"u'"]\\
+C_S^\Delta\arrow[r,"h_c"']&C_{S'}^\Delta
+\end{tikzcd}\tag{3.2.3.1}
+\]
+交换（$h_c$ 表示由 $h$ 定义的常\Term{natural-transformation}{函子态射}）。
+设 $K^\bullet$ 为 $D^+(S')$ 的\Term{complex}{复形}。\Term{morphism}{态射}
+\[
+\eta_G^f(K^\bullet):R^+\bar u'_*L^+\bar u'^*(K^\bullet)
+\longrightarrow R^+\overline{(h_c\circ u)}_*L^+\overline{(h_c\circ u)}^*(K^\bullet)
+\]
+结合恒等式
+\[
+R^+\overline{(h_c\circ u)}_*\simeq R^+h^*\circ R^+\bar u_*,\qquad
+L^+\overline{(h_c\circ u)}^*\simeq L^+(\bar u^*)\circ L^+h_*,
+\]
+\SourcePage{104}
+诱\Term{derivation}{导出}关于 $K^\bullet$ \Term{functoriality}{函子性的}\Term{morphism}{态射} $\operatorname{ch}_G^{f,h}(K^\bullet)$，使下图交换：
+\[
+\resizebox{\textwidth}{!}{\begin{tikzcd}[ampersand replacement=\&,column sep=small]
+L_G^+h_*R_G^+\bar u'_*L_G^+\bar u'^*(K^\bullet)\arrow[rr,"{\operatorname{ch}_G^{f,h}(K^\bullet)}"]\&\&R_G^+\bar u_*L_G^+\bar u^*L_G^+h_*(K^\bullet)\\
+\&L_G^+h_*(K^\bullet)\arrow[ul,"L_G^+h_*(\alpha(K^\bullet))"]\arrow[ur]\&
+\end{tikzcd}}\tag{3.2.3.2}
+\]
+\begin{SGAresult}{引理}{3.2.3.3}
+假定对每个整数 $i$，图
+\[
+\begin{tikzcd}
+X_i\arrow[r,"f_i"]\arrow[d,"u_i"']&X'_i\arrow[d,"u'_i"]\\
+S\arrow[r,"h"']&S'
+\end{tikzcd}
+\]
+对 $G$ 满足\Term{base-change-theorem}{基变换定理}。则 $\operatorname{ch}_G^{f,h}$ 为\Term{isomorphism}{同构}。
+\end{SGAresult}
+\begin{proof}
+可如下计算 $\operatorname{ch}_G^{f,h}(K^\bullet)$：考虑\Term{augmentation}{增广}
+$XfX'\xrightarrow{(h_c\circ u)fu'}C_{S'}^{I\times\Delta}$〔参见 (3.1.1.2)〕，并选取 $K^+(((h_c\circ u)fu')^*)(K^\bullet)$ 的一个\Term{resolution}{解消} $J^\bullet$，使得对于每个整数 $n$，$J^n$ 均逐\Term{object}{对象}\Term{totally-acyclic}{完全无上同调}。
+得到\Term{quasi-isomorphism}{拟同构}
+\[
+\theta:K^+(\Gamma(f^*))(r_0^*J^\bullet)\longrightarrow r_1^*(J^\bullet),
+\]
+以及\Term{morphism}{态射}
+\[
+t:K^+(\Gamma(h_c^*))K^+(\Gamma(u'_*))(r_0^*J^\bullet)
+\longrightarrow K^+(\Gamma(u_*))(r_1^*J^\bullet),
+\]
+它具有如下\Term{resolution}{分解}：
+\[
+\begin{aligned}
+{}&K^+(\Gamma(h_c^*))K^+(\Gamma(u'_*))(r_0^*J^\bullet)\\
+&\quad\xrightarrow{\varphi}K^+(\Gamma(u_*))K^+(\Gamma(f^*))(r_0^*J^\bullet)\\
+&\quad\xrightarrow{K^+(\Gamma(u_*))(\theta)}K^+(\Gamma(u_*))(r_1^*J^\bullet).
+\end{aligned}
+\]
+而 $\operatorname{ch}^{f,h}(K^\bullet)$ 由对 $t$ 应用\Term{functor}{函子} $R^+\varepsilon_{\mathbf Z*}^\bullet$ 得到。
+\SourcePage{105}
+上述\Term{resolution}{分解}表明，$t$ 逐\Term{object}{对象}等同于与图
+\[
+\begin{tikzcd}
+X_i\arrow[r,"f_i"]\arrow[d,"u_i"']&X'_i\arrow[d,"u'_i"]\\
+S\arrow[r,"h"']&S'
+\end{tikzcd}
+\]
+对应的\Term{base-change-morphism}{基变换态射}；由\Term{spectral-sequence}{谱序列}可知，$\operatorname{ch}_G^{f,h}(K^\bullet)$ 为\Term{isomorphism}{同构}，证明完成。
+\end{proof}
+这给出了第二个\Term{localization}{局部化}判别准则。
+\begin{SGAresult}{命题}{3.2.4}
+设 $X\xrightarrow{u}C_S^\Delta$ 为 $\mathcal{H}om_{\mathrm{plat}}(\Delta^\circ,B/S)$ 的\Term{object}{对象}。要使 $u$ 为 $G$-1-\Term{cohomological-descent}{上同调下降}\Term{augmentation}{增广}，只须它在“对 $G$ 而言足够多”的\footnote{“对 $G$ 而言足够多”，是指存在一族满足上述条件的\Term{flat-morphism}{平坦态射} $(S_\alpha\xrightarrow{h_\alpha}S)_{\alpha\in A}$，使\Term{functor}{函子}族 $(h_{\alpha*}:G_S\to G_{S_\alpha})_{\alpha\in A}$ 为\Term{conservative-functor}{保守的}。}\Term{flat-base-change}{平坦基变换} $h:S'\to S$ 后具有此性质，并且相应的\Term{cartesian-square}{笛卡尔方块}
+\[
+\begin{tikzcd}
+X'_i\arrow[r]\arrow[d]&X_i\arrow[d]\\
+S'\arrow[r,"h"']&S
+\end{tikzcd}
+\]
+对 $G$ 满足\Term{base-change-theorem}{基变换定理}。
+\end{SGAresult}
+\begin{proof}
+结合图 (3.2.3.2)，命题 (3.2.4) 立即由 (3.2.3.3) 得出。
+\end{proof}
+
+\textbf{3.3. \Term{cohomological-descent}{上同调下降}\Term{morphism}{态射}的性质。} 本小节假定 $B$ 中\Term{flat-morphism}{平坦态射}的\Term{set}{集合}在\Term{base-change}{基变换}下\Term{stable}{稳定}。
+\begin{SGAresult}{命题}{3.3.1}
+$i=1,2$。
+
+ a) 每个具有\Term{section}{截面}的\Term{flat-morphism}{平坦态射}都是 $G$-2-\Term{universal-cohomological-descent}{普遍上同调下降}\Term{morphism}{态射}。
+
+ b) 设 $f:X\to S$ 为\Term{flat-morphism}{平坦态射}，$g:S'\to S$ 为 $G$-$i$-\Term{cohomological-descent}{上同调下降}\Term{morphism}{态射}，$X'=X\times_S S'$，$f'=f_{(S')}:X'\to S'$。则 $f$ 为 $G$-$i$-\Term{universal-cohomological-descent}{普遍上同调下降}的充要条件是 $f'$ 具有此性质。
+\SourcePage{106}
+ c) 若两个\Term{morphism}{态射} $f:X\to Y$、$g:Y\to Z$ 的复合为 $G$-$i$-\Term{universal-cohomological-descent}{普遍上同调下降}的，则 $g$ 为 $G$-$i$-\Term{universal-cohomological-descent}{普遍上同调下降}的。
+
+ d) 两个 $G$-$i$-\Term{universal-cohomological-descent}{普遍上同调下降}\Term{morphism}{态射}的复合仍为 $G$-$i$-\Term{universal-cohomological-descent}{普遍上同调下降}\Term{morphism}{态射}。
+
+ e) 若 $f:X\to X'$ 与 $g:Y\to Y'$ 是两个 $G$-$i$-\Term{universal-cohomological-descent}{普遍上同调下降}的 $S$-\Term{morphism}{态射}，则 $f\times_S g$ 为 $G$-$i$-\Term{universal-cohomological-descent}{普遍上同调下降}的。
+
+ f) 设 $(u_\alpha:X_\alpha\to Y_\alpha)_{\alpha\in A}$ 为一族 $G$-$i$-\Term{cohomological-descent}{上同调下降}\Term{morphism}{态射}。则 $\coprod u_\alpha:\coprod_{\alpha\in A}X_\alpha\to\coprod_{\alpha\in A}Y_\alpha$ 是 $G$-$i$-\Term{cohomological-descent}{上同调下降}\Term{morphism}{态射}。
+\end{SGAresult}
+\begin{proof}
+关于对 $G$ 的\Term{effective-descent}{有效下降}，参见 [4]。
+
+ a) 借助 $f$ 的\Term{section}{截面} $s$，比较向 $S$ \Term{augmentation}{增广}的\Term{semisimplicial-object}{半单纯对象} $[X|_fS]$ 与 $[S|_{\mathrm{id}}S]$；由 (3.0.2.4) 得到 $G$-1-\Term{cohomological-descent}{上同调下降}的\Term{equivalence}{等价}。
+
+ b) 由 (3.2.1) 得出。
+
+ c) 由 a) 和 b) 得出。
+
+ d) 设 $f:X\to Y$、$g:Y\to S$ 为两个 $G$-1-\Term{universal-cohomological-descent}{普遍上同调下降}\Term{morphism}{态射}。置 $h=g\circ f$，考虑\Term{fiber-product}{纤维积}：
+\[
+\begin{tikzcd}
+Y\arrow[d,"g"']&R\arrow[l,"h'"']\arrow[d,"g'"]\\
+S&X\arrow[l,"h"]
+\end{tikzcd}
+\]
+$g'$ 有\Term{section}{截面} $s:X\to R$，满足 $h'\circ s=f$。由 c)，$h'$ 为 $G$-1-\Term{universal-cohomological-descent}{普遍上同调下降}的；再由 b)，$h$ 亦然。
+
+ e) 形式地由 b) 和 d) 得出。
+
+ f) 设 $(Z_\lambda)_{\lambda\in\Lambda}$ 为 $B$ 的一族\Term{object}{对象}。由假设 (3.0.0)，有\Term{canonical}{典范}\Term{equivalence}{等价}
+\[
+\operatorname{Mod}(E_{\coprod_\lambda Z_\lambda}^{\circ},O_{\coprod_\lambda Z_\lambda})
+\xrightarrow{\sim}\prod_\lambda\operatorname{Mod}(E_{Z_\lambda}^{\circ},O_{Z_\lambda}),
+\]
+诱\Term{derivation}{导出}\Term{equivalence}{等价}
+\[
+G_{\coprod_\lambda Z_\lambda}\xrightarrow{\sim}\prod_\lambda G_{Z_\lambda}.
+\]
+此外，若 $(Q_\lambda)_\lambda\in\prod_\lambda\operatorname{Mod}(E_{Z_\lambda}^{\circ},O_{Z_\lambda})$ 是\Term{totally-acyclic}{完全无上同调的}，则对每个 $\lambda$，$Q_\lambda$ 都\Term{totally-acyclic}{完全无上同调}。
+现在设 $(u_\lambda:X_\lambda\to Y_\lambda)_{\lambda\in\Lambda}$ 为一族 $G$-1-\Term{cohomological-descent}{上同调下降}\Term{morphism}{态射}：由于 $B$ 中的\Term{direct-sum}{直和}不交且\Term{universal}{普遍}，
+\SourcePage{107}
+对每个 $n$，有关于 $n$ \Term{functoriality}{函子性的}等同
+\[
+\left[\coprod_\lambda X_\lambda\middle|_{\coprod u_\lambda}\coprod_\lambda Y_\lambda\right]_n
+\simeq\coprod_\lambda[X_\lambda|_{u_\lambda}Y_\lambda]_n.
+\]
+由上述说明及 $R_G^+\bar\theta_*$ 的显式计算〔参见 (2.3)〕，得知 $\coprod_\lambda u_\lambda$ 为 $G$-1-\Term{cohomological-descent}{上同调下降}\Term{morphism}{态射}；细节留给读者。也请读者验证：若每个 $u_\lambda$ 在任意\Term{base-change}{基变换}后仍为 $G$-1-\Term{cohomological-descent}{上同调下降}的，则 $\coprod_\lambda u_\lambda$ 亦然。
+\end{proof}
+\textbf{3.3.2.} 若对 $B$ 的每个\Term{object}{对象} $X$，取所有满足 $\coprod_\alpha X_\alpha\to X$ 为 $G$-$i$-\Term{universal-cohomological-descent}{普遍上同调下降}\Term{morphism}{态射}的\Term{morphism}{态射}族 $(X_\alpha\to X)_{\alpha\in A}$ 所组成的\Term{set}{集合}，则由 (3.3.1)，在 $B$ 上定义了一个\Term{pretopology}{预拓扑}。
+该\Term{pretopology}{预拓扑}生成的\Term{topology}{拓扑}称为 $G$-$i$-\Term{cohomological-descent}{上同调下降}\Term{topology}{拓扑}。由 [(3.3.1)-c)]，对于此\Term{topology}{拓扑}的\Term{covering-morphism}{覆盖态射}恰好是 $G$-$i$-\Term{universal-cohomological-descent}{普遍上同调下降}\Term{morphism}{态射}。最后注意，$G$-2-\Term{cohomological-descent}{上同调下降}\Term{topology}{拓扑}比 $G^\circ$-\Term{descent}{下降}\Term{topology}{拓扑}更粗〔参见 [4] (6.23)〕。
+\begin{SGAresult}{定理}{3.3.3}
+假定 $B$ 中的所有\Term{arrow}{箭头}均\Term{flat-morphism}{平坦}。设 $S$ 为 $B$ 的\Term{object}{对象}。对于 $G$-1-\Term{cohomological-descent}{上同调下降}\Term{topology}{拓扑}，$S$ 的每个所有\Term{object}{对象}均\Term{representable}{可表}的\Term{hypercovering}{超覆盖}〔参见第 V 讲附录〕都定义一个 $G$-1-\Term{universal-cohomological-descent}{普遍上同调下降}\Term{augmentation}{增广}。
+\end{SGAresult}
+\begin{proof}
+证明分两步；先说明，所有\Term{coskeleton}{余骨架}均在\Term{category}{范畴} $B/S$ 中计算。
+\end{proof}
+\begin{SGAresult}{引理}{3.3.3.1}
+设 $X$ 为 $\mathcal{H}om(\Delta^\circ,B/S)$ 的\Term{object}{对象}。要使 $X$ 为 1-\Term{cohomological-descent}{上同调下降}的（分别为\Term{universal-cohomological-descent}{普遍的}），只须对于所有充分大的 $n$，$\operatorname{cosk}_n(X)$ 具有此性质。
+\end{SGAresult}
+\begin{proof}
+设 $\alpha_n:X\to\operatorname{cosk}_n(X)$ 为\Term{canonical}{典范}\Term{morphism}{态射}。可以验证：若 $K^\bullet$ 为 $D^+_{G_S}(S)$ 的\Term{complex}{复形}，且对 $j<N$ 有 $H^j(K^\bullet)=0$，则对于 $i<N+n$，$H^i(\eta_G^{\alpha_n})$ 为\Term{isomorphism}{同构}，由此得到所述结论。
+\end{proof}
+\begin{SGAresult}{引理}{3.3.3.2}
+设 $n\geq0$ 为整数，$X,X'$ 为 $B/S$ 的两个\Term{simplicial-object}{单纯对象}，$f:X\to X'$ 为\Term{morphism}{态射}。假定：
+
+(i) $X\to\operatorname{cosk}_{n+1}(X)$ 是\Term{isomorphism}{同构}。
+
+(ii) $X'\to\operatorname{cosk}_{n+1}(X')$ 是\Term{isomorphism}{同构}。
+
+(iii) 对于 $i\leq n$，$f_i:X'_i\to X_i$ 是\Term{isomorphism}{同构}。
+
+(iv) $f_{n+1}$ 为 $G$-1-\Term{universal-cohomological-descent}{普遍上同调下降}\Term{morphism}{态射}。
+
+则若 $X$ 为 $G$-1-\Term{universal-cohomological-descent}{普遍上同调下降}的，$X'$ 亦然。
+\end{SGAresult}
+显然，(3.3.3.1) 与 (3.3.3.2) 通过归纳法证明定理 (3.3.3)。
+\SourcePage{108}
+\begin{SGAresult}{引理}{3.3.3.3}
+在 (3.3.3.2) 的假设下，\Term{morphism}{态射} $f_p$ 全部为 $G$-1-\Term{universal-cohomological-descent}{普遍上同调下降}的。
+\end{SGAresult}
+\begin{proof}
+对于 $p\leq n+1$，这是平凡的。对于 $p>n+1$，$X_p$（分别为 $X'_p$）可以写成 $\varprojlim_{\Delta^+_{n+1[p]}}X_q$（分别为 $\varprojlim_{\Delta^+_{n+1[p]}}X'_q$）。对于 $\Delta^+_{n+1[p]}$ 的每个\Term{arrow}{箭头} $\iota:i\to j$，有行\Term{exact}{正合}的\Term{commutative-diagram}{交换图}：
+\[
+\begin{tikzcd}[column sep=large,row sep=large]
+K'_\iota\arrow[r]\arrow[ddd,"\alpha_\iota"']&
+\displaystyle\prod_{r\in\operatorname{ob}(\Delta^+_{n+1[p]})}X'_2
+\arrow[rr]\arrow[dr]\arrow[ddd]&&X'_i\arrow[ddd,"f_i"]\\
+&&X'_j\arrow[ur]&\\
+&&X_j\arrow[dr]&\\
+K_\iota\arrow[r]&
+\displaystyle\prod_{\operatorname{ob}(\Delta^+_{n+1[p]})}X_2
+\arrow[rr]\arrow[ur]&&X_i
+\end{tikzcd}
+\]
+其中左侧方块是\Term{cartesian-square}{笛卡尔方块}（或者 $i=n+1=j$ 且 $\iota=\operatorname{id}$，或者 $i<n+1$ 且 $f_i$ 为\Term{isomorphism}{同构}）。由 (3.3.1)，$\alpha_\iota$ 是 $G$-1-\Term{universal-cohomological-descent}{普遍上同调下降}\Term{morphism}{态射}。最后注意到，$f_p$ 等同于\Term{canonical}{典范}\Term{morphism}{态射}
+\[
+\bigcap_\iota K'_\iota\xrightarrow{\prod\alpha_\iota}\bigcap_\iota K_\iota,
+\]
+证明即告完成。
+\end{proof}
+以 $[X'/X]_p$ 表示 $X'$ 在 $X$ 上与自身作的 $p+1$ 重迭代\Term{fiber-product}{纤维积}。由 (3.3.3.3)，只须在\Term{base-change}{基变换} $[X'/X]_p\to X$ 后验证 (3.3.3.2)。经过这种\Term{base-change}{基变换}，(3.3.3.2) 的假设仍成立，并且 $f_{n+1}$ 还具有\Term{section}{截面}。此时应用 (3.0.2.4) 即可完成证明。
+
+关于\Term{effective-descent}{有效下降}，有以下结果。
+\begin{SGAresult}{命题}{3.3.4}
+设 $X:\Delta^\circ\to B/S$ 为\Term{functor}{函子}。假定 $X_0\to S$ 以及 $n=0,1$ 时的\Term{morphism}{态射} $X_{n+1}\to(\operatorname{cosk}_n(X))_{n+1}$ 都为 $G^\circ$-2-\Term{universal-descent}{普遍下降}\Term{morphism}{态射}。则\Term{functor}{函子} $X$ 是 $G^\circ$-2-\Term{faithful}{忠实的}，并且在任意\Term{base-change}{基变换}后保持此性质（换言之，$X$ 定义一个 (2.4.11) 意义下的\Term{universal-effective-descent}{普遍有效下降}\Term{augmentation}{增广}）。
+\end{SGAresult}
+\begin{proof}
+由 [4] (7.12)，只须证明 $i_2^*(X)$ 为 $G^\circ$-2-\Term{faithful}{忠实的}；为此使用下述引理。
+\end{proof}
+\begin{SGAresult}{引理}{3.3.4.1}
+设 $X,X'$ 为两个\Term{functor}{函子} $\Delta_2^\circ\to B/S$，且有\Term{commutative-diagram}{交换图}
+\SourcePage{109}
+\[
+\begin{tikzcd}[column sep=large]
+X'_2\arrow[r,shift left=2ex]\arrow[r]\arrow[r,shift right=2ex]\arrow[d,"k"']&X'_1\arrow[l,shift left=1ex]\arrow[l,shift right=1ex]\arrow[r,shift left=1ex]\arrow[r,shift right=1ex]\arrow[d,equal]&X'_0\arrow[l]\arrow[r]\arrow[d,equal]&S\arrow[d,equal]\\
+X_2\arrow[r,shift left=2ex]\arrow[r]\arrow[r,shift right=2ex]&X_1\arrow[l,shift left=1ex]\arrow[l,shift right=1ex]\arrow[r,shift left=1ex]\arrow[r,shift right=1ex]&X_0\arrow[l]\arrow[r]&S
+\end{tikzcd}
+\]
+使 $k$ 为 $G^\circ$-0-\Term{descent}{下降}\Term{morphism}{态射}。则若 $X$ 是 $G^\circ$-2-\Term{faithful}{忠实的}，$X'$ 亦然。
+\end{SGAresult}
+\begin{proof}显然。\end{proof}
+\begin{SGAresult}{引理}{3.3.4.2}
+设 $X,X'$ 为两个\Term{functor}{函子} $\Delta_2^\circ\to B/S$，且有\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}[column sep=large]
+X'_2\arrow[r,shift left=3ex,"\partial^0"]\arrow[r,"\partial^1" description]\arrow[r,shift right=3ex,"\partial^2"']\arrow[d,"f_2"']&X'_1\arrow[l,shift left=1.5ex]\arrow[l,shift right=1.5ex]\arrow[r,shift left=2ex,"\partial^0"]\arrow[r,shift right=2ex,"\partial^1"']\arrow[d,"f_1"]&X'_0\arrow[l,"\sigma^0" description]\arrow[r]\arrow[d,equal]&S\arrow[d,equal]\\
+X_2\arrow[r,shift left=2ex]\arrow[r]\arrow[r,shift right=2ex]&X_1\arrow[l,shift left=1ex]\arrow[l,shift right=1ex]\arrow[r,shift left=1ex]\arrow[r,shift right=1ex]&X_0\arrow[l]\arrow[r]&S
+\end{tikzcd}
+\]
+使 $f_1$ 为 $G^\circ$-1-\Term{descent}{下降}的，$f_2$ 为 $G^\circ$-0-\Term{descent}{下降}的。此外假定 $X'_2\xrightarrow{\sim}(\operatorname{cosk}_1(X'))_2$。则若 $X$ 为 $G^\circ$-2-\Term{faithful}{忠实的}，$X'$ 亦然。
+\end{SGAresult}
+\begin{proof}
+设 $X''_1=X'_1\times_{X_1}X'_1$，$\partial_0:X''_1\to X'_1$ 和 $\partial_1:X''_1\to X'_1$ 为两个\Term{projection}{投影}。
+由\Term{coskeleton}{余骨架}的定义，得到\Term{arrow}{箭头} $\varphi:X''_1\to X'_2$，满足
+\[
+\begin{cases}
+\partial_0\circ\varphi=\partial_0,\\
+\partial_1\circ\varphi=\partial_1,\\
+\partial_2\circ\varphi=\sigma_0\partial_1\partial_0=\sigma_0\partial_1\partial_1.
+\end{cases}
+\]
+现在设给定 $X'$ 上的一个\Term{descent-datum}{下降数据}；于是有 $X_0$ 上的一个\Term{object}{对象}、$X_1$ 上的两个\Term{object}{对象}，以及它们在 $X'_1$ 上的一个\Term{isomorphism}{同构}。借助 $\varphi$，可知该\Term{isomorphism}{同构}在 $X''_1$ 上的两个\Term{inverse-image}{逆像}相等。由于 $f$ 为 1-\Term{descent}{下降}的，我们得到 $X_1$ 上这两个\Term{object}{对象}之间的一个\Term{isomorphism}{同构}；这一\Term{isomorphism}{同构}是\Term{descent-datum}{下降数据}（因为 $X'_2\to X_2$ 是 0-\Term{descent}{下降}的），故得证。
+\end{proof}
+\begin{SGAresult}{推论}{3.3.5}
+假定 $B$ 中所有\Term{arrow}{箭头}均\Term{flat-morphism}{平坦}。对于 $G$-2-\Term{cohomological-descent}{上同调下降}\Term{topology}{拓扑}，$S$ 的每个\Term{object}{对象}均\Term{representable}{可表}的\Term{hypercovering}{超覆盖}都定义一个 $G$-2-\Term{universal-cohomological-descent}{普遍上同调下降}\Term{augmentation}{增广}。
+\end{SGAresult}
+
+\SourcePage{110}
+\SGAsection{4}{例子}
+\textbf{4.1. \Term{topological-space}{拓扑空间}上的\Term{abelian-group}{阿贝尔群}层。}
+\textbf{4.1.0.} 本小节中，$\operatorname{Top}$ 表示\Term{topological-space}{拓扑空间}\Term{category}{范畴}〔其\Term{object}{对象}属于固定的\Term{universe}{宇宙} $\mathcal U$〕：如下定义 $\operatorname{Top}$ 上以\Term{topos}{拓扑斯}的\Term{duality}{对偶}为\Term{fiber}{纤维}的\Term{bifibred-category}{双纤维范畴} $E$。\Term{object}{对象}为二元组 $(X,F)$，其中 $X$ 是\Term{topological-space}{拓扑空间}，$F$ 是 $X$ 上的\Term{sheaf-of-sets}{集合层}；\Term{morphism}{态射}为二元组 $(f,\varphi):(X,F)\to(Y,H)$，其中 $f:X\to Y$ 是\Term{continuous-map}{连续映射}，$\varphi:H\to f_*(F)$ 是\Term{sheaf}{层}\Term{morphism}{态射}。取 $O$ 为 $E^\circ$ 在 $\operatorname{Top}^\circ$ 上的\Term{section}{截面}，它把每个\Term{topological-space}{拓扑空间}送到\Term{constant-sheaf}{常值层} $\mathbf Z_X$。置 $G=\operatorname{Mod}(E^\circ,O)$，于是对每个\Term{topological-space}{拓扑空间} $X$，$G_X$ 等同于 $X$ 上\Term{abelian-sheaf}{阿贝尔群层}的\Term{category}{范畴}。
+回顾：若 $X\times_Y X$ 的\Term{diagonal}{对角线}闭，则称\Term{morphism}{态射} $f:X\to Y$ 为\Term{separated-morphism}{分离的}。\Term{proper-morphism}{固有态射}是指\Term{separated-morphism}{分离}且\Term{universally-closed}{普遍闭}的\Term{morphism}{态射}（请注意，此定义比 Bourbaki 的定义更严格）。
+以下“\Term{base-change-theorem}{基变换定理}”的证明受到 [5] II (4.11.1) 的启发。
+\begin{SGAresult}{定理}{4.1.1}
+设 $f:X\to Y$ 为\Term{proper-morphism}{固有态射}，$F$ 为 $X$ 上的\Term{abelian-sheaf}{阿贝尔层}，并有\Term{cartesian-square}{笛卡尔图}
+\[
+\begin{tikzcd}
+X'\arrow[r,"g'"]\arrow[d,"f'"']&X\arrow[d,"f"]\\
+Y'\arrow[r,"g"']&Y.
+\end{tikzcd}
+\]
+则\Term{canonical}{典范}映射〔第 XII 讲 4.2 或 (3.2.2.3)〕
+\[
+g^*R^if_*F\xrightarrow{\sim}R^if'_*g'^*F
+\]
+为\Term{isomorphism}{同构}。
+\end{SGAresult}
+该定理\Term{equivalence}{等价}于以下推论（取 $Y'=(\text{点})$ 得到推论；对 $f$ 和 $f'$ 应用推论得到定理）。
+\begin{SGAresult}{推论}{4.1.2}
+设 $f:X\to Y$ 为\Term{proper-morphism}{固有态射}，$F$ 为 $X$ 上的\Term{abelian-sheaf}{阿贝尔层}，$y\in Y$。\Term{canonical}{典范}映射
+\[
+(R^if_*F)_y\longrightarrow H^i(f^{-1}(y),F)
+\]
+为\Term{bijective}{双射}。
+\end{SGAresult}
+\begin{proof}
+按定义，当 $U$ 遍历 $y$ 的\Term{neighborhood}{邻域}时，有
+\[
+(R^if_*F)_y=\varinjlim_U H^i(f^{-1}(U),F).
+\]
+\SourcePage{111}
+由于 $f$ 是\Term{closed-map}{闭映射}，$f^{-1}(U)$ 构成 $f^{-1}(y)$ 的\Term{neighborhood}{邻域}基，因而 (4.1.3) 由下述引理得出。
+\end{proof}
+\begin{SGAresult}{引理}{4.1.3}
+设 $X$ 是\Term{topological-space}{拓扑空间}，$K\subset X$，$F$ 为 $X$ 上的\Term{abelian-sheaf}{阿贝尔层}。假定 $K$ \Term{compact}{紧致}，且 $K$ 中任意两个不同点在 $X$ 中均有不交的\Term{neighborhood}{邻域}。则当 $U$ 遍历 $K$ 的\Term{neighborhood}{邻域}时，有
+\[
+\varinjlim_U H^i(U,F)\xrightarrow{\sim}H^i(K,F). \tag{4.1.3.1}
+\]
+\end{SGAresult}
+先处理 $i=0$ 的情形。此时 (4.1.3.1) 显然为\Term{injective}{单射}。为证明\Term{surjective}{满射}性，使用下述引理。
+\begin{SGAresult}{引理}{4.1.4}
+在 (4.1.3) 的假设下，若 $A,B$ 是 $K$ 的两个\Term{closed-subset}{闭子集}，$W$ 是 $A\cap B$ 在 $X$ 中的一个\Term{neighborhood}{邻域}，则 $A,B$ 在 $X$ 中存在\Term{neighborhood}{邻域} $U,V$，使 $U\cap V\subset W$。
+\end{SGAresult}
+\begin{proof}
+先处理 $A$ 仅含一个点 $a$ 的情形。若 $a\in B$，结论平凡（取 $U=W$）。若 $a\notin B$，则对每个 $b\in B$，$a,b$ 在 $X$ 中存在不交的\Term{open-neighborhood}{开邻域} $U_b,V_b$。取 $V$ 为\Term{finite}{有限}多个\Term{covering}{覆盖} $B$ 的 $V_b$ 的并，$U$ 为相应的 $U_b$ 的交。
+一般情形下，对每个 $a\in A$，$a,B$ 在 $X$ 中存在\Term{open-neighborhood}{开邻域} $U_a,V_a$，满足 $U_a\cap V_a\subset W$。取 $U$ 为\Term{finite}{有限}多个\Term{covering}{覆盖} $A$ 的 $U_a$ 的并，$V$ 为相应的 $V_a$ 的交。
+\end{proof}
+回到 (4.1.3)。若 $s\in H^0(K,F)$，则存在 $K$ 在 $X$ 中的一个\Term{open-cover}{开覆盖} $(U_i)$，以及 $s_i\in H^0(U_i,F)$，使 $s_i=s$ 于 $U_i\cap K$ 上。可假定 $U_i$ 只有\Term{finite}{有限}多个。设 $(K_i)$ 为 $K$ 的一个\Term{closed-covering}{闭覆盖}，且 $K_i\subset K\cap U_i$。设 $W_{ij}$ 为 $U_i\cap U_j$ 中满足 $s_i=s_j$ 的\Term{open-subset}{开集}；有 $K_i\cap K_j\subset W_{ij}$。对所有二元组 $(K_i,K_j)$ 和 $W_{ij}$ 应用 (4.1.4)，得到\Term{open-subset}{开集} $V_{ij}$，满足 $K_i\subset V_{ij}\subset U_i$，且 $V_{ij}\cap V_{ji}\subset W_{ij}$。置 $U'_i=\bigcap_jV_{ij}$，则 $K_i\subset U'_i\subset U_i$，且在 $U'_i\cap U'_j$ 上 $s_i=s_j$。因此各 $s_i$ 可在各 $U'_i$ 的并这一 $K$ 的\Term{neighborhood}{邻域}上\Term{gluing}{粘合}，故 (4.1.3.1) 在 $i=0$ 时为\Term{surjective}{满射}（因而为\Term{bijective}{双射}）。
+\begin{SGAresult}{引理}{4.1.5}
+若 $F$ 是\Term{flasque-sheaf}{松弛层}，则 $K$ 上的\Term{sheaf}{层} $F|_K$ 是\Term{soft-sheaf}{软层}。
+\end{SGAresult}
+\begin{proof}
+设 $A\subset K$ 在 $K$ 中闭。由上文，$F$ 在 $A$ 上的每个\Term{section}{截面}均可延拓到一个\Term{neighborhood}{邻域}。由于 $F$ \Term{flasque-sheaf}{松弛}，此\Term{section}{截面}可延拓到 $X$，当然也可延拓到 $K$。
+\end{proof}
+现在证明 (4.1.3)。设 $F^*$ 是 $F$ 的一个\Term{flasque-resolution}{松弛解消}。有
+\[
+\begin{aligned}
+\varinjlim_U H^i(U,F)
+&=\varinjlim_U H^i(\Gamma(U,F^*))
+ =H^i\varinjlim_U\Gamma(U,F^*)\\
+&\overset{4.1.3\,(i=0)}{=}H^i\Gamma(K,F^*)
+ \overset{(4.1.5)}{=}H^i(K,F).
+\end{aligned}
+\]
+\begin{SGAresult}{推论}{4.1.6}
+设 $f:X\to Y$ 为\Term{topological-space}{拓扑空间}的\Term{proper-morphism}{固有}\Term{surjective}{满射}\Term{morphism}{态射}。则 $f$ 为 $G$-1-\Term{cohomological-descent}{上同调下降}的。
+\end{SGAresult}
+\begin{proof}由 (4.1.2) 与 (3.2.4) 得出。\end{proof}
+
+\SourcePage{112}
+\begin{SGAresult}{推论}{4.1.7}
+设 $\mathcal U=(U_i)_{i\in I}$ 为\Term{topological-space}{拓扑空间} $X$ 的一个\Term{locally-finite}{局部有限}\Term{closed-covering}{闭覆盖}。则\Term{canonical}{典范}\Term{morphism}{态射} $f:\coprod_{i\in I}U_i\to X$ 为 $G$-1-\Term{cohomological-descent}{上同调下降}\Term{morphism}{态射}。
+\end{SGAresult}
+\begin{proof}
+事实上，$f$ 为\Term{proper-morphism}{固有}且\Term{surjective}{满射}。应用 (2.5.6)，就重新得到 [[5] II (5.2.4)] 的\Term{spectral-sequence}{谱序列}〔参见引言〕。
+\end{proof}
+\begin{SGAresult}{命题}{4.1.8}
+设 $f:X\to Y$ 为\Term{topological-space}{拓扑空间}的一个\Term{surjective}{满射}\Term{local-homeomorphism}{局部同胚}（原文作 homomorphisme local）。则 $f$ 为 $G$-1-\Term{universal-cohomological-descent}{普遍上同调下降}\Term{morphism}{态射}。
+\end{SGAresult}
+\begin{proof}
+在 $Y$ 上\Term{localization}{局部化}〔参见 (3.2.4)〕，归结到 $f$ 具有\Term{section}{截面}的情形。
+\end{proof}
+\begin{SGAresult}{推论}{4.1.9}
+设 $\mathcal U=(U_i)_{i\in I}$ 是\Term{topological-space}{拓扑空间} $X$ 的一个\Term{open-cover}{开覆盖}。则\Term{canonical}{典范}\Term{morphism}{态射} $f:\coprod_{i\in I}U_i\to X$ 是 $G$-1-\Term{universal-cohomological-descent}{普遍上同调下降}\Term{morphism}{态射}。
+\end{SGAresult}
+此时，\Term{descent}{下降}\Term{spectral-sequence}{谱序列}给出 [[5] II (5.4.1)]〔参见引言〕。
+\begin{SGAresult}{注记}{4.1.10}
+第 VIII 讲第 9 节中的证明表明，以上所有陈述中的“1-\Term{cohomological-descent}{上同调下降}”均可替换为“2-\Term{cohomological-descent}{上同调下降}”。
+\end{SGAresult}
+\textbf{4.2. \Term{scheme}{概形}上的\Term{quasi-coherent-module}{拟凝聚模}。}
+\textbf{4.2.0.} 设 $(\operatorname{Sch})_s$ 为如下\Term{category}{范畴}：其\Term{object}{对象}为属于 $\mathcal U$ 的\Term{scheme}{概形}，\Term{arrow}{箭头}为\Term{quasi-compact-morphism}{拟紧}且\Term{quasi-separated-morphism}{拟分离}的\Term{morphism}{态射}。如下定义 $(\operatorname{Sch})_s$ 上以\Term{topos}{拓扑斯}的\Term{duality}{对偶}为\Term{fiber}{纤维}的\Term{bifibred-category}{双纤维范畴} $E$：其\Term{object}{对象}为二元组 $(X,F)$，其中 $X$ 是\Term{scheme}{概形}，$F$ 是 $X$ 上的\Term{sheaf}{层}（对于 Zariski \Term{topology}{拓扑}）；\Term{morphism}{态射}为二元组 $(f,\varphi):(X,F)\to(Y,G)$，其中 $f:X\to Y$ 为\Term{continuous-map}{连续映射}，$\varphi:G\to f_*(F)$ 是\Term{sheaf}{层}\Term{morphism}{态射}。取 $O$ 为 $E^\circ$ 在 $(\operatorname{Sch})_s^\circ$ 上的\Term{section}{截面}，它把每个\Term{scheme}{概形}送到其\Term{structure-sheaf}{结构层}；取 $G$ 为 $\operatorname{Mod}(E^\circ,O)$ 的\Term{subcategory}{子范畴}，使对每个\Term{scheme}{概形} $X$，$G_X$ 是 $X$ 上的\Term{quasi-coherent-module}{拟凝聚模}\Term{category}{范畴}。
+\begin{SGAresult}{命题}{4.2.1}
+每个\Term{faithfully-flat}{忠实平坦}、\Term{quasi-compact-morphism}{拟紧}且\Term{quasi-separated-morphism}{拟分离}的\Term{morphism}{态射} $f:X\to Y$ 都是 $G$-2-\Term{universal-cohomological-descent}{普遍上同调下降}\Term{morphism}{态射}。
+\end{SGAresult}
+\begin{proof}
+由 [SGA I，第 VIII 讲 5.2]，$f$ 为 $G^\circ$-\Term{effective-descent}{有效下降}\Term{morphism}{态射}。由 [EGA IV (1.7.21)]，可对\Term{cartesian-square}{笛卡尔方块}
+\[
+\begin{tikzcd}
+X\times_Y X\arrow[r]\arrow[d]&X\arrow[d,"f"]\\
+X\arrow[r,"f"']&Y
+\end{tikzcd}
+\]
+应用 (3.2.4)。
+\end{proof}
+
+\SourcePage{113}
+\textbf{4.3. \Term{scheme}{概形}上的\Term{etale-sheaf}{平展层}。}
+\textbf{4.3.0.} 设 $(\operatorname{Sch})$ 为所有属于 $\mathcal U$ 的\Term{scheme}{概形}所成的\Term{category}{范畴}。如下定义 $(\operatorname{Sch})$ 上以\Term{topos}{拓扑斯}的\Term{duality}{对偶}为\Term{fiber}{纤维}的\Term{bifibred-category}{双纤维范畴} $E$：其\Term{object}{对象}为二元组 $(X,F)$，其中 $X$ 是\Term{scheme}{概形}，$F$ 是 $X$ 上的\Term{etale-sheaf}{平展层}；\Term{morphism}{态射}为二元组 $(f,\varphi):(X,F)\to(Y,G)$，其中 $f:X\to Y$ 是\Term{scheme}{概形}\Term{morphism}{态射}，$\varphi:G\to f_*(F)$ 是\Term{sheaf}{层}\Term{morphism}{态射}。
+设 $n\geq0$ 为整数：以 $O_n$ 表示 $E^\circ$ 在 $(\operatorname{Sch})^\circ$ 上的\Term{section}{截面}，它把每个\Term{scheme}{概形} $X$ 送到\Term{constant-sheaf}{常值层} $(\mathbf Z/n\mathbf Z)_X$。置 $F_n=\operatorname{Mod}(E^\circ,O_n)$，于是对每个\Term{scheme}{概形} $X$，$F_{nX}$ 等同于 $X$ 上 $(\mathbf Z/n\mathbf Z)$-模\Term{sheaf}{层}的\Term{category}{范畴}。
+
+\textbf{4.3.1.} 再设 $(\operatorname{Sch})_s$ 为 $(\operatorname{Sch})$ 的\Term{subcategory}{子范畴}，其\Term{object}{对象}为属于 $\mathcal U$ 的\Term{scheme}{概形}，\Term{arrow}{箭头}为\Term{quasi-compact-morphism}{拟紧}且\Term{quasi-separated-morphism}{拟分离}的\Term{morphism}{态射}。以 $E_s$ 表示由 $E$ 经\Term{base-change}{基变换} $(\operatorname{Sch})_s\to(\operatorname{Sch})$ 得到的、在 $(\operatorname{Sch})_s$ 上以\Term{topos}{拓扑斯}的\Term{duality}{对偶}为\Term{fiber}{纤维}的\Term{bifibred-category}{双纤维范畴}；仍以 $O_0$ 表示 $O_0$ 到 $(\operatorname{Sch})_s$ 的\Term{restriction}{限制}。设 $G\subset\operatorname{Mod}(E_s^\circ,O_0)$ 为一个\Term{fibred-category}{纤维}且\Term{cofibred-category}{余纤维}\Term{subcategory}{子范畴}，使得对每个\Term{scheme}{概形} $X$，$G_X$ 为 $X$ 上扭\Term{abelian-sheaf}{阿贝尔层}的\Term{category}{范畴}：请读者注意，条件 (2.4.1.1) 得到满足。
+\begin{SGAresult}{命题}{4.3.2}
+设 $f:X\to Y$ 为\Term{proper-morphism}{固有}\Term{surjective}{满射}\Term{morphism}{态射}。则当 $n\geq1$ 时，$f$ 为 $F_n$-2-\Term{universal-cohomological-descent}{普遍上同调下降}\Term{morphism}{态射}。把它视为 $(\operatorname{Sch})_s$ 的\Term{morphism}{态射}，$f$ 是 $G$-2-\Term{universal-cohomological-descent}{普遍上同调下降}\Term{morphism}{态射}。
+\end{SGAresult}
+\begin{proof}
+由第 VIII 讲 9.4，$f$ 是 $F^\circ$-\Term{effective-descent}{有效下降}\Term{morphism}{态射}；由第 XII 讲 (5.1)，可对\Term{cartesian-square}{笛卡尔图}
+\[
+\begin{tikzcd}
+X\times_Y X\arrow[r]\arrow[d]&X\arrow[d,"f"]\\
+X\arrow[r,"f"']&Y
+\end{tikzcd}
+\]
+应用 (3.2.4)。
+\end{proof}
+\begin{SGAresult}{命题}{4.3.3}
+设 $f:X\to Y$ 为\Term{scheme}{概形}的\Term{surjective}{满射}\Term{morphism}{态射}。假定下列假设之一成立：
+
+ a) $f$ 是\Term{integral-morphism}{整的}。
+
+ b) $Y$ \Term{locally-noetherian}{局部诺特}，$f$ \Term{universally-open}{普遍开}且\Term{locally-finitely-presented}{局部有限表示}。
+
+ c) $f$ \Term{flat-morphism}{平坦}且\Term{locally-finitely-presented}{局部有限表示}。
+
+则对每个 $n\geq0$，$f$ 都是 $F_n$-2-\Term{cohomological-descent}{上同调下降}\Term{morphism}{态射}。
+\end{SGAresult}
+\begin{proof}
+ a) 重复 (4.3.2) 的证明，以第 VIII 讲 5.6 代替第 XII 讲 (5.1)。
+\SourcePage{114}
+ b) 由于问题在 $Y$ 上是\Term{local-scheme}{局部}的，可假定 $Y$ \Term{noetherian}{诺特}。应用 EGA IV (14.5.10)。由 (3.3.1) 和 a)，归结到 $Y$ 的每个点 $y$ 均有一个\Term{neighborhood}{邻域} $U$，使 $f^{-1}(U)\to U$ 具有\Term{section}{截面}的情形；再由 (3.2.4) 即得。
+
+ c) 只须证明 $f$ 为 $F$-1-\Term{cohomological-descent}{上同调下降}\Term{morphism}{态射}（由第 VIII 讲 9.4，已知 $f$ 是 $F^\circ$-\Term{effective-descent}{有效下降}\Term{morphism}{态射}）。
+在 $Y$ 上\Term{localization}{局部化}〔参见 (3.2.4)〕，可假定 $Y$ 是对应于环 $A$ 的\Term{affine-scheme}{仿射概形}。于是可以写成
+\[
+\operatorname{Spec}A=\varprojlim_{i\in I}\operatorname{Spec}A_i,
+\]
+其中 $I$ 是\Term{filtered-ordered-set}{滤过有序集}，每个 $A_i$ 都是\Term{noetherian-ring}{诺特环}；且 $X=\varprojlim X_i$，其中每个 $X_i$ 都是 $\operatorname{Spec}A_i$ 上\Term{flat-morphism}{平坦}且\Term{locally-finitely-presented}{局部有限表示}的\Term{scheme}{概形}，$f_i:X_i\to\operatorname{Spec}A_i$ \Term{surjective}{满射}；此外，图
+\[
+\begin{tikzcd}
+X\arrow[r]\arrow[d,"f"']&X_i\arrow[d,"f_i"]\\
+Y\arrow[r,"u_i"']&\operatorname{Spec}A_i
+\end{tikzcd}
+\]
+为\Term{cartesian-square}{笛卡尔图}。
+设 $F$ 为 $Y$ 上的\Term{abelian-sheaf}{阿贝尔层}。有 $F=\varinjlim_i u_i^*u_{i*}(F)$，故通过标准的\Term{limit}{极限}过程，可归结到 $F$ 来自某个 $\operatorname{Spec}A_i$ 上的\Term{sheaf}{层}的情形，b) 即给出结论。
+\end{proof}
+\begin{SGAresult}{注记}{4.3.4}
+若 $f:X\to Y$ 为\Term{integral-morphism}{整的}，则对 $q>0$ 有 $R^qf_*=0$。由此容易得出，借助 $f$ 作\Term{descent}{下降}时，无须限于\Term{bounded-below-complex}{下有界复形}。
+\end{SGAresult}
+\begin{SGAresult}{推论}{4.3.5}
+设 $(X_\alpha\xrightarrow{u_\alpha}X)_{\alpha\in A}$ 为\Term{etale-topology}{平展拓扑}的一个\Term{covering-family}{覆盖族}。则对每个 $n\geq0$，$\coprod_{\alpha\in A}X_\alpha\to X$ 都是 $F_n$-2-\Term{universal-cohomological-descent}{普遍上同调下降}\Term{morphism}{态射}。
+\end{SGAresult}
+\begin{proof}
+事实上，存在\Term{resolution}{分解}
+\[
+\begin{tikzcd}
+&\displaystyle\coprod_{\alpha\in A}X_\alpha\arrow[dr]&\\
+X\arrow[ur]\arrow[rr,"h"']&&X,
+\end{tikzcd}
+\]
+其中 $h$ 是\Term{etale-morphism}{平展}\Term{surjective}{满射}\Term{morphism}{态射}。
+\end{proof}
+
+\SourcePage{115}
+\SGAsection{5}{应用}
+\textbf{5.1. \Term{simplicial-object}{单纯对象}的构造。}
+\textbf{5.1.0.} 直到 (5.1.3)（包括该小节），$H$ 为一个存在\Term{nonempty}{非空}\Term{finite}{有限}\Term{projective-limit}{投射极限}的\Term{category}{范畴}，并且其中\Term{finite}{有限}和存在、不交且\Term{universal}{普遍}。若 $X:\Delta^\circ\to H$ 是 $H$ 的\Term{simplicial-object}{单纯对象}，则对于 $i\in[k]$、$0\leq k$，以 $d_i^k:X_k\to X_{k-1}$（分别以 $s_i^k:X_k\to X_{k+1}$）表示对应于“面”\Term{operator}{算子} $\partial_i^k:[k-1]\to[k]$（分别对应于\Term{degeneracy-operator}{退化算子} $\sigma_i^k:[k]\to[k+1]$）的\Term{arrow}{箭头}〔参见 [3] II 2〕。
+\begin{SGAresult}{定义}{5.1.1}
+若存在 $X_j$ 的一族\Term{subobject}{子对象} $NX_j$（$j\geq0$），使\Term{morphism}{态射}
+\[
+h_i:\coprod_{\substack{\operatorname{Hom}_{\Delta^-}([i],[j])\\j\leq i}}NX_j\longrightarrow X_i
+\]
+均为\Term{isomorphism}{同构}，则称 $H$ 的\Term{simplicial-object}{单纯对象} $X:\Delta^\circ\to H$ 为\Term{sigma-split}{\(\sigma\)-分裂的}。
+\end{SGAresult}
+类似地，若 $k$-\Term{truncated-simplicial-object}{截断单纯对象} $X:\Delta_k^\circ\to H$ 存在 $NX_j$（$0\leq j\leq k$）使上述条件对于 $i\leq k$ 成立，就称它为\Term{sigma-split}{\(\sigma\)-分裂的}。
+这些 $NX_j$ 由 $X$ 唯一确定。事实上，若 $X$ 为\Term{sigma-split}{\(\sigma\)-分裂的}，则\Term{degeneracy-operator}{退化算子} $s_\ell^{k-1}:X_{k-1}\to X_k$ 是从 $X_{k-1}$ 到 $X_k$ 的某些\Term{direct-factor}{直因子}的\Term{isomorphism}{同构}，而且
+\[
+NX_k=\bigcap_\ell\bigl(s_\ell^k(X_{k-1})\text{ 的补对象}\bigr).
+\]
+对于 $k=0$，$NX_0=X_0$。
+
+\textbf{5.1.2.} 对于 $H$ 的一个 $(n+1)$-\Term{truncated-simplicial-object}{截断}、\Term{sigma-split}{\(\sigma\)-分裂单纯对象} $X$，以 $\alpha_n(X)$ 表示由下列数据组成的三元组：
+
+ a) $X$ 到 $\Delta_n^\circ$ 的\Term{restriction}{限制} $i_n^*(X)$；
+
+ b) $NX_{n+1}$；
+
+ c) 从 $NX_{n+1}$ 到 $(\operatorname{cosq}_n(X))_{n+1}$ 的显然映射。
+
+此三元组 $(Y,N,\beta)$ 满足下述条件：
+
+$(*)$ $Y$ 为 $H$ 的一个 $n$-\Term{truncated-simplicial-object}{截断}、\Term{sigma-split}{\(\sigma\)-分裂单纯对象}，且 $\beta$ 是从 $N$ 到 $(\operatorname{cosq}Y)_{n+1}$ 的映射。
+\begin{SGAresult}{命题}{5.1.3}
+设 $(Y,N,\beta)$ 为满足上述 $(*)$ 的三元组。
+
+(i) 在唯一\Term{isomorphism}{同构}意义下，存在唯一的\Term{sigma-split}{\(\sigma\)-分裂} $X:\Delta_{n+1}^\circ\to H$，使 $\alpha_n(X)\simeq(Y,N,\beta)$。
+
+(ii) 给定从 $X$ 到某个\Term{truncated-simplicial-object}{截断单纯对象} $Z:\Delta_{n+1}^\circ\to H$ 的\Term{morphism}{态射} $f$，\Term{equivalence}{等价}于给定：
+
+ a) \Term{morphism}{态射} $f':Y\to i_n^*(Z)$；
+\SourcePage{116}
+ b) \Term{morphism}{态射} $f'':N\to Z_{n+1}$，使图
+\[
+\begin{tikzcd}
+N\arrow[r]\arrow[d,"f''"']&(\operatorname{cosq}_nY)_{n+1}\arrow[d,"f'"]\\
+Z_{n+1}\arrow[r]&(\operatorname{cosq}_nZ)_{n+1}
+\end{tikzcd}
+\]
+交换。
+\end{SGAresult}
+\begin{proof}
+构造 $X$。置 $Y'_n=(\operatorname{cosk}_nY)_{n+1}$，并以 $d_i'{}^{n+1}:Y'_{n+1}\to Y_n$（分别以 $s_i'{}^n:Y_n\to Y'_{n+1}$）表示由\Term{functoriality}{函子性}得到的\Term{face-operator}{面算子}（分别为\Term{degeneracy-operator}{退化算子}）。
+
+置
+\[
+Y_{n+1}=N\amalg\left(\coprod_{\substack{\operatorname{Hom}_{\Delta^-}([n+1],[\ell])\\\ell\leq n}}NY_\ell\right),
+\]
+并设 $\alpha:Y_{n+1}\to Y'_{n+1}$ 为这样一个\Term{arrow}{箭头}：其各\Term{set-component}{分量}为 $\beta$，以及对于每个满足 $\ell\leq n$ 的\Term{epimorphism}{满态射} $[n+1]\to[\ell]$，相应的\Term{arrow}{箭头} $MY_\ell\to Y_\ell\to Y'_{n+1}$。
+
+设
+\[
+s_i^n:Y_n\simeq\coprod_{\substack{\operatorname{Hom}_{\Delta^-}([n],[\ell'])\\\ell'\leq n}}NY_{\ell'}\longrightarrow X_{n+1}
+\]
+为 $\sigma_i^n$ 诱导的\Term{arrow}{箭头}，于是
+\[
+\alpha\circ s_i^n=s_i'{}^n. \tag{I}
+\]
+置
+\[
+d_i^{n+1}=d_i'{}^{n+1}\circ\alpha. \tag{II}
+\]
+为证明这样定义了 $\mathcal{H}om(\Delta_{n+1}^\circ,H)$ 的一个\Term{object}{对象}，由 [[3] II (2.4)]，只须验证公式
+\[
+\begin{aligned}
+\text{a)}\quad&d_i^n d_j^{n+1}=d_{j-1}^n d_i^{n+1}&&i<j,\\
+\text{b)}\quad&s_i^n s_j^{n-1}=s_{j+1}^n s_i^{n-1}&&i\leq j,\\
+\text{c)}\quad&d_i^{n+1}s_j^n=
+\begin{cases}
+s_{j-1}^{n-1}d_i^n&i<j,\\
+\operatorname{id}&i=j\text{ 或 }i=j+1,\\
+s_j^{n-1}d_{i-1}^n&i>j+1.
+\end{cases}
+\end{aligned}
+\]
+由 (I)、(II)，公式 a) 和 c) 显然成立，因为已知把 $d_i^{n+1}$ 换成 $d_i'{}^{n+1}$、把 $s_i^n$ 换成 $s_i'{}^n$ 后，a)、c) 成立。公式 b) 由构造成立。
+请读者验证，所得\Term{object}{对象} $X$ 满足 5.1.3。
+
+请注意，5.1.3 的证明中构造的、从满足 (5.1.2) $(*)$ 的三元组\Term{category}{范畴}到 $(n+1)$-\Term{truncated-simplicial-object}{截断单纯对象}的\Term{functor}{函子}是\Term{faithful-functor}{忠实的}，但并非\Term{fully-faithful-functor}{全忠实的}。
+\end{proof}
+命题 5.1.3 给出了归纳构造 $H$ 的\Term{simplicial-object}{单纯对象}的一个十分方便的方法。本小节余下部分，将把这一观察形式化为 5.2 和 5.3 中所用的形式。
+
+\SourcePage{117}
+\textbf{5.1.4.} 设 $E\xrightarrow{\pi}B$ 为\Term{functor}{函子}，使得对 $B$ 的每个\Term{object}{对象} $b$，\Term{fibre-category}{纤维范畴} $E_b$ \Term{nonempty}{非空}且满足 (5.1.0) 的条件。
+设 $Q$ 为 $E$ 的\Term{object}{对象}的一个在\Term{isomorphism}{同构}下\Term{stable}{稳定}的性质。假定下列条件成立：
+
+ a) 对 $B$ 的每个\Term{object}{对象} $b$，存在 $E_b$ 中满足 $Q$ 的\Term{object}{对象} $x$。
+
+ b) 对 $B$ 的每个\Term{object}{对象} $b$，及 $E_b$ 中满足 $Q$ 的每对\Term{object}{对象} $(x,y)$，存在 $E_b$ 中满足 $Q$ 的\Term{object}{对象} $z$，以及 $E_b$ 中的\Term{morphism}{态射} $z\to x$、$z\to Y$。
+
+ c) 对 $B$ 的每个\Term{morphism}{态射} $b'\xrightarrow{t}b$，及 $E_b$ 中满足 $Q$ 的每个\Term{object}{对象} $x$，存在 $E_b$ 中满足 $Q$ 的\Term{object}{对象} $x'$，以及 $t$ 上的\Term{morphism}{态射} $x'\to x$。
+
+再设 $P$ 为 $E$ 中位于恒等\Term{morphism}{态射}之上的\Term{arrow}{箭头}的一个在\Term{isomorphism}{同构}下\Term{stable}{稳定}的性质。假定下列条件成立：
+
+ d) 对 $B$ 的每个\Term{object}{对象} $b$ 及 $E_b$ 的每个\Term{object}{对象} $x$，存在 $E_b$ 中满足 $P$ 的\Term{arrow}{箭头} $y\to x$。
+
+ e) 对 $B$ 的每个\Term{object}{对象} $G$，$E_b$ 中每个形如
+\[
+\begin{tikzcd}
+u\arrow[rr,"f"]&&x\\
+&z\arrow[ur]\arrow[dr]&\\
+v\arrow[rr,"g"']&&y
+\end{tikzcd}
+\]
+且 $f,g$ 满足 $P$ 的图，均可补成 $E_b$ 中的\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}
+&u\arrow[rr,"f"]&&x\\
+w\arrow[ur]\arrow[rr,"h"]\arrow[dr]&&z\arrow[ur]\arrow[dr]&\\
+&v\arrow[rr,"g"']&&y,
+\end{tikzcd}
+\]
+其中 $h$ 满足 $P$。
+\SourcePage{118}
+ f) 对 $B$ 的每个\Term{morphism}{态射} $b'\xrightarrow{t}b$ 及 $E_b$ 中每个满足 $P$ 的\Term{morphism}{态射} $x\xrightarrow{f}y$，存在 $E_{b'}$ 中满足 $P$ 的\Term{morphism}{态射} $x'\xrightarrow{f'}y'$，以及\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}
+x'\arrow[r,"\alpha"]\arrow[d,"f'"']&x\arrow[d,"f"]\\
+y'\arrow[r,"\beta"']&y,
+\end{tikzcd}
+\]
+其中 $\alpha,\beta$ 为 $t$ 上的\Term{morphism}{态射}。
+\begin{SGAresult}{定义}{5.1.5}
+采用 (5.1.4) 的记号，若 $\mathcal{H}om(\Delta^\circ,E)$ 的\Term{object}{对象} $X$ 满足以下条件，就称它满足条件 $(\mathrm{APQ})$：
+
+(i) $\pi\circ X$ 的像为由 $B$ 的一个\Term{object}{对象} $G$ 定义的常\Term{simplicial-object}{单纯对象}。
+
+(ii) 作为 $\mathcal{H}om(\Delta^\circ,E_b)$ 的\Term{object}{对象}，$X$ 为\Term{sigma-split}{\(\sigma\)-分裂的}。
+
+(iii) $X_0$ 满足条件 $Q$。
+
+(iv) 对每个整数 $n$，\Term{arrow}{箭头} $NX_{n+1}\to(\operatorname{cosq}_nX)_{n+1}$ 满足条件 $P$。
+\end{SGAresult}
+\textbf{5.1.6.} 以 $E_{(\mathrm{APQ})}$ 表示 $\mathcal{H}om(\Delta^\circ,E)$ 的下述\Term{subcategory}{子范畴}：\Term{object}{对象}为满足 $(\mathrm{APQ})$ 的\Term{simplicial-object}{单纯对象}；\Term{morphism}{态射}为 $\mathcal{H}om(\Delta^\circ,E)$ 中满足 $\pi(\alpha_n):\pi(X_n)\to\pi(Y_n)$ 对所有 $n$ 均为 $B$ 中同一个\Term{morphism}{态射}的\Term{morphism}{态射} $X\xrightarrow{\alpha}Y$。于是有\Term{canonical}{典范}\Term{functor}{函子} $\pi:E_{(\mathrm{APQ})}\to B$。
+\begin{SGAresult}{命题}{5.1.7}
+\Term{functor}{函子} $\pi$ 是\Term{surjective}{满射}。此外，对 $B$ 的每个\Term{object}{对象} $b$ 及 $E_{(\mathrm{APQ}),b}$ 中的每对\Term{object}{对象} $(X,Y)$，在 $E_{(\mathrm{APQ}),b}$ 中存在图
+\[
+\begin{tikzcd}
+&Z\arrow[dl]\arrow[dr]&\\
+X&&Y.
+\end{tikzcd}
+\]
+\end{SGAresult}
+\begin{proof}
+根据 (5.1.4) 的假设，证明由 (5.1.3) 立即得到。
+\end{proof}
+\begin{SGAresult}{命题}{5.1.8}
+设 $C$ 为\Term{category}{范畴}，$F:E_{(\mathrm{APQ})}\to C$ 为\Term{functor}{函子}；对 $F$ 引入下述条件：
+
+(i) 对 $B$ 的每个\Term{object}{对象} $b$，$F$ 到 $E_{(\mathrm{APQ}),b}$ 的\Term{restriction}{限制}均经过由 $E_{(\mathrm{APQ}),b}$ 的\Term{object}{对象}定义的\Term{indiscrete-category}{粗范畴}\footnote{若对每对\Term{object}{对象} $(x,y)$，$\operatorname{Hom}(x,y)$ 恰有一个元素，则称一个\Term{category}{范畴}为\Term{indiscrete-category}{粗范畴}。}\Term{resolution}{分解}。
+\SourcePage{119}
+(ii) 对 $B$ 的每个\Term{morphism}{态射} $t:b'\to b$，以及 $t$ 上的每对\Term{morphism}{态射} $(X'\to X,Y'\to Y)$，图
+\[
+\begin{tikzcd}
+F(X')\arrow[r]\arrow[d,"\alpha"']&F(X)\arrow[d,"\alpha"]\\
+F(Y')\arrow[r]&F(Y)
+\end{tikzcd}
+\]
+交换，其中 $\alpha,\alpha'$ 是条件 (i) 确定的\Term{arrow}{箭头}。
+
+则\Term{functor}{函子} $G\mapsto G\circ\pi$ 在\Term{category}{范畴} $\mathcal{H}om(B,C)$ 与 $\mathcal{H}om(E_{(\mathrm{APQ})},C)$ 中由满足条件 (i)、(ii) 的\Term{functor}{函子}定义的\Term{full-subcategory}{满子范畴}之间诱导一个\Term{equivalence-of-categories}{等价}。
+\end{SGAresult}
+\begin{proof}
+证明细节留给读者。只指出如何证明上述\Term{functor}{函子}\Term{essentially-surjective}{本质满射}。
+设 $F:E_{(\mathrm{APQ})}\to C$ 满足条件 (i)、(ii)。对 $B$ 的每个\Term{object}{对象} $b$，选择 $E_{(\mathrm{APQ}),b}$ 的\Term{object}{对象} $X$，置 $\overline F(b)=F(X)$；然后验证 $\overline F(b)$ 关于 $b$ \Term{functoriality}{函子地}变化。
+\end{proof}
+
+\textbf{5.2. \Term{characteristic-zero}{特征零}域上\Term{finite-type}{有限型}\Term{scheme}{概形}的\Term{singular-cohomology}{奇异上同调}。} 本小节中，$k$ 表示一个\Term{characteristic-zero}{特征零}域。
+\textbf{5.2.0.} 以 $\operatorname{Sch}_f/k$（分别以 $\operatorname{Ann}$）表示 $k$ 上\Term{locally-finite-type}{局部有限型}\Term{scheme}{概形}（分别为复\Term{analytic-space}{解析空间}）的\Term{category}{范畴}。借助\Term{canonical}{典范}\Term{functor}{函子} $\operatorname{Sch}_f/k\to\operatorname{Top}$（分别为 $\operatorname{Ann}\to\operatorname{Top}$），将 $\operatorname{Sch}_f/k$（分别为 $\operatorname{Ann}$）的所有\Term{simplicial-object}{单纯对象}视为 $\operatorname{Top}$ 的\Term{simplicial-object}{单纯对象}。沿用 (4.1.0) 中关于\Term{cohomological-descent}{上同调下降}的数据。
+按通常记号，以 $S\mapsto S^{\mathrm{an}}$ 表示 G.A.G.A. 中定义的\Term{canonical}{典范}\Term{functor}{函子} $\operatorname{Sch}_f/\mathbf C\to\operatorname{Ann}$。
+
+\textbf{5.2.1.} 设 $X$ 为 $\operatorname{Sch}_f/k$（分别为 $\operatorname{Ann}$）的\Term{simplicial-object}{单纯对象}。\Term{scheme}{概形}\Term{morphism}{态射}（分别为\Term{analytic-space}{解析空间}\Term{morphism}{态射}）的\Term{de-rham-complex}{de Rham 复形}构造的通常相容性，使我们可以构造 $D^+((X,\mathbf Z))$ 中的\Term{complex}{复形} $\Omega_{X/k}^{\mathrm{Zar}\,\bullet}$（分别为 $\Omega_{X/\mathbf C}^\bullet$），使对每个整数 $i$，$R^+e_i^*(\Omega_{X/k}^{\mathrm{Zar}\,\bullet})$（分别为 $R^+e_i^*(\Omega_{X/\mathbf C}^\bullet)$）为\Term{de-rham-complex}{de Rham 复形} $\Omega_{X_i/k}^{\mathrm{Zar}\,\bullet}$（分别为 $\Omega_{X_i/\mathbf C}^\bullet$）。
+设 $X\xrightarrow{u}C_S^\Delta$ 为带\Term{augmentation}{增广}的 $\operatorname{Sch}_f/k$（分别为 $\operatorname{Ann}$）的\Term{simplicial-object}{单纯对象}。将 $H_{\mathrm{DR}}^{\mathrm{Zar}\,\bullet}(u)$（分别为 $H_{\mathrm{DR}}^\bullet(u)$ 和 $H^\bullet(u,\mathbf C)$）定义为\Term{complex}{复形} $R^+\bar u_*(\Omega_{X/k}^{\mathrm{Zar}\,\bullet})$（分别为 $R^+\bar u_*(\Omega_{X/\mathbf C}^\bullet)$ 和 $R^+\bar u_*(\mathbf C)$）的\Term{hypercohomology}{超上同调}群。
+
+\SourcePage{120}
+\textbf{5.2.2.} 若 $X\xrightarrow{u}C_S^\Delta$ 是 $\operatorname{Sch}_f/\mathbf C$ 的\Term{semisimplicial-object}{半单纯对象}，则有三个\Term{canonical}{典范}\Term{morphism}{态射}：
+\[
+\begin{aligned}
+H_{\mathrm{DR}}^{\mathrm{Zar}\,\bullet}(u)&\xrightarrow{\alpha}H_{\mathrm{DR}}^\bullet(u^{\mathrm{an}}),\\
+H^\bullet(u^{\mathrm{an}},\mathbf C)&\xrightarrow{\beta}H_{\mathrm{DR}}^\bullet(u^{\mathrm{an}}),\\
+H^\bullet(S^{\mathrm{an}},\mathbf C)&\xrightarrow{\gamma}H^\bullet(u^{\mathrm{an}},\mathbf C).
+\end{aligned}
+\]
+\begin{SGAresult}{命题}{5.2.3}
+采用 (5.2.2) 的记号，假定对每个 $n$，$X_n$ 均\Term{smooth}{光滑}；则 $\alpha,\beta$ 均为\Term{isomorphism}{同构}。此外，若 $X^{\mathrm{an}}\xrightarrow{u^{\mathrm{an}}}C_{S^{\mathrm{an}}}^\Delta$ 为 $S^{\mathrm{an}}$ 对\Term{universal-cohomological-descent}{普遍} 1-\Term{cohomological-descent}{上同调下降}\Term{topology}{拓扑}的\Term{hypercovering}{超覆盖}，则 $\gamma$ 为\Term{isomorphism}{同构}。
+\end{SGAresult}
+\begin{proof}
+$\alpha$ 为\Term{isomorphism}{同构}由 [[6] 定理 $1'$] 得出。由 Poincaré 引理，$\beta$ 为\Term{isomorphism}{同构}。命题最后一部分由 (3.3.3) 得出。
+\end{proof}
+\textbf{5.2.4.} 现在对如下情形应用 (5.1.4)：$B=\operatorname{Sch}_f/k$，$E$ 是 $B$ 上的\Term{category}{范畴}，使得对每个\Term{scheme}{概形} $S$，\Term{fibre-category}{纤维范畴} $E_S$ 为 $\operatorname{Sch}_f/k$ 中位于 $S$ 上的\Term{scheme}{概形}的\Term{category}{范畴}；位于 $B$ 的\Term{arrow}{箭头}之上的\Term{arrow}{箭头}按显然方式定义。若 $S$ 上的\Term{morphism}{态射} $h:X\to Y$ 满足 $X$ 在 $k$ 上\Term{smooth}{光滑}，且 $h$ 为\Term{finite}{有限}多个各自满足下述条件之一的\Term{morphism}{态射}的复合，则称它满足性质 $P$：
+
+(i) 为一族\Term{etale-morphism}{平展}\Term{surjective}{满射}\Term{morphism}{态射}的和；
+
+(ii) 为一族\Term{proper-morphism}{固有}\Term{surjective}{满射}\Term{morphism}{态射}的和。
+
+若 $E_S$ 的\Term{scheme}{概形} $X$ 的\Term{structural-morphism}{结构态射} $X\to S$ 满足性质 $P$，则称它满足性质 $Q$。
+请读者借助\Term{resolution-of-singularities}{奇点解消}验证 (5.1.4) 的所有条件均成立。
+群 $H_{\mathrm{DR}}^{\mathrm{Zar}\,\bullet}(u)$ 定义了从\Term{category}{范畴} $E_{(\mathrm{APQ})}$ 到\Term{graded-abelian-group}{分次阿贝尔群}\Term{category}{范畴}的\Term{contravariant-functor}{反变函子}，记为 $H_{\mathrm{DR}}^{\mathrm{Zar}\,\bullet}$。
+\begin{SGAresult}{命题}{5.2.5}
+\Term{functor}{函子} $H_{\mathrm{DR}}^{\mathrm{Zar}\,\bullet}$ 满足 (5.1.8) 的条件。
+\end{SGAresult}
+\begin{proof}
+由 Lefschetz 原理，归结到 $k=\mathbf C$ 的情形。此时，对每个\Term{morphism}{态射} $S'\xrightarrow{t}S$，以及 $t$ 上的每对\Term{morphism}{态射} $(u'\to u,v'\to v)$，
+\SourcePage{121}
+有\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}[column sep=huge,row sep=large]
+H_{\mathrm{DR}}^{\mathrm{Zar}\,\bullet}(u')\arrow[r]\arrow[d,"\gamma^{-1}\beta^{-1}\alpha"']&H_{\mathrm{DR}}^{\mathrm{Zar}\,\bullet}(u)\arrow[d,"\gamma^{-1}\beta^{-1}\alpha"]\\
+H^\bullet(S'^{\mathrm{an}},\mathbf C)\arrow[r,"{H^\bullet(t^{\mathrm{an}},\mathbf C)}"]&H^\bullet(S^{\mathrm{an}},\mathbf C)\\
+H_{\mathrm{DR}}^{\mathrm{Zar}\,\bullet}(v')\arrow[r]\arrow[u,"\gamma^{-1}\beta^{-1}\alpha"]&H_{\mathrm{DR}}^{\mathrm{Zar}\,\bullet}(v)\arrow[u,"\gamma^{-1}\beta^{-1}\alpha"']
+\end{tikzcd}
+\]
+证明完成。
+\end{proof}
+\begin{SGAresult}{定义}{5.2.6}
+由 (5.1.8) 从 $H_{\mathrm{DR}}^{\mathrm{Zar}\,\bullet}$ 定义的\Term{contravariant-functor}{反变函子}记为 $H^\bullet(*,k)$。对每个 $k$ 上\Term{locally-finite-type}{局部有限型}\Term{scheme}{概形} $S$，\Term{graded-abelian-group}{分次阿贝尔群} $H^\bullet(S,k)$ 称为 $S$ 的\Term{singular-cohomology}{奇异上同调}。
+\end{SGAresult}
+\textbf{5.2.7.} 最后用一个例子说明本小节引入的一般原理。先回顾：若 $S$ 是复\Term{analytic-space}{解析空间}，则 $S$ 的\Term{de-rham-cohomology}{de Rham 上同调}记为 $H_{\mathrm{DR}}^\bullet(S)$，按定义为\Term{de-rham-complex}{de Rham 复形} $\Omega_{S/\mathbf C}^\bullet$ 的\Term{hypercohomology}{超上同调}。
+\begin{SGAresult}{命题}{5.2.8}
+（Blum--Herrera。）设 $S$ 是 $\mathbf C$ 上\Term{locally-finite-type}{局部有限型}\Term{scheme}{概形}。\Term{canonical}{典范}\Term{arrow}{箭头}
+\[
+H^\bullet(S^{\mathrm{an}},\mathbf C)\longrightarrow H_{\mathrm{DR}}^\bullet(S^{\mathrm{an}})
+\]
+在\Term{graded-abelian-group}{分次阿贝尔群}\Term{category}{范畴}中具有一个关于 $S$ \Term{functoriality}{函子性的}\Term{retraction}{缩回}。
+\end{SGAresult}
+\begin{proof}
+由 (5.1.8)，只须考虑由上述\Term{morphism}{态射}与 $\pi$ 复合得到的\Term{morphism}{态射}
+$H^\bullet(*,\mathbf C)\circ\bar\pi\to H_{\mathrm{DR}}^\bullet\circ\bar\pi$。
+对每个\Term{augmentation}{增广} $X\xrightarrow{u}C_S^\Delta$，使用\Term{canonical}{典范}\Term{morphism}{态射} $L^+\bar u^*(\Omega_{S/\mathbf C}^\bullet)\to\Omega_{X/\mathbf C}^\bullet$，定义一个\Term{natural-transformation}{函子态射} $H_{\mathrm{DR}}^\bullet\circ\bar\pi\to H_{\mathrm{DR}}^\bullet$，使下图交换：
+\[
+\begin{tikzcd}[column sep=large]
+H_{\mathrm{DR}}^\bullet&H_{\mathrm{DR}}^\bullet\circ\bar\pi\arrow[l]\\
+H^\bullet(*,\mathbf C)\circ\bar\pi\arrow[u,"\beta\circ\gamma","\sim"']\arrow[ur]&
+\end{tikzcd}
+\]
+\SourcePage{122}
+这就给出了所求的\Term{retraction}{缩回}。
+\end{proof}
+\begin{SGAresult}{注记}{5.2.9}
+一旦在解析\Term{category}{范畴}中有\Term{resolution-of-singularities}{奇点解消}，则 (5.2.8) 的陈述对于任意\Term{analytic-space}{解析空间}仍然成立。
+\end{SGAresult}
+
+\textbf{5.3. 混合 Hodge 理论。} 这里给出一个技术性结果，它在 [2] 中起关键\Term{action}{作用}。
+$k$ 为一个\Term{characteristic-zero}{特征零}域。
+
+\textbf{5.3.1.} 设 $\operatorname{Sch}_{fs}/k$ 为 $k$ 上\Term{separated-morphism}{分离}\Term{finite-type}{有限型}\Term{scheme}{概形}的\Term{category}{范畴}。以 $E\xrightarrow{\pi}\operatorname{Sch}_{fs}/k$ 表示如下定义的、位于 $\operatorname{Sch}_{fs}/k$ 上的\Term{category}{范畴}：
+
+若 $S$ 为 $\operatorname{Sch}_{fs}/k$ 的\Term{object}{对象}，则 $E_S$ 的\Term{object}{对象}是三元组 $(\overline X,X,i)$，其中 $\overline X$ 是 $k$ 上\Term{reduced-scheme}{既约}\Term{projective-scheme}{射影概形}，$X$ 是 $S$ 上\Term{proper-morphism}{固有}的\Term{scheme}{概形}，$i:X\to\overline X$ 是 $k$ 上的\Term{open-immersion}{开浸入}，且 $i(X)$ 在 $\overline X$ 中\Term{dense}{稠密}。
+
+若 $t:S'\to S$ 为\Term{scheme}{概形}\Term{morphism}{态射}，$(\overline X,X,i)$ 为 $S$ 上的\Term{object}{对象}，$(\overline X',X',i')$ 为 $S'$ 上的\Term{object}{对象}，则从 $(\overline X,X,i)$ 到 $(\overline X',X',i')$ 的 $t$ 上\Term{morphism}{态射}，是二元组 $(\overline h,h)$，其中 $\overline h:\overline X'\to\overline X$ 为 $k$ 上的\Term{morphism}{态射}，$h:X'\to X$ 为 $S$ 上的\Term{morphism}{态射}，并使下图交换：
+\[
+\begin{tikzcd}
+X'\arrow[r,"i'"]\arrow[d,"h"']&\overline X'\arrow[d,"\overline h"]\\
+X\arrow[r,"i"']&\overline X.
+\end{tikzcd}
+\]
+注意：由\Term{proper-morphism}{固有性}的假设得到 $\overline h^{-1}(i(X))=i(X')$。
+\begin{SGAresult}{引理}{5.3.2}
+对 $\operatorname{Sch}_{fs}/k$ 的每个\Term{object}{对象} $S$，\Term{category}{范畴} $E_S$ \Term{nonempty}{非空}，具有\Term{nonempty}{非空}\Term{projective-limit}{投射极限}以及不交且\Term{universal}{普遍}的\Term{finite}{有限}\Term{direct-sum}{直和}。
+\end{SGAresult}
+\begin{proof}
+$E_S$ \Term{nonempty}{非空}由 Chow 引理得到。
+这里只给出 $E_S$ 的两个\Term{object}{对象} $(\overline X,X,i)$、$(\overline X',X',i')$ 的\Term{direct-product}{直积}的构造。
+\Term{canonical}{典范}\Term{arrow}{箭头}
+\[
+j:X\times_S X'\longrightarrow\overline X\times_k\overline X'
+\]
+是一个\Term{immersion}{浸入}。以 $T$ 表示 $\overline X\times_k\overline X'$ 的一个\Term{reduced-scheme}{既约子概形}，其底\Term{space}{空间}为 $j$ 的像的\Term{closure}{闭包}。则 $(T,(X\times_S X')_{\mathrm{red}},j_{\mathrm{red}})$ 满足所需的\Term{universal-property}{泛性质}。
+\end{proof}
+\textbf{5.3.3.} 设 $S$ 为 $\operatorname{Sch}_{fs}/k$ 的\Term{object}{对象}。若 $E_S$ 的\Term{object}{对象} $(\overline X,X,i)$ 满足 $\overline X$ 在 $k$ 上\Term{smooth}{光滑}，且 $i(X)$ 为一个\Term{normal-crossings-divisor}{正规交叉除子}的补集，
+\SourcePage{123}
+则称它满足性质 $Q$。若\Term{morphism}{态射} $(\overline h,h):(\overline X',X',i')\to(\overline X,X,i)$ 满足 $\overline h$ \Term{surjective}{满射}，且 $(\overline X',X',i')$ 满足性质 $Q$，则称它满足性质 $P$。
+\begin{SGAresult}{命题}{5.3.4}
+采用 (5.3.3) 的记号，(5.1.4) 的所有条件均成立。
+\end{SGAresult}
+\begin{proof}
+利用\Term{resolution-of-singularities}{奇点解消}，容易验证条件 a)、b)、d)、c)。此外，c) 是 f) 的推论；因此只须验证 f)。
+只须说明，每个\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}
+&Z\arrow[r,"i_Z"]\arrow[d,"h"']&\overline Z\arrow[d,"\overline h"]\\
+&X\arrow[r,"i_X"]\arrow[d]&\overline X\arrow[d]\\
+S'\arrow[r,"t"']&S\arrow[r]&k,
+\end{tikzcd}
+\]
+其中 $(\overline X,X,i_X)$、$(\overline Z,Z,i_Z)$ 是 $E_S$ 的\Term{object}{对象}，且 $\overline h$ \Term{surjective}{满射}，均可补成一个\Term{commutative-diagram}{交换图}：
+\[
+\begin{tikzcd}[row sep=large,column sep=small]
+Z'\arrow[rr]\arrow[dr,"i_{Z'}"]\arrow[dd,"h'"']&&Z\arrow[dr,"i_Z"]\arrow[dd,"h"]&\\
+&\overline Z'\arrow[rr]\arrow[dd,"\overline h'" near start]&&\overline Z\arrow[dd,"\overline h"]\\
+X'\arrow[rr]\arrow[dr,"i_{X'}"]\arrow[dd]&&X\arrow[dr,"i_X"]\arrow[dd]&\\
+&\overline X'\arrow[rr]\arrow[dd]&&\overline X\arrow[dd]\\
+S'\arrow[rr,"t"]\arrow[dr]&&S\arrow[dr]&\\
+&k\arrow[rr,equal]&&k,
+\end{tikzcd}
+\]
+其中 $(\overline X',X',i_{X'})$、$(\overline Z',Z',i_{Z'})$ 为 $E_{S'}$ 的\Term{object}{对象}，且 $\overline h'$ \Term{surjective}{满射}。
+考虑图
+\[
+\begin{tikzcd}
+T\arrow[r,"\varphi"]\arrow[d,hook,"i_T"']&S'\arrow[r,"t"]&S\arrow[d]\\
+\overline T\arrow[rr,"\psi"']&&k,
+\end{tikzcd}
+\]
+\SourcePage{124}
+其中 $\varphi$ \Term{proper-morphism}{固有}，$\psi$ \Term{projective-morphism}{射影}。由\Term{base-change}{基变换}得到图
+\[
+\begin{tikzcd}[row sep=large,column sep=small]
+Z\times_S T_{\mathrm{red}}\arrow[rr]\arrow[dr,"p"]\arrow[dd]&&Z\arrow[dr]\arrow[dd]&\\
+&\overline Z\times_k\overline T_{\mathrm{red}}\arrow[rr]\arrow[dd]&&\overline Z\arrow[dd]\\
+X\times_S T_{\mathrm{red}}\arrow[rr]\arrow[dr,"q"]\arrow[dd]&&X\arrow[dr]\arrow[dd]&\\
+&\overline X\times_k\overline T_{\mathrm{red}}\arrow[rr]\arrow[dd]&&\overline X\arrow[dd]\\
+T\arrow[r]\arrow[dr]&S'\arrow[r]&S\arrow[dr]&\\
+&\overline T\arrow[rr]&&k.
+\end{tikzcd}
+\]
+这里 $p,q$ 为\Term{immersion}{浸入}；此时只须把 $\overline Z\times_k\overline T_{\mathrm{red}}$ 和 $\overline X\times_k\overline T_{\mathrm{red}}$ 替换为 $p,q$ 的闭像，就得到所需的图。这完成了 (5.3.4) 的证明。
+\end{proof}
+
+\textbf{参考文献}
+\begin{enumerate}[label={[\arabic*]}]
+\item T. Blum--M. Herrera：\emph{\Term{analytic-space}{解析空间}的 \Term{de-rham-cohomology}{de Rham 上同调}}（De Rham Cohomology of an analytic Space）。Inv. Math. 第 7 卷，第 4 分册，1969 年，第 275--296 页。
+\item P. Deligne：\emph{Hodge 理论 III}（Théorie de Hodge III），I.H.E.S.
+\item P. Gabriel--M. Zisman：\emph{\Term{homotopy}{同伦}理论与分式演算}（Homotopy theory and calculus of fractions）。数学成果丛书（Ergebnisse der Mathematik），第 35 卷，Springer，1967 年。
+\item J. Giraud：\emph{\Term{descent}{下降}方法}（Méthode de la descente）。法国数学会回忆录（Mémoires de la S.M.F.）第 2 号，1964 年。
+\item R. Godement：\emph{层论}（Théorie des faisceaux）。斯特拉斯堡大学数学研究所出版物（Publications de l'Institut de Mathématique de l'Université de Strasbourg），Hermann，1964 年。
+\item A. Grothendieck：\emph{\Term{algebraic-variety}{代数簇}的 \Term{de-rham-cohomology}{de Rham 上同调}}（On the De Rham Cohomology of Algebraic Varieties）。高等科学研究所出版物（Publications de l'I.H.E.S.）第 29 号。
+\item R. Hartshorne：\emph{\Term{residue}{留数}与\Term{duality}{对偶}}（Residues and Duality）。Springer 讲义（Springer Lecture Notes），第 20 号。
+\item G. Segal：\emph{分类\Term{space}{空间}与\Term{spectral-sequence}{谱序列}}（Classifying spaces and Spectral sequences）。高等科学研究所出版物（Publications de l'I.H.E.S.）第 34 号。
+\item J. L. Verdier：\emph{\Term{derived-category}{导出范畴}——状态 0}（Catégories dérivées -- État 0），I.H.E.S.
+\end{enumerate}

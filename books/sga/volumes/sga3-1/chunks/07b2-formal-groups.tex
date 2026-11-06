@@ -1,0 +1,765 @@
+\SourcePage{523}
+\SGAsection{1}{伪紧环上的形式簇}
+\textbf{1.1.} 对每个\Term{pseudocompact}{伪紧}环 $A$，可按如下方式赋予一个\Term{formal-scheme}{形式概形}（EGA I，10.4.2）：其\Term{underlying-topological-space}{底拓扑空间}是 $A$ 的开\Term{prime-ideal}{素理想}（因而也是\Term{maximal-ideal}{极大理想}）组成的\Term{set}{集合} $\Upsilon(A)$，赋予\Term{discrete-topology}{离散拓扑}；在 $\Upsilon(A)$ 的\Term{subset}{子集} $E$ 上，\Term{structure-sheaf}{结构层}的\Term{section}{截面}\Term{space}{空间}是\Term{cartesian-product}{笛卡儿积} $\prod_{\mathfrak m\in E}A_{\mathfrak m}$。
+\SourcePage{524}
+这样得到的\Term{formal-scheme}{形式概形}记作 $\operatorname{Spf}(A)$，称为 $A$ 的\Term{formal-spectrum}{形式谱}。\footnote{编者注（37）：参见注记 0.1.2。}
+
+若 $A$ 和 $B$ 是两个\Term{pseudocompact}{伪紧}环，则从 $\operatorname{Spf}(B)$ 到 $\operatorname{Spf}(A)$ 的\Term{morphism}{态射}，就是给定映射 $f:\Upsilon(B)\to\Upsilon(A)$ 以及一族\Term{continuous}{连续}\Term{homomorphism}{同态} $f_y^\natural:A_{f(y)}\to B_y$，其中 $y\in\Upsilon(B)$。这样的\Term{morphism}{态射}诱导一个\Term{continuous}{连续}\Term{homomorphism}{同态}
+\[
+ f^\natural:A=\prod_{x\in\Upsilon(A)}A_x\longrightarrow B=\prod_{y\in\Upsilon(B)}B_y.
+\]
+反之亦然：
+\begin{SGAresult}{命题}{}
+\Term{contravariant-functor}{反变函子} $A\mapsto\operatorname{Spf}(A)$ 是\Term{fully-faithful}{全忠实}的。
+\end{SGAresult}
+\begin{proof}
+若 $\varphi:A\to B$ 是\Term{continuous}{连续}\Term{algebra}{代数}\Term{homomorphism}{同态}，则 $B$ 的开\Term{maximal-ideal}{极大理想} $\mathfrak n$ 的原像 $\varphi^{-1}(\mathfrak n)$ 是 $A$ 的开\Term{prime-ideal}{素理想}，因而在 $A$ 中是\Term{maximal-ideal}{极大理想}。于是得到映射 $\Upsilon(B)\to\Upsilon(A)$，$\mathfrak n\mapsto\varphi^{-1}(\mathfrak n)$；而 $\varphi$ 诱导\Term{continuous}{连续}\Term{homomorphism}{同态} $A_{\varphi^{-1}(\mathfrak n)}\to B_{\mathfrak n}$。所以 $\varphi$ 诱导\Term{formal-scheme}{形式概形}\Term{morphism}{态射} $\operatorname{Spf}(\varphi):\operatorname{Spf}(B)\to\operatorname{Spf}(A)$。容易验证 $\operatorname{Spf}(\varphi)^\natural=\varphi$，且对每个\Term{morphism}{态射} $f:\operatorname{Spf}(B)\to\operatorname{Spf}(A)$，有 $\operatorname{Spf}(f^\natural)=f$，命题得证。
+\end{proof}
+尽管这里只讨论形如 $\operatorname{Spf}(A)$ 的\Term{formal-scheme}{形式概形}，我们仍采用\Term{formal-scheme}{形式概形}的语言，而不用\Term{pseudocompact}{伪紧}环的语言，以便让几何直觉支持我们的论断。
+
+\textbf{1.2.} 设 $k$ 是一个\Term{pseudocompact}{伪紧}环。
+\begin{SGAresult}{定义}{1.2.A}
+\footnote{编者注（38）：为便于后文引用，增添了编号 1.2.A 至 1.2.E。}
+我们称 $\operatorname{Spf}(k)$ 上的\Term{formal-scheme}{形式概形} $X$ 为 $k$ 上的\Term{formal-variety}{形式簇}，如果对于某个 $k$-\Term{profinite-algebra}{代有限代数} $A$，它\Term{isomorphism}{同构}于 $k$-\Term{formal-scheme}{形式概形} $\operatorname{Spf}(A)$。这时 $A$ \Term{isomorphism}{同构}于 $X$ 的\Term{affine-algebra}{仿射代数}，即 $X$ 的\Term{structure-sheaf}{结构层} $\mathcal O_X$ 的\Term{section}{截面}\Term{algebra}{代数}。
+
+以 $\mathsf{Vaf}_{/k}$ 表示 $\operatorname{Spf}(k)$ 上\Term{formal-scheme}{形式概形}\Term{category}{范畴}的一个\Term{full-subcategory}{满子范畴}，其\Term{object}{对象}为 $k$-\Term{formal-variety}{形式簇}。\footnote{编者注（39）：注意，由\Term{morphism}{态射}的定义（1.1），每个 $X\in\operatorname{Ob}\mathsf{Vaf}_{/k}$ 都是单点\Term{formal-variety}{形式簇} $\operatorname{Spf}(\mathcal O_{X,x})$（$x\in X$）在 $\mathsf{Vaf}_{/k}$ 中的\Term{direct-sum}{直和}。}
+\end{SGAresult}
+由 1.1，\Term{functor}{函子} $A\mapsto\operatorname{Spf}(A)$ 给出 $\mathsf{Alp}_{/k}$（0.4.1）到 $\mathsf{Vaf}_{/k}$ 的\Term{anti-equivalence}{反等价}。因此，由推论 0.4.2，得到：
+\begin{SGAresult}{命题}{1.2.B}
+\Term{category}{范畴} $\mathsf{Vaf}_{/k}$ 有\Term{inverse-limit}{投射极限}和\Term{inductive-limit}{归纳极限}。\footnote{编者注（40）：特别地，$\mathsf{Vaf}_{/k}$ 中存在\Term{cokernel}{余核}，见下文。另一方面，即使一个 $\mathsf{Vaf}_{/k}$ 中的\Term{filtered-projective-limit}{滤过投射极限}的所有\Term{transition-morphism}{转移态射}都\Term{surjectivity}{满射}，它仍可能为空，参见编者注（34）。}
+\end{SGAresult}
+例如，设 $X\in\operatorname{Ob}\mathsf{Vaf}_{/k}$，$f:Y\to X$ 和 $g:Z\to X$ 是 $X$ 上的两个 $k$-\Term{formal-variety}{形式簇}，而 $A,B,C$ 分别为 $X,Y,Z$ 的\Term{affine-algebra}{仿射代数}；
+\SourcePage{525}
+由 0.4.1，\Term{fiber-product}{纤维积} $Y\times_X Z$ 的\Term{affine-algebra}{仿射代数}可等同于 $B\widehat\otimes_A C$。\footnote{编者注（41）：注意，$Y\times_X Z$ 是对 $x\in X$ 的\Term{formal-variety}{形式簇} $B_x\widehat\otimes_{\mathcal O_{X,x}}C_x$ 的\Term{direct-sum}{直和}；其中 $B_x$ 是满足 $f(y)=x$ 的各个 $\mathcal O_{Y,y}$ 的积，$C_x$ 以类似方式定义。2.5.1 中将使用这一点。} 所以 $\mathsf{Vaf}_{/k}$ 到所有 $k$-\Term{formal-scheme}{形式概形}的\Term{category}{范畴}中的\Term{inclusion-functor}{包含函子}与\Term{finite-inverse-limit}{有限投射极限}交换（参见 EGA I，10.7）。
+
+$k$-\Term{formal-variety}{形式簇}的\Term{inductive-limit}{归纳极限}对应于其\Term{affine-algebra}{仿射代数}的\Term{inverse-limit}{投射极限}。
+\begin{SGAresult}{例}{1.2.C（\Term{cokernel}{余核}）}
+例如，设 $d,e:X\rightrightarrows Y$ 是 $\mathsf{Vaf}_{/k}$ 中的一对\Term{arrow}{箭头}；$\operatorname{Coker}(d,e)$ 的\Term{affine-algebra}{仿射代数}\Term{isomorphism}{同构}于 $X,Y$ 的\Term{affine-algebra}{仿射代数}上所诱导\Term{homomorphism}{同态}对的核。但也可如下构造 $\operatorname{Coker}(d,e)$：其\Term{underlying-topological-space}{底拓扑空间}是底\Term{space}{空间}的\Term{cokernel}{余核}；\footnote{编者注（42）：即将 $Y$ 中的 $d(x)$ 与 $e(x)$ 对每个 $x\in X$ 作等同所得的\Term{quotient-set}{商集}，赋予\Term{quotient-topology}{商拓扑}；这里该\Term{topology}{拓扑}为\Term{discrete-topology}{离散拓扑}。} 设 $p$ 是 $Y$ 的\Term{underlying-set}{底集}到\Term{cokernel}{余核}的\Term{canonical-projection}{典范投影}，$z$ 是\Term{cokernel}{余核}中的一点，则 $\operatorname{Coker}(d,e)$ 在 $z$ 处的\Term{locally-algebraic}{局部代数}是下列\Term{arrow}{箭头}对的核：
+\[
+ d^\natural,e^\natural:\prod_{p(y)=z}\mathcal O_{Y,y}\rightrightarrows\prod_{q(x)=z}\mathcal O_{X,x},
+\]
+其中置 $q=p\circ d=p\circ e$，且 $d^\natural,e^\natural$ 由\Term{homomorphism}{同态} $d_x^\natural,e_x^\natural$ 诱导（记号如 1.1）。
+\end{SGAresult}
+\begin{SGAresult}{定义}{1.2.D}
+若 $\varphi:k\to\ell$ 是\Term{pseudocompact}{伪紧}\Term{ring-homomorphism}{环同态}，$X$ 是\Term{affine-algebra}{仿射代数}为 $A$ 的 $k$-\Term{formal-variety}{形式簇}，则经\Term{base-change}{基变换}所得的\Term{formal-scheme}{形式概形} $X\times_{\operatorname{Spf}(k)}\operatorname{Spf}(\ell)$ 是一个 $\ell$-\Term{formal-variety}{形式簇}，也记作 $X\widehat\otimes_k\ell$；其\Term{affine-algebra}{仿射代数}是\Term{completed-tensor-product}{完备张量积} $A\widehat\otimes_k\ell$（参见 0.5 及 EGA I，\S10）。
+\end{SGAresult}
+\begin{SGAresult}{注记}{1.2.E}
+由于每个 $k$ 上的\Term{formal-variety}{形式簇}都\Term{decomposable}{可分解}为 $k$ 的各个\Term{local-component}{局部分量}上的\Term{formal-variety}{形式簇}，在某些证明中，我们将假设 $k$ 是\Term{local-scheme}{局部}\Term{pseudocompact}{伪紧}环。
+\end{SGAresult}
+现在给出一些例子，同时约定所用的术语。
+
+\textbf{1.2.1.} 按定义，$k$-\Term{functor}{函子}是指从 $\mathsf{Alf}_{/k}$ 到 $\mathsf{Ens}$ 的\Term{covariant-functor}{协变函子}。由 1.1 和 0.4.2，将每个 $k$-\Term{formal-variety}{形式簇} $X$ 对应于\Term{functor}{函子}
+\[
+ \mathsf{Alf}_{/k}\longrightarrow\mathsf{Ens},\qquad C\longmapsto X(C)=\operatorname{Hom}_{\mathsf{Vaf}_{/k}}(\operatorname{Spf}(C),X),
+\]
+就可将 $\mathsf{Vaf}_{/k}\simeq(\mathsf{Alp}_{/k})^0$ 等同于 $k$-\Term{functor-category}{函子范畴}的一个\Term{full-subcategory}{满子范畴}。
+\SourcePage{526}
+后面将遇到这样的 $k$-\Term{functor}{函子} $\mathbf F$：它给 $\mathsf{Alf}_{/k}$ 的每个\Term{object}{对象} $C$ 赋予一个 $C$-模 $\mathbf F(C)$，给每个\Term{morphism}{态射} $\varphi:C\to D$ 赋予一个 $k$-\Term{linear}{线性}映射 $\mathbf F(\varphi):\mathbf F(C)\to\mathbf F(D)$，使得对 $x\in\mathbf F(C)$、$\lambda\in C$，有
+\[
+ \mathbf F(\varphi)(\lambda x)=\varphi(\lambda)\mathbf F(\varphi)(x).
+\]
+若以 $\mathbf O_k$ 表示把 $\mathsf{Alf}_{/k}$ 的每个\Term{object}{对象} $C$ 对应到其底环的环值 $k$-\Term{functor}{函子}，则按第 I 讲 3.1，这样的 $\mathbf F$ 带有一个 $\mathbf O_k$-模结构。
+
+\textbf{定义。}（i）称一个 $\mathbf O_k$-模 $\mathbf F$ 为\Term{admissible-module}{容许的}，如果 $\mathsf{Alf}_{/k}$ 中的每个\Term{morphism}{态射} $\varphi:C\to D$ 都诱导从 $D\otimes_C\mathbf F(C)$ 到 $\mathbf F(D)$ 的\Term{bijection}{双射}。\footnote{编者注（43）：这一术语为编者引入，参见 1.2.3 中的编者注（47）。}
+
+（ii）称 $\mathbf F$ 为\Term{flat}{平坦的}，如果它是\Term{admissible-module}{容许的}，且对 $\mathsf{Alf}_{/k}$ 的每个\Term{object}{对象} $C$，$\mathbf F(C)$ 都是\Term{flat}{平坦} $C$-模。\footnote{编者注（44）：因 $C$ 为 Artin 环，故它也是\Term{projective-module}{投射模}。}
+
+例如，若 $M$ 是一个 $k$-模（未必\Term{pseudocompact}{伪紧}），则和第 I 讲 4.6.1 一样，以 $\mathbf W(M)$ 表示 $\mathbf O_k$-模 $C\mapsto C\otimes_k M$；当 $M$ 在 $k$ 上\Term{flat}{平坦}时，$\mathbf W(M)$ 是\Term{flat}{平坦的}。
+
+此外，\Term{functor}{函子} $M\mapsto\mathbf W(M)$ 的\Term{right-adjoint}{右伴随}是把每个 $\mathbf O_k$-模 $\mathbf F$ 对应到 $k$-模 $\varprojlim_{\mathfrak l}\mathbf F(k/\mathfrak l)$ 的\Term{functor}{函子}，其中 $\mathfrak l$ 遍历 $k$ 的开\Term{ideal}{理想}。
+
+\textbf{1.2.2.} 今后总用 $\mathbf F$ 这样的粗体字母表示 $\mathbf O_k$-模；当 $k$ 为 Artin 环时，简单地用 $F$ 代替 $\mathbf F(k)$。在这种情形下，显然\Term{functor}{函子} $\mathbf F\mapsto F$ 诱导\Term{flat}{平坦} $\mathbf O_k$-\Term{module-category}{模范畴}与\Term{flat}{平坦} $k$-\Term{module-category}{模范畴}之间的\Term{equivalence}{等价}！因此，我们采用这些术语，只是为了能够像“$k$ 始终是 Artin 环”那样进行推理。
+
+按照第 I 讲 \S3.1，对其他\Term{algebraic-structure}{代数结构}也采用类似约定：例如，一个 $\mathbf O_k$-\Term{algebra}{代数}（相应地，$\mathbf O_k$-\Term{coalgebra}{余代数}、$\mathbf O_k$-\Term{lie-algebra}{Lie 代数}、$\mathbf O_k$-$p$-\Term{lie-algebra}{Lie 代数}）就是给定一个 $\mathbf O_k$-模 $\mathbf M$，并对 $\mathsf{Alf}_{/k}$ 的每个\Term{object}{对象} $C$，在 $\mathbf M(C)$ 上给定 $C$-\Term{algebra}{代数}（相应地，$C$-\Term{coalgebra}{余代数}、$C$-\Term{lie-algebra}{Lie 代数}、$C$-$p$-\Term{lie-algebra}{Lie 代数}）结构；还假设对 $\mathsf{Alf}_{/k}$ 中每个\Term{morphism}{态射} $\varphi:C\to D$，由 $\mathbf M(\varphi)$ 诱导的映射 $D\otimes_C\mathbf M(C)\to\mathbf M(D)$ 是 $D$-\Term{algebra}{代数}（相应地，$D$-\Term{coalgebra}{余代数}等）的\Term{homomorphism}{同态}。
+
+最后，若 $\mathbf F,\mathbf G$ 是两个 $\mathbf O_k$-模，则 $\mathbf F\otimes_k\mathbf G$ 表示 $\mathbf O_k$-模 $C\mapsto\mathbf F(C)\otimes_C\mathbf G(C)$。
+
+\textbf{1.2.3.}\footnote{编者注（45）：为便于后文引用，增添了下面的\Term{lemma}{引理}和编号 1.2.3.A 至 1.2.3.F。} 先从下面的\Term{lemma}{引理}开始。
+\SourcePage{527}
+\begin{SGAresult}{\Term{lemma}{引理}}{1.2.3.A}
+设 $k\to K$ 是\Term{pseudocompact}{伪紧}\Term{ring-morphism}{环态射}，$B$ 是\Term{pseudocompact}{伪紧} $K$-模，而 $M$ 是（不带\Term{topology}{拓扑}的）\Term{projective-module}{投射} $k$-模。有\Term{pseudocompact}{伪紧} $K$-模的\Term{canonical-isomorphism}{典范同构}
+\[
+ \theta:\operatorname{Hom}_k(M,k)\widehat\otimes_k B\xrightarrow{\sim}\operatorname{Hom}_k(M,B).\tag{2}
+\]
+这里 $M^*=\operatorname{Hom}_k(M,k)$ 赋予 0.2.2 中定义的\Term{topology}{拓扑}，从而成为\Term{pseudocompact}{伪紧} $k$-模；$\operatorname{Hom}_k(M,B)$ 的\Term{topology}{拓扑}以类似方式定义：下面的 $K$-\Term{submodule}{子模}构成零点的一个\Term{neighborhood}{邻域}基，其中 $x\in M$，$B'$ 是 $B$ 的开 $K$-\Term{submodule}{子模}：
+\[
+ \mathscr H(x,B')=\{f\in\operatorname{Hom}_k(M,B)\mid f(x)\in B'\}.
+\]
+最后，$M^*\widehat\otimes_k B$ 是由 $M^*$ 经\Term{base-change}{基变换}得到的\Term{pseudocompact}{伪紧} $K$-模，参见 0.5.A。
+\end{SGAresult}
+\begin{proof}
+当 $M=k$ 时，$\theta$ 显然是\Term{isomorphism}{同构}；此外，将式（2）两端视为关于 $M$ 的\Term{functor}{函子}，它们都将\Term{direct-sum}{直和}变成积（特别地，与\Term{finite}{有限}\Term{direct-sum}{直和}交换）。因此，当 $M$ 是自由 $k$-模时，式（2）是\Term{isomorphism}{同构}；继而当 $M$ 是\Term{projective-module}{投射模}时也如此。
+\end{proof}
+\begin{SGAresult}{定义}{1.2.3.B}
+设 $N$ 是\Term{pseudocompact}{伪紧} $k$-模。以 $\mathbf V_k^{\mathrm f}(N)$ 或 $N^\dagger$\footnote{编者注（46）：事实上不会使用后一记号，参见编者注（47）。} 表示这样的 $\mathbf O_k$-模：它将 $C\in\operatorname{Ob}\mathsf{Alf}_{/k}$ 对应到 $C\widehat\otimes_k N$ 的\Term{dual-module}{对偶模} $(C\widehat\otimes_k N)^\dagger$（0.2.2），即 $C$-模
+\[
+ \operatorname{Hom}_{\mathrm c}(C\widehat\otimes_k N,C)\simeq\operatorname{Hom}_{\mathrm c}(N,C_{|k}),
+\]
+其中 $C_{|k}$ 表示对 $C$ \Term{restriction-of-scalars}{限制标量}而得到的 $k$-模。这个 $\mathbf O_k$-模 $\mathbf V_k^{\mathrm f}(N)$ 称为 $N$ 的\Term{dual-module}{对偶}。
+\end{SGAresult}
+若 $k_{\mathfrak m}$ 是 $k$ 的一个\Term{local-component}{局部分量}，则对 $\mathsf{Alf}_{/k}$ 的每个\Term{object}{对象} $C$，
+\[
+ \operatorname{Hom}_{\mathrm c}(k_{\mathfrak m},C_{|k})=C_{\mathfrak m}=C\otimes_k k_{\mathfrak m}
+\]
+是\Term{projective-module}{投射} $C$-模，而且对 $\mathsf{Alf}_{/k}$ 的每个\Term{morphism}{态射} $C\to D$，有 $D\otimes_C C_{\mathfrak m}=D_{\mathfrak m}$；因此 $\mathbf V_k^{\mathrm f}(k_{\mathfrak m})$ 是\Term{flat}{平坦} $\mathbf O_k$-模（参见 1.2.1）。每个\Term{pseudocompact}{伪紧}\Term{projective-module}{投射} $k$-模都是形如 $k_{\mathfrak m}$ 的模的积（参见命题 0.2.1），故由推论 0.2.F 得到：
+\begin{SGAresult}{推论}{1.2.3.C}
+当 $N$ 为\Term{pseudocompact}{伪紧}\Term{projective-module}{投射} $k$-模时，$\mathbf V_k^{\mathrm f}(N)$ 是\Term{flat}{平坦} $\mathbf O_k$-模。
+\end{SGAresult}
+\begin{SGAresult}{定义}{1.2.3.D}
+反之，若 $\mathbf M$ 是\Term{admissible-module}{容许} $\mathbf O_k$-模（参见 1.2.1），\footnote{编者注（47）：若不假设 $\mathbf M$ \Term{admissible-module}{容许}，编者不能理解下面的定义，因此增添了这一假设。另一方面，记作 $\Gamma^*(\mathbf M)$ 而不记作 $\mathbf M^*$，以免将\Term{functor}{函子} $\mathbf M$ 的\Term{dual-module}{对偶模} $\mathbf M^*$ 与模 $N$ 的\Term{dual-module}{对偶函子} $N^\dagger$ 混淆，参见编者注（46）。最后，编者详细写出了 $\Gamma^*(\mathbf M)$ 的构造。} 我们把如下定义的\Term{pseudocompact}{伪紧} $k$-模称为 $\mathbf M$ 的\Term{dual-module}{对偶}，记作 $\Gamma^*(\mathbf M)$。令 $\mathfrak l$ 遍历 $k$ 的开\Term{ideal}{理想}，对每个 $k/\mathfrak l$-模
+\[
+ \mathbf M(k/\mathfrak l)^*=\operatorname{Hom}_{k/\mathfrak l}(\mathbf M(k/\mathfrak l),k/\mathfrak l)
+\]
+\SourcePage{528}
+赋予 0.2.2 中描述的\Term{topology}{拓扑}，使它成为\Term{pseudocompact}{伪紧} $k$-模。因当 $\mathfrak l\supset\mathfrak l'$ 时，$\mathbf M(k/\mathfrak l)\simeq\mathbf M(k/\mathfrak l')\otimes(k/\mathfrak l)$，故有\Term{transition-morphism}{转移态射}
+\[
+\operatorname{Hom}_{k/\mathfrak l'}(\mathbf M(k/\mathfrak l'),k/\mathfrak l')
+\longrightarrow\operatorname{Hom}_{k/\mathfrak l'}(\mathbf M(k/\mathfrak l'),k/\mathfrak l)
+=\operatorname{Hom}_{k/\mathfrak l}(\mathbf M(k/\mathfrak l),k/\mathfrak l).
+\]
+按定义，$\Gamma^*(\mathbf M)$ 是这个\Term{pseudocompact}{伪紧} $k$-模的（\Term{filtered}{滤过}）\Term{inverse-system}{投射系}的\Term{inverse-limit}{投射极限}。
+\end{SGAresult}
+以下再假设 $\mathbf M$ 是\Term{flat}{平坦} $\mathbf O_k$-模（参见 1.2.1）；于是每个 $\mathbf M(k/\mathfrak l')$ 都是\Term{projective-module}{投射} $k/\mathfrak l'$-模，故上述\Term{transition-morphism}{转移态射}\Term{surjectivity}{满射}。因在 $\mathsf{PC}(k)$ 中\Term{filtered-projective-limit}{滤过投射极限}是\Term{exact}{正合}的，各\Term{projection}{投影} $\Gamma^*(\mathbf M)\to\mathbf M(k/\mathfrak l)^*$ 也\Term{surjectivity}{满射}。
+
+若 $\tau:k\to K$ 是\Term{pseudocompact}{伪紧}\Term{ring-morphism}{环态射}，以 $\mathbf M\otimes_k K$ 或简单地以 $\mathbf M_K$ 表示如下定义的 $\mathbf O_K$-\Term{functor}{函子}。若 $C$ 是一个\Term{finite-length}{有限长} $K$-\Term{algebra}{代数}，则 $k\to C$ 的核是 $k$ 的开\Term{ideal}{理想} $\mathfrak l$，置 $\mathbf M_K(C)=\mathbf M(k/\mathfrak l)\otimes_k C$；对包含在 $\mathfrak l$ 中的每个开\Term{ideal}{理想} $\mathfrak l'$，都有 $\mathbf M_K(C)=\mathbf M(k/\mathfrak l')\otimes_k C$。于是将 $\Gamma_K^*(\mathbf M_K)$ 定义为下列\Term{pseudocompact}{伪紧} $K$-模的\Term{inverse-limit}{投射极限}，其中 $I$ 遍历 $K$ 的开\Term{ideal}{理想}：
+\[
+ \operatorname{Hom}_{K/I}(\mathbf M_K(K/I),K/I)=\operatorname{Hom}_{k/\mathfrak l}(\mathbf M(k/\mathfrak l),K/I),
+\]
+右端的 $\mathfrak l$ 是任一满足 $\tau(\mathfrak l)\subset I$ 的 $k$ 的开\Term{ideal}{理想}。此外，由 1.2.3.A，右端可等同于 $\mathbf M(k/\mathfrak l)^*\widehat\otimes_k(K/I)$。因\Term{projection}{投影} $\Gamma^*(\mathbf M)\to\mathbf M(k/\mathfrak l)^*$ \Term{surjectivity}{满射}，便可看出 $\mathbf M(k/\mathfrak l)^*\widehat\otimes_k(K/I)$ 的\Term{inverse-limit}{投射极限}正是\Term{pseudocompact}{伪紧} $K$-模 $\Gamma^*(\mathbf M)\widehat\otimes_k K$（参见 0.5.A）。这样得到：对每个\Term{flat}{平坦} $\mathbf O_k$-模 $\mathbf M$，$\Gamma^*(\mathbf M)$ 的形成与\Term{base-extension}{基底扩张}交换，即
+\[
+ \Gamma_K^*(\mathbf M\otimes_k K)\simeq\Gamma^*(\mathbf M)\widehat\otimes_k K.\tag{$\star$}
+\]
+\begin{SGAresult}{命题}{1.2.3.E}
+（i）\Term{functor}{函子} $N\mapsto\mathbf V_k^{\mathrm f}(N)$ 与 $\mathbf M\mapsto\Gamma^*(\mathbf M)$ 定义了\Term{pseudocompact}{伪紧}\Term{projective-module}{投射} $k$-\Term{module-category}{模范畴}与\Term{flat}{平坦} $\mathbf O_k$-\Term{module-category}{模范畴}之间的\Term{anti-equivalence}{反等价}。\footnote{编者注（48）：增添了下面的（ii）及其后的证明。原文只说：“若 $\mathbf M$ 为\Term{flat}{平坦} $\mathbf O_k$-模，显然 $\mathbf M$ 正是 $\mathbf M^*$ 的\Term{dual-module}{对偶}，故\Term{functor}{函子} $N\mapsto N^*$ 和 $\mathbf M\mapsto\mathbf M^*$ 定义了一个\Term{anti-equivalence}{反等价}……”}
+
+（ii）此外，若 $k\to K$ 是\Term{pseudocompact}{伪紧}\Term{ring-morphism}{环态射}，则上述\Term{anti-equivalence}{反等价}在如下意义下“与\Term{base-change}{基变换}交换”：若 $N\simeq\Gamma^*(\mathbf M)$，则 $N\widehat\otimes_k K\simeq\Gamma_K^*(\mathbf M\otimes_k K)$。
+\end{SGAresult}
+\begin{proof}
+一方面，有\Term{natural-transformation}{自然变换} $\varphi_N:N\to\Gamma^*(\mathbf V_k^{\mathrm f}(N))$。由 0.3.5 和 0.2.F，\Term{functor}{函子} $\Gamma^*\circ\mathbf V_k^{\mathrm f}$ 与积交换，故只须在 $N$ 是 $k$ 的\Term{local-component}{局部分量} $k_{\mathfrak m}$ 时验证 $\varphi_N$ 为\Term{isomorphism}{同构}。这时，对包含在 $\mathfrak m$ 中的每个开\Term{ideal}{理想} $\mathfrak l$，自然\Term{morphism}{态射}
+\[
+ (k/\mathfrak l)_{\mathfrak m}\longrightarrow
+ \operatorname{Hom}_{k/\mathfrak l}\bigl(\operatorname{Hom}_{\mathrm c}(k_{\mathfrak m}\widehat\otimes k/\mathfrak l,k/\mathfrak l),k/\mathfrak l\bigr)
+\]
+是\Term{isomorphism}{同构}，结论随之成立。
+\SourcePage{529}
+另一方面，设 $\mathbf M$ 为\Term{flat}{平坦} $\mathbf O_k$-模。证明 $\Gamma^*(\mathbf M)=\varprojlim\mathbf M(k/\mathfrak l)^*$ 是 $\mathsf{PC}(k)$ 的\Term{projective-object}{投射对象}。设 $N\to N'$ 是 $\mathsf{LF}(k)$ 中\Term{object}{对象}之间的\Term{surjective-morphism}{满射态射}。由 0.2.F（i）、（ii），只须证明自然映射
+\[
+ \varinjlim\operatorname{Hom}_{\mathrm c}(\mathbf M(k/\mathfrak l)^*,N)
+ \longrightarrow\varinjlim\operatorname{Hom}_{\mathrm c}(\mathbf M(k/\mathfrak l)^*,N')
+\]
+\Term{surjectivity}{满射}。但这很清楚，因为对某个开\Term{ideal}{理想} $\mathfrak l_0$，$N,N'$ 都是 $k/\mathfrak l_0$-模；当 $\mathfrak l\subset\mathfrak l_0$ 时，$\mathbf M(k/\mathfrak l)^*$ 是 $\mathsf{PC}(k/\mathfrak l)$ 的\Term{projective-object}{投射对象}，故每个\Term{morphism}{态射} $\mathbf M(k/\mathfrak l)^*\to N'$ 都\Term{liftable}{可提升}为\Term{morphism}{态射} $\mathbf M(k/\mathfrak l)^*\to N$。
+
+有从 $\mathsf{Alf}_{/k}$ 到 $\mathsf{Ens}$ 的\Term{morphism-of-functors}{函子态射} $\psi:\mathbf M\to\mathbf V_k^{\mathrm f}(\Gamma^*(\mathbf M))$。设 $B$ 是 $\mathsf{Alf}_{/k}$ 的\Term{object}{对象}，证明
+\[
+ \psi(B):\mathbf M(B)\longrightarrow\mathbf V_k^{\mathrm f}(\Gamma^*(\mathbf M))(B)
+ =\operatorname{Hom}_{\mathrm c}\left(\varprojlim_{\mathfrak l}\bigl(\mathbf M(k/\mathfrak l)^*\widehat\otimes_k B\bigr),B\right)\tag{1}
+\]
+是\Term{bijection}{双射}（上述等式使用了 $\widehat\otimes$ 与\Term{filtered-projective-limit}{滤过投射极限}交换这一事实）。取 $k$ 的开\Term{ideal}{理想} $\mathfrak l_0$ 包含于 $k\to B$ 的核。由\Term{lemma}{引理} 1.2.3.A，对每个 $\mathfrak l\subset\mathfrak l_0$，有\Term{pseudocompact}{伪紧} $B$-模的\Term{canonical-isomorphism}{典范同构}
+\[
+ \mathbf M(k/\mathfrak l)^*\widehat\otimes_k B\xrightarrow{\sim}\operatorname{Hom}_{k/\mathfrak l}(\mathbf M(k/\mathfrak l),B),
+\]
+又因 $\mathbf M(B)=\mathbf M(k/\mathfrak l)\otimes_{k/\mathfrak l}B$，右端等于 $\operatorname{Hom}_B(\mathbf M(B),B)$。因此，（1）中的\Term{inverse-system}{投射系}在 $\mathfrak l\subset\mathfrak l_0$ 时为常值，（1）便化为\Term{canonical-morphism}{典范态射}
+\[
+ \mathbf M(B)\longrightarrow\operatorname{Hom}_{\mathrm c}\bigl(\operatorname{Hom}_B(\mathbf M(B),B),B\bigr).
+\]
+因 $B$ 为 Artin 环且 $\mathbf M(B)$ 为\Term{projective-module}{投射} $B$-模，由 0.2.2，此\Term{morphism}{态射}是\Term{isomorphism}{同构}。这就证明了命题（i），而（ii）由上面建立的\Term{isomorphism}{同构}（$\star$）\Term{pushout}{推出}。
+\end{proof}
+\begin{SGAresult}{注记}{1.2.3.F}
+回到命题的陈述，并进一步假设 $N$ 为\Term{topologically-free}{拓扑自由}的\Term{pseudocompact}{伪紧} $k$-模。这时，可“相容地”为各个 $C$-模 $\mathbf V_k^{\mathrm f}(N)(C)$ 选取基。
+
+事实上，设 $(n_i)$ 为 $N$ 的\Term{pseudobasis}{伪基}（0.2.1），$n_i^C$ 为 $n_i$ 在 $C\widehat\otimes_k N$ 中的\Term{canonical}{典范}像，其中 $C\in\mathsf{Alf}_{/k}$。用等式 $\delta_i^C(n_i^C)=1$、$\delta_i^C(n_j^C)=0$（$i\ne j$）定义 $(C\widehat\otimes_k N)^\dagger$ 的元素 $\delta_i^C$，则族 $(\delta_i^C)$ 是 $\mathbf V_k^{\mathrm f}(N)(C)$ 的一组基；此外，对 $\mathsf{Alf}_{/k}$ 的每个\Term{morphism}{态射} $\varphi:C\to D$，$\mathbf V_k^{\mathrm f}(N)(\varphi)$ 将 $\delta_i^C$ 映到 $\delta_i^D$。
+\end{SGAresult}
+\textbf{1.2.4.}\footnote{编者注（49）：本段调换了叙述顺序，先定义 $\widehat S_k(E)$，再说明 $\mathrm V_k^{\mathrm f}(E)$ 表示 $\mathbf V_k^{\mathrm f}(E)$。}
+对每个\Term{pseudocompact}{伪紧} $k$-模 $E$，以 $\widehat S_k(E)$ 表示 $E$ 的\Term{completed-symmetric-algebra}{完备对称代数}，定义如下。设 $T_k(E)$ 为下列\Term{pseudocompact}{伪紧} $k$-模的\Term{direct-sum}{直和}：
+\[
+ \widehat{\bigotimes}_k^{\,n}E=E\widehat\otimes_k\cdots\widehat\otimes_k E
+ \quad(n\geq0;\ n=0\text{ 时，}\widehat{\bigotimes}_k^{\,0}E=k).
+\]
+按通常方式定义\Term{multiplication}{乘法}，使 $T_k(E)$ 成为\Term{graded}{分次} $k$-\Term{algebra}{代数}；
+\SourcePage{530}
+再令 $S_k(E)$ 为 $T_k(E)$ 对某\Term{homogeneous}{齐次}\Term{ideal}{理想}的商，该\Term{ideal}{理想}的 $n$ 次\Term{set-component}{分量}是 $\widehat{\bigotimes}_k^{\,n}E$ 中由以下元素生成的闭 $k$-\Term{submodule}{子模}：
+\[
+ x_1\widehat\otimes\cdots\widehat\otimes x_i\widehat\otimes x_{i+1}\widehat\otimes\cdots\widehat\otimes x_n
+ -x_1\widehat\otimes\cdots\widehat\otimes x_{i+1}\widehat\otimes x_i\widehat\otimes\cdots\widehat\otimes x_n.
+\]
+若以 $S_k^n(E)$ 表示这一商，则 $S_k(E)$ 显然是 $n$ 次\Term{set-component}{分量}为 $S_k^n(E)$ 的\Term{graded}{分次} $k$-\Term{algebra}{代数}。
+
+赋予 $S_k(E)$ 一个\Term{linear-topology}{线性拓扑}：用所有满足下列条件的\Term{ideal}{理想} $\mathfrak l$ 组成的\Term{set}{集合} $\Upsilon$ 来定义此\Term{topology}{拓扑}：$S_k(E)/\mathfrak l$ 是\Term{finite-length}{有限长} $k$-模，且对每个 $n$，$S_k^n(E)\cap\mathfrak l$ 都是 $S_k^n(E)$ 的开\Term{submodule}{子模}。\Term{profinite-algebra}{代有限代数} $\widehat S_k(E)$ 就是 $S_k(E)$ 关于此\Term{topology}{拓扑}的\Term{separated-completion}{分离完备化}。\footnote{编者注（50）：例如，设 $k$ 是域，$E$ 是\Term{pseudocompact}{伪紧} $k$-\Term{vector-space}{向量空间}，$V=\operatorname{Hom}_{\mathrm c}(E,k)$；有 $E\simeq V^*$（参见 0.2.2）。对 $V$ 的每个\Term{finite-dimensional}{有限维}子\Term{space}{空间} $W$，设 $\mathscr F(W)$ 是 $k$-\Term{scheme}{概形} $\mathbf V(W)=\operatorname{Spec}S_k(W^*)$ 的\Term{closed-point}{闭点}集。以 $\mathscr F(V)$ 表示各 $\mathscr F(W)$ 的\Term{inductive-limit}{归纳极限}。则 $\widehat S_k(E)$ 是以下\Term{pseudocompact}{伪紧} $k$-\Term{algebra}{代数}对 $x\in\mathscr F(V)$ 的积：
+\[
+ \widehat S_k(E)_x=\varprojlim_W\widehat{\mathcal O}_{W,x},
+\]
+其中 $W$ 遍历满足 $x\in\mathscr F(W)$ 的 $V$ 的\Term{finite-dimensional}{有限维}子\Term{space}{空间}，$\widehat{\mathcal O}_{W,x}$ 表示\Term{local-ring}{局部环} $\mathcal O_{\mathbf V(W),x}$ 关于\Term{finite}{有限}\Term{codimension}{余维}\Term{ideal}{理想}所定义\Term{topology}{拓扑}的\Term{separated-completion}{分离完备化}（此处该\Term{topology}{拓扑}与 $\mathfrak m$-\Term{adic-topology}{进拓扑}相同）。若 $k$ \Term{algebraically-closed}{代数闭}，且 $(v_i)_{i\in I}$ 为 $V$ 的基，从而 $E$ 有\Term{pseudobasis}{伪基} $(e_i)_{i\in I}$，则每个\Term{local-component}{局部分量} $\widehat S_k(E)_x$ 都\Term{isomorphism}{同构}于\Term{form}{形式}级数环 $k[[e_i,\ i\in I]]$，赋予由\Term{finite}{有限}\Term{codimension}{余维}\Term{ideal}{理想}定义的\Term{topology}{拓扑}。}
+
+以 $\mathrm V_k^{\mathrm f}(E)$ 表示 $k$-\Term{formal-variety}{形式簇} $\operatorname{Spf}(\widehat S_k(E))$。它表示 $k$-\Term{functor}{函子} $\mathbf V_k^{\mathrm f}(E)$，即对 $\mathsf{Alf}_{/k}$ 的每个\Term{object}{对象} $C$，有\Term{canonical-isomorphism}{典范同构}
+\[
+ \mathbf V_k^{\mathrm f}(E)(C)=\operatorname{Hom}_{\mathrm c}(E,C_{|k})
+ \xrightarrow{\sim}\operatorname{Hom}_{\mathsf{Alp}_{/k}}(\widehat S_k(E),C)
+ =\operatorname{Hom}_{\mathsf{Vaf}_{/k}}(\operatorname{Spf}(C),\mathrm V_k^{\mathrm f}(E)).
+\]
+下文始终将 $\mathrm V_k^{\mathrm f}(E)$ 与 $k$-\Term{functor}{函子} $\mathbf V_k^{\mathrm f}(E)$ 等同。
+
+\textbf{1.2.5.} 由 1.2.4，从 $E$ 到 $k$ 的零\Term{morphism}{态射}对应于一个\Term{profinite-algebra}{代有限代数}\Term{morphism}{态射} $\pi:\widehat S_k(E)\to k$；当 $n\geq1$ 时，$\pi$ 在 $S_k^n(E)$ 上诱导零映射，并定义\Term{structural-morphism}{结构态射} $\mathrm V_k^{\mathrm f}(E)\to\operatorname{Spf}(k)$ 的一个\Term{section}{截面}。
+
+以 $\mathrm V_k^{\mathrm f,0}(E)$ 表示这样的\Term{formal-variety}{形式簇}：其点是 $\operatorname{Spf}(k)$ 的点在\Term{section}{截面} $\operatorname{Spf}(\pi)$ 下的像，而在这些点处的\Term{locally-algebraic}{局部代数}与 $\mathrm V_k^{\mathrm f}(E)$ 相同。
+
+\footnote{编者注（51）：详细写出了本段余下的内容。}
+于是 $\mathrm V_k^{\mathrm f,0}(E)$ 的\Term{affine-algebra}{仿射代数}是 $S_k(E)$ 关于下列\Term{topology}{拓扑}的\Term{separated-completion}{分离完备化}：该\Term{topology}{拓扑}由 $\Upsilon$ 中（参见 1.2.4）那些对充分大的 $n$ 包含 $S_k^n(E)$ 的\Term{ideal}{理想} $\mathfrak l$ 定义。由此可知，它就是无限积
+\[
+ k[[E]]=k\times E\times S_k^2(E)\times S_k^3(E)\times\cdots.
+\]
+另一方面，设 $C$ 是 $\mathsf{Alf}_{/k}$ 的\Term{object}{对象}，$u$ 是 $\mathrm V_k^{\mathrm f}(C)=\operatorname{Hom}_{\mathrm c}(E,C)$ 的元素，$\phi:\widehat S_k(E)\to C$ 是对应于 $u$ 的\Term{profinite-algebra}{代有限} $k$-\Term{algebra}{代数}\Term{morphism}{态射}。则 $\operatorname{Ker}(\phi)$ 为开\Term{ideal}{理想}（即 $\phi$ 属于 $\mathrm V_k^{\mathrm f,0}(C)$），当且仅当 $\operatorname{Ker}(\phi)$ 对充分大的 $n$ 包含
+\SourcePage{531}
+$S_k^n(E)$，也就是当且仅当 $u(E)$ 包含于 $C$ 的根 $\mathfrak r(C)$。因此，对 $\mathsf{Alf}_{/k}$ 的每个\Term{object}{对象} $C$，有\Term{canonical-isomorphism}{典范同构}
+\[
+ \mathrm V_k^{\mathrm f,0}(C)\simeq\operatorname{Hom}_{\mathsf{Alp}_{/k}}(k[[E]],C)
+ \simeq\operatorname{Hom}_{\mathrm c}(E,\mathfrak r(C)).
+\]
+
+\textbf{1.2.6.} 若 $k$-\Term{formal-variety}{形式簇} $V$ 的\Term{affine-algebra}{仿射代数}为\Term{finite-length}{有限长}，则称 $V$ 为\Term{finite-length}{有限长}。类似地，若 $S$ 是\Term{scheme}{概形}，则称 $S$-\Term{scheme}{概形} $X$ 为\Term{finite-length}{有限长}，如果 $X$ 在 $S$ 上\Term{finite}{有限}，且 $\mathcal O_X$ 到 $S$ 的\Term{direct-image}{直像}是\Term{finite-length}{有限长} $\mathcal O_S$-模。\footnote{编者注（52）：增添了下面这句话。} 因此，给定一个\Term{finite-length}{有限长} $S$-\Term{scheme}{概形} $X$，“等同于”给定 $S$ 的\Term{finite}{有限}个\Term{closed-point}{闭点}组成的\Term{set}{集合} $\{s_1,\ldots,s_n\}$，并在每个点处给定一个\Term{finite-length}{有限长} $\mathcal O_{S,s_i}$-\Term{algebra}{代数}。
+
+由此可见，\Term{finite-length}{有限长} $S$-\Term{scheme}{概形}可等同于下述\Term{formal-scheme}{形式概形} $\widehat S$ 上的\Term{finite-length}{有限长}\Term{formal-variety}{形式簇}。$\widehat S$ 的\Term{underlying-topological-space}{底拓扑空间}是赋予\Term{discrete-topology}{离散拓扑}的 $S$ 的\Term{closed-point}{闭点}集；若 $s$ 为这样一个\Term{closed-point}{闭点}，则\Term{structure-sheaf}{结构层} $\mathcal O_{\widehat S}$ 在 $s$ 处的茎 $\mathcal O_{\widehat S,s}$ 是 $\mathcal O_{S,s}$ 关于\Term{finite}{有限}余长\Term{ideal}{理想}所定义的\Term{linear-topology}{线性拓扑}的\Term{separated-completion}{分离完备化} $\widehat{\mathcal O}_{S,s}$；因此 $\widehat S=\operatorname{Spf}\mathscr A(\widehat S)$，其中 $\mathscr A(\widehat S)$ 是各 $\widehat{\mathcal O}_{S,s}$ 对 $S$ 的\Term{closed-point}{闭点} $s$ 所作的积，赋予\Term{product-topology}{积拓扑}。
+
+\textbf{定义。} 若 $X$ 是 $S$-\Term{scheme}{概形}，以 $\widehat X/\widehat S$ 表示如下定义的 $k=\mathscr A(\widehat S)$ 上的\Term{formal-variety}{形式簇}。其\Term{underlying-topological-space}{底拓扑空间}由满足 $[\kappa(x):\kappa(s)]<\infty$ 的点 $x\in X$ 组成，其中 $s$ 是 $x$ 在 $S$ 中的像；\Term{local-ring}{局部环} $\mathcal O_{\widehat X/\widehat S,x}$ 是 $\mathcal O_{X,x}$ 关于下述\Term{linear-topology}{线性拓扑}的\Term{separated-completion}{分离完备化}：该\Term{topology}{拓扑}由使 $\mathcal O_{X,x}/I$ 作为 $\mathcal O_{S,s}$-模为\Term{finite-length}{有限长}的\Term{ideal}{理想} $I$ 定义（注意，因 $[\kappa(x):\kappa(s)]<\infty$，这\Term{equivalence}{等价}于 $\mathcal O_{X,x}/I$ 作为 $\mathcal O_{X,x}$-模为\Term{finite-length}{有限长}）。
+
+设 $\mathsf{Vaf}^{\ell\mathrm f}_{/\widehat S}$ 为 $\widehat S$ 上\Term{finite-length}{有限长}\Term{formal-variety}{形式簇}的\Term{category}{范畴}（将其等同于\Term{finite-length}{有限长} $S$-\Term{scheme}{概形}的\Term{category}{范畴}）。由 1.1 和 1.2.1，$\widehat S$ 上的\Term{formal-variety}{形式簇}\Term{category}{范畴} $\mathsf{Vaf}_{/\widehat S}$ \Term{equivalence}{等价}于从 $\mathsf{Vaf}^{\ell\mathrm f}_{/\widehat S}$ 到 $\mathsf{Ens}$ 的\Term{contravariant}{反变}\Term{left-exact-functor}{左正合函子}\Term{category}{范畴}。特别地，对每个 $S$-\Term{scheme}{概形} $X$，\Term{functor}{函子} $T\mapsto\operatorname{Hom}_{(\mathsf{Sch}/S)}(T,X)$（从 $\mathsf{Vaf}^{\ell\mathrm f}_{/\widehat S}$ 到 $\mathsf{Ens}$）就是这样的\Term{left-exact-functor}{左正合函子}，因此对应于 $\widehat S$ 上的一个\Term{formal-variety}{形式簇}。这个\Term{formal-variety}{形式簇}正是 $\widehat X/\widehat S$：\footnote{编者注（53）：扩充了下面的命题，加入\Term{functor}{函子} $X\mapsto\widehat X/\widehat S$ 与\Term{finite-inverse-limit}{有限投射极限}交换这一事实（原文将其放在 1.3.4 的证明中；这里的证明比原证明更直接）。此结果还将用于第 2 节和 3.3.1。}
+\begin{SGAresult}{命题}{}
+对每个 $S$-\Term{scheme}{概形} $X$，\Term{functor}{函子}
+\[
+ \operatorname{Hom}_{\mathsf{Vaf}_{/\widehat S}}(-,\widehat X/\widehat S)
+ \quad\text{与}\quad\operatorname{Hom}_{(\mathsf{Sch}/S)}(-,X)
+\]
+在 $\mathsf{Vaf}^{\ell\mathrm f}_{/\widehat S}$ 上有相同的\Term{restriction}{限制}。因此得到\Term{functor}{函子} $X\mapsto\widehat X/\widehat S$，从 $(\mathsf{Sch}/S)$ 到 $\mathsf{Vaf}_{/\widehat S}$，它与\Term{finite-inverse-limit}{有限投射极限}交换。
+\end{SGAresult}
+\SourcePage{532}
+\begin{proof}
+容易看出，\Term{formal-variety}{形式簇} $\widehat X/\widehat S$ 具有所要求的性质，且对应 $X\mapsto\widehat X/\widehat S$ 是\Term{functorial}{函子性}的。下面证明第二个断言。
+
+置 $\mathcal S=(\mathsf{Sch}/S)$，$\mathcal V=\mathsf{Vaf}_{/\widehat S}$，并以 $\widehat X$ 代替 $\widehat X/\widehat S$。已知（1.2.B）$\mathcal V$ 有任意\Term{inverse-limit}{投射极限}。设 $(X_i)_{i\in I}$ 为 $\mathcal S$ 中的\Term{inverse-system}{投射系}，并假设 $X=\varprojlim X_i$ 在 $\mathcal S$ 中存在（$I$ \Term{finite}{有限}时确实存在）。将 $\mathcal S$ 的每个\Term{object}{对象} $Y$（相应地，$\mathcal V$ 的每个\Term{object}{对象} $V$）对应到\Term{functor}{函子} $h_Y=\operatorname{Hom}_{\mathcal S}(-,Y)$（相应地，$h_V=\operatorname{Hom}_{\mathcal V}(-,V)$）的\Term{functor}{函子}与\Term{inverse-limit}{投射极限}交换，故对每个\Term{finite-length}{有限长} $S$-\Term{scheme}{概形} $T$，有\Term{functorial-isomorphism}{函子性同构}
+\[
+ \operatorname{Hom}_{\mathcal S}(T,X)\simeq\varprojlim\operatorname{Hom}_{\mathcal S}(T,X_i)
+ \simeq\varprojlim\operatorname{Hom}_{\mathcal V}(T,\widehat X_i)
+ \simeq\operatorname{Hom}_{\mathcal V}(T,\varprojlim\widehat X_i).
+\]
+所以\Term{functor}{函子} $X\mapsto\widehat X/\widehat S$ 与 $(\mathsf{Sch}/S)$ 中存在的\Term{inverse-limit}{投射极限}交换；特别地，与\Term{finite-inverse-limit}{有限投射极限}交换。
+\end{proof}
+
+\begin{SGAresult}{命题}{1.3}
+设 $f:X\to Y$ 是 $k$ 上\Term{formal-variety}{形式簇}的\Term{morphism}{态射}，$A,B$ 分别为 $X,Y$ 的\Term{affine-algebra}{仿射代数}，$g:B\to A$ 为 $f$ 诱导的\Term{morphism}{态射}。则 $f$ 是 $\mathsf{Vaf}_{/k}$ 的\Term{monomorphism}{单态射}，当且仅当 $g$ \Term{surjectivity}{满射}。
+\end{SGAresult}
+\begin{proof}
+\footnote{编者注（54）：详细写出了证明的开头。} 由 1.1，$A\mapsto\operatorname{Spf}(A)$ 是 $\mathsf{Alp}_{/k}$ 与 $\mathsf{Vaf}_{/k}$ 之间的\Term{anti-equivalence}{反等价}，因此 $f$ 是\Term{monomorphism}{单态射}，当且仅当 $g$ 是\Term{epimorphism}{满态射}；$g$ \Term{surjectivity}{满射}时当然如此。
+
+反之，假设 $g$ 为\Term{epimorphism}{满态射}，证明它\Term{surjectivity}{满射}。对每个 $\mathfrak n\in\Upsilon(B)$，置 $A_{\mathfrak n}=A\widehat\otimes_B B_{\mathfrak n}$；由 0.4，$A$ 为\Term{pseudocompact}{伪紧} $B$-模，因而是各 $A_{\mathfrak n}$ 的积（参见 0.3.6）。于是 $g$ 为各\Term{morphism}{态射} $g_{\mathfrak n}:B_{\mathfrak n}\to A_{\mathfrak n}$ 的积，后者由 $g$ 经\Term{base-change}{基变换}得到，仍是\Term{epimorphism}{满态射}。所以只须在 $B$ 为\Term{maximal-ideal}{极大理想}为 $\mathfrak n$ 的\Term{local-ring}{局部环}时证明结果。置 $K=B/\mathfrak n$。
+
+由 \Term{nakayama-lemma}{Nakayama 引理} 0.3.3，只须证明\Term{morphism}{态射} $g\widehat\otimes_B K$ \Term{surjectivity}{满射}；它由 $g$ 经\Term{base-change}{基变换}得到，因而是 $\mathsf{Alp}_{/K}$ 中的\Term{epimorphism}{满态射}。因此可假设 $B=K$ 是域。而 $f$ 是\Term{monomorphism}{单态射}，当且仅当\Term{diagonal-morphism}{对角态射} $X\to X\times_Y X$ 是\Term{isomorphism}{同构}，也就是\Term{homomorphism}{同态} $x\widehat\otimes_K x'\mapsto xx'$ 是从 $A\widehat\otimes_K A$ 到 $A$ 的\Term{isomorphism}{同构}。因 $K$ 是域，这就蕴含 $A=K$。
+\end{proof}
+\textbf{注记。}\footnote{编者注（55）：增添了本注记。} 由命题，每个\Term{formal-variety}{形式簇}的\Term{monomorphism}{单态射} $f:X\to Y$ 都是从 $X$ 到 $Y$ 的某个（必为闭的！）\Term{formal-variety}{形式子簇}上的\Term{isomorphism}{同构}。
+
+\textbf{1.3.1.} 上述命题特别蕴含 $\mathsf{Vaf}_{/k}$ 的每个\Term{monomorphism}{单态射} $f:X\to Y$ 都是\Term{effective}{有效的}（参见第 IV 讲 1.3）。\footnote{编者注（56）：即在\Term{opposite-category}{对偶范畴} $(\mathsf{Vaf}_{/k})^0=\mathsf{Alp}_{/k}$ 中，对应于 $f$ 的\Term{morphism}{态射} $g:B\to A$ 是\Term{effective-epimorphism}{有效满态射}。确实如此，因为 $g$ \Term{surjectivity}{满射}，故诱导（参见 0.2.B 的证明）\Term{profinite-algebra}{代有限} $k$-\Term{algebra}{代数}\Term{isomorphism}{同构} $B/I\xrightarrow{\sim}A$，其中 $I=\operatorname{Ker}g$。所以 $\mathsf{Alp}_{/k}$ 中在 $I$ 上为零的每个\Term{morphism}{态射} $\phi:B\to C$ 都\Term{descent}{下降}为\Term{morphism}{态射} $\overline\phi:A\to C$，使得 $\phi=\overline\phi\circ g$。} 对\Term{epimorphism}{满态射}却不如此；略微修改第 V 讲 \S2.c）的反例就容易看出这一点。\footnote{编者注（57）：即设 $k$ 为域，$X=\operatorname{Spf}(k[[T]])$，$Y=\operatorname{Spf}(B)$，其中 $B$ 是 $A=k[[T]]$ 中由 $T^3,T^4$ \Term{topology}{拓扑}生成的 $k$-\Term{subalgebra}{子代数}（即由满足 $n=1,2,5$ 时 $a_n=0$ 的\Term{form}{形式}级数 $\sum a_nT^n$ 组成）。则 $X\to Y$ 是非\Term{effective}{有效的}\Term{epimorphism}{满态射}；事实上，$X\times_Y X\rightrightarrows X$ 的\Term{cokernel}{余核}是 $\operatorname{Spf}(B')$，其中 $B'$ 为 $A$ 中满足 $a\widehat\otimes1=1\widehat\otimes a$ 的 $a$ 组成的\Term{subalgebra}{子代数}，而 $B'$ 包含 $T^5$。}
+\SourcePage{533}
+因此我们将考虑一类性质良好的\Term{effective-epimorphism}{有效满态射}。
+\begin{SGAresult}{\Term{lemma}{引理}}{}
+\footnote{编者注（58）：增添了此\Term{lemma}{引理}，以说明“\Term{topologically-flat}{拓扑平坦}”这一术语。}
+设 $f:X\to Y$ 是 $k$-\Term{formal-variety}{形式簇}\Term{morphism}{态射}，$A,B$ 是 $X,Y$ 的\Term{affine-algebra}{仿射代数}，$f^\natural:B\to A$ 为 $f$ 诱导的\Term{morphism}{态射}。下列条件\Term{equivalence}{等价}：
+
+（i）对每个 $x\in X$，\Term{homomorphism}{同态} $f_x^\natural:\mathcal O_{Y,f(x)}\to\mathcal O_{X,x}$ 使 $\mathcal O_{X,x}$ 成为\Term{topologically-free}{拓扑自由}的\Term{pseudocompact}{伪紧} $\mathcal O_{Y,f(x)}$-模。
+
+（ii）对每个 $y\in Y$，\Term{local-component}{局部分量} $A_y=\prod_{f(x)=y}\mathcal O_{X,x}$ 为\Term{topologically-free}{拓扑自由}的\Term{pseudocompact}{伪紧} $B_y$-模。
+
+（iii）$f^\natural:B\to A$ 使 $A$ 成为\Term{pseudocompact}{伪紧}\Term{projective-module}{投射} $B$-模。
+
+（iv）\Term{functor}{函子} $\mathsf{PC}(B)\to\mathsf{PC}(A)$，$M\mapsto M\widehat\otimes_B A$ \Term{exact}{正合}。
+
+若这些条件成立，就称 $f$ 为\Term{topologically-flat}{拓扑平坦}。
+\end{SGAresult}
+\begin{proof}
+蕴含（i）$\Rightarrow$（ii）$\Leftrightarrow$（iii）$\Leftrightarrow$（iv）由 0.2.F（iii）及 0.3.7 \Term{pushout}{推出}。反之，假设（ii）成立，设 $x\in X$，$y=f(x)$。因 $\mathcal O_{X,x}$ 为 $A_y$ 的\Term{direct-factor}{直因子}，它是\Term{pseudocompact}{伪紧}\Term{projective-module}{投射} $B_y$-模，所以由 0.2.1，它是\Term{topologically-free}{拓扑自由}的（因为 $B_y$ 是\Term{local-ring}{局部环}）。
+\end{proof}
+另一方面，若 $k$-\Term{formal-variety}{形式簇}\Term{morphism}{态射} $f:X\to Y$ 在\Term{underlying-set}{底集}上诱导\Term{surjectivity}{满射}，就称 $f$ \Term{surjectivity}{满射}。
+\begin{SGAresult}{命题}{}
+设 $f:X\to Y$ 是\Term{surjectivity}{满射}且\Term{topologically-flat}{拓扑平坦}的 $k$-\Term{formal-variety}{形式簇}\Term{morphism}{态射}。则 $f$ 为\Term{effective-epimorphism}{有效满态射}（参见第 IV 讲 1.3）。
+\end{SGAresult}
+\begin{proof}
+设 $A,B$ 分别为 $X,Y$ 的\Term{affine-algebra}{仿射代数}，$g:B\to A$ 是 $f$ 诱导的\Term{morphism}{态射}。所要证明的是 $Y$ 可等同于 $X\times_Y X\rightrightarrows X$ 的\Term{cokernel}{余核}，即对每个 $\mathfrak n\in\Upsilon(B)$，$B_{\mathfrak n}$ 可等同于 $A_{\mathfrak n}=A\widehat\otimes_B B_{\mathfrak n}$ 中满足 $a\widehat\otimes1=1\widehat\otimes a$ 的 $a$ 所组成的\Term{subring}{子环}。
+
+因此可假设 $B$ 是\Term{maximal-ideal}{极大理想}为 $\mathfrak n$ 的\Term{local-ring}{局部环}。这时假设的意思是 $g$ 使 $A$ 成为非零的\Term{topologically-free}{拓扑自由} $B$-模。由 \Term{nakayama-lemma}{Nakayama 引理} 0.3.3，$A/\overline{\mathfrak nA}$ 非零，所以从 $g$ \Term{derive}{导出}的\Term{morphism}{态射} $g':B/\mathfrak n\to A/\overline{\mathfrak nA}$ \Term{injectivity}{单射}。由下面的\Term{lemma}{引理} 1.3.2，$B$ 作为 $B$-模是 $A$ 的\Term{direct-factor}{直因子}，写作 $A=B\oplus A'$；由此可知，$B$ 可等同于 $A$ 中满足 $a\widehat\otimes_B1=1\widehat\otimes_Ba$ 的 $a$ 所组成的部分。
+\end{proof}
+\SourcePage{534}
+\begin{SGAresult}{\Term{lemma}{引理}}{1.3.2}
+设 $B$ 是\Term{local-scheme}{局部}\Term{pseudocompact}{伪紧}环，$\mathfrak n$ 为其\Term{maximal-ideal}{极大理想}，$M,N$ 是两个\Term{pseudocompact}{伪紧}\Term{projective-module}{投射} $B$-模，$g:M\to N$ 是\Term{morphism}{态射}。若 $(B/\mathfrak n)\widehat\otimes_Bg$ \Term{injectivity}{单射}，则 $g$ 是 $M$ 到 $N$ 的某个\Term{direct-factor}{直因子}上的\Term{isomorphism}{同构}。
+\end{SGAresult}
+\begin{proof}
+假设 $g'=(B/\mathfrak n)\widehat\otimes_Bg$ \Term{injectivity}{单射}。因 $B/\mathfrak n$ 是域，$g'$ 有\Term{retraction}{收缩} $r'$。以 $p,q$ 表示 $M,N$ 到 $M/\overline{\mathfrak nM}$、$N/\overline{\mathfrak nN}$ 的\Term{canonical-projection}{典范投影}；因 $N$ \Term{projective-module}{投射}，存在\Term{morphism}{态射} $r:N\to M$ 使 $p\circ r=r'\circ q$；所以 $r'$ 由 $r$ 取商得到。因 $r'\circ g'$ 是\Term{isomorphism}{同构}，由 0.3.4（因 $M$ 为\Term{projective-module}{投射模}），$r\circ g$ 也是\Term{isomorphism}{同构}。设 $s$ 为 $r\circ g$ 的逆\Term{isomorphism}{同构}，则 $s\circ r$ 为 $g$ 的\Term{retraction}{收缩}。
+\end{proof}
+\begin{SGAresult}{命题}{1.3.3}
+设 $f:X\to Y$、$g:Y\to Z$ 是 $k$-\Term{formal-variety}{形式簇}\Term{morphism}{态射}。
+
+（i）若 $f,g$ 均\Term{topologically-flat}{拓扑平坦}，则 $g\circ f$ 也\Term{topologically-flat}{拓扑平坦}。
+
+（ii）若 $f$ 与 $g\circ f$ 均\Term{topologically-flat}{拓扑平坦}，且 $f$ \Term{surjectivity}{满射}，则 $g$ \Term{topologically-flat}{拓扑平坦}。
+
+（iii）若 $f$ \Term{topologically-flat}{拓扑平坦}，则对每个\Term{base-change}{基变换} $Y'\to Y$，$f\times_Y Y'$ 都\Term{topologically-flat}{拓扑平坦}。
+\end{SGAresult}
+\begin{proof}
+（i）、（iii）显然。为证明（ii），以 $A,B,C$ 表示 $X,Y,Z$ 的\Term{affine-algebra}{仿射代数}，以 $f':B\to A$、$g':C\to B$ 表示 $f,g$ 诱导的\Term{morphism}{态射}。因 $g\circ f$ \Term{topologically-flat}{拓扑平坦}，$f'\circ g'$ 使 $A$ 成为\Term{pseudocompact}{伪紧}\Term{projective-module}{投射} $C$-模；类似地，$f'$ 使 $A$ 成为\Term{pseudocompact}{伪紧}\Term{projective-module}{投射}且忠实的 $B$-模。因此，当 $P$ 遍历\Term{pseudocompact}{伪紧} $C$-模、$N$ 遍历\Term{pseudocompact}{伪紧} $B$-模时，\Term{functor}{函子} $P\mapsto P\widehat\otimes_C A$ 和 $N\mapsto N\widehat\otimes_B A$ 都\Term{exact}{正合}；又因第二个\Term{functor}{函子}忠实，\Term{functor}{函子} $P\mapsto P\widehat\otimes_C B$ \Term{exact}{正合}。因此，由 0.3.7，$B$ 是\Term{pseudocompact}{伪紧}\Term{projective-module}{投射} $C$-模。
+\end{proof}
+\begin{SGAresult}{命题}{1.3.4}
+设 $S$ 是\Term{scheme}{概形}，$Y$ 是\Term{locally-noetherian}{局部 Noether} 的 $S$-\Term{scheme}{概形}，$f:X\to Y$ 是\Term{locally-finite-type}{局部有限型}且\Term{faithfully-flat}{忠实平坦}的 $S$-\Term{morphism}{态射}。因此 $f$ 是\Term{effective-epimorphism}{有效满态射}，即下列序列\Term{exact}{正合}（参见第 IV 讲 6.3.1（iv）及 1.3）：
+\[
+\begin{tikzcd}
+ X\times_Y X\arrow[r,shift left=.6ex,"\operatorname{pr}_1"]\arrow[r,shift right=.6ex,"\operatorname{pr}_2"']&X\arrow[r,"f"]&Y.
+\end{tikzcd}\tag{$*$}
+\]
+则 $\widehat S$-\Term{formal-variety}{形式簇}\Term{morphism}{态射} $\widehat f:\widehat X/\widehat S\to\widehat Y/\widehat S$（参见 1.2.6）\Term{surjectivity}{满射}且\Term{topologically-flat}{拓扑平坦}，由（$*$）\Term{derive}{导出}的下列序列\Term{exact}{正合}：
+\[
+\begin{tikzcd}
+ \widehat{X\times_Y X}/\widehat S\arrow[r,shift left=.6ex,"\widehat{\operatorname{pr}}_1"]\arrow[r,shift right=.6ex,"\widehat{\operatorname{pr}}_2"']&\widehat X/\widehat S\arrow[r,"\widehat f"]&\widehat Y/\widehat S.
+\end{tikzcd}\tag{$\widehat *$}
+\]
+\end{SGAresult}
+\begin{proof}
+设 $y$ 是 $Y$ 中\Term{projection}{投影}到 $S$ 中 $s$ 的点，且 $\kappa(y)$ 是 $s$ 的\Term{residue-field}{剩余域} $\kappa(s)$ 的\Term{finite-extension}{有限扩张}。因 $f$ \Term{surjectivity}{满射}且\Term{locally-finite-type}{局部有限型}，$f^{-1}(y)$ \Term{nonempty}{非空}且在 $\kappa(y)$ 上\Term{locally-finite-type}{局部有限型}；$f^{-1}(y)$ 的\Term{closed-point}{闭点}正是 $\widehat X/\widehat S$ 中\Term{projection}{投影}到 $y$ 的点。这说明 $\widehat f$ \Term{surjectivity}{满射}。
+\SourcePage{535}
+\footnote{编者注（59）：详细写出了下文；其后使用了 1.2.6 中所作的增补。} 设 $x$ 是 $f^{-1}(y)$ 的一个\Term{closed-point}{闭点}。因 $Y$ \Term{locally-noetherian}{局部 Noether}，$f$ \Term{locally-finite-type}{局部有限型}，\Term{local-ring}{局部环} $\mathcal O_{Y,y}$（相应地，$\mathcal O_{X,x}$）是 Noether 环，所以其\Term{maximal-ideal}{极大理想}的幂具有\Term{finite}{有限}余长；因此 $\widehat Y/\widehat S$ 在 $y$ 处（相应地，$\widehat X/\widehat S$ 在 $x$ 处）的\Term{local-ring}{局部环}是 $\mathcal O_{Y,y}$（相应地，$\mathcal O_{X,x}$）的 $\mathfrak m$-进\Term{completion}{完备化} $\widehat{\mathcal O}_{Y,y}$（相应地，$\widehat{\mathcal O}_{X,x}$）。因 $f$ \Term{flat}{平坦}，由 SGA 1，第 IV 讲 5.8，$\widehat{\mathcal O}_{X,x}$ 在 $\widehat{\mathcal O}_{Y,y}$ 上\Term{flat}{平坦}。故由 0.3.8，$\widehat{\mathcal O}_{X,x}$ 是\Term{topologically-free}{拓扑自由} $\widehat{\mathcal O}_{Y,y}$-模。这说明 $\widehat f$ \Term{topologically-flat}{拓扑平坦}。
+
+所以，由命题 1.3.1，$\widehat f$ 是\Term{effective-epimorphism}{有效满态射}，即下列序列\Term{exact}{正合}（以 $\widehat X$ 代替 $\widehat X/\widehat S$）：
+\[
+\begin{tikzcd}
+ \widehat X\times_{\widehat Y}\widehat X\arrow[r,shift left=.6ex,"\widehat{\operatorname{pr}}_1"]\arrow[r,shift right=.6ex,"\widehat{\operatorname{pr}}_2"']&\widehat X\arrow[r,"\widehat f"]&\widehat Y.
+\end{tikzcd}
+\]
+此外，由 1.2.6，有自然\Term{isomorphism}{同构}（特别地，与到 $\widehat X$ 的\Term{projection}{投影}交换）
+\[
+ \widehat{X\times_Y X}\simeq\widehat X\times_{\widehat Y}\widehat X.
+\]
+因此，序列（$\widehat *$）\Term{exact}{正合}。
+\end{proof}
+
+\textbf{1.3.5.} 设 $k$ 为\Term{pseudocompact}{伪紧}环。若 $k$ 上的\Term{formal-variety}{形式簇} $X$ 的\Term{affine-algebra}{仿射代数} $A$ 是\Term{pseudocompact}{伪紧}\Term{projective-module}{投射} $k$-模，即\Term{structural-morphism}{结构态射} $X\to\operatorname{Spf}(k)$ \Term{topologically-flat}{拓扑平坦}，则称 $X$ 为\Term{topologically-flat}{拓扑平坦}。
+
+\footnote{编者注（60）：增添了下面的\Term{lemma}{引理}，原文曾隐含地使用此\Term{lemma}{引理}；另为便于后文引用，引入编号 1.3.5.A 至 1.3.5.D。} 首先注意，0.2.2 和 0.3.6 蕴含下面的结果（类似于第 VII$_{\mathrm A}$ 讲 3.1.1）。
+\begin{SGAresult}{\Term{lemma}{引理}}{1.3.5.A}
+假设 $k$ 为 Artin 环。\Term{functor}{函子} $A\mapsto A^\dagger=\operatorname{Hom}_{\mathrm c}(A,k)$ 和 $C\mapsto C^*=\operatorname{Hom}_k(C,k)$ 定义了\Term{topologically-flat}{拓扑平坦}的\Term{profinite-algebra}{代有限} $k$-\Term{algebra}{代数}\Term{category}{范畴}与\Term{flat}{平坦} $k$-\Term{coalgebra}{余代数}\Term{category}{范畴}之间的\Term{anti-equivalence}{反等价}。
+\end{SGAresult}
+\begin{proof}
+若 $A$ 是\Term{topologically-flat}{拓扑平坦}的\Term{profinite-algebra}{代有限} $k$-\Term{algebra}{代数}，则由 0.3.6，有 $k$-模\Term{isomorphism}{同构}
+\[
+ A^\dagger\otimes_k A^\dagger\xrightarrow{\sim}(A\widehat\otimes A)^\dagger,
+\]
+所以\Term{multiplication}{乘法} $A\widehat\otimes A\to A$ 通过\Term{duality}{对偶}在 $A^\dagger$ 上诱导 $k$-\Term{coalgebra}{余代数}结构。其余结论由命题 0.2.2 \Term{pushout}{推出}。
+\end{proof}
+现在回到任意\Term{pseudocompact}{伪紧}环 $k$ 的情形。
+\begin{SGAresult}{定义}{1.3.5.B}
+对每个\Term{affine-algebra}{仿射代数} $A$ 为\Term{pseudocompact}{伪紧}\Term{projective-module}{投射} $k$-模的 $k$-\Term{formal-variety}{形式簇} $X$，以下述方式赋予\Term{flat}{平坦} $\mathbf O_k$-\Term{coalgebra}{余代数} $\mathbf H(X)$。
+
+以 $\mathbf H(X)$ 表示作为“$A$ 的\Term{dual-module}{对偶}”的 $\mathbf O_k$-模 $\mathbf V_k^{\mathrm f}(A)$；因 $A$ 的底\Term{pseudocompact}{伪紧} $k$-模\Term{projective-module}{投射}，它是\Term{flat}{平坦} $\mathbf O_k$-模（参见 1.2.3.C）。此外，由
+\SourcePage{536}
+0.3.6，有
+\[
+ \mathbf V_k^{\mathrm f}(A\widehat\otimes A)\simeq\mathbf V_k^{\mathrm f}(A)\otimes\mathbf V_k^{\mathrm f}(A),
+\]
+故 $A$ 的\Term{multiplication}{乘法}经\Term{transpose}{转置}诱导\Term{diagonal-morphism}{对角态射}
+\[
+ \mathbf H(X)=\mathbf V_k^{\mathrm f}(A)\longrightarrow\mathbf V_k^{\mathrm f}(A\widehat\otimes A)=\mathbf H(X)\otimes\mathbf H(X),
+\]
+使 $\mathbf H(X)$ 成为\Term{flat}{平坦} $\mathbf O_k$-\Term{coalgebra}{余代数}。称 $\mathbf H(X)$ 为 $X$ 在 $\mathbf O_k$ 上的\Term{coalgebra}{余代数}。
+\end{SGAresult}
+\begin{SGAresult}{定义}{1.3.5.C}
+反之，对每个 $\mathbf O_k$-\Term{coalgebra}{余代数} $\mathbf C$，可如下赋予一个 $k$-\Term{functor}{函子}（参见 1.2.1）$\operatorname{Spf}^*(\mathbf C)$。对 $\mathsf{Alf}_{/k}$ 的每个\Term{object}{对象} $B$，置（采用第 VII$_{\mathrm A}$ 讲 3.1 的记号）
+\[
+\begin{split}
+ \operatorname{Spf}^*(\mathbf C)(B)&=\operatorname{Hom}_{B\text{-余代数}}(B,\mathbf C(B))\\
+ &=\{x\in\mathbf C(B)\mid\varepsilon_{\mathbf C(B)}(x)=1\text{ 且 }\Delta_{\mathbf C(B)}(x)=x\otimes x\}.
+\end{split}\tag{1}
+\]
+\end{SGAresult}
+\footnote{编者注（61）：详细写出了下文。} 再假设 $\mathbf C$ 的底 $\mathbf O_k$-模\Term{admissible-module}{容许}（参见 1.2.1），并置
+\[
+ A=\Gamma^*(\mathbf C)=\varprojlim_{\mathfrak l}\mathbf C(k/\mathfrak l)^*.\tag{2}
+\]
+则各 $\mathbf C(k/\mathfrak l)^*$ 上的\Term{algebraic-structure}{代数结构}赋予 $A$ 一个\Term{profinite-algebra}{代有限} $k$-\Term{algebraic-structure}{代数结构}。对 $\mathsf{Alf}_{/k}$ 的每个\Term{object}{对象} $B$，有
+\[
+ \operatorname{Hom}_{\mathsf{Vaf}_{/k}}(\operatorname{Spf}(B),\operatorname{Spf}(A))
+ =\operatorname{Hom}_{\mathsf{Alp}_{/k}}(A,B)
+ =\operatorname{Hom}_{\mathsf{Alp}_{/B}}(A\widehat\otimes B,B).\tag{3}
+\]
+最后假设 $\mathbf C$ 是\Term{flat}{平坦} $\mathbf O_k$-模。则由 1.2.3.E，$A=\Gamma^*(\mathbf C)$ 是\Term{pseudocompact}{伪紧}\Term{projective-module}{投射} $k$-模。此外，在该处的证明中已看到，若 $\mathfrak l_0$ 是包含于 $k\to B$ 的核中的 $k$ 的开\Term{ideal}{理想}，则有\Term{isomorphism}{同构}
+\[
+ A\widehat\otimes B=\varprojlim_{\mathfrak l}\mathbf C(k/\mathfrak l)^*\widehat\otimes_k B
+ \simeq\operatorname{Hom}_{k/\mathfrak l_0}(\mathbf C(k/\mathfrak l_0),B)
+ \simeq\operatorname{Hom}_B(\mathbf C(B),B),\tag{4}
+\]
+以 $\mathbf C(B)^*$ 表示右端。最后，对 Artin 环 $B$ 应用\Term{lemma}{引理} 1.3.5.A，得到自然\Term{isomorphism}{同构}
+\[
+ \operatorname{Hom}_{B\text{-余代数}}(B,\mathbf C(B))\xrightarrow{\sim}
+ \operatorname{Hom}_{\mathsf{Alp}_{/B}}(\mathbf C(B)^*,B).\tag{5}
+\]
+于是当 $\mathbf C$ 为\Term{flat}{平坦} $\mathbf O_k$-\Term{coalgebra}{余代数}时，结合（1）、（5）、（4）、（3）及（2），得到\Term{functor}{函子}\Term{isomorphism}{同构}
+\[
+ \operatorname{Spf}^*(\mathbf C)\simeq\operatorname{Spf}(A)=\operatorname{Spf}(\Gamma^*(\mathbf C)).\tag{$\star$}
+\]
+因此，若以 $\mathscr A(X)$ 表示 $k$-\Term{formal-variety}{形式簇} $X$ 的\Term{affine-algebra}{仿射代数}，再结合 1.2.3.E，便得到：
+\begin{SGAresult}{命题}{1.3.5.D}
+（i）\Term{functor}{函子} $X\mapsto\mathbf H(X)=\mathbf V_k^{\mathrm f}(\mathscr A(X))$ 和 $\mathbf C\mapsto\operatorname{Spf}^*(\mathbf C)=\operatorname{Spf}(\Gamma^*(\mathbf C))$ 定义了\Term{topologically-flat}{拓扑平坦} $k$-\Term{formal-variety}{形式簇}\Term{category}{范畴}与\Term{flat}{平坦} $\mathbf O_k$-\Term{coalgebra}{余代数}\Term{category}{范畴}之间的\Term{equivalence}{等价}。
+
+（ii）此外，此\Term{equivalence}{等价}“与\Term{base-change}{基变换}交换”：若 $k\to K$ 是\Term{pseudocompact}{伪紧}\Term{ring-morphism}{环态射}，则 $X\widehat\otimes_k K$ 对应于 $\mathbf H(X)\otimes_k K$。
+\end{SGAresult}
+\SourcePage{537}
+\textbf{1.3.6.} 本讲后面将多次通过给出\Term{coalgebra}{余代数} $\mathbf H(X)$ 来定义\Term{topologically-flat}{拓扑平坦} $k$-\Term{formal-variety}{形式簇} $X$。这时需要用 $\mathbf H(X)$ 来解释 $X$ 的某些几何性质。这里给出一个例子：假设给定\Term{structural-morphism}{结构态射} $X\to\operatorname{Spf}(k)$ 的\Term{section}{截面} $\sigma$，问在什么条件下，$\sigma$ 在\Term{underlying-topological-space}{底拓扑空间}上\Term{induction-isomorphism}{诱导同构}。\footnote{编者注（62）：在下面的\Term{lemma}{引理} 1.3.6.A 中，详细写出了（i）、（ii）的证明，并增添了（iii）。}
+
+先假设 $k$ 为 Artin 环。设 $(H,\Delta,\varepsilon)$ 是\Term{flat}{平坦} $k$-\Term{coalgebra}{余代数}，$H^+=\operatorname{Ker}(\varepsilon)$，$A=H^*$ 是 $H$ 的\Term{dual-module}{对偶}\Term{profinite-algebra}{代有限} $k$-\Term{algebra}{代数}。假设给定 $k$-\Term{coalgebra}{余代数}\Term{morphism}{态射} $k\to H$，即给定满足 $\varepsilon(\phi)=1$ 和 $\Delta(\phi)=\phi\otimes\phi$ 的元素 $\phi\in H$。一方面，$\phi$ 定义\Term{continuous}{连续}\Term{algebra}{代数}\Term{morphism}{态射} $\Phi:A\to k$，从而定义\Term{projection}{投影} $\operatorname{Spf}(A)\to\operatorname{Spf}(k)$ 的\Term{section}{截面} $\sigma:\operatorname{Spf}(k)\to\operatorname{Spf}(A)$。
+
+另一方面，置 $H_0=k\phi$，并对 $n\geq1$ 置
+\[
+ H_n=\{x\in H\mid\Delta(x)-x\otimes\phi\in H_{n-1}\otimes H^+\},
+\]
+以此定义 $H$ 的 $k$-\Term{submodule}{子模}；若置 $H_{-1}=(0)$，上式对 $n=0$ 也适用。对 $n$ 归纳便可看出 $H_{n-1}\subset H_n$。称 $H_0\subset H_1\subset\cdots$ 为 $\phi$ 定义的 $H$ 的\Term{filtration}{滤过}。
+
+\textbf{注记。} 因 $\Delta(H_n)\subset H_n\otimes H_0\oplus H_{n-1}\otimes H^+$，有 $\Delta(H_n)\subset H_n\otimes H$。因 $\Delta$ \Term{cocommutative}{余交换}（即 $\sigma\circ\Delta=\Delta$，其中 $\sigma(a\otimes b)=b\otimes a$），又有 $\Delta(H_n)\subset H\otimes H_n$。当 $H/H_n$ 在 $k$ 上\Term{flat}{平坦}时，由此可知 $H_n$ 是 $H$ 的\Term{coalgebra}{子余代数}（另见下文 1.3.6.A（iii））。但一般而言，$\Delta:H_n\to H_n\otimes H$ 并不经由 $H_n\otimes H_n$ \Term{resolution}{分解}。\footnote{编者注（63）：例如，设 $k_0$ 为域，$k=k_0[T]/(T^n)$，其中 $n\geq4$；设 $H=k\phi\oplus kx$，$\varepsilon(x)=0$ 且 $\Delta(x)=x\otimes\phi+\phi\otimes x+tx\otimes x$，其中 $t$ 为 $T$ 在 $k$ 中的像。则当 $i=0,\ldots,n$ 时，$H_i=k\phi\oplus t^{n-i}x$；但当 $2\leq i\leq n-2$ 时，$\Delta(t^{n-i}x)$ 不在 $H_i\otimes H_i$ 到 $H\otimes H$ 的像中。}
+\begin{SGAresult}{\Term{lemma}{引理}}{1.3.6.A}
+设 $k$ 是 Artin 环，$H$ 是\Term{flat}{平坦} $k$-\Term{coalgebra}{余代数}，$A=H^*$ 为其\Term{dual-module}{对偶}\Term{profinite-algebra}{代有限} $k$-\Term{algebra}{代数}，$\phi\in H$ 满足 $\varepsilon(\phi)=1$、$\Delta(\phi)=\phi\otimes\phi$。设 $\Phi:A\to k$ 为 $\phi$ 定义的\Term{continuous}{连续}\Term{algebra}{代数}\Term{morphism}{态射}，$\sigma:\operatorname{Spf}(k)\to\operatorname{Spf}(A)$ 为 $\phi$ 定义的 $\operatorname{Spf}(A)\to\operatorname{Spf}(k)$ 的\Term{section}{截面}，$(H_n)$ 为 $\phi$ 定义的 $H$ 的\Term{filtration}{滤过}。记 $I=\operatorname{Ker}\Phi$。
+
+（i）对每个 $n\geq1$，$H_{n-1}$ 是 $I^n$ 的\Term{closure}{闭包} $\overline{I^n}$ 在 $H$ 中的\Term{orthogonal-complement}{正交补}。
+
+（ii）因此，$\sigma$ 在\Term{underlying-set}{底集}上诱导\Term{bijection}{双射}，当且仅当 $H=\bigcup_nH_n$。\footnote{编者注（64）：这时称\Term{coalgebra}{余代数} $H$ \Term{connected}{连通}，参见增补 2.9。}
+
+（iii）若再假设每个 $H/H_n$ 都在 $k$ 上\Term{flat}{平坦}，则对每个 $n\geq0$，有
+\[
+ \Delta(H_n)\subset\sum_{i=0}^nH_i\otimes H_{n-i};\tag{$*$}
+\]
+特别地，这时每个 $H_n$ 都是 $H$ 的\Term{coalgebra}{子余代数}。
+\end{SGAresult}
+\SourcePage{538}
+\begin{proof}
+注意，对每个 $x\in H$，映射 $A\to k$，$f\mapsto f(x)$ \Term{continuous}{连续}；所以若 $x$ 消去 $I^n$，它也消去其\Term{closure}{闭包} $\overline{I^n}$。对每个 $n\geq1$，置
+\[
+ (\overline{I^n})^\perp=\{x\in H\mid f(x)=0\text{，对每个 }f\in\overline{I^n}\}.
+\]
+假设 $\sigma:\mathfrak m\mapsto\Phi^{-1}(\mathfrak m)$ 是从 $\operatorname{Spf}(k)$ 到 $\operatorname{Spf}(A)$ 的\Term{bijection}{双射}。因 $I$ 包含于所有 $\Phi^{-1}(\mathfrak m)$ 的交，由 0.1.2，\Term{ideal}{理想}序列 $(I^n)$ 趋于零。现取 $x\in H$；因 $J(x)=\{f\in A\mid f(x)=0\}$ 是 $A$ 的既开又闭的 $k$-\Term{submodule}{子模}，它对充分大的 $n$ 包含 $\overline{I^n}$；换言之，对充分大的 $n$，$x\in(\overline{I^n})^\perp$。
+
+反之，假设 $H=\bigcup_n(\overline{I^n})^\perp$。设 $\mathfrak p$ 为 $A$ 的开\Term{prime-ideal}{素理想}；按 $A$ 的\Term{topology}{拓扑}定义（0.2.2），$\mathfrak p$ 包含形如下式的开 $k$-\Term{submodule}{子模}：
+\[
+ \mathscr V(x_1,\ldots,x_s)=\{f\in A\mid f(x_1)=\cdots=f(x_s)=0\}.
+\]
+由假设，存在整数 $n$ 使 $x_1,\ldots,x_s\in(\overline{I^n})^\perp$，因此 $I^n\subset\mathfrak p$。此外，因 $k$ 为 Artin 环，$\operatorname{Spf}(k)$ 为\Term{finite}{有限}集 $\{\mathfrak m_1,\ldots,\mathfrak m_r\}$，且存在整数 $t\geq1$ 使 $(\prod_i\mathfrak m_i)^t=0$，从而
+\[
+ \prod_i\Phi^{-1}(\mathfrak m_i)^t\subset I.
+\]
+所以 $\mathfrak p$ 包含各 $\Phi^{-1}(\mathfrak m_i)^{tn}$ 的积；因 $\mathfrak p$ 为\Term{prime-ideal}{素理想}，它包含某个 $\Phi^{-1}(\mathfrak m_i)$，因而等于它。这样就证明了
+\[
+ \sigma\text{ 为双射}\quad\Longleftrightarrow\quad H=\bigcup_n(\overline{I^n})^\perp.
+\]
+\footnote{编者注（65）：不假设 $H$ \Term{cocommutative}{余交换}时也成立（$k$ 仍为交换 Artin 环）：此时 $A=H^*$ 的零点\Term{neighborhood}{邻域}基由使 $A/J$ 在 $k$ 上为\Term{finite-length}{有限长}的\Term{two-sided-ideal}{双边理想} $J$ 给出；上述证明表明 $H=\bigcup_n(\overline{I^n})^\perp$，当且仅当各 $\Phi^{-1}(\mathfrak m_i)$ 是 $A$ 仅有的开\Term{prime-ideal}{素理想}。}
+
+另一方面，有 $H=k\phi\oplus H^+$；以 $\pi$ 表示核为 $k\phi$ 的\Term{projection}{投影} $H\to H^+$。对每个 $n\geq0$，设 $\Delta^n$ 为“迭代”\Term{comultiplication}{余乘法} $H\to H^{\otimes(n+1)}$，$\overline\Delta^{\,n}$ 为 $\Delta^n$ 与\Term{projection}{投影} $\pi^{\otimes(n+1)}:H^{\otimes(n+1)}\to(H^+)^{\otimes(n+1)}$ 的复合，并置
+\[
+ H'_n=\operatorname{Ker}(\overline\Delta^{\,n})
+ =\left\{x\in H\ \middle|\ \Delta^n(x)\in\sum_{i=0}^n H^{\otimes(n-i)}\otimes H_0\otimes H^{\otimes i}\right\}.
+\]
+（置 $\Delta^0=\operatorname{id}_H$，因而 $H'_0=H_0$。）对 $n$ 归纳便容易看出
+\[
+ H_n\subset H'_n\subset(\overline{I^{n+1}})^\perp.\tag{$*$}
+\]
+迄今尚未使用 $H$ 在 $k$ 上\Term{flat}{平坦}的假设。现在假设 $H$ 在 $k$ 上\Term{flat}{平坦}，因而\Term{projective-module}{投射}，于是由 0.2.2，$A^\dagger=H$；证明 $H_n=(\overline{I^{n+1}})^\perp$。$n=0$ 时很清楚。假设它对 $n<r$ 成立。则 $H_{r-1}$ 为\Term{morphism}{态射} $H\to(\overline{I^r})^\dagger$ 的核；因 $H^+$ \Term{flat}{平坦}，\Term{morphism}{态射}
+\[
+ (H/H_{r-1})\otimes H^+\longrightarrow(\overline{I^r})^\dagger\otimes H^+
+\]
+\SourcePage{539}
+\Term{injectivity}{单射}。另一方面，假设蕴含 $I$ 为\Term{pseudocompact}{伪紧}\Term{projective-module}{投射} $k$-模（因它是 $A=H^*$ 的\Term{direct-factor}{直因子}），故由 0.3.6，
+\[
+ (\overline{I^r}\widehat\otimes I)^\dagger\simeq(\overline{I^r})^\dagger\otimes I^\dagger
+ =(\overline{I^r})^\dagger\otimes H^+.
+\]
+于是\Term{exact-sequence}{正合序列}
+\[
+ \overline{I^r}\widehat\otimes I\longrightarrow A\longrightarrow A/\overline{I^{r+1}}\longrightarrow0
+\]
+经\Term{duality}{对偶}给出\Term{exact-sequence}{正合序列}
+\[
+ (\overline{I^r})^\dagger\otimes H^+\xleftarrow{\delta}H\longleftarrow(A/\overline{I^{r+1}})^\dagger\longleftarrow0,\tag{1}
+\]
+其中 $\delta$ 由 $\Delta_H$ 与如下\Term{projection}{投影}复合得到：
+\[
+ H\otimes H\longrightarrow H\otimes H^+\longrightarrow(H/H_{r-1})\otimes H^+
+ \lhook\joinrel\longrightarrow(\overline{I^r})^\dagger\otimes H^+.\tag{2}
+\]
+而对每个 $u\in H$，$\Delta(u)$ 到 $H\otimes H^+$ 的\Term{projection}{投影}为 $\Delta(u)-u\otimes\phi$。因此，（1）、（2）表明，若 $u\in(A/\overline{I^{r+1}})^\dagger=(\overline{I^{r+1}})^\perp$，则 $\Delta(u)-u\otimes\phi$ 属于映射 $H\otimes H^+\to(H/H_{r-1})\otimes H^+$ 的核，即属于 $H_{r-1}\otimes H^+$，所以 $u\in H_r$。这就完成了（i）、（ii）的证明，同时还说明 $H_n=\operatorname{Ker}(\overline\Delta^{\,n})$。
+
+证明（iii）。对每个 $i\geq0$，置 $H_i^+=H_i\cap H^+$。设 $n\geq1$。对每个 $x\in H_n$，$\overline x=x-\varepsilon(x)\phi$ 属于 $H_n^+$，且
+\[
+ \Delta(x)=\varepsilon(x)\phi\otimes\phi+\overline x\otimes\phi+\phi\otimes\overline x+\overline\Delta(\overline x).
+\]
+故只须证明
+\[
+ \overline\Delta(H_n^+)\subset\sum_{i=1}^{n-1}H_i^+\otimes H_{n-i}^+.
+\]
+对每个 $i=0,\ldots,n-1$，$\overline\Delta^{\,n}$ \Term{resolution}{分解}如下：
+\[
+\begin{tikzcd}[column sep=large]
+ H^+\arrow[r,"\overline\Delta"]&H^+\otimes H^+\arrow[r,"{\overline\Delta^{\,i}\otimes\overline\Delta^{\,n-i-1}}"]\arrow[d]
+ &(H^+)^{\otimes(i+1)}\otimes(H^+)^{\otimes(n-i)}\\
+ &\dfrac{H^+}{H_i^+}\otimes\dfrac{H^+}{H_{n-i-1}^+}\arrow[r,"f"']
+ &\dfrac{H^+}{H_i^+}\otimes(H^+)^{\otimes(n-i)}\arrow[u,"g"'].
+\end{tikzcd}
+\]
+此外，因 $H^+/H_i^+$ 及 $(H^+)^{\otimes(n-i)}$ 均\Term{flat}{平坦}，图中的 $f,g$ \Term{injectivity}{单射}。由此可知，对每个 $i=0,\ldots,n-1$，$\overline\Delta(H_n^+)$ 包含于 $H_i^+\otimes H^++H^+\otimes H_{n-i-1}^+$。对 $M=H^+$ 和 $E_i=H_{i-1}^+$ 应用下面的\Term{lemma}{引理}，便得到（iii）。
+\end{proof}
+\begin{SGAresult}{\Term{lemma}{引理}}{1.3.6.B}
+设 $k$ 为环，$0=E_0\subset E_1\subset\cdots E_n\subset M$ 是 $k$-模。假设对每个 $i$，$M/E_i$ 均\Term{flat}{平坦}。则有等式
+\[
+ \bigcap_{i=0}^n(E_i\otimes M+M\otimes E_i)=\sum_{i=1}^n E_i\otimes E_{n-i+1}.
+\]
+\end{SGAresult}
+\SourcePage{540}
+\begin{proof}
+以 $K$（相应地，$S$）表示左端（相应地，右端）。容易看出 $S\subset K$；下面证明反向包含。对 $i=0,\ldots,n$，置 $K_i=K\cap(E_i\otimes M)$。对每个 $i=1,\ldots,n$，因 $M/E_{n-i+1}$ 和 $E_i/E_{i-1}$ 均\Term{flat}{平坦}，下面的映射 $\tau_i$ \Term{injectivity}{单射}，复合映射
+\[
+\begin{split}
+ (E_i/E_{i-1})\otimes M&\longrightarrow(E_i/E_{i-1})\otimes(M/E_{n-i+1})\\
+ &\xrightarrow{\ \tau_i\ }(M/E_{i-1})\otimes(M/E_{n-i+1})
+\end{split}
+\]
+的核为 $(E_i/E_{i-1})\otimes E_{n-i+1}$。因 $K_i$ 在 $(E_i\otimes M)/(E_{i-1}\otimes M)$ 中的像既包含于此核，也包含此核，故
+\[
+ K_i=K_{i-1}+E_i\otimes E_{n-i+1},
+\]
+\Term{lemma}{引理}得证。
+\end{proof}
+\footnote{编者注（66）：增添了下文；原文只讨论 $k$ 为 Artin 环的情形。} 为结束本段，回到任意\Term{pseudocompact}{伪紧}环 $k$。设 $(\mathbf H,\Delta,\varepsilon)$ 为\Term{flat}{平坦} $\mathbf O_k$-\Term{coalgebra}{余代数}，$\mathbf H^+=\operatorname{Ker}(\varepsilon)$，$A=\Gamma^*(\mathbf H)$ 为其\Term{dual-module}{对偶}\Term{profinite-algebra}{代有限} $k$-\Term{algebra}{代数}，$X=\operatorname{Spf}(A)$，因而 $\mathbf H=\mathbf H(X)$（参见 1.3.5）。假设给定 $\mathbf O_k$-\Term{coalgebra}{余代数}\Term{morphism}{态射} $\phi:\mathbf O_k\to\mathbf H$；它定义\Term{continuous}{连续} $k$-\Term{algebra}{代数}\Term{morphism}{态射} $A\to k$，从而定义\Term{structural-morphism}{结构态射} $X\to\operatorname{Spf}(k)$ 的\Term{section}{截面} $\sigma$。
+
+对 $\mathsf{Alf}_{/k}$ 的每个\Term{object}{对象} $B$，记 $\mathbf H_0(B)=\phi(B)=B\phi_B$，其中 $\phi_B$ 是 $\mathbf H(B)$ 中的元素 $\phi(1_B)$；再对 $n\geq1$ 置
+\[
+ \mathbf H_n(B)=\{u\in\mathbf H(B)\mid\Delta(u)-u\otimes\phi_B\in\mathbf H_{n-1}(B)\otimes\mathbf H^+(B)\},
+\]
+以此定义 $\mathbf H$ 的 $\mathbf O_k$-\Term{submodule}{子模} $\mathbf H_n$。于是得到 $\mathbf H(X)$ 的\Term{filtration}{滤过} $\mathbf H_0\subset\mathbf H_1\subset\cdots$。由前述结果，有：
+\begin{SGAresult}{命题}{}
+$\sigma$ 在\Term{underlying-topological-space}{底拓扑空间}上\Term{induction-isomorphism}{诱导同构}的充要条件是，$\mathbf H(X)$ 为各 $\mathbf H_n$ 的并。
+\end{SGAresult}
+
+\begin{SGAresult}{\Term{theorem}{定理}}{1.4}
+设 $k$ 为\Term{pseudocompact}{伪紧}环，$d_0,d_1:X_1\rightrightarrows X$ 为 $\mathsf{Vaf}_{/k}$ 中的一对\Term{equivalence}{等价}\Term{arrow}{箭头}（参见第 V 讲 \S2.b）），并假设 $d_1$ \Term{topologically-flat}{拓扑平坦}。
+
+（i）从 $X$ 到 $X/X_1$（$=\operatorname{Coker}(d_0,d_1)$）的\Term{canonical-projection}{典范投影}\Term{surjectivity}{满射}且\Term{topologically-flat}{拓扑平坦}，而以 $d_0,d_1$ 为\Term{set-component}{分量}的\Term{morphism}{态射} $X_1\to X\times_{X/X_1}X$ 是\Term{isomorphism}{同构}。
+
+（ii）若 $X$ 在 $k$ 上\Term{topologically-flat}{拓扑平坦}，则 $X/X_1$ 也在 $k$ 上\Term{topologically-flat}{拓扑平坦}。
+\end{SGAresult}
+先注意，由 1.3.3（ii），（ii）从（i）\Term{pushout}{推出}。（i）的证明占据 1.4.1、1.4.2 和 1.4.3 三段。
+
+\textbf{1.4.1.} 首先证明，可以归结到 $X$ 只有一个点的情形。因给定的是一对\Term{equivalence}{等价}\Term{arrow}{箭头}，可以像第 V 讲 \S3.e）中那样，在 $X$ 的\Term{underlying-set}{底集}上定义\Term{equivalence-relation}{等价关系}：若存在 $z\in X_1$ 使 $d_0(z)=y$、$d_1(z)=x$，便称 $x,y$ \Term{equivalence}{等价}。显然可无妨假设 $X$ 对此关系只有一个\Term{equivalence-class}{等价类}，换言之，$X/X_1$ 只有一个点（见 1.2 给出的 $X/X_1$ 的构造）。
+\SourcePage{541}
+这时，设 $x$ 是 $X$ 的任意一点，$U$ 是只以 $x$ 为点、且在 $x$ 处与 $X$ 有相同\Term{local-ring}{局部环}的\Term{formal-variety}{形式簇}。像第 V 讲 \S6 中那样可以看出，$(d_0,d_1)$ 在 $U$ 上诱导的\Term{equivalence-relation}{等价关系}仍满足\Term{theorem}{定理}的假设，只须对此\Term{equivalence-relation}{等价关系}进行证明（$U$ 是一个“\Term{quasi-section}{拟截面}”）。
+
+简要回顾第 V 讲 \S6 中证明的原理。置 $V=d_0^{-1}(U)=U\times_{i,d_0}X_1$，其中 $i$ 是 $U$ 到 $X$ 的包含；以 $u,v$ 分别表示 $d_0,d_1$ 诱导的以 $V$ 为源的\Term{morphism}{态射}：
+\[
+\begin{tikzcd}
+ X&V\arrow[l,"v"']\arrow[r,"u"]&U.
+\end{tikzcd}
+\]
+显然 $u,v$ 都\Term{topologically-flat}{拓扑平坦}，且 $u$ \Term{surjectivity}{满射}；因 $X$ 只含一个\Term{equivalence-class}{等价类}，$v$ 也\Term{surjectivity}{满射}。若 $(v_0,v_1)$ 是\Term{equivalence}{等价}\Term{arrow}{箭头}对 $(d_0,d_1)$ 沿 $v$ 的原像（参见第 V 讲 3.a）），则由第 V 讲 3.c）、3.d），$X/X_1$ 与 $U$ 对 $(d_0,d_1)$ 诱导的\Term{equivalence-relation}{等价关系}的商都可等同于 $\operatorname{Coker}(v_0,v_1)$。再像第 V 讲 6.1 的证明那样可看出：若\Term{theorem}{定理} 1.4 的结论对 $U$ 成立，则对 $X$ 也成立。
+
+\textbf{1.4.2.} 这样便归结到 $X$ 只有一个点的情形。\footnote{编者注（67）：因此可假设 $k$ 为\Term{local-ring}{局部环}。} 考虑下面的\Term{commutative-diagram}{交换图}（参见第 V 讲 \S1，（0,1,2））：
+\[
+\begin{tikzcd}
+ X_2\arrow[r,shift left=.6ex,"d'_1"]\arrow[r,shift right=.6ex,"d'_0"']\arrow[d,"d'_2"']
+ &X_1\arrow[r,"d_0"]\arrow[d,"d_1"]&X\arrow[d]\\
+ X_1\arrow[r,shift left=.6ex,"d_1"]\arrow[r,shift right=.6ex,"d_0"']&X\arrow[r]&X/X_1,
+\end{tikzcd}
+\]
+其中 $X_2$ 为\Term{fiber-product}{纤维积} $X_1\times_{d_1,d_0}X_1$，$d'_0,d'_1,d'_2$ 分别是\Term{morphism}{态射}“$(x,y,z)\mapsto(x,y)$”、“$(x,y,z)\mapsto(x,z)$”和“$(x,y,z)\mapsto(y,z)$”。\footnote{编者注（68）：参见第 V 讲 \S2.b）。}
+
+若以 $B,A,A_1,A_2$ 分别表示 $X/X_1,X,X_1,X_2$ 的\Term{affine-algebra}{仿射代数}，则上图诱导\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}
+ A_2&A_1\arrow[l,shift left=.6ex,"j_1"']\arrow[l,shift right=.6ex,"j_0"]&A\arrow[l,"i_0"']\\
+ A_1\arrow[u,"j_2"]&A\arrow[l,shift left=.6ex,"i_1"']\arrow[l,shift right=.6ex,"i_0"]\arrow[u,"i_1"]&B\arrow[l,"i"']\arrow[u,"i"],
+\end{tikzcd}
+\]
+其中两行\Term{exact}{正合}，由 $(i_0,j_0)$ 和 $(i_1,j_1)$ 确定的方块为\Term{cocartesian}{余笛卡儿}方块。由假设，以 $d_0,d_1$ 为\Term{set-component}{分量}的\Term{morphism}{态射} $X_1\to X\times X$ 是\Term{monomorphism}{单态射}，
+\SourcePage{542}
+故由命题 1.3，以 $i_0,i_1$ 为\Term{set-component}{分量}的\Term{morphism}{态射} $A\widehat\otimes_k A\to A_1$ \Term{surjectivity}{满射}。
+
+这意味着 $i_1$ 使 $A_1$ 成为由 $i_0(A)$ 生成的\Term{pseudocompact}{伪紧} $A$-模（按假设是\Term{topologically-free}{拓扑自由}的）。因 $A$ 为\Term{local-ring}{局部环}，下面的\Term{lemma}{引理} 1.4.3 蕴含存在\Term{topologically-free}{拓扑自由} $k$-模 $V$ 及\Term{pseudocompact}{伪紧} $k$-\Term{module-morphism}{模态射} $f:V\to A$，使\Term{morphism}{态射}
+\[
+ \alpha_1:A\widehat\otimes_k V\longrightarrow A_1,\qquad a\widehat\otimes v\longmapsto i_1(a)\cdot i_0(f(v))
+\]
+\Term{invertible}{可逆}。设 $\alpha:B\widehat\otimes_k V\to A$ 及 $\alpha_2:A_1\widehat\otimes_k V\to A_2$ 分别是\Term{morphism}{态射}
+\[
+ b\widehat\otimes v\longmapsto i(b)\cdot f(v),\qquad
+ a_1\widehat\otimes v\longmapsto j_2(a_1)\cdot j_0i_0(f(v)).
+\]
+在下面的\Term{commutative-diagram}{交换图}中，两行\Term{exact}{正合}，左边两个方块为\Term{cocartesian}{余笛卡儿}方块。因 $\alpha_1$ \Term{invertible}{可逆}，$\alpha_2$ 也\Term{invertible}{可逆}，从而 $\alpha$ \Term{invertible}{可逆}。
+\[
+\begin{tikzcd}[column sep=large]
+ A_2&A_1\arrow[l,shift left=.6ex,"j_1"']\arrow[l,shift right=.6ex,"j_0"]&A\arrow[l,"i_0"']\\
+ A_1\widehat\otimes_k V\arrow[u,"\alpha_2"]
+ &A\widehat\otimes_k V\arrow[l,shift left=.6ex,"{i_1\widehat\otimes V}"']\arrow[l,shift right=.6ex,"{i_0\widehat\otimes V}"]\arrow[u,"\alpha_1"]
+ &B\widehat\otimes_k V\arrow[l,"{i\widehat\otimes V}"']\arrow[u,"\alpha"].
+\end{tikzcd}
+\]
+这一方面说明 $A$ 在 $B$ 上\Term{topologically-free}{拓扑自由}，\Term{pseudobasis}{伪基}为 $f(V)$（参见 0.2.1）；另一方面，将 $f(V)$ 取在 $i_0$ 下的像，就得到 $A_1$ 在 $A$ 上的一组\Term{pseudobasis}{伪基}（其中借助 $i_1$ 将 $A_1$ 视为 $A$-模）。这蕴含以 $i_1,i_0$ 为\Term{set-component}{分量}的\Term{morphism}{态射} $A\widehat\otimes_B A\to A_1$ \Term{invertible}{可逆}：
+\[
+ A\widehat\otimes_B A\simeq A\widehat\otimes_B B\widehat\otimes_k V
+ \simeq A\widehat\otimes_k V\simeq A_1.
+\]
+至此，只要证明下面的\Term{lemma}{引理} 1.4.3，\Term{theorem}{定理} 1.4 即得证。
+
+\begin{SGAresult}{\Term{lemma}{引理}}{1.4.3}
+设 $k$ 为\Term{pseudocompact}{伪紧}环，$A$ 为\Term{local-scheme}{局部}\Term{profinite-algebra}{代有限} $k$-\Term{algebra}{代数}，$A_1$ 为\Term{topologically-free}{拓扑自由} $A$-模，$i_0:M\to A_1$ 为\Term{pseudocompact}{伪紧} $k$-\Term{module-morphism}{模态射}。假设映射
+\[
+ A\widehat\otimes_k M\longrightarrow A_1,\qquad a\widehat\otimes m\longmapsto a\cdot i_0(m)
+\]
+\Term{surjectivity}{满射}。则存在\Term{topologically-free}{拓扑自由} $k$-模 $V$ 及\Term{pseudocompact}{伪紧} $k$-\Term{module-morphism}{模态射} $f:V\to M$，使映射
+\[
+ A\widehat\otimes_k V\longrightarrow A_1,\qquad a\widehat\otimes v\longmapsto a\cdot i_0(f(v))
+\]
+为\Term{bijection}{双射}。
+\end{SGAresult}
+\begin{proof}
+因每个\Term{pseudocompact}{伪紧} $k$-模都是\Term{topologically-free}{拓扑自由} $k$-模的商（参见编者注（27）），可无妨假设 $M$ \Term{topologically-free}{拓扑自由}；于是取 $M$ 为一族 $k$ 的副本 $(M_i)_{i\in I}$ 的\Term{direct-product}{直积}。这时 $A\widehat\otimes_k M$ 正是积 $\prod_{i\in I}A\widehat\otimes_k M_i$。因映射 $a\widehat\otimes m\mapsto a\cdot i_0(m)$ \Term{surjectivity}{满射}且 $A_1$ \Term{projective-module}{投射}，其核是 $A\widehat\otimes_k M$ 的\Term{direct-factor}{直因子}；因 $A$ 为\Term{local-ring}{局部环}，
+\SourcePage{543}
+由交换\Term{theorem}{定理}（0.3.4），此核有一个补因子形如部分积 $\prod_{i\in J}A\widehat\otimes_k M_i$，其中 $J$ 为 $I$ 的某个\Term{subset}{子集}。因此可取 $V=\prod_{i\in J}M_i$。
+\end{proof}
+
+\textbf{1.5.} 设 $k$ 为\Term{pseudocompact}{伪紧}环。
+
+\textbf{定义。} 若 $\mathsf{Vaf}_{/k}$ 中一族\Term{morphism}{态射} $f_i:X_i\to X$ 所诱导的\Term{morphism}{态射} $\coprod_i X_i\to X$ \Term{surjectivity}{满射}且\Term{topologically-flat}{拓扑平坦}，则称此族为\Term{surjectivity}{满射}\Term{topologically-flat}{拓扑平坦}族；这意味着每个 $f_i$ 都\Term{topologically-flat}{拓扑平坦}，且 $X$ 的每个点至少属于一个 $X_i$ 的像。
+
+由 1.3.3，\Term{surjectivity}{满射}\Term{topologically-flat}{拓扑平坦}族在 $\mathsf{Vaf}_{/k}$ 上定义一个\Term{pretopology}{预拓扑}（第 IV 讲 4.2.5）；相应的\Term{topology}{拓扑}称为 $\mathsf{Vaf}_{/k}$ 上的\Term{flat-topology}{平坦拓扑}。
+
+由第 IV 讲 4.3.5，\Term{functor}{函子} $F:(\mathsf{Vaf}_{/k})^0\to\mathsf{Ens}$ 是\Term{flat-topology}{平坦拓扑}的\Term{sheaf}{层}，当且仅当 $F$ 将每个\Term{direct-sum}{直和}变成\Term{direct-product}{直积}，且对每个\Term{surjectivity}{满射}\Term{topologically-flat}{拓扑平坦}\Term{morphism}{态射} $f:X\to Y$，下列序列\Term{exact}{正合}：
+\[
+\begin{tikzcd}
+ F(Y)\arrow[r,"F(f)"]&F(X)\arrow[r,shift left=.6ex,"F(\operatorname{pr}_1)"]\arrow[r,shift right=.6ex,"F(\operatorname{pr}_2)"']&F(X\times_Y X).
+\end{tikzcd}
+\]
+\footnote{编者注（69）：修改了下文的原文。特别地，将“若 $d_0,d_1:X_1\rightrightarrows X$ 是满足 $d_1$ \Term{topologically-flat}{拓扑平坦}的\Term{equivalence-relation}{等价关系}，则商的形成与 $h$ 交换”这一陈述替换为下面的\Term{theorem}{定理}。} 由第 IV 讲 4.5，命题 1.3.1 蕴含\Term{flat-topology}{平坦拓扑}比\Term{canonical-topology}{典范拓扑}粗，也就是说，对 $\mathsf{Vaf}_{/k}$ 的每个\Term{object}{对象} $X$，\Term{functor}{函子} $h_X:T\mapsto\operatorname{Hom}_{\mathsf{Vaf}_{/k}}(T,X)$ 是\Term{flat-topology}{平坦拓扑}的\Term{sheaf}{层}。（下文照常将 $X$ 与 $h_X$ 等同，参见第 I 讲。）
+
+由第 IV 讲 4.6.5，可以将\Term{theorem}{定理} 1.4 改述如下。
+\begin{SGAresult}{\Term{theorem}{定理}}{}
+设 $k$ 为\Term{pseudocompact}{伪紧}环，$d_0,d_1:X_1\rightrightarrows X$ 是 $\mathsf{Vaf}_{/k}$ 中的一对\Term{equivalence}{等价}\Term{arrow}{箭头}，$X/X_1$ 为商\Term{formal-variety}{形式簇}（即 $\operatorname{Coker}(d_0,d_1)$，参见 1.2）。若 $d_1$ \Term{topologically-flat}{拓扑平坦}，则 $X/X_1$ 表示\Term{flat-topology}{平坦拓扑}的商\Term{sheaf}{层}。
+\end{SGAresult}
+
+\textbf{1.6.} 为结束这些关于\Term{formal-variety}{形式簇}的一般讨论，还需简要定义 $k$ 上的\Term{etale}{平展}\Term{formal-variety}{形式簇}。\footnote{编者注（70）：原文接着说：“若 $k$ 上\Term{formal-variety}{形式簇} $X$ 的\Term{diagonal-morphism}{对角态射} $\Delta_X:X\to X\times X$ 为\Term{local-isomorphism}{局部同构}，即对每个点 $x\in X$，$\Delta_X$ 诱导从 $\mathcal O_{X\times X,\Delta_X(x)}$ 到 $\mathcal O_{X,x}$ 的\Term{isomorphism}{同构}，则称 $X$ \Term{etale}{平展}。借助 SGA I，容易看出此表述与以下两个表述\Term{equivalence}{等价}：\Term{formal-variety}{形式簇} $X$ \Term{topologically-flat}{拓扑平坦}，且对每个\Term{projection}{投影}到 $s\in\operatorname{Spf}(k)$ 的点 $x\in X$，$\mathcal O_{X,x}\widehat\otimes_k\kappa(s)$ 是 $s$ 的\Term{residue-field}{剩余域} $\kappa(s)$ 的\Term{finite-separable-extension}{有限可分扩张}；或者，若 $A$ 表示 $X$ 的\Term{affine-algebra}{仿射代数}，则对 $k$ 的每个开\Term{ideal}{理想} $\mathfrak l$，$A\widehat\otimes_k(k/\mathfrak l)$ 的\Term{local-component}{局部分量}（0.1）均为 $k/\mathfrak l$ 上的\Term{finite}{有限}\Term{etale}{平展}\Term{algebra}{代数}。”下文补正了上述第一个条件中遗漏的\Term{flat}{平坦}性假设，并详细证明了这些条件的\Term{equivalence}{等价}性。}
+\SourcePage{544}
+\textbf{回顾 1.6.A。}（i）首先回顾（参见 EGA $0_{\mathrm{IV}}$，19.10.2），称\Term{topology}{拓扑} $k$-\Term{algebra}{代数} $A$ 在 $k$ 上\Term{formally-etale}{形式平展}（对于 $k,A$ 上给定的\Term{topology}{拓扑}，相应地，对于\Term{discrete-topology}{离散拓扑}），如果对每个\Term{discrete-topology}{离散拓扑} $k$-\Term{algebra}{代数} $C$（未必为 Artin 环），以及 $C$ 的每个\Term{nilpotent-ideal}{幂零理想} $J$，任一\Term{continuous}{连续} $k$-\Term{algebra}{代数}\Term{morphism}{态射} $A\to C/J$ 都可唯一地\Term{lifting}{提升}为\Term{continuous}{连续}\Term{morphism}{态射} $A\to C$（其中 $A$ 赋予给定\Term{topology}{拓扑}，相应地赋予\Term{discrete-topology}{离散拓扑}）。立刻可见，此性质在\Term{base-change}{基变换}下保持；也就是说，对\Term{pseudocompact}{伪紧}环的每个\Term{morphism}{态射} $k\to k'$，$A\widehat\otimes_k k'$ 在 $k'$ 上\Term{formally-etale}{形式平展}。另一方面，容易看出，只须对平方为零的每个\Term{ideal}{理想} $J$ 验证\Term{lifting}{提升}条件，参见 EGA IV$_4$，17.1.2（ii）。若 $A$ 对于\Term{discrete-topology}{离散拓扑}在 $k$ 上\Term{formally-etale}{形式平展}，且还是\Term{finite-presentation}{有限表示} $k$-\Term{algebra}{代数}，则称 $A$ 在 $k$ 上\Term{etale}{平展}（参见 EGA IV$_4$，17.3.2（ii））。下文当 $k$ 为\Term{pseudocompact}{伪紧}环、$A$ 为\Term{profinite-algebra}{代有限} $k$-\Term{algebra}{代数}时，除非另作说明，“\Term{formally-etale}{形式平展}”均指对于给定\Term{topology}{拓扑}而言。
+
+（ii）还要回顾，若 $F\in k[T]$ 是\Term{degree}{次数} $d\geq1$ 的首一\Term{separable-polynomial}{可分多项式}（即 $F$ 及其导数\Term{polynomial}{多项式} $F'$ 生成的\Term{ideal}{理想}为 $k[T]$），则 $k$-\Term{algebra}{代数} $B=k[T]/(F)$（它是秩为 $d$ 的自由 $k$-模，赋予\Term{product-topology}{积拓扑}）在 $k$ 上\Term{formally-etale}{形式平展}。事实上，设 $C$ 为\Term{discrete}{离散} $k$-\Term{algebra}{代数}（因而 $k\to C$ 的核为 $k$ 的开\Term{ideal}{理想} $\mathfrak l$），$J$ 为 $C$ 的平方为零的\Term{ideal}{理想}，$\phi:B\to C/J$ 为\Term{continuous}{连续} $k$-\Term{algebra}{代数}\Term{morphism}{态射}。注意，因 $B$ 为\Term{finite-rank}{有限秩}自由 $k$-模，$\mathfrak lB$ 为 $B$ 的开\Term{ideal}{理想}，所以 $\phi$ 的每个\Term{lifting}{提升} $\Phi:B\to C$ 自动\Term{continuous}{连续}。设 $t$ 为 $T$ 在 $B$ 中的像，$u_0$ 为 $\phi(t)$ 在 $C$ 中的任意\Term{lifting}{提升}，则 $F(u_0)\in J$（因为 $\phi(t)$ 是 $F$ 的根）；另一方面，存在 $G,H\in k[T]$ 使 $GF+HF'=1$，从而 $H(u_0)F'(u_0)=1-G(u_0)F(u_0)$；因 $F(u_0)$ 的平方为零，右端\Term{invertible}{可逆}，因此 $F'(u_0)$ \Term{invertible}{可逆}。我们寻找 $h\in J$ 使 $x=x_0+h$ 为 $F$ 的根；这\Term{equivalence}{等价}于 $0=F(u)=F(u_0)+F'(u_0)h$。因 $F'(u_0)$ \Term{invertible}{可逆}，唯一的解为 $h=-F'(u_0)^{-1}F(u_0)\in J$。当然，同样的证明（不对\Term{morphism}{态射} $k\to C$、$\phi$ 和 $\Phi$ 作\Term{continuity}{连续性}假设）表明，$B$ 也是\Term{etale}{平展} $k$-\Term{algebra}{代数}。
+
+（iii）最后回顾，若 $A$ 为\Term{finite-product}{有限积} $A_1\times\cdots\times A_n$，则 $A$ 在 $k$ 上\Term{formally-etale}{形式平展}，当且仅当各 $A_i$ 在 $k$ 上\Term{formally-etale}{形式平展}。\footnote{编者注（71）：顺便指出，EGA $0_{\mathrm{IV}}$，19.3.5（v）中给出的证明有误。} 事实上，只须在 $n=2$ 时证明。这时，设 $e=1_{A_1}$ 为使 $A_1=Ae$、$A_2=A(1-e)$ 的\Term{idempotent}{幂等元}，并假设给定\Term{continuous}{连续}\Term{morphism}{态射} $A\to C/J$，其中 $J$ 为平方为零的\Term{ideal}{理想}。因\Term{polynomial}{多项式} $F=X^2-X$ \Term{separable}{可分}（$F'=2X-1$，且 $(F')^2-4F=1$），$C/J$ 的\Term{idempotent}{幂等元} $\phi(e)$ 可唯一地\Term{lifting}{提升}为 $C$ 的\Term{idempotent}{幂等元} $f$；于是 $C=Cf\oplus C(1-f)$，此时给定 $\Phi$ 的一个\Term{lifting}{提升}，就等于给定两个\Term{morphism}{态射} $\Phi_1:A_1\to Cf$ 和 $\Phi_2:A_2\to C(1-f)$，分别\Term{lifting}{提升} $\phi$ 在 $A_1,A_2$ 上的\Term{restriction}{限制}。同样的论证表明，若 $e$ 是 $k$ 的\Term{idempotent}{幂等元}且 $A=Ae$，则 $A$ 在 $k$ 上\Term{formally-etale}{形式平展}，当且仅当它在\Term{localization}{局部化} $k_e$（可等同于 $ke$）上\Term{formally-etale}{形式平展}。
+\SourcePage{545}
+现在设 $X$ 是 $k$-\Term{formal-variety}{形式簇}，$A$ 为其\Term{affine-algebra}{仿射代数}。若 $x$ 是 $X$ 的点（即 $A$ 的开\Term{maximal-ideal}{极大理想} $\mathfrak m$），在 $\operatorname{Spf}(k)$ 中的像为 $s$，则以 $k_{\mathfrak m}$ 或 $k_s$ 表示 $k$ 中对应于 $s$ 的\Term{local-component}{局部分量}。
+\begin{SGAresult}{定义}{1.6.B}
+下列条件\Term{equivalence}{等价}：
+
+（a）$A$ 在 $k$ 上\Term{formally-etale}{形式平展}。
+
+（b）对每个 $\mathfrak m\in\Upsilon(A)$，$A_{\mathfrak m}$ 在 $k$（或 $k_{\mathfrak m}$）上\Term{formally-etale}{形式平展}。
+
+（c）对 $k$ 的每个开\Term{ideal}{理想} $\mathfrak l$，$A\widehat\otimes_k(k/\mathfrak l)=A/\overline{A\mathfrak l}$ 在 $k/\mathfrak l$ 上\Term{formally-etale}{形式平展}。
+
+（d）对每个 $\mathfrak m\in\Upsilon(A)$ 及 $k_{\mathfrak m}$ 的每个开\Term{ideal}{理想} $\mathfrak l$，$A_{\mathfrak m}/\overline{A_{\mathfrak m}\mathfrak l}$ 在 $k_{\mathfrak m}/\mathfrak l$ 上\Term{formally-etale}{形式平展}。
+
+若 $X$ 满足这些条件，便称 $X$ 在 $k$ 上\Term{etale}{平展}；以 $\mathsf{Vaf}^{\text{ét}}_{/k}$ 表示 $\mathsf{Vaf}_{/k}$ 中由 $k$ 上\Term{etale}{平展}\Term{formal-variety}{形式簇}组成的\Term{full-subcategory}{满子范畴}。\footnote{编者注（72）：注意，$\mathsf{Vaf}^{\text{ét}}_{/k}$ 对\Term{finite-inverse-limit}{有限投射极限}\Term{stable}{稳定}。}
+\end{SGAresult}
+注意，若 $\phi:A\to C/J$ 是\Term{continuous}{连续} $k$-\Term{algebra}{代数}\Term{morphism}{态射}，$C$ 是\Term{discrete}{离散} $k$-\Term{algebra}{代数}，$J$ 是平方为零的\Term{ideal}{理想}，则 $I=\operatorname{Ker}(\phi)$ 是 $A$ 的开\Term{ideal}{理想}，所以 $A/I$ 为 Artin 环；因此，只有\Term{finite}{有限}个开\Term{maximal-ideal}{极大理想} $\mathfrak m_1,\ldots,\mathfrak m_r$ 包含 $I$，于是 $I$ 包含所有 $\mathfrak m\ne\mathfrak m_i$ 所对应\Term{set-component}{分量} $A_{\mathfrak m}$ 的积。此积等于 $A(1-e)$，其中 $e$ 是 $A$ 中满足 $Ae=\prod_{i=1}^rA_{\mathfrak m_i}$ 的\Term{idempotent}{幂等元}。因此 $\phi(e)=1_{C/J}$，给定 $\phi$ 的\Term{continuous}{连续}\Term{lifting}{提升}就等同于给定 $\phi$ 所诱导的\Term{morphism}{态射} $Ae\simeq A/A(1-e)\to C/J$ 的\Term{continuous}{连续}\Term{lifting}{提升}。
+
+另一方面，已知（参见编者注（24））$A\simeq\varprojlim_{\mathfrak l}A/\overline{A\mathfrak l}$。结合这些说明与前面的回顾，容易得到所列各条件的\Term{equivalence}{等价}性。
+
+\textbf{定义 1.6.C。} 记 $\kappa(k)=\prod_{s\in\operatorname{Spf}(k)}\kappa(s)$，赋予\Term{product-topology}{积拓扑}；即\Term{formal-variety}{形式簇} $\operatorname{Spf}(\kappa(k))$ 是 $\operatorname{Spec}\kappa(s)$ 对 $s\in\operatorname{Spf}(k)$ 的\Term{direct-sum}{直和}。另一方面，以 $S_{\kappa(k)}$ 表示\Term{scheme}{概形} $\operatorname{Spec}\kappa(s)$ 对 $s\in\operatorname{Spf}(k)$ 的\Term{direct-sum}{直和}。
+
+对 $k$ 上每个\Term{formal-variety}{形式簇} $X$，以 $X_\kappa=X\widehat\otimes_k\kappa(k)$ 表示经\Term{base-change}{基变换}得到的 $\kappa(k)$ 上的\Term{formal-variety}{形式簇}；即 $X_\kappa$ 与 $X$ 有相同的点，且对\Term{projection}{投影}到 $s\in\operatorname{Spf}(k)$ 的每个 $x\in X$，有 $\mathcal O_{X_\kappa,x}=\mathcal O_{X,x}\otimes_k\kappa(s)$。此\Term{base-change}{基变换}\Term{functor}{函子} $\mathsf{Vaf}_{/k}\to\mathsf{Vaf}_{/\kappa(k)}$ 将 $\mathsf{Vaf}^{\text{ét}}_{/k}$ 映入 $\mathsf{Vaf}^{\text{ét}}_{/\kappa(k)}$（参见 1.6.A（i））。
+
+于是有（参见 SGA 1，第 I 讲 6.2）：
+\begin{SGAresult}{\Term{lemma}{引理}}{1.6.D}
+对每个 $Y\in\operatorname{Ob}\mathsf{Vaf}^{\text{ét}}_{/k}$、$X\in\operatorname{Ob}\mathsf{Vaf}_{/k}$，\Term{canonical}{典范}映射
+\[
+ \operatorname{Hom}_{\mathsf{Vaf}_{/k}}(X,Y)\longrightarrow
+ \operatorname{Hom}_{\mathsf{Vaf}_{/\kappa(k)}}(X_\kappa,Y_\kappa)
+\]
+是\Term{bijection}{双射}。特别地，\Term{functor}{函子} $\mathsf{Vaf}^{\text{ét}}_{/k}\to\mathsf{Vaf}^{\text{ét}}_{/\kappa(k)}$ \Term{fully-faithful}{全忠实}（后面将看到它是\Term{equivalence}{等价}）。
+\end{SGAresult}
+\begin{proof}
+以 $A$（相应地，$B$）表示 $X$（相应地，$Y$）的\Term{affine-algebra}{仿射代数}，以 $\mathfrak r$ 表示 $k$ 的根，假设给定\Term{morphism}{态射} $B\widehat\otimes_k\kappa(k)\to A\widehat\otimes_k\kappa(k)$，\Term{equivalence}{等价}地，给定\Term{morphism}{态射} $\phi:B\to A/\overline{\mathfrak rA}$。
+\SourcePage{546}
+对 $k$ 的每个开\Term{ideal}{理想} $\mathfrak l$，存在 $n\in\mathbf N^*$ 使 $\mathfrak r^n\subset\mathfrak l$，从而 $(\mathfrak rA)^n\subset\mathfrak lA\subset\overline{\mathfrak lA}$。因\Term{multiplication}{乘法}映射 $m_{n-1}:A^n\to A$ \Term{continuous}{连续}，亦有 $(\overline{\mathfrak rA})^n\subset\overline{\mathfrak lA}$，即 $\overline{\mathfrak rA}/\overline{\mathfrak lA}$ 是 $A/\overline{\mathfrak lA}$ 的\Term{nilpotent-ideal}{幂零理想}。因此 $\phi$ 可唯一地\Term{lifting}{提升}为\Term{morphism}{态射} $\phi_{\mathfrak l}:B\to A/\overline{\mathfrak lA}$。由唯一性，这些\Term{morphism}{态射}组成\Term{inverse-system}{投射系}，因而给出\Term{continuous}{连续}\Term{morphism}{态射} $\Phi:B\to\varprojlim_{\mathfrak l}A/\overline{\mathfrak lA}=A$。此外，$\Phi$ 唯一：若 $\Phi'$ 是 $\phi$ 的第二个\Term{lifting}{提升}，则对每个 $\mathfrak l$，$\Phi'$ 与 $\Phi$ 模 $\overline{\mathfrak lA}$ 相同，故二者相等。
+\end{proof}
+\begin{SGAresult}{命题}{1.6.E}
+（a）设 $X$ 是 $k$ 上的\Term{formal-variety}{形式簇}，$A$ 为其\Term{affine-algebra}{仿射代数}。下列条件\Term{equivalence}{等价}：
+
+（i）$X$ 在 $k$ 上\Term{etale}{平展}。
+
+（ii）$X$ 在 $k$ 上\Term{topologically-flat}{拓扑平坦}，且\Term{diagonal-morphism}{对角态射} $\Delta:X\to X\times X$ 为\Term{local-isomorphism}{局部同构}，即对每个点 $x\in X$，$\Delta_X$ \Term{induction-isomorphism}{诱导同构} $\mathcal O_{X\times X,\Delta(x)}\xrightarrow{\sim}\mathcal O_{X,x}$。
+
+（iii）对\Term{projection}{投影}到 $s\in\operatorname{Spf}(k)$ 的每个 $x\in X$，$\mathcal O_{X,x}$ \Term{isomorphism}{同构}于 $k_s[T]/(F)$，其中 $F\in k_s[T]$ 为首一\Term{separable-polynomial}{可分多项式}（参见 1.6.A（ii））。
+
+（iv）$X$ 在 $k$ 上\Term{topologically-flat}{拓扑平坦}，且对\Term{projection}{投影}到 $s\in\operatorname{Spf}(k)$ 的每个点 $x\in X$，$\mathcal O_{X,x}\widehat\otimes_k\kappa(s)$ 是 $\kappa(s)$ 的\Term{finite-separable-extension}{有限可分扩张}。
+
+（v）对 $k$ 的每个开\Term{ideal}{理想} $\mathfrak l$，$A\widehat\otimes_k(k/\mathfrak l)$ 的每个\Term{local-component}{局部分量}都是 Artin 环 $k/\mathfrak l$ 上的\Term{finite}{有限}\Term{etale}{平展}\Term{algebra}{代数}。
+
+（b）$\mathsf{Vaf}^{\text{ét}}_{/\kappa(k)}$ 可等同于 $S_{\kappa(k)}$ 上的\Term{etale}{平展}\Term{scheme}{概形}\Term{category}{范畴}（参见 1.6.C），而\Term{functor}{函子} $X\mapsto X_\kappa$ 诱导\Term{category-equivalence}{范畴等价} $\mathsf{Vaf}^{\text{ét}}_{/k}\xrightarrow{\sim}\mathsf{Vaf}^{\text{ét}}_{/\kappa(k)}$（参见 SGA 1，第 I 讲 6.1）。
+\end{SGAresult}
+\begin{proof}
+（a）以 $I$ 表示\Term{multiplication-morphism}{乘法态射} $m:A\widehat\otimes_k A\to A$ 的核。假设 $X$ 在 $k$ 上\Term{etale}{平展}，即 $A$ 在 $k$ 上\Term{formally-etale}{形式平展}。则由 EGA $0_{\mathrm{IV}}$，20.7.4，$I/I^2$ 关于 $I$ 的\Term{topology}{拓扑}所诱导的\Term{quotient-topology}{商拓扑}的\Term{separated-completion}{分离完备化}为零，即 $I=\overline{I^2}$。而对每个 $x\in X$，$I$ 包含于 $A\widehat\otimes_k A$ 的\Term{maximal-ideal}{极大理想} $\mathfrak m_{\Delta(x)}$，所以\Term{localization}{局部化} $I_{\mathfrak m_{\Delta(x)}}$ 包含于 $\mathcal O_{X\times X,\Delta(x)}$ 的\Term{maximal-ideal}{极大理想}。由 \Term{nakayama-lemma}{Nakayama 引理} 0.3，有 $I_{\mathfrak m_{\Delta(x)}}=0$，所以 $\Delta:X\to X\times X$ 是\Term{local-isomorphism}{局部同构}。
+
+现在假设 $\Delta$ 是\Term{local-isomorphism}{局部同构}，且 $k$ 为域 $\kappa$；证明每个 $\mathcal O_{X,x}$ 为\Term{finite-dimensional}{有限维}\Term{etale}{平展} $\kappa$-\Term{algebra}{代数}。将 $X$ 换成 $\operatorname{Spf}(\mathcal O_{X,x})$，可假设 $A=\mathcal O_{X,x}$ 为\Term{local-ring}{局部环}。接下来采用 EGA IV$_4$，17.4.1，（b）$\Rightarrow$（d$''$）的证明方法。设 $K$ 为 $\kappa$ 的\Term{finite}{有限}\Term{normal}{正规}\Term{group-extension}{扩张}，包含\Term{residue-field}{剩余域} $\kappa(x)$；设 $B=A\otimes_\kappa K=A\widehat\otimes_\kappa K$（因 $[K:\kappa]<\infty$，$-\widehat\otimes_\kappa K$ 与 $-\otimes_\kappa K$ 相同），且 $X_K=\operatorname{Spf}(B)=X\widehat\otimes_\kappa K$。则 $\Delta_K:X_K\to X_K\widehat\otimes_K X_K$ 仍为\Term{local-isomorphism}{局部同构}，所以对每个 $y\in X_K$，\Term{multiplication}{乘法} $B_y\widehat\otimes_K B_y\to B_y$ \Term{induction-isomorphism}{诱导同构} $(B_y\widehat\otimes_K B_y)_{\mathfrak m_{\Delta_K(y)}}\xrightarrow{\sim}B_y$。而因 $B_y$ 的\Term{residue-field}{剩余域}为 $K$（例如参见第 VI$_{\mathrm A}$ 讲 1.1.1，编者注（11）），$C=B_y\widehat\otimes_K B_y$ 已是\Term{local-ring}{局部环}（事实上，$\mathfrak n=\mathfrak m_y\widehat\otimes_K B_y+B_y\widehat\otimes_K\mathfrak m_y$ 由\Term{topologically-nilpotent}{拓扑幂零}元组成，所以包含于 $C$ 的根中，且 $C/\mathfrak n=K\widehat\otimes_K K=K$ 是域）。故\Term{multiplication-morphism}{乘法态射}
+\SourcePage{547}
+$B_y\widehat\otimes_K B_y\to B_y$ 为\Term{isomorphism}{同构}。取 $B_y$ 在 $K$ 上的一组包含\Term{identity-element}{单位元} $1$ 的\Term{pseudobasis}{伪基}，便\Term{pushout}{推出} $B_y=K$。此外，因 $B$ 在 $A$ 上\Term{finite}{有限}，$X_K$ 是\Term{finite}{有限}集，所以 $B=A\otimes_\kappa K$ 为\Term{finite}{有限}个 $K$ 的副本的积，这蕴含 $A$ 为\Term{finite}{有限}\Term{etale}{平展} $\kappa$-\Term{algebra}{代数}。
+
+这样得到：若 $\kappa$ 是域，则每个在 $\kappa$ 上\Term{etale}{平展}的\Term{profinite-algebra}{代有限} $\kappa$-\Term{algebra}{代数} $A$ 都是 $\kappa$ 的\Term{finite-separable-extension}{有限可分扩张} $K_i$ 的积，赋予\Term{product-topology}{积拓扑}；因此\Term{formal-variety}{形式簇} $\operatorname{Spf}(A)$ 是各 $\operatorname{Spf}(K_i)=\operatorname{Spec}(K_i)$ 的\Term{direct-sum}{直和}，从而 $\mathsf{Vaf}^{\text{ét}}_{/\kappa}$ 可等同于\Term{etale}{平展} $\kappa$-\Term{scheme}{概形}的\Term{category}{范畴}。
+
+前述论证给出蕴含（ii）$\Rightarrow$（iv）（因为 $\mathcal O_{X,x}\widehat\otimes_k\kappa(s)$ 在 $\kappa(s)$ 上\Term{formally-etale}{形式平展}），并蕴含 1.6.E 的（b）。事实上，重新设 $k$ 为任意\Term{pseudocompact}{伪紧}环。由前述论证，$\mathsf{Vaf}^{\text{ét}}_{/\kappa(k)}$ 可等同于 $S_{\kappa(k)}$ 上的\Term{etale}{平展}\Term{scheme}{概形}\Term{category}{范畴}。证明 $X\mapsto X_\kappa$ 诱导\Term{equivalence}{等价} $\mathsf{Vaf}^{\text{ét}}_{/k}\xrightarrow{\sim}\mathsf{Vaf}^{\text{ét}}_{/\kappa(k)}$。结合 1.6.D，只须证明：对每个 $s\in\operatorname{Spf}(k)$ 和 $\kappa(s)$ 的每个\Term{finite-separable-extension}{有限可分扩张} $K$，存在一个\Term{etale}{平展} $k_s$-\Term{algebra}{代数} $A$ 使 $A\widehat\otimes_k\kappa(s)\simeq K$。设 $\xi$ 为\Term{group-extension}{扩张} $K/\kappa(s)$ 的\Term{primitive-element}{本原元}，$n$ 为其\Term{degree}{次数}，$F\in k_s[T]$ 为\Term{degree}{次数} $n$ 的\Term{monic-polynomial}{首一多项式}，其在 $\kappa(s)[T]$ 中的像 $\overline F$ 是 $\xi$ 的\Term{minimal-polynomial}{极小多项式}。因 $\overline F'$ 在 $\kappa(s)[T]/(\overline F)$ 中\Term{invertible}{可逆}，由 \Term{nakayama-lemma}{Nakayama 引理}，$F'$ 在 $k_s[T]/(F)$ 中\Term{invertible}{可逆}，所以 $F$ 为\Term{separable-polynomial}{可分多项式}。因此，由 1.6.A（ii），$A=k_s[T]/(F)$ 是满足 $A\widehat\otimes_k\kappa(s)\simeq K$ 的\Term{etale}{平展} $k_s$-\Term{algebra}{代数}。由此可知，每个\Term{etale}{平展}\Term{local-scheme}{局部}\Term{profinite-algebra}{代有限} $k_s$-\Term{algebra}{代数}都是\Term{finite-rank}{有限秩}自由 $k_s$-模（所以更是\Term{topologically-free}{拓扑自由} $k$-模），因而每个\Term{etale}{平展}\Term{profinite-algebra}{代有限} $k$-\Term{algebra}{代数}都是\Term{topologically-free}{拓扑自由} $k$-模。
+
+另一方面，条件（v）蕴含 1.6.B 的条件（d），所以蕴含（i）。这样已知（i）、（iii）、（v）\Term{equivalence}{等价}，并蕴含（ii），而（ii）蕴含（iv）。最后，设 $A$ 为满足（iv）的\Term{profinite-algebra}{代有限} $k$-\Term{algebra}{代数}，证明 $A$ 在 $k$ 上\Term{formally-etale}{形式平展}。为此可假设 $A,k$ 都\Term{local-scheme}{局部}，以 $\kappa$ 表示 $k$ 的\Term{residue-field}{剩余域}；按假设，$K=A\widehat\otimes_k\kappa$ 是 $\kappa$ 的\Term{finite-separable-extension}{有限可分扩张}，设其\Term{degree}{次数}为 $n$。由前述论证（并结合\Term{lemma}{引理} 1.6.D），存在一个秩 $n$ 的自由 $k$-\Term{algebra}{代数} $B$，它在 $k$ 上\Term{formally-etale}{形式平展}，并存在\Term{continuous}{连续}\Term{morphism}{态射} $\phi:B\to A$，使 $\phi\widehat\otimes_k\kappa$ 为\Term{isomorphism}{同构}。因 $A$ 在 $k$ 上\Term{topologically-flat}{拓扑平坦}，这蕴含 $\operatorname{Coker}(\phi)\widehat\otimes_k\kappa=0$ 以及 $\operatorname{Ker}(\phi)\widehat\otimes_k\kappa=0$；由 \Term{nakayama-lemma}{Nakayama 引理} 0.3，$\operatorname{Coker}(\phi)=0=\operatorname{Ker}(\phi)$，所以 $\phi$ 为\Term{isomorphism}{同构}（参见 0.2.B 的证明）。这就完成了 1.6.E 的证明。
+\end{proof}
+\footnote{编者注（73）：下文利用前面的增补，详细写出了\Term{functor}{函子} $X\mapsto X_{\mathrm e}$ 的构造，并证明它与\Term{finite-product}{有限积}交换（2.5.1 中将用到这一点）。} 设 $X$ 为 $k$ 上的\Term{formal-variety}{形式簇}。对\Term{projection}{投影}到 $s\in\operatorname{Spf}(k)$ 的每个 $x\in X$，\Term{residue-field}{剩余域} $\kappa(x)$ 是 $\kappa(s)$ 的\Term{finite-extension}{有限扩张}；以 $\kappa_{\mathrm e}(x)$ 表示 $\kappa(s)$ 在 $\kappa(x)$ 中的\Term{separable-closure}{可分闭包}。
+\begin{SGAresult}{命题}{1.6.F}
+（i）\Term{inclusion-functor}{包含函子} $\mathsf{Vaf}^{\text{ét}}_{/k}\hookrightarrow\mathsf{Vaf}_{/k}$ 有\Term{left-adjoint}{左伴随} $X\mapsto X_{\mathrm e}$：\Term{formal-variety}{形式簇} $X_{\mathrm e}$ 与 $X$ 有相同的点；对\Term{projection}{投影}到 $s\in\operatorname{Spf}(k)$ 的每个 $x\in X$，设 $\xi$ 为 $\kappa_{\mathrm e}(x)$ 的\Term{primitive-element}{本原元}，$n$ 为其\Term{degree}{次数}，$u$ 为 $\xi$ 在 $\mathcal O_{X,x}$ 中的任意\Term{lifting}{提升}，
+\SourcePage{548}
+而 $F\in k[T]$ 为\Term{degree}{次数} $n$、使 $u$ 消去的\Term{monic-polynomial}{首一多项式}；置 $\mathcal O_{X_{\mathrm e},x}=k[T]/(F)$。则对每个 $Y\in\operatorname{Ob}\mathsf{Vaf}^{\text{ét}}_{/k}$，下列\Term{canonical}{典范}映射均为\Term{bijection}{双射}：
+\[
+\begin{tikzcd}[column sep=large]
+ \operatorname{Hom}_{\mathsf{Vaf}_{/k}}(X,Y)\arrow[r,"\sim"]
+ &\operatorname{Hom}_{\mathsf{Vaf}_{/\kappa(k)}}(X_\kappa,Y_\kappa)\arrow[d,"\wr"]\\
+ \operatorname{Hom}_{\mathsf{Vaf}_{/k}}(X_{\mathrm e},Y)\arrow[r,"\sim"]
+ &\operatorname{Hom}_{\mathsf{Vaf}_{/\kappa(k)}}((X_{\mathrm e})_\kappa,Y_\kappa),
+\end{tikzcd}
+\]
+其中竖\Term{arrow}{箭头}由对每个 $x\in X$ 的包含 $\kappa_{\mathrm e}(x)\hookrightarrow\kappa(x)$ 诱导。特别地，这定义了\Term{morphism}{态射} $p:X\to X_{\mathrm e}$，且每个以 $k$ 上\Term{etale}{平展}的 $Y$ 为目标的 $k$-\Term{formal-variety}{形式簇}\Term{morphism}{态射} $\phi:X\to Y$ 都唯一地经由 $p$ \Term{resolution}{分解}。
+
+（ii）\Term{functor}{函子} $X\mapsto X_{\mathrm e}$ 与\Term{finite-product}{有限积}交换。
+\end{SGAresult}
+\begin{proof}
+（i）从 1.6.E（b）及 1.6.D \Term{pushout}{推出}。证明（ii）。结合\Term{category-equivalence}{范畴等价} 1.6.E（b），可以假设 $k$ 为域。这时容易看出，若 $X$ 为半\Term{local-scheme}{局部} $k$-\Term{formal-variety}{形式簇}，即其\Term{affine-algebra}{仿射代数} $A$ 为\Term{semilocal-ring}{半局部环}，则 $X_{\mathrm e}$ 的\Term{affine-algebra}{仿射代数}为 $A$ 中在 $k$ 上\Term{etale}{平展}的最大\Term{subalgebra}{子代数}，记作 $A_{\mathrm e}$。这样便归结到证明：若 $K,L$ 是 $k$ 的两个\Term{finite}{有限}次\Term{group-extension}{扩张}，则包含 $K_{\mathrm e}\otimes L_{\mathrm e}\subset(K\otimes L)_{\mathrm e}$ 为等号。设 $p$ 为 $k$ 的\Term{characteristic-exponent}{特征指数}（即当 $\operatorname{car}(k)=0$ 时 $p=1$，否则 $p=\operatorname{car}(k)$），则对每个 $x\in K\otimes L$，存在 $n\in\mathbf N^*$ 使 $x^{p^n}\in K_{\mathrm e}\otimes L_{\mathrm e}$；所以 $K\otimes L$ 的每个\Term{subalgebra}{子代数} $B$ 在 $K_{\mathrm e}\otimes L_{\mathrm e}$ 上都是\Term{radiciel}{根性的}，从而 $K_{\mathrm e}\otimes L_{\mathrm e}=(K\otimes L)_{\mathrm e}$。
+\end{proof}
+保持上述记号，注意 $\mathcal O_{X_{\mathrm e},x}$ 未必是 $\mathcal O_{X,x}$ 的\Term{subalgebra}{子代数}；但由下面的命题，当 $X$ 在 $k$ 上\Term{topologically-flat}{拓扑平坦}时确实如此。
+
+\textbf{1.6.1.} 设 $Y$ 为\Term{etale}{平展} $k$-\Term{formal-variety}{形式簇}，$f:X\to Y$ 为 $\mathsf{Vaf}_{/k}$ 中的\Term{morphism}{态射}。则有下列\Term{cartesian-square}{笛卡儿方块}，其中 $\Gamma_f$ 为以 $\operatorname{id}_X,f$ 为\Term{set-component}{分量}的\Term{graph-morphism}{图态射} $X\to X\times Y$：
+\[
+\begin{tikzcd}
+ X\arrow[r,"\Gamma_f"]\arrow[d,"f"']&X\times Y\arrow[d,"{f\boxtimes\operatorname{id}_Y}"]\\
+ Y\arrow[r,"\Delta_Y"']&Y\times Y.
+\end{tikzcd}
+\]
+所以 $\Gamma_f$ 是\Term{local-isomorphism}{局部同构}，从而若 $\operatorname{pr}_Y$ \Term{topologically-flat}{拓扑平坦}，则 $f=\operatorname{pr}_Y\circ\Gamma_f$ 也\Term{topologically-flat}{拓扑平坦}；例如，当 $X$ 在 $k$ 上\Term{topologically-flat}{拓扑平坦}时便如此。
+
+反之，因 $Y\to k$ \Term{topologically-flat}{拓扑平坦}，若 $f$ \Term{topologically-flat}{拓扑平坦}，则 $X\to k$ 也\Term{topologically-flat}{拓扑平坦}（参见 1.3.3）。特别地，取 $f$ 为 1.6 中的\Term{canonical-morphism}{典范态射} $p:X\to X_{\mathrm e}$，便得到：
+\begin{SGAresult}{命题}{}
+设 $X$ 为 $k$ 上的\Term{formal-variety}{形式簇}。\Term{morphism}{态射} $X\to X_{\mathrm e}$ \Term{topologically-flat}{拓扑平坦}，当且仅当 $X$ 在 $k$ 上\Term{topologically-flat}{拓扑平坦}。
+\end{SGAresult}
+\SourcePage{549}
+\begin{SGAresult}{注记}{1.6.2}
+\footnote{编者注（74）：将此注记移至这里；在原文中它位于 2.5.2。}
+当 $k$ 为\Term{perfect-field}{完美域}时，\Term{functor}{函子} $X\mapsto X_{\mathrm e}$ 也是\Term{inclusion-functor}{包含函子} $\mathsf{Vaf}^{\text{ét}}_{/k}\hookrightarrow\mathsf{Vaf}_{/k}$ 的\Term{right-adjoint}{右伴随}。事实上，这时对每个 $x\in X$，有 $\mathcal O_{X_{\mathrm e},x}=\kappa(x)$，\Term{canonical-projection}{典范投影} $\mathcal O_{X,x}\to\kappa(x)$ 定义\Term{morphism}{态射} $s:X_{\mathrm e}\to X$，它是 $p:X\to X_{\mathrm e}$ 的\Term{section}{截面}。对每个\Term{morphism}{态射} $f:X\to Y$，下列图表交换：
+\[
+\begin{tikzcd}
+ \mathcal O_{Y,f(x)}\arrow[r]\arrow[d]&\mathcal O_{X,x}\arrow[d]\\
+ \kappa(f(x))\arrow[r]&\kappa(x)
+\end{tikzcd}
+\qquad
+\begin{tikzcd}
+ X\arrow[r,"f"]&Y\\
+ X_{\mathrm e}\arrow[r,"f_{\mathrm e}"']\arrow[u,"s_X"]&Y_{\mathrm e}\arrow[u,"s_Y"'].
+\end{tikzcd}
+\]
+因此 $s$ 关于 $X$ 是\Term{functorial}{函子性}的，由此可知 $X\mapsto X_{\mathrm e}$ 是\Term{inclusion-functor}{包含函子} $\mathsf{Vaf}^{\text{ét}}_{/k}\hookrightarrow\mathsf{Vaf}_{/k}$ 的\Term{right-adjoint}{右伴随}。所以作为\Term{right-adjoint}{右伴随}，$X\mapsto X_{\mathrm e}$ 与 $\mathsf{Vaf}^{\text{ét}}_{/k}$ 中存在的\Term{inverse-limit}{投射极限}交换，\footnote{编者注（75）：\Term{finite-inverse-limit}{有限投射极限}属于这种情形。} 特别地，与\Term{finite-product}{有限积}交换。（这也可直接验证：对每个\Term{affine-algebra}{仿射代数}为 $A$ 的 $k$-\Term{formal-variety}{形式簇} $X$，$X_{\mathrm e}$ 的\Term{affine-algebra}{仿射代数}为 $A$ 对其根 $\mathfrak r(A)$ 的商；又因 $k$ \Term{perfect}{完美}，$\mathcal O_{X,x}\widehat\otimes\mathcal O_{Y,y}$ 对其根的商是\Term{algebra}{代数} $\kappa(x)\otimes_k\kappa(y)$，因为后者\Term{semisimple}{半单}。）
+\end{SGAresult}

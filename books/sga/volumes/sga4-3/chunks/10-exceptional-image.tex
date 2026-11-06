@@ -1,0 +1,487 @@
+\SourcePage{266}
+\SGAsection{6}{函子 \texorpdfstring{$f_!$}{f!}}
+我们拟直接构造 5.1.11 的\Term{functor}{函子} $f_!$，随后用此构造为\Term{flat}{平坦}、\Term{quasi-finite}{拟有限}、\Term{finite-presentation}{有限表示}的\Term{morphism}{态射}定义“\Term{trace-morphism}{迹态射}”（6.2.3）。
+\SGAsection{6.1}{函子 $f_!$ 的新构造}
+设 $f:X\to S$ 是\Term{locally-finite-type}{局部有限型}\Term{morphism}{态射}。若 $X$ 的\Term{subset}{子集} $P$ 是 $X$ 的某个在 $S$ 上\Term{proper}{固有}的子\Term{scheme}{概形}的像，就称 $P$ 在 $S$ 上\Term{proper}{固有}。
+\begin{SGAresult}{命题}{6.1.1}
+设 $f:X\to S$ 是\Term{locally-finite-type}{局部有限型}且\Term{quasi-separated}{拟分离}的\Term{morphism}{态射}。
+(i) $X$ 的每个在 $S$ 上\Term{proper}{固有}的\Term{subset}{子集}都是\Term{locally-closed}{局部闭}的；若 $f$ \Term{separated}{分离}，则它是闭的。
+(ii) 若 $f$ \Term{separated}{分离}，则 $X$ 的两个在 $S$ 上\Term{proper}{固有}的\Term{subset}{子集}之并在 $S$ 上\Term{proper}{固有}。
+(iii) 对任意 $S$-\Term{scheme}{概形} $U$，以 $\Phi_X(U)$ 表示 $U\times_S X$ 中在 $U$ 上\Term{proper}{固有}的\Term{subset}{子集}全体。\Term{functor}{函子} $\Phi_X$ 是 \Term{fpqc-topology}{fpqc 拓扑}的\Term{sheaf}{层}。若 $f$ \Term{separated}{分离}，则它是按包含关系构成\Term{filtered-ordered-set}{滤过有序集}的\Term{sheaf}{层}。
+\end{SGAresult}
+(i)、(ii) 显然，(iii) 的第二个断言由 (ii) 得出。\Term{functor}{函子} $U\mapsto\mathcal P(U\times_S X)$ 对任何\Term{covering}{覆盖}均为\Term{surjectivity}{满射}的\Term{topology}{拓扑}都是\Term{sheaf}{层}。由 EGA IV 2.3.14 及 EGA IV 2.7.1 (vii)，$\Phi_X$ 是它的子\Term{sheaf}{层}。
+若 $F$ 是\Term{scheme}{概形} $X$ 上的\Term{etale}{平展}\Term{pointed-set}{带基点集合}\Term{sheaf}{层}，回忆（IV 8.5.2），$F$ 的\Term{section}{截面} $s$ 的\Term{support}{支集}是使 $s=0$ 的最大\Term{open-subset}{开集}的补集，其中 $0$ 为指定\Term{section}{截面}。
+\begin{SGAresult}{定义}{6.1.2}
+设 $f:X\to S$ 是\Term{locally-finite-type}{局部有限型}且\Term{separated}{分离}的\Term{morphism}{态射}，$F$ 是 $X$ 上的\Term{pointed-set}{带基点集合}\Term{sheaf}{层}。以 $f_!F$ 表示 $f_*F$ 的子\Term{sheaf}{层}，其在 $U$（$S$ 上\Term{etale}{平展}）上的\Term{section}{截面}，是 $F$ 在 $U\times_S X$ 上\Term{support}{支集}在 $U$ 上\Term{proper}{固有}的\Term{section}{截面}。
+\end{SGAresult}
+由 6.1.1，$f_!F$ 确实是\Term{sheaf}{层}。容易验证：
+\begin{SGAresult}{引理}{6.1.3}
+若 $f=gh$ 为两个\Term{separated}{分离}、\Term{locally-finite-type}{局部有限型}\Term{morphism}{态射}的复合，则恰有一个\Term{functor}{函子}\Term{isomorphism}{同构} $f_!\simeq g_!h_!$ 使下图交换：
+\[\begin{tikzcd}f_!\arrow[r,"\sim"]\arrow[d,hook]&g_!h_!\arrow[d,hook]\\f_*\arrow[r,equal]&g_*h_* .\end{tikzcd}\]
+\end{SGAresult}
+\SourcePage{267}
+若 $f$ 是\Term{open-immersion}{开浸入}（分别为\Term{proper}{固有}\Term{morphism}{态射}），则 $f_!$ 是\Term{extension-by-zero}{零延拓}\Term{functor}{函子}（分别为 $f_*$）。因此，由 6.1.3，定义 6.1.2 与 5.1.11 在共同适用范围内一致。
+第 5 节中验证的 $f_!$ 的性质，在较一般的情形 6.1.2 中仍然成立。
+\begin{SGAresult}{命题}{6.1.4}
+设 $f:X\to S$ 是\Term{separated}{分离}、\Term{locally-finite-type}{局部有限型}\Term{morphism}{态射}。
+(i) $f_!$ \Term{left-exact}{左正合}（即与\Term{finite-inverse-limit}{有限投射极限}交换），且与\Term{filtered-colimit}{滤过归纳极限}交换。
+(ii) 若 $f$ \Term{quasi-finite}{拟有限}，则 $f_!$ 是从 $X$ 上阿贝尔\Term{sheaf}{层}\Term{category}{范畴}到 $S$ 上阿贝尔\Term{sheaf}{层}\Term{category}{范畴}的\Term{exact-functor}{正合函子}。
+(iii) 对任意\Term{cartesian-diagram}{笛卡儿图}
+\[\begin{tikzcd}X'\arrow[r,"g'"]\arrow[d,"f'"']&X\arrow[d,"f"]\\S'\arrow[r,"g"']&S\end{tikzcd}\]
+存在\Term{base-change}{基变换}\Term{isomorphism}{同构}，使下图交换，其中下方的横\Term{arrow}{箭头}为 XII 4.1 的\Term{base-change}{基变换}\Term{arrow}{箭头}：
+\[\begin{tikzcd}g^*f_!\arrow[r,"\sim"]\arrow[d,hook]&f'_!g'^*\arrow[d,hook]\\g^*f_*\arrow[r]&f'_*g'^*.\end{tikzcd}\]
+\end{SGAresult}
+\begin{proof}
+对任意 $U\in\operatorname{Ob}S_{\text{ét}}$，有
+\[f_!F(U)=\varinjlim_{P\in\Phi(U)}\Gamma_P(F).\]
+若 $U$ \Term{quasi-compact}{拟紧}且\Term{quasi-separated}{拟分离}，则 $F\mapsto f_!F(U)$ 与\Term{finite-inverse-limit}{有限投射极限}、\Term{filtered-colimit}{滤过归纳极限}交换，因为它是具有这些性质的\Term{functor}{函子}的\Term{filtered-colimit}{滤过归纳极限}（6.1.1 (iii)）。这证明 (i)。(ii) 立即由 (iii) 得出（取 $S$ 的\Term{geometric-point}{几何点}作为\Term{base-change}{基变换}）。
+(iii) 在 $S$ 上是\Term{local-scheme}{局部}的，故可设 $S$ \Term{affine}{仿射}。令 $I$ 为 $X$ 中在 $S$ 上\Term{finite-type}{有限型}的\Term{open-subset}{开集}所成的\Term{filtered-ordered-set}{滤过有序集}。若 $j:U\hookrightarrow X$ 是\Term{open-subset}{开集}，则 $(fj)_!(F|U)=f_!(j_!(F|U))$ 映入 $f_!F$，且
+\[f_!F=\varinjlim_{U\in I}(fj)_!(F|U).\]
+\SourcePage{268}
+因此可设 $X$ 在 $S$ 上\Term{finite-type}{有限型}，并应用 Chow 引理（EGA II，第 2 版），得到\Term{projective}{射影}\Term{epimorphism}{满态射} $p_0:X_0\to X$，使 $fp_0$ \Term{compactifiable}{可紧化}。令 $X_1=X_0\times_X X_0$，$p_1$ 为 $X_1$ 到 $X$ 的自然\Term{arrow}{箭头}。序列
+\[0\longrightarrow F\longrightarrow p_{0*}p_0^*F\rightrightarrows p_{1*}p_1^*F\]
+\Term{exact}{正合}（VII 9.2）。考虑\Term{base-change}{基变换}\Term{arrow}{箭头}的\Term{functorial}{函子性}及 (i)，只需对 $p_{0*}p_0^*F$ 与 $p_{1*}p_1^*F$ 验证 (iii)。改换记号（$p_1\mapsto p_0$），即可设 $F=p_{0*}G$。(iii) 对 $(f,p_{0*}G)$ 的断言\Term{equivalence}{等价}于对 $(p_{0*}G)$ 与 $(fp_{0*},G)$ 的断言。由 5.2.7 (i) 得出结论，因为 $p_0$ 与 $fp_0$ 均\Term{compactifiable}{可紧化}。
+\end{proof}
+\begin{SGAresult}{反例}{6.1.6}
+\Term{functor}{函子} $Rf_!$ 一般不等于\Term{functor}{函子} $f_!$ 的\Term{derived-functor}{导出函子}。事实上，若 $X$ 在\Term{algebraically-closed-field}{代数闭域} $k$ 上\Term{affine}{仿射}，则
+\[f_!F=\sum_{x\in X(k)}H_x^0(F),\]
+所以 $f_!$ 的第 $i$ 个\Term{derived-functor}{导出函子}在 $F$ 处为
+\[\sum_{x\in X(k)}H_x^i(F).\]
+另一方面，若 $X$ \Term{smooth}{光滑}、\Term{irreducible}{不可约}且\Term{dimension}{维数}为 $1$，则对与 $k$ 的\Term{characteristic}{特征}互素的 $\ell$，有
+\[H_c^2(X,\mu_{\ell^n})\simeq\mathbb Z/\ell^n.\]
+\end{SGAresult}
+\SGAsection{6.2}{相对维数为零的迹态射}
+本小节的主要结果是定理 6.2.3。建议读者略过技术性准备 6.2.1、6.2.2。这些准备使得在 6.2.3 的证明中只需考虑\Term{finite}{有限}\Term{morphism}{态射} $f$；由 EGA IV 18.12，这一\Term{reduced}{约化}无论如何也是相当明显的。
+\textbf{6.2.1。} 设 $f:X\to S$ 是\Term{quasi-finite}{拟有限}、\Term{separated}{分离}\Term{morphism}{态射}。对任意 $U\in\operatorname{Ob}S_{\text{ét}}$，以 $\Psi_f(U)$ 表示如下\Term{pairing}{配对}的\Term{category}{范畴}：一个以 $0$ 为基点的\Term{finite}{有限}\Term{pointed-set}{带基点集合} $I$，以及将 $f^*U$ \Term{resolution}{分解}为开闭部分的\Term{resolution}{分解} $f^*U=\coprod_{i\in I}V_i$，其中 $i\ne0$ 时 $V_i$ 在 $U$ 上\Term{finite}{有限}。从 $\varphi=(V_i)_{i\in I}$ 到 $\varphi'=(V'_i)_{i\in I'}$ 的\Term{morphism}{态射}是\Term{pointed-set}{带基点集合}\Term{morphism}{态射} $\sigma:I'\to I$，使对 $i\in I$ 有 $V_i=\bigcup_{j\in\sigma^{-1}(i)}V'_j$。若存在从 $\varphi$ 到 $\varphi'$ 的\Term{morphism}{态射}，就称 $\varphi'$ \Term{refinement}{加细} $\varphi$。
+设 $F$ 为 $S$ 上\Term{abelian-group}{阿贝尔群}\Term{sheaf}{层}，$U\in\operatorname{Ob}S_{\text{ét}}$，$\varphi=(V_i)_{i\in I}\in\operatorname{Ob}\Psi_f(U)$，$I^*=I\setminus\{0\}$，$f_i$ 为 $V_i$ 到 $U$ 的\Term{projection}{投影}。有
+\[f_!f^*F|U=f_{0!}f_0^*(F|U)\oplus\bigoplus_{i\ne0}f_{i*}f_i^*(F|U),\]
+\SourcePage{269}
+从而有复合\Term{arrow}{箭头}
+\[\tau_\varphi:F^{I^*}|U\longrightarrow\bigoplus_{i\ne0}f_{i*}f_i^*(F|U)\longrightarrow f_!f^*F|U.\tag{6.2.1.1}\]
+若 $\sigma:I\to J$ 是\Term{pointed-set}{带基点集合}\Term{morphism}{态射}，以 ${}^t\sigma:F^{J^*}\to F^{I^*}$ 表示其坐标在 $\sigma(i)=j$ 时为恒等、否则为零的\Term{arrow}{箭头}。若 $\sigma:I'\to I$ 是从 $\varphi$ 到 $\varphi'$ 的\Term{morphism}{态射}，则图
+\[\begin{tikzcd}F^{I^*}|U\arrow[rr,"{}^t\sigma"]\arrow[dr,"\tau_\varphi"']&&F^{I'^*}|U\arrow[dl,"\tau_{\varphi'}"]\\&f_!f^*F|U&\end{tikzcd}\tag{6.2.1.2}\]
+交换。又有 ${}^t(\sigma\rho)={}^t\rho\,{}^t\sigma$。各 $\Psi_f(U)$ 构成 $S_{\text{ét}}$ 上的\Term{fibered-category}{纤维范畴} $\Psi_f$；上述构造与\Term{localization}{局部化}交换，故定义一个从 $\Psi$ 到 $S$ 的\Term{etale}{平展}\Term{open-subset}{开集}上\Term{sheaf}{层}的 $S_{\text{ét}}$-\Term{category}{范畴}的 $S_{\text{ét}}$-\Term{functor}{函子} $\varphi=(V_i)_{i\in I}\mapsto F^{I^*}|U$，以及\Term{morphism-of-functors}{函子态射} $\tau_\varphi:F^{I^*}|U\to f_!f^*F|U$。
+\begin{SGAresult}{命题}{6.2.2}
+(i) \Term{category}{范畴} $\Psi_f$ 在 $S_{\text{ét}}$ 上\Term{local-scheme}{局部}向右\Term{filtered}{滤过}（IV 14）。
+(ii) \Term{arrow}{箭头} (6.2.1.1) 定义\Term{isomorphism}{同构}
+\[\tau:\varinjlim_{\varphi=(V_i)_{i\in I}\in\Psi_f(U)}F^{I^*}|U\xrightarrow{\sim}f_!f^*F.\]
+\end{SGAresult}
+若 $S$ \Term{strictly-local}{严格局部}，\Term{closed-point}{闭点}为 $s$，则 $S$-\Term{scheme}{概形} $X$ 有开闭\Term{resolution}{分解} $\varphi\in\Psi_f(S)$，$X=\coprod_{i\in I}X_i$，其中 $I$ 带基点，$X_0$ 在 $s$ 处的\Term{fiber}{纤维}为空，$i\ne0$ 时 $X_i$ 在 $S$ 上\Term{finite}{有限}且在 $s$ 处的\Term{fiber}{纤维}只有一点（EGA IV 18.12.1）。此\Term{resolution}{分解}是 $\Psi(S)$ 的\Term{final-object}{终对象}。又由 6.1.4 (iii)（或直接由显然的事实），$\tau_\varphi$ 在 $s$ 处的\Term{fiber}{纤维}是\Term{isomorphism}{同构}。
+一般情形下，设 $x$ 是 $S$ 的\Term{geometric-point}{几何点}，$\Psi_x$ 是 $\Psi_f$ 在 $x$ 处的\Term{fiber}{纤维}，
+\[\Psi_x=\varinjlim_{U(x)}\Psi_f(U),\]
+其中 $U$ 遍历 $x$ 的\Term{etale}{平展}\Term{neighborhood}{邻域}。设 $S_x$ 是 $S$ 在 $x$ 处的\Term{strict-localization}{严格局部化}，$X_x=X\times_S S_x$，$f_x:X_x\to S_x$。取\Term{limit}{极限}的常规结果表明 $\Psi_x$ \Term{equivalence}{等价}于 $\Phi_{f_x}(S_x)$，因此向右\Term{filtered}{滤过}。故 $\Psi$ \Term{local-scheme}{局部}向右\Term{filtered}{滤过}。又 $\tau$ 在 $x$ 处的\Term{fiber}{纤维}可等同于
+\[\tau_x:\varinjlim_{\Psi_x}F_x^{I_x}\longrightarrow(f_!f^*F)_x,\]
+由前述结论此\Term{arrow}{箭头}是\Term{isomorphism}{同构}。
+\SourcePage{270}
+\begin{SGAresult}{定理}{6.2.3}
+对每个\Term{separated}{分离}、\Term{flat}{平坦}、\Term{finite-presentation}{有限表示}且\Term{quasi-finite}{拟有限}的\Term{morphism}{态射} $f:X\to S$ 以及每个 $S$ 上阿贝尔\Term{sheaf}{层} $F$，可以且只能以一种方式定义\Term{trace-morphism}{迹态射}
+\[\operatorname{Tr}_f:f_!f^*F\longrightarrow F,\]
+使下列条件成立：
+(Var 1) $\operatorname{Tr}_f$ 对 $F$ 具有\Term{functorial}{函子性}。
+(Var 2) $\operatorname{Tr}_f$ 与任意\Term{base-change}{基变换}相容，即对任意\Term{cartesian-square}{笛卡儿方块} $X'=X\times_S S'$，下列\Term{functor}{函子}图交换：
+\[\begin{tikzcd}[column sep=small]f'_!f'^*g^*\arrow[r,equal]\arrow[d,"\operatorname{Tr}_{f'}*g^*"']&f'_!g'^*f^*\arrow[r,equal]&g^*f_!f^*\arrow[d,"g^**\operatorname{Tr}_f"]\\g^*\arrow[rr,equal]&&g^* .\end{tikzcd}\]
+(Var 3) $\operatorname{Tr}_f$ 与复合相容：若 $f=gh$ 是两个\Term{separated}{分离}、\Term{flat}{平坦}、\Term{finite-presentation}{有限表示}、\Term{quasi-finite}{拟有限}\Term{morphism}{态射}的复合，则下图交换：
+\[\begin{tikzcd}f_!f^*\arrow[r,equal]\arrow[ddr,"\operatorname{Tr}_f"']&g_!h_!h^*g^*\arrow[d,"g_!*\operatorname{Tr}_h"]\\&g_!g^*\arrow[d,"\operatorname{Tr}_g"]\\&\operatorname{Id}.\end{tikzcd}\]
+(Var 4)（\Term{normalized}{归一化}）若 $f$ \Term{finite}{有限}且恒秩为 $n$，则复合
+\[F\longrightarrow f_*f^*F=f_!f^*F\xrightarrow{\operatorname{Tr}_f}F\]
+是乘以 $n$。
+\end{SGAresult}
+先注意 (Var 2)--(Var 4) 蕴涵：
+\begin{SGAresult}{引理}{6.2.3.1}
+若 $X=X'\amalg X''$，置 $f'=f|X'$、$f''=f|X''$，则\Term{morphism}{态射}
+\[\operatorname{Tr}_f:f_!f^*F=f'_!f'^*F\oplus f''_!f''^*F\longrightarrow F\]
+\SourcePage{271}
+是 $\operatorname{Tr}_{f'}$ 与 $\operatorname{Tr}_{f''}$ 之和。
+\end{SGAresult}
+令 $j':X'\hookrightarrow X$、$j'':X''\hookrightarrow X$ 为包含，$f:X\to S$：
+\[\begin{tikzcd}X'\arrow[dr,hook,"j'"]&&\\&X\arrow[r,"f"]&S\\X''\arrow[ur,hook,"j''"']&&\end{tikzcd}\]
+对 $j'$ 应用 (Var 2)，取由 $j'$ 给出的\Term{base-change}{基变换}，并对恒等映射应用 (Var 4)，可知
+\[\operatorname{Tr}_{j'}:j'_!j'^*f^*F\longrightarrow f^*F\]
+是由\Term{direct-sum}{直和}\Term{resolution}{分解} $f^*F=j'_!j'^*f^*F\oplus j''_!j''^*f^*F$ 定义的\Term{canonical}{典范}映射。再对 $f'=f\circ j'$ 应用 (Var 3)，得到\Term{commutative-diagram}{交换图}
+\[\begin{tikzcd}f'_!f'^*F\arrow[r]\arrow[dr,"\operatorname{Tr}_{f'}"']&f_!f^*F\arrow[d,"\operatorname{Tr}_f"]\\&F,\end{tikzcd}\]
+连同 $f''$ 的类似断言，这正是 6.2.3.1。
+设 $f:X\to S$ 是\Term{quasi-finite}{拟有限}、\Term{separated}{分离}、\Term{flat}{平坦}、\Term{finite-presentation}{有限表示}的\Term{morphism}{态射}。对每个 $U\in\operatorname{Ob}S_{\text{ét}}$，令 $\Psi'_f(U)$ 为 $\Psi_f(U)$ 的\Term{full-subcategory}{满子范畴}，由 $i\ne0$ 时 $V_i$ 在 $U$ 上恒秩\Term{locally-free}{局部自由}的\Term{resolution}{分解} $(V_i)_{i\in I}$ 组成。这些\Term{category}{范畴}构成 $\Psi_f$ 的\Term{cofinal}{共尾}\Term{fibered-category}{纤维子范畴}。
+设 $F,G$ 为 $S$ 上阿贝尔\Term{sheaf}{层}。由 6.2.2 (ii)，给出\Term{morphism}{态射} $g:f_!f^*F\to G$，\Term{equivalence}{等价}于对每个\Term{resolution}{分解} $\varphi=(V_i)_{i\in I}\in\Psi'_f(U)$ 给出与 (6.2.1.2) 的 ${}^t\sigma$ 相容的\Term{morphism}{态射} $g_\varphi:F^{I^*}|U\to G|U$。若 $f_i$ 是 $V_i$ 到 $U$ 的\Term{projection}{投影}，则 $g_\varphi$ 的各坐标为复合
+\[g_{\varphi i}:F|U\longrightarrow f_{i*}f_i^*F|U\longrightarrow f_!f^*F|U\xrightarrow{g}G|U.\]
+于是恰有一个与\Term{etale}{平展}\Term{localization}{局部化}相容且满足 (Var 4) 及 6.2.3.1 的\Term{arrow}{箭头} $\operatorname{Tr}_f$。它显然满足 (Var 1)、(Var 2)。为验证 (Var 3)，通过\Term{base-change}{基变换}\Term{reduced}{约化}到 $S$ 为\Term{algebraically-closed-field}{代数闭域}谱的容易情形。
+\SourcePage{272}
+\textbf{6.2.4。} \Term{quasi-finite}{拟有限}、\Term{separated}{分离}\Term{morphism}{态射} $f:X\to S$ 的一个\Term{weighting}{赋权}，是对 $X$ 的每个\Term{geometric-point}{几何点} $x$ 指定一个只依赖于其在 $X$ 中的像的整数 $n(x)$，并满足：
+(*) 对任意 $U\in\operatorname{Ob}S_{\text{ét}}$ 以及 $f^{-1}(U)$ 中在 $U$ 上\Term{finite}{有限}的开闭部分 $X_1$，将 $U$ 的\Term{geometric-point}{几何点} $s$ 映至 $\sum_{x\in X_1(s)}n(x)$ 的函数\Term{locally-constant}{局部常值}。
+若 $f=gh$ 是两个\Term{weighting}{带权}\Term{morphism}{态射}的复合，令 $n_f(x)=n_h(x)n_g(h(x))$ 为 $f$ \Term{weighting}{赋权}。若 $f'$ 由\Term{weighting}{带权}\Term{morphism}{态射} $f$ 通过 $g$ 作\Term{base-change}{基变换}得到，则令 $n_{f'}(x)=n_f(g'(x))$ 为 $f'$ \Term{weighting}{赋权}。前面的论证实际上证明了：
+\begin{SGAresult}{命题}{6.2.5}
+对任意\Term{quasi-finite}{拟有限}、\Term{separated}{分离}、\Term{weighting}{带权}\Term{morphism}{态射} $f:X\to S$ 和 $S$ 上阿贝尔\Term{sheaf}{层} $F$，可以且只能以一种方式定义对 $F$ 具有\Term{functorial}{函子性}、与\Term{base-change}{基变换}和复合相容的\Term{trace-morphism}{迹态射} $\operatorname{Tr}_f:f_!f^*F\to F$，使其满足：
+(Var$'$ 4) 若 $f$ \Term{finite}{有限}，且存在整数 $n$，使对 $S$ 的每个\Term{geometric-point}{几何点} $s$ 均有 $\sum_{x\in X(s)}n(x)=n$，则复合
+\[F\longrightarrow f_*f^*F=f_!f^*F\xrightarrow{\operatorname{Tr}_f}F\]
+为乘以 $n$。
+\end{SGAresult}
+\textbf{例 6.2.6。} 设 $S$ 是\Term{geometrically-unibranch}{几何单分支}的\Term{noetherian}{诺特}\Term{scheme}{概形}（例如\Term{normal}{正规}\Term{scheme}{概形}），$f:X\to S$ 是\Term{quasi-finite}{拟有限}、\Term{separated}{分离}\Term{morphism}{态射}。对 $X$ 中像为 $s\in S$ 的\Term{geometric-point}{几何点} $x$，令 $\mathcal O_x$（分别为 $\mathcal O_s$）为 $X$ 在 $x$ 处（分别为 $S$ 在 $s$ 处）的\Term{strictly-local-ring}{严格局部环}。$\operatorname{Spec}(\mathcal O_s)$ \Term{reduced}{约化}且有唯一\Term{maximal-point}{极大点} $\eta$，而 $\mathcal O_x$ 在 $\mathcal O_s$ 上\Term{finite}{有限}。置 $n(x)=\operatorname{rg}_\eta(\mathcal O_x)$。可以验证这给出 $f$ 的\Term{weighting}{赋权}，从而有\Term{trace-morphism}{迹态射} $\operatorname{Tr}_f$。
+\textbf{6.2.7。} 设 $u:X\to Y$ 是\Term{separated}{分离}、\Term{quasi-finite}{拟有限}、\Term{flat}{平坦}、\Term{finite-presentation}{有限表示}\Term{morphism}{态射}。\Term{trace-morphism}{迹态射} (6.2.3) 具有\Term{functorial}{函子性}，因此对 $Y$ 上任意阿贝尔\Term{sheaf}{层}\Term{complex}{复形} $K$ 定义\Term{complex}{复形}\Term{morphism}{态射}
+\[\operatorname{Tr}_u:u_!u^*K\longrightarrow K.\tag{6.2.7.1}\]
+对由 (6.2.7.1) 或 6.2.3 应用一个\Term{functor}{函子}得到的任意\Term{morphism}{态射}，仍可称为\Term{trace-morphism}{迹态射}、Gysin \Term{morphism}{态射}或\Term{morphism}{态射} $u_*$。例如有下述\Term{morphism}{态射}。
+\SourcePage{273}
+设有\Term{commutative-diagram}{交换图}
+\[\begin{tikzcd}X\arrow[rr,"u"]\arrow[dr,"f"']&&Y\arrow[dl,"g"]\\&S&\end{tikzcd}\]
+其中 $g$ \Term{separated}{分离}且\Term{locally-finite-type}{局部有限型}。对 $Y$ 上阿贝尔\Term{sheaf}{层} $F$，\Term{trace-morphism}{迹态射}定义\Term{morphism}{态射}
+\[\operatorname{Tr}_u\text{ 或 }u_*:f_!u^*F\simeq g_!u_!u^*F\xrightarrow{g_!(\operatorname{Tr}_u)}g_!F.\tag{6.2.7.2}\]
+若 $g$ \Term{compactifiable}{可紧化}，$K$ 为\Term{cohomology}{上同调}挠的\Term{bounded-below-complex}{下有界复形}，或为 $g^*A$-模\Term{complex}{复形}（$A$ 是 $S$ 上的挠环\Term{sheaf}{层}），则 (6.2.7.1) 同样诱导
+\[\operatorname{Tr}_u\text{ 或 }u_*:Rf_!u^*K\simeq Rg_!u_!u^*K\xrightarrow{Rg_!(\operatorname{Tr}_u)}Rg_!K,\tag{6.2.7.3}\]
+\[\operatorname{Tr}_u\text{ 或 }u_*:R^qf_!u^*K\simeq R^qg_!u_!u^*K\xrightarrow{R^qg_!(\operatorname{Tr}_u)}R^qg_!K.\tag{6.2.7.4}\]
+若 $S$ 为\Term{algebraically-closed-field}{代数闭域}的谱，(6.2.7.4) 是\Term{morphism}{态射}
+\[u_*:H_c^q(X,u^*K)\longrightarrow H_c^q(Y,K).\tag{6.2.7.5}\]
+可见，\Term{proper-support-cohomology}{固有支撑上同调}对于\Term{quasi-finite}{拟有限}\Term{morphism}{态射}具有\Term{covariant}{协变}性质。
+\textbf{6.2.8。} 设 $u:X\to Y$ 如 6.2.7，$\Delta_n=[0,n]$ 为有 $n+1$ 个元素的标准\Term{set}{集合}，$X_n$ 是 $X$ 在 $Y$ 上的 $n+1$ 重\Term{fiber-product}{纤维积}。各 $X_n$ 构成一个\Term{augmentation}{增广}至 $Y$ 的单纯\Term{scheme}{概形}（参见第 VI B 讲）。以 $u_n:X_n\to Y$ 表示\Term{augmentation}{增广}\Term{morphism}{态射}。若 $F$ 为 $Y$ 上阿贝尔\Term{sheaf}{层}，由 (6.2.7.2)（将 $S$ 换为 $Y$、$X$ 换为 $X_n$、$Y$ 换为 $Y$ 或 $X_m$），各 $F_n=u_{n!}u_n^*F$ 构成一个\Term{augmentation}{增广}至 $F$ 的单纯\Term{sheaf}{层}。此单纯\Term{sheaf}{层}的“非\Term{degeneration}{退化}链”\Term{differential}{微分}\Term{sheaf}{层}，按定义其第 $n$ 项是 $F_n$ 对所有以 $F_n$ 为靶的\Term{degeneracy-operator}{退化算子}及所有 $\sigma-\varepsilon(\sigma)$（$\sigma$ 为对称\Term{operator}{算子}）之\Term{direct-sum}{直和}的\Term{cokernel}{余核}。
+\begin{SGAresult}{命题}{6.2.9}
+在上述假设下，若 $u$ \Term{etale}{平展}、\Term{separated}{分离}、\Term{finite-type}{有限型}且\Term{surjectivity}{满射}，则对 $Y$ 上任意阿贝尔\Term{sheaf}{层} $F$：
+(i) 各 $F_n$ 构成 $F$ 的一个（左）\Term{resolution}{消解}。
+\SourcePage{274}
+(ii) 单纯\Term{sheaf}{层} $(F_n)$ 的非\Term{degeneration}{退化}链\Term{differential}{微分}\Term{complex}{复形}是 $F$ 的一个（左）\Term{resolution}{消解}。若 $u$ 的每个\Term{geometric-fibre}{几何纤维}至多有 $d$ 个点，则此\Term{resolution}{消解}的长度 $\le d$。
+\end{SGAresult}
+通过\Term{base-change}{基变换}，只需在 $Y$ 为\Term{algebraically-closed-field}{代数闭域}谱时验证；此时 6.2.8 化为单纯形的单纯\Term{homology}{同调}计算。
+设 $(U_i)_{i\in I}$ 为\Term{scheme}{概形} $Y$ 的\Term{finite}{有限}开\Term{covering}{覆盖}，$F$ 为 $Y$ 上阿贝尔\Term{sheaf}{层}，对 $I$ 的每个\Term{subset}{子集} $P$，令 $j_P$ 为 $U_P=\bigcap_{i\in P}U_i$ 的包含。选定 $I$ 的一个全序。若 $X=\coprod_{i\in I}U_i$，$u$ 为 $X$ 到 $Y$ 的\Term{projection}{投影}，则 6.2.9 (ii) 的\Term{resolution}{消解}为
+\[(F_n)_{\mathrm{nd\text{é}g}}=\bigoplus_{|P|=n+1}j_{P!}j_P^*F.\tag{6.2.9.1}\]
+$I$ 无穷时，此\Term{resolution}{消解}仍有意义。
+\textbf{6.2.10。} 在 6.2.9 的假设下，设 $A$ 是 $Y$ 上的挠环\Term{sheaf}{层}，$K\in\operatorname{Ob}^{-}(Y,A)$。用 $u^*A$ 环化 $X$。由于\Term{resolution}{消解} 6.2.9 (i)（分别为 6.2.9 (ii)）对 $F$ 具有\Term{functorial}{函子性}，它定义一个由\Term{double-complex}{双复形} $K_1$ 给出的 $K$ 的\Term{resolution}{消解}，称为 $K$ 的\Term{extraordinary-cech}{非寻常 Čech 消解}（分别为交错\Term{extraordinary-cech}{非寻常 Čech 消解}）。
+设交换三角形 $X\xrightarrow{u}Y\xrightarrow{g}S$ 的复合为 $f$，其中 $g$ \Term{compactifiable}{可紧化}。沿用 6.2.8 的记号，若 $f_n$ 是 $X_n$ 到 $S$ 的\Term{projection}{投影}，则 $Rf_{n!}=Rg_!u_{n!}$。按\Term{semisimple}{半单}纯次数\Term{filtered}{滤过} $K_1$ 得到\Term{spectral-sequence}{谱序列}
+\[E_1^{-p,q}=R^qf_{p!}(u_p^*K)\Longrightarrow R^{-p+q}g_!K.\tag{6.2.10.1}\]
+\Term{differential}{微分} $d_1$ 来自单纯\Term{arrow}{箭头}，所以
+\[E_2^{-p,q}=\check H^p\bigl(R^qf_{p!}(u_p^*K)\bigr)\Longrightarrow R^{-p+q}g_!K.\tag{6.2.10.2}\]
+在 (6.2.9.1) 的假设下，同样得到\Term{spectral-sequence}{谱序列}
+\[E_1^{-p,q}=\bigoplus_{|P|=p+1}R^qf_{P!}(j_P^*K)\Longrightarrow R^{-p+q}g_!K.\tag{6.2.10.3}\]
+\SourcePage{275}
+\Term{spectral-sequence}{谱序列} (6.2.10.1)、(6.2.10.3) 称为向上\Term{localization}{局部化}\Term{spectral-sequence}{谱序列}。
+\begin{SGAresult}{命题}{6.2.11}
+若 $f$ 是\Term{etale}{平展}、\Term{separated}{分离}、\Term{finite-type}{有限型}\Term{morphism}{态射}，则 $f_!$ 是 $f^*$ 的\Term{left-adjoint}{左伴随}，且以\Term{trace-morphism}{迹态射}为\Term{adjoint}{伴随箭头}。
+\end{SGAresult}
+已知，若 $X$ 是\Term{site}{景} $S$ 的\Term{object}{对象}，则将阿贝尔\Term{sheaf}{层}\Term{restriction}{限制}到 $X$ 的\Term{functor}{函子} $f^*$ 有\Term{left-adjoint}{左伴随} $f_!$。对 $X$ 上阿贝尔\Term{sheaf}{层} $F$，$f_!F$ 为如下预\Term{sheaf}{层}生成的\Term{sheaf}{层}：
+\[V\longmapsto\bigoplus_{\xi\in\operatorname{Hom}(V,X)}F(\xi).\]
+在\Term{etale}{平展}情形暂记此\Term{functor}{函子}为 $f''_!$。由\Term{adjunction}{伴随}性质立刻得知，其构造与任意\Term{base-change}{基变换}交换。\Term{trace-morphism}{迹态射}定义从 $f_!F$ 到 $f'_!F$ 的\Term{morphism}{态射} $t$，与任意\Term{base-change}{基变换}相容。只需逐\Term{fiber}{纤维}证明 $t$ 是\Term{isomorphism}{同构}，即可设 $S$ 为\Term{separably-closed-field}{可分闭域}的谱，此时显然。
+\textbf{6.2.11.1。} 应注意，这种对 $f'_!$ 的解释为\Term{etale}{平展}\Term{site}{景}所特有，例如不能推广到\Term{prescheme}{预概形}的 fpqf \Term{site}{景}。
+\SGAsection{6.3}{连续系数情形的迹之变体}
+本小节证明 GROTHENDIECK [1，第 6 节] 的断言，并应用这些结果为适当的 fppf \Term{sheaf}{层}定义“\Term{trace-morphism}{迹态射}”。
+\textbf{6.3.1。} 设 $A$ 为\Term{commutative-ring}{交换环}。若 $L,M$ 是\Term{finite-type}{有限型}\Term{projective-module}{投射} $A$-模，则映射 $u\mapsto\bigwedge^m u$，从 $\operatorname{Hom}(L,M)$ 到 $\operatorname{Hom}(\bigwedge^mL,\bigwedge^mM)$，与任意\Term{base-change}{基变换}相容，且为 $m$ 次映射（5.5.2）。由 5.5.2，它定义\Term{morphism}{态射}
+\[\bigwedge^m:\Gamma^m\operatorname{Hom}(L,M)\longrightarrow\operatorname{Hom}(\bigwedge^mL,\bigwedge^mM),\tag{6.3.1.1}\]
+使在任意\Term{base-change}{基变换}后，对 $u\in\operatorname{Hom}(L,M)$ 有 $\bigwedge^m(\gamma^m(u))=\bigwedge^m u$。由于 $\operatorname{Hom}(L,M)$ \Term{flat}{平坦}，此\Term{morphism}{态射}等同于（5.5.2）
+\[\bigwedge^m:\operatorname{TS}^m\operatorname{Hom}(L,M)\longrightarrow\operatorname{Hom}(\bigwedge^mL,\bigwedge^mM).\tag{6.3.1.2}\]
+\textbf{注意。} 只要 $2$ 在 $A$ 中\Term{invertible}{可逆}，也能定义这样的\Term{homomorphism}{同态}：$\operatorname{Hom}(L,M)^{\otimes m}$ 的对称元素定义从 $L^{\otimes m}$ 到 $M^{\otimes m}$ 的对称\Term{homomorphism}{同态}；后者可取商，定义从 $\bigwedge^mL$ 到 $\bigwedge^mM$ 的\Term{homomorphism}{同态}。
+给定三个\Term{finite-type}{有限型}\Term{projective-module}{投射} $A$-模，图
+\SourcePage{276}
+\[\begin{tikzcd}[column sep=small]
+\Gamma^m\operatorname{Hom}(L,M)\otimes\Gamma^m\operatorname{Hom}(M,N)\arrow[r]\arrow[d,"\bigwedge^m\otimes\bigwedge^m"']&\Gamma^m\operatorname{Hom}(L,N)\arrow[d,"\bigwedge^m"]\\
+\operatorname{Hom}(\bigwedge^mL,\bigwedge^mM)\otimes\operatorname{Hom}(\bigwedge^mM,\bigwedge^mN)\arrow[r]&\operatorname{Hom}(\bigwedge^mL,\bigwedge^mN)
+\end{tikzcd}\tag{6.3.1.3}\]
+交换，其中横\Term{arrow}{箭头}来自复合\Term{arrow}{箭头}（第一条还用到 (5.5.2.8)）。这表达了公式 $\bigwedge^m(vu)=\bigwedge^m v\circ\bigwedge^m u$。
+若 $L$ 是秩为 $n$ 的自由 $A$-模，(6.3.1.2) 定义\Term{canonical}{典范}\Term{morphism}{态射}
+\[\det:\Gamma^n\operatorname{End}_A(L)=\operatorname{TS}^n\operatorname{End}_A(L)\longrightarrow A,\tag{6.3.1.4}\]
+由 (6.3.1.3)，它是\Term{algebra}{代数}\Term{homomorphism}{同态}。按定义，
+\[\det(u^{\otimes n})=\det(u;L).\tag{6.3.1.5}\]
+若 $L$ 还是一个 $A$-\Term{algebra}{代数} $B$ 上的模，则 (6.3.1.4) 经复合定义\Term{algebra}{代数}\Term{homomorphism}{同态}
+\[\det_L:\operatorname{TS}_A^n(B)\longrightarrow A.\tag{6.3.1.6}\]
+\begin{SGAresult}{引理}{6.3.2}
+设 $L$ \Term{embedding}{嵌入}\Term{exact-sequence}{正合列}
+\[E:0\longrightarrow L'\longrightarrow L\longrightarrow L''\longrightarrow0,\]
+其中 $L'$、$L''$ 分别\Term{locally-free}{局部自由}，秩为 $n_1$、$n_2$。令 $n=n_1+n_2$，$\alpha$ 为从\Term{group-extension}{扩张} $E$ 的\Term{endomorphism}{自同态}群 $\operatorname{End}(E)$ 到 $\operatorname{End}(L')\oplus\operatorname{End}(L'')$ 的“\Term{adjunction}{伴随}\Term{graded}{分次}”\Term{morphism}{态射}；对\Term{flat}{平坦} $A$-模 $X,Y$，以 $\beta$ 表示由\Term{isomorphism}{同构}（5.5.2.6）
+\[\operatorname{TS}^n(X\oplus Y)\simeq\sum_{n'+n''=n}\operatorname{TS}^{n'}(X)\otimes\operatorname{TS}^{n''}(Y)\]
+\Term{derive}{导出}的从 $\operatorname{TS}^n(X\oplus Y)$ 到 $\operatorname{TS}^{n_1}(X)\otimes\operatorname{TS}^{n_2}(Y)$ 的\Term{morphism}{态射}。下图交换：
+\[\begin{tikzcd}[column sep=small]
+\operatorname{TS}^n(\operatorname{End}(E))\arrow[r,"\operatorname{TS}^n(\alpha)"]\arrow[d]&\operatorname{TS}^n(\operatorname{End}(L')\oplus\operatorname{End}(L''))\arrow[r,"\beta"]&\operatorname{TS}^{n_1}(\operatorname{End}(L'))\otimes\operatorname{TS}^{n_2}(\operatorname{End}(L''))\arrow[d,"\det\otimes\det"]\\
+\operatorname{TS}^n(L)\arrow[rr,"\det"']&&A.
+\end{tikzcd}\]
+\end{SGAresult}
+由 $\operatorname{TS}^n$ 的\Term{universal-property}{泛性质} 5.5.2，只需验证对 $u\in\operatorname{End}(E)$，$u^{\otimes n}$ 的两个像相同。若 $\alpha u=(u',u'')$，则这两个像分别为 $\det(u)$ 和 $\det(u')\det(u'')$，于是得出结论。
+\SourcePage{277}
+\begin{SGAresult}{引理}{6.3.3}
+设 $A$ 为环，$B$ 为 $A$-\Term{algebra}{代数}，$C$ 为不必交换的 $B$-\Term{algebra}{代数}，$E$ 为在 $A$ 上自由且秩为 $n$ 的 $B$-模，$F$ 为在 $B$ 上自由且秩为 $m$ 的 $C$-模。假设 $C$ 在 $A$ 上\Term{flat}{平坦}。由 $\Gamma^{nm}$ 的\Term{universal-property}{泛性质} 5.5.2.2 及 5.5.2.3，存在唯一\Term{arrow}{箭头}
+\[\sigma:\operatorname{TS}_A^{nm}(C)\longrightarrow\operatorname{TS}_A^n\operatorname{TS}_B^m(C),\]
+使在任意环变换 $A\to A'$ 后有 $\sigma(c^{\otimes nm})=(c^{\otimes m})^{\otimes n}$。下图交换：
+\[\begin{tikzcd}\operatorname{TS}_A^n(B)\arrow[d,"\det_E"']&\operatorname{TS}_A^n\operatorname{TS}_B^m(C)\arrow[l,"\operatorname{TS}_A^n(\det_F)"']\\A&\operatorname{TS}_A^{nm}(C)\arrow[u,"\sigma"']\arrow[l,"\det_{E\otimes_BF}"]\end{tikzcd}\]
+\end{SGAresult}
+\begin{proof}
+由 5.5.2.2、5.5.2.3，只需证明 $\operatorname{TS}_A^{nm}(C)$ 中元素 $u^{\otimes nm}$ 的两个像相同。这两个像为 $\det_E(\det_F(u))$ 和 $\det_{E\otimes_BF}(u)$；它们用 $A,B,E,F$ 和 $u\in\operatorname{End}_B(F)$ 表示。为验证两者相同，可先将 $B$ 换为它在 $\operatorname{End}(E)$ 中的（交换的）像 $B_1$，将 $F$ 换为 $F\otimes_BB_1$。此时所需公式就是行列式的分块计算公式（BOURBAKI，《\Term{algebra}{代数}》第 8 章第 12 节引理 2，第 140 页）。
+\end{proof}
+当 $C$ 不必在 $A$ 上\Term{flat}{平坦}时，同一证明更一般地给出交换的\Term{algebra}{代数}图：
+\[\begin{tikzcd}\Gamma_A^n(B)\arrow[d,"\det_E"']&\Gamma_A^n\Gamma_B^n(C)\arrow[l,"\Gamma_A^n(\det_F)"']\\A&\Gamma_A^{nm}(C)\arrow[u,"\sigma"']\arrow[l,"\det_{E\otimes_BF}"]\end{tikzcd}\tag{6.3.3.1}\]
+\textbf{6.3.4。} 若 $B$ 为交换 $A$-\Term{algebra}{代数}，则 $\operatorname{Spec}(\operatorname{TS}_A^n(B))$ 正是 $\operatorname{Spec}(B)$ 在 $\operatorname{Spec}(A)$ 上的第 $n$ 次\Term{symmetric-power}{对称幂}，即 $(\operatorname{Spec}(B)/\operatorname{Spec}(A))^n$ 对\Term{symmetric-group}{对称群}的商（SGA 1 IV 3）。
+若 $X$ 是 $S$ 上的\Term{separated}{分离}\Term{scheme}{概形}，则称 $X$ 上\Term{quasi-coherent}{拟凝聚} $\mathcal O_X$-模 $F$ 在 $S$ 上\Term{finite}{有限}\Term{locally-free}{局部自由}（分别为且秩为 $n$），若其\Term{support}{支集}在 $S$ 上\Term{finite}{有限}，且其\Term{direct-image}{正像}在 $S$ 上\Term{finite-rank}{有限秩}\Term{locally-free}{局部自由}（分别为秩为 $n$）。$F$ 的\Term{support}{支集}还指由 $F$ 的零化\Term{ideal}{理想}定义的 $X$ 的子\Term{scheme}{概形}（$F$ \Term{quasi-coherent}{拟凝聚}且\Term{finite-type}{有限型}，故此\Term{ideal}{理想}\Term{quasi-coherent}{拟凝聚}）。
+若 $F$ 在 $S$ 上\Term{finite}{有限}\Term{locally-free}{局部自由}，秩为 $n$，\Term{support}{支集}为 $E$，则 $E$ 在 $S$ 上\Term{affine}{仿射}；将 (6.3.1.6) 在 $S$ 上整体化，$F$ 定义 $\operatorname{Sym}_S^n(E)$ 的\Term{section}{截面} $\sigma_E(F)$，
+\SourcePage{278}
+由\Term{functorial}{函子性}得到\Term{algebraic-space}{代数空间}\footnote{M. ARTIN，\emph{Algebraization of formal moduli I}。我们只在 $\operatorname{Sym}_S^n(X)$ 作为\Term{scheme}{概形}存在时使用上述构造；$X$ 在 $S$ 上\Term{quasi-projective}{拟射影}时即是如此。} $\operatorname{Sym}_S^n(X)$ 的\Term{section}{截面}
+\[\sigma(F)\in\Gamma(\operatorname{Sym}_S^n(X)/S).\tag{6.3.4.1}\]
+特别地，若 $f:S'\to S$ \Term{finite}{有限}\Term{locally-free}{局部自由}，秩为 $n$，取 $F=\mathcal O_{S'}$，便得到\Term{canonical}{典范}\Term{section}{截面}
+\[t\in\Gamma(\operatorname{Sym}_S^n(S')/S).\tag{6.3.4.2}\]
+\begin{SGAresult}{命题}{6.3.5}
+设 $X$ 是 $S$ 上\Term{separated}{分离}\Term{scheme}{概形}，$F_1,F_2$ 是在 $S$ 上\Term{finite}{有限}\Term{locally-free}{局部自由}、秩分别为 $n_1,n_2$ 的 $\mathcal O_X$-模。置 $n=n_1+n_2$，令 $d:\operatorname{Sym}_S^{n_1}(X)\times_S\operatorname{Sym}_S^{n_2}(X)\to\operatorname{Sym}_S^n(X)$ 为\Term{canonical}{典范}\Term{arrow}{箭头}。若 $F$ 是 $F_1$ 被 $F_2$ 的\Term{group-extension}{扩张}，则
+\[\sigma(F)=d(\sigma(F_1),\sigma(F_2)).\]
+\end{SGAresult}
+可将 $X$ 换为 $F_1\oplus F_2$ 的\Term{support}{支集}（它在 $S$ 上\Term{finite}{有限}），并设 $S$ \Term{affine}{仿射}。将命题译成环的语言，结论便由 6.3.2 得出。
+\begin{SGAresult}{引理}{6.3.6}
+若 $X$ 是 $S$ 上\Term{separated}{分离}\Term{scheme}{概形}，$F$ 是在 $S$ 上\Term{finite}{有限}\Term{locally-free}{局部自由}、秩为 $n$ 的 $\mathcal O_X$-模，而 $L$ 是 $X$ 上的\Term{invertible}{可逆}\Term{sheaf}{层}，则
+\[\sigma(F)=\sigma(F\otimes L).\]
+\end{SGAresult}
+将 $X$ 换为 $F$ 的\Term{support}{支集}（6.3.4）；在 $S$ 上\Term{local-scheme}{局部}地，$L$ \Term{isomorphism}{同构}于 $\mathcal O_X$，断言显然。
+留给读者验证：
+\begin{SGAresult}{命题}{6.3.7}
+对在 $S$ 上\Term{separated}{分离}的 $S$-\Term{scheme}{概形}组成的任意交换三角形 $X\xrightarrow{u}Y\xrightarrow{g}S$（复合为 $f$），以及在 $S$ 上\Term{finite}{有限}\Term{locally-free}{局部自由}、秩为 $n$ 的任意 $\mathcal O_X$-模 $F$，$\mathcal O_Y$-模 $u_*F$ 在 $S$ 上\Term{finite}{有限}\Term{locally-free}{局部自由}，秩为 $n$，且
+\[u(\sigma(F))=\sigma(u_*F).\]
+\end{SGAresult}
+\textbf{6.3.7.1。} 最后注意，\Term{morphism}{态射} $\sigma$（6.3.4.1）和 $t$（6.3.4.2）的构造与任意\Term{base-change}{基变换}相容；由 5.5.2.7 此说法有意义。
+\SourcePage{279}
+\textbf{应用 1：\Term{smooth}{光滑}曲线的情形}
+\textbf{6.3.8。} 设 $f:X\to S$ 是 $S$ 上\Term{smooth}{光滑}、\Term{quasi-projective}{拟射影}曲线，即纯\Term{relative-dimension}{相对维数}为 $1$ 的\Term{smooth}{光滑}、\Term{quasi-projective}{拟射影}\Term{morphism}{态射}。Hilbert \Term{scheme}{概形}理论（GROTHENDIECK [1]）表明，将每个 $S$-\Term{scheme}{概形} $S'$ 映至 $X'=X\times_S S'$ 上在 $S'$ 上\Term{finite}{有限}且次数为 $n$ 的\Term{relative-divisor}{相对除子}全体的 fpqc \Term{sheaf}{层} $\operatorname{Div}_{X/S}^n$ 是\Term{representable-functor}{可表示}的\Term{sheaf}{层}。
+对 $X$ 上每个在 $S$ 上\Term{finite}{有限}、次数为 $n$ 的\Term{relative-divisor}{相对除子} $E$，有\Term{canonical}{典范}元素（6.3.4.3）$t(E)\in\operatorname{Sym}_S^n(E)$，其在 $\operatorname{Sym}_S^n(X)$ 中的像为 $\sigma(E)$。此构造与任意\Term{base-change}{基变换}相容，故定义
+\[\sigma:\operatorname{Div}_{X/S}^n\longrightarrow\operatorname{Sym}_S^n(X),\qquad E\longmapsto\sigma(\mathcal O_E).\tag{6.3.8.1}\]
+$f$ 的每个\Term{section}{截面} $s$ 定义一个在 $S$ 上\Term{finite}{有限}、次数为 $1$ 的\Term{relative-divisor}{相对除子} $s(S)$。\Term{morphism}{态射}
+\[(X/S)^n\longrightarrow\operatorname{Div}_{X/S}^n,\quad(s_i)_{0<i\le n}\longmapsto\sum s_i(S)\]
+是对称的，因此诱\Term{derived-morphism}{导态射}
+\[\alpha:\operatorname{Sym}_S^n(X)\longrightarrow\operatorname{Div}_{X/S}^n.\tag{6.3.8.2}\]
+\begin{SGAresult}{命题}{6.3.9}
+6.3.8 的\Term{morphism}{态射} $\sigma$ 与 $\alpha$ 是互逆\Term{isomorphism}{同构}。
+\end{SGAresult}
+\begin{proof}
+a) $\sigma\alpha=\operatorname{Id}$。只需证明复合\Term{arrow}{箭头}
+\[(X/S)^n\xrightarrow{\pi}\operatorname{Sym}_S^n(X)\xrightarrow{\alpha}\operatorname{Div}_{X/S}^n\xrightarrow{\sigma}\operatorname{Sym}_S^n(X)\]
+等于 $\pi$。$n=1$ 时显然；一般情形由下述引理得出。
+\begin{SGAresult}{引理}{6.3.9.1}
+沿用 6.3.5 及 (6.3.8.1) 的记号，有
+\[\sigma(E+F)=d(\sigma(E),\sigma(F)).\]
+\end{SGAresult}
+此引理由 6.3.5、6.3.6 及\Term{exact-sequence}{正合列}
+\[0\longrightarrow\mathcal O(-F)\otimes\mathcal O_E\longrightarrow\mathcal O_{E+F}\longrightarrow\mathcal O_F\longrightarrow0\]
+得出。
+b) 已知 $\operatorname{Div}_{X/S}^n$ 在 $S$ 上\Term{smooth}{光滑}（曲线上\Term{divisor}{除子}的\Term{infinitesimal}{无穷小}\Term{lifting}{提升}没有障碍，参见 SGA 3 XI 1）。\Term{morphism}{态射} $\alpha\pi:(X/S)^n\to\operatorname{Div}_{X/S}^n$ 是 $S$ 上\Term{smooth}{光滑}\Term{scheme}{概形}之间的\Term{quasi-finite}{拟有限}\Term{epimorphism}{满态射}，其源的\Term{fiber}{纤维}\Term{equidimensional}{等维}。因此它\Term{flat}{平坦}（EGA $0_{\mathrm{IV}}$ 17.3.5），故 $\alpha\pi$ 为 fppf \Term{sheaf}{层}的\Term{epimorphism}{满态射}，$\alpha$ 也是。结合 a)，6.3.9 得证。
+\end{proof}
+\SourcePage{280}
+\begin{SGAresult}{引理}{6.3.10}
+设 $k$ 为\Term{commutative-ring}{交换环}，$M$ 为自由 $k$-模，$u$ 为 $M$ 的\Term{endomorphism}{自同态}。以 $N_{\det(u-T)=0}$ 表示 $k[T]/\det(u-T)$ 到 $k$ 的\Term{norm}{范数}。对 $P\in k[T]$，有
+\[N_{\det(u-T)=0}(P(T))=\det(P(u),M).\]
+\end{SGAresult}
+所需验证的是 $u$ 的矩阵系数和 $P$ 的系数之间的一个\Term{algebra}{代数}恒等式。因此，用熟知的论证，只需处理 $k$ 为\Term{algebraically-closed-field}{代数闭域}、$u$ \Term{semisimple}{半单}且\Term{characteristic}{特征}值为 $a_i$ 的情形。此时
+\[\det(u-T)=\prod_i(a_i-T),\qquad N_{\det(u-T)=0}(P(T))=\prod_iP(a_i),\qquad\det(P(u),M)=\prod_iP(a_i).\]
+\textbf{6.3.11.0。} 设 $f:X\to S$ 是\Term{quasi-projective}{拟射影}、\Term{finite-presentation}{有限表示}、\Term{flat}{平坦}\Term{morphism}{态射}，\Term{fiber}{纤维}纯\Term{dimension}{维数}为 $1$ 且为 Cohen--Macaulay；特别地，当 $X$ 为 $S$ 上\Term{smooth}{光滑}、\Term{quasi-projective}{拟射影}曲线时这些条件成立。设 $F$ 为在 $S$ 上\Term{finite}{有限}\Term{locally-free}{局部自由}的 $\mathcal O_X$-模。因 $F$ 在 $X$ 的某个逐\Term{fiber}{纤维}\Term{dense-open-set}{稠密开集}上为零，有\Term{canonical}{典范}\Term{arrow}{箭头} $\Psi:\mathcal O_X\to\det^*(F)$（SGA 6 XI，或 MUMFORD [1，第 5 章第 3 节]）。以 $\delta(F)$ 表示由 $\operatorname{coker}(\Psi)$ 的零化\Term{ideal}{理想}定义的\Term{divisor}{除子}（同上）；它在 $S$ 上\Term{finite}{有限}。
+\begin{SGAresult}{命题}{6.3.11.1}
+在 6.3.11.0 的假设下，沿用 6.3.8 及 (6.3.4.1) 的记号，若 $F$ 的秩为 $n$，则 $\delta(F)$ 的次数为 $n$，且
+\[\sigma(F)=\sigma(\delta(F)).\]
+\end{SGAresult}
+\begin{proof}
+a) $f$ \Term{smooth}{光滑}的情形。按标准方法，可设 $S$ 为\Term{residue-field}{剩余域}\Term{algebraically-closed}{代数闭}的\Term{locally-artinian}{局部 Artin} \Term{scheme}{概形}。$\sigma$ 的可\Term{additive}{加性}（6.3.5）使我们可设 $F$ 的\Term{support}{支集}集中于 $X$ 的一个\Term{rational-point}{有理点} $x$。容易验证，若 $T$ 为 $x$ 处的一个\Term{uniformizer}{一致化参数}，定义 $p:X\to\mathbb A_S^1$，则 $p_*(\mathcal O_{\delta(F)})\simeq\mathcal O_{\delta(p_*F)}$（因为所作构造与\Term{completion}{完备化}交换）。由此及 6.3.7，可\Term{reduced}{约化}到 $X=\mathbb A_S^1$。
+若 $X=\mathbb A_S^1$，$S$ \Term{affine}{仿射}，$S=\operatorname{Spec}(k)$，则 $F$ 等同于一个\Term{locally-free}{局部自由} $k$-模 $M$ 连同\Term{endomorphism}{自同态} $u$（$T$ 的\Term{action}{作用}）。作为 $k[T]$-模，$M$ 有\Term{resolution}{消解}
+\[0\longrightarrow k[T]\otimes_kM\xrightarrow{\varphi}k[T]\otimes_kM\xrightarrow{\varepsilon}M\longrightarrow0,\]
+其中 $\varepsilon(P\otimes m)=P(u)(m)$，$\varphi(1\otimes m)=1\otimes um-T\otimes m$。由 $\varphi=u-T$，得到\Term{divisor}{除子} $\delta(F)$ 的方程为 $\det(u-T,M)=0$。
+\SourcePage{281}
+为验证 6.3.11，只需证明在任意\Term{base-change}{基变换}后，对 $\mathcal O_X$ 的每个\Term{section}{截面} $\phi$ 有
+\[\det_k(\phi,M)=\det_k(\phi,\mathcal O_{\delta(F)})\ (=N_{\delta(F)/S}(\phi)).\]
+对 $f=P(T)$，这正是 6.3.10 的断言。
+b) 一般情形。先将待证断言具体表述如下：
+\begin{SGAresult}{推论}{6.3.11.2}
+对 $f:X\to S$ 作 6.3.11.0 的假设。设 $M$ 是 $X$ 上\Term{finite-type}{有限型}\Term{locally-free-module}{局部自由模}，$u$ 是 $M$ 的\Term{endomorphism}{自同态}，且 $\det u$ 在每个\Term{fiber}{纤维} $X_s$ 上都是 $\mathcal O_X$ 的\Term{regular-section}{正则截面}（由此 $\operatorname{Coker}u=M/u(M)$ 与 $\operatorname{Coker}\det u=\mathcal O_X/\det u$ 均在 $S$ 上\Term{flat}{平坦}、\Term{finite-presentation}{有限表示}且\Term{fiber}{纤维}\Term{quasi-finite}{拟有限}）。假设这两个\Term{sheaf}{层}的共同\Term{support}{支集}在 $S$ 上\Term{finite}{有限}，从而它们定义 $S$ 上\Term{finite-type}{有限型}\Term{locally-free}{局部自由}\Term{sheaf}{层}。则对 $\mathcal O_X$ 的每个\Term{section}{截面} $\phi$，$\phi$ 在 $\operatorname{Coker}u$ 与 $\operatorname{Coker}\det u$ 上的\Term{action}{作用}相对于 $\mathcal O_S$ 的行列式相等：
+\[\det_S(\phi,M/u(M))=\det_S(\phi,\mathcal O_X/\det u).\tag{6.3.11.3}\]
+\end{SGAresult}
+注意，由\Term{homogeneous}{齐次}性（将 $\phi$ 换为 $T\phi$，其中 $T$ 为 $\mathcal O_S$ 的“未定”\Term{section}{截面}），此断言蕴涵上述两个\Term{locally-free-module}{局部自由模}在 $S$ 上的秩相等。另外，将 $\phi$ 换为 $1+T\phi$，$T$ 为这样的未定元（确切地说，作\Term{base-change}{基变换} $S'=S[T]\to S$），由 (6.3.11.3) 得到表面上更一般的\Term{characteristic}{特征}多项式公式
+\[\operatorname{Pol}_S(\phi,M/uM)(T)=\operatorname{Pol}_S(\phi,\mathcal O_X/\det u)(T).\tag{6.3.11.4}\]
+为证明 (6.3.11.3)，我们\Term{reduced}{约化}到已证的\Term{smooth}{光滑}情形。在 $S$ 上作\Term{etale}{平展}\Term{localization}{局部化}，可设 $S$ \Term{strictly-local}{严格局部}，\Term{closed-point}{闭点}为 $s$；再由可\Term{additive}{加性}，可设 $M/u(M)$ 的\Term{support}{支集}在 $X_s$ 上仅有一个点 $x$。作\Term{flat}{平坦}\Term{base-extension}{基扩张}后，可设\Term{residue-field}{剩余域}\Term{group-extension}{扩张} $k(x)/k(s)$ 平凡。将 $X$ 换为 $x$ 的充分小\Term{neighborhood}{邻域}，并给 $\phi$ 加上一个在 $M/u(M)$ 及 $\mathcal O_X/\det u$ 上\Term{action}{作用}为零的函数（这不改变待证公式），容易看出，可设 $\phi$ 诱导 $\mathcal O_{X_s}$ 在 $x$ 处的\Term{regular-section}{正则截面}，从而（缩小 $X$ 后）定义\Term{quasi-finite}{拟有限}、\Term{flat}{平坦}\Term{morphism}{态射}
+\[p:X\longrightarrow X'=S[T].\]
+在 $X,X'$ 上作\Term{etale}{平展}\Term{localization}{局部化}，于是可设上述 $p$ \Term{finite}{有限}且\Term{flat}{平坦}，$X'$ 在 $S$ 上\Term{smooth}{光滑}，且 $\phi=p^*(\phi')$，$\phi'$ 是
+\SourcePage{282}
+$\mathcal O_{X'}$ 的\Term{section}{截面}。置
+\[\begin{gathered}M'=p_*(M),\quad u'=p_*(u),\\P=\operatorname{Coker}u,\quad Q=\operatorname{Coker}\det u,\\P'=\operatorname{Coker}u',\quad Q'=\operatorname{Coker}\det u'.\end{gathered}\]
+已知 $\det u'=N_{X'/X}\det u$，故 $Q'=\operatorname{Coker}N_{X'/X}(\det u)$。显然有
+\[\det_S(\phi,P)=\det_S(\phi',P),\]
+又由\Term{smooth}{光滑}情形已证的 (6.3.11.3)，
+\[\det_S(\phi',P')=\det_S(\phi',Q'),\]
+所以只需证明
+\[\det_S(\phi',Q')=\det_S(\phi,Q),\]
+这\Term{equivalence}{等价}于待证的 (6.3.11.3)。可见其成立与否只依赖于 $\mathcal O_X$ 的\Term{section}{截面} $\det u$；换言之，它\Term{equivalence}{等价}于将 $M$ 换为 $\mathcal O_X$、$\phi$ 换为 $\det u$ 时的同一公式。但 $M=\mathcal O_X$ 时 (6.3.11.3) 是同义反复！证明完毕。
+\end{proof}
+\textbf{注记 6.3.11.5。} 当 $S$ 为 Artin \Term{scheme}{概形}时，$\operatorname{Coker}u$ 与 $\operatorname{Coker}\det u$（记号见 6.3.11.2）在 $S$ 上秩相等，是 EGA IV 21.10.17.3 的特例；(6.3.11.3) 可视为该结果的“相对”版本。
+\begin{SGAresult}{命题}{6.3.12}
+设 $X,Y$ 为 $S$ 上\Term{quasi-projective}{拟射影}、\Term{finite-presentation}{有限表示}、\Term{flat}{平坦}且\Term{fiber}{纤维}为 Cohen--Macaulay 的两条曲线，$u:X\to Y$ 是\Term{quasi-finite}{拟有限}、\Term{flat}{平坦}\Term{morphism}{态射}。则下图交换：\footnote{由于只考虑在 $S$ 上\Term{finite}{有限}的\Term{divisor}{除子}，\Term{morphism}{态射} $u_*$ 有定义。例如可定义 $u_*(D)=\delta(u_*\mathcal O_D)$；$u$ \Term{finite}{有限}时，此公式与 EGA IV 21.5.5 一致。}
+\[\begin{tikzcd}\operatorname{Div}_{X/S}^n\arrow[r,"u_*"]\arrow[d,"\sigma_X"']&\operatorname{Div}_{Y/S}^n\arrow[d,"\sigma_Y"]\\\operatorname{Sym}_S^n(X)\arrow[r,"\operatorname{Sym}^n(u)"']&\operatorname{Sym}_S^n(Y).\end{tikzcd}\]
+\end{SGAresult}
+因为 $u_*(D)=\delta(u_*\mathcal O_D)$，6.3.12 由 6.3.7 及 6.3.11.1 得出。
+\SourcePage{283}
+\textbf{应用 2：\Term{trace-morphism}{迹态射}}
+\textbf{6.3.13。} 设 $G$ 是\Term{scheme}{概形} $S$ 的大 fppf \Term{site}{景}上的阿贝尔\Term{sheaf}{层}（0.10）。假设 $G$ 满足下列条件。
+\textbf{6.3.13.1。} 对 $S$-\Term{scheme}{概形}间任意\Term{affine}{仿射}、\Term{flat}{平坦}、\Term{finite-presentation}{有限表示}\Term{morphism}{态射} $f:X\to Y$ 及任意整数 $n\ge1$，\Term{morphism}{态射}
+\[\operatorname{Hom}_S(\operatorname{Sym}_Y^n(X),G)\longrightarrow\operatorname{Hom}_S((X/Y)^n,G)\]
+是\Term{injectivity}{单射}，其像恰为从 $(X/Y)^n$ 到 $G$ 的对称\Term{morphism}{态射}全体。
+此条件在\Term{base-change}{基变换}下\Term{stable}{稳定}。
+设 $f:T\to S$ 是\Term{finite}{有限}\Term{locally-free}{局部自由}、秩为 $n$ 的\Term{morphism}{态射}，$\operatorname{pr}_i$ 为 $(T/S)^n$ 到 $T$ 的第 $i$ 个\Term{projection}{投影}，$t$ 为 $\operatorname{Sym}_S^n(T)$ 的\Term{section}{截面}（6.3.4.3）。若 $u\in G(T)$，则 $\sum_i\operatorname{pr}_i^*(u)$ 是 $G((T/S)^n)$ 的对称元素，故定义
+\[u_n\in\operatorname{Sym}_S^n(T).\]
+置 $\operatorname{Tr}_f(u)=t^*(u_n)$。当 $f$ \Term{finite}{有限}\Term{locally-free}{局部自由}时，在 $S$ 上\Term{local-scheme}{局部}地用前式定义 $\operatorname{Tr}_f(u)$。此构造与任意\Term{base-change}{基变换}相容，故定义\Term{trace-morphism}{迹态射}
+\[\operatorname{Tr}_f:f_*f^*G\longrightarrow G.\tag{6.3.13.2}\]
+\textbf{6.3.14。} 下列情形满足条件 (6.3.13.1)：
+a) $G$ \Term{representable-functor}{可表示}，由\Term{symmetric-power}{对称幂}的定义即知。
+b) $G$ 是 $S$ 的小\Term{etale}{平展}\Term{site}{景}上某个\Term{sheaf}{层}在 $S_{\mathrm{fppf}}$ 上的\Term{inverse-image}{逆像}（0.10）。
+c) $G$ 由\Term{quasi-coherent}{拟凝聚} $\mathcal O_S$-模 $G_0$ 定义。
+断言 c) \Term{reduced}{约化}为 (5.5.2.7)。
+\begin{SGAresult}{命题}{6.3.15}
+若 $G$ 满足 (6.3.13.1)，则：
+(i) \Term{morphism}{态射} $\operatorname{Tr}_f$ 对 $G$ 具有\Term{functorial}{函子性}，故为可加的。
+(ii) 其构造与任意\Term{base-change}{基变换} $S'\to S$ 相容。
+(iii) 若 $T=\coprod_iT_i$，从而 $f_*G\simeq\sum_i f_{i*}G$，则 $\operatorname{Tr}_f=\sum_i\operatorname{Tr}_{f_i}$。
+(iv) 若 $T$ 在 $S$ 上恒秩为 $n$，则复合 $G\to f_*f^*G\xrightarrow{\operatorname{Tr}_f}G$ 为乘以 $n$。
+(v) \Term{trace-morphism}{迹态射}与复合相容（参见 6.2.3 Var 3）。
+\end{SGAresult}
+\SourcePage{284}
+(i)、(ii) 显然，(iii) 容易由 6.3.5 得出。沿用 6.3.13 的记号，若 $u\in G(S)$，则 $u_n$ 为 $u$ 的\Term{inverse-image}{逆像}的 $n$ 倍，故 $\operatorname{Tr}_f(f^*u)=t^*(u_n)=nu$。
+为证明 (v)，在 $S$ 上作\Term{etale}{平展}\Term{localization}{局部化}并用 (iii)，可\Term{reduced}{约化}到证明：对于 $f=gh:S''\xrightarrow{h}S'\xrightarrow{g}S$，其中 $f,g$ \Term{finite}{有限}\Term{locally-free}{局部自由}且恒秩分别为 $n,m$，下图交换：
+\[\begin{tikzcd}G(S'')\arrow[rr,"\operatorname{Tr}_h"]\arrow[dr,"\operatorname{Tr}_f"']&&G(S')\arrow[dl,"\operatorname{Tr}_g"]\\&G(S)&\end{tikzcd}\tag{6.3.15.1}\]
+对 $u\in G(S'')$，考虑图
+\[\begin{tikzcd}[column sep=small,row sep=large]
+\operatorname{Sym}_S^n(S')\arrow[rr,"\operatorname{Sym}^n(t)"]\arrow[dr,"\operatorname{Tr}_g(u)_n"']&&\operatorname{Sym}_S^n\operatorname{Sym}_{S'}^m(S'')\arrow[dl,"(u_m)_n"]\arrow[dd]\\
+&G&\\S\arrow[uu,"t"]\arrow[rr,"t"']\arrow[ur,bend left=12,"\operatorname{Tr}_f\operatorname{Tr}_g(u)"]\arrow[ur,bend right=12,"\operatorname{Tr}_{fg}(u)"']&&\operatorname{Sym}_S^{nm}(S'')\arrow[ul,"u_{nm}"']
+\end{tikzcd}\tag{6.3.15.2}\]
+因 $S'$ 在 $S$ 上\Term{flat}{平坦}，右侧竖\Term{arrow}{箭头}有定义；每个三角形均交换，故 (v) 由外框交换得出。改用环的语言，这由 6.3.3 中 $B=E$、$C=F$ 的特例得出。
+\textbf{6.3.16。} 现在设 $f:T\to S$ 是\Term{quasi-finite}{拟有限}、\Term{flat}{平坦}、\Term{finite-presentation}{有限表示}\Term{morphism}{态射}。若 $F$ 是 $T$ 上的 fppf \Term{sheaf}{层}，则定义其在 $S$ 上的\Term{proper-support-direct-image}{固有支撑直接像} $f_!F$ 为如下预\Term{sheaf}{层}：将 $S'/S$ 映至 $F$ 在 $T'$ 上\Term{support}{支集}在 $S'$ 上\Term{proper}{固有}的\Term{section}{截面}全体。由 6.1.1，此预\Term{sheaf}{层}是\Term{sheaf}{层}。沿用 6.1.1 的记号，也可将其表达为\Term{local-inductive-limit}{局部归纳极限}（IV 14）：
+\[f_!F=\varinjlim_{V\in\Phi(U)}f_*(F|V).\]
+此公式说明了相当明显的事实：$f_!$ 的性质可\Term{reduced}{约化}到\Term{finite}{有限}\Term{morphism}{态射} $f'$ 的 $f'_*$ 的性质。因此得到：
+\SourcePage{285}
+\begin{SGAresult}{命题}{6.3.17}
+对每个\Term{quasi-finite}{拟有限}、\Term{flat}{平坦}、\Term{finite-presentation}{有限表示}\Term{morphism}{态射} $f:T\to S$ 以及 $S$ 上满足 (6.3.13.1) 的每个 fppf \Term{sheaf}{层} $G$，可以且只能以一种方式定义\Term{trace-morphism}{迹态射}
+\[\operatorname{Tr}_f:f_!f^*G\longrightarrow G,\]
+使得 (i) $f$ \Term{finite}{有限}时得到 (6.3.13.2)；(ii) 作相应调整后，满足 6.2.3 的条件 (Var 1)--(Var 4)。
+\end{SGAresult}
+\Term{quasi-finite}{拟有限}\Term{morphism}{态射} $f$ 诱导\Term{site}{景}的\Term{commutative-diagram}{交换图}（参见 (0.11)），其中 $\alpha_*$ 是“\Term{restriction}{限制}”\Term{functor}{函子}：
+\[\begin{tikzcd}T_{\mathrm{fppf}}\arrow[r,"\alpha"]\arrow[d,"f"']&T_{\text{ét}}\arrow[d,"f_{\text{ét}}"]\\S_{\mathrm{fppf}}\arrow[r,"\alpha"']&S_{\text{ét}}.\end{tikzcd}\]
+对 $T_{\mathrm{fppf}}$ 上的 $G$，有 $f_!\alpha_*\simeq\alpha_*f_!$。又有“\Term{base-change}{基变换}”\Term{morphism}{态射}
+\[c:f_{\text{ét}}^*\alpha_*\longrightarrow\alpha_*f^*.\]
+留给读者验证\Term{trace-morphism}{迹态射} 6.2.3 与 6.3.17 的下述相容性。对 $S_{\mathrm{fppf}}$ 上满足 (6.3.13.1) 的 $G$，下图交换：
+\[\begin{tikzcd}[column sep=small]
+f_{\text{ét}!}f_{\text{ét}}^*\alpha_*G\arrow[r,"f_{\text{ét}!}c"]\arrow[d,"\operatorname{Tr}_f\ (6.2.3)"']&f_{\text{ét}!}\alpha_*f^*G\arrow[r,"\sim"]&\alpha_*f_!f^*G\arrow[d,"\alpha_*\operatorname{Tr}_f\ (6.3.17)"]\\\alpha_*G\arrow[rr,equal]&&\alpha_*G.
+\end{tikzcd}\]
+更具体地说，若 $G$ 为 $S$ 上 fppf \Term{sheaf}{层}，\Term{restriction}{限制}到\Term{etale}{平展}\Term{site}{景}后得到\Term{etale}{平展}\Term{sheaf}{层} $\alpha_*G$，$u$ 是\Term{inverse-image}{逆像} $f_{\text{ét}}^*(\alpha_*G)$ 的\Term{proper}{固有}\Term{support}{支集}\Term{section}{截面}，其在 $f^*G$ 中的像为 $u_1$，则 $\operatorname{Tr}_f(u)$（6.2.3 意义）与 $\operatorname{Tr}_f(u_1)$（6.2.17 意义）在 $G(S)$ 中相等。
+\textbf{例 6.3.18。} 设 $f:S'\to S$ 是\Term{finite}{有限}\Term{locally-free}{局部自由}、秩为 $n$ 的\Term{morphism}{态射}，$u\in\Gamma(S',\mathcal O_{S'})=\operatorname{Hom}_S(S',\mathbb E_S^1)$。\Term{morphism}{态射} $u$ 定义\Term{morphism}{态射}
+\[\operatorname{Sym}(u):\operatorname{Sym}_S^n(S')\longrightarrow\operatorname{Sym}_S^n(\mathbb E_S^1)=\operatorname{Spec}(S[\sigma_1,\ldots,\sigma_n]),\]
+\SourcePage{286}
+其中 $\sigma_i$ 为初等\Term{symmetric-function}{对称函数}（参见 BOURBAKI，《\Term{algebra}{代数}》5，附录 I，第 2 节）。一个留给读者的简单计算给出
+\[[\operatorname{Sym}(u)\circ t]^*(\sigma_i)=\sigma_i(u),\tag{6.3.18.1}\]
+其中 $t\in\Gamma(\operatorname{Sym}_S^n(S')/S)$ 是\Term{canonical}{典范}元素（6.3.4.3），$\sigma_i(u)$ 表示 $f_*\mathcal O_{S'}$ 上乘以 $u$ 的\Term{characteristic}{特征}多项式的第 $i$ 个系数。由此，映射
+\[G_a(S')\longrightarrow G_a(S),\qquad G_m(S')\longrightarrow G_m(S)\]
+中的“迹”分别为通常的迹和\Term{norm}{范数}；事实上，由 $\mathbb E_S^1$ 的加法（分别为乘法）定义的\Term{morphism}{态射} $\operatorname{Sym}_S^n(\mathbb E_S^1)\to\mathbb E_S^1$，由 $\operatorname{Sym}_S^n(\mathbb E_S^1)\simeq\operatorname{Spec}(S[\sigma_1,\ldots,\sigma_n])$ 上的函数 $\sigma_1$（分别为 $\sigma_n$）给出。
+因此由 (6.3.17.1)，当 $n$ 在 $S$ 上\Term{invertible}{可逆}时，下列\Term{etale}{平展}\Term{sheaf}{层}图交换：
+\[\begin{tikzcd}[column sep=small]0\arrow[r]&f_*\mu_n\arrow[r]\arrow[d,"\operatorname{Tr}_f\ (6.2.3)"']&f_*G_m\arrow[r]\arrow[d,"N_f"]&f_*G_m\arrow[r]\arrow[d,"N_f"]&0\\0\arrow[r]&\mu_n\arrow[r]&G_m\arrow[r]&G_m\arrow[r]&0.\end{tikzcd}\tag{6.3.18.2}\]
+\begin{SGAresult}{命题}{6.3.19}
+设有交换三角形 $X\xrightarrow{u}Y\xrightarrow{q}S$（复合为 $p$），其中 $X,Y$ 是 $S$ 上\Term{smooth}{光滑}、\Term{quasi-projective}{拟射影}曲线，$u$ 是\Term{quasi-finite}{拟有限}\Term{morphism}{态射}。
+(i) 若 $D$ 是 $X$ 上在 $S$ 上\Term{finite}{有限}的\Term{divisor}{除子}（见原书第 192 页脚注），$g$ 为 $G_Y$ 在 $Y$ 上的\Term{section}{截面}，则
+\[\operatorname{Tr}_{D/S}(u^*g)=\operatorname{Tr}_{(u_*D)/S}(g).\]
+(ii) 若 $E$ 是 $Y$ 上在 $S$ 上\Term{finite}{有限}的\Term{divisor}{除子}，$g$ 为 $G_X$ 在 $X$ 上的\Term{section}{截面}，且 $u$ \Term{finite}{有限}，则
+\[\operatorname{Tr}_{E/S}(\operatorname{Tr}_{X/Y}(g))=\operatorname{Tr}_{u^*E/S}(G).\]
+\end{SGAresult}
+\SourcePage{287}
+\begin{proof}
+(i) 设 $g_n$ 为由 $g$ \Term{derive}{导出}的 $\operatorname{Sym}_S^n(Y)$ 上 $G$ 的\Term{section}{截面}（6.3.13）。由 6.3.12，
+\[\begin{aligned}\operatorname{Tr}_{D/S}(u^*g)&\overset{\mathrm{def}}=\sigma(D)^*(u^*g)_n=\sigma(D)^*(u^*g_n)\\&=(u\circ\sigma(D))^*(g_n)=\sigma(u_*D)^*(g_n)=\operatorname{Tr}_{u_*D}(g_n).\end{aligned}\]
+(ii) 公式 (ii) 由 6.3.15 (ii)、(v) 得出：
+\[\operatorname{Tr}_{E/S}(\operatorname{Tr}_{X/Y}(g))=\operatorname{Tr}_{E/S}(\operatorname{Tr}_{u^*E/E}(g))=\operatorname{Tr}_{u^*E/S}(g).\]
+\end{proof}
+\textbf{应用 3：\Term{torsor}{挠子}的迹}
+\textbf{6.3.20。} 设 $G$ 是 $S$ 的大 fppf \Term{site}{景}上满足 (6.3.13.1) 的\Term{sheaf}{层}。设 $u:X\to Y$ 是 $S$-\Term{scheme}{概形}间的\Term{finite}{有限}\Term{locally-free}{局部自由}\Term{morphism}{态射}，$K$ 是 $X$ 上的 $G_X$-\Term{torsor}{挠子}。假设 $K$ 在 $Y$ 上 fppf \Term{local-scheme}{局部}地平凡。当 $K$ 在\Term{etale}{平展}\Term{topology}{拓扑}下\Term{locally-trivial}{局部平凡}时即是如此。
+\begin{SGAresult}{命题}{6.3.21}
+在 6.3.20 的假设下，在唯一\Term{isomorphism}{同构}意义下，恰有一个 $Y$ 上的 $G_Y$-\Term{torsor}{挠子} $\operatorname{Tr}_u(K)$，带有\Term{morphism}{态射} $\operatorname{Tr}_u$ 或 $\operatorname{Tr}_u^K:u_*K\to\operatorname{Tr}_u(K)$，使对 $Y$ 上 $G$ 的 fppf \Term{local-scheme}{局部}\Term{section}{截面} $g$ 和 $u_*K$ 的\Term{local-scheme}{局部}\Term{section}{截面} $k$ 有
+\[\operatorname{Tr}_u^K(gk)=\operatorname{Tr}_u(g)\operatorname{Tr}_u(k).\]
+\end{SGAresult}
+问题在 $Y$ 上是\Term{local-scheme}{局部}的，故可设 $K$ 平凡，即 $K=G_X$。取 $\operatorname{Tr}_u(K)=G_Y$，并取 (6.3.13.2) 为\Term{trace-morphism}{迹态射}，便得到一个解。容易验证这是唯一解。
+特别地，当 $G$ 满足下述条件时，迹\Term{functor}{函子} 6.3.20 有定义：
+\textbf{6.3.21.1。} 对任意 $S$-\Term{scheme}{概形} $X$，$X$ 上每个 $G_X$-\Term{torsor}{挠子}在\Term{etale}{平展}\Term{topology}{拓扑}下\Term{locally-trivial}{局部平凡}。——$G$ 为\Term{smooth}{光滑}群、$G$ 为 $S$ 的小\Term{etale}{平展}\Term{site}{景}上某个\Term{sheaf}{层}的\Term{inverse-image}{逆像}，或 $G$ 由 $S$ 上\Term{quasi-coherent}{拟凝聚}\Term{sheaf}{层}定义时，此条件均成立。
+由构造，
+\[\operatorname{Tr}_u(K)=u_*(K)\mathbin{\wedge}^{u_*G_X}G_Y.\tag{6.3.21.2}\]
+\textbf{6.3.22。} 为在更一般的假设下定义迹\Term{functor}{函子}，关键在于：对 $S$-\Term{scheme}{概形}间\Term{quasi-projective}{拟射影}、\Term{flat}{平坦}、\Term{finite-presentation}{有限表示}\Term{morphism}{态射} $f:X\to T$，定义从 $X$ 上 $G_X$-\Term{torsor}{挠子}到 $Z=\operatorname{Sym}_T^n(X)$ 上 $G_Z$-\Term{torsor}{挠子}的合理\Term{functor}{函子} $K\mapsto K_n$。以 $f_n$ 表示 $\operatorname{Sym}_T^n(X)$ 到 $T$ 的\Term{projection}{投影}，首先有如下引理，其证明与 6.3.21 相同。
+\SourcePage{288}
+\begin{SGAresult}{引理}{6.3.22.1}
+沿用上述记号，若\Term{torsor}{挠子} $K$ 在 $T$ 上\Term{local-scheme}{局部}地平凡，则在唯一\Term{isomorphism}{同构}意义下，恰有一个 $\operatorname{Sym}_T^n(X)$ 上的\Term{torsor}{挠子} $K_n$，带有\Term{morphism}{态射} $\alpha:f_*K\to f_{n*}(K_n)$，使对 $f_*G_X$ 的 fppf \Term{local-scheme}{局部}\Term{section}{截面} $g$ 和 $u_*K$ 的\Term{local-scheme}{局部}\Term{section}{截面} $k$ 有 $\alpha(gk)=g_n\circ\alpha(k)$（$g_n$ 采用 6.3.13 的记号；这里定义 $g_n$ 用到\Term{flat}{平坦}性等假设）。
+\end{SGAresult}
+一般情形将通过略显繁琐的\Term{descent}{下降}处理。首先：
+\begin{SGAresult}{命题}{6.3.23}
+设有\Term{commutative-diagram}{交换图}
+\[\begin{tikzcd}X\arrow[rr,"u"]\arrow[dr]&&Y\arrow[dl]\\&T&\end{tikzcd}\tag{6.3.23.1}\]
+其中各\Term{object}{对象}为\Term{flat}{平坦}、\Term{finite-presentation}{有限表示}、\Term{quasi-projective}{拟射影}的 $T$-\Term{scheme}{概形}，$u$ \Term{etale}{平展}且\Term{surjectivity}{满射}。则各\Term{scheme}{概形} $\operatorname{Sym}_T^n((X/Y)^{k+1})$ 构成的\Term{semisimple}{半单}纯系统，是\Term{scheme}{概形} $\operatorname{Sym}_T^n(Y)$ 在\Term{etale}{平展}\Term{topology}{拓扑}下的一个\Term{hypercovering}{超覆盖}。
+\end{SGAresult}
+\begin{proof}
+a) 要用到如下辅助结果。
+\textbf{6.3.22.2。} 设 $(X,Y,T)$ 如上，$t\in T$，$Z$ 是\Term{finite}{有限}多个 $T$-\Term{scheme}{概形} $\operatorname{Spec}(k_i)$ 之和，其中 $k_i$ 为 $k_t$ 的\Term{finite-extension}{有限扩张}。设有 $T$-\Term{scheme}{概形}的\Term{commutative-diagram}{交换图}
+\[\begin{tikzcd}&Z\arrow[dl,"x"']\arrow[dr,"y"]&\\X_t\arrow[rr,"u"']&&Y_t,\end{tikzcd}\tag{6.3.23.3}\]
+其中 $x,y$ 为\Term{closed-immersion}{闭浸入}。设 $z\in\operatorname{Sym}_T^n(Z)$，$x(Z),y(Z)$ 为它在 $\operatorname{Sym}_T^n(X),\operatorname{Sym}_T^n(Y)$ 中的像。则 $\operatorname{Sym}_T^n(u)$ 在 $x(Z)$ 处\Term{etale}{平展}。
+\Term{scheme}{概形} $\operatorname{Sym}_T^n(X)$ 的构造与任意\Term{base-change}{基变换} $S'\to S$ 相容（5.5.2.7）。\Term{reduced}{约化}到\Term{noetherian}{诺特}情形，得到它在 $S$ 上\Term{finite-presentation}{有限表示}；此外它在 $S$ 上\Term{flat}{平坦}（5.5.2.4）。利用逐\Term{fiber}{纤维}\Term{flat}{平坦}性判别法，为证明 (6.3.23.2)，可设 $S$ 为域的谱。$\operatorname{Sym}_T^n(X)$ 在 $Z$ 处的\Term{completion}{完备化}，其\Term{affine-algebra}{仿射代数}为各 $\operatorname{Sym}_T^n(Z_k)$ 的\Term{affine-algebra}{仿射代数}在 $x(z)$ 处\Term{localization}{局部化}后的\Term{inverse-limit}{投射极限}，其中 $Z_k$ 是 $Z$ 在 $X$ 中的\Term{infinitesimal-neighborhood}{无穷小邻域}。由假设，$u$ 在 $Z$ 于 $X$ 和 $Y$ 中的\Term{infinitesimal-neighborhood}{无穷小邻域}之间\Term{induction-isomorphism}{诱导同构}。因此 $\operatorname{Sym}_T^n(u)$ 在 $x(z),y(z)$ 处的\Term{completion}{完备化}是\Term{isomorphism}{同构}，证明了 (6.3.23.2)。
+由 6.3.23.2，$\operatorname{Sym}_T^n(Y)$ 在各 $y(z)$ 处的 Hensel 化（$z\in\operatorname{Sym}_T^n(Z)$）之和，只依赖于 $Z$ 和 $T$-\Term{scheme}{概形} $X_Z^h$，后者是 $X$ 在 $Z$ 的各点处的 Hensel 化之和。
+\SourcePage{289}
+将此\Term{scheme}{概形}记为 $\operatorname{Sym}_T^{h\,n}(X_Z^h)$；它对 $X_Z^h$ 具有\Term{functorial}{函子性}。
+b) 取\Term{limit}{极限}后，为证明 6.3.23，只需证明：对 $\operatorname{Sym}_T^n(Y)$ 中在其\Term{fiber}{纤维}内闭的点 $y$，将单纯\Term{scheme}{概形} $\operatorname{Sym}_T^n((X/Y)^{k+1})$ 拉回到 $\operatorname{Sym}_T^n(Y)$ 在 $y$ 处的 Hensel 化，得到\Term{etale}{平展}\Term{topology}{拓扑}的\Term{hypercovering}{超覆盖}。此问题在 $T$ 上对\Term{etale}{平展}\Term{topology}{拓扑}\Term{local-scheme}{局部}；因此可\Term{reduced}{约化}到存在图 (6.3.23.3) 且 $y=x(Z)$ 的情形（用 $k_t$ 的一个\Term{separable-extension}{可分扩张}消去\Term{residue-extension}{剩余扩张}）。所考虑的\Term{semisimple}{半单}纯系统由下列系统经\Term{base-change}{基变换}得到：
+\[\operatorname{Sym}_T^{h\,n}((X_{u^{-1}(Z)}^h/Y_Z^h)^{k+1}),\qquad\text{增广至 }\operatorname{Sym}_T^{h\,n}(Y_Z^h).\]
+故只需考虑后者。\Term{semisimple}{半单}纯系统 $(X_{u^{-1}(Z)}^h/Y_Z^h)^{k+1}$ 与常值系统 $Y_Z^h$ \Term{semisimple}{半单}纯\Term{homotopy}{同伦}，因为 $X_{u^{-1}(Z)}^h/Y_Z^h$ 有\Term{section}{截面}。因此 $\operatorname{Sym}_T^{h\,n}((X_{u^{-1}(Z)}^h/Y_Z^h)^{h+1})$ 也与 $\operatorname{Sym}_T^{h\,n}(Y_Z^h)$ \Term{homotopy}{同伦}，特别地是它的\Term{hypercovering}{超覆盖}。这证明 6.3.2.3。
+\end{proof}
+\textbf{6.3.24。} 设 $f:Y\to T$ 是 $S$-\Term{scheme}{概形}间\Term{quasi-projective}{拟射影}、\Term{flat}{平坦}、\Term{finite-presentation}{有限表示}\Term{morphism}{态射}，$K$ 为 $Y$ 上 $G_Y$-\Term{torsor}{挠子}。考虑下述问题：
+\textbf{6.3.24.0。} 对每个\Term{morphism}{态射} $u:X\to Y$（$X$ 在 $T$ 上\Term{quasi-projective}{拟射影}、\Term{flat}{平坦}、\Term{finite-presentation}{有限表示}）定义 $\operatorname{Sym}_T^n(X)$ 上的\Term{torsor}{挠子} $(u^*K)_n$；对每个 $v:X'\to X$ 定义\Term{isomorphism}{同构} $c_v:(v^*u^*K)_n\simeq\operatorname{Sym}_T^n(v)^*K_n$，使得：
+(i) 各\Term{isomorphism}{同构} $c_v$ 与复合相容；
+(ii) 若 $u^*K$ 在 $T$ 上\Term{locally-trivial}{局部平凡}，则得到 6.3.22.1 的\Term{torsor}{挠子}及其变性。
+由 6.3.23，对从 $K$ 经 6.3.24.0 所考虑的\Term{inverse-image}{逆像}得到的任意\Term{torsor}{挠子}，问题 6.3.24.0 的解的存在唯一性，是 $Y$ 上\Term{etale}{平展}\Term{topology}{拓扑}的\Term{local-scheme}{局部}问题。特别地，若 $G$ 满足 (6.3.21.1)，则问题有唯一解。
+现在假设 $G$ 满足：
+\textbf{6.3.24.1。} 对任意整数 $n$ 以及\Term{affine}{仿射} $S$-\Term{scheme}{概形}的任意交换三角形 $X\xrightarrow{u}Y\xrightarrow{g}T$（复合为 $f$），若 $f,g$ \Term{flat}{平坦}且\Term{finite-presentation}{有限表示}，$u$ \Term{finite}{有限}\Term{locally-free}{局部自由}且\Term{surjectivity}{满射}，则\Term{augmentation}{增广}至 $\operatorname{Sym}_T^n(Y)$ 的\Term{truncation}{截断}\Term{semisimple}{半单}纯\Term{scheme}{概形} $(\operatorname{Sym}_T^n((X/Y)^{k+1}))_{0\le k\le2}$ 对 $G$-\Term{torsor}{挠子}\Term{category}{范畴}是\Term{descent}{下降}的（GIRAUD [1]）。
+\SourcePage{290}
+\textbf{6.3.24.1 bis。} 由 6.3.23 按标准方式可知，条件 (6.3.24.1) 蕴涵如下类似条件：只假设 $f,g$ \Term{flat}{平坦}、\Term{finite-presentation}{有限表示}、\Term{quasi-projective}{拟射影}，$u$ \Term{flat}{平坦}且\Term{surjectivity}{满射}。事实上，在\Term{etale}{平展}\Term{topology}{拓扑}下\Term{local-scheme}{局部}地，$u$ 有\Term{finite}{有限}\Term{locally-free}{局部自由}的拟\Term{section}{截面}，再对一个形成\Term{descent}{下降}数据方块的图应用 6.3.23 和 GIRAUD [1] 即可。
+给定在 $T$ 上\Term{quasi-projective}{拟射影}、\Term{flat}{平坦}、\Term{finite-presentation}{有限表示}的\Term{scheme}{概形} $Y$ 上的 $G_Y$-\Term{torsor}{挠子} $K$，按定义存在\Term{faithfully-flat}{忠实平坦}、\Term{finite-presentation}{有限表示}\Term{morphism}{态射} $u:X\to Y$，使 $u^*K$ 平凡。若 $u_i$ 表示 $(X/Y)^{i+1}$ 到 $Y$ 的\Term{projection}{投影}（$i\ge0$），则 $\operatorname{Sym}_T^n((X/Y)^{i+1})$ 上的\Term{torsor}{挠子} $(u_i^*K)_n$（6.3.22.1）构成这个\Term{augmentation}{增广}至 $\operatorname{Sym}_T^n(Y)$ 的\Term{semisimple}{半单}纯\Term{scheme}{概形}上的\Term{descent}{下降}数据（$i=0,1,2$）。假设 $G$ 满足：
+\textbf{6.3.24.2。} 上述构造的所有\Term{descent}{下降}数据均\Term{effective}{有效}（参见 6.3.24.1）。
+此时，以 $K_n$ 表示由该\Term{descent}{下降}数据定义的 $\operatorname{Sym}_T^n(Y)$ 上\Term{torsor}{挠子}（在唯一\Term{isomorphism}{同构}意义下确定）。
+\textbf{6.3.25。} 假设 $G$ 满足 (6.3.21.1)，或满足 (6.3.24.1)、(6.3.24.2)。将下列公式汇编的确切含义及验证留给读者。
+\textbf{6.3.25.1。\Term{base-change}{基变换}。} 设有\Term{commutative-square}{交换方块}
+\[\begin{tikzcd}X'\arrow[r,"g'"]\arrow[d,"f'"']&X\arrow[d,"f"]\\T'\arrow[r,"g"']&T.\end{tikzcd}\]
+以 $g'_n$ 表示从 $\operatorname{Sym}_{T'}^n(X')$ 到 $\operatorname{Sym}_T^n(X)$ 的\Term{arrow}{箭头}。对 $X$ 上 $G$-\Term{torsor}{挠子} $K$，有
+\[g_n'^*K_n\simeq(g'^*K)_n.\]
+现在设 $f:X\to T$，$K$ 为 $X$ 上的 $G_X$-\Term{torsor}{挠子}。
+\textbf{6.3.25.2。群的变换。} 设 $r:G_1\to G_2$ 是两个均满足 (6.3.21.1) 或 (6.3.24.1)、(6.3.24.2) 的群之间的\Term{morphism}{态射}。有
+\[r(K_n)\simeq r(K)_n.\]
+\textbf{6.3.25.3。对 $K$ 的可\Term{additive}{加性}。} 有
+\[(K'+K'')_n\simeq K'_n+K''_n.\]
+\textbf{6.3.25.4。对 $n$ 的可\Term{additive}{加性}。} 设 $n_1,n_2$ 为两个整数，$n=n_1+n_2$，
+\[\alpha:\operatorname{Sym}_T^{n_1}(X)\times_T\operatorname{Sym}_T^{n_2}(X)\longrightarrow\operatorname{Sym}_T^n(X)\]
+\SourcePage{291}
+为\Term{canonical}{典范}\Term{arrow}{箭头}，则
+\[d^*K_n\simeq\operatorname{pr}_1^*K_{n_1}+\operatorname{pr}_2^*K_{n_2}.\]
+\textbf{6.3.25.5。对 $n$ 的乘法性。} 设 $n,m$ 为两个整数，$\alpha$ 为从 $\operatorname{Sym}_T^n(\operatorname{Sym}_T^m(X))$ 到 $\operatorname{Sym}_T^{nm}(X)$ 的\Term{canonical}{典范}\Term{arrow}{箭头}（参见 6.3.3）。有
+\[\alpha^*(K_{nm})\simeq(K_m)_n.\]
+\textbf{6.3.26。} 假设 $G$ 满足 (6.3.21.1)，或满足 (6.3.24.1)、(6.3.24.2)。若 $f:X\to T$ 是 $S$-\Term{scheme}{概形}间\Term{finite}{有限}\Term{locally-free}{局部自由}、秩为 $n$ 的\Term{morphism}{态射}，$t$ 为 $\operatorname{Sym}_T^n(X)$ 的\Term{section}{截面}（6.3.4.3），$K$ 是 $X$ 上的 $G_X$-\Term{torsor}{挠子}，则用下式定义 $T$ 上的 $G_T$-\Term{torsor}{挠子} $\operatorname{Tr}_f(K)$：
+\[\operatorname{Tr}_f(K)=t^*(K_n).\tag{6.3.26.1}\]
+若 $f$ \Term{locally-free}{局部自由}，则在 $T$ 上\Term{local-scheme}{局部}地用同一公式定义 $\operatorname{Tr}_f(K)$。通过一个\Term{canonical}{典范}且具有\Term{functorial}{函子性}的\Term{isomorphism}{同构}，此定义在共同适用范围内\Term{equivalence}{等价}于定义 6.3.21（定义 6.3.21 给出所提出的\Term{descent}{下降}问题的一个解）。立即由 (6.3.25.1)、(6.3.25.2)、(6.3.25.3) 得到：\Term{functor}{函子} $\operatorname{Tr}_f$ 与\Term{base-change}{基变换} $T'\to T$、群的变换 $r:G_1\to G_2$ 以及\Term{torsor}{挠子}的加法相容。
+图 (6.3.15.2) 外框的交换性以及 (6.3.25.1)、(6.3.25.4) 给出与\Term{morphism}{态射}复合的相容性：
+\[\operatorname{Tr}_{fg}(K)\simeq\operatorname{Tr}_f(\operatorname{Tr}_g(K)).\]
+\textbf{6.3.27。} 对相对曲线的特殊情形，还有：
+\begin{SGAresult}{构造}{6.3.27.1}
+若 $f:X\to S$ 是 $S$ 上\Term{smooth}{光滑}、\Term{quasi-projective}{拟射影}曲线，$D_1,D_2$ 为两个在 $S$ 上\Term{finite}{有限}的\Term{relative-divisor}{相对除子}，$K$ 为 $X$ 上 $G$-\Term{torsor}{挠子}，则置 $\operatorname{Tr}_{D/S}(K)=\operatorname{Tr}_{D/S}(K|D)$，有\Term{canonical-isomorphism}{典范同构}
+\[\operatorname{Tr}_{D_1+D_2}(K)\simeq\operatorname{Tr}_{D_1}(K)+\operatorname{Tr}_{D_2}(K).\]
+\end{SGAresult}
+此\Term{isomorphism}{同构}立即由 (6.3.25.4) 的\Term{isomorphism}{同构}及 6.3.9.1 得出。最后，6.3.19 的论证还给出：
+\begin{SGAresult}{构造}{6.3.27.2}
+设有交换三角形 $X\xrightarrow{u}Y\xrightarrow{q}S$（复合为 $p$），其中 $X,Y$ 是 $S$ 上\Term{smooth}{光滑}、\Term{quasi-projective}{拟射影}曲线，$u$ 为
+\SourcePage{292}
+\Term{quasi-finite}{拟有限}\Term{morphism}{态射}。
+(i) 若 $D$ 为 $X$ 上在 $S$ 上\Term{finite}{有限}的\Term{divisor}{除子}，$K$ 为 $Y$ 上 $G$-\Term{torsor}{挠子}，则（参见原书第 192 页脚注）
+\[\operatorname{Tr}_{D/S}(u^*K)\simeq\operatorname{Tr}_{(u_*D)/S}(K).\]
+(ii) 若 $E$ 为 $Y$ 上在 $S$ 上\Term{finite}{有限}的\Term{divisor}{除子}，$K$ 为 $X$ 上 $G$-\Term{torsor}{挠子}，且 $u$ \Term{finite}{有限}，则
+\[\operatorname{Tr}_{E/S}(\operatorname{Tr}_{X/Y}(K))\simeq\operatorname{Tr}_{u^*E/S}(K).\]
+\end{SGAresult}
+\begin{SGAresult}{命题}{6.3.28}
+设 $A,B$ 为两个（交换）$R$-\Term{algebra}{代数}，$u:A\to B$ 是\Term{homomorphism}{同态}，使 $B$ 为\Term{finite-type}{有限型}、\Term{locally-free}{局部自由}且忠实的 $A$-模。则\Term{semisimple}{半单}纯\Term{algebra}{代数}\Term{complex}{复形} $(\operatorname{TS}_R^n(B^{\otimes_A(k+1)}))_{k\ge0}$，作为\Term{differential}{微分}\Term{semisimple}{半单}纯 $\operatorname{TS}_R^n(A)$-模，是 $\operatorname{TS}_R^n(A)$ 的\Term{splitting}{分裂}\Term{resolution}{消解}。
+\end{SGAresult}
+\begin{proof}
+与\Term{semisimple}{半单}纯模 $\operatorname{TS}_R^n(B^{\otimes_A(k+1)})$ 关联的模\Term{complex}{复形}，只依赖于带有模\Term{homomorphism}{同态} $u:A\to B$ 的 $A$-模 $B$。作为 $A$-模，$B$ 可写成 $B=A\oplus L$，从而可明确写出一个\Term{homotopy-operator}{同伦算子}。
+\end{proof}
+回忆：
+\begin{SGAresult}{命题}{6.3.29}
+设 $A$ 为环，$B^*$ 为余\Term{semisimple}{半单}纯 $A$-\Term{algebra}{代数}，$c:A\to B^*$ 为\Term{structural-morphism}{结构态射}。为了使模的\Term{inverse-image-functor}{逆像函子}（即标量\Term{group-extension}{扩张}）$\varepsilon^*$ 忠实（分别为\Term{fully-faithful}{全忠实}），只需 $A$-模序列
+\[0\longrightarrow A\longrightarrow B^0\]
+（分别为 $0\to A\to B^0\xrightarrow{j_0-j_1}B^1$）\Term{exact}{正合}，并在与任意 $A$-模作\Term{tensor-product}{张量积}后仍\Term{exact}{正合}。
+\end{SGAresult}
+证明显然，留给读者。由 (6.3.28)、(6.3.29) 按标准方式推出：
+\begin{SGAresult}{推论}{6.3.30}
+每个\Term{affine}{仿射}群 $G$ 均满足条件 (6.3.24.1)。
+\end{SGAresult}
+（利用 $G$-\Term{torsor}{挠子}可由 $T$ 上的\Term{affine}{仿射}\Term{scheme}{概形}表示这一事实。）
+将 6.3.30 推广到任何可由\Term{algebraic-space}{代数空间}\footnote{M. ARTIN，\emph{Algebraic Spaces}，Yale University，Whittemore Lectures，1969 年 5 月。}表示的群 $G$ 应当不难。我猜想，每个可由\Term{flat}{平坦}\Term{algebraic-space}{代数空间}表示的群都满足条件 (6.3.24.2)。有下述颇为繁琐的断言：
+\SourcePage{293}
+\begin{SGAresult}{命题}{6.3.31}
+设有 $S$ 上的\Term{exact-sequence}{正合列}
+\[0\longrightarrow G\xrightarrow{r}G'\xrightarrow{u}H\longrightarrow0.\]
+假设 $G'$ 与 $H$（因而 $G$）满足 (6.3.13.1)，$G'$ 满足 (6.3.21.1)，且 $G$ 满足 (6.3.24.1)。则 $G$ 满足 (6.3.24.2)。
+\end{SGAresult}
+例如，这适用于\Term{representable-functor}{可表示}的\Term{smooth}{光滑}群之间一个\Term{epimorphism}{满态射}的核所给出的\Term{affine}{仿射}群。
+\begin{proof}[6.3.31 的证明]
+设 $K$ 为 $X$ 上 $G$-\Term{torsor}{挠子}。由 6.3.23，问题在 $X$ 上对\Term{etale}{平展}\Term{topology}{拓扑}\Term{local-scheme}{局部}，因此只需处理 $r(K)$ 平凡的情形。满足 $r(K)$ 平凡的 $G$-\Term{torsor}{挠子} $K$，等同于带有\Term{isomorphism}{同构} $k:H\xrightarrow{\sim}u(K')$ 的平凡 $G'$-\Term{torsor}{挠子} $K'$。置 $Z=\operatorname{Sym}_T^n(X)$。平凡\Term{torsor}{挠子}的\Term{morphism}{态射} $k$ 诱导 $k_n:H_Z\xrightarrow{\sim}u(K'_n)$，而 $\operatorname{Sym}^n(X)$ 上相应的 $G$-\Term{torsor}{挠子}表示所考虑的\Term{descent}{下降}数据。
+\end{proof}

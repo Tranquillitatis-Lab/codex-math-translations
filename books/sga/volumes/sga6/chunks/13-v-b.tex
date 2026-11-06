@@ -1,0 +1,641 @@
+\SourcePage{334}
+\SGAsection{3}{$\gamma$ 运算}
+仍在\Term{category}{范畴} $\mathscr C_0$ 上讨论。
+
+\textbf{3.1。} 设 $K$ 是一个\Term{lambda-ring}{$\lambda$-环}。我们将从 $K$ 的运算 $\lambda^i$ 定义一些新运算，记作 $\gamma^i$。它们的用途是在稍后说明的条件下引入\Term{chern-class}{Chern 类}的概念。现在先为下面的定义提供一个“理由”：若 $E$ 是\Term{rank}{秩}为 $d$ 的\Term{vector-bundle}{向量丛}，那么无论采用哪一种\Term{chern-class}{Chern 类}理论，$E$ 的第 $d$ 个\Term{chern-class}{Chern 类}都应当是“$E$ 的\Term{exterior-power}{外幂}的\Term{alternating-sum}{交错和}”。
+\SourcePage{335}
+为了定义第 $n$ 个\Term{chern-class}{Chern 类}，我们将采用类似的方式：考虑 $(\operatorname{cl}(E)-d)+n$，将 $E$ 化到\Term{rank}{秩} $n$，然后取所得元素的\Term{exterior-power}{外幂}的\Term{alternating-sum}{交错和}。在下面的命题中令 $x=\operatorname{cl}(E)-d$，便可作出上述“解释”。
+
+\begin{SGAresult}{命题}{3.2}
+设 $K$ 是一个\Term{lambda-ring}{$\lambda$-环}。
+\begin{enumerate}
+\item[i)] 对每个 $x\in K$ 及每个 $n\in\mathbb N$，有
+\[
+\lambda^n(x+n-1)=(-1)^n\sum_{i=0}^n(-1)^i\lambda^i(x+n).
+\]
+\item[ii)] 若令
+\[
+\gamma^n(x)=\lambda^n(x+n-1),\qquad
+\gamma_t(x)=\sum_{n\geqslant0}\gamma^n(x)t^n,
+\]
+则
+\[
+\gamma_t(x)=\lambda_{t/(1-t)}(x),\qquad\text{从而}\qquad
+\lambda_t(x)=\gamma_{t/(1+t)}(x).
+\]
+\end{enumerate}
+因此，知道 $\gamma$ 运算与知道 $\lambda$ 运算是\Term{equivalence}{等价}的。
+\end{SGAresult}
+\begin{proof}
+i) 有
+\[
+\lambda^n(x+n-1)=\sum_{i=0}^n\lambda^i(x+n)\lambda^{n-i}(-1).
+\]
+由 $\lambda_t(1)=1+t$，得到 $\lambda_t(-1)=1/(1+t)$，从而 $\lambda^k(-1)=(-1)^k$，这就给出所求关系。
+
+ ii) 有
+\[
+\lambda_{t/(1-t)}(x)=\sum_{n\geqslant0}\lambda^n(x)t^n(1-t)^{-n}.
+\]
+展开得
+\[
+t^n(1-t)^{-n}=t^n\sum_{k\geqslant0}\binom{-n}{k}(-1)^kt^k
+=\sum_{p\geqslant n}\binom{p-1}{p-n}t^p,
+\]
+因而
+\[
+\lambda_{t/(1-t)}(x)
+=\sum_{n\geqslant0}\left[\lambda^n(x)\sum_{p\geqslant n}\binom{p-1}{p-n}t^p\right].
+\]
+所以 $t^p$ 的系数为
+\[
+\sum_{n=0}^p\lambda^n(x)\binom{p-1}{p-n}
+=\sum_{n=0}^p\lambda^n(x)\lambda^{p-n}(p-1)
+=\lambda^p(x+p-1).
+\]
+\end{proof}
+
+\SourcePage{336}
+\textbf{3.3。} 设 $K,K'$ 是两个\Term{lambda-ring}{$\lambda$-环}，$f:K\longrightarrow K'$ 是\Term{ring-homomorphism}{环同态}。由定义 3.2 ii)，$f$ 是\Term{lambda-homomorphism}{$\lambda$-同态}，当且仅当对每个 $i\in\mathbb N$ 和每个 $x\in K$，有
+\[
+f(\gamma^i(x))=\gamma^i(f(x)),
+\]
+亦即
+\[
+\gamma_t(f(x))=\widehat G(f)\gamma_t(x).
+\]
+
+\textbf{3.4。} 由关系 3.2 ii)，得到
+\[
+\gamma^0(x)=1,\qquad\gamma^1(x)=x,\qquad
+\gamma^n(x+y)=\sum_{p+q=n}\gamma^p(x)\gamma^q(y).
+\tag{3.4.1}
+\]
+这说明\Term{homomorphism}{同态} $\gamma_t$ 在 $K$ 上定义了一个新的\Term{pre-lambda-ring}{预 $\lambda$-环}结构；我们将看到，这通常并非\Term{lambda-ring}{$\lambda$-环}结构。若记 $\rho_t$ 为系数在 $K$ 中的\Term{formal-power-series}{形式幂级数}环上的代换，由 $\rho_t(t)=t/(1-t)$ 定义，则
+\[
+\gamma_t=\rho\circ\lambda_t.
+\]
+\Term{automorphism}{自同构} $\rho_t$ 关于 $K$ 具有\Term{functoriality}{函子性}，因而定义了\Term{functor}{函子} $\widehat G$ 的一个\Term{automorphism}{自同构}，这里将 $\widehat G$ 看作取值于\Term{abelian-group}{阿贝尔群}的\Term{functor}{函子}。借助这个\Term{automorphism}{自同构}，可通过\Term{transport-of-structure}{结构搬运}在 $\widehat G$ 上定义一个新的取值于\Term{lambda-ring}{$\lambda$-环}的\Term{functor}{函子}结构，使得对每个\Term{lambda-ring}{$\lambda$-环} $K$，\Term{homomorphism}{同态} $\gamma_t:K\longrightarrow\widehat G(K)$ 都是\Term{lambda-homomorphism}{$\lambda$-同态}。下面把这第二个结构的\Term{multiplication}{乘法}和运算 $\lambda^i$ 明确写出。
+
+\textbf{3.5。} \Term{multiplication}{乘法}由以下\Term{functor-morphism}{函子态射}定义：
+\[
+\widehat G\times\widehat G
+\xrightarrow{(\rho^{-1},\rho^{-1})}\widehat G\times\widehat G
+\xrightarrow{\circ}\widehat G\xrightarrow{\rho}\widehat G,
+\]
+其中 $\circ$ 表示 2.3 中定义的\Term{multiplication}{乘法}。将这一新\Term{multiplication}{乘法}记作 $\nabla$。它仍由其在 $(1+Xt,1+Yt)$ 上的值确定，因而有
+\SourcePage{337}
+\[
+\begin{aligned}
+(1+Xt)\nabla(1+Yt)
+&=\rho\bigl(\rho^{-1}(1+Xt)\circ\rho^{-1}(1+Yt)\bigr)\\
+&=\rho\left(\frac{1+(X+1)t}{1+t}\circ\frac{1+(Y+1)t}{1+t}\right)\\
+&=\rho\left(\frac{(1+(X+1)(Y+1)t)(1+t)}{(1+(X+1)t)(1+(Y+1)t)}\right)\\
+&=\frac{1+(1+X+Y+XY)t}{(1+Xt)(1+Yt)}.
+\end{aligned}
+\tag{3.5.1}
+\]
+因此，若 $K$ 是\Term{lambda-ring}{$\lambda$-环}，则对所有 $x,y\in K$，有
+\[
+\gamma_t(xy)=\gamma_t(x)\nabla\gamma_t(y).
+\tag{3.5.2}
+\]
+将运算法则 $\nabla$ 的第 $n$ 个\Term{universal-polynomial}{泛多项式}记作 $P'_n$；它是 $\mathbb Z[X_i,Y_j]_{1\leqslant i,j\leqslant n}$ 中的\Term{polynomial}{多项式}，其\Term{isobaric-component}{等权分量}相对于全体变量 $X_i,Y_j$ 的权介于 $n$ 与 $2n$ 之间（1.15），并且关于这两组变量\Term{symmetric}{对称}。因此，对 $x,y\in K$ 有
+\[
+n\in\mathbb N,\qquad
+\gamma^n(xy)=P'_n\bigl(\gamma^1(x),\ldots,\gamma^n(x),\gamma^1(y),\ldots,\gamma^n(y)\bigr).
+\tag{3.5.3}
+\]
+最后指出，运算法则 $\nabla$ 有\Term{unit-element}{单位元}，即 $\rho_t(1+t)=1/(1-t)$，有时记作 $1_\nabla$。
+
+\textbf{3.6。} “$\lambda$ 运算”由以下\Term{commutative-diagram}{交换图}定义，并记作 $\lambda'$：
+\[
+\begin{tikzcd}[column sep=large]
+1+K[[t]]^+ \arrow[r,"\lambda_u"] \arrow[d,"\rho_t"'] &
+1+\{1+K[[t]]^+\}[[u]]^+ \arrow[d,"\widehat G(\rho_t)"]\\
+1+K[[t]]^+ \arrow[r,"\lambda'_u"'] &
+1+\{1+K[[t]]^+\}[[u]]^+
+\end{tikzcd}
+\tag{3.6.1}
+\]
+亦即，它们由下列\Term{functor-morphism}{函子态射}的复合给出：
+\[
+\lambda':\widehat G\xrightarrow{\rho_t^{-1}}\widehat G
+\xrightarrow{\lambda_u}\widehat G\circ\widehat G
+\xrightarrow{\widehat G(\rho_t)}\widehat G\circ\widehat G.
+\]
+它们由其在 $1+Xt$ 上的值确定；有
+\SourcePage{338}
+\[
+\begin{aligned}
+\lambda'_u(1+Xt)
+&=\widehat G(\rho_t)\bigl(\lambda_u\rho_t^{-1}(1+Xt)\bigr)\\
+&=\widehat G(\rho_t)\left(\lambda_u\frac{1+(X+1)t}{1+t}\right)\\
+&=\widehat G(\rho_t)\left(\frac{1_\circ+\{1+(X+1)t\}u}{1_\circ+\{1+t\}u}\right)\\
+&=1_\nabla+\frac{\{1+Xt\}u}{1_\nabla+1_\nabla u}\\
+&=\rho_u^{-1}\bigl(1_\nabla+\{1+Xt\}u\bigr).
+\end{aligned}
+\]
+若记 $\gamma'$ 为与运算 $\lambda'$ 相应的 $\gamma$ 运算，则
+\[
+\gamma'_u(1+Xt)=1_\nabla+\{1+Xt\}u.
+\tag{3.6.2}
+\]
+记 $Q'_{i,j}$ 为 $\gamma'^{\,i}(1+\cdots+X_nt^n+\cdots)$ 中 $t^j$ 的系数。读者可以验证，它是 $\mathbb Z[X_1,\ldots,X_{ij}]$ 中的\Term{polynomial}{多项式}，其\Term{isobaric-component}{等权分量}的权介于 $j$ 与 $ij$ 之间。
+
+设 $K$ 是\Term{lambda-ring}{$\lambda$-环}，$x\in K$。由图 (3.6.1)，得到
+\[
+\forall i\in\mathbb N,\qquad
+\gamma_t(\lambda^i(x))=\lambda'^{\,i}(\gamma_t(x));\qquad
+\gamma_t(\gamma^i(x))=\gamma'^{\,i}(\gamma_t(x)).
+\tag{3.6.3}
+\]
+\[
+\gamma^j(\gamma^i(x))=Q'_{i,j}\bigl(\gamma^1(x),\ldots,\gamma^{ij}(x)\bigr).
+\tag{3.6.4}
+\]
+最后注意，刚才在 $\widehat G$ 上定义的\Term{pre-lambda-ring}{预 $\lambda$-环}结构确实是一个\Term{lambda-ring}{$\lambda$-环}结构，因为它由 2.3 中的结构通过\Term{isomorphism}{同构} $\rho$ 得到。
+
+\textbf{3.7。} 为避免混淆，将带有第 2 节（分别为第 3 节）中定义的取值于\Term{lambda-ring}{$\lambda$-环}的\Term{functor}{函子}结构的\Term{functor}{函子} $\widehat G$ 记作 $\widehat G_\circ$（分别为 $\widehat G_\nabla$）。由上面的讨论可知，要在环 $A$ 上给定一个\Term{lambda-ring}{$\lambda$-环}结构，
+\SourcePage{339}
+\Term{equivalence}{等价}于给定一个\Term{ring-homomorphism}{环同态} $A\longrightarrow\widehat G(A)_\circ$，使图 (3.7.1) 交换；也\Term{equivalence}{等价}于给定一个\Term{ring-homomorphism}{环同态} $A\longrightarrow\widehat G(A)_\nabla$，使图 (3.7.2) 交换。前者定义 $\lambda$ 运算，后者定义 $\gamma$ 运算。
+\[
+\begin{tikzcd}[column sep=large]
+A \arrow[r,"\lambda_u"] \arrow[d,"\lambda_t"'] &
+\widehat G^{\,u}(A)_\circ \arrow[d,"{\widehat G^{\,u}(\lambda_t)}"]\\
+\widehat G^{\,t}(A)_\circ \arrow[r,"\lambda_u"'] &
+\widehat G^{\,u}(\widehat G^{\,t}(A)_\circ)_\circ
+\end{tikzcd}
+\tag{3.7.1}
+\]
+\[
+\begin{tikzcd}[column sep=large]
+A \arrow[r,"\gamma_u"] \arrow[d,"\gamma_t"'] &
+\widehat G^{\,u}(A)_\nabla \arrow[d,"{\widehat G^{\,u}(\gamma_t)}"]\\
+\widehat G^{\,t}(A)_\nabla \arrow[r,"\gamma'_u"'] &
+\widehat G^{\,u}(\widehat G^{\,t}(A)_\nabla)_\nabla
+\end{tikzcd}
+\tag{3.7.2}
+\]
+
+\textbf{3.8。} 设 $K$ 是\Term{binomial-ring}{二项式环}（2.7）；由 (2.6.1)，对每个 $x\in K$ 得到
+\[
+\gamma_t(x)=\left(\frac1{1-t}\right)^x
+=\exp\bigl(-x\operatorname{Log}(1-t)\bigr).
+\tag{3.8.1}
+\]
+设 $a$ 是 $K$ 中的元素；按运算法则 $\nabla$ 乘以 $\gamma_t(a)$ 的运算由其在 $1+Xt$ 上的值确定，即
+\[
+\begin{aligned}
+\gamma_t(a)\nabla(1+Xt)
+&=\rho_t\left(\lambda_t(a)\circ\frac{1+(X+1)t}{1+t}\right)\\
+&=\rho_t\left(\left(\frac{1+(X+1)t}{1+t}\right)^a\right).
+\end{aligned}
+\]
+\[
+\gamma_t(a)\nabla(1+Xt)=(1+Xt)^a
+=\exp\bigl(a\operatorname{Log}(1+Xt)\bigr)
+=\sum_{n=0}^{\infty}\binom anX^nt^n.
+\tag{3.8.2}
+\]
+特别地可见，按运算法则 $\nabla$ 乘以 $\gamma_t(a)$ 的运算，其第 $n$ 个\Term{universal-polynomial}{泛多项式}就是\Term{polynomial}{多项式} $R_{n,a}$（2.9）。
+
+\SourcePage{340}
+\begin{SGAresult}{定义}{3.9}
+设 $K$ 是\Term{lambda-ring}{$\lambda$-环}。所谓\Term{augmented-k-lambda-algebra}{增广 $K$-$\lambda$-代数}，是指一个\Term{k-lambda-algebra}{$K$-$\lambda$-代数} $A$，连同一个 $K$-\Term{algebra}{代数}的\Term{lambda-homomorphism}{$\lambda$-同态} $A\longrightarrow K$。\Term{augmented-k-lambda-algebra}{增广 $K$-$\lambda$-代数}的\Term{homomorphism}{同态}是指与\Term{augmentation}{增广}相容的\Term{lambda-homomorphism}{$\lambda$-同态}。
+\end{SGAresult}
+
+\textbf{例 3.9.1。} 设 $(X,A)$ 是一个交换的\Term{locally-ringed-topos}{局部环化拓扑斯}，$K'(X)$ 是 $X$ 上\Term{finite-type}{有限型}\Term{locally-free-sheaf}{局部自由} $A$-\Term{module}{模}\Term{sheaf}{层}所成\Term{category}{范畴}的\Term{grothendieck-group}{Grothendieck 群}。我们已看到，$K'(X)$ 可赋予一个\Term{pre-lambda-ring}{预 $\lambda$-环}结构（2.2 b，因为\Term{free-finite-type}{有限型自由}\Term{module}{模}的每个\Term{direct-summand}{直和因子}此时都是\Term{finite-type}{有限型}\Term{locally-free-sheaf}{局部自由}的），而 $H^0(X,\underline{\mathbb Z})$ \Term{canonical}{典范}地带有\Term{binomial-ring}{二项式环}结构。如下定义一个从 $H^0(X,\underline{\mathbb Z})$ 到 $K'(X)$ 的\Term{lambda-homomorphism}{$\lambda$-同态}。设 $a$ 是 $X$ 上\Term{constant-sheaf}{常值层} $\underline{\mathbb Z}$ 的一个\Term{section}{截面}；它将 $X$ 的\Term{final-object}{终对象}\Term{resolution}{分解}成互\Term{disjoint}{不相交}的\Term{open-subobject}{开子对象} $U_n$ 之和，\Term{section}{截面} $a$ 在\Term{open-subobject}{开子对象} $U_n$ 上的值为 $n$。令 $F$ 为这样的\Term{sheaf}{层}：当 $n\geqslant0$ 时在 $U_n$ 上等于 $A^n$，当 $n\leqslant0$ 时在 $U_n$ 上等于 $0$；令 $F'$ 为这样的\Term{sheaf}{层}：当 $n\leqslant0$ 时在 $U_n$ 上等于 $A^{-n}$，当 $n\geqslant0$ 时在 $U_n$ 上等于 $0$。给 $a$ 关联 $K'(X)$ 中的元素 $F-F'$。
+
+容易验证，这样确实得到一个从 $H^0(X,\underline{\mathbb Z})$ 到 $K'(X)$ 的\Term{lambda-homomorphism}{$\lambda$-同态}。于是可如下定义 $K'(X)$ 到 $H^0(X,\underline{\mathbb Z})$ 的\Term{augmentation}{增广}：给每个\Term{finite-type}{有限型}\Term{locally-free-sheaf}{局部自由}\Term{sheaf}{层}关联它的\Term{rank}{秩}，这是 $\underline{\mathbb Z}$ 的一个\Term{section}{截面}；\Term{rank}{秩}的可\Term{additive}{加性}保证这定义了 $K'(X)$ 上取值于 $H^0(X,\underline{\mathbb Z})$ 的函数。这样，$K'(X)$ 就带有一个\Term{augmented-pre-lambda-algebra}{增广预 $\lambda$-代数}结构。下文总是使用这一结构。
+
+\SourcePage{341}
+\textbf{3.10。} 设 $A$ 是一个\Term{augmented-k-lambda-algebra}{增广 $K$-$\lambda$-代数}。如下在 $A$ 上定义一个环\Term{filtration}{滤过}：对每个 $n\geqslant0$，记 $\operatorname{Fil}^nA$ 为由下列乘积生成的\Term{ideal}{理想}：
+\[
+\gamma^{i_1}(x_1)\cdots\gamma^{i_k}(x_k),\qquad
+ i_1+\cdots+i_k\geqslant n,\quad\forall i,\ \varepsilon(x_i)=0,
+\tag{3.10.1}
+\]
+其中 $\varepsilon:A\longrightarrow K$ 是\Term{augmentation}{增广}。
+
+假设 $A$ 作为\Term{abelian-group}{阿贝尔群}由一族元素 $(x_\alpha)_{\alpha\in I}$ 生成；则 $\operatorname{Fil}^nA$ 作为 $K$-\Term{module}{模}由下列乘积生成：
+\[
+\gamma^{i_1}\bigl(x_{\alpha_1}-\varepsilon(x_{\alpha_1})\bigr)\cdots
+\gamma^{i_k}\bigl(x_{\alpha_k}-\varepsilon(x_{\alpha_k})\bigr),\quad
+ i_1+\cdots+i_k\geqslant n,\quad\alpha_i\in I.
+\tag{3.10.2}
+\]
+事实上，若 $x$ 是 $A$ 中\Term{augmentation}{增广}为零的元素，并写成 $x=\sum_i x_{\alpha_i}$，则 $\sum_i\varepsilon(x_{\alpha_i})=0$，故 $x=\sum_i(x_{\alpha_i}-\varepsilon(x_{\alpha_i}))$。另一方面，若 $a\in A$，可写成
+\[
+a=(a-\varepsilon(a))+\varepsilon(a)
+=\gamma^1(a-\varepsilon(a))+\varepsilon(a).
+\]
+因此，利用关系 (3.4.1)，可见 $\operatorname{Fil}^nA$ 中的元素都是 (3.10.2) 中元素以 $K$ 中元素为系数的\Term{linear-combination}{线性组合}；而这些元素都在 $\operatorname{Fil}^nA$ 中，故得到所求结论。
+
+这样定义的\Term{filtration}{滤过}是一个环\Term{filtration}{滤过}；它是递减的，且有
+\[
+\operatorname{Fil}^0A=A;\qquad\operatorname{Fil}^1A=\operatorname{Ker}\varepsilon.
+\]
+此外，它关于 $A$ 具有\Term{functoriality}{函子性}：\Term{augmented-k-lambda-algebra}{增广 $K$-$\lambda$-代数}的每个\Term{lambda-homomorphism}{$\lambda$-同态}都与\Term{filtration}{滤过}相容。今后将\Term{augmented-lambda-ring}{增广 $\lambda$-环}看作带有\Term{filtration}{滤过}时，除非另有明确说明，均指上述\Term{filtration}{滤过}。
+
+\SourcePage{342}
+\begin{SGAresult}{命题}{3.11}
+设 $A$ 是\Term{lambda-ring}{$\lambda$-环}，$y_i$（$i=1,\ldots,n$）是 $A$ 中的元素，且当 $j\geqslant2$ 时 $\lambda^j(y_i)=0$。令 $x=\sum_i y_i$；则：
+\begin{enumerate}
+\item[i)] 当 $k>n$ 时，$\gamma^k(x-n)=0$；
+\item[ii)] 当 $1\leqslant k\leqslant n$ 时，$\gamma^k(x-n)$ 是各 $y_i-1$ 的第 $k$ 个\Term{symmetric-function}{对称函数}。
+\end{enumerate}
+\end{SGAresult}
+\begin{proof}
+设 $j\geqslant2$。则
+\[
+\gamma^j(y_i-1)=\lambda^j(y_i+j-2)
+=\sum_{p+q=j}\lambda^p(y_i)\lambda^q(j-2).
+\]
+由于 $p\geqslant2$ 时 $\lambda^p(y_i)=0$，而 $q>j-2$ 时 $\lambda^q(j-2)=0$，故 $\gamma^j(y_i-1)=0$。命题由下式得到：
+\[
+\gamma_t(x-n)=\prod_{i=1}^n\gamma_t(y_i-1).
+\]
+\end{proof}
+
+\SGAsection{4}{用生成元和关系生成的 $\lambda$-环}
+仍在\Term{category}{范畴} $\mathscr C_0$ 上讨论。
+
+\textbf{4.1。} 设 $K$ 是一个\Term{lambda-ring}{$\lambda$-环}。考虑一族\Term{indeterminate}{不定元} $(X_i)_{i\in I}$，令
+\[
+A=K[X_i,\lambda^nX_i]_{i\in I,\,n\geqslant2}.
+\]
+我们要在 $A$ 上定义一个延拓 $K$ 上结构的\Term{lambda-ring}{$\lambda$-环}结构。
+
+要给定一个\Term{homomorphism}{同态} $\lambda_t:A\longrightarrow\widehat G(A)$，只须给出各 $X_i,\lambda^nX_i$ 的像；这样便确定一个\Term{ring-homomorphism}{环同态} $A\longrightarrow\widehat G(A)_\circ$。为了使它在 $A$ 上定义一个\Term{lambda-ring}{$\lambda$-环}结构，须验证图 (3.7.1) 的\Term{commutativity}{交换性}。因此令
+\[
+\lambda_t(X_i)=1+X_it+\sum_{n\geqslant2}\lambda^nX_i\,t^n;
+\qquad
+\lambda_t(\lambda^nX_i)=\lambda^n(\lambda_t(X_i)).
+\tag{4.1.1}
+\]
+图 (3.7.1) 是\Term{ring-homomorphism}{环同态}的图，故只须对各 $X_i,\lambda^nX_i$ 验证其\Term{commutativity}{交换性}（对于 $K$ 中元素，假设已保证\Term{commutativity}{交换性}）；这容易由定义 (4.1.1)，以及 $\lambda_u$ 和 $\widehat G^{\,u}(\lambda_t)$ 都是\Term{lambda-homomorphism}{$\lambda$-同态}这一事实得到。
+
+\SourcePage{343}
+\Term{lambda-ring}{$\lambda$-环} $A$ 由下面的\Term{universal-property}{泛性质}刻画。
+\begin{SGAresult}{命题}{4.2}
+对每个\Term{k-lambda-algebra}{$K$-$\lambda$-代数} $B$，以及 $B$ 中任意一族元素 $(b_i)_{i\in I}$，存在唯一的 $K$-$\lambda$-\Term{homomorphism}{同态} $f:A\longrightarrow B$，使每个 $i\in I$ 都满足 $f(X_i)=b_i$。
+\end{SGAresult}
+\begin{proof}
+要使 $f$ 为\Term{lambda-homomorphism}{$\lambda$-同态}，必须对所有 $i,j$ 有 $f(\lambda^jX_i)=\lambda^j(b_i)$；这唯一地确定了 $f$。如此得到的\Term{homomorphism}{同态}确实是\Term{lambda-homomorphism}{$\lambda$-同态}，因为要验证 $\lambda_t\circ f=\widehat G(f)\circ\lambda_t$，只须在 $A$ 相对于 $K$ 的一组\Term{generator}{生成元}上验证，而这正是 $f$ 的定义及关系 (2.4.2) 的结果。
+\end{proof}
+
+\textbf{4.3。} 可以用 $\gamma$ 代替 $\lambda$ 作同样的构造。令
+\[
+A'=K[X_i,\gamma^nX_i]_{i\in I,\,n\geqslant2};
+\]
+为了定义 $A'$ 的\Term{lambda-ring}{$\lambda$-环}结构，给定如下的\Term{ring-homomorphism}{环同态} $A'\longrightarrow\widehat G(A')_\nabla$：
+\[
+\gamma_t(X_i)=1+X_it+\sum_{n\geqslant2}\gamma^nX_i\,t^n;
+\qquad
+\gamma_t(\gamma^nX_i)=\gamma'^{\,n}(\gamma_t(X_i)).
+\tag{4.3.1}
+\]
+验证 (3.7.2) 的\Term{commutativity}{交换性}，便说明这确实给出一个\Term{lambda-ring}{$\lambda$-环}结构。
+
+\Term{lambda-ring}{$\lambda$-环} $A'$ 同样满足\Term{universal-property}{泛性质} 4.2；所以它作为\Term{lambda-ring}{$\lambda$-环}\Term{canonical}{典范}地\Term{isomorphism}{同构}于\Term{lambda-ring}{$\lambda$-环} $A$。
+
+\begin{SGAresult}{定义}{4.4}
+称\Term{lambda-ring}{$\lambda$-环} $A$ 为由\Term{family-of-generators}{生成元族} $(X_i)_{i\in I}$ 在 $K$ 上生成的\Term{free-lambda-ring}{自由 $\lambda$-环}。
+\end{SGAresult}
+
+\begin{SGAresult}{定义}{4.5}
+设 $A$ 是\Term{lambda-ring}{$\lambda$-环}，$J$ 是 $A$ 的一个\Term{ideal}{理想}。若对每个 $x\in J$ 及每个 $n\geqslant1$，有 $\lambda^n(x)\in J$，则称 $J$ 是 $A$ 的\Term{lambda-ideal}{$\lambda$-理想}。
+\end{SGAresult}
+
+若 $f:A\longrightarrow B$ 是\Term{lambda-homomorphism}{$\lambda$-同态}，则 $f$ 的\Term{kernel}{核}是\Term{lambda-ideal}{$\lambda$-理想}。
+
+设 $J$ 是\Term{lambda-ideal}{$\lambda$-理想}；复合\Term{homomorphism}{同态}
+\[
+A\xrightarrow{\lambda_t}\widehat G(A)\longrightarrow\widehat G(A/J)
+\]
+在 $J$ 上为零，故经 $A/J$ \Term{resolution}{分解}，因而使 $A/J$ 带有
+\SourcePage{344}
+\Term{lambda-ring}{$\lambda$-环}结构，因为关系 (2.4.2) 可传到\Term{quotient-ring}{商环}。
+
+任意一族\Term{lambda-ideal}{$\lambda$-理想}的交仍是\Term{lambda-ideal}{$\lambda$-理想}。特别地，存在一个包含给定元素族 $(x_i)_{i\in I}$ 的最小\Term{lambda-ideal}{$\lambda$-理想}；由关系 (2.4.2)，它就是由各 $\lambda^n(x_i)$（$n\geqslant1$）生成的（普通）\Term{ideal}{理想}。
+
+仍设 $K$ 是\Term{lambda-ring}{$\lambda$-环}，$(X_i)_{i\in I}$ 是一族\Term{indeterminate}{不定元}，$A=K[(X_i),(\lambda^nX_i)]$，$(P_{i'})_{i'\in I'}$ 是 $A$ 中的一族元素，$J$ 是由各 $P_{i'}$ 生成的\Term{lambda-ideal}{$\lambda$-理想}。
+\begin{SGAresult}{定义}{4.6}
+称\Term{lambda-ring}{$\lambda$-环} $A/J$ 为由\Term{family-of-generators}{生成元族} $(X_i)_{i\in I}$ 在 $K$ 上生成、满足关系 $(P_{i'})_{i'\in I'}$ 的\Term{lambda-ring}{$\lambda$-环}。
+\end{SGAresult}
+
+也可以给定各 $X_i,\gamma^nX_i$ 之间的关系并作同样的构造，只须注意，一个\Term{ideal}{理想}是\Term{lambda-ideal}{$\lambda$-理想}，当且仅当它在运算 $\gamma^n$（$n\geqslant1$）下\Term{stable}{稳定}；这由 3.2 的各关系得到。
+
+设 $B$ 是\Term{k-lambda-algebra}{$K$-$\lambda$-代数}，$(b_i)_{i\in I}$ 是 $B$ 中的一族元素。各 $P_{i'}$ 是\Term{indeterminate}{不定元} $X_i,\lambda^nX_i$ 的\Term{polynomial}{多项式}，因而可以将各 $b_i,\lambda^n(b_i)$ 代入这些\Term{indeterminate}{不定元}；若所得元素为零，就说各 $b_i$ 满足关系 $P_{i'}$。于是\Term{k-lambda-algebra}{$K$-$\lambda$-代数} $A/J$ 由以下\Term{universal-property}{泛性质}刻画。
+\begin{SGAresult}{命题}{4.7}
+对每个\Term{k-lambda-algebra}{$K$-$\lambda$-代数} $B$ 及 $B$ 中满足关系 $(P_{i'})_{i'\in I'}$ 的任意元素族 $(b_i)_{i\in I}$，存在唯一的 $K$-$\lambda$-\Term{homomorphism}{同态} $f':A/J\longrightarrow B$，使每个 $i$ 都有 $f'(X_i)=b_i$。
+\end{SGAresult}
+\begin{proof}
+事实上，4.2 中定义的\Term{homomorphism}{同态} $f$ 的\Term{kernel}{核}包含各 $P_{i'}$，从而包含 $J$，因为它是\Term{lambda-ideal}{$\lambda$-理想}；因此 $f$ 传到\Term{quotient-ring}{商环}并定义
+\SourcePage{345}
+$f'$，其唯一性显然。
+\end{proof}
+
+\begin{SGAresult}{命题}{4.8}
+设 $n$ 是一个 $\geqslant0$ 的整数。在一个\Term{indeterminate}{不定元} $X$ 在 $K$ 上生成的\Term{free-lambda-ring}{自由 $\lambda$-环}中，由各 $\lambda^kX$（$k>n$）生成的\Term{ideal}{理想}是\Term{lambda-ideal}{$\lambda$-理想}。
+\end{SGAresult}
+\begin{proof}
+令 $A=K[X,\lambda^kX]_{k\geqslant2}$，$J$ 为由各 $\lambda^kX$（$k>n$）生成的\Term{ideal}{理想}，并令 $B=A/J$。须证明复合\Term{homomorphism}{同态}
+\[
+A\xrightarrow{\lambda_t}\widehat G(A)\longrightarrow\widehat G(B)
+\]
+在 $J$ 上为零，即当 $k>n$ 时，$\lambda_t(\lambda^kX)$ 在 $\widehat G(B)$ 中的像为 $1$。但 $\lambda_t(\lambda^kX)=\lambda^k(\lambda_t(X))$，且 $\widehat G(A)\longrightarrow\widehat G(B)$ 是\Term{lambda-homomorphism}{$\lambda$-同态}；因此只须证明，对每个环 $C$ 及每个系数在\Term{degree}{次数} $>n$ 时为零的级数 $\varphi\in\widehat G(C)$，当 $k>n$ 时有 $\lambda^k(\varphi)=1$。为证明最后这一性质，只须考虑 $C=K[X_1,\ldots,X_n]$ 及 $\varphi=1+X_1t+\cdots+X_nt^n$。借助\Term{symmetric-function}{对称函数}将 $K[X_1,\ldots,X_n]$ \Term{embedding}{嵌入} $K[T_1,\ldots,T_n]$，便可写成
+\[
+1+X_1t+\cdots+X_nt^n=\prod_{i=1}^n(1+T_it),
+\]
+从而
+\[
+\lambda_u(1+X_1t+\cdots+X_nt^n)
+=\prod_{i=1}^n\lambda_u(1+T_it)
+=\prod_{i=1}^n\bigl(1+\{1+T_it\}u\bigr),
+\]
+其关于 $u$ 的\Term{degree}{次数}为 $n$。
+\end{proof}
+
+\begin{SGAresult}{推论}{4.9}
+由\Term{generator}{生成元} $X$ 在 $K$ 上生成、满足关系 $\lambda^k(X)=0$（$k>n$）的\Term{lambda-ring}{$\lambda$-环}\Term{isomorphism}{同构}于 $K[X,\ldots,\lambda^nX]$。
+\end{SGAresult}
+
+\textbf{4.9.1。} 将 $\lambda$ 换成 $\gamma$，仍有同样的结论。也可以用一族\Term{indeterminate}{不定元} $(X_i)_{i\in I}$ 代替 $X$，并要求它们满足关系 $\lambda^k(X_i)=0$（$k>n_i$），其中各 $n_i$ 是 $\geqslant2$ 的整数；所得\Term{lambda-ring}{$\lambda$-环}就是
+\[
+K[X_i,\lambda^kX_i]_{i\in I,\,2\leqslant k\leqslant n_i}.
+\]
+
+\textbf{4.10。} 设 $K$ 是\Term{binomial-ring}{二项式环}，$A$ 是\Term{augmented-k-lambda-algebra}{增广 $K$-$\lambda$-代数}。记 $B=A[X,\gamma^kX]_{k\geqslant2}$ 为 $X$ 在 $A$ 上生成的\Term{free-lambda-ring}{自由 $\lambda$-环}；
+\SourcePage{346}
+令 $X$ 映到 $0$，便定义了延拓 $A$ 的\Term{augmentation}{增广}的\Term{lambda-homomorphism}{$\lambda$-同态} $B\longrightarrow K$，从而使 $B$ 成为\Term{augmented-k-lambda-algebra}{增广 $K$-$\lambda$-代数}。我们要由 $A$ 的\Term{filtration}{滤过}来确定 $B$ 的\Term{filtration}{滤过}（3.10）。
+
+按相对于各 $\gamma^kX$ 的权给 $B$ 赋予\Term{grading}{分次}，其中 $\gamma^kX$ 的权取为 $k$。记 $M_k$ 为相对于\Term{indeterminate}{不定元} $\gamma^iX$ 的权为 $k$ 的\Term{monomial}{单项式}的\Term{set}{集合}。
+
+\begin{SGAresult}{\Term{lemma}{引理}}{4.11}
+设 $a\in A$。在
+\[
+\gamma^k(aX)=P'_k(\gamma^i(a),\gamma^jX)
+\]
+中，相对于各 $\gamma^jX$ 权为 $n$ 的\Term{monomial}{单项式}的系数，在 $A$ 中的\Term{filtration}{滤过}\Term{degree}{次数}至少为 $k-n$。
+\end{SGAresult}
+\begin{proof}
+\Term{polynomial}{多项式} $P'_k$ 关于各 $\gamma^i(a),\gamma^jX$ 没有权 $<k$ 的\Term{isobaric-component}{等权分量}（3.5），因此当 $a$ 的\Term{augmentation}{增广}为零时\Term{lemma}{引理}成立。
+
+若 $\varepsilon$ 表示\Term{augmentation-homomorphism}{增广同态} $A\longrightarrow K$，则在\Term{generic}{一般}情形可以写成
+\[
+\gamma_t(aX)=\gamma_t\bigl((a-\varepsilon(a))X\bigr)\gamma_t(\varepsilon(a)X).
+\]
+而
+\[
+\gamma_t(\varepsilon(a)X)=(\gamma_t(X))^{\varepsilon(a)}
+=\sum_{n=0}^{\infty}R_{n,a}((\gamma^jX))t^n,
+\]
+其中 $R_{n,a}$ 关于各 $\gamma^jX$ 都是权 $n$ 的\Term{isobaric-polynomial}{等权多项式}（3.8）；将两式相乘便得到\Term{lemma}{引理}。
+\end{proof}
+
+\begin{SGAresult}{命题}{4.12}
+\[
+\operatorname{Fil}^kB=\operatorname{Fil}^kA
++\operatorname{Fil}^{k-1}A\cdot M_1+\cdots
++\operatorname{Fil}^0A\cdot M_k+B\cdot M_{k+1}.
+\]
+\end{SGAresult}
+\begin{proof}
+显然，右边的\Term{ideal}{理想}包含于左边的\Term{ideal}{理想}，所以只须证明反向包含。
+
+由于 $k$ 变化时由右边的\Term{ideal}{理想}族定义的\Term{filtration}{滤过}是一个环\Term{filtration}{滤过}，只须对 $\gamma^k(b)$ 型的元素证明反向包含，其中 $\varepsilon(b)=0$；这些元素
+\SourcePage{347}
+生成\Term{canonical}{典范}\Term{filtration}{滤过}。
+
+写 $b=\sum_i a_im_i$，其中 $a_i\in A$，各 $m_i$ 是相对于各 $\gamma^jX$ 的\Term{monomial}{单项式}。利用 $\gamma$ 的可\Term{additive}{加性}，可见只须对 $\gamma^k(am_i)$ 证明，其中 $a\in A$、$m_i\in M_i$。
+
+利用\Term{lemma}{引理} 4.11，以及将 $X$ 映到 $m_i$ 的从 $B$ 到 $B$ 的\Term{lambda-homomorphism}{$\lambda$-同态}，可见只须对 $\gamma^k(m_i)$ 型的元素证明。
+
+最后，由于\Term{polynomial}{多项式} $P'_k$ 没有权 $<k$ 的\Term{isobaric-component}{等权分量}，便归结为 $\gamma^k(\gamma^jX)$ 的情形；这一情形又由\Term{polynomial}{多项式} $Q'_{j,k}$ 没有权 $<k$ 的\Term{isobaric-component}{等权分量}（3.6）得到。
+\end{proof}
+
+\textbf{注记 4.13。} i) 4.12 给出的 $\operatorname{Fil}^kB$ 的\Term{resolution}{分解}是一个 $A$-\Term{module}{模}的\Term{direct-sum}{直和}\Term{resolution}{分解}。换言之，若 $b\in\operatorname{Fil}^kB$，并写成
+\[
+b=\sum_{j\leqslant k}a_{i,j}m_{i,j}+b',\qquad
+ a_{i,j}\in A,\quad m_{i,j}\in M_j,\quad b'\in B\cdot M_{k+1},
+\]
+则 $a_{i,j}\in\operatorname{Fil}^{k-j}A$。
+
+ ii) 对 $B$ 按包含在\Term{augmentation-ideal}{增广理想}中的任意\Term{lambda-ideal}{$\lambda$-理想}取商，命题 4.12 仍成立。
+
+ iii) 将\Term{indeterminate}{不定元} $X$ 换成一族\Term{indeterminate}{不定元} $(X_i)$，与 4.12 类似的命题仍成立。
+
+\begin{SGAresult}{推论}{4.14}
+\[
+\operatorname{Gr}^kB\simeq\operatorname{Gr}^kA
+\oplus\operatorname{Gr}^{k-1}A\cdot M_1\oplus\cdots
+\oplus\operatorname{Gr}^0A\cdot M_k.
+\]
+\end{SGAresult}
+\begin{proof}
+如下定义从右到左的映射：给每个元素 $\bar a\cdot m$ 关联 $am$ 在 $\operatorname{Gr}^kB$ 中的类，其中 $\bar a$ 是 $\operatorname{Fil}^{k-i}A$ 的元素 $a$ 在 $\operatorname{Gr}^{k-i}A$ 中的类，且 $m\in M_i$。再由命题 4.12 和注记 4.13 i) 的\Term{resolution}{分解}定义反方向的映射。显然，这两个映射互为逆映射。
+\end{proof}
+
+\SourcePage{348}
+\begin{SGAresult}{推论}{4.15}
+设 $B'$ 为由\Term{indeterminate}{不定元} $X$ 在 $K$ 上生成、满足关系 $\gamma^k(X)=0$（$k>n$）的\Term{lambda-ring}{$\lambda$-环}，即 $B'=K[X,\ldots,\gamma^nX]$（4.9）。那么 $B'$ 的\Term{lambda-filtration}{$\lambda$-环滤过}与相对于各 $\gamma^jX$ 按权定义的\Term{filtration}{滤过}相同。
+\end{SGAresult}
+\begin{proof}
+由命题 4.12、注记 4.13 ii)，以及 $A=K$，有
+\[
+\operatorname{Fil}^kB'=K\cdot M_k+B'\cdot M_{k+1};
+\]
+故 $\operatorname{Fil}^kB'$ 就是由相对于各 $\gamma^jX$ 的权 $\geqslant k$ 的\Term{monomial}{单项式}生成的\Term{ideal}{理想}。
+\end{proof}
+
+\SGAsection{5}{$\lambda^p(N,x)$}
+本节只在第 VII 讲第 4 节研究\Term{regular-immersion}{正则浸入}时使用，所以初读时可以略过。
+
+\textbf{5.1。} 设 $d$ 是一个 $\geqslant1$ 的整数。记 $A$ 为由\Term{generator}{生成元} $N,x$ 在 $\mathbb Z$ 上生成、满足关系 $\lambda^i(N)=0$（$i>d$）的\Term{k-lambda-algebra}{$\mathbb Z$-$\lambda$-代数}；于是
+\[
+A=\mathbb Z[N,\ldots,\lambda^dN;\ x,\ldots,\lambda^jx,\ldots].
+\]
+令
+\[
+\lambda_{-1}(N)=\sum_{i=0}^d(-1)^i\lambda^i(N).
+\]
+
+\begin{SGAresult}{\Term{lemma}{引理}}{5.2}
+对每个 $p\geqslant1$，$\lambda^p(x\lambda_{-1}(N))$ 都能被 $\lambda_{-1}(N)$ 整除。
+\end{SGAresult}
+\begin{proof}
+由 2.3 知道，
+\[
+\lambda^p(x\lambda_{-1}(N))=P_p\bigl(\lambda^ix,\lambda^j(\lambda_{-1}(N))\bigr)
+\]
+是关于各 $\lambda^j(\lambda_{-1}(N))$ 的权为 $p$ 的\Term{isobaric-polynomial}{等权多项式}；因此只须证明 $\lambda_{-1}(N)$ 整除 $\lambda^p(\lambda_{-1}(N))$。
+
+设 $B$ 是由\Term{indeterminate}{不定元} $N_1,\ldots,N_d$ 在 $\mathbb Z$ 上生成、满足关系 $\lambda^i(N_j)=0$（$i\geqslant2$）的\Term{lambda-ring}{$\lambda$-环}。显然，当 $k>d$ 时，$\lambda^k(\sum_{i=1}^dN_i)=0$。因此可定义一个\Term{lambda-homomorphism}{$\lambda$-同态} $f:A\longrightarrow B$，将 $N$ 映到 $\sum_{i=1}^dN_i$；此时
+\[
+\widehat G(f)(\lambda_t(N))=\prod_{i=1}^d\lambda_t(N_i)=\prod_{i=1}^d(1+N_it),
+\]
+\SourcePage{349}
+这说明，当 $1\leqslant k\leqslant d$ 时，$\lambda^kN$ 映到各 $N_i$ 的第 $k$ 个\Term{symmetric-function}{对称函数}，从而 $f$ 为\Term{injective-map}{单射}，并将 $A$ 认同为各 $N_i$ 的\Term{symmetric-polynomial}{对称多项式}环。
+
+于是
+\[
+\lambda_{-1}(N)=\prod_{i=1}^d(1-N_i),\qquad
+\lambda_t(\lambda_{-1}(N))=\lambda_t\left(\prod_{i=1}^d(1-N_i)\right).
+\]
+各 $\lambda^p(\lambda_{-1}(N))$ 都是关于各 $N_i$ 的\Term{polynomial}{多项式}；若对某个指标 $i$ 令 $N_i=1$，则 $\lambda_t(\lambda_{-1}(N))$ 变成 $\lambda_t(0)=1$。所以各 $\lambda^p(\lambda_{-1}(N))$ 在 $N_i=1$ 时为零，因而含有因子 $1-N_i$。因此它们含有各 $1-N_i$ 的乘积作为因子，即在 $B$ 中可被 $\lambda_{-1}(N)$ 整除，从而在 $A$ 中也可被它整除，因为两个\Term{symmetric-polynomial}{对称多项式}之商显然仍是\Term{symmetric-polynomial}{对称多项式}。
+\end{proof}
+
+\textbf{5.3。} 由于 $A$ 是\Term{integral-domain}{整环}，可用下式无歧义地定义元素 $\lambda^p(N,x)$（$p\geqslant1$）：
+\[
+\lambda^p(N,x)\lambda_{-1}(N)=\lambda^p(x\lambda_{-1}(N)).
+\tag{5.3.1}
+\]
+因此，元素 $\lambda^p(N,x)$ 是关于各 $\lambda^i(x),\lambda^j(N)$ 的\Term{polynomial}{多项式}，相对于各 $\lambda^i(x)$ 是权为 $p$ 的\Term{isobaric-polynomial}{等权多项式}，因为由 2.3，$\lambda^p(x\lambda_{-1}(N))$ 也有这一性质。
+
+设 $d'$ 是一个 $\geqslant d$ 的整数，$A'$ 是由\Term{generator}{生成元} $N',x'$ 在 $\mathbb Z$ 上生成、满足关系 $\lambda^i(N')=0$（$i>d'$）的\Term{k-lambda-algebra}{$\mathbb Z$-$\lambda$-代数}；由命题 4.7，存在唯一的\Term{lambda-homomorphism}{$\lambda$-同态} $f:A'\longrightarrow A$，将 $N'$ 映到 $N$，将 $x'$ 映到 $x$。由定义 (5.3.1)，对每个 $p\geqslant1$，有
+\[
+f(\lambda^p(N',x'))=\lambda^p(N,x).
+\]
+
+若 $B$ 是\Term{lambda-ring}{$\lambda$-环}，$N''$ 是 $B$ 中满足 $\lambda^k(N'')=0$（$k>d$）的元素，则对每个 $x''\in B$，可用代入定义元素 $\lambda^p(N'',x'')$，也可以利用将 $N$ 映到 $N''$、将 $x$ 映到 $x''$ 的唯一\Term{lambda-homomorphism}{$\lambda$-同态}
+\SourcePage{350}
+$A\longrightarrow B$ 来定义。由上面的注记，所得元素不依赖于满足 $\lambda^k(N'')=0$（$k>d$）的整数 $d$。利用同一个\Term{homomorphism}{同态}，还可见 $N''$ 和 $x''$ 满足关系 (5.3.1)。
+
+\textbf{5.4。} 考虑由\Term{indeterminate}{不定元} $N,x,y$ 在 $\mathbb Z$ 上生成、满足关系 $\lambda^k(N)=0$（$k>d$）的\Term{lambda-ring}{$\lambda$-环}。由 (5.3.1) 得
+\[
+\begin{aligned}
+\lambda^p(N,x+y)\lambda_{-1}(N)
+&=\lambda^p\bigl((x+y)\lambda_{-1}(N)\bigr)\\
+&=\sum_{i+j=p}\lambda^i(x\lambda_{-1}(N))\lambda^j(y\lambda_{-1}(N))\\
+&=\sum_{\substack{i+j=p\\i,j\ne0}}\lambda^i(N,x)\lambda^j(N,y)\lambda_{-1}(N)^2\\
+&\quad+\bigl(\lambda^p(N,x)+\lambda^p(N,y)\bigr)\lambda_{-1}(N).
+\end{aligned}
+\]
+由于所考虑的环是\Term{integral-domain}{整环}，可由此得到下列关系；通过代入，它对任意\Term{lambda-ring}{$\lambda$-环}及其中任意满足 $\lambda^k(N)=0$（$k>d$）的元素 $N$ 都成立：
+\[
+\begin{aligned}
+\lambda^p(N,x+y)
+&=\sum_{\substack{i+j=p\\i,j\ne0}}\lambda^i(N,x)\lambda^j(N,y)\lambda_{-1}(N)\\
+&\quad+\lambda^p(N,x)+\lambda^p(N,y).
+\end{aligned}
+\tag{5.4.1}
+\]
+
+现在考虑由\Term{indeterminate}{不定元} $N,N',x$ 在 $\mathbb Z$ 上生成、满足关系 $\lambda^k(N)=0$（$k>d$）及 $\lambda^k(N')=0$（$k>d'$）的\Term{lambda-ring}{$\lambda$-环}。此时，当 $k>d+d'$ 时有 $\lambda^k(N+N')=0$；因此可以定义各 $\lambda^p(N+N',x)$。得到
+\[
+\lambda^p(N+N',x)\lambda_{-1}(N+N')
+=\lambda^p(x\lambda_{-1}(N+N')).
+\]
+由 $\lambda_t$ 的可\Term{additive}{加性}，有 $\lambda_{-1}(N+N')=\lambda_{-1}(N)\lambda_{-1}(N')$。故
+\[
+\begin{aligned}
+\lambda^p(N+N',x)\lambda_{-1}(N)\lambda_{-1}(N')
+&=\lambda^p(x\lambda_{-1}(N)\lambda_{-1}(N'))\\
+&=\lambda^p(N',x\lambda_{-1}(N))\lambda_{-1}(N').
+\end{aligned}
+\]
+\SourcePage{351}
+由于所考虑的环是\Term{integral-domain}{整环}，由此得到下列关系；通过代入，它对任意\Term{lambda-ring}{$\lambda$-环}中满足 $\lambda^k(N)=0$（$k>d$）及 $\lambda^k(N')=0$（$k>d'$）的任意元素 $N,N'$ 都成立：
+\[
+\lambda^p(N+N',x)\lambda_{-1}(N)
+=\lambda^p(N',x\lambda_{-1}(N)).
+\tag{5.4.2}
+\]
+
+\textbf{5.5。} 现在设 $A$ 是任意\Term{lambda-ring}{$\lambda$-环}，$N$ 是 $A$ 中满足 $\lambda^k(N)=0$（$k>d$）的元素。我们要给 $A$ 关联一个新的\Term{lambda-ring}{$\lambda$-环} $A_N$。
+
+首先在 $A$ 上定义一个新的\Term{multiplication}{乘法}，对 $x,y\in A$ 令
+\[
+x\mathbin{\cdot_N}y=xy\lambda_{-1}(N).
+\tag{5.5.1}
+\]
+带有这一\Term{multiplication}{乘法}的环 $A$ 不再含幺；因此考虑向 $A$ 添加一个\Term{unit-element}{单位元}所得的环 $\mathbb Z\times A$。它的运算由下式定义：
+\[
+\begin{aligned}
+(n,x)+(n',x')&=(n+n',x+x'),\\
+(n,x)(n',x')&=(nn',nx'+n'x+x\mathbin{\cdot_N}y).
+\end{aligned}
+\tag{5.5.2}
+\]
+通过 $x\longmapsto(0,x)$ 将 $A$ \Term{embedding}{嵌入}此环。然后用下式定义一个\Term{pre-lambda-ring}{预 $\lambda$-环}结构：
+\[
+\lambda_t(n,x)=(1+t)^n\sum_{p=0}^{\infty}\lambda^p(N,x)t^p.
+\tag{5.5.3}
+\]
+由 (5.4.1)，这确实是一个\Term{pre-lambda-ring}{预 $\lambda$-环}结构。将这样得到的\Term{pre-lambda-ring}{预 $\lambda$-环}记作 $A_N$。要证明它是一个\Term{lambda-ring}{$\lambda$-环}，通过代入，只须考虑 $A$ 是由\Term{generator}{生成元} $N,X,Y$ 在 $\mathbb Z$ 上生成、满足关系 $\lambda^k(N)=0$（$k>d$）的\Term{lambda-ring}{$\lambda$-环}的情形。此时定义一个\Term{homomorphism}{同态} $A_N\longrightarrow A$，
+\SourcePage{352}
+将 $(1,0)$ 映到 $1$，将 $(0,x)$ 映到 $x\lambda_{-1}(N)$。由 (5.5.1) 和 (5.3.1)，立即可见这是一个\Term{lambda-homomorphism}{$\lambda$-同态}；而在所考虑的情形，$A$ 为\Term{integral-domain}{整环}，所以也立即可验证此\Term{homomorphism}{同态}是\Term{injective-map}{单射}。由于 $A$ 是\Term{lambda-ring}{$\lambda$-环}，便得到所求结论。
+
+在\Term{lambda-ring}{$\lambda$-环} $A_N$ 中，可以定义运算 $\gamma$（3.2）。对 $x\in A$，$\gamma^p$ 在 $A_N$ 的元素 $(0,x)$ 上的值由下式给出：
+\[
+\gamma^p(0,x)=\sum_{i=0}^{p-1}\binom{p-1}{i}\lambda^i(N,x),
+\]
+因此它是 $A$ 中的一个元素；它由关系
+\[
+\gamma^p(N,x)\lambda_{-1}(N)=\gamma^p(x\lambda_{-1}(N))
+\tag{5.5.4}
+\]
+及由此得到的\Term{universal-polynomial}{泛多项式}确定。
+
+\textbf{5.6。} 设 $A$ 是由\Term{generator}{生成元} $N,L,x$ 在 $\mathbb Z$ 上生成、满足关系 $\lambda^k(N)=0$（$k>d$）及 $\lambda^k(L)=0$（$k>1$）的\Term{lambda-ring}{$\lambda$-环}。我们要用各 $\lambda^q(N,x)$ 计算各 $\lambda^p(N+L,x)$。
+
+由定义，
+\[
+\lambda^p(N+L,x)\lambda_{-1}(N)\lambda_{-1}(L)
+=\lambda^p(x\lambda_{-1}(N)\lambda_{-1}(L)),
+\]
+即
+\[
+\begin{aligned}
+{}&1+\lambda_{-1}(N)\lambda_{-1}(L)\sum_{k\geqslant1}\lambda^k(N+L,x)t^k\\
+&\qquad=\lambda_t(x\lambda_{-1}(N))\circ\lambda_t(1-L)\\
+&\qquad=\frac{\lambda_t(x\lambda_{-1}(N))}{\lambda_{Lt}(x\lambda_{-1}(N))},
+\end{aligned}
+\]
+因为
+\[
+\lambda_t(1-L)=\frac{\lambda_t(1)}{\lambda_t(L)}=\frac{1+t}{1+Lt},
+\]
+这里应用了 (2.3.2)。继续得到
+\[
+\begin{aligned}
+{}&\frac{1+\cdots+\lambda^k(x\lambda_{-1}(N))t^k+\cdots}
+{1+\cdots+\lambda^k(x\lambda_{-1}(N))L^kt^k+\cdots}\\
+&\qquad=1+
+\frac{\displaystyle\sum_{k\geqslant1}\lambda^k(N,x)\lambda_{-1}(N)(1-L^k)t^k}
+{\displaystyle1+\sum_{k\geqslant1}\lambda^k(N,x)\lambda_{-1}(N)L^kt^k}.
+\end{aligned}
+\]
+\SourcePage{353}
+所以，$\lambda^p(N+L,x)$ 是下列级数中 $t^p$ 的系数：
+\[
+\frac{\displaystyle\sum_{k\geqslant1}\lambda^k(N,x)(1+\cdots+L^{k-1})t^k}
+{\displaystyle1+\sum_{k\geqslant1}\lambda^k(N,x)\lambda_{-1}(N)L^kt^k}.
+\]
+
+\begin{SGAresult}{命题}{5.7}
+设 $K$ 是\Term{binomial-ring}{二项式环}，$A$ 是\Term{augmented-k-lambda-algebra}{增广 $K$-$\lambda$-代数}，$N$ 是 $A$ 中满足 $\lambda^k(N)=0$（$k>d$）的元素。那么对每个 $x\in A$ 及每个 $p\geqslant1$，有
+\[
+\gamma^p(N,x)\in\operatorname{Fil}^{p-d}A.
+\tag{5.7.1}
+\]
+\end{SGAresult}
+\begin{proof}
+设 $A_0$ 是由\Term{generator}{生成元} $N'_0,X'_0$ 在 $K$ 上生成、满足关系 $\lambda^k(N'_0)=0$（$k>d$）的\Term{k-lambda-algebra}{$K$-$\lambda$-代数}。用 $\varepsilon(N'_0)=\varepsilon(X'_0)=0$ 定义\Term{augmentation-homomorphism}{增广同态} $A_0\xrightarrow{\varepsilon}K$。我们知道，$A_0$ 是以 $K$ 为系数、以各 $\gamma^i(N'_0)$（$1\leqslant i\leqslant d$）和各 $\gamma^j(X'_0)$（$j\geqslant1$）为\Term{indeterminate}{不定元}的\Term{polynomial}{多项式}环；而 $A_0$ 上的\Term{lambda-filtration}{$\lambda$-滤过}与按权定义的\Term{filtration}{滤过}相同，其中赋予 $\gamma^i(N'_0),\gamma^i(X'_0)$ 的权均为 $i$（4.12 和 4.15）。
+
+令 $N_0=N'_0+d$、$X_0=X'_0+\varepsilon(x)$。首先对 $N_0,X_0$ 证明 5.7。由上可知，(5.7.1) \Term{equivalence}{等价}于
+\[
+\gamma^p(N_0,X_0)\gamma^d(N'_0)\in\operatorname{Fil}^pA_0.
+\]
+而 $\gamma^d(N'_0)=(-1)^d\lambda_{-1}(N_0)$；因此，由 (5.5.4)，此关系写成
+\[
+(-1)^d\gamma^p\bigl(X_0\gamma^d(N_0)\bigr)\in\operatorname{Fil}^pA_0.
+\]
+这一关系确实成立，因为 $\gamma^d(N_0)$ 的\Term{augmentation}{增广}为零。
+
+由 4.7，存在一个与\Term{augmentation}{增广}相容的 $K$-$\lambda$-\Term{homomorphism}{同态} $A_0\longrightarrow A$，将 $N'_0$ 映到 $N-d$，将 $X'_0$ 映到 $x-\varepsilon(x)$，从而将 $N_0$ 映到 $N$，将 $X_0$
+\SourcePage{354}
+映到 $x$。由于此\Term{homomorphism}{同态}与\Term{filtration}{滤过}相容，便得到所求结论。
+\end{proof}

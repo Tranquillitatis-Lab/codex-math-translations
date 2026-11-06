@@ -1,0 +1,34 @@
+% 依据原书第42页（PDF46）重绘；不补入扫描本未显示的标数。
+\begingroup
+\begin{tikzpicture}[x=1.05cm,y=1.05cm,line width=.55pt]
+\def\doublebond#1#2#3{%
+ \draw (#1,{#3-.04})--(#2,{#3-.04});
+ \draw (#1,{#3+.04})--(#2,{#3+.04});
+ \draw[-{Stealth[length=2.4mm,width=1.8mm]}]
+ ({.55*#1+.45*#2},#3)--({.65*#1+.35*#2},#3);}
+\def\heavybond#1#2#3{%
+ \draw[line width=2pt] (#1,#3)--(#2,#3);
+ \fill ({.35*#1+.65*#2},{#3+.10})--({.65*#1+.35*#2},#3)--({.35*#1+.65*#2},{#3-.10})--cycle;}
+\foreach \yy in {0,-1.65}{
+ \doublebond{0}{.85}{\yy}
+ \draw (.85,\yy)--(1.7,\yy);
+ \draw[dashed] (1.7,\yy)--(2.55,\yy);
+ \draw (2.55,\yy)--(3.4,\yy);
+ \doublebond{3.4}{4.25}{\yy}
+ \foreach \xx in {0,.85,1.7,2.55,3.4,4.25}{\draw (\xx,{\yy-.085})--(\xx,{\yy+.085});}
+ \heavybond{5.8}{6.65}{\yy}
+ \draw (5.8,{\yy-.10})--(5.8,{\yy+.10});
+ \draw (6.65,{\yy-.10})--(6.65,{\yy+.10});
+ \node at (5.3,{\yy-.05}) {$\Bigl($};
+ \node at (8.9,{\yy-.05}) {$\Bigr)$};
+ \node at (7.8,\yy) {若 $n=1$};
+}
+\node[anchor=east] at (-.35,0) {（9）};
+\node[anchor=east] at (-.35,-1.65) {（10）};
+\node at (0,.28) {$\times$};\node at (5.8,.28) {$\times$};
+\foreach \xx/\dd in {0/3,.85/2,1.7/2,2.55/2,3.4/2}{\node at (\xx,-.35) {$\dd$};}
+\foreach \xx in {0,.85,1.7,2.55,3.4,4.25}{\node at (\xx,-2.0) {$1$};}
+\node at (5.8,-.35) {$3$};\node at (6.65,-.35) {$1$};
+\node at (5.8,-2.0) {$1$};\node at (6.65,-2.0) {$1$};
+\end{tikzpicture}
+\endgroup

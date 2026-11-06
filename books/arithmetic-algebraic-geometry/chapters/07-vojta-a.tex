@@ -1,0 +1,945 @@
+\chapter{算术代数几何在丢番图逼近中的应用}
+\begingroup
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\chapterauthor{Paul Vojta\footnote{本研究部分得到美国国家科学基金会项目 DMS-9001372 的资助。}}
+\endgroup
+\origpage{169}{164}
+\begin{center}
+加利福尼亚大学伯克利分校数学系\\
+Berkeley, CA 94720, USA
+\end{center}
+
+\noindent\textbf{本篇目录}
+\begin{enumerate}[label=\arabic*.,nosep]
+\item 历史；整点与有理点
+\item Siegel 引理
+\item 指标
+\item Roth 定理的证明梗概
+\item 记号
+\item 导数
+\item Mordell 猜想的证明，以及 Bombieri 的若干简化
+\item 利用 Gillet--Soulé Riemann--Roch 定理的证明
+\item Faltings 复形
+\item 总体方案
+\item 截面空间的下界
+\item 数的几何续论
+\item Faltings 复形的算术
+\item 整体截面的构造
+\item 若干分析论证
+\item 导数续论
+\item 指标的下界
+\item 乘积定理
+\end{enumerate}
+
+先回顾 Mordell 猜想的陈述；Faltings 于 1983 年首次证明了这一猜想。
+\begin{statement}{定理 0.1}
+设 $C$ 是定义在\term{数域}{number field}{corps de nombres} $k$ 上、\term{亏格}{genus}{genre}大于 $1$ 的曲线，则 $C(k)$ 是有限集。
+\end{statement}
+本系列讲座将介绍如何应用\term{算术代数几何}{arithmetic algebraic geometry}{géométrie algébrique arithmétique}，用\term{丢番图逼近}{diophantine approximation}{approximation diophantienne}的方法证明这一结果，而不借助阿贝尔簇的模空间。我于 1989 年得到了这一证明 [V 4]；同年，Faltings 对其作了改造，证明了下面这个更一般的定理，它最初由 Lang 猜想 [L 1]。
+
+\origpage{170}{165}
+\begin{statement}{定理 0.2（[F 1]）}
+设 $X$ 是\term{阿贝尔簇}{abelian variety}{variété abélienne} $A$ 的\term{子簇}{subvariety}{sous-variété}，二者均定义在数域 $k$ 上。假设 $X\times_k\bar k$ 不包含 $A\times_k\bar k$ 的任何非平凡阿贝尔子簇的平移，则 $X$ 的 $k$-\term{有理点}{rational point}{point rationnel}集 $X(k)$ 是有限的。
+\end{statement}
+1990 年，Bombieri [Bo] 也找到了对证明 [V 4] 的简化。虽然这种简化不能证明更一般的有限性命题，却使论述变得十分初等，而且更便于得出有理点数目的显式上界。
+
+1991 年初，Faltings 成功地去掉了定理 0.2 中关于 $X\times_k\bar k$ 不包含 $A$ 的阿贝尔子簇的任何平移的假设，从而证明了 Lang 的另一个猜想（[L 2]，第 29 页）。
+\begin{statement}{定理 0.3（[F 2]）}
+设 $X$ 是阿贝尔簇 $A$ 的子簇，二者均定义在数域 $k$ 上。则 $X(k)$ 包含在一个有限并 $\bigcup_i B_i(k)$ 中，其中每个 $B_i$ 都是包含在 $X$ 中的 $A$ 的阿贝尔子簇的平移。
+\end{statement}
+将这个结果推广到\term{半阿贝尔簇}{semiabelian variety}{variété semi-abélienne}的子簇上的\term{整点}{integral point}{point entier}，仍是一个未解决的问题。也可以把这一问题重新表述为：证明 $X$ 与 $A(\overline{\mathbb Q})$ 的一个有限生成子群 $\Gamma$ 的交具有有限性。还可以对\term{除法群}{division group}{groupe de division}
+\[
+\{g\in A(\overline{\mathbb Q})\mid mg\in\Gamma\text{ 对某个 }m\in\mathbb N\}
+\]
+提出同类的有限性问题。M. McQuillan 最近解决了这一问题（尚未发表）；另见 [Ra]。
+
+虽然算术代数几何是一套很新的方法，这一课题的历史却可以追溯到 A. Thue 于 1909 年发表的论文。回顾一下，\term{Thue 方程}{Thue equation}{équation de Thue}是形如
+\[
+f(x,y)=c,\qquad x,y\in\mathbb Z
+\]
+的方程，其中 $c\in\mathbb Z$，$f\in\mathbb Z[X,Y]$ 是次数至少为三的不可约齐次多项式。Thue 证明了这类方程只有有限多个解。
+
+因此，本讲座首先回顾一些非常经典的结果，包括用于构造线性方程组的小解的 Siegel 引理，以及稍后要介绍的 Minkowski 关于\term{逐次极小值}{successive minima}{minima successifs}的定理。
+
+接着简述 Roth 定理的证明。正是这一证明（更准确地说，是 Dyson 稍早给出的一个证明）启发了 Mordell 猜想的新证明。
+
+随后，我们讨论如何将\term{算术相交理论}{arithmetic intersection theory}{théorie de l'intersection arithmétique}的语言用于这一证明，并借助 Bombieri 的一些方法证明 Mordell 猜想。然后介绍我在 1989 年给出的、利用 Gillet--Soulé Riemann--Roch 定理的原始证明。这些证明只作梗概式介绍，因为别处已有详细论述，而且现在已有更新的方法。
+
+最后，我们详细给出 Faltings 对定理 0.3 的证明，并作少量简化。
+
+\origpage{171}{166}
+本文按经典意义理解数域 $k$ 的\term{素位}{place}{place} $v$，即把对应于一对互为复共轭的嵌入 $k\hookrightarrow\mathbb C$ 的素位视为同一个。\term{绝对值}{absolute value}{valeur absolue} $\|\cdot\|_v$ 也作如下归一化：若 $v$ 对应于实嵌入 $\sigma:k\hookrightarrow\mathbb R$，则 $\|x\|_v=|\sigma(x)|$；若对应于复嵌入，则 $\|x\|_v=|\sigma(x)|^2$；若 $v$ 是 $\mathfrak p$-进素位，则 $\|p\|_v=p^{-ef}$，其中 $\mathfrak p$ 位于有理素数 $p$ 之上，$e$ 为分歧指数，$f$ 为剩余域扩张的次数。采用这一归一化后，\term{乘积公式}{product formula}{formule du produit}写成
+\begin{equation*}
+\prod_v\|x\|_v=1,\qquad x\in k,\quad x\ne0.\tag{0.4}
+\end{equation*}
+概形 $X$ 上的\term{线层}{line sheaf}{faisceau inversible}是指局部同构于 $\mathcal O_X$ 的层，也就是可逆层。类似地，\term{向量层}{vector sheaf}{faisceau localement libre}是指局部自由层。
+
+其他记号见定义 2.3 和第 5 节。
+
+\section*{§1. 历史；整点与有理点}
+\addcontentsline{toc}{section}{§1. 历史；整点与有理点}
+丢番图逼近研究在最初的形式中，试图证明：给定一个代数数 $\alpha$，对于某个 $\kappa$ 和某个常数 $c>0$，满足
+\[
+\left|\frac pq-\alpha\right|<\frac c{|q|^\kappa}
+\]
+的既约分数 $p/q\in\mathbb Q$ 只有有限多个。得到最优的 $\kappa$ 值花费了数十年。记 $d=[\mathbb Q(\alpha):\mathbb Q]$，有关进展如下：
+\begin{center}
+\begin{tabular}{@{}ll@{}}
+\toprule
+逼近指数 & 证明者及年份\\
+\midrule
+$\kappa=d$，$c$ 可计算 & Liouville，1844\\
+$\kappa=\dfrac{d+1}{2}+\epsilon$ & Thue，1909\\
+$\kappa=\min\{\dfrac ds+s-1\mid s=2,\ldots,d\}+\epsilon$ & Siegel，1921\\
+$\kappa=\sqrt{2d}+\epsilon$ & Dyson、Gel'fond（各自独立），1947\\
+$\kappa=2+\epsilon$ & Roth，1955\\
+\bottomrule
+\end{tabular}
+\end{center}
+当然，还可以猜想更强的逼近结论，例如
+\[
+\left|\frac pq-\alpha\right|<c|q|^{-2}(\log q)^{-1-\epsilon}.
+\]
+见 [L 3]，第 71 页。
+
+自 Thue 的工作开始，人们便可利用这些逼近结果证明某些丢番图方程的有限性结论，下面的例子说明了这一点。
+\begin{statement}{例 1.1}
+下列 Thue 方程只有有限多个解：
+\begin{equation*}
+x^3-2y^3=1,\qquad x,y\in\mathbb Z.\tag{1.2}
+\end{equation*}
+\end{statement}
+事实上，这一方程可改写为
+\[
+\frac xy-\sqrt[3]2=
+\frac1{y\bigl(x^2+\sqrt[3]2\,xy+\sqrt[3]4\,y^2\bigr)}.
+\]
+\origpage{172}{167}
+当 $|y|$ 很大时，右端的绝对值不超过 $1/|y|^3$ 的某个常数倍。因此，若 (1.2) 有无限多个解，就会与 Thue 等人的逼近不等式矛盾。
+
+第二个例子是 Mordell 猜想（定理 0.1）的一个特例。
+\begin{statement}{例 1.3}
+射影坐标中的方程
+\begin{equation*}
+x^4+y^4=z^4,\qquad x,y,z\in\mathbb Q\tag{1.4}
+\end{equation*}
+（或仿射坐标中的方程 $x^4+y^4=1$）只有有限多个解。
+\end{statement}
+本讲座旨在说明，定理 0.1 可以用丢番图逼近的方法证明。乍看之下这似乎不太可能，因为此时解并不一定趋向无穷远。但我们先用概形的语言来考察这两个问题何以非常相似。
+
+在第一个例子中，令
+\[
+W=\Spec\mathbb Z[X,Y]/(X^3-2Y^3-1),\qquad B=\Spec\mathbb Z,
+\]
+并令 $\pi:W\to B$ 为单射
+\[
+\mathbb Z\hookrightarrow\mathbb Z[X,Y]/(X^3-2Y^3-1)
+\]
+所对应的态射。于是，方程 (1.2) 的解 $(x,y)$ 与 $\pi$ 的\term{截面}{section}{section} $s:B\to W$ 一一对应，因为这些解对应于同态
+\[
+\mathbb Z[X,Y]/(X^3-2Y^3-1)\longrightarrow\mathbb Z,
+\qquad X\longmapsto x,\quad Y\longmapsto y,
+\]
+且这两个环映射的复合是 $\mathbb Z$ 上的恒等映射。
+
+在第二个例子中，令
+\[
+W=\operatorname{Proj}\mathbb Z[X,Y,Z]/(X^4+Y^4-Z^4),\qquad B=\Spec\mathbb Z.
+\]
+则 $\pi$ 的截面 $s:B\to W$ 与 $\pi$ 的\term{一般纤维}{generic fiber}{fibre générique}上剩余域为 $\mathbb Q$ 的闭点一一对应。其中一个方向由\term{固有性的赋值判别法}{valuative criterion of properness}{critère valuatif de propreté}给出，另一个方向通过在 $W$ 中取闭包得到。这些闭点又与 (1.4) 的有理解一一对应。
+
+所以，在这两个例子中，解都与 $\pi:W\to B$ 的截面一一对应。整点与有理点的区别体现在：第一个例子中的 $\pi$ 是仿射态射，而第二个例子中的 $\pi$ 是射影态射。
+
+注意，在第二个例子中，由固有性的赋值判别法，作为 $B$ 的仿射坐标环，可以用任意分式域为 $\mathbb Q$ 的环替代 $\mathbb Z$。但在整点问题中，换用 $\mathbb Z$ 的局部化就会改变问题。例如，取 $B=\Spec\mathbb Z[\tfrac12]$，就允许 $x,y$ 的分母中出现 $2$ 的幂。
+
+\section*{§2. Siegel 引理}
+\addcontentsline{toc}{section}{§2. Siegel 引理}
+Siegel 引理是\term{抽屉原理}{pigeonhole principle}{principe des tiroirs}的推论。实际上，这一思想可追溯到 Thue，只是他并未把它明确表述为一个独立的引理。
+
+\origpage{173}{168}
+\begin{statement}{引理 2.1（Siegel 引理）}
+设 $A$ 是一个 $M\times N$ 矩阵，$M<N$，其各项均为绝对值不超过 $Q$ 的整数。则存在非零向量 $\boldsymbol x=(x_1,\ldots,x_N)\in\mathbb Z^N$，使 $A\boldsymbol x=0$，且
+\[
+|x_i|\le\left\lfloor(NQ)^{M/(N-M)}\right\rfloor=:Z,
+\qquad i=1,\ldots,N.
+\]
+\end{statement}
+\begin{proof}
+盒子
+\begin{equation*}
+0\le x_i\le Z,\qquad i=1,\ldots,N\tag{2.2}
+\end{equation*}
+中的整点数为 $(Z+1)^N$。另一方面，对每个这样的 $\boldsymbol x$ 以及每个 $j=1,\ldots,M$\footnote{译注：原书此处印为 $N$，按矩阵维数应为 $M$。}，向量 $\boldsymbol y:=A\boldsymbol x$ 的第 $j$ 个坐标 $y_j$ 均位于区间 $[-n_jQZ,(N-n_j)QZ]$ 中，其中 $n_j$ 为 $A$ 的第 $j$ 行中负项的个数。因此，$A\boldsymbol x$ 至多有
+\[
+(NQZ+1)^M<(Z+1)^N
+\]
+种取值。故必有不同的向量 $\boldsymbol x_1,\boldsymbol x_2$ 满足 (2.2)，且 $A\boldsymbol x_1=A\boldsymbol x_2$。于是 $\boldsymbol x=\boldsymbol x_1-\boldsymbol x_2$ 满足引理的要求。
+\end{proof}
+为进一步突出本课题的算术几何性质，下面所有结果都在环 $R_S$ 的背景下讨论；$R_S$ 由数域 $k$ 的整数环 $R$ 在有限素位集 $S$ 中的素理想处作局部化而得。我们还始终假定 $S$ 包含 $k$ 的所有阿基米德素位。
+
+对 Siegel 引理而言，推广到数域就已经足够；这一推广至少在 LeVeque 的著作中就已得到证明（[LeV]，定理 4.14 的证明）。我们使用的形式由 Bombieri 和 Vaaler 给出。不过，在此之前需要先定义一些\term{高度}{height}{hauteur}（另参第 5 节）。回顾经典定义：对 $x\in k\setminus\{0\}$，
+\[
+h(x)=\frac1{[k:\mathbb Q]}\sum_v\log\max(\|x\|_v,1).
+\]
+\begin{statement}{定义 2.3}
+\begin{enumerate}[label=(\alph*).]
+\item 对非零向量 $\boldsymbol x\in k^N$，定义
+\[
+h(\boldsymbol x)=\frac1{[k:\mathbb Q]}\sum_v\log\max_{1\le i\le N}\|x_i\|_v.
+\]
+\item 若 $P\in\mathbb P^n(k)$ 的齐次坐标为 $[x_0:\cdots:x_n]$，则 $h(P)$ 定义为向量 $(x_0,\ldots,x_n)\in k^{n+1}$ 的高度。由乘积公式 (0.4)，它与齐次坐标的选取无关。
+\item 对 $x\in k$，定义 $h(x)=h([1:x])$，即 $\mathbb P^1$ 上相应点的高度。
+\item 对秩为 $M$ 的 $M\times N$ 矩阵 $A$，定义 $h(A)$ 为由 $A$ 的所有 $M\times M$ 子式组成的向量的高度。\translatornote{19}
+\end{enumerate}
+\end{statement}
+对于数域 $k$，以 $D_{k/\mathbb Q}$ 表示其\term{判别式}{discriminant}{discriminant}，以 $s$ 表示其复素位的个数。则 Siegel 引理在数域上的推广如下。
+
+\origpage{174}{169}
+\begin{statement}{定理 2.4（Siegel--Bombieri--Vaaler，[B-V]，定理 9）}
+设 $A$ 是秩为 $M$、各项属于 $k$ 的 $M\times N$ 矩阵。把 $A$ 视为从 $k^N$ 到 $k^M$ 的线性变换，则其核有一组基 $\{\boldsymbol x_1,\ldots,\boldsymbol x_{N-M}\}$，满足\translatornoteref{19}
+\[
+\sum_{i=1}^{N-M}h(\boldsymbol x_i)
+\le h(A)+\frac{N-M}{[k:\mathbb Q]}
+\log\left(\left(\frac2\pi\right)^s\sqrt{|D_k|}\right).
+\]
+\end{statement}
+这里不需要常数的精确值，列出它仅供参考。
+
+注意，这一结果不仅适用于任意数域，还给出了 $A$ 的核的全部生成元的信息；在讨论定理 0.2 的证明时（第 18 节），我们会简要用到这一点。
+
+\section*{§3. 指标}
+\addcontentsline{toc}{section}{§3. 指标}
+设 $Q(X,Y)$ 是非零二元多项式。回顾一下，$Q$ 在 $0$ 处的\term{重数}{multiplicity}{multiplicité}是使得 $Q$ 中存在非零单项式 $a_{ij}X^iY^j$ 且 $i+j=t$ 的最小整数 $t$。这一定义对两个变量一视同仁，而这里需要给它们赋予可以变化的权。因此，我们将定义一种带权变量的重数，称为\term{指标}{index}{indice}。
+\begin{statement}{定义 3.1}
+设
+\[
+Q(X_1,\ldots,X_n)=
+\sum_{\ell_1,\ldots,\ell_n\ge0}a_{\ell_1,\ldots,\ell_n}X_1^{\ell_1}\cdots X_n^{\ell_n}
+=:\sum_{(\ell)\ge0}a_{(\ell)}X^{(\ell)}
+\]
+是非零 $n$ 元多项式，$d_1,\ldots,d_n$ 为正实数。$Q$ 在 $0$ 处关于权 $d_1,\ldots,d_n$ 的指标定义为
+\[
+t(Q,(0,\ldots,0),d_1,\ldots,d_n)
+=\min\left\{\sum_{i=1}^n\frac{\ell_i}{d_i}\ \middle|\ a_{(\ell)}\ne0\right\}.
+\]
+当权 $d_1,\ldots,d_n$ 在上下文中明确时，常简记为 $t(Q,(0,\ldots,0))$。
+\end{statement}
+注意，虽然上述定义是对多项式给出的，但它同样适用于幂级数。此外，把某个 $X_i$ 替换为幂级数 $b_1X_i+b_2X_i^2+\cdots$（$b_1\ne0$），不会改变指标。同样，给 $Q$ 乘上一个常数项非零的幂级数（即一个单位），指标也不变。最后，还可以用若干变量代替每个 $X_i$。因此，指标可以更一般地定义于簇的乘积上的线层截面。
+\begin{statement}{定义 3.2}
+设 $\gamma$ 是簇的乘积 $X_1\times\cdots\times X_n$ 上线层 $\mathscr L$ 的有理截面。设 $P=(P_1,\ldots,P_n)$ 是 $\prod X_i$ 的一个正则点，且 $\gamma$ 在 $P$ 处正则。取在 $P$ 的一个邻域内生成 $\mathscr L$ 的截面 $\gamma_0$；对每个 $i=1,\ldots,n$，再取 $P_i$ 处的一组\term{局部参数}{local parameters}{paramètres locaux} $z_{ij}$（$j=1,\ldots,\dim X_i$），使所有 $z_{ij}(P_i)=0$。
+\origpage{175}{170}
+于是，$\gamma/\gamma_0$ 是 $P$ 的一个邻域内的正则函数，可以写成幂级数
+\[
+\gamma/\gamma_0=\sum_{(\ell)\ge0}a_{(\ell)}X^{(\ell)}.
+\]
+这里 $(\ell)=(\ell_{ij})$（$i=1,\ldots,n$，$j=1,\ldots,\dim X_i$）是一个 $(\dim X_1+\cdots+\dim X_n)$ 元组。再设 $d_1,\ldots,d_n$ 为正实数，则 $\gamma$ 在 $P$ 处关于权 $d_1,\ldots,d_n$ 的指标，记为 $t(\gamma,P,d_1,\ldots,d_n)$ 或简记为 $t(\gamma,P)$，定义为
+\[
+\min\left\{\sum_{i=1}^n\sum_{j=1}^{\dim X_i}\frac{\ell_{ij}}{d_i}\ \middle|\ a_{(\ell)}\ne0\right\}.
+\]
+\end{statement}
+如上所述，这一定义与 $\gamma_0$ 和局部参数 $z_{ij}$ 的选择无关。
+
+作为特例，若 $n=2$、所有 $X_i$ 均为 $\mathbb P^1$，且所有 $P_i$ 都不是无穷远点，则 $\gamma$ 只是一个二元多项式；把 $P$ 平移到原点后，这一定义就化为前一个定义。
+
+\section*{§4. Roth 定理的证明梗概}
+\addcontentsline{toc}{section}{§4. Roth 定理的证明梗概}
+概括地说，Roth 定理的证明归结为一套涉及指标的复杂不等式。先陈述定理的一般形式。
+\begin{statement}{定理 4.1（Roth [Ro]）}
+固定 $\epsilon>0$、$k$ 的一个有限素位集 $S$，以及对每个 $v\in S$ 给定的 $\alpha_v\in\overline{\mathbb Q}$。则除有限多个 $x\in k$ 外，都有
+\begin{equation*}
+\frac1{[k:\mathbb Q]}\sum_{v\in S}-\log\min(\|x-\alpha_v\|_v,1)
+\le(2+\epsilon)h(x).\tag{4.2}
+\end{equation*}
+\end{statement}
+若 $k=\mathbb Q$ 且 $S=\{\infty\}$，这一陈述便化为第 1 节中的结论。
+
+这里只介绍证明梗概；完整论述可见 [L 5]、[Sch] 以及 [Ro]。
+
+首先，可以假设所有 $\alpha_v$ 都属于 $k$。否则，取包含所有 $\alpha_v$ 的 $k$ 的有限扩张 $k'$，令 $S'$ 为 $k'$ 中位于 $v\in S$ 之上的素位 $w$ 的集合，并对每个 $w\mid v$，取 $\alpha_v$ 的某个共轭 $\alpha_w$。（在 $\alpha_v\notin k$ 时，要写出 $\|x-\alpha_v\|_v$，就必须选择 $\|\cdot\|_v$ 到 $k(\alpha_v)$ 的某个延拓；相应地选择 $\alpha_w$。）只要适当地选择 $\alpha_w$，把 $k$ 换为 $k'$ 后，等式左端保持不变，右端亦然。
+
+证明的基本思路是：假设 (4.2) 有无限多个反例，并由此推出矛盾。具体而言，我们选取 $n$ 个良好逼近，要求它们还满足下面列出的一些附加条件。
+
+证明分为五步，不过常见的处理会把前两步或后两步合并。
+
+前两步构造一个具有特定性质的\term{辅助多项式}{auxiliary polynomial}{polynôme auxiliaire} $Q$。令 $\alpha_1,\ldots,\alpha_m$ 为所有 $\alpha_v$（$v\in S$）所取的互不相同的值。另取正整数 $d_1,\ldots,d_n$。这些整数要取得很大：只要它们的比值固定，就可以让它们任意大，而不影响证明中的其他选择。
+
+\origpage{176}{171}
+所构造的 $Q$ 应是关于 $n$ 个变量 $X_1,\ldots,X_n$ 的非零多项式，且对每个 $i$，关于 $X_i$ 的次数不超过 $d_i$。第一个要求是：在每个点 $(\alpha_i,\ldots,\alpha_i)$（$i=1,\ldots,m$）处，指标都至少为 $n(\tfrac12-\epsilon_1)$。这类多项式可通过解一个线性代数问题来构造：以 $Q$ 的系数为未知量，以 $Q$ 在指定点 $(\alpha_i,\ldots,\alpha_i)$ 处的若干导数消失为线性方程。若方程数小于未知量数（即 $Q$ 的系数个数），就存在非零解。第一步就是证明这一点；这里省略关于 $\epsilon_1$ 和 $m$ 的精确不等式，因为本讲座不需要它们。
+
+所以，第一步本质上是几何的。
+
+第二步应用 Siegel 引理，说明可以把这样的多项式构造为系数属于 $R_S$ 且高度有界。（这里把一个多项式的高度定义为其系数向量的高度。）由第一步，我们知道 Siegel 引理中 $M$ 和 $N$ 的值，于是得到高度界
+\begin{equation*}
+h(Q)\le c_1\sum_{i=1}^n d_i.\tag{4.3}
+\end{equation*}
+这里常数 $c_1$（可不是 Chern 类！）依赖于 $k,S,n$ 和 $\alpha_1,\ldots,\alpha_m$。这一界之所以成立，是因为 $M/(N-M)$ 有上界，而约束方程的系数是 $\alpha_i$ 的幂与某些二项式系数的乘积。
+
+第三步与前两步无关。在这一步，我们选择不满足 (4.2) 的元素 $x_1,\ldots,x_n\in k$。另外，向量
+\[
+\bigl(-\log\min(\|x_i-\alpha_v\|_v,1)\bigr)_{v\in S}\in\mathbb R^{\#S},
+\qquad i=1,\ldots,n,
+\]
+都要大致指向同一个方向。由于这些向量位于有限维空间中，用抽屉原理很容易做到这一点。准确地说，必须存在实数 $\kappa_v$（$v\in S$），使
+\[
+-\log\min(\|x_i-\alpha_v\|_v,1)\ge\kappa_vh(x_i),
+\qquad v\in S,\quad i=1,\ldots,n,
+\]
+并且
+\begin{equation*}
+\frac1{[k:\mathbb Q]}\sum_{v\in S}\kappa_v=2+\frac\epsilon2.\tag{4.4}
+\end{equation*}
+这些点还须满足
+\[
+h(x_1)\ge c_2
+\]
+以及
+\[
+\frac{h(x_{i+1})}{h(x_i)}\ge r,\qquad i=1,\ldots,n-1.
+\]
+这些条件也很容易满足，因为按假设，不满足 (4.2) 的 $x\in k$ 有无限多个，而且这些 $x$ 的高度趋于无穷。
+
+选定 $x_1,\ldots,x_n$ 后，取一个很大的整数 $d$，再选整数 $d_i$，使 $d_i$ 接近 $d/h(x_i)$（$i=1,\ldots,n$）。
+\origpage{177}{172}
+在第四步，我们要给出 $Q$ 在 $(x_1,\ldots,x_n)$ 处的指标的下界。这可通过 Taylor 级数论证实现：对 $v\in S$，写成
+\[
+Q(X_1,\ldots,X_n)=\sum_{(\ell)\ge0}b_{v,(\ell)}(X-\alpha_v)^{(\ell)}.
+\]
+第二步中的 (4.3) 给出了 $\|b_{v,(\ell)}\|_v$ 的大小界；而由第一步的指标条件，若
+\[
+\frac{\ell_1}{d_1}+\cdots+\frac{\ell_n}{d_n}
+<n\left(\frac12-\epsilon_1\right),
+\]
+则 $b_{v,(\ell)}=0$。因此，系数非零的项必定含有某些因子 $X_i-\alpha_v$ 的高次幂；于是 (4.2) 不成立，便对 $v\in S$ 时的 $\|Q(x_1,\ldots,x_n)\|_v$ 给出相当好的界。事实上，该 Taylor 级数的非零项不超过
+\begin{align*}
+&\prod_{i=1}^n\exp\bigl(-\kappa_v\ell_i h(x_i)\bigr)\cdot\text{其他因子}\\
+&\qquad\le\exp\left(-\kappa_vd\sum_{i=1}^n\frac{\ell_i}{d_i}\right)\cdot\text{其他因子}\\
+&\qquad\le\exp\left(-\kappa_vdn\left(\tfrac12-\epsilon_1\right)\right)\cdot\text{其他因子}.
+\end{align*}
+对 $v\notin S$，我们也能用 $x_1,\ldots,x_n$ 的分母，控制 $\|Q(x_1,\ldots,x_n)\|_v$。若这些界足够好，就会与乘积公式矛盾，从而推出 $Q(x_1,\ldots,x_n)=0$。事实上，对所有 $v$ 取乘积时，其他因子大致合并为 $\exp([k:\mathbb Q]dn)$；再由 (4.4)，有
+\begin{align*}
+\prod_v\|Q(x_1,\ldots,x_n)\|_v
+&\le\exp\left(-[k:\mathbb Q]\left(2+\tfrac\epsilon2\right)dn\left(\tfrac12-\epsilon_1\right)\right)\\
+&\qquad\cdot\exp([k:\mathbb Q]dn)<1.
+\end{align*}
+对 $Q$ 的某些偏导数应用同一论证，也能得到消失性；于是获得 $Q$ 在 $(x_1,\ldots,x_n)$ 处的指标的下界。
+
+注意，$d_i$ 的选择抵消了各个 $x_i$ 高度的差异，所以每个 $x_i$ 对这一步估计的影响实际上大致相同。
+
+最后，第五步证明上述下界与 $Q$ 的某些其他性质矛盾。一种办法是利用第二步中得到的高度 $h(Q)$。
+\begin{statement}{引理 4.5（Roth [Ro]；另见 [Bo]）}
+设 $Q(X_1,\ldots,X_n)\ne0$ 是具有代数数系数的 $n$ 元多项式，关于 $X_i$ 的次数不超过 $d_i$。设 $x_1,\ldots,x_n$ 为代数数，并记
+\[
+t=t(Q,(x_1,\ldots,x_n),d_1,\ldots,d_n).
+\]
+假设 $\epsilon_2>0$ 满足
+\[
+\frac{d_{i+1}}{d_i}\le\epsilon_2^{\,2^{n-1}},\qquad i=1,\ldots,n-1,
+\]
+以及
+\begin{equation*}
+d_i h(x_i)\ge\epsilon_2^{-2^{n-1}}\bigl(h(Q)+2nd_1\bigr),
+\qquad i=1,\ldots,n.\tag{4.6}
+\end{equation*}
+则
+\[
+\frac tn\le2\epsilon_2.
+\]
+\end{statement}
+
+\origpage{178}{173}
+另一种办法是利用第一步得到的指标信息。下面给出一个经过简化的版本，以减少额外记号。更一般的结论对 $n$ 个变量，或者两条曲线的乘积也成立。
+\begin{statement}{引理 4.7（Dyson [D]）}
+令 $\operatorname{Vol}(t)$ 为集合
+\[
+\{(x_1,x_2)\in[0,1]^2\mid x_1+x_2\le t\}
+\]
+的面积，因而在 $t\le1$ 时，$\operatorname{Vol}(t)=t^2/2$。设 $\xi_1,\ldots,\xi_m$ 是 $\mathbb C^2$ 中的 $m$ 个点，其第一坐标两两不同，第二坐标也两两不同。设 $Q\in\mathbb C[X_1,X_2]$ 关于 $X_1$ 的次数不超过 $d_1$，关于 $X_2$ 的次数不超过 $d_2$。则
+\[
+\sum_{i=1}^m\operatorname{Vol}\bigl(t(Q,\xi_i,d_1,d_2)\bigr)
+\le1+\frac{d_2}{2d_1}\max(m-2,0).
+\]
+\end{statement}
+从历史上看，Dyson 的方法先于 Roth 的方法，不过近些年 Bombieri 又重新发展了它。从审美角度，我更喜欢 Dyson 的方法，尽管使用 Roth 引理要快捷得多。特别是，正是 Dyson 引理的形式启发了 Mordell 猜想证明第一步中所用的那一个线层的选择。
+
+Roth 在这里的创新是使用 $n$ 个良好逼近，而不是两个；不过目前我们只使用两个良好逼近——这对 Thue 关于整点的工作已经足够。
+
+\section*{§5. 记号}
+\addcontentsline{toc}{section}{§5. 记号}
+本文余下部分将大量使用 Gillet 和 Soulé 把 Arakelov 理论推广到高维情形的语言及结果。有关这一课题的一般参考资料，见 [So 2]、[G-S 1] 和 [G-S 2]。
+
+Arakelov 理论中通常把 $k$ 的互为复共轭但彼此不同的嵌入，看作给出不同的局部阿基米德纤维。这里则沿用一般代数数论中更早的约定，把互为复共轭的嵌入视为同一个，因此只给出一个阿基米德纤维。Gillet--Soulé 理论允许这样做，因为理论中假定复共轭素位处的所有对象都在复共轭作用下互相对应。
+
+因此，若 $\mathscr X$ 是\term{算术簇}{arithmetic variety}{variété arithmétique}，$v$ 为阿基米德素位，就以 $\mathscr X_v$ 表示集合 $\mathscr X(\bar k_v)$，并通过 $\bar k_v$ 到 $\mathbb C$ 的一个固定嵌入，将其视为复流形。
+
+我们的记号还在另一方面不同于 Gillet 和 Soulé 的记号。例如，对于\term{算术除子}{arithmetic divisor}{diviseur arithmétique}（即 $\widehat Z^1(\mathscr X)$ 的元素），我们不用一对 $\overline D=(D,g_D)$ 表示，而用单个字母 $D$ 表示整个二元组，并用 $D_{\mathrm{fin}}$ 表示其第一分量：$D=(D_{\mathrm{fin}},g_D)$。类似地，$\mathscr L$ 通常表示带度量的线层，其对应的不带度量的线层记为 $\mathscr L_{\mathrm{fin}}$，等等。这种记号也许更接近 Arakelov 最初工作的用法，而不同于 Gillet、Soulé 等人较近的工作。我还认为，带有无穷远处附加结构的对象是更自然的研究对象，记号也应体现这一点。
+
+\origpage{179}{174}
+在 Gillet--Soulé 的 Riemann 定理理论中（参见 [G-S 3] 和 [G-S 4]），用 $L^2$ 范数给带度量线层的整体截面 $\gamma$ 赋予度量是很自然的；但在这里，使用\term{上确界范数}{supremum norm}{norme uniforme}更方便：
+\[
+\|\gamma\|_{\mathrm{sup},v}:=
+\sup_{P\in X(\bar k_v)}\|\gamma(P)\|.
+\]
+由于 $P\in\mathscr X(\bar k_v)$，右端的范数是 $\mathscr X_v$ 上 $\mathscr L$ 的范数。如果 $P\in X(k)$，我们则写成 $\|\gamma(P)\|_v$，表示 $\mathscr X_v$ 上与 $P\in X(k)$ 对应的点（记为 $P_v$）处的范数。此外，若 $E\subseteq\mathscr X$ 是对应于 $P$ 的截面的像，就令 $E_v=P_v$，作为记号 $\mathscr X_v$ 的一个特例。
+
+为便于后文引用，这里说明，我们经常要考虑 $\mathbb Q$-除子或 $\mathbb Q$-除子类，即有理系数除子（注意，我们并不与 $\mathbb Q$ 作张量积：张量积会消去挠元，而这在转为线层时会引起技术困难）。除非另作说明，除子都指\term{Cartier 除子}{Cartier divisor}{diviseur de Cartier}。若 $L$ 是这样的 $\mathbb Q$-除子类，则写 $\mathcal O(dL)$ 时，隐含假设 $d$ 具有足够的整除性，以消去 $L$ 中的所有分母。另外，$\Gamma(X,L)$ 和 $h^i(X,L)$ 分别表示 $\Gamma(X,\mathcal O(L))$ 和 $h^i(X,\mathcal O(L))$。
+
+最后，对任意乘积，以 $\operatorname{pr}_i$ 表示到第 $i$ 个因子的投影态射。
+
+\section*{§6. 导数}
+\addcontentsline{toc}{section}{§6. 导数}
+在改造 Roth 定理的证明以证明 Mordell 猜想时，我们把 $\mathbb P^1$ 换为任意曲线 $C$。因此，不再处理多项式，而要考虑 $C^n$ 上更内在的对象，即某些线层的截面。相应地，Roth 证明的第四步需要线层截面在一点处的\term{偏导数}{partial derivative}{dérivée partielle}概念。
+
+先令 $\pi:X\to B$ 为曲线 $C$ 对应的\term{算术曲面}{arithmetic surface}{surface arithmétique}。由 Abhyankar 的一个定理 [Ab] 或 [Ar]，可以假设 $X$ 是正则曲面。设 $W$ 是一个算术簇，暂且假设 $W=X\times_B\cdots\times_BX$（实际上会对这个簇略作修正）；这样 $W$ 就是 $C^n$ 的一个模型。设 $\gamma$ 是 $W$ 上带度量线层 $\mathscr L$ 的截面，$(P_1,\ldots,P_n)$ 是 $C^n$ 上的有理点，$E\subseteq W$ 为相应的算术曲线，于是 $q:W\to B$ 的限制给出 $E\simeq B$。
+
+态射 $\pi:X\to B$ 未必光滑，但这里研究的是有理点，所以这并不构成问题。事实上，对 $i=1,\ldots,n$，令 $E_i$ 为 $X$ 中对应于 $P_i$ 的算术曲线；则 $E_i$ 与任意纤维的交数为 $1$（更准确地说是 $\log q_v$），这意味着 $E_i$ 只能与纤维的一条局部分支相交，而且只能交于该分支的光滑点。因此，完备局部环 $\widehat{\mathcal O}_{X,E_{i,v}}$ 在 $\widehat{\mathcal O}_{B,v}$ 上由除子 $E_i$ 的局部生成元生成；所以 $\pi$ 在 $E_i$ 的一个邻域内光滑，同样，$q$ 在 $E$ 的一个邻域内也光滑。
+
+取 $E$ 中的闭点 $x$，以 $\widehat{\mathcal O}_{B,q(x)}$ 表示 $B$ 在 $q(x)$ 处的完备局部环。对 $i=1,\ldots,n$，令 $z_i$ 为表示除子 $E_i$ 的局部方程。如上所述，$W$ 在 $x$ 处的完备局部环可写为
+\[
+\widehat{\mathcal O}_{W,x}\simeq
+\widehat{\mathcal O}_{B,q(x)}[[z_1,\ldots,z_n]].
+\]
+
+\origpage{180}{175}
+若 $\gamma_0$ 是 $\mathscr L$ 在 $x$ 处的局部生成元，则 $\gamma/\gamma_0$ 属于这个局部环，可写为
+\[
+\frac\gamma{\gamma_0}=\sum_{(\ell)\ge0}b_{(\ell)}z^{(\ell)}.
+\]
+每一项 $\gamma_0b_{(\ell)}z^{(\ell)}$ 都属于子层
+\[
+\mathscr L\otimes\mathcal O\bigl(-\ell_1\operatorname{pr}_1^{-1}E_1-\cdots-\ell_n\operatorname{pr}_n^{-1}E_n\bigr)
+\subseteq\mathscr L.
+\]
+一般而言，这个元素依赖于 $\gamma_0$ 和 $z_1,\ldots,z_n$ 的选择。不过，若对所有满足 $\ell'_1\le\ell_1,\ldots,\ell'_n\le\ell_n$ 的 $(\ell')\ne(\ell)$ 都有 $b_{(\ell')}=0$（即 $(\ell)$ 是一个首项），则这一项在 $E$ 上的限制与上述选择无关。由此定义偏导数
+\[
+D_{(\ell)}\gamma(P_1,\ldots,P_n)\in
+\left.\bigl(\mathscr L\otimes\mathcal O(-\ell_1\operatorname{pr}_1^{-1}E_1-\cdots-\ell_n\operatorname{pr}_n^{-1}E_n)\bigr)\right|_E.
+\]
+特别地，这个导数是上述层的正则截面。对于 $E$ 在阿基米德素位处的点，我们还需要相应的事实。这转化为上述截面在阿基米德素位处的度量上界，而这一上界依赖于 $\mathcal O(E_i)$ 上度量的选择。
+
+为统一地给 $\mathcal O(E_i)$ 赋予度量，对每个阿基米德素位 $v$，在 $C(\bar k_v)\times C(\bar k_v)$ 上的 $\mathcal O(\Delta)$ 上选一个度量。例如可以使用 Arakelov 理论中的 Green 函数，但任意光滑度量都可以。然后，将 $\mathcal O(E_i)$ 的度量取为这个度量在 $E_{i,v}\times C(\bar k_v)$ 上的限制。
+
+下一个引理完全在阿基米德素位 $v$ 的局部纤维上进行，也就是在一个复流形上进行。因此，在该引理中，设 $C$ 为紧 Riemann 曲面。
+
+由紧致性论证，存在常数 $\rho=\rho(C)>0$，使得对任意 $P\in C$，都存在 $P$ 的邻域 $U_P\subseteq C$ 及坐标 $z_P:U_P\xrightarrow\sim\mathbb D_\rho$，其中 $z_P(P)=0$；并且把 $z_P$ 视为 $\mathcal O(-P)$ 的截面时，其在 $P$ 处的范数满足
+\begin{equation*}
+|z_P(P)|\le1.\tag{6.1}
+\end{equation*}
+\begin{statement}{引理 6.2}
+固定一点 $P_0=(P_1,\ldots,P_n)\in C^n$。设 $\mathscr L$ 是 $W$ 上带度量的线层，$\gamma\in\Gamma(W,\mathscr L)$。设 $\gamma_0$ 为 $\mathscr L$ 在 $U:=U_{P_1}\times\cdots\times U_{P_n}$ 上的一个截面，且在 $P_0$ 处非零。假设元组 $(\ell)=(\ell_1,\ldots,\ell_n)$ 使导数 $D_{(\ell)}\gamma(P_1,\ldots,P_n)$ 有定义。\footnote{译注：原书本句的导数中多出未定义的 $f^*$；这里依照紧接着的不等式和证明，写成 $D_{(\ell)}\gamma$。}则
+\begin{align*}
+-\log\|D_{(\ell)}\gamma(P_0)\|
+\ge{}&-\log\|\gamma\|_{\mathrm{sup}}+\sum_{i=1}^n\ell_i\log\rho\\
+&+\log\inf_{P\in U}\frac{\|\gamma_0(P)\|}{\|\gamma_0(P_0)\|}.
+\end{align*}
+\end{statement}
+\begin{proof}
+记 $z_{P_0}$ 为函数元组 $(\operatorname{pr}_1^*z_{P_1},\ldots,\operatorname{pr}_n^*z_{P_n})$，并写成
+\[
+\gamma=\gamma_0\sum_{(i)\ge0}a_{(i)}z_{P_0}^{(i)}.
+\]
+\origpage{181}{176}
+于是
+\begin{align*}
+\|\gamma\|_{\mathrm{sup}}
+&\ge\sup_{P\in U}\left(\|\gamma_0(P)\|
+\left|\sum_{(i)\ge0}a_{(i)}z_{P_0}^{(i)}(P)\right|\right)\\
+&\ge\inf_{P\in U}\|\gamma_0(P)\|\cdot
+\sup_{z\in\mathbb D_\rho^n}\left|\sum_{(i)\ge0}a_{(i)}z^{(i)}\right|\\
+&\ge\|\gamma_0(P_0)\|\inf_{P\in U}
+\frac{\|\gamma_0(P)\|}{\|\gamma_0(P_0)\|}
+|a_{(\ell)}|\rho^{\ell_1+\cdots+\ell_n}.
+\end{align*}
+最后一步来自多复变量的 Cauchy 不等式：
+\[
+|a_{(\ell)}|\rho^{\ell_1+\cdots+\ell_n}
+\le\sup_{z\in\mathbb D_\rho^n}\left|\sum_{(i)\ge0}a_{(i)}z^{(i)}\right|.
+\]
+所以由 (6.1)，
+\[
+\bigl\|(\gamma_0a_{(\ell)}z_{P_0}^{(\ell)})(P_0)\bigr\|
+\rho^{\ell_1+\cdots+\ell_n}
+\inf_{P\in U}\frac{\|\gamma_0(P)\|}{\|\gamma_0(P_0)\|}
+\le\|\gamma\|_{\mathrm{sup}}.
+\]
+\end{proof}
+当然，现在可以用公式 $\|\cdot\|_v=|\cdot|^{[k_v:\mathbb R]}$，把这一结果转入算术背景。此外，若 $P\in C(k)$ 且 $v\mid\infty$，我们以 $U_{P,v}$ 和 $z_{P,v}$ 分别代替 $U_{P_v}$ 和 $z_{P_v}$。
+\begin{statement}{推论 6.3}
+设 $\gamma$ 是 $W$ 上带度量线层 $\mathscr L$ 的整体截面，$E\subseteq W$ 对应于某点 $P_0=(P_1,\ldots,P_n)\in C^n$。设 $d_1,\ldots,d_n$ 为正实数。对每个 $v\mid\infty$，取 $\mathscr L|_{U_v}$ 的局部生成元 $\gamma_{0,v}$，其中 $U_v=U_{P_1,v}\times\cdots\times U_{P_n,v}$。则指标 $t=t(\gamma,P_0,d_1,\ldots,d_n)$ 满足
+\[
+t\ge
+\frac{\displaystyle
+-\deg\mathscr L|_E-\sum_{v\mid\infty}\log\|\gamma\|_{\mathrm{sup},v}
++\sum_{v\mid\infty}\log\inf_{P\in U_v}\frac{\|\gamma_{0,v}(P)\|}{\|\gamma_{0,v}(P_{0,v})\|}}
+{\displaystyle
+\max_{1\le i\le n}\deg\mathcal O(-d_iE_i)|_{E_i}
+-[k:\mathbb Q]\log\rho\max_{1\le i\le n}d_i}.
+\]
+\end{statement}
+\begin{proof}
+取多重指标 $(\ell)$，使 $D_{(\ell)}\gamma(P_0)$ 有定义且非零。于是 $D_{(\ell)}\gamma(P_0)$ 是线层
+\[
+\left.\bigl(\mathscr L\otimes\mathcal O(-\ell_1\operatorname{pr}_1^*E_1-\cdots-\ell_n\operatorname{pr}_n^*E_n)\bigr)\right|_E
+\]
+的非零截面。用两种方式计算这一线层的次数 $\delta$，即可得到所需不等式。首先，其次数为
+\begin{align*}
+\delta&=\deg\mathscr L|_E+\sum_{i=1}^n\ell_i\deg\mathcal O(-E_i)|_{E_i}\\
+&\le\deg\mathscr L|_E+\sum_{i=1}^n\frac{\ell_i}{d_i}
+\max_{1\le i\le n}\deg\mathcal O(-d_iE_i)|_{E_i}.
+\end{align*}
+\origpage{182}{177}
+另一方面，可通过引理 6.2，由 $E$ 上算术除子 $D_{(\ell)}\gamma(P_0)$ 的次数计算 $\delta$：
+\begin{align*}
+\delta&\ge\sum_{v\mid\infty}-\log\|D_{(\ell)}\gamma(P_0)\|_v\\
+&\ge\sum_{v\mid\infty}-\log\|\gamma\|_{\mathrm{sup},v}
++\sum_{v\mid\infty}\log\inf_{P\in U_v}\frac{\|\gamma_{0,v}(P)\|}{\|\gamma_{0,v}(P_{0,v})\|}
++[k:\mathbb Q]\log\rho\sum_{i=1}^n\ell_i\\
+&\ge\sum_{v\mid\infty}-\log\|\gamma\|_{\mathrm{sup},v}
++\sum_{v\mid\infty}\log\inf_{P\in U_v}\frac{\|\gamma_{0,v}(P)\|}{\|\gamma_{0,v}(P_{0,v})\|}\\
+&\qquad+\sum_{i=1}^n\frac{\ell_i}{d_i}\,[k:\mathbb Q]\log\rho\max_{1\le i\le n}d_i.
+\end{align*}
+这里假设 $\rho<1$。把这两个不等式合并，就得到推论，因为可以选择 $(\ell)$ 使
+\[
+t=\sum_{i=1}^n\frac{\ell_i}{d_i}.
+\]
+\end{proof}
+
+\section*{§7. Mordell 猜想的证明，以及 Bombieri 的若干简化}
+\addcontentsline{toc}{section}{§7. Mordell 猜想的证明，以及 Bombieri 的若干简化}
+为介绍 Mordell 猜想等结果的各种证明，我们先概述一个借用 Bombieri 证明思想的论证，因为所需的理论工具较少。更多细节见 [Bo]。
+
+先引入一些记号。设 $C$ 为所讨论的曲线，亏格为 $g$，则 $g>1$。设 $K_C$ 是 $C$ 上的一个\term{典范除子}{canonical divisor}{diviseur canonique}，令 $F=K_C/(2g-2)$，于是 $F$ 的次数为 $1$。这里的 $F$ 是一个 $\mathbb Q$-除子，即有理系数除子。在 $C\times C$ 上，以 $\operatorname{pr}_1,\operatorname{pr}_2$ 表示到两个因子的投影，令 $F_i=\operatorname{pr}_i^*F$（$i=1,2$），并以 $\Delta$ 表示 $C\times C$ 的对角线。令
+\[
+\Delta'=\Delta-F_1-F_2.
+\]
+取有理数 $\delta>0$ 和 $r>1$，并要求 $a_1(r):=\sqrt{(g+\delta)r}$ 也为有理数，则 $a_2(r):=\sqrt{(g+\delta)/r}$ 同样为有理数。证明前两步的目标是构造线层 $\mathcal O(dY)$ 的某个整体截面，其中 $d$ 是具有足够整除性的很大的正整数，且
+\[
+Y=Y_r=\Delta'+a_1F_1+a_2F_2.
+\]
+在 Bombieri 的证明中，第一步相当容易：由对偶性，$d$ 足够大时，$h^2(C\times C,dY)=0$。因此由 Hirzebruch Riemann--Roch 定理\translatornote{20}，
+\[
+h^0(C\times C,dY)\ge\frac{d^2Y^2}{2}\ge\delta d^2,
+\]
+这里用到了 $\Delta'^2=-2g$、$\Delta'F_1=\Delta'F_2=F_1^2=F_2^2=0$ 以及 $F_1\cdot F_2=1$。
+
+第二步稍需一些技巧。先固定 $N>0$，使 $NF$ 为\term{甚丰沛}{very ample}{très ample}除子；再固定 $\mathcal O(NF)$ 的整体截面 $x_0,\ldots,x_n$，使它们给出到 $\mathbb P^n$ 的相应嵌入。通过 $\operatorname{pr}_1$，也把它们视为 $C\times C$ 上 $\mathcal O(NF_1)$ 的截面；再以 $x'_0,\ldots,x'_n$ 表示通过 $\operatorname{pr}_2$ 得到的 $\mathcal O(NF_2)$ 的相应截面。
+
+\origpage{183}{178}
+再取充分大的整数 $s$，使
+\[
+B:=sF_1+sF_2-\Delta'
+\]
+为甚丰沛除子，并取 $C\times C$ 上 $\mathcal O(B)$ 的整体截面 $y_0,\ldots,y_m$，使之给出到 $\mathbb P^m$ 的相应嵌入。
+
+Bombieri 的一个关键思想是写成
+\[
+Y=\delta_1NF_1+\delta_2NF_2-B,
+\]
+其中 $\delta_i=(a_i+s)/N$。于是，$d$ 足够大时，$\mathcal O(dY)$ 的一个截面 $\gamma$ 满足：$\gamma y_i^d$ 可由多项式 $\Phi_i$ 表示，它关于 $x_0,\ldots,x_n$ 的次数为 $d\delta_1$，关于 $x'_0,\ldots,x'_n$ 的次数为 $d\delta_2$。事实上，令 $\mathscr I$ 为 $C\times C$ 在 $\mathbb P^n\times\mathbb P^n$ 中的像的理想层。由于
+\[
+\mathcal O(\delta_1,\delta_2)
+:=\operatorname{pr}_1^*\mathcal O(\delta_1)\otimes\operatorname{pr}_2^*\mathcal O(\delta_2)
+\]
+为丰沛层，$d$ 足够大时就有
+\[
+H^1(\mathbb P^n\times\mathbb P^n,
+\mathscr I\otimes\mathcal O(d\delta_1,d\delta_2))=0.
+\]
+由上同调长正合列，映射
+\begin{align*}
+&H^0(\mathbb P^n\times\mathbb P^n,\mathcal O(d\delta_1,d\delta_2))\\
+&\qquad\longrightarrow
+H^0(C\times C,\mathcal O(d\delta_1,d\delta_2)|_{C\times C})\\
+&\qquad\hspace{1.7em}=
+H^0(C\times C,\mathcal O(d\delta_1NF_1+d\delta_2NF_2))
+\end{align*}
+是满射。当然，它不是单射；为此，在 $H^0(\mathbb P^n\times\mathbb P^n,\mathcal O(d\delta_1,d\delta_2))$ 中选择一个子空间，使限制后的映射为单射，而且余核足够小。若坐标 $x_0,\ldots,x_n$ 取得足够一般，则由下列单项式张成的子空间满足这些条件：
+\[
+x_0^{d\delta_1}(x'_0)^{d\delta_2}
+\left(\frac{x_1}{x_0}\right)^a
+\left(\frac{x_2}{x_0}\right)^b
+\left(\frac{x'_1}{x'_0}\right)^{a'}
+\left(\frac{x'_2}{x'_0}\right)^{b'},
+\]
+其中\translatornote{21}
+\[
+0\le a+b\le d\delta_1,\quad0\le b\le N,\qquad
+0\le a'+b'\le d\delta_2,\quad0\le b'\le N.
+\]
+然后，对上述子空间中满足线性约束
+\[
+\Phi_i y_j^d=\Phi_j y_i^d,\qquad i,j\in\{0,\ldots,m\},
+\]
+的元组 $(\Phi_1,\ldots,\Phi_m)$ 应用 Siegel 引理。这一方程组的一个解给出局部截面 $\Phi_i/y_i^d$，它们可以粘合为整体截面
+\[
+\gamma\in\Gamma(C\times C,\mathcal O(dY)),
+\]
+并满足
+\begin{equation*}
+h(\gamma)\le cda_1+o(d).\tag{7.1}
+\end{equation*}
+这里，高度 $h(\gamma)$ 定义为由多项式 $\Phi_1,\ldots,\Phi_m$ 的系数组成的向量的高度。
+
+从这里往后，Bombieri 继续采用非常经典的方式，用 Weil 的高度理论代替算术相交理论。我们则换用较现代的语言继续证明。
+
+首先注意，可以固定 $F$ 和 $\Delta$ 上的度量，从而给 $Y$ 赋予度量。于是，借助多项式 $\Phi_i$ 的系数大小，就能得到 $Y$ 上的上确界范数的界。
+
+\origpage{184}{179}
+第三步使用 Mumford 在 1965 年的一篇论文 [M] 中提出的思想。与 Roth 定理一样，这里也用抽屉原理，不过这次是在 $J(k)\otimes_{\mathbb Z}\mathbb R$ 中进行；$J$ 表示 $C$ 的\term{Jacobian 簇}{Jacobian}{jacobienne}。由 Mordell--Weil 定理（[L 5]，第 6 章），这仍是有限维向量空间。
+
+固定一点 $P_0\in C$，令 $\phi_0:C\to J$ 为 $P\mapsto\mathcal O(P-P_0)$ 给出的映射。由 [M] 第 1011--1012 页，
+\begin{align*}
+\mathcal O(\Delta-\{P_0\}\times C-C\times\{P_0\})
+\simeq{}&\operatorname{pr}_1^*\phi_0^*\Theta_0
++\operatorname{pr}_2^*\phi_0^*\Theta_0\\
+&-(\phi_0\times\phi_0)^*(\operatorname{pr}_1+\operatorname{pr}_2)^*\Theta_0,
+\end{align*}
+其中 $\Theta_0$ 是 $J$ 上 theta 除子的除子类。不过，我们需要 $\Theta_0$ 是对称除子类。因此，固定 $a\in J$，使
+\[
+(2g-2)a=\mathcal O((2g-2)P_0-K_C),
+\]
+令 $\phi(P)=\phi_0(P)+a$，并以 $\Theta$ 表示相对于 $\phi$ 定义的 theta 除子的类。于是 $\Theta$ 是对称除子类，且在 $C\times C$ 上，模去 $(2g-2)$-挠元后，有
+\begin{equation*}
+\Delta'=-(\phi\times\phi)^*\mathscr P,\tag{7.2}
+\end{equation*}
+其中
+\[
+\mathscr P:=(\operatorname{pr}_1+\operatorname{pr}_2)^*\Theta
+-\operatorname{pr}_1^*\Theta-\operatorname{pr}_2^*\Theta
+\]
+是\term{Poincaré 除子类}{Poincaré divisor class}{classe de diviseur de Poincaré}。另见 [L 5]，第 5 章第 5 节。
+
+以 $\widehat h_\Theta$ 表示 $J$ 上相对于 $\Theta$ 的\term{Néron--Tate 典范高度}{Néron--Tate canonical height}{hauteur canonique de Néron--Tate}（参见 [Sil]，定理 4.3，或 [L 5]，第 5 章第 3、6、7 节）。它对群运算而言是二次的，因而定义双线性配对
+\[
+(P_1,P_2)_\Theta=\widehat h_\Theta(P_1+P_2)
+-\widehat h_\Theta(P_1)-\widehat h_\Theta(P_2),
+\]
+赋予向量空间 $J(k)\otimes_{\mathbb Z}\mathbb R$ 一个内积结构。典范高度还满足
+\begin{equation*}
+\widehat h_\Theta(P)=h_\Theta(P)+O(1).\tag{7.3}
+\end{equation*}
+令 $|P|^2=(P,P)_\Theta$，于是 $|P|^2=2\widehat h_\Theta(P)$。假设 $C(k)$ 是无限的，则可找出一个无限子序列，使其中所有点大致指向同一方向：对给定的 $\theta\in(0,\pi)$，这一子序列中的任意 $P_1,P_2$ 都满足
+\begin{equation*}
+(P_1,P_2)_\Theta\ge(\cos\theta)\sqrt{|P_1|^2|P_2|^2}.\tag{7.4}
+\end{equation*}
+再选取 $P_1,P_2$，使 $h(P_1)$ 很大，且 $h(P_2)/h(P_1)$ 也很大。
+
+Mumford 证明了 $\phi^*\Theta=gF$，所以由 (7.2)、(7.3) 和 (7.4)，
+\[
+h_{\Delta'}(P_1,P_2)
+\le-2g(\cos\theta)\sqrt{h_F(P_1)h_F(P_2)}+O(1).
+\]
+把它用 $Y$ 表示，再改写为 $W:=X\times_BX$ 上带度量线层的语言，得到
+\begin{align*}
+\frac1{[k:\mathbb Q]}\deg\mathcal O(dY)|_E
+\le d\bigl(&a_1h_F(P_1)+a_2h_F(P_2)\\
+&-2g(\cos\theta)\sqrt{h_F(P_1)h_F(P_2)}+O(1)\bigr).
+\end{align*}
+
+\origpage{185}{180}
+取 $r$ 接近 $h_F(P_2)/h_F(P_1)$，并回顾 $a_1,a_2$ 的定义，得到
+\[
+\frac1{[k:\mathbb Q]}\deg\mathcal O(dY)|_E
+\le2d\left(\bigl(\sqrt{g+\delta}-g\cos\theta\bigr)
+\sqrt{h_F(P_1)h_F(P_2)}+O(1)\right).
+\]
+$\theta$ 足够小时，右端为负。若它足够小，则由乘积公式 (0.4)，$\mathcal O(dY)$ 的任何足够小的整体截面在 $E$ 上的限制都必须消失，因此 $\gamma$ 沿 $E$ 消失。
+
+与 Roth 证明一样，第四步对某些偏导数应用上述论证的变体，从而给出 $\gamma$ 在 $(P_1,P_2)$ 处的指标的下界。但这一步其实已经完成：令 $d_i=da_i$（$i=1,2$），注意推论 6.3 给出
+\[
+t\ge
+\frac{2d(\sqrt{g+\delta}-g\cos\theta)\sqrt{h_F(P_1)h_F(P_2)}-cda_1+o(d)}
+{(2g-2)da_1h_F(P_1)+cda_1}.
+\]
+\footnote{译注：上式按原书保留。结合前一式和推论 6.3 的分子 $-\deg\mathscr L|_E$，这里首项的符号疑应反向，即含 $g\cos\theta-\sqrt{g+\delta}$；否则在所选参数范围内只给出负的下界。}
+事实上，由 (7.1)，推论 6.3 中分子的 $\sum_{v\mid\infty}\log\|\gamma\|_{\mathrm{sup},v}$ 不超过 $cda_1+o(d)$；而各个 $\mathcal O(dY_r)$ 的生成元 $\gamma_{0,v}$ 可以关于 $d,r$ 一致地选取，所以
+\[
+\sum_{v\mid\infty}\log\inf_{P\in U_v}
+\frac{\|\gamma_{0,v}(P)\|}{\|\gamma_{0,v}(P_{0,v})\|}
+\]
+这一项也由 $cda_1$ 控制。
+
+现在注意，$a_1h_F(P_1)$ 近似等于 $\sqrt{g+\delta}\sqrt{h_F(P_1)h_F(P_2)}$。因此，当 $h(P_i)$ 变大时，分子和分母中的首项占主导。这就给出了指标的下界。
+
+然后，可把 $C\times C$ 投影到 $\mathbb P^1\times\mathbb P^1$，对 $\gamma$ 取范数得到一个多项式，再用 Roth 引理推出矛盾。这里省略细节，因为第 18 节会在更一般的情形下讨论它们。
+
+\section*{§8. 利用 Gillet--Soulé Riemann--Roch 定理的证明}
+\addcontentsline{toc}{section}{§8. 利用 Gillet--Soulé Riemann--Roch 定理的证明}
+这里仍沿用前面的记号 $\delta,r,a_1,a_2,F_1,F_2,\Delta,\Delta'$ 和 $Y$。不过第一步稍复杂一些：需要证明 $r$ 足够大时，$Y$ 为\term{丰沛}{ample}{ample}除子。这一部分及证明其他部分的细节，见 [V 3] 和 [V 4]。
+
+我希望着重介绍第二步，因为这里正是使用 Gillet--Soulé Riemann--Roch 定理的地方。首先，假定 $C$ 在 $k$ 上有\term{半稳定约化}{semistable reduction}{réduction semi-stable}，并令 $X$ 为 $C$ 在 $B=\Spec R$ 上的正则半稳定模型（[L 7]，第 V 章第 5 节）。则 $X\times_BX$ 除了位于两个因子的纤维结点之上的点外，处处正则。在这些点处，奇点的形式是显式已知的，可将其替换为一条射影直线来消解。令 $q:W\to B$ 为由此得到的 $C\times C$ 的模型。
+
+一般纤维上的除子 $F$ 和 $\Delta$ 需要分别延拓到 $X$ 和 $W$ 上。延拓 $F$ 时，在有限素位处取 $\omega_{X/B}$，并固定一个曲率为正的度量。Arakelov 典范度量是一种选择，但并非必需。延拓 $\Delta$ 时，取它在 $W$ 上的闭包，并选定其度量；Arakelov Green 函数同样是一种可选方案。于是 $F_1,F_2,\Delta'$ 和 $Y$ 也成为 $W$ 上的算术除子。由 Gillet--Soulé Riemann--Roch 定理，
+\[
+\sum_{i=0}^2(-1)^i\deg R^iq_*\mathcal O(dY)
+=\frac{d^3Y^3}{6}+O(d^2).
+\]
+
+\origpage{186}{181}
+我们要给出 $\deg q_*\mathcal O(dY)$ 的下界，方法如下。首先，由于 $Y$ 丰沛，$d$ 足够大时，$i>0$ 的 $R^iq_*\mathcal O(dY)$ 的自由部分都消失。$R^1q_*$ 项的挠部分非负，而 $R^2q_*$ 项的挠部分由对偶性论证知为零。采用类似思路、但带有自身分析特点的更长论证，可以证明对\term{解析挠率}{analytic torsion}{torsion analytique}也有同样的结论，误差为 $O(d^2\log d)$。因此
+\[
+\deg q_*\mathcal O(dY)\ge\frac{d^3Y^3}{6}-O(d^2\log d).
+\]
+这里 $Y^3$ 的增长量级为 $-O(\sqrt r)$。由于 $\mathcal O(dY)$ 的秩约为 $\delta d^2$，比值
+\[
+\frac{\deg q_*\mathcal O(dY)}{\operatorname{rank}q_*\mathcal O(dY)}
+\]
+约为 $O(-d\sqrt r)$。于是，用\term{数的几何}{geometry of numbers}{géométrie des nombres}中的论证可知，存在 $\mathcal O(dY)$ 的整体截面 $\gamma$，满足
+\[
+\prod_{v\mid\infty}\|\gamma\|_{L^2,v}\le\exp(cd\sqrt r).
+\]
+但我们真正需要的是涉及上确界范数的不等式。当然，有平凡不等式
+\[
+\|\gamma\|_{L^2,v}\le\|1\|_{L^2,v}\|\gamma\|_{\mathrm{sup},v},
+\]
+但方向正好相反。
+
+证明反方向的不等式稍困难一些。
+\begin{statement}{引理 8.1}
+在 $n$ 维复流形 $X$ 上固定一个测度 $\nu$。\translatornote{22}则对 $X$ 上的每个带度量线层 $\mathscr L$，都存在常数 $c_{\mathscr L}>0$，使所有 $\gamma\in\Gamma(X,\mathscr L)$ 都满足
+\[
+\|\gamma\|_{L^2}\ge c_{\mathscr L}\|\gamma\|_{\mathrm{sup}}.
+\]
+此外，若 $\mathscr L\simeq\mathscr L_1^{\otimes i_1}\otimes\cdots\otimes\mathscr L_m^{\otimes i_m}$，则可取
+\[
+c_{\mathscr L}=c_{\mathscr L_1}^{i_1}\cdots c_{\mathscr L_m}^{i_m}.
+\]
+\end{statement}
+\begin{proof}
+由紧致性论证，存在常数 $\rho>0$，使得对每个 $P\in X$，都可在 $P$ 的一个邻域 $U_P$ 上取局部坐标系 $z_P:U_P\xrightarrow\sim\mathbb D_\rho^n$，其中 $z_P(P)=0$，且
+\[
+dd^c|z_1|^2\wedge\cdots\wedge dd^c|z_n|^2\le\nu.
+\]
+另外，对每个 $P$ 和每个 $\mathscr L$，都有 $\mathscr L|_{U_P}$ 的局部全纯截面 $\gamma_{0,P}$，满足 $\|\gamma_{0,P}(P)\|=1$，并使
+\[
+c'_{\mathscr L}:=\inf_{\substack{P\in X\\Q\in U_P}}\|\gamma_{0,P}(Q)\|^2
+\]
+严格为正。为此可能需要根据 $\mathscr L$ 缩小 $\rho$。取 $\gamma$ 达到最大值的点 $P$，由 Parseval 不等式（或调和性），对某个适当的 $c_{\mathscr L}>0$，有
+\begin{align*}
+\|\gamma\|_{L^2}^2
+&\ge c'_{\mathscr L}\int_{\mathbb D_\rho^n}
+\left|\left(\frac\gamma{\gamma_{0,P}}\right)(Q)\right|^2
+ dd^c|z_1|^2\wedge\cdots\wedge dd^c|z_n|^2\\
+&\ge c_{\mathscr L}^2\|\gamma(P)\|^2.
+\end{align*}
+最后一条结论只需对 $\mathscr L$ 选择与各 $\mathscr L_i$ 所选截面相容的 $\gamma_{0,P}$ 即得。
+\end{proof}
+
+\origpage{187}{182}
+还可以得到更精细的界（参见 [V 4]，3.9），但上述界已足以满足这里的需要。
+
+接下来，仍按前面的第三至第五步，就能完成 Mordell 猜想的这一证明。另外，对上述两种证明，都可以用两条曲线的乘积上的 Dyson 引理，来代替 Roth 引理。
+\begin{statement}{引理 8.2（[V 2]）}
+设 $\xi_1,\ldots,\xi_m$ 为 $C^2$ 上的 $m$ 个点，其第一坐标两两不同，第二坐标也两两不同。设 $\gamma$ 为 $C\times C$ 上某线层 $\mathscr L$ 的整体截面，且 $(\mathscr L\cdot F_1)\ge d_2$、$(\mathscr L\cdot F_2)\ge d_1$。采用引理 4.7 中的记号 $\operatorname{Vol}(t)$，有
+\[
+\sum_{i=1}^m\operatorname{Vol}\bigl(t(\gamma,\xi_i,d_1,d_2)\bigr)
+\le\frac{(\mathscr L^2)}{2d_1d_2}
++\frac{(\mathscr L\cdot F_1)}{2d_1}\max(2g-2+m,0).
+\]
+\end{statement}
+这里仍取 $d_i=da_i$，并令 $\mathscr L=\mathcal O(dY)$。于是右端第一项为 $\delta/(g+\delta)$，第二项为 $(2g-1)/r$。二者都可以取得比左端的 $t^2/2$ 更小，从而得到矛盾。
+
+正是这部分论证最先带来了对问题的某种理解：不一定要让左端的某些项变大，也可以让右端的 $Y^2$ 变小。这样就能够证明丢番图方程的有限性，而不直接使用丢番图逼近本身。
+
+\section*{§9. Faltings 复形}
+\addcontentsline{toc}{section}{§9. Faltings 复形}
+本讲座余下部分将详细证明 Faltings 对 Mordell 猜想的推广，即定理 0.3。另见 [F 1] 和 [F 2]。
+
+把上述方法推广到阿贝尔簇的更一般子簇，第一步是回顾 Mumford 的结果 (7.2)：
+\[
+\Delta'=(j\times j)^*\bigl(\operatorname{pr}_1^*\Theta
++\operatorname{pr}_2^*\Theta-(\operatorname{pr}_1+\operatorname{pr}_2)^*\Theta\bigr),
+\]
+其中末项的 $\operatorname{pr}_1+\operatorname{pr}_2$ 是指 Jacobian 簇上群运算意义下的和。于是，可把 $\Theta$ 换为一般阿贝尔簇 $A$ 上任意对称丰沛除子类 $L$，并让 Poincaré 除子类
+\[
+\mathscr P:=(\operatorname{pr}_1+\operatorname{pr}_2)^*L
+-\operatorname{pr}_1^*L-\operatorname{pr}_2^*L
+\]
+起到 $-\Delta'$ 的作用。此时，由\term{立方体定理}{theorem of the cube}{théorème du cube}，对 $a,b\in\mathbb Z$，有
+\begin{equation*}
+(a\operatorname{pr}_1+b\operatorname{pr}_2)^*L
+=a^2\operatorname{pr}_1^*L+b^2\operatorname{pr}_2^*L+ab\mathscr P.\tag{9.1}
+\end{equation*}
+于是 $dY$ 大致可写为
+\[
+dY=(s_1\operatorname{pr}_1-s_2\operatorname{pr}_2)^*L
+-\epsilon s_1^2\operatorname{pr}_1^*L-\epsilon s_2^2\operatorname{pr}_2^*L.
+\]
+不过，这一次需要在 $A$ 的 $n$ 重乘积上工作。因此，对于有理数 $\delta$ 和 $s\in\mathbb N^n$，定义
+\begin{equation*}
+L_{\delta,s}=\sum_{i<j}(s_i\operatorname{pr}_i-s_j\operatorname{pr}_j)^*L
++\delta\sum_{i=1}^n s_i^2\operatorname{pr}_i^*L.\tag{9.2}
+\end{equation*}
+由立方体定理，这个表达式关于 $s_1,\ldots,s_n$ 是二次齐次的，所以还可以利用齐次性把定义延拓到 $s\in\mathbb Q_{>0}^n$。
+
+\origpage{188}{183}
+表达式 (9.2) 的一个优点，是清楚地显示了整个理论中的关键思想。在 $\prod X_i$ 上，第一项很大（在定理 0.2 的情形中为丰沛除子），第二项很小（$\delta$ 取为接近零的负数）；但在点 $(P_1,\ldots,P_n)$ 对应的算术曲线上，第一项很小，因而第二项占据主导。
+
+这一表达式的另一个好处是，由立方体定理，
+\[
+(a\operatorname{pr}_i-b\operatorname{pr}_j)^*L
++(a\operatorname{pr}_i+b\operatorname{pr}_j)^*L
+=2a^2\operatorname{pr}_i^*L+2b^2\operatorname{pr}_j^*L.
+\]
+因此，取整体截面 $\gamma_1,\ldots,\gamma_m\in\Gamma(A,\mathcal O(L))$，使之在一般纤维 $A$ 上生成 $\mathcal O(L)$，则对任意 $X_1,\ldots,X_n$，都能得到单射
+\[
+0\longrightarrow\Gamma\left(\prod X_i,dL_{\delta,s}\right)
+\longrightarrow
+\Gamma\left(\prod X_i,d(2n-2+\delta)\sum_{i=1}^ns_i^2\operatorname{pr}_i^*L\right)^a.
+\]
+其构造方式，是与若干形如
+\[
+(as_i\operatorname{pr}_i+as_j\operatorname{pr}_j)^*\gamma_{\ell_{ij}}^{\,b}
+\]
+的项的乘积作张量积，其中 $ba^2=d$，而 $a$ 具有足够的整除性。这里元组 $(\ell)_{ij}$ 遍历 $\{1,\ldots,m\}^{n(n-1)/2}$。类似地，可把这一列延长为正合列\translatornote{23}
+\begin{equation*}
+\begin{aligned}
+0&\longrightarrow\Gamma\left(\prod X_i,dL_{\delta,s}\right)\\
+&\longrightarrow\Gamma\left(\prod X_i,d(2n-2+\delta)\sum_{i=1}^ns_i^2\operatorname{pr}_i^*L\right)^a\\
+&\longrightarrow\Gamma\left(\prod X_i,
+ d\sum_{i<j}(s_i\operatorname{pr}_i-s_j\operatorname{pr}_j)^*L
+ +d(2n-2+\delta)\sum_{i=1}^ns_i^2\operatorname{pr}_i^*L\right)^{b'}.
+\end{aligned}\tag{9.3}
+\end{equation*}
+再将末项嵌入适当的空间，就得到\term{Faltings 复形}{Faltings complex}{complexe de Faltings}
+\begin{equation*}
+\begin{aligned}
+0&\longrightarrow\Gamma\left(\prod X_i,dL_{\delta,s}\right)\\
+&\longrightarrow\Gamma\left(\prod X_i,d(2n-2+\delta)\sum_{i=1}^ns_i^2\operatorname{pr}_i^*L\right)^a\\
+&\longrightarrow\Gamma\left(\prod X_i,d(4n-4+\delta)\sum_{i=1}^ns_i^2\operatorname{pr}_i^*L\right)^b,
+\end{aligned}\tag{9.4}
+\end{equation*}
+其中 $b$ 是某个整数。这个整数会很大，但只依赖于 $m,n$。
+
+\section*{§10. 总体方案}
+\addcontentsline{toc}{section}{§10. 总体方案}
+现在讨论定理 0.3 证明的总体方案。首先，可以假设 $X$ 是 $A$ 中的闭子簇。
+
+接着回顾有关阿贝尔簇子簇的一些标准事实。暂且设 $X\subseteq A$ 定义在 $\mathbb C$ 上。
+\begin{statement}{定义 10.1}
+以 $B(X)$ 表示代数群
+\[
+\{a\in A\mid a+X=X\}
+\]
+的单位连通分支。
+\origpage{189}{184}
+商映射 $A\to A/B(X)$ 在 $X$ 上的限制给出纤维化 $X\to X/B(X)$，其所有纤维都同构于 $B(X)$。这一纤维化称为 $X$ 的\term{上野纤维化}{Ueno fibration}{fibration d'Ueno}；当 $B(X)$ 为一点时，称其为平凡的。
+\end{statement}
+\begin{statement}{定理 10.2（Ueno，[U]，定理 10.9）}
+若 $B(X)$ 平凡，则 $X$ 为\term{一般型}{general type}{type général}簇；反之亦然。
+\end{statement}
+因此，定理 0.3 对 Bombieri 提出的一个问题 [N] 的特例给出了肯定回答：若 $X$ 是定义在数域 $k$ 上的一般型簇，是否 $X(k)$ 在 Zariski 拓扑中不稠密？此外，Lang 在 [L 6] 的猜想 5.8 中猜测，$X(k)$ 的闭包中的高维部分应当是几何的，即与 $k$ 无关。下面的定理也解决了这一猜想的这个特例。
+\begin{statement}{定理 10.3（川又结构定理，[Ka]，定理 4）}
+以 $Z(X)$ 表示包含在 $X$ 中的所有非平凡阿贝尔子簇的平移之并。则 $Z(X)$ 为 Zariski 闭子集，而且它的每个不可约分支都具有非平凡的上野纤维化。
+\end{statement}
+特别地，若 $X$ 的上野纤维化平凡，则 $Z(X)\ne X$；反之亦然。
+
+回到 $k$ 上的情形，用简单的 Galois 理论论证即可看出，$B(X)$ 和 $Z(X)$ 都定义在 $k$ 上。（一般而言，$Z(X)$ 是一个概形，可能可约。）
+
+证明定理 0.3 时，首先注意只须假设 $B(X)$ 平凡；否则，$X$ 上的定理可由 $X/B(X)$ 上的定理推出。
+
+其次，只须证明 $X(k)\setminus Z(k)$ 有限。事实上，$Z(k)$ 中的点可用\term{Noether 归纳法}{Noetherian induction}{récurrence noethérienne}处理。
+
+下面进入证明的主要部分。固定 $A$ 上的一个甚丰沛对称除子类 $L$，以及相应的射影嵌入。$X$ 的子空间的次数和高度都相对于这一嵌入而言。特别地，高度采用 [B-G-S] 第 1 节的定义：射影空间子簇的高度，是其与 $\mathbb P^n$ 中一个维数互补的“标准”线性子空间的交数；所谓“标准”线性子空间，是令某些坐标函数为零所得到的子空间。
+
+证明中固定
+\[
+n=\dim X+1,
+\]
+并考虑点 $P_1,\ldots,P_n\in X(k)\setminus Z(k)$。以 $h_L(P_i)$ 表示 $P_i$ 的高度。稍后将选取这些点，使之对某些常数 $c_1,c_2\ge1$ 和 $\epsilon_1$ 满足通常的第三步条件：
+\begin{description}[style=nextline,leftmargin=5.5em]
+\item[(10.4.1).] $h_L(P_1)\ge c_1$；
+\item[(10.4.2).] $h_L(P_{i+1})/h_L(P_i)\ge c_2$，$i=1,\ldots,n-1$；
+\item[(10.4.3).] $P_1,\ldots,P_n$ 在 $A(k)\otimes_{\mathbb Z}\mathbb R$ 中大致指向同一方向。具体地，以 $\widehat h_L(P)$ 表示与 $h_L$ 对应的 Néron--Tate 典范高度，以
+\[
+(P,Q)_L=\widehat h_L(P+Q)-\widehat h_L(P)-\widehat h_L(Q)
+\]
+表示相应的双线性形式；
+\origpage{190}{185}
+则所作假设是：对所有 $i,j$，
+\[
+(P_i,P_j)_L\ge(1-\epsilon_1)\sqrt{(P_i,P_i)_L(P_j,P_j)_L}.
+\]
+\end{description}
+我们也把这些条件记为 $C_P(c_1,c_2,\epsilon_1)$。
+
+证明中还要用到 $X$ 的子簇 $X_1,\ldots,X_n$，要求它们满足下面这些条件，记为 $C_X(c_3,c_4,P_1,\ldots,P_n)$：
+\begin{description}[style=nextline,leftmargin=5.5em]
+\item[(10.5.1).] 每个 $X_i$ 都包含 $P_i$。
+\item[(10.5.2).] $X_i$ 几何不可约，且定义在 $k$ 上。
+\item[(10.5.3).] 次数满足 $\deg X_i\le c_3$。
+\item[(10.5.4).] 高度 $h(X_i)$ 满足
+\[
+\sum_{i=1}^n\frac{h(X_i)}{h_L(P_i)}
+<c_4\sum_{i=1}^n\frac1{h_L(P_i)}.
+\]
+\end{description}
+这里及下文中的常数 $c,c_i$ 依赖于 $A,X,k$、与 $L$ 对应的射影嵌入，有时还依赖于元组 $(\dim X_1,\ldots,\dim X_n)$；但不依赖于 $X_i,P_i$ 或 $(s)$。这些常数在不同式子中可以取不同的值。
+
+因此，证明的总体方案是构造满足 (10.5) 的子簇 $X_1,\ldots,X_n$。从 $X_1=\cdots=X_n=X$ 出发，逐次构造更小的子簇元组，直到某个 $j$ 满足 $\dim X_j=0$。此时 $X_j=P_j$，而且 $h(X_j)=h_L(P_j)$。于是由 (10.5.4)，
+\begin{equation*}
+1=\frac{h(X_j)}{h_L(P_j)}
+\le\sum_{i=1}^n\frac{h(X_i)}{h_L(P_i)}
+\le c_4\sum_{i=1}^n\frac1{h_L(P_i)}
+\le\frac{c_4n}{h_L(P_1)},\tag{10.6}
+\end{equation*}
+从而
+\begin{equation*}
+h_L(P_1)\le c_4n.\tag{10.7}
+\end{equation*}
+$c_1$ 取得足够大时，这就与 (10.4.1) 矛盾。
+
+归纳步骤用于所有 $X_i$ 均为正维的情形。对 $i=1,\ldots,n$，取接近 $1/\sqrt{h_L(P_i)}$ 的有理数 $s_i$。令 $d$ 为正整数，通常把它取得很大且具有很高的整除性，它实际上可以依赖于其余几乎所有数据。对某个 $\epsilon>0$（依赖于各 $\dim X_i$），我们将构造 $\mathcal O(dL_{-\epsilon,s})$ 的一个小截面。若 $P_1,\ldots,P_n$ 选取得当，就可以在每个 $X_i$ 内构造子簇 $X'_i$，使这些 $X'_i$ 仍满足 (10.5)（常数可能改变），且至少有一个 $X'_i$ 严格变小。
+
+\origpage{191}{186}
+为使这一步更清楚，可以把常数等对象之间的依赖关系用符号写成：
+\begin{equation*}
+\begin{aligned}
+&\forall c_3,c_4,\quad\forall\delta_1,\ldots,\delta_n\in\mathbb N,\\
+&\quad\exists c_1,c_2,\epsilon_1,c'_3,c'_4,\quad\text{使得}\\
+&\qquad\forall P_1,\ldots,P_n\in(X\setminus Z(X))(k)
+\text{ 满足 }C_P(c_1,c_2,\epsilon_1),\\
+&\qquad\forall X_1,\ldots,X_n\subseteq X
+\text{ 满足 }C_X(c_3,c_4,P_1,\ldots,P_n),\\
+&\qquad\hspace{5em}\text{且对所有 }i\text{ 有 }\dim X_i=\delta_i,\\
+&\qquad\quad\exists X'_1,\ldots,X'_n,\quad
+ X'_i\subseteq X_i\ (\forall i),\quad X'_i\ne X_i\ (\exists i),\\
+&\qquad\qquad\text{并满足 }C_X(c'_3,c'_4,P_1,\ldots,P_n).
+\end{aligned}\tag{10.8}
+\end{equation*}
+为完成证明，现在假设 $X(k)\setminus Z(k)$ 为无限集。上述主要步骤只能进行有限次，所以能够从 $X(k)\setminus Z(k)$ 中选取 $P_1,\ldots,P_n$，使它们对于这有限次步骤中出现的所有 $c_1,c_2,\epsilon_1$ 都满足条件 (10.4)。这便导出矛盾。因此 $X(k)\setminus Z(k)$ 必为有限集，定理得证。
+
+为便于后文引用，令
+\begin{equation*}
+d_i=ds_i^2.\tag{10.9}
+\end{equation*}
+
+\section*{§11. 截面空间的下界}
+\addcontentsline{toc}{section}{§11. 截面空间的下界}
+回顾 $X_1,\ldots,X_n$ 是 $X$ 的正维子簇，且不包含在 $X$ 的\term{川又轨迹}{Kawamata locus}{lieu de Kawamata}中。
+\begin{statement}{引理 11.1}
+若 $n\ge\dim X+1$，则态射
+\[
+f:\prod X_i\longrightarrow A^{n(n-1)/2},\qquad
+(x_1,\ldots,x_n)\longmapsto(x_i-x_j)_{i<j}
+\]
+在其像上是\term{一般有限}{generically finite}{génériquement fini}的。
+\end{statement}
+\begin{proof}
+若 $P\in X_{i,\mathrm{reg}}$，则可通过平移，把\term{切空间}{tangent space}{espace tangent} $T_{X_i,P}$ 视为 $A$ 的原点处切空间 $T_{A,0}$ 的线性子空间。可以选点 $P_i\in X_{i,\mathrm{reg}}$，使 $f$ 在 $P:=(P_1,\ldots,P_n)$ 处光滑，且
+\[
+\bigcap_{i=1}^nT_{X_i,P_i}=(0).
+\]
+于是，$f$ 在 $P$ 处的纤维的任何切向量都必须为零，所以 $f$ 在该处为有限映射。
+\end{proof}
+\begin{statement}{推论 11.2}
+若 $n\ge\dim X+1$，则交数
+\[
+\left(\left(L_{0,\boldsymbol1}|_{\prod X_i}\right)^{\sum\dim X_i}\right)>0.
+\]
+\end{statement}
+\begin{proof}
+$\mathbb Q$-除子类 $L_{0,\boldsymbol1}$ 是 $A^{n(n-1)/2}$ 上的一个丰沛除子类，通过一个一般有限态射拉回到 $\prod X_i$ 所得。
+\end{proof}
+定理 0.3 证明的余下部分，固定 $n=\dim X+1$。
+
+下面证明关于 $s$ 的一个齐次性结果。

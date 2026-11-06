@@ -1,0 +1,205 @@
+\article{$\GL_2(\R)$ 与 $\GL_2(\C)$ 的表示}{Representations of $\GL_2(\R)$ and $\GL_2(\C)$}{A. W. Knapp}{1}{87--91}
+\origsection{1}{$\SL_2(\R)$}
+本节先列出不可约有限维表示（irreducible finite-dimensional representations）、不可约酉表示（irreducible unitary representations）以及非酉主系列（nonunitary principal series），再讨论可约性、矩阵系数的渐近展开以及 Langlands 分类。令 $g=\bigl(\begin{smallmatrix}a&b\\c&d\end{smallmatrix}\bigr)$ 为 $G=\SL_2(\R)$ 的一般元素。\footnote{原文 AMS（MOS）学科分类（1970）：主要 22-02；次要 22E45。}
+
+\paragraph*{不可约有限维表示。} $\mathcal F_n$，其中 $n\ge0$ 为整数。\nobreak\footnote{\textbf{译者注（本次校订）：}下式中的多项式空间应为“次数不超过 $n$ 的多项式”。恰好为 $n$ 次的多项式既不包含零多项式，也不对加法封闭；次数不超过 $n$ 的空间才是维数为 $n+1$ 的表示空间。}
+\[
+ \begin{gathered}
+ \text{空间}=\{f:\R\text{ 上次数为 }n\text{ 的多项式}\},\\
+ \mathcal F_n(g)f(x)=(bx+d)^n f\bigl((ax+c)/(bx+d)\bigr).
+ \end{gathered}
+\]
+$G$ 的有限维表示完全可约（fully reducible）。
+
+\paragraph*{酉表示。} 不可约酉表示由 Bargmann [1] 分类。我们给出它们在直线或上半平面的函数空间中的实现，也可以在圆周或圆盘上实现。
+
+(1) 离散系列（discrete series）$\mathcal D_n^+$ 与 $\mathcal D_n^-$，$n\ge2$。
+\[
+ \begin{split}
+ \mathcal D_n^+\text{ 的空间}=\biggl\{f:\ &f\text{ 在 }\operatorname{Im}z>0\text{ 上解析},\\[-2pt]
+ &\|f\|^2=\iint_{\operatorname{Im}z>0}|f(z)|^2y^{n-2}\,dx\,dy<\infty\biggr\},\\
+ \mathcal D_n^+(g)f(z)&=(bz+d)^{-n}f\left(\frac{az+c}{bz+d}\right).
+ \end{split}
+\]
+这个空间非零，例如 $(z+i)^{-n}$ 属于其中。取复共轭便得到 $\mathcal D_n^-$。这些表示全都不可约、酉且平方可积（square-integrable）。下文将证明（矩阵系数的）平方可积性。
+
+(2) 主系列（principal series）$\mathcal P^{+,i\nu}$ 与 $\mathcal P^{-,i\nu}$，$\nu\in\R$。
+\[
+ \mathcal P^{\pm,i\nu}\text{ 的空间}=L^2(\R),
+\]
+\[
+ \mathcal P^{\pm,i\nu}(g)f(x)=
+ \begin{cases}
+ |bx+d|^{-1-i\nu}f((ax+c)/(bx+d)),&\text{取 }+,\\
+ \operatorname{sgn}(bx+d)|bx+d|^{-1-i\nu}f((ax+c)/(bx+d)),&\text{取 }-.
+ \end{cases}
+\]
+这些表示都是酉表示；除 $\mathcal P^{-,0}$ 外全都不可约。等价
+\[
+ \mathcal P^{+,i\nu}\cong\mathcal P^{+,-i\nu},\qquad
+ \mathcal P^{-,i\nu}\cong\mathcal P^{-,-i\nu}
+\]
+由下文给出的交织算子（intertwining operators）的解析延拓实现。$\mathcal P^{\pm,i\nu}$ 实际上是诱导表示（induced representation）
+$\Ind_{MAN}^G(\sigma\otimes e^{i\nu\cdot}\otimes1)$，其中 $G$ 以右平移作用，并将函数限制到 $\overline N=\bigl(\begin{smallmatrix}1&0\\ *&1\end{smallmatrix}\bigr)$。这里 $MAN$ 是上三角群，$\sigma$ 为 $M=\{\pm I\}$ 上的平凡特征或符号特征，$A$ 的特征（character）为
+\[
+ \begin{pmatrix}e^t&0\\0&e^{-t}\end{pmatrix}\longmapsto e^{i\nu t}.
+\]
+
+(3) 补系列（complementary series）$\mathcal C^s$，$0<s<1$。
+\[
+ \mathcal C^s\text{ 的空间}=
+ \left\{f:\R\to\C:\ \|f\|^2=
+ \int_{-\infty}^\infty\int_{-\infty}^\infty
+ \frac{f(x)\overline{f(y)}}{|x-y|^{1-s}}\,dx\,dy<\infty\right\},
+\]
+\[
+ \mathcal C^s(g)f(x)=|bx+d|^{-1-s}f\left(\frac{ax+c}{bx+d}\right).
+\]
+它们为不可约酉表示，由某些非酉主系列（见下文）通过重新定义内积得到。
+
+(4) 其他表示。有平凡表示，还有两个“离散系列的极限”（limits of discrete series）$\mathcal D_1^+$ 与 $\mathcal D_1^-$。其群作用与离散系列中的一样，但范数不同。我们有
+\[
+ \mathcal P^{-,0}\cong\mathcal D_1^+\oplus\mathcal D_1^-.
+\]
+
+\paragraph*{非酉主系列。} $\mathcal P^{\pm,\zeta}$，$\zeta\in\C$。
+\[
+ \text{空间}=L^2\bigl(\R,(1+x^2)^{\operatorname{Re}\zeta}\,dx\bigr),
+\]
+\[
+ \mathcal P^{\pm,\zeta}(g)f(x)=
+ \begin{cases}
+ |bx+d|^{-1-\zeta}f((ax+c)/(bx+d)),&\text{取 }+,\\
+ \operatorname{sgn}(bx+d)|bx+d|^{-1-\zeta}f((ax+c)/(bx+d)),&\text{取 }-.
+ \end{cases}
+\]
+
+\paragraph*{可约性（reducibility）。} 取参数 $\zeta$ 的某些特殊值，并把上半平面上的函数形式地限制到实轴，可看出 $\mathcal P^{\pm,\zeta}$ 的某些可约性。得到以下连续包含：\nobreak\footnote{\textbf{译者注（本次校订）：}下列包含应在 $K$ 有限向量组成的 $(\mathfrak g,K)$ 模层面理解。特别是对 $n>1$，离散系列的 Bergman Hilbert 空间中的任意函数未必具有主系列所要求的平方可积边界值，因此不能把第二组包含直接当作所列 Hilbert 范数之间的连续嵌入。在圆盘模型中，次数为 $m$ 的单项式的 Bergman 范数平方约为 $m^{-(n-1)}$，而其边界 $L^2$ 范数保持不变，已经说明边界限制不有界。}
+\[
+ \mathcal F_n\subseteq
+ \begin{cases}
+ \mathcal P^{+,-(n+1)},&n\text{ 为偶数},\\
+ \mathcal P^{-,-(n+1)},&n\text{ 为奇数},
+ \end{cases}\qquad n\ge0;
+\]
+\[
+ \mathcal D_n^+\oplus\mathcal D_n^-\subseteq
+ \begin{cases}
+ \mathcal P^{+,n-1},&n\text{ 为偶数},\\
+ \mathcal P^{-,n-1},&n\text{ 为奇数},
+ \end{cases}\qquad n\ge1.
+\]
+除此之外没有其他可约情况。以 $\mathcal F$ 为子模时，商模是两个 $\mathcal D$ 的直和；以两个 $\mathcal D$ 的直和为子模时，商模则为相应的 $\mathcal F$。
+
+\paragraph*{渐近性质（asymptotics）。} 令 $k_\theta$ 为旋转
+\[
+ \begin{pmatrix}\cos\theta&\sin\theta\\-\sin\theta&\cos\theta\end{pmatrix}.
+\]
+极大紧子群（maximal compact subgroup）$K=\{k_\theta\}$ 为阿贝尔群，其不可约表示为一维表示 $k_\theta\mapsto e^{im\theta}$，其中 $m$ 为整数。我们有
+\[
+ G=KA^+K,\qquad A^+=\left\{a_t=\begin{pmatrix}e^t&0\\0&e^{-t}\end{pmatrix}:t\ge0\right\},
+\]
+当 $g=k_\theta a_tk_{\theta'}$ 时，Haar 测度的形式为 $dg=c\sinh2t\,dk_\theta\,dk_{\theta'}\,dt$。设 $U(g)$ 是 $G$ 的一个容许表示（admissible representation），$\varphi_1,\varphi_2$ 在 $K$ 下分别按 $k_\theta\mapsto e^{im_1\theta}$ 与 $k_\theta\mapsto e^{im_2\theta}$ 变换。则
+\[
+ \begin{split}
+ (U(g)\varphi_1,\varphi_2)
+ &=(U(k_\theta a_tk_{\theta'})\varphi_1,\varphi_2)\\
+ &=\exp\bigl(i(m_1\theta'+m_2\theta)\bigr)(U(a_t)\varphi_1,\varphi_2).
+ \end{split}
+\]
+因此，要判断矩阵系数是否属于 $L^p(G)$，只需检验 $(U(a_t)\varphi_1,\varphi_2)$，并使用 $t\ge0$ 上的测度 $\sinh2t\,dt$。
+
+\paragraph*{例。} $\mathcal D_n^+(k_\theta)(z+i)^{-n}=e^{in\theta}(z+i)^{-n}$。于是
+\[
+ \begin{split}
+ &(\mathcal D_n^+(a_t)(z+i)^{-n},(z+i)^{-n})\\
+ &\qquad=\iint_{\operatorname{Im}z>0}e^{nt}[x+i(y+1)]^{-n}
+ [e^{2t}x-i(e^{2t}y+1)]^{-n}y^{n-2}\,dx\,dy.
+ \end{split}
+\]
+利用留数，右端等于
+\[
+ c_n\int_0^\infty e^{-nt}(y+1+e^{-2t})^{1-2n}y^{n-2}\,dy;
+\]
+再作变量代换 $y=y'(1+e^{-2t})$，得到 $c_n'(\cosh t)^{-n}$。于是
+\[
+ \int_G|\cdots|^2\,dg=cc_n''\int_0^\infty(\cosh t)^{-2n}\sinh2t\,dt,
+\]
+当 $n>1$ 时有限。因此该矩阵系数在 $G$ 上平方可积。Godement [3] 的一个泛函分析定理蕴含所有矩阵系数在 $G$ 上均平方可积。
+
+上例直接计算了矩阵系数的平方可积性。Harish-Chandra 则建立了一种更一般的方法，通过微分方程研究矩阵系数的行为。令
+\[
+ h=\begin{pmatrix}1&0\\0&-1\end{pmatrix},\quad
+ e=\begin{pmatrix}0&1\\0&0\end{pmatrix},\quad
+ f=\begin{pmatrix}0&0\\1&0\end{pmatrix}
+\]
+为 $G$ 的 Lie 代数的一组基。Casimir 算子（Casimir operator）$\Omega=\tfrac12h^2+ef+fe$ 是泛包络代数的元素。对 $\SL_2(\R)$，$\Omega$ 生成泛包络代数的中心。（对于更大的群，本讨论中须以整个泛包络代数的中心代替它。）它在我们所列的每个表示上均按标量作用，因而在每个矩阵系数上也如此。取一个矩阵系数，使其左、右两侧都按已知的 $K$ 特征变换，并将此矩阵系数视为未知函数。则方程
+\[
+ \Omega(\text{系数})=c(\text{系数})
+\]
+导出 $A^+$ 上一个以 $t$ 为自变量的二阶常微分方程。经典代换为 $s=\cosh t$；所得方程具有三个奇点，且全为正则奇点，我们关心 $s=\infty$ 处的行为。（若 $K$ 的“已知特征”平凡，这就是 Legendre 方程。）\footnote{\textbf{译者注（本次校订）：}按本文 $a_t=\operatorname{diag}(e^t,e^{-t})$ 的参数约定，使球面径向方程成为 Legendre 方程的变量应为 $s=\cosh(2t)$。例如径向微分算子的二阶部分正比于 $\frac{d^2}{dt^2}+2\coth(2t)\frac d{dt}$；代入 $s=\cosh(2t)$ 后才得到 $(s^2-1)\frac{d^2}{ds^2}+2s\frac d{ds}$。}这一变量代换不易推广到一般情形；Harish-Chandra 对方程的处理相当于改作代换 $z=e^{-2t}$。所得微分方程有四个奇点，均为正则奇点；我们用标准的正则奇点理论，在 $z=0$ 附近展开。结果是
+\[
+ \operatorname{coefficient}(a_t)=
+ e^{-(1+\zeta)t}\sum_{n=0}^\infty c_ne^{-2nt}
+ +e^{-(1-\zeta)t}\sum_{n=0}^\infty d_ne^{-2nt},
+\]
+但当 $\zeta$ 为整数时，解中的 $\log z$ 因子可能产生 $t$ 的因子。若某个展开的首项消失，则对应的整个级数都消失。
+
+$\Omega$ 的特征值决定 $\zeta$；特别地，$\mathcal P^{\pm,\zeta}$ 的矩阵系数给出带有相应 $\zeta$ 的展开。由此展开可读出 $L^p$ 可积条件，因为我们须将其 $p$ 次幂在 $t\ge0$ 上对 $\sinh2t\,dt$ 积分，而此测度与 $e^{2t}dt$ 可比。可见 $\mathcal P^{\pm,i\nu}$ 的系数对每个 $\varepsilon>0$ 均属于 $L^{2+\varepsilon}(G)$，却不属于 $L^2(G)$。$n\ge2$ 的离散系列 $\mathcal D_n^\pm$ 缺少一个和式，从而其系数属于 $L^2(G)$。若表示的系数对每个 $\varepsilon>0$ 均属于 $L^{2+\varepsilon}$，则称为缓增（tempered）。缓增表示是 $\mathcal P^{\pm,i\nu}$ 及 $n\ge1$ 的 $\mathcal D_n^\pm$。注意，一般而言，两个首项揭示了该表示可嵌入哪些非酉主系列；Wallach 在讲座中讨论了这一点。
+
+\paragraph*{Langlands 分类（Langlands classification）。} 对一般的 $G$，Langlands 用三元组 $(P,\pi,\nu)$ 参数化不可约容许表示，其中 $P=MAN$ 是标准抛物子群（standard parabolic），$\pi$ 是 $M$ 的一个不可约缓增表示（的等价类），$\nu$ 是 $A$ 的 Lie 代数上的复值线性泛函，其实部位于开正 Weyl 室内。Langlands 表示 $J_P(\pi,\nu)$ 是 $\Ind_P^G(\pi\otimes e^\nu\otimes1)$ 唯一的不可约商。对当前情形，$P=\bigl(\begin{smallmatrix}*&*\\0&*\end{smallmatrix}\bigr)$ 为极小抛物子群，或者 $P=G$。
+
+\emph{$P$ 极小的情形。} $M=\{\pm I\}$ 有两个（一维）表示，泛函 $\nu$ 可用一个复数表示，即 $\zeta$，$\operatorname{Re}\zeta>0$；$A$ 的特征为 $a_t=\exp(\nu\log a_t)=\exp(\zeta t)$。\footnote{\textbf{译者注（本次校订）：}这里应写成映射 $a_t\mapsto\exp(\nu(\log a_t))=\exp(\zeta t)$；左边的 $a_t$ 是矩阵，右边是特征的标量值。}于是 Langlands 列表包括对每个 $\operatorname{Re}\zeta>0$ 的 $\mathcal P^{\pm,\zeta}$ 的唯一不可约商。
+
+\emph{$P=G$ 的情形。} 此时 $\nu$ 无关紧要，$M=G$。我们只得到 $G$ 的不可约缓增表示。Langlands 分类本身并不回答这些表示具体是什么；不过其中一个定理对我们的 $G$ 蕴含：它们是离散系列或酉主系列的子表示。
+
+\paragraph*{交织算子。} Langlands 分类定理对唯一不可约商的描述比上面更精确。Kunze 和 Stein [4] 于1960年证明，算子
+\[
+ f\longmapsto
+ \begin{cases}
+ \displaystyle\int_{-\infty}^\infty\frac{f(y)\,dy}{|x-y|^{1-\zeta}},&\text{对 }\mathcal P^{+,\zeta},\\[6pt]
+ \displaystyle\int_{-\infty}^\infty\frac{\operatorname{sgn}(x-y)f(y)\,dy}{|x-y|^{1-\zeta}},&\text{对 }\mathcal P^{-,\zeta},
+ \end{cases}
+\]
+交织 $\mathcal P^\zeta$ 与 $\mathcal P^{-\zeta}$。注意，此积分只有当 $\operatorname{Re}\zeta>0$ 时才收敛。后来 [5] 他们在诱导模型中找到公式
+\[
+ f\longmapsto\int_{\overline N}f(\bar n w^{-1}g)\,d\bar n,
+ \qquad\overline N=\begin{pmatrix}1&0\\ *&1\end{pmatrix},\quad
+ w=\begin{pmatrix}0&1\\-1&0\end{pmatrix}.
+\]
+这是两个算子的复合，即 $f\mapsto\int_{\overline N}f(\bar ng)\,d\bar n$，以及按 $w^{-1}$ 平移的一个简单的平移算子。定义
+\[
+ A(\overline P:P:\pi:\nu)f(x)=\int_{\overline N}f(\bar nx)\,d\bar n.
+\]
+在 $\nu$ 满足 Langlands 条件时，若 $f$ 为 $K$ 有限的，则积分收敛。定理断言
+\[
+ \begin{split}
+ J_P(\pi,\nu)
+ &=\Ind_P^G(\pi\otimes e^\nu\otimes1)/\ker A(\overline P:P:\pi:\nu)\\
+ &\cong\operatorname{Image}A(\overline P:P:\pi:\nu).
+ \end{split}
+\]
+
+\origsection{2}{其他群（Other groups）}
+\paragraph*{$\GL_2(\R)$。} 从 $\SL_2(\R)$ 过渡到行列式为 $\pm1$ 的矩阵所成的群 $\SL_2^\pm(\R)$，先从 $\SL_2(\R)$ 诱导表示。 $\mathcal P$ 与 $\mathcal F$ 分裂为两个等价部分，\footnote{\textbf{译者注（本次校订）：}这里应为“两个不等价的延拓”，它们互差行列式的符号特征，并在限制到 $\SL_2(\R)$ 后等价。例如从平凡表示 $\mathcal F_0$ 诱导到 $\SL_2^\pm(\R)$，得到平凡特征与行列式符号特征的直和，这两个表示显然不等价。}而 $\mathcal D$ 给出 $\SL_2^\pm(\R)$ 上的不可约表示，它们限制回 $\SL_2(\R)$ 后为 $\mathcal D^+\oplus\mathcal D^-$。这一构造给出 $\SL_2^\pm(\R)$ 的表示。再为群 $\R^+\bigl(\begin{smallmatrix}1&0\\0&1\end{smallmatrix}\bigr)$ 选取一个特征，便可得到 $\GL_2(\R)$ 的表示。
+
+\paragraph*{$\SL_2(\C)$。} 这个群的有限维表示由两个整数参数给出；它们可在 $\C$ 上关于 $z,\bar z$ 的多项式空间中实现。此群没有离散系列。我们有
+\[
+ M=\left\{\begin{pmatrix}e^{i\theta}&0\\0&e^{-i\theta}\end{pmatrix}\right\},\qquad
+ A=\left\{\begin{pmatrix}e^t&0\\0&e^{-t}\end{pmatrix}\right\}.
+\]
+因此非酉主系列由整数 $n$（对应 $M$）和复数 $\zeta$（对应 $A$）参数化；将函数限制到 $\overline N=\bigl(\begin{smallmatrix}1&0\\ *&1\end{smallmatrix}\bigr)$ 上，可在 $\C$ 上的函数空间中实现这些表示。更多细节见 [2]。酉主系列全都不可约，并给出仅有的不可约缓增表示；参数 $(n,i\nu)$ 与 $(-n,-i\nu)$ 给出等价表示。Langlands 分类给出 $\operatorname{Re}\zeta>0$ 的非酉主系列的 Langlands 商，以及不可约缓增表示。
+
+\paragraph*{$\GL_2(\C)$。} 为 $\SL_2(\C)$ 的不可约表示配上 $\C^\times\bigl(\begin{smallmatrix}1&0\\0&1\end{smallmatrix}\bigr)$ 的一个特征，使它在 $\bigl(\begin{smallmatrix}-1&0\\0&-1\end{smallmatrix}\bigr)$ 上与该表示一致。由此得到 $\GL_2(\C)$ 的全部不可约表示。
+
+\begin{thebibliography}{8}
+\bibitem[1]{c04-1} V. Bargmann, \textit{Irreducible unitary representations of the Lorentz group}, Ann. of Math. (2) \textbf{48} (1947), 568--640.
+\bibitem[2]{c04-2} I. M. Gelfand, M. I. Graev and N. Ya. Vilenkin, \textit{Generalized functions}, vol. 5, Academic Press, New York, 1966.
+\bibitem[3]{c04-3} R. Godement, \textit{Sur les relations d'orthogonalité de V. Bargmann}, C. R. Acad. Sci. Paris Sér. A-B \textbf{225} (1947), 521--523, 657--659.
+\bibitem[4]{c04-4} R. A. Kunze and E. M. Stein, \textit{Uniformly bounded representations and harmonic analysis of the $2\times2$ real unimodular group}, Amer. J. Math. \textbf{82} (1960), 1--62.
+\bibitem[5]{c04-5} R. A. Kunze and E. M. Stein, \textit{Uniformly bounded representations. III}, Amer. J. Math. \textbf{89} (1967), 385--442.
+\bibitem[6]{c04-6} S. Lang, \textit{$\SL_2(\R)$}, Addison-Wesley, Reading, Mass., 1975.
+\bibitem[7]{c04-7} R. P. Langlands, \textit{On the classification of irreducible representations of real algebraic groups}, 油印讲义, Institute for Advanced Study, Princeton, N. J., 1973.
+\bibitem[8]{c04-8} P. J. Sally, \textit{Analytic continuation of the irreducible unitary representations of the universal covering group of SL(2, R)}, Mem. Amer. Math. Soc. \textbf{69} (1967).
+\end{thebibliography}
+\noindent Cornell University（康奈尔大学）。

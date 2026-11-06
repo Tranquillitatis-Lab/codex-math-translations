@@ -1,0 +1,895 @@
+\SGAchapter{V}{$\lambda$-环的一般理论}{Généralités sur les $\lambda$-anneaux}
+\begin{center}P. Berthelot\end{center}
+\SourcePage{307}
+每当使用这样的环时，\Term{lambda-ring}{$\lambda$-环}理论都很有用：例如\Term{ringed-site}{环化景}上的\Term{vector-bundle}{向量丛}类所成的环、一个群的\Term{representation-ring}{表示环}，等等；在这些环上，\Term{exterior-power}{外幂}运算定义了映射 $\lambda^i$。本讨论班后面将大量使用这一理论，因此必须先建立它的\Term{generic}{一般}\Term{form}{形式}体系。本讲完全独立于讨论班的其余部分，也可供在\Term{algebraic-geometry}{代数几何}之外使用\Term{lambda-ring}{$\lambda$-环}的人参考。
+
+第一节主要给出 Hirzebruch 的“\Term{multiplicative-polynomial-sequence}{多项式乘法序列}”理论（参见 [2]）；这里采用的\Term{functor}{函子}观点，除具有\Term{generic}{一般}性之外，还能大大减少计算。随后各节将说明，如何给每个\Term{augmented-lambda-ring}{增广 $\lambda$-环}关联一个“\Term{chern-ring}{Chern 环}”，由此建立\Term{chern-class}{Chern 类}理论。正是这一理论，使我们能够以第 VIII 讲的\Term{generic}{一般}\Term{form}{形式}陈述 \Term{riemann-roch-theorem}{Riemann--Roch 定理}。
+
+\SGAsection{1}{泛多项式}
+\textbf{1.1。} 本节固定一个含幺\Term{commutative-ring}{交换环} $K$。记 $\mathscr C$ 为带\Term{filtration}{滤过}的含幺交换 $K$-\Term{algebra}{代数}所成的\Term{category}{范畴}，其中\Term{filtration}{滤过}是递减的，且第零级\Term{filtration}{滤过}\Term{subgroup}{子群}是整个\Term{algebra}{代数}。如下在 $\mathscr C$ 上定义一个取值于\Term{abelian-group}{阿贝尔群}\Term{category}{范畴}的\Term{functor}{函子}。
+\SourcePage{308}
+对 $A\in\operatorname{Ob}(\mathscr C)$，取所有满足以下条件的\Term{formal-power-series}{形式幂级数} $\psi\in A[[t]]$：若
+\[
+\psi=a_0+a_1t+\cdots+a_nt^n+\cdots,
+\]
+则
+\[
+a_0=1;\qquad \forall i\geqslant1,\quad a_i\in\operatorname{Fil}^{i}A.
+\tag{1.1.1}
+\]
+将此\Term{set}{集合}记作 $\widehat G_K(A)$；在不会混淆时，也记作 $\widehat G(A)$。显然，它在\Term{formal-power-series}{形式幂级数}\Term{multiplication}{乘法}下构成\Term{abelian-group}{阿贝尔群}，从而确实定义了一个\Term{functor}{函子}
+\[
+\widehat G_K:\underline{K\text{-}\mathrm{Alg.fil.}}\longrightarrow\underline{\mathrm{Ab}}.
+\]
+若 $A$ 带有\Term{coarse-filtration}{粗滤过}，则 $\widehat G(A)$ 是\Term{augmentation}{增广}为 $1$ 的\Term{formal-power-series}{形式幂级数}所成的群，也记为 $1+A[[t]]^+$。
+
+\begin{SGAresult}{\Term{lemma}{引理}}{1.2}
+\Term{functor}{函子} $\widehat G_K$ 是\Term{representable-functor}{可表函子}。
+\end{SGAresult}
+\begin{proof}
+取一族\Term{indeterminate}{不定元} $(X_i)_{i\in\mathbb N,\ i\geqslant1}$；赋予 $X_i$ 权 $i$，并按 $X_i$ 的权在环 $K[X_i]_{i\geqslant1}$ 上赋予\Term{filtration}{滤过}。给每个
+\[
+\psi=1+a_1t+\cdots+a_nt^n+\cdots\in\widehat G_K(A)
+\]
+关联由 $f_\psi(X_i)=a_i$ 确定的\Term{homomorphism}{同态} $f_\psi$，便定义了一个\Term{bijection}{双射}
+\[
+\widehat G_K(A)\xrightarrow{\sim}
+\operatorname{Hom}_{K\text{-}\mathrm{Alg.fil.}}(K[X_i]_{i\geqslant1},A).
+\]
+这个\Term{homomorphism}{同态}与\Term{filtration}{滤过}相容，因而得到\Term{functor}{函子}的一个\Term{isomorphism}{同构}。
+
+令 $\varphi=1+X_1t+\cdots+X_nt^n+\cdots$。于是对每个带\Term{filtration}{滤过}的 $K$-\Term{algebra}{代数} $A$ 及每个\Term{formal-power-series}{形式幂级数} $\psi\in\widehat G(A)$，存在唯一的\Term{homomorphism}{同态}
+\SourcePage{309}
+$f_\psi:K[X_i]_{i\geqslant1}\longrightarrow A$，使得 $\widehat G(f_\psi)(\varphi)=\psi$。
+\end{proof}
+
+\textbf{1.3。} 对每个 $A\in\operatorname{Ob}(\mathscr C)$，如下在 $\widehat G(A)$ 上定义\Term{filtration}{滤过}：若 $\psi=1+a_1t+\cdots$ 满足 $a_i=0$（$1\leqslant i<k$），就称 $\psi$ 的\Term{filtration}{滤过}\Term{degree}{次数} $\geqslant k$。这样得到的\Term{subgroup}{子群}记作 $F^k\widehat G(A)$；这是 $\mathscr C$ 上的\Term{functor}{函子}。今后都借助这一\Term{filtration}{滤过}（约定 $F^0\widehat G=\widehat G$），将 $\widehat G$ 看作取值于带\Term{filtration}{滤过}的\Term{abelian-group}{阿贝尔群}\Term{category}{范畴} $\underline{\mathrm{Ab.fil.}}$ 的\Term{functor}{函子}。
+
+设 $H$ 是 $\mathscr C$ 上取值于 $\underline{\mathrm{Ab.fil.}}$ 的\Term{functor}{函子}；假设 $H$ 满足以下两个条件：
+\begin{enumerate}
+\item[i)] 对每个 $A\in\operatorname{Ob}(\mathscr C)$，$H(A)$ 都是\Term{separated-filtration}{分离}且\Term{complete-filtration}{完备}的。
+\item[ii)] 若 $A\in\operatorname{Ob}(\mathscr C)$ 是一个\Term{graded-algebra}{分次 $K$-代数}，带有其\Term{grading}{分次}所关联的\Term{filtration}{滤过}，且\Term{finite-group}{有限群} $G$ 通过\Term{graded-morphism}{分次态射}\Term{action}{作用}于 $A$，则
+\[
+H(A^G)\xrightarrow{\sim}H(A)^G
+\]
+（上标 $G$ 表示 $G$ \Term{action}{作用}下的\Term{invariant}{不变量}）。
+\end{enumerate}
+实际上，我们只需在 $A$ 为\Term{polynomial-ring}{多项式环}、$G$ 为\Term{finite}{有限}个\Term{symmetric-group}{对称群}的积且以置换\Term{indeterminate}{不定元}的方式\Term{action}{作用}时，使用这些条件。
+
+\textbf{例。} 1）$H(A)=\widehat G(A)$。
+
+2）$H(A)=1+A[[t]]^+$；将此\Term{functor}{函子}记作 $\widehat G_g$（$g$ 是 grossière，即“粗”的首字母）。
+
+3）$H(A)=\widehat G_a(A)$，其中 $\widehat G_a(A)$ 表示满足 $a_0=0$、$a_i\in\operatorname{Fil}^iA$（$i\geqslant1$）的\Term{formal-power-series}{形式幂级数}在加法下构成的群，带有与 $\widehat G$ 类似的\Term{filtration}{滤过}。
+
+\textbf{1.4。} 对每个 $n$，记 $f_n$ 为 $K[X_1,\ldots,X_n]$ 的\Term{endomorphism}{自同态}，
+\SourcePage{310}
+其定义为 $f_n(X_i)=X_i$（$i<n$），$f_n(X_n)=0$。它通过\Term{inclusion}{包含映射} $K[X_1,\ldots,X_{n-1}]\hookrightarrow K[X_1,\ldots,X_n]$ \Term{resolution}{分解}；这说明，从 $H(K[X_1,\ldots,X_{n-1}])$ 到 $H(K[X_1,\ldots,X_n])$ 的\Term{homomorphism}{同态}是\Term{injectivity}{单射}，因而可以将前者看作后者的\Term{subgroup}{子群}。同样，将 $H(K[X_1,\ldots,X_n])$ 看作包含在 $H(K[X_i]_{i\geqslant1})$ 中。
+
+注意，$f_1$ 就是 $K[X]$ 的\Term{augmentation}{增广}。
+
+\textbf{1.5。} 将 $X_i$ 映到各 $T_j$ 的第 $i$ 个\Term{elementary-symmetric-function}{初等对称函数}，把 $K[X_1,\ldots,X_n]$ \Term{embedding}{嵌入} $K[T_1,\ldots,T_n]$。令\Term{symmetric-group}{对称群} $\mathfrak S_n$ 以置换 $T_j$ 的方式\Term{action}{作用}，利用\Term{symmetric-polynomial}{对称多项式}\Term{theorem}{定理}及（1.3.ii），可知由此得到的从 $H(K[X_1,\ldots,X_n])$ 到 $H(K[T_1,\ldots,T_n])$ 的\Term{homomorphism}{同态}是\Term{injectivity}{单射}，因而仍可将前者看作后者的\Term{subgroup}{子群}：
+\[
+H(K[X_1,\ldots,X_n])\simeq
+H(K[T_1,\ldots,T_n]^{\mathfrak S_n})
+\xrightarrow{\sim}H(K[T_1,\ldots,T_n])^{\mathfrak S_n}
+\subset H(K[T_1,\ldots,T_n]).
+\]
+将由 $u_i^n(X)=T_i$ 定义的\Term{homomorphism}{同态}记作
+\[
+u_i^n:K[X]\longrightarrow K[T_1,\ldots,T_n],
+\]
+并令
+\[
+u_H^n=\sum_{i=1}^nH(u_i^n):H(K[X])\longrightarrow H(K[T_1,\ldots,T_n]).
+\]
+\Term{symmetric-group}{对称群}置换这些\Term{morphism}{态射} $H(u_i^n)$，因此保持\Term{morphism}{态射} $u_H^n$ \Term{invariant}{不变}；故由（1.3.ii），其值落在
+\SourcePage{311}
+$H(K[X_1,\ldots,X_n])$ 中。
+
+最后注意，若 $H=\widehat G$，则
+\[
+u_{\widehat G}^n(1+Xt)=\prod_{i=1}^n(1+T_it)=1+X_1t+\cdots+X_nt^n.
+\]
+
+\begin{SGAresult}{\Term{theorem}{定理}}{1.6}
+把\Term{functor-morphism}{函子态射}映到它在 $\widehat G_K(K[X])$ 的元素 $1+Xt$ 上的值，由此得到的映射
+\[
+\operatorname{Hom}_{\mathrm{Ab.fil.}}(\widehat G_K,H)\longrightarrow H(K[X])
+\]
+是\Term{injectivity}{单射}；其像是 $H(K[X])$ 中由满足下列条件的元素 $\theta$ 组成的\Term{subgroup}{子群}（$f_n$ 采用 1.4 的记号）：
+\begin{enumerate}
+\item[i)] $H(f_1)(\theta)=0$；
+\item[ii)] 对每个 $n\geqslant1$，
+\[
+H(f_n)(u_H^n(\theta))\equiv u_H^n(\theta)
+\pmod{F^nH(K[X_1,\ldots,X_n])}.
+\]
+\end{enumerate}
+\end{SGAresult}
+\begin{proof}
+先证明\Term{injectivity}{单射性}。由\Term{lemma}{引理} 1.2，只需证明：一个在 $1+Xt$ 上为零的\Term{functor-morphism}{函子态射} $\Phi$，在 $\varphi=1+X_1t+\cdots+X_nt^n+\cdots$ 上也为零。\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}
+\widehat G(K[X])\arrow[r,"u_{\widehat G}^n"]\arrow[d,"\Phi"'] &
+\widehat G(K[X_1,\ldots,X_n])\arrow[d,"\Phi"]\\
+H(K[X])\arrow[r,"u_H^n"'] & H(K[X_1,\ldots,X_n])
+\end{tikzcd}
+\tag{1.6.1}
+\]
+说明，对每个 $n$ 都有 $\Phi(1+X_1t+\cdots+X_nt^n)=0$。
+
+而 $\varphi\equiv1+X_1t+\cdots+X_nt^n\pmod{F^{n+1}\widehat G}$，因此
+\[
+\Phi(\varphi)\equiv\Phi(1+X_1t+\cdots+X_nt^n)\pmod{F^{n+1}H},
+\]
+从而对每个 $n$，都有 $\Phi(\varphi)\equiv0\pmod{F^{n+1}H}$；由于 $H(K[X_i]_{i\geqslant1})$ 是\Term{separated-filtration}{分离}且\Term{complete-filtration}{完备}的，得到 $\Phi(\varphi)=0$。
+
+现取任意 $\Phi\in\operatorname{Hom}(\widehat G,H)$，令
+\SourcePage{312}
+$\theta=\Phi(1+Xt)$；证明 $\theta$ 满足条件 i）、ii）。
+
+对 i），有
+\[
+H(f_1)(\theta)=H(f_1)\circ\Phi(1+Xt)
+=\Phi\circ\widehat G(f_1)(1+Xt)=\Phi(1)=0.
+\]
+对 ii），由（1.6.1），有 $u_H^n(\theta)=\Phi(1+\cdots+X_nt^n)$；而
+\[
+1+\cdots+X_nt^n\equiv1+\cdots+X_{n-1}t^{n-1}\pmod{F^n\widehat G},
+\]
+且
+\[
+1+\cdots+X_{n-1}t^{n-1}=\widehat G(f_n)(1+\cdots+X_nt^n).
+\]
+由于 $\Phi\circ\widehat G(f_n)=H(f_n)\circ\Phi$，并且 $\Phi$ 是带\Term{filtration}{滤过}的\Term{functor}{函子}的\Term{morphism}{态射}，便得到 ii）。
+
+最后须证明，若 $\theta\in H(K[X])$ 满足 i）、ii），则存在 $\Phi\in\operatorname{Hom}(\widehat G,H)$ 使 $\theta=\Phi(1+Xt)$。
+
+先借助（1.6.1），确定 $\Phi$ 在 $\widehat G(K[X_1,\ldots,X_n])$ 的元素 $1+\cdots+X_nt^n$ 上的值；即按定义令
+\[
+\Phi(1+\cdots+X_nt^n)=\sum_{i=1}^n\Phi(1+T_it),
+\]
+其中各 $\Phi(1+T_it)$ 都可由\Term{homomorphism}{同态} $u_i^n$，利用\Term{functoriality}{函子性}得知。
+
+随后利用\Term{commutative-diagram}{交换图}，将随 $n$ 变化的各 $\Phi(1+\cdots+X_nt^n)$ 拼接起来：
+\[
+\begin{tikzcd}
+K[X_1,\ldots,X_n]\arrow[r,"f_n"]\arrow[d,"\sigma_n"'] &
+K[X_1,\ldots,X_n]\arrow[d,"\sigma'_n"]\\
+K[T_1,\ldots,T_n]\arrow[r,"f'_n"'] & K[T_1,\ldots,T_n].
+\end{tikzcd}
+\tag{1.6.2}
+\]
+这里，$f'_n$ 由 $f'_n(T_i)=T_i$（$i<n$）、$f'_n(T_n)=0$ 确定；$\sigma_n$ 将 $X_i$ 映到各 $T_j$ 的第 $i$ 个\Term{elementary-symmetric-function}{初等对称函数}；$\sigma'_n$ 在 $i<n$ 时将 $X_i$ 映到 $T_1,\ldots,T_{n-1}$ 的第 $i$ 个\Term{elementary-symmetric-function}{初等对称函数}，并将 $X_n$ 映到 $0$。
+
+事实上，由此得到
+\[
+\begin{aligned}
+H(f_n)(\Phi(1+\cdots+X_nt^n))
+&=H(f'_n)\left(\sum_{i=1}^n\Phi(1+T_it)\right)\\
+&=\sum_{i=1}^{n-1}\Phi(1+T_it)\qquad\text{（由 1.6.i）}\\
+&=\Phi(1+\cdots+X_{n-1}t^{n-1})
+\end{aligned}
+\]
+\SourcePage{313}
+（借助 1.4 中的等同，在 $H(K[T_1,\ldots,T_{n-1}])$ 中考虑）。结合 1.6.ii），有
+\[
+\Phi(1+\cdots+X_nt^n)\equiv\Phi(1+\cdots+X_{n-1}t^{n-1})
+\pmod{F^nH(K[X_i]_{i\geqslant1})}.
+\]
+由于 $H(K[X_i]_{i\geqslant1})$ 是\Term{separated-filtration}{分离}\Term{complete-filtration}{完备}群，各 $\Phi(1+\cdots+X_nt^n)$ 确定其中的一个元素 $\psi$；于是定义 $\Phi(\varphi)=\psi$。
+
+最后，设 $A\in\operatorname{Ob}(\mathscr C)$，$\chi\in\widehat G(A)$；令
+\[
+\Phi(\chi)=H(f_\chi)(\psi),
+\]
+其中 $f_\chi$ 是 1.2 中定义的从 $K[X_i]_{i\geqslant1}$ 到 $A$ 的\Term{homomorphism}{同态}。由于已在元素 $1+\cdots+X_nt^n=\varphi_n$ 上定义了 $\Phi$，必须核实两个定义给出的结果相同，也就是说
+\[
+H(f_{\varphi_n})(\psi)=\Phi(1+\cdots+X_nt^n).
+\]
+对每个 $p$，都有
+\[
+\psi\equiv\Phi(1+\cdots+X_pt^p)\pmod{F^{p+1}H(K[X_i]_{i\geqslant1})}.
+\]
+因此，对每个 $p\geqslant n$，
+\[
+H(f_{\varphi_n})(\psi)\equiv
+H(f_{\varphi_n})(\Phi(1+\cdots+X_pt^p))
+\pmod{F^{p+1}H(K[X_i]_{i\geqslant1})}.
+\]
+利用 1.4 中的等同，以及随 $m$ 变化的各 $\Phi(\varphi_m)$ 的拼接关系，得到
+\[
+H(f_{\varphi_n})(\Phi(\varphi_p))=\Phi(\varphi_n).
+\]
+最终，对每个 $p\geqslant n$，都有
+\[
+H(f_{\varphi_n})(\psi)\equiv\Phi(1+\cdots+X_nt^n)
+\pmod{F^pH(K[X_i]_{i\geqslant1})}.
+\]
+由 $H$ 的\Term{separated-filtration}{分离性}，便得到所要的等式。
+
+这样定义了一族映射 $\Phi_A:\widehat G(A)\longrightarrow H(A)$。要核实它们构成一个（取值于\Term{set}{集合}\Term{category}{范畴}的）\Term{functor-morphism}{函子态射}，须对每个\Term{morphism}{态射} $h:A\longrightarrow A'$，证明下图交换：
+\[
+\begin{tikzcd}
+\widehat G(A)\arrow[r,"\widehat G(h)"]\arrow[d,"\Phi_A"'] &
+\widehat G(A')\arrow[d,"\Phi_{A'}"]\\
+H(A)\arrow[r,"H(h)"'] & H(A').
+\end{tikzcd}
+\]
+\SourcePage{314}
+设 $\chi\in\widehat G(A)$，则 $h\circ f_\chi=f_{\widehat G(h)(\chi)}$，故
+\[
+\begin{aligned}
+H(h)(\Phi_A(\chi))
+&=H(h)\circ H(f_\chi)(\psi)\\
+&=H(f_{\widehat G(h)(\chi)})(\psi)
+=\Phi_{A'}(\widehat G(h)(\chi)).
+\end{aligned}
+\]
+因此，只剩下证明这样构造的\Term{functor-morphism}{函子态射}与带\Term{filtration}{滤过}的\Term{group-structure}{群结构}相容。
+
+设 $\chi\in F^n\widehat G(A)$。$\chi$ 的\Term{filtration}{滤过}\Term{degree}{次数} $\geqslant n$，\Term{equivalence}{等价}于说 $f_\chi:K[X_i]_{i\geqslant1}\longrightarrow A$ 通过 $K[X_i]_{i\geqslant1}$ 的\Term{endomorphism}{自同态} $g_n$ \Term{resolution}{分解}，其中
+\[
+g_n(X_i)=0\quad(1\leqslant i\leqslant n-1),\qquad
+g_n(X_i)=X_i\quad(i\geqslant n).
+\]
+要证明 $\Phi$ 与\Term{filtration}{滤过}相容，只需证明 $H(g_n)(\Phi(\varphi))\in F^nH$。而按构造，
+\[
+\Phi(\varphi)\equiv\Phi(1+\cdots+X_{n-1}t^{n-1})\pmod{F^nH},
+\]
+故
+\[
+H(g_n)(\Phi(\varphi))\equiv
+H(g_n)(\Phi(1+\cdots+X_{n-1}t^{n-1}))=0\pmod{F^nH}.
+\]
+
+要核实 $\Phi$ 的\Term{additive}{加性}，只需对 $\widehat G(A)$ 中\Term{degree}{次数}\Term{finite}{有限}的元素核实，再取\Term{limit}{极限}。设 $\chi_1,\chi_2$ 是 $\widehat G(A)$ 中\Term{degree}{次数}为 $n$ 的两个元素，$\chi$ 是它们的乘积。考虑\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}[column sep=large,row sep=large]
+K[X_1,\ldots,X_{2n}]\arrow[r,"f_\chi"]\arrow[d] & A\\
+(K[T_1,\ldots,T_{2n}])^{\mathfrak S_n\times\mathfrak S_n}
+\arrow[ur,"f'_\chi"'] & {}
+\end{tikzcd}
+\]
+其中各\Term{arrow}{箭头}定义如下：$\mathfrak S_n\times\mathfrak S_n$ \Term{action}{作用}于 $K[T_1,\ldots,T_{2n}]$，
+\SourcePage{315}
+第一因子置换 $T_1,\ldots,T_n$，第二因子置换 $T_{n+1},\ldots,T_{2n}$；将 $X_j$ 映到所有 $T_i$ 的第 $j$ 个\Term{elementary-symmetric-function}{初等对称函数}，把 $K[X_1,\ldots,X_{2n}]$ \Term{embedding}{嵌入}\Term{invariant-ring}{不变量环}中；$f'_\chi$ 将 $T_1,\ldots,T_n$（相应地，$T_{n+1},\ldots,T_{2n}$）的第 $i$ 个\Term{elementary-symmetric-function}{初等对称函数}映到 $\chi_1$（相应地，$\chi_2$）的第 $i$ 个系数。于是
+\[
+\Phi(\chi)=H(f_\chi)\left(\Phi\left(\prod_{i=1}^{2n}(1+T_it)\right)\right)
+=H(f'_\chi)\left(\Phi\left(\prod_{i=1}^{2n}(1+T_it)\right)\right);
+\]
+\[
+\Phi(\chi_1)=H(f'_\chi)\left(\Phi\left(\prod_{i=1}^{n}(1+T_it)\right)\right)
+\quad\text{（对 $\chi_2$ 则取 $i=n+1,\ldots,2n$）。}
+\]
+由于 $H(f'_\chi)$ 是群\Term{homomorphism}{同态}，归结为 $\chi=\prod_{i=1}^{2n}(1+T_it)$ 的情形；在这一情形，$\Phi$ 的\Term{additive}{加性}由各 $\Phi(1+X_1t+\cdots+X_kt^k)$ 的定义即得。
+\end{proof}
+
+\textbf{1.7。} 上述讨论可推广到\Term{functor}{函子} $\widehat G$ 的积：\Term{functor}{函子} $(\widehat G)^k$ 由环
+\[
+K[(X_i^{(j)})],\qquad j=1,\ldots,k,\quad i\geqslant1,
+\]
+表示，其中 $X_i^{(j)}$ 的权为 $i$。记
+\[
+\varphi^{(j)}=1+X_1^{(j)}t+\cdots+X_n^{(j)}t^n+\cdots;
+\]
+则 $(\varphi^{(j)})_j\in(\widehat G(K[(X_i^{(j)})]))^k$ 具有与 $\varphi$ 类似的\Term{universal-property}{泛性质}（参见 1.2）。对每族 $(X_i^{(j)})_{i\geqslant1}$ 分别重复前面的构造，可如前引入\Term{morphism}{态射} $f_n^{(j)}$、$u_H^{n,(j)}$。考虑从 $(\widehat G)^k$ 到 $H$ 的\Term{functor-morphism}{函子态射}，要求它们是 $\mathbb Z$-多\Term{linear}{线性}的，且对每个变元分别与\Term{filtration}{滤过}相容，便得到与\Term{theorem}{定理} 1.6 类似的结果：这些\Term{morphism}{态射}由它们在元素
+\SourcePage{316}
+\[
+(1+X^{(j)}t)_{j=1,\ldots,k}\in
+\bigl(\widehat G(K[(X^{(j)})_j])\bigr)^k
+\]
+上的值确定；$\theta\in H(K[(X^{(j)})])$ 确定一个\Term{functor-morphism}{函子态射}，当且仅当它满足：
+\begin{enumerate}
+\item[i)] 对每个 $j$，$H(f_1^{(j)})(\theta)=0$；
+\item[ii)] 对每个 $n,j$，
+\[
+H(f_n^{(j)})(u_H^{n,(j)}(\theta))
+\equiv u_H^{n,(j)}(\theta)\pmod{F^nH}.
+\]
+\end{enumerate}
+读者容易看出，除了记号变得复杂之外，只需照搬 1.6 的证明。
+
+\textbf{1.8。} 记 $\mathscr C_0$ 为 $K$-\Term{algebra}{代数}的\Term{category}{范畴}，并记
+\[
+i:\mathscr C_0\longrightarrow\mathscr C
+\]
+为将 $K$-\Term{algebra}{代数} $A$ 映到带\Term{coarse-filtration}{粗滤过}的 $K$-\Term{algebra}{代数} $A$ 的\Term{functor}{函子}；又记
+\[
+g:\mathscr C\longrightarrow\mathscr C_0
+\]
+为“忘掉\Term{filtration}{滤过}”的\Term{functor}{函子}。这些\Term{functor}{函子}满足以下关系：
+\[
+g\circ i=\operatorname{Id}_{\mathscr C_0};\qquad
+\widehat G\circ i\circ g=\widehat G_g;\qquad
+\widehat G_g\circ i\circ g=\widehat G_g
+\quad\text{（参见 1.3，例 2）。}
+\]
+
+\begin{SGAresult}{\Term{lemma}{引理}}{1.9}
+设 $H:\mathscr C_0\longrightarrow\underline{\mathrm{Ab.fil.}}$ 是 $\mathscr C_0$ 上的\Term{functor}{函子}，则\Term{canonical}{典范}\Term{homomorphism}{同态}
+\[
+\operatorname{Hom}_{\mathrm{Ab.fil.}}(\widehat G,H\circ g)
+\longrightarrow
+\operatorname{Hom}_{\mathrm{Ab.fil.}}(\widehat G\circ i,H)
+\]
+\SourcePage{317}
+是一个\Term{isomorphism}{同构}。
+\end{SGAresult}
+\begin{proof}
+为证明它是\Term{injectivity}{单射}，使用下列\Term{canonical}{典范}\Term{homomorphism}{同态}组成的序列：
+\[
+\begin{aligned}
+\operatorname{Hom}(\widehat G,H\circ g)
+&\longrightarrow\operatorname{Hom}(\widehat G\circ i,H)\\
+&\longrightarrow\operatorname{Hom}(\widehat G_g,H\circ g)
+\longrightarrow\operatorname{Hom}(\widehat G,H\circ g),
+\end{aligned}
+\]
+最后一个\Term{arrow}{箭头}来自 $\widehat G$ 是 $\widehat G_g$ 的\Term{subfunctor}{子函子}这一事实。为核实复合\Term{homomorphism}{同态}是\Term{identity-map}{恒等映射}，注意从 $\widehat G$ 到 $H\circ g$ 的\Term{functor-morphism}{函子态射}由它在 $\mathscr C$ 中带\Term{coarse-filtration}{粗滤过}的\Term{object}{对象}上的值确定。事实上，设 $A\in\operatorname{Ob}(\mathscr C)$，并将\Term{algebra}{代数} $A$ 赋予\Term{coarse-filtration}{粗滤过}后记作 $A_g$；\Term{canonical}{典范}\Term{morphism}{态射} $A\longrightarrow A_g$ 给出一个\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}
+\widehat G(A)\arrow[r,"\Phi_A"]\arrow[d,hook] &
+H\circ g(A)\arrow[d,equal]\\
+\widehat G(A_g)\arrow[r,"\Phi_{A_g}"'] & H\circ g(A_g),
+\end{tikzcd}
+\]
+表明 $\Phi_A$ 是 $\Phi_{A_g}$ 在 $\widehat G(A)$ 上的\Term{restriction}{限制}。
+
+再考虑复合\Term{homomorphism}{同态}
+\[
+\begin{aligned}
+\operatorname{Hom}(\widehat G\circ i,H)
+&\longrightarrow\operatorname{Hom}(\widehat G_g,H\circ g)\\
+&\longrightarrow\operatorname{Hom}(\widehat G,H\circ g)
+\longrightarrow\operatorname{Hom}(\widehat G\circ i,H).
+\end{aligned}
+\]
+显然它是\Term{identity-map}{恒等映射}，从而得到所述结果。
+\end{proof}
+
+\begin{SGAresult}{\Term{theorem}{定理}}{1.10}
+设 $H$ 是 $K$-\Term{algebra}{代数}\Term{category}{范畴} $\mathscr C_0$ 上的\Term{functor}{函子}，取值于\Term{separated-filtration}{分离}\Term{complete-filtration}{完备}的带\Term{filtration}{滤过}\Term{abelian-group}{阿贝尔群}\Term{category}{范畴}，并与\Term{finite-group}{有限群}的\Term{invariant}{不变量}相交换。则将\Term{functor-morphism}{函子态射}映到
+\SourcePage{318}
+它在 $\widehat G\circ i(K[X])$ 的元素 $1+Xt$ 上的值，由此得到的映射
+\[
+\operatorname{Hom}_{\mathrm{Ab.fil.}}(\widehat G\circ i,H)\longrightarrow H(K[X])
+\]
+是\Term{injectivity}{单射}；其像是 $H(K[X])$ 中由满足下列条件的元素 $\theta$ 组成的\Term{subgroup}{子群}（记号类似于 1.4、1.5）：
+\begin{enumerate}
+\item[i)] $H(f_1)(\theta)=0$；
+\item[ii)] 对每个 $n\geqslant1$，
+\[
+H(f_n)(u_H^n(\theta))\equiv u_H^n(\theta)
+\pmod{F^nH(K[X_1,\ldots,X_n])}.
+\]
+\end{enumerate}
+\end{SGAresult}
+\begin{proof}
+注意 $H\circ g(K[X])$ 不依赖于在 $K[X]$ 上选取的\Term{filtration}{滤过}，\Term{theorem}{定理}便立即由\Term{theorem}{定理} 1.6 和\Term{lemma}{引理} 1.9 得到。
+\end{proof}
+
+将 $\widehat G$ 换成 $(\widehat G)^k$ 所得的类似\Term{theorem}{定理}也成立（参见 1.7）。
+
+不会混淆时，将\Term{functor}{函子} $\widehat G\circ i$ 记作 $\widehat G$；这是合理的，因为 $i$ 将 $\mathscr C_0$ 与 $\mathscr C$ 的一个子\Term{category}{范畴}等同起来。
+
+\textbf{1.11。} 记 $\mathscr G$ 为\Term{graded-algebra}{分次 $K$-代数}的\Term{category}{范畴}，$j$ 为从 $\mathscr G$ 到 $\mathscr C$ 的\Term{functor}{函子}，它将\Term{graded-algebra}{分次 $K$-代数} $B$ 映到带有其\Term{grading}{分次}所\Term{canonical}{典范}确定的\Term{filtration}{滤过}的 $K$-\Term{algebra}{代数} $B$；“\Term{associated-graded-ring}{相伴分次}”\Term{functor}{函子} $\mathscr C\longrightarrow\mathscr G$ 记为 $\operatorname{Gr}$。存在\Term{functor}{函子}的一个\Term{isomorphism}{同构}
+\[
+\varepsilon:\operatorname{Id}_{\mathscr G}\xrightarrow{\sim}\operatorname{Gr}\circ j.
+\]
+设 $B\in\operatorname{Ob}(\mathscr G)$，以 $1+\widehat B^+$ 记 $\prod_{i=0}^{\infty}B^i$ 中\Term{augmentation}{增广}为 $1$ 的元素所成的\Term{multiplicative-group}{乘法群}。赋予它与 $\widehat G$ 类似的\Term{filtration}{滤过}，便定义了一个\Term{functor}{函子}
+\[
+\mathscr G\longrightarrow\underline{\mathrm{Ab.fil.}}.
+\]
+另一方面，对每个 $A\in\operatorname{Ob}(\mathscr C)$，如下定义带\Term{filtration}{滤过}的群的一个\Term{homomorphism}{同态}
+\[
+\widehat G(A)\longrightarrow1+\widehat{\operatorname{Gr}A}^{+}:
+\]
+将\Term{formal-power-series}{形式幂级数} $1+\cdots+a_nt^n+\cdots$ 映到
+\SourcePage{319}
+$1+\cdots+\bar a_n+\cdots$，其中 $\bar a_n$ 是 $a_n$ 在 $\operatorname{Gr}^nA$ 中的类。其\Term{kernel}{核}是由满足
+\[
+a_0=1;\qquad \forall i\geqslant1,\quad a_i\in\operatorname{Fil}^{i+1}A
+\]
+的\Term{formal-power-series}{形式幂级数}组成的群 $\widehat G'(A)$。因此有一个对 $A$ 具有\Term{functoriality}{函子性}的\Term{isomorphism}{同构}
+\[
+\widehat G(A)/\widehat G'(A)\xrightarrow{\sim}
+1+\widehat{\operatorname{Gr}A}^{+}.
+\]
+
+\begin{SGAresult}{\Term{lemma}{引理}}{1.12}
+设 $H:\mathscr G\longrightarrow\underline{\mathrm{Ab.fil.}}$ 是 $\mathscr G$ 上的\Term{functor}{函子}，则\Term{canonical}{典范}\Term{homomorphism}{同态}
+\[
+\rho:\operatorname{Hom}_{\mathrm{Ab.fil.}}(1+\widehat{\cdot}^{+},H)
+\longrightarrow
+\operatorname{Hom}_{\mathrm{Ab.fil.}}(\widehat G,H\circ\operatorname{Gr})
+\]
+是一个\Term{isomorphism}{同构}。
+\end{SGAresult}
+\begin{proof}
+\Term{homomorphism}{同态} $\rho$ 定义为以下复合：
+\[
+\begin{aligned}
+\operatorname{Hom}(1+\widehat{\cdot}^{+},H)
+&\longrightarrow
+\operatorname{Hom}(1+\widehat{\operatorname{Gr}(\cdot)}^{+},H\circ\operatorname{Gr})\\
+&\longrightarrow\operatorname{Hom}(\widehat G,H\circ\operatorname{Gr}),
+\end{aligned}
+\]
+最后一个\Term{arrow}{箭头}由\Term{homomorphism}{同态} $\widehat G\longrightarrow1+\widehat{\operatorname{Gr}(\cdot)}^{+}$ 定义。
+
+构造一个反向的\Term{morphism}{态射}
+\[
+\rho':\operatorname{Hom}(\widehat G,H\circ\operatorname{Gr})
+\longrightarrow\operatorname{Hom}(1+\widehat{\cdot}^{+},H).
+\]
+为此，将证明每个从 $\widehat G$ 到 $H\circ\operatorname{Gr}$ 的\Term{functor-morphism}{函子态射}，都通过\Term{canonical}{典范}\Term{morphism}{态射} $\widehat G\longrightarrow1+\widehat{\operatorname{Gr}(\cdot)}^{+}$ \Term{resolution}{分解}；由 1.11，这\Term{equivalence}{等价}于证明它在 $\widehat G'$ 上为零。
+
+设 $A\in\operatorname{Ob}(\mathscr C)$，$\chi\in\widehat G'(A)$。定义一个带\Term{filtration}{滤过}的 $K$-\Term{algebra}{代数}\Term{homomorphism}{同态}
+\SourcePage{320}
+$K[X_i]_{i\geqslant1}\longrightarrow A$，把 $X_1$ 映到 $0$，在 $i>1$ 时把 $X_i$ 映到 $\chi$ 的第 $(i-1)$ 个系数。利用这个\Term{homomorphism}{同态}，可知只需核实所考虑的\Term{functor-morphism}{函子态射}在元素 $1+X_2t+\cdots+X_{n+1}t^n+\cdots$ 上为零。为此，使用 $K[X_i]_{i\geqslant1}$ 的\Term{endomorphism}{自同态} $f$，它对每个 $i$ 由 $f(X_i)=X_{i+1}$ 定义，以及\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}
+\widehat G(K[(X_i)])\arrow[r]\arrow[d,"\widehat G(f)"'] &
+H\circ\operatorname{Gr}(K[(X_i)])\arrow[d,"H(\operatorname{Gr}(f))"]\\
+\widehat G(K[(X_i)])\arrow[r] & H\circ\operatorname{Gr}(K[(X_i)]).
+\end{tikzcd}
+\]
+而 $\operatorname{Gr}(f)=\operatorname{Gr}(f_1)$，其中 $f_1$ 是 $K[X_i]_{i\geqslant1}$ 的\Term{augmentation}{增广}\Term{homomorphism}{同态}；后者将 $\varphi$ 化为零，由对 $f_1$ 写出的类似\Term{commutative-diagram}{交换图}可知，$H(\operatorname{Gr}(f))$ 将 $\varphi$ 在 $H\circ\operatorname{Gr}(K[X_i]_{i\geqslant1})$ 中的像化为零，故得结果。
+
+于是，通过取商，可给每个\Term{functor-morphism}{函子态射} $\widehat G\longrightarrow H\circ\operatorname{Gr}$ 关联一个\Term{functor-morphism}{函子态射}
+\[
+1+\widehat{\operatorname{Gr}(\cdot)}^{+}\longrightarrow H\circ\operatorname{Gr};
+\]
+再与 $j$ 复合，并利用\Term{isomorphism}{同构} $\varepsilon$，得到一个\Term{morphism}{态射} $1+\widehat{\cdot}^{+}\longrightarrow H$，这就定义了所要的\Term{homomorphism}{同态} $\rho'$。立即可核实 $\rho$ 与 $\rho'$ 互为逆映射。
+\end{proof}
+
+\begin{SGAresult}{\Term{theorem}{定理}}{1.13}
+设 $H$ 是 $\mathscr G$ 上的\Term{functor}{函子}，取值于\Term{separated-filtration}{分离}\Term{complete-filtration}{完备}的带\Term{filtration}{滤过}\Term{abelian-group}{阿贝尔群}\Term{category}{范畴}，并与\Term{finite-group}{有限群}的\Term{invariant}{不变量}相交换。则将\Term{functor-morphism}{函子态射}映到它在
+\SourcePage{321}
+$1+\widehat{K[X]}^{+}$ 的元素 $1+X$ 上的值，由此得到的映射
+\[
+\operatorname{Hom}_{\mathrm{Ab.fil.}}(1+\widehat{\cdot}^{+},H)\longrightarrow H(K[X])
+\]
+是\Term{injectivity}{单射}；其像是 $H(K[X])$ 中由满足下列条件的元素 $\theta$ 组成的\Term{subgroup}{子群}（采用 1.4、1.5 的记号）：
+\begin{enumerate}
+\item[i)] $H(f_1)(\theta)=0$；
+\item[ii)] 对每个 $n\geqslant1$，
+\[
+H(f_n)(u_H^n(\theta))\equiv u_H^n(\theta)
+\pmod{F^nH(K[X_1,\ldots,X_n])}.
+\]
+\end{enumerate}
+\end{SGAresult}
+\begin{proof}
+由 1.6、1.12 立即得到。
+\end{proof}
+将 $\widehat G$ 换成 $(\widehat G)^k$，也有类似的陈述。
+
+\textbf{注记 1.14。} 若 $H$ 是 $\mathscr G$ 上取值于\Term{abelian-group}{阿贝尔群}\Term{category}{范畴}的\Term{functor}{函子}，与\Term{finite-group}{有限群}的\Term{invariant}{不变量}相交换，并满足条件
+\[
+\forall B\in\operatorname{Ob}(\mathscr G),\qquad
+H(B)\xrightarrow{\sim}\varprojlim_nH(B/B^{\geqslant n})
+\quad\left(B^{\geqslant n}=\prod_{i\geqslant n}B^i\right),
+\]
+则如果在 $H$ 上取由 $H(B)\longrightarrow H(B/B^{\geqslant n})$ 的\Term{kernel}{核}给出的\Term{filtration}{滤过}（它是\Term{separated-filtration}{分离}且\Term{complete-filtration}{完备}的），1.13 的条件 ii）总会满足。事实上，若 $p_n$ 是\Term{canonical}{典范}\Term{homomorphism}{同态}
+\[
+K[X_1,\ldots,X_n]\longrightarrow
+K[X_1,\ldots,X_n]/K[X_1,\ldots,X_n]^{\geqslant n},
+\]
+则有 $p_n\circ f_n=p_n$，故
+\[
+H(p_n)\bigl[H(f_n)\circ u_H^n(\theta)-u_H^n(\theta)\bigr]=0,
+\]
+即
+\[
+H(f_n)\circ u_H^n(\theta)-u_H^n(\theta)
+\in F^nH(K[X_1,\ldots,X_n]).
+\]
+因此，要给出从 $1+\widehat{\cdot}^{+}$ 到 $H$ 的一个\Term{functor-morphism}{函子态射}，只须给出 $H(K[X])$ 中满足 1.13 的唯一一个条件 i）的元素。
+
+\textbf{1.15。} 设 $H:\mathscr C\longrightarrow\underline{\mathrm{Ab.fil.}}$（相应地，$\mathscr C_0\longrightarrow\underline{\mathrm{Ab.fil.}}$，或 $\mathscr G\longrightarrow\underline{\mathrm{Ab.fil.}}$）是满足 1.3（相应地，1.10、1.13）条件的\Term{functor}{函子}，并设
+\[
+\Phi:(\widehat G)^k\longrightarrow H
+\quad\text{（相应地，$(\widehat G\circ i)^k\longrightarrow H$，或
+$(1+\widehat{\cdot}^{+})^k\longrightarrow H$）}
+\]
+是一个\Term{functor-morphism}{函子态射}。
+\SourcePage{322}
+我们已经看到（1.7），$\Phi$ 由它在元素
+\[
+(\varphi^{(j)})_{j=1,\ldots,k}\in
+\left(\widehat G\left(K[X_i^{(j)}]_{\substack{i\geqslant1\\j=1,\ldots,k}}\right)\right)^k
+\quad\text{（相应地，等等）}
+\]
+上的值确定。假设 $H$ 是 $\widehat G$、$\widehat G_g$、$\widehat G_a$、$1+\widehat{\operatorname{Gr}(\cdot)}^{+}$ 等\Term{functor}{函子}之一；$\Phi((\varphi^{(j)})_j)$ 是一个系数在 $K[X_i^{(j)}]_{i\geqslant1,\ j=1,\ldots,k}$ 中的\Term{formal-power-series}{形式幂级数}。这个级数的第 $n$ 个系数称为 $\Phi$ 的第 $n$ 个\Term{universal-polynomial}{泛多项式}；因此，知道这些\Term{polynomial}{多项式}就等于知道 $\Phi$。由 1.6 的证明，这些\Term{polynomial}{多项式}又由元素
+\[
+\Phi(1+X^{(1)}t,\ldots,1+X^{(k)}t)
+\]
+确定；计算按证明中的方法进行：把
+\[
+1+X_1^{(i)}t+\cdots+X_n^{(i)}t^n
+\]
+\Term{resolution}{分解}为 $\prod_{j=1}^n(1+T_j^{(i)}t)$，再利用 $\Phi$ 的\Term{additive}{加性}，计算元素
+\[
+\Phi(1+X_1^{(1)}t+\cdots+X_n^{(1)}t^n,\ldots,
+1+X_1^{(k)}t+\cdots+X_n^{(k)}t^n).
+\]
+如此得到的\Term{polynomial}{多项式}，对每组 $T_j^{(i)}$（固定 $i$，让 $j$ 变化）都是\Term{symmetric}{对称}的，因而可用 $X_j^{(i)}$ \Term{represented}{表出}；再借助 $H$ 的\Term{filtration}{滤过}拼接，便得到 $\Phi$ 的各\Term{universal-polynomial}{泛多项式}。若 $(\psi^{(1)},\ldots,\psi^{(k)})\in(\widehat G(A))^k$，则只须在\Term{universal-polynomial}{泛多项式}中，用各 $\psi^{(i)}$ 的系数 $a_j^{(i)}$ 代替 $X_j^{(i)}$，即可计算 $\Phi(\psi^{(1)},\ldots,\psi^{(k)})$。
+
+假设存在整数 $m$，使
+\[
+\theta=\Phi(1+X^{(1)}t,\ldots,1+X^{(k)}t)
+\]
+中 $t^n$ 的系数是一个\Term{polynomial}{多项式}，其\Term{isobaric-polynomial}{等权}\Term{set-component}{分量}的权介于 $n$ 与 $mn$ 之间；则 $\Phi$ 的第 $k$ 个\Term{universal-polynomial}{泛多项式}的\Term{isobaric-polynomial}{等权}\Term{set-component}{分量}，其权介于 $k$ 与 $km$ 之间。这立即由上述计算方法及\Term{symmetric-function}{对称函数}\Term{theorem}{定理}得出。
+\SourcePage{323}
+特别地，假设 $H=\widehat G$；则 $\Phi$ 的第 $n$ 个\Term{universal-polynomial}{泛多项式}没有权 $<n$ 的\Term{set-component}{分量}。现考虑\Term{canonical}{典范}\Term{morphism}{态射} $H\longrightarrow1+\widehat{\operatorname{Gr}(\cdot)}^{+}$；与 $\Phi$ 复合后得到一个\Term{morphism}{态射}
+\[
+(\widehat G)^k\longrightarrow1+\widehat{\operatorname{Gr}(\cdot)}^{+}.
+\]
+由 1.12 的证明，它通过 $(1+\widehat{\operatorname{Gr}(\cdot)}^{+})^k$ \Term{resolution}{分解}，并定义一个\Term{morphism}{态射}
+\[
+\overline\Phi:(1+\widehat{\cdot}^{+})^k\longrightarrow1+\widehat{\cdot}^{+}.
+\]
+立即可知，$\overline\Phi$ 的第 $n$ 个\Term{universal-polynomial}{泛多项式}，与从 $(\widehat G)^k$ 到 $1+\widehat{\operatorname{Gr}(\cdot)}^{+}$ 的上述\Term{morphism}{态射}的第 $n$ 个\Term{universal-polynomial}{泛多项式}相同，即 $\Phi$ 的第 $n$ 个\Term{universal-polynomial}{泛多项式}中权为 $n$ 的\Term{isobaric-polynomial}{等权}\Term{set-component}{分量}。
+
+同样的讨论适用于 $H=\widehat G_a$ 的情形：仿照 1.11，可定义\Term{functor-morphism}{函子态射}
+\[
+H\longrightarrow\widehat{\operatorname{Gr}(\cdot)}^{+}
+\]
+（其中 $\widehat{\operatorname{Gr}(\cdot)}^{+}=\widehat{\cdot}^{+}\circ\operatorname{Gr}$，而 $\widehat{\cdot}^{+}$ 是在 $\mathscr G$ 上由 $\widehat B^+=\prod_{i\geqslant1}B^i$ 定义的\Term{functor}{函子}）；随后照搬上一段的论证和结论即可。
+
+\textbf{1.16。} 最后给出一个例子。设 $K=\mathbb Q$。如下定义\Term{functor}{函子} $1+\widehat{\cdot}^{+}$ 的一个\Term{endomorphism}{自同态}，记为 $\operatorname{Todd}$，称为\Term{todd-character}{Todd 特征}：
+\[
+\operatorname{Todd}(1+X)=\frac{X}{1-e^{-X}}.
+\]
+\Term{theorem}{定理} 1.13 的条件 i）、ii）立即可得，这说明如此确实定义了 $1+\widehat{\cdot}^{+}$ 的一个\Term{endomorphism}{自同态}。
+
+\SGAsection{2}{$\lambda$-环的定义；例子}
+本节的基环取为 $\mathbb Z$（2.9 除外）。我们在\Term{category}{范畴} $\mathscr C_0$（1.8）上讨论，并以 $\widehat G$ 表示 $\widehat G$ 在 $\mathscr C_0$ 上的\Term{restriction}{限制}（1.10）。
+\SourcePage{324}
+\begin{SGAresult}{定义}{2.1}
+称一个含幺\Term{commutative-ring}{交换环} $K$，连同一个\Term{abelian-group}{阿贝尔群}\Term{homomorphism}{同态}
+\[
+\lambda_t:K\longrightarrow1+K[[t]]^+,
+\]
+为\Term{pre-lambda-ring}{预 $\lambda$-环}，如果对每个 $x\in K$ 都有 $\lambda_t(x)=1+xt+\cdots$。
+\end{SGAresult}
+令 $\lambda_t(x)=\sum_{i\geqslant0}\lambda^i(x)t^i$。于是在环 $K$ 上给定一个\Term{pre-lambda-ring}{预 $\lambda$-环}结构，\Term{equivalence}{等价}于给定一族从 $K$ 到 $K$ 的映射 $\lambda^i$（$i\in\mathbb N$），满足：
+\begin{enumerate}
+\item[i)] 对每个 $x\in K$，$\lambda^0(x)=1$；
+\item[ii)] 对每个 $x\in K$，$\lambda^1(x)=x$；
+\item[iii)] 对每个 $x,y\in K$ 及每个 $n\in\mathbb N$，
+\[
+\lambda^n(x+y)=\sum_{p+q=n}\lambda^p(x)\lambda^q(y).
+\]
+\end{enumerate}
+设 $K,K'$ 是两个\Term{pre-lambda-ring}{预 $\lambda$-环}，$f:K\longrightarrow K'$ 是环\Term{homomorphism}{同态}。若图
+\[
+\begin{tikzcd}
+K\arrow[r,"\lambda_t"]\arrow[d,"f"'] & 1+K[[t]]^+\arrow[d,"\widehat G(f)"]\\
+K'\arrow[r,"\lambda_t"'] & 1+K'[[t]]^+
+\end{tikzcd}
+\]
+交换，则称 $f$ 是\Term{pre-lambda-ring}{预 $\lambda$-环}的\Term{homomorphism}{同态}，也称为\Term{lambda-homomorphism}{$\lambda$-同态}。
+
+这又\Term{equivalence}{等价}于以下关系：
+\[
+\forall x\in K,\ \forall i\in\mathbb N,\qquad
+\lambda^i(f(x))=f(\lambda^i(x)).
+\]
+
+\SourcePage{325}
+\textbf{例 2.2。} a）可以给出 $\mathbb Z$ 的全部\Term{pre-lambda-ring}{预 $\lambda$-环}结构。只须给定 $\lambda_t(1)$；它是一个整系数\Term{formal-power-series}{形式幂级数}，唯一的条件是以 $1+t$ 开头。
+
+b）设 $(T,A)$ 是一个带\Term{commutative-ring}{交换环}结构的\Term{ringed-topos}{环化拓扑斯}，$K$ 是\Term{local-scheme}{局部}\Term{isomorphism}{同构}于\Term{finite-free-module}{有限型自由模}的\Term{direct-summand}{直和项}的 $A$-\Term{module}{模}所成的“\Term{grothendieck-group}{Grothendieck 群}”。我们知道，利用\Term{tensor-product}{张量积}，可以使 $K$ 具有\Term{ring-structure}{环结构}（第 IV 讲）；现在如下赋予它\Term{pre-lambda-ring}{预 $\lambda$-环}结构：对每个\Term{local-scheme}{局部}为\Term{finite-free-module}{有限型自由模}的\Term{direct-summand}{直和项}的 $A$-\Term{module}{模} $E$，以 $\lambda^i(E)$ 表示 $E$ 的第 $i$ 个\Term{exterior-power}{外幂}在 $K$ 中的类（该\Term{exterior-power}{外幂}也\Term{local-scheme}{局部}为\Term{finite-free-module}{有限型自由模}的\Term{direct-summand}{直和项}）。这样便在\Term{local-scheme}{局部}为\Term{finite-free-module}{有限型自由模}的\Term{direct-summand}{直和项}的 $A$-\Term{module}{模}的\Term{category}{范畴}上，定义了一个取值于\Term{abelian-group}{阿贝尔群} $1+K[[t]]^+$ 的函数；接下来要证明这个函数具有\Term{additive}{加性}，这就意味着它通过 $K$ \Term{resolution}{分解}，从而给出所求结构。
+
+\begin{SGAresult}{\Term{lemma}{引理}}{2.2.1}
+设
+\[
+0\longrightarrow E'\xrightarrow{u}E\xrightarrow{v}E''\longrightarrow0
+\]
+是一个\Term{locally-split}{局部分裂}的 $A$-\Term{module}{模}\Term{exact-sequence}{正合列}（例如，$E''$ \Term{local-scheme}{局部}为\Term{finite-free-module}{有限型自由模}的\Term{direct-summand}{直和项}）。则 $\bigwedge^n(E)$ 上存在一个\Term{finite}{有限}\Term{filtration}{滤过}，以及\Term{isomorphism}{同构}
+\[
+\bigwedge^{n-p}(E')\otimes_A\bigwedge^p(E'')
+\xrightarrow{\sim}\operatorname{Gr}^p\bigwedge^n(E).
+\]
+\end{SGAresult}
+\begin{proof}
+对 $0\leqslant p\leqslant n$，取 $F^p\bigwedge^n(E)$ 为\Term{canonical}{典范}\Term{morphism}{态射}
+\[
+\bigwedge^{n-p}(E')\otimes_A\bigwedge^p(E)\longrightarrow\bigwedge^n(E)
+\]
+的像；若 $p\geqslant n$，
+\SourcePage{326}
+令 $F^p\bigwedge^n(E)=\bigwedge^n(E)$；若 $p<0$，令 $F^p\bigwedge^n(E)=0$。这确实在 $\bigwedge^n(E)$ 上定义了一个\Term{finite}{有限}\Term{filtration}{滤过}。
+
+如下定义\Term{homomorphism}{同态}
+\[
+f_p:\bigwedge^{n-p}(E')\otimes_A\bigwedge^p(E'')
+\longrightarrow F^p\bigwedge^n(E)/F^{p-1}\bigwedge^n(E):
+\]
+\[
+f_p(x'_1\wedge\cdots\wedge x'_{n-p}\otimes x''_1\wedge\cdots\wedge x''_p)
+=\operatorname{cl}_{\operatorname{Gr}^p}
+\bigl(u(x'_1)\wedge\cdots\wedge u(x'_{n-p})\wedge x_1\wedge\cdots\wedge x_p\bigr).
+\]
+显然，这与 $E''$ 的给定\Term{section}{截面} $x''_i$ 的\Term{lifting}{提升} $x_i$ 的选择无关。若\Term{exact-sequence}{正合列}\Term{locally-split}{局部分裂}，则 $f_p$ 是\Term{isomorphism}{同构}，因为\Term{local-scheme}{局部}有
+\[
+\bigwedge^n(E)\simeq\bigoplus_{p+q=n}
+\bigwedge^p(E')\otimes_A\bigwedge^q(E'').
+\]
+\end{proof}
+
+在 $E',E,E''$ 都\Term{local-scheme}{局部}为\Term{finite-free-module}{有限型自由模}的\Term{direct-summand}{直和项}时，各 $\operatorname{Gr}^p\bigwedge^n(E)$ 都\Term{local-scheme}{局部}为\Term{finite-free-module}{有限型自由模}的\Term{direct-summand}{直和项}，因而各 $F^p\bigwedge^n(E)$ 也是如此。故在 $K$ 中可写成
+\[
+\lambda^n(E)=\sum_{p=0}^n\operatorname{cl}(\operatorname{Gr}^p\bigwedge^n(E))
+=\sum_{p=0}^n\lambda^{n-p}(E')\lambda^p(E''),
+\]
+从而得到\Term{additive}{加性}。
+
+设 $(T,A)$、$(T',A')$ 是两个带\Term{commutative-ring}{交换环}结构的\Term{ringed-topos}{环化拓扑斯}，$f:(T,A)\longrightarrow(T',A')$ 是\Term{ringed-topos}{环化拓扑斯}的\Term{morphism}{态射}。已知（第 IV 讲 2.7），$f$ 在相应的 $K$ 上定义一个环\Term{homomorphism}{同态}
+\[
+f^*:K'_{\text{naïf}}(T',A')\longrightarrow K'_{\text{naïf}}(T,A).
+\]
+由于\Term{inverse-image}{逆像}与\Term{exterior-power}{外幂}相交换，相应的 $K$ 之间的\Term{morphism}{态射} $f^*$，对于刚定义的结构是一个\Term{lambda-homomorphism}{$\lambda$-同态}。
+
+指出两个特例：
+
+--- 设 $X$ 是一个\Term{scheme}{概形}；如此一来，$K'_{\text{naïf}}(X)$ 就带有一个\Term{pre-lambda-ring}{预 $\lambda$-环}结构。这是本讨论班后面要用到的情形，也可将它视为\Term{lambda-ring}{$\lambda$-环}\Term{generic}{一般}理论的“\Term{model}{模型}”。
+\SourcePage{327}
+
+--- 设 $A$ 是一个环，$X=\operatorname{Spec}A$；另设 $G$ 是一个群，在 $A$ 上作\Term{trivial-action}{平凡作用}。若取 $(T,A)$ 为带有 $G$ \Term{action}{作用}的、$X$ 上的\Term{set}{集合}\Term{sheaf}{层}所成的\Term{topos}{拓扑斯}，则这样得到的环 $K$，就是 $G$ 在\Term{finitely-generated-projective-module}{有限生成投射 $A$-模}中的\Term{representation-ring}{表示环}。
+
+\textbf{2.3。} 设 $K$ 是含幺\Term{commutative-ring}{交换环}。我们要在\Term{abelian-group}{阿贝尔群} $\widehat G(K)=1+K[[t]]^+$ 上赋予一个对 $K$ 具有\Term{functoriality}{函子性}的\Term{pre-lambda-ring}{预 $\lambda$-环}结构。为此，将把（1.10）的结果应用于\Term{functor}{函子} $\widehat G$。
+
+先用 $\widehat G(\mathbb Z[X,Y])$ 的元素 $1+XYt$ 给出一个 $\mathbb Z$-\Term{bilinear}{双线性}\Term{functor-morphism}{函子态射} $\widehat G\times\widehat G\longrightarrow\widehat G$，从而定义\Term{multiplication}{乘法}。事实上，该元素满足 1.7.i）；为证明它满足 1.7.ii），须证明：把 $\prod_{i=1}^n(1+T_iYt)$ 用各 $T_i$ 的\Term{elementary-symmetric-function}{初等对称函数} $X_j$ \Term{represented}{表出}时，$X_n$ 不出现在 $t^k$（$k<n$）的系数中。由\Term{degree}{次数}的考虑，这是显然的。
+
+如此定义的运算记为 $\circ$；因此按定义，
+\[
+(1+Xt)\circ(1+Yt)=1+XYt.
+\tag{2.3.1}
+\]
+按构造，它满足\Term{distributivity}{分配律}；其\Term{associative-law}{结合律}和交换律由下列图给出：
+\[
+\begin{tikzcd}[column sep=large]
+\widehat G\times\widehat G\times\widehat G\arrow[r]\arrow[d] &
+\widehat G\times\widehat G\arrow[d]\\
+\widehat G\times\widehat G\arrow[r] & \widehat G
+\end{tikzcd}
+\qquad
+\begin{tikzcd}[column sep=large]
+\widehat G\times\widehat G\arrow[r]\arrow[d] &
+\widehat G\times\widehat G\arrow[d]\\
+\widehat G\arrow[r,"\operatorname{Id}"'] & \widehat G.
+\end{tikzcd}
+\]
+\SourcePage{328}
+各\Term{arrow}{箭头}的意义是显然的。根据 1.10，只需对 $\widehat G(\mathbb Z[X,Y,Z])$ 中的元素 $1+Xt,1+Yt,1+Zt$（相应地，对 $\widehat G(\mathbb Z[X,Y])$ 中的 $1+Xt,1+Yt$）核实\Term{commutativity}{交换性}，而这立即可得。
+
+根据 1.8，两个级数在这一运算下的乘积，可将它们的系数代入这一运算的\Term{universal-polynomial}{泛多项式}来计算。第 $n$ 个\Term{universal-polynomial}{泛多项式}记作 $P_n$；它是 $\mathbb Z[X_i,Y_j]_{1\leqslant i,j\leqslant n}$ 中的一个\Term{polynomial}{多项式}，对两组变元中的每一组都是权为 $n$ 的\Term{isobaric-polynomial}{等权多项式}（见 1.15），且关于两组变元是\Term{symmetric}{对称}的。作为例子，给出 $P_2$ 的值：
+\[
+P_2(X_1,X_2;Y_1,Y_2)=X_2Y_1^2+Y_2X_1^2-2X_2Y_2.
+\]
+还有以下关系：若 $K\in\operatorname{Ob}(\mathscr C_0)$、$\psi\in\widehat G(K)$、$a\in K$，则
+\[
+\psi(t)\circ(1+at)=\psi(at).
+\tag{2.3.2}
+\]
+照例，利用标准的\Term{functoriality}{函子性}论证，将它归结到 $K=\mathbb Z[X,Y]$、$\psi=1+Xt$、$a=Y$ 的情形；此时它就是 2.3.1。
+
+在 $\widehat G(K)=1+K[[t]]^+$ 中将 2.3.2 应用于 $a=1$，可知元素 $1+t$ 是此\Term{multiplication}{乘法}的\Term{identity-element}{单位元}。为避免混淆，有时将它记作 $\underline1$，或 $\underline1_\circ$。
+
+现在可将\Term{functor}{函子} $\widehat G$ 视为从 $\mathscr C_0$ 到含幺\Term{commutative-ring}{交换环}的\Term{category}{范畴}的\Term{functor}{函子}，因而可以与自身复合。为避免混淆，
+\SourcePage{329}
+对 $\widehat G$ 与自身的乘积中的各因子，选取不同的\Term{indeterminate}{不定元}；必要时将\Term{indeterminate}{不定元}标在上标处：$\widehat G^t$、$\widehat G^u$ 等。于是，对 $A\in\operatorname{Ob}(\mathscr C_0)$，有
+\[
+\widehat G^u\circ\widehat G^t(A)=1+\{1+A[[t]]^+\}[[u]]^+.
+\]
+为在 $1+K[[t]]^+$ 上定义运算 $\lambda^i$，我们要给出一个\Term{functor-morphism}{函子态射}
+\[
+\widehat G\longrightarrow\widehat G^u\circ\widehat G^t.
+\]
+为此，必须先在\Term{functor}{函子} $\widehat G^u\circ\widehat G^t$ 上定义一种\Term{filtration}{滤过}，使 1.6 中的拼接可以进行。
+
+先注意，$F^k\widehat G$ 对运算 $\circ$ 是一个\Term{ideal}{理想}。为此，利用\Term{functoriality}{函子性}，归结到 $A=\mathbb Z[X_i,Y]_{i\geqslant1}$ 和乘积
+\[
+\left(1+\sum_{i\geqslant k}X_it^i\right)\circ(1+Yt),
+\]
+结论便由 2.3.2 得到。于是取 $F^n(\widehat G^u\circ\widehat G^t)$ 为所有形如
+\[
+1+\psi_1u+\cdots+\psi_iu^i+\cdots,\qquad
+\psi_i\in F^{[n/i]}\widehat G
+\]
+的级数所成的\Term{set}{集合}，其中 $[n/i]$ 表示 $n/i$ 的整数部分。
+
+定义\Term{morphism}{态射} $\lambda_u$ 的元素是 $\underline1+\{1+Xt\}u$；留给读者作为练习核实，1.6 的条件确实满足（实际上，这一\Term{filtration}{滤过}正是专为此而选取的）。
+
+这里同样可以从 $\lambda_u(1+\cdots+X_nt^n+\cdots)$ 出发，通过代入计算运算 $\lambda^i$；因此这些运算由\Term{universal-polynomial}{泛多项式}确定。记
+\[
+Q_{i,j}(X_1,\ldots,X_{ij})
+\]
+为 $\lambda^i(1+\cdots+X_nt^n+\cdots)$ 中 $t^j$ 的系数；它是关于变元 $X_1,\ldots,X_{ij}$ 权为 $ij$ 的\Term{isobaric-polynomial}{等权多项式}（验证类似于 1.15）。利用\Term{symmetric-function}{对称函数}，可从定义元素
+\[
+\lambda_u(1+Xt)=\underline1+\{1+Xt\}u
+\tag{2.3.3}
+\]
+计算它。
+
+作为例子，给出 $Q_{2,2}$ 的值：
+\SourcePage{330}
+\[
+Q_{2,2}(X_1,X_2,X_3,X_4)=X_1X_3-X_4.
+\]
+最后说明公式（2.3.1）及（2.3.3）的来源。考虑例 2.2.b），其中运算 $\lambda^i$ 由 $A$-\Term{module}{模}的\Term{exterior-power}{外幂}定义。我们希望 $\lambda_t:K\longrightarrow\widehat G(K)$ 是\Term{lambda-homomorphism}{$\lambda$-同态}；因此必须在 $\widehat G$ 上定义运算，使对所有 $A$-\Term{module}{模} $E,F$，有
+\[
+\lambda_t(EF)=\lambda_t(E)\circ\lambda_t(F);\qquad
+\lambda_u(\lambda_t(E))=\widehat G^u(\lambda_t)(\lambda_u(E)).
+\]
+而关系式（2.3.1）、（2.3.3），恰好就是将前面这些关系应用于 $E,F$ 为\Term{invertible-module}{可逆模}的情形所得的关系。
+
+我们将在第 VI 讲中看到，所希望的性质在何种程度上成立。
+
+\begin{SGAresult}{定义}{2.4}
+若\Term{pre-lambda-ring}{预 $\lambda$-环} $K$ 的\Term{abelian-group}{阿贝尔群}\Term{homomorphism}{同态}
+\[
+\lambda_t:K\longrightarrow1+K[[t]]^+
+\]
+对于 2.3 在右端定义的\Term{pre-lambda-ring}{预 $\lambda$-环}结构是一个\Term{lambda-homomorphism}{$\lambda$-同态}，则称 $K$ 为\Term{lambda-ring}{$\lambda$-环}。
+\end{SGAresult}
+这就是说，对每个 $x,y\in K$，有关系
+\[
+\begin{gathered}
+\lambda_t(1)=1+t;\qquad
+\lambda_t(xy)=\lambda_t(x)\circ\lambda_t(y);\\
+\lambda_u(\lambda_t(x))=\widehat G(\lambda_t)(\lambda_u(x)).
+\end{gathered}
+\tag{2.4.1}
+\]
+用映射 $\lambda^i$ 表示，后两个关系\Term{equivalence}{等价}于：对 $x,y\in K$、$i,j\in\mathbb N$，
+\[
+\begin{aligned}
+\lambda^i(xy)&=P_i(\lambda^1(x),\ldots,\lambda^i(x);
+\lambda^1(y),\ldots,\lambda^i(y)),\\
+\lambda^j(\lambda^i(x))&=Q_{i,j}(\lambda^1(x),\ldots,\lambda^{ij}(x)).
+\end{aligned}
+\tag{2.4.2}
+\]
+\SourcePage{331}
+注意，我们这里与通常的术语（参见 [1]）有所不同：通常把我们称作\Term{pre-lambda-ring}{预 $\lambda$-环}的\Term{object}{对象}称作\Term{lambda-ring}{$\lambda$-环}，而把我们的\Term{lambda-ring}{$\lambda$-环}称作“\Term{special-lambda-ring}{特殊 $\lambda$-环}”；这是因为在实际中能够使用的只有“\Term{special-lambda-ring}{特殊 $\lambda$-环}”。
+
+\textbf{例 2.5。} a）我们已确定 $\mathbb Z$ 的全部\Term{pre-lambda-ring}{预 $\lambda$-环}结构。由 2.4.1，只有由 $\lambda_t(1)=1+t$ 定义的结构才可能是\Term{lambda-ring}{$\lambda$-环}结构。此时 $\lambda_t(n)=(1+t)^n$，故
+\[
+\begin{gathered}
+\forall n,n'\in\mathbb Z,\qquad
+\lambda_t(n)\circ\lambda_t(n')=(1+t)^n\circ(1+t)^{n'}
+=(1+t)^{nn'}=\lambda_t(nn');\\
+\begin{aligned}
+\lambda_u((1+t)^n)&=(\lambda_u(1+t))^n
+=(\underline1+\{1+t\}u)^n\\
+&=\widehat G(\lambda_t)((1+u)^n)
+=\widehat G(\lambda_t)(\lambda_u(n)).
+\end{aligned}
+\end{gathered}
+\]
+所以这确实是一个\Term{lambda-ring}{$\lambda$-环}结构。若以 $\binom Xk$ 记有理系数\Term{polynomial}{多项式}
+\[
+\frac1{k!}X(X-1)\cdots(X-k+1),
+\]
+则有
+\[
+\lambda^i(n)=\binom ni.
+\tag{2.5.1}
+\]
+
+b）对每个环 $K$，\Term{pre-lambda-ring}{预 $\lambda$-环} $1+K[[t]]^+$ 是一个\Term{lambda-ring}{$\lambda$-环}。
+
+首先，$\lambda_u(\underline1)=\lambda_u(1+t)=\underline1+\{1+t\}u=\underline1+\underline1\,u$。其他关系通过下列图的\Term{commutativity}{交换性}来核实：
+\[
+\begin{tikzcd}[column sep=large]
+\widehat G^t\times\widehat G^t
+\arrow[r,"\lambda_u\times\lambda_u"]\arrow[d,"\circ"'] &
+(\widehat G^u\circ\widehat G^t)\times(\widehat G^u\circ\widehat G^t)
+\arrow[d,"\circ"]\\
+\widehat G^t\arrow[r,"\lambda_u"'] & \widehat G^u\circ\widehat G^t
+\end{tikzcd}
+\]
+\[
+\begin{tikzcd}[column sep=large]
+\widehat G^t\arrow[r,"\lambda_v"]\arrow[d,"\lambda_u"'] &
+\widehat G^v\circ\widehat G^t\arrow[d,"\widehat G^v(\lambda_u)"]\\
+\widehat G^u\circ\widehat G^t\arrow[r,"\lambda_v"'] &
+\widehat G^v\circ\widehat G^u\circ\widehat G^t.
+\end{tikzcd}
+\]
+\SourcePage{332}
+根据 1.10，可在元素 $1+Xt,1+Yt$ 上核实。对第一图，
+\[
+\begin{aligned}
+\lambda_u(1+Xt)\circ\lambda_u(1+Yt)
+&=(\underline1+\{1+Xt\}u)\circ(\underline1+\{1+Yt\}u)\\
+&=\underline1+\{(1+Xt)\circ(1+Yt)\}u\\
+&=\underline1+\{1+XYt\}u\\
+&=\lambda_u((1+Xt)\circ(1+Yt)).
+\end{aligned}
+\]
+对第二图，
+\[
+\lambda_v(\lambda_u(1+Xt))
+=\underline1+\{\underline1+\{1+Xt\}u\}v
+=\widehat G^v(\lambda_u)(\lambda_v(1+Xt)).
+\]
+
+c）2.2 的几何例子将在后面处理。
+
+\textbf{2.6。} 例 2.5.a）可作如下推广。
+
+设 $K$ 是含幺\Term{commutative-ring}{交换环}，满足：
+\begin{enumerate}
+\item[i)] $K$ 是\Term{torsion-free}{无挠}的；
+\item[ii)] 对每个 $x\in K$、每个 $n\in\mathbb N$，有 $\dfrac xn\in K$。
+\end{enumerate}
+于是对每个 $x\in K$ 和每个 $n\in\mathbb N$，令 $\lambda^n(x)=\binom xn$，即
+\[
+\lambda_t(x)=\sum_{n=0}^{\infty}\binom xn t^n
+=(1+t)^x=\exp\bigl(x\operatorname{Log}(1+t)\bigr),
+\tag{2.6.1}
+\]
+其中最后一个恒等式是在 $(K\otimes_{\mathbb Z}\mathbb Q)[[t]]$ 中考虑的。由指数函数的\Term{multiplication}{乘法}性，这在 $K$ 上定义了一个\Term{pre-lambda-ring}{预 $\lambda$-环}结构。
+
+为证明这是\Term{lambda-ring}{$\lambda$-环}结构，须证明关系式 2.4.2；由 2.6.i），只须在 $K\otimes_{\mathbb Z}\mathbb Q$ 中证明。利用\Term{functoriality}{函子性}，进一步归结到 $K=\mathbb Q[X,Y]$ 及元素 $X,Y$ 的情形。由 $\lambda^i$ 的定义，等式 2.4.2 两边
+\SourcePage{333}
+都是 $X,Y$ 的有理系数\Term{polynomial}{多项式}，因此要证明它们相等，只须证明它们在 $X,Y$ 的所有整数值处取值相同。而把整数值代入 $X,Y$ 所得的关系，正是表达\Term{pre-lambda-ring}{预 $\lambda$-环} $\mathbb Z$（2.5.a））为\Term{lambda-ring}{$\lambda$-环}的那些关系；所以它们确实成立。
+
+\begin{SGAresult}{定义}{2.7}
+称满足条件 2.6.i）、ii），并带有 2.6.1 所定义的\Term{lambda-ring}{$\lambda$-环}结构的环为\Term{binomial-ring}{二项式环}。
+\end{SGAresult}
+
+\begin{SGAresult}{例}{2.8}
+设 $X$ 是一个\Term{site}{景}，$K$ 是一个\Term{binomial-ring}{二项式环}，$\underline K$ 是 $X$ 上取值为 $K$ 的\Term{constant-presheaf}{常值预层}的\Term{associated-sheaf}{相伴层}；则 $H^0(X,\underline K)$ 是一个\Term{binomial-ring}{二项式环}。
+\end{SGAresult}
+\begin{proof}
+事实上，条件 2.6 在取\Term{inductive-limit}{归纳极限}时保持\Term{invariant}{不变}。
+\end{proof}
+特别地，$H^0(X,\underline{\mathbb Z})$ 是一个\Term{binomial-ring}{二项式环}。
+
+\textbf{2.9。} 设 $K$ 是一个\Term{binomial-ring}{二项式环}，$A$ 是一个 $K$-\Term{algebra}{代数}。对每个级数 $\varphi\in\widehat G(A)$ 及每个 $a\in K$，可用通常方式定义级数 $\varphi^a$：写 $\varphi=1+\psi$，并令
+\[
+\varphi^a=(1+\psi)^a=\sum_{n=0}^{\infty}\binom an\psi^n
+\quad\bigl(=\exp(a\operatorname{Log}\varphi)\bigr),
+\tag{2.9.1}
+\]
+其中最后一个等式只能在模去挠后书写。这些公式是从 $\varphi=1+t$ 时的类似公式经代入得到的；因此，对 $a,b\in K$、$\varphi,\psi\in\widehat G(A)$，以下作为指数函数经典性质的关系仍然成立：
+\[
+\varphi^a\varphi^b=\varphi^{a+b};\qquad
+\varphi^{ab}=(\varphi^a)^b;\qquad
+\varphi^a\psi^a=(\varphi\psi)^a.
+\tag{2.9.2}
+\]
+\SourcePage{334}
+仍假设 $a\in K$。按运算 $\circ$ 乘以 $\lambda_t(a)$，定义了一个\Term{functor-morphism}{函子态射} $\widehat G_K\longrightarrow\widehat G_K$，它由在 $\widehat G(K[X])$ 的元素 $1+Xt$ 上的值刻画。因此，由（2.3.2）有
+\[
+\lambda_t(a)\circ(1+Xt)=\lambda_{Xt}(a),
+\]
+从而
+\[
+\lambda_t(a)\circ(1+Xt)=(1+Xt)^a
+=\exp\bigl(a\operatorname{Log}(1+Xt)\bigr)
+=\sum_{n=0}^{\infty}\binom an X^nt^n.
+\tag{2.9.3}
+\]
+由此得到
+\[
+\lambda_t(a)\circ\varphi=\varphi^a
+\quad\bigl(=\exp(a\operatorname{Log}\varphi)\bigr).
+\tag{2.9.4}
+\]
+事实上，两边都是\Term{additive}{加性}的\Term{functor}{函子}，且在 $1+Xt$ 上相等。由（2.9.3）及 1.15，定义乘以 $\lambda_t(a)$ 这一运算的第 $n$ 个\Term{universal-polynomial}{泛多项式}，是权为 $n$ 的\Term{isobaric-polynomial}{等权多项式}；将它记作 $R_{n,a}$。
+
+最后注意，若 $A$ 是一个 $K$-\Term{lambda-algebra}{$\lambda$-代数}，即带有一个\Term{lambda-homomorphism}{$\lambda$-同态} $K\longrightarrow A$ 的\Term{lambda-ring}{$\lambda$-环}，且 $b\in A$，则有
+\[
+\lambda_t(ab)=(\lambda_t(b))^a.
+\tag{2.9.5}
+\]
+这由 $\lambda_t(ab)=\lambda_t(a)\circ\lambda_t(b)$ 及（2.9.4）立即得到。

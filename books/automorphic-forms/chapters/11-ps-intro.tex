@@ -1,0 +1,175 @@
+\article{经典自守形式与阿代尔自守形式导论}{Classical and Adelic Automorphic Forms. An Introduction}{I. Piatetski-Shapiro}{1}{185--188}
+\footnotetext{作者在撰写本文期间获得美国国家科学基金会（NSF）资助。AMS（MOS）学科分类（1970）：主要分类 10D20；次要分类 10D10、22E55。}
+\origsection{1}{经典 Hecke 理论（Classical Hecke theory）}
+设 $H$ 为上半平面 $\{z\in\C\mid\operatorname{Im}z>0\}$，$\Gamma$ 为 $\SL(2,\Z)$ 的同余子群（congruence subgroup），也就是说，存在整数 $N\geq0$，使 $\Gamma\supset\Gamma_N$，其中\footnote{\textbf{译者注（本次校订）：}主同余子群的级别应取正整数，即 $N\geq1$。}
+\[
+\Gamma_N=\left\{\begin{pmatrix}a&b\\c&d\end{pmatrix}\in\SL(2,\Z)\;\middle|\;
+\begin{pmatrix}a&b\\c&d\end{pmatrix}\equiv\begin{pmatrix}1&0\\0&1\end{pmatrix}\pmod N\right\}.
+\]
+群 $\SL(2,\R)$ 通过 $z\mapsto(az+b)/(cz+d)$ 作用于 $H$。称函数 $f:H\to\C$ 为关于 $\Gamma$ 的权 $k$ 模形式（modular form of weight $k$），当且仅当：
+
+（a）$f$ 在 $H$ 上全纯；
+
+（b）对所有 $\begin{pmatrix}a&b\\c&d\end{pmatrix}\in\Gamma$，有
+\[
+f\left(\frac{az+b}{cz+d}\right)(cz+d)^{-k}=f(z),
+\]
+其中 $k$ 为正整数；
+
+（c）$f$ 在 $\Gamma$ 的每个尖点（cusps）处全纯。
+
+例如，在 $\infty$ 处，这意味着 $f$ 有 Fourier 展开
+\[
+f(z)=\sum_{n\geq0}a_ne^{2\pi in\lambda z}.
+\]
+若每个尖点处的 Fourier 展开均满足 $a_0=0$，则称 $f$ 为尖点形式（cusp form）。
+
+令 $\Omega(f)$ 为集合
+\[
+\left\{f\left(\frac{az+b}{cz+d}\right)(cz+d)^{-k}\;\middle|\;
+\begin{pmatrix}a&b\\c&d\end{pmatrix}\in\GL^+(2,\Q)\right\}
+\]
+的 $\C$ 线性张成空间。这里 $G=\GL^+(2,\Q)=\{g\in\GL(2,\Q)\mid\det(g)>0\}$。注意，$\GL^+(2,\R)$ 作用于 $H$。$G$ 在 $\Omega(f)$ 上自然定义了一个表示（representation）。
+
+Hecke 用下式定义模形式 $f$ 的 $L$ 函数（$L$-function）：
+\[
+L(f,s)=\frac{(2\pi\lambda)^s}{\Gamma(s)}\int_0^\infty f(iy)y^{(s-1)/2}\,dy
+=\sum_{n=1}^\infty a_nn^{-s}
+\]
+即与 $f$ 对应的 Dirichlet 级数。\footnote{\textbf{译者注（本次校订）：}要使积分等于右侧级数，被积函数中的幂次应为 $y^{s-1}$，因为 $\int_0^\infty e^{-2\pi n\lambda y}y^{s-1}\,dy=\Gamma(s)(2\pi n\lambda)^{-s}$。此积分可直接用于尖点形式；一般模形式还须处理尖点处的常数项。后文的 $s\leftrightarrow1-s$ 使用酉归一化；这里的古典变量在补上 Gamma 因子后对应 $s\leftrightarrow k-s$。}Hecke [1] 证明了下述定理。
+\begin{originaltheorem}{定理（Theorem）}
+（1）当 $f$ 是尖点形式时，$L(f,s)$ 是一个“良好”的整函数（entire function）；“良好”指 $L(f,s)$ 满足函数方程（functional equation）。
+
+（2）若 $\Omega(f)$ 在代数意义下不可约，即在 $G$ 的作用下没有非平凡不变线性子空间，则 $L(f,s)$ 有 Euler 乘积（Euler product）。\footnote{\textbf{译者注（本次校订）：}“非平凡”指非零且不等于全空间。这里的 Euler 乘积还要求选取适当的 Hecke 本征形式并归一化为 $a_1=1$；仅有生成表示不可约，不能保证其中任意向量的 Fourier 系数都给出所列乘积。例如，将形式乘以常数会改变 $a_1$，却不改变 $\Omega(f)$，而下文 Euler 乘积的首个 Dirichlet 系数恒为 $1$。}
+\end{originaltheorem}
+第二个断言更值得关注；它旨在用表示论语言表达 Hecke 的结论。Hecke 证明，当 $f$ 是“Hecke 算子（Hecke operators）”的特征函数时，$L(f,s)$ 有 Euler 乘积；这一条件等价于 $\Omega(f)$ 不可约。断言（2）已经提示：从表示论（representation theory）出发，可以更深入地研究模形式。
+
+本文的目的正是说明：研究模形式时，为什么要引入阿代尔框架（adelic setting），并系统地运用表示论。
+
+先解释 Euler 乘积的概念。$L(s)=L(f,s)$ 有 Euler 乘积，意味着
+\[
+L(s)=\prod_{p\text{ 为素数}}L_p(s),
+\qquad
+L_p(s)=(1-\alpha_pp^{-s})^{-1}(1-\beta_pp^{-s})^{-1},\quad\alpha_p,\beta_p\in\C.
+\]
+在 Hecke 的定理中，有形如 $L(s)=\varepsilon(s)\widetilde L(1-s)$ 的函数方程，其中 $L(s)$（相应地，$\varepsilon(s)$）可写为无限乘积 $\prod L_p(s)$（相应地，$\prod\varepsilon_p(s)$）。Tate 关于附属于广义特征（Grössencharakters）的 $L$ 函数的理论，以及 Artin $L$ 函数，启发了如下问题：能否找到适当的对象，使局部因子（local factors）$L_p(s)$ 与 $\varepsilon_p(s)$ 分别成为这些对象的 $L$ 因子和 $\varepsilon$ 因子？Jacquet--Langlands [2] 的优美想法是，以 $\GL(2,\Q_p)$ 的不可约表示作为这些对象。
+
+更确切地说，考察 $\Omega(f)$。每个元素 $h\in\Omega(f)$ 都被某个同余子群 $\Gamma\subseteq G$ 固定。现赋予 $G$ 一个拓扑，以 $G$ 的同余子群集合为单位元处的邻域基，并令 $\overline G$ 为此拓扑下 $G$ 的完备化。于是
+\[
+\overline G=\left\{g\in\prod_{p\text{ 为有限素数}}'\GL(2,\Q_p)\;\middle|\;
+\det g_p=r>0,\ r\in\Q\right\},
+\]
+其中乘积指受限直积（restricted direct product）。$G$ 在 $\Omega(f)$ 上的作用延拓为 $\overline G$ 的作用。可以证明，所得表示 $\pi$ 可在适当意义下写成无限张量积 $\pi=\bigotimes_{p\text{ 为有限素数}}\pi_p$，其中 $\pi_p$ 是 $\GL(2,\Q_p)$ 的表示。
+
+按作者的理解，Jacquet--Langlands 的想法是给不可约表示 $\pi=\Omega(f)$ 附加一个 $L$ 函数，而后把 $L_p(s)$ 和 $\varepsilon_p(s)$ 解释为 $\GL(2,\Q_p)$ 的表示 $\pi_p$ 的 $L$ 因子与 $\varepsilon$ 因子。
+
+最后，再从另一个角度说明引入阿代尔框架的动机。我们希望同时研究关于不同同余子群的模形式，每个这样的形式都在某个同余子群下不变。每个包含关系 $\Gamma\subset\Gamma_1$ 对应一个投影 $H/\Gamma\to H/\Gamma_1$。直接计算可得，这族空间的射影极限（projective limit）为
+\[
+\varprojlim_{\Gamma\text{ 为同余子群}}H/\Gamma
+=K_\infty\backslash\SL(2,A)/\SL(2,\Q).
+\]
+因此，对模形式的研究就转化为对这一双陪集空间（double coset space）上某个函数空间的研究。
+
+\origsection{2}{阿代尔群上的自守形式（Automorphic forms for adelic groups）}
+假设 $G$ 是整体域（global field）$k$ 上的连通约化代数群（connected reductive algebraic group）。可以构造相应的阿代尔群 $G_A$（见 Springer 的文章），其中 $G_k$ 是离散子群。
+
+我们需要约化理论（reduction theory）中的若干基本事实。首先，令
+\[
+G_A^0=\bigcap\{\ker|\chi|\mid\chi\text{ 为 }G\text{ 的有理特征（rational character）}\}.
+\]
+则 $G_k\backslash G_A^0$ 为紧空间，当且仅当不存在加性幺幂元（additive unipotent elements）。这一结果归功于 Borel、Harish-Chandra、Mostow、Tamagawa 和 Harder。
+
+设 $G_A=NAK$ 是整体 Iwasawa 分解（global Iwasawa decomposition）；它可由各素位处的局部 Iwasawa 分解得到。其中 $K$ 是 $G_A$ 的标准极大紧子群，$A$ 是一个极大分裂环面（maximal split torus）的阿代尔点集合，$N$ 是极大幺幂子群（maximal unipotent subgroup）。
+
+\paragraph*{例（Example）}$G=\GL(2,k)$。此时
+\[
+K_p=\begin{cases}
+O(2),&p\text{ 为实素位},\\
+U(2),&p\text{ 为复素位},\\
+\GL(2,\Q_p),&p\text{ 为有限素位};
+\end{cases}
+\qquad
+N=\left\{\begin{pmatrix}1&*\\0&1\end{pmatrix}\right\},\quad
+A=\left\{\begin{pmatrix}a_1&0\\0&a_2\end{pmatrix}\right\}.
+\]
+在这个例子中，有限素位的 $K_p$ 如上列出。\footnote{\textbf{译者注（本次校订）：}此处有限素位的极大紧子群应为 $K_p=\GL(2,\mathcal O_p)$，其中 $\mathcal O_p$ 是局部域 $k_p$ 的整数环；当 $k=\Q$ 时为 $\GL(2,\Z_p)$。$\GL(2,\Q_p)$ 本身不紧。}注意 $A\supset C=Z(G_A)$，而且可对某个子群 $A^0$ 写出 $A=CA^0$，使 $C\cap A^0$ 有限。
+
+称集合 $S\subset A^0$ 为半有界的（semibounded），当且仅当对每个相对紧子集 $N_0\subset N$，集合 $\bigcup_{s\in S}sN_0s^{-1}$ 相对紧。
+
+\paragraph*{例（Example）}$G=\GL(2)$。此时
+\[
+\begin{gathered}
+A^0=\left\{\begin{pmatrix}a&0\\0&1\end{pmatrix}\right\},\\
+S=\left\{\begin{pmatrix}a&0\\0&1\end{pmatrix}\in A^0\;\middle|\;
+\substack{|a_p|_p\geq c_p\text{ 对所有素位 }p,\\c_p=1\text{ 对几乎所有 }p}\right\}.
+\end{gathered}
+\]
+于是 $S$ 半有界。\footnote{\textbf{译者注（本次校订）：}这里的不等号与前面的定义不相容。若 $s=\operatorname{diag}(a,1)$、$n(x)=\left(\begin{smallmatrix}1&x\\0&1\end{smallmatrix}\right)$，则 $sn(x)s^{-1}=n(ax)$，因此按 $sN_0s^{-1}$ 的定义应给出 $|a_p|_p$ 的上界。若保留本例的下界，应将定义中的共轭方向改为 $s^{-1}N_0s$；这也是后续约化理论所采用的方向。}
+
+下面定义 Siegel 集（Siegel set）$\mathfrak S$：
+\[
+\mathfrak S=N_0SK,
+\]
+其中 $N_0$ 是 $N$ 的紧开子集，$S$ 半有界，$K$ 如上。\footnote{\textbf{译者注（本次校订）：}数域情形下，非平凡的阿基米德幺幂因子没有紧开子集；此处应取紧邻域（或以相对紧开集及其闭包表述）。在非阿基米德因子及函数域情形，才可取紧开子集。}\footnote{为简便起见，这里只对分裂群给出定义。一般情形有类似定义。}约化理论的主要结果如下。
+\begin{originaltheorem}{定理（Theorem）}
+存在 Siegel 集 $\mathfrak S$，使 $G_A=G_k\mathfrak S C$。因此，存在包含于 $\mathfrak S C$ 的 $G_k$ 的基本域（fundamental domain）。
+\end{originaltheorem}
+现在定义尖点形式（自守形式的定义见本论文集其他文章）：函数 $f:G_k\backslash G_A\to\C$ 称为尖点形式，如果满足：
+
+（1）$f$ 是关于 $C$ 的特征函数：$f(cg)=\omega(c)f(g)$；
+
+（2）$f$ 光滑（即在阿基米德素位处为 $C^\infty$，在有限素位处局部常值）；
+
+（3）$\int_{CG_k\backslash G_A}|f(g)|^2\,dg<\infty$（这里假设 $\omega$ 是酉的）；
+
+（4）$\int_{Z_k\backslash Z_A}f(zg)\,dz=0$，其中 $Z$ 为任一抛物子群（parabolic subgroup）$P$ 的幺幂根基（unipotent radical）。\footnote{\textbf{译者注（本次校订）：}此处必须限定 $P$ 为真抛物子群。若允许 $P=G$，则 $Z=\{1\}$，本条件会强迫 $f=0$。}
+
+\paragraph*{例（Example）}对 $\GL_2$，只需考虑标准幺幂群 $\begin{pmatrix}1&*\\0&1\end{pmatrix}$。
+
+对 $\GL_3$，有下列幺幂根基的共轭类：
+\[
+\begin{pmatrix}1&*&*\\0&1&0\\0&0&1\end{pmatrix},\qquad
+\begin{pmatrix}1&0&*\\0&1&*\\0&0&1\end{pmatrix},\qquad
+\begin{pmatrix}1&*&*\\0&1&*\\0&0&1\end{pmatrix}.
+\]
+一般地，对 $\GL_n$，每个有序分拆 $n_1+\cdots+n_r=n$ 都对应一个幺幂根基的共轭类：
+\[
+\begin{pmatrix}
+I_{n_1}&&*\\
+&I_{n_2}&\\
+0&&\ddots\\
+&&&I_{n_r}
+\end{pmatrix}.
+\]
+将关于 $\omega$ 的尖点形式空间记为 $L_0^2(\omega)$。第一个主要结果如下。
+\begin{originaltheorem}{定理（Gelfand、Piatetski-Shapiro、Harder）}
+$L_0^2(\omega)$ 是 $G_A$ 的不可约容许表示（irreducible admissible representations）的可数和，每个表示均以有限重数（finite multiplicity）出现。
+\end{originaltheorem}
+下面以一种初步的形式介绍 Langlands 思想（Langlands' philosophy）。设 $\pi$ 是在 $L_0^2(\omega)$ 中出现的 $G_A$ 表示。预期可以为 $\pi$ 定义函数 $L(\pi,s)$，它是乘积 $\prod L(\pi_p,s)$；而且 $L(\pi,s)$ 是“良好”的，即它亚纯，只有有限多个极点，并满足函数方程；同时，$\varepsilon$ 因子满足 $\varepsilon(\pi,s)=\prod\varepsilon(\pi_p,s)$。
+
+Borel 将在文章 [5] 中准确阐述 Langlands 思想。
+
+\origsection{3}{$\GL_2$ 的情形（The case of $\GL_2$）}
+下面说明 Langlands 猜想在 $\GL_2$ 情形下的含义。
+
+设 $\pi$ 是 $\GL_2(A)$ 的不可约尖点自守表示（irreducible cuspidal automorphic representation）。则 $\pi=\bigotimes_{p\text{ 为所有素位}}\pi_p$，且对几乎所有素位，有 $\pi_p\simeq\Ind_B(\mu_1\otimes\mu_2)$，其中 $\mu_1,\mu_2$ 为 $k_p^*$ 的非分歧特征（unramified characters）。这样的非分歧特征由 $\mu_1(\widetilde p),\mu_2(\widetilde p)$ 描述，其中 $\widetilde p$ 是局部整数环的极大理想的生成元。设整数 $n\geq1$。可以定义形如下式的局部因子：
+\[
+L^n(\pi_p,s)=(1-\mu_1^n|\widetilde p|^s)^{-1}
+(1-\mu_1^{n-1}\mu_2|\widetilde p|^s)^{-1}\cdots
+(1-\mu_2^n|\widetilde p|^s)^{-1}.
+\]
+这里以 $\mu_1,\mu_2$ 代表 $\mu_1(\widetilde p),\mu_2(\widetilde p)$。
+
+\paragraph*{猜想（Conjecture）}对上述 $\pi,n$，可以在每个素位 $p$ 定义局部因子 $L^n(\pi_p,s)$，在非分歧素位处与上述定义一致，使函数 $L^n(\pi,s)=\prod L^n(\pi_p,s)$ 存在，且是“良好”的。
+
+$n=1$ 时，Jacquet--Langlands 的书中已证明这一猜想。$n=2$ 时，Gelbart--Jacquet 与 Shimura 已证明。$n=3,4$ 时，可以证明 $L^n(\pi,s)$ 存在且具有亚纯延拓。除此以外的情形尚未解决。
+
+本次报告的笔记由 Lawrence Morris（I.H.E.S.）与 Ben Seifert（加州大学伯克利分校）记录。
+\begin{thebibliography}{9}
+\bibitem[1]{c11-1} E. Hecke, \emph{Mathematische Werke}, Vandenhoeck and Ruprecht, Göttingen, 1959.
+\bibitem[2]{c11-2} H. Jacquet and R. P. Langlands, \emph{Automorphic forms on GL(2)}, Lecture Notes in Math., vol. 114, Springer, 1970.
+\bibitem[3]{c11-3} A. Borel, \emph{Introduction aux groupes arithmétiques}, Hermann, Paris, 1969.
+\bibitem[4]{c11-4} G. Harder, \emph{Minkowskische Reduktionstheorie über Funktionenkörpern}, Invent. Math. 7 (1969), 33--54.
+\bibitem[5]{c11-5} A. Borel, \emph{Automorphic L-functions}, 本论文集，第 2 册，第 27--61 页。
+\end{thebibliography}
+\par\noindent 特拉维夫大学（University of Tel Aviv）。

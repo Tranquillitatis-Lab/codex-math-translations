@@ -1,0 +1,13 @@
+\begin{tikzpicture}[line width=.4pt,scale=1.1]
+\coordinate (o)at(0,0);
+\foreach \a in {90,210,330}{
+\coordinate(a\a)at(\a:1);\draw(o)--(a\a);
+\foreach \b in {-45,-15,15,45}{
+\pgfmathsetmacro{\ang}{\a+\b}
+\coordinate(b\a\b)at($(a\a)+(\ang:.62)$);\draw(a\a)--(b\a\b);
+\foreach \c in {-16,16}{\pgfmathsetmacro{\angtwo}{\ang+\c}\coordinate(c\a\b\c)at($(b\a\b)+(\angtwo:.35)$);\draw(b\a\b)--(c\a\b\c);
+\foreach \d in {-24,-8,8,24}{\pgfmathsetmacro{\angthree}{\angtwo+\d}\draw[densely dotted](c\a\b\c)--++(\angthree:.22);}
+}
+}
+}
+\end{tikzpicture}

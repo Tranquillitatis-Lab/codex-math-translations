@@ -1,0 +1,537 @@
+\SourcePage{303}
+\SGAsection{10}{态射层}
+\begin{SGAresult}{命题}{10.1}
+设 $E$ 是一个\Term{topos}{拓扑斯}，$X,Y$ 是 $E$ 的两个\Term{object}{对象}；\Term{functor}{函子}
+$Z\mapsto\operatorname{Hom}_E(Z\times X,Y)\simeq\operatorname{Hom}_{E/Z}(X_Z,Y_Z)$ 是\Term{representable}{可表}的。
+\end{SGAresult}
+\begin{proof}
+事实上，$E$ 中的\Term{inductive-limit}{归纳极限}是泛的（II 4.3）。故\Term{functor}{函子} $Z\mapsto Z\times X$ 与\Term{inductive-limit}{归纳极限}交换。因此\Term{functor}{函子} $Z\mapsto\operatorname{Hom}_E(Z\times X,Y)$ 把变量 $Z$ 的\Term{inductive-limit}{归纳极限}变为\Term{projective-limit}{逆极限}，因而是\Term{representable}{可表}的（IV 1.4 和 1.2）。
+\end{proof}
+\textbf{10.2。}表示\Term{functor}{函子} $Z\mapsto\operatorname{Hom}_E(Z\times X,Y)$ 的\Term{object}{对象}记为 $\mathscr{H}\!om_E(X,Y)$（或简记为 $\mathscr{H}\!om(X,Y)$），称为从 $X$ 到 $Y$ 的\Term{hom-sheaf}{态射层}。它是关于 $X,Y$ 的\Term{bifunctor}{双函子}。因而有一个\Term{trifunctor}{三函子}\Term{isomorphism}{同构}
+\[
+\operatorname{Hom}_E(Z,\mathscr{H}\!om_E(X,Y))\simeq\mathscr{H}\!om_E(Z\times X,Y).\tag{10.2.1}
+\]
+由公式（10.2.1）可知，\Term{bifunctor}{双函子} $(X,Y)\mapsto\mathscr{H}\!om(X,Y)$ 把变量 $X$ 的\Term{inductive-limit}{归纳极限}（相应地，变量 $Y$ 的\Term{projective-limit}{逆极限}）变为 $E$ 中的\Term{projective-limit}{逆极限}。
+\begin{SGAresult}{命题}{10.3}
+设 $v:E\to E'$ 是\Term{morphism-of-topoi}{拓扑斯态射}。对 $E$ 的变动\Term{object}{对象} $X$ 和 $E'$ 的变动\Term{object}{对象} $Y$，有\Term{bifunctor}{双函子}\Term{isomorphism}{同构}
+\[
+v_*\mathscr{H}\!om_E(v^*Y,X)\simeq\mathscr{H}\!om_{E'}(Y,v_*X).\tag{10.3.1}
+\]
+\end{SGAresult}
+\begin{proof}
+对 $E'$ 的任一\Term{object}{对象} $Z$，有关于所有变量均为\Term{functoriality}{函子性}的\Term{isomorphism}{同构}序列：
+\begin{align*}
+\operatorname{Hom}_{E'}(Z,v_*\mathscr{H}\!om_E(v^*Y,X))
+&\simeq\operatorname{Hom}_E(v^*Z,\mathscr{H}\!om_E(v^*Y,X)) &&\text{（伴随）},\\
+&\simeq\operatorname{Hom}_E(v^*Z\times v^*Y,X)&&\text{（10.2.1）},\\
+&\simeq\operatorname{Hom}_E(v^*(Z\times Y),X)&&\text{（$v^*$ 左正合）},\\
+&\simeq\operatorname{Hom}_{E'}(Z\times Y,v_*X)&&\text{（伴随）},\\
+&\simeq\operatorname{Hom}_{E'}(Z,\mathscr{H}\!om_{E'}(Y,v_*X))&&\text{（10.2.1）}.
+\end{align*}
+故（10.3.1）两端表示\Term{isomorphism}{同构}的\Term{functor}{函子}。
+\end{proof}
+\begin{SGAresult}{推论}{10.4}
+设 $C$ 是 $\mathcal U$-\Term{site}{景}，$X$ 是 $C$ 上的 $\mathcal U$-\Term{presheaf}{预层}，$Y$ 是 $C$ 上的 $\mathcal U$-\Term{sheaf}{层}，$\mathcal V$ 是包含 $\mathcal U$ 且使 $C$ 为 $\mathcal V$-小的\Term{universe}{宇宙}；设 $\widehat C_{\mathcal V}$ 是 $C$ 上 $\mathcal V$-\Term{presheaf}{预层}的\Term{topos}{拓扑斯}，
+\SourcePage{304}
+$C^{\sim}_{\mathcal U}$ 是 $C$ 上 $\mathcal U$-\Term{sheaf}{层}的\Term{topos}{拓扑斯}。\Term{presheaf}{预层} $\mathscr{H}\!om_{\widehat C_{\mathcal V}}(X,Y)$ 是一个 $\mathcal U$-\Term{sheaf}{层}。设 $X\to\overline X$ 是 $X$ 到其\Term{associated-sheaf}{伴随层}的\Term{canonical}{典范}\Term{morphism}{态射}；相应的\Term{morphism}{态射}
+$\mathscr{H}\!om_{\widehat C_{\mathcal V}}(\overline X,Y)\to\mathscr{H}\!om_{\widehat C_{\mathcal V}}(X,Y)$ 是\Term{isomorphism}{同构}。存在\Term{canonical}{典范}\Term{isomorphism}{同构}
+$\mathscr{H}\!om_{\widehat C_{\mathcal V}}(X,Y)\simeq\mathscr{H}\!om_{C^{\sim}_{\mathcal U}}(\overline X,Y)$。
+\end{SGAresult}
+\textbf{10.4.1。}先设 $C$ 是小\Term{site}{景}，且 $\mathcal V=\mathcal U$。此时有\Term{morphism-of-topoi}{拓扑斯态射} $C^{\sim}_{\mathcal U}\to\widehat C_{\mathcal U}$（IV 4.8），故由（10.3.1）得到这一情形的断言。
+为由此过渡到一般情形，首先注意“\Term{associated-sheaf}{伴随层}”\Term{functor}{函子}与\Term{universe}{宇宙}的选择无关（II 3.6），且 $C$ 上 $\mathcal V$-\Term{sheaf}{层}的\Term{topos}{拓扑斯}\Term{equivalence}{等价}于 $C^{\sim}_{\mathcal U}$ 上 $\mathcal V$-\Term{sheaf}{层}的\Term{topos}{拓扑斯}（III 4 和 1）。所以只须证明下述引理。
+\begin{SGAresult}{引理}{10.4.2}
+设 $E$ 是 $\mathcal U$-\Term{topos}{拓扑斯}，$\mathcal V$ 是包含 $\mathcal U$ 的\Term{universe}{宇宙}，$E^{\sim}_{\mathcal V}$ 是 $E$ 上 $\mathcal V$-\Term{sheaf}{层}的\Term{topos}{拓扑斯}，$X,Y$ 是 $E$ 的两个\Term{object}{对象}。存在\Term{canonical}{典范}\Term{isomorphism}{同构}
+$\mathscr{H}\!om_E(X,Y)\simeq\mathscr{H}\!om_{E^{\sim}_{\mathcal V}}(X,Y)$。
+\end{SGAresult}
+\textbf{10.4.3。}\Term{functor}{函子} $\varepsilon_E:E\to E^{\sim}_{\mathcal V}$ \Term{fully-faithful-functor}{全忠实}且\Term{left-exact}{左正合}。因此对 $E$ 的任一\Term{object}{对象} $Z$ 有\Term{isomorphism}{同构}
+\[
+\operatorname{Hom}_{E^{\sim}_{\mathcal V}}(\varepsilon_E Z,\varepsilon_E\mathscr{H}\!om_E(X,Y))
+\simeq\operatorname{Hom}_{E^{\sim}_{\mathcal V}}(\varepsilon_E Z\times\varepsilon_E X,\varepsilon_E Y).
+\]
+但 $E^{\sim}_{\mathcal V}$ 的每个\Term{object}{对象}都是来自 $E$ 的\Term{object}{对象}的\Term{inductive-limit}{归纳极限}，故由（10.2.1）得到断言。
+\textbf{10.5。}设 $v:E\to E'$ 是\Term{morphism-of-topoi}{拓扑斯态射}。下面定义四个\Term{bifunctor}{双函子}\Term{morphism}{态射}：
+\begin{align*}
+\Phi_v &:v^*\mathscr{H}\!om(X,Y)\longrightarrow\mathscr{H}\!om(v^*X,v^*Y),&&X,Y\in\operatorname{ob}E',\\
+\Psi_v &:v_*\mathscr{H}\!om(X,Y)\longrightarrow\mathscr{H}\!om(v_*X,v_*Y),&&X,Y\in\operatorname{ob}E,\\
+\Xi_v &: \mathscr{H}\!om(v_!X,Y)\longrightarrow v_*\mathscr{H}\!om(X,v^*Y),&&X\in\operatorname{ob}E,\ Y\in\operatorname{ob}E',\\
+\Lambda_v &:v_!(X\times v^*Y)\longrightarrow v_!(X)\times Y,&&X\in\operatorname{ob}E,\ Y\in\operatorname{ob}E'.
+\end{align*}
+其中，为定义 $\Xi_v,\Lambda_v$，假设沿 $v$ 的\Term{inverse-image}{逆像}\Term{functor}{函子} $v^*$ 有\Term{left-adjoint}{左伴随} $v_!$。
+\textbf{10.5.1。}$\Psi_v$ 的定义。设 $X$ 是 $E$ 的\Term{object}{对象}。有\Term{adjunction-morphism}{伴随态射} $v^*v_*X\to X$，故对 $E'$ 的每个\Term{object}{对象} $Z$，有\Term{bifunctor}{双函子}\Term{morphism}{态射} $v^*(Z\times v_*X)\to(v^*Z)\times X$。所以对 $E$ 的每个\Term{object}{对象} $Y$，有\Term{trifunctor}{三函子}\Term{morphism}{态射}
+\[
+\operatorname{Hom}_E((v^*Z)\times X,Y)\longrightarrow\operatorname{Hom}_E(v^*(Z\times v_*X),Y).
+\]
+由\Term{adjunction}{伴随关系}得到\Term{trifunctor}{三函子}\Term{morphism}{态射}
+\[
+\operatorname{Hom}_{E'}(Z,v_*\mathscr{H}\!om(X,Y))\longrightarrow\operatorname{Hom}_{E'}(Z,\mathscr{H}\!om(v_*X,v_*Y)),
+\]
+从而得到\Term{morphism}{态射} $\Psi_v$。
+\SourcePage{305}
+\textbf{10.5.2。}$\Lambda_v$ 的定义。对 $E$ 的每个\Term{object}{对象} $X$，有\Term{adjunction-morphism}{伴随态射} $X\to v^*v_!X$，故对 $E$ 的每个\Term{object}{对象} $Y$，有\Term{bifunctor}{双函子}\Term{morphism}{态射}
+$X\times v^*Y\to v^*v_!(X)\times v^*Y\simeq v^*(v_!(X)\times Y)$；再由\Term{adjunction}{伴随关系}得到 $\Lambda_v$。
+\textbf{10.5.3。}$\Xi_v$ 的定义。设 $X$ 是 $E$ 的\Term{object}{对象}，$Z,Y$ 是 $E'$ 的\Term{object}{对象}。\Term{morphism}{态射} $\Lambda_v:v_!(X\times v^*Z)\to v_!(X)\times Z$ 给出\Term{trifunctor}{三函子}\Term{morphism}{态射}
+$\operatorname{Hom}_{E'}(v_!(X)\times Z,Y)\to\operatorname{Hom}_{E'}(v_!(X\times v^*Z),Y)$，故由\Term{adjunction}{伴随关系}得到\Term{trifunctor}{三函子}\Term{morphism}{态射}
+\[
+\operatorname{Hom}_{E'}(Z,\mathscr{H}\!om(v_!X,Y))\longrightarrow\operatorname{Hom}_{E'}(Z,v_*\mathscr{H}\!om(X,v^*Y)),
+\]
+从而得到\Term{morphism}{态射} $\Xi_v$。
+\textbf{10.5.4。}$\Phi_v$ 的定义。（10.5.3）中的\Term{trifunctor}{三函子}\Term{morphism}{态射}
+\[
+\operatorname{Hom}_{E'}(v_!(Z)\times X,Y)\longrightarrow\operatorname{Hom}_{E'}(v_!(Z\times v^*X),Y),
+\]
+其中 $Z$ 是 $E$ 的\Term{object}{对象}，$X,Y$ 是 $E'$ 的\Term{object}{对象}，由\Term{adjunction}{伴随关系}给出\Term{trifunctor}{三函子}\Term{morphism}{态射}
+\[
+\operatorname{Hom}_E(Z,v^*\mathscr{H}\!om(X,Y))\longrightarrow\operatorname{Hom}_E(Z,\mathscr{H}\!om(v^*X,v^*Y)),
+\]
+这就定义了 $\Phi_v$。还有第二种定义方法。设 $X,Y,Z$ 是 $E'$ 的三个\Term{object}{对象}。\Term{functor}{函子} $v^*:E'\to E$ 给出\Term{trifunctor}{三函子}\Term{morphism}{态射}
+\[
+\operatorname{Hom}_{E'}(Z\times X,Y)\longrightarrow\operatorname{Hom}_E(v^*(Z)\times v^*(X),v^*Y),
+\]
+故由\Term{adjunction}{伴随关系}得到\Term{trifunctor}{三函子}\Term{morphism}{态射}
+\[
+\operatorname{Hom}_{E'}(Z,\mathscr{H}\!om(X,Y))\longrightarrow\operatorname{Hom}_{E'}(Z,v_*\mathscr{H}\!om(v^*X,v^*Y)).
+\]
+所以有\Term{bifunctor}{双函子}\Term{morphism}{态射} $\mathscr{H}\!om(X,Y)\to v_*\mathscr{H}\!om(v^*X,v^*Y)$；再由\Term{adjunction}{伴随关系}得到一个\Term{morphism}{态射}，读者可自行验证它正是上面定义的 $\Phi_v$。
+\begin{SGAresult}{命题}{10.6}
+设 $v:E\to E'$ 是\Term{morphism-of-topoi}{拓扑斯态射}。
+1）\Term{morphism}{态射} $\Psi_v$（10.5.1）对 $E$ 的每个\Term{object}{对象} $Y$ 都是\Term{isomorphism}{同构}，当且仅当\Term{adjunction-morphism}{伴随态射} $v^*v_*X\to X$ 是\Term{isomorphism}{同构}。特别地，$\Psi_v$ 对每一对\Term{object}{对象} $(X,Y)$ 都是\Term{isomorphism}{同构}，当且仅当\Term{functor}{函子} $v_*:E\to E'$ \Term{fully-faithful-functor}{全忠实}，即 $v$ 是\Term{topos}{拓扑斯}\Term{embedding}{嵌入}。
+
+2）下述条件\Term{equivalence}{等价}：
+（i）对 $E'$ 的每一对\Term{object}{对象} $(X,Y)$，\Term{morphism}{态射} $\Phi_v$（10.5.4）都是\Term{isomorphism}{同构}。
+（ii）\Term{functor}{函子} $v^*$ 有\Term{left-adjoint}{左伴随} $v_!$，且对 $E$ 的每个\Term{object}{对象} $X$ 和 $E'$ 的每个\Term{object}{对象} $Y$，\Term{morphism}{态射} $\Xi_v$（10.5.3）都是\Term{isomorphism}{同构}。
+（iii）\Term{functor}{函子} $v^*$ 有\Term{left-adjoint}{左伴随} $v_!$，且对 $E$ 的每个\Term{object}{对象} $X$ 和 $E'$ 的每个\Term{object}{对象} $Y$，\Term{morphism}{态射} $\Lambda_v$（10.5.2）都是\Term{isomorphism}{同构}。
+\end{SGAresult}
+\SourcePage{306}
+\textbf{10.6.1。}第一条断言直接由（10.5.1）得到。由（10.5.2）、（10.5.3）、（10.5.4）也立即得到：（iii）\Term{equivalence}{等价}于（ii），也\Term{equivalence}{等价}于“（i）成立且 $v^*$ 有\Term{left-adjoint}{左伴随} $v_!$”。所以只须证明（i）蕴含 $v^*$ 有\Term{left-adjoint}{左伴随}，即（IV 1.8）（i）蕴含 $v^*$ 与小乘积交换。设 $e'$ 是 $E'$ 的\Term{final-object}{终对象}，$I$ 是小集。因 $v^*$ \Term{left-exact}{左正合}，$v^*(e')$ 是 $E$ 的\Term{final-object}{终对象}；又因 $v^*$ 与\Term{inductive-limit}{归纳极限}交换，$v^*(\coprod_I e')\simeq\coprod_I v^*(e')$。对 $E'$ 的任一\Term{object}{对象} $Y$，有
+\[
+\mathscr{H}\!om(\coprod_I e',Y)\simeq\prod_I\mathscr{H}\!om(e',Y)\simeq\prod_IY,
+\]
+以及
+\[
+\mathscr{H}\!om(\coprod_Iv^*(e'),v^*Y)\simeq\prod_I\mathscr{H}\!om(v^*(e'),v^*Y)\simeq\prod_Iv^*Y.
+\]
+\Term{functor}{函子}\Term{morphism}{态射} $\Phi_v$ 因而诱导\Term{isomorphism}{同构} $v^*\prod_IY\simeq\prod_Iv^*Y$；容易验证这是\Term{canonical}{典范}\Term{isomorphism}{同构}。证毕。
+\begin{SGAresult}{推论}{10.7}
+设 $E$ 是\Term{topos}{拓扑斯}，$Z$ 是 $E$ 的\Term{object}{对象}，$j_Z:E/Z\to E$ 是\Term{localization}{局部化}\Term{morphism}{态射}（IV 5.2），$X,Y$ 是 $E$ 的两个\Term{object}{对象}。
+1）存在\Term{bifunctor}{双函子}\Term{isomorphism}{同构}
+\[j_Z^*\mathscr{H}\!om(X,Y)\simeq\mathscr{H}\!om(j_Z^*X,j_Z^*Y).\]
+2）设 $X'$ 是 $E/Z$ 的\Term{object}{对象}。存在\Term{bifunctor}{双函子}\Term{isomorphism}{同构}
+\[\mathscr{H}\!om_E(j_{Z!}X',Y)\simeq j_{Z*}\mathscr{H}\!om_{E/Z}(X',j_Z^*Y).\]
+3）设 $Y'$ 是 $E/Z$ 的\Term{object}{对象}。当 $Z$ 是 $E$ 的开\Term{object}{对象}时，存在\Term{bifunctor}{双函子}\Term{isomorphism}{同构}
+\[j_{Z*}\mathscr{H}\!om(X',Y')\simeq\mathscr{H}\!om(j_{Z*}X',j_{Z*}Y').\]
+\end{SGAresult}
+断言1）和2）只须注意 $\Lambda_{j_Z}$ 是\Term{isomorphism}{同构}即可证明。对断言3），只须注意 $j_{Z*}$ \Term{fully-faithful-functor}{全忠实}，因为 $j_{Z!}$ \Term{fully-faithful-functor}{全忠实}（I 5.7 a））。
+\begin{SGAresult}{推论}{10.8}
+设 $E$ 是\Term{topos}{拓扑斯}，$X,Y,Z$ 是 $E$ 的三个\Term{object}{对象}，$j_Z:E/Z\to E$ 是\Term{localization}{局部化}\Term{morphism}{态射}。
+1）有\Term{canonical}{典范}\Term{isomorphism}{同构} $j_{Z*}j_Z^*Y\simeq\mathscr{H}\!om(Z,Y)$。
+2）有\Term{canonical}{典范}\Term{isomorphism}{同构}
+\[\operatorname{Hom}_E(Z,\mathscr{H}\!om(X,Y))\simeq\operatorname{Hom}_{E/Z}(j_Z^*X,j_Z^*Y).\]
+\end{SGAresult}
+设 $e_Z$ 是 $E/Z$ 的\Term{final-object}{终对象}（即\Term{object}{对象} $\operatorname{id}_Z:Z\to Z$）。由（10.2.1）有\Term{canonical}{典范}\Term{isomorphism}{同构} $\mathscr{H}\!om_{E/Z}(e_Z,j_Z^*Y)\simeq j_Z^*Y$，故由（10.7，2）有\Term{isomorphism}{同构} $j_{Z*}j_Z^*Y\simeq\mathscr{H}\!om(j_{Z!}e_Z,Y)$。因 $j_{Z!}e_Z=Z$，1）得证。为证明2），由（10.7）得到\Term{canonical}{典范}\Term{isomorphism}{同构}
+\SourcePage{307}
+\[
+\operatorname{Hom}_{E/Z}(e_Z,j_Z^*\mathscr{H}\!om(X,Y))\simeq\operatorname{Hom}_{E/Z}(j_Z^*X,j_Z^*Y),
+\]
+再对左端使用\Term{adjunction}{伴随关系}，便得到
+$\operatorname{Hom}_E(Z,\mathscr{H}\!om(X,Y))\simeq\operatorname{Hom}_{E/Z}(j_Z^*X,j_Z^*Y)$。
+
+\SGAsection{11}{环化拓扑斯及环化拓扑斯中的局部化}
+\textbf{11.1.1。}设 $\mathcal U$ 是\Term{universe}{宇宙}。所谓 $\mathcal U$-\Term{ringed-topos}{环化拓扑斯}，是一对 $(E,A)$，其中 $E$ 是 $\mathcal U$-\Term{topos}{拓扑斯}，$A$ 是带有\Term{ring}{环}结构的\Term{object}{对象}。所谓 $\mathcal U$-\Term{ringed-site}{赋环景}，是一对 $(C,A)$，其中 $C$ 是 $\mathcal U$-\Term{site}{景}，$A$ 是 $C$ 上的 $\mathcal U$-\Term{ringed-sheaf}{环层}。上下文不会混淆时便不提\Term{universe}{宇宙}。\Term{ringed-site}{赋环景} $(C,A)$ 确定\Term{ringed-topos}{环化拓扑斯} $(C^{\sim},A)$。\Term{ringed-topos}{环化拓扑斯} $(E,A)$ 确定一个\Term{ringed-site}{赋环景}，由\Term{site}{景} $E$ 及 $A$ 所表示的\Term{ringed-sheaf}{环层}构成。
+\textbf{11.1.2。}设 $(E,A)$ 是\Term{ringed-topos}{环化拓扑斯}。用 ${}_AE$（相应地 $E_A$）表示左（相应地右）含幺 $A$-\Term{sheaf-of-modules}{模层}的\Term{category}{范畴}（我们也写作 $A$-\Term{module}{模}）。\Term{category}{范畴} ${}_AE$（相应地 $E_A$）是\Term{abelian-category}{阿贝尔范畴}（II 6.7）。设 $M,N$ 是两个左（相应地右）$A$-\Term{sheaf-of-modules}{模层}。从 $M$ 到 $N$ 的 $A$-\Term{module}{模}\Term{morphism}{态射}所成的\Term{commutative-group}{交换群}记为 $\operatorname{Hom}_A(M,N)$。
+\textbf{11.1.3。}设 $A,B,C$ 是\Term{topos}{拓扑斯} $E$ 的三个\Term{ring}{环}，$M$ 是 $A$-$B$-\Term{bimodule}{双模}\Term{sheaf}{层}，$N$ 是左 $A$-$C$-\Term{bimodule}{双模}\Term{sheaf}{层}。设 $e$ 是 $E$ 的\Term{final-object}{终对象}，置 $\operatorname{Hom}(e,B)=\Gamma(B)$、$\operatorname{Hom}(e,C)=\Gamma(C)$。$M$ 的 $A$-$B$-\Term{bimodule}{双模}结构给出从 $\Gamma(B)^\circ$ 到 $A$-\Term{module}{模} $M$ 的\Term{endomorphism}{自同态}\Term{ring}{环}的\Term{ring}{环}\Term{homomorphism}{同态}；同样，$N$ 的 $A$-$C$-\Term{bimodule}{双模}结构给出从 $\Gamma(C)^\circ$ 到 $A$-\Term{module}{模} $N$ 的\Term{endomorphism}{自同态}\Term{ring}{环}的\Term{ring}{环}\Term{homomorphism}{同态}。由\Term{functoriality}{函子性}，这在\Term{commutative-group}{交换群} $\operatorname{Hom}_A(M,N)$ 上给出 $\Gamma(B)$-$\Gamma(C)$-\Term{bimodule}{双模}结构。特别地，当 $A$ 是\Term{sheaf-of-commutative-rings}{交换环层}时，群 $\operatorname{Hom}_A(M,N)$ \Term{canonical}{典范}地带有 $\Gamma(A)$-\Term{module}{模}结构。
+\textbf{11.1.4。}设 $E$ 是\Term{topos}{拓扑斯}，$A,B$ 是 $E$ 的两个\Term{ring}{环}，$u:A\to B$ 是\Term{ringed-sheaf}{环层}\Term{morphism}{态射}，$M$ 是 $B$-\Term{module}{模}（为固定起见取左\Term{module}{模}）。借助 $u$ 可将\Term{sheaf}{层} $M$ 看成 $A$-\Term{sheaf-of-modules}{模层}：对 $E$ 的每个\Term{object}{对象} $X$，$M(X)$ 的 $B(X)$-\Term{module}{模}结构沿\Term{homomorphism}{同态} $u(X):A(X)\to B(X)$ \Term{restriction-of-scalars}{限制标量}，给出 $A(X)$-\Term{module}{模}结构。这样得到“沿 $u$ \Term{restriction-of-scalars}{限制标量}”的\Term{functor}{函子}
+\[\operatorname{Res}(u):{}_BE\longrightarrow{}_AE.\]
+\textbf{11.1.5。}特别地，当 $A=\mathbf Z$（常\Term{sheaf}{层} $\mathbf Z$，即\Term{constant-presheaf}{常预层} $\mathbf Z$ 的\Term{associated-sheaf}{伴随层}），且 $u:\mathbf Z\to B$ 是唯一的\Term{canonical}{典范}\Term{morphism}{态射}时，得到从 ${}_BF$ 到\Term{category}{范畴} ${}_{\mathbf Z}E$ 的\Term{functor}{函子}；后者正是记为 $E_{\mathrm{Ab}}$ 的\Term{abelian-sheaf}{阿贝尔层}\Term{category}{范畴}。
+\SourcePage{308}
+此\Term{functor}{函子}称为\Term{underlying-abelian-sheaf-functor}{底阿贝尔层函子}。
+\begin{SGAresult}{命题}{11.1.6}
+沿 $u$ \Term{restriction-of-scalars}{限制标量}的\Term{functor}{函子}与\Term{inductive-limit}{归纳极限}及\Term{projective-limit}{逆极限}交换，且是\Term{conservative-functor}{保守函子}。
+\end{SGAresult}
+这个命题对通常\Term{module}{模}的\Term{restriction-of-scalars}{限制标量}\Term{functor}{函子}成立，即在 $E$ 为\Term{punctual-topos}{点拓扑斯}时成立。因此在 $E$ 是小\Term{site}{景}上的\Term{presheaf}{预层}\Term{topos}{拓扑斯}时也成立。再由借助\Term{associated-sheaf-functor}{伴随层函子}确定\Term{inductive-limit}{归纳极限}及\Term{projective-limit}{逆极限}的方式（II 6.4），可知命题在一般情形成立。
+\textbf{11.2.1。}设 $(E,A)$ 是\Term{ringed-topos}{环化拓扑斯}，$X$ 是 $E$ 的\Term{object}{对象}，$j_X:E/X\to E$ 是\Term{localization}{局部化}\Term{morphism}{态射}（8）。由 III 1.7 或 IV 3.1.2，\Term{sheaf}{层} $j_X^*A$ \Term{canonical}{典范}地带有\Term{ring}{环}结构。\Term{ringed-sheaf}{环层} $j_X^*A$ 通常记为 $A|X$，或滥用记号仍记为 $A$。除非另有说明，总以 $A|X$ 赋\Term{ring}{环}于\Term{topos}{拓扑斯} $E/X$。\Term{sheaf}{层} $j_{X*}j_X^*A$ \Term{canonical}{典范}地带有\Term{ring}{环}结构，\Term{adjunction-morphism}{伴随态射} $A\to j_{X*}j_X^*A$ 是\Term{ringed-sheaf}{环层}\Term{morphism}{态射}。
+\textbf{11.2.2。}再设 $M$ 是 $A$-\Term{module}{模}（为固定起见取左\Term{module}{模}）。\Term{sheaf}{层} $j_X^*M$ 带有 $A|X$-\Term{module}{模}结构（III 1.7；或 IV 3.1.2），因而有\Term{functor}{函子}
+\[j_X^*:{}_AE\longrightarrow{}_{A|X}(E/X),\]
+称为\Term{restriction}{限制}到 $E/X$ 的\Term{functor}{函子}，或\Term{restriction}{限制}到 $X$ 的\Term{functor}{函子}。$j_X^*$ 与\Term{inductive-limit}{归纳极限}及\Term{projective-limit}{逆极限}交换（同上），特别地是\Term{exact}{正合}\Term{functor}{函子}。现在设 $N$ 是 $A|X$-\Term{module}{模}。\Term{sheaf}{层} $j_{X*}N$ 是 $j_{X*}(A|X)$-\Term{sheaf-of-modules}{模层}（III 1.7 或 IV 3.1.2）；沿\Term{adjunction-morphism}{伴随态射} $A\to j_{X*}(A|X)$ \Term{restriction-of-scalars}{限制标量}（11.1.4），得到仍记作 $j_{X	imes}N$ 的 $A$-\Term{module}{模}。这样便定义了\Term{functor}{函子}
+\[j_{X*}:{}_{A|X}(E/X)\longrightarrow{}_AE,\]
+它与\Term{projective-limit}{逆极限}交换（11.1.6 和 III 1.7）。对每个 $A$-\Term{module}{模} $M$，\Term{adjunction-morphism}{伴随态射} $M\to j_{X*}j_X^*M$ 是 $A$-\Term{module}{模}\Term{morphism}{态射}。对每个 $A|X$-\Term{module}{模} $N$ 和每个 $A$-\Term{module}{模} $M$，\Term{adjunction-morphism}{伴随态射} $M\to j_{X*}j_X^*M$ 定义关于 $M,N$ 的\Term{bifunctor}{双函子}\Term{morphism}{态射}
+\[
+\operatorname{Hom}_{A|X}(j_X^*M,N)\longrightarrow\operatorname{Hom}_A(M,j_{X*}N).\tag{11.2.2.1}
+\]
+这个\Term{morphism}{态射}是\Term{isomorphism}{同构}，即\Term{module}{模}\Term{category}{范畴}上的\Term{functor}{函子} $j_X^*$ 与 $j_{X*}$ 互为\Term{adjunction}{伴随}（III 1.7）。
+\textbf{11.2.3。}\Term{module}{模}\Term{category}{范畴}上的 $j_X^*,j_{X*}$ 与“\Term{underlying-set}{底集}合”\Term{functor}{函子}交换（III 1.7，4））。因此它们与\Term{restriction-of-scalars}{限制标量}\Term{functor}{函子}交换，特别地与\Term{underlying-abelian-sheaf-functor}{底阿贝尔层函子}交换。
+\SourcePage{309}
+\begin{SGAresult}{命题}{11.3.1}
+设 $(E,A)$ 是\Term{ringed-topos}{环化拓扑斯}，$X$ 是 $E$ 的\Term{object}{对象}。\Term{functor}{函子} $j_X^*:{}_AE\to{}_{A|X}(E/X)$ 有\Term{left-adjoint}{左伴随}，记为 $j_{X!}:{}_{A|X}(E/X)\to{}_AE$，称为\Term{extension-by-zero}{零延拓}。\Term{extension-by-zero}{零延拓}\Term{functor}{函子}\Term{exact}{正合}且\Term{faithful}{忠实}，并与\Term{inductive-limit}{归纳极限}交换。\Term{module}{模}的\Term{extension-by-zero}{零延拓}\Term{functor}{函子} $j_{X!}$ 与\Term{restriction-of-scalars}{限制标量}\Term{functor}{函子}交换，特别地与\Term{underlying-abelian-sheaf-functor}{底阿贝尔层函子}交换。
+\end{SGAresult}
+\Term{functor}{函子} $j_{X!}$ 的存在性由 III 1.7 得到。因 $j_{X!}$ 是\Term{left-adjoint}{左伴随}，它与\Term{inductive-limit}{归纳极限}交换（I 2）。为证明其余断言，先设 $E$ 是含有\Term{object}{对象} $X$ 的小\Term{category}{范畴} $C$ 上的\Term{presheaf-of-sets}{集合预层}\Term{topos}{拓扑斯}。此时知道 $E/X$ \Term{equivalence}{等价}于 $C/X$ 上的\Term{presheaf}{预层}\Term{category}{范畴}；在这个\Term{equivalence}{等价}下，\Term{functor}{函子} $j_X^*:E\to E/X$ 正是与\Term{forgetful-functor}{遗忘函子} $C/X\to C$ 的复合（I 5.11）。由 $j_{X!}$ 的显式构造（I 5.1）立即得到：对每个 $A|X$-\Term{module}{模} $N$ 及 $C$ 的每个\Term{object}{对象} $Y$，有
+\[j_{X!}N(Y)=\bigoplus_{u\in\operatorname{Hom}_C(Y,X)}N(u).\]
+故在这一情形，$j_{X!}$ \Term{exact}{正合}，且\Term{extension-by-zero}{零延拓}与\Term{restriction-of-scalars}{限制标量}\Term{functor}{函子}交换。一般情形中，可以假设 $E$ 是小\Term{site}{景} $C$ 上的\Term{sheaf}{层}\Term{topos}{拓扑斯}，且 $X$ 来自 $C$ 的\Term{object}{对象}（IV 1）。此时 $E/X$ \Term{equivalence}{等价}于赋予\Term{induced-topology}{诱导拓扑}的 $C/X$ 上的\Term{sheaf}{层}\Term{topos}{拓扑斯}（III 5.4），而\Term{morphism-of-topoi}{拓扑斯态射} $j_X:E/X\to E$ 来自\Term{continuous}{连续}且\Term{cocontinuous}{余连续}的\Term{forgetful-functor}{遗忘函子} $C/X\to C$（III 5.2）。由 III 1.7，11），\Term{sheaf}{层}的\Term{extension-by-zero}{零延拓}可由\Term{presheaf}{预层}的\Term{extension-by-zero}{零延拓}与\Term{associated-sheaf-functor}{伴随层函子}复合得到；这就给出\Term{exact}{正合}性及与\Term{restriction-of-scalars}{限制标量}交换的断言。
+为证明\Term{faithful}{忠实}性，\Term{equivalence}{等价}地只须证明：对每个 $A|X$-\Term{module}{模} $N$，\Term{adjunction-morphism}{伴随态射} $\operatorname{ad}_N:N\to j_X^*j_{X!}N$ 是\Term{monomorphism}{单态射}。用 $\widehat j_{X!}$ 表示\Term{presheaf}{预层}的\Term{extension-by-zero}{零延拓}\Term{functor}{函子}，并用 $\underline a$ 表示“\Term{associated-sheaf}{伴随层}”\Term{functor}{函子}，则有\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}
+N \arrow[r,"\operatorname{ad}_N"] \arrow[dr,swap,"\underline a\widehat{\operatorname{ad}}_N"] & j_X^*\underline a\widehat j_{X!}N \\
+& \underline a\widehat j_X^*\widehat j_{X!}N\arrow[u]
+\end{tikzcd}
+\]
+其中 $\widehat{\operatorname{ad}}_N$ 是\Term{presheaf}{预层}的\Term{adjunction-morphism}{伴随态射}。由上文它是\Term{monomorphism}{单态射}，所以 $\underline a\widehat{\operatorname{ad}}_N$ 也是\Term{monomorphism}{单态射}。
+\SourcePage{310}
+此外，因\Term{forgetful-functor}{遗忘函子} $C/X\to C$ \Term{continuous}{连续}且\Term{cocontinuous}{余连续}，\Term{canonical}{典范}\Term{morphism}{态射} $\widehat j_X^*\to j_X^*$ 是\Term{isomorphism}{同构}（III 2.3）。所以 $\operatorname{ad}_N$ 是\Term{monomorphism}{单态射}。
+\begin{SGAresult}{注记}{11.3.2}
+设 $N$ 是 $A|X$-\Term{module}{模}。$j_{X!}N$ 的底\Term{sheaf-of-sets}{集合层}一般不与将 $N$ 的底\Term{sheaf-of-sets}{集合层}作\Term{extension-by-empty}{空延拓}（III 5.3 和 IV 5.2）所得的\Term{sheaf}{层}\Term{isomorphism}{同构}。因此应注意，不要混淆11.3.1中记为 $j_{X!}:{}_{A|X}(E/X)\to{}_AE$ 的\Term{extension-by-zero}{零延拓}\Term{functor}{函子}与 III 5.3 和 IV 5.2 中同样记为 $j_{X!}:E/X\to E$ 的\Term{extension-by-empty}{空延拓}\Term{functor}{函子}。实际遇到的多数情形中，这一记号滥用不会导致混淆。仍有可能混淆时，分别用 $j_{X!}^{\mathrm{ab}}$ 和 $j_{X!}^{\mathrm{ens}}$ 表示\Term{extension-by-zero}{零延拓}和\Term{extension-by-empty}{空延拓}。
+\end{SGAresult}
+\begin{SGAresult}{命题}{11.3.3}
+设 $(E,A)$ 是\Term{ringed-topos}{环化拓扑斯}，$X$ 是 $E$ 的\Term{object}{对象}。$A$-\Term{module}{模} $j_{X!}(A|X)$，通常记为 $A_X$ 或 $A_{X,E}$，是由 $X$ 生成的自由 $A$-\Term{module}{模}（II 6.5），即对每个 $A$-\Term{module}{模} $M$，有关于 $M$ \Term{functoriality}{函子性}的\Term{canonical}{典范}\Term{isomorphism}{同构}
+\[\operatorname{Hom}_E(X,M)\xleftarrow{\sim}\operatorname{Hom}_A(A_X,M).\]
+设 $(X_i)_{i\in I}$ 是 $E$ 的\Term{topologically-generating-family}{拓扑生成族}（II 3.0.1）。族 $(A_{X_i})_{i\in I}$ 是 $A$-\Term{module}{模}\Term{category}{范畴}的\Term{generating-family}{生成族}。
+\end{SGAresult}
+设 $e_X$ 是 $E/X$ 的\Term{final-object}{终对象}（$e_X=(X\xrightarrow{\mathrm{id}}X)$）。单位\Term{section}{截面} $e_X\to A|X$ 给出\Term{isomorphism}{同构}
+\[\operatorname{Hom}_{A|X}(A|X,j_X^*M)\xrightarrow{\sim}\operatorname{Hom}_{E/X}(e_X,j_X^*M),\]
+故由\Term{adjunction}{伴随关系}有\Term{isomorphism}{同构}
+\[\operatorname{Hom}_A(j_{X!}^{\mathrm{ab}}(A|X),M)\xrightarrow{\sim}\operatorname{Hom}_E(j_{X!}^{\mathrm{ens}}(e_X),M).\]
+因 $j_{X!}^{\mathrm{ens}}(e_X)=X$，得到所述\Term{isomorphism}{同构}。最后一条断言由 II 6.6 得到。
+\begin{SGAresult}{注记}{11.3.4}
+设 $A,B$ 是\Term{topos}{拓扑斯} $E$ 上的两个\Term{ringed-sheaf}{环层}，$X$ 是 $E$ 的\Term{object}{对象}，$N$ 是 $A|X$-$B|X$-\Term{bimodule}{双模}。由\Term{extension-by-zero}{零延拓}的显式描述（11.3.1）立即可知，将 $N$ 作\Term{extension-by-zero}{零延拓}所得的\Term{abelian-sheaf}{阿贝尔层}\Term{canonical}{典范}地带有 $A$-$B$-\Term{bimodule}{双模}结构。特别地，由 $X$ 生成的自由 $A$-\Term{module}{模} $A_X$ 是 $A$-\Term{bimodule}{双模}。
+\end{SGAresult}
+\begin{SGAresult}{练习}{11.3.5}
+设 $E$ 是\Term{topos}{拓扑斯}，$X$ 是 $E$ 的\Term{object}{对象}，$x:P\to E$ 是 $E$ 的点（IV 6.1），$(x_i)_{i\in I}$ 是位于 $x$ 之上的 $E/X$ 的点族（它与\Term{fiber}{纤维} $X_x$ 一一\Term{correspondence}{对应}，IV 6.7.2）。证明：对 $E/X$ 上的每个\Term{abelian-sheaf}{阿贝尔层} $M$，\Term{fiber}{纤维} $(j_{X!}M)_x$ \Term{canonical}{典范}\Term{isomorphism}{同构}于 $\bigoplus_i M_{x_i}$。
+\end{SGAresult}
+
+\SourcePage{311}
+\SGAsection{12}{模上的运算}
+\begin{SGAresult}{命题}{12.1}
+设 $(E,A)$ 是\Term{ringed-topos}{环化拓扑斯}，$M,N$ 是两个左（相应地右）$A$-\Term{module}{模}。在 $E$ 上将每个\Term{object}{对象} $X$ \Term{correspondence}{对应}到\Term{commutative-group}{交换群} $\operatorname{Hom}_A(M,\mathscr{H}\!om_E(X,N))$ 的\Term{functor}{函子}由一个\Term{abelian-sheaf}{阿贝尔层}表示，记为 $\mathscr{H}\!om_A(M,N)$（不会混淆时有时也记为 $\mathscr{H}\!om(M,N)$）。对 $E$ 的每个\Term{object}{对象} $X$，有\Term{canonical}{典范}\Term{isomorphism}{同构}
+\[\mathscr{H}\!om_A(M,N)(X)\simeq\operatorname{Hom}_{A|X}(j_X^*M,j_X^*N).\tag{12.1.1}\]
+\end{SGAresult}
+有\Term{canonical}{典范}\Term{isomorphism}{同构} $\mathscr{H}\!om_E(X,N)=j_{X*}j_X^*N$（10.8），所以 $\mathscr{H}\!om_E(X,N)$ 带有关于 $X$ \Term{functoriality}{函子性}的左（相应地右）$A$-\Term{module}{模}结构。\Term{functor}{函子} $X\mapsto\mathscr{H}\!om_E(X,N)$ 把变量 $X$ 的\Term{inductive-limit}{归纳极限}变为 $A$-\Term{module}{模}的\Term{projective-limit}{逆极限}（10.2 和11.2.3）。因此\Term{functor}{函子}
+\[X\longmapsto\operatorname{Hom}_{\mathbf Z}(M,\mathscr{H}\!om_E(X,N))\]
+把变量 $X$ 的\Term{inductive-limit}{归纳极限}变为\Term{commutative-group}{交换群}的\Term{projective-limit}{逆极限}，从而变为\Term{underlying-set}{底集}合的\Term{projective-limit}{逆极限}。故它\Term{representable}{可表}（IV 1.4 和1.2），表示它的\Term{object}{对象}带有\Term{abelian-sheaf}{阿贝尔层}结构。由定义，对 $E$ 的每个\Term{object}{对象} $X$，有\Term{canonical}{典范}\Term{isomorphism}{同构}
+\[
+\mathscr{H}\!om_A(M,N)(X)=\operatorname{Hom}(X,\mathscr{H}\!om_A(M,N))\simeq\operatorname{Hom}_A(M,\mathscr{H}\!om(X,N)).\tag{12.1.2}
+\]
+\Term{isomorphism}{同构}（12.1.1）由（12.1.2）、\Term{isomorphism}{同构} $\mathscr{H}\!om(X,N)\simeq j_{X*}j_X^*N$（10.8）及第10节的\Term{adjunction}{伴随}公式得到。
+\textbf{12.2。}\Term{abelian-sheaf}{阿贝尔层} $\mathscr{H}\!om_A(M,N)$ 称为从 $M$ 到 $N$ 的 $A$-\Term{module-hom-sheaf}{模态射层}。它是关于 $M,N$ 的\Term{bifunctor}{双函子}。由其定义和（10.2），它把变量 $N$ 的\Term{projective-limit}{逆极限}（相应地，$M$ 的\Term{inductive-limit}{归纳极限}）变为\Term{abelian-sheaf}{阿贝尔层}的\Term{projective-limit}{逆极限}。特别地，它对两个变量均\Term{left-exact}{左正合}。
+\begin{SGAresult}{命题}{12.3}
+设 $(E,A)$ 是\Term{ringed-topos}{环化拓扑斯}，$M,N$ 是两个右（相应地左）$A$-\Term{module}{模}，$X$ 是 $E$ 的\Term{object}{对象}。
+a）有\Term{canonical}{典范}\Term{isomorphism}{同构}
+\begin{align*}
+\mathscr{H}\!om_A(M,N)(X)&\simeq\operatorname{Hom}_A(M,j_{X*}j_X^*N)\\
+&\simeq\operatorname{Hom}_{A|X}(j_X^*M,j_X^*N)\simeq\operatorname{Hom}_A(j_{X!}j_X^*M,N).
+\end{align*}
+b）有\Term{canonical}{典范}\Term{isomorphism}{同构}
+\[\Phi_X:j_X^*\mathscr{H}\!om_A(M,N)\simeq\mathscr{H}\!om_{A|X}(j_X^*M,j_X^*N).\]
+再设 $P$ 是右（相应地左）$A|X$-\Term{module}{模}。
+c）有\Term{canonical}{典范}\Term{isomorphism}{同构}
+\[j_{X*}\mathscr{H}\!om_{A|X}(j_X^*M,P)\simeq\mathscr{H}\!om_A(M,j_{X*}P).\]
+\SourcePage{312}
+d）有\Term{canonical}{典范}\Term{isomorphism}{同构}
+\[\Xi_X:\mathscr{H}\!om_A(j_{X!}P,N)\simeq j_{X*}\mathscr{H}\!om_{A|X}(P,j_X^*N).\]
+\end{SGAresult}
+a）的\Term{isomorphism}{同构}由（12.1.2）、\Term{isomorphism}{同构} $\mathscr{H}\!om_E(X,N)\simeq j_{X*}j_X^*N$（10.8）及第10节的\Term{adjunction}{伴随}公式得到。
+证明 d）。\footnote{原文此处写“d）”；以下实际讨论 b）的\Term{isomorphism}{同构}。下列公式中原文的字母及引用编号亦照录。}
+对 $E/X$ 的每个\Term{object}{对象} $Y$，有\Term{isomorphism}{同构}序列：
+\begin{align*}
+\operatorname{Hom}(Y,j_X^*\mathscr{H}\!om_A(M,N))
+&\simeq\operatorname{Hom}(j_{X!}Y,\mathscr{H}\!om_A(M,N))&&\text{（集合层的伴随）},\\
+\operatorname{Hom}(j_{X!}Y,\mathscr{H}\!om_A(M,N))
+&\simeq\operatorname{Hom}_A(M,\mathscr{H}\!om_E(j_{X!}Y,N))&&\text{（12.2.1）},\\
+\operatorname{Hom}(M,\mathscr{H}\!om_E(j_{X!}Y,N))
+&\simeq\operatorname{Hom}_A(M,j_{X*}\mathscr{H}\!om_{E/X}(Y,j_X^*N))&&\text{（10.7）},\\
+\operatorname{Hom}_A(M,j_{X*}\mathscr{H}\!om_{E/X}(Y,j_X^*N))
+&\simeq\operatorname{Hom}_{A/X}(j_X^*M,\mathscr{H}\!om_E(j_X^*N))&&\text{（11.2.2.1）},\\
+\operatorname{Hom}_{A|X}(j_X^*M,\mathscr{H}\!om_E(Y,j_X^*N))
+&\simeq\operatorname{Hom}(Y,\mathscr{H}\!om_{A|X}(j_X^*M,j_X^*M))&&\text{（12.2.1）}.
+\end{align*}
+证明 c）。对 $E$ 的每个\Term{object}{对象} $Y$，有\Term{isomorphism}{同构}序列：
+\begin{align*}
+\operatorname{Hom}(Y,j_{X*}\mathscr{H}\!om_{A|X}(j_X^*M,P))
+&\simeq\operatorname{Hom}(j_X^*Y,\mathscr{H}\!om_{A|X}(j_X^*M,P))&&\text{（伴随）},\\
+&\simeq\operatorname{Hom}_{A/X}(j_X^*M,\mathscr{H}\!om_{E/X}(j_X^*Y,P))&&\text{（12.2.1）},\\
+&\simeq\operatorname{Hom}_A(M,j_{X*}\mathscr{H}\!om_{E/X}(j_X^*Y,P))&&\text{（11.2.2.1）},\\
+&\simeq\operatorname{Hom}_A(M,\mathscr{H}\!om_E(Y,j_{X*}P))&&\text{（10.3）},\\
+&\simeq\operatorname{Hom}(Y,\mathscr{H}\!om_A(M,j_{X*}P))&&\text{（12.2.1）}.
+\end{align*}
+证明 d）。对 $E$ 的每个\Term{object}{对象} $Y$，有\Term{isomorphism}{同构}序列：
+\begin{align*}
+\operatorname{Hom}(Y,\mathscr{H}\!om_A(j_{X!}P,N))
+&\simeq\operatorname{Hom}_A(j_{X!}P,\mathscr{H}\!om_E(Y,N))&&\text{（12.2.1）},\\
+&\simeq\operatorname{Hom}_{A|X}(P,j_X^*\mathscr{H}\!om_E(Y,N))&&\text{（11.3.1）},\\
+&\simeq\operatorname{Hom}_{A|X}(P,\mathscr{H}\!om_{E/X}(j_X^*Y,j_X^*N))&&\text{（10.7）},\\
+&\simeq\operatorname{Hom}(j_X^*Y,\mathscr{H}\!om_{A|X}(P,j_X^*N))&&\text{（12.2.1）},\\
+&\simeq (Y,j_{X*}\mathscr{H}\!om_{A|X}(P,j_X^*N))&&\text{（伴随）}.
+\end{align*}
+\begin{SGAresult}{推论}{12.4}
+设 $C$ 是 $\mathcal U$-\Term{site}{景}，$A'$ 是 $C$ 上的 $\mathcal U$-\Term{presheaf-of-rings}{环预层}，$M$ 是 $A'$-\Term{module}{模}的 $\mathcal U$-\Term{presheaf}{预层}（为固定起见取左\Term{module}{模}），$N$ 是 $A'$-\Term{module}{模}的 $\mathcal U$-\Term{sheaf}{层}（左\Term{module}{模}）。以 $A$ 表示 $A'$ 的\Term{associated-sheaf}{伴随层}，于是 $N$ 及 $\overline M$（$M$ 的\Term{associated-sheaf}{伴随层}）是 $A$-\Term{module}{模}。\Term{presheaf}{预层}
+$X\mapsto\operatorname{Hom}_{A'|X}(j_X^*M,j_X^*N)$ 是 $\mathcal U$-\Term{abelian-sheaf}{阿贝尔层}，并\Term{canonical}{典范}\Term{isomorphism}{同构}于 $\mathscr{H}\!om_A(\overline M,N)$。
+\end{SGAresult}
+事实上，由 III 5.5 和 III 2.3，\Term{localization}{局部化}到 $C/X$ 的\Term{functor}{函子}与（$C$ 及 $C/X$ 上的）\Term{associated-sheaf-functor}{伴随层函子}交换。因此对 $C$ 的变动\Term{object}{对象} $X$ 有\Term{functor}{函子}\Term{isomorphism}{同构}
+\begin{align*}
+\operatorname{Hom}_{A'|X}(j_X^*M,j_X^*N)
+&\simeq\operatorname{Hom}_{A|X}(\overline{j_X^*M},j_X^*N)\\
+&\simeq\operatorname{Hom}_{A|X}(j_X^*\overline M,j_X^*N)\simeq\mathscr{H}\!om_A(\overline M,N)(X).
+\end{align*}
+\SourcePage{313}
+\begin{SGAresult}{推论}{12.5}
+设 $E$ 是\Term{topos}{拓扑斯}，$A,B,C$ 是 $E$ 上的三个\Term{ringed-sheaf}{环层}，$M$ 是 $A$-$B$-\Term{bimodule}{双模}，$N$ 是 $A$-$C$-\Term{bimodule}{双模}。\Term{abelian-sheaf}{阿贝尔层} $\mathscr{H}\!om_A(M,N)$ \Term{canonical}{典范}地带有 $B$-$C$-\Term{bimodule}{双模}结构。特别地，当 $A$ 是\Term{sheaf-of-commutative-rings}{交换环层}且 $M,N$ 是 $A$-\Term{module}{模}时，$\mathscr{H}\!om_A(M,N)$ \Term{canonical}{典范}地带有 $A$-\Term{module}{模}结构。12.3中的\Term{canonical}{典范}\Term{isomorphism}{同构} b）、c）、d）是\Term{bimodule}{双模}\Term{isomorphism}{同构}。
+\end{SGAresult}
+这里只给出提示。对 $E$ 的每个\Term{object}{对象} $X$，有 $\mathscr{H}\!om_A(M,N)(X)\simeq\operatorname{Hom}_{A|X}(j_X^*M,j_X^*N)$（12.3）。所以\Term{commutative-group}{交换群} $\mathscr{H}\!om_A(M,N)(X)$ \Term{canonical}{典范}地带有 $B(X)$-$C(X)$-\Term{bimodule}{双模}结构（11.1.3），可验证它关于 $X$ 是\Term{functoriality}{函子性}的。其余断言留给读者。
+\begin{SGAresult}{推论}{12.6}
+设 $(E,A)$ 是\Term{ringed-topos}{环化拓扑斯}，$X$ 是 $A$ 的\Term{object}{对象}，$N$ 是 $A$-\Term{module}{模}（为固定起见取左\Term{module}{模}）。有 $A$-\Term{module}{模}的\Term{canonical}{典范}\Term{isomorphism}{同构}
+\[\mathscr{H}\!om_E(X,N)\simeq j_{X*}j_X^*N\simeq\mathscr{H}\!om_A(A_X,N),\]
+其中 $\mathscr{H}\!om_A(A_X,N)$ 的 $A$-\Term{module}{模}结构来自 $A_X$ 的\Term{bimodule}{双模}结构（11.3.4）。
+\end{SGAresult}
+第一个\Term{isomorphism}{同构}由10.7得到，第二个由 $A$-\Term{module}{模}\Term{isomorphism}{同构} $N\simeq\mathscr{H}\!om_A(A,N)$ 和12.3得到。
+\begin{SGAresult}{命题}{12.7}
+设 $(E,A)$ 是\Term{ringed-topos}{环化拓扑斯}，$M$ 是右 $A$-\Term{module}{模}，$N$ 是左 $A$-\Term{module}{模}。将每个\Term{abelian-sheaf}{阿贝尔层} $P$ \Term{correspondence}{对应}到\Term{commutative-group}{交换群} $\operatorname{Hom}_A(M,\mathscr{H}\!om_{\mathbf Z}(N,P))$ 的\Term{functor}{函子}由\Term{abelian-sheaf}{阿贝尔层}表示；该\Term{sheaf}{层}记为 $M\otimes_A N$，称为 $M,N$ 在 $A$ 上的\Term{tensor-product}{张量积}。
+\end{SGAresult}
+有从 $\operatorname{Hom}_A(M,\mathscr{H}\!om_{\mathbf Z}(N,P))$ 到\Term{set}{集合} $\operatorname{Hom}(M,\mathscr{H}\!om(N,P))\simeq\operatorname{Hom}(M\times N,P)$ 的\Term{canonical}{典范}\Term{injectivity}{单射}。回到定义即知：从 $M\times N$ 到 $P$ 的\Term{sheaf-of-sets}{集合层}\Term{morphism}{态射} $f$ 来自 $\operatorname{Hom}_A(M,\mathscr{H}\!om_{\mathbf Z}(N,P))$ 的一个元素，当且仅当对 $E$ 的每个\Term{object}{对象} $X$，$f(X):M(X)\times N(X)\to P(X)$ 是 $A(X)$-\Term{bilinear}{双线性}映射。具有这一性质的\Term{sheaf-of-sets}{集合层}\Term{morphism}{态射}称为 $A$-\Term{bilinear}{双线性}\Term{morphism}{态射}。因此要表示从 $M\times N$ 到 $P$ 的 $A$-\Term{bilinear}{双线性}\Term{morphism}{态射}\Term{functor}{函子}。为此仿照通常情形，即 $E$ 为\Term{punctual-topos}{点拓扑斯}时的做法。考虑八个\Term{morphism}{态射}
+\[
+\begin{array}{lll}
+(i):M\times M\times N\longrightarrow M\times N,&1\leq i\leq3,\\
+(i):M\times N\times N\longrightarrow M\times N,&4\leq i\leq6,\\
+(i):M\times A\times N\longrightarrow M\times N,&7\leq i\leq8,
+\end{array}
+\]
+由下列公式定义：
+\SourcePage{314}
+\[
+\begin{array}{lll}
+(1)&(m_1,m_2,n)\longmapsto(m_1+m_2,n),\\
+(2)&(m_1,m_2,n)\longmapsto(m_1,n),\\
+(3)&(m_1,m_2,n)\longmapsto(m_2,n),\\
+(4)&(m,n_1,n_2)\longmapsto(m,n_1+n_2),\\
+(5)&(m,n_1,n_2)\longmapsto(m,n_1),\\
+(6)&(m,n_1,n_2)\longmapsto(m,n_2),\\
+(7)&(m,a,n)\longmapsto(ma,n),\\
+(8)&(m,a,n)\longmapsto(m,an).
+\end{array}
+\]
+其中公式 $(i)$ 描述 $E$ 的变动\Term{object}{对象} $X$ 上的映射 $(i)(X)$。用 $L$ 表示“所生成的自由\Term{abelian-sheaf}{阿贝尔层}”\Term{functor}{函子}。显然，使\Term{morphism}{态射} $L(1)$ 与 $L(2)+L(3)$ 相等、$L(4)$ 与 $L(5)+L(6)$ 相等、$L(7)$ 与 $L(8)$ 相等的 $L(M\times N)$ 的最大商（在\Term{abelian-sheaf}{阿贝尔层}意义下），表示从 $M\times N$ 到 $P$ 的 $A$-\Term{bilinear}{双线性}\Term{morphism}{态射}\Term{functor}{函子}。
+\textbf{12.8。}可见\Term{functor}{函子} $P\mapsto\operatorname{Hom}_A(N,\mathscr{H}\!om_{\mathbf Z}(M,P))$ 也\Term{canonical}{典范}\Term{isomorphism}{同构}于从 $M\times N$ 到 $P$ 的 $A$-\Term{bilinear}{双线性}映射\Term{functor}{函子}。因此\Term{tensor-product}{张量积} $M\otimes_A N$ 也表示\Term{functor}{函子} $\operatorname{Hom}_A(N,\mathscr{H}\!om_{\mathbf Z}(M,P))$。所以有关于所有变量\Term{functoriality}{函子性}的\Term{isomorphism}{同构}
+\[\operatorname{Hom}_{\mathbf Z}(M\otimes_A N,P)\simeq\operatorname{Hom}_A(M,\mathscr{H}\!om_{\mathbf Z}(N,P)),\tag{12.8.1}\]
+\[\operatorname{Hom}_{\mathbf Z}(M\otimes_A N,P)\simeq\operatorname{Hom}_A(N,\mathscr{H}\!om_{\mathbf Z}(M,P)).\tag{12.8.2}\]
+\textbf{12.9。}由（12.8），或由（12.8.1）和（12.2），可知\Term{functor}{函子} $\otimes_A$ 对两个变量均与\Term{inductive-limit}{归纳极限}交换。
+\begin{SGAresult}{命题}{12.10}
+设 $C$ 是 $\mathcal U$-\Term{site}{景}，$A'$ 是 $C$ 上的\Term{presheaf-of-rings}{环预层}，$M'$（相应地 $N'$）是右（相应地左）$A'$-\Term{module}{模}，$A,M,N$ 分别是 $A',M',N'$ 的\Term{associated-sheaf}{伴随层}。\Term{presheaf}{预层} $X\mapsto M'(X)\otimes_{A(X)}N'(X)$（$X\in\operatorname{ob}C$）的\Term{associated-sheaf}{伴随层}\Term{canonical}{典范}\Term{isomorphism}{同构}于\Term{sheaf}{层} $M\otimes_A N$。
+\end{SGAresult}
+\Term{presheaf}{预层} $X\mapsto M'(X)\otimes_{A'(X)}N'(X)$ 可用12.7证明中所述运算从\Term{presheaf}{预层} $M',N',A'$ 构造。因为“\Term{associated-sheaf}{伴随层}”\Term{functor}{函子}与\Term{finite}{有限}\Term{projective-limit}{逆极限}及\Term{inductive-limit}{归纳极限}、以及“所生成的自由阿贝尔\Term{object}{对象}”\Term{functor}{函子}交换，所以\Term{tensor-product}{张量积}的形成与“\Term{associated-sheaf}{伴随层}”\Term{functor}{函子}交换。
+\begin{SGAresult}{命题}{12.11}
+设 $(E,A)$ 是\Term{ringed-topos}{环化拓扑斯}，$M$ 是右 $A$-\Term{module}{模}，$N$ 是左 $A$-\Term{module}{模}，$X$ 是 $E$ 的\Term{object}{对象}。
+a）有\Term{canonical}{典范}\Term{isomorphism}{同构}
+\[j_X^*(M\otimes_A N)\simeq(j_X^*M)\otimes_A(j_X^*N).\]
+再设 $P$ 是右 $A/X$-\Term{module}{模}，$Q$ 是左 $A/X$-\Term{module}{模}。
+\SourcePage{315}
+b）有\Term{canonical}{典范}\Term{isomorphism}{同构}（\Term{projection-formula}{投影公式}）：
+\[j_{X!}(P\otimes_{A|X}j_X^*N)\simeq(j_{X!}P)\otimes_A N,\qquad
+j_{X!}(j_X^*M\otimes_{A|X}Q)\simeq M\otimes_A(j_{X!}Q).\]
+\end{SGAresult}
+证明 a）。对 $E/X$ 上每个\Term{abelian-sheaf}{阿贝尔层} $R$，有关于 $R$ \Term{functoriality}{函子性}的\Term{isomorphism}{同构}序列：
+\begin{align*}
+\operatorname{Hom}_{\mathbf Z}(j_X^*(M\otimes_A N),R)
+&\simeq\operatorname{Hom}_{\mathbf Z}(M\otimes_A N,j_{X*}R)&&\text{（11.2.2.1）},\\
+&\simeq\operatorname{Hom}_A(M,\mathscr{H}\!om_{\mathbf Z}(N,j_{X*}R))&&\text{（12.8.1）},\\
+&\simeq\operatorname{Hom}_A(M,j_{X*}\mathscr{H}\!om_{\mathbf Z}(j_X^*N,R))&&\text{（12.3）},\\
+&\simeq\operatorname{Hom}_{A|X}(j_X^*M,\mathscr{H}\!om_{\mathbf Z}(j_X^*N,R))&&\text{（11.2.2.1）},\\
+&\simeq\operatorname{Hom}_{\mathbf Z}(j_X^*M\otimes_A j_X^*N,R)&&\text{（12.8.1）}.
+\end{align*}
+下面给出 b）的第一个\Term{isomorphism}{同构}。对每个\Term{abelian-sheaf}{阿贝尔层} $R$，有关于 $R$ \Term{functoriality}{函子性}的\Term{isomorphism}{同构}序列：
+\begin{align*}
+\operatorname{Hom}_{\mathbf Z}(j_{X!}(P\otimes_{A|X}j_X^*N),R)
+&\simeq\operatorname{Hom}_{\mathbf Z}(P\otimes_{A|X}j_X^*N,j_X^*R)&&\text{（11.3.1）},\\
+&\simeq\operatorname{Hom}_{A/X}(P,\mathscr{H}\!om_{\mathbf Z}(j_X^*N,j_X^*R))&&\text{（12.8.1）},\\
+&\simeq\operatorname{Hom}_{A|X}(P,j_X^*\mathscr{H}\!om_{\mathbf Z}(N,R))&&\text{（12.3）},\\
+&\simeq\operatorname{Hom}_A(j_{X!}P,\mathscr{H}\!om_{\mathbf Z}(N,R))&&\text{（11.3.1）},\\
+&\simeq\operatorname{Hom}_{\mathbf Z}(j_{X!}P\otimes_A N,R)&&\text{（12.8.1）}.
+\end{align*}
+第二个\Term{isomorphism}{同构}可借助（12.8.2）以类似方法得到。
+\begin{SGAresult}{推论}{12.12}
+设 $E$ 是\Term{topos}{拓扑斯}，$A,B,C$ 是 $E$ 上的三个\Term{ringed-sheaf}{环层}，$M$ 是 $B$-$A$-\Term{bimodule}{双模}，$N$ 是 $A$-$C$-\Term{bimodule}{双模}。\Term{abelian-sheaf}{阿贝尔层} $M\otimes_A N$ \Term{canonical}{典范}地带有 $B$-$C$-\Term{bimodule}{双模}结构。特别地，当 $A$ 是\Term{sheaf-of-commutative-rings}{交换环层}且 $M,N$ 是 $A$-\Term{module}{模}时，$M\otimes_A N$ \Term{canonical}{典范}地带有 $A$-\Term{module}{模}结构。12.9的\Term{isomorphism}{同构}是\Term{bimodule}{双模}\Term{isomorphism}{同构}。
+\end{SGAresult}
+对 $E$ 的每个\Term{object}{对象} $X$，$j_X^*M$ 是右 $A|X$-\Term{module}{模}，且\Term{ring}{环} $B(X)$ 从左\Term{action}{作用}于它；类似地，$j_X^*N$ 是左 $A/X$-\Term{module}{模}，且 $C(X)$ 从\Term{right-action}{右作用}于它。由\Term{functoriality}{函子性}，\Term{abelian-sheaf}{阿贝尔层} $j_X^*M\otimes_{A/X}j_X^*N\simeq j_X^*(M\otimes_A N)$ 带有 $B(X)$-$C(X)$-“\Term{object}{对象}”结构，且该结构关于 $X$ \Term{functoriality}{函子性}地变动。因此 $M\otimes_A N$ 带有 $B$-$C$-\Term{bimodule}{双模}结构。$j_X^*(M\otimes_A N)$ 上的这个 $B(X)$-$C(X)$-\Term{object}{对象}结构显然反映到“$A$-\Term{bilinear}{双线性}\Term{morphism}{态射}”\Term{functor}{函子}上。由此可见，当 $A$ 交换且 $M,N$ 是 $A$-\Term{module}{模}时，所得左右 $A$-\Term{module}{模}结构“相等”，因此此时 $M\otimes_A N$ 是 $A$-\Term{module}{模}。最后一条断言留给读者。
+\SourcePage{316}
+\begin{SGAresult}{推论}{12.13}
+设 $(E,A)$ 是\Term{ringed-topos}{环化拓扑斯}，$M$ 是左（相应地右）$A$-\Term{module}{模}，$X$ 是 $E$ 的\Term{object}{对象}。采用11.3.3中的记号 $A_X$，有\Term{canonical}{典范}\Term{isomorphism}{同构}
+\[A_X\otimes_A M\simeq J_{X!}j_X^*M\qquad\text{（相应地 }M\otimes_A A_X\simeq j_{X!}j_X^*M\text{）}.\]
+\end{SGAresult}
+这由\Term{projection-formula}{投影公式}（12.11）得到。
+\begin{SGAresult}{命题}{12.14}
+设 $E$ 是\Term{topos}{拓扑斯}，$A,B$ 是 $E$ 上的两个\Term{ringed-sheaf}{环层}，$M$ 是右 $A$-\Term{module}{模}，$N$ 是 $A$-$B$-\Term{bimodule}{双模}，$P$ 是右 $B$-\Term{module}{模}。有\Term{canonical}{典范}\Term{isomorphism}{同构}
+\[\operatorname{Hom}_B(M\otimes_A N,P)\simeq\operatorname{Hom}_A(M,\mathscr{H}\!om_B(N,P)).\]
+\end{SGAresult}
+由（12.8.1）得到\Term{canonical}{典范} $A$-\Term{bilinear}{双线性}\Term{morphism}{态射} $\mathscr{H}\!om_{\mathbf Z}(N,P)\times N\to P$；\Term{restriction}{限制}到\Term{subsheaf}{子层} $\mathscr{H}\!om_B(N,P)\times N$，便得到 $A$-\Term{bilinear}{双线性}\Term{morphism}{态射} $\mathscr{H}\!om_B(N,p)\times N\to P$，立即可验证它对第二个因子是 $B$-线性的。因此有 $B$-\Term{module}{模}的\Term{canonical}{典范}\Term{morphism}{态射} $\mathscr{H}\!om_B(N,P)\otimes_A N\to P$，进而有关于 $M$ \Term{functoriality}{函子性}的\Term{canonical}{典范}映射
+\[\operatorname{Hom}_A(M,\mathscr{H}\!om_B(N,P))\longrightarrow\operatorname{Hom}_B(M\otimes_A N,P).\tag{12.14.1}\]
+证明这个\Term{functor}{函子}\Term{morphism}{态射}是\Term{isomorphism}{同构}。因两端都把 $M$ 的\Term{inductive-limit}{归纳极限}变为\Term{projective-limit}{逆极限}，只须当 $M$ 遍历\Term{category}{范畴} $E_A$ 的一个\Term{generating-family}{生成族}时证明（12.14.1）是\Term{isomorphism}{同构}。因此只须对 $M=A_X$、其中 $X$ 是 $E$ 的\Term{object}{对象}，证明（12.14.1）是\Term{isomorphism}{同构}。这时可直接验证。
+
+\SGAsection{13}{环化拓扑斯态射}
+\begin{SGAresult}{定义}{13.1}
+设 $(E,A)$ 与 $(E',A')$ 是两个\Term{ringed-topos}{环化拓扑斯}。\Term{morphism-ringed-topoi}{环化拓扑斯态射} $u:(E,A)\to(E',A')$ 是一对 $(m,\theta)$，其中 $m:E\to E'$ 是\Term{morphism-of-topoi}{拓扑斯态射}（3.1），$\theta:m^*A'\to A$ 是\Term{ring}{环}\Term{morphism}{态射}。
+\end{SGAresult}
+\textbf{13.1.1。}因\Term{functor}{函子} $m^*:E'\to E$ \Term{left-adjoint}{左伴随}于\Term{functor}{函子} $m_*:E\to E'$，给定\Term{morphism-ringed-topoi}{环化拓扑斯态射} $(m,\theta):(E,A)\to(E',A')$，\Term{equivalence}{等价}于给定\Term{morphism-of-topoi}{拓扑斯态射} $m:E\to E'$ 及\Term{ringed-sheaf}{环层}\Term{morphism}{态射} $\Theta:A'\to m_*A$。
+\textbf{13.2。}对\Term{morphism-ringed-topoi}{环化拓扑斯态射} $u=(m,\theta):(E,A)\to(E',A^*)$，在\Term{module}{模}\Term{category}{范畴}之间有两个重要\Term{functor}{函子}。
+\textbf{13.2.1。模的\Term{direct-image-functor}{正像函子}。}设 $M$ 是左（相应地右）$A$-\Term{module}{模}。\Term{object}{对象} $m_*M$ \Term{canonical}{典范}地带有 $m_*A$-\Term{module}{模}结构；沿\Term{canonical}{典范}\Term{morphism}{态射} $\Theta':A'\to m_*A$ \Term{restriction-of-scalars}{限制标量}，得到 $A'$-\Term{module}{模}，记为 $u_*(M)$，称为 $M$ 沿\Term{morphism}{态射} $u$ 的\Term{direct-image}{正像}。
+\SourcePage{317}
+\textbf{13.2.2。模的\Term{inverse-image-functor}{逆像函子}。}设 $N$ 是左（相应地右）$A'$-\Term{module}{模}。$E$ 的\Term{object}{对象} $m^*N$ \Term{canonical}{典范}地带有左（相应地右）$m^*A'$-\Term{module}{模}结构。左 $A$-\Term{module}{模} $A\otimes_{m^*A'}m^*N$（相应地，右 $A$-\Term{module}{模} $m^*N\otimes_{m^*A'}A$），其中 $A$ 的 $m^*A'$-\Term{module}{模}结构由 $\theta:m^*A'\to A$ 定义，记为 $u^*N$，称为\Term{module}{模} $N$ 沿\Term{morphism-ringed-topoi}{环化拓扑斯态射} $u$ 的\Term{inverse-image}{逆像}。
+\textbf{13.2.3。}注意，对每个 $A$-\Term{module}{模} $M$，$u_*M$ 的底\Term{sheaf-of-sets}{集合层}及底\Term{abelian-sheaf}{阿贝尔层}就是\Term{sheaf}{层} $m_*M$。因此常用记号 $u_*$ 表示\Term{sheaf-of-sets}{集合层}的\Term{direct-image}{正像}\Term{functor}{函子} $m_*$。然而，对 $A'$-\Term{module}{模} $N$，$u^*N$ 的底\Term{sheaf-of-sets}{集合层}或底\Term{abelian-sheaf}{阿贝尔层}一般既不等于也不\Term{isomorphism}{同构}于 $m^*N$（不过，当 $\theta$ 是\Term{isomorphism}{同构}时除外）。所以必须区分\Term{module}{模}的\Term{inverse-image}{逆像}与\Term{sheaf-of-sets}{集合层}或\Term{abelian-sheaf}{阿贝尔层}的\Term{inverse-image}{逆像}。通常用 $u^{-1}:E'\to E$ 表示\Term{sheaf-of-sets}{集合层}的\Term{inverse-image}{逆像}\Term{functor}{函子} $m^*$。\Term{functor}{函子} $u^{-1}$ 称为沿\Term{morphism-ringed-topoi}{环化拓扑斯态射} $u$ 的“\Term{set}{集合}意义”的\Term{inverse-image}{逆像}\Term{functor}{函子}，以区别于“\Term{module}{模}意义”的\Term{inverse-image}{逆像} $u^*$。
+\begin{SGAresult}{定义}{13.3}
+设 $(C,A)$ 与 $(C',A')$ 是两个 $\mathcal U$-\Term{ringed-site}{赋环景}。\Term{morphism-ringed-sites}{赋环景态射} $u:(C,A)\to(C',A')$ 是一对 $(m,\theta)$，其中 $m$ 是从\Term{site}{景} $C$ 到\Term{site}{景} $C'$ 的\Term{morphism}{态射}（IV 4.9），$\theta:m^*A'\to A$ 是\Term{ring}{环}\Term{morphism}{态射}。
+\end{SGAresult}
+\textbf{13.3.1。}\Term{morphism-ringed-topoi}{环化拓扑斯态射}是 $\mathcal U$-\Term{morphism-ringed-sites}{赋环景态射}。\Term{morphism-ringed-sites}{赋环景态射}在相应\Term{ringed-topos}{环化拓扑斯}之间产生\Term{morphism}{态射}（11.1.1和 IV 4.9.1）。
+\begin{SGAresult}{命题}{13.4}
+设 $u:(E,A)\to(E',A')$ 是\Term{morphism-ringed-topoi}{环化拓扑斯态射}。
+a）对变动的左（相应地右）$A$-\Term{module}{模} $M$ 及变动的左（相应地右）$A'$-\Term{module}{模} $N$，有\Term{canonical}{典范}\Term{bifunctor}{双函子}\Term{isomorphism}{同构}（称为\Term{adjunction-isomorphism}{伴随同构}）
+\[\operatorname{Hom}_A(u^*N,M)\simeq\operatorname{Hom}_{A'}(N,u_*M),\tag{13.4.1}\]
+\[u_*\mathscr{H}\!om_A(u^*N,M)\simeq\mathscr{H}\!om_{A'}(N,u_*M).\tag{13.4.2}\]
+b）对 $E'$ 的变动\Term{object}{对象} $X$，有关于 $X$ \Term{functoriality}{函子性}的\Term{canonical}{典范}\Term{isomorphism}{同构}
+\[u^*A'_X\longrightarrow A_{u^{-1}(X)},\tag{13.4.3}\]
+其中 $A'_X,A_{u^{-1}(X)}$ 表示所生成的\Term{free-module}{自由模}（11.3.3）。
+c）当 $A'$ 交换且\Term{canonical}{典范}\Term{morphism}{态射} $u^{-1}A'\to A$ 为\Term{center}{中心}\Term{morphism}{态射}时（相应地，当\Term{canonical}{典范}\Term{morphism}{态射} $u^{-1}A'\to A$ 是\Term{isomorphism}{同构}时），对变动的右 $A'$-\Term{module}{模} $M$ 及变动的左 $A'$-\Term{module}{模} $N$，有\Term{canonical}{典范}\Term{bifunctor}{双函子}\Term{isomorphism}{同构}
+\SourcePage{318}
+\[u^*M\otimes_A u^*N\simeq u^*(M\otimes_{A'}N),\tag{13.4.4}\]
+\[\text{（相应地）}\quad u^*M\otimes_A u^*N\simeq u^{-1}(M\otimes_{A'}N).\tag{13.4.5}\]
+\end{SGAresult}
+首先有\Term{canonical}{典范}\Term{isomorphism}{同构} $\operatorname{Hom}_A(u^*N,M)\simeq\operatorname{Hom}_{u^{-1}A'}(u^{-1}N,M)$（12.12），再有\Term{isomorphism}{同构} $\operatorname{Hom}_{u^{-1}A'}(u^{-1}N,M)\simeq\operatorname{Hom}_{A'}(N,u_*M)$（III 1.7），从而得到（13.4.1）。下面给出\Term{isomorphism}{同构}（13.4.2）。对 $E'$ 的每个\Term{object}{对象} $X$，有\Term{functor}{函子}\Term{isomorphism}{同构}序列：
+\begin{align*}
+\operatorname{Hom}_{E'}(X,u_*\mathscr{H}\!om_A(u^*N,M))
+&\simeq\operatorname{Hom}(u^{-1}X,\mathscr{H}\!om_A(u^*N,M))&&\text{（伴随）},\\
+&\simeq\operatorname{Hom}_A(u^*N,\mathscr{H}\!om_E(u^{-1}X,M))&&\text{（12.1）},\\
+&\simeq\operatorname{Hom}_{A'}(N,u_*\mathscr{H}\!om_E(u^{-1}X,M))&&\text{（13.4.1）},\\
+&\simeq\operatorname{Hom}_{A'}(N,\mathscr{H}\!om_{E'}(X,u_*M))&&\text{（10.3.1）},\\
+&\simeq\operatorname{Hom}_{A'}(X,\mathscr{H}\!om_{A'}(N,u_*M))&&\text{（12.1）}.
+\end{align*}
+于是公式（13.4.5）可从公式13.3.2由\Term{adjunction}{伴随关系}（\Term{tensor-product}{张量积}的定义，12.7）得到。再利用基\Term{ring}{环}交换时\Term{tensor-product}{张量积}的交换性（12.8），由（13.4.5）推出（13.4.4）。最后，为证明（13.4.3），考虑\Term{isomorphism}{同构}序列
+\begin{align*}
+\operatorname{Hom}_A(u^*A'_X,M)&\simeq\operatorname{Hom}_{A'}(A'_X,u_*M)&&\text{（13.4.1）},\\
+&\simeq\operatorname{Hom}_{E'}(X,u_*M)&&\text{（11.3.3）},\\
+&\simeq\operatorname{Hom}_E(u^{-1}X,M)&&\text{（伴随）},\\
+&\simeq\operatorname{Hom}_A(A_{u^{-1}X},M)&&\text{（11.3.3）}.
+\end{align*}
+\begin{SGAresult}{推论}{13.5}
+设 $(E,A)$ 是\Term{ringed-topos}{环化拓扑斯}，$x:P\to E$ 是 $E$ 的点，$F\mapsto F_x$ 是相应的\Term{fibre-functor}{纤维函子}（IV 6.1）。点 $x$ 处的\Term{fibre-functor}{纤维函子}把 $A$-\Term{module}{模}的\Term{tensor-product}{张量积}变为 $A_x$-\Term{module}{模}的（通常）\Term{tensor-product}{张量积}。
+\end{SGAresult}
+$P$ 中的\Term{tensor-product}{张量积}就是\Term{module}{模}的通常\Term{tensor-product}{张量积}（\Term{punctual-topos}{点拓扑斯} $P$ 就是\Term{set}{集合}\Term{category}{范畴}）。故断言由（13.4.4）得到。
+\begin{SGAresult}{推论}{13.6}
+设 $u:(E,A)\to(E',A')$ 是\Term{morphism-ringed-topoi}{环化拓扑斯态射}。右\Term{module}{模}或左\Term{module}{模}的\Term{direct-image}{正像}\Term{functor}{函子} $u_*$ 与\Term{projective-limit}{逆极限}交换，特别地是\Term{left-exact}{左正合}的。右\Term{module}{模}或左\Term{module}{模}的\Term{inverse-image}{逆像}\Term{functor}{函子} $u^*$ 与\Term{inductive-limit}{归纳极限}交换，特别地是\Term{right-exact}{右正合}的。
+\end{SGAresult}
+这由公式（13.4.1）得到（I 2.11）。
+\SourcePage{319}
+\textbf{13.7。}注意，\Term{module}{模}的\Term{inverse-image}{逆像}\Term{functor}{函子} $u^*$ 一般不\Term{exact}{正合}，而\Term{set}{集合}意义的\Term{inverse-image}{逆像}\Term{functor}{函子} $u^{-1}$ 是\Term{exact}{正合}的。不过，当\Term{canonical}{典范}\Term{morphism}{态射} $u^{-1}A'\to A$ 是\Term{flat}{平坦}的（右\Term{flat}{平坦}或左\Term{flat}{平坦}）时，可以断言 $u^*$ \Term{exact}{正合}（V 1.8）。特别地，当\Term{canonical}{典范}\Term{morphism}{态射} $u^{-1}A'\to A$ 是\Term{isomorphism}{同构}时便是如此。
+\textbf{13.8。}设 $C$ 是 $\mathcal U$-\Term{site}{景}，$A'$ 是 $C$ 上的\Term{presheaf-of-rings}{环预层}，以 $A$ 表示 $A'$ 的\Term{associated-sheaf}{伴随层}。那些同时也是\Term{sheaf}{层}的 $A'$-\Term{module}{模}\Term{presheaf}{预层}所成的\Term{category}{范畴}，\Term{equivalence}{等价}于 $A$-\Term{module}{模}\Term{category}{范畴}。有时用记号 $\operatorname{Hom}_{A'}(M,N)$ 表示群 $\operatorname{Hom}_A(M,N)$（11.1.2）。类似地，也滥用记号 $\mathscr{H}\!om_{A'}(M,N)$、$M\otimes_{A'}N$ 表示\Term{sheaf}{层} $\mathscr{H}\!om_A(M,N)$、$M\otimes_A N$。当 $A'=k_E$ 是由通常的\Term{ring}{环} $k$ 定义的\Term{constant-presheaf}{常预层}时，也写 $\mathscr{H}\!om_k,\otimes_k$，代替 $\mathscr{H}\!om_{k_E},\otimes_{k_E}$。
+\begin{SGAresult}{练习}{13.9}
+\Term{locally-ringed-topos}{局部环化拓扑斯}（关于以下思路的更多材料，参见[9]）。设 $(E,\mathcal O_E)$ 是交换\Term{ringed-topos}{环化拓扑斯}。对 $X\in\operatorname{ob}E$ 及 $f\in\mathcal O_E(X)$，以 $X_f$ 表示 $X$ 的使 $f$ \Term{invertible}{可逆}的最大子\Term{object}{对象}。
+
+a）证明：对 $X'\in\operatorname{ob}(E/X)$，$f_{X'}$ \Term{invertible}{可逆}，当且仅当结构\Term{morphism}{态射} $X'\to X$ 经 $X_f$ \Term{resolution}{分解}；且对 $f,g\in\mathcal O_E(X)$，有
+\[X_{fg}=X_f\cap X_g.\]
+b）证明下述条件（i）至（iii）\Term{equivalence}{等价}：
+（i）对 $X\in\operatorname{ob}E$ 及 $f,g\in\mathcal O_E(X)$，有 $X_{f+g}\subset\operatorname{Sup}(X_f,X_g)$。
+（ii）对 $X\in\operatorname{ob}E$ 及满足 $f+g$ \Term{invertible}{可逆}的 $f,g\in\mathcal O_E(X)$，有 $X=\operatorname{Sup}(X_f,X_g)$。
+（iii）对 $X\in\operatorname{ob}E$ 及 $f\in\mathcal O_E(X)$，有 $X=\operatorname{Sup}(X_f,X_{1-f})$。
+证明这些条件蕴含下述条件（iv），并且当 $E$ 有\Term{enough-points}{足够多的点}时与（iv）\Term{equivalence}{等价}：
+（iv）对 $E$ 的每个点 $p$，\Term{fiber}{纤维}\Term{ring}{环} $\mathcal O_{E,p}$ 是\Term{local-ring}{局部环}。
+上述\Term{equivalence}{等价}条件（i）至（iii）成立时，称 $(E,\mathcal O_E)$ 为\Term{locally-ringed-topos}{局部环化拓扑斯}；同样，若\Term{ringed-site}{赋环景}所\Term{correspondence}{对应}的\Term{ringed-topos}{环化拓扑斯}是\Term{locally-ringed-topos}{局部环化拓扑斯}，则称它为\Term{locally-ringed-site}{局部赋环景}。
+
+c）设 $(E,\mathcal O_E)$ 与 $(E',\mathcal O_{E'})$ 是两个\Term{locally-ringed-topos}{局部环化拓扑斯}，$f$ 是从前者到后者的\Term{morphism-ringed-topoi}{环化拓扑斯态射}。证明下述条件（i）蕴含条件（ii），并且当 $E$ 有\Term{enough-points}{足够多的点}时二者\Term{equivalence}{等价}：
+（i）对每个 $X'\in\operatorname{ob}E'$ 及 $s'\in\mathcal O_{E'}(X')$，置 $X=f^{-1}(X')$、$s=f^*(s')$，有
+\[X'_{s'}=f^{-1}(X_s).\]
+\SourcePage{320}
+（ii）对 $E$ 的每个点 $p$，置 $p'=f(p)$，则\Term{fiber}{纤维}上的自然\Term{homomorphism}{同态}
+\[\mathcal O_{E',p'}\longrightarrow\mathcal O_{E,p}\]
+是\Term{local-ring}{局部环}的\Term{local-homomorphism}{局部同态}。
+条件（i）成立时，称 $f$ 为\Term{morphism-locally-ringed-topoi}{局部环化拓扑斯态射}；可能混淆时，也称为\Term{locally-ringed-topos}{局部环化拓扑斯}的\Term{admissible-morphism}{容许态射}。用 $\mathscr{H}\!om\mathrm{toplocan}(E,E')$ 表示从 $E$ 到 $E'$ 的所有\Term{morphism-ringed-topoi}{环化拓扑斯态射}的\Term{category}{范畴} $\mathscr{H}\!om\mathrm{topan}(E,E')$ 中，由从 $E$ 到 $E'$ 的\Term{admissible-morphism}{容许态射}所定义的\Term{full-subcategory}{全子范畴}。
+
+d）设 $(E,\mathcal O_X)$ 是与赋\Term{ring}{环}\Term{topological-space}{拓扑空间} $(X,\mathcal O_X)$ 相伴的\Term{ringed-topos}{环化拓扑斯}（IV 2.1）。证明 $(E,\mathcal O_E)$ \Term{locally-ringed}{局部赋环}，当且仅当 $(X,\mathcal O_X)$ \Term{locally-ringed}{局部赋环}，即对每个 $x\in X$，\Term{fiber}{纤维} $\mathcal O_{X,x}$ 是\Term{local-ring}{局部环}。（注意，在 b）的判据（iv）中，只须令 $p$ 取遍 $E$ 的一个\Term{conservative-points}{保守点族}。）设 $f:(X,\mathcal O_X)\to(X',\mathcal O_{X'})$ 是赋\Term{ring}{环}\Term{space}{空间}\Term{morphism}{态射}，其中 $\mathcal O_X,\mathcal O_{X'}$ 是\Term{local-ring}{局部环}\Term{sheaf}{层}。证明相应的\Term{morphism-ringed-topoi}{环化拓扑斯态射} $\operatorname{Top}(X,\mathcal O_X)\to\operatorname{Top}(X',\mathcal O_{X'})$ 容许，当且仅当\Term{morphism}{态射} $f$ 容许，即当且仅当对每个 $x\in X$，$\mathcal O_{X',f(x)}\to\mathcal O_{X,x}$ 是\Term{local-ring}{局部环}的\Term{local-homomorphism}{局部同态}。
+
+e）设 $(E,\mathcal O_E)$ 与 $(E',\mathcal O_{E'})$ 是两个\Term{locally-ringed-topos}{局部环化拓扑斯}，$E$ 有\Term{enough-points}{足够多的点}，且 $(E',\mathcal O_{E'})$ \Term{equivalence}{等价}于由\Term{scheme}{概形} $(X',\mathcal O_{X'})$ 定义的\Term{ringed-topos}{环化拓扑斯}。证明\Term{category}{范畴} $\mathscr{H}\!om\mathrm{toplocan}(E,E')$ \Term{equivalence}{等价}于\Term{discrete-category}{离散范畴}，即它是\Term{rigidity}{刚性}的\Term{groupoid}{群胚}（每个\Term{morphism}{态射}都是\Term{isomorphism}{同构}，且\Term{object}{对象}的\Term{automorphism-group}{自同构群}均为\Term{unit-group}{单位群}）。（提示：归结到 $(E,\mathcal O_E)$ 是由一个域赋\Term{ring}{环}的\Term{punctual-topos}{点拓扑斯}的情形。）反之应记住，$\mathscr{H}\!om\mathrm{top}(E,E')$ 一般并不\Term{equivalence}{等价}于\Term{discrete-category}{离散范畴}，即使 $E,E'$ 是由\Term{scheme}{概形}定义的\Term{topos}{拓扑斯}（甚至当 $E$ 是\Term{punctual-topos}{点拓扑斯}时），参见4.2.3。
+
+f）设 $E$ 是\Term{locally-ringed-topos}{局部环化拓扑斯}，$P$ 是由赋\Term{ring}{环}\Term{space}{空间} $\operatorname{Spec}k$ 定义的\Term{ringed-topos}{环化拓扑斯}，其中 $k$ 是域。证明\Term{locally-ringed-topos}{局部环化拓扑斯}的\Term{admissible-morphism}{容许态射} $P\to E$ \Term{correspondence}{对应}于二元组 $(p,u)$，其中 $p$ 是 $E$ 的点，$u$ 是从 $k(p)$ 到 $k$ 的\Term{injectivity}{单射}，$k(p)$ 是\Term{local-ring}{局部环} $\mathcal O_{E,p}$ 的\Term{residue-field}{剩余域}。将其推广为描述从\Term{locally-ringed}{局部赋环}\Term{punctual-topos}{点拓扑斯}到 $E$ 的\Term{admissible-morphism}{容许态射}的命题（推广 EGA I 2.4.4）。
+所谓\Term{locally-ringed-topos}{局部环化拓扑斯} $E$ 的\Term{geometric-point}{几何点}，是从由形如 $\operatorname{Spec}(k)$ 的赋\Term{ring}{环}\Term{space}{空间}定义的\Term{locally-ringed-topos}{局部环化拓扑斯}到 $E$ 的任一\Term{admissible-morphism}{容许态射}，其中 $k$ 为\Term{algebraically-closed-field}{代数闭域}。定义 $E$ 的\Term{geometric-point}{几何点}\Term{category}{范畴}（约定相应的域 $k\in\mathcal U$），记为 $\operatorname{Ptg\text{é}om}(E)$，以及\Term{canonical}{典范}\Term{functor}{函子} $\operatorname{Ptg\text{é}om}(E)\to\operatorname{Point}(E)$。证明此\Term{functor}{函子}\Term{faithful}{忠实}，当且仅当 $E$ 没有点，即 $\operatorname{Point}(E)$ 是空\Term{category}{范畴}。
+\SourcePage{321}
+g）设 $E$ 是 $\mathcal U$-\Term{topos}{拓扑斯}，$\mathcal V$ 是满足 $\mathcal U\in\mathcal V$ 的\Term{universe}{宇宙}。参照5.14 a），用2-\Term{category}{范畴} $(\mathcal V\text{-}\mathcal U\text{-}\mathrm{Top})$（3.3.1）的\Term{object}{对象} $E$ 定义2-\Term{category}{范畴} $(\mathcal V\text{-}\mathcal U\text{-}\mathrm{Top})/E$。当 $E$ 由\Term{ring}{环} $A$ 赋\Term{ring}{环}时，类似地定义2-\Term{category}{范畴} $(\mathcal V\text{-}\mathcal U\text{-}\mathrm{Topan})/E$；当 $E$ \Term{locally-ringed}{局部赋环}时，利用\Term{admissible-morphism}{容许态射}的概念（参见 c）），定义2-\Term{category}{范畴} $(\mathcal V\text{-}\mathcal U\text{-}\mathrm{Topanloc})/E$，使其以 $\operatorname{Ptg\text{é}om}(E)$（参见 f））为\Term{full-subcategory}{全子范畴}。
+\end{SGAresult}
+
+\SGAsection{14}{由粘合定义的拓扑斯上的模}
+\textbf{14.1。}设 $(E,A)$ 是\Term{ringed-topos}{环化拓扑斯}，$U$ 是 $E$ 的\Term{open-subtopos}{开子拓扑斯}，$F$ 是互补的\Term{closed-subtopos}{闭子拓扑斯}，$j:U\to E$ 与 $i:F\to E$ 是\Term{canonical}{典范}\Term{morphism}{态射}（9.3）。以 $j^*A$ 赋\Term{ring}{环}于\Term{topos}{拓扑斯} $U$（11.2.2），将\Term{morphism-of-topoi}{拓扑斯态射} $i$ 作显然的补充，便成为\Term{morphism-ringed-topoi}{环化拓扑斯态射}。本节以\Term{sheaf}{层} $i^*A$（记为 $A|F$）赋\Term{ring}{环}于\Term{topos}{拓扑斯} $F$，此时将\Term{morphism}{态射} $j$ 作显然的补充，便成为\Term{morphism-ringed-topoi}{环化拓扑斯态射}。
+\textbf{14.2。}这样有两个\Term{morphism-ringed-topoi}{环化拓扑斯态射}
+\[j:(U,A|U)\longrightarrow(E,A),\qquad i:(F,A|F)\longrightarrow(E,A),\]
+因而在相应的\Term{module}{模}\Term{category}{范畴}之间（为固定起见取左\Term{module}{模}）有五个\Term{functor}{函子}：
+\[
+\begin{tikzcd}[column sep=large]
+{}_{A|U}U \arrow[r,bend left=40,"j_!"] \arrow[r,bend right=40,swap,"j_*"] & {}_AE \arrow[l,"j^*"] \arrow[r,bend left=20,"i^*"] & {}_{A|F}F\arrow[l,bend left=20,"i_*"]
+\end{tikzcd}\tag{14.2.1}
+\]
+图（14.2.1）中的每个\Term{functor}{函子}都\Term{left-adjoint}{左伴随}于它下方的\Term{functor}{函子}。
+\textbf{14.3。}我们知道\Term{functor}{函子} $X\mapsto(j^*X,i^*X;i^*X\to i^*j_*j^*X)$ 是从 $E$ 到\Term{topos}{拓扑斯} $(U,F,i^*j_*)$ 的\Term{equivalence}{等价}（9.5.4）。这个\Term{equivalence}{等价}诱导相应\Term{module}{模}\Term{category}{范畴}间的\Term{equivalence}{等价}，因此\Term{functor}{函子} $P\mapsto(j^*P,i^*P;i^*P\to i^*j_*j^*P)$ 是从\Term{category}{范畴} ${}_AE$ 到\Term{category}{范畴} $({}_{A|U}U,{}_{A|F}F,i^*j_*)$ 的\Term{equivalence}{等价}，记为 $\Phi$。将（14.2.1）的\Term{functor}{函子}与 $\Phi$ 或 $\Phi^{-1}$ 复合，得到如下\Term{functor}{函子}：
+\begin{align*}
+\Phi\circ j_* &: M\longmapsto(M,i^*j_*M;i^*j_*M\xrightarrow{\mathrm{id}}i^*j_*M),\\
+j^*\circ\Phi^{-1}&:(M,N;N\to i^*j_*M)\longmapsto M,\\
+\Phi\circ j_!&:M\longmapsto(M,0;0\to i^*j_*M),\\
+\Phi\circ i_*&:N\longmapsto(0,N;N\to0),\\
+i^*\circ\Phi^{-1}&:(M,N;N\to i^*j_*M)\longmapsto N.
+\end{align*}
+读者可以把写出各个\Term{adjunction-morphism}{伴随态射}的具体形式作为练习。
+\SourcePage{322}
+\textbf{14.4。}以
+\[i^!:{}_AE\longrightarrow{}_{A|F}F\tag{14.4.1}\]
+表示由下式定义的\Term{functor}{函子}：
+\[i^!\circ\Phi^{-1}(M,N;N\xrightarrow{u}i^*j_*M)=\operatorname{Ker}(u).\tag{14.4.2}\]
+\begin{SGAresult}{命题}{14.5}
+\Term{functor}{函子} $i^!$ \Term{right-adjoint}{右伴随}于\Term{functor}{函子} $i_*$。\Term{adjunction-morphism}{伴随态射} $i_*i^!\to\operatorname{id}$ 是\Term{monomorphism}{单态射}。\Term{functor}{函子} $i^!$（让\Term{ring}{环}变动）与\Term{restriction-of-scalars}{限制标量}\Term{functor}{函子}交换。
+\end{SGAresult}
+显然，每个\Term{morphism}{态射} $(0,N;0)\to(M,N;N\xrightarrow{u}i^*j_*M)$ 都唯一地经 $(0,\ker(u);0)$ \Term{resolution}{分解}；这就证明了\Term{adjunction}{伴随}性质。其余断言是\Term{trivial-bundle}{平凡}的。
+\begin{SGAresult}{命题}{14.6}
+对 ${}_AE$ 的每个\Term{object}{对象} $P$，有关于 $P$ \Term{functoriality}{函子性}的\Term{exact-sequence}{正合列}
+\[0\longrightarrow j_!j^*P\longrightarrow P\longrightarrow i_*i^*P\longrightarrow0;\tag{14.6.1}\]
+\[0\longrightarrow i^!i^*P\longrightarrow P\longrightarrow j_*j^*P,\tag{14.6.2}\]
+其中非\Term{trivial-bundle}{平凡}\Term{arrow}{箭头}都是\Term{adjoint}{伴随箭头}。\footnote{（14.6.2）的复合按原文照录；其后证明中的相应项为 $i_*i^!P$。}
+\end{SGAresult}
+先注意，$({}_{A/U}U,{}_{A/F}F;i^*j_*)$ 中的序列
+\[(M',N';u')\longrightarrow(M,N;u)\longrightarrow(M'',N'';u'')\]
+\Term{exact}{正合}，当且仅当相应的序列 $M'\to M\to M''$ 及 $N'\to N\to N''$ \Term{exact}{正合}。
+\Term{equivalence}{等价} $\Phi$ 把序列（14.6.1）和（14.6.2）变为（14.3）型的序列：
+\[
+\begin{gathered}
+0\longrightarrow(M,0;0)\longrightarrow(M,N;u)\longrightarrow(0,N;0)\longrightarrow0,\\
+0\longrightarrow(0,\ker(u);0)\longrightarrow(M,N,u)\longrightarrow(M,i^*j_*M;\operatorname{id}).
+\end{gathered}
+\]
+这些序列的\Term{exact}{正合}性可直接验证。
+\SourcePage{323}
+\textbf{14.7。}\Term{exact-sequence}{正合列}（14.6.2）给出\Term{functor}{函子} $i^!i^*$ 的一个新解释。事实上，设 $X$ 是 $E$ 的\Term{object}{对象}。由（14.6.2）得到\Term{commutative-group}{交换群}的\Term{exact-sequence}{正合列}
+\[0\longrightarrow\operatorname{Hom}_E(X,i_*i^!P)\longrightarrow\operatorname{Hom}_E(X,P)\longrightarrow\operatorname{Hom}_E(X,j_*j^*P).\]
+仍用 $U$ 表示 $E$ 的开\Term{object}{对象}，即\Term{open-subtopos}{开子拓扑斯} $U$ 的\Term{final-object}{终对象}。由\Term{functor}{函子} $j_*,j^*,j_!^{\mathrm{ens}}$ 的\Term{adjunction}{伴随}性质，群 $\operatorname{Hom}_E(X,j_*j^*P)$ \Term{canonical}{典范}\Term{isomorphism}{同构}于 $\operatorname{Hom}_E(X\times U,P)$，而\Term{morphism}{态射} $\operatorname{Hom}_E(X,P)\to\operatorname{Hom}_E(X,j_*j^*P)$ 正是由\Term{monomorphism}{单态射} $X\times U\to X$ 定义的\Term{morphism}{态射}（IV 5）。换言之（8.5.2）：
+\begin{SGAresult}{命题}{14.8}
+$i_*i^!P$ 在 $E/X$ 上的\Term{section}{截面}，就是 $P$ 在 $E/X$ 上\Term{support}{支集}（9.3.5）包含 $F$ 的\Term{section}{截面}（采用5.9.1的记号）。换言之，$i_*i^!P$ 是 $P$ 的\Term{support}{支集}包含于 $F$ 的最大\Term{subsheaf}{子层}。\footnote{原文前一句作“包含 $F$”（contient F），后一句作“包含于 $F$”（contenu dans F），两处方向按原文保留。}
+\end{SGAresult}
+\textbf{14.9。}有时滥用说法，称 $i_*i^!P$ 为由 $P$ 的\Term{support}{支集}在 $F$ 中的\Term{section}{截面}所定义的子\Term{module}{模}。由8.5.3，这一术语只是把\Term{topological-space}{拓扑空间}上的\Term{sheaf}{层}\Term{topos}{拓扑斯}所用的术语推广到一般\Term{topos}{拓扑斯}。
+\begin{SGAresult}{命题}{14.10}
+1）\Term{functor}{函子} $P\mapsto i_*i^*P$ \Term{isomorphism}{同构}于\Term{functor}{函子} $P\mapsto i_*i^*A\otimes_A P$。
+2）\Term{functor}{函子} $P\mapsto i^!i^*P$ \Term{isomorphism}{同构}于\Term{functor}{函子} $P\mapsto\mathscr{H}\!om_A(i_*i^*A,P)$。
+\end{SGAresult}
+在 $P$ 为 $A$-\Term{module}{模} $A$ 的特殊情形，\Term{exact-sequence}{正合列}（14.6.1）写为
+\[0\longrightarrow A_U\longrightarrow A\longrightarrow i_*i^*A\longrightarrow0,\tag{14.10.1}\]
+其中 $A_U$ 是由\Term{correspondence}{对应}于\Term{open-subtopos}{开子拓扑斯} $U$ 的开\Term{object}{对象} $U$ 生成的自由 $A$-\Term{module}{模}（9和11.3.3）。对每个 $A$-\Term{module}{模} $P$，$A$-\Term{module}{模} $j_!j^*P$ 和 $j_*j^*P$ 分别\Term{canonical}{典范}\Term{isomorphism}{同构}于 $A_U\otimes_A P$ 和 $\operatorname{om}_A(A_U,P)$（12.3和12.6）。而且，在这些\Term{isomorphism}{同构}下，\Term{canonical}{典范}\Term{morphism}{态射} $j_!j^*P\to P$ 与 $P\to j_*j^*P$ 来自\Term{monomorphism}{单态射} $A_U\to A$。因此从\Term{exact-sequence}{正合列}15.10.1得到两个\Term{exact-sequence}{正合列}（12.2和12.11）：
+\[j_!j^*P\longrightarrow P\longrightarrow i_*i^*A\otimes_A P\longrightarrow0,\]
+\[0\longrightarrow\mathscr{H}\!om_A(i_*i^*A,P)\longrightarrow P\longrightarrow j_*j^*P.\]
+与（14.6.1）和（14.6.2）比较，即得到所述\Term{isomorphism}{同构}。
+
+\SGAsection{}{参考文献}
+\begin{enumerate}
+\item[{[1]}] M. Artin 与 B. Mazur，《\Term{etale-topology}{平展拓扑}中的簇的\Term{homotopy}{同伦}》（Homotopy of varieties in the etale topology），载《\Term{local-scheme}{局部}域会议论文集》，Driebergen，1966，Springer。
+\item[{[2]}] P. Gabriel 与 G. Zisman，《分式演算与\Term{homotopy}{同伦}论》（Calculus of fractions and homotopy theory），Ergebnisse der Mathematik，第35卷。
+\SourcePage{324}
+\item[{[3]}] J. Giraud，《非交换\Term{homology}{同调}\Term{algebra}{代数}》（Algèbre homologique non commutative），Grundlehren，Springer，1971。
+\item[{[4]}] A. Grothendieck，《关于\Term{homology}{同调}\Term{algebra}{代数}的若干问题》（Sur quelques points d’Algèbre homologique），Tohoku Math. Journal（简称[Toh]）。
+\item[{[5]}] A. Grothendieck，《\Term{algebra}{代数}几何基础》（Fondements de la Géométrie Algébrique），1957—1962年 Bourbaki 报告集，Secrétariat mathématique，巴黎 P. Curie 街Il号。
+\item[{[6]}] A. Grothendieck，《晶体与\Term{scheme}{概形}的 De Rham \Term{cohomology}{上同调}》（Crystals and the De Rham cohomology of schemes），I. Coates 与 O. Jussila 记录，载《\Term{scheme}{概形}\Term{cohomology}{上同调}十讲》，North Holland Pub. Cie，1969。
+\item[{[7]}] A. Grothendieck，《\Term{discrete}{离散}群线性表示的 Chern 类》（Classes de Chern des représentations linéaires des groupes discrets），载《\Term{scheme}{概形}\Term{cohomology}{上同调}十讲》，North Holland Pub. Cie，1969。
+\item[{[8]}] R. Godement，《层论》（Théorie des faisceaux），Act. Scient. Ind.，第1252号，1958，Hermann（巴黎）（简称[TF]）。
+\item[{[9]}] M. Hakim，《\Term{ringed-topos}{环化拓扑斯}与相对\Term{scheme}{概形}》（Topos annelés et schémas relatifs），油印学位论文，Orsay，1967。
+\item[{[10]}] D. Mumford，《模问题的 Picard 群》（Picard groups of moduli problems），载 Arithmetic Algebraic Geometry，Harper’s Series in Modern Mathematics。
+\item[{[11]}] Nguyen Dinh Ngoc，数学科学学位论文，巴黎，1963，第4995号。
+\item[{[12]}] J. E. Roos，《\Term{topos}{拓扑斯}中\Term{inductive-limit}{归纳极限}对\Term{projective-limit}{逆极限}的分配性》（Distributivité des $\varinjlim$ par rapports aux $\varprojlim$ des topos）：a）CR，第259卷，第969—972页；b）CR，第259卷，第1605—1608页；c）CR，第259卷，第1801—1804页（1964年8月及9月）。
+\item[{[13]}] P. Deligne 与 D. Mumford，《给定\Term{genus}{亏格}曲线\Term{space}{空间}的\Term{irreducible}{不可约}性》（The irreductibility of the space of curves of given genus），Pub. math.，第36号，1969。
+\item[{[14]}] B. Mitchell，《\Term{category}{范畴}论》（Theory of categories），Academic Press，1965。
+\end{enumerate}
+\SourcePage{325}
+\textbf{原电子版插页。}\texttt{sga4\_exp4}，第177—318页。\par
+\textbf{\Term{topos}{拓扑斯}}\par
+A. Grothendieck 与 J. L. Verdier\par
+请将这个文件单独编译，并插入此处。\footnote{本句是原电子版法、英双语插页提示的译文，不是本译本的构建指令。}

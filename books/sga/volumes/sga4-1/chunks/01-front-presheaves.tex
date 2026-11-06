@@ -1,0 +1,701 @@
+% SGA 4-1，PDF 1--34；在第 I 讲第 7 节标题前结束。
+\SourcePage{1}
+\begin{center}
+M. Artin，A. Grothendieck，J.-L. Verdier\\
+参与者：N. Bourbaki，P. Deligne，B. Saint-Donat
+
+\bigskip
+{\Large \Term{topos}{拓扑斯}理论与\Term{scheme}{概形}的\Term{etale-cohomology}{平展上同调}}\\
+第一卷\\\Term{topos}{拓扑斯}理论
+\end{center}
+\SourcePage{2}
+M. Artin，A. Grothendieck，J.-L. Verdier；参与者：N. Bourbaki，P. Deligne，B. Saint-Donat。
+\SourcePage{3}
+\begin{center}
+{\Large \Term{topos}{拓扑斯}理论与\Term{scheme}{概形}的\Term{etale-cohomology}{平展上同调}}\\第一卷\\\Term{topos}{拓扑斯}理论\\
+M. Artin，A. Grothendieck，J.-L. Verdier\\
+参与者：N. Bourbaki，P. Deligne，B. Saint-Donat
+\end{center}
+\textbf{摘要。——}
+
+\textbf{英文摘要。——} 待补。
+% PDF 4 空白；PDF 5--6 原目录由中文版总目录重建。
+\SourcePage{7}
+\SGAchapter{I}{预层}{Préfaisceaux}
+\begin{center}A. Grothendieck 与 J. L. Verdier\\（附 N. Bourbaki 所作附录）\end{center}
+本讲第 0 至第 5 节介绍\Term{presheaf}{预层}\Term{category}{范畴}的初等性质，这些性质大多早已为人所知\begingroup\renewcommand{\thefootnote}{\ensuremath{*}}\footnote{读者也可参阅 SGA 3 I 第 1 至第 3 节。}\endgroup 。本讨论班后文不断用到这些性质；掌握它们对于理解后面的各讲至关重要。证明都是直接的，因而大多省略。第 6 至第 9 节涉及后文多次使用的一些主题。时间紧迫的读者初读时可以略过这些节。第 10 节确定所用术语。附录 11 由 N. Bourbaki 撰写。
+\SGAsection{0}{宇宙}
+\Term{universe}{宇宙}是具有下列性质的\Term{nonempty}{非空}\Term{set}{集合}\footnote[1]{编者注：这个定义与下文 Bourbaki 的附录相矛盾。不过，空\Term{universe}{宇宙}是否值得研究，似乎颇可商榷……} $\mathcal U$：
+\begin{enumerate}
+\item[(U 1)] 若 $x\in\mathcal U$ 且 $y\in x$，则 $y\in\mathcal U$。
+\item[(U 2)] 若 $x,y\in\mathcal U$，则 $\{x,y\}\in\mathcal U$。
+\item[(U 3)] 若 $x\in\mathcal U$，则 $\mathcal P(x)\in\mathcal U$。
+\item[(U 4)] 若 $(x_i,i\in I)$ 是 $\mathcal U$ 的元素族，且 $I\in\mathcal U$，则 $\bigcup_{i\in I}x_i\in\mathcal U$。
+\end{enumerate}
+由上述公理容易推出以下性质：
+\begin{itemize}
+\item 若 $x\in\mathcal U$，则\Term{set}{集合} $\{x\}$ 属于 $\mathcal U$。
+\item 若 $x$ 是 $y\in\mathcal U$ 的\Term{subset}{子集}，则 $x\in\mathcal U$。
+\item 若 $x,y\in\mathcal U$，则偶对 $(x,y)=\{\{x,y\},x\}$（Kuratowski 的定义）是 $\mathcal U$ 的元素。
+\item 若 $x,y\in\mathcal U$，则并集 $x\cup y$ 和乘积 $x\times y$ 是 $\mathcal U$ 的元素。
+\item 若 $(x_i,i\in I\in\mathcal U)$ 是 $\mathcal U$ 的元素族，则乘积 $\prod_{i\in I}x_i$ 是 $\mathcal U$ 的元素。
+\item 若 $x\in\mathcal U$，则 $\operatorname{card}(x)<\operatorname{card}(\mathcal U)$（严格不等式）。特别地，关系 $\mathcal U\in\mathcal U$ 不成立。
+\end{itemize}
+\SourcePage{8}
+因此，从一个\Term{universe}{宇宙}的元素出发，可以进行\Term{set}{集合}论的全部通常运算，而最终结果仍是这个\Term{universe}{宇宙}的元素。
+
+\Term{universe}{宇宙}概念的首要\Term{action}{作用}，是为通常的\Term{category}{范畴}提供一个定义：属于\Term{universe}{宇宙} $\mathcal U$ 的\Term{set}{集合}所成的\Term{category}{范畴}（$\mathcal U\text{-}\mathrm{Ens}$）、属于\Term{universe}{宇宙} $\mathcal U$ 的\Term{topological-space}{拓扑空间}所成的\Term{category}{范畴}、属于\Term{universe}{宇宙} $\mathcal U$ 的\Term{commutative-group}{交换群}所成的\Term{category}{范畴}（$\mathcal U\text{-}\mathrm{Ab}$）、属于\Term{universe}{宇宙} $\mathcal U$ 的\Term{category}{范畴}所成的\Term{category}{范畴}，等等。
+
+然而，唯一已知的\Term{universe}{宇宙}是由 $\{\{\varnothing\},\{\{\varnothing\},\varnothing\}\}$ 等这类\Term{signature}{符号}组成的\Term{set}{集合}（这个\Term{universe}{宇宙}的所有元素都是\Term{finite}{有限}\Term{set}{集合}，而且这个\Term{universe}{宇宙}是可数的）。特别地，尚不知道有哪个\Term{universe}{宇宙}含有无限\Term{cardinal}{基数}的元素。因此，我们要在\Term{set}{集合}论公理中加入下述公理：
+
+\textbf{(U A)} 对任意\Term{set}{集合} $x$，存在\Term{universe}{宇宙} $\mathcal U$，使 $x\in\mathcal U$。
+
+一族\Term{universe}{宇宙}的交仍是\Term{universe}{宇宙}，由此立即得到：每个\Term{set}{集合}都是某个最小\Term{universe}{宇宙}的元素。可以证明，公理 (U A) 独立于\Term{set}{集合}论公理。
+
+还要加入如下公理：
+
+\textbf{(U B)} 设 $R\{x\}$ 是一个关系，$\mathcal U$ 是一个\Term{universe}{宇宙}。若存在元素 $y\in\mathcal U$ 使 $R\{y\}$ 成立，则 $\tau_xR\{x\}\in\mathcal U$。
+
+相对于\Term{set}{集合}论的其余公理，公理 (U A) 与 (U B) 的\Term{consistency}{无矛盾性}尚未得到证明，而且似乎是不可证明的。
+
+设 $\mathcal U$ 是一个\Term{universe}{宇宙}，以 $c(\mathcal U)$ 表示 $\mathcal U$ 中各元素的\Term{cardinal}{基数}的\Term{supremum}{上确界}（$c(\mathcal U)\leq\operatorname{card}(\mathcal U)$）。\Term{cardinal}{基数} $c(\mathcal U)$ 具有以下性质：
+\begin{enumerate}
+\item[(FI)] 若 $a<c(\mathcal U)$，则 $2^a<c(\mathcal U)$。
+\item[(FII)] 若 $(a_i,i\in I)$ 是一族严格小于 $c(\mathcal U)$ 的\Term{cardinal}{基数}，且 $\operatorname{card}(I)$ 严格小于 $c(\mathcal U)$，则 $\sum_{i\in I}a_i<c(\mathcal U)$。
+\end{enumerate}
+具有性质 (FI) 和 (FII) 的\Term{cardinal}{基数}称为\Term{strongly-inaccessible-cardinal}{强不可达基数}。
+
+\Term{cardinal}{基数} $0$ 和可数无穷\Term{cardinal}{基数}都是\Term{strongly-inaccessible-cardinal}{强不可达}的。
+
+公理 (U A) 蕴含：
+
+\textbf{(U A$'$)} 每个\Term{cardinal}{基数}都严格小于某个\Term{strongly-inaccessible-cardinal}{强不可达基数}。
+
+可以证明（11），反过来，(U A$'$) 的\Term{consistency}{无矛盾性}蕴含 (U A) 的\Term{consistency}{无矛盾性}，而这些公理的\Term{consistency}{无矛盾性}又蕴含公理 (U B) 的\Term{consistency}{无矛盾性}。
+
+若\Term{set}{集合} $E$ 中不存在无限族 $(x_n,n\in\mathbb N)$ 满足 $x_0\in E$、$x_{n+1}\in x_n$，就称 $E$ 为\Term{artinian-set}{阿廷集合}。于是可以证明［同上］，\Term{strongly-inaccessible-cardinal}{强不可达基数}与\Term{artinian-universe}{阿廷宇宙}之间存在如下一一\Term{correspondence}{对应}：每个\Term{strongly-inaccessible-cardinal}{强不可达基数} $c$ \Term{correspondence}{对应}于唯一满足
+\[\operatorname{card}(\mathcal U_c)=c\]
+的\Term{artinian-universe}{阿廷宇宙} $\mathcal U_c$。
+\SourcePage{9}
+设 $c<c'$ 是两个\Term{strongly-inaccessible-cardinal}{强不可达基数}。则
+\[\mathcal U_c\in\mathcal U_{c'} .\]
+特别地，\Term{cardinal}{基数}小于某个给定\Term{cardinal}{基数}的\Term{artinian-universe}{阿廷宇宙}组成一个（关于隶属关系的）\Term{well-ordered-set}{良序集合}。公理 (U A$'$) \Term{equivalence}{等价}于下述公理：
+
+\textbf{(U A$''$)} 每个\Term{artinian-set}{阿廷集合}都是某个\Term{artinian-universe}{阿廷宇宙}的元素。
+
+注意，通常的\Term{set}{集合}（$\mathbb Z$、$\mathbb Q$ 等）都是\Term{artinian-set}{阿廷集合}。
+\SGAsection{1}{\(\mathcal U\)-范畴；集合预层}
+\textbf{1.0。} 在本讨论班的下文中，除非明确作出相反说明，所考虑的\Term{universe}{宇宙}都含有一个无限\Term{cardinal}{基数}的元素。设 $\mathcal U$ 是一个\Term{universe}{宇宙}。若一个\Term{set}{集合}\Term{isomorphism}{同构}于 $\mathcal U$ 的某个元素，就称它为 $\mathcal U$-\Term{small}{小的}（或在不会混淆时简称为\Term{small}{小的}）。还使用小群、小环、\Term{small-category}{小范畴}等术语\footnote[2]{编者注：把\Term{category}{范畴} $C$ 看作一个\Term{arrow}{箭头}\Term{set}{集合}（配有\Term{object}{对象}\Term{subset}{子集}——视为恒等\Term{arrow}{箭头}的\Term{set}{集合}——以及“源”“靶”映射）。因而“$C$ 是 $\mathcal U$ 的元素”或“$C$ 是 $\mathcal U$-\Term{small}{小的}”这些说法都是有意义的。}。我们经常不明确说明就假设，所用的\Term{scheme}{概形}、\Term{topological-space}{拓扑空间}、指标\Term{set}{集合}等属于 $\mathcal U$，或至少其\Term{cardinal}{基数}属于 $\mathcal U$；然而，我们要处理的许多\Term{category}{范畴}并不属于 $\mathcal U$。
+\begin{SGAresult}{定义}{1.1}
+设 $\mathcal U$ 是\Term{universe}{宇宙}，$C$ 是\Term{category}{范畴}。若对任意一对\Term{object}{对象} $(x,y)$，\Term{set}{集合} $\operatorname{Hom}_C(x,y)$ 都是 $\mathcal U$-\Term{small}{小的}，就称 $C$ 是 $\mathcal U$-\Term{category}{范畴}。
+\end{SGAresult}
+\textbf{1.1.1。} 设 $C,D$ 是两个\Term{category}{范畴}，以 $\operatorname{Fonct}(C,D)$ 表示从 $C$ 到 $D$ 的\Term{functor}{函子}\Term{category}{范畴}。立即可验证以下断言：
+
+ a) 若 $C,D$ 都是某个\Term{universe}{宇宙} $\mathcal U$ 的元素（分别为 $\mathcal U$-\Term{small}{小的}），则\Term{category}{范畴} $\operatorname{Fonct}(C,D)$ 是 $\mathcal U$ 的元素（分别是 $\mathcal U$-\Term{small}{小的}）。
+
+ b) 若 $C$ 是 $\mathcal U$-\Term{small}{小的}，$D$ 是 $\mathcal U$-\Term{category}{范畴}，则 $\operatorname{Fonct}(C,D)$ 是 $\mathcal U$-\Term{category}{范畴}。
+
+\textbf{注记 1.1.2。} 设\Term{category}{范畴} $D$ 具有如下性质：
+
+(C1) \Term{set}{集合} $\operatorname{ob}(D)$ 包含于\Term{universe}{宇宙} $\mathcal U$。
+
+(C2) 对任意一对\Term{object}{对象} $(x,y)$，\Term{set}{集合} $\operatorname{Hom}_D(x,y)$ 是 $\mathcal U$ 的元素。
+
+（从\Term{universe}{宇宙} $\mathcal U$ 构造的通常\Term{category}{范畴}都具有这两个性质，如 $\mathcal U\text{-}\mathrm{Ens}$、$\mathcal U\text{-}\mathrm{Ab}$ 等。）设 $C$ 是属于 $\mathcal U$ 的\Term{category}{范畴}。则\Term{category}{范畴} $\operatorname{Fonct}(C,D)$ 一般不具有性质 (C1)、(C2)。例如，\Term{category}{范畴} $\operatorname{Fonct}(C,\mathcal U\text{-}\mathrm{Ens})$ 两个性质都不具备。这说明，采用上述 $\mathcal U$-\Term{category}{范畴}的定义，比采用由条件 (C1)、(C2) 定义的更受\Term{restriction}{限制}的概念合适。
+\SourcePage{10}
+\begin{SGAresult}{定义}{1.2}
+设 $C$ 是\Term{category}{范畴}。从 $C$ 到 $\mathcal U$-\Term{set}{集合}\Term{category}{范畴}的\Term{contravariant-functor}{反变函子}所成的\Term{category}{范畴}，称为相对于\Term{universe}{宇宙} $\mathcal U$ 的 $C$ 上的\Term{presheaf-of-sets}{集合预层}\Term{category}{范畴}（或在不会混淆时简称为 $C$ 上的\Term{presheaf}{预层}\Term{category}{范畴}）。
+\end{SGAresult}
+相对于\Term{universe}{宇宙} $\mathcal U$ 的 $C$ 上的\Term{presheaf-of-sets}{集合预层}\Term{category}{范畴}记作 $\widehat C_{\mathcal U}$（或在不会混淆时简记为 $\widehat C$）。$\widehat C_{\mathcal U}$ 的\Term{object}{对象}称为 $C$ 上的 $\mathcal U$-\Term{presheaf}{预层}（或简称为\Term{presheaf}{预层}）。当 $C$ 是 $\mathcal U$-\Term{small}{小的}时，\Term{category}{范畴} $\widehat C_{\mathcal U}$ 是 $\mathcal U$-\Term{category}{范畴}。当 $C$ 是 $\mathcal U$-\Term{category}{范畴}时，$\widehat C_{\mathcal U}$ 未必是 $\mathcal U$-\Term{category}{范畴}。
+\begin{SGAresult}{构造与定义}{1.3}
+设 $x$ 是 $\mathcal U$-\Term{category}{范畴} $C$ 的\Term{object}{对象}。由 $x$ \Term{represented}{所表}的 $\mathcal U$-\Term{functor}{函子}，是按如下方法构造的\Term{functor}{函子} $h_{\mathcal U}(x):C^\circ\to\mathcal U\text{-}\mathrm{Ens}$\footnote[2]{$C^\circ$ 始终表示 $C$ 的\Term{opposite-category}{反范畴}。}。设 $y$ 是 $C$ 的\Term{object}{对象}。
+
+ a) 若 $\operatorname{Hom}_C(y,x)$ 是 $\mathcal U$ 的元素，令
+\[h_{\mathcal U}(x)(y)=\operatorname{Hom}_C(y,x).\]
+ b) 假设 $\operatorname{Hom}_C(y,x)$ 不是 $\mathcal U$ 的元素，令 $R(Z,x,y)$ 为如下关系：“\Term{set}{集合} $Z$ 是\Term{isomorphism}{同构} $\operatorname{Hom}_C(y,x)\xrightarrow{\sim}Z$ 的靶。”令
+\[h_{\mathcal U}(x)(y)=\tau_ZR(Z).\]
+（根据公理 (U B)，$h_{\mathcal U}(x)(y)$ 是 $\mathcal U$ 的元素。）令 $R'(u,x,y)$ 为如下关系：“$u$ 是一个\Term{bijection}{双射}
+\[u:\operatorname{Hom}_C(y,x)\xrightarrow{\sim}h_{\mathcal U}(x)(y).\]”
+于是令
+\[\varphi(y,x)=\tau_uR'(u).\]
+注意，在 a)、b) 两种情形中，都有\Term{canonical}{典范}\Term{isomorphism}{同构}
+\[\varphi(y,x):\operatorname{Hom}_C(y,x)\xrightarrow{\sim}h_{\mathcal U}(x)(y).\]
+（在 a) 中，$\varphi(y,x)$ 为恒等映射。）设 $u:y\to y'$ 是 $C$ 的\Term{arrow}{箭头}。通过\Term{morphism}{态射}复合，$u$ 定义映射
+\[\operatorname{Hom}_C(u,x):\operatorname{Hom}_C(y',x)\longrightarrow\operatorname{Hom}_C(y,x).\]
+于是令
+\[h_{\mathcal U}(x)(u)=\varphi(y,x)\operatorname{Hom}_C(x,u)\varphi(y,x)^{-1}.\]
+立即可验证，如此定义的 $h_{\mathcal U}(x)$ 是\Term{functor}{函子} $\widehat C\to\mathcal U\text{-}\mathrm{Ens}$。
+\end{SGAresult}
+\SourcePage{11}
+\textbf{1.3.1。} 同样，利用\Term{isomorphism}{同构} $\varphi$，对每个\Term{morphism}{态射} $y:x\to x'$，可以定义\Term{functor}{函子}\Term{morphism}{态射}
+\[h_{\mathcal U}(y):h_{\mathcal U}(x)\longrightarrow h_{\mathcal U}(x'),\]
+并立即可验证，这样就定义了一个\Term{functor}{函子}
+\[h_{\mathcal U}:C\longrightarrow\widehat C_{\mathcal U}.\]
+\textbf{1.3.2。} 现在设 $\mathcal V$ 是满足 $\mathcal U\subset\mathcal V$ 的\Term{universe}{宇宙}。有\Term{canonical}{典范}\Term{fully-faithful-functor}{全忠实}\Term{functor}{函子}
+\[\mathcal U\text{-}\mathrm{Ens}\hookrightarrow\mathcal V\text{-}\mathrm{Ens},\]
+从而有\Term{fully-faithful-functor}{全忠实}\Term{functor}{函子}
+\[\widehat C_{\mathcal U}\hookrightarrow\widehat C_{\mathcal V},\]
+而图
+\[\begin{tikzcd}
+ C\arrow[r,"h_{\mathcal U}"]\arrow[dr,"h_{\mathcal V}"']&\widehat C_{\mathcal U}\arrow[d,hook]\\
+ &\widehat C_{\mathcal V}
+\end{tikzcd}\]
+在相差一个\Term{canonical}{典范}\Term{isomorphism}{同构}的意义下交换。当 $C$ 是 $\mathcal U$ 的元素时，这个\Term{canonical}{典范}\Term{isomorphism}{同构}就是恒等。
+
+\textbf{1.3.3。} 实际应用中，\Term{universe}{宇宙} $\mathcal U$ 一经选定就不再提及。于是用记号 $\widehat C$ 表示\Term{set}{集合} $\mathcal U$-\Term{presheaf}{预层}\Term{category}{范畴}，并记
+\[h:C\longrightarrow\widehat C.\]
+对 $C$ 的每个\Term{object}{对象} $x$，\Term{presheaf}{预层} $h(x)$ 称为由 $x$ \Term{represented}{所表}的\Term{presheaf}{预层}；我们总将\Term{presheaf}{预层} $h(x)$ 在 $y\in\operatorname{ob}(C)$ 处的值与 $\operatorname{Hom}_C(y,x)$ 等同。
+\begin{SGAresult}{命题}{1.4}
+设 $C$ 是 $\mathcal U$-\Term{category}{范畴}，$F$ 是 $C$ 上的\Term{presheaf}{预层}，$X$ 是 $C$ 的\Term{object}{对象}。存在关于 $X$ 和 $F$ 都\Term{functoriality}{函子性}的\Term{isomorphism}{同构}
+\[i:\operatorname{Hom}_{\widehat C}(h(X),F)\xleftarrow{\sim}F(X).\]
+当 $F$ 形如 $h(Y)$ 时，映射 $i$ 就是映射
+\[h:\operatorname{Hom}(h(X),h(Y))\longleftarrow\operatorname{Hom}(X,Y).\]
+特别地，\Term{functor}{函子} $h$ 是\Term{fully-faithful-functor}{全忠实}的。
+\end{SGAresult}
+\SourcePage{12}
+\textbf{1.4.1。} 这个命题说明了通常将 $C$ 的\Term{object}{对象}与相应\Term{contravariant-functor}{反变函子}等同的用语滥用是合理的。若一个\Term{presheaf}{预层}\Term{isomorphism}{同构}于 $h$ 的像\Term{object}{对象}（或按上述用语滥用，\Term{isomorphism}{同构}于 $C$ 的\Term{object}{对象}），就称它为\Term{representable}{可表}\Term{presheaf}{预层}。
+
+\textbf{1.4.2。} 设\Term{universe}{宇宙} $\mathcal V$ 包含\Term{universe}{宇宙} $\mathcal U$。$\mathcal U$-\Term{presheaf}{预层}\Term{category}{范畴}是 $\mathcal V$-\Term{presheaf}{预层}\Term{category}{范畴}的\Term{full-subcategory}{全子范畴}，因而一个 $\mathcal U$-\Term{presheaf}{预层}\Term{representable}{可表}，当且仅当它在 $\mathcal V$-\Term{presheaf}{预层}\Term{category}{范畴}中的像是\Term{representable}{可表} $\mathcal V$-\Term{presheaf}{预层}。
+\SGAsection{2}{逆极限与归纳极限}
+设 $C$ 是 $\mathcal U$-\Term{category}{范畴}，$I$ 是\Term{small-category}{小范畴}。以 $\operatorname{Fonct}(I,C)$ 表示从 $I$ 到 $C$ 的\Term{functor}{函子}\Term{category}{范畴}。\Term{category}{范畴} $\operatorname{Fonct}(I,C)$ 是 $\mathcal U$-\Term{category}{范畴}。对 $C$ 的每个\Term{object}{对象} $X$，令 $\mathscr X$ 为 $C$ 的\Term{subcategory}{子范畴}，其唯一\Term{object}{对象}为 $X$，唯一\Term{arrow}{箭头}为 $X$ 的恒等\Term{arrow}{箭头}。以 $i_X:\mathscr X\to C$ 表示\Term{inclusion-functor}{包含函子}。存在唯一\Term{functor}{函子} $e_X:I\to\mathscr X$，并以 $k_X:I\to C$ 表示\Term{functor}{函子} $i_X\circ e_X$。（称 $k_X$ 为取值 $X$ 的\Term{constant-functor}{常值函子}。）\Term{correspondence}{对应} $X\mapsto k_X$ 显然关于 $X$ \Term{functoriality}{函子性}，因而对每个\Term{functor}{函子} $G:I\to C$，可以定义\Term{presheaf}{预层} $X\mapsto\operatorname{Hom}_{\operatorname{Fonct}(I,C)}(k_X,G)$。
+\begin{SGAresult}{定义}{2.1}
+\Term{presheaf}{预层}
+\[X\longmapsto\operatorname{Hom}_{\operatorname{Fonct}(I,C)}(k_X,G)\]
+称为 $G$ 的\Term{projective-limit}{逆极限}，记作 $\varprojlim_I G$。当\Term{presheaf}{预层} $\varprojlim_I G$ \Term{representable}{可表}时，也以 $\varprojlim_I G$ 表示 $C$ 中表它的一个\Term{object}{对象}。因此，\Term{object}{对象} $\varprojlim_I G$ 只定义到\Term{isomorphism}{同构}。在不会混淆时使用简写 $\varprojlim G$。
+\end{SGAresult}
+当 $G$ 变动时，$\varprojlim G$ 是从\Term{category}{范畴} $\operatorname{Fonct}(I,C)$ 到 $\widehat C$ 的\Term{functor}{函子}。
+
+\textbf{2.1.1。} 同样，利用对称性（将 $C$ 中\Term{arrow}{箭头}的方向反转）定义\Term{functor}{函子}的\Term{inductive-limit}{归纳极限}：它是 $C$ 上取值于 $\mathcal U$-\Term{set}{集合}\Term{category}{范畴}的\Term{covariant-functor}{协变函子}。我们使用记号 $\varinjlim_I G$ 或 $\varinjlim G$。
+
+注意，积、\Term{fibre-product}{纤维积}、核都是\Term{projective-limit}{逆极限}；同样，和、\Term{amalgamated-sum}{融合和}、\Term{cokernel}{余核}都是\Term{inductive-limit}{归纳极限}。
+\begin{SGAresult}{定义}{2.2}
+设 $I,C$ 是两个\Term{category}{范畴}，$G:I\to C$ 是\Term{functor}{函子}。若存在\Term{universe}{宇宙} $\mathcal U$ 使得
+\begin{enumerate}
+\item $I$ 是 $\mathcal U$-\Term{small-category}{小范畴}；
+\item $C$ 是 $\mathcal U$-\Term{category}{范畴}；
+\item 取值于 $\mathcal U$-\Term{set}{集合}\Term{category}{范畴}的\Term{presheaf}{预层} $\varprojlim G$ \Term{representable}{可表}，
+\end{enumerate}
+就称 $G$ 的\Term{projective-limit}{逆极限}\Term{representable}{可表}。
+\end{SGAresult}
+\SourcePage{13}
+由第 1 节可知，表\Term{presheaf}{预层} $\varprojlim G$ 的\Term{object}{对象} $\varprojlim G$ 在\Term{isomorphism}{同构}意义下不依赖于\Term{universe}{宇宙} $\mathcal U$。还应注意，存在满足性质 (1)、(2) 的最小\Term{universe}{宇宙} $\mathcal U'$，且\Term{presheaf}{预层} $\varprojlim G$ 必然取值于 $\mathcal U'$-\Term{set}{集合}\Term{category}{范畴}。
+
+\textbf{2.2.1。} 设 $I,C$ 是两个\Term{category}{范畴}。若对每个\Term{functor}{函子} $G:I\to C$，$G$ 的\Term{projective-limit}{逆极限}都\Term{representable}{可表}，就称 $C$ 中的 $I$-\Term{projective-limit}{逆极限}\Term{representable}{可表}。最后，设 $C$ 是\Term{category}{范畴}，$\mathcal U$ 是\Term{universe}{宇宙}。若对每个 $\mathcal U$-\Term{small-category}{小范畴} $I$ 和每个\Term{functor}{函子} $G:I\to C$，$G$ 的\Term{projective-limit}{逆极限}都\Term{representable}{可表}，就称 $C$ 中的 $\mathcal U$-\Term{projective-limit}{逆极限}\Term{representable}{可表}。
+\begin{SGAresult}{命题}{2.3}
+设 $C$ 是\Term{category}{范畴}，$\mathcal U$ 是\Term{universe}{宇宙}。下列断言\Term{equivalence}{等价}：
+
+ i) $C$ 中的 $\mathcal U$-\Term{projective-limit}{逆极限}\Term{representable}{可表}。
+
+ ii) 以\Term{small-set}{小集合}为指标的积\Term{representable}{可表}，且二重\Term{arrow}{箭头}的核\Term{representable}{可表}。
+
+ iii) 以\Term{small-set}{小集合}为指标的积\Term{representable}{可表}，且\Term{fibre-product}{纤维积}\Term{representable}{可表}。
+\end{SGAresult}
+\begin{proof}
+只需注意，存在关于 $G$ \Term{functoriality}{函子性}的\Term{isomorphism}{同构}
+\[\varprojlim G=\operatorname{Ker}\left(\prod_{i\in\operatorname{ob}(I)}G(i)\rightrightarrows\prod_{u\in\operatorname{Fl}(I)}G(\operatorname{but}(u))\right),\]
+其中二重\Term{arrow}{箭头}由以下\Term{morphism}{态射}定义：
+\[\prod_{i\in\operatorname{ob}(I)}G(i)\xrightarrow{\operatorname{pr}_{\operatorname{but}(u)}}G(\operatorname{but}(u)),\]
+\[\prod_{i\in\operatorname{Ob}(I)}G(i)\xrightarrow{\operatorname{pr}_{\operatorname{source}(u)}}G(\operatorname{source}(u))\xrightarrow{G(u)}G(\operatorname{but}(u)).\]
+此外，显然有
+\[\operatorname{Ker}\left(X\mathrel{\substack{\xrightarrow{u}\\[-.6ex]\xrightarrow[v]{}}}Y\right)=X\times_{X\times Y}X,\]
+其中从 $X$ 到 $X\times Y$ 的两个\Term{morphism}{态射}为 $\operatorname{id}_X\times u$ 和 $\operatorname{id}_X\times v$。
+\end{proof}
+\textbf{2.3.1。} 对\Term{inductive-limit}{归纳极限}显然也有类似的定义与断言，这里不再详述。\Term{finite}{有限}\Term{projective-limit}{逆极限}和\Term{finite}{有限}\Term{inductive-limit}{归纳极限}（即\Term{correspondence}{对应}于\Term{finite}{有限}\Term{category}{范畴} $I$ 的\Term{limit}{极限}）也一样。
+\begin{SGAresult}{推论}{2.3.2}
+以 $\mathcal U\text{-}\mathrm{Ens}$ 表示 $\mathcal U$-\Term{set}{集合}\Term{category}{范畴}，以 $\mathcal U\text{-}\mathrm{Ab}$ 表示 $\mathcal U\text{-}\mathrm{Ens}$ 中的\Term{abelian-group}{阿贝尔群}\Term{object}{对象}\Term{category}{范畴}。$\mathcal U\text{-}\mathrm{Ens}$ 和 $\mathcal U\text{-}\mathrm{Ab}$ 中的 $\mathcal U$-\Term{projective-limit}{逆极限}与 $\mathcal U$-\Term{inductive-limit}{归纳极限}均\Term{representable}{可表}。
+\end{SGAresult}
+\begin{SGAresult}{命题}{2.3.3}
+设 $I$ 是\Term{small-category}{小范畴}，$F:I\to\mathcal U\text{-}\mathrm{Ens}$ 是\Term{functor}{函子}，$G\in\operatorname{ob}I$ 是由 $I$ 的\Term{object}{对象}组成的\Term{small-set}{小集合}，并且对 $I$ 的每个\Term{object}{对象} $X$，都存在\Term{object}{对象}
+\SourcePage{14}
+$Y\in G$ 和\Term{morphism}{态射} $Y\to X$（分别为 $X\to Y$）。则 $\varprojlim_I F$（分别为 $\varinjlim_I F$）\Term{representable}{可表}，且
+\[\operatorname{card}(\varprojlim_I F)\leq\prod_{Y\in G}\operatorname{card}(F(Y))\]
+（分别为 $\operatorname{card}(\varinjlim_I F)\leq\sum_{Y\in G}\operatorname{card}(F(Y))$）。
+\end{SGAresult}
+\begin{proof}
+立即可验证，$\varprojlim_I F_0$（分别为 $\varinjlim_I F_0$）\Term{isomorphism}{同构}于 $\prod_{Y\in G}F(Y)$ 的\Term{subobject}{子对象}（分别为 $\coprod_{Y\in G}F(Y)$ 的商）；命题得证。
+\end{proof}
+\begin{SGAresult}{定义}{2.4.1}
+设 $C$ 是\Term{finite}{有限}\Term{projective-limit}{逆极限}（分别为\Term{finite}{有限}\Term{inductive-limit}{归纳极限}）\Term{representable}{可表}的\Term{category}{范畴}，$u:C\to C'$ 是\Term{functor}{函子}。若 $u$ 与\Term{finite}{有限}\Term{projective-limit}{逆极限}（分别为\Term{finite}{有限}\Term{inductive-limit}{归纳极限}）“交换”，就称它为\Term{left-exact}{左正合}（分别为\Term{right-exact}{右正合}）的。既\Term{left-exact}{左正合}又\Term{right-exact}{右正合}的\Term{functor}{函子}称为\Term{exact-functor}{正合函子}。
+\end{SGAresult}
+\textbf{2.4.2。} 由 2.3 可知，一个\Term{functor}{函子}\Term{exact-functor}{正合}，当且仅当它把\Term{final-object}{终对象}（$=$ 空积）变为\Term{final-object}{终对象}，把两个\Term{object}{对象}的积变为两个像\Term{object}{对象}的积，并把二重\Term{arrow}{箭头}的核变为像二重\Term{arrow}{箭头}的核；又当且仅当它把\Term{final-object}{终对象}变为\Term{final-object}{终对象}，把\Term{fibre-product}{纤维积}变为\Term{fibre-product}{纤维积}（这里假定 $C$ 中的\Term{finite}{有限}\Term{projective-limit}{逆极限}\Term{representable}{可表}）。
+
+\textbf{2.5.0。} 设 $I,J,C$ 是三个\Term{category}{范畴}，$G:I\times J\to C$ 是\Term{functor}{函子}（即从 $I$ 到从 $J$ 到 $C$ 的\Term{functor}{函子}\Term{category}{范畴}的\Term{functor}{函子}）。假设\Term{functor}{函子}
+\[\begin{aligned}G_i:J&\longrightarrow C&& i\in\operatorname{ob}(I),\\ j&\longmapsto G(i\times j)\end{aligned}\]
+的\Term{projective-limit}{逆极限}\Term{representable}{可表}，且\Term{functor}{函子}
+\[i\longmapsto\varprojlim G_i\]
+有\Term{representable}{可表}的\Term{projective-limit}{逆极限}。显然，\Term{functor}{函子} $G$ 也有\Term{representable}{可表}的\Term{projective-limit}{逆极限}，且有\Term{canonical}{典范}\Term{isomorphism}{同构}
+\[\varprojlim_{I\times J}G\xrightarrow{\sim}\varprojlim_I\varprojlim_J G_i,\]
+从而有\Term{canonical}{典范}\Term{isomorphism}{同构}
+\[\varprojlim_I\varprojlim_J G_i\xrightarrow{\sim}\varprojlim_J\varprojlim_I G_j.\]
+以后我们将简略地说，\Term{projective-limit}{逆极限}与\Term{projective-limit}{逆极限}交换。同样可见，\Term{inductive-limit}{归纳极限}与\Term{inductive-limit}{归纳极限}交换。但一般而言，\Term{inductive-limit}{归纳极限}并不与\Term{projective-limit}{逆极限}交换。
+\begin{SGAresult}{定义}{2.5}
+设 $C$ 是\Term{fibre-product}{纤维积}\Term{representable}{可表}的\Term{category}{范畴}，$I$ 是\Term{category}{范畴}，$G:I\to C$ 是\Term{functor}{函子}，$g:G\to X$ 是从 $G$ 到 $C$ 的\Term{object}{对象}的\Term{morphism}{态射}（即从 $G$ 到与 $X$ \Term{correspondence}{对应}的\Term{constant-functor}{常值函子}的\Term{morphism}{态射}），$m:Y\to X$ 是 $C$ 中的\Term{morphism}{态射}。以 $G\times_XY:I\to C$ 表示\Term{functor}{函子}
+\SourcePage{15}
+\[i\longmapsto G(i)\times_XY.\]
+若对任意\Term{object}{对象} $X$、任意\Term{morphism}{态射} $g:G\to X$ 以及任意\Term{morphism}{态射} $m:Y\to X$，均有
+
+ a) \Term{functor}{函子} $G\times_XY$ 的\Term{inductive-limit}{归纳极限}\Term{representable}{可表}；
+
+ b) \Term{canonical}{典范}\Term{morphism}{态射} $\varinjlim(G\times_XY)\to(\varinjlim G)\times_XY$ 是\Term{isomorphism}{同构}，
+
+就称 $G$ 的\Term{inductive-limit}{归纳极限}是\Term{universal}{普遍}的。
+\end{SGAresult}
+\begin{SGAresult}{命题}{2.6}
+设 $\mathcal U$ 是\Term{universe}{宇宙}。$\mathcal U\text{-}\mathrm{Ens}$ 中\Term{representable}{可表}的\Term{inductive-limit}{归纳极限}（特别是 $\mathcal U\text{-}\mathrm{Ens}$ 中的 $\mathcal U$-\Term{inductive-limit}{归纳极限}（2.2.1））都是\Term{universal}{普遍}的。
+\end{SGAresult}
+我们还要使用另一个关于\Term{projective-limit}{逆极限}与\Term{inductive-limit}{归纳极限}交换的结果，现在介绍如下。
+\begin{SGAresult}{定义}{2.7}
+若\Term{category}{范畴} $I$ 具有以下性质，就称它为\Term{pseudo-filtered-category}{伪滤过}的：
+
+\textbf{PS 1)} 任意形如
+\[\begin{tikzcd}&j\\i\arrow[ur]\arrow[dr]&\\&j'\end{tikzcd}\]
+的图都能\Term{embedding}{嵌入}一个\Term{commutative-diagram}{交换图}
+\[\begin{tikzcd}&j\arrow[dr]&\\ i\arrow[ur]\arrow[dr]&&k\\&j'\arrow[ur]&\end{tikzcd}\]
+之中。
+
+\textbf{PS 2)} 任意形如
+\[\begin{tikzcd}i\arrow[r,shift left,"u"]\arrow[r,shift right,"v"']&j\end{tikzcd}\]
+的图都能\Term{embedding}{嵌入}一个图
+\[\begin{tikzcd}i\arrow[r,shift left,"u"]\arrow[r,shift right,"v"']&j\arrow[r,"w"]&k\end{tikzcd}\]
+之中，使
+\[w\circ u=w\circ v.\]
+\end{SGAresult}
+\SourcePage{16}
+若\Term{category}{范畴} $I$ \Term{pseudo-filtered-category}{伪滤过}、\Term{nonempty}{非空}且\Term{connected}{连通}，即 $I$ 中任意两个\Term{object}{对象}都可由一串\Term{arrow}{箭头}连接起来（对\Term{arrow}{箭头}方向不作任何要求），就称 $I$ 为\Term{filtered-category}{滤过}的；在 PS 2 成立的前提下，这也就是说，$I\ne\varnothing$，且对 $I$ 中任意两个\Term{object}{对象} $a,b$，总存在 $I$ 中的\Term{object}{对象} $c$ 以及\Term{arrow}{箭头} $a\to c$ 和 $b\to c$。若 $I^\circ$ 是\Term{filtered-category}{滤过}的，也称\Term{category}{范畴} $I$ 为\Term{cofiltered-category}{余滤过}的。
+
+\textbf{例 2.7.1。} 若 $I$ 中的\Term{amalgamated-sum}{融合和}（分别为两个\Term{object}{对象}的和）以及二重\Term{arrow}{箭头}的\Term{cokernel}{余核}\Term{representable}{可表}，则 $I$ 是\Term{pseudo-filtered-category}{伪滤过}的（分别为\Term{filtered-category}{滤过}的）。
+\begin{SGAresult}{命题}{2.8}
+设 $\mathcal U$ 是\Term{universe}{宇宙}。$\mathcal U\text{-}\mathrm{Ens}$ 中的\Term{filtered-category}{滤过} $\mathcal U$-\Term{inductive-limit}{归纳极限}与\Term{finite}{有限}\Term{projective-limit}{逆极限}交换。
+\end{SGAresult}
+立即可归结为证明：\Term{filtered-category}{滤过} $\mathcal U$-\Term{limit}{极限}与\Term{fibre-product}{纤维积}交换。证明留给读者。可以使用以下引理给出的\Term{limit}{极限}描述。
+\begin{SGAresult}{引理}{2.8.1}
+设 $I$ 是小\Term{filtered-category}{滤过}\Term{category}{范畴}，$i\mapsto X_i$ 是从 $I$ 到 $\mathcal U\text{-}\mathrm{Ens}$ 的\Term{functor}{函子}。在和\Term{set}{集合} $\coprod_{i\in\operatorname{ob}I}X_i$ 上，令 $R$ 为如下关系：
+
+\textbf{(R)} 两个元素 $x_i\in X_i$、$x_j\in X_j$ 相关联，若存在\Term{object}{对象} $k\in\operatorname{ob}I$ 及两个\Term{morphism}{态射} $u:i\to k$、$v:j\to k$，使 $x_i,x_j$ 分别经\Term{transition-map}{转移映射} $u,v$ 所得的像在 $X_k$ 中相等。
+
+则：
+\begin{enumerate}
+\item $R$ 是\Term{equivalence-relation}{等价关系}。
+\item 商 $\bigl(\coprod_{i\in\operatorname{ob}I}X_i\bigr)/R$ \Term{canonical}{典范}\Term{isomorphism}{同构}于 $\varinjlim_I X_i$。
+\item 两个元素 $x_i\in X_i$、$x_j\in X_j$ 分别按 $R$ \Term{equivalence}{等价}于同一个 $X_k$ 中的两个元素。
+\item 对每个 $i\in\operatorname{ob}I$，$X_i$ 中的两个元素 $\alpha,\beta$ 按 $R$ \Term{equivalence}{等价}，当且仅当存在\Term{morphism}{态射} $u:i\to j$ 使 $u(\alpha)=u(\beta)$。
+\end{enumerate}
+\end{SGAresult}
+断言 1) 由 (PS 1)（2.7）推出。为证明 2)，验证 $\bigl(\coprod_{i\in\operatorname{ob}I}X_i\bigr)/R$ 具有\Term{inductive-limit}{归纳极限}的\Term{universal-property}{普遍性质}即可（只用到 (PS 1)）。断言 3) 由 $I$ \Term{connected}{连通}推出。断言 4) 由 (PS 2) 推出。
+\begin{SGAresult}{推论}{2.9}
+设 $\gamma$ 是一种“由\Term{finite}{有限}\Term{projective-limit}{逆极限}定义”的\Term{algebraic-structure}{代数结构}。（请读者赋予上一句话以数学意义。这里仅指出，群、\Term{abelian-group}{阿贝尔群}、环、模等结构都属于这种结构。）以 $\mathcal U\text{-}\gamma$ 表示 $\mathcal U\text{-}\mathrm{Ens}$ 中的 $\gamma$-\Term{object}{对象}\Term{category}{范畴}。把 $\mathcal U\text{-}\gamma$ 的每个\Term{object}{对象}送到其\Term{underlying-set}{底集}的\Term{functor}{函子}与\Term{filtered-category}{滤过} $\mathcal U$-\Term{limit}{极限}交换。因此，$\mathcal U\text{-}\gamma$ 中的\Term{filtered-category}{滤过} $\mathcal U$-\Term{limit}{极限}与\Term{finite}{有限}\Term{projective-limit}{逆极限}交换。
+\end{SGAresult}
+\begin{SGAresult}{推论}{2.10}
+$\mathcal U\text{-}\mathrm{Ab}$ 中的\Term{pseudo-filtered-category}{伪滤过} $\mathcal U$-\Term{limit}{极限}与\Term{finite}{有限}\Term{projective-limit}{逆极限}交换。
+\end{SGAresult}
+\SourcePage{17}
+（把指标\Term{category}{范畴}\Term{resolution}{分解}为\Term{connected-component}{连通分支}，即可归结为\Term{filtered-category}{滤过}\Term{limit}{极限}。）
+
+现在记下一个我们将不断使用的结果：设 $C,C'$ 是两个 $\mathcal U$-\Term{category}{范畴}，$u,v$ 是两个\Term{functor}{函子}
+\[\begin{tikzcd}C\arrow[r,shift right,"u"']&C'\arrow[l,shift right,"v"']\end{tikzcd},\]
+其中 $u$ 是 $v$ 的\Term{left-adjoint}{左伴随}。回顾一下，这意味着存在取值于 $\mathcal U\text{-}\mathrm{Ens}$ 的\Term{bifunctor}{双函子}之间的\Term{isomorphism}{同构}
+\[\operatorname{Hom}_{C'}(u(X),X')\xrightarrow{\sim}\operatorname{Hom}_C(X,v(X')).\]
+\begin{SGAresult}{命题}{2.11}
+\Term{functor}{函子} $u$ 与\Term{representable}{可表}\Term{inductive-limit}{归纳极限}交换；\Term{functor}{函子} $v$ 与\Term{representable}{可表}\Term{projective-limit}{逆极限}交换。
+\end{SGAresult}
+这个断言是说，对任意\Term{category}{范畴} $I$ 及\Term{projective-limit}{逆极限}\Term{representable}{可表}的任意\Term{functor}{函子} $G:I\to C'$，\Term{functor}{函子} $v\circ G$ 都有\Term{representable}{可表}\Term{projective-limit}{逆极限}，并且有\Term{canonical}{典范}\Term{isomorphism}{同构}
+\[v(\varprojlim G)\longrightarrow\varprojlim(v\circ G).\]
+关于\Term{functor}{函子} $u$ 的断言，请读者自行明确写出。
+
+最后，指出在指标\Term{category}{范畴}有积时\Term{projective-limit}{逆极限}的一个计算方法。
+\begin{SGAresult}{命题}{2.12}
+设 $I,C$ 是两个\Term{category}{范畴}，$\mathcal V$ 是\Term{universe}{宇宙}。假设 $C$ 中的 $\mathcal V$-\Term{projective-limit}{逆极限}\Term{representable}{可表}，并且在 $I$ 中存在\Term{object}{对象}族 $(i_\alpha)_{\alpha\in A}$，其中 $A$ 是 $\mathcal V$ 的元素，使得：
+\begin{enumerate}
+\item 对每对 $(\alpha,\beta)\in A\times A$，积 $i_\alpha\times i_\beta$ \Term{representable}{可表}；
+\item $I$ 的每个\Term{object}{对象}至少有一个到某个 $i_\alpha$ 的\Term{morphism}{态射}。
+\end{enumerate}
+则对任意从 $I$ 到 $C$ 的\Term{contravariant-functor}{反变函子}
+\[F:I^\circ\longrightarrow C,\]
+$F$ 的\Term{projective-limit}{逆极限}存在，且存在关于 $F$ \Term{functoriality}{函子性}的\Term{isomorphism}{同构}
+\[\varprojlim F\xrightarrow{\sim}\operatorname{Ker}\left(\prod_{\alpha\in A}F(i_\alpha)\rightrightarrows\prod_{(\alpha,\beta)\in A\times A}F(i_\alpha\times i_\beta)\right),\]
+其中两个\Term{arrow}{箭头}由积 $i_\alpha\times i_\beta$ 到各因子的\Term{projection}{投影}定义。
+\end{SGAresult}
+\SGAsection{3}{预层范畴的正合性质}
+设 $C$ 是 $\mathcal U$-\Term{category}{范畴}，$\widehat C$ 是 $C$ 上的\Term{presheaf}{预层}\Term{category}{范畴}。$\widehat C$ 的\Term{exactness}{正合性质}全都由以下命题推出：
+\begin{SGAresult}{命题}{3.1}
+$\widehat C$ 中的 $\mathcal U$-\Term{projective-limit}{逆极限}和 $\mathcal U$-\Term{inductive-limit}{归纳极限}\Term{representable}{可表}。对 $C$ 的每个\Term{object}{对象} $X$，$\widehat C$ 上的\Term{functor}{函子}
+\[F\longmapsto F(X),\qquad F\in\widehat C,\]
+\SourcePage{18}
+与\Term{inductive-limit}{归纳极限}和\Term{projective-limit}{逆极限}交换。
+\end{SGAresult}
+换言之，“$\widehat C$ 中的\Term{inductive-limit}{归纳极限}与\Term{projective-limit}{逆极限}逐个自变量计算”。举出几个推论。
+\begin{SGAresult}{推论}{3.2}
+设 $\gamma$ 是由\Term{finite}{有限}\Term{projective-limit}{逆极限}定义的\Term{algebraic-structure}{代数结构}。取值于 $\mathcal U\text{-}\gamma$ 的\Term{contravariant-functor}{反变函子}\Term{equivalence-of-categories}{范畴等价}于 $\widehat C$ 中的 $\gamma$-\Term{object}{对象}\Term{category}{范畴}。
+\end{SGAresult}
+\begin{SGAresult}{推论}{3.3}
+$\widehat C$ 中既是\Term{monomorphism}{单态射}又是\Term{epimorphism}{满态射}的\Term{morphism}{态射}是\Term{isomorphism}{同构}。$\widehat C$ 中的每个\Term{morphism}{态射}唯一地\Term{resolution}{分解}为一个\Term{epimorphism}{满态射}后接一个\Term{monomorphism}{单态射}。$\widehat C$ 中\Term{representable}{可表}的\Term{inductive-limit}{归纳极限}都是\Term{universal}{普遍}的。$\widehat C$ 中的\Term{filtered-category}{滤过} $\mathcal U$-\Term{inductive-limit}{归纳极限}与\Term{finite}{有限}\Term{projective-limit}{逆极限}交换。\Term{canonical}{典范}\Term{functor}{函子} $C\to\widehat C$ 与\Term{representable}{可表}\Term{projective-limit}{逆极限}交换。
+\end{SGAresult}
+更一般地可以说，\Term{category}{范畴} $\widehat C$ 继承了 $\mathcal U$-\Term{set}{集合}\Term{category}{范畴}中涉及\Term{inductive-limit}{归纳极限}与\Term{projective-limit}{逆极限}的全部性质。
+
+\textbf{3.4.0。} 设 $F$ 是 $\widehat C$ 的\Term{object}{对象}。以 $C/F$ 表示如下\Term{category}{范畴}：$C/F$ 的\Term{object}{对象}是由 $C$ 的\Term{object}{对象} $X$ 和从 $X$ 到 $F$ 的\Term{morphism}{态射} $u$ 组成的偶对。设 $(X,u)$ 和 $(Y,v)$ 是两个\Term{object}{对象}。从 $(X,u)$ 到 $(Y,v)$ 的\Term{morphism}{态射}是从 $X$ 到 $Y$ 的\Term{morphism}{态射} $g$，满足下图交换：
+\[\begin{tikzcd}X\arrow[rr,"g"]\arrow[dr,"u"']&&Y\arrow[dl,"v"]\\&F&\end{tikzcd}.\]
+\begin{SGAresult}{命题}{3.4}
+沿用（3.4.0）的记号，\Term{source-functor}{源函子} $C/F\to\widehat C$ 在 $\widehat C$ 中有\Term{representable}{可表}的\Term{inductive-limit}{归纳极限}。\Term{canonical}{典范}\Term{morphism}{态射}
+\[\varinjlim_{C/F}\operatorname{source}(\,\cdot\,)\longrightarrow F\]
+是\Term{isomorphism}{同构}。
+\end{SGAresult}
+\begin{SGAresult}{推论}{3.5}
+设 $F,H$ 是 $\widehat C$ 的两个\Term{object}{对象}。存在\Term{canonical}{典范}\Term{isomorphism}{同构}
+\[\operatorname{Hom}(F,H)\xrightarrow{\sim}\varprojlim_{(X,u)\in\operatorname{ob}(C/F)}H(X).\]
+\end{SGAresult}
+\begin{proof}这个推论立即由 3.4 和 1.2 推出。\end{proof}
+\begin{SGAresult}{命题}{3.6}
+设 $C$ 是 $\mathcal U$-\Term{category}{范畴}，$\mathcal V$ 是包含 $\mathcal U$ 的\Term{universe}{宇宙}，$i:\widehat C_{\mathcal U}\to\widehat C_{\mathcal V}$ 是相应\Term{presheaf}{预层}\Term{category}{范畴}的自然\Term{inclusion-functor}{嵌入函子}（1.3）。\Term{functor}{函子} $i$ 与\Term{inductive-limit}{归纳极限}和\Term{projective-limit}{逆极限}交换。此外，对 $\widehat C_{\mathcal U}$ 的每个\Term{object}{对象} $F$，$i(F)$ 的每个\Term{subobject}{子对象}都\Term{isomorphism}{同构}于 $F$ 的唯一一个\Term{subobject}{子对象}经 $i$ 所得的像
+\SourcePage{19}
+（因而得到 $F$ 的\Term{subobject}{子对象}\Term{set}{集合}与 $i(F)$ 的\Term{subobject}{子对象}\Term{set}{集合}之间的\Term{bijection}{双射}）。
+\end{SGAresult}
+\SGAsection{4}{筛}
+\begin{SGAresult}{定义}{4.1}
+\Term{category}{范畴} $C$ 的\Term{sieve}{筛}是 $C$ 的\Term{full-subcategory}{全子范畴} $D$，且具有以下性质：若 $C$ 的一个\Term{object}{对象}存在到 $D$ 中某个\Term{object}{对象}的\Term{morphism}{态射}，则该\Term{object}{对象}在 $D$ 中。设 $X$ 是 $C$ 的\Term{object}{对象}；\Term{category}{范畴} $C/X$ 的\Term{sieve}{筛}也称为 $X$ 的\Term{sieve}{筛}（这是一种用语滥用）。
+\end{SGAresult}
+设 $\mathcal U$ 是使 $C$ 成为 $\mathcal U$-\Term{category}{范畴}的\Term{universe}{宇宙}，$\widehat C$ 是相应的\Term{presheaf}{预层}\Term{category}{范畴}。按如下方式，把 $X$ 的每个\Term{sieve}{筛}\Term{correspondence}{对应}于 $\widehat C$ 中 $X$ 的一个\Term{subobject}{子对象}：对 $C$ 的每个\Term{object}{对象} $Y$，取所有满足\Term{object}{对象} $(Y,f)$ 属于该\Term{sieve}{筛}的\Term{morphism}{态射} $f:Y\to X$ 所成的\Term{set}{集合}。
+\begin{SGAresult}{命题}{4.2}
+上述映射给出 $X$ 的\Term{sieve}{筛}的\Term{set}{集合}与 $\widehat C$ 中 $X$ 的\Term{subobject}{子对象}\Term{set}{集合}之间的\Term{bijection}{双射}。
+\end{SGAresult}
+\begin{proof}
+这里只说明它有逆映射。对 $X$ 的每个\Term{subfunctor}{子函子} $R$，取在 $R$ 之上的 $C$ 的\Term{object}{对象}所成的\Term{category}{范畴} $C/R$（3.4）。立即可验证，$C/R$ 是 $X$ 的\Term{sieve}{筛}。
+\end{proof}
+\textbf{注记 4.2.1。} 同样可见，$C$ 的\Term{sieve}{筛}与 $C$ 上“\Term{final-functor}{终函子}”（$\widehat C$ 的“终”\Term{object}{对象}）的\Term{subfunctor}{子函子}\Term{set}{集合}之间有\Term{canonical}{典范}的一一\Term{correspondence}{对应}。
+
+\textbf{4.3。} 设 $C$ 是 $\mathcal U$-\Term{category}{范畴}。滥用语言，也把\Term{category}{范畴} $\widehat C$ 中 $X$ 的\Term{subobject}{子对象}称为 $X$ 的\Term{sieve}{筛}。借助这个用语滥用，对每个\Term{presheaf}{预层} $F$ 和 $X$ 的每个\Term{sieve}{筛} $R$，可以把 $\operatorname{Hom}_{\widehat C}(R,F)$ 定义为从\Term{functor}{函子} $R$ 到 $F$ 的\Term{morphism}{态射}\Term{set}{集合}。此外，还有关于 $F$ \Term{functoriality}{函子性}的\Term{canonical}{典范}\Term{isomorphism}{同构}（3.5）
+\[\operatorname{Hom}_{\widehat C}(R,F)\xrightarrow{\sim}\varprojlim_{C/R}F(\,\cdot\,),\]
+因而也能直接给出其定义\footnote[3]{编者注：更简单地，$C/R$ 与 $R$ 等同，因而有公式 $\operatorname{Hom}_{\widehat C}(R,F)\xrightarrow{\sim}\varprojlim_R F$，其中滥用记号，$F$ 表示 $F$ 与重言的“源”\Term{functor}{函子} $R\to C/X\to C$ 的复合。}。同样，命题 4.2 使我们可以把\Term{functor}{函子}上的通常运算搬到\Term{sieve}{筛}上。列举如下。
+
+\textbf{4.3.1。\Term{base-change}{基变换}。} 设 $R$ 是 $X$ 的\Term{sieve}{筛}，$f:Y\to X$ 是 $C$ 的\Term{object}{对象}之间的\Term{morphism}{态射}。\Term{fibre-product}{纤维积} $R\times_XY$ 是 $Y$ 的\Term{sieve}{筛}，称为由 $R$ 经\Term{base-change}{基变换}得到的\Term{sieve}{筛}。它\Term{correspondence}{对应}的 $C/Y$ 的\Term{subcategory}{子范畴}，是由 $R$ 定义的 $C/X$ 的\Term{subcategory}{子范畴}在由 $f$ 定义的\Term{canonical}{典范}\Term{functor}{函子} $C/Y\to C/X$ 下的\Term{inverse-image}{逆像}。
+\SourcePage{20}
+\textbf{4.3.2。\Term{order-relation}{序关系}、交、并。} $X$ 的\Term{subfunctor}{子函子}上的包含关系是一种\Term{order-relation}{序关系}。以任意\Term{set}{集合}为指标的一族\Term{sieve}{筛}的并与交，可以分别定义为相应的\Term{subpresheaf}{子预层}族的\Term{supremum}{上确界}与\Term{infimum}{下确界}。
+
+\textbf{4.3.3。像；生成的筛。} 设 $(F_\alpha)_{\alpha\in A}$ 是一族\Term{presheaf}{预层}，对每个 $\alpha\in A$ 给定\Term{morphism}{态射} $f_\alpha:F_\alpha\to X$，其中 $X$ 是 $C$ 的\Term{object}{对象}。这个\Term{morphism}{态射}族的像定义为各个 $f_\alpha$ 的像的并。因而这个族的像是 $X$ 的\Term{sieve}{筛}。特别地，若所有 $F_\alpha$ 都是 $C$ 的\Term{object}{对象}，就把像\Term{sieve}{筛}称为由\Term{morphism}{态射} $f_\alpha$ 生成的\Term{sieve}{筛}。\Term{category}{范畴} $C/R$ 是 $C/X$ 的\Term{full-subcategory}{全子范畴}，由那些在 $X$ 之上的\Term{object}{对象} $X'\to X$ 组成，要求存在从 $X'$ 到某个 $F_\alpha$ 的 $X$-\Term{morphism}{态射}。
+
+读者可以练习用\Term{category}{范畴} $C/R$ 的语言来表述这里在\Term{subfunctor}{子函子}上定义的关系与运算。这样就会看到，这些关系与运算不依赖于使 $C$ 成为 $\mathcal U$-\Term{category}{范畴}的\Term{universe}{宇宙} $\mathcal U$，因此对任意\Term{category}{范畴}都能定义，而不必指明\Term{morphism}{态射}\Term{set}{集合}属于哪个\Term{universe}{宇宙}；其实，借助 3.6，先验地也可以预料到这一点。
+\SGAsection{5}{预层范畴的函子性}
+\textbf{5.0。} 设 $C,C',D$ 是三个\Term{category}{范畴}，$u:C\to C'$ 是\Term{functor}{函子}。以 $u^*$ 表示通过与\Term{functor}{函子} $u$ 复合而得到的\Term{functor}{函子}
+\[\begin{aligned}u^*:\mathcal H om(C'^\circ,D)&\longrightarrow\mathcal H om(C^\circ,D),\\G&\longmapsto G\circ u.\end{aligned}\]
+\Term{functor}{函子} $u^*$ 与\Term{inductive-limit}{归纳极限}和\Term{projective-limit}{逆极限}交换。
+\begin{SGAresult}{命题}{5.1}
+假设 $C$ 是\Term{small-category}{小范畴}，且 $D$ 中的 $\mathcal U$-\Term{inductive-limit}{归纳极限}（分别为 $\mathcal U$-\Term{projective-limit}{逆极限}）\Term{representable}{可表}。\Term{functor}{函子} $u^*$ 有\Term{left-adjoint}{左伴随} $u_!$（分别有\Term{right-adjoint}{右伴随} $u_*$）。因而有\Term{isomorphism}{同构}
+\[\operatorname{Hom}_{\mathcal H om(C^\circ,D)}(F,u^*G)\xrightarrow{\sim}\operatorname{Hom}_{\mathcal H om(C'^\circ,D)}(u_!F,G)\]
+（分别为 $\operatorname{Hom}_{\mathcal H om(C^\circ,D)}(u^*G,F)\simeq\operatorname{Hom}_{\mathcal H om(C'^\circ,D)}(G,u_*F)$）。
+\end{SGAresult}
+\begin{proof}
+我们只给出\Term{left-adjoint}{左伴随}\Term{functor}{函子}存在性的证明。命题中“分别”的部分可以借助\Term{isomorphism}{同构}
+\[\mathcal H om(C^\circ,D)\xrightarrow{\sim}\mathcal H om(C,D^\circ)^\circ\xrightarrow{\sim}\mathcal H om((C^\circ)^\circ,D^\circ)^\circ\]
+形式地推出。
+
+设 $Y$ 是 $C'$ 的\Term{object}{对象}。以 $I_u^Y$ 表示如下\Term{category}{范畴}：$I_u^Y$ 的\Term{object}{对象}为偶对 $(X,m)$，其中 $X$ 是 $C$ 的\Term{object}{对象}，$m$ 是\Term{morphism}{态射} $Y\to u(X)$。设 $(X,m)$、$(X',m')$ 是 $I_u^Y$ 的两个\Term{object}{对象}。从 $(X,m)$ 到 $(X',m')$ 的\Term{morphism}{态射}是
+\SourcePage{21}
+满足 $m'=u(\xi)m$ 的\Term{morphism}{态射} $\xi:X\to X'$。\Term{morphism}{态射}复合按显然的方式定义。
+
+设 $f:Y\to Y'$ 是 $C'$ 的\Term{morphism}{态射}。通过复合，\Term{morphism}{态射} $f$ 定义\Term{functor}{函子} $I_u^f:I_u^Y\to I_u^{Y'}$。
+
+此外，还有\Term{functor}{函子} $\operatorname{pr}_Y:I_u^Y\to C$，将\Term{object}{对象} $(X,m)$ 送到\Term{object}{对象} $X$。注意此时图
+\[\begin{tikzcd}I_u^Y\arrow[rr,"I_u^f"]\arrow[dr,"\operatorname{pr}_Y"']&&I_u^{Y'}\arrow[dl,"\operatorname{pr}_{Y'}"]\\&C&\end{tikzcd}\tag{*}\]
+交换。
+
+现在设 $F$ 是 $C$ 上的\Term{presheaf}{预层}，令
+\[u_!F(Y)=\varinjlim_{(I_u^Y)^\circ}F\circ\operatorname{pr}_Y(\,\cdot\,).\tag{5.1.1}\]
+图 $(*)$ 的交换性以及\Term{inductive-limit}{归纳极限}的\Term{functoriality}{函子性}，使 $u_!F$ 成为 $C'$ 上的\Term{presheaf}{预层}。证明\Term{functor}{函子} $u_!$ 是\Term{functor}{函子} $u^*$ 的\Term{left-adjoint}{左伴随}。为此，证明对 $C'$ 上的每个\Term{presheaf}{预层} $G$，存在\Term{functoriality}{函子性}\Term{isomorphism}{同构}
+\[\operatorname{Hom}(u_!F,G)\xrightarrow{\sim}\operatorname{Hom}(F,u^*G).\]
+设 $\xi\in\operatorname{Hom}(u_!F,G)$。于是对 $C$ 的每个\Term{object}{对象} $X$ 都有\Term{morphism}{态射}
+\[\xi_X:u_!(u(X))\longrightarrow G(u(X)).\]
+但 $(u(X),\operatorname{id}_{u(X)})$ 是 $I_u^{u(X)}$ 的\Term{object}{对象}，而且由\Term{inductive-limit}{归纳极限}的定义，有\Term{canonical}{典范}\Term{morphism}{态射}
+\[F(X)\longrightarrow u_!F(u(X)).\]
+由此对 $C$ 的每个\Term{object}{对象} $X$ 得到\Term{morphism}{态射}
+\[\eta_X:F(X)\longrightarrow G(u(X)),\]
+它显然关于 $X$ \Term{functoriality}{函子性}。因此得到\Term{morphism}{态射}
+\[\eta:F\longrightarrow u^*G.\]
+反过来，设 $\eta\in\operatorname{Hom}(F,u^*G)$。对 $C$ 的每个\Term{object}{对象} $Y$，由此得到\Term{functor}{函子}\Term{morphism}{态射}
+\[\eta_Y:F\circ\operatorname{pr}_Y\longrightarrow(u^*G)\operatorname{pr}_Y,\]
+再与从\Term{functor}{函子} $(u^*G)\operatorname{pr}_Y$ 到\Term{constant-functor}{常值函子} $G(Y)$ 的显然\Term{morphism}{态射}复合，得到\Term{morphism}{态射}
+\[\xi_Y:u_!F(Y)\longrightarrow G(Y),\]
+\SourcePage{22}
+它关于 $Y$ \Term{functoriality}{函子性}。因此得到\Term{morphism}{态射}
+\[\xi:u_!F\longrightarrow G.\]
+读者可验证这样定义的两个映射互为逆映射，从而完成证明。
+\end{proof}
+\begin{SGAresult}{命题}{5.2}
+假设 $D$ 中的 $\mathcal U$-\Term{inductive-limit}{归纳极限}\Term{representable}{可表}，\Term{finite}{有限}\Term{projective-limit}{逆极限}\Term{representable}{可表}，并且\Term{filtered-category}{滤过} $\mathcal U$-\Term{inductive-limit}{归纳极限}与\Term{finite}{有限}\Term{projective-limit}{逆极限}交换。再假设 $C$ 中的\Term{finite}{有限}\Term{projective-limit}{逆极限}\Term{representable}{可表}，\Term{functor}{函子} $u$ \Term{left-exact}{左正合}（2.3.2）。则 $\mathcal H om(C^\circ,D)$ 和 $\mathcal H om(C'^\circ,D)$ 中的\Term{finite}{有限}\Term{projective-limit}{逆极限}\Term{representable}{可表}，且\Term{functor}{函子} $u_!$ \Term{left-exact}{左正合}。
+\end{SGAresult}
+\begin{proof}
+第一个断言是显然的。证明第二个。根据 5.1 的证明，对 $C$ 上的每个\Term{presheaf}{预层} $F$ 和 $C'$ 的每个\Term{object}{对象} $Y$，都有
+\[u_!F(Y)\xrightarrow{\sim}\varinjlim_{(I_u^Y)^\circ}F\circ\operatorname{pr}_Y.\]
+因此，只需证明\Term{category}{范畴} $(I_u^Y)^\circ$ 满足公理 (PS 1)、(PS 2)（2.7），并且这个\Term{category}{范畴}\Term{connected}{连通}。验证留给读者。
+\end{proof}
+\textbf{5.3。} 将这些结果用于 $D$ 为 $\mathcal U$-\Term{set}{集合}\Term{category}{范畴}的情形，就得到三个\Term{functor}{函子}的序列
+\[u_!,u^*,u_*,\]
+它是一个“\Term{adjoint-functor}{伴随函子}序列”，意思是序列中每两个相邻\Term{functor}{函子}，右边的是左边的\Term{right-adjoint}{右伴随}。它们的主要性质归纳为以下命题。
+\begin{SGAresult}{命题}{5.4}
+设 $C$ 是\Term{small-category}{小范畴}，$C'$ 是 $\mathcal U$-\Term{category}{范畴}，$u:C\to C'$ 是\Term{functor}{函子}。
+\begin{enumerate}
+\item \Term{functor}{函子} $u^*:\widehat{C'}\to\widehat C$ 与\Term{inductive-limit}{归纳极限}和\Term{projective-limit}{逆极限}交换。
+\item \Term{functor}{函子} $u_*:\widehat C\to\widehat{C'}$ 与\Term{projective-limit}{逆极限}交换。对 $C$ 上的每个\Term{presheaf}{预层} $F$ 及 $C'$ 的每个\Term{object}{对象} $Y$，都有
+\[u_*F(Y)\xrightarrow{\sim}\operatorname{Hom}_{\widehat C}(u^*(Y),F).\]
+\item \Term{functor}{函子} $u_!:\widehat C\to\widehat{C'}$ 与\Term{inductive-limit}{归纳极限}交换。\Term{functor}{函子} $u_!$ 只定义到\Term{isomorphism}{同构}，但总可以选取它，使图
+\[\begin{tikzcd}C\arrow[r,"u"]\arrow[d,"h"']&C'\arrow[d,"h'"]\\\widehat C\arrow[r,"u_!"']&\widehat{C'}\end{tikzcd}\]
+\SourcePage{23}
+交换（$h,h'$ 是\Term{canonical}{典范}\Term{inclusion-functor}{嵌入函子}）。
+
+对 $C$ 上的每个\Term{presheaf}{预层} $F$，都有
+\[u_!F\xrightarrow{\sim}\varinjlim_{C/F}h'\circ u.\]
+\item 若 $C$ 中的\Term{finite}{有限}\Term{projective-limit}{逆极限}\Term{representable}{可表}，且 $u$ \Term{left-exact}{左正合}（2.3.2），则\Term{functor}{函子} $u_!$ \Term{left-exact}{左正合}。
+\end{enumerate}
+\end{SGAresult}
+\begin{proof}
+断言 (1) 显然。断言 (2) 由 $u_*$ 是\Term{right-adjoint}{右伴随}\Term{functor}{函子}这一事实，借助（2.11）和（1.4）推出。断言 (3) 同样如此，但还要用（3.4）。最后，断言 (4) 就是（5.2）；借助（2.7），可以应用该命题。
+\end{proof}
+\begin{SGAresult}{命题}{5.5}
+设 $C,C'$ 是两个\Term{small-category}{小范畴}，并有一对\Term{functor}{函子}
+\[\begin{tikzcd}C\arrow[r,shift right,"u"']&C'\arrow[l,shift right,"v"']\end{tikzcd},\]
+其中 $v$ 是 $u$ 的\Term{left-adjoint}{左伴随}。则存在与\Term{adjunction-isomorphism}{伴随同构}相容的\Term{isomorphism}{同构}
+\[v^*\xrightarrow{\sim}u_!,\qquad v_*\xrightarrow{\sim}u^*.\]
+\end{SGAresult}
+\begin{proof}
+只需给出\Term{isomorphism}{同构} $v^*\xrightarrow{\sim}u_!$；另一个\Term{isomorphism}{同构}由\Term{adjunction}{伴随}得到。设 $F$ 是 $C$ 上的\Term{presheaf}{预层}，$Y$ 是 $C'$ 的\Term{object}{对象}。则有
+\[v^*F(Y)\xrightarrow{\sim}\operatorname{Hom}(v(Y),F).\]
+再利用（3.4），得到
+\[\operatorname{Hom}(v(Y),F)\xrightarrow{\sim}\varinjlim_{C/F}\operatorname{Hom}(v(Y),\,\cdot\,).\]
+但是 $v$ 是 $u$ 的\Term{left-adjoint}{左伴随}，因而
+\[\varinjlim_{C/F}\operatorname{Hom}(v(Y),\,\cdot\,)\xrightarrow{\sim}\varinjlim_{C/F}\operatorname{Hom}(Y,u(\,\cdot\,)).\]
+再利用（5.4.3），得到
+\[\varinjlim_{C/F}\operatorname{Hom}(Y,u(\,\cdot\,))\xrightarrow{\sim}\operatorname{Hom}(Y,u_!F)\xrightarrow{\sim}u_!F(Y).\]
+这样就对 $C'$ 的每个\Term{object}{对象} $Y$ 构造了\Term{isomorphism}{同构} $v^*F(Y)\xrightarrow{\sim}u_!F(Y)$，它显然关于 $Y$ 和 $F$ \Term{functoriality}{函子性}。证毕。
+\end{proof}
+\begin{SGAresult}{推论}{5.5.1}
+设 $u:C\to C'$ 是有\Term{left-adjoint}{左伴随}的\Term{functor}{函子}。\Term{functor}{函子} $u_!:\widehat C\to\widehat{C'}$ 与\Term{projective-limit}{逆极限}交换（回顾一下，由（1.4.3），它与\Term{inductive-limit}{归纳极限}交换）。
+\end{SGAresult}
+\SourcePage{24}
+\textbf{注记 5.5.2。} 这样得到一个“四个\Term{adjoint-functor}{伴随函子}的序列”（参见 5.3）：
+\[v_!,\ v^*=u_!,\ v_*=u^*,\ u_*,\]
+其中前三个（分别为后三个）因而与 $\varinjlim$（分别为 $\varprojlim$）交换。
+\begin{SGAresult}{命题}{5.6}
+假设同 5.4。以下条件\Term{equivalence}{等价}：
+\begin{enumerate}
+\item[i)] \Term{functor}{函子} $u$ \Term{fully-faithful-functor}{全忠实}。
+\item[ii)] \Term{functor}{函子} $u_!$ \Term{fully-faithful-functor}{全忠实}。
+\item[iii)] \Term{adjunction-morphism}{伴随态射} $\operatorname{id}_{\widehat C}\to u^*u_!$ 是\Term{isomorphism}{同构}。
+\item[iv)] \Term{functor}{函子} $u_*$ \Term{fully-faithful-functor}{全忠实}。
+\item[v)] \Term{adjunction-morphism}{伴随态射} $u^*u_*\to\operatorname{id}_{\widehat C}$ 是\Term{isomorphism}{同构}。
+\end{enumerate}
+\end{SGAresult}
+\begin{proof}
+显然，ii) $\Leftrightarrow$ iii)，iv) $\Leftrightarrow$ v)（\Term{adjoint-functor}{伴随函子}的一般性质），而且 ii) $\Rightarrow$ i)（5.4.3）。证明 i) $\Rightarrow$ iii)。\Term{functor}{函子} $\operatorname{id}_{\widehat C}$、$u^*$、$u_!$ 都与\Term{inductive-limit}{归纳极限}交换。根据（3.4），只需证明当 $H$ \Term{representable}{可表}时，$H\to u^*u_!H$ 是\Term{isomorphism}{同构}；这是显然的。证明 iii) 与 v) \Term{equivalence}{等价}。对 $\widehat C$ 的每个\Term{object}{对象} $H$（分别为 $K$），以 $\Phi(H):H\to u^*u_!H$（分别以 $\Psi(K):u^*u_*\to K$）表示\Term{adjunction-morphism}{伴随态射}。于是有\Term{commutative-diagram}{交换图}
+\[\begin{tikzcd}[column sep=large]
+\operatorname{Hom}_{\widehat C}(H,u^*u_*K)\arrow[r,"{\operatorname{Hom}(H,\Psi(K))}"]\arrow[d,"\sim"']&\operatorname{Hom}_{\widehat C}(H,K)\\
+\operatorname{Hom}_{\widehat C}(u_!H,u_*K)\arrow[d,"\sim"']&\\
+\operatorname{Hom}_{\widehat C}(u^*u_!H,K)\arrow[uur,"{\operatorname{Hom}(\Phi(H),K)}"']&
+\end{tikzcd}.\]
+因此，对所有 $H$，$\Phi(H)$ 是\Term{isomorphism}{同构}，当且仅当对所有 $K$，$\Psi(K)$ 是\Term{isomorphism}{同构}。证毕。
+\end{proof}
+\textbf{注记 5.7。} a) \Term{equivalence-relation}{等价关系} ii) $\Leftrightarrow$ iii) $\Leftrightarrow$ iv) $\Leftrightarrow$ v) 是关于\Term{adjoint-functor}{伴随函子}的一般结果。
+
+ b) 1.4 的证明中给出的 $u_!$、分别为 $u_*$ 的显式形式立即表明，在 1.1 的一般假设下，若 $u$ \Term{fully-faithful-functor}{全忠实}，则\Term{adjunction-morphism}{伴随态射} $\operatorname{id}\to u^*u_!$（分别为 $u^*u_*\to\operatorname{id}$）是\Term{isomorphism}{同构}，即 $u_!$（分别为 $u_*$）\Term{fully-faithful-functor}{全忠实}。
+
+\textbf{5.8.0。} 设 $\gamma$ 是一种由\Term{finite}{有限}\Term{projective-limit}{逆极限}定义的\Term{algebraic-structure}{代数结构}，$\mathcal U\text{-}\gamma\text{-}\mathrm{Ens}$ 是 $\mathcal U\text{-}\mathrm{Ens}$ 中的 $\gamma$-\Term{object}{对象}\Term{category}{范畴}，$\mathrm{esj}:\mathcal U\text{-}\gamma\text{-}\mathrm{Ens}\to\mathcal U\text{-}\mathrm{Ens}$ 是\Term{underlying-set-functor}{底集函子}
+\SourcePage{25}
+（为简化起见，假定所考虑的\Term{species-of-structure}{结构种}只有一个\Term{underlying-set}{基集}）。设 $C$ 是\Term{category}{范畴}。与 $\mathrm{esj}$ 复合得到\Term{functor}{函子}，记为
+\[\widehat{\mathrm{esj}}:\mathcal H om(C^\circ,\mathcal U\text{-}\gamma\text{-}\mathrm{Ens})\longrightarrow\widehat C.\]
+由于 $\widehat C$ 中的\Term{projective-limit}{逆极限}逐个自变量计算，\Term{functor}{函子} $\widehat{\mathrm{esj}}$ \Term{resolution}{分解}为\Term{equivalence}{等价}
+\[\mathcal H om(C^\circ,\mathcal U\text{-}\gamma\text{-}\mathrm{Ens})\xrightarrow{\approx}\widehat C_\gamma\tag{5.8.1}\]
+和一个仍记为
+\[\widehat{\mathrm{esj}}:\widehat C_\gamma\longrightarrow\widehat C\]
+的\Term{functor}{函子}，其中 $\widehat C_\gamma$ 是 $\widehat C$ 中的 $\gamma$-\Term{object}{对象}\Term{category}{范畴}；这个\Term{functor}{函子}称为“\Term{underlying-set}{底集}合\Term{presheaf}{预层}”\Term{functor}{函子}。
+
+\textbf{5.8.2。} 假设\Term{functor}{函子} $\mathrm{est}:\mathcal U\text{-}\gamma\text{-}\mathrm{Ens}\to\mathcal U\text{-}\mathrm{Ens}$ 有\Term{left-adjoint}{左伴随} $\mathrm{Lib}:\mathcal U\text{-}\mathrm{Ens}\to\mathcal U\text{-}\gamma\text{-}\mathrm{Ens}$\footnote[3]{\Term{functor}{函子} $\mathrm{Lib}$ 是“生成的自由 $\gamma$-\Term{object}{对象}”\Term{functor}{函子}。例如：\Term{free-group}{自由群}、\Term{free-commutative-group}{自由交换群}、自由 $A$-模，等等。}（事实上可以证明，这个条件总是成立）。与 $\mathrm{Lib}$ 复合得到\Term{functor}{函子}
+\[\widehat{\mathrm{Lib}}:\widehat C\longrightarrow\mathcal H om(C^\circ,\mathcal U\text{-}\gamma\text{-}\mathrm{Ens}),\]
+再与\Term{equivalence}{等价}（5.8.1）复合，得到仍记为
+\[\widehat{\mathrm{Lib}}:\widehat C\longrightarrow\widehat C_\gamma\]
+的\Term{functor}{函子}，称为“生成的自由 $\gamma$-\Term{object}{对象}\Term{presheaf}{预层}”\Term{functor}{函子}。\Term{functor}{函子} $\widehat{\mathrm{Lib}}$ 是\Term{functor}{函子} $\widehat{\mathrm{esj}}$ 的\Term{left-adjoint}{左伴随}。
+\begin{SGAresult}{命题}{5.8.3}
+设 $\gamma$ 是一种由\Term{finite}{有限}\Term{projective-limit}{逆极限}定义的\Term{algebraic-structure}{代数结构}，且在 $\mathcal U\text{-}\mathrm{Ens}$ 中的 $\gamma$-\Term{object}{对象}\Term{category}{范畴}中，$\mathcal U$-\Term{inductive-limit}{归纳极限}\Term{representable}{可表}\footnote[3]{可以证明，这个条件总是成立。}；设 $C$ 是属于 $\mathcal U$ 的\Term{category}{范畴}，$C'$ 是 $\mathcal U$-\Term{category}{范畴}，$u:C\to C'$ 是\Term{functor}{函子}。以 $\widehat C_\gamma$（分别以 $\widehat{C'}_\gamma$）表示 $\widehat C$（分别为 $\widehat{C'}$）中的 $\gamma$-\Term{object}{对象}\Term{category}{范畴}，并以 $u^{*\gamma}$ 表示由\Term{functor}{函子} $u^*$ \Term{derivation}{导出}的 $\gamma$-\Term{object}{对象}上的\Term{functor}{函子}。由 5.1 以及\Term{equivalence}{等价} 5.8.1 可知，\Term{functor}{函子} $u^{*\gamma}$ 存在\Term{left-adjoint}{左伴随}（分别为\Term{right-adjoint}{右伴随}）。这个\Term{functor}{函子}记为 $u_{!\gamma}$（分别为 $u_{*\gamma}$）。
+
+(1) \Term{functor}{函子} $u^{*\gamma}$ 与\Term{inductive-limit}{归纳极限}和\Term{projective-limit}{逆极限}交换。图
+\[\begin{tikzcd}\widehat{C'}_\gamma\arrow[r,"u^{*\gamma}"]\arrow[d,"\widehat{\mathrm{esj}}'"']&\widehat C_\gamma\arrow[d,"\widehat{\mathrm{esj}}"]\\\widehat{C'}\arrow[r,"u_*"']&\widehat C\end{tikzcd}\tag{*}\]
+\SourcePage{26}
+交换（$\widehat{\mathrm{esj}}'$、$\widehat{\mathrm{esj}}$ 表示“\Term{underlying-set}{底集}”\Term{functor}{函子}）。
+
+(2) \Term{functor}{函子} $u_{*\gamma}$ 与\Term{projective-limit}{逆极限}交换。图
+\[\begin{tikzcd}\widehat C_\gamma\arrow[r,"u_{*\gamma}"]\arrow[d,"\widehat{\mathrm{esj}}"']&\widehat{C'}_\gamma\arrow[d,"\widehat{\mathrm{esj}}'"]\\\widehat C\arrow[r,"u_*"']&\widehat{C'}\end{tikzcd}\tag{**}\]
+在相差一个\Term{isomorphism}{同构}的意义下交换。
+
+(3) \Term{functor}{函子} $u_{!\gamma}$ 与\Term{inductive-limit}{归纳极限}交换。假设 $\widehat{\mathrm{esj}}$（分别为 $\widehat{\mathrm{esj}}'$）有\Term{left-adjoint}{左伴随} $\widehat{\mathrm{Lib}}$（分别为 $\widehat{\mathrm{Lib}}'$）（5.8.2）。图
+\[\begin{tikzcd}\widehat C\arrow[r,"u_!"]\arrow[d,"\widehat{\mathrm{Lib}}"']&\widehat{C'}\arrow[d,"\widehat{\mathrm{Lib}}'"]\\\widehat C_\gamma\arrow[r,"u_{!\gamma}"']&\widehat{C'}_\gamma\end{tikzcd}\tag{***}\]
+在相差一个\Term{isomorphism}{同构}的意义下交换。
+
+假设 $u_!$ 与\Term{finite}{有限}\Term{projective-limit}{逆极限}交换（5.4）和（5.6）。则图
+\[\begin{tikzcd}\widehat C_\gamma\arrow[r,"u_{!\gamma}"]\arrow[d,"\widehat{\mathrm{esj}}"']&\widehat{C'}_\gamma\arrow[d,"\widehat{\mathrm{esj}}'"]\\\widehat C\arrow[r,"u_!"']&\widehat{C'}\end{tikzcd}\tag{****}\]
+在相差一个\Term{isomorphism}{同构}的意义下交换，而且 $u_{!\gamma}$ 与\Term{finite}{有限}\Term{projective-limit}{逆极限}交换。
+\end{SGAresult}
+\begin{proof}
+断言 (1) 显然。断言 (2) 也显然，因为 $u_*$ 是\Term{right-adjoint}{右伴随}，因而由（2.11）与\Term{projective-limit}{逆极限}交换，特别是与\Term{finite}{有限}\Term{projective-limit}{逆极限}交换；这就得到图 $(**)$ 的交换性。图 $(***)$ 的交换性由\Term{left-adjoint}{左伴随}\Term{functor}{函子}在\Term{isomorphism}{同构}意义下的唯一性推出；最后，图 $(****)$ 的交换性直接由 $u_!$ 与\Term{finite}{有限}\Term{projective-limit}{逆极限}交换这一事实推出。
+\end{proof}
+\textbf{记号 5.9。} 滥用记号，\Term{functor}{函子} $u^{*\gamma}$、$u_{*\gamma}$ 经常记作 $u^*$、$u_*$；由于图 $(*)$、$(**)$ 交换，这不会引起混淆。另一方面，当 $u_!$ 不与\Term{finite}{有限}
+\SourcePage{27}
+\Term{projective-limit}{逆极限}交换时，图 $(****)$ 并不在相差一个\Term{isomorphism}{同构}的意义下交换，因而必须使用记号 $u_!$ 和 $u_{!\gamma}$，以免混淆。
+
+\textbf{5.10。} 设 $C$ 是\Term{small-category}{小范畴}。对 $\widehat C$ 的每个\Term{object}{对象} $X$，以 $C/X$ 表示靶为 $X$、源为 $C$ 的\Term{object}{对象}的\Term{arrow}{箭头}所成的\Term{category}{范畴}。\Term{source-functor}{源函子}定义\Term{functor}{函子} $j_X:C/X\to C$。设 $m:Y\to X$ 是 $\widehat C$ 的\Term{morphism}{态射}。\Term{morphism}{态射}复合定义\Term{functor}{函子} $j_m:C/Y\to C/X$。图
+\[\begin{tikzcd}C/Y\arrow[rr,"j_m"]\arrow[dr,"j_Y"']&&C/X\arrow[dl,"j_X"]\\&C&\end{tikzcd}\]
+交换。由 5.1 可知，对 $(C/X)^{\wedge}$ 的每个\Term{object}{对象} $F$ 和 $C$ 的每个\Term{object}{对象} $Y$，有
+\[j_{X!}F(Y)=\coprod_{u\in\operatorname{Hom}_{\widehat C}(Y,X)}F(u).\tag{5.10.1}\]
+当 $C$ 是 $\mathcal U$-\Term{category}{范畴}时，公式（5.10.1）也能定义 $j_{X!}$；并且可验证，如此定义的\Term{functor}{函子} $j_{X!}$ 始终是\Term{functor}{函子} $j_X^*:\widehat C\to(C/X)^{\wedge}$ 的\Term{right-adjoint}{右伴随}（5.0）。
+\begin{SGAresult}{命题}{5.11}
+设 $C$ 是 $\mathcal U$-\Term{category}{范畴}，$X$ 是 $C$ 上的\Term{presheaf}{预层}。
+\begin{enumerate}
+\item \Term{functor}{函子}
+\[j_{X!}:(C/X)^{\wedge}\longrightarrow\widehat C\]
+经\Term{category}{范畴} $\widehat C/X$ \Term{resolution}{分解}为
+\[(C/X)^{\wedge}\xrightarrow{e_X}\widehat C/X\longrightarrow\widehat C.\]
+\Term{functor}{函子} $e_X$ 是\Term{equivalence-of-categories}{范畴等价}。
+\item \Term{functor}{函子} $e_X\circ j_X^*:\widehat C\to\widehat C/X$ \Term{canonical}{典范}\Term{isomorphism}{同构}于\Term{functor}{函子}
+\[H\longmapsto(H\times X\xrightarrow{\operatorname{pr}_2}X).\]
+\end{enumerate}
+\end{SGAresult}
+\begin{proof}
+1) 设 $f$ 是 $(C/X)^{\wedge}$ 的\Term{final-object}{终对象}。有\Term{canonical}{典范}\Term{isomorphism}{同构} $f\xrightarrow{\sim}\varinjlim_{Y\in\operatorname{ob}(C/X)}Y$，因而 $j_{X!}(f)=\varinjlim_{Y\in\operatorname{ob}(C/X)}j_X(Y)$（5.4）。但 $j_{X!}(f)\simeq X$；由此得到所述\Term{resolution}{分解}。为说明 $e_X$ 是\Term{equivalence}{等价}，只需给出一个\Term{quasi-inverse-functor}{拟逆函子}：对 $\widehat C/X$ 的每个\Term{object}{对象} $H\to X$，取 $C/X$ 上的\Term{presheaf}{预层}
+\[(Y\to X)\longmapsto\operatorname{Hom}_{\widehat C/X}((Y\to X),(H\to X)).\]
+2) \Term{functor}{函子} $e_X\circ j_X^*$ 是\Term{forgetful-functor}{遗忘函子}的\Term{right-adjoint}{右伴随}，因而\Term{functor}{函子} $e_X\circ j^*$ \Term{canonical}{典范}\Term{isomorphism}{同构}于\Term{functor}{函子} $H\mapsto(H\times H\xrightarrow{\operatorname{pr}_2}X)$。
+\end{proof}
+\SourcePage{28}
+\textbf{5.12。} 设 $m:Y\to X$ 是 $\widehat C$ 的\Term{morphism}{态射}。根据（5.11），\Term{morphism}{态射} $m$ \Term{canonical}{典范}\Term{isomorphism}{同构}于 $(C/X)^{\wedge}$ 的一个\Term{object}{对象}经 $e_X$ 所得的像；将这个\Term{object}{对象}记作 $[m]$。将\Term{functor}{函子} $e_X$ \Term{restriction}{限制}于\Term{subcategory}{子范畴}，定义一个\Term{equivalence}{等价}
+\[(C/X)/[m]\xrightarrow{e_m}C/Y.\]
+图
+\[\begin{tikzcd}(C/X)/[m]\arrow[rr,"e_m"]\arrow[dr,"{j_{[m]}}"']&&C/Y\arrow[dl,"j_m"]\\&C/X&\end{tikzcd}\]
+在相差一个\Term{canonical}{典范}\Term{isomorphism}{同构}的意义下交换。
+
+\textbf{5.13。} 指出一个第 VI 讲中将用到的结果。设 $u:C\to C'$ 是\Term{small-category}{小范畴}之间的\Term{functor}{函子}。对 $\widehat C$ 的每个\Term{object}{对象} $H$，以 $u/H:C/H\to C'/u_!H$ 表示将\Term{morphism}{态射} $m:X\to H$ 送到\Term{morphism}{态射} $u_!X\xrightarrow{u_!m}u_!H$ 的\Term{functor}{函子}（已知（5.4），总可以令 $u_!X=uX$）。下图交换：
+\[\begin{tikzcd}C/H\arrow[r,"u/H"]\arrow[d,"J_H"']&C'/u_!H\arrow[d,"j_{u_!H}"]\\C\arrow[r,"u"']&C'\end{tikzcd}.\tag{5.13.1}\]
+因而有一个在相差\Term{isomorphism}{同构}的意义下交换的图：
+\[\begin{tikzcd}(C/H)^{\wedge}\arrow[r,"(u/H)_!"]\arrow[d,"(j_H)_!"']&(C'/u^{\cdot}H)^{\wedge}\arrow[d,"(j_{u_!H})_!"]\\\widehat C\arrow[r,"u_!"']&\widehat{C'}\end{tikzcd},\tag{5.13.2}\]
+而且由于 $(u/H)_!$ 把 $(C/H)^{\wedge}$ 的\Term{final-object}{终对象}变为 $(C'/u_!H)^{\wedge}$ 的\Term{final-object}{终对象}，图
+\[\begin{tikzcd}(C/H)^{\wedge}\arrow[r,"(u/H)_!"]\arrow[d,"e_H"']&(C'/u_!H)^{\wedge}\arrow[d,"e_{u_!H}"]\\\widehat C/H\arrow[r,"u_!/H"']&\widehat{C'}/u_!H\end{tikzcd}\tag{5.13.3}\]
+\SourcePage{29}
+在相差一个\Term{isomorphism}{同构}的意义下交换（6.1）。
+\begin{SGAresult}{命题}{5.14}
+设 $u:C\to C'$ 是\Term{small-category}{小范畴}之间的\Term{functor}{函子}。假设 $u$ 具有以下性质：
+
+\textbf{(PPF)} 对 $C$ 的每个\Term{object}{对象} $X$，\Term{functor}{函子} $u/X:C/X\to C'/uX$ \Term{fully-faithful-functor}{全忠实}。
+
+则：
+\begin{enumerate}
+\item 设 $f$ 是 $\widehat C$ 的\Term{final-object}{终对象}。\Term{functor}{函子} $u$ \Term{resolution}{分解}为
+\[C=C/f\xrightarrow{u/f}C'/u_!f\xrightarrow{j_{u_!f}}C'.\]
+\Term{functor}{函子} $u/f$ \Term{fully-faithful-functor}{全忠实}。
+\item \Term{functor}{函子} $u_!:\widehat C\to\widehat{C'}$ \Term{resolution}{分解}为
+\[\widehat C=(C/f)^{\wedge}\xrightarrow{(u/f)_!}(C'/u_!f)^{\wedge}\xrightarrow{e_{u_!f}}\widehat{C'}/u_!f\longrightarrow\widehat{C'},\]
+其中\Term{functor}{函子} $(u/f)_!$ \Term{fully-faithful-functor}{全忠实}，\Term{functor}{函子} $e_{u_!f}$ 是\Term{equivalence}{等价}，而\Term{functor}{函子} $\widehat{C'}/u_!f\to\widehat{C'}$ 是\Term{forgetful-functor}{遗忘函子}。
+\item 特别地，\Term{functor}{函子} $u_!$ \Term{faithful-functor}{忠实}，因而\Term{adjunction-morphism}{伴随态射} $\operatorname{id}\xrightarrow{\Phi}u^*u_!$ 是\Term{monomorphism}{单态射}。此外，对 $\widehat C$ 的每个\Term{morphism}{态射} $\alpha:H\to K$，图
+\[\begin{tikzcd}H\arrow[r,hook,"\Phi(H)"]\arrow[d,"\alpha"']&u^*u_!H\arrow[d,"u_{\cdot}u^{\cdot}(\alpha)"]\\K\arrow[r,hook,"\Phi(K)"']&u^*u_!K\end{tikzcd}\]
+是\Term{cartesian}{笛卡儿}的。
+\end{enumerate}
+\end{SGAresult}
+\begin{proof}
+1) \Term{resolution}{分解}来自图（5.13.1）。\Term{functor}{函子} $u$ \Term{faithful-functor}{忠实}，故 $u/f$ \Term{faithful-functor}{忠实}。证明它\Term{fully-faithful-functor}{全忠实}。设 $X,Y$ 是 $C$ 的两个\Term{object}{对象}，$\operatorname{can}_X:uX\to u_!f$（分别为 $\operatorname{can}_Y:uY\to u_!f$）是\Term{canonical}{典范}\Term{morphism}{态射}，而
+\[\begin{tikzcd}uX\arrow[rr,"m"]\arrow[dr,"\operatorname{can}_X"']&&uY\arrow[dl,"\operatorname{can}_Y"]\\&u^{\cdot}f&\end{tikzcd}\]
+是 $C'/u_!f$ 的\Term{morphism}{态射}。有 $u_!f=\varinjlim_{Z\in\operatorname{ob}C}uZ$，因而由（3.1）有
+\[\operatorname{Hom}_{\widehat{C'}}(uX,u_!f)=\varinjlim_{Z\in\operatorname{ob}C}\operatorname{Hom}_{C'}(uX,uZ).\]
+根据\Term{inductive-limit}{归纳极限}的定义，$\operatorname{can}_Ym=\operatorname{can}_X$ \Term{equivalence}{等价}于存在
+\SourcePage{30}
+\begin{enumerate}
+\item[a)] $C$ 的\Term{finite}{有限}\Term{object}{对象}序列 $X_i$，$i\in[0,n]$，其中 $X_0=X$、$X_n=Y$；
+\item[b)] 对每个 $i$，有\Term{morphism}{态射} $m_i:uX\to uX_i$（$m_0=\operatorname{id}_X$、$m_n=m$）；
+\item[c)] 对每一对 $(i,i+1)$，有\Term{morphism}{态射} $f_i:X_i\to X_{i+1}$ 或 $f_i:X_{i+1}\to X_i$，
+\end{enumerate}
+使图
+\[\begin{tikzcd}&uX\arrow[dl,"m_i"']\arrow[dr,"m_{i+1}"]&\\uX_i\arrow[rr,"u(f_i)"']&&uX_{i+1}\end{tikzcd}
+\qquad\text{或}\qquad
+\begin{tikzcd}&uX\arrow[dl,"m_i"']\arrow[dr,"m_{i+1}"]&\\uX_i&&uX_{i+1}\arrow[ll,"u(f_i)"]\end{tikzcd}\]
+交换。
+
+对 $i$ 归纳，并使用性质 (PPF)，立即可证 $m_i$ 形如 $u(p_i)$。特别地，$m=u(p)$，因而 $u/f$ \Term{fully-faithful-functor}{全忠实}。
+
+2) \Term{resolution}{分解}是直接的。根据 5.6，\Term{functor}{函子} $(u/f)_!$ \Term{fully-faithful-functor}{全忠实}。其他断言由 5.11 得到。
+
+3) \Term{functor}{函子} $u_!$ 是\Term{faithful-functor}{忠实}的\Term{forgetful-functor}{遗忘函子}与\Term{fully-faithful-functor}{全忠实}\Term{functor}{函子}的复合，因而\Term{faithful-functor}{忠实}。根据\Term{adjoint-functor}{伴随函子}的一般性质，由此可知\Term{adjunction-morphism}{伴随态射} $\operatorname{id}\to u^*u_!$ 是\Term{monomorphism}{单态射}。根据 2)，\Term{functor}{函子} $u_!$ 可以看作\Term{fully-faithful-functor}{全忠实}\Term{functor}{函子} $v:\widehat C\to\widehat{C'}/u_!f$ 与\Term{forgetful-functor}{遗忘函子}的复合。因此，作为 $u_!$ 的\Term{right-adjoint}{右伴随}，\Term{functor}{函子} $u^*$ 是“与 $u_!f$ 作积”的\Term{functor}{函子}（它是\Term{forgetful-functor}{遗忘函子}的\Term{right-adjoint}{右伴随}）与 $v$ 的\Term{right-adjoint}{右伴随}\Term{functor}{函子} $w$ 的复合。此外，由于 $v$ \Term{fully-faithful-functor}{全忠实}，\Term{adjunction-morphism}{伴随态射} $\operatorname{id}\to wv$ 是\Term{isomorphism}{同构}。最后一个断言由此容易推出。
+\end{proof}
+\SGAsection{6}{忠实函子与保守函子}
+\begin{SGAresult}{定义}{6.1}
+设 $E$ 是\Term{category}{范畴}，$(\varphi_i:E\to F_i)_{i\in I}$ 是一族\Term{functor}{函子}
+\[\varphi_i:E\longrightarrow F_i.\]
+若对 $E$ 的任意一对\Term{object}{对象} $X,Y$ 和任意一对\Term{arrow}{箭头} $u,v:X\rightrightarrows Y$，对所有 $i\in I$ 都有 $\varphi_i(u)=\varphi_i(v)$ 蕴含 $u=v$（换言之，由 $(\varphi_i)$ 定义的映射 $\operatorname{Hom}(X,Y)\to\prod_i\operatorname{Hom}(\varphi_i(X),\varphi_i(Y))$ 是\Term{injection}{单射}），就称\Term{functor}{函子}族 $(\varphi_i)$ \Term{faithful-functor}{忠实}。若 $E$ 的任意\Term{arrow}{箭头} $u$ 只要对所有 $i\in I$，$\varphi_i(u)$ 都是\Term{isomorphism}{同构}，就必为\Term{isomorphism}{同构}，就称\Term{functor}{函子}族 $(\varphi_i)$ \Term{conservative-functor}{保守}。若每当 $u$ 是\Term{monomorphism}{单态射}（分别为\Term{epimorphism}{满态射}，等等）时，上述条件成立，就称 $(\varphi_i)$ 对\Term{monomorphism}{单态射}\Term{conservative-functor}{保守}（分别为对\Term{epimorphism}{满态射}\Term{conservative-functor}{保守}，等等）。
+\end{SGAresult}
+\SourcePage{31}
+\textbf{6.1.1。} 若引入由\Term{functor}{函子}族 $(\varphi_i)$ 定义的唯一\Term{functor}{函子}
+\[\varphi:E\longrightarrow F=\prod_{i\in I}F_i,\]
+则显然，这个族\Term{faithful-functor}{忠实}（分别为\Term{conservative-functor}{保守}、对\Term{monomorphism}{单态射}\Term{conservative-functor}{保守}，等等），当且仅当\Term{functor}{函子} $\varphi$ \Term{faithful-functor}{忠实}（分别为\Term{conservative-functor}{保守}，等等）（这里的意思是，只由\Term{object}{对象} $\varphi$ 组成的族\Term{faithful-functor}{忠实}，分别为\Term{conservative-functor}{保守}，等等）。因此，后文只讨论由一个\Term{functor}{函子}组成的族也不会有什么大碍。为便于以后引用，我们仍然对\Term{functor}{函子}族给出以下陈述。
+
+当 $\varphi_i$ 满足适当的\Term{exactness}{正合性质}时，6.1 的概念尤其有用；而且在这种情形中，它们往往会重合：
+\begin{SGAresult}{命题}{6.2}
+记号同 5.1。
+\begin{enumerate}
+\item[(i)] 若 $E$ 中的二重\Term{arrow}{箭头}的核，或二重\Term{arrow}{箭头}的\Term{cokernel}{余核}\Term{representable}{可表}，且 $\varphi_i$ 与之交换，则有蕴含
+\[(\varphi_i)\text{ 保守}\quad\Longrightarrow\quad(\varphi_i)\text{ 忠实}.\]
+\item[(ii)] 假设 $E$ 中的\Term{fibre-product}{纤维积}（分别为\Term{amalgamated-sum}{融合和}）\Term{representable}{可表}，且 $\varphi_i$ 与之交换。假设 $(\varphi_i)$ \Term{faithful-functor}{忠实}或\Term{conservative-functor}{保守}；则对 $E$ 的任意\Term{arrow}{箭头} $u$，$u$ 是\Term{monomorphism}{单态射}（分别为\Term{epimorphism}{满态射}），当且仅当对所有 $i\in I$，$\varphi_i(u)$ 都是如此。
+\item[(iii)] 假设 $E$ 中的\Term{fibre-product}{纤维积}与\Term{amalgamated-sum}{融合和}\Term{representable}{可表}，$\varphi_i$ 与之交换，且 $E$ 中每个\Term{bimorphism}{双态射}（即既是\Term{monomorphism}{单态射}又是\Term{epimorphism}{满态射}的\Term{morphism}{态射}）都是\Term{isomorphism}{同构}。则有蕴含
+\[(\varphi_i)\text{ 忠实}\quad\Longrightarrow\quad(\varphi_i)\text{ 保守}.\]
+\item[(iv)] 假设 $E$ 中的\Term{fibre-product}{纤维积}（分别为\Term{amalgamated-sum}{融合和}）\Term{representable}{可表}，且 $\varphi_i$ 与之交换。那么，若 $(\varphi_i)$ 对\Term{monomorphism}{单态射}\Term{conservative-functor}{保守}（分别为对\Term{epimorphism}{满态射}\Term{conservative-functor}{保守}），则 $(\varphi_i)$ 甚至是\Term{conservative-functor}{保守}的。
+\item[(v)] 设 $D$ 是一个图型，$F:d\mapsto F(d)$ 是 $E$ 中的 $D$ 型图，$X$ 是 $E$ 的\Term{object}{对象}，$u=(u_d)_{d\in D}$ 是一族\Term{arrow}{箭头}
+\[X\longrightarrow F(d)\qquad\text{（分别为 }F(d)\longrightarrow X\text{）}.\]
+假设 $(\varphi_i)$ \Term{conservative-functor}{保守}，$E$ 中 $D$ 型\Term{projective-limit}{逆极限}（分别为\Term{inductive-limit}{归纳极限}）\Term{representable}{可表}，且 $\varphi_i$ 与之交换。则 $u$ 使 $X$ 成为 $E$ 中 $F$ 的\Term{projective-limit}{逆极限}（分别为\Term{inductive-limit}{归纳极限}），当且仅当对所有 $i\in I$，$\varphi_i(u)$ 使 $\varphi_i(X)$ 成为 $E_i$ 中 $\varphi_i(D)$ 的\Term{projective-limit}{逆极限}（分别为\Term{inductive-limit}{归纳极限}）。
+\end{enumerate}
+\end{SGAresult}
+\begin{proof}
+\SourcePage{32}
+(i) 对于不含“分别”的陈述，只需对给定的二重\Term{arrow}{箭头} $u,v:X\rightrightarrows Y$，将等式 $u=v$ 表为包含\Term{morphism}{态射} $\operatorname{Ker}(u,v)\to X$ 是\Term{isomorphism}{同构}这一条件。这里以及下文，不再为\Term{duality}{对偶}陈述重复\Term{duality}{对偶}论证。
+
+(ii) 若 $(\varphi_i)$ \Term{faithful-functor}{忠实}，可用\Term{fibre-product}{纤维积} $X\times_YX$ 上的等式 $\operatorname{pr}_1=\operatorname{pr}_2$ 来表示 $u:X\to Y$ 为\Term{monomorphism}{单态射}这一条件。若 $(\varphi_i)$ \Term{conservative-functor}{保守}，则用\Term{diagonal-morphism}{对角态射} $\delta:X\to X\times_YX$ 是\Term{isomorphism}{同构}这一条件来表示。
+
+(iv) 在后一个论证中，由于\Term{morphism}{态射} $\delta$ 是\Term{monomorphism}{单态射}，可见实际上只需假设 $(\varphi_i)$ 对\Term{monomorphism}{单态射}\Term{conservative-functor}{保守}。但这又蕴含 $(\varphi_i)$ 本身\Term{conservative-functor}{保守}。事实上，若 $u\in\operatorname{Fl}E$ 使所有 $\varphi_i(u)$ 都是\Term{isomorphism}{同构}，则由上面的论证可知它们是\Term{monomorphism}{单态射}，再根据对 $(\varphi_i)$ 的假设，它们是\Term{isomorphism}{同构}。
+
+(iii) 是 (ii) 的直接推论。
+
+(v) 由定义直接推出。
+\end{proof}
+注意 (i)、(ii)、(iv) 有如下推论：
+\begin{SGAresult}{推论}{6.3}
+假设 $E$ 中的\Term{fibre-product}{纤维积}与\Term{amalgamated-sum}{融合和}\Term{representable}{可表}，$\varphi_i$ 与之交换；又假设二重\Term{arrow}{箭头}的核或二重\Term{arrow}{箭头}的\Term{cokernel}{余核}\Term{representable}{可表}，且 $\varphi_i$ 与之交换。（例如，只需 $E$ 中的\Term{finite}{有限}\Term{projective-limit}{逆极限}和\Term{finite}{有限}\Term{inductive-limit}{归纳极限}\Term{representable}{可表}，且 $\varphi_i$ 是\Term{exact-functor}{正合函子}。）则以下条件\Term{equivalence}{等价}：
+\begin{enumerate}
+\item[a)] $(\varphi_i)$ \Term{faithful-functor}{忠实}。
+\item[b)] $(\varphi_i)$ \Term{conservative-functor}{保守}。
+\item[c)] $(\varphi_i)$ 对\Term{monomorphism}{单态射}\Term{conservative-functor}{保守}。
+\item[c$'$)] $(\varphi_i)$ 对\Term{epimorphism}{满态射}\Term{conservative-functor}{保守}。
+\end{enumerate}
+\end{SGAresult}
+还附带指出：
+\begin{SGAresult}{命题}{6.4}
+设 $\varphi:E\to F$ 是具有\Term{right-adjoint}{右伴随} $\psi$ 的\Term{functor}{函子}（故 $\operatorname{Hom}(\varphi(X),Y)\simeq\operatorname{Hom}(X,\psi(Y))$）。$\varphi$（分别为 $\psi$）\Term{faithful-functor}{忠实}，当且仅当对 $E$ 的每个元素 $X$（分别为 $F$ 的每个元素 $Y$），\Term{adjunction-morphism}{伴随态射} $X\to\psi\varphi(X)$ 是\Term{monomorphism}{单态射}。$\varphi$（分别为 $\psi$）\Term{fully-faithful-functor}{全忠实}，当且仅当前述\Term{adjunction-morphism}{伴随态射}是\Term{isomorphism}{同构}。
+\end{SGAresult}
+事实上，若 $X',X$ 是 $E$ 的两个\Term{object}{对象}，映射
+\[\operatorname{Hom}(X',X)\longrightarrow\operatorname{Hom}(\varphi(X'),\varphi(X))\tag{*}\]
+等同于对
+\[X\longrightarrow\psi\varphi(X)\tag{**}\]
+\SourcePage{33}
+应用\Term{functor}{函子} $\operatorname{Hom}(X',-)$ 而得到的映射。因此，在固定 $X$ 时，$(*)$ 对所有 $X'$ 都为\Term{monomorphism}{单态射}（分别为\Term{isomorphism}{同构}），当且仅当\Term{adjunction-morphism}{伴随态射} $(**)$ 为\Term{monomorphism}{单态射}（分别为\Term{isomorphism}{同构}）。
+\begin{SGAresult}{命题}{6.5}
+设 $p:E'\to E$ 是\Term{functor}{函子}。以下条件\Term{equivalence}{等价}：
+\begin{enumerate}
+\item[(i)] $p$ \Term{faithful-functor}{忠实}、\Term{conservative-functor}{保守}且为\Term{fibred-functor}{纤维化函子}（SGA 1 VI 6.1）。
+\item[(ii)] $p$ 为\Term{fibred-functor}{纤维化函子}，且各\Term{fiber}{纤维}都是\Term{discrete-category}{离散范畴}。
+\item[(iii)] 对每个 $X'\in\operatorname{ob}E'$，由 $p$ 诱导的\Term{functor}{函子} $E'/X'\to E/p(X)$ 是\Term{equivalence-of-categories}{范畴等价}，并且在\Term{object}{对象}上\Term{surjection}{满射}。
+\item[(iv)] （当 $E$ 是 $\mathcal U$-\Term{category}{范畴}时。）存在元素 $F\in\operatorname{ob}\widehat C$，以及 $E$ 上的\Term{equivalence-of-categories}{范畴等价}（SGA 1 VI 4.3）$E'\xrightarrow{\approx}E/F$（其中 $E/F$ 是 $\widehat E/F$ 的\Term{full-subcategory}{全子范畴}，由源在 $E$ 中的\Term{arrow}{箭头} $X\to F$ 组成）。
+\end{enumerate}
+\end{SGAresult}
+\textbf{6.5.1。} 回顾一下，若\Term{category}{范畴} $C$ 是\Term{groupoid}{群胚}（即其中每个\Term{arrow}{箭头}都\Term{invertible}{可逆}）且是\Term{rigid}{刚性}的（即每个\Term{object}{对象}的\Term{automorphism-group}{自同构群}都只有单位元），就称 $C$ \Term{discrete}{离散}；\Term{equivalence}{等价}地说，这个\Term{equivalence-of-categories}{范畴等价}于由一个\Term{set}{集合} $I$ 定义的\Term{category}{范畴} $C'$（$\operatorname{ob}C'=I$，且只有恒等\Term{arrow}{箭头}）。已经假定 $C$ 是\Term{groupoid}{群胚}时，说 $C$ \Term{discrete}{离散}就\Term{equivalence}{等价}于说：对 $C$ 的两个\Term{object}{对象} $X,Y$，从 $X$ 到 $Y$ 至多有一个\Term{arrow}{箭头}，即 $C$ \Term{isomorphism}{同构}于由一个\Term{preordered-set}{预序集合}定义的\Term{category}{范畴}。
+
+6.5 中条件 (i)、(ii) 的\Term{equivalence}{等价}性，直接由上述回顾以及以下引理推出。
+\begin{SGAresult}{引理}{6.5.2}
+设 $p:E'\to E$ 是\Term{fibred-functor}{纤维化函子}。则：
+\begin{enumerate}
+\item[(i)] $p$ \Term{conservative-functor}{保守}，当且仅当它的\Term{fibre-category}{纤维范畴}都是\Term{groupoid}{群胚}。
+\item[(ii)] $p$ \Term{faithful-functor}{忠实}，当且仅当它的\Term{fibre-category}{纤维范畴}都是\Term{ordered-category}{有序范畴}。
+\end{enumerate}
+\end{SGAresult}
+\begin{proof}[6.5.2 的证明]
+(i) 假设 $p$ \Term{conservative-functor}{保守}。对\Term{fiber}{纤维} $E'_X$ 的每个\Term{arrow}{箭头} $u$，$p(u)=\operatorname{id}_X$ 是\Term{isomorphism}{同构}，因而 $u$ 是 $E'$ 中的\Term{isomorphism}{同构}，故也是 $E'_X$ 中的\Term{isomorphism}{同构}（因为 $u$ 在 $E'$ 中的一个逆显然也在 $E'_X$ 中）。所以 $E'_X$ 是\Term{groupoid}{群胚}。反过来，假设各个 $E'_X$ 都是\Term{groupoid}{群胚}，设 $u'$ 是 $E'$ 中满足 $p(u')$ 为\Term{isomorphism}{同构}的\Term{arrow}{箭头}，证明 $u$ 是\Term{isomorphism}{同构}。为此注意，由于 $p$ 是\Term{fibred-functor}{纤维化函子}，可把 $u':X'\to Y'$ \Term{resolution}{分解}为复合 $X'\to u^*(Y')\to Y'$，其中第一个\Term{arrow}{箭头}是 $X$-\Term{morphism}{态射}（注意 $X=p(X')$、$u=p(u')$），第二个是位于 $u$ 之上的\Term{cartesian-morphism}{笛卡儿态射}。第一个\Term{arrow}{箭头}是\Term{isomorphism}{同构}，因为 $E'_X$ 是\Term{groupoid}{群胚}；第二个也是\Term{isomorphism}{同构}，因为\Term{fibred-category}{纤维范畴}中的\Term{cartesian-morphism}{笛卡儿态射}只要其\Term{projection}{投影}是\Term{isomorphism}{同构}，显然本身也是\Term{isomorphism}{同构}。
+\SourcePage{34}
+(ii) 假设 $p$ \Term{faithful-functor}{忠实}，设 $X',Y'$ 是某个\Term{fibre-category}{纤维范畴} $E_X$ 的两个\Term{object}{对象}。从 $X'$ 到 $Y'$ 的两个\Term{arrow}{箭头}位于 $E$ 的同一个\Term{arrow}{箭头} $\operatorname{id}_X$ 之上，故相同，因此 $E_X$ 有序。反过来，假设\Term{fibre-category}{纤维范畴}都有序，证明 $p$ \Term{faithful-functor}{忠实}。设 $u',v':X'\rightrightarrows Y'$ 是 $E'$ 中位于 $E$ 的同一个\Term{arrow}{箭头} $u:X\to Y$ 之上的\Term{arrow}{箭头}。于是它们\Term{decomposable}{可分解}为 $X'\rightrightarrows u^*(Y)\to Y'$，其中两个\Term{arrow}{箭头} $X'\rightrightarrows u^*(Y')$ 是 $E'_X$ 中源和靶都相同的\Term{arrow}{箭头}，因而相等，所以 $u'=v'$。证毕。
+\end{proof}
+回到 6.5 的证明。已经证明 (i) $\Leftrightarrow$ (ii)。另一方面，(ii) $\Leftrightarrow$ (iv) 相当清楚：一方面，由定义立即得到，\Term{category}{范畴} $E/F$ 在 $E$ 上\Term{fiber}{纤维}化，其\Term{fibre-category}{纤维范畴}是由\Term{set}{集合} $F(X)$ 定义的\Term{discrete-category}{离散范畴}；另一方面，若 $p$ 如 (ii)，则根据 SGA 1 VI 8 的综合命题，$E$ 上的\Term{fibred-category}{纤维范畴} $E'$ 与由\Term{functor}{函子} $E\to(\mathrm{Cat})$ 定义的 $E$ 上的\Term{split-category}{分裂范畴} $E$-\Term{equivalence}{等价}；这个\Term{functor}{函子}由\Term{functor}{函子} $F:E\to(\mathrm{Ens})$ 定义，后者把每个 $X\in\operatorname{ob}E$ 送到 $E'_X$ 的\Term{object}{对象}的\Term{isomorphism-class}{同构类}\Term{set}{集合}。而这个\Term{split-category}{分裂范畴}与\Term{category}{范畴} $E/F$ 是 $E$-\Term{isomorphism}{同构}的。由于 (iv) $\Rightarrow$ (iii) 显然，只需证明 (iii) $\Rightarrow$ (i)。显然，$p$ \Term{faithful-functor}{忠实}（分别为\Term{conservative-functor}{保守}），当且仅当诱导\Term{functor}{函子} $E'/X'\to E/p(X)$ \Term{faithful-functor}{忠实}（分别为\Term{conservative-functor}{保守}）；特别地，只要这些\Term{functor}{函子}\Term{fully-faithful-functor}{全忠实}就足够了。因此，只需证明 (iii) 蕴含 $p$ 是\Term{fibred-functor}{纤维化函子}。但还可看出，\Term{functor}{函子} $p$ 为\Term{fibred-functor}{纤维化函子}，当且仅当诱导\Term{functor}{函子} $E'/X'\to E/p(X')$ 都是\Term{fibred-functor}{纤维化函子}。如果这些\Term{functor}{函子}都是在\Term{object}{对象}上\Term{surjection}{满射}的\Term{equivalence-of-categories}{范畴等价}，则特别满足这一条件。

@@ -1,0 +1,737 @@
+\SourcePage{216}
+\SGAchapter{V}{$J$ 进投射系}{Systèmes projectifs $J$-adiques}
+\begin{center}J. P. Jouanolou\end{center}
+本讲中，字母 $A$ 始终表示一个含幺环。本讲旨在发展一套\Term{form}{形式}体系，以供下一讲研究 $\ell$ 进\Term{cohomology}{上同调}之用。
+\SGAsection{1}{阿贝尔 $A$ 范畴的一般性质}
+\begin{SGAresult}{定义}{1.1}
+所谓 \Term{a-category}{$A$ 范畴}（相应地，\Term{abelian-a-category}{阿贝尔 $A$ 范畴}），是由一个\Term{additive-category}{加性范畴}（相应地，\Term{abelian-category}{阿贝尔范畴}）$C$ 和一个\Term{ring-homomorphism}{环同态}
+\[
+\rho:A\longrightarrow\operatorname{End}(\operatorname{id}_C)
+\]
+组成的偶 $(C,\rho)$；这里右端是 $C$ 到自身的\Term{identity-functor}{恒等函子}的\Term{endomorphism-ring}{自同态环}。
+给定两个 \Term{a-category}{$A$ 范畴}（相应地，\Term{abelian-a-category}{阿贝尔 $A$ 范畴}）$(C,\rho)$ 和 $(C',\rho')$，从前者到后者的\Term{a-category}{$A$ 范畴态射}（相应地，\Term{abelian-a-category}{阿贝尔 $A$ 范畴态射}）是指一个\Term{additive}{加性}（相应地，\Term{exact}{正合}）\Term{functor}{函子} $F:C\to C'$，使得对 $C$ 的每个\Term{object}{对象} $M$ 和 $A$ 的每个元素 $a$，都有
+\[
+F(\rho(a)_M)=\rho'(a)_{F(M)}.
+\]
+\end{SGAresult}
+\textbf{例 1.1.1。} 设 $C$ 是一个\Term{additive-category}{加性范畴}（相应地，\Term{abelian-category}{阿贝尔范畴}）。回顾，所谓（左）$(A,C)$ \Term{module-category}{模范畴}，记作 $(A,C)\text{-}\mathrm{mod}$，是如下描述的\Term{category}{范畴}：
+\SourcePage{217}
+(i) 其\Term{object}{对象}是由 $C$ 的一个\Term{object}{对象} $X$ 和一个\Term{ring-morphism}{环态射} $\alpha:A\to\operatorname{Hom}_C(X,X)$ 组成的偶 $(X,\alpha)$。
+
+(ii) 一个\Term{morphism}{态射} $(X,\alpha)\to(Y,\beta)$ 是一个 $C$ \Term{morphism}{态射} $u:X\to Y$，使得对 $A$ 的每个元素 $a$，下图交换：
+\[
+\begin{tikzcd}X\arrow[r,"u"]\arrow[d,"\alpha(a)"']&Y\arrow[d,"\beta(a)"]\\X\arrow[r,"u"]&Y.\end{tikzcd}
+\]
+\Term{category}{范畴} $(A,C)\text{-}\mathrm{mod}$ 显然是一个 \Term{a-category}{$A^\natural$ 范畴}（相应地，\Term{abelian-a-category}{阿贝尔 $A^\natural$ 范畴}），其中 $A^\natural$ 是 $A$ 的\Term{center}{中心}。此外，它还有下述性质：
+
+(a) 忘掉 $A$ 模结构所得的\Term{functor}{函子} $(A,C)\text{-}\mathrm{mod}\to C$ 与\Term{inductive-limit}{归纳极限}和\Term{projective-limit}{投射极限}交换。
+
+(b) 设 $I$ 是一个\Term{category}{范畴}。要使 $(A,C)\text{-}\mathrm{mod}$ 中的 $I$ \Term{inductive-limit}{归纳极限}（相应地，\Term{projective-limit}{投射极限}）\Term{representable}{可表}，只需 $C$ 中的 $I$ \Term{inductive-limit}{归纳极限}（相应地，\Term{projective-limit}{投射极限}）\Term{representable}{可表}。
+
+\textbf{1.2. \Term{external-tensor-product}{外张量积}。} 设 $(C,\rho)$ 是一个\Term{abelian-a-category}{阿贝尔 $A$ 范畴}。若 $M$ 是一个右 $A$ 模，$X$ 是 $C$ 的一个\Term{object}{对象}，则称从 $C$ 到\Term{set}{集合}\Term{category}{范畴}的如下\Term{covariant-functor}{协变函子}为 $X$ 与 $M$ 的\Term{external-tensor-product}{外张量积}，记作 $M\otimes_A X$：它在\Term{object}{对象} $Y$ 上由下式定义，在\Term{arrow}{箭头}上的定义是显然的：
+\[
+(M\otimes_A X)(Y)=\operatorname{Hom}_A(M,\operatorname{Hom}_C(X,Y)),
+\]
+其中，利用 $A$ 在 $X$ 上的\Term{action}{作用}，将 $\operatorname{Hom}_C(X,Y)$ 看作一个右 $A$ 模。把 $M\otimes_A X$ 和 $Y$ 看作\Term{category}{范畴} $\widehat C=\operatorname{Hom}(C,\mathrm{Ens})^\circ$ 的\Term{object}{对象}，上式便写成以下较熟悉的\Term{form}{形式}：
+\SourcePage{218}
+\[
+\operatorname{Hom}_{\widehat C}(M\otimes_A X,Y)=\operatorname{Hom}_A(M,\operatorname{Hom}_C(X,Y)).
+\]
+如果\Term{functor}{函子} $M\otimes_A X$ \Term{representable}{可表}，则对其一个代表也使用相同的名称与记号。
+
+若 $u:M\to M'$ 和 $v:X\to X'$ 分别是 $(A\text{-}\mathrm{mod})$ 和 $C$ 中的\Term{morphism}{态射}，则以通常方式定义一个 $C$ \Term{morphism}{态射}
+\[
+u\otimes_A v:M\otimes_A X\longrightarrow M'\otimes_A X',
+\]
+从而可以谈论\Term{external-tensor-product}{外张量积}\Term{bifunctor}{双函子}（在两个变量上均\Term{covariant}{协变}）。其性质汇集于下述命题。
+\begin{SGAresult}{命题}{1.2.1}
+\Term{external-tensor-product}{张量积}\Term{bifunctor}{双函子}是\Term{additive}{加性}的，并与\Term{inductive-limit}{归纳极限}交换。
+\end{SGAresult}
+\begin{proof}证明是直接的；在环上的模的情形中，这是经典的。\end{proof}
+\begin{SGAresult}{命题}{1.2.2}
+\textbf{（\Term{representability}{可表性}判据。）}
+(a) 对 $C$ 的每个\Term{object}{对象} $X$，$A\otimes_A X$ 由 $X$ 表示。
+
+(b) 对每个\Term{finite-presentation}{有限表示} $A$ 模 $M$ 和 $C$ 的每个\Term{object}{对象} $X$，\Term{functor}{函子} $M\otimes_A X$ \Term{representable}{可表}。
+
+(c) 若\Term{category}{范畴} $C$ 具有“任意”\Term{direct-sum}{直和}，则对“每一个”偶 $(M,X)$，\Term{functor}{函子} $M\otimes_A X$ 都\Term{representable}{可表}。
+\end{SGAresult}
+\begin{proof}断言 (a) 是显然的。其余两个断言随即由下述\Term{lemma}{引理}得到，而\Term{lemma}{引理}的证明是直接的。\end{proof}
+\begin{SGAresult}{\Term{lemma}{引理}}{1.2.3}
+设 $M\xrightarrow{\alpha}N\to P\to0$ 是 $A$ 模的一个\Term{exact-sequence}{正合列}，$X$ 是 $C$ 的一个\Term{object}{对象}。如果\Term{functor}{函子} $M\otimes_A X$ 和 $N\otimes_A X$ 分别由 $C$ 的\Term{object}{对象} $Y$ 和 $Z$ 表示，则\Term{functor}{函子} $P\otimes_A X$ 由对应于 $\alpha\otimes_A\operatorname{id}_X$ 的\Term{morphism}{态射} $Y\to Z$ 的\Term{cokernel}{余核}表示。
+\end{SGAresult}
+\SourcePage{219}
+\textbf{注记 1.2.4。} 设 $\mathfrak a$ 是 $A$ 的一个\Term{finitely-generated}{有限生成}\Term{ideal}{理想}。对 $C$ 的每个\Term{object}{对象} $X$，\Term{functor}{函子} $(A/\mathfrak a)\otimes_A X$ \Term{representable}{可表}，而且由 $A$ 到 $A/\mathfrak a$ 的\Term{canonical}{典范}\Term{epimorphism}{满态射}及 1.2.2 (a) 得到的\Term{arrow}{箭头}
+\[
+p_X:X\longrightarrow(A/\mathfrak a)\otimes_A X
+\]
+是\Term{epimorphism}{满态射}。当不再假设\Term{ideal}{理想} $\mathfrak a$ \Term{finitely-generated}{有限生成}，而假设 $C$ 具有“任意”\Term{direct-sum}{直和}时，同一断言仍然成立。置 $\mathfrak aX=\operatorname{Ker}(p_X)$。当\Term{category}{范畴}具有\Term{filtered}{滤过}\Term{inductive-limit}{归纳极限}时，显然有 $\mathfrak aX=\sum_{a\in\mathfrak a}aX$。如果 $u:X\to Y$ 是\Term{epimorphism}{满态射}，则 $u$ 将 $\mathfrak aX$ \Term{surjectivity}{满射}到 $\mathfrak aY$。最后，\Term{object}{对象} $X$ 被 $\mathfrak a$ 的每个元素\Term{annihilate}{零化}，当且仅当 $\mathfrak aX=0$。这时，每个从\Term{object}{对象} $Z$ 到 $X$ 的\Term{morphism}{态射}都借助 $p_Z$ 经由一个从 $(A/\mathfrak a)\otimes_A Z$ 到 $X$ 的\Term{morphism}{态射}\Term{resolution}{分解}。
+\SGAsection{2}{Mittag--Leffler--Artin--Rees 条件}
+本节中，字母 $C$ 始终表示一个\Term{abelian-category}{阿贝尔范畴}，并置 $P=\operatorname{Hom}(\mathbb N^\circ,C)$，即以非负整数的\Term{ordered-set}{有序集} $\mathbb N$ 为指标、取值于 $C$ 的\Term{projective-system}{投射系}\Term{category}{范畴}。
+
+\textbf{2.1. \Term{mlar-condition}{Mittag--Leffler--Artin--Rees 条件}。} 设 $X=(X_n,u_n)_{n\geq0}$ 是\Term{category}{范畴} $P$ 的一个\Term{object}{对象}。对整数 $r\geq0$，约定以 $X[r]$ 表示\Term{projective-system}{投射系} $(X_{n+r},u_{n+r})_{n\geq0}$。$P$ 的\Term{morphism}{态射} $h:X\to Y$ 显然定义一个记作 $h[r]$ 的\Term{morphism}{态射} $X[r]\to Y[r]$，而且这一构造是\Term{functorial}{函子性}的。若 $r,s$ 是满足 $s\geq r\geq0$ 的两个整数，则“\Term{transition-morphism}{过渡态射}”$X_{n+s}\to X_{n+r}$（$n\geq0$）定义一个\Term{morphism}{态射} $w_{sr}:X[s]\to X[r]$。显然，若第三个整数 $t$ 满足 $t\geq s\geq r$，则有：
+\SourcePage{220}
+\[
+w_{ts}\circ w_{sr}=w_{tr}.
+\]
+换言之，这样就给 $X$ 配上了\Term{category}{范畴} $\operatorname{Hom}(\mathbb N^\circ,P)$ 的一个\Term{object}{对象} $\overline X$。此外，对 $P$ 的一个\Term{morphism}{态射} $h:X\to Y$，显然对应一个\Term{morphism}{态射} $\overline h:\overline X\to\overline Y$，且这一对应是\Term{functorial}{函子性}的。最后，若 $0\to X\xrightarrow{u}Y\xrightarrow{v}Z\to0$ 是 $P$ 的一个\Term{exact-sequence}{正合列}，则 $\overline P=\operatorname{Hom}(\mathbb N^\circ,P)$ 中的对应列
+\[
+0\longrightarrow\overline X\xrightarrow{\overline u}\overline Y\xrightarrow{\overline v}\overline Z\longrightarrow0
+\]
+也是\Term{exact}{正合}的。
+\begin{SGAresult}{定义}{2.1.1}
+设有\Term{category}{范畴} $P$ 的一个\Term{object}{对象}。若存在一个整数 $r$，使得对每个整数 $s\geq r$ 都有
+\[
+\operatorname{Im}(X[s]\xrightarrow{w_{s0}}X)=\operatorname{Im}(X[r]\xrightarrow{w_{r0}}X),
+\]
+则称它满足 \Term{mlar-condition}{Mittag--Leffler--Artin--Rees 条件}（简记为 MLAR）。
+\end{SGAresult}
+也就是说，对每个整数 $n\geq0$，$X_{n+r}$ 与 $X_{n+s}$ 经“\Term{transition-morphism}{过渡态射}”在 $X_n$ 中的像相同。第三种解释是：所配的\Term{projective-system}{投射系} $\overline X$ 满足 \Term{ml-condition}{Mittag--Leffler 条件}（简记为 ML）（EGA $0_{\mathrm{III}}$ 13.1.2）。由此及 EGA $0_{\mathrm{III}}$ 13.2.1 得到下述命题。
+\begin{SGAresult}{命题}{2.1.2}
+设 $0\to X\to Y\to Z\to0$ 是 $P$ 的一个\Term{exact-sequence}{正合列}。
+
+(i) 如果 $Y$ 满足 \Term{mlar-condition}{(MLAR)}，则 $Z$ 满足 \Term{mlar-condition}{(MLAR)}。
+
+(ii) 如果 $X$ 和 $Z$ 满足 \Term{mlar-condition}{(MLAR)}，则 $Y$ 满足 \Term{mlar-condition}{(MLAR)}。
+\end{SGAresult}
+\textbf{2.2. AR 零\Term{inverse-system}{投射系}。}
+\begin{SGAresult}{定义}{2.2.1}
+设 $X$ 是\Term{category}{范畴} $P$ 的一个\Term{object}{对象}。若存在整数 $r\geq0$，使\Term{canonical-morphism}{典范态射} $X[r]\to X$ 为零，则称 $X$ 是 \Term{ar-null}{AR 零的}。
+\end{SGAresult}
+\SourcePage{221}
+显然，\Term{ar-null}{AR 零}\Term{projective-system}{投射系}特别满足 \Term{mlar-condition}{(MLAR)}。
+\begin{SGAresult}{命题}{2.2.2}
+设 $0\to X\to Y\to Z\to0$ 是 $P$ 的一个\Term{exact-sequence}{正合列}。以下断言\Term{equivalence}{等价}：
+
+(i) $Y$ 是 \Term{ar-null}{AR 零的}；
+
+(ii) $X$ 和 $Z$ 是 \Term{ar-null}{AR 零的}。
+
+换言之，由 \Term{ar-null}{AR 零}\Term{projective-system}{投射系}组成的 $P$ 的\Term{full-subcategory}{满子范畴} $P_0$ 是 $P$ 的\Term{thick-subcategory}{厚子范畴}。
+\end{SGAresult}
+\begin{proof}(i) 蕴含 (ii) 是显然的。反过来，设 $r$ 和 $t$ 分别是对 $X$ 和 $Z$ 满足定义 2.2.1 的条件的整数。立即看出，整数 $s+t$ 对 $Y$ 满足定义 2.2.1 的条件。\end{proof}
+\textbf{2.3. \Term{calculus-of-fractions}{分式演算}的回顾及其应用。} 设 $E$ 是一个\Term{category}{范畴}，$S$ 是 $\operatorname{Fl}(E)$ 的一个\Term{subset}{子集}。所谓 $E$ 关于 $S$ 的\Term{category-of-fractions}{分式范畴}，是由\Term{category}{范畴} $E(S^{-1})$ 和\Term{functor}{函子} $p:E\to E(S^{-1})$ 组成的偶 $(p,E(S^{-1}))$，满足下述\Term{universal-property}{泛性质}：
+
+\Term{functor}{函子} $u$ 从 $E$ 到某个\Term{category}{范畴} $F$，要使它经过 $p$ \Term{resolution}{分解}，充要条件是它使属于 $S$ 的\Term{arrow}{箭头}成为\Term{invertible}{可逆}\Term{arrow}{箭头}；此时\Term{resolution}{分解}是唯一的。
+
+这样的偶在\Term{isomorphism}{同构}意义下的唯一性是显然的。其存在性的证明，以及本节后文中大部分未加证明地陈述的结果，见斯特拉斯堡\Term{homotopy}{同伦}讨论班第 1 讲。（亦见 P. Gabriel 与 M. Zisman，\emph{Calculus of fractions and homotopy theory}，Erg. der Math., 35，Springer-Verlag，1967。）
+\SourcePage{222}
+\Term{multiplication}{乘法}性\Term{subset}{子集} $S$ 的某些性质可保证\Term{category}{范畴} $E(S^{-1})$ 有简单的描述：
+\begin{SGAresult}{定义}{2.3.1}
+若 $\operatorname{Fl}(E)$ 的\Term{subset}{子集} $S$ 满足以下条件，则称它容许\Term{right-calculus-of-fractions}{右分式演算}：
+
+(a) $E$ 的恒等\Term{arrow}{箭头}属于 $S$。
+
+(b) 如果 $u:X\to Y$ 与 $v:Y\to Z$ 属于 $S$，则复合 $v\circ u$ 属于 $S$。
+
+(c) 以下每个类型为 $(D_1)$、其中 $t$ 属于 $S$ 的图，都能补全为类型为 $(D_2)$、其中 $s$ 属于 $S$ 的图：
+\[
+(D_1)\quad\begin{tikzcd}&Y'\arrow[d,"t"]\\X\arrow[r,"u"]&Y\end{tikzcd}
+\qquad
+(D_2)\quad\begin{tikzcd}X'\arrow[r,"u'"]\arrow[d,"s"']&Y'\arrow[d,"t"]\\X\arrow[r,"u"]&Y.\end{tikzcd}
+\]
+(d) 对每个\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}X\arrow[r,shift left,"f"]\arrow[r,shift right,"g"']&Y\arrow[r,"s"]&Z,\end{tikzcd}
+\]
+其中 $s$ 属于 $S$，存在一个\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}T\arrow[r,"t"]&X\arrow[r,shift left,"f"]\arrow[r,shift right,"g"']&Y,\end{tikzcd}
+\]
+其中 $t$ 属于 $S$。
+\end{SGAresult}
+\Term{duality}{对偶}地定义以下概念：
+\begin{SGAresult}{定义}{2.3.2}
+若 $\operatorname{Fl}(E)$ 的\Term{subset}{子集} $S$ 满足以下条件，则称它容许\Term{left-calculus-of-fractions}{左分式演算}：
+
+(a)$'$ $E$ 的恒等\Term{arrow}{箭头}属于 $S$。
+
+(b)$'$ 两个属于 $S$ 的\Term{arrow}{箭头}的复合属于 $S$。
+
+(c)$'$ 以下每个类型为 $(D_1)'$、其中 $s$ 属于 $S$ 的图，都能补全为类型为 $(D_2)'$、其中 $t$ 属于 $S$ 的图：
+\SourcePage{223}
+\[
+(D_1)'\quad\begin{tikzcd}X'\arrow[r,"u'"]\arrow[d,"s"']&Y'\\X&\end{tikzcd}
+\qquad
+(D_2)'\quad\begin{tikzcd}X'\arrow[r,"u'"]\arrow[d,"s"']&Y'\arrow[d,"t"]\\X\arrow[r,"u"]&Y.\end{tikzcd}
+\]
+(d)$'$ 对每个形如下面的\Term{commutative-diagram}{交换图} $\Delta$，其中 $s$ 属于 $S$，存在一个以 $Y$ 为源且属于 $S$ 的\Term{morphism}{态射} $t$，使得 $t\circ f=t\circ g$。
+\[
+(\Delta)\quad\begin{tikzcd}X'\arrow[r,"s"]&X\arrow[r,shift left,"f"]\arrow[r,shift right,"g"']&Y.\end{tikzcd}
+\]
+\end{SGAresult}
+\textbf{2.3.3。} 假设 $S$ 是 $\operatorname{Fl}(E)$ 的一个容许\Term{right-calculus-of-fractions}{右分式演算}的\Term{subset}{子集}。由 2.3.1 (d) 可知，对 $E$ 的每个\Term{object}{对象} $X$，由属于 $S$、位于 $X$ 之上的\Term{arrow}{箭头}组成的\Term{category}{范畴}的\Term{opposite-category}{反范畴} $(S/X)^\circ$ 是\Term{filtered-category}{滤过的}（SGA 4 I 2.7）。现考虑如下描述的\Term{category}{范畴} $E_S$：
+
+--- $E_S$ 的\Term{object}{对象}就是 $E$ 的\Term{object}{对象}；
+
+--- 若 $X,Y$ 是 $E$ 的两个\Term{object}{对象}，则
+\[
+\operatorname{Hom}_{E_S}(X,Y)=\varinjlim_{(S/X)^\circ}\operatorname{Hom}_E(\operatorname{source}(\cdot),Y).
+\]
+若 $p_S$ 表示从 $E$ 到 $E_S$ 的显然\Term{functor}{函子}，则偶 $(p_S,E_S)$ 是本小节开头所述\Term{universal-problem}{泛问题}的一个解。这时，约定用 $E(S^{-1})$ 表示这一特定的解。
+
+\textbf{2.3.4。} 现在设 $S$ 是 $\operatorname{Fl}(E)$ 的一个容许\Term{left-calculus-of-fractions}{左分式演算}的\Term{subset}{子集}。则\Term{functor}{函子} $p_S:E\to E(S^{-1})$ 与\Term{finite}{有限}\Term{inductive-limit}{归纳极限}交换。特别地，如果 $E$ 是\Term{additive-category}{加性范畴}，则 $E(S^{-1})$ 是\Term{additive-category}{加性范畴}，且 $p_S$ 是\Term{additive-functor}{加性函子}。
+\SourcePage{224}
+\textbf{2.3.5。} 若\Term{category}{范畴} $E$ 是\Term{abelian-category}{阿贝尔范畴}，而 $S$ 是 $\operatorname{Fl}(E)$ 的一个同时容许\Term{right-calculus-of-fractions}{右分式演算}和\Term{left-calculus-of-fractions}{左分式演算}的\Term{subset}{子集}，则\Term{category}{范畴} $E(S^{-1})$ 是\Term{abelian-category}{阿贝尔范畴}，且\Term{functor}{函子} $p_S$ 是\Term{exact}{正合}的。此外，偶 $(p_S,E(S^{-1}))$ 是 $E$ 对\Term{thick-subcategory}{厚阿贝尔子范畴} $p_S^{-1}(0)$ 的一个商。
+
+\textbf{2.4. \Term{category}{范畴} $P_{\mathrm{AR}}=\operatorname{Hom}_{\mathrm{AR}}(\mathbb N^\circ,C)$。}
+沿用 2.1 的记号，令 $\mathrm{AR}$ 表示全体\Term{canonical}{典范}\Term{arrow}{箭头}（见 2.1）$v_{rX}:X[r]\to X$ 构成的\Term{set}{集合}，其中 $X$ 遍历 $P$ 的\Term{object}{对象}，$r$ 遍历整数 $\geq0$。
+\begin{SGAresult}{命题}{2.4.1}
+$\operatorname{Fl}(P)$ 的\Term{subset}{子集} $\mathrm{AR}$ 同时容许\Term{right-calculus-of-fractions}{右分式演算}和\Term{left-calculus-of-fractions}{左分式演算}。
+\end{SGAresult}
+\begin{proof}2.3.1 和 2.3.2 的 (a)、(a)$'$ 及 (b)、(b)$'$ 是显然的。
+
+证明 (c)。设 $(D_1)$ 是如下的\Term{commutative-diagram}{交换图}，其中 $v_{rY}$ 表示 $Y[r]$ 到 $Y$ 的\Term{canonical}{典范}\Term{arrow}{箭头}：
+\[
+(D_1)\quad\begin{tikzcd}&Y[r]\arrow[d,"v_{rY}"]\\X\arrow[r,"u"]&Y.\end{tikzcd}
+\]
+下图 $(D_2)$ 交换，而且 $v_{rX}$ 作为 $X[r]$ 到 $X$ 的\Term{canonical-morphism}{典范态射}属于 $\mathrm{AR}$，由此得到断言。
+\[
+(D_2)\quad\begin{tikzcd}X[r]\arrow[r,"{u[r]}"]\arrow[d,"v_{rX}"']&Y[r]\arrow[d,"v_{rY}"]\\X\arrow[r,"u"]&Y.\end{tikzcd}
+\]
+证明 (d)。设有\Term{commutative-diagram}{交换图}：
+\SourcePage{225}
+\[
+\begin{tikzcd}X\arrow[r,shift left,"f"]\arrow[r,shift right,"g"']&Z[r]\arrow[r,"v_{rZ}"]&Z.\end{tikzcd}
+\]
+施以“$r$ \Term{translation}{平移}”，得到\Term{commutative-diagram}{交换图}：
+\[
+\begin{tikzcd}X[r]\arrow[r,shift left,"{f[r]}"]\arrow[r,shift right,"{g[r]}"']&Z[2r]\arrow[r,"{v_{rZ}[r]}"]&Z[r].\end{tikzcd}
+\]
+显然，下图交换，故 $f\circ v_{rX}=g\circ v_{rX}$：
+\[
+\begin{tikzcd}X[r]\arrow[r,shift left,"{f[r]}"]\arrow[r,shift right,"{g[r]}"']\arrow[d,"v_{rX}"']&Z[2r]\arrow[d,"{v_{rZ}[r]}"]\\X\arrow[r,shift left,"f"]\arrow[r,shift right,"g"']&Z[r].\end{tikzcd}
+\]
+证明 (c)$'$。首先注意，若 $Y$ 表示 $P$ 的一个\Term{object}{对象}，$r$ 是一个正整数，则存在 $P$ 的\Term{object}{对象} $T$，满足 $Y=T[r]$，并且对 $P$ 的每个\Term{object}{对象} $X$，“$r$ \Term{translation}{平移}”\Term{homomorphism}{同态}
+\[
+\operatorname{Hom}_P(X,T)\longrightarrow\operatorname{Hom}_P(X[r],Y)
+\]
+是\Term{bijection}{双射}。如下定义的\Term{projective-system}{投射系} $(T_n,w_n)$ 显然合用：若 $Y=(Y_n,u_n)_{n\geq0}$，则 $n\geq r-1$ 时 $T_n$ 为 $C$ 的\Term{zero-object}{零对象}，否则 $T_n=Y_{n-r}$；并且
+\[
+w_n=0\quad(n\geq r-1),\qquad w_n=u_{n-r}.
+\]
+现在，设给定下述类型的图，并证明它可以按 (c)$'$ 的叙述补全：
+\SourcePage{226}
+\[
+\begin{tikzcd}X[r]\arrow[r,"u'"]\arrow[d,"v_{rX}"']&Y'\\X&\end{tikzcd}
+\]
+为此，取一个\Term{projective-system}{投射系} $Y$，使得 $Y'=Y[r]$，且\Term{canonical-map}{典范映射}
+\[
+\operatorname{Hom}_P(X,Y')\longrightarrow\operatorname{Hom}_P(X[r],Y')
+\]
+是\Term{bijection}{双射}。那么下图显然交换，其中 $u$ 表示使 $u'=u[r]$ 的唯一\Term{morphism}{态射} $X\to Y$：
+\[
+\begin{tikzcd}X[r]\arrow[r,"u'"]\arrow[d,"v_{rX}"']&Y'=Y[r]\arrow[d,"v_{rY}"]\\X\arrow[r,"u"]&Y.\end{tikzcd}
+\]
+证明 (d)$'$。考虑下面假设为交换的图，并证明存在一个从 $Y$ 出发的\Term{morphism}{态射} $w$，使得 $w\circ f=w\circ g$。
+\[
+\begin{tikzcd}X[r]\arrow[r,"v_{rX}"]&X\arrow[r,shift left,"f"]\arrow[r,shift right,"g"']&Y.\end{tikzcd}
+\]
+首先，下图显然交换：
+\[
+\begin{tikzcd}X[r]\arrow[r,shift left,"{f[r]}"]\arrow[r,shift right,"{g[r]}"']\arrow[d,"v_{rX}"']&Y[r]\arrow[d,"v_{rY}"]\\X\arrow[r,shift left,"f"]\arrow[r,shift right,"g"']&Y.\end{tikzcd}
+\]
+特别有 $v_{rY}\circ f[r]=v_{rY}\circ g[r]$。现在，令 $T$ 为 (c)$'$ 的证明开头给 $Y$ 和 $r$ 配上的系，从而特别有 $Y=T[r]$。
+\SourcePage{227}
+\Term{morphism}{态射} $v_{rT}\circ f$ 和 $v_{rT}\circ g$ 的 $r$ \Term{translation}{平移}分别等于 $v_{rY}\circ f$ 和 $v_{rY}\circ g[r]$，因而相等。由于 $r$ \Term{translation}{平移}在从 $X$ 到 $T$ 的\Term{morphism}{态射}上是\Term{injectivity}{单射}，得到下式，断言即得证：
+\[
+v_{rT}\circ f=v_{rT}\circ g.
+\]
+\end{proof}
+\begin{SGAresult}{定义}{2.4.2}
+设 $C$ 是一个\Term{abelian-category}{阿贝尔范畴}。所谓 $C$ 中的\Term{projective-system}{投射系}模\Term{translation}{平移}\Term{category}{范畴}，记作 $\operatorname{Hom}_{\mathrm{AR}}(\mathbb N^\circ,C)$，是如下描述的\Term{category}{范畴}：
+
+(i) $\operatorname{Hom}_{\mathrm{AR}}(\mathbb N^\circ,C)$ 的\Term{object}{对象}就是 $\operatorname{Hom}(\mathbb N^\circ,C)$ 的\Term{object}{对象}。
+
+(ii) 若 $X,Y$ 是 $\operatorname{Hom}(\mathbb N^\circ,C)$ 的两个\Term{object}{对象}，则\Term{category}{范畴} $\operatorname{Hom}_{\mathrm{AR}}(\mathbb N^\circ,C)$ 中从 $X$ 到 $Y$ 的\Term{morphism}{态射}是\Term{set}{集合}
+\[
+\operatorname{Hom}_{\mathrm{AR}}(X,Y)=\varinjlim_r\operatorname{Hom}(X[r],Y)
+\]
+的一个元素；其中对每对满足 $s\geq r$ 的整数 $(r,s)$，映射
+\[
+\operatorname{Hom}(X[r],Y)\longrightarrow\operatorname{Hom}(X[s],Y)
+\]
+来自\Term{canonical-morphism}{典范态射} $X[s]\to X[r]$。\Term{morphism}{态射}的复合以显然的方式定义。
+\end{SGAresult}
+以下固定\Term{category}{范畴} $C$，为简便起见，置 $P=\operatorname{Hom}(\mathbb N^\circ,C)$，$P_{\mathrm{AR}}=\operatorname{Hom}_{\mathrm{AR}}(\mathbb N^\circ,C)$。
+
+\textbf{2.4.3。} 已知（2.4.1），$\operatorname{Fl}(P)$ 的\Term{subset}{子集} $\mathrm{AR}$ 容许\Term{right-calculus-of-fractions}{右分式演算}。因此可以考虑（2.3.3）\Term{category}{范畴}
+\[
+P'_{\mathrm{AR}}=P(\mathrm{AR}^{-1}),
+\]
+回顾，它与 $P$ 具有相同的\Term{object}{对象}。
+\SourcePage{228}
+设 $X,Y$ 是 $P$ 的两个\Term{object}{对象}，以 $\operatorname{Hom}'_{\mathrm{AR}}(X,Y)$ 表示 $P'_{\mathrm{AR}}$ 中从 $X$ 到 $Y$ 的\Term{isomorphism}{同构}所成的\Term{set}{集合}。$\operatorname{Hom}_{\mathrm{AR}}(X,Y)$ 的一个元素显然定义 $\operatorname{Hom}'_{\mathrm{AR}}(X,Y)$ 的一个元素。更确切地说，这样定义了一个\Term{functor}{函子}
+\[
+m:P_{\mathrm{AR}}\longrightarrow P'_{\mathrm{AR}}.
+\]
+\begin{SGAresult}{命题}{2.4.3}
+\Term{functor}{函子} $m$ 是\Term{category}{范畴}的一个\Term{isomorphism}{同构}。
+\end{SGAresult}
+\begin{proof}只须证明，对 $P$ 的每对\Term{object}{对象} $(X,Y)$，对应映射
+\[
+m_{XY}:\operatorname{Hom}_{\mathrm{AR}}(X,Y)\longrightarrow\operatorname{Hom}'_{\mathrm{AR}}(X,Y)
+\]
+是\Term{bijection}{双射}。它显然是\Term{surjectivity}{满射}。为证\Term{injectivity}{单射性}，立即归结为证明：对每个如下类型的\Term{commutative-diagram}{交换图}，存在整数 $t\geq r,s$，使得 $\rho$ 与 $X[t]$ 到 $X[s]$ 的\Term{canonical-morphism}{典范态射}的复合是 $X[t]$ 到 $X[r]$ 的\Term{canonical-morphism}{典范态射}。
+\[
+\begin{tikzcd}X[r]\arrow[d,"v_{rX}"']&X[s]\arrow[l,"\rho"']\arrow[dl,"v_{sX}"]\\X&\end{tikzcd}
+\]
+这由下图的\Term{commutativity}{交换性}得到；其中所有出现的\Term{canonical-morphism}{典范态射}均以字母 $c$ 表示。
+\[
+\begin{tikzcd}X[r+s]\arrow[d,"c"']&X[2s]\arrow[l,"\rho(s)"']\arrow[d,"c"]\arrow[dl,"c"]\\X[r]&X[s]\arrow[l,"\rho"].\end{tikzcd}
+\]
+\end{proof}
+\SourcePage{229}
+\begin{SGAresult}{命题}{2.4.4}
+(i) \Term{category}{范畴} $P_{\mathrm{AR}}$ 是\Term{abelian-category}{阿贝尔范畴}。
+
+(ii) \Term{functor}{函子} $p_{\mathrm{AR}}:P\to P_{\mathrm{AR}}$ 是\Term{exact}{正合}的。
+
+(iii) $P$ 的\Term{object}{对象} $X$ 是 \Term{ar-null}{AR 零的}，当且仅当 $p_{\mathrm{AR}}(X)=0$。
+
+(iv) 偶 $(p_{\mathrm{AR}},P_{\mathrm{AR}})$ 是\Term{abelian-category}{阿贝尔范畴} $P$ 对由 \Term{ar-null}{AR 零}\Term{object}{对象}组成的\Term{thick-subcategory}{厚阿贝尔子范畴}的一个商。
+\end{SGAresult}
+\begin{proof}若承认 (iii)，其余断言便是 2.3.5 的推论。由 2.3.4 可知，$P$ 的\Term{object}{对象} $X$ 是 \Term{ar-null}{AR 零的}，当且仅当 $p_{\mathrm{AR}}(\operatorname{id}_X)=0$，由此得到 (iii)。\end{proof}
+\begin{SGAresult}{推论}{2.4.5}
+设 $u:X\to Y$ 是\Term{category}{范畴} $P$ 的一个\Term{morphism}{态射}。以下断言\Term{equivalence}{等价}：
+
+(i) $p_{\mathrm{AR}}(u)$ 是\Term{isomorphism}{同构}；
+
+(ii) $u$ 的核与\Term{cokernel}{余核}是 \Term{ar-null}{AR 零的}。
+\end{SGAresult}
+\Term{projective-system}{投射系}\Term{category}{范畴} $P$ 中满足\Term{equivalence}{等价}条件 (i)、(ii) 的\Term{morphism}{态射} $u:X\to Y$，称为 \Term{ar-isomorphism}{AR 同构}。
+\begin{SGAresult}{定义}{2.4.6}
+若\Term{category}{范畴} $P$ 的两个\Term{object}{对象} $X,Y$ 的像 $p_{\mathrm{AR}}(X)$ 和 $p_{\mathrm{AR}}(Y)$ 在\Term{category}{范畴} $P_{\mathrm{AR}}$ 中\Term{isomorphism}{同构}，则称 $X,Y$ 为 \Term{ar-isomorphism}{AR 同构的}。
+\end{SGAresult}
+如果 $X,Y$ 是\Term{category}{范畴} $P$ 的两个 \Term{ar-isomorphism}{AR 同构}的\Term{object}{对象}，一般并不存在一个从 $X$ 到 $Y$ 的 \Term{ar-isomorphism}{AR 同构} $u$。
+
+\textbf{2.5. 满足 \Term{mlar-condition}{Mittag--Leffler--Artin--Rees 条件}的\Term{inverse-system}{投射系}的刻画。}
+\begin{SGAresult}{命题}{2.5.1}
+对 $P$ 的一个\Term{object}{对象} $X$，下述断言\Term{equivalence}{等价}：
+\SourcePage{230}
+(i) $X$ 满足 \Term{mlar-condition}{(MLAR)}（2.1.1）。
+
+(ii) 存在一个\Term{strict-projective-system}{严格投射系} $Y$ 和一个 \Term{ar-isomorphism}{AR 同构} $u:Y\to X$（2.4.5）。
+
+(iii) 存在一个\Term{strict-projective-system}{严格投射系} $Y$，使得 $X,Y$ 在\Term{category}{范畴} $P_{\mathrm{AR}}$ 中\Term{isomorphism}{同构}。
+
+(iv) $X$ 满足 \Term{ml-condition}{Mittag--Leffler 条件}，而且，若以 $X'$ 表示 $X$ 的\Term{universal-images}{泛像投射系}，则\Term{projective-system}{投射系} $X/X'$ 是 \Term{ar-null}{AR 零的}。
+\end{SGAresult}
+\begin{proof}我们证明如下蕴含链：
+\[
+\text{(i)}\Rightarrow\text{(iv)}\Rightarrow\text{(iii)}\Rightarrow\text{(ii)}\Rightarrow\text{(i)}.
+\]
+(i) $\Rightarrow$ (iv)。存在整数 $m$，使从 $X[m]$ 到 $X$ 的\Term{canonical-morphism}{典范态射} $w_{mX}$ 经由 $X'$ 到 $X$ 的\Term{canonical}{典范}包含 $i$ \Term{resolution}{分解}。因此 $p_{\mathrm{AR}}(i)$ 是一个（\Term{splitting}{分裂}）\Term{epimorphism}{满态射}；由于 $p_{\mathrm{AR}}$ \Term{exact}{正合}，便有 $p_{\mathrm{AR}}(X/X')=0$。再由 2.4.4 (iii) 得到结论。
+
+(iv) $\Rightarrow$ (iii)。沿用上述记号，条件 (iv) 意味着 $p_{\mathrm{AR}}(i)$ 是\Term{epimorphism}{满态射}。但由 $p_{\mathrm{AR}}$ 的\Term{exactness}{正合性}，它也是\Term{monomorphism}{单态射}，因而是\Term{isomorphism}{同构}。取\Term{projective-system}{投射系} $X'$ 为\Term{object}{对象} $Y$ 即可。
+
+(iii) $\Rightarrow$ (ii)。所假设存在的 $P_{\mathrm{AR}}$ 中从 $Y$ 到 $X$ 的\Term{isomorphism}{同构}，是某个 $P$ \Term{morphism}{态射} $Y[r]\to X$ 在 $p_{\mathrm{AR}}$ 下的像，其中 $r$ 是非负整数。由 $Y[r]$ 的\Term{strict-projective-system}{严格性}得到结论。
+
+(ii) $\Rightarrow$ (i)。可假设 $Y$ 包含于 $X$，且 $u$ 是\Term{canonical}{典范}\Term{embedding}{嵌入}。令 $T$ 为 $u$ 的\Term{cokernel}{余核}。假设意味着 $T$ 是 \Term{ar-null}{AR 零的}，所以存在整数 $r$，使得对每个 $s\geq r$，$T[s]$ 到 $T$ 的\Term{canonical-morphism}{典范态射}为零。由此可知，当 $s\geq r$ 时，$X[s]$ 在 $X$ 中的像包含于 $Y$；另一方面，它显然包含 $Y[s]$ 在 $Y$ 中的像，而后者就是 $Y$，故该像等于 $Y$。因此，当 $s$ 充分大时，$Y$ 是 $X[s]$ 的像。
+\SourcePage{231}
+所以 $X$ 满足 \Term{mlar-condition}{(MLAR)}，而 $Y$ 是 $X$ 的\Term{universal-images}{泛像投射系}。
+\end{proof}
+\begin{SGAresult}{推论}{2.5.2}
+设 $u:Y\to X$ 是一个 \Term{ar-isomorphism}{AR 同构}，其中 $Y$ \Term{strict-projective-system}{严格}。则 $X$ 满足条件 \Term{mlar-condition}{(MLAR)}，且 $u(Y)$ 是 $X$ 的\Term{universal-images}{泛像投射系}。
+\end{SGAresult}
+\SGAsection{3}{$J$ 进投射系与 AR-$J$ 进投射系}
+设 $A$ 是一个含幺\Term{commutative-ring}{交换环}，$J$ 是 $A$ 的一个\Term{ideal}{理想}，$(C,\rho)$ 是一个\Term{abelian-a-category}{阿贝尔 $A$ 范畴}。假设 $J$ \Term{finitely-generated}{有限生成}，或者 $C$ 具有无限\Term{direct-sum}{直和}。记号与上一节相同。特别地，\Term{signature}{符号} $P$ 和 $P_{\mathrm{AR}}$ 分别表示\Term{category}{范畴} $\operatorname{Hom}(\mathbb N^\circ,C)$ 和 $\operatorname{Hom}_{\mathrm{AR}}(\mathbb N^\circ,C)$。
+
+\textbf{3.1. $J$ 进\Term{inverse-system}{投射系}。}
+\begin{SGAresult}{定义}{3.1.1}
+设 $X$ 是 $P$ 的一个\Term{object}{对象}。如果满足下述条件，则称 $X$ 是 \Term{j-adic-system}{$J$ 进的}：
+
+(i) 对每个整数 $n\geq0$，$J^{n+1}X_n=0$。
+
+(ii) 对每对满足 $m\geq n\geq0$ 的整数 $(m,n)$，由\Term{transition-morphism}{过渡态射} $X_m\to X_n$ \Term{derive}{导出}的\Term{morphism}{态射}
+\[
+A/J^{n+1}\otimes_A X_m\longrightarrow X_n
+\]
+是\Term{isomorphism}{同构}。
+\end{SGAresult}
+以 $J\text{-}\mathrm{ad}(C)$ 表示由 \Term{j-adic-system}{$J$ 进}\Term{projective-system}{投射系}生成的 $P$ 的\Term{full-subcategory}{满子范畴}。
+
+\textbf{注记 3.1.2。} 设 $I,J$ 是 $A$ 的两个\Term{ideal}{理想}，并假设 $I,J$ 都\Term{finitely-generated}{有限生成}，或者 $C$ 具有无限\Term{direct-sum}{直和}。那么可以证明，若 $I,J$ 在 $A$ 上定义相同的\Term{topology}{拓扑}，则\Term{category}{范畴} $I\text{-}\mathrm{ad}(C)$ 和 $J\text{-}\mathrm{ad}(C)$ \Term{equivalence}{等价}。
+\SourcePage{232}
+\begin{SGAresult}{命题}{3.1.3}
+\textbf{（关于\Term{exact-sequence}{正合列}的\Term{stable}{稳定}性。）} 设
+\[
+0\longrightarrow X\xrightarrow{u}Y\xrightarrow{v}Z\longrightarrow0
+\]
+是 $P$ 的一个\Term{exact-sequence}{正合列}。
+
+(i) 若 $X$ \Term{strict-projective-system}{严格}，且 $Y$ 是 \Term{j-adic-system}{$J$ 进的}，则 $Z$ 是 \Term{j-adic-system}{$J$ 进的}。
+
+(ii) 若 $Y$ \Term{strict-projective-system}{严格}，且 $Z$ 是 \Term{j-adic-system}{$J$ 进的}，则 $X$ \Term{strict-projective-system}{严格}。
+
+(iii) 若 $X,Z$ 是 \Term{j-adic-system}{$J$ 进的}，则 $Y$ 是 \Term{j-adic-system}{$J$ 进的}。
+\end{SGAresult}
+\begin{proof}若 $m\geq n$，则下图 $(T)$ 显然交换且\Term{exact}{正合}，其中竖直\Term{arrow}{箭头}表示\Term{transition-morphism}{过渡态射}：
+\[
+(T)\quad\begin{tikzcd}[column sep=small]
+&A/J^{n+1}\otimes_A X_m\arrow[r,"\operatorname{id}\otimes u_m"]\arrow[d,"f_{nm}"']&A/J^{n+1}\otimes_A Y_m\arrow[r,"\operatorname{id}\otimes v_m"]\arrow[d,"g_{nm}"']&A/J^{n+1}\otimes_A Z_m\arrow[r]\arrow[d,"h_{nm}"]&0\\
+0\arrow[r]&X_n\arrow[r]&Y_n\arrow[r]&Z_n\arrow[r]&0.
+\end{tikzcd}
+\]
+在情形 (i) 中，$f_{nm}$ 是\Term{epimorphism}{满态射}，$g_{nm}$ 是\Term{isomorphism}{同构}。在情形 (ii) 中，$g_{nm}$ 是\Term{epimorphism}{满态射}，$h_{nm}$ 是\Term{isomorphism}{同构}。在情形 (iii) 中，$f_{nm}$ 和 $h_{nm}$ 是\Term{isomorphism}{同构}。在三种情形中，对图 $(T)$ 应用\Term{snake-lemma}{蛇引理}都可得到结论。
+\end{proof}
+\textbf{3.2. AR-$J$ 进\Term{inverse-system}{投射系}。}
+\begin{SGAresult}{命题}{3.2.1}
+设 $X$ 是 $P$ 的一个\Term{object}{对象}，且对每个 $n\geq0$ 有 $J^{n+1}X_n=0$。则以下断言\Term{equivalence}{等价}：
+
+(i) 存在一个 \Term{j-adic-system}{$J$ 进}\Term{projective-system}{投射系} $Y$ 和一个 \Term{ar-isomorphism}{AR 同构} $u:Y\to X$（2.4.5）。
+
+(ii) 存在一个 \Term{j-adic-system}{$J$ 进}\Term{projective-system}{投射系} $Y$，它在\Term{category}{范畴} $P_{\mathrm{AR}}$ 中与 $X$ \Term{isomorphism}{同构}。
+\end{SGAresult}
+\SourcePage{233}
+\begin{proof}只须证明 (ii) 蕴含 (i)。$P_{\mathrm{AR}}$ 中从 $Y$ 到 $X$ 的一个\Term{isomorphism}{同构}，由某个整数 $r$ 及一个 \Term{ar-isomorphism}{AR 同构} $v:Y[r]\to X$ 表示。由于对每个 $n\geq0$ 有 $J^{n+1}X_n=0$，且 $Y$ 是 \Term{j-adic-system}{$J$ 进的}，所以 $v$ 是某个 $P$ \Term{morphism}{态射} $u:Y\to X$ 与 $Y[r]$ 到 $Y$ 的\Term{canonical-morphism}{典范态射}的复合。于是 $u$ 显然是 \Term{ar-isomorphism}{AR 同构}，断言得证。\end{proof}
+\begin{SGAresult}{定义}{3.2.2}
+一个以 $\mathbb N$ 为指标、取值于 $C$ 的\Term{projective-system}{投射系}称为 \Term{ar-j-adic-system}{AR-$J$ 进的}，若：
+
+(a) 对每个 $n\geq0$，$J^{n+1}X_n=0$；
+
+(b) 它满足命题 3.2.1 的\Term{equivalence}{等价}条件 (i)、(ii)。
+\end{SGAresult}
+\begin{SGAresult}{命题}{3.2.3}
+设 $X$ 是以 $\mathbb N$ 为指标、取值于 $C$ 的\Term{projective-system}{投射系}。假设对每个 $n\geq0$ 有 $J^{n+1}X_n=0$。那么 $X$ 为 \Term{ar-j-adic-system}{AR-$J$ 进}的充要条件是：它满足性质 \Term{mlar-condition}{(MLAR)}，并且，若以 $X'$ 表示其\Term{universal-images}{泛像投射系}，则存在一个整数 $r\geq0$，使得对每对满足 $m\geq n+r$ 的整数 $(m,n)$，以下“\Term{transition-morphism}{过渡态射}”是\Term{isomorphism}{同构}：
+\[
+X'_m/J^{n+1}X'_m\longrightarrow X'_{n+r}/J^{n+1}X'_{n+r}.
+\]
+\end{SGAresult}
+\begin{proof}(a) 叙述中的条件是充分的：若 $X$ 满足 \Term{mlar-condition}{(MLAR)}，则它与其\Term{universal-images}{泛像投射系} $X'$ \Term{ar-isomorphism}{AR 同构}。另一方面，对 $X'$ 所作的假设意味着\Term{projective-system}{投射系}
+\[
+(X'_{n+r}/J^{n+1}X'_{n+r})_{n\geq0}
+\]
+（\Term{transition-morphism}{过渡态射}取显然的\Term{morphism}{态射}）是 \Term{j-adic-system}{$J$ 进的}。而这个\Term{projective-system}{投射系}显然与 $X'$ \Term{ar-isomorphism}{AR 同构}（2.4.6）。
+
+(b) 叙述中的条件是必要的：若 $X$ 为 \Term{ar-j-adic-system}{AR-$J$ 进的}，则它与某个\Term{strict-projective-system}{严格投射系} \Term{ar-isomorphism}{AR 同构}，因而满足 \Term{mlar-condition}{(MLAR)}。
+\SourcePage{234}
+$X$ 的\Term{universal-images}{泛像投射系} $X'$ 与 $X$ \Term{ar-isomorphism}{AR 同构}，所以也是 \Term{ar-j-adic-system}{AR-$J$ 进的}。为证明第二点，便归结为证明：若 $X$ 是一个 \Term{ar-j-adic-system}{AR-$J$ 进}\Term{strict-projective-system}{严格投射系}，则存在整数 $r$，使由
+\[
+\ell_r(X)_n=X_{n+r}/J^{n+1}X_{n+r}
+\]
+定义的\Term{projective-system}{投射系} $\ell_r(X)$ 为 \Term{j-adic-system}{$J$ 进的}。为此，设 $u:Y\to X$ 是一个 \Term{ar-isomorphism}{AR 同构}，$Y$ 为 \Term{j-adic-system}{$J$ 进的}。$u$ 的核 $T$ 是 \Term{ar-null}{AR 零的}，取整数 $r$ 使\Term{canonical-morphism}{典范态射} $T[r]\to T$ 为零。\Term{canonical-morphism}{典范态射} $\ell_r(u):\ell_r(Y)\to\ell_r(X)$ 显然是\Term{isomorphism}{同构}，由此得到断言。
+\end{proof}
+\begin{SGAresult}{命题}{3.2.4}
+\textbf{（关于\Term{exact-sequence}{正合列}的\Term{stable}{稳定}性。）} 设
+\[
+0\longrightarrow X\xrightarrow{u}Y\xrightarrow{v}Z\longrightarrow0
+\]
+是 $P$ 的一个\Term{exact-sequence}{正合列}，且\Term{projective-system}{投射系} $X,Y,Z$ 满足
+\[
+J^{n+1}X_n=J^{n+1}Y_n=J^{n+1}Z_n=0\qquad(n\geq0).
+\]
+(i) 若 $X$ 满足 \Term{mlar-condition}{(MLAR)}，$Y$ 是 \Term{ar-j-adic-system}{AR-$J$ 进的}，则 $Z$ 是 \Term{ar-j-adic-system}{AR-$J$ 进的}。
+
+(ii) 若 $Y$ 满足 \Term{mlar-condition}{(MLAR)}，$Z$ 是 \Term{ar-j-adic-system}{AR-$J$ 进的}，则 $X$ 满足 \Term{mlar-condition}{(MLAR)}。
+\end{SGAresult}
+\begin{proof}对每个\Term{projective-system}{投射系} $X$ 和每个整数 $r$，自由使用前面已明确的记号 $\ell_r(X)$。
+
+(i) 的证明。若 $X',Y'$ 分别是 $X,Y$ 的\Term{universal-images}{泛像投射系}，则 $u$ 将 $X'$ 映入 $Y'$，于是有如下交换\Term{exact-diagram}{正合图}，所有\Term{arrow}{箭头}都是显然的：
+\[
+\begin{tikzcd}0\arrow[r]&X'\arrow[r]\arrow[d,hook]&Y'\arrow[r]\arrow[d,hook]&\widetilde Z\arrow[r]\arrow[d]&0\\0\arrow[r]&X\arrow[r]&Y\arrow[r]&Z\arrow[r]&0.\end{tikzcd}
+\]
+由于\Term{category}{范畴} $P_{\mathrm{AR}}$ 是\Term{abelian-category}{阿贝尔范畴}，且\Term{functor}{函子}
+\SourcePage{235}
+\[
+p_{\mathrm{AR}}:P\longrightarrow P_{\mathrm{AR}}
+\]
+\Term{exact}{正合}，由此图以及包含 $X'\to X$、$Y'\to Y$ 是 \Term{ar-isomorphism}{AR 同构}（2.5.1），可知\Term{morphism}{态射} $\widetilde Z\to Z$ 是 \Term{ar-isomorphism}{AR 同构}。
+
+因而可归结到 $X,Y$、从而 $Z$ 都\Term{strict-projective-system}{严格}的情形。此时存在整数 $r$，使\Term{projective-system}{投射系} $\ell_r(Y)$ 为 \Term{j-adic-system}{$J$ 进的}。\Term{functor}{函子} $\ell_r$ 显然\Term{right-exact}{右正合}，所以有\Term{exact-sequence}{正合列}
+\[
+\ell_r(X)\xrightarrow{\ell_r(u)}\ell_r(Y)\xrightarrow{\ell_r(v)}\ell_r(Z)\longrightarrow0.
+\]
+将 $\ell_r(X)$ 换成它在 $\ell_r(u)$ 下的像后，就满足 3.1.3 (i) 的适用条件，由此 $\ell_r(Z)$ 是 \Term{j-adic-system}{$J$ 进的}，断言得证。
+
+(ii) 设 $Y',Z'$ 是 $Y,Z$ 的\Term{universal-images}{泛像投射系}。考虑下面显然的交换\Term{exact-diagram}{正合图}，其中右边两条竖直\Term{arrow}{箭头}为\Term{canonical}{典范}包含：
+\[
+\begin{tikzcd}0\arrow[r]&\widetilde X\arrow[r]\arrow[d]&Y'\arrow[r]\arrow[d,hook]&Z'\arrow[r]\arrow[d,hook]&0\\0\arrow[r]&X\arrow[r,"u"]&Y\arrow[r,"v"]&Z\arrow[r]&0.\end{tikzcd}
+\]
+该图表明\Term{morphism}{态射} $\widetilde X\to X$ 是 \Term{ar-isomorphism}{AR 同构}，因此可归结到 $Y,Z$ 都\Term{strict-projective-system}{严格}的情形。这时，因为 $Z$ \Term{strict-projective-system}{严格}且为 \Term{ar-j-adic-system}{AR-$J$ 进的}，由 3.2.3 可知存在整数 $r$，使 $\ell_r(Z)$ 为 \Term{j-adic-system}{$J$ 进的}。再考虑交换\Term{exact-diagram}{正合图}
+\[
+\begin{tikzcd}0\arrow[r]&\widetilde{\widetilde X}\arrow[r]\arrow[d]&\ell_r(Y)\arrow[r]\arrow[d]&\ell_r(Z)\arrow[r]\arrow[d]&0\\0\arrow[r]&X\arrow[r,"u"]&Y\arrow[r,"v"]&Z\arrow[r]&0,\end{tikzcd}
+\]
+其中与前面一样，$\widetilde{\widetilde X}\to X$ 是 \Term{ar-isomorphism}{AR 同构}，便可归结到 $Y$ \Term{strict-projective-system}{严格}、$Z$ 为 \Term{j-adic-system}{$J$ 进的}的情形。于是
+\SourcePage{236}
+由 3.1.3 (ii) 得到结论。
+\end{proof}
+\SGAsection{4}{滤过与分次}
+\textbf{4.1. 一般性质。}
+
+\textbf{4.1.1。} 设 $C$ 是一个\Term{abelian-category}{阿贝尔范畴}，$X=(X_n)_{n\in\mathbb Z}$ 是以 $\mathbb Z$ 为指标、取值于 $C$ 的\Term{projective-system}{投射系}。假设 $X_i=0$（$i<0$）。对 $\mathbb Z$ 的每个元素 $p$，在\Term{category}{范畴} $P_1=\operatorname{Hom}(\mathbb Z^\circ,C)$ 中定义 $X$ 的一个\Term{subobject}{子对象} $F^pX$，令
+\[
+(F^pX)_n=F^pX_n=
+\begin{cases}\operatorname{Ker}(X_n\longrightarrow X_{p-1})&n\geq p-1,\\0&n<p-1,\end{cases}
+\]
+\Term{transition-morphism}{过渡态射}以显然的方式定义。这样便得到 $X$ 的一个递降\Term{filtration}{滤过} $(F^pX)_{p\in\mathbb Z}$，满足：
+
+(a) $F^pX=X$，若 $p\leq0$；
+
+(b) 对每个 $p$，$(F^pX)_{p-1}=0$。
+
+另一方面，对下面的交换\Term{exact-diagram}{正合图} $(D)$ 应用\Term{snake-lemma}{蛇引理}，说明只要 $n\geq p$，\Term{canonical-morphism}{典范态射}
+\[
+F^pX_n/F^{p+1}X_n\longrightarrow\operatorname{Im}(X_n\longrightarrow X_p)\cap\operatorname{Ker}(X_p\longrightarrow X_{p-1})
+\]
+就是\Term{isomorphism}{同构}。
+\[
+(D)\quad\begin{tikzcd}[column sep=small]
+0\arrow[r]&\operatorname{Ker}(X_n\to X_p)\arrow[r]\arrow[d]&X_n\arrow[r]\arrow[d]&\operatorname{Im}(X_n\to X_p)\arrow[r]\arrow[d]&0\\
+0\arrow[r]&0\arrow[r]&X_{p-1}\arrow[r,"\sim"]&X_{p-1}\arrow[r]&0.
+\end{tikzcd}
+\]
+现在，若 $X$ 是以 $\mathbb N$ 为指标、取值于 $C$ 的\Term{projective-system}{投射系}，则令 $X_n=0$（$n<0$），配以显然的\Term{transition-morphism}{过渡态射}，将它延拓为以 $\mathbb Z$ 为指标的\Term{projective-system}{投射系}，从而能对它施行上述构造。
+\SourcePage{237}
+这样也可将\Term{category}{范畴} $P=\operatorname{Hom}(\mathbb N^\circ,C)$ 看作 $P_1$ 的一个\Term{full-subcategory}{满子范畴}。
+\begin{SGAresult}{定义}{4.1.2}
+设 $X$ 是以 $\mathbb Z$ 为指标的\Term{projective-system}{投射系}。若存在整数 $p$，使得对每对满足 $s\geq r\geq p$ 的整数 $(r,s)$，\Term{transition-morphism}{过渡态射} $X_s\to X_r$ 是\Term{isomorphism}{同构}，则称 $X$ 是\Term{essentially-constant}{本质常值的}。
+\end{SGAresult}
+显然，只须对 $r=p$ 的情形作此要求即可。
+\begin{SGAresult}{命题}{4.1.3}
+\textbf{（性质 (MLAR) 与\Term{graded-object}{分次对象}。）} 对\Term{category}{范畴} $P$ 的一个\Term{object}{对象} $X$，下述断言\Term{equivalence}{等价}：
+
+(i) $X$ 满足 \Term{mlar-condition}{(MLAR)}。
+
+(ii) 在 $C$ 中以 $\mathbb N$ \Term{graded}{分次}的\Term{object}{对象}所成的\Term{category}{范畴}中取值的\Term{projective-system}{投射系}
+\[
+r\longmapsto\bigl(\operatorname{gr}^{\alpha}(X_{\alpha+r})\bigr)_{\alpha\in\mathbb N},
+\]
+配以显然的\Term{transition-morphism}{过渡态射}，是\Term{essentially-constant}{本质常值的}。
+
+(iii) 在 $C$ 中以 $\mathbb N$ \Term{graded}{分次}的\Term{object}{对象}所成的\Term{category}{范畴}中取值的\Term{projective-system}{投射系}
+\[
+n\longmapsto\bigl(\operatorname{gr}^p(X_n)\bigr)_{p\in\mathbb N},
+\]
+配以显然的\Term{transition-morphism}{过渡态射}，满足 \Term{mlar-condition}{(MLAR)}。
+\end{SGAresult}
+\begin{proof}(i) $\Rightarrow$ (ii)：由 4.1.1 中给出的 $F^pX_n/F^{p+1}X_n$ 的表达式得到。
+
+(ii) $\Rightarrow$ (iii)：设 $r$ 是一个整数，使得对每个 $s>r$ 和每个 $p$，\Term{canonical-morphism}{典范态射}
+\SourcePage{238}
+\[
+\operatorname{gr}^p(X_{p+s})\longrightarrow\operatorname{gr}^p(X_{p+r})
+\]
+是\Term{isomorphism}{同构}。我们证明，对每对满足 $m\geq n+r$ 的整数 $(m,n)$，下面的等式对每个整数 $p$ 都成立：
+\[
+\operatorname{Im}(\operatorname{gr}^p(X_m)\to\operatorname{gr}^p(X_n))=\operatorname{Im}(\operatorname{gr}^p(X_{n+r})\to\operatorname{gr}^p(X_n)).
+\]
+事实上：
+
+(a) 若 $p\geq n+1$，则 $\operatorname{gr}^p(X_n)=0$。
+
+(b) 若 $p\leq n$，则由不等式链 $m\geq n+r\geq p+r$ 可知，\Term{canonical-morphism}{典范态射}
+\[
+\operatorname{gr}^p(X_m)\longrightarrow\operatorname{gr}^p(X_{n+r})
+\]
+是\Term{isomorphism}{同构}，由此得到断言。
+
+(iii) $\Rightarrow$ (i)：以 $Y$ 表示 (iii) 中的\Term{projective-system}{投射系}，取整数 $r$ 使
+\[
+\operatorname{Im}(Y[s]\to Y)=\operatorname{Im}(Y[r]\to Y)\qquad(s\geq r).
+\]
+若 $n,\ell$ 是满足 $\ell\geq n$ 的两个整数，则由 $X_n$ 的\Term{filtration}{滤过}在 $\operatorname{Im}(X_\ell\to X_n)$ 上诱导的\Term{filtration}{滤过}，也是 $X_\ell$ 的\Term{filtration}{滤过}的“商\Term{filtered}{滤过}”。因此，将 $\operatorname{Im}(X_\ell\to X_n)$ 赋予这一\Term{filtration}{滤过}，就有
+\[
+\operatorname{gr}^p(\operatorname{Im}(X_\ell\to X_n))=\operatorname{Im}(\operatorname{gr}^p(X_\ell)\to\operatorname{gr}^p(X_n)).
+\]
+特别地，条件 (iii) 可表述为：只要 $\ell\geq n+r$，\Term{canonical}{典范}\Term{monomorphism}{单态射}
+\[
+j:\operatorname{Im}(X_\ell\to X_n)\longrightarrow\operatorname{Im}(X_{n+r}\to X_n)
+\]
+就在\Term{associated-graded}{分次对象}上\Term{induction-isomorphism}{诱导同构}。由于\Term{graded}{分次}是\Term{finite}{有限}的，便得到 $j$ 本身是\Term{isomorphism}{同构}，由此得到 (i)。
+\end{proof}
+\SourcePage{239}
+\textbf{4.1.4。} 若 $X$ 是 $P$ 的一个满足 \Term{ml-condition}{(ML)} 的\Term{object}{对象}，则由 4.1.1 中回顾的\Term{associated-graded}{分次对象}的表达式可知，对每个整数 $p$，\Term{projective-system}{投射系}
+\[
+\operatorname{gr}^p(X)=\bigl(\operatorname{gr}^p(X_n)\bigr)_{n\in\mathbb N}
+\]
+是\Term{essentially-constant}{本质常值的}。其\Term{projective-limit}{投射极限}（无须对\Term{abelian-category}{阿贝尔范畴} $C$ 作任何假设便存在）称为 $X$ 的\Term{strict-graded}{严格分次对象}的第 $p$ 个\Term{set-component}{分量}，记作
+\[
+\operatorname{grs}^p(X).
+\]
+\textbf{4.2. 适合于 $J$ 的\Term{inverse-system}{投射系}与 Artin--Rees \Term{lemma}{引理}。}
+假设给定\Term{commutative-ring}{交换环} $A$、$A$ 的\Term{ideal}{理想} $J$ 和一个\Term{abelian-a-category}{阿贝尔 $A$ 范畴}。
+\begin{SGAresult}{定义}{4.2.1}
+若\Term{category}{范畴} $P=\operatorname{Hom}(\mathbb N^\circ,C)$ 的\Term{object}{对象} $X$ 的\Term{projective-system}{投射系}\Term{filtration}{滤过} $(F^pX)_{p\in\mathbb N}$（4.1.1）与 $X$ 的 $J$ 进\Term{filtration}{滤过}相容，即对每对非负整数 $(p,q)$，有包含关系
+\[
+J^pF^q(X)\subset F^{p+q}(X),
+\]
+则称 $X$ \Term{j-adapted}{适合于 $J$}。
+\end{SGAresult}
+\begin{SGAresult}{\Term{lemma}{引理}}{4.2.2}
+设 $X$ 是\Term{category}{范畴} $P$ 的一个\Term{object}{对象}。下述断言\Term{equivalence}{等价}：
+
+(i) $X$ \Term{j-adapted}{适合于 $J$}。
+
+(ii) 对每对满足 $p\leq n+1$ 的整数 $(n,p)$，有
+\[
+J^pF^{n-p+1}(X_n)=0.
+\]
+\end{SGAresult}
+\begin{proof}(i) $\Rightarrow$ (ii)：此时 $J^pF^{n-p+1}(X_n)\subset F^{n+1}(X_n)=0$。
+\SourcePage{240}
+(ii) $\Rightarrow$ (i)：若 $n<p+q$，则由定义 $F^{p+q}(X_n)=0$。另一方面，$J^pF^q(X_n)$ 包含于 $J^{n+1-q}F^q(X_n)$，后者由假设为零。
+
+若 $n>p+q$，则 $J^pF^q(X_n)$ 经由\Term{transition-morphism}{过渡态射}在 $X_{p+q-1}$ 中的像包含于 $J^pF^q(X_{p+q-1})$，后者由假设等于零。由\Term{projective-system}{投射系}\Term{filtration}{滤过}的定义便得到包含关系
+\[
+J^pF^q(X_n)\subset F^{p+q}(X_n).
+\]
+\end{proof}
+特别地，由 4.2.2 可知，\Term{j-adapted}{适合于 $J$} 的\Term{projective-system}{投射系}的每个子\Term{projective-system}{投射系}也\Term{j-adapted}{适合于 $J$}。
+
+\textbf{例。} a) 一个 \Term{j-adic-system}{$J$ 进}\Term{projective-system}{投射系}\Term{j-adapted}{适合于 $J$}。所以，\Term{j-adic-system}{$J$ 进}\Term{projective-system}{投射系}的每个子\Term{projective-system}{投射系}都\Term{j-adapted}{适合于 $J$}。
+
+b) 若\Term{projective-system}{投射系} $X$ 满足条件 \Term{ml-condition}{(ML)} 且\Term{j-adapted}{适合于 $J$}，则其\Term{universal-images}{泛像投射系}也\Term{j-adapted}{适合于 $J$}。
+
+\textbf{4.2.3. 适合于 $J$ 的\Term{inverse-system}{投射系}的\Term{graded-object}{分次对象}。} 设 $X$ 是一个\Term{j-adapted}{适合于 $J$} 的\Term{projective-system}{投射系}。由于 $X$ 的\Term{filtration}{滤过}与 $J$ 相容，显然\Term{associated-graded}{分次对象}
+\[
+\bigl(\operatorname{gr}^p(X)\bigr)_{p\in\mathbb N}
+\]
+\Term{canonical}{典范}地带有一个 $\operatorname{gr}_J(A)$ \Term{graded-module}{分次模}结构。特别地，通过取\Term{limit}{极限}可知，当 $X$ 满足条件 \Term{ml-condition}{(ML)} 时，\Term{associated-graded}{分次对象}
+\[
+\operatorname{grs}(X)=\bigl(\operatorname{grs}^p(X)\bigr)_{p\in\mathbb N}
+\]
+\Term{canonical}{典范}地带有一个 $\operatorname{gr}_J(A)$ \Term{graded-module}{分次模}结构。
+
+当 $X$ 还\Term{strict-projective-system}{严格}时，我们简要明确说明如何定义对应\Term{morphism}{态射}：
+\SourcePage{241}
+\[
+\omega_{pq}:J^p/J^{p+1}\otimes_A F^q(X_q)\longrightarrow F^{p+q}(X_{p+q}).
+\]
+因为\Term{projective-system}{投射系} $X$ \Term{strict-projective-system}{严格}，由 4.1.1 和 4.1.2 知道，下述\Term{canonical-morphism}{典范态射}是\Term{isomorphism}{同构}：
+\[
+\varphi:F^q(X_{p+q})/F^{q+1}(X_{p+q})\longrightarrow F^q(X_q).
+\]
+另一方面，$X$ 的\Term{filtration}{滤过}\Term{j-adapted}{适合于 $J$}，使我们得到\Term{morphism}{态射}
+\[
+J^p\otimes_A F^q(X_{p+q})\longrightarrow F^{p+q}(X_{p+q}).
+\]
+由于 $J^{p+1}F^q(X_{p+q})\subset F^{p+q+1}(X_{p+q})=0$ 及 $J^pF^{q+1}(X_{p+q})\subset F^{p+q+1}(X_{p+q})=0$，此\Term{morphism}{态射}经由
+\[
+(J^p/J^{p+1})\otimes_A\bigl(F^q(X_{p+q})/F^{q+1}(X_{p+q})\bigr)
+\]
+\Term{resolution}{分解}，给出\Term{morphism}{态射}
+\[
+\beta:(J^p/J^{p+1})\otimes_A\bigl(F^q(X_{p+q})/F^{q+1}(X_{p+q})\bigr)\longrightarrow F^{p+q}(X_{p+q}).
+\]
+于是\Term{morphism}{态射} $\omega_{pq}$ 由下式给出：
+\[
+\omega_{pq}=\beta\circ(\operatorname{id}_{J^p/J^{p+1}}\otimes_A\varphi)^{-1}.
+\]
+\begin{SGAresult}{\Term{lemma}{引理}}{4.2.4}
+设 $X$ 是一个 \Term{j-adic-system}{$J$ 进}\Term{projective-system}{投射系}。由 $\operatorname{grs}(X)$ 的 $\operatorname{gr}_J(A)$ \Term{graded-module}{分次模}结构得到的\Term{canonical-morphism}{典范态射}
+\[
+\operatorname{gr}_J(A)\otimes_A X_0\longrightarrow\operatorname{grs}(X)
+\]
+是\Term{epimorphism}{满态射}。
+\end{SGAresult}
+\begin{proof}由 4.2.3 中对\Term{morphism}{态射} $\omega_{pq}$ 的说明立即得到。\end{proof}
+\begin{SGAresult}{命题}{4.2.5}
+\textbf{（用\Term{associated-graded}{伴随分次对象}刻画严格 AR-$J$ 进\Term{inverse-system}{投射系}。）}
+\SourcePage{242}
+设 $X$ 是以 $\mathbb N$ 为指标、取值于 $C$ 的\Term{strict-projective-system}{严格投射系}。假设对每个整数 $n$ 有
+\[
+J^{n+1}X_n=0.
+\]
+以下断言\Term{equivalence}{等价}：
+
+(i) $X$ 是 \Term{ar-j-adic-system}{AR-$J$ 进的}。
+
+(ii) 存在整数 $r>0$，使得对每个整数 $n$ 有包含关系
+\[
+F^n(X_n)\subset J^{n-r}X_n.
+\]
+(iii) 存在整数 $r$，使得对每个整数 $m$，当 $n\geq m+r$ 时，\Term{canonical-morphism}{典范态射}
+\[
+\operatorname{gr}^n(J^mX)\longrightarrow\operatorname{gr}^n(X)
+\]
+是\Term{isomorphism}{同构}。
+
+在 (ii) 的叙述中，当 $n<r$ 时约定置 $J^{n-r}X_n=X_n$。
+\end{SGAresult}
+\begin{proof}由于 $X$ 和 $J^mX$ 都\Term{strict-projective-system}{严格}，(ii) 和 (iii) 的\Term{equivalence}{等价}性是显然的。证明 (i) 与 (ii) 的\Term{equivalence}{等价}性。由 3.2.3 知道，(i) \Term{equivalence}{等价}于存在整数 $r$，使对每对满足 $m\geq n+r$ 的整数 $(m,n)$，下面的\Term{transition-morphism}{过渡态射}为\Term{isomorphism}{同构}：
+\[
+X_{m+1}/J^{n+1}X_{m+1}\longrightarrow X_m/J^{n+1}X_m.
+\]
+现考虑如下交换\Term{exact-diagram}{正合图}：
+\[
+\begin{tikzcd}[column sep=small]
+&&0\arrow[d]&0\arrow[d]\\
+&&J^{n+1}X_{m+1}\arrow[r]\arrow[d]&J^{n+1}X_m\arrow[r]\arrow[d]&0\\
+0\arrow[r]&F^{m+1}(X_{m+1})\arrow[r]&X_{m+1}\arrow[r]\arrow[d]&X_m\arrow[r]\arrow[d]&0\\
+&&X_{m+1}/J^{n+1}X_{m+1}\arrow[r]\arrow[d]&X_m/J^{n+1}X_m\arrow[r]\arrow[d]&0\\
+&&0&0.
+\end{tikzcd}
+\]
+\SourcePage{243}
+此图说明，在
+\[
+\operatorname{Ker}(X_{m+1}/J^{n+1}X_{m+1}\longrightarrow X_m/J^{n+1}X_m)
+\]
+与
+\[
+F^{m+1}(X_{m+1})/\bigl(F^{m+1}(X_{m+1})\cap J^{n+1}X_{m+1}\bigr)
+\]
+之间存在一个\Term{canonical-isomorphism}{典范同构}。特别地，模 $J^{n+1}$ \Term{reduced}{约化}后的\Term{transition-morphism}{过渡态射}为\Term{isomorphism}{同构}，当且仅当 $F^{m+1}(X_{m+1})$ 包含于 $J^{n+1}X_{m+1}$，这正是断言 (ii)。
+\end{proof}
+\begin{SGAresult}{\Term{theorem}{定理}}{4.2.6}
+\textbf{（Artin--Rees \Term{lemma}{引理}。）} 设 $X$ 是以 $\mathbb N$ 为指标、取值于 $C$ 的\Term{projective-system}{投射系}。假设：
+
+(i) $X$ 满足 \Term{mlar-condition}{(MLAR)}；
+
+(ii) $X$ \Term{j-adapted}{适合于 $J$}；
+
+(iii) $\operatorname{grs}(X)$ 是一个\Term{finitely-generated}{有限生成}的 $(\operatorname{gr}_J(A),C)$ \Term{graded-module}{分次模}，即对 $\operatorname{grs}(X)$ 的每个递增的\Term{graded}{分次}子 $\operatorname{gr}_J(A)$ 模列 $(M_n)_{n\in\mathbb N}$，若 $\operatorname{grs}(X)$ 是其并，则存在整数 $p$，使得
+\[
+\operatorname{grs}(X)=M_p.
+\]
+则 $X$ 是 \Term{ar-j-adic-system}{AR-$J$ 进的}。
+\end{SGAresult}
+\begin{proof}回顾，若 $X'$ 是 $X$ 的\Term{universal-images}{泛像投射系}，则已置
+\[
+\operatorname{grs}(X)=\operatorname{gr}(X').
+\]
+另一方面，$X'$ \Term{j-adapted}{适合于 $J$}，所以归结为证明 $X'$ 是 \Term{ar-j-adic-system}{AR-$J$ 进的}。
+
+假设下面的\Term{lemma}{引理}已经证明：
+\end{proof}
+\begin{SGAresult}{\Term{lemma}{引理}}{4.2.7}
+设 $X$ 是一个\Term{j-adapted}{适合于 $J$} 的\Term{strict-projective-system}{严格投射系}。对每个整数 $s$，由下列等式定义的 $\operatorname{grs}(X)$ 的\Term{associated-graded}{分次子对象} $[(M_s)_n]_{n\in\mathbb N}$：
+\SourcePage{244}
+\[
+(M_s)_n=J^{n-s}X_n\cap F^n(X_n)\qquad(J^i=A\text{，若 }i<0),
+\]
+是 $\operatorname{grs}(X)$ 的一个\Term{graded}{分次}子 $\operatorname{gr}_J(A)$ 模。
+\end{SGAresult}
+\begin{proof}[\Term{theorem}{定理}证明续]
+为证明\Term{theorem}{定理}，可假设 $X$ \Term{strict-projective-system}{严格}。此时，$\operatorname{grs}(X)$ 是递增列 $M_s$ 的并，因而等于其中一项。即存在整数 $s_0$，使得对每个整数 $n$ 都有
+\[
+F^n(X_n)\subset J^{n-s_0}X_n.
+\]
+由 4.2.5 得到结论。
+\end{proof}
+\begin{proof}[4.2.7 的证明]
+沿用 4.2.3 的记号。须证明\Term{morphism}{态射}
+\[
+\omega_{pq}:J^p/J^{p+1}\otimes_A F^q(X_q)\longrightarrow F^{p+q}(X_{p+q})
+\]
+将 $J^p/J^{p+1}\otimes_A(J^{q-s}X_q\cap F^q(X_q))$ 映入 $J^{p+q-s}X_{p+q}\cap F^{p+q}(X_{p+q})$。
+
+\Term{canonical-morphism}{典范态射}
+\[
+\rho:X_{p+q}/F^{q+1}(X_{p+q})\longrightarrow X_q
+\]
+是\Term{isomorphism}{同构}，且将 $\bigl(J^{q-s}X_{p+q}+F^{q+1}(X_{p+q})\bigr)/F^{q+1}(X_{p+q})$ 映满到 $J^{q-s}X_q$。由此可知，
+\[
+J^p/J^{p+1}\otimes_A(J^{q-s}X_q\cap F^q(X_q))
+\]
+在 $\operatorname{id}_{J^p/J^{p+1}}\otimes_A\varphi$（4.2.3）下的\Term{inverse-image}{逆像}是
+\[
+J^p/J^{p+1}\otimes_A\left(\frac{(J^{q-s}X_{p+q}\cap F^q(X_{p+q}))+F^{q+1}(X_{p+q})}{F^{q+1}(X_{p+q})}\right).
+\]
+现在显然，后一个\Term{object}{对象}在 $\beta$（4.2.3）下的像包含于 $J^{p+q-s}X_{p+q}\cap J^pF^q(X_{p+q})$，因而更包含于
+\[
+J^{p+q-s}X_{p+q}\cap F^{p+q}(X_{p+q}).
+\]
+\Term{lemma}{引理}得证。
+\end{proof}

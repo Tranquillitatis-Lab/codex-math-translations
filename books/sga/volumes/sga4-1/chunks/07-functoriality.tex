@@ -1,0 +1,694 @@
+\SourcePage{161}
+\SGAchapter{III}{层范畴的函子性}{Fonctorialité des catégories de faisceaux}
+\begin{center}J. L. Verdier\end{center}
+
+在第 I 讲第 5 节中，我们研究了\Term{presheaf}{预层}\Term{category}{范畴}相对于变元\Term{category}{范畴}之间的\Term{functor}{函子}的行为。本讲把这项研究推广到\Term{site}{景}与\Term{sheaf}{层}\Term{category}{范畴}的情形（第 1、2 节）。引入\Term{induced-topology}{诱导拓扑}（第 3 节）后，第 4 节讨论\Term{comparison-lemma}{比较引理}；它将在第 IV 讲中起重要\Term{action}{作用}。在第 5 节中，我们为有耐心的读者研究与\Term{localization}{局部化}\Term{category}{范畴}（形如 $C/X$）有关的某些\Term{commutative-diagram}{交换图}。在定理第 I 讲 5.1 中，我们对所考虑的\Term{category}{范畴}作了小性假设。这些假设通常不被实际遇到的\Term{site}{景}（$\mathcal U$-\Term{site}{景}）满足，因此不得不作一些迂回处理（4.2、4.3、4.4）。
+
+\SGAsection{1}{连续函子}
+\begin{SGAresult}{定义}{1.1}
+设 $C$ 与 $C'$ 是两个 $\mathcal U$-\Term{site}{景}，$u:C\to C'$ 是底\Term{sheaf}{层}\Term{category}{范畴}之间的\Term{functor}{函子}。如果对 $C'$ 上的每个\Term{set-valued-sheaf}{集合层} $F$，$C$ 上的\Term{presheaf}{预层} $X\mapsto F\circ u(X)$ 都是\Term{sheaf}{层}，就称 $u$ \Term{continuous}{连续}。
+\end{SGAresult}
+这个\Term{continuity}{连续性}概念先验地依赖于使这两个\Term{site}{景}成为 $\mathcal U$-\Term{site}{景}的\Term{universe}{宇宙} $\mathcal U$。命题 1.5 说明它实际上不依赖于此。
+
+\SourcePage{162}
+\textbf{1.11。}用 $i:C^{\sim}\to\widehat C$（相应地 $i':C'^{\sim}\to\widehat {C'}$）表示由\Term{sheaf}{层}到\Term{presheaf}{预层}的\Term{canonical}{典范}\Term{inclusion-functor}{包含函子}。根据定义 1.1，\Term{functor}{函子} $u$ \Term{continuous}{连续}，当且仅当存在\Term{functor}{函子} $u_s:C'^{\sim}\to C^{\sim}$，使得 $iu_s=u^*i'$（其中 $u^*F=F\circ u$，第 I 讲 5.0）。
+
+\begin{SGAresult}{命题}{1.2}
+设 $C$ 是\Term{small-site}{小景}，$C'$ 是 $\mathcal U$-\Term{site}{景}，$u:C\to C'$ 是底\Term{sheaf}{层}\Term{category}{范畴}之间的\Term{functor}{函子}。以下性质\Term{equivalence}{等价}：
+
+\noindent i) \Term{functor}{函子} $u$ \Term{continuous}{连续}。
+
+\noindent ii) 对 $C$ 的每个\Term{object}{对象} $X$ 及每个\Term{covering}{覆盖} $X$ 的\Term{sieve}{筛} $R\hookrightarrow X$，\Term{morphism}{态射} $u_!R\hookrightarrow u(X)$ 在 $\widehat {C'}$ 中是\Term{bicovering}{双覆盖}的（第 II 讲 5.2 及第 I 讲 5.1）。\footnote{把“\Term{bicovering}{双覆盖}”换成“\Term{covering}{覆盖}”未必足够，参见下面的例 1.9.3。}
+
+\noindent iii) 对 $\widehat C$ 的每个\Term{bicovering-family}{双覆盖族} $H_i\to K$，$i\in I$，族 $u_!H_i\to u_!K$，$i\in I$，在 $\widehat {C'}$ 中也是\Term{bicovering-family}{双覆盖族}。
+
+\noindent iv) 存在与\Term{inductive-limit}{归纳极限}交换且“延拓 $u$”的\Term{functor}{函子} $u^s:C^{\sim}\to C'^{\sim}$；也就是说，\Term{canonical}{典范}\Term{functor}{函子}的图
+\[
+\begin{tikzcd}
+ C\arrow[r,"u"]\arrow[d,"\varepsilon_C"'] & C'\arrow[d,"\varepsilon_{C'}"]\\
+ C^{\sim}\arrow[r,"u^s"'] & C'^{\sim}
+\end{tikzcd}
+\]
+在\Term{isomorphism}{同构}意义下交换。
+
+此外，当 $C$ 不再必为\Term{small-site}{小景}，而是一个 $\mathcal U$-\Term{site}{景}时，仍有 i) $\Leftrightarrow$ iv)，且 iv) 中的\Term{functor}{函子} $u^s$ 必为\Term{functor}{函子} $u_s:C'^{\sim}\to C^{\sim}$ 的\Term{left-adjoint}{左伴随}，因而在唯一\Term{isomorphism}{同构}意义下确定。
+\end{SGAresult}
+\begin{proof}
+当 $C$ 是 $\mathcal U$-\Term{site}{景}时，i) $\Leftrightarrow$ iv) 的证明将在 4.2 中给出。现设 $C$ 小。显然 iii) $\Rightarrow$ ii)。
+
+\noindent i) $\Rightarrow$ iii)：设 $H_i\to K$，$i\in I$，是 $\widehat C$ 中的\Term{bicovering-family}{双覆盖族}。对 $C'$ 上的每个\Term{sheaf}{层} $F$，\Term{presheaf}{预层} $u^*F$（第 I 讲 5.0）都是 $C$ 上的\Term{sheaf}{层}。因此（第 II 讲 5.3），\Term{canonical}{典范}映射
+\[
+ \operatorname{Hom}(K,u^*F)\longrightarrow\prod_i\operatorname{Hom}(H_i,u^*F)
+\]
+是\Term{bijection}{双射}。由\Term{adjunction}{伴随关系}（第 I 讲 5.1）推出\Term{canonical}{典范}映射
+\[
+ \operatorname{Hom}(u_!K,F)\longrightarrow\prod_i\operatorname{Hom}(u_!H_i,F)
+\]
+是\Term{bijection}{双射}。因此（第 II 讲 5.3），族 $u_!H_i\to u_!K$，$i\in I$，是\Term{bicovering-family}{双覆盖族}。
+
+\noindent ii) $\Rightarrow$ i)：设 $X$ 是 $C$ 的\Term{object}{对象}，$R\hookrightarrow X$ 是\Term{covering-sieve}{覆盖筛}，$F$ 是 $C'$ 上的\Term{sheaf}{层}。根据第 II 讲 5.3，映射
+\[
+ \operatorname{Hom}(u_!X,F)\longrightarrow\operatorname{Hom}(u_!R,F)
+\]
+\SourcePage{163}
+是\Term{bijection}{双射}。由\Term{adjunction}{伴随关系}（第 I 讲 5.1）推出映射
+\[
+ \operatorname{Hom}(X,u^*F)\longrightarrow\operatorname{Hom}(R,u^*F)
+\]
+是\Term{bijection}{双射}。因此 $u^*F$ 是\Term{sheaf}{层}。
+
+\noindent i) $\Rightarrow$ iv)：沿用通常的记号，以 $a$、$i$（相应地 $a'$、$i'$）表示“\Term{associated-sheaf}{伴随层}”\Term{functor}{函子}与“包含到\Term{presheaf}{预层}中”的\Term{functor}{函子}。对 $C$ 上的每个\Term{sheaf}{层} $G$，置 $u^sG=a'u_!iG$。对 $C'$ 上的每个\Term{sheaf}{层} $F$，有自然\Term{isomorphism}{同构}链：
+\[
+\begin{aligned}
+ \operatorname{Hom}(G,u_sF)&\simeq\operatorname{Hom}(iG,iu_sF)
+ \simeq\operatorname{Hom}(iG,u^*i'F)\\
+ &\simeq\operatorname{Hom}(u_!iG,i'F)
+ \simeq\operatorname{Hom}(a'u_!iG,F).
+\end{aligned}
+\]
+（第一个\Term{isomorphism}{同构}来自 $i$ 的\Term{fully-faithful-functor}{全忠实}性；第二个\Term{isomorphism}{同构}来自 $u_s$ 的定义；第三、第四个\Term{isomorphism}{同构}由\Term{adjunction}{伴随关系}得到。）因此 $u^s$ 是 $u_s$ 的\Term{left-adjoint}{左伴随}。特别地，$u^s$ 与\Term{inductive-limit}{归纳极限}交换。对 $C$ 上的每个\Term{presheaf}{预层} $K$ 及 $C'$ 上的每个\Term{sheaf}{层} $F$，有自然\Term{isomorphism}{同构}链
+\[
+\begin{aligned}
+ \operatorname{Hom}(u^saK,F)&\simeq\operatorname{Hom}(aK,u_sF)
+ \simeq\operatorname{Hom}(K,iu_sF)\\
+ &\simeq\operatorname{Hom}(K,u^*i'F)
+ \simeq\operatorname{Hom}(u_!K,i'F)
+ \simeq\operatorname{Hom}(a'u_!K,F)
+\end{aligned}
+\]
+（第三个\Term{isomorphism}{同构}来自 $u_s$ 的定义，其余\Term{isomorphism}{同构}由\Term{adjunction}{伴随关系}得到）；从而得到\Term{functor}{函子}性\Term{isomorphism}{同构} $u^saK\simeq a'u_!K$。特别地，对\Term{representable}{可表示}的 $K$ 使用这个\Term{isomorphism}{同构}，并结合第 I 讲 5.4 3)，便得到在\Term{isomorphism}{同构}意义下交换的图：
+\[
+\begin{tikzcd}
+ C\arrow[r,"u"]\arrow[d,"\varepsilon_C"'] & C'\arrow[d,"\varepsilon_{C'}"]\\
+ C^{\sim}\arrow[r,"u^S"'] & C'^{\sim}.
+\end{tikzcd}
+\]
+
+\noindent iv) $\Rightarrow$ ii)：以 $h:C\to\widehat C$（相应地 $h':C'\to\widehat {C'}$）表示把一个\Term{object}{对象}映到它所表示的\Term{presheaf}{预层}的\Term{functor}{函子}。考虑图：
+\[
+\begin{tikzcd}
+ C\arrow[r,"u"]\arrow[d,"h"'] & C'\arrow[d,"h'"]\\
+ \widehat C\arrow[r,"u_!"]\arrow[d,"a"'] & \widehat {C'}\arrow[d,"a'"]\\
+ C^{\sim}\arrow[r,"u^S"'] & C'^{\sim}.
+\end{tikzcd}
+\]
+上方的方块交换（1.4 3)），并有 $ah=\varepsilon_C$、$a'h'=\varepsilon_{C'}$。对 $\widehat C$ 的每个\Term{object}{对象} $K$，有\Term{canonical}{典范}\Term{isomorphism}{同构}（第 I 讲 3.4）：
+\[
+ \varinjlim_{(h(X)\to K)\in\operatorname{ob}(C/K)}h(X)\xrightarrow{\sim}K.
+\]
+\SourcePage{164}
+由于\Term{functor}{函子} $u_!$、$u^s$、$a$ 与 $a'$ 都与\Term{inductive-limit}{归纳极限}交换，便得到\Term{isomorphism}{同构}：
+\[
+\begin{aligned}
+ \varinjlim_{(h(X)\to K)\in\operatorname{ob}(C/K)}u^sa h(X)&\xrightarrow{\sim}u^saK,\\
+ \varinjlim_{(h(X)\to K)\in\operatorname{ob}(C/K)}a'u_!h(X)&\xrightarrow{\sim}a'u_!K.
+\end{aligned}
+\]
+有 $u_!h=h'u$，而根据假设，有\Term{isomorphism}{同构} $a'h'u\simeq u^sah$，从而有\Term{isomorphism}{同构}
+\[
+ u^saK\simeq a'u_!K,
+\]
+立即可以验证它对 $K$ 是\Term{functor}{函子}性的。因此图
+\[
+\begin{tikzcd}
+ \widehat C\arrow[r,"u_!"]\arrow[d,"a"']&\widehat {C'}\arrow[d,"a'"]\\
+ C^{\sim}\arrow[r,"u^S"']&C'^{\sim}
+\end{tikzcd}
+\]
+在\Term{isomorphism}{同构}意义下交换。由于 $ai$ \Term{isomorphism}{同构}于恒等\Term{functor}{函子}，有\Term{isomorphism}{同构} $u^s\simeq a'u_!i$，由此得到 $u^s$ 的唯一性。设 $v:H\to K$ 是 $\widehat C$ 的\Term{bicovering}{双覆盖}\Term{morphism}{态射}。那么 $a(v)$ 是\Term{isomorphism}{同构}（第 II 讲 5.3），故 $a'u_!(v)$（它\Term{isomorphism}{同构}于 $u^sa(V)$）是\Term{isomorphism}{同构}。因此 $u_!(v)$ 被 $a'$ 变为\Term{isomorphism}{同构}，故 $u_!(v)$ 是\Term{bicovering}{双覆盖}的（第 II 讲 5.3），这就给出 ii)。
+
+当 $C$ 小时，附加断言已经在证明过程中得证。
+\end{proof}
+
+\textbf{1.2.1。}2.2 iv) 中的\Term{functor}{函子} $u^s:C^{\sim}\to C'^{\sim}$ 往往可以解释为一个“\Term{topos-morphism}{拓扑斯态射}”$C'^{\sim}\to C^{\sim}$ 的“\Term{inverse-image}{逆像}”\Term{functor}{函子}，参见第 IV 讲 4.9。它的性质概括在以下命题中：
+\begin{SGAresult}{命题}{1.3}
+设 $u:C\to C'$ 是\Term{small-site}{小景} $C$ 与 $\mathcal U$-\Term{site}{景} $C'$ 之间的\Term{continuous-functor}{连续函子}。
+
+\noindent 1) \Term{functor}{函子} $u^s$ 是\Term{functor}{函子} $u_s$ 的\Term{left-adjoint}{左伴随}。
+
+\noindent 2) 有\Term{canonical}{典范}\Term{isomorphism}{同构} $u^s\simeq a'u_!i$。
+
+\noindent 3) 有\Term{canonical}{典范}\Term{isomorphism}{同构} $u^sa\simeq a'u_!$。
+
+\noindent 4) \Term{functor}{函子} $u^s$ 与\Term{inductive-limit}{归纳极限}交换。
+
+\noindent 5) 当\Term{functor}{函子} $u_!$ \Term{left-exact}{左正合}时（参见第 I 讲 5.4 4)），\Term{functor}{函子} $u^s$ 也\Term{left-exact}{左正合}。更一般地，\Term{functor}{函子} $u^s$ 与\Term{functor}{函子} $u_!$ 所交换的各种\Term{finite-projective-limit}{有限投射极限}交换。
+\end{SGAresult}
+\begin{proof}
+断言 1)、2)、3)、4) 已在 1.2 的证明过程中得证。断言 5) 由\Term{isomorphism}{同构} 2) 得到，只需注意 $i$ 与\Term{projective-limit}{投射极限}交换，而 $a'$ 与\Term{finite-projective-limit}{有限投射极限}交换（第 II 讲 4.1）。
+\end{proof}
+
+\SourcePage{165}
+\textbf{注记 1.4。}结合第 I 讲 5.4 3) 与 1.3 3)，得到图：
+\[
+\begin{tikzcd}
+ C\arrow[r,"u"]\arrow[d,"h"']&C'\arrow[d,"h'"]\\
+ \widehat C\arrow[r,"u_!"]\arrow[d,"a"']&\widehat {C'}\arrow[d,"a'"]\\
+ C^{\sim}\arrow[r]&C'^{\sim},
+\end{tikzcd}
+\]
+其中上方的方块交换，下方的方块在\Term{isomorphism}{同构}意义下交换。但\Term{functor}{函子} $a$、$a'$、$u_!$、$u^s$ 只在\Term{isomorphism}{同构}意义下有定义。读者可以验证，可以选择\Term{functor}{函子} $a$、$a'$、$u^s$ 使得：
+
+\noindent 1) 复合\Term{functor}{函子} $ah$ 与 $a'h'$ 在\Term{object}{对象}集上是\Term{injection}{单射}；
+
+\noindent 2) 图
+\[
+\begin{tikzcd}
+ C\arrow[r,"u"]\arrow[d,"ah"']&C'\arrow[d,"a'h'"]\\
+ C^{\sim}\arrow[r,"u^s"']&C'^{\sim}
+\end{tikzcd}
+\]
+交换。
+
+更确切地，可以选择\Term{functor}{函子} $a$ 与 $a'$ 使条件 1) 成立。在选定\Term{functor}{函子} $a$ 与 $a'$ 后，可以选择\Term{functor}{函子} $u^s$ 使条件 2) 成立。
+
+\begin{SGAresult}{命题}{1.5}
+设 $\mathcal U\subset\mathcal V$ 是两个\Term{universe}{宇宙}，$C$ 与 $C'$ 是两个 $\mathcal U$-\Term{site}{景}，$u:C\to C'$ 是底\Term{sheaf}{层}\Term{category}{范畴}之间的\Term{functor}{函子}。那么 $u$ 相对于 $\mathcal U$ \Term{continuous}{连续}，当且仅当它相对于 $\mathcal V$ \Term{continuous}{连续}。此外，当 $u$ \Term{continuous}{连续}时，以 $u^s_{\mathcal U}$（相应地 $u^s_{\mathcal V}$）表示 1.2 iv) 中引入的 $\mathcal U$-\Term{sheaf}{层}\Term{category}{范畴}（相应地 $\mathcal V$-\Term{sheaf}{层}\Term{category}{范畴}）之间的\Term{functor}{函子}。则图
+\begin{equation}\tag{1.5.1}
+\begin{tikzcd}
+ C^{\sim}_{\mathcal U}\arrow[r,"u^s_{\mathcal U}"]\arrow[d,hook]&C'^{\sim}_{\mathcal U}\arrow[d,hook]\\
+ C^{\sim}_{\mathcal V}\arrow[r,"u^s_{\mathcal V}"']&C'^{\sim}_{\mathcal V},
+\end{tikzcd}
+\end{equation}
+在\Term{canonical}{典范}\Term{isomorphism}{同构}意义下交换，其中竖直\Term{functor}{函子}是\Term{canonical}{典范}\Term{inclusion-functor}{包含函子}。
+\end{SGAresult}
+\begin{proof}
+我们只证明 $C$ 为 $\mathcal U$-小的情形。一般情形将在 4.3 中证明。显然，若\Term{functor}{函子} $u^*$ 把 $C'$ 上的每个
+\SourcePage{166}
+$\mathcal V$-\Term{sheaf}{层}变为 $C$ 上的 $\mathcal V$-\Term{sheaf}{层}，它就把 $C'$ 上的每个 $\mathcal U$-\Term{sheaf}{层}变为 $C$ 上的 $\mathcal U$-\Term{sheaf}{层}。假设 $u^*$ 把 $C'$ 上的每个 $\mathcal U$-\Term{sheaf}{层}变为 $C$ 上的 $\mathcal U$-\Term{sheaf}{层}。以 $\widehat C_{\mathcal U}\hookrightarrow\widehat C_{\mathcal V}$（相应地 $\widehat {C'}_{\mathcal U}\hookrightarrow\widehat {C'}_{\mathcal V}$）表示 $\mathcal U$-\Term{presheaf}{预层}与 $\mathcal V$-\Term{presheaf}{预层}的\Term{category}{范畴}，并以 $u_{\mathcal U!}$、$u_{\mathcal V!}$ 分别表示 $\mathcal U$-\Term{presheaf}{预层}与 $\mathcal V$-\Term{presheaf}{预层}的“\Term{inverse-image}{逆像}”\Term{functor}{函子}。有\Term{commutative-diagram}{交换图}（参见第 I 讲 5.1 中 $u_!$ 的显式构造）：
+\begin{equation}\tag{$*$}
+\begin{tikzcd}
+ \widehat C_{\mathcal U}\arrow[r,"u_{\mathcal U!}"]\arrow[d,hook]&\widehat {C'}_{\mathcal V}\arrow[d,hook]\\
+ \widehat C_{\mathcal V}\arrow[r,"u_{\mathcal V!}"']&\widehat {C'}_{\mathcal V}.
+\end{tikzcd}
+\end{equation}
+从 $\mathcal U$-\Term{presheaf}{预层}到 $\mathcal V$-\Term{presheaf}{预层}的\Term{inclusion-functor}{包含函子}是\Term{fully-faithful-functor}{全忠实}的，并且与\Term{projective-limit}{投射极限}交换。因此由第 II 讲 5.1 i) 可知，$\mathcal U$-\Term{presheaf}{预层}的\Term{bicovering}{双覆盖}\Term{morphism}{态射}也是 $\mathcal V$-\Term{presheaf}{预层}的\Term{bicovering}{双覆盖}\Term{morphism}{态射}。现设 $R\hookrightarrow X$ 是\Term{covering}{覆盖} $C$ 的一个\Term{object}{对象} $X$ 的\Term{sieve}{筛}。根据 1.2 ii)，\Term{morphism}{态射} $u_{\mathcal U!}R\to u_{\mathcal U!}X$ 是\Term{bicovering}{双覆盖}的。利用图 $(*)$ 的交换性及上述结论，推出\Term{morphism}{态射} $u_{\mathcal V!}R\to u_{\mathcal V!}X$ 是\Term{bicovering}{双覆盖}的。因此（1.2），\Term{functor}{函子} $u^*$ 把 $C'$ 上的 $\mathcal V$-\Term{sheaf}{层}变为 $C$ 上的 $\mathcal V$-\Term{sheaf}{层}。于是，(1.5.1) 的交换性由 $(*)$ 的交换性、第 II 讲 3.6 及 1.3 2) 得到。
+\end{proof}
+
+\begin{SGAresult}{命题}{1.6}
+设 $C$ 与 $C'$ 是两个 $\mathcal U$-\Term{site}{景}，$u:C\to C'$ 是底\Term{sheaf}{层}\Term{category}{范畴}之间的\Term{functor}{函子}。考虑条件：
+
+\noindent i) $u$ \Term{continuous}{连续}（参见 1.1、1.2）。
+
+\noindent ii) 对 $C$ 的每个\Term{covering-family}{覆盖族} $(X_i\to X)$，$i\in I$，$C'$ 的族 $(uX_i\to uX)$，$i\in I$，是\Term{covering-family}{覆盖族}。
+
+有蕴涵 i) $\Rightarrow$ ii)。
+
+假设 $C$ 的\Term{topology}{拓扑}可由一个\Term{pretopology}{预拓扑} $T$ 定义（第 II 讲 1.3），且\Term{functor}{函子} $u$ 与\Term{fiber-product}{纤维积}交换。\footnote{实际上，只须 $u$ 与来自 $T$ 的\Term{covering-family}{覆盖族}的\Term{morphism}{态射}在\Term{base-change}{基变换}中涉及的\Term{fiber-product}{纤维积}交换。}那么条件 i) 与 ii) \Term{equivalence}{等价}，并且\Term{equivalence}{等价}于以下条件：
+
+\noindent iii) \Term{functor}{函子} $u$ 把 $T$ 的\Term{covering-family}{覆盖族}变为 $C'$ 的\Term{covering-family}{覆盖族}。
+
+特别地，假设 $C$ 中的\Term{fiber-product}{纤维积}\Term{representable}{可表示}，且\Term{functor}{函子} $u$ 与\Term{fiber-product}{纤维积}交换。那么条件 i) 与 ii) \Term{equivalence}{等价}。
+\end{SGAresult}
+\SourcePage{167}
+\begin{proof}
+先证 i) $\Rightarrow$ ii)。设 $X_i\to X$，$i\in I$，是 $C$ 的\Term{covering-family}{覆盖族}。对 $C'$ 上的每个\Term{sheaf}{层} $F$，$u^*F$ 是\Term{sheaf}{层}。因此映射
+\[
+ \operatorname{Hom}(X,u^*F)\longrightarrow\prod_i\operatorname{Hom}(X_i,u^*F)
+\]
+是\Term{injection}{单射}（第 II 讲 5.1）。由此得到\Term{injection}{单射}
+\[
+ \operatorname{Hom}(u_!X,F)\longrightarrow\prod_i\operatorname{Hom}(u_!X_i,F).
+\]
+故族 $u_!X_i\to u_!X$，$i\in I$，在 $C'$ 中是\Term{covering-family}{覆盖族}（第 II 讲 5.1）。
+
+\Term{pretopology}{预拓扑} $T$ 的每个\Term{covering-family}{覆盖族}都是 $C$ 的\Term{covering-family}{覆盖族}，故有 ii) $\Rightarrow$ iii)。现证 iii) $\Rightarrow$ i)。设 $X$ 是 $C$ 的\Term{object}{对象}，$X_i\to X$，$i\in I$，是 $\operatorname{Cov}(X)$ 的一个\Term{covering-family}{覆盖族}（第 II 讲 1.3）。\Term{morphism}{态射} $X_i\to X$ \Term{quarrable-morphism}{可作基变换}，且\Term{functor}{函子} $u$ 与\Term{fiber-product}{纤维积}交换。因此，\Term{fiber-product}{纤维积} $u(X_i)\times_{u(X)}u(X_j)$ \Term{representable}{可表示}，并\Term{canonical}{典范}\Term{isomorphism}{同构}于 $u(X_i\times_X X_j)$。设 $F$ 是 $C'$ 上的\Term{sheaf}{层}。则\Term{set}{集合}图
+\[
+ F(u(X))\longrightarrow\prod_i F(u(X_i))\rightrightarrows\prod_{i,j}F(u(X_i\times_X X_j))
+\]
+\Term{exactness}{正合}（第 II 讲 2.1、第 I 讲 3.5 及第 I 讲 2.12）。因此\Term{set}{集合}图
+\[
+ u^*F(X)\longrightarrow\prod_i u^*F(X_i)\rightrightarrows\prod_{i,j}u^*F(X_i\times_X X_J)
+\]
+\Term{exactness}{正合}。故 $u^*F$ 是\Term{sheaf}{层}（第 II 讲 2.4），从而得到 i)。1.6 的最后一个断言由上述结论及以下事实得到：当 $C$ 中的\Term{fiber-product}{纤维积}\Term{representable}{可表示}时，$C$ 的全部\Term{covering-family}{覆盖族}\footnote{其指标集属于某个适当的\Term{universe}{宇宙}。}在 $C$ 上定义一个\Term{pretopology}{预拓扑}，其\Term{associated-topology}{伴随拓扑}就是 $C$ 的\Term{topology}{拓扑}。
+\end{proof}
+
+\begin{SGAresult}{命题}{1.7}
+设 $C$ 是\Term{small-site}{小景}，$C'$ 是 $\mathcal U$-\Term{site}{景}，$u:C\to C'$ 是\Term{continuous-functor}{连续函子}。设 $\gamma$ 是由\Term{finite-projective-limit}{有限投射极限}定义的\Term{algebraic-structure}{代数结构}，使得在 $\mathcal U\text{-}\mathrm{Ens}$ 的 $\gamma$-\Term{object}{对象}\Term{category}{范畴}中，$\mathcal U$-\Term{inductive-limit}{归纳极限}\Term{representable}{可表示}。\footnote{事实上，可以证明这个条件总是满足的。}采用命题第 II 讲 6.4 的记号。\Term{functor}{函子} $u_s$ 与\Term{projective-limit}{投射极限}交换，因而定义\Term{functor}{函子} $u_s^\gamma:C^{\sim}_\gamma\to C'^{\sim}_\gamma$。\Term{functor}{函子} $u_s^\gamma$ 有\Term{left-adjoint}{左伴随} $u^s_\gamma$，它具有以下性质：
+
+\noindent 1) 有\Term{canonical}{典范}\Term{isomorphism}{同构} $u^s_\gamma\xrightarrow{\sim}a'_\gamma u_{\gamma!}i_\gamma$，并且 $u^s_\gamma$ 与 $u_{\gamma!}$ 所交换的\Term{finite-projective-limit}{有限投射极限}交换。
+
+\noindent 2) 有\Term{canonical}{典范}\Term{isomorphism}{同构} $u^s_\gamma a_\gamma\xrightarrow{\sim}a'_\gamma u_{\gamma!}$。
+
+\noindent 3) \Term{functor}{函子} $u^s_\gamma$ 与\Term{inductive-limit}{归纳极限}交换。
+
+\SourcePage{168}
+\noindent 4) 若 $u^s$ \Term{left-exact}{左正合}，则图（采用第 II 讲 6.3.0 的记号）
+\[
+\begin{tikzcd}
+ C^{\sim}_\gamma\arrow[r,"u^s_{\mathrm Y}"]\arrow[d,"\widetilde{\mathrm{esj}}"']&C'^{\sim}_\gamma\arrow[d,"\widetilde{\mathrm{esj}}'"]\\
+ C^{\sim}\arrow[r,"u^s"']&C'^{\sim}
+\end{tikzcd}
+\]
+在\Term{isomorphism}{同构}意义下交换，且\Term{functor}{函子} $u^s_\gamma$ \Term{exactness}{正合}。
+
+\noindent 5) 假设\Term{functor}{函子} $\widetilde{\mathrm{esj}}$（相应地 $\widetilde{\mathrm{esj}}'$）有\Term{left-adjoint}{左伴随} $\mathrm{Lib}^{\sim}$（相应地 $\mathrm{Lib}'^{\sim}$）（第 II 讲 6.5）。有\Term{canonical}{典范}\Term{isomorphism}{同构}
+\[
+ u^s_\gamma\mathrm{Lib}^{\sim}\xrightarrow{\sim}\mathrm{Lib}'^{\sim}u^s.
+\]
+此外，当 $C$ 不必是\Term{small-site}{小景}而是 $\mathcal U$-\Term{site}{景}时，\Term{functor}{函子} $u_s^\gamma$ 仍有\Term{left-adjoint}{左伴随} $u^s_\gamma$。最后，若 $\mathcal V$ 是包含 $\mathcal U$ 的\Term{universe}{宇宙}，并以 $u^s_{\gamma\mathcal U}$（相应地 $u^s_{\gamma\mathcal V}$）表示 $u_s$ 相对于\Term{universe}{宇宙} $\mathcal U$（相应地 $\mathcal V$）的\Term{left-adjoint}{左伴随}，则下图与图 (1.5.1) 类似：
+\begin{equation}\tag{1.7.1}
+\begin{tikzcd}
+ C^{\sim}_{\gamma\mathcal U}\arrow[r,"u^s_{\gamma\mathcal U}"]\arrow[d,hook]&C'^{\sim}_{\gamma\mathcal U}\arrow[d,hook]\\
+ C^{\sim}_{\gamma\mathcal V}\arrow[r,"u^s_{r\mathcal V}"']&C'^{\sim}_{\gamma\mathcal V},
+\end{tikzcd}
+\end{equation}
+它在\Term{canonical}{典范}\Term{isomorphism}{同构}意义下交换。
+\end{SGAresult}
+\begin{proof}
+当 $C$ 是\Term{small-site}{小景}时，证明留给读者。当 $C$ 是 $\mathcal U$-\Term{site}{景}时，证明将在 4.3 中补全。
+\end{proof}
+
+\textbf{记号 1.8。}从现在起，我们用记号 $u_s$ 表示\Term{functor}{函子} $u_s^\gamma$。这个记号不会造成混淆，因为\Term{functor}{函子} $u_s$（定义在\Term{set-valued-sheaf}{集合层}上）与\Term{finite-projective-limit}{有限投射极限}交换。
+
+同样，当 $u^s$ \Term{left-exact}{左正合}时，我们用记号 $u^s$ 表示\Term{functor}{函子} $u^s_\gamma$。1.7 4) 说明这个记号的滥用是合理的。
+
+\textbf{例 1.9.1。}设 $X$ 是小\Term{topological-space}{拓扑空间}。以 $\operatorname{Ouv}(X)$ 表示 $X$ 的\Term{open-subset}{开集}\Term{category}{范畴}（$\operatorname{Ouv}(X)$ 的\Term{object}{对象}是 $X$ 的\Term{open-subset}{开子集}，\Term{morphism}{态射}是包含映射），赋予它\Term{canonical-topology}{典范拓扑}。族 $(U_i\subset U)$，$i\in I$，是\Term{covering-family}{覆盖族}，当且仅当\Term{open-subset}{开集} $U_i$ \Term{covering}{覆盖} $U$（第 II 讲 2.6）。因此 $\operatorname{Ouv}(X)$ 上的\Term{set-valued-sheaf}{集合层}就是文献 [TF] 意义下的\Term{set-valued-sheaf}{集合层}。设 $f:X\to Y$ 是\Term{continuous}{连续}映射。由此得到\Term{functor}{函子} $f^{-1}:\operatorname{Ouv}(Y)\to\operatorname{Ouv}(X)$：对 $Y$ 的每个\Term{open-subset}{开集} $U$，$f^{-1}(U)$ 是 $U$ 在映射 $f$ 下的\Term{inverse-image}{逆像}。\Term{functor}{函子} $f^{-1}$ 是\Term{continuous-functor}{连续函子}（1.6）。\Term{functor}{函子}
+\[
+ f^{-1}_s:\operatorname{Ouv}(X)^{\sim}\longrightarrow\operatorname{Ouv}(Y)^{\sim}
+\]
+是 [TF] 意义下\Term{sheaf}{层}的\Term{direct-image-functor}{直接像函子}。
+\SourcePage{169}
+\Term{functor}{函子} $(f^{-1})^s:\operatorname{Ouv}(Y)^{\sim}\to\operatorname{Ouv}(X)^{\sim}$ 是 [TF] 意义下\Term{sheaf}{层}的\Term{inverse-image-functor}{逆像函子}。由 1.3 5)，\Term{functor}{函子} $(f^{-1})^s$ 与\Term{finite-projective-limit}{有限投射极限}交换。
+
+\textbf{例 1.9.2。}设 $X$ 是\Term{topological-space}{拓扑空间}，$Y\hookrightarrow X$ 是 $X$ 的一个\Term{open-subset}{开集}。$Y$ 的每个\Term{open-subset}{开集}都是 $X$ 的\Term{open-subset}{开集}，故有\Term{functor}{函子} $\Phi:\operatorname{Ouv}(Y)\to\operatorname{Ouv}(X)$。\Term{functor}{函子} $\Phi$ \Term{continuous}{连续}（1.6）。\Term{functor}{函子} $\Phi_s:\operatorname{Ouv}(X)^{\sim}\to\operatorname{Ouv}(Y)^{\sim}$ 是“\Term{restriction-functor}{限制}到 $Y$”\Term{functor}{函子}。\Term{functor}{函子} $\Phi^s_{\mathrm{ab}}:\operatorname{Ouv}(Y)^{\sim}_{\mathrm{ab}}\to\operatorname{Ouv}(X)^{\sim}_{\mathrm{ab}}$（第 II 讲 6.3.3、第 I 讲 1.7）是 [TF] 中引入的“在 $Y$ 之外\Term{extension-by-zero}{以零延拓}”\Term{functor}{函子}。\Term{functor}{函子} $\Phi^s:\operatorname{Ouv}(Y)^{\sim}\to\operatorname{Ouv}(X)^{\sim}$（1.3）类似于“\Term{extension-by-zero}{以零延拓}”\Term{functor}{函子}：对 $Y$ 上的每个\Term{sheaf}{层} $H$ 及每个点 $y\in Y$，$\Phi^sH$ 在 $y$ 处的\Term{fiber}{纤维}\Term{canonical}{典范}\Term{isomorphism}{同构}于 $H$ 在 $y$ 处的\Term{fiber}{纤维}；对每个点 $x\in X$、$x\notin Y$，$\Phi^sH$ 在 $x$ 处的\Term{fiber}{纤维}为空。\Term{functor}{函子} $\Phi^s$ 称为“在 $Y$ 之外\Term{extension-by-empty-set}{以空集延拓}”\Term{functor}{函子}。\Term{functor}{函子} $\Phi^s$ 与\Term{fiber-product}{纤维积}以及\Term{nonempty}{非空}指标集上的\Term{finite-product}{有限积}交换，但它不把 $\operatorname{Ouv}(Y)^{\sim}$ 的\Term{final-object}{终对象}变为 $\operatorname{Ouv}(X)^{\sim}$ 的\Term{final-object}{终对象}。
+
+\textbf{例 1.9.3。}设 $C$ 与 $C'$ 是两个\Term{small-site}{小景}，$u:C\to C'$ 是底\Term{sheaf}{层}\Term{category}{范畴}之间的\Term{functor}{函子}，它把 $C$ 的每个\Term{covering-family}{覆盖族}变为 $C'$ 的\Term{covering-family}{覆盖族}。一般而言，\Term{functor}{函子} $u$ 并不\Term{continuous}{连续}（不过参见 1.6）。以下是一个反例。设 $S$ 是\Term{universe}{宇宙} $\mathcal U$ 中一个具有无限\Term{cardinal}{基数}的\Term{set}{集合}，$C$ 是\Term{set}{集合}\Term{category}{范畴}的\Term{full-subcategory}{满子范畴}，其\Term{object}{对象}是 $S$ 的\Term{nonempty}{非空}\Term{finite}{有限}\Term{subset}{子集}。给 $C$ 赋予\Term{canonical-topology}{典范拓扑}。注意，$C$ 的\Term{covering-family}{覆盖族}是映射的\Term{surjective-family}{满射族}，而且\Term{covering-family}{覆盖族}不为空。还要注意，在\Term{isomorphism}{同构}意义下，$C$ 上只有两个\Term{constant-sheaf}{常值层}：取值为空集的\Term{sheaf}{层}，以及取值为单元素\Term{set}{集合}的\Term{sheaf}{层}。置 $C=C'$，并设 $u:C\to C'$ 是\Term{constant-functor}{常值函子}。\Term{functor}{函子} $u$ 把 $C$ 的\Term{covering-family}{覆盖族}变为 $C'$ 的\Term{covering-family}{覆盖族}。但\Term{functor}{函子} $u$ 不\Term{continuous}{连续}。事实上，由于 $C'$ 的\Term{representable-presheaf}{可表示预层}是\Term{sheaf}{层}，对 $C'$ 的每个\Term{object}{对象} $X$，都存在 $C'$ 上的\Term{sheaf}{层} $F$，使\Term{set}{集合} $F(X)$ 的\Term{cardinal}{基数} $\geq2$，因此\Term{presheaf}{预层} $u^*F$ 不是\Term{sheaf}{层}。
+
+\SGAsection{2}{余连续函子}
+\begin{SGAresult}{定义}{2.1}
+设 $C$ 与 $C'$ 是两个 $\mathcal U$-\Term{site}{景}，$u:C\to C'$ 是底\Term{sheaf}{层}\Term{category}{范畴}之间的\Term{functor}{函子}。若 $u$ 具有以下性质，就称 $u$ \Term{cocontinuous}{余连续}：
+
+\noindent (COC) 对 $C$ 的每个\Term{object}{对象} $Y$ 及每个\Term{covering-sieve}{覆盖筛} $R\hookrightarrow u(Y)$，由满足 $u(Z)\to u(Y)$ 经 $R$ \Term{resolution}{分解}的\Term{arrow}{箭头} $Z\to Y$ 所生成的 $Y$ 的\Term{sieve}{筛}，\Term{covering}{覆盖} $Y$。
+\end{SGAresult}
+
+\SourcePage{170}
+\begin{SGAresult}{命题}{2.2}
+设 $C$ 是\Term{small-site}{小景}，$C'$ 是 $\mathcal U$-\Term{site}{景}，$u:C\to C'$ 是底\Term{sheaf}{层}\Term{category}{范畴}之间的\Term{functor}{函子}。记 $\widehat u_*:\widehat C\to\widehat {C'}$ 为\Term{functor}{函子} $F\mapsto F\circ u=\widehat u^*F$ 的\Term{right-adjoint}{右伴随}\Term{functor}{函子}（第 I 讲 5.1）。\Term{functor}{函子} $u$ \Term{cocontinuous}{余连续}，当且仅当对 $C$ 上的每个\Term{sheaf}{层} $G$，$\widehat u_*G$ 是 $C'$ 上的\Term{sheaf}{层}。
+\end{SGAresult}
+\begin{proof}
+这个条件是充分的。假设对 $C$ 上的每个\Term{sheaf}{层} $G$，\Term{presheaf}{预层} $\widehat u_*G$ 都是\Term{sheaf}{层}。设 $Y$ 是 $C$ 的\Term{object}{对象}，$R\hookrightarrow u(Y)$ 是\Term{covering-sieve}{覆盖筛}。有\Term{isomorphism}{同构}
+\[
+ \operatorname{Hom}(u(Y),u_*G)\xrightarrow{\sim}\operatorname{Hom}(R,u_*G),
+\]
+从而由\Term{adjunction}{伴随关系}（第 I 讲 5.1）得到\Term{isomorphism}{同构}
+\[
+ \operatorname{Hom}(\widehat u^*\circ u(Y),G)\xrightarrow{\sim}\operatorname{Hom}(\widehat u^*R,G).
+\]
+由此推出（第 II 讲 5.3），\Term{morphism}{态射} $\widehat u^*R\to\widehat u^*u(Y)$ 是\Term{bicovering}{双覆盖}的。但\Term{functor}{函子} $\widehat u^*$ 与\Term{projective-limit}{投射极限}交换，因此\Term{morphism}{态射} $\widehat u^*R\to\widehat u^*u(Y)$ 是\Term{monomorphism}{单态射}，故它是\Term{covering}{覆盖}\Term{monomorphism}{单态射}。另一方面，由\Term{adjunction}{伴随}\Term{morphism}{态射} $\operatorname{id}_C\to\widehat u^*u_!$（第 I 讲 5.4 3)）\Term{derivation}{导出}\Term{canonical}{典范}\Term{morphism}{态射} $Y\xrightarrow p\widehat u^*u(Y)$。现作\Term{base-change}{基变换} $Y\xrightarrow p\widehat u^*u(Y)$，得到\Term{covering}{覆盖} $Y$ 的\Term{sieve}{筛}：
+\[
+ \widehat u^*R\times_{\widehat u^*u(Y)}Y\longrightarrow Y.
+\]
+考察经过这个\Term{sieve}{筛}\Term{resolution}{分解}的\Term{arrow}{箭头} $Z\to Y$，便得到性质 (COC) 中描述的\Term{sieve}{筛}。
+
+这个条件是必要的：设 $S$ 是 $C'$ 的\Term{object}{对象}，$R\hookrightarrow S$ 是\Term{covering}{覆盖} $S$ 的\Term{sieve}{筛}。须证明对 $C$ 上的每个\Term{sheaf}{层} $G$ 都有\Term{isomorphism}{同构}
+\[
+ \operatorname{Hom}(S,u_*G)\xrightarrow{\sim}\operatorname{Hom}(R,u_*G).
+\]
+利用命题第 II 讲 5.3 及\Term{adjunction}{伴随}\Term{isomorphism}{同构}可知，只须证明\Term{monomorphism}{单态射} $\widehat u^*R\to\widehat u^*S$ 是\Term{covering}{覆盖}的。为此，只须证明（第 II 讲 5.1）对每个\Term{base-change}{基变换} $Y\to\widehat u^*S$，\Term{sieve}{筛} $\widehat u^*R\times_{\widehat u^*S}Y$ 都\Term{covering}{覆盖} $Y$（$Y$ 是 $C$ 的\Term{object}{对象}）。但根据\Term{adjunction}{伴随}\Term{functor}{函子}的性质及第 I 讲 5.4 3)，\Term{morphism}{态射} $Y\to\widehat u^*S$ 经过
+\[
+ Y\xrightarrow{P}\widehat u^*u(Y)\longrightarrow\widehat u^*S
+\]
+\Term{resolution}{分解}，因此\Term{sieve}{筛} $\widehat u^*R\times_{\widehat u^*S}Y\hookrightarrow Y$ 是\Term{monomorphism}{单态射}
+\[
+ \widehat u^*R\times_{\widehat u^*S}\widehat u^*u(Y)\overset{q}{\hookrightarrow}\widehat u^*u(Y)
+\]
+沿 $Y\xrightarrow p\widehat u^*u(Y)$ 的\Term{base-change}{基变换}。\Term{functor}{函子} $\widehat u^*$ 与\Term{projective-limit}{投射极限}交换，因此\Term{monomorphism}{单态射} $q$ 是\Term{covering-sieve}{覆盖筛} $R\times_Su(Y)\hookrightarrow u(Y)$ 经 $\widehat u^*$ 的像。假设 (COC) 于是说明，\Term{sieve}{筛} $\widehat u^*R\times_{\widehat u^*S}Y\hookrightarrow Y$ 是\Term{covering}{覆盖}的。
+\end{proof}
+
+\begin{SGAresult}{命题}{2.3}
+设 $C$ 与 $C'$ 是两个 $\mathcal U$-\Term{site}{景}，$u:C\to C'$ 是\Term{cocontinuous-functor}{余连续函子}。记 $u^*:\widehat {C'}\to\widehat C$ 为\Term{functor}{函子} $u^*=a\widehat u^*i'$，其中 $a$ 表示 $\widehat C$ 的“\Term{associated-sheaf}{伴随层}”\Term{functor}{函子}，$\widehat u^*$ 表示\Term{functor}{函子} $F\mapsto F\circ u$，$i'$ 是\Term{inclusion-functor}{包含函子} $C'^{\sim}\to\widehat {C'}$。
+
+\noindent 1) \Term{functor}{函子} $u^*$ 与\Term{inductive-limit}{归纳极限}交换，并且\Term{exactness}{正合}。
+
+\noindent 2) 有\Term{canonical}{典范}\Term{isomorphism}{同构} $u^*a'\simeq a\widehat u^*$，其中 $a'$ 表示 $\widehat {C'}$ 的“\Term{associated-sheaf}{伴随层}”\Term{functor}{函子}。
+
+\SourcePage{171}
+\noindent 3) \Term{functor}{函子} $u^*$ 有\Term{right-adjoint}{右伴随} $u_*:C^{\sim}\to C'^{\sim}$。当 $C$ 小时，图
+\begin{equation}\tag{2.3.1}
+\begin{tikzcd}
+ C^{\sim}\arrow[r,"u_*"]\arrow[d,hook,"i"']&C'^{\sim}\arrow[d,hook,"i'"]\\
+ \widehat C\arrow[r,"\widehat u_*"']&\widehat {C'},
+\end{tikzcd}
+\end{equation}
+在\Term{canonical}{典范}\Term{isomorphism}{同构}意义下交换，其中下方\Term{functor}{函子}是\Term{functor}{函子} $\widehat u^*$ 的\Term{right-adjoint}{右伴随}（第 I 讲 5.1）。
+
+\noindent 4) 设 $\mathcal V\supset\mathcal U$ 是\Term{universe}{宇宙}。以 $u_{*\mathcal U}:C^{\sim}_{\mathcal U}\to C'^{\sim}_{\mathcal U}$（相应地 $u_{*\mathcal V}:C^{\sim}_{\mathcal V}\to C'^{\sim}_{\mathcal V}$）表示 3) 中断言存在的、相对于\Term{universe}{宇宙} $\mathcal U$（相应地 $\mathcal V$）的\Term{right-adjoint}{右伴随}\Term{functor}{函子}。图
+\begin{equation}\tag{2.3.2}
+\begin{tikzcd}
+ C^{\sim}_{\mathcal U}\arrow[r,"u_{*\mathcal U}"]\arrow[d,hook]&C'^{\sim}_{\mathcal U}\arrow[d,hook]\\
+ C^{\sim}_{\mathcal V}\arrow[r,"u_{*\mathcal V}"']&C'^{\sim}_{\mathcal V}
+\end{tikzcd}
+\end{equation}
+在\Term{isomorphism}{同构}意义下交换。
+\end{SGAresult}
+\begin{proof}
+断言 1) 与 2) 直接由第 II 讲 3.4 得到。当 $C$ 小时，断言 3) 由 2.2 得到。当 $C$ 是 $\mathcal U$-\Term{site}{景}时，将在 4.4 中证明。当 $C$ 小时，断言 4) 由 $C$ 与 $C'$ 的\Term{topology}{拓扑}为\Term{chaotic-topology}{混沌拓扑}时的类似交换性断言，以及第 I 讲 3.5 得到。当 $C$ 与 $C'$ 的\Term{topology}{拓扑}为\Term{chaotic-topology}{混沌拓扑}时，由 $u_*$ 的显式描述（第 I 讲 5.1）立即可见 (2.3.2) 的交换性。
+\end{proof}
+
+\textbf{2.4。}这里不展开有关\Term{sheaf}{层}\Term{category}{范畴}的 $\gamma$-\Term{object}{对象}的讨论。只需指出，本节引入的\Term{functor}{函子} $u^*$ 与 $u_*$ 总是与\Term{finite-projective-limit}{有限投射极限}交换（上一节中\Term{functor}{函子} $u^s$ 的情况则不同）。因此它们自然延拓为定义在 $\gamma$-\Term{object}{对象}上的\Term{functor}{函子}，这两个\Term{functor}{函子}互为\Term{adjunction}{伴随}，并且与“底\Term{sheaf}{层}\Term{set-valued-sheaf}{集合层}”\Term{functor}{函子}交换。我们采用 1.8 中指出的记号滥用，以 $u^*$ 与 $u_*$ 表示它们在 $\gamma$-\Term{object}{对象}上的延拓。
+
+\begin{SGAresult}{命题}{2.5}
+设 $C$ 与 $C'$ 是两个 $\mathcal U$-\Term{site}{景}，且
+\[
+ \begin{tikzcd}C\arrow[r,bend left=20,"v"]&C'\arrow[l,bend left=20,"u"]\end{tikzcd}
+\]
+是一对\Term{functor}{函子}，其中 $v$ 是 $u$ 的\Term{left-adjoint}{左伴随}。以下性质\Term{equivalence}{等价}：
+\SourcePage{172}
+
+\noindent i) \Term{functor}{函子} $u$ \Term{continuous}{连续}。
+
+\noindent ii) \Term{functor}{函子} $v$ \Term{cocontinuous}{余连续}。
+
+此外，在这些\Term{equivalence}{等价}条件下，有\Term{canonical}{典范}\Term{isomorphism}{同构} $v_*\simeq u_s$、$v^*\simeq u^s$。特别地，\Term{functor}{函子} $u^s$ 与\Term{finite-projective-limit}{有限投射极限}交换。
+\end{SGAresult}
+\begin{proof}
+\Term{functor}{函子}的\Term{continuity}{连续性}或\Term{cocontinuity}{余连续性}不依赖于使 $C$ 与 $C'$ 成为 $\mathcal U$-\Term{site}{景}的\Term{universe}{宇宙} $\mathcal U$（对于\Term{cocontinuous-functor}{余连续函子}，这是显然的；对于\Term{continuous-functor}{连续函子}，这由 1.5 得到）。因此，扩大\Term{universe}{宇宙}后，可以假设 $C$ 与 $C'$ 都小。命题于是由 2.2 及第 I 讲 5.6 得到。
+\end{proof}
+
+\begin{SGAresult}{命题}{2.6}
+设 $u:C\to C'$ 是两个 $\mathcal U$-\Term{site}{景}之间的\Term{continuous}{连续}且\Term{cocontinuous}{余连续}的\Term{functor}{函子}。那么\Term{functor}{函子} $u^*:C'^{\sim}\to C^{\sim}$（2.3）与 $\mathcal U$-\Term{inductive-limit}{归纳极限}及\Term{projective-limit}{投射极限}交换。以 $u_!:C^{\sim}\to C'^{\sim}$ 与 $u_*:C^{\sim}\to C'^{\sim}$ 分别表示 $u^*$ 的\Term{left-adjoint}{左伴随}与\Term{right-adjoint}{右伴随}\Term{functor}{函子}。\Term{functor}{函子} $u_!$ \Term{fully-faithful-functor}{全忠实}，当且仅当\Term{functor}{函子} $u_*$ \Term{fully-faithful-functor}{全忠实}。当 $u$ \Term{fully-faithful-functor}{全忠实}时，$u_!$ \Term{fully-faithful-functor}{全忠实}；而当 $C$ 与 $C'$ 的\Term{topology}{拓扑}都不比\Term{canonical-topology}{典范拓扑}细时，逆命题也成立。
+\end{SGAresult}
+\begin{proof}
+\Term{functor}{函子} $u^*$ 有\Term{right-adjoint}{右伴随} $u_*$（2.3）与\Term{left-adjoint}{左伴随} $u_!$（1.2），因此\Term{functor}{函子} $u^*$ 与\Term{inductive-limit}{归纳极限}及\Term{projective-limit}{投射极限}交换（第 I 讲 2.11）。\Term{functor}{函子} $u_!$ \Term{fully-faithful-functor}{全忠实}当且仅当\Term{functor}{函子} $u_*$ \Term{fully-faithful-functor}{全忠实}，是\Term{adjunction}{伴随}\Term{functor}{函子}的一般性质（第 I 讲 5.7 1)）。当 $u$ \Term{fully-faithful-functor}{全忠实}时，对充分大的\Term{universe}{宇宙} $\mathcal V$，相对于 $\mathcal V$-\Term{presheaf}{预层}的\Term{functor}{函子} $\widehat u_*:\widehat C_{\mathcal V}\to\widehat {C'}_{\mathcal V}$ 是\Term{fully-faithful-functor}{全忠实}的（第 I 讲 5.7）。因此由 (2.3.1)、(2.3.2) 的交换性，\Term{functor}{函子} $u_*:C^{\sim}\to C'^{\sim}$ \Term{fully-faithful-functor}{全忠实}，从而由上述结论，$u_!$ \Term{fully-faithful-functor}{全忠实}。逆命题由 1.2 iv) 中\Term{commutative-diagram}{交换图}的存在性得到，只需注意，当\Term{topology}{拓扑}不比\Term{canonical-topology}{典范拓扑}细时，\Term{functor}{函子} $\varepsilon_C$ 与 $\varepsilon_{C'}$ 都是\Term{fully-faithful-functor}{全忠实}的。
+\end{proof}
+
+\textbf{例 2.7。}沿用 1.9.2 的记号，\Term{functor}{函子}
+\[
+ \Phi:\operatorname{Ouv}(Y)\longrightarrow\operatorname{Ouv}(X)
+\]
+\Term{continuous}{连续}（1.9.2）且\Term{cocontinuous}{余连续}（2.2）。此外，设 $i:Y\to X$ 是\Term{canonical}{典范}\Term{injection}{单射}，$i^{-1}:\operatorname{Ouv}(X)\to\operatorname{Ouv}(Y)$ 是它所定义的\Term{functor}{函子}（1.9.1）。\Term{functor}{函子} $i$ 是\Term{functor}{函子} $\Phi$ 的\Term{right-adjoint}{右伴随}。因此有三个相继\Term{adjunction}{伴随}的\Term{functor}{函子}：
+\[
+ \Phi^s,\qquad \Phi_s=\Phi^*,\qquad \Phi_*,
+\]
+以及\Term{canonical}{典范}\Term{isomorphism}{同构} $\Phi^*\simeq(i^{-1})^s$、$\Phi_*\simeq i^{-1}_s$。
+
+\SourcePage{173}
+\SGAsection{3}{诱导拓扑}
+\textbf{3.1。}设 $C'$ 是\Term{site}{景}，$C$ 是\Term{category}{范畴}，$u:C\to C'$ 是\Term{functor}{函子}。对每个使 $C'$ 成为 $\mathcal U$-\Term{site}{景}、$C$ 成为 $\mathcal U$-\Term{small-category}{小范畴}的\Term{universe}{宇宙} $\mathcal U$，用 $\mathscr C_{\mathcal U}$ 表示 $C$ 上使 $u$ \Term{continuous}{连续}的\Term{topology}{拓扑} $T$ 中最细的一个（1.1）。（由第 II 讲 2.2，这样的\Term{topology}{拓扑}存在。）\Term{topology}{拓扑} $\mathscr C_{\mathcal U}$ 不依赖于\Term{universe}{宇宙} $\mathcal U$。事实上，若 $\mathcal V\supset\mathcal U$ 是\Term{universe}{宇宙}，则有 $\mathscr C_{\mathcal U}=\mathscr C_{\mathcal U}$（1.1 及 1.5）。\Term{topology}{拓扑} $\mathscr C_{\mathcal U}$ 称为由 $C'$ 的\Term{topology}{拓扑}借助\Term{functor}{函子} $u$ 在 $C$ 上诱导的\Term{topology}{拓扑}。\footnote{在不会引起混淆时，这个\Term{topology}{拓扑}称为由 $C'$ 的\Term{topology}{拓扑}在 $C$ 上诱导的\Term{topology}{拓扑}。}
+
+\begin{SGAresult}{命题}{3.2}
+设 $C$ 是\Term{small-category}{小范畴}，$C'$ 是 $\mathcal U$-\Term{site}{景}，$u:C\to C'$ 是\Term{functor}{函子}，$\mathscr C$ 是 $C$ 上由 $u$ 诱导的\Term{topology}{拓扑}。设 $X$ 是 $C$ 的\Term{object}{对象}，$R\to X$ 是 $X$ 的\Term{sieve}{筛}。以下性质\Term{equivalence}{等价}：
+
+\noindent i) \Term{sieve}{筛} $R\hookrightarrow X$ 对 $\mathscr C$ 是\Term{covering}{覆盖}的。
+
+\noindent ii) 对每个\Term{base-change}{基变换} $Y\to X$，其中 $Y$ 是 $C$ 的\Term{object}{对象}，\Term{morphism}{态射} $u_!(R\times_XY)\to u(Y)$ 在 $\widehat {C'}$ 中是\Term{bicovering}{双覆盖}的（第 II 讲 5.2）。
+\end{SGAresult}
+\begin{proof}
+\noindent i) $\Rightarrow$ ii)：由\Term{topology}{拓扑}的公理 (T 1) 及 1.2 得到。
+
+\noindent ii) $\Rightarrow$ i)：对 $C'$ 上的每个\Term{sheaf}{层} $F$，映射
+\[
+ \operatorname{Hom}(Y,u^*F)\longrightarrow\operatorname{Hom}(R\times_XY,u^*F)
+\]
+由\Term{adjunction}{伴随关系}（第 I 讲 5.1）\Term{isomorphism}{同构}于映射
+\[
+ \operatorname{Hom}(u(Y),F)\longrightarrow\operatorname{Hom}(u_!(R\times_XY),F),
+\]
+而后者是\Term{bijection}{双射}（第 II 讲 5.3）。因此（第 II 讲 2.2），\Term{sieve}{筛} $R\hookrightarrow X$ 对 $\mathscr C$ 是\Term{covering}{覆盖}的。
+\end{proof}
+
+\begin{SGAresult}{推论}{3.3}
+设 $C'$ 是\Term{site}{景}，$C$ 是\Term{category}{范畴}，$u:C\to C'$ 是\Term{sheaf}{层}，$\mathscr C$ 是 $C$ 上由 $C'$ 的\Term{topology}{拓扑}诱导的\Term{topology}{拓扑}。设 $(X_i\to X)$，$i\in I$，是 $C$ 的一族\Term{quarrable-morphism}{可作基变换}的\Term{morphism}{态射}，并假设 $u$ 与\Term{fiber-product}{纤维积}交换。\footnote{实际上，只须 $u$ 与形如 $X_i\times_XX'$ 的\Term{fiber-product}{纤维积}交换。}以下性质\Term{equivalence}{等价}：
+
+\noindent i) 族 $X_i\to X$，$i\in I$，对 $\mathscr C$ 是\Term{covering-family}{覆盖族}。
+
+\noindent ii) 族 $(u(X_i)\to u(X))$，$i\in I$，是\Term{covering-family}{覆盖族}。
+\end{SGAresult}
+\begin{proof}
+\noindent i) $\Rightarrow$ ii)：由 1.6 得到。
+
+\noindent ii) $\Rightarrow$ i)：设 $\mathcal U$ 是\Term{universe}{宇宙}，使得 $C$ 为 $\mathcal U$-小，而 $C'$ 为 $\mathcal U$-\Term{site}{景}。设 $R\hookrightarrow X$ 是由 $X_i\to X$ 生成的\Term{sieve}{筛}。\Term{presheaf}{预层} $R$ 是双\Term{arrow}{箭头}
+\[
+ \coprod_{i,j}X_i\times_XX_j\rightrightarrows\coprod_iX_i
+\]
+的\Term{coequalizer}{余等化子}（第 I 讲 2.12 及第 I 讲 3.5）
+\SourcePage{174}
+（这里的\Term{coproduct}{直和}取在 $C^{\wedge}$ 中）。由于\Term{functor}{函子} $u_!$ 与\Term{inductive-limit}{归纳极限}交换（第 I 讲 5.4），\Term{presheaf}{预层} $u_!R$ 是双\Term{arrow}{箭头}
+\[
+ \coprod_{i,j}u(X_i\times_XX_j)\rightrightarrows\coprod_i u(X_i)
+\]
+的\Term{coequalizer}{余等化子}。由于\Term{functor}{函子} $u$ 与\Term{fiber-product}{纤维积}交换，\Term{presheaf}{预层} $u_!R$ 是双\Term{arrow}{箭头}
+\[
+ \coprod_{i,j}u(X_i)\times_{u(X)}u(X_j)\rightrightarrows\coprod_i u(X_i)
+\]
+的\Term{coequalizer}{余等化子}，故 $u_!R\to u(X)$ 是 $u(X)$ 的\Term{sieve}{筛}，由 $u(X_i)\to u(X)$，$i\in I$，生成。再次利用 $u$ 与\Term{fiber-product}{纤维积}交换，可以证明，对每个\Term{base-change}{基变换} $Y\to X$，其中 $Y$ 是 $C$ 的\Term{object}{对象}，$u_!(R\times_XY)\to u(Y)$ 是由
+\[
+ u(X_i)\times_{u(X)}u(Y)\longrightarrow u(Y),\qquad i\in I,
+\]
+生成的 $u(Y)$ 的\Term{sieve}{筛}。由于族 $u(X_i)\to u(X)$，$i\in I$，是\Term{covering-family}{覆盖族}，族 $u(X_i)\times_{u(X)}u(Y)\to u(Y)$，$i\in I$，也是\Term{covering-family}{覆盖族}。因此 $u_!(R\times_XY)\to u(Y)$ 是\Term{covering-sieve}{覆盖筛}，从而（3.2），$R\to X$ 对 $\mathscr C$ 是\Term{covering}{覆盖}的。
+\end{proof}
+
+\begin{SGAresult}{推论}{3.4}
+设 $C'$ 是 $\mathcal U$-\Term{site}{景}，$C$ 是 $C'$ 的\Term{full-subcategory}{满子范畴}，$u:C\to C'$ 是\Term{inclusion-functor}{包含函子}。假设 $C$ 中的\Term{fiber-product}{纤维积}\Term{representable}{可表示}，且 $u$ 与\Term{fiber-product}{纤维积}交换。以下条件\Term{equivalence}{等价}：
+
+\noindent i) a) 对 $C$ 的每个\Term{object}{对象} $X$，$C'$ 中的每个\Term{covering-family}{覆盖族} $(Y_j\to X)$，$j\in J$，都被一个\Term{covering-family}{覆盖族} $X_i\to X$，$i\in I$，所\Term{dominant}{支配}，其中 $X_i$ 是 $C$ 的\Term{object}{对象}。
+
+\noindent \hspace*{1em}b) 存在 $C$ 的\Term{object}{对象}组成的\Term{small-set}{小集合} $G$，使得 $C$ 的每个\Term{object}{对象}都是 $C'$ 中某个\Term{covering-family}{覆盖族}的目标，且该族各\Term{morphism}{态射}的源属于 $G$。
+
+\noindent ii) 由 $C'$ 的\Term{topology}{拓扑}诱导的\Term{topology}{拓扑}是 $\mathcal U$-\Term{topology}{拓扑}（第 I 讲 3.0.2），且\Term{functor}{函子} $u$ 对此\Term{topology}{拓扑}既\Term{continuous}{连续}又\Term{cocontinuous}{余连续}。
+\end{SGAresult}
+\begin{proof}
+由 3.3 及 2.1 立即得到。
+\end{proof}
+
+\begin{SGAresult}{命题}{3.5}
+设 $C$ 是 $\mathcal U$-\Term{site}{景}，$\varepsilon_C:C\to C^{\sim}$ 是\Term{canonical}{典范}\Term{functor}{函子}（第 II 讲 4.4.0）。给 $C^{\sim}$ 赋予\Term{canonical-topology}{典范拓扑}。那么\Term{site}{景} $C$ 的\Term{topology}{拓扑}就是由 $C^{\sim}$ 的\Term{topology}{拓扑}诱导的\Term{topology}{拓扑}。
+\end{SGAresult}
+\begin{proof}
+$C^{\sim}$ 对\Term{canonical-topology}{典范拓扑}的\Term{covering-family}{覆盖族}，就是\Term{universally-effective-epimorphic-family}{普适有效满态射族}（第 II 讲 2.5），也就是（第 II 讲 4.3）\Term{epimorphic-family}{满态射族}。设 $T$ 是\Term{site}{景} $C$ 的\Term{topology}{拓扑}，$\mathscr C_{\mathcal U}$ 是 $C$ 上使 $C^{\sim}$ 的每个\Term{sheaf}{层} $F$ 的复合 $F\circ\varepsilon_C$ 都成为\Term{sheaf}{层}的\Term{topology}{拓扑} $T'$ 中最细的一个。只须证明 $T=\mathscr C_{\mathcal U}$，因为这时 $\mathscr C_{\mathcal U}$ 是 $\mathcal U$-\Term{topology}{拓扑}，因此就是\Term{induced-topology}{诱导拓扑}。
+
+A) \Term{topology}{拓扑} $T$ 比 $\mathscr C_{\mathcal U}$ 细：设 $(X_i\to X)$，$i\in I$，是 $\mathscr C_{\mathcal U}$ 的\Term{covering-family}{覆盖族}。那么对 $C^{\sim}$ 上的每个\Term{sheaf}{层} $F$，映射
+\[
+ F(\varepsilon_C(X))\longrightarrow\prod_i F(\varepsilon_C(X_i))
+\]
+是\Term{injection}{单射}，
+\SourcePage{175}
+因此（第 II 讲 5.2），$(\varepsilon_CX_i\to\varepsilon_CX)$，$i\in I$，对 $C^{\sim}$ 的\Term{canonical-topology}{典范拓扑}是\Term{covering-family}{覆盖族}，从而（第 II 讲 5.2），$(X_i\to X)$，$i\in I$，对 $T$ 是\Term{covering-family}{覆盖族}。
+
+B) \Term{topology}{拓扑} $T$ 不比 $\mathscr C_{\mathcal U}$ 细：只须证明 $\varepsilon_C:C\to C^{\sim}$ \Term{continuous}{连续}（1.1）。我们将在第 IV 讲第 1 节证明，$C^{\sim}$ 上的每个\Term{sheaf}{层}都是\Term{representable}{可表示}的，因此对 $C^{\sim}$ 上的每个\Term{sheaf}{层} $F$，$F\circ\varepsilon_C$ 是 $C$ 上的\Term{sheaf}{层}。（在第 IV 讲第 1 节以前，我们不会使用 3.5。）
+\end{proof}
+
+记下将在第 VI 讲第 7 节中使用的两个结果。
+
+\begin{SGAresult}{命题}{3.6}
+设 $(C_i)_{i\in I}$ 是一族\Term{site}{景}，$C$ 是\Term{category}{范畴}，且对每个 $i\in I$ 给定\Term{functor}{函子} $u_i:C_i\to C$。设 $\mathcal U$ 是\Term{universe}{宇宙}，使得\Term{category}{范畴} $C_i$ 与 $C$ 都为 $\mathcal U$-小。$C$ 上存在\Term{topology}{拓扑} $\mathscr C_{\mathcal U}$，它是使各 $u_i$ \Term{continuous}{连续}的\Term{topology}{拓扑}中最粗的一个。\Term{topology}{拓扑} $\mathscr C_{\mathcal U}$ 不依赖于使所考虑的\Term{category}{范畴}都小的\Term{universe}{宇宙} $\mathcal U$。
+\end{SGAresult}
+3.6 的最后一个断言由 1.5 得到。
+
+设 $T$ 是 $C$ 上的\Term{topology}{拓扑}。那么\Term{functor}{函子} $u_i$ 都\Term{continuous}{连续}，当且仅当对每个 $i\in I$ 以及 $C_i$ 的每个\Term{object}{对象} $X$ 的每个\Term{covering-sieve}{覆盖筛} $R\hookrightarrow X$，$\widehat C$ 中的\Term{morphism}{态射}
+\[
+ u_{i!}(R)\longrightarrow u_i(X)
+\]
+是\Term{bicovering}{双覆盖}的（1.2 (ii)）。因此 3.6 是以下引理的推论。
+
+\begin{SGAresult}{引理}{3.6.1}
+设 $C$ 是\Term{small-category}{小范畴}，$(u_i:F_i\to G_i)_{i\in I}$ 是 $\widehat C$ 中的一族\Term{arrow}{箭头}。那么 $C$ 上存在使各\Term{morphism}{态射} $u_i$ 成为\Term{covering}{覆盖}（相应地\Term{bicovering}{双覆盖}）\Term{morphism}{态射}的最粗\Term{topology}{拓扑}（第 II 讲 5.2）。
+\end{SGAresult}
+对于一个给定\Term{topology}{拓扑} $T$，说 $u:F\to G$ 是\Term{covering}{覆盖}的，意味着对每个\Term{arrow}{箭头} $X\to G$，其中 $X\in\operatorname{Ob}C$，\Term{correspondence}{对应}的\Term{arrow}{箭头} $F\times_GX\to X$ 是\Term{covering}{覆盖}的；或者\Term{equivalence}{等价}地，$C$ 中经过前一\Term{arrow}{箭头}\Term{resolution}{分解}的全部\Term{arrow}{箭头} $X'\to X$ 所成的族是\Term{covering-family}{覆盖族}。因此，使各 $u_i:F_i\to G_i$ 成为\Term{covering}{覆盖}\Term{morphism}{态射}的\Term{topology}{拓扑}中存在最粗的一个，这由第 I 讲 1.1.6 得到；于是得到 3.6.1 中不带括号的断言。括号中的相应断言由此推出，只须回忆，\Term{morphism}{态射} $u:F\to G$ 是\Term{bicovering}{双覆盖}的，当且仅当\Term{morphism}{态射} $u:F\to F$ 与 $\operatorname{diag}_u:F\to F\times_GG$ 都是\Term{covering}{覆盖}的。
+
+\begin{SGAresult}{命题}{3.7}
+设 $(C_i)_{i\in I}$ 是一族\Term{site}{景}，$C$ 是\Term{category}{范畴}，对每个 $i\in I$ 给定\Term{functor}{函子} $u_i:C_i\to C$，且 $\mathcal U$ 是使\Term{category}{范畴} $C_i$ 与 $C$ 都为 $\mathcal U$-小的\Term{universe}{宇宙}。存在使各 $u_i$ \Term{cocontinuous}{余连续}的最细\Term{topology}{拓扑} $\mathfrak T_{\mathcal U}$。\Term{topology}{拓扑} $\mathfrak T_{\mathcal U}$ 不依赖于使所考虑的\Term{category}{范畴}都小的\Term{universe}{宇宙} $\mathcal U$。
+\end{SGAresult}
+设 $\mathcal U$ 是使所考虑的\Term{category}{范畴}都小的\Term{universe}{宇宙}。各\Term{functor}{函子} $u_i$ 对 $C$ 的某个\Term{topology}{拓扑} $\mathfrak T$ \Term{cocontinuous}{余连续}，当且仅当对每个 $i\in1$ 与 $C_i$ 上的每个\Term{sheaf}{层} $F$，\Term{presheaf}{预层} $\widehat u_{i*}F$ 都是 $\mathfrak T$ 的\Term{sheaf}{层}（2.2）。由此得到，
+\SourcePage{176}
+\Term{topology}{拓扑} $\mathfrak T_{\mathcal U}$ 就是使各\Term{presheaf}{预层} $\widehat u_{i*}F$，$i\in I$、$F\in\operatorname{ob}C_i$，都成为\Term{sheaf}{层}的最细\Term{topology}{拓扑}（第 II 讲 2.2）。最后一个断言由 2.2 得到。
+
+\SGAsection{4}{比较引理}
+\begin{SGAresult}{定理}{4.1}
+（\Term{comparison-lemma}{比较引理}。）设 $C$ 是\Term{small-category}{小范畴}，$C'$ 是其底\Term{sheaf}{层}\Term{category}{范畴}为 $\mathcal U$-\Term{category}{范畴}的\Term{site}{景}，$u:C\to C'$ 是\Term{fully-faithful-functor}{全忠实}\Term{functor}{函子}。给 $C$ 赋予由 $u$ 诱导的\Term{topology}{拓扑}（3.1）。考虑性质：
+
+\noindent i) $C'$ 的每个\Term{object}{对象}都能被来自 $C$ 的\Term{object}{对象}\Term{covering}{覆盖}。
+
+\noindent ii) \Term{functor}{函子} $F\mapsto F\circ u$ 诱导从 $C'$ 上的\Term{sheaf}{层}\Term{category}{范畴}到 $C$ 上的\Term{sheaf}{层}\Term{category}{范畴}的\Term{equivalence-of-categories}{范畴等价}。
+
+总有 i) $\Rightarrow$ ii)。当 $C'$ 是 $\mathcal U$-\Term{site}{景}且 $C'$ 的\Term{topology}{拓扑}不比\Term{canonical-topology}{典范拓扑}细时，有 ii) $\Rightarrow$ i)。
+\end{SGAresult}
+\textbf{4.1.1。}先证明 i) $\Rightarrow$ ii)。证明分为两步。
+
+第一步。对 $\widehat {C'}$ 的每个\Term{presheaf}{预层} $H$，\Term{adjunction}{伴随}\Term{morphism}{态射} $\varphi:u_!u^*H\to H$（第 I 讲 5.1）是\Term{bicovering}{双覆盖}的（第 II 讲 5.3），并且\Term{functor}{函子} $u_s:C'^{\sim}\to C^{\sim}$（1.1.1）是\Term{fully-faithful-functor}{全忠实}的。
+
+设 $C/H$ 是\Term{small-category}{小范畴}，其\Term{object}{对象}是 $C$ 的\Term{object}{对象} $Y$ 连同\Term{morphism}{态射} $u(Y)\to H$，其\Term{morphism}{态射}是\Term{commutative-diagram}{交换图}：
+\[
+\begin{tikzcd}
+ u(Y)\arrow[rr,"u(m)"]\arrow[dr]&&u(Y')\arrow[dl]\\
+ &H&
+\end{tikzcd}.
+\]
+有 $u^*H=\varinjlim_{Y\in\operatorname{ob}C/H}Y$（第 I 讲 3.4），因此（第 I 讲 5.4），$u_!u^*H=\varinjlim_{Y\in\operatorname{ob}C/H}u(Y)$。\Term{adjunction}{伴随}\Term{morphism}{态射}就是从这个\Term{inductive-limit}{归纳极限}描述显然得到的\Term{morphism}{态射}。\Term{morphism}{态射} $\varphi$ 具有以下性质：
+
+\noindent $(*)$ 对 $C$ 的每个\Term{object}{对象} $Y$，每个\Term{morphism}{态射} $m:u(Y)\to H$ 都唯一\Term{resolution}{分解}为\Term{canonical}{典范}\Term{morphism}{态射} $\alpha(m):u(Y)\to u_!u^*H$ 与\Term{morphism}{态射} $\varphi$ 的复合。由 i) 立即可见，\Term{morphism}{态射} $\varphi$ 是\Term{covering}{覆盖}的（第 II 讲 5.1）；现证明它是\Term{bicovering}{双覆盖}的。设 $p,q:Z\rightrightarrows u_!u^*H$ 是从 $C'$ 的\Term{object}{对象} $Z$ 到 $H'$ 的两个\Term{morphism}{态射}，且满足 $\varphi p=\varphi q$。对 $C$ 的每个\Term{object}{对象} $Y$ 及每个\Term{morphism}{态射} $n:u(Y)\to Z$，都有 $\varphi pn=\varphi qn$。性质 $(*)$ 于是给出 $pn=qn$；而由于各 $u(Y)$ \Term{covering}{覆盖} $Z$，$(p,q)$ 的\Term{equalizer}{等化子}是\Term{covering}{覆盖} $Z$ 的\Term{sieve}{筛}。因此\Term{morphism}{态射} $\varphi$ 是\Term{bicovering}{双覆盖}的（第 II 讲 5.3）。对 $C'$ 上的每个\Term{sheaf}{层} $H$，$u^*H$ 是 $C$ 上的\Term{sheaf}{层}，记为 $u_sH$（1.1.1）。又有 $u^su_sH=a'u_!u_sH$（1.3），且\Term{adjunction}{伴随}\Term{morphism}{态射} $u^su_sH\to H$ 是把“\Term{associated-sheaf}{伴随层}”\Term{functor}{函子}\Term{action}{作用}于\Term{morphism}{态射} $\varphi:u_!u^*H\to H$ 得到的。因此（第 II 讲 5.3），\Term{adjunction}{伴随}\Term{morphism}{态射} $u^su_sH\to H$ 是\Term{isomorphism}{同构}。故 $u_s:C'^{\sim}\to C^{\sim}$ 是\Term{fully-faithful-functor}{全忠实}的。
+
+\SourcePage{177}
+第二步。\Term{functor}{函子} $u$ \Term{cocontinuous}{余连续}，且\Term{functor}{函子} $u^s:C^{\sim}\to C'^{\sim}$（1.2）\Term{fully-faithful-functor}{全忠实}。因此 $u_s:C'^{\sim}\to C^{\sim}$ 是\Term{equivalence}{等价}。设 $Y$ 是 $C$ 的\Term{object}{对象}，$i:R\hookrightarrow u(Y)$ 是\Term{covering-sieve}{覆盖筛}。由于\Term{functor}{函子} $u^*$ 与\Term{projective-limit}{投射极限}交换（第 I 讲 5.5），\Term{morphism}{态射} $u^*(i):u^*(R)\hookrightarrow u^*u(Y)$ 是\Term{monomorphism}{单态射}。由于 $u$ \Term{fully-faithful-functor}{全忠实}，有 $u^*u(Y)\simeq Y$，从而得到 $Y$ 的\Term{sieve}{筛} $u^*(i):u^*(R)\to Y$。要证明 $u$ \Term{cocontinuous}{余连续}，只须证明 $u^*(i):u^*(R)\hookrightarrow Y$ 是 $C$ 上\Term{induced-topology}{诱导拓扑}的\Term{covering-sieve}{覆盖筛}（2.1）。为此，只须证明（3.2）对每个\Term{base-change}{基变换} $m:X\to Y$，\Term{morphism}{态射} $u_!(u^*(R)\times_YX)\to u(X)$ 都是\Term{bicovering}{双覆盖}的。但由于 $u^*$ 与\Term{projective-limit}{投射极限}交换，有
+\[
+ u^*(R)\times_YX=u^*(R\times_{u(Y)}u(X)),
+\]
+且 $R\times_{u(Y)}u(X)$ 是\Term{covering}{覆盖} $X$ 的\Term{sieve}{筛}。因此只须证明，对 $C$ 的每个\Term{object}{对象} $Y$ 及每个\Term{covering-sieve}{覆盖筛} $i:R\hookrightarrow u(Y)$，$\widehat {C'}$ 的\Term{morphism}{态射}
+\[
+ u_!u^*(R)\xrightarrow{u_!u^*(i)}u(Y)
+\]
+都是\Term{bicovering}{双覆盖}的。而这个\Term{morphism}{态射}\Term{resolution}{分解}为\Term{adjunction}{伴随}\Term{morphism}{态射} $u_!u^*(R)\to R$ 与\Term{monomorphism}{单态射} $R\hookrightarrow u(Y)$ 的复合；前者是\Term{bicovering}{双覆盖}的（第一步），后者是\Term{covering}{覆盖}的。因此它是\Term{bicovering}{双覆盖}的（第 II 讲 5.3）。这就说明 $u$ \Term{cocontinuous}{余连续}。由于 $u$ \Term{continuous}{连续}且\Term{fully-faithful-functor}{全忠实}，由 2.6（用于 $C$ 小的情形）可知 $u^s$（在 2.6 中记为 $u_!$）是\Term{fully-faithful-functor}{全忠实}的。由于 $u^s$ 与 $u_s$ 互为\Term{adjunction}{伴随}且都\Term{fully-faithful-functor}{全忠实}，它们是互为\Term{quasi-inverse-functor}{拟逆}的\Term{functor}{函子}，因此 $u_s$ 是\Term{equivalence}{等价}。
+
+\textbf{4.1.2。}现证明 ii) $\Rightarrow$ i)。$C$ 的各\Term{object}{对象} $Y$ 构成 $C^{\sim}$ 的一个\Term{generating-family}{生成族}（第 II 讲 4.10），因此对 $C'$ 的每个\Term{object}{对象} $X$，存在一个\Term{epimorphic-family}{满态射族}（在 $C^{\sim}$ 中）$v_i:Y_i\to u_sX$，$i\in I$。有 $u_su(Y_i)=Y_i$，而由于\Term{functor}{函子} $u_s$ 是\Term{equivalence-of-categories}{范畴等价}，有 $v_i=u_s(x_i)$，其中 $w_i:u(Y_i)\to X$ 构成 $C'^{\sim}$ 的一个\Term{epimorphic-family}{满态射族}。于是由第 II 讲 5.1，族 $w_i:u(Y_i)\to X$，$i\in I$，是\Term{covering-family}{覆盖族}。
+
+\textbf{4.2。1.2 的证明的完成。}设 $G$ 是 $C$ 的\Term{full-subcategory}{满子范畴}，其\Term{object}{对象}构成 $C$ 的一个小的\Term{topologically-generating-family}{拓扑生成族}（第 II 讲 3.0.1）。给 $G$ 赋予由\Term{inclusion-functor}{包含函子} $i:G\to C$ 诱导的\Term{topology}{拓扑}（3.1）。由 1.2 证明的第一部分，\Term{functor}{函子} $(u\circ i)_s=i_s\circ u_s$（1.1.1）有\Term{left-adjoint}{左伴随}。由于 $i_s$ 是\Term{equivalence-of-categories}{范畴等价}（4.1），\Term{functor}{函子} $u_s$ 有\Term{left-adjoint}{左伴随} $u^s$，并有\Term{functor}{函子}性\Term{isomorphism}{同构} $u^s\simeq(u\circ i)^s\circ i_s$。现证明图
+\begin{equation}\tag{4.2.1}
+\begin{tikzcd}
+ C\arrow[r,"u"]\arrow[d,"\varepsilon_C"']&C'\arrow[d,"\varepsilon_{C'}"]\\
+ C^{\sim}\arrow[r,"u^s"']&C'^{\sim}
+\end{tikzcd}
+\end{equation}
+在\Term{isomorphism}{同构}意义下交换。对 $C'$ 上的每个\Term{sheaf}{层} $H$，对每个 $X\in\operatorname{ob}C$ 都有
+\[
+ \operatorname{Hom}_{C'^{\sim}}(\varepsilon_{C'}uX,H)\simeq u_sH(X).
+\]
+又由\Term{adjunction}{伴随关系}，有
+\SourcePage{178}
+\[
+ \operatorname{Hom}_{C'^{\sim}}(u^s\varepsilon_CX,H)\simeq\operatorname{Hom}_{C^{\sim}}(\varepsilon_CX,u_sH),
+\]
+再由 $\varepsilon_C$ 的定义，有 $\operatorname{Hom}_{C^{\sim}}(\varepsilon_CX,u_sH)\simeq u_sH(X)$。于是对每个 $X\in\operatorname{ob}C$，有\Term{isomorphism}{同构} $\varepsilon_{C'}uX\simeq u^s\varepsilon_CX$。这就证明了 i) $\Rightarrow$ iv)。现证 iv) $\Rightarrow$ i)。有\Term{commutative-diagram}{交换图}
+\begin{equation}\tag{4.2.2}
+\begin{tikzcd}
+ G\arrow[r,"i"]\arrow[d,"\varepsilon_G"']&C\arrow[r,"u"]\arrow[d,"\varepsilon_C"]&C'\arrow[d,"\varepsilon_{C'}"]\\
+ G^{\sim}\arrow[r,"i^S"']&C^{\sim}\arrow[r,"u^S"']&C'^{\sim},
+\end{tikzcd}
+\end{equation}
+因此，根据证明的第一部分，\Term{functor}{函子} $i\circ u:G\to C'$ \Term{continuous}{连续}。由 4.1 与 1.1 立即推出 $u$ \Term{continuous}{连续}，从而得到 iv) $\Rightarrow$ i)。此外，由证明第一部分已知 $C$ 小时的唯一性，也就得到 $u^s$ 的唯一性。
+
+\textbf{4.3。1.5 与 1.7 的证明的完成。}设 $u:C\to C'$ 是两个 $\mathcal U$-\Term{site}{景}之间的\Term{functor}{函子}，$G$ 是 $C$ 的\Term{full-subcategory}{满子范畴}，其\Term{object}{对象}集是 $C$ 的一个小的\Term{topologically-generating-family}{拓扑生成族}（第 II 讲 3.0.1）。给 $G$ 赋予由\Term{inclusion-functor}{包含函子} $i:G\to C$ 诱导的\Term{topology}{拓扑}。由 4.1 与 1.1 立即得到，$u$ \Term{continuous}{连续}，当且仅当 $u\circ i$ \Term{continuous}{连续}。由这个注记及 1.5 证明的第一部分，即得一般情形。这个注记也把 1.7 的证明归约到\Term{category}{范畴} $C$ 小的情形。
+
+\textbf{4.4。2.3 的证明的完成。}设 $u:C\to C'$ 是两个 $\mathcal U$-\Term{site}{景}之间的\Term{functor}{函子}，$G$ 是 $C$ 的\Term{full-subcategory}{满子范畴}，其\Term{object}{对象}集是 $C$ 的一个小的\Term{topologically-generating-family}{拓扑生成族}（第 II 讲 3.0.1），赋予它由\Term{inclusion-functor}{包含函子} $i:G\to C$ 诱导的\Term{topology}{拓扑}。由 4.1 的证明（4.1.1 第二步）可知，$i$ \Term{cocontinuous}{余连续}。因此当 $u$ \Term{cocontinuous}{余连续}时，\Term{functor}{函子} $u\circ i:G\to C'$ \Term{cocontinuous}{余连续}。此外，$i^*:C'^{\sim}\to G^{\sim}$ 是\Term{equivalence-of-categories}{范畴等价}（4.1）。故\Term{functor}{函子} $u^*:C'^{\sim}\to C^{\sim}$ 有\Term{right-adjoint}{右伴随}。这就证明了 3)。要证明 4)，只须注意 $(u\circ i)_*\simeq u_*\circ i_*$，且 $i_*$ 是\Term{equivalence}{等价}（4.1）。于是 (2.3.2) 的交换性由 $C$ 小时这些图的交换性得到。
+
+\SGAsection{5}{局部化}
+\textbf{5.1。}现在设 $C$ 是 $\mathcal U$-\Term{site}{景}，$X$ 是 $\widehat C$ 的\Term{object}{对象}。除非明确作相反说明，\Term{category}{范畴} $C/X$ 都赋予由\Term{functor}{函子} $j_X:C/X\to C$ 诱导的\Term{topology}{拓扑} $\mathscr C$（3.1）。记号 $C/X$ 将表示赋予\Term{topology}{拓扑} $\mathscr C$ 的\Term{category}{范畴} $C/X$。命题第 I 讲 5.11 表明，\Term{functor}{函子} $j_{X!}$ 与\Term{fiber-product}{纤维积}交换，因此把每个\Term{monomorphism}{单态射}变为\Term{monomorphism}{单态射}。特别地，对 $C/X$ 的每个\Term{object}{对象} $(Y\to X)$，\Term{functor}{函子} $j_{X!}$ 在\Term{category}{范畴} $C/X$ 中\Term{object}{对象} $(Y\to X)$ 的\Term{sieve}{筛}与 $C$ 中\Term{object}{对象} $Y$ 的\Term{sieve}{筛}之间建立一一\Term{correspondence}{对应}。
+
+\SourcePage{179}
+\begin{SGAresult}{命题}{5.2}
+设 $C$ 是 $\mathcal U$-\Term{site}{景}，$X$ 是 $\widehat C$ 的\Term{object}{对象}，$j_X:C/X\to C$ 是相应的\Term{continuous-functor}{连续函子}。
+
+\noindent 1) \Term{object}{对象} $(Z\to X)$ 的\Term{sieve}{筛} $R$ 在 $C/X$ 中是\Term{covering}{覆盖}的，当且仅当\Term{sieve}{筛} $j_{X!}(R)\hookrightarrow Z$ 在 $C$ 中是\Term{covering}{覆盖}的。
+
+\noindent 2) \Term{functor}{函子} $j_X:C/X\to C$ 既\Term{cocontinuous}{余连续}又\Term{continuous}{连续}。
+
+\noindent 3) 设 $m:Y\to X$ 是 $\widehat C$ 的\Term{morphism}{态射}。那么有\Term{commutative-diagram}{交换图}：
+\[
+\begin{tikzcd}
+ C/Y\arrow[rr,"j_m"]\arrow[dr,"j_Y"']&&C/X\arrow[dl,"j_X"]\\
+ &C&
+\end{tikzcd}.
+\]
+由\Term{functor}{函子} $j_Y$ 在 $C/Y$ 上诱导的\Term{topology}{拓扑}，等于由 $j_m$ 在 $C/Y$ 上诱导的\Term{topology}{拓扑}。
+
+\noindent 4) 由 $j_X:C/X\to C$ 诱导的\Term{topology}{拓扑}是 $\mathcal U$-\Term{topology}{拓扑}（第 II 讲 3.0.2）。
+\end{SGAresult}
+\begin{proof}
+1) 若 $(Z\to X)$ 的\Term{sieve}{筛} $R$ 是\Term{covering}{覆盖}的，则\Term{sieve}{筛} $j_{X!}(R)\hookrightarrow Z$ 是\Term{covering}{覆盖}的（1.6）。
+
+反之，若\Term{sieve}{筛} $j_{X!}(R)\to Z$ 在 $C$ 中是\Term{covering}{覆盖}的，则容易看出，在 $C/X$ 中作任意\Term{base-change}{基变换}所得到的\Term{sieve}{筛}也具有同样的性质。因此\Term{sieve}{筛} $R$ 是\Term{covering}{覆盖}的（3.2）。
+
+2) 由 1) 应用 2.1 立即得到。
+
+3) 由 1) 所给出的\Term{covering-sieve}{覆盖筛}的描述立即得到。
+
+4) 设 $(G_i)_{i\in I}$ 是 $C$ 的一个小的\Term{topologically-generating-family}{拓扑生成族}。立即可以验证，小族
+\[
+ (u:G_i\to X),\qquad u\in\coprod_{i\in I}\operatorname{Hom}_{\widehat C}(G_i,X),
+\]
+是 $C/X$ 的\Term{topologically-generating-family}{拓扑生成族}。
+\end{proof}
+
+\textbf{术语和记号 5.3。}根据上一命题，\Term{functor}{函子} $j_X$ 既是\Term{continuous-functor}{连续函子}又是\Term{cocontinuous-functor}{余连续函子}。因此，它在\Term{set-valued-sheaf}{集合层}\Term{category}{范畴}之间定义三个相继\Term{adjunction}{伴随}的\Term{functor}{函子}（4.3.2）（1.3 及 2.3）：
+\[
+\begin{aligned}
+ j_X^s&:(C/X)^{\sim}\longrightarrow C^{\sim},\\
+ j_X^*=j_{X,s}&:C^{\sim}\longrightarrow(C/X)^{\sim},\\
+ j_{X*}&:(C/X)^{\sim}\longrightarrow C^{\sim}.
+\end{aligned}
+\]
+在命题 5.2 的这一特殊情形中，我们采用以下术语和记号：
+
+\noindent 1) \Term{functor}{函子} $j_{X*}$ 称为\Term{direct-image-functor}{直接像函子}。
+
+\noindent 2) \Term{functor}{函子} $j_{X,s}=j_X^*$ 记为 $j_X^*$，称为\Term{restriction-functor}{限制}到 $C/X$ 的\Term{functor}{函子}。
+
+\SourcePage{180}
+\noindent 3) \Term{set-valued-sheaf}{集合层}上的\Term{functor}{函子} $j_X^s$ 称为“\Term{extension-by-empty-set}{以空集延拓}到\Term{category}{范畴} $C$ 的\Term{functor}{函子}”，记为 $j_{X!}$（参见 2.9.2）。
+
+因此，在 $(C/X)^{\sim}$ 与 $C^{\sim}$ 之间有三个相继\Term{adjunction}{伴随}的\Term{functor}{函子}：
+\[
+ j_{X!},\ j_X^*,\ j_{X*}.
+\]
+
+\begin{SGAresult}{命题}{5.4}
+\Term{functor}{函子} $j_{X!}:(C/X)^{\sim}\to C^{\sim}$ 经过\Term{category}{范畴} $C^{\sim}/aX$ \Term{resolution}{分解}（$a$ 是\Term{associated-sheaf}{伴随层}\Term{functor}{函子}）：
+\[
+ (C/X)^{\sim}\xrightarrow{e_X^{\sim}}C^{\sim}/aX\longrightarrow C^{\sim}.
+\]
+\Term{functor}{函子}
+\[
+ e_X^{\sim}:(C/X)^{\sim}\longrightarrow C^{\sim}/aX
+\]
+是\Term{equivalence-of-categories}{范畴等价}。\Term{restriction-functor}{限制}到 $C/X$ 的\Term{functor}{函子}与\Term{equivalence}{等价} $e_X^{\sim}$ 的复合\Term{isomorphism}{同构}于“沿 $aX\to\varepsilon$ 作\Term{base-change}{基变换}”的\Term{functor}{函子}（$\varepsilon$ 是 $C^{\sim}$ 的\Term{final-object}{终对象}）：
+\[
+ F\longmapsto(F\times aX\xrightarrow{\operatorname{pr}_2}aX).
+\]
+\end{SGAresult}
+\begin{proof}
+$(C/X)^{\sim}$ 的\Term{final-object}{终对象}在 $j_{X!}$ 下的像是\Term{object}{对象} $aX$，由此得到上述\Term{resolution}{分解}。要证明\Term{functor}{函子} $e_X^{\sim}$ 是\Term{equivalence}{等价}，我们只给出一些提示。根据第 I 讲 5.11，$C/X$ 上的一个\Term{presheaf}{预层}，由 $C$ 上的一个\Term{presheaf}{预层} $F$ 连同\Term{morphism}{态射} $F\to X$ 定义。于是可以证明以下两个性质\Term{equivalence}{等价}：
+
+\noindent i) 由 $F\to X$ 定义的 $C/X$ 上的\Term{presheaf}{预层}是\Term{sheaf}{层}。
+
+\noindent ii) 下图是\Term{cartesian}{笛卡尔}图（以 $i$ 与 $a$ 表示包含到\Term{presheaf}{预层}中的\Term{functor}{函子}与\Term{associated-sheaf}{伴随层}\Term{functor}{函子}）：
+\[
+\begin{tikzcd}
+ F\arrow[r]\arrow[d]&iaF\arrow[d]\\
+ X\arrow[r]&iaX.
+\end{tikzcd}
+\]
+由此立即推出 $e_X^{\sim}$ 是\Term{equivalence}{等价}。最后一个断言是显然的。
+\end{proof}
+
+\begin{SGAresult}{命题}{5.5}
+1) 设 $C$ 是 $\mathcal U$-\Term{site}{景}，$X$ 是 $\widehat C$ 的\Term{object}{对象}。以下\Term{category}{范畴}与\Term{functor}{函子}的图在\Term{canonical}{典范}\Term{isomorphism}{同构}意义下交换：
+\[
+\begin{tikzcd}[column sep=small]
+ C/X\arrow[r,"h_X"]\arrow[d]&\widehat{C/X}\arrow[r,"a_X"]\arrow[d,"e_X^{\wedge}"]&(C/X)^{\sim}\arrow[rr,"i_X"]\arrow[d,"e_X^{\sim}"]&&\widehat{C/X}\arrow[d,"e^{\wedge}/X"]\\
+ C/X\arrow[r,"h/X"']&\widehat C/X\arrow[r,"a/X"']&C^{\sim}/aX\arrow[r,"i/aX"']&\widehat C/iaX\arrow[r,"\pi"']&\widehat C/X.
+\end{tikzcd}
+\]
+记号 $a_X$ 与 $i_X$ 表示\Term{site}{景} $C/X$ 的“\Term{associated-sheaf}{伴随层}”\Term{functor}{函子}与包含到\Term{presheaf}{预层}中的\Term{functor}{函子}。记号 $a/X$ 表示把\Term{functor}{函子} $a$（\Term{site}{景} $C$ 的\Term{associated-sheaf}{伴随层}\Term{functor}{函子}）自然延拓到以 $X$ 为目标的\Term{arrow}{箭头}\Term{category}{范畴}所得到的\Term{functor}{函子}；
+\SourcePage{181}
+记号 $i/X$ 的含义也相同。最后，记号 $\pi$ 表示沿\Term{canonical}{典范}\Term{arrow}{箭头} $X\to iaX$ 作\Term{base-change}{基变换}的\Term{functor}{函子}。
+
+2) 再设 $m:Y\to X$ 是 $\widehat C$ 的\Term{morphism}{态射}。下图在\Term{canonical}{典范}\Term{isomorphism}{同构}意义下交换：
+\[
+\begin{tikzcd}[column sep=large,row sep=large]
+ C^{\sim}/aX/aY\arrow[dd,equal]&(C/X)^{\sim}/a_XY\arrow[l,"f"']&\\
+ &&(C/X/Y)^{\sim}\arrow[ul,"g"']\arrow[dl,"e_m^{\sim}"]\\
+ C^{\sim}/aY&(C/Y)^{\sim}\arrow[l,"e_Y^{\sim}"]&
+\end{tikzcd}.
+\]
+\Term{arrow}{箭头} $f$ 是\Term{equivalence}{等价} $e^{\sim}/X$ 到以 $a_XY$ 为目标的\Term{arrow}{箭头}\Term{category}{范畴}的自然延拓，因此是\Term{equivalence-of-categories}{范畴等价}。\Term{arrow}{箭头} $g$ 正是把 5.4 的\Term{equivalence}{等价}应用于情形 $(C/X)/[m]$ 所得到的\Term{equivalence}{等价}。
+
+3) 以 $j_{X!}:C^{\sim}/aX\to C^{\sim}$ 表示“忘掉 $X$”\Term{functor}{函子}，以 $j_X^*:C^{\sim}\to C^{\sim}/aX$ 表示“与 $X$ 作积”\Term{functor}{函子}。下图在\Term{canonical}{典范}\Term{isomorphism}{同构}意义下交换：
+\[
+\begin{tikzcd}
+ (C/X)^{\sim}\arrow[r,"j_{X!}"]\arrow[d]&C^{\sim}\arrow[d,equal]\\
+ C^{\sim}/aX\arrow[r,"j_{X!}"']&C^{\sim}
+\end{tikzcd}
+\qquad
+\begin{tikzcd}
+ C^{\sim}\arrow[r,"j_X^*"]\arrow[d,equal]&(C/X)^{\sim}\arrow[d,"e^{\sim}/X"]\\
+ C^{\sim}\arrow[r,"j_X^*"']&C^{\sim}/aX.
+\end{tikzcd}
+\]
+\end{SGAresult}
+\begin{proof}
+这些断言的证明直接由\Term{equivalence}{等价} $e_X^{\sim}$（5.4）与 $e_X^{\wedge}$（第 I 讲 5.11）的定义得到。
+\end{proof}
+
+\SGAsection{}{参考文献}
+\noindent [1] [TF] R. Godement，《\Term{sheaf}{层}论》（\textit{Théorie des faisceaux}），Hermann，1958，Act. Scient. Ind，第 1252 号，巴黎。
+\SourcePage{182}

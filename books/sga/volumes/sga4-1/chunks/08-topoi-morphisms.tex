@@ -1,0 +1,937 @@
+\SGAchapter{IV}{拓扑斯}{Topos}
+\begin{center}A. Grothendieck 与 J. L. Verdier\end{center}
+\SourcePage{183}
+\SGAsection{0}{引言}
+\textbf{0.1.} 我们在第 II 讲中看到了形如 $\widetilde C=$ $C$ 上\Term{set}{集合}\Term{sheaf}{层}的\Term{category}{范畴}的若干\Term{exactness}{正合性}性质，其中 $C$ 是一个小\Term{site}{景}。这些性质可以表述为：在许多方面，这些\Term{category}{范畴}（我们将称之为\Term{topos}{拓扑斯}）继承了（小）\Term{set}{集合}\Term{category}{范畴} $(\mathrm{Ens})$ 的熟知性质。另一方面，经验表明，在数学中遇到的各种情形，首先应看作构造相应的（\Term{set}{集合}）\Term{sheaf}{层}\Term{category}{范畴}，即相应\Term{topos}{拓扑斯}的一种技术手段。
+
+\SourcePage{184}
+与一个\Term{site}{景}有关的所有真正重要的概念（例如第 V 讲中研究的\Term{cohomology}{上同调}\Term{invariants}{不变量}，其他各种“\Term{topology}{拓扑}”\Term{invariants}{不变量}，诸如 M. Artin 与 B. Mazur 最近研究的\Term{homotopy}{同伦}\Term{invariants}{不变量} [1]，以及 J. Giraud 关于非交换\Term{cohomology}{上同调}的著作中研究的概念），事实上似乎都可以直接用其所关联的\Term{topos}{拓扑斯}来表达。依照这一观点，当两个\Term{site}{景}所关联的\Term{topos}{拓扑斯}是\Term{equivalence}{等价}\Term{category}{范畴}时，应把它们看作本质上\Term{equivalence}{等价}；并且应认为，给定一个\Term{site}{景}（至少在实践中特别重要的情形，即其\Term{topology}{拓扑}不比其\Term{canonical-topology}{典范拓扑}更细时），就等于给定一个\Term{topos}{拓扑斯} $E$（即该\Term{site}{景}所关联的\Term{topos}{拓扑斯}，由其上的\Term{set}{集合}\Term{sheaf}{层}组成），以及 $E$ 中的一族\Term{generating-family}{生成元}（参见第 II 讲 4.9 及下文 1.2.1）。这一观点类似于：给每个\Term{generating-family}{生成元系}统及其关系系统关联一个群，并把兴趣更多地放在这个群的结构上，而不是放在用来生成它的\Term{generator}{生成元}及关系系统上（后者被看作该情形的辅助数据）。此外，“\Term{comparison-lemma}{比较引理}”第 III 讲 4.1 给出了许多\Term{site}{景}对 $C,C'$ 的例子：它们不\Term{isomorphism}{同构}，甚至作为\Term{category}{范畴}也不\Term{equivalence}{等价}，却产生\Term{equivalence}{等价}的\Term{topos}{拓扑斯}，因此应把 $C$ 与 $C'$ 看作本质上\Term{equivalence}{等价}。
+
+\textbf{0.2.} 在本讲中，我们用简单的\Term{exactness}{正合性}性质给出\Term{topos}{拓扑斯}的一个刻画（归于 J. Giraud），研究由\Term{topological-space}{拓扑空间}之间\Term{continuous-map}{连续映射}的概念所启发的自然的\Term{topos-morphism}{拓扑斯态射}概念，并在\Term{topos}{拓扑斯}的框架内发展通常\Term{sheaf}{层}论中若干熟知的构造（$\mathscr Hom$ \Term{sheaf}{层}、\Term{tensor-product}{张量积}\Term{sheaf}{层}、\Term{support}{支集}）。最后，我们遵循 M. Artin，说明如何由一个\Term{topos}{拓扑斯}的某个“开部”、其补“闭部”，以及联系两者的一个\Term{left-exact}{左正合}\Term{functor}{函子}重建该\Term{topos}{拓扑斯}；此外，除去一些细节，这个\Term{functor}{函子}可以任意选取。
+
+\textbf{0.3.} 这里得到一种\Term{topos}{拓扑斯}的\Term{gluing}{粘合}方法，将它应用于来自普通\Term{topological-space}{拓扑空间}的\Term{topos}{拓扑斯}，一般会得到一个不再属于这种类型的\Term{topos}{拓扑斯}。这首先表明，\Term{topos}{拓扑斯}概念对各种自然构造具有出色的\Term{stable}{稳定}性，而\Term{topological-space}{拓扑空间}概念（\Term{topos}{拓扑斯}概念由之受到启发）却缺乏这种\Term{stable}{稳定}性。另一个值得注意的例子是一个\Term{topos}{拓扑斯}中群的\Term{classifying-topos}{分类拓扑斯}（参见 [1] 或下文 5.9），它由\Term{topological-group}{拓扑群}的经典分类\Term{space}{空间}概念所启发；还有与\Term{algebra}{代数}几何或解析几何中各种“模问题”相联系的“模\Term{topos}{拓扑斯}”概念 [10] [13]。
+
+另一些\Term{topos}{拓扑斯}，例如\Term{scheme}{概形}的\Term{etale-topos}{平展拓扑斯}（本讨论班从第 VII 讲起系统研究）或相对\Term{scheme}{概形}的晶体\Term{topos}{拓扑斯}
+\SourcePage{185}
+[6]，则在为抽象\Term{algebraic-variety}{代数簇}（更一般地，为\Term{scheme}{概形}）发展可用的\Term{cohomology}{上同调}理论，以代替复数域上\Term{algebraic-variety}{代数簇}的经典 Betti \Term{cohomology}{上同调}时，自然地出现。
+
+\textbf{0.4.} 因此可以说，\Term{topos}{拓扑斯}概念是\Term{topology}{拓扑}学中\Term{sheaf}{层}观点的自然产物，而它本身又构成了\Term{topological-space}{拓扑空间}概念的实质性扩展\footnote{关于\Term{topos}{拓扑斯}概念与\Term{topological-space}{拓扑空间}概念之间的确切关系，参见 [9] 或下文 4.1、4.2。}，囊括了大量以往不被认为属于\Term{topology}{拓扑}直观范围的情形。这些情形的\Term{characteristic}{特征}是具有一个“\Term{localization}{局部化}”概念；这个概念恰由\Term{site}{景}概念，并最终由\Term{topos}{拓扑斯}概念（通过与\Term{site}{景}关联的\Term{topos}{拓扑斯}）形式化。正如“topos”这个词本身所意欲暗示的那样，本讨论班的作者认为，把\Term{topology}{拓扑}学的\Term{object}{对象}看作\Term{topos}{拓扑斯}（而不仅仅是\Term{topological-space}{拓扑空间}）的研究，是合理且正当的。
+
+\textbf{0.5.} 我们觉得，在这篇一般性介绍\Term{topos}{拓扑斯}的讲稿中纳入相当多的例子是有用的，其中许多例子与本讨论班最初拟定的目标（即研究\Term{etale}{平展}\Term{cohomology}{上同调}）关系甚远。时间紧张、只对\Term{etale}{平展}\Term{cohomology}{上同调}感兴趣的读者，当然可以略过这些例子而无妨；事实上，本讲的大部分内容也都可以略过，仅在需要时查阅即可。
+
+\SGAsection{1}{拓扑斯的定义与刻画}
+\begin{SGAresult}{定义}{1.1}
+所谓 $\mathcal U$-\Term{topos}{拓扑斯}，或在不致混淆时简称\Term{topos}{拓扑斯}，是指一个\Term{category}{范畴} $E$，使得存在一个\Term{site}{景} $C\in\mathcal U$，且 $E$ \Term{equivalence}{等价}于 $C$ 上 $\mathcal U$-\Term{set}{集合}\Term{sheaf}{层}的\Term{category}{范畴} $\widetilde C$。
+\end{SGAresult}
+\textbf{1.1.1.} 设 $E$ 是一个 $\mathcal U$-\Term{topos}{拓扑斯}。我们总认为 $E$ 配备了它的\Term{canonical-topology}{典范拓扑}（第 II 讲 2.5），从而成为一个\Term{site}{景}；并且由下文 1.1.2 d)，它甚至是一个 $\mathcal U$-\Term{site}{景}（第 II 讲 3.0.2）。除非明确说明相反的情况，我们不考虑 $E$ 上除刚才所说明者以外的任何\Term{topology}{拓扑}。
+
+\textbf{1.1.2.} 我们在第 II 讲 4.8、4.11 中已经看到，一个 $\mathcal U$-\Term{topos}{拓扑斯} $E$ 是一个满足下列条件的 $\mathcal U$-\Term{category}{范畴}（第 I 讲 1.1）：
+
+ a) \Term{finite}{有限}\Term{projective-limit}{投射极限}在 $E$ 中\Term{representable}{可表示}。
+
+ b) 以 $\mathcal U$ 的一个元素为指标的\Term{direct-sum}{直和}在 $E$ 中\Term{representable}{可表示}，并且是不交且\Term{universal}{普适的}（第 II 讲 4.5）。
+
+ c) $E$ 中的\Term{equivalence-relation}{等价关系}是\Term{universally-effective}{普适有效}的（第 I 讲 10.9）。
+
+\SourcePage{186}
+ d) $E$ 有一个以 $\mathcal U$ 的一个元素为指标的\Term{generating-family}{生成族}（第 II 讲 4.9）。
+
+事实上，我们将看到，这些内在性质刻画了 $\mathcal U$-\Term{topos}{拓扑斯}：
+\begin{SGAresult}{定理}{1.2}
+（J. Giraud）设 $E$ 是一个 $\mathcal U$-\Term{category}{范畴}。下列性质\Term{equivalence}{等价}：
+
+ i) $E$ 是一个 $\mathcal U$-\Term{topos}{拓扑斯}（1.1）。
+
+ ii) $E$ 满足 1.1.2 的条件 a)、b)、c)、d)。
+
+ iii) $E$ 上对于\Term{canonical-topology}{典范拓扑}的 $\mathcal U$-\Term{sheaf}{层}均\Term{representable}{可表示}，并且 $E$ 有一个小\Term{generating-family}{生成族}（条件 1.1.2 d)）。
+
+ iv) 存在一个\Term{category}{范畴} $C\in\mathcal U$ 和一个\Term{fully-faithful-functor}{全忠实}\Term{functor}{函子} $i:E\to\widehat C$（其中 $\widehat C$ 表示 $C$ 上 $\mathcal U$-\Term{presheaf}{预层}的\Term{category}{范畴}），它有一个\Term{left-exact}{左正合}的\Term{left-adjoint}{左伴随} $a$。
+
+ i$'$) 存在一个\Term{site}{景} $C\in\mathcal U$，使得\Term{projective-limit}{投射极限}在 $C$ 中\Term{representable}{可表示}，$C$ 的\Term{topology}{拓扑}不比其\Term{canonical-topology}{典范拓扑}更细（第 II 讲 2.5），并且 $E$ \Term{equivalence}{等价}于 $C$ 上 $\mathcal U$-\Term{set}{集合}\Term{sheaf}{层}的\Term{category}{范畴} $\widetilde C$。
+\end{SGAresult}
+此外：
+\begin{SGAresult}{推论}{1.2.1}
+设 $E$ 是一个 $\mathcal U$-\Term{topos}{拓扑斯}，$C$ 是 $E$ 的一个\Term{full-subcategory}{满子范畴}，赋予它由 $E$ 的\Term{topology}{拓扑}（1.1.1）\Term{induced-topology}{诱导的拓扑}（第 III 讲 3.1）。考虑\Term{functor}{函子}
+\[
+ E\longrightarrow\widetilde C,
+\]
+它把每个 $X\in\operatorname{ob}E$ 送到 $X$ 所表示的\Term{functor}{函子}在 $C$ 上的\Term{restriction}{限制}。这个\Term{functor}{函子}是\Term{equivalence-of-categories}{范畴等价}，当且仅当 $\operatorname{ob}C$ 是 $E$ 的一个\Term{generating-family}{生成族}。
+\end{SGAresult}
+\begin{proof}
+i)$\Leftrightarrow$iv) 立即由第 II 讲 5.5 得出，且上面已经回顾了 i)$\Rightarrow$ii)。由于 i$'$)$\Rightarrow$i) 是\Term{trivial-bundle}{平凡}的，只需证明 ii)$\Rightarrow$iii) 和 iii)$\Rightarrow$i$'$)，这将在下文 1.2.4 和 1.2.3 中完成。至于推论，只需注意所考虑的\Term{functor}{函子}\Term{resolution}{分解}为 $E\to\widetilde E\to\widetilde C$，因而由 iii)，$E\to\widetilde E$ 是\Term{equivalence}{等价}，问题归结为确定 $\widetilde E\to\widetilde C$ 何时为\Term{equivalence}{等价}。于是利用“\Term{comparison-lemma}{比较引理}”第 III 讲 4.1 即得结论，参见下文的证明 1.2.3。
+\end{proof}
+\textbf{1.2.3. iii)$\Rightarrow$i$'$) 的证明。} 设 $\mathfrak X=(X_i)_{i\in I}$，$I\in\mathcal U$，是 $E$ 的一个小\Term{generating-family}{生成族}。由于 $E$ 是一个 $\mathcal U$-\Term{category}{范畴}，$E$ 中\Term{object}{对象}为 $X_i$ 的\Term{finite}{有限}图式的\Term{isomorphism-class}{同构类}构成一个 $\mathcal U$-小集。因此，包含 $\mathfrak X$ 中\Term{object}{对象}的\Term{finite}{有限}\Term{projective-limit}{投射极限}的最小\Term{object}{对象}集 $\mathfrak X'$ 是可数个小集之并，从而也是小的\footnote{这里我们对 $E$ 中\Term{object}{对象}的\Term{isomorphism-class}{同构类}进行论证。}。令 $\mathfrak X^{(n+1)}=\mathfrak X^{(n)(1)}$ 及 $\mathfrak X=\bigcup_n\mathfrak X^{(n)}$，就看到适当扩大\Term{generating-family}{生成元族}后，可以假定 $\mathfrak X$ 对\Term{finite}{有限}\Term{projective-limit}{投射极限}\Term{stable}{稳定}。设 $\mathcal V$ 是包含 $\mathcal U$ 的一个\Term{universe}{宇宙}，使得 $E$ 是 $\mathcal V$-小的。对 $E$ 的任一\Term{object}{对象} $H$，以 $I(H)$ 表示
+\SourcePage{187}
+\Term{set}{集合} $\coprod_{i\in I}\operatorname{Hom}(X_i,H)$。设 $H$ 是 $E$ 的一个\Term{object}{对象}，$H_0\hookrightarrow H$ 是相对于\Term{canonical-topology}{典范拓扑}的子\Term{sheaf}{层}，由\Term{morphism}{态射} $u:X_i\to H$，$(u,i)\in I(H)$ 的像的“并”构成（第 II 讲 4.1）。由于 $H_0$ 是一个 $\mathcal U$-\Term{sheaf}{层}的子\Term{sheaf}{层}，它也是 $\mathcal U$-\Term{sheaf}{层}，因而\Term{representable}{可表示}。由于族 $\mathfrak X$ 是\Term{generating-family}{生成族}，且对每个 $i\in I$，映射 $\operatorname{Hom}(X_i,H_0)\to\operatorname{Hom}(X_i,H)$ 都是\Term{bijection}{双射}，\Term{morphism}{态射} $H_0\hookrightarrow H$ 是\Term{isomorphism}{同构}（第 II 讲 4.9）。因此（第 II 讲 6.1），族 $(u:X_i\to H)$，$(u,i)\in I(H)$ 对于 $E$ 的\Term{canonical-topology}{典范拓扑}是\Term{covering-family}{覆盖族}。所以，$E$ 的每个\Term{object}{对象}都能对于其\Term{canonical-topology}{典范拓扑}由 $\mathfrak X$ 中的\Term{object}{对象}\Term{covering}{覆盖}。设 $C$ 是由 $\mathfrak X$ 中\Term{object}{对象}确定的 $E$ 的\Term{full-subcategory}{满子范畴}，$u:C\hookrightarrow E$ 是\Term{inclusion-functor}{包含函子}。$E$ 的\Term{canonical-topology}{典范拓扑}在 $C$ 上\Term{induced-topology}{诱导的拓扑} $\mathscr C$ 不比 $C$ 的\Term{canonical-topology}{典范拓扑}更细；当 $\mathcal U$ 有一个无限\Term{cardinal}{基数}的元素时，\Term{finite}{有限}\Term{projective-limit}{投射极限}在 $C$ 中\Term{representable}{可表示}。由第 III 讲 5.1，\Term{functor}{函子} $F\mapsto F\circ u$ 是从 $E$ 到 $C$ 上相对于\Term{topology}{拓扑} $\mathscr C$ 的 $\mathcal U$-\Term{sheaf}{层}\Term{category}{范畴}的\Term{equivalence}{等价}。证毕。
+
+\textbf{1.2.4. ii)$\Rightarrow$iii) 的证明。} 证明分为四步。
+
+设 $\mathcal V$ 是包含 $\mathcal U$ 的一个\Term{universe}{宇宙}，使得 $E$ 是 $\mathcal V$ 的元素。设 $\widetilde E$ 是 $E$ 上对于\Term{canonical-topology}{典范拓扑}的 $\mathcal V$-\Term{sheaf}{层}的\Term{category}{范畴}，$J_E:E\to\widetilde E$ 是\Term{canonical-functor}{典范函子}。
+
+\textbf{1.2.4.1.} 设 $(g_i:G_i\to H)$，$i\in I\in\mathcal U$，是 $\widetilde E$ 中的一个\Term{epimorphic-family}{满态射族}。若 $G_i$ 与\Term{fiber-product}{纤维积} $G_i\times_H G_j$ 均\Term{representable}{可表示}，则\Term{sheaf}{层} $H$ \Term{representable}{可表示}。
+
+事实上，\Term{direct-sum}{直和} $\coprod_{i\in I}G_i$ 在 $\widetilde E$ 中\Term{representable}{可表示}（第 II 讲 4.1），其表示者为一个\Term{representable}{可表示}\Term{sheaf}{层} $G$（性质 b) 及第 II 讲 4.6）。\Term{direct-sum}{直和} $K=\coprod_{(i,j)\in I\times I}G_i\times_H G_j$ 也如此。此外，图式 $K\rightrightarrows G\to H$ \Term{exact}{正合}，且 $K$ 是 $G$ 在 $H$ 之上的\Term{fiber}{纤维}平方。（这最后一个性质在\Term{presheaf}{预层}\Term{category}{范畴}中成立，因而也在\Term{sheaf}{层}\Term{category}{范畴}中成立（第 II 讲 4.1）。）由 c) 及第 II 讲 4.7，得知\Term{sheaf}{层} $H$ \Term{representable}{可表示}。
+
+\textbf{1.2.4.2.} 设 $X_\alpha$，$\alpha\in A\in\mathcal U$，是 $E$ 的一个\Term{generating-family}{生成元族}。对任一\Term{sheaf}{层} $H$，记 $I(H)=\coprod_{\alpha\in A}\operatorname{Hom}_{\widetilde E}(X_\alpha,H)$。族 $(u:X_\alpha\to H,(u,\alpha)\in I(H))$ 在 $\widetilde E$ 中是\Term{epimorphic-family}{满态射族}。当 $H$ 是一个 $\mathcal U$-\Term{sheaf}{层}时，$I(H)$ 是 $\mathcal U$ 的元素。
+
+事实上，每个\Term{sheaf}{层} $H$ 都是一族以\Term{representable}{可表示}\Term{sheaf}{层}为源的\Term{surjectivity}{满射}\Term{morphism}{态射}族的目标（第 I 讲 3.4 及第 II 讲 4.1），因此证明第一个断言时，只需考虑 $H$ \Term{representable}{可表示}的情形。此时设 $G$ 是族 $(u:X_\alpha\to H,(u,\alpha)\in I(H))$ 的像。\Term{morphism}{态射} $G\to H$ 是\Term{monomorphism}{单态射}。因而我们处于第一步的情形，因为 $X_\alpha\times_G X_\beta$ \Term{isomorphism}{同构}于\Term{representable}{可表示}的 $X_\alpha\times_H X_\beta$，而且 $I(H)$ 是 $\mathcal U$ 的元素。由此得知 $G$ \Term{representable}{可表示}。但 $X_\alpha$ 构成\Term{generating-family}{生成族}，所以 $G\to H$ 是\Term{isomorphism}{同构}。最后一个断言直接来自 $\mathcal U$-\Term{sheaf}{层}的定义。
+
+\SourcePage{188}
+\textbf{1.2.4.3.} \Term{representable}{可表示}\Term{sheaf}{层}的每个子\Term{sheaf}{层}都\Term{representable}{可表示}。
+
+事实上，设 $G\to H$ 是一个\Term{representable}{可表示}\Term{sheaf}{层}的子\Term{sheaf}{层}，于是 $G$ 是一个 $\mathcal U$-\Term{sheaf}{层}。因此，族 $(u:X_\alpha\to G,(u,\alpha)\in I(G))$ 在 $\widetilde E$ 中是\Term{epimorphic-family}{满态射族}，且以 $\mathcal U$ 的一个元素为指标。此外，\Term{fiber-product}{纤维积} $X_\alpha\times_G X_\beta$ \Term{isomorphism}{同构}于\Term{representable}{可表示}的\Term{fiber-product}{纤维积} $X_\alpha\times_H X_\beta$。因而我们处于第一步的情形，且 $G$ \Term{representable}{可表示}。
+
+\textbf{1.2.4.4.} 每个 $\mathcal U$-\Term{sheaf}{层}都\Term{representable}{可表示}。
+
+事实上，由第一步和第二步，只需证明\Term{fiber-product}{纤维积} $X_\alpha\times_H X_\beta$ \Term{representable}{可表示}。而这些\Term{fiber-product}{纤维积}是积 $X_\alpha\times X_\beta$ 的\Term{subobject}{子对象}，所以由第三步即得结论。定理 1.2 得证。
+
+\textbf{注记 1.3。} 当然，对于给定的 $\mathcal U$-\Term{topos}{拓扑斯} $E$，一般没有一种优先的方式将它在\Term{equivalence}{等价}意义下表示为 $\widetilde C$，其中 $C$ 是小\Term{site}{景}；或者，由 1.2.1，在只考虑\Term{topology}{拓扑}不比\Term{canonical-topology}{典范拓扑}更细的 $C$ 时，实质上\Term{equivalence}{等价}地说，$E$ 中没有一个优先的小\Term{generating-family}{生成族}。反之，若不再要求 $C$ 是小的，则（由 1.2 iii)）有一个完全\Term{canonical}{典范}的 $\mathcal U$-\Term{site}{景} $C$，使 $E$ \Term{equivalence}{等价}于 $\widetilde C$，即 $E$ 本身！这是实践中不宜只用小\Term{site}{景}工作的技术原因之一：事实上，最重要的\Term{site}{景}，即 $\mathcal U$-\Term{topos}{拓扑斯}，都不是小的！此外，在\Term{algebra}{代数}几何（甚至\Term{topology}{拓扑}学，参见 2.5）的许多问题中出现的、生成\Term{topos}{拓扑斯}的\Term{site}{景}，也都不是小的；例如\Term{scheme}{概形}的\Term{etale}{平展}\Term{site}{景}（第 VIII 讲 1）。
+
+\begin{SGAresult}{命题}{1.4}
+设 $E$ 是一个 $\mathcal U$-\Term{topos}{拓扑斯}，$E'$ 是一个\Term{category}{范畴}（未必是 $\mathcal U$-\Term{category}{范畴}），$F$ 是 $E$ 上取值于 $E'$ 的一个\Term{presheaf}{预层}。$F$ 是取值于 $E'$ 的\Term{sheaf}{层}（第 II 讲 6.1）的充要条件，是 $F$ 将 $E$ 中的 $\mathcal U$-\Term{inductive-limit}{归纳极限}变为 $E'$ 中的\Term{projective-limit}{投射极限}。
+\end{SGAresult}
+\begin{proof}
+设 $\mathcal V$ 是包含 $\mathcal U$ 的一个\Term{universe}{宇宙}，使得 $E'$ 是一个 $\mathcal V$-\Term{category}{范畴}。将 $F$ 与 $E'$ 的\Term{object}{对象} $X'$ 所定义的\Term{functor}{函子} $\operatorname{Hom}(X',-):E'\to\mathcal V\text{-}\mathrm{Ens}$ 复合，便可归结到 $E'=\mathcal V\text{-}\mathrm{Ens}$ 的情形，其中 $\mathcal V$ 是一个\Term{universe}{宇宙}。假定 $F$ 将 $\mathcal U$-\Term{inductive-limit}{归纳极限}变为\Term{projective-limit}{投射极限}，则由定义立即得知 $F$ 是一个\Term{sheaf}{层}，因为按\Term{canonical-topology}{典范拓扑}的定义，$E$ 中的\Term{covering-family}{覆盖族} $X_i\to X$ 使我们可以把 $X$ 看作图式
+\[
+ \begin{tikzcd}X_i & X_i\times_X X_j\arrow[l]\arrow[r] & X_j\end{tikzcd}
+\]
+的\Term{inductive-limit}{归纳极限}。假定 $F$ 是一个\Term{sheaf}{层}，证明它将 $\mathcal U$-\Term{inductive-limit}{归纳极限}变为\Term{projective-limit}{投射极限}。若 $\mathcal V\subset\mathcal U$，则可假定 $\mathcal V=\mathcal U$，只需应用判据 1.2 iii)。一般情形还需
+\SourcePage{189}
+多做一些工作。设 $C$ 是 $E$ 中由一个以 $\mathcal U$ 的元素为指标的\Term{generating-family}{生成族}生成的\Term{full-subcategory}{满子范畴}，$u:C\to E$ 是\Term{inclusion-functor}{包含函子}。赋予 $C$ 由 $E$ 的\Term{canonical-topology}{典范拓扑}\Term{induced-topology}{诱导的拓扑}（第 III 讲 4.5）。记 $\widetilde C_{\mathcal U},\widetilde C_{\mathcal V}$ 为 $C$ 上的\Term{sheaf}{层}\Term{category}{范畴}，$\widetilde E_{\mathcal V}$ 为 $E$ 上对于\Term{canonical-topology}{典范拓扑}的 $\mathcal V$-\Term{sheaf}{层}\Term{category}{范畴}，$J_E:E\to\widetilde E_{\mathcal V}$ 为\Term{canonical-functor}{典范函子}，$i_{\mathcal U,\mathcal V}:\widetilde C_{\mathcal U}\to\widetilde C_{\mathcal V}$ 为\Term{inclusion-functor}{包含函子}。图式
+\[
+\begin{tikzcd}
+\widetilde C_{\mathcal U}\arrow[r,"{i_{\mathcal U,\mathcal V}}"] & \widetilde C_{\mathcal V}\\
+E\arrow[u]\arrow[r,"J_E"] & \widetilde E_{\mathcal V}\arrow[u]
+\end{tikzcd}\tag{*}
+\]
+交换，其中竖直\Term{arrow}{箭头}由\Term{functor}{函子} $F\mapsto F\circ u$ 诱导。由\Term{associated-sheaf}{伴随层}\Term{functor}{函子}的显式构造（第 II 讲 3）及第 II 讲 4.1，\Term{functor}{函子} $i_{\mathcal U,\mathcal V}$ 与 $\mathcal U$-\Term{inductive-limit}{归纳极限}交换。此外，由第 III 讲 5.1 和 1.5，$(*)$ 的竖直\Term{arrow}{箭头}是\Term{equivalence-of-categories}{范畴等价}。因此 $J_E:E\to\widetilde E_{\mathcal V}$ 与 $\mathcal U$-\Term{inductive-limit}{归纳极限}交换。对 $E$ 的每个\Term{object}{对象} $X$，有
+\[
+ F(X)\simeq\operatorname{Hom}_{\widetilde E_{\mathcal V}}(J_E(X),F).
+\]
+所以 $F$ 将 $E$ 的 $\mathcal U$-\Term{inductive-limit}{归纳极限}变为\Term{projective-limit}{投射极限}。
+\end{proof}
+\begin{SGAresult}{推论}{1.5}
+设 $E$ 是一个 $\mathcal U$-\Term{topos}{拓扑斯}，$E'$ 是一个 $\mathcal U$-\Term{category}{范畴}，$f:E\to E'$ 是一个\Term{functor}{函子}。$f$ 有\Term{right-adjoint}{右伴随}的充要条件，是 $f$ 与 $\mathcal U$-\Term{inductive-limit}{归纳极限}交换。
+\end{SGAresult}
+\begin{proof}
+这是 1.4 在 $E'=\mathcal U\text{-}\mathrm{Ens}$ 情形下的直接推论。
+\end{proof}
+\begin{SGAresult}{推论}{1.6}
+设 $E,E'$ 是两个 $\mathcal U$-\Term{topos}{拓扑斯}，$f:E\to E'$ 是一个\Term{functor}{函子}。下列条件\Term{equivalence}{等价}：
+
+ i) $f$ 与 $\mathcal U$-\Term{inductive-limit}{归纳极限}交换。
+
+ ii) $f$ 有\Term{right-adjoint}{右伴随}。
+
+ iii) $f$ 是\Term{continuous-functor}{连续的}（第 III 讲 1.1）。
+\end{SGAresult}
+\begin{proof}
+\Term{equivalence-relation}{等价关系} i)$\Leftrightarrow$ii) 已在 1.5 中说明。为证明 i)$\Leftrightarrow$iii)，应用\Term{continuous-functor}{连续函子}的定义，取一个\Term{universe}{宇宙} $\mathcal V$ 使 $\mathcal U\in\mathcal V$（从而 $E,E'$ 是 $\mathcal V$-小\Term{site}{景}）。要表达的是：对 $E'$ 上每个 $\mathcal V$-\Term{sheaf}{层} $F$，复合 $F\circ f$ 是 $E$ 上的\Term{sheaf}{层}，即（1.4）它将 $\mathcal U$-\Term{inductive-limit}{归纳极限}变为\Term{projective-limit}{投射极限}。为此，i) 是充分的，因为由 1.4，$F$ 本身将 $\mathcal U$-\Term{inductive-limit}{归纳极限}变为\Term{projective-limit}{投射极限}；取 $F$ 为一个\Term{representable}{可表示}\Term{functor}{函子}，又可看出这也是必要的。
+\end{proof}
+\SourcePage{190}
+\begin{SGAresult}{推论}{1.7}
+采用 1.6 的记号，$f$ 是某个\Term{topos-morphism}{拓扑斯态射}（3.1）$u:E'\to E$ 的\Term{inverse-image}{逆像}\Term{functor}{函子} $u^*$ 的充要条件，是 $f$ \Term{left-exact}{左正合}并将\Term{epimorphic-family}{满态射族}变为\Term{epimorphic-family}{满态射族}。
+\end{SGAresult}
+\begin{proof}
+必要性由定义是\Term{trivial-bundle}{平凡}的（注意，每个\Term{right-exact}{右正合}\Term{functor}{函子}都将\Term{epimorphism}{满态射}变为\Term{epimorphism}{满态射}）。充分性来自第 III 讲 2.6，它表明在所述条件下 $f$ 是\Term{continuous-functor}{连续的}，因而由 1.6 与 $\mathcal U$-\Term{inductive-limit}{归纳极限}交换。
+\end{proof}
+\textbf{注记 1.8。} 采用 1.5 的记号，可以证明，$f$ 有\Term{left-adjoint}{左伴随}当且仅当它与 $\mathcal U$-\Term{projective-limit}{投射极限}交换。换言之，\Term{covariant-functor}{协变函子} $E\to(\mathcal U\text{-}\mathrm{Ens})$ \Term{representable}{可表示}当且仅当它与 $\mathcal U$-\Term{projective-limit}{投射极限}交换\footnote{更一般的陈述见第 I 讲 8.12.8、8.12.9；下面 a) 至 c) 的证明梗概\Term{correspondence}{对应}于该处给出的证明。}。我们仅指出证明的原理，证明分为两步：
+
+ a) 标准论证 [5, n$^\circ$ 195, §3] 表明，若 $F$ 与 $\varprojlim$ 交换，则它由一个严格\Term{projective-system}{投射系统} $(T_i)_{i\in I}$ \Term{pro-representable-functor}{pro-可表示}，其中 $I$ 是\Term{filtered-ordered-set}{有向有序集}，未必是小的。可以假定若 $i>j$，则 $T_i\to T_j$ 不是\Term{isomorphism}{同构}；在此假设下，$F$ \Term{representable}{可表示}当且仅当 $I$ 是小的（这实际上意味着该\Term{projective-system}{投射系统}本质上为常值系统）。
+
+ b) 已知对 $E$ 的每个\Term{object}{对象} $X$，\Term{set}{集合} $F(X)=\varinjlim_i\operatorname{Hom}(T_i,X)$ 是小的，为证明 $I$ 是小的，只需有一个小\Term{cogenerating-family}{余生成族} $(X_j)_{j\in J}$（即对\Term{opposite-category}{反范畴} $E^\circ$ 是\Term{generating-family}{生成族}）。而可以证明，一个 $\mathcal U$-\Term{topos}{拓扑斯} $E$ 总有一个小\Term{cogenerating-family}{余生成族}。
+
+ c) 为证明最后这一点，先用标准论证 [Toh] 说明 $E$ 的每个\Term{object}{对象} $X$ 都有到某个“\Term{injective-object}{内射}”\Term{object}{对象}的\Term{monomorphism}{单态射}；再说明对 $E$ 的每个\Term{generating-family}{生成族} $(L_\alpha)$，若把每个 $L_\alpha$ 如此\Term{embedding}{嵌入}一个\Term{injective-object}{内射}\Term{object}{对象} $I_\alpha$，则族 $(I_\alpha)$ 是\Term{cogenerating-family}{余生成族}。
+
+\SGAsection{2}{拓扑斯的例子}
+\textbf{2.0.} 本节汇集了相当多\Term{topos}{拓扑斯}的典型例子，读者可能已在别处遇到过，目的在于帮助读者领会\Term{topos}{拓扑斯}的“瑜伽”。关于\Term{site}{景}上的\Term{topology}{拓扑}从而产生\Term{topos}{拓扑斯}的其他例子（取自\Term{algebra}{代数}几何），可查阅 SGA 3 第 IV 讲 6，以及本讨论班第 VII 讲（关于\Term{etale-topos}{平展拓扑斯}）。下文引用本节时，几乎都只是为记号或术语问题，故我们把这些例子附带的、供读者\Term{augmentation}{增广}知识的陈述之验证
+\SourcePage{191}
+留作练习。本节的所有例子都将在第 4 节中加以明确，那里将考察它们对给定数据的\Term{functor}{函子}依赖性；也会在后续各节中用来说明关于\Term{topos}{拓扑斯}的一般概念。
+
+\textbf{2.1. 与\Term{topological-space}{拓扑空间}关联的\Term{topos}{拓扑斯}。} 设 $X$ 是一个小\Term{topological-space}{拓扑空间}，$\operatorname{Ouv}(X)$ 是 $X$ 的\Term{open-subset}{开集}\Term{category}{范畴}，赋予\Term{canonical-topology}{典范拓扑}（第 III 讲 2.9.1）。我们以 $\operatorname{Top}(X)$ 表示 $\operatorname{Ouv}(X)$ 上 $\mathcal U$-\Term{sheaf}{层}的\Term{topos}{拓扑斯}。这个\Term{topos}{拓扑斯}\Term{equivalence}{等价}于 $X$ 上\Term{etale-space}{平展拓扑空间}的\Term{category}{范畴}，\Term{equivalence}{等价}的方式是把每个这样的 $X$ 上\Term{space}{空间} $X'$ 送到 $\operatorname{Ouv}(X)$ 上的\Term{sheaf}{层} $U\mapsto\Gamma(X'/U)=\operatorname{Hom}_X(U,X')$ [TF]。有时我们免不了滥用语言，用同一个字母 $X$ 表示由\Term{topological-space}{拓扑空间} $X$ 定义的\Term{topos}{拓扑斯} $\operatorname{Top}(X)$。
+
+显然，以上例子主要充当了发展\Term{topos}{拓扑斯}理论的指引和直观\Term{support}{支撑}。不过须注意，由\Term{topological-space}{拓扑空间}得到的\Term{topos}{拓扑斯}具有非常特殊的性质，尤其因为描述它们的\Term{site}{景} $C=\operatorname{Ouv}(X)$ 中所有\Term{morphism}{态射}都是\Term{monomorphism}{单态射}（因而其底层\Term{category}{范畴}\Term{degeneration}{退化}为一个\Term{preordered-set}{预序集}）。特别地，由此得知，$C$ 中\Term{object}{对象}所表示的\Term{sheaf}{层}是\Term{final-object}{终层}的子\Term{sheaf}{层}，所以\Term{final-object}{终层}的子\Term{sheaf}{层}构成该\Term{topos}{拓扑斯}的一个\Term{generating-family}{生成族}。\Term{algebra}{代数}几何或\Term{algebra}{代数}中自然出现的大多数\Term{topos}{拓扑斯}并没有这个性质，参见下文诸例。在一定程度上，这个性质刻画了形如 $\operatorname{Top}(X)$ 的\Term{topos}{拓扑斯}（参见下文 7.1.9）。
+
+容易验证，将 $X$ 的每个\Term{open-subset}{开集}送到其所表示的\Term{sheaf}{层}的映射 $\operatorname{Ouv}(X)\to\operatorname{Top}(X)$，是从 $\operatorname{Ouv}(X)$ 到 $\operatorname{Top}(X)$ 的\Term{final-object}{终对象}的\Term{subobject}{子对象}集的\Term{bijection}{双射}；对自然的序结构，这个\Term{bijection}{双射}甚至是\Term{isomorphism}{同构}，即诱导相应\Term{category}{范畴}的\Term{isomorphism}{同构}。这提示我们，若已知\Term{equivalence}{等价}意义下的 $\operatorname{Top}(X)$，就应当能在\Term{homeomorphism}{同胚}意义下重建\Term{topological-space}{拓扑空间} $X$。下文（4.2）将看到，对 $X$ 稍加\Term{restriction}{限制}后，确实如此。
+
+\textbf{2.2. \Term{punctual-topos}{点拓扑斯}或\Term{final-topos}{终拓扑斯}，\Term{empty-topos}{空拓扑斯}或\Term{initial-topos}{始拓扑斯}。} 当 $X$ 是一个只有一点的\Term{topological-space}{拓扑空间}时，\Term{functor}{函子}
+\[
+ F\longmapsto F(X):\operatorname{Top}(X)\longrightarrow\mathcal U\text{-}\mathrm{Ens}
+\]
+是\Term{equivalence-of-categories}{范畴等价}。这特别说明\Term{category}{范畴} $\mathcal U\text{-}\mathrm{Ens}$ 是一个 $\mathcal U$-\Term{topos}{拓扑斯}。我们在第 II 讲的例子中已经看到，从\Term{exactness}{正合性}性质的观点说，这个 $\mathcal U$-\Term{topos}{拓扑斯}是典型的，因为一般\Term{topos}{拓扑斯}的许多性质（尤其\Term{exactness}{正合性}性质）的验证，都能归结到这个特殊\Term{topos}{拓扑斯}。我们在这里用单点\Term{topological-space}{拓扑空间}给出的解释，说明将一个\Term{equivalence}{等价}于\Term{category}{范畴} $\mathcal U\text{-}\mathrm{Ens}$ 的\Term{topos}{拓扑斯}称为\Term{punctual-topos}{点拓扑斯}
+\SourcePage{192}
+这一语言上的滥用是合理的（虽然作为\Term{category}{范畴}，它丝毫不\Term{equivalence}{等价}于\Term{point-category}{单点范畴}！）。这一术语符合关于这些\Term{topos}{拓扑斯}所起\Term{action}{作用}的正确几何直观。有时也滥用语言，将\Term{punctual-topos}{点拓扑斯}称为\Term{final-topos}{终拓扑斯}，参见 4.3；\Term{category}{范畴} $(\mathcal U\text{-}\mathrm{Ens})$ \Term{correspondence}{对应}的\Term{topos}{拓扑斯}则称为“\Term{final-topos}{终拓扑斯}”。
+
+当 $X$ \Term{degeneration}{退化}为空\Term{topological-space}{拓扑空间}，从而 $\operatorname{Ouv}(X)$ \Term{degeneration}{退化}为\Term{point-category}{单点范畴}时，$\operatorname{Ouv}(X)$ 上的\Term{presheaf}{预层} $F$ 是\Term{sheaf}{层}，当且仅当它在 $\operatorname{Ouv}(X)$ 唯一的\Term{object}{对象} $\varnothing$ 处的值是单点集。于是 $\operatorname{Top}(\varnothing)$ \Term{isomorphism}{同构}于单点 $\mathcal U$-\Term{set}{集合}的\Term{category}{范畴}，而后者\Term{equivalence}{等价}于\Term{point-category}{单点范畴}。由此特别得知，\Term{point-category}{单点范畴}（以及与之\Term{equivalence}{等价}的每个 $\mathcal U$-\Term{category}{范畴}）是一个 $\mathcal U$-\Term{topos}{拓扑斯}。有时滥用语言，称之为\Term{empty-topos}{空拓扑斯}或\Term{initial-topos}{始拓扑斯}（参见 4.4）；须注意，它不\Term{equivalence}{等价}于空\Term{category}{范畴}。
+
+\textbf{2.3. 与带\Term{action}{作用}的\Term{space}{空间}关联的\Term{topos}{拓扑斯}。} 设 $X$ 是一个\Term{topological-space}{拓扑空间}，$G$ 是一个通过\Term{homeomorphism}{同胚}\Term{action}{作用}于 $X$ 的\Term{discrete}{离散}群。在 [Toh. 5.1] 中定义了 $X$ 上 $G$-\Term{sheaf}{层}的\Term{category}{范畴}，我们也称它们为 $(X,G)$ 上的\Term{sheaf}{层}；它们是 $X$ 上的（\Term{set}{集合}）\Term{sheaf}{层}，配备与 $G$ 在 $X$ 上的\Term{action}{作用}相容的 $G$ \Term{action}{作用}。利用 Giraud 判据 1.2 iii)，立即看出这个\Term{category}{范畴}是一个\Term{topos}{拓扑斯}（这里的一切都省略了 $\mathcal U$），简记作 $\operatorname{Top}(X,G)$。当 $G$ \Term{degeneration}{退化}为\Term{unit-group}{单位群}时，得到例 2.1；当 $X$ \Term{degeneration}{退化}为单点\Term{space}{空间}时，得到 $G$ 在其上左\Term{action}{作用}的\Term{set}{集合}（或 $G$-\Term{set}{集合}）的\Term{topos}{拓扑斯}，也称为\Term{discrete}{离散}群 $G$ 的\Term{classifying-topos}{分类拓扑斯}，记作 $B_G$。容易验证，$B_G$ 的\Term{final-object}{终对象} $e$ 的\Term{subobject}{子对象}只有 $e$ 和空\Term{sheaf}{层} $\varnothing$；特别地，若 $G$ 不\Term{degeneration}{退化}为\Term{unit-group}{单位群}，则\Term{classifying-topos}{分类拓扑斯} $B_G$ 的\Term{final-object}{终对象}的\Term{subobject}{子对象}不构成 $B_G$ 的\Term{generating-family}{生成族}。因此，这时 $B_G$ 不\Term{equivalence}{等价}于 2.1 中考虑的 $\operatorname{Top}(X)$ 型的\Term{topos}{拓扑斯}。
+
+该文引入 $G$-\Term{sheaf}{层}概念，是为了发展阿贝尔 $G$-\Term{sheaf}{层}的\Term{cohomology}{上同调}理论。把后者解释为\Term{topos}{拓扑斯} $(X,G)$ 的阿贝尔\Term{sheaf}{层}，所述理论就包含于第 V 讲在一般\Term{topos}{拓扑斯}框架内发展的理论中。
+
+更一般地，可以尝试给一个\Term{topological-space}{拓扑空间} $X$，连同其一个\Term{topology}{拓扑}\Term{automorphism-group}{自同构群} $G$（未必\Term{discrete}{离散}），关联一个适当的\Term{topos}{拓扑斯}，从而产生恰当的\Term{cohomology}{上同调}理论。在\Term{differential}{微分}流形、实解析或复解析流形，或\Term{scheme}{概形}的背景下也一样。这确实可以做到，参见下文 2.5。
+
+\textbf{2.4. 群的\Term{classifying-topos}{分类拓扑斯}。} 设 $E$ 是一个\Term{topos}{拓扑斯}，$G$ 是 $E$ 中的一个群。设 $(E,G)$ 是由 $G$ 在其上\Term{action}{作用}的 $E$ 的\Term{object}{对象}组成的\Term{category}{范畴}。利用 Giraud 判据立即看出，这是一个\Term{topos}{拓扑斯}。我们称之为群 $G$ 的\Term{classifying-topos}{分类拓扑斯}，
+\SourcePage{193}
+记作 $B_G$。当 $E$ 是\Term{punctual-topos}{点拓扑斯}（2.2），即 $G$ 是普通群时，得到 2.3 的\Term{classifying-topos}{分类拓扑斯}。
+
+这里采用的术语之所以合理，是因为 $B_G$ 对于 $G$ 下“\Term{torsor}{挠子}”（或\Term{principal-homogeneous-bundle}{主齐性纤维丛}）的分类，更一般地，对于 $G_{E'}=f^*(G)$ 下\Term{torsor}{挠子}的分类，起着泛的\Term{action}{作用}，其中 $E'$ 是一个“在 $E$ 上”的\Term{topos}{拓扑斯}，即配备一个\Term{morphism}{态射} $f:E'\to E$（参见下文 3.1）。这个\Term{action}{作用}在 [3, 第 V 章] 或下文 5.9 中明确说明；它表明，在\Term{topos}{拓扑斯}背景下，$B_G$ 所起的\Term{action}{作用}与经典的\Term{topological-group}{拓扑群}分类\Term{space}{空间}在\Term{topological-space}{拓扑空间}\Term{homotopy}{同伦}论中的\Term{action}{作用}相同。后者可以看作（参见 2.5）前者的弱化版本，仅保留\Term{classifying-topos}{分类拓扑斯}的“\Term{homotopy-type}{同伦型}”；这里采用适当的意义，无须在此详细说明。
+
+\textbf{2.5. \Term{topological-space}{拓扑空间}的“\Term{big-site}{大景}”和“\Term{big-topos}{大拓扑斯}”。\Term{topological-group}{拓扑群}的\Term{classifying-topos}{分类拓扑斯}。}\footnote{这些\Term{site}{景}与\Term{topos}{拓扑斯}的引入归于 Giraud 先生，他还揭示了它们相对于传统“小”\Term{site}{景}的优点。}
+
+设 $\mathcal U\text{-}\mathrm{Esp}$ 或简称 $(\mathrm{Esp})$ 是属于 $\mathcal U$ 的\Term{topological-space}{拓扑空间}组成的\Term{category}{范畴}。已知\Term{finite}{有限}\Term{projective-limit}{投射极限}在 $(\mathrm{Esp})$ 中\Term{representable}{可表示}。考虑 $(\mathrm{Esp})$ 上的\Term{pretopology}{预拓扑}（第 I 讲 1.3），其中 $\operatorname{Cov}(X)$ 是\Term{open-immersion}{开浸入} $u_i:X_i\to X$ 的\Term{epimorphic-family}{满态射族}的\Term{set}{集合}。我们用这一\Term{pretopology}{预拓扑}生成的\Term{topology}{拓扑}，把 $(\mathrm{Esp})$ 看作一个\Term{site}{景}。对 $(\mathrm{Esp})$ 的每个\Term{object}{对象} $X$，考虑 $X$ 上的 $(\mathrm{Esp})$ 的\Term{object}{对象}，即 $X$ 上\Term{topological-space}{拓扑空间}的\Term{category}{范畴}
+\[
+ (\mathrm{Esp})_{/X},
+\]
+通过\Term{forgetful-functor}{遗忘函子} $(\mathrm{Esp})_{/X}\to(\mathrm{Esp})$ 由 $(\mathrm{Esp})$ 的\Term{topology}{拓扑}\Term{induced-topology}{诱导的拓扑}（第 III 讲 5.2 4)），把它看作一个\Term{site}{景}。这个\Term{site}{景}称为与 $X$ 关联的\Term{big-site}{大景}。须注意，它不属于 $\mathcal U$；它也不是第 II 讲 3.0.2 意义下的 $\mathcal U$-\Term{site}{景}，因此应用通常结论时需要谨慎。为弥补这一不便，可以选一个\Term{universe}{宇宙} $\mathcal V$ 使 $\mathcal U\in\mathcal V$，于是 $(\mathrm{Esp})_{/X}$ 成为一个 $\mathcal V$-\Term{site}{景}，从而可以用其关联的 $\mathcal V$-\Term{topos}{拓扑斯} $\widetilde{(\mathrm{Esp})_{/X}}$ 工作；后者可记作 $\operatorname{TOP}(X)$，称为 $X$ 的\Term{big-topos}{大拓扑斯}。若不愿扩大 $\mathcal U$，可取一个\Term{cardinal}{基数} $c$，大于或等于 $X$ 及论证中将出现的所有\Term{topological-space}{拓扑空间}的\Term{cardinal}{基数}（通常 $\sup(\operatorname{card}X,\operatorname{card}\mathbb R)$ 就足够！），并以 $(\mathrm{Esp})_{/X}$ 的\Term{full-subcategory}{满子范畴} $(\mathrm{Esp})'_{/X}$ 代替它，该\Term{full-subcategory}{满子范畴}由满足 $\operatorname{card}X'\leq c$ 的 $X$ 上\Term{space}{空间} $X'$ 组成，配备\Term{induced-topology}{诱导的拓扑}；把这个\Term{site}{景}上的\Term{sheaf}{层}\Term{topos}{拓扑斯}记为 $\operatorname{TOP}(X)$。为明确起见，假定采用第一个定义。
+
+$X$ 的\Term{big-topos}{大拓扑斯}相对于\Term{small-topos}{小拓扑斯}的优点在于，定义它的\Term{site}{景}含有 $(\mathrm{Esp})_{/X}$ 作为\Term{full-subcategory}{满子范畴}；由于这个\Term{site}{景}的\Term{topology}{拓扑}显然不比\Term{canonical-topology}{典范拓扑}更细，由此看到，将每个 $X$ 上\Term{space}{空间} $X'$ 送到其表示的\Term{sheaf}{层}的\Term{canonical-functor}{典范函子} $(\mathrm{Esp})_{/X}\to\operatorname{TOP}(X)$
+\SourcePage{194}
+是\Term{fully-faithful-functor}{全忠实}的。因此，一旦知道 $X$ 上\Term{space}{空间} $X'$ 定义的\Term{sheaf}{层}（$\in\operatorname{Top}(X)$），就在 $X$-\Term{isomorphism}{同构}意义下知道了 $X'$；所以，$X$（的\Term{big-site}{大景}）上的\Term{sheaf}{层}概念可看作 $X$ 上\Term{topological-space}{拓扑空间}概念的推广，借助它，\Term{sheaf}{层}论的所有构造对于 $X$ 上\Term{topological-space}{拓扑空间}都有了意义。
+
+这样，当 $G$ 是 $X$ 上\Term{topological-space}{拓扑空间}\Term{category}{范畴} $(\mathrm{Esp})_{/X}$ 的一个\Term{group-object}{群对象}时，可以给它关联\Term{classifying-topos}{分类拓扑斯} $B_G$（2.4），从而得到分类\Term{cohomology}{上同调}群、分类\Term{homotopy-group}{同伦群}等等（定义为 $\mathcal V$-\Term{topos}{拓扑斯} $B_G$ 的相应\Term{invariants}{不变量}）。特别地，当 $X$ 是单点\Term{space}{空间}时，$G$ 认同于一个普通\Term{topological-group}{拓扑群}。在通常的\Term{local-scheme}{局部}条件保证\Term{cartesian}{笛卡儿}积 $G^n$ 的\Term{singular}{奇异}\Term{cohomology}{上同调}与\Term{sheaf}{层}意义下的\Term{cohomology}{上同调}（例如取常系数）一致时，例如 $G$ \Term{local-scheme}{局部}可缩时，可以验证，$G$ 的\Term{classifying-topos}{分类拓扑斯}的\Term{cohomology}{上同调}\Term{canonical-isomorphism}{典范同构}于\Term{topology}{拓扑}学家所说的 $G$ 的分类\Term{space}{空间}的\Term{cohomology}{上同调}。
+
+（通过“\Term{big-site}{大景}”）引入\Term{classifying-topos}{分类拓扑斯}相对于分类\Term{space}{空间}的优点是提供了更丰富的理论，尤其可以对比常系数或\Term{locally-constant}{局部常}系数更一般的系数给出有用的\Term{cohomology}{上同调}\Term{invariants}{不变量}。此外，这里的定义显然适用于其他常见背景：\Term{differential}{微分}流形、（实或复）解析流形或\Term{analytic-space}{解析空间}、\Term{scheme}{概形}。特别地，把“经典群”看作来自在整数环上定义的\Term{scheme}{概形}，这一观点可以把\Term{characteristic}{特征}类的传统研究与其“算术”研究联系起来；关于这方面的一些说明参见 [7]。同样，J. Giraud 关于群\Term{group-extension}{扩张}分类的一般结论 [3]，是在极一般且灵活的\Term{topos}{拓扑斯}框架内发展的；借助“\Term{big-topos}{大拓扑斯}”，它们可以\Term{specialization}{特化}为关于\Term{topological-group}{拓扑群}或实、复 Lie 群的\Term{group-extension}{扩张}分类的结论，而\Term{topology}{拓扑}学家似乎只熟悉核为\Term{abelian-group}{阿贝尔群}的\Term{group-extension}{扩张}情形 [11]。
+
+\textbf{2.6. 形如 $\widehat C$ 的\Term{topos}{拓扑斯}。} 设 $C$ 是一个\Term{small-category}{小范畴}。则 $C$ 上 $\mathcal U$-\Term{presheaf}{预层}\Term{category}{范畴} $\widehat C$ 显然是一个 $\mathcal U$-\Term{topos}{拓扑斯}，因为它形如 $\widetilde C$，只需赋予 $C$ \Term{chaotic-topology}{混沌拓扑}。下文将稍详细地说明 $C$ 与 $\widehat C$ 的关系。这里只指出，\Term{equivalence}{等价}于形如 $\widehat C$ 的\Term{topos}{拓扑斯}的 $E$ 具有相当特殊的性质：它有一个由\Term{connected}{连通}\Term{projective-object}{投射对象}组成的小\Term{generating-family}{生成族} $(X_i)$；所谓这样的\Term{object}{对象} $X$，是指\Term{functor}{函子} $Y\mapsto\operatorname{Hom}(X,Y)$ 将\Term{epimorphism}{满态射}变为\Term{epimorphism}{满态射}，将和变为和。事实上，只需在 $\widehat C$ 中取由 $X\in\operatorname{ob}C$ 所表示的\Term{functor}{函子}构成的\Term{generating-family}{生成族}。此外，若在一个\Term{topos}{拓扑斯} $E$ 中有一个\Term{covering-family}{覆盖族} $X_i\to X$，
+\SourcePage{195}
+其中 $X_i$ 都是\Term{connected}{连通}\Term{projective-object}{投射对象}，那么 $X$ 的任意另一个\Term{covering-family}{覆盖族}都由这个族控制（第 I 讲 4.3.2、4.3.3）。因此，在形如 $\widehat C$ 的\Term{topos}{拓扑斯} $E$ 中，每个\Term{object}{对象} $X$ 都有一个控制所有其他\Term{covering-family}{覆盖族}的\Term{covering-family}{覆盖族}。对于形如 $\operatorname{Top}(X)$（2.1）的\Term{topos}{拓扑斯}，其中\Term{topological-space}{拓扑空间} $X$ 的点都是\Term{closed-point}{闭点}，上述性质只有在 $X$ \Term{discrete}{离散}时才成立。
+
+当\Term{category}{范畴} $C$ 只有一个\Term{object}{对象}时，$C$ 认同于一个\Term{monoid}{幺半群} $G$。于是 $C$ 上的\Term{presheaf}{预层}认同于一个 $G$ 在其上\Term{right-action}{右作用}的\Term{set}{集合}（因为它是\Term{functor}{函子} $G^\circ\to(\mathrm{Ens})$），$\widehat C$ 就是带\Term{right-action}{右作用}\Term{monoid}{幺半群}的\Term{set}{集合}的\Term{topos}{拓扑斯}；考虑到 2.3，也可记作 $B_{G^\circ}$：它是带\Term{action}{作用}\Term{monoid}{幺半群} $G^\circ$（$G$ 的反\Term{monoid}{幺半群}）的\Term{set}{集合}的\Term{topos}{拓扑斯}。当 $G$ 是群时，利用\Term{isomorphism}{同构} $g\mapsto g^{-1}$，$G\to G^\circ$，就得到 2.3 的\Term{classifying-topos}{分类拓扑斯} $B_G$。
+
+\textbf{2.7. pro-群的\Term{classifying-topos}{分类拓扑斯}。}
+
+\textbf{2.7.1.} 设 $\mathcal G=(G_i)_{i\in I}$ 是群的一个\Term{projective-system}{投射系统}，其中 $G_i,I\in\mathcal U$。假定该\Term{projective-system}{投射系统}严格，即\Term{transition-morphism}{转移态射} $G_j\to G_i$ 都是\Term{surjectivity}{满射}。若 $E$ 是一个\Term{set}{集合}，则所谓 $\mathcal G$ 在 $E$ 上的\Term{action}{作用}（例如左\Term{action}{作用}），是指如下结构：a) 一族 $E$ 的\Term{subset}{子集} $(E_i)_{i\in I}$，其并为 $E$；b) 对每个 $i\in I$，群 $G_i$ 在\Term{set}{集合} $E_i$ 上的一个\Term{action}{作用}；并假定这些数据满足如下条件：对 $j\geq i$，$E_i$ 是 $E_j$ 中在 $G_j\to G_i$ 的核\Term{group-action}{群作用}下不变的元素组成的\Term{subset}{子集}。如果给定了 $\mathcal G$ 在 $E$ 上的（左）\Term{action}{作用}，也说 $\mathcal G$（左）\Term{action}{作用}于 $E$。属于 $\mathcal U$ 并配备 $\mathcal G$ \Term{action}{作用}的\Term{set}{集合}，显然组成一个\Term{category}{范畴}。由 Giraud 判据立即看出，这个\Term{category}{范畴}是一个 $\mathcal U$-\Term{topos}{拓扑斯}。记之为 $B_{\mathcal G}$，称为 $\mathcal G$ 的\Term{classifying-topos}{分类拓扑斯}。当 $I$ 有一个\Term{initial-object}{始对象} $i_\circ$ 时，令 $G=G_{i_\circ}$，就得到 2.3 的\Term{classifying-topos}{分类拓扑斯}。
+
+\textbf{2.7.2.} 另一个重要的例子是群 $G_i$ 都\Term{finite}{有限}的情形，这时
+\[
+ G=\varprojlim G_i
+\]
+是一个紧致、\Term{totally-disconnected}{全不连通}\Term{topological-group}{拓扑群}，或\Term{profinite-group}{投有限群}。于是 $\mathcal G$ 在 $E$ 上的\Term{action}{作用}等于 $G$ 在 $E$ 上的\Term{continuous}{连续}\Term{action}{作用}，或\Term{equivalence}{等价}地，使得 $E$ 的每个点的\Term{stabilizer}{稳定子}都是 $G$ 的\Term{open-subgroup}{开子群}的\Term{action}{作用}。\Term{classifying-topos}{分类拓扑斯} $B_{\mathcal G}$ 也记作 $B_G$，这里当然须把 $G$ 看作配备其\Term{profinite}{投有限}\Term{topology}{拓扑}。
+
+\textbf{2.7.3.} 利用 2.6 的注记，容易验证：由严格群\Term{projective-system}{投射系统} $\mathcal G=(G_i)_{i\in I}$ 定义的\Term{topos}{拓扑斯} $B_{\mathcal G}$，只有在此\Term{projective-system}{投射系统}本质上为常值系统时才\Term{equivalence}{等价}于形如 $\widehat C$ 的\Term{topos}{拓扑斯}；对于\Term{profinite-group}{投有限群}，这意味着该群实际上\Term{finite}{有限}。
+
+\textbf{2.7.4.} 对\Term{discrete}{离散}群 $G$ 的\Term{classifying-topos}{分类拓扑斯} $B_G$ 的下述几何解释，有助于形成这些\Term{topos}{拓扑斯}的正确几何直观。（关于同一方向，另参见下文 4.5、5.8、5.9、7.2。）设 $X$ 是一个
+\SourcePage{196}
+\Term{connected}{连通}、\Term{locally-connected}{局部连通}且\Term{locally-simply-connected}{局部单连通}的\Term{topological-space}{拓扑空间}，$x$ 是 $X$ 的一点，$G$ 是其在 $x$ 处的\Term{fundamental-group}{基本群}。（注意，已知在\Term{isomorphism}{同构}意义下，每个\Term{discrete}{离散}群 $G$ 都能如此得到。）$X$ 的\Term{covering}{覆盖}的 Galois 理论给出 $G$-\Term{set}{集合}\Term{category}{范畴} $B_G$ 与 $X$ 的\Term{etale}{平展}\Term{covering}{覆盖}\Term{category}{范畴}之间的\Term{equivalence}{等价}；后者是指\Term{local-scheme}{局部}地 $X$-\Term{isomorphism}{同构}于形如 $X\times I$ 的 $X$-\Term{space}{空间}的 $X$ 上\Term{space}{空间} $X'$，其中 $I$ 是一个\Term{discrete-space}{离散空间}（比较 SGA 1 第 V 讲 4、5）。此外，后者也\Term{solvable}{可解}释为 $X$ 上\Term{locally-constant}{局部常值}\Term{sheaf}{层}的\Term{category}{范畴}，即\Term{topos}{拓扑斯} $\operatorname{Top}(X)$ 的\Term{locally-constant-object}{局部常值对象}（第 IX 讲 2.0）的\Term{category}{范畴}。
+
+当 $G$ 是一个\Term{profinite-group}{投有限群}时，$B_G$ 有类似的几何解释：它是某个\Term{connected}{连通}\Term{scheme}{概形} $X$ 的\Term{finite-etale}{有限平展}\Term{covering}{覆盖}的和所组成的 $X$-\Term{scheme}{概形}的\Term{category}{范畴}，其中 $X$ 配备一个\Term{geometric-point}{几何点} $x$ 和一个\Term{isomorphism}{同构} $G\simeq\pi_1(X,x)$。还已知，每个\Term{profinite-group}{投有限群}都能作为一个适当的\Term{connected}{连通}\Term{scheme}{概形}的\Term{fundamental-group}{基本群}得到（愿意的话，可取一个域的谱）。最后，对于非\Term{locally-simply-connected}{局部单连通}的\Term{connected}{连通}且\Term{locally-connected}{局部连通}\Term{space}{空间}的\Term{covering}{覆盖}的分类，或非\Term{normal}{正规}\Term{connected}{连通}\Term{scheme}{概形}的、未必\Term{finite}{有限}或为\Term{finite}{有限}者之\Term{inductive-limit}{归纳极限}的\Term{etale}{平展}\Term{covering}{覆盖}的分类，也会遇到\Term{pro-group}{pro-群}（未必\Term{profinite}{投有限}，亦未必\Term{essentially-constant-ind-object}{本质常值}）。后一个情形参见 SGA 3 第 X 讲 6。
+
+\begin{SGAresult}{练习}{2.7.5}
+对一个\Term{topos}{拓扑斯} $E$，定义\Term{connectedness}{连通性}、\Term{locally-connected}{局部连通}性\footnote{参见 8.7 1)。}、\Term{simply-connected}{单连通}性及\Term{locally-simply-connected}{局部单连通}性的概念。定义 $E$ 的\Term{constant-object}{常值对象}与\Term{locally-constant-object}{局部常值对象}（参见第 IX 讲 2.0）。设 $f:E'\to E$ 是一个\Term{topos-morphism}{拓扑斯态射}（3.1），其中 $E'$ \Term{simply-connected}{单连通}（例如 $E'$ 是\Term{punctual-topos}{点拓扑斯}（2.2）），而 $E$ \Term{connected}{连通}且\Term{locally-connected}{局部连通}。定义一个严格\Term{pro-group}{pro-群} $\pi_1(E,f)=(G_i)_{i\in I}=\mathcal G$（称为 $E$ 在 $f$ 处的\Term{fundamental-progroup}{基本 pro-群}），以及 $B_{\mathcal G}$ 与 $E$ 的\Term{locally-constant-object}{局部常值对象}\Term{category}{范畴}之间的\Term{equivalence-of-categories}{范畴等价}\footnote{可以借鉴 SGA 3 第 X 讲 6。}。证明当 $E$ \Term{locally-simply-connected}{局部单连通}时，$\pi_1(E,f)$ \Term{essentially-constant-ind-object}{本质常值}，因而认同于普通\Term{discrete}{离散}群 $\pi_1(E,f)$，称为 $E$ 在 $f$ 处的\Term{fundamental-group}{基本群}。证明每个严格\Term{pro-group}{pro-群} $\mathcal G$ 都（作为\Term{pro-group}{pro-群}）\Term{isomorphism}{同构}于某个适当的\Term{connected}{连通}且\Term{locally-connected}{局部连通}\Term{topos}{拓扑斯}在某个适当的 $f$ 处的\Term{fundamental-progroup}{基本 pro-群}，其中 $E'$ 是\Term{punctual-topos}{点拓扑斯}（取 $E=B_{\mathcal G}$，并由\Term{forgetful-functor}{遗忘函子} $f^*:E\to E'=(\mathrm{Ens})$ 定义 $f:E'\to E$）。当 $\mathcal G$ \Term{essentially-constant-ind-object}{本质常值}，即（作为\Term{pro-group}{pro-群}）\Term{isomorphism}{同构}于普通\Term{discrete}{离散}群时，证明上述 $E$ 可取为\Term{locally-simply-connected}{局部单连通}的（仍取 $E=B_{\mathcal G}$）。
+\end{SGAresult}
+
+\textbf{2.8. 一个伪\Term{topos}{拓扑斯}的例子。} 设 $\mathcal G=(G_i)_{i\in I}$ 是一个严格\Term{pro-group}{pro-群}，其中 $I$ 是\Term{filtered-ordered-set}{有向有序集}，且 $i>j$ 蕴涵 $G_i\to G_j$ 不是\Term{isomorphism}{同构}。假定 $\operatorname{card}(I)\notin\mathcal U$。考虑 $\mathcal G$ 在其上左\Term{action}{作用}的\Term{set}{集合} $E\in\mathcal U$ 的\Term{category}{范畴}（2.7.1）。
+\SourcePage{197}
+这是一个 $\mathcal U$-\Term{category}{范畴}，与 2.7.1 一样可看出它满足 1.1.2 的条件 a)、b)、c)。然而它不是 $\mathcal U$-\Term{topos}{拓扑斯}，因为可看出它没有 $\mathcal U$-小的\Term{generating-family}{生成族}。类似地可看出，对任何\Term{universe}{宇宙} $\mathcal V$，它都不是 $\mathcal V$-\Term{topos}{拓扑斯}。
+
+\SGAsection{3}{拓扑斯态射}
+\begin{SGAresult}{定义}{3.1}
+设 $E,E'$ 是两个 $\mathcal U$-\Term{topos}{拓扑斯}。所谓从 $E$ 到 $E'$ 的\Term{morphism}{态射}，有时也（滥用语言地）称为从 $E$ 到 $E'$ 的\Term{continuous-map}{连续映射}，是指一个三元组 $u=(u_*,u^*,\varphi)$，由\Term{functor}{函子}
+\[
+ u_*:E\longrightarrow E',\qquad u^*:E'\longrightarrow E
+\]
+以及关于 $X'\in\operatorname{Ob}E'$、$Y\in\operatorname{Ob}E$ 的\Term{bifunctor}{双函子}的一个“\Term{adjunction}{伴随}”\Term{isomorphism}{同构}
+\[
+ \varphi:\operatorname{Hom}_E(u^*(X'),Y)\xrightarrow{\sim}\operatorname{Hom}_{E'}(X',u_*(Y))
+\]
+组成，并且要求\Term{functor}{函子} $u^*$ \Term{left-exact}{左正合}，即与\Term{finite}{有限}\Term{projective-limit}{投射极限}交换。\Term{functor}{函子} $u_*$ 称为\Term{topos-morphism}{拓扑斯态射} $u$ 的\Term{direct-image-functor}{直接像}\Term{functor}{函子}，\Term{functor}{函子} $u^*$ 称为\Term{topos-morphism}{拓扑斯态射} $u$ 的\Term{inverse-image}{逆像}\Term{functor}{函子}，\Term{isomorphism}{同构} $\varphi$ 称为 $u$ 的\Term{adjunction-isomorphism}{伴随同构}。
+\end{SGAresult}
+\textbf{3.1.1.} 除非明确说明相反情况，下文对\Term{topos-morphism}{拓扑斯态射} $u:E\to E'$，将用 $u_*$ 和 $u^*$ 分别表示相应的\Term{direct-image-functor}{直接像}与\Term{inverse-image}{逆像}\Term{functor}{函子}\footnote{有时也用 $u^{-1}$ 代替 $u^*$，参见。}。须注意，由\Term{adjunction-isomorphism}{伴随同构} $\varphi$，$u_*$ 是 $u^*$ 的\Term{right-adjoint}{右伴随}，$u^*$ 是 $u_*$ 的\Term{left-adjoint}{左伴随}，因而根据熟知的\Term{adjoint-functor}{伴随函子}的连锁论证 [14]，两个\Term{functor}{函子} $u_*,u^*$ 中的每一个都在唯一\Term{isomorphism}{同构}意义下确定另一个。在实践中，视情形而定，既可以通过给定 $u^*:E'\to E$，也可以通过给定 $u_*:E\to E'$ 来定义\Term{topos-morphism}{拓扑斯态射} $u:E\to E'$，二者各有方便之处。在第一种情形，只需验证给定的\Term{functor}{函子} $u^*$ 有\Term{right-adjoint}{右伴随}并且\Term{left-exact}{左正合}；在第二种情形，验证给定的\Term{functor}{函子} $u_*$ 有一个\Term{left-exact}{左正合}的\Term{right-adjoint}{右伴随}。在这两种情形下，选择一个\Term{adjoint-functor}{伴随函子}及一个\Term{adjunction-isomorphism}{伴随同构}，就从部分数据得到一个\Term{topos-morphism}{拓扑斯态射} $u:E\to E'$，并且按照给定的 $u^*$ 或相应的 $u_*$，后者“在唯一\Term{isomorphism}{同构}意义下唯一”；这句话的意义相当清楚，下文（3.2.1）还将完全加以明确。
+
+\textbf{3.1.2.} 若 $u:E\to E'$ 是一个\Term{topos-morphism}{拓扑斯态射}，则由\Term{adjoint-functor}{伴随函子}的性质（第 I 讲 2.11），\Term{direct-image-functor}{直接像}\Term{functor}{函子} $u_*:E\to E'$ 与\Term{projective-limit}{投射极限}交换，
+\SourcePage{198}
+而\Term{functor}{函子} $u^*:E'\to E$ 与\Term{inductive-limit}{归纳极限}交换\footnote{此外（1.5、1.8），对给定的\Term{functor}{函子} $u_*:E\to E'$（或相应的 $u^*:E'\to E$），它有\Term{left-adjoint}{左伴随}（或相应的\Term{right-adjoint}{右伴随}），当且仅当它与 $\mathcal U$-\Term{projective-limit}{投射极限}（或相应的 $\mathcal U$-\Term{inductive-limit}{归纳极限}）交换。}。又由于假定后者\Term{left-exact}{左正合}，即与\Term{finite}{有限}\Term{projective-limit}{投射极限}交换，所以特别看到 $u^*$ 是\Term{exact}{正合}的。因此可以说，在\Term{functor}{函子}对 $(u_*,u^*)$ 中，具有最突出\Term{exactness}{正合性}性质的是\Term{inverse-image}{逆像}\Term{functor}{函子} $u^*$。这些性质保证：对于每种\Term{algebraic-structure}{代数结构}类型 $\Sigma$，只要其数据能描述为底层\Term{set}{集合}与从这些\Term{set}{集合}反复施行\Term{finite}{有限}\Term{projective-limit}{投射极限}和任意\Term{inductive-limit}{归纳极限}运算所得\Term{set}{集合}之间的\Term{arrow}{箭头}数据，那么对每个“带 $\Sigma$ 型结构的 $E'$ 的\Term{object}{对象}”（这个概念因\Term{topos}{拓扑斯} $E'$ 的内在\Term{exactness}{正合性}性质（第 II 讲 4.1）而有意义），其在 $u^*$ 下的像也配备同样的结构。与其从事把这个断言赋予精确意义并形式证明的乏味工作，我们建议读者对群、环、环上的模、环上的\Term{comodule}{余模}、环上的\Term{bialgebra}{双代数}、群下的\Term{torsor}{挠子}这些结构类型，将它明确写出并确信其\Term{effective}{有效}性。（在这些例子中，前三种结构完全用\Term{finite}{有限}\Term{projective-limit}{投射极限}定义，其他概念则隐含着也使用\Term{inductive-limit}{归纳极限}的构造。）此外，\Term{functor}{函子} $u^*$ 与对这些结构施行的所有通常的\Term{functor}{函子}运算“交换”，更准确地说，与所有可用 $\varinjlim$ 及\Term{finite}{有限} $\varprojlim$ 表达的运算交换：由一个\Term{object}{对象}生成的自由\Term{object}{对象}（例如\Term{free-group}{自由群}或\Term{free-module}{自由模}）的构造、\Term{tensor-product}{张量积}（参见下文第 12 节）等等。
+
+至于\Term{direct-image-functor}{直接像}\Term{functor}{函子} $u_*:E\to E'$，它与\Term{projective-limit}{投射极限}交换，因此“保持”$E$ 的一个\Term{object}{对象}（或一族\Term{object}{对象}）上完全可用\Term{projective-limit}{投射极限}定义的所有\Term{algebraic-structure}{代数结构}（例如前述例子中的群、环或环上的模的结构）。另一方面，\Term{functor}{函子} $u_*$ 一般不\Term{right-exact}{右正合}，即一般不与\Term{finite}{有限}\Term{inductive-limit}{归纳极限}交换，甚至一般不将\Term{epimorphism}{满态射}变为\Term{epimorphism}{满态射}（正是\Term{functor}{函子} $u_*$ 的这种\Term{exactness}{正合性}缺陷，产生了其\Term{cohomology}{上同调}性质；下一讲将从交换\Term{homology}{同调}\Term{algebra}{代数}的观点研究这些性质）。因而，它一般不能延拓为\Term{comodule}{余模}、\Term{bialgebra}{双代数}或群下\Term{torsor}{挠子}型\Term{object}{对象}上的\Term{functor}{函子}，也一般不与“所生成的\Term{free-module}{自由模}”、模的\Term{tensor-product}{张量积}等运算交换。
+
+\textbf{3.1.3.} 实践中，面对一个从 $\mathcal U$-\Term{topos}{拓扑斯}到另一个的\Term{functor}{函子} $f:E\to F$，应明确其全部\Term{exactness}{正合性}性质，包括左、\Term{right-adjoint}{右伴随}\Term{functor}{函子}可能的存在性（参见原书第 192 页脚注），
+\SourcePage{199}
+以理解 $f$ 的“几何性质”；这种理解通常是获得该情形正确几何直观所不可少的指引。例如，若发现 $f$ 与任意\Term{inductive-limit}{归纳极限}及\Term{finite}{有限}\Term{projective-limit}{投射极限}交换，就应将 $f$ 写作
+\[
+ f=u^*,
+\]
+其中
+\[
+ u:F\longrightarrow E
+\]
+是一个\Term{topos-morphism}{拓扑斯态射}；也就是说，把 $f$ 解释为\Term{topos}{拓扑斯}的一个“\Term{continuous-map}{连续映射}”的“\Term{inverse-image}{逆像}”\Term{functor}{函子}。当 $f$ 与任意\Term{projective-limit}{投射极限}交换，因而有\Term{left-adjoint}{左伴随}，而这个\Term{left-adjoint}{左伴随}（先验地与任意\Term{inductive-limit}{归纳极限}交换）还与\Term{finite}{有限}\Term{projective-limit}{投射极限}交换时，就应写作
+\[
+ f=v_*,
+\]
+其中
+\[
+ v:E\longrightarrow F
+\]
+是一个\Term{topos-morphism}{拓扑斯态射}。某些情形下，$f$ 可能同时满足上述两类性质（一个例子参见 4.10）。此时应同时引入\Term{topos-morphism}{拓扑斯态射}
+\[
+ u:F\longrightarrow E,\qquad v:E\longrightarrow F,
+\]
+它们产生三个\Term{adjoint-functor}{伴随函子}的序列（第 I 讲 5.3）：
+\[
+ v^*,\qquad v_*=u^*=f,\qquad u_*.
+\]
+这时必须仔细区分\Term{topos-morphism}{拓扑斯态射} $u$ 与 $v$，否则会失去该情形的几何直观。
+
+在此还要指出，若在两个\Term{topos}{拓扑斯} $E,F$ 之间有三个\Term{adjoint-functor}{伴随函子}的序列
+\[
+ e,f,g\qquad(e,g:F\rightrightarrows E,\ f:E\to F),
+\]
+则 $f$ 与任意\Term{inductive-limit}{归纳极限}和\Term{projective-limit}{投射极限}交换，因而总能写作 $u^*$，其中 $u:F\to E$ 是一个\Term{topos-morphism}{拓扑斯态射}。于是 $g$ 可写成 $g=u_*$。反之，当然只有在 $e$ 还与\Term{finite}{有限}\Term{projective-limit}{投射极限}交换时，它才能写成 $v^*$（从而 $f$ 写成 $v_*$）。如果 $e$ 本身是第四个\Term{functor}{函子} $d$ 的\Term{right-adjoint}{右伴随}，这显然成立。没有这类条件时，对\Term{inverse-image}{逆像}\Term{functor}{函子} $f=u^*$ 的\Term{left-adjoint}{左伴随}（若存在），通常写作
+\[
+ e=u_!;
+\]
+这个记号由\Term{topological-space}{拓扑空间}的\Term{open-immersion}{开浸入} $u:X\to Y$ 的例子所提示。同样，若 $e$ 形如 $v^*$，即 $f$ 形如
+\SourcePage{200}
+$v_*$，则\Term{direct-image-functor}{直接像}\Term{functor}{函子} $v_*$ 的\Term{right-adjoint}{右伴随} $g$ 存在时，有时记作 $g=v^!$\footnote{关于阿贝尔\Term{sheaf}{层}的情形，参见下文。}。
+
+\textbf{3.2.} 设 $E,E'$ 是两个 $\mathcal U$-\Term{topos}{拓扑斯}，且
+\[
+ u=(u_*,u^*,\varphi),\qquad v=(v_*,v^*,\Psi):E\rightrightarrows E'
+\]
+是从 $E$ 到 $E'$ 的两个\Term{topos-morphism}{拓扑斯态射}。所谓从 $u$ 到 $v$ 的\Term{morphism}{态射}，是指从 $u_*$ 到 $v_*$ 的任一\Term{morphism}{态射}（在从 $E$ 到 $E'$ 的\Term{functor-category}{函子范畴} $\mathscr Hom(E,E')$ 的意义下）。\Term{topos-morphism}{拓扑斯态射}的\Term{morphism}{态射}以显然的方式复合，这样定义了一个\Term{category}{范畴}，它实际上是一个 $\mathcal U$-\Term{category}{范畴}（第 I 讲 7.8），记作
+\[
+ \mathscr Hom_{\mathrm{top}}(E,E'),
+\]
+称为从 $E$ 到 $E'$ 的\Term{morphism}{态射}（或\Term{continuous-map}{连续映射}）\Term{category}{范畴}。由此显然定义一个\Term{functor}{函子}
+\[
+ u\longmapsto u_*:\mathscr Hom_{\mathrm{top}}(E,E')\longrightarrow\mathscr Hom(E,E'),
+\]
+根据左端中\Term{arrow}{箭头}的定义，它是\Term{fully-faithful-functor}{全忠实}的（但在\Term{object}{对象}上不\Term{injectivity}{单射}）。
+
+\textbf{3.2.1.} 须注意，若 $u,v$ 如上给定，\Term{adjoint-functor}{伴随函子}理论给出一个\Term{canonical}{典范}\Term{bijection}{双射}
+\[
+ \operatorname{Hom}(u_*,v_*)\xrightarrow{\sim}\operatorname{Hom}(v^*,u^*);
+\]
+特别地，得到 $\mathscr Hom_{\mathrm{top}}(E,E')$ 上的一个\Term{contravariant-functor}{反变函子}：
+\[
+ u\longmapsto u^*:\mathscr Hom_{\mathrm{top}}(E,E')^\circ\longrightarrow\mathscr Hom(E,E').
+\]
+按照几何直观，\Term{direct-image-functor}{直接像}\Term{functor}{函子} $u_*$ 与产生它的\Term{continuous-map}{连续映射}“方向相同”，因而应当用\Term{direct-image-functor}{直接像}\Term{functor}{函子}来定义\Term{topos-morphism}{拓扑斯态射}之间的\Term{morphism}{态射}的\Term{arrow}{箭头}方向，而不用\Term{inverse-image}{逆像}\Term{functor}{函子}（虽然正如我们已看到的，后者才具有刻画\Term{topos-morphism}{拓扑斯态射}概念的\Term{exactness}{正合性}性质）。
+
+\textbf{3.2.2.} 一旦定义了从\Term{topos}{拓扑斯} $E$ 到\Term{topos}{拓扑斯} $E'$ 的\Term{morphism}{态射}\Term{category}{范畴} $\mathscr Hom_{\mathrm{top}}(E,E')$，两个\Term{morphism}{态射} $u,v:E\to E'$ 之间的\Term{isomorphism}{同构}概念也就定义了。实践中，通常无须在本质上区分两个\Term{isomorphism}{同构}的\Term{topos-morphism}{拓扑斯态射}，至少在有二者之间的\Term{canonical-isomorphism}{典范同构}时如此（就像给定\Term{category}{范畴}中两个元素之间的\Term{canonical-isomorphism}{典范同构}时，通常无须区分它们一样）。在此指出，处理\Term{topos-morphism}{拓扑斯态射}的图式及其交换性问题（由（3.3），
+\SourcePage{201}
+这个概念有意义）时，通常只涉及相差一个（“\Term{canonical}{典范}”）\Term{isomorphism}{同构}的交换性；这时滥用语言，把这些图式当作实际交换的图式来处理。
+
+人们可能想通过引入 $E$ 到 $E'$ 的\Term{morphism}{态射}在\Term{isomorphism}{同构}意义下的\Term{set}{集合} $\operatorname{Hom}_{\mathrm{top}}(E,E')/\operatorname{Isom}$，并把这样的\Term{isomorphism-class}{同构类}称为\Term{morphism}{态射}，来代替定义 3.2，以使这种语言滥用合理化。但这会遇到极严重的不便：每当没有两个\Term{isomorphism}{同构}\Term{object}{对象}之间的\Term{canonical-isomorphism}{典范同构}，却试图将它们等同时，都会出现这样的不便。经验表明，这种观点行不通，必须保留 3.1 的“精细”概念，即\Term{topos-morphism}{拓扑斯态射}之间的\Term{morphism}{态射}概念；代价是有时不得不与\Term{canonical-isomorphism}{典范同构}之间的相容性搏斗\footnote{关于这种搏斗的例子（看来是胜利了的），请读者参阅 M. Hakim 女士关于相对\Term{scheme}{概形}的著作 [9]。}。
+
+\textbf{3.3.1.} 设 $E,E',E''$ 是三个 $\mathcal U$-\Term{topos}{拓扑斯}，考虑\Term{topos-morphism}{拓扑斯态射}
+\[
+ u:E\longrightarrow E',\qquad v:E'\longrightarrow E''.
+\]
+\Term{adjoint-functor}{伴随函子}理论根据\Term{functor}{函子}对 $(u_*,u^*)$ 和 $(v_*,v^*)$ 的\Term{adjunction-isomorphism}{伴随同构}，给出\Term{composite-functor}{复合函子} $v_*u_*$ 与 $u^*v^*$ 之间的一个\Term{adjunction-isomorphism}{伴随同构}。另一方面，\Term{functor}{函子} $u^*v^*$ 是\Term{left-exact}{左正合}的，因为它是两个\Term{left-exact}{左正合}\Term{functor}{函子}的复合。因此得到一个从 $E$ 到 $E''$ 的\Term{morphism}{态射}，称为\Term{morphism}{态射} $u,v$ 的复合，记作 $vu$：
+\[
+ vu:E\longrightarrow E''.
+\]
+容易验证，\Term{morphism}{态射}复合满足结合律；并且对每个 $\mathcal U$-\Term{topos}{拓扑斯} $E$，有一个从 $E$ 到自身的\Term{morphism}{态射}，它是复合的双边单位元：这就是\Term{morphism}{态射} $(\operatorname{id}_E,\operatorname{id}_E,\varphi)$，其中 $\varphi$ 是 $\operatorname{id}_E$ 与自身之间显然的\Term{adjunction-isomorphism}{伴随同构}。再设 $\mathcal V$ 是一个满足 $\mathcal U\in\mathcal V$ 的\Term{universe}{宇宙}。定义一个\Term{category}{范畴}
+\[
+ (\mathcal V\text{-}\mathcal U\text{-}\operatorname{Top}),
+\]
+其\Term{object}{对象}为属于 $\mathcal V$ 的 $\mathcal U$-\Term{topos}{拓扑斯}，\Term{arrow}{箭头}为这些 $\mathcal U$-\Term{topos}{拓扑斯}之间的\Term{morphism}{态射}，\Term{arrow}{箭头}复合则如上所述。
+
+\textbf{3.3.2.} 事实上，复合映射
+\[
+ \operatorname{Hom}_{\mathrm{top}}(E,E')\times\operatorname{Hom}_{\mathrm{top}}(E',E'')\longrightarrow\operatorname{Hom}_{\mathrm{top}}(E,E'')
+\]
+是一个“\Term{morphism}{态射}\Term{composite-functor}{复合函子}”在\Term{object}{对象}上诱导的映射：
+\[
+ \mathscr Hom_{\mathrm{top}}(E,E')\times\mathscr Hom_{\mathrm{top}}(E',E'')\longrightarrow\mathscr Hom_{\mathrm{top}}(E,E''),
+\]
+其在\Term{arrow}{箭头}上的\Term{action}{作用}是\Term{functor}{函子}之间的\Term{morphism}{态射}（这里是\Term{direct-image-functor}{直接像}\Term{functor}{函子}）通常的“卷积乘积”运算。对于四个\Term{topos}{拓扑斯} \SourcePage{202}$E,E',E'',
+E'''$，这些\Term{composite-functor}{复合函子}满足一个（严格的）结合性性质，从而明确了\Term{topos-morphism}{拓扑斯态射}复合的结合性。也可用正逐渐熟悉的语言 [2]、[9] 来说：$\mathcal U$-\Term{topos}{拓扑斯}是一个 \Term{two-category}{2-范畴}的\Term{object}{对象}（或 0-\Term{arrow}{箭头}），其 1-\Term{arrow}{箭头}是\Term{topos-morphism}{拓扑斯态射}，2-\Term{arrow}{箭头}是\Term{topos-morphism}{拓扑斯态射}的\Term{morphism}{态射}。
+
+从技术观点看，$\mathcal U$-\Term{topos}{拓扑斯}（一个\Term{universe}{宇宙} $\mathcal V$ 的元素）组成一个 \Term{two-category}{2-范畴}，而不再像普通\Term{topological-space}{拓扑空间}那样只组成一个普通\Term{category}{范畴}，这是\Term{topos}{拓扑斯}理论与\Term{topological-space}{拓扑空间}理论之间最重要的区别。这个事实既是已提及的一些技术复杂性的根源，也是在传统\Term{topology}{拓扑}学之外出现本质上新现象的根源。
+
+\textbf{3.4.} $\mathcal U$-\Term{topos}{拓扑斯}（一个\Term{universe}{宇宙} $\mathcal V$ 的元素）组成一个 \Term{two-category}{2-范畴}（3.3.2），这特别使我们可以定义两个 $\mathcal U$-\Term{topos}{拓扑斯} $E,E'$ 的\Term{equivalence}{等价}概念：若存在\Term{topos-morphism}{拓扑斯态射} $u:E\to E'$ 及 $v:E'\to E$，使复合 $uv$ 和 $vu$ 分别\Term{isomorphism}{同构}于 $E$ 及 $E'$ 的恒等\Term{morphism}{态射}，则称 $E$ 与 $E'$ \Term{equivalence}{等价}；这时称\Term{morphism}{态射} $u,v$ 为互为\Term{quasi-inverse-functor}{拟逆}的\Term{equivalence}{等价}。
+
+立即看出，\Term{topos-morphism}{拓扑斯态射} $u:E\to E'$ 是\Term{equivalence}{等价}，当且仅当 $u_*$ 是\Term{equivalence}{等价}，或\Term{equivalence}{等价}地，当且仅当 $u^*$ 是\Term{equivalence}{等价}。（使用如下事实：两个\Term{topos}{拓扑斯}之间为\Term{equivalence}{等价}的\Term{functor}{函子} $f:E\to E'$，同时形如 $u_*$ 和 $v^*$，其中 $u,v$ 是\Term{topos-morphism}{拓扑斯态射}。）而 $E,E'$ 在上一段意义下\Term{equivalence}{等价}的充要条件，是它们作为\Term{equivalence-of-categories}{范畴等价}（即作为 \Term{two-category}{2-范畴} $(\mathcal V\text{-}\mathrm{cat})$ 的\Term{object}{对象}\Term{equivalence}{等价}）。不出所料，这说明所引入的\Term{equivalence}{等价}概念不依赖于 3.3.1 中\Term{universe}{宇宙} $\mathcal V$ 的选择。
+
+\textbf{3.4.1.} 实践中，通常无须本质地区分\Term{equivalence}{等价}的 $\mathcal U$-\Term{topos}{拓扑斯}，正如通常无须本质地区分两个\Term{equivalence}{等价}\Term{category}{范畴}一样——不过前提是有从一个到另一个的明确\Term{equivalence}{等价}，至少有一个在唯一\Term{isomorphism}{同构}意义下定义的\Term{equivalence}{等价}。这里，\Term{topos}{拓扑斯}\Term{equivalence}{等价}概念代替了传统的两个\Term{topological-space}{拓扑空间}之间的\Term{homeomorphism}{同胚}概念。关于这两个概念的确切关系，参见下文例 4.2。
+
+\SGAsection{4}{拓扑斯态射的例子}
+这里利用\Term{topos-morphism}{拓扑斯态射}概念，重新讨论第 2 节的例子。2.0 的评注也适用于本节。通常将省略\Term{universe}{宇宙} $\mathcal U$。
+
+\textbf{4.1. 随\Term{topological-space}{拓扑空间} $X$ 变化的\Term{topos}{拓扑斯} $\operatorname{Top}(X)$。}
+
+\SourcePage{203}
+\textbf{4.1.1.} 对于\Term{topological-space}{拓扑空间}的一个\Term{continuous-map}{连续映射}
+\[
+ f:X\longrightarrow Y,
+\]
+将按照 2.1 的记号，\Term{canonical}{典范}地关联一个\Term{topos-morphism}{拓扑斯态射}
+\[
+ \operatorname{Top}(f)\text{ 或 }f:\operatorname{Top}(X)\longrightarrow\operatorname{Top}(Y).
+\]
+当把 $\operatorname{Top}(X)$ 定义为 $\widetilde{\operatorname{Ouv}(X)}$ 时，最方便的是用\Term{sheaf}{层}的\Term{direct-image-functor}{直接像}\Term{functor}{函子}
+\[
+ f_*:\operatorname{Top}(X)\longrightarrow\operatorname{Top}(Y)
+\]
+描述 $\operatorname{Top}(f)$，其定义公式为
+\[
+ f_*(F)=F\circ f^{-1},
+\]
+其中
+\[
+ f^{-1}:\operatorname{Ouv}(Y)\longrightarrow\operatorname{Ouv}(X)
+\]
+是显然的\Term{functor}{函子} $U\mapsto f^{-1}(U)$。我们已经指出，这个\Term{functor}{函子}\Term{continuous-functor}{连续}且\Term{left-exact}{左正合}，因而确实定义了上述\Term{functor}{函子} $f_*$，它有一个\Term{left-exact}{左正合}的\Term{right-adjoint}{右伴随} $f^*$（第 III 讲 1.9.1）。当然，严格地说，\Term{topos-morphism}{拓扑斯态射} $\operatorname{Top}(f)$ 依赖于 $f_*$ 的\Term{right-adjoint}{右伴随} $f^*$ 的选择，因而只在\Term{canonical-isomorphism}{典范同构}意义下定义。下文将不再明确指出这一类现象。
+
+当采用“\Term{etale-space}{平展空间}”的观点定义 $\operatorname{Top}(X)$ 时，用\Term{inverse-image}{逆像}\Term{functor}{函子}
+\[
+ f^*:\operatorname{Top}(Y)\longrightarrow\operatorname{Top}(X)
+\]
+定义\Term{topos-morphism}{拓扑斯态射} $\operatorname{Top}(f)$ 最方便；对 $Y$ 上每个\Term{etale-space}{平展空间} $Y'$，只需令
+\[
+ f^*(Y')=X\times_Y Y'.
+\]
+显然，该\Term{fiber-product}{纤维积}确实是 $X$ 上的\Term{etale-space}{平展空间}，所得\Term{functor}{函子} $f^*$ \Term{left-exact}{左正合}，并与任意 $\varinjlim$ 交换，因而定义一个\Term{topos-morphism}{拓扑斯态射} $\operatorname{Top}(f)$。关于所得两种定义的相容性，参见 [TF]。
+
+当有两个可复合的\Term{continuous-map}{连续映射}
+\[
+ X\xrightarrow{f}Y\xrightarrow{g}Z,
+\]
+便得到\Term{topos-morphism}{拓扑斯态射}之间的\Term{canonical-isomorphism}{典范同构}
+\[
+\operatorname{Top}(gf)\simeq\operatorname{Top}(g)\operatorname{Top}(f).
+\]
+〔上述连接句与\Term{isomorphism}{同构}依原扫描稿第334页补回。〕
+这些传递\Term{isomorphism}{同构}对于三个可复合的\Term{continuous-map}{连续映射} $f,g,h$ 满足一个相容关系，这里不写出，它正是 SGA 1 第 VI 讲 7.4 B)（取 $\varepsilon=(\mathrm{Esp})^\circ$）中考虑的关系。可以表述为：当 $X$ 在\Term{category}{范畴} $(\mathrm{Esp})$ 中变化时，
+\[
+ X\longmapsto\operatorname{Top}(X)
+\]
+\SourcePage{204}
+是一个“\Term{pseudofunctor}{伪函子}”
+\[
+ (\mathcal U\text{-}\mathrm{esp})\longrightarrow(\mathcal V\text{-}\mathcal U\text{-}\mathrm T),\tag{4.1.1.1}
+\]
+或者用 \Term{two-category}{2-范畴}的术语说，是一个非严格的 \Term{two-category}{2-范畴}\Term{functor}{函子} [9]。实践中，我们通常允许滥用语言，将 $\operatorname{Top}(gf)$ 与 $\operatorname{Top}(g)\operatorname{Top}(f)$ 等同，即仿佛（4.1.1.1）是普通\Term{category}{范畴}间的真正\Term{functor}{函子}那样进行推理。以下处理的其他例子中，也允许类似的语言滥用。
+
+\textbf{4.1.2.} 上述考虑立即推广到与带\Term{action}{作用}群的\Term{topological-space}{拓扑空间}（2.3）关联的\Term{topos}{拓扑斯}。若 $f=(f^{\mathrm{es}},f^{\mathrm{gr}})$，
+\[
+ f:(X,G)\longrightarrow(Y,H)
+\]
+是带\Term{action}{作用}的\Term{space}{空间}的一个\Term{morphism}{态射}（其中
+\[
+ f^{\mathrm{es}}:X\longrightarrow Y,\qquad f^{\mathrm{gr}}:G\longrightarrow H
+\]
+分别是\Term{continuous-map}{连续映射}与群\Term{morphism}{态射}，在显然的意义下相容），就给它关联一个\Term{topos-morphism}{拓扑斯态射}
+\[
+ \operatorname{Top}(f)\text{ 或 }f:\operatorname{Top}(X,G)\longrightarrow\operatorname{Top}(Y,H),
+\]
+其定义留给读者。当群 $G,H$ 都是\Term{unit-group}{单位群}时，得到 4.1.1 的定义；反之，当\Term{space}{空间} $X,Y$ 都\Term{degeneration}{退化}为一点时，\Term{inverse-image}{逆像}\Term{functor}{函子} $f^*$ 就是“\Term{restriction}{限制}\Term{action}{作用}群”\Term{functor}{函子}
+\[
+ f^*:B_H\longrightarrow B_G,
+\]
+它把每个 $H$-\Term{set}{集合}送到通过 $f:G\to H$ 所定义的 $G$-\Term{set}{集合}。这个例子还将在 4.5、4.6.1 中以其他形式出现。
+
+\textbf{4.1.3.} 给定\Term{topological-space}{拓扑空间}的一个\Term{continuous-map}{连续映射} $f:X\to Y$，还给它关联相应“\Term{big-topos}{大拓扑斯}”（2.5）上的一个\Term{morphism}{态射}
+\[
+ \operatorname{TOP}(f)\text{ 或 }f:\operatorname{TOP}(X)\longrightarrow\operatorname{TOP}(Y),
+\]
+最方便的是用\Term{inverse-image}{逆像}\Term{functor}{函子}
+\[
+ f^*:\operatorname{TOP}(Y)\longrightarrow\operatorname{TOP}(X)
+\]
+来定义；后者就是\Term{restriction}{限制}\Term{functor}{函子}。这个\Term{morphism}{态射} $\operatorname{TOP}(f)$ 是\Term{induced-topos}{诱导拓扑斯}的所谓“包含”\Term{morphism}{态射}的特例，将在第 5 节研究。这样看到，在与 4.1.1 相同的保留条件下，当 $X$ 在 $(\mathrm{Esp})$ 中变化时，\Term{topos}{拓扑斯} $\operatorname{TOP}(X)$ 可看作关于 $X$ 的\Term{functor}{函子}。
+
+\SourcePage{205}
+\textbf{4.2. $X\mapsto\operatorname{Top}(X)$ 的忠实性性质。} 我们要明确在何种程度上可以用\Term{topos}{拓扑斯} $\operatorname{Top}(X)$ 重建\Term{topological-space}{拓扑空间} $X$。为此，对两个\Term{space}{空间} $X,Y$，宜描述从 $\operatorname{Top}(X)$ 到 $\operatorname{Top}(Y)$ 的\Term{morphism}{态射}\Term{category}{范畴}（3.2），以明确“\Term{functor}{函子}”$X\mapsto\operatorname{Top}(X)$ 的忠实性性质。我们只陈述所得结果，细节请读者参阅 [9]。愿意自行验证作为练习的读者，可以参考练习 7.8。
+
+\textbf{4.2.1.} 回顾：若\Term{topological-space}{拓扑空间} $X$ 的每个\Term{irreducible}{不可约}\Term{closed-subset}{闭子集}恰有一个\Term{generic-point}{泛点}，则称 $X$ 是\Term{sober-space}{清醒空间}（sobre）。指出，实践中使用的几乎所有\Term{space}{空间}都是\Term{sober-space}{清醒的}；特别地，\Term{hausdorff-space}{分离空间}，更一般地，所有点都是\Term{closed-point}{闭点}的\Term{space}{空间}，以及\Term{scheme}{概形}的底层\Term{space}{空间}，都是如此。若 $X$ 是\Term{topological-space}{拓扑空间}，就给它关联（该处或 EGA $0_{\mathrm I}$，再版）一个\Term{sober-space}{清醒拓扑空间} $X_{\mathrm{sob}}$ 及一个\Term{continuous-map}{连续映射}
+\[
+ \varphi:X\longrightarrow X_{\mathrm{sob}},\tag{4.2.1.1}
+\]
+使之对于从 $X$ 到\Term{sober-space}{清醒空间}的\Term{continuous-map}{连续映射}是泛的；换言之，构造从\Term{sober-space}{清醒空间}\Term{category}{范畴}到“任意”\Term{topological-space}{拓扑空间}\Term{category}{范畴}的\Term{inclusion-functor}{包含函子} $(\mathrm{Esp\,sob})\to(\mathrm{Esp})$ 的一个\Term{left-adjoint}{左伴随} $X\mapsto X_{\mathrm{sob}}$（引号提醒存在一个\Term{universe}{宇宙}！）。显式构造如下：$X_{\mathrm{sob}}$ 的点取为 $X$ 的\Term{irreducible}{不可约}\Term{closed-subset}{闭子集}，\Term{open-subset}{开集}取为形如 $U_0$ 的\Term{set}{集合}，其中 $U$ 是 $X$ 的一个\Term{open-subset}{开集}，$U_0\subset X_{\mathrm{sob}}$ 表示与 $U$ 相交的 $X$ 的\Term{irreducible}{不可约}\Term{closed-subset}{闭子集}所组成的\Term{set}{集合}。映射（4.2.1.1）把每个 $x\in X$ 送到 $\{x\}$ 的\Term{closure}{闭包}。\Term{space}{空间} $X$ \Term{sober-space}{清醒}当且仅当上述映射是\Term{bijection}{双射}，从而是\Term{homeomorphism}{同胚}。
+
+可以看出，$\varphi$ 诱导的\Term{functor}{函子}
+\[
+ \varphi^{-1}:\operatorname{Ouv}(X_{\mathrm{sob}})\longrightarrow\operatorname{Ouv}(X)
+\]
+是一个\Term{isomorphism}{同构}，这蕴涵 $\varphi$ 定义的\Term{topos-morphism}{拓扑斯态射}
+\[
+ \operatorname{Top}(\varphi):\operatorname{Top}(X)\longrightarrow\operatorname{Top}(X_{\mathrm{sob}})
+\]
+也是一个\Term{isomorphism}{同构}。这先验地说明，为何在从 $\operatorname{Top}(X)$ 重建 $X$ 的问题中，必然要引入 $X_{\mathrm{sob}}$：由于前者在\Term{isomorphism}{同构}意义下只依赖于 $X_{\mathrm{sob}}$，只有 $X$ \Term{sober-space}{清醒}时，该问题才可能有肯定答案。下文（7.1）将把 $X_{\mathrm{sob}}$ 的点解释为\Term{topos}{拓扑斯} $\operatorname{Top}(X)$ 的“点”（或\Term{fiber-functor}{纤维函子}），从而明确说明如何确实用 $\operatorname{Top}(X)$ 重建 $X_{\mathrm{sob}}$。
+
+\textbf{4.2.2.} 在每个\Term{topological-space}{拓扑空间}上，应引入关系 $\leq$，其定义为
+\[
+ x\leq y\ \Longleftrightarrow\ \overline{\{x\}}\subset\overline{\{y\}},\quad\text{即 }x\in\overline{\{y\}}
+\]
+\SourcePage{206}
+（也\Term{representable}{可表}述为 $x$ 是 $y$ 的\Term{specialization}{特化}，或 $y$ 是 $x$ 的\Term{generization}{泛化}）。对形如 $X_{\mathrm{sob}}$ 的\Term{space}{空间}，这正是 $X$ 的\Term{irreducible}{不可约}\Term{closed-subset}{闭子集}之间的包含关系。
+
+现在，对一个\Term{space}{空间} $X$ 到另一个\Term{space}{空间} $Y$ 的映射的\Term{set}{集合}，应引入由 $Y$ 的\Term{order-relation}{序关系}\Term{derivation}{导出}的、称为“\Term{specialization}{特化}”的\Term{order-relation}{序关系}，即
+\[
+ f\leq g\ \Longleftrightarrow\ f(x)\leq g(x)\quad\text{对所有 }x\in X.
+\]
+采用这些约定，有如下结果：
+
+\textbf{4.2.3.} 设 $X,Y$ 是两个\Term{topological-space}{拓扑空间}，$Y$ \Term{sober-space}{清醒}；设 $f,g$ 是从 $X$ 到 $Y$ 的两个\Term{continuous-map}{连续映射}。那么从 $\operatorname{Top}(f)$ 到 $\operatorname{Top}(g)$ 至多有一个\Term{morphism}{态射}；这样的\Term{morphism}{态射}存在的充要条件，是 $g$ 为 $f$ 的\Term{specialization}{特化}。最后，每个\Term{topos-morphism}{拓扑斯态射} $\operatorname{Top}(X)\to\operatorname{Top}(Y)$ 都\Term{isomorphism}{同构}于某个形如 $\operatorname{Top}(f)$ 的\Term{morphism}{态射}，其中 $f:X\to Y$ 是\Term{continuous-map}{连续映射}（由第一个断言，它唯一确定）。
+
+若定义与一个\Term{ordered-set}{有序集} $I$ 关联的\Term{category}{范畴} $\operatorname{cat}(I)$，规定在 $i\geq j$ 时恰有一个从 $i$ 到 $j$ 的\Term{arrow}{箭头}，则以上结果可概括为有一个\Term{canonical}{典范}\Term{equivalence-of-categories}{范畴等价}
+\[
+ \operatorname{cat}\bigl(\operatorname{Hom}_{(\mathrm{esp})}(X,Y)\bigr)\xrightarrow{\approx}\mathscr Hom_{\mathrm{top}}(\operatorname{Top}(X),\operatorname{Top}(Y))
+\]
+（其中右端定义于 3.2）。
+
+由这些结果形式地推得：
+\begin{SGAresult}{推论}{4.2.4}
+ a) 设 $f:X\to Y$ 是一个\Term{continuous-map}{连续映射}。则 $\operatorname{Top}(f):\operatorname{Top}(X)\to\operatorname{Top}(Y)$ 是\Term{topos}{拓扑斯}\Term{equivalence}{等价}，当且仅当 $f_{\mathrm{sob}}:X_{\mathrm{sob}}\to Y_{\mathrm{sob}}$ 是\Term{homeomorphism}{同胚}（因而当 $X,Y$ \Term{sober-space}{清醒}时，当且仅当 $f$ 是\Term{homeomorphism}{同胚}）。
+
+ b) 设 $X,Y$ 是\Term{topological-space}{拓扑空间}。$\operatorname{Top}(X)$ 与 $\operatorname{Top}(Y)$ \Term{equivalence}{等价}，当且仅当 $X_{\mathrm{sob}}$ 与 $Y_{\mathrm{sob}}$ \Term{homeomorphism}{同胚}（因此，当 $X,Y$ \Term{sober-space}{清醒}时，当且仅当 $X,Y$ \Term{homeomorphism}{同胚}）。
+\end{SGAresult}
+
+\textbf{4.3. 到\Term{final-topos}{终拓扑斯}的\Term{morphism}{态射}：\Term{topos}{拓扑斯}的\Term{constant-object}{常值对象}，\Term{sections-functor}{截面函子}。} 用 $P$（“point”的首字母）表示标准的\Term{final-topos}{终拓扑斯}，即 $P=(\mathrm{Ens})$（2.2）。设 $E$ 是任一\Term{topos}{拓扑斯}；将看到，在唯一\Term{isomorphism}{同构}意义下，存在唯一的\Term{topos-morphism}{拓扑斯态射}
+\[
+ f:E\longrightarrow P,\tag{4.3.1}
+\]
+更准确地说，\Term{category}{范畴} $\mathscr Hom_{\mathrm{top}}(E,P)$ \Term{equivalence}{等价}于\Term{point-category}{单点范畴}：因此，对于这个\Term{category}{范畴}的两个\Term{object}{对象}，从一个到另一个恰有一个\Term{arrow}{箭头}，而且它是\Term{isomorphism}{同构}。（这在一定程度上说明“\Term{final-topos}{终拓扑斯}”这一称呼合理。）为此回顾（3.2.1），$\mathscr Hom_{\mathrm{top}}(E,P)$ \Term{equivalence}{等价}于
+\SourcePage{207}
+$\mathscr Hom(P,E)^\circ$ 中由与 $\varinjlim$ 交换并\Term{left-exact}{左正合}的\Term{functor}{函子}
+\[
+ f^*:P=(\mathrm{Ens})\longrightarrow E
+\]
+组成的\Term{full-subcategory}{满子范畴}。设 $e$ 是一个单点集，则每个\Term{set}{集合} $X$ \Term{canonical}{典范}地写作“$X$ 个 $e$ 的副本的和”，由此得知，与 $\varinjlim$ 交换的\Term{functor}{函子} $g:(\mathrm{Ens})\to E$ 的\Term{equivalence-of-categories}{范畴等价}于\Term{category}{范畴} $E$，其方式为将每个 $g$ 送到 $E$ 的\Term{object}{对象} $g(e)$。用 $T=g(e)$ 可在唯一\Term{isomorphism}{同构}意义下重建 $g$，公式为 $g(I)=T\times I$，其中令 $T\times I=\coprod_{i\in I}T_i$，对每个 $i\in I$ 都有 $T_i=T$。由 $T$ 如此定义的关于 $I$ 的\Term{functor}{函子}确实与 $\varinjlim$ 交换，因为它显然是从 $E$ 到 $(\mathrm{Ens})$ 的\Term{functor}{函子} $X\mapsto\operatorname{Hom}(T,X)$ 的\Term{right-adjoint}{右伴随}。现在，为使 $g$ \Term{left-exact}{左正合}，$g(e)=T$ 显然必须是 $E$ 的一个\Term{final-object}{终对象}（因为 $e$ 是 $(\mathrm{Ens})$ 的\Term{final-object}{终对象}）；由 $E$ 中“和是\Term{universal}{普适的}”（1.1.2 b)）又容易得出，这个条件也是充分的。因此，\Term{inverse-image}{逆像}\Term{functor}{函子} $f^*$ 的\Term{equivalence-of-categories}{范畴等价}于 $E$ 的\Term{final-object}{终对象}的\Term{category}{范畴}，而后者显然又\Term{equivalence}{等价}于终\Term{category}{范畴}。
+
+根据上述，选取一个\Term{morphism}{态射}（4.3.1）实质上等于选取 $E$ 的一个\Term{final-object}{终对象}，记作 $e_E$。用它可得到\Term{functor}{函子}的\Term{canonical-isomorphism}{典范同构}
+\[
+ f^*(I)\simeq e_E\times I=I\text{ 个 }e_E\text{ 的副本的和}\qquad(I\in\operatorname{ob}(\mathrm{Ens})),\tag{4.3.2}
+\]
+以及
+\[
+ f_*(X)=\operatorname{Hom}(e_E,X)\qquad(X\in\operatorname{Ob}E).\tag{4.3.3}
+\]
+
+\textbf{4.3.4.} 上述两个\Term{functor}{函子}将在下文起重要\Term{action}{作用}。对一个\Term{set}{集合} $I$，称（4.3.2）的\Term{object}{对象} $f^*(I)=e_E\times I$ 为 $E$ 中值为 $I$ 的\Term{constant-object}{常值对象}（或当 $E$ 用一个\Term{site}{景} $C$ 实现为\Term{category}{范畴} $\widetilde C$ 时，称为 $C$ 上值为 $I$ 的\Term{constant-sheaf}{常值层}）。也经常记作 $I_E$，或当 $E$ 由\Term{site}{景} $C$ 定义时记作 $I_C$。$I\mapsto I_E$ 是某个\Term{topos-morphism}{拓扑斯态射}的\Term{inverse-image}{逆像}\Term{functor}{函子}，这明确了它的\Term{exactness}{正合性}性质，特别蕴涵该\Term{functor}{函子}保持所有常见的\Term{algebraic-structure}{代数结构}类型，将群变为 $E$ 的\Term{group-object}{群对象}等等（3.1.2）。例如，对 $E$ 的一个群 $G$，若它\Term{isomorphism}{同构}于形如 $(G_\circ)_{E'}$ 的群，其中 $G_\circ$ 是一个普通群，则称之为\Term{constant-group}{常值群}（或在适当情形下称为\Term{constant-group}{常值群}\Term{sheaf}{层}）。对 3.1.2 中（或多或少）明确的意义下的其他一切“\Term{algebra}{代数}”结构类型，采用同样的术语。
+
+\textbf{4.3.5.} 须注意，\Term{functor}{函子} $I\mapsto I_E$ 未必\Term{fully-faithful-functor}{全忠实}（甚至未必忠实：取 $E$ 为“\Term{empty-topos}{空拓扑斯}”（2.2）），因而 $E$ 的一个\Term{constant-object}{常值对象}一般不能在唯一\Term{isomorphism}{同构}意义下确定产生它的\Term{set}{集合} $I$。若\Term{functor}{函子}
+\SourcePage{208}
+$I\mapsto I_E$ \Term{fully-faithful-functor}{全忠实}，则称 $E$ 为\Term{zero-acyclic}{0-无环的}，或\Term{connected-nonempty}{连通非空}的。根据\Term{adjoint-functor}{伴随函子}的一般性质，这\Term{equivalence}{等价}于说，\Term{adjunction-morphism}{伴随态射}
+\[
+ I\longrightarrow f_*(f^*(I))=f_*(I_E)=\operatorname{Hom}(e_E,I_E)
+\]
+是\Term{isomorphism}{同构}（所以\Term{functor}{函子}（4.3.3）可恢复 $E$ 的\Term{constant-object}{常值对象}的“值”）。容易验证，其充要条件是：$e_E$ 不是 $E$ 的\Term{initial-object}{始对象} $\varnothing_E$，即 $E$ 不是“\Term{empty-topos}{空拓扑斯}”（这表达了\Term{functor}{函子} $I\mapsto I_E$ 的忠实性\footnote{或者说，这个\Term{functor}{函子}是\Term{conservative-functor}{保守函子}（第 I 讲 6.3）。}），且 $e_E$ 是 $E$ 的一个\Term{connected}{连通}\Term{object}{对象}，即不能写成 $E$ 中两个非“空”\Term{object}{对象}（即不是 $E$ 的\Term{initial-object}{始对象}）的和。
+
+\textbf{4.3.6.} \Term{functor}{函子}（4.3.3）也经常称为\Term{sections-functor}{截面函子}，记作 $\Gamma_E$、$\Gamma(E,-)$ 或简称 $\Gamma$：
+\[
+ \operatorname{Hom}(e_E,X)=\Gamma_E(X)=\Gamma(E,X)=\Gamma(X).\tag{4.3.6.1}
+\]
+它与任意\Term{projective-limit}{投射极限}交换，但一般不\Term{right-exact}{右正合}；它（在阿贝尔\Term{group-object}{群对象}上的）的\Term{derived-functor}{导出函子}将在下一讲研究。
+
+\textbf{4.4. 从“\Term{empty-topos}{空拓扑斯}”出发的\Term{morphism}{态射}。} 设 $\varnothing_{\mathrm{top}}$ 是一个\Term{empty-topos}{空拓扑斯}，从而\Term{correspondence}{对应}于一个\Term{equivalence}{等价}于终\Term{category}{范畴}的\Term{sheaf}{层}\Term{category}{范畴} $\Phi$（2.2）。设 $E$ 是一个\Term{topos}{拓扑斯}。从 $E$ 到 $\Phi$ 的\Term{functor-category}{函子范畴}显然\Term{equivalence}{等价}于\Term{point-category}{单点范畴}，而且每个这样的\Term{functor}{函子}都与\Term{inductive-limit}{归纳极限}和\Term{projective-limit}{投射极限}交换（当然毫不费力），因而可看作一个\Term{topos-morphism}{拓扑斯态射} $\varnothing_{\mathrm{top}}\to E$ 的\Term{inverse-image}{逆像}\Term{functor}{函子} $f$。由此得知，\Term{category}{范畴} $\mathscr Hom_{\mathrm{top}}(\varnothing_{\mathrm{top}},E)$ \Term{equivalence}{等价}于\Term{point-category}{单点范畴}；特别地，在唯一\Term{isomorphism}{同构}意义下存在唯一的\Term{topos-morphism}{拓扑斯态射}
+\[
+ \varnothing_{\mathrm{top}}\longrightarrow E.\tag{4.4.1}
+\]
+这在一定程度上说明了 2.2 中引入的“\Term{initial-topos}{始拓扑斯}”术语的合理性。
+
+也可以确定\Term{topos-morphism}{拓扑斯态射}
+\[
+ E\longrightarrow\varnothing_{\mathrm{top}};\tag{4.4.2}
+\]
+立即验证，这样的\Term{morphism}{态射}存在当且仅当 $E$ 的\Term{initial-object}{始对象}也是\Term{final-object}{终对象}，即当且仅当 $E$ 本身是“\Term{empty-topos}{空拓扑斯}”；而在此情形，\Term{category}{范畴} $\mathscr Hom_{\mathrm{top}}(E,\varnothing_{\mathrm{top}})$ 仍\Term{equivalence}{等价}于\Term{point-category}{单点范畴}。此时（模掉\Term{isomorphism}{同构}后）唯一的\Term{morphism}{态射}（4.4.2）是\Term{topos}{拓扑斯}\Term{equivalence}{等价}。
+
+\textbf{4.5. 随群 $G$ 变化的\Term{classifying-topos}{分类拓扑斯} $B_G$。}
+\SourcePage{209}
+\textbf{4.5.1.} 设 $E$ 是一个\Term{topos}{拓扑斯}，且
+\[
+ f:G\longrightarrow H
+\]
+是 $E$ 中的一个群\Term{morphism}{态射}。由此得到一个“\Term{restriction}{限制}\Term{action}{作用}群”\Term{functor}{函子}
+\[
+ f^*:B_H\longrightarrow B_G,
+\]
+记号沿用 2.4。这个\Term{functor}{函子}与\Term{inductive-limit}{归纳极限}及\Term{projective-limit}{投射极限}交换是\Term{trivial-bundle}{平凡}的，更可将之解释为与一个\Term{topos-morphism}{拓扑斯态射}
+\[
+ B_f\text{ 或 }f:B_G\longrightarrow B_H
+\]
+关联的\Term{inverse-image}{逆像}\Term{functor}{函子}。相应的\Term{direct-image-functor}{直接像}\Term{functor}{函子}
+\[
+ f_*:B_G\longrightarrow B_H
+\]
+容易用如下公式明确给出：
+\[
+ f_*(X)=\mathscr Hom_G(H_s,X),
+\]
+其中 $X$ 是 $X$ 的一个\Term{object}{对象}，配备 $G$ 的左\Term{action}{作用}，$H_s$ 是把 $H$ 看作配备由 $F$ \Term{derivation}{导出}的 $G$ 的左\Term{action}{作用}，$\mathscr Hom_G$ 表示下文（第 10 节）定义的\Term{object}{对象} $\mathscr Hom$ 的那个容易想到的\Term{subobject}{子对象}；借助 $H$ 通过右\Term{translation}{平移}在 $H_s$ 上的\Term{right-action}{右作用}，使 $H$ 左\Term{action}{作用}于 $\mathscr Hom_G(H_s,X)$。
+
+由于\Term{inverse-image}{逆像}\Term{functor}{函子} $f^*$ 与任意 $\varinjlim$（不只是\Term{finite}{有限} $\varinjlim$）交换，它本身是\Term{functor}{函子}
+\[
+ f_!:B_G\longrightarrow B_H
+\]
+的\Term{left-adjoint}{左伴随}，从而如 3.1.3，得到三个\Term{adjoint-functor}{伴随函子}的序列：
+\[
+ f_!,\quad f^*,\quad f_*.
+\]
+容易用如下公式明确给出 $f_!$：
+\[
+ f_!(X)=H\times^G X,
+\]
+其中右端表示“\Term{contracted-product}{缩积}”，由 $G$ 在 $X$ 上的左\Term{action}{作用}和在 $H$ 上的\Term{right-action}{右作用}（通过右\Term{translation}{平移}与 $f$）\Term{derivation}{导出}，定义为 $H\times X$ 对 $G$ \Term{action}{作用}的商，\Term{action}{作用}公式为
+\[
+ g\circ(h,x)=(hg^{-1},gx).
+\]
+\Term{functor}{函子} $f_!$ 是\Term{left-adjoint}{左伴随}，显然与\Term{inductive-limit}{归纳极限}交换，但一般不\Term{left-exact}{左正合}（即它本身不能看作一个\Term{topos-morphism}{拓扑斯态射} $B_H\to B_G$ 的\Term{inverse-image}{逆像}\Term{functor}{函子}）。事实上，容易验证，它只有在 $f:G\to H$ 是\Term{isomorphism}{同构}时才可能\Term{left-exact}{左正合}。同样，与\Term{projective-limit}{投射极限}交换的\Term{functor}{函子} $f_*$ 一般不\Term{right-exact}{右正合}，更不一定有\Term{right-adjoint}{右伴随}。至少当 $E$ 是\Term{punctual-topos}{点拓扑斯}，即 $G,H$ 是普通群时，$f_*$ 只有在 $f$ 是\Term{isomorphism}{同构}时才\Term{right-exact}{右正合}。
+
+\SourcePage{210}
+若还有第二个群\Term{morphism}{态射} $g:H\to K$，则如 4.1.1，得到相差\Term{canonical-isomorphism}{典范同构}的\Term{transitivity}{传递性}；因此，在通常的保留条件下，可以认为\Term{classifying-topos}{分类拓扑斯} $B_G$ \Term{functor}{函子}地依赖于群 $G$。我们把将这一\Term{functor}{函子}行为推广到 $G$ 与\Term{topos}{拓扑斯} $E$ 同时变化的情形留给读者。
+
+\textbf{4.5.2. 随pro-群 $\mathcal G$ 变化的\Term{topos}{拓扑斯} $B_{\mathcal G}$。} 依照 4.5.1 的叙述，明确\Term{topos}{拓扑斯} $B_{\mathcal G}$（2.7）对于 $\mathcal G$ 的\Term{covariant}{协变}性，留给读者。但须注意，对非\Term{essentially-constant-ind-object}{本质常值}的\Term{pro-group}{pro-群}的\Term{morphism}{态射} $f:\mathcal G\to\mathcal H$，相应的\Term{topos-morphism}{拓扑斯态射} $B_{\mathcal G}\to B_{\mathcal H}$ 一般不能用来定义\Term{functor}{函子} $f_!$（其\Term{right-adjoint}{右伴随}应为\Term{restriction}{限制}\Term{action}{作用}\Term{pro-group}{pro-群}的\Term{functor}{函子} $f^*$）。为简化陈述，假定 $\mathcal G,\mathcal H$ 由\Term{profinite-group}{投有限群} $G,H$ 定义，则容易看出，$f_!$ 存在当且仅当所考虑的\Term{morphism}{态射} $f:G\to H$ 的像在 $H$ 中的指数\Term{finite}{有限}；此时 $f_!$ 由与 4.5 相同的公式给出。
+
+\textbf{4.6. 随\Term{category}{范畴} $C$ 变化的\Term{topos}{拓扑斯} $\widehat C$。}
+
+\textbf{4.6.1.} 设
+\[
+ f:C\longrightarrow C'
+\]
+是从\Term{category}{范畴} $C\in\mathcal U$ 到另一个\Term{category}{范畴} $C'$ 的\Term{functor}{函子}，由此得到一个\Term{functor}{函子}
+\[
+ f^*:\widehat C'\longrightarrow\widehat C,\qquad f^*(F)=F\circ f.
+\]
+这个\Term{functor}{函子}与\Term{projective-limit}{投射极限}及\Term{inductive-limit}{归纳极限}交换是\Term{trivial-bundle}{平凡}的，更可以看作一个\Term{topos-morphism}{拓扑斯态射}
+\[
+ \widehat f\text{ 或 }f:\widehat C\longrightarrow\widehat C'
+\]
+的\Term{inverse-image}{逆像}\Term{functor}{函子}。相应的\Term{direct-image-functor}{直接像}\Term{functor}{函子}
+\[
+ f_*:\widehat C\longrightarrow\widehat C'
+\]
+就是第 I 讲 5.1 中也记作 $f_*$ 的那个\Term{functor}{函子}。此外（由 $f^*$ 还与任意 $\varprojlim$ 交换本来就能预见），$f^*$ 也有一个\Term{left-adjoint}{左伴随}
+\[
+ f_!:C\longrightarrow C'
+\]
+（它在第 I 讲 5.1 中也记作 $f_!$）。因此得到三个\Term{adjoint-functor}{伴随函子}的序列
+\[
+ f_!,\quad f^*,\quad f_*,
+\]
+其中第一个还是 $f:C\to C'$ 到\Term{presheaf}{预层}\Term{category}{范畴}的一个延拓（相对于通常将 $C,C'$ \Term{embedding}{嵌入}\Term{category}{范畴} $\widehat C,\widehat C'$ 的方式）。须注意，\Term{functor}{函子} $f_!$ 一般不\Term{left-exact}{左正合}，$f_*$ 也一般不\Term{right-exact}{右正合}；这就消除了随\Term{category}{范畴} $C$ 变化所关联的\Term{topos}{拓扑斯} $\widehat C$ 的变性方向的任何歧义：
+\SourcePage{211}
+这个\Term{topos}{拓扑斯}是关于 $C$ 的\Term{covariant-functor}{协变函子}，当然仍有来自传递\Term{isomorphism}{同构}的通常保留条件（参见 4.1.1）。当 $C,C'$ 的\Term{object}{对象}集都只有一个元素，从而 $C,C'$ 认同于\Term{monoid}{幺半群} $G,G'$ 时，相应的\Term{topos}{拓扑斯}是\Term{classifying-topos}{分类拓扑斯} $B_{G^\circ},B_{G'^\circ}$；于是得到它们随 $G$ 变化的变性，之前已在 4.1.2、4.5 中从其他观点遇到过（那里\Term{restriction}{限制}为群而非\Term{monoid}{幺半群}并无实质意义）。
+
+\textbf{4.6.2.} 对两个\Term{category}{范畴} $C,C'\in\mathcal U$，引入一个\Term{canonical-functor}{典范函子}
+\[
+ \mathscr Hom(C,C')\longrightarrow\mathscr Hom_{\mathrm{top}}(\widehat C,\widehat C'),\tag{4.6.2.1}
+\]
+便可明确\Term{topos}{拓扑斯} $\widehat C$ 对 $C$ 的 2-\Term{functor}{函子}依赖性。
+
+尚须定义此\Term{functor}{函子}在\Term{arrow}{箭头}上的\Term{action}{作用}。为此注意，$f\mapsto f^*$ 将右端（在\Term{equivalence-of-categories}{范畴等价}意义下）认同于 $\mathscr Hom(\widehat C',\widehat C)^\circ$ 的一个\Term{full-subcategory}{满子范畴}（3.2.1）。若 $f,g:C\to C'$ 是两个\Term{functor}{函子}，则每个\Term{morphism-of-functors}{函子态射} $u:f\to g$ 都定义了关于 $F\in\operatorname{ob}\widehat C'$ 的\Term{morphism-of-functors}{函子态射} $f\circ g\to F\circ f$（$F$ 是\Term{contravariant-functor}{反变函子}），因此是一个\Term{morphism}{态射} $g^*\to f^*$，进而如所声称的定义一个\Term{morphism}{态射} $\widehat f\to\widehat g$。
+
+当 $C$ 是\Term{point-category}{单点范畴}时，$\widehat C$ 是\Term{punctual-topos}{点拓扑斯}（2.2），记作 $P$；而（4.6.2.1）解释为一个自然\Term{functor}{函子}
+\[
+ C'\longrightarrow\mathscr Hom_{\mathrm{top}}(P,\widehat C')\overset{\mathrm{dfn}}=\operatorname{Points}(\widehat C'),\tag{4.6.2.2}
+\]
+从 $C'$ 到 $\widehat C'$ 的“点\Term{category}{范畴}”，后者将在第 6 节研究。这个\Term{functor}{函子}未必是\Term{equivalence-of-categories}{范畴等价}（7.3.3），因此（4.6.2.1）更不一定是\Term{equivalence-of-categories}{范畴等价}。
+
+另一方面，\Term{functor}{函子}（4.6.2.1）总是\Term{fully-faithful-functor}{全忠实}的。为说明这一点，注意若 $f,g:E\to E'$ 是两个\Term{topos-morphism}{拓扑斯态射}，使 $f_!,g_!$ 有定义（3.1.3），则由\Term{adjoint-functor}{伴随函子}理论，有\Term{canonical-isomorphism}{典范同构}
+\[
+ \operatorname{Hom}(f_!,g_!)\simeq\operatorname{Hom}(g^*,f^*)\simeq\operatorname{Hom}(f_*,g_*)\overset{\mathrm{dfn}}=\operatorname{Hom}(f,g).
+\]
+将其应用于与 $f,g:C\to C'$ 关联的形如 $\widehat f,\widehat g$ 的\Term{functor}{函子}，考虑到自然的延拓映射 $\operatorname{Hom}(f,g)\to\operatorname{Hom}(f_!,g_!)$ 是\Term{bijection}{双射}（第 I 讲 7.8），便得到所述结果。
+
+\textbf{4.6.3.} 可以问\Term{functor}{函子}（4.6.2.1）何时是\Term{equivalence-of-categories}{范畴等价}，即何时\Term{essentially-surjective}{本质满射}；这是确定所有\Term{topos-morphism}{拓扑斯态射} $\widehat C\to\widehat C'$ 这一问题的特例。更一般地，若 $C$ 是一个属于 $\mathcal U$ 的\Term{category}{范畴}，$E$ 是一个\Term{topos}{拓扑斯}，可以尝试确定\Term{topos-morphism}{拓扑斯态射}
+\[
+ f:\widehat C\longrightarrow E.
+\]
+这些\Term{morphism}{态射}的\Term{category}{范畴}，\Term{equivalence}{等价}于与任意\Term{inductive-limit}{归纳极限}及\Term{finite}{有限}\Term{projective-limit}{投射极限}交换的\Term{functor}{函子} $f^*:E\to\widehat C$ 的\Term{category}{范畴}的\Term{opposite-category}{反范畴}。
+\SourcePage{212}
+把\Term{functor}{函子} $E\to\widehat C$ 解释为\Term{functor}{函子} $E\times C^\circ\to(\mathcal U\text{-}\mathrm{Ens})=(\mathrm{Ens})$，或解释为\Term{functor}{函子} $F:C^\circ\to\mathscr Hom(E,(\mathrm{Ens}))$，所考虑的\Term{exactness}{正合性}就表达为：对 $C$ 的每个\Term{object}{对象} $X$，\Term{functor}{函子} $F(X):E\to(\mathrm{Ens})$ 与任意\Term{inductive-limit}{归纳极限}和\Term{finite}{有限}\Term{projective-limit}{投射极限}交换（或如第 6 节中将称呼的，$F(X)$ 是 $E$ 上的一个“\Term{fiber-functor}{纤维函子}”）。这也\Term{equivalence}{等价}于说 $F(X)$ 是某个\Term{topos-morphism}{拓扑斯态射} $P\to E$ 的\Term{inverse-image}{逆像}\Term{functor}{函子}，因而最终得到一个\Term{canonical}{典范}\Term{equivalence-of-categories}{范畴等价}
+\[
+ \mathscr Hom_{\mathrm{top}}(\widehat C,E)\xrightarrow{\approx}\mathscr Hom(C,\operatorname{Points}(E)),\tag{4.6.3.1}
+\]
+这里简记
+\[
+ \operatorname{Points}(E)=\mathscr Hom_{\mathrm{top}}(P,E)
+\]
+为\Term{topos}{拓扑斯} $E$ 的点\Term{category}{范畴}。
+
+当 $E$ 形如 $\widehat C'$ 时，由定义立即看到，（4.6.2.1）与上述\Term{equivalence}{等价}（4.6.3.1）的复合，就是\Term{functor}{函子}
+\[
+ \mathscr Hom(C,C')\longrightarrow\mathscr Hom(C,\operatorname{Points}(\widehat C'))\tag{4.6.3.2}
+\]
+$F\mapsto i\circ F$，其中 $i:C'\to\operatorname{Points}(\widehat C')$ 是\Term{canonical}{典范}\Term{embedding}{嵌入}（4.6.2.2）。立即得出：（4.6.2.1）是\Term{equivalence}{等价}的充要条件，是 $C$ 为空或（4.6.2.2）\Term{essentially-surjective}{本质满射}（因而是\Term{equivalence-of-categories}{范畴等价}）。后一个关于 $C'$ 的条件在一些有趣的情形中成立，尤其当 $C'$ 是一个群 $G$ 所定义的单\Term{object}{对象}\Term{category}{范畴}时（7.2.5）。
+
+\textbf{注记 4.6.4。} 给任意\Term{category}{范畴} $C$ 关联一个\Term{topos}{拓扑斯} $\widehat C$，提示我们，\Term{category}{范畴} $C$ 和\Term{topos}{拓扑斯}一样，也有\Term{topology}{拓扑}性质的\Term{invariants}{不变量}（\Term{cohomology}{上同调}群、\Term{homotopy-group}{同伦群}等等）。$\widehat C$ 以阿贝尔\Term{group-object}{群对象} $F$ 为系数的\Term{cohomology}{上同调}群（在第 V 讲研究的一般意义下），就是\Term{topology}{拓扑}学家已经熟悉的\Term{functor}{函子} $\varprojlim$ 的\Term{derived-functor}{导出函子} $\varprojlim{}^{(n)}$ 的值。J. L. Verdier 与（独立地）D. G. Quillen 验证了：若只考虑常系数，或更一般地\Term{locally-constant}{局部常}系数，则这些\Term{cohomology}{上同调}群认同于与 $C$ \Term{canonical}{典范}关联的\Term{semisimplicial-set}{半单纯集合} $\operatorname{Nerf}(C)$ 的\Term{cohomology}{上同调}群 [5, n$^\circ$ 212, prop. 4.1]；并且，在 [2] 的“\Term{homotopy}{同伦}\Term{category}{范畴}”中的\Term{isomorphism}{同构}意义下，每个\Term{semisimplicial-set}{半单纯集合}都能借助一个\Term{category}{范畴} $C$ 得到。对\Term{topos}{拓扑斯}采用一个适当的\Term{homotopy-type}{同伦型}概念（这里不加明确），就可以说：\Term{topology}{拓扑}学家的\Term{semisimple}{半单}纯\Term{homotopy-type}{同伦型}无非是\Term{topology}{拓扑}学家的\Term{semisimple}{半单}纯\Term{homotopy-type}{同伦型}，无非是特殊形状 $\widehat C$ 的\Term{topos}{拓扑斯}的\Term{homotopy-type}{同伦型}，更一般地，是每个\Term{object}{对象}都有一个细化所有其他\Term{covering}{覆盖}的\Term{covering}{覆盖}的\Term{topos}{拓扑斯} $E$ 的\Term{homotopy-type}{同伦型}（2.6）
+\SourcePage{213}
+\footnote{更一般地，还包括在一个显然的意义下“\Term{local-scheme}{局部} $\infty$-\Term{connected}{连通}”的\Term{topos}{拓扑斯}；这个意义留给读者明确。}。若 $E$ 没有这个条件，则至多能用一个适当的\Term{semisimplicial-set}{半单纯集合}的\Term{projective-system}{投射系统}来表达其\Term{homotopy-type}{同伦型} [1]。
+
+\textbf{4.7. 随景 $C$ 变化的\Term{topos}{拓扑斯} $\widetilde C$（\Term{cocontinuous-functor}{余连续函子}）。} 设
+\[
+ f:C\longrightarrow C'
+\]
+是属于 $\mathcal U$ 的\Term{site}{景}之间的一个\Term{cocontinuous-functor}{余连续函子}（第 III 讲 2.1），即\Term{functor}{函子} $\widehat f_*$ 或 $f_*:F\mapsto F\circ f$ 从 $\widehat C$ 到 $\widehat C'$（4.6.1）将 $\widetilde C$ 映入 $\widetilde C'$，也就是说，诱导一个\Term{functor}{函子}
+\[
+ \widetilde f_*:\widetilde C\longrightarrow\widetilde C'\tag{4.7.1}
+\]
+使\Term{functor}{函子}图式
+\[
+\begin{tikzcd}
+\widetilde C\arrow[r,"\widetilde f_*"]\arrow[d,"i"'] & \widetilde C'\arrow[d,"i'"]\\
+\widehat C\arrow[r,"\widehat f_*"'] & \widehat C'
+\end{tikzcd}\tag{4.7.2}
+\]
+交换，其中 $i,i'$ 为\Term{inclusion-functor}{包含函子}。我们已经看到（第 III 讲 2.3），\Term{functor}{函子} $\widetilde f_*$ 有一个\Term{left-adjoint}{左伴随} $\widetilde f^*$，且后者\Term{left-exact}{左正合}。换言之，$\widetilde f_*$ 是与一个\Term{topos-morphism}{拓扑斯态射}
+\[
+ \widetilde f\text{ 或 }f:\widetilde C\longrightarrow\widetilde C'
+\]
+关联的\Term{direct-image-functor}{直接像}\Term{functor}{函子}，相应的\Term{inverse-image}{逆像}\Term{functor}{函子}当然为 $\widetilde f^*$。取所涉及\Term{functor}{函子}的\Term{left-adjoint}{左伴随}，\Term{commutative-diagram}{交换图}式（4.7.2）又给出一个相差\Term{isomorphism}{同构}交换的图式
+\[
+\begin{tikzcd}
+\widetilde C & \widetilde C'\arrow[l,"\widetilde f^*"']\\
+\widehat C\arrow[u,"a"] & \widehat C'\arrow[u,"a'"']\arrow[l,"\widehat f^*"']
+\end{tikzcd}\tag{4.7.3}
+\]
+其中 $a,a'$ 是“\Term{associated-sheaf}{伴随层}”\Term{functor}{函子}；这个图式立即重新给出公式（第 III 讲 2.3）
+\[
+ \widetilde f^*=a\widehat f^*i'.
+\]
+\Term{topos-morphism}{拓扑斯态射} $\widehat f:\widehat C\to\widehat C'$ 的\Term{transitivity}{传递性}蕴涵了与\Term{cocontinuous-functor}{余连续函子}关联的\Term{topos-morphism}{拓扑斯态射} $\widetilde f:\widetilde C\to\widetilde C'$
+\SourcePage{214}
+的同一性质。因此，若以\Term{cocontinuous-functor}{余连续函子}作为\Term{site}{景}的“\Term{morphism}{态射}”，则可以说，\Term{topos}{拓扑斯} $\widetilde C$ 随 $C$ \Term{covariant}{协变}且\Term{functor}{函子}地变化。
+
+迄今遇到的所有情形中，所用的\Term{cocontinuous-functor}{余连续函子} $f$ 也\Term{continuous-functor}{连续}，即（第 III 讲 1.1）“延拓”为一个与\Term{inductive-limit}{归纳极限}交换的\Term{functor}{函子}
+\[
+ \widetilde f_!:\widetilde C\longrightarrow\widetilde C',
+\]
+它是 $\widetilde f^*$ 的\Term{left-adjoint}{左伴随}，从而有三个\Term{adjoint-functor}{伴随函子}的序列
+\[
+ \widetilde f_!,\quad\widetilde f^*,\quad\widetilde f_*.
+\]
+须注意，\Term{functor}{函子} $\widetilde f_!$ 一般不\Term{left-exact}{左正合}，$\widetilde f_*$ 也一般不\Term{right-exact}{右正合}；这就消除了当 $C$ 通过只假定为\Term{cocontinuous-functor}{余连续}、甚至\Term{continuous-functor}{连续}且\Term{cocontinuous-functor}{余连续}的\Term{functor}{函子}变化时，\Term{topos}{拓扑斯} $\widetilde C$ 的变性方向的任何歧义。
+
+\textbf{注记 4.7.4。} 给定一个\Term{topos-morphism}{拓扑斯态射}
+\[
+ F:E\longrightarrow E',
+\]
+存在\Term{functor}{函子} $F_!$ 为 $F^*$ 的\Term{left-adjoint}{左伴随}的充要条件，是能将 $E,E'$（在\Term{equivalence}{等价}意义下）“实现”为 $\widetilde C,\widetilde C'$，其中 $C,C'\in\mathcal U$ 是两个\Term{site}{景}，并能找到一个\Term{continuous-functor}{连续}且\Term{cocontinuous-functor}{余连续}的\Term{functor}{函子} $f:C\to C'$，使 $F$ 认同于 $\widetilde f$。充分性显然；为证必要性，只需分别取 $E,E'$ 的小满\Term{generating-family}{生成子范畴} $C,C'$，满足
+\[
+ F_!(\operatorname{ob}C)\subset\operatorname{ob}C',
+\]
+赋予它们由 $E,E'$ 的\Term{topology}{拓扑}\Term{induced-topology}{诱导的拓扑}，并取 $f$ 为 $F_!$ 所诱导的\Term{functor}{函子}（参见 1.2.1）。回顾（1.8），$F_!$ 的存在也意味着 $F^*$ 与\Term{projective-limit}{投射极限}交换；由于这个\Term{functor}{函子}\Term{left-exact}{左正合}，在这里也\Term{equivalence}{等价}于它与积交换。
+
+\textbf{4.7.5.} 若问哪些\Term{topos-morphism}{拓扑斯态射} $F:E\to E'$ 能通过\Term{site}{景}的一个\Term{cocontinuous-functor}{余连续函子}（未必\Term{continuous}{连续}）实现，同样看出答案如下：所有使得从 $E'$ 到 $(\mathrm{Ens})$ 的\Term{functor}{函子} $X'\mapsto\operatorname{Hom}(X,F^*(X'))$ 与\Term{projective-limit}{投射极限}（或\Term{equivalence}{等价}地，与积）交换的 $E$ 的\Term{object}{对象} $X$，必须构成 $E$ 的一个\Term{generating-family}{生成族}。
+
+\textbf{4.8. 景 $C$ 的\Term{topos-morphism}{拓扑斯态射} $\widetilde C\to\widehat C$。} 设 $C$ 是一个小\Term{site}{景}，于是关联有两个\Term{topos}{拓扑斯} $\widetilde C,\widehat C$（后者不依赖于 $C$ 上赋予的\Term{topology}{拓扑}）。我们已在第 II 讲 3.4 中定义了“\Term{associated-sheaf}{伴随层}”\Term{functor}{函子}
+\[
+ a:\widehat C\longrightarrow\widetilde C,
+\]
+\SourcePage{215}
+并证明它\Term{left-exact}{左正合}且与\Term{inductive-limit}{归纳极限}交换。因此，它是与一个\Term{topos-morphism}{拓扑斯态射}
+\[
+ p:\widetilde C\longrightarrow\widehat C,\qquad p^*=a
+\]
+关联的\Term{inverse-image}{逆像}\Term{functor}{函子}，相应的\Term{direct-image-functor}{直接像}\Term{functor}{函子}是\Term{canonical}{典范}包含
+\[
+ i=p_*:\widetilde C\longrightarrow\widehat C.
+\]
+熟知，后一个\Term{functor}{函子}一般不\Term{right-exact}{右正合}（它在阿贝尔\Term{object}{对象}上的\Term{derived-functor}{导出函子}产生第 V 讲 2 中的\Term{cohomology}{上同调}\Term{presheaf}{预层} $\mathscr H^n(F)$），而 $a$ 一般不与任意 $\varprojlim$ 交换，这就消除了 $\widehat C$ 与 $\widetilde C$ 之间的“自然”\Term{topos-morphism}{拓扑斯态射}方向的任何歧义。
+
+若有\Term{site}{景}的一个\Term{cocontinuous-functor}{余连续函子}
+\[
+ f:C\longrightarrow C',
+\]
+便得到\Term{topos-morphism}{拓扑斯态射}的图式
+\[
+\begin{tikzcd}
+\widetilde C\arrow[r,"\widetilde f"]\arrow[d,"p"'] & \widetilde C'\arrow[d,"p'"]\\
+\widehat C\arrow[r,"\widehat f"'] & \widehat C'
+\end{tikzcd}
+\]
+它在\Term{canonical-isomorphism}{典范同构}意义下交换：这正是\Term{functor}{函子}图式（4.7.2）的交换性所表达的。因此可以说，当 $C$ 通过\Term{site}{景}之间的\Term{cocontinuous-functor}{余连续函子}变化时，\Term{topos-morphism}{拓扑斯态射} $p:\widetilde C\to\widehat C$ \Term{functor}{函子}地依赖于 $C$。
+
+\textbf{4.9. 景的\Term{continuous-functor}{连续函子}的\Term{action}{作用}。\Term{morphism-sites}{景态射}。}
+
+\textbf{4.9.1.} 若
+\[
+ f:C\longrightarrow C'
+\]
+是从 $C$ 到 $C'$ 的一个\Term{continuous-functor}{连续函子}，即\Term{functor}{函子} $\widehat f^*:\widehat C'\to\widehat C$ 将 $\widetilde C'$ 映入 $\widetilde C$，从而诱导一个\Term{functor}{函子}
+\[
+ f_s:\widetilde C'\longrightarrow\widetilde C,
+\]
+则我们已经看到（第 III 讲 1.2），后者有一个\Term{left-adjoint}{左伴随}
+\[
+ f^s:\widetilde C\longrightarrow\widetilde C',
+\]
+它还在一个显然的意义下“延拓”了 $f$。须注意，一般 $f^s$ 不\Term{right-exact}{右正合}（即使 $f$ 还\Term{cocontinuous}{余连续}），$f_s$ 也不与\Term{inductive-limit}{归纳极限}交换；因此，若无其他假设，给定 $f$ 并不能描述 $\widetilde C$ 与 $\widetilde C'$ 之间任一方向上的\Term{topos-morphism}{拓扑斯态射}。当 $f$ \Term{cocontinuous}{余连续}，即 $f_s$ 与\Term{inductive-limit}{归纳极限}交换，因而能看作一个\Term{topos-morphism}{拓扑斯态射} $\widetilde f:\widetilde C\to\widetilde C'$ 的\Term{inverse-image}{逆像}\Term{functor}{函子}时，
+\SourcePage{216}
+已在 4.7 中讨论。现在考察\Term{functor}{函子} $f^s$ \Term{left-exact}{左正合}的情形，这时它可以看作反方向上的\Term{topos-morphism}{拓扑斯态射}的\Term{inverse-image}{逆像}\Term{functor}{函子}：
+\[
+ \operatorname{Top}(f)=g:\widetilde C'\longrightarrow\widetilde C.\tag{4.9.1.1}
+\]
+须注意，我们特意没有用字母 $\widetilde f$ 或 $f$ 表示这个\Term{morphism}{态射}，以免与 4.7 的情形混淆；这遵循了 3.1.3 的一般建议。若\Term{functor}{函子} $f:C\to C'$ \Term{continuous-functor}{连续}且\Term{functor}{函子} $f^s$ \Term{left-exact}{左正合}，有时称之为从 $C'$ 到 $C$ 的\Term{morphism-sites}{景态射}（注意，不是从 $C$ 到 $C'$）；换言之，若存在一个\Term{topos-morphism}{拓扑斯态射}（4.9.1.1），使相应的\Term{inverse-image}{逆像}\Term{functor}{函子}
+\[
+ g^*:\widetilde C\longrightarrow\widetilde C'
+\]
+延拓\Term{functor}{函子} $f$，即使\Term{functor}{函子}图式
+\[
+\begin{tikzcd}
+ C\arrow[r,"f"]\arrow[d,"\varepsilon"'] & C'\arrow[d,"\varepsilon'"]\\
+ \widetilde C\arrow[r,"g^*"'] & \widetilde C'
+\end{tikzcd}
+\]
+在\Term{isomorphism}{同构}意义下交换，其中 $\varepsilon,\varepsilon'$ 是第 II 讲 4.4.0 的\Term{canonical-functor}{典范函子}。
+
+\textbf{4.9.2.} 实践中，通常通过如下事实判定一个\Term{continuous-functor}{连续函子} $f:C\to C'$ 是从 $C'$ 到 $C$ 的\Term{morphism-sites}{景态射}：\Term{finite}{有限}\Term{projective-limit}{投射极限}在 $C$ 中\Term{representable}{可表示}，并且 $f$ 与之交换（第 III 讲 1.3 5)）。在 $C$ 满足所述条件（实践中几乎总满足），并进一步假定 $C'$ 的\Term{topology}{拓扑}不比\Term{canonical-topology}{典范拓扑}更细（同样几乎总满足）时，前述 $f$ 为从 $C'$ 到 $C$ 的\Term{morphism-sites}{景态射}的充分条件（$f$ \Term{left-exact}{左正合}），也是必要的。
+
+\textbf{4.9.3.} 本着以上精神，若 $C,C'$ 是两个 $\mathcal U$-\Term{site}{景}，应将从 $C$ 到 $C'$ 的\Term{morphism-sites}{景态射}\Term{category}{范畴} $\operatorname{Morsite}(C',C)$ 定义为：从 $C$ 到 $C'$ 的\Term{functor-category}{函子范畴}的\Term{opposite-category}{反范畴} $\mathscr Hom(C,C')^\circ$ 中，由那些确实为（从 $C'$ 到 $C$ 的）\Term{morphism-sites}{景态射}的\Term{functor}{函子}组成的\Term{full-subcategory}{满子范畴}。这样得到一个\Term{canonical-functor}{典范函子}（在唯一\Term{isomorphism}{同构}意义下定义）
+\[
+ \operatorname{Morsite}(C',C)\longrightarrow\mathscr Hom_{\mathrm{top}}(\widetilde C',\widetilde C).
+\]
+
+\begin{SGAresult}{命题}{4.9.4}
+设 $E$ 是一个 $\mathcal U$-\Term{topos}{拓扑斯}，$C$ 是一个 $\mathcal U$-\Term{site}{景}；则将每个\Term{topos-morphism}{拓扑斯态射} $f:E\to\widetilde C$ 送到所关联\Term{inverse-image}{逆像}\Term{functor}{函子} $f^*:\widetilde C\to E$ 在 $C$ 上的“\Term{restriction}{限制}”的\Term{functor}{函子} $f\mapsto f^*|_C=f^*\circ\varepsilon_C$，诱导\Term{equivalence-of-categories}{范畴等价}
+\[
+ \mathscr Hom_{\mathrm{top}}(E,\widetilde C)\xrightarrow{\approx}\operatorname{Morsite}(E,C)\quad(\hookrightarrow\mathscr Hom(C,E)^\circ).
+\]
+\SourcePage{217}
+当\Term{finite}{有限} $\varprojlim$ 在 $C$ 中\Term{representable}{可表示}时，相应的\Term{fully-faithful-functor}{全忠实}\Term{functor}{函子}
+\[
+ \mathscr Hom_{\mathrm{top}}(E,\widetilde C)\longrightarrow\mathscr Hom(C,E)^\circ
+\]
+的\Term{essential-image}{本质像}是所有\Term{left-exact}{左正合}且\Term{continuous-functor}{连续}的\Term{functor}{函子} $g:C\to E$ 的\Term{set}{集合}，或\Term{equivalence}{等价}地，是所有\Term{left-exact}{左正合}并将\Term{covering-family}{覆盖族}变为\Term{covering-family}{覆盖族}的\Term{functor}{函子}的\Term{set}{集合}。
+\end{SGAresult}
+\begin{proof}
+最后一个断言由第一个断言及 4.9.2 得出。另一方面，由第 III 讲 1.2 iv) 和第 IV 讲 1.2 iii)，\Term{functor}{函子} $G\mapsto G\circ\varepsilon$ 诱导从 $\widetilde C$ 到 $E$ 的\Term{continuous-functor}{连续函子}\Term{category}{范畴}与从 $C$ 到 $E$ 的\Term{continuous-functor}{连续函子}\Term{category}{范畴}之间的\Term{equivalence}{等价}；采用该处记号，一个\Term{quasi-inverse-functor}{拟逆}\Term{functor}{函子}由 $g\mapsto g^s$ 得到。又由定义本身，$g$ 是\Term{morphism-sites}{景态射}当且仅当 $g^s$ 是与某个\Term{topos-morphism}{拓扑斯态射} $E\to\widetilde C$ 关联的\Term{inverse-image}{逆像}\Term{functor}{函子}，因而由 3.2.1 得到结论，其中的“或\Term{equivalence}{等价}地”来自第 III 讲 1.6。
+\end{proof}
+应特别记住 4.9.4 的如下内容：（当\Term{finite}{有限} $\varprojlim$ 在 $C$ 中\Term{representable}{可表示}时）给定一个\Term{topos-morphism}{拓扑斯态射} $f:E\to\widetilde C$，与给定一个\Term{left-exact}{左正合}并将\Term{covering-family}{覆盖族}变为\Term{covering-family}{覆盖族}的\Term{functor}{函子} $g:C\to E$，“是一回事”。
+
+\textbf{4.9.5.} 利用 4.9.1 和 4.9.3 的讨论，照例可以看出，对于通过刚才明确的\Term{morphism-sites}{景态射}及\Term{morphism-sites}{景态射}的\Term{morphism}{态射}概念而变化的 $\mathcal U$-\Term{site}{景} $C$，\Term{topos}{拓扑斯} $\widetilde C$ \Term{functor}{函子}地（更准确地，2-\Term{functor}{函子}地）依赖于\Term{site}{景} $C$。注意，由于所引入的术语，$\widetilde C$ \Term{covariant}{协变}地依赖于\Term{site}{景} $C$。
+
+\textbf{4.9.6.} 立即可见（与\Term{cocontinuous-functor}{余连续函子}概念的情形不同，参见 4.7.4），每个\Term{topos-morphism}{拓扑斯态射} $F:E\to E'$ 都能借助一个\Term{morphism-sites}{景态射} $f:C\to C'$（即一个\Term{continuous-functor}{连续函子} $f:C'\to C$，使得……）实现：只需分别取 $E,E'$ 中的小满\Term{generating-family}{生成子范畴} $C,C'$，赋予由 $E,E'$ 的\Term{topology}{拓扑}\Term{induced-topology}{诱导的拓扑}，使
+\[
+ F^*(\operatorname{ob}C')\subset\operatorname{ob}C,
+\]
+并以 $F^*$ 诱导的\Term{functor}{函子}作为 $f$。这解释了为何实践中遇到的多数\Term{topos-morphism}{拓扑斯态射}实际上都借助\Term{morphism-sites}{景态射}来描述（而不是像 4.7 那样借助\Term{cocontinuous-functor}{余连续函子}）。
+
+\textbf{4.10. 与\Term{topological-space}{拓扑空间} $X$ 关联的\Term{small-topos}{小拓扑斯}与\Term{big-topos}{大拓扑斯}之间的关系。} 采用 2.5 的记号。特别地，$\mathcal V$ 是满足 $\mathcal U\in\mathcal V$ 的\Term{universe}{宇宙}。我们不采用 2.1 的约定，而用 $\operatorname{Top}(X)$ 表示 $X$ 上 $\mathcal V$-\Term{sheaf}{层}（而非 $\mathcal U$-\Term{sheaf}{层}）的\Term{topos}{拓扑斯}。因而我们对 $\mathcal V$-\Term{topos}{拓扑斯}而非 $\mathcal U$-\Term{topos}{拓扑斯}进行论证。（注意，也可以保留 $\mathcal U$-\Term{topos}{拓扑斯}，
+\SourcePage{218}
+只需对 $\operatorname{TOP}(X)$ 的定义采用适当约定，使它成为一个 $\mathcal U$-\Term{topos}{拓扑斯}，参见 2.5。）现在，我们将定义\emph{两个}\Term{topos-morphism}{拓扑斯态射}
+\[
+ \begin{cases}
+ f:\operatorname{Top}(X)\longrightarrow\operatorname{TOP}(X),\\
+ g:\operatorname{TOP}(X)\longrightarrow\operatorname{Top}(X),
+ \end{cases}
+ \qquad gf\simeq\operatorname{id}_{\operatorname{Top}(X)},\tag{4.10.1}
+\]
+它们给出三个\Term{adjoint-functor}{伴随函子}的序列
+\[
+ g^*=f_!,\qquad g_*=f^*,\qquad g^!=f_*,\tag{4.10.1.1}
+\]
+记号如 3.1.3。我们依次定义这个序列的前两个\Term{functor}{函子}，再将第三个定义为第二个的\Term{right-adjoint}{右伴随}。
+
+\textbf{4.10.2.} \Term{functor}{函子}
+\[
+ g_*=f^*:\operatorname{TOP}(X)\longrightarrow\operatorname{Top}(X)
+\]
+直接定义为从 $(\mathrm{Esp})_{/X}$ 到 $X$ 的\Term{open-subset}{开集}\Term{site}{景} $\operatorname{Ouv}(X)$ 的\Term{restriction}{限制}\Term{functor}{函子}；由定义立即得知，它确实将\Term{sheaf}{层}变为\Term{sheaf}{层}。用带下划线的字母表示 $X$ 的\Term{big-site}{大景}上的\Term{sheaf}{层}；对这样的\Term{sheaf}{层} $\underline F$，以 $\underline F_X$ 表示它在\Term{site}{景} $\operatorname{Ouv}(X)$ 上的\Term{restriction}{限制}，从而得到\Term{functor}{函子}
+\[
+ \operatorname{Restr}:\underline F\longmapsto\underline F_X:\operatorname{TOP}(X)\longrightarrow\operatorname{Top}(X).\tag{4.10.2.1}
+\]
+显然，这个\Term{functor}{函子}与 $\mathcal V$-\Term{projective-limit}{投射极限}交换，因为后者逐个自变量计算（也可以引用下文 4.10.4 构造的\Term{left-adjoint}{左伴随}的存在性）。我断言它也与 $\mathcal V$-\Term{inductive-limit}{归纳极限}交换。为说明这一点，我们要把 $X$ 上的“大”\Term{sheaf}{层}，即 $\operatorname{TOP}(X)$ 的\Term{object}{对象}，用 $X$ 上\Term{topological-space}{拓扑空间} $X'$ 上的普通\Term{sheaf}{层}（注意这里是 $\mathcal V$-\Term{sheaf}{层}）给出一种很方便的解释。
+
+\textbf{4.10.3.} 对 $X$ 上的一个大\Term{sheaf}{层} $\underline F$，及每个 $X$ 上\Term{space}{空间} $X'$（默认 $X'\in\mathcal U$），如 4.10.2，以显然的方式定义“小”\Term{sheaf}{层} $\underline F_{X'}$，即 $\underline F$ 在 $X'$ 上的\Term{restriction}{限制}。若
+\[
+ u:X''\longrightarrow X'
+\]
+是 $(\mathrm{Esp})_{/X}$ 中的一个\Term{morphism}{态射}，则也以显然的方式定义一个\Term{morphism}{态射} $u_*(\underline F_{X''})\to\underline F_{X'}$，或\Term{equivalence}{等价}地，一个“\Term{transition-morphism}{转移态射}”
+\[
+ \varphi_u:u^*(\underline F_{X'})\longrightarrow\underline F_{X''}.\tag{4.10.3.1}
+\]
+对于 $(\mathrm{Esp})_{/X}$ 中\Term{morphism}{态射}的一个复合
+\[
+ X'''\xrightarrow{u}X''\xrightarrow{v}X',
+\]
+这些随 $u$ 变化的\Term{morphism}{态射}满足一个显然的\Term{transitivity}{传递性}条件，
+\SourcePage{219}
+其明确表述留给读者。如此得到一个自然\Term{functor}{函子}，从 $X$ 上大\Term{sheaf}{层}的\Term{category}{范畴} $\operatorname{TOP}(X)$ 到系统
+\[
+ (\underline F_{X'})\quad(X'\in\operatorname{ob}(\mathrm{Esp})_{/X}),\qquad(\varphi_u)\quad(u\in\operatorname{Fl}(\mathrm{Esp})_{/X})
+\]
+的\Term{category}{范畴}，这些系统满足所述\Term{transitivity}{传递性}条件，并且对每个为\Term{open-immersion}{开浸入}（或更一般地为\Term{etale}{平展}映射）的\Term{morphism}{态射} $u:X''\to X'$，\Term{transition-morphism}{转移态射} $\varphi_u$ 都是\Term{isomorphism}{同构}。由于用来描述 $\varphi_u$ 的\Term{functor}{函子} $u^*:\operatorname{Top}(X')\to\operatorname{Top}(X'')$ 与 $\mathcal V$-\Term{inductive-limit}{归纳极限}交换，立即得知，在上述用“小”\Term{sheaf}{层} $\underline F_{X'}$ 描述 $\operatorname{TOP}(X)$ \Term{object}{对象}的方式中，$\mathcal V$-\Term{inductive-limit}{归纳极限}逐个自变量计算，即形如 $\underline F\mapsto\underline F_{X'}$ 的\Term{functor}{函子}与 $\mathcal V$-\Term{inductive-limit}{归纳极限}交换。
+
+特别地，4.10.2 中考虑的\Term{functor}{函子} $\underline F\mapsto\underline F_X$ 也是如此。因此它确实有一个\Term{right-adjoint}{右伴随}（1.5）。剩下要构造它的\Term{left-adjoint}{左伴随}（其存在性其实由 1.8 先验可知），并验证后者\Term{left-exact}{左正合}。这将完成用\Term{functor}{函子}（4.10.1.1）定义先前所述\Term{topos-morphism}{拓扑斯态射}（4.10.1）的工作。
+
+\textbf{4.10.4.} \Term{functor}{函子}
+\[
+ g^*=f_!:\operatorname{Top}(X)\longrightarrow\operatorname{TOP}(X)
+\]
+按如下方式得到：把 $X$ 上的每个小\Term{sheaf}{层} $F$，送到它对\Term{structural-morphism}{结构态射} $X'\to X$ 的\Term{inverse-image}{逆像}系统 $(F_{X'})$，$X'\in\operatorname{ob}(\mathrm{Esp})_{/X}$；对 $u:X''\to X'$，\Term{transition-morphism}{转移态射} $\varphi_u$ 取为\Term{sheaf}{层}的\Term{inverse-image}{逆像}的传递\Term{isomorphism}{同构}（4.1.1）。立即看出，这样得到一个\Term{fully-faithful-functor}{全忠实}\Term{functor}{函子}
+\[
+ \operatorname{Prol}:\operatorname{Top}(X)\longrightarrow\operatorname{TOP}(X),
+\]
+其\Term{essential-image}{本质像}由 $X$ 上那些使 4.11.3 的全部传递\Term{morphism}{态射} $\varphi_u$ 都是\Term{isomorphism}{同构}的大\Term{sheaf}{层} $\underline F$ 组成。我们把定义这个\Term{canonical-extension}{典范延拓}\Term{functor}{函子}与 4.10.2 的\Term{restriction}{限制}\Term{functor}{函子}之间的\Term{adjunction-isomorphism}{伴随同构}留给读者，以证明后者为前者的\Term{right-adjoint}{右伴随}。用 4.10.3 对\Term{category}{范畴} $\operatorname{TOP}(X)$ 的描述，这是直接的。
+
+\textbf{注记 4.10.5。} a) 构造 4.10.4 同时表明，$g^*=f_!$ \Term{fully-faithful-functor}{全忠实}（或\Term{equivalence}{等价}地，$g_*=f^*$ 是到一个\Term{category-of-fractions}{分式范畴}的过渡\Term{functor}{函子}，或者又\Term{equivalence}{等价}地，$g^!=f_*$ \Term{fully-faithful-functor}{全忠实}）。属于\Term{functor}{函子} $g^*=f_!=\operatorname{Prol}$ 的\Term{essential-image}{本质像}的 $X$ 上大\Term{sheaf}{层}，适宜称为 $X$ 上的\Term{etale-big-sheaf}{平展大层}，因为它们组成的\Term{equivalence-of-categories}{范畴等价}于 $X$ 上普通\Term{sheaf}{层}的\Term{category}{范畴}，或者说\Term{equivalence}{等价}于 $X$ 上\Term{etale-space}{平展空间}的\Term{category}{范畴}。此外容易看出，若 $X'$ 是 $X$ 上的一个\Term{topological-space}{拓扑空间}，
+\SourcePage{220}
+则它表示的 $X$ 上大\Term{sheaf}{层}在上述意义下\Term{etale}{平展}，当且仅当 $X'$ 是 $X$ 上的\Term{etale-space}{平展空间}。
+
+ b) $f_*$ 的\Term{fully-faithful-functor}{全忠实}性还可以表述为\Term{adjunction-morphism}{伴随态射} $f^*f_*\to\operatorname{id}_{\operatorname{Top}(X)}$ 是\Term{isomorphism}{同构}，即 $g_*f_*\simeq\operatorname{id}$，也即 $gf\simeq\operatorname{id}$。这样 $g$ 使 $\operatorname{TOP}(X)$ 成为 $\operatorname{Top}(X)$ 上的一个\Term{topos}{拓扑斯}，它在 $\operatorname{Top}(X)$ 上有一个“\Term{section}{截面}”$f$。
+
+ c) \Term{functor}{函子} $g^*=f_!$ \Term{fully-faithful-functor}{全忠实}、\Term{exact}{正合}并与 $\mathcal V$-\Term{inductive-limit}{归纳极限}交换，这部分地说明了如下很方便的观点（归于 J. Giraud）的合理性：在 $X$ 上\Term{sheaf}{层}论几乎所有问题中，用所关联的“大”\Term{sheaf}{层}代替通常的或“小”\Term{sheaf}{层}都是无害的。特别地，\Term{cohomology}{上同调}问题也是如此，因为 $g_*$ \Term{exact}{正合}，\Term{functor}{函子} $R^ig_*$（第 V 讲）对 $i>0$ 为零，因而（第 V 讲）对于 $X$ 上每个大\Term{sheaf}{层} $\underline F$，有\Term{canonical-isomorphism}{典范同构}
+\[
+ H^i(\operatorname{TOP}(X),\underline F)\simeq H^i(\operatorname{Top}(X),\underline F_X)=H^i(X,F).
+\]
+将其应用于形如 $\operatorname{Prol}(F)$ 的\Term{sheaf}{层}，其中 $F$ 是 $X$ 上的小\Term{sheaf}{层}，由 $\operatorname{Prol}(F)_X\simeq F$ 是\Term{canonical}{典范}的，得到\Term{canonical-isomorphism}{典范同构}
+\[
+ H^i(X,F)=H^i(\operatorname{TOP}(X),\operatorname{Prol}(F)).
+\]
+因此，通过 $X$ 的\Term{small-topos}{小拓扑斯}或\Term{big-topos}{大拓扑斯}计算的 $X$ 的\Term{cohomology}{上同调}\Term{invariants}{不变量}，在本质上相同。此外，同一结果对非交换\Term{cohomology}{上同调}也成立。
+
+\begin{SGAresult}{练习}{4.10.6}
+设 $S$ 是\Term{topology}{拓扑}不比\Term{canonical-topology}{典范拓扑}更细的一个 $\mathcal U$-\Term{site}{景}，$M$ 是 $\operatorname{Fl}S$ 的一个\Term{subset}{子集}，满足下列条件：
+
+ a) $M$ 的\Term{morphism}{态射}是\Term{quarrable-morphism}{可作基变换的}（第 I 讲 10.3），且 $M$ 对\Term{base-change}{基变换}\Term{stable}{稳定}。
+
+ b) $M$ 包含恒等\Term{arrow}{箭头}，并对复合\Term{stable}{稳定}。
+
+ c) 若一个\Term{arrow}{箭头} $u:X\to Y$ 满足：存在\Term{covering-family}{覆盖族} $Y_i\to Y$，使 $X\times_Y Y_i\to Y_i$ 属于 $M$，则 $u$ 自身也属于 $M$。
+
+ d) 对每个 $X\in\operatorname{ob}S$，$X$ 的每个\Term{covering-family}{覆盖族}都被一个\Term{covering-family}{覆盖族} $(f_i:X_i\to X)$ 细化，其中 $f_i\in M$。
+
+对每个 $X\in\operatorname{ob}S$，考虑\Term{site}{景} $S(X)$（“$X$ 的\Term{small-site}{小景}”），其底层\Term{category}{范畴}是 $S_{/X}$ 中由\Term{structural-morphism}{结构态射}属于 $M$ 的\Term{object}{对象}组成的\Term{full-subcategory}{满子范畴}，赋予由 $S$ 的\Term{topology}{拓扑}\Term{induced-topology}{诱导的拓扑}（第 III 讲 3.1）。
+
+ 1$^\circ$) 对 $S$ 的每个\Term{arrow}{箭头} $u:X\to Y$，证明从 $S(Y)$ 到 $S(X)$ 的通过 $u$ 的\Term{base-change}{基变换}是一个\Term{continuous-functor}{连续函子}，因而得到一个与\Term{inductive-limit}{归纳极限}交换的\Term{functor}{函子}（第 III 讲）
+\[
+ S(u)^x:S(Y)^\sim\longrightarrow S(X)^\sim.
+\]
+
+ 2$^\circ$) 定义\Term{topos}{拓扑斯} $S^\sim$ 与系统
+\[
+ (F_X)\quad(X\in\operatorname{ob}S),\qquad(\varphi_u)\quad(u\in\operatorname{Fl}S)
+\]
+\SourcePage{221}
+的\Term{category}{范畴}之间的一个\Term{equivalence}{等价}，这些系统由\Term{object}{对象} $F_X\in\operatorname{ob}S(X)^\sim$ 以及对 $S$ 的每个\Term{arrow}{箭头} $u:X\to Y$ 的一个\Term{morphism}{态射} $\varphi_u:S(u)^x(F_Y)\to F_X$ 组成；这些系统须满足对 $S$ 中\Term{arrow}{箭头}复合 $v\circ u$ 的\Term{transitivity}{传递性}条件，并满足条件：$u\in M$ 蕴涵 $\varphi_u$ 是\Term{isomorphism}{同构}。
+
+ 3$^\circ$) 定义“\Term{restriction}{限制}”与“延拓”\Term{functor}{函子}
+\[
+ \operatorname{Res}_X:(S_{/X})^\sim\longrightarrow S(X)^\sim,\qquad
+ \operatorname{Prol}_X:S(X)^\sim\longrightarrow(S_{/X})^\sim.
+\]
+证明 $\operatorname{Res}_X$ 与小\Term{inductive-limit}{归纳极限}及\Term{projective-limit}{投射极限}交换，$\operatorname{Prol}_X$ \Term{fully-faithful-functor}{全忠实}，其\Term{essential-image}{本质像}由对于 $S_{/X}$ 的每个\Term{arrow}{箭头} $u$，$\varphi_u$ 都是\Term{isomorphism}{同构}的\Term{sheaf}{层} $F$ 组成。
+
+ 4$^\circ$) 定义一个\Term{adjunction-morphism}{伴随态射}，使 $\operatorname{Res}_X$ 成为 $\operatorname{Prol}_X$ 的\Term{right-adjoint}{右伴随}。由此得出存在一个\Term{topos-morphism}{拓扑斯态射}
+\[
+ f:S(X)^\sim\longrightarrow(S_{/X})^\sim,
+\]
+使 $S(X)^\sim$ 成为 $(S_{/X})^\sim$ 的一个\Term{subtopos}{子拓扑斯}，并且
+\[
+ f_!=\operatorname{Prol}_X,\qquad f^x=\operatorname{Res}_X.
+\]
+证明 $\operatorname{Prol}_X$ 将阿贝尔\Term{sheaf}{层}变为阿贝尔\Term{sheaf}{层}。
+
+ 5$^\circ$) 证明若 $S(X)$ 有\Term{fiber-product}{纤维积}，则 $\operatorname{Prol}_X$ \Term{exact}{正合}。由此推得，此时存在一个\Term{topos-morphism}{拓扑斯态射} $g:(S_{/X})^\sim\to S(X)^\sim$，它是 $f$ 的左收缩，即满足
+\[
+ g^x=\operatorname{Prol}_X,\qquad g_x=\operatorname{Res}_X.
+\]
+（关于 $S(X)$ 没有\Term{fiber-product}{纤维积}的例子，可取 $S$ 为配备\Term{etale-topology}{平展拓扑}的\Term{scheme}{概形}\Term{category}{范畴}，$M$ 为\Term{smooth-morphism}{光滑态射}，$X$ 为\Term{dimension}{维数} $>0$ 的\Term{noetherian}{诺特}\Term{scheme}{概形}。）
+
+ 6$^\circ$) 证明对于 $(S_{/X})^\sim$ 的每个阿贝尔\Term{sheaf}{层} $F$，有\Term{isomorphism}{同构}
+\[
+ H^q(X,F)\simeq H^q(X,\operatorname{Res}_X F)\qquad\forall q.
+\]
+例如利用\Term{hypercovering}{超覆盖}，证明对于 $S(X)^\sim$ 的每个阿贝尔\Term{sheaf}{层} $G$，有\Term{isomorphism}{同构}
+\[
+ H^q(X,G)\simeq H^q(X,\operatorname{Prol}_X G)\qquad\forall q.
+\]
+
+ 7$^\circ$) 给撰稿人买一枚巧克力奖章。
+\end{SGAresult}

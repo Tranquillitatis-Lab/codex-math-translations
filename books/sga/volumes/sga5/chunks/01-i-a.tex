@@ -1,0 +1,456 @@
+\SGAchapter{I}{对偶化复形}{Complexes dualisants}
+\begin{center}A.~Grothendieck\\（L.~Illusie 整理）\end{center}
+\SourcePage{13}
+\textbf{引言}
+
+本讲讨论\Term{biduality}{双对偶定理}在\Term{etale-cohomology}{平展上同调}中的\Term{form}{形式}。这里以及 SGA A 第 XVIII 讲（SGA A 即 SGA 4）所发展的理论，是关于\Term{prescheme}{预概形}上\Term{etale}{平展}\Term{topology}{拓扑}中的\Term{constructible}{可构造}\Term{torsion-sheaf}{挠层}的理论；它在\Term{form}{形式}上与 Hartshorne [H] 中关于 Zariski \Term{topology}{拓扑}及\Term{coherent-sheaf}{凝聚层}的理论十分相似，后者在很大程度上充当了它的范本。不过，对于“\Term{continuous}{连续}”系数，\Term{dualizing-complex}{对偶化复形}的存在性并无困难；对于“\Term{discrete}{离散}”系数，存在性的证明则精细得多，而且似乎实质上需要\Term{resolution-of-singularities}{奇点消解}。但也请参阅 Deligne 的\Term{biduality}{双对偶定理}（SGA $4\frac12$，Th. finitude 4.3）。
+
+第 1 节给出\Term{dualizing-complex}{对偶化复形}的定义及其\Term{form}{形式}性质，特别是把\Term{dualizing-functor}{对偶化函子}解释为“\Term{functor}{函子}的交换器”。
+
+第 2 节证明：在\Term{connected}{连通}的\Term{locally-noetherian}{局部诺特}\Term{prescheme}{预概形}上，\Term{dualizing-complex}{对偶化复形}在\Term{degree}{次数}\Term{translation}{平移}以及与\Term{invertible-sheaf}{可逆}层作\Term{tensor-product}{张量积}的意义下唯一确定。
+
+\SourcePage{14}
+第 3 节进入本讲的\Term{center}{中心}\Term{theorem}{定理}（3.4.1）：它断言，在一个“良好”的\Term{regular}{正则}\Term{prescheme}{预概形} $X$ 上，例如在\Term{characteristic}{特征}为零的\Term{excellent}{优秀}\Term{noetherian}{诺特}\Term{regular}{正则}\Term{prescheme}{预概形}上\footnote[1]{一旦对这些\Term{prescheme}{预概形}有了 Hironaka 式的\Term{resolution-of-singularities}{奇点消解}以及“\Term{purity-theorem}{纯性定理}”，最后这个\Term{restriction}{限制}便不再需要。}，\Term{complex}{复形} $(\mathbf Z/n\mathbf Z)_X$ 是\Term{dualizing-complex}{对偶化复形}。
+
+第 4 节把这一理论应用于\Term{local-duality}{局部对偶}\Term{theorem}{定理}。该\Term{theorem}{定理}说，设“良好”的\Term{prescheme}{预概形} $X$ 带有\Term{closed-point}{闭点} $x$，其\Term{residue-field}{剩余域}\Term{separably-closed}{可分闭}；则对一个\Term{constructible-sheaf}{可构造层} $F$，$\mathcal H^i(F')_x$ 与 $H_x^{-i}(F)$ 之间有\Term{perfect-pairing}{完美配对}，其中 $F'$ 是 $F$ 的\Term{duality}{对偶}，即 $F'=\mathrm R\mathcal Hom(F,K_X)$，$K_X$ 是一个\Term{dualizing-complex}{对偶化复形}。
+
+最后，第 5 节直接证明：在一维\Term{regular}{正则}\Term{prescheme}{预概形}上，\Term{complex}{复形} $(\mathbf Z/n\mathbf Z)_X$ 是\Term{dualizing-complex}{对偶化复形}（这里 $n$ 与各\Term{residue-characteristic}{剩余特征}互素）。
+
+\SourcePage{15}
+\SGAsection{1}{对偶化复形的定义及形式性质}
+固定系数环 $A=\mathbf Z/n\mathbf Z$。若 $X$ 是一个\Term{prescheme}{预概形}，以 $A_X$ 表示 $X_{\text{ét}}$ 上取值为 $A$ 的\Term{constant-sheaf}{常值层}，以 $D(X)$ 表示 $A_X$ \Term{module-category}{模范畴}的\Term{derived-category}{导出范畴}。另以 $D_c(X)$ 表示 $D(X)$ 的一个\Term{full-triangulated-subcategory}{满三角子范畴}，其\Term{object}{对象}是所有满足如下条件的\Term{complex}{复形} $F$：对每个 $i$，$\mathcal H^i(F)$ 都是\Term{constructible}{可构造} $A_X$ 模。置
+\[
+ D_c^*(X)=D^*(X)\cap D_c(X),\qquad *=\varnothing,+,-,\text{ 或 }b.
+\]
+\begin{SGAresult}{定义}{1.1}
+称 $A_X$ 模 $I$ 是\Term{quasi-injective}{拟内射}的，如果对每个\Term{constructible}{可构造} $A_X$ 模 $F$ 以及每个 $i>0$，都有
+\[
+ \mathcal Ext^i(F,I)=0.
+\]
+\end{SGAresult}
+\textbf{注记 1.2。}a) 与“\Term{continuous}{连续}”系数的情形不同（参见 [H] II.7.17），\Term{quasi-injective}{拟内射}层一般并不\Term{injective}{内射}。例如，取 $X=\operatorname{Spec}(\mathbf R)$、$A=\mathbf Z/2\mathbf Z$：层 $A_X$ 是\Term{quasi-injective}{拟内射}的，却不是\Term{injective}{内射}的，甚至没有\Term{finite}{有限}\Term{injective-dimension}{内射维数}，因为
+\[
+ H^*(X;A_X)=H^*(\mathbf Z/2\mathbf Z;\mathbf Z/2\mathbf Z)
+\]
+是由一个一次\Term{generator}{生成元}生成的\Term{polynomial-algebra}{多项式代数}。
+
+b) 设 $I$ 是\Term{quasi-injective}{拟内射} $A_X$ 模。对于\Term{constructible}{可构造}的 $F$ 成立的关系 $\mathcal Ext^i(F,I)=0$（$i>0$），一般并不对所有 $F$ 成立。事实上，取 $A=\mathbf F_\ell$。设 $k$ 是一个域，$\bar k$ 是 $k$ 的一个\Term{separably-closed}{可分闭}包，$f:\bar x=\operatorname{Spec}(\bar k)\longrightarrow X=\operatorname{Spec}(k)$ 是\Term{canonical-morphism}{典范态射}，并假设对每个\Term{connected}{连通}\Term{etale}{平展}\Term{covering}{覆盖} $X'\longrightarrow X$，都存在\Term{connected}{连通}\Term{etale}{平展}\Term{covering}{覆盖} $X''\longrightarrow X'$，使得 $[X'':X']$ 被 $\ell$ 整除（例如可取 $k=\mathbf Q$）。考虑如下\Term{exact-sequence}{正合列}：
+\SourcePage{16}
+\[
+ 0\longrightarrow A_X\xrightarrow{\varepsilon}f_*f^*A_X\longrightarrow F\longrightarrow0.\tag{*}
+\]
+它由\Term{adjoint}{伴随箭头} $\varepsilon$ 定义。由假设，$(*)$ 定义的 $\mathcal Ext^1(F,A_X)$ 的\Term{section}{截面}，在 $X$ 上任何\Term{etale}{平展}的 $U$ 上都不消失，因而 $\mathcal Ext^1(F,A_X)_{\bar x}\ne0$。另一方面，容易验证 $A_X$ 是\Term{quasi-injective}{拟内射}的。
+
+\begin{SGAresult}{命题}{1.3}
+（参见 [H] I.7.6。）设 $X$ 是\Term{prescheme}{预概形}，$N\in\mathbf Z$。对于 $K\in\operatorname{ob}D^+(X)$，下列条件\Term{equivalence}{等价}：
+
+(i) $K$ 在 $D(X)$ 中\Term{isomorphism}{同构}于一个\Term{degree}{次数}\Term{bounded}{有界}的\Term{complex}{复形} $I$，其中每个 $I^i$ 都是\Term{quasi-injective}{拟内射}的，且 $i>N$ 时 $I^i=0$；
+
+(ii) 对每个满足 $i<0$ 时 $\mathcal H^i(F)=0$ 的 $F\in\operatorname{ob}D_c^b(X)$，当 $i>N$ 时有 $\mathcal Ext^i(F,K)=0$；
+
+(iii) 对每个\Term{constructible}{可构造} $A_X$ 模 $F$，当 $i>N$ 时有 $\mathcal Ext^i(F,K)=0$。
+\end{SGAresult}
+\begin{proof}
+(i)$\Rightarrow$(ii)。设 $F\in\operatorname{ob}D_c^b(X)$ 满足 $i<0$ 时 $\mathcal H^i(F)=0$；又设 $I\in\operatorname{ob}D^+(X)$ \Term{degree}{次数}\Term{bounded}{有界}，每个 $I^i$ 都\Term{quasi-injective}{拟内射}，且 $i>N$ 时 $I^i=0$。我们证明 $i>N$ 时 $\mathcal Ext^i(F,I)=0$。对满足 $I^i\ne0$ 的指标 $i$ 的个数作归纳，借助\Term{resolution}{分解}归结到 $N=0$、$I$ 仅集中在\Term{degree}{次数} $0$ 的情形。这时有\Term{biregular-spectral-sequence}{双正则谱序列}
+\[
+ E_2^{pq}=\mathcal Ext^p(\mathcal H^{-q}(F),I)\Longrightarrow\mathcal Ext^*(F,I).
+\]
+由于 $I$ \Term{quasi-injective}{拟内射}，对于所有 $q$ 以及所有 $p>0$ 都有 $E_2^{pq}=0$，因此
+\[
+ E_2^{0i}=\mathcal Hom(\mathcal H^{-i}(F),I)\xrightarrow{\sim}\mathcal Ext^i(F,I),
+\]
+由此得到结论。
+
+(ii)$\Rightarrow$(iii) 显然。
+
+(iii)$\Rightarrow$(i)。可假设 $K$ 的\Term{degree}{次数}\Term{bounded-below}{下有界}，且各\Term{set-component}{分量}\Term{injective}{内射}。
+\SourcePage{17}
+把假设应用于 $F=A_X$，得到 $i>N$ 时 $\mathcal H^i(K)=0$。因此可将 $K$ 换成一个与其\Term{isomorphism}{同构}的\Term{complex}{复形} $K'$，它\Term{degree}{次数}\Term{bounded}{有界}，$i<N$ 时 $K'^i$ \Term{injective}{内射}，$i>N$ 时 $K'^i=0$。随后可见 $K'^N$ \Term{quasi-injective}{拟内射}，证明完成。
+\end{proof}
+\textbf{注记 1.3.1。}整理者不知道：若将条件 (ii) 中的假设“$F\in\operatorname{ob}D_c^b(X)$”换成“$F\in\operatorname{ob}D_c^+(X)$”，(1.3) 是否仍然成立。
+
+\begin{SGAresult}{定义}{1.4}
+称满足 (1.3) 的\Term{equivalence}{等价}条件的整数 $N$ 在 $\overline{\mathbf R}$ 中的\Term{infimum}{下确界}为 $K$ 的\Term{quasi-injective-dimension}{拟内射维数}，记为 $\operatorname{dim.q.inj}(K)$。
+\end{SGAresult}
+若 $K$ 的\Term{quasi-injective-dimension}{拟内射维数}\Term{finite}{有限}，则\Term{functor}{函子}
+\[
+ \mathrm R\mathcal Hom(\ ,K):D(X)\longrightarrow D(X)
+\]
+诱导\Term{functor}{函子} $D_c^b(X)^\circ\longrightarrow D^b(X)$。
+
+下文将看到，若 $X$ 是域 $k$ 上\Term{dimension}{维数}为 $d$ 的\Term{smooth}{光滑}\Term{prescheme}{预概形}，且 $n$ 与 $k$ 的\Term{characteristic}{特征}互素，则 $\operatorname{dim.q.inj}(A_X)=2d$。(1.2 a)) 的例子说明：\Term{quasi-injective-dimension}{拟内射维数}\Term{finite}{有限}的\Term{complex}{复形}未必有\Term{finite}{有限}\Term{injective-dimension}{内射维数}。不过有：
+
+\begin{SGAresult}{命题}{1.5}
+设 $X$ 是\Term{locally-noetherian}{局部诺特}\Term{prescheme}{预概形}，$K\in\operatorname{ob}D^+(X)$。假设存在整数 $N$，使得 $\operatorname{cd}_{\mathbb L}(X)\le N$，其中 $\mathbb L$ 是 $n$ 的素因\Term{subset}{子集}合（记号见 SGA A X 1）。那么，对 $N'\in\mathbf Z$，有
+\[
+ \operatorname{dim.q.inj}(K)\le N'\quad\Longrightarrow\quad
+ \operatorname{dim.inj}(K)\le N+N'.
+\]
+\end{SGAresult}
+证明中将使用如下\Term{lemma}{引理}。
+
+\SourcePage{18}
+\begin{SGAresult}{\Term{lemma}{引理}}{1.5.1}
+设 $C$ 是满足 (AB5) 且具有\Term{family-of-generators}{生成元族} $(U_i)_{i\in I}$ 的\Term{abelian-category}{阿贝尔范畴}。设 $K\in\operatorname{ob}D^+(C)$、$N\in\mathbf Z$。下列条件\Term{equivalence}{等价}：
+
+(i) $\operatorname{dim.inj}(K)\le N$；
+
+(ii) 对每个 $i\in I$ 以及 $U_i$ 的每个\Term{quotient-object}{商对象} $F$，当 $n>N$ 时都有
+\[
+ \operatorname{Ext}^n(F,K)=0.
+\]
+\end{SGAresult}
+\begin{proof}
+只需证明 (ii)$\Rightarrow$(i)。利用一个熟知的论证（例如参见 [H] I.7.6），可归结为证明：若 $K'\in\operatorname{ob}(C)$ 满足，只要 $F$ 是某个 $U_i$ 的\Term{quotient-object}{商对象}便有 $\operatorname{Ext}^1(F,K')=0$，则 $K'$ \Term{injective}{内射}。换言之，需要证明：若从任意 $U_i$ 的任意\Term{subobject}{子对象} $V$ 到 $K'$ 的每个\Term{morphism}{态射}都可延拓到 $U_i$，则 $K'$ \Term{injective}{内射}。这立刻由 (Tohoku) 第 136 页\Term{lemma}{引理} 1 的证明得到。
+\end{proof}
+\begin{proof}[命题 1.5 的证明]
+假设 $\operatorname{dim.q.inj}(K)\le N'$，来证明 $\operatorname{dim.inj}(K)\le N+N'$。$A_X$ \Term{module-category}{模范畴}以 $A_{U,X}$ 为\Term{generator}{生成元}，其中 $U$ 在 $X$ 上\Term{etale}{平展}且为\Term{finite-type}{有限型}。因此，由 (1.5.1)，只需证明当 $F$ 是某个这样的 $A_{U,X}$ 的商，因而\Term{constructible}{可构造}时（SGA A IX 2.9），对 $i>N+N'$ 有 $\operatorname{Ext}^i(X;F,K)=0$。考虑\Term{spectral-sequence}{谱序列}
+\[
+ E_2^{pq}=H^p(X;\mathcal Ext^q(F,K))\Longrightarrow\operatorname{Ext}^*(X;F,K).
+\]
+假设 $\operatorname{cd}_{\mathbb L}(X)\le N$（分别为 $\operatorname{dim.q.inj}(K)\le N'$）蕴涵 $p>N$（分别为 $q>N'$）时 $E_2^{pq}=0$。所以 $p+q>N+N'$ 时 $E_2^{pq}=0$，结论随之得到。
+\end{proof}
+
+\SourcePage{19}
+\textbf{注记 1.5.2。}若 $X$ 是\Term{separably-closed}{可分闭}域 $k$ 上的\Term{finite-type}{有限型} $d$ 维\Term{prescheme}{预概形}，且 $n$ 与 $\operatorname{car}(k)$ 互素，则 (1.5) 的假设成立，可取 $N=2d$（SGA A X 4）。
+
+\begin{SGAresult}{命题}{1.6}
+设 $f:X\longrightarrow Y$ 是\Term{noetherian}{诺特}\Term{prescheme}{预概形}之间的\Term{quasi-finite}{拟有限}\Term{separated-morphism}{分离态射}，$K\in\operatorname{ob}D^+(Y)$。那么，对 $N\in\mathbf Z$，有
+\[
+ \operatorname{dim.q.inj}(K)\le N\quad\Longrightarrow\quad
+ \operatorname{dim.q.inj}(\mathrm R^!f(K))\le N.
+\]
+\end{SGAresult}
+\begin{proof}
+由“主\Term{theorem}{定理}”（EGA IV 8.12.6），$f$ \Term{decomposable}{可分解}为 $f=uf'$，其中 $f'$ 是\Term{open-immersion}{开浸入}，$u$ 是\Term{finite-morphism}{有限态射}。有 $\mathrm R^!f=\mathrm R^!f'\,\mathrm R^!u$，因而归结为分别考察\Term{open-immersion}{开浸入}和\Term{finite-morphism}{有限态射}。若 $f$ 是\Term{open-immersion}{开浸入}，断言显然（因为 $X$ 上的每个\Term{constructible-sheaf}{可构造层}都由 $Y$ 上的一个\Term{constructible-sheaf}{可构造层}诱导）。因此设 $f$ 是\Term{finite-morphism}{有限态射}，$F$ 是\Term{constructible}{可构造} $A_X$ 模。这时有\Term{duality-isomorphism}{对偶同构}（SGA A XVIII 3.1.9.6）
+\[
+ f_*\mathcal Ext^i(F,\mathrm R^!f(K))\xrightarrow{\sim}\mathcal Ext^i(f_*F,K).
+\]
+由于 $f_*(F)$ \Term{constructible}{可构造}（SGA A IX 2.14），可知若 $\operatorname{dim.q.inj}(K)\le N$，则 $i>N$ 时 $f_*\mathcal Ext^i(F,\mathrm R^!f(K))=0$，从而 $\mathcal Ext^i(F,\mathrm R^!f(K))=0$（SGA A VIII 5.5），证毕。
+\end{proof}
+现在设 $X$ 是\Term{prescheme}{预概形}，$K\in\operatorname{ob}D^+(X)$。以 $\mathbf D_K$ 表示\Term{functor}{函子} $\mathrm R\mathcal Hom(\ ,K)$。我们要对 $F\in\operatorname{ob}D(X)$ 定义一个\Term{functorial}{函子性}的\Term{homomorphism}{同态}
+\[
+ F\longrightarrow\mathbf D_K\mathbf D_KF
+\]
+（参见 [H] V.1.2）。下述构造更一般地对\Term{ringed-topos}{环化拓扑斯}也适用。首先可假设 $K$ 由\Term{injective-object}{内射对象}组成，
+\SourcePage{20}
+于是可以“去掉 $\mathrm R$”。\Term{identity-morphism}{恒等态射} $\mathcal Hom(F,K)\longrightarrow\mathcal Hom(F,K)$ 经由 Cartan 所钟爱的公式定义\Term{homomorphism}{同态} $F\otimes\mathcal Hom(F,K)\longrightarrow K$；再次应用该公式，得到\Term{homomorphism}{同态}
+\[
+ F\longrightarrow\mathcal Hom(\mathcal Hom(F,K),K),
+\]
+这就是所说的\Term{homomorphism}{同态}，称为\Term{canonical-homomorphism}{典范同态}。若\Term{canonical-homomorphism}{典范同态} $F\longrightarrow\mathbf D_K\mathbf D_KF$ 是\Term{isomorphism}{同构}，就称二元组 $(F,K)$ 是\Term{bidualizing-pair}{双对偶化的}，或满足\Term{biduality}{双对偶性}；也称 $F$ 相对于 $K$ 是\Term{reflexive}{自反的}。
+
+\textbf{从现在起，除非明确另有说明，所考虑的全部\Term{prescheme}{预概形}均假设为\Term{locally-noetherian}{局部诺特}的。}
+
+\begin{SGAresult}{定义}{1.7}
+设 $X$ 是\Term{prescheme}{预概形}。称\Term{complex}{复形} $K\in\operatorname{ob}D^+(X)$ 是\Term{dualizing-complex}{对偶化}的，如果下列条件成立：
+
+(i) $K$ 的\Term{quasi-injective-dimension}{拟内射维数}\Term{finite}{有限}；
+
+(ii) 对每个 $F\in\operatorname{ob}D_c^-(X)$，有 $\mathbf D_K(F)\in\operatorname{ob}D_c^+(X)$；
+
+(iii) 每个 $F\in\operatorname{ob}D_c^b(X)$ 都相对于 $K$ \Term{reflexive}{自反}。
+\end{SGAresult}
+\textbf{注记 1.8。}a) 通过标准的\Term{devissage}{分解论证}（\Term{truncation}{截断} $F$，并利用 $D_c(X)$ 是\Term{triangulated-category}{三角范畴}），可见条件 (ii) \Term{equivalence}{等价}于
+
+(ii bis)：对每个\Term{constructible}{可构造} $A_X$ 模 $F$ 和每个 $i\in\mathbf Z$，$\mathcal Ext^i(F,K)$ 都\Term{constructible}{可构造}。
+
+b) 条件 (ii bis) 蕴涵 $K\in\operatorname{ob}D_c^+(X)$。与\Term{coherent-sheaf}{凝聚层}的例子不同（EGA $0_{\mathrm{III}}$ 12.3.3），其逆命题也许并不自动成立。不过在“良好”的情形它确实成立（见第 3 节），例如当 $X$ 上存在\Term{resolution-of-singularities}{奇点消解}及\Term{purity-theorem}{纯性定理}时，
+\SourcePage{21}
+特别当 $X$ 是\Term{characteristic}{特征}为零的\Term{excellent}{优秀}\Term{prescheme}{预概形}时。
+
+c) 对 $F$ 作\Term{resolution}{分解}，可见条件 (iii) \Term{equivalence}{等价}于 (iii bis)：每个\Term{constructible}{可构造} $A_X$ 模 $F$ 都相对于 $K$ \Term{reflexive}{自反}。
+
+d) 若 $K\in\operatorname{ob}D^+(X)$ 满足 (i) 和 (ii)（分别地，若 $K$ \Term{dualizing}{对偶化}），则\Term{functor}{函子} $\mathbf D_K$ 诱导\Term{functor}{函子}（分别地，\Term{category-equivalence}{范畴等价}）$(D_c^b(X))^\circ\longrightarrow D_c^b(X)$。
+
+e) 若 $K\in\operatorname{ob}D^+(X)$ 的\Term{injective-dimension}{内射维数}\Term{finite}{有限}（参见 1.5.2）并满足 (ii)，则对每个 $F\in\operatorname{ob}D_c(X)$ 都有 $\mathbf D_K(F)\in D_c(X)$，而且 $\mathbf D_K$ 诱导\Term{functor}{函子} $(D_c^+(X))^\circ\longrightarrow D_c^-(X)$。若此外 $K$ \Term{dualizing}{对偶化}，则每个 $F\in\operatorname{ob}D_c(X)$ 都相对于 $K$ \Term{reflexive}{自反}，且 $\mathbf D_K$ 诱导\Term{category-equivalence}{范畴等价}
+\[
+ (D_c(X))^\circ\xrightarrow{\sim}D_c(X),\qquad
+ (D_c^-(X))^\circ\xrightarrow{\sim}D_c^+(X),\qquad
+ (D_c^+(X))^\circ\xrightarrow{\sim}D_c^-(X).
+\]
+若不要求 $K$ 的\Term{injective-dimension}{内射维数}\Term{finite}{有限}，这一结论是否仍然成立，目前尚不清楚。
+
+现在来讨论“交换公式”。
+
+我们不再重述\Term{complex}{复形}的 \Term{tor-dimension}{Tor 维数}的概念（SGA A XVII 4.1.9）\begingroup\renewcommand{\thefootnote}{*}\footnote{也参见 SGA 6 I 5。}\endgroup 。只需记住：若 $X$ 是\Term{prescheme}{预概形}，$G\in\operatorname{ob}D^-(X)$，则对所有 $A_X$ 模 $F$，在 $i>N$ 时有 $\mathcal Tor_i(F,G)=0$，\Term{equivalence}{等价}于只对\Term{constructible}{可构造}的 $F$ 要求同一条件（由 SGA A IX 2.9 及 $\mathbin{\overset{\mathrm L}{\otimes}}$ 与\Term{inductive-limit}{归纳极限}可交换）。因此无需引入“拟 \Term{tor-dimension}{Tor 维数}”的概念！
+
+\SourcePage{22}
+\begin{SGAresult}{\Term{lemma}{引理}}{1.9}
+（参见 [H] II 4.3。）a) 设 $X$ 是\Term{prescheme}{预概形}，$F\in\operatorname{ob}D_c(X)$、$G\in\operatorname{ob}D_c^-(X)$。若 $F\in\operatorname{ob}D_c^-(X)$，或若 $G$ 的 \Term{tor-dimension}{Tor 维数}\Term{finite}{有限}，则 $F\mathbin{\overset{\mathrm L}{\otimes}}G\in\operatorname{ob}D_c(X)$。
+
+b) 设 $f:X\longrightarrow Y$ 是\Term{prescheme}{预概形}\Term{morphism}{态射}，$G\in\operatorname{ob}D_c(Y)$。则 $f^*(G)\in\operatorname{ob}D_c(X)$。
+\end{SGAresult}
+\begin{proof}
+断言 b) 由 SGA A IX 2.4 直接得到。证明 a)。关于 $(F,G)$ 的两个假设中的任一个都保证\Term{spectral-sequence}{谱序列}
+\[
+ E_2^{pq}=\bigoplus_{q_1+q_2=q}\mathcal Tor_{-p}(\mathcal H^{q_1}(F),\mathcal H^{q_2}(G))
+ \Longrightarrow\mathcal H^*(F\mathbin{\overset{\mathrm L}{\otimes}}G)
+\]
+\Term{biregular}{双正则}。因此可归结到 $F$ 和 $G$ 都集中在\Term{degree}{次数} $0$ 的情形，即它们都是\Term{constructible}{可构造} $A_X$ 模。问题是\Term{local-scheme}{局部}的，故可假设 $X$ \Term{noetherian}{诺特}。此时 $F$ 有一个左\Term{resolution}{解消} $F'$（SGA A IX 2.7），各 $F'^i$ 具有 $A_{U,X}$ 的\Term{form}{形式}，其中 $U$ 在 $X$ 上\Term{etale}{平展}且为\Term{finite-type}{有限型}。有
+\[
+ F\mathbin{\overset{\mathrm L}{\otimes}}G\xrightarrow{\sim}F'\otimes G,
+\]
+由于 $A_{U,X}\otimes G$ 都\Term{constructible}{可构造}，结论随之得到。
+\end{proof}
+\textbf{记号 1.10。}若 $X$ 是\Term{prescheme}{预概形}，以 $D^b(X)_{\mathrm{torf}}$（分别为 $D^b(X)_{\mathrm{qinjf}}$）表示 $D(X)$ 的\Term{full-subcategory}{满子范畴}，其\Term{object}{对象}为 \Term{tor-dimension}{Tor 维数}\Term{finite}{有限}（分别为\Term{quasi-injective-dimension}{拟内射维数}\Term{finite}{有限}）的\Term{object}{对象}。
+
+\begin{SGAresult}{命题}{1.11}
+（参见 [H] V 2.6。）设 $X$ 是\Term{prescheme}{预概形}，$K\in\operatorname{ob}D^+(X)$。
+
+a) 对于 $F\in\operatorname{ob}D^-(X)$ 和 $G\in\operatorname{ob}D^-(X)$（分别地，对于 $F\in\operatorname{ob}D(X)$ 和 $G\in\operatorname{ob}D^b(X)_{\mathrm{torf}}$），有\Term{functorial-isomorphism}{函子性同构}
+\[
+ \mathbf D_K(F\mathbin{\overset{\mathrm L}{\otimes}}G)\xrightarrow{\sim}
+ \mathrm R\mathcal Hom(F,\mathbf D_K(G)).
+\]
+\SourcePage{23}
+b) 若 $K$ 满足 (1.7) 的条件 (i)、(ii)，则有蕴涵关系
+\[
+ G\in\operatorname{ob}D_c^b(X)_{\mathrm{torf}}\quad\Longrightarrow\quad
+ \mathbf D_K(G)\in\operatorname{ob}D_c^b(X)_{\mathrm{qinjf}},
+ \quad\text{且 }\mathbf D_K(G)\text{ 满足 (1.7.(ii))}.
+\]
+
+c) 若 $K$ \Term{dualizing}{对偶化}，则对于 $F\in\operatorname{ob}D_c^-(X)$ 和 $G\in\operatorname{ob}D_c^b(X)$（分别地，对于 $F\in\operatorname{ob}D(X)$、$G\in\operatorname{ob}D_c^b(X)$，且 $\mathbf D_K(G)\in\operatorname{ob}D_c^b(X)_{\mathrm{torf}}$），有\Term{functorial-isomorphism}{函子性同构}
+\[
+ \mathbf D_K(F\mathbin{\overset{\mathrm L}{\otimes}}\mathbf D_K(G))\xrightarrow{\sim}\mathrm R\mathcal Hom(F,G).
+\]
+还有蕴涵关系
+\[
+ \mathbf D_K(G)\in\operatorname{ob}D_c^b(X)_{\mathrm{torf}}\quad\Longrightarrow\quad
+ G\in\operatorname{ob}D_c^b(X)_{\mathrm{qinjf}},\quad\text{且 }G\text{ 满足 (1.7.(ii))}.
+\]
+
+d) 若 $K$ \Term{dualizing}{对偶化}且\Term{injective-dimension}{内射维数}\Term{finite}{有限}，则 b)、c) 中的蕴涵关系都是\Term{equivalence-relation}{等价关系}。
+\end{SGAresult}
+\begin{proof}
+a) 正是 Cartan 所钟爱的\Term{adjunction-formula}{伴随公式}（SGA 6 I 7.4）。
+
+b) 设 $G\in\operatorname{ob}D_c^b(X)_{\mathrm{torf}}$。令 $F$ 在\Term{constructible}{可构造} $A_X$ 模中变化，则 $F\mathbin{\overset{\mathrm L}{\otimes}}G$ 的\Term{cohomology-object}{上同调对象}\Term{constructible}{可构造}（1.9），且在两个不依赖于 $F$ 的固定界限之外为零。因此 $\mathbf D_K(F\mathbin{\overset{\mathrm L}{\otimes}}G)$ 的\Term{cohomology-object}{上同调对象}也具有同样性质，由 a) 得到结论。
+
+c) 第一个断言是将 a) 的公式应用于 $\mathbf D_K(G)$ 而非 $G$，再利用 $G$ 的\Term{reflexive}{自反性}得到的。第二个断言由与 b) 类似的论证得到。
+
+\SourcePage{24}
+d) 例如来证明 b) 的逆向蕴涵。假设 $\mathbf D_K(G)\in\operatorname{ob}D_c^b(X)_{\mathrm{qinjf}}$，且 $\mathbf D_K(G)$ 满足 (1.7.(ii))。那么，令 $F$ 在\Term{constructible-sheaf}{可构造层}中变化，$\mathbf D_K(F\mathbin{\overset{\mathrm L}{\otimes}}G)$ 的\Term{cohomology-object}{上同调对象}\Term{constructible}{可构造}，且在两个固定界限之外为零。因此 $\mathbf D_K\mathbf D_K(F\mathbin{\overset{\mathrm L}{\otimes}}G)$ 的\Term{cohomology-object}{上同调对象}也具有同样性质。但因 $K$ \Term{dualizing}{对偶化}且\Term{injective-dimension}{内射维数}\Term{finite}{有限}（1.8 d)），有
+\[
+ F\mathbin{\overset{\mathrm L}{\otimes}}G\xrightarrow{\sim}\mathbf D_K\mathbf D_K(F\mathbin{\overset{\mathrm L}{\otimes}}G),
+\]
+故 $G$ 的 \Term{tor-dimension}{Tor 维数}\Term{finite}{有限}。c) 的逆向蕴涵同样可证。
+\end{proof}
+\textbf{注记 1.11.1。}a) 整理者不知道：只假设 $K$ \Term{dualizing}{对偶化}，(1.11) 的断言 d) 是否仍然成立。
+
+b) 形象地说，上一个命题表示：\Term{dualizing-functor}{对偶化函子} $\mathbf D_K$ 交换\Term{functor}{函子} $\mathbin{\overset{\mathrm L}{\otimes}}$ 与 $\mathrm R\mathcal Hom$，也交换 \Term{tor-dimension}{Tor 维数}\Term{finite}{有限}与\Term{quasi-injective-dimension}{拟内射维数}\Term{finite}{有限}这两个概念（不过，只有当 $K$ 的\Term{injective-dimension}{内射维数}\Term{finite}{有限}时，这种交换才完全令人满意）。
+
+\begin{SGAresult}{命题}{1.12}
+设 $Y$ 是\Term{noetherian}{诺特}\Term{prescheme}{预概形}，$f:X\longrightarrow Y$ 是\Term{finite-type}{有限型}\Term{morphism}{态射}，$K\in\operatorname{ob}D^+(Y)$。假设 $n$ 与 $Y$ 的各\Term{residue-characteristic}{剩余特征}互素，并置
+\[
+ K_X=\mathrm R^!f(K_Y)\quad\text{（SGA A XVIII 3.1）},\qquad
+ \mathbf D_X=\mathbf D_{K_X},\quad\mathbf D_Y=\mathbf D_{K_Y}.
+\]
+a) 对 $F\in\operatorname{ob}D^-(X)$ 有\Term{functorial-isomorphism}{函子性同构}
+\[
+ \mathrm Rf_*\mathbf D_X(F)\xrightarrow{\sim}\mathbf D_Y\mathrm R_!f(F).\tag{i}
+\]
+\SourcePage{25}
+若此外 $K_X$ 和 $K_Y$ 都\Term{dualizing}{对偶化}\footnote[1]{下面将看到，在相当一般的条件下，$K_Y$ \Term{dualizing}{对偶化}蕴涵 $K_X$ \Term{dualizing}{对偶化}。}，则对 $F\in\operatorname{ob}D_c^b(X)$ 有\Term{functorial-isomorphism}{函子性同构}
+\[
+ \mathrm R_!f\,\mathbf D_X(F)\xrightarrow{\sim}\mathbf D_Y\mathrm Rf_*(F).\tag{ii}
+\]
+b) 对 $F\in D_c^-(Y)$ 有\Term{functorial-isomorphism}{函子性同构}\footnote[2]{若\Term{functor}{函子} $\mathrm R^!f$ 的\Term{cohomological-dimension}{上同调维数}\Term{finite}{有限}，则 b)(i) 的\Term{isomorphism}{同构}对 $F\in\operatorname{ob}D_c(Y)$ 成立。例如，当 $Y$ 是域上的\Term{finite-type}{有限型}\Term{prescheme}{预概形}时就是如此（SGA A X 4.3 及 XVIII 3.1.7）。}
+\[
+ \mathrm R^!f\,\mathbf D_Y(F)\xrightarrow{\sim}\mathbf D_Xf^*(F).\tag{i}
+\]
+若此外 $K_X$ 和 $K_Y$ 都\Term{dualizing}{对偶化}\footnotemark[1]，则对 $F\in D_c^b(Y)$ 有\Term{functorial-isomorphism}{函子性同构}
+\[
+ f^*\mathbf D_YF\xrightarrow{\sim}\mathbf D_X\mathrm R^!fF.\tag{ii}
+\]
+\end{SGAresult}
+\begin{proof}
+a)(i) 正是\Term{duality-isomorphism}{对偶同构}（SGA A XVIII 3.1.9.6）。
+
+a)(ii) 可先将 a)(i) 应用于 $\mathbf D_XF$，再对两端应用 $\mathbf D_Y$ 得到；这里利用“\Term{finiteness-theorem}{有限性定理}”（SGA A XVII 5.3.6）来保证 $\mathrm R_!f(\mathbf D_X(F))\in\operatorname{ob}D_c(Y)$。
+
+b)(i) 正是“\Term{induction-formula}{诱导公式}”（SGA A XVIII 3.1.12.2）。
+
+b)(ii) 可先将 b)(i) 应用于 $\mathbf D_YF$，再对两端应用 $\mathbf D_X$，并利用 (1.9 b)) 得到。
+\end{proof}
+\textbf{附论。}形象地说，\Term{dualizing-functor}{对偶化函子}
+\SourcePage{26}
+$\mathbf D_X$ 与 $\mathbf D_Y$ 交换通常的和非常的\Term{direct-image}{直像}（分别地，\Term{inverse-image}{逆像}）概念：即 $\mathrm Rf_*$ 与 $\mathrm R_!f$（分别地，$f^*$ 与 $\mathrm R^!f$）。
+
+\begin{SGAresult}{推论}{1.13}
+在 1.12 的假设下，另设 $f$ \Term{proper}{固有}，并设 $F\in\operatorname{ob}D^-(X)$。若 $(F,K_X)$ 是\Term{bidualizing-pair}{双对偶化}的，则 $(\mathrm Rf_*F,K_Y)$ 也\Term{bidualizing-pair}{双对偶化}。反之，若 $f$ \Term{finite}{有限}，且 $(\mathrm Rf_*F,K_Y)$ \Term{bidualizing-pair}{双对偶化}，则 $(F,K_X)$ \Term{bidualizing-pair}{双对偶化}。
+\end{SGAresult}
+\begin{proof}
+假设 $(F,K_X)$ \Term{bidualizing-pair}{双对偶化}。对\Term{canonical-isomorphism}{典范同构} $F\xrightarrow{\sim}\mathbf D_X^2F$ 应用 $\mathrm Rf_*$，得到
+\[
+ \begin{aligned}
+ \mathrm Rf_*F&\xrightarrow{\sim}\mathrm Rf_*\mathbf D_X\mathbf D_XF\\
+ &\xrightarrow{\sim}\mathbf D_Y\mathrm Rf_*\mathbf D_XF&&\text{（由 a)(i)）}\\
+ &\xrightarrow{\sim}\mathbf D_Y\mathbf D_Y\mathrm Rf_*F&&\text{（由 a)(i)）。}
+ \end{aligned}
+\]
+勇敢的读者会确信这里得到的\Term{isomorphism}{同构}就是\Term{canonical-isomorphism}{典范同构}，于是第一条断言便得到（或者说将得到）证明。
+
+现在假设 $f$ \Term{finite}{有限}，且 $(f_*F,K_Y)$ \Term{bidualizing-pair}{双对偶化}（因为 $f$ \Term{finite}{有限}，$\mathrm Rf_*=f_*$），来证明\Term{canonical-morphism}{典范态射} $F\longrightarrow\mathbf D_X^2F$ 是\Term{isomorphism}{同构}。由下述\Term{lemma}{引理} 1.14 a)，只需证明由它得到的\Term{morphism}{态射} $f_*F\longrightarrow f_*\mathbf D_X^2F$ 是\Term{isomorphism}{同构}。但两次应用 a)(i)，“便会确信”后者正是\Term{canonical-isomorphism}{典范同构} $f_*F\xrightarrow{\sim}\mathbf D_Y^2f_*F$，证明完成。
+\end{proof}
+\begin{SGAresult}{\Term{lemma}{引理}}{1.14}
+设 $f:X\longrightarrow Y$ 是\Term{prescheme}{预概形}之间的\Term{finite-morphism}{有限态射}。
+
+a) 设 $u:F\longrightarrow G$ 是 $D(X)$ 中的\Term{arrow}{箭头}。$u$ 是\Term{isomorphism}{同构}的充要条件是 $f_*u$ 是\Term{isomorphism}{同构}。
+\SourcePage{27}
+b) 设 $F\in\operatorname{ob}D(X)$。$F\in\operatorname{ob}D_c(X)$ 的充要条件是 $f_*F\in\operatorname{ob}D_c(F)$。
+\end{SGAresult}
+\begin{proof}
+a) \Term{functor}{函子} $f_*$ \Term{exact}{正合}，故可归结到 $F$ 和 $G$ 都集中于零次的情形。断言随即由 $f_*F$（分别为 $f_*G$）的\Term{fiber}{纤维}计算得到（SGA A VIII 5.5）。
+
+b) 同样可归结到 $F$ 集中于零次的情形。必要性已知（SGA A IX 2.14）；来证明充分性，即证明 $f_*F$ \Term{constructible}{可构造}蕴涵 $F$ \Term{constructible}{可构造}。问题在上方是\Term{local-scheme}{局部}的，因此在下方更是如此，故可假设 $Y$（从而 $X$）\Term{affine}{仿射}。这时存在 $Y$ 的\Term{finite}{有限}族\Term{affine}{仿射}子\Term{prescheme}{预概形} $(Y_i)$，它们两两不交，且并为 $Y$（EGA IV 17.16.6），使得若 $X_i=X\times_Y Y_i$，则诱\Term{derived-morphism}{导态射} $f_i:X_i\longrightarrow Y_i$ \Term{decomposable}{可分解}为
+\[
+ X_i\xrightarrow{u_i}X'_i\xrightarrow{v_i}Y_i,
+\]
+其中 $u_i$ 是\Term{finite}{有限}、\Term{radicial}{根性}、\Term{surjectivity}{满射}的\Term{morphism}{态射}，$v_i$ 是\Term{finite}{有限}\Term{etale}{平展}\Term{morphism}{态射}。置 $F|X_i=F_i$。由\Term{finite-morphism}{有限态射}的\Term{base-change}{基变换}\Term{theorem}{定理}（SGA A VIII 5.5），有
+\[
+ f_{i*}(F_i)\xrightarrow{\sim}(f_*F)|Y_i,
+\]
+于是归结为对 $(f_i,F_i)$ 证明断言（SGA A IX 2.8）。置 $F'_i=u_{i*}(F_i)$，于是 $f_{i*}(F_i)=v_{i*}(F'_i)$。由\Term{constructible}{可构造}性的定义显然可知（分别地，由 SGA A VIII 1.1 得到），$F_i$（分别为 $F'_i$）\Term{constructible}{可构造}当且仅当 $F'_i$（分别为 $v_{i*}(F'_i)$）\Term{constructible}{可构造}；由此得到所需结论。
+\end{proof}
+\begin{SGAresult}{推论}{1.15}
+设 $f:X\longrightarrow Y$ 是\Term{noetherian}{诺特}\Term{prescheme}{预概形}之间的\Term{quasi-finite}{拟有限}\Term{separated-morphism}{分离态射}。设 $K_Y\in\operatorname{ob}D^+(Y)$，并与 1.12 一样置
+\[
+ K_X=\mathrm R^!f(K_Y),\qquad\mathbf D_X=\mathbf D_{K_X},\quad\mathbf D_Y=\mathbf D_{K_Y}.
+\]
+那么，若 $K_Y$ \Term{dualizing}{对偶化}，则 $K_X$ 也\Term{dualizing}{对偶化}。
+\end{SGAresult}
+\SourcePage{28}
+\begin{proof}
+我们已经知道（1.5）：若 $K_Y$ 的\Term{quasi-injective-dimension}{拟内射维数}\Term{finite}{有限}，则 $K_X$ 也如此。来证明若 $K_Y$ 满足 (1.7) 的条件 (ii)（分别为 (iii)），则 $K_X$ 也满足。由“主\Term{theorem}{定理}”（EGA IV 8.12.6），$f$ \Term{decomposable}{可分解}为 $f'i$，其中 $i$ 是\Term{open-immersion}{开浸入}，$f'$ 是\Term{finite-morphism}{有限态射}。因为 $\mathrm R^!f\xrightarrow{\sim}\mathrm R^!i\,\mathrm R^!f'$，只需分别考察\Term{open-immersion}{开浸入}和\Term{finite-morphism}{有限态射}的情形。若 $f$ 是\Term{open-immersion}{开浸入}，断言显然，因为 $X$ 上的\Term{constructible-sheaf}{可构造层}由 $Y$ 上的\Term{constructible-sheaf}{可构造层}诱导，而且 $\mathrm R\mathcal Hom$ 的形成与\Term{restriction}{限制}到\Term{open-subset}{开集}可交换。因此假设 $f$ \Term{finite}{有限}。这时已经知道（1.13），若 $K_Y$ 满足 (iii)，则 $K_X$ 也满足（同时考虑\Term{finiteness-theorem}{有限性定理} SGA A IX 2.14）。只需证明若 $K_Y$ 满足 (ii)，则 $K_X$ 也满足。设 $F\in\operatorname{ob}D_c^-(X)$，证明 $\mathbf D_X(F)\in\operatorname{ob}D_c^+(X)$。由\Term{finiteness-theorem}{有限性定理}有 $f_*(F)\in\operatorname{ob}D_c^-(Y)$，因而由假设有 $\mathbf D_Yf_*(F)\in\operatorname{ob}D_c^+(Y)$。但 $\mathbf D_Yf_*(F)\xrightarrow{\sim}f_*\mathbf D_X(F)$（1.12 a)(i)），由 (1.14 b)) 得到结论。
+\end{proof}
+
+\SGAsection{2}{对偶化复形的唯一性}
+本节假设 $A$ 是\Term{local-ring}{局部环}，即 $A=\mathbf Z/\ell^\nu\mathbf Z$，其中 $\ell$ 是素数。
+
+\begin{SGAresult}{\Term{theorem}{定理}}{2.1}
+（参见 [H] V 3.1。）设 $X$ 是\Term{connected}{连通}（\Term{locally-noetherian}{局部诺特}）\Term{prescheme}{预概形}，$K$ 是 $X$ 上的\Term{dualizing-complex}{对偶化复形}（1.6）。另设 $K'\in\operatorname{ob}D^+(X)$。$K'$ \Term{dualizing}{对偶化}的充要条件是，存在\Term{invertible-sheaf}{可逆} $A_X$ 模 $L$ 和整数 $r$（这时它们在唯一\Term{isomorphism}{同构}的意义下确定），使得
+\SourcePage{29}
+\[
+ K'\xrightarrow{\sim}K\mathbin{\overset{\mathrm L}{\otimes}}L[r].
+\]
+\end{SGAresult}
+\begin{proof}
+设 $L$ 是\Term{invertible-sheaf}{可逆} $A_X$ 模，$r$ 是整数，并置 $L^\vee=\mathcal Hom(L,A_X)$。对于 $F\in\operatorname{ob}D(X)$ 和 $G\in\operatorname{ob}D^+(X)$，有\Term{canonical-isomorphism}{典范同构}
+\[
+ \begin{aligned}
+ \mathrm R\mathcal Hom(F\mathbin{\overset{\mathrm L}{\otimes}}L^\vee[-r],G)
+ &\xrightarrow{\sim}\mathrm R\mathcal Hom(F,G\mathbin{\overset{\mathrm L}{\otimes}}L[r])\\
+ &\xrightarrow{\sim}\mathrm R\mathcal Hom(F,G)\mathbin{\overset{\mathrm L}{\otimes}}L[r].
+ \end{aligned}\tag{*}
+\]
+容易\Term{pushout}{推出}，若 $K'\xrightarrow{\sim}K\mathbin{\overset{\mathrm L}{\otimes}}L[r]$，则 $K'$ \Term{dualizing}{对偶化}。此外，置 $\mathbf D_K=\mathbf D$、$\mathbf D_{K'}=\mathbf D'$，由 $(*)$ 对 $F\in\operatorname{ob}D(X)$ 有
+\[
+ \mathbf D'F\xrightarrow{\sim}\mathbf DF\mathbin{\overset{\mathrm L}{\otimes}}L[r].
+\]
+因此，由 $\mathbf DK\xrightarrow{\sim}A_X$，得到
+\[
+ \mathbf D'K\xrightarrow{\sim}L[r].
+\]
+这说明 $L[r]$，从而 $L$ 和 $r$，由 $K'$ 本质唯一地确定。
+
+反之，假设 $K'$ \Term{dualizing}{对偶化}，并置
+\[
+ P=\mathbf D'K=\mathbf D'\mathbf DA_X=\mathrm R\mathcal Hom(K,K').
+\]
+我们将证明：
+
+ a) $K'\xrightarrow{\sim}K\mathbin{\overset{\mathrm L}{\otimes}}P$；
+
+ b) 对某个\Term{invertible-sheaf}{可逆} $A_X$ 模 $L$，有 $P\xrightarrow{\sim}L[r]$；
+
+这就完成\Term{theorem}{定理}的证明。首先注意，由 1.9 b)(ii)，对 $F\in\operatorname{ob}D_c(X)$ 有
+\[
+ F\mathbin{\overset{\mathrm L}{\otimes}}P\xrightarrow{\sim}\mathbf D'\mathbf DF.\tag{**}
+\]
+\SourcePage{30}
+将 $(**)$ 应用于 $F=K$，得到
+\[
+ K\mathbin{\overset{\mathrm L}{\otimes}}P\xrightarrow{\sim}\mathbf D'\mathbf DK
+ \xrightarrow{\sim}\mathbf D'A_X=K',
+\]
+这就证明了 a)。将 $(**)$ 应用于 $F=P'=\mathbf D\mathbf D'A_X$，得到
+\[
+ P'\mathbin{\overset{\mathrm L}{\otimes}}P
+ =\mathbf D'\mathbf D\mathbf D\mathbf D'A_X
+ \xrightarrow{\sim}\mathbf D'\mathbf D'A_X\xrightarrow{\sim}A_X.
+\]
+于是 b) 将由下述\Term{lemma}{引理}得到。
+\end{proof}
+\begin{SGAresult}{\Term{lemma}{引理}}{2.2}
+（参见 [H] V 3.3。）设 $X$ 是\Term{connected}{连通}的\Term{locally-noetherian}{局部诺特}\Term{prescheme}{预概形}，并设 $P,P'\in\operatorname{ob}D_c^-(X)$ 满足 $P\mathbin{\overset{\mathrm L}{\otimes}}P'\xrightarrow{\sim}A_X$。则存在\Term{invertible-sheaf}{可逆} $A_X$ 模 $L$ 和整数 $r$，使得
+\[
+ P\xrightarrow{\sim}L[r],\qquad P'\xrightarrow{\sim}L^\vee[-r].
+\]
+\end{SGAresult}
+\begin{proof}
+证明分为两步。
+
+1）特殊情形：$X=\operatorname{Spec}(k)$，$k$ 为\Term{separably-closed}{可分闭}域。只需照录 [H] 同处给出的证明（它也很容易）。关键在于（EGA $0_{\mathrm I}$ 5.4.3）：若 $M$、$M'$ 是两个\Term{finite-type}{有限型} $A$ 模，满足 $M\otimes M'\xrightarrow{\sim}A$，则 $M$、$M'$ 都\Term{invertible-sheaf}{可逆}，且 $M'\xrightarrow{\sim}M^\vee$；正是在这里用到 $A$ 是\Term{local-ring}{局部环}的假设。
+
+2）一般情形。
+
+由上面的特殊情形，对于每个 $x\in X$，都有整数 $r(x)$，使得
+\[
+ P_{\bar x}\xrightarrow{\sim}A_{\bar x}[r(x)],\qquad
+ P'_{\bar x}\xrightarrow{\sim}A_{\bar x}[-r(x)],
+\]
+即 $i\ne-r(x)$ 时 $\mathcal H^i(P_{\bar x})=0$（分别地，$i\ne+r(x)$ 时 $\mathcal H^i(P'_{\bar x})=0$），且
+\[
+ \mathcal H^{-r(x)}(P_{\bar x})\xrightarrow{\sim}A_{\bar x},\qquad
+ \mathcal H^{+r(x)}(P'_{\bar x})\xrightarrow{\sim}A_{\bar x}.
+\]
+需要证明函数 $x\longmapsto r(x)$ \Term{locally-constant}{局部常值}。事实上，假设已经证明这一点。
+\SourcePage{31}
+由于 $X$ \Term{connected}{连通}，$r$ 为常数，记其值为 $r_0$。于是 $i\ne-r_0$ 时 $\mathcal H^i(P)=0$，$i\ne r_0$ 时 $\mathcal H^i(P')=0$，且
+\[
+ \mathcal H^{-r_0}(P)\otimes\mathcal H^{r_0}(P')\xrightarrow{\sim}A.
+\]
+置 $\mathcal H^{-r_0}(P)=L$、$\mathcal H^{r_0}(P')=L'$。设 $u:\bar x\longrightarrow\bar y$ 是一个\Term{specialization-arrow}{特化箭头}（SGA A VIII 7.2），$u^*:L_{\bar y}\longrightarrow L_{\bar x}$、$u'^*:L'_{\bar y}\longrightarrow L'_{\bar x}$ 为相应的\Term{specialization-morphism}{特化态射}（SGA A VIII 7.7）。有\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}
+ L_{\bar y}\otimes L'_{\bar y}\arrow[r,"\sim"]\arrow[d,"u^*\otimes u'^*"'] & A_{\bar y}\arrow[d]\\
+ L_{\bar x}\otimes L'_{\bar x}\arrow[r,"\sim"] & A_{\bar x}
+\end{tikzcd}\tag{*}
+\]
+选择 $L_{\bar x}$（分别为 $L_{\bar y}$）在 $A_{\bar x}$（分别为 $A_{\bar y}$）上的一个基 $e$（分别为 $f$），以 $e'$（分别为 $f'$）表示 $L'_{\bar x}$（分别为 $L'_{\bar y}$）的“\Term{duality}{对偶}”基，即 $e\otimes e'$（分别为 $f\otimes f'$）在 $A_{\bar x}$（分别为 $A_{\bar y}$）中的像为 $1$ 的基。有 $u^*(f)=\lambda e$、$u'^*(f')=\lambda'e'$，而 $(*)$ 的\Term{commutativity}{交换性}蕴涵 $\lambda\lambda'=1$，故 $u^*$ 是\Term{isomorphism}{同构}（且 $u'^*$ 是“逆\Term{transpose}{转置}”\Term{isomorphism}{同构}）。由 SGA A IX 2.13，这蕴涵 $L$ 和 $L'$ \Term{locally-constant}{局部常值}，因而作为 $A_X$ 模\Term{finitely-presented}{有限呈示}。所以，若 $\bar x\in X$，则对于每个 $A_X$ 模 $F$，\Term{canonical}{典范}\Term{arrow}{箭头}
+\[
+ \mathcal Hom(L,F)_{\bar x}\longrightarrow\operatorname{Hom}(L_{\bar x},F_{\bar x})
+\]
+都是\Term{isomorphism}{同构}。由于 $L$ 的\Term{geometric-fiber}{几何纤维}\Term{invertible-sheaf}{可逆}，可知 $L$ \Term{invertible-sheaf}{可逆}。同样 $L'$ 也\Term{invertible-sheaf}{可逆}，并且 $L'\xrightarrow{\sim}L^\vee$。于是有
+\[
+ P\xrightarrow{\sim}L[-r_0],\qquad P'\xrightarrow{\sim}L^\vee[+r_0].
+\]
+所以一切归结为证明函数 $r$ \Term{locally-constant}{局部常值}。对 $m\in\mathbf Z$，$r(x)=m$ 当且仅当 $\mathcal H^m(P')_{\bar x}\ne0$；由 SGA A IX 2.4，$r$ 因而\Term{local-scheme}{局部}\Term{constructible}{可构造}。
+\SourcePage{32}
+因此，为了验证它\Term{locally-constant}{局部常值}，由 EGA IV 1.10.1，可假设 $X$ 是\Term{local-scheme}{局部}的。设 $x$ 是 $X$ 的\Term{closed-point}{闭点}，$U$ 是它的开补集。
+
+我们要证明 $r$ 为常数。对 $X$ 的\Term{dimension}{维数}作归纳，已经可以假设 $y\in U$ 时 $r(y)$ 恒定，等于 $r_0$；需要证明 $r(x)=r_0$。假设并非如此，即 $r(x)\ne r_0$，并\Term{derive}{导出}矛盾。由假设，有 $P|U\xrightarrow{\sim}L[r_0]$，其中 $L$ 是\Term{invertible-sheaf}{可逆} $A_U$ 模。\Term{translation}{平移}\Term{degree}{次数}后，可假设 $r_0=0$。另一方面，$r(x)\ne0$，不妨设 $r(x)=a>0$。以 $i:U\longrightarrow X$、$j:x\longrightarrow X$ 表示\Term{canonical}{典范}包含。
+
+写出\Term{exact-sequence}{正合列}
+\[
+ 0\longrightarrow i_!(P|U)\longrightarrow P\longrightarrow j_*j^*P\longrightarrow0.\tag{**}
+\]
+由假设，$P$ 仅有的非零\Term{cohomology-object}{上同调对象}为 $\mathcal H^0(P)$ 和 $\mathcal H^{-a}(P)$，且有 $\mathcal H^0(P)\xrightarrow{\sim}i_!(L)$。因此 $(**)$ 自然\Term{splitting}{分裂}（借助\Term{arrow}{箭头} $P\longrightarrow\mathcal H^0(P)$），于是有
+\[
+ P\xrightarrow{\sim}i_!(P|U)+j_*j^*P.
+\]
+由此\Term{pushout}{推出}
+\[
+ \begin{aligned}
+ P\mathbin{\overset{\mathrm L}{\otimes}}P'
+ &\xrightarrow{\sim}i_!(P|U)\mathbin{\overset{\mathrm L}{\otimes}}P'
+       +j_*j^*(P)\mathbin{\overset{\mathrm L}{\otimes}}P'\\
+ &\xrightarrow{\sim}i_!(P|U\mathbin{\overset{\mathrm L}{\otimes}}P'|U)
+       +j_*(j^*P\mathbin{\overset{\mathrm L}{\otimes}}j^*P')\\
+ &\xrightarrow{\sim}i_!(A_U)+j_*(A_x).
+ \end{aligned}
+\]
+这是荒谬的，因为 $i_!(A_U)+j_*(A_x)$ 显然不\Term{isomorphism}{同构}于 $A_X$（连 $\mathcal H^0$ 都不\Term{isomorphism}{同构}！）。\Term{lemma}{引理} 2.2 的证明至此完成。
+\end{proof}

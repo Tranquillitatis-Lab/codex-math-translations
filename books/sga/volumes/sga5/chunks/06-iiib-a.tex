@@ -1,0 +1,700 @@
+\SourcePage{150}
+\SGAchapter{III B}{局部项的计算}{Calculs de termes locaux}
+\begin{center}Luc Illusie\end{center}
+
+本讲写于1977年1月，并不对应于讨论班中的任何一次口头报告。它包含两个彼此独立的部分。第一部分计算\Term{algebraically-closed-field}{代数闭域}上\Term{smooth}{光滑}\Term{curve}{曲线}之间的\Term{cohomological-correspondence}{上同调对应}的 Lefschetz--Verdier \Term{local-term}{局部项}，其\Term{support}{支撑}所在的\Term{correspondence}{对应}满足某些\Term{general-position}{一般位置}假设。所得公式的推论包括 Verdier 关于\Term{transverse}{横截}\Term{endomorphism}{自同态}的公式[6]（特别适用于 Frobenius \Term{endomorphism}{自同态}），以及 Langlands 在（[4] 7.12）中陈述的公式。证明方法与 Artin--Verdier 在[6]中采用的方法平行。我们归结为证明：当给定的\Term{sheaf}{层}\Term{complex}{复形}在所考察的\Term{fixed-point}{不动点}的像处具有零\Term{stalk}{茎}时，\Term{local-term}{局部项}为零；实际上证明一个更强的性质，即某个\Term{restriction}{限制}\Term{arrow}{箭头}为零（2.5）。为建立这一性质，先利用给定两条\Term{curve}{曲线}的同\Term{degree}{次数}\Term{covering}{覆盖}，归结为\Term{tame-ramification}{温和分歧}的情形（以免破坏\Term{general-position}{一般位置}假设），再借助 Abhyankar \Term{lemma}{引理}和相对\Term{purity-theorem}{纯性定理}直接处理这一情形。第二部分的技术性强得多，其灵感来自 Grothendieck 为\Term{curve}{曲线}上某些\Term{cohomological-correspondence}{上同调对应}建立 Lefschetz 公式时所用的方法（见第 XII 讲及 SGA $4\frac12$《报告》）。第5节为\Term{topos}{拓扑斯}上的模\Term{complex}{复形}建立\Term{noncommutative-trace}{非交换迹}理论，它推广了（SGA 6 I）的交换理论，并在点\Term{topos}{拓扑斯}的情形给出口头讨论班中 Grothendieck 所建立的非交换理论（该理论曾写入第 XI 讲，可惜此讲已佚）。第6节应用第5节的技术，为不必交换的环上的模\Term{complex}{复形}之间的\Term{cohomological-correspondence}{上同调对应}定义 Lefschetz--Verdier \Term{local-term}{局部项}。
+
+\SourcePage{151}
+这些\Term{local-term}{局部项}具有\Term{noncommutative-trace}{非交换迹}的性质，特别是在基环取为\Term{group-algebra}{群代数}时，可以\Term{canonical}{典范}地将\Term{equivariant-correspondence}{等变对应}的通常\Term{local-term}{局部项}除以相应因子。作为应用，我们以更一般的\Term{form}{形式}证明（第 XII 讲4.5）中 Grothendieck 的整除性猜想。我们还证明，第 XII 讲的 Lefschetz 公式中由 Grothendieck 定义的\Term{local-term}{局部项}确实就是 Lefschetz--Verdier \Term{local-term}{局部项}，并推广该处的公式。
+
+感谢 P.~Deligne 在多次交谈中给予的有益建议；尤其感谢他指出\Term{theorem}{定理}1.2最初证明中的一个错误，并帮助我改正。
+
+\textbf{内容。} 第一部分：\Term{curve}{曲线}之间处于\Term{general-position}{一般位置}的对应；1.~\Term{theorem}{定理}的陈述与推论；2.~归结为一个消失\Term{theorem}{定理}；3.~归结为温和情形；4.~完成1.2的证明。第二部分：\Term{equivariant-correspondence}{等变对应}；5.~\Term{noncommutative-trace}{非交换迹}；6.~\Term{equivariant-correspondence}{等变对应}与\Term{local-term}{局部项}的整除性。
+
+\SourcePage{152}
+\SGAsection{I}{曲线之间处于一般位置的对应}
+本部分中，$S$ 表示\Term{characteristic}{特征}为 $p$ 的\Term{algebraically-closed-field}{代数闭域} $k$ 的谱，$\Lambda$ 是被某个与 $p$ 互素的整数\Term{annihilate}{零化}的交换 Noether 环。对每个 $S$ 上的\Term{scheme}{概形} $X$，以 $D(X)$ 表示 $X$ 上 $\Lambda$-模\Term{sheaf}{层}的\Term{derived-category}{导出范畴}，以 $D_{\mathrm{ctf}}(X)$ 表示其中由具有\Term{finite-tor-dimension}{有限 Tor 维数}及\Term{constructible}{可构造}\Term{cohomology}{上同调}的\Term{complex}{复形}组成的\Term{full-subcategory}{满子范畴}。
+
+\SGAsection{1}{定理的陈述与推论}
+\textbf{1.1.} 设 $X$（分别为 $Y$）是在一条\Term{smooth}{光滑}\Term{separated}{分离} $S$-\Term{curve}{曲线}的一个\Term{closed-point}{闭点}处的\Term{strict-localization}{严格局部化}所得的 $S$-\Term{scheme}{概形}，$A$（分别为 $B$）是\Term{strictly-local}{严格局部} $S$-\Term{scheme}{概形}，$a:A\to X\times_S Y$、$b:B\to X\times_S Y$ 是 $S$-\Term{morphism}{态射}。记 $p_1:X\times_S Y\to X$、$p_2:X\times_S Y\to Y$ 为\Term{projection}{投影}，$a_i=p_i a$、$b_i=p_i b$；记 $x$（分别为 $y$）为 $X$（分别为 $Y$）的\Term{closed-point}{闭点}。假设 $a_2$ 和 $b_1$ \Term{finite}{有限}且\Term{surjectivity}{满射}，且 $A\times_{X\times_S Y}B$ 只含一个\Term{closed-point}{闭点} $z$，它在 $X\times_S Y$ 中的像为 $(x,y)$。
+
+设
+\[
+ L\in\operatorname{ob}D_{\mathrm{ctf}}(X),\quad M\in\operatorname{ob}D_{\mathrm{ctf}}(Y),\quad
+ u\in\operatorname{Hom}(a_1^*L,a_2^!M),\quad v\in\operatorname{Hom}(b_2^*M,b_1^!L).
+\]
+以 $u_z\in\operatorname{Hom}(L_x,M_y)$（分别为 $v_z\in\operatorname{Hom}(M_y,L_x)$）表示复合\Term{homomorphism}{同态}
+\[
+ L_x=R\Gamma(X,L)\xrightarrow{a_1^*}R\Gamma(A,a_1^*L)
+ \xrightarrow{R\Gamma(A,u)}R\Gamma(A,a_2^!M)
+ \xrightarrow{a_{2*}}R\Gamma(Y,M)=M_y,
+\]
+其中 $a_{2*}$ 由\Term{adjoint}{伴随箭头} $a_{2*}a_2^!M\to M$ 定义（分别取借助 $(b,v)$ 定义的类似复合\Term{homomorphism}{同态}）。由于 $L_x$ 和 $M_y$ 是 $\Lambda$-模\Term{perfect-complex}{完美复形}，可以构造\Term{cup-product}{杯积}（SGA 6 I 8.3）
+\[
+ \langle u_z,v_z\rangle=\operatorname{Tr}(u_zv_z)=\operatorname{Tr}(v_zu_z)\in\Lambda.
+ \tag{1.1.1}
+\]
+置 $\Lambda_X(1)[2]=K_X$、$\Lambda_Y(1)[2]=K_Y$。由（第 I 讲5）（或 SGA $4\frac12$《\Term{duality}{对偶性}》1，或《\Term{finiteness}{有限性}》4.1），
+\[
+ D_X=R\mathcal Hom(-,K_X),\qquad D_Y=R\mathcal Hom(-,K_Y)
+\]
+分别是 $D_{\mathrm{ctf}}(X)$ 和 $D_{\mathrm{ctf}}(Y)$ 上的\Term{dualizing-functor}{对偶化函子}。
+
+\SourcePage{153}
+也就是说，对每个 $E\in\operatorname{ob}D_{\mathrm{ctf}}(X)$（分别为 $D_{\mathrm{ctf}}(Y)$），都有
+\[
+ E\xrightarrow{\sim}D_XD_XE\qquad
+ (\text{分别为 }E\xrightarrow{\sim}D_YD_YE).
+\]
+有时将 $D_X,D_Y$ 简记为 $D$。另一方面，以 $p_i^!$ 表示\Term{functor}{函子} $p_i^*(-)(1)[2]$。显然有
+\[
+ K_X\overset L\otimes_S M\xrightarrow{\sim}p_2^!M,\qquad
+ L\overset L\otimes_S K_Y\xrightarrow{\sim}p_1^!L;
+\]
+由（第 III 讲2.3）取\Term{limit}{极限}可知，类似于（第 III 讲3.1.1）的 Künneth \Term{arrow}{箭头}
+\[
+ DL\overset L\otimes_S M\longrightarrow R\mathcal Hom(p_1^*L,p_2^!M),\qquad
+ L\overset L\otimes_S DM\longrightarrow R\mathcal Hom(p_2^*M,p_1^!L)
+\]
+是\Term{isomorphism}{同构}。由于 $a_2$ \Term{finite}{有限}，$a$ 也\Term{finite}{有限}，因而\Term{functor}{函子} $a^!$ 有定义，并且容易验证有\Term{transitivity}{传递性}\Term{isomorphism}{同构} $a^!p_2^!=a_2^!$。由 $a^!$ 的\Term{induction-formula}{诱导公式}（SGA 4 XVIII 3.1.12.2），得到类似于（第 III 讲3.2.1）的\Term{canonical}{典范}\Term{isomorphism}{同构}
+\[
+ a^!R\mathcal Hom(p_1^*L,p_2^!M)\xrightarrow{\sim}R\mathcal Hom(a_1^*L,a_2^!M),
+\]
+从而有\Term{isomorphism}{同构}
+\[
+ \operatorname{Hom}(a_1^*L,a_2^!M)\xrightarrow{\sim}
+ H^0(X\times_S Y,a_*a^!(DL\overset L\otimes_S M)).\tag{$*$}
+\]
+同样有\Term{isomorphism}{同构}
+\[
+ \operatorname{Hom}(b_2^*M,b_1^!L)\xrightarrow{\sim}
+ H^0(X\times_S Y,b_*b^!(L\overset L\otimes_S DM)).\tag{$**$}
+\]
+如（第 III 讲4.1.2）中一样，定义自然\Term{pairing}{配对}
+\[
+ (DL\overset L\otimes_S M)\overset L\otimes(L\overset L\otimes_S DM)
+ \longrightarrow K_X\overset L\otimes_S K_Y
+ =\Lambda_{X\times_S Y}(2)[4]\mathrel{\mathop=^{\mathrm{dfn}}}K_{X\times_S Y}.
+\]
+将它与类似于（第 III 讲4.2.3）的\Term{pairing}{配对}
+\[
+ a_*a^!P\overset L\otimes b_*b^!Q\longrightarrow c_*c^!(P\overset L\otimes Q)
+\]
+复合，其中 $P=DL\overset L\otimes_S M$、$Q=L\overset L\otimes_S DM$，而 $c:z=A\times_{X\times_S Y}B\to X\times_S Y$ 是\Term{canonical}{典范}\Term{projection}{投影}，并利用\Term{isomorphism}{同构} $(*)$、$(**)$，得到类似于（第 III 讲4.2.5）的\Term{pairing}{配对}
+\[
+ \langle\ ,\ \rangle:\operatorname{Hom}(a_1^*L,a_2^!M)\otimes
+ \operatorname{Hom}(b_2^*M,b_1^!L)\longrightarrow
+ H^0(X\times_S Y,c_*c^!K_{X\times_S Y}).
+\]
+
+\SourcePage{154}
+取\Term{limit}{极限}容易验证 $c^!K_{X\times_S Y}=\Lambda_z$，故 $H^0(X\times_S Y,c_*c^!K_{X\times_S Y})=\Lambda$。于是得到一个“\Term{cup-product}{杯积}”
+\[
+ \langle u,v\rangle\in\Lambda.\tag{1.1.2}
+\]
+\textbf{1.1.3.} 设 $X'$（分别为 $Y'$）是\Term{smooth}{光滑} $S$-\Term{curve}{曲线}，$A'$（分别为 $B'$）是\Term{separated}{分离} $S$-\Term{curve}{曲线}，$a':A'\to X'\times_S Y'$、$b':B'\to X'\times_S Y'$ 为\Term{finite}{有限} $S$-\Term{morphism}{态射}，$x'$（分别为 $y'$）为 $X'$（分别为 $Y'$）的\Term{closed-point}{闭点}，$z'$ 为 $A'\times_{X'\times_S Y'}B'$ 的孤立\Term{closed-point}{闭点}，在 $A'$（分别为 $B'$）中的像为 $s'$（分别为 $t'$）；假设 $a'_2(=p_2a')$（分别为 $b'_1(=p_1b')$）在 $s'$（分别为 $t'$）处\Term{quasi-finite}{拟有限}。再设
+\[
+ L'\in\operatorname{ob}D_{\mathrm{ctf}}(X'),\quad M'\in\operatorname{ob}D_{\mathrm{ctf}}(Y'),\quad
+ u'\in\operatorname{Hom}(a_1'^*L',a_2'^!M'),\quad
+ v'\in\operatorname{Hom}(b_2'^*M',b_1'^!L').
+\]
+于是可以考察\Term{local-term}{局部项}（第 III 讲4.2.7）$\langle u',v'\rangle_{z'}\in\Lambda$。另一方面，若 $X,Y,A,B$ 是 $X',Y',A',B'$ 分别在 $x',y',s',t'$ 处的\Term{strict-localization}{严格局部化}，$a:A\to X\times_S Y$、$b:B\to X\times_S Y$ 是由 $a',b'$ \Term{derive}{导出}的\Term{morphism}{态射}，$L=L'|X$、$M=M'|Y$，而 $u\in\operatorname{Hom}(a_1^*L,a_2^!M)$、$v\in\operatorname{Hom}(b_2^*M,b_1^!L)$ 是由 $u',v'$ \Term{derive}{导出}的\Term{arrow}{箭头}，则数据 $(X,Y,a,b,u,v)$ 满足1.1开头的假设，因而\Term{cup-product}{杯积}1.1.2 $\langle u,v\rangle\in\Lambda$ 有定义。由\Term{local-term}{局部项}（第 III 讲4.2.7）的构造与\Term{localization}{局部化}相容（第 III 讲4.2.6），有
+\[
+ \langle u',v'\rangle_{z'}=\langle u,v\rangle.
+\]
+此外，容易看出，满足1.1开头假设的任一数据 $(X,Y,a,b,u,v)$ 都来自如上的一个数据 $(X',Y',a',b',x',y',z',s',t',u',v')$；若愿意，还可以假设 $A'\times_{X'\times_S Y'}B'$ 只含 $z'$。
+
+一般来说，\Term{cup-product}{杯积}1.1.1和1.1.2并不相等。然而有如下\Term{theorem}{定理}，它是第一部分的主要结果。
+\begin{SGAresult}{\Term{theorem}{定理}}{1.2}
+在1.1开头的假设下，再假设 $A$ 和 $B$ 处于\Term{general-position}{一般位置}，即它们在 $X\times_S Y$ 中的像在 $(x,y)$ 处的\Term{tangent-cone}{切锥}之交仅为 $(x,y)$；并假设 $A$ 与 $X\times\{y\}$、$\{x\}\times Y$ 与 $B$ 也分别处于\Term{general-position}{一般位置}。则
+\[
+ \langle u_z,v_z\rangle=\langle u,v\rangle.\tag{1.2.1}
+\]
+\end{SGAresult}
+
+\SourcePage{155}
+由 Lefschetz--Verdier 公式（第 III 讲4.7），结合1.1.3，得到：
+\begin{SGAresult}{推论}{1.3}
+设 $F$ 是\Term{proper}{固有}\Term{smooth}{光滑}\Term{curve}{曲线} $X/S$ 的\Term{endomorphism}{自同态}，其\Term{fixed-point}{不动点}\Term{scheme}{概形} $X^F$ \Term{finite}{有限}，并且在其中各点处 $F$ 的图与\Term{diagonal}{对角线}\Term{transverse}{横截}。设 $L\in\operatorname{ob}D_{\mathrm{ctf}}(X)$、$u\in\operatorname{Hom}(F^*L,L)$。则
+\[
+ \operatorname{Tr}((F,u),R\Gamma(X,L))=
+ \sum_{x\in X^F}\operatorname{Tr}(u_x,L_x),
+\]
+两端的\Term{trace}{迹}均取（SGA 6 I 8）中的意义。
+\end{SGAresult}
+若 $L$ 集中在\Term{degree}{次数}0，1.3就是 Artin--Verdier 的结果（[6] 4.1）。利用第 XV 讲中说明的取\Term{limit}{极限}过程，由1.3得到 $\ell$-进\Term{cohomology}{上同调}中的类似结果（[6] 1.1），（第 XV 讲第2节第3号命题2）：
+\begin{SGAresult}{推论}{1.3.1}
+设 $X,F$ 如1.3，$L$ 是 $X$ 上的\Term{constructible}{可构造} $\mathbb Q_\ell$-\Term{sheaf}{层}（$\ell$ 与 $p$ 互素），$u\in\operatorname{Hom}(F^*L,L)$。则
+\[
+ \sum_i(-1)^i\operatorname{Tr}((F,u),H^i(X,L))
+ =\sum_{x\in X^F}\operatorname{Tr}(u_x,L_x).
+\]
+\end{SGAresult}
+1.3、1.3.1的假设特别适用于 $(F,u)$ 为 Frobenius \Term{correspondence}{对应}的情形（第 XV 讲2），因而得到 Grothendieck 的\Term{trace}{迹}公式（[2] 5.1），（SGA $4\frac12$《报告》3.2）。
+
+\textbf{1.4.} 沿用1.1的记号，假设 $b_2$ 和 $a_1$ \Term{finite}{有限}且\Term{surjectivity}{满射}（代替 $a_2$ 和 $b_1$），考察\Term{dual-correspondence}{对偶对应}（第 III 讲5.1）
+\[
+ Du\in\operatorname{Hom}(a_2^*DM,a_1^!DL),\qquad
+ Dv\in\operatorname{Hom}(b_1^*DL,b_2^!DM),
+\]
+以及\Term{homomorphism}{同态}
+\[
+ (Du)_z\in\operatorname{Hom}((DM)_y,(DM)_x),\qquad
+ (Dv)_z\in\operatorname{Hom}((DL)_x,(DM)_y).
+\]
+假设 $(A,\{x\}\times Y)$、$(X\times\{y\},B)$、$(A,B)$ 都处于\Term{general-position}{一般位置}。将1.2用于 $Du,Dv$，得到
+\[
+ \langle Du,Dv\rangle=\langle(Du)_z,(Dv)_z\rangle,
+\]
+\SourcePage{156}
+从而由（第 III 讲5.1.6）和（第 III 讲4.2.6），
+\[
+ \langle u,v\rangle=\langle(Du)_z,(Dv)_z\rangle.\tag{1.4.1}
+\]
+由此注记及1.2，利用 Lefschetz--Verdier 公式（第 III 讲4.7），得到：
+\begin{SGAresult}{推论}{1.5}
+设 $X,Y$ 是 $S$ 上的\Term{proper}{固有}\Term{smooth}{光滑}\Term{curve}{曲线}，$a:A\to X\times_S Y$、$b:B\to X\times_S Y$ 是\Term{correspondence}{对应}，其中 $A,B$ 为 $S$ 上的\Term{proper}{固有}\Term{curve}{曲线}。设
+\[
+ L\in\operatorname{ob}D_{\mathrm{ctf}}(X),\quad M\in\operatorname{ob}D_{\mathrm{ctf}}(Y),\quad
+ u\in\operatorname{Hom}(a_1^*L,a_2^!M),\quad v\in\operatorname{Hom}(b_2^*M,b_1^!L).
+\]
+假设 $C=A\times_{X\times_S Y}B$ 在 $S$ 上\Term{finite}{有限}，并且具有\Term{resolution}{分解} $C=C_1\amalg C_2$，满足下述性质：对 $z\in C_1$，在 $z$ 的像处作\Term{strict-localization}{严格局部化}后由 $a_2,b_1$ \Term{derive}{导出}的\Term{morphism}{态射}\Term{finite}{有限}；若 $(x,y)$ 表示 $z$ 在 $X\times_S Y$ 中的像，则 $(A,B)$、$(A,X\times\{y\})$、$(\{y\}\times Y,B)$ 均在 $(x,y)$ 处处于\Term{general-position}{一般位置}。对 $z\in C_2$，在 $z$ 的像处作\Term{strict-localization}{严格局部化}后由 $a_1,b_2$ \Term{derive}{导出}的\Term{morphism}{态射}\Term{finite}{有限}，且 $(A,B)$、$(A,\{x\}\times Y)$、$(B,X\times\{y\})$ 均在 $(x,y)$ 处处于\Term{general-position}{一般位置}（“\Term{general-position}{一般位置}”意指所考察的\Term{curve}{曲线}对的像在 $(x,y)$ 处的\Term{tangent-cone}{切锥}之交仅为 $(x,y)$）。若
+\[
+ u_*\in\operatorname{Hom}(R\Gamma(X,L),R\Gamma(Y,M)),\qquad
+ v_*\in\operatorname{Hom}(R\Gamma(Y,M),R\Gamma(X,L))
+\]
+为 $u,v$ 所定义的\Term{morphism}{态射}（第 III 讲3.7.6），则按1.1.1及（第 III 讲5.1.5）的记号，
+\[
+ \langle u_*,v_*\rangle=
+ \sum_{z\in C_1}\langle u_z,v_z\rangle+
+ \sum_{z\in C_2}\langle(Du)_z,(Dv)_z\rangle.\tag{1.5.1}
+\]
+\end{SGAresult}
+\textbf{1.6.} 若接受 $\ell$-进\Term{cohomology}{上同调}的\Term{form}{形式}体系，利用第 XIV 讲的取\Term{limit}{极限}技术，从1.5可得：当 $X,Y,a,b$ 满足1.5的假设时，对
+\[
+ L\in\operatorname{ob}D_c^b(X,\mathbb Q_\ell),\quad
+ M\in\operatorname{ob}D_c^b(Y,\mathbb Q_\ell)\quad(\ell\text{ 与 }p\text{ 互素}),
+\]
+以及 $u\in\operatorname{Hom}(a_1^*L,a_2^!M)$、$v\in\operatorname{Hom}(b_2^*M,b_1^!L)$，在 $\mathbb Q_\ell$ 中成立与1.5.1类似的等式。这一公式包含 Langlands [4]的命题7.12作为特例：取 $X=Y$，令 $M$ 为 Langlands 所考察的\Term{sheaf}{层} $F$，$L=\alpha M$（$\alpha\in\mathbb Q_\ell^*$），$A$ 为 $X\times X$ 的\Term{diagonal}{对角线}，$b$ 为该处的\Term{correspondence}{对应} $\phi$；
+\SourcePage{157}
+令 $u$ 为由 $\alpha^{-1}:L\to M$ 给出的以 $A$ 为\Term{support}{支撑}的对应，$v$ 为该处的\Term{correspondence}{对应} $\Phi$。按该处的记号，$C_1$（分别为 $C_2$）是满足 $a<d$（分别为 $a>d$）的\Term{fixed-point}{不动点}的\Term{set}{集合}。
+
+\textbf{1.7.} 在1.2的假设下，取 $u$（分别为 $v$）为由
+\[
+ \operatorname{Tr}_{a_2}:a_{2*}\Lambda\to\Lambda
+ \qquad(\text{分别为 }\operatorname{Tr}_{b_1}:b_{1*}\Lambda\to\Lambda)
+\]
+定义的\Term{correspondence}{对应} $\operatorname{cl}(A)$（分别为 $\operatorname{cl}(B)$）。公式1.2.1写成
+\[
+ \deg(a_2)\deg(b_1)=\langle\operatorname{cl}(A),\operatorname{cl}(B)\rangle,\tag{1.7.1}
+\]
+其中 $\deg(a_2)$（分别为 $\deg(b_1)$）表示 $a_2$（分别为 $b_1$）的一般\Term{degree}{次数}。考虑到\Term{general-position}{一般位置}假设，1.7.1左端正是\Term{cycle}{圈} $a_*A,b_*B$ 在 $(x,y)$ 处的\Term{intersection-multiplicity}{交数}；这两个\Term{cycle}{圈}是 $A,B$ 的\Term{direct-image}{正像}。由与\Term{cycle}{圈}关联的\Term{cohomology-class}{上同调类}的构造与相交相容（SGA $4\frac12$《圈》2.3.8），不难直接\Term{pushout}{推出}1.7.1。
+
+\SourcePage{158}
+\SGAsection{2}{归结为一个消失定理}
+\textbf{2.1.} 在1.1的假设下，以 $s$（分别为 $t$）表示 $z$ 在 $A$（分别为 $B$）中的像；令 $i:U=X-\{x\}\hookrightarrow X$、$j:V=Y-\{y\}\hookrightarrow Y$ 为\Term{canonical}{典范}\Term{embedding}{嵌入}。由于 $a_2,b_1$ \Term{finite}{有限}，有 $a_2^{-1}(y)=s$、$b_1^{-1}(x)=t$，故 $a_1^{-1}(U)\subset a_2^{-1}(V)$、$b_2^{-1}(V)\subset b_1^{-1}(U)$，并有\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}[column sep=large]
+ U\arrow[d,hook,"i"']&a_1^{-1}(U)\arrow[l,"a'_1"']\arrow[r,"a'_2"]\arrow[d,hook]&V\arrow[d,hook,"j"]\\
+ X&A\arrow[l,"a_1"]\arrow[r,"a_2"']&Y
+\end{tikzcd}
+\qquad
+\begin{tikzcd}[column sep=large]
+ U\arrow[d,hook,"i"']&b_2^{-1}(V)\arrow[l,"b'_1"']\arrow[r,"b'_2"]\arrow[d,hook]&V\arrow[d,hook,"j"]\\
+ X&B\arrow[l,"b_1"]\arrow[r,"b_2"']&Y
+\end{tikzcd}
+\]
+第一图的左右方块分别记为（1）、（2），第二图的左右方块分别记为（3）、（4）；其中方块（1）和（4）是\Term{cartesian}{笛卡尔}的。
+
+\begin{SGAresult}{\Term{lemma}{引理}}{2.2}
+为证明1.2，只需考虑下列两种情形：a) $L_x=0$、$M_y=0$；b) $L|U=0$、$M|U=0$。
+\end{SGAresult}
+\begin{proof}
+考察 $L,M$ 上由下列子\Term{complex}{复形}定义的递减\Term{filtration}{滤过}：
+\[
+ F^nL=\begin{cases}L&n\leq0,\\ i_!i^*L&n=1,\\0&n>1,\end{cases}
+ \qquad
+ F^nM=\begin{cases}M&n\leq0,\\j_!j^*M&n=1,\\0&n>1.\end{cases}
+\]
+则\Term{complex}{复形} $a_{2*}a_1^*L$（分别为 $b_{1*}b_2^*M$）具有\Term{filtration}{滤过} $F^na_{2*}a_1^*L=a_{2*}a_1^*F^nL$。当 $n\leq0$ 时 $F^na_{2*}a_1^*L=a_{2*}a_1^*L$，当 $n>1$ 时为0；此外，由于 $a_2$ \Term{finite}{有限}且方块（1）\Term{cartesian}{笛卡尔}，有
+\[
+ F^1a_{2*}a_1^*L=j_!(a'_{2!}a_1'^*i^*L).
+\]
+\SourcePage{159}
+同样有
+\[
+ F^nb_{1*}b_2^*M=\begin{cases}
+ b_{1*}b_2^*M&n\leq0,\\i_!(b'_{1!}b_2'^*j^*M)&n=1,\\0&n>1.
+ \end{cases}
+\]
+可以假设 $u$（分别为 $v$）由\Term{complex}{复形}\Term{homomorphism}{同态}
+\[
+ \underline u:a_{2*}a_1^*L\longrightarrow M
+ \qquad(\text{分别为 }\underline v:b_{1*}b_2^*M\longrightarrow L)
+\]
+定义。以上公式表明，复合
+\[
+ F^1a_{2*}a_1^*L\longrightarrow a_{2*}a_1^*L\xrightarrow{\underline u}M
+ \quad
+ (\text{分别为 }F^1b_{1*}b_2^*M\longrightarrow b_{1*}b_2^*M\xrightarrow{\underline v}L)
+\]
+唯一地通过 $F^1M$（分别为 $F^1L$）\Term{resolution}{分解}，换言之，$\underline u$（分别为 $\underline v$）是\Term{filtered-complex}{滤过复形}的\Term{homomorphism}{同态}。所以 $u$（分别为 $v$）来自一个\Term{filtered-correspondence}{滤过对应}（按第 III 讲4.13的意义），仍记为
+\[
+ \underline u\in\operatorname{Hom}_{DF}(a_1^*L,a_2^!M)
+ \qquad(\text{分别为 }\underline v\in\operatorname{Hom}_{DF}(b_2^*M,b_1^!L)).
+\]
+由\Term{cup-product}{杯积}的可\Term{additive}{加性}（[3] V 3.8.7），（第 III 讲4.13.1），有
+\[
+ \langle u_z,v_z\rangle=
+ \langle\operatorname{gr}^0\underline u_z,\operatorname{gr}^0\underline v_z\rangle+
+ \langle\operatorname{gr}^1\underline u_z,\operatorname{gr}^1\underline v_z\rangle,
+\]
+\[
+ \langle u,v\rangle=
+ \langle\operatorname{gr}^0\underline u,\operatorname{gr}^0\underline v\rangle+
+ \langle\operatorname{gr}^1\underline u,\operatorname{gr}^1\underline v\rangle.
+\]
+由此得到\Term{lemma}{引理}，因为 $\operatorname{gr}^1L=i_!i^*L$（分别为 $\operatorname{gr}^1M=j_!j^*M$）在 $x$（分别为 $y$）处的\Term{stalk}{茎}为零，而 $\operatorname{gr}^0L$（分别为 $\operatorname{gr}^1M$）集中在 $x$（分别为 $y$）。
+\end{proof}
+
+\begin{SGAresult}{\Term{lemma}{引理}}{2.3}
+在1.1的假设下，假设 $L|U=0$、$M|V=0$。则有 $\langle u_z,v_z\rangle=\langle u,v\rangle$。
+\end{SGAresult}
+\begin{proof}
+证明的想法是：此时 $u,v$ 是集中在\Term{closed-point}{闭点}的\Term{complex}{复形}之间的\Term{correspondence}{对应}的\Term{direct-image}{正像}，所要建立的公式无非是\Term{projection}{投影} $s\to S$、$y\to S$ 的 Lefschetz 公式。由1.1.3，可将1.1的数据替换如下：$X$（分别为 $Y$）是一条\Term{smooth}{光滑} $S$-\Term{curve}{曲线}，带有\Term{closed-point}{闭点} $x$（分别为 $y$）；$A$（分别为 $B$）是一条\Term{separated}{分离} $S$-\Term{curve}{曲线}；$a:A\to X\times_S Y$、$b:B\to X\times_S Y$ 是\Term{finite}{有限} $S$-\Term{morphism}{态射}，使 $A\times_{X\times_S Y}B$ 只含位于 $(x,y)$ 上方的一个\Term{closed-point}{闭点} $z$；
+\[
+ u\in\operatorname{Hom}(a_1^*L,a_2^!M),\quad
+ v\in\operatorname{Hom}(b_2^*M,b_1^!L),\quad
+ L=h_{1*}L',\quad M=h_{2*}M',
+\]
+其中 $L'\in\operatorname{ob}D_{\mathrm{ctf}}(\{x\})$、$M'\in\operatorname{ob}D_{\mathrm{ctf}}(\{y\})$，
+\SourcePage{160}
+$h_1:\{x\}\to X$、$h_2:\{y\}\to Y$ 表示\Term{canonical}{典范}\Term{embedding}{嵌入}。需要证明 $\langle u_z,v_z\rangle=\langle u,v\rangle_z$，其中
+\[
+ u_z\in\operatorname{Hom}(R\Gamma(X,L),R\Gamma(Y,M)),\qquad
+ v_z\in\operatorname{Hom}(R\Gamma(Y,M),R\Gamma(X,L))
+\]
+如1.1中定义，而 $\langle u,v\rangle_z$ 是\Term{cup-product}{杯积}（第 III 讲4.2.7）在 $z$ 处的值。有
+\[
+ R\Gamma(X,L)=R\Gamma_c(X,L)=L_x,\qquad
+ R\Gamma(Y,M)=R\Gamma_c(Y,M)=M_y,
+\]
+而 $u_z$（分别为 $v_z$）正是 $u$（分别为 $v$）在 $S$ 上按（第 III 讲3.7.6）意义的\Term{direct-image}{正像} $u_*$（分别为 $v_*$），这可由计算方法（第 III 讲3.5 b)）看出。另一方面，若 $h=h_1\times_S h_2:(x,y)\to X\times_S Y$ 为\Term{embedding}{嵌入}，$a':A'\to(x,y)$、$b':B'\to(x,y)$ 表示 $a,b$ 在 $(x,y)$ 处的\Term{fiber}{纤维}（各只含一个点），则有\Term{canonical}{典范}\Term{isomorphism}{同构}
+\[
+ h_*a'_*a'^!(DL_x\overset L\otimes_S M_y)\xrightarrow{\sim}
+ a_*a^!(DL\overset L\otimes_S M),
+\]
+\[
+ h_*b'_*b'^!(L_x\overset L\otimes_S DM_y)\xrightarrow{\sim}
+ b_*b^!(L\overset L\otimes_S DM),
+\]
+并且\Term{arrow}{箭头}
+\[
+ h_*:\operatorname{Hom}(a_1'^*L_x,a_2'^!M_y)\longrightarrow
+ \operatorname{Hom}(a_1^*L,a_2^!M),
+\]
+\[
+ h_*:\operatorname{Hom}(b_2'^*M_y,b_1'^!L_x)\longrightarrow
+ \operatorname{Hom}(b_2^*M,b_1^!L)
+\]
+（第 III 讲3.7.6）是\Term{isomorphism}{同构}。因此\Term{correspondence}{对应} $u,v$ 唯一地写成
+\[
+ u=h_*u',\qquad v=h_*v',\tag{1}
+\]
+其中 $u'\in\operatorname{Hom}(a_1'^*L_x,a_2'^!M_y)$、$v'\in\operatorname{Hom}(b_2'^*M_y,b_1'^!L_x)$。由 $(h_1,h_2,A'\to A,B'\to B)$ 的 Lefschetz 公式（第 III 讲4.5.1），有
+\[
+ \langle u,v\rangle_z=\langle u',v'\rangle_z.\tag{2}
+\]
+另一方面，由（1）有 $u_*=u'_*$、$v_*=v'_*$；从而由 $\{x\}\to S$、$\{y\}\to S$ 的 Lefschetz 公式，
+\[
+ \langle u_*,v_*\rangle=\langle u',v'\rangle_z.\tag{3}
+\]
+考虑到前面的注记，将（2）与（3）结合即得结论。
+\end{proof}
+
+\begin{SGAresult}{\Term{lemma}{引理}}{2.4}
+为证明1.2，可以假设 $a,b$ 都是\Term{closed-immersion}{闭浸入}；且只需证明，若 $L_x=0$、$M_y=0$，则\Term{restriction}{限制}\Term{arrow}{箭头}
+\SourcePage{161}
+\[
+ H_A^0(X\times_S Y,DL\overset L\otimes_S M)\longrightarrow
+ H_z^0(B,b^*(DL\overset L\otimes_S M))\tag{2.4.1}
+\]
+为零。
+\end{SGAresult}
+\begin{proof}
+置 $X\times_S Y=Z$。作为 $a,b$ 的像的闭子\Term{scheme}{概形} $a':A'\to Z$、$b':B'\to Z$ 满足与 $a,b$ 相同的假设。令 $u'$（分别为 $v'$）为以 $A'$（分别为 $B'$）为\Term{support}{支撑}的\Term{correspondence}{对应}，它是 $u$（分别为 $v$）的\Term{direct-image}{正像}，由\Term{adjoint}{伴随箭头}
+\[
+ f_*f^!\longrightarrow1\qquad(\text{分别为 }g_*g^!\longrightarrow1)
+\]
+\Term{derive}{导出}的\Term{arrow}{箭头}给出，其中 $f:A\to A'$（分别为 $g:B\to B'$）是\Term{projection}{投影}。显然 $u_z=u'_z$、$v_z=v'_z$。另一方面，由\Term{cup-product}{杯积}1.1.2的定义容易\Term{pushout}{推出} $\langle u,v\rangle=\langle u',v'\rangle$，这就得到第一个断言。由2.2和2.3，可以假设 $L_x=0$、$M_y=0$，此时1.2的结论写成 $\langle u,v\rangle=0$。设 $P,Q\in\operatorname{ob}D_{\mathrm{ctf}}(Z)$。\Term{cup-product}{杯积}
+\[
+ H_A^0(Z,P)\otimes H_B^0(Z,Q)\longrightarrow H_z^0(Z,P\overset L\otimes Q)
+\]
+\Term{resolution}{分解}为
+\[
+ \begin{aligned}
+ H_A^0(Z,P)\otimes H_B^0(Z,Q)&\xrightarrow{b^*\otimes1}
+ H_z^0(B,b^*P)\otimes H_B^0(Z,Q)\\
+ &\longrightarrow H_z^0(Z,P\overset L\otimes Q),
+ \end{aligned}
+\]
+其中 $b^*$ 是\Term{restriction}{限制}，第二\Term{arrow}{箭头}是（SGA $4\frac12$《圈》1.2.1）所考察乘积的一个变体，来自\Term{sheaf}{层}的\Term{section}{截面}层次上显然的乘积（这一断言容易验证，例如可利用 SGA 4 XVII 4.2的松\Term{resolution}{消解}；若 $a':\{z\}\to B$、$b':\{z\}\to A$、$c:\{z\}\to Z$ 是\Term{embedding}{嵌入}，也可使用 Künneth \Term{arrow}{箭头}（第 III 讲4.2.1）
+\[
+ a'^!P\overset L\otimes_z b'^!Q\longrightarrow c^!(P\overset L\otimes Q)
+\]
+的标准\Term{resolution}{分解}：先是“\Term{base-change}{基变换}\Term{arrow}{箭头}”
+\[
+ a'^!P\overset L\otimes_z b'^!Q\longrightarrow
+ a'^!b^*P\overset L\otimes a'^*b^!Q,
+\]
+再接“\Term{projection}{投影}\Term{arrow}{箭头}”
+\[
+ a'^!b^*P\overset L\otimes a'^*b^!Q\longrightarrow
+ a'^!(b^*P\overset L\otimes b^!Q)\longrightarrow
+ a'^!b^!(P\overset L\otimes Q)).
+\]
+取 $P=DL\overset L\otimes_S M$、$Q=L\overset L\otimes_S DM$，回到 $\langle u,v\rangle$ 的定义（第 III 讲4.2.5），可见只需证明 $b^*u=0$，由此得到结论。
+\end{proof}
+
+\SourcePage{162}
+由2.4，1.2将由下述更精确的结果\Term{pushout}{推出}。
+\begin{SGAresult}{命题}{2.5}
+在1.2的假设下，假设 $a,b$ 为\Term{closed-immersion}{闭浸入}且 $L_x=0$、$M_y=0$。以 $T$ 表示 $X\times_S Y$ 在 $z=(x,y)$ 处的\Term{strict-localization}{严格局部化}，并将 $A,B$ 视为 $T$ 的闭子\Term{scheme}{概形}。则\Term{restriction}{限制}\Term{arrow}{箭头}
+\[
+ b^*:R\Gamma_A(T,(DL\overset L\otimes_S M)|T)\longrightarrow
+ R\Gamma_z(B,b^*(DL\overset L\otimes_S M)),
+\]
+\[
+ a^*:R\Gamma_B(T,(L\overset L\otimes_S DM)|T)\longrightarrow
+ R\Gamma_z(A,a^*(L\overset L\otimes_S DM))
+\]
+为零。
+\end{SGAresult}
+\textbf{2.6.} 2.5的证明占据本节余下部分以及第3、4节。由于陈述的\Term{symmetric}{对称}性，只需证明关于 $b^*$ 的断言。现将它改写成更便于使用的\Term{form}{形式}。先注意
+\[
+ R\Gamma(T,(DL\overset L\otimes_S M)|T)
+ =(DL\overset L\otimes_S M)_z=(DL)_x\overset L\otimes M_y=0,
+\]
+因为 $M_y=0$；同样地，
+\[
+ R\Gamma(B,b^*(DL\overset L\otimes_S M))=(DL\overset L\otimes_S M)_z=0.
+\]
+因此，\Term{relative-cohomology}{相对上同调}三角给出\Term{isomorphism}{同构}
+\[
+ R\Gamma(T-A,(DL\overset L\otimes_S M)|T-A)
+ \xrightarrow{\sim}R\Gamma_A(T,(DL\overset L\otimes_S M)|T)[1],
+\]
+\[
+ R\Gamma(B-z,(DL\overset L\otimes_S M)|B-z)
+ \xrightarrow{\sim}R\Gamma_z(B,b^*(DL\overset L\otimes_S M))[1],
+\]
+在这些\Term{isomorphism}{同构}下，2.5中的\Term{arrow}{箭头} $b^*$ \Term{translation}{平移}1后等同于\Term{restriction}{限制}
+\[
+ \begin{aligned}
+ b^*:R\Gamma(T-A,(DL\overset L\otimes_S M)|T-A)
+ \longrightarrow R\Gamma(B-z,(DL\overset L\otimes_S M)|B-z).
+ \end{aligned}\tag{2.6.1}
+\]
+由于 $L_x=0$、$M_y=0$，可写成
+\[
+ L=i_!DP,\qquad M=j_!Q,\tag{2.6.2}
+\]
+\SourcePage{163}
+其中 $i:X-x\to X$、$j:Y-y\to Y$ 为\Term{embedding}{嵌入}，$P\in\operatorname{ob}D_{\mathrm{ctf}}(X-x)$、$Q\in\operatorname{ob}D_{\mathrm{ctf}}(Y-y)$。由\Term{duality-isomorphism}{对偶同构}（SGA 4 XVIII 3.19.6）（再取\Term{limit}{极限}），有 $DL=Ri_*DDP=Ri_*P$，故
+\[
+ DL\overset L\otimes_S M=Ri_*P\overset L\otimes_S j_!Q.
+\]
+置 $X\times_S Y=Z$，将 $X\times\{y\}$、$\{x\}\times Y$ 视为 $Z$（分别为 $T$）的闭子\Term{scheme}{概形}，并将其简记为 $X,Y$。记\Term{embedding}{嵌入}为
+\[
+ \begin{gathered}
+ f':Z-Y\hookrightarrow Z,\qquad g':Z-(X\cup Y)\hookrightarrow Z-Y,\\
+ f:T-Z\hookrightarrow T,\qquad g:T-(X\cup Y)\hookrightarrow T-Y.
+ \end{gathered}
+\]
+由 \Term{kunneth-formula}{Künneth 公式}（第 III 讲1.6.4）取\Term{limit}{极限}，得到
+\[
+ DL\overset L\otimes_S M=Rf'_*g'_!(P\overset L\otimes_S Q),
+\]
+因而
+\[
+ (DL\overset L\otimes_S M)|T
+ =Rf_*g_!((P\overset L\otimes_S Q)|T-(X\cup Y)).\tag{2.6.3}
+\]
+在此等同下，2.6.1写成
+\[
+ b^*:R\Gamma(T-(Y\cup A),g_!(E)|T-(Y\cup A))
+ \longrightarrow R\Gamma(B-z,g_!(E)|B-z),\tag{2.6.4}
+\]
+其中 $E=(P\overset L\otimes_S Q)|T-(X\cup Y)$。
+
+在接下来的两节中，我们将证明\Term{arrow}{箭头}2.6.4为零：首先归结为 $E$ 的\Term{cohomology}{上同调}\Term{sheaf}{层}具有\Term{tame-ramification}{温和分歧}的情形（更精确地说，对某个素数 $\ell\ne p$，惯性\Term{action}{作用}通过一个 $\ell$-群），然后借助\Term{purity-theorem}{纯性定理}直接处理这种情形。
+
+\SourcePage{164}
+\SGAsection{3}{归结为温和情形}
+\textbf{3.1.} 回忆基环 $\Lambda$ 被某个与 $p$ 互素的整数\Term{annihilate}{零化}，因此是若干 Noether 环 $\Lambda_i$ 的\Term{direct-product}{直积}，每个 $\Lambda_i$ 被某个素数 $\ell_i\ne p$ 的\Term{nilpotent}{幂零}化。对每个 $S$ 上的\Term{scheme}{概形} $S'$，\Term{derived-category}{导出范畴} $D(S',\Lambda)$ 是各\Term{category}{范畴} $D(S',\Lambda_i)$ 的积。因此，为证明2.6.4为零，可以假设 $\Lambda$ 被某个素数 $\ell\ne p$ 的\Term{nilpotent}{幂零}化。另一方面，可以假设 $P$（分别为 $Q$）\Term{bounded}{有界}，且各\Term{set-component}{分量}\Term{locally-free}{局部自由}并为\Term{finite-type}{有限型}。
+
+\textbf{3.2.} 置 $X-x=U$、$Y-y=V$。设 $U''/U$ 是一个群为 $G$ 的\Term{finite}{有限}\Term{galois-covering}{Galois 覆盖}，使 $P$ 的各\Term{set-component}{分量}\Term{trivialization}{平凡化}；令 $H$ 为 $G$ 的 Sylow $\ell$-\Term{subgroup}{子群}，$U'=U''/H$ 为商\Term{covering}{覆盖}，$X'$ 为 $X$ 在 $U'$ 中的\Term{normalization}{正规化}所得的\Term{strictly-local}{严格局部}\Term{trait}{离散赋值环谱}：$X'/X$ 是\Term{degree}{次数} $d_1$ 与 $\ell$ 互素的\Term{finite}{有限}\Term{connected}{连通}\Term{covering}{覆盖}，而 $P'=P|U'$ 的各\Term{set-component}{分量}所定义的 $\pi_1(U')$ 的\Term{representation}{表示}通过一个\Term{finite}{有限} $\ell$-群\Term{resolution}{分解}。对 $Q$ 作同样处理，得到一个\Term{degree}{次数} $d_2$ 与 $\ell$ 互素的\Term{finite}{有限}\Term{connected}{连通}\Term{covering}{覆盖} $Y'/Y$，它在 $V$ 上诱导一个\Term{etale}{平展}\Term{covering}{覆盖} $V'$，使 $Q'=Q|V'$ 的各\Term{set-component}{分量}定义的 $\pi_1(V')$ 的\Term{representation}{表示}通过一个\Term{finite}{有限} $\ell$-群\Term{resolution}{分解}。令
+\[
+ d=d_1e_1=d_2e_2=\operatorname{lcm}(d_1,d_2).
+\]
+在必要时对 $X'$（分别为 $Y'$）的一个\Term{uniformizer}{一致化参数}取 $e_1$ 次根（分别为 $e_2$ 次根），便可以假设 $X'$（分别为 $Y'$）仍具有上述性质，并且还有 $d_1=d_2=d$。
+
+设 $x'$（分别为 $y'$）为 $X'$（分别为 $Y'$）的\Term{closed-point}{闭点}，$T'$ 为 $X'\times_S Y'$ 在 $(x',y')$ 处的\Term{strict-localization}{严格局部化}，$z'$ 为 $T'$ 的\Term{closed-point}{闭点}，$A'$（分别为 $B'$）为 $A$（分别为 $B$）在 $T'$ 中的\Term{inverse-image}{逆像}；置
+\[
+ E'=(P\overset L\otimes_S Q)|T'-(X'\cup Y')
+ =(P'\overset L\otimes_S Q')|T'-(X'\cup Y').
+\]
+于是有如下\Term{restriction}{限制}\Term{arrow}{箭头}的\Term{commutative-diagram}{交换方块}：
+\[
+\resizebox{\textwidth}{!}{$
+\begin{tikzcd}[ampersand replacement=\&,column sep=large]
+ R\Gamma(T-(Y\cup A),g_!(E)|T-(Y\cup A))\arrow[r,"b^*"]\arrow[d]
+ \&R\Gamma(B-z,g_!(E)|B-z)\arrow[d,"{(1)}"]\\
+ R\Gamma(T'-(Y'\cup A'),g'_!(E')|T'-(Y'\cup A'))\arrow[r,"b'^*"']
+ \&R\Gamma(B'-z',g'_!(E')|B'-z').
+\end{tikzcd}$}
+\]
+\SourcePage{165}
+其中 $b':B'\to T'$、$g':T'-(X'\cup Y')\to T'-Y'$ 为\Term{embedding}{嵌入}。\Term{covering}{覆盖} $T'/T$ \Term{finite}{有限}，\Term{degree}{次数}为 $d^2$，且在 $X\cup Y$ 以外\Term{etale}{平展}，因此诱导 $B'-z'$ 到 $B-z$ 的\Term{degree}{次数}为 $d^2$ 的\Term{etale}{平展}\Term{covering}{覆盖}。所以（1）与\Term{trace}{迹}\Term{morphism}{态射}
+\[
+ R\Gamma(B'-z',g'_!(E')|B'-z')\longrightarrow R\Gamma(B-z,g_!(E)|B-z)
+\]
+的复合是乘以 $d^2$；由于 $\ell$ 不整除 $d$，这是一个\Term{isomorphism}{同构}。因此，为证明\Term{arrow}{箭头}2.6.4为零，只需证明 $b'^*=0$。只要确保 $A',B'$ 满足1.2的\Term{general-position}{一般位置}假设，就归结到了如下情形：$P$（分别为 $Q$）的各\Term{set-component}{分量}定义的 $\pi_1(U)$（分别为 $\pi_1(V)$）的\Term{representation}{表示}通过一个\Term{finite}{有限} $\ell$-群\Term{resolution}{分解}。这将由下面的\Term{lemma}{引理}得到。
+
+\begin{SGAresult}{\Term{lemma}{引理}}{3.3}
+在1.2的假设下，设 $a,b$ 为\Term{closed-immersion}{闭浸入}，$X'/X$、$Y'/Y$ 是\Term{strictly-local}{严格局部} $S$-\Term{trait}{离散赋值环谱}的同\Term{degree}{次数} $d$ 的\Term{finite}{有限}\Term{covering}{覆盖}，以 $A'$（分别为 $B'$）表示 $A$（分别为 $B$）在 $X'\times_S Y'$ 中的\Term{inverse-image}{逆像}。则各对 $(A',B')$、$(A',X')$、$(Y',B')$ 都处于\Term{general-position}{一般位置}（按1.2的意义）。\footnote{这里沿用通常的记号滥用 $X'=X'\times\{y'\}$ 等，其中 $x'$（分别为 $y'$）是 $X'$（分别为 $Y'$）的\Term{closed-point}{闭点}。}
+\end{SGAresult}
+在作一些准备之后，再证明3.3。
+
+\begin{SGAresult}{\Term{lemma}{引理}}{3.4}
+设 $X\xleftarrow{s_1}W\xrightarrow{s_2}Y$ 是 $S$-\Term{trait}{离散赋值环谱}的\Term{finite}{有限}\Term{morphism}{态射}，$s=(s_1,s_2):W\to X\times_S Y$；令 $u,v,w$ 分别为 $X,Y,W$ 的\Term{uniformizer}{一致化参数}，使
+\[
+ s_1^*u=aw^m\pmod{w^{m+1}},\qquad
+ s_2^*v=bw^n\pmod{w^{n+1}},\qquad a,b\in k^*.
+\]
+则：(i) 若 $m<n$，$s(W)$ 在 $z=(x,y)$ 处与 $X$ \Term{tangent}{相切}。
+
+(ii) 若 $m=n$，$s(W)$ 与 $X\times_S Y$ 中方程为 $ap_2^*(v)-bp_1^*(u)=0$ 的子\Term{scheme}{概形}\Term{tangent}{相切}。
+\end{SGAresult}
+\SourcePage{166}
+\begin{proof}
+设 $Z=X\times_S Y$，$W'$ 为 $s$ 的像的\Term{reduced}{既约}闭子\Term{scheme}{概形}。在 $Z$ 于 $z$ 处的\Term{tangent-space}{切空间}中，$W'$ 的切线相对于 $X$ 的切线的\Term{slope}{斜率}，就是 $p_2^*(v)/p_1^*(u)$ 在 $W'$ 上诱导的函数在原点的值；这也是 $p_2^*(v)/p_1^*(u)$ 在 $W$ 上诱导的函数在原点的值，所以在情形(i)（分别为(ii)）中为0（分别为 $b/a$）。
+\end{proof}
+在3.4的情形中，定义 $W$ 相对于 $((X,u),(Y,v))$ 的\Term{slope}{斜率}为 $k\cup\{\infty\}$ 中如下的元素：当 $m<n$ 时等于0，当 $m>n$ 时等于 $\infty$，当 $m=n$ 时等于 $b/a$。此元素与 $w$ 的选择无关。
+
+\begin{SGAresult}{\Term{lemma}{引理}}{3.5}
+设 $f:X'\to X$、$g:Y'\to Y$ 是具有相同\Term{ramification-index}{分歧指数} $d$ 的 $S$-\Term{trait}{离散赋值环谱}的\Term{finite}{有限}\Term{morphism}{态射}，$u,v,u',v'$ 分别为 $X,Y,X',Y'$ 的\Term{uniformizer}{一致化参数}。则存在 $C\in k^*$，使对任意 $S$-\Term{trait}{离散赋值环谱}的\Term{finite}{有限}\Term{morphism}{态射}的\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}
+ X'\arrow[d,"f"']&W'\arrow[l,"s'_1"']\arrow[r,"s'_2"]\arrow[d,"h"]&Y'\arrow[d,"g"]\\
+ X&W\arrow[l,"s_1"]\arrow[r,"s_2"']&Y
+\end{tikzcd}
+\]
+均有 $\lambda=C\lambda'^d$，其中 $\lambda$（分别为 $\lambda'$）为 $W$（分别为 $W'$）相对于 $((X,u),(Y,v))$（分别为 $((X',u'),(Y',v'))$）的\Term{slope}{斜率}。
+\end{SGAresult}
+\begin{proof}
+由假设有
+\[
+ f^*u=\alpha u'^d\pmod{u'^{d+1}},\qquad
+ g^*v=\beta v'^d\pmod{v'^{d+1}},\qquad \alpha,\beta\in k^*.
+\]
+证明 $C=\beta/\alpha$ 满足要求。设 $w$（分别为 $w'$）为 $W$（分别为 $W'$）的\Term{uniformizer}{一致化参数}。有
+\[
+ \begin{aligned}
+ s_1^*u&=aw^m\pmod{w^{m+1}},&s_2^*v&=bw^n\pmod{w^{n+1}},\\
+ s_1'^*u'&=a'w'^{m'}\pmod{w'^{m'+1}},&s_2'^*v'&=b'w'^{n'}\pmod{w'^{n'+1}},\\
+ h^*w&=\gamma w'^r\pmod{w'^{r+1}},
+ \end{aligned}
+\]
+其中 $a,b,a',b',\gamma\in k^*$。图中各方块的\Term{commutativity}{交换性}给出
+\SourcePage{167}
+$m'd=rm$、$n'd=rn$，因而 $m'/n'=m/n$。先设 $m=n$，则 $\lambda=b/a$、$\lambda'=b'/a'$。置 $N=m'd=rm=n'd=rn$，以上同余式给出
+\[
+ (fs'_1)^*u=\alpha a'^d w'^N\pmod{w'^{N+1}},\qquad
+ (s_1h)^*u=a\gamma^m w'^N\pmod{w'^{N+1}},
+\]
+故 $\alpha a'^d=a\gamma^m$。同样得到 $\beta b'^d=b\gamma^m$，于是当 $\lambda\ne0,\infty$ 时，$\lambda=C\lambda'^d$。但由 $m'/n'=m/n$，$\lambda=0$（分别为 $\infty$）\Term{equivalence}{等价}于 $\lambda'=0$（分别为 $\infty$），证明完成。
+\end{proof}
+
+\begin{proof}[3.3的证明]
+现在证明3.3。令 $Z=X\times_S Y$、$Z'=X'\times_S Y'$；以 $\widetilde A$（分别为 $\widetilde B$）表示 $A$（分别为 $B$）的\Term{normalization}{正规化}，以 $\widetilde A'$（分别为 $\widetilde B'$）表示 $A'$（分别为 $B'$）的\Term{normalization}{正规化}。由于 $\widetilde A'$（分别为 $\widetilde B'$）也是 $\widetilde A\times_Z Z'$（分别为 $\widetilde B\times_Z Z'$）的\Term{normalization}{正规化}，有\Term{commutative-diagram}{交换方块}
+\[
+\begin{tikzcd}
+ \widetilde A'\arrow[r]\arrow[d]&Z'\arrow[d]&\widetilde B'\arrow[l]\arrow[d]\\
+ \widetilde A\arrow[r]&Z&\widetilde B\arrow[l]
+\end{tikzcd}\tag{$*$}
+\]
+设 $(x_i)_{1\leq i\leq m}$（分别为 $(y_j)_{1\leq j\leq m}$）为 $\widetilde A$（分别为 $\widetilde B$）中位于 $x$（分别为 $y$）上方的点，$(x'_i)_{1\leq i\leq m'}$（分别为 $(y'_j)_{1\leq j\leq n'}$）为 $\widetilde A'$（分别为 $\widetilde B'$）中位于 $x'$（分别为 $y'$）上方的点。由于 $A,B$ \Term{strictly-local}{严格局部}，有\Term{resolution}{分解}
+\[
+ \widetilde A=\coprod_{1\leq i\leq m}A_i,\qquad
+ \widetilde B=\coprod_{1\leq j\leq n}B_j,\qquad
+ \widetilde A'=\coprod_{1\leq i\leq m'}A'_i,\qquad
+ \widetilde B'=\coprod_{1\leq j\leq n'}B'_j,
+\]
+其中 $A_i,B_j,A'_i,B'_j$ 是\Term{closed-point}{闭点}分别为 $x_i,y_j,x'_i,y'_j$ 的\Term{strictly-local}{严格局部}\Term{trait}{离散赋值环谱}。分别选取 $X,Y,X',Y'$ 的\Term{uniformizer}{一致化参数} $u,v,u',v'$，以 $\lambda_i$（分别为 $\mu_j$）表示 $A_i$（分别为 $B_j$）相对于 $((X,u),(Y,v))$ 的\Term{slope}{斜率}，以 $\lambda'_i$（分别为 $\mu'_j$）表示 $A'_i$（分别为 $B'_j$）相对于 $((X',u'),(Y',v'))$ 的\Term{slope}{斜率}。关于 $A,B$ 的\Term{general-position}{一般位置}假设表示为
+\[
+ \lambda_i\ne0\ \text{对所有 }i,\qquad
+ \mu_j\ne\infty\ \text{对所有 }j,\qquad
+ \lambda_i\ne\mu_j\ \text{对所有 }i,j,\tag{1}
+\]
+而需要证明
+\[
+ \lambda'_i\ne0\ \text{对所有 }i,\qquad
+ \mu'_j\ne\infty\ \text{对所有 }j,\qquad
+ \lambda'_i\ne\mu'_j\ \text{对所有 }i,j.\tag{2}
+\]
+\SourcePage{168}
+设 $i'\in[1,m']$、$j'\in[1,n']$，以 $x_i$（分别为 $y_j$）表示 $x'_{i'}$（分别为 $y'_{j'}$）的像。图 $(*)$ 给出 $S$-\Term{trait}{离散赋值环谱}的\Term{finite}{有限}\Term{morphism}{态射}的\Term{commutative-diagram}{交换方块}
+\[
+\begin{tikzcd}
+ X'\arrow[d]&A'_{i'}\arrow[l]\arrow[r]\arrow[d]&Y'\arrow[d]\\
+ X&A_i\arrow[l]\arrow[r]&Y
+\end{tikzcd}
+\qquad
+\begin{tikzcd}
+ X'\arrow[d]&B'_{j'}\arrow[l]\arrow[r]\arrow[d]&Y'\arrow[d]\\
+ X&B_j\arrow[l]\arrow[r]&Y.
+\end{tikzcd}
+\]
+由3.5，存在 $C\in k^*$，使 $\lambda_i=C\lambda_{i'}'^d$、$\mu_j=C\mu_{j'}'^d$；所以（1）\Term{pushout}{推出}（2），3.3的证明完成。
+\end{proof}
+
+\SourcePage{169}
+\SGAsection{4}{完成1.2的证明}
+\textbf{4.1.} 为完成2.5、从而完成1.2的证明，尚需在下列附加假设下证明2.6.4为零：$\Lambda$ 被某个素数 $\ell\ne p$ 的\Term{nilpotent}{幂零}化；$P,Q$ \Term{bounded}{有界}，各\Term{set-component}{分量}为\Term{finite-type}{有限型}\Term{locally-free}{局部自由}模，且相应的\Term{fundamental-group}{基本群}的\Term{representation}{表示}通过\Term{finite}{有限} $\ell$-群\Term{resolution}{分解}。有
+\[
+ g_!(E)|T-(Y\cup A)=g_{1!}(E_1),
+\]
+其中 $g_1:T-(X\cup Y\cup A)\hookrightarrow T-(Y\cup A)$ 为\Term{embedding}{嵌入}，$E_1=(P\overset L\otimes_S Q)|T-(X\cup Y\cup A)$。而 $E_1$ 是具有\Term{bounded}{有界}\Term{constructible}{可构造}\Term{locally-constant}{局部常值}\Term{cohomology}{上同调}的\Term{complex}{复形}，且相应的 $\pi_1(T-(X\cup Y\cup A))$ 的\Term{representation}{表示}通过一个 $\ell$-群\Term{resolution}{分解}。因此，所要证明的断言将由下述更一般的陈述\Term{pushout}{推出}。
+
+\begin{SGAresult}{命题}{4.2}
+设 $T$ 是一个\Term{dimension}{维数}为2的\Term{smooth}{光滑} $S$-\Term{scheme}{概形}在一个\Term{closed-point}{闭点}处的\Term{strict-localization}{严格局部化}，$t$ 为 $T$ 的\Term{closed-point}{闭点}，$A,B,X$ 为 $T$ 的\Term{dimension}{维数}为1的闭子\Term{scheme}{概形}，$i:T-(A\cup X)\hookrightarrow T-A$ 为\Term{embedding}{嵌入}。假设 $X$ \Term{regular}{正则}，且 $A$ 相对于 $B$ 和 $X$ 处于\Term{general-position}{一般位置}（即 $A$ 和 $B\cup X$ 在 $t$ 处的\Term{tangent-cone}{切锥}之交仅为 $t$）。另一方面，设 $E\in\operatorname{ob}D^b(T-(A\cup X))$，使 $H^*(E)$ \Term{constructible}{可构造}且\Term{locally-constant}{局部常值}，并且相应的 $\pi_1(T-(A\cup X))$ 的\Term{representation}{表示}通过一个 $\ell$-群\Term{resolution}{分解}。则\Term{restriction}{限制}\Term{arrow}{箭头}
+\[
+ R\Gamma(T-A,i_!(E))\longrightarrow R\Gamma(B-t,i_!(E)|B-t)
+\]
+为零。
+\end{SGAresult}
+证明将依据如下\Term{lemma}{引理}。
+
+\begin{SGAresult}{\Term{lemma}{引理}}{4.3}
+设 $Z$ 是一个\Term{dimension}{维数}为2的 Noether \Term{regular}{正则}\Term{connected}{连通}\Term{scheme}{概形}，其\Term{residue-characteristic}{剩余特征}与 $\ell$ 互素；设 $X,Y$ 是在一点 $z$ 处\Term{transverse}{横截}相交的\Term{regular}{正则}\Term{divisor}{除子}，从而有\Term{embedding}{嵌入}图
+\SourcePage{170}
+\[
+\begin{tikzcd}[column sep=large]
+ Z-(X\cup Y)\arrow[r,hook,"i'"]\arrow[d,hook,"j'"']&Z-Y\arrow[d,hook,"j"]\\
+ Z-X\arrow[r,hook,"i"]&Z\\
+ Y-z\arrow[u,hook,"m'"]\arrow[r,hook,"i_1"']&Y\arrow[u,hook,"m"'].
+\end{tikzcd}
+\]
+作\Term{purity}{纯性}假设
+\[
+ R^qj_*(\mathbb Z/\ell)=0\qquad\text{当 }q>1.\tag{P}
+\]
+另一方面，设 $L\in\operatorname{ob}D^b(Z-(X\cup Y),\Lambda)$，其\Term{cohomology}{上同调}\Term{constructible}{可构造}且\Term{locally-constant}{局部常值}，且相应的 $\pi_1(Z-(X\cup Y))$ 的\Term{representation}{表示}通过一个 $\ell$-群\Term{resolution}{分解}。则：
+
+ a) 有\Term{canonical}{典范}\Term{isomorphism}{同构}
+\[
+ i_{1!}m'^*Rj'_*L\xrightarrow{\sim}m^*Rj_*(i'_!L),
+\]
+且\Term{complex}{复形} $m'^*Rj'_*L$ 的\Term{cohomology}{上同调}\Term{constructible}{可构造}且\Term{locally-constant}{局部常值}。
+
+ b) 假设 $Y$ \Term{connected}{连通}，设 $\bar s$ 为 $Y$ 的一个\Term{geometric-point}{几何点}，其所在\Term{closed-point}{闭点}为 $s\ne z$。则\Term{restriction}{限制}\Term{arrow}{箭头}
+\[
+ R\Gamma(Y,m^*Rj_*(i'_!L))\longrightarrow(Rj_*(i'_!L))_{\bar s}\tag{4.3.1}
+\]
+为零。
+
+ c) 在b)的假设下，设 $C$ 为 $Z$ 的一个\Term{dimension}{维数}为1的闭子\Term{scheme}{概形}，使 $Y\cap C=s$；以 $\widetilde C$ 表示 $C$ 在 $\bar s$ 处的\Term{strict-localization}{严格局部化}。则\Term{restriction}{限制}\Term{arrow}{箭头}
+\[
+ R\Gamma(Z-Y,i'_!L)\longrightarrow
+ R\Gamma(\widetilde C-\bar s,i'_!(L)|\widetilde C-\bar s)\tag{4.3.2}
+\]
+为零。
+\end{SGAresult}
+\begin{proof}
+显然的\Term{isomorphism}{同构}
+\[
+ i^*Rj_*i'_!L\xrightarrow{\sim}Rj'_*(i'^*i'_!L)=Rj'_*L
+\]
+给出\Term{isomorphism}{同构}
+\SourcePage{171}
+$m'^*Rj'_*L\xrightarrow{\sim}i_1^*m^*Rj_*i'_!L$，从而由\Term{adjunction}{伴随}得到\Term{arrow}{箭头}
+\[
+ i_{1!}m'^*Rj'_*L\longrightarrow m^*Rj_*(i'_!L),
+\]
+它在 $z$ 以外诱导\Term{isomorphism}{同构}。证明它是\Term{isomorphism}{同构}，也就是证明：若 $\bar z$ 是位于 $z$ 上方的\Term{geometric-point}{几何点}，则
+\[
+ (Rj_*(i'_!L))_{\bar z}=0.
+\]
+为此，可以将 $\Lambda$ 替换成 $\mathbb Z/\ell^\nu$，其中 $\ell^\nu$ \Term{annihilate}{零化} $\Lambda$；经过\Term{devissage}{逐层约化}及取\Term{limit}{极限}，归结为 $L$ 是一个\Term{finite-type}{有限型}\Term{locally-constant}{局部常值} $\mathbb Z/\ell^\nu$-模，它对应于一个通过 $\ell$-群的 $\pi_1$ 的\Term{representation}{表示}。由于在 $\ell$-\Term{group-action}{群作用}下为单的\Term{finite}{有限} $\ell$-\Term{torsion-abelian-group}{挠阿贝尔群}只能是具有\Term{trivial-action}{平凡作用}的 $\mathbb Z/\ell$，再次\Term{devissage}{逐层约化}，便归结为 $L$ 是常值\Term{sheaf}{层} $\mathbb Z/\ell$ 的情形。设 $\widetilde Z$ 为 $Z$ 在 $\bar z$ 处的\Term{strict-localization}{严格局部化}，$\widetilde X=X\times_Z\widetilde Z$、$\widetilde Y=Y\times_Z\widetilde Z$，$\widetilde i':\widetilde Z-(\widetilde X\cup\widetilde Y)\hookrightarrow\widetilde Z-\widetilde Y$ 为\Term{embedding}{嵌入}。则
+\[
+ (Rj_*(i'_!(\mathbb Z/\ell)))_{\bar z}
+ =R\Gamma(\widetilde Z-\widetilde Y,\widetilde i'_!(\mathbb Z/\ell)),
+\]
+所以归结为证明，对所有 $n$，\Term{restriction}{限制}\Term{arrow}{箭头}
+\[
+ H^n(\widetilde Z-\widetilde Y,\mathbb Z/\ell)\longrightarrow
+ H^n(\widetilde X-\bar z,\mathbb Z/\ell)
+\]
+是\Term{isomorphism}{同构}。当 $n\leq1$ 时，这是 Abhyankar \Term{lemma}{引理}的推论；当 $n>1$ 时，由\Term{purity}{纯性}假设，两端均为零。于是a)的第一个断言得证。现证第二个断言。通过\Term{devissage}{逐层约化}，可假设 $L$ 集中在\Term{degree}{次数}0。假设(P)通过\Term{devissage}{逐层约化}给出 $R^qj'_*L=0$，当 $p>2$。剩下只需证明 $q\leq1$ 时 $m'^*R^qj'_*L$ 的\Term{constructibility}{可构造性}及\Term{local-constancy}{局部常值性}，这属于标准事实。为证\Term{constructibility}{可构造性}，用形如 $p_*p^*L$ 的\Term{sheaf}{层}向右\Term{resolution}{消解} $L$，其中 $p:Z'\to Z$ 为沿 $Y$ \Term{tame-ramification}{温和分歧}的\Term{finite}{有限}\Term{covering}{覆盖}，便归结为 $L$ 是值为 $L_0$ 的常值\Term{sheaf}{层}的情形：此时
+\[
+ m'^*j'_*L=(L_0)_{Y-z},\qquad
+ m'^*R^1j'_*L=(L_0)_{Y-z}(-1),
+\]
+第二式由 Abhyankar \Term{lemma}{引理}得到。为证\Term{local-constancy}{局部常值性}，需证明\Term{specialization}{特化}\Term{arrow}{箭头}为\Term{isomorphism}{同构}。
+\SourcePage{172}
+为此，如前所述，可以将 $\Lambda$ 换成 $\mathbb Z/\ell^\nu$，再通过\Term{devissage}{逐层约化}归结为 $L$ 是常值\Term{sheaf}{层} $\mathbb Z/\ell$；最后利用 Abhyankar \Term{lemma}{引理}得出结论。
+
+由此证明了a)。现证b)。令 $\bar\eta$ 是 $Y$ 的一个\Term{geometric-generic-point}{几何一般点}，选择\Term{specialization}{特化}\Term{arrow}{箭头}
+\[
+ a:\bar\eta\longrightarrow Y(\bar z),\qquad
+ b:\bar\eta\longrightarrow Y(\bar s),
+\]
+其中 $Y(\bar z)$（分别为 $Y(\bar s)$）为 $Y$ 在 $\bar z$（分别为 $\bar s$）处的\Term{strict-localization}{严格局部化}。置 $M=m^*Rj_*(i'_!L)$。\Term{commutative-diagram}{交换方块}
+\[
+\begin{tikzcd}
+ Y&Y(\bar s)\arrow[l]\\
+ Y(\bar z)\arrow[u]&\bar\eta\arrow[l,"a"']\arrow[u,"b"']
+\end{tikzcd}
+\]
+诱导\Term{commutative-diagram}{交换方块}
+\[
+\begin{tikzcd}
+ R\Gamma(Y,M)\arrow[r,"{4.3.1}"]\arrow[d]&M_{\bar s}\arrow[d,"b^*"]\\
+ M_{\bar z}\arrow[r,"a^*"']&M_{\bar\eta}.
+\end{tikzcd}
+\]
+由于 $M|Y-z$ 的\Term{cohomology}{上同调}\Term{locally-constant}{局部常值}，$b^*$ 是\Term{isomorphism}{同构}。另一方面，由 $M=i_{1!}i_1^*M$，有 $M_{\bar z}=0$，因此\Term{arrow}{箭头}4.3.1为零。
+
+剩下证明c)。有 $\widetilde C=C\times_Z\widetilde Z$，其中 $\widetilde Z$ 如前所述表示 $Z$ 在 $\bar z$ 处的\Term{strict-localization}{严格局部化}。置 $\widetilde Y=Y\times_Z\widetilde Z$。于是有如下\Term{restriction}{限制}\Term{arrow}{箭头}的\Term{commutative-diagram}{交换图}：
+\[
+\resizebox{\textwidth}{!}{$
+\begin{tikzcd}[ampersand replacement=\&,column sep=large]
+ R\Gamma(Z-Y,i'_!L)=R\Gamma(Z,Rj_*(i'_!L))\arrow[r,"{4.3.2}"]\arrow[d]
+ \&R\Gamma(\widetilde C-\bar s,i'_!(L)|\widetilde C-\bar s)\\
+ R\Gamma(Y,m^*Rj_*(i'_!L))\arrow[r,"{4.3.1}"']
+ \&(Rj_*(i'_!L))_{\bar s}=R\Gamma(\widetilde Z-\widetilde Y,(i'_!L)|\widetilde Z-\widetilde Y)\arrow[u].
+\end{tikzcd}$}
+\]
+故由b)得4.3.2为零，这就完成4.3的证明。
+\end{proof}
+
+\begin{proof}[4.2的证明]
+设 $f:T'\to T$ 为 $T$ 的\Term{maximal-ideal}{极大理想}的\Term{blow-up}{爆破}，$D=f^{-1}(z)\simeq\mathbb P^1_S$ 为\Term{exceptional-divisor}{例外除子}，$A',B',X'$ 分别为 $A,B,X$ 的\Term{strict-transform}{严格变换}。于是 $T'$ \Term{regular}{正则}、\Term{connected}{连通}，\Term{dimension}{维数}为2，$X'$ 为在一点 $z'$ 处与 $D$ \Term{transverse}{横截}相交的\Term{regular}{正则}\Term{divisor}{除子}，而 $A,B,X$ 的\Term{general-position}{一般位置}假设意味着 $A'$ 与 $B'\cup X'$ 不交。
+\SourcePage{173}
+以 $E'$ 表示 $E$ 在 $T'-(A'\cup D\cup X')$ 上的\Term{inverse-image}{逆像}，令 $i':T'-(A'\cup D\cup X')\hookrightarrow T'-(A'\cup D)$ 为\Term{embedding}{嵌入}。需要证明\Term{restriction}{限制}\Term{arrow}{箭头}
+\[
+ R\Gamma(T'-(A'\cup D),i'_!(E'))\longrightarrow
+ R\Gamma(B'\cup D),i'_!(E')|B'-(B'\cup D))\tag{$*$}
+\]
+为零。而 $B'$ 是\Term{dimension}{维数}为1的\Term{strictly-local}{严格局部}\Term{scheme}{概形} $B'_j$（$1\leq j\leq n$）的\Term{disjoint-union}{不交并}，并且对每个 $j$，$B'_j\cap D$ 仅为一点 $b_j$。将4.3 c)用于
+\[
+ Z=T'-A',\quad X=X',\quad Y=D-(D\cap A'),\quad L=E',\quad C=B'_j,
+\]
+（\Term{purity}{纯性}假设(P)由相对\Term{purity-theorem}{纯性定理} SGA 4 XVI 3成立，因为 $(Z,Y)$ 是 $S$ 上\Term{codimension}{余维数}为1的\Term{smooth}{光滑}对的\Term{filtered-projective-limit}{滤过投射极限}，\Term{transition-morphism}{过渡态射}为\Term{affine}{仿射}\Term{etale}{平展}\Term{morphism}{态射}），得到\Term{restriction}{限制}\Term{arrow}{箭头}
+\[
+ R\Gamma(T'-(A'\cup D),i'_!(E'))\longrightarrow
+ R\Gamma(B'_j-b_j,i'_!(E')|B'_j-b_j)
+\]
+为零。故 $(*)$ 为零，这完成了4.2、从而完成2.5和1.2的证明。
+\end{proof}

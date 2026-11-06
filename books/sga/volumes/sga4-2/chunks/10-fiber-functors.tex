@@ -1,0 +1,460 @@
+\SourcePage{253}
+\SGAchapter{VIII}{纤维函子、支集及有限态射的上同调研究}{Foncteurs fibres, supports, étude cohomologique des morphismes finis}
+\begin{center}A. Grothendieck\end{center}
+\SGAsection{1}{平展拓扑斯的拓扑不变性}
+\begin{SGAresult}{定理}{1.1}
+设 $f:X'\to X$ 是\Term{integral-morphism}{整}、\Term{surjectivity}{满射}且\Term{radicial}{根性}的\Term{morphism}{态射}。则\Term{base-change}{换基}\Term{functor}{函子}
+\[f^*:X_{\text{ét}}\longrightarrow X'_{\text{ét}}\]
+是\Term{site}{景}的\Term{equivalence}{等价}（即\Term{category-equivalence}{范畴等价}，且它和任一\Term{quasi-inverse}{拟逆}\Term{functor}{函子}均\Term{continuous}{连续}）。因此，\Term{functor}{函子}
+\[f_*:\widetilde{X'_{\text{ét}}}\longrightarrow\widetilde{X_{\text{ét}}},\qquad f^*:\widetilde{X_{\text{ét}}}\longrightarrow\widetilde{X'_{\text{ét}}}\]
+是互为\Term{quasi-inverse}{拟逆}的\Term{category-equivalence}{范畴等价}。
+\end{SGAresult}
+\begin{proof}
+当 $f$ 为\Term{finite-presentation}{有限呈示}或\Term{flat}{平坦}时，第一个断言是熟知的（SGA~1 IX 4.10、4.11）；一般情形可归结为 $f$ 为\Term{finite-presentation}{有限呈示}的情形。事实上，已经知道 $f^*$ 是\Term{fully-faithful}{全忠实}\Term{functor}{函子}（SGA~1 IX 3.4）。
+\SourcePage{254}
+只须证明 $f^*$ \Term{essentially-surjective}{本质满射}，即每个在 $X'$ 上\Term{etale}{平展}的 $Z'$ 均“来自”某个在 $X$ 上\Term{etale}{平展}的 $Z$。利用 $f$ 是\Term{universal-homeomorphism}{万有同胚}以及 $f^*$ 的\Term{fully-faithful}{全忠实}性，可归结为 $X,X',Z'$ 均\Term{affine}{仿射}的情形，分别是环 $A,A',B'$ 的谱。将 $A'$ 写成其\Term{finite-type}{有限型} $A$ 子\Term{algebra}{代数} $A'_i$ 的\Term{inductive-limit}{归纳极限}，则 $B'$ 来自某个 $A'_i$ 上的\Term{etale}{平展}\Term{algebra}{代数} $B'_i$（参见 EGA~IV 8），因而归结为 $A'$ 在 $A$ 上整且\Term{finite-type}{有限型}，从而在 $A$ 上\Term{finite}{有限}的情形。于是有 $A$ \Term{isomorphism}{同构} $A'\simeq A''/J$，其中 $A''\simeq A[t_1,\ldots,t_n]$，$J$ 是 $A''$ 的\Term{ideal}{理想}。将 $J$ 写成其\Term{finitely-generated}{有限生成}子\Term{ideal}{理想} $J_i$ 的\Term{inductive-limit}{归纳极限}，令 $A'_i=A''/J_i$，仍有 $A'=\varinjlim_i A'_i$；因此 $B'$ 来自某个 $A'_i$ 上的\Term{etale}{平展}\Term{algebra}{代数} $B'_i$（同上）。另一方面，由于 $\operatorname{Spec}A'\to\operatorname{Spec}A$ \Term{surjectivity}{满射}，各 $\operatorname{Spec}A'_i\to\operatorname{Spec}A$ 也\Term{surjectivity}{满射}；又容易验证，由 $\operatorname{Spec}A'\to\operatorname{Spec}A$ 的\Term{radicial}{根性}可知，$i$ 充分大时 $\operatorname{Spec}A'_i\to\operatorname{Spec}A$ 亦为\Term{radicial}{根性}（对 $\operatorname{Spec}A$ 应用 EGA~IV 1.9.9）。\footnote{令 $S_i\subset S=\operatorname{Spec}A$ 为使 $X'_i=\operatorname{Spec}A'_i$ 在 $s$ 处的\Term{fiber}{纤维}具有\Term{separable}{可分}秩 $1$ 的点 $s\in S$ 的\Term{set}{集合}。各 $S_i$ 是 $S$ 的\Term{constructible-subset}{可构造子集}（EGA~IV 9.7.9），组成递增族；由关于 $S'=\operatorname{Spec}A'\to S$ 的假设以及 $S'_i$ 的\Term{fiber}{纤维}是\Term{noetherian}{诺特}\Term{scheme}{概形}这一事实，它们的并为 $S$。故据 EGA~IV 1.9.9，$i$ 充分大时 $S=S_i$，证毕。}这样就归结为 $A'$ 等于某个 $A'_i$，因而在 $A$ 上\Term{finite-presentation}{有限呈示}的情形。
+这证明了 2.1 的第一个断言。由此立即得出 $f_*$ 与 $f^*$ 是互为\Term{quasi-inverse}{拟逆}的\Term{equivalence}{等价}。
+\end{proof}
+\begin{SGAresult}{推论}{1.2}
+设 $F$ 是 $X$ 上的\Term{abelian-sheaf}{阿贝尔层}，$F'$ 是它在 $X'$ 上的\Term{inverse-image}{逆像}，则\Term{canonical-homomorphism}{典范同态}
+\[\mathrm H^i(X,F)\longrightarrow\mathrm H^i(X',F')\tag{*}\]
+是\Term{isomorphism}{同构}。同样，若 $F'$ 是 $X'$ 上的\Term{abelian-sheaf}{阿贝尔层}，$F$ 是其在 $X$ 上的像，则\Term{canonical-homomorphism}{典范同态} $(*)$ 是\Term{isomorphism}{同构}。
+\end{SGAresult}
+\textbf{例 1.3。}以下是 1.1 经常应用的例子：
+\par a) $X'$ 是与 $X$ 具有相同底\Term{sheaf}{层}\Term{set}{集合}的子\Term{scheme}{概形}，即由一个\Term{nilpotent-element}{幂零元素}\Term{ideal}{理想} $\mathscr I$ 定义。
+\par b) $X$ 是\Term{separably-closed-field}{可分闭域} $k$ 上的\Term{scheme}{概形}，$k'$ 是 $k$ 的\Term{algebraic-closure}{代数闭包}，$X'=X\otimes_k k'$。
+\par c) 设 $X$ 是\Term{geometrically-unibranch}{几何单分支}\Term{scheme}{概形}（例如域 $k$ 上的一条\Term{algebraic-curve}{代数曲线}，其奇点均为“尖点型”，特别排除\Term{ordinary-double-point}{普通二重点}）。若 $X'$ 是 $X_{\mathrm{red}}$ 的\Term{normalization}{正规化}，则按定义 $X'\to X$ 是\Term{radicial}{根性}的，故可应用 2.1。
+\SourcePage{255}
+\textbf{注记 1.4。}1.1 中的\Term{morphism}{态射} $f$ 是\Term{universal-homeomorphism}{万有同胚}，即它是\Term{homeomorphism}{同胚}，且任意扩充\Term{base}{基底}后仍为\Term{homeomorphism}{同胚}。反之，若 $f$ 是\Term{universal-homeomorphism}{万有同胚}，可证明 $f$ 满足 2.1 的假设，\footnote{若 $f$ 为\Term{finite-presentation}{有限呈示}，参见 EGA~IV 8.11.6；一般情形参见 EGA~IV 18.12.11。}这说明了本节标题的含义。
+关于例 2.3 c)，须特别指出：若 $X$ 是一条\Term{algebraic-curve}{代数曲线}（为固定想法，可设在\Term{algebraically-closed-field}{代数闭域} $k$ 上），至少有一个不是“\Term{unibranch}{单分支}”的奇点（例如\Term{ordinary-double-point}{普通二重点}），则以 $X'$ 表示 $X_{\mathrm{red}}$ 的\Term{normalization}{正规化}时，2.2 的结论对于 $\mathrm H^1$ 和常值系数就已经不成立（比较 SGA~1 I 11 a) 和 SGA~1 IX 5）。
+\SGAsection{2}{域的谱上的层}
+\begin{SGAresult}{命题}{2.1}
+设 $k$ 为域，$\bar k$ 是 $k$ 的一个\Term{separable-closure}{可分闭包}，$\pi=\operatorname{Gal}(\bar k/k)$ 是它的\Term{topological-galois-group}{拓扑 Galois 群}，$X=\operatorname{Spec}k$，$\bar X=\operatorname{Spec}\bar k$（$\pi$ 在其上左\Term{action}{作用}）。考虑\Term{canonical}{典范}\Term{functor}{函子}
+\[i:X_{\text{ét}}\longrightarrow\widetilde{X_{\text{ét}}}\]
+（由 $i(X')(X'')=\operatorname{Hom}_X(X',X'')$ 定义），以及从 $X_{\text{ét}}$ 上\Term{sheaf}{层}的\Term{category}{范畴}到\Term{category}{范畴} $B_\pi$（参见 IV 2.7）的\Term{canonical}{典范}\Term{functor}{函子}
+\[j:\widetilde{X_{\text{ét}}}\longrightarrow B_\pi,\qquad j(F)=\varinjlim_\alpha F(\operatorname{Spec}(k_\alpha)),\]
+这里 $B_\pi$ 是带有 $\pi$ 的\Term{continuous}{连续}左\Term{action}{作用}的（\Term{discrete}{离散}）\Term{set}{集合}所成\Term{category}{范畴}，$k_\alpha$ 遍历 $\bar k$ 的\Term{finite}{有限}子\Term{group-extension}{扩张}。则 $i,j$ 均为\Term{category-equivalence}{范畴等价}。（因而\Term{topos}{拓扑斯} $\widetilde{X_{\text{ét}}}$ \Term{equivalence}{等价}于“\Term{classifying-topos}{分类拓扑斯}” $B_\pi$，参见 IV 3.4。）
+\end{SGAresult}
+\begin{proof}
+由 Galois 理论基本定理（SGA~1 V 的形式），复合\Term{functor}{函子}
+\[ji:X_{\text{ét}}\longrightarrow\widetilde{X_{\text{ét}}}\longrightarrow(\pi\text{-}\mathrm{Ens})\]
+是\Term{category-equivalence}{范畴等价}。$B_\pi$ 显然是\Term{topos}{拓扑斯}（II 4.14），所以 $X_{\text{ét}}$ 也是。又 $X_{\text{ét}}$ 中的\Term{morphism}{态射}族 $(X_i\to X)$ 为\Term{covering}{覆盖}族，当且仅当它是\Term{surjective-family}{满射族}，即它在 $B_\pi$ 中的像是\Term{surjective-family}{满射族}，\Term{equivalence}{等价}地说，是 $B_\pi$ 的\Term{canonical-topology}{典范拓扑}的\Term{covering}{覆盖}族。这表明 $X_{\text{ét}}$ 的\Term{topology}{拓扑}正是其\Term{canonical-topology}{典范拓扑}。因此 $i$ 是\Term{equivalence}{等价}，$j$ 亦然。
+\end{proof}
+\begin{SGAresult}{推论}{2.2}
+2.1 的\Term{functor}{函子} $j$ 诱导 $X=\operatorname{Spec}k$ 上\Term{abelian-sheaf}{阿贝尔层}的\Term{category}{范畴}与 Galois $\pi$ 模的\Term{category}{范畴}之间的\Term{equivalence}{等价}。
+\end{SGAresult}
+\SourcePage{256}
+事实上，后者正是\Term{topos}{拓扑斯} $B_\pi$ 中的“\Term{abelian-group}{阿贝尔群}”。类似地，由“结构迁移”得到：
+\begin{SGAresult}{推论}{2.3}
+设 $F$ 是 $X=\operatorname{Spec}k$ 上的\Term{abelian-sheaf}{阿贝尔层}，$M=j(F)$ 是相应的 Galois $\pi$ 模，则有关于 $F$ 的 $\partial$ \Term{functor}{函子}的\Term{canonical-isomorphism}{典范同构}
+\[\mathrm H^*(X,F)\simeq\mathrm H^*(\pi,M),\]
+其中右端是 Galois \Term{cohomology}{上同调}，例如在 Serre 的课程 C.G. 中有所研究。
+\end{SGAresult}
+\begin{SGAresult}{推论}{2.4}
+设 $k$ \Term{separably-closed}{可分闭}。则\Term{functor}{函子} $\Gamma:\widetilde{X_{\text{ét}}}\to(\mathrm{Ens})$ 是\Term{category-equivalence}{范畴等价}。若 $F$ 是 $X=\operatorname{Spec}k$ 上的\Term{abelian-sheaf}{阿贝尔层}，则 $i\ne0$ 时 $\mathrm H^i(X,F)=0$。（换言之，\Term{topos}{拓扑斯} $\widetilde{X_{\text{ét}}}$ 是“点\Term{topos}{拓扑斯}”，参见 IV 2.2。）
+\end{SGAresult}
+\begin{SGAresult}{推论}{2.5}
+设 $k'$ 是\Term{separably-closed-field}{可分闭域} $k$ 的一个\Term{separably-closed}{可分闭}\Term{group-extension}{扩张}，$X=\operatorname{Spec}k$，$X'=\operatorname{Spec}k'$，$u:X'\to X$ 是\Term{canonical}{典范}\Term{morphism}{态射}。则\Term{functor}{函子}
+\[u^*:\widetilde{X_{\text{ét}}}\longrightarrow\widetilde{X'_{\text{ét}}}\]
+是\Term{category-equivalence}{范畴等价}。
+\end{SGAresult}
+\SGAsection{3}{相对于概形几何点的纤维函子}
+\textbf{3.1。}设 $X$ 是\Term{scheme}{概形}。称 $X$ 上任一为\Term{separably-closed-field}{可分闭域} $\Omega$ 的谱的 $X$ \Term{scheme}{概形} $\xi$ 为 $X$ 的\Term{geometric-point}{几何点}。给出这样的点，\Term{equivalence}{等价}于给出普通点 $x\in X$ 和其\Term{residue-field}{剩余域} $k(x)$ 的一个\Term{separably-closed}{可分闭}\Term{group-extension}{扩张} $\Omega$。我们最常遇到的情形是 $\Omega$ 为 $k(x)$ 的\Term{separable-closure}{可分闭包}，此时通常记为 $\overline{k(x)}$，相应\Term{geometric-point}{几何点}记为 $\bar x$。给定 $x\in X$ 后，$\overline{k(x)}$（相应地，$\bar x$）在不唯一的 $k$ \Term{isomorphism}{同构}（相应地，$X$ \Term{isomorphism}{同构}）意义下确定。
+\textbf{注记 3.2。}在大多数几何问题中，限于 $\Omega$ \Term{algebraically-closed}{代数闭}更为自然。这里采用的不同约定专门用于\Term{etale}{平展}\Term{topology}{拓扑}的研究。这就是我们定义\Term{fundamental-group}{基本群}时在 SGA~1 V 7 中采用的约定。但须注意，所引之处的论述对这里采用的约定同样成立（因为那里用到的 $\Omega$ 的性质，是 $\Omega$ 的谱的每个\Term{etale}{平展}\Term{covering}{覆盖}均平凡，恰好等于说 $\Omega$ \Term{separably-closed}{可分闭}）。
+\SourcePage{257}
+\begin{SGAresult}{定义}{3.3}
+设 $X$ 是\Term{scheme}{概形}，$\xi$ 是 $X$ 的\Term{geometric-point}{几何点}，$u:\xi\to X$ 为其\Term{structural-morphism}{结构态射}。称由
+\[\widetilde{X_{\text{ét}}}\xrightarrow{u^*}\widetilde{\xi_{\text{ét}}}\xrightarrow{\Gamma_\xi}(\mathrm{Ens})\]
+复合而成的\Term{functor}{函子} $\widetilde{X_{\text{ét}}}\to(\mathrm{Ens})$ 为相对于 $\xi$ 的（几何）\Term{fiber-functor}{纤维函子}，记为 $F\mapsto F_\xi$。
+\end{SGAresult}
+也可说，由 2.4，$X$ 的\Term{geometric-point}{几何点} $\xi$ 定义了\Term{topos}{拓扑斯} $\widetilde{X_{\text{ét}}}$ 的一个点（IV 6.1），我们只是取其相应的\Term{fiber-functor}{纤维函子}（同上）。
+\textbf{3.4。}由于\Term{functor}{函子} $\Gamma_\xi$（$\xi$ 上的\Term{section}{截面}\Term{functor}{函子}）是\Term{category-equivalence}{范畴等价}（12.4），知道\Term{fiber-functor}{纤维函子} $F\mapsto F_\xi$，本质上就等于知道\Term{inverse-image}{逆像}\Term{functor}{函子} $u^*$。又由 2.5 立即可知，若 $\xi$ 是 $X$ 的\Term{geometric-point}{几何点}，且存在 $X$ \Term{morphism}{态射} $\xi'\to\xi$（即 $\xi'$ 对应于 $\Omega$ 的\Term{separably-closed}{可分闭}\Term{group-extension}{扩张} $\Omega'$），则\Term{canonical-homomorphism}{典范同态} $F_\xi\to F_{\xi'}$ 为\Term{functor}{函子}性\Term{isomorphism}{同构}
+\[F_\xi\simeq F_{\xi'}.\]
+这说明，研究\Term{fiber-functor}{纤维函子}时，可以（将 $\Omega$ 替换为 $k$ 在 $\Omega$ 中的\Term{separable}{可分}\Term{algebraic-closure}{代数闭包}）限于 $\Omega=k(\xi)$ 是 $k(x)$ 的\Term{separable-closure}{可分闭包} $\overline{k(x)}$ 的情形；并且，位于同一点 $x\in X$ 上的\Term{geometric-point}{几何点}所对应的\Term{fiber-functor}{纤维函子}彼此\Term{isomorphism}{同构}（但\Term{isomorphism}{同构}不唯一）。依照 3.1 的约定，对应于所选\Term{separable-closure}{可分闭包} $\overline{k(x)}$ 的\Term{fiber-functor}{纤维函子}记为 $F_{\bar x}$。
+指出一个显然的\Term{transitivity}{传递性}性质（它说明，不把\Term{geometric-point}{几何点}完全限于由\Term{residue-field}{剩余域}的\Term{separable-closure}{可分闭包}定义的那些点，在技术上有用）：设 $f:X'\to X$ 是\Term{scheme}{概形}\Term{morphism}{态射}，$u':\xi'\to X'$ 是\Term{geometric-point}{几何点}，则 $u=fu':\xi'\to X$ 是 $X$ 的\Term{geometric-point}{几何点}，记为 $\xi$；对于这些\Term{geometric-point}{几何点}，有关于 $F\in\operatorname{Ob}\widetilde{X_{\text{ét}}}$ 的\Term{functor}{函子}性\Term{isomorphism}{同构}
+\[(f^*F)_{\xi'}\simeq F_\xi.\]
+这来自\Term{inverse-image}{逆像}\Term{functor}{函子}的传递公式 $(fu')^*\simeq u'^*f^*$。
+\begin{SGAresult}{定理}{3.5}
+设 $X$ 是\Term{scheme}{概形}。
+\par a) 对 $X$ 的每个\Term{geometric-point}{几何点} $\xi$，\Term{fiber-functor}{纤维函子} $F\mapsto F_\xi$ 与任意\Term{inductive-limit}{归纳极限}（由属于 $\mathcal U$ 的\Term{category}{范畴}取指标）和\Term{finite}{有限}\Term{projective-limit}{投射极限}交换。\footnote{因此它确实是第 IV 讲意义下的“\Term{fiber-functor}{纤维函子}”。}特别地，它将\Term{group-sheaf}{群层}（相应地，\Term{abelian-sheaf}{阿贝尔层}等）变为群（相应地，\Term{abelian-group}{阿贝尔群}等）。
+\SourcePage{258}
+\par b) 当 $x$ 遍历 $X$ 的点时，\Term{fiber-functor}{纤维函子} $F_{\bar x}$ 构成“\Term{conservative-functor}{保守}”\Term{functor}{函子}族：即若 $u:F\to G$ 是 $X$ 上的\Term{sheaf}{层}\Term{homomorphism}{同态}，则 $u$ 是\Term{isomorphism}{同构}，当且仅当每个 $x\in X$ 处的相应\Term{homomorphism}{同态} $u_{\bar x}:F_{\bar x}\to G_{\bar x}$ 均为\Term{isomorphism}{同构}。\footnote{因此，按 IV 6.5 的术语，形如 $F\mapsto F_{\bar x}$ 的“\Term{fiber-functor}{纤维函子}足够多”。}
+\end{SGAresult}
+结合 a) 的\Term{exactness}{正合性}，立即指出 b) 的下列形式推论：
+\begin{SGAresult}{推论}{3.6}
+设 $u:F\to G$ 是\Term{sheaf}{层}\Term{homomorphism}{同态}。则 $u$ 是\Term{monomorphism}{单态射}（相应地，\Term{epimorphism}{满态射}），当且仅当每个 $x\in X$ 处 $u_{\bar x}:F_{\bar x}\to G_{\bar x}$ 都是\Term{injectivity}{单射}（相应地，\Term{surjectivity}{满射}）。
+\end{SGAresult}
+\begin{SGAresult}{推论}{3.7}
+设 $u,v:F\to G$ 是 $X$ 上的两个\Term{sheaf}{层}\Term{morphism}{态射}，则 $u=v$ 当且仅当每个 $x\in X$ 处均有 $u_{\bar x}=v_{\bar x}:F_{\bar x}\to G_{\bar x}$。特别地，若 $u,v$ 是 $F$ 的两个\Term{section}{截面}，则 $u=v$ 当且仅当对所有 $x\in X$ 均有 $u_{\bar x}=v_{\bar x}$ 于 $F_{\bar x}$ 中。
+\end{SGAresult}
+\begin{SGAresult}{推论}{3.8}
+设 $F\to G\to H$ 是 $X$ 上的两个\Term{sheaf}{层}\Term{homomorphism}{同态}组成的序列，则它\Term{exact}{正合}，当且仅当每个 $x\in X$ 处的相应序列 $F_{\bar x}\to G_{\bar x}\to H_{\bar x}$ \Term{exact}{正合}。
+\end{SGAresult}
+这些推论留给读者自行\Term{derivation}{导出}，\footnote{参见 IV 6.5.2。}其中一部分也将在以下证明中得到证明。
+a) 来自 VII 1.4 已指出的任意\Term{inverse-image}{逆像}\Term{functor}{函子}（如 $u^*:\widetilde{X_{\text{ét}}}\to\widetilde{\xi_{\text{ét}}}$）的\Term{exactness}{正合性}，以及 $\widetilde{\xi_{\text{ét}}}\to(\mathrm{Ens})$ 是\Term{equivalence}{等价}这一事实。为证明 b)，先指出以下公式，它给出\Term{fiber-functor}{纤维函子}的计算方法。
+\begin{SGAresult}{命题}{3.9}
+\footnote{参见 IV 6.8.3。}设 $\xi\xrightarrow{u}X$ 是 $X$ 的\Term{geometric-point}{几何点}，$C_\xi$ 是“带 $\xi$ 标点的\Term{etale}{平展} $X$ \Term{scheme}{概形}”所成\Term{category}{范畴}，即二元组 $(X',u')$ 的\Term{category}{范畴}，其中 $X'\in\operatorname{Ob}X_{\text{ét}}$ 是 $X$ 上的\Term{etale}{平展}\Term{scheme}{概形}，$u'$ 是 $X$ \Term{morphism}{态射} $\xi\to X'$。则\Term{opposite-category}{对偶范畴} $C_\xi^\circ$ 是\Term{filtered}{滤过}的；对 $X$ 上变动的\Term{sheaf}{层} $F$（相应地，\Term{presheaf}{预层} $P$），有\Term{canonical}{典范}的\Term{functor}{函子}性\Term{isomorphism}{同构}
+\[F_\xi\simeq\varinjlim_{C_\xi^\circ}F(X'),\qquad
+(aP)_\xi\simeq\varinjlim_{C_\xi^\circ}P(X'),\]
+其中 $aP$ 是 $P$ 的\Term{adjunction}{伴随}\Term{sheaf}{层}。
+\end{SGAresult}
+\SourcePage{259}
+\begin{proof}
+首先注意，对 $\xi_{\text{ét}}$ 上任一\Term{presheaf}{预层} $P$，若 $aP$ 是其\Term{adjunction}{伴随}\Term{sheaf}{层}，则自然\Term{homomorphism}{同态} $P(\xi)\to aP(\xi)$ 是\Term{isomorphism}{同构}；例如由 $aP=L(LP)$ 的显式计算（II 3.19）立即可知。设 $\varphi:X_{\text{ét}}\to\xi_{\text{ét}}$ 为“\Term{inverse-image}{逆像}”\Term{functor}{函子}，则 $u^*=\varphi^*$ 正是复合\Term{functor}{函子} $a\varphi^\bullet i$（III 2.3 (d)），其中 $i:\widetilde{X_{\text{ét}}}\to\widehat{X_{\text{ét}}}$ 为包含\Term{functor}{函子}，$a:\widehat{\xi_{\text{ét}}}\to\widetilde{\xi_{\text{ét}}}$ 为“\Term{adjunction}{伴随}\Term{sheaf}{层}”\Term{functor}{函子}。由前述注记得
+\[u^*(F)(\xi)=(\varphi^\bullet i(F))(\xi),\]
+所以只须应用证明中给出的 $\varphi^\bullet$ 的显式表达式。\footnote{原重排本和原扫描本此处均未列出所指证明的编号。}从 $X$ 上的\Term{presheaf}{预层} $P$ 出发的相应情形同样证明，只须使用\Term{functor}{函子}性\Term{isomorphism}{同构} $\varphi^*a(P)\simeq a\varphi^\bullet(P)$。$C_\xi$ 是\Term{filtered}{滤过}\Term{category}{范畴}这一事实（对任意 $X$ \Term{scheme}{概形} $\xi$，不必是\Term{geometric-point}{几何点}，也成立），立即来自 $C_\xi$ 中\Term{finite}{有限}\Term{projective-limit}{投射极限}的存在性；后者又来自 $X_{\text{ét}}$ 是 $(\mathrm{Sch})/X$ 中对\Term{finite}{有限}\Term{projective-limit}{投射极限}\Term{stable}{稳定}的\Term{subcategory}{子范畴}。
+\end{proof}
+现在设 $u:F\to G$ 是 $X$ 上的\Term{sheaf}{层}\Term{homomorphism}{同态}，且每个 $x\in X$ 处 $u_{\bar x}$ 为\Term{monomorphism}{单态射}。证明 $u$ 为\Term{monomorphism}{单态射}。为此须证明：若 $X'\in\operatorname{Ob}X_{\text{ét}}$，$\varphi,\psi\in F(X')$ 且 $u(\varphi)=u(\psi)$，则 $\varphi=\psi$。以 $X'$ 替换 $X$ 并利用\Term{fiber-functor}{纤维函子}的\Term{transitivity}{传递性}，可设 $X=X'$。每个 $x\in X$ 处，有 $u(\varphi)_{\bar x}=u(\psi)_{\bar x}$，即 $u_{\bar x}(\varphi_{\bar x})=u_{\bar x}(\psi_{\bar x})$；由 $u_{\bar x}$ 为\Term{monomorphism}{单态射}，得 $\varphi_{\bar x}=\psi_{\bar x}$。利用 3.9，存在像包含 $x$ 的 $X'_x\in\operatorname{Ob}X_{\text{ét}}$，使 $\varphi,\psi$ 在 $X'_x$ 上的\Term{inverse-image}{逆像}相同。当 $x$ 遍历 $X$ 时，这些 $X'_x$ 构成 $X$ 的\Term{covering}{覆盖}族，故 $\varphi=\psi$。
+这证明了各 $u_{\bar x}$ 为\Term{monomorphism}{单态射}时 $u$ 也是。再设各 $u_{\bar x}$ 为\Term{epimorphism}{满态射}，证明 $u$ 也是，因而是\Term{isomorphism}{同构}。只须证明，对任意 $X'\in\operatorname{Ob}X_{\text{ét}}$、$\psi\in G(X')$，存在 $\varphi\in F(X')$ 使 $u(X')(\varphi)=\psi$。仍可设 $X'=X$；由 3.9，对每个 $x\in X$，存在像包含 $x$ 的 $X'_x\in\operatorname{Ob}X_{\text{ét}}$ 和 $\varphi_x\in F(X'_x)$，使它在 $G(X'_x)$ 中的像为 $\psi$ 的\Term{inverse-image}{逆像}。因 $u$ 为\Term{monomorphism}{单态射}，这些 $\varphi_x$ 在 $X'_x\times_X X'_y$（$x,y\in X$）上一致，故来自唯一的 $\varphi\in F(X)$；由于它们在各 $X'_x$ 上的\Term{inverse-image}{逆像}一致，有 $u(\varphi)=\psi$，证毕。
+\textbf{评注 3.10。}定理 3.5 说明，\Term{etale}{平展}\Term{topology}{拓扑}的“\Term{fiber-functor}{纤维函子}”全体，具有与\Term{topological-space}{拓扑空间}上的通常\Term{sheaf}{层}论相同的本质性质。
+\SourcePage{260}
+我们将十分频繁地使用 3.5 及其推论，因此通常不再明确引用。
+\textbf{3.11。}对每个 $x\in X$，也滥用记号以 $x$ 表示 $X$ \Term{scheme}{概形} $\operatorname{Spec}k(x)$，其\Term{structural-morphism}{结构态射}为通常的 $i_x:x=\operatorname{Spec}k(x)\to X$。它给出\Term{canonical}{典范}\Term{functor}{函子}
+\[i_x^*:\widetilde{X_{\text{ét}}}\longrightarrow\widetilde{x_{\text{ét}}}.\]
+若 $F$ 是 $X$ 上的\Term{sheaf}{层}，令 $F_x=i_x^*(F)$；故它是 $x=\operatorname{Spec}k(x)$ 上的\Term{sheaf}{层}（由 2.1，也可视为 $x$ 上的\Term{etale}{平展}\Term{scheme}{概形}）。它\Term{functor}{函子}性地依赖于 $F$；据 VII 1.4，\Term{functor}{函子} $i_x^*:F\mapsto F_x$ 仍与任意\Term{inductive-limit}{归纳极限}及\Term{finite}{有限}\Term{projective-limit}{投射极限}交换。
+若 $\bar x=\operatorname{Spec}\overline{k(x)}$，则\Term{fiber-functor}{纤维函子} $F\mapsto F_{\bar x}$ \Term{canonical-isomorphism}{典范同构}于\Term{functor}{函子} $F\mapsto F_x$ 与 1.1 的\Term{functor}{函子} $j$ 的复合（考虑到后者\Term{isomorphism}{同构}于 $\operatorname{Spec}k$ 的\Term{geometric-point}{几何点} $\operatorname{Spec}\bar k$ 的\Term{fiber-functor}{纤维函子}）。由此及 3.5 立即可知，\Term{functor}{函子}族 $(F\mapsto F_x)$（$x\in X$）仍\Term{conservative-functor}{保守}。此外，若 $k(x)$ \Term{separably-closed}{可分闭}，即 $\bar x=x$，则严格说来 $F_x$ 与 $F_{\bar x}$ 两记号相互矛盾（前者表示 $\widetilde{x_{\text{ét}}}$ 的\Term{object}{对象}，后者表示\Term{set}{集合}），但由 1.1，这一矛盾无关紧要。
+\textbf{3.12。}由前述注记可见，若 $\bar x=\operatorname{Spec}\overline{k(x)}$，则对 $X$ 上每个\Term{sheaf}{层} $F$，群 $\pi_x=\operatorname{Gal}(\overline{k(x)}/k(x))$ 自然地左\Term{action}{作用}于\Term{fiber}{纤维}\Term{set}{集合} $F_{\bar x}$，所以 $F\mapsto F_{\bar x}$ 实际上可看作\Term{functor}{函子}
+\[\widetilde{X_{\text{ét}}}\longrightarrow B_{\pi_x},\]
+知道这个\Term{functor}{函子}，本质上（由 1.1）等于知道 $F\mapsto F_x$。
+这在一个重要的特殊情形中说明，与\Term{topological-space}{拓扑空间}上的\Term{sheaf}{层}不同，“\Term{fiber-functor}{纤维函子}”一般有非平凡\Term{automorphism}{自同构}。我们将在 7.9 中一般地确定一个\Term{fiber-functor}{纤维函子}到另一个的一切\Term{homomorphism}{同态}。
+\textbf{注记 3.13。}以下是 3.5 b) 一个有时有用的推广。设 $E\subset X$，且对每个\Term{etale}{平展}\Term{morphism}{态射} $f:X'\to X$，$E'=f^{-1}(E)$ 在 $X'$ 中“\Term{very-dense}{极稠密}”（EGA~IV 10.1.3），即对每个这样的 $f$，$X'$ 中包含 $E'$ 的\Term{open-subset}{开集} $U$ 必等于 $X'$。则 $x\in E$ 的\Term{fiber-functor}{纤维函子} $F_{\bar x}$ 已在 $\widetilde{X_{\text{ét}}}$ 上构成“\Term{conservative-family}{保守族}”（因此推论 3.6、3.7、3.8 在只取 $x\in E$ 时仍成立）。重复 3.5 b) 的证明立即可见。此结果特别适用于下列情形：
+\SourcePage{261}
+\par a) $X$ 是 Jacobson \Term{scheme}{概形}（EGA~IV 10.4.1），例如在一个域或 $\operatorname{Spec}\mathbb Z$ 上\Term{local-scheme}{局部}\Term{finite-type}{有限型}，$E$ 是 $X$ 的\Term{closed-point}{闭点}集。
+\par b) $X$ 在\Term{scheme}{概形} $S$ 上\Term{local-scheme}{局部}\Term{finite-type}{有限型}，$E$ 是 $X$ 中在各自\Term{fiber}{纤维}中闭的点所成\Term{set}{集合}。
+\par c) $X$ \Term{locally-noetherian}{局部诺特}，$E$ 是使 $\overline{\{x\}}$ 为\Term{finite}{有限}\Term{set}{集合}的 $x\in X$ 的\Term{set}{集合}（即该\Term{closure}{闭包}是\Term{dimension}{维数} $\leq1$ 的半\Term{local-scheme}{局部}\Term{scheme}{概形}）；参见 EGA~IV 10.5.3、10.5.5。
+\SGAsection{4}{严格局部环与严格局部概形}
+\textbf{4.1。}回忆，依 Azumaya 的用语，若\Term{local-ring}{局部环} $A$ 满足以下\Term{equivalence}{等价}条件，就称它为 \Term{henselian}{Hensel 环}：
+\par (i) 每个在 $A$ 上\Term{finite}{有限}的\Term{algebra}{代数} $B$ 都是\Term{local-ring}{局部环}的\Term{direct-product}{直积} $\prod_iB_i$（此时 $B_i$ 必\Term{isomorphism}{同构}于各 $B_{\mathfrak M_i}$，其中 $\mathfrak M_i$ 遍历 $B$ 的\Term{maximal-ideal}{极大理想}）。
+\par (ii) 若 $A$ \Term{algebra}{代数} $B$ 是\Term{finite-type}{有限型} $A$ \Term{algebra}{代数} $C$ 在 $A$ 的\Term{maximal-ideal}{极大理想} $\mathfrak M$ 上方的一个\Term{prime-ideal}{素理想} $\mathfrak P$ 处的\Term{localization}{局部化}，且 $B/\mathfrak MB$ 在 $k=A/\mathfrak M$ 上\Term{finite}{有限}，则 $B$ 在 $A$ 上\Term{finite}{有限}。
+\par (iii) 同 (ii)，但假设 $C$ 在 $\mathfrak P$ 处对 $A$ \Term{etale}{平展}，且 $k\to B/\mathfrak MB$ 是\Term{isomorphism}{同构}。
+\par (iv) 经典形式的“Hensel 引理”对 $A$ 成立：对每个\Term{monic-polynomial}{首一多项式} $F\in A[T]$，以 $\dot F\in k[T]$ 表示相应的\Term{reduced}{约化}多项式，则 $\dot F$ 的每个\Term{resolution}{分解} $\dot F=\dot F_1\dot F_2$（其中 $\dot F_1,\dot F_2$ 是互素的\Term{monic-polynomial}{首一多项式}），都可将 $\dot F_1,\dot F_2$ \Term{lifting}{提升}为 $F_1,F_2\in A[T]$，使 $F=F_1F_2$（且\Term{lifting}{提升}必唯一）。
+这些\Term{equivalence}{等价}性的证明以及 \Term{henselian}{Hensel 环}的一般性质，参见 EGA~IV 18.5.11。回忆，若 $A$ 是任意\Term{local-ring}{局部环}，则可证明（Nagata）存在\Term{local-homomorphism}{局部同态} $A\to A^h$，其中 $A^h$ 为 \Term{henselian}{Hensel 环}，并对 $A$ 到\Term{noetherian-local-ring}{诺特局部环}的\Term{local-homomorphism}{局部同态}具有\Term{universal-property}{泛性质}。环 $A^h$ 称为 $A$ 的\Term{henselization}{Hensel 化}。EGA~IV 18.6 给出的构造（与 Nagata 的构造不同）是令
+\[A^h=\varinjlim_i A_i,\]
+其中 $A_i$ 遍历在 $A$ 上本质\Term{finite-type}{有限型}且本质\Term{etale}{平展}（即某个\Term{etale}{平展} $A$ \Term{algebra}{代数}的\Term{localization}{局部化}）的 $A$ \Term{algebra}{代数}，要求 $A\to A_i$ 是\Term{local-homomorphism}{局部同态}，\Term{residue-extension}{剩余扩张} $k(A_i)/k(A)$ 平凡。
+\SourcePage{262}
+这一构造特别说明 $A^h$ 在 $A$ 上\Term{flat}{平坦}，并且 $A$ \Term{noetherian}{诺特}时，其 Hensel \Term{closure}{闭包}也\Term{noetherian}{诺特}。
+\begin{SGAresult}{定义}{4.2}
+\Term{local-ring}{局部环} $A$ 若满足下列\Term{equivalence}{等价}条件之一，就称为\Term{strictly-local}{严格局部}：
+\par (i) $A$ 为 \Term{henselian}{Hensel 环}（4.1），且其\Term{residue-field}{剩余域}\Term{separably-closed}{可分闭}。
+\par (ii) 每个\Term{local-homomorphism}{局部同态} $A\to B$，其中 $B$ 为\Term{etale}{平展} $A$ \Term{algebra}{代数}的\Term{localization}{局部化}，都是\Term{isomorphism}{同构}。
+\par 若\Term{scheme}{概形}\Term{isomorphism}{同构}于\Term{strictly-local}{严格局部}环的谱，就称它为\Term{strictly-local}{严格局部}\Term{scheme}{概形}。
+\end{SGAresult}
+(i) 与 (ii) 的\Term{equivalence}{等价}性立即来自 4.1。注意，几何地说，4.2 (ii)（相应地，4.1 (iii)）是指：对每个 $Y=\operatorname{Spec}A$ 上的\Term{etale}{平展}\Term{scheme}{概形} $X$，以及\Term{fiber}{纤维} $X_y$ 的每个点 $x$（相应地，对 $k(y)$ 有理的每个点），存在 $X$ 在 $Y$ 上通过 $y$ 的\Term{section}{截面}（且此\Term{section}{截面}必唯一），其中 $y$ 是 $Y$ 的\Term{closed-point}{闭点}。
+\begin{SGAresult}{定义}{4.3}
+设 $X$ 是\Term{scheme}{概形}，$\mathscr O_{X_{\text{ét}}}$ 是 $X_{\text{ét}}$ 上由 $\mathscr O_{X_{\text{ét}}}(X')=\Gamma(X',\mathscr O_{X'})$ 定义的\Term{sheaf}{层}（比较 VII 2 c)），$u:\xi=\operatorname{Spec}\Omega\to X$ 是\Term{geometric-point}{几何点}。称\Term{sheaf}{层} $\mathscr O_{X_{\text{ét}}}$ 在 $\xi$ 处的\Term{fiber}{纤维}为 $X$ 在 $\xi$ 处的\Term{strictly-local}{严格局部}环，记为 $\mathscr O_{X,\xi}$ 或简记 $\mathscr O_\xi$。它的谱称为 $X$ 在 $\xi$ 处的\Term{strict-localization}{严格局部化}。
+\end{SGAresult}
+由 3.9，有\Term{fiber}{纤维}的描述
+\[\mathscr O_{X,\xi}=\varinjlim\Gamma(X',\mathscr O_{X'}),\tag{*}\]
+其中 $X'$ 遍历带 $\xi$ 标点（即配备 $X$ \Term{morphism}{态射} $\xi\to X'$）的\Term{etale}{平展} $X$ \Term{scheme}{概形}所成\Term{category}{范畴}的\Term{filtered}{滤过}\Term{opposite-category}{对偶范畴}。由\Term{inductive-limit}{归纳极限}的\Term{transitivity}{传递性}，可把右端的 $\Gamma(X',\mathscr O_{X'})$ 换成 $\mathscr O_{X',x'}$，其中 $x'$ 是 $\xi$ 在 $X'$ 中的像，得到
+\[\mathscr O_{X,\xi}=\varinjlim_i A_i,\tag{**}\]
+其中 $A_i$ 遍历在 $A=\mathscr O_{X,x}$ 上本质\Term{finite-type}{有限型}且\Term{etale}{平展}、配备 $k$ \Term{homomorphism}{同态} $k(A_i)\to\Omega$ 的\Term{algebra}{代数}。（注意：$x$ 是 $\xi$ 在 $X$ 中的像。）当然，各 $A_i$ 之间的\Term{transition-homomorphism}{过渡同态}是使下列三角形交换的\Term{local-scheme}{局部} $A$ \Term{algebra}{代数}\Term{homomorphism}{同态} $A_i\to A_j$：
+\[\begin{tikzcd}k(A_i)\arrow[r]\arrow[dr]&k(A_j)\arrow[d]\\&\Omega.\end{tikzcd}\]
+\SourcePage{263}
+这意味着若存在 $A_i$ 到 $A_j$ 的容许\Term{homomorphism}{同态}，则它唯一。因此 $(**)$ 是以一个递增\Term{filtered}{滤过}有序指标集为指标的\Term{inductive-limit}{归纳极限}。
+\textbf{4.4。}描述 $(**)$ 说明，$X$ 在 $\xi$ 处的\Term{strictly-local}{严格局部}环，本质上只依赖于通常的\Term{local-ring}{局部环} $A=\mathscr O_{X,x}$（$x=u(\xi)$）和 $k=k(A)$ 的\Term{group-extension}{扩张} $\Omega$。它也称为 $A$ 的\Term{strict-henselization}{严格 Hensel 化}（相对于所考虑的 $k$ 的\Term{separably-closed}{可分闭}\Term{group-extension}{扩张} $\Omega$），记为 $A^{\mathrm{hs}}$。$A^{\mathrm{hs}}$ 的一般性质参见 EGA~IV 18.8。这里只指出，上述构造还说明 $A^{\mathrm{hs}}$ 在 $A$ 上\Term{flat}{平坦}，且 $A$ \Term{noetherian}{诺特}时它也\Term{noetherian}{诺特}。另一方面，容易证明（同上），配备 $k$ \Term{homomorphism}{同态} $k(A^{\mathrm{hs}})\to\Omega$ 的\Term{local-homomorphism}{局部同态} $A\to A^{\mathrm{hs}}$，是如下\Term{universal-problem}{泛问题}的解：对给定的 $A$ 及 $k$ 的\Term{group-extension}{扩张} $\Omega$，寻求配备 $k$ \Term{homomorphism}{同态} $k(A')\to\Omega$、且 $A'$ \Term{strictly-local}{严格局部}的\Term{local-homomorphism}{局部同态} $A\to A'$。特别地，$A^{\mathrm{hs}}$ 确为\Term{strictly-local}{严格局部}环（这说明了 4.3 的术语是合理的）。
+\textbf{4.5。}保留 4.3 的记号，选取 $x$ 的一个\Term{affine}{仿射}\Term{open-neighborhood}{开邻域} $U$。显然，在 3.9 中可以只考虑在 $U$ 上\Term{affine}{仿射}的 $X'$。这些\Term{scheme}{概形}构成\Term{affine}{仿射}\Term{scheme}{概形}的伪\Term{filtered}{滤过}\Term{projective-system}{投射系统}，因而处于 VII 5 的一般情形（参见 VI 5.12 b)）。由 $\mathscr O_{X,\xi}$ 的表达式 $(*)$，有 $X$ \Term{isomorphism}{同构}
+\[\varprojlim_{\substack{X'\text{ 平展、在 }U\text{ 上仿射}\\X'\text{ 带 }\xi\text{ 标点}}}X'\simeq\operatorname{Spec}\mathscr O_{X,\xi}.\tag{***}\]
+这精确表达了将 $\operatorname{Spec}(\mathscr O_{X,\xi})$ 直观地看作“$\xi$ 的\Term{etale}{平展}\Term{neighborhood}{邻域}的\Term{limit}{极限}”的几何含义。
+\begin{SGAresult}{命题}{4.6}
+设 $X$ 是\Term{strictly-local}{严格局部}\Term{scheme}{概形}，$x$ 是其\Term{closed-point}{闭点}，因而也是 $X$ 的\Term{geometric-point}{几何点}。则\Term{functor}{函子} $F\mapsto\Gamma(X,F):\widetilde{X_{\text{ét}}}\to(\mathrm{Ens})$ \Term{canonical-isomorphism}{典范同构}于\Term{fiber-functor}{纤维函子} $F\mapsto F_x$，故与任意\Term{inductive-limit}{归纳极限}交换。\footnote{不要求该\Term{limit}{极限}是\Term{filtered}{滤过}的！}
+\end{SGAresult}
+\SourcePage{264}
+\begin{proof}
+由定义 4.2 (ii)，在 3.9 考虑的带 $x$ 标点的\Term{etale}{平展} $X$ \Term{scheme}{概形} $X'$ 所成\Term{category}{范畴}中，\Term{final-object}{终对象} $X$ \Term{dominant}{支配}所有其他\Term{object}{对象}；因此 $\varinjlim F(X')$ \Term{canonical-isomorphism}{典范同构}于 $F(X)$。
+\end{proof}
+特别地，$\Gamma$ 在\Term{abelian-sheaf}{阿贝尔层}\Term{category}{范畴}上诱导的\Term{functor}{函子}\Term{exact}{正合}，故有：
+\begin{SGAresult}{推论}{4.7}
+在 4.6 的条件下，对 $X$ 上每个\Term{abelian-sheaf}{阿贝尔层} $F$，有 $\mathrm H^q(X,F)=0$（$q\ne0$）。
+\end{SGAresult}
+\begin{SGAresult}{推论}{4.8}
+设 $X$ 是\Term{scheme}{概形}，$\xi$ 是 $X$ 的\Term{geometric-point}{几何点}，$\bar X=\operatorname{Spec}\mathscr O_{X,\xi}$ 是相应的\Term{strict-localization}{严格局部化}\Term{scheme}{概形}，$F$ 是 $X$ 上变动的\Term{sheaf}{层}，$\bar F$ 是它在 $\bar X$ 上的\Term{inverse-image}{逆像}，则有\Term{functor}{函子}性\Term{isomorphism}{同构} $F_\xi\simeq\Gamma(\bar X,\bar F)$。
+\end{SGAresult}
+事实上，$\xi$ 也可视为 $\bar X$ 的\Term{geometric-point}{几何点}，只须应用 4.6 及\Term{fiber}{纤维}的\Term{transitivity}{传递性}（3.4）。
+\SGAsection{5}{对计算 $R^qf_*$ 的纤维的应用}
+\textbf{5.1。}设 $f:X\to Y$ 是\Term{scheme}{概形}\Term{morphism}{态射}，$F$ 是 $X$ 上的\Term{abelian-sheaf}{阿贝尔层}；我们要确定 $R^qf_*(F)$。由 3.5，这几乎等于知道每个 $y\in Y$ 处的\Term{geometric-fibre}{几何纤维} $(R^qf_*F)_{\bar y}$。而（V 5.1）$R^qf_*(F)$ 是 $Y$ 上\Term{presheaf}{预层}
+\[\mathscr H^q:Y'\longmapsto\mathrm H^q(X\times_Y Y',F)\]
+的\Term{adjunction}{伴随}\Term{sheaf}{层}，故由 3.9，
+\[(R^qf_*F)_{\bar y}=\varinjlim_{Y'^\circ}\mathscr H^q(Y'),\]
+其中\Term{inductive-limit}{归纳极限}沿着带 $\bar y$ 标点的\Term{etale}{平展} $Y$ \Term{scheme}{概形} $Y'$ 所成\Term{category}{范畴}的\Term{filtered}{滤过}\Term{opposite-category}{对偶范畴}取。选择 $y$ 的\Term{affine}{仿射}\Term{open-neighborhood}{开邻域} $U$，则右端可限于由在 $U$ 上\Term{affine}{仿射}的 $Y'$ 组成的\Term{cofinal}{共尾}\Term{subcategory}{子范畴}。于是得到
+\[(R^qf_*F)_{\bar y}\simeq\varinjlim\mathrm H^q(X\times_Y Y',F),\tag{5.1.1}\]
+其中 $Y'$ 在上述\Term{category}{范畴}中变化。引入
+\[\bar Y=\operatorname{Spec}(\mathscr O_{Y,\bar y})=\varprojlim Y'\quad\text{（参见 4.5）},\qquad \bar X=X\times_Y\bar Y.\]
+\SourcePage{265}
+注意，$X\times_Y Y'$ 的\Term{projective-system}{投射系统}（由 $Y'$ 的系统沿 $X\to Y$ \Term{base-change}{换基}得到）中的\Term{transition-morphism}{过渡态射}\Term{affine}{仿射}，因而满足 VII 5.1 的一般条件；由该处的\Term{projective-limit}{投射极限}构造，立即有\Term{canonical-isomorphism}{典范同构}
+\[\bar X=\varprojlim(X\times_Y Y').\]
+以 $\bar F$ 表示 $F$ 在 $\bar X$ 上的\Term{inverse-image}{逆像}，则得到\Term{canonical-homomorphism}{典范同态}
+\[\varinjlim_{Y'}\mathrm H^q(X\times_Y Y',F)\longrightarrow\mathrm H^q(\bar X,\bar F).\]
+与 (5.1.1) 比较，得到关于 $F$ 显然\Term{functor}{函子}性的\Term{canonical-homomorphism}{典范同态}
+\[(R^qf_*F)_{\bar y}\longrightarrow\mathrm H^q(\bar X,\bar F).\tag{5.1.2}\]
+现在设 $f:X\to Y$ \Term{quasi-compact}{拟紧}且\Term{quasi-separated}{拟分离}，则 $X\times_Y Y'\to Y'$ 亦然；因为 $Y'$ \Term{affine}{仿射}，$X\times_Y Y'$ \Term{quasi-compact}{拟紧}且\Term{quasi-separated}{拟分离}。由 (5.1.1) 和\Term{limit}{极限}过渡定理 VII 5.8，得到：
+\begin{SGAresult}{定理}{5.2}
+设 $f:X\to Y$ 是\Term{quasi-compact}{拟紧}\Term{quasi-separated}{拟分离}的\Term{scheme}{概形}\Term{morphism}{态射}，$F$ 是 $X$ 上的\Term{abelian-sheaf}{阿贝尔层}，$y$ 是 $Y$ 的点，$\bar y$ 是 $y$ 上方对应于 $k(y)$ 的\Term{separable-closure}{可分闭包} $\overline{k(y)}$ 的\Term{geometric-point}{几何点}，$\bar Y=\operatorname{Spec}(\mathscr O_{Y,\bar y})$ 是相应的\Term{strict-localization}{严格局部化}\Term{scheme}{概形}，$\bar X=X\times_Y\bar Y$，$\bar F$ 是 $F$ 在 $\bar X$ 上的\Term{inverse-image}{逆像}。则\Term{canonical-homomorphism}{典范同态} (5.1.2) 是\Term{isomorphism}{同构}：
+\[(R^qf_*F)_{\bar y}\simeq\mathrm H^q(\bar X,\bar F).\]
+\end{SGAresult}
+这个命题实际上将确定\Term{sheaf}{层} $R^qf_*(F)$ 的\Term{fiber}{纤维}，归结为确定\Term{strictly-local}{严格局部}\Term{scheme}{概形}上的\Term{prescheme}{预概形}的\Term{cohomology}{上同调}；后文将不断使用它。在技术上，正是 5.2 解释了 \Term{henselian}{Hensel 环}与\Term{strictly-local}{严格局部}环在\Term{etale}{平展}\Term{cohomology}{上同调}研究中的重要\Term{action}{作用}。
+\textbf{注记 5.3。}这个命题对 $R^0f_*(F)=f_*(F)$ 和任意\Term{set}{集合}\Term{sheaf}{层}也成立。另外，当 $F$ 是\Term{group-sheaf}{群层}（不必交换），并采用 $R^1f_*(F)$ 的通常定义时（参见 Giraud 的博士论文），5.2 对 $R^1f_*(F)$ 仍成立。
+\textbf{5.4。}现在设 $f$ 为\Term{finite-morphism}{有限态射}。则 $\bar f:\bar X\to\bar Y$ 也是\Term{finite-morphism}{有限态射}；由于 $\bar Y$ \Term{strictly-local}{严格局部}，$\bar X$ 是\Term{finite}{有限}多个\Term{strictly-local}{严格局部}\Term{scheme}{概形} $\bar X_i$ 的和。因此利用 4.7 得
+\[\mathrm H^q(\bar X,\bar F)=0\quad(q\ne0).\tag{5.4.1}\]
+\SourcePage{266}
+另一方面，$\bar X$ 的分支 $\bar X_i$ 对应于 $\bar X$ 中位于 $\bar Y$ 的\Term{closed-point}{闭点} $\bar y$ 上方的点 $\bar x_i$，即 $\bar X_{\bar y}=X_y\otimes_{k(y)}\overline{k(y)}$ 的点。这些点也可视为 $X$ 的\Term{geometric-point}{几何点}，而 $\bar X_i$ 正是 $X$ 在 $\bar x_i$ 处的\Term{strict-localization}{严格局部化}\Term{scheme}{概形}。因此由 4.8，
+\[\mathrm H^0(\bar X_i,\bar F)\simeq F_{\bar x_i},\qquad
+\mathrm H^0(\bar X,\bar F)=\prod_iF_{\bar x_i}.\tag{5.4.2}\]
+该\Term{isomorphism}{同构}关于\Term{set}{集合}\Term{sheaf}{层} $F$ \Term{functor}{函子}性（这里不必限于\Term{abelian-sheaf}{阿贝尔层}）。结合 5.2、5.3，上述 (5.4.1)、(5.4.2) 给出：
+\begin{SGAresult}{命题}{5.5}
+设 $f:X\to Y$ 是\Term{prescheme}{预概形}的\Term{finite-morphism}{有限态射}，$y$ 是 $Y$ 的点。则对 $X$ 上每个\Term{sheaf}{层} $F$，有关于 $F$ \Term{functor}{函子}性的\Term{isomorphism}{同构}
+\[(f_*F)_{\bar y}\simeq\prod_{\bar x\in X_y\otimes_{k(y)}\overline{k(y)}}F_{\bar x}\]
+（因此 $f_*(F)$ 的形成与任意\Term{base-change}{换基} $y'\to Y$ 交换）；若 $F$ 为\Term{abelian-sheaf}{阿贝尔层}，则 $R^qf_*(F)=0$（$q>0$）。
+\end{SGAresult}
+注意，5.5 的第一个公式实际上不依赖于 5.2 和一般\Term{limit}{极限}过渡定理 VII 5.7；由 3.5，它说明 $F\mapsto f_*(F)$ 在\Term{abelian-sheaf}{阿贝尔层}\Term{category}{范畴}上是\Term{exact}{正合}\Term{functor}{函子}，从而再次得到 $q\ne0$ 时 $R^qf_*(F)=0$。以下是 5.5 的一个小变形：
+\begin{SGAresult}{推论}{5.6}
+设 $f:X\to Y$ 是\Term{integral-morphism}{整态射}。则对 $X$ 上每个\Term{abelian-sheaf}{阿贝尔层} $F$，$q\ne0$ 时 $R^qf_*(F)=0$。此外，\Term{set}{集合}\Term{sheaf}{层}上的\Term{functor}{函子} $f_*$ 与任意\Term{base-change}{换基} $Y'\to Y$ 交换。
+\end{SGAresult}
+\begin{proof}
+由 5.2，可归结为证明：当 $Y$ \Term{strictly-local}{严格局部}时，对 $X$ 上每个\Term{abelian-sheaf}{阿贝尔层} $F$ 有 $\mathrm H^q(X,F)=0$（$q\ne0$）。此时 $Y=\operatorname{Spec}A$，$X=\operatorname{Spec}B$，$B$ 为整 $A$ \Term{algebra}{代数}；将 $B$ 写成 $\varinjlim B_i$，其中 $B_i$ 遍历 $B$ 的\Term{finite-type}{有限型}子\Term{algebra}{代数}（它们甚至在 $A$ 上\Term{finite}{有限}），得到 $X=\varprojlim_iX_i$，$X_i=\operatorname{Spec}B_i$。由 VII 5.13，可归结为对 $X_i$ 上的\Term{abelian-sheaf}{阿贝尔层} $F_i$ 证明 $q\ne0$ 时 $R^qf_*(F_i)=0$，这来自 5.5。5.6 最后一个断言也用相同方法归结到 5.5。
+\end{proof}
+\SourcePage{267}
+\begin{SGAresult}{推论}{5.7}
+设 $f:X\to Y$ 是\Term{immersion}{浸入}\Term{morphism}{态射}。则对 $X$ 上每个\Term{sheaf}{层} $F$，\Term{canonical}{典范}\Term{morphism}{态射} $f^*f_*(F)\to F$ 是\Term{isomorphism}{同构}。
+\end{SGAresult}
+\begin{proof}
+$f$ \Term{decomposable}{可分解}为开\Term{immersion}{浸入}与闭\Term{immersion}{浸入}的复合，且 5.7 对开\Term{immersion}{浸入}显然（IV 第 3 节），所以归结为 $f$ 是闭\Term{immersion}{浸入}的情形。只须证明每个 $x\in X$ 处的相应\Term{homomorphism}{同态} $(f^*f_*F)_{\bar x}\to F_{\bar x}$ \Term{bijection}{双射}。由\Term{fiber}{纤维}的\Term{transitivity}{传递性}（3.4），左端正是\Term{fiber}{纤维} $(f_*F)_{\bar x}$，因而只须验证\Term{canonical-homomorphism}{典范同态} $(f_*F)_{\bar x}\to F_{\bar x}$ \Term{bijection}{双射}；这立即来自 5.5。
+\end{proof}
+\textbf{注记 5.8。}利用 5.5 并如 5.6 那样处理，容易证明：若 $f:X\to Y$ 是\Term{integral-morphism}{整态射}，$F$ 是 $X$ 上的\Term{group-sheaf}{群层}（不必交换），则 $R^1f_*(F)$ 是 $Y$ 上的终\Term{sheaf}{层}（比较注记 5.3）。
+\SGAsection{6}{支集}
+设 $U$ 是\Term{scheme}{概形} $X$ 的 Zariski \Term{open-subset}{开集}。则 $U\in\operatorname{Ob}X_{\text{ét}}$；实际上，$U$ 是 $X_{\text{ét}}$ 的\Term{final-object}{终对象} $X$ 的\Term{subobject}{子对象}，因此定义了 $\widetilde{X_{\text{ét}}}$ 的\Term{final-object}{终对象}的\Term{subobject}{子对象} $\widetilde U$，即 $X$ 的\Term{etale}{平展}\Term{topos}{拓扑斯} $\widetilde{X_{\text{ét}}}$ 的一个“\Term{open-subset}{开集}”（IV 8.3）。
+\begin{SGAresult}{命题}{6.1}
+上述映射 $U\mapsto\widetilde U$ 是 $X$ 的（Zariski 意义的）\Term{open-subset}{开集}所成\Term{ordered-set}{有序集}到\Term{etale}{平展}\Term{topos}{拓扑斯} $\widetilde{X_{\text{ét}}}$ 的\Term{open-subset}{开集}所成\Term{ordered-set}{有序集}的\Term{isomorphism}{同构}。
+\end{SGAresult}
+\begin{proof}
+由于 $X_{\text{ét}}\to\widetilde{X_{\text{ét}}}$ \Term{fully-faithful}{全忠实}，立即可见 $U\mapsto\widetilde U$ 保持序结构，即 $(U\subset V)\Leftrightarrow(\widetilde U\subset\widetilde V)$，特别地该映射\Term{injectivity}{单射}。为证\Term{surjectivity}{满射}，取终\Term{sheaf}{层} $\widetilde X$ 的子\Term{sheaf}{层} $F$，并考虑 $X_{\text{ét}}/F$ 的\Term{object}{对象}，即使 $F(X')\ne\varnothing$ 的\Term{etale}{平展} $X$ \Term{scheme}{概形} $X'$。由于 $X'\to X$ \Term{etale}{平展}，它是开映射（EGA~IV 2.4.6），特别地其\Term{set-theory}{集合论}的像 $\operatorname{Im}(X')$ 为\Term{open-subset}{开集}。令 $U$ 为各 $\operatorname{Im}(X')$（$X'\in\operatorname{Ob}(X_{\text{ét}}/F)$）的并。族 $X'\to U$ \Term{surjectivity}{满射}，因而是\Term{covering}{覆盖}族；故 $U\in\operatorname{Ob}(X_{\text{ét}}/F)$，从而 $X_{\text{ét}}/F=X_{\text{ét}}/U$，故 $F=\widetilde U$。
+\end{proof}
+\SourcePage{268}
+据 6.1，今后可以无歧义地说 $X$ 的“\Term{open-subset}{开集}”，不必说明是在通常的 Zariski 意义，还是\Term{etale}{平展}\Term{topology}{拓扑}的意义下。
+\begin{SGAresult}{推论}{6.2}
+设 $U$ 是 $X$ 的\Term{open-subset}{开集}，$j:U\to X$ 是\Term{canonical}{典范}\Term{immersion}{浸入}，则\Term{functor}{函子} $j^*:\widetilde{X_{\text{ét}}}\to\widetilde{U_{\text{ét}}}$ 诱导\Term{category-equivalence}{范畴等价}
+\[\widetilde{X_{\text{ét}}}/\widetilde U\longrightarrow\widetilde{U_{\text{ét}}}.\]
+\end{SGAresult}
+\begin{proof}
+立即可验证：对任意存在\Term{finite}{有限}\Term{projective-limit}{投射极限}的\Term{site}{景} $C$，以及其\Term{final-object}{终对象} $e$ 的任一\Term{subobject}{子对象} $U$，由 $j(S)=S\times U$ 定义的\Term{functor}{函子} $j:C\to C/U$ 是\Term{site}{景}\Term{morphism}{态射}，且 $j^*:\widetilde C\to\widetilde{C/U}$ 诱导\Term{equivalence}{等价} $\widetilde C/\widetilde U\to\widetilde{C/U}$。结合这一一般事实与 $U_{\text{ét}}$ \Term{canonical-isomorphism}{典范同构}于 $X_{\text{ét}}/U$ 即可。
+\end{proof}
+形象地说，6.2 表示通常\Term{scheme}{概形}意义的“诱导到一个\Term{open-subset}{开集}上”与\Term{topos}{拓扑斯}意义的这一操作相容。以下是“\Term{restriction}{限制}到闭集”操作的类似相容性：
+\begin{SGAresult}{定理}{6.3}
+设 $X$ 是\Term{scheme}{概形}，$Y$ 是 $X$ 的闭子\Term{scheme}{概形}，$U=X-Y$ 赋以\Term{induced-structure}{诱导结构}，$i:Y\to X$、$j:U\to X$ 为\Term{canonical}{典范}\Term{immersion}{浸入}。则\Term{functor}{函子} $i_*:\widetilde{Y_{\text{ét}}}\to\widetilde{X_{\text{ét}}}$ \Term{fully-faithful}{全忠实}；若 $F\in\operatorname{Ob}\widetilde{X_{\text{ét}}}$，则 $F$ \Term{isomorphism}{同构}于形如 $i_*(G)$ 的\Term{sheaf}{层}，当且仅当 $j^*(F)$ \Term{isomorphism}{同构}于 $U$ 上的终\Term{sheaf}{层} $\widetilde U$。
+\end{SGAresult}
+\begin{proof}
+由于 $i_*,i^*$ 互相\Term{adjunction}{伴随}，$i_*$ \Term{fully-faithful}{全忠实}\Term{equivalence}{等价}于\Term{functor}{函子}性\Term{homomorphism}{同态} $i^*i_*(G)\to G$ 是\Term{isomorphism}{同构}，而这正是 5.7。另一方面，若 $G\in\operatorname{Ob}\widetilde{Y_{\text{ét}}}$，则由 6.2 平凡地验证 $j^*i_*(G)$ 是 $U$ 上的终\Term{sheaf}{层}。反之，若 $F\in\operatorname{Ob}\widetilde{X_{\text{ét}}}$ 且 $j^*(F)$ 是终\Term{sheaf}{层}，证明 $F$ \Term{isomorphism}{同构}于形如 $i_*(G)$ 的\Term{sheaf}{层}；\Term{equivalence}{等价}地，证明\Term{canonical-homomorphism}{典范同态}
+\[G\longrightarrow i_*i^*G\]
+是\Term{isomorphism}{同构}。仍只须验证它在每个 $x\in X$ 的\Term{geometric-fibre}{几何纤维}上诱导\Term{isomorphism}{同构}。当 $x\in U$，这正是对 $G$ 所作假设。当 $x\in Y$，由\Term{fiber}{纤维}的\Term{transitivity}{传递性}，可归结为验证下述\Term{homomorphism}{同态}在 $x$ 的\Term{fiber}{纤维}上诱导\Term{isomorphism}{同构}：
+\[i^*(G)\longrightarrow i^*(i_*i^*(G)).\]
+\SourcePage{269}
+据对 $F=i^*G$ 及 $i$ 应用 5.7，上述\Term{homomorphism}{同态}是\Term{isomorphism}{同构}。6.3 证毕。
+\end{proof}
+\begin{SGAresult}{推论}{6.4}
+\Term{functor}{函子} $i_*$ 诱导 $Y$ 上\Term{abelian-sheaf}{阿贝尔层}的\Term{category}{范畴}与 $X$ 上\Term{restriction}{限制}到 $U=X-Y$ 为零的\Term{abelian-sheaf}{阿贝尔层}的\Term{category}{范畴}之间的\Term{equivalence}{等价}。
+\end{SGAresult}
+依照通常习惯，我们往往将 $Y$ 上的\Term{abelian-sheaf}{阿贝尔层}等同于 $X$ 上在 $U$ 上为零的\Term{abelian-sheaf}{阿贝尔层}。
+\textbf{6.5。}由 6.1，当 $X$ 为\Term{scheme}{概形}时，我们知道如何将\Term{topos}{拓扑斯} $E=\widetilde{X_{\text{ét}}}$ 的“\Term{open-subset}{开集}”解释为通常意义的 $X$ 的\Term{open-subset}{开集} $U$；由 6.3，在这一等同下，IV 3 的“剩余\Term{topos}{拓扑斯}” $E_{\complement U}$ \Term{canonical}{典范}\Term{equivalence}{等价}于 $\widetilde{Y_{\text{ét}}}$，其中 $Y=X-U$ 赋以任意使 $Y$ 成为\Term{scheme}{概形}的\Term{induced-structure}{诱导结构}。因而可对这一情形应用 IV 3 的结果，特别是 IV 3.3 用三元组 $(F',F'',u)$ 描述 $X$ 上的\Term{sheaf}{层} $F$：其中 $F'$ 是 $Y$ 上的\Term{sheaf}{层}，$F''$ 是 $U$ 上的\Term{sheaf}{层}，$u$ 是 $F'$ 到 $i^*j_*(F')$ 的\Term{homomorphism}{同态}。后文将自由使用 IV 3 的记号 $i^!,j_!$，它们表示\Term{functor}{函子}
+\[j_!:(\widetilde{U_{\text{ét}}})_{\mathrm{ab}}\longrightarrow(\widetilde{X_{\text{ét}}})_{\mathrm{ab}},\qquad
+ i^!:(\widetilde{X_{\text{ét}}})_{\mathrm{ab}}\longrightarrow(\widetilde{Y_{\text{ét}}})_{\mathrm{ab}},\]
+其中下标 $\mathrm{ab}$ 表示\Term{abelian-sheaf}{阿贝尔层}\Term{category}{范畴}。这些\Term{functor}{函子}给出 IV 3.7 的两个\Term{exact-sequence}{正合列}。
+\textbf{6.6。}结合上述论述以及 IV 8.5 引入的一般术语，应对 $X$ 上的\Term{abelian-sheaf}{阿贝尔层} $F$ 或这样的\Term{sheaf}{层}的\Term{section}{截面} $\varphi$ 引入 $F$ 或 $\varphi$ 的\Term{support}{支集}：它是所考虑\Term{object}{对象}为零的最大\Term{open-subset}{开集}的补集，是通常意义即 Zariski 意义下的闭集。
+在当前情形，还应将 V 4.3 的一般记号 $\mathrm H^q(E_{\complement U},F)$、$\mathscr H^q_{\complement U}(F)$ 换为 $\mathrm H_Y^q(X,F)$、$\mathscr H_Y^q(F)$；前者为\Term{abelian-group}{阿贝尔群}，后者为 $Y$ 上的\Term{abelian-sheaf}{阿贝尔层}（或视为 $X$ 上在 $U$ 上为零的\Term{abelian-sheaf}{阿贝尔层}）。于是有 $\mathscr H_Y^q=R^qi^!$ 等。上述\Term{functor}{函子}的一般性质，参见 V 6。
+\SGAsection{7}{纤维函子的特化态射}
+\textbf{7.1。}在第 4 节中，我们已看到如何对\Term{scheme}{概形} $X$ 的每个\Term{geometric-point}{几何点} $\xi$，赋予\Term{strictly-local}{严格局部} $X$ \Term{scheme}{概形}
+\[\bar X(\xi)=\operatorname{Spec}\mathscr O_{X,\xi}.\]
+\SourcePage{270}
+事实上，它只依赖于 $\xi$ 的像 $x$ 上方由 $k(x)$ 在 $\Omega=k(\xi)$ 中的\Term{separable-closure}{可分闭包} $\overline{k(x)}$ 定义的\Term{geometric-point}{几何点}。后文常限于在 $X$ 上\Term{algebra}{代数}\Term{separable}{可分}的\Term{geometric-point}{几何点} $\xi=\operatorname{Spec}\Omega$，即 $\Omega$ 是 $k(x)$ 的\Term{separable-closure}{可分闭包}，即 $\xi=\bar x$。若 $X$ \Term{scheme}{概形} $Z$ 与某个形如 $\operatorname{Spec}\mathscr O_{X,\bar x}$ 的\Term{scheme}{概形} $X$ \Term{isomorphism}{同构}，就称 $Z$ 为 $X$ 的\Term{strict-localization}{严格局部化}。于是
+\[\xi\longmapsto\operatorname{Spec}\mathscr O_{X,\xi}=\bar X(\xi)\]
+给出 $X$ 上\Term{algebra}{代数}\Term{separable}{可分}\Term{geometric-point}{几何点}的\Term{category}{范畴}与由 $X$ 的\Term{strict-localization}{严格局部化}组成的 $X$ \Term{scheme}{概形}\Term{category}{范畴}之间的\Term{equivalence}{等价}，其中两个\Term{category}{范畴}的\Term{morphism}{态射}均只取\Term{isomorphism}{同构}。
+若取一切 $X$ \Term{morphism}{态射}，上述结论不再正确，因为第二个\Term{category}{范畴}中可能存在并非\Term{isomorphism}{同构}的 $X$ \Term{morphism}{态射}。于是作如下定义。
+\begin{SGAresult}{定义}{7.2}
+设 $\xi,\xi'$ 为\Term{scheme}{概形} $X$ 的两个\Term{geometric-point}{几何点}。称相应\Term{strict-localization}{严格局部化}之间的任一 $X$ \Term{morphism}{态射}
+\[\bar X(\xi')\longrightarrow\bar X(\xi)\]
+为从 $\xi'$ 到 $\xi$ 的\Term{specialization-arrow}{特化箭头}。若存在这样的\Term{specialization-arrow}{特化箭头}，就称 $\xi$ 是 $\xi'$ 的\Term{specialization}{特化}，或称 $\xi'$ 是 $\xi$ 的\Term{generalization}{泛化}。
+\end{SGAresult}
+注意，\Term{specialization-arrow}{特化箭头}有显然的复合；所以以\Term{specialization-arrow}{特化箭头}为\Term{morphism}{态射}，$X$ 的\Term{geometric-point}{几何点}构成一个\Term{category}{范畴}，它（以及由 $X$ 上\Term{algebra}{代数}\Term{separable}{可分}\Term{geometric-point}{几何点}组成的\Term{full-subcategory}{全子范畴}）\Term{equivalence}{等价}于 $(\mathrm{Sch})/X$ 中由 $X$ 的\Term{strict-localization}{严格局部化}组成的\Term{full-subcategory}{全子范畴}。
+\begin{SGAresult}{引理}{7.3}
+设 $X$ 为\Term{scheme}{概形}，$Z$ 为 $X$ \Term{scheme}{概形}，\Term{isomorphism}{同构}于\Term{etale}{平展} $X$ \Term{scheme}{概形} $X_i$ 的伪\Term{filtered}{滤过}\Term{projective-limit}{投射极限}，\Term{transition-morphism}{过渡态射}\Term{affine}{仿射}（VII 5.1）；$\xi'$ 是 $X$ 的\Term{geometric-point}{几何点}，$Z'=\bar X(\xi')$ 为相应的\Term{strict-localization}{严格局部化}。则：
+\par a) \Term{restriction}{限制}映射 $\operatorname{Hom}_X(Z',Z)\to\operatorname{Hom}_X(\xi',Z)$ 为\Term{bijection}{双射}。
+\par b) 两端\Term{nonempty}{非空}的充要条件，是 $\xi'$ 在 $X$ 中的像 $x'$ 属于 $Z$ 的像。
+\par c) 设 $T$ 为 $Z$ \Term{scheme}{概形}，则 $T$ 为 $Z$ 的\Term{strict-localization}{严格局部化}，当且仅当它为 $X$ 的\Term{strict-localization}{严格局部化}。
+\end{SGAresult}
+\SourcePage{271}
+\begin{proof}
+\par a) 立即归结为 $Z$ 是某个 $X_i$，即 $Z$ 在 $X$ 上\Term{etale}{平展}的情形；再沿 $Z'\to X$ \Term{base-change}{换基}，可设 $Z'\xrightarrow{\sim}X$，由 4.2 (ii) 得出结论。
+\par b) 注意，若 $x'$ 是 $Z$ 的点 $z$ 的像，则 $k(z)$ 必是 $k(x')$ 的\Term{separable}{可分}\Term{algebra}{代数}\Term{group-extension}{扩张}，因而存在它到 $k(\xi')$ 的 $k(x')$ \Term{homomorphism}{同态}，结论由此得出。
+\par c) 证明为一个简单练习，留给读者。
+\end{proof}
+由 7.2、7.3 得：
+\begin{SGAresult}{命题}{7.4}
+设 $\xi,\xi'$ 为\Term{scheme}{概形} $X$ 的两个\Term{geometric-point}{几何点}。则\Term{restriction}{限制}映射给出从 $\xi'$ 到 $\xi$ 的\Term{specialization-arrow}{特化箭头}\Term{set}{集合} $\operatorname{Hom}_X(\bar X(\xi'),\bar X(\xi))$ 与 $\xi'$ 到 $\bar X(\xi)$ 的 $X$ \Term{morphism}{态射}\Term{set}{集合}之间的\Term{bijection}{双射}。
+\end{SGAresult}
+\begin{SGAresult}{推论}{7.5}
+$\xi$ 为 $\xi'$ 的\Term{specialization}{特化}，当且仅当它们在 $X$ 中的像 $x,x'$ 也有这一关系，即 $x$ 属于 $\{x'\}$ 的\Term{closure}{闭包}。
+\end{SGAresult}
+由于 $\operatorname{Spec}\mathscr O_{X,\xi}\to\operatorname{Spec}\mathscr O_{X,x}$ \Term{faithfully-flat}{忠实平坦}（4.4），故\Term{surjectivity}{满射}，因而只须应用 7.3 的第二个断言。
+\begin{SGAresult}{推论}{7.6}
+对每个\Term{scheme}{概形} $X$，令 $\operatorname{Pt}(X)$ 为 $X$ 上\Term{geometric-point}{几何点}（或 $X$ 上\Term{algebra}{代数}\Term{separable}{可分}\Term{geometric-point}{几何点}）的\Term{category}{范畴}，\Term{morphism}{态射}为\Term{specialization-arrow}{特化箭头}。设 $\xi$ 是\Term{scheme}{概形} $X$ 的\Term{geometric-point}{几何点}，$\bar X(\xi)$ 为相应的\Term{strict-localization}{严格局部化}，则有\Term{category-equivalence}{范畴等价}
+\[\operatorname{Pt}(\bar X(\xi))\xrightarrow{\sim}\operatorname{Pt}(X)/\xi.\]
+它将 $\bar X(\xi)$ 的每个\Term{geometric-point}{几何点} $\xi'$ 映到相应的 $X$ 上\Term{geometric-point}{几何点}，并配备由\Term{structural-morphism}{结构态射} $\xi'\to\bar X(\xi)$ 据 7.4 得到的到 $\xi$ 的\Term{specialization}{特化}\Term{morphism}{态射}。
+\end{SGAresult}
+换言之，给出\Term{geometric-point}{几何点} $\xi$ 的一个\Term{generalization}{泛化} $\xi'$，本质上等于给出 $\bar X(\xi)$ 的一个\Term{geometric-point}{几何点}。又据 7.3 c)，相应\Term{homomorphism}{同态} $\bar X(\xi')\to\bar X(\xi)$ 将 $\bar X(\xi')$ 实现为 $\bar X(\xi)$ 在 $\xi'$ 处的\Term{strict-localization}{严格局部化}。
+\textbf{7.7。}现在，对 $X$ 的每个\Term{geometric-point}{几何点} $\xi$ 和每个\Term{sheaf}{层} $F$，将\Term{fiber}{纤维} $F_\xi$ 解释为 $\Gamma(\bar X(\xi),F(\xi))$，其中 $F(\xi)$ 为 $F$ 在 $\bar X(\xi)$ 上的\Term{inverse-image}{逆像}（4.8）。则每个\Term{specialization-arrow}{特化箭头} $u:\xi'\to\xi$ 都诱导关于 $F$ \Term{functor}{函子}性的\Term{homomorphism}{同态}
+\[u^*:F_\xi\longrightarrow F_{\xi'},\]
+\SourcePage{272}
+称为与\Term{specialization-arrow}{特化箭头} $u$ 相伴的\Term{specialization-homomorphism}{特化同态}。显然，由\Term{sheaf}{层}\Term{inverse-image}{逆像}的\Term{transitivity}{传递性}，对复合\Term{specialization-arrow}{特化箭头}有 $(wu)^*=u^*w^*$。
+\textbf{7.8。}回忆（IV），若 $E$ 是\Term{topos}{拓扑斯}，已将“终\Term{topos}{拓扑斯}” $(\mathrm{Ens})$（\Term{isomorphism}{同构}于单点\Term{space}{空间}上的\Term{sheaf}{层}\Term{category}{范畴}！）到 $E$ 的任一\Term{morphism}{态射}称为 $E$ 的“\Term{fiber-functor}{纤维函子}”，或滥称为“点”，即任一与任意\Term{inductive-limit}{归纳极限}及\Term{finite}{有限}\Term{projective-limit}{投射极限}交换的\Term{functor}{函子} $\varphi:E\to(\mathrm{Ens})$。应将 $E$ 的\Term{fiber-functor}{纤维函子}\Term{set}{集合}视为 $\operatorname{Hom}(E,(\mathrm{Ens}))$ 的一个\Term{full-subcategory}{全子范畴}的\Term{object}{对象}集，称其为\Term{topos}{拓扑斯} $E$ 的\Term{fiber-functor}{纤维函子}\Term{category}{范畴}；其\Term{duality}{对偶}称为 $E$ 的点\Term{category}{范畴}，记为 $\operatorname{Pt}(E)$，参见 IV 6.1。
+当 $E=\widetilde{X_{\text{ét}}}$ 且 $X$ 为\Term{scheme}{概形}时，在 3.3、7.7 中已定义\Term{functor}{函子}
+\[\operatorname{Pt}(X)\longrightarrow\operatorname{Pt}(\widetilde{X_{\text{ét}}}),\tag{*}\]
+左端的定义见 7.6。于是有：
+\begin{SGAresult}{定理}{7.9}
+设 $X$ 是\Term{scheme}{概形}。上述\Term{functor}{函子} $(*)$ 是 $X$ 上的\Term{geometric-point}{几何点}\Term{category}{范畴}（\Term{morphism}{态射}为\Term{specialization-arrow}{特化箭头}）与\Term{etale}{平展}\Term{topos}{拓扑斯} $\widetilde{X_{\text{ét}}}$ 的点\Term{category}{范畴}（即 $\widetilde{X_{\text{ét}}}$ 的\Term{fiber-functor}{纤维函子}\Term{category}{范畴}的\Term{duality}{对偶}）之间的\Term{equivalence}{等价}。
+\end{SGAresult}
+\begin{proof}
+由于本研讨班后文不再使用这一定理，这里只给证明提纲，并在\Term{universe}{宇宙}问题上容许略作变通。
+\par a) \emph{所考虑的\Term{functor}{函子}\Term{fully-faithful}{全忠实}。}对每个 $X\in\operatorname{Ob}X_{\text{ét}}$，令 $X^\vee:\widetilde{X_{\text{ét}}}\to(\mathrm{Ens})$ 为 $X^\vee(F)=\operatorname{Hom}(X,F)=F(X)$。注意，\Term{fiber-functor}{纤维函子} $E_\xi:F\mapsto F_\xi$ 可写成
+\[E_\xi\simeq\varinjlim_i X_i^\vee,\]
+其中 $X_i$ 是 $X$ 上的\Term{affine}{仿射}\Term{etale}{平展}\Term{scheme}{概形}，以某个\Term{filtered}{滤过}\Term{category}{范畴}为指标（参见 4.3、4.5）。所以对任意\Term{functor}{函子} $\varphi:\widetilde{X_{\text{ét}}}\to(\mathrm{Ens})$，有
+\[\operatorname{Hom}(E_\xi,\varphi)\simeq\varprojlim_i\operatorname{Hom}(X_i^\vee,\varphi).\]
+\SourcePage{273}
+另一方面，熟知有双\Term{functor}{函子}性的\Term{isomorphism}{同构} $\operatorname{Hom}(X_i^\vee,\varphi)\simeq\varphi(X_i)$。当 $\varphi=E_{\xi'}$，因而 $\varphi\simeq\varinjlim_j(X'_j)^\vee$ 时，有自然\Term{bijection}{双射}
+\[\operatorname{Hom}(E_\xi,E_{\xi'})\simeq\varprojlim_i\varinjlim_j\operatorname{Hom}_X(X'_j,X_i).\tag{*}\]
+另一方面，在\Term{scheme}{概形}\Term{category}{范畴}中有 $\bar X(\xi)=\varprojlim_iX_i$、$\bar X(\xi')=\varprojlim_jX'_j$，故
+\[\operatorname{Hom}_X(\bar X(\xi'),\bar X(\xi))\simeq\varprojlim_i\operatorname{Hom}_X(\bar X(\xi'),X_i).\]
+又因 $X_i$ 在 $X$ 上\Term{local-scheme}{局部}\Term{finite-presentation}{有限呈示}，有
+\[\operatorname{Hom}_X(\bar X(\xi'),X_i)\simeq\varinjlim_j\operatorname{Hom}_X(X'_j,X_i),\]
+从而
+\[\operatorname{Hom}_X(\bar X(\xi'),\bar X(\xi))\simeq\varprojlim_i\varinjlim_j\operatorname{Hom}_X(X'_j,X_i).\tag{**}\]
+比较 $(*)$ 与 $(**)$ 即得所求结论（还须作相容性的验证，留给读者）。
+\par b) \emph{所考虑的\Term{functor}{函子}\Term{essentially-surjective}{本质满射}。}
+\par\textbf{7.9.1。}首先注意，若 $C$ 是\Term{finite}{有限}\Term{projective-limit}{投射极限}\Term{representable}{可表}的\Term{site}{景}，$\widetilde C=E$ 为相应\Term{topos}{拓扑斯}，则 $E$ 上每个\Term{fiber-functor}{纤维函子} $\varphi$ 可写成形如
+\[\check Y(F)=F(Y)=\operatorname{Hom}(\widetilde Y,F),\qquad Y\in\operatorname{Ob}C\]
+的\Term{functor}{函子}的“\Term{filtered}{滤过}\Term{inductive-limit}{归纳极限}”（$\widetilde Y$ 是 $Y$ 的\Term{adjunction}{伴随}\Term{sheaf}{层}），方法如下。\footnote{这是 IV 6.8.3 的特殊情形。}考虑二元组 $(Y,\xi)$（$Y\in\operatorname{Ob}C$，$\xi\in\varphi(\widetilde Y)$）的\Term{category}{范畴} $C/\varphi$，\Term{morphism}{态射}按显然方式定义；注意有显然\Term{homomorphism}{同态}
+\[\varinjlim_{(Y,\xi)\in(C/\varphi)^\circ}\check Y\longrightarrow\varphi.\tag{*}\]
+这是因为
+\[\operatorname{Hom}(\varinjlim\check Y,\varphi)\simeq\varprojlim_{C/\varphi}\operatorname{Hom}(\check Y,\varphi)\simeq\varprojlim_{C/\varphi}\varphi(\widetilde Y).\]
+\SourcePage{274}
+而 $\varprojlim_{C/\varphi}\varphi(\widetilde Y)$ 有一个\Term{canonical}{典范}元素：对每个 $(Y,\xi)$ 取 $\varphi(\widetilde Y)$ 中的元素 $\xi$。由 $C$ 中\Term{finite}{有限}\Term{projective-limit}{投射极限}存在，且\Term{functor}{函子} $Y\mapsto\varphi(\widetilde Y)$ 与之交换，可见 $C/\varphi$ 中\Term{finite}{有限}\Term{projective-limit}{投射极限}存在；因而 $(C/\varphi)^\circ$ 尤其是\Term{filtered}{滤过}的。利用每个\Term{sheaf}{层} $F$ 都是形如 $\widetilde Y$ 的\Term{sheaf}{层}的\Term{inductive-limit}{归纳极限}，以及 $\varphi$ 与\Term{inductive-limit}{归纳极限}交换，容易得出\Term{functor}{函子}\Term{homomorphism}{同态} $(*)$ \Term{bijection}{双射}，从而给出所述表示。
+\par\textbf{7.9.2。}另注意，若 $E$ 是\Term{topos}{拓扑斯}，$Y$ 是 $E$ 的\Term{object}{对象}，因而有\Term{topos}{拓扑斯} $E/Y$，则给出 $E/Y$ 的一个\Term{fiber-functor}{纤维函子}，\Term{equivalence}{等价}于给出二元组 $(\varphi,\xi)$，其中 $\varphi$ 是 $E$ 的\Term{fiber-functor}{纤维函子}，$\xi\in\varphi(Y)$。将\Term{fiber-functor}{纤维函子} $\psi:E/Y\to(\mathrm{Ens})$ 对应到二元组 $(\varphi,\xi)$：$\varphi$ 是复合\Term{functor}{函子} $Z\mapsto\varphi(Z)=\psi(Z\times Y)$，而 $\xi\in\varphi(Y)=\psi(Y\times Y)$ 是 $\psi(Y)$ 的唯一元素在 $Y\to Y\times Y$ 的\Term{diagonal-morphism}{对角态射}下的像。
+\par\textbf{7.9.3。}现在回到 $C=X_{\text{ét}}$，设 $\varphi:\widetilde{X_{\text{ét}}}\to(\mathrm{Ens})$ 是 $X$ 的\Term{etale}{平展}\Term{topos}{拓扑斯}上的\Term{fiber-functor}{纤维函子}。考虑它到 $\widetilde{X_{\text{ét}}}$ 中由该\Term{topos}{拓扑斯}的\Term{open-subset}{开集}组成的\Term{full-subcategory}{全子范畴}的\Term{restriction}{限制}，\Term{equivalence}{等价}地（6.1），到 $X$ 的\Term{open-subset}{开集} $U$ 的\Term{restriction}{限制}，得到映射
+\[\varphi_0:\mathcal U(X)\longrightarrow\{0,1\},\]
+与\Term{arbitrary-supremum}{任意上确界}及\Term{finite-infimum}{有限下确界}交换。（注意对 $U\in\mathcal U(X)$，$\varphi(U)$ 或为空，或为单点；相应取 $\varphi_0(U)=0$ 或 $1$。）由 $X$ 的每个\Term{irreducible}{不可约}闭集有唯一\Term{generic-point}{泛点}，\footnote{即按 IV 4.2.1 的术语，$X$ 是醒\Term{space}{空间}。此处断言为 IV 4.2.3 的特殊情形。}容易看出存在唯一 $x\in X$，使 $\varphi_0$ 由条件 $\varphi_0(U)=1$ 当且仅当 $x\in U$ 定义，即
+\[\varphi(U)\ne\varnothing\quad\Longleftrightarrow\quad x\in U.\]
+设 $F\in\operatorname{Ob}\widetilde{X_{\text{ét}}}$，则 $F$ 在终\Term{sheaf}{层} $X$ 中的像为\Term{open-subset}{开集} $U$；由于 $\varphi(F)\to\varphi(U)$ \Term{surjectivity}{满射}，有 $\varphi(F)\ne\varnothing$ 当且仅当 $\varphi(U)\ne\varnothing$，即当且仅当 $x\in U$。令 $C/\varphi$ 为二元组 $(X',\xi)$（$X'\in\operatorname{Ob}X_{\text{ét}}$，$\xi\in\varphi(X')$）的\Term{category}{范畴}。7.9.1 已指出 $(C/\varphi)^\circ$ \Term{filtered}{滤过}且\Term{connected}{连通}。此外，由 7.9.2 及以上论述以 $X'$ 替代 $X$，对 $(X',\xi)$ 有唯一相伴的点 $x'\in X'$，使得对\Term{etale}{平展}\Term{morphism}{态射} $X''\to X'$，$\xi$ 属于 $\varphi(X'')\to\varphi(X')$ 的像，当且仅当 $x'$ 属于 $X''$ 的像。于是得出，以二元组 $(X',\xi)$ 的\Term{category}{范畴} $C/\varphi$ 为指标的 $X'$ 的\Term{projective-limit}{投射极限}存在，而且是 $X$ 的\Term{strict-localization}{严格局部化} $Z$，因而对应于某个\Term{geometric-point}{几何点} $\xi$ 及\Term{fiber-functor}{纤维函子} $E_\xi$。对每个\Term{sheaf}{层} $F$，于是有
+\SourcePage{275}
+\[E_\xi(F)\simeq\varinjlim_{(C/\varphi)^\circ}F(X').\]
+结合 7.9.1，得出 $\varphi$ \Term{isomorphism}{同构}于 $E_\xi$，从而完成 7.9 的证明。
+\end{proof}
+\SGAsection{8}{整态射的两个谱序列}
+\begin{SGAresult}{命题}{8.1}
+设 $f:X\to Y$ 是\Term{surjectivity}{满射}\Term{integral-morphism}{整态射}，$F$ 是 $Y$ 上的\Term{abelian-sheaf}{阿贝尔层}。对每个整数 $i$，令 $\mathscr H^i(F)$ 为 $(\mathrm{Sch})/Y$ 上由
+\[\mathscr H^i(F)(Z)=\mathrm H^i(Z,F_Z)\]
+定义的\Term{presheaf}{预层}，其中 $F_Z$ 是 $F$ 在 $Z$ 上的\Term{inverse-image}{逆像}。则存在关于 $F$ \Term{functor}{函子}性的\Term{spectral-sequence}{谱序列}
+\[\mathrm H^*(X,F)\Longleftarrow E_2^{pq}=\mathrm H^p(X/Y,\mathscr H^q(F))\]
+（“\Term{descent-spectral-sequence}{下降谱序列}”）。
+\end{SGAresult}
+当然，对 $(\mathrm{Sch})/Y$ 上的\Term{presheaf}{预层} $G$，\Term{signature}{符号} $\mathrm H^p(X/Y,G)$ 表示第 $p$ 个相对 Čech \Term{cohomology}{上同调}群，用\Term{complex}{复形} $C^n(X/Y,G)=G(X^{n+1})$ 定义，其中 $X^m$ 表示 $(\mathrm{Sch})/Y$ 中的 $m$ 次幂。为证明 8.1，令 $p_n:X^{n+1}\to Y$ 为\Term{projection}{投影}，并令
+\[A^n=p_{n*}(\mathbb Z_{X^{n+1}}),\]
+其中 $\mathbb Z_{X^{n+1}}$ 为 $X^{n+1}$ 上的\Term{constant-sheaf}{常值层} $\mathbb Z$。各 $A^n$ 是 $Y$ 上一个单纯\Term{abelian-sheaf}{阿贝尔层}的\Term{set-component}{分量}，因而给出 $Y$ 上的\Term{abelian-sheaf}{阿贝尔层}\Term{complex}{复形} $A^*$。注意，有显然\Term{homomorphism}{同态}
+\[\mathbb Z_Y\longrightarrow A^0.\tag{*}\]
+于是有：
+\begin{SGAresult}{引理}{8.2}
+配备\Term{homomorphism}{同态} $(*)$ 的\Term{complex}{复形} $A^*$ 是 $\mathbb Z_Y$ 的一个\Term{resolution}{解消}。更一般地，对 $Y$ 上任意\Term{abelian-sheaf}{阿贝尔层} $F$，$A^*\otimes_{\mathbb Z}F$ 是 $F$ 的\Term{resolution}{解消}。
+\end{SGAresult}
+\begin{proof}
+可设 $Y$ \Term{affine}{仿射}，即 $Y=\operatorname{Spec}A$，$X=\operatorname{Spec}B$，$B$ 是整 $A$ \Term{algebra}{代数}。有 $B=\varinjlim_iB_i$，其中 $B_i$ 遍历 $B$ 的\Term{finite-type}{有限型}、因而\Term{finite}{有限}的子\Term{algebra}{代数}；所以 $X=\varprojlim X_i$，$X_i=\operatorname{Spec}B_i$。利用 VII 5.11，可知\Term{augmentation}{增广}\Term{complex}{复形} $A^*(X/Y)$ 是\Term{augmentation}{增广}\Term{complex}{复形} $A^*(X_i/Y)$ 的\Term{inductive-limit}{归纳极限}，从而归结为 $f$ \Term{finite}{有限}。只须证明，对 $Y$ 的每个\Term{geometric-point}{几何点} $\bar y$，\Term{complex}{复形} $A^*_{\bar y}$ 是 $\mathbb Z_{\bar y}$ 的\Term{resolution}{解消}，并且与任意 $F$ 张量后仍是\Term{resolution}{解消}。若 $X_{\bar y}$ 是 $X$ 在 $\bar y$ 处的\Term{fiber}{纤维}，由 5.5，\Term{complex}{复形} $A^*_{\bar y}$ 正是类似\Term{complex}{复形} $A^*(X_{\bar y}/\bar y)$。从而归结为 $Y$ 是\Term{separably-closed-field}{可分闭域} $k$ 的谱。利用 1.3 a)、b)，甚至可设 $k$ \Term{algebraically-closed}{代数闭}且 $X$ \Term{reduced}{约化}，所以 $X$ 具有形式
+\SourcePage{276}
+$I_Y$，其中 $I$ 为\Term{finite}{有限}\Term{set}{集合}。此时\Term{complex}{复形} $A^*\otimes F$ 等同于指标集 $I$ 的以 $F_{\bar y}$ 为系数的平凡\Term{cochain-complex}{上链复形}，所以确为 $F_{\bar y}$ 的\Term{resolution}{解消}。
+\end{proof}
+由 8.2 得到\Term{spectral-sequence}{谱序列}
+\[\mathrm H^*(Y,F)\Longleftarrow E_2^{pq}=\mathrm H^p\bigl(\mathrm H^q(Y,A^*\otimes F)\bigr),\]
+只须将初始项写明。存在\Term{canonical-homomorphism}{典范同态} $A^n\otimes F\to p_{n*}p_n^*(F)$；仍通过归结为 $f$ \Term{finite}{有限}并取\Term{fiber}{纤维}，可见它是\Term{isomorphism}{同构}。利用 5.5，得到
+\[\mathrm H^q(Y,A^n\otimes F)\simeq\mathrm H^q(X^{n+1},p_n^*F)\Longrightarrow\mathscr H^q(F)(X^{n+1}),\]
+这正给出 8.1 所述初始项。
+\textbf{注记 8.3。}
+\par a) 若给定 $Y$ 的一个由闭集 $Y_i$ 组成的\Term{locally-finite}{局部有限}\Term{covering}{覆盖}，并令 $X=\coprod_iY_i$，则\Term{canonical}{典范}\Term{morphism}{态射} $f:X\to Y$ \Term{finite}{有限}；8.1 的\Term{spectral-sequence}{谱序列}的初始项，可以明确写成由 $\mathrm H^q(Y_{i_0\cdots i_p},F|_{Y_{i_0\cdots i_p}})$ 定义的\Term{complex}{复形}的\Term{cohomology}{上同调}，其中 $Y_{i_0\cdots i_p}=Y_{i_0}\cap\cdots\cap Y_{i_p}$。所以这是通常\Term{topological-space}{拓扑空间}的\Term{locally-finite}{局部有限}闭\Term{covering}{覆盖}的 Leray \Term{spectral-sequence}{谱序列}（TF，第二章 5.2.4）的类似物。后者也可仿照 8.1 推广为相对于“\Term{finite}{有限}”\Term{morphism}{态射}，即\Term{proper}{固有}且\Term{fiber}{纤维}\Term{finite}{有限}的\Term{morphism}{态射}的\Term{spectral-sequence}{谱序列}。
+\par b) 注意 8.1 的\Term{spectral-sequence}{谱序列}与 $Y$ 的\Term{covering}{覆盖} $(X_i)$（此处 $X_i$ 在 $Y$ 上\Term{etale}{平展}）的 Leray \Term{spectral-sequence}{谱序列}的相似性：形式上，只要对 $X=\coprod_iX_i$ 写出 8.1，就得到后者。很可能这两个\Term{spectral-sequence}{谱序列}实际上有一个共同推广，只要\Term{morphism}{态射}族 $(X_i\to Y)$ 对变动基\Term{scheme}{概形}上的\Term{etale}{平展}\Term{sheaf}{层}的\Term{fibred-category}{纤维范畴}是“万有\Term{effective-descent}{有效下降}族”，这个推广就成立（参见以下第 9 节）。在通常\Term{topology}{拓扑}中，也有类似问题：将开\Term{covering}{覆盖}的 Leray \Term{spectral-sequence}{谱序列}和\Term{locally-finite}{局部有限}闭\Term{covering}{覆盖}的 Leray \Term{spectral-sequence}{谱序列}这两类作共同推广。\footnote{自写成这些文字以来，P. Deligne 已建立“\Term{descent-spectral-sequence}{下降谱序列}”的一般理论，参见第 V bis 讲。}
+\begin{SGAresult}{命题}{8.4}
+设 $Y$ 是\Term{scheme}{概形}，$\pi$ 是 profinite 群，$(\pi_i)_i$ 是 $\pi$ 的\Term{finite}{有限}\Term{discrete}{离散}\Term{quotient-group}{商群}的\Term{projective-system}{投射系统}，$(X_i)_{i\in I}$ 是 $Y$ 的主\Term{covering}{覆盖}的\Term{projective-system}{投射系统}，其群为 $\pi_i$，且\Term{transition-homomorphism}{过渡同态} $X_j\to X_i$ 与\Term{action}{作用}群上的\Term{homomorphism}{同态} $\pi_j\to\pi_i$ 相容；令 $X=\varprojlim X_i$（参见 VII 5.1），于是群 $\pi$ \Term{action}{作用}于 $Y$ \Term{scheme}{概形} $X$。设 $F$ 是 $Y$ 上的\Term{abelian-sheaf}{阿贝尔层}。
+\SourcePage{277}
+则有关于 $F$ \Term{functor}{函子}性的“Hochschild--Serre”\Term{spectral-sequence}{谱序列}
+\[\mathrm H^*(Y,F)\Longleftarrow E_2^{pq}=\mathrm H^p\bigl(\pi,\varinjlim_i\mathrm H^q(X_i,F_{X_i})\bigr),\]
+其中 $F_{X_i}$ 为 $F$ 在 $X_i$ 上的\Term{inverse-image}{逆像}，$\mathrm H^p(\pi,-)$ 表示 Galois \Term{cohomology}{上同调}。
+\end{SGAresult}
+\begin{proof}
+由 $\mathrm H^p(\pi,-)$ 的定义及\Term{inductive-limit}{归纳极限}的\Term{transitivity}{传递性}，上述 $E_2^{pq}$ 也\Term{isomorphism}{同构}于
+\[E_2^{pq}=\varinjlim_i\mathrm H^p(\pi_i,\mathrm H^q(X_i,F_{X_i})).\]
+故只须找到以 $i$ 为指标的\Term{spectral-sequence}{谱序列}的\Term{inductive-system}{归纳系统}
+\[\mathrm H^*(Y,F)\Longleftarrow {}_iE_2^{pq}=\mathrm H^p(\pi_i,\mathrm H^q(X_i,F_{X_i})).\]
+这样便归结为 $\pi$ \Term{finite}{有限}时定义此\Term{spectral-sequence}{谱序列}。此时 $f:X\to Y$ 是 $Y_{\text{ét}}$ 中的\Term{covering}{覆盖}\Term{morphism}{态射}，因而可写出该\Term{morphism}{态射}的 Leray \Term{spectral-sequence}{谱序列}。结合\Term{canonical-isomorphism}{典范同构}
+\[X^n\simeq X\mathbin{\times^{G}}G^n,\]
+一个熟知的计算表明：对 $X_{\text{ét}}$ 上每个将和变为积的\Term{presheaf}{预层} $\mathscr H$，$C^*(X/Y,\mathscr H)$ 正是群 $G$ 的以 $\mathscr H(X)$ 为系数的\Term{homogeneous}{齐次}\Term{cochain-complex}{上链复形}，从而得到所述初始项。
+这个证明的一个避免任何计算的变形，是将 $E\mapsto X\times^\pi E$ 看作\Term{finite}{有限} $\pi$ 集的\Term{site}{景}到 $Y$ 的\Term{etale}{平展}\Term{site}{景}的\Term{morphism}{态射}，并写出此\Term{morphism}{态射}的 Leray \Term{spectral-sequence}{谱序列}。最后，当 $\pi$ \Term{finite}{有限}时，也可将 Hochschild--Serre \Term{spectral-sequence}{谱序列}看作 8.1 相对于\Term{morphism}{态射} $f:X\to Y$ 的特例。
+\end{proof}
+\begin{SGAresult}{推论}{8.5}
+设 $Y$ \Term{quasi-compact}{拟紧}且\Term{quasi-separated}{拟分离}，则 8.4 的\Term{spectral-sequence}{谱序列}可写为
+\[\mathrm H^*(Y,F)\Longleftarrow E_2^{pq}=\mathrm H^p(\pi,\mathrm H^q(X,F_X)).\]
+\end{SGAresult}
+事实上，由 VII 5.8，有\Term{canonical-isomorphism}{典范同构} $\varinjlim_i\mathrm H^q(X_i,F_{X_i})\simeq\mathrm H^q(X,F_X)$。
+\begin{SGAresult}{推论}{8.6}
+设 $Y$ 是\Term{closed-point}{闭点}为 $y$ 的 Hensel \Term{local-scheme}{局部}\Term{scheme}{概形}，$F$ 是 $Y$ 上的\Term{abelian-sheaf}{阿贝尔层}，$F_0$ 是其在 $Y_0=\operatorname{Spec}(k(y))$ 上诱导的\Term{sheaf}{层}。则\Term{canonical-homomorphism}{典范同态} $\mathrm H^n(Y,F)\to\mathrm H^n(Y_0,F_0)$ 是\Term{isomorphism}{同构}。
+\end{SGAresult}
+\SourcePage{278}
+\begin{proof}
+取 $y$ 上方对应于 $k(y)$ 的\Term{separable-closure}{可分闭包} $\bar k=\overline{k(y)}$ 的\Term{geometric-point}{几何点} $\bar y$。因 $Y$ 为 Hensel \Term{local-scheme}{局部}\Term{scheme}{概形}，$Y$ 在 $\bar y$ 处的\Term{strict-localization}{严格局部化} $X$ 是带 $\bar y$ 标点的\Term{connected}{连通} Galois \Term{etale}{平展}\Term{covering}{覆盖} $X_i$ 的\Term{projective-limit}{投射极限}，因此满足应用 8.5 的条件。由 4.7，$q>0$ 时 $\mathrm H^q(X,F_X)=0$，从而得到\Term{isomorphism}{同构}
+\[\mathrm H^n(Y,F)\xleftarrow{\sim}\mathrm H^n(\pi,F(X)),\]
+其中 $\pi$ 是 $X$ 在 $Y$ 上的“Galois 群”，\Term{isomorphism}{同构}于 $\bar k$ 在 $k=k(y)$ 上的 Galois 群。同样（或由 2.3）得到
+\[\mathrm H^n(Y_0,F_0)\xleftarrow{\sim}\mathrm H^n(\pi,F_0(X_0)),\]
+其中 $X_0=X\times_Y Y_0\simeq\operatorname{Spec}(\overline{k(y)})$。而由 4.8，\Term{restriction}{限制}\Term{homomorphism}{同态} $F(X)\to F_0(X_0)$ 是\Term{isomorphism}{同构}，8.6 的结论立即得出。
+\end{proof}
+\SGAsection{9}{平展层的下降}
+本节在本研讨班后文不再使用，初读时可以略过。
+\begin{SGAresult}{命题}{9.1}
+设 $f:X'\to X$ 是\Term{surjectivity}{满射}的（相应地，万有浸没的，SGA~1 IX 2.1）\Term{scheme}{概形}\Term{morphism}{态射}。则\Term{functor}{函子} $f^*:\widetilde{X_{\text{ét}}}\to\widetilde{X'_{\text{ét}}}$ 忠实且“\Term{conservative-functor}{保守}”（参见 3.6）（相应地，它诱导一个\Term{fully-faithful}{全忠实}\Term{functor}{函子}，从 $X_{\text{ét}}$ 上\Term{sheaf}{层}的\Term{category}{范畴}到配备相对于 $f:X'\to X$ 的\Term{descent-datum}{下降资料}的 $X'_{\text{ét}}$ 上\Term{sheaf}{层}的\Term{category}{范畴}）。
+\end{SGAresult}
+第一点立即来自\Term{fiber-functor}{纤维函子}的\Term{transitivity}{传递性}（3.4）及 3.7。第二点（也可表述为：$f$ 对变动\Term{scheme}{概形}上的\Term{etale}{平展}\Term{sheaf}{层}的\Term{fibred-category}{纤维范畴}是\Term{descent}{下降}\Term{morphism}{态射}）还意味着：对 $Y$ 上的两个\Term{sheaf}{层} $F,G$，自然图式
+\[\operatorname{Hom}(F,G)\longrightarrow\operatorname{Hom}(F',G')\rightrightarrows\operatorname{Hom}(F'',G'')\tag{*}\]
+\Term{exact}{正合}，其中 $F',G'$（相应地，$F'',G''$）是 $F,G$ 在 $X'$（相应地，$X''=X'\times_X X'$）上的\Term{inverse-image}{逆像}。取 $F$ 为终\Term{sheaf}{层}，得到：
+\begin{SGAresult}{推论}{9.2}
+设 $f:X'\to X$ 是万有浸没\Term{morphism}{态射}。则对 $X$ 上每个\Term{sheaf}{层} $F$，图式
+\[\Gamma(X,F)\longrightarrow\Gamma(X',F')\rightrightarrows\Gamma(X'',F'')\]
+\Term{exact}{正合}，其中 $X''=X'\times_X X'$，$F',F''$ 是 $F$ 在 $X',X''$ 上的\Term{inverse-image}{逆像}。
+\end{SGAresult}
+我们将用以下引理证明 9.1。
+\SourcePage{279}
+\begin{SGAresult}{引理}{9.3}
+设 $f$ 万有浸没。设 $F$ 是 $X$ 上的\Term{sheaf}{层}，以 $S(F)$ 表示 $X$ 的子\Term{sheaf}{层}\Term{set}{集合}，并类似定义 $S(F'),S(F'')$。则自然映射的图式
+\[S(F)\longrightarrow S(F')\rightrightarrows S(F'')\]
+\Term{exact}{正合}。
+\end{SGAresult}
+\begin{proof}
+$S(F)\to S(F')$ \Term{injectivity}{单射}，立即来自\Term{functor}{函子} $f^*$ \Term{conservative-functor}{保守}：若 $F_i$（$i=1,2$）是 $F$ 的两个子\Term{sheaf}{层}，且 $f^*(F_1)=f^*(F_2)$，则\Term{inclusion-morphism}{包含态射} $F_3=F_1\cap F_2\to F_i$（$i=1,2$）为\Term{isomorphism}{同构}，因为它们经 $f^*$ 后成为\Term{isomorphism}{同构}，所以 $F_1=F_2$。只须证明：若 $G'\subset F'$ 且 $\operatorname{pr}_1^*(G')=\operatorname{pr}_2^*(G')$，则 $G'$ 是 $F$ 的某个子\Term{sheaf}{层}的\Term{inverse-image}{逆像}。注意在 $\widetilde{X_{\text{ét}}}$ 中可找到\Term{epimorphism}{满态射} $F_1\to F$，其中 $F_1$ 由 $X$ 上的\Term{etale}{平展}\Term{scheme}{概形}表示。引入 $F_2=F_1\times_F F_1$，并类似引入 $F'_1,F''_1,F'_2,F''_2$，这些\Term{sheaf}{层}给出\Term{set}{集合}图式
+\[\begin{tikzcd}[column sep=large,row sep=large]
+S(F)\arrow[r]\arrow[d]&S(F')\arrow[r,shift left]\arrow[r,shift right]\arrow[d]&S(F'')\arrow[d]\\
+S(F_1)\arrow[r]\arrow[d,shift left]\arrow[d,shift right]&S(F'_1)\arrow[r,shift left]\arrow[r,shift right]\arrow[d,shift left]\arrow[d,shift right]&S(F''_1)\arrow[d,shift left]\arrow[d,shift right]\\
+S(F_2)\arrow[r]&S(F'_2)\arrow[r,shift left]\arrow[r,shift right]&S(F''_2).
+\end{tikzcd}\]
+由分别在 $X,X',X''$ 上的\Term{sheaf}{层}\Term{category}{范畴}的\Term{exactness}{正合性}性质，各列\Term{exact}{正合}。标准的图追踪说明，要证第一行\Term{exact}{正合}，只须证明第二、三行\Term{exact}{正合}。对于第二行，这来自 $F_1$ \Term{representable}{可表}、$X'\to X$ 万有浸没以及 SGA~1 IX 2.3。另一方面，$F_2$ 也\Term{representable}{可表}，因为它是\Term{representable}{可表}\Term{sheaf}{层} $F_1\times_X F_1$ 的子\Term{sheaf}{层}，可应用 6.1。因此第三行也\Term{exact}{正合}。
+\end{proof}
+现在证明 9.1：即每个与 $F',G'$ 上的\Term{descent-datum}{下降资料}相容的\Term{morphism}{态射} $u':F'\to G'$ 都来自\Term{morphism}{态射} $u:F\to G$。设 $H=F\times G$，于是 $H'=F'\times G'$，$H''=F''\times G''$。$u'$ 的图像为 $H'$ 的子\Term{sheaf}{层} $\Gamma'$，其两个\Term{inverse-image}{逆像}均等于同一个\Term{morphism}{态射} $u'':F''\to G''$ 的图像。因此由 9.3，$\Gamma'$ 来自 $H$ 的子\Term{sheaf}{层} $\Gamma$。我们断言 $\Gamma$ 为\Term{morphism}{态射} $u:F\to G$ 的图像，即由 $\operatorname{pr}_1$ 诱导的\Term{morphism}{态射} $p:\Gamma\to F$ 是\Term{isomorphism}{同构}；事实上它经\Term{base-change}{换基} $X'\to X$ 后成为\Term{isomorphism}{同构}，应用 9.1 已证部分即可。此\Term{morphism}{态射} $u:F\to G$ 满足要求，证毕。
+\SourcePage{280}
+\begin{SGAresult}{定理}{9.4}
+设 $f:X'\to X$ 是\Term{surjectivity}{满射}\Term{scheme}{概形}\Term{morphism}{态射}。假设满足下列假设之一：
+\par a) $f$ 整。
+\par b) $f$ \Term{proper}{固有}。
+\par c) $f$ \Term{flat}{平坦}且\Term{local-scheme}{局部}\Term{finite-presentation}{有限呈示}。\footnote{很可能这里的第二个假设实际上是多余的。}
+\par d) $X$ \Term{discrete}{离散}（例如域的谱）。
+\par 则对于 $(\mathrm{Sch})$ 上由变动\Term{scheme}{概形}上的\Term{etale}{平展}\Term{sheaf}{层}组成的\Term{fibred-category}{纤维范畴} $\mathscr F$，$f$ 是\Term{effective-descent}{有效下降}\Term{morphism}{态射}，即\Term{functor}{函子} $f^*$ 诱导 $X$ 上\Term{sheaf}{层}的\Term{category}{范畴}与配备相对于 $f:X'\to X$ 的\Term{descent-datum}{下降资料}的 $X'$ 上\Term{sheaf}{层}的\Term{category}{范畴}之间的\Term{equivalence}{等价}。
+\end{SGAresult}
+\textbf{9.4.1。}设 $F'$ 是 $X'$ 上的\Term{sheaf}{层}，配备相对于 $f:X'\to X$ 的\Term{descent-datum}{下降资料}。由公式
+\[G(Y)=\operatorname{Ker}\bigl(F'(Y')\rightrightarrows F''(Y'')\bigr)\]
+定义\Term{functor}{函子} $G:X_{\text{ét}}^\circ\to(\mathrm{Ens})$。立即可见，$G$ 是\Term{etale}{平展}\Term{topology}{拓扑}的\Term{sheaf}{层}；另一方面，有\Term{canonical}{典范}\Term{injectivity}{单射}\Term{homomorphism}{同态} $G\to f_*(F')$，从而有\Term{homomorphism}{同态} $f^*(G)\to F'$，后者显然与\Term{descent-datum}{下降资料}相容。只须考察它是否为\Term{isomorphism}{同构}。注意，$G$ 也由图式
+\[G\longrightarrow f_*(F')\rightrightarrows g_*(F'')\]
+的\Term{exactness}{正合性}定义。因此，对每个与 $f_*(F')$ 及 $g_*(F'')$ 的形成交换的\Term{base-change}{换基} $h:Y\to X$，$h^*(G)=G_Y$ 等同于 $F'_{Y'}$ 经 $Y'\to Y$“\Term{descent}{下降}”所得的\Term{sheaf}{层}；当然，\Term{homomorphism}{同态} $f_Y^*(G_Y)\to(F_Y)'$ 就是由 $f^*(G)\to F'$ \Term{base-change}{换基}得到的\Term{homomorphism}{同态}。现设\Term{base-change}{换基} $f:Y=X'\to X$ 与 $f_*(F')$ 及 $g_*(F'')$ 的形成交换。注意 $Y'=X'\times_X X'$ 在 $Y=X'$ 上有\Term{section}{截面}，所以 $Y'\to Y$ 对任意\Term{fibred-category}{纤维范畴}、特别对 $\mathscr F$，都是\Term{effective-descent}{有效下降}\Term{morphism}{态射}。因此 $f_Y^*(G_Y)\to(F_Y)'$ 是\Term{isomorphism}{同构}，故 $f^*(G)\to F'$ 经\Term{base-change}{换基} $Y'=X'\times_X X'\to X'$ 后成为\Term{isomorphism}{同构}。由于后者有\Term{section}{截面}，$f^*(G)\to F'$ 是\Term{isomorphism}{同构}，因而所考虑的 $F'$ 上的\Term{descent-datum}{下降资料}\Term{effective}{有效}。
+\textbf{9.4.2。}由 5.6，这证明了定理 9.4 的情形 a)。情形 b) 同样来自：若 $f$ \Term{proper}{固有}，则 $f_*$ 与任意\Term{base-change}{换基} $Y'\to Y$ 交换（将在后面的第 XII 讲 5.1 (i) 中证明）。
+\SourcePage{281}
+\textbf{9.4.3。}情形 c) 中，问题在 $X$ 上是\Term{local-scheme}{局部}的，故可设 $X$ \Term{affine}{仿射}，且存在 $X$ 上\Term{finite-presentation}{有限呈示}、\Term{quasi-finite}{拟有限}、\Term{faithfully-flat}{忠实平坦}的\Term{affine}{仿射}\Term{scheme}{概形} $X'_1$ 及 $X$ \Term{morphism}{态射} $X'_1\to X'$；于是归结为 $f$ \Term{quasi-finite}{拟有限}。进一步对 $X$ \Term{localization}{局部化}，这次取\Term{etale}{平展}\Term{topology}{拓扑}的意义，可见存在 $X'$ 的\Term{open-subset}{开集} $X'_1$，使 $X'_1\to X$ \Term{finite}{有限}且\Term{surjectivity}{满射}，从而归结为 a) 已处理的 $f$ \Term{finite}{有限}\Term{surjectivity}{满射}情形。
+\textbf{9.4.4。}情形 d) 中，可（在 $X$ 上\Term{localization}{局部化}）设 $X$ 只有一个点；结合 1.1，甚至可设它为域 $k$ 的谱。此外，$f$ 万有开（EGA~IV 2.4.9），故满足 9.1 的条件；9.4.1 的论证仍适用，只须取\Term{base-change}{换基} $Y=\operatorname{Spec}k$，其中 $k=k(x)$，$x\in X$。此时 $f_*$ 仍与\Term{base-change}{换基} $Y\to X$ 交换，正如我们将在后面看到的（XVI 1.4、1.5）。
+这完成了 9.4 的证明。
+\SourcePage{282}
+% 原 PDF 本页为空白。

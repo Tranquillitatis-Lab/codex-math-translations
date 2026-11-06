@@ -1,0 +1,354 @@
+\article{辛群 $\operatorname{GSp}(4)$ 的自守 $L$ 函数}{Automorphic L-functions for symplectic group GSp(4)}{Mark E. Novodvorsky}{2}{87--95}
+
+\origsection{0}{引言（Introduction）}
+本文根据作者在 1977 年 Corvallis 美国数学会夏季研究讲习班上的报告整理而成。\footnote{作者获 NSF 项目 MCS76-02160A1 资助。原文的 AMS（MOS）主题分类（1970）：主要分类 10D10、22E55。原文版权：1979，American Mathematical Society。}
+
+设 $k$ 是整体域（global field），$P$ 为其正规化赋值（normalized valuation）的集合，$\A=\prod_{p\in P}'k_p$ 为 $k$ 的阿代尔环（adele ring），$G$ 为 $k$ 上的约化代数群（reductive algebraic group），$G_\A=\prod_{p\in P}'G_p$ 为 $G$ 的伊代尔群（group of ideles），$\pi=\bigotimes_{p\in P}\pi_p$ 为 $G_\A$ 的不可约容许表示（irreducible admissible representation）的一个同构类，$\rho$ 为 Langlands 对偶群（Langlands dual group）${}^LG$ 的有限维表示。R. P. Langlands [1] 将 $L$ 函数 $L(\pi,\rho,s)$ 定义为某个 Euler 乘积（Euler product）：
+\begin{equation}
+ L(\pi,\rho,s)=\prod_{p\in P}L(\pi_p,\rho,s).
+ \tag{0.1}
+\end{equation}
+若 $\pi$ 可酉化（unitarizable），则此乘积对实部充分大的所有复数 $s$ 收敛。他猜想，如果 $\pi$ 是自守表示（automorphic representation）的同构类，则 $L(\pi,\rho)$ 可延拓为整个复平面上的亚纯函数（meromorphic function），并满足函数方程（functional equation）
+\begin{equation}
+ L(\pi,\rho,s)=\varepsilon(\pi,\rho,s)L(\pi^*,\rho,1-s),
+ \tag{0.2}
+\end{equation}
+其中 $\pi^*$ 是 $\pi$ 的逆反表示（contragredient representation），而
+\[
+ \varepsilon(\pi,\rho,s)=\prod_{p\in P}\varepsilon(\pi_p,\rho,s)
+\]
+是另一个 Euler 乘积，其存在性也是猜想的一部分。不过，局部因子（local factor）$L(\pi_p,\rho,s)$ 的定义依赖于一个参数化问题（参见 Borel 的文章 \emph{Automorphic L-functions}，本论文集第二册，第 27--61 页）；因此，按目前的构造，只有在各非 Archimedes 位 $p$ 上的不可约表示 $\pi_p$ 均为第一类（class 1）时，才能直接使用这一定义。要证明 Langlands 猜想，就须先构造一般情形的 Euler 因子 $L(\pi_p)$ 和 $\varepsilon(\pi_p)$。
+
+I. I. Piatetski-Shapiro [2] 提出了解决这一问题的一般方法。本文对辛群（symplectic group）$G=\operatorname{GSp}(4)$ 沿用并发展 [2] 的思路，并对其 Langlands 对偶群 ${}^LG=\operatorname{GSp}(4,\C)$ 的标准四维表示 $\rho$ 证明 Langlands 猜想。还考察群 $G=\operatorname{GSp}(4)\times\GL(2)$，并对一般型尖点自守表示（generic cuspidal automorphic representation）$\pi$（参见 Piatetski-Shapiro 的文章 \emph{Multiplicity one theorems}，本论文集第一册，第 209--212 页），以及其 Langlands 对偶群 $\operatorname{GSp}(4,\C)\times\GL(2,\C)$ 的标准八维表示 $\rho$，证明 Langlands 猜想；这里 $\rho$ 即两个因子的标准四维表示与标准二维表示的张量积。本文结果只有在 $k$ 为整体函数域（global function field）时才是完整的。当 $k$ 为数域（number field）时，我们得到这些自守 $L$ 函数的亚纯延拓，但由于 Archimedes 赋值方面的某些困难，尚不能得到函数方程 (0.2)。
+
+由于 [2] 的方法以广义 Whittaker 模型（generalized Whittaker model）为基础，我们分别考虑一般型自守表示和强尖点自守表示（hypercuspidal automorphic representation）（参见前引 Piatetski-Shapiro 的文章）。
+
+关于 $\operatorname{GSp}(4)$ 的一般型表示的结果（第 1 节），可以推广到所有 Dynkin 型为 $B_n$ 的分裂正交群（split orthogonal group）（$\operatorname{Sp}(4)$ 覆盖 $\operatorname{SO}(5)$）；作者已在 [10] 和 [11] 中以这一形式公布结果（在 $\operatorname{char}k>0$ 时）。关于 $\operatorname{GSp}(4)$ 的强尖点表示的结果（第 2 节）由 I. I. Piatetski-Shapiro 与作者共同获得。关于 $\operatorname{GSp}(4)\times\GL(2)$ 的结果（第 3 节）已由作者在 [12] 中公布（在 $\operatorname{char}k>0$ 时）。
+
+本文假定 $\operatorname{char}k\ne2$。
+
+\origsection{1}{$\operatorname{GSp}(4)$：一般型表示（generic representations）}
+令 $G\simeq\operatorname{GSp}(4)$ 为 $k$ 上四个变量的双线性型
+\[
+ \begin{pmatrix}0&0&0&1\\0&0&1&0\\0&-1&0&0\\-1&0&0&0\end{pmatrix}
+\]
+的相似变换群（group of similitudes），$Z$ 为 $G$ 中所有上三角幺幂矩阵（upper triangular unipotent matrix）所成的子群，$\psi$ 为 $Z$ 的伊代尔群 $Z_\A$ 的一个非退化特征（nondegenerate character）\footnote{即 $\psi$ 在相应的极限球子群（horocycle subgroup）的阿代尔点上非平凡。\textbf{译者注（本次校订）：}此处的非退化条件应只要求在各简单根子群上非平凡。任何一维特征都在换位子群 $[Z,Z]$ 上平凡，因此不能要求它在所有正根子群上都非平凡。}，并假设它在主伊代尔（principal ideles）$Z_k$ 上平凡；设 $p$ 为域 $k$ 的一个非 Archimedes 赋值。用 $\mathcal W_\psi(G_p)$ 表示 $G_p$ 上所有满足
+\begin{equation}
+ W(zg)=\overline{\psi}(z)W(g),\qquad z\in Z_p,\quad g\in G_p,
+ \tag{1.1}
+\end{equation}
+的局部常值复函数 $W$ 的空间；$G_p$ 通过右平移作用于这个空间。若不可约容许表示 $\pi_p$ 可实现为 $\mathcal W_\psi(G_p)$ 中的一个不可约 $G_p$-不变子空间，就称 $\pi_p$ 为非退化的（nondegenerate）；这个子空间称为 $\pi_p$ 的 Whittaker 模型（Whittaker model），记为 $\mathcal W_\psi(\pi_p)$。
+
+\begin{originaltheorem}{定理（Theorem）：I. M. Gelfand、D. A. Kazdan [3]，F. Rodier [4]}
+非退化同构类 $\pi_p$ 的 Whittaker 模型唯一。
+\end{originaltheorem}
+
+设 $\pi_p$ 是群 $G_p$ 的不可约容许表示的一个非退化同构类。$G_p$ 的中心 $C_p$ 在这一表示中按某个特征作标量作用，记该中心特征为 $\omega_p$。利用群 $\operatorname{GSp}(4)$ 的中心 $C$ 与乘法群之间的典范同构（canonical isomorphism）
+\begin{equation}
+ C\ni\diag(\alpha,\alpha,\alpha,\alpha)\longmapsto\alpha\in k^*,
+ \tag{1.2}
+\end{equation}
+可把 $\omega_p$ 视为 $k_p^*$ 的特征。逆反同构类 $\pi_p^*$ 与 $\pi_p\otimes\omega_p(\sigma_p)$ 一致，其中 $\sigma$ 是 $\operatorname{GSp}(4)$ 到 $k^*$ 的唯一一个平方为行列式的同态（$\sigma$ 是相似因子（factor of similitude））。因此，$\mathcal W_\psi(\pi_p^*)$ 与以下函数的集合一致：
+\begin{equation}
+ W^*(g)=W(g)\omega_p^{-1}(\sigma_p(g)),
+ \qquad g\in G_p,\quad W\in\mathcal W_\psi(\pi_p).
+ \tag{1.3}
+\end{equation}
+\noindent\emph{译注：所供扫描本在前句的 $\pi_p^*$ 扭曲因子中未见逆号，而 (1.3) 明确含 $\omega_p^{-1}$。此处同时保留两处扫描符号。}
+
+引入子群
+\[
+ H=\{\diag(\alpha,\alpha,1,1)\in G\}\simeq\GL(1),\qquad
+ U=\left\{\begin{pmatrix}1&0&0&0\\0&1&0&0\\0&\beta&1&0\\0&0&0&1\end{pmatrix}\in G\right\},
+\]
+并考察积分
+\begin{equation}
+ \mathcal J_p(W,s)=\int_{(U\cdot H)_p}W(uh)\|\alpha\|^{s-1/2}\,d(uh),
+ \quad h=\diag(\alpha,\alpha,1,1),\quad W\in\mathcal W_\psi(\pi_p).
+ \tag{1.4}
+\end{equation}
+
+\begin{originaltheorem}{定理 1（Theorem 1）}
+积分 (1.4) 在 $\Re s$ 充分大的右半平面中绝对收敛，并将 $\mathcal J_p(W)$ 定义为 $q_p^{-s}$ 的有理函数，其中 $q_p$ 是赋值 $p$ 的剩余域（residue field）的元素个数。所有函数 $\mathcal J_p(W)$，$W\in\mathcal W_\psi(\pi_p)$，都有一个公分母。存在 $q_p^{-s}$ 的有理函数 $\gamma(\pi_p)$，使
+\[
+ \mathcal J_p(W,s)=\gamma(\pi_p,s)
+ \mathcal J_p\bigl((\beta(W))^*,1-s\bigr),\qquad W\in\mathcal W_\psi(G_p),
+\]
+其中
+\begin{equation}
+ \beta=\begin{pmatrix}0&0&1&0\\0&0&0&1\\1&0&0&0\\0&1&0&0\end{pmatrix}\in G_\A.
+ \tag{1.5}
+\end{equation}
+\end{originaltheorem}
+\noindent\footnotesize\textbf{译者注（本次校订）：}定理 1 的函数方程应对 $W\in\mathcal W_\psi(\pi_p)$ 表述；其中的 $\mathcal W_\psi(G_p)$ 范围过大，任意满足变换律的局部常值函数并不自动有收敛所需的增长控制。\normalsize
+
+用 $Q_p(\pi_p)$ 表示 $q_p^{-s}$ 的常数项为 $1$、且是全部 $\mathcal J_p(W)$（$W\in\mathcal W_\psi(\pi_p)$）的次数最小的公分母的多项式，并定义
+\begin{equation}
+ \begin{aligned}
+ L(\pi_p,s)&=[Q(\pi_p,q^{-s})]^{-1},\\
+ \varepsilon(\pi_p,s)&=\gamma(\pi_p,s)\,
+ \frac{L(\pi_p,s)}{L(\pi_p^*,1-s)}.
+ \end{aligned}
+ \tag{1.6}
+\end{equation}
+\noindent\footnotesize\textbf{译者注（本次校订）：}这里 $\gamma$ 的约定与定理 1 中函数方程的方向不一致。若采用 (1.6)，定理 1 应写为 $\mathcal J_p((\beta W)^*,1-s)=\gamma(\pi_p,s)\mathcal J_p(W,s)$；若保留定理 1 的方向，则 (1.6) 中应以 $\gamma^{-1}$ 代替 $\gamma$。在非分歧球向量的情形，两个积分分别给出两侧的 $L$ 因子，这一修正使 $\varepsilon=1$。第 3 节 (3.9) 与 (3.10) 也须采用相同的方向约定。\normalsize
+
+设 $\pi=\bigotimes_{p\in P}\pi_p$ 是群 $G_\A$ 的一个一般型尖点自守表示的同构类。那么其所有非 Archimedes 分量 $\pi_p$ 都是非退化的，且 Euler 乘积
+\begin{equation}
+ L(\pi,s)=\prod_{p\in P\setminus S}L(\pi_p,s),
+ \tag{1.7}
+\end{equation}
+其中 $S$ 为 $P$ 中所有 Archimedes 赋值的集合，在 $\Re s$ 充分大的右半平面绝对收敛。如果 $k$ 是整体函数域，它就与 Langlands 对偶群 ${}^LG\simeq\operatorname{GSp}(4,\C)$ 的标准四维表示所对应的 Langlands Euler 乘积一致；如果 $k$ 是数域，则两者相差一个在整个 $s$ 复平面上亚纯的因子。因子 $\varepsilon(\pi_p)$ 具有 $aq_p^{-bs}$ 的形式，而且对几乎所有 $p\in P\setminus S$ 恒等于 $1$。因此 Euler 乘积
+\begin{equation}
+ \varepsilon(\pi,s)=\prod_{p\in P\setminus S}\varepsilon(\pi_p,s)
+ \tag{1.8}
+\end{equation}
+实际上是有限乘积，并将 $\varepsilon(\pi)$ 定义为无零点的整函数。
+
+\begin{originaltheorem}{定理 2（Theorem 2）}
+函数 $L(\pi)$ 可亚纯延拓至整个复平面。如果 $\operatorname{char}k=p>0$，则这一延拓是 $p^s$ 与 $p^{-s}$ 的多项式，并满足函数方程
+\begin{equation}
+ L(\pi,s)=\varepsilon(\pi,s)L(\pi^*,1-s).
+ \tag{1.8}
+\end{equation}
+\end{originaltheorem}
+
+\origsection{2}{$\operatorname{GSp}(4)$：强尖点表示（hypercuspidal representations）}
+这一情形由作者与 I. I. Piatetski-Shapiro 合作研究。
+
+强尖点表示没有对应于极大幺幂子群（maximal unipotent subgroup）非退化特征的 Whittaker 模型，因此需要选取其他子群，构造广义 Whittaker 模型。为此，先换一种方式实现群 $G=\operatorname{GSp}(4)$。选取一个二维半单 $k$-代数 $K$，以及 $K$ 上两个变量的二维反对称双线性型（skew-symmetric bilinear form）$B$；于是 $G$ 可以实现为型 $\operatorname{tr}_{K/k}B$ 的相似变换群。此时 $G$ 包含子群
+\begin{equation}
+ G'\simeq\{g\in\GL(2,K):\det g\in k\},
+ \tag{2.1}
+\end{equation}
+它由 $G$ 中所有 $K$-线性变换组成。用 $U'$ 表示 $G'$ 中所有上三角幺幂矩阵的子群，用 $U$ 表示 $U'$ 在 $G$ 中的正规化子（normalizer）的幺幂根基（unipotent radical）；$U$ 是 $G$ 的一个三维交换极限球子群。代数 $K$ 有唯一的非平凡 $k$-自同构
+\begin{equation}
+ \kappa\longmapsto\overline\kappa;
+ \tag{2.2}
+\end{equation}
+它诱导型 $\operatorname{tr}_{K/k}B$ 的一个 $k$-自同构，记为 $\tau$，其中 $\tau\in G$。令
+\[
+ T'=\left\{\begin{pmatrix}\kappa&0\\0&\overline\kappa\end{pmatrix}:\kappa\in K^*\right\}\subset G'.
+\]
+显然 $T'$ 同构于代数 $K$ 的乘法群 $K^*$。群 $G'$、$U'$、$T'$ 均被 $\tau$ 正规化。
+
+设 $p$ 为 $k$ 的一个非 Archimedes 赋值。取商群 $U_p/U'_p$ 的一个非平凡特征 $\chi$，以及群 $T'_p$ 的一个拟特征 $\xi'$，要求后者在子群
+\[
+ \left\{\begin{pmatrix}\varepsilon&0\\0&\overline\varepsilon\end{pmatrix}\in T'_p:
+ \varepsilon^{-1}=\overline\varepsilon\right\}
+\]
+上的限制是酉的（unitary）。如果 $\xi'$ 是 $\tau$-不变的，就将它延拓为群 $T_p$ 的一个特征 $\xi$，其中
+\begin{equation}
+ T=T'\cup\tau T',\qquad \tau(\xi')=\xi'.
+ \tag{2.3}
+\end{equation}
+如果 $\xi'$ 不是 $\tau$-不变的，则令
+\begin{equation}
+ T=T',\qquad\xi=\xi',\qquad \tau(\xi')\ne\xi'.
+ \tag{2.4}
+\end{equation}
+在两种情形下均定义
+\begin{equation}
+ Z=T\cdot U,\qquad\psi(tu)=\xi(t)\chi(u),
+ \qquad t\in T_p,\quad u\in U_p.
+ \tag{2.5}
+\end{equation}
+$Z$ 是 $G$ 的代数 $k$-子群，$\psi$ 是群 $Z_p$ 的拟特征。与第 1 节一样，用 $\mathcal W_\psi(G_p)$ 表示群 $G_p$ 上所有满足方程 (1.1) 的局部常值复函数 $W$ 的集合；$G_p$ 在 $\mathcal W_\psi$ 中通过右平移给出的不可约容许子表示，称为其同构类 $\pi_p$ 的 Whittaker 模型，记为 $\mathcal W_\psi(\pi_p)$。
+
+\begin{originaltheorem}{定理 3（Theorem 3）}
+群 $G_p$ 的不可约容许表示的每个同构类 $\pi_p$，或者是非退化的，或者对于某个上述类型的代数 $K$、子群 $T$ 和特征 $\psi$，具有 Whittaker 模型 $\mathcal W_\psi(\pi_p)$；固定 $\psi$ 后，这个模型是唯一的。\footnote{\textbf{译者注（本次校订）：}此存在性陈述须补上 $\pi_p$ 为无限维表示的条件。一维表示（例如平凡表示）在 $U_p$ 上平凡，而这里选取的 $\chi$ 在 $U_p/U_p^{\prime}$ 上非平凡；故一维表示既没有第 1 节的非退化 Whittaker 模型，也没有本节所述的模型。}
+\end{originaltheorem}
+
+\paragraph*{注记 1（Remark 1）.}
+一个同构类 $\pi_p$ 可以具有对应于第 1、2 节所述若干不同特征 $\psi$ 的 Whittaker 模型。
+
+\paragraph*{注记 2（Remark 2）.}
+群 $\widetilde T_p=T'_p\cup\tau T'_p$ 是 $G_p$ 中 $U_p$ 的正规化子内 $\chi$ 的稳定子（stabilizer）；因此 $\chi$ 可以提升为群 $\widetilde T_p\cdot U_p$ 的一个特征，或一个二维不可约表示。定理 3 可以重述为与这些一维和二维表示相联系的 Whittaker 模型的存在唯一性定理。这种表述更便于统一讨论，不过在二维表示的情形，Euler 因子的构造会更繁复。
+
+当 $Z$ 和 $\psi$ 由公式 (2.3) 定义时，定理 3 的唯一性部分由 I. I. Piatetski-Shapiro 与作者在 [8] 中以及作者在 [9] 中证明。对于超尖点表示（supercuspidal representation）$\pi_p$，定理 3 的唯一性部分可由 F. Rodier 的定理 1 [5] 推出。
+
+现在令
+\begin{equation}
+ H=\left\{\begin{pmatrix}\kappa&0\\0&1\end{pmatrix}:\kappa\in k^*\right\}
+ \subset G'\subset\GL(2,k),
+ \tag{2.6}
+\end{equation}
+\noindent\footnotesize\textbf{译者注（本次校订）：}依 (2.1)，上述包含关系的最后一项应为 $\GL(2,K)$。$G^{\prime}$ 的矩阵元素取自二次代数 $K$，通常不能将整个 $G^{\prime}$ 包含在 $\GL(2,k)$ 中。\normalsize
+并考察积分
+\begin{equation}
+ \mathcal J_p(W,s)=\int_{H_p}W(h)\|h\|^s\,dh,
+ \qquad\left\|\begin{pmatrix}\kappa&0\\0&1\end{pmatrix}\right\|
+ \mathrel{\mathop:}=\|\kappa\|.
+ \tag{2.7}
+\end{equation}
+
+\begin{originaltheorem}{定理 4（Theorem 4）}
+积分 (2.7) 在 $\Re s$ 充分大的右半平面中绝对收敛，并将 $\mathcal J_p(W)$ 定义为 $q_p^{-s}$ 的有理函数。所有函数 $\mathcal J_p(W)$，$W\in\mathcal W_\psi(\pi_p)$，都有一个公分母。
+\end{originaltheorem}
+
+与第 1 节一样，用 $Q_p(\pi_p)$ 表示次数最小的正规化公分母，并令
+\begin{equation}
+ L(\pi_p,s)=[Q(\pi_p,q^{-s})]^{-1}.
+ \tag{2.8}
+\end{equation}
+
+\begin{originaltheorem}{定理 5（Theorem 5）}
+Euler 因子 $L_p(\pi_p)$ 不依赖于子群 $Z$ 和 $Z_p$ 的特征 $\psi$ 的选择（特别地，如果同构类 $\pi_p$ 是非退化的，则第 1、2 节所定义的因子 $L(\pi_p)$ 一致）。
+\end{originaltheorem}
+
+设 $\pi=\bigotimes_{p\in P}\pi_p$ 为群 $G_\A$ 的一个尖点自守表示的同构类。对每个非 Archimedes 赋值 $p$，选择一个 Whittaker 模型 $\mathcal W_\psi(\pi_p)$，得到 Euler 因子 $L(\pi_p)$，并定义
+\begin{equation}
+ L(\pi,s)=\prod_{p\in P\setminus S}L(\pi_p,s),
+ \tag{2.9}
+\end{equation}
+其中 $S$ 为 $k$ 的 Archimedes 赋值的集合。这个乘积在 $\Re s$ 充分大的右半平面中绝对收敛。如果 $k$ 为函数域，它与 Langlands 对偶群 ${}^LG\simeq\operatorname{GSp}(4,\C)$ 的标准四维表示对应的 Langlands Euler 乘积一致；如果 $k$ 为数域，则两者相差一个在整个 $s$ 复平面上亚纯的因子。
+
+\begin{originaltheorem}{定理 6（Theorem 6）}
+函数 $L(\pi)$ 可亚纯延拓至整个复平面。若 $\operatorname{char}k=p>0$，则这个延拓是 $p^{-s}$ 的有理函数，并满足函数方程
+\begin{equation}
+ L(\pi,s)=\varepsilon(\pi,s)L(\pi^*,1-s),
+ \tag{2.10}
+\end{equation}
+其中 $\varepsilon(\pi)$ 是 $s$ 的无零点整函数。
+\end{originaltheorem}
+
+实际上，$\varepsilon(\pi)$ 是某些出现于局部函数方程中的因子 $\varepsilon(\pi_p)$ 的 Euler 乘积。这些方程颇为繁复，将发表于与 I. I. Piatetski-Shapiro 合作的论文中。
+
+\origsection{3}{$\operatorname{GSp}(4)\times\GL(2)$：一般型表示（generic representations）}
+本节对 H. Jacquet 处理诱导表示（induced representation）的方法作适当调整；他曾在 [7] 中将此方法应用于 $\GL(2)\times\GL(2)$ 上的自守 $L$ 函数。
+
+本节中，$\operatorname{GSp}(4)$ 的子群 $C$ 与 $Z$、$Z_\A$ 的特征 $\psi$、空间 $\mathcal W_\psi(\operatorname{GSp}(4,k_p))$（$p$ 为非 Archimedes 赋值）、$\operatorname{GSp}(4,k_p)$ 的不可约容许表示的非退化同构类 $\pi_p$ 的 Whittaker 模型 $\mathcal W_\psi(\pi_p)$、同态 $\sigma$ 和特征 $\omega_p$，均与第 1 节相同。定义子群
+\begin{equation}
+ H=\left\{\left.
+ \begin{pmatrix}a&0&0&b\\0&g_{11}&g_{12}&0\\0&g_{21}&g_{22}&0\\c&0&0&d\end{pmatrix}
+ \in\operatorname{GSp}(4)\ \right|\ a,b,c,d\in k,\quad g\in\GL(2)\right\}.
+ \tag{3.1}
+\end{equation}
+为简化记号，将该分块矩阵仍写成 $\begin{pmatrix}a&&b\\&g&\\c&&d\end{pmatrix}$。还定义其到群 $\GL(2,k)$ 的满同态：
+\begin{equation}
+ \phi_1:\begin{pmatrix}a&&b\\&g&\\c&&d\end{pmatrix}\longmapsto g,
+ \qquad
+ \phi_2:\begin{pmatrix}a&&b\\&g&\\c&&d\end{pmatrix}\longmapsto
+ \begin{pmatrix}a&b\\c&d\end{pmatrix}.
+ \tag{3.2}
+\end{equation}
+
+用 $\widetilde Z$ 表示 $\GL(2,k_p)$ 中所有上三角幺幂矩阵构成的子群。它是 $H\cap Z$ 在同态 $\phi_1$ 下的像；把此同态限制到群 $(H\cap Z)_\A$，其核
+\[
+ \left\{\begin{pmatrix}1&0&0&b\\0&1&0&0\\0&0&1&0\\0&0&0&1\end{pmatrix}\right\}
+\]
+包含于换位子群（commutator subgroup）。\footnote{\textbf{译者注（本次校订）：}这里应指 $Z_\A$ 的换位子群，而非 $(H\cap Z)_\A$ 的换位子群。后者由两个互相交换的根子群组成，本身是交换群；所列的 $(1,4)$ 根子群则包含在 $[Z_\A,Z_\A]$ 中。}因此，$Z_\A$ 的每个特征都通过 $\phi_1$ 定义 $\widetilde Z_\A$ 的一个特征，仍用同一符号表示。与第 1 节一样，用 $\mathcal W_{\overline\psi}(\GL(2,k_p))$ 表示所有满足
+\begin{equation}
+ \widetilde W(zg)=\psi(z)\widetilde W(g),
+ \qquad z\in\widetilde Z_p,\quad g\in\GL(2,k_p)
+ \tag{3.3}
+\end{equation}
+的局部常值复函数 $\widetilde W$ 的空间。若 $\widetilde\pi_p$ 是 $\GL(2,k_p)$ 的无限维不可约容许表示的同构类，则用 $\mathcal W_{\overline\psi}(\widetilde\pi_p)$ 表示上述空间中属于 $\widetilde\pi_p$ 的一个子表示；这样的子表示存在且唯一（参见 H. Jacquet、R. P. Langlands [6]）。用 $\widetilde\omega_p$ 表示 $\widetilde\pi_p$ 在 $\GL(2,k_p)$ 中心上的限制；借助典范同构
+\[
+ \GL(2)\ni\begin{pmatrix}\alpha&0\\0&\alpha\end{pmatrix}\longmapsto\alpha\in k^*,
+\]
+将 $\widetilde\omega_p$ 视为乘法群 $k_p^*$ 的一个特征。
+
+设 $\widetilde\pi_p^*\simeq\widetilde\pi_p\otimes\widetilde\omega_p^{-1}(\det)$ 为 $\widetilde\pi_p$ 的逆反表示，则空间 $\mathcal W_{\overline\psi}(\widetilde\pi_p^*)$ 由以下函数组成：
+\begin{equation}
+ \widetilde W^*(g)=\widetilde W(g)\widetilde\omega_p^{-1}(\det(g)),
+ \qquad g\in\GL(2,k_p).
+ \tag{3.4}
+\end{equation}
+对平面 $k_p\oplus k_p$ 上的局部常值复函数 $\Phi$，定义 Fourier 变换（Fourier transform）为\footnote{\textbf{译者注（本次校订）：}这里须要求 $\Phi$ 具有紧支集，即取 $\Phi\in\mathcal S(k_p^2)$。单有局部常值性不足以定义该积分；例如 $\Phi\equiv1$ 时，(3.5) 在 $(x,y)=(0,0)$ 处发散。本节后续涉及 $\Phi$ 的积分也沿用这一条件。}
+\begin{equation}
+ \widehat\Phi(x,y)=\int_{k_p\oplus k_p}\Phi(u,v)\alpha(yu-xv)\,d(u,v),
+ \tag{3.5}
+\end{equation}
+其中 $\alpha$ 是阿代尔类群 $\A/k$ 的一个固定的非平凡特征。对乘法群 $k_p^*$ 的每个复拟特征 $\mu$，令
+\begin{equation}
+ f(h,\Phi,\mu)=\int_{k_p^*}\Phi\bigl((0,\kappa)\phi_2(h)\bigr)\mu(\kappa)\,d\kappa,
+ \qquad h\in H_p.
+ \tag{3.6}
+\end{equation}
+如果积分 (3.6) 绝对收敛，那么函数 $f$ 显然满足方程
+\begin{equation}
+ f\left(\begin{pmatrix}a&&b\\&g&\\0&&d\end{pmatrix}h,\Phi,\mu\right)
+ =\mu(d^{-1})f(h,\Phi,\mu),
+ \qquad \begin{pmatrix}a&&b\\&g&\\d&&0\end{pmatrix},h\in H_p.
+ \tag{3.7}
+\end{equation}
+\noindent\emph{译注：所供扫描本 (3.7) 右侧条件矩阵的末行印为 $(d,0)$，与左侧矩阵的 $(0,d)$ 不一致；这里保留所示位置。}
+因此可以考察积分
+\begin{equation}
+ \begin{aligned}
+ \mathcal J(W,\widetilde W,\Phi,\mu_1(s),s)
+ &=\int W(h)\widetilde W(\phi_1(h))f(h,\Phi,\mu_1)
+ \|\phi_2(h)\|^s\,dh,\\
+ \mu_1(\kappa,s)&=\|\kappa\|^{2s}\omega(\kappa)\widetilde\omega(\kappa),
+ \quad W\in\mathcal W_\psi(\pi_p),\quad
+ \widetilde W\in\mathcal W_{\overline\psi}(\widetilde\pi_p),
+ \end{aligned}
+ \tag{3.8}
+\end{equation}
+以及相应的积分 $\mathcal J(W^*,\widetilde W^*,\widehat\Phi,\mu_2(s),s)$，其中\footnote{\textbf{译者注（本次校订）：}(3.8) 的积分域应为 $C_p(H\cap Z)_p\backslash H_p$，$dh$ 为相应的商测度。两个 Whittaker 特征在 $(H\cap Z)_p$ 上相消；$\mu_1$ 的定义又使中心的作用相消。因此被积函数在此子群下不变，直接在整个 $H_p$ 上积分会重复积入非紧方向。}
+\[
+ \mu_2(\kappa,s)=\|\kappa\|^{2s}\omega^{-1}(\kappa)\widetilde\omega^{-1}(\kappa).
+\]
+
+\begin{originaltheorem}{定理 7（Theorem 7）}
+积分 (3.6) 与 (3.8) 在 $\Re s$ 充分大的右半平面中绝对收敛，并将 $\mathcal J(W,\widetilde W,\Phi)$ 和 $\mathcal J(W^*,\widetilde W^*,\widehat\Phi)$ 定义为 $q_p^{-s}$ 的有理函数。存在 $q_p^{-s}$ 的有理函数 $\gamma(\pi_p,\widetilde\pi_p)$，使
+\begin{equation}
+ \begin{aligned}
+ \mathcal J(W,\widetilde W,\Phi,\mu_1(s),s)
+ &=\gamma(\pi_p,\widetilde\pi_p,s)
+ \mathcal J(W,\widetilde W^*,\widehat\Phi,\mu_2(1-s),1-s),\\[-2pt]
+ &\hspace{-30pt}W\in\mathcal W_\psi(\pi_p),\quad
+ \widetilde W\in\mathcal W_{\overline\psi}(\widetilde\pi_p),\quad\Phi\text{ 任意}.
+ \end{aligned}
+ \tag{3.9}
+\end{equation}
+\noindent\emph{译注：所供扫描本 (3.9) 右端的第一个 $W$ 未标星，而定理前文提到的相应积分为 $\mathcal J(W^*,\widetilde W^*,\widehat\Phi)$；公式按扫描本保留。}
+所有有理函数 $\mathcal J(W,\widetilde W,\Phi)$（让 $W\in\mathcal W_\psi(\pi_p)$、$\widetilde W\in\mathcal W_{\overline\psi}(\widetilde\pi_p)$ 及 $\Phi$ 变化）都有公分母。
+\end{originaltheorem}
+
+与第 1 节一样，用 $Q(\pi_p,\widetilde\pi_p)$ 表示 $q^{-s}$ 中次数最小的正规化公分母，并定义
+\begin{equation}
+ \begin{aligned}
+ L(\pi_p\otimes\widetilde\pi_p,s)&=[Q(\pi_p,\widetilde\pi_p,q^{-s})]^{-1},\\
+ \varepsilon(\pi_p\otimes\widetilde\pi_p,s)&=
+ \gamma(\pi_p,\widetilde\pi_p,s)
+ \frac{L(\pi_p\otimes\widetilde\pi_p,s)}
+ {L(\pi_p^*\otimes\widetilde\pi_p^*,1-s)}.
+ \end{aligned}
+ \tag{3.10}
+\end{equation}
+设 $\pi\otimes\widetilde\pi$ 为群 $\operatorname{GSp}(4,k_p)\times\GL(2,k_p)$ 的一个一般型尖点不可约表示的同构类，\footnote{\textbf{译者注（本次校订）：}本段已转入整体情形，群应为 $\operatorname{GSp}(4,\A)\times\GL(2,\A)$，表示应为一般型不可约尖点自守表示。后面的受限张量积分解和 Euler 乘积均按这一整体假设理解。}$\pi=\bigotimes_{p\in P}\pi_p$，$\widetilde\pi=\bigotimes_{p\in P}\widetilde\pi_p$，则令
+\begin{equation}
+ \begin{aligned}
+ L(\pi\otimes\widetilde\pi,s)&=\prod_{p\in P\setminus S}L(\pi_p\otimes\widetilde\pi_p,s),\\
+ \varepsilon(\pi\otimes\widetilde\pi,s)&=\prod_{p\in P\setminus S}\varepsilon(\pi_p\otimes\widetilde\pi_p,s),
+ \end{aligned}
+ \tag{3.11}
+\end{equation}
+其中 $S$ 是 $k$ 的 Archimedes 赋值的集合。与前面一样，第一个乘积在 $\Re s$ 充分大的右半平面中绝对收敛。当 $k$ 是函数域时，如果 $\rho$ 是复群 $\operatorname{GSp}(4,\C)$ 与 $\GL(2,\C)$ 的标准四维表示和标准二维表示的张量积，那么这一乘积就与 Langlands 的 $L$ 函数 $L(\pi,\rho,s)$ 一致；当 $k$ 是数域时，这两个 $L$ 函数相差一个在整个复平面上亚纯的因子。第二个乘积 (3.11) 实际上是有限乘积，从而定义了无零点的整函数 $\varepsilon(\pi\otimes\widetilde\pi)$。
+
+\begin{originaltheorem}{定理 8（Theorem 8）}
+函数 $L(\pi\otimes\widetilde\pi)$ 可亚纯延拓至整个复平面。如果 $\operatorname{char}k=p>0$，则 $L(\pi\otimes\widetilde\pi)$ 是 $p^{-s}$ 的有理函数，并满足方程
+\begin{equation}
+ L(\pi\otimes\widetilde\pi,s)=\varepsilon(\pi\otimes\widetilde\pi,s)
+ L(\pi^*\otimes\widetilde\pi^*,1-s).
+ \tag{3.12}
+\end{equation}
+\end{originaltheorem}
+
+\begin{thebibliography}{12}
+\bibitem[1]{c24-1} R. P. Langlands, \emph{Problems in the theory of automorphic forms}, Lecture Notes in Math., vol. 170, Springer-Verlag, Berlin and New York, 1970.
+\bibitem[2]{c24-2} I. I. Piatetski-Shapiro, \emph{Euler subgroups}, Proc. Summer School Bolya-Janos Math. Soc. (Budapest, 1970), Halsted, New York, 1975.
+\bibitem[3]{c24-3} I. M. Gelfand and D. A. Kazdan, \emph{Representations of the group GL(n,K) where K is a local field}, Inst. Appl. Math., no. 242, Moscow, 1971.
+\bibitem[4]{c24-4} F. Rodier, \emph{Modèle de Whittaker des représentations admissibles des groupes réductifs $p$-adiques déployés}, C. R. Acad. Sci. Paris Sér. A 275 (1972), pp. 1045--1048.
+\bibitem[5]{c24-5} F. Rodier, \emph{Le représentations de GSp(4,k) où k est un corps local}, C. R. Acad. Sci. Paris Sér. A 283 (1976), pp. 429--431.
+\bibitem[6]{c24-6} H. Jacquet and R. P. Langlands, \emph{Automorphic forms on GL(2)}, Lecture Notes in Math., vol. 114, Springer-Verlag, Berlin and New York, 1970.
+\bibitem[7]{c24-7} H. Jacquet, \emph{Automorphic forms on GL(2). Part 2}, Lecture Notes in Math., vol. 278, Springer-Verlag, Berlin and New York, 1972.
+\bibitem[8]{c24-8} M. E. Novodvorsky and I. I. Piatetskii-Shapiro, \emph{Generalized Bessel models for the symplectic group of rank 2}, Mat. Sb. 90 (2) (1973), 246--256.
+\bibitem[9]{c24-9} M. E. Novodvorsky, \emph{On the theorems of uniqueness of generalized Bessel models}, Mat. Sb. 90 (2) (1973), 275--287.
+\bibitem[10]{c24-10} M. E. Novodvorsky, \emph{Théorie de Hecke pour les groupes orthogonaux}, C. R. Acad. Sci. Paris Sér. A 285 (1977), 93--94.
+\bibitem[11]{c24-11} M. E. Novodvorsky, \emph{Fonctions $\mathcal J$ pour des groupes orthogonaux}, C. R. Acad. Sci. Paris Sér. A 280 (1975), 1421--1422.
+\bibitem[12]{c24-12} M. E. Novodvorsky, \emph{Fonction $\mathcal J$ pour GSp(4)}, C. R. Acad. Sci. Paris Sér. A 280 (1975), 191--192.
+\end{thebibliography}
+\begin{flushleft}\small Purdue University\end{flushleft}

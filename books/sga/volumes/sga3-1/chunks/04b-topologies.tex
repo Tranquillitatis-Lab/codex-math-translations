@@ -1,0 +1,1099 @@
+\SourcePage{202}
+\SGAsection{4}{拓扑与层}
+\Term{sieve}{筛}的概念，以及这里采用的\Term{topology}{拓扑}概念的表述（4.2.1），均出自 J. Giraud [AS]；这种表述比 [MA] 中通过\Term{covering-family}{覆盖族}给出的表述更内在，在许多方面也更方便。
+
+\SGAsection{4.1}{筛}
+\begin{SGAresult}{定义}{4.1.1}
+\Term{category}{范畴} $\mathcal C$ 的一个\Term{sieve}{筛}，是指\Term{final-object}{终}\Term{functor}{函子} $e:\mathcal C^{\circ}\to(\mathrm{Ens})$ 的一个\Term{subfunctor}{子函子} $C$。
+\end{SGAresult}
+对于 $\mathcal C$ 的每个\Term{sieve}{筛} $C$，记 $E(C)$ 为满足 $C(X)\ne\varnothing$ 的\Term{object}{对象} $X$ 的\Term{set}{集合}，即\Term{structure-morphism}{结构态射} $X\to e$ 通过 $C$ \Term{resolution}{分解}的那些\Term{object}{对象}组成的\Term{set}{集合}。因此有\Term{equivalence-relation}{等价关系}
+\[
+\begin{cases}
+X\in E(C)\iff C(X)=e(X)=\{\varnothing\},\\
+X\notin E(C)\iff C(X)=\varnothing.
+\end{cases}\tag{+}
+\]
+\Term{set}{集合} $E=E(C)$ 满足下列性质：
+\[
+\text{若 }X\in E\text{ 且 }\operatorname{Hom}(Y,X)\ne\varnothing,\text{ 则 }Y\in E.\tag{++}
+\]
+（注意，若赋予 $\operatorname{Ob}\mathcal C$ 自然的\Term{preorder}{预序}结构，即存在从 $Y$ 到 $X$ 的\Term{arrow}{箭头}时称 $Y$ \Term{dominant}{支配} $X$，则满足 (++) 的\Term{set}{集合} $E$
+\SourcePage{203}
+正是 $\operatorname{Ob}\mathcal C$ 中包含其每个元素的所有上界\footnote{编者注（17）：此处“上界”按上述\Term{preorder}{预序}关系理解，即存在\Term{arrow}{箭头} $Y\to X$ 时，称 $Y$ 为 $X$ 的上界。另一方面，若 $X,Y$ 是某个\Term{object}{对象} $Z$ 的两个\Term{subobject}{子对象}，则在 $X\subset Y$ 时也称 $Y$ 为 $X$ 的上界（参见 2.4）。为避免两种术语产生歧义，下文在第一种情形中用“\Term{dominant}{支配}”替代“为上界”，在第二种情形中用“包含”替代。}的\Term{subset}{子集}。）
+
+反之，若 $E$ 是 $\operatorname{Ob}\mathcal C$ 中满足 (++) 的\Term{subset}{子集}，则 $E$ 唯一地写成 $E(C)$，其中 $C$ 由公式 (+) 定义。因此，$\mathcal C$ 的\Term{sieve}{筛}与 $\operatorname{Ob}\mathcal C$ 中满足 (++) 的\Term{subset}{子集}一一对应。稍微滥用语言，我们有时也称\Term{set}{集合} $E(C)$ 为 $\mathcal C$ 的一个\Term{sieve}{筛}。
+
+设 $C,C'$ 是 $\mathcal C$ 的两个\Term{sieve}{筛}。\footnote{编者注（18）：我们展开了接下来的这句话。}由于二者都是\Term{final-object}{终}\Term{functor}{函子} $e$ 的\Term{subfunctor}{子函子}，以下说法\Term{equivalence}{等价}：$C$ \Term{dominant}{支配} $C'$（相对于 $\operatorname{Ob}\widehat{\mathcal C}$ 中的\Term{dominant}{支配}关系）；$C$ 是 $C'$ 的\Term{subfunctor}{子函子}；$E(C)\subset E(C')$。此时称 $C$ 比 $C'$ 更细。可见，这给出了 $\mathcal C$ 的所有\Term{sieve}{筛}组成的\Term{set}{集合}上的一个序结构。此外，$E(C)\cap E(C')=E(C\times C')$，所以 $\mathcal C$ 的\Term{sieve}{筛}的\Term{set}{集合}对于“更细”这一\Term{order-relation}{序关系}是\Term{filtered}{滤过}的。
+
+$\operatorname{Ob}\widehat{\mathcal C}$ 的任意\Term{subset}{子集} $E$，例如 $\operatorname{Ob}\mathcal C$ 的\Term{subset}{子集}，都定义一个\Term{sieve}{筛} $C(E)$：使得至少对某个 $F\in E$ 有 $F(X)\ne\varnothing$ 的所有 $X\in\operatorname{Ob}\mathcal C$ 组成的\Term{set}{集合}满足条件 (++)，因而定义所求的\Term{sieve}{筛}。
+这个\Term{sieve}{筛}也可定义为\Term{morphism}{态射}族 $\{F\to e,\ F\in E\}$ 的\Term{image}{像}，这里的\Term{image}{像}按下述定义理解。
+\begin{SGAresult}{定义}{4.1.2}
+设 $\{F_i\to F\}$ 是 $\widehat{\mathcal C}$ 中具有同一终点 $F$ 的一族\Term{morphism}{态射}。称由
+\[
+S\longmapsto\bigcup_i\operatorname{Im}F_i(S)\subset F(S)
+\]
+定义的 $F$ 的\Term{subfunctor}{子函子}为此族的\Term{image}{像}。
+\end{SGAresult}
+\begin{SGAresult}{命题}{4.1.3}
+取\Term{image}{像}与\Term{base-extension}{基扩张}可交换：沿用上述记号，以 $I$ 表示族 $\{F_i\to F\}$ 的\Term{image}{像}；则对 $\widehat{\mathcal C}$ 中任意\Term{morphism}{态射} $G\to F$，\Term{morphism}{态射}族 $\{F_i\times_F G\to G\}$ 的\Term{image}{像}是 $G$ 的\Term{subfunctor}{子函子} $I\times_F G$。
+\end{SGAresult}
+\begin{SGAresult}{定义}{4.1.4.0}
+\footnote{编者注（19）：为突出此定义，我们补上了编号 4.1.4.0。}设 $C$ 是 $\mathcal C$ 的一个\Term{sieve}{筛}。若 $E$ 是 $\operatorname{Ob}\mathcal C$ 中满足 $C(E)=C$ 的\Term{subset}{子集}，则称 $E$ 为 $C$ 的一个\Term{sieve-basis}{基}。每个\Term{sieve}{筛} $C$ 都有\Term{sieve-basis}{基}，例如\Term{set}{集合} $E(C)$。
+\end{SGAresult}
+我们要借助 $C$ 的一个\Term{sieve-basis}{基} $\{S_i\}$ 来描述\Term{set}{集合} $\operatorname{Hom}(C,F)$，其中 $C$ 是 $\mathcal C$ 的一个\Term{sieve}{筛}，$F$ 是 $\widehat{\mathcal C}$ 的\Term{object}{对象}。对每一对 $(i,j)$，$\widehat{\mathcal C}$ 中有图
+\SourcePage{204}
+\[
+\begin{tikzcd}
+S_i\times S_j\arrow[r]\arrow[d]&S_i\arrow[d]\\
+S_j\arrow[r]&e,
+\end{tikzcd}
+\]
+从而得到\Term{set}{集合}图
+\[
+\begin{tikzcd}[column sep=large]
+\Gamma(F)=\operatorname{Hom}(e,F)\arrow[r,"\sigma"]&
+\prod_i\operatorname{Hom}(S_i,F)\arrow[r,shift left=.6ex,"\tau_1"]\arrow[r,shift right=.6ex,"\tau_2"']&
+\prod_{i,j}\operatorname{Hom}(S_i\times S_j,F),
+\end{tikzcd}
+\]
+其中 $\tau_1\sigma=\tau_2\sigma$。因此有\Term{morphism}{态射}
+\[
+\operatorname{Hom}(e,F)\longrightarrow
+\operatorname{Ker}\left(\prod_i\operatorname{Hom}(S_i,F)\rightrightarrows
+\prod_{i,j}\operatorname{Hom}(S_i\times S_j,F)\right).
+\]
+立即可以验证：
+\begin{SGAresult}{命题}{4.1.4}
+有关于 $F$ 的\Term{functorial}{函子性}\Term{isomorphism}{同构}
+\[
+\operatorname{Hom}(C,F)\xrightarrow{\sim}
+\operatorname{Ker}\left(\prod_i\operatorname{Hom}(S_i,F)\rightrightarrows
+\prod_{i,j}\operatorname{Hom}(S_i\times S_j,F)\right),
+\]
+使图
+\[
+\begin{tikzcd}[column sep=large]
+\operatorname{Hom}(e,F)\arrow[r]\arrow[d,equal]&
+\operatorname{Ker}\left(\prod_i\operatorname{Hom}(S_i,F)\rightrightarrows
+\prod_{i,j}\operatorname{Hom}(S_i\times S_j,F)\right)\\
+\operatorname{Hom}(e,F)\arrow[r]&\operatorname{Hom}(C,F)\arrow[u,"\sim"']
+\end{tikzcd}
+\]
+交换，其中下方一行由\Term{canonical}{典范}\Term{morphism}{态射} $C\to e$ 诱导。
+\end{SGAresult}
+\begin{SGAresult}{推论}{4.1.5}
+假设\Term{fiber-product}{纤维积} $S_i\times S_j$ \Term{representable}{可表}，例如各 $S_i$ 都\Term{quarrable}{可作基变换}。则对每个 $F\in\operatorname{Ob}\widehat{\mathcal C}$，有\Term{isomorphism}{同构}
+\[
+\operatorname{Hom}(C,F)\xrightarrow{\sim}
+\operatorname{Ker}\left[\prod_i F(S_i)\rightrightarrows\prod_{i,j}F(S_i\times S_j)\right].
+\]
+\end{SGAresult}
+\textbf{注记 4.1.6。}设 $R$ 是 $\mathcal C$ 的一个\Term{sieve}{筛}，以 $\mathcal R$ 表示 $\mathcal C$ 中\Term{object}{对象}\Term{set}{集合}为 $E(R)$ 的\Term{full-subcategory}{满子范畴}，并以
+\[
+i_R:\mathcal R\longrightarrow\mathcal C
+\]
+表示包含\Term{functor}{函子}。有关于 $F\in\operatorname{Ob}\widehat{\mathcal C}$ 的\Term{functorial}{函子性}\Term{isomorphism}{同构}
+\[
+\operatorname{Hom}(R,F)\xrightarrow{\sim}\Gamma(F\circ i_R),
+\]
+\SourcePage{205}
+使图
+\[
+\begin{tikzcd}
+\operatorname{Hom}(e,F)\arrow[r]\arrow[d,"\sim"']&\operatorname{Hom}(R,F)\arrow[d,"\sim"]\\
+\Gamma(F)\arrow[r]&\Gamma(F\circ i_R)
+\end{tikzcd}
+\]
+交换，其中第二行由\Term{functor}{函子} $i_R$ 诱导。
+\begin{SGAresult}{定义}{4.1.7}
+设 $\mathcal C$ 是一个\Term{category}{范畴}。$\mathcal C$ 的\Term{object}{对象} $S$ 的\Term{sieve}{筛}，是指\Term{category}{范畴} $\mathcal C_{/S}$ 的\Term{sieve}{筛}。
+\end{SGAresult}
+所以，$S$ 的\Term{sieve}{筛}就是 $S$ 的一个 $\widehat{\mathcal C}$-\Term{subobject}{子对象}。它\Term{canonical}{典范}地对应于 $\operatorname{Ob}\mathcal C_{/S}$ 的一个\Term{subset}{子集}，该\Term{subset}{子集}只要包含一条\Term{arrow}{箭头}的终点，便也包含其起点。稍微滥用语言，这样的\Term{set}{集合}也称为 $S$ 的\Term{sieve}{筛}。
+
+\SGAsection{4.2}{拓扑：定义}
+\begin{SGAresult}{定义}{4.2.1}
+设 $\mathcal C$ 是一个\Term{category}{范畴}。$\mathcal C$ 上的一个\Term{topology}{拓扑}，是指对 $\mathcal C$ 中每个 $S$ 给定一个由 $S$ 的\Term{sieve}{筛}组成的\Term{set}{集合} $J(S)$，其中的\Term{sieve}{筛}称为\Term{covering-sieve}{覆盖筛}，也称 $S$ 的\Term{refinement}{加细}；此资料须满足以下公理：
+\begin{enumerate}
+\item[（T 1）] 对 $S$ 的每个\Term{refinement}{加细} $R$ 和每个\Term{morphism}{态射} $T\to S$，$T$ 的\Term{sieve}{筛} $R\times_S T$ 都是\Term{covering-sieve}{覆盖筛}（“\Term{base-change}{基变换}下的\Term{stable}{稳定}性”）。
+\item[（T 2）] 若 $R,C$ 是 $S$ 的两个\Term{sieve}{筛}，$R$ 是\Term{covering-sieve}{覆盖筛}，且对所有 $T\in\operatorname{Ob}\mathcal C$ 及每个\Term{morphism}{态射} $T\to R$，$T$ 的\Term{sieve}{筛} $C\times_S T$ 都是\Term{covering-sieve}{覆盖筛}，则 $C$ 是 $S$ 的\Term{refinement}{加细}。\footnote{编者注（20）：即若 $C$ “相对于\Term{covering-sieve}{覆盖筛} $R$ \Term{local-scheme}{局部}地\Term{covering}{覆盖}”，则 $C$ \Term{covering}{覆盖}。}
+\item[（T 3）] 若 $C\supset R$ 是 $S$ 的两个\Term{sieve}{筛}且 $R$ 是\Term{covering-sieve}{覆盖筛}，则 $C$ 也是\Term{covering-sieve}{覆盖筛}。
+\item[（T 4）] 对每个 $S$，$S$ 是 $S$ 的一个\Term{refinement}{加细}。
+\end{enumerate}
+\end{SGAresult}
+这些公理可以改述如下。设给定 $\mathcal C$ 上的一个\Term{topology}{拓扑} $S\mapsto J(S)$；对 $\widehat{\mathcal C}$ 的每个\Term{object}{对象} $F$，以 $J(F)$ 表示满足以下条件的 $F$ 的\Term{subfunctor}{子函子} $R$ 组成的\Term{set}{集合}：对 $\widehat{\mathcal C}$ 中每个\Term{morphism}{态射} $T\to F$，若 $T$ \Term{representable}{可表}，则作为 $T$ 的\Term{sieve}{筛}的 $R\times_F T$ 是\Term{covering-sieve}{覆盖筛}。由（T 1），此记号确与前面的记号相容。也称 $R\in J(F)$ 为 $F$ 的一个\Term{refinement}{加细}。立即可以验证，以上公理蕴含下列性质：
+\begin{enumerate}
+\item[（T$'$ 0）] 若 $F\supset G$ 是 $\widehat{\mathcal C}$ 的两个\Term{object}{对象}，且对每个 $S\in\operatorname{Ob}\mathcal C$ 以及每个\Term{morphism}{态射} $S\to F$ 都有 $G\times_F S\in J(S)$，则 $G\in J(F)$。
+\item[（T$'$ 1）] 若 $G\in J(F)$ 且 $H\to F$ 是 $\widehat{\mathcal C}$ 中的\Term{morphism}{态射}，则 $G\times_F H\in J(H)$。
+\item[（T$'$ 2）] 若 $F\supset G\supset H$ 是 $\widehat{\mathcal C}$ 的三个\Term{object}{对象}，且 $G\in J(F)$、$H\in J(G)$，则 $H\in J(F)$。
+\item[（T$'$ 3）] 若 $F\supset G\supset H$ 是 $\widehat{\mathcal C}$ 的三个\Term{object}{对象}，且 $H\in J(F)$，则 $G\in J(F)$。
+\item[（T$'$ 4）] 对每个 $F\in\operatorname{Ob}\widehat{\mathcal C}$，有 $F\in J(F)$。
+\end{enumerate}
+\SourcePage{206}
+反之，若对每个 $F\in\operatorname{Ob}\widehat{\mathcal C}$ 给定一族满足（T$'$ 0）至（T$'$ 4）的 $F$ 的\Term{subobject}{子对象} $J(F)$，则映射 $S\mapsto J(S)$ 定义 $\mathcal C$ 上的一个\Term{topology}{拓扑}，且上述两个构造互逆。
+
+由（T$'$ 1）、（T$'$ 2）和（T$'$ 3）\footnote{编者注（21）：（T$'$ 1）和（T$'$ 2）已经足够：由（T$'$ 1），$G\cap H=G\times_F H$ 属于 $J(H)$，再由（T$'$ 2）即属于 $J(F)$。}可得下述性质：
+\begin{enumerate}
+\item[（T$'$ 5）] 若 $G,H$ 是 $F$ 的两个\Term{subobject}{子对象}，且 $G,H\in J(F)$，则 $G\cap H\in J(F)$。
+\end{enumerate}
+因此，以关系 $\supset$ 排序的\Term{set}{集合} $J(F)$ 是\Term{filtered}{滤过}的；这一点以后将用到。
+
+\textbf{4.2.2。}若对每个 $S\in\operatorname{Ob}\mathcal C$ 都有 $J(S)\supset J'(S)$，则称由 $J$ 定义的\Term{topology}{拓扑}比由 $J'$ 定义的\Term{topology}{拓扑}更细（\Term{equivalence}{等价}地，对每个 $F\in\operatorname{Ob}\widehat{\mathcal C}$，有 $J(F)\supset J'(F)$）。
+$\mathcal C$ 上任意一族\Term{topology}{拓扑}都有\Term{infimum}{下确界}：设 $I$ 是指标集，对每个 $i\in I$，设 $S\mapsto J_i(S)$ 是 $\mathcal C$ 上的一个\Term{topology}{拓扑}。令 $J(S)=\bigcap_{i\in I}J_i(S)$；显然，这样定义了 $\mathcal C$ 上的一个\Term{topology}{拓扑}，且它确为所给族的\Term{infimum}{下确界}。
+特别地，对每个 $S\in\operatorname{Ob}\mathcal C$，给定一族 $S$ 的\Term{sieve}{筛} $E(S)$。称使得对每个 $S$，$E(S)$ 中各元素都是 $S$ 的\Term{refinement}{加细}的最粗\Term{topology}{拓扑}，为这些\Term{set}{集合}所生成的\Term{topology}{拓扑}。
+\begin{SGAresult}{定义}{4.2.3}
+设 $\{F_i\to F\}$ 是 $\widehat{\mathcal C}$ 中的一族\Term{morphism}{态射}，$G\subset F$ 为此族的\Term{image}{像}（4.1.2）。若 $G\in J(F)$，则称此族为\Term{covering-family}{覆盖族}。若仅由某一\Term{morphism}{态射}组成的族是\Term{covering-family}{覆盖族}，则称该\Term{morphism}{态射}为\Term{covering-morphism}{覆盖态射}。
+\end{SGAresult}
+此定义特别适用于包含映射：$S$ 的一个\Term{sieve}{筛} $C$ 是\Term{covering-sieve}{覆盖筛}，当且仅当\Term{canonical}{典范}\Term{morphism}{态射} $C\to S$ 是\Term{covering-morphism}{覆盖态射}。
+公理（T$'$ 0）至（T$'$ 5）蕴含\Term{covering-family}{覆盖族}的以下性质：
+\begin{enumerate}
+\item[（C 0）] 设 $\{F_i\to F\}$ 是 $\widehat{\mathcal C}$ 中的一族\Term{morphism}{态射}。若对每个\Term{representable}{可表}\Term{base-change}{基变换} $S\to F$，族 $\{F_i\times_F S\to S\}$ 都是\Term{covering-family}{覆盖族}，则原来的族也是\Term{covering-family}{覆盖族}。
+\item[（C 1）] 对每个\Term{covering-family}{覆盖族} $\{F_i\to F\}$ 和每个\Term{morphism}{态射} $G\to F$，族 $\{F_i\times_F G\to G\}$ 是\Term{covering-family}{覆盖族}（“\Term{base-change}{基变换}下的\Term{stable}{稳定}性”）。
+\item[（C 2）] 若 $\{F_i\to F\}$ 是\Term{covering-family}{覆盖族}，且对每个 $i$，$\{F_{ij}\to F_i\}$ 是\Term{covering-family}{覆盖族}，则合成族 $\{F_{ij}\to F\}$ 是\Term{covering-family}{覆盖族}（“合成下的\Term{stable}{稳定}性”）。
+\item[（C 3）] 若 $\{G_j\to F\}$ 是\Term{covering-family}{覆盖族}，而 $\{F_i\to F\}$ 是终点为 $F$ 的一族\Term{morphism}{态射}，并且对每个 $j$，都存在某个 $i$ 使 $G_j\to F$ 通过 $F_i\to F$ \Term{resolution}{分解}，则 $\{F_i\to F\}$ 是\Term{covering-family}{覆盖族}（“\Term{saturation}{饱和性}”）。
+\item[（C 4）] 仅由一个\Term{isomorphism}{同构}组成的每个族都是\Term{covering-family}{覆盖族}。
+\end{enumerate}
+注意，（C 2）和（C 3）还蕴含：
+\SourcePage{207}
+\begin{enumerate}
+\item[（C 5）] 若 $\{F_i\to F\}$ 是终点为 $F$ 的一族\Term{morphism}{态射}，且存在\Term{covering-family}{覆盖族} $\{G_j\to F\}$，使得对每个 $j$，族 $\{F_i\times_F G_j\to G_j\}$ 都是\Term{covering-family}{覆盖族}，则族 $\{F_i\to F\}$ 是\Term{covering-family}{覆盖族}（“\Term{local-scheme}{局部}\Term{covering-family}{覆盖}的族即为\Term{covering-family}{覆盖族}”）。
+\end{enumerate}
+\textbf{4.2.4。}反之，设 $\mathcal C$ 是具有\Term{fiber-product}{纤维积}的\Term{category}{范畴}；对每个 $S\in\operatorname{Ob}\mathcal C$ 给定若干终点为 $S$ 的 $\mathcal C$ 中的\Term{morphism}{态射}族，称为\Term{covering-family}{覆盖族}，且此资料满足公理（C 1）至（C 4）（从而也满足其推论（C 5））。对每个 $S\in\operatorname{Ob}\mathcal C$，令 $J(S)$ 为所有具有\Term{covering-family}{覆盖}\Term{sieve-basis}{基}的 $S$ 的\Term{sieve}{筛}的\Term{set}{集合}（由（C 3），这\Term{equivalence}{等价}于其所有\Term{sieve-basis}{基}均\Term{covering-family}{覆盖}）。则 $S\mapsto J(S)$ 定义 $\mathcal C$ 上的一个\Term{topology}{拓扑}。上述两个构造互逆。
+
+实际应用中考虑全部\Term{covering-family}{覆盖族}并不方便，因为有时我们可以相当简单地描述“足够多”的这类族。这引出以下定义。
+\begin{SGAresult}{定义}{4.2.5.0}
+\footnote{编者注（22）：我们将此定义（原文置于 4.2.5 之后）移至这里，因为在 6.2.1 中将用于比 4.2.5 略为一般的框架。}设 $\mathcal C$ 是一个\Term{category}{范畴}。假设对每个 $S\in\operatorname{Ob}\mathcal C$，给定终点为 $S$ 的 $\mathcal C$ 中的\Term{morphism}{态射}族所成的\Term{set}{集合} $P(S)$。称使给定各族均为\Term{covering-family}{覆盖族}的最粗\Term{topology}{拓扑}为 $P$ 所生成的\Term{topology}{拓扑}。
+\end{SGAresult}
+\begin{SGAresult}{定义}{4.2.5}
+设 $\mathcal C$ 是一个\Term{category}{范畴}。$\mathcal C$ 上的一个\Term{pretopology}{预拓扑}，是指对每个 $S\in\operatorname{Ob}\mathcal C$ 给定终点为 $S$ 的\Term{morphism}{态射}族 $\{S_i\to S\}$ 所成的\Term{set}{集合} $R(S)$，其中的族称为所考虑的\Term{pretopology}{预拓扑}的\Term{covering-family}{覆盖族}，并满足下述公理：
+\begin{enumerate}
+\item[（P 1）] 对每个 $\{S_i\to S\}\in R(S)$ 及每个\Term{morphism}{态射} $T\to S$，\Term{fiber-product}{纤维积} $S_i\times_S T$ 存在，且 $\{S_i\times_S T\to T\}\in R(T)$。
+\item[（P 2）] 若 $\{S_i\to S\}\in R(S)$，且对每个 $i$ 有 $\{T_{ij}\to S_i\}\in R(S_i)$，则合成族 $\{T_{ij}\to S\}$ 属于 $R(S)$。
+\item[（P 3）] 仅由一个\Term{isomorphism}{同构}组成的每个族都是\Term{covering-family}{覆盖族}。
+\end{enumerate}
+\end{SGAresult}
+\begin{SGAresult}{命题}{4.2.6}
+对每个 $S$，以 $J(S)$ 表示对于\Term{pretopology}{预拓扑} $R$ 所生成的\Term{topology}{拓扑}为\Term{covering-sieve}{覆盖筛}的所有 $S$ 的\Term{sieve}{筛}组成的\Term{set}{集合}。设 $J_R(S)$ 是 $J(S)$ 中由 $R(S)$ 中的族定义的\Term{sieve}{筛}所成的\Term{subset}{子集}。则 $J_R(S)$ 在 $J(S)$ 中\Term{cofinal}{共尾}：$S$ 的每个\Term{refinement}{加细}都包含由 $R(S)$ 中某个族所定义的\Term{sieve}{筛}。
+\end{SGAresult}
+\begin{proof}
+对每个 $S$，令 $J'(S)$ 为包含 $J_R(S)$ 中某个\Term{sieve}{筛}的所有 $S$ 的\Term{sieve}{筛}组成的\Term{set}{集合}。显然 $J'(S)\subset J(S)$。为证明 $J(S)=J'(S)$，只须证明 $J'(S)$ 定义 $\mathcal C$ 上的一个\Term{topology}{拓扑}，即满足（T 1）至（T 4）。其中（T 1）、（T 3）、（T 4）显然成立。只剩下（T 2）。\footnote{编者注（23）：下文已改正原文的若干排印错误。}
+
+于是设 $U\in J'(S)$，$C$ 是 $S$ 的一个\Term{sieve}{筛}；假设对每个 $T\to U$，\Term{sieve}{筛} $C\times_S T$ 属于 $J'(T)$，须证明 $C\in J'(S)$。由 $J'$ 的定义，$U$ 包含某个由 $\{S_i\to S\}\in R(S)$ 定义的\Term{refinement}{加细} $U'$。
+\SourcePage{208}
+由于已经验证（T 3），只须证明 $U'\cap C\in J'(S)$，因而可以假设 $U=U'$。由假设，对每个 $i$，有 $C\times_S S_i\in J'(S_i)$；所以对每个 $i$ 都存在\Term{covering-family}{覆盖族} $\{T_{ij}\to S_i\}\in R(S_i)$，使 $T_{ij}\to S_i$ 通过 $C\times_S S_i\to S_i$ \Term{resolution}{分解}。于是\Term{morphism}{态射} $T_{ij}\to S$ 通过 $C\to S$ \Term{resolution}{分解}，这说明 $C$ 包含由合成族 $\{T_{ij}\to S\}$ 定义的\Term{sieve}{筛}，由（P 2）即得结论。
+\end{proof}
+公理（P 1）至（P 3）正是 [MA] 中的公理。鉴于\Term{pretopology}{预拓扑}在实际中的\Term{action}{作用}，我们将借助定义给定\Term{topology}{拓扑}的一个\Term{pretopology}{预拓扑}来解释每一个重要结果。
+
+\textbf{注记 4.2.7。}还可以引入稍一般的概念：对每个 $S$ 给定若干满足（P 1）、（P 3）及命题 4.2.6 的\Term{covering-family}{覆盖族}。特别地，给定各族满足（P 1）、（P 3）和（C 5）时便是如此。读者可参阅 [D]。
+\begin{SGAresult}{定义}{4.2.8}
+设 $\mathcal C$ 带有一个\Term{topology}{拓扑}，$S$ 是 $\mathcal C$ 的一个\Term{object}{对象}。设 $P(S')$ 是一个以 $S'\in\operatorname{Ob}\mathcal C_{/S}$ 为变元的关系。假设 $\operatorname{Hom}(S'',S')\ne\varnothing$ 蕴含 $P(S')\Rightarrow P(S'')$。若以下\Term{equivalence}{等价}条件成立，则称 $P$ 对于所考虑的\Term{topology}{拓扑}在 $S$ 上\Term{locally}{局部成立}：
+\begin{enumerate}
+\item[(i)] 使 $P(S')$ 成立的所有 $S'\to S$ 组成的\Term{set}{集合}是 $S$ 的一个\Term{refinement}{加细}；
+\item[(ii)] 存在 $S$ 的一个\Term{refinement}{加细}，使其中每个 $S'$ 都满足 $P(S')$；
+\item[(iii)] （若给定\Term{topology}{拓扑}由一个\Term{pretopology}{预拓扑}定义。）存在该\Term{pretopology}{预拓扑}的一个\Term{covering-family}{覆盖族}，使其中每个 $S'$ 都满足 $P(S')$。
+\end{enumerate}
+\end{SGAresult}
+\textbf{例 4.2.9。}设 $f:X\to Y$ 是一个 $S$-\Term{morphism}{态射}。若存在\Term{covering-family}{覆盖族} $\{S_i\to S\}$，使每个 $f\times_S S_i$ 都是\Term{isomorphism}{同构}，则称 $f$ \Term{locally}{局部地}是\Term{isomorphism}{同构}。这\Term{equivalence}{等价}于要求存在 $S$ 的一个\Term{refinement}{加细} $R$，使对每个 $T\to R$，映射 $X(T)\to Y(T)$ 都是\Term{isomorphism}{同构}。
+下文还会有许多使用“\Term{locally}{局部}”这一说法的例子。
+
+\SGAsection{4.3}{预层、层及预层的伴随层}
+\begin{SGAresult}{定义}{4.3.1}
+设 $\mathcal C$ 是一个\Term{category}{范畴}。$\mathcal C$ 上的一个\Term{set}{集合}\Term{presheaf}{预层}，是指从 $\mathcal C$ 到\Term{set}{集合}\Term{category}{范畴}的任意\Term{contravariant-functor}{反变函子}。\Term{category}{范畴} $\widehat{\mathcal C}=\operatorname{Hom}(\mathcal C^{\circ},(\mathrm{Ens}))$ 称为 $\mathcal C$ 上的\Term{presheaf}{预层}\Term{category}{范畴}。若 $\mathcal C$ 带有\Term{topology}{拓扑}，并且对每个 $S\in\operatorname{Ob}\mathcal C$ 和每个 $R\in J(S)$，\Term{canonical}{典范}映射
+\[
+P(S)=\operatorname{Hom}(S,P)\longrightarrow\operatorname{Hom}(R,P)\tag{+}
+\]
+是\Term{injectivity}{单射}（相应地，\Term{bijection}{双射}），则称\Term{presheaf}{预层} $P$ \Term{separated-presheaf}{分离}（相应地，是\Term{sheaf}{层}）。以所有\Term{sheaf}{层}为\Term{object}{对象}的 $\widehat{\mathcal C}$ 的\Term{full-subcategory}{满子范畴}称为\Term{sheaf}{层}\Term{category}{范畴}，记作 $\widetilde{\mathcal C}$。\footnote{编者注（24）：注意，若 $Q$ 是\Term{separated-presheaf}{分离}\Term{presheaf}{预层} $P$ 的\Term{presheaf}{子预层}，则 $Q$ 也是\Term{separated-presheaf}{分离}的。事实上，对 $S$ 的每个\Term{sieve}{筛} $R$，合成映射 $Q(S)\hookrightarrow P(S)\hookrightarrow P(R)$ 是\Term{injectivity}{单射}，且通过 $Q(S)\to Q(R)$ \Term{resolution}{分解}。}
+\end{SGAresult}
+\SourcePage{209}
+\begin{SGAresult}{命题}{4.3.2}
+设 $P$ 是一个\Term{separated-presheaf}{分离}\Term{presheaf}{预层}（相应地，一个\Term{sheaf}{层}）。则对任意\Term{functor}{函子} $H\in\operatorname{Ob}\widehat{\mathcal C}$ 及每个 $R\in J(H)$，\Term{canonical}{典范}映射
+\[
+\operatorname{Hom}(H,P)\longrightarrow\operatorname{Hom}(R,P)\tag{+}
+\]
+为\Term{injectivity}{单射}（相应地，\Term{bijection}{双射}）。
+\end{SGAresult}
+\begin{proof}
+事实上，设 $P$ 是\Term{separated-presheaf}{分离}\Term{presheaf}{预层}，$H$ 是\Term{presheaf}{预层}，$R\in J(H)$，且 $u,v:H\to P$ 满足 $uj=vj$。对每个 $f:S\to H$，其中 $S\in\operatorname{Ob}\mathcal C$，$R\times_H S$ 是 $S$ 的\Term{refinement}{加细}，且 $ufj_S=vfj_S$：
+\[
+\begin{tikzcd}
+&R\arrow[r,"j"]&H\arrow[r,shift left=.5ex,"u"]\arrow[r,shift right=.5ex,"v"']&P\\
+R\times_H S\arrow[ur,"f_R"]\arrow[r,"j_S"']&S\arrow[ur,"f"']&&
+\end{tikzcd}
+\]
+由 $P$ \Term{separated-presheaf}{分离}，得 $uf=vf$。这对所有\Term{representable}{可表}的 $S$ 均成立，故 $u=v$。
+
+现在假设 $P$ 是\Term{sheaf}{层}。设 $g:R\to P$，证明它通过 $H$ \Term{resolution}{分解}。对每个 $f:S\to H$，其中 $S\in\operatorname{Ob}\mathcal C$，$g\circ f_R:R\times_H S\to P$ 唯一地通过 $S$ \Term{resolution}{分解}，因而定义一个\Term{morphism}{态射} $h:S\to P$；由唯一性，它显然关于 $f$ 具有\Term{functorial}{函子性}：
+\[
+\begin{tikzcd}[column sep=large]
+R\times_H S\arrow[r,"f_R"]\arrow[d,"j_S"']&R\arrow[r,"g"]\arrow[d,"j"]&P\\
+S\arrow[r,"f"']\arrow[urr,bend right=25,"h"']&H\arrow[ur,dashed]&
+\end{tikzcd}
+\]
+于是对每个 $S$，我们定义了一个关于 $S$ 具有\Term{functorial}{函子性}的从 $H(S)$ 到 $P(S)$ 的映射，因而得到从 $H$ 到 $P$ 的\Term{morphism}{态射}，且它确实满足所要求的条件。
+\end{proof}
+\begin{SGAresult}{推论}{4.3.2.1}
+\footnote{编者注（25）：我们补入了此推论。}设 $R,F$ 是两个\Term{sheaf}{层}。若 $R$ 是 $F$ 的\Term{refinement}{加细}，则 $R=F$。
+\end{SGAresult}
+\begin{proof}
+事实上，假设 $R$ 是 $F$ 的\Term{refinement}{加细}，以 $j$ 表示包含映射 $R\hookrightarrow F$。由 4.3.2，有 $\operatorname{Hom}(F,R)=\operatorname{End}(R)$，故存在 $\pi:F\to R$ 使 $\pi\circ j=\mathrm{id}_R$。同样有 $\operatorname{End}(F)=\operatorname{Hom}(R,F)$，由 $j\circ\pi\circ j=j$ 得 $j\circ\pi=\mathrm{id}_F$，所以 $j$ 是\Term{isomorphism}{同构}。
+\end{proof}
+\begin{SGAresult}{命题}{4.3.3（[AS], 1.3）}
+设 $\mathcal C$ 是一个\Term{category}{范畴}，$P$ 是 $\mathcal C$ 上的\Term{presheaf}{预层}。对每个 $S\in\operatorname{Ob}\mathcal C$，以 $J(S)$ 表示满足以下条件的 $S$ 的\Term{sieve}{筛} $R$ 所成的\Term{set}{集合}：对每个 $T\to S$，映射
+\[
+\operatorname{Hom}(T,P)\longrightarrow\operatorname{Hom}(R\times_S T,P)\tag{+}
+\]
+\SourcePage{210}
+是\Term{injectivity}{单射}（相应地，\Term{bijection}{双射}）。则 $J(S)$ 定义 $\mathcal C$ 上的一个\Term{topology}{拓扑}，即满足公理（T 1）至（T 4）。
+\end{SGAresult}
+\begin{SGAresult}{推论}{4.3.4}
+设对每个 $S\in\operatorname{Ob}\mathcal C$，$K(S)$ 是满足（T 1）的一族\Term{sieve}{筛}。设 $P$ 是 $\mathcal C$ 上的\Term{presheaf}{预层}。它对于 $K(S)$ 所生成的\Term{topology}{拓扑}为\Term{separated-presheaf}{分离}\Term{presheaf}{预层}（相应地，\Term{sheaf}{层}）的充要条件是：对每个 $S\in\operatorname{Ob}\mathcal C$ 和每个 $R\in K(S)$，\Term{canonical}{典范}映射
+\[
+\operatorname{Hom}(S,P)\longrightarrow\operatorname{Hom}(R,P)\tag{+}
+\]
+是\Term{injectivity}{单射}（相应地，\Term{bijection}{双射}）。
+\end{SGAresult}
+\begin{SGAresult}{推论}{4.3.5}
+设对每个 $S\in\operatorname{Ob}\mathcal C$，$R(S)$ 是 $\mathcal C$ 中终点为 $S$ 的一族\Term{morphism}{态射}族，满足（P 1）（例如定义一个\Term{pretopology}{预拓扑}）。设 $P$ 是 $\mathcal C$ 上的\Term{presheaf}{预层}。$P$ 对于 $R$ 所生成的\Term{topology}{拓扑}是\Term{separated-presheaf}{分离}\Term{presheaf}{预层}（相应地，\Term{sheaf}{层}）的充要条件是：对每个 $S\in\operatorname{Ob}\mathcal C$ 和每个族 $\{S_i\to S\}\in R(S)$，映射
+\[
+P(S)\longrightarrow\prod_i P(S_i)
+\]
+是\Term{injectivity}{单射}（相应地，图
+\[
+P(S)\longrightarrow\prod_iP(S_i)\rightrightarrows\prod_{i,j}P(S_i\times_S S_j)
+\]
+\Term{exact}{正合}）。
+\end{SGAresult}
+\begin{SGAresult}{定义}{4.3.6}
+设 $\mathcal C$ 是一个\Term{category}{范畴}。使所有\Term{representable}{可表}\Term{functor}{函子}均为\Term{sheaf}{层}的最细\Term{topology}{拓扑}，称为 $\mathcal C$ 上的\Term{canonical-topology}{典范拓扑}。
+\end{SGAresult}
+\begin{SGAresult}{推论}{4.3.7}
+$S$ 的一个\Term{sieve}{筛} $R$ 是\Term{canonical-topology}{典范拓扑}的\Term{refinement}{加细}的充要条件是：对 $\mathcal C$ 中每个\Term{morphism}{态射} $T\to S$ 和每个 $X\in\operatorname{Ob}\mathcal C$，\Term{canonical}{典范}映射
+\[
+\operatorname{Hom}(T,X)\longrightarrow\operatorname{Hom}(R\times_S T,X)
+\]
+是\Term{bijection}{双射}。
+\end{SGAresult}
+\begin{SGAresult}{定义}{4.3.8}
+对于\Term{canonical-topology}{典范拓扑}为\Term{covering-sieve}{覆盖筛}的\Term{sieve}{筛}，称为\Term{universal-effective-epimorphic-sieve}{泛有效满筛}。
+\end{SGAresult}
+\begin{SGAresult}{推论}{4.3.9}
+\Term{universal-effective-epimorphic-family}{泛有效满态射族}定义一个\Term{universal-effective-epimorphic-sieve}{泛有效满筛}。反之，定义一个\Term{universal-effective-epimorphic-sieve}{泛有效满筛}的每个\Term{quarrable}{可作基变换}的族，都是\Term{universal-effective-epimorphic-family}{泛有效满态射族}。
+\end{SGAresult}
+回到 $\mathcal C$ 带有任意\Term{topology}{拓扑}的情形，来构造\Term{presheaf}{预层} $P$ 的\Term{associated-sheaf}{伴随层}。设 $S$ 是 $\mathcal C$ 的一个\Term{object}{对象}。
+\SourcePage{211}
+若 $R\supset R'$ 是 $S$ 的两个\Term{refinement}{加细}，则有图
+\[
+\begin{tikzcd}
+\operatorname{Hom}(S,P)\arrow[r]\arrow[dr]&\operatorname{Hom}(R,P)\arrow[d]\\
+&\operatorname{Hom}(R',P).
+\end{tikzcd}
+\]
+如前所述，\Term{ordered-set}{有序集} $J(S)$ 是\Term{filtered}{滤过}的。由于 $S\in J(S)$，有显然的\Term{morphism}{态射}
+\[
+\operatorname{Hom}(S,P)\longrightarrow\varinjlim_{R\in J(S)}\operatorname{Hom}(R,P).
+\]
+\begin{SGAresult}{定义}{4.3.10.0}
+\footnote{编者注（26）：为便于后文引用，我们补上了编号 4.3.10.0。另一方面，由定义可得，若 $Q\to P$ 是\Term{monomorphism}{单态射}，则 $LP\to LQ$ 也是\Term{monomorphism}{单态射}；所以 $L$“保持\Term{monomorphism}{单态射}”（另见 4.3.16 的更一般结果：$L$“与\Term{finite}{有限}\Term{projective-limit}{投射极限}可交换”）。}令
+\[
+\check H^0(S,P)=\varinjlim_{R\in J(S)}\operatorname{Hom}(R,P).
+\]
+可以验证，$\check H^0(S,P)$ 关于 $S$ 具有\Term{functorial}{函子性}，因而由
+\[
+\operatorname{Hom}(S,LP)=\check H^0(S,P)=\varinjlim_{R\in J(S)}\operatorname{Hom}(R,P)\tag{++}
+\]
+定义一个\Term{functor}{函子} $LP$。按构造有\Term{morphism}{态射}
+\[
+\ell_P:P\longrightarrow LP,\qquad
+z_R:\operatorname{Hom}(R,P)\longrightarrow\operatorname{Hom}(S,LP).
+\]
+\end{SGAresult}
+\begin{SGAresult}{\Term{lemma}{引理}}{4.3.10}
+\begin{enumerate}
+\item[(i)] 对 $S$ 的每个\Term{refinement}{加细} $R$ 及每个 $u:R\to P$，图
+\[
+\begin{tikzcd}
+P\arrow[r,"\ell_P"]&LP\\
+R\arrow[u,"u"]\arrow[r,"i_R"']&S\arrow[u,"z_R(u)"']
+\end{tikzcd}
+\]
+交换。
+\item[(ii)] 对每个\Term{morphism}{态射} $v:S\to LP$，存在 $S$ 的一个\Term{refinement}{加细} $R$ 及\Term{morphism}{态射} $u:R\to P$，使 $v=z_R(u)$。
+\item[(iii)] 设 $Q$ 是一个\Term{functor}{函子}，$u,v:Q\to P$ 满足 $\ell_Pu=\ell_Pv$。则二元组 $(u,v)$ 的\Term{kernel}{核}是 $Q$ 的一个\Term{refinement}{加细}。
+\item[(iv)] 设 $u:R\to P$、$u':R'\to P$。$z_R(u)=z_{R'}(u')$ 的充要条件是，存在 $S$ 的一个\Term{refinement}{加细} $R''\subset R\cap R'$，使 $u$ 和 $u'$ 在 $R''$ 上相同。
+\end{enumerate}
+\end{SGAresult}
+\SourcePage{212}
+\begin{proof}
+(i) 须验证 $z_R(u)i_R=\ell_Pu$。为此，只须验证这两个\Term{morphism}{态射}与每个\Term{morphism}{态射} $g:T\to R$ 的合成相等，其中 $T$ \Term{representable}{可表}。考虑 $f=i_Rg$ 及\Term{fiber-product}{纤维积} $R'=R\times_S T$：\footnote{编者注（27）：以 $p$ 表示\Term{projection}{投影} $R'\to R$。由于 $i_R$ 是\Term{monomorphism}{单态射}，有 $p=gi_{R'}$。设 $g'$ 是由 $g$ 定义的 $i_{R'}$ 的\Term{section}{截面}，则 $pg'=g$，所以 $pg'i_{R'}=gi_{R'}=p$；由此得 $g'i_{R'}=\mathrm{id}_{R'}$，所以 $i_{R'}:R'\to T$ 是\Term{isomorphism}{同构}，其逆为 $g'$。}
+\[
+\begin{tikzcd}
+P\arrow[r,"\ell_P"]&LP\\
+R\arrow[u,"u"]\arrow[r,"i_R"]&S\arrow[u,"z_R(u)"']\\
+R'\arrow[u,"p"]\arrow[r,"i_{R'}"',"\sim"]&T\arrow[u,"f"']\arrow[ul,"g"]
+\end{tikzcd}
+\]
+由 $\ell_P$ 的定义，有 $\ell_Pug=z_R(u)f$（这是待证命题中 $i_R$ 为\Term{isomorphism}{同构}的特例），而 $z_R(u)f=z_R(u)i_Rg$。
+
+(ii) 和 (iv) 只是将 $\operatorname{Hom}(S,LP)$ 作为\Term{inductive-limit}{归纳极限}的定义改换说法。
+
+(iii) 若 $K$ 是二元组 $(u,v)$ 的\Term{kernel}{核}，则对每个\Term{morphism}{态射} $f:S\to Q$，其中 $S$ \Term{representable}{可表}，$K\times_Q S$ 是\Term{arrow}{箭头}对 $uf,vf:S\to P$ 的\Term{kernel}{核}的\Term{subfunctor}{子函子}。由（T$'$ 0），归结为证明 $Q=S$ \Term{representable}{可表}的情形。此时由 (ii) 和 (iv)，$K$ 包含 $S$ 的一个\Term{refinement}{加细}，故本身就是 $S$ 的\Term{refinement}{加细}。
+\end{proof}
+最后可以验证，$P\mapsto LP$ 定义\Term{functor}{函子}
+\[
+L:\widehat{\mathcal C}\longrightarrow\widehat{\mathcal C},
+\]
+且 $P\mapsto\ell_P$ 定义\Term{functor}{函子}的\Term{morphism}{态射}
+\[
+\ell:\mathrm{Id}_{\widehat{\mathcal C}}\longrightarrow L.
+\]
+现陈述关键结果：
+\begin{SGAresult}{命题}{4.3.11}
+\begin{enumerate}
+\item[(i)] 若 $P$ 是任意\Term{presheaf}{预层}，则 $LP$ \Term{separated-presheaf}{分离}，且 $\ell_P:P\to LP$ 是\Term{covering-morphism}{覆盖态射}（4.2.3）。
+\item[(ii)] 若 $P$ 是\Term{sheaf}{层}，则 $P\to LP$ 是\Term{isomorphism}{同构}。
+\item[(iii)] 对每个\Term{presheaf}{预层} $P$ 和每个\Term{separated-presheaf}{分离}\Term{presheaf}{预层}（相应地，\Term{sheaf}{层}）$F$，映射
+\[
+\operatorname{Hom}(\ell_P,F):\operatorname{Hom}(LP,F)\longrightarrow\operatorname{Hom}(P,F)
+\]
+为\Term{injectivity}{单射}（相应地，\Term{bijection}{双射}）。
+\item[(iv)] 若 $P$ \Term{separated-presheaf}{分离}，则 $\ell_P:P\to LP$ 是\Term{covering-morphism}{覆盖}\Term{monomorphism}{单态射}（所以 $P$ 是 $LP$ 的一个\Term{refinement}{加细}），且 $LP$ 是\Term{sheaf}{层}。
+\end{enumerate}
+\end{SGAresult}
+\SourcePage{213}
+\begin{proof}
+(i) 首先，$P\to LP$ 是\Term{covering-morphism}{覆盖态射}。事实上，对每个\Term{morphism}{态射} $v:S\to LP$，由 4.3.10 (i)、(ii)，存在 $S$ 的一个\Term{refinement}{加细} $R$，使得有\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}
+&P\arrow[r,"\ell_P"]&LP\\
+&P\times_{LP}S\arrow[u,"v'"]\arrow[r]&S\arrow[u,"v"']\\
+R\arrow[uur]\arrow[ur]\arrow[urr,"i_R"']&&
+\end{tikzcd}
+\]
+所以 $P\times_{LP}S\to S$ 是\Term{covering-morphism}{覆盖态射}。由（C 0），$P\to LP$ 是\Term{covering-morphism}{覆盖态射}。
+
+另一方面，若两个\Term{morphism}{态射} $v_1,v_2:S\to LP$ 在 $S$ 的某个\Term{refinement}{加细} $R$ 上诱导相同的\Term{morphism}{态射}，证明它们相等。存在\Term{refinement}{加细} $R_i$（$i=1,2$）及\Term{morphism}{态射} $u_i:R_i\to P$，使 $z_{R_i}(u_i)=v_i$。将 $R$ 取足够小，可以假设 $R_1=R_2=R$。由 4.3.10 (i) 的\Term{commutative-diagram}{交换图}得 $\ell_Pu_1=\ell_Pu_2$。由同处 (iii)，$u_1,u_2$ 在 $R$ 的某个\Term{refinement}{加细}上相同，该\Term{refinement}{加细}也是 $S$ 的\Term{refinement}{加细}；故由同处 (iv)，有 $z_R(u_1)=z_R(u_2)$。
+
+(ii) 显然，因为 $P$ 为\Term{sheaf}{层}时，对 $S$ 的每个\Term{refinement}{加细} $R$，$\operatorname{Hom}(S,P)\to\operatorname{Hom}(R,P)$ 已经是\Term{isomorphism}{同构}。
+
+(iii) 设 $u,v:LP\to F$ 满足 $u\ell_P=v\ell_P$。为证明 $u=v$，只须对每个 $f:S\to LP$（$S$ \Term{representable}{可表}）证明 $uf=vf$。存在 $S$ 的一个\Term{refinement}{加细} $R$ 及\Term{morphism}{态射} $g:R\to P$，使 $f=z_R(g)$。于是 $uf,vf$ 在 $R$ 上分别等于 $u\ell_Pg=v\ell_Pg$，因而在 $R$ 上相同。若 $F$ \Term{separated-presheaf}{分离}，便有 $uf=vf$。再假设 $F$ 是\Term{sheaf}{层}；有\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}
+P\arrow[r,"\ell_P"]\arrow[d]&LP\arrow[d]\arrow[dl,dashed]\\
+F\arrow[r,"\sim"']&LF,
+\end{tikzcd}
+\]
+这说明 $\operatorname{Hom}(\ell_P,F)$ 是\Term{surjectivity}{满射}。
+
+(iv) 证明若 $P$ \Term{separated-presheaf}{分离}，则 $P\to LP$ 是\Term{monomorphism}{单态射}。只须对满足 $\ell_Pu=\ell_Pv$ 的每一对\Term{morphism}{态射} $u,v:S\to P$（$S$ \Term{representable}{可表}）证明 $u=v$。而同处 (iii) 说明 $u,v$ 在 $S$ 的某个\Term{refinement}{加细}上相同，由 $P$ \Term{separated-presheaf}{分离}即知二者相同。这说明 $P\to LP$ 是\Term{monomorphism}{单态射}；由 (i) 它又是\Term{covering-morphism}{覆盖态射}，故 $P$ 是 $LP$ 的\Term{refinement}{加细}。
+
+最后证明 $LP$ 是\Term{sheaf}{层}。由 (i) 已知它是\Term{separated-presheaf}{分离}\Term{presheaf}{预层}，所以只须证明：对每个 $S\in\operatorname{Ob}\mathcal C$、$S$ 的每个\Term{refinement}{加细} $R$ 及每个\Term{morphism}{态射} $h:R\to LP$，存在\Term{morphism}{态射} $u:S\to LP$ 使 $ui_R=h$。因为 $P$ 是 $LP$ 的\Term{refinement}{加细}，$R'=P\times_{LP}R$ 是 $R$ 的\Term{refinement}{加细}，故也是
+\SourcePage{214}
+$S$ 的\Term{refinement}{加细}。令 $u=z_{R'}(h')$：
+\[
+\begin{tikzcd}
+P\arrow[r,"\ell_P"]&LP\\
+R'\arrow[u,"h'"]\arrow[r,"j"']&R\arrow[u,"h"']\arrow[r,"i_R"']&S\arrow[ul,"u"'].
+\end{tikzcd}
+\]
+有 $ui_{R'}=\ell_Ph'=hj$，从而 $ui_Rj=hj$。由于 $R'$ 是 $R$ 的\Term{refinement}{加细}且 $LP$ \Term{separated-presheaf}{分离}，由 4.3.2 得 $ui_R=h$。
+\end{proof}
+\begin{SGAresult}{推论}{4.3.12}
+\footnote{编者注（28）：我们展开了此推论的陈述和证明。}设 $F$ 是\Term{sheaf}{层}，$R$ 是 $F$ 的 $\widehat{\mathcal C}$-\Term{subobject}{子对象}。则 $R$ 是\Term{separated-presheaf}{分离}\Term{presheaf}{预层}，$\ell_R:R\to LR$ 是\Term{covering-morphism}{覆盖}\Term{monomorphism}{单态射}，并有\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}
+R\arrow[rr,hook,"i"]\arrow[dr,hook,"\ell_R"']&&F\\
+&LR\arrow[ur,hook,"j"']&.
+\end{tikzcd}
+\]
+因此，$R$ 是 $F$ 的\Term{refinement}{加细}，当且仅当 $j$ 是\Term{isomorphism}{同构}。
+\end{SGAresult}
+\begin{proof}
+我们已经指出 $R$ \Term{separated-presheaf}{分离}且 $j$ 是\Term{monomorphism}{单态射}，参见编者注（24）、（26）。由 4.3.11 (iv)，$\ell_R$ 是\Term{covering-morphism}{覆盖}\Term{monomorphism}{单态射}。所以若 $j$ 是\Term{isomorphism}{同构}，则 $R$ 是 $F$ 的\Term{refinement}{加细}。反之，若 $i$ 为\Term{covering-morphism}{覆盖态射}，则 $j$ 也是，因而由 4.3.2.1 为\Term{isomorphism}{同构}。
+\end{proof}
+\textbf{注记 4.3.13。}若 $J'(S)$ 是 $J(S)$ 的\Term{cofinal}{共尾}\Term{subset}{子集}，则有
+\[
+\operatorname{Hom}(S,LP)=\varinjlim_{R\in J'(S)}\operatorname{Hom}(R,P).
+\]
+特别地，设 $S\mapsto R(S)$ 是生成给定\Term{topology}{拓扑}的一个\Term{pretopology}{预拓扑}。\Term{functor}{函子} $L$ 可以用 $R(S)$ 中的\Term{covering-family}{覆盖族}来描述。将上述公式展开，即得到 [MA] 中的构造。
+
+以 $i$ 表示包含\Term{functor}{函子} $\widetilde{\mathcal C}\to\widehat{\mathcal C}$。由命题 4.3.11 得下述\Term{theorem}{定理}。
+\begin{SGAresult}{\Term{theorem}{定理}}{4.3.14}
+存在唯一\Term{functor}{函子} $a:\widehat{\mathcal C}\to\widetilde{\mathcal C}$，使下图交换：
+\[
+\begin{tikzcd}
+\widehat{\mathcal C}\arrow[r,"L"]\arrow[d,"a"']&\widehat{\mathcal C}\arrow[d,"L"]\\
+\widetilde{\mathcal C}\arrow[r,"i"']&\widehat{\mathcal C},
+\end{tikzcd}
+\]
+\SourcePage{215}
+即对每个\Term{presheaf}{预层} $P$，$L(L(P))$ 是\Term{sheaf}{层}。\Term{functor}{函子} $i,a$ 互为\Term{adjoint-functor}{伴随函子}：对每个\Term{presheaf}{预层} $P$ 和每个\Term{sheaf}{层} $F$，有关于 $P,F$ 的\Term{functorial}{函子性}\Term{isomorphism}{同构}
+\[
+\operatorname{Hom}_{\widehat{\mathcal C}}(P,i(F))\simeq\operatorname{Hom}_{\widetilde{\mathcal C}}(a(P),F),
+\]
+即
+\[
+\operatorname{Hom}(P,F)\simeq\operatorname{Hom}(a(P),F).
+\]
+\end{SGAresult}
+\begin{SGAresult}{定义}{4.3.15}
+\Term{sheaf}{层} $a(P)$ 称为\Term{presheaf}{预层} $P$ 的\Term{associated-sheaf}{伴随层}。
+\end{SGAresult}
+\textbf{注记 4.3.16。}由于\Term{functor}{函子} $L$ 用\Term{projective-limit}{投射极限}和\Term{filtered}{滤过}\Term{inductive-limit}{归纳极限}构造，它与\Term{finite}{有限}\Term{projective-limit}{投射极限}可交换。\footnote{编者注（29）：特别地，若 $K$ 是\Term{presheaf}{预层}的\Term{morphism}{态射}对 $u,v:Q\rightrightarrows P$ 的\Term{kernel}{核}，则 $LK$ 是 $Lu,Lv:LQ\rightrightarrows LP$ 的\Term{kernel}{核}（这一点将在 4.4.5 中使用）。}
+此外，将 $L(P\times P)$ 与 $LP\times LP$ 等同后，\Term{morphism}{态射} $\ell_{P\times P}$ 就等同于 $\ell_P\times\ell_P$。由此可得，例如，若 $P$ 是\Term{group}{群}\Term{presheaf}{预层}，则 $LP$ 也\Term{canonical}{典范}地带有\Term{group}{群}\Term{presheaf}{预层}结构，且\Term{canonical}{典范}\Term{morphism}{态射} $P\to LP$ 是\Term{group-morphism}{群态射}。\Term{functor}{函子} $a$ 也有同样的性质，故当 $P$ 是\Term{group}{群}\Term{presheaf}{预层}而 $F$ 是\Term{group}{群}\Term{sheaf}{层}时，有\Term{isomorphism}{同构}
+\[
+\operatorname{Hom}_{\widehat{\mathcal C}\text{-gr.}}(P,i(F))\simeq
+\operatorname{Hom}_{\widetilde{\mathcal C}\text{-gr.}}(a(P),F).
+\]
+更详细的说明见 [D]。
+
+\textbf{4.3.17。}若 $\mathcal V$ 是任意\Term{category}{范畴}，则称从 $\mathcal C$ 到 $\mathcal V$ 的\Term{contravariant-functor}{反变函子}为 $\mathcal C$ 上取值于 $\mathcal V$ 的\Term{presheaf}{预层}。为定义取值于 $\mathcal V$ 的\Term{sheaf}{层}，先回顾一个\Term{functor}{函子}的\Term{projective-limit}{投射极限}的定义。若 $\mathcal R,\mathcal V$ 是两个\Term{category}{范畴}，而
+\[
+F:\mathcal R^{\circ}\longrightarrow\mathcal V
+\]
+是从 $\mathcal R$ 到 $\mathcal V$ 的\Term{contravariant-functor}{反变函子}，则以 $\varprojlim F$ 表示如下定义的 $\widehat{\mathcal V}$ 的\Term{object}{对象}：
+\[
+(\varprojlim F)(X)=\operatorname{Hom}_{\widehat{\mathcal V}}(X,\varprojlim F)
+=\varprojlim_{U\in\operatorname{Ob}\mathcal R}\operatorname{Hom}_{\mathcal V}(F(U),X)
+=\operatorname{Hom}(c_X,F),
+\]
+其中 $X$ 遍历 $\mathcal V$ 的\Term{object}{对象}，$c_X$ 表示从 $\mathcal R$ 到 $\mathcal V$ 的\Term{contravariant-functor}{反变函子}，它将 $\mathcal R$ 的每个\Term{object}{对象}映到 $X$，将每个\Term{arrow}{箭头}映到 $\mathrm{id}_X$；最后一个 $\operatorname{Hom}$ 是在\Term{category}{范畴} $\operatorname{Hom}(\mathcal R^{\circ},\mathcal V)$ 中取的。若 $\mathcal R$ 有\Term{final-object}{终对象} $e_{\mathcal R}$，则 $\varprojlim F=F(e_{\mathcal R})$。若 $\mathcal V$ 是\Term{set}{集合}\Term{category}{范畴}，则\Term{functor}{函子} $\varprojlim$ 与\Term{functor}{函子} $\Gamma$ 等同。
+
+若 $S$ 是 $\mathcal C$ 的\Term{object}{对象}，$R$ 是 $S$ 的\Term{sieve}{筛}，以 $\mathcal R$ 表示 $\mathcal C_{/S}$ 中\Term{object}{对象}\Term{set}{集合}为 $E(R)$ 的\Term{full-subcategory}{满子范畴}，以 $i_R:\mathcal R\to\mathcal C_{/S}$ 表示\Term{canonical}{典范}\Term{functor}{函子}。若 $P$ 是 $\mathcal C$ 上取值于 $\mathcal V$ 的\Term{presheaf}{预层}，则它经\Term{restriction}{限制}给出\Term{functor}{函子} $P_S:(\mathcal C_{/S})^{\circ}\to\mathcal V$。\Term{functor}{函子} $i_R$ 诱导 $\widehat{\mathcal V}$ 中的一个\Term{morphism}{态射}：
+\[
+P(S)=P_S(S)=\varprojlim P_S\longrightarrow\varprojlim(P_S\circ i_R).
+\]
+\SourcePage{216}
+以 $\varprojlim_R P$ 表示 $\widehat{\mathcal V}$ 的\Term{object}{对象} $\varprojlim(P_S\circ i_R)$。根据 4.1.6，定义 4.3.1 推广为如下定义。
+\begin{SGAresult}{定义}{4.3.18}
+若对每个 $S\in\operatorname{Ob}\mathcal C$ 和每个 $R\in J(S)$，$\widehat{\mathcal V}$ 中的\Term{canonical}{典范}\Term{morphism}{态射}
+\[
+P(S)\longrightarrow\varprojlim_R P
+\]
+是\Term{monomorphism}{单态射}（相应地，\Term{isomorphism}{同构}），则称 $\mathcal C$ 上取值于 $\mathcal V$ 的\Term{presheaf}{预层} $P$ \Term{separated-presheaf}{分离}（相应地，是\Term{sheaf}{层}）。
+\end{SGAresult}
+若 $\mathcal V$ 是\Term{group}{群}\Term{category}{范畴} $(\mathrm{Gr.})$（或带有由\Term{finite}{有限}\Term{projective-limit}{投射极限}定义的\Term{algebraic-structure}{代数结构}的\Term{set}{集合}的任意其他\Term{category}{范畴}），则可以证明（参见 [D]），下列两种概念\Term{equivalence}{等价}：$\mathcal C$ 上取值于 $(\mathrm{Gr.})$ 且其底层\Term{set}{集合}\Term{presheaf}{预层}为\Term{sheaf}{层}的\Term{presheaf}{预层}；\Term{set}{集合}\Term{sheaf}{层}\Term{category}{范畴}中的\Term{group}{群}。基于这些等同，我们总将取值于带有由\Term{finite}{有限}\Term{projective-limit}{投射极限}定义的\Term{algebraic-structure}{代数结构}的\Term{set}{集合}\Term{category}{范畴}中的\Term{sheaf}{层}，视为在\Term{category}{范畴} $\widetilde{\mathcal C}$ 中带有相应\Term{algebraic-structure}{代数结构}的\Term{set}{集合}\Term{sheaf}{层}。
+
+\SGAsection{4.4}{层范畴的正合性质}
+\begin{SGAresult}{\Term{theorem}{定理}}{4.4.1}
+\begin{enumerate}
+\item[(i)] $\widetilde{\mathcal C}$ 中存在任意\Term{projective-limit}{投射极限}；“它们可在 $\widehat{\mathcal C}$ 中计算”，即包含\Term{functor}{函子} $i:\widetilde{\mathcal C}\to\widehat{\mathcal C}$ 与\Term{projective-limit}{投射极限}可交换：若 $(X_\alpha)$ 是\Term{sheaf}{层}的\Term{projective-system}{投射系}，则\Term{presheaf}{预层}
+\[
+\varprojlim i(X_\alpha):S\longmapsto\varprojlim X_\alpha(S)
+\]
+是\Term{sheaf}{层}，且 $i(\varprojlim X_\alpha)=\varprojlim i(X_\alpha)$。
+\item[(ii)] $\widetilde{\mathcal C}$ 中存在任意\Term{inductive-limit}{归纳极限}：若 $(X_\alpha)$ 是\Term{sheaf}{层}的\Term{inductive-system}{归纳系}，则有
+\[
+\varinjlim X_\alpha=a(\varinjlim i(X_\alpha)),
+\]
+其中 $\varinjlim i(X_\alpha)$ 是各 $i(X_\alpha)$ 的\Term{inductive-limit}{归纳极限}\Term{presheaf}{预层}：
+\[
+\varinjlim i(X_\alpha):S\longmapsto\varinjlim X_\alpha(S).
+\]
+\item[(iii)] \Term{functor}{函子} $a:\widehat{\mathcal C}\to\widetilde{\mathcal C}$ 与任意\Term{inductive-limit}{归纳极限}及\Term{finite}{有限}\Term{projective-limit}{投射极限}可交换。
+\end{enumerate}
+\end{SGAresult}
+断言 (i)、(ii) \Term{form}{形式}地由\Term{adjunction}{伴随}公式（4.3.14）得到，\footnote{编者注（30）：我们在此处修改了原文。}而 (iii) 的第一个断言由 (ii) 得到。最后，(iii) 的第二个断言已在 4.3.16 中指出。
+
+\textbf{评注 4.4.2。}这个\Term{theorem}{定理}容许使用下述方法来证明 $\widetilde{\mathcal C}$ 中同时涉及任意\Term{inductive-limit}{归纳极限}和\Term{finite}{有限}\Term{projective-limit}{投射极限}的断言（例如“每个\Term{epimorphism}{满态射}都是\Term{universal-effective-epimorphism}{泛有效满态射}”，见后文）。先在\Term{set}{集合}\Term{category}{范畴}中证明相应断言，再“逐个变元地”将它推广到\Term{presheaf}{预层}\Term{category}{范畴}。
+\SourcePage{217}
+然后用前述\Term{theorem}{定理}，从\Term{presheaf}{预层}\Term{category}{范畴}转到\Term{sheaf}{层}\Term{category}{范畴}。下文将见到许多运用这一方法的例子（4.4.3、4.4.6、4.4.9 等）。
+最后注意，有关\Term{presheaf}{预层}\Term{category}{范畴}的断言\Term{form}{形式}地是有关\Term{sheaf}{层}\Term{category}{范畴}的断言的推论。事实上，只须取最粗的\Term{topology}{拓扑}（“混沌\Term{topology}{拓扑}”），即由每个 $S\in\operatorname{Ob}\mathcal C$ 的 $J(S)=\{S\}$ 所定义的\Term{topology}{拓扑}；每个\Term{functor}{函子}对于这个\Term{topology}{拓扑}都是\Term{sheaf}{层}。
+\begin{SGAresult}{命题}{4.4.3}
+设 $\mathscr F=\{F_i\to F\}$ 是一族\Term{sheaf}{层}\Term{morphism}{态射}。下列条件\Term{equivalence}{等价}：
+\begin{enumerate}
+\item[(i)] $\mathscr F$ 是\Term{epimorphic-family}{满态射族}。
+\item[(ii)] $\mathscr F$ 是\Term{universal-effective-epimorphic-family}{泛有效满态射族}（1.13）。
+\item[(iii)] $\mathscr F$ 是\Term{covering-family}{覆盖族}（4.2.3）。
+\item[(iv)] $\mathscr F$ 的\Term{image-sheaf}{像层}（即 $\mathscr F$ 的\Term{image}{像}\Term{presheaf}{预层}（4.1.2）的\Term{associated-sheaf}{伴随层}）为 $F$。
+\end{enumerate}
+\end{SGAresult}
+(iii) 和 (iv) 的\Term{equivalence}{等价}性由 4.3.12 得到。其余\Term{equivalence}{等价}性将由下列\Term{lemma}{引理}得到。
+\begin{SGAresult}{\Term{lemma}{引理}}{4.4.4}
+设 $f:X\to Y$ 是\Term{sheaf}{层}的一个\Term{monomorphism}{单态射}，并且也是\Term{epimorphism}{满态射}。则 $f$ 是\Term{isomorphism}{同构}。
+\end{SGAresult}
+此\Term{lemma}{引理}在\Term{set}{集合}\Term{category}{范畴}中首先是显然的。再在\Term{presheaf}{预层}\Term{category}{范畴}中证明它。考虑\Term{presheaf}{预层}
+\[
+V:S\longmapsto Y(S)\amalg^{X(S)}Y(S);
+\]
+这是\Term{presheaf}{预层}\Term{category}{范畴}中两个 $Y$ 在 $X$ 下的\Term{amalgamated-sum}{融合和}。\footnote{编者注（31）：我们稍微修改了后面的证明。}以 $i_1,i_2$ 表示两个“坐标”\Term{morphism}{态射} $Y\to V$。若 $X\to Y$ 是\Term{presheaf}{预层}\Term{category}{范畴}中的\Term{epimorphism}{满态射}，则 $i_1=i_2$。此时，对每个 $S$，映射 $X(S)\to Y(S)$ 是\Term{surjectivity}{满射}；它又是\Term{injectivity}{单射}，故为\Term{bijection}{双射}，所以 $X\to Y$ 是\Term{isomorphism}{同构}。
+
+最后在\Term{sheaf}{层}\Term{category}{范畴} $\widetilde{\mathcal C}$ 中考虑。由 4.4.1 (ii)，$\widetilde{\mathcal C}$ 中两个\Term{sheaf}{层} $Y$ 在 $X$ 下的\Term{amalgamated-sum}{融合和}，是\Term{presheaf}{预层} $V$ 的\Term{associated-sheaf}{伴随层} $Z$。考虑\Term{morphism}{态射}图
+\[
+\begin{tikzcd}
+X\arrow[r,"f"]&Y\arrow[r,shift left=.6ex,"i_1"]\arrow[r,shift right=.6ex,"i_2"']&V\arrow[r,"\tau"]&Z=a(V).
+\end{tikzcd}
+\]
+有 $i_1f=i_2f$，从而 $\tau i_1f=\tau i_2f$；由于 $f$ 是 $\widetilde{\mathcal C}$ 中的\Term{epimorphism}{满态射}，得 $\tau i_1=\tau i_2$。由下述\Term{lemma}{引理}的 (iii)，\Term{presheaf}{预层} $V$ \Term{separated-presheaf}{分离}，所以 $\tau$ 是\Term{monomorphism}{单态射}（4.3.11 (iv)）。因此 $i_1=i_2$，前面已见这蕴含
+\SourcePage{218}
+$f:X\to Y$ 是\Term{isomorphism}{同构}。这样，只要验证 $V$ \Term{separated-presheaf}{分离}，\Term{lemma}{引理} 4.4.4 就得证。
+
+设 $R_{\varnothing}$ 是将每个 $S\in\operatorname{Ob}\mathcal C$ 映到空集的\Term{presheaf}{预层}；它是 $\widehat{\mathcal C}$ 的\Term{initial-object}{始对象}。\footnote{编者注（32）：我们改正了\Term{lemma}{引理} 4.4.5 的 (i)，并展开了三部分的证明。}
+\begin{SGAresult}{\Term{lemma}{引理}}{4.4.5}
+\begin{enumerate}
+\item[(i)] 假设对每个 $S\in\operatorname{Ob}\mathcal C$，有 $R_{\varnothing}\notin J(S)$。若 $(X_i)$ 是一族\Term{separated-presheaf}{分离}\Term{presheaf}{预层}，则\Term{direct-sum}{直和}\Term{presheaf}{预层} $\coprod_i X_i$ \Term{separated-presheaf}{分离}。\footnote{编者注（33）：一般地，两个\Term{sheaf}{层} $F,G$ 的\Term{direct-sum}{直和}不是\Term{sheaf}{层}。事实上，设 $S_1,S_2\in\operatorname{Ob}\mathcal C$，假设\Term{direct-sum}{直和} $S=S_1\amalg S_2$ 在 $\mathcal C$ 中存在，且\Term{fiber-product}{纤维积} $S_1\times_S S_2$ 是 $\mathcal C$ 的\Term{initial-object}{始对象} $\varnothing$（参见第 I 讲 1.8）。设 $R$ 是 $S$ 的以 $\{S_1,S_2\}$ 为\Term{sieve-basis}{基}的\Term{sieve}{筛}，则 $(F\amalg G)(R)$ 是 $F(S)\amalg G(S)$ 与 $i\ne j$ 时各 $F(S_i)\times G(S_j)$ 的\Term{disjoint-union}{不交并}，因此 $F\amalg G$ 一般不是\Term{sheaf}{层}。另一方面，若 $\mathcal C$ 是只有一个\Term{object}{对象} $S$ 且只有\Term{morphism}{态射} $\mathrm{id}_S$ 的\Term{category}{范畴}，带有由 $J(S)=\{R_{\varnothing},S\}$ 定义的\Term{topology}{拓扑}，则仅有的\Term{separated-presheaf}{分离}\Term{presheaf}{预层}是 $R_{\varnothing}$ 与 $X=h_S$（后者是\Term{sheaf}{层}），而 $X\amalg X$ 不\Term{separated-presheaf}{分离}。}
+\item[(ii)] 考虑\Term{presheaf}{预层}\Term{category}{范畴}中的\Term{equivalence-relation}{等价关系}
+\[
+\begin{tikzcd}X\arrow[r,shift left=.6ex,"u"]\arrow[r,shift right=.6ex,"v"']&Y\end{tikzcd}
+\]
+及其\Term{quotient}{商} $w:Y\to Z$。若 $X$ 是\Term{sheaf}{层}而 $Y$ \Term{separated-presheaf}{分离}，则 $Z$ \Term{separated-presheaf}{分离}。
+\item[(iii)] 考虑\Term{presheaf}{预层}\Term{category}{范畴}中的一个\Term{amalgamated-sum}{融合和}，其中 $u,u'$ 是\Term{monomorphism}{单态射}：
+\[
+\begin{tikzcd}
+&Y\arrow[dr]&\\
+X\arrow[ur,"u"]\arrow[dr,"u'"']&&V\\
+&Y'\arrow[ur]&.
+\end{tikzcd}
+\]
+若 $Y,Y'$ \Term{separated-presheaf}{分离}而 $X$ 是\Term{sheaf}{层}，则 $V$ \Term{separated-presheaf}{分离}。
+\end{enumerate}
+\end{SGAresult}
+\begin{proof}
+(i) 令 $X=\coprod_iX_i$。设 $S\in\operatorname{Ob}\mathcal C$，$\tau:R\hookrightarrow S$ 是 $S$ 的一个\Term{refinement}{加细}，$x_1,x_2\in X(S)$ 满足 $x_1\circ\tau=x_2\circ\tau$；存在指标 $i,j$ 使 $x_1\in X_i(S)$、$x_2\in X_j(S)$。由于 $R\ne R_{\varnothing}$，存在\Term{morphism}{态射} $\varphi:T\to R$，其中 $T\in\operatorname{Ob}\mathcal C$。于是 $x_1\circ\tau\circ\varphi=x_2\circ\tau\circ\varphi$；而 $X(T)$ 是各 $X_k(T)$ 的\Term{disjoint-union}{不交并}，这便蕴含 $i=j$。于是，由 $X_i$ \Term{separated-presheaf}{分离}且为 $X$ 的\Term{subobject}{子对象}，映射 $X_i(S)\to X_i(R)\to X(R)$ 是\Term{injectivity}{单射}，故 $x_1=x_2$。这证明了 $X$ \Term{separated-presheaf}{分离}。
+
+证明 (iii)。考虑\Term{morphism}{态射} $i:Y\to V$、$j:Y'\to V$，设 $K$ 为
+\[
+\begin{tikzcd}Y\times Y'\arrow[r,shift left=.5ex,"p"]\arrow[r,shift right=.5ex,"q"']&V\end{tikzcd}
+\]
+的\Term{kernel}{核}，其中 $p=i\circ\operatorname{pr}_1$，$q=j\circ\operatorname{pr}_2$。
+设 $S\in\operatorname{Ob}\mathcal C$。由于 $u,u'$ 是\Term{monomorphism}{单态射}，可将 $X(S)$ 与它在 $Y(S)$（相应地，$Y'(S)$）中的\Term{image}{像}等同；以 $Z(S)$（相应地，$Z'(S)$）表示其补集。
+\SourcePage{219}
+于是 $V(S)$ 等同于 $Z(S),Z'(S),X(S)$ 的\Term{disjoint-union}{不交并}；容易看出，映射 $i(S):Y(S)\to V(S)$、$j(S):Y'(S)\to V(S)$ 都是\Term{injectivity}{单射}，且映射
+\[
+(u\times u')(S):X(S)\longrightarrow K(S)
+\]
+为\Term{bijection}{双射}。因此，$i,j$ 是\Term{monomorphism}{单态射}，且 $u\times u':X\to K$ 是\Term{isomorphism}{同构}。
+
+令 $U=Y\amalg Y'$，设 $\tau:R\hookrightarrow S$ 是 $S$ 的一个\Term{refinement}{加细}；有\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}
+U(S)\arrow[r,"U(\tau)"]\arrow[d]&U(R)\arrow[d]\\
+V(S)\arrow[r,"V(\tau)"']&V(R).
+\end{tikzcd}
+\]
+设 $v_1,v_2\in V(S)$ 在 $V(R)$ 中的\Term{image}{像}相同。由 $V$ 的定义，$v_1,v_2$ \Term{liftable}{可提升}为 $U(S)$ 中的元素 $y_1,y_2$；以 $z_1,z_2$ 表示它们在 $U(R)$ 中的\Term{image}{像}。于是 $z_1,z_2$ 在 $V(R)$ 中具有相同的\Term{image}{像}。
+
+由于 $i:Y\to V$、$j:Y'\to V$ 是\Term{monomorphism}{单态射}，映射 $Y(R)\to V(R)$、$Y'(R)\to V(R)$ 都是\Term{injectivity}{单射}。所以，由 $Y,Y'$ \Term{separated-presheaf}{分离}，若 $y_1,y_2$ 同属于 $Y(S)$ 或同属于 $Y'(S)$，则 $y_1=y_2$。否则，可假设 $y_1\in Y(S)$、$y_2\in Y'(S)$，从而 $z_1\in Y(R)$、$z_2\in Y'(R)$。此时，由 $i\circ z_1=j\circ z_2$，\Term{morphism}{态射} $z_1\mathbin{\boxtimes}z_2:R\to Y\times Y'$ 通过 $K=X$ \Term{resolution}{分解}。又因 $X$ 是\Term{sheaf}{层}，有 $X(R)=X(S)$，所以存在 $x\in X(S)$，使 $u(x)\circ\tau=z_1=y_1\circ\tau$ 且 $u'(x)\circ\tau=z_2=y_2\circ\tau$；由 $Y,Y'$ \Term{separated-presheaf}{分离}，得 $u(x)=y_1$、$u'(x)=y_2$，故 $v_1=v_2$。这证明 $V$ \Term{separated-presheaf}{分离}。
+
+证明 (ii)。首先注意，\Term{presheaf}{预层}\Term{morphism}{态射}
+\[
+X\xrightarrow{u\mathbin{\boxtimes}v}K
+\]
+是\Term{isomorphism}{同构}，其中 $K$ 表示\Term{morphism}{态射}对 $w\circ\operatorname{pr}_i:Y\times Y\to Z$ 的\Term{kernel}{核}。事实上，对每个 $T\in\operatorname{Ob}\mathcal C$，$X(T)$ 是 $Y(T)$ 中的一个\Term{equivalence-relation}{等价关系}，所以图
+\[
+\begin{tikzcd}
+X(T)\arrow[r,"u\mathbin{\boxtimes}v"]&Y(T)\times Y(T)\arrow[r,shift left=.6ex,"w\circ\operatorname{pr}_1"]\arrow[r,shift right=.6ex,"w\circ\operatorname{pr}_2"']&Z(T)
+\end{tikzcd}
+\]
+在\Term{set}{集合}\Term{category}{范畴}中\Term{exact}{正合}。
+
+现在设 $S\in\operatorname{Ob}\mathcal C$，$g_1,g_2:S\to Z$ 是在 $S$ 的某个\Term{refinement}{加细} $\tau:R\hookrightarrow S$ 上相同的两个\Term{morphism}{态射}。由于 $S\in\operatorname{Ob}\mathcal C$，按 $Z$ 的构造有 $Z(S)=Y(S)/X(S)$，所以存在\Term{morphism}{态射} $f_1,f_2:S\to Y$，使 $wf_i=g_i$。
+于是 $wf_1\tau=wf_2\tau$，故由上文存在\Term{morphism}{态射} $\varphi:R\to X$，使 $u\varphi=f_1\tau$、$v\varphi=f_2\tau$。由于 $X$ 是\Term{sheaf}{层}，存在 $\psi:S\to X$ 使 $\varphi=\psi\tau$，因此在 $Y(R)$ 中有等式
+\[
+u\psi\tau=f_1\tau,\qquad v\psi\tau=f_2\tau.
+\]
+\SourcePage{220}
+由于 $Y(S)\to Y(R)$ 是\Term{injectivity}{单射}（$Y$ \Term{separated-presheaf}{分离}），得 $u\psi=f_1$、$v\psi=f_2$，由此 $g_1=g_2$。这证明 $Z$ \Term{separated-presheaf}{分离}。
+\end{proof}
+\begin{SGAresult}{\Term{lemma}{引理}}{4.4.6}
+\footnote{编者注（34）：我们展开了此\Term{lemma}{引理}的陈述和证明。}
+\begin{enumerate}
+\item[(i)] 设 $\{F_i\xrightarrow{f_i}F\}$ 是一族\Term{presheaf}{预层}\Term{morphism}{态射}，$G\subset F$ 是其\Term{image}{像}\Term{presheaf}{预层}。则 $\widehat{\mathcal C}$ 中的下图\Term{exact}{正合}：
+\[
+\begin{tikzcd}
+\coprod_iF_i\times_G\coprod_jF_j\arrow[r,shift left=.6ex,"\operatorname{pr}_1"]\arrow[r,shift right=.6ex,"\operatorname{pr}_2"']&\coprod_iF_i\arrow[r]&G,
+\end{tikzcd}
+\]
+即对每个\Term{presheaf}{预层} $H$，下述\Term{set}{集合}图\Term{exact}{正合}：
+\[
+\begin{tikzcd}[column sep=large]
+\operatorname{Hom}(G,H)\arrow[r]&\prod_i\operatorname{Hom}(F_i,H)\arrow[r,shift left=.6ex,"p"]\arrow[r,shift right=.6ex,"q"']&\prod_{i,j}\operatorname{Hom}(F_i\times_G F_j,H).
+\end{tikzcd}\tag{*}
+\]
+\item[(ii)] 每个\Term{sheaf}{层}\Term{morphism}{态射}的\Term{covering-family}{覆盖族}都是\Term{universal-effective-epimorphic-family}{泛有效满态射族}。
+\end{enumerate}
+\end{SGAresult}
+\begin{proof}
+(i) 设 $H$ 是\Term{presheaf}{预层}。将\Term{morphism}{态射} $\varphi:G\to H$ 映到\Term{morphism}{态射}族 $\varphi\circ f_i:F_i\to H$ 的映射 $f^*$ 是\Term{injectivity}{单射}；因为对每个 $S\in\operatorname{Ob}\mathcal C$，$\varphi(S)$ 由各 $(\varphi\circ f_i)(S)$ 决定，这是由于族 $f_i(S):F_i(S)\to G(S)$ 是\Term{surjectivity}{满射}的。显然 $f^*$ 的\Term{image}{像}包含在 $\operatorname{Ker}(p,q)$ 中。反之，设 $\varphi_i:F_i\to H$ 是一族\Term{morphism}{态射}，使得对每个 $i,j$，下图交换：
+\[
+\begin{tikzcd}
+F_i\times_G F_j\arrow[r]\arrow[d]&F_j\arrow[d,"\varphi_j"]\\
+F_i\arrow[r,"\varphi_i"']&H.
+\end{tikzcd}
+\]
+于是对每个 $S$，映射 $\coprod_iF_i(S)\to H(S)$ 唯一地\Term{resolution}{分解}为一个映射 $\varphi(S):G(S)\to H(S)$，从而定义\Term{morphism}{态射} $\varphi:G\to H$，使 $f^*(\varphi)=(\varphi_i)$。这证明了列 (*) 的\Term{exact}{正合}性及 (i)。
+
+证明 (ii)。由于\Term{covering-family}{覆盖族}的概念在\Term{base-extension}{基扩张}下\Term{stable}{稳定}，只须证明每个\Term{covering-family}{覆盖族}是\Term{effective-epimorphic-family}{有效满态射族}。于是设 $\{F_i\to F\}$ 是\Term{sheaf}{层}\Term{morphism}{态射}的\Term{covering-family}{覆盖族}，$G$ 是此族的\Term{image}{像}\Term{presheaf}{预层}。由此族\Term{covering-family}{覆盖}，\Term{monomorphism}{单态射} $G\hookrightarrow F$ 也是\Term{covering-morphism}{覆盖态射}，故由 4.3.12 有 $a(G)=F$。
+另一方面，由 $G\hookrightarrow F$ 是\Term{monomorphism}{单态射}，\Term{fiber-product}{纤维积} $F_i\times_G F_j$ 与 $F_i\times_F F_j$ 相同。因此，由 (i)，对每个\Term{presheaf}{预层} $H$，下述\Term{set}{集合}图\Term{exact}{正合}：
+\[
+\begin{tikzcd}[column sep=large]
+\operatorname{Hom}(G,H)\arrow[r]&\prod_i\operatorname{Hom}(F_i,H)\arrow[r,shift left=.6ex,"p"]\arrow[r,shift right=.6ex,"q"']&\prod_{i,j}\operatorname{Hom}(F_i\times_F F_j,H).
+\end{tikzcd}\tag{**}
+\]
+若 $H$ 还是\Term{sheaf}{层}，则有
+\[
+\operatorname{Hom}(G,H)=\operatorname{Hom}(a(G),H)=\operatorname{Hom}(F,H),
+\]
+\SourcePage{221}
+此时 (**) 说明 $\{F_i\to F\}$ 确为\Term{sheaf}{层}\Term{category}{范畴} $\widetilde{\mathcal C}$ 中的\Term{effective-epimorphic-family}{有效满态射族}。
+\end{proof}
+\begin{SGAresult}{\Term{lemma}{引理}}{4.4.7}
+每个\Term{sheaf}{层}\Term{morphism}{态射}族 $\{F_i\to F\}$ 都\Term{resolution}{分解}为\Term{covering-family}{覆盖族} $\{F_i\to G\}$ 后接一个\Term{monomorphism}{单态射} $G\to F$。
+\end{SGAresult}
+事实上，只须取 $G$ 为给定族的\Term{image-sheaf}{像层}。
+
+\textbf{命题 4.4.3 的证明。}由 4.4.6 已知 (iii) $\Rightarrow$ (ii)，显然又有 (ii) $\Rightarrow$ (i)。最后，设 $\{F_i\to F\}$ 是\Term{epimorphic-family}{满态射族}；由\Term{lemma}{引理} 4.4.7，它\Term{resolution}{分解}为\Term{covering-family}{覆盖族}后接\Term{monomorphism}{单态射}。但后者被一个\Term{epimorphic-family}{满态射族}\Term{dominant}{支配}，\footnote{编者注（35）：回顾（参见编者注（17）），若\Term{morphism}{态射}族 $F_i\to H$ 通过 $g$ \Term{resolution}{分解}，就称\Term{morphism}{态射} $g:G\to H$ 被此族\Term{dominant}{支配}。}因而是\Term{epimorphism}{满态射}，再由 4.4.4 为\Term{isomorphism}{同构}。
+
+\textbf{注记 4.4.8。}\footnote{编者注（36）：为与后文引用一致，我们改正了原文的编号；原文有两个 4.4.7。}由于族 $\mathscr F$ 的\Term{image}{像}\Term{presheaf}{预层}\Term{separated-presheaf}{分离}，\Term{associated-sheaf}{伴随层}的构造说明，命题 4.4.3 的条件还\Term{equivalence}{等价}于下列条件：
+\begin{enumerate}
+\item[(v)] 对每个 $S\in\operatorname{Ob}\mathcal C$，每个 $f\in F(S)$ 都\Term{locally}{局部}属于 $\mathscr F$ 的\Term{image}{像}，即：
+\item[(vi)] 对每个 $S\in\operatorname{Ob}\mathcal C$ 及每个 $f\in F(S)$，使 $f$ 在 $F(S')$ 中的\Term{image}{像}属于某个 $F_i(S')$ 的\Term{image}{像}的所有 $S'\to S$，组成 $S$ 的一个\Term{refinement}{加细}。
+\item[(vii)] （若\Term{topology}{拓扑}由\Term{pretopology}{预拓扑} $R$ 定义。）对每个 $S\in\operatorname{Ob}\mathcal C$ 和每个 $f\in F(S)$，存在族 $\{S_j\to S\}\in R(S)$，使对每个 $j$，$f$ 在 $F(S_j)$ 中的\Term{image}{像} $f_j$ 属于某个 $F_i(S_j)$ 的\Term{image}{像}。
+\end{enumerate}
+\textbf{注记 4.4.8.bis。}若\Term{sheaf}{层} $F$ \Term{representable}{可表}，前述条件还\Term{equivalence}{等价}于：
+\begin{enumerate}
+\item[(viii)] 使得存在某个 $i$ 和\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}
+F_i\arrow[r]&F\\
+T\arrow[u]\arrow[ur]&
+\end{tikzcd}
+\]
+的所有 $T\to F$（$T\in\operatorname{Ob}\mathcal C$）组成的\Term{set}{集合}，是 $F$ 的一个\Term{refinement}{加细}。
+\end{enumerate}
+事实上，若 (viii) 成立，则各 $F_i$ 的\Term{image}{像}\Term{presheaf}{预层}被 $F$ 的一个\Term{refinement}{加细}\Term{dominant}{支配}，\footnote{编者注（37）：我们将“为上界”改为“被……\Term{dominant}{支配}”，参见编者注（17）。}这蕴含此族\Term{covering-family}{覆盖}。反之，将 (vi) 应用于 $\mathrm{id}_F\in F(F)$ 即可。
+这个条件可以直观地表述为：在 $F$ 上\Term{locally}{局部}地，存在某个 $i$，使 $F_i\to F$ 有\Term{section}{截面}。特别地，若 $G$ 是\Term{sheaf}{层}而 $F$ 是\Term{representable}{可表}\Term{sheaf}{层}，则\Term{morphism}{态射}
+\SourcePage{222}
+$G\to F$ 为\Term{covering-morphism}{覆盖态射}，当且仅当它\Term{locally}{局部}地（在 $F$ 上）有\Term{section}{截面}。
+
+以下\Term{lemma}{引理}将在第 VI$_B$ 讲 8.1、8.2 中使用。\footnote{编者注（38）：我们补入了\Term{lemma}{引理} 4.4.8.1 和 4.4.8.2。}
+\begin{SGAresult}{\Term{lemma}{引理}}{4.4.8.1}
+设 $Q\subset P$ 是 $\mathcal C$ 上的\Term{group}{群}\Term{presheaf}{预层}，且 $Q$ 在 $P$ 中\Term{normal-subgroup}{正规}。假设 $P$ \Term{separated-presheaf}{分离}，$Q$ 是\Term{sheaf}{层}。则\Term{group}{群}\Term{presheaf}{预层} $P/Q$ \Term{separated-presheaf}{分离}。因此有
+\[
+a(P/Q)=L(P/Q)=\varinjlim_{R\in J(S)}(P/Q)(R).
+\]
+\end{SGAresult}
+\begin{proof}
+只须证明第一个断言，第二个断言由它及 4.3.11 (iv)、(ii) 得到。设 $S\in\operatorname{Ob}\mathcal C$，$R$ 是 $S$ 的\Term{sieve}{筛}，$y\in P(S)/Q(S)$ 在 $(P/Q)(R)$ 中的\Term{image}{像}为\Term{identity-element}{单位元}。须证明 $y=1$。由假设，\Term{morphism}{态射} $P(S)\to P(R)$（相应地，$Q(S)\to Q(R)$）是\Term{injectivity}{单射}（相应地，\Term{isomorphism}{同构}），且下述\Term{commutative-diagram}{交换图}的上行\Term{exact}{正合}：
+\[
+\begin{tikzcd}
+1\arrow[r]&Q(S)\arrow[r]\arrow[d,"\sim"']&P(S)\arrow[r]\arrow[d,hook]&P(S)/Q(S)\arrow[r]\arrow[d]&1\\
+1\arrow[r]&Q(R)\arrow[r]&P(R)\arrow[r]&(P/Q)(R)&.
+\end{tikzcd}
+\]
+只要证明下行\Term{exact}{正合}，即得结论。设 $f:R\to P$ 在 $(P/Q)(R)$ 中的\Term{image}{像}为\Term{identity-element}{单位元}，设 $\varphi:T\to R$，其中 $T\in\operatorname{Ob}\mathcal C$。则 $f\circ\varphi$ 在 $(P/Q)(T)=P(T)/Q(T)$ 中是\Term{identity-element}{单位元}，即 $f\circ\varphi\in Q(T)$。因此，$\varphi\mapsto f\circ\varphi$ 是具有\Term{functorial}{函子性}的映射 $R(T)\to Q(T)$，从而定义\Term{functor}{函子}的\Term{morphism}{态射} $\pi:R\to Q$，满足 $\pi(\mathrm{id}_R)=f$，故 $f\in Q(R)$。这证明下行\Term{exact}{正合}，\Term{lemma}{引理}得证。
+\end{proof}
+\begin{SGAresult}{\Term{lemma}{引理}}{4.4.8.2}
+设 $H\subset G$ 是 $\mathcal C$ 上的\Term{group}{群}\Term{presheaf}{预层}。
+\begin{enumerate}
+\item[(i)] 若 $H$ 在 $G$ 中\Term{normal-subgroup}{正规}，则 $L(H)$ 在 $L(G)$ 中\Term{normal-subgroup}{正规}。
+\item[(ii)] 若 $H$ 在 $G$ 中\Term{central-subgroup}{中心}，则 $L(H)$ 在 $L(G)$ 中\Term{central-subgroup}{中心}。
+\end{enumerate}
+\end{SGAresult}
+\begin{proof}
+设 $S\in\operatorname{Ob}\mathcal C$；须证明（参见第 I 讲 2.3.6）$L(H)(S)$ 在 $L(G)(S)$ 中\Term{normal-subgroup}{正规}（相应地，\Term{central-subgroup}{中心}）。设 $h\in L(H)(S)$、$g\in L(G)(S)$，存在 $S$ 的一个\Term{sieve}{筛} $R$ 及元素 $h'\in H(R)$、$g'\in G(R)$，使 $h=z_R(h')$、$g=z_R(g')$（记号同 4.3.10）。由于 $z_R$ 是\Term{group-morphism}{群态射}，有 $ghg^{-1}h^{-1}=z_R(g'h'g'^{-1}h'^{-1})$。
+在 (i) 的情形中，$g'h'g'^{-1}h'^{-1}\in H(R)$，故 $ghg^{-1}h^{-1}\in LH(S)$；在 (ii) 的情形中，$g'h'g'^{-1}h'^{-1}=1$，所以 $ghg^{-1}h^{-1}=1$。
+\end{proof}
+\SourcePage{223}
+\begin{SGAresult}{命题}{4.4.9}
+$\widetilde{\mathcal C}$ 中的每个\Term{equivalence-relation}{等价关系}都是\Term{universal-effective-equivalence-relation}{泛有效}的（3.3.3）：设 $R$ 是\Term{sheaf}{层} $X$ 中的 $\widetilde{\mathcal C}$-\Term{equivalence-relation}{等价关系}；则\Term{separated-presheaf}{分离}\Term{presheaf}{预层}
+\[
+i(X)/i(R):S\longmapsto X(S)/R(S)
+\]
+的\Term{associated-sheaf}{伴随层}，是 $X$ 对 $R$ 的一个\Term{universal-effective-quotient}{泛有效商}。
+\end{SGAresult}
+\begin{proof}
+设 $X/R$ 是 $X$ 对 $R$ 的\Term{quotient-sheaf}{商层}，由 4.4.1 (ii) 它存在：$X/R=a(i(X)/i(R))$。须证明 $X\to X/R$ 是\Term{universal-effective-epimorphism}{泛有效满态射}，且\Term{morphism}{态射} $f:R\to X\times_{X/R}X$ 是\Term{isomorphism}{同构}。第一个断言已证（4.4.3）。至于 $f$，它是对\Term{morphism}{态射} $i(R)\to i(X)\times_{i(X/R)}i(X)$ 施以\Term{functor}{函子} $a$ 得到的；或者，由于 $i(X)/i(R)$ \Term{separated-presheaf}{分离}（4.4.5 (ii)），所以 $i(X)/i(R)\to i(X/R)$ 是\Term{monomorphism}{单态射}，它也由\Term{canonical}{典范}\Term{morphism}{态射} $i(R)\to i(X)\times_{i(X)/i(R)}i(X)$ 得到。
+所以归结为在\Term{presheaf}{预层}\Term{category}{范畴}中证明同一断言。但 $i(X)/i(R)$ 是\Term{presheaf}{预层} $S\mapsto X(S)/R(S)$，于是又归结为\Term{set}{集合}\Term{category}{范畴}中的类似断言，而后者显然成立。
+\end{proof}
+\begin{SGAresult}{命题}{4.4.10}
+在 4.4.9 的条件下，设 $Y$ 是 $X$ 的\Term{sheaf}{子层}。以 $R_Y$ 表示 $R$ 在 $Y$ 中诱导的\Term{equivalence-relation}{等价关系}。则\Term{canonical}{典范}\Term{morphism}{态射}（3.1.6）
+\[
+Y/R_Y\longrightarrow X/R
+\]
+是\Term{monomorphism}{单态射}：它将 $Y/R_Y$ 等同于 $X/R$ 的一个\Term{sheaf}{子层}，即合成\Term{morphism}{态射}
+\[
+Y\longrightarrow X\longrightarrow X/R
+\]
+的\Term{image-sheaf}{像层}。
+\end{SGAresult}
+\begin{proof}
+\Term{presheaf}{预层}\Term{morphism}{态射}
+\[
+i(Y)/i(R_Y)=i(Y)/i(R)_{i(Y)}\longrightarrow i(X)/i(R)
+\]
+是\Term{monomorphism}{单态射}。由于\Term{functor}{函子} $a$ \Term{left-exact}{左正合}（4.3.16），它将\Term{monomorphism}{单态射}变为\Term{monomorphism}{单态射}，所以
+\[
+Y/R_Y\longrightarrow X/R
+\]
+是\Term{monomorphism}{单态射}。最后一个断言来自\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}
+Y\arrow[r]\arrow[d]&X\arrow[d]\\
+Y/R_Y\arrow[r]&X/R
+\end{tikzcd}
+\]
+及 $Y\to Y/R_Y$ 为\Term{covering-morphism}{覆盖态射}这一事实。
+\end{proof}
+根据此命题，我们总将 $Y/R_Y$ 与 $X/R$ 的一个\Term{sheaf}{子层}等同。
+\SourcePage{224}
+\begin{SGAresult}{命题}{4.4.11}
+设 $R$ 是\Term{sheaf}{层} $X$ 中的 $\widetilde{\mathcal C}$-\Term{equivalence-relation}{等价关系}。对 $X$ 的每个在 $R$ 下\Term{stable}{稳定}的\Term{sheaf}{子层} $Y$，以 $Y'$ 表示视为 $X'=X/R$ 的\Term{sheaf}{子层}的\Term{quotient}{商} $Y/R_Y$。则 $Y=Y'\times_{X'}X$，且映射 $Y\mapsto Y/R_Y$ 和 $Y'\mapsto Y'\times_{X'}X$ 给出 $X$ 的在 $R$ 下\Term{stable}{稳定}的\Term{sheaf}{子层}的\Term{set}{集合}与 $X'$ 的\Term{sheaf}{子层}的\Term{set}{集合}之间的\Term{bijection}{双射}对应。
+\end{SGAresult}
+\begin{proof}
+若 $Y'$ 是 $X'$ 的\Term{sheaf}{子层}，则 $Y'\times_{X'}X$ 是 $X$ 的在 $R$ 下\Term{stable}{稳定}的\Term{sheaf}{子层}。\footnote{编者注（39）：且有 $(Y'\times_{X'}X)/R=Y'$。}若 $Y'$ 是由 $X$ 的某个\Term{sheaf}{子层} $Y$ 取\Term{quotient}{商}得到的，则 $Y$ 是 $Y'\times_{X'}X$ 的\Term{subobject}{子对象}。因此，只须证明：若 $Y,Y_1$ 是 $X$ 的两个在 $R$ 下\Term{stable}{稳定}的\Term{sheaf}{子层}，$Y_1$ 包含 $Y$，且\Term{quotient}{商} $Y/R_Y$ 和 $Y_1/R_{Y_1}$ 相同，则 $Y=Y_1$。显然可归结为 $Y_1=X$ 的情形。以 $P$（相应地，$Q$）表示\Term{presheaf}{预层} $i(X)/i(R)$（相应地，$i(Y)/i(R_Y)$），则图
+\[
+\begin{tikzcd}
+X\arrow[r]&P\\
+Y\arrow[u,hook]\arrow[r]&Q\arrow[u,hook]
+\end{tikzcd}
+\]
+为\Term{cartesian-square}{笛卡儿方块}。又有\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}
+P\arrow[r,hook]&a(P)\arrow[d,equal]\\
+Q\arrow[u,hook]\arrow[r,hook]&a(Q),
+\end{tikzcd}
+\]
+而 $Q\hookrightarrow a(Q)$ 是\Term{covering-morphism}{覆盖态射}（4.3.11），故\Term{monomorphism}{单态射} $Q\hookrightarrow P$ 是\Term{covering-morphism}{覆盖态射}，即 $Q$ 是 $P$ 的\Term{refinement}{加细}。经\Term{base-change}{基变换}，$Y$ 是 $X$ 的\Term{refinement}{加细}。由于 $X,Y$ 都是\Term{sheaf}{层}，这蕴含 $Y=X$（4.3.12）。
+\end{proof}
+\textbf{4.4.12。}特别地，若 $Y$ 是 $X$ 的\Term{sheaf}{子层}，$Y'=Y/R_Y$，则上述对应给出 $X$ 的一个\Term{sheaf}{子层} $\overline Y$，它在 $R$ 下\Term{stable}{稳定}，包含 $Y$，并且对这两条性质而言最小；称为 $Y$ 关于\Term{equivalence-relation}{等价关系} $R$ 的\Term{saturation}{饱和化}。
+
+\SGAsection{4.5}{比典范拓扑更粗的拓扑的情形}
+由 4.3.6 和 4.3.8，对于 $\mathcal C$ 上的\Term{topology}{拓扑} $T$，以下条件\Term{equivalence}{等价}：
+\begin{enumerate}
+\item[(i)] $T$ 比 $\mathcal C$ 的\Term{canonical-topology}{典范拓扑}更粗。
+\item[(ii)] 每个\Term{representable}{可表}\Term{presheaf}{预层}对于 $T$ 都是\Term{sheaf}{层}。
+\item[(iii)] 对于 $T$ 的每个\Term{covering-sieve}{覆盖筛}都是\Term{universal-effective-epimorphic-sieve}{泛有效满筛}。
+\end{enumerate}
+若 $T$ 由\Term{pretopology}{预拓扑} $S\mapsto R(S)$ 定义，这些条件还\Term{equivalence}{等价}于
+\begin{enumerate}
+\item[(iv)] 属于 $R(S)$ 的每个族都是\Term{universal-effective-epimorphic-family}{泛有效满态射族}。
+\end{enumerate}
+\SourcePage{225}
+这些条件成立时，\Term{canonical}{典范}\Term{functor}{函子} $\mathcal C\to\widehat{\mathcal C}$ 通过一个\Term{functor}{函子} $j_{\mathcal C}=j:\mathcal C\to\widetilde{\mathcal C}$ \Term{resolution}{分解}（也记 $j(S)=\widetilde S$\footnote{编者注（40）：并记 $h_S=\widehat S$，参见 4.5.4 的第一个\Term{commutative-diagram}{交换图}。}）。
+\begin{SGAresult}{命题}{4.5.1}
+\Term{functor}{函子} $j:\mathcal C\to\widetilde{\mathcal C}$ \Term{fully-faithful}{全忠实}，与任意\Term{projective-limit}{投射极限}可交换。特别地，它\Term{left-exact}{左正合}，从而保持由\Term{finite}{有限}\Term{projective-limit}{投射极限}定义的\Term{algebraic-structure}{代数结构}。
+\end{SGAresult}
+考察\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}
+\mathcal C\arrow[rr]\arrow[dr,"j"']&&\widehat{\mathcal C}\\
+&\widetilde{\mathcal C}\arrow[ur,"i"']&,
+\end{tikzcd}
+\]
+结合 4.4.1 (i) 即得此结论。
+
+在给出\Term{functor}{函子} $j$ 的其他性质之前，先定义\Term{category}{范畴} $\mathcal C_{/S}$ 上的\Term{induced-topology}{诱导拓扑}。此处不再要求给定\Term{topology}{拓扑}比\Term{canonical-topology}{典范拓扑}更粗，定义如下：若 $C$ 是 $\mathcal C$ 中 $T$ 的一个\Term{sieve}{筛}，且有\Term{morphism}{态射} $T\to S$，则 $C$ 自然定义 $\mathcal C_{/S}$ 中 $T$ 的一个\Term{sieve}{筛}，记为 $J(T)$（因为 $T$ 的\Term{sieve}{筛}的定义只依赖于\Term{category}{范畴} $\mathcal C_{/T}=(\mathcal C_{/S})_{/T}$）。例如，若 $C$ 由族 $\{T_i\to T\}$ 定义，则它在 $\mathcal C_{/S}$ 中的\Term{image}{像}，由将同一族看作 $\mathcal C_{/S}$ 中的\Term{morphism}{态射}族来定义。于是映射 $T\mapsto J(T)$ 定义 $\mathcal C_{/S}$ 上的一个\Term{topology}{拓扑}，称为给定\Term{topology}{拓扑}的\Term{induced-topology}{诱导拓扑}。采用 [AS], 2.3 的定义，它是使\Term{canonical}{典范}\Term{functor}{函子}
+\[
+i_S:\mathcal C_{/S}\longrightarrow\mathcal C
+\]
+为\Term{comorphism}{余态射}的 $\mathcal C_{/S}$ 上最粗的\Term{topology}{拓扑}。\footnote{编者注（41）：即对 $\mathcal C_{/S}$ 的每个\Term{object}{对象} $T\to S$，$i_S(T\to S)=T$ 的每个\Term{covering-sieve}{覆盖筛} $R'$，视为 $(T\to S)\in\operatorname{Ob}\mathcal C_{/S}$ 的\Term{sieve}{筛}后，仍为\Term{covering-sieve}{覆盖筛}。}注意，依定义，等同
+\[
+(\mathcal C_{/S})_{/T}=\mathcal C_{/T}
+\]
+保持\Term{topology}{拓扑}。
+\begin{SGAresult}{命题}{4.5.2}
+设 $S$ 是 $\mathcal C$ 上的一个\Term{representable}{可表}\Term{sheaf}{层}，$F\to S$ 是 $\widehat{\mathcal C}$ 中的\Term{morphism}{态射}。$S'\mapsto\operatorname{Hom}_S(S',F)$ 是 $\mathcal C_{/S}$ 上的\Term{separated-presheaf}{分离}\Term{presheaf}{预层}（相应地，\Term{sheaf}{层}）的充要条件是：$F$ 是 $\mathcal C$ 上的\Term{separated-presheaf}{分离}\Term{presheaf}{预层}（相应地，\Term{sheaf}{层}）。
+\end{SGAresult}
+\begin{proof}
+对任意\Term{functor}{函子} $P$，有（第 I 讲 1.4.1）
+\[
+\operatorname{Hom}(P,F)=\coprod_{f\in\operatorname{Hom}(P,S)}\operatorname{Hom}_f(P,F).
+\]
+\footnote{编者注（42）：我们展开了下述原文。}
+\SourcePage{226}
+设 $S'\in\operatorname{Ob}\mathcal C$，$\eta:C'\to S'$ 是\Term{covering-sieve}{覆盖筛}。由于 $S$ 是\Term{sheaf}{层}，映射 $f\mapsto f\circ\eta$ 给出\Term{bijection}{双射} $\operatorname{Hom}(S',S)\xrightarrow{\sim}\operatorname{Hom}(C',S)$。所以映射
+\[
+\operatorname{Hom}_{\widehat{\mathcal C}}(S',F)\longrightarrow\operatorname{Hom}_{\widehat{\mathcal C}}(C',F)
+\]
+\Term{resolution}{分解}为各映射
+\[
+\operatorname{Hom}_f(S',F)\longrightarrow\operatorname{Hom}_{f\circ\eta}(C',F)
+\]
+的“\Term{disjoint-union}{不交并}”。命题随之得证。
+\end{proof}
+\begin{SGAresult}{推论}{4.5.3}
+$\mathcal C$ 上一个比其\Term{canonical-topology}{典范拓扑}更粗的\Term{topology}{拓扑}在 $\mathcal C_{/S}$ 上诱导的\Term{topology}{拓扑}，比 $\mathcal C_{/S}$ 的\Term{canonical-topology}{典范拓扑}更粗。
+\end{SGAresult}
+\begin{SGAresult}{推论}{4.5.4}
+假设 $\mathcal C$ 上给定的\Term{topology}{拓扑}比\Term{canonical-topology}{典范拓扑}更粗。对每个 $S\in\operatorname{Ob}\mathcal C$，有\Term{equivalence-of-categories}{范畴等价}
+\[
+\widetilde{\mathcal C}_{/\widetilde S}\longrightarrow\widetilde{\mathcal C_{/S}}.
+\]
+以下各图在\Term{isomorphism}{同构}意义下交换（所有未标名的\Term{arrow}{箭头}都是\Term{equivalence-of-categories}{等价}）：
+\[
+\begin{tikzcd}[column sep=large]
+\mathcal C_{/S}\arrow[r,"(j_{\mathcal C})_{/S}"]\arrow[d,equal]&
+\widetilde{\mathcal C}_{/\widetilde S}\arrow[r,"(i_{\mathcal C})_{/\widetilde S}"]\arrow[d,"\sim"]&
+\widehat{\mathcal C}_{/\widehat S}\arrow[r,"(a_{\mathcal C})_{/\widehat S}"]\arrow[d,"\sim"]&
+\widetilde{\mathcal C}_{/\widetilde S}\arrow[d,"\sim"]\\
+\mathcal C_{/S}\arrow[r,"j_{\mathcal C_{/S}}"']&
+\widetilde{\mathcal C_{/S}}\arrow[r,"i_{\mathcal C_{/S}}"']&
+\widehat{\mathcal C_{/S}}\arrow[r,"a_{\mathcal C_{/S}}"']&
+\widetilde{\mathcal C_{/S}},
+\end{tikzcd}
+\]
+\[
+\begin{tikzcd}[column sep=large]
+(\widetilde{\mathcal C}_{/\widetilde S})_{/\widetilde T}\arrow[r]\arrow[d,"\sim"']&
+(\widetilde{\mathcal C_{/S}})_{/\widetilde T}\arrow[dr]\\
+\widetilde{\mathcal C}_{/\widetilde T}\arrow[r]&\widetilde{\mathcal C_{/T}}\arrow[r,"\simeq"']&\widetilde{(\mathcal C_{/S})_{/T}}.
+\end{tikzcd}
+\]
+\end{SGAresult}
+前两个方块的\Term{commutativity}{交换性}由\Term{equivalence-of-categories}{等价} $\widetilde{\mathcal C}_{/\widetilde S}\to\widetilde{\mathcal C_{/S}}$ 的定义得到。为证明最后一个方块交换，须看出下图交换：
+\[
+\begin{tikzcd}
+\widehat{\mathcal C}_{/\widehat S}\arrow[r,"L'"]\arrow[d]&\widehat{\mathcal C}_{/\widehat S}\arrow[d]\\
+\widehat{\mathcal C_{/S}}\arrow[r,"L''"']&\widehat{\mathcal C_{/S}},
+\end{tikzcd}
+\]
+其中 $L'$ 是\Term{functor}{函子} $L_{\mathcal C}$ 在 $\widehat{\mathcal C}_{/\widehat S}$ 上的\Term{restriction}{限制}，$L''$ 是\Term{functor}{函子} $L_{\mathcal C_{/S}}$；回到\Term{functor}{函子} $L$ 的定义（4.3.9 之后），这点容易看出。至于
+\SourcePage{227}
+第二幅图，它正是\Term{presheaf}{预层}\Term{category}{范畴}上的相应图（第 I 讲第 1 节）在\Term{sheaf}{层}\Term{category}{范畴}上的\Term{restriction}{限制}，故交换。
+
+\textbf{评注 4.5.5。}本小节的各个断言说明，当给定\Term{topology}{拓扑}比\Term{canonical-topology}{典范拓扑}更粗时，可以将 $\mathcal C$ 等同于 $\widetilde{\mathcal C}$ 的一个\Term{full-subcategory}{满子范畴}，后者本身又是 $\widehat{\mathcal C}$ 的\Term{full-subcategory}{满子范畴}；借此等同，可采用对于 $\mathcal C\to\widehat{\mathcal C}$ 惯用的那些语言上的省略，上述\Term{commutativity}{交换性}保证这些省略合理。特别指出，4.5.4 的第一个图说明，使用\Term{functor}{函子} $a$ 无须另作特别处理。
+
+下一小节将看到，将 $\mathcal C$ 等同于 $\widetilde{\mathcal C}$ 的一个\Term{full-subcategory}{满子范畴}，还与某些\Term{inductive-limit}{归纳极限}的构造可交换（这与 $\widehat{\mathcal C}$ 的情形不同），届时我们将说明如何使用这一事实。
+从现在起，除非明确另作说明，总假设给定\Term{topology}{拓扑}比\Term{canonical-topology}{典范拓扑}更粗，并系统采用上述等同。
+\begin{SGAresult}{命题}{4.5.6}
+设 $F,G$ 是 $S$ 上的两个\Term{sheaf}{层}，$f:F\to G$ 是 $S$-\Term{morphism}{态射}。关于 $f$，下列条件\Term{equivalence}{等价}：
+\begin{enumerate}
+\item[(i)] $f$ 在 $\widetilde{\mathcal C}$ 中是\Term{monomorphism}{单态射}（相应地，\Term{epimorphism}{满态射}、\Term{isomorphism}{同构}）。
+\item[(ii)] $f$ 在 $\widetilde{\mathcal C}_{/S}=\widetilde{\mathcal C_{/S}}$ 中是\Term{monomorphism}{单态射}（相应地，\Term{epimorphism}{满态射}、\Term{isomorphism}{同构}）。
+\end{enumerate}
+\end{SGAresult}
+对于\Term{monomorphism}{单态射}及\Term{isomorphism}{同构}，这是显然的（这是关于\Term{presheaf}{预层}的问题）。对于\Term{epimorphism}{满态射}，由\Term{epimorphism}{满态射}作为\Term{covering-morphism}{覆盖态射}的描述（4.4.3）以及\Term{induced-topology}{诱导拓扑}的定义可得，因为\Term{covering-morphism}{覆盖态射}在 $\widetilde{\mathcal C}$ 和 $\widetilde{\mathcal C}_{/S}$ 中相同。
+\begin{SGAresult}{命题}{4.5.7}
+设 $f:F\to G$ 是一个\Term{sheaf}{层}\Term{morphism}{态射}。下列条件\Term{equivalence}{等价}：
+\begin{enumerate}
+\item[(i)] $f$ 是\Term{monomorphism}{单态射}（相应地，\Term{epimorphism}{满态射}、\Term{isomorphism}{同构}）。
+\item[(ii)] 对每个 $S\in\operatorname{Ob}\mathcal C$，$f_S:F_S\to G_S$ \Term{locally}{局部地}是\Term{monomorphism}{单态射}（相应地，\Term{epimorphism}{满态射}、\Term{isomorphism}{同构}），即：
+\item[(iii)] 对每个 $S\in\operatorname{Ob}\mathcal C$，使 $F_T\to G_T$ 是\Term{monomorphism}{单态射}（相应地，\Term{epimorphism}{满态射}、\Term{isomorphism}{同构}）的所有 $T\to S$ 组成的\Term{set}{集合}，是 $S$ 的一个\Term{refinement}{加细}。
+\end{enumerate}
+若给定\Term{topology}{拓扑}由\Term{pretopology}{预拓扑} $R$ 定义，这些条件还\Term{equivalence}{等价}于：
+\begin{enumerate}
+\item[(iv)] 对每个 $S\in\operatorname{Ob}\mathcal C$，存在\Term{covering-family}{覆盖族} $\{S_i\to S\}\in R(S)$，使对每个 $i$，$F_{S_i}\to G_{S_i}$ 是\Term{monomorphism}{单态射}（相应地，\Term{epimorphism}{满态射}、\Term{isomorphism}{同构}）。
+\end{enumerate}
+\SourcePage{228}
+若\Term{category}{范畴} $\mathcal C$ 有\Term{final-object}{终对象} $e$，则在条件 (ii)、(iii)、(iv) 中只取 $S=e$ 已足够。
+\end{SGAresult}
+\begin{proof}
+显然 (ii) $\Leftrightarrow$ (iii) $\Leftrightarrow$ (iv)。为证明 (i) 与 (ii) \Term{equivalence}{等价}及关于\Term{final-object}{终对象}的补充断言，须证明 (ii) $\Rightarrow$ (i)，且所考虑的概念在\Term{base-extension}{基扩张}下\Term{stable}{稳定}。先证明后一点。对于\Term{monomorphism}{单态射}与\Term{isomorphism}{同构}，这是显然的（这是关于\Term{presheaf}{预层}的问题）。对于\Term{epimorphism}{满态射}，则由每个\Term{sheaf}{层}\Term{epimorphism}{满态射}都是\Term{universal-epimorphism}{泛满态射}（4.4.3）得到。
+
+最后证明 (ii) 蕴含 (i)。先假设 $f_S:F_S\to G_S$ \Term{locally}{局部地}是\Term{monomorphism}{单态射}（相应地，\Term{isomorphism}{同构}）。于是存在 $S$ 的一个\Term{covering-sieve}{覆盖筛} $C$，使对每个 $T\to C$，$f_T$ 是\Term{monomorphism}{单态射}（相应地，\Term{isomorphism}{同构}）。由于\Term{monomorphism}{单态射}（相应地，\Term{isomorphism}{同构}）的\Term{projective-limit}{投射极限}仍是\Term{monomorphism}{单态射}（相应地，\Term{isomorphism}{同构}），$\operatorname{Hom}(C,f)$ 是\Term{monomorphism}{单态射}（相应地，\Term{isomorphism}{同构}）（参见 4.1.4）。\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}
+\operatorname{Hom}(C,F)\arrow[r,"{\operatorname{Hom}(C,f)}"]&\operatorname{Hom}(C,G)\\
+F(S)\arrow[u,"\sim"]\arrow[r,"f(S)"']&G(S)\arrow[u,"\sim"']
+\end{tikzcd}
+\]
+便说明 $f(S)$ 是\Term{injectivity}{单射}（相应地，\Term{bijection}{双射}）。最后假设 $f:F\to G$ \Term{locally}{局部地}是\Term{epimorphism}{满态射}，以 $H\subset G$ 表示其\Term{image}{像}。对每个 $S\to G$，$H\times_G S$ 是 $f\times_G S:F\times_G S\to S$ 的\Term{image}{像}。为证明 $f$ 是\Term{epimorphism}{满态射}，须证明 $H$ 是 $G$ 的\Term{refinement}{加细}，即对每个 $S$，$H\times_G S$ 是 $S$ 的\Term{refinement}{加细}。但在沿 $S$ 的某个\Term{refinement}{加细}中的每个 $T\to S$ 作\Term{base-change}{基变换}后，这确实成立（因为 $f\times_G S$ \Term{locally}{局部}为\Term{covering-morphism}{覆盖态射}），所以 $H\times_G S$ 确是 $S$ 的\Term{refinement}{加细}（公理（T 2））。
+\end{proof}
+\begin{SGAresult}{推论}{4.5.8}
+设 $F,G$ 是 $S$ 上的两个\Term{sheaf}{层}，$f:F\to G$ 是一个 $S$-\Term{morphism}{态射}。$f$ 为\Term{monomorphism}{单态射}、相应地\Term{epimorphism}{满态射}、相应地\Term{isomorphism}{同构}的充要条件是，它在 $S$ 上\Term{locally}{局部地}具有相应性质。
+\end{SGAresult}
+\textbf{注记 4.5.9。}命题的证明说明，其中关于\Term{monomorphism}{单态射}（相应地，\Term{isomorphism}{同构}）的部分，在只假设 $F$ 是\Term{separated-presheaf}{分离}\Term{presheaf}{预层}（相应地，\Term{sheaf}{层}），$G$ 是任意\Term{presheaf}{预层}（相应地，\Term{separated-presheaf}{分离}\Term{presheaf}{预层}）时仍成立。
+暂时回到任意\Term{topology}{拓扑}的情形，作如下定义。
+\begin{SGAresult}{定义}{4.5.10}
+设 $G\to F$ 是 $\widehat{\mathcal C}$ 中的\Term{morphism}{态射}。若对每个 $F$-\Term{functor}{函子} $H$ 和 $H$ 的每个\Term{refinement}{加细} $R$，\Term{canonical}{典范}映射
+\[
+\operatorname{Hom}_F(H,G)\xrightarrow{\sim}\operatorname{Hom}_F(R,G)\tag{+}
+\]
+是\Term{bijection}{双射}，则称 $G$ 为 $F$ 上的\Term{relative-sheaf}{相对层}。
+\end{SGAresult}
+\SourcePage{229}
+命题 4.5.2 立即推广为：
+\begin{SGAresult}{命题}{4.5.11}
+若 $F$ 是\Term{sheaf}{层}，则 $G$ 是 $F$ 上的\Term{relative-sheaf}{相对层}，当且仅当 $G$ 是\Term{sheaf}{层}。
+\end{SGAresult}
+\begin{SGAresult}{\Term{lemma}{引理}}{4.5.12}
+在 $X\to T\to S$ 的情形中（$X,T,S$ 是 $\widehat{\mathcal C}$ 的三个\Term{object}{对象}），若 $X$ 是 $T$ 上的\Term{relative-sheaf}{相对层}，则 $U=\prod_{T/S}X$ 是 $S$ 上的\Term{relative-sheaf}{相对层}。
+\end{SGAresult}
+事实上，对每个 $S$-\Term{functor}{函子} $Y$，有
+\[
+\operatorname{Hom}_S(Y,U)=\operatorname{Hom}_T(T\times_S Y,X).
+\]
+若 $C$ 是 $Y$ 的一个\Term{sieve}{筛}，则 $T\times_S C$ 是 $T\times_S Y$ 的\Term{sieve}{筛}；结论立即得到。
+\begin{SGAresult}{推论}{4.5.13}
+\Term{presheaf}{预层} $\underline{\operatorname{Hom}}_{T/S}(X,Y)$、$\underline{\operatorname{Isom}}_S(X,Y)$ 等，在其中出现的各变元均为\Term{sheaf}{层}时，也是\Term{sheaf}{层}。
+\end{SGAresult}
+事实上，这些\Term{presheaf}{预层}均用\Term{fiber-product}{纤维积}和 $\prod$ \Term{presheaf}{预层}构造（第 I 讲 1.7 及第 II 讲 1）。因而只须对\Term{presheaf}{预层} $\prod_{T/S}X$ 验证此结果；这时断言由 4.5.11 和 4.5.12 得到。
+
+\SGAsection{4.6}{层对等价关系之商的描述}
+回顾，我们假设给定\Term{topology}{拓扑} $T$ 比\Term{canonical-topology}{典范拓扑}更粗。
+\begin{SGAresult}{命题}{4.6.1}
+设 $p_1,p_2:R\rightrightarrows X$ 是\Term{sheaf}{层} $X$ 中的 $\widetilde{\mathcal C}$-\Term{equivalence-relation}{等价关系}。定义 $F\in\operatorname{Ob}\widehat{\mathcal C}$ 如下：对 $\mathcal C$ 的每个 $S$，$F(S)$ 是 $X_S$ 中在 $R\times S$ 下\Term{stable}{稳定}\footnote{编者注（43）：$R\times S$ 表示由 $R\times S_{\mathrm{diagonal}}\subset X\times X\times S\times S$ 定义的 $X\times S$ 中的\Term{equivalence-relation}{等价关系}，$R_Z$ 表示它在 $Z$ 中诱导的\Term{equivalence-relation}{等价关系}（参见 3.1.6）。}、且对 $R_Z$ 的\Term{quotient}{商}为 $S$ 的 $S$-\Term{sheaf}{子层} $Z$ 的\Term{set}{集合}，即要求图 $R_Z\rightrightarrows Z\to S$ \Term{exact}{正合}。
+则对每个\Term{sheaf}{层} $Y$，$\operatorname{Hom}(Y,F)$ 等同于下述\Term{set}{集合}：$X\times Y$ 中在 $R\times Y$ 下\Term{stable}{稳定}且\Term{quotient}{商}为 $Y$ 的 $Y$-\Term{sheaf}{子层}的\Term{set}{集合}。
+特别地，$X\times X$ 的\Term{sheaf}{子层} $R$ 对应于 $\operatorname{Hom}(X,F)$ 的一个元素 $p$，且图
+\[
+\begin{tikzcd}
+R\arrow[r,shift left=.6ex,"p_1"]\arrow[r,shift right=.6ex,"p_2"']&X\arrow[r,"p"]&F
+\end{tikzcd}
+\]
+\Term{exact}{正合}，因而将 $F$ 等同于\Term{quotient-sheaf}{商层} $X/R$。
+\end{SGAresult}
+\begin{proof}
+事实上，令 $Q=X/R$。对每个\Term{sheaf}{层} $Y$ 及每个\Term{morphism}{态射} $f\in\operatorname{Hom}(Y,Q)$，
+\SourcePage{230}
+它对应于一个\Term{section}{截面} $s:Y\hookrightarrow Q\times Y$；考虑图
+\[
+\begin{tikzcd}
+R\times Y\arrow[r,shift left=.6ex]\arrow[r,shift right=.6ex]&X\times Y\arrow[r]&Q\times Y\\
+&Z\arrow[u,hook]\arrow[r]&Y\arrow[u,hook,"s"']
+\end{tikzcd}\tag{*}
+\]
+其中方块为\Term{cartesian-square}{笛卡儿方块}。由 4.4.11 立即可知，$Z$ 是 $X\times Y$ 中在 $R\times Y$ 下\Term{stable}{稳定}、\Term{quotient}{商}为 $Y$ 的一个 $Y$-\Term{sheaf}{子层}；反之，每个这样的 $Z$ 都来自 $Q\times Y$ 在 $Y$ 上的唯一\Term{section}{截面}。先取 $Y$ \Term{representable}{可表}，可得\Term{isomorphism}{同构} $Q\simeq F$。再取任意的 $Y$，便得到所述 $\operatorname{Hom}(Y,F)$ 的\Term{form}{形式}。最后考虑\Term{canonical}{典范}\Term{morphism}{态射} $X\to Q$，立即可见它对应于 $X\times X$ 的 $X$-\Term{sheaf}{子层} $R$，证明完成。
+\end{proof}
+\begin{SGAresult}{推论}{4.6.2}
+设 $G$ 是 $F$ 的任意\Term{subfunctor}{子函子}，满足 $\operatorname{Hom}(X,G)\subset\operatorname{Hom}(X,F)$ 包含 $R$。则\Term{canonical}{典范}\Term{morphism}{态射} $p:X\to F$ 通过 $G$ \Term{resolution}{分解}。由于 $p$ 为\Term{covering-morphism}{覆盖态射}（4.4.9 和 4.4.3），$G$ 因而是 $F$ 的一个\Term{refinement}{加细}。特别地，$F$ 的每个满足上述条件的\Term{sheaf}{子层} $G$ 都等于 $F$（4.3.12）。
+\end{SGAresult}
+\textbf{4.6.3。}现讨论 $X,R$ 均\Term{representable}{可表}的情形。先引入一些术语。除 3.4.1 中引入的条件 (a) 至 (d) 外，我们还将使用对 $\mathcal C$ 中\Term{morphism}{态射}族 $(\mathrm M)$ 的其他条件，列举如下；为完整起见，也重述已给出的条件 (a) 至 (c)。
+\begin{enumerate}
+\item[(a)] $(\mathrm M)$ 在\Term{base-extension}{基扩张}下\Term{stable}{稳定}。
+\item[(b)] $(\mathrm M)$ 中两个元素的合成仍属于 $(\mathrm M)$。
+\item[(c)] 每个\Term{isomorphism}{同构}都属于 $(\mathrm M)$。
+\item[($d_T$)] $(\mathrm M)$ 的每个元素都是\Term{covering-morphism}{覆盖态射}。\footnote{编者注（44）：回顾，$T$ 表示 $\mathcal C$ 上给定的、比\Term{canonical-topology}{典范拓扑}更粗的\Term{topology}{拓扑}。}
+\item[($e_T$)] 设 $f:X\to Y$ 是 $\mathcal C$ 的\Term{morphism}{态射}。若存在 $Y$ 的一个\Term{refinement}{加细} $R$，使对每个 $Y'\to R$，$X\times_Y Y'\to Y'$ 属于 $(\mathrm M)$，则 $f$ 属于 $(\mathrm M)$。
+\end{enumerate}
+回顾，(a) 和 (b) 蕴含：
+\begin{enumerate}
+\item[($a'$)] $(\mathrm M)$ 中两个元素的\Term{cartesian-product}{笛卡儿积}属于 $(\mathrm M)$。
+\end{enumerate}
+另一方面，由 4.3.9，(a) 和 ($d_T$) 蕴含：
+\begin{enumerate}
+\item[($d'$)] $(\mathrm M)$ 的每个元素都是\Term{universal-effective-epimorphism}{泛有效满态射}。
+\end{enumerate}
+\textbf{4.6.4。}当 $\mathcal C$ 具有\Term{fiber-product}{纤维积}时，记为 $(\mathrm M_T)$ 的\Term{covering-morphism}{覆盖态射}族满足上述条件。事实上（参见 4.2.3），(a) 来自（C 1），(b) 来自（C 2），(c) 来自（C 4），($d_T$) 来自定义，($e_T$) 来自（C 5）。
+\SourcePage{231}
+下面对满足这些条件的一族所证明的结果，特别适用于 $(\mathrm M_T)$。尤其可以取 $T$ 为\Term{canonical-topology}{典范拓扑}，取 $(\mathrm M)$ 为\Term{universal-effective-epimorphism}{泛有效满态射}族。
+\begin{SGAresult}{\Term{lemma}{引理}}{4.6.5}
+设 $(\mathrm M)$ 是满足上述性质 (a) 至 ($e_T$) 的\Term{morphism}{态射}族。设 $R$ 是 $X\in\operatorname{Ob}\mathcal C$ 中的 $(\mathrm M)$ \Term{M-type}{型} $\mathcal C$-\Term{equivalence-relation}{等价关系}。设 $\widetilde X$ 是 $X$ 所定义的\Term{sheaf}{层}，$\widetilde R$ 是 $R$ 所定义的 $\widetilde X$ 中的 $\widetilde{\mathcal C}$-\Term{equivalence-relation}{等价关系}，$\widetilde X/\widetilde R$ 是\Term{quotient-sheaf}{商层}。$R$ 为\Term{M-effective}{$(\mathrm M)$-有效}的充要条件是 $\widetilde X/\widetilde R$ \Term{representable}{可表}。此时 $\widetilde X/\widetilde R$ 由\Term{quotient}{商} $X/R$ \Term{representable}{表示}。
+\end{SGAresult}
+\begin{proof}
+先假设 $R$ 为\Term{M-effective}{$(\mathrm M)$-有效}，记 $Y=X/R$。\Term{canonical}{典范}\Term{morphism}{态射} $p:X\to Y$ 属于 $(\mathrm M)$，由 ($d_T$) 为\Term{covering-morphism}{覆盖态射}。相应的\Term{morphism}{态射}
+\[
+\widetilde p:\widetilde X\longrightarrow\widetilde X/\widetilde R
+\]
+因而是 $\widetilde{\mathcal C}$ 中的\Term{universal-effective-epimorphism}{泛有效满态射}（4.4.3），所以将 $\widetilde X/\widetilde R$ 等同于 $\widetilde X$ 对 $\widetilde p$ 在其中定义的\Term{equivalence-relation}{等价关系} $R'$ 的\Term{quotient}{商}。由于\Term{canonical}{典范}\Term{functor}{函子} $\mathcal C\to\widetilde{\mathcal C}$ 与\Term{fiber-product}{纤维积}可交换，$R'$ 正是 $\widetilde R$，因为 $R$ 是由 $p$ 定义的\Term{equivalence-relation}{等价关系}。
+
+反之，假设 $\widetilde X/\widetilde R$ 由 $\mathcal C$ 的某个\Term{object}{对象} $Y$ \Term{representable}{表示}。设 $p:X\to Y$ 是从\Term{canonical}{典范}\Term{morphism}{态射} $\widetilde X\to\widetilde X/\widetilde R$ 得到的\Term{morphism}{态射}；由 4.4.3，它是\Term{covering-morphism}{覆盖态射}。与前面一样，显然 $R$ 是 $p$ 所定义的\Term{equivalence-relation}{等价关系}。只剩下证明 $p\in(\mathrm M)$。而\Term{cartesian-square}{笛卡儿方块}
+\[
+\begin{tikzcd}
+R\arrow[r,"\sim"]\arrow[dr,"p_2"']&X\times_Y X\arrow[r]\arrow[d,"\operatorname{pr}_2"]&X\arrow[d,"p"]\\
+&X\arrow[r,"p"']&Y
+\end{tikzcd}
+\]
+说明，沿\Term{covering-morphism}{覆盖态射} $p$ 作\Term{base-change}{基变换}后，$p$ 变成属于 $(\mathrm M)$ 的 $p_2$。由 ($e_T$) 得结论。
+\end{proof}
+\begin{SGAresult}{推论}{4.6.5.1}
+\footnote{编者注（45）：我们补入了此推论。}设 $(\mathrm M)$ 满足上述性质 (a) 至 ($e_T$)，$f:G\to G'$ 是一个 $\mathcal C$-\Term{group}{群}\Term{morphism}{态射}，且 $f\in(\mathrm M)$。假设 $\operatorname{Ker}(f)$ \Term{representable}{可表}（若 $\mathcal C$ 有\Term{final-object}{终对象} $e$，即为如此）。则 $H=\operatorname{Ker}(f)$ 在 $G$ 中定义的\Term{equivalence-relation}{等价关系}为\Term{M-effective}{$(\mathrm M)$-有效}，且 $G'$ \Term{representable}{表示}\Term{topology}{拓扑} $T$ 下的\Term{quotient-sheaf}{商层} $\widetilde G/\widetilde H$。
+\end{SGAresult}
+这由 4.6.5 和 3.4.7.1 得到。
+现可陈述本小节的主要结果。
+\begin{SGAresult}{\Term{theorem}{定理}}{4.6.6}
+设 $(\mathrm M)$ 是满足 4.6.3 的公理 (a) 至 ($e_T$) 的\Term{morphism}{态射}族。设 $R$ 是 $\mathcal C$ 的\Term{object}{对象} $X$ 中的 $(\mathrm M)$ \Term{M-type}{型} $\mathcal C$-\Term{equivalence-relation}{等价关系}（参见 3.4.3）。考虑如下定义的\Term{functor}{函子} $F\in\operatorname{Ob}\widehat{\mathcal C}$：$F(S)$ 是 $X_S$ 中在 $R\times S$ 下\Term{stable}{稳定}且对 $R_Z$ 的\Term{quotient}{商}为 $S$ 的 $S$-\Term{sheaf}{子层} $Z$ 的\Term{set}{集合}。
+\SourcePage{232}
+设 $F_0$ 为如下定义的 $F$ 的\Term{subfunctor}{子函子}：$F_0(S)$ 由 $F(S)$ 中的\Term{representable}{可表}元素 $Z$ 组成，即 $F_0(S)$ 是 $X_S$ 中在 $R\times S$ 下\Term{stable}{稳定}的 $\mathcal C_{/S}$-\Term{subobject}{子对象} $Z$ 的\Term{set}{集合}，要求 $R_Z$ 为\Term{M-effective}{$(\mathrm M)$-有效}且其\Term{quotient}{商}为 $S$（即要求 $Z\to S$ 属于 $(\mathrm M)$ 且 $R_Z\simeq Z\times_S Z$）。则：
+\begin{enumerate}
+\item[(i)] 由 $X\times X$ 的\Term{subobject}{子对象} $R$ 定义的\Term{morphism}{态射} $p\in\operatorname{Hom}(X,F)=F(X)$，将 $F$ 等同于 $X$ 对 $R$ 的\Term{quotient-sheaf}{商层}。
+\item[(ii)] 以下条件\Term{equivalence}{等价}：
+\begin{enumerate}
+\item[a)] $F$ \Term{representable}{可表}；
+\item[b)] $F_0$ \Term{representable}{可表}；
+\item[c)] $R$ 为\Term{M-effective}{$(\mathrm M)$-有效}。
+\end{enumerate}
+在这些条件下，$F=F_0=X/R$。
+\item[(iii)] 设 $(\mathrm N)$ 是一个在\Term{base-change}{基变换}下\Term{stable}{稳定}的\Term{morphism}{态射}族，满足：对每个\Term{covering-family}{覆盖族} $\{S_i\to S\}$ 和每个由 $(\mathrm N)$ 中\Term{morphism}{态射}组成的族 $\{T_i\to S_i\}$，$T_i$ 上相对于 $\{S_i\to S\}$ 的每个\Term{descent-datum}{下降资料}都\Term{effective-descent-datum}{有效}。假设 $X$ \Term{quarrable}{可作基变换}（参见 1.6.0），且\Term{morphism}{态射} $R\to X\times X$ 属于 $(\mathrm N)$。则 $F_0=F$。
+\end{enumerate}
+\end{SGAresult}
+\textbf{证明。}
+(i) 已经证明（4.6.1）。
+
+(ii) 已见 a) 与 c) \Term{equivalence}{等价}，以及等式 $F=X/R$。只须证明 b) 或 c) 蕴含 $F_0=F$。首先注意，正如陈述中所断言的，$F_0$ 确为 $F$ 的\Term{subfunctor}{子函子}；事实上，对每个 $S\in\operatorname{Ob}\mathcal C$ 及每个 $Z\in F_0(S)$，\Term{morphism}{态射} $Z\to S$ \Term{quarrable}{可作基变换}，故对每个 $S'\to S$，有 $Z\times_S S'\in F_0(S')$。由于 $R\in F(X)$ 属于 $F_0(X)$，4.6.2 说明 b) 蕴含 $F_0=F$。
+
+现在假设 c) 成立，设 $Q$ 是\Term{representable}{表示} $X/R$ 的 $\mathcal C$ 的\Term{object}{对象}。则\Term{morphism}{态射} $X\to Q$ 属于 $(\mathrm M)$，且对每个 $S\in\operatorname{Ob}\mathcal C$ 和每个 $Z\in F(S)$，4.6.1 的图 (*) 说明 $Z=S\times_{Q\times S}(X\times S)$ \Term{representable}{可表}，且 $Z\to S$ 属于 $(\mathrm M)$，故 $Z\in F_0(S)$。
+
+(iii) 设 $f\in\operatorname{Hom}(S,F)$ 对应于 $Z\in F(S)$。须证明 $f$ 通过 $F_0$ \Term{resolution}{分解}，即 $Z$ \Term{representable}{可表}。若 $f$ 通过 $X$ \Term{resolution}{分解}，这首先由下述\Term{lemma}{引理}显然得到。
+\begin{SGAresult}{\Term{lemma}{引理}}{4.6.7}
+设 $x_0\in X(S)$。$x_0$ 在 $F(S)$ 中的\Term{image}{像}对应于由以下两个\Term{cartesian-square}{笛卡儿方块}定义的 $X_S$ 的\Term{sheaf}{子层} $Z$：
+\[
+\begin{tikzcd}[column sep=large]
+X_S\arrow[r,"\mathrm{id}_{X_S}\times x_0"]&X_S\times_S X_S\arrow[r]&X\times X\\
+Z\arrow[u]\arrow[r]&R_S\arrow[u]\arrow[r]&R\arrow[u].
+\end{tikzcd}
+\]
+\end{SGAresult}
+\SourcePage{233}
+此\Term{lemma}{引理}立即由\Term{morphism}{态射} $X\to F$ 的描述得到。
+
+\textbf{回到\Term{theorem}{定理}的证明。}若 $f$ 通过 $X$ \Term{resolution}{分解}，则 $Z$ \Term{representable}{可表}，且由于 $R\to X\times X$ 属于 $(\mathrm N)$，$Z\to X_S$ 也属于 $(\mathrm N)$。
+一般地，$f$ 未必通过 $X$ \Term{resolution}{分解}；但由于 $X\to F$ 是\Term{covering-morphism}{覆盖态射}（4.4.3），由 4.4.8 (vii)，存在一个\Term{covering-family}{覆盖族} $\{S_i\to S\}$，且对每个 $i$ 有\Term{morphism}{态射} $S_i\to X$ 使下图交换：
+\[
+\begin{tikzcd}
+X\arrow[r]&F\\
+S_i\arrow[u]\arrow[r]&S\arrow[u,"f"'].
+\end{tikzcd}
+\]
+由上文，这个图所定义的\Term{morphism}{态射} $f_i:S_i\to F$ 属于 $\operatorname{Hom}(S_i,F_0)$，对应于 $X_{S_i}$ 的\Term{sheaf}{子层} $Z\times_S S_i$。\Term{morphism}{态射} $Z\times_S S_i\to X_{S_i}$ 属于 $(\mathrm N)$，而族 $X_{S_i}\to X_S$ \Term{covering-family}{覆盖}。因此只须证明：
+\begin{SGAresult}{命题}{4.6.8}
+设 $\{S_i\to S\}$ 是一个\Term{covering-family}{覆盖族}，$Z$ 是 $S$ 上的\Term{sheaf}{层}。假设对每个 $i$，$S_i$-\Term{functor}{函子} $Z\times_S S_i$ 由某个\Term{object}{对象} $T_i$ \Term{representable}{表示}。则 $T_i$ 族带有相对于 $S_i\to S$ 的\Term{canonical}{典范}\Term{descent-datum}{下降资料}。$Z$ \Term{representable}{可表}的充要条件是此资料\Term{effective-descent-datum}{有效}；此时“\Term{descent}{下降}所得\Term{object}{对象}”\Term{representable}{表示} $Z$。
+\end{SGAresult}
+\begin{proof}
+首先注意，由 4.4.3，$S_i\to S$ 是 $\widetilde{\mathcal C}$ 中的\Term{universal-effective-epimorphic-family}{泛有效满态射族}，故是 $\widetilde{\mathcal C}$ 中的\Term{descent-family}{下降族}（2.3）。若 $Z$ 由\Term{object}{对象} $T$ \Term{representable}{表示}，则 $T\times_S S_i$（视为\Term{sheaf}{层}）\Term{isomorphism}{同构}于 $Z\times_S S_i$，故 $T_i$ 上的\Term{descent-datum}{下降资料}\Term{effective-descent-datum}{有效}，且唯一的\Term{descent}{下降}所得\Term{object}{对象}\Term{isomorphism}{同构}于 $Z$。反之，假设 $T_i$ 上的\Term{canonical}{典范}\Term{descent-datum}{下降资料}\Term{effective-descent-datum}{有效}，设 $T$ 是\Term{descent}{下降}所得\Term{object}{对象}。由于族 $\{S_i\to S\}$ 是 $\widetilde{\mathcal C}$ 中的\Term{descent-family}{下降族}，存在一个 $S$-\Term{morphism}{态射} $T\to Z$，对每个 $S_i$ 作\Term{base-extension}{基扩张}后，它变为\Term{canonical}{典范}\Term{morphism}{态射} $T_i\to Z\times_S S_i$。此\Term{morphism}{态射}\Term{locally}{局部地}是\Term{isomorphism}{同构}；由于 $T,Z$ 都是\Term{sheaf}{层}，由 4.5.8，它是\Term{isomorphism}{同构}。
+\end{proof}
+\begin{SGAresult}{推论}{4.6.9}
+设 $R$ 是 $X$ 中的\Term{M-effective}{$(\mathrm M)$-有效}\Term{equivalence-relation}{等价关系}。对每个\Term{sheaf}{层} $F$，映射
+\[
+\operatorname{Hom}(X/R,F)\longrightarrow\operatorname{Hom}(X,F)
+\]
+将第一个\Term{set}{集合}等同于第二个\Term{set}{集合}中与 $R$ 相容的\Term{morphism}{态射}所组成的部分。
+\end{SGAresult}
+\begin{SGAresult}{推论}{4.6.10}
+设 $T'$ 是比 $T$ 更粗的一个\Term{topology}{拓扑}，使 $(\mathrm M)$ 中的\Term{morphism}{态射}均为\Term{covering-morphism}{覆盖态射}。在 4.6.6 (iii) 的条件下，对于介于 $T'$ 与\Term{canonical-topology}{典范拓扑}之间的任意\Term{topology}{拓扑}，$X/R$ 也都是 $X$ 对 $R$ 的\Term{quotient-sheaf}{商层}。
+\end{SGAresult}
+\SourcePage{234}
+\textbf{注记 4.6.11。}在 4.6.6 (iii) 的陈述中，若再假设：在正文的假设下，以 $T$ 表示\Term{descent}{下降}所得\Term{object}{对象}时，\Term{morphism}{态射} $T\to S$ 属于 $(\mathrm N)$；则包含\Term{morphism}{态射} $Z\hookrightarrow X_S$ 也属于 $(\mathrm N)$，这立即由通过\Term{descent}{下降}构造 $Z$ 的过程得到。
+
+\textbf{注记 4.6.12。}蕴含关系 c) $\Rightarrow$ b) $\Rightarrow$ a) 及 c) $\Rightarrow$ [$F_0=F=X/R$] 的证明，没有使用\Term{lemma}{引理} 4.6.5 的“充分性”部分，而该部分是唯一使用条件 ($e_T$) 的地方。因此，只要 $(\mathrm M)$ 满足条件 (a) 至 ($d_T$)，这些蕴含关系仍成立。这样的族 $(\mathrm M)$ 的一个例子是\Term{quarrable}{可作基变换}的\Term{covering-morphism}{覆盖态射}族（比较 4.6.4）。对于\Term{canonical-topology}{典范拓扑}，这些恰是\Term{universal-effective-epimorphism}{泛有效满态射}。因此有：
+\begin{SGAresult}{推论}{4.6.13}
+设 $R$ 是 $X$ 中的\Term{universal-effective-equivalence-relation}{泛有效等价关系}。则 $\mathcal C$ 的\Term{object}{对象} $X/R$ 是\Term{canonical-topology}{典范拓扑}下 $X$ 对 $R$ 的\Term{quotient-sheaf}{商层}。它\Term{representable}{表示}如下\Term{functor}{函子}：$(X/R)(S)$ 是所有 $X_S$ 中在 $R\times S$ 下\Term{stable}{稳定}的 $\mathcal C_{/S}$-\Term{subobject}{子对象} $Z$ 的\Term{set}{集合}，要求诱导的\Term{equivalence-relation}{等价关系}为\Term{universal-effective-equivalence-relation}{泛有效}且\Term{quotient}{商}为 $S$。
+\end{SGAresult}
+类似地，对任意\Term{topology}{拓扑}有：
+\begin{SGAresult}{推论}{4.6.14}
+设 $(\mathrm M)$ 是\Term{quarrable}{可作基变换}的\Term{covering-morphism}{覆盖态射}族。若 $R$ 是 $X$ 中的\Term{M-effective}{$(\mathrm M)$-有效}\Term{equivalence-relation}{等价关系}，则 $\mathcal C$ 的\Term{object}{对象} $X/R$ 是 $X$ 对 $R$ 的\Term{quotient-sheaf}{商层}，并\Term{representable}{表示} 4.6.6 的\Term{functor}{函子} $F_0$。
+\end{SGAresult}
+\textbf{评注 4.6.15。}现在可以对 4.5.5 作以下补充。根据第 I 讲的结果及 4.5.5，在只涉及\Term{projective-limit}{投射极限}的问题中（\Term{fiber-product}{纤维积}、\Term{algebraic-structure}{代数结构}等），将 $\mathcal C$ 等同于 $\widetilde{\mathcal C}$ 或 $\widehat{\mathcal C}$ 的\Term{full-subcategory}{满子范畴}均无妨；但在混合\Term{projective-limit}{投射极限}和\Term{inductive-limit}{归纳极限}的问题中，情况便不同。对于一切同时涉及\Term{projective-limit}{投射极限}和\Term{inductive-limit}{归纳极限}的问题，特别是取\Term{quotient}{商}的问题（例如\Term{group}{群}对\Term{invariant}{不变}\Term{subgroup}{子群}的\Term{quotient}{商}上的\Term{group}{群}结构），我们将给定\Term{category}{范畴}看作\Term{embedding}{嵌入}\Term{sheaf}{层}\Term{category}{范畴}中；所以，若 $R$ 是 $\mathcal C$ 的\Term{object}{对象} $X$ 中的 $\mathcal C$-\Term{equivalence-relation}{等价关系}，$X/R$ 将表示 $X$ 对 $R$ 的\Term{quotient-sheaf}{商层}（此前记作 $j(X)/j(R)$）；当此\Term{sheaf}{层}\Term{representable}{可表}时，也表示\Term{representable}{表示}它的\Term{object}{对象}。以上结果说明，在最重要的情形中，$\mathcal C$ 中的\Term{quotient}{商}也是\Term{sheaf}{层}\Term{category}{范畴}中的\Term{quotient}{商}；无论如何，我们不使用 $X/R$ 来表示 $\mathcal C$ 中与 $\widetilde{\mathcal C}$ 中的\Term{quotient}{商}不一致的\Term{quotient}{商}（例如非\Term{universal-quotient}{泛商}），从而修改第 3 小节中的定义。
+
+因此，为研究上述类型的问题，先进入\Term{sheaf}{层}\Term{category}{范畴}，其中所有通常的结果均成立（参见 4.4），再利用本小节的结果及已有的\Term{descent}{下降}\Term{effectivity}{有效性}判据（若有），将所得结果\Term{specialization}{特化}到出发的\Term{category}{范畴}。以下各小节将展示这种方法的例子。
+
+\SourcePage{235}
+\SGAsection{4.7}{有效性判据的应用：同构定理}
+本小节给出应用\Term{effectivity}{有效性}判据的一个例子。出发资料是 $\mathcal C$ 上的一个\Term{topology}{拓扑} $T$（仍比\Term{canonical-topology}{典范拓扑}更粗）、$\mathcal C$ 中满足 4.6.3 的公理 (a) 至 ($e_T$) 的一个\Term{morphism}{态射}族 $(\mathrm M)$，以及 $\mathcal C$ 中可满足以下公理的一个\Term{morphism}{态射}族 $(\mathrm N)$：
+\begin{enumerate}
+\item[(a)] $(\mathrm N)$ 在\Term{base-extension}{基扩张}下\Term{stable}{稳定}。
+\item[($f_T$)] “$(\mathrm N)$ 中的\Term{morphism}{态射}可以按给定\Term{topology}{拓扑}\Term{descent}{下降}”；即对每个 $S\in\operatorname{Ob}\mathcal C$、每个\Term{covering-family}{覆盖族} $\{S_i\to S\}$ 及每个由 $(\mathrm N)$ 中\Term{morphism}{态射}组成的族 $\{T_i\to S_i\}$，$T_i$ 上相对于 $\{S_i\to S\}$ 的每个\Term{descent-datum}{下降资料}都\Term{effective-descent-datum}{有效}，且以 $T$ 表示\Term{descent}{下降}所得\Term{object}{对象}时，\Term{morphism}{态射} $T\to S$ 属于 $(\mathrm N)$。
+\end{enumerate}
+由于 $(\mathrm M)$ 的每个元素都是\Term{covering-morphism}{覆盖态射}（条件 4.6.3 ($d_T$)），($f_T$) 蕴含下述公理：\footnote{编者注（46）：我们将公理 ($f_M$) 移到此处（原来置于命题 4.7.2 之前）。}
+\begin{enumerate}
+\item[($f_M$)] 若 $Y\to X$ 属于 $(\mathrm N)$，$X\to X_1$ 属于 $(\mathrm M)$，则 $Y$ 上相对于 $X\to X_1$ 的每个\Term{descent-datum}{下降资料}都\Term{effective-descent-datum}{有效}；以 $Y_1$ 表示\Term{descent}{下降}所得\Term{object}{对象}时，$Y_1\to X_1$ 属于 $(\mathrm N)$。
+\end{enumerate}
+立即指出这种情形的一个例子，稍后还将讨论它：$\mathcal C$ 是\Term{scheme}{概形}\Term{category}{范畴}，$T$ 是\Term{faithfully-flat}{忠实平坦}\Term{quasi-compact}{拟紧}\Term{topology}{拓扑}；$(\mathrm M)$ 是\Term{faithfully-flat}{忠实平坦}\Term{quasi-compact}{拟紧}\Term{morphism}{态射}族，$(\mathrm N)$ 是\Term{closed-immersion}{闭浸入}族或\Term{quasi-compact}{拟紧}\Term{immersion}{浸入}族。\footnote{编者注（47）：参见第 6.4 节，另见第 VI$_A$ 讲 5.3.1。}
+回顾 4.6.6 的主要结果（并考虑 4.6.11）：
+\begin{SGAresult}{命题}{4.7.1}
+若 $X$ 是 $\mathcal C$ 的一个\Term{quarrable}{可作基变换}的\Term{object}{对象}，$R$ 是 $X$ 中的 $(\mathrm M)$ \Term{M-type}{型}\Term{equivalence-relation}{等价关系}，$R\to X\times X$ 属于 $(\mathrm N)$，且 $(\mathrm N)$ 满足 (a) 及 ($f_T$)，则\Term{quotient-sheaf}{商层} $X/R$ 如下定义：$(X/R)(S)$ 是 $X_S$ 中在 $R\times S$ 下\Term{stable}{稳定}的 $S$-\Term{subobject}{子对象} $Z$ 的\Term{set}{集合}，要求 $Z\to X_S$ 属于 $(\mathrm N)$、$Z\to S$ 为\Term{covering-morphism}{覆盖态射}（或属于 $(\mathrm M)$），并且 $R_Z\simeq Z\times_S Z$。
+\end{SGAresult}
+此外还有：
+\begin{SGAresult}{命题}{4.7.2}
+设 $X\in\operatorname{Ob}\mathcal C$，$R$ 是 $X$ 中的\Term{M-effective}{$(\mathrm M)$-有效}\Term{equivalence-relation}{等价关系}。设 $(\mathrm N)$ 是满足 (a) 和 ($f_M$) 的\Term{morphism}{态射}族。
+对 $X$ 的每个在 $R$ 下\Term{stable}{稳定}且 $Y\to X$ 属于 $(\mathrm N)$ 的\Term{subobject}{子对象} $Y$，由 $R$ 在 $Y$ 中诱导的\Term{equivalence-relation}{等价关系}为\Term{M-effective}{$(\mathrm M)$-有效}，且\Term{quotient}{商} $Y/R_Y=Y'$ 是 $X'=X/R$ 的一个\Term{subobject}{子对象}，满足 $Y'\to X'$ 属于 $(\mathrm N)$。
+映射 $Y\mapsto Y'$ 给出以下两个\Term{set}{集合}之间的\Term{bijection}{双射}：$X$ 中在 $R$ 下\Term{stable}{稳定}且 $Y\to X$ 属于 $(\mathrm N)$ 的\Term{subobject}{子对象} $Y$ 的\Term{set}{集合}；$X'$ 中 $Y'\to X'$ 属于 $(\mathrm N)$ 的\Term{subobject}{子对象} $Y'$ 的\Term{set}{集合}。逆映射为 $Y'\mapsto Y'\times_{X'}X$。
+\end{SGAresult}
+\SourcePage{236}
+\begin{proof}
+由于 $R$ 为\Term{M-effective}{$(\mathrm M)$-有效}，\Term{morphism}{态射} $X\to X'$ 属于 $(\mathrm M)$。设 $Y'$ 是 $X'$ 的一个\Term{subobject}{子对象}，使\Term{canonical}{典范}\Term{morphism}{态射} $Y'\to X'$ 属于 $(\mathrm N)$。则 $X$ 的\Term{subobject}{子对象} $Y=Y'\times_{X'}X$ 在 $R$ 下\Term{stable}{稳定}，且\Term{morphism}{态射} $Y\to X$（相应地，$Y\to Y'$）属于 $(\mathrm N)$（相应地，$(\mathrm M)$），因为 $(\mathrm N)$ 和 $(\mathrm M)$ 在\Term{base-change}{基变换}下\Term{stable}{稳定}。以 $R_Y$ 表示由 $R$ 在 $Y$ 中诱导的\Term{equivalence-relation}{等价关系}。由 4.4.11，\Term{quotient-sheaf}{商层} $Y/R_Y$ 由 $Y'$ \Term{representable}{表示}，故由 4.6.5，$R_Y$ 为\Term{M-effective}{$(\mathrm M)$-有效}。
+
+反之，证明 $X$ 中每个在 $R$ 下\Term{stable}{稳定}且\Term{structure-morphism}{结构态射} $Y\to X$ 属于 $(\mathrm N)$ 的\Term{subobject}{子对象} $Y$ 都由此方式得到。事实上，若 $Y$ 在 $R$ 下\Term{stable}{稳定}，则它在 $R=X\times_{X'}X$ 中的两个\Term{image}{像}相同，且 $Y$ 带有相对于 $X\to X'$ 的\Term{descent-datum}{下降资料}；由于族 $(\mathrm N)$ 满足公理 ($f_M$)，所求结果随之得到。
+\end{proof}
+\begin{SGAresult}{推论}{4.7.3}
+设 $X\in\operatorname{Ob}\mathcal C$，$R$ 是 $X$ 中的\Term{M-effective}{$(\mathrm M)$-有效}\Term{equivalence-relation}{等价关系}；再假设 $R\to X\times X$ 属于 $(\mathrm N)$，其中 $(\mathrm N)$ 满足 (a) 和 ($f_T$)。则对 4.7.2 中的每个 $Y$，$R_Y\to Y\times Y$ 也属于 $(\mathrm N)$，故由 4.7.1，有如下描述：$(Y/R_Y)(S)$ 是 $Y_S$ 中在 $R_Y\times S$ 下\Term{stable}{稳定}的 $S$-\Term{subobject}{子对象} $Z$ 的\Term{set}{集合}，要求 $Z\to Y_S$ 属于 $(\mathrm N)$（于是 $Z\to X_S$ 也属于 $(\mathrm N)$）、$Z\to S$ 为\Term{covering-morphism}{覆盖态射}，并且 $R_Z\simeq Z\times_S Z$。
+\end{SGAresult}

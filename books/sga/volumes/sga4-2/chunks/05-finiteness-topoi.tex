@@ -1,0 +1,678 @@
+\SourcePage{125}
+\SGAchapter{VI}{有限性条件。纤维拓扑斯与纤维景。对取极限技巧的应用}{Conditions de finitude. Topos et sites fibrés. Applications aux techniques de passage à la limite}
+\begin{center}A. Grothendieck 与 J.-L. Verdier\end{center}
+% 原书本讲目录在译本中由章节标题重建。
+\SGAsection{0}{引言}
+本讲研究两类密切相关的问题。
+
+首先，我们系统研究\Term{topos}{拓扑斯}的\Term{finiteness-condition}{有限性条件}，依次考察\Term{topos}{拓扑斯}的\Term{object}{对象} $X$ 和\Term{arrow}{箭头} $u:X\to Y$ 的\Term{quasi-compactness}{拟紧性}、\Term{quasi-separatedness}{拟分离性}与\Term{coherence}{凝聚性}（$=$ \Term{quasi-compactness}{拟紧性} $+$ \Term{quasi-separatedness}{拟分离性}）（第1节），随后考察\Term{topos}{拓扑斯} $E$ 本身的这些性质（第2节），最后考察\Term{topos}{拓扑斯}\Term{morphism}{态射} $f:E\to E'$ 的这些性质（第3节）。这些概念取意于\Term{scheme}{概形}理论中熟知的同名概念。第4节在由两个\Term{topos}{拓扑斯}\Term{gluing}{黏合}而成的\Term{topos}{拓扑斯}这一特殊情形中研究这些概念（第IV讲9）。
+\SourcePage{126}
+对于后面的各节，从这些略带技术性的论述中主要只须记住如下定义：\Term{coherent}{凝聚}\Term{topos}{拓扑斯}是\Term{equivalence}{等价}于形如 $C^{\sim}$ 的\Term{topos}{拓扑斯}的\Term{topos}{拓扑斯}，其中 $C$ 是一个小\Term{site}{景}，\Term{finite-projective-limit}{有限投射极限}在其中\Term{representable}{可表}，且任一\Term{covering-family}{覆盖族}都有\Term{finite-covering}{有限覆盖}子族；\Term{coherent}{凝聚}\Term{topos}{拓扑斯}之间的\Term{coherent}{凝聚}\Term{morphism}{态射} $f:E\to E'$，则是能够描述为（在\Term{equivalence}{等价}意义下）与\Term{site}{景}\Term{morphism}{态射} $f:C\to C'$ 相伴的\Term{morphism}{态射}，其中 $C$ 与 $C'$ 如上，而相应\Term{functor}{函子} $f^*:C'\to C$ \Term{left-exact}{左正合}。
+
+也许值得指出，采用这里使用的\Term{finite}{有限}性概念，尤其是\Term{coherent}{凝聚}\Term{topos}{拓扑斯}的概念，我们坚决地、而且是第一次，离开了分析学家和“\Term{topology}{拓扑}学家”\footnote{引号表示，这里所说的是不知\Term{topos}{拓扑斯}概念为何物的“……”（关于“\Term{topology}{拓扑}”一词的含义，参见第IV讲0.4）。}所熟悉的\Term{topological-space}{拓扑空间}。例如，与一个\Term{hausdorff-space}{分离拓扑空间} $X$ 相伴的\Term{topos}{拓扑斯}（第IV讲2.1），只有在 $X$ 是\Term{finite}{有限}集时才\Term{coherent}{凝聚}！这说明本讲完全以\Term{algebraic}{代数}几何和\Term{algebraic}{代数}所产生的各类\Term{topos}{拓扑斯}为\Term{object}{对象}。事实上，这些学科迄今使用过的所有\Term{topos}{拓扑斯}（当然，复数域上采用超越方法的\Term{algebraic}{代数}几何除外！）都是\Term{locally-coherent}{局部凝聚}的。
+
+其次，我们证明两个关于\Term{topos}{拓扑斯}\Term{cohomology}{上同调}的\Term{inductive-limit}{归纳极限}过渡定理。第一个（5.2）说明，\Term{coherent}{凝聚}\Term{topos}{拓扑斯}上的\Term{functor}{函子} $\mathrm H^i(E,-)$ 与\Term{abelian-sheaf}{阿贝尔层}的\Term{inductive-limit}{归纳极限}交换。第二个（8.7）实质上说，若\Term{topos}{拓扑斯} $X$ 表为\Term{coherent}{凝聚}\Term{topos}{拓扑斯} $X_i$ 的\Term{filtered-projective-limit}{滤过投射极限}，且过渡\Term{morphism}{态射} $f_{ij}:X_j\to X_i$ \Term{coherent}{凝聚}，则 $X$ 的\Term{cohomology}{上同调}（以任意\Term{abelian-sheaf}{阿贝尔层}为系数）可计算为各 $X_i$ 的\Term{cohomology}{上同调}的\Term{inductive-limit}{归纳极限}。为了给出这句话的准确含义，首先须明确“\Term{topos}{拓扑斯}的\Term{projective-limit}{投射极限}”这一概念，这是第7、8节的工作。这是很有用的几何概念，无疑在\Term{scheme}{概形}\Term{projective-limit}{投射极限}以外的场合也同样有用（M. Artin 最初定义这一概念时，正是以\Term{scheme}{概形}的\Term{projective-limit}{投射极限}为\Term{model}{模型}）。例如，我们说明（8.4）如何把各种“在一点处\Term{localization}{局部化}”的概念（\Term{noetherian}{诺特}\Term{space}{空间}的、\Term{scheme}{概形}对于通常\Term{topology}{拓扑}的、甚至对于\Term{etale}{平展}\Term{topology}{拓扑}的\Term{localization}{局部化}）统一起来：将其定义为该点的各个“\Term{neighborhood}{邻域}”的\Term{projective-limit}{投射极限}。这与在一点处\Term{localization}{局部化}这一概念的直观完全一致。
+
+这两个\Term{limit}{极限}过渡定理将在下一讲中，针对\Term{scheme}{概形}的\Term{etale-cohomology}{平展上同调}重新明确写出（第VII讲3.3和5.7）；在这一情形下，本讨论班的其余部分将不断使用它们，而且迄今几乎所有涉及\Term{etale-cohomology}{平展上同调}的工作都如此。因此，若读者愿意承认这两个定理在第VII讲所述特殊情形下成立，并且只对\Term{etale-cohomology}{平展上同调}的应用感兴趣，就可以略去本讲。
+\SourcePage{127}
+诚然，\Term{topos}{拓扑斯}的\Term{constructible}{可构造}\Term{object}{对象}（即其通向\Term{final-object}{终对象} $e$ 的\Term{structural-morphism}{结构态射} $X\to e$ \Term{coherent}{凝聚}的\Term{object}{对象}）这一概念，在本讨论班后面的内容中也将起重要\Term{action}{作用}（而在本讲中，它的\Term{action}{作用}十\Term{graded}{分次}要，哪怕只是因为对\Term{coherent}{凝聚}\Term{topos}{拓扑斯}而言，它等同于这里居于\Term{center}{中心}的\Term{coherent}{凝聚}\Term{object}{对象}概念）。不过，第IX讲针对\Term{scheme}{概形}上的\Term{etale}{平展}\Term{sheaf}{层}这一特殊情形，独立于本讲的一般研究发展了这一概念；而且在这一情形中，有一些特殊而很有用的现象，构成了第IX讲相关论述的基础（首先是定义IX 2.3）。第IX讲的成稿比第VI讲的本稿早五年，但对使用者仍很适用，因此我们只在第IX讲末尾证明其中所用的\Term{constructibility}{可构造性}概念与这里引入的概念\Term{equivalence}{等价}。
+
+\SGAsection{1}{拓扑斯的对象与箭头的有限性条件}
+\begin{SGAresult}{定义}{1.1}
+设 $C$ 是一个\Term{site}{景}。若对每个\Term{covering-family}{覆盖族} $(X_i\to X)_{i\in I}$，指标集 $I$ 都有一个\Term{finite}{有限}\Term{subset}{子集} $J$，使子族 $(X_i\to X)_{i\in J}$ 仍为\Term{covering-family}{覆盖族}，则称 $C$ 的\Term{object}{对象} $X$ 是\Term{quasi-compact}{拟紧}的。
+\end{SGAresult}
+由于我们总把一个 $\mathcal U$-\Term{topos}{拓扑斯} $E$ 看作一个\Term{site}{景}（第IV讲1.1.1），上述定义特别适用于 $E$ 的\Term{object}{对象}。事实上，由下面的命题可以归结到这一情形。
+\begin{SGAresult}{命题}{1.2}
+设 $C$ 是 $\mathcal U$-\Term{site}{景}，$\varepsilon:C\to C^{\sim}$ 为\Term{canonical-functor}{典范函子}，$X$ 是 $C$ 的\Term{object}{对象}。则 $X$ 是\Term{site}{景} $C$ 的\Term{quasi-compact}{拟紧}\Term{object}{对象}，当且仅当 $\varepsilon(X)$ 是\Term{topos}{拓扑斯} $C^{\sim}$ 的\Term{quasi-compact}{拟紧}\Term{object}{对象}。
+\end{SGAresult}
+\begin{proof}
+设 $X$ \Term{quasi-compact}{拟紧}，证明 $\varepsilon(X)$ \Term{quasi-compact}{拟紧}。取\Term{epimorphic-family}{满射族} $(F_i\to\varepsilon(X))_{i\in I}$。对每个 $i\in I$，取\Term{epimorphic-family}{满射族} $\varepsilon(X_{ij})\to F_i$，$j\in J_i$。复合\Term{morphism}{态射} $\varepsilon(X_{ij})\to\varepsilon(X)$ 可视为 $\varepsilon(X)(X_{ij})$ 的元素 $\alpha_{ij}$；一般不能断言它来自\Term{morphism}{态射} $X_{ij}\to X$，但由\Term{associated-sheaf}{相伴层} $\varepsilon(X)$ 的构造知道，对固定的 $i,j$，可以找到\Term{covering-family}{覆盖族} $Y_k\to X_{ij}$，使 $\alpha_{ij}$ 在各 $\varepsilon(X)(Y_k)$ 中的像来自 $X(Y_k)$ 的元素，即来自\Term{morphism}{态射} $Y_k\to X$。因此，细化\Term{epimorphic-family}{满射族} $\varepsilon(X_{ij})\to F_i$ 后，可以假设复合\Term{morphism}{态射} $\varepsilon(X_{ij})\to\varepsilon(X)$ 来自\Term{morphism}{态射} $X_{ij}\to X$。让 $i,j$ 变化，这些 $\varepsilon(X_{ij})\to\varepsilon(X)$ 构成\Term{epimorphic-family}{满射族}，因而（第II讲4.4）各 $X_{ij}\to X$ 构成\Term{covering-family}{覆盖族}。由 $X$ 的假设，该族有\Term{finite-covering}{有限覆盖}子族；再次使用同一结果，
+\SourcePage{128}
+相应的\Term{finite}{有限}个\Term{morphism}{态射} $\varepsilon(X_{ij})\to\varepsilon(X)$ 构成\Term{epimorphic-family}{满射族}。由于它们通过\Term{finite}{有限}个\Term{morphism}{态射} $F_i\to\varepsilon(X)$ \Term{resolution}{分解}，这个\Term{finite}{有限}族已为\Term{epimorphic-family}{满射族}。这就证明了 $\varepsilon(X)$ \Term{quasi-compact}{拟紧}。
+
+反过来，由 $\varepsilon(X)$ \Term{quasi-compact}{拟紧}推出 $X$ \Term{quasi-compact}{拟紧}，由所引结果立即可见。
+\end{proof}
+上述结果表明，\Term{site}{景}中的\Term{quasi-compactness}{拟紧性}概念可归结为\Term{topos}{拓扑斯}中的相应概念。
+\begin{SGAresult}{命题}{1.3}
+设 $C$ 是一个\Term{site}{景}，$(X_i\to X)_{i\in I}$ 是\Term{finite-covering-family}{有限覆盖族}，且各 $X_i$ \Term{quasi-compact}{拟紧}。则 $X$ \Term{quasi-compact}{拟紧}。
+\end{SGAresult}
+\begin{proof}
+由1.2可以假设 $C$ 是\Term{topos}{拓扑斯}。设 $(X'_j\to X)_{j\in J}$ 是 $C$ 中的\Term{covering-family}{覆盖族}，即\Term{epimorphic-family}{满射族}。对每个 $i\in I$，由\Term{base-change}{基变换} $X_i\to X$ \Term{derivation}{导出}的族是\Term{epimorphic-family}{满射族}，因而（由于 $X_i$ \Term{quasi-compact}{拟紧}）它有\Term{finite}{有限}\Term{surjectivity}{满射}子族，对应于指标集 $J$ 的\Term{finite}{有限}\Term{subset}{子集} $J_i$。令 $J'=\bigcup_{i\in I}J_i$；由于 $I$ \Term{finite}{有限}，$J'$ 是 $J$ 的\Term{finite}{有限}\Term{subset}{子集}。族 $(X'_j\to X)_{j\in J'}$ 已为\Term{epimorphic-family}{满射族}，因为它\Term{local-scheme}{局部}如此。
+\end{proof}
+\begin{SGAresult}{推论}{1.4}
+设 $(X_i)_{i\in I}$ 是\Term{topos}{拓扑斯} $E$ 的一族\Term{object}{对象}，$X$ 为其和。则 $X$ \Term{quasi-compact}{拟紧}，当且仅当各 $X_i$ 均\Term{quasi-compact}{拟紧}，并且除\Term{finite}{有限}个外，各 $X_i$ 都\Term{isomorphism}{同构}于 $E$ 的“空\Term{object}{对象}” $\varnothing_E$。
+\end{SGAresult}
+\begin{proof}
+充分性立即来自1.3（去掉空的\Term{set-component}{分量}不会改变这个和）。对于必要性，注意某个\Term{finite}{有限}子族 $(X_i)_{i\in J}$ 必须\Term{covering}{覆盖} $X$，于是对 $i\in I\setminus J$ 有
+\[
+X_i=X_i\times_X\coprod_{j\in J}X_j
+=\coprod_{j\in J}(X_i\times_X X_j)=\varnothing
+\]
+（第II讲4.5.1）。另一方面，为证明每个 $X_i$ \Term{quasi-compact}{拟紧}，注意 $X\simeq X_i\amalg X'_i$；$X_i$ 的任一\Term{covering-family}{覆盖族} $Y_j\to X_i$ 都给出 $X$ 的\Term{covering-family}{覆盖族} $Y_j\amalg X'_i\to X_i\amalg X'_i=X$。它有\Term{finite-covering}{有限覆盖}子族，显然相应的\Term{finite}{有限}个 $Y_j\to X_i$ 也构成\Term{covering-family}{覆盖族}。这说明 $X_i$ \Term{quasi-compact}{拟紧}。
+\end{proof}
+\textbf{注记1.5.1。}\Term{topos}{拓扑斯} $E$ 的\Term{object}{对象} $X$ 是否\Term{quasi-compact}{拟紧}，只依赖于\Term{induced-topos}{诱导拓扑斯} $E_{/X}$，并且意味着后者的\Term{final-object}{终对象}\Term{quasi-compact}{拟紧}。同样，\Term{site}{景} $C$ 的\Term{object}{对象} $X$ \Term{quasi-compact}{拟紧}，当且仅当诱导\Term{site}{景} $C_{/X}$（第III讲5.1）的\Term{final-object}{终对象}\Term{quasi-compact}{拟紧}。
+
+\textbf{1.5.2。}设 $X$ 是\Term{topos}{拓扑斯} $E$ 的\Term{object}{对象}。则 $X$ \Term{quasi-compact}{拟紧}，当且仅当每个\Term{covering}{覆盖} $X$ 的递增\Term{filtered}{滤过}\Term{subobject}{子对象}族 $(X_i)_{i\in I}$ 中都含有一个等于 $X$ 的 $X_i$。所以这一条件只依赖于\Term{object}{对象} $X$ 的\Term{subobject}{子对象}的\Term{ordered-set}{有序集}（即\Term{induced-topos}{诱导拓扑斯} $E_{/X}$ 的\Term{open-object}{开对象}的\Term{ordered-set}{有序集}）。
+\SourcePage{129}
+\textbf{1.5.3。}考虑 $E$ 的一个\Term{generating-family}{生成族} $(X_i)_{i\in I}$。由定义及1.3可知：$E$ 的\Term{object}{对象} $X$ \Term{quasi-compact}{拟紧}的必要条件是，它有由\Term{finite}{有限}个 $X_i$ 构成的\Term{covering-family}{覆盖族}，即 $X$ \Term{isomorphism}{同构}于 $E$ 的这些\Term{object}{对象}的\Term{finite}{有限}和的\Term{quotient-object}{商对象}；若各 $X_i$ \Term{quasi-compact}{拟紧}，这一条件也充分。另一方面，在对 $E$ 所作的假设下，显然可以把给定的\Term{generating-family}{生成族}换成子族，使 $I\in\mathcal U$。利用 $E$ 的一个\Term{object}{对象}的\Term{quotient-object}{商对象}之集是小的这一事实（第I讲7.5），便得到：$E$ 中由\Term{quasi-compact}{拟紧}\Term{object}{对象}组成的\Term{full-subcategory}{满子范畴} $E_{\mathrm{qc}}$ \Term{equivalence}{等价}于一个属于 $\mathcal U$ 的\Term{category}{范畴}，即 $E_{\mathrm{qc}}$ 的\Term{object}{对象}\Term{isomorphism}{同构}类之集的\Term{cardinal}{基数}属于 $\mathcal U$。
+
+\textbf{例1.6.1。}设 $X$ 是\Term{topological-space}{拓扑空间}。$X$ 的\Term{open-subset}{开集} $U$ 是\Term{open-subset}{开集}\Term{site}{景} $\operatorname{Ouv}(X)$ 的\Term{quasi-compact}{拟紧}\Term{object}{对象}，当且仅当 $U$ 对 $X$ 诱导的\Term{topology}{拓扑}是\Term{quasi-compact}{拟紧}\Term{space}{空间}。更一般地，$X$ 上的\Term{sheaf}{层} $F$ 是\Term{topos}{拓扑斯} $\operatorname{Top}(X)$ 的\Term{quasi-compact}{拟紧}\Term{object}{对象}，当且仅当与 $F$ 相伴的 $X$ 上的\Term{etale-space}{平展空间} $X'$ \Term{quasi-compact}{拟紧}。（这是上述断言、1.5及 $\operatorname{Top}(X)_{/F}$ \Term{equivalence}{等价}于 $\operatorname{Top}(X')$ 这一事实（第IV讲5.7）的推论。）
+
+\textbf{1.6.2。}在属于 $\mathcal U$ 的\Term{scheme}{概形}所成的\Term{category}{范畴} $(\mathrm{Sch})$ 上，考虑 [6] 6.3中的一种\Term{topology}{拓扑} $T_i$（如 Zariski \Term{topology}{拓扑}、\Term{etale}{平展}\Term{topology}{拓扑}、fppf \Term{topology}{拓扑}或 \Term{fpqc-topology}{fpqc 拓扑}）。一个\Term{scheme}{概形}在此\Term{topology}{拓扑}意义下\Term{quasi-compact}{拟紧}，当且仅当它在通常意义下是\Term{quasi-compact}{拟紧}\Term{scheme}{概形}。（用所引文献的记号，只需用到属于 $P'$ 的每个族都\Term{finite}{有限}这一事实。）
+\begin{SGAresult}{定义}{1.7}
+设 $E$ 是\Term{topos}{拓扑斯}，$f:X\to Y$ 是 $E$ 的\Term{arrow}{箭头}。若对每个\Term{arrow}{箭头} $Y'\to Y$，只要 $Y'$ \Term{quasi-compact}{拟紧}，\Term{object}{对象} $X'=X\times_Y Y'$ 也\Term{quasi-compact}{拟紧}，就称 $f$ 为\Term{quasi-compact}{拟紧}\Term{morphism}{态射}。若\Term{diagonal-morphism}{对角态射} $X\to X\times_Y X$ \Term{quasi-compact}{拟紧}，就称 $f$ \Term{quasi-separated}{拟分离}。若 $f$ 既\Term{quasi-compact}{拟紧}又\Term{quasi-separated}{拟分离}，就称 $f$ \Term{coherent}{凝聚}。
+\end{SGAresult}
+\textbf{1.7.1。}把\Term{morphism}{态射} $f:X\to Y$ \Term{quasi-separated}{拟分离}的定义展开可见，这也意味着：对每个“在 $Y$ 上”的双\Term{arrow}{箭头} $g_1,g_2:X'\rightrightarrows X$，即满足 $fg_1=fg_2$ 的双\Term{arrow}{箭头}，$X'$ \Term{quasi-compact}{拟紧}总推出 $\operatorname{Ker}(g_1,g_2)$ \Term{quasi-compact}{拟紧}。
+\begin{SGAresult}{命题}{1.8}
+设 $E$ 是\Term{topos}{拓扑斯}。
+
+(i) $E$ 中的每个\Term{isomorphism}{同构}都是\Term{coherent}{凝聚}\Term{morphism}{态射}，即既\Term{quasi-compact}{拟紧}又\Term{quasi-separated}{拟分离}。两个\Term{quasi-compact}{拟紧}（分别为\Term{quasi-separated}{拟分离}、\Term{coherent}{凝聚}）\Term{morphism}{态射}的复合仍\Term{quasi-compact}{拟紧}（分别为\Term{quasi-separated}{拟分离}、\Term{coherent}{凝聚}）。
+
+(ii) 设 $f:X\to Y$ 与 $g:Y'\to Y$ 是 $E$ 中的\Term{morphism}{态射}，$f':X'=X\times_Y Y'\to Y'$ 由 $f$ 经\Term{base-change}{基变换} $g$ \Term{derivation}{导出}。若 $f$ \Term{quasi-compact}{拟紧}（分别为\Term{quasi-separated}{拟分离}、\Term{coherent}{凝聚}），则 $f'$ 也如此。
+\SourcePage{130}
+(iii) 设 $f:X\to Y$ 与 $g:Y\to Z$ 是 $E$ 中的\Term{morphism}{态射}。若 $gf$ \Term{quasi-separated}{拟分离}，则 $f$ \Term{quasi-separated}{拟分离}。
+
+(iv) 设 $f:X\to Y$ 与 $g:Y\to Z$ 是 $E$ 中的\Term{morphism}{态射}，且 $g$ \Term{quasi-separated}{拟分离}。若 $gf$ \Term{quasi-compact}{拟紧}（分别为\Term{coherent}{凝聚}），则 $f$ \Term{quasi-compact}{拟紧}（分别为\Term{coherent}{凝聚}）。
+\end{SGAresult}
+\begin{proof}
+这些证明是熟知的（参见 EGA IV 1或 EGA I第二版）。“\Term{quasi-compact}{拟紧}”情形下的(i)、(ii)由定义立即得到；在“\Term{quasi-separated}{拟分离}”情形下，\Term{base-change}{基变换}下的\Term{stable}{稳定}性(ii)立即来自定义和前一种情形，每个\Term{isomorphism}{同构}都\Term{quasi-separated}{拟分离}也是如此。对复合 $X\to Y\to Z$ 的\Term{stable}{稳定}性可借助下列具有\Term{cartesian-square}{笛卡儿方块}的图看出：
+\[
+\begin{tikzcd}
+X \arrow[d,"\Delta_{X/Y}"] \arrow[dd,bend right=50,"\Delta_{X/Z}"'] & \\
+X\times_Y X \arrow[r] \arrow[d,"u"] & Y\arrow[d,"\Delta_{Y/Z}"]\\
+X\times_Z X \arrow[r] &Y\times_Z Y .
+\end{tikzcd}\tag{*}
+\]
+由假设，$\Delta_{Y/Z}$ \Term{quasi-compact}{拟紧}，因而由它经\Term{base-change}{基变换}\Term{derivation}{导出}的 $u$ 也\Term{quasi-compact}{拟紧}；而 $\Delta_{Y/Z}$ \Term{quasi-compact}{拟紧}，因此复合 $u\Delta_{X/Y}=\Delta_{X/Z}$ 也\Term{quasi-compact}{拟紧}。这就证明了(i)、(ii)，“\Term{coherent}{凝聚}”情形由前两种情形合并得到。为证明(iv)中的第一种情形，考虑下列各方块均为\Term{cartesian-square}{笛卡儿方块}的图：
+\[
+\begin{tikzcd}
+& X\arrow[r,"gf"] &Z\\
+X\arrow[r,"{\Gamma_f=(\mathrm{id}_X,f)}"]\arrow[d,"f"']\arrow[rr,bend right=18,"f"']
+&X\times_Z Y\arrow[u,"\mathrm{pr}_1"]\arrow[r,"\mathrm{pr}_2"]\arrow[d,"f\times_Z\mathrm{id}_Y"] &Y\arrow[u,"g"']\\
+Y\arrow[r,"\Delta_{Y/Z}"']&Y\times_Z Y .&
+\end{tikzcd}\tag{**}
+\]
+由假设，$g$ \Term{quasi-separated}{拟分离}，故 $\Delta_{Y/Z}$ \Term{quasi-compact}{拟紧}，因而 $\Gamma_f$ 经\Term{base-change}{基变换}也\Term{quasi-compact}{拟紧}；同样，由假设 $gf$ \Term{quasi-compact}{拟紧}，因而 $\mathrm{pr}_2$ 经\Term{base-change}{基变换}也\Term{quasi-compact}{拟紧}。所以 $f=\mathrm{pr}_2\Gamma_f$ 是两个\Term{quasi-compact}{拟紧}\Term{morphism}{态射}的复合，故\Term{quasi-compact}{拟紧}。
+\SourcePage{131}
+(iv)中括号内的相应情形立即来自前一情形和(iii)，现在只剩下证明(iii)。为此，再看图(*)；假设 $gf$ \Term{quasi-separated}{拟分离}，意味着 $\Delta_{X/Z}=u\Delta_{X/Y}$ \Term{quasi-compact}{拟紧}；结论 $f$ \Term{quasi-separated}{拟分离}，则意味着 $\Delta_{X/Y}$ \Term{quasi-compact}{拟紧}。只要证明 $u$ \Term{quasi-separated}{拟分离}，这就由(iv)得到。而 $u$ 显然是\Term{monomorphism}{单态射}，且有下面的平凡结果。
+\end{proof}
+\begin{SGAresult}{推论}{1.8.1}
+每个\Term{monomorphism}{单态射}都\Term{quasi-separated}{拟分离}。
+\end{SGAresult}
+\begin{proof}
+若 $u:X\to Y$ 为\Term{monomorphism}{单态射}，则 $\Delta_{X/Y}$ 是\Term{isomorphism}{同构}，因而\Term{quasi-compact}{拟紧}。
+\end{proof}
+\begin{SGAresult}{推论}{1.8.2}
+设 $f:X\to Y$ 与 $f':X'\to Y'$ 是 $E$ 中的两个 $S$-\Term{morphism}{态射}。若 $f,f'$ \Term{quasi-compact}{拟紧}（分别为\Term{quasi-separated}{拟分离}、\Term{coherent}{凝聚}），则 $f\times_S f':X\times_S X'\to Y\times_S Y'$ 也如此。
+\end{SGAresult}
+这是(i)、(ii)合用的熟知推论。
+
+\textbf{注记1.9.1。}设 $E$ 是任意\Term{category}{范畴}，$Q$ 是 $\operatorname{ob}E$ 中对\Term{isomorphism}{同构}\Term{stable}{稳定}的子类（所以给出 $Q$ 就等于给出 $E$ 的\Term{strictly-full-subcategory}{严格满子范畴}），用来充当“\Term{quasi-compact}{拟紧}”\Term{object}{对象}。假设 $E$ 中的\Term{fibre-product}{纤维积}\Term{representable}{可表}。那么仿照定义1.7便可定义 $Q$-\Term{quasi-compact}{拟紧}、$Q$-\Term{quasi-separated}{拟分离}和 $Q$-\Term{coherent}{凝聚}\Term{morphism}{态射}。此时1.8、1.8.1成立；若 $E$ 中两个\Term{object}{对象}的积\Term{representable}{可表}，1.8.2也成立。
+
+\textbf{1.9.2。}设 $S$ 为 $E$ 的\Term{object}{对象}，$f:X\to Y$ 为 $E_{/S}$ 的\Term{morphism}{态射}。由注记1.5立即得到：$f$ \Term{quasi-compact}{拟紧}（分别为\Term{quasi-separated}{拟分离}、\Term{coherent}{凝聚}），当且仅当 $E$ 中相应的\Term{morphism}{态射}（由 $f$ 经“忘掉 $S$”\Term{functor}{函子}得到）如此。特别地，若 $f:X\to Y$ 是 $E$ 中的\Term{morphism}{态射}，在上述讨论中取 $S=Y$，便知 $f$ \Term{quasi-compact}{拟紧}（分别为\Term{quasi-separated}{拟分离}、\Term{coherent}{凝聚}），当且仅当\Term{induced-topos}{诱导拓扑斯} $E_{/Y}$ 的\Term{object}{对象} $(X,f)$ 通向该\Term{topos}{拓扑斯}\Term{final-object}{终对象}的\Term{structural-morphism}{结构态射}\Term{quasi-compact}{拟紧}（分别为\Term{quasi-separated}{拟分离}、\Term{coherent}{凝聚}）。这时也说（借助\Term{structural-morphism}{结构态射} $f$）$X$ 在 $Y$ 上\Term{quasi-compact}{拟紧}（分别为\Term{quasi-separated}{拟分离}、\Term{coherent}{凝聚}）；这个说法既\Term{solvable}{可解}释为关于\Term{topos}{拓扑斯} $E$ 的说法，也\Term{solvable}{可解}释为关于\Term{induced-topos}{诱导拓扑斯} $E_{/Y}$ 的说法（将 $Y$ 视为其\Term{final-object}{终对象}）。
+
+\textbf{1.9.3。}若\Term{topos}{拓扑斯} $E$ 的\Term{object}{对象} $X$ 在\Term{final-object}{终对象}上\Term{coherent}{凝聚}，就称它\Term{constructible}{可构造}。\Term{constructible}{可构造}\Term{object}{对象}之间的任意\Term{morphism}{态射}都\Term{coherent}{凝聚}（1.8(iv)）。$E$ 中由\Term{constructible}{可构造}\Term{object}{对象}组成的\Term{full-subcategory}{满子范畴} $E_{\mathrm{cons}}$ 对\Term{finite-projective-limit}{有限投射极限}\Term{stable}{稳定}；这立即来自1.8.2和1.8(ii)。
+\SourcePage{132}
+\textbf{1.9.4。}概念1.7主要只在有\Term{quasi-compact}{拟紧}\Term{object}{对象}\Term{generating-family}{生成族}的\Term{topos}{拓扑斯} $E$ 中有意义。在这一情形下，这些概念具有“底部\Term{local-nature}{局部性质}”（第IV讲8.5.4），如下所示。
+\begin{SGAresult}{命题}{1.10}
+假设\Term{topos}{拓扑斯} $E$ 有由\Term{quasi-compact}{拟紧}\Term{object}{对象}组成的\Term{generating-subcategory}{生成子范畴} $C$，设 $f:X\to Y$ 是 $E$ 中的\Term{morphism}{态射}。
+
+(i) $f$ \Term{quasi-compact}{拟紧}，当且仅当对任意\Term{morphism}{态射} $S\to Y$，其中 $S\in\operatorname{Ob}C$，\Term{object}{对象} $X\times_Y S$ 都\Term{quasi-compact}{拟紧}。
+
+(ii) 设 $Y_i\to Y$，$i\in I$，是\Term{covering-family}{覆盖族}。则 $f$ \Term{quasi-compact}{拟紧}（分别为\Term{quasi-separated}{拟分离}、\Term{coherent}{凝聚}），当且仅当对每个 $i\in I$，$f_i:X_i=X\times_Y Y_i\to Y_i$ 如此。
+\end{SGAresult}
+\begin{proof}
+先证(i)。由定义，必要性显然。为证充分性，须证明对每个\Term{quasi-compact}{拟紧}\Term{object}{对象} $Y'$ 及每个\Term{morphism}{态射} $Y'\to Y$，\Term{object}{对象} $X'=X\times_Y Y'$ \Term{quasi-compact}{拟紧}。而存在\Term{covering-family}{覆盖族} $S_i\to Y'$，其中 $S_i\in\operatorname{Ob}C$；由于 $Y'$ \Term{quasi-compact}{拟紧}，可取此\Term{covering-family}{覆盖族}\Term{finite}{有限}。于是由假设，各 $X'_i=X\times_Y S_i\simeq X'\times_{Y'}S_i$ \Term{quasi-compact}{拟紧}，且它们\Term{covering}{覆盖} $X'$（因为各 $S_i$ \Term{covering}{覆盖} $Y'$），故由1.3，$X'$ \Term{quasi-compact}{拟紧}。
+
+再证(ii)。只须处理“\Term{quasi-compact}{拟紧}”情形，因为“\Term{quasi-separated}{拟分离}”情形由定义1.7归结为这一情形，“\Term{coherent}{凝聚}”情形也由前两种情形合并得到。必要性已在1.8(ii)中证明，只需证明：若各 $f_i$ \Term{quasi-compact}{拟紧}，则 $f$ \Term{quasi-compact}{拟紧}，即对每个\Term{quasi-compact}{拟紧}的 $Y'$ 及每个\Term{morphism}{态射} $Y'\to Y$，\Term{object}{对象} $X'=X\times_Y Y'$ \Term{quasi-compact}{拟紧}。由于 $(Y_i\to Y)$ \Term{covering}{覆盖}，可取在 $Y$ 上\Term{covering}{覆盖} $Y'$ 的\Term{object}{对象} $S_\alpha$，使各复合\Term{morphism}{态射} $S_\alpha\to Y'\to Y$ 都通过某个 $Y_i$ \Term{resolution}{分解}。
+由于 $C$ 是生成的，可以取 $S_\alpha\in\operatorname{Ob}C$；由于 $Y'$ \Term{quasi-compact}{拟紧}，还可以取此\Term{covering-family}{覆盖族}\Term{finite}{有限}。于是各 $X'\times_{Y'}S_\alpha$ 构成 $X'$ 的\Term{finite-covering-family}{有限覆盖族}。由1.3，只须证明每个 $X'\times_{Y'}S_\alpha=X\times_Y S_\alpha$ \Term{quasi-compact}{拟紧}。而选定 $S_\alpha\to Y$ 通过某个 $Y_i$ 的\Term{resolution}{分解}后，所考察\Term{object}{对象}也\Term{isomorphism}{同构}于 $X_i\times_{Y_i}S_\alpha$；它确实\Term{quasi-compact}{拟紧}，因为 $X_i$ 在 $Y_i$ 上\Term{quasi-compact}{拟紧}，而 $S_\alpha$ \Term{quasi-compact}{拟紧}。
+\end{proof}
+\begin{SGAresult}{推论}{1.11}
+设 $g:Y\to Z$ 是\Term{topos}{拓扑斯} $E$ 中的\Term{morphism}{态射}，$(f_i:X_i\to Y)_{i\in I}$ 是以 $Y$ 为靶的\Term{morphism}{态射}\Term{covering-family}{覆盖族}。则：
+
+(i) 假设 $I$ \Term{finite}{有限}。若各 $gf_i$ \Term{quasi-compact}{拟紧}，则 $g$ 也\Term{quasi-compact}{拟紧}。
+
+(ii) 假设各 $f_i$ \Term{quasi-compact}{拟紧}。若各 $gf_i$ \Term{quasi-separated}{拟分离}，则 $g$ 也\Term{quasi-separated}{拟分离}。若 $I$ \Term{finite}{有限}，且各 $gf_i$ \Term{coherent}{凝聚}，则 $g$ \Term{coherent}{凝聚}。
+\end{SGAresult}
+\begin{proof}
+(i)立即来自定义和1.3（无须对 $E$ 作假设）。为证(ii)，由(i)只须处理不带括号的情形。考虑1.8的图(*)，其中把 $X$ 换成某个 $X_i$。由于各 $f_i$ 构成\Term{covering-family}{覆盖族}，
+\SourcePage{133}
+经\Term{base-change}{基变换}得到的各 $f_i\times_Z\mathrm{id}_Y$ 也构成\Term{covering-family}{覆盖族}；因此由1.10(ii)，为证明 $\Delta_{Y/Z}$ \Term{quasi-compact}{拟紧}，只须证明各 $\Gamma_{f_i}$ \Term{quasi-compact}{拟紧}。而 $gf_i$ 由假设\Term{quasi-separated}{拟分离}，所以经\Term{base-change}{基变换}得到的 $\mathrm{pr}_2:X_i\times_Z Y\to Y$ 也\Term{quasi-separated}{拟分离}；另一方面，$\mathrm{pr}_2\Gamma_{f_i}=f_i$ 由假设\Term{quasi-compact}{拟紧}。对 $\mathrm{pr}_2$ 与 $\Gamma_{f_i}$ 的复合使用1.8(iv)，就知 $\Gamma_{f_i}$ 也\Term{quasi-compact}{拟紧}。
+\end{proof}
+\begin{SGAresult}{推论}{1.12}
+设 $(X_i)_{i\in I}$ 是 $E$ 中\Term{object}{对象}的\Term{finite}{有限}族，$X$ 为各 $X_i$ 的和，$f_i:X_i\to Y$ 是 $E$ 中的\Term{morphism}{态射}，$f:X\to Y$ 为相应\Term{morphism}{态射}。则 $f$ \Term{quasi-compact}{拟紧}（分别为\Term{quasi-separated}{拟分离}、\Term{coherent}{凝聚}），当且仅当各 $f_i$ 如此；在“\Term{quasi-separated}{拟分离}”情形中，可以去掉“$I$ \Term{finite}{有限}”的假设。
+\end{SGAresult}
+\begin{proof}
+充分性是1.11的特例，只需注意\Term{canonical}{典范}\Term{morphism}{态射} $X_i\to X$ 构成\Term{finite-covering-family}{有限覆盖族}，并且它们是\Term{quasi-compact}{拟紧}\Term{morphism}{态射}，这由定义及1.4立即可见。必要性来自\Term{transitivity}{传递性}1.8(i)，因为这些\Term{canonical}{典范}\Term{morphism}{态射}甚至是\Term{coherent}{凝聚}的（由1.8.1，它们\Term{quasi-separated}{拟分离}）。
+\end{proof}
+\begin{SGAresult}{定义}{1.13}
+设 $X$ 是\Term{topos}{拓扑斯} $E$ 的\Term{object}{对象}。若对 $E$ 的每个\Term{quasi-compact}{拟紧}\Term{object}{对象} $S$，从 $S$ 到 $X$ 的每个\Term{morphism}{态射}都\Term{quasi-compact}{拟紧}，即（1.7）对于 $E$ 的两个\Term{quasi-compact}{拟紧}\Term{object}{对象} $S,T$ 及\Term{morphism}{态射} $S\to X$、$T\to X$，\Term{fibre-product}{纤维积} $S\times_X T$ 总\Term{quasi-compact}{拟紧}，则称 $X$ 是\Term{topos}{拓扑斯} $E$ 的\Term{quasi-separated}{拟分离}\Term{object}{对象}。若 $X$ 既\Term{quasi-compact}{拟紧}又\Term{quasi-separated}{拟分离}，则称 $X$ 是\Term{topos}{拓扑斯} $E$ 的\Term{coherent}{凝聚}\Term{object}{对象}。
+\end{SGAresult}
+\begin{SGAresult}{命题}{1.14}
+设 $f:X\to Y$ 是\Term{topos}{拓扑斯} $E$ 中的\Term{morphism}{态射}。
+
+(i) 若 $Y$ \Term{quasi-compact}{拟紧}，则 $f$ \Term{quasi-compact}{拟紧}推出 $X$ \Term{quasi-compact}{拟紧}。若 $Y$ \Term{quasi-separated}{拟分离}，则 $X$ \Term{quasi-compact}{拟紧}推出 $f$ \Term{quasi-compact}{拟紧}。若 $Y$ \Term{coherent}{凝聚}，则 $f$ \Term{quasi-compact}{拟紧}\Term{equivalence}{等价}于 $X$ \Term{quasi-compact}{拟紧}。
+
+(ii) 若 $Y$ \Term{quasi-compact}{拟紧}（分别为\Term{quasi-separated}{拟分离}、\Term{coherent}{凝聚}），且 $f$ \Term{quasi-compact}{拟紧}（分别为\Term{quasi-separated}{拟分离}、\Term{coherent}{凝聚}），则 $X$ \Term{quasi-compact}{拟紧}（分别为\Term{quasi-separated}{拟分离}、\Term{coherent}{凝聚}）。
+\end{SGAresult}
+\begin{proof}
+(i)的前两个断言分别直接包含在\Term{quasi-compact}{拟紧}\Term{morphism}{态射}的定义（1.7）和\Term{quasi-separated}{拟分离}\Term{object}{对象}的定义（1.13）中，第三个断言由前两个合并得到。(ii)的第一种情形只是重复，第三种情形仍是前两种情形的合并，因此只须处理\Term{quasi-separated}{拟分离}情形。设 $S$ 是 $E$ 的\Term{quasi-compact}{拟紧}\Term{object}{对象}，$g:S\to X$ 是\Term{morphism}{态射}，证明 $g$ \Term{quasi-compact}{拟紧}。由于 $Y$ \Term{quasi-separated}{拟分离}，$fg$ \Term{quasi-compact}{拟紧}；由于 $f$ \Term{quasi-separated}{拟分离}，便得到（1.8(iii)）$g$ \Term{quasi-compact}{拟紧}。
+\end{proof}
+\SourcePage{134}
+\begin{SGAresult}{推论}{1.15}
+$E$ 的\Term{quasi-separated}{拟分离}\Term{object}{对象}的每个\Term{subobject}{子对象}都\Term{quasi-separated}{拟分离}。设 $(X_i)_{i\in I}$ 是 $E$ 的一族\Term{object}{对象}，其中 $I\in\mathcal U$；则 $X=\coprod_i X_i$ \Term{quasi-separated}{拟分离}（分别为\Term{coherent}{凝聚}），当且仅当各 $X_i$ 如此。
+\end{SGAresult}
+\begin{proof}
+第一个断言来自1.14(ii)与1.8.1，也可由定义立即得到。对于第二个断言的不带括号的情形，由于各 $X_i\to X$ 是\Term{monomorphism}{单态射}，只须证明充分性，这从定义和1.3容易得到；括号中的相应情形来自已处理的情形及1.4。
+\end{proof}
+\begin{SGAresult}{推论}{1.16}
+在1.10(ii)的条件下，若各 $Y_i$ \Term{coherent}{凝聚}，则 $f$ \Term{quasi-compact}{拟紧}，当且仅当各 $X_i=X\times_Y Y_i$ 是 $E$ 的\Term{quasi-compact}{拟紧}\Term{object}{对象}。
+\end{SGAresult}
+事实上，由判据1.10(ii)，须表达各 $f_i:X_i\to Y_i$ \Term{quasi-compact}{拟紧}；由1.14(i)，这\Term{equivalence}{等价}于各 $X_i$ \Term{quasi-compact}{拟紧}。
+\begin{SGAresult}{推论}{1.17}
+设\Term{topos}{拓扑斯} $E$ 有\Term{quasi-compact}{拟紧}\Term{object}{对象}组成的\Term{generating-family}{生成族}，$(g_i:Y_i\to Y)_{i\in I}$ 是 $E$ 中的\Term{covering-family}{覆盖族}（分别为\Term{finite-covering-family}{有限覆盖族}），各 $Y_i$ \Term{coherent}{凝聚}。则 $Y$ \Term{quasi-separated}{拟分离}（分别为\Term{coherent}{凝聚}），当且仅当对每个 $i\in I$，$g_i$ \Term{quasi-compact}{拟紧}；也当且仅当对每对指标 $i,j\in I$，$Y_i\times_Y Y_j$ 是 $E$ 的\Term{quasi-compact}{拟紧}\Term{object}{对象}。
+\end{SGAresult}
+\begin{proof}
+括号中的相应情形立即来自不带括号的情形及1.3。第一个条件的必要性由定义显然，下面证明其充分性。设 $f:X\to Y$ 是\Term{morphism}{态射}，$X$ \Term{quasi-compact}{拟紧}，证明 $f$ \Term{quasi-compact}{拟紧}。由于各 $g_i$ \Term{quasi-compact}{拟紧}，各 $X_i=X\times_Y Y_i$ \Term{quasi-compact}{拟紧}，因而由1.16，$f$ \Term{quasi-compact}{拟紧}。最后，再用同一判据1.16表达各 $g_i$ 的\Term{quasi-compactness}{拟紧性}，就得到1.17的第二个判据。特别地，有：
+\end{proof}
+\begin{SGAresult}{推论}{1.17.1}
+设 $E$ 如1.17，$X$ 是 $E$ 的\Term{coherent}{凝聚}\Term{object}{对象}，$R\rightrightarrows X$ 是 $X$ 中的\Term{equivalence-relation}{等价关系}，$Y=X/R$。则以下条件\Term{equivalence}{等价}：
+
+(i) $Y$ \Term{coherent}{凝聚}；
+
+(ii) $f:X\to Y$ \Term{quasi-compact}{拟紧}；
+
+(iii) $R$ \Term{quasi-compact}{拟紧}。
+\end{SGAresult}
+\begin{SGAresult}{推论}{1.18}
+设\Term{topos}{拓扑斯} $E$ 有由\Term{quasi-compact}{拟紧}\Term{object}{对象}组成的\Term{generating-subcategory}{生成子范畴} $C$，$Y$ 是 $E$ 的\Term{object}{对象}。则 $Y$ \Term{quasi-separated}{拟分离}，当且仅当每个\Term{morphism}{态射} $X\to Y$，其中 $X\in\operatorname{ob}C$，都\Term{quasi-compact}{拟紧}。
+\end{SGAresult}
+\begin{proof}
+必要性由定义显然，因为 $C$ 的\Term{object}{对象}由假设\Term{quasi-compact}{拟紧}。为证充分性，设 $Z$ 是 $E$ 的\Term{quasi-compact}{拟紧}\Term{object}{对象}，证明每个\Term{morphism}{态射} $Z\to Y$ \Term{quasi-compact}{拟紧}。由1.10(i)，只须验证对每个 $X\to Y$，其中 $X\in\operatorname{ob}C$，$Z\times_Y X$ \Term{quasi-compact}{拟紧}；
+\SourcePage{135}
+这确实来自各 $X\to Y$ 由假设\Term{quasi-compact}{拟紧}以及 $Z$ \Term{quasi-compact}{拟紧}这一事实。
+\end{proof}
+\begin{SGAresult}{推论}{1.19}
+设\Term{topos}{拓扑斯} $E$ 有由\Term{quasi-compact}{拟紧}\Term{object}{对象}组成的\Term{generating-subcategory}{生成子范畴}，$(g_i:Y_i\to Y)_{i\in I}$ 是 $E$ 中的\Term{covering-family}{覆盖族}，其中各 $Y_i$ \Term{quasi-separated}{拟分离}，各 $g_i$ \Term{quasi-compact}{拟紧}。则 $Y$ \Term{quasi-separated}{拟分离}。
+\end{SGAresult}
+\begin{proof}
+设 $X$ 是 $E$ 的\Term{quasi-compact}{拟紧}\Term{object}{对象}，证明任意\Term{morphism}{态射} $f:X\to Y$ \Term{quasi-compact}{拟紧}。由1.10(ii)，只须证明各诱导\Term{morphism}{态射} $f_i:X_i=X\times_Y Y_i\to Y_i$ \Term{quasi-compact}{拟紧}。而由于 $g_i$ \Term{quasi-compact}{拟紧}，$X_i$ \Term{quasi-compact}{拟紧}（因为 $X$ \Term{quasi-compact}{拟紧}）；又因为 $Y_i$ \Term{quasi-separated}{拟分离}，所以 $f_i$ 确实\Term{quasi-compact}{拟紧}。
+\end{proof}
+\textbf{注记1.20.1。}熟悉\Term{algebraic}{代数}几何中“\Term{quasi-compact}{拟紧}”和“\Term{quasi-separated}{拟分离}”用语的读者，也许会期待这里涉及的“绝对”概念（关于\Term{topos}{拓扑斯} $E$ 的\Term{object}{对象}）与“相对”概念（关于 $E$ 的\Term{arrow}{箭头}）之间还存在其他关系，例如：若 $f:X\to Y$ 是 $E$ 中的\Term{morphism}{态射}，且 $X$ \Term{quasi-compact}{拟紧}\Term{separated}{分离}，则 $f$ \Term{quasi-separated}{拟分离}。这样的性质只有在对\Term{topos}{拓扑斯} $E$ 施加比1.10中更强的\Term{finite}{有限}性\Term{restriction}{限制}时才成立；下一节将研究这些条件。
+
+\textbf{1.20.2。}由1.5还得到，\Term{topos}{拓扑斯} $E$ 的\Term{object}{对象} $X$ 是否\Term{quasi-separated}{拟分离}，只依赖于\Term{induced-topos}{诱导拓扑斯} $E_{/X}$，并且意味着该\Term{topos}{拓扑斯}的\Term{final-object}{终对象}\Term{quasi-separated}{拟分离}，即在 $E_{/X}$ 中，两个\Term{quasi-compact}{拟紧}\Term{object}{对象}的积\Term{quasi-compact}{拟紧}。
+
+\textbf{1.21。\Term{site}{景}的情形。}设 $C$ 是 $\mathcal U$-\Term{site}{景}，$E$ 为 $C$ 上的 $\mathcal U$-\Term{sheaf}{层}的\Term{topos}{拓扑斯}，$f$ 是 $C$ 的\Term{arrow}{箭头}，$X$ 是 $C$ 的\Term{object}{对象}。若 $\varepsilon(f)$ 是\Term{topos}{拓扑斯} $E$ 的\Term{quasi-compact}{拟紧}（分别为\Term{quasi-separated}{拟分离}）\Term{morphism}{态射}，就称 $f$ 是\Term{site}{景} $C$ 的\Term{quasi-compact}{拟紧}（分别为\Term{quasi-separated}{拟分离}）\Term{morphism}{态射}；同样，若 $\varepsilon(X)$ 是\Term{topos}{拓扑斯} $E$ 的\Term{quasi-separated}{拟分离}\Term{object}{对象}，就称 $X$ 是\Term{site}{景} $C$ 的\Term{quasi-separated}{拟分离}\Term{object}{对象}（比较1.2）。当 $C$ 是赋予\Term{canonical-topology}{典范拓扑}的 $\mathcal U$-\Term{topos}{拓扑斯}时，\Term{canonical-functor}{典范函子} $\varepsilon:C\to E$ 是\Term{equivalence-of-categories}{范畴等价}，因此这一定义与以前的定义1.7、1.13相容。还应注意，若将\Term{universe}{宇宙} $\mathcal U$ 换成另一个使 $C$ 也成为 $\mathcal V$-\Term{site}{景}的\Term{universe}{宇宙} $\mathcal V$，上述定义不变，至少在 $C$ 有由\Term{quasi-compact}{拟紧}\Term{object}{对象}组成的\Term{topology}{拓扑}\Term{generating-family}{生成族}时如此。为看出这一点，立即可归结到 $\mathcal U\subset\mathcal V$ 的情形，此时 $E$ 是一个 $\mathcal V$-\Term{site}{景}；须证明，对 $\mathcal U$-\Term{topos}{拓扑斯} $E$ 的每个\Term{arrow}{箭头} $f$，它\Term{quasi-compact}{拟紧}（分别为\Term{quasi-separated}{拟分离}），当且仅当它在 $E$ 上的 $\mathcal V$-\Term{sheaf}{层}的\Term{topos}{拓扑斯} $E'$ 中所定义的\Term{arrow}{箭头}\Term{quasi-compact}{拟紧}（分别为\Term{quasi-separated}{拟分离}）；同样，对 $E$ 的每个\Term{object}{对象} $X$，它\Term{quasi-separated}{拟分离}，当且仅当 $E'$ 中相应\Term{object}{对象}\Term{quasi-separated}{拟分离}。注意，对于\Term{quasi-compact}{拟紧}\Term{object}{对象}，我们已经知道相应断言（1.2），而无须对 $E$ 作假设。
+\SourcePage{136}
+“$f$ \Term{quasi-compact}{拟紧}”的情形由此得到：只需对同一个由\Term{quasi-compact}{拟紧}\Term{object}{对象}组成的\Term{generating-family}{生成族} $(X_i)_{i\in I}$，先后在 $E$ 与 $E'$ 中使用判据1.10(i)；由此也得到“$f$ \Term{quasi-separated}{拟分离}”的情形，因为它意味着相应的\Term{diagonal-morphism}{对角态射}\Term{quasi-compact}{拟紧}。最后，对于“$X$ \Term{quasi-separated}{拟分离}”的情形，借助判据1.18，仍归结到“$X$ \Term{quasi-compact}{拟紧}”的情形。
+
+\textbf{1.22。例。}再取1.6.2中赋予\Term{topology}{拓扑} $T_i$ 的\Term{category}{范畴} $(\mathrm{Sch})$；对于适当的 $\mathcal V$，它是 $\mathcal V$-\Term{site}{景}，并且以\Term{affine-scheme}{仿射概形}的\Term{subcategory}{子范畴}为由\Term{quasi-compact}{拟紧}\Term{object}{对象}组成的\Term{topology}{拓扑}\Term{generating-category}{生成范畴}。留给读者验证：这个\Term{site}{景}的\Term{arrow}{箭头} $f:X\to Y$ \Term{quasi-compact}{拟紧}（分别为\Term{quasi-separated}{拟分离}），当且仅当它在通常意义下（[3]或[4]）是\Term{scheme}{概形}的\Term{quasi-compact}{拟紧}（分别为\Term{quasi-separated}{拟分离}）\Term{morphism}{态射}；同样，\Term{site}{景}的\Term{object}{对象}\Term{quasi-compact}{拟紧}（分别为\Term{quasi-separated}{拟分离}），当且仅当它在所引文献的通常意义下是\Term{quasi-compact}{拟紧}（分别为\Term{quasi-separated}{拟分离}）\Term{scheme}{概形}。顺便说，也应如这里一样，称“\Term{scheme}{概形}的\Term{coherent}{凝聚}\Term{morphism}{态射}”“\Term{coherent}{凝聚}\Term{scheme}{概形}”，以代替“\Term{scheme}{概形}的\Term{quasi-compact}{拟紧}且\Term{quasi-separated}{拟分离}\Term{morphism}{态射}”“\Term{quasi-compact}{拟紧}且\Term{quasi-separated}{拟分离}\Term{scheme}{概形}”；EGA I第二版实际上就是这样做的。
+
+\textbf{1.22.1。}对于给定\Term{scheme}{概形} $X\in\mathcal U$，也可考虑与\Term{underlying-topological-space}{底拓扑空间}相伴的\Term{topos}{拓扑斯} $\operatorname{Top}(X)$，或与属于 $\mathcal U$ 的\Term{etale}{平展}（分别为\Term{local-scheme}{局部}\Term{finite-presentation}{有限表现}）$X$-\Term{scheme}{概形}构成的\Term{site}{景}及其\Term{etale}{平展}（分别为 fppf）\Term{topology}{拓扑}相伴的\Term{topos}{拓扑斯} $\operatorname{Top}(X_{\text{ét}})$（分别为 $\operatorname{Top}(X_{\mathrm{fppf}})$）。这是一个 $\mathcal U$-\Term{topos}{拓扑斯}，有由\Term{coherent}{凝聚}\Term{object}{对象}组成的\Term{generating-family}{生成族}，后者对应于定义\Term{site}{景}中的\Term{affine}{仿射}\Term{object}{对象}。
+
+在这些说明之后，这个\Term{topos}{拓扑斯}的\Term{final-object}{终对象}\Term{quasi-compact}{拟紧}（分别为\Term{quasi-separated}{拟分离}、\Term{coherent}{凝聚}），当且仅当\Term{scheme}{概形} $X$ \Term{quasi-compact}{拟紧}（分别为\Term{quasi-separated}{拟分离}、\Term{coherent}{凝聚}）。同样，$X$ 上的\Term{etale-space}{平展空间}\Term{site}{景}（分别为 $X$ 上\Term{etale}{平展}\Term{scheme}{概形}的\Term{site}{景} $X_{\text{ét}}$，以及 $X$ 上\Term{local-scheme}{局部}\Term{finite-presentation}{有限表现}\Term{scheme}{概形}的\Term{site}{景} $X_{\mathrm{fppf}}$）的\Term{morphism}{态射}\Term{quasi-compact}{拟紧}（分别为\Term{quasi-separated}{拟分离}、\Term{coherent}{凝聚}），当且仅当它是（在所引文献的通常意义下）\Term{quasi-compact}{拟紧}（分别为\Term{quasi-separated}{拟分离}、\Term{coherent}{凝聚}）的\Term{scheme}{概形}\Term{morphism}{态射}。
+\begin{SGAresult}{定理}{1.23}
+设 $E$ 是 $\mathcal U$-\Term{topos}{拓扑斯}，$X$ 是 $E$ 的\Term{object}{对象}。
+
+(i) $X$ \Term{quasi-compact}{拟紧}，当且仅当对 $E$ 的每个\Term{filtered-inductive-system}{滤过归纳系统} $(Y_i)_{i\in I}$，其中 $I\in\mathcal U$，自然映射
+\[
+\varinjlim_i\operatorname{Hom}(X,Y_i)\longrightarrow
+\operatorname{Hom}(X,\varinjlim_iY_i)\tag{1.23.1}
+\]
+是\Term{injectivity}{单射}。
+
+(ii) 假设 $E$ 有由\Term{quasi-compact}{拟紧}\Term{object}{对象}组成的\Term{generating-subcategory}{生成子范畴} $C$。则 $X$ \Term{coherent}{凝聚}的必要条件是，对每组如(i)中的数据，映射(1.23.1)是\Term{bijection}{双射}。
+\end{SGAresult}
+\begin{proof}
+(i)必要性。设 $X$ \Term{quasi-compact}{拟紧}。须证明：若 $i\in I$，且 $f_i,g_i:X\rightrightarrows Y_i$ 与 $Y_i\to Y=\varinjlim_jY_j$ 的复合 $f,g$ 相等，
+\SourcePage{137}
+则存在 $j\geq i$，使它们与 $Y_i\to Y_j$ 的复合 $f_j,g_j$ 已经相等。由于 $E$ 中\Term{filtered-colimit}{滤过归纳极限}与\Term{finite-projective-limit}{有限投射极限}交换，特别与核交换，故有
+\[
+\operatorname{Ker}(f,g)=\varinjlim_{j\geq\ell}\operatorname{Ker}(f_j,g_j).
+\]
+由假设 $\operatorname{Ker}(f,g)=X$，故 $X$ 是递增\Term{filtered}{滤过}\Term{subobject}{子对象}族 $\operatorname{Ker}(f_j,g_j)$ 的\Term{limit}{极限}；由于 $X$ \Term{quasi-compact}{拟紧}，它等于其中一个\Term{subobject}{子对象}。因此存在 $j\geq i$ 使 $f_j=g_j$。
+
+充分性。要证明 $X$ \Term{quasi-compact}{拟紧}，\Term{equivalence}{等价}地（1.5.2），只须证明：对于 $X$ 的每个\Term{inductive-limit}{归纳极限}为 $X$ 的递增\Term{filtered}{滤过}\Term{subobject}{子对象}族 $(X_i)_{i\in I}$，存在 $i\in I$ 使 $X_i=X$。由于 $E$ 中每个\Term{monomorphism}{单态射}都\Term{effective}{有效}（第II讲4.0），有
+\[
+X_i=\operatorname{Ker}(f_i,g_i:X\rightrightarrows X\amalg_{X_i}X).
+\]
+令 $Y_i=X\amalg_{X_i}X$，考虑各 $Y_i$ 组成的\Term{inductive-system}{归纳系统}。若 $Y$ 为其\Term{inductive-limit}{归纳极限}，则
+\[
+Y\simeq X\amalg_{\varinjlim X_i}X=X\amalg_X X=X.
+\]
+所以对固定的 $i\in I$，$f_i,g_i$ 给出 $\operatorname{Hom}(X,Y)$ 中同一元素；由假设，存在 $j\geq i$ 使 $f_j=g_j$，即 $X_j=X$。
+
+(ii)只须证明：在所述条件下，每个\Term{morphism}{态射} $X\to Y$ 都来自某个适当的 $i\in I$ 的\Term{morphism}{态射} $X\to Y_i$。由于 $C$ 生成 $E$，且各 $Y_i$ \Term{covering}{覆盖} $Y$，可以用 $C$ 的\Term{object}{对象} $X_\alpha$ \Term{covering}{覆盖} $X$，使每个复合\Term{morphism}{态射} $X_\alpha\to X\to Y$ 通过某个 $Y_i$ \Term{resolution}{分解}。由于 $X$ \Term{quasi-compact}{拟紧}，可假设 $X_\alpha$ 只有\Term{finite}{有限}个，因此各\Term{morphism}{态射} $X_\alpha\to Y$ 可通过同一个固定的 $Y_i$ \Term{resolution}{分解}，记\Term{resolution}{分解}\Term{morphism}{态射}为 $g_{\alpha i}:X_\alpha\to Y_i$。由于 $X$ \Term{quasi-separated}{拟分离}，各 $X_\alpha\times_X X_\beta$ \Term{quasi-compact}{拟紧}。对每对 $(\alpha,\beta)$，其上的\Term{projection}{投影} $\mathrm{pr}_1$、$\mathrm{pr}_2$ 分别与 $X_\alpha,X_\beta\to Y_i$ 复合所得的\Term{morphism}{态射}，满足下列图所示关系：
+\[
+\begin{tikzcd}
+X_\alpha\times_X X_\beta
+\arrow[r]
+\arrow[d]&X_\alpha\arrow[r]\arrow[dl]&Y_i\arrow[dl]\\
+X\arrow[r]&Y&
+\end{tikzcd}
+\]
+它们与 $Y_i\to Y$ 的复合相等。由(i)，存在 $j\geq i$，使它们与 $Y_i\to Y_j$ 的复合已经相等。由于指标对 $(\alpha,\beta)$ 只有\Term{finite}{有限}个，$j$ 可取为与该指标对无关。因此各 $g_{\alpha j}$ 来自一个\Term{morphism}{态射} $g_j:X\to Y_j$ 的复合；该\Term{morphism}{态射}与 $Y_j\to Y$ 的复合就是给定的 $X\to Y$，因为与各 $Y_j	o X$ 复合后如此。证明完毕。
+\end{proof}
+\SourcePage{138}
+\textbf{注记1.23.2。}(ii)中对 $E$ 的假设可换成对 $X$ 的一个附加假设，即 $X$ 有一个由\Term{quasi-compact}{拟紧}\Term{object}{对象}\Term{covering-family}{覆盖族}组成的基本系。
+\begin{SGAresult}{推论}{1.24}
+设 $E$ 是\Term{topos}{拓扑斯}，$C$ 是 $E$ 中由\Term{coherent}{凝聚}\Term{object}{对象}组成的\Term{strictly-full-subcategory}{严格满子范畴}。利用 $E$ 中 $\mathcal U$-\Term{inductive-limit}{归纳极限}\Term{representable}{可表}这一事实，得到（第I讲8.6.1）\Term{canonical-functor}{典范函子}
+\[
+\operatorname{Ind}(C)\longrightarrow E.\tag{1.24.1}
+\]
+这个\Term{functor}{函子}\Term{fully-faithful}{完全忠实}。若 $E$ 有由\Term{coherent}{凝聚}\Term{object}{对象}组成的\Term{generating-subcategory}{生成子范畴}，且 $C$ 对\Term{direct-factor}{直因子}\Term{stable}{稳定}，则以下条件\Term{equivalence}{等价}：
+
+(i) \Term{functor}{函子}(1.24.1)\Term{essentially-surjective}{本质满射}，即它是\Term{equivalence-of-categories}{范畴等价}。
+
+(ii) $C$ 是 $E$ 的\Term{generating-subcategory}{生成子范畴}，并对\Term{finite-inductive-limit}{有限归纳极限}\Term{stable}{稳定}。
+
+(iii) \Term{category}{范畴} $C$ 等于 $E$ 中由全部\Term{coherent}{凝聚}\Term{object}{对象}组成的\Term{full-subcategory}{满子范畴} $E_{\mathrm{coh}}$，且1.23(ii)中\Term{object}{对象}\Term{coherent}{凝聚}的必要条件也充分。
+\end{SGAresult}
+\begin{proof}
+设 $E_{\mathrm{PF}}$ 为第I讲8.7.6定义的 $E$ 的\Term{full-subcategory}{满子范畴}。由第I讲8.7.5 a)，断言1.23(ii)\Term{equivalence}{等价}于下列关系中的第二个包含：
+\[
+C\subset E_{\mathrm{coh}}\subset E_{\mathrm{PF}},
+\]
+而复合包含 $C\supset E_{\mathrm{PF}}$ 意味着(1.24.1)\Term{fully-faithful}{完全忠实}。由假设，\Term{subcategory}{子范畴} $E_{\mathrm{coh}}$ 生成 $E$，故 $E_{\mathrm{PF}}$ 更是如此；另一方面，$E$ 中\Term{finite-projective-limit}{有限投射极限}\Term{representable}{可表}，因此可以使用第I讲8.7.7。1.24的条件(iii)也可写为 $C=E_{\mathrm{coh}}=E_{\mathrm{PF}}$，并\Term{equivalence}{等价}于条件 $C=E_{\mathrm{PF}}$；这正是所引结果的条件(ii bis)（注意由假设 $E_{\mathrm{coh}}$、因而 $E_{\mathrm{PF}}$ 是 $E$ 的\Term{generating-subcategory}{生成子范畴}）。同样，1.24的条件(ii)正是所引结果的条件(iii bis)。所以，所引结果中(i)、(ii bis)、(iii bis)的\Term{equivalence}{等价}性给出1.24中(i)、(ii)、(iii)的\Term{equivalence}{等价}性。
+\end{proof}
+上述证明（更准确地说，对第I讲8.7.7(ii bis)的引用）也给出下列推论的a)部分。
+\begin{SGAresult}{推论}{1.24.2}
+设\Term{topos}{拓扑斯} $E$ 有由\Term{coherent}{凝聚}\Term{object}{对象}组成的生成子族，$E_{\mathrm{PF}}$ 为 $E$ 的\Term{strictly-full-subcategory}{严格满子范畴}，其\Term{object}{对象}是使所表示的\Term{covariant}{协变}\Term{functor}{函子} $\operatorname{Hom}(X,-)$ 与\Term{filtered-colimit}{滤过归纳极限}交换的\Term{object}{对象} $X$。则：
+
+a) 自然\Term{functor}{函子}
+\[
+\operatorname{Ind}(E_{\mathrm{PF}})\longrightarrow E
+\]
+是\Term{equivalence-of-categories}{范畴等价}。
+\SourcePage{139}
+b) $E$ 的\Term{object}{对象} $X$ 属于 $E_{\mathrm{PF}}$，当且仅当它\Term{isomorphism}{同构}于某个双\Term{arrow}{箭头} $X_1\rightrightarrows X_0$ 的\Term{cokernel}{余核}的\Term{direct-factor}{直因子}（$=$ 一个\Term{projector}{投影算子}的像，第I讲10.6），其中 $X_1$、$X_0$ 均\Term{coherent}{凝聚}。
+
+c) $E$ 的\Term{subcategory}{子范畴} $E_{\mathrm{PF}}$ 对\Term{finite-inductive-limit}{有限归纳极限}\Term{stable}{稳定}，并\Term{equivalence}{等价}于一个\Term{small-category}{小范畴}。
+\end{SGAresult}
+\begin{proof}
+只须证明b)、c)。c)的第一个断言由第I讲2.8显然成立，并结合1.23(ii)推出b)的充分性。为证必要性，使用1.23(i)知 $X$ \Term{quasi-compact}{拟紧}，因此存在\Term{epimorphism}{满态射} $X_0\to X$，其中 $X_0$ \Term{coherent}{凝聚}；这里用到了 $E_{\mathrm{coh}}$ 生成 $E$ 且对\Term{finite}{有限}和\Term{stable}{稳定}这一事实。令 $R=X_0\times_X X_0$，于是 $X$ 等同于 $R\rightrightarrows X_0$ 的\Term{cokernel}{余核}。由a)，有 $R=\varinjlim_iR_i$，各 $\operatorname{coker}(R_i\rightrightarrows X_0)=X_i$ 的\Term{filtered-colimit}{滤过归纳极限}。由假设 $X\in\operatorname{Ob}E_{\mathrm{PF}}$，当 $i$ 充分大时，\Term{morphism}{态射} $u_i:X'_i\to X$ 有\Term{section}{截面} $v:X\to X'_i$。令 $w=vu_i:X'_i\to X'_i$，则 $w^2=w$，且
+\[
+X\simeq\operatorname{Coker}(w,\mathrm{id}_{X'_i}:X'_i\rightrightarrows X'_i).
+\]
+由于 $R_i$ 又是\Term{quasi-compact}{拟紧}的，可取\Term{covering}{覆盖} $X_1\to R_i$，其中 $X_1$ \Term{coherent}{凝聚}，于是 $X_i\simeq\operatorname{Coker}(X_1\rightrightarrows X_0)$，这就证明了b)。
+
+最后，由于 $E_{\mathrm{PF}}\subset E_{\mathrm{qu.cpct}}$，c)的最后一个断言来自1.5.3。
+\end{proof}
+\begin{SGAresult}{推论}{1.25}
+设\Term{topos}{拓扑斯} $E$ 中由\Term{coherent}{凝聚}\Term{object}{对象}组成的\Term{full-subcategory}{满子范畴} $C$ 是生成的。考虑\Term{canonical-functor}{典范函子}
+\[
+\varphi:\operatorname{Ind}(C)\longrightarrow E.
+\]
+则以下条件\Term{equivalence}{等价}：
+
+(i) \Term{functor}{函子} $\varphi$ \Term{essentially-surjective}{本质满射}，即 $E$ 的每个\Term{object}{对象}都是\Term{coherent}{凝聚}\Term{object}{对象}的\Term{filtered-colimit}{滤过归纳极限}。
+
+(i bis) \Term{functor}{函子} $\varphi$ 是\Term{equivalence-of-categories}{范畴等价}。
+
+(ii) $E$ 中\Term{coherent}{凝聚}\Term{object}{对象}的每个\Term{finite-inductive-limit}{有限归纳极限}都是\Term{coherent}{凝聚}\Term{object}{对象}。
+
+(ii bis) $E$ 中\Term{coherent}{凝聚}\Term{object}{对象}的双\Term{arrow}{箭头}的\Term{cokernel}{余核}是\Term{coherent}{凝聚}\Term{object}{对象}。
+
+(iii) 1.23(ii)的逆命题成立。
+\end{SGAresult}
+这是1.24的特例，只须注意 $C$ 对\Term{finite}{有限}和\Term{stable}{稳定}（1.4），这给出(ii)与(ii bis)的\Term{equivalence}{等价}性；此外还须用到下列引理。
+\begin{SGAresult}{引理}{1.25.1}
+设 $E$ 是\Term{topos}{拓扑斯}。$E$ 的\Term{coherent}{凝聚}\Term{object}{对象} $X$ 的每个\Term{direct-factor}{直因子} $X'$ 都\Term{coherent}{凝聚}。
+\end{SGAresult}
+\begin{proof}
+事实上，$X'$ 作为 $X$ 的\Term{quotient-object}{商对象}\Term{quasi-compact}{拟紧}（1.3），作为 $X$ 的\Term{subobject}{子对象}\Term{quasi-separated}{拟分离}（1.15）。
+\end{proof}
+\begin{SGAresult}{推论}{1.26}
+设\Term{topos}{拓扑斯} $E$ 满足1.25的\Term{equivalence}{等价}条件。则每个\Term{induced-topos}{诱导拓扑斯}也满足这些条件。
+\end{SGAresult}
+\SourcePage{140}
+这立即来自判据(ii)，只须注意1.20.2，以及 $E$ 有由\Term{coherent}{凝聚}\Term{object}{对象}组成的\Term{generating-subcategory}{生成子范畴}这一性质显然蕴涵每个\Term{induced-topos}{诱导拓扑斯}也有同一性质。
+
+\textbf{注记1.27。}满足1.25条件的重要\Term{topos}{拓扑斯}的例子中，值得指出\Term{noetherian}{诺特}\Term{topos}{拓扑斯}（2.14），以及\Term{scheme}{概形} $X$ 的 Zariski \Term{topos}{拓扑斯}或\Term{etale}{平展}\Term{topos}{拓扑斯}（第VII讲1；参见第IX讲第42页注）。但即使\Term{topos}{拓扑斯} $E$ \Term{coherent}{凝聚}（2.3）（即由\Term{coherent}{凝聚}\Term{object}{对象}组成的\Term{full-subcategory}{满子范畴} $C$ 生成 $E$ 且对\Term{finite-projective-limit}{有限投射极限}\Term{stable}{稳定}），$C$ 也未必\Term{perfect}{完美}（2.9.1），即未必满足1.25的\Term{equivalence}{等价}条件；参见下面的1.28。
+\begin{SGAresult}{习题}{1.28}
+设 $E$ 是\Term{topos}{拓扑斯}，$p_1,p_2:X_1\rightrightarrows X_0$ 是 $E$ 中的双\Term{arrow}{箭头}。定义 $X_0\times X_0$ 的递增\Term{subobject}{子对象}序列 $R_n$（$n\geq0$），其条件为
+\[
+R_0=\operatorname{Sup}\bigl(\operatorname{Im}(p_1,p_2),\operatorname{Im}(p_2,p_1)\bigr),
+\qquad
+R_n=\mathrm{pr}_{13}\bigl(\mathrm{pr}_{12}^{-1}(R_{n-1}),\mathrm{pr}_{23}^{-1}(R_{n-1})\bigr)
+\quad(n\geq1),
+\]
+其中 $\mathrm{pr}_{ij}$（$1\leq i<j\leq3$）表示从 $X_0$ 的三重积到二重积的显然\Term{projection}{投影}。
+
+a) 证明这样得到 $X_0\times X_0$ 的递增\Term{subobject}{子对象}序列，$R=\varinjlim R_n$ 是 $X_0$ 中的\Term{equivalence}{等价}图（第I讲10.4），且\Term{canonical}{典范}\Term{morphism}{态射}
+\[
+X=\operatorname{Coker}(p_1,p_2)\longrightarrow X_0/R
+\]
+是\Term{isomorphism}{同构}。
+
+b) 由此推出，若 $X_0$ \Term{quasi-compact}{拟紧}且 $X=\operatorname{Coker}(p_1,p_2)$ \Term{quasi-separated}{拟分离}（因而\Term{coherent}{凝聚}），则序列 $R_n$ \Term{stable}{稳定}。反过来，若该序列\Term{stable}{稳定}，且假设 $X_0$ \Term{coherent}{凝聚}、$X_1$ \Term{quasi-compact}{拟紧}，则 $X$ \Term{coherent}{凝聚}。（关于最后一点，写成 $R_n\simeq(R_{n-1},\mathrm{pr}_2)\times_{X_0}(R_{n-1},\mathrm{pr}_1)$，由此推出对每个 $n$，$R_n$ 在 $X_0$ 上\Term{quasi-compact}{拟紧}，再使用1.19。）
+
+c) 构造两个\Term{set}{集合}映射 $p_1,p_2:X_1\rightrightarrows X_0$ 的例子，使序列 $(R_n)$ 不\Term{stable}{稳定}。
+
+d) 设 $C$ 是\Term{small-category}{小范畴}，其中\Term{finite-inductive-limit}{有限归纳极限}与\Term{finite-projective-limit}{有限投射极限}\Term{representable}{可表}，且每个\Term{morphism}{态射}都\Term{resolution}{分解}为\Term{effective-epimorphism}{有效满态射}与\Term{monomorphism}{单态射}的复合。对 $C$ 的双\Term{arrow}{箭头} $(p_1,p_2)$ 重复 $R_n$ 的构造。在 $C$ 上赋予\Term{canonical-topology}{典范拓扑}，证明\Term{canonical-functor}{典范函子} $\varepsilon:C\to C^{\sim}$ \Term{exact}{正合}，因此与各 $R_n$ 的形成交换。
+
+e) 取 $(\mathrm{Ens})$ 的小\Term{full-subcategory}{满子范畴} $C$，它在\Term{isomorphism}{同构}意义下对\Term{finite-projective-limit}{有限投射极限}与\Term{finite-inductive-limit}{有限归纳极限}\Term{stable}{稳定}，并包含c)中的\Term{set}{集合} $X_0,X_1$。由此推出\Term{topos}{拓扑斯} $C^{\sim}$（这是\Term{coherent}{凝聚}\Term{topos}{拓扑斯}（2.3），即由其\Term{coherent}{凝聚}\Term{object}{对象}组成的\Term{subcategory}{子范畴}生成，且该\Term{subcategory}{子范畴}对\Term{finite-projective-limit}{有限投射极限}\Term{stable}{稳定}）不满足1.25的\Term{equivalence}{等价}条件。
+
+f) 设 $k$ 是域，$C$ 是 $k$ 上\Term{local-scheme}{局部}\Term{finite-presentation}{有限表现}\Term{scheme}{概形}的 fppf \Term{site}{景}（SGA 3第IV讲6.3）。证明存在 $k$ 上的\Term{reduced}{既约}\Term{affine-scheme}{仿射概形} $X$，它有一个非\Term{finite}{有限}阶自\Term{isomorphism}{同构} $f$（例如取\Term{affine-space}{仿射空间} $\mathbb E^2$，
+\SourcePage{141}
+赋予自\Term{isomorphism}{同构} $f(x)=x$、$f(y)=x+y$）。证明：若 $p_1,p_2:X_1\rightrightarrows X_0$ 是 $C$ 的双\Term{arrow}{箭头}，使 $(\mathrm{Ens})$ 中相应的双\Term{arrow}{箭头}
+\[
+p_1(\bar k),p_2(\bar k):X_1(\bar k)\rightrightarrows X_0(\bar k)
+\]
+给出不\Term{stable}{稳定}的序列 $(R_n)$，则由 $p_1,p_2$ 定义的 $C^{\sim}$ 的双\Term{arrow}{箭头}也如此。因此，若 $X_0$ 在 $k$ 上\Term{finite-type}{有限型}，则 $(p_1,p_2)$ 在 $C^{\sim}$ 中的\Term{cokernel}{余核}不\Term{coherent}{凝聚}。由此推出，二元组 $(f,\mathrm{id}_X)$ 在 $C^{\sim}$ 中的\Term{cokernel}{余核}不\Term{coherent}{凝聚}，故\Term{topos}{拓扑斯} $C^{\sim}$ 不满足1.25的\Term{equivalence}{等价}条件。进一步推出：若 $S$ 是\Term{nonempty}{非空}\Term{scheme}{概形}，$C$ 是 $S$ 上\Term{local-scheme}{局部}\Term{finite-presentation}{有限表现}\Term{scheme}{概形}的 fppf \Term{site}{景}，则\Term{topos}{拓扑斯} $C^{\sim}$ 不满足1.25的条件。（须注意，与表面印象相反，由上述论述和2.14，$C^{\sim}$ 只有在 $S$ 为空时才是\Term{noetherian}{诺特}的（2.11）。）
+\end{SGAresult}
+\begin{SGAresult}{定义}{1.30}
+设 $E$ 是\Term{topos}{拓扑斯}。若 $E$ 的\Term{object}{对象} $X$ 满足下列两个\Term{equivalence}{等价}条件，则称它为\Term{topos}{拓扑斯} $E$ 的\Term{prenoetherian}{前诺特}\Term{object}{对象}\footnote{关于更强的\Term{noetherian}{诺特}\Term{object}{对象}概念，参见下面的2.11。}：
+
+(i) $X$ 的每个\Term{subobject}{子对象}都\Term{quasi-compact}{拟紧}。
+
+(ii) $X$ 的每个递增\Term{subobject}{子对象}序列都\Term{stable}{稳定}。
+\end{SGAresult}
+\textbf{1.30.1。}条件(i)与(ii)的\Term{equivalence}{等价}性显然。注意，这些条件仍只依赖于\Term{induced-topos}{诱导拓扑斯} $E_{/X}$，甚至只依赖于 $E_{/X}$ 的\Term{open-object}{开对象}的\Term{ordered-set}{有序集}，后者\Term{isomorphism}{同构}于 $X$ 的\Term{subobject}{子对象}的\Term{ordered-set}{有序集}。这些条件在取 $X$ 的\Term{subobject}{子对象}时保持。
+
+\textbf{1.31。}仿照1.3、1.4可证明以下事实：若 $(X_i\to X)$ 是\Term{finite-covering-family}{有限覆盖族}，各 $X_i$ \Term{prenoetherian}{前诺特}，则 $X$ \Term{prenoetherian}{前诺特}；特别地，$E$ 的\Term{prenoetherian}{前诺特}\Term{object}{对象}的\Term{quotient-object}{商对象}仍\Term{prenoetherian}{前诺特}。若 $(X_i)_{i\in I}$ 是 $E$ 的一族\Term{object}{对象}，则其和 $X$ 是 $E$ 的\Term{prenoetherian}{前诺特}\Term{object}{对象}，当且仅当除\Term{finite}{有限}个外，各 $X_i$ 都\Term{isomorphism}{同构}于 $\varnothing_E$，并且各 $X_i$ 均\Term{prenoetherian}{前诺特}。
+
+\textbf{1.32。}显然，\Term{topos}{拓扑斯} $E$ 的\Term{prenoetherian}{前诺特}\Term{object}{对象}\Term{quasi-compact}{拟紧}；当 $E$ 有由\Term{prenoetherian}{前诺特}\Term{object}{对象}组成的\Term{generating-family}{生成族}时，逆命题成立（由1.31立即得到）：此时 $E$ 的\Term{prenoetherian}{前诺特}\Term{object}{对象}正是其\Term{quasi-compact}{拟紧}\Term{object}{对象}。
+
+假设 $E$ 有由\Term{quasi-compact}{拟紧}\Term{object}{对象}组成的\Term{generating-family}{生成族} $(X_i)_{i\in I}$，则以下三个条件\Term{equivalence}{等价}：
+
+(i) 各 $X_i$ \Term{prenoetherian}{前诺特}。
+
+(ii) $E$ 的每个\Term{quasi-compact}{拟紧}\Term{object}{对象}都\Term{prenoetherian}{前诺特}。
+
+(iii) $E$ 中每个\Term{monomorphism}{单态射}都\Term{quasi-compact}{拟紧}。
+
+（刚才已见(i)与(ii)\Term{equivalence}{等价}；(ii)$\Rightarrow$(iii)由定义显然，(iii)$\Rightarrow$(ii)来自定义1.30(i)。）
+\SourcePage{142}
+注意，(iii)推出 $E$ 的每个\Term{morphism}{态射}都\Term{quasi-separated}{拟分离}；因此（1.14(ii)），$E$ 中位于某个\Term{quasi-separated}{拟分离}\Term{object}{对象}之上的每个\Term{object}{对象}本身都\Term{quasi-separated}{拟分离}。
+
+\textbf{例1.33。（群的\Term{classifying-topos}{分类拓扑斯}。）}设 $G\in\mathcal U$ 是群，$B_G$ 是其\Term{classifying-topos}{分类拓扑斯}（第IV讲2.4），即带有 $G$ 的左\Term{action}{作用}的、属于 $\mathcal U$ 的\Term{set}{集合}的\Term{category}{范畴}。$B_G$ 的\Term{nonempty}{非空}\Term{connected}{连通}\Term{object}{对象}（第IV讲4.3.5）正是\Term{nonempty}{非空}且 $G$ 在其上可迁\Term{action}{作用}的带\Term{action}{作用}\Term{set}{集合}；$B_G$ 的每个\Term{object}{对象} $E$ 都是其\Term{connected-component}{连通分支}的和，这些\Term{connected-component}{连通分支}正是 $E$ 的极小\Term{nonempty}{非空}\Term{subobject}{子对象}（即 $G$ 在 $E$ 中的\Term{orbit}{轨道}）。因此 $E$ 是 $B_G$ 的\Term{quasi-compact}{拟紧}\Term{object}{对象}，当且仅当 $G$ 在 $E$ 中的\Term{orbit}{轨道}集 $\pi_0(E)$ \Term{finite}{有限}；此时 $E$ 甚至是 $B_G$ 的\Term{prenoetherian}{前诺特}\Term{object}{对象}。这些\Term{object}{对象}（甚至单独一个\Term{nonempty}{非空}\Term{connected}{连通}\Term{object}{对象} $G_s$）组成 $B_G$ 的\Term{generating-subcategory}{生成子范畴}。$B_G$ 的\Term{final-object}{终对象} $e$ \Term{quasi-separated}{拟分离}，即 $B_G$ 的两个\Term{quasi-compact}{拟紧}\Term{object}{对象}的积\Term{quasi-compact}{拟紧}，当且仅当积 $G_s\times G_s$ \Term{quasi-compact}{拟紧}；显然，这\Term{equivalence}{等价}于 $G$ \Term{finite}{有限}。更一般地，可得 $B_G$ 的\Term{object}{对象} $E$ \Term{quasi-separated}{拟分离}，当且仅当它的各点的\Term{stabilizer}{稳定子}都是 $G$ 的\Term{finite}{有限}\Term{subgroup}{子群}；即它\Term{isomorphism}{同构}于\Term{homogeneous-space}{齐性空间} $G/H$ 的和，其中各 $H$ \Term{finite}{有限}。事实上，由1.15，在此判据中可假设 $E$ \Term{connected}{连通}；若 $x\in E$ 的\Term{stabilizer}{稳定子}群为 $G_x$，则知道（第IV讲5.8）$(B_G)_{/E}$ \Term{equivalence}{等价}于\Term{topos}{拓扑斯} $B_{G_x}$，所以其\Term{final-object}{终对象}\Term{quasi-separated}{拟分离}，当且仅当 $G_x$ \Term{finite}{有限}。从这个判据得出，$B_G$ 中位于某个\Term{quasi-separated}{拟分离}\Term{object}{对象}之上的每个\Term{object}{对象}都\Term{quasi-separated}{拟分离}，因而 $B_G$ 的两个\Term{quasi-separated}{拟分离}\Term{object}{对象}的积更是\Term{quasi-separated}{拟分离}的。还得到，$B_G$ 的\Term{coherent}{凝聚}\Term{object}{对象}正是\Term{isomorphism}{同构}于\Term{homogeneous-space}{齐性空间} $G/H$ 的\Term{finite}{有限}和的\Term{object}{对象}，其中各 $H$ \Term{finite}{有限}。由于 $G_s$ \Term{coherent}{凝聚}，可见 $B_G$ 的\Term{coherent}{凝聚}\Term{object}{对象}已经组成 $B_G$ 的\Term{generating-subcategory}{生成子范畴}。此外，这个\Term{subcategory}{子范畴}对\Term{fibre-product}{纤维积}\Term{stable}{稳定}（这来自\Term{quasi-separated}{拟分离}\Term{object}{对象}之上的每个\Term{object}{对象}都\Term{quasi-separated}{拟分离}这一事实）。（用下面2.11的术语，$B_G$ 是\Term{locally-noetherian}{局部诺特}\Term{topos}{拓扑斯}，但只有在 $G$ \Term{finite}{有限}时才\Term{quasi-separated}{拟分离}，此时 $B_G$ 甚至\Term{noetherian}{诺特}。）
+
+立即可见，\Term{morphism}{态射} $f:E'\to E$ \Term{quasi-compact}{拟紧}，当且仅当它在\Term{orbit}{轨道}集上诱导的映射 $\pi_0(f):\pi_0(E')\to\pi_0(E)$ \Term{proper}{固有}，即\Term{fiber}{纤维}\Term{finite}{有限}；由此重新得到\Term{monomorphism}{单态射}\Term{quasi-compact}{拟紧}（1.32），所以每个\Term{morphism}{态射}都\Term{quasi-separated}{拟分离}。因此，$B_G$ 中的\Term{coherent}{凝聚}\Term{morphism}{态射}就是\Term{quasi-compact}{拟紧}\Term{morphism}{态射}，而我们刚才已刻画了后者。
+
+设 $E$ 是\Term{topos}{拓扑斯} $B_G$ 的\Term{object}{对象}。容易验证，$E$ 是 $B_G$ 的\Term{coherent}{凝聚}\Term{object}{对象}的\Term{filtered-colimit}{滤过归纳极限}，当且仅当 $E$ 的各点的\Term{stabilizer}{稳定子}都是\Term{ind-finite}{归纳有限}群（ind-fini，即它们的\Term{finite}{有限}\Term{subgroup}{子群}的\Term{filtered-colimit}{滤过归纳极限}）。特别地，若 $G$ 并非\Term{ind-finite}{归纳有限}（如 $G=\mathbb Z$），\Term{topos}{拓扑斯} $B_G$ 的\Term{final-object}{终对象}不是\Term{coherent}{凝聚}\Term{object}{对象}的\Term{inductive-limit}{归纳极限}；更准确地说，\Term{topos}{拓扑斯} $B_G$ 满足1.25的\Term{equivalence}{等价}条件，
+\SourcePage{143}
+当且仅当它的\Term{final-object}{终对象}是\Term{coherent}{凝聚}\Term{object}{对象}的\Term{filtered-colimit}{滤过归纳极限}，也当且仅当群 $G$ \Term{ind-finite}{归纳有限}。
+\SGAsection{2}{拓扑斯的有限性条件}
+\begin{SGAresult}{命题}{2.1}
+设 $E$ 是 $\mathcal U$-\Term{topos}{拓扑斯}。以下条件\Term{equivalence}{等价}：
+
+(i) 存在 $E$ 的生成\Term{full-subcategory}{满子范畴} $C$，它由\Term{quasi-compact}{拟紧}\Term{object}{对象}组成，并对\Term{fibre-product}{纤维积}\Term{stable}{稳定}。
+
+(ii) 存在 $\mathcal U$-\Term{site}{景} $C$，使 $C$ 的每个\Term{object}{对象}都\Term{quasi-compact}{拟紧}，$C$ 中\Term{fibre-product}{纤维积}\Term{representable}{可表}，且 $E$ \Term{equivalence}{等价}于\Term{sheaf}{层}\Term{category}{范畴} $C^{\sim}$。
+
+假设这些条件成立。则甚至可将(i)（分别为(ii)）中的\Term{category}{范畴} $C$ 取为 $\mathcal U$-小的。另一方面，对每个 $X\in\operatorname{ob}C$，\Term{topos}{拓扑斯} $E$ 的\Term{object}{对象} $X$（分别为 $\varepsilon(X)$）\Term{coherent}{凝聚}。
+\end{SGAresult}
+\begin{proof}
+蕴涵(i)$\Rightarrow$(ii)来自第IV讲1.2.1；在(i)（分别为(ii)）中可取 $C$ 为 $\mathcal U$-小的，只须将第IV讲1.2.3的论证应用于 $C$ 的一个在\Term{topology}{拓扑}意义下（第II讲3.0.1）生成的小\Term{full-subcategory}{满子范畴}即可。只须证明(ii)$\Rightarrow$(i)以及2.1的最后一个断言；这立即来自下列推论。
+\end{proof}
+\begin{SGAresult}{推论}{2.1.1}
+设 $C$ 是 $\mathcal U$-\Term{site}{景}，其中\Term{fibre-product}{纤维积}\Term{representable}{可表}，每个\Term{object}{对象}都\Term{quasi-compact}{拟紧}；设 $E=C^{\sim}$，$\varepsilon:C\to E$ 是\Term{canonical-functor}{典范函子}。则对每个 $X\in\operatorname{ob}C$，$\varepsilon(X)$ 是 $E$ 的\Term{coherent}{凝聚}\Term{object}{对象}。$E$ 中由位于某个 $\varepsilon(X)$ 之上的\Term{coherent}{凝聚}\Term{object}{对象}组成的\Term{full-subcategory}{满子范畴}，对\Term{fibre-product}{纤维积}\Term{stable}{稳定}（而且显然生成 $E$）。
+\end{SGAresult}
+\begin{proof}
+已知 $\varepsilon(X)$ \Term{quasi-compact}{拟紧}（1.2），下面证明它\Term{quasi-separated}{拟分离}。设 $F,G$ 是 $E$ 的两个\Term{quasi-compact}{拟紧}\Term{object}{对象}，$F\to\varepsilon(X)$、$G\to\varepsilon(X)$ 是两个\Term{morphism}{态射}；证明\Term{fibre-product}{纤维积} $F\times_{\varepsilon(X)}G$ \Term{quasi-compact}{拟紧}。分别以\Term{finite}{有限}个形如 $\varepsilon(Y_i)$、$\varepsilon(Z_j)$ 的\Term{object}{对象}\Term{covering}{覆盖} $F,G$，再如1.2那样，归结到复合\Term{morphism}{态射} $\varepsilon(Y_i)\to\varepsilon(X)$、$\varepsilon(Z_j)\to\varepsilon(X)$ 来自\Term{morphism}{态射} $Y_i\to X$、$Z_j\to X$ 的情形。借助1.3，就归结到\Term{morphism}{态射} $F\to\varepsilon(X)$ 与 $G\to\varepsilon(X)$ 是\Term{morphism}{态射} $Y\to X$、$Z\to X$ 经 $\varepsilon$ 变换而得的情形。但 $C$ 中的\Term{fibre-product}{纤维积}\Term{representable}{可表}，且 $\varepsilon$ 与之交换，所以只须证明 $\varepsilon(Y\times_X Z)$ \Term{quasi-compact}{拟紧}；对于每个形如 $\varepsilon(U)$ 的\Term{object}{对象}，这已在上面指出。
+
+现在设 $G\to F$、$H\to F$ 是 $E$ 的\Term{coherent}{凝聚}\Term{object}{对象}之间的\Term{morphism}{态射}，并存在\Term{morphism}{态射} $F\to\varepsilon(X)$，其中 $X\in\operatorname{ob}C$；证明 $G\times_F H$ \Term{coherent}{凝聚}。由于 $G,H$ \Term{quasi-compact}{拟紧}且 $F$ \Term{quasi-separated}{拟分离}，从定义已经得到该\Term{fibre-product}{纤维积}\Term{quasi-compact}{拟紧}。只须证明它\Term{quasi-separated}{拟分离}，
+\SourcePage{144}
+或\Term{equivalence}{等价}地（1.15），证明 $G\times_{\varepsilon(X)}H$ \Term{quasi-separated}{拟分离}。这来自下列更一般的事实。
+\end{proof}
+\begin{SGAresult}{推论}{2.1.2}
+在2.1.1的条件下，对 $E$ 的每个\Term{quasi-separated}{拟分离}\Term{object}{对象} $G$，每个\Term{morphism}{态射} $G\to\varepsilon(X)$ 都\Term{quasi-separated}{拟分离}。若 $H\to\varepsilon(X)$ 是另一个\Term{morphism}{态射}，且 $H$ \Term{quasi-separated}{拟分离}，则 $G\times_{\varepsilon(X)}H$ \Term{quasi-separated}{拟分离}。
+\end{SGAresult}
+第一个断言蕴涵第二个断言，因为由\Term{base-change}{基变换}，它推出 $G\times_{\varepsilon(X)}H$ 在 $H$ 上\Term{quasi-separated}{拟分离}，而 $H$ \Term{quasi-separated}{拟分离}，所以 $G\times_{\varepsilon(X)}H$ 也\Term{quasi-separated}{拟分离}（1.14(ii)）。为证明 $G\to\varepsilon(X)$ \Term{quasi-separated}{拟分离}，使用下面的引理。
+\begin{SGAresult}{引理}{2.1.3}
+设 $E$ 是\Term{topos}{拓扑斯}，$f:X\to Y$ 是 $E$ 中的\Term{morphism}{态射}。假设 $E$ 有\Term{quasi-compact}{拟紧}\Term{object}{对象}\Term{generating-family}{生成族}，且 $X$ 有\Term{covering-family}{覆盖族} $(g_i:X_i\to X)_{i\in I}$，各 $X_i$ \Term{quasi-compact}{拟紧}，并且对每对指标 $i,j\in I$，$X_i\times_Y X_j$ \Term{quasi-separated}{拟分离}。则若 $X$ 是 $E$ 的\Term{quasi-separated}{拟分离}\Term{object}{对象}，$f$ 是\Term{quasi-separated}{拟分离}\Term{morphism}{态射}。
+\end{SGAresult}
+\begin{proof}
+族 $(g_i\times_Y g_j:X_i\times_Y X_j\to X\times_Y X)_{(i,j)\in I\times I}$ \Term{covering}{覆盖}。因此，为证明\Term{morphism}{态射} $\Delta_{X/Y}:X\to X\times_Y X$ \Term{quasi-compact}{拟紧}，只须证明对每个 $(i,j)\in I\times I$，由\Term{base-change}{基变换} $g_i\times_Y g_j$ \Term{derivation}{导出}的\Term{morphism}{态射}\Term{quasi-compact}{拟紧}（1.10(ii)）。后者正是\Term{canonical}{典范}\Term{morphism}{态射} $X_i\times_X X_j\to X_i\times_Y X_j$。由假设 $X$ \Term{quasi-separated}{拟分离}、各 $X_i$ \Term{quasi-compact}{拟紧}，$X_i\times_X X_j$ \Term{quasi-compact}{拟紧}；再由假设 $X_i\times_Y X_j$ \Term{quasi-separated}{拟分离}，上述\Term{canonical}{典范}\Term{morphism}{态射}确实\Term{quasi-compact}{拟紧}。
+\end{proof}
+现在可以完成2.1.2的证明，即证明当 $G$ \Term{quasi-separated}{拟分离}时，每个\Term{morphism}{态射} $f:G\to\varepsilon(X)$ 都\Term{quasi-separated}{拟分离}。用\Term{object}{对象} $\varepsilon(X_i)$ \Term{covering}{覆盖} $G$，使复合\Term{morphism}{态射} $\varepsilon(X_i)\to\varepsilon(X)$ 来自\Term{morphism}{态射} $X_i\to X$。由2.1.3，由于各 $\varepsilon(X_i)$ \Term{quasi-compact}{拟紧}，只须验证\Term{fibre-product}{纤维积}
+\[
+\varepsilon(X_i)\times_{\varepsilon(X)}\varepsilon(X_j)
+=\varepsilon(X_i\times_X X_j)
+\]
+\Term{quasi-separated}{拟分离}。而已经看到，$E$ 中每个形如 $\varepsilon(U)$ 的\Term{object}{对象}都\Term{coherent}{凝聚}。这就证明了2.1.2，并完成了2.1的证明。
+\begin{SGAresult}{命题}{2.2}
+设\Term{topos}{拓扑斯} $E$ 包含一个由\Term{coherent}{凝聚}\Term{object}{对象}组成的生成\Term{full-subcategory}{满子范畴} $C$。关于 $E$ 的以下条件\Term{equivalence}{等价}：
+
+(i) $E$ 的每个\Term{quasi-separated}{拟分离}\Term{object}{对象}在\Term{final-object}{终对象}上\Term{quasi-separated}{拟分离}。
+
+(i bis) 对 $E$ 中每个\Term{morphism}{态射} $f:X\to Y$，$X$ \Term{quasi-separated}{拟分离}推出 $f$ \Term{quasi-separated}{拟分离}。
+
+(i ter) $C$ 的每个\Term{object}{对象} $X$ 在 $E$ 的\Term{final-object}{终对象}上\Term{quasi-separated}{拟分离}，即\Term{diagonal-morphism}{对角态射} $X\to X\times X$ \Term{quasi-compact}{拟紧}。
+
+(ii) $E$ 的两个\Term{quasi-separated}{拟分离}\Term{object}{对象}的积\Term{quasi-separated}{拟分离}。
+\SourcePage{145}
+(ii bis) $C$ 的两个\Term{object}{对象}在 $E$ 中的积\Term{quasi-separated}{拟分离}。
+
+这些条件蕴涵，$E$ 中由\Term{coherent}{凝聚}\Term{object}{对象}组成的\Term{full-subcategory}{满子范畴} $E_{\mathrm{coh}}$ 对\Term{fibre-product}{纤维积}\Term{stable}{稳定}（从而 $E$ 满足2.1的\Term{equivalence}{等价}条件）。
+\end{SGAresult}
+\begin{proof}
+显然(i bis)$\Rightarrow$(i)，反向蕴涵来自1.8(iii)。已有的论证给出(i)$\Rightarrow$(ii)：若 $X,Y$ \Term{quasi-separated}{拟分离}，由假设(i)，$X$ 在 $e$ 上\Term{quasi-separated}{拟分离}，故经\Term{base-change}{基变换}，$X\times Y$ 在 $Y$ 上\Term{quasi-separated}{拟分离}，再由1.14(ii)得到 $X$ \Term{quasi-separated}{拟分离}。同一论证给出(i ter)$\Rightarrow$(ii bis)。另一方面，(i)$\Rightarrow$(i ter)与(ii)$\Rightarrow$(ii bis)显然，所以只须建立(ii bis)$\Rightarrow$(i)。若 $X$ 是 $E$ 的\Term{quasi-separated}{拟分离}\Term{object}{对象}，以 $C$ 的\Term{object}{对象} $X_i$ \Term{covering}{覆盖} $X$（这是可能的，因为 $C$ 是生成的）。由于 $C$ 的假设保证各 $X_i$ \Term{quasi-compact}{拟紧}，可对\Term{morphism}{态射} $X\to e$ 使用2.1.3，所以为证明它\Term{quasi-separated}{拟分离}，恰好只须证明各 $X_i\times X_j$ \Term{quasi-separated}{拟分离}，这正是假设(ii bis)。
+\end{proof}
+\textbf{注记2.2.1。}条件(i ter)也\Term{equivalence}{等价}于下列条件(i quater)：对 $C$ 中每个双\Term{arrow}{箭头} $g_1,g_2:Y\rightrightarrows X$，它在 $E$ 中的核\Term{quasi-compact}{拟紧}（或\Term{equivalence}{等价}地（1.15），\Term{coherent}{凝聚}）。
+
+为看出这一点，只须对(i ter)中的\Term{diagonal-morphism}{对角态射} $X\to X\times X$ 使用判据1.10(i)。
+\begin{SGAresult}{定义}{2.3}
+满足2.2（分别为2.1）\Term{equivalence}{等价}条件的\Term{topos}{拓扑斯} $E$ 称为\Term{algebraic}{代数}\Term{topos}{拓扑斯}（分别为\Term{locally-algebraic}{局部代数}\Term{topos}{拓扑斯}，或\Term{locally-coherent}{局部凝聚}\Term{topos}{拓扑斯}）。若\Term{induced-topos}{诱导拓扑斯} $E_{/X}$ 是\Term{algebraic}{代数}的，就称\Term{topos}{拓扑斯} $E$ 的\Term{object}{对象} $X$ 为 $E$ 的\Term{algebraic}{代数}\Term{object}{对象}。若\Term{topos}{拓扑斯} $E$ 是\Term{algebraic}{代数}的，且其\Term{final-object}{终对象}\Term{quasi-separated}{拟分离}（分别为\Term{coherent}{凝聚}），就称 $E$ \Term{quasi-separated}{拟分离}（分别为\Term{coherent}{凝聚}）。
+\end{SGAresult}
+\textbf{2.3.1。}第1节发展的\Term{finite}{有限}性概念，在\Term{algebraic}{代数}\Term{topos}{拓扑斯}中才具有完全令人满意的性质，类似于\Term{scheme}{概形}\Term{category}{范畴}中同名概念的性质。实际遇到的所有\Term{locally-algebraic}{局部代数}\Term{topos}{拓扑斯}（$=$ \Term{locally-coherent}{局部凝聚}\Term{topos}{拓扑斯}）事实上都是\Term{algebraic}{代数}的，因此\Term{locally-algebraic}{局部代数}这一概念的实际意义目前似乎相当\Term{finite}{有限}。不过，确实可以构造出\Term{locally-algebraic}{局部代数}而非\Term{algebraic}{代数}的\Term{topos}{拓扑斯}（2.17 f）。
+
+\textbf{2.4。}下面关于2.3所引入概念的一些一般注记，将使读者（至少我们希望如此）相信，这套术语是协调一致的。
+
+\textbf{2.4.1。}在2.1(i)（分别为(ii)）的条件下，对每个 $X\in C$，$X$（分别为 $\varepsilon(X)$）是 $E$ 的一个（\Term{coherent}{凝聚}的）\Term{algebraic}{代数}\Term{object}{对象}（2.1.2和1.19.2）。换言之，\Term{induced-topos}{诱导拓扑斯} $E_{/X}$（分别为 $E_{/\varepsilon(X)}\simeq(C_{/X})^{\sim}$）是\Term{algebraic}{代数}的，因而\Term{coherent}{凝聚}。这也就是说：当 $C$ 有\Term{final-object}{终对象}时，$E$ 本身是\Term{algebraic}{代数}的，因而\Term{coherent}{凝聚}。
+\SourcePage{146}
+\textbf{2.4.2。}若 $E$ 是\Term{algebraic}{代数}\Term{topos}{拓扑斯}，则每个\Term{induced-topos}{诱导拓扑斯} $E_{/X}$ 也\Term{algebraic}{代数}（2.2(i bis)）；\Term{topos}{拓扑斯} $E$ \Term{locally-algebraic}{局部代数} $=$ \Term{locally-coherent}{局部凝聚}，当且仅当存在\Term{covering}{覆盖}\Term{final-object}{终对象}的\Term{object}{对象}族 $(X_i)_{i\in I}$，使各 $X_i$ \Term{algebraic}{代数}（分别为\Term{coherent}{凝聚}），即\Term{induced-topos}{诱导拓扑斯} $E_{/X_i}$ \Term{algebraic}{代数}（分别为\Term{coherent}{凝聚}）。充分性立即来自定义，必要性来自2.4.1的观察。当然，\Term{algebraic}{代数}\Term{topos}{拓扑斯}\Term{locally-algebraic}{局部代数}；若 $E$ 是\Term{locally-algebraic}{局部代数}\Term{topos}{拓扑斯}，则每个\Term{induced-topos}{诱导拓扑斯} $E_{/X}$ 也\Term{locally-algebraic}{局部代数}。
+
+\textbf{2.4.3。}若 $X$ 是\Term{topos}{拓扑斯} $E$ 的\Term{algebraic}{代数}\Term{object}{对象}，则 $E$ 中位于 $X$ 之上的每个\Term{object}{对象} $X'$ 仍\Term{algebraic}{代数}（参见2.4.2）。特别地，\Term{algebraic}{代数}\Term{topos}{拓扑斯}的每个\Term{object}{对象}都\Term{algebraic}{代数}，反之当然也成立。
+
+\textbf{2.4.4。}$E$ 中由既\Term{quasi-separated}{拟分离}又\Term{algebraic}{代数}的\Term{object}{对象}组成的\Term{full-subcategory}{满子范畴}，对\Term{fibre-product}{纤维积}与\Term{subobject}{子对象}\Term{stable}{稳定}（1.15），因而也对核\Term{stable}{稳定}。若 $E$ 是\Term{algebraic}{代数}的，这个\Term{category}{范畴}（此时它就是 $E$ 的\Term{quasi-separated}{拟分离}\Term{object}{对象}的\Term{category}{范畴}）也对两个\Term{object}{对象}的积\Term{stable}{稳定}。当且仅当 $E$ \Term{quasi-separated}{拟分离}时，这个\Term{category}{范畴}对任意\Term{finite-projective-limit}{有限投射极限}\Term{stable}{稳定}，或\Term{equivalence}{等价}地，包含 $E$ 的\Term{final-object}{终对象}。
+
+$E$ 中由既\Term{coherent}{凝聚}又\Term{algebraic}{代数}的\Term{object}{对象}组成的\Term{full-subcategory}{满子范畴} $C$ 对\Term{fibre-product}{纤维积}\Term{stable}{稳定}。若 $E$ \Term{locally-algebraic}{局部代数}，即\Term{locally-coherent}{局部凝聚}，则说 $E$ \Term{algebraic}{代数}，等于说 $C$ 还对双\Term{arrow}{箭头}的核\Term{stable}{稳定}（2.2.1）；而说 $E$ \Term{quasi-separated}{拟分离}，等于说此外 $C$ 还对两个\Term{object}{对象}的积\Term{stable}{稳定}（参见1.17）。最后，说 $E$ \Term{coherent}{凝聚}，等于说 $C$ 对任意\Term{finite-projective-limit}{有限投射极限}\Term{stable}{稳定}，或\Term{equivalence}{等价}地，包含 $E$ 的\Term{final-object}{终对象}。
+
+\textbf{2.4.5。}设 $E$ 是\Term{topos}{拓扑斯}。则 $E$ \Term{locally-coherent}{局部凝聚}（分别为\Term{algebraic}{代数}、\Term{quasi-separated}{拟分离}、\Term{coherent}{凝聚}），当且仅当它有由\Term{quasi-compact}{拟紧}\Term{object}{对象}组成的生成\Term{full-subcategory}{满子范畴} $C$（这些\Term{object}{对象}自动\Term{coherent}{凝聚}（2.1）），且 $C$ 对\Term{fibre-product}{纤维积}\Term{stable}{稳定}（分别为对\Term{fibre-product}{纤维积}及核\Term{stable}{稳定}、对\Term{fibre-product}{纤维积}及两个\Term{object}{对象}的积\Term{stable}{稳定}、对任意\Term{finite-projective-limit}{有限投射极限}\Term{stable}{稳定}）；也\Term{equivalence}{等价}于 $E$ \Term{equivalence}{等价}于\Term{topos}{拓扑斯} $C^{\sim}$，其中 $C$ 是每个\Term{object}{对象}均\Term{quasi-compact}{拟紧}的 $\mathcal U$-\Term{site}{景}，且其中\Term{fibre-product}{纤维积}及两个\Term{object}{对象}的积\Term{representable}{可表}（分别为所有\Term{finite-projective-limit}{有限投射极限}\Term{representable}{可表}）。（为证必要性，取 $C$ 为 $E$ 中既\Term{coherent}{凝聚}又\Term{algebraic}{代数}的\Term{object}{对象}的\Term{category}{范畴}，并使用2.4；为证充分性，使用2.2(i ter)。）在此断言中，显然还可假设 $C$ 是 $\mathcal U$-小的。
+
+\textbf{2.4.6。}设 $E$ 是\Term{topos}{拓扑斯}。若 $E$ 是\Term{algebraic}{代数}的，则 $E$ 的\Term{object}{对象} $X$ \Term{quasi-separated}{拟分离}（分别为\Term{coherent}{凝聚}），当且仅当\Term{induced-topos}{诱导拓扑斯} $E_{/X}$ 如此。当不再假设 $E$ \Term{algebraic}{代数}时，只能说 $E_{/X}$ \Term{quasi-separated}{拟分离}（分别为\Term{coherent}{凝聚}），当且仅当
+\SourcePage{147}
+$X$ 既\Term{quasi-separated}{拟分离}（分别为\Term{coherent}{凝聚}）又\Term{algebraic}{代数}。这无关紧要，因为我们大概不会在 $E$ \Term{algebraic}{代数}的情形以外使用这些概念。
+
+\textbf{2.4.7。}为使\Term{topos}{拓扑斯} $E$ 的\Term{coherent}{凝聚}\Term{object}{对象}（分别为\Term{quasi-separated}{拟分离}\Term{object}{对象}）概念具有令人满意的性质，必须\Term{restriction}{限制}为还满足\Term{algebraic}{代数}性的\Term{object}{对象}；当 $E$ \Term{algebraic}{代数}时，这一条件自动满足。由于我们大概永远不必处理\Term{locally-algebraic}{局部代数}而非\Term{algebraic}{代数}的 $E$，所以是否应修改1.13所引入的术语、或许将其仅保留给\Term{algebraic}{代数}\Term{object}{对象}的问题，并不十分迫切！
+
+另一方面，我们没有定义\Term{quasi-compact}{拟紧}\Term{topos}{拓扑斯}。按照本节的精神，应当用这个名称称呼\Term{final-object}{终对象}\Term{quasi-compact}{拟紧}的\Term{algebraic}{代数}\Term{topos}{拓扑斯}。
+
+我们对于采用这种用法有所犹豫，因为若 $X$ 是\Term{topological-space}{拓扑空间}，那么“$X$ \Term{quasi-compact}{拟紧}当且仅当相伴\Term{topos}{拓扑斯} $\operatorname{Top}(X)$ \Term{quasi-compact}{拟紧}”就不成立。对此，注意 $\operatorname{Top}(X)$ \Term{locally-coherent}{局部凝聚}，当且仅当 $X$ 有由\Term{quasi-compact}{拟紧}\Term{open-subset}{开集} $U_i$ 组成的\Term{open-subset}{开集}基，满足对于 $U_j,U_k\subset U_i$，$U_j\cap U_k$ 仍\Term{quasi-compact}{拟紧}（此时 $\operatorname{Top}(X)$ 甚至\Term{algebraic}{代数}）。\Term{scheme}{概形}的\Term{underlying-topological-space}{底拓扑空间}满足此条件；但分析学家所遇到的\Term{space}{空间}却很少满足，即便这些\Term{space}{空间}是紧的。为了便于引用，再明确写出：
+\begin{SGAresult}{命题}{2.5}
+设 $E$ 是\Term{algebraic}{代数}\Term{topos}{拓扑斯}，$f:X\to Y$ 是 $E$ 中的\Term{morphism}{态射}。若 $Y$ 是 $E$ 的\Term{quasi-separated}{拟分离}\Term{object}{对象}（分别为\Term{coherent}{凝聚}\Term{object}{对象}），则 $X$ 是 $E$ 的\Term{quasi-separated}{拟分离}\Term{object}{对象}（分别为\Term{coherent}{凝聚}\Term{object}{对象}），当且仅当\Term{morphism}{态射} $f$ \Term{quasi-separated}{拟分离}（分别为\Term{coherent}{凝聚}）。
+\end{SGAresult}
+\begin{proof}
+充分性已在1.14(ii)中证明，而且无须对 $E$ 作假设。不带括号情形的必要性甚至不必假设 $Y$ \Term{quasi-separated}{拟分离}，它就是经由2.2(i bis)表达的定义2.3。只须证明：若 $Y$ \Term{coherent}{凝聚}且 $X$ \Term{coherent}{凝聚}，则 $f$ \Term{coherent}{凝聚}。已经知道 $f$ \Term{quasi-separated}{拟分离}，所以只须证明 $f$ \Term{quasi-compact}{拟紧}；这来自 $X$ \Term{quasi-compact}{拟紧}且 $Y$ \Term{quasi-separated}{拟分离}这一事实（1.13）。
+\end{proof}
+\begin{SGAresult}{推论}{2.6}
+设 $E$ 是\Term{algebraic}{代数}\Term{topos}{拓扑斯}，$f:X\to Y$ 是 $E$ 中的\Term{morphism}{态射}，$(Y_i\to Y)_{i\in I}$ 是\Term{covering-family}{覆盖族}，各 $Y_i$ \Term{quasi-separated}{拟分离}（分别为\Term{coherent}{凝聚}）。则 $f$ \Term{quasi-separated}{拟分离}（分别为\Term{quasi-compact}{拟紧}、\Term{coherent}{凝聚}），当且仅当对每个 $i\in I$，$X_i=X\times_Y Y_i$ 是 $E$ 的\Term{quasi-separated}{拟分离}\Term{object}{对象}（分别为\Term{quasi-compact}{拟紧}\Term{object}{对象}、\Term{coherent}{凝聚}\Term{object}{对象}）。
+\end{SGAresult}
+在“\Term{quasi-separated}{拟分离}”或“\Term{coherent}{凝聚}”情形，只须合用1.10(ii)与2.5；“\Term{quasi-compact}{拟紧}”情形已在1.16中证明。注意，2.6所述条件的必要性同样不要求对\Term{topos}{拓扑斯} $E$ 作假设。
+
+作为2.6的特例，有：
+\SourcePage{148}
+\begin{SGAresult}{推论}{2.7}
+设 $E$ 是\Term{coherent}{凝聚}\Term{topos}{拓扑斯}，$X$ 是 $E$ 的\Term{object}{对象}。则 $X$ 是 $E$ 的\Term{quasi-compact}{拟紧}\Term{object}{对象}（分别为\Term{quasi-separated}{拟分离}\Term{object}{对象}、\Term{coherent}{凝聚}\Term{object}{对象}），当且仅当它在\Term{final-object}{终对象}上\Term{quasi-compact}{拟紧}（分别为\Term{quasi-separated}{拟分离}、\Term{coherent}{凝聚}）（1.9.2）。
+
+特别地，$X$ \Term{constructible}{可构造}（1.9.2），当且仅当它\Term{coherent}{凝聚}。
+\end{SGAresult}
+\begin{SGAresult}{推论}{2.8}
+设 $E$ 是\Term{locally-coherent}{局部凝聚}\Term{topos}{拓扑斯}，$f:X\to Y$ 是 $E$ 中的\Term{morphism}{态射}。则 $f$ \Term{quasi-separated}{拟分离}，当且仅当对 $E_{/Y}$ 的每个\Term{quasi-separated}{拟分离}\Term{object}{对象} $Y'$，$f^*(Y')=X\times_Y Y'$ 都是 $E_{/X}$ 的\Term{quasi-separated}{拟分离}\Term{object}{对象}（或 $E$ 的\Term{quasi-separated}{拟分离}\Term{object}{对象}，两者相同（1.20.2））。
+\end{SGAresult}
+\begin{proof}
+必要性无须对 $E$ 作条件，因为若 $Y'$ \Term{quasi-separated}{拟分离}，而 $f':X'=X\times_Y Y'\to Y'$ 经\Term{base-change}{基变换}\Term{quasi-separated}{拟分离}，则 $X'$ \Term{quasi-separated}{拟分离}（1.14(ii)）。对于逆命题，注意存在由既\Term{quasi-separated}{拟分离}又\Term{algebraic}{代数}的\Term{object}{对象}组成的 $Y$ 的\Term{covering-family}{覆盖族} $Y_i\to Y$。由1.10(ii)，为验证 $f$ \Term{quasi-separated}{拟分离}，只须验证各 $f_i:X_i=X\times_Y Y_i\to Y_i$ 如此。而关于 $f^*$ 的假设蕴涵各 $X_i$ \Term{quasi-separated}{拟分离}，因此各 $f_i$ \Term{quasi-separated}{拟分离}，因为 $E_{/Y_i}$ 是\Term{algebraic}{代数}\Term{topos}{拓扑斯}。
+\end{proof}
+\textbf{注记2.8.1。}在2.5与2.6中，若将“$E$ \Term{algebraic}{代数}”的假设换成更一般的“$Y$ \Term{algebraic}{代数}”，这些断言仍成立；只须将原断言应用于\Term{algebraic}{代数}的\Term{induced-topos}{诱导拓扑斯} $E_{/Y}$ 即可。同样，2.8中只须假设 $E_{/Y}$（而非 $E$）\Term{locally-coherent}{局部凝聚}。
+\begin{SGAresult}{命题}{2.9}
+设 $E$ 是\Term{topos}{拓扑斯}，$C$ 是 $E$ 的\Term{subcategory}{子范畴}。以下条件\Term{equivalence}{等价}：
+
+(i) $E$ \Term{locally-coherent}{局部凝聚}（分别为\Term{coherent}{凝聚}），满足1.25的\Term{equivalence}{等价}条件，且 $C$ 是 $E$ 中由\Term{coherent}{凝聚}\Term{object}{对象}组成的\Term{full-subcategory}{满子范畴} $E_{\mathrm{coh}}$。
+
+(ii) $C$ 是 $E$ 的生成\Term{strictly-full-subcategory}{严格满子范畴}，对\Term{finite-inductive-limit}{有限归纳极限}与\Term{fibre-product}{纤维积}\Term{stable}{稳定}（分别为还对\Term{finite-projective-limit}{有限投射极限}\Term{stable}{稳定}），并由\Term{quasi-compact}{拟紧}\Term{object}{对象}组成。
+\end{SGAresult}
+\begin{proof}
+蕴涵(i)$\Rightarrow$(ii)直接来自定义和1.25中条件的形式1.25(ii)；下面证明反向蕴涵。$C$ 是由\Term{quasi-compact}{拟紧}\Term{object}{对象}组成并对\Term{fibre-product}{纤维积}\Term{stable}{稳定}（分别为对\Term{finite-projective-limit}{有限投射极限}\Term{stable}{稳定}）的生成\Term{full-subcategory}{满子范畴}，这由定义蕴涵 $E$ \Term{locally-coherent}{局部凝聚}（分别为\Term{coherent}{凝聚}）。此外，$C$ 严格满且对\Term{finite-inductive-limit}{有限归纳极限}\Term{stable}{稳定}，因而有 $C=E_{\mathrm{coh}}$（由1.24(ii)$\Rightarrow$(iii)），且条件1.25(ii)满足。
+\end{proof}
+\begin{SGAresult}{定义}{2.9.1}
+若 $\mathcal U$-\Term{topos}{拓扑斯} $E$ \Term{coherent}{凝聚}（2.3），并满足1.25的\Term{equivalence}{等价}条件，即 $E$ 中由\Term{coherent}{凝聚}\Term{object}{对象}组成的\Term{subcategory}{子范畴} $E_{\mathrm{coh}}$ 对\Term{finite-inductive-limit}{有限归纳极限}\Term{stable}{稳定}，则称 $E$ \Term{perfect}{完美}（parfait）。若存在\Term{covering}{覆盖}\Term{final-object}{终对象}的 $E$ 的\Term{object}{对象}族 $(X_i)_{i\in I}$，
+\SourcePage{149}
+使对每个 $i\in I$，\Term{induced-topos}{诱导拓扑斯} $E_{/X_i}$ \Term{perfect}{完美}，则称 $E$ \Term{locally-perfect}{局部完美}。
+\end{SGAresult}
+\textbf{2.9.2。}由定义立即得到，\Term{perfect}{完美}（分别为\Term{locally-perfect}{局部完美}）\Term{topos}{拓扑斯}\Term{coherent}{凝聚}（分别为\Term{locally-coherent}{局部凝聚}）。作为\Term{perfect}{完美}（分别为\Term{locally-perfect}{局部完美}）\Term{topos}{拓扑斯}的例子，指出下面2.11引入的\Term{noetherian}{诺特}（分别为\Term{locally-noetherian}{局部诺特}）\Term{topos}{拓扑斯}（参见2.14），以及\Term{coherent}{凝聚}\Term{scheme}{概形}（分别为任意\Term{scheme}{概形}）的 Zariski \Term{topos}{拓扑斯}和\Term{etale}{平展}\Term{topos}{拓扑斯}（第IX讲第42页注）。反例则是\Term{scheme}{概形} $S$ 的 fppf \Term{topos}{拓扑斯}：它\Term{locally-coherent}{局部凝聚}（当 $S$ 是\Term{coherent}{凝聚}\Term{scheme}{概形}，即\Term{quasi-compact}{拟紧}且\Term{quasi-separated}{拟分离}的\Term{scheme}{概形}时，它甚至\Term{coherent}{凝聚}）（第VII讲5.6），但若 $S\ne\varnothing$，它不\Term{locally-perfect}{局部完美}（1.28 f）。
+
+在\Term{locally-perfect}{局部完美}\Term{topos}{拓扑斯}中，\Term{constructible}{可构造}\Term{object}{对象}的概念特别\Term{stable}{稳定}（下面的2.9.3），这也是该概念值得研究的一个理由。另一个理由是：与\Term{coherent}{凝聚}或\Term{locally-coherent}{局部凝聚}\Term{topos}{拓扑斯}的概念一样，\Term{perfect}{完美}或\Term{locally-perfect}{局部完美}\Term{topos}{拓扑斯}的概念在取某个开子\Term{topos}{拓扑斯}的互补闭子\Term{topos}{拓扑斯}时\Term{stable}{稳定}（4.6），而且对\Term{topos}{拓扑斯}的\Term{gluing}{黏合}运算表现得特别简单（4.11、4.14）。
+\begin{SGAresult}{命题}{2.9.3}
+设 $E$ 是\Term{locally-perfect}{局部完美}\Term{topos}{拓扑斯}（2.9.1）。则 $E$ 中由\Term{constructible}{可构造}\Term{object}{对象}（1.9.3）组成的\Term{full-subcategory}{满子范畴} $E_{\mathrm{cons}}$ 对\Term{finite-inductive-limit}{有限归纳极限}\Term{stable}{稳定}（当然，由1.9.3，它也对\Term{finite-projective-limit}{有限投射极限}\Term{stable}{稳定}）。
+\end{SGAresult}
+\begin{proof}
+由于 $E$ 的\Term{object}{对象}\Term{constructible}{可构造}这一性质在 $E$ 上是\Term{local-scheme}{局部}的（1.10(ii)），可归结到 $E$ 是\Term{perfect}{完美}\Term{topos}{拓扑斯}的情形。但此时 $E_{\mathrm{cons}}=E_{\mathrm{coh}}$（2.7），结论来自定义2.9.1。
+\end{proof}
+\begin{SGAresult}{推论}{2.9.4}
+设 $E$ 是\Term{locally-perfect}{局部完美}\Term{topos}{拓扑斯}。则 $E$ \Term{perfect}{完美}，当且仅当 $E$ \Term{coherent}{凝聚}。对 $E$ 的每个\Term{object}{对象} $X$，\Term{induced-topos}{诱导拓扑斯} $E_{/X}$ \Term{locally-perfect}{局部完美}。
+\end{SGAresult}
+\textbf{问题2.9.5。}可以设想，\Term{perfect}{完美}\Term{topos}{拓扑斯}足够特殊，以至于能够建立一种相当明确的结构理论（按照 M. Artin 在口头讨论班期间提出的\Term{model}{模型}）。称\Term{equivalence}{等价}于形如 $\widehat C$ 的\Term{topos}{拓扑斯}为\Term{finite}{有限}\Term{topos}{拓扑斯}，其中 $C$ 是\Term{finite-category}{有限范畴}（参见习题3.11）；称\Term{finite}{有限}\Term{topos}{拓扑斯}的\Term{filtered-projective-limit}{滤过投射极限}为\Term{profinite}{投射有限}\Term{topos}{拓扑斯}（按下面第6节的意义，借助3.12 c)，此概念适用）。由于\Term{finite}{有限}\Term{topos}{拓扑斯}\Term{noetherian}{诺特}（2.17 g），因而\Term{perfect}{完美}，而\Term{perfect}{完美}\Term{topos}{拓扑斯}的\Term{filtered-projective-limit}{滤过投射极限}\Term{perfect}{完美}（第6节），可见\Term{profinite}{投射有限}\Term{topos}{拓扑斯}\Term{perfect}{完美}。问题是，反过来每个\Term{perfect}{完美}\Term{topos}{拓扑斯}是否都\Term{profinite}{投射有限}。这\Term{equivalence}{等价}于问：$E_{\mathrm{coh}}$ 的每个\Term{finite}{有限}\Term{subcategory}{子范畴}，是否都包含在 $E_{\mathrm{coh}}$ 的一个\Term{full-subcategory}{满子范畴} $F_0$ 中，而 $F_0$ \Term{equivalence}{等价}于\Term{category}{范畴} $F_{\mathrm{coh}}$，其中 $F$ 是\Term{finite}{有限}\Term{topos}{拓扑斯}（参见3.11）。（若回答是否定的，就应当寻找关于\Term{perfect}{完美}\Term{topos}{拓扑斯}的、易于使用的附加内在条件，
+\SourcePage{150}
+以保证它\Term{profinite}{投射有限}。）最后，还须用适当的“Karoubi \Term{profinite}{投射有限}\Term{category}{范畴}”概念来研究\Term{profinite}{投射有限}\Term{topos}{拓扑斯}的结构，此概念应从第IV讲7.6 h)得到启发。即使在 $E$ 是某个性质良好的\Term{coherent}{凝聚}\Term{scheme}{概形} $X$ 的 Zariski \Term{topos}{拓扑斯}或\Term{etale}{平展}\Term{topos}{拓扑斯}这一特殊情形中，这项研究也尚未进行；它应当给出比与 $X$ 相伴的\Term{compact-space}{紧空间} $X_{\mathrm{cons}}$（EGA IV 1）更精细的\Term{invariants}{不变量}。
+
+同一思路下，还可提出如下问题：设 $E$ 是\Term{perfect}{完美}\Term{topos}{拓扑斯}，$E'$ 是 $E$ 的一个\Term{open-object}{开对象}上的\Term{induced-topos}{诱导拓扑斯}，$E''$ 为相应的闭子\Term{topos}{拓扑斯}（第IV讲9.9）。若 $E'$ 与 $E''$ 是\Term{finite}{有限}\Term{topos}{拓扑斯}，$E$ 是否也如此？
+\begin{SGAresult}{命题}{2.10}
+设 $E$ 是\Term{topos}{拓扑斯}。以下条件\Term{equivalence}{等价}：
+
+(i) $E$ 有由\Term{prenoetherian}{前诺特}\Term{object}{对象}组成、对\Term{fibre-product}{纤维积}\Term{stable}{稳定}的生成\Term{full-subcategory}{满子范畴}。
+
+(ii) $E$ 有由\Term{prenoetherian}{前诺特}且\Term{quasi-separated}{拟分离}（即\Term{prenoetherian}{前诺特}且\Term{coherent}{凝聚}）\Term{object}{对象}组成的生成\Term{full-subcategory}{满子范畴}。
+
+(iii) $E$ \Term{locally-coherent}{局部凝聚}（2.3），且 $E$ 的每个\Term{quasi-compact}{拟紧}\Term{object}{对象}都\Term{prenoetherian}{前诺特}。
+
+(iii bis) $E$ \Term{locally-coherent}{局部凝聚}，并有由 $E$ 的\Term{prenoetherian}{前诺特}\Term{object}{对象}组成的\Term{generating-family}{生成族}。
+\end{SGAresult}
+\begin{proof}
+(iii)与(iii bis)的\Term{equivalence}{等价}性来自1.32；显然(i)$\Rightarrow$(iii bis)且(iii)$\Rightarrow$(i)，所以(i)\Term{equivalence}{等价}于(iii)及(iii bis)。最后，(i)$\Rightarrow$(ii)来自2.1的最后一个断言，只须证明(ii)$\Rightarrow$(i)。这一蕴涵来自如下事实：若 $E$ 中由既\Term{noetherian}{诺特}又\Term{quasi-separated}{拟分离}的\Term{object}{对象}组成的\Term{full-subcategory}{满子范畴}是生成的，它就对\Term{fibre-product}{纤维积}\Term{stable}{稳定}；因为由定义，这样的\Term{fibre-product}{纤维积}\Term{quasi-compact}{拟紧}，故由1.32的第一个断言，它\Term{noetherian}{诺特}；而由1.32的最后一个断言，它\Term{quasi-separated}{拟分离}。
+\end{proof}
+\begin{SGAresult}{定义}{2.11}
+若\Term{topos}{拓扑斯} $E$ 满足2.10的\Term{equivalence}{等价}条件，就称它为\Term{locally-noetherian}{局部诺特}\Term{topos}{拓扑斯}；若此外它的\Term{final-object}{终对象}\Term{coherent}{凝聚}（或\Term{equivalence}{等价}地（1.32），\Term{prenoetherian}{前诺特}且\Term{quasi-separated}{拟分离}），就称它\Term{noetherian}{诺特}。若\Term{induced-topos}{诱导拓扑斯} $E_{/X}$ 是\Term{noetherian}{诺特}\Term{topos}{拓扑斯}，则称\Term{topos}{拓扑斯} $E$ 的\Term{object}{对象} $X$ 为 $E$ 的\Term{noetherian}{诺特}\Term{object}{对象}。
+\end{SGAresult}
+\textbf{2.12。}若 $E$ 是\Term{locally-noetherian}{局部诺特}\Term{topos}{拓扑斯}，则每个\Term{induced-topos}{诱导拓扑斯} $E_{/X}$ 也如此；反过来，若可以找到\Term{covering}{覆盖}\Term{final-object}{终对象}的族 $(X_i)$，使各 $E_{/X_i}$ \Term{locally-noetherian}{局部诺特}，则 $E$ 也如此。若 $C$ 是 $E$ 中由\Term{prenoetherian}{前诺特}\Term{object}{对象}组成、对\Term{fibre-product}{纤维积}\Term{stable}{稳定}的生成\Term{full-subcategory}{满子范畴}（2.11(i)），则对每个 $X\in C$，$E_{/X}$ 是\Term{noetherian}{诺特}\Term{topos}{拓扑斯}，即 $C$ 的\Term{object}{对象}甚至\Term{noetherian}{诺特}（因为若 $E$ \Term{locally-noetherian}{局部诺特}，且 $X\in\operatorname{Ob}E$，则 $E_{/X}$ \Term{noetherian}{诺特}，当且仅当 $X$ \Term{coherent}{凝聚}）。由此得到，\Term{topos}{拓扑斯} $E$ \Term{locally-noetherian}{局部诺特}，当且仅当可以用\Term{noetherian}{诺特}\Term{object}{对象} $X_i$ \Term{covering}{覆盖} $E$ 的\Term{final-object}{终对象}。
+\SourcePage{151}
+\textbf{2.13。}在\Term{locally-noetherian}{局部诺特}\Term{topos}{拓扑斯} $E$ 中，每个\Term{monomorphism}{单态射}都\Term{quasi-compact}{拟紧}，每个\Term{morphism}{态射}都\Term{quasi-separated}{拟分离}（1.32）。所以 $E$ 更是\Term{algebraic}{代数}\Term{topos}{拓扑斯}（2.3），而不只是\Term{locally-coherent}{局部凝聚}，即\Term{locally-algebraic}{局部代数}。因此，\Term{topos}{拓扑斯} $E$ \Term{noetherian}{诺特}，当且仅当它\Term{locally-noetherian}{局部诺特}且\Term{coherent}{凝聚}（2.3）。换言之，若 $E$ 是\Term{locally-noetherian}{局部诺特}\Term{topos}{拓扑斯}，则 $E$ 的\Term{noetherian}{诺特}\Term{object}{对象}正是它的\Term{coherent}{凝聚}\Term{object}{对象}。
+
+\textbf{2.14。}设 $E$ 是\Term{locally-noetherian}{局部诺特}\Term{topos}{拓扑斯}。若 $E$ \Term{quasi-separated}{拟分离}，即它的\Term{final-object}{终对象}\Term{quasi-separated}{拟分离}，则 $E$ 的每个\Term{object}{对象}都\Term{quasi-separated}{拟分离}（1.32），所以 $E$ 的\Term{prenoetherian}{前诺特}\Term{object}{对象}与\Term{noetherian}{诺特}（即\Term{coherent}{凝聚}）\Term{object}{对象}相同。由于\Term{prenoetherian}{前诺特}\Term{object}{对象}的\Term{quotient-object}{商对象}仍\Term{prenoetherian}{前诺特}，$E$ 满足1.25的\Term{equivalence}{等价}条件（因为它满足条件1.25(ii bis)）。特别地，若 $C$ 是 $E$ 中由\Term{noetherian}{诺特}（\Term{coherent}{凝聚}）\Term{object}{对象}组成的\Term{full-subcategory}{满子范畴}，则自然\Term{functor}{函子}
+\[
+\operatorname{Ind}(C)\longrightarrow E
+\]
+是\Term{equivalence-of-categories}{范畴等价}。由此得出，\Term{noetherian}{诺特}\Term{topos}{拓扑斯}\Term{perfect}{完美}（2.9.1），所以\Term{locally-noetherian}{局部诺特}\Term{topos}{拓扑斯}\Term{locally-perfect}{局部完美}。
+
+若只假设 $E$ \Term{locally-noetherian}{局部诺特}，则 $E$ 的每个\Term{object}{对象}仍是其\Term{prenoetherian}{前诺特}\Term{subobject}{子对象}的\Term{inductive-limit}{归纳极限}（因为在有由\Term{quasi-compact}{拟紧}\Term{object}{对象}组成的\Term{generating-subcategory}{生成子范畴}的\Term{topos}{拓扑斯}中，每个\Term{object}{对象}都是其\Term{quasi-compact}{拟紧}\Term{subobject}{子对象}的\Term{filtered-colimit}{滤过归纳极限}）。但由于 $E$ 的\Term{prenoetherian}{前诺特}\Term{object}{对象}不再必然\Term{coherent}{凝聚}，这一断言的用处就十分\Term{finite}{有限}，而且已经知道（1.33），1.25的条件不再必然成立。
+
+\textbf{例2.15。（\Term{topological-space}{拓扑空间}。）}设 $X$ 是\Term{topological-space}{拓扑空间}。以下条件\Term{equivalence}{等价}：(i)\Term{topological-space}{拓扑空间} $X$ \Term{noetherian}{诺特}（即 $X$ 的每个\Term{open-subset}{开集}都\Term{quasi-compact}{拟紧}，\Term{equivalence}{等价}地，$X$ 的每个递增\Term{open-subset}{开集}序列都\Term{stable}{稳定}）；(ii)\Term{topos}{拓扑斯} $\operatorname{Top}(X)$ \Term{noetherian}{诺特}；(iii)$\operatorname{Top}(X)$ 的\Term{final-object}{终对象} $X$ \Term{noetherian}{诺特}；(iv)$\operatorname{Top}(X)$ 的\Term{final-object}{终对象} $X$ \Term{prenoetherian}{前诺特}。
+
+事实上，显然有(ii)$\Leftrightarrow$(iii)$\Rightarrow$(iv)$\Leftrightarrow$(i)；另一方面，(i)蕴涵 $\operatorname{Top}(X)$ 的\Term{generating-subcategory}{生成子范畴} $\operatorname{Ouv}(X)$ 由\Term{prenoetherian}{前诺特}\Term{object}{对象}组成，而它对\Term{finite-projective-limit}{有限投射极限}\Term{stable}{稳定}，因此得到(ii)。
+
+同样可见，\Term{topological-space}{拓扑空间} $X$ \Term{locally-noetherian}{局部诺特}（即为\Term{noetherian}{诺特}\Term{open-subset}{开集}的并），当且仅当\Term{topos}{拓扑斯} $\operatorname{Top}(X)$ \Term{locally-noetherian}{局部诺特}。
+
+\textbf{2.15.1。}因此，定义1.30、2.11与\Term{topological-space}{拓扑空间}中通行的术语相容。另一方面，在一般情形中，我们坚持赋予“\Term{noetherian}{诺特}\Term{object}{对象}”一词比1.30的朴素概念更强的含义，目的是使这一概念的一整套性质
+\SourcePage{152}
+（而不只是定义的语法结构）与关于\Term{noetherian}{诺特}\Term{topological-space}{拓扑空间}和\Term{noetherian}{诺特}\Term{scheme}{概形}的直观相吻合。
+
+读者可在下面的习题中找到其他例子。
+\begin{SGAresult}{习题}{2.16}
+（带\Term{action}{作用}的\Term{space}{空间}与\Term{classifying-topos}{分类拓扑斯}。）
+
+设 $X$ 是\Term{discrete}{离散}群 $G$ \Term{action}{作用}的\Term{topological-space}{拓扑空间}，由此得到（第IV讲2.3）\Term{topos}{拓扑斯} $E=\operatorname{Top}(X,G)$。把此\Term{topos}{拓扑斯}的\Term{object}{对象} $X'$ 解释为带\Term{action}{作用}群 $G$ 的 $X$ 上的\Term{etale-space}{平展空间}；注意\Term{induced-topos}{诱导拓扑斯} $E_{/X'}$ \Term{canonical}{典范}\Term{equivalence}{等价}于 $\operatorname{Top}(X',G)$。
+
+a) \Term{topos}{拓扑斯} $E$ 的\Term{final-object}{终对象}\Term{quasi-compact}{拟紧}，当且仅当\Term{quotient-topological-space}{商拓扑空间} $X/G$ \Term{quasi-compact}{拟紧}（使用第IV讲8.4.1）。
+
+b) 设 $P$ 是由平凡\Term{etale-space}{平展空间} $X\times G$ 连同 $G$ 的对角\Term{action}{作用}所定义的 $E$ 的\Term{object}{对象}。证明\Term{induced-topos}{诱导拓扑斯} $E_{/P}$ \Term{equivalence}{等价}于\Term{topos}{拓扑斯} $\operatorname{Top}(X)$（比较第IV讲5.8.3）。由此推出，$E$ \Term{locally-coherent}{局部凝聚}（分别为\Term{locally-noetherian}{局部诺特}），当且仅当 $\operatorname{Top}(X)$ \Term{locally-coherent}{局部凝聚}（参见2.4.7）（分别为\Term{locally-noetherian}{局部诺特}（参见2.15））。证明：若 $E$ \Term{locally-coherent}{局部凝聚}，即\Term{locally-algebraic}{局部代数}，则它甚至\Term{algebraic}{代数}；为此使用由\Term{object}{对象} $T_U$ 组成的\Term{generating-family}{生成族}，其中 $U$ 是 $X$ 的\Term{coherent}{凝聚}\Term{open-subset}{开集}，$T_U=G\times U$，$G$ 的\Term{action}{作用}为 $g\cdot(u,g')=(u,gg')$，\Term{structural-morphism}{结构态射} $p_U:T_U\to X$ 定义为 $p_U(u,g)=g\cdot u$。
+
+c) 假设 $E$ \Term{algebraic}{代数}，即 $\operatorname{Top}(X)$ \Term{algebraic}{代数}（2.4.7）。证明\Term{structural-morphism}{结构态射} $P\to e$ \Term{quasi-separated}{拟分离}。证明 $E$ \Term{quasi-separated}{拟分离}，当且仅当 $\operatorname{Top}(X)$ \Term{quasi-separated}{拟分离}（或\Term{equivalence}{等价}地，\Term{topological-space}{拓扑空间} $X$ \Term{quasi-separated}{拟分离}，即 $X$ 的两个\Term{quasi-compact}{拟紧}\Term{open-subset}{开集}的交是\Term{quasi-compact}{拟紧}\Term{open-subset}{开集}），并且 $G$ \Term{finite}{有限}或 $X$ 为空。（比较1.33。）
+
+d) 证明\Term{structural-morphism}{结构态射} $P\to e$ \Term{quasi-compact}{拟紧}，当且仅当 $G$ \Term{finite}{有限}。证明 $E$ \Term{coherent}{凝聚}（分别为\Term{noetherian}{诺特}），当且仅当 $\operatorname{Top}(X)$ 如此，并且 $G$ \Term{finite}{有限}或 $X$ 为空。
+
+e) 设 $E$ 是\Term{topos}{拓扑斯}，$G$ 是 $E$ 中的群，由此得到\Term{classifying-topos}{分类拓扑斯} $B_G$（第IV讲2.4）。参照上述讨论，研究 $B_G$ 中的\Term{finiteness-condition}{有限性条件}。从 $E$ 中的严格\Term{pro-group}{投射群} $\mathscr G=(G_i)_{i\in I}$ 出发，也提出同样的问题。特别地，应当看到，若 $E$ \Term{coherent}{凝聚}（分别为\Term{noetherian}{诺特}）且各 $G_i$ \Term{coherent}{凝聚}，则 $B_{\mathscr G}$ \Term{coherent}{凝聚}（分别为\Term{noetherian}{诺特}）。
+\end{SGAresult}
+\begin{SGAresult}{习题}{2.17}
+（形如 $\widehat C$ 的\Term{topos}{拓扑斯}。）设 $C$ 是\Term{equivalence}{等价}于某个属于 $\mathcal U$ 的\Term{category}{范畴}的\Term{category}{范畴}，$E=\widehat C$ 是 $C$ 上的\Term{presheaf}{预层}\Term{category}{范畴}。借助\Term{canonical-functor}{典范函子} $\varepsilon:C\to\widehat C$，把 $C$ 视为 $E$ 的\Term{full-subcategory}{满子范畴}。
+
+(a) $C$ 是 $E$ 的由\Term{quasi-compact}{拟紧}\Term{object}{对象}组成的\Term{generating-subcategory}{生成子范畴}。这些\Term{object}{对象}\Term{prenoetherian}{前诺特}（参见1.32），当且仅当对 $C$ 的每个\Term{object}{对象} $X$，$X$ 的每个\Term{sieve}{筛}都由 $C$ 中的\Term{finite}{有限}个\Term{morphism}{态射} $X_i\to X$ 生成。$E$ 的\Term{final-object}{终对象}\Term{quasi-compact}{拟紧}（分别为\Term{prenoetherian}{前诺特}），当且仅当 $C$ 有\Term{object}{对象}集\Term{finite}{有限}的终\Term{subcategory}{子范畴}（分别为
+\SourcePage{153}
+$C$ 的每个\Term{sieve}{筛}都由 $C$ 的某个\Term{object}{对象}集\Term{finite}{有限}的\Term{subcategory}{子范畴}生成）。
+
+(b) $E$ 有由\Term{coherent}{凝聚}\Term{object}{对象}（或\Term{equivalence}{等价}地，\Term{quasi-separated}{拟分离}\Term{object}{对象}）组成的\Term{generating-subcategory}{生成子范畴}，当且仅当 $C$ 的\Term{object}{对象}在 $E$ 中\Term{coherent}{凝聚}；也\Term{equivalence}{等价}于对于 $C$ 中的两个\Term{arrow}{箭头} $Y\xrightarrow f X$、$Z\xrightarrow g X$，$E$ 的\Term{object}{对象} $Y\times_X Z$ \Term{quasi-compact}{拟紧}，即可以找到\Term{finite}{有限}族 $C$ 中的交换方块
+\[
+\begin{tikzcd}
+&T_i\arrow[dl]\arrow[dr]&\\
+Y\arrow[dr,"f"']&&Z\arrow[dl,"g"]\\
+&X&
+\end{tikzcd}
+\]
+使 $C$ 中每个其他交换方块
+\[
+\begin{tikzcd}
+&T\arrow[dl]\arrow[dr]&\\
+Y\arrow[dr,"f"']&&Z\arrow[dl,"g"]\\
+&X&
+\end{tikzcd}
+\]
+来自某个\Term{morphism}{态射} $T\to T_i$。（注意，若 $(F_i)_{i\in I}$ 是 $E$ 的\Term{generating-family}{生成族}，则每个 $X\in\operatorname{ob}C$ \Term{isomorphism}{同构}于某个 $F_i$ 的\Term{direct-factor}{直因子}。）
+
+(c) $E$ \Term{locally-coherent}{局部凝聚}，即由既\Term{coherent}{凝聚}又\Term{algebraic}{代数}的\Term{object}{对象}族生成，当且仅当 $C$ 的\Term{object}{对象} $X$ 都是 $E$ 的既\Term{coherent}{凝聚}又\Term{algebraic}{代数}的\Term{object}{对象}，即b)的条件成立，并且还满足：对于 $C$ 中在某个\Term{object}{对象} $X\in C$ 上的每个双\Term{arrow}{箭头} $f,g:Y\rightrightarrows Z$，该双\Term{arrow}{箭头}在 $E$ 中的核是 $E$ 的\Term{quasi-compact}{拟紧}\Term{object}{对象}，即存在 $C$ 中的\Term{finite}{有限}\Term{commutative-diagram}{交换图}族
+\[
+\begin{tikzcd}
+T_i\arrow[r]&Y\arrow[r,shift left=.6ex,"f"]\arrow[r,shift right=.6ex,"g"']&Z
+\end{tikzcd}
+\]
+使 $C$ 中每个其他\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}
+T\arrow[r]&Y\arrow[r,shift left=.6ex,"f"]\arrow[r,shift right=.6ex,"g"']&Z
+\end{tikzcd}
+\]
+都来自某个\Term{morphism}{态射} $T\to T_i$。$E$ \Term{algebraic}{代数}，当且仅当它满足b)的条件以及上述条件，但此时允许取 $C$ 的任意双\Term{arrow}{箭头} $(f,g)$（不必在某个\Term{object}{对象} $X\in C$ 上）。$E$ \Term{quasi-separated}{拟分离}，当且仅当它满足
+\SourcePage{154}
+b)的条件，并且对两个\Term{object}{对象} $X,Y\in\operatorname{ob}C$，它们在 $E$ 中的积 $X\times Y$ \Term{quasi-compact}{拟紧}。$E$ \Term{coherent}{凝聚}，当且仅当它满足前面两个条件，并且 $C$ 有底\Term{sheaf}{层}\Term{set}{集合}\Term{finite}{有限}的终\Term{subcategory}{子范畴}。
+
+(d) 给出这样的例子：$E$ 的\Term{generating-subcategory}{生成子范畴} $C$ 的\Term{object}{对象}都\Term{prenoetherian}{前诺特}，但 $E$ 没有由\Term{coherent}{凝聚}\Term{object}{对象}组成的\Term{generating-family}{生成族}（即由(b)，$C$ 的\Term{object}{对象}不全\Term{coherent}{凝聚}）。为此，取 $C$ 为有\Term{object}{对象} $X,T_i$（$i=0,1,\ldots$）和 $e$（\Term{final-object}{终对象}）的\Term{category}{范畴}；这些\Term{object}{对象}之间，除通向 $e$ 的\Term{structural-morphism}{结构态射}与恒等\Term{morphism}{态射}外，仅有满足条件 $u_iv_i=\mathrm{id}_X$ 的\Term{morphism}{态射} $u_i:T_i\to X$、$v_i:X\to T_i$，以及 $p_i=v_iu_i$（必满足 $p_i^2=\mathrm{id}_{T_i}$）。验证 $X$ 或某个 $T_i$ 的\Term{sieve}{筛}只有两个平凡\Term{sieve}{筛}，而 $e$ 恰有一个非平凡\Term{sieve}{筛}，所以由a)，$C$ 的\Term{object}{对象}是 $E$ 的\Term{prenoetherian}{前诺特}\Term{object}{对象}。但 $E$ 中的积 $X\times X$ 不\Term{quasi-compact}{拟紧}，因为它不满足b)的判据。
+
+(e) 给出这样的例子：$E$ 的\Term{generating-subcategory}{生成子范畴} $C$ 由 $E$ 的\Term{coherent}{凝聚}\Term{object}{对象}组成，但 $E$ 不\Term{locally-coherent}{局部凝聚}。为此，取 $C$ 为\Term{object}{对象}集由互异\Term{object}{对象} $e$（\Term{final-object}{终对象}）、$Y,Z$ 和 $T_i$（$i=0,1,\ldots$）组成的\Term{category}{范畴}；除通向\Term{final-object}{终对象} $e$ 的\Term{morphism}{态射}及恒等\Term{morphism}{态射}外，这些\Term{object}{对象}之间只有满足条件 $fu_i=gu_i$ 的\Term{morphism}{态射} $f,g:Y\rightrightarrows Y$。验证 $C$ 满足b)的条件（需要一点耐心；可以发现，$C$ 的\Term{object}{对象}的所有\Term{fibre-product}{纤维积}，或\Term{isomorphism}{同构}于 $\varnothing_E$，或属于 $C$，例外只有 $Z\times_e Z$ 和 $Y\times_e Z$，它们可由 $C$ 的两个元素\Term{covering}{覆盖}）；但显然 $\operatorname{Ker}(f,g)$ 不满足c)的条件。
+
+(f) 给出这样的例子：$C$ 对\Term{fibre-product}{纤维积}\Term{stable}{稳定}（因此 $E$ 更是\Term{locally-coherent}{局部凝聚}，即\Term{locally-algebraic}{局部代数}\Term{topos}{拓扑斯}），但 $E$ 不是\Term{algebraic}{代数}\Term{topos}{拓扑斯}。（取d)所给的例子，并取 $E$ 中由\Term{object}{对象} $Y,Z,T_i$（$i>0$）和 $\varnothing_E$ 组成的\Term{full-subcategory}{满子范畴} $C'$。）
+
+(g) 假设\Term{category}{范畴} $C$ \Term{finite}{有限}。证明\Term{topos}{拓扑斯} $E$ \Term{noetherian}{诺特}，它的\Term{noetherian}{诺特}（即\Term{quasi-compact}{拟紧}）\Term{object}{对象}正是满足对 $C$ 的每个\Term{object}{对象} $X$，$F(X)$ 为\Term{finite}{有限}集的\Term{contravariant}{反变}\Term{functor}{函子} $F:C^\circ\to(\mathrm{Ens})$；并证明 $E$ 上的\Term{fibre-functor}{纤维函子}把\Term{noetherian}{诺特}\Term{object}{对象}变为\Term{finite}{有限}集（参见第IV讲7.6 h)）。
+
+(h) 假设 $C$ 的每个\Term{morphism}{态射} $f:X\to X$ 都\Term{resolution}{分解}为复合 $ip$，其中 $i$ 是\Term{monomorphism}{单态射}，$p$ 有右逆。设 $X$ 是 $C$ 的\Term{object}{对象}，$I(X)$ 是它在 $C$ 意义下的\Term{subobject}{子对象}所成的\Term{ordered-set}{有序集}，$S(I(X))$ 为 $I(X)$ 中满足如下条件的\Term{subset}{子集} $U$ 之集：对两个元素 $X',X''\in I(X)$，若 $X'\in U$ 且 $X''\leq X'$，则 $X''\in U$。证明 $X$ 在 $E$ 中的\Term{subobject}{子对象}的\Term{ordered-set}{有序集}\Term{isomorphism}{同构}于\Term{set}{集合} $S(I(X))$（按包含关系排序）。由此推出，若 $I(X)$ \Term{finite}{有限}，则 $X$ 是 $E$ 的\Term{prenoetherian}{前诺特}\Term{object}{对象}。
+\SourcePage{155}
+特别地，若（除上述\Term{resolution}{分解}条件外）$C$ 对\Term{fibre-product}{纤维积}\Term{stable}{稳定}（分别为对\Term{finite-projective-limit}{有限投射极限}\Term{stable}{稳定}），且对每个 $X\in\operatorname{ob}C$，$X$ 在 $C$ 中的\Term{subobject}{子对象}集 $I(X)$ \Term{finite}{有限}，则\Term{topos}{拓扑斯} $E$ \Term{locally-noetherian}{局部诺特}（分别为\Term{noetherian}{诺特}）。
+
+(i) 设 $C$ 是属于 $\mathcal U$ 的\Term{finite}{有限}\Term{set}{集合}（也可选\Term{nonempty}{非空}\Term{finite}{有限}\Term{set}{集合}）的\Term{category}{范畴}，从而 $E=\widehat C$ 是\Term{augmented-simplicial-set}{增广单纯集合}（分别为通常的\Term{simplicial-set}{单纯集合}）的\Term{category}{范畴}。证明 $E$ 是\Term{noetherian}{诺特}\Term{topos}{拓扑斯}。（使用h)。）取 $C$ 的一个非\Term{essentially-constant-ind-object}{本质常值}的\Term{pro-object}{投射对象} $(X_i)_{i\in I}$，证明 $E$ 有一些\Term{fibre-functor}{纤维函子}，它们不把\Term{noetherian}{诺特}\Term{object}{对象}变为\Term{noetherian}{诺特}\Term{object}{对象}（即\Term{finite}{有限}集）。
+
+(j) 对\Term{topos}{拓扑斯} $E$ 考虑以下性质蕴涵图：
+\[
+\begin{tikzcd}[column sep=1.4em,row sep=1.8em]
+\text{$E$ 诺特}\arrow[r,Rightarrow]\arrow[d,Rightarrow]
+&\text{$E$ 局部诺特}\arrow[d,Rightarrow]\arrow[ddr,Rightarrow] &\\
+\text{$E$ 凝聚}\arrow[r,Rightarrow]
+&\text{$E$ 代数}\arrow[d,Rightarrow]&\\
+&\begin{gathered}\text{$E$ 局部凝聚，即}\\E_{\mathrm{cohalg}}\text{ 生成 }E\end{gathered}\arrow[d,Rightarrow]
+&E_{\text{前诺特}}\text{ 生成 }E\arrow[ddl,Rightarrow]\\
+&E_{\mathrm{coh}}\text{ 生成 }E\arrow[d,Rightarrow]&\\
+&E_{\mathrm{qucpct}}\text{ 生成 }E&
+\end{tikzcd}
+\]
+证明该图中的全部蕴涵都是严格的，而且所考察的概念之间，除上述图的复合蕴涵外，不存在其他蕴涵。这里 $E_{\mathrm{coh}},E_{\mathrm{qucpct}},E_{\text{前诺特}},E_{\mathrm{cohalg}}$ 分别表示 $E$ 中由\Term{coherent}{凝聚}\Term{object}{对象}、\Term{quasi-compact}{拟紧}\Term{object}{对象}、\Term{prenoetherian}{前诺特}\Term{object}{对象}、既\Term{coherent}{凝聚}又\Term{algebraic}{代数}的\Term{object}{对象}组成的\Term{full-subcategory}{满子范畴}。（限于形如 $\widehat C$ 的\Term{topos}{拓扑斯}，利用d)、e)、f)中所述结果。）
+
+(k) 解决以下问题（本段撰稿人不知道答案）：$E=\widehat C$ 能否\Term{locally-noetherian}{局部诺特}，而各 $\operatorname{Hom}(X,Y)$（$X,Y\in\operatorname{ob}C$）不全\Term{finite}{有限}？
+\end{SGAresult}
+\begin{SGAresult}{习题}{2.18}
+设 $E$ 是\Term{topos}{拓扑斯}。
+
+a) 设 $X$ 是 $E$ 的\Term{prenoetherian}{前诺特}\Term{object}{对象}。证明 $X$ \Term{isomorphism}{同构}于 $E$ 的\Term{finite}{有限}个\Term{connected}{连通}\Term{object}{对象}（第IV讲4.3.5）的和。（用反证法证明 $X$ 的每个递增\Term{partition}{分割}序列（第IV讲8.7）都\Term{stable}{稳定}。）
+\SourcePage{156}
+b) 设 $X$ 是 $E$ 的\Term{object}{对象}，$(f_i:X_i\to X)_{i\in I}$ 是 $X$ 的\Term{covering-family}{覆盖族}。证明若每个 $X_i$ 都\Term{isomorphism}{同构}于 $E$ 的\Term{connected}{连通}\Term{object}{对象}的和，则 $X$ 也如此。（先归结到各 $X_i$ \Term{connected}{连通}的情形，再归结到它们是 $X$ 的\Term{subobject}{子对象}的情形；然后在指标集 $I$ 上考虑由关系 $X_i\cap X_j\ne\varnothing_E$ 生成的\Term{equivalence-relation}{等价关系} $R$，并证明若 $J=I/R$，则 $X$ 是各 $X_{(i)}=\operatorname{Sup}_{i\in I}X_i$ 的和。）
+
+c) 从b)推出：若用 $(X_i)_{i\in I}$ 表示 $E$ 的\Term{generating-family}{生成族}，则 $E$ \Term{locally-connected}{局部连通}（第IV讲8.7 $\ell$)），当且仅当每个 $X_i$（$i\in I$）\Term{isomorphism}{同构}于 $E$ 的\Term{connected}{连通}\Term{object}{对象}的和。
+
+d) 从a)、c)推出：若 $E$ 有由\Term{prenoetherian}{前诺特}\Term{object}{对象}组成的\Term{generating-subcategory}{生成子范畴}，特别地，若 $E$ \Term{locally-noetherian}{局部诺特}，则 $E$ \Term{locally-connected}{局部连通}，从而更\Term{isomorphism}{同构}于一族\Term{connected}{连通}\Term{topos}{拓扑斯}（第IV讲8.7 e)），即\Term{final-object}{终对象}\Term{connected}{连通}的\Term{topos}{拓扑斯}，的和\Term{topos}{拓扑斯}（第IV讲8.7 b)）。（特别地，对每个\Term{morphism}{态射} $f:P\to E$，其中 $P$ 是“\Term{nonempty}{非空}\Term{connected}{连通}且\Term{simply-connected}{单连通}”的\Term{topos}{拓扑斯}（第IV讲2.7.5），可为 $E$ 配备一个\Term{fundamental-pro-group}{基本投射群} $\pi_1(E,f)$；注意，由 Deligne（[9]），若 $E$ \Term{locally-noetherian}{局部诺特}且“\Term{nonempty}{非空}”，总能找到这样的 $f$，其中 $P$ 为点\Term{topos}{拓扑斯}。）
+\end{SGAresult}

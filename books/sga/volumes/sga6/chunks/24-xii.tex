@@ -1,0 +1,531 @@
+\SourcePage{605}
+\SGAchapter{XII}{关于 Picard 函子的一个相对可表示性定理}{Un théorème de représentabilité relative sur le foncteur de Picard}
+\begin{center}M. Raynaud 著，S. Kleiman 整理\end{center}
+\textbf{说明}
+
+第 XII、XIII 两讲旨在证明 A. Grothendieck 在《\Term{algebraic-geometry}{代数几何}基础》（下引作 FGA）的评注（第 C 07--C 11 页）中陈述的关于\Term{picard-functor}{Picard 函子}的九个\Term{finiteness-theorem}{有限性定理}。第一讲证明第一个\Term{finiteness-theorem}{有限性定理}，所用\Term{form}{形式}比 FGA 中的陈述更精确：设 $X$ 和 $Y$ 是\Term{integral-scheme}{整}的\Term{noetherian-scheme}{诺特基概形} $S$ 上的两个\Term{proper-morphism}{固有}\Term{scheme}{概形}，$f:X\to Y$ 是\Term{surjective-morphism}{满射}的 $S$-\Term{morphism}{态射}。则 $S$ 有一个\Term{nonempty}{非空}\Term{open-subscheme}{开子集} $V$，使诱导的\Term{morphism}{态射}
+\[
+f^*:\operatorname{Pic}_{Y/S}\longrightarrow\operatorname{Pic}_{X/S}
+\]
+在 $V$ 上可由\Term{finite-presentation}{有限呈示}的\Term{quasi-affine-morphism}{拟仿射态射}\Term{representable-functor}{表示}。第二讲证明其余\Term{theorem}{定理}。
+
+这两讲的证明方法有很大不同。第一讲主要使用 Oort \Term{devissage}{分解}、非\Term{flat-morphism}{平坦}\Term{descent}{下降}和\Term{unramified-functor}{非分歧函子}的\Term{representability}{可表示性}。第二讲先通过不断对适当的\Term{morphism}{态射} $X'\to X$ 应用第一个\Term{finiteness-theorem}{有限性定理}，把问题化为所涉及的 $S$-\Term{scheme}{概形} $X$ 是\Term{projective-morphism}{射影}且\Term{flat-morphism}{平坦}、\Term{fiber}{纤维}\Term{geometrically-integral}{几何整}的情形；必要时甚至可要求\Term{fiber}{纤维}\Term{normal-scheme}{正规}或\Term{smooth-morphism}{光滑}。然后使用 I. Castelnuovo 创造、经 T. Matsusaka、D. Mumford、Y. Nakai 和 S. Kleiman 改进并应用的 \Term{b-sheaf}{$(b)$-层}这一工具。它尤其使我们不必使用 Grothendieck 最初的证明中用到的 Chow 坐标、\Term{frobenius-morphism}{Frobenius 态射}和 Lefschetz \Term{theorem}{定理}。
+
+本第 XII 讲由 M. Raynaud 依照 Grothendieck 的思路作口头报告；整理者感谢他提供自己的笔记。
+
+\SourcePage{606}
+\SGAsection{1}{主要定理的陈述及其应用}
+\begin{SGAresult}{\Term{theorem}{定理}}{1.1}
+设 $S$ 是\Term{noetherian-scheme}{诺特概形}，$X$ 和 $Y$ 是两个\Term{proper-morphism}{固有}的 $S$-\Term{scheme}{概形}，$f:X\to Y$ 是一个\Term{morphism}{态射}。假定 $S$ \Term{integral-scheme}{整}且 $f$ \Term{surjective-morphism}{满射}。则 $S$ 有一个\Term{nonempty}{非空}\Term{open-subscheme}{开子集} $V$，使\Term{picard-functor}{Picard 函子}（对 \Term{fppf-topology}{f.p.p.f. 拓扑}作\Term{sheafification}{局部化}）之间的\Term{morphism}{态射}
+\[
+f^*:\operatorname{Pic}_{Y/S}|V\longrightarrow\operatorname{Pic}_{X/S}|V
+\]
+可由\Term{finite-presentation}{有限呈示}的\Term{quasi-affine-morphism}{拟仿射态射}\Term{representable-functor}{表示}。
+\end{SGAresult}
+\begin{SGAresult}{推论}{1.2}
+设 $X$ 是\Term{noetherian-scheme}{诺特概形} $S$ 上的\Term{proper-morphism}{固有}\Term{scheme}{概形}。假定 $S$ \Term{integral-scheme}{整}。则 $S$ 有一个\Term{nonempty}{非空}\Term{open-subscheme}{开子集} $V$，使\Term{picard-functor}{Picard 函子} $\operatorname{Pic}_{X/S}|V$ 可由一个 $V$-\Term{group-scheme}{群概形}\Term{representable-functor}{表示}，它是若干\Term{finite-type}{有限型}\Term{quasi-projective-scheme}{拟射影开子概形}的\Term{disjoint-union}{不交并}，因而尤其在 $V$ 上\Term{separated-morphism}{分离}。
+\end{SGAresult}
+事实上，回顾如下事实（FGA，第 232 号）：设 $S$ 是一个\Term{scheme}{概形}，$X$ 是\Term{finite-presentation}{有限呈示}的\Term{projective-morphism}{射影} $S$-\Term{scheme}{概形}，且在 $S$ 上\Term{integral-over-base}{整}（即\Term{flat-morphism}{平坦}且\Term{fiber}{纤维}\Term{geometrically-integral}{几何整}）。则\Term{picard-functor}{Picard 函子}由一个 $S$-\Term{group-scheme}{群概形} $\operatorname{Pic}_{X/S}$ \Term{representable-functor}{表示}，它是\Term{finite-presentation}{有限呈示}的\Term{quasi-projective-scheme}{拟射影开子概形}的递增并。
+
+考虑“\Term{hilbert-polynomial}{Hilbert 多项式}”，这里可以把 $\operatorname{Pic}_{X/S}$ \Term{resolution}{分解}为\Term{open-subscheme}{开子概形} $\operatorname{Pic}_{X/S}^{q}$ 的\Term{disjoint-union}{不交并}，其中 $q\in\mathbf Q[t]$。下一讲将在附加假设 $S$ \Term{noetherian-scheme}{诺特}下证明这些 $\operatorname{Pic}_{X/S}^{q}$ 在 $S$ 上是\Term{finite-type}{有限型}的。由此知道，当 $X$ 还在 $S$ 上\Term{projective-morphism}{射影}且\Term{integral-over-base}{整}时，1.2 成立。我们将用下述\Term{lemma}{引理}从这一情形\Term{pushout}{推出}\Term{generic}{一般}情形。
+
+\begin{SGAresult}{\Term{lemma}{引理}}{1.3}
+设 $X$ 在\Term{integral-scheme}{整}的\Term{noetherian-scheme}{诺特概形} $S$ 上为\Term{finite-type}{有限型}。则 $S$ 有一个\Term{nonempty}{非空}\Term{open-subscheme}{开子集} $V$，并存在一个\Term{integral-scheme}{整概形} $S'$ 和一个\Term{finite-morphism}{有限}\Term{flat-morphism}{平坦}\Term{morphism}{态射} $S'\to V$，使 $X_{S'}$ 的每个\Term{irreducible-component}{不可约分支} $X_i'$ 配备诱导的\Term{reduced-scheme}{约化结构}后，都在 $S'$ 上\Term{integral-over-base}{整}。
+\end{SGAresult}
+\SourcePage{607}
+\begin{proof}
+事实上，\Term{function-field}{函数域} $k(S)$ 有一个\Term{finite-extension}{有限扩张} $L$，使 $(X_L)_{\mathrm{red}}$ 的每个\Term{irreducible-component}{不可约分支}都\Term{geometrically-integral}{几何整}（EGA IV 4.6.8）。取一个\Term{integral-scheme}{整}的 $S$-\Term{scheme}{概形} $S_1$，使 $k(S_1)=L$，并使 $S$ 有一个\Term{nonempty}{非空}\Term{open-subscheme}{开子集} $V_1$ 和一个\Term{finite-morphism}{有限}\Term{flat-morphism}{平坦}\Term{morphism}{态射} $h:S_1\to V_1$。$S_1$ 有一个\Term{nonempty}{非空}\Term{open-subscheme}{开子集} $S_2$，使 $X_{S_1}$ 的每个\Term{irreducible-component}{不可约分支}配备诱导的\Term{reduced-scheme}{约化结构}后，都在 $S_2$ 上\Term{integral-over-base}{整}（EGA IV 9.7.7）。取 $V=V_1-h(S_1-S_2)$ 和 $S'=h^{-1}(V)$ 即可。
+\end{proof}
+现在证明 1.2。取 1.3 中的 $h:S'\to V_1$ 和 $X_i'$。对每个 $i$，取一个 \Term{chow-presentation}{Chow 呈示} $f_i:Z_i\to X_i'$，其中 $Z_i$ \Term{integral-scheme}{整}且 $f_i$ \Term{birational-morphism}{双有理}。适当缩小 $V$ 和 $S'$，可以假定 $Z_i$ 在 $S$ 上\Term{integral-over-base}{整}（EGA IV 9.7.7）。设
+\[
+f:Z=\coprod_iZ_i\longrightarrow X'=X_{S'}
+\]
+为\Term{canonical-morphism}{典范态射}。则 $\operatorname{Pic}_{Z/S'}=\prod_i\operatorname{Pic}_{Z_i/S'}$ 可由一个\Term{group-scheme}{群概形}\Term{representable-functor}{表示}，它是若干\Term{finite-type}{有限型}\Term{quasi-projective-scheme}{拟射影开子概形}的\Term{disjoint-union}{不交并}。
+
+最后，1.1 表明，适当缩小 $V$ 和 $S'$ 后，\Term{morphism}{态射}
+\[
+f^*:\operatorname{Pic}_{X'/S'}\longrightarrow\operatorname{Pic}_{Z/S'}
+\]
+可由\Term{quasi-affine-morphism}{拟仿射态射}\Term{representable-functor}{表示}。因此 $\operatorname{Pic}_{X'/S'}$ 可由一个\Term{group-scheme}{群概形}\Term{representable-functor}{表示}，它是若干\Term{finite-type}{有限型}\Term{quasi-projective-scheme}{拟射影开子概形}的\Term{disjoint-union}{不交并}。由\Term{finite-flat-descent}{有限平坦下降}（SGA 1 第 VIII 讲 7.6 和 EGA II 6.6.1），$\operatorname{Pic}_{X/S}|V$ 也具有这一性质。
+
+\begin{SGAresult}{\Term{lemma}{引理}}{1.4}
+设 $k$ 是一个域，$P$ 和 $Q$ 是两个\Term{locally-finite-type}{局部有限型}的 $k$-\Term{group-scheme}{群概形}，$f:P\to Q$ 是一个\Term{quasi-affine-morphism}{拟仿射态射}。则 $f$ 是\Term{affine-morphism}{仿射}的。
+\end{SGAresult}
+\begin{proof}
+设 $R=\operatorname{Ker}(f)$。$R$ 是\Term{finite-type}{有限型}的 $k$-\Term{group-scheme}{群概形}，且为\Term{quasi-affine-morphism}{拟仿射}；根据 SGA 3 第 VI$_{\mathrm B}$ 讲 11.11，$R$ 是\Term{affine-scheme}{仿射}的。
+\SourcePage{608}
+因此，使 $P$ 成为 $P/R$ 上一个 $R$-\Term{torsor}{挠子}的\Term{morphism}{态射} $P\to P/R$ 是\Term{affine-morphism}{仿射}的。另外，已知 $P/R\to Q$ 是\Term{closed-immersion}{闭浸入}（SGA 3 1.4.2），所以是\Term{affine-morphism}{仿射}的。因而复合 $P\to P/R\to Q$ 也是如此。
+\end{proof}
+
+\begin{SGAresult}{推论}{1.5}
+设 $k$ 是一个域。
+
+\textup{a)} 设 $X$ 是一个\Term{proper-morphism}{固有}的 $k$-\Term{scheme}{概形}。则 $\operatorname{Pic}_{X/k}$ \Term{representable-functor}{可表示}（J. P. Murre）。
+
+\textup{b)} 设 $f:X\to Y$ 是两个\Term{proper-morphism}{固有} $k$-\Term{scheme}{概形}之间的\Term{surjective-morphism}{满射}\Term{morphism}{态射}。则诱导的\Term{morphism}{态射} $f^*:\operatorname{Pic}_{Y/k}\to\operatorname{Pic}_{X/k}$ 是\Term{affine-morphism}{仿射}的。
+\end{SGAresult}
+\begin{SGAresult}{推论}{1.6}
+设 $S$ 是\Term{integral-scheme}{整}的\Term{noetherian-scheme}{诺特概形}，$f:X\to Y$ 是两个\Term{proper-morphism}{固有} $S$-\Term{scheme}{概形}之间的\Term{surjective-morphism}{满射} $S$-\Term{morphism}{态射}。
+
+\textup{a)} 若 $Y$ 在 $S$ 上\Term{normal-over-base}{正规}（即\Term{flat-morphism}{平坦}且\Term{fiber}{纤维}\Term{geometrically-normal}{几何正规}），则适当缩小 $S$ 后，$f^*:\operatorname{Pic}_{Y/S}\to\operatorname{Pic}_{X/S}$ 是\Term{quasi-finite-morphism}{拟有限}的。
+
+\textup{b)} 若 $\operatorname{Pic}_{Y/S}$ 在 $S$ 上\Term{essentially-proper}{本质固有}（即它满足\Term{valuative-criterion-properness}{固有性的赋值判别准则}；例如 $Y$ 在 $S$ 上\Term{smooth-morphism}{光滑}时便如此），则适当缩小 $S$ 后，$f^*:\operatorname{Pic}_{Y/S}\to\operatorname{Pic}_{X/S}$ 是\Term{finite-morphism}{有限}的（特别也是\Term{affine-morphism}{仿射}的）。
+\end{SGAresult}
+\begin{proof}
+在 a) 中，对每个 $s\in S$，$R_s=\operatorname{Ker}(f_s^*)$ 是一个\Term{affine-algebraic-group}{仿射代数群}；它的\Term{identity-component}{单位连通分支}是在 $k$ 上\Term{proper-morphism}{固有}的\Term{algebraic-group}{代数群}（FGA 236，\Term{theorem}{定理} 2.1 (iii)）。故 $R_s$ \Term{finite-morphism}{有限}。在 b) 中，$f^*$ 既\Term{proper-morphism}{固有}又\Term{quasi-affine-morphism}{拟仿射}，所以\Term{finite-morphism}{有限}。
+\end{proof}
+\textbf{注记 1.7。} 1.5 和 1.6 似乎提示，把 1.1 中的“\Term{quasi-affine-morphism}{拟仿射}”换成“\Term{affine-morphism}{仿射}”后仍应成立，但目前尚不清楚。
+
+\SourcePage{609}
+\SGAsection{2}{初步约化}
+\textbf{2.1。} 对 $X/S$ 和 $Y/S$ 应用 1.3，得到 $S$ 的一个\Term{nonempty}{非空}\Term{open-subscheme}{开子集} $V$、一个\Term{integral-scheme}{整概形} $S'$ 和一个\Term{finite-morphism}{有限}\Term{flat-morphism}{平坦}\Term{morphism}{态射} $S'\to V$，使 $X_{S'}$ 的每个\Term{irreducible-component}{不可约分支} $X_i'$ 及 $Y_{S'}$ 的每个\Term{irreducible-component}{不可约分支} $Y_j'$，在配备诱导的\Term{reduced-scheme}{约化结构}后，都在 $S'$ 上\Term{integral-over-base}{整}。由 \Term{fpqc-descent}{f.p.q.c. 下降}（EGA IV 2.7.1 (xiv) 及 SGA 1 第 VIII 讲 7.9），可以用 $S'$ 代替 $S$。考虑\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}
+X_{\mathrm{red}}\arrow[r,"f_{\mathrm{red}}"]\arrow[d,"i"']&Y_{\mathrm{red}}\arrow[d,"j"]\\
+X\arrow[r,"f"']&Y
+\end{tikzcd}
+\]
+以及它所诱导的\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}
+\operatorname{Pic}_{X_{\mathrm{red}}/S}&\operatorname{Pic}_{Y_{\mathrm{red}}/S}\arrow[l]\\
+\operatorname{Pic}_{X/S}\arrow[u]&\operatorname{Pic}_{Y/S}\arrow[l]\arrow[u]
+\end{tikzcd}
+\]
+再利用关于由\Term{quasi-affine-morphism}{拟仿射态射}\Term{representable-functor}{表示}的\Term{functor-morphism}{函子态射}的那些直接性质（由 EGA II 5.1.10 (ii)、(v) 得到），便知只须证明以下两个断言：
+
+\textbf{I。} 当 $f$ 是一个\Term{immersion}{浸入}（必为\Term{nilpotent-immersion}{幂零浸入}）时，\Term{theorem}{定理} 1.1 成立。
+
+\textbf{II。} 当 $X$ 和 $Y$ 都\Term{reduced-scheme}{约化}，且 $X$ 的每个\Term{irreducible-component}{不可约分支} $X_i$ 及 $Y$ 的每个\Term{irreducible-component}{不可约分支} $Y_i$ 配备诱导的\Term{reduced-scheme}{约化结构}后都在 $S$ 上\Term{integral-over-base}{整}时，\Term{theorem}{定理} 1.1 成立。
+
+\textbf{2.2。} 研究断言 II。对每个 $i$，取一个指标 $j=\varphi(i)$，使 $f(X_i)\subset Y_j$；置 $\Sigma_j=\coprod_{\varphi(i)=j}X_i$。于是有以下两个\Term{commutative-diagram}{交换图}：
+\SourcePage{610}
+\[
+\begin{tikzcd}
+Y&\coprod_jY_j\arrow[l]\\
+X\arrow[u]&\coprod_j\Sigma_j\arrow[l]\arrow[u]
+\end{tikzcd}
+\]
+\[
+\resizebox{\linewidth}{!}{\begin{tikzcd}[ampersand replacement=\&,column sep=large]
+\operatorname{Pic}_{Y/S}\arrow[r,"\text{\textcircled{1}}"]\arrow[d,"\text{\textcircled{2}}"']\&
+\operatorname{Pic}_{\coprod_jY_j/S}=\prod_j\operatorname{Pic}_{Y_j/S}\arrow[d,"\text{\textcircled{4}}"]\\
+\operatorname{Pic}_{X/S}\arrow[r,"\text{\textcircled{3}}"']\&
+\operatorname{Pic}_{\coprod_j\Sigma_j/S}=\prod_j\operatorname{Pic}_{\Sigma_j/S}.
+\end{tikzcd}}
+\]
+为证明 II，只须说明，适当缩小 $S$ 后，\textcircled{1}、\textcircled{3} 和 \textcircled{4} 都是\Term{quasi-affine-morphism}{拟仿射}的。
+
+先考虑 \textcircled{4}。以 $Y_j$ 代替 $Y$，以 $\Sigma_j$ 代替 $X$，便归结为 $Y$ 在 $S$ 上\Term{integral-over-base}{整}的情形。由于 $f$ \Term{surjective-morphism}{满射}，某个 $X_i$，记作 $X_0$，\Term{dominant-morphism}{支配} $Y$，且有两个序列
+\[
+X_0\lhook\joinrel\longrightarrow\coprod_iX_i\longrightarrow Y,
+\qquad
+\operatorname{Pic}_{X_0/S}\longleftarrow
+\operatorname{Pic}_{\coprod_iX_i/S}\longleftarrow\operatorname{Pic}_{Y/S}.
+\]
+如果知道各个 $\operatorname{Pic}_{X_i/S}$，因而 $\operatorname{Pic}_{\coprod_iX_i/S}$，都\Term{representable-functor}{可表示}，而且复合\Term{morphism}{态射}是\Term{quasi-affine-morphism}{拟仿射}的，那么就能断定 \textcircled{4} 是\Term{quasi-affine-morphism}{拟仿射}的。结合 1.2 的证明，为处理 \textcircled{4}，便归结为证明：
+
+\textbf{II$'$。} 当 $X$ 和 $Y$ 都在 $S$ 上\Term{integral-over-base}{整}时，\Term{theorem}{定理} 1.1 成立。
+
+对 \textcircled{1} 和 \textcircled{3}，需要处理\Term{morphism}{态射} $\coprod_iX_i\to X$ 的情形，其中 $X$ \Term{reduced-scheme}{约化}，各 $X_i$ 是 $X$ 的\Term{irreducible-component}{不可约分支}，且在 $S$ 上\Term{integral-over-base}{整}。可以假定 $X$ 的\Term{fiber}{纤维}\Term{connected-scheme}{连通}。事实上，设 $\bar\eta$ 是 $S$ 的\Term{geometric-point}{几何点}。则 $X_{\bar\eta}$ 的\Term{irreducible-component}{不可约分支}为各 $(X_i)_{\bar\eta}$；适当缩小 $S$ 后，可以假定 $X_i\cap X_j=\varnothing$ 当且仅当 $(X_i)_{\bar\eta}\cap(X_j)_{\bar\eta}=\varnothing$。
+\SourcePage{611}
+设 $Y_k=\bigcup_{i\in I(k)}X_i$ 是 $X$ 的各个\Term{connected-component}{连通分支}；则 $f$ \Term{resolution}{分解}为
+\[
+f=\coprod_k f_k:\coprod_k\left(\coprod_{i\in I(k)}X_i\right)\longrightarrow\coprod_kY_k,
+\]
+所需断言由此得到。最后，直接归纳可把问题归结为\Term{morphism}{态射} $X_1\amalg X_2\to X$ 的情形。适当缩小 $S$，依 EGA III 7.8.6，\textcircled{1} 和 \textcircled{3} 便由下述命题得到。
+
+\begin{SGAresult}{命题}{2.3}
+设 $S$ 是一个\Term{scheme}{概形}，$g:Y\to S$ 是一个\Term{proper-morphism}{固有态射}，$Y_1,Y_2$ 是由\Term{ideal-sheaf}{理想} $I_1,I_2$ 定义的两个\Term{closed-subscheme}{闭子概形}。假定：
+
+\textup{a)} $Y,Y_1,Y_2,Y_1\cap Y_2$ 都在 $S$ 上\Term{faithfully-flat}{忠实平坦}且为\Term{finite-presentation}{有限呈示}；
+
+\textup{b)} \Term{universal}{普遍}地有 $g_*\mathcal O_Y=\mathcal O_S$ 及 $(g_i)_*\mathcal O_{Y_i}=\mathcal O_S$（其中 $g_i=g|Y_i$，$i=1,2$）；
+
+\textup{c)} $I_1\cap I_2=0$。
+
+则 $\operatorname{Pic}_{Y/S}\to\operatorname{Pic}_{(Y_1\amalg Y_2)/S}$ 可由\Term{finite-presentation}{有限呈示}的\Term{affine-morphism}{仿射态射}\Term{representable-functor}{表示}。
+\end{SGAresult}
+\begin{proof}
+首先指出，所有假设在任意\Term{base-change}{基变换}下都保持成立。对 c)，这是以下两个\Term{exact-sequence}{正合列}的结果：
+\[
+0\longrightarrow I_1+I_2\longrightarrow\mathcal O_Y\longrightarrow\mathcal O_{Y_1\cap Y_2}\longrightarrow0
+\]
+及
+\[
+0\longrightarrow I_1\cap I_2\longrightarrow I_1\oplus I_2\longrightarrow I_1+I_2\longrightarrow0.
+\]
+第一列说明 $I_1+I_2$ 在 $S$ 上\Term{flat-morphism}{平坦}，再由第二列可知 $I_1\cap I_2$ 的形成与\Term{base-change}{基变换}相容。
+
+断言对 \Term{fppf-topology}{f.p.p.f. 拓扑}是\Term{local-scheme}{局部}的。作\Term{base-change}{基变换} $Y_1\cap Y_2\to S$ 后，可以假定 $(Y_1\cap Y_2)/S$ 有一个\Term{section}{截面} $\alpha$，它定义 $Y_i$ 的\Term{section}{截面} $\alpha_i$ 和 $Y$ 的\Term{section}{截面} $\beta$。
+
+作适当的\Term{base-change}{基变换}后，只须说明，每个点 $\mu:S\to\operatorname{Pic}_{(Y_1\amalg Y_2)/S}$ 在 $\operatorname{Pic}_{Y/S}$ 中的\Term{inverse-image}{逆像}是可由 $S$ 上的\Term{affine-scheme}{仿射概形}\Term{representable-functor}{表示}的\Term{subfunctor}{子函子}。
+\SourcePage{612}
+$\mu$ 由 $Y_i$ 上的\Term{invertible-sheaf}{可逆层} $L_i$ 连同一个\Term{rigidification}{刚性化} $u_i:\alpha_i^*L_i\xrightarrow\sim\mathcal O_S$（$i=1,2$）定义。同样，点 $\lambda:S\to\operatorname{Pic}_{Y/S}$ 对应于 $Y$ 上一个\Term{invertible-sheaf}{可逆层} $L$，连同一个\Term{rigidification}{刚性化} $u:\beta^*L\xrightarrow\sim\mathcal O_S$。$\lambda$ 在 $\operatorname{Pic}_{(Y_1\amalg Y_2)/S}$ 中的像等于 $\mu$，当且仅当存在\Term{rigidified-sheaf}{刚性化层}之间的\Term{isomorphism}{同构} $f_i^*(L)\simeq L_i$，其中 $f_i:Y_i\to Y$ 为\Term{inclusion-morphism}{包含态射}，$i=1,2$。注意，这些\Term{isomorphism}{同构}定义一个\Term{isomorphism}{同构}
+\[
+\varphi:L_1|Y_1\cap Y_2\xrightarrow\sim L_2|Y_1\cap Y_2,
+\qquad u_1=u_2\circ\varphi.
+\]
+反过来，若 $\varphi:L_1|Y_1\cap Y_2\xrightarrow\sim L_2|Y_1\cap Y_2$ 是满足 $u_1=u_2\circ\varphi$ 的\Term{isomorphism}{同构}，则存在 $Y$ 上的\Term{rigidified-sheaf}{刚性化}\Term{invertible-sheaf}{可逆层} $L$，由沿 $\varphi$ 的\Term{gluing}{粘合}得到。具体地，$L$ 是由 $\varphi$ 定义的\Term{canonical-morphism}{典范同态}
+\[
+(f_1)_*L_1\oplus(f_2)_*L_2\longrightarrow(f|Y_1\cap Y_2)_*L_2
+\]
+的\Term{kernel}{核}。这个 $L$ 就对应于映到 $\mu$ 的点 $\lambda\in\operatorname{Pic}_{Y/S}$。
+
+最后，定义\Term{functor}{函子} $I$：当 $T$ 遍历 $S$ 上的\Term{scheme}{概形}时，$I(T)$ 为满足 $(u_1)_T=(u_2)_T\circ\varphi$ 的\Term{isomorphism}{同构}
+\[
+\varphi:(L_1)_T|(Y_1\cap Y_2)_T\xrightarrow\sim(L_2)_T|(Y_1\cap Y_2)_T
+\]
+所成的\Term{set}{集合}。我们刚刚建立了 $\mu$ 在 $\operatorname{Pic}_{Y/S}$ 中的\Term{inverse-image}{逆像}与\Term{functor}{函子} $I$ 之间的\Term{isomorphism}{同构}。所以只须应用下面的\Term{lemma}{引理}（取 $X=Y_1\cap Y_2$）。
+\end{proof}
+
+\begin{SGAresult}{\Term{lemma}{引理}}{2.4}
+设 $X$ 是 $S$ 上\Term{flat-morphism}{平坦}、\Term{proper-morphism}{固有}且\Term{finite-presentation}{有限呈示}的\Term{scheme}{概形}。设 $L,M$ 是 $X$ 上的两个\Term{invertible-sheaf}{可逆层}，$\operatorname{Isom}(L,M)$ 是\Term{isomorphism}{同构} $L_T\xrightarrow\sim M_T$（$T/S$）所成的\Term{functor}{函子}。则：
+
+\textup{i)} $\operatorname{Isom}(L,M)$ 可由 $S$ 上一个\Term{finite-presentation}{有限呈示}的\Term{affine-scheme}{仿射概形}\Term{representable-functor}{表示}；
+
+\textup{ii)} 若 $L$ 和 $M$ 还配备了相对于 $X$ 的一个给定\Term{section}{截面}的\Term{rigidification}{刚性化}，则 $\operatorname{Isom}(L,M)$ 中由与这些\Term{rigidification}{刚性化}相容的\Term{isomorphism}{同构}组成的\Term{subfunctor}{子函子}可由 $\operatorname{Isom}(L,M)$ 的一个\Term{closed-subscheme}{闭子概形}\Term{representable-functor}{表示}。
+\end{SGAresult}
+\SourcePage{613}
+\begin{proof}
+ii) 显然。对 i)，回顾\Term{functor}{函子} $T\mapsto\operatorname{Hom}(L_T,M_T)$ 和 $T\mapsto\operatorname{Hom}(M_T,L_T)$ 可由\Term{vector-bundle}{向量丛} $\mathbf V(E)$ 和 $\mathbf V(F)$ \Term{representable-functor}{表示}（EGA III 7.7.8）。若 $u\in\operatorname{Hom}(L_T,M_T)$，$v\in\operatorname{Hom}(M_T,L_T)$，则条件 $u\circ v=1$ 和 $v\circ u=1$ 定义 $\mathbf V(E)\times_S\mathbf V(F)$ 的一个\Term{closed-subscheme}{闭子概形} $F$，而且显然 $F\simeq I$。
+\end{proof}
+
+\textbf{2.5。} 最后，把断言 II$'$ 归结为以下断言：
+
+\textbf{II$^*$。} 当 $X$ 和 $Y$ 都在 $S$ 上\Term{integral-over-base}{整}，且序列
+\[
+\mathcal O_Y\longrightarrow f_*\mathcal O_Y\rightrightarrows g_*(\mathcal O_{X\times_YX})\tag{*}
+\]
+\Term{exact-sequence}{正合}时，\Term{theorem}{定理} 1.1 成立；这里 $g:X\times_YX\to Y$ 是\Term{structure-morphism}{结构态射}。
+
+为此，只须证明 $f$ 有一个\Term{resolution}{分解}
+\[
+X\xrightarrow{f_0}Y_0\xrightarrow{f_1}Y_1\longrightarrow\cdots\xrightarrow{f_\eta}Y_\eta=Y,
+\]
+使每个 $f_i$ 都满足 $(*)$，并且适当缩小 $S$ 后，每个 $Y_i$ 都在 $S$ 上\Term{integral-over-base}{整}。
+
+置 $Y_0=\operatorname{Spec}(f_*\mathcal O_X)$，其中 $f_0$ 来自 $f$ 的 \Term{stein-factorization}{Stein 分解}（EGA III 4.3.3），所以 $(f_0)_*(\mathcal O_X)\xleftarrow\sim\mathcal O_{Y_0}$，因而 $f_0$ 确实满足 $(*)$。为了进一步\Term{resolution}{分解} $Y_0\to Y$，使用下述\Term{lemma}{引理}。
+
+\begin{SGAresult}{\Term{lemma}{引理}}{2.6}
+设 $Y$ 是一个\Term{noetherian-scheme}{诺特概形}，$f:X\to Y$ 是一个\Term{finite-morphism}{有限}\Term{epimorphism}{满态射}（即 $\mathcal O_Y\to f_*\mathcal O_X$ 为\Term{injective-homomorphism}{单射}）。则 $f$ \Term{decomposable}{可分解}为一个\Term{finite}{有限}的\Term{finite-morphism}{有限态射}序列
+\[
+f_i:\quad X\xrightarrow\sim Y_0\xrightarrow{f_1}Y_1\longrightarrow\cdots\longrightarrow Y_n=Y,
+\]
+其中各 $f_i$ 都是\Term{effective-epimorphism}{有效满态射}（即序列
+\SourcePage{614}
+\[
+\mathcal O_{Y_i}\longrightarrow(f_i)_*(\mathcal O_{Y_{i-1}})
+\rightrightarrows(g_i)_*(\mathcal O_{Y_{i-1}}\otimes_{\mathcal O_{Y_i}}\mathcal O_{Y_{i-1}})
+\]
+是\Term{exact-sequence}{正合}的）。
+\end{SGAresult}
+\begin{proof}
+置 $A=\mathcal O_Y$，$B_0=f_*(\mathcal O_X)$，递归定义
+\[
+B_i=\operatorname{Ker}\left(B_{i-1}\rightrightarrows B_{i-1}\otimes_A B_{i-1}\right).
+\]
+立即可得
+\[
+B_{i-1}\otimes_A B_{i-1}\xrightarrow\sim B_{i-1}\otimes_{A_i}B_{i-1}.
+\]
+只须证明，当 $i$ \Term{large-relative-to-cardinal}{足够大}时有 $B_i=A$。事实上，考虑递减的 $B$-\Term{module}{模}序列 $M_i=B_i/A$，令 $S_i=\operatorname{Supp}(M_i)$。$Y$ 的\Term{closed-subset}{闭子集}的递减序列 $S_i$ 最终\Term{stable}{稳定}，记其\Term{stable}{稳定}值为 $S$。证明 $S=\varnothing$。否则，取 $S$ 的一个\Term{maximal-point}{极大点} $s$。以 $\operatorname{Spec}\mathcal O_{Y,s}$ 代替 $Y$，便可假定 $Y$ 是以 $s$ 为\Term{closed-point}{闭点}的\Term{local-scheme}{局部概形}。由 $s$ 的选取，当 $i$ \Term{large-relative-to-cardinal}{足够大}时 $M_i$ 是\Term{artinian-module}{阿廷模}，故序列 $(M_i)$ \Term{stable}{稳定}。因此存在 $i$ 使 $B_i=B_{i+1}$。于是 $\operatorname{Spec}(A_i)\to Y$ 是\Term{monomorphism}{单态射}，从而是\Term{closed-immersion}{闭浸入}（Nakayama）；由于 $B\subset A_i$，有 $B=A_i$，于是 $s\notin S$，矛盾。
+\end{proof}
+
+\SGAsection{3}{I 的证明：Oort 分解}
+\begin{SGAresult}{命题}{3.1}
+（Oort，\emph{Bull. Soc. Math. France}，第 90 卷，1962。）设 $S$ 是一个\Term{locally-noetherian-scheme}{局部诺特概形}，$f:X\to S$ 是一个\Term{proper-morphism}{固有态射}，$X'\subset X$ 是一个\Term{closed-subscheme}{闭子概形}。假定：
+
+\textup{i)} $X'$ 由 $X$ 的\Term{nilradical}{幂零根} $N$ 中的一个\Term{ideal-sheaf}{理想} $I$ 定义，且 $N\cdot I=0$；
+
+\textup{ii)} $X'$ 在 $S$ 上\Term{flat-morphism}{平坦}，且在\Term{dimension}{维数} $0$ \Term{cohomologically-flat}{上同调平坦}（EGA III 7.8.1）；
+
+\textup{iii)} $I$ 在 $S$ 上\Term{flat-morphism}{平坦}，且在\Term{dimension}{维数} $0$ 和 $1$ \Term{cohomologically-flat}{上同调平坦}；因而（EGA III 7.4.6），存在一个\Term{coherent-module}{凝聚} $\mathcal O_S$-\Term{module}{模} $Q$ 及一个对\Term{coherent-module}{凝聚} $\mathcal O_S$-\Term{module}{模} $M$ \Term{functorial}{函子性}的\Term{isomorphism}{同构}
+\SourcePage{615}
+\[
+R^2f_*(I\otimes f^*M)\simeq\underline{\operatorname{Hom}}_{\mathcal O_S}(Q,M);
+\]
+\textup{iv)} $f_*(\mathcal O_{X'})\to R^1f_*(I)$ 的\Term{cokernel}{余核} $E$ 是一个\Term{locally-free-module}{局部自由} $\mathcal O_S$-\Term{module}{模}；
+
+\textup{v)} \Term{homomorphism}{同态} $(f_*\mathcal O_X)_{\mathrm{red}}\to(f_*\mathcal O_{X'})_{\mathrm{red}}$ 是\Term{surjective-homomorphism}{满射}。
+
+则\Term{canonical-morphism}{典范态射} $\operatorname{Pic}_{X/S}\to\operatorname{Pic}_{X'/S}$ 可由\Term{finite-presentation}{有限呈示}的\Term{affine-morphism}{仿射态射}\Term{representable-functor}{表示}。更精确地，有一个 \Term{fppf-topology}{f.p.p.f.} \Term{sheaf}{层}的\Term{canonical-morphism}{典范}\Term{exact-sequence}{正合列}
+\[
+0\longrightarrow\mathbf V(E^\vee)\longrightarrow\operatorname{Pic}_{X/S}
+\longrightarrow\operatorname{Pic}_{X'/S}\xrightarrow{u}\mathbf V(Q).
+\]
+若 $P=\operatorname{Ker}(u)$，则\Term{monomorphism}{单态射} $P\hookrightarrow\operatorname{Pic}_{X'/S}$ 可由\Term{closed-immersion}{闭浸入}\Term{representable-functor}{表示}，且 $\operatorname{Pic}_{X/S}$ 是 $P$ 上一个群 $\mathbf V(E^\vee)$ 下的\Term{torsor}{挠子}（即 \Term{fppf-topology}{f.p.p.f.} \Term{sheaf}{层}序列
+\[
+0\longrightarrow\mathbf V(E^\vee)\longrightarrow\operatorname{Pic}_{X/S}\longrightarrow P\longrightarrow0
+\]
+是\Term{exact-sequence}{正合}的）。
+\end{SGAresult}
+\begin{proof}
+对一个 $S$-\Term{scheme}{概形} $T$，考虑下列两个各行\Term{exact-sequence}{正合}的图：
+\[
+\begin{tikzcd}[column sep=large]
+0\arrow[r]&I_T\arrow[r]\arrow[d,equal]&\mathcal O_{X_T}\arrow[r]&\mathcal O_{X'_T}\arrow[r]&0\\
+0\arrow[r]&I_T\arrow[r,"\alpha"']&\mathcal O_{X_T}^{\times}\arrow[r]\arrow[u]&\mathcal O_{X'_T}^{\times}\arrow[r]\arrow[u]&0
+\end{tikzcd}
+\qquad (\alpha(i)=1+i),
+\]
+\[
+\resizebox{\linewidth}{!}{\begin{tikzcd}[ampersand replacement=\&,column sep=small]
+(f_T)_*(\mathcal O_{X'_T})\arrow[r,"\delta_T"]\&R^1(f_T)_*(I_T)\\
+(f_T)_*(\mathcal O_{X'_T}^{\times})\arrow[u]\arrow[r,"\delta_T^{\times}"']\&R^1(f_T)_*(I_T)\arrow[u,equal]\arrow[r]\&R^1(f_T)_*(\mathcal O_{X_T}^{\times})\arrow[r]\&R^1(f_T)_*(\mathcal O_{X'_T}^{\times})\arrow[r]\&R^2(f_T)_*(I_T).
+\end{tikzcd}}
+\]
+注意，此图左边的方块未必\Term{commutative-diagram}{交换}。不过有：
+
+\textbf{3.2。}\quad $\operatorname{Im}\delta_T^{\times}=\operatorname{Im}\delta_T$。
+\SourcePage{616}
+事实上，显然可假定 $S$ 和 $T$ 都是\Term{affine-scheme}{仿射}的。取 $X_T$ 的一个\Term{affine-covering}{仿射覆盖} $\{V_i\}$。设 $g\in\Gamma(X'_T,\mathcal O_{X'_T}^{\times})$，并设 $g_i$ 是 $g|V_i$ 在 $\Gamma(V_i,\mathcal O_{X_T}^{\times})$ 中的一个\Term{lifting}{提升}。则 $\delta_T^{\times}(g)$ 等于 $1$-\Term{cocycle}{余圈}
+\[
+\delta_{ij}^{\times}=g_i g_j^{-1}-1
+\]
+的类，而 $\delta_T(g)$ 等于 $\delta_{ij}=g_i-g_j=g_j\delta_{ij}^{\times}=g\delta_{ij}^{\times}$ 的类；故
+\[
+\delta_T(g)=g\delta_T^{\times}(g),
+\]
+这里使用 $\Gamma(X'_T,\mathcal O_{X'_T})$ 在 $I_T$ 上、从而在 $H^1(X_T,I_T)$ 上的\Term{module-action}{作用}。
+
+由 ii)，
+\[
+\Gamma(X'_T,\mathcal O_{X'_T})=\Gamma(X,\mathcal O_{X'})\otimes_S\Gamma(T,\mathcal O_T),
+\]
+所以 $g=\sum g_\beta\otimes t_\beta$，其中 $g_\beta\in\Gamma(X,\mathcal O_{X'})$，$t_\beta\in\Gamma(T,\mathcal O_T)$。又由 v)，$(f_*\mathcal O_X)_{\mathrm{red}}\to(f_*\mathcal O_{X'})_{\mathrm{red}}$ 为\Term{surjective-homomorphism}{满射}，因而
+\[
+g_\beta=\nu(h_\beta)+n_\beta,
+\quad h_\beta\in\Gamma(X,\mathcal O_X),\quad
+\nu:\Gamma(X,\mathcal O_X)\to\Gamma(X,\mathcal O_{X'}),\quad
+n_\beta\in\operatorname{nilrad}(\Gamma(X,\mathcal O_{X'})).
+\]
+由 i)，$(n_\beta\otimes t_\beta)I_T=0$。因此 $\delta_T(g)=h\delta_T^{\times}(g)$，其中
+\[
+h=\sum\nu(h_\beta)\otimes t_\beta\in\Gamma(X'_T,\mathcal O_{X'_T}),
+\]
+从而
+\[
+\delta_T^{\times}(g)=h^{-1}\delta_T(g)=\delta_T(h^{-1}g),
+\]
+故 $\operatorname{Im}\delta_T^{\times}\subset\operatorname{Im}\delta_T$。
+
+最后，设 $g=\sum g_\beta\otimes t_\beta\in\Gamma(X'_T,\mathcal O_{X'_T})$。写 $g_\beta=\nu(h_\beta)+n_\beta$，其中 $n_\beta\in\operatorname{nilrad}(\Gamma(X,\mathcal O_{X'}))$，则
+\[
+\begin{aligned}
+\delta_T(g)&=\delta_T\left(\sum n_\beta\otimes t_\beta\right)
+=\delta_T\left(1+\sum n_\beta\otimes t_\beta\right)\\
+&=\delta_T^{\times}\left(1+\sum n_\beta\otimes t_\beta\right).
+\end{aligned}
+\]
+故 $\operatorname{Im}\delta_T\subset\operatorname{Im}\delta_T^{\times}$。
+
+由 3.2、iii) 和 iv)，有一个对 $T$ \Term{functorial}{函子性}的\Term{exact-sequence}{正合列}
+\[
+0\longrightarrow\mathbf V(E^\vee)(T)\longrightarrow R^1(f_T)_*(\mathcal O_{X_T}^{\times})
+\longrightarrow R^1(f_T)_*(\mathcal O_{X'_T}^{\times})\longrightarrow\mathbf V(Q)(T).
+\]
+取相应的 \Term{fppf-topology}{f.p.p.f.} \Term{associated-sheaf}{伴随层}，得到\Term{exact-sequence}{正合列}
+\[
+0\longrightarrow\mathbf V(E^\vee)\longrightarrow\operatorname{Pic}_{X/S}
+\longrightarrow\operatorname{Pic}_{X'/S}\xrightarrow{u}\mathbf V(Q).
+\]
+若 $P=\operatorname{Ker}(u)$，则\Term{monomorphism}{单态射} $P\hookrightarrow\operatorname{Pic}_{X'/S}$ 由\Term{unit-section}{单位截面} $S\hookrightarrow\mathbf V(Q)$ 经\Term{base-change}{基变换}得到；$\mathbf V(Q)$ \Term{representable-functor}{可表示}且\Term{separated-morphism}{分离}，因而 $P\hookrightarrow\operatorname{Pic}_{X'/S}$ 可由\Term{closed-immersion}{闭浸入}\Term{representable-functor}{表示}。
+\SourcePage{617}
+最后，
+\[
+0\longrightarrow\mathbf V(E^\vee)\longrightarrow\operatorname{Pic}_{X/S}\xrightarrow{w}P\longrightarrow0
+\]
+是一个 \Term{fppf-topology}{f.p.p.f.} \Term{torsor}{挠子}；因此，由从\Term{torsor}{挠子}的一个“\Term{splitting}{分裂}”出发的 \Term{fpqc-descent}{f.p.q.c. 下降}，$w$ 可由\Term{finite-presentation}{有限呈示}、\Term{faithfully-flat}{忠实平坦}的\Term{affine-morphism}{仿射态射}\Term{representable-functor}{表示}（参见 Oort，\emph{Commutative group schemes}，命题 (17.4)）。
+\end{proof}
+
+\begin{SGAresult}{推论}{3.3}
+在 3.1 的条件下：
+
+\textup{i)} 若 $\operatorname{Pic}_{(\mathrm{zar})}(X'/S)\to\operatorname{Pic}_{(\mathrm{fppf})}(X'/S)$ 是\Term{isomorphism}{同构}，则 $\operatorname{Pic}_{(\mathrm{zar})}(X/S)\to\operatorname{Pic}_{(\mathrm{fppf})}(X/S)$ 是\Term{isomorphism}{同构}。
+
+\textup{ii)} 假定 $S$-\Term{scheme}{概形} $T$ 为\Term{affine-scheme}{仿射}。若 $\operatorname{Pic}(X'_T)\to\operatorname{Pic}_{(\mathrm{zar})}(X'/S)(T)$ 为\Term{surjective-homomorphism}{满射}，则 $\operatorname{Pic}(X_T)\to\operatorname{Pic}_{(\mathrm{zar})}(X/S)(T)$ 为\Term{surjective-homomorphism}{满射}。
+\end{SGAresult}
+\begin{proof}
+对下述 \Term{zariski-topology}{Zariski 拓扑}的\Term{sheaf}{层}的图应用\Term{five-lemma}{五引理}，即得 i)：
+\[
+\resizebox{\linewidth}{!}{\begin{tikzcd}[ampersand replacement=\&,column sep=small]
+0\arrow[r]\arrow[d]\&\mathbf V(E^\vee)\arrow[r]\arrow[d,equal]\&\operatorname{Pic}_{(\mathrm{zar})}(X/S)\arrow[r]\arrow[d]\&\operatorname{Pic}_{(\mathrm{zar})}(X'/S)\arrow[r]\arrow[d,equal]\&\mathbf V(Q)\arrow[d,equal]\\
+0\arrow[r]\&\mathbf V(E^\vee)\arrow[r]\&\operatorname{Pic}_{(\mathrm{fppf})}(X/S)\arrow[r]\&\operatorname{Pic}_{(\mathrm{fppf})}(X'/S)\arrow[r]\&\mathbf V(Q).
+\end{tikzcd}}
+\]
+ii) 由以下各行\Term{exact-sequence}{正合}的图得到：
+\[
+\resizebox{\linewidth}{!}{\begin{tikzcd}[ampersand replacement=\&,column sep=small]
+H^1(X_T,I_T)\arrow[r]\arrow[d]\&H^1(X_T,\mathcal O_{X_T}^{\times})\arrow[r]\arrow[d]\&H^1(X_T,\mathcal O_{X'_T}^{\times})\arrow[r]\arrow[d]\&H^2(X_T,I_T)\arrow[d]\\
+H^0(T,R^1(f_T)_*(I_T))\arrow[r]\&H^0(T,R^1(f_T)_*\mathcal O_{X_T}^{\times})\arrow[r]\&H^0(T,R^1(f_T)_*\mathcal O_{X'_T}^{\times})\arrow[r]\&H^0(T,R^2(f_T)_*I_T),
+\end{tikzcd}}
+\]
+因为 $T$ 为\Term{affine-scheme}{仿射}，两端的竖直\Term{arrow}{箭头}均为\Term{isomorphism}{同构}。
+\end{proof}
+
+\SourcePage{618}
+\begin{SGAresult}{推论}{3.4}
+设 $k$ 是一个域，$X$ 是一个\Term{proper-morphism}{固有}的 $k$-\Term{scheme}{概形}。假定 $\operatorname{Pic}_{X_{\mathrm{red}}/k}$ 有一个\Term{universal-invertible-sheaf}{泛可逆层}。（例如，由\Term{descent}{下降}理论，若 $X_{\mathrm{red}}$ 的每个\Term{connected-component}{连通分支} $X_i'$ 都有\Term{rational-point}{有理点}，便是这种情形；特别地，当 $k$ \Term{algebraically-closed-field}{代数闭}时如此，更\Term{generic}{一般}地，若每个 $X_i'$ 上的 $0$-\Term{cycle}{圈}的\Term{degree}{次数}的最大公因数为 $1$，也如此。）则对 $\operatorname{Pic}_{X/k}$ 的每个\Term{affine-scheme}{仿射}\Term{open-subscheme}{开子集} $V$，在 $X\times_kV$ 上存在一个\Term{universal-invertible-sheaf}{泛可逆层}。
+\end{SGAresult}
+最后，用下面更精确的\Term{form}{形式}证明 I。
+
+\begin{SGAresult}{命题}{3.5}
+设 $S$ 是\Term{integral-scheme}{整}的\Term{noetherian-scheme}{诺特概形}，$f:X\to Y$ 是\Term{proper-morphism}{固有} $S$-\Term{scheme}{概形}的一个\Term{nilpotent-immersion}{幂零浸入}。则 $S$ 有一个\Term{nonempty}{非空}\Term{open-subscheme}{开子集} $V$，使\Term{morphism}{态射}
+\[
+f^*:\operatorname{Pic}_{Y/S}|V\longrightarrow\operatorname{Pic}_{X/S}|V
+\]
+可由\Term{finite-presentation}{有限呈示}的\Term{affine-morphism}{仿射态射}\Term{representable-functor}{表示}。实际上，$N=\operatorname{Ker}f^*$ 是一个\Term{affine-scheme}{仿射}\Term{group-scheme}{群概形}，其\Term{fiber}{纤维}为\Term{unipotent-group}{幺幂}的（取 SGA 3 第 XVII 讲的意义）。
+\end{SGAresult}
+\begin{proof}
+$X$ 由一个\Term{nilpotent-ideal}{幂零理想} $I$ 定义。$I$ 有一个由\Term{ideal-sheaf}{理想}构成的\Term{filtration}{滤过}
+\[
+I_0=I\supset I_1\supset\cdots\supset I_n=0,
+\qquad NI_i\subset I_{i-1},
+\]
+其中 $N$ 为 $\mathcal O_Y$ 的\Term{nilradical}{幂零根}（例如取 $I_k=N^kI$）。设 $X_i$ 为由 $I_i$ 定义的 $Y$ 的\Term{subscheme}{子概形}。归纳可知，只须研究\Term{immersion}{浸入} $X_i\hookrightarrow X_{i-1}$。所以可假定 $N\cdot I=0$；这就是 3.1 的条件 i)。最后只须归结为其余条件 ii)--v) 也都成立的情形。对 $\mathcal O_{X'}$、各 $R^if_*(I)$ 和 $E$ 应用\Term{generic-flatness}{泛平坦性定理}（EGA IV 6.9.1），并考虑 Künneth 关系式 EGA III 6.9.9，可知适当缩小 $S$ 后，可以假定 ii)、iii) 和 iv) 成立。
+\SourcePage{619}
+$k(S)$ 有一个\Term{finite-extension}{有限扩张} $K$，使 $(f_K)_*(\mathcal O_{X'_K})$ 的所有\Term{residue-field-extension}{剩余域扩张}都平凡。若 $S'$ 是 $S$ 的一个\Term{open-subscheme}{开子集} $V$ 上\Term{finite-morphism}{有限}且\Term{flat-morphism}{平坦}的\Term{integral-scheme}{整概形}，且\Term{function-field}{函数域} $k(S')=K$，则 $S'$ 有一个\Term{open-subscheme}{开子集} $V'$，使在 $V'$ 上
+\[
+\bigl[(f_{S'})_*(\mathcal O_{X_{S'}})\bigr]_{\mathrm{red}}
+\xrightarrow\sim
+\bigl[(f_{S'})_*(\mathcal O_{X'_{S'}})\bigr]_{\mathrm{red}}.
+\]
+适当缩小 $S$ 和 $S'$ 后，可假定 $S=V$ 且 $S'=V'$。由于待证断言对 \Term{fpqc-topology}{f.p.q.c. 拓扑}是\Term{local-scheme}{局部}的，可以用 $S'$ 代替 $S$。最后应用 3.1。
+\end{proof}
+
+\textbf{注记 3.6。} 同样，考虑\Term{exact-sequence}{正合列}
+\[
+\operatorname{Pic}_{X_{i-1}/S}\longrightarrow\operatorname{Pic}_{X_i/S}\longrightarrow\mathbf V(Q_i),
+\]
+可知对每个 $s\in S$，
+\[
+\operatorname{coker}\left(\operatorname{Pic}_{X_s/s}^{0}\longrightarrow\operatorname{Pic}_{Y_s/s}^{0}\right)
+\]
+是一个\Term{unipotent-group}{幺幂群}。
+
+\SGAsection{4}{II$^*$ 的证明：证明中最为精细的部分}
+回顾断言 II$^*$：当 $X$ 和 $Y$ 都在 $S$ 上\Term{integral-over-base}{整}，且序列 $(*)$ $\mathcal O_Y\to f_*\mathcal O_X\rightrightarrows g_*(\mathcal O_{X\times_YX})$ 为\Term{exact-sequence}{正合}时，\Term{theorem}{定理} 1.1 成立。应用\Term{generic-flatness}{泛平坦性定理} EGA IV 6.9.1 及 EGA III 7.8.8，便归结为证明下述命题。
+
+\begin{SGAresult}{命题}{4.1}
+设 $S$ 是\Term{integral-scheme}{整}的\Term{noetherian-scheme}{诺特概形}，$\lambda:X\to S$ 和 $\mu:Y\to S$ 是\Term{finite-presentation}{有限呈示}的\Term{proper-morphism}{固有态射}，$f:X\to Y$ 是一个\Term{surjective-morphism}{满射} $S$-\Term{morphism}{态射}，$g:X\times_YX\to Y$ 是\Term{canonical-morphism}{典范态射}。假定：
+
+\textup{1)} $X,Y,X\times_YX$ 都在 $S$ 上\Term{flat-morphism}{平坦}；
+
+\textup{2)} \Term{universal}{普遍}地有 $\lambda_*\mathcal O_X=\mathcal O_S$，$\mu_*\mathcal O_Y=\mathcal O_S$；
+\SourcePage{620}
+\textup{3)} 对 $i,j\geq0$，$R^if_*\mathcal O_X$ 和 $R^jg_*\mathcal O_{X\times_YX}$ 都在 $S$ 上\Term{flat-morphism}{平坦}；
+
+\textup{4)} 序列
+\[
+\begin{tikzcd}
+\mathcal O_Y\arrow[r]&f_*\mathcal O_X\arrow[r,shift left=.5ex,"\pi_1"]\arrow[r,shift right=.5ex,"\pi_2"']&g_*\mathcal O_{X\times_YX}
+\end{tikzcd}\tag{*}
+\]
+为\Term{exact-sequence}{正合}，且 $\operatorname{coker}(\pi_1-\pi_2)$ 是一个在 $S$ 上\Term{flat-morphism}{平坦}的 $\mathcal O_Y$-\Term{module}{模}。
+
+则 $f^*:\operatorname{Pic}_{Y/S}\to\operatorname{Pic}_{X/S}$ 可由\Term{finite-presentation}{有限呈示}的\Term{quasi-affine-morphism}{拟仿射态射}\Term{representable-functor}{表示}。
+\end{SGAresult}
+\begin{proof}
+首先指出，1)--4) 在任意\Term{base-change}{基变换} $T\to S$ 下都保持成立。只有 3) 和 4) 的\Term{stable}{稳定}性并不显然。由 \Term{kunneth-formula}{Künneth 公式}（EGA III 6.9.9），1) 和 3) 蕴涵 $R^if_*(\mathcal O_X)$ 与 $R^jg_*(\mathcal O_{X\times_YX})$ 的形成与\Term{base-change}{基变换} $T\to S$ 相容，这立即给出条件 3) 的\Term{stable}{稳定}性。此外，$\pi_1-\pi_2:f_*\mathcal O_X\to g_*\mathcal O_{X\times_YX}$ 的\Term{cokernel}{余核}的形成也与\Term{base-change}{基变换}相容；由 4)，该\Term{cokernel}{余核}在 $S$ 上\Term{flat-morphism}{平坦}，因此 $\operatorname{Im}(\pi_1-\pi_2)$ 在 $S$ 上\Term{flat-morphism}{平坦}，且与\Term{base-change}{基变换}相容。于是 $\operatorname{Ker}(\pi_1-\pi_2)$ 与\Term{base-change}{基变换} $T\to S$ 相容，因而\Term{universal}{普遍}地等于 $\mathcal O_Y$。
+
+假设的\Term{stable}{稳定}性给出两点。a. 待证断言对 \Term{fppf-topology}{f.p.p.f. 拓扑}是\Term{local-scheme}{局部}的，故由\Term{descent}{下降}可假定 $X$ 有一个\Term{section}{截面} $\alpha$，于是 $Y$ 有\Term{section}{截面} $\beta=f\circ\alpha$。b. 为证明断言，只须考虑 $\operatorname{Pic}_{X/S}$ 的一个 $S$-点，即由 a) 和 2) 所知，考虑 $X$ 上配备相对于 $\alpha$ 的\Term{rigidification}{刚性化} $u$ 的\Term{invertible-sheaf}{可逆层} $L$，并证明这个点在 $\operatorname{Pic}_{Y/S}$ 中的\Term{inverse-image}{逆像}所成的 \Term{fppf-topology}{f.p.p.f.} \Term{sheaf}{层} $Z$ 可由一个 $S$ 上\Term{finite-presentation}{有限呈示}的\Term{quasi-affine-scheme}{拟仿射} $S$-\Term{scheme}{概形}\Term{representable-functor}{表示}。
+\end{proof}
+
+\SourcePage{621}
+\begin{SGAresult}{\Term{lemma}{引理}}{4.2}
+在 4.1 的条件下，$f$ 对\Term{locally-free-sheaf}{局部自由层}的\Term{category}{范畴}是一个\Term{descent-morphism}{下降态射}；即对 $Y$ 上任意一对\Term{locally-free-sheaf}{局部自由层} $L,M$，图
+\[
+\operatorname{Hom}_Y(L,M)\longrightarrow\operatorname{Hom}_X(f^*L,f^*M)
+\rightrightarrows\operatorname{Hom}_{X\times_YX}(g^*L,g^*M)
+\]
+为\Term{exact-sequence}{正合}。
+\end{SGAresult}
+\begin{proof}
+令 $N=\mathcal H om_{\mathcal O_Y}(L,M)$，须证明序列
+\[
+\Gamma(Y,N)\longrightarrow\Gamma(X,f^*N)\rightrightarrows\Gamma(X\times_YX,g^*N)
+\]
+为\Term{exact-sequence}{正合}；也就是（EGA $0_{\mathrm I}$ 5.4.10.1）证明序列
+\[
+\Gamma(Y,N)\longrightarrow\Gamma(Y,f_*\mathcal O_X\otimes_{\mathcal O_Y}N)
+\rightrightarrows\Gamma(Y,g_*\mathcal O_{X\times_YX}\otimes_{\mathcal O_Y}N)
+\]
+为\Term{exact-sequence}{正合}。由假设，序列 $(*)$ $\mathcal O_Y\to f_*\mathcal O_X\rightrightarrows g_*\mathcal O_{X\times_YX}$ 为\Term{exact-sequence}{正合}；对它应用\Term{functor}{函子} $\Gamma(N\otimes-)$ 即得\Term{lemma}{引理}，因为 $N$ 在 $Y$ 上\Term{flat-morphism}{平坦}，该\Term{functor}{函子}为\Term{left-exact-functor}{左正合}。
+\end{proof}
+设 $L$ 是 $X$ 上配备相对于 $\alpha$ 的\Term{rigidification}{刚性化} $u$ 的\Term{invertible-sheaf}{可逆层}。由 4.2，有一个\Term{equivalence-of-categories}{范畴等价}：一边是由 $Y$ 上的\Term{invertible-sheaf}{可逆层} $M$ 和一个\Term{isomorphism}{同构} $\varphi:f^*M\xrightarrow\sim L$ 组成的对 $(M,\varphi)$ 的\Term{category}{范畴} $C$，另一边是 $L$ 上相对于 $f$ 的\Term{effective-descent-datum}{有效下降数据}的\Term{category}{范畴} $\operatorname{Deff}(S)$。若 $f^*M\simeq L$，由于 $L$ 有相对于 $\alpha$ 的\Term{rigidification}{刚性化}，$M$ 便自然配备相对于 $\beta$ 的\Term{rigidification}{刚性化}。因此，$C$ \Term{equivalence}{等价}于由 $Y$ 上满足 $f^*(M,v)\simeq(L,u)$ 的 $\beta$-\Term{rigidified-sheaf}{刚性化}\Term{invertible-sheaf}{可逆层} $(M,v)$ 的类所成\Term{set}{集合}定义的\Term{discrete-category}{离散范畴}。而这个\Term{set}{集合}正是由 $(L,u)$ 定义的 $\operatorname{Pic}_{X/S}$ 的 $S$-点在 $\operatorname{Pic}_{Y/S}$ 中的\Term{inverse-image}{逆像}的 $S$-点\Term{set}{集合} $Z(S)$。这个对 $Z(S)$ 的描述对 $S$ 具有\Term{functorial}{函子性}。因此，$Z$ 等同于\Term{functor}{函子} $\operatorname{Deff}$，以后可以忘掉\Term{rigidification}{刚性化}。
+
+\SourcePage{622}
+从 $\operatorname{Deff}$ 到 $f^*L$ 上的\Term{gluing-datum}{粘合数据}\Term{functor}{函子} $\operatorname{Rec}$ 有一个\Term{canonical-morphism}{典范}\Term{monomorphism}{单态射}。按定义，$\operatorname{Rec}$ 等于\Term{functor}{函子} $\operatorname{Isom}(p_1^*L,p_2^*L)$，其中 $p_i:X\times_YX\to X$ 为\Term{projection}{投影}；由 2.4，该\Term{functor}{函子}由 $S$ 上一个\Term{finite-presentation}{有限呈示}的\Term{affine-scheme}{仿射概形} $I$ \Term{representable-functor}{表示}。因此，只须把\Term{monomorphism}{单态射}
+\[
+i:\operatorname{Deff}\lhook\joinrel\longrightarrow\operatorname{Isom}(p_1^*L,p_2^*L)
+\]
+\Term{representable-functor}{表示}为一个\Term{finite-presentation}{有限呈示}的\Term{morphism}{态射}；它必然是\Term{quasi-affine-morphism}{拟仿射}的（EGA IV 8.11.2）。
+
+顺便指出，如果愿意，可以加上\Term{cocycle-condition}{余圈条件}来\Term{restriction}{限制} $\operatorname{Isom}(p_1^*L,p_2^*L)$，但后文并不需要这样做。
+
+作\Term{base-change}{基变换} $I\to S$ 后，问题便化为：若 $L$ 是 $X$ 上配备了\Term{gluing-datum}{粘合数据} $\varphi:p_1^*L\xrightarrow\sim p_2^*L$ 的\Term{invertible-sheaf}{可逆层}，\Term{representable-functor}{表示} $S$ 的“使这一数据\Term{effective-descent-datum}{有效}”的\Term{subfunctor}{子函子}。为此有以下\Term{lemma}{引理}。
+
+\begin{SGAresult}{\Term{lemma}{引理}}{4.3}
+在 4.1 的条件下，设 $L$ 是 $X$ 上配备\Term{gluing-datum}{粘合数据}
+\[
+\varphi:p_1^*L\xrightarrow\sim p_2^*L
+\]
+的\Term{invertible-sheaf}{可逆层}。这一数据\Term{effective-descent-datum}{有效}的充要条件是以下五个条件成立：
+
+\textup{1)} 对每个 $i\geq0$，$R^if_*(L)$ 在 $S$ 上\Term{flat-morphism}{平坦}；
+
+\textup{2)} 对每个 $j\geq0$，$R^jg_*(p_1^*L)$ 在 $S$ 上\Term{flat-morphism}{平坦}；
+
+\textup{3)} $\pi_1-\pi_2:f_*(L)\to g_*(p_1^*L)\simeq g_*(p_2^*(L))$ 的\Term{cokernel}{余核}在 $S$ 上\Term{flat-morphism}{平坦}（其中最后一个\Term{isomorphism}{同构}为 $g_*(\varphi)$）；
+
+\textup{4)} $\pi_1-\pi_2:f_*(L)\to g_*(p_1^*L)$ 的\Term{kernel}{核} $N$ 在 $Y$ 上\Term{invertible-module}{可逆}；
+
+\textup{5)} 复合\Term{morphism}{态射} $f^*N\to f^*f_*L\to L$ 为\Term{isomorphism}{同构}。
+\end{SGAresult}
+\SourcePage{623}
+\begin{proof}
+这些条件是充分的，因为仅 4) 和 5) 就蕴涵\Term{effective-descent-datum}{有效性}。反过来，设 $M$ 在 $Y$ 上\Term{invertible-module}{可逆}，且存在一个与\Term{gluing-datum}{粘合数据}相容的\Term{isomorphism}{同构} $f^*M\simeq L$。可以用若干\Term{open-subscheme}{开子集} $V$ \Term{covering}{覆盖} $Y$，使 $M$ 在其上\Term{isomorphism}{同构}于 $\mathcal O_Y$；因此，$L$ 上的\Term{descent-datum}{下降数据}\Term{restriction}{限制}到 $U=f^{-1}(V)$ 上后，\Term{isomorphism}{同构}于 $\mathcal O_X|U$ 上的平凡\Term{descent-datum}{下降数据}。条件 1)--5) 都是 $Y$ 上的\Term{local-nature}{局部性质}，而且由 4.1 的假设，它们对 $L=\mathcal O_X$ 成立；所以它们对 $L$ 成立。
+\end{proof}
+现在只须依次把条件 1)--5) 各自\Term{representable-functor}{表示}为\Term{finite-presentation}{有限呈示}的\Term{monomorphism}{单态射}。对 1) 和 2)，应用下述\Term{lemma}{引理}。
+
+\begin{SGAresult}{\Term{lemma}{引理}}{4.4}
+设 $S$ 是一个\Term{scheme}{概形}，$\lambda:X\to S$ 和 $\mu:Y\to S$ 是\Term{finite-presentation}{有限呈示}的\Term{proper-morphism}{固有态射}，$f:X\to Y$ 是一个 $S$-\Term{morphism}{态射}。设 $F$ 是 $X$ 上\Term{finite-presentation}{有限呈示}且在 $S$ 上\Term{flat-morphism}{平坦}的\Term{sheaf}{层}。对一个整数 $n$，设 $S_n$ 是 $S$ 的使 $R^if_*(F)$ 对每个 $i\geq n$ 都在 $S$ 上\Term{flat-morphism}{平坦}的\Term{subfunctor}{子函子}（精确地说，若 $R^i(f_T)_*(F_T)$ 对每个 $i\geq n$ 都\Term{flat-morphism}{平坦}，则 $S_n(T)=\{\varnothing\}$，否则 $S_n(T)=\varnothing$）。则 $S_n\hookrightarrow S$ 可由\Term{finite-presentation}{有限呈示}的\Term{surjective-morphism}{满射}\Term{monomorphism}{单态射}\Term{representable-functor}{表示}，而且对 $i\geq n$，$R^i(f_{S_n})_*(F_{S_n})$ 与\Term{base-change}{基变换} $T\to S_n$ 相容。此外，$S_n$ 等于使\Term{functor}{函子}
+\[
+M\longmapsto R^i(f_V)_*(F_V\otimes\lambda_V^*M),\qquad i\geq n,
+\]
+为\Term{exact-functor}{正合}的\Term{functor}{函子} $S_n'$，其中，对 $S$ 的每个\Term{affine-scheme}{仿射}\Term{open-subscheme}{开子集} $V$，$M$ 遍历所有\Term{quasi-coherent-module}{拟凝聚} $\mathcal O_V$-\Term{module}{模}。
+\end{SGAresult}
+\begin{proof}
+断言在 $S$ 上是\Term{local-scheme}{局部}的，故可以假定 $S$ \Term{quasi-compact}{拟紧}。于是 $X/Y$ 的\Term{relative-dimension}{相对维数}\Term{bounded}{有界}，设以 $r$ 为界；当 $n>r$ 时，
+\[
+R^nf_*(F_V\otimes\lambda_V^*M)=0.
+\]
+所以断言对 $n>r$ 成立。
+\SourcePage{624}
+作递降归纳，假定对 $n+1$ 已知。以 $S_{n+1}=S'_{n+1}$ 代替 $S$ 后，可以假定 $R^nf_*(F)$ 对 $i\geq n+1$ 是 $S$-\Term{flat-morphism}{平坦}的。$F$ 在 $S$ 上\Term{flat-morphism}{平坦}，故由 EGA III 6.9.8，$R^nf_*(F)$ 与任意\Term{base-change}{基变换}相容。于是 $S_n$ 的\Term{representability}{可表示性}由下述\Term{lemma}{引理}得到（参见 J. P. Murre，\emph{Representation of unramified functors}，Bourbaki 讨论班，1965 年 5 月，第 294-11 页，\Term{theorem}{定理} 2）。
+\end{proof}
+
+\begin{SGAresult}{\Term{lemma}{引理}}{4.5}
+设 $X\to S$ 是一个\Term{finite-presentation}{有限呈示}的\Term{proper-morphism}{固有态射}，$F$ 是 $X$ 上的\Term{finite-presentation}{有限呈示}\Term{sheaf}{层}。则 $S$ 的使 $F$ 在 $S$ 上\Term{flat-morphism}{平坦}的\Term{subfunctor}{子函子} $S_F$ 可由\Term{finite-presentation}{有限呈示}的\Term{surjective-morphism}{满射}\Term{monomorphism}{单态射}\Term{representable-functor}{表示}（当然，它\Term{generic}{一般}不是\Term{immersion}{浸入}）。
+\end{SGAresult}
+为\Term{representable-functor}{表示} 4.3 的条件 3)，注意由 1) 和 2)，$f_*(L)$ 和 $g_*(p_1^*L)$ 与\Term{base-change}{基变换} $T\to S$ 相容，因而 $\operatorname{coker}(\pi_1-\pi_2)$ 也与之相容；然后应用 4.5。
+
+为\Term{representable-functor}{表示} 4)，注意由 3) 以及 $f_*(L)$ 和 $g_*(p_1^*L)$ 都\Term{flat-morphism}{平坦}且与\Term{base-change}{基变换}相容这一事实，$N=\operatorname{ker}(\pi_1-\pi_2)$ 也与\Term{base-change}{基变换}相容；然后应用下述\Term{lemma}{引理}。
+
+\begin{SGAresult}{\Term{lemma}{引理}}{4.6}
+设 $\lambda:X\to S$ 是一个\Term{finite-presentation}{有限呈示}的\Term{proper-morphism}{固有态射}，$u:F\to G$ 是\Term{finite-presentation}{有限呈示}的 $\mathcal O_Y$-\Term{module}{模}之间的一个\Term{homomorphism}{同态}，且 $G$ 在 $S$ 上\Term{flat-morphism}{平坦}。则 $S$ 的使 $u$ 成为\Term{isomorphism}{同构}的\Term{subfunctor}{子函子} $S_1$ 可由 $S$ 的一个\Term{finite-presentation}{有限呈示}\Term{open-subscheme}{开子概形}\Term{representable-functor}{表示}。
+\end{SGAresult}
+\begin{proof}
+像通常那样，使用 EGA IV 8 和 11.2.6 归结为 $S$ \Term{noetherian-scheme}{诺特}的情形，这样便无需再考虑\Term{finite-presentation}{有限呈示}问题。先\Term{representable-functor}{表示}使 $u$ 成为\Term{epimorphism}{满态射}、即使 $\operatorname{Coker}u$ 为零的\Term{functor}{函子}。
+\SourcePage{625}
+由于 $\operatorname{Coker}u$ 的形成与\Term{base-change}{基变换}相容，可知它由 $S$ 的\Term{open-subscheme}{开子集}
+\[
+S-\lambda\bigl(\operatorname{supp}(\operatorname{Coker}u)\bigr)
+\]
+\Term{representable-functor}{表示}。因此可以假定 $u$ 已经是\Term{epimorphism}{满态射}。现在利用 $G$ 为 $S$-\Term{flat-morphism}{平坦}的假设，得到 $\operatorname{Ker}u$ 的形成与\Term{base-change}{基变换}相容，因此所考虑的\Term{functor}{函子}由 $S$ 的\Term{open-subscheme}{开子集}
+\[
+S-\lambda\bigl(\operatorname{supp}(\operatorname{Ker}u)\bigr)
+\]
+\Term{representable-functor}{表示}。
+\end{proof}

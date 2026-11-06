@@ -1,0 +1,610 @@
+\SourcePage{347}
+\SGAchapter{XVII}{幺幂代数群。幺幂群与乘法型群之间的扩张}{Groupes algébriques unipotents. Extensions entre groupes unipotents et groupes de type multiplicatif}
+\begin{center}M. Raynaud\footnote{参见第 XV 讲第 1 页的注。}\end{center}
+\SGAsection{0}{若干记号}
+本讲主要讨论定义在域 $k$ 上的\Term{algebraic-group}{代数群}。数 $p\geq0$ 始终表示 $k$ 的\Term{characteristic}{特征}；若 $p>0$，则 $\mathbf F_p$ 表示有 $p$ 个元素的\Term{prime-field}{素域}；$\overline k$ 表示 $k$ 的一个\Term{algebraically-closed}{代数闭}\Term{field-extension}{扩域}；$q$ 表示异于 $p$ 的素数。\footnote{本版本日期为 2008 年 11 月 18 日（版本 xy）。}
+
+对任意 $S$-\Term{prescheme}{预概形}，$(\mathbf G_a)_S$（分别地，$(\mathbf G_m)_S$）表示 $S$ 上的\Term{additive-group}{加法群}（分别地，\Term{multiplicative-group}{乘法群}）（参见第 I 讲 4.3）。对任意整数 $n>0$，$(\boldsymbol\mu_n)_S$（分别地，$(\mathbf Z/n\mathbf Z)_S$）表示 $n$ 次\Term{roots-of-unity}{单位根群}（第 I 讲 4.4.4）（分别地，与抽象群 $\mathbf Z/n\mathbf Z$ 对应的 $S$ 上\Term{constant-group}{常群}，第 I 讲 4.1）。群 $(\mathbf Z/n\mathbf Z)_S$ 在 $S$ 上\Term{finite}{有限}且\Term{etale}{平展}；群 $(\boldsymbol\mu_n)_S$ 在 $S$ 上\Term{flat}{平坦}且\Term{finite}{有限}，并且当且仅当 $n$ 在 $S$ 上\Term{invertible}{可逆}时，它在 $S$ 上\Term{etale}{平展}（第 VIII 讲 2.1）。
+
+若 $S$ 是\Term{characteristic}{特征} $p>0$ 的\Term{prescheme}{预概形}，则对任意整数 $n>0$ 及任意 $S$-\Term{group-prescheme}{群预概形} $G$，记 ${}_{F^n}(G)$ 为 $G$ 的\Term{relative-frobenius}{相对 Frobenius 态射}的第 $n$ 次迭代的核，即 $G$ 的一个\Term{radicial}{根性}子 $S$-\Term{group-prescheme}{群预概形}（第 VII$_A$ 讲）。特别地，若 $G=(\mathbf G_a)_S$，则记 ${}_{F^n}(G)=(\boldsymbol\alpha_{p^n})_S$；这是一个在 $S$ 上\Term{flat}{平坦}且\Term{finite}{有限}的\Term{radicial}{根性} $S$-群，代表下述\Term{functor}{函子}：对任意 $S$-\Term{prescheme}{预概形} $S'$，$(\boldsymbol\alpha_{p^n})_S(S')$ 是满足 $(x')^{p^n}=0$ 的所有 $x'\in\Gamma(S',\mathscr O_{S'})$ 组成的\Term{set}{集合}。
+
+已定义的群 $(\boldsymbol\mu_{p^n})_S$ 与 ${}_{F^n}((\mathbf G_m)_S)$ \Term{canonical-isomorphism}{典范同构}。
+若底\Term{scheme}{概形} $S$ 不会引起混淆，就把 $(\mathbf G_a)_S$、$(\mathbf G_m)_S$、$(\boldsymbol\alpha_{p^n})_S$ 等简记为 $\mathbf G_a$、$\mathbf G_m$、$\boldsymbol\alpha_{p^n}$ 等。
+
+若 $G$ 是交换 $S$-\Term{group-prescheme}{群预概形}，则对任意整数 $n>0$，${}_nG$ 表示 $G$ 中取 $n$ 次幂的核所给出的子\Term{group-prescheme}{群预概形}。
+
+\SourcePage{348}
+为方便读者，附录汇集了第 VI、VII 讲证明的若干\Term{algebraic-group}{代数群}性质，以及本讲将用到的 Hochschild \Term{cohomology}{上同调}的初等性质。
+
+\SGAsection{1}{幺幂代数群的定义}
+\begin{SGAresult}{定义}{1.1}
+定义在\Term{algebraically-closed-field}{代数闭域} $k$ 上的\Term{algebraic-group}{代数群} $G$ 称为\Term{unipotent}{幺幂的}，如果 $G$ 有一个\Term{composition-series}{合成列}，其逐次商\Term{isomorphism}{同构}于 $(\mathbf G_a)_k$ 的\Term{algebraic-subgroup}{代数子群}。
+\end{SGAresult}
+\begin{SGAresult}{命题}{1.2}
+设 $k$ 为\Term{algebraically-closed-field}{代数闭域}，$K$ 为 $k$ 的\Term{algebraically-closed}{代数闭}\Term{field-extension}{扩域}，$G$ 为定义在 $k$ 上的\Term{algebraic-group}{代数群}。则 $G$ \Term{unipotent}{幺幂}的充分必要条件是 $G_K$ \Term{unipotent}{幺幂}。
+\end{SGAresult}
+\begin{proof}
+必要性显然，因为\Term{composition-series}{合成列}经\Term{base-change}{基变换}后仍是\Term{composition-series}{合成列}。
+充分性的证明是标准的：$K$ 是其\Term{finite-type}{有限型}子 $k$-\Term{algebra}{代数}的\Term{inductive-limit}{归纳极限}。由第 VI$_B$ 讲第 10 节，可找到 $K$ 的一个\Term{finite-type}{有限型}子 $k$-\Term{algebra}{代数} $A$、$G_S$（$S=\operatorname{Spec}A$）的一个\Term{composition-series}{合成列} $G_i$，以及\Term{immersion}{浸入}
+\[
+u_i:H_i=G_i/G_{i+1}\longrightarrow(\mathbf G_a)_S.
+\]
+为证明 $G$ \Term{unipotent}{幺幂}，只须作 $k$-\Term{base-change}{基变换} $A\to k$。这是可行的，因为 $A$ 是\Term{algebraically-closed-field}{代数闭域} $k$ 上的非零\Term{finite-type}{有限型} $k$-\Term{algebra}{代数}，故 $\operatorname{Hom}_{k\text{-alg}}(A,k)$ \Term{nonempty}{非空}。
+\end{proof}
+\begin{SGAresult}{定义}{1.3}
+设 $G$ 为定义在域 $k$ 上的\Term{algebraic-group}{代数群}。若存在 $k$ 的\Term{algebraically-closed}{代数闭}\Term{field-extension}{扩域} $\overline k$，使得 $G_{\overline k}$ \Term{unipotent}{幺幂}（定义 1.1），则称 $G$ \Term{unipotent}{幺幂}。
+\end{SGAresult}
+由 1.2，此性质与\Term{algebraically-closed}{代数闭}\Term{field-extension}{扩域} $\overline k$ 的选择无关。
+\begin{SGAresult}{定义}{1.4}
+设 $G$ 为定义在域 $k$ 上的\Term{algebraic-group}{代数群}，$H$ 为定义在 $k$ 的\Term{field-extension}{扩域} $k'$ 上的\Term{algebraic-group}{代数群}。若 $G_{k'}$ 与 $H_{k'}$ 在 $\overline{k'}$ 上\Term{isomorphism}{同构}，则称 $H$ 为 $G$ 在 $k'$ 上的一个\Term{form}{形式}（如上可见，此性质不依赖于 $k'$ 的\Term{algebraically-closed}{代数闭}\Term{field-extension}{扩域} $\overline{k'}$ 的选择）。也称 $H$ 为一个“\Term{twisting}{扭曲}的”群 $G$。
+\end{SGAresult}
+现在可以描述 $\mathbf G_a$ 的\Term{algebraic-subgroup}{代数子群}。
+\begin{SGAresult}{命题}{1.5}
+设 $k$ 为\Term{characteristic}{特征} $p\geq0$ 的域。则 $(\mathbf G_a)_k$ 的\Term{algebraic-subgroup}{代数子群} $H$ 属于以下类型之一：
+\begin{enumerate}
+\item[(i)] $H=0$；
+\item[(ii)] $H=\mathbf G_a$；
+\item[(iii)] （若 $p>0$）$H$ 是\Term{twisting}{扭曲}\Term{constant-group}{常群} $(\mathbf Z/p\mathbf Z)^r$ 被\Term{radicial}{根性}群 $\boldsymbol\alpha_{p^n}$ 的\Term{extension}{扩张}，其中 $r,n\geq0$，$r+n>0$。若 $k$ 还是\Term{perfect-field}{完美域}，则此\Term{extension}{扩张}必为\Term{trivial-extension}{平凡扩张}。
+\end{enumerate}
+\end{SGAresult}
+\SourcePage{349}
+\begin{proof}
+若 $H$ 的\Term{dimension}{维数}为 $1$，显然 $H=\mathbf G_a$。否则 $H$ 的\Term{dimension}{维数}为 $0$，因而是\Term{etale}{平展}群 $H''$ 被其\Term{identity-component}{单位连通分支} $H^0$ 的\Term{extension}{扩张}\footnote{编者注：参见第 VII$_A$ 讲？}，其中 $H^0$ 为\Term{radicial}{根性}群。为描述 $H''_{\overline k}$，只须知道抽象群 $H''(\overline k)$，它\Term{isomorphism}{同构}于 $H(\overline k)$。后者是 $\mathbf G_a(\overline k)$ 的\Term{finite}{有限}\Term{subgroup}{子群}，故若 $p=0$ 则为零；否则因被 $p$ \Term{annihilate}{零化}，必为 $(\mathbf Z/p\mathbf Z)^r$ 的\Term{form}{形式}。
+群 $H^0$ 在 $\mathbf G_a$ 中\Term{closed-subscheme}{闭}，且由一个方程定义（因为 $\mathbf G_a$ 的环 $k[T]$ 是\Term{principal-ideal-ring}{主理想环}）。此方程在 $\overline k$ 中只有根 $0$，故形如 $T^n=0$。与群律相容意味着在 $k[T,T']$ 中，$(T+T')^n$ 属于 $T^n$、$(T')^n$ 生成的\Term{ideal}{理想}。因此：若 $p=0$，则 $n=1$，$H^0$ 是\Term{unit-group}{单位群}；若 $p>0$，则 $n=p^m$，$H^0=\boldsymbol\alpha_{p^m}$。
+
+1.5 的最后一个断言由下面更一般的\Term{lemma}{引理}\Term{pushout}{推出}。
+\end{proof}
+\begin{SGAresult}{\Term{lemma}{引理}}{1.6}
+若 $k$ 是\Term{perfect-field}{完美域}，则\Term{etale}{平展}\Term{algebraic-group}{代数群} $H''$ 被\Term{radicial}{根性}群 $H^0$ 的任意\Term{extension}{扩张} $H$ 都是\Term{trivial-extension}{平凡扩张}。此外，$H''$ 在 $H$ 中有唯一的\Term{lifting}{提升}，即 $H_{\mathrm{red}}$。
+\end{SGAresult}
+\begin{proof}
+因为 $k$ \Term{perfect}{完美}，\Term{reduced}{约化} $k$-\Term{scheme}{概形} $H_{\mathrm{red}}$ 是 $H$ 的一个\Term{geometrically-reduced}{几何约化}\Term{algebraic-subgroup}{代数子群}（第 VI$_A$ 讲 0.2），所以在 $k$ 上\Term{smooth}{光滑}（第 VI$_A$ 讲 1.3.1）；又因 $H$ 的\Term{dimension}{维数}为 $0$，故它\Term{etale}{平展}。为说明\Term{canonical-projection}{典范投影} $H_{\mathrm{red}}\to H''$ 为\Term{isomorphism}{同构}，只须经\Term{base-change}{基变换} $k\to\overline k$ 后说明；此时又只须证明它在 $\overline k$-值点上给出\Term{isomorphism}{同构}，这显然成立。最后一个断言来自：$H''$ 在 $H$ 中的任何\Term{lifting}{提升}在 $k$ 上\Term{etale}{平展}，故\Term{reduced}{约化}，从而必包含在 $H_{\mathrm{red}}$ 中。
+\end{proof}
+注意，$\boldsymbol\alpha_{p^n}$ 是若干个\Term{isomorphism}{同构}于 $\boldsymbol\alpha_p$ 的群的迭次\Term{extension}{扩张}。于是由 1.5 得到：
+\begin{SGAresult}{推论}{1.7}
+定义在\Term{algebraically-closed-field}{代数闭域} $k$ 上的\Term{algebraic-group}{代数群} $G$ \Term{unipotent}{幺幂}，当且仅当它有一个\Term{composition-series}{合成列}，其逐次商在 $p=0$ 时\Term{isomorphism}{同构}于 $\mathbf G_a$，在 $p>0$ 时\Term{isomorphism}{同构}于 $\mathbf G_a$、$\mathbf Z/p\mathbf Z$、$\boldsymbol\alpha_p$ 中的一个。（我们称这些群为\Term{elementary-unipotent-group}{初等幺幂群}。）
+\end{SGAresult}
+\SGAsection{2}{幺幂群的初步性质}
+\begin{SGAresult}{命题}{2.1}
+定义在域 $k$ 上的\Term{unipotent}{幺幂}\Term{algebraic-group}{代数群}在 $k$ 上\Term{affine}{仿射}。
+\end{SGAresult}
+\begin{proof}
+由\Term{affine-morphism}{仿射态射}的（fpqc）\Term{descent}{下降}，只须在 $k$ \Term{algebraically-closed}{代数闭}时证明 2.1。此时由定义，$G$ 是\Term{affine}{仿射}\Term{algebraic-group}{代数群}的迭次\Term{extension}{扩张}，故由第 VI$_B$ 讲 9.2 (viii) 对\Term{affine-morphism}{仿射态射}的应用，$G$ \Term{affine}{仿射}。\footnote{编者注：核对此引文。}
+\end{proof}
+\begin{SGAresult}{命题}{2.2}
+i) \Term{algebraic-group}{代数群}的\Term{unipotent}{幺幂}性质在底域\Term{group-extension}{扩张}下\Term{invariant}{不变}。
+\SourcePage{350}
+ii) \Term{unipotent}{幺幂}群的每个\Term{algebraic-subgroup}{代数子群}都\Term{unipotent}{幺幂}。
+
+iii) \Term{unipotent}{幺幂}群的每个商\Term{algebraic-group}{代数群}都\Term{unipotent}{幺幂}。
+
+iv) \Term{unipotent}{幺幂}\Term{algebraic-group}{代数群}被\Term{unipotent}{幺幂}\Term{algebraic-group}{代数群}的每个\Term{extension}{扩张}仍然\Term{unipotent}{幺幂}。
+\end{SGAresult}
+\begin{proof}
+i) 直接由 1.3 和 1.2 得出。为证明其余性质，可以假设 $k$ \Term{algebraically-closed}{代数闭}。此时 iv) 由定义 1.3 显然成立。
+设 $G$ 为\Term{unipotent}{幺幂}\Term{algebraic-group}{代数群}，$G'$ 为 $G$ 的\Term{algebraic-subgroup}{代数子群}，$G''$ 为 $G$ 的商\Term{algebraic-group}{代数群}，$G_i$（$i=1,\ldots,n$）为 $G$ 的一个\Term{composition-series}{合成列}，使得 $H_i=G_i/G_{i+1}$ 是\Term{elementary-unipotent-group}{初等幺幂群}（1.7）。
+
+为证明 ii)，考虑 $G$ 的\Term{composition-series}{合成列}在 $G'$ 上诱导的\Term{composition-series}{合成列} $G_i'=G_i\cap G'$。群 $G_i'/G_{i+1}'$ 可视为 $H_i$ 的\Term{algebraic-subgroup}{代数子群}，故\Term{isomorphism}{同构}于 $\mathbf G_a$ 的\Term{subgroup}{子群}，从而 $G'$ \Term{unipotent}{幺幂}。
+
+为证明 iii)，考虑 $G$ 的\Term{composition-series}{合成列}在 $G''$ 中的像\Term{composition-series}{合成列}：$G_i''$ 是 $G_i$ 在 $G''$ 中的像。群 $G_i''/G_{i+1}''$ 是 $H_i$ 的商，故只须证明以下\Term{lemma}{引理}。
+\end{proof}
+\begin{SGAresult}{\Term{lemma}{引理}}{2.3}
+若 $H$ 为定义在域 $k$ 上的\Term{elementary-unipotent-group}{初等幺幂群}（1.7），则 $H$ 的任何商\Term{algebraic-group}{代数群} $H''$ 或为零，或在 $k$ 上\Term{isomorphism}{同构}于 $H$。
+\end{SGAresult}
+\begin{proof}
+若 $H=\mathbf G_a$ 且\Term{characteristic}{特征}为 $0$，或 $H=\boldsymbol\alpha_p$、$\mathbf Z/p\mathbf Z$（$p>0$），只须由 1.5 注意到，$H$ 除 $0$ 和自身外没有别的\Term{algebraic-subgroup}{代数子群}（注意 $\boldsymbol\alpha_p$ 的非零\Term{algebraic-subgroup}{代数子群}由一个在 $k$ 上秩至少为 $p$ 的 $k$-\Term{algebra}{代数}定义（1.5 iii)），所以等于 $\boldsymbol\alpha_p$）。
+现在设 $H=\mathbf G_a$（$p>0$），于是有\Term{exact-sequence}{正合列}
+\[0\longrightarrow N\longrightarrow\mathbf G_a\longrightarrow H''\longrightarrow0.\]
+若 $N=\mathbf G_a$，则 $H''=0$。否则，对 $N$ 的一个\Term{composition-series}{合成列}的\Term{length}{长度}作归纳，可以假设 $N=\boldsymbol\alpha_p$，或 $N$ 为 $(\mathbf Z/p\mathbf Z)^r$ 的\Term{form}{形式}（1.5）。
+
+a) 若 $N\simeq\boldsymbol\alpha_p$，1.5 iii) 的证明表明 $N$ 必为 $\mathbf G_a$ 中 Frobenius \Term{morphism}{态射} $F$ 的核；由下列\Term{exact-sequence}{正合列}即可得出结论：
+\[0\longrightarrow\boldsymbol\alpha_p\longrightarrow\mathbf G_a\xrightarrow{F}\mathbf G_a\longrightarrow0.\]
+b) 若 $N\simeq\mathbf Z/p\mathbf Z$，立即可见存在 $a\in k^*$，使 $N$ 是 $\mathbf G_a=\operatorname{Spec}k[X]$ 中由 $X^p-aX=0$ 定义的\Term{closed-subscheme}{闭子概形}。此时利用\Term{exact-sequence}{正合列}
+\[0\longrightarrow N\longrightarrow\mathbf G_a\xrightarrow{P}\mathbf G_a\longrightarrow0,\]
+即可得出结论，其中 $P$ 为 Artin--Schreier \Term{morphism}{态射} $x\mapsto x^p-ax$。
+
+c) 若 $N$ 为 $(\mathbf Z/p\mathbf Z)^r$ 的\Term{form}{形式}，存在 $k$ 的\Term{finite}{有限} Galois \Term{field-extension}{扩域} $k'$ 使 $N$ \Term{trivialization}{平凡化}。由 b) 及对 $r$ 的显然归纳，$\mathbf G_a/N$ 是在 $k'$ 上\Term{trivialization}{平凡化}的 $\mathbf G_a$ 的\Term{form}{形式}。只须应用下面的\Term{lemma}{引理}。
+\end{proof}
+\begin{SGAresult}{\Term{lemma}{引理}}{2.3 bis}
+设 $k$ 为域，$G$ 为 $\mathbf G_a$ 的一个\Term{form}{形式}，它被 $k$ 的\Term{finite}{有限}\Term{separable}{可分}\Term{field-extension}{扩域} $k'$ \Term{trivialization}{平凡化}。则 $G$ \Term{isomorphism}{同构}于 $\mathbf G_a$。
+\end{SGAresult}
+\SourcePage{351}
+\begin{proof}
+\Term{algebraic-group}{代数群} $(\mathbf G_a)_{k'}$ 的 $k'$-\Term{automorphism-group}{自同构群}是非零\Term{homothety}{位似}组成的群 $(k')^\times$（《Bible》，第 9 讲，\Term{lemma}{引理} 1）。由 Hilbert 第 90 \Term{theorem}{定理}，Galois \Term{cohomology-group}{上同调群} $H^1(k'/k,\mathbf G_m)$ 为零（可以假设 $k'/k$ 为 Galois \Term{group-extension}{扩张}）。\Term{lemma}{引理} 2.3 bis 遂由\Term{algebraic-group}{代数群}的 $k$-\Term{form}{形式}的分类\Term{pushout}{推出}（参见 J.-P. Serre，\textit{Cohomologie galoisienne}，第 III 章 1.3）。
+\end{proof}
+这就完成了 2.2 的证明。
+\begin{SGAresult}{命题}{2.4}
+设 $k$ 为域，$M$ 为\Term{finite-type}{有限型}的\Term{multiplicative-type}{乘法型} $k$-群（第 VIII 讲），$U$ 为 $k$ 上\Term{unipotent}{幺幂}\Term{algebraic-group}{代数群}。则：
+\[
+\begin{aligned}
+\text{i)}\quad&\underline{\operatorname{Hom}}_{k\text{-gr}}(M,U)=\underline e
+&&\text{（从而 }\operatorname{Hom}_{k\text{-gr}}(M,U)=e\text{）};\\
+\text{ii)}\quad&\operatorname{Hom}_{k\text{-gr}}(U,M)=e.
+\end{aligned}
+\]
+\end{SGAresult}
+为证明 i)，须对 $k$ 上的任意\Term{prescheme}{预概形} $S$，证明 $\operatorname{Hom}_{S\text{-gr}}(M_S,U_S)=e$。这由下面的\Term{lemma}{引理}\Term{pushout}{推出}。
+\begin{SGAresult}{\Term{lemma}{引理}}{2.5}
+设 $S$ 为\Term{prescheme}{预概形}，$M$ 为 $S$ 上\Term{finite-type}{有限型}的\Term{multiplicative-type}{乘法型} $S$-群，$U$ 为 $S$ 上\Term{finite-presentation}{有限表示}的 $S$-\Term{group-prescheme}{群预概形}，其各\Term{fiber}{纤维}\Term{unipotent}{幺幂}。则 $\operatorname{Hom}_{S\text{-gr}}(M,U)=e$。
+\end{SGAresult}
+\begin{proof}
+在这些假设下，为使 $S$-\Term{group-morphism}{群态射} $u:M\to U$ 为\Term{unit-homomorphism}{单位同态}，只须 $u$ 在 $M$ 于 $S$ 各点上方的\Term{fiber}{纤维}上的\Term{restriction}{限制}为零\Term{morphism}{态射}（第 IX 讲 5.2）。因此归结到 $S$ 是一个域的谱的情形，并可再假设此域\Term{algebraically-closed}{代数闭}。由定义 1.1，可以只考虑 $U=\mathbf G_a$；此情形已在第 XII 讲 4.4.1 中证明。
+\end{proof}
+现在证明 2.4 ii)。设 $u:U\to M$ 为 $k$-\Term{group-morphism}{群态射}。像 $u(U)$ 可由 $M$ 的\Term{algebraic-subgroup}{代数子群} $U''$ 代表（第 VI$_B$ 讲 5.4）。\footnote{编者注：核对此引文。}群 $U''$ 作为\Term{unipotent}{幺幂}群的商而\Term{unipotent}{幺幂}（2.2 iii)），又作为\Term{multiplicative-type}{乘法型}群的\Term{subgroup}{子群}而为\Term{multiplicative-type}{乘法型}（参见《Bible》，第 4 讲，\Term{theorem}{定理} 2 的推论 1，或第 IX 讲 6.8）。故由 2.4 i)，$U''$ 为\Term{unit-group}{单位群}。
+\begin{SGAresult}{注记}{2.6}
+沿用 2.4 的记号，\Term{functor}{函子} $\underline{\operatorname{Hom}}_{k\text{-gr}}(U,M)$ 一般不再等于 $\underline e$。例如取\Term{prescheme}{预概形} $S$，使 $\Gamma(S,\mathscr O_S)$ 含有满足 $\varepsilon^2=0$ 的非零元素 $\varepsilon$（如环 $A$ 的\Term{dual-number-algebra}{对偶数代数}的谱）。对任意 $S$ 上的 $S'$，映射 $u\mapsto1+\varepsilon_{S'}u$ 给出关于 $S'$ \Term{functorial}{函子性}的\Term{homomorphism}{同态}，从\Term{additive-group}{加法群} $\Gamma(S',\mathscr O_{S'})$ 到\Term{multiplicative-group}{乘法群} $\Gamma(S',\mathscr O_{S'}^\times)$。因而它定义一个 $S$-\Term{group-morphism}{群态射} $(\mathbf G_a)_S\to(\mathbf G_m)_S$；由于 $\varepsilon\ne0$，此\Term{morphism}{态射}非零。
+\end{SGAresult}
+回顾（第 VII$_A$ 讲第 3 节），当 $G$ 是 $S$ 上\Term{finite}{有限}\Term{flat}{平坦}的交换 $S$-\Term{group-prescheme}{群预概形}时，有\Term{cartier-duality}{Cartier 对偶性}，且 $G$ 在第 VIII 讲第 1 节的意义下是\Term{reflexive}{自反}的。更准确地说，\Term{functor}{函子} $G\mapsto\underline{\operatorname{Hom}}_{S\text{-gr}}(G,\mathbf G_m)$
+\SourcePage{352}
+由一个 $S$ 上\Term{finite}{有限}\Term{flat}{平坦}的交换 $S$-\Term{group-prescheme}{群预概形} $D(G)$ 代表，且\Term{canonical}{典范}\Term{morphism}{态射} $G\to D(D(G))$ 是\Term{isomorphism}{同构}。特别地：
+\[
+\text{(i)}\quad D(\boldsymbol\mu_n)\simeq\mathbf Z/n\mathbf Z,\quad D(\mathbf Z/n\mathbf Z)\simeq\boldsymbol\mu_n;
+\qquad\text{(ii)}\quad D(\boldsymbol\alpha_p)\simeq\boldsymbol\alpha_p\quad(p>0).
+\]
+\SGAsection{3}{作用于向量空间的幺幂群}
+回顾（第 I 讲 4.6.1），若 $S$ 为\Term{prescheme}{预概形}，$M$ 为 $\mathscr O_S$-模\Term{sheaf}{层}，记 $W(M)$ 为 $S$-\Term{functor}{函子} $(\mathrm{Sch}/S)^\circ\to(\mathrm{Ens})$，其定义为：对每个 $S$-\Term{prescheme}{预概形} $S'$，
+\[W(M)(S')=\Gamma(S',M\otimes\mathscr O_{S'}).\]
+再回顾，若 $S$-群 $G$ \Term{action}{作用}于 $S$-\Term{functor}{函子} $V$，则 $V$ 在 $G$ 下的\Term{invariants}{不变量} $S$-\Term{functor}{函子} $V^G$ 定义为 $V$ 的如下\Term{subfunctor}{子函子}：其在 $S$ 上的 $S'$ 中的值，是使得对 $S'$ 上每个 $S''$，$x_{S''}$ 均被 $G(S'')$ 固定的所有 $x\in V(S')$ 的\Term{set}{集合}。
+有以下\Term{lemma}{引理}。
+\begin{SGAresult}{\Term{lemma}{引理}}{3.1}
+设 $S$ 为\Term{prescheme}{预概形}，$G$ 为 $S$ 上\Term{affine}{仿射}的 $S$-\Term{group-prescheme}{群预概形}，由\Term{quasi-coherent}{拟凝聚} $\mathscr O_S$-\Term{algebra}{代数} $A$ 定义。设 $G$ \Term{action}{作用}于一个\Term{quasi-coherent}{拟凝聚} $\mathscr O_S$-模\Term{sheaf}{层} $M$，$\mu:M\to A\otimes_{\mathscr O_S}M$ 为定义此\Term{action}{作用}的\Term{comorphism}{余态射}（第 I 讲 4.7.2），$\nu:M\to A\otimes_{\mathscr O_S}M$ 为\Term{morphism}{态射} $x\mapsto\mu(x)-1\otimes x$。则：
+
+i) $\underline M^G(S)=\Gamma\operatorname{Ker}(\nu)$。
+
+ii) 若 $S$ 为域 $k$ 的谱，则 $\underline M^G$ 形如 $W(N)$，其中 $N$ 为 $M$ 的一个向量子\Term{space}{空间}。
+
+iii) 若 $S$ 为域 $k$ 的谱，则 $M$ 的每个元素 $x$ 都包含在 $M$ 的一个在 $k$ 上\Term{finite-dimensional}{有限维}、对 $G$ 的\Term{action}{作用}\Term{stable}{稳定}的向量子\Term{space}{空间}中。
+\end{SGAresult}
+\begin{proof}
+iii) 仅为备忘而列出，已在第 VI$_B$ 讲 11.2 证明。
+
+i) 显然 $\underline M^G(S)$ 包含 $\Gamma\operatorname{Ker}(\nu)$。为证反向包含，可以假设 $S$ 为环 $B$ 的\Term{affine}{仿射}谱。设 $m\in \underline M^G(S)$。则对任意 $B$-\Term{algebra}{代数} $B'$ 及任意 $u\in\operatorname{Hom}_{B\text{-alg}}(A,B')$（$u$ 对应于 $G(\operatorname{Spec}B')$ 的一个元素），有
+\[(u\otimes1_M)\nu(m)=0\quad\text{于 }B'\otimes_BM.\]
+特别取 $B'=A$，$u$ 为 $A$ 的\Term{identity-map}{恒等映射}，就得到 $\nu(m)=0$。
+
+ii) 设 $N=\operatorname{Ker}\nu$，由 i) 它等于 $\underline M^G(k)$。每个 $k$-\Term{prescheme}{预概形} $S$ 在 $k$ 上\Term{flat}{平坦}，故
+\[\underline M^G(S)=\Gamma\operatorname{Ker}(\nu\otimes_k S)=\Gamma(N\otimes_k S).\]
+因此 $\underline M^G$ \Term{isomorphism}{同构}于\Term{functor}{函子} $W(N)$。
+\end{proof}
+\begin{SGAresult}{命题}{3.2}
+设定义在域 $k$ 上的\Term{unipotent}{幺幂}\Term{algebraic-group}{代数群} $G$ \Term{action}{作用}于 $k$-\Term{vector-space}{向量空间} $V$。若 $V\ne0$，则 $V^G\ne0$。
+\end{SGAresult}
+\SourcePage{353}
+\begin{proof}
+由 3.1 ii)、iii)，可以假设 $k$ \Term{algebraically-closed}{代数闭}且 $V$ 在 $k$ 上\Term{finite-dimensional}{有限维}。
+设 $0\to G'\to G\to G''\to0$ 为\Term{algebraic-group}{代数群}的\Term{exact-sequence}{正合列}，并设 $G$ \Term{action}{作用}于一个（\Term{fpqc-topology}{fpqc 拓扑}的）\Term{sheaf}{层} $V$。当然有 $V^G\subset V^{G'}$，且商\Term{presheaf}{预层} $G/G'$ 自然\Term{action}{作用}于 $V^{G'}$。但 $V^{G'}$ 是\Term{sheaf}{层}（它是熟知的\Term{morphism}{态射}对 $V\rightrightarrows\underline{\operatorname{Hom}}(G',V)$ 的核），所以 $G/G'$ 的\Term{associated-sheaf}{伴随层} $G''$ \Term{action}{作用}于 $V^{G'}$，且立即可见
+\[(V^{G'})^{G''}=V^G=(V^{G'})^{G/G'}.\]
+利用这一观察，为证明 3.2，可以归结到 $G$ 为\Term{elementary-unipotent-group}{初等幺幂群}的情形（1.7）。
+
+a) $G=\mathbf G_a$，$p=0$。由《BIBLE》第 4 讲命题 4，从 $\mathbf G_a$ 到\Term{linear-group}{线性群} $\operatorname{GL}(V)$ 的\Term{morphism}{态射}由\Term{exponential-map}{指数映射}给出：
+\[T\longmapsto\sum_{q=0}^{\infty}T^q\frac{n^q}{q!},\]
+其中 $n$ 为 $V$ 的\Term{nilpotent}{幂零}\Term{endomorphism}{自同态}。于是 $V\ne0\Rightarrow\operatorname{Ker}n\ne0$，且显然 $V$ 中被 $n$ \Term{annihilate}{零化}的每个向量都被 $G$ 固定。
+
+现设 $p>0$。
+
+b) $G=\boldsymbol\alpha_p$。群 $\boldsymbol\alpha_p$ 为\Term{height}{高度} $1$ 的\Term{radicial}{根性}群（第 VII$_A$ 讲第 7 节），故给出 $\boldsymbol\alpha_p$ 在 $V$ 中的\Term{representation}{表示}，\Term{equivalence}{等价}于给出\Term{p-lie-algebra}{$p$-李代数} $\boldsymbol\alpha_p$ 在 $\mathfrak{gl}(V)$ 中的\Term{representation}{表示}（附录 II 2.2），亦即在此情形给出满足 $X^p=0$ 的 $X\in\operatorname{End}(V)$（附录 II 2.1）。于是 $V\ne0\Rightarrow W=\operatorname{Ker}X\ne0$，再由附录 II 2.2，有 $W=V^{\boldsymbol\alpha_p}$。
+
+c) $G=\mathbf Z/p\mathbf Z$。$G$ 在 $V$ 中的\Term{representation}{表示}\Term{equivalence}{等价}于给出满足 $x^p=1$ 的 $x\in\operatorname{Aut}(V)$，即 $(1-x)^p=0$。所以 $x$ 形如 $1+n$，其中 $n$ \Term{nilpotent}{幂零}，且 $W=\operatorname{Ker}n$ 被 $x$ 固定。
+
+d) $G=\mathbf G_a$。设 $G_i$（$i\in I$）为 $\mathbf G_a$ 的\Term{etale}{平展}\Term{algebraic-subgroup}{代数子群}组成的递增\Term{filtered-family}{滤过族}；由命题 1.5，$G_i\simeq(\mathbf Z/p\mathbf Z)^{r_i}$。令 $V_i=V^{G_i}$。因 $V$ 非零且\Term{finite-dimensional}{有限维}，而由 c) 各 $V_i$ 非零，递减\Term{filtered-family}{滤过族} $V_i$ 必\Term{stable}{稳定}，故
+\[W=\bigcap_{i\in I}V_i\ne0.\]
+现有以下\Term{lemma}{引理}。
+\end{proof}
+\begin{SGAresult}{\Term{lemma}{引理}}{3.3}
+$(\mathbf G_a)_S$ 的\Term{etale}{平展}\Term{subgroup}{子群}族（$S$ 为\Term{characteristic}{特征} $p>0$ 的\Term{prescheme}{预概形}）在 $G$ 中\Term{schematically-dense}{概形稠密}（第 IX 讲 4.1）。
+\end{SGAresult}
+\begin{proof}
+由第 IX 讲 4.4，只须当 $S$ 为\Term{prime-field}{素域} $\mathbf F_p$ 的谱时证明。此时只须考虑由 $X^{p^n}-X=0$ 定义的\Term{etale}{平展}\Term{subgroup}{子群}族 $G_n$（$n\geq1$）；该族包含每个\Term{closed-point}{闭点}，故在 $(\mathbf G_a)_{\mathbf F_p}$ 中\Term{schematically-dense}{概形稠密}。
+\end{proof}
+回到 3.2 d) 的证明。若 $w\in W$，则它在 $G$ 中的\Term{stabilizer}{稳定子}是 $\mathbf G_a$ 的\Term{algebraic-subgroup}{代数子群}，包含每个 $G_i$（$i\in I$），故由 3.3 等于 $\mathbf G_a$。于是 $W=V^G$。
+由 3.2 立即得出以下推论。
+
+\SourcePage{354}
+\begin{SGAresult}{推论}{3.4}
+设 $k$ 为域，\Term{unipotent}{幺幂} $k$-\Term{algebraic-group}{代数群} $G$ \Term{action}{作用}于\Term{finite-dimensional}{有限维} $k$-\Term{vector-space}{向量空间} $V$。则 $V$ 有一个定义在 $k$ 上、对 $G$ \Term{stable}{稳定}的向量子\Term{space}{空间}列
+\[0=V_0\subset V_1\subset\cdots\subset V_n=V,\]
+使 $G$ 在 $V_{i+1}/V_i$ 上的\Term{action}{作用}平凡。还可以要求 $V_{i+1}/V_i$ 的\Term{dimension}{维数}为 $1$。
+\end{SGAresult}
+现在用下述\Term{theorem}{定理}概括并补充已经证明的\Term{unipotent}{幺幂}群的性质。
+\begin{SGAresult}{\Term{theorem}{定理}}{3.5}
+设 $G$ 为定义在域 $k$ 上的\Term{algebraic-group}{代数群}。以下性质\Term{equivalence}{等价}：
+
+i) $G$ \Term{unipotent}{幺幂}。
+
+ii) $G$ 有定义在 $k$ 上的\Term{composition-series}{合成列}，其逐次商在 $p=0$ 时\Term{isomorphism}{同构}于 $\mathbf G_a$（在 $p>0$ 时\Term{isomorphism}{同构}于 $\boldsymbol\alpha_p$、$\mathbf G_a$ 或\Term{twisting}{扭曲}的 $(\mathbf Z/p\mathbf Z)^r$（1.4））。
+
+iii) 如 ii)，并进一步要求此\Term{composition-series}{合成列}为\Term{central-series}{中心列}。
+
+iv) $G$ 有定义在 $k$ 上的\Term{characteristic-series}{特征合成列}（第 VI$_B$ 讲），其逐次商在 $p=0$ 时\Term{isomorphism}{同构}于 $(\mathbf G_a)^r$（在 $p>0$ 时依次\Term{isomorphism}{同构}于 $(\boldsymbol\alpha_p)^r$、\Term{twisting}{扭曲}的 $(\mathbf G_a)^s$ 或\Term{twisting}{扭曲}的 $(\mathbf Z/p\mathbf Z)^t$）。
+
+v) 对某个适当整数 $n\geq0$，$G$ \Term{isomorphism}{同构}于\Term{linear-group}{线性群} $\operatorname{GL}(n)_k$ 中严格上三角矩阵群 $\operatorname{Trigstr}(n)_k$ 的\Term{algebraic-subgroup}{代数子群}。
+
+vi) $G$ \Term{affine}{仿射}，且对 $G$ 在每个非零\Term{finite-dimensional}{有限维} $k$-\Term{vector-space}{向量空间} $V$ 中的\Term{linear-representation}{线性表示}，均有 $V^G\ne0$。
+\end{SGAresult}
+\begin{proof}
+i) $\Rightarrow$ vi) 由 2.1 和 3.2 得到。
+
+vi) $\Rightarrow$ v)。因\Term{algebraic-group}{代数群} $G$ \Term{affine}{仿射}，它是适当的\Term{linear-group}{线性群} $\operatorname{GL}(V)$ 的\Term{algebraic-subgroup}{代数子群}（第 VI$_B$ 讲 11.3）。对此\Term{embedding}{嵌入}定义的 $G$ 在 $V$ 中的\Term{representation}{表示}应用 3.4，便得 v)。
+
+v) $\Rightarrow$ iii)。已知\Term{algebraic-group}{代数群} $\operatorname{Trigstr}(n)$ 有逐次商\Term{isomorphism}{同构}于 $\mathbf G_a$ 的\Term{central-series}{中心合成列}。它在 $G$ 上诱导的\Term{composition-series}{合成列}结合 1.5 就给出 iii)。
+
+iii) $\Rightarrow$ ii) $\Rightarrow$ i) 及 iv) $\Rightarrow$ i) 显然。
+
+稍后将证明 i) $\Rightarrow$ iv)，先指出已证明部分的一些推论。
+\end{proof}
+\begin{SGAresult}{定义}{3.6}
+若\Term{p-lie-algebra}{$p$-李代数} $\mathfrak g$（$p>0$）（参见第 VII$_A$ 讲第 5 节）中的映射 $x\mapsto x^{(p)}$ \Term{nilpotent}{幂零}，即对每个 $x\in\mathfrak g$，存在整数 $n>0$ 使 $x^{(p^n)}=0$，则称 $\mathfrak g$ \Term{unipotent}{幺幂}。
+\end{SGAresult}
+\begin{SGAresult}{推论}{3.7}
+\Term{unipotent}{幺幂}\Term{algebraic-group}{代数群} $G$ 是\Term{nilpotent}{幂零}群（第 VI$_B$ 讲第 8 节）；其\Term{lie-algebra}{李代数} $\mathfrak g$ \Term{nilpotent}{幂零}（Bourbaki，\textit{Groupes et algèbres de Lie}，第 I 章第 4 节），并\Term{isomorphism}{同构}于某\Term{finite-dimensional}{有限维}\Term{vector-space}{向量空间}的\Term{nilpotent}{幂零}\Term{endomorphism}{自同态}组成的\Term{lie-algebra}{李代数}。
+\SourcePage{355}
+在\Term{characteristic}{特征} $p>0$ 时，$\mathfrak g$ 是\Term{unipotent}{幺幂}\Term{p-lie-algebra}{$p$-李代数}（3.6）。
+\end{SGAresult}
+\begin{proof}
+因 i) $\Rightarrow$ v)，只须对 $G=\operatorname{Trigstr}(n)$ 证明 3.7。已经用过 $\operatorname{Trigstr}(n)$ 为\Term{nilpotent}{幂零}\Term{algebraic-group}{代数群}这一事实。另一方面，它的\Term{lie-algebra}{李代数} $\mathfrak h$ 由 $V$ 的上三角且主\Term{diagonal}{对角线}全为零的\Term{endomorphism}{自同态}组成。因此这些\Term{endomorphism}{自同态}\Term{nilpotent}{幂零}，从而 $\mathfrak h$ \Term{nilpotent}{幂零}（Bourbaki，同上，第 I 章第 4 节推论 3）。若 $p>0$，因\Term{p-lie-algebra}{$p$-李代数} $\mathfrak{gl}(V)=\operatorname{End}(V)$ 中的 $p$ 次幂与 $V$ 的\Term{endomorphism}{自同态}的 $p$ 次幂一致（第 VII$_A$ 讲 6.4.4），可见 $\mathfrak h$ \Term{unipotent}{幺幂}。
+\end{proof}
+\begin{SGAresult}{推论}{3.8}
+设 $k$ 为\Term{algebraically-closed-field}{代数闭域}，$G$ 为 $k$ 上\Term{smooth}{光滑}\Term{affine}{仿射}\Term{algebraic-group}{代数群}。则以下性质\Term{equivalence}{等价}：
+
+i) $G$ \Term{unipotent}{幺幂}。
+
+ii) $G(k)$ 全由\Term{unipotent}{幺幂}元素组成（《BIBLE》第 4 讲，命题 4 的推论 1），即 $G$ 在《BIBLE》的意义下\Term{unipotent}{幺幂}。
+\end{SGAresult}
+\begin{proof}
+i) $\Rightarrow$ ii)，因为由 3.2 i) $\Rightarrow$ v)，$G$ \Term{isomorphism}{同构}于某个群 $\operatorname{Trigstr}(n)$ 的\Term{algebraic-subgroup}{代数子群}。
+
+ii) $\Rightarrow$ i)。设 $G$ 为《BIBLE》意义下的\Term{unipotent}{幺幂}\Term{algebraic-group}{代数群}，以 $G^0$ 表示其\Term{identity-component}{单位连通分支}。$G^0$ 的\Term{maximal-torus}{极大环面}由\Term{unipotent}{幺幂}元素组成，故均为\Term{unit-group}{单位群}，从而 $G^0$ 等于它的各个 \Term{cartan-subgroup}{Cartan 子群}。因此 $G^0$ \Term{solvable}{可解}（《BIBLE》第 6 讲，\Term{theorem}{定理} 6），因而\Term{triangularizable}{可三角化}（《BIBLE》第 6 讲，\Term{theorem}{定理} 1）。总之，$G^0$ 是某个 $\operatorname{Trigstr}(n)$ 的\Term{algebraic-subgroup}{代数子群}，所以在本讲的意义下\Term{unipotent}{幺幂}。
+群 $(G/G^0)(k)$ 是由\Term{unipotent}{幺幂}元素组成的\Term{finite-group}{有限群}，故在 $p=0$ 时为零，在 $p>0$ 时为\Term{finite}{有限} $p$-群（《BIBLE》第 4 讲，命题 4）。于是 $G/G^0$ 为若干个\Term{isomorphism}{同构}于 $\mathbf Z/p\mathbf Z$ 的群的迭次\Term{extension}{扩张}，故在本讲的意义下\Term{unipotent}{幺幂}。由此证明 $G$ \Term{unipotent}{幺幂}。
+\end{proof}
+\textbf{3.5 证明的结束。}证明 i) $\Rightarrow$ iv)。
+
+a) $p>0$。考虑 $G$ 的\Term{algebraic-subgroup}{代数子群}递增列
+\[\{e\}\subset {}_F(G)\subset {}_{F^2}(G)\subset\cdots\subset {}_{F^n}(G)\subset G^0\subset G.\]
+这是 $G$ 的一个\Term{characteristic-series}{特征合成列}（附录 II 1）。当 $n$ 充分大时，$G/{}_{F^n}(G)$ \Term{smooth}{光滑}（附录 II 3.1），故逐次商依次为：
+\begin{enumerate}
+\item[(1)] \Term{height}{高度} $1$ 的\Term{radicial}{根性}群；
+\item[(2)] 一个\Term{smooth}{光滑}\Term{connected}{连通}群；
+\item[(3)] 一个\Term{etale}{平展}群。
+\end{enumerate}
+因而为证明 i) $\Rightarrow$ iv)，只须证明：
+\begin{SGAresult}{\Term{lemma}{引理}}{3.9}
+设 $G$ 为定义在\Term{characteristic}{特征} $p>0$ 的域 $k$ 上的\Term{unipotent}{幺幂}\Term{algebraic-group}{代数群}。则 $G$ 有定义在 $k$ 上的\Term{characteristic-series}{特征合成列}，其逐次商\Term{isomorphism}{同构}于：
+
+i) $(\boldsymbol\alpha_p)^r$，若 $G$ \Term{radicial}{根性}；
+
+ii) \Term{twisting}{扭曲}的 $(\mathbf G_a)^r$，若 $G$ \Term{smooth}{光滑}且\Term{connected}{连通}；
+\SourcePage{356}
+iii) \Term{twisting}{扭曲}的 $(\mathbf Z/p\mathbf Z)^r$，若 $G$ \Term{etale}{平展}。
+\end{SGAresult}
+\begin{proof}
+i) $G$ \Term{radicial}{根性}。用 ${}_{F^n}(G)$ \Term{filtered}{滤过} $G$，归结到 $G$ \Term{radicial}{根性}且\Term{height}{高度}为 $1$ 的情形。因 $G$ \Term{nilpotent}{幂零}（3.5 i) $\Rightarrow$ iii)），且\Term{algebraic-group}{代数群}的\Term{center}{中心}可代表（第 VIII 讲 6.5 e)），可以考虑 $G$ 的上\Term{central-series}{中心列}，它显然在 $G$ 中为\Term{characteristic}{特征}的；因而归结到 $G$ 还是\Term{abelian-group}{交换群}的情形。
+
+令 $\mathfrak g=\operatorname{Lie}(G)$。$p$ 次幂\Term{morphism}{态射} $\pi$ 在 $\mathfrak g$ 中是\Term{additive}{加性}的（第 VII$_A$ 讲）；下面将归结到它为零的情形。对 $k$ 上每个\Term{prescheme}{预概形} $S$，令 $\mathfrak g_S=\mathfrak g\otimes_k\mathscr O_S$，$\mathfrak h_S$ 为 $\mathfrak g_S$ 经 $\pi_S$ 的像所给出的\Term{abelian-group}{阿贝尔群}子\Term{sheaf}{层}。再以 $\overline{\mathfrak h}_S$ 表示 $\mathfrak h_S$ 生成的 $\mathfrak g_S$ 的 $\mathscr O_S$-模子\Term{sheaf}{层}。显然
+\[\overline{\mathfrak h}_S=\overline{\mathfrak h}_k\otimes_k\mathscr O_S,\]
+且 $\overline{\mathfrak h}_S$\footnote{编者注：已将 $\mathfrak h$ 改为 $\overline{\mathfrak h}$。}是 $\mathfrak g_S$ 的\Term{characteristic}{特征}子\Term{p-lie-algebra}{$p$-李代数}（即在 $S$-\Term{functor}{函子} $\underline{\operatorname{Aut}}_{p\text{-Lie}}(\mathfrak g)$ 下\Term{stable}{稳定}）。由附录 II 2.2，$\overline{\mathfrak h}_k$ 是 $G$ 的一个\Term{characteristic}{特征}\Term{algebraic-subgroup}{代数子群} $H$ 的\Term{lie-algebra}{李代数}。
+
+又由 3.7 及下面的\Term{lemma}{引理} 3.9 bis，若 $G\ne\{e\}$，则 $H\ne G$，因为 $\overline{\mathfrak h}_k\ne\mathfrak g$。另一方面，若 $G/H=G''$，则 $\operatorname{Lie}G''=\mathfrak g/\overline{\mathfrak h}_k$（附录 II 2.2），所以 $\operatorname{Lie}G''$ 中的 $p$ 次幂为零。对 $\dim\operatorname{Lie}G$ 归纳，遂归结到 $\operatorname{Lie}G$ 为 $p$ 次幂为零的\Term{p-lie-algebra}{$p$-李代数}的情形。但此时对适当整数 $r\geq0$，$\operatorname{Lie}G''$ \Term{isomorphism}{同构}于 $\operatorname{Lie}(\boldsymbol\alpha_p)^r$（附录 II 2.1），从而由附录 II 2.2，$G''\simeq(\boldsymbol\alpha_p)^r$。只须再证明下述\Term{lemma}{引理}。
+\end{proof}
+\begin{SGAresult}{\Term{lemma}{引理}}{3.9 bis}
+设 $k$ 为\Term{characteristic}{特征} $p>0$ 的域，$\mathfrak g$ 为 $k$ 上\Term{finite-dimensional}{有限维}、交换、\Term{unipotent}{幺幂}的\Term{p-lie-algebra}{$p$-李代数}（3.6），$\mathfrak h$ 为 $\mathfrak g$ 中 $p$ 次幂的像生成的子\Term{p-lie-algebra}{$p$-李代数}。若 $\mathfrak g\ne0$，则 $\mathfrak h\ne\mathfrak g$。
+\end{SGAresult}
+\begin{proof}
+因 $\mathfrak g$ 交换，$\mathfrak h$ 就是 $X^{(p)}$（$X\in\mathfrak g$）生成的 $\mathfrak g$ 的 $k$-向量子\Term{space}{空间}。若 $\mathfrak g\ne0$ 且\Term{unipotent}{幺幂}，存在 $X\in\mathfrak g$，$X\ne0$，满足 $X^{(p)}=0$。取 $\mathfrak g$ 中直线 $kX$ 的一个补\Term{space}{空间}的基 $X_1,\ldots,X_n$。则\Term{lie-algebra}{李代数} $\mathfrak h$ 为 $X_1^{(p)},\ldots,X_n^{(p)}$ 生成的 $k$-向量子\Term{space}{空间}，因而\Term{dimension}{维数}至多为 $n=\dim\mathfrak g-1$。
+\end{proof}
+\textbf{3.9 ii) 的证明。}$G$ \Term{smooth}{光滑}且\Term{connected}{连通}。此时 $G$ 的下\Term{central-series}{中心列}由\Term{smooth}{光滑}\Term{connected}{连通}的\Term{characteristic}{特征}\Term{algebraic-subgroup}{代数子群} $G_i$ 代表（第 VI$_B$ 讲 8.3 及 7.4），且因 $G$ \Term{nilpotent}{幂零}（3.5 i) $\Rightarrow$ iii)），当 $i$ 充分大时 $G_i=0$。只须对 $G_i/G_{i+1}$ 证明 3.9，故可归结到 $G$ 还是\Term{abelian-group}{交换群}的情形。对每个整数 $n>0$，令 $G_n$ 为 $G$ 经取 $p^n$ 次幂\Term{morphism}{态射}的像\Term{algebraic-subgroup}{代数子群}。则 $G_n$ \Term{smooth}{光滑}、\Term{connected}{连通}且为\Term{characteristic}{特征}的，由\Term{unipotent}{幺幂}群的定义 1.1，当 $n$ 充分大时 $G_n=0$。以 $G_n/G_{n+1}$ 代替 $G$，还可以假设 $G$ 被取 $p$ 次\Term{nilpotent}{幂零}化。此时由 J.-P. Serre，\textit{Groupes algébriques et corps de classeq}，第 VII 章命题 11，$G$ 是某个 $(\mathbf G_a)^r$ 的\Term{form}{形式}。
+
+\SourcePage{357}
+\textbf{3.9 iii) 的证明。}$G$ \Term{etale}{平展}。与 ii) 一样，先归结到 $G$ 交换，再归结到 $G$ 被 $p$ \Term{annihilate}{零化}；此时 $G_{\overline k}\simeq(\mathbf Z/p\mathbf Z)^r$。
+
+\textbf{3.5 中 b) $p=0$ 时 i) $\Rightarrow$ iv) 的证明。}此时 $G$ \Term{smooth}{光滑}且\Term{connected}{连通}；仿照 3.9 ii)，归结到 $G$ 还是\Term{abelian-group}{交换群}的情形。此时有下面更精确的结果。
+\begin{SGAresult}{\Term{lemma}{引理}}{3.9 ter}
+设 $k$ 为\Term{characteristic}{特征} $0$ 的域，$G$ 为交换\Term{unipotent}{幺幂} $k$-\Term{algebraic-group}{代数群}，$\mathfrak g=\operatorname{Lie}G$。则有\Term{canonical-isomorphism}{典范同构}
+\[\exp:W(\mathfrak g)\xrightarrow{\sim}G.\]
+\Term{morphism}{态射} $\exp$ 是在\Term{lie-algebra}{李代数}上诱导\Term{identity-map}{恒等映射}的唯一\Term{homomorphism}{同态} $W(\mathfrak g)\to G$。
+\end{SGAresult}
+\begin{proof}
+因 $G$ \Term{unipotent}{幺幂}，对适当整数 $n$，可将 $G$ 实现为 $\operatorname{Trigstr}(n)$ 的\Term{algebraic-subgroup}{代数子群}（3.5 i) $\Rightarrow$ v)）。选定这样的\Term{embedding}{嵌入}，就可将 $\mathfrak g$ 视为 $\mathfrak{gl}(n)$ 中由\Term{nilpotent}{幂零}\Term{endomorphism}{自同态}组成的子\Term{lie-algebra}{李代数}。于是有 $k$-\Term{morphism}{态射}
+\[\exp:W(\mathfrak g)\longrightarrow\operatorname{GL}(n),\qquad T\longmapsto\sum_{i\geq0}\frac{T^i}{i!}.\]
+因 $G$ 交换，$\exp$ 是\Term{homomorphism}{同态}。令 $G'$ 为 $W(\mathfrak g)$ 经 $\exp$ 的像\Term{algebraic-group}{代数群}。将 $\operatorname{Lie}W(\mathfrak g)$ 与 $\mathfrak g$ \Term{canonical}{典范}等同后，$\exp$ 的切线性映射就是\Term{injectivity}{单射} $\mathfrak g\to\mathfrak{gl}(n)$。因此
+\[\operatorname{Lie}(G\cap G')=\mathfrak g\cap\mathfrak g=\mathfrak g.\]
+因 $G\cap G'$ \Term{smooth}{光滑}（第 VI$_B$ 讲 1.6.1），而 $G$ \Term{connected}{连通}（它是若干 $\mathbf G_a$ 的迭次\Term{extension}{扩张}，3.5 i) $\Rightarrow$ ii)），必有 $G=G'$。核 $\operatorname{Ker}(\exp)$ 是\Term{etale}{平展}\Term{unipotent}{幺幂}群，故为\Term{unit-group}{单位群}；所以 $\exp$ 为 $W(\mathfrak g)$ 到 $G$ 的\Term{isomorphism}{同构}。
+
+若 $h:W(\mathfrak g)\to G$ 为另一个使 $\operatorname{Lie}(h)$ 等于 $\mathfrak g$ 上\Term{identity-map}{恒等映射}的\Term{homomorphism}{同态}，则\Term{morphism}{态射} $h-\exp$ 也是\Term{homomorphism}{同态}（$G$ 交换），其切线性映射为零。因 $k$ 的\Term{characteristic}{特征}为 $0$，且 $W(\mathfrak g)$ \Term{connected}{连通}，再由 Cartier \Term{theorem}{定理}，必有 $h=\exp$。
+\end{proof}
+\begin{SGAresult}{命题}{3.10}
+设 $G$ 为定义在\Term{algebraically-closed-field}{代数闭域} $k$ 上的\Term{algebraic-group}{代数群}。以下性质\Term{equivalence}{等价}：
+
+i) 从任意\Term{multiplicative-type}{乘法型}群 $M$ 到 $G$ 的\Term{morphism}{态射}都是零\Term{morphism}{态射}。
+
+i bis) $G$ 没有非零\Term{multiplicative-type}{乘法型}\Term{subgroup}{子群}。
+
+ii) a) 若 $p=0$：$G(k)$ 除 $e$ 外不含\Term{finite-order-point}{有限阶点}；
+
+\hspace*{1em}b) 若 $p\ne0$：对每个素数 $q\ne p$，$x\in G(k)$ 且 $x^q=e$ 蕴含 $x=e$；对每个满足 $X^{(p)}=X$ 的 $X\in\mathfrak g=\operatorname{Lie}G$，均有 $X=0$。
+\SourcePage{358}
+ii bis) a) 若 $p=0$：同 ii) a)；
+
+\hspace*{1em}b) 若 $p\ne0$：$G(k)$ 的每个\Term{finite}{有限}\Term{subgroup}{子群}都是 $p$-群；对每个满足 $X^{(p)}=X$ 的 $X\in\mathfrak g=\operatorname{Lie}G$，均有 $X=0$。
+\end{SGAresult}
+\begin{proof}
+i) $\Leftrightarrow$ i bis)，因为\Term{multiplicative-type}{乘法型}群的像仍为\Term{multiplicative-type}{乘法型}（第 IX 讲 2.7）。
+
+ii) $\Leftrightarrow$ ii bis)。因为若通常意义下的\Term{finite-group}{有限群} $H$ 的阶不是 $p$ 的幂，则存在素数 $q\ne p$ 及 $H$ 中异于 $e$ 的元素 $x$，使得 $x^q=e$（Sylow \Term{theorem}{定理}，参见 J.-P. Serre，\textit{Corps locaux}，第 IX 章第 2 节）。
+
+i) $\Rightarrow$ ii) 由下面的\Term{lemma}{引理}\Term{pushout}{推出}。
+\end{proof}
+\begin{SGAresult}{\Term{lemma}{引理}}{3.11}
+设 $G$ 为定义在域 $k$ 上的\Term{algebraic-group}{代数群}。
+
+a) 若 $k$ 包含 $n$ 次\Term{root-of-unity}{单位根}，且整数 $n$ 与 $p$ 互素，则
+\[\operatorname{Hom}_{k\text{-gr}}(\boldsymbol\mu_n,G)\simeq\operatorname{Hom}_{k\text{-gr}}(\mathbf Z/n\mathbf Z,G)\simeq{}_nG(k)\]
+（$G(k)$ 中的 $n$ 阶点）。
+
+b) 若 $p>0$，则
+\[\operatorname{Hom}_{k\text{-gr}}(\boldsymbol\mu_p,G)\simeq\{X\in\mathfrak g=\operatorname{Lie}G\mid X^{(p)}=X\}.\]
+\end{SGAresult}
+\begin{proof}
+a) 只须注意此时 $\boldsymbol\mu_n$ 在 $k$ 上\Term{isomorphism}{同构}于 $\mathbf Z/n\mathbf Z$；b) 由附录 II 2.1 \Term{pushout}{推出}。
+\end{proof}
+\textbf{3.10 证明续。}ii) $\Rightarrow$ i bis)。由\Term{lemma}{引理} 3.11，ii) \Term{equivalence}{等价}于对每个素数 $r$，$G$ 均不含\Term{subgroup}{子群} $\boldsymbol\mu_r$；由下面的\Term{lemma}{引理}，这就蕴含 i bis)。
+\begin{SGAresult}{\Term{lemma}{引理}}{3.12}
+设 $G$ 为 $S$ 上\Term{finite-type}{有限型}、异于\Term{unit-group}{单位群}的\Term{diagonalizable}{可对角化} $S$-群。则存在素数 $r$ 及 $G$ 的一个\Term{isomorphism}{同构}于 $(\boldsymbol\mu_r)_S$ 的\Term{subgroup}{子群}。
+\end{SGAresult}
+\begin{proof}
+设 $G=D_S(M)$，其中 $M$ 为\Term{finitely-generated}{有限生成}\Term{abelian-group}{阿贝尔群}，即\Term{free-group}{自由群} $M''$ 被\Term{finite-group}{有限群} $M'$ 的\Term{extension}{扩张}。若 $M''\ne0$，显然对每个整数 $r$，$M$ 都有\Term{isomorphism}{同构}于 $\mathbf Z/r\mathbf Z$ 的商。若 $M''=0$，则对每个整除 $M$ 的阶的素数 $r$，$M'$ 有\Term{isomorphism}{同构}于 $\mathbf Z/r\mathbf Z$ 的商。由\Term{duality}{对偶性}即得\Term{lemma}{引理}。
+\end{proof}
+已经看到（命题 2.4），\Term{unipotent}{幺幂}群满足 3.10 中的\Term{equivalence}{等价}条件。下一节的目标是证明其逆命题。
+
+\SGAsection{4}{幺幂群的一个刻画}
+如前所述，我们要证明：定义在\Term{algebraically-closed-field}{代数闭域} $k$ 上、不含非零\Term{multiplicative-type}{乘法型}\Term{subgroup}{子群}的\Term{algebraic-group}{代数群} $G$ 必\Term{unipotent}{幺幂}。实际上，只须不含某些非常特殊的“初等”\Term{multiplicative-type}{乘法型}\Term{subgroup}{子群}即可；具体是哪一些，取决于对 $G$ 的假设。在陈述一般\Term{theorem}{定理}之前，先详细研究若干特殊情形。
+\SourcePage{359}
+\SGAsubsection{4.1}{光滑、连通、仿射的代数群}
+\begin{SGAresult}{命题}{4.1.1}
+设 $k$ 为域，$G$ 为\Term{smooth}{光滑}、\Term{connected}{连通}、\Term{affine}{仿射}的 $k$-\Term{algebraic-group}{代数群}，$\mathfrak g=\operatorname{Lie}G$。以下性质\Term{equivalence}{等价}：
+
+i) $G$ \Term{unipotent}{幺幂}。
+
+ii) $G$ 有一个\Term{central-series}{中心合成列}，其逐次商为 $\mathbf G_a$ 的\Term{form}{形式}。
+
+iii) $G$ 有一个\Term{characteristic-series}{特征}\Term{central-series}{中心合成列}，其逐次商为 $(\mathbf G_a)^r$ 的\Term{form}{形式}。
+
+iv) 存在整数 $n>1$，使 $G_{\overline k}$ 不含\Term{isomorphism}{同构}于 $\boldsymbol\mu_n$ 的\Term{subgroup}{子群}。
+
+v) $G$ 的每个\Term{maximal-torus}{极大环面}都是\Term{unit-group}{单位群}。
+
+再假设 $G$ 是\Term{linear-group}{线性群} $\operatorname{GL}(n)$ 的\Term{algebraic-subgroup}{代数子群}。则以上条件还\Term{equivalence}{等价}于：
+
+vi) $\mathfrak g\subset\mathfrak{gl}(n)$ 由\Term{nilpotent}{幂零}\Term{endomorphism}{自同态}组成。
+
+vii) $\mathfrak g$ \Term{nilpotent}{幂零}，且其\Term{center}{中心}不含非零\Term{semisimple}{半单}\Term{endomorphism}{自同态}。
+\end{SGAresult}
+\begin{proof}
+ii) $\Rightarrow$ i) 显然，i) $\Rightarrow$ iii) 已见于 3.9。蕴含 iii) $\Rightarrow$ ii) 将由下面的\Term{lemma}{引理}\Term{pushout}{推出}。
+\end{proof}
+\begin{SGAresult}{\Term{lemma}{引理}}{4.1.2}
+设 $k$ 为域，$k$-\Term{algebraic-group}{代数群} $G$ 是 $(\mathbf G_a)^r$ 的\Term{form}{形式}。则：
+
+a) 对适当整数 $n$，$G$ 可以实现为 $(\mathbf G_a)^n$ 的\Term{algebraic-subgroup}{代数子群}。
+
+b) $G$ 有一个\Term{composition-series}{合成列}，其逐次商为 $\mathbf G_a$ 的\Term{form}{形式}。
+\end{SGAresult}
+\begin{proof}
+由假设，存在 $k$ 的\Term{field-extension}{扩域} $k'$，使得 $G_{k'}\simeq(\mathbf G_{a,k'})^r$。由\Term{finite-extension}{有限扩张}原理（EGA IV 9.1.1），可以假设 $k'/k$ \Term{finite}{有限}。此时为证明 a)，只须考虑\Term{canonical}{典范}\Term{closed-immersion}{闭浸入}（EGA V\footnote{编者注：此处应另给一个参考文献……}）
+\[G\longrightarrow\prod_{k'/k}(G_{k'})/k'\xrightarrow{\sim}(\mathbf G_{a,k})^n,\qquad n=r\deg(k'/k).\]
+为证明 b)，由 a) 可假设 $G$ 为 $G'=(\mathbf G_a)^n$ 的\Term{closed-subgroup}{闭子群}。若 $G\ne0$，存在 $\mathfrak g'=\operatorname{Lie}G'$ 中一个不包含 $\mathfrak g$ 的\Term{hyperplane}{超平面} $\mathfrak h$。令 $H$ 为 $W(\mathfrak g')=G'$ 的向量\Term{subgroup}{子群} $W(\mathfrak h)$。因 $H$ 在 $G'$ 中由一个方程定义，$H\cap G$ 在 $G$ 中也由一个方程定义，且有
+\[
+\begin{aligned}
+\dim G-1&\leq\dim(G\cap H)\\
+&\leq\dim\operatorname{Lie}(G\cap H)=\dim_k(\mathfrak g\cap\mathfrak h)
+=\dim_k\mathfrak g-1=\dim G-1.
+\end{aligned}
+\]
+故 $\dim(G\cap H)=\dim\operatorname{Lie}(G\cap H)$，从而 $G\cap H$ \Term{smooth}{光滑}。
+\SourcePage{360}
+群 $G_1=(G\cap H)^0$ 为 $G$ 的\Term{smooth}{光滑}\Term{connected}{连通}\Term{algebraic-subgroup}{代数子群}，且 $G/G_1$ \Term{smooth}{光滑}、\Term{connected}{连通}、\Term{dimension}{维数}为 $1$，故为 $\mathbf G_a$ 的\Term{form}{形式}（4.1 i) $\Rightarrow$ iii)）。对 $G$ 的\Term{dimension}{维数}归纳即可完成证明。
+\end{proof}
+继续证明 4.1 之前，注意\Term{equivalence-relation}{等价关系} i) $\Leftrightarrow$ ii) 及 2.3 bis 给出下面的推论。
+\begin{SGAresult}{推论}{4.1.3}
+若 $k$ 为\Term{perfect-field}{完美域}，则\Term{smooth}{光滑}\Term{connected}{连通}的 $k$-\Term{algebraic-group}{代数群}\Term{unipotent}{幺幂}，当且仅当它有逐次商\Term{isomorphism}{同构}于 $\mathbf G_a$ 的\Term{composition-series}{合成列}。
+\end{SGAresult}
+\textbf{4.1 的证明续。}
+i) $\Rightarrow$ iv) 由 2.4 i) 得出。
+
+iv) $\Rightarrow$ v)。由第 XIV 讲 4.1，$G$ 有定义在 $k$ 上的\Term{maximal-torus}{极大环面} $T$。若 $r=\dim T$，则 $({}_nT)_{\overline k}\simeq(\boldsymbol\mu_n)^r$，故 $r=0$。
+
+v) $\Rightarrow$ i)，如 3.8 的证明中所指出。
+
+i) $\Rightarrow$ vi)。由 3.4，$G$ 实际包含在 $\operatorname{GL}(n)$ 的一个\Term{isomorphism}{同构}于 $\operatorname{Trigstr}(n)$ 的\Term{algebraic-subgroup}{代数子群}中，所以 $\mathfrak g$ 由\Term{nilpotent}{幂零}\Term{endomorphism}{自同态}组成。
+
+vi) $\Rightarrow$ vii)。由 Engel \Term{theorem}{定理}（Bourbaki，\textit{Groupes et algèbres de Lie}，第 I 章第 4 节推论 3），$\mathfrak g$ \Term{nilpotent}{幂零}。
+
+vii) $\Rightarrow$ v)。设 $T$ 为 $G$ 的一个\Term{maximal-torus}{极大子环面}（第 XIV 讲 1.1），$\mathfrak t$ 为其\Term{lie-algebra}{李代数}。$G$ 到 $\operatorname{GL}(n)$ 的\Term{embedding}{嵌入}定义 $T$ 的一个\Term{representation}{表示}，它必\Term{semisimple}{半单}（可在 $k$ 的\Term{algebraic-closure}{代数闭包} $\overline k$ 上应用第 I 讲 4.7.3 看出）。故对 $X\in\mathfrak t$，$X$ 在 $\mathfrak{gl}(n)$ 中是\Term{semisimple}{半单}\Term{endomorphism}{自同态}。立即可见，这使映射
+\[\operatorname{ad}X:Y\longmapsto[X,Y]\]
+成为 $\mathfrak{gl}(n)$，从而也成为 $\mathfrak g$ 的\Term{semisimple}{半单}\Term{endomorphism}{自同态}。另一方面，$\mathfrak g$ \Term{nilpotent}{幂零}，所以此\Term{endomorphism}{自同态}\Term{nilpotent}{幂零}，故 $\operatorname{ad}X=0$，即 $X$ 为\Term{central}{中心}元素。于是 $\mathfrak t$ 包含于\Term{center}{中心}且由\Term{semisimple}{半单}\Term{endomorphism}{自同态}组成，按假设必为零；从而 $T$ 为\Term{unit-group}{单位群}。
+\begin{SGAresult}{注记}{4.1.4}
+a) 后面（4.3.1）将给出\Term{characteristic}{特征} $p>0$ 时\Term{unipotent}{幺幂}群的一个\Term{infinitesimal}{无穷小}刻画，它不依赖于到 $\operatorname{GL}(n)$ 的\Term{embedding}{嵌入}。
+
+b) 当 $k$ \Term{perfect}{完美}时，由下面的\Term{lemma}{引理}，4.1.1 中的条件 ii)、iii) 可以简化。
+\end{SGAresult}
+\begin{SGAresult}{\Term{lemma}{引理}}{4.1.5}
+若 $k$ 为\Term{perfect-field}{完美域}，则 $(\mathbf G_a)^r$ 的每个 $k$-\Term{algebraic-group}{代数群}\Term{form}{形式} $G$ 都\Term{isomorphism}{同构}于 $(\mathbf G_a)^r$。
+\end{SGAresult}
+\begin{proof}
+若 $k$ 的\Term{characteristic}{特征} $p=0$，此\Term{lemma}{引理}由 3.9 ter \Term{pushout}{推出}；若 $r=1$，则由 2.3 bis \Term{pushout}{推出}。一般情形（$p>0$）中，将 $G$ 实现为某个 $(\mathbf G_a)^n$ 的\Term{algebraic-subgroup}{代数子群}（4.1.2），并对整数 $n-r$ 归纳。若 $r=n$，确有 $G=(\mathbf G_a)^r$。否则，\Term{quotient-group}{商群} $\mathbf G_a^n/G$ 是非零\Term{smooth}{光滑}\Term{connected}{连通}\Term{unipotent}{幺幂}群；由 4.1.1 i) $\Rightarrow$ ii) 及 2.3 bis，它有逐次商\Term{isomorphism}{同构}于 $\mathbf G_a$ 的\Term{composition-series}{合成列}。从而存在 $(\mathbf G_a)^n$ 的一个\Term{smooth}{光滑}\Term{connected}{连通}\Term{algebraic-subgroup}{代数子群} $G_1$，包含 $G$，且
+\SourcePage{361}
+$\mathbf G_a^n/G_1=\mathbf G_a$。由归纳，只须证明 $G_1\simeq(\mathbf G_a)^{n-1}$。
+立即可见，从 $\operatorname{Spec}k[X_1,\ldots,X_n]=\mathbf G_a^n$ 到 $\mathbf G_a=\operatorname{Spec}k[T]$ 的\Term{homomorphism}{同态}由形如
+\[\sum_{i,j}a_{i,j}X_i^{p^j}\]
+的\Term{additive-polynomial}{加性多项式}定义。因 $G_1$ \Term{smooth}{光滑}，此\Term{polynomial}{多项式}的线性部分非零。对坐标 $X_i$ 作线性变换，可以假设 $G_1$ 是 $(\mathbf G_a)^n$ 中由下式定义的\Term{algebraic-subgroup}{代数子群}：
+\[
+P(X)=-X_1+\sum_{j=1}^q a_jX_1^{p^j}+Q(X_2,\ldots,X_n)=0,
+\tag{$*$}
+\]
+其中
+\[Q(X_2,\ldots,X_n)=\sum_{\substack{i>1\\j>0}}b_{i,j}X_i^{p^j}.\]
+对 $P$ 的\Term{degree}{次数}归纳。若 $\deg P=1$，显然 $G_1\simeq\mathbf G_a^{n-1}$。否则，因 $k$ \Term{perfect}{完美}，有 $Q(X)=Q_1(X)^p$，并可用下式定义 $\mathbf G_a^n$ 的\Term{endomorphism}{自同态} $v$：
+\[
+X_i\longmapsto X_i\quad(i>1),\qquad
+X_1\longmapsto\sum_{j=1}^q a_j^{1/p}X_1^{p^{j-1}}+Q_1(X).
+\]
+显然 $v$ 在 $G_1$ 上诱导一个\Term{isomorphism}{同构}，且 $v(G_1)$ 在 $\mathbf G_a^n$ 中的方程为
+\[
+P_1(X)=-X_1+\sum_{j=1}^q a_j^{1/p}X_1^{p^j}+Q_1(X_2,\ldots,X_n)=0.
+\tag{$*_1$}
+\]
+分两种情形。
+
+第一种：$\deg Q=\deg P>p^q$。此时 $\deg P_1<\deg P$，由归纳假设得证。
+
+第二种：$\deg P=p^q$（$a_q\ne0$）。此时 $\deg P_1=\deg P=p^q$，且 $\deg Q_1<p^q$。（不能有 $Q=0$，否则 $G_1$ 不\Term{connected}{连通}。）若 $Q_1$ 没有线性部分，可以重复前面的变换。继续这一过程，最终得到形如
+\[
+P_s(X)=-X_1+\sum_{j=1}^q a_j^{1/p^s}X_1^{p^j}+Q_s(X)
+\tag{$*_s$}
+\]
+的方程，其中 $Q_s(X)=Q(X_2,\ldots,X_n)^{1/p^s}$ 为线性部分非零的\Term{additive-polynomial}{加性多项式}，且 $\deg Q_s<p^q$。例如假设 $Q_s$ 中 $X_2$ 的系数非零，以 $-L$ 表示 $P_s(X)$ 的线性部分。作线性坐标变换后，$G_1$ 的方程成为
+\[P'(X)=-L+\sum_{j=1}^q a_j^{1/p^s}X_1^{p^j}+Q'(L,X_3,\ldots,X_n),\]
+\SourcePage{362}
+其中 $Q'$ 是没有线性部分的\Term{additive-polynomial}{加性多项式}，且 $\deg Q'<p^q$。于是又归结到第一种情形。\footnote{编者注：用 $L$ 代替 $X_1$。}
+\end{proof}
+\SGAsubsection{4.2}{根性群}
+\begin{SGAresult}{命题}{4.2.1}
+设 $G$ 为定义在\Term{characteristic}{特征} $p>0$ 的域 $k$ 上的\Term{radicial}{根性}\Term{algebraic-group}{代数群}。以下条件\Term{equivalence}{等价}：
+
+i) $G$ \Term{unipotent}{幺幂}。
+
+ii) $G$ 有逐次商\Term{isomorphism}{同构}于 $\boldsymbol\alpha_p$ 的\Term{central-series}{中心合成列}。
+
+iii) $G$ 有逐次商\Term{isomorphism}{同构}于 $(\boldsymbol\alpha_p)^r$ 的\Term{characteristic-series}{特征}\Term{central-series}{中心合成列}。
+
+iv) $G_{\overline k}$ 不含\Term{isomorphism}{同构}于 $\boldsymbol\mu_p$ 的\Term{subgroup}{子群}。
+
+v) $\mathfrak g=\operatorname{Lie}G$ 为\Term{unipotent}{幺幂}\Term{p-lie-algebra}{$p$-李代数}（3.6）。
+\end{SGAresult}
+\begin{proof}
+iii) $\Rightarrow$ ii) $\Rightarrow$ i) 显然；i) $\Rightarrow$ iii) 是 3.9 i)；i) $\Rightarrow$ iv) 由 2.4 i) 得出。
+需要用到以下关于阿贝尔\Term{p-lie-algebra}{$p$-李代数}的\Term{lemma}{引理}。
+\end{proof}
+\begin{SGAresult}{\Term{lemma}{引理}}{4.2.2}
+设 $\mathfrak g$ 为\Term{perfect-field}{完美域} $k$ 上\Term{finite-dimensional}{有限维}的阿贝尔\Term{p-lie-algebra}{$p$-李代数}。则 $\mathfrak g$ 唯一地写为两个子\Term{p-lie-algebra}{$p$-李代数}的\Term{direct-sum}{直和} $\mathfrak r\oplus\mathfrak u$，使得 $p$ 次幂在 $\mathfrak r$ 上为\Term{bijection}{双射}，而 $\mathfrak u$ \Term{unipotent}{幺幂}（3.6）。（称 $\mathfrak r$ 为 $\mathfrak g$ 的\Term{reductive-part}{约化部分}，$\mathfrak u$ 为其\Term{unipotent-part}{幺幂部分}。）$\mathfrak r$、$\mathfrak u$ 的形成与域 $k$ 的\Term{group-extension}{扩张}相容。若 $k$ 还\Term{algebraically-closed}{代数闭}，则 $\mathfrak r$ 有一组基 $e_i$，满足 $e_i^{(p)}=e_i$。
+\end{SGAresult}
+此\Term{lemma}{引理}的证明容易，留给读者（参见 Bourbaki，\textit{Groupes et algèbres de Lie}，第 I 章第 1 节习题 23）。这里只指出：$\mathfrak u$ 为映射 $X\mapsto X^{(p)}$ 的某个适当迭代的核，$\mathfrak r$ 为同一次迭代的像。
+
+\textbf{4.2.1 的证明续。}iv) $\Rightarrow$ v)。作底域\Term{group-extension}{扩张}后，可以假设 $k$ \Term{algebraically-closed}{代数闭}。
+设 $X\in\mathfrak g$，$\mathfrak h$ 为 $X$ 在 $\mathfrak g$ 中生成的子\Term{p-lie-algebra}{$p$-李代数}。$\mathfrak h$ 显然交换，且其\Term{reductive-part}{约化部分}（4.2.2）为零；否则由该\Term{lemma}{引理}，$\mathfrak h$ 中有非零元素 $Y$ 满足 $Y^{(p)}=Y$，从而由附录 II 2.1、2.2，$G$ 含有\Term{isomorphism}{同构}于 $\boldsymbol\mu_p$ 的\Term{subgroup}{子群}，与假设矛盾。因此 $\mathfrak h$，从而 $\mathfrak g$，为\Term{unipotent}{幺幂}\Term{p-lie-algebra}{$p$-李代数}。
+
+v) $\Rightarrow$ i)。这是 4.2.1 中最不显然的蕴含。
+
+a) $G$ 的\Term{height}{高度}为 $1$ 的情形（第 VII$_A$ 讲 4.1.3）。因 $G$ \Term{radicial}{根性}，它\Term{affine}{仿射}，所以\Term{isomorphism}{同构}于某\Term{linear-group}{线性群} $\operatorname{GL}(V)$ 的\Term{algebraic-subgroup}{代数子群}（第 VI$_B$ 讲第 11 节）。此\Term{embedding}{嵌入}将 $\mathfrak g$ 等同于 $\operatorname{End}(V)$ 的一个子\Term{p-lie-algebra}{$p$-李代数}，$X$ 在 $\mathfrak g$ 中的 $p$ 次幂与\Term{endomorphism}{自同态} $X$ 的 $p$ 次幂一致（第 VII$_A$ 讲 6.4.4）。由假设 $\mathfrak g$ \Term{unipotent}{幺幂}，故 $\mathfrak g$ 是 $V$ 的\Term{nilpotent}{幂零}\Term{endomorphism}{自同态}组成的\Term{algebra}{代数}；由 Engel \Term{theorem}{定理}（Bourbaki，\textit{Groupes et algèbres de Lie}，第 I 章第 4 节\Term{theorem}{定理} 1），
+\SourcePage{363}
+对 $V$ 的某组适当的基，$\mathfrak g$ 为严格上三角矩阵群 $\operatorname{Trigstr}(n)$ 的\Term{lie-algebra}{李代数} $\mathfrak h$ 的子\Term{lie-algebra}{李代数}。因 $G$ 的\Term{height}{高度}为 $1$，由附录 II 2.2，$G$ 本身是 $\operatorname{Trigstr}(n)$ 的\Term{algebraic-subgroup}{代数子群}，故\Term{unipotent}{幺幂}（3.5 v) $\Rightarrow$ i)）。
+
+b) 一般情形。对 $G$ 的\Term{height}{高度} $h$ 归纳。\footnote{即使得 $F^h=\operatorname{id}_G$ 的\SGAsourcegap{原脚注写作“le plus entier”，在“plus”与“entier”之间缺少限定词。}整数，参见附录 II 1。}情形 $h=1$ 已处理。设 $h>1$，令 $G'={}_FG$，$G''=G/G'$。群 $G'$ 的\Term{height}{高度}为 $1$，且 $\operatorname{Lie}G'=\operatorname{Lie}G$ \Term{unipotent}{幺幂}，故由 a)，$G'$ \Term{unipotent}{幺幂}。为证明 $G$ \Term{unipotent}{幺幂}，只须证明 $G''$ \Term{unipotent}{幺幂}（2.2）。但 $G''$ 的\Term{height}{高度}为 $h-1$，所以由归纳假设，只须证明 $\operatorname{Lie}G''$ \Term{unipotent}{幺幂}。由 iv) $\Rightarrow$ v)，只须证明 $G''_{\overline k}$ 不含\Term{isomorphism}{同构}于 $\boldsymbol\mu_p$ 的群。设 $G''_{\overline k}$ 有一个\Term{isomorphism}{同构}于 $\boldsymbol\mu_p$ 的\Term{subgroup}{子群}，以 $H$ 表示它在 $G_{\overline k}$ 中的原像。因 $G'$ \Term{unipotent}{幺幂}，我们将在第 5 节证明\Term{extension}{扩张}
+\[e\longrightarrow G'_{\overline k}\longrightarrow H\longrightarrow\boldsymbol\mu_p\longrightarrow e\]
+必为\Term{trivial-extension}{平凡扩张}（在那里给出的证明不依赖于本节的结果）。也就是说，$\boldsymbol\mu_p$ 在 $H$ 中有\Term{lifting}{提升}；但其\Term{height}{高度}为 $1$，故必包含在 $G'_{\overline k}={}_F G_{\overline k}$ 中，这与 $G'$ \Term{unipotent}{幺幂}矛盾。
+\SGAsubsection{4.3}{特征 $p>0$ 时的仿射连通群}
+\begin{SGAresult}{命题}{4.3.1}
+设 $G$ 为\Term{characteristic}{特征} $p>0$ 的域 $k$ 上的\Term{affine}{仿射}\Term{connected}{连通}\Term{algebraic-group}{代数群}。以下条件\Term{equivalence}{等价}：
+
+i) $G$ \Term{unipotent}{幺幂}。
+
+ii) $G$ 有逐次商依次\Term{isomorphism}{同构}于 $\boldsymbol\alpha_p$ 和 $\mathbf G_a$ 的\Term{composition-series}{合成列}。
+
+iii) $G$ 有逐次商依次\Term{isomorphism}{同构}于 $(\boldsymbol\alpha_p)^r$ 和 $(\mathbf G_a)^s$ 的\Term{characteristic-series}{特征合成列}。
+
+iv) $G_{\overline k}$ 不含\Term{isomorphism}{同构}于 $\boldsymbol\mu_p$ 的\Term{subgroup}{子群}。
+
+v) $\mathfrak g=\operatorname{Lie}G$ \Term{unipotent}{幺幂}（3.6）。
+
+vi) $\mathfrak g$ \Term{nilpotent}{幂零}，且其\Term{center}{中心}的\Term{reductive-part}{约化部分}（4.2.2）为零。
+
+vi bis) $\mathfrak g$ \Term{nilpotent}{幂零}，且 $G$ 的\Term{center}{中心}的\Term{identity-component}{单位连通分支}中的每个\Term{multiplicative-type}{乘法型}\Term{subgroup}{子群}都为零。
+
+vi ter) $G$ \Term{nilpotent}{幂零}，且 $G$ 的\Term{center}{中心}的\Term{identity-component}{单位连通分支}中的每个\Term{multiplicative-type}{乘法型}\Term{subgroup}{子群}都为零。
+\end{SGAresult}
+\begin{proof}
+iii) $\Rightarrow$ ii) $\Rightarrow$ i) 显然。为证明 i) $\Rightarrow$ iii)，需要下述\Term{lemma}{引理}。
+\end{proof}
+\SourcePage{364}
+\begin{SGAresult}{\Term{lemma}{引理}}{4.3.2}
+设 $k$ 为\Term{characteristic}{特征} $p>0$ 的域，$n\in\mathbf N$，$k'$ 为 $k$ 的一个\Term{radicial-extension}{纯不可分扩域}，满足 $(k')^{p^n}\subset k$。对每个 $k$-\Term{prescheme}{预概形} $X$（分别地，每个 $k'$-\Term{prescheme}{预概形} $X'$），以 $X^{(p^n)}$（分别地，$X'_\varphi$）表示通过\Term{base-change}{基变换}
+\[
+F^n:k\longrightarrow k,\quad x\longmapsto x^{p^n}
+\qquad\text{（分别地，}\quad\varphi:k'\longrightarrow k,\quad x'\longmapsto(x')^{p^n}\text{）}
+\]
+由 $X$（分别地，$X'$）得到的 $k$-\Term{prescheme}{预概形}。则对每个 $k$-\Term{prescheme}{预概形} $X$，有\Term{functorial}{函子性}\Term{isomorphism}{同构}
+\[(X_{k'})_\varphi\xrightarrow{\sim}X^{(p^n)}.\]
+因此，若两个 $k$-\Term{prescheme}{预概形} $X$、$Y$ 之间存在 $k'$-\Term{isomorphism}{同构} $u':X_{k'}\xrightarrow{\sim}Y_{k'}$，则存在 $k$-\Term{isomorphism}{同构} $v:X^{(p^n)}\xrightarrow{\sim}Y^{(p^n)}$。若 $X$、$Y$ 还带有 $k$-\Term{group-prescheme}{群预概形}结构，且 $u'$ 为 $k'$-\Term{homomorphism}{同态}，则 $v$ 为 $k$-\Term{homomorphism}{同态}。
+\end{SGAresult}
+\begin{proof}
+这只由\Term{base-change}{基变换}的\Term{transitivity}{传递性}，以及\Term{composition-morphism}{复合态射} $k\to k'\xrightarrow{\varphi}k$ 等于 $F^n$ 这一事实\Term{pushout}{推出}。
+\end{proof}
+\textbf{4.3.1 的证明续。}
+i) $\Rightarrow$ iii)。对 $\dim G$ 归纳。若 $\dim G=0$，因 $G$ \Term{connected}{连通}，它\Term{radicial}{根性}，应用 3.9 i) 即可。若 $\dim G>0$，存在整数 $m\geq0$，使商 $G/{}_{F^m}G$ 为\Term{smooth}{光滑}群（附录 II 3.1），它显然\Term{connected}{连通}且非零。对此商应用 4.1.1 i) $\Rightarrow$ iii)，可知 $G$ 有一个\Term{connected}{连通}的\Term{characteristic}{特征}\Term{algebraic-subgroup}{代数子群} $G'$，使商 $G''=G/G'$ 为 $\mathbf G_a^r$ 的\Term{form}{形式}（$r>0$）。由 4.1.5，若 $K$ 是 $k$ 的\Term{perfect-closure}{完美闭包}，则 $G''_K\simeq(\mathbf G_{a,K})^r$。因 $G''$ 在 $k$ 上\Term{finite-type}{有限型}，存在 $k$ 的\Term{finite}{有限}\Term{radicial-extension}{纯不可分扩域} $k'$，使 $G''_{k'}\simeq(\mathbf G_{a,k'})^r$（第 VI$_B$ 讲第 10 节）。取 $n>0$ 使 $(k')^{p^n}\subset k$。沿用 4.3.2 的记号，得\Term{algebraic-group}{代数群}的 $k$-\Term{isomorphism}{同构}
+\[(\mathbf G_{a,k})^r=(\mathbf G_{a,k'})^r_\varphi\xrightarrow{\sim}(G'')^{(p^n)}.\]
+再考虑 $G''$ 的\Term{relative-frobenius}{相对 Frobenius 同态}（第 VII$_A$ 讲第 4 节）
+\[F^n:G''\longrightarrow(G'')^{(p^n)}.\]
+因 $G''$（从而 $(G'')^{(p^n)}$）在 $k$ 上\Term{smooth}{光滑}，且 $F^n$ \Term{radicial}{根性}，故 $F^n$ 为 \Term{fpqc-topology}{fpqc 拓扑}的\Term{epimorphism}{满态射}，使 $(G'')^{(p^n)}$ 可视为 $G''/{}_{F^n}(G'')$。最终证明 $G''/{}_{F^n}(G'')$ 作为\Term{algebraic-group}{代数群}\Term{isomorphism}{同构}于 $(\mathbf G_a)^r$。${}_{F^n}(G'')$ 在 $G$ 中的原像 $G'_n$ 是 $G$ 的\Term{connected}{连通}\Term{characteristic-subgroup}{特征子群}，其\Term{dimension}{维数}严格小于 $G$ 的\Term{dimension}{维数}，因而可应用归纳假设。
+
+i) $\Rightarrow$ iv) 由 2.4 i) 得到。
+
+iv) $\Rightarrow$ i)。把 $G$ 看成\Term{smooth}{光滑}\Term{connected}{连通}群 $G''$ 被\Term{radicial}{根性}群 $G'$ 的\Term{extension}{扩张}（附录 II 3.1）。由 4.2.1 iv) $\Leftrightarrow$ i)，$G'$ \Term{unipotent}{幺幂}。只须说明 $G''$ \Term{unipotent}{幺幂}；由 4.1.1 i) $\Leftrightarrow$ iv)，又只须说明 $G''_{\overline k}$ 不含\Term{isomorphism}{同构}于 $\boldsymbol\mu_p$ 的\Term{subgroup}{子群}。若它含有\Term{subgroup}{子群} $\boldsymbol\mu_p$，由第 5 节证明、前面已经使用的结果（5.1），该\Term{subgroup}{子群}将在 $G_{\overline k}$ 中有\Term{lifting}{提升}，与 iv) 矛盾。
+
+\SourcePage{365}
+i) $\Rightarrow$ v) 由 3.7 得到。
+
+v) $\Rightarrow$ vi)。因
+\[(\operatorname{ad}X)^{p^r}=\operatorname{ad}\bigl(X^{(p^r)}\bigr)\qquad\text{（第 VII$_A$ 讲 5.2）},\]
+若 $\mathfrak g$ \Term{unipotent}{幺幂}，则 $\operatorname{ad}X$ \Term{nilpotent}{幂零}；由 Engel \Term{theorem}{定理}（Bourbaki，\textit{Groupes et algèbres de Lie}，第 I 章第 4 节），$\mathfrak g$ \Term{nilpotent}{幂零}。另一方面，若 $\mathfrak g$ \Term{unipotent}{幺幂}，其\Term{center}{中心}显然也\Term{unipotent}{幺幂}，故\Term{reductive-part}{约化部分}为零（4.2.2）。
+
+vi) $\Rightarrow$ iv)。若 $G_{\overline k}$ 含有\Term{isomorphism}{同构}于 $\boldsymbol\mu_p$ 的\Term{subgroup}{子群}，则其\Term{lie-algebra}{李代数}中存在非零元素 $X$，使 $X^{(p)}=X$（附录 II 2.1），故对每个 $r>0$ 有 $X^{(p^r)}=X$。因 $\mathfrak g$ \Term{nilpotent}{幂零}，$\operatorname{ad}X$ \Term{nilpotent}{幂零}，而 $(\operatorname{ad}X)^{p^r}=\operatorname{ad}X^{(p^r)}$，必有 $\operatorname{ad}X=0$。于是 $X$ 属于 $\mathfrak g_{\overline k}$ 的\Term{center}{中心}的\Term{reductive-part}{约化部分}，与 vi) 矛盾。
+
+i) $\Rightarrow$ vi ter) 由 2.4 i) 和 3.5 i) $\Rightarrow$ iii) 得到。
+
+vi ter) $\Rightarrow$ vi bis)。若 $G$ \Term{nilpotent}{幂零}，则其\Term{subgroup}{子群} ${}_FG$ 也\Term{nilpotent}{幂零}。另一方面，由附录 II 2.2，${}_FG$ \Term{nilpotent}{幂零}，当且仅当 $\operatorname{Lie}{}_FG=\operatorname{Lie}G$（第 VII$_A$ 讲）\Term{nilpotent}{幂零}。
+
+vi bis) $\Rightarrow$ vi)。设 $Z$ 为 $G$ 的\Term{center}{中心}的\Term{identity-component}{单位连通分支}，$\mathfrak r$ 为 $\mathfrak g$ 的\Term{center}{中心}的\Term{reductive-part}{约化部分}。须证 $\mathfrak r=0$。立即可见，$\mathfrak r$ 为 $\mathfrak g=\operatorname{Lie}{}_FG$ 的\Term{characteristic}{特征}子\Term{p-lie-algebra}{$p$-李代数}（即在\Term{functor}{函子} $\underline{\operatorname{Aut}}_{p\text{-Lie}}(\mathfrak g)$ 下\Term{stable}{稳定}）；故由附录 II 2.2，$\mathfrak r$ 是 ${}_FG$ 的一个\Term{radicial}{根性}\Term{characteristic-subgroup}{特征子群} $R$ 的\Term{lie-algebra}{李代数}。又由 4.2.2 的最后一个断言及附录 II 2.1，$R$ 为 $(\boldsymbol\mu_p)^r$ 的\Term{form}{形式}。因 $R$ 在 ${}_FG$ 中为\Term{characteristic}{特征}的，而 ${}_FG$ 本身是 $G$ 的\Term{characteristic-subgroup}{特征子群}（附录 II 1），$R$ 从而在 $G$ 中\Term{invariant}{不变}；因 $G$ \Term{connected}{连通}，$R$ 为\Term{central}{中心}\Term{subgroup}{子群}（第 IX 讲 5.5）。由假设 vi bis)，$R=0$，从而 $\mathfrak r=0$。
+
+\SGAsubsection{4.4}{平展群}
+下面的命题容易由 Sylow \Term{theorem}{定理}及\Term{finite}{有限} $q$-群的结构\Term{pushout}{推出}（参见 J.-P. Serre，\textit{Corps locaux}，第 IX 章第 1 节）。
+\begin{SGAresult}{命题}{4.4.1}
+设 $G$ 为定义在\Term{algebraically-closed-field}{代数闭域} $k$ 上的\Term{finite}{有限}\Term{etale}{平展}\Term{algebraic-group}{代数群}。则 $G$ \Term{unipotent}{幺幂}，当且仅当对每个异于 $k$ 的\Term{characteristic}{特征} $p$ 的素数 $q$，$G$ 不含\Term{isomorphism}{同构}于 $\boldsymbol\mu_q$ 的\Term{subgroup}{子群}。
+\end{SGAresult}
+\SGAsubsection{4.5}{阿贝尔簇}
+设 $G$ 为定义在\Term{algebraically-closed-field}{代数闭域} $k$ 上的\Term{abelian-variety}{阿贝尔簇}。以下条件\Term{equivalence}{等价}：
+
+i) $G$ \Term{unipotent}{幺幂}。
+
+ii) $G=0$。
+
+iii) 存在与 $k$ 的\Term{characteristic}{特征} $p$ 互素的整数 $n$，使 $G$ 不含\Term{isomorphism}{同构}于 $\boldsymbol\mu_n$ 的\Term{subgroup}{子群}。
+
+事实上，若 $G$ 为\Term{dimension}{维数} $d$ 的\Term{abelian-variety}{阿贝尔簇}，已知（参见 S. Lang，\textit{Abelian varieties}，第 IV 章第 3 节\Term{theorem}{定理} 6）群 ${}_nG(k)$（整数 $n$ 与 $p$ 互素）\Term{isomorphism}{同构}于 $(\mathbf Z/n\mathbf Z)^{2d}$，从而\Term{isomorphism}{同构}于 $(\boldsymbol\mu_n)^{2d}$。因此 iii) $\Rightarrow$ ii)，而 ii) $\Rightarrow$ i) $\Rightarrow$ iii) 显然。
+
+\SourcePage{366}
+\SGAsubsection{4.6}{一般情形}
+若 $G$、$H$ 为定义在\Term{algebraically-closed-field}{代数闭域} $k$ 上的两个\Term{algebraic-group}{代数群}，记 $P(G,H)$ 为性质：“不存在 $G$ 的\Term{algebraic-subgroup}{代数子群}\Term{isomorphism}{同构}于 $H$。”于是得到\Term{unipotent}{幺幂}群的以下刻画。
+\begin{SGAresult}{\Term{theorem}{定理}}{4.6.1}
+设 $G$ 为定义在\Term{characteristic}{特征} $p$ 的\Term{algebraically-closed-field}{代数闭域} $k$ 上的\Term{algebraic-group}{代数群}。则：
+
+i) 若 $G$ \Term{smooth}{光滑}、\Term{affine}{仿射}且\Term{connected}{连通}，则 $G$ \Term{unipotent}{幺幂}，当且仅当存在 $n>1$ 使 $P(G,\boldsymbol\mu_n)$ 成立，也当且仅当 $P(G,\mathbf G_m)$ 成立。
+
+ii) 若 $G$ \Term{smooth}{光滑}且\Term{connected}{连通}，则 $G$ \Term{unipotent}{幺幂}，当且仅当存在与 $p$ 互素的 $n$ 使 $P(G,\boldsymbol\mu_n)$ 成立。
+
+iii) 若 $G$ \Term{smooth}{光滑}，则 $G$ \Term{unipotent}{幺幂}，当且仅当对每个素数 $n\ne p$，$P(G,\boldsymbol\mu_n)$ 成立。
+
+iv) 若 $G$ \Term{affine}{仿射}、\Term{connected}{连通}且 $p>0$，则 $G$ \Term{unipotent}{幺幂}，当且仅当 $P(G,\boldsymbol\mu_p)$ 成立。
+
+v) 若 $G$ \Term{connected}{连通}且 $p>0$，则 $G$ \Term{unipotent}{幺幂}，当且仅当存在与 $p$ 互素的 $n$ 使 $P(G,\boldsymbol\mu_n)$ 成立，并且 $P(G,\boldsymbol\mu_p)$ 成立。
+
+vi) 对任意\Term{algebraic-group}{代数群} $G$，$G$ \Term{unipotent}{幺幂}，当且仅当对每个素数 $n$，$P(G,\boldsymbol\mu_n)$ 成立。
+\end{SGAresult}
+\begin{proof}
+i) 由 4.1.1 \Term{pushout}{推出}，iv) 由 4.3.1 \Term{pushout}{推出}。下面证明 vi)；ii)、iii)、v) 的证明类似，留给读者。
+设 $G$ 为\Term{algebraic-group}{代数群}。若 $G$ \Term{unipotent}{幺幂}，则对所有 $n>1$，$P(G,\boldsymbol\mu_n)$ 成立（2.4 i)）。反之，假设对每个素数 $n$，$P(G,\boldsymbol\mu_n)$ 均成立，证明 $G$ \Term{unipotent}{幺幂}。令 $G^0$ 为 $G$ 的\Term{identity-component}{单位连通分支}。若 $G^0$ \Term{smooth}{光滑}，由 Chevalley 的一个经典\Term{theorem}{定理}\footnote{Bourbaki 讨论班，第 145 号，1956/57 年。}，$G^0$ 是\Term{abelian-variety}{阿贝尔簇} $A$ 被\Term{affine}{仿射}、\Term{connected}{连通}、\Term{smooth}{光滑}群 $L$ 的\Term{extension}{扩张}。若 $G$ 不\Term{smooth}{光滑}，则 $p>0$（第 VI$_B$ 讲 1.6.1），且存在整数 $n>0$ 使 $G''=G^0/{}_{F^n}(G)$ \Term{smooth}{光滑}（附录 II 3.1）。因此 $G''$ 是\Term{abelian-variety}{阿贝尔簇} $A$ 被\Term{smooth}{光滑}\Term{connected}{连通}\Term{linear-group}{线性群} $L''$ 的\Term{extension}{扩张}。以 $L$ 表示 $L''$ 在 $G^0$ 中的原像；因 ${}_{F^n}(G)$ \Term{radicial}{根性}，$L$ 仍\Term{affine}{仿射}且\Term{connected}{连通}。所以无论何种情形，$G$ 都有一个\Term{composition-series}{合成列}
+\[0\subset L\subset G^0\subset G,\]
+其中 $L$ \Term{affine}{仿射}且\Term{connected}{连通}，$G^0/L=A$ 为\Term{abelian-variety}{阿贝尔簇}，$G/G^0$ 为\Term{etale}{平展}群。
+
+若 $P(G,\boldsymbol\mu_n)$ 成立，则 $P(L,\boldsymbol\mu_n)$ 更成立，所以 $L$ \Term{unipotent}{幺幂}（4.1.1、4.3.1）。若 $A\ne0$，存在素数 $n$ 以及 $A$ 的一个\Term{isomorphism}{同构}于 $\boldsymbol\mu_n$ 的\Term{subgroup}{子群}（4.5）；由后面的 5.1，此\Term{subgroup}{子群}在 $G$ 中有\Term{lifting}{提升}，与假设 $P(G,\boldsymbol\mu_n)$ 矛盾，故 $A=0$。最后，若 $G/G^0$ 不\Term{unipotent}{幺幂}，则存在整数 $q$ 及 $G/G^0$ 的一个\Term{isomorphism}{同构}于 $\boldsymbol\mu_q$ 的\Term{subgroup}{子群}（4.4.1）。
+\SourcePage{367}
+与上面一样，\Term{pushout}{推出} $P(G,\boldsymbol\mu_q)$ 不成立。因此 $G/G^0$ \Term{unipotent}{幺幂}，从而 $G$ 也\Term{unipotent}{幺幂}。
+\end{proof}

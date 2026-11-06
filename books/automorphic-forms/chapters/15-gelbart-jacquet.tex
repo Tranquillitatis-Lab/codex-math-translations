@@ -1,0 +1,2101 @@
+\article{GL(2) 的形式：分析的观点}{Forms of GL(2) from the Analytic Point of View}{Stephen Gelbart 与 Hervé Jacquet}{1}{213--251}
+\noindent\textit{作者附注：Stephen Gelbart 为 Alfred P. Sloan 研究员。}
+
+\origsection{}{引言（Introduction）}
+设 $G$ 是定义在 $A$ 域（$A$-field）$F$ 上的约化群（reductive group），$\rho_{\mathrm{cusp}}$ 是 $G(A)$ 在尖点形式（cusp form）空间中的表示，$\varphi$ 是 $G(A)$ 上的一个满足适当条件的函数。那么 $\varphi$ 定义了一个迹类算子（trace-class operator）$\rho_{\mathrm{cusp}}(\varphi)$，迹公式（trace formula）的目标是给出这个迹的显式公式。通常取 $\varphi=\prod_v\varphi_v$，并希望借助局部不变分布（local invariant distribution）计算 $\operatorname{tr}\rho_{\mathrm{cusp}}(\varphi)$。只出现不变分布当然最为理想，不过有些应用也允许使用非不变分布。无论如何，与通常的看法相反，目标并不是用不可约表示的特征标（character）表示这个迹。事实上，分布 $\varphi(e)$ 总会出现，保留这种形式就已足够。
+
+在各向异性（anisotropic）情形，$\rho_{\mathrm{cusp}}$ 实际上是诱导表示（induced representation）。此时，可用一套适用于余紧商上诱导表示的一般方法，将 $\rho_{\mathrm{cusp}}(\varphi)$ 的迹表示为局部轨道积分（local orbital integral）。一般地，$\rho_{\mathrm{cusp}}$ 是某个诱导表示 $\rho$ 的子表示。
+
+本文介绍 $\operatorname{GL}(2)$ 的各个形式的迹公式的分析理论。计算 $\rho_{\mathrm{cusp}}(\varphi)$ 的迹，需要将其核沿对角线积分，因此必须先写出核的显式公式。对 $\operatorname{GL}(2)$，它恰为 $\rho(\varphi)$ 的核减去两个 Eisenstein 级数乘积的和与积分。由于这两个核分别不可积，而差值可积，计算时需要引入截断（truncation）。这里采用 J. Arthur 的处理方法 [Ar 1]、[Ar 2]。相较于 [DL]、[JL]、[Ge] 等早期文献，若本文更清晰，都应归功于他。
+
+本讲义的第3--5节主要讨论 Eisenstein 级数的解析延拓（analytic continuation）。其中，对 Eisenstein 级数的常数项（constant term）的解析延拓、函数方程和极点位置，给出了近乎完整的证明。之所以需要这部分分析，是因为必须先从 $\rho(\varphi)$ 中减去连续谱（continuous spectrum），才能计算其迹。
+
+第1节说明，连续谱消失时论证如何大为简化；第8节则展示迹公式的用途及适用范围。在撰写这一部分时，与 D. Flath 就其论文 [Fl] 所作的讨论给予了我们很大帮助。
+
+\origsection{1}{除代数（Division algebras）}
+先对维数为素数平方的中心除代数推导迹公式，再给出一个简单而有代表性的应用。
+
+\origsubsection{A}{若干一般事实（Some generalities）}
+令 $F$ 为数域（number field），$H$ 为维数为 $p^2$ 的除代数。\footnote{译注：此处原文印作“a division algebra of degree $p^2$ over $H$”；依上下文底域应为 $F$。这里的 $p^2$ 指 $F$ 维数；按中心单代数的通常术语，其次数为 $p$。} $H$ 的乘法群 $G$ 可看作一个 $F$ 群，其中心 $Z$ 同构于 $F^\times$。置 $\widetilde G=G/Z$。若 $\omega$ 为 $F^\times\backslash A^\times$ 的特征（character），以 $L^2(\omega,G)$ 表示 $G(A)$ 上满足
+\begin{equation}
+ f(\gamma zg)=\omega(z)f(g),\qquad\gamma\in G(F),\ z\in Z(A),\tag{1.1}
+\end{equation}
+以及
+\begin{equation}
+ \int_{\widetilde G(F)\backslash\widetilde G(A)}|f(g)|^2\,dg<+\infty\tag{1.2}
+\end{equation}
+的函数（等价类）的空间。令 $\rho_\omega$ 为右平移给出的 $G(A)$ 在 $L^2(\omega,G)$ 上的自然表示。
+
+设 $\varphi$ 为 $G(A)$ 上的函数，对 $z\in Z(A)$ 满足
+\begin{equation}
+ \varphi(zg)=\omega^{-1}(z)\varphi(g).\tag{1.3}
+\end{equation}
+并假设 $\varphi$ 为 $C^\infty$ 函数且模 $Z(A)$ 的支集紧。更精确地说，令
+$c_i$（$1\le i\le p^2$）为 $H$ 在 $F$ 上的一组基。对几乎所有 $v$，它们在 $F_v$ 的整数环 $R_v$ 上生成的模为一个极大整环（maximal order）$O_v$。特别地，对几乎所有 $v$，$K_v=O_v^\times$ 是 $H_v^\times$ 的极大紧子群。假设
+$\varphi(g)=\prod_v\varphi_v(g_v)$，每个 $\varphi_v$ 为满足 (1.3) 的局部对应条件的紧支 $C^\infty$ 函数，并且对几乎所有 $v$，
+\[
+ \varphi_v(g_v)=\begin{cases}
+ \omega_v^{-1}(z_v),&g_v=k_vz_v,\ k_v\in K_v,\ z_v\in Z_v,\\
+ 0,&\text{其他情形}.
+ \end{cases}
+\]
+那么算子
+\begin{equation}
+ \rho_\omega(\varphi)=\int_{G(A)}\varphi(g)\rho_\omega(g)\,dg\tag{1.4}
+\end{equation}
+是 $L^2(\widetilde G(F)\backslash\widetilde G(A))$ 中的积分算子，其核为\footnote{\textbf{译者注（本次校订）：}式 (1.4) 应在 $Z(A)\backslash G(A)$ 上积分：由 (1.3) 及中心特征条件，$\varphi(g)\rho_\omega(g)$ 沿中心不变，在整个 $G(A)$ 上积分会多出中心的无限体积。该算子作用的空间是前面定义的 $L^2(\omega,G)$；只有 $\omega=1$ 时，才能直接视为这里写出的普通商空间上的 $L^2$ 空间。}
+\begin{equation}
+ K(x,y)=\sum_{\gamma\in\widetilde G(F)}\varphi(x^{-1}\gamma y).\tag{1.5}
+\end{equation}
+当 $x,y$ 位于固定紧集中时，(1.5) 中的和实际上有限。因此 $K(x,y)$ 连续。
+
+\begin{originaltheorem}{定理 (1.6)（Theorem (1.6)）}
+算子 $\rho_\omega(\varphi)$ 属迹类。
+\end{originaltheorem}
+\begin{proof}
+由于 $\widetilde G(F)\backslash\widetilde G(A)$ 紧且 $K(x,y)$ 连续，$\rho_\omega(\varphi)$ 至少为 Hilbert--Schmidt 算子。但 $\varphi$ 可写为
+$\sum\varphi_i*f_i$，其中 $f_i,\varphi_i$ 满足与 $\varphi$ 相同的条件，唯在无穷处 $f_i$ 可能仅属于 $C^m$，$m$ 很大；参见 [DL，第199页]。因此，$\rho_\omega(\varphi)$ 是有限个 Hilbert--Schmidt 算子乘积之和，故为迹类算子。
+\end{proof}
+
+\begin{originaltheorem}{推论 (1.7)（Corollary (1.7)）}
+表示 $\rho_\omega$ 分解为不可约表示（irreducible representation）的离散直和，每个表示的重数有限。
+\end{originaltheorem}
+\begin{proof}
+由 (1.6)，对满足上述条件的 $\varphi$，算子 $\rho_\omega(\varphi)$ 紧。由泛函分析的一个基本结果即可得到推论，参见 [GGPS] 或 [La 1]。
+\end{proof}
+
+若以 $m(\pi)$ 表示 $G(A)$ 的不可约表示 $\pi$ 在 $\rho_\omega$ 中出现的重数（可能为零），则有
+\begin{equation}
+ \operatorname{tr}\rho_\omega(\varphi)=\sum m(\pi)\operatorname{tr}\pi(\varphi).\tag{1.8}
+\end{equation}
+注意，$\rho_\omega$ 的每个分量必以 $\omega$ 为中心特征（central character），即
+$\pi(z)=\omega(z)I$（$z\in Z(A)$）。因此，(1.8) 只须对中心特征为 $\omega$ 的 $G(A)$ 表示求和。另一方面，也可通过核 $K$ 计算迹：
+\begin{equation}
+ \operatorname{tr}\rho_\omega(\varphi)
+ =\int_{\widetilde G(F)\backslash\widetilde G(A)}K(x,x)\,dx.\tag{1.9}
+\end{equation}
+
+\origsubsection{B}{迹公式（The trace formula）}
+以下假设 $p$ 是素数。于是 $G(F)-Z(F)$ 中任意元素都是正则的（regular）。另一方面，若
+$\gamma=e\in\widetilde G(F)$，则 $\varphi(x^{-1}\gamma x)=\varphi(e)$。因此 (1.9) 右端可写为
+\begin{equation}
+ \int K(x,x)\,dx
+ =\operatorname{vol}(\widetilde G(F)\backslash\widetilde G(A))\varphi(e)
+ +\int\sum_{\gamma\ne e}\varphi(x^{-1}\gamma x)\,dx.\tag{1.10}
+\end{equation}
+
+$G(F)-Z(F)$ 的每个元素 $\xi$ 在 $H$ 中生成 $F$ 的一个 $p$ 次扩张 $L$。若
+$\xi'$ 在 $G(F)$ 中与 $\xi$ 共轭，则 $\xi'$ 生成的扩张 $L'$ 与 $L$ 在 $F$ 上同构，而且有一个从 $L'$ 到 $L$ 的 $F$ 同构，把 $\xi'$ 送到 $\xi$。因此，令 $X$ 为可嵌入 $H$ 的 $F$ 的 $p$ 次扩张的同构类的一组代表，$\widetilde G(F)$ 中任意
+$\gamma\ne e$ 都可表为
+\begin{equation}
+ \gamma=\eta^{-1}\xi\eta,\tag{*}
+\end{equation}
+其中对某个 $L\in X$，$\xi\in L^\times/F^\times-\{e\}$，而 $\eta$ 属于
+\[
+ (F^\times\backslash L^\times)\backslash\widetilde G(F)
+ \simeq L^\times\backslash G(F)
+\]
+的一组代表。扩张 $L\in X$ 由 $\gamma$ 唯一决定。若 $g_L$ 为 $L$ 的 $F$ 自同构个数，则
+$\gamma$ 有 $g_L$ 个 (*) 型的分解。因此
+\[
+ K(x,x)=\varphi(e)+\sum_{L\in X}g_L^{-1}\sum_\xi\sum_\eta
+ \varphi(x^{-1}\eta^{-1}\xi\eta x),
+ \quad\xi\in L^\times/F^\times-\{e\},\ \eta\in L^\times\backslash G(F),
+\]
+并且
+\[
+ \int K(x,x)\,dx=\operatorname{vol}(\widetilde G(F)\backslash\widetilde G(A))\varphi(e)
+ +\sum_{L\in X}g_L^{-1}\sum_\xi
+ \int_{L^\times Z(A)\backslash G(A)}\varphi(x^{-1}\xi x)\,dx.
+\]
+最后一个积分的被积函数在 $L^\times(A)$ 的左平移下不变。因此还有
+\begin{equation}
+\begin{split}
+ \int K(x,x)\,dx={}&\operatorname{vol}(\widetilde G(F)\backslash\widetilde G(A))\varphi(e)\\
+ &+\sum_{L\in X}g_L^{-1}\operatorname{vol}(F^\times(A)L^\times\backslash L^\times(A))
+ \sum_{\xi\in(L^\times-F^\times)/F^\times}
+ \int_{L^\times(A)\backslash\widetilde G(A)}\varphi(x^{-1}\xi x)\,dx\\
+ ={}&\operatorname{tr}\rho_\omega(\varphi).
+\end{split}\tag{1.11}
+\end{equation}
+该公式中 $\widetilde G(A)$ 和 $F^\times(A)\backslash L^\times(A)$ 的测度任意选择，而
+$L^\times(A)\backslash\widetilde G(A)$ 赋予商测度。
+
+假设 $L^\times(A)\backslash\widetilde G(A)$ 上的测度为乘积测度。给定 $\xi$，对几乎所有
+$v$，$\xi\in K_v$，且除非 $x_v\in K_vL_v^\times$，否则
+$\varphi_v(x_v^{-1}\xi x_v)=0$。因此
+\[
+ \int\varphi(x^{-1}\xi x)\,dx
+ =\prod_v\int_{L_v^\times\backslash G_v}\varphi_v(x_v^{-1}\xi x_v)\,dx_v,
+\]
+几乎所有因子等于 $\operatorname{vol}(L_v^\times\backslash L_v^\times K_v)$。
+
+这样便以局部不变分布 $\varphi_v\mapsto\varphi_v(e)$ 及
+$\varphi_v\mapsto\int_{L_v^\times\backslash G_v}\varphi_v(x_v^{-1}\xi x_v)\,dx_v$
+表示了 $\operatorname{tr}\rho_\omega(\varphi)$。
+
+\origsubsection{C}{一个应用（An application）}
+令 $H'$ 为另一个维数为 $p^2$ 的除代数，假设 $H,H'$ 恰在同一个素位集合 $S$ 上不分裂。若
+$v\notin S$，有同构 $H_v\to H_v'$，且该同构在复合内自同构（inner automorphism）的意义下唯一。对几乎所有 $v$，可假设该同构把 $O_v$ 送到类似定义的极大整环
+$O_v'$，因而把 $K_v=O_v^\times$ 送到 $K_v'=(O_v')^\times$。所得同构 $G_v\to G_v'$ 给出限制直积群
+\[
+ G^S=\prod_{v\notin S}G_v,\qquad G'^S=\prod_{v\notin S}G_v'
+\]
+之间的同构，同样在相差内自同构的意义下唯一。
+
+令 $V$ 为 $L^2(\omega,G)$ 中在 $G_S=\prod_{v\in S}G_v$ 下不变的函数空间。因
+$G^S$ 与 $G_S$ 对易，$V$ 在 $G^S$ 的作用下不变。因此得到 $G^S$ 在 $V$ 上的表示
+$\sigma$，类似地有 $G'^S$ 在 $V'$ 上的表示 $\sigma'$。经由同构 $G^S\to G'^S$，可将
+$\sigma'$ 转移到 $G^S$ 上，仍记作 $\sigma'$；其等价类不依赖于同构的选择。
+
+\begin{originaltheorem}{定理 (1.12)（Theorem (1.12)）}
+假设对所有 $v\in S$，有 $\omega_v=1$。那么表示 $\sigma$ 与 $\sigma'$ 等价。
+\end{originaltheorem}
+\begin{proof}
+令 $\theta=\prod_{v\notin S}\theta_v$ 为 $G^S$ 上任意一个满足第1.A节 $\varphi$ 所满足的类似条件的函数。只须证明
+\begin{equation}
+ \operatorname{tr}\sigma(\theta)=\operatorname{tr}\sigma'(\theta).\tag{1.13}
+\end{equation}
+事实上，调和分析的一个基本结果断言，$\sigma$ 是 $\sigma'$ 的子表示，当且仅当对充分多“良好”的 $f$，有
+\begin{equation}
+ \operatorname{tr}\bigl(\sigma(f)\sigma(f)^*\bigr)
+ \le\operatorname{tr}\bigl(\sigma'(f)\sigma'(f)^*\bigr).\tag{1.14}
+\end{equation}
+参见 [JL，引理16.1.1]。将 (1.13) 应用于
+$\theta=\theta_1*\theta_1^*$，其中 $\theta_1^*(g)=\overline{\theta_1(g^{-1})}$，即可。
+
+为证明 (1.13)，令 $\varphi(g)=\prod_{v\notin S}\theta_v(g_v)$，将 $\theta$ 扩张为 $G(A)$ 上的函数；类似地，通过将 $G'^S$ 与 $G^S$ 等同，把 $\theta$ 扩张为 $\varphi'$。对每个
+$v\in S$，令 $\widetilde G_v$（分别为 $\widetilde G_v'$）的体积为 $1$，而
+$\widetilde G(A)$（分别为 $\widetilde G'(A)$）上的测度取乘积测度。还假设同构 $G_v\to G_v'$ 将前者的 Haar 测度送到后者的 Haar 测度。于是
+\begin{equation}
+ \operatorname{tr}\rho_\omega(\varphi)=\operatorname{tr}\sigma(\theta),
+ \qquad\operatorname{tr}\rho_\omega'(\varphi')=\operatorname{tr}\sigma'(\theta).\tag{1.15}
+\end{equation}
+所以 (1.13) 等价于
+\begin{equation}
+ \operatorname{tr}\rho_\omega(\varphi)=\operatorname{tr}\rho_\omega'(\varphi').\tag{1.16}
+\end{equation}
+为此应用迹公式 (1.11)。假设 $F^\times(A)\backslash L^\times(A)$ 上的测度为乘积测度，则
+\[
+ \int_{L^\times(A)\backslash\widetilde G(A)}\varphi(x^{-1}\xi x)\,dx
+ =\left(\prod_{v\notin S}\int_{L_v^\times\backslash\widetilde G_v}
+ \theta_v(x^{-1}\xi x)\,dx_v\right)
+ \prod_{v\in S}\operatorname{vol}(L_v^\times\backslash\widetilde G_v).
+\]
+$\widetilde G'$ 有类似恒等式，而能嵌入 $H$ 与 $H'$ 的 $F$ 的扩张相同。因此由 (1.11) 得
+\begin{equation}
+ \operatorname{tr}\rho_\omega(\varphi)-\operatorname{tr}\rho_\omega(\varphi')
+ =(c-c')\theta(e),\tag{1.17}
+\end{equation}
+这里 $c=\operatorname{vol}(\widetilde G(F)\backslash\widetilde G(A))$，$c'$ 类似定义。剩下只须证明
+$c=c'$。
+
+设 $c>c'$。若 $\theta=\theta_1*\theta_1^*$，则 (1.17) 右端严格为正。因此由 (1.15) 以及
+(1.14) 所述结果，$\sigma'$ 必为 $\sigma$ 的子表示，商表示 $\pi=\sigma/\sigma'$ 满足
+\[
+ \operatorname{tr}(\pi(\theta_1)\pi(\theta_1)^*)=(c-c')\|\theta_1\|_2
+\]
+对所有满足上述条件的 $\theta_1$ 成立。\footnote{\textbf{译者注（本次校订）：}上式右端应为 $(c-c')\|\theta_1\|_2^2$，因为 $(\theta_1*\theta_1^*)(e)=\int|\theta_1(g)|^2\,dg$。此外，(1.17) 左端第二项应记为 $\operatorname{tr}\rho_\omega'(\varphi')$。}这意味着 $G^S$ 的正则表示（regular representation）与 $\pi$ 拟等价（quasi-equivalent），因此该正则表示离散分解。于是每个
+$G_v$（$v\notin S$）的正则表示也离散分解，这与该局部群的连续谱矛盾。假设 $c<c'$ 时，同理可得矛盾，定理得证。
+\end{proof}
+
+\paragraph*{注 (1.18)（Remark (1.18)）.}
+适当修改上述证明，可知 $\widetilde G$ 与 $\widetilde G'$ 有相同的 Tamagawa 数（Tamagawa number）。对 $\omega$ 所加的限制也可以去掉。
+
+\origsection{2}{GL(2) 上的尖点形式（Cusp forms on GL(2)）}
+以下以 $G$ 表示群 $\operatorname{GL}(2)$。其中心为
+\[
+ Z=\left\{\begin{pmatrix}a&0\\0&a\end{pmatrix}\right\}.
+\]
+仍有 $Z\simeq F^\times$，并置 $\widetilde G=G/Z$。引入子群
+\[
+ P=\left\{\begin{pmatrix}*&*\\0&*\end{pmatrix}\right\},\qquad
+ A=\left\{\begin{pmatrix}*&0\\0&*\end{pmatrix}\right\},\qquad
+ N=\left\{\begin{pmatrix}1&*\\0&1\end{pmatrix}\right\}.
+\]
+若 $\varphi$ 为 $G(F)\backslash G(A)$ 上的函数，且
+\[
+ \int_{N(F)\backslash N(A)}\varphi(ng)\,dn\equiv0,\qquad g\in G(A),
+\]
+则称之为尖点的。如第1节，引入空间 $L^2(\omega,G)$ 与表示 $\rho_\omega$。以
+$L_0^2(\omega,G)$ 表示其中尖点元素的子空间。
+
+\begin{originaltheorem}{定理 (2.1)（Theorem (2.1)）}
+令 $\rho_{\omega,0}$ 为 $\rho_\omega$ 在不变子空间 $L_0^2(\omega,G)$ 上的限制。令 $\varphi$ 为满足 (1.3)、模 $Z(A)$ 的支集紧的 $C^\infty$ 函数。那么
+$\rho_{\omega,0}(\varphi)$ 为 Hilbert--Schmidt 算子。
+\end{originaltheorem}
+\paragraph*{证明概要（Sketch of proof）.}
+对每个 $c>0$，考虑 $G(A)$ 中的 Siegel 域（Siegel domain）$\mathcal S$ 是如下形式的点的集合：
+\[
+ g=\begin{pmatrix}1&x\\0&1\end{pmatrix}
+ \begin{pmatrix}tab&0\\0&a\end{pmatrix}k,
+\]
+其中 $x$ 位于 $A$ 的一个紧子集，$t$ 是有限分量均平凡、无穷分量均等于某个固定实数
+$u>c>0$ 的伊代尔（idele），$a\in A^\times$ 任意，$b$ 位于 $A^\times$ 的紧子集中，$k$ 位于 $G(A)$ 的标准极大紧子群 $K$。若 $\mathcal S$ 充分大，则
+$G(A)=G(F)\mathcal S$。证明见 [Go 3]。
+
+下文也将 $G(A)$ 中 Siegel 域在 $N(F)\backslash G(A)$ 中的像也称为该商空间中的 Siegel 域。若 $\mathcal S$ 为这样的域，以 $L^2(\omega,\mathcal S)$ 表示其上满足
+$f(zg)=\omega(z)f(g)$ 及
+$\int_{N(F)Z(A)\backslash\mathcal S}|f(g)|^2dg<\infty$ 的函数空间。显然，当
+$\mathcal S$ 充分大时，可将 $L^2(\omega,G)$ 与 $L^2(\omega,\mathcal S)$ 的闭子空间 $V$ 等同，存在从前者满射到 $V$ 的有界算子 $A$，且其逆有界。
+
+若 $f\in L^2(\omega,G)$、$\varphi$ 如定理 (2.1)，则
+\[
+ \rho_\omega(\varphi)f(x)=\int_{N(F)\backslash\widetilde G(A)}H(x,y)f(y)\,dy,
+ \qquad H(x,y)=\sum_{\xi\in N(F)}\varphi(x^{-1}\xi y).
+\]
+若 $f$ 实际上尖点，则还有
+\begin{equation}
+ \rho_\omega(\varphi)f(x)=\int\widetilde H(x,y)f(y)\,dy,\tag{2.2}
+\end{equation}
+其中
+\begin{equation}
+ \widetilde H(x,y)=\sum_{\xi\in N(F)}\varphi(x^{-1}\xi y)
+ -\int_{N(A)}\varphi(x^{-1}ny)\,dn.\tag{2.3}
+\end{equation}
+这是因为尖点性给出
+\[
+ \int_{N(F)\backslash\widetilde G(A)}f(y)
+ \int_{N(A)}\varphi(x^{-1}ny)\,dn\,dy=0.
+\]
+为证明定理，需要估计 $\widetilde H(x,y)$。
+
+若 $x$ 在 $N(F)\backslash G(A)$ 的固定 Siegel 域 $\mathcal S$ 中，容易看出，除非 $y$ 位于另一个这样的域 $\mathcal S'$，否则 $\widetilde H(x,y)=0$。利用 (2.3) 中减去的一项恰是
+$\varphi(x^{-1}\left(\begin{smallmatrix}1&*\\0&1\end{smallmatrix}\right)y)$ 在零点的 Fourier 变换，可知
+\[
+ \iint_{(N(F)Z(A)\backslash\mathcal S)\times(N(F)Z(A)\backslash\mathcal S')}
+ |\widetilde H(x,y)|^2\,dx\,dy<\infty.
+\]
+即 $\widetilde H$ 定义从 $L^2(\omega,\mathcal S')$ 到 $L^2(\omega,\mathcal S)$ 的
+Hilbert--Schmidt 算子 $B$。这类论证的详细讨论见 [Go 1] 或 [La 1]。
+
+将 $\mathcal S'$ 适当扩大，使 $G(A)=G(F)\mathcal S'$。于是 $\rho_{\omega,0}(\varphi)$ 可写为以下映射的复合：嵌入
+$L_0^2(\omega,G)\to L^2(\omega,\mathcal S')$，算子 $B$，从
+$L^2(\omega,\mathcal S)$ 到 $V$ 的投影，以及算子 $A^{-1}$。这证明
+$\rho_{\omega,0}(\varphi)$ 本身是 Hilbert--Schmidt 算子。
+
+\begin{originaltheorem}{推论 (2.4)（Corollary (2.4)）}
+$\rho_{\omega,0}(\varphi)$ 属迹类。
+\end{originaltheorem}
+\begin{proof}
+当 $\varphi$ 在无穷处只具有充分高阶可微性而非无穷可微时，(2.1) 的结论仍成立。因此可沿用第1.A节的论证，参见 [DL，第199页]。
+\end{proof}
+\begin{originaltheorem}{推论 (2.5)（Corollary (2.5)）}
+表示 $\rho_{\omega,0}$ 离散分解，且重数有限。
+\end{originaltheorem}
+
+\origsection{3}{P 级数（P-series）}
+设 $f$ 为 $G(A)$ 上的函数，满足
+\begin{equation}
+ f(n\gamma zg)=\omega(z)f(g),\qquad
+ n\in N(A),\ \gamma\in P(F),\ z\in Z(A).\tag{3.1}
+\end{equation}
+则称级数
+\begin{equation}
+ F(g)=\sum_{P(F)\backslash G(F)}f(\gamma g)\tag{3.2}
+\end{equation}
+为 $P$ 级数。研究其收敛性需要一个熟知的引理。定义 $G(A)$ 上的函数
+\[
+ H(g)=\left|\frac ab\right|,\qquad
+ g=\begin{pmatrix}1&x\\0&1\end{pmatrix}\begin{pmatrix}a&0\\0&b\end{pmatrix}k.
+\]
+\begin{originaltheorem}{引理 (3.3)（Lemma (3.3)；参见 [JL，第197页]）}
+固定 Siegel 域 $\mathcal S$ 及正数 $c'$。则 $G(F)$ 中满足对某个 $g\in\mathcal S$ 有
+$H(\gamma g)\ge c'$ 的 $\gamma$ 的集合，模去 $P(F)$ 后有限。
+\end{originaltheorem}
+因此，若 $f$ 的支集包含于 $\{g:H(g)\ge c'\}$，特别地，若它模去
+$N(A)Z(A)P(F)$ 后紧，则 (3.2) 是有限和。在后一情形，$F$ 模 $G(F)Z(A)$ 的支集也紧。
+
+本节用这些 $P$ 级数分析 $L_0^2(\omega,G)$ 的正交补（orthocomplement）。
+
+\origsubsection{A}{两个 P 级数的标量积（The scalar product of two P-series）}
+先计算 $P$ 级数与满足 (1.1) 的函数 $\psi$ 的标量积：
+\[
+\begin{aligned}
+ (\psi,F)
+ &=\int_{\widetilde G(F)\backslash\widetilde G(A)}\psi(g)\overline{F(g)}\,dg\\
+ &=\int_{\widetilde G(F)\backslash\widetilde G(A)}\psi(g)
+ \sum_{P(F)\backslash\widetilde G(F)}\overline{f(\gamma g)}\,dg\\
+ &=\int\sum\psi(\gamma g)\overline{f(\gamma g)}\,dg
+ =\int_{P(F)Z(A)\backslash G(A)}\psi(g)\overline{f(g)}\,dg\\
+ &=\int_{P(F)N(A)Z(A)\backslash G(A)}
+ \left(\int_{N(F)\backslash N(A)}\psi(ng)\,dn\right)\overline{f(g)}\,dg,
+\end{aligned}
+\]
+即
+\begin{equation}
+ (\psi,F)=\int_{P(F)N(A)Z(A)\backslash G(A)}\psi_N(g)\overline{f(g)}\,dg,\tag{3.4}
+\end{equation}
+其中 $\psi_N$ 为 $\psi$ 的常数项：
+\begin{equation}
+ \psi_N(g)=\int_{N(F)\backslash N(A)}\psi(ng)\,dn.\tag{3.5}
+\end{equation}
+若 $\psi$ 尖点，则由 (3.4)，对任意 $P$ 级数 $F$，$(\psi,F)=0$。反之，若
+$\psi\in L^2(\omega,G)$ 与所有由模去 $N(A)P(F)Z(A)$ 后紧支的 $f$ 所定义的 $P$ 级数正交，则
+$\psi_N=0$，$\psi$ 尖点。因此，这些 $P$ 级数张成 $L_0^2(\omega,G)$ 的正交补的一个稠密子空间。
+
+现在计算两个 $P$ 级数的标量积。由 (3.4)，先计算 $F$ 的常数项。由
+$\operatorname{GL}(2)$ 的 Bruhat 分解，
+\[
+ F(g)=f(g)+\sum_{\gamma\in N(F)}f(w\gamma g),\qquad
+ w=\begin{pmatrix}0&1\\-1&0\end{pmatrix}.
+\]
+所以
+\[
+ F_N(g)=\int_{N(F)\backslash N(A)}f(ng)\,dn
+ +\int_{N(F)\backslash N(A)}\sum_\gamma f(w\gamma ng)\,dn.
+\]
+令 $N(A)$ 上的 Haar 测度满足 $\operatorname{vol}(N(F)\backslash N(A))=1$，得到
+\begin{equation}
+ F_N(g)=f(g)+f'(g),\tag{3.6}
+\end{equation}
+其中
+\begin{equation}
+ f'(g)=\int_{N(A)}f(wng)\,dn.\tag{3.7}
+\end{equation}
+因此
+\begin{equation}
+ (F_1,F_2)=\int f_1(g)\overline{f_2(g)}\,dg
+ +\int f_1'(g)\overline{f_2(g)}\,dg,\tag{3.8}
+\end{equation}
+其中两个积分都在 $P(F)N(A)Z(A)\backslash G(A)$ 上进行。
+
+要进一步分析 (3.8)，需要研究映射 $f\mapsto f'$。注意 $f'$ 仍满足 (3.1)。上述计算的成立还需要对
+$f_1,f_2$ 作适当假设，以保证收敛。例如，两者模相应子群后都紧支时，计算成立；但即使如此，$f_1'$ 的支集一般也不再紧。
+
+另一个容易证明的形式关系是
+\begin{equation}
+ \int f_1'(g)\overline{f_2(g)}\,dg
+ =\int f_1(g)\overline{f_2'(g)}\,dg.\tag{3.9}
+\end{equation}
+事实上，左、右端分别可写为
+\[
+ \int_{P(F)Z(A)\backslash G(A)}f_1(wg)\overline{f_2(g)}\,dg,
+ \qquad
+ \int_{P(F)Z(A)\backslash G(A)}f_1(g)\overline{f_2(wg)}\,dg.
+\]
+因为 $w$ 正规化 $P(F)Z(A)$，二者相等。\footnote{\textbf{译者注（本次校订）：}这里应将两处积分域中的 $P(F)$ 以及本句中的 $P(F)$ 改为对角群 $A(F)$。Weyl 元 $w$ 正规化 $A(F)$，却把上三角群 $P(F)$ 变为下三角群。对 $N(A)$ 展开积分后，正确的积分域为 $A(F)Z(A)\backslash G(A)$，此时所述变量代换才成立。}
+
+\origsubsection{B}{诱导表示与交织算子（Induced representations and intertwining operators）}
+为研究 $f\mapsto f'$ 及标量积 (3.8)，需要在群 $Z(A)A(F)A(A)$ 上作 Mellin 变换（Mellin transform）。先在其中一个子群上作变换。令 $F_\infty^+$ 为有限分量均为 $1$、无穷分量均等于同一正实数 $u$ 的伊代尔所成的群。以 $F^0(A)$ 表示范数为 $1$ 的伊代尔，$A^0$（分别为
+$A_\infty^+$）表示对角元位于 $F^0(A)$（分别为 $F_\infty^+$）的对角矩阵群。
+\textit{为方便起见，假设 $\omega$ 在 $F_\infty^+$ 上平凡。} 下面规定 Haar 测度的归一化。
+
+$F_\infty^+$ 上的 Haar 测度由映射 $t\mapsto|t|$ 由 $\R_+^\times$ 上的通常测度拉回得到。因此
+\[
+ \frac1{2\pi i}\int_{x-i\infty}^{x+i\infty}ds
+ \int_{F_\infty^+}f(t)|t|^{-s}\,d^\times t=f(e).
+\]
+回忆 $N(A)$ 上测度已选为使 $N(F)\backslash N(A)$ 的体积为 $1$。在 $A^\times$ 上任取 Haar 测度，赋予 $F^\times\backslash A^\times$ 商测度，再利用同构
+\[
+ F^\times\backslash A^\times\simeq F_\infty^+\times F^\times\backslash F^0(A)
+\]
+得到 $F^\times\backslash F^0(A)$ 上的 Haar 测度，它的体积一般不为 $1$。也用同构
+$\left(\begin{smallmatrix}a&0\\0&1\end{smallmatrix}\right)\mapsto a$ 得到 $Z(A)\backslash A(A)$ 上的测度。最后选择 $\widetilde G(A)$ 和 $K$ 上的测度，使
+\begin{equation}
+ \int_{\widetilde G(A)}f(g)\,dg
+ =\int_K\int_{A^\times}\int_{N(A)}
+ f\!\left(\begin{pmatrix}1&x\\0&1\end{pmatrix}\begin{pmatrix}a&0\\0&1\end{pmatrix}k\right)
+ dx\,|a|^{-1}\,d^\times a\,dk.\tag{3.10}
+\end{equation}
+注意 $\operatorname{vol}(K)$ 未必为 $1$。
+
+对每个复数 $s$，引入 Hilbert 空间 $\mathbf H(s)$，其元素为 $G(A)$ 上满足
+\begin{equation}
+ \varphi\!\left[\begin{pmatrix}\alpha au&x\\0&\beta av\end{pmatrix}g\right]
+ =\omega(a)\left|\frac uv\right|^{s+1/2}\varphi(g),\tag{3.11}
+\end{equation}
+的函数（等价类），其中 $\alpha,\beta\in F^\times$、$a\in A^\times$、$u,v\in F_\infty^+$、
+$x\in A$。这些函数完全由其在形如
+\begin{equation}
+ g=\begin{pmatrix}a&0\\0&1\end{pmatrix}k,
+ \qquad a\in F^0(A),\ k\in K,\tag{3.12}
+\end{equation}
+的矩阵集合上的限制决定。要求 $\varphi\in\mathbf H(s)$ 还须满足
+\begin{equation}
+ \int_K\int_{F^\times\backslash F^0(A)}
+ \left|\varphi\!\left(\begin{pmatrix}a&0\\0&1\end{pmatrix}k\right)\right|^2da\,dk<\infty.\tag{3.13}
+\end{equation}
+上述限制满足
+\begin{equation}
+ \varphi\!\left(\begin{pmatrix}\alpha ab&0\\0&1\end{pmatrix}k\right)
+ =\varphi\!\left(\begin{pmatrix}a&0\\0&1\end{pmatrix}\begin{pmatrix}b&0\\0&1\end{pmatrix}k\right),\tag{3.14}
+\end{equation}
+只要 $\alpha\in F^\times$，且 $\left(\begin{smallmatrix}b&0\\0&1\end{smallmatrix}\right)\in A(A)\cap K$。
+群 $G(A)$ 以右平移作用于 $\mathbf H(s)$，所得表示记为 $\pi_s$。它连续，但未必酉；$s$ 纯虚时则酉。
+
+可将 $\mathbf H(s)$ 这一族看作底空间为 $\C$ 的全纯纤维丛（holomorphic fibre bundle）。其在开集
+$U\subset\C$ 上的截面（section）是 $G(A)\times U$ 上满足
+\[
+ \varphi\!\left[\begin{pmatrix}\alpha au&x\\0&\beta av\end{pmatrix}g,s\right]
+ =\omega(a)|u/v|^{s+1/2}\varphi(g,s)
+\]
+的函数。这个丛有自然的平凡化，因为每个 $\varphi\in\mathbf H(s)$ 都由它在 (3.12) 上的限制唯一确定。因此，可把 $\mathbf H(s)$ 看作满足 (3.13)、(3.14)、与 $s$ 无关的函数的 Hilbert 空间。
+
+换言之，置 $\mathbf H=\mathbf H(0)$，则 $\mathbf H$ 的每个元素 $\varphi$ 定义丛在 $\C$ 上的截面
+$(g,s)\mapsto\varphi(g)H(g)^s$。
+
+据此，取满足 (3.1) 的函数 $f$，例如模 $N(A)Z(A)P(F)$ 的支集紧的函数。定义 Mellin 变换
+\[
+ \widehat f(g,s)=\int_{F_\infty^+}
+ f\!\left(\begin{pmatrix}t&0\\0&1\end{pmatrix}g\right)|t|^{-s-1/2}\,d^\times t.
+\]
+由于被积函数的支集紧，$\widehat f$ 定义了这个纤维丛的截面。所选 Haar 测度使得对任意实数 $x$，
+\[
+ f(g)=\frac1{2\pi i}\int_{x-i\infty}^{x+i\infty}\widehat f(g,s)\,ds.
+\]
+容易看出，内积公式 (3.8) 的第一项可写为
+\[
+\begin{aligned}
+ &\int_K\int_{F^\times\backslash F^0(A)}\int_{F_\infty^+}
+ f_1\overline f_2\!\left(\begin{pmatrix}at&0\\0&1\end{pmatrix}k\right)|t|^{-1}\,d^\times t\,da\,dk\\
+ &=\frac1{2\pi i}\int_{x-i\infty}^{x+i\infty}
+ \int_{F^\times\backslash F^0(A)}\int_K
+ \widehat f_1\!\left[\begin{pmatrix}a&0\\0&1\end{pmatrix}k,s\right]
+ \overline{\widehat f_2\!\left[\begin{pmatrix}a&0\\0&1\end{pmatrix}k,-\bar s\right]}\,da\,dk\,ds\\
+ &=\frac1{2\pi i}\int_{x-i\infty}^{x+i\infty}
+ (\widehat f_1(s),\widehat f_2(-\bar s))\,ds.
+\end{aligned}
+\]
+这里 $\widehat f_1(s)$ 是 $\widehat f_1(g,s)$ 在 $s$ 处的值，标量积通过把各纤维与
+$\mathbf H$ 等同来定义。也可注意，若 $\varphi_1\in\mathbf H(s)$、
+$\varphi_2\in\mathbf H(-\bar s)$，则 $\varphi_1\overline\varphi_2$ 在左侧按群
+$N(A)Z(A)A_\infty^+A(F)$ 的模函数（modular function）变换。因此置
+\begin{equation}
+ (\varphi_1,\varphi_2)=\int_{F^\times\backslash F^0(A)}\int_K
+ \varphi_1\overline\varphi_2\!\left(\begin{pmatrix}a&0\\0&1\end{pmatrix}k\right)da\,dk,\tag{3.15}
+\end{equation}
+便得到 $\mathbf H(s)$ 与 $\mathbf H(-\bar s)$ 之间的非退化半双线性配对（sesquilinear pairing），满足
+\begin{equation}
+ (\pi_s(g)\varphi_1,\pi_{-\bar s}(g)\varphi_2)=(\varphi_1,\varphi_2).\tag{3.16}
+\end{equation}
+这就是公式中出现的配对。详见 [Go 2，第1.24--1.26页]。
+
+类似地，(3.8) 第二项为
+\[
+ (2\pi i)^{-1}\int_{x-i\infty}^{x+i\infty}
+ (\widehat f_1'(-s),\widehat f_2(\bar s))\,ds.
+\]
+这里积分线必须使 $\widehat f_1'(-s)$ 由收敛积分给出，即 $x>1/2$。接下来用
+$\widehat f(s)$ 计算 $\widehat f'(-s)$。对 $\operatorname{Re}s>1/2$，有
+\[
+\begin{aligned}
+ \widehat f'(-s)
+ &=\int f'\!\left(\begin{pmatrix}t&0\\0&1\end{pmatrix}g\right)|t|^{s-1/2}\,d^\times t\\
+ &=\int|t|^{s-1/2}\,d^\times t\int
+ f\!\left[w\begin{pmatrix}t&0\\0&1\end{pmatrix}
+ \begin{pmatrix}1&t^{-1}x\\0&1\end{pmatrix}g\right]dx.
+\end{aligned}
+\]
+继续计算得
+\[
+\begin{aligned}
+ \widehat f'(-s)
+ &=\int|t|^{s+1/2}\,d^\times t\int
+ f\!\left[\begin{pmatrix}1&0\\0&t\end{pmatrix}w
+ \begin{pmatrix}1&x\\0&1\end{pmatrix}g\right]dx\\
+ &=\int|t|^{-s-1/2}\,d^\times t\int
+ f\!\left[\begin{pmatrix}t&0\\0&1\end{pmatrix}w
+ \begin{pmatrix}1&x\\0&1\end{pmatrix}g\right]dx\\
+ &=\int\widehat f\!\left[w\begin{pmatrix}1&x\\0&1\end{pmatrix}g,s\right]dx.
+\end{aligned}
+\]
+回忆 $\omega$ 在 $F_\infty^+$ 上平凡，所以对 $t\in F_\infty^+$，
+\[
+ f\!\left[\begin{pmatrix}1&0\\0&t^{-1}\end{pmatrix}g\right]
+ =f\!\left[\begin{pmatrix}t&0\\0&1\end{pmatrix}g\right].
+\]
+当 $\operatorname{Re}s>1/2$ 时，定义从 $\mathbf H(s)$ 到 $\mathbf H(-s)$ 的算子
+\begin{equation}
+ M(s)\varphi(g)=\int_{N(A)}\varphi(wng)\,dn,\tag{3.17}
+\end{equation}
+便得到
+\begin{equation}
+ \widehat f'(-s)=M(s)\widehat f(s).\tag{3.18}
+\end{equation}
+由此得到，两个 $P$ 级数 $F_1,F_2$（$f_1,f_2$ 紧支）的标量积由公式
+\begin{equation}
+\begin{split}
+ (F_1,F_2)={}&\frac1{2\pi i}\int(\widehat f_1(s),\widehat f_2(-\bar s))\,ds\\
+ &+\frac1{2\pi i}\int(M(s)\widehat f_1(s),\widehat f_2(\bar s))\,ds
+\end{split}\tag{3.19}
+\end{equation}
+给出。积分可在任意 $\operatorname{Re}s>1/2$ 的竖直线上进行；所写配对分别位于
+$\mathbf H(s)\times\mathbf H(-\bar s)$ 与 $\mathbf H(-s)\times\mathbf H(\bar s)$，经平凡化后，也可统一看作
+$\mathbf H\times\mathbf H$。还应注意，对于 $\varphi_1\in\mathbf H(s)$、
+$\varphi_2\in\mathbf H(\bar s)$，有
+\begin{equation}
+ (M(s)\varphi_1,\varphi_2)=(\varphi_1,M(\bar s)\varphi_2).\tag{3.20}
+\end{equation}
+这与 (3.9) 类似，证明也完全相同。把 $M(s)$ 看作 $\mathbf H$ 到自身的算子，则 (3.20) 即
+\begin{equation}
+ M(s)^*=M(\bar s).\tag{3.21}
+\end{equation}
+最后，如果以 $h\mapsto f(hg)$ 替代 $f$，则 $F$ 与 $\widehat f(s)$ 分别替换为其右平移
+$\rho_\omega(g)F$ 和 $\pi_s(g)\widehat f(s)$。另一方面，显然
+\begin{equation}
+ M(s)\pi_s(g)=\pi_{-s}(g)M(s).\tag{3.22}
+\end{equation}
+这些恒等式是下一节论证的关键。
+
+\origsection{4}{$M(s)$ 的解析延拓（Analytic continuation of M(s)）}
+本节利用内积公式 (3.19) 在 $\rho_\omega$ 的某个子表示与 $s$ 纯虚时的表示
+$\pi_s$ 的连续和之间构造交织算子。为此需要解析延拓 $M(s)$。事实上，(3.19) 的积分线为
+$\operatorname{Re}s=x>1/2$；若想改用纯虚 $s$，就必须了解 $M(s)$ 的极点。
+
+\origsubsection{A}{预备评述（Preliminary remarks）}
+现在将 Mellin 变换的范围从 $F_\infty^+$ 扩大到整个 $F^\times\backslash A^\times$，使用所得算子代替 $\pi_s$ 和 $M(s)$。令 $\eta=(\mu,\nu)$ 为
+$F^\times\backslash A^\times$ 的一对拟特征（quasi-character），满足 $\mu\nu=\omega$。令
+$\mathbf H(\eta)$ 为 $G(A)$ 上满足
+\begin{equation}
+ \varphi\!\left[\begin{pmatrix}a&x\\0&b\end{pmatrix}g\right]
+ =\mu(a)\nu(b)|a/b|^{1/2}\varphi(g),\tag{4.1}
+\end{equation}
+以及
+\begin{equation}
+ \int_K|\varphi(k)|^2\,dk<\infty\tag{4.2}
+\end{equation}
+的函数空间。
+
+再次可将 $\mathbf H(\eta)$ 这一族看作以所有 $\eta$ 为底空间的纤维丛。这些 $\eta$ 构成一个具有无穷多个连通分支的一维复流形。该纤维丛在每个分支上平凡，因为
+$A(A)\cap K$ 的特征
+$\left(\begin{smallmatrix}a&0\\0&b\end{smallmatrix}\right)\mapsto\mu(a)\nu(b)$ 在分支内固定。
+特别地，$\mathbf H(\eta)$ 可看作 $L^2(K)$ 中满足
+\[
+ \varphi\!\left[\begin{pmatrix}a&x\\0&b\end{pmatrix}k\right]
+ =\mu(a)\nu(b)\varphi(k),\qquad
+ \begin{pmatrix}a&x\\0&b\end{pmatrix}\in K,
+\]
+的函数子空间。以 $\pi_\eta$ 表示 $G(A)$ 在它上面的自然表示。纤维 $\mathbf H(s)$ 分解为
+$\mathbf H(\eta)$ 的和，其中 $\eta=(\mu,\nu)$ 对 $a\in F_\infty^+$ 满足
+$\mu\nu^{-1}(a)=|a|^s$；\footnote{\textbf{译者注（本次校订）：}与 (3.11) 对照，此处指数应为 $2s$。由于 $\mu\nu=\omega$ 在 $F_\infty^+$ 上平凡，(3.11) 要求 $\mu(a)=|a|^s$、$\nu(a)=|a|^{-s}$，因而 $\mu\nu^{-1}(a)=|a|^{2s}$。第4.B节随后采用 $s/2$ 的另一种参数化，须与此区别。}相应地，$\pi_s$ 分解为“主系列表示（principal series representation）$\pi_\eta$”的和，见 [Ge，第67页]。
+
+$\mathbf H(\eta)$ 与 $\mathbf H(\bar\eta^{-1})$ 有自然配对
+\[
+ (\varphi_1,\varphi_2)=\int_K\varphi_1(k)\overline{\varphi_2(k)}\,dk.
+\]
+如前，$(\pi_\eta(g)\varphi_1,\varphi_2)
+=(\varphi_1,\pi_{\bar\eta^{-1}}(g^{-1})\varphi_2)$。置 $\widetilde\eta=(\nu,\mu)$，则 (3.17) 定义算子
+$M(\eta):\mathbf H(\eta)\to\mathbf H(\widetilde\eta)$，满足
+\begin{equation}
+ M(\eta)\pi_\eta(g)=\pi_{\widetilde\eta}(g)M(\eta),\tag{4.3}
+\end{equation}
+以及
+\begin{equation}
+ (M(\eta)\varphi_1,\varphi_2)
+ =(\varphi_1,M(\overline{\widetilde\eta}^{-1})\varphi_2),\tag{4.4}
+\end{equation}
+其中 $\varphi_1\in\mathbf H(\eta)$、$\varphi_2\in\mathbf H(\overline{\widetilde\eta}^{-1})$，参见
+(3.20)、(3.22)。特别地，把 $\mathbf H(\eta)$ 与 $\mathbf H(\bar\eta^{-1})$ 等同，并把
+$\mathbf H(\widetilde\eta)$ 与 $\mathbf H(\overline{\widetilde\eta}^{-1})$ 等同，注意
+$\eta$ 与 $\bar\eta^{-1}$ 属于同一连通分支，则 (4.4) 成为
+\begin{equation}
+ M(\eta)^*=M(\overline{\widetilde\eta}^{-1}).\tag{4.5}
+\end{equation}
+(3.21) 本质上是这类恒等式的直和。
+
+为解析延拓 $M(\eta)$，将其分解为局部交织算子的张量积，从而将延拓问题归结为局部问题。
+
+\origsubsection{B}{局部交织算子（Local intertwining operators）}
+令 $v$ 为 $F$ 的素位，$F_v$ 为相应局部域。若 $\eta_v=(\mu_v,\nu_v)$ 是 $F_v^\times$ 的一对拟特征，满足 $\mu_v\nu_v=\omega_v$，可类似构造空间 $\mathbf H(\eta_v)$、表示
+$\pi_{\eta_v}$，以及由
+\begin{equation}
+ (M(\eta_v)\varphi)(g)=\int_{F_v}
+ \varphi\!\left[w\begin{pmatrix}1&x\\0&1\end{pmatrix}g\right]dx\tag{4.6}
+\end{equation}
+定义的算子 $M(\eta_v):\mathbf H(\eta_v)\to\mathbf H(\widetilde\eta_v)$。
+
+群 $G_v$ 通过矩阵右乘作用在 $F_v\times F_v$ 上，而直线 $F_v(0,1)$ 的稳定子为 $P_v$，因此可由公式
+\begin{equation}
+ \varphi(g,\eta_v)=\frac{\mu_v\alpha_v^{1/2}(\det g)}{L(1,\mu_v\nu_v^{-1})}
+ \int_{F_v^\times}\Phi[(0,t)g]\mu_v\nu_v^{-1}(t)|t|\,d^\times t\tag{4.7}
+\end{equation}
+定义丛 $\mathbf H(\eta_v)$ 的整体截面。这里 $L(s,\mu_v\nu_v^{-1})$ 为与特征
+$\mu_v\nu_v^{-1}$ 相联系的通常 Euler 因子（Euler factor），$\alpha_v(x)=|x|_v$，
+$\Phi$ 为 $F_v\times F_v$ 上的 Schwartz--Bruhat 函数。回忆，若 $\chi$ 是 $F_v^\times$ 的拟特征、$f$ 为 $F_v$ 上 Schwartz--Bruhat 函数，则积分
+\[
+ \int_{F_v^\times}f(t)|t|^s\chi(t)\,d^\times t=Z(f,\chi,s)
+\]
+在 $\operatorname{Re}s\gg0$ 时收敛；$\chi$ 酉时只需 $\operatorname{Re}s>0$。比值
+$Z(f,\chi,s)/L(s,\chi)$ 延拓为 $s$ 的整函数。这就是 Tate 的局部 zeta 函数理论。因此
+(4.7) 对所有 $\eta$ 都有意义，确实定义纤维丛的一个截面。
+
+现在将 (4.6) 的算子 $M(\eta_v)$ 作用于由 (4.7) 给出的元素。变量代换后得到
+\begin{equation}
+ \omega_v(-1)\frac{\mu_v\alpha_v^{1/2}(\det g)}{L(1,\mu_v\nu_v^{-1})}
+ \int_{F_v}\int_{F_v^\times}\Phi[(t,x)g]\mu_v\nu_v^{-1}(t)\,d^\times t\,dx.\tag{4.8}
+\end{equation}
+回忆比值 $Z(f,\chi,s)/L(s,\chi)$ 的函数方程：
+\[
+ \frac{Z(\widehat f,\chi^{-1},1-s)}{L(1-s,\chi^{-1})}
+ =\varepsilon(s,\chi,\psi_v)\frac{Z(f,\chi,s)}{L(s,\chi)}.
+\]
+这里 $\widehat f$ 是关于固定加性特征（additive character）$\psi_v$ 的通常 Fourier 变换，
+$\varepsilon(s,\chi,\psi_v)$ 是一个也依赖 $\psi_v$ 的指数函数。若定义 $\Phi$ 的 Fourier 变换为
+\[
+ \widehat\Phi(x,y)=\iint\Phi(u,v)\psi_v(yu-xv)\,du\,dv,
+\]
+则 (4.8) 可写成
+\begin{equation}
+ \frac{L(0,\mu_v\nu_v^{-1})}
+ {L(1,\mu_v\nu_v^{-1})\varepsilon(0,\mu_v\nu_v^{-1},\psi_v)}\tag{4.9}
+\end{equation}
+与
+\begin{equation}
+ \frac{\omega_v(-1)}{L(1,\mu_v^{-1}\nu_v)}
+ \int\widehat\Phi[(0,t)g]\mu_v^{-1}\nu_v(t)|t|\,d^\times t
+ \cdot\nu_v\alpha_v^{1/2}(\det g)\tag{4.10}
+\end{equation}
+的乘积。注意，从 (4.7) 到 (4.10)，就是作替换 $\eta\mapsto\widetilde\eta$、
+$\Phi\mapsto\widehat\Phi$，再乘以 $\omega_v(-1)$。
+
+写 $\eta_v=(\mu_v,\nu_v)$，其中
+$\mu_v=\chi_1\alpha_v^{s/2}$、$\nu_v=\chi_2\alpha_v^{-s/2}$，$\chi_1,\chi_2$ 为特征。对
+$\operatorname{Re}s>0$，可将 $M(\eta_v)$ 写为标量 (4.9) 与算子 $R(\eta_v)$ 的乘积，后者把
+$\mathbf H(\eta_v)$ 的 (4.7) 元素送到 $\mathbf H(\widetilde\eta_v)$ 的 (4.10) 元素。但对
+$\operatorname{Re}s>-1/2$，$\mathbf H(\eta_v)$ 每个元素都能表为 (4.7) 型积分（[JL，第97--98页]）。容易证明 $R(\eta_v)$ 延拓为域 $\operatorname{Re}s>-1/2$ 中关于 $\eta_v$ 的全纯算子值函数，仍将 (4.7) 送到 (4.10)。此外，由显然关系
+$\widetilde{\widetilde\eta}=\eta$、$\widehat{\widehat\Phi}=\Phi$、$\omega_v(-1)^2=1$，得到
+\begin{equation}
+ R(\widetilde\eta_v)R(\eta_v)=\operatorname{Id}.\tag{4.11}
+\end{equation}
+由于 (4.9) 显然亚纯，这也给出 $M(\eta_v)$ 在 $\operatorname{Re}s>-1/2$ 中的解析延拓。虽然此处不需要，但指出
+$R(\eta_v)$，因而 $M(\eta_v)$，都可亚纯延拓到所有 $\eta_v$，也就是整个 $s\in\C$。
+
+应注意，$R(\eta_v)$ 作了如下“归一化”（normalized）：若 $\eta_v$ 非分歧（unramified），则
+$\mathbf H(\eta_v)$ 与 $\mathbf H(\widetilde\eta_v)$ 各自含有唯一在 $K_v$ 下不变且在其上等于 $1$ 的函数，分别记为 $\varphi_v,\widetilde\varphi_v$。只要 $\psi_v$ 的阶为零，就有
+\begin{equation}
+ R(\eta_v)\varphi_v=\widetilde\varphi_v.\tag{4.12}
+\end{equation}
+此外，$\eta_v$ 酉时，$R(\eta_v)$ 酉。事实上，若 $\bar\eta_v=\eta_v^{-1}$，则算子
+$M(\eta_v)$ 与 $\omega_v(-1)M(\widetilde\eta_v)$ 互为伴随。由于以 $\widetilde\eta_v$ 代替
+$\eta_v$ 时，标量 (4.9) 变为其复共轭乘以 $\omega_v(-1)$，由 (4.11) 得
+$R(\eta_v)^*=R(\eta_v)^{-1}$。
+
+\paragraph*{注 (4.13)：关于 $R(\eta_v)$ 的像（On the range）.}
+若 $\mu_v\nu_v^{-1}=\alpha_v$，则
+$\mu_v=\chi_v\alpha_v^{1/2}$、$\nu_v=\chi_v\alpha_v^{-1/2}$，其中 $\chi_v^2=\omega_v$。此时
+$\mathbf H(\eta_v)$ 由满足
+\[
+ \varphi\!\left[\begin{pmatrix}a&x\\0&b\end{pmatrix}g\right]
+ =\chi_v(ab)|a/b|\varphi(g)
+\]
+的函数构成，$M(\eta_v)$ 或 $R(\eta_v)$ 的核余维为 $1$。$\mathbf H(\widetilde\eta_v)$ 由满足
+\[
+ \varphi\!\left[\begin{pmatrix}a&x\\0&b\end{pmatrix}g\right]=\chi_v(ab)\varphi(g)
+\]
+的函数构成；所以 $M(\eta_v)$ 或 $R(\eta_v)$ 的像必为函数 $g\mapsto\chi_v(\det g)$ 张成的一维空间。此外，对于 $\mathbf H(\eta)$ 与 $\mathbf H(\widetilde\eta)$ 的半双线性配对，
+\begin{equation}
+ (R(\eta)\varphi_1,\varphi_2)
+ =c'(\varphi_1,\chi\circ\det)\overline{(\varphi_2,\chi\circ\det)},\tag{4.14}
+\end{equation}
+其中 $c'$ 为已知常数。
+
+\origsubsection{C}{整体理论（Global theory）}
+现在将局部交织算子 $M(\eta_v)$ 组合起来，以得到 $M(s)$ 的解析延拓。先把
+$R(\eta)$ 定义为局部算子 $R(\eta_v)$ 的“无穷张量积”。若
+$\varphi=\prod\varphi_v\in\mathbf H(\eta)$，且对几乎所有 $v$，$\varphi_v$ 在 $K_v$ 下不变并在其上等于 $1$，则
+$R(\eta)\varphi=\prod_vR(\eta_v)\varphi_v$。各 $R(\eta_v)$ 已正规化，见 (4.12)，所以
+$R(\eta)\varphi$ 确实是 $\mathbf H(\widetilde\eta)$ 中良定义的元素。而且
+\begin{equation}
+ M(\eta)=\frac{L(0,\mu\nu^{-1})}{L(1,\mu\nu^{-1})\varepsilon(0,\mu\nu^{-1})}R(\eta).\tag{4.15}
+\end{equation}
+标量因子的亚纯性质已知，$R(\eta)$ 也亚纯，因此这给出 $M(\eta)$ 的解析延拓。
+
+利用 $L(s,\mu\nu^{-1})$ 的函数方程，可以将 (4.15) 中的标量写为
+\begin{equation}
+ \frac{L(1,\mu^{-1}\nu)}{L(1,\mu\nu^{-1})}.\tag{4.16}
+\end{equation}
+因此 $M(\eta)$ 满足函数方程
+\begin{equation}
+ M(\widetilde\eta)M(\eta)=\operatorname{Id},\tag{4.17}
+\end{equation}
+参见 (4.11)。由 (4.5)，还得
+\begin{equation}
+ M(\eta)^*=M(\eta^{-1})\quad\text{若 }\bar\eta=\eta^{-1}.\tag{4.18}
+\end{equation}
+所以 $\eta$ 酉时 $M(\eta)$ 酉。\footnote{\textbf{译者注（本次校订）：}由 (4.5)，当 $\bar\eta=\eta^{-1}$ 时应有 $M(\eta)^*=M(\widetilde\eta)$；式 (4.18) 右端的 $\eta^{-1}$ 应为 $\widetilde\eta$。结合 (4.17) 才得到伴随等于逆算子。}回忆，$R(\eta)$ 也满足 (4.17)、(4.18)。
+
+概括 $M(\eta)$ 的解析性质如下。写 $|\mu\nu^{-1}|=\alpha^t$，$t\in\R$。则
+$M(\eta)$ 在半平面 $t\ge0$ 上亚纯，唯一可能的极点都是单极点，发生在
+$\mu=\chi\alpha^{1/2}$、$\nu=\chi\alpha^{-1/2}$、$\chi^2=\omega$ 时。留数为
+$R(\eta)$ 的标量倍数，其像为函数 $g\mapsto\chi(\det g)$ 张成的一维空间。回到 $M(s)$，由
+(4.14) 得：
+\begin{originaltheorem}{定理 (4.19)（Theorem (4.19)）}
+作为 $s$ 的函数，算子 $M(s)$ 在整个复平面上亚纯，满足函数方程
+\begin{equation}
+ M(-s)M(s)=\operatorname{Id}.\tag{4.20}
+\end{equation}
+它在 $\operatorname{Re}s\ge0$ 中唯一可能的极点位于 $s=1/2$，其留数满足
+\[
+ \bigl(\operatorname{Res}_{s=1/2}M(s)\widehat f_1(\tfrac12),\widehat f_2(\tfrac12)\bigr)
+ =c\sum_{\chi^2=\omega}(\widehat f_1(\tfrac12),\chi\circ\det)
+ \overline{(\widehat f_2(\tfrac12),\chi\circ\det)},
+\]
+其中 $c$ 为已知常数。
+\end{originaltheorem}
+最后的断言来自 (4.14)。
+
+\origsubsection{D}{连续谱的分析（Analysis of the continuous spectrum）}
+设 $F_1,F_2$ 分别为 $f_1,f_2$ 的 $P$ 级数。它们位于 $L_0^2(\omega,G)$ 的正交补中，标量积由
+(3.19) 给出。利用留数定理、定理 (4.19) 及一些简单估计，可把积分线移到虚轴，得到
+\begin{equation}
+\begin{split}
+ (F_1,F_2)={}&\frac1{2\pi}\int_{-\infty}^{\infty}
+ \{(\widehat f_1(iy),\widehat f_2(iy))
+ +(M(iy)\widehat f_1(iy),\widehat f_2(-iy))\}\,dy\\
+ &+c\sum_{\chi^2=\omega}(\widehat f_1(\tfrac12),\chi\circ\det)
+ \overline{(\widehat f_2(\tfrac12),\chi\circ\det)}.
+\end{split}\tag{4.21}
+\end{equation}
+这里对 $F^\times\backslash A^\times$ 中满足 $\chi^2=\omega$ 的所有特征求和，标量积为
+$\mathbf H(1/2)$ 与 $\mathbf H(-1/2)$ 之间的配对。由于已假设 $\omega$ 在 $F_\infty^+$ 上平凡，
+$\chi^2=\omega$ 时 $\chi$ 也在其上平凡；因此 $\chi\circ\det$ 确实属于 $\mathbf H(-1/2)$。不过，由 (3.15)，
+\[
+\begin{aligned}
+ (\widehat f_1(\tfrac12),\chi\circ\det)
+ &=\int_{P(F)N(A)Z(A)\backslash G(A)}f_1(g)\bar\chi(\det g)\,dg\\
+ &=\int_{G(F)Z(A)\backslash G(A)}F_1(g)\bar\chi(\det g)\,dg,
+\end{aligned}
+\]
+因为 $F_1$ 是与 $f_1$ 相联系的 $P$ 级数。因此，(4.21) 第二项也可写成
+\begin{equation}
+ c\sum_{\chi^2=\omega}(F_1,\chi\circ\det)\overline{(F_2,\chi\circ\det)},\tag{4.22}
+\end{equation}
+其中标量积现在取于 $L^2(\omega,G)$。
+
+由 (4.20)、(3.21)，对 $y\in\R$，有 $M(iy)^*M(iy)=\operatorname{Id}$。特别地，$M(s)$ 在虚轴上酉。置
+\begin{equation}
+ a(iy)=\tfrac12\{\widehat f(iy)+M(-iy)\widehat f(-iy)\},\tag{4.23}
+\end{equation}
+则
+\begin{equation}
+ M(-iy)a(-iy)=a(iy),\tag{4.24}
+\end{equation}
+而 (4.21) 第一项可写为
+\begin{equation}
+ \frac1\pi\int_{-\infty}^{\infty}(a_1(iy),a_2(iy))\,dy.\tag{4.25}
+\end{equation}
+这个表达式有助于分解 $\rho_\omega$：把 $f_1$ 换为 $h\mapsto f_1(hg)$ 时，$F_1$ 换为
+$\rho_\omega(g)F_1$，$y\mapsto\widehat f(iy)$ 换为 $y\mapsto\pi_s(g)\widehat f(iy)$，而
+$y\mapsto a(iy)$ 换为 $y\mapsto\pi_s(h)a(iy)$。
+
+令 $\mathcal L$ 为 $i\R$ 上取值于 $\mathbf H$、平方可积且满足 (4.24) 的函数 $a$ 的 Hilbert 空间，即该纤维丛在 $i\R$ 上平方可积的截面。赋予它内积 (4.25)，并以 $\pi$ 表示
+$G(A)$ 在其上由 $\pi(g)a(iy)=\pi_s(g)a(iy)$ 给出的表示。由 (4.24)，也可把
+$\mathcal L$ 看作从 $\R_+$ 到 $\mathbf H$ 的平方可积函数空间，其标量积为
+\[
+ (a_1,a_2)=\frac2\pi\int_0^{\infty}(a_1(y),a_2(y))\,dy.
+\]
+因此 $\pi$ 是各 $\pi_{iy}$ 的连续和。
+
+对每个满足 $\chi^2=\omega$ 的 $\chi$，令 $\mathcal L_\chi$ 为一维表示
+$g\mapsto\chi(\det g)$ 的空间。由于 $(F_1,F_2)$ 是 (4.22) 与 (4.25) 之和，存在从
+$(L_0^2)^\perp$ 到 $\mathcal L\oplus(\bigoplus_\chi\mathcal L_\chi)$ 的、具有稠密定义域的等距映射，由
+$F\mapsto(a(iy),\widehat f(1/2))$ 给出。它连续延拓为从 $(L_0^2)^\perp$ 到上述空间一个稠密子空间的映射 $T$；由前面的讨论，它同时是交织算子。
+
+最终，$L^2(\omega,G)$ 分解为直和
+\[
+ L_0^2(\omega,G)\oplus L_{\mathrm{cont}}^2(\omega,G)\oplus L_{\mathrm{sp}}^2(\omega,G),
+\]
+其中 $L_{\mathrm{sp}}^2$ 是由各函数 $\chi(\det g)$ 张成的空间，即
+$\bigoplus_\chi\mathcal L_\chi$；而 $L_{\mathrm{cont}}^2$ 通过交织算子
+$S:L_{\mathrm{cont}}^2(\omega,G)\to\mathcal L$ 与 $\mathcal L$ 同构。此外，(4.22) 是
+$F_1,F_2$ 在 $L_{\mathrm{sp}}^2$ 上的正交投影的标量积。因此
+$c=[\operatorname{vol}(\widetilde G(F)\backslash\widetilde G(A))]^{-1}$，这也计算出了该体积。
+
+\origsection{5}{Eisenstein 级数与截断过程（Eisenstein series and the truncation process）}
+令 $P_{\mathrm{cusp}}$ 为到 $L_0^2(\omega,G)$ 的正交投影。为给出 Hilbert--Schmidt 算子
+$P_{\mathrm{cusp}}\rho_\omega(\varphi)P_{\mathrm{cusp}}$ 的核的显式公式，需要显式描述第4节算子 $S$，这可以通过 Eisenstein 级数实现。
+
+\origsubsection{A}{Eisenstein 级数（Eisenstein series）}
+若 $\varphi$ 为纤维丛 $\mathbf H(s)$ 的截面，置
+\begin{equation}
+ E(\varphi(s),g)=\sum_{\gamma\in P(F)\backslash G(F)}\varphi(\gamma g,s).\tag{5.1}
+\end{equation}
+这个级数只在 $\operatorname{Re}s>1/2$ 时收敛，一般须通过解析延拓定义。
+
+回忆，若 $f$ 满足 (3.1) 且模 $N(A)Z(A)P(F)$ 的支集紧，则
+\[
+f(g)=\frac1{2\pi i}\int_{x-i\infty}^{x+i\infty}\widehat f(g,s)\,ds.
+\]交换求和与积分可知，其
+$P$ 级数 $F$ 给定为
+\begin{equation}
+ F(g)=\frac1{2\pi i}\int_{x-i\infty}^{x+i\infty}E(\widehat f(s),g)\,ds,
+ \qquad x>\tfrac12.\tag{5.2}
+\end{equation}
+因此，$(L_0^2)^\perp$ 中一个稠密子空间的函数都可表示为“Eisenstein 级数的连续和”。但如前，为获得有用公式，必须解析延拓 $E$ 并把积分线移到虚轴。
+
+由于 $E$ 为 $P$ 级数，其常数项容易计算，参见 (3.6)、(3.7)：
+\[
+ E_N(\varphi(s),g)=\varphi(g,s)+\int\varphi(wng,s)\,dn,
+\]
+即
+\begin{equation}
+ E_N(\varphi(s),g)=\varphi(s)(g)+[M(s)\varphi(s)](g),\tag{5.3}
+\end{equation}
+两式均要求 $\operatorname{Re}s>1/2$。
+
+为解析延拓 $E$，主要考察把 $\mathbf H(s)$ 与 $\mathbf H$ 等同所得的截面。若
+$h\in\mathbf H=\mathbf H(0)$，由
+\begin{equation}
+ h(g,s)=h(g)H(g)^s\tag{5.4}
+\end{equation}
+定义截面 $h(s)$，相应 Eisenstein 级数记为 $E(h(s),g)$。
+
+\origsubsection{B}{截断算子的性质（Properties of the truncation operator）}
+下面利用截断算子构造 $E$ 的解析延拓。若 $c>1$，令 $\chi_c$ 为区间 $[c,+\infty)$ 的示性函数。对
+$G(F)\backslash G(A)$ 上任意函数 $\varphi$，置
+\begin{equation}
+ \Lambda^c\varphi(g)=\varphi(g)
+ -\sum_{P(F)\backslash G(F)}\varphi_N(\gamma g)\chi_c(H(\gamma g)).\tag{5.5}
+\end{equation}
+第二项是与支撑在 $\{g:H(g)>c\}$ 中的函数相联系的 $P$ 级数。因此，$g$ 在 Siegel 域中时，该级数只有有限项，参见引理 (3.3)。若 $\varphi$ 尖点，即 $\varphi_N=0$，则显然
+$\Lambda^c\varphi=\varphi$。一般地，需要：
+\begin{originaltheorem}{引理 (5.6)（Lemma (5.6)；参见 [DL，第197页]）}
+若存在 $g\in G(A)$ 使 $H(g)>1$ 且 $H(\gamma g)>1$，则 $\gamma\in P(F)$。
+\end{originaltheorem}
+
+因此，对给定 $g$，当 $c>1$ 时，(5.5) 的级数至多有一项。特别地，
+\begin{equation}
+\begin{aligned}
+ \Lambda^c\varphi(g)&=\varphi(g)-\varphi_N(g)\chi_c(H(g)),&&H(g)>1,\ c>1,\\
+ &=\varphi(g)-\varphi_N(g),&&H(g)>c>1.
+\end{aligned}\tag{5.7}
+\end{equation}
+令 $\mathcal S$ 为 Siegel 域，$\Omega$ 为其中满足 $H(g)\le c$ 的点集。则 $\Omega$ 模去
+$Z(A)$ 后紧；当 $c>1$，$\Lambda^c\varphi$ 在 $\mathcal S-\Omega$ 上由 (5.7) 第二式给出。
+因此，在相当弱的假设下，$\Lambda^c\varphi$ 就在该区域上有界。例如，若
+$\varphi$ 是 $G(F)\backslash G(A)$ 上“缓慢增长”或平方可积函数与紧支 $C^\infty$ 函数的卷积，便是如此。实际上，此时 (5.7) 还“快速下降”。
+
+另一方面，若 $\Omega$ 是任意紧集，则
+\begin{equation}
+ \Lambda^c\varphi(g)=\varphi(g),\qquad g\in\Omega,\ c\text{ 充分大}.\tag{5.8}
+\end{equation}
+事实上，若 $g\in\Omega$ 且 $\Lambda^c\varphi(g)\ne\varphi(g)$（$c>1$），则存在非空有限集
+$\gamma\in P(F)\backslash G(F)$，使 $H(\gamma g)>c>1$。由引理 (3.3)，该有限集依赖
+$\Omega$ 而不依赖 $c$。所得 $\gamma g$ 模去 $P(F)N(A)Z(A)$ 后须位于某个紧集，而 $H$ 连续，所以
+$H(\gamma g)<c_0$。若 $c>c_0$ 便矛盾。因此 (5.8) 成立。换言之，$c\to\infty$ 时
+$\Lambda^c\varphi\to\varphi$ 在紧集上一致成立。
+
+还指出，$\Lambda^c$ 是 $L^2(\omega,G)$ 上的有界自伴算子：
+\begin{equation}
+ (\Lambda^c\varphi_1,\varphi_2)=(\varphi_1,\Lambda^c\varphi_2).\tag{5.9}
+\end{equation}
+左端是 $(\varphi_1,\varphi_2)$ 减去一个 $P$ 级数与 $\varphi_2$ 的标量积；由 (3.4)，等于
+\[
+ (\varphi_1,\varphi_2)-\int_{P(F)N(A)Z(A)\backslash G(A)}
+ \varphi_{1,N}(g)\chi_c(H(g))\overline{\varphi_{2,N}(g)}\,dg.
+\]
+右端类似，因 $\chi_c$ 为实值，二者相等。当 $c>1$，还有
+\begin{equation}
+ ((1-\Lambda^c)\varphi_1,\Lambda^c\varphi_2)=0,\tag{5.10}
+\end{equation}
+即 $\Lambda^c$ 是 $L^2(\omega,G)$ 中的正交投影。事实上，$(1-\Lambda^c)\varphi_1$ 也是
+$P$ 级数，所以左端为
+\[
+ \int_{N(A)P(F)Z(A)\backslash G(A)}\varphi_{1,N}(g)\chi_c(H(g))
+ \left(\int_{N(F)\backslash N(A)}\Lambda^c\varphi_2(ng)\,dn\right)dg.
+\]
+除非 $H(g)>c>1$，否则 $\chi_c(H(g))=0$；而在后一情形，由 (5.7)，内层积分为
+\[
+ \int_{N(F)\backslash N(A)}(\varphi_2(ng)-\varphi_{2,N}(ng))\,dn=0.
+\]
+故 (5.10) 成立。事实上，有时即使 $\varphi_i\notin L^2(\omega,G)$，该式仍成立。
+
+\origsubsection{C}{Eisenstein 级数的解析延拓（Analytic continuation of Eisenstein series）}
+用 (5.5) 的截断算子可写
+\begin{equation}
+ E(h(s),g)=\Lambda^cE(h(s),g)
+ +\sum_{P(F)\backslash G(F)}E_N(h(s),\gamma g)\chi_c(H(\gamma g)).\tag{5.11}
+\end{equation}
+右端第二项是与支撑于 $\{g:H(g)\ge c\}$ 的函数相联系的 $P$ 级数。因此，在 Siegel 域中，它只有有限项；特别地，它表示 $s$ 的一个亚纯函数，其奇点至多为 $M(s)$ 的奇点，见 (5.3)。
+
+右端第一项最初仅在 $\operatorname{Re}s>1/2$ 定义。但它平方可积，见 (5.7) 及其后的评述，所以只须将它作为 $L^2(\omega,G)$ 值函数解析延拓。于是考察内积
+\begin{equation}
+ (\Lambda^cE(h_1(s_1)),\Lambda^cE(h_2(\bar s_2))).\tag{5.12}
+\end{equation}
+由 (5.10)，它等于 $(E(h_1(s_1)),\Lambda^cE(h_2(\bar s_2)))$。由于
+$\Lambda^cE$ 是两个 $P$ 级数之差，利用 (3.4) 可算得
+\[
+ \int_{N(A)P(F)Z(A)\backslash G(A)}E_N(h_1(s_1),g)
+ \{\overline{h_2(g,\bar s_2)}-\overline{E_N(h_2(\bar s_2),g)}\chi_c(H(g))\}\,dg.
+\]
+由 (5.3)，取 $\varphi(g,s)=h(g,s)$，且对 $t\in F_\infty^+$、$a\in F^0(A)$、$k\in K$，
+\[
+ h\!\left[\begin{pmatrix}ta&x\\0&1\end{pmatrix}k,s\right]
+ =|t|^{s+1/2}h\!\left[\begin{pmatrix}a&0\\0&1\end{pmatrix}k\right].
+\]
+故由 Iwasawa 分解，计算得
+\begin{equation}
+\begin{split}
+ &(\Lambda^cE(h_1(s_1)),\Lambda^cE(h_2(\bar s_2)))\\
+ &\quad=\frac{(h_1,h_2)c^{s_1+s_2}
+ -(M(s_1)h_1,M(\bar s_2)h_2)c^{-(s_1+s_2)}}{s_1+s_2}\\
+ &\qquad+\frac{(h_1,M(\bar s_2)h_2)c^{s_1-s_2}
+ -(M(s_1)h_1,h_2)c^{-(s_1-s_2)}}{s_1-s_2}.
+\end{split}\tag{5.13}
+\end{equation}
+这里 $\operatorname{Re}s_1>\operatorname{Re}s_2>1/2$。
+
+右端是 $(s_1,s_2)$ 的亚纯函数，形式上似乎在直线 $s_1+s_2=0$ 上有奇点。但由 (3.21)、(4.20)，第一个括号中的表达式恰在该直线上消失；类似地，第二个括号在
+$s_1-s_2=0$ 时消失。因此，(5.13) 的奇点至多为 $M(s_1)$ 与 $M(s_2)$ 的奇点。特别地，若
+$s=s_1=-s_2\ne0$，有
+\begin{equation}
+\begin{split}
+ &(\Lambda^cE(h_1(s)),\Lambda^cE(h_2(-\bar s)))\\
+ &=2(h_1,h_2)\log c+(M(-s)M'(s)h_1,h_2)\\
+ &\quad+\frac{(h_1,M(-\bar s)h_2)c^{2s}-(M(s)h_1,h_2)c^{-2s}}{2s}.
+\end{split}\tag{5.14}
+\end{equation}
+\noindent\textit{译注：原书 (5.14) 正指数处印作 $c^{2c}$，此处按 (5.13) 的代入写为 $c^{2s}$。}\footnote{\textbf{译者注（本次校订）：}式 (5.14) 中的导数项还应带负号，即 $-(M(-s)M^{\prime}(s)h_1,h_2)$。在 (5.13) 的第一分式中令 $s_1\to s$、$s_2=-s$，对分子求导即可得到这个负号；后文 (6.27) 和 (6.29) 已采用正确的符号。}
+
+假设 $h_1=h_2=h$ 时，(5.13) 右端在双圆盘 $|s_1-s_0|<R$、$|s_2-s_0|<R$ 中解析，而
+$E(h(s))$ 在以 $s_0$ 为中心的某个小圆盘中全纯。那么左端的二重 Taylor 级数在该双圆盘内收敛。由范数恒等式\footnote{\textbf{译者注（本次校订）：}下方范数恒等式的内积第二项不应再额外取共轭：内积本身已对第二变量共轭线性。此外，对一般复数 $s$，最后的求值应在 $s_1=s,\ s_2=\bar s$ 处进行；只有 $s$ 为实数时才可写成 $s_1=s_2=s$。}
+\[
+\begin{split}
+ \left\|\frac{\partial^n}{\partial s^n}\Lambda^cE(h(s))\right\|^2
+ &=\left(\frac{\partial^n}{\partial s^n}\Lambda^cE(h(s)),
+ \overline{\frac{\partial^n}{\partial s^n}\Lambda^cE(h(s))}\right)\\
+ &=\left.\frac{\partial^{2n}}{\partial s_1^n\partial s_2^n}
+ (\Lambda^cE(h(s_1)),\Lambda^cE(h(\bar s_2)))\right|_{s_1=s_2=s},
+\end{split}
+\]
+可推出 $\Lambda^cE(h(s))$ 的 Taylor 级数在 $|s-s_0|<R$ 内收敛，即它在该圆盘中解析。因此
+$\Lambda^cE(h(s))$，从而 $E(h(s),g)$，在 $\operatorname{Re}s\ge0$ 中亚纯，奇点至多为
+$M(s)$ 的奇点。注意在 (5.13)、(5.14) 中，要把 $\mathbf H(s)$ 与 $\mathbf H$ 等同，才能定义标量积与导数 $M'(s)$。
+
+综上，若 $\varphi(s)$ 为 $\mathbf H(s)$ 的任意亚纯截面，则 $E(\varphi(s),g)$ 定义为 $s$ 的亚纯函数，至少对 $\operatorname{Re}s\ge0$ 如此。此外，
+\begin{equation}
+ E(M(s)\varphi(s),g)=E(\varphi(s),g).\tag{5.15}
+\end{equation}
+事实上，$\varphi(s)\in\mathbf H(s)$、$M(s)\varphi(s)\in\mathbf H(-s)$，所以其左端常数项为
+\[
+ M(s)\varphi(s)+M(-s)M(s)\varphi(s)
+ =\varphi(s)+M(s)\varphi(s)=E_N(\varphi(s),g).
+\]
+因此两边的常数项相同，差为尖点函数。而任意 $P$ 级数及其解析延拓都与所有尖点函数正交，所以差为零。
+
+更一般地，对于导出群（derived group）的 $F$ 秩为 $1$ 的群，也可证明同样事实。唯一差别是
+$M(s)$ 可能有有限个极点，而这些极点未必已知。尽管如此，它仍以类似方式控制 Eisenstein 级数的解析性质，参见 [Ar 1]、[La 1]。
+
+\origsubsection{D}{$\rho_\omega(\varphi)$ 在 $L_{\mathrm{cont}}^2$ 中的核（The kernel）}
+设 $F_1(g)$ 为模 $Z(A)N(A)P(F)$ 的支集紧的函数 $f_1$ 的 $P$ 级数。先证明，对所有
+$h\in\mathbf H$、几乎所有 $y$，
+\begin{equation}
+ (h,SF_1(iy))=\frac12\int_{G(F)Z(A)\backslash G(A)}E(h(iy),g)\overline{F_1(g)}\,dg.\tag{5.16}
+\end{equation}
+这里 $E(h(iy),g)$ 由解析延拓定义，$SF_1(iy)=a_1(iy)$ 如 (4.23)。
+
+若 $F_2$ 为 $f_2$ 的 $P$ 级数，由 (5.2)，对 $\operatorname{Re}s=x>1/2$，有
+\[
+\begin{aligned}
+ (F_1,F_2)
+ &=\int_{\widetilde G(F)\backslash\widetilde G(A)}
+ \left\{\frac1{2\pi i}\int_{x-i\infty}^{x+i\infty}E(\widehat f_1(s),g)\,ds\right\}
+ \overline{F_2(g)}\,dg\\
+ &=\frac1{2\pi i}\int_{x-i\infty}^{x+i\infty}ds
+ \int_{\widetilde G(F)\backslash\widetilde G(A)}E(\widehat f_1(s),g)\overline{F_2(g)}\,dg.
+\end{aligned}
+\]
+移到虚轴后，得到
+\begin{equation}
+\begin{split}
+ (F_1,F_2)={}&\frac1{2\pi}\int_{-\infty}^{\infty}dy
+ \int E(\widehat f_1(iy),g)\overline{F_2(g)}\,dg\\
+ &+c\sum_{\chi^2=\omega}(F_1,\chi)(\chi,F_2).
+\end{split}\tag{5.17}
+\end{equation}
+由 (5.15)，把 $\widehat f_1(iy)$ 换成 $M(iy)\widehat f_1(iy)$，再令 $y\mapsto-y$，积分不变。因此取 (4.23) 的 $a_1(iy)$，(5.17) 变为
+\[
+ (F_1,F_2)=\frac1{2\pi}\int_{-\infty}^{\infty}dy\int
+ E(a_1(iy),g)\overline{F_2(g)}\,dg
+ +c\sum_{\chi^2=\omega}(F_1,\chi)(\chi,F_2).
+\]
+另一方面，如 (4.21) 计算内积，也有
+\[
+ (F_1,F_2)=\frac1\pi\int_{-\infty}^{\infty}(a_1(iy),a_2(iy))\,dy
+ +c\sum_{\chi^2=\omega}(F_1,\chi)(\chi,F_2).
+\]
+所以对所有 $a\in\mathcal L$，
+\begin{equation}
+ \int_{-\infty}^{\infty}(a(iy),SF(iy))\,dy
+ =\frac12\int_{-\infty}^{\infty}
+ \left\{\int_{\widetilde G(F)\backslash\widetilde G(A)}E(a(iy),g)\overline{F(g)}\,dg\right\}dy.\tag{5.18}
+\end{equation}
+因为把 $a(iy)$ 换成 $\tfrac12(a(iy)+M(-iy)a(-iy))$ 时两端不变，该式对任意取值于
+$\mathbf H$ 的平方可积函数 $a(y)$ 也成立。因此，取 $a(iy)=c(y)h(iy)$，其中 $c$ 为标量函数、$h$ 为“常截面”，由 (5.18) 便得 (5.16)。
+
+将 $S:L_{\mathrm{cont}}^2(\omega,G)\to\mathcal L$ 扩张到 $L^2(\omega,G)$，令它在
+$L_0^2$ 和 $L_{\mathrm{sp}}^2$ 上为零。则 $S^*S$ 为到 $L_{\mathrm{cont}}^2$ 的正交投影。
+由于 $S$ 交织，对任意紧支 $C^\infty$ 函数 $\varphi$，
+$S^*S\rho_\omega(\varphi)S^*S=S^*\pi(\varphi)S$。所以对 $F_1,F_2\in L^2(\omega,G)$，
+\begin{equation}
+\begin{split}
+ &(S^*S\rho_\omega(\varphi)S^*SF_1,F_2)
+ =(S^*\pi(\varphi)SF_1,F_2)=(\pi(\varphi)SF_1,SF_2)\\
+ &\qquad=\frac1\pi\int_{-\infty}^{\infty}
+ (\pi_{iy}(\varphi)SF_1(iy),SF_2(iy))\,dy.
+\end{split}\tag{5.19}
+\end{equation}
+
+应用 (5.16) 前，先说明一点：尽管只对 $F_1\in(L_0^2)^\perp$ 证明了它，实际上它对所有
+$F_1\in L^2(\omega,G)$ 都成立。若 $F\in L_0^2$，按定义 $SF\equiv0$；另一方面，每个
+Eisenstein 级数都与任意尖点函数正交，最初在收敛域内成立，再由解析延拓对所有 $s$ 成立，所以 (5.16) 右端也恒为零。
+
+若 $\{\Phi_\alpha\}$ 为 $\mathbf H$ 的标准正交基，把 (5.16) 用于 (5.19)，得
+\[
+\begin{aligned}
+ &(S^*S\rho_\omega(\varphi)S^*SF_1,F_2)\\
+ &=\frac1\pi\int_{-\infty}^{\infty}\sum_\alpha
+ (\pi_{iy}(\varphi)SF_1(iy),\Phi_\alpha)(\Phi_\alpha,SF_2(iy))\,dy\\
+ &=\frac1{4\pi}\int_{-\infty}^{\infty}dy\sum_\alpha
+ \left\{\int F_1(g)\overline{E(\pi_{iy}^*(\varphi)\Phi_\alpha(iy),g)}\,dg\right\}
+ \left\{\int\overline{F_2(h)}E(\Phi_\alpha(iy),h)\,dh\right\},
+\end{aligned}
+\]
+其中 $g,h\in\widetilde G(F)\backslash\widetilde G(A)$。交换积分与求和，得
+\begin{equation}
+\begin{split}
+ &(S^*S\rho_\omega(\varphi)S^*SF_1,F_2)\\
+ &=\iint F_1(g)\overline{F_2(h)}
+ \left\{\sum_\alpha\frac1{4\pi}\int_{-\infty}^{\infty}
+ E(\Phi_\alpha(iy),h)\overline{E(\pi_{iy}^*(\varphi)\Phi_\alpha(iy),g)}\,dy\right\}dg\,dh.
+\end{split}\tag{5.20}
+\end{equation}
+令 $P_{\mathrm{cont}}=S^*S$，则 $P_{\mathrm{cont}}\rho_\omega(\varphi)P_{\mathrm{cont}}$ 的核恰为括号中的表达式。另一种写法来自
+$\pi_{iy}^*(\varphi)\Phi_\alpha=
+\sum_\beta(\pi_{iy}^*(\varphi)\Phi_\alpha,\Phi_\beta)\Phi_\beta$：
+\begin{equation}
+ K_{\mathrm{cont}}(h,g)=\frac1{4\pi}\sum_{\alpha,\beta}\int_{-\infty}^{\infty}
+ (\pi_{iy}(\varphi)\Phi_\beta,\Phi_\alpha)
+ E(\Phi_\alpha(iy),h)\overline{E(\Phi_\beta(iy),g)}\,dy.\tag{5.21}
+\end{equation}
+\noindent\textit{译注：原式 (5.21) 积分末印作 $dg$，这里依积分变量写作 $dy$。}
+
+若 $P_{\mathrm{sp}}$ 为到 $L_{\mathrm{sp}}^2$ 的投影，则算子
+$P_{\mathrm{sp}}\rho_\omega(\varphi)P_{\mathrm{sp}}$ 的核为\footnote{\textbf{译者注（本次校订）：}在 $K_{\mathrm{sp}}$ 的积分中应使用 $\chi(\det g)$，而非 $\bar\chi(\det g)$。右平移在函数 $h\mapsto\chi(\det h)$ 上的特征值是 $\chi(\det g)$；这一选择也使被积函数沿中心不变。}
+\[
+ K_{\mathrm{sp}}(h,g)=\operatorname{vol}(\widetilde G(F)\backslash\widetilde G(A))^{-1}
+ \sum_{\chi^2=\omega}\chi(h)\bar\chi(g)
+ \int_{\widetilde G(A)}\varphi(g)\bar\chi(\det g)\,dg.
+\]
+$\rho_\omega(\varphi)$ 本身仍由核
+$K(h,g)=\sum_{\widetilde G(F)}\varphi(h^{-1}\gamma g)$ 定义。因此
+\[
+ (P_{\mathrm{cusp}}\rho_\omega(\varphi)P_{\mathrm{cusp}}F)(h)
+ =\int K_{\mathrm{cusp}}(h,g)\overline{F(g)}\,dg,
+\]
+其中 $K_{\mathrm{cusp}}=K-K_{\mathrm{cont}}-K_{\mathrm{sp}}$。\footnote{\textbf{译者注（本次校订）：}上式核算子应作用为 $\int K_{\mathrm{cusp}}(h,g)F(g)\,dg$，其中 $F(g)$ 不取共轭。右侧若用 $\overline{F(g)}$，便成为共轭线性算子，与左侧的线性算子不符。}
+
+\origsection{6}{迹公式（The trace formula）}
+设 $\varphi$ 为 $G(A)$ 上满足 (1.3) 及紧接其后的条件、模 $Z(A)$ 的支集紧的 $C^\infty$ 函数。已知
+$P_{\mathrm{cusp}}\rho_\omega(\varphi)P_{\mathrm{cusp}}$ 为 Hilbert--Schmidt 且迹类。此前的方法还能证明
+$K_{\mathrm{cusp}}$ 平方可积、连续且沿对角线可积，参见 [DL]。此外，
+\begin{equation}
+ \operatorname{tr}(P_{\mathrm{cusp}}\rho_\omega(\varphi)P_{\mathrm{cusp}})
+ =\int_{\widetilde G(F)\backslash\widetilde G(A)}K_{\mathrm{cusp}}(x,x)\,dx.\tag{6.1}
+\end{equation}
+下面显式计算其右端。对 $f\in L_0^2(\omega,G)^\perp$，
+$\int K_{\mathrm{cusp}}(x,y)f(y)dy=0$；所以对每个 $x$，函数
+$y\mapsto\overline{K_{\mathrm{cusp}}(x,y)}$ 与该正交补正交，因而属于 $L_0^2$，即它关于 $y$ 尖点。
+
+若以 $\Lambda_2^c$ 表示对第二变量的截断算子，则
+\begin{equation}
+ K_{\mathrm{cusp}}(x,y)=\Lambda_2^cK_{\mathrm{cusp}}(x,y)
+ =\Lambda_2^cK(x,y)-\Lambda_2^cK_{\mathrm{cont}}(x,y)-\Lambda_2^cK_{\mathrm{sp}}(x,y).\tag{6.2}
+\end{equation}
+可证明每项都沿对角线可积。因此
+\begin{equation}
+\begin{split}
+ \operatorname{tr}(P_{\mathrm{cusp}}\rho_\omega(\varphi)P_{\mathrm{cusp}})
+ =\int\Lambda_2^cK(x,x)\,dx
+ -\int\Lambda_2^cK_{\mathrm{cont}}(x,x)\,dx
+ -\int\Lambda_2^cK_{\mathrm{sp}}(x,x)\,dx.
+\end{split}\tag{6.3}
+\end{equation}
+我们将分别计算这些积分。注意左端与 $c$ 无关，可令 $c\to\infty$，计算时忽略所有趋于零的项。
+
+\origsubsection{A}{来自核 $\Lambda_2^cK$ 的贡献（Contribution from the kernel）}
+当 $x=y$ 时，按定义
+\begin{equation}
+\begin{split}
+ \Lambda_2^cK(x,x)
+ ={}&\sum_{\gamma\in\widetilde G(F)}\varphi(x^{-1}\gamma x)\\
+ &-\sum_{\xi\in P(F)\backslash G(F)}\int_{N(F)\backslash N(A)}
+ \sum_{\gamma\in\widetilde G(F)}\varphi(x^{-1}\gamma n\xi x)
+ \chi_c(H(\xi x))\,dn.
+\end{split}\tag{6.4}
+\end{equation}
+回忆下述引理。
+\begin{originaltheorem}{引理 (6.5)（Lemma (6.5)；参见 [Ge，第201页]）}
+若 $\Omega$ 是 $Z(A)\backslash G(A)$ 中的紧集，则存在数 $d_\Omega$，使得当
+$\gamma\in G(F)$、$n\in N(A)$，且对某个满足 $H(x)>d_\Omega$ 的 $x\in G(A)$ 有
+$x^{-1}\gamma nx\in\Omega$ 时，必有 $\gamma\in P(F)$。
+\end{originaltheorem}
+
+将它用于 $\varphi$ 的支集 $\Omega$。把 $\gamma$ 换为 $\xi^{-1}\gamma$，(6.4) 第二项变为
+\begin{equation}
+ \sum_{\xi\in P(F)\backslash G(F)}\int_{N(F)\backslash N(A)}
+ \sum_{\gamma\in\widetilde G(F)}\varphi(x^{-1}\xi^{-1}\gamma n\xi x)
+ \chi_c(H(\xi x))\,dn.\tag{6.6}
+\end{equation}
+只须对存在 $x,\xi,n$ 使 $g=\xi x$ 且 $g^{-1}\gamma ng\in\Omega$ 的 $\gamma$ 求和。因此，给定
+$\varphi$ 后，只要 $c$ 足够大，由引理 (6.5)，这些 $\gamma$ 必属于 $P(F)$，即其在
+$\widetilde G(F)$ 中的像。可写
+\begin{equation}
+ \gamma=\mu\nu,\qquad\mu=\begin{pmatrix}\alpha&0\\0&1\end{pmatrix},\quad\nu\in N(F).\tag{6.7}
+\end{equation}
+于是把 $N(F)\backslash N(A)$ 的积分与 $N(F)$ 上的求和合并，将 (6.4) 写为
+\begin{equation}
+ \sum_{\gamma\in\widetilde G(F)}\varphi(x^{-1}\gamma x)
+ -\sum_{\xi\in P(F)\backslash G(F)}\int_{N(A)}\sum_\mu
+ \varphi(x^{-1}\xi^{-1}\mu n\xi x)\chi_c(H(\xi x))\,dn,\tag{6.8}
+\end{equation}
+其中 $\mu$ 如 (6.7)。将求和分组后，$\Lambda_2^cK(x,x)$ 为以下四项之和：
+\begin{equation}
+ \varphi(e),\tag{6.9}
+\end{equation}
+\begin{equation}
+ \sum_{\gamma\ F\text{ 椭圆}}\varphi(x^{-1}\gamma x),\tag{6.10}
+\end{equation}
+\begin{equation}
+ \sum_{\gamma\text{ 幂零正则}}\varphi(x^{-1}\gamma x)
+ -\sum_{\xi\in P(F)\backslash G(F)}\int_{N(A)}
+ \varphi(x^{-1}\xi^{-1}n\xi x)\chi_c(H(\xi x))\,dn,\tag{6.11}
+\end{equation}
+以及
+\begin{equation}
+\begin{split}
+ &\sum_{\gamma\ F\text{ 双曲正则}}\varphi(x^{-1}\gamma x)\\
+ &\quad-\sum_{\xi\in P(F)\backslash G(F)}\int_{N(A)}\sum_{\alpha\ne1}
+ \varphi\!\left(x^{-1}\xi^{-1}\begin{pmatrix}\alpha&0\\0&1\end{pmatrix}n\xi x\right)
+ \chi_c(H(\xi x))\,dn.
+\end{split}\tag{6.12}
+\end{equation}
+这里 $F$ 椭圆（$F$-elliptic）指 $\gamma$ 不与 $P(F)$ 的任何元素在 $G(F)$ 中共轭；“幂零正则”（nilpotent regular，沿用原文术语）指 $\gamma$ 共轭于 $N(F)$ 的非平凡元素；
+$F$ 双曲正则（$F$-hyperbolic regular）指它共轭于某个
+$\left(\begin{smallmatrix}\alpha&0\\0&1\end{smallmatrix}\right)$，其中 $\alpha\in F^\times$、$\alpha\ne1$。各项在
+$\widetilde G(F)\backslash\widetilde G(A)$ 上都可积，下面计算这些积分。
+
+(6.9) 的积分显然为
+\begin{equation}
+ \operatorname{vol}(\widetilde G(F)\backslash\widetilde G(A))\varphi(e).\tag{6.13}
+\end{equation}
+(6.10) 模去 $\widetilde G(F)$ 后紧支。事实上，若 $\varphi(x^{-1}\gamma x)\ne0$，则
+$x^{-1}\gamma x\in\Omega=\operatorname{supp}\varphi$；由于 $\gamma$ 椭圆，由引理 (6.5)，
+$H(x)<d_\Omega$。其积分为
+\begin{equation}
+ \int_{\widetilde G(F)\backslash\widetilde G(A)}
+ \sum_{\gamma\text{ 椭圆}}\varphi(x^{-1}\gamma x)\,dx,\tag{6.14}
+\end{equation}
+可像除代数情形一样进一步变换。
+
+在 (6.11) 中，写
+$\gamma=\xi^{-1}\left(\begin{smallmatrix}1&\eta\\0&1\end{smallmatrix}\right)\xi$，
+$\xi\in P(F)\backslash G(F)$，$\eta\ne0$。于是它成为
+\[
+ \sum_{\xi\in P(F)\backslash G(F)}\left\{
+ \sum_{\eta\ne0}\varphi\!\left[x^{-1}\xi^{-1}\begin{pmatrix}1&\eta\\0&1\end{pmatrix}\xi x\right]
+ -\int_{N(A)}\varphi(x^{-1}\xi^{-1}n\xi x)\chi_c(H(\xi x))\,dn\right\}.
+\]
+它在 $\widetilde G(F)\backslash\widetilde G(A)$ 上的积分，等于在 $P(F)Z(A)\backslash G(A)$ 上对
+\begin{equation}
+ \sum_{\eta\ne0}\varphi\!\left[x^{-1}\begin{pmatrix}1&\eta\\0&1\end{pmatrix}x\right]
+ -\int_A\varphi\!\left[x^{-1}\begin{pmatrix}1&u\\0&1\end{pmatrix}x\right]\chi_c(H(x))\,du\tag{6.15}
+\end{equation}
+积分。为此使用 Poisson 求和公式。置
+\begin{equation}
+ F(x)=\int_K\varphi\!\left[k^{-1}\begin{pmatrix}1&x\\0&1\end{pmatrix}k\right]dk,\tag{6.16}
+\end{equation}
+则 $F$ 为 $A$ 上 Schwartz--Bruhat 函数。利用 Iwasawa 分解，(6.15) 的积分为
+\begin{equation}
+ \int_{F^\times\backslash A^\times}
+ \left\{\sum_{\eta\ne0}F(a\eta)-\widehat F(0)\chi_c(|a|^{-1})|a|^{-1}\right\}|a|\,d^\times a.\tag{6.17}
+\end{equation}
+由 Poisson 求和公式，它等于
+\[
+\begin{split}
+ &\int_{|a|\ge1}\left(\sum_{\eta\ne0}F(a\eta)\right)|a|\,d^\times a
+ +\int_{|a|\le1}\sum_{\eta\ne0}\widehat F(a^{-1}\eta)\,d^\times a\\
+ &\quad+\widehat F(0)\int_{|a|\le1}(1-\chi_c(|a|^{-1}))\,d^\times a
+ -F(0)\int_{|a|\le1}|a|\,d^\times a.
+\end{split}
+\]
+这说明积分收敛。含 $\widehat F(0)$ 的项依赖 $c$，等于
+$(\log c)\widehat F(0)\operatorname{vol}(F^\times\backslash F^0(A))$。
+
+对 $\operatorname{Re}s>1$，还有
+\[
+\begin{aligned}
+ \int_{A^\times}F(a)|a|^s\,d^\times a
+ &=\int_{F^\times\backslash A^\times}\sum_{\eta\ne0}F(a\eta)|a|^s\,d^\times a\\
+ &=\int_{|a|\ge1}\left(\sum_{\eta\ne0}F(a\eta)\right)|a|^s\,d^\times a
+ +\int_{|a|\le1}\left(\sum_{\eta\ne0}\widehat F(a^{-1}\eta)\right)|a|^{s-1}\,d^\times a\\
+ &\quad+\widehat F(0)\int_{|a|\le1}|a|^{s-1}\,d^\times a
+ -F(0)\int_{|a|\le1}|a|^s\,d^\times a.
+\end{aligned}
+\]
+除了含 $\widehat F(0)$ 的项，其他项均在 $s=1$ 解析；该项等于
+$\widehat F(0)\operatorname{vol}(F^\times\backslash F^0(A))/(s-1)$。所以 (6.17) 等于
+\[
+ \operatorname{f.p.}\left(\int_{A^\times}F(a)|a|\,d^\times a\right)
+ +(\log c)\widehat F(0)\operatorname{vol}(F^\times\backslash F^0(A)),
+\]
+其中有限部分（finite part）符号 $\operatorname{f.p.}$ 表示从
+$\int_{A^\times}F(a)|a|^s d^\times a$ 减去 $s=1$ 处主部（principal part），再取 $s=1$ 的值。
+在“有限部分积分”中令 $a\mapsto a^{-1}$，最终 (6.11) 的积分为
+\begin{equation}
+\begin{split}
+ &\operatorname{f.p.}\int_{A^\times}\int_K
+ \varphi\!\left[k^{-1}\begin{pmatrix}a^{-1}&0\\0&1\end{pmatrix}
+ \begin{pmatrix}1&1\\0&1\end{pmatrix}\begin{pmatrix}a&0\\0&1\end{pmatrix}k\right]
+ |a|^{-1}\,d^\times a\,dk\\
+ &\quad+(\log c)\operatorname{vol}(F^\times\backslash F^0(A))
+ \int_K\int_A\varphi\!\left(k^{-1}\begin{pmatrix}1&x\\0&1\end{pmatrix}k\right)dx\,dk.
+\end{split}\tag{6.18}
+\end{equation}
+
+现在处理 (6.12)。写
+$\gamma=\xi^{-1}\left(\begin{smallmatrix}\alpha&0\\0&1\end{smallmatrix}\right)\xi$，
+$\xi\in A(F)\backslash G(F)$、$\alpha\in F^\times$、$\alpha\ne1$。当 $\xi$ 遍历一组代表时，每个
+$\gamma$ 出现两次，因为在 $\widetilde G$ 中
+\[
+ w\begin{pmatrix}\alpha&0\\0&1\end{pmatrix}w^{-1}
+ =\begin{pmatrix}1&0\\0&\alpha\end{pmatrix}
+ =\begin{pmatrix}\alpha^{-1}&0\\0&1\end{pmatrix}.
+\]
+故 (6.12) 第一项为
+\[
+\begin{aligned}
+ &\frac12\sum_{\xi\in A(F)\backslash G(F)}\sum_{\alpha\ne1}
+ \varphi\!\left[x^{-1}\xi^{-1}\begin{pmatrix}\alpha&0\\0&1\end{pmatrix}\xi x\right]\\
+ &=\frac12\sum_{\xi\in P(F)\backslash G(F)}\sum_{\nu\in N(F)}\sum_{\alpha\ne1}
+ \varphi\!\left[x^{-1}\xi^{-1}\nu^{-1}\begin{pmatrix}\alpha&0\\0&1\end{pmatrix}\nu\xi x\right].
+\end{aligned}
+\]
+所以 (6.12) 整体的积分，是在 $\widetilde G(F)\backslash\widetilde G(A)$ 上对上式减去
+\[
+ \sum_{\xi\in P(F)\backslash G(F)}\int_{N(A)}\sum_{\alpha\ne1}
+ \varphi\!\left[x^{-1}\xi^{-1}\begin{pmatrix}\alpha&0\\0&1\end{pmatrix}n\xi x\right]
+ \chi_c(H(\xi x))\,dn
+\]
+后积分。在 $N(A)$ 上作变量代换
+\[
+ n\longmapsto\begin{pmatrix}\alpha^{-1}&0\\0&1\end{pmatrix}n^{-1}
+ \begin{pmatrix}\alpha&0\\0&1\end{pmatrix}n,\qquad\alpha\ne1,
+\]
+可知等于在 $P(F)Z(A)\backslash G(A)$ 上对
+\[
+ \frac12\sum_{\alpha\ne1}\sum_{\nu\in N(F)}
+ \varphi\!\left[x^{-1}\nu^{-1}\begin{pmatrix}\alpha&0\\0&1\end{pmatrix}\nu x\right]
+ -\int_{N(A)}\sum_{\alpha\ne1}\varphi\!\left[x^{-1}n^{-1}\begin{pmatrix}\alpha&0\\0&1\end{pmatrix}nx\right]
+ \chi_c(H(x))\,dn
+\]
+积分。为计算此积分，先对 $N(F)\backslash N(A)$ 积分，再对
+$N(A)A(F)Z(A)\backslash G(A)$ 积分。第一步给出
+\[
+ \frac12\sum_{\alpha\ne1}\int_{N(A)}\sum
+ \varphi\!\left[x^{-1}n^{-1}\begin{pmatrix}\alpha&0\\0&1\end{pmatrix}nx\right]dn
+ -\int_{N(A)}\sum_{\alpha\ne1}
+ \varphi\!\left[x^{-1}n^{-1}\begin{pmatrix}\alpha&0\\0&1\end{pmatrix}nx\right]\chi_c(H(x))\,dn.
+\]
+接下来在 $N(A)A(F)Z(A)\backslash G(A)$ 上的积分，等于对下式积分：
+\begin{equation}
+ \sum_{\alpha\ne1}\varphi\!\left[x^{-1}\begin{pmatrix}\alpha&0\\0&1\end{pmatrix}x\right]
+ \left(\tfrac12-\chi_c(H(x))\right)\tag{6.19}
+\end{equation}
+在 $A(F)Z(A)\backslash G(A)$ 上积分。作变量代换 $x\mapsto wx$，第一个因子保持不变，第二个因子则相应改变。由于
+$w$ 正规化 $A(F)$，(6.12) 的积分也等于在该空间上对
+\[
+ \frac12\sum_{\alpha\ne1}\varphi\!\left[x^{-1}\begin{pmatrix}\alpha&0\\0&1\end{pmatrix}x\right]
+ (1-\chi_c(H(x))-\chi_c(H(wx)))
+\]
+积分。由 Iwasawa 分解，它等于
+\begin{equation}
+\begin{split}
+ &\frac12\int_K\int_{N(A)}\sum_{\alpha\ne1}
+ \varphi\!\left[k^{-1}n^{-1}\begin{pmatrix}\alpha&0\\0&1\end{pmatrix}nk\right]\\
+ &\quad\times\left\{\int_{F^\times\backslash A^\times}
+ (1-\chi_c(|a|)-\chi_c(|a|^{-1}H(wn)))\,d^\times a\right\}dk\,dn.
+\end{split}\tag{6.20}
+\end{equation}
+因为 $c>1$ 且 $H(wn)\le1$，内层被积函数只在 $c^{-1}H(wn)<|a|<c$ 时不为零，且此时等于
+$1$。故 (6.12) 的积分为
+\begin{equation}
+\begin{split}
+ &(\log c)\operatorname{vol}(F^\times\backslash F^0(A))
+ \int_K\int_{N(A)}\sum_{\alpha\ne1}
+ \varphi\!\left[k^{-1}\begin{pmatrix}\alpha&0\\0&1\end{pmatrix}nk\right]dk\,dn\\
+ &\quad-\frac12\operatorname{vol}(F^\times\backslash F^0(A))
+ \int_K\int_{N(A)}\sum_{\alpha\ne1}
+ \varphi\!\left[k^{-1}n^{-1}\begin{pmatrix}\alpha&0\\0&1\end{pmatrix}nk\right]
+ \log H(wnk)\,dn\,dk.
+\end{split}\tag{6.21}
+\end{equation}
+把 (6.13)、(6.14)、(6.18) 与 (6.21) 相加，得到：
+\begin{originaltheorem}{命题 (6.22)（Proposition (6.22)）}
+$\int\Lambda_2^cK(x,x)dx$ 等于
+\[
+ \operatorname{vol}(\widetilde G(F)\backslash\widetilde G(A))\varphi(e)
+ +\int_{\widetilde G(F)\backslash\widetilde G(A)}
+ \sum_{\gamma\text{ 椭圆}}\varphi(x^{-1}\gamma x)\,dx
+\]
+加上下列三项：
+\begin{equation}
+ \operatorname{f.p.}\int_{Z(A)N(A)\backslash G(A)}
+ \varphi\!\left[g^{-1}\begin{pmatrix}1&1\\0&1\end{pmatrix}g\right]dg,\tag{6.23}
+\end{equation}
+\begin{equation}
+ (\log c)\operatorname{vol}(F^\times\backslash F^0(A))
+ \int_K\int_{N(A)}\sum_{\alpha\in F^\times}
+ \varphi\!\left[k^{-1}\begin{pmatrix}\alpha&0\\0&1\end{pmatrix}nk\right]dn\,dk,\tag{6.24}
+\end{equation}
+\begin{equation}
+ -\frac12\operatorname{vol}(F^\times\backslash F^0(A))
+ \int_K\int_{N(A)}\sum_{\alpha\ne1}
+ \varphi\!\left[k^{-1}n^{-1}\begin{pmatrix}\alpha&0\\0&1\end{pmatrix}nk\right]
+ \log H(wnk)\,dn\,dk.\tag{6.25}
+\end{equation}
+\end{originaltheorem}
+
+\paragraph*{注（Remark）.}
+(6.24) 依赖 $c$，但 $\operatorname{tr}\rho_\omega(\varphi)$ 不依赖。因此可预期它稍后会与另一项抵消。
+
+\origsubsection{B}{连续谱的贡献（Contribution from the continuous spectrum）}
+回忆
+\[
+ \Lambda_2^cK_{\mathrm{cont}}(g,h)=\Lambda_2^c\left\{
+ \frac1{4\pi}\sum_{\alpha,\beta}\int_{-\infty}^{\infty}
+ (\pi_{iy}(\varphi)\Phi_\beta,\Phi_\alpha)
+ E(\Phi_\alpha(iy),g)\overline{E(\Phi_\beta(iy),h)}\,dy\right\}.
+\]
+不难看出，这等于
+\[
+ \frac1{4\pi}\sum_{\alpha,\beta}\int_{-\infty}^{\infty}
+ (\pi_{iy}(\varphi)\Phi_\beta,\Phi_\alpha)
+ E(\Phi_\alpha(iy),g)\Lambda^c\overline{E(\Phi_\beta(iy),h)}\,dy.
+\]
+若允许交换积分次序，则
+\[
+\begin{split}
+ &\int\Lambda_2^cK_{\mathrm{cont}}(x,x)\,dx\\
+ &\quad=\frac1{4\pi}\sum_{\alpha,\beta}\int_{-\infty}^{\infty}
+ (\pi_{iy}(\varphi)\Phi_\beta,\Phi_\alpha)\,dy\\
+ &\qquad\times\int_{\widetilde G(F)\backslash\widetilde G(A)}
+ E(\Phi_\alpha(iy),x)\Lambda^c\overline{E(\Phi_\beta(iy),x)}\,dx.
+\end{split}
+\]
+内层积分已在第5节计算，见 (5.14)，取 $h_1(s)=\Phi_\alpha(s)$、$h_2(s)=\Phi_\beta(s)$。
+代入得三项之和：
+\begin{equation}
+ \frac{\log c}{2\pi}\sum_{\alpha,\beta}\int_{-\infty}^{\infty}
+ (\pi_{iy}(\varphi)\Phi_\beta,\Phi_\alpha)(\Phi_\alpha,\Phi_\beta)\,dy,\tag{6.26}
+\end{equation}
+\begin{equation}
+ -\frac1{4\pi}\sum_{\alpha,\beta}\int_{-\infty}^{\infty}
+ (M(-iy)M'(iy)\Phi_\alpha,\Phi_\beta)
+ (\pi_{iy}(\varphi)\Phi_\beta,\Phi_\alpha)\,dy,\tag{6.27}
+\end{equation}
+\begin{equation}
+\begin{split}
+ \frac1{4\pi}\sum_{\alpha,\beta}\int_{-\infty}^{\infty}
+ (\pi_{iy}(\varphi)\Phi_\beta,\Phi_\alpha)
+ \left\{(\Phi_\alpha,M(iy)\Phi_\beta)\frac{c^{2iy}}{2iy}
+ -(M(iy)\Phi_\alpha,\Phi_\beta)\frac{c^{-2iy}}{2iy}\right\}dy.
+\end{split}\tag{6.28}
+\end{equation}
+交换求和与积分，(6.26) 可写为
+$(\log c/2\pi)\int_{-\infty}^{\infty}\operatorname{tr}\pi_{iy}(\varphi)dy$。而 $\pi_{iy}$ 为诱导表示，其迹容易计算，为
+\[
+\begin{split}
+ \operatorname{vol}(F^\times\backslash F^0(A))\int_K\int_{N(A)}\sum_{\alpha\in F^\times}
+ \left\{\int_{F_\infty^+}
+ \varphi\!\left(k^{-1}\begin{pmatrix}t\alpha&0\\0&1\end{pmatrix}nk\right)
+ |t|^{iy+1/2}\,d^\times t\right\}dn\,dk.
+\end{split}
+\]
+所以由 Fourier 反演，(6.26) 恰等于 (6.24)，因而正好抵消。将 (6.27) 写为
+\begin{equation}
+ -\frac1{4\pi}\int_{-\infty}^{\infty}
+ \operatorname{tr}(M(-iy)M'(iy)\pi_{iy}(\varphi))\,dy.\tag{6.29}
+\end{equation}
+(6.28) 可写为
+\[
+ \frac1{4\pi}\sum_\beta\int_{-\infty}^{\infty}
+ \left\{(\pi_{iy}(\varphi)\Phi_\beta,M(iy)\Phi_\beta)\frac{c^{2iy}}{2iy}
+ -(\pi_{iy}(\varphi)\Phi_\beta,M(-iy)\Phi_\beta)\frac{c^{-2iy}}{2iy}\right\}dy,
+\]
+或者写为
+\begin{equation}
+\begin{split}
+ &\frac1{4\pi}\sum_\beta\int_{-\infty}^{\infty}
+ (M(-iy)\pi_{iy}(\varphi)\Phi_\beta,\Phi_\beta)
+ \frac{c^{2iy}-c^{-2iy}}{2iy}\,dy\\
+ &+\frac1{4\pi}\sum_\beta\int_{-\infty}^{\infty}
+ \{(\pi_{iy}(\varphi)\Phi_\beta,M(iy)\Phi_\beta)
+ -(\pi_{iy}(\varphi)\Phi_\beta,M(-iy)\Phi_\beta)\}
+ \frac{c^{-2iy}}{2iy}\,dy.
+\end{split}\tag{6.30}
+\end{equation}
+最后一项是某个可积函数在 $\log c/\pi$ 处的 Fourier 变换，参见 [Ge，引理9.14]，所以
+$c\to\infty$ 时趋于零。为计算第一项，需要下述引理。
+
+\begin{originaltheorem}{引理 (6.31)（Lemma (6.31)）}
+若 $F$ 在 $\R$ 上连续，$F,\widehat F$ 可积，则
+\[
+ \lim_{x\to\infty}\int\frac{e^{2\pi ixy}-e^{-2\pi ixy}}yF(y)\,dy=2\pi iF(0).
+\]
+\end{originaltheorem}
+\begin{proof}
+置 $G(x)=\int_{-\infty}^{\infty}(e^{2\pi ixy}-e^{-2\pi ixy})F(y)dy/y$。则 $G(0)=0$，且
+\[
+ G'(x)=2\pi i\int(e^{2\pi ixy}+e^{-2\pi ixy})F(y)\,dy
+ =2\pi i(\widehat F(x)+\widehat F(-x)).
+\]
+所以对 $x>0$，
+\[
+ G(x)=2\pi i\int_0^x(\widehat F(t)+\widehat F(-t))dt
+ =2\pi i\int_{-x}^x\widehat F(t)dt.
+\]
+$x\to\infty$ 时，$G(x)\to2\pi iF(0)$。
+\end{proof}
+将引理用于 (6.30)，知 $c\to\infty$ 时，(6.28) 趋于
+\begin{equation}
+ \frac14\sum_\beta(M(0)\pi_0(\varphi)\Phi_\beta,\Phi_\beta)
+ =\frac14\operatorname{tr}(M(0)\pi_0(\varphi)).\tag{6.32}
+\end{equation}
+
+\origsubsection{C}{迹公式（Trace formula）}
+读者可以验证，当 $c\to\infty$ 时，\footnote{\textbf{译者注（本次校订）：}下式对角线积分后，核中的体积倒数会与积分域的体积相消，故最右端不应再保留体积倒数。按前面对一维表示的约定，结果为 $\sum_{\chi^2=\omega}\int\varphi(x)\chi(\det x)\,dx$。}
+\[
+\begin{split}
+ \int\Lambda_2^cK_{\mathrm{sp}}(x,x)dx\longrightarrow\int K_{\mathrm{sp}}(x,x)dx
+ =\operatorname{vol}(\widetilde G(F)\backslash\widetilde G(A))^{-1}
+ \sum_{\chi^2=\omega}\int\varphi(x)\bar\chi(x)\,dx.
+\end{split}
+\]
+结合 (6.3)、命题 (6.22)、(6.26)、(6.27) 与 (6.32)，得到：
+\begin{originaltheorem}{定理 (6.33)（Theorem (6.33)）}
+$\operatorname{tr}\rho_{\mathrm{cusp}}(\varphi)+\operatorname{tr}\rho_{\mathrm{sp}}(\varphi)$ 等于
+\[
+ \operatorname{vol}(\widetilde G(F)\backslash\widetilde G(A))\varphi(e)
+ +\int_{G(F)\backslash\widetilde G(A)}\sum_{\gamma\text{ 椭圆}}
+ \varphi(x^{-1}\gamma x)\,dx
+\]
+加上下列四项：
+\begin{equation}
+ \operatorname{f.p.}\int_{Z(A)N(A)\backslash G(A)}
+ \varphi\!\left[g^{-1}\begin{pmatrix}1&1\\0&1\end{pmatrix}g\right]dg,\tag{6.34}
+\end{equation}
+\begin{equation}
+ -\frac12\operatorname{vol}(F^\times\backslash F^0(A))
+ \int_K\int_{N(A)}\sum_{\alpha\ne1}
+ \varphi\!\left[k^{-1}n^{-1}\begin{pmatrix}\alpha&0\\0&1\end{pmatrix}nk\right]
+ \log H(wnk)\,dn\,dk,\tag{6.35}
+\end{equation}
+\begin{equation}
+ \frac1{4\pi}\int_{-\infty}^{\infty}
+ \operatorname{tr}(M(-iy)M'(iy)\pi_{iy}(\varphi))\,dy,\tag{6.36}
+\end{equation}
+\begin{equation}
+ -\frac14\operatorname{tr}(M(0)\pi_0(\varphi)).\tag{6.37}
+\end{equation}
+\end{originaltheorem}
+这里有限部分项是在
+\[
+ \left\{\int\varphi\!\left[k^{-1}\begin{pmatrix}1&a\\0&1\end{pmatrix}k\right]
+ |a|^s\,d^\times a\,dk-\text{$s=1$ 处的主部}\right\}
+\]
+取 $s=1$ 的值。还回忆，已将所有纤维 $\mathbf H(s)$ 与 $\mathbf H$ 等同，才能定义
+$M'(s)=dM/ds$。
+
+\origsection{7}{迹公式的第二种形式（A second form of the trace formula）}
+接下来用局部分布表示 (6.33) 右端，其中大多数为不变分布。这涉及以
+$F^\times\backslash A^\times$ 上的 Mellin 变换代替 $F_\infty^+$ 上的变换，以
+$\mathbf H(\eta)$ 代替 $\mathbf H(s)$，以 $M(\eta)$ 代替 $M(s)$。
+
+若希望将右端完全写成不变分布之和，还需对某些不光滑函数应用一种 Poisson 求和。[La 2] 第7节做了这一分析，但对我们考虑的应用并非必要。
+
+\origsubsection{A}{Haar 测度的正规化（Normalization of Haar measures）}
+下面规定 $A^\times$ 上 Haar 测度的归一化。任取 $F\backslash A$ 的非平凡加性特征
+$\psi=\prod\psi_v$。对每个素位，令 $dx_v$ 为 $F_v$ 上关于 $\psi_v$ 自对偶（self-dual）的
+Haar 测度。取 $F_v^\times$ 上测度
+$d^\times x_v=L(1,1_v)dx_v/|x_v|_v$。$A$ 上的 $dx=\bigotimes dx_v$ 自对偶。
+$A^\times$ 上正规化的 Tamagawa 测度为
+\begin{equation}
+ d^\times x=\frac1{\lambda_{-1}}\bigotimes_vd^\times x_v,\tag{7.1}
+\end{equation}
+其中
+\begin{equation}
+ \lambda_{-1}=\lim_{s\to1}(s-1)L(s,1_F).\tag{7.2}
+\end{equation}
+映射 $x\mapsto|x|$ 将 $F^0(A)\backslash A^\times$ 与 $\R_+^\times$ 等同。$F^0(A)$ 上的
+Tamagawa 测度 $\mu$ 使商测度 $d^\times x/\mu$ 为 $dt/t$，并且由 Tate 的论文，
+\begin{equation}
+ \operatorname{vol}(F^\times\backslash F^0(A))=1.\tag{7.3}
+\end{equation}
+
+为定义 $\widetilde G(A)$ 上的 Tamagawa 测度，任取定义在 $F$ 上的不变三次微分形式
+$\omega$。例如，可取使其经映射
+\[
+ (a,x,y)\longmapsto\begin{pmatrix}a&0\\0&1\end{pmatrix}
+ \begin{pmatrix}1&x\\0&1\end{pmatrix}\begin{pmatrix}1&0\\y&1\end{pmatrix}
+\]
+的拉回为 $(da/a)dx\,dy$ 的形式。于是对 $\widetilde G(A)$ 上的 $f=\prod f_v$，
+\begin{equation}
+\begin{split}
+ \int f(g)dg&=\int f(g)|\omega(g)|=\prod_v\int f_v(g_v)|\omega_v(g_v)|\\
+ &=\prod_v\int f_v\!\left[\begin{pmatrix}a_v&0\\0&1\end{pmatrix}
+ \begin{pmatrix}1&x_v\\0&1\end{pmatrix}\begin{pmatrix}1&0\\y_v&1\end{pmatrix}\right]
+ \frac{da_v}{|a_v|}\,dx_v\,dy_v.
+\end{split}\tag{7.4}
+\end{equation}
+$K$ 上 Haar 测度由条件
+\begin{equation}
+ \int f(g)dg=\int f\!\left[\begin{pmatrix}a&0\\0&1\end{pmatrix}
+ \begin{pmatrix}1&x\\0&1\end{pmatrix}k\right]d^\times a\,dx\,dk\tag{7.5}
+\end{equation}
+正规化。类似地，$K_v$ 上测度定义为
+\begin{equation}
+ \int f(g_v)dg_v=\int f\!\left[\begin{pmatrix}a_v&0\\0&1\end{pmatrix}
+ \begin{pmatrix}1&x_v\\0&1\end{pmatrix}k_v\right]d^\times a_v\,dx_v\,dk_v.\tag{7.6}
+\end{equation}
+简单计算得
+\begin{equation}
+ \operatorname{vol}(K_v)=\frac1{L(2,1_v)\varepsilon(0,1_v,\psi_v)}.\tag{7.7}
+\end{equation}
+由于 $dk=\lambda_{-1}\bigotimes_vdk_v$，也有
+\begin{equation}
+ \operatorname{vol}(K)=\frac{\lambda_{-1}}{L(2,1_F)\varepsilon(0,1_F,\psi_F)}.\tag{7.8}
+\end{equation}
+
+以 $A^\times$ 上的 Mellin 变换
+\[
+ \widehat f(\chi)(g)=\int_{A^\times}f\!\left[\begin{pmatrix}a&0\\0&1\end{pmatrix}g\right]
+ \chi^{-1}(a)|a|^{-1/2}\,d^\times a
+\]
+代替第3节 $F_\infty^+$ 上的变换，则 (3.19) 应替换为
+\begin{equation}
+\begin{split}
+ (F_1,F_2)={}&\frac1{2\pi i}\sum_\chi\int_{x-i\infty}^{x+i\infty}
+ (\widehat f_1(\chi\alpha^s),\widehat f_2(\chi\alpha^{-\bar s}))\,ds\\
+ &+\frac1{2\pi i}\sum_\chi\int_{x-i\infty}^{x+i\infty}
+ (M(\chi\alpha^s,\chi^{-1}\omega\alpha^{-s})\widehat f_1(\chi\alpha^s),
+ \widehat f_2(\chi^{-1}\omega\alpha^{\bar s}))\,ds.
+\end{split}\tag{7.9}
+\end{equation}
+这里 $\chi$ 遍历在 $F^\times F_\infty^+$ 上平凡的特征集合，参见 [Ge，第167页]。
+
+\origsubsection{B}{有限部分积分（The f.p. integral）}
+为计算 (6.34)，要从
+$\int\varphi[k^{-1}\left(\begin{smallmatrix}1&a\\0&1\end{smallmatrix}\right)k]|a|^s d^\times a\,dk$
+减去 $s=1$ 的主部，再令 $s=1$。先将积分写为 $L(s,1_F)\theta(s)$，其中
+\begin{equation}
+ \theta(s)=\frac1{L(s,1_F)}\int
+ \varphi\!\left[k^{-1}\begin{pmatrix}1&a\\0&1\end{pmatrix}k\right]|a|^s\,d^\times a\,dk.\tag{7.10}
+\end{equation}
+$\theta(s)$ 在 $s=1$ 全纯，而
+$L(s,1_F)=\lambda_{-1}/(s-1)+\lambda_0+\cdots$。故有限部分积分为
+$\lambda_{-1}\theta'(1)+\lambda_0\theta(1)$。由测度关系，对 $\operatorname{Re}s>1$，
+\[
+ \theta(s)=\prod_v\frac1{L(s,1_v)}\int
+ \varphi_v\!\left[k_v^{-1}\begin{pmatrix}1&a_v\\0&1\end{pmatrix}k_v\right]
+ |a_v|^s\,d^\times a_v\,dk_v.
+\]
+几乎所有因子等于 $1$，所以
+\[
+\begin{aligned}
+ \theta(1)
+ &=\prod_v\frac1{L(1,1_v)}\int
+ \varphi_v\!\left[k_v^{-1}\begin{pmatrix}a_v^{-1}&0\\0&1\end{pmatrix}
+ \begin{pmatrix}1&1\\0&1\end{pmatrix}\begin{pmatrix}a_v&0\\0&1\end{pmatrix}k_v\right]
+ |a_v|\,d^\times a_v\,dk_v\\
+ &=\prod_v\frac1{L(1,1_v)}\int_{Z_vN_v\backslash\widetilde G_v}
+ \varphi_v\!\left[g_v^{-1}\begin{pmatrix}1&1\\0&1\end{pmatrix}g_v\right]dg_v.
+\end{aligned}
+\]
+即 $\theta(1)$ 是该幺幂元素的轨道积分之积，带有原有限部分积分中“缺少”的收敛因子（convergence factor）。类似地，对 $\theta(s)$ 在 $s=1$ 求导，得到
+\begin{equation}
+\begin{split}
+ \theta'(1)=\sum_u\prod_{v\ne u}
+ \int_{Z_vN_v\backslash G_v}\varphi_v\!\left[g_v^{-1}\begin{pmatrix}1&1\\0&1\end{pmatrix}g_v\right]dg_v
+ \cdot\left.\frac d{ds}\right|_{s=1}
+ \frac{\int\varphi_u[k_u^{-1}\left(\begin{smallmatrix}1&a_u\\0&1\end{smallmatrix}\right)k_u]
+ |a_u|^s\,d^\times a_u\,dk_u}{L(s,1_u)}.
+\end{split}\tag{7.11}
+\end{equation}
+这里对所有素位 $u$ 求和，只有有限多个非零项。\footnote{\textbf{译者注（本次校订）：}按上方 $\theta(1)$ 的分解，式 (7.11) 中 $v\ne u$ 的每个轨道积分前还应保留因子 $L(1,1_v)^{-1}$。这是对乘积 $\theta(s)=\prod_v\theta_v(s)$ 求导时，其余因子 $\theta_v(1)$ 自带的归一化。}
+
+\origsubsection{C}{计算 (6.35)（Computation of (6.35)）}
+回忆 $\operatorname{vol}(F^\times\backslash F^0(A))=1$，
+$dk=\lambda_{-1}\bigotimes dk_v$，$dn=\bigotimes dn_v$，
+$H(g)=\prod_vH_v(g_v)$，其中
+\[
+ H_v\!\left[\begin{pmatrix}a_v&x_v\\0&b_v\end{pmatrix}k_v\right]=|a_v/b_v|.
+\]
+故 (6.35) 等于
+\[
+\begin{split}
+ -\frac{\lambda_{-1}}2\sum_u\sum_{\alpha\ne1}
+ &\prod_{v\ne u}\int\varphi_v\!\left[k_v^{-1}n_v^{-1}
+ \begin{pmatrix}\alpha&0\\0&1\end{pmatrix}n_vk_v\right]dn_v\,dk_v\\
+ &\cdot\int\varphi_u\!\left[k_u^{-1}n_u^{-1}
+ \begin{pmatrix}\alpha&0\\0&1\end{pmatrix}n_uk_u\right]\log H_u(wn_u)\,dn_u\,dk_u,
+\end{split}
+\]
+或写为
+\begin{equation}
+\begin{split}
+ -\frac{\lambda_{-1}}2\sum_{u;\alpha\ne1}
+ &\prod_{v\ne u}\int_{A_v\backslash G_v}
+ \varphi_v\!\left[g_v^{-1}\begin{pmatrix}\alpha&0\\0&1\end{pmatrix}g_v\right]dg_v\\
+ &\cdot\int_{A_u\backslash G_u}\varphi_u\!\left[g_u^{-1}
+ \begin{pmatrix}\alpha&0\\0&1\end{pmatrix}g_u\right]\mu_u(g_u)\,dg_u,
+\end{split}\tag{7.12}
+\end{equation}
+其中
+\[
+ \mu_u\!\left[\begin{pmatrix}a_u&0\\0&b_u\end{pmatrix}
+ \begin{pmatrix}1&n_u\\0&1\end{pmatrix}k\right]=\log H_u(wn_u),
+ \qquad g_u\in A_u\backslash G_u.
+\]
+因 $\mu_u$ 在 $K_u$ 上消失，所以上式只有有限个非零项。
+
+\origsubsection{D}{计算 (6.36) 与 (6.37)（Computation）}
+首先，(6.36) 可写为
+\[
+ \frac1{4\pi}\sum_\chi\int_{-\infty}^{\infty}
+ \operatorname{tr}(M(\eta)^{-1}M'(\eta)\pi_\eta(\varphi))\,dy,
+\]
+其中 $\eta=(\chi\alpha^{iy},\chi^{-1}\omega\alpha^{-iy})$，$\pi_\eta$ 为
+$G(A)$ 在 $\mathbf H(\eta)$ 上的表示，对 $F^\times\backslash A^\times$ 中在 $F_\infty^+$ 上平凡的所有特征 $\chi$ 求和。若
+$\eta=(\chi\alpha^s,\chi^{-1}\omega\alpha^{-s})$，且 $\varphi|_K$ 与 $s$ 无关，定义
+$M'(\eta)\varphi=(d/ds)M(\eta)\varphi$。为定义导数，再次平凡化纤维丛。
+由于 $M(\eta)=m(\eta)\bigotimes_vR_v(\eta_v)$，其中 $m(\eta)$ 为 (4.15) 的标量，取对数导数，文中写为\footnote{\textbf{译者注（本次校订）：}按本段的普通导数记号，正确的对数导数为 $M^{-1}M^{\prime}=(m^{\prime}/m)I+\sum_u R_u^{-1}R_u^{\prime}\otimes\bigotimes_{v\ne u}I_v$。原式左侧的算子次序与右侧不一致，标量项也少了分母 $m$；因此 (7.13) 第一项中的 $m^{\prime}(\eta)$ 应读作 $m^{\prime}(\eta)/m(\eta)$。}
+\[
+ M'(\eta)M(\eta)^{-1}
+ =m'(\eta)I+\sum_uR_u(\eta_u)^{-1}R_u'(\eta_u)\otimes\bigotimes_{v\ne u}I_v.
+\]
+若 $A=\bigotimes_vA_v$，其中 $A_v$ 为 $\mathbf H(\eta_v)$ 上算子，则
+$\operatorname{tr}A=\prod_v\operatorname{tr}A_v$。所以 (6.36) 等于
+\begin{equation}
+\begin{split}
+ &\frac1{4\pi}\sum_\chi\int_{-\infty}^{\infty}
+ m'(\eta)\operatorname{tr}\pi_\eta(\varphi)\,dy\\
+ &\quad+\sum_u\frac1{4\pi}\sum_\chi\int_{-\infty}^{\infty}
+ \prod_{v\ne u}\operatorname{tr}\pi_{\eta_v}(\varphi_v)
+ \cdot\operatorname{tr}(R_u(\eta_u)^{-1}R_u'(\eta_u)\pi_{\eta_u}(\varphi_u))\,dy.
+\end{split}\tag{7.13}
+\end{equation}
+回忆，若 $\varphi=1$ 在 $K_u$ 上成立，则对所有 $\eta_u$，$R(\eta_u)\varphi=\varphi$，因而
+$R'(\eta_u)\varphi=0$，上述求和再次只有有限个非零项。至于 (6.37)，写为
+\[
+ -\frac14\sum_{\chi^2=\omega}\operatorname{tr}(M(\chi,\chi)\pi_{(\chi,\chi)}(\varphi)).
+\]
+
+\origsubsection{E}{汇总（Summing up）}
+$\operatorname{tr}\rho_{\mathrm{cusp}}(\varphi)+\operatorname{tr}\rho_{\mathrm{sp}}(\varphi)$ 等于
+$\operatorname{vol}(\widetilde G(F)\backslash\widetilde G(A))\varphi(e)$、
+\[
+ \sum_{\gamma\text{ 椭圆}}\int_{\widetilde G(F)\backslash\widetilde G(A)}\varphi(g^{-1}\gamma g)\,dg
+ \tag{*}
+\]
+以及一个补充项之和。如除代数情形，(*) 可用形如
+\[
+ \int_{G_\gamma(F_v)\backslash G_v}\varphi_v(g_v^{-1}\gamma g_v)\,dg_v,
+ \qquad\gamma\text{ 椭圆},
+\]
+的局部椭圆轨道积分表示。补充项可显式用以下局部分布表达：
+\begin{equation}
+ \int_{Z_vN_v\backslash G_v}\varphi_v\!\left[g_v^{-1}\begin{pmatrix}1&1\\0&1\end{pmatrix}g_v\right]dg_v,\tag{7.14}
+\end{equation}
+\begin{equation}
+ \int_{A_v\backslash G_v}\varphi_v\!\left[g_v^{-1}\begin{pmatrix}\alpha&0\\0&1\end{pmatrix}g_v\right]dg_v,\tag{7.15}
+\end{equation}
+\begin{equation}
+ \operatorname{tr}\pi_{\eta_v}(\varphi_v),\tag{7.16}
+\end{equation}
+\begin{equation}
+ \left.\frac d{ds}\right|_{s=1}\frac1{L(s,1_v)}
+ \int\varphi_v\!\left[k_v^{-1}\begin{pmatrix}1&a_v\\0&1\end{pmatrix}k_v\right]
+ |a_v|^s\,d^\times a_v\,dk_v,\tag{7.17}
+\end{equation}
+\begin{equation}
+ \int_{A_v\backslash G_v}\varphi_v\!\left[g_v^{-1}\begin{pmatrix}\alpha&0\\0&1\end{pmatrix}g_v\right]
+ \mu_v(g_v)\,dg_v,\qquad\alpha\ne1,\tag{7.18}
+\end{equation}
+以及
+\begin{equation}
+ \operatorname{tr}(R_v(\eta_v)^{-1}R_v'(\eta_v)\pi_{\eta_v}(\varphi_v)).\tag{7.19}
+\end{equation}
+(7.14)、(7.15) 是轨道积分；(7.16) 不变，也可用轨道积分计算，例如见 [DL]。
+(7.17)--(7.19) 则不具有共轭不变性。
+
+\origsubsection{F}{一个特殊情形（A special case）}
+分布 (7.14)--(7.16) 有如下性质。若对所有 $a\ne1$，有
+\begin{equation}
+ \int_{A_v\backslash G_v}\varphi_v\!\left[g^{-1}\begin{pmatrix}a&0\\0&1\end{pmatrix}g\right]dg=0,\tag{7.20}
+\end{equation}
+即 $\varphi_v$ 在所有正则双曲元素上的轨道积分均消失，则 (7.14)--(7.16) 都消失。
+(7.15) 的情形直接成立，(7.16) 是这类轨道积分的积分。对于 (7.14)，注意
+\[
+ \int\varphi\!\left[g^{-1}\begin{pmatrix}1&1\\0&1\end{pmatrix}g\right]dg
+ =\lim_{a\to1}|1-a^{-1}|
+ \int\varphi\!\left[g^{-1}\begin{pmatrix}a&0\\0&1\end{pmatrix}g\right]dg,
+\]
+即幂零轨道积分是双曲轨道积分的极限。
+
+所以，如果某素位 $u_1$ 满足 (7.20)，那么 (7.11)--(7.13) 的和只剩 $u=u_1$ 的项；另一方面，
+$\operatorname{tr}\pi_\eta(\varphi)=0$。于是：
+\begin{originaltheorem}{定理 (7.21)（Theorem (7.21)）}
+假设两个不同素位 $u_1,u_2$ 都满足 (7.20)。则 (7.11)--(7.13) 消失，并有
+\[
+ \operatorname{tr}\rho_{\mathrm{cusp}}(\varphi)+\operatorname{tr}\rho_{\mathrm{sp}}(\varphi)
+ =\operatorname{vol}(\widetilde G(F)\backslash\widetilde G(A))\varphi(e)
+ +\sum_{\gamma\text{ 椭圆}}\int_{G(F)\backslash G(A)}\varphi(g^{-1}\gamma g)\,dg.
+\]
+\end{originaltheorem}
+该式与 (1.11) 具有十分相似的形式。
+
+\origsection{8}{对四元数代数的应用（Applications to quaternion algebras）}
+如前，$G$ 为看作 $F$ 群的 $\operatorname{GL}(2)$，其中心 $Z\simeq\operatorname{GL}(1)$。设
+$D$ 为中心是 $F$ 的四元数代数（quaternion algebra），$S$ 为 $D$ 不分裂的素位所成的有限集合。
+将 $D$ 的乘法群看作代数 $F$ 群 $G'$，以 $Z'$ 表示其中心。那么对所有 $v\notin S$，
+$G_v,G_v'$ 同构。更精确地，如第1节，同构 $D_v\simeq M(2,F_v)$ 诱导相差内自同构才确定的
+$G_v\simeq G_v'$。若 $\varepsilon_i$（$1\le i\le4$）为 $D$ 的 $F$ 基，则对几乎所有 $v$，可假设
+$\sum R_v\varepsilon_i$ 映到 $M(2,R_v)$；$K_v=\operatorname{GL}(2,R_v)$ 映到 $G_v'$ 的紧子群
+$K_v'$。这些同构给出限制直积
+$G^S=\prod_{v\notin S}G_v$、$G'^S=\prod_{v\notin S}G_v'$ 的同构。
+
+\origsubsection{A}{结果陈述（Statement of results）}
+暂令 $F$ 为局部域，$D$ 为中心是 $F$ 的除代数，$G'(F)=D^\times$，以 $\nu$ 表示
+$D$ 上的约化范数（reduced norm）。以 $\mathcal E(G(F))$ 表示 $G(F)$ 的不可约容许表示（admissible representation）的等价类集合，$\mathcal E_2(G(F))$ 为其中模中心平方可积者的子集。类似定义
+$\mathcal E(G'(F))=\mathcal E_2(G'(F))$。
+
+\begin{originaltheorem}{定理 (8.1)（Theorem (8.1)）}
+存在唯一的双射 $\pi'\leftrightarrow\pi$，从 $\mathcal E(G'(F))$ 到 $\mathcal E_2(G(F))$，使其特征标
+$\theta_{\pi'},\theta_\pi$ 满足
+\begin{equation}
+ \theta_{\pi'}(t')=-\theta_\pi(t),\tag{8.2}
+\end{equation}
+只要 $t,t'$ 为两个群中通过
+$\operatorname{tr}(t')=\operatorname{tr}(t)$、$\nu(t')=\det(t)$ 联系起来的正则半单元素。
+\end{originaltheorem}
+该条件蕴含 $\pi,\pi'$ 有相同的中心拟特征。$G'$ 为 $G$ 的内扭曲（inner twisting），且
+$\Phi(G)\subset\Phi(G')$，参见 [Bo]。所以当 $F=\R$ 时，此对应就是 Langlands 所规定的对应；非阿基米德情形至少可以用“Weil 表示”构造该映射，如 [JL]。
+
+现在令 $F$ 为数域，$D$ 为中心是 $F$ 的除代数。令 $\mathcal A(G')$ 为 $G'(A)$ 的自守表示的等价类集合，$\mathcal A_*(G')$ 为其中非一维表示的子集。类似地，以
+$\mathcal A_0(G)$ 表示 $G(A)$ 的尖点表示集合。
+\begin{originaltheorem}{定理 (8.3)：整体情形（Global）}
+若 $\pi'\in\mathcal A_*(G')$，令 $\pi$ 为 $G(A)$ 的表示，使当 $v\in S$ 时
+$\pi_v'\leftrightarrow\pi_v$ 如 (8.1)，当 $v\notin S$ 时，经同构 $G_v\simeq G_v'$ 有
+$\pi_v\simeq\pi_v'$。则 $\pi\in\mathcal A_0(G)$。而且 $\pi'\mapsto\pi$ 是
+$\mathcal A_*(G')$ 与 $\mathcal A_0(G)$ 中满足对所有 $v\in S$，$\pi_v\in\mathcal E_2(G_v)$ 的表示集合之间的双射。
+\end{originaltheorem}
+
+我们给出两个证明，都与 [JL] 略有不同。先接受定理 (8.1)，说明它如何结合迹公式推出 (8.3)；再概述另一个证明，它同时导出局部定理 (8.1)。两者都使用轨道积分方法，参见 [Sa]、[Sh]、[La 2]。
+
+\origsubsection{B}{轨道积分的匹配及其推论（Matching orbital integrals and consequences）}
+令 $\omega,\omega'$ 分别为 $\widetilde G,\widetilde G'$ 上最高次的不变微分形式，假设它们如
+[JL，第475、503页] 那样相关。则对每个 $v\notin S$，$\omega_v=\pm\omega_v'$，
+$|\omega_v|=|\omega_v'|$。
+
+对 $v\in S$，若 $f\in C_c^\infty(G_v,\omega_v^{-1})$ 与
+$\varphi\in C_c^\infty(G_v',\omega_v^{-1})$ 对 $F_v\times F_v$ 上“任意函数”$h$ 满足
+\begin{equation}
+ \int_{Z_v\backslash G_v}f(g)h(\operatorname{tr}g,\det g)\,dg
+ =\int_{Z_v'\backslash G_v'}\varphi(g)h(\operatorname{tr}g,\nu(g))\,dg',\tag{8.4}
+\end{equation}
+则称其轨道积分匹配（matching orbital integrals）。特别地，若 $\pi_v,\pi_v'$ 如 (8.1) 对应，则
+\begin{equation}
+ \operatorname{tr}\pi_v(f)=-\operatorname{tr}\pi_v'(\varphi).\tag{8.5}
+\end{equation}
+另一方面，若 $\pi_v=\chi\circ\det$、$\pi_v'=\chi\circ\nu$，则
+\begin{equation}
+ \operatorname{tr}\pi_v(f)=\operatorname{tr}\pi_v'(\varphi).\tag{8.6}
+\end{equation}
+
+(8.4) 还可用轨道积分表述为：
+\begin{enumerate}
+\item[(i)] $f$ 的正则双曲轨道积分消失，即
+\begin{equation}
+ \int_{A_v\backslash G_v}f\!\left(g^{-1}\begin{pmatrix}a&0\\0&1\end{pmatrix}g\right)dg=0,
+ \quad a\ne1.\tag{8.7}
+\end{equation}
+\item[(ii)] 若 $L\subset M(2,F_v)$ 与 $L'\subset D$ 为同构的二次扩张，且同构
+$L_v\to L_v'$ 将 $t\in L_v^\times-F_v^\times$ 送到 $t'\in L_v'^\times-F_v^\times$，则
+\[
+ \int_{L_v^\times\backslash G_v}f(g^{-1}tg)\,dg
+ =\int_{L_v'^\times\backslash G_v'}\varphi(g^{-1}t'g)\,dg.
+\]
+\end{enumerate}
+这里任取 $F_v^\times\backslash L_v^\times$ 的 Haar 测度，经该同构转移到
+$F_v^\times\backslash L_v'^\times$，再赋予商空间商测度。由这些恒等式可得
+\begin{equation}
+ f(e)=\varphi(e),\tag{8.8}
+\end{equation}
+例如可由 Plancherel 公式推出。此外，若 $\pi_v$ 为 $G_v$ 的一个既非平方可积又非有限维的表示，则
+\begin{equation}
+ \operatorname{tr}\pi_v(f)=0.\tag{8.9}
+\end{equation}
+[La 2] 第4节对轨道积分的刻画给出：
+\begin{originaltheorem}{引理 (8.10)（Lemma (8.10)）}
+给定 $\varphi\in C_c^\infty(G_v',\omega_v^{-1})$，存在多个
+$f\in C_c^\infty(G_v,\omega_v^{-1})$ 与其轨道积分匹配。
+\end{originaltheorem}
+
+\paragraph*{注 (8.11)（Remark (8.11)）.}
+固定 $G_v'$ 的表示 $\pi_v'$，以 $\pi_v$ 表示由 (8.1) 给出的对应表示。容易找到
+$\varphi\in C_c^\infty(G_v',\omega_v^{-1})$，使 $\operatorname{tr}\pi_v'(\varphi)\ne0$，但任意中心拟特征为
+$\omega_v$ 且不等价于 $\pi_v'$ 的不可约表示 $\sigma'$ 均有 $\operatorname{tr}\sigma'(\varphi)=0$。
+若 $f$ 与它匹配，则 $\operatorname{tr}\pi_v(f)\ne0$，而当 $\sigma$ 不等价于 $\pi_v$、也非有限维时，
+$\operatorname{tr}\sigma(f)=0$。
+
+设 $f$ 为 $G(A)$ 上满足 $f(zg)=\omega^{-1}(z)f(g)$ 的函数。如前假设 $f(g)=\prod_vf_v(g_v)$，
+$f_v\in C_c^\infty(G_v,\omega_v^{-1})$，且几乎所有 $v$ 有
+\[
+ f_v(g_v)=\begin{cases}\omega_v^{-1}(z_v),&g_v=z_vk_v,\ k_v\in K_v,\ z_v\in Z_v,\\0,&\text{其他情形}.
+ \end{cases}
+\]
+设 $G'(A)$ 上的 $\varphi$ 满足类似条件，$v\notin S$ 时经同构对应于 $f_v$，$v\in S$ 时
+$\varphi_v,f_v$ 的轨道积分匹配。
+
+\begin{originaltheorem}{命题 (8.12)（Proposition (8.12)）}
+对上述 $\varphi,f$，
+\begin{equation}
+ \operatorname{tr}\rho_\omega'(\varphi)
+ =\operatorname{tr}\rho_{\omega,0}(f)+\operatorname{tr}\rho_{\omega,\mathrm{sp}}(f).\tag{8.13}
+\end{equation}
+\end{originaltheorem}
+\begin{proof}
+由 (1.11)，左端为
+\begin{equation}
+\begin{split}
+ &\operatorname{vol}(Z(A)G'(F)\backslash G'(A))\varphi(e)\\
+ &\quad+\frac12\sum_{L'\in X'}\operatorname{vol}(A^\times L'^\times\backslash L'^\times(A))
+ \sum_{\substack{\xi\in F^\times\backslash L'^\times\\\xi\ne1}}
+ \int_{L'^\times(A)\backslash G'(A)}\varphi(g^{-1}\xi g)\,dg,
+\end{split}\tag{8.14}
+\end{equation}
+其中 $X'$ 遍历嵌入 $D$ 的 $F$ 的二次扩张同构类的一组代表。而且
+\[
+ \int_{L'^\times(A)\backslash G'(A)}\varphi(g^{-1}\xi g)\,dg
+ =\prod_v\int_{L_v'^\times\backslash G_v'}\varphi_v(g_v^{-1}\xi g_v)\,dg_v.
+\]
+对每个 $v$，选取 $F_v^\times\backslash L_v^\times$ 上的 Haar 测度，使几乎所有 $v$ 的单位部分体积为
+$1$；$A^\times\backslash L^\times(A)$ 取乘积测度。
+
+在 $\operatorname{GL}(2)$ 一边，$S$ 至少含两个素位 $v_1,v_2$，对应的 $f_{v_1},f_{v_2}$ 的双曲轨道积分均为零。因此由 (7.21)，右端为
+\begin{equation}
+\begin{split}
+ &\operatorname{vol}(Z(A)G(F)\backslash G(A))f(e)\\
+ &\quad+\frac12\sum_L\operatorname{vol}(A^\times L^\times\backslash L^\times(A))
+ \sum_{\substack{\xi\in F^\times\backslash L^\times\\\xi\ne1}}
+ \int_{L^\times(A)\backslash G(A)}f(g^{-1}\xi g)\,dg,
+\end{split}\tag{8.15}
+\end{equation}
+其中 $L$ 遍历 $M(2,F)$ 中 $F$ 的二次扩张同构类的代表。测度如上选取，并有\footnote{\textbf{译者注（本次校订）：}紧接 (8.15) 的乘积分解中，左侧被积函数应为 $f(g^{-1}\xi g)$，末尾的 $g^{-1}$ 应为 $g$；右侧各局部因子已经使用了正确的共轭形式。}
+\[
+ \int f(g^{-1}\xi g^{-1})\,dg
+ =\prod_v\int_{L_v^\times\backslash G_v}f(g_v^{-1}\xi g_v)\,dg_v.
+\]
+若 $v\in S$ 且 $L_v$ 分裂，由 (8.7)(i)，相应局部积分为零。因此只须对在每个
+$v\in S$ 都不分裂的那些 $L$ 求和，即可嵌入 $D$ 的扩张集合 $X$。对每个 $L\in X$，存在
+$L'\in X'$ 及一个同构
+$L\to L'$。若假设相应商群上的 Haar 测度彼此对应，则对所有 $v$，
+\[
+ \int_{L_v^\times\backslash G_v}f_v(g^{-1}\xi g)dg_v
+ =\int_{L_v'^\times\backslash G_v'}\varphi_v(g^{-1}\xi g)dg_v.
+\]
+$v\in S$ 时显然；$v\notin S$ 时，可修改同构 $G_v\to G_v'$，使其与
+$L_v^\times\to L_v'^\times$ 相容。由 (8.7) 及 $v\notin S$ 时 $\varphi_v,f_v$ 的选择，(8.14)、(8.15) 中关于 $L,L'$ 的级数相等。又因在 $G,G'$ 上采用了 Tamagawa 测度，已知
+\[
+ \operatorname{vol}(Z(A)G'(F)\backslash G'(A))
+ =\operatorname{vol}(Z(A)G(F)\backslash G(A)).
+\]
+结合 (8.8) 即得命题 (8.12)。
+\end{proof}
+
+\origsubsection{C}{主要结果的证明（Proofs of the main result）}
+令 $\rho_{\omega,0}'$ 为 $G'(A)$ 在由满足 $\chi^2=\omega$ 的函数 $\chi\circ\nu$ 所张成空间的正交补中的表示。由 (8.6) 及 $v\notin S$ 时的选择，
+\[
+ \int_{Z(A)\backslash G(A)}f(g)\chi(\det g)dg
+ =\int_{Z(A)\backslash G'(A)}\varphi(g)\chi(\nu(g))dg.
+\]
+因此 (8.12) 蕴含
+\begin{equation}
+ \operatorname{tr}\rho_{\omega,0}(f)=\operatorname{tr}\rho_{\omega,0}'(\varphi).\tag{8.16}
+\end{equation}
+
+\paragraph*{定理 (8.2) 的第一个证明（First proof）.}
+\textit{译注：本段原题引用 (8.2)，按内容是在证明整体对应定理 (8.3)，此处保留原编号。}
+对每个 $v\in S$，固定 $G_v'$ 的不可约表示 $\sigma_v'$，令 $\sigma_v$ 为 $G_v$ 的对应表示。选择
+$\varphi_v\in C_c^\infty(G_v',\omega_v^{-1})$，使
+$\operatorname{tr}\sigma_v'(\varphi_v)=1$，而 $\pi_v'\not\simeq\sigma_v'$ 时
+$\operatorname{tr}\pi_v'(\varphi_v)=0$。于是 (8.16) 成为
+\[
+ \sum n(\pi')\operatorname{tr}\pi'(\varphi)
+ =\sum n(\pi)\operatorname{tr}\pi(f),
+\]
+右端对所有满足 $v\in S$ 时 $\pi_v\simeq\sigma_v$ 的 $G(A)$ 不可约表示求和；左端相应对
+$\pi_v'\simeq\sigma_v'$ 的 $G'(A)$ 不可约表示求和。$n(\pi),n(\pi')$ 分别为它们在
+$\rho_{\omega,0},\rho_{\omega,0}'$ 中的重数。由于 $S$ 的基数为偶数，
+\[
+ 1=\prod_{v\in S}\operatorname{tr}\pi_v'(\varphi_v)
+ =\prod_{v\in S}\operatorname{tr}\pi_v(f_v).
+\]
+因而
+\[
+ \sum n(\pi')\prod_{v\notin S}\operatorname{tr}\pi_v'(\varphi_v)
+ =\sum n(\pi)\prod_{v\notin S}\operatorname{tr}\pi_v(f_v).
+\]
+在同构群 $G^S,G'^S$ 上应用泛函分析的基本原理，得到所需定理。此外，若 $\pi'$ 对应于
+$\pi$，则 $n(\pi')=n(\pi)$。由 [JL] 已知 $n(\pi)\le1$，因此也证明 $\pi'$ 的重数一性质（multiplicity one）。
+
+\paragraph*{第二个证明（Second proof）.}
+将 (8.16) 写为
+\begin{equation}
+ \sum_\pi\prod_v\operatorname{tr}\pi_v(f_v)
+ =\sum_{\pi'}\prod_v\operatorname{tr}\pi_v'(\varphi_v),\tag{8.17}
+\end{equation}
+其中 $\pi=\bigotimes\pi_v$ 与 $\pi'=\bigotimes\pi_v'$ 分别遍历
+$\rho_{\omega,0},\rho_{\omega,0}'$ 的所有不可约子表示。下面逐步利用这个恒等式，将右端限制到单个表示的迹。这里按子表示求和，所以同一个等价类可能出现多次。
+
+\begin{originaltheorem}{引理 (8.18)（Lemma (8.18)）}
+固定 $S$ 之外任意素位 $w$，以及 $G_w$ 的不可约酉表示 $\tau_w$。若
+$f=\prod f_v$、$\varphi=\prod\varphi_v$ 如 (8.12)，则
+\[
+ \sum_{\substack{\pi\subset\rho_{\omega,0}\\\pi_w\simeq\tau_w}}
+ \prod_{v\ne w}\operatorname{tr}\pi_v(f_v)
+ =\sum_{\substack{\pi'\subset\rho_{\omega,0}'\\\pi_w'\simeq\tau_w}}
+ \prod_{v\ne w}\operatorname{tr}\pi_v'(\varphi_v).
+\]
+\end{originaltheorem}
+\begin{proof}
+令 $a_{\tau_w}$ 为两边之差，只须证明它为零。(8.17) 可重写为
+\[
+ \sum_\pi\operatorname{tr}\pi_w(f_w)\prod_{v\ne w}\operatorname{tr}\pi_v(f_v)
+ =\sum_{\pi'\subset\rho_{\omega,0}'}\operatorname{tr}\pi_w'(\varphi_w)
+ \prod_{v\ne w}\operatorname{tr}\pi_v'(\varphi_v).
+\]
+由 $G_w\simeq G_w'$、$f_w\simeq\varphi_w$，它等价于
+\[
+ 0=\sum_{\tau_w\in\mathcal E(G_w)}a_{\tau_w}\operatorname{tr}\tau_w(f_w).
+\]
+而 $f_w$ 在 $C_c^\infty(G_w,\omega_w^{-1})$ 中完全任意，所以由广义的
+“$\operatorname{GL}(2)$ 特征标线性无关性（linear independence of characters）”，$a_{\tau_w}=0$，参见 [LL]。
+\end{proof}
+
+\begin{originaltheorem}{引理 (8.19)（Lemma (8.19)）}
+对每个 $w\notin S$ 固定 $\tau_w$，且几乎所有 $\tau_w$ 非分歧。若 $v\in S$ 时
+$f_v,\varphi_v$ 的轨道积分匹配，则
+\begin{equation}
+ \sum_{\substack{\pi\subset\rho_{\omega,0}\\\pi_w\simeq\tau_w\ (w\notin S)}}
+ \prod_{v\in S}\operatorname{tr}\pi_v(f_v)
+ =\sum_{\substack{\pi'\subset\rho_{\omega,0}'\\\pi_w'\simeq\tau_w\ (w\notin S)}}
+ \prod_{v\in S}\operatorname{tr}\pi_v'(\varphi_v).\tag{8.20}
+\end{equation}
+\end{originaltheorem}
+\begin{proof}
+将上述论证用于限制直积 $G^S=\prod_{w\notin S}G_w$。
+\end{proof}
+
+\begin{originaltheorem}{命题 (8.21)（Proposition (8.21)）}
+给定 $\rho_{\omega,0}'$ 中的 $\pi'=\bigotimes\pi_v'$，存在唯一的
+$\rho_{\omega,0}$ 中的 $\pi=\bigotimes\pi_v$，使对所有 $v\notin S$，$\pi_v\simeq\pi_v'$。
+此外，对每个 $v\in S$，$\pi_v\in\mathcal E_2(G_v)$。
+\end{originaltheorem}
+\begin{proof}
+唯一性由 $\operatorname{GL}(2)$ 的强重数一定理（strong multiplicity one theorem）推出。只需证明存在性，并验证 $S$ 中各素位的分量平方可积。若不存在这样的 $\pi$，则在 (8.19) 中取
+$\tau_w=\pi_w'$（$w\notin S$），得到
+\begin{equation}
+ \sum_{\substack{\sigma'\subset\rho_{\omega,0}'\\\sigma_w'\simeq\pi_w'\ (w\notin S)}}
+ \prod_{v\in S}\operatorname{tr}\sigma_v'(\varphi_v)=0.\tag{8.22}
+\end{equation}
+但这是群 $G_S'=\prod_{v\in S}G_v'$ 的特征标之和，由其线性无关性得到矛盾。
+若某个 $v_0\in S$ 满足 $\pi_{v_0}\notin\mathcal E_2(G_{v_0})$，由尖点性可排除有限维表示；由
+(8.9)，$\operatorname{tr}\pi_{v_0}(f_{v_0})=0$，再次由 (8.22) 得到矛盾。
+\end{proof}
+
+\begin{originaltheorem}{推论 (8.23)（Corollary (8.23)）}
+当 $\tau_w=\pi_w'$，且 $\bigotimes\pi_v'\subset\rho_{\omega,0}'$ 时，(8.20) 左端恰好只剩一项。
+\end{originaltheorem}
+
+\begin{originaltheorem}{命题 (8.24)（Proposition (8.24)）}
+给定 $\rho_{\omega,0}$ 中的 $\pi=\bigotimes\pi_v$，使对所有 $v\in S$ 有
+$\pi_v\in\mathcal E_2(G_v)$，则存在唯一的 $\rho_{\omega,0}'$ 中的
+$\pi'=\bigotimes\pi_v'$，使对所有 $v\notin S$，$\pi_v'=\pi_v$。此外，对每个 $v\in S$，存在
+$\varepsilon_v=\pm1$，使当 $t'\in G_v'$、$t\in G_v$ 满足 (8.1) 的条件时，
+$\theta_{\pi_v'}(t')=\varepsilon_v\theta_{\pi_v}(t)$。
+\end{originaltheorem}
+
+稍后将看到，$\varepsilon_v$ 实际等于 $1$。\footnote{译注：原文此处写作 $1$，但定理 (8.1) 与本节末尾要求的特征标关系带负号；此处保留原文这一符号疑误。}
+\begin{proof}
+对 $v\in S$，令 $X_v$ 为 $M(2,F_v)$ 中 $F_v$ 的二次扩张的等价类代表集合。如 [JL，第15节]，可在
+$\bigcup_{L_v\in X_v}F_v^\times\backslash L_v^\times$ 上引入测度 $\mu_v$，考虑其上满足
+$h(zl)=\omega_v(z)h(l)$（$z\in F_v^\times$）及 $\int|h(x)|^2d\mu_v(x)<\infty$ 的函数所成的 Hilbert 空间
+$\mathcal H_v=\mathcal H_v(\omega_v,\mu_v)$。函数 $\theta_\lambda$（$\lambda\in\mathcal E_2(G_v,\omega_v)$）构成它的一组标准正交基。
+
+类似地，为 $G_v'$ 引入 $\mathcal H_v'$。因为 $F_v$ 的任意二次扩张都嵌入 $D_v$，可以将这两个空间等同。由假设，每个 $v\in S$ 都可取
+$\sigma_v\in\mathcal E(G_v',\omega_v)$，使作为 $\mathcal H_v$ 中元素的特征标满足
+\[
+ \langle\theta_{\pi_v},\theta_{\sigma_v}\rangle=a_v\ne0.
+\]
+二者都是单位向量，所以 $|a_v|\le1$。当 $v\in S$ 时，固定
+$\varphi_v=\overline{\theta_{\sigma_v}}$。则对任意 $\pi_v'\in\mathcal E(G_v',\omega_v)$，
+\[
+ \operatorname{tr}\pi_v'(\varphi_v)
+ =\begin{cases}1,&\pi_v'\simeq\sigma_v,\\0,&\text{其他情形}.
+ \end{cases}
+\]
+特别地，若 $f_v\in C_c^\infty(G_v,\omega_v^{-1})$ 与 $\varphi_v$ 匹配，采用 [JL，第15节] 的记号，
+\[
+\begin{aligned}
+ \operatorname{tr}\pi_v(f_v)
+ &=\int_{Z_v\backslash G_v}f_v(g)\theta_{\pi_v}(g)\,dg\\
+ &=\sum_{L_v}\frac12\int_{Z_v\backslash L_v^\times}
+ \delta(b)\theta_{\pi_v}(b)
+ \int_{L_v'^\times\backslash G_v'}\theta_{\sigma_v}(g^{-1}bg)\,dg\,db\\
+ &=\langle\theta_{\pi_v},\theta_{\sigma_v}\rangle=a_v.
+\end{aligned}
+\]
+所以取 $\tau_w=\pi_w$（$w\notin S$）后，(8.20) 归结为
+\[
+ \prod_{v\in S}a_v=\sum1,
+ \quad\pi'\subset\rho_{\omega,0}',\quad
+ \pi_v'\simeq\sigma_v\ (v\in S),\quad\pi_v'\simeq\pi_v\ (v\notin S).
+\]
+因此右端只有一项，这也再次证明了 $G'$ 的重数一性质；也得 $|a_v|=1$。一个涉及
+$\pi_v$ 及其逆反表示（contragredient representation）$\widetilde\pi_v$ 的简单论证说明 $a_v$ 为实数，所以
+$a_v=\pm1$。于是 $\pi_v'=\sigma_v$ 完全由 $\pi_v$ 决定，且作为 $\mathcal H_v$ 中元素，
+$\theta_{\pi_v}=\pm\theta_{\pi_v'}=\theta_{\sigma_v}$。命题得证。
+\end{proof}
+
+最后还要完成 (8.1) 的局部对应，并确定符号，即证明 $\theta_{\pi_v}=-\theta_{\pi_v'}$。为此，要把
+$G_v'$ 的任意局部表示 $\pi_v'$ 嵌入一个自守表示 $\pi'$，并利用 $S$ 基数为偶数这一事实。详情见
+[Fl] 中的原始论证。
+
+\begin{thebibliography}{GGPS}
+\bibitem[Ar 1]{c15-Ar1} J. Arthur, \emph{The Selberg trace formula for groups of $F$-rank one}, Ann. of Math. (2) \textbf{100} (1974), 326--385.
+\bibitem[Ar 2]{c15-Ar2} J. Arthur, \emph{The truncation operator for reductive groups}, Bull. Amer. Math. Soc. \textbf{83} (1977), 748--750.
+\bibitem[Bo]{c15-Bo} A. Borel, \emph{Automorphic $L$-functions}, 本论文集，第2册，27--61页。
+\bibitem[De]{c15-De} J. Delsarte, C.R. Acad. Sci. Paris \textbf{214} (1942), 147--149.
+\bibitem[DL]{c15-DL} M. Duflo and J.-P. Labesse, \emph{Sur la formule des traces de Selberg}, Ann. Sci. École Norm. Sup. (4) \textbf{4} (1971), 193--284.
+\bibitem[Fl]{c15-Fl} D. Flath, \emph{A comparison of the automorphic representations of GL(3) and its twisted forms}, 博士论文，Harvard University, 1977.
+\bibitem[Ge]{c15-Ge} S. Gelbart, \emph{Automorphic forms on adele groups}, Ann. of Math. Studies, no. 83, Princeton Univ. Press, Princeton, N.J., 1975.
+\bibitem[GGPS]{c15-GGPS} I. M. Gelfand, M. I. Graev and I. I. Piatetski-Shapiro, \emph{Automorphic functions and representation theory}, W. B. Saunders Co., 1969.
+\bibitem[Go 1]{c15-Go1} R. Godement, \emph{Analyse spectrale des fonctions modulaires}, Séminaire Bourbaki \textbf{278} (1964)；另见 \emph{The spectral decomposition of cusp forms}, Proc. Sympos. Pure Math., vol. 9, Amer. Math. Soc., Providence, R.I., 1966, 225--234.
+\bibitem[Go 2]{c15-Go2} R. Godement, \emph{Notes on Jacquet-Langlands' theory}, 油印讲义，Institute for Advanced Study, Princeton, N.J., 1970.
+\bibitem[Go 3]{c15-Go3} R. Godement, \emph{Domaines fondamentaux des groupes arithmétiques}, Séminaire Bourbaki \textbf{257} (1963), W.A. Benjamin, Inc., New York.
+\bibitem[JL]{c15-JL} H. Jacquet and R. P. Langlands, \emph{Automorphic forms on GL(2)}, Lecture Notes in Math., vol. 114, Springer-Verlag, Berlin and New York, 1970.
+\bibitem[K]{c15-K} T. Kubota, \emph{Elementary theory of Eisenstein series}, Halsted Press, New York, 1973.
+\bibitem[La]{c15-La} S. Lang, \emph{SL(2,R)}, Addison Wesley, Reading, Mass., 1975.
+\bibitem[La 1]{c15-La1} R. P. Langlands, \emph{On the functional equations satisfied by Eisenstein series}, Lecture Notes in Math., vol. 544, Springer-Verlag, Berlin and New York, 1976.
+\bibitem[La 2]{c15-La2} R. P. Langlands, \emph{Base change for GL(2): the theory of Saito-Shintani with applications}, The Institute for Advanced Study, 1975，预印本。
+\bibitem[LL]{c15-LL} J.-P. Labesse and R. P. Langlands, \emph{$L$-indistinguishability for $\operatorname{SL}_2$}, Institute for Advanced Study, 1977，预印本。
+\bibitem[Sa]{c15-Sa} H. Saito, Lecture Notes in Math., no. 8, Kinokuniya Book Store Co., Ltd., Tokyo, Japan, 1975.
+\bibitem[Se]{c15-Se} A. Selberg, \emph{Harmonic analysis and discontinuous groups}, J. Indian Math. Soc. \textbf{20} (1956), 47--87.
+\bibitem[Sh]{c15-Sh} T. Shintani, \emph{On liftings of holomorphic automorphic forms}, U.S.-Japan Seminar on Number Theory, Ann Arbor, 1975；亦见本论文集，第2册，97--110页。
+\end{thebibliography}
+
+\noindent Cornell 大学（Cornell University）\\
+Columbia 大学（Columbia University）。

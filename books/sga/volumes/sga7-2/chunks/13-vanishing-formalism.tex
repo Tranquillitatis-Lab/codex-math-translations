@@ -1,0 +1,614 @@
+\SourcePage{92}
+\SGAchapter{XIII}{消失圈的形式体系}{Le formalisme des cycles évanescents}
+\begin{center}P. Deligne\end{center}
+\noindent 本讲内容：引言；1. \Term{set-sheaf}{集合层}（1.1 Galois 层，1.2 \Term{topos}{拓扑斯} $Y\times_s S$，1.3 \Term{functor}{函子} $\Psi$，1.4 \Term{variation}{变差}）；2. \Term{vanishing-cycles}{消失圈}（2.1 \Term{functor}{函子} $R\Psi$，2.2 一种相容性：\Term{trace-morphism}{迹态射}，2.3 \Term{finiteness-theorem}{有限性定理}：\Term{equal-characteristic}{等特征}零情形，2.4 \Term{isolated-singularity}{孤立奇点}）。
+\SourcePage{93}
+\SGAsection{}{引言}
+本讲重新讨论 Grothendieck 第 I 讲第 2 节引入的\Term{form}{形式}体系。唯一的新内容是引入经典理论中\Term{variation}{变差}（variation）的\Term{algebraic-correspondence}{代数对应}物。
+我们遵循的\Term{topology}{拓扑}图景如下。设 $X$ 是\Term{analytic-space}{解析空间}，$D\subset\mathbb C$ 是以 $0$ 为\Term{central}{中心的}\Term{disc}{圆盘}，$D^*=D-\{0\}$，$f:X\to D$ 是\Term{proper}{固有态射}（稍后再考虑非\Term{proper}{固有}情形）。用一个以 $0$ 为\Term{central}{中心的}充分小\Term{disc}{圆盘}代替 $D$，并用这个小\Term{disc}{圆盘}的\Term{inverse-image}{逆像}代替 $X$，仍将所得\Term{morphism}{态射}记为 $f:X\to D$。由 Thom \Term{isotopy}{同痕}\Term{theorem}{定理}的复解析变体，$f^{-1}(D^*)$ 是 $D^*$ 上的\Term{topological-fibration}{拓扑纤维丛}。我不知道是否总能构造下面这种二元组 $(\Gamma,r)$，但这似乎是可信的。
+\begin{enumerate}
+\item[(a)] $\Gamma$ 是 $D^*$ 上\Term{fibre-bundle}{纤维丛} $f^{-1}(D^*)$ 的一个\Term{local-scheme}{局部}相容的\Term{locally-trivial}{局部平凡}化系统。换言之，$\Gamma$ 给出 $X$ 在 $D^*$ 的\Term{universal-cover}{万有覆盖} $\widetilde D^*$ 上的\Term{inverse-image}{逆像}的一个 $\pi_1(D^*)$ \Term{equivariant}{等变}\Term{trivialization}{平凡化}。
+\item[(b)] $r$ 是 $X$ 到\Term{special-fibre}{特殊纤维} $X_0=f^{-1}(0)$ 的\Term{retraction}{收缩}，且与 $\Gamma$ 相容：若在 $D^*$ 的一个\Term{connected}{连通}\Term{open-subset}{开集} $U$ 上，$\Gamma$ 将 $X_U=f^{-1}(U)$ 与 $X_1\times U$ 等同，则 $r=r(x_1,u)$ 与 $u$ 无关。
+\end{enumerate}
+给定 $(X,f,\Gamma,r)$。设 $t\in D$，$X_t=f^{-1}(t)$ 为“\Term{general-fibre}{一般纤维}”。\Term{fibre-bundle}{纤维丛} $\varphi^*X$ 是 $X/D$ 沿 $\varphi:[0,1]\to D^*:x\mapsto\exp(2\pi ix)t$ 的\Term{inverse-image}{逆像}，由 $\Gamma$ \Term{trivialization}{平凡化}。\Term{monodromy}{单值性} $T:X_t\to X_t$ 是\Term{homeomorphism}{同胚}
+\[
+X_t=(\varphi^*X)_0\xrightarrow[\Gamma]{\sim}(\varphi^*X)_1=X_t.
+\]
+令 $r_t:X_t\to X_0$ 为 $r$ 在 $X_t$ 上的\Term{restriction}{限制}。有 $r_tT=r_t$。由 $(X_t,X_0,T,r_t)$ 可如下重构 $(X,f)$：
+\begin{enumerate}
+\item[($\alpha$)] 在 $X_t\times[0,1]$ 中，利用 $T$ \Term{gluing}{黏合}两端 $X_t\times\{0\}$ 与 $X_t\times\{1\}$，得到 $f':X'\to S^1$；
+\item[($\beta$)] $r_t$ 定义 $r':X'\to X_0$；$(X,f)$ 等同于
+\end{enumerate}
+\SourcePage{94}
+\[
+\operatorname{cone}(f'):\operatorname{cone}(r':X'\to X_0)\longrightarrow D=\operatorname{cone}(S^1\to\mathrm{pt}).
+\]
+设 $\Psi=(r,f):X\to X_0\times D$。Leray \Term{higher-direct-image}{高阶正像层} $R^i\Psi_*\mathbb Z$ 满足下述条件：
+\begin{quote}
+$(*)$ $D^*$ 可由\Term{open-subset}{开集} $U$ \Term{covering}{覆盖}，使得\Term{sheaf}{层} $F$ 在 $X_0\times U$ 上的\Term{restriction}{限制}是 $X_0$ 上某个\Term{sheaf}{层}的\Term{inverse-image}{逆像}。
+\end{quote}
+\begin{SGAresult}{构造}{0.1}
+$X_0\times D$ 上满足 $(*)$ 的\Term{sheaf}{层} $F$ 等同于系统 $(F_0,F_t,T,\alpha)$，其中：$\alpha)$ $F_0$ 是 $X_0$ 上的\Term{sheaf}{层}；$\beta)$ $F_t$ 是 $X_0$ 上的\Term{sheaf}{层}，带有 $\pi_1(D^*,t)$ 的\Term{generator}{生成元} $T$ 的\Term{action}{作用}；$\gamma)$ $\alpha$ 是从 $F_0$ 到 $F_t$ 的 $T$ \Term{invariant}{不变}元\Term{sheaf}{层}的\Term{morphism}{态射}。
+\end{SGAresult}
+若 $X_0\times D^*$ 上的\Term{sheaf}{层} $G$ 满足 $(*)$，$\widetilde D^*$ 是 $D^*$ 的\Term{universal-cover}{万有覆盖}（带\Term{base-point}{基点} $t$），则 $G$ 在 $X_0\times\widetilde D^*$ 上的\Term{inverse-image}{逆像}以唯一方式为 $X_0$ 上某个\Term{sheaf}{层} $G_t$ 的\Term{inverse-image}{逆像}；$G_t$ 带有 $\pi_1(D^*,t)$ 的\Term{action}{作用}，而 $G$ 由 $X_0\times\widetilde D^*$ 上的 $\operatorname{pr}_1^*(G_t)$ 对 $\pi_1(D^*,t)$ 取商得到。
+$X_0\times D$ 上的\Term{sheaf}{层} $F$ 由下述资料决定：1）它在 $X_0$ 上的\Term{restriction}{限制} $F_0$；2）它在 $X_0\times D^*$ 上的\Term{restriction}{限制} $G$；3）\Term{morphism}{态射} $\alpha:F_0\to i^*j_*G$，其中 $i:X_0\hookrightarrow X_0\times D$，$j:X_0\times D^*\hookrightarrow X_0\times D$。若 $F$ 满足 $(*)$，则 $G$ 由 $X_0$ 上的 $(G_t,T)$ 描述，因而得到所宣称的 $F$ 的描述。
+对于\Term{sheaf}{层} $R^i\Psi_*\mathbb Z$，有
+\[
+(R^i\Psi_*\mathbb Z)_0=\begin{cases}\mathbb Z&i=0,\\0&i>0,\end{cases}
+\]
+而 $(R^i\Psi_*\mathbb Z)_t$（当 $i>0$ 时）确实可称为\Term{vanishing-cycles}{消失圈层}（参看第 I 讲第 2 节开头的讨论）。
+\SourcePage{95}
+只有通过进入\Term{derived-category}{导出范畴}加以精细化，这一讨论才有用：各 $R^i\Psi_*\mathbb Z$ 来自\Term{derived-category}{导出范畴} $D^+(X_0\times D)$ 的一个\Term{object}{对象}，甚至来自 $X_0\times D$ 上满足 $(*)$ 的\Term{abelian-sheaf}{阿贝尔层}\Term{category}{范畴}的\Term{derived-category}{导出范畴}中的\Term{object}{对象} $R\Psi_*\mathbb Z$。这一\Term{object}{对象}不仅决定\Term{vanishing-cycles}{消失圈层}及其\Term{monodromy}{单值性}，还决定经典的“\Term{variation}{变差}”\Term{morphism}{态射}（参看 1.4 和第 XIV 讲 3.1）。
+我们将在\Term{algebraic-geometry}{代数几何}中定义其对应物。若 $S$ 是\Term{strictly-henselian}{严格 Hensel 的}\Term{trait}{离散赋值环谱}，$f:X\to S$ 是\Term{scheme}{概形}\Term{morphism}{态射}，我们将定义乘积\Term{topos}{拓扑斯} $(X_0)_{\text{ét}}\times S_{\text{ét}}$ 上的\Term{abelian-sheaf}{阿贝尔层}\Term{category}{范畴}的\Term{derived-category}{导出范畴}中的\Term{object}{对象} $R\Psi(\mathbb Z/\ell^n)$。这个\Term{topos}{拓扑斯}上的\Term{sheaf}{层}\Term{solvable}{可解}释为系统 $(F_0,F_t,T,\alpha)$，其中：$\alpha)$ $F_0$ 是 $X_0$ 上的\Term{sheaf}{层}；$\beta)$ $F_t$ 是 $X_0$ 上的\Term{sheaf}{层}，带有\Term{inertia-group}{惯性群} $I$ 的\Term{continuous-action}{连续作用} $T$；$\gamma)$ $\alpha$ 是从 $F_0$ 到 $F_t$ 的 $I$ \Term{invariant}{不变}元\Term{sheaf}{层}的\Term{morphism}{态射}。
+我们需要在比上述稍\Term{generic}{一般}的框架中工作：
+\begin{enumerate}
+\item[(a)] $R\Psi(\mathbb Z/\ell^n)$ 的构造不假设 $f$ \Term{proper}{固有}。为作\Term{topology}{拓扑}解释，应在上述构造中用\Term{special-fibre}{特殊纤维} $X_0$ 的一个\Term{neighborhood}{邻域}代替 $X$。
+\item[(b)] 为构造 $R\Psi(\mathbb Z/\ell^n)$ 并证明其性质，不仅须考虑\Term{constant-sheaf}{常值层} $\mathbb Z/\ell^n$，还须考虑\Term{generic}{一般}的\Term{sheaf}{层}，乃至\Term{sheaf}{层}的\Term{complex}{复形}。
+\item[(c)] 当不假设\Term{henselian}{Hensel 的}\Term{trait}{离散赋值环谱} $S$ 的\Term{residue-field}{剩余域} $k$ \Term{separably-closed}{可分闭}时，应以\Term{fibre-product}{纤维积}\Term{topos}{拓扑斯} $(X_0)_{\text{ét}}\times_{\operatorname{Spec}(k)_{\text{ét}}}S_{\text{ét}}$ 代替乘积\Term{topos}{拓扑斯}。不愿使用\Term{topos}{拓扑斯}的 $2$-\Term{fibre-product}{纤维积}的读者，可以将 1.2.4 的 Galois 描述作为这个\Term{topos}{拓扑斯}的定义。
+\end{enumerate}
+\SourcePage{96}
+\SGAsection{0.2}{记号与术语}
+(0.2.1) \Term{trait}{离散赋值环谱}：\Term{discrete-valuation-ring}{离散赋值环}的谱。
+
+(0.2.2) \Term{henselian}{Hensel 的}：（对\Term{scheme}{概形}而言）\Term{henselian-local-ring}{Hensel 局部环}的谱。
+
+(0.2.3) \Term{strictly-henselian}{严格 Hensel 的}：对环而言，指其为\Term{henselian}{Hensel 环}且\Term{residue-field}{剩余域}\Term{separably-closed}{可分闭}；对\Term{scheme}{概形}而言，指这类环的谱。
+
+(0.2.4) $S$ 的\Term{geometric-point}{几何点}：\Term{morphism}{态射} $\bar x:\operatorname{Spec}(\bar k)\to S$，其像为 $x\in S$，而 $k(\bar x)\mathrel{:=}\bar k$ 是 $k(x)$ 的\Term{separable-closure}{可分闭包}。称 $\bar x$ 位于 $x$。有时滥用语言，也将 $\bar k$ 是 $k(x)$ 的\Term{separably-closed}{可分闭}\Term{field-extension}{扩域}的\Term{morphism}{态射} $\bar x:\operatorname{Spec}(\bar k)\to S$ 称为\Term{geometric-point}{几何点}；这样的\Term{morphism}{态射}唯一地经过 $S$ 的一个（严格意义的）\Term{geometric-point}{几何点}\Term{resolution}{分解}。
+
+(0.2.5) $s,\eta,\bar s,\bar\eta,\bar S$：若 $S=\operatorname{Spec}(V)$ 是\Term{henselian}{Hensel 的}\Term{trait}{离散赋值环谱}，通常以 $s$ 记 $S$ 的\Term{closed-point}{闭点}，$\eta$ 记其\Term{generic-point}{泛点}，$\bar\eta$ 记 $S$ 的一个\Term{geometric-generic-point}{几何泛点}（即位于 $\eta$ 的点），$\bar s$ 记对应的位于 $s$ 的\Term{geometric-point}{几何点}（第 I 讲 0.0.3）。以 $\bar S$ 记 $V$ 在 $k(\bar\eta)$ 中的\Term{normalization}{正规化}的谱，其\Term{residue-field}{剩余域}是 $k(\bar s)$ 的不\Term{separable}{可分}\Term{field-extension}{扩域}。$\operatorname{Gal}(\bar\eta/\eta)$ 表示 $k(\bar\eta)$ 在 $k(\eta)$ 上的 Galois 群；$s$ 同理。有\Term{exact-sequence}{正合列}
+\[
+0\longrightarrow I\longrightarrow\operatorname{Gal}(\bar\eta/\eta)\longrightarrow\operatorname{Gal}(\bar s/s)\longrightarrow0
+\]
+（$I$ 为\Term{inertia-group}{惯性群}）。
+
+(0.2.6) （\Term{scheme}{概形} $X$ 上的）\Term{sheaf}{层}总是指 $X$ 的\Term{etale-site}{平展景} $X_{\text{ét}}$ 上的\Term{sheaf}{层}。
+
+(0.2.7) 与……互素：$S$ 上的挠\Term{sheaf}{层} $F$（或\Term{torsion-abelian-group}{挠阿贝尔群} $F$）称为与 $S$ 的\Term{residue-characteristic}{剩余特征}互素，若对每个 $s\in S$，乘以 $k(s)$ 的\Term{characteristic-exponent}{特征指数}是 $F$ 的\Term{automorphism}{自同构}。
+\SourcePage{97}
+\SGAsection{1}{集合层}
+\Term{vanishing-cycles}{消失圈层}将定义为第 3 小节为任意\Term{sheaf-of-sets}{集合层}定义的\Term{left-exact}{左正合}\Term{functor}{函子} $\Psi$ 的\Term{derived-functor}{导出函子}的值。
+\SGAsection{1.1}{Galois 层}
+\textbf{1.1.1.} 设 $Y$ 是域 $k$ 上的\Term{scheme}{概形}，$\bar k$ 为 $k$ 的\Term{separable-closure}{可分闭包}，$\bar Y=Y\otimes_k\bar k$。设 $G$ 是\Term{profinite-group}{投有限群}，
+\[u:G\longrightarrow\operatorname{Gal}(\bar k/k)\]
+是从 $G$ 到 $\bar k/k$ 的 Galois 群的\Term{continuous}{连续}\Term{homomorphism}{同态}。Galois 群 $\operatorname{Gal}(\bar k/k)$ 通过结构搬移在 $\bar Y$ 上（左）\Term{action}{作用}。$G$ 经由 $u$ \Term{action}{作用}于 $\bar Y$。
+设 $\mathscr F$ 是 $\bar Y$（的\Term{etale-site}{平展景}）上的\Term{sheaf-of-sets}{集合层}。$G$ 在 $\mathscr F$ 上与其在 $\bar Y$ 上的\Term{action}{作用}相容的\Term{action}{作用}，是 $G$ 在 $(\bar Y,\mathscr F)$ 上的\Term{automorphism}{自同构}\Term{action}{作用}，诱导 $\bar Y$ 上的给定\Term{action}{作用}。换言之，这是一个\Term{isomorphism}{同构}系统
+\[\sigma(g):u(g)_*\mathscr F\longrightarrow\mathscr F,\]
+满足 $\sigma(gh)=\sigma(g)\sigma(h)$。若 $G$ \Term{action}{作用}于 $\mathscr F$，则对每个 $Y$ 上\Term{etale}{平展}的 $U$，令 $\bar U=U\otimes_k\bar k$，它在 $\bar Y$ 上\Term{etale}{平展}，于是 $G$ \Term{action}{作用}于 $\mathscr F(\bar U)$。
+\begin{SGAresult}{定义}{1.1.2}
+若对每个 $Y$ 上\Term{quasi-compact}{拟紧}且\Term{etale}{平展}的 $U$，$G$ 在\Term{discrete}{离散}\Term{set}{集合} $\mathscr F(\bar U)$ 上\Term{continuous-action}{连续作用}，则称 $G$ 在 $\mathscr F$ 上\Term{continuous-action}{连续作用}。
+\end{SGAresult}
+只考虑\Term{affine}{仿射}的 $U$ 也完全一样。
+若 $\mathscr F$ 是 $Y$ 上的\Term{sheaf-of-sets}{集合层}，其在 $\bar Y$ 上的\Term{inverse-image}{逆像}为 $\bar{\mathscr F}$，则 $\operatorname{Gal}(\bar k/k)$ 通过结构搬移\Term{action}{作用}于 $\bar{\mathscr F}$，且与其在 $\bar Y$ 上的\Term{action}{作用}相容。
+\begin{SGAresult}{回顾}{1.1.3}
+(i) $\operatorname{Gal}(\bar k/k)$ 在 $\bar{\mathscr F}$ 上的\Term{action}{作用}\Term{continuous}{连续}。
+\SourcePage{98}
+(ii) \Term{functor}{函子} $\mathscr F\mapsto\bar{\mathscr F}$（配备 $\operatorname{Gal}(\bar k/k)$ 的\Term{action}{作用}）是如下两\Term{category}{范畴}的\Term{equivalence}{等价}：$Y$ 上\Term{sheaf-of-sets}{集合层}的\Term{category}{范畴}，以及 $\bar Y$ 上带有与 $\operatorname{Gal}(\bar k/k)$ 在 $\bar Y$ 上的\Term{action}{作用}相容的\Term{continuous}{连续} $\operatorname{Gal}(\bar k/k)$ \Term{action}{作用}的\Term{sheaf-of-sets}{集合层}的\Term{category}{范畴}。
+\end{SGAresult}
+\begin{proof}
+将 $\bar k$ 写成\Term{finite-galois-extension}{有限 Galois 扩张} $k_i$ 的\Term{inductive-limit}{归纳极限}。设\Term{projection}{投影}为 $\varphi_i:Y_i=Y\otimes_k k_i\to Y$ 及 $\bar\varphi:\bar Y\to Y$。对 $Y$ 上\Term{etale}{平展}且\Term{affine}{仿射}的 $U$，置 $U_i=U\otimes_k k_i$。有
+\[\bar{\mathscr F}(\bar U)=\varinjlim_i\varphi_i^*\mathscr F(U_i).\]
+$\operatorname{Gal}(\bar k/k)$ 在 $\varphi_i^*\mathscr F(U_i)$ 上的\Term{action}{作用}经过 $\operatorname{Gal}(k_i/k)$，这就证明了 (i)。
+\Term{functor}{函子} (ii) 的\Term{right-adjoint}{右伴随}为 $\mathscr G\mapsto(\bar\varphi_*\mathscr G)^{\operatorname{Gal}(\bar k/k)}$。对 $Y$ 上每个 $\mathscr F$，有
+\[\bar\varphi_*\bar\varphi^*\mathscr F=\varinjlim_i\varphi_{i*}\varphi_i^*\mathscr F.\]
+因此，为证明 $\mathscr F\xrightarrow\sim(\bar\varphi_*\bar\varphi^*\mathscr F)^{\operatorname{Gal}(\bar k/k)}$，只须对每个 $i$ 证明
+$\mathscr F\xrightarrow\sim(\varphi_{i*}\varphi_i^*\mathscr F)^{\operatorname{Gal}(k_i/k)}$。甚至只须证明此\Term{arrow}{箭头}在标量由 $k$ \Term{group-extension}{扩张}到 $k_i$ 后成为\Term{isomorphism}{同构}；此时 $\operatorname{Spec}(k_i)$ 成为若干个 $\operatorname{Spec}(k)$ 的和，$\operatorname{Gal}(k_i/k)$ 在这些副本间单纯传递地置换，因而断言显然。
+故\Term{exact-functor}{正合函子} (ii) \Term{fully-faithful}{全忠实}。为得出结论，还需证明\Term{arrow}{箭头}
+\[\bar\varphi^*(\bar\varphi_*\mathscr G)^{\operatorname{Gal}(\bar k/k)}\longrightarrow\mathscr G\]
+是\Term{epimorphism}{满态射}。设 $\bar\varphi_i:\bar Y\to Y_i$。由假设，
+\[\varinjlim_i\bar\varphi_i^*(\bar\varphi_{i*}\mathscr G)^{\operatorname{Gal}(\bar k/k_i)}\longrightarrow\mathscr G\]
+\SourcePage{99}
+是\Term{epimorphism}{满态射}。有
+\[
+\bar\varphi^*(\varphi_*\mathscr G)^{\operatorname{Gal}(\bar k/k)}
+=\bar\varphi_i^*\bigl(\varphi_i^*\varphi_{i*}((\bar\varphi_{i*}\mathscr G)^{\operatorname{Gal}(\bar k/k_i)})^{\operatorname{Gal}(k_i/k)}\bigr),
+\]
+并且，由与上面相同的 Galois \Term{descent}{下降}论证，对 $Y_i$ 上带有与 $\operatorname{Gal}(k_i/k)$ 在 $Y_i$ 上的\Term{action}{作用}相容的\Term{action}{作用}的 $\mathscr G'$，有
+\[\varphi_i^*(\varphi_{i*}\mathscr G')^{\operatorname{Gal}(k_i/k)}\xrightarrow\sim\mathscr G'.\]
+这就得到结论。
+\end{proof}
+\SGAsection{1.2}{拓扑斯 $Y\times_s S$}
+\textbf{1.2.1.} 设 $S$ 是\Term{henselian}{Hensel 的}\Term{local-scheme}{局部}\Term{scheme}{概形}，\Term{closed-point}{闭点}为 $i:s\hookrightarrow S$。\Term{functor}{函子} $S'\mapsto S'\times_Ss=i^*S'$ 是\Term{finite}{有限}\Term{etale}{平展} $S$-\Term{scheme}{概形} $S'$ 的\Term{category}{范畴}与\Term{finite}{有限}\Term{etale}{平展} $s$-\Term{scheme}{概形} $s'$（即\Term{etale}{平展} $k(s)$-\Term{algebra}{代数}的谱）的\Term{category}{范畴}之间的\Term{equivalence}{等价}。其逆\Term{functor}{函子} $\operatorname{sp}^*$ 从 $s$ 的\Term{etale-site}{平展景}到 $S$ 的\Term{etale-site}{平展景}，是\Term{site}{景}的\Term{morphism}{态射}
+\[\operatorname{sp}:S\longrightarrow s,\]
+称为\Term{specialization}{特殊化态射}（参看 SGA4 VIII 7）。对 $s$ 上\Term{etale}{平展}的 $s'$，称 $\operatorname{sp}^*(s')$ 由 $S$ 作\Term{residue-field-extension}{剩余域扩张}得到。对 $S$ 上的\Term{sheaf}{层} $F$，有\Term{functorial-isomorphism}{函子性同构}
+\[\operatorname{sp}_*F=i^*F.\tag{1.2.1.1}\]
+对 $S$ 的每个\Term{open-subset}{开集} $j:U\hookrightarrow S$，或每个点 $j:\eta\hookrightarrow S$，仍将复合 $\operatorname{sp}\circ j$ 记作 $\operatorname{sp}$。对 $U$ 上（相应地 $\eta$ 上）的\Term{sheaf}{层} $F$，有
+\[\operatorname{sp}_*F=i^*j_*F.\tag{1.2.1.2}\]
+\textbf{1.2.2.} 设 $S$ 是\Term{henselian}{Hensel 的}\Term{trait}{离散赋值环谱}，$s,\eta,\bar s,\bar\eta,I$ 如 0.2.5。
+\[s\lhook\joinrel\xrightarrow{i}S\xleftarrow{j}\joinrel\rhook\eta.\]
+\SourcePage{100}
+下面用 Galois 语言解释 $s,\eta,S$ 上的\Term{sheaf}{层}及\Term{specialization}{特殊化态射}。
+
+(a) 通过 $F\mapsto F_{\bar s}$（相应地 $F_{\bar\eta}$），$s$ 上（相应地 $\eta$ 上）的\Term{sheaf}{层} $F$ 等同于带有 $\operatorname{Gal}(\bar s/s)$（相应地 $\operatorname{Gal}(\bar\eta/\eta)$）\Term{continuous-action}{连续作用}的\Term{set}{集合}（SGA4 VIII 2.1，或 1.1.3）。
+
+(b) $S$ 上的\Term{sheaf}{层} $F$ 定义 $s,\eta$ 上的\Term{sheaf}{层} $F_s=i^*F$、$F_\eta=j^*F$，以及\Term{adjoint}{伴随箭头} $F\to j_*j^*F$，后者诱导
+\[\varphi:F_s=i^*F\longrightarrow i^*j_*j^*F=\operatorname{sp}_*F_\eta.\]
+已知（SGA4 IV 9.5.4），\Term{functor}{函子} $F\mapsto(F_s,F_\eta,\varphi)$ 是 $S$ 上\Term{sheaf}{层}\Term{category}{范畴}与三元组 $(F_s,F_\eta,\varphi)$ 的\Term{category}{范畴}之间的\Term{equivalence}{等价}（$F_s$ 是 $s$ 上的\Term{sheaf}{层}，$F_\eta$ 是 $\eta$ 上的\Term{sheaf}{层}，$\varphi:F_s\to i^*j_*F_\eta$）。经由\Term{equivalence}{等价} (a)，\Term{functor}{函子} $i^*j_*$ 等同于“取 $I$ \Term{invariant}{不变}元”\Term{functor}{函子}。因此，$S$ 上的\Term{sheaf}{层}等同于以下三元组：带 $\operatorname{Gal}(\bar s/s)$ \Term{action}{作用}的\Term{set}{集合} $F_{\bar s}$，带 $\operatorname{Gal}(\bar\eta/\eta)$ \Term{action}{作用}的\Term{set}{集合} $F_{\bar\eta}$，以及\Term{equivariant}{等变}\Term{morphism}{态射} $\varphi:F_{\bar s}\to F_{\bar\eta}$。
+
+(c) 经由 (a)、(b)，\Term{morphism}{态射} $\operatorname{sp},j,i,\operatorname{sp}=\operatorname{sp}\circ j$ 表示如下：
+\[
+\begin{aligned}
+\operatorname{sp}:S\to s:&\quad\operatorname{sp}^*F_{\bar s}=(F_{\bar s},F_{\bar s},\mathrm{Id}),&\operatorname{sp}_*(F_{\bar s},F_{\bar\eta},\varphi)&=F_{\bar s};\\
+j:\eta\to S:&\quad j^*(F_{\bar s},F_{\bar\eta},\varphi)=F_{\bar\eta},&j_*F_{\bar\eta}&=(F_{\bar\eta}^{I},F_{\bar\eta},\text{包含});\\
+i:s\to S:&\quad i^*(F_{\bar s},F_{\bar\eta},\varphi)=F_{\bar s},&i_*F_{\bar s}&=(F_{\bar s},\{0\},\text{投影});\\
+\operatorname{sp}=\operatorname{sp}j:\eta\to s:&\quad\operatorname{sp}^*F_{\bar s}=F_{\bar s},&\operatorname{sp}_*F_{\bar\eta}&=F_{\bar\eta}^{I}.
+\end{aligned}
+\]
+\textbf{1.2.3.} 设 $S$ 如 1.2.2，$Y$ 是 $s$ 上的\Term{scheme}{概形}。我们须使用 $Y$ 和 $S$ 的\Term{etale-topos}{平展拓扑斯}在 $s$ 的\Term{etale-topos}{平展拓扑斯}上的 $2$-\Term{fibre-product}{纤维积} $Y\times_sS$。由 Giraud [1]，这个 $2$-\Term{fibre-product}{纤维积}存在，而且容易看出它有以下 Galois 描述。
+\SourcePage{101}
+不愿使用 $2$-\Term{fibre-product}{纤维积}的读者可以用这个描述作为定义。
+\begin{SGAresult}{构造}{1.2.4}
+$Y\times_sS$ 上的\Term{sheaf}{层} $F$ 等同于三元组 $(F_s,F_\eta,\varphi)$，其中：
+\begin{enumerate}
+\item[(a)] $F_s$ 是 $Y$ 上的\Term{sheaf}{层}，亦即 $\bar Y=Y\otimes_s\bar s$ 上的\Term{sheaf}{层} $F_{\bar s}$，带有与 $\operatorname{Gal}(\bar s/s)$ 在 $\bar Y$ 上的\Term{action}{作用}相容的\Term{continuous}{连续} $\operatorname{Gal}(\bar s/s)$ \Term{action}{作用}；
+\item[(b)] $F_\eta$ 是 $\bar Y$ 上的\Term{sheaf}{层} $F_{\bar\eta}$，带有与 $\operatorname{Gal}(\bar\eta/\eta)$ 在 $\bar Y$ 上的\Term{action}{作用}（经由 1.1.1）相容的\Term{continuous}{连续} $\operatorname{Gal}(\bar\eta/\eta)$ \Term{action}{作用}；
+\item[(c)] $\varphi$ 是从 $F_{\bar s}$ 到 $F_{\bar\eta}$ 的\Term{equivariant}{等变}\Term{morphism}{态射}。
+\end{enumerate}
+\end{SGAresult}
+同样，$Y\times_s\eta$ 上的\Term{sheaf}{层} $F_\eta$ 就是 1.2.4(b) 中的\Term{object}{对象}。有\Term{topos}{拓扑斯}图
+\[
+\begin{tikzcd}
+Y\arrow[d]&Y\arrow[d]\arrow[r,hook,"i"]&Y\times_sS\arrow[d]\arrow[ll,"\operatorname{sp}"',bend right=15]&Y\times_s\eta\arrow[l,hook',"j"']\arrow[d]\\
+s&s\arrow[r,hook,"i"]&S&\eta\arrow[l,hook',"j"']
+\end{tikzcd}\tag{1.2.4.1}
+\]
+$Y\times_sS$ 是开子\Term{topos}{拓扑斯} $Y\times_s\eta$ 与其补闭子\Term{topos}{拓扑斯} $Y$ 的并。公式 1.2.2(c) 对 $\operatorname{sp}:Y\times_sS\to Y$（又记作 $\operatorname{pr}_1$）、$j:Y\times_s\eta\hookrightarrow Y\times_sS$、$i:Y\hookrightarrow Y\times_sS$ 及 $\operatorname{sp}:Y\times_s\eta\to Y$（又记作 $\operatorname{pr}_1$）仍然成立。
+
+\textbf{1.2.4.2.} 若采用 1.2.4 作为 $Y\times_sS$ 的定义，就应直接构造证明：在唯一\Term{isomorphism}{同构}意义下，$Y\times_sS$ 不依赖于 $k(\eta)$ 的\Term{separable-closure}{可分闭包} $k(\bar\eta)$ 的选择。为此，将 1.2.4(b) 的 $F_\eta$ 解释为一个\Term{functor}{函子}：对定义 $k(s)$ 的\Term{separable-closure}{可分闭包} $k(\bar s)$ 的每个 $k(\eta)$ 的\Term{separable-closure}{可分闭包} $k(\bar\eta)$，配以 $Y\otimes_{k(s)}k(\bar s)$ 上的一个\Term{sheaf}{层}；1.2.4(b) 中的 $F_\eta$ 是这个\Term{functor}{函子}在 $\{\bar\eta\}$ 上的\Term{restriction}{限制}。
+\SourcePage{102}
+\textbf{1.2.5.} $Y_{\bar s}$ 的每个\Term{geometric-point}{几何点} $\bar x$ 定义 $Y\times_s\eta$ 的一个\Term{geometric-point}{几何点} $(\bar x,\bar\eta)$，对应的\Term{fibre-functor}{纤维函子}为 $F_\eta\mapsto(F_{\bar\eta})_{\bar x}$。它还通过
+\[F_{(\bar x,\bar\eta)}=(F_{\bar\eta})_{\bar x},\qquad F_{(\bar x,\bar s)}=(F_{\bar s})_{\bar x}\]
+定义 $Y\times_sS$ 的\Term{geometric-point}{几何点} $(\bar x,\bar\eta)$ 与 $(\bar x,\bar s)$。可以证明这样得到 $Y\times_s\eta$ 和 $Y\times_sS$ 的所有点；我们不使用这一点。立刻可见，这些点集是\Term{conservative}{保守的}。
+
+\textbf{*注记 1.2.6.} 构造 1.2.5 给出 $Y\times_s\eta$（相应地 $Y\times_sS$）的点的\Term{category}{范畴} $\operatorname{Point}(Y\times_s\eta)$（相应地 $\operatorname{Point}(Y\times_sS)$）与 $2$-\Term{fibre-product}{纤维积} $\operatorname{Point}(Y)\times_{\operatorname{Point}(s)}\operatorname{Point}(\eta)$ 的\Term{equivalence}{等价}。这个\Term{equivalence}{等价}也可由 $Y\times_s\eta$（相应地 $Y\times_sS$）是\Term{topos}{拓扑斯}的 $2$-\Term{fibre-product}{纤维积}得出。*
+
+\textbf{1.2.7.} 由 $2$-\Term{fibre-product}{纤维积}的\Term{functorial}{函子性}，图 (1.2.4.1) 对 $Y$ 与 $S$ 都有\Term{functorial}{函子性}。特别地：
+
+(a) $s$ 上\Term{scheme}{概形}的每个\Term{morphism}{态射} $f:Y\to Y'$ 都诱导从 $Y\times_sS$ 到 $Y'\times_sS$ 的\Term{topos}{拓扑斯}\Term{morphism}{态射}。有
+\[f^*(F_{\bar s},F_{\bar\eta},\varphi)=(f^*F_{\bar s},f^*F_{\bar\eta},f^*(\varphi)),\tag{1.2.7.1}\]
+而当 $f$ \Term{quasi-compact}{拟紧}时，
+\[f_*(F_{\bar s},F_{\bar\eta},\varphi)=(f_*F_{\bar s},f_*F_{\bar\eta},f_*(\varphi)).\tag{1.2.7.2}\]
+对 $f:Y\times_s\eta\to Y'\times_s\eta$ 也有类似公式。
+
+(b) \Term{henselian}{Hensel 的}\Term{trait}{离散赋值环谱}之间的每个\Term{surjective-morphism}{满射态射} $f:S'\to S$ 都诱导从 $Y_{s'}\times_{s'}S'$ 到 $Y\times_sS$ 的\Term{topos}{拓扑斯}\Term{morphism}{态射}。
+\SourcePage{103}
+仍以 $f$ 记从 $Y_{s'}=Y\otimes_{k(s)}k(s')$ 到 $Y$ 的自然\Term{morphism}{态射}，则
+\[f^*(F_{\bar s},F_{\bar\eta},\varphi)=(f^*F_{\bar s},f^*F_{\bar\eta},f^*(\varphi)).\tag{1.2.7.3}\]
+当 $f$ 是\Term{finite-morphism}{有限态射}时，$f_*$ 可用诱导表示\Term{represented}{表出}。
+
+\textbf{1.2.8.} 设 $f:Y\to Y'$ 是 $s$-\Term{scheme}{概形}的\Term{locally-finite-type}{局部有限型}\Term{separated}{分离}\Term{morphism}{态射}。用公式
+\[f_!(F_{\bar s},F_{\bar\eta},\varphi)=(f_!F_{\bar s},f_!F_{\bar\eta},f_!(\varphi))\tag{1.2.8.1}\]
+定义“\Term{proper-support-direct-image}{固有支撑正像}”\Term{functor}{函子}
+\[f_!:(Y\times_sS\text{ 上的带基点集合层})\longrightarrow(Y'\times_sS\text{ 上的带基点集合层}).\]
+当 $f$ 是\Term{locally-closed-immersion}{局部闭浸入}时，$f_!$ 称为\Term{extension-by-zero}{零延拓}\Term{functor}{函子}。对 $Y\times_s\eta$ 也定义类似\Term{functor}{函子}。
+
+\textbf{1.2.9.} 设 $f:Y\hookrightarrow Y'$ 是 $s$-\Term{scheme}{概形}的\Term{locally-closed-immersion}{局部闭浸入}。\Term{functor}{函子} $f_!$ 有\Term{right-adjoint}{右伴随} $f^!$，即“\Term{support}{支撑}在 $Y$ 中的\Term{section}{截面}”，满足
+\[f^!(F_{\bar s},F_{\bar\eta},\varphi)=(f^!F_{\bar s},f^!F_{\bar\eta},f^!(\varphi)).\tag{1.2.9.1}\]
+只假设 $f$ \Term{quasi-finite}{拟有限}时，从 $Y\times_sS$ 上\Term{abelian-sheaf}{阿贝尔层}到 $Y'\times_sS$ 上\Term{abelian-sheaf}{阿贝尔层}的\Term{functor}{函子} $f_!$ 仍有由 (1.2.9.1) 给出的\Term{right-adjoint}{右伴随} $f^!$（参看 SGA4 XVIII 3.1.8）。对\Term{etale}{平展}的 $f$，有 $f^!=f^*$。对 $Y\times_s\eta$ 也定义类似\Term{functor}{函子}。
+\SourcePage{104}
+\SGAsection{1.3}{函子 $\Psi$}
+\textbf{1.3.1.} 设 $S$ 是 0.2.5 中的\Term{henselian}{Hensel 的}\Term{trait}{离散赋值环谱}，$p:X\to S$。我们要定义一个从 $X$ 上的\Term{sheaf}{层}到 1.2 所构造的\Term{topos}{拓扑斯} $X_s\times_sS$ 上的\Term{sheaf}{层}的\Term{left-exact}{左正合}\Term{functor}{函子} $\Psi$。\Term{generic}{一般}而言，这个\Term{functor}{函子}不是某个\Term{topos}{拓扑斯}\Term{morphism}{态射}的\Term{direct-image-functor}{正像函子}。我们也将定义
+\[\Psi_\eta:(X_\eta\text{ 上的层})\longrightarrow(X_s\times_s\eta\text{ 上的层}).\]
+\textbf{1.3.2.} 置 $\bar X=X\times_S\bar S$。有图
+\[
+\begin{tikzcd}
+X_{\bar s}\arrow[r,hook,"\bar i"]\arrow[d]&\bar X\arrow[d]&X_{\bar\eta}\arrow[l,hook',"\bar j"']\arrow[d]\\
+X_s\arrow[r,hook]&X&X_\eta\arrow[l,hook']
+\end{tikzcd}\tag{1.3.2.1}
+\]
+它是以下图上方的\Term{cartesian}{笛卡尔图}：
+\[
+\begin{tikzcd}
+\bar s\arrow[r,hook]\arrow[d]&\bar S\arrow[d]&\bar\eta\arrow[l,hook']\arrow[d]\\
+s\arrow[r,hook]&S&\eta\arrow[l,hook'].
+\end{tikzcd}
+\]
+设 $F$ 是 $X_\eta$ 上的\Term{sheaf}{层}，其在 $X_{\bar\eta}$ 上的\Term{inverse-image}{逆像}为 $F_{\bar\eta}$。置
+\[\Psi_\eta(F)=\bar i^*\bar j_*F_{\bar\eta}.\tag{1.3.2.2}\]
+通过结构搬移，这个\Term{sheaf}{层}带有\Term{continuous}{连续} $\operatorname{Gal}(\bar\eta/\eta)$ \Term{action}{作用}，与该群在 $X_{\bar s}$ 上的\Term{action}{作用}相容。\Term{functor}{函子}
+\[\Psi_\eta:(X_{\eta\,\text{ét}})^\sim\longrightarrow(X_s\times_s\eta)^\sim\tag{1.3.2.3}\]
+是\Term{left-exact}{左正合}的。
+
+\textbf{1.3.3.} 设 $F$ 是 $X$ 上的\Term{sheaf}{层}，$F_\eta$ 和 $F_s$ 分别为它在 $X_\eta$ 和 $X_s$ 上的\Term{restriction}{限制}。置
+\SourcePage{105}
+\[(\Psi(F))_\eta=\Psi_\eta(F_\eta),\tag{1.3.3.1}\]
+\[(\Psi(F))_s=F_s.\tag{1.3.3.2}\]
+设 $\bar F$ 是 $F$ 在 $\bar X$ 上的\Term{inverse-image}{逆像}，$\varphi':\bar F\to\bar j_*\bar j^*\bar F$ 是\Term{adjunction-morphism}{伴随态射}。它诱导
+\[\varphi:F_{\bar s}=\bar i^*\bar F\longrightarrow\bar i^*\bar j_*\bar j^*\bar F=(\Psi_\eta(F_\eta))_{\bar\eta}.\]
+三元组 $\Psi(F)=(\Psi(F)_s,\Psi(F)_\eta,\varphi)$ 是 $X_s\times_sS$ 上的\Term{sheaf}{层}。\Term{functor}{函子}
+\[\Psi:(X_{\text{ét}})^\sim\longrightarrow(X_s\times_sS)^\sim\tag{1.3.3.3}\]
+是\Term{left-exact}{左正合}的。
+
+\textbf{1.3.4.} 不致混淆时，约定 $\Psi_\eta(F)=(\Psi(F))_\eta$，$\Psi_{\bar\eta}(F)=(\Psi(F))_{\bar\eta}$，以及 $\Psi_{\bar\eta}(F)=(\Psi_\eta(F))_{\bar\eta}$。
+
+\textbf{1.3.5.} 本小节余下部分列出 $\Psi$ 的\Term{functorial}{函子性}质（参看 1.2.7--1.2.9）。它们主要在\Term{derive}{导出}\Term{form}{形式} (2.1) 下有用。
+设 $f:X\to X'$ 是 $S$-\Term{scheme}{概形}\Term{morphism}{态射}，得到图
+\[
+\begin{tikzcd}
+X_{\bar s}\arrow[r,hook,"\bar i"]\arrow[d,"f"']&\bar X\arrow[d,"f"]&X_{\bar\eta}\arrow[l,hook',"\bar j"']\arrow[d,"f"]\\
+X'_{\bar s}\arrow[r,hook,"\bar i"]&\bar X'&X'_{\bar\eta}\arrow[l,hook',"\bar j"'].
+\end{tikzcd}\tag{1.3.5.1}
+\]
+\Term{arrow}{箭头}记号中的歧义可简化公式，且不会导致混淆：只有一种解释使下述复合\Term{arrow}{箭头}有意义。同样，对 $X$ 和 $X'$ 的\Term{functor}{函子} (1.3.3.3) 都记作 $\Psi$。下面为 $\Psi$ 描述的\Term{morphism-of-functors}{函子态射}均有 $\Psi_\eta$ 的变体，\Term{generic}{一般}不再显式写出。
+\SourcePage{106}
+\textbf{1.3.6.} \Term{base-change}{换基}\Term{morphism}{态射} $\bar i^*f_*\to f_*\bar i^*$ 诱导\Term{morphism-of-functors}{函子态射}
+\[\Psi f_*\longrightarrow f_*\Psi,\tag{1.3.6.1}\]
+当 $f$ \Term{proper}{固有}时它是\Term{isomorphism}{同构}（SGA4 XII 5.1(i)）。关键情形是 $X'=S$。这时得到\Term{morphism}{态射}
+\[f_*\longrightarrow f_*\Psi,\tag{1.3.6.2}\]
+其关键\Term{set-component}{分量}为
+\[\Gamma(X_{\bar\eta},F)\longrightarrow\Gamma(X_{\bar s},\Psi_{\bar\eta}(F));\tag{1.3.6.3}\]
+当 $f$ \Term{proper}{固有}时此\Term{morphism}{态射}是\Term{isomorphism}{同构}。
+
+\textbf{1.3.7.} \Term{base-change}{换基}\Term{morphism}{态射} $f^*\bar j_*\to\bar j_*f^*$ 诱导\Term{morphism-of-functors}{函子态射}
+\[f^*\Psi\longrightarrow\Psi f^*.\tag{1.3.7.1}\]
+\textbf{1.3.8.} 假设 $f$ \Term{quasi-finite}{拟有限}。\Term{functor}{函子} $f_!$ 与\Term{base-change}{换基}交换；\Term{morphism}{态射} $f_!\bar j_*\to\bar j_*f_!$ 诱导\Term{morphism-of-functors}{函子态射}
+\[f_!\Psi\longrightarrow\Psi f_!.\tag{1.3.8.1}\]
+当 $f$ \Term{finite}{有限}时，它是 (1.3.6.1) 的逆。
+
+\textbf{1.3.9.} 对 $f^!$，情形是\Term{duality}{对偶}的（处理\Term{abelian-sheaf}{阿贝尔层}时假设 $f$ \Term{quasi-finite}{拟有限}；处理带\Term{base-point}{基点}\Term{sheaf-of-sets}{集合层}时假设 $f$ 为\Term{immersion}{浸入}）。该\Term{functor}{函子}与\Term{direct-image}{正像}交换，\Term{morphism}{态射} $\bar i^*f^!\to f^!\bar i^*$ 诱导\Term{morphism-of-functors}{函子态射}
+\[\Psi f^!\longrightarrow f^!\Psi.\tag{1.3.9.1}\]
+当 $f$ \Term{etale}{平展}时，它是 (1.3.7.1) 的逆。
+
+\textbf{1.3.10.} 最后，对\Term{base-change}{换基} $S'\xrightarrow fS$，得到\Term{base-change}{换基}\Term{morphism}{态射}
+\SourcePage{107}
+\[f^*\Psi\longrightarrow\Psi f^*.\tag{1.3.10.1}\]
+\SGAsection{1.4}{变差}
+\textbf{1.4.1.} 设 $S$ 如 0.2.5，$Y$ 是 $s$ 上的\Term{scheme}{概形}。设 $\Lambda$ 是环；更\Term{generic}{一般}地也可取 $Y$ 上的环\Term{sheaf}{层}。对 $Y\times_sS$ 上 $\Lambda$-模\Term{sheaf}{层}\Term{category}{范畴}的\Term{derived-category}{导出范畴} $D(Y\times_sS,\Lambda)$ 的每个\Term{object}{对象} $K$，我们要定义一个\Term{variation}{变差}\Term{morphism}{态射}。
+
+\textbf{1.4.2.} $X\times_sS$ 上的 $\Lambda$-模\Term{sheaf}{层}\Term{complex}{复形} $K$ 等同于三元组 $(K_s,K_\eta,\varphi)$，其中：a）$K_s$（相应地 $K_\eta$）是 $\bar Y$ 上的\Term{sheaf}{层}\Term{complex}{复形} $K_{\bar s}$（相应地 $K_{\bar\eta}$），带有 $\operatorname{Gal}(\bar s/s)$（相应地 $\operatorname{Gal}(\bar\eta/\eta)$）的\Term{continuous-action}{连续作用}；b）$\varphi:K_{\bar s}\to K_{\bar\eta}$ 是\Term{equivariant}{等变}\Term{morphism}{态射}。
+这样的\Term{complex}{复形} $K$ 总\Term{homotopy}{同伦}于某个\Term{complex}{复形} $K'=(K'_s,K'_\eta,\varphi')$，使 $\varphi'$ \Term{injectivity}{单射}，且\Term{exact-sequence}{正合列}
+\[0\longrightarrow K'_{\bar s}\longrightarrow K'_{\bar\eta}\longrightarrow\operatorname{coker}(\varphi')\longrightarrow0\tag{1.4.2.1}\]
+逐次\Term{splitting}{分裂}。只须取 $K'_s=K_s$，并取 $K'_\eta$ 为 $K_\eta$ 与 $\operatorname{sp}^*K_s$ 的锥之和。置 $\Phi(K)=\operatorname{coker}(\varphi')$。\Term{exact-sequence}{正合列} (1.4.2.1) 在 $Y\times_s\eta$ 上 $\Lambda$-模\Term{sheaf}{层}\Term{complex}{复形}的\Term{homotopy-category}{同伦范畴} $K(Y\times_s\eta,\Lambda)$ 中定义\Term{distinguished-triangle}{区别三角}
+\[\operatorname{sp}^*K_s\longrightarrow K_\eta\longrightarrow\Phi(K)\longrightarrow\operatorname{sp}^*K_s[1].\tag{1.4.2.2}\]
+这个三角形只依赖于 $K\in\operatorname{Ob}K(Y\times_sS,\Lambda)$。
+\SourcePage{108}
+该构造\Term{descent}{下降}到\Term{derived-category}{导出范畴}，为 $D(Y\times_sS,\Lambda)$ 的每个\Term{object}{对象} $K$ 配以 $D(Y\times_s\eta,\Lambda)$ 中的一个\Term{distinguished-triangle}{区别三角}。三角形 (1.4.2.2) 主要通过由它得到的\Term{hypercohomology}{超上同调}\Term{long-exact-sequence}{长正合列}发挥\Term{action}{作用}：
+\[\cdots\longrightarrow H^i(\bar Y,K_{\bar s})\longrightarrow H^i(\bar Y,K_{\bar\eta})\longrightarrow H^i(\bar Y,\Phi(K)_{\bar\eta})\longrightarrow\cdots.\]
+\textbf{1.4.3.} \Term{inertia-group}{惯性群} $I$ 在 $K'_{\bar s}$ 上\Term{trivial-action}{平凡作用}。因此，对每个 $\sigma\in I$，$K'_{\bar\eta}$ 的\Term{endomorphism}{自同态} $\sigma-1$（记号如 (1.4.2.1)）经过一个\Term{morphism}{态射}
+\[\operatorname{Var}(\sigma):\operatorname{coker}(\varphi')\longrightarrow K'_{\bar\eta}\]
+\Term{resolution}{分解}。这一构造\Term{descent}{下降}到\Term{derived-category}{导出范畴}：对 $K\in\operatorname{Ob}D(Y\times_sS,\Lambda)$ 及 $\sigma\in I$，它定义\Term{variation}{变差}
+\[\operatorname{Var}(\sigma):\Phi(K)_{\bar\eta}\longrightarrow K_{\bar\eta}.\tag{1.4.3.1}\]
+以 $q$ 记从 $K_\eta$ 到 $\Phi(K)$ 的\Term{arrow}{箭头}，则
+\[\sigma=1+\operatorname{Var}(\sigma)q\quad\text{（在 $K_{\bar\eta}$ 上）},\tag{1.4.3.2}\]
+\[\sigma=1+q\operatorname{Var}(\sigma)\quad\text{（在 $\Phi(K)_{\bar\eta}$ 上）},\tag{1.4.3.3}\]
+\[\operatorname{Var}(\sigma\tau)=\operatorname{Var}(\sigma)q\operatorname{Var}(\tau)+\operatorname{Var}(\sigma)+\operatorname{Var}(\tau).\tag{1.4.3.4}\]
+\SGAsection{2}{消失圈}
+\SGAsection{2.1}{函子 $R\Psi$}
+\textbf{2.1.1.} 设 $S$ 如 (0.2.5)，$\Lambda$ 是与 $S$ 的\Term{residue-characteristic}{剩余特征} $p$ 互素的\Term{torsion-ring}{挠环}（0.2.7）。更\Term{generic}{一般}地，可以取与\Term{residue-characteristic}{剩余特征}互素的挠\Term{sheaf}{层} $\Lambda$；最重要的情形是 $\Lambda=\mathbb Z/\ell^n$（素数 $\ell$ 在 $\mathscr O_S$ 中\Term{invertible}{可逆}）。
+\SourcePage{109}
+设 $X$ 是 $S$ 上的\Term{scheme}{概形}。\Term{functor}{函子} $\Psi$（相应地 $\Psi_\eta$）将 $X$（相应地 $X_\eta$）上的 $\Lambda$-模\Term{sheaf}{层}变为 $X_s\times_sS$（相应地 $X_s\times_s\eta$）上的 $\Lambda$-模\Term{sheaf}{层}。以 $R\Psi$、$R\Psi_\eta$ 记\Term{derived-functor}{导出函子}
+\[
+R\Psi:D^+(X,\Lambda)\longrightarrow D^+(X_s\times_sS,\Lambda),\qquad
+R\Psi_\eta:D^+(X_\eta,\Lambda)\longrightarrow D^+(X_s\times_s\eta,\Lambda),
+\]
+以 $R\Phi$ 记\Term{composite-functor}{复合函子} $\Phi\circ R\Psi$：
+\[R\Phi:D^+(X,\Lambda)\longrightarrow D^+(X_s\times_s\eta,\Lambda).\]
+\textbf{2.1.2.} 考虑\Term{commutative-diagram}{交换图} (1.3.2.1)：
+\[
+\begin{tikzcd}
+X_{\bar s}\arrow[r,hook,"\bar i"]\arrow[d]&\bar X\arrow[d]&X_{\bar\eta}\arrow[l,hook',"\bar j"']\arrow[d]\\
+X_s\arrow[r,hook,"i"]&X&X_\eta\arrow[l,hook',"j"'].
+\end{tikzcd}
+\]
+若 $F$ 是 $X$ 上的\Term{injective}{内射}模\Term{sheaf}{层}，则其在\Term{open-subset}{开集} $X_\eta$ 上的\Term{restriction}{限制}仍\Term{injective}{内射}。对 $X_\eta$ 上的\Term{injective}{内射} $F_\eta$，\Term{inverse-image}{逆像} $F_{\bar\eta}$ 是\Term{acyclic}{无上同调}的。故公式 (1.3.3.1)、(1.3.3.2) \Term{derive}{导出}为
+\[R\Psi(K)_s=i^*K\qquad(K\in\operatorname{Ob}D^+(X,\Lambda)),\tag{2.1.2.1}\]
+\[R\Psi(K)_\eta=R\Psi_\eta(K_\eta)\qquad(K\in\operatorname{Ob}D^+(X,\Lambda)),\tag{2.1.2.2}\]
+\[R\Psi_\eta(K)_{\bar\eta}=\bar i^*R\bar j_*K_{\bar\eta}\qquad(K\in\operatorname{Ob}D^+(X_\eta,\Lambda)).\tag{2.1.2.3}\]
+这使我们可以无歧义地约定
+\[
+R\Psi_\eta(K)=(R\Psi(K))_\eta,\quad R\Psi_{\bar\eta}(K)=(R\Psi(K))_{\bar\eta},\quad R\Psi_{\bar\eta}(K)=(R\Psi_\eta(K))_{\bar\eta}.
+\]
+用这些记号，\Term{distinguished-triangle}{区别三角} (1.4.2.2) 写为
+\SourcePage{110}
+\[\operatorname{sp}^*i^*K\longrightarrow R\Psi_\eta(K_s)\longrightarrow R\Phi(K)\longrightarrow\operatorname{sp}^*i^*K[1].\tag{2.1.2.4}\]
+对 $\sigma\in I$，有\Term{variation}{变差}\Term{morphism}{态射}
+\[\operatorname{Var}(\sigma):R\Phi(K)_{\bar\eta}\longrightarrow R\Psi_{\bar\eta}(K).\tag{2.1.2.5}\]
+\Term{sheaf}{层} $R^i\Phi(\Lambda)$（或更\Term{generic}{一般}的 $R^i\Phi(K)$）就是\Term{vanishing-cycles}{消失圈层}。
+
+\textbf{2.1.3.} 设 $(\bar x,\bar\eta)$ 是 $X_{\bar s}$ 的\Term{geometric-point}{几何点} $\bar x$ 定义的 $X_s\times_s\eta$ 的\Term{geometric-point}{几何点}（1.2.5）。利用 (2.1.2.3) 计算 $R\Psi_\eta(K_\eta)$ 在 $(\bar x,\bar\eta)$ 的茎（参看第 I 讲 2.3）。$X$ 在 $\bar x$ 的\Term{strict-henselization}{严格 Hensel 化} $X_{(\bar x)}$ 是 $S$ 的\Term{strict-henselization}{严格 Hensel 化} $S_{\mathrm{nr}}$ 上的\Term{scheme}{概形}，后者带有\Term{geometric-point}{几何点} $\eta_{\mathrm{nr}}$。
+\begin{SGAresult}{命题}{2.1.4}
+有
+\[(R\Psi_\eta(K_\eta))_{(\bar x,\bar\eta)}=R\Gamma(X_{(\bar x)}\times_{\eta_{\mathrm{nr}}}\bar\eta,K);\]
+特别地，
+\[R^i\Psi_\eta(K_\eta)_{(\bar x,\bar\eta)}=H^i(X_{(\bar x)}\times_{\eta_{\mathrm{nr}}}\bar\eta,K).\]
+\end{SGAresult}
+应用 SGA4 XV 2.1（\Term{smooth}{光滑}\Term{morphism}{态射}的\Term{local-acyclicity}{局部无上同调性}\Term{theorem}{定理}），得到下述改述。
+\begin{SGAresult}{改述}{2.1.5}
+若 $f$ \Term{smooth}{光滑}，$F$ 为\Term{locally-constant}{局部常值}\Term{sheaf}{层}，则 $R\Phi(F)=0$。
+\end{SGAresult}
+更\Term{generic}{一般}地，若 $K\in\operatorname{Ob}D^+(X,\Lambda)$，则在 $f$ \Term{smooth}{光滑}且各 $\mathscr H^i(K)$ \Term{locally-constant}{局部常值}之处有 $R\Phi(K)=0$。另见 2.1.11。
+
+\textbf{2.1.6.} 设 $f:Y\to Y'$ 是 $s$ 上\Term{scheme}{概形}的\Term{morphism}{态射}。\Term{functor}{函子} $f^*,f_*,f^!,f_!$（1.2.7--1.2.9）在\Term{derived-category}{导出范畴}中有自然的对应物。
+
+(a) \Term{functor}{函子} $f^*$ \Term{exact-functor}{正合}，故其\Term{derive}{导出}是直接的。
+\SourcePage{111}
+(b) \Term{functor}{函子} $f_*$ 有右\Term{derived-functor}{导出函子} $Rf_*$；当 $f$ \Term{quasi-compact}{拟紧}时，有
+\[(Rf_*K)_{\bar s}=Rf_{\bar s*}(K_{\bar s});\tag{2.1.6.1}\]
+\[(Rf_*K)_{\bar\eta}=Rf_{\bar s*}(K_{\bar\eta}).\tag{2.1.6.2}\]
+(c) 当 $f$ \Term{quasi-finite}{拟有限}时，\Term{functor}{函子} $f_!$ \Term{exact-functor}{正合}，故其\Term{derive}{导出}是直接的。\Term{generic}{一般}情形中，$f_!$ 的\Term{derived-functor}{导出函子}有病态，故采用 SGA4 XVII 的做法。假设 $f$ 是\Term{finite-type}{有限型}\Term{separated}{分离}\Term{morphism}{态射}，$Y'$ 为\Term{noetherian}{Noether 概形}。这时存在\Term{resolution}{分解} [2] $f=\widetilde f j$，其中 $j$ 是\Term{open-immersion}{开浸入}，$\widetilde f$ \Term{proper}{固有}，并定义
+\[Rf_!=R\widetilde f_*\circ j_!.\]
+SGA4 XVII 的论证表明\Term{functor}{函子} $Rf_!$ 不依赖于\Term{resolution}{分解} $\widetilde f j$ 的选择。(2.1.6.1)、(2.1.6.2) 的对应公式也成立。
+
+(d) 我们只在\Term{quasi-finite}{拟有限}\Term{morphism}{态射}的情形使用 $Rf^!$，此时它是 $f^!$ 的\Term{derived-functor}{导出函子}。仍有 (2.1.6.1)、(2.1.6.2) 的对应公式。
+
+\textbf{2.1.7.} 现在考察 $R\Psi$ 的\Term{functorial}{函子性}质（即将 1.3.5--1.3.10 \Term{derive}{导出}）。设 $f:X\to X'$ 是 $S$-\Term{scheme}{概形}\Term{morphism}{态射}，沿用 1.3.5 的记号。\Term{morphism}{态射} (1.3.6.1) 定义
+\[R\Psi Rf_*\longrightarrow Rf_*R\Psi.\tag{2.1.7.1}\]
+由\Term{proper-base-change}{固有换基}\Term{theorem}{定理}（SGA4 XII 5.1），若 $f$ \Term{proper}{固有}，则此\Term{morphism}{态射}为\Term{isomorphism}{同构}。\Term{morphism}{态射} (1.3.7.1) 定义
+\[f^*R\Psi\longrightarrow R\Psi f^*.\tag{2.1.7.2}\]
+由\Term{smooth-base-change}{光滑换基}\Term{theorem}{定理}（SGA4 XVI 1.2），若 $f$ \Term{smooth}{光滑}，则此\Term{morphism}{态射}为\Term{isomorphism}{同构}。$f$ \Term{proper}{固有}时的\Term{isomorphism}{同构} (2.1.7.1) 与\Term{morphism}{态射} (1.3.8.1)
+\SourcePage{112}
+定义\Term{morphism}{态射}
+\[Rf_!R\Psi\longrightarrow R\Psi Rf_!,\tag{2.1.7.3}\]
+当 $f$ \Term{proper}{固有}时，它是 (2.1.8.1) 的逆。
+对\Term{quasi-finite}{拟有限}的 $f$，(1.3.9.1) \Term{derive}{导出}为
+\[R\Psi Rf^!\longrightarrow Rf^!R\Psi,\tag{2.1.7.4}\]
+当 $f$ \Term{etale}{平展}时，它是 (2.1.7.1) 的逆。
+设有\Term{trait}{离散赋值环谱}的变换 $f:S'\to S$，$X'=X\times_SS'$，
+\[
+\begin{tikzcd}X'\arrow[r,"f"]\arrow[d,"p"']&X\arrow[d,"p"]\\S'\arrow[r,"f"]&S\end{tikzcd}
+\]
+（记号的歧义参看 1.3.5）。假设 $f$ \Term{surjectivity}{满射}。\Term{base-change}{换基}\Term{arrow}{箭头} (1.3.10.1) \Term{derive}{导出}为
+\[f^*R\Psi\longrightarrow R\Psi f^*.\tag{2.1.7.5}\]
+同样的陈述对 $R\Psi_\eta$ 成立。
+
+\textbf{2.1.8.} (2.1.7.1)、(2.1.7.3) 的关键情形是 $X'=S$。对 $K\in\operatorname{Ob}D^+(X_\eta,\Lambda)$ 得到\Term{morphism}{态射}
+\[Rf_*\longrightarrow Rf_*R\Psi,\tag{2.1.8.1}\]
+\[Rf_!R\Psi\longrightarrow Rf_!,\tag{2.1.8.2}\]
+从而有
+\[H^i(X_{\bar\eta},K)\longrightarrow H^i(X_{\bar s},R\Psi_{\bar\eta}(K)),\tag{2.1.8.3}\]
+\[H_c^i(X_{\bar s},R\Psi_{\bar\eta}(K))\longrightarrow H_c^i(X_{\bar\eta},K),\tag{2.1.8.4}\]
+以及下列图的\Term{commutativity}{交换性}：
+\SourcePage{113}
+\[
+\begin{tikzcd}
+(R^if_*K)_{\bar s}\arrow[r,"\operatorname{sp}"]\arrow[d]&H^i(X_{\bar\eta},K)\arrow[d]\\
+H^i(X_{\bar s},K)\arrow[r]&H^i(X_{\bar s},R\Psi_{\bar\eta}(K))
+\end{tikzcd}\tag{2.1.8.5}
+\]
+\[
+\begin{tikzcd}[column sep=large]
+H_c^i(X_{\bar s},K)\arrow[rr,"\operatorname{sp}"]\arrow[dr]&&H_c^i(X_{\bar\eta},K)\\
+&H_c^i(X_{\bar s},R\Psi_{\bar\eta}(K))\arrow[ur]&
+\end{tikzcd}\tag{2.1.8.6}
+\]
+对 $K\in\operatorname{Ob}D^+(X_\eta,\Lambda)$ 与 $\sigma\in I$，下图交换：
+\[
+\begin{tikzcd}[column sep=small]
+H^i(X_{\bar\eta},K)\arrow[rr,"\sigma-1"]\arrow[d]&&H^i(X_{\bar\eta},K)\arrow[d]\\
+H^i(X_{\bar s},R\Psi_{\bar\eta}(K))\arrow[r]&H^i(X_{\bar s},R\Phi_{\bar\eta}(K))\arrow[r,"\operatorname{Var}(\sigma)"]&H^i(X_{\bar s},R\Psi_{\bar\eta}(K))
+\end{tikzcd}\tag{2.1.8.7}
+\]
+\[
+\begin{tikzcd}[column sep=small]
+H_c^i(X_{\bar\eta},K)\arrow[rr,"\sigma-1"]&&H_c^i(X_{\bar\eta},K)\\
+H_c^i(X_{\bar s},R\Psi_{\bar\eta}(K))\arrow[u]\arrow[r]&H_c^i(X_{\bar s},R\Phi_{\bar\eta}(K))\arrow[r,"\operatorname{Var}(\sigma)"]&H_c^i(X_{\bar s},R\Psi_{\bar\eta}(K))\arrow[u]
+\end{tikzcd}\tag{2.1.8.8}
+\]
+当 $f$ \Term{proper}{固有}时，(2.1.8.1) 与 (2.1.8.2)，以及 (2.1.8.3) 与 (2.1.8.4)，互为逆\Term{isomorphism}{同构}。\Term{distinguished-triangle}{区别三角} (2.1.2.4) 给出\Term{long-exact-sequence}{长正合列}
+\[\cdots\longrightarrow H^i(X_{\bar s},K)\longrightarrow H^i(X_{\bar\eta},K)\longrightarrow H^i(X_{\bar s},R\Phi_{\bar\eta}(K))\longrightarrow\cdots.\tag{2.1.8.9}\]
+故\Term{vanishing-complex}{消失复形} $R\Phi(K)$ 表达\Term{geometric-fibre}{几何纤维} $X_{\bar s}$ 与 $X_{\bar\eta}$ 的\Term{cohomology}{上同调}（取值于 $K$ 的\Term{inverse-image}{逆像}）的差异。由 (2.1.8.7)，\Term{variation}{变差} $\operatorname{Var}(\sigma)$ 决定\Term{inertia-group}{惯性群} $I$
+\SourcePage{114}
+在 $H^i(X_{\bar\eta},K)$ 上的\Term{action}{作用}。这些事实是\Term{vanishing-cycles}{消失圈}方法的一切应用的基础。
+上述对 $f$ 的\Term{properness}{固有性}假设可由对 $f$ 和 $K$ 的无穷远处\Term{regularity}{正则性}条件代替。例如有下述结果（$K\in\operatorname{Ob}D(X_{\bar\eta},\Lambda)$）。
+\begin{SGAresult}{命题}{2.1.9}
+假设 $f$ 有\Term{resolution}{分解} $f=f_1k$，
+\[X\lhook\joinrel\xrightarrow{k}X_1\xrightarrow{f_1}S,\]
+其中 $f_1$ \Term{proper}{固有}，$k$ 是 $X_1$ 中某个\Term{relative-normal-crossings-divisor}{相对正规交叉除子} $D$ 的补集的包含（因此按假设，$f_1$ 在 $D$ 的某个\Term{neighborhood}{邻域}中\Term{smooth}{光滑}）。若在 $D$ 的一个\Term{neighborhood}{邻域} $U$ 中，各 $\mathscr H^i(K)$ 在 $U-(D\cup X_0)$ 上\Term{locally-constant}{局部常值}，且沿\Term{normal-crossings-divisor}{正规交叉除子} $D\cup X_0$ \Term{tamely-ramified}{温和分歧}，则 (2.1.8.1)、(2.1.8.2) 是\Term{isomorphism}{同构}。
+\end{SGAresult}
+\begin{proof}
+$K$ 的\Term{hypercohomology}{超上同调}\Term{spectral-sequence}{谱序列}表明，只须处理 $K$ 是放在\Term{degree}{次数} $0$ 的一个\Term{sheaf}{层} $F_\eta$ 的情形。将 $S$ 换成其在\Term{finite-extension}{有限扩张}中的\Term{normalization}{正规化}（从定义可见，这是允许的），并应用 Abhyankar \Term{lemma}{引理}，可以假设 $F_\eta$ 是 $X$ 上某个\Term{sheaf}{层} $F$ 在 $X_\eta$ 上的\Term{restriction}{限制}，$F$ 在 $U\cap X$ 上\Term{locally-constant}{局部常值}，且沿 $D$ \Term{tamely-ramified}{温和分歧}。用 2.1.2 的记号，令 $\bar F$ 为 $F$ 在 $\bar X$ 上的\Term{inverse-image}{逆像}，$\bar f:\bar X\to\bar S$。
+为证明 (2.1.8.1) 是\Term{isomorphism}{同构}，只须证明 $R\bar f_*(R\bar j_*\bar j^*\bar F)$ 与\Term{base-change}{换基} $\bar s\to\bar S$ 交换。在三角形
+\[\longrightarrow\bar F\longrightarrow R\bar j_*\bar j^*\bar F\longrightarrow\Delta\longrightarrow\]
+中，各 $\mathscr H^i(\Delta)$ \Term{support}{支撑}在 $X_{\bar s}$ 上；对 $\Delta$，所考虑的\Term{base-change}{换基}结果是显然的。因此只须证明 $R\bar f_*(\bar F)$ 与\Term{base-change}{换基} $\bar s\to\bar S$ 交换；由 $f_1$ 的\Term{base-change}{换基}\Term{theorem}{定理}，亦即证明
+\SourcePage{115}
+$Rk_*(\bar F)$ 与\Term{base-change}{换基} $X_{1\bar s}\to\bar X_1$ 交换（下文 2.1.10）。
+为证明 (2.1.8.2) 是\Term{isomorphism}{同构}，只须证明对\Term{sheaf}{层} $F$，\Term{extension-by-zero}{零延拓} $k_!$ 与\Term{functor}{函子} $R\bar j_*$ 交换，即在 $D$ 的某个\Term{neighborhood}{邻域}中，$X_{1\bar s}$ 上有 $R\Phi(k_!F)=0$（下文 2.1.11）。
+\end{proof}
+\begin{SGAresult}{\Term{lemma}{引理}}{2.1.10}
+设 $f:X\to S$ 是\Term{smooth}{光滑}\Term{morphism}{态射}，$D\subset X$ 是\Term{relative-normal-crossings-divisor}{相对正规交叉除子}，$U=X-D\lhook\joinrel\xrightarrow{j}X$，$F$ 是 $U$ 上的 $\Lambda$-模\Term{sheaf}{层}，\Term{locally-constant}{局部常值}且沿 $D$ \Term{tamely-ramified}{温和分歧}。$Rj_*F$ 的构造与任意\Term{base-change}{换基} $T\to S$ 交换。
+\end{SGAresult}
+\begin{proof}
+问题在 $X$ 上（对\Term{etale-topology}{平展拓扑}）是\Term{local-scheme}{局部}的。因而可假设存在 $g:X'\to X$，为 $X$ 在沿 $D$ \Term{tamely-ramified}{温和分歧}的\Term{finite}{有限}\Term{etale}{平展}\Term{surjectivity}{满射}\Term{covering}{覆盖} $g':U'\to U$ 中的\Term{normalization}{正规化}，使 $g'^*F$ 在 $U'$ 上\Term{constant-sheaf}{常值}。利用 Abhyankar \Term{lemma}{引理}，还可以假设 $X'$ 在 $S$ 上\Term{smooth}{光滑}，且 $U'$ 是 $X'$ 中某个\Term{relative-normal-crossings-divisor}{相对正规交叉除子} $D'$ 的补集。
+$F$ \Term{embedding}{嵌入} $g'_*g'^*F$，且\Term{cokernel}{余核}仍满足 2.1.10 的假设。迭代此构造（同一个 $g$ 仍然适用），得到 $F$ 的一个\Term{resolution}{解消}，由形如 $g'_*G$ 的\Term{sheaf}{层}组成，其中 $G$ \Term{constant-sheaf}{常值}，$g'$ 如上。故只须对这样的\Term{sheaf}{层}证明 2.1.10，即对 $(X'/S,D',U'\text{ 上的常值层 }G)$ 证明 2.1.10：这是 SGA5 II 4.4 的一个特例。
+\end{proof}
+\begin{SGAresult}{\Term{lemma}{引理}}{2.1.11}
+设 $S$ 是\Term{henselian}{Hensel 的}\Term{trait}{离散赋值环谱}，$f:X\to S$ 是\Term{smooth}{光滑}\Term{morphism}{态射}，$D\subset X$ 是\Term{relative-normal-crossings-divisor}{相对正规交叉除子}，$U=X-D\lhook\joinrel\xrightarrow{j}X$，$F$ 是 $U$ 上的 $\Lambda$-模\Term{sheaf}{层}，\Term{locally-constant}{局部常值}且沿 $D$ \Term{tamely-ramified}{温和分歧}。则 $R\Phi(j_!F)=0$。
+\end{SGAresult}
+\SourcePage{116}
+\begin{proof}
+2.1.11 中使用的\Term{resolution}{分解}法将问题归结为 $F$ 是取值为 $G$ 的\Term{constant-sheaf}{常值层}的情形。可以假设 $D$ 是\Term{smooth}{光滑}\Term{divisor}{除子} $(D_i)_{i\in I}$ 的并。对 $J\subset I$，设 $D_J$ 为 $i\in J$ 的各 $D_i$ 的交。\Term{sheaf}{层} $F$ 有一个\Term{resolution}{解消} $F^\bullet$，其各项是 $D_J$ 上的\Term{constant-sheaf}{常值层}、在 $X$ 上作\Term{extension-by-zero}{零延拓}所得的\Term{sheaf}{层} $G_J$ 的和。因此只须对这样的\Term{sheaf}{层}证明 2.1.11，而这可由对 $D_J/S$ 应用 (2.1.5) 得到。
+\end{proof}
+我猜想，若 $S$ 和 $S'$ 都\Term{excellent}{优秀}，则 (2.1.7.5) 是\Term{isomorphism}{同构}。下面是一个部分结果（另见 2.4.2）。
+\begin{SGAresult}{命题}{2.1.12}
+在下述情形，\Term{morphism}{态射} (2.1.7.5) 是\Term{isomorphism}{同构}：
+(a) $S$ \Term{excellent}{优秀}，其\Term{completion}{完备化}为 $S'$；
+(b) $S$ 与 $S'$ 均为\Term{equal-characteristic}{等特征} $0$。
+\end{SGAresult}
+\begin{proof}
+在 (b) 中，可以归结为 $S$ 和 $S'$ 都\Term{strictly-local}{严格局部}，且 $S$ 的一个\Term{uniformizer}{一致化参数}仍是 $S'$ 的\Term{uniformizer}{一致化参数}的情形（作\Term{scalar-extension}{标量扩张}而不改变 $S'\to S$）。在 (a)、(b) 两种情形中，以上横线表示在\Term{field-of-fractions}{分式域}的某个\Term{separable-closure}{可分闭包}中的\Term{normalization}{正规化}，则有 $\bar S'\simeq S'\times_S\bar S$；回到定义可见，只须证明 $S'\to S$ 是\Term{universally-locally-acyclic}{普遍局部无上同调}的（应用 SGA4 XVI 1.1）。这由第 I 讲 0.5.1（基于 Artin 方式的 Néron \Term{resolution}{消解}\Term{singular-point}{奇点}）以及 SGA4 XV 2.1（\Term{smooth}{光滑}\Term{morphism}{态射}的\Term{local-acyclicity}{局部无上同调性}\Term{theorem}{定理}）得出。
+\end{proof}
+\textbf{2.1.13.} 假设 $f:X\to S$ \Term{finite-type}{有限型}。由 2.1.4 与 SGA4 XIV 3.2（参看第 I 讲 4.2(i)），$R\Psi$ 的\Term{cohomological-dimension}{上同调维数}（SGA4 XVII 1.2.9）至多为 $\dim(X_\eta)$。这使得 $R\Psi$ 可以扩充到整个\Term{derived-category}{导出范畴}：
+\[R\Psi:D(X,\Lambda)\longrightarrow D(X_s\times_sS,\Lambda),\]
+且 $R\Psi$ 将 $D^-$ 映入 $D^-$。设 $L\in\operatorname{Ob}D^-(\Lambda)$ 是右 $\Lambda$-模的\Term{bounded-above}{上有界}\Term{complex}{复形}，$K\in\operatorname{Ob}D^-(X,\Lambda)$。则有
+\SourcePage{117}
+\[L\mathbin{\mathop\otimes^{\mathrm L}_{\Lambda}}R\Psi(K)\xrightarrow\sim R\Psi(L\mathbin{\mathop\otimes^{\mathrm L}_{\Lambda}}K).\tag{2.1.13.1}\]
+为证明 (2.1.13.1) 是\Term{isomorphism}{同构}，先以自由 $\Lambda$-模\Term{complex}{复形}代替 $L$。由于 $R\Psi$ 是\Term{cohomological-dimension}{上同调维数}\Term{finite}{有限}的\Term{triangulated-functor}{三角函子}，只须在将 $L$ 换成它的一个\Term{set-component}{分量}之后核实。通过取\Term{inductive-limit}{归纳极限}，归结为 $L$ 是\Term{finite-type}{有限型}\Term{free-module}{自由模}，继而归结为显然的 $L=\Lambda$ 情形。
+由 (2.1.13.1)，用熟悉的论证（参看 SGA4 XVII 5.2.11）可知，若 $K\in\operatorname{Ob}D(X_\eta,\Lambda)$ 的\Term{finite-tor-dimension}{有限 Tor 维数} $\le d$（$d\in\mathbb Z$）（SGA4 XVII 4.1.9），则 $R\Psi_\eta(K)$ 的 \Term{tor-dimension}{Tor 维数}同样 $\le d$。
+\SGAsection{2.2}{一种相容性（迹态射）}
+\textbf{2.2.1.} 设 $S$ 是\Term{henselian}{Hensel 的}\Term{trait}{离散赋值环谱}，$u:X_s\to Y_s$ 是 $s$-\Term{scheme}{概形}的\Term{quasi-finite}{拟有限}\Term{flat}{平坦}\Term{separated}{分离}\Term{finite-presentation}{有限呈示}\Term{morphism}{态射}。对 $Y_s$ 上的每个\Term{abelian-sheaf}{阿贝尔层} $F$，已定义\Term{trace-morphism}{迹态射} $\operatorname{Tr}_u:u_!u^*F\to F$（SGA4 XVII 6.2.3）。对 $Y_s\times_sS$ 或 $Y_s\times_s\eta$ 上的\Term{abelian-sheaf}{阿贝尔层} $F$，由此得到类似\Term{morphism}{态射} $\operatorname{Tr}_u:u_!u^*F\to F$。
+设 $u:X\to Y$ 是 $S$-\Term{scheme}{概形}的\Term{quasi-finite}{拟有限}\Term{flat}{平坦}\Term{separated}{分离}\Term{finite-presentation}{有限呈示}\Term{morphism}{态射}。仍以 $u$ 记诱\Term{derived-morphism}{导态射} $X_s\times_sS\to Y_s\times_sS$，并以 $\Psi$ 记 $X$ 和 $Y$ 的\Term{functor}{函子} 1.3.3。
+\begin{SGAresult}{命题}{2.2.2}
+对 $Y$ 上每个\Term{abelian-sheaf}{阿贝尔层} $F$，下图交换：
+\[
+\begin{tikzcd}[column sep=small]
+u_!u^*\Psi F\arrow[r,"(1.3.7.1)"]\arrow[d,"\operatorname{Tr}_u"']&u_!\Psi u^*F\arrow[r,"(1.3.8.1)"]&\Psi u_!u^*F\arrow[d,"\operatorname{Tr}_u"]\\
+\Psi F\arrow[rr,equal]&&\Psi F.
+\end{tikzcd}
+\]
+\end{SGAresult}
+\SourcePage{118}
+核实留给读者。对 $\Psi_\eta$ 及 $Y_\eta$ 上的 $F$ 也有一个变体。
+
+\textbf{2.2.3.} 设 $\Lambda$ 如 2.2.1，$u:X\to Y$ 是\Term{flat}{平坦}\Term{finite-type}{有限型}\Term{separated}{分离} $S$-\Term{scheme}{概形}之间的\Term{quasi-finite}{拟有限}\Term{flat}{平坦}\Term{morphism}{态射}：
+\[\begin{tikzcd}X\arrow[rr,"u"]\arrow[dr,"f"']&&Y\arrow[dl,"g"]\\&S&\end{tikzcd}\]
+仍以 $f$ 和 $g$ 记\Term{morphism}{态射} $X_s\times_sS\to S$ 及 $Y_s\times_sS\to S$。假设 $\dim Y_\eta\le n$。对每个 $K\in\operatorname{Ob}D(S,\Lambda)$，已定义\Term{trace-morphism}{迹态射}（SGA4 XVIII 2.9）
+\[\operatorname{Tr}_f:Rf_!f^*K(n)[2n]\longrightarrow K.\]
+\begin{SGAresult}{推论}{2.2.4}
+下图交换：
+\[
+\begin{tikzcd}[column sep=small]
+Rg_!u_!u^*R\Psi g^*K(n)[2n]\arrow[r,"(1.3.7.1)"]\arrow[d,"\operatorname{Tr}_u"']&Rf_!R\Psi f^*K(n)[2n]\arrow[r,"(2.1.10.1)"]&Rf_!f^*K(n)[2n]\arrow[d,"\operatorname{Tr}_f"]\\
+Rg_!R\Psi g^*K(n)[2n]\arrow[r,"(2.1.10.1)"]&Rg_!g^*K(n)[2n]\arrow[r,"\operatorname{Tr}_g"]&K.
+\end{tikzcd}
+\]
+若 $u$ \Term{etale}{平展}，则 (1.3.7.1) 是\Term{isomorphism}{同构}。
+\end{SGAresult}
+\begin{proof}
+图 (2.2.4) 展开为下图，其中省略了\Term{functor}{函子}的自变量：
+\[
+\begin{tikzcd}[column sep=small]
+Rg_!u_!u^*R\Psi g^*\arrow[r]\arrow[d,"\operatorname{Tr}_u"']&Rg_!R\Psi u_!u^*g^*\arrow[r]\arrow[d,"\operatorname{Tr}_u"']&Rg_!u_!u^*g^*\arrow[r,"\sim"]\arrow[d,"\operatorname{Tr}_u"']&Rf_!f^*\arrow[d,"\operatorname{Tr}_f"]\\
+Rg_!R\Psi g^*\arrow[r,equal]&Rg_!R\Psi g^*\arrow[r]&Rg_!g^*\arrow[r,"\operatorname{Tr}_g"]&K.
+\end{tikzcd}
+\]
+第 (1) 个方块的\Term{commutativity}{交换性}来自 2.2.2。第 (2) 个方块的\Term{commutativity}{交换性}是
+\SourcePage{119}
+(2.1.10.2) 的\Term{functorial}{函子性}。第 (3) 个方块的\Term{commutativity}{交换性}是迹的\Term{transitivity}{传递性}，SGA4 XVIII 2.9 Var.3。
+\end{proof}
+\textbf{2.2.4.1.} 对 $\Psi_\eta$ 和 $K\in\operatorname{Ob}D(\eta,\Lambda)$ 有类似结果。
+
+\textbf{2.2.5.} 设 $\Phi$ 是 $Y_s$ 中在 $s$ 上\Term{proper}{固有}的一个部分，以 $Rg_\Phi$ 记“\Term{support}{支撑}在 $\Phi$ 中的\Term{direct-image}{正像}”\Term{functor}{函子}。以 $\operatorname{Tr}_g$ 记\Term{composition-morphism}{复合态射}
+\[\operatorname{Tr}_g:Rf_\Phi R\Psi g^*K(n)[2n]\longrightarrow Rg_!R\Psi g^*K(n)[2n]\longrightarrow Rg_!g^*K(n)[2n]\longrightarrow K,\tag{2.2.5.1}\]
+以及它对 $\Psi_\eta$ 和 $K\in D(\eta,\Lambda)$ 的对应物。若 $\Phi$ 是\Term{finite}{有限}\Term{closed-point}{闭点}集，则有
+\[Rg_\Phi\circ u_!=Rf_{u^{-1}\Phi},\]
+从而有\Term{trace-morphism}{迹态射} $\operatorname{Tr}_u:Rf_{u^{-1}\Phi}u^*=Rg_\Phi u_!u^*\to Rg_\Phi$。由 2.2.4，下图交换：
+\[
+\begin{tikzcd}[column sep=small]
+Rf_{u^{-1}\Phi}u^*R\Psi g^*K(n)[2n]\arrow[r]\arrow[d,"\operatorname{Tr}_u"']&Rf_{u^{-1}\Phi}R\Psi f^*K(n)[2n]\arrow[r,"\operatorname{Tr}_f"]&K\arrow[d,equal]\\
+Rg_\Phi R\Psi g^*K(n)[2n]\arrow[rr,"\operatorname{Tr}_g"]&&K.
+\end{tikzcd}
+\]
+假设 $u$ \Term{etale}{平展}，$x\in X_s$，并假设 $x$ 与 $y=u(x)$ 有相同的\Term{residue-field}{剩余域}。于是有
+\[Rf_{\{x\}}\xrightarrow\sim Rg_{\{x\}};\]
+由 $\operatorname{Tr}_u$ 给出的这个\Term{isomorphism}{同构}，表达了\Term{support}{支撑}在 $x$ 中的\Term{cohomology}{上同调}对于\Term{etale-cohomology}{平展上同调}的\Term{local-character}{局部性}。图
+\[
+\begin{tikzcd}
+Rf_{\{x\}}R\Psi f^*K(n)[2n]\arrow[r,"\operatorname{Tr}_f"]\arrow[d,equal]&K\arrow[d,equal]\\
+Rg_{\{y\}}R\Psi g^*K(n)[2n]\arrow[r,"\operatorname{Tr}_g"]&K
+\end{tikzcd}\tag{2.2.5.2}
+\]
+\SourcePage{120}
+交换。
+\begin{SGAresult}{评注}{2.2.6}
+相容性 (2.3.5.2) 表明，当 $\Phi=\{x\}$ 时，\Term{trace-morphism}{迹态射} (2.3.5.1) 是\Term{local-invariant}{局部不变量}：它只依赖于 $X$ 在 $x$ 的 Hensel 化这个 $S$-\Term{scheme}{概形}。对 $R\Psi_\eta$ 也一样。
+\end{SGAresult}
+\SGAsection{2.3}{有限性定理（等特征零情形）}
+\begin{SGAresult}{\Term{theorem}{定理}}{2.3.1}
+设 $S$ 如 0.2.5，$\Lambda$ 为\Term{noetherian}{Noether} \Term{torsion-ring}{挠环}，$f:X\to S$ 是\Term{finite-type}{有限型}\Term{morphism}{态射}。假设 $S$ 为\Term{equal-characteristic}{等特征}零。则对 $X_\eta$ 上的每个\Term{constructible}{可构造} $\Lambda$-模\Term{sheaf}{层} $F$，$X_{\bar s}$ 上的\Term{sheaf}{层} $R^i\Psi_{\bar\eta}(F)$ 均\Term{constructible}{可构造}。
+\end{SGAresult}
+\begin{proof}
+先照录 SGA4 XIV 1.10 证明的开头：应用 SGA4 IX 2.14(ii)。存在 $F$ 的一个\Term{resolution}{解消} $F^\bullet$，
+\[
+\begin{tikzcd}
+&F\arrow[d]&&\\
+0\arrow[r]&F^0\arrow[r]&F^1\arrow[r]&\cdots,
+\end{tikzcd}
+\]
+其各项是形如 $\bigoplus_i p'_{i*}G_i$ 的\Term{sheaf}{层}，其中 $p'_i:Y_{i\eta}\to X_\eta$ \Term{finite}{有限}，而 $G_i$ 是\Term{constructible}{可构造}\Term{constant-sheaf}{常值层}。可以假设 $Y_{i\eta}$ \Term{reduced}{约化}；设 $p_i:Y_i\to X$ 为 $X$ 在 $Y_{i\eta}$ 中的\Term{normalization}{正规化}。使用\Term{resolution}{解消} $F^\bullet$ 的\Term{spectral-sequence}{谱序列}，并在\Term{finite-morphism}{有限态射} $p_i$ 这一简单情形应用 (2.1.7.1)，可知只须对 $(Y_i,G_i)$ 证明 2.3.1。
+现对一个 $\Lambda$-模 $M$ 所定义的\Term{constant-sheaf}{常值层} $F$ 证明 2.3.1。回顾 $\Lambda$ 对某个适当的 $n$ 是 $\mathbb Z/n$-\Term{algebra}{代数}。因此 $M$ \Term{decomposable}{可分解}为 $\Lambda/\ell_i\Lambda$ 上的模 $M_i$，其中 $\ell_i\mid n$ 为适当素数。这样归结为 $\Lambda$ 是 $\mathbb Z/\ell$-\Term{algebra}{代数}、$\ell$ 为素数的情形。这时有 (2.1.13.1)
+\[M\otimes R^i\Psi_{\bar\eta}(\mathbb Z/\ell)\xrightarrow\sim R^i\Psi_{\bar\eta}(M);\]
+\SourcePage{121}
+只剩下 $F$ 是\Term{constant-sheaf}{常值层} $\mathbb Z/\ell$ 的情形。
+设 $X_\eta=X'_0\supset\cdots\supset X'_n$ 是 $X_\eta$ 的一列\Term{closed-subset}{闭子集}，使 $(X'_i-X'_{i+1})_{\mathrm{red}}$ 在 $\eta$ 上\Term{smooth}{光滑}。置 $X_i=\overline{X'_i}$。\Term{sheaf}{层} $\mathbb Z/\ell$ \Term{decomposable}{可分解}为各 $(X'_i-X'_{i+1})$ 上的\Term{sheaf}{层} $\mathbb Z/\ell$ 的\Term{extension-by-zero}{零延拓}。由此得到：
+
+\textbf{归约 1。} 只须对 $j_!\mathbb Z/\ell$ 证明 2.3.1，其中 $j:U\hookrightarrow X_\eta$ 为\Term{smooth}{光滑}\Term{open-subset}{开集}的包含。
+
+由\Term{resolution}{消解}\Term{singular-point}{奇点}，存在 $g:X_1\to X$ 满足：(a) $g$ \Term{proper}{固有}，且\Term{induction-isomorphism}{诱导同构} $g^{-1}(U)\xrightarrow\sim U$；(b) $X_1$ \Term{regular}{正则}，而 $X_1-g^{-1}(U)$ 是 $X_1$ 中的\Term{normal-crossings-divisor}{正规交叉除子}，为\Term{regular}{正则}\Term{divisor}{除子} $D_\alpha$ 的并。
+设 $j_1:g^{-1}(U)\hookrightarrow X_1$。有 $Rg_*j_{1!}\mathbb Z/\ell=j_!\mathbb Z/\ell$。应用 (2.1.7.1) 及\Term{finiteness-theorem}{有限性定理} SGA4 XIV 1.1，可见只须对 $(X_1,j_{1!}\mathbb Z/\ell)$ 证明 (2.3.1)。有\Term{resolution}{解消}
+\[
+0\longrightarrow j_{1!}\mathbb Z/\ell\longrightarrow\mathbb Z/\ell\longrightarrow\bigoplus_\alpha(\mathbb Z/\ell)_{D_\alpha}\longrightarrow\bigoplus_{\alpha,\beta}(\mathbb Z/\ell)_{D_\alpha\cap D_\beta}\longrightarrow\cdots,
+\]
+从而得到：
+
+\textbf{归约 2。} 只须对\Term{constant-sheaf}{常值层} $\mathbb Z/\ell$，以及满足 $X_s$ 是 $X$ 中\Term{normal-crossings-divisor}{正规交叉除子}的\Term{regular}{正则} $S$-\Term{scheme}{概形} $X$，证明 2.3.1。
+
+在所归结的情形中，使用第 I 讲 3.3 的显式计算（其中使用了\Term{purity-theorem}{纯性定理} SGA4 XIX 3.2 和\Term{characteristic}{特征} $0$）。
+\end{proof}
+\SGAsection{2.4}{孤立奇点}
+\textbf{2.4.1.} 本小节为简单起见，假设 $S$ 是\Term{strictly-henselian}{严格 Hensel 的}\Term{trait}{离散赋值环谱}。设 $\Lambda$ 是与 $S$ 的\Term{residue-characteristic}{剩余特征}互素的\Term{noetherian}{Noether} \Term{torsion-ring}{挠环}，$f:X\to S$ 是\Term{finite-type}{有限型}\Term{morphism}{态射}，$F$ 是 $X$ 上的\Term{constructible}{可构造} $\Lambda$-模\Term{sheaf}{层}。称 $x\in X$ 是 $(X,F)$ 的\Term{smooth-point}{光滑点}，
+\SourcePage{122}
+若 $f$ 在 $x$ \Term{smooth}{光滑}，且 $F$ 在 $x$ 的某个\Term{neighborhood}{邻域}中\Term{locally-constant}{局部常值}。以 $\Sigma$ 记 $(X,F)$ 的\Term{non-smooth-locus}{非光滑点集}，$\Sigma_s$ 记 $\Sigma$ 的\Term{special-fibre}{特殊纤维}。已知 $R\Phi(F)$ 在 $\Sigma_s$ 之外为 $0$。
+\begin{SGAresult}{\Term{theorem}{定理}}{2.4.2}
+在 $\Sigma_s$ 的每个\Term{isolated-point}{孤立点} $x$，各 $R^i\Phi_{\bar\eta}(F)_x$ 是\Term{finite-type}{有限型} $\Lambda$-模，且在\Term{trait-change}{离散赋值环谱变换}下\Term{invariant}{不变}（经由 (2.1.7.1)）。
+\end{SGAresult}
+在\Term{equal-characteristic}{等特征} $0$ 时，这些断言已在 2.1.12 和 2.3.1 中证明，且无需假设 $x$ \Term{isolated-point}{孤立}。
+\begin{proof}
+设 $x$ 是 $\Sigma_s$ 的一个\Term{isolated-point}{孤立点}。\Term{theorem}{定理}在 $x$ 的\Term{neighborhood}{邻域}内具有\Term{local-nature}{局部性质}；故可假设 $f$ \Term{proper}{固有}。这时有\Term{long-exact-sequence}{长正合列} (2.1.8.9)：
+\[\cdots\longrightarrow H^i(X_s,F)\longrightarrow H^i(X_{\bar\eta},F)\longrightarrow H^i(X_s,R\Phi_{\bar\eta}(F))\longrightarrow\cdots.\]
+此列中，$H^i(X_s,F)$ 与 $H^i(X_{\bar\eta},F)$ 在\Term{trait-change}{离散赋值环谱变换}下\Term{invariant}{不变}，且是\Term{finite-type}{有限型} $\Lambda$-模（SGA4 XIV 1.1）；故 $H^i(X_s,R\Phi_{\bar\eta}(F))$ 也具有这些性质。回顾下述\Term{lemma}{引理}。
+\end{proof}
+\begin{SGAresult}{\Term{lemma}{引理}}{2.4.3}
+设 $(T,\Lambda)$ 是\Term{ringed-topos}{赋环拓扑斯}，$F$ 是 $T$ 的一个闭子\Term{topos}{拓扑斯}，$i$ 是 $F$ 的包含。则 $i_*:D(F,\Lambda)\to D(T,\Lambda)$ 给出 $D(F,\Lambda)$ 与 $D(T,\Lambda)$ 中由各 $\mathscr H^i(K)$ \Term{support}{支撑}在 $F$ 中的\Term{object}{对象} $K$ 组成的\Term{subcategory}{子范畴}之间的\Term{equivalence}{等价}。
+\end{SGAresult}
+\begin{proof}
+事实上，对这样的\Term{complex}{复形} $K$，$K\to i_*i^*K$ 是\Term{quasi-isomorphism}{拟同构}。
+\end{proof}
+因此，可以将 $R\Phi_{\bar\eta}(F)$ 看作
+\[D^b(\Sigma_s,\Lambda)=D^b(\Sigma_s-\{x\},\Lambda)+D^b(\{x\},\Lambda)\]
+的\Term{object}{对象}。取\Term{direct-factor}{直因子}，便得到 $H^i(\{x\},R\Phi_{\bar\eta}(F))=R^i\Phi_{\bar\eta}(F)_x$ 满足 2.4.2，从而完成证明。
+
+\textbf{注记 2.4.4.} 同样的证明表明：对 $D^+(X,\Lambda)$ 中\Term{constructible}{可构造}的 $K$，以及 $R\Phi_{\bar\eta}(K)$ 的\Term{support}{支撑}中的\Term{isolated-point}{孤立点} $x$，$\Lambda$-模 $R^i\Phi_{\bar\eta}(K)_x$ 是\Term{finite-type}{有限型}的；若在某个\Term{trait-change}{离散赋值环谱变换}之后，$x$ 仍是\Term{support}{支撑}的\Term{isolated-point}{孤立点}，则此模在该\Term{trait-change}{离散赋值环谱变换}下\Term{invariant}{不变}。
+\SourcePage{123}
+\textbf{2.4.5.} 设 $x\in X_s$ 是 $(X,F)$ 的一个\Term{isolated-nonsmooth-point}{孤立非光滑点}。更\Term{generic}{一般}地，设 $K\in\operatorname{Ob}D^b(X,\Lambda)$，$x$ 是 $R\Phi(K)$ 的\Term{support}{支撑}的\Term{isolated-point}{孤立点}。设 $i$ 是 $x$ 在 $X_s$ 中的包含。\Term{complex}{复形} $i_*i^*R\Phi(K)$ 在 $x$ 的某个\Term{neighborhood}{邻域}与 $R\Phi(K)$ \Term{isomorphism}{同构}，是 $R\Phi(F)$ 的\Term{direct-factor}{直因子}（2.4.3）。因此对 $\sigma\in I$，\Term{variation}{变差}\Term{morphism}{态射}诱导
+\[\operatorname{Var}(\sigma):i_*i^*R\Phi_{\bar\eta}(K)\longrightarrow R\Psi_{\bar\eta}(K),\]
+亦即
+\[\operatorname{Var}(\sigma):(R\Phi_{\bar\eta}(K))_x\longrightarrow R\Gamma_{\{x\}}(R\Psi_{\bar\eta}(K)).\tag{2.4.5.1}\]
+\textbf{2.4.6.} 假设 $R\Phi(K)$ 的\Term{support}{支撑} $\Sigma$ 由\Term{finite}{有限}个\Term{isolated-point}{孤立点}组成。对每个 $\sigma\in I$，$R\Psi_{\bar\eta}(K)$ 的\Term{endomorphism}{自同态} $\sigma-1$ 是下图的复合：
+\[
+\begin{tikzcd}[column sep=large]
+R\Psi_{\bar\eta}(K)\arrow[r]\arrow[d,"\sigma-1"']&R\Phi_{\bar\eta}(K)=\displaystyle\bigoplus_{x\in\Sigma}i_{x*}(R\Phi_{\bar\eta}(K))_x\arrow[d,"{\bigoplus i_{x*}\operatorname{Var}(\sigma)}"]\\
+R\Psi_{\bar\eta}(K)&\displaystyle\bigoplus_{x\in\Sigma}i_{x*}R\Gamma_{\{x\}}R\Psi_{\bar\eta}(K)\arrow[l].
+\end{tikzcd}\tag{2.4.6.1}
+\]
+若 $f$ \Term{proper}{固有}，对 (2.4.6.1) 应用\Term{functor}{函子} $H^i$，便得到 $H^i(X_{\bar\eta},K)$ 的\Term{endomorphism}{自同态} $\sigma-1$ 为复合
+\[
+\begin{tikzcd}[column sep=small]
+H^i(X_{\bar\eta},K)\arrow[r,"\sim"]\arrow[d,"\sigma-1"']&H^i(X_s,R\Psi_{\bar\eta}(K))\arrow[r]&H^i(X_s,R\Phi_{\bar\eta}(K))=\displaystyle\bigoplus_{x\in\Sigma}R^i\Phi_{\bar\eta}(K)_x\arrow[d,"{\bigoplus\operatorname{Var}(\sigma)}"]\\
+H^i(X_{\bar\eta},K)&H^i(X_s,R\Psi_{\bar\eta}(K))\arrow[l,"\sim"']&\displaystyle\bigoplus_{x\in\Sigma}H^i_{\{x\}}(X_s,R\Psi_{\bar\eta}(K))\arrow[l].
+\end{tikzcd}\tag{2.4.6.2}
+\]
+这给出 $I$ 在 $H^i(X_{\bar\eta},K)$ 上\Term{action}{作用}的一个描述，其主要成分是\Term{variation}{变差}\Term{morphism}{态射} (2.4.4.1)，它们在 $X$ 上具有\Term{local-nature}{局部性质}。此外还有\Term{long-exact-sequence}{长正合列}
+\SourcePage{124}
+\[\longrightarrow H^i(X_s,K)\longrightarrow H^i(X_{\bar\eta},K)\longrightarrow\bigoplus_{x\in\Sigma}R^i\Phi_{\bar\eta}(K)_x\longrightarrow\cdots.\tag{2.4.6.3}\]
+若 $(X,K)$ 满足 2.1.9，同一论证也适用于 $f$ 不一定\Term{proper}{固有}的情形。以下图 (2.4.6.5) 定义\Term{morphism}{态射}
+\[\operatorname{Var}(\sigma):R\Gamma(X_{\bar\eta},K)\longrightarrow R\Gamma_c(X_{\bar\eta},K),\tag{2.4.6.4}\]
+使 $R\Gamma(X_{\bar\eta},K)$（相应地 $R\Gamma_c(X_{\bar\eta},K)$）的\Term{endomorphism}{自同态} $\sigma-1$ 是 $\operatorname{Var}(\sigma)$ 与 $\alpha:R\Gamma_c(X_{\bar\eta},K)\to R\Gamma(X_{\bar\eta},K)$ 的复合 $\alpha\operatorname{Var}(\sigma)$（相应地 $\operatorname{Var}(\sigma)\alpha$）：
+\[
+\begin{tikzcd}[column sep=small]
+R\Gamma(X_{\bar\eta},K)\arrow[r,"\sim"]\arrow[d,"\operatorname{Var}(\sigma)"']&R\Gamma(X_s,R\Psi_{\bar\eta}(K))\arrow[r]&\displaystyle\bigoplus_{x\in\Sigma}(R\Phi_{\bar\eta}(K))_x\arrow[d,"\bigoplus"]\\
+R\Gamma_c(X_{\bar\eta},K)\arrow[r,"\sim"]&R\Gamma_c(X_s,R\Psi_{\bar\eta}(K))&\displaystyle\bigoplus_{x\in\Sigma}R\Gamma_{\{x\}}(X_s,R\Psi_{\bar\eta}(K))\arrow[l].
+\end{tikzcd}\tag{2.4.6.5}
+\]
+在此情形还有\Term{long-exact-sequence}{长正合列}
+\[
+\begin{tikzcd}[column sep=small]
+\cdots\arrow[r]&H_c^i(X_s,K)\arrow[r]\arrow[d]&H_c^i(X_{\bar\eta},K)\arrow[r]\arrow[d]&\displaystyle\bigoplus_{x\in\Sigma}(R^i\Phi_{\bar\eta}(K))_x\arrow[r]\arrow[d,equal]&\cdots\\
+\cdots\arrow[r]&H^i(X_s,K)\arrow[r]&H^i(X_{\bar\eta},K)\arrow[r]&\displaystyle\bigoplus_{x\in\Sigma}R^i\Phi_{\bar\eta}(K)_x\arrow[r]&\cdots.
+\end{tikzcd}\tag{2.4.6.6}
+\]
+\textbf{2.4.6.} 设 $X_{s(x)}$ 为 $X_s$ 在 $x$ 的\Term{henselization}{Hensel 化}，$X_{s(x)}^*=X_{s(x)}-\{x\}$。$(X_{s(x)},\{x\})$ 分别取系数 $K_s$、$R\Psi_{\bar\eta}(K)$、$R\Phi_{\bar\eta}(K)$ 的\Term{hypercohomology}{超上同调}\Term{long-exact-sequence}{长正合列}给出以下\Term{long-exact-sequence}{长正合列}：
+\SourcePage{125}
+\[
+\begin{tikzcd}[column sep=small,row sep=large]
+&0\arrow[r]\arrow[d]&R^{n-1}\Phi_{\bar\eta}(K)_x\arrow[r]\arrow[d]&R^{n-1}\Phi_{\bar\eta}(K)_x\arrow[r]\arrow[d]&0\arrow[d]&\\
+\arrow[r]&H^{n-1}(X_{s(x)}^*,K)\arrow[r,"j"]\arrow[d,equal]&H^n_{\{x\}}(X_s,K)\arrow[r]\arrow[d]&\mathscr H^n(K)_x\arrow[r]\arrow[d]&H^n(X_{s(x)}^*,K)\arrow[r]\arrow[d,equal]&{}\\
+\arrow[r]&H^{n-1}(X_{s(x)}^*,K)\arrow[r,"j", "\text{\textcircled{1}}"']\arrow[d]&H^n_{\{x\}}(X_s,R\Psi_{\bar\eta}(K))\arrow[r]\arrow[d]&R^n\Psi_{\bar\eta}(K)_x\arrow[r]\arrow[d]&H^n(X_{s(x)}^*,K)\arrow[r]\arrow[d]&{}\\
+&0\arrow[r]&R^n\Phi_{\bar\eta}(K)_x\arrow[r,equal]&R^n\Phi_{\bar\eta}(K)_x\arrow[r]&0&
+\end{tikzcd}\tag{2.4.6.1}
+\]
+\Term{arrow}{箭头} \textcircled{1} 的像包含在惯性\Term{invariant}{不变}元中。
+\SGAsection{}{参考文献}
+\begin{enumerate}
+\item[{[1]}] J. GIRAUD，\emph{Classifying topos}（\Term{classifying-topos}{分类拓扑斯}），载 \emph{Toposes, algebraic geometry and logic}，第 43--56 页，Lecture Notes in Mathematics 274，Springer Verlag，1971。
+\item[{[2]}] M. NAGATA，\emph{A generalization of the imbedding problem}（\Term{embedding}{嵌入}问题的一个推广），\emph{J. Math. Kyoto} \textbf{3}, 1 (1963)，第 89--102 页。
+\end{enumerate}

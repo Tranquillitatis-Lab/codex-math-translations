@@ -1,0 +1,468 @@
+\SourcePage{626}
+\SGAchapter{XIII}{Picard 函子的有限性定理}{Les théorèmes de finitude pour le foncteur de Picard}
+\begin{center}S. Kleiman\end{center}
+\SGAsection{1}{$(b)$-层}
+设 $k$ 是\Term{algebraically-closed-field}{代数闭域}，$X$ 是一个\Term{projective-scheme}{射影} $k$-\Term{scheme}{概形}，配备一个\Term{ample}{丰沛}\Term{invertible-module}{可逆模} $\mathcal O_X(1)$。
+\begin{SGAresult}{定义}{1.1（Mumford）}
+设 $m\in\mathbb Z$。$X$ 上的一个\Term{coherent-sheaf}{凝聚层} $F$ 称为 $m$-\Term{m-regular}{正则的}，如果在 $F$ 的\Term{support}{支集}的每一点，$\mathcal O_X(1)$ 都由其\Term{global-section}{整体截面}生成，而且对一切 $q\geq1$ 都有
+\[H^q(F(m-q))=0.\]
+\end{SGAresult}
+\begin{SGAresult}{\Term{lemma}{引理}}{1.2}
+设 $0\to F(-1)\to F\to G\to0$ 是 $X$ 上\Term{coherent-sheaf}{凝聚层}的\Term{exact-sequence}{正合列}\footnote{此处以及下文类似情形中，均约定 $F(-1)\to F$ 由与 $\mathcal O_X(1)$ 的某个给定\Term{section}{截面}作\Term{tensor-product}{张量积}定义。}。若 $F$ 是 $m$-\Term{m-regular}{正则的}，则 $G$ 也是。
+\end{SGAresult}
+\begin{proof}
+事实上，有相应的\Term{exact-sequence}{正合列}
+\[H^q(F(m-q))\longrightarrow H^q(G(m-q))\longrightarrow H^{q+1}(F(m-q-1)).\]
+\end{proof}
+\begin{SGAresult}{命题}{1.3}
+若 $X$ 上的\Term{sheaf}{层} $F$ 是 $m$-\Term{m-regular}{正则的}，则对一切 $n\geq m$：
+\begin{enumerate}
+\item[(i)] $F$ 是 $n$-\Term{m-regular}{正则的}。
+\item[(ii)] $H^0(F(n))\otimes H^0(\mathcal O_X(1))\to H^0(F(n+1))$ 是\Term{surjective}{满射}。
+\item[(iii)] $F(n)$ 由 $H^0(F(n))$ 生成。
+\end{enumerate}
+\end{SGAresult}
+\SourcePage{627}
+\begin{proof}
+对 $F$ 的\Term{support}{支集}的\Term{dimension}{维数} $s$ 归纳；$s=-1$ 时显然。取一个在\Term{finite}{有限}集 $\operatorname{Ass}(F)$ 的任何一点都不为零的\Term{section}{截面} $\sigma\in H^0(\mathcal O_X(1))$；于是 $\sigma$ 定义\Term{exact-sequence}{正合列} $0\to F(-1)\to F\to G\to0$，由 1.2，$G$ 是 $m$-\Term{m-regular}{正则的}，且其\Term{support}{支集}的\Term{dimension}{维数}为 $s-1$。
+考虑相应的\Term{exact-sequence}{正合列}
+\[H^q(F(n-q-1))\longrightarrow H^q(F(n-q))\longrightarrow H^q(G(n-q)).\]
+由归纳假设，当 $n\geq m$ 时，$H^q(G(n-q))=0$，所以 $H^q(F(n-q-1))=0$ 蕴含 $H^q(F(n-q))=0$；而 $H^q(F(m-q))=0$，这就得到 (i)。
+为证明 (ii)，在下列\Term{commutative-diagram}{交换图}中追图：
+\[
+\begin{tikzcd}[column sep=small]
+&& H^0(F(n))\otimes H^0(\mathcal O_X(1)) \arrow[r]\arrow[d]
+& H^0(G(n))\otimes H^0(\mathcal O_X(1)) \arrow[r]\arrow[d] &0\\
+0\arrow[r]& H^0(F(n))\arrow[r]\arrow[ur,"{\varphi\mapsto\varphi\otimes\sigma}"] & H^0(F(n+1))\arrow[r] & H^0(G(n+1))\arrow[d]\\
+&&&0
+\end{tikzcd}
+\]
+斜\Term{arrow}{箭头}由 $\varphi\mapsto\varphi\otimes\sigma$ 定义，横行均\Term{exact-sequence}{正合}：第一行由 $F$ 的 $n$-\Term{m-regular}{正则性}及已证的 (i) 得到；第二列由归纳假设\Term{exact-sequence}{正合}。
+最后，(iii) 由下列\Term{commutative-diagram}{交换图}\Term{pushout}{推出}：
+\[
+\begin{tikzcd}
+H^0(F(n))_X\otimes H^0(\mathcal O_X(1))_X \arrow[r,"\alpha_n"]\arrow[d]
+& H^0(F(n)(1))_X\arrow[d,"\beta_{n+1}"]\\
+{[H^0(F(n))_X](1)}\arrow[r,"\beta_n\otimes\mathrm{id}"]&F(n)(1).
+\end{tikzcd}
+\]
+\SourcePage{628}
+这里，对 $k$ 上的\Term{vector-space}{向量空间} $M$，以 $M_X$ 表示 $M\otimes_k\mathcal O_X$。当 $n\geq m$ 时，由 (ii)，$\alpha_n$ 是\Term{surjective}{满射}；故若 $\beta_{n+1}$ 是\Term{surjective}{满射}，则 $\beta_n$ 也是。由 Serre \Term{theorem}{定理}，当 $n\gg0$ 时 $\beta_{n+1}$ 是\Term{surjective}{满射}，于是得到 (iii)。
+\end{proof}
+\begin{SGAresult}{命题}{1.4}
+设 $0\to F(-1)\to F\to G\to0$ 是 $X$ 上的\Term{exact-sequence}{正合列}。若 $G$ 是 $m$-\Term{m-regular}{正则的}，则：
+\begin{align*}
+\text{(i)}\quad&H^q(F(n))=0 &&(q\geq2,\ n\geq m-q),\\
+\text{(ii)}\quad&h^1(F(n-1))\geq h^1(F(n)) &&(n\geq m-1),\\
+\text{(iii)}\quad&H^1(F(n))=0 &&(n\geq (m-1)+h^1(F(m-1))).
+\end{align*}
+特别地，$F$ 是 $[m+h^1(F(m-1))]$-\Term{m-regular}{正则的}。
+\end{SGAresult}
+\begin{proof}
+在\Term{exact-sequence}{正合列}
+\[H^{q-1}(G(n))\longrightarrow H^q(F(n-1))\longrightarrow H^q(F(n))\longrightarrow H^q(G(n))\]
+中，当 $q\geq2$ 且 $n\geq m-(q-1)$ 时，由 2.3 (i)，两端的群为零。因此
+\[H^q(F(m-q))\xrightarrow\sim H^q(F(m-q+1))\xrightarrow\sim H^q(F(m-q+2))\xrightarrow\sim\cdots;\]
+而由 Serre \Term{theorem}{定理}，当 $n\gg0$ 时 $H^q(F(n))=0$，于是得到 (i)。
+对 $n\geq m-1$，考虑\Term{exact-sequence}{正合列}
+\[0\to H^0(F(n-1))\to H^0(F(n))\xrightarrow{\alpha_n}H^0(G(n))\to H^1(F(n-1))\to H^1(F(n))\to0.\]
+这给出 (ii)。现在假设 $\alpha_n$ 为\Term{surjective}{满射}，并考虑\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}
+H^0(F(n))\otimes H^0(\mathcal O_X(1))\arrow[r,"\alpha_n\otimes\mathrm{id}"]\arrow[d]
+&H^0(G(n))\otimes H^0(\mathcal O_X(1))\arrow[r]\arrow[d,"\beta_n"]&0\\
+H^0(F(n+1))\arrow[r,"\alpha_{n+1}"]&H^0(G(n+1)).
+\end{tikzcd}
+\]
+\SourcePage{629}
+若 $n\geq m$，则由 2.3 (ii)，$\beta_n$ 是\Term{surjective}{满射}，因而 $\alpha_{n+1}$ 是\Term{surjective}{满射}。所以
+\[H^1(F(n-1))\xrightarrow\sim H^1(F(n))\xrightarrow\sim\cdots\xrightarrow\sim0.\]
+另一方面，若 $\alpha_n$ 不是\Term{surjective}{满射}，则 $h^1(F(n-1))>h^1(F(n))$；因此 $n\mapsto h^1(F(n))$ 从 $h^1(F(m-1))$ 开始严格递减，直至变为零。这就证明了 (iii)。
+\end{proof}
+\begin{SGAresult}{定义}{1.5}
+设 $F$ 是 $X$ 上的\Term{coherent-sheaf}{凝聚层}，$r\geq\dim\operatorname{supp}(F)$ 是整数，$(b)=(b_0,\ldots,b_r)$ 是 $r+1$ 个整数构成的序列。若 $F$ 满足以下两组\Term{equivalence}{等价}条件之一，则称其为\Term{b-sheaf}{$(b)$-层}：
+
+\textup{(1.5.1)} (i) 在 $F$ 的\Term{support}{支集}的每一点，$\mathcal O_X(1)$ 由 $H^0(\mathcal O_X(1))$ 生成；(ii) $h^0(F(-1))\leq b_0$；(iii) 当 $r\geq1$ 时，存在\Term{section}{截面} $\sigma\in H^0(\mathcal O_X(1))$，定义\Term{exact-sequence}{正合列} $0\to F(-1)\to F\to G\to0$，且 $G$ 是\Term{b-sheaf}{$(b_1,\ldots,b_r)$-层}。
+
+\textup{(1.5.2)} 存在由 $r$ 个\Term{section}{截面} $\sigma_1,\ldots,\sigma_r\in H^0(\mathcal O_X(1))$ 构成的 $F$-\Term{regular-sequence}{正则序列}，使得对 $i=0,\ldots,r$，若 $F_i$ 表示 $F$ 在 $\sigma_1,\ldots,\sigma_i$ 的\Term{zero-scheme}{零点概形}上的\Term{restriction}{限制}，则 $h^0(F_i(-1))\leq b_i$。
+\end{SGAresult}
+\begin{SGAresult}{命题}{1.6}
+设 $F$ 是 $X$ 上的\Term{b-sheaf}{$(b)$-层}。则：
+\begin{enumerate}
+\item[(i)] 对由 $r$ 个\Term{section}{截面} $\sigma_1,\ldots,\sigma_r\in H^0(\mathcal O_X(1))$ 构成的任意“充分\Term{generic}{一般}”的序列 $\sigma$，若 $F_{\sigma,i}$ 表示 $F$ 在 $\sigma_1,\ldots,\sigma_i$ 的\Term{zero-scheme}{零点概形}上的\Term{restriction}{限制}，则 $h^0(F_{\sigma,i}(-1))\leq b_i$，其中 $0\leq i\leq r$。
+\item[(ii)] $F$ 的每个\Term{subsheaf}{子层} $G$ 都是\Term{b-sheaf}{$(b)$-层}。
+\end{enumerate}
+\end{SGAresult}
+\SourcePage{630}
+\begin{proof}
+设 $S$ 为\Term{affine-space}{仿射空间} $\mathbb A_k^N$，其 $k$-点对应序列 $\sigma$，$T$ 为 $S$ 中对应于 $F$-\Term{regular-sequence}{正则序列}的\Term{open-subscheme}{开子概形}。对固定的 $i$，对应于 $T$ 的 $k$-点的\Term{sheaf}{层} $F_{\sigma,i}(-1)$ 包含在 $T$ 上的一个\Term{flat-family}{平坦族}中，且由假设 $T$ \Term{nonempty}{非空}。故 (i) 来自函数 $\sigma\mapsto h^0(F_{\sigma,i}(-1))$ 的\Term{upper-semicontinuity}{上半连续性}（EGA III 7.7.5）。最后，每个“充分\Term{generic}{一般}”的序列都是 $G$-\Term{regular-sequence}{正则的}，并使 $G_{\sigma,i}$ 对每个 $i$ 都是 $F_{\sigma,i}$ 的\Term{subsheaf}{子层}，所以 (ii) 由 (i) 得到。
+\end{proof}
+\begin{SGAresult}{\Term{lemma}{引理}}{1.7}
+设 $0\to F(-1)\to F\to G\to0$ 是 $X$ 上的\Term{exact-sequence}{正合列}。若 $F$ 的\Term{hilbert-polynomial}{Hilbert 多项式}写成
+\[\chi(F(n))=\sum_{i=0}^r a_i\binom{n+i}{i},\]
+则
+\[\chi(G(n))=\sum_{i=0}^{r-1}a_{i+1}\binom{n+i}{i}.\]
+\end{SGAresult}
+\begin{proof}
+事实上，$\chi(G(n))=\chi(F(n))-\chi(F(n-1))=\sum_{i=0}^r a_i[\binom{n+i}{i}-\binom{n-1+i}{i}]$；因此 $\chi(G(n))=\sum_{i=1}^r a_i\binom{n+i-1}{i-1}$，由此得到结论。
+\end{proof}
+\begin{SGAresult}{命题}{1.8}
+设 $F$ 是 $X$ 上的\Term{b-sheaf}{$(b)$-层}，$s=\dim\operatorname{supp}(F)$，且 $\chi(F(n))=\sum_{i=0}^s a_i\binom{n+i}{i}$ 为 $F$ 的\Term{hilbert-polynomial}{Hilbert 多项式}。则：
+\begin{enumerate}
+\item[(i)] 当 $n\geq-1$ 时，$h^0(F(n))\leq\sum_{i=0}^s b_i\binom{n+i}{i}$。
+\item[(ii)] $a_s\leq b_s$，且 $F$ 也是\Term{b-sheaf}{$(b_0,\ldots,b_{s-1},a_s)$-层}。
+\end{enumerate}
+\end{SGAresult}
+\begin{proof}
+对 $s$ 归纳。当 $s=0$ 时，由 $a_0=h^0(F)=h^0(F(-1))\leq b_0$，结论显然。当 $s\geq1$ 时，有\Term{exact-sequence}{正合列}
+\[0\to F(-1)\to F\to G\to0,\]
+\SourcePage{631}
+其中 $G$ 是\Term{b-sheaf}{$(b_1,\ldots,b_r)$-层}且 $\dim\operatorname{supp}(G)=s-1$。于是
+\[h^0(F(n))-h^0(F(n-1))\leq h^0(G(n)),\]
+而由关于 $s$ 的归纳，$h^0(G(n))\leq\sum_{i=0}^{s-1}b_{i+1}\binom{n+i}{i}$，且 $h^0(F(-1))\leq b_0$；因此对 $n\geq-1$ 归纳便得到 (i)。最后，由 1.7 及关于 $s$ 的归纳，$a_s\leq b_s$，而且 $G$ 是\Term{b-sheaf}{$(b_1,\ldots,b_{s-1},a_s)$-层}，这就得到 (ii)。
+\end{proof}
+\begin{SGAresult}{定义}{1.9}
+称下列递归定义的、系数为非负有理数的\Term{polynomial}{多项式}为\Term{b-polynomial}{$(b)$-多项式}：
+\[
+\begin{cases}
+P_{-1}=0,\\
+P_r(X_0,\ldots,X_r)=P_{r-1}(X_1,\ldots,X_r)
++\displaystyle\sum_{i=0}^r X_i\binom{P_{r-1}(X_1,\ldots,X_r)-1+i}{i}.
+\end{cases}
+\]
+\end{SGAresult}
+\textbf{注记 1.10。}对\Term{b-polynomial}{$(b)$-多项式}，对 $r\geq t$ 归纳立刻看出
+\[P_r(X_0,\ldots,X_t,0,\ldots,0)=P_t(X_0,\ldots,X_t).\]
+\begin{SGAresult}{\Term{theorem}{定理}}{1.11（$(b)$-层的主\Term{theorem}{定理}）}
+设 $F$ 是 $X$ 上的\Term{b-sheaf}{$(b)$-层}，且 $\chi(F(n))=\sum_{i=0}^r a_i\binom{n+i}{i}$ 为 $F$ 的\Term{hilbert-polynomial}{Hilbert 多项式}；设 $(c)=(c_0,\ldots,c_r)$ 是满足 $(c)\geq(b)-(a)$ 的整数序列，而 $m=P_r(c)$ 是第 $r$ 个\Term{b-polynomial}{$(b)$-多项式}（1.9）给出的整数。则 $m\geq0$，而且 $F$ 是 $m$-\Term{m-regular}{正则的}。特别地，若 $s=\dim\operatorname{supp}(F)$，则 $F$ 是 $P_{s-1}(c_0,\ldots,c_{s-1})$-\Term{m-regular}{正则的}。
+\end{SGAresult}
+\SourcePage{632}
+\begin{proof}
+对 $r$ 归纳。当 $r=0$ 时，$m=0$，且 $F$ 对一切 $n$ 都是 $n$-\Term{m-regular}{正则的}，故结论显然。当 $r\geq1$ 时，有\Term{exact-sequence}{正合列} $0\to F(-1)\to F\to G\to0$，其中 $G$ 是\Term{b-sheaf}{$(b_1,\ldots,b_r)$-层}。由 1.7 及归纳假设，若 $n=P_{r-1}(c_1,\ldots,c_r)$，则 $n\geq0$ 且 $G$ 是 $n$-\Term{m-regular}{正则的}。故由 1.4，$F$ 是 $[n+h^1(F(n-1))]$-\Term{m-regular}{正则的}，且对 $q\geq2$，$h^q(F(n-1))=0$。所以
+\[h^1(F(n-1))=h^0(F(n-1))-\chi(F(n-1))\leq\sum_{i=0}^r(b_i-a_i)\binom{n-1+i}{i},\]
+这里使用了 1.8 (i)，因为 $b_i\geq0$。最后，由 1.3 (i)，$F$ 是
+\[\left[n+\sum_{i=0}^r c_i\binom{n-1+i}{i}\right]\]
+\Term{m-regular}{正则的}，于是得到第一个断言。第二个断言由 1.8 (ii) 和 1.10 得到。
+\end{proof}
+\textbf{1.12。}设 $S$ 是\Term{noetherian-scheme}{诺特概形}，$X$ 是 $S$ 上的\Term{finite-type}{有限型}\Term{scheme}{概形}。设 $\mathfrak F$ 是 $X/S$ 的\Term{fibre}{纤维}上的\Term{coherent-sheaf}{凝聚层}的类构成的族；亦即，对每个点 $s\in S$ 及 $k(s)$ 的每个\Term{group-extension}{扩张} $K$，给定\Term{algebraic-scheme}{代数概形} $X_K$ 上的一些\Term{coherent-sheaf}{凝聚层} $F_K$，并规定：若存在从 $K,K'$ 到 $k(s)$ 的同一个\Term{group-extension}{扩张} $K''$ 的 $k(s)$-\Term{homomorphism}{同态}，使 $F_{K''}(=F_K\otimes_KK'')$ 和 $F'_{K''}$ 在 $X_{K''}$ 上\Term{isomorphism}{同构}，则称 $F_K$ 与 $F'_{K'}$ 属于同一类。若 $T$ 是 $S$ 上的\Term{finite-type}{有限型}\Term{scheme}{概形}，且 $X_T=X\times_ST$ 上的\Term{coherent-sheaf}{凝聚层} $F$ 满足：$\mathfrak F$ 包含在由 $t\in T$ 对应的\Term{sheaf}{层} $F_{k(t)}$ 的类构成的族中，则称 $\mathfrak F$ 被 $F$ \Term{bounded-family}{限定}；若存在这样的 $T,F$，则称 $\mathfrak F$ 为\Term{bounded-family}{有界族}。
+再假设 $X/S$ 是\Term{projective-scheme}{射影的}，配备一个（相对）\Term{ample}{丰沛}\Term{invertible-sheaf}{可逆层} $\mathcal O_X(1)$。对整数序列 $(b)=(b_0,\ldots,b_r)$，若 $\mathfrak F$ 中每个类都可由一个\Term{b-sheaf}{$(b)$-层} $F_K$ 表示，其中 $K$ \Term{algebraically-closed-field}{代数闭}，则称 $\mathfrak F$ 为\Term{b-family}{$(b)$-族}。
+\SourcePage{633}
+\begin{SGAresult}{\Term{theorem}{定理}}{1.13}
+设 $S$ 是\Term{noetherian-scheme}{诺特概形}，$X$ 是\Term{projective-scheme}{射影} $S$-\Term{scheme}{概形}，配备\Term{ample}{丰沛}\Term{sheaf}{层} $\mathcal O_X(1)$，其在 $s\in S$ 上诱导的 $\mathcal O_{X_s}(1)$ 均由 $H^0(\mathcal O_{X_s}(1))$ 生成；设 $\mathfrak F$ 是 $X/S$ 的\Term{fibre}{纤维}上的\Term{coherent-sheaf}{凝聚层}的类构成的族。则下列条件\Term{equivalence}{等价}：
+\begin{enumerate}
+\item[(i)] $\mathfrak F$ \Term{bounded-family}{有界}。此外，若所有 $F_K\in\mathfrak F$ 均为\Term{rank}{秩} $p$ 的\Term{locally-free-sheaf}{局部自由层}，则可令限定 $\mathfrak F$ 的 $X_T$ 上的\Term{sheaf}{层} $F$ 也是\Term{rank}{秩} $p$ 的\Term{locally-free-sheaf}{局部自由层}。
+\item[(ii)] $F_K\in\mathfrak F$ 的\Term{hilbert-polynomial}{Hilbert 多项式} $\chi(F_K(n))$ 构成\Term{finite}{有限}集，且存在整数序列 $(b)$，使 $\mathfrak F$ 是\Term{b-family}{$(b)$-族}。
+\item[(iii)] $F_K\in\mathfrak F$ 的\Term{hilbert-polynomial}{Hilbert 多项式} $\chi(F_K(n))$ 构成\Term{finite}{有限}集，且存在整数 $m$，使所有 $F_K\in\mathfrak F$ 都是 $m$-\Term{m-regular}{正则的}。
+\item[(iv)] $F_K\in\mathfrak F$ 的\Term{hilbert-polynomial}{Hilbert 多项式} $\chi(F_K(n))$ 构成\Term{finite}{有限}集，且 $\mathfrak F$ 包含在形如 $E_K$ 的\Term{sheaf}{层}的\Term{quotient-sheaf}{商层}的类构成的族中，其中 $E$ 是某个 $X_T$ 上的\Term{coherent-sheaf}{凝聚层}。此外，可取 $T=S$ 且 $E=\mathcal O_X(-m)^{\oplus M}$。
+\item[(v)] $\mathfrak F$ 包含在形如 $E'_K\to E_K$ 的\Term{homomorphism}{同态}的\Term{cokernel}{余核}的类构成的族中，其中 $E',E$ 为某个 $X_T$ 上的\Term{coherent-sheaf}{凝聚层}。此外，可取 $T=S$，且 $E',E$ 分别形如 $\mathcal O_X(-m')^{\oplus M'}$ 和 $\mathcal O_X(-m)^{\oplus M}$。
+\end{enumerate}
+\end{SGAresult}
+\begin{proof}
+假设 $\mathfrak F$ 由某个 $X_T$ 上的\Term{sheaf}{层} $F$ 限定；利用\Term{generic-flatness}{一般平坦性定理}（EGA IV 6.9.1），将 $T$ 分成若干部分后，可设 $F$ 在 $T$ 上\Term{flat}{平坦}。
+\SourcePage{634}
+于是，\Term{polynomial}{多项式} $\chi(F_t(n))$ 的个数不超过 $T$ 的\Term{connected-component}{连通分支}数（EGA III 7.9.5）；还有一个小\Term{lemma}{引理}：若对某个 $t\in T$，$F_t$ 为\Term{rank}{秩} $p$ 的\Term{locally-free-sheaf}{局部自由层}，则 $F$ 在 $t$ 的某个\Term{open-neighbourhood}{开邻域}上方也如此（见 EGA IV 11.3.10，取 $X=Y,f=\mathrm{id}$）。由假设及 EGA III 7.7.6，将 $T$ 进一步细分后，可找到由\Term{section}{截面} $\sigma_1,\ldots,\sigma_r\in H^0(\mathcal O_X(1))$ 构成的 $F$-\Term{regular-sequence}{正则序列} $\sigma$。因此，(ii) 来自函数 $t\mapsto h^0(F_{t,i}(-1))$ 的\Term{upper-semicontinuity}{上半连续性}，其中对 $t\in T$、$0\leq i\leq r$，$F_{t,i}$ 表示 $F_t$ 在 $\sigma_1,\ldots,\sigma_i$ 的\Term{zero-scheme}{零点概形}上的\Term{restriction}{限制}（EGA III 7.7.5）。
+蕴含 (ii)$\Rightarrow$(iii) 直接来自 1.11。由 1.3 (iii)，取 $M=\max\chi(F_K(m))$ 及 $E=\mathcal O_X(-m)^{\oplus M}$，得到 (iii)$\Rightarrow$(iv)。
+假设 $\mathfrak F$ 满足 (iv)；有\Term{exact-sequence}{正合列}
+\[0\longrightarrow F'_K\longrightarrow E_K\longrightarrow F_K\longrightarrow0,\]
+且\Term{polynomial}{多项式} $\chi(F_K(n))$ 构成\Term{finite}{有限}集。由假设，$E_K$ 的类构成的族\Term{bounded-family}{有界}，故由已证的 (i)$\Rightarrow$(ii)，\Term{polynomial}{多项式} $\chi(E_K(n))$ 构成\Term{finite}{有限}集，而且存在整数序列 $(b)$，使所有 $E_K$（$K$ \Term{algebraically-closed-field}{代数闭}）都是\Term{b-sheaf}{$(b)$-层}。因此，\Term{polynomial}{多项式} $\chi(F'_K(n))$ 构成\Term{finite}{有限}集，由 1.6，所有 $F'_K$ 都是\Term{b-sheaf}{$(b)$-层}。于是，对 $F'_K$ 的类构成的族应用已证的 (ii)$\Rightarrow$(iv)，即得到 (v)。
+最后，假设 $\mathfrak F$ 满足 (v)，来证明 $\mathfrak F$ \Term{bounded-family}{有界}。可设 $E$（以及 $E'$）形如 $\mathcal O_X(-m)^{\oplus M}$。
+\SourcePage{635}
+事实上，由 (i)$\Rightarrow$(iv)，取一个\Term{surjective}{满射} $L=\mathcal O_{X_T}(-m)^{\oplus M}\to E$。将 $T$ 分成若干部分，使 $E$ 在 $T$ 上\Term{flat}{平坦}后，\Term{exact-sequence}{正合列} $0\to I\xrightarrow{u}L\to E\to0$ 的形成与取\Term{fibre}{纤维}可交换。由 (i)$\Rightarrow$(iii) 及 (i)$\Rightarrow$(iv)，取充分大的 $m_1$，使所有
+\[\operatorname{Ext}^1(\mathcal O_{X_K}(-m_1),I_K)=H^1(I_K(m_1))\]
+均为零，并存在\Term{surjective}{满射}
+\[L_1=\mathcal O_{X_T}(-m_1)^{\oplus M_1}\longrightarrow E',\qquad
+\alpha:L_2=\mathcal O_{X_T}(-m_1)^{\oplus M_2}\longrightarrow I.\]
+于是映射 $\operatorname{Hom}(L_{1,K},L_K)\to\operatorname{Hom}(L_{1,K},E_K)$ 是\Term{surjective}{满射}。设 $\beta:E'_K\to E_K$ 是一个\Term{homomorphism}{同态}，$\gamma$ 为复合 $L_{1,K}\to E'_K\to E_K$；则 $\gamma$ 来自某个\Term{homomorphism}{同态} $\delta:L_{1,K}\to L_K$，而 $(\delta,u_K\circ\alpha):L_{1,K}\oplus L_{2,K}\to L_K$ 与 $\beta:E'_K\to E_K$ 有相同的\Term{cokernel}{余核}。因此，$\mathfrak F$ 包含在形如
+\[\mathcal O_{X_K}(-m_1)^{\oplus(M_1+M_2)}\longrightarrow\mathcal O_{X_K}(-m)^{\oplus M}\]
+的\Term{homomorphism}{同态}的\Term{cokernel}{余核}的类构成的族中。
+再将 $T$ 分成若干部分，还可设 $X_T$（因而 $\mathcal H om_{\mathcal O_{X_T}}(E',E)$）以及所有 $R^q(f_T)_*\mathcal H om_{\mathcal O_{X_T}}(E',E)$ 都在 $T$ 上\Term{flat}{平坦}，这里 $f_T:X_T\to T$ 为\Term{structural-morphism}{结构态射}；这样 $G=(f_T)_*\mathcal H om_{\mathcal O_{X_T}}(E',E)$ 的形成便与任意\Term{base-change}{基变换} $T'\to T$ 可交换（EGA III 6.9.9.2）。设 $R=\mathbb V(G^*)$，则 $X_R$ 自然带有一个“泛”\Term{exact-sequence}{正合列}
+\[E'_R\longrightarrow E_R\longrightarrow F\longrightarrow0,\]
+而 $F$ 限定 $\mathfrak F$。
+\end{proof}
+\SGAsection{2}{若干技术引理}
+\textbf{2.1。}设 $k$ 是一个域，$X$ 是\Term{proper}{固有} $k$-\Term{scheme}{概形}。设 $L_1,\ldots,L_s$ 是 $X$ 上的\Term{invertible-sheaf}{可逆层}，$c_1(L_i)$ 是 $L_i$ 的\Term{chern-class}{陈类}，$Y$ 是 $X$ 的一个\Term{dimension}{维数}不超过 $s$ 的\Term{closed-subscheme}{闭子概形}。回顾，我们用
+\SourcePage{636}
+$\langle c_1(L_1)\cdots c_1(L_s)\cdot Y\rangle$ 表示\Term{intersection-number}{交数}，它可作为 \Term{snapper-polynomial}{Snapper 多项式}
+\[\chi(L_1^{\otimes n_1}\otimes\cdots\otimes L_s^{\otimes n_s}\otimes\mathcal O_Y)\]
+中\Term{monomial}{单项式} $n_1\cdots n_s$ 的系数来计算（第 X 讲 4.3.1）。
+
+\textbf{2.2。}从现在起，假设 $k$ \Term{algebraically-closed-field}{代数闭}，$X$ \Term{projective-scheme}{射影}，配备一个\Term{very-ample}{甚丰沛}\Term{invertible-sheaf}{可逆层} $H=\mathcal O_X(1)$，且 $X$ 是\Term{integral-scheme}{整概形}，\Term{dimension}{维数}为 $r$。
+设 $L$ 是 $X$ 上的\Term{invertible-sheaf}{可逆层}。整数 $\langle c_1(L)\cdot c_1(H)^{r-1}\rangle$ 称为 $L$（相对于 $H$）的\Term{degree}{次数}，记为 $d(L)$。
+下文考虑一个\Term{invertible-sheaf}{可逆层} $L$ 及\Term{hilbert-polynomial}{Hilbert 多项式}
+\[\chi(L(n))=\sum_{i=0}^r a_i\binom{n+i}{i},\qquad
+\chi(\mathcal O_X(n))=\sum_{i=0}^r e_i\binom{n+i}{i}.\]
+\begin{SGAresult}{\Term{lemma}{引理}}{2.3}
+有：\textup{(i)} $a_r=e_r=d(H)$；\textup{(ii)} 若 $r\geq1$，则 $a_{r-1}-e_{r-1}=d(L)$。
+\end{SGAresult}
+\begin{proof}
+在下列\Term{polynomial}{多项式}中取 $m=0,1$，便立即得到 (i) 和 (ii)：
+\[\chi(L^{\otimes m}\otimes H^{\otimes n})=\sum_{i+j\leq r}f_{ij}\binom{m+i}{i}\binom{n+j}{j}.\]
+\end{proof}
+\begin{SGAresult}{\Term{lemma}{引理}}{2.4}
+若 $d(L)\leq0$ 且 $h^0(L)\neq0$，则 $L\simeq\mathcal O_X$；因此 $d(L)=0$ 且 $h^0(L)=1$。
+\end{SGAresult}
+\begin{proof}
+由于 $X$ 是\Term{integral-scheme}{整的}，存在\Term{divisor}{除子} $Y\geq0$ 使 $L\simeq\mathcal O_X(Y)$。若 $Y>0$，则应有 $0\geq\langle c_1(L)\cdot c_1(H)^{r-1}\rangle=\langle c_1(H)^{r-1}\cdot Y\rangle\geq1$。
+\end{proof}
+\begin{SGAresult}{\Term{lemma}{引理}}{2.5}
+若 $d(L)\leq0$，则 $L$ 是\Term{b-sheaf}{$(0,\ldots,0,a_r)$-层}（有 $r-1$ 个零）。
+\end{SGAresult}
+\SourcePage{637}
+\begin{proof}
+若 $r=0$，$L$ 显然是\Term{b-sheaf}{$a_0$-层}。若 $r\geq1$，由 2.4，$h^0(L(-1))=0$，因为 $d(L(-1))<0$。设 $Y$ 为 $X$ 的一个\Term{hyperplane-section}{超平面截面}，并设 $0\to L(-1)\to L\to L_Y\to0$ 为 $Y$ 所定义的\Term{exact-sequence}{正合列}。若 $r=1$，由 1.7，$h^0(L_Y(-1))=a_1$，故 $L$ 为\Term{b-sheaf}{$(0,a_1)$-层}。若 $r\geq2$，由 Bertini \Term{theorem}{定理}可取 $Y$ 为\Term{integral-scheme}{整的}，因而由归纳可设 $L_Y$ 是\Term{b-sheaf}{$(0,\ldots,0,a_r)$-层}，结论随之得到。
+\end{proof}
+\begin{SGAresult}{\Term{lemma}{引理}}{2.7}
+若 $r=2$ 且 $d(L)\leq0$，则：
+\begin{enumerate}
+\item[(i)] 对一切 $n$，$h^1(L(n))\leq a_1(a_1+1)a_2-a_0$。
+\item[(ii)] $a_0\leq a_1(a_1+1)$。
+\end{enumerate}
+\end{SGAresult}
+\begin{proof}
+设 $Y$ 是 $X$ 的一个\Term{integral-scheme}{整}\Term{hyperplane-section}{超平面截面}。由 1.7 及 2.6，$L_Y$ 是一个\Term{b-sheaf}{$(0,a_2)$-层}，其\Term{hilbert-polynomial}{Hilbert 多项式}为 $\chi(L_Y(n))=a_1+a_2\binom{n+1}{1}$。故由 1.11，$-a_1\geq0$，且 $L_Y$ 是 $[-a_1]$-\Term{m-regular}{正则的}。
+考虑\Term{exact-sequence}{正合列}
+\[H^0(L_Y(n))\longrightarrow H^1(L(n-1))\longrightarrow H^1(L(n))\longrightarrow H^1(L_Y(n)).\]
+对 $n\geq-a_1-1$，由 1.3 (i)，$h^1(L_Y(n))=0$，故 $h^1(L(-a_1-2))\geq h^1(L(n))$；对 $n\leq-1$，由 2.4，$h^0(L_Y(n))=0$，故 $h^1(L(n-1))\leq h^1(L(-1))$。最后，对一切 $n$，$h^0(L_Y(n-1))\leq h^0(L_Y(n))$，因为存在\Term{injective}{单射} $L_Y(n-1)\to L_Y(n)$；而
+\[h^0(L_Y(-a_1-1))=a_2\binom{-a_1}{1}+a_1,\]
+因为 $h^1(L_Y(-a_1-1))=0$。所以，当 $n<-a_1-2$ 时，$h^1(L(n))-h^1(L(n+1))\leq-a_2a_1+a_1$。因此，对一切 $n$，有
+\[h^1(L(n))\leq h^1(L(-a_1-2))+(-a_1-1)(-a_2a_1+a_1).\tag{2.7.1}\]
+\SourcePage{638}
+由于 $L_Y$ 是 $[-a_1]$-\Term{m-regular}{正则的}，由 1.4，$h^2(L(-a_1-2))=0$，故
+\[h^1(L(-a_1-2))=h^0(L(-a_1-2))-\chi(L(-a_1-2)).\]
+由 2.5，$L$ 是\Term{b-sheaf}{$(0,0,a_2)$-层}，故由 1.8 (i)，$h^0(L(-a_1-2))\leq a_2\binom{-a_1}{2}$。因此
+\[0\leq h^1(L(-a_1-2))\leq -a_1(-a_1-1)-a_0.\tag{2.7.2}\]
+最后，2.7.2 给出 (ii)，而 2.7.1 与 2.7.2 给出 (i)。
+\end{proof}
+\begin{SGAresult}{\Term{lemma}{引理}}{2.8}
+假设 $r=2$ 且 $d(L)\leq0$。设 $\delta=d(L)$，$\beta=\delta(e_2-1)+e_1$。则
+\[a_0\geq\langle c_1(L)^2\rangle+2e_0+\sum_{i=1}^2(2e_i-a_i)\binom{\delta-1+i}{i}+\beta(\beta+1).\]
+\end{SGAresult}
+\begin{proof}
+设 $\chi(L^{\otimes m}(\delta-1))=\alpha_2m^2+\alpha_1m+\alpha_0$；比较\Term{polynomial}{多项式}可知
+\[2\alpha_2=\langle c_1(L)^2\rangle,\qquad
+\alpha_0=\sum_{i=0}^2e_i\binom{\delta-1+i}{i},\qquad
+\alpha_2+\alpha_1+\alpha_0=\sum_{i=0}^2a_i\binom{\delta-1+i}{i}.\]
+设 $\chi(L^{-1}(\delta)(n))=\sum_{i=0}^2\beta_i\binom{n+i}{i}$；则 $\beta_0=\alpha_2-\alpha_1+\alpha_0$，而由 2.3，$\beta_1=d(L^{-1}(\delta))+e_1=\beta$。所以
+\[a_0=2\alpha_2+2\alpha_0-\sum_{i=1}^2a_i\binom{\delta-1+i}{i}-\beta_0.\]
+又因 $d(L^{-1}(\delta))\leq0$，由 2.7 (ii)，$\beta_0\leq\beta(\beta+1)$，从而得到结论。
+\end{proof}
+\begin{SGAresult}{\Term{lemma}{引理}}{2.9}
+假设 $r\geq2$、$d(L)\leq0$，且 $X$ \Term{normal}{正规}。则：
+\begin{enumerate}
+\item[(i)] 对 $n\geq2+h_2(a_{r-2},a_{r-1},a_r)$，$h^1(L(-n))=0$。
+\item[(ii)] 对一切 $n$，$h^1(L(n))\leq h_r(a_{r-2},a_{r-1},a_r)$。
+\item[(iii)] 对 $i=0,\ldots,r$，$|a_i|\leq g_{r-i}(a_{r-2},a_{r-1},a_r)$。
+\end{enumerate}
+这里 $h_2(X_0,X_1,X_2),h_3(X_0,X_1,X_2),\ldots$ 及 $g_0(X_0,X_1,X_2),g_1(X_0,X_1,X_2),\ldots$ 是系数在 $\mathbb Q$ 中的\Term{universal}{普适}\Term{polynomial}{多项式}，既不依赖于 $k$，也不依赖于 $X$。
+\end{SGAresult}
+\SourcePage{639}
+\begin{proof}
+先处理 $r=2$ 的情形。对 $i=0,1,2$，令 $g_i(X_0,X_1,X_2)=X_{2-i}^2$，并令 $h_2(X_0,X_1,X_2)=X_1(X_1+1)X_2-X_0$。于是 (iii) 显然，(ii) 即 2.7 (i)。
+将 $X$ 置于 $P=\mathbb P_k^N$ 中，令 $\omega=\mathcal E xt_{\mathcal O_P}^{N-2}(\mathcal O_X,\Omega^N_{P/k})$。则
+\[h^1(L(-n))=h^1(\omega\otimes L^{-1}(n)),\]
+而且 $\omega$ 在 $X$ 的\Term{singular-point}{奇点}构成的\Term{finite}{有限}集 $Z$ 之外\Term{invertible-sheaf}{可逆}（见 FGA 149 §6）。取不包含 $Z$ 的\Term{normal}{正规}\Term{hyperplane-section}{超平面截面} $Y$。则 $\omega_Y(1)\simeq\Omega^1_{Y/k}$，并有\Term{exact-sequence}{正合列}
+\[0\longrightarrow\omega\otimes L^{-1}(-1)\longrightarrow\omega\otimes L^{-1}
+\longrightarrow\Omega^1_{Y/k}\otimes L_Y^{-1}(-1)\longrightarrow0.\]
+对一切 $n$，有
+\[h^1(\Omega^1_{Y/k}\otimes L_Y^{-1}(n))=h^0(L_Y(-n)),\]
+且对 $n\geq1$，由 2.5，$h^0(L_Y(-n))=0$。因此 $\Omega^1_{Y/k}\otimes L_Y^{-1}(-1)$ 是 $3$-\Term{m-regular}{正则的}，由 1.4，$\omega\otimes L^{-1}$ 是 $[3+h^1(\omega\otimes L^{-1}(2))]$-\Term{m-regular}{正则的}。所以，当 $n\geq2+h^1(L(-2))$ 时，$h^1(L(-n))=0$；这就得到 (i)。
+现设 $r\geq3$，并对 $r$ 归纳。设 $Y$ 为 $X$ 的一个\Term{normal}{正规}\Term{hyperplane-section}{超平面截面}，考虑\Term{exact-sequence}{正合列}
+\[H^0(L_Y(-n))\longrightarrow H^1(L(-n-1))\longrightarrow H^1(L(-n))\longrightarrow H^1(L_Y(-n)).\tag{2.9.1}\]
+由 1.7，$\chi(L_Y(n))=\sum_{i=0}^{r-1}a_{i+1}\binom{n+i}{i}$。故当 $n\geq2+h_2(a_{r-2},a_{r-1},a_r)$ 时，归纳假设给出 $h^1(L_Y(-n))=0$；又因 $n\geq2$（在 $r=2$ 时成立），2.4 给出 $h^0(L_Y(-n))=0$，从而 $h^1(L(-n-1))=h^1(L(-n))$。但 $n\gg0$ 时 $h^1(L(-n))=0$（见 FGA 149 §6），于是得到 (i)。
+作为归纳假设，设\Term{polynomial}{多项式} $g_i,h_i$ 对 $i\leq r-1$ 已定义。则对一切 $n$，由 2.9.1，
+\[h^1(L(n))\leq h^1(L(n-1))+h_{r-1}(a_{r-2},a_{r-1},a_r).\]
+\SourcePage{640}
+结合已证的 (i)，便知对任意 $m\geq-2$，有
+\[h^1(L(n))\leq[2+h_2(a_{r-2},a_{r-1},a_r)+m]h_{r-1}(a_{r-2},a_{r-1},a_r)\qquad(n\leq m).\tag{2.9.2}\]
+由 2.5，$L_Y$ 是\Term{b-sheaf}{$(0,\ldots,0,a_r)$-层}。令 $c_i=g_{r-i}(a_{r-2},a_{r-1},a_r)$（$i=1,\ldots,r$）及 $m=P_{r-2}(c_1,\ldots,c_{r-1})$。由 1.11，$m\geq0$，且 $L_Y$ 是 $m$-\Term{m-regular}{正则的}。故由 1.4 (ii)，对一切 $n\geq m-1$，$h^1(L(m-2))\geq h^1(L(n))$。因此，若以
+\[M=P_{r-2}(g_{r-1},\ldots,g_1),\qquad h_r=(h_2+M)h_{r-1}\]
+定义\Term{polynomial}{多项式}，则由 2.9.2 得到 (ii)。
+最后，由于 $L_Y$ 是 $m$-\Term{m-regular}{正则的}，由 1.4 (i)，对 $q\geq2$ 有 $h^q(L(m))=0$；故
+\[\sum_{i=0}^r a_i\binom{m+i}{i}=h^0(L(m))-h^1(L(m)).\]
+而由 1.8 (i)，$h^0(L(m))\leq a_r\binom{m+r}{r}$。所以，定义
+\[g_r=\sum_{i=1}^r g_{r-i}\binom{M+i}{i}+a_r\binom{M+r}{r}+h_r,\]
+就得到 (iii)。
+\end{proof}
+\textbf{注记 2.10。}固定 $m$，考虑关于 $n$ 的\Term{polynomial}{多项式}恒等式
+\[\sum_{i=0}^r a_{m,i}\binom{n+i}{i}=\sum_{j=0}^r a_j\binom{m+n+j}{j}.\]
+对 $r$ 归纳，使 $a_{m,i}$ 变为 $a_{m,0}$，再取 $n=-1$，便容易得到公式
+\[a_{m,i}=\sum_{j=0}^{r-i}a_{j+i}\binom{m-1+i}{j}.\]
+同样可知，存在一个有理系数\Term{polynomial}{多项式} $P_i^{(m,r)}(X_r,\ldots,X_i)$，它关于 $X_i$ 递增，使得在下列恒等式
+\[\sum_{i=0}^r a_i^{(m)}\binom{n+i}{i}=\sum_{j=0}^r a_j\binom{mn+j}{j}\]
+\SourcePage{641}
+中，有 $a_i^{(m)}=P_i^{(m,r)}(a_r,\ldots,a_i)$。
+\begin{SGAresult}{\Term{lemma}{引理}}{2.11}
+设 $S$ 为\Term{noetherian-scheme}{诺特概形}，$X$ 为\Term{projective-scheme}{射影} $S$-\Term{scheme}{概形}，配备\Term{very-ample}{甚丰沛}\Term{sheaf}{层} $H=\mathcal O_X(1)$。假设 $X/S$ 的\Term{fibre}{纤维}\Term{geometrically-integral}{几何整}，且\Term{dimension}{维数}同为 $r$。设 $\mathscr L$ 是 $X/S$ 的\Term{fibre}{纤维}上的\Term{invertible-sheaf}{可逆层} $L_K$ 的类构成的族。则 $\mathscr L$ \Term{bounded-family}{有界}的充要条件是：在 $L_K\in\mathscr L$ 的\Term{hilbert-polynomial}{Hilbert 多项式} $\chi(L_K(n))=\sum_{i=0}^r a_i\binom{n+i}{i}$ 中，所有系数 $a_i$ 都保持\Term{bounded}{有界}。此外，若 $X/S$ 的\Term{fibre}{纤维}还\Term{geometrically-normal}{几何正规}，则只要三个系数 $a_r,a_{r-1},a_{r-2}$ 保持\Term{bounded}{有界}就足够。
+\end{SGAresult}
+\begin{proof}
+设 $\delta=\sup\{d(L_K)\}$。若 $\delta>0$，由 2.3 及 2.10，可将 $\mathscr L$ 换成 $L_K(-\delta)$ 的类构成的族；这样可设 $\delta\leq0$。由 2.5，$\mathscr L$ 是\Term{b-family}{$(b)$-族}，故由 1.13，若所有系数 $a_i$ 保持\Term{bounded}{有界}，它便\Term{bounded-family}{有界}；在 $X/S$ 的\Term{fibre}{纤维}\Term{geometrically-normal}{几何正规}的情形，由 2.9，为此只需三个系数 $a_r,a_{r-1},a_{r-2}$ 保持\Term{bounded}{有界}。
+\end{proof}
+\SGAsection{3}{一般有限性定理}
+\begin{SGAresult}{\Term{lemma}{引理}}{3.1}
+设 $S$ 是\Term{scheme}{概形}，$X$ 是\Term{quasi-compact}{拟紧}且\Term{quasi-separated}{拟分离}的 $S$-\Term{scheme}{概形}；设 $\underline{\operatorname{Pic}}_{X/S}$ 为 Picard \Term{functor}{函子}（对 fppf \Term{topology}{拓扑}\Term{localization}{局部化}）\footnote{关于 $\underline{\operatorname{Pic}}_{X/S}$ 的定义，参见 SGA 3 IV 6.3 及 FGA 第 232 号；如已说明的，此处应将其中的 fpqc \Term{topology}{拓扑}换成 fppf \Term{topology}{拓扑}。}。则对任意由\Term{quasi-compact}{拟紧}且\Term{quasi-separated}{拟分离}的 $S$-\Term{scheme}{概形}构成、过渡\Term{morphism}{态射}为\Term{affine}{仿射}的\Term{filtered}{滤过}\Term{inverse-system}{逆系统} $(Z_\alpha)$，
+\SourcePage{642}
+自然映射
+\[\varinjlim_\alpha\underline{\operatorname{Pic}}_{X/S}(Z_\alpha)\longrightarrow
+\underline{\operatorname{Pic}}_{X/S}(\varprojlim_\alpha Z_\alpha)\tag{3.1.1}\]
+是\Term{bijection}{双射}。
+因此（EGA IV 8.14.2），若 Picard \Term{functor}{函子}由一个 $S$-\Term{scheme}{概形} $\operatorname{Pic}_{X/S}$ \Term{representable-functor}{表示}，则 $\operatorname{Pic}_{X/S}$ \Term{locally-finitely-presented}{局部有限呈示}。
+\end{SGAresult}
+\begin{proof}
+$\underline{\operatorname{Pic}}_{X/S}(Z_\alpha)$ 的一个元素 $\lambda_\alpha$ 由 $X_{Z'_\alpha}$ 上的\Term{invertible-sheaf}{可逆层} $L'_\alpha$ 表示，其中 $Z'_\alpha\to Z_\alpha$ 是 fppf \Term{morphism}{态射}。置 $Z=\varprojlim_\alpha Z_\alpha$。$\lambda_\alpha$ 在 $\underline{\operatorname{Pic}}_{X/S}(Z)$ 中的像 $\lambda$ 由 $X_{Z'}$ 上的\Term{invertible-sheaf}{可逆层} $L'$ 表示，$L'$ 是 $L'_\alpha$ 的\Term{inverse-image}{逆像}，其中 $Z'=Z'_\alpha\times_{Z_\alpha}Z$。
+若 $\lambda$ 是 $\underline{\operatorname{Pic}}_{X/S}(Z)$ 的\Term{identity-element}{单位元}，则存在 fppf \Term{morphism}{态射} $Z''\to Z'$，使 $L'$ 在 $X_{Z''}$ 上的\Term{inverse-image}{逆像}\Term{isomorphism}{同构}于 $\mathcal O_{X_{Z''}}$。由 EGA IV 8.8.2、8.10.5 (vi)、11.2.6 (ii)、8.5.2 (i) 及 8.5.2.4，存在 $\beta\geq\alpha$ 及 fppf \Term{morphism}{态射} $Z''_\beta\to Z'_\beta$，其中 $Z'_\beta=Z'_\alpha\times_{Z_\alpha}Z_\beta$，使 $L'_\alpha$ 在 $X_{Z''_\beta}$ 上的\Term{inverse-image}{逆像}\Term{isomorphism}{同构}于 $\mathcal O_{X_{Z''_\beta}}$。因此 $\lambda_\alpha$ 的像在 $\underline{\operatorname{Pic}}_{X/S}(Z_\beta)$ 中就已是\Term{identity-element}{单位元}。故 3.1.1 为\Term{injective}{单射}。
+3.1.1 的\Term{surjective}{满射性}用类似方法证明。
+\end{proof}
+\begin{SGAresult}{命题}{3.2}
+设 $S$ 为\Term{noetherian-scheme}{诺特概形}，$X$ 为\Term{proper}{固有} $S$-\Term{scheme}{概形}。假设 Picard \Term{functor}{函子}由 $S$-\Term{scheme}{概形} $\operatorname{Pic}_{X/S}$ \Term{representable-functor}{表示}。则：
+\begin{enumerate}
+\item[(i)] $\operatorname{Pic}_{X/S}$ 在 $S$ 上\Term{locally-finite-type}{局部有限型}。
+\SourcePage{643}
+\item[(ii)] $\operatorname{Pic}_{X/S}$ 的\Term{subset}{子集} $\Lambda$ 与 $X/S$ 的\Term{fibre}{纤维}上的\Term{invertible-sheaf}{可逆层}的类构成的族 $\mathscr L$ 一一对应。
+\item[(iii)] $\operatorname{Pic}_{X/S}$ 中的族 $\Lambda$ \Term{quasi-compact}{拟紧}，当且仅当相应的族 $\mathscr L$ \Term{bounded-family}{有界}。
+\end{enumerate}
+\end{SGAresult}
+\begin{proof}
+(i) 来自 3.1；(ii) 来自下述事实：若 $s$ 是 $S$ 的一点，$K$ 是 $k(s)$ 的\Term{algebraically-closed-field}{代数闭}\Term{group-extension}{扩张}，则 $\operatorname{Pic}_{X/S}$ 的 $K$-点与 $X_K$ 上\Term{invertible-sheaf}{可逆层}的\Term{isomorphism}{同构}类一一对应。
+对于 (iii)，先假设 $\operatorname{Pic}_{X/S}$ 的\Term{subset}{子集} $\Lambda$ \Term{quasi-compact}{拟紧}。则 $\Lambda$ 包含在一个\Term{finite-type}{有限型}\Term{open-subscheme}{开子概形} $U$ 中，而\Term{inclusion}{包含映射} $U\to\operatorname{Pic}_{X/S}$ 对应于某个 $X_T$ 上的\Term{invertible-sheaf}{可逆层} $L$，其中 $T\to U$ 是\Term{surjective}{满}的（\Term{flat}{平坦}）\Term{finite-type}{有限型}\Term{morphism}{态射}。最后，$T\to S$ 为\Term{finite-type}{有限型}，故 $L$ 限定 $\mathscr L$。
+反之，假设 $\mathscr L$ 由某个 $X_T$ 上的\Term{coherent-sheaf}{凝聚层} $L$ 限定，其中 $T$ 在 $S$ 上\Term{finite-type}{有限型}。由 1.13 (i)，可设 $L$ \Term{invertible-sheaf}{可逆}，使之定义一个\Term{morphism}{态射} $f:T\to\operatorname{Pic}_{X/S}$。$f$ 的像包含 $\Lambda$，且它\Term{quasi-compact}{拟紧}，故由 (i) 为\Term{noetherian-space}{诺特空间}。因此 $\Lambda$ \Term{quasi-compact}{拟紧}，于是得到 (iii)。
+\end{proof}
+由 3.2，两个 Picard \Term{scheme}{概形}之间\Term{finite-type}{有限型}\Term{morphism}{态射}的通常定义可推广如下。
+\begin{SGAresult}{定义}{3.3}
+设 $X,Y$ 在\Term{noetherian-scheme}{诺特概形} $S$ 上\Term{proper}{固有}。Picard \Term{functor}{函子}之间的一个\Term{morphism}{态射}
+\[\underline{\operatorname{Pic}}_{Y/S}\longrightarrow\underline{\operatorname{Pic}}_{X/S}\]
+\SourcePage{644}
+称为\Term{finite-type}{有限型}的，如果 $X/S$ 的\Term{fibre}{纤维}上的\Term{invertible-sheaf}{可逆层}的类构成的每个\Term{bounded-family}{有界族}的\Term{inverse-image}{逆像}，都是 $Y/S$ 的\Term{fibre}{纤维}上的\Term{sheaf}{层}的类构成的\Term{bounded-family}{有界族}。
+\end{SGAresult}
+\begin{SGAresult}{\Term{lemma}{引理}}{3.4}
+设 $X,Y,X',Y'$ 在\Term{noetherian-scheme}{诺特概形} $S$ 上\Term{proper}{固有}，且 $T\to S$ 为\Term{surjective}{满}的\Term{finite-type}{有限型}\Term{morphism}{态射}。则：
+\begin{enumerate}
+\item[(i)] 一个\Term{morphism}{态射} $\Phi:\underline{\operatorname{Pic}}_{Y/S}\to\underline{\operatorname{Pic}}_{X/S}$ 为\Term{finite-type}{有限型}，当且仅当 $\Phi_T:\underline{\operatorname{Pic}}_{Y_T/T}\to\underline{\operatorname{Pic}}_{X_T/T}$ 为\Term{finite-type}{有限型}。
+\item[(ii)] 在\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}
+\underline{\operatorname{Pic}}_{Y'/S}\arrow[r,"\Phi'"]&\underline{\operatorname{Pic}}_{X'/S}\\
+\underline{\operatorname{Pic}}_{Y/S}\arrow[u,"\Phi_Y"]\arrow[r,"\Phi"]&\underline{\operatorname{Pic}}_{X/S}\arrow[u,"\Phi_X"]
+\end{tikzcd}
+\]
+中，若 $\Phi'$ 及 $\Phi_Y$ 为\Term{finite-type}{有限型}，则 $\Phi$ 为\Term{finite-type}{有限型}。
+\end{enumerate}
+\end{SGAresult}
+\begin{proof}
+假设 $\Phi_T$ 为\Term{finite-type}{有限型}。设 $\mathscr L$ 是 $X/S$ 的\Term{fibre}{纤维}上的一个族，由 $X_R$ 上的 $L$ 限定。以显然的方式定义 $X_T/T$ 的\Term{fibre}{纤维}上的族 $\mathscr L_T=\mathscr L\times_ST$，它由 $L$ 在 $X_{R\times T}$ 上的\Term{inverse-image}{逆像}限定。若 $\Phi_T^{-1}(\mathscr L_T)$ 由 $Y_Q$ 上的 $M$ 限定，则 $M$ 也限定 $\Phi^{-1}(\mathscr L)$。
+(i) 的逆命题及断言 (ii) 用类似方法证明。
+\end{proof}
+\begin{SGAresult}{\Term{theorem}{定理}}{3.5}
+设 $S$ 为\Term{noetherian-scheme}{诺特概形}，$X,Y$ 为两个\Term{proper}{固有} $S$-\Term{scheme}{概形}，$f:X\to Y$ 为一个\Term{morphism}{态射}。若 $f$ 为\Term{surjective}{满射}，则 Picard \Term{functor}{函子}之间诱导的\Term{morphism}{态射}
+\[f^*:\underline{\operatorname{Pic}}_{Y/S}\longrightarrow\underline{\operatorname{Pic}}_{X/S}\]
+\SourcePage{645}
+为\Term{finite-type}{有限型}。
+\end{SGAresult}
+\begin{proof}
+由 3.4 (i)，显然可设 $S$ \Term{reduced}{约化}且\Term{irreducible}{不可约}。于是，存在 $S$ 的一个\Term{nonempty}{非空}\Term{open-subscheme}{开子概形} $U$，使 $\underline{\operatorname{Pic}}_{Y/S}$ 及 $\underline{\operatorname{Pic}}_{X/S}$ 均\Term{representable-functor}{可表示}，且 $f^*$ 的\Term{restriction}{限制}为\Term{quasi-affine}{拟仿射}（第 XII 讲 1.1），因而由 3.2 (i) 为\Term{finite-type}{有限型}。赋予 $T=S-U$ 诱导的\Term{reduced}{约化}结构，由\Term{noetherian-induction}{诺特归纳}，可设由 $f^*$ 诱导的\Term{morphism}{态射} $\underline{\operatorname{Pic}}_{Y_T/T}\to\underline{\operatorname{Pic}}_{X_T/T}$ 为\Term{finite-type}{有限型}；再将 3.4 (i) 应用于 $U\amalg T\to S$，即得结论。
+\end{proof}
+\begin{SGAresult}{\Term{theorem}{定理}}{3.6}
+设 $S$ 为\Term{noetherian-scheme}{诺特概形}，$X$ 为\Term{proper}{固有} $S$-\Term{scheme}{概形}，$\underline{\operatorname{Pic}}_{X/S}$ 为 Picard \Term{functor}{函子}。则对每个整数 $n\neq0$，$n$ 次幂\Term{homomorphism}{同态}
+\[\Phi_n:\underline{\operatorname{Pic}}_{X/S}\longrightarrow\underline{\operatorname{Pic}}_{X/S}\]
+是\Term{finite-type}{有限型}\Term{morphism}{态射}。
+\end{SGAresult}
+\begin{proof}
+设 $f:X'\to X$ 为一个 \Term{chow-presentation}{Chow 表示}（présentation de Chow）：$X'$ 在 $S$ 上\Term{projective-scheme}{射影}，$f$ 为\Term{surjective}{满射}。若承认 $X'$ 上的\Term{theorem}{定理}，则由 3.5 及 3.4 (ii)，得到 $X$ 上的\Term{theorem}{定理}。故可设 $X/S$ \Term{projective-scheme}{射影}。
+存在 $S$ 的\Term{nonempty}{非空}\Term{open-subscheme}{开子概形} $U$、一个\Term{integral-scheme}{整概形} $S'$ 及一个\Term{finite-morphism}{有限}\Term{surjective}{满}\Term{morphism}{态射} $S'\to U$，使 $X_{S'}$ 的每个\Term{irreducible-component}{不可约分支} $X'_i$ 赋予诱导的\Term{reduced}{约化}结构后，都在 $S'$ 上\Term{integral-scheme}{整}（第 XII 讲 1.3）。赋予 $T=S-U$ 诱导的\Term{reduced}{约化}结构，由\Term{noetherian-induction}{诺特归纳}可承认 $X_T/T$ 上的\Term{theorem}{定理}。若承认所有 $X_i/S'$ 上的\Term{theorem}{定理}，则由下列简单\Term{lemma}{引理}，可得 $\coprod X_i/S'$ 上的\Term{theorem}{定理}，
+\SourcePage{646}
+再由 3.5 及 3.4 (ii) 得到 $X_{S'}/S'$ 上的\Term{theorem}{定理}，最后由 3.4 (i) 得到 $X/S$ 上的\Term{theorem}{定理}。
+\end{proof}
+\begin{SGAresult}{\Term{lemma}{引理}}{3.7}
+设 $X=\coprod X_i$ 在\Term{noetherian-scheme}{诺特概形} $S$ 上\Term{finite-type}{有限型}，$\mathfrak F$ 为 $X/S$ 的\Term{fibre}{纤维}上的\Term{coherent-sheaf}{凝聚层}的类构成的族。则 $\mathfrak F$ \Term{bounded-family}{有界}，当且仅当对每个 $i$，在 $X_i/S$ 的\Term{fibre}{纤维}上诱导的族 $\mathfrak F_i$ \Term{bounded-family}{有界}。
+\end{SGAresult}
+\begin{proof}[\Term{theorem}{定理} 3.6 的证明（续）]
+在 3.6 的证明中，已归结为 $X$ 在 $S$ 上\Term{projective-scheme}{射影}且\Term{integral-scheme}{整}的情形；给 $X/S$ 配备\Term{very-ample}{甚丰沛}\Term{sheaf}{层} $\mathcal O_X(1)$。设 $\mathscr L$ 是 $X/S$ 的\Term{fibre}{纤维}上的\Term{invertible-sheaf}{可逆层}的类构成的\Term{bounded-family}{有界族}，$L$ 是某个 $X_T$ 上限定 $\mathscr L$ 的\Term{invertible-sheaf}{可逆层}，其中 $T$ 在 $S$ 上\Term{finite-type}{有限型}。将 $T$ 分成若干部分，可设 $L$ 在 $T$ 上\Term{flat}{平坦}；再分别将 $T$ 换成它的每个\Term{connected-component}{连通分支}，可设 $T$ \Term{connected}{连通}。于是关于 $q,m$ 的\Term{polynomial}{多项式} $P(q,m)=\chi(L_t^{\otimes q}(m))$ 不依赖于 $t\in T$（EGA III 7.9.4）。
+令 $\mathscr L_n=\Phi_n^{-1}(\mathscr L)$：$\mathscr L_n$ 为那些 $M_K^{\otimes n}$ 的类属于 $\mathscr L$ 的\Term{invertible-sheaf}{可逆层} $M_K$ 的类构成的族。设
+\[\chi(M_K^{\otimes p}(m))=\sum_{i=0}^r a_i(p)\binom{m+i}{i},\]
+其中 $a_i(p)$ 是关于 $p$ 的\Term{degree}{次数}不超过 $r-i$ 的\Term{polynomial}{多项式}。以 $q,m$ 为变量，有 $\chi(M_K^{\otimes qn}(m))=P(q,m)$，故每个 $a_i(qn)$ 不依赖于 $M_K$ 的选择；所以每个\Term{polynomial}{多项式} $a_i(p)$ 也不依赖于 $M_K$。因此，族 $\mathscr L_n$ 只有一个\Term{hilbert-polynomial}{Hilbert 多项式} $\chi(M_K(m))$，故由 2.11 为\Term{bounded-family}{有界族}。
+\end{proof}
+\begin{SGAresult}{\Term{theorem}{定理}}{3.8}
+设 $S$ 为\Term{noetherian-scheme}{诺特概形}，$Y$ 为\Term{projective-scheme}{射影} $S$-\Term{scheme}{概形}，配备\Term{relatively-ample}{相对丰沛}\Term{invertible-sheaf}{可逆层} $\mathcal O_Y(1)$；设 $X$ 是 $\mathcal O_Y(1)$ 的一个\Term{section}{截面} $\varphi$ 的\Term{zero-scheme}{零点概形}，$f:X\to Y$ 为包含\Term{morphism}{态射}。
+\SourcePage{647}
+假设对每个 $s\in S$ 及 $Y_s$ 的每个\Term{irreducible-component}{不可约分支} $Y_s^i$，$X\cap Y_s^i=\operatorname V(\varphi|Y_s^i)$ 的\Term{irreducible-component}{不可约分支}的\Term{dimension}{维数}均至少为 $2$（若 $Y$ 的\Term{fibre}{纤维}的\Term{irreducible-component}{不可约分支}的\Term{dimension}{维数}均至少为 $3$，此条件便成立）。则 Picard \Term{functor}{函子}之间诱导的\Term{morphism}{态射}
+\[f^*:\underline{\operatorname{Pic}}_{Y/S}\longrightarrow\underline{\operatorname{Pic}}_{X/S}\]
+为\Term{finite-type}{有限型}。
+此外，若 $S$ \Term{integral-scheme}{整}，则存在 $S$ 的\Term{nonempty}{非空}\Term{open-subscheme}{开子概形} $U$，使\Term{restriction}{限制}到 $U$ 的 Picard \Term{functor}{函子}均\Term{representable-functor}{可表示}，且诱导的\Term{morphism}{态射}
+\[\operatorname{Pic}_{Y/S}|_U\longrightarrow\operatorname{Pic}_{X/S}|_U\]
+为\Term{quasi-affine}{拟仿射}（\Term{finite-type}{有限型}）的。
+\end{SGAresult}
+\begin{proof}
+先证第一个断言。如同 3.6 的证明，由\Term{noetherian-induction}{诺特归纳}可知，能将 $S$ 换成任意\Term{nonempty}{非空}\Term{open-subscheme}{开子概形}，且容易归结为 $S$ \Term{integral-scheme}{整}、$Y$ 在 $S$ 上\Term{integral-scheme}{整}的情形；将 $Y$ 换成 $Y'$ 时，始终将 $X$ 换成 $X\times_YY'$。完成这一步之后，以以下\Term{lemma}{引理}代替第 XII 讲 1.3，同样归结为 $Y$ 在 $S$ 上\Term{normal}{正规}的情形。
+\end{proof}
+\begin{SGAresult}{\Term{lemma}{引理}}{3.9}
+设 $S$ 为\Term{integral-scheme}{整}\Term{noetherian-scheme}{诺特概形}，$X$ 为在 $S$ 上\Term{integral-scheme}{整}的 $S$-\Term{scheme}{概形}。则存在 $S$ 的\Term{nonempty}{非空}\Term{open-subscheme}{开子概形} $U$、在 $U$ 上\Term{finite-morphism}{有限}且\Term{faithfully-flat}{忠实平坦}的\Term{integral-scheme}{整概形} $S'$、在 $S'$ 上\Term{normal}{正规}且\Term{integral-scheme}{整}的 $S'$-\Term{scheme}{概形} $X'$，以及\Term{finite-morphism}{有限}\Term{surjective}{满}的 $S'$-\Term{morphism}{态射} $X'\to X_{S'}$。
+\end{SGAresult}
+\SourcePage{648}
+\begin{proof}
+设 $\eta$ 为 $S$ 的\Term{generic-point}{一般点}，$K$ 为 $k(\eta)$ 的\Term{algebraic-closure}{代数闭包}。显然 $\operatorname{Spec}(K)$ 是\Term{affine}{仿射}\Term{integral-scheme}{整概形}构成的\Term{filtered}{滤过}\Term{inverse-system}{逆系统} $(S_\alpha)$ 的\Term{inverse-limit}{逆极限}，其中各 $S_\alpha$ 带有\Term{finite-morphism}{有限}\Term{faithfully-flat}{忠实平坦}\Term{morphism}{态射} $S_\alpha\to U_\alpha$，$U_\alpha$ 是 $S$ 的\Term{nonempty}{非空}\Term{open-subscheme}{开子概形}。故 $X_K$ 的\Term{normalization}{正规化}来自某个 $\alpha$ 对应的 $S_\alpha$-\Term{scheme}{概形} $X'$，\Term{finite-morphism}{有限}\Term{surjective}{满}\Term{morphism}{态射} $X'_K\to X_K$ 来自一个\Term{finite-morphism}{有限}\Term{surjective}{满}的 $S_\alpha$-\Term{morphism}{态射} $X'\to X_{S_\alpha}$（EGA IV 8.8.2、8.10.5）。最后，因 $X'_K$ \Term{normal}{正规}且\Term{integral-scheme}{整}，存在 $S_\alpha$ 的一个\Term{open-subscheme}{开子概形} $S'$，使 $X'_{S'}$ 在 $S'$ 上\Term{normal}{正规}且\Term{integral-scheme}{整}（EGA IV 9.9.5）。
+\end{proof}
+\textbf{注记 3.10。}保留 3.9 的记号和条件，假设存在一个\Term{resolution-morphism}{解消态射} $X'_K\to X_K$（EGA IV 7.9.1；例如，根据 Abhyankhar，当 $\dim(X_K)\leq2$ 时即如此）。则类似论证表明，存在一个\Term{finite-morphism}{有限}\Term{faithfully-flat}{忠实平坦}\Term{morphism}{态射} $S'\to U$、一个在 $S'$ 上\Term{smooth}{光滑}的\Term{scheme}{概形} $X'$，以及一个\Term{proper}{固有}\Term{surjective}{满}\Term{birational}{双有理}\Term{morphism}{态射} $X'\to X_{S'}$。
+\begin{proof}[\Term{theorem}{定理} 3.8 的证明（续）]
+在 3.8 第一部分的证明中，已归结为 $S$ \Term{integral-scheme}{整}、$Y$ 在 $S$ 上\Term{normal}{正规}且\Term{integral-scheme}{整}的情形，故 $Y$ \Term{integral-scheme}{整}。若 $\varphi=0$，则 $X=Y$，断言显然。否则，缩小 $S$ 后，可设对每个 $s\in S$，$\varphi_s\neq0$；因此 $\varphi_s$ 为 $\mathcal O_{Y_s}$-\Term{regular-section}{正则的}，且 $Y_s$ 的\Term{dimension}{维数} $r\geq3$。
+设 $\mathscr L$ 是 $X/S$ 的\Term{fibre}{纤维}上的\Term{invertible-sheaf}{可逆层}的类构成的\Term{bounded-family}{有界族}。设 $M_K$ 是 $Y/S$ 的一个\Term{geometric-fibre}{几何纤维} $Y_K$ 上的\Term{invertible-sheaf}{可逆层}，其\Term{hilbert-polynomial}{Hilbert 多项式}为 $\chi(M_K(n))=\sum_{i=0}^r a_i\binom{n+i}{i}$；则 $f^*M_K$ 的\Term{hilbert-polynomial}{Hilbert 多项式}为 $\sum_{i=0}^{r-1}a_{i+1}\binom{n+i}{i}$。当 $M_K$ 的类遍历 $(f^*)^{-1}(\mathscr L)$，即 $f^*M_K$ 的类属于 $\mathscr L$ 时，
+\SourcePage{649}
+由 1.13，三个系数 $a_r,a_{r-1},a_{r-2}$ 保持\Term{bounded}{有界}。
+取 $\mathcal O_Y(1)$ 的一个倍数 $H=\mathcal O_Y(m)$，使之\Term{very-ample}{甚丰沛}。于是对 $(f^*)^{-1}(\mathscr L)$ 中的 $M_K$，在相对于 $H$ 的\Term{hilbert-polynomial}{Hilbert 多项式}
+\[\chi(M_K(mn))=\sum_{i=0}^r a_i^{(m)}\binom{n+i}{i}\]
+中，由 2.10，三个系数 $a_r^{(m)},a_{r-1}^{(m)},a_{r-2}^{(m)}$ 保持\Term{bounded}{有界}。因此，由 2.11，$\mathscr L$ \Term{bounded-family}{有界}，这就得到 3.8 的第一部分。
+至于 3.8 的第二部分，Picard \Term{functor}{函子}的“\Term{generic}{一般}”\Term{representable-functor}{可表示性}及其\Term{separated}{分离性}已在第 XII 讲 1.2 中建立。利用 3.9 和第 XII 讲 1.1，作与第 XII 讲第 2 节类似的论证，可归结为 $Y$ 在 $S$ 上\Term{normal}{正规}的情形。要使 $\operatorname{Pic}_{Y/S}\to\operatorname{Pic}_{X/S}$ 为\Term{quasi-affine}{拟仿射}，只需它（\Term{separated}{分离}且）\Term{quasi-finite}{拟有限}（EGA IV 8.12.8）；这可在\Term{geometric-fibre}{几何纤维}上检验，故由以下\Term{lemma}{引理}得到。
+\end{proof}
+\begin{SGAresult}{\Term{lemma}{引理}}{3.11}
+设 $k$ 为\Term{algebraically-closed-field}{代数闭域}，$Y$ 为\Term{normal}{正规}\Term{projective-scheme}{射影} $k$-\Term{scheme}{概形}，配备\Term{ample}{丰沛}\Term{sheaf}{层} $\mathcal O_Y(1)$，$X$ 为 $\mathcal O_Y(1)$ 的一个\Term{section}{截面} $\varphi$ 的\Term{zero-scheme}{零点概形}。假设 $Y$ 的\Term{dimension}{维数}至少为 $3$（相应地，至少为 $2$）。则\Term{morphism}{态射} $\operatorname{Pic}_{Y/k}\to\operatorname{Pic}_{X/k}$（相应地，\Term{morphism}{态射} $\operatorname{Pic}_{Y/k}^{\tau}\to\operatorname{Pic}_{X/k}$；见 4.1）为\Term{finite-type}{有限型}，且其\Term{kernel}{核} $N$ 为一个\Term{finite-group-scheme}{有限群}（\Term{generic}{一般}不\Term{reduced}{约化}）。
+\end{SGAresult}
+\begin{proof}
+显然可设 $\varphi\neq0$；因 $Y$ \Term{integral-scheme}{整}，$\varphi$ 便是\Term{regular-section}{正则的}。由 3.8 的第一部分（相应地，由 4.7 (iii)），所考虑的\Term{morphism}{态射}为\Term{finite-type}{有限型}。因此\Term{kernel}{核} $N$ 是一个\Term{algebraic-group}{代数群}，从而包含在 $\operatorname{Pic}_{Y/k}^{\tau}$ 中，所以在所考虑的两种情形中是同一个群。
+\SourcePage{650}
+由于 $Y$ \Term{normal}{正规}，$\operatorname{Pic}_{Y/k}^{\tau}$ 是\Term{proper}{固有}的（FGA 236--2.13），又因 $N$ 为\Term{subgroup}{子群}，必为\Term{closed-subscheme}{闭}的（SGA 3 VI$_{\mathrm B}$ 1.9.2）；因此，为使 $N$ \Term{finite-group-scheme}{有限}，只需它不包含型为 $\mu_\ell\;(=\mathbb Z/\ell\mathbb Z)$ 的\Term{subgroup}{子群}，其中 $(\ell,\operatorname{car}(k))=1$。
+考虑 Kummer 理论，即由 $Y$（相应地，$X$）上\Term{etale-sheaf}{平展层}的\Term{exact-sequence}{正合列}
+\[0\longrightarrow\mu_\ell\longrightarrow\mathbb G_m\xrightarrow{x\mapsto x^\ell}\mathbb G_m\longrightarrow0\]
+\Term{derive}{导出}的下列\Term{commutative-diagram}{交换图}：
+\[
+\begin{tikzcd}[column sep=small]
+&&H^1(Y,\mu_\ell)\arrow[r]\arrow[d]&H^1(Y,\mathbb G_m)\arrow[r,"\ell"]\arrow[d]&H^1(Y,\mathbb G_m)\arrow[d]\\
+H^0(X,\mathbb G_m)\arrow[r,"\ell"]&H^0(X,\mathbb G_m)\arrow[r]&H^1(X,\mu_\ell)\arrow[r]&H^1(X,\mathbb G_m)\arrow[r,"\ell"]&H^1(X,\mathbb G_m).
+\end{tikzcd}
+\]
+由 Hilbert“\Term{theorem}{定理} 90”，$H^1(Y,\mathbb G_m)=\operatorname{Pic}_{Y/k}(k)$（相应地，$H^1(X,\mathbb G_m)=\operatorname{Pic}_{X/k}(k)$）。因 $X$ \Term{proper}{固有}且\Term{integral-scheme}{整}，$H^0(X,\mathbb G_m)=k^*$，故 $H^1(X,\mu_\ell)\to H^1(X,\mathbb G_m)$ 为\Term{injective}{单射}。
+所以只须证明 $H^1(Y,\mathbb Z/\ell\mathbb Z)\to H^1(X,\mathbb Z/\ell\mathbb Z)$ 为\Term{injective}{单射}；这来自 $\pi_1(X,\xi)\to\pi_1(Y,\xi)$ 为\Term{surjective}{满射}，或者\Term{equivalence}{等价}地（SGA 1 V 6.9），$Y$ 的每个群为 $\mathbb Z/\ell\mathbb Z$ 的\Term{connected}{连通}\Term{etale-covering}{平展覆盖} $\widetilde Y$，其\Term{restriction}{限制} $\widetilde X=X\times_Y\widetilde Y$ 也\Term{connected}{连通}；而这是 Bertini \Term{theorem}{定理}与 Zariski \Term{connectedness}{连通性}\Term{theorem}{定理}的一个熟知推论（SGA 1 X 2.10）。
+\end{proof}
+\textbf{注记 3.12。}保留 3.11 的条件。则：
+
+(i) \Term{kernel}{核} $N$ 是一个\Term{unipotent-group}{幺幂}\Term{finite-group-scheme}{有限群}（SGA 3 XVII 1.1），因为对任何 $n$，它都不包含\Term{multiplicative-type}{乘法型}\Term{subgroup}{子群} $\mu_n$（SGA 3 XVII 4.6.1 vi）。证明与上面相同，
+\SourcePage{651}
+只是将 Kummer 理论换成 Grothendieck 的以下事实（SGA 1 XI，最后一页）：若 $X$ 是域 $k$ 上的\Term{proper}{固有}\Term{scheme}{概形}，且 $H^0(X,\mathcal O_X)=k$，则存在 $k$-\Term{group-scheme}{群概形}的\Term{isomorphism}{同构}
+\[\underline{\operatorname{Hom}}_{\mathrm{gr}}(\mu_n,\underline{\operatorname{Pic}}_{X/k})\xrightarrow\sim\underline{H}^1(X,\mathbb Z/n\mathbb Z);\]
+因此，若 $k$ \Term{algebraically-closed-field}{代数闭}，则
+\[\operatorname{Hom}_{\mathrm{gr}}(\mu_n,\underline{\operatorname{Pic}}_{X/k})\xrightarrow\sim H^1(X,\mathbb Z/n\mathbb Z).\]
+(ii) 若 $k$ 的\Term{characteristic}{特征}为零，则\Term{kernel}{核} $N$ 为零，因为此时每个\Term{unipotent-group}{幺幂}\Term{finite-group-scheme}{有限群}均为零（SGA 3 XVII 1.7）。这样便几乎重新得到 Mumford [2] 所给\Term{form}{形式}的 Kodaira“\Term{vanishing-theorem}{消没定理}”（Vanishing theorem）。
+\begin{SGAresult}{\Term{theorem}{定理}}{3.13}
+设 $S$ 为\Term{noetherian-scheme}{诺特概形}，$X$ 为\Term{projective-scheme}{射影} $S$-\Term{scheme}{概形}，配备一个\Term{relatively-ample}{相对丰沛}\Term{invertible-sheaf}{可逆层} $H=\mathcal O_X(1)$。假设 $X/S$ 的\Term{geometric-fibre}{几何纤维}\Term{integral-scheme}{整}且\Term{dimension}{维数}为 $r$。则对 $X/S$ 的\Term{fibre}{纤维}上的\Term{invertible-sheaf}{可逆层}的类构成的族 $\mathscr L$，下列条件\Term{equivalence}{等价}：
+\begin{enumerate}
+\item[(i)] $\mathscr L$ 是\Term{bounded-family}{有界族}。
+\item[(ii)] 在 $L_K\in\mathscr L$ 的\Term{hilbert-polynomial}{Hilbert 多项式} $\chi(L_K(n))=\sum_{i=0}^r a_i\binom{n+i}{i}$ 中，系数 $a_{r-1}$ 保持\Term{bounded}{有界}，系数 $a_{r-2}$ 保持有下界。
+\item[(iii)] 当 $L_K$ 遍历 $\mathscr L$ 时，\Term{degree}{次数} $d(L_K)=\langle c_1(L_K)\cdot c_1(H_K)^{r-1}\rangle$ 保持\Term{bounded}{有界}，而\Term{intersection-number}{交数} $\langle c_1(L_K)^2\cdot c_1(H_K)^{r-2}\rangle$ 保持有下界。
+\item[(iv)] 存在整数 $N$，使得
+\[H^{-N}<\mathscr L<H^N,\]
+其中使用由\Term{ample}{丰沛}关系定义的\Term{order-relation}{序关系}；亦即，对一切 $L_K\in\mathscr L$，$H_K^{\otimes N}\otimes L_K$ 和 $H_K^{\otimes N}\otimes L_K^{-1}$ 均\Term{ample}{丰沛}。
+\end{enumerate}
+\end{SGAresult}
+\SourcePage{652}
+\begin{proof}
+先证 (i) 蕴含 (ii)、(iii)、(iv)。假设 $\mathscr L$ 由某个 $X_T$ 上的\Term{invertible-sheaf}{可逆层} $L$ 限定。则由 EGA II 4.6.12，$\mathscr L$ 满足 (iv)。设 $L$ 在 $T$ 上\Term{flat}{平坦}。于是关于 $m,n$ 的\Term{polynomial}{多项式} $\chi(L_t^{\otimes m}(n))$ 只依赖于 $T$ 的\Term{connected-component}{连通分支}（EGA III 7.9.4）。因此 $\mathscr L$ 满足 (ii)，结合 2.1，也满足 (iii)。
+其次，注意 $H_K$（相应地，$\mathcal O_{X_K}$）的类构成的族\Term{bounded-family}{有界}，所以满足 (iii)（相应地，(ii)）。
+假设 $\mathscr L$ 满足 (iv)。则
+\[\langle[Nc_1(H_K)+c_1(L_K)]\cdot c_1(H_K)^{r-1}\rangle>0,\]
+故 $d(L_K)>-Nd(H_K)$，同样 $Nd(H_K)>d(L_K)$。此外，
+\[\langle[Nc_1(H_K)+c_1(L_K)]^2\cdot c_1(H_K)^{r-2}\rangle>0,\]
+故
+\[\langle c_1(L_K)^2\cdot c_1(H_K)^{r-2}\rangle>-2Nd(L_K)-N^2d(H_K).\]
+因此 $\mathscr L$ 满足 (iii)。
+最后证明 (ii)（相应地，(iii)）蕴含 (i)。由 2.10 及 2.3，可将 $H$ 换成其一个倍数；故可设 $H$ \Term{very-ample}{甚丰沛}。显然可将 $S$ 分成若干部分；因而可设存在 $X$ 的一个\Term{linear-section}{线性截面} $Y$，它在 $S$ 上\Term{integral-scheme}{整}，且\Term{fibre}{纤维}的\Term{dimension}{维数}为 $2$。由 3.8，可将 $X,\mathscr L$ 换成 $Y,\mathscr L|_Y$；这里考虑到 1.7（相应地，\Term{projection-formula}{投影公式}），它说明 $X,\mathscr L$ 上的条件 (ii)（相应地，(iii)）与 $Y,\mathscr L|_Y$ 上的条件 (ii)（相应地，(iii)）\Term{equivalence}{等价}。因此可设 $r=2$。若 $\delta=\sup\{d(L_K)\}>0$，由 2.3 及 2.10，可将 $\mathscr L$ 换成 $L_K(-\delta)$ 的类构成的族；故可设 $\delta\leq0$。
+若在\Term{hilbert-polynomial}{Hilbert 多项式} $\sum_{i=0}^2 a_i\binom{n+i}{i}$ 中，$a_1$ 保持\Term{bounded}{有界}且 $a_0$ 保持有下界，则由 2.3 及 2.7，三个系数均保持\Term{bounded}{有界}；故由 2.11，$\mathscr L$ \Term{bounded-family}{有界}。这样，(ii) 蕴含
+\SourcePage{653}
+(i)。另一方面，由 2.3 及 2.8，(iii) 蕴含 (ii)。
+\end{proof}

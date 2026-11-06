@@ -1,0 +1,511 @@
+\SourcePage{293}
+\SGAsection{7}{附录}
+\textbf{7.0. 预备知识。}本附录使用第 VI$_B$ 讲的结果，并沿用其中的记号。
+
+\textbf{7.0.1。}设 $\mathrm{Sch}_!$ 是如下\Term{category}{范畴}：\Term{object}{对象}为\Term{quasi-compact}{拟紧}且\Term{quasi-separated}{拟分离}的\Term{scheme}{概形}，\Term{morphism}{态射}为\Term{separated-morphism}{分离}的\Term{finite-type}{有限型}\Term{scheme}{概形}\Term{morphism}{态射}。以 $\mathscr E$ 表示定义在 $\mathrm{Sch}_!$ 上的\Term{bifibered-category}{双纤维范畴}，其\Term{fibre-category}{纤维范畴}是\Term{topos}{拓扑斯}的\Term{opposite-category}{对偶范畴}；它由\Term{scheme}{概形}上的\Term{etale-sheaf}{平展层}定义，见第 VI$_B$ 讲（4.3.0）。一次固定 $\mathrm{Sch}_!$ 的一个\Term{object}{对象} $R$，并以 $\mathscr E_R$ 表示由 $\mathscr E$ \Term{derive}{导出}的、位于 $\mathrm{Sch}_{!R}$ 上的\Term{bifibered-category}{双纤维范畴}。最后，设 $\mathscr A$ 为\Term{topos}{拓扑斯} $\Gamma(\mathscr E_R^\circ)$ 中的一个环，满足下述条件：
+\begin{enumerate}
+\item[(i)] $\mathscr A$ 是 $\mathscr E_R^\circ$ 在 $\mathrm{Sch}_{!R}^\circ$ 上的一个\Term{cocartesian-section}{余笛卡儿截面}。
+\item[(ii)] 对 $\mathrm{Sch}_{!R}$ 的每个\Term{scheme}{概形} $X$，$\mathscr A_X$ 是一个\Term{torsion-sheaf}{挠层}。
+\end{enumerate}
+在这些约定下，我们将在\Term{category}{范畴} $\operatorname{Mod}(\mathscr E_R^\circ,\mathscr A)$ 中工作（第 VI$_B$ 讲 1.3.5）。
+
+我们的目标是：对于 $\mathrm{Sch}_{!R}$ 的每个\Term{morphism}{态射} $f:X\to Y$，定义一个\Term{functor}{函子}
+\[Rf_!:D(X,\mathscr A_X)\longrightarrow D(Y,\mathscr A_Y),\]
+使得当 $f$ \Term{compactifiable}{可紧化}时，它与前面定义的\Term{functor}{函子}一致，并使随 $X$ 变化的\Term{category}{范畴} $D(X,\mathscr A_X)$ 构成 $\mathrm{Sch}_{!R}$ 上的一个\Term{cofibered-category}{余纤维范畴}。
+
+\textbf{7.0.2。}虽然本附录的所有结果都在 7.0.1 所明确规定的框架内陈述，但作出显然的修改后，也可以将它们转述到下述框架：取 $\Gamma(\mathscr E_R^\circ)$ 中的\Term{section}{截面}为取值于\Term{constant-sheaf}{常层} $\mathbf Z$ 的常\Term{section}{截面}，并且对每个\Term{scheme}{概形} $X$，只考虑由\Term{cohomology-sheaf}{上同调层}为\Term{torsion-sheaf}{挠层}的\Term{abelian-group}{阿贝尔群}层\Term{complex}{复形}所定义的\Term{derived-category}{导出范畴} $D^*_{\mathrm{tors}}(X)$（第 VI$_B$ 讲 4.3.1）。
+
+\SourcePage{294}
+\begin{SGAresult}{引理}{7.0.3}
+设有\Term{scheme}{概形}的\Term{commutative-diagram}{交换图}
+\begin{equation}\tag{7.0.3.1}
+\begin{tikzcd}
+X'\arrow[r,"j'"]\arrow[d,"f'"']&X\arrow[d,"f"]\\
+T'\arrow[r,"j"']&T.
+\end{tikzcd}
+\end{equation}
+其中 $f,f'$ 为\Term{proper-morphism}{固有态射}，$j,j'$ 为\Term{immersion}{浸入}。则对 $D^+_{\mathrm{tors}}(X')$ 的每个\Term{complex}{复形} $K^\bullet$，\Term{canonical}{典范}\Term{arrow}{箭头}
+\[j_!\circ R^+f'(K^\bullet)\longrightarrow R^+f\circ j'_!(K^\bullet)\]
+是\Term{isomorphism}{同构}。
+\end{SGAresult}
+\begin{proof}
+由“远端\Term{functor}{函子}引理”（lemma on way-out functors，R.D. I（7.1）），只须证明：对每个整数 $i$ 和每个\Term{torsion-sheaf}{挠层} $F$，\Term{arrow}{箭头}
+\begin{equation}\tag{7.0.3.2}
+j_!\circ R^if'(F)\longrightarrow R^if\circ j'_!(F)
+\end{equation}
+是\Term{isomorphism}{同构}。
+
+取 $j$ 和 $j'$ 的闭像，可归结为 $j$ 和 $j'$ 是像处处\Term{dense}{稠密}的\Term{open-immersion}{开浸入}的情形；于是 $f$ 与 $f'$ 的\Term{properness}{固有性}蕴含图（7.0.3.1）是\Term{cartesian-diagram}{笛卡儿图}。在这些条件下，\Term{proper-base-change}{固有基变换定理}的第 XII 讲 5.2 \Term{form}{形式}表明，对 $Y$ 的每个\Term{geometric-point}{几何点} $\xi$，\Term{arrow}{箭头}
+\[(j_!\circ R^if'(F))_\xi\longrightarrow (R^if\circ j'_!(F))_\xi\]
+是\Term{isomorphism}{同构}。
+\end{proof}
+
+\begin{SGAresult}{构造}{7.0.4}
+设 $D$ 是一个\Term{category}{范畴}，$X,Y$ 为 $\mathrm{Sch}_{!R}$ 的两个 $D$-\Term{object}{对象}，并且对 $D$ 中的每个\Term{arrow}{箭头} $\alpha\to\beta$，\Term{morphism}{态射} $X_\beta\to X_\alpha$ 和 $Y_\beta\to Y_\alpha$ 都\Term{proper-morphism}{固有}。设 $j:X\to Y$ 是一个\Term{morphism}{态射}，使得对 $D$ 的每个\Term{object}{对象} $\alpha$，$j_\alpha:X_\alpha\to Y_\alpha$ 是\Term{immersion}{浸入}。$i=0$ 时的\Term{isomorphism}{同构}（7.0.3.2）满足通常的相容条件，从而可以构造\Term{exact-functor}{正合函子}
+\[j_!:\operatorname{Mod}(\Gamma(X),\mathscr A)\longrightarrow\operatorname{Mod}(\Gamma(Y),\mathscr A)\]
+（记号参见第 VI$_B$ 讲 1.2.5）。它诱导一个仍记为 $j_!$ 的\Term{triangulated-functor}{三角函子}：
+\[j_!:D(\Gamma(X),\mathscr A)\longrightarrow D(\Gamma(Y,\mathscr A)).\]
+\end{SGAresult}
+\SourcePage{295}
+于是，对 $D$ 的每个\Term{object}{对象} $\alpha$，有\Term{commutative-diagram}{交换图}，其中 $j_{\alpha!}$ 表示通常的“\Term{extension-by-zero}{零延拓}”\Term{functor}{函子}：
+\[
+\begin{tikzcd}[column sep=large]
+D(\Gamma(X),{})\arrow[r,"j_!"]\arrow[d,"\mathrm{Re}_\alpha^+"']&D(\Gamma(Y),\mathscr A)\arrow[d,"\mathrm{Re}_\alpha^+"]\\
+D(X_\alpha,\mathscr A_{X_\alpha})\arrow[r,"j_{\alpha!}"']&D(Y_\alpha,\mathscr A_{Y_\alpha}).
+\end{tikzcd}
+\]
+
+\begin{SGAresult}{构造}{7.0.5}
+设在 $\mathrm{Sch}_{!R}$ 中有\Term{commutative-diagram}{交换图}
+\begin{equation}\tag{7.0.5.1}
+\begin{tikzcd}
+X'\arrow[r,"i'"]\arrow[d,"f'"']&X\arrow[d,"f"]\\
+Y'\arrow[r,"i"']&Y,
+\end{tikzcd}
+\end{equation}
+其中 $i,i'$ 为\Term{immersion}{浸入}，$f$ 为\Term{proper-morphism}{固有态射}，$f'$ 为\Term{proper-morphism}{固有}\Term{surjective-morphism}{满射态射}。它定义 $\mathrm{Sch}_{!R}$ 中的\Term{simplicial-object}{单纯对象}的\Term{commutative-diagram}{交换图}
+\begin{equation}\tag{7.0.5.2}
+\begin{tikzcd}[]
+{[X'\mid Y']}\arrow[r,"j"]\arrow[d,"u_{f'}"']&{[X\mid Y]}\arrow[d,"u_f"]\\
+C_{Y'}^\Delta\arrow[r,"i"']&C_Y^\Delta,
+\end{tikzcd}
+\end{equation}
+其中对每个 $n$，$j_n:[X'\mid Y']_n\to[X\mid Y]_n$ 是\Term{immersion}{浸入}。采用这些记号，有\Term{canonical-isomorphism}{典范同构}
+\[i_!\xrightarrow\sim R^+\bar u_{f+}\circ j_!\circ L^+\bar u_{f'}^*.\]
+\end{SGAresult}
+取 $i$ 和 $i'$ 的闭像，可以假设 $i$ 和 $i'$ 是像处处\Term{dense}{稠密}的\Term{open-immersion}{开浸入}。于是图（7.0.5.1）是\Term{cartesian-diagram}{笛卡儿图}，而 $f$ 是\Term{surjective-morphism}{满射}。此外，对每个整数 $n$，$j_n$ 是\Term{open-immersion}{开浸入}，且图
+\SourcePage{296}
+\[
+\begin{tikzcd}[]
+{[X'\mid Y']_n}\arrow[r,"j_n"]\arrow[d]&{[X\mid Y]_n}\arrow[d]\\
+Y'\arrow[r,"i"']&Y
+\end{tikzcd}
+\]
+是\Term{cartesian-diagram}{笛卡儿图}。
+于是 $L^+\bar u_f^*\circ i_!$ \Term{isomorphism}{同构}于 $j_!\circ L^+\bar u_{f'}^*$；利用 $u_f$ 是\Term{cohomological-descent}{上同调下降}的\Term{augmentation}{增广}（第 VI$_B$ 讲（4.3.2）），得到一串\Term{isomorphism}{同构}
+\[i_!\xrightarrow\sim R^+\bar u_{f+}\circ L^+(\bar u_f^*)\circ i_!
+\xrightarrow\sim R^+\bar u_{f*}\circ j_!\circ L^+\bar u_{f'}^*,\]
+从而得到所需的\Term{isomorphism}{同构}。
+
+最后，我们将使用 Chow 引理的下述变体；其证明将见于 EGA II 第二版，它是（7.1）的改进：
+\begin{SGAresult}{引理}{7.0.6}
+设 $S$ 是\Term{quasi-compact}{拟紧}且\Term{quasi-separated}{拟分离}的\Term{scheme}{概形}，$f:X\to S$ 为\Term{separated-morphism}{分离}\Term{finite-type}{有限型}\Term{morphism}{态射}。则存在\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}
+X'\arrow[r,"p"]\arrow[d,"f'"']&X\arrow[dl,"f"]\\
+S&
+\end{tikzcd}
+\]
+满足下述条件：
+\begin{enumerate}
+\item[(i)] $p$ \Term{proper-morphism}{固有}且\Term{surjective-morphism}{满射}；
+\item[(ii)] 存在 $X$ 的\Term{dense-open-set}{稠密开集} $U$，使 $p$ 诱导 $p^{-1}(U)$ 到 $U$ 的\Term{isomorphism}{同构}；
+\item[(iii)] $f'$ 为\Term{quasi-projective}{拟射影}\Term{morphism}{态射}。
+\end{enumerate}
+\end{SGAresult}
+
+\textbf{7.1. $R^+f_!$ 的定义。}
+\SourcePage{297}
+\begin{SGAresult}{定义}{7.1.1}
+设 $f:X\to S$ 是\Term{scheme}{概形}\Term{morphism}{态射}。$f$ 的一个\Term{pseudo-compactification}{伪紧化}，是指给定一个\Term{commutative-diagram}{交换图}
+\begin{equation}\tag{7.1.1.0}
+\begin{tikzcd}
+X_1\arrow[r]\arrow[d,"p_1"']&T_1\arrow[ddl,"f_1"]\\
+X\arrow[d,"f"']&\\
+S&
+\end{tikzcd}
+\end{equation}
+其中 $p_1$ \Term{proper-morphism}{固有}且\Term{surjective-morphism}{满射}，$j_1$ 为\Term{immersion}{浸入}，$f_1$ \Term{proper-morphism}{固有}。
+\end{SGAresult}
+
+\textbf{7.1.2。}设 $f:X\to S$ 是 $\mathrm{Sch}_{!R}$ 的\Term{morphism}{态射}：由 Chow 引理（7.0.6），$f$ 有一个\Term{pseudo-compactification}{伪紧化} $(p_1,j_1,f_1)$。图（7.1.1.0）定义一个\Term{morphism}{态射}
+\[[X_1\mid X]\xrightarrow{j_1}[T_1\mid S],\]
+仍记作 $j_1$，使对每个 $n$，$j_{1n}$ 为\Term{immersion}{浸入}。于是置
+\[R^{+(1)}f_!=L^+\bar u_{p_1}\cdot j_{1!}\circ R^+\bar u_{f_1},\]
+这样便得到从 $D^+(X,\mathscr A_X)$ 到 $D^+(S,\mathscr A_S)$ 的\Term{triangulated-functor}{三角函子}。
+
+\begin{SGAresult}{构造}{7.1.3}
+对 $f$ 的每一对\Term{pseudo-compactification}{伪紧化} $((p_1,j_1,f_1),(p_2,j_2,f_2))$，有\Term{isomorphism}{同构}
+\[\alpha_{12}:R^{+(1)}f_!\longrightarrow R^{+(2)}f_!,\]
+使得对于任一其他\Term{pseudo-compactification}{伪紧化} $(p_3,j_3,f_3)$，有 $\alpha_{23}\circ\alpha_{12}=\alpha_{13}$。
+\end{SGAresult}
+a）定义双\Term{simplicial-object}{单纯系统} $[[X_1,X_2\mid X]]$，置
+\[[[X_1,X_2\mid X]]_{[n]\times[m]}=[X_1\mid X]_n\times[X_2\mid X]_n.\]
+类似地，置
+\[[[X_1\mid X]]_{[n]\times[m]}=[X_1\mid S]_n,\]
+\SourcePage{298}
+其中由\Term{morphism}{态射} $[m']\to[m]$ 诱导的\Term{morphism}{态射}
+\[[[X_1\mid X]]_{[n]\times[m]}\longrightarrow [[X_1\mid X]]_{[n]\times[m']}\]
+全都等于恒等\Term{morphism}{态射}。同样定义双\Term{simplicial-object}{单纯系统} $[[T_1,T_2\mid S]]$ 和 $[[T_1\mid S]]$，从而有\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}[column sep=huge,row sep=large]
+{[[T_1,T_2\mid S]]}\arrow[r]\arrow[ddr,"u_{f_1f_2}" description]&{[[T_1\mid S]]}\arrow[dd,"u_{f_1}"]\\
+{[[X_1,X_2\mid X]]}\arrow[u,"j_{12}"]\arrow[r]\arrow[dd,"u_{p_1p_2}"']&{[[X_1\mid X]]}\arrow[u,"j_1"']\arrow[ddl,"u_{p_1}" description]\\
+&C_S^{\Delta\times\Delta}\\
+C_X^{\Delta\times\Delta}\arrow[ur]&
+\end{tikzcd}
+\]
+其中 $j_{12}$ 逐次为\Term{immersion}{浸入}。第 VI$_b$ 讲（2.3）阐述的计算方法可以构造\Term{morphism}{态射}
+\[R^{+(1)}f_!\xrightarrow{\alpha_1}R^+\bar u_{f_1f_2}\circ j_{12!}\circ L^+\bar u_{p_1p_2+}=R^{+(1,2)}f_!,\]
+它来自 $S$ 上的层的三重\Term{complex}{复形}之间的一个\Term{morphism}{态射}。
+
+b）$\alpha_1$ 是\Term{isomorphism}{同构}。
+
+为证明这一点，可以在上述三重\Term{complex}{复形}\Term{morphism}{态射}中固定来自 $[[T_1,T_2]]_{[n]\times[m]}$ 的第一个指标 $n$，考察由此得到的\Term{double-complex}{双复形}\Term{morphism}{态射}。可以核实，此\Term{morphism}{态射}正是引理 7.0.5 对图
+\[
+\begin{tikzcd}[column sep=large]
+{[X_1\mid X]_n\times X_2}\arrow[r]\arrow[d]&{[T_1\mid S]_n\times T_2}\arrow[d]\\
+{[X_1\mid X]_n}\arrow[r]&{[T_1\mid S]_n}
+\end{tikzcd}
+\]
+所定义的\Term{isomorphism}{同构}。
+
+c）同样构造\Term{isomorphism}{同构}
+\[R^{+(2)}f_!\xrightarrow{\alpha_2}R^+\bar u_{f_1f_2+}\circ j_{12!}\circ L^+\bar u_{p_1p_2},\]
+并置 $\alpha_{12}=\alpha_2^{-1}\circ\alpha_1$。
+
+\SourcePage{299}
+为验证关系 $\alpha_{23}\circ\alpha_{12}=\alpha_{13}$，使用一个三重\Term{simplicial-object}{单纯对象}；留待读者核实所得到的图是交换的：
+\[
+\begin{tikzcd}[column sep=small,row sep=large]
+R^{+(2,3)}f_!\arrow[dr]&R^{+(2)}f_!\arrow[l]\arrow[r]&R^{+(1,2)}f_!\arrow[dl]\\
+&R^{+(1,2,3)}f_!&\\
+R^{+(2)}f_!\arrow[uu]&&R^{+(1)}f_!\arrow[uu]\\
+&R^{+(1,3)}f_!\arrow[uu]&
+\end{tikzcd}
+\]
+
+\begin{SGAresult}{构造}{7.1.4}
+设 $Z\xrightarrow gY$ 和 $Y\xrightarrow fX$ 是 $\mathrm{Sch}_{!R}$ 的两个\Term{morphism}{态射}。对每个三元组
+\[((p_1,j_1,f_1),(p_2,j_2g_2),(p_3,j_3,(fg)_3)),\]
+其中 $(p_1,j_1,f_1)$ 为 $f$ 的\Term{pseudo-compactification}{伪紧化}，$(p_2,j_2,g_2)$ 为 $g$ 的\Term{pseudo-compactification}{伪紧化}，$(p_3,j_3,(fg)_3)$ 为 $fg$ 的\Term{pseudo-compactification}{伪紧化}，有\Term{isomorphism}{同构}
+\[R^{+(3)}fg_!\xleftarrow\sim R^{+(2)}g_!\circ R^{+(1)}f_!,\]
+它与前面定义的\Term{isomorphism}{同构} $\alpha_{ij}$ 相容。
+\end{SGAresult}
+我们分几个步骤进行。
+
+\textbf{7.1.4.1。}设 $(p_1,j_1,f_1)$（相应地 $(p_2,j_2,f_2)$）为 $f:Y\to X$（相应地 $g:Z\to Y$）的\Term{pseudo-compactification}{伪紧化}：
+\begin{equation}\tag{7.1.4.1.1}
+\begin{tikzcd}[column sep=large]
+&&Z\arrow[d,"g"]&Z_2\arrow[l,"p_2"']\arrow[r,hook,"j_2"]&T_2\arrow[dll,"g_2"]\\
+T_1\arrow[drr,"f_1"']&Y_1\arrow[l,hook',"j_1"']\arrow[r,"p_1"]&Y\arrow[d,"f"]&&\\
+&&X&&
+\end{tikzcd}
+\end{equation}
+\SourcePage{300}
+由 $g$ 作\Term{base-change}{基变换}得到的\Term{morphism}{态射} $Z'=Z\times_Y Y_1\to Y_1$ 带有一个\Term{pseudo-compactification}{伪紧化}：
+\begin{equation}\tag{7.1.4.1.2}
+\begin{tikzcd}[column sep=large]
+T'_2=T_2\times_Y Y_1\arrow[ddr,"g'_2"']&Z_2\times_Y Y_1=Z'_2\arrow[l,hook',"j'_2"']\arrow[d,"p'_2"]\\
+&Z\times_Y Y_1=Z'\arrow[d,"g'"]\\
+&Y_1.
+\end{tikzcd}
+\end{equation}
+现在选择 $j_1\cdot g'_2$ 的一个\Term{compactification}{紧化}：
+\begin{equation}\tag{7.1.4.1.3}
+\begin{tikzcd}[column sep=large]
+T_{12}\arrow[d,"g''_2"']&T_2\times_Y Y_1=T'_2\arrow[l,hook',"j'_1"']\arrow[d,"g''_2"]\\
+T_1&Y_1\arrow[l,hook']
+\end{tikzcd}
+\end{equation}
+它定义复合 $fg$ 的一个\Term{pseudo-compactification}{伪紧化}：相应\Term{functor}{函子}记为 $R^{+(12)}\int g_!$。
+
+\textbf{7.1.4.2。}上述数据可以定义\Term{isomorphism}{同构}
+\[R^{+(12)}\int g_!\xleftarrow\sim R^{+(1)}f_!\cdot R^{+(2)}g_!.\]
+有如下\Term{commutative-diagram}{交换图}，其中所有\Term{arrow}{箭头}都自然地由（7.1.4.1.1）、（7.1.4.1.2）和（7.1.4.1.3）得到。
+\begin{equation}\tag{7.1.4.2.1}
+\begin{tikzcd}[column sep=large,row sep=large]
+{[T_{12}\mid X]}\arrow[dr,"g''_2"']&{[T'_2\mid Y]}\arrow[l,hook',"j'_1"']\arrow[dr,"g'_2"]&{[Z'_2\mid Z]}\arrow[l,hook',"j'_2"']\arrow[d,"l"]\arrow[r,"r"]&C_Z^\Delta\arrow[d,"g"]\\
+&A\arrow[r,hook,"j_1"]\arrow[drr]&C\arrow[r,"u_{p_1}"']&D\arrow[d,"f"]\\
+&&&E
+\end{tikzcd}
+\end{equation}
+\SourcePage{301}
+我们要定义自然\Term{arrow}{箭头}
+\[\beta:R^{+(1)}f_!\circ R^{+(2)}g_!\longrightarrow R^{+(12)}fg_!,\]
+并证明它是\Term{isomorphism}{同构}。
+
+为此使用两个引理。
+\begin{SGAresult}{引理}{7.1.4.2.2}
+设有\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}
+X_1\arrow[r,"j_1"]\arrow[d,"p_1"']&T_1\arrow[d,"h'"]\\
+X\arrow[r,"j"]\arrow[d,"f"']&T\arrow[dl,"h"]\\
+S&
+\end{tikzcd}
+\]
+其中 $h,h'$ \Term{proper-morphism}{固有}，$p_1$ \Term{proper-morphism}{固有}且\Term{surjective-morphism}{满射}，$j,j_1$ 为\Term{immersion}{浸入}。则\Term{canonical}{典范}\Term{arrow}{箭头}
+\[R^+h\circ j_!\longrightarrow R^{+(1)}(hh')_!\]
+是\Term{isomorphism}{同构}。
+\end{SGAresult}
+事实上，由（7.0.5），\Term{arrow}{箭头}
+\[j_!\longrightarrow R^+\bar u_{h'}\circ j_{1!}\circ L^+\bar u_{p_1}\]
+是\Term{isomorphism}{同构}。应用 $R^+h$ 即得结果。
+
+\begin{SGAresult}{引理}{7.1.4.2.3}
+沿用图（7.1.4.2.1）的记号，\Term{canonical}{典范}\Term{arrow}{箭头}
+\[
+\begin{aligned}
+R^{+(1)}f_!\circ R^+\bar u_{p_1}&\longrightarrow R^+\bar u_{f_1}\circ j_{1!},\\
+R^{+(2)}g_!\circ R^+\bar r&\longrightarrow R^+\bar u_{p_1}\circ R^+g'_2\circ j'_{2!}
+\end{aligned}
+\]
+是\Term{isomorphism}{同构}。
+\end{SGAresult}
+我们只证明第一个\Term{isomorphism}{同构}，留待读者由此推出第二个。
+
+\SourcePage{302}
+采用显然的记号，置 $C=[Y_1\mid Y]\times_X X_1$ 及 $\overline C=[T_1\mid S]\times_S T_1$，从而有\Term{commutative-diagram}{交换图}：
+\[
+\begin{tikzcd}[column sep=large,row sep=large]
+&\overline C\arrow[rr]\arrow[ddr]&&T_1\arrow[ddl,"f_1"]\\
+C\arrow[ur,"i"]\arrow[rr]\arrow[d,"q"']&&Y_1\arrow[ur,"j_1"]\arrow[d,"p_1"]&\\
+{[Y_1\mid Y]}\arrow[rr,"u_{p_1}"']&&Y&
+\end{tikzcd}
+\]
+其中 $i$ 为\Term{immersion}{浸入}，$q$ \Term{proper-morphism}{固有}且\Term{surjective-morphism}{满射}。于是构造图
+\[
+\begin{tikzcd}[column sep=large]
+{[[C\mid_q[Y_1\mid Y]]]}\arrow[r,"i"]\arrow[d,"u_q"']&{[[\overline C\mid C_Y^\Delta]]}\arrow[ddl,"k"]\\
+{[X_1\mid X]}\arrow[d]&\\
+Y&
+\end{tikzcd}
+\]
+由（7.1.4.2.2），\Term{functor}{函子} $R\bar u_{j_1}\circ j_1$ 可等同于\Term{functor}{函子} $R^+\bar k\circ i_!\circ L^+\bar u_q$，并且由（7.0.3）及\Term{base-change-theorem}{基变换定理}，后者可等同于 $R^{+(1)}f_!\circ R^+\bar u_{p_1}$。引理（7.1.4.2.3）既已成立，便有一串\Term{isomorphism}{同构}
+\[
+\begin{aligned}
+R^{+(3)}fg_!&=R^+\bar u_{f_1}\circ R^+g''_2\circ j'_{1!}\circ j'_{2!}\circ L^+\bar r^+\\
+&\xleftarrow\sim R^+\bar u_{f_1+}\circ j_{1!}\circ R^+g'_2\circ j'_{2!}\circ L^+\bar r^+\\
+&\xleftarrow\sim R^{+(1)}f_!\circ R^+\bar u_{p_1+}\circ R^+g'_{2+}\circ j'_{2!}\circ L^+\bar r\\
+&\xleftarrow\sim R^{+(1)}f_!\circ R^{+(2)}g_!\circ R^+\bar r\circ L^+\bar r^+\\
+&\xleftarrow\sim R^{+(1)}f_!\circ R^{+(2)}g_!,
+\end{aligned}
+\]
+其复合给出 $\beta$。
+
+\textbf{7.1.4.3。}若 $(p_3,j_3,(fg)_3)$ 为 $fg$ 的\Term{pseudo-compactification}{伪紧化}，将 $\alpha_{(12)3}$ 与 $\beta$ 复合，定义\Term{isomorphism}{同构}
+\[R^{+(1)}f_!\circ R^{+(2)}g_!\xrightarrow{\gamma_{123}}R^{+(3)}fg_!.\]
+
+\SourcePage{303}
+\textbf{7.1.4.4。}现设 $(p_{1'},j_{1'},f_{1'})$ 及 $(p_{2'},j_{2'},g_{2'})$ 为 $f$ 和 $g$ 的另两个\Term{pseudo-compactification}{伪紧化}，并给定一个图（7.1.4.3）；考虑一个（7.1.4.4）型的图，其中的\Term{simplicial-object}{单纯对象}换成双\Term{simplicial-object}{单纯对象}，即可核实下图交换：
+\[
+\begin{tikzcd}[column sep=large]
+R^{+(12)}fg_1\arrow[d,"\alpha_{(12)(1'2')}"']&R^{+(1)}f_1\circ R^{+(2)}g_!\arrow[l,"\beta"']\arrow[d,"\alpha_{11'}*\alpha_{22'}"]\\
+R^{+(1'2')}fg_!&R^{+(1')}f_!\circ R^{+(2')}g_!\arrow[l,"\beta'"]
+\end{tikzcd}
+\]
+由此可知，对 $fg$ 的任意\Term{pseudo-compactification}{伪紧化} $(p_{3'},j_{3'},(fg)_{3'})$，下图交换：
+\[
+\begin{tikzcd}[column sep=large]
+R^{+(3)}fg_!\arrow[d,"\alpha_{33'}"']&R^{+(1)}f_!\circ R^{+(2)}g_!\arrow[l,"\gamma_{123}"']\arrow[d,"\alpha_{11'}*\alpha_{22'}"]\\
+R^{+(3')}fg_!&R^{+(1')}f_!\circ R^{+(2')}g_!\arrow[l,"\gamma_{1'2'3'}"]
+\end{tikzcd}
+\]
+这就完成了 7.1.4 的证明。
+
+\textbf{7.1.5。}给 $\mathrm{Sch}_{!R}$ 的每个\Term{morphism}{态射} $f$ 选择一个\Term{pseudo-compactification}{伪紧化}，使恒等\Term{morphism}{态射}对应于平凡的\Term{pseudo-compactification}{伪紧化}，便对每个\Term{morphism}{态射} $f:X\to Y$ 定义了\Term{triangulated-functor}{三角函子}
+\[R^+f_!:D^+(X,\mathscr A_X)\longrightarrow D^+(Y,\mathscr A_Y),\]
+并对每对\Term{morphism}{态射} $(f,g)$ 定义了\Term{isomorphism}{同构}
+\[R^+fg_!\xrightarrow[\sim]{c_{fg}}R^+f_!\circ R^+g_!.\]
+此外，若 $f$ 为恒等\Term{morphism}{态射}，则 $R^+f_!$ 为\Term{identity-functor}{恒等函子}，$c_{fg}$ 为恒等\Term{isomorphism}{同构}。
+
+\begin{SGAresult}{命题}{7.1.6}
+对应 $f\mapsto R^+f_!$ 定义从 $\mathrm{Sch}_{!R}$ 到\Term{category}{范畴}的 $2$-\Term{category}{范畴}的一个\Term{normalized-pseudofunctor}{正规化伪函子}。换言之，对 $\mathrm{Sch}_{!R}$ 的\Term{object}{对象} $X$，\Term{category}{范畴} $D^+(X,\mathscr A_X)$ 可组织成 $\mathrm{Sch}_{!R}$ 上的\Term{cofibered-category}{余纤维范畴}：对 $\mathrm{Sch}_{!R}$ 中的每个\Term{morphism}{态射} $f:X\to Y$，置
+\[\operatorname{Hom}_f(K,L)=\operatorname{Hom}(R^+f_!K,L),\]
+其中 $K\in D^+(X,\mathscr A_X)$，$L\in D^+(Y,\mathscr A_Y)$。
+\end{SGAresult}
+\begin{proof}
+须说明认同 $R^+fg_!\xrightarrow[\sim]{c_{fg}}Rf_!\circ Rg_!$ 与三重复合相容。设 $h:T\to Z$、$g:Z\to Y$ 及 $f:Y\to X$ 为 $\mathrm{Sch}_{!R}$ 的三个\Term{morphism}{态射}。
+\SourcePage{304}
+由前面的讨论，只须在任意选定 $h,g,f$ 的\Term{pseudo-compactification}{伪紧化}后验证这种相容性。
+有图
+\begin{equation}\tag{7.1.6.1}
+\begin{tikzcd}[column sep=small,row sep=large]
+T_5\arrow[dr]&T_4\arrow[l,hook']\arrow[dr]&T_3\arrow[l,hook']\arrow[dr]&T'\arrow[l,hook']\arrow[d]\arrow[r,"p_3"]&T\arrow[d,"h"]\\
+&T_3\arrow[dr]&T_2\arrow[l,hook']\arrow[dr]\arrow[r,"p_2"]&Z'\arrow[d]&Z\arrow[l,"p_2"']\arrow[d,"g"]\\
+&&T_1\arrow[drr]&Y_1\arrow[l,hook']\arrow[r,"p_1"]&Y\arrow[d,"f"]\\
+&&&&X
+\end{tikzcd}
+\end{equation}
+其中所有斜\Term{arrow}{箭头}都是\Term{proper-morphism}{固有}的，而 $p_1,p_2,p_3$ 都\Term{proper-morphism}{固有}且\Term{surjective-morphism}{满射}。在（7.1.6.1）上构造一个（7.1.4.4）型的图，即可得出结论。
+\end{proof}
+
+\begin{SGAresult}{命题}{7.1.7}
+若 $f:X\to S$ 为\Term{compactifiable}{可紧化}\Term{morphism}{态射}，则\Term{functor}{函子} $Rf_!$ 与第 XVII 讲所定义的\Term{functor}{函子}一致。
+\end{SGAresult}
+事实上，存在\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}
+X_1\arrow[r,"j_1"]\arrow[d,"p_1"']&T_1\arrow[d,"h'"]\\
+X\arrow[r,"j"]\arrow[d,"f"']&T\arrow[dl,"h"]\\
+S&
+\end{tikzcd}
+\]
+对其应用（7.1.4.2.2）即可。
+
+\begin{SGAresult}{定义}{7.1.8}
+若 $f:X\to Y$ 为 $\mathrm{Sch}_!$ 的\Term{morphism}{态射}，则刚定义的\Term{functor}{函子} $R^+f_!$ 称为（\Term{derived-category}{导出范畴}意义下的）\Term{proper-support-direct-image}{固有支撑直接像函子}。\Term{functor}{函子} $H^q\circ R^+f_!$ 记作 $R^qf_!$，称为第 $q$ 个\Term{proper-support-direct-image}{固有支撑直接像函子}。
+\end{SGAresult}
+采用这些记号，以下构造留待读者核实。
+
+\SourcePage{305}
+\begin{SGAresult}{构造}{7.1.9}
+设 $(\pi_1,j_1,f_1)$ 为 $f:X\to Y$ 的\Term{pseudo-compactification}{伪紧化}，以 $\pi_1^n$ 表示\Term{canonical}{典范}\Term{morphism}{态射} $[X_1\mid X]_n\to X$。则对 $D^+(X,\mathscr A_X)$ 的每个\Term{complex}{复形} $K^\bullet$，存在两个\Term{biregular-spectral-sequence}{双正则谱序列}：
+\begin{align}
+E_1^{pq}&=R^qf_!(K^p)\Longrightarrow R^{p+q}f_!(K^\bullet),\tag{7.1.9.1}\\
+E_1^{pq}&=R^q(f\circ\pi_1^p)_!(\pi_1^{p+}(K^\bullet))\Longrightarrow R^{p+q}f_!(K^\bullet).\tag{7.1.9.2}
+\end{align}
+\end{SGAresult}
+例如，取 $j_{1!}\circ L^+\bar u_{p_1+}(K^\bullet)$ 的\Term{canonical}{典范}\Term{flasque-resolution}{松弛消解}（参见 4.2），再取其沿 $u_{f_1}$ 的\Term{direct-image}{直接像}。
+
+\textbf{7.2. $R^+f_!$ 的若干性质。}
+\begin{SGAresult}{命题}{7.2.1}
+设 $f:X\to Y$ 为 $\mathrm{Sch}_{!R}$ 中\Term{relative-dimension}{相对维数} $\le d$ 的\Term{morphism}{态射}。则\Term{functor}{函子} $R^+f_!$ 的\Term{cohomological-dimension}{上同调维数} $\le2d$。
+\end{SGAresult}
+\begin{proof}
+须证明：对 $X$ 上的每个 $\mathscr A_X$-\Term{module-sheaf}{模层} $F$，当 $i>2d$ 时有 $R^if_!(F)=0$。（由标准论证可推出：对 $D^+(X,\mathscr A_X)$ 的每个\Term{complex}{复形} $K^\bullet$，若 $i>k$ 时 $H^i(K^\bullet)=0$，则 $i>k+2d$ 时 $R^if_!(K^\bullet)=0$。）
+
+设 $\mathscr U=(U_i)_{i\in I}$ 为 $X$ 的\Term{finite}{有限}\Term{affine-open-cover}{仿射开覆盖}。置
+\[K_{\mathscr U}^n=\bigoplus_{|P|=n+1}j_{P!}j_P^*(F),\]
+以定义（6.2.9）$F$ 的\Term{left-resolution}{左消解} $K_{\mathscr U}^\bullet\to F$，其中对 $I$ 的每个\Term{subset}{子集} $P$，$j_P$ 为 $\bigcup_{i\in P}U_i$ 到 $X$ 的包含。
+由（7.1.9.1）得到\Term{spectral-sequence}{谱序列}
+\[E_1^{pq}=\bigoplus_{\substack{|P|=p+1\\P\in I}}R^p(fj_P)_!j_P^*(F)\Longrightarrow R^{p+q}f_!(F).\]
+$f j_P$ \Term{compactifiable}{可紧化}，故可应用第 XVII 讲的结果；这表明当 $p>0$ 且 $q>2d$ 时 $E_1^{pq}=0$；于是 $n>2d$ 时 $R^nf_!(F)=0$，即所要证明的结论。
+\end{proof}
+
+\begin{SGAresult}{命题}{7.2.2}
+设 $f:X\to Y$ 为 $\mathrm{Sch}_{!R}$ 的\Term{morphism}{态射}，$K^\bullet$ 为 $D^b(X,\mathscr A_X)$ 中具有\Term{finite}{有限}\Term{tor-dimension}{Tor 维数}的\Term{object}{对象}。则 $R^+f_!(K^\bullet)$ 具有\Term{finite}{有限}\Term{tor-dimension}{Tor 维数}。
+\end{SGAresult}
+\begin{proof}
+同前，设 $\mathscr U=(U_i)_{i\in I}$ 为 $X$ 的\Term{finite}{有限}\Term{affine-open-cover}{仿射开覆盖}。$K_{\mathscr U}^n$ 的\Term{functorial}{函子性}，可以由具有\Term{finite}{有限}\Term{tor-dimension}{Tor 维数}的\Term{complex}{复形}构造 $K^\bullet$ 的一个\Term{bounded}{有界}\Term{left-resolution}{左消解}，因为后一性质可逐点检验（4.1.9）。将所得\Term{double-complex}{双复形}记为 $K_{\mathscr U}^{\bullet\bullet}$，其第二个指标对应于 $K^\bullet$ 的指标。采用第 VI$_b$ 讲（2.3.2）的约定，对每个整数 $n$ 有\Term{exact-sequence}{正合列}，其中运算 $\sigma_{\le n}$ 在 $C^+(C^+(\operatorname{Mod}(X,\mathscr A_X)))$ 中取：
+\[0\longrightarrow(\sigma_{\le n}(K_{\mathscr U}^{\bullet\bullet}))_s
+\longrightarrow(\sigma_{\le n+1}(K_{\mathscr U}^{\bullet\bullet}))_s
+\longrightarrow(-1)^{n+1}K_{\mathscr U}^{n+1,\cdot}\longrightarrow0.\]
+\SourcePage{306}
+因此在 $D^+(X,\mathscr A_X)$ 中有\Term{distinguished-triangle}{特出三角形}：
+\[
+\begin{tikzcd}[column sep=large]
+&K_{\mathscr U}^{n+1,\cdot}\arrow[dl,"\circ" description]&\\
+(\sigma_{\le n}(K_{\mathscr U}^{\bullet\bullet}))_s\arrow[rr]&&(\sigma_{\le n+1}(K_{\mathscr U}^{\bullet\bullet}))_s\arrow[ul]
+\end{tikzcd}
+\]
+利用对每个 $\sim$，$R^+f_!(K_{\mathscr U}^{n+1,\cdot})$ 都具有\Term{finite}{有限}\Term{tor-dimension}{Tor 维数}（5.2.10），可推出
+\[R^+f_!((\sigma_{\le0}(K_{\mathscr U}^{\bullet\bullet}))_s)=R^+f_!(K^\bullet)\]
+具有\Term{finite}{有限}\Term{tor-dimension}{Tor 维数}。
+\end{proof}
+
+\textbf{注记 7.2.3。}前面的论证不能断言：只要 $K^\bullet$ 的\Term{tor-dimension}{Tor 维数} $\le k$，$R^+f_!(K^\bullet)$ 的\Term{tor-dimension}{Tor 维数}就 $\le k$（参见（3.7））。
+
+\begin{SGAresult}{命题}{7.2.4}
+设在 $\mathrm{Sch}_{!R}$ 中有\Term{cartesian-diagram}{笛卡儿图}
+\[
+\begin{tikzcd}
+X'\arrow[r,"g'"]\arrow[d,"f'"']&X\arrow[d,"f"]\\
+S'\arrow[r,"g"']&S.
+\end{tikzcd}
+\]
+则对 $D^+(X,\mathscr A_X)$ 的每个\Term{complex}{复形} $K^\bullet$，\Term{canonical}{典范}\Term{morphism}{态射}
+\[g^*\circ R^+f_!(K^\bullet)\xrightarrow{\mathrm{ch}_{K^\bullet}}R^+f_!\circ g'^*(K^\bullet)\]
+是\Term{isomorphism}{同构}。
+\end{SGAresult}
+\begin{proof}
+设 $(\pi_1,j_1,f_1)$ 为 $f$ 的\Term{pseudo-compactification}{伪紧化}：经\Term{base-change}{基变换}得到 $f'$ 的\Term{pseudo-compactification}{伪紧化} $(\pi'_1,j'_1,f'_1)$ 及\Term{commutative-diagram}{交换图}
+\[
+\begin{tikzcd}[column sep=large,row sep=large]
+&T'_1\arrow[rrr]\arrow[dddl,"f'_1" description]&&&T_1\arrow[ddl,"f_1"]\\
+X'_1\arrow[ur,"j'_1"]\arrow[rrr]\arrow[d,"\pi'_1"']&&&X_1\arrow[ur,"j_1"]\arrow[d,"\pi_1"]&\\
+X'\arrow[rrr,"g'"']\arrow[d,"f'"']&&&X\arrow[d,"f"]&\\
+S'\arrow[rrr,"g"']&&&S&
+\end{tikzcd}
+\]
+据此可定义\Term{arrow}{箭头} $\mathrm{ch}_{K^\bullet}$。
+\SourcePage{307}
+于是，由（7.1.9.2），有\Term{biregular-spectral-sequence}{双正则谱序列}之间的\Term{morphism}{态射}：
+\[
+\begin{tikzcd}[column sep=large,row sep=large]
+g^*\circ R^q(f\circ\pi_1^p)_!(\pi_1^{p*}(K^\bullet))\arrow[r]\arrow[d,"u_1^{pq}"']&g^*\circ R^{p+q}f_!(K^\bullet)\arrow[d,"\mathrm{ch}_K"]\\
+R^q(f'\circ\pi_1'{}^p)_!(\pi_1'{}^{p}(g'^*(K^\bullet)))\arrow[r]&R^+f'_!\circ g'^*(K)
+\end{tikzcd}
+\]
+由（5.2.6），$u_1^{pq}$ 都是\Term{isomorphism}{同构}，因而 $\mathrm{ch}_{K^\bullet}$ 也是\Term{isomorphism}{同构}。
+\end{proof}
+
+\textbf{7.3. $Rf_!$ 的定义。}现在我们拟对 $\mathrm{Sch}_{!R}$ 的每个\Term{morphism}{态射} $f$，将\Term{functor}{函子} $R^+f_!$ “合理地”\Term{group-extension}{扩张}为一个\Term{functor}{函子}
+\[Rf_!:D(X,\mathscr A_X)\longrightarrow D(Y,\mathscr A_Y).\]
+
+\textbf{7.3.1。}设 $(p_1,j_1,f_1)$ 为 $f$ 的\Term{pseudo-compactification}{伪紧化}，$F$ 为一个 $\mathscr A_X$-模。取 $j_{1!}\circ L\bar u_{p_1}^*(F)$ 的\Term{canonical}{典范}\Term{flasque-resolution}{松弛消解}（参见 4.2），再取其沿 $f_1$ 的\Term{direct-image}{直接像}，最后取由这样构造的\Term{double-complex}{双复形}所关联的\Term{simple-complex}{单复形}，便得到 $\mathscr A_Y$-模的\Term{complex}{复形}：
+\begin{equation}\tag{7.3.1.1}
+0\longrightarrow\mathscr X^0(F)\xrightarrow{S^1(F)}\mathscr X^1(F)\cdots
+\mathscr X^n(F)\xrightarrow{S^n(F)}\mathscr X^{n+1}(F)\cdots.
+\end{equation}
+它关于 $F$ 具有\Term{functorial}{函子性}，且在 $D^+(Y,\mathscr A_Y)$ 中\Term{isomorphism}{同构}于 $R^+f_!(F)$。
+由 7.2.1，当 $i>2d$ 时 $H^i(\mathscr X^\bullet(F))=0$，其中 $d$ 为使 $f$ 的\Term{relative-dimension}{相对维数} $\le d$ 的一个整数。因此\Term{complex}{复形}
+\begin{equation}\tag{7.3.1.2}
+0\longrightarrow\mathscr X^0(F)\longrightarrow\mathscr X^1(F)\longrightarrow\cdots
+\longrightarrow\mathscr X^{2d-1}(F)\longrightarrow\operatorname{Ker}S^{2d}(F)\longrightarrow0
+\end{equation}
+在 $D^+(Y,\mathscr A_Y)$ 中\Term{canonical-isomorphism}{典范同构}于\Term{complex}{复形}（7.3.1.1）。此外：
+
+\begin{SGAresult}{引理}{7.3.2}
+\Term{functor}{函子} $\mathscr X^0,\mathscr X^1,\ldots,\mathscr X^{2d-1},\operatorname{Ker}S^{2d}$ 关于 $F$ 都\Term{exact}{正合}。
+\end{SGAresult}
+\begin{proof}
+\Term{functor}{函子} $\mathscr X^n$ 的\Term{exactness}{正合性}来自\Term{canonical}{典范}\Term{flasque-resolution}{松弛消解}的\Term{exactness}{正合性}，以及下述事实：\Term{flasque-sheaf}{松弛层}的\Term{short-exact-sequence}{短正合列}沿\Term{morphism}{态射}的\Term{direct-image}{直接像}仍为\Term{short-exact-sequence}{短正合列}。
+
+为说明 $\operatorname{Ker}S^{2d}$ 的\Term{exactness}{正合性}，对 $X$ 上的层的\Term{short-exact-sequence}{短正合列} $0\to F'\to F\to F''\to0$，考虑图
+\[
+\begin{tikzcd}[column sep=large]
+\operatorname{Ker}S^{2d}(F')\arrow[r]\arrow[d]&\mathscr X^{2d+1}(F')\arrow[r]\arrow[d]&\mathscr X^{2d+2}(F')\cdots\arrow[d]\\
+\operatorname{ker}S^{2d}(F)\arrow[r]\arrow[d]&\mathscr X^{2d+1}(F)\arrow[r]\arrow[d]&\mathscr X^{2d+2}(F)\cdots\arrow[d]\\
+\operatorname{ker}S^{2d}(F'')\arrow[r]&\mathscr X^{2d+1}(F'')\arrow[r]&\mathscr X^{2d+2}(F'')\cdots
+\end{tikzcd}
+\]
+\SourcePage{308}
+与\Term{exact-sequence}{正合列}
+\[0\longrightarrow\sigma_{\ge2d+1}(\mathscr X^\bullet(F'))\longrightarrow\sigma_{\ge2d+1}(\mathscr X^\bullet(F))
+\longrightarrow\sigma_{\ge2d+1}(\mathscr X^\bullet(F''))+0\]
+相关联的\Term{homology}{同调}\Term{exact-sequence}{正合列}便给出结论。
+\end{proof}
+现在有下述一般引理。
+
+\begin{SGAresult}{引理}{7.3.3}
+设 $A,B$ 为两个\Term{abelian-category}{阿贝尔范畴}，$Je^\bullet$ 是 $C^b(\operatorname{Fex}(A,B))$ 的\Term{object}{对象}，其中 $\operatorname{Fex}(A,B)$ 表示从 $A$ 到 $B$ 的\Term{exact-functor}{正合函子}组成的\Term{category}{范畴}。给 $C(A)$ 中的每个\Term{complex}{复形} $K^\bullet$ 配以\Term{double-complex}{双复形} $Je^\bullet(K^\bullet)$ 所关联的\Term{simple-complex}{单复形}，便得到一个保持\Term{quasi-isomorphism}{拟同构}的\Term{triangulated-functor}{三角函子} $K(A)\to K(B)$。
+\end{SGAresult}
+将所讨论的\Term{functor}{函子}写成复合
+\[C(A)\longrightarrow C^b(C(B))\xrightarrow{(\ )_s}C(B),\]
+其中 $(\ )_s$ 是取关联\Term{simple-complex}{单复形}的\Term{functor}{函子}，再使用第 VI$_b$ 讲（2.3.2.2）的注记；细节留待读者。
+
+\begin{SGAresult}{习题}{7.3.4}
+证明：对 $D^+(X,\mathscr A_X)$ 中的每个\Term{complex}{复形} $K^\bullet$，\Term{canonical}{典范}\Term{arrow}{箭头}
+\[\tau_{\le2d}\mathscr X^\bullet(K^\bullet)\longrightarrow\mathscr X^\bullet(K^\bullet)\]
+在关联的\Term{simple-complex}{单复形}上诱导\Term{quasi-isomorphism}{拟同构}。
+\end{SGAresult}
+为此，先注意\Term{canonical}{典范}\Term{arrow}{箭头}
+\[\varinjlim_{k\ge2d}(\tau_{\le k}\mathscr X^\bullet(K^\bullet))_s
+\longrightarrow(\mathscr X^\bullet(K^\bullet))_s\]
+是\Term{isomorphism}{同构}，再注意\Term{complex}{复形}的\Term{cohomology-sheaf}{上同调层}与\Term{filtered-colimit}{滤过归纳极限}可交换。
+
+\textbf{7.3.5。}设 $R^{(1)}f_!:D(X,\mathscr A_X)\to D(Y,\mathscr A_Y)$ 为借助 7.2.3 由（7.3.1.2）定义的\Term{functor}{函子}。由 7.2.4，可直接由（7.3.1.1）计算它，并可验证它“不依赖”于所选的\Term{pseudo-compactification}{伪紧化}。于是还应验证去掉上标 $+$ 后的陈述 7.1.3、7.1.4 和 7.1.6，但执笔者没有勇气这样做。
+
+\begin{SGAresult}{定义}{7.3.6}
+7.3.5 所构造的\Term{functor}{函子} $Rf_!:D(X,\mathscr A_X)\to D(Y,\mathscr A_Y)$ 仍称为\Term{proper-support-direct-image}{固有支撑直接像函子}。
+\end{SGAresult}
+
+\textbf{7.3.7。}这时可以证明，\Term{functor}{函子} $Rf_!$ 与\Term{base-change}{基变换}可交换，且陈述（5.2.9）、（5.2.10）对 $\mathrm{Sch}_{!R}$ 的每个\Term{morphism}{态射}仍然成立；这说明刚才所作的构造是合理的。
+
+\SourcePage{309}
+\textbf{参考文献}
+\begin{enumerate}
+\item[{[1]}] A. Dold 与 D. Puppe，非\Term{additive-functor}{加性函子}的\Term{homology}{同调}：应用（Homologie nicht additiver Funktoren. Anwendungen），\emph{Ann. Inst. Fourier} XI，1961。
+\item[{[2]}] Gabriel--Zisman，\Term{calculus-of-fractions}{分式演算}与\Term{homotopy}{同伦}论（Calculus of fraction and homotopy theory），\emph{Ergebnisse}，第 35 卷，Springer，1967。
+\item[{[3]}] J. Giraud，\Term{descent}{下降}法（Méthode de la descente），法国数学会专刊第 2 号（1964）。
+\item[{[4]}] R. Godement，层论（Théorie des faisceaux），Hermann，1958，\emph{Act. Scient. Ind.} 第 1252 号，巴黎（引用时记作 [TF]）。
+\item[{[5]}] A. Grothendieck，TDTE IV：Hilbert \Term{scheme}{概形}（les schémas de Hilbert），Bourbaki 讨论班第 221 讲，1961 年 5 月；重收于 FGA。
+\item[{[6]}] R. Hartshorne，\Term{residue}{留数}与\Term{duality}{对偶}（Residues and Duality），\emph{Lecture Notes in Mathematics} 第 20 号，Springer，1966。
+\item[{[7]}] D. Lazard，博士论文，巴黎，1968。
+\item[{[8]}] N. Roby，模论中的\Term{polynomial-law}{多项式律}与\Term{form}{形式}律（Lois polynômes et lois formelles en théorie des modules），\emph{Ann. E.N.S.} 80，1963，第 231--248 页。
+\item[{[9]}] J. L. Verdier，\Term{derived-category}{导出范畴}（第 0 版）（Catégories dérivées (état 0)），I.H.E.S. 油印本。
+\item[{[10]}] J. L. Verdier，\Term{derived-category}{导出范畴}（Catégories dérivées），将刊于 Springer 的 \emph{Grundlehren der Math. Wiss.}。
+\item[{[11]}] J. L. Verdier，\Term{locally-compact-space}{局部紧空间}\Term{cohomology}{上同调}中的\Term{duality}{对偶性}（Dualité dans la cohomologie des espaces localement compacts），Bourbaki 讨论班第 300 讲，1965 年 11 月。
+\end{enumerate}

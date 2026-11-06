@@ -1,0 +1,96 @@
+\PassOptionsToPackage{no-math}{fontspec}
+\documentclass[UTF8,zihao=-4,openany,twoside,fontset=fandol]{ctexbook}
+\usepackage[paperwidth=190mm,paperheight=270mm,inner=23mm,outer=19mm,top=24mm,bottom=25mm,headheight=15pt,headsep=8mm,marginparwidth=13mm,marginparsep=3mm]{geometry}
+\usepackage{fontspec}
+\setmainfont{texgyrepagella}[Extension=.otf,UprightFont=*-regular,BoldFont=*-bold,ItalicFont=*-italic,BoldItalicFont=*-bolditalic]
+\setsansfont{texgyreheros}[Extension=.otf,UprightFont=*-regular,BoldFont=*-bold,ItalicFont=*-italic,BoldItalicFont=*-bolditalic,Scale=MatchLowercase]
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{newpxmath}
+\usepackage{graphicx,xcolor,tikz,tikz-cd,booktabs,longtable,array,enumitem,microtype,fancyhdr,needspace,etoolbox}
+\usetikzlibrary{arrows.meta,calc,decorations.pathreplacing,positioning,matrix}
+\definecolor{Ink}{HTML}{173947}
+\definecolor{Accent}{HTML}{A5844A}
+\definecolor{Muted}{HTML}{69777C}
+\definecolor{Paper}{HTML}{F7F5EF}
+\usepackage[unicode,colorlinks,linkcolor=Ink,citecolor=Ink,urlcolor=Ink,bookmarksnumbered=true,pdfdisplaydoctitle=true]{hyperref}
+\hypersetup{pdftitle={算术代数几何：C.I.M.E. 1991年讲义（中文译本）},pdfauthor={Jean-Louis Colliot-Thélène; Kazuya Kato; Paul Vojta},pdfsubject={Lecture Notes in Mathematics 1553 中文翻译，附29项译者补注}}
+\urlstyle{same}
+\ctexset{chapter={format=\Huge\bfseries\color{Ink},name={第,篇},number=\chinese{chapter},beforeskip=10pt,afterskip=24pt},section={format=\Large\bfseries\color{Ink},beforeskip=18pt,afterskip=9pt},subsection={format=\large\bfseries\color{Ink},beforeskip=14pt,afterskip=7pt}}
+\setlength{\parindent}{2em}
+\linespread{1.16}
+\setlength{\emergencystretch}{2em}
+\allowdisplaybreaks[2]
+\setlist[itemize]{leftmargin=2em,itemsep=3pt,topsep=5pt}
+\setlist[enumerate]{leftmargin=2.4em,itemsep=3pt,topsep=5pt}
+\setlist[description]{style=nextline,font=\normalfont\bfseries,leftmargin=1.7em,itemsep=5pt}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE]{\small\color{Muted}算术代数几何}
+\fancyhead[RO]{\small\color{Muted}\begingroup\termanchorsfalse\nouppercase{\leftmark}\endgroup}
+\fancyfoot[LE,RO]{\color{Ink}\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+\renewcommand{\chaptermark}[1]{\markboth{\ifcase\value{chapter}#1\or 挠闭链与代数 $K$ 理论\or Hasse--Weil $L$ 函数与岩泽理论\or 丢番图逼近\else #1\fi}{}}
+\fancypagestyle{plain}{\fancyhf{}\fancyfoot[LE,RO]{\color{Ink}\thepage}\renewcommand{\headrulewidth}{0pt}}
+\newcommand{\chapterauthor}[1]{\begin{flushright}\large\color{Muted}#1\end{flushright}\vspace{1.5em}}
+\newcommand{\origpage}[2]{\par\phantomsection\label{orig:#1}\marginpar{\raggedright\scriptsize\color{Muted}原书\,#2}}
+\newif\iftermanchors
+\termanchorstrue
+\DeclareRobustCommand{\termuse}[4]{\iftermanchors\hypertarget{termocc-#2}{\label{termocc-#2}\hyperlink{term-#1}{#3（#4）}}\else\hyperlink{term-#1}{#3（#4）}\fi}
+\DeclareRobustCommand{\term}[3]{#1（#2）}
+\newenvironment{statement}[1]{\par\addvspace{8pt}\needspace{3\baselineskip}\noindent\textbf{#1}\quad\ignorespaces}{\par\addvspace{7pt}}
+\renewcommand{\proofname}{证明}
+\newcommand{\Spec}{\operatorname{Spec}}
+\newcommand{\Gal}{\operatorname{Gal}}
+\newcommand{\Pic}{\operatorname{Pic}}
+\newcommand{\Br}{\operatorname{Br}}
+\newcommand{\CH}{\operatorname{CH}}
+\newcommand{\Hom}{\operatorname{Hom}}
+\newcommand{\Ext}{\operatorname{Ext}}
+\newcommand{\Tor}{\operatorname{Tor}}
+\newcommand{\coker}{\operatorname{Coker}}
+\newcommand{\Ker}{\operatorname{Ker}}
+\newcommand{\im}{\operatorname{Im}}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\NS}{\operatorname{NS}}
+\newcommand{\Alb}{\operatorname{Alb}}
+\newcommand{\et}{\mathrm{\acute et}}
+\newcommand{\dR}{\mathrm{dR}}
+\newcommand{\cris}{\mathrm{cris}}
+\newcommand{\tors}{\mathrm{tors}}
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\Nm}{\operatorname{Nm}}
+\pdfstringdefDisableCommands{\def\term#1#2#3{#1}\def\termuse#1#2#3#4{#3}\def\mathbb#1{#1}\def\mathcal#1{#1}\def\dR{dR}}
+
+% 补注编号与2026-11-05收到的勘误说明一致。
+\newcommand{\DeclareTranslatorNote}[3]{%
+  \csgdef{translator-note-title-#1}{#2}%
+  \csgdef{translator-note-text-#1}{#3}}
+\DeclareRobustCommand{\translatornote}[1]{%
+  \footnote{\hypertarget{translator-note-#1}{}\label{translator-note:#1}%
+    \textbf{译者补注\,\hyperlink{translator-index-#1}{#1}。}%
+    \csuse{translator-note-text-#1}}}
+\DeclareRobustCommand{\translatornoteref}[1]{%
+  \textsuperscript{\hyperlink{translator-note-#1}{〔补注#1〕}}}
+\input{translator-notes}
+
+\begin{document}
+\frontmatter
+\input{frontmatter}
+\begingroup\termanchorsfalse\tableofcontents\endgroup
+\mainmatter
+\input{generated/01-colliot-a}
+\input{generated/02-colliot-b}
+\input{generated/03-kato-a}
+\input{generated/04-kato-b}
+\input{generated/05-kato-c}
+\input{generated/06-kato-d}
+\input{generated/07-vojta-a}
+\input{generated/08-vojta-b}
+\backmatter
+\input{errata}
+\input{reading-notes}
+\input{translator-notes-index}
+\input{participants}
+\input{generated/glossary}
+\end{document}

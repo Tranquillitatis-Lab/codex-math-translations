@@ -1,0 +1,953 @@
+\article{$\GL(2)$ 一个基变换问题的解答（依照 Langlands、Saito、Shintani）}{The solution of a base change problem for GL(2) (following Langlands, Saito, Shintani)}{P. Gérardin and J. P. Labesse}{2}{115--133}
+
+本文综述 $\GL(2)$ 自守表示（automorphic representation）在素数次循环扩张下的提升（lifting），介绍其对 Artin 猜想的若干应用，并概述证明思路。第 1--5 节讨论提升的定义与结果，第 6 节证明四面体情形的 Artin 猜想。第一部分末尾附有三个附录，分别介绍 Weil 群的二维表示（附录 A）、局部域上的 $\GL(2)$ 的表示（附录 B）以及整体域上的表示（附录 C）。第二部分简述提升结果的证明。主要工具是轨道积分（orbital integral）、扭曲轨道积分（twisted orbital integral）以及扭曲迹公式（twisted trace formula）[Sa]。提升理论的主要参考文献是 [Sa]、[S-1]、[S-2]、[L]。有限域上一般线性群的情形 [S-2] 也提供了有益的启示。\footnote{原文的 AMS（MOS）主题分类（1970）：主要分类 10D15、12A70；次要分类 20E50、20E55。原文版权：1979，American Mathematical Society。}
+
+\section*{I. 定义、定理与应用（Definitions, theorems, applications）}
+\origsection{1}{记号（Notation）}
+设 $F$ 为局部域（local field）或整体域（global field）。$W_F$ 表示 $F$ 的 Weil 群（Weil group）；当 $F$ 为 $p$-域（$p$-field）时，$W'_F$ 表示其 Weil--Deligne 群（Weil--Deligne group）[T]。回顾一下，存在典范满同态 $W_F\to C_F$，它给出 $W_F^{\mathrm{ab}}$ 与 $C_F$ 的典范同构。
+
+全文中，$E$ 都是 $F$ 的素数次 $l$ 的循环 Galois 扩域，$\Gamma$ 为其 Galois 群。“分裂情形”（split case），即 $E=F\times F\times\cdots\times F$（$l$ 个因子）而 $\Gamma$ 由 $\sigma:(x_1,x_2,\ldots,x_l)\mapsto(x_2,\ldots,x_l,x_1)$ 生成，容易处理，留给读者。
+
+当 $F$ 为局部域时，选取其加法群的一个非平凡特征 $\psi$，并定义 $\psi_{E/F}=\psi\circ\Tr_{E/F}$。
+
+下文统一采用 Borel [B] 关于 $L$ 群（$L$-group）的记号 $\Phi(G),\ldots$，以及 Tate [T] 关于 Weil 群、$L$ 因子和 $\varepsilon$ 因子的记号。
+
+\origsection{2}{$\GL(1)$ 的基变换（Base change for $\GL(1)$）}
+由阿贝尔类域论（abelian class-field theory）有交换图
+\[
+ \begin{tikzcd}[column sep=small]
+ &1\arrow[r]&W_E\arrow[r]\arrow[d]&W_F\arrow[r]\arrow[d]&\Gamma\arrow[r]\arrow[d,"\simeq"]&1\\
+ 1\arrow[r]&C_E^{1-\sigma}\arrow[r]&C_E\arrow[r,"N_{E/F}"]&C_F\arrow[r]&\Gamma\arrow[r]&1
+ \end{tikzcd}
+\]
+其中 $\sigma$ 是 $\Gamma$ 的一个生成元。
+
+$W_F$ 的一维表示由 $W_F^{\mathrm{ab}}=C_F$ 的拟特征（quasi-character）给出。将 $C_F$ 的拟特征与范数复合，得到一个称为提升（更准确地说，称为基变换提升（base change lift））的映射
+\[
+ \chi\longmapsto\chi_{E/F}=\chi\circ N_{E/F},
+\]
+它将 $C_F$ 的拟特征集合 $\mathcal A(F)$ 映到 $C_E$ 的拟特征集合 $\mathcal A(E)$。
+
+群 $\Gamma$ 通过 $(\gamma\theta)(z)=\theta(z^\gamma)$（$\gamma\in\Gamma$，$z\in C_E$）作用于 $C_E$ 的拟特征集合。$\Gamma$ 的特征群 $\widehat\Gamma$ 可与 $C_F$ 中在 $N_{E/F}C_E$ 上平凡的特征集合等同；它通过乘法 $\chi\mapsto\chi\zeta$（$\zeta\in\widehat\Gamma$）作用于 $C_F$ 的拟特征集合。由上图第二行的正合性，得到以下结论。
+
+\begin{originaltheorem}{命题 1（Proposition 1）}
+提升 $\chi\mapsto\chi_{E/F}$ 给出 $\widehat\Gamma$ 在 $\mathcal A(F)$ 中的轨道集合到 $\mathcal A(E)$ 中 $\Gamma$-不变元素集合的双射；此外，
+\[
+ L(\chi_{E/F})=\prod_{\zeta\in\widehat\Gamma}L(\chi\zeta),
+\]
+当 $F$ 为整体域时，
+\[
+ \varepsilon(\chi_{E/F})=\prod_{\zeta\in\widehat\Gamma}\varepsilon(\chi\zeta),
+\]
+当 $F$ 为局部域时，
+\[
+ \varepsilon(\chi_{E/F},\psi_{E/F})
+ =\lambda_{E/F}(\psi)^{-1}
+ \prod_{\zeta\in\widehat\Gamma}\varepsilon(\chi\zeta,\psi).
+\]
+\end{originaltheorem}
+
+\origsection{3}{$L$ 群层面的 $\GL(2)$ 基变换}
+\origsubsection{3.1}{}
+令 $G$ 为 $F$ 上的群 $\GL(2)$，$G_{E/F}$ 为将 $E$ 上的群 $\GL(2)$ 限制标量（restriction of scalars）所得的 $F$ 上的群，因此 $G_{E/F}(F)=\GL(2,E)$。群 $G_{E/F}$ 是拟分裂的（quasi-split），且存在自然映射
+\[
+ {}^LG=\GL(2,\C)\times\Gamma_F
+ \longrightarrow{}^LG_{E/F}=\GL(2,\C)^\Gamma\rtimes\Gamma_F.
+\]
+这里 $\GL(2,\C)^\Gamma$ 为从 $\Gamma$ 到 $\GL(2,\C)$ 的映射集合，$\Gamma_F=\Gal(\overline F/F)$ 通过置换坐标作用 [B, 第 5 节]。
+
+给定任意 $\rho\in\Phi(G)$，它在 $W'_E$ 上的限制定义一个元素 $\rho_{E/F}\in\Phi(G_{E/F})$；集合 $\Phi(G_{E/F})$ 可与 $\Phi(G/E)$ 等同 [B]。上述映射定义了称为基变换（base change）的映射
+\[
+ \Phi(G)\longrightarrow\Phi(G_{E/F})=\Phi(G/E),
+ \qquad\rho\longmapsto\rho_{E/F}.
+\]
+当 $F$ 为局部域时\footnote{\textbf{译者注（本次校订）：}本段关于 Frobenius 元素和非分歧参数的讨论，应限定于非 Archimedes 局部域。}，取 $\Gamma_F$ 中的 Frobenius 元素 $\operatorname{Fr}_F$；若 $E$ 非分歧，则 $\operatorname{Fr}_E=\operatorname{Fr}_F^l\in\Gamma_E$ 为 $E$ 的一个 Frobenius 元素。此外，若 $\rho$ 非分歧且由 $\operatorname{Fr}_F\mapsto s$ 定义，其中 $s$ 为 $\GL(2,\C)$ 的半单元素（semisimple element），则 $\rho_{E/F}$ 非分歧且由 $\operatorname{Fr}_E\mapsto s^l$ 给出。
+
+$L$ 因子和 $\varepsilon$ 因子关于诱导的性质 [T] 表明
+\[
+ L(\rho_{E/F})=\prod_{\zeta\in\widehat\Gamma}L(\rho\otimes\zeta),
+\]
+当 $F$ 为整体域时，
+\[
+ \varepsilon(\rho_{E/F})=\prod_{\zeta\in\widehat\Gamma}\varepsilon(\rho\otimes\zeta),
+\]
+当 $F$ 为局部域时，
+\[
+ \varepsilon(\rho_{E/F},\psi_{E/F})
+ =\lambda_{E/F}(\psi)^{-2}
+ \prod_{\zeta\in\widehat\Gamma}\varepsilon(\rho\otimes\zeta,\psi).
+\]
+
+\origsubsection{3.2}{}
+由 $W'_F$ 的二维容许表示的分类（见附录 A），得到下述结果。
+
+\begin{originaltheorem}{命题 2（Proposition 2）}
+(a) 提升 $\rho\in\Phi(G)\mapsto\rho_{E/F}\in\Phi(G_{E/F})$ 的像，是 $\Phi(G_{E/F})$ 的 $\Gamma$-不变元素集合。
+
+(b) 在下列情形中，提升由以下公式给出：
+\[
+ \begin{aligned}
+ (\mu\oplus\nu)_{E/F}&=\mu_{E/F}\oplus\nu_{E/F},\\
+ \bigl(\Ind_{W_K}^{W_F}\theta\bigr)_{E/F}
+ &=\Ind_{W_{KE}}^{W_E}\theta_{KE/K},&&E\ne K,\\
+ \bigl(\Ind_{W_K}^{W_F}\theta\bigr)_{E/F}
+ &=\theta\oplus{}^\sigma\theta,&&E=K,\quad1\ne\sigma\in\Gamma,\\
+ (\chi\otimes\operatorname{sp}(2))_{E/F}
+ &=\chi_{E/F}\otimes\operatorname{sp}(2),&&F\text{ 非 Archimedes}.
+ \end{aligned}
+\]
+
+(c) 给定不可分解的（nondecomposable）$\rho\in\Phi(G)$，与它具有同一提升的表示为所有 $\rho\otimes\zeta$，其中 $\zeta\in\widehat\Gamma$；若 $\rho=\lambda\oplus\mu$，则具有同一提升的表示为所有 $\lambda\zeta\oplus\mu\zeta'$，其中 $\zeta,\zeta'\in\widehat\Gamma$。
+\end{originaltheorem}
+
+\origsection{4}{局部域上的基变换（Base change over a local field）}
+本节用 $\sigma$ 表示 $\Gamma=\Gal(E/F)$ 的一个生成元。
+
+\origsubsection{4.1}{}
+令 $\Pi(G)$ 为 $G(F)$ 的容许不可约表示的同构类集合。猜想存在双射 $\Phi(G)\simeq\Pi(G)$ [B]。基变换映射 $\Phi(G)\to\Phi(G_{E/F})$ 应当对应于映射 $\Pi(G)\to\Pi(G_{E/F})$。$G(F)$ 的表示的基变换定义将在 4.3 给出；由于 $\Phi(G)$ 的像是 $\Phi(G_{E/F})$ 的 $\Gamma$-不变元素集合，首先研究与其 $\Gamma$-共轭等价的 $G(E)$ 的容许不可约表示。
+
+\origsubsection{4.2}{}
+设 $\widetilde\pi$ 是 $G(E)$ 的一个容许不可约表示，满足 ${}^\sigma\widetilde\pi\simeq\widetilde\pi$。于是其空间上存在算子 $C$，使
+\[
+ C^{-1}\widetilde\pi(z)C=\widetilde\pi(z^\sigma),\qquad z\in G(E),\qquad C^l=\operatorname{Id}.
+\]
+这个算子由上述条件确定，差别仅在于可乘一个 $l$ 次单位根。映射 $\widetilde\pi':(\sigma^m,z)\mapsto C^m\widetilde\pi(z)$ 定义 $\widetilde\pi$ 到半直积 $\Gamma\ltimes G(E)$ 的一个延拓。
+
+\begin{originaltheorem}{命题 3（Proposition 3）}
+这个表示的特征标（character）由 $\Gamma\ltimes G(E)$ 上的一个局部可积函数 $\Tr\widetilde\pi'$ 给出。
+\end{originaltheorem}
+
+在 $\sigma\times G(E)$ 上，特征标 $\Tr\widetilde\pi'$ 定义 $G(E)$ 上的一个 $\sigma$-不变分布（$\sigma$-invariant distribution），即关于 $\sigma$-共轭 $z\mapsto y^{-\sigma}zy$（$y,z\in G(E)$）不变的分布。下面陈述 $\sigma$-共轭的一些性质。对 $z\in G(E)$，令
+\[
+ N_{E/F,\sigma}z=z^{\sigma^{l-1}}\cdots z^\sigma z;
+\]
+不致混淆时简记为 $N(z)$。
+
+\begin{originaltheorem}{命题 4（Proposition 4）}
+(a) $N_{E/F,\sigma}z$ 在 $G(E)$ 中共轭于 $G(F)$ 的某个元素。
+
+(b) $z\mapsto N_{E/F,\sigma}z$ 定义从 $G(E)$ 的 $\sigma$-共轭类集合到 $G(F)$ 的共轭类集合的单射。
+
+(c) 由 $N_{E/F,\sigma}$ 得到的 $G(F)$ 的椭圆类（elliptic class），是那些行列式属于 $N_{E/F}E^\times$ 的类；得到的双曲类（hyperbolic class），是那些特征值均为 $E^\times$ 的范数的类；$G(F)$ 的每个幺幂类都在 $N$ 的像中。
+\end{originaltheorem}
+
+\origsubsection{4.3}{局部域上 $\GL(2)$ 的基变换定义}
+设 $\pi\in\Pi(G)$，$\widetilde\pi$ 为 $G(E)$ 的一个不可约容许表示，且与其 $\sigma$-共轭等价。如果满足下列两项中的任意一项，便称 $\widetilde\pi$ 为 $\pi$ 的基变换提升，或简称其提升：
+
+(a) $\pi=\pi(\mu,\nu)$ 且 $\widetilde\pi=\pi(\mu_{E/F},\nu_{E/F})$；
+
+(b) 存在 $\widetilde\pi$ 到 $\Gamma\ltimes G(E)$ 的延拓 $\widetilde\pi'$，使对 $z\in G(E)$，当 $N_{E/F,\sigma}z$ 在 $G(E)$ 中共轭于正则半单元素 $x\in G(F)$ 时，有 $\Tr\widetilde\pi'(\sigma\times z)=\Tr\pi(x)$。
+
+下述定理中的部分记号将在附录 B 解释。
+
+\begin{originaltheorem}{定理 1（Theorem 1）：局部域上 $\GL(2)$ 的基变换}
+(a) 每个 $\pi\in\Pi(G)$ 都有唯一的提升 $\pi_{E/F}\in\Pi(G_{E/F})$，且每个被 $\Gamma$ 固定的 $\widetilde\pi\in\Pi(G_{E/F})$ 都是一个提升。
+
+(b) 提升与 $\Gamma$ 的生成元 $\sigma$ 的选择无关。
+
+(c) $\pi_{E/F}=\pi'_{E/F}$，当且仅当对某个 $\zeta\in\widehat\Gamma$ 有 $\pi'=\pi\otimes\zeta$，或者 $\pi=\pi(\mu,\nu)$、$\pi'=\pi(\mu',\nu')$，且 $\mu^{-1}\mu'$、$\nu^{-1}\nu'$ 均属于 $\widehat\Gamma$。
+
+(d) $\omega_{\pi_{E/F}}=(\omega_\pi)_{E/F}$；对 $F^\times$ 的任意一维表示 $\chi$，有 $(\pi\otimes\chi)_{E/F}=\pi_{E/F}\otimes\chi_{E/F}$；并有 $(\pi_{E/F})^\vee=(\pi^\vee)_{E/F}$（逆反表示（contragredient representation））。
+
+(e) 对 $E\supset F\supset k$，若 $E,F$ 在 $k$ 上均为 Galois 扩域，则对任意 $\widetilde\gamma\in\Gal(E/k)$，若其在 $\Gal(F/k)$ 中的像为 $\gamma$，有 ${}^{\widetilde\gamma}(\pi_{E/F})=({}^\gamma\pi)_{E/F}$。
+
+(f) 至少对非例外的（not exceptional）$\rho\in\Phi(G)$，有 $\pi(\rho)_{E/F}=\pi(\rho_{E/F})$。
+\end{originaltheorem}
+
+\origsection{5}{整体基变换（Global base change）}
+\origsubsection{5.1}{}
+令 $\Pi(G)$ 为 $G(\A_F)=\GL(2,\A_F)$ 的不可约容许自守表示的同构类集合，其中 $\A_F$ 为数域 $F$ 的阿代尔环。按照函子性原理（principle of functoriality）[B]，$L$ 群上的基变换应当对应于从 $\Pi(G)$ 到 $\Pi(G_{E/F})$ 的映射；后者是 $G(\A_E)=\GL(2,\A_E)=G_{E/F}(\A_F)$ 的不可约容许自守表示的同构类集合。这样的映射必须与局部数据相容。
+
+对 $F$ 的任意素位 $v$，令 $E_v=E\otimes_FF_v$；它是 $F_v$ 的循环 Galois 扩域，或 $l$ 个 $F_v$ 的直积。在后一种情形，定义 $\pi\in\Pi(G)$ 的提升为
+\[
+ \pi_{E_v/F_v}=\pi\otimes\cdots\otimes\pi\qquad(l\text{ 个因子}).
+\]
+
+\origsubsection{5.2}{$\GL(2)$ 的整体基变换定义}
+设 $\pi\in\Pi(G)$，$\widetilde\pi\in\Pi(G_{E/F})$。如果对 $F$ 的每个素位 $v$，$\widetilde\pi_v$ 都是 $\pi_v$ 的提升，则称 $\widetilde\pi$ 为 $\pi$ 的提升（更准确地说，是基变换提升）。
+
+\origsubsection{5.3}{}
+下述定理使用附录 C 的记号。
+
+\begin{originaltheorem}{定理 2（Theorem 2）：$\GL(2)$ 的整体基变换}
+(a) 每个 $\pi\in\Pi(G)$ 都有唯一的提升 $\pi_{E/F}\in\Pi(G_{E/F})$。
+
+(b) 尖点的 $\widetilde\pi\in\Pi(G_{E/F})$ 是提升，当且仅当它被 $\Gamma$ 固定；此时它是尖点表示（cuspidal representation）的提升。尖点的 $\pi\in\Pi(G)$ 的提升也是尖点的，唯一的例外是 $l=2$ 且 $\pi=\pi(\Ind_{W_E}^{W_F}\theta)$；此时 $\pi_{E/F}=\pi(\theta,{}^\sigma\theta)$。
+
+(c) 对尖点的 $\pi\in\Pi(G)$，以 $\pi_{E/F}$ 为提升的所有表示 $\pi'$，恰为 $\pi'=\pi\otimes\zeta$（$\zeta\in\widehat\Gamma$）。
+
+(d) 有
+\[
+ \begin{aligned}
+ \omega_{\pi_{E/F}}&=(\omega_\pi)_{E/F}&&\text{（中心拟特征（central quasi-character））},\\
+ (\pi\otimes\chi)_{E/F}&=\pi_{E/F}\otimes\chi_{E/F}&&\text{（以拟特征扭曲）},\\
+ (\pi_{E/F})^\vee&=(\pi^\vee)_{E/F}&&\text{（逆反表示）}.
+ \end{aligned}
+\]
+
+(e) 对 $E\supset F\supset k$，若 $E,F$ 在 $k$ 上均为 Galois 扩域，则对任意 $\gamma\in\Gal(F/k)$ 及其在 $\Gal(E/k)$ 中的提升 $\widetilde\gamma$，有 ${}^{\widetilde\gamma}(\pi_{E/F})=({}^\gamma\pi)_{E/F}$。
+
+(f) 若对某个 $\rho\in\Phi(G)$，有 $\pi=\pi(\rho)$，则 $\pi_{E/F}=\pi(\rho_{E/F})$。
+\end{originaltheorem}
+
+\paragraph*{注记.}
+存在被 $\Gamma$ 固定、但并非提升的非尖点表示 $\widetilde\pi\in\Pi(G_{E/F})$（参见 [L, 第 10 节]）。
+
+\origsection{6}{四面体型的 Artin 猜想（Artin conjecture for tetrahedral type）}
+设 $\rho$ 为数域 $F$ 的 Weil 群的一个二维容许表示。假定其模去中心后的像，即 $W_F\to\GL(2,\C)\to\operatorname{PGL}(2,\C)$ 的像，为四面体群（tetrahedral group）$\mathfrak A_4$。这是可解群（solvable group）：$1\to D_4\to\mathfrak A_4\to C_3\to1$。这里 $D_4$ 是四阶二面体群，即 Klein 四元群（原文亦称 mattress group）；$C_3$ 的作用循环置换其三个非平凡元素。$D_4$ 在 $W_F$ 中的逆像为指数为 $3$ 的正规子群，故是 $F$ 的某个三次 Galois 扩域 $E$ 的 Weil 群 $W_E$：
+\[
+ \begin{tikzcd}[column sep=small]
+ 1\arrow[r]&W_E\arrow[r]\arrow[d]&W_F\arrow[r]\arrow[d]&\Gal(E/F)\arrow[r]\arrow[d,"\simeq"]&1\\
+ 1\arrow[r]&D_4\arrow[r]&\mathfrak A_4\arrow[r]&C_3\arrow[r]&1
+ \end{tikzcd}
+\]
+$\rho$ 在 $W_E$ 上的限制 $\rho_{E/F}$ 的像为二面体群 $D_4$\footnote{\textbf{译者注（本次校订）：}这里的“像”指射影像，即再投影到 $\operatorname{PGL}(2,\C)$ 后的像。线性表示本身的像还包含标量部分。}；它由 $W_E$ 的某个指数为 $2$ 的子群的一维表示诱导而来，故存在与之对应的 $\GL(2,\A_E)$ 的尖点自守表示 $\pi(\rho_{E/F})$。
+
+$\mathfrak A_4$ 的内自同构（inner automorphism）给出 $C_3$ 在 $D_4$ 上的作用，而 $\Gamma=\Gal(E/F)$ 的作用固定 $\rho_{E/F}$ 的同构类，因此也固定 $\pi(\rho_{E/F})$ 的同构类。由 5.3 的定理 2，这个表示恰好是 $\GL(2,\A_F)$ 的三个不可约尖点自守表示类的基变换提升。它们的中心特征的基变换提升为 $\pi(\rho_{E/F})$ 的中心特征，即 $\det\rho_{E/F}=(\det\rho)_{E/F}$；其中恰有一个表示的中心特征为 $\det\rho$，将其记为 $\pi$。
+
+表示 $\rho$ 的 Artin 猜想，断言对应的 $L$ 函数 $s\mapsto L(s,\rho)$ 全纯。由 Jacquet--Langlands [J-L, 定理 11.1，第 350 页]，尖点 $\pi$ 所对应的 $L$ 函数 $s\mapsto L(s,\pi)$ 全纯。因此，只要证明这两个 $L$ 函数相等，就证明了 $\rho$ 的 Artin 猜想。由 [J-L, 第 404--407 页]，只需证明下述断言：
+
+$(c_0)$ 对 $F$ 的每个 Archimedes 素位 $v$，以及几乎所有素位 $v$，有 $\pi_v=\pi(\rho_v)$。
+
+由于 $E/F$ 为三次扩张，$F$ 的每个无穷素位 $v$ 都在 $E$ 中分裂。因此对 $w\mid v$，有
+\[
+ E_w=F_v,\qquad(\rho_{E/F})_w=\rho_v,\qquad
+ (\pi(\rho_{E/F}))_w=\pi(\rho_v)=\pi_v.
+\]
+更一般地，这些等式对任意在 $E$ 中分裂的 $F$ 的素位 $v$ 均成立。
+
+若 $v$ 不分裂且在 $E$ 中非分歧，并且 $\rho_v$ 也非分歧，则 $\rho_v$ 在 $W_{E_v}$ 上的限制 $\rho_{E_v/F_v}$ 非分歧，表示 $(\pi_{E/F})_v=\pi(\rho_{E_v/F_v})$ 也非分歧。由于 $E_v/F_v$ 非分歧，此表示是非分歧表示的基变换提升。因此 $\pi_v$ 非分歧；记 $\rho_{\pi_v}$ 为满足 $\pi_v=\pi(\rho_{\pi_v})$ 的二维表示。由此，断言 $(c_0)$ 等价于：
+
+$(c_1)$ 若 $v$ 不分裂，且对 $\rho$ 与 $E$ 均非分歧，则 $\rho_v$ 和 $\rho_{\pi_v}$ 等价。
+
+$\operatorname{PGL}(2)$ 的伴随表示（adjoint representation）给出 $\operatorname{PGL}(2)$ 到 $\GL(3)$ 的单射，从而给出态射 $A:\GL(2)\to\GL(3)$。条件 $(c_1)$ 还等价于下面这个看似较弱的条件：
+
+$(c_2)$ 若 $v$ 对 $\rho$ 与 $E$ 均非分歧，则三维表示 $A\rho_v$ 与 $A\rho_{\pi_v}$ 等价。
+
+事实上，用 $a$（分别为 $b$）表示 $W_{F_v}$ 中一个 Frobenius 元素在 $\rho_v$（分别为 $\rho_{\pi_v}$）下的像。若 $(c_2)$ 成立，则 $a\in\C^\times b$；但 $\det a=\det b$，故 $a=\pm b$。若 $a=-b$，由于 $\rho_v$ 与 $\rho_{\pi_v}$ 在 $W_{E_v}$ 上的限制相同，$a^3$ 与 $-a^3$ 共轭，即 $\Tr(a^3)=0$。因而 $A(a^3)$ 的阶为二，这意味着 $A(a)$ 的阶为六\footnote{\textbf{译者注（本次校订）：}这里还用到 $(c_1)$ 中 $v$ 在三次扩张 $E/F$ 中不分裂的条件：$A(a)$ 在 $\mathfrak A_4/D_4\simeq C_3$ 中的像有三阶。因此其阶既被 $3$ 整除，又因 $A(a)^3$ 有二阶而整除 $6$，只能等于 $6$。}；然而 $A\rho_v$ 的像包含于四面体群，后者没有六阶元素。因此 $a=b$，从而 $\rho_v=\rho_{\pi_v}$。引入 $A\rho$ 源于 Serre 的一个关键观察：这一三维表示可由 $W_E$ 的一维表示诱导得到。事实上，四面体群保持由连接四面体相对棱中点的三条直线构成的集合不变。这意味着 $A\rho$ 由其中一条直线的稳定子（stabilizer）的一维表示 $\theta$（由限制 $A\rho$ 得到）诱导而来；但该稳定子为 $D_4\subset\mathfrak A_4$ 在 $W_F$ 中的拉回，即子群 $W_E$。于是
+\[
+ A\rho=\Ind_{W_E}^{W_F}\theta.
+\]
+由 [J-PS-S]，与 $W_F$ 的这种三维不可约单项表示（monomial representation）$A\rho$ 对应，有一个 $\GL(3,\A_F)$ 的不可约尖点自守表示 $\pi(A\rho)$。另一方面，与态射 $A$ 相应，有从 $\GL(2,\A_F)$ 的不可约尖点自守表示到 $\GL(3,\A_F)$ 的自守表示的提升；在本情形中，对应于 $\pi$ 的表示 $A\pi$ 是尖点的 [G-J-2]。要证明 $(c_2)$，只需证明：
+
+$(c_3)$ 提升 $A\pi$ 与 $\pi(A\rho)$ 等价。
+
+[J-S] 给出了判断这类表示等价的实用判据：$\pi_1$ 与 $\pi_2$ 等价，当且仅当 $L(s,\pi_1\times\widetilde\pi_2)$ 在 $s=1$ 处有极点；这里 $L$ 是与张量积给出的 $\GL_3(\C)\times\GL_3(\C)$ 到 $\GL_9(\C)$ 的表示相联系的 $L$ 函数。
+
+我们将证明，$L(s,A\pi\times\pi(A\rho)^\vee)$ 与 $L(s,\pi(A\rho)\times\pi(A\rho)^\vee)$ 的几乎所有局部因子均相等。由局部因子的非消失性质 [J-S]，这足以证明前者在 $s=1$ 处有极点，从而证明 $(c_3)$。如果 $v$ 分裂，则 $\pi_v=\pi(\rho_v)$；至少在 $\pi_v,\rho_v$ 均非分歧时，$(A\pi)_v=\pi(A\rho_v)$，此时局部 $L$ 因子相等。
+
+如果 $v$ 在 $E$ 中不分裂，且对 $E,\rho$ 均非分歧，则这两个局部 $L$ 函数对应于 $W_{F_v}$ 的九维表示
+\[
+ A\rho_{\pi_v}\otimes(A\rho)_v^\vee,
+ \qquad A\rho_v\otimes(A\rho)_v^\vee;
+\]
+而已知 $A\rho_v=\Ind_{W_{E_v}}^{W_{F_v}}\theta_v$。对于群 $G$ 的表示 $U$ 和子群 $H$ 的表示 $V$，有
+\[
+ U\otimes\Ind_H^GV\simeq\Ind_H^G(V\otimes\Res_H^GU).
+\]
+又由于 $\rho_{\pi_v}$ 与 $\rho_v$ 在 $W_{E_v}$ 上的限制等价，可知 $A\rho_{\pi_v}\otimes(A\rho)_v^\vee$ 与 $A\rho_v\otimes(A\rho)_v^\vee$ 等价，因此具有相同的 $L$ 因子。
+
+至此，四面体情形的 Artin 猜想得证。
+
+上述证明取自 Langlands 于 1975 年 12 月致 Serre 的信。信中还提出了处理八面体情形（octahedral case）的思路。这需要当时尚未建立的若干群表示论结果；不过，已有如下部分结果 [L, 第 1 节]：
+
+假定 $\rho$ 为八面体型。利用 $\mathfrak S_4$ 含有指数为 $2$ 的正规子群 $\mathfrak A_4$ 这一事实，存在 $F$ 的一个二次扩域 $E$，使限制 $\rho_{E/F}$ 为 $\mathfrak A_4$ 型。由上述定理，$\pi(\rho_{E/F})$ 存在；由定理 2，它是 $G(\A_F)$ 的两个尖点容许不可约自守表示 $\pi',\pi''$ 的基变换提升。现在假定 $F=\Q$，$E$ 全实，并且 $\Gal(\overline\Q/\Q)$ 中的复共轭在 $\rho$ 下映入 $\begin{pmatrix}1&0\\0&-1\end{pmatrix}$ 的共轭类。在此情形中，$\pi',\pi''$ 在实素位处的分量满足
+\[
+ \pi'_\infty=\pi''_\infty=\pi(\rho_\infty),
+ \qquad\rho_\infty=1\oplus\operatorname{sign}.
+\]
+于是 $\pi',\pi''$ 对应于权为一的全纯自守形式（holomorphic automorphic form）。
+
+Deligne--Serre [D-S] 研究了这种情形，并证明对于 $W_F$ 到 $\GL(2,\C)$ 的某些表示 $\rho',\rho''$，有 $\pi'=\pi(\rho')$、$\pi''=\pi(\rho'')$。由定理 2，$\pi(\rho')_{E/F}=\pi(\rho'_{E/F})$，对 $\pi''$ 也同样成立。这表明 $\rho',\rho''$ 为提升至 $\rho_{E/F}$ 的两个表示；故 $\rho$ 或为 $\rho'$，或为 $\rho''$。因此 $\pi'=\pi(\rho)$ 或 $\pi''=\pi(\rho)$，从而得到：
+
+\begin{originaltheorem}{定理 4（Theorem 4）}
+设 $\rho$ 是 $W_\Q$ 的一个八面体型二维表示，将复共轭映为 $\begin{pmatrix}1&0\\0&-1\end{pmatrix}$，并且上述二次域 $E$ 为实域。则 $\rho$ 满足 Artin 猜想。
+\end{originaltheorem}
+
+\origsection{附录 A}{$W'_F$ 的二维容许表示一览 [D]}
+\paragraph*{记号.}
+$F$ 为局部域（分别为整体域），$C_F$ 为 $F^\times$（分别为 $F$ 的伊代尔类群（idele class group））；$W'_F$ 为 $F$ 的 Weil--Deligne 群 [T]。
+
+当 $F$ 为整体域、$v$ 为其素位时，存在一个单射 $W_{F_v}\to W_F$，定义从 $W_F$ 的二维容许表示到 $W_{F_v}$ 的二维容许表示的映射 $\rho\mapsto\rho_v$。若 $W_F$ 的另一个表示 $\rho'$ 在除有限多个素位外都满足 $\rho'_v\sim\rho_v$，则 $\rho'$ 与 $\rho$ 等价，且对所有 $v$ 都有 $\rho'_v\sim\rho_v$。$W_F$ 的二维容许表示按惯性群（inertia group）在 $\operatorname{PGL}(2,\C)$ 中的像分类，称这个像为表示的型（type）。\footnote{\textbf{译者注（本次校订）：}这里及下文例外型中的“惯性群”应为整个 Weil 群 $W_F$。循环型、二面体型、四面体型等描述的是表示的射影像；仅凭惯性群的像无法作出这里的分类。}
+
+\paragraph*{(1) 循环型（Cyclic type）.}
+$\mu\oplus\nu$ 为 $\mu,\nu$ 定义的两个一维表示之和。有
+\[
+ \begin{gathered}
+ \mu\oplus\nu\simeq\nu\oplus\mu,\qquad\det(\mu\oplus\nu)=\mu\nu,\\
+ (\mu\oplus\nu)\otimes\chi=(\mu\chi)\oplus(\nu\chi),
+ \qquad(\mu\oplus\nu)^\vee=\mu^{-1}\oplus\nu^{-1}.
+ \end{gathered}
+\]
+其 $L$ 函数、$\varepsilon$ 函数满足\footnote{\textbf{译者注（本次校订）：}这里不能将整体 Weil 群表示写成各局部表示的张量积：各局部项是限制 $(\mu\oplus\nu)_v=\mu_v\oplus\nu_v$，仍为二维。Euler 乘积适用于其 $L$ 因子、$\varepsilon$ 因子；限制张量积分解则适用于相应的自守表示。下段 $\tau=\bigotimes_v\tau_v$ 也应作同样修正。}
+\[
+ \begin{aligned}
+ L(\mu\oplus\nu)&=L(\mu)L(\nu),\\
+ \varepsilon(\mu\oplus\nu)&=\varepsilon(\mu)\varepsilon(\nu),&&F\text{ 为整体域},\\
+ \varepsilon(\mu\oplus\nu,\psi)&=\varepsilon(\mu,\psi)\varepsilon(\nu,\psi),&&F\text{ 为局部域},\\
+ \mu\oplus\nu&=\bigotimes_v(\mu_v\oplus\nu_v),&&F\text{ 为整体域}.
+ \end{aligned}
+\]
+
+\paragraph*{(2) 二面体型（Dihedral type）.}
+$\tau=\Ind_{W_K}^{W_F}\theta$，其中 $\theta$ 为 $C_K$ 的拟特征，$K$ 为 $F$ 的可分二次扩域。$\tau$ 不可约，当且仅当 $\theta\ne{}^\sigma\theta$（$1\ne\sigma\in\Gal(K/F)$）。若 $\theta={}^\sigma\theta$，取 $C_F$ 的拟特征 $\chi$，使 $\theta=\chi\circ N_{K/F}$，并令 $\widehat\sigma$ 为 $C_F$ 中核为 $N_{K/F}C_K$ 的特征。则
+\[
+ \begin{gathered}
+ \Ind_{W_K}^{W_F}\theta=\chi\oplus\chi\widehat\sigma,
+ \qquad\det\tau=\widehat\sigma\,\theta|_{C_F},\\
+ \tau\otimes\chi=\Ind_{W_K}^{W_F}(\theta\,\chi\circ N_{K/F}),
+ \qquad\widetilde\tau=\Ind_{W_K}^{W_F}\theta^{-1},\\
+ L(\tau)=L(\theta),\qquad
+ \varepsilon(\tau)=\varepsilon(\theta)\quad(F\text{ 为整体域}),\\
+ \varepsilon(\tau,\psi)=\lambda_{K/F}(\psi)
+ \varepsilon(\theta,\psi\circ\Tr_{K/F})\quad(F\text{ 为局部域}).
+ \end{gathered}
+\]
+当 $F$ 为整体域时，$\tau=\bigotimes_v\tau_v$，其中若 $K_v/F_v$ 为二次扩张，则 $\tau_v=\Ind_{W_{K_v}}^{W_{F_v}}\theta_v$；若 $K_v=F_v\times F_v$，则 $\tau_v=\theta_v\oplus\theta_v$。\footnote{\textbf{译者注（本次校订）：}在分裂素位 $v$，写 $K\otimes_FF_v=K_w\times K_{w'}\simeq F_v\times F_v$，正确的局部表示是 $\theta_w\oplus\theta_{w'}$；这两个特征一般不同。附录 C 的同一约定也应如此理解。}等价关系为：
+\[
+ \Ind_{W_{K_1}}^{W_F}\theta_1\sim\Ind_{W_{K_2}}^{W_F}\theta_2
+\]
+当且仅当或者 $K_1=K_2$ 且 $\theta_1,\theta_2$ 关于 $\Gal(K/F)$ 共轭，或者 $K_1\ne K_2$，$\theta_1{}^{\sigma_1}\theta_1^{-1}$ 与 $\theta_2{}^{\sigma_2}\theta_2^{-1}$ 均为二阶，且
+\[
+ \theta_1\circ N_{K_1K_2/K_1}=\theta_2\circ N_{K_1K_2/K_2}.
+\]
+
+\paragraph*{(3) 例外型（Exceptional type）.}
+惯性群在 $\operatorname{PGL}(2,\C)$ 中的像为 $\mathfrak A_4$（四面体型）、$\mathfrak S_4$（八面体型），或 $\mathfrak A_5$（二十面体型（icosahedral type））。它们仅在 $F$ 为整体域，或剩余特征为偶数的非 Archimedes 局部域时出现；后一种情形中不会出现二十面体型。
+
+\paragraph*{(4) 特殊型（Special type）.}
+仅在 $F$ 为非 Archimedes 局部域时出现，为 $\chi\otimes\operatorname{sp}(2)$，其中 $\chi$ 为 $F^\times$ 的拟特征，$\operatorname{sp}(2)$ 为 $W'_F$ 的表示，由
+\[
+ z\in\C\longmapsto\begin{pmatrix}1&z\\0&1\end{pmatrix},
+ \qquad w\in W_F\longmapsto\begin{pmatrix}|w|&0\\0&1\end{pmatrix}
+\]
+定义。
+
+\origsection{附录 B}{局部域 $F$ 上 $\GL(2,F)$ 的容许不可约表示一览 [J-L]}
+\paragraph*{记号.}
+$G=\GL(2,F)$；$|\cdot|$ 为 $F$ 上 Haar 测度的伸缩定义的绝对值：$d(ax)=|a|\,dx$；$\psi$ 为 $F$ 的加法群的一个非平凡特征。
+
+\paragraph*{表示. (1) 主系列（Principal series）$\rho(\mu,\nu)$.}
+这里 $\mu,\nu$ 为 $F^\times$ 的拟特征。
+
+(a) 定义。令 $\rho(\mu,\nu)$ 为 $G$ 在满足
+\[
+ f(ang)=\mu(u)\nu(v)|uv^{-1}|^{1/2}f(g)
+\]
+的光滑函数空间上通过右平移给出的表示，其中 $g\in G$，$a=\begin{pmatrix}u&0\\0&v\end{pmatrix}\in G$，$n\in\left\{\begin{pmatrix}1&*\\0&1\end{pmatrix}\right\}$。当此表示不可约时，令 $\pi(\mu,\nu)=\rho(\mu,\nu)$。当 $\rho(\mu,\nu)$ 可约时，恰有两个不可约子商（subquotient）；其中一个有限维，令 $\pi(\mu,\nu)$ 为这个子商，另一个记为 $\sigma(\mu,\nu)$。
+
+(b) 等价关系。$\pi(\mu,\nu)\sim\pi(\nu,\mu)$。当 $F=\C$ 时，$G$ 的任意不可约容许表示均等价于某个 $\pi(\mu,\nu)$。
+
+(c) 有限维表示。当 $F$ 非 Archimedes 时，它们都是一维的，即满足 $\mu\nu^{-1}=|\cdot|^{\pm1}$ 的 $\pi(\mu,\nu)$：
+\[
+ \pi(\mu,\nu)(x)=|\det x|^{\pm1/2}\nu(\det x),\qquad x\in G;
+\]
+相应的表示 $\sigma(\mu,\nu)$ 称为特殊表示。当 $F=\R$ 时，它们为满足 $\mu\nu^{-1}(a)=|a|^{\pm(n+1)}\operatorname{sign}(a)^n$ 的 $\pi(\mu,\nu)$，其中整数 $n\ge0$；当 $F=\C$ 时，它们为满足 $\mu\nu^{-1}(a)=[a^{n+1}\overline a^{m+1}]^{\pm1}$ 的 $\pi(\mu,\nu)$，其中整数 $n,m\ge0$。
+
+(d) 其他性质。中心上的限制为 $\omega_{\pi(\mu,\nu)}=\mu\nu$；以 $F^\times$ 的拟特征扭曲为 $\pi(\mu,\nu)\otimes\chi=\pi(\mu\chi,\nu\chi)$；逆反表示为 $\pi(\mu,\nu)^\vee\sim\pi(\mu^{-1},\nu^{-1})$；局部因子为
+\[
+ L(\pi(\mu,\nu))=L(\mu)L(\nu),\qquad
+ \varepsilon(\pi(\mu,\nu),\psi)=\varepsilon(\mu,\psi)\varepsilon(\nu,\psi).
+\]
+
+\paragraph*{(2) Weil 表示（Weil representations）.}
+$\pi(\tau)$，其中 $\tau=\Ind_{W_K}^{W_F}\theta$，$\theta$ 为 $K^\times$ 的拟特征，$K$ 为 $F$ 的可分二次扩域。
+
+(a) 定义。令 $G_K$ 为 $G$ 中行列式属于 $K^\times$ 的范数的元素构成的指数为二的子群。固定 $F$ 加法群的非平凡特征 $\psi$。那么 $\pi(\tau)$ 是由 $G_K$ 的以下表示 $r(\theta,\psi)$ 诱导出的 $G$ 的表示的同构类。其空间由 $K^\times$ 上满足 $f(t^{-1}x)=\theta(t)f(x)$（$t,x\in K^\times$，$N_{K/F}t=1$）的光滑函数组成\footnote{\textbf{译者注（本次校订）：}为使下列 Fourier 积分及表示作用有定义，这里应取适当的 Schwartz--Bruhat 函数空间，并施加所述等变条件。非 Archimedes 情形可从 $K$ 上局部常值、紧支撑的函数出发；任意光滑函数通常不满足积分所需条件。}，作用为\footnote{\textbf{译者注（本次校订）：}在这里采用的自对偶加法测度下，下面第三个作用公式的右端还应有因子 $|a|_F^{1/2}$。因为代换 $x\mapsto bx$ 使 $K$ 上的加法测度乘以 $|b|_K=|a|_F$，所需的作用为 $\theta(b)|a|_F^{1/2}f(bx)$。这一因子也保证中心特征与下文的 $\widehat\sigma\,\theta|_{F^\times}$ 一致。}
+\[
+ \left(r(\theta,\psi)\begin{pmatrix}1&u\\0&1\end{pmatrix}f\right)(x)
+ =\psi(uN_{K/F}x)f(x),\qquad u\in F,
+\]
+\[
+ \left(r(\theta,\psi)\begin{pmatrix}0&1\\-1&0\end{pmatrix}f\right)(x)
+ =\lambda_{K/F}(\psi)\int_{K^\times}f(y)\psi_{K/F}(xy^\sigma)\,d_\psi y,
+\]
+\[
+ \left(r(\theta,\psi)\begin{pmatrix}a&0\\0&1\end{pmatrix}f\right)(x)
+ =\theta(b)f(bx),\qquad a=N_{K/F}b,\quad b\in K^\times.
+\]
+这里 $\psi_{K/F}=\psi\circ\Tr_{K/F}$，$y^\sigma$ 为 $y$ 在 $\Gal(K/F)$ 的非平凡元素 $\sigma$ 下的共轭，$d_\psi y$ 为 $K$ 上关于特征 $\psi_{K/F}$ 的自对偶 Haar 测度（self-dual Haar measure），$\lambda_{K/F}(\psi)$ 为局部因子 $\varepsilon(\widehat\sigma,\psi)$ 的酉部分，其中 $\widehat\sigma$ 是 $F^\times$ 中在 $N_{K/F}K^\times$ 上平凡的非平凡特征。
+
+(b) 等价关系。
+
+(1) $\pi(\Ind_{W_K}^{W_F}\theta)=\pi(\Ind_{W_K}^{W_F}{}^\sigma\theta)$。
+
+(2) 若 $\theta={}^\sigma\theta$，且 $\chi$ 为满足 $\theta(a)=\chi(N_{K/F}a)$ 的 $F^\times$ 的拟特征，则 $\pi(\Ind_{W_K}^{W_F}\theta)\sim\pi(\chi,\chi\widehat\sigma)$。
+
+(3) 其他等价关系：对于 $K_1\ne K_2$，
+\[
+ \pi(\Ind_{W_{K_1}}^{W_F}\theta_1)=\pi(\Ind_{W_{K_2}}^{W_F}\theta_2)
+\]
+当且仅当 $\theta_1{}^{\sigma_1}\theta_1^{-1}$ 与 $\theta_2{}^{\sigma_2}\theta_2^{-1}$ 均为二阶，且 $\theta_1\circ N_{K_1K_2/K_1}=\theta_2\circ N_{K_1K_2/K_2}$。
+
+(c) 刻画。如果 $F^\times$ 的一个非平凡特征 $\chi$ 固定了 $G$ 的某个不可约容许表示类 $\pi$，即 $\pi\otimes\chi=\pi$，则 $\chi$ 为二阶，对应于 $F$ 的一个可分二次扩域 $K$，且 $\pi=\pi(\tau)$，其中 $\tau=\Ind_{W_K}^{W_F}\theta$，$\theta$ 适当；反之亦然（参见 [L, 第 5 节]）。
+
+(d) 其他性质。当 $F=\R$，或 $F$ 为奇剩余特征的非 Archimedes 域时，任意不可约容许表示均为某个 $\pi(\lambda,\mu)$ 或 $\pi(\Ind_{W_K}^{W_F}\theta)$。\footnote{\textbf{译者注（本次校订）：}当 $F$ 为非 Archimedes 域时，此列表还需加入第 (4) 项的特殊表示，即 Steinberg 表示的拟特征扭曲。}中心上的限制为 $\omega_{\pi(\tau)}=\widehat\sigma\,\theta|_{F^\times}$；以 $F^\times$ 的拟特征扭曲为
+\[
+ \pi(\tau)\otimes\chi=\pi\bigl(\Ind_{W_K}^{W_F}(\theta\,\chi\circ N_{K/F})\bigr);
+\]
+逆反表示为 $\pi(\widetilde\tau)=\pi(\Ind_{W_K}^{W_F}\theta^{-1})$；局部因子为
+\[
+ L(\pi(\tau))=L(\theta),\qquad
+ \varepsilon(\pi(\tau),\psi)=\lambda_{K/F}(\psi)\varepsilon(\theta,\psi_{K/F}).
+\]
+
+\paragraph*{(3) 例外表示（Exceptional representations）.}
+仅当 $F$ 为剩余特征 $2$ 的非 Archimedes 域时出现。在相差 $F^\times$ 的拟特征扭曲的意义下，当 $F$ 的特征为 $0$ 时，其数目为 $4(|2|^{-2}-1)/3$；当 $F$ 的特征为 $2$ 时，其数目无限。它们都是超尖点的（supercuspidal）（见下面的补充；参见 [Tu]）。
+
+\paragraph*{(4) 特殊表示（Special representations）.}
+仅当 $F$ 非 Archimedes 时出现，它们是可约的 $\rho(\mu,\nu)$ 的无限维子商 $\sigma(\mu,\nu)$，即 $\mu\nu^{-1}=|\cdot|^{\pm1}$ 时的子商。必要时交换 $\mu,\nu$，使 $\mu\nu^{-1}=|\cdot|$，则有
+\[
+ \sigma(\mu,\nu)\sim\sigma(\nu,\mu),\qquad
+ \sigma(\mu,\nu)=\chi\,\sigma(|\cdot|^{1/2},|\cdot|^{-1/2}),
+ \quad\chi=\mu|\cdot|^{-1/2}.
+\]
+
+\paragraph*{补充（Complements）.}
+(1) 表示 $\sigma(\mu,\nu)$。当诱导表示 $\rho(\mu,\nu)$ 可约时，用 $\sigma(\mu,\nu)$ 表示与其唯一无限维子商等价的任意表示。当 $F=\R$ 时，$\sigma(\mu,\nu)$ 为 $\pi(\Ind_{\C^\times}^{W_F}\theta)$，其中 $\theta\ne{}^\sigma\theta$。
+
+(2) 对 $W_F$ 的二维容许表示 $\rho$，至多存在一个 $G$ 的不可约容许表示 $\pi$，使
+\[
+ \omega_\pi=\det\rho,\qquad
+ L(\pi\otimes\chi)=L(\rho\otimes\chi),\qquad
+ \varepsilon(\pi\otimes\chi,\psi)=\varepsilon(\rho\otimes\chi,\psi)
+\]
+对 $F^\times$ 的任意拟特征 $\chi$ 成立；存在时通常将其记为 $\pi(\rho)$。若 $\rho$ 可约，即 $\rho=\mu\oplus\nu$，则 $\pi=\pi(\mu,\nu)$；若 $\rho=\chi\otimes\operatorname{sp}(2)$，则 $\pi=\sigma(\mu,\nu)$，其中 $\mu=\chi|\cdot|^{1/2}$，$\nu=\chi|\cdot|^{-1/2}$\footnote{\textbf{译者注（本次校订）：}此处与附录 A 对 $\operatorname{sp}(2)$ 的归一化不一致。按附录 A，$\det\operatorname{sp}(2)=|\cdot|$，故 $\det\rho=\chi^2|\cdot|$；本句的 $\mu\nu$ 却等于 $\chi^2$。若保留附录 A 的定义，这里应取 $\mu=\chi|\cdot|$、$\nu=\chi$；若保留本句，则应将 $\operatorname{sp}(2)$ 在 Weil 群上的作用归一化为 $\operatorname{diag}(|w|^{1/2},|w|^{-1/2})$。}；若 $\rho$ 为二面体型，即 $\rho=\Ind_{W_K}^{W_F}\theta$，则 $\pi=\pi(\Ind_{W_K}^{W_F}\theta)$。其余情形即 $\rho$ 为例外型时，$\pi$ 的存在性尚未完全解决，但基变换技术已被用于证明许多情形中的存在性。反过来，每个 $\pi$ 都应为某个 $\pi(\rho)$。
+
+\origsection{附录 C}{$\GL(2)$ 的不可约容许自守表示 [J-L]}
+\paragraph*{记号.}
+$F$ 为整体域，$\A_F$ 为其阿代尔环，$C_F=\A_F^\times/F^\times$ 为伊代尔类群，$|\cdot|$ 为 $\A_F$ 上的绝对值。
+
+\paragraph*{(1) 非尖点表示（Noncuspidal representations）.}
+(1.1) 对 $F$ 的广义特征（Grössencharakter）$\lambda,\mu$，有表示 $\pi(\lambda,\mu)=\bigotimes_v\pi(\lambda_v,\mu_v)$；一维表示即满足 $\lambda\mu^{-1}=|\cdot|^{\pm1}$ 的 $\pi(\lambda,\mu)$。
+
+(1.2) $\GL(2,\A_F)$ 的任意非尖点不可约容许自守表示 $\pi$ 均具有下述形式：存在 $F$ 的两个广义特征 $\lambda,\mu$ 和 $F$ 的一个有限素位集合 $S$，使其分量满足
+\[
+ \pi_v=\pi(\lambda_v,\mu_v),\quad v\notin S;
+ \qquad\pi_v=\sigma(\lambda_v,\mu_v),\quad v\in S,
+\]
+其中 $\sigma(\lambda_v,\mu_v)$ 为可约的 $\rho(\lambda_v,\mu_v)$ 的无限维子商（附录 B）。
+
+\paragraph*{(2) 尖点表示：例子（Cuspidal representations）.}
+(2.1) 设 $K$ 为 $F$ 的可分二次扩域，$\theta$ 为 $K$ 的一个不被 $\Gal(K/F)$ 固定的广义特征，则 $\tau=\Ind_{W_K}^{W_F}\theta$ 所对应的表示为
+\[
+ \pi(\tau)=\bigotimes_v\pi\bigl(\Ind_{W_{K_v}}^{W_{F_v}}\theta_v\bigr),
+\]
+当 $K_v=F_v\times F_v$ 时，约定 $\Ind_{W_{K_v}}^{W_{F_v}}\theta_v=\theta_v\oplus\theta_v$。
+
+\paragraph*{性质（Properties）.}
+(1) 设 $\pi\in\Pi(G)$。存在 $F$ 的非平凡广义特征 $\chi$ 使 $\pi\otimes\chi=\pi$，其充要条件是：存在 $F$ 的可分二次扩域 $E$ 和 $E$ 的广义特征 $\theta$，使
+
+(a) $\chi$ 为 $C_F$ 中核为 $N_{E/F}C_E$ 的特征；
+
+(b) $\pi=\pi(\Ind_{W_E}^{W_F}\theta)$（特别地，若 $\theta={}^\sigma\theta$，则 $\pi=\pi(\tau,\tau\chi)$，其中 $\tau$ 是 $F$ 的一个提升至 $E$ 后为 $\theta$ 的广义特征）。
+
+(2) $\pi(\Ind_{W_{K_1}}^{W_F}\theta_1)=\pi(\Ind_{W_{K_2}}^{W_F}\theta_2)$，当且仅当或者 $K_1=K_2$ 且 $\theta_2=\theta_1$ 或 ${}^\sigma\theta_1$；或者 $K_1\ne K_2$，$\theta_1{}^{\sigma_1}\theta_1^{-1}$ 和 $\theta_2{}^{\sigma_2}\theta_2^{-1}$ 均为二阶，且
+\[
+ \theta_1\circ N_{K_1K_2/K_1}=\theta_2\circ N_{K_1K_2/K_2}.
+\]
+
+(3.1) 更一般地，令 $\rho$ 为 $W_F$ 的二维容许表示。若对所有 $v$ 均有 $\pi_v\simeq\pi(\rho_v)$，便称 $\pi=\bigotimes_v\pi_v$ 为 $\pi(\rho)$。当 $\rho$ 不可约时，此种 $\pi$ 的存在性与所有 $\rho\otimes\chi$ 的 Artin 猜想有关，其中 $\chi$ 为 $C_F$ 的任意拟特征 [J-L, 第 12 节]。
+
+(3.2) 此外还有许多类型更复杂的尖点表示，经典的 $\Delta$ 函数便给出了这样的例子。
+
+\section*{II. $\GL_2$ 的基变换：证明梗概（A sketch of the proof）}
+\origsection{1}{迹公式（The trace formula）}
+以下使用与本论文集 [G-J-1] 相近的记号。
+
+设 $F$ 为数域，$E$ 为素数次循环扩域。令 $Z_1=N_{E/F}Z(\A_E)$，其中 $\A_E$ 为 $E$ 的阿代尔环，并令 $Z_1(F)=Z_1\cap Z(F)$；与通常一样，$Z$ 为 $\GL_2=G$ 的中心，且与乘法群等同。由于 $E/F$ 循环，有 $Z_1(F)=N_{E/F}Z(E)$。
+
+选取 $Z_1/Z_1(F)$ 的一个特征 $\omega$，考虑空间
+\[
+ L^2(Z_1\cdot G(F)\backslash G(\A),\omega)=L^2,
+\]
+其元素是 $G(F)\backslash G(\A)$ 上在 $Z_1$ 下按 $\omega$ 变换的函数，即
+\[
+ \varphi(z\gamma g)=\omega(z)\varphi(g),\qquad z\in Z_1,\quad\gamma\in G(F),
+\]
+并在 $Z_1\cdot G(F)\backslash G(\A)$ 上平方可积。
+
+这里的情形比 [G-J-1] 中的 $E=F$ 稍为一般；空间 $L_0^2$ 与 $L_{\mathrm{sp}}^2$ 仍按相同方式定义。用 $r$ 表示 $G(\A)$ 在 $L^2$ 中的自然表示在 $L_0^2\oplus L_{\mathrm{sp}}^2$ 上的限制。若 $f\in C_c^\infty(Z_1\backslash G(\A),\omega^{-1})$，即 $f$ 为 $G(\A)$ 上模 $Z_1$ 紧支且在 $Z_1$ 下按 $\omega^{-1}$ 变换的光滑函数，则算子 $r(f)$ 为迹类（trace class）。按 [G-J-1, 第 6--7 节] 的约定选择 Haar 测度，并进一步假定
+\[
+ \operatorname{vol}(Z_1\cdot Z(F)\backslash Z(\A))=l.
+\]
+于是 $\operatorname{tr}r(f)$ 为以下 (i)--(vii) 的和；这里假定 $f$ 为局部函数 $f_v$ 的张量积（参见 [L, 第 8 节]）：
+\begin{equation}
+ \sum_{z\in Z_1(F)\backslash Z(F)}
+ \operatorname{vol}(Z_1\cdot G(F)\backslash G(\A))\,f(z).
+ \tag{i}
+\end{equation}
+\begin{equation}
+ \sum_{\gamma\in\mathcal E}\varepsilon(\gamma)
+ \operatorname{vol}(Z_1\cdot G_\gamma(F)\backslash G_\gamma(\A))
+ \int_{G_\gamma(\A)\backslash G(\A)}f(g^{-1}\gamma g)\,dg.
+ \tag{ii}
+\end{equation}
+这里 $\mathcal E$ 是模去 $Z_1(F)$ 后的椭圆元素（即特征值不属于 $F$ 的元素）的共轭类的一组代表元；若方程 $\delta^{-1}\gamma\delta=z\gamma$ 对某个 $z\in Z_1(F)\setminus\{1\}$ 有解，则 $\varepsilon(\gamma)=1/2$，否则为 $1$。
+\begin{equation}
+ -\frac14\sum_{\substack{\eta=(\mu,\mu)\\\eta\in D^\circ}}
+ \operatorname{tr}\bigl(M(\eta)\pi_\eta(f)\bigr).
+ \tag{iii}
+\end{equation}
+这里 $D^\circ$ 为 $\A^\times/F^\times$ 的特征对 $\eta=(\mu,\nu)$ 的集合，要求 $\mu\nu$ 在 $Z_1$ 上诱导 $\omega$；$M(\eta)$ 和 $\pi_\eta$ 见 [G-J-1, 第 4 节]，并且
+\[
+ \pi_\eta(f)=\int_{Z_1\backslash G(\A)}f(g)\pi_\eta(g)\,dg.
+\]
+仿照 [G-J-1, 第 7-D 节]，在 $D^\circ$ 上定义 Haar 测度 $d\eta$：将 $D^\circ$ 视为 $\A^\times/F^\times$ 的特征群（赋予对偶 Haar 测度）的齐性空间（homogeneous space）的并，作用为 $\chi\cdot(\mu,\nu)=(\chi\mu,\chi^{-1}\nu)$。于是第四项为
+\begin{equation}
+ \frac12\int_{D^\circ}m^{-1}(\eta)m'(\eta)
+ \operatorname{tr}(\pi_\eta(f))\,d\eta,
+ \tag{iv}
+\end{equation}
+其中导数 $m'$ 的计算与 [G-J-1, 第 7-D 节] 相同。
+\begin{equation}
+ \sum_{z\in Z_1(F)\backslash Z(F)}l\lambda_0
+ \prod_v\frac{\displaystyle\int_{Z_vN_v\backslash G_v}
+ f_v(g^{-1}zn_0g)\,dg}{L(1,1_v)},
+ \qquad n_0=\begin{pmatrix}1&1\\0&1\end{pmatrix}.
+ \tag{v}
+\end{equation}
+$\lambda_0$ 和其他记号见 [G-J-1, 第 7-B 节]。其余项不写成 [G-J-1] 的形式，因为该文使用非不变的局部分布来表示它们。例如，局部分布
+\[
+ \frac12 A_1(\gamma,f_v)=-\Delta(\gamma)
+ \int_{|x_v|>1}f_v^K\begin{pmatrix}a&(a-b)x_v\\0&b\end{pmatrix}
+ \log|x_v|\,dx_v,
+\]
+其中
+\[
+ \gamma=\begin{pmatrix}a&0\\0&b\end{pmatrix},\qquad
+ \Delta_v(\gamma)=\left|\frac{(a-b)^2}{ab}\right|_v^{1/2},\qquad
+ f_v^K(g)=\int_{K_v}f_v(k^{-1}gk)\,dk,
+\]
+可写成 $A_2(\gamma,f_v)+A_3(\gamma,f_v)$，其中 $A_2$ 不变，$A_3$ 则与其他项合在一起，给出一个不变表达式。更确切地，对非 Archimedes 素位 $v$，取\footnote{\textbf{译者注（本次校订）：}下式第二行的 $\int_{|x_v|>1}\log|x_v|\,dx_v$ 按通常的加法 Haar 测度发散。若剩余域有 $q$ 个元素且 $\operatorname{vol}(\mathcal O_v)=1$，其各壳层贡献为 $(1-q^{-1})m q^m\log q$（$m\ge1$）。因此这一项需要补充积分截断、衰减因子或明确的正则化约定，才能作为有限数值使用。}
+\[
+ \begin{aligned}
+ A_2(\gamma,f_v)={}&\log|(a-b)/a|_v\,F(\gamma,f_v)\\
+ &+\Delta_v(\gamma)f_v^K(z)\int_{|x_v|>1}\log|x_v|\,dx_v\\
+ &-|a/b|^{1/2}|\overline\varpi_v|\log|\overline\varpi_v|
+ \int_{Z_vN_v\backslash G_v}f_v(gzn_0g^{-1})\,dg,
+ \qquad z=\begin{pmatrix}a&0\\0&a\end{pmatrix}.
+ \end{aligned}
+\]
+
+这里 $F(\gamma,f_v)=\Delta_v(\gamma)\int_{A_v\backslash G_v}f_v(g^{-1}\gamma g)\,dg$，$\overline\varpi_v$ 是 $F_v$ 的一个一致化参数（uniformizing parameter）。若 $v$ 为 Archimedes 素位，则取
+\[
+ \begin{aligned}
+ A_2(\gamma,f_v)={}&\log\left|1-\frac ba\right|_vF(\gamma,f_v)\\
+ &-\frac{L'(1,1_v)}{L(1,1_v)^2}
+ \int_{Z_vN_v\backslash G_v}f_v(g^{-1}zn_0g)\,dg.
+ \end{aligned}
+\]
+由此得到第六项
+\begin{equation}
+ -\sum_{\substack{\gamma\in Z_1\backslash A(F)\\\gamma\notin Z(F)}}
+ l\lambda_{-1}\sum_v A_2(\gamma,f_v)\prod_{w\ne v}F(\gamma,f_w).
+ \tag{vi}
+\end{equation}
+可以验证，$\gamma\mapsto A_3(\gamma,f_v)$ 可延拓为 $A(F_v)$ 上的连续映射；而 [G-J-1] 中的 6.34 减去我们的 (v)，再加上 6.35 减去我们的 (vi)，得到
+\[
+ \sum_{\gamma\in Z_1\backslash A(F)}
+ -\lambda_{-1}l\sum_v A_3(\gamma,f_v)\prod_{w\ne v}F(\gamma,f_w).
+\]
+再用某种 Poisson 求和公式（Poisson summation formula），可将其变为
+\[
+ \int_{D^\circ}-\sum_v B_1(\eta_v,f_v)
+ \prod_{w\ne v}\operatorname{tr}\pi_{\eta_w}(f_w)\,d\eta.
+\]
+再加上 [G-J-1] 中的 6.36 减去我们的 (iv)，便得到最后一项：
+\begin{equation}
+ 2\int_{D^\circ}\sum_v B(\eta_v,f_v)
+ \prod_{w\ne v}\operatorname{tr}\pi_{\eta_w}(f_w)\,d\eta.
+ \tag{vii}
+\end{equation}
+
+\origsection{2}{扭曲迹公式（The twisted trace formula）}
+本节使用 Kottwitz 在本论文集中的文章 [K] 所给出的定义与结果，论述仍以 [L, 第 8 节] 为依据。令\footnote{\textbf{译者注（本次校订）：}自守空间的商中应补入 $G(E)$，即 $L^2(Z(\A_E)G(E)\backslash G(\A_E),\widetilde\omega)$。下文核的对角积分也应在这一自守商空间上进行；这与上一节 $L^2$ 的定义相对应。}
+\[
+ L^2(Z(\A_E)\backslash G(\A_E),\widetilde\omega)=\widetilde L^2,
+ \qquad\widetilde\omega=\omega\circ N_{E/F}.
+\]
+Galois 群 $\Gamma=\Gal(E/F)$ 通过 ${}^\sigma\rho(x)=\rho(x^\sigma)$（$\rho\in\widetilde L^2$，$x\in G(\A_E)$，$\sigma\in\Gamma$）作用于 $\widetilde L^2$。
+
+令 $R_d$ 为 $G(\A_E)$ 在 $\widetilde L^2$ 中的自然表示在离散谱（discrete spectrum）$\widetilde L_0^2\oplus\widetilde L_{\mathrm{sp}}^2$ 上的限制。投影与 Galois 群的作用交换，因此 $R_d$ 可延拓为 $\Gamma\ltimes G(\A_E)$ 的表示 $R'_d$。设 $\phi\in C_c^\infty(Z(\A_E)\backslash G(\A_E),\widetilde\omega^{-1})$；则 $R_d(\phi)$ 为迹类，且对 $\sigma\in\Gamma$，$R'_d(\sigma)$ 为酉算子。算子 $R_d(\phi)$ 可用核（kernel）$K(\phi,x,y)$ 表示，于是算子 $R'_d(\sigma)R_d(\phi)$ 由核 $K(\phi,x^\sigma,y)$ 表示，并有
+\[
+ \operatorname{tr}(R'_d(\sigma)R_d(\phi))
+ =\int_{Z(\A_E)\backslash G(\A_E)}K(\phi,x^\sigma,x)\,dx.
+\]
+照例假定 $\phi$ 为张量积 $\phi=\bigotimes_v\phi_v$，便可按 [G-J-1] 的方式计算此积分；若 $\sigma\ne1$，它是以下 (1)--(7) 的和：
+\begin{equation}
+ \sum_\delta\operatorname{vol}\bigl(Z(\A)G_\delta^\sigma(E)
+ \backslash G_\delta^\sigma(\A_E)\bigr)
+ \int_{Z(\A_E)G_\delta^\sigma(\A_E)\backslash G(\A_E)}
+ \phi(g^{-\sigma}\delta g)\,dg.
+ \tag{1}
+\end{equation}
+这里求和遍及满足 $N(\delta)$ 为中心元素的 $\delta$ 的 $\sigma$-共轭类；$G_\delta^\sigma$ 为 $\delta$ 的 $\sigma$-中心化子（参见 [K]）。
+\begin{equation}
+ \sum_{\delta\in\mathcal E_\sigma}\varepsilon(\delta)
+ \operatorname{vol}\bigl(Z(\A)\cdot G_\delta^\sigma(E)
+ \backslash G_\delta^\sigma(\A_E)\bigr)
+ \int_{Z(\A_E)G_\delta^\sigma(\A_E)\backslash G(\A_E)}
+ \phi(g^{-\sigma}\delta g)\,dg.
+ \tag{2}
+\end{equation}
+这里 $\mathcal E_\sigma$ 是 $G(E)$ 中模去 $Z(E)$ 后、不能与三角矩阵 $\sigma$-共轭的 $\sigma$-共轭类的一组代表元。若方程 $\tau^{-\sigma}\delta\tau=z\delta$ 在 $Z(E)$ 中有满足 $z\notin Z(E)^{1-\sigma}$ 的解，则 $\varepsilon(\delta)=1/2$，否则为 $1$。
+\begin{equation}
+ -\frac14\sum_{{}^\sigma\eta=\eta^\vee}
+ \operatorname{tr}\bigl(M_E({}^\sigma\eta)\pi'_\eta(\sigma)\pi_\eta(\phi)\bigr).
+ \tag{3}
+\end{equation}
+这里，若 $\eta=(\mu,\nu)$ 是满足 $\mu\nu=\widetilde\omega$ 的 $\A_E^\times/E^\times$ 的特征对，则 $\eta^\vee=(\nu,\mu)$。表示 $\pi_\eta$ 实现在 $G(\A_E)$ 上的函数空间中；$\sigma\in\Gamma$ 的作用定义从 $\pi_\eta$ 的空间到 $\pi_{{}^\sigma\eta}$ 的空间的算子 $\pi'_\eta(\sigma)$。而 $M_E({}^\sigma\eta)$ 是 $\pi_{{}^\sigma\eta}$ 与 $\pi_{{}^\sigma\eta^\vee}$ 之间的交织算子。由于 ${}^\sigma\eta^\vee=\eta$，所以乘积 $M({}^\sigma\eta)\pi'_\eta(\sigma)\pi_\eta(\phi)$ 是相应空间上的良定义算子，上式有意义。
+\begin{equation}
+ \frac1{2l^2}\int_{\eta\in D^\circ}
+ m_E^{-1}(\widetilde\eta)m'_E(\widetilde\eta)
+ \operatorname{tr}\bigl(\pi'_{\widetilde\eta}(\sigma)
+ \pi_{\widetilde\eta}(\phi)\bigr)\,d\eta.
+ \tag{4}
+\end{equation}
+这里若 $\eta=(\mu,\nu)$，则 $\widetilde\eta=(\mu\circ N_{E/F},\nu\circ N_{E/F})$。有 $l^2$ 个 $\eta$ 给出同一个 $\widetilde\eta$。请注意，这里的记号 $\widetilde\eta$ 与 [L] 中的含义不同。
+\begin{equation}
+ \lambda_0\prod_v\theta^\sigma(0,\phi_v).
+ \tag{5}
+\end{equation}
+其中
+\[
+ \theta^\sigma(0,\phi_v)=L(1,1_v)^{-1}
+ \iiint\phi_v(k^{-\sigma}t^{-\sigma}n^{-\sigma}\widetilde n_0ntk)
+ t^{-2\rho}\,dn\,dt\,dk,
+\]
+$k\in\widetilde K_v$，后者是 $\GL_2(E\otimes_FF_v)$ 的标准极大紧子群，
+\[
+ t=\begin{pmatrix}a&0\\0&b\end{pmatrix},\qquad
+ t^{-2\rho}=\left|\frac ab\right|^{-1},\qquad
+ \widetilde n_0=\begin{pmatrix}1&z\\0&1\end{pmatrix},\quad\operatorname{tr}_{E/F}z=1.
+\]
+积分区域为 $\widetilde K_v\times Z(E_v)\backslash A(E_v)\times N(F_v)\backslash N(E_v)$，其中 $E_v=E\otimes_FF_v$。
+\begin{equation}
+ -\frac{\lambda_{-1}}l\sum_{\delta\in\mathcal F}\sum_v
+ A_2^\sigma(\delta,\phi_v)\prod_{w\ne v}F^\sigma(\delta,\phi_w).
+ \tag{6}
+\end{equation}
+这里
+\[
+ \mathcal F=\{\delta\in A^{1-\sigma}(E)Z(E)\backslash A(E):N(\delta)\notin Z(F)\},
+\]
+\[
+ F^\sigma(\delta,\phi_w)=\Delta_w(\gamma)
+ \int_{Z(E_v)A(F_v)\backslash G(E_v)}\phi_w(g^{-\sigma}\delta g)\,dg,
+ \qquad\gamma=N(\delta).
+\]
+这里略去 $A_2^\sigma(\delta,\phi_v)$ 的具体定义，只指出：\footnote{\textbf{译者注（本次校订）：}上面 $F^\sigma$ 的定义式中的局部下标应统一：积分区域应写成 $Z(E_w)A(F_w)\backslash G(E_w)$，与 $\phi_w$ 和 $\Delta_w$ 对应。}若 $f_v$ 与 $\phi_v$ 在基变换对应下相伴（associated）（见 [K]），则 $A_2^\sigma(\delta,\phi_v)=lA_2(\gamma,f_v)$。
+
+与上文一样，剩余项可写为
+\begin{equation}
+ \frac2{l^2}\int_{\eta\in D^\circ}\sum_v B^\sigma(\widetilde\eta_v,\phi_v)
+ \prod_{w\ne v}\operatorname{tr}\pi_{\widetilde\eta_w}(\phi_w)\,d\eta.
+ \tag{7}
+\end{equation}
+关于分布 $A_2^\sigma$ 与 $B^\sigma$ 的定义及详细研究，参见 [L, 第 7 节]（其中省略下标 $\sigma$）及 [K, 引理 4]。
+
+\origsection{3}{比较（The comparison）}
+今后假定函数\footnote{\textbf{译者注（本次校订）：}这里 $\phi$ 所属函数空间的中心特征应写为 $\widetilde\omega^{-1}$，与上一节保持一致；卷积算子中的函数须按表示中心特征的逆变换，积分才能下降到中心商。}
+\[
+ f=\bigotimes_vf_v\in C_c^\infty(Z_1\backslash G(\A),\omega^{-1}),\qquad
+ \phi=\bigotimes_v\phi_v\in C_c^\infty(Z(\A_E)\backslash G(\A_E),\widetilde\omega)
+\]
+
+满足 $\phi_v$ 和 $f_v$ 在 [K] 定义的意义下“相伴”。考虑
+\[
+ \mathcal D_1=l\operatorname{tr}\bigl(R'_d(\sigma)R_d(\phi)\bigr)-\operatorname{tr}r(f).
+\]
+
+\begin{originaltheorem}{命题 1（Proposition 1）}
+有
+\[
+ \begin{aligned}
+ \mathcal D_1={}&\frac2{l^2}\int_{D^\circ}\sum_v
+ \left(lB^\sigma(\eta_v,\phi_v)
+ -\sum_{\eta\mapsto\widetilde\eta}B(\eta_v,f_v)\right)
+ \prod_{w\ne v}\operatorname{tr}\pi_{\eta_w}(f_w)\,d\eta\\
+ &-\frac{\delta_{l,2}}2
+ \sum_{\substack{\eta=(\mu,{}^\sigma\mu)\\{}^\sigma\mu\ne\mu,\ {}^\sigma\mu\mu=\widetilde\omega}}
+ \operatorname{tr}\bigl(M({}^\sigma\eta)\pi'_\eta(\sigma)\pi_\eta(\phi)\bigr),
+ \end{aligned}
+\]
+其中 $\delta_{l,2}=1$（$l=2$），$\delta_{l,2}=0$（$l\ne2$）。
+\end{originaltheorem}
+
+只需逐项比较 $\operatorname{tr}(r(f))$ 与 $l\operatorname{tr}(R'_d(\sigma)R_d(\phi))$ 的表达式。
+
+例如，为证明 $l\cdot(1)=\text{(i)}$，注意这里对满足 $N(\delta)$ 为 $G(F)$ 中心元素的 $\delta\in G(E)$ 求和。因此，$G_\delta^\sigma(E)$ 是 $G$ 的一个扭曲内形式（twisted inner form）的 $F$-点集合。由于使用 Tamagawa 测度（Tamagawa measure），
+\[
+ \begin{aligned}
+ l\operatorname{vol}\bigl(Z(\A)G_\delta^\sigma(E)\backslash G_\delta^\sigma(\A_E)\bigr)
+ &=l\operatorname{vol}(Z(\A)G(F)\backslash G(\A))\\
+ &=\operatorname{vol}(Z_1G(F)\backslash G(\A)).
+ \end{aligned}
+\]
+待比较的表达式是相应局部量的乘积；利用 [K] 中相伴函数的性质 A$'$、B$'$，以及出现负号的素位数为偶数这一事实，即得所需结果。证明 $l\cdot(2)=\text{(ii)}$ 更容易，因为此时 $G_\delta^\sigma(E)=G_\gamma(F)$，其中 $\gamma=N(\delta)$；由于 $G_\gamma$ 为阿贝尔群，扭曲是平凡的。
+
+比较 $l\cdot(3)$ 与 (iii) 稍复杂，需要区分两种情形。
+
+(a) $l\ne2$。此时 ${}^\sigma\eta=\eta^\vee$ 蕴含 ${}^\sigma\eta=\eta=\eta^\vee$，且 $M(\eta)=-1$。另一方面，注意
+\[
+ \operatorname{tr}\pi_{\eta_v}(f_v)
+ =\int_{Z_v\backslash A_v}F(a,f_v)\eta_v(a)\,da,
+\]
+而对相伴的 $f_v,\phi_v$，当 $a=N(b)$ 时有 $F(a,f_v)=F^\sigma(b,\phi_v)$。此外
+\[
+ \operatorname{tr}\bigl(\pi'_{\widetilde\eta_v}(\sigma)
+ \pi_{\widetilde\eta_v}(\phi_v)\bigr)
+ =\int_{\widetilde Z_v\backslash\widetilde A_v}
+ F^\sigma(b,\phi_v)\widetilde\eta_v(b)\,db,
+\]
+其中 $\widetilde Z_v=Z(E\otimes_FF_v)$，$\widetilde A_v=A(E\otimes_FF_v)$。所以当 $\phi,f$ 相伴，且 $\widetilde\eta=(\mu\circ N_{E/F},\nu\circ N_{E/F})$、$\eta=(\mu,\nu)$ 时，有
+\[
+ \operatorname{tr}(\pi'_{\widetilde\eta}(\sigma)\pi_{\widetilde\eta}(\phi))
+ =\operatorname{tr}(\pi_\eta(f)).
+\]
+由此得到 $l\cdot(3)=\text{(iii)}$。
+
+(b) 若 $l=2$，对 $\eta=\eta^\vee={}^\sigma\eta$ 仍可使用相同论证；但还存在对应于 $\eta=(\mu,\nu)$、满足 $\mu={}^\sigma\nu\ne{}^\sigma\mu$ 的其他项，此时
+\[
+ l\cdot(3)-\text{(iii)}
+ =-\frac l4\sum_{\substack{\mu\ne{}^\sigma\mu,\ \eta=(\mu,{}^\sigma\mu)\\{}^\sigma\mu\mu=\widetilde\omega}}
+ \operatorname{tr}\bigl(M({}^\sigma\eta)\pi'_\eta(\sigma)\pi_\eta(\phi)\bigr).
+\]
+为证明 $l\cdot(4)=\text{(iv)}$，使用上述注记以及
+\[
+ m_E(\widetilde\eta)^l=\prod_{\eta\mapsto\widetilde\eta}m(\eta),
+\]
+其中 $\eta\mapsto\widetilde\eta$ 指 $\eta=(\mu,\nu)$ 且 $\widetilde\eta=(\mu\circ N_{E/F},\nu\circ N_{E/F})=(\widetilde\mu,\widetilde\nu)$。按定义，
+\[
+ m(\eta)=\frac{L(1,\mu^{-1}\nu)}{L(1,\nu^{-1}\mu)},
+ \qquad m_E(\widetilde\eta)=\frac{L(1,\widetilde\mu^{-1}\widetilde\nu)}
+ {L(1,\widetilde\mu\widetilde\nu^{-1})}.
+\]
+$l\cdot(5)=\text{(v)}$ 来自幺幂元素的轨道积分与扭曲轨道积分的比较。为完成命题 1 的证明，只需证明 $l\cdot(6)=\text{(vi)}$，而这又来自等式
+\[
+ A_2(\gamma,f_v)=A_2^\sigma(\delta,\phi_v)\qquad\text{若 }\gamma=N(\delta).
+\]
+
+\noindent\emph{译注：所供扫描本 II.2 写 $A_2^\sigma=lA_2$，而 II.3 末句写 $A_2=A_2^\sigma$，两处常数因子不同；译文分别保留扫描符号。}
+
+\origsection{4}{主要定理（The main theorem）}
+表示 $r$ 是重数为一的 $G(\A)$ 的酉不可约表示的离散直和：
+\[
+ r=\sum_{i\in I}\pi_i=\sum_{i\in I}\bigotimes_v\pi_{i,v},
+ \qquad\operatorname{tr}r(f)=\sum_{i\in I}\prod_v\operatorname{tr}\pi_{i,v}(f_v).
+\]
+设 $v$ 为非 Archimedes 素位。给定 $G(F_v)$ 的球面 Hecke 代数中的 $f_v$，除非 $\pi_{i,v}$ 非分歧，否则 $\operatorname{tr}\pi_{i,v}(f_v)=0$。非分歧时，它对应于 $L$ 群的连通分量 $\GL_2(\C)$ 中某个半单元素 $t_{i,v}$ 的共轭类。Hecke 代数中的每个 $f_v$ 都定义 $\GL_2(\C)$ 上的有理类函数（rational class function）$f_v^\vee$，使 $f_v^\vee(t_{i,v})=\operatorname{tr}\pi_{i,v}(f_v)$。选择包含所有 Archimedes 素位的有限素位集合 $V$，并假定当 $v\notin V$ 时 $f_v$ 属于 Hecke 代数。于是有：
+
+\begin{originaltheorem}{引理 1（Lemma 1）}
+$\displaystyle\operatorname{tr}r(f)
+ =\sum_i\prod_{v\in V}\operatorname{tr}\pi_{i,v}(f_v)
+ \prod_{v\notin V}f_v^\vee(t_{i,v})$。
+\end{originaltheorem}
+
+表示 $R_d$ 也可写成
+\[
+ R_d=\sum_{j\in J}\Pi_j=\sum_{j\in J}\bigotimes_v\Pi_{j,v},
+\]
+其中 $\Pi_j$ 为 $G(\A_E)$ 的自守表示，$\Pi_{j,v}$ 为 $G(F_v\otimes_FE)$ 的表示。由于 ${}^\sigma R_d\simeq R_d$ 且无重数，$\sigma$ 置换这些 $\Pi_j$。若 ${}^\sigma\Pi_j\simeq\Pi_j$，可将 $R'_d(\sigma)$ 限制到 $\Pi_j$ 的空间，记为 $\Pi'_j(\sigma)$。未被 $\sigma$ 固定的 $\Pi_j$ 对 $\operatorname{tr}(R'_d(\sigma)R_d(\phi))$ 没有贡献，因为无不动点的置换矩阵的迹为零。因此
+\[
+ \operatorname{tr}(R'_d(\sigma)R_d(\phi))
+ =\sum_{{}^\sigma\Pi_j\simeq\Pi_j}\operatorname{tr}(\Pi'_j(\sigma)\Pi_j(\phi)).
+\]
+此外 $\Pi_j=\bigotimes_v\Pi_{j,v}$，且 ${}^\sigma\Pi_{j,v}\simeq\Pi_{j,v}$。我们可以定义算子（其选择只相差一个 $l$ 次单位根） $\Pi'_{j,v}(\sigma)$；若 $\Pi_{j,v}$ 非分歧，则有典范选择。若 $\phi_v,f_v$ 在 Hecke 代数中相伴，选择半单元素 $t_{j,v}\in\GL_2(\C)$ 使
+\[
+ \operatorname{tr}(\Pi'_{j,v}(\sigma)\Pi_{j,v}(\phi_v))
+ =\operatorname{tr}\Pi_{j,v}(\phi_v)=f_v^\vee(t_{j,v}).
+\]
+于是对某个充分大的有限素位集合 $V$，有：
+
+\begin{originaltheorem}{引理 2（Lemma 2）}
+$\displaystyle\operatorname{tr}(R'_d(\sigma)R_d(\phi))
+ =\sum_j\prod_{v\in V}\operatorname{tr}(\Pi'_{j,v}(\sigma)\Pi_{j,v}(\phi_v))
+ \prod_{v\notin V}f_v^\vee(t_{j,v})$。
+\end{originaltheorem}
+
+\paragraph*{注记.}
+若 $v$ 非 Archimedes 且在 $E$ 中分裂，则任意 $f_v$ 都与某个 $\phi_v$ 相伴。事实上，可取 $\phi_v=f_{w_1}\otimes\cdots\otimes f_{w_l}$，其中 $w_i$ 为 $E$ 中位于 $v$ 之上的素位，且 $f_v=f_{w_1}*\cdots*f_{w_l}$ 可以取为上述测试函数空间中的任意函数。$t_{j,v}$ 的共轭类由 $\Pi_{j,v}$ 良定义。
+
+若 $v$ 在 $E$ 中不分裂且非分歧，并且 $\phi_v,f_v$ 在 Hecke 代数中相伴，则可像上面一样定义 $\GL(2,\C)$ 上的函数 $\phi_v^\vee$，且对每个半单 $t\in\GL_2(\C)$，有
+\[
+ f_v^\vee(t)=\phi_v^\vee(t^l).
+\]
+此时，上述条件不能唯一确定 $t_{j,v}$ 的共轭类。
+
+若 $l\ne2$，令 $R=lR_d$。暂且假定 $l=2$。若 $\mu$ 是 $\A_E^\times/E^\times$ 的特征，满足 ${}^\sigma\mu\mu=\widetilde\omega$ 且 ${}^\sigma\mu\ne\mu$，则考虑 $\tau_\mu=\pi_\eta$，其中 $\eta=(\mu,{}^\sigma\mu)$。如上所述，算子
+\[
+ M({}^\sigma\eta)\pi'_\eta(\sigma)=\tau'_\mu(\sigma)
+\]
+将 $\pi_\eta$ 的空间映入自身，从而定义 $\Gamma\ltimes G(\A_E)$ 的一个表示 $\tau'_\mu$。注意 $\tau'_\mu\simeq\tau'_{{}^\sigma\mu}$。用 $\mathcal T$ 表示这些表示的等价类集合，并令
+\[
+ R'=lR'_d\oplus\sum_{\tau'_\mu\in\mathcal T}\tau'_\mu.
+\]
+由此可得与引理 2 类似的结论。
+
+现在可陈述主要定理（参见 [L, 定理 9.1]）。
+
+\begin{originaltheorem}{定理 1（Theorem 1）}
+假定 $f$ 与 $\phi$ 相伴，则 $\operatorname{tr}(R'(\sigma)R(\phi))=\operatorname{tr}r(f)$。
+\end{originaltheorem}
+
+回忆“$f$ 与 $\phi$ 相伴”这一对应的定义依赖于 $\sigma\in\Gamma\setminus\{1\}$ 的选择。
+
+证明思路如下。考虑表达式
+\begin{equation}
+ \operatorname{tr}(R'(\sigma)R(\phi))-\operatorname{tr}r(f).
+ \tag{a}
+\end{equation}
+由上面的命题 1，它等于
+\begin{equation}
+ \frac2{l^2}\int_{D^\circ}\sum_v
+ \left(lB(\widetilde\eta_v,\phi_v)
+ -\sum_{\eta_v\mapsto\widetilde\eta_v}B(\eta_v,f_v)\right)
+ \prod_{w\ne v}\operatorname{tr}\pi_{\eta_w}(f_w)\,d\eta.
+ \tag{b}
+\end{equation}
+利用某些加权轨道积分（weighted orbital integral）的性质 [K, 引理 4]，可以证明
+\[
+ lB(\widetilde\eta_v,\phi_v)
+ -\sum_{\eta_v\mapsto\widetilde\eta_v}B(\eta_v,f_v)=0,
+\]
+至少当 $v$ 非 Archimedes、在 $E$ 中非分歧，且 $\phi_v,f_v$ 在 Hecke 代数中相伴时成立。因此存在有限素位集合 $V$，使 (b) 可写成
+\begin{equation}
+ \int_{D^\circ}\beta(\eta)\prod_{v\notin V}
+ \operatorname{tr}\pi_{\eta_v}(f_v)\,d\eta,
+ \tag{b$'$}
+\end{equation}
+其中函数 $\beta$ 满足后续积分所需的正则性条件。
+
+现在选取一个不属于 $V$ 且在 $E$ 中分裂的素位 $v_0$；则 (b$'$) 化为绝对收敛的积分
+\begin{equation}
+ \int_{-\infty}^{+\infty}\delta(s)f_{v_0}^\vee
+ \begin{pmatrix}aq^{is}&0\\0&bq^{-is}\end{pmatrix}\,ds,
+ \tag{b$''$}
+\end{equation}
+其中 $a,b$ 依赖于中心特征 $\omega_{v_0}$。只需知道 $\delta(s)$ 是实轴上的连续、有界、可积函数。另一方面，由上面的引理 1、2，(a) 可写成
+\begin{equation}
+ \sum_{k=0}^\infty a_kf_{v_0}^\vee(t_k),
+ \tag{a$''$}
+\end{equation}
+其中 $a_k\in\C$，$t_k\in\GL_2(\C)$ 为对应于 $\GL_2(F_{v_0})$ 的互不等价的酉表示的半单元素。级数与积分一样绝对收敛。由于 $v_0$ 在 $E$ 中分裂，$f_{v_0}$ 可以在 Hecke 代数中任意选取，而 Hecke 代数分离不等价的非分歧表示。利用 Stone--Weierstrass 定理（Stone--Weierstrass theorem）和简单的上界估计，可证明所有 $a_k$ 均为零；这一断言比定理 1 更强。由定理 1 以及关于 $\Gamma\ltimes\GL_2(E_v)$ 的表示的特征标的一些结果（参见 [L, 第 5 节]），即可推出所需的各项结果。下面介绍其中几个步骤。
+
+\origsection{5}{弱提升的存在性（Existence of weak liftings）}
+选择包含所有 Archimedes 素位和所有在 $E$ 中分歧的素位的有限集合 $V$。假设当 $v\notin V$ 时，$\phi_v,f_v$ 在 Hecke 代数中相伴。利用引理 1、2，可选择 $t_{n,v}\in\GL_2(\C)$（$v\notin V$，$n\in N$），使
+\[
+ \begin{aligned}
+ \operatorname{tr}(R'_d(\sigma)R_d(\phi))
+ &=\sum_n\alpha_n(\phi)\prod_{v\notin V}f_v^\vee(t_{n,v}),\\
+ \sum_{\tau'_\mu\in\mathcal T}\operatorname{tr}(\tau'_\mu(\sigma)\tau_\mu(\phi))
+ &=\sum_n\beta_n(\phi)\prod_{v\notin V}f_v^\vee(t_{n,v}),\\
+ \operatorname{tr}r(f)&=\sum_n\gamma_n(\phi)\prod_{v\notin V}f_v^\vee(t_{n,v}).
+ \end{aligned}
+\]
+还可以适当选择这些参数，使定义在 $v\notin V$ 的各 Hecke 代数直积上的函数
+\[
+ T_n:(\phi_v)_{v\notin V}\longmapsto\prod_{v\notin V}f_v^\vee(t_{n,v})
+\]
+彼此不同（回忆引理 2 后的注记）。令 $\delta_n=l\alpha_n+\beta_n-\gamma_n$，则上述定理可重述为
+\[
+ \sum_{n\in N}\delta_n(\phi)T_n(\phi)=0.
+\]
+由于 $T_n$ 彼此不同，再次使用稠密性论证（density argument）得到：
+
+\begin{originaltheorem}{命题 2（Proposition 2）}
+对所有 $n$，$\delta_n(\phi)=0$。
+\end{originaltheorem}
+
+即 $l\alpha_n+\beta_n=\gamma_n$。
+
+假设存在表示 $\Pi=\bigotimes_v\Pi_v$，在 $V$ 外非分歧、出现于 $\widetilde L_0^2$ 中，并对某个使 $\alpha_n\ne0$ 的 $n$ 及所有 $v\notin V$，满足 $\operatorname{tr}\Pi_v(\phi_v)=f_v^\vee(t_{n,v})$。利用强重数一定理 [C]，可知这样的 $\Pi$ 唯一，且 $\Pi\simeq{}^\sigma\Pi$。由 $L(s,\Pi)$ 为整函数，得知出现在 $\widetilde L_{\mathrm{sp}}^2$ 或 $\mathcal T$ 中的其他 $\Pi$ 都不具有这一性质。因此
+\[
+ \alpha_n(\phi)=\prod_{v\in V}\operatorname{tr}(\Pi'_v(\sigma)\Pi_v(\phi_v)),
+ \qquad\beta_n(\phi)=0.
+\]
+由 $l\alpha_n+\beta_n=\gamma_n$ 可知 $\gamma_n(\phi)$ 不恒为零。故在 $L_0^2\oplus L_{\mathrm{sp}}^2$ 中至少存在一个 $\pi=\bigotimes_v\pi_v$，使当 $v\notin V$ 时，$\operatorname{tr}\pi_v(f_v)=f_v^\vee(t_{n,v})$，从而 $\Pi_v$ 是 $\pi_v$ 的提升。若 $\Pi_v$ 对几乎所有 $v$ 都是 $\pi_v$ 的提升，则称 $\Pi$ 为 $\pi$ 的弱提升（weak lifting）。由此已证明：
+
+\begin{originaltheorem}{定理 2（Theorem 2）}
+如果 $\Pi$ 是 $\GL_2(\A_E)$ 的尖点自守表示，并且 $\Pi\simeq{}^\sigma\Pi$，则 $\Pi$ 为 $\GL_2(\A)$ 的某个自守表示 $\pi$ 的弱提升。
+\end{originaltheorem}
+
+直接研究 $L_{\mathrm{sp}}^2$ 可证明：
+
+\begin{originaltheorem}{命题 3（Proposition 3）}
+出现在 $L_{\mathrm{sp}}^2$ 中的每个 $\pi$ 都提升为 $\widetilde L_{\mathrm{sp}}^2$ 中的某个 $\Pi$，且 $\widetilde L_{\mathrm{sp}}^2$ 中所有被 $\sigma$ 固定的表示均由此得到。
+\end{originaltheorem}
+
+当 $l=2$ 时，假定 $\Pi=\pi(\mu,{}^\sigma\mu)$ 出现于 $\mathcal T$，且 $\mu_v$ 对 $v\notin V$ 非分歧。利用命题 2 与 $\GL_2\times\GL_2$ 上 $L$ 函数的结果，可证明 $\Pi$ 为 $\pi=\pi(\rho)$ 的弱提升，其中 $\rho=\Ind_{W_E}^{W_F}\mu$，并且存在 $n\in N$，使
+\[
+ \prod_{v\in V}\operatorname{tr}(\Pi'_v(\sigma)\Pi_v(\phi_v))
+ =\beta_n(\phi)=\gamma_n(\phi)
+ =\prod_{v\in V}\operatorname{tr}\pi_v(f_v).
+\]
+这可用于证明，在 $F$ 的所有素位处都有 $\operatorname{tr}(\Pi'_v(\sigma)\Pi_v(\phi_v))=\operatorname{tr}\pi_v(f_v)$。因此：
+
+\begin{originaltheorem}{定理 3（Theorem 3）}
+设 $E,F$ 或为局部域，或为整体域。则 $\pi(\mu,{}^\sigma\mu)$ 是 $\pi(\rho)$ 的提升，其中 $\rho=\Ind_{W_E}^{W_F}\mu$。
+\end{originaltheorem}
+
+\origsection{6}{每个尖点 $\pi$ 都有弱提升}
+反设 $L_0^2$ 中的某个 $\pi$ 没有弱提升。令 $V$ 为 $F$ 的有限素位集合，包含所有 Archimedes 素位，以及 $E$ 或 $\pi$ 分歧的素位。设 $f=\bigotimes_vf_v$ 与某个 $\phi$ 相伴，并且当 $v\notin V$ 时 $f_v$ 属于 Hecke 代数。考虑 $L_0^2\oplus L_{\mathrm{sp}}^2$ 中满足当 $v\notin V$ 时 $\operatorname{tr}\pi_{k,v}(f_v)=\operatorname{tr}\pi_v(f_v)$ 的那些 $\pi_k$。由于这些 $\pi_k$ 没有弱提升，命题 2 表明它们的和对 $\operatorname{tr}r(f)$ 的贡献为零：
+\[
+ \sum_k\prod_{v\in V}\operatorname{tr}\pi_{k,v}(f_v)
+ \prod_{v\notin V}\operatorname{tr}\pi_v(f_v)=0.
+\]
+因此存在集合 $V_1\subset V$，使 $\sum_k\prod_{v\in V_1}\operatorname{tr}\pi_{k,v}(f_v)=0$。需要证明，除非该和为空，否则这是不可能的。证明对 $V_1$ 的基数作归纳，并使用不等价表示的特征标线性无关这一事实。具体论证还需处理一个限制：$f_v$ 必须与某个 $\phi_v$ 相伴，因而不能任意选取（参见 [L, 第 9 节，第 25--30 页]）。由此得到：
+
+\begin{originaltheorem}{定理 4（Theorem 4）}
+每个尖点 $\pi$ 都有弱提升。
+\end{originaltheorem}
+
+\origsection{7}{局部提升（Local liftings）}
+要完成尖点表示的整体基变换定理，还需证明上述弱提升在每个素位处都是局部提升。设 $\Pi\simeq{}^\sigma\Pi$ 出现在 $\widetilde L_0^2$ 中，并在按前述方式选择的有限集合 $V$ 之外非分歧。由命题 2，存在 $n$，使 $l\alpha_n(\phi)=\gamma_n(\phi)$；对某个 $V_1\subset V$，可将其写为
+\[
+ l\prod_{v\in V_1}\operatorname{tr}(\Pi'_v(\sigma)\Pi_v(\phi_v))
+ =\sum_k\prod_{v\in V_1}\operatorname{tr}\pi_{k,v}(f_v),
+\]
+其中 $\pi_k=\bigotimes_v\pi_{k,v}$ 以 $\Pi$ 为弱提升。随后证明 [L, 第 9 节，第 33--34 页]：
+
+\begin{originaltheorem}{引理 3（Lemma 3）}
+若对某个 $v$，表示 $\Pi_v$ 是某个 $\pi_v$ 的提升，则对所有 $k$，它都是 $\pi_{k,v}$ 的提升，即
+\[
+ \operatorname{tr}(\Pi'_v(\sigma)\Pi_v(\phi_v))
+ =\operatorname{tr}\pi_{k,v}(f_v).
+\]
+\end{originaltheorem}
+
+于是可假定 $V_1$ 不包含这类素位。另一方面，除某些超尖点表示（例外表示）外，局部提升的存在性及其性质容易证明，或可由上面的定理 3 推出。引理 3 与这一注记表明，第一部分所列的各项局部与整体结果都可归结为下述定理：
+
+\begin{originaltheorem}{定理 5（Theorem 5）[L, 第 9 节，命题 9.6]}
+(a) 每个超尖点 $\pi_v$ 都有提升。
+
+(b) 若 $\Pi_v\simeq{}^\sigma\Pi_v$ 且为超尖点的，则 $\Pi_v$ 是一个提升。
+\end{originaltheorem}
+
+定理 (a) 的证明，是将局部情形嵌入一个专门构造的整体情形，使得除可能一个素位外，其他所有素位处的提升存在性均已知，再对只剩一个元素的 $V_1$ 使用上述等式。
+
+(b) 随即由 [L, 第 5 节] 的正交关系（orthogonality relation）推出。
+
+Langlands 论文 [L] 的最后一段，利用非尖点表示的显式描述（参见附录 C），证明其提升的存在性。
+
+\begin{thebibliography}{J-PS-S}
+\bibitem[B]{c27-B} A. Borel, \emph{Automorphic L-functions}, 本论文集第二册，第 27--61 页。
+\bibitem[C]{c27-C} W. Casselman, \emph{On some results of Atkin and Lehner}, Math. Ann. 201 (1973), 301--334.
+\bibitem[D]{c27-D} P. Deligne, \emph{Formes modulaires et représentations de GL(2)}, Modular Functions of One Variable. II, Lecture Notes in Math., vol. 349, Springer-Verlag, Berlin, 1973.
+\bibitem[D-S]{c27-DS} P. Deligne and J. P. Serre, \emph{Formes modulaires de poids 1}, Ann. Sci. École Norm. Sup. 4 (1974), 507--530.
+\bibitem[G-J-1]{c27-GJ1} S. Gelbart and H. Jacquet, \emph{Forms on GL(2) from the analytic point of view}, 本论文集第一册，第 213--251 页。
+\bibitem[G-J-2]{c27-GJ2} S. Gelbart and H. Jacquet, \emph{A relation between automorphic forms on GL(2) and GL(3)}, Proc. Nat. Acad. Sci. U.S.A. (1976).
+\bibitem[J-L]{c27-JL} H. Jacquet and R. P. Langlands, \emph{Automorphic forms on GL(2)}, Lecture Notes in Math., vol. 114, Springer, Berlin, 1970.
+\bibitem[J-PS-S]{c27-JPSS} H. Jacquet, I. I. Piatetskii-Shapiro and J. Shalika, \emph{Construction of cusp forms on GL(3)}, Lecture Notes, Maryland.
+\bibitem[J-S]{c27-JS} H. Jacquet and J. Shalika, \emph{Comparaison des formes automorphes du groupe linéaire}, C. R. Acad. Sci. Paris 284 (1977), 741--744.
+\bibitem[K]{c27-K} R. Kottwitz, \emph{Orbital integrals and base change}, 本论文集第二册，第 111--113 页。
+\bibitem[L]{c27-L} R. P. Langlands, \emph{Base change for GL(2)}, Institute for Advanced Study, Princeton, N.J., 1975（预印本）。
+\bibitem[Sa]{c27-Sa} H. Saito, \emph{Automorphic forms and algebraic extensions of number fields}, Lectures in Math., no. 8, Kinokuniya Book Store Co. Ltd., Tokyo, Japan, 1975.
+\bibitem[S-1]{c27-S1} T. Shintani, \emph{On liftings of holomorphic automorphic forms}, U.S.-Japan Seminar on Number Theory (Ann Arbor, 1975).
+\bibitem[S-2]{c27-S2} T. Shintani, \emph{Two remarks on irreducible characters of finite general linear groups}, J. Math. Soc. Japan 28 (1976), 396--414.
+\bibitem[S-3]{c27-S3} T. Shintani, \emph{On liftings of holomorphic cusp forms}, 本论文集第二册，第 97--110 页。
+\bibitem[T]{c27-T} J. Tate, \emph{Number theoretic background}, 本论文集第二册，第 3--26 页。
+\bibitem[Tu]{c27-Tu} J. Tunnell, \emph{On the local Langlands conjecture for GL(2)}, Invent. Math. 46 (1978), 179--198.
+\end{thebibliography}
+\begin{flushleft}\small Université Paris VII\end{flushleft}

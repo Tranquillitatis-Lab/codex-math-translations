@@ -1,0 +1,539 @@
+\SourcePage{283}
+\SGAsection{9.5}{粘合定理}
+\SourcePage{284}
+\textbf{9.5.1.} 设 $f:A\to B$ 是两个\Term{category}{范畴}之间的\Term{functor}{函子}。以 $(B,A,f)$ 表示如下\Term{category}{范畴}：它的\Term{object}{对象}是三元组
+\[
+(X,Y,u),
+\]
+其中 $X$ 是 $B$ 的\Term{object}{对象}，$Y$ 是 $A$ 的\Term{object}{对象}，而 $u$ 是从 $X$ 到 $f(Y)$ 的\Term{morphism}{态射}；两个\Term{object}{对象} $(X,Y,u)$ 与 $(X',Y',u')$ 之间的\Term{morphism}{态射}是二元组 $(m,m')$，其中 $m:X\to X'$、$m':Y\to Y'$，并使下图交换：
+\[
+\begin{tikzcd}
+x\arrow[r,"u"]\arrow[d,"m"']&f(y)\arrow[d,"f(m')"]\\
+x'\arrow[r,"u'"']&f(y').
+\end{tikzcd}
+\]
+\Term{morphism}{态射}的复合按显然的方式定义。
+
+\textbf{9.5.2.} 注意，\Term{category}{范畴} $(B,A,f)$ 以\Term{functor}{函子}的方式依赖于数据组 $A,B,f$；其确切含义留待读者阐明。特别地，若 $f'$ 是另一个从 $A$ 到 $B$ 的\Term{functor}{函子}，则每个\Term{functor}{函子}\Term{morphism}{态射}
+\[
+f\xrightarrow{u}f'
+\]
+定义一个\Term{functor}{函子} $(A,B,f)\to(A,B,f')$；若 $u:f\to f'$ 是\Term{isomorphism}{同构}，则这个\Term{functor}{函子}也是\Term{isomorphism}{同构}。
+
+\textbf{9.5.3.} 回到 9.3 的情形，考虑 9.5.1 定义的\Term{category}{范畴} $(\mathscr F,\mathscr U,\rho)$。$E$ 的每个\Term{object}{对象} $X$ \Term{correspondence}{对应}于 $(\mathscr F,\mathscr U,\rho)$ 的\Term{object}{对象} $(i^*X,j^*X,h(X):i^*X\to\rho j^*X)$，其中 $h(X)$ 由\Term{adjunction-morphism}{伴随态射} $X\to j_*j^*(X)$ 经\Term{functor}{函子} $i^*$ 得到（有 $\rho=i^*j_*$，见 (9.10.)）。这样便定义了\Term{functor}{函子}
+\[
+\Phi:E\longrightarrow(\mathscr F,\mathscr U,\rho).\tag{9.5.3.1}
+\]
+\begin{SGAresult}{定理}{9.5.4}
+a) 设 $E$ 是\Term{topos}{拓扑斯}，$\mathscr U$ 是 $E$ 的\Term{open-subtopos}{开子拓扑斯}，$\mathscr F$ 是其互补的\Term{closed-subtopos}{闭子拓扑斯}。\Term{functor}{函子}
+\[
+\rho=i^*j_*:\mathscr U\longrightarrow\mathscr F
+\]
+是\Term{left-exact-functor}{左正合}且\Term{accessible-functor}{可达}的，而\Term{functor}{函子} $\Phi$ (9.5.3.1) 是\Term{equivalence-of-categories}{范畴等价}。
+
+b) 反之，设 $\mathscr U,\mathscr F$ 是两个\Term{topos}{拓扑斯}，$\rho:\mathscr U\to\mathscr F$ 是\Term{gluing-functor}{粘合函子} (9.3.6)（即为\Term{accessible-functor}{可达}（第 I 讲 9.2）且\Term{left-exact-functor}{左正合}的\Term{functor}{函子}）。\Term{category}{范畴} $E=(\mathscr F,\mathscr U,\rho)$ 是\Term{topos}{拓扑斯}。设 $\phi_{\mathscr F}$ 是 $\mathscr F$ 的\Term{initial-object}{始对象}，$e_{\mathscr U}$ 是 $\mathscr U$ 的\Term{final-object}{终对象}，并令 $U=(\phi_{\mathscr F},e_{\mathscr U},\phi_{\mathscr F}\to\rho(e_{\mathscr U}))\in\operatorname{Ob}E$。\Term{functor}{函子} $X\mapsto(\phi_{\mathscr F},X,\phi_{\mathscr F}\to\rho(X))$ 诱导 $\mathscr U$ 到 $E_{/U}$ 的\Term{equivalence}{等价}，因而给出它与由 $U$ 定义的 $E$ 的\Term{open-subtopos}{开子拓扑斯} $\mathscr U'$ 的\Term{equivalence}{等价}。\Term{functor}{函子} $Y\mapsto(Y,e,Y\to\rho(e))$ 是\Term{closed-immersion}{闭嵌入} (9.3.5)，即诱导 $\mathscr F$ 与 $E$ 的一个\Term{closed-subtopos}{闭子拓扑斯} $\mathscr F'$ 的\Term{equivalence}{等价}。
+\SourcePage{285}
+\Term{subtopos}{子拓扑斯} $\mathscr U'$ 与 $\mathscr F'$ 互补。设 $\rho':\mathscr U'\to\mathscr F'$ 是\Term{gluing-functor}{粘合函子}。\Term{functor}{函子} $\rho,\rho'$ 与上述明确给出的\Term{equivalence}{等价}相容。
+\end{SGAresult}
+\begin{SGAresult}{定义}{9.5.5}
+设 $\mathscr U,\mathscr F$ 是两个\Term{topos}{拓扑斯}，$\rho:\mathscr U\to\mathscr F$ 是\Term{gluing-functor}{粘合函子} (9.3.6)。\Term{topos}{拓扑斯} $(\mathscr F,\mathscr U,\rho)$ 称为由 $\mathscr U$ 与 $\mathscr F$ 借助\Term{functor}{函子} $\rho$ \Term{gluing}{粘合}构造的\Term{topos}{拓扑斯}。
+\end{SGAresult}
+\textbf{9.5.6. 定理 9.5.4 a) 的证明。}\footnote{比 9.5.5 更一般的\Term{gluing}{粘合}命题，参见练习。}
+\begin{proof}
+第一项断言只是重述 9.4.1 d)。\Term{functor}{函子}对 $(i^*,j^*)$ 是\Term{conservative-functor}{保守}的，也就是\Term{faithful-functor}{忠实}的（9.4.1 c)）。因此 $\Phi$ 更是\Term{faithful-functor}{忠实}的。现证它\Term{fully-faithful-functor}{全忠实}。由 9.3.3 b)，对 $E$ 的每个\Term{object}{对象} $X$，下图是\Term{cartesian-diagram}{笛卡尔图}：
+\[
+\begin{tikzcd}
+X\arrow[r]\arrow[d]&j_*j^*X\arrow[d]\\
+i_*i^*X\arrow[r]&i_*i^*j_*j^*X.
+\end{tikzcd}\tag{*}
+\]
+设 $X,Y$ 是 $E$ 的两个\Term{object}{对象}，而 $(m,m')$ 是 $\Phi(X)$ 到 $\Phi(Y)$ 的\Term{morphism}{态射}：
+\[
+\begin{tikzcd}
+i^*X\arrow[r]\arrow[d,"m"']&i^*j_*j^*X\arrow[d,"i^*j_*m'"]\\
+i^*Y\arrow[r]&i^*j_*j^*Y.
+\end{tikzcd}
+\]
+利用\Term{fiber-product}{纤维积}的\Term{functor}{函子}性和图 $(*)$，得到一个\Term{morphism}{态射} $w:X\to Y$，使以下各图交换：
+\[
+\begin{tikzcd}
+X\arrow[r,"w"]\arrow[d]&Y\arrow[d]\\
+j_*j^*X\arrow[r,"j_*m'"']&j_*j^*Y
+\end{tikzcd}
+\qquad
+\begin{tikzcd}
+X\arrow[r,"w"]\arrow[d]&Y\arrow[d]\\
+i_*i^*X\arrow[r,"i_*m"']&i_*i^*Y.
+\end{tikzcd}
+\]
+分别应用 $j^*$ 和 $i^*$，得到 $j^*w=m'$、$i^*w=m$。
+
+现在证明\Term{functor}{函子} $\Phi$ \Term{essentially-surjective-functor}{本质满射}。设 $(Y,X,u:Y\to i^*j_*(X))$ 是 $(\mathscr F,\mathscr U,i^*j_*)$ 的\Term{object}{对象}。由此得到一个图：
+\[
+\begin{tikzcd}
+&j_*X\arrow[d]\\
+i_*Y\arrow[r,"i_*u"']&i_*i^*j_*X.
+\end{tikzcd}
+\]
+\SourcePage{286}
+取\Term{fiber-product}{纤维积}，得到\Term{cartesian-diagram}{笛卡尔图}
+\[
+\begin{tikzcd}
+W\arrow[r]\arrow[d]&j_*X\arrow[d]\\
+i_*Y\arrow[r,"i_*u"']&i_*i^*j_*X.
+\end{tikzcd}\tag{**}
+\]
+将 $\Phi(W)$ \Term{isomorphism}{同构}于 $(Y,X,u:Y\to i^*j_*(X))$、且图 $(**)$ \Term{isomorphism}{同构}于 $W$ \Term{correspondence}{对应}的图 $(*)$ 的证明留待读者。
+\end{proof}
+\textbf{9.5.7. 定理 9.5.4 1) 的证明。}
+\begin{proof}
+我们只证明 $(\mathscr F,\mathscr U,\rho)$ 是\Term{topos}{拓扑斯}。其余断言的证明留待读者。验证 1.1.2 的性质 a)、b)、c)、d)。
+
+a) \Term{finite-projective-limit}{有限投射极限}\Term{representable-functor}{可表}。这是显然的，因为 $\mathscr U$ 与 $\mathscr F$ 都是\Term{topos}{拓扑斯}，而 $\rho$ 与\Term{finite-projective-limit}{有限投射极限}交换。
+
+b) \Term{coproduct}{直和}\Term{representable-functor}{可表}、不交且\Term{universal}{普适}。设 $(Y_i\xrightarrow{u_i}\rho(X_i))$，$i\in I$，是 $(\mathscr F,\mathscr U,\rho)$ 的一族\Term{object}{对象}。按\Term{inductive-limit}{归纳极限}的定义，有\Term{canonical}{典范}\Term{morphism}{态射}
+\[
+\coprod_{i\in I}\rho(X_i)\longrightarrow\rho\Bigl(\coprod_{i\in I}X_i\Bigr),
+\]
+从而与\Term{morphism}{态射} $\coprod u_i$ 复合得到\Term{morphism}{态射}
+\[
+n:\coprod_{i\in 1}Y_i\longrightarrow\Bigl(\coprod_{i\in I}X_i\Bigr).
+\]
+可立即验证，后一个\Term{object}{对象}是所考虑\Term{object}{对象}族的\Term{coproduct}{直和}，且这个\Term{coproduct}{直和}是不交且\Term{universal}{普适}的。
+
+c) \Term{equivalence-relation}{等价关系}\Term{effective}{有效}且\Term{universal}{普适}。设
+\[
+\begin{tikzcd}
+R_1\arrow[r,shift left]\arrow[r,shift right]\arrow[d]&Y\arrow[d,"w"]\\
+\rho(R_2)\arrow[r,shift left,"f(u)"]\arrow[r,shift right,"f(v)"']&\rho(X)
+\end{tikzcd}
+\]
+是\Term{object}{对象} $Y\xrightarrow{w}\rho(X)$ 上的\Term{equivalence-relation}{等价关系}。于是 $R_1\rightrightarrows Y$ 是 $\mathscr F$ 中 $Y$ 上的\Term{equivalence-relation}{等价关系}，而 $R_2\underset{v}{\overset{u}{\rightrightarrows}}X$ 是 $\mathscr U$ 中 $X$ 上的\Term{equivalence-relation}{等价关系}。商 $Y/R_1$、$\rho(X)/\rho(R_2)$、$X/R_2$ 在 $\mathscr F$ 与 $\mathscr U$ 中\Term{representable-functor}{可表}，因为这些\Term{category}{范畴}是\Term{topos}{拓扑斯}。此外，按\Term{inductive-limit}{归纳极限}的定义，\Term{canonical}{典范}\Term{morphism}{态射} $\rho(X)\to\rho(X/R_2)$ 经 $\rho(X)/\rho(R_2)$ \Term{resolution}{分解}。由\Term{inductive-limit}{归纳极限}的\Term{functor}{函子}性，得到\Term{canonical}{典范}\Term{morphism}{态射}
+\SourcePage{287}
+$Y/R_1\xrightarrow{t}\rho(X/R_2)$。可以验证，这最后一个\Term{object}{对象}是 $Y\xrightarrow{w}\rho(X)$ 对所考虑的\Term{equivalence-relation}{等价关系}的商，该商是\Term{effective}{有效}的（第 I 讲 10），且所有这些性质在\Term{base-change}{基变换}下保持。
+
+d) $(\mathscr F,\mathscr U,\rho)$ 有\Term{generating-family}{小生成族}。这个性质由 (1.9.2 5) 得到（考虑到 $\rho$ \Term{accessible-functor}{可达}）：取 $B=\Delta_1=(0\xrightarrow{f}1)$、$E_0=\mathscr F$、$E_1=\mathscr U$、$f^*=\rho:E_1\to E_0$，于是 $\mathscr{H}om_B(B,E)=(\mathscr F,\mathscr U,\rho)$。
+
+也可以避免援引 1.9.25（前面给出的那个证明相当繁难！），而以 $\rho$ 有 \Term{pro-adjoint}{pro-伴随函子}这一形式使用关于它的假设：
+\[
+\sigma:\operatorname{Pro}(\mathscr F)\longrightarrow\operatorname{Pro}(\mathscr U).
+\]
+（这一解释（第 I 讲 8）以第 I 讲 9 为基础，后者的证明要容易理解得多。）只需注意：若 $C'$（分别地 $C''$）是 $\mathscr U$（分别地 $\mathscr F$）的\Term{generating-subcategory}{生成子范畴}，且对每个 $X''\in\operatorname{Ob}C''$，把 $\sigma(X'')$ 表为\Term{projective-system}{投射系统} $(\sigma(X'')_i)_{i\in I(X')}$，其中 $I(X')$ 是一个小\Term{filtered}{滤过}\Term{ordered-set}{有序集}，那么 $E$ 中以下两类\Term{object}{对象}构成的族：一类形如 $(\phi_{\mathscr F},X',\phi_{\mathscr F}\to\phi(X'))$，其中 $X'\in\operatorname{Ob}C'$；另一类形如 $(X'',\sigma(X'')_i,u_{X''}:X''\to\rho(\sigma(X'')_i))$，其中 $X''\in\operatorname{Ob}C''$、$i\in I(X'')$，且 $u_{X''}$ 经\Term{adjunction}{伴随}\Term{correspondence}{对应}于\Term{canonical}{典范}\Term{morphism}{态射} $\sigma(X'')\to\sigma(X'')_i$，——当 $C',C''$ 选为小时，就是一个（显然为小的）\Term{generating-family}{生成族}。此事实的验证确实是立即的，留待读者。
+\end{proof}
+\textbf{9.5.4.8.} 使用 9.5.7 b) 的记号，来说明在令 $E=(\mathscr F,\mathscr U,\rho)$ 时，如何在相差\Term{functor}{函子}的\Term{canonical}{典范}\Term{isomorphism}{同构}的意义下明确给出\Term{functor}{函子}组 (9.3.6.2)。以下断言的详细验证（借助 9.5.4 基本上是机械的）留待读者。
+
+\textbf{9.5.8.1.} \Term{functor}{函子} $i^*:(\mathscr F,\mathscr U,\rho)\to\mathscr F$ 由
+\[
+i^*(X,Y,u:X\mapsto\rho(Y))=X
+\]
+给出。
+
+\textbf{9.5.8.2.} \Term{functor}{函子} $i_*:\mathscr F\to(\mathscr F,\mathscr U,\rho)$ 由 $i_*(X)=(X,e,X\to\rho(e))$ 给出（$e$ 是 $\mathscr U$ 的\Term{final-object}{终对象}）。
+
+\textbf{9.5.8.3.} \Term{adjunction-morphism}{伴随态射} $\operatorname{id}\to i_*i^*$ \Term{isomorphism}{同构}于如下\Term{functor}{函子}\Term{morphism}{态射}：
+\[
+\begin{tikzcd}
+X\arrow[r,"u"]\arrow[d,"\operatorname{id}"']&\rho(Y)\arrow[d]\\
+X\arrow[r]&\rho(e).
+\end{tikzcd}
+\]
+\SourcePage{288}
+\textbf{9.5.8.4.} \Term{functor}{函子} $j^*:(\mathscr F,\mathscr U,\rho)\to\mathscr U$ 由 $j^*(X,Y,u:X\to\rho(Y))=Y$ 给出。
+
+\textbf{9.5.8.5.} \Term{functor}{函子} $j_!:\mathscr U\to(\mathscr F,\mathscr U,\rho)$ 由
+\[
+j_!(Y)=(\phi_{\mathscr F},Y,\phi_{\mathscr F}\to\rho(Y))
+\]
+给出（$\phi$ 为\Term{initial-object}{始对象}）。
+
+\textbf{9.5.8.6.} \Term{functor}{函子} $j_*:\mathscr U\to(\mathscr F,\mathscr U,\rho)$ 由
+\[
+j_*(Y)=(\rho(Y),Y,\operatorname{id}:\rho(Y)\to\rho(Y))
+\]
+给出。
+
+\textbf{9.5.8.7.} \Term{adjunction-morphism}{伴随态射} $j_!j^*\to\operatorname{id}$ \Term{isomorphism}{同构}于\Term{functor}{函子}\Term{morphism}{态射}
+\[
+\begin{tikzcd}
+\phi_{\mathscr F}\arrow[r]\arrow[d]&\rho(Y)\arrow[d,"\rho(\operatorname{id})"]\\
+X\arrow[r,"u"']&\rho(Y).
+\end{tikzcd}
+\]
+\textbf{9.5.8.8.} \Term{adjunction-morphism}{伴随态射} $\operatorname{id}\to j_*j^*$ \Term{isomorphism}{同构}于\Term{functor}{函子}\Term{morphism}{态射}
+\[
+\begin{tikzcd}
+X\arrow[r,"u"]\arrow[d,"u"']&\rho(Y)\arrow[d,"\rho(\operatorname{id})"]\\
+\rho(Y)\arrow[r,"\operatorname{id}"']&\rho(Y).
+\end{tikzcd}
+\]
+\begin{SGAresult}{练习}{9.5.9}
+（\Term{glued-topos}{粘合拓扑斯}的\Term{exactness}{正合性质}。）设 $\mathscr U,\mathscr F$ 是两个\Term{topos}{拓扑斯}，$\rho:\mathscr U\to\mathscr F$ 是\Term{gluing-functor}{粘合函子}，$E=(\mathscr F,\mathscr U,\rho)$ 是\Term{glued-topos}{粘合拓扑斯}，$j:\mathscr U\to E$ 与 $i:\mathscr F\to E$ 是\Term{canonical}{典范}的\Term{morphism-of-topoi}{拓扑斯态射}，因此 $\rho=i^*j_*$。
+
+a) 证明 $i^*$ 与（小）\Term{product}{乘积}交换（即（1.8 或 1.8）\Term{functor}{函子} $i^*$ 有\Term{left-adjoint}{左伴随} $i_!$），当且仅当 $\rho$ 也如此，即（同处）当且仅当 $\rho$ 有\Term{left-adjoint}{左伴随} $\sigma:\mathscr F\to\mathscr U$（或\Term{equivalence}{等价}地，当且仅当 $\rho$ 的 \Term{pro-adjoint}{pro-伴随函子}在 $\mathscr F$ 上的\Term{restriction}{限制} (9.6.3) 在相差\Term{isomorphism}{同构}的意义下经 $\mathscr U$ \Term{resolution}{分解}）：这时有 $\sigma=j^*i_!$。因此，具有此性质的\Term{gluing-functor}{粘合函子} $\rho$，在相差\Term{isomorphism}{同构}的意义下，与那些有\Term{right-adjoint}{右伴随}的\Term{functor}{函子} $\sigma:\mathscr F\to\mathscr U$ \Term{correspondence}{对应}，即（1.6）与 $\mathcal U$-\Term{inductive-limit}{归纳极限}交换、也就是\Term{continuous}{连续}的\Term{functor}{函子}。若 $\mathscr F$ \Term{equivalence}{等价}于\Term{topos}{拓扑斯} $C^\sim$，其中 $C$ 是 $\mathcal U$-\Term{site}{景}，则这些\Term{functor}{函子}在相差\Term{isomorphism}{同构}的意义下\Term{correspondence}{对应}于\Term{continuous-functor}{连续函子} $C\to\mathscr U$（第 III 讲 1.2 和 1.7）。
+\SourcePage{289}
+b) 假设\Term{functor}{函子} $i_!$ 已定义。证明 $i_!$ 与某一指定类型的小\Term{projective-limit}{投射极限}交换，当且仅当 $\sigma:\mathscr F\to\mathscr U$ 与此类\Term{limit}{极限}交换。（必要性利用 $j^*$ 与小\Term{projective-limit}{投射极限}交换；充分性利用用 $\sigma$ 给出 $E$ 的\Term{equivalence}{等价}描述：它由三元组 $(Y,X,u)$ 构成，其中 $Y\in\operatorname{Ob}\mathscr F$、$X\in\operatorname{Ob}\mathscr U$、$u:\sigma(Y)\to X$。）
+
+c) 由 a)、b) 给出一个\Term{topos}{拓扑斯}\Term{closed-immersion}{闭嵌入} $i:\mathscr F\to E$ 的例子，使 $i_!$ 存在，却既不与\Term{fiber-product}{纤维积}交换，也不与\Term{filtered-projective-limit}{滤过投射极限}交换。（只需找出两个\Term{topos}{拓扑斯}之间不具有这两种\Term{exactness}{正合性质}中任何一种的\Term{continuous-functor}{连续函子}。）
+\end{SGAresult}
+\begin{SGAresult}{练习}{9.5.10}
+（形如 $\widehat C$ 的\Term{topos}{拓扑斯}的\Term{gluing}{粘合}。）设 $C$ 是小\Term{category}{范畴}，$E=\widehat C$，这是一个 $\mathcal U$-\Term{topos}{拓扑斯}。
+
+a) 回忆 $E$ 的\Term{open-object}{开对象} $U$ \Term{correspondence}{对应}于 $C$ 的筛 $C'$（1.4.1、4.2）；这时 $E_{/U}$ \Term{equivalence}{等价}于 $\widehat{C'}$，\Term{functor}{函子} $j^*:E\to E_{/U}$ 等同于\Term{restriction}{限制}\Term{functor}{函子} (4.5.11)，即\Term{inclusion-morphism}{包含态射} $j:E_{/U}\to E$ 就是 $\widehat f:\widehat{C'}\to\widehat C$ (4.6.1)，其中 $f:C'\to C$ 是包含\Term{functor}{函子}。设 $C''$ 是 $C$ 中与 $C'$ 互补的\Term{full-subcategory}{满子范畴}（即 $\operatorname{Ob}C''$ 是 $\operatorname{Ob}C'$ 在 $\operatorname{Ob}C$ 中的补集），$g:C''\to C$ 是包含\Term{functor}{函子}。则 $E=\widehat C$ 中与由 $C'$ 定义的\Term{open-subtopos}{开子拓扑斯}互补的\Term{closed-subtopos}{闭子拓扑斯} $\mathscr F$，\Term{canonical}{典范}\Term{equivalence}{等价}于 $\widehat{C''}$；\Term{inclusion-morphism}{包含态射} $i:\mathscr F\to E$ 等同于 $\widehat g:\widehat{C''}\to\widehat C$。
+
+b) 考虑\Term{functor}{函子}
+\[
+h:C'^\circ\times C''\longrightarrow(\mathrm{Ens}),\qquad h(X',X'')=\operatorname{Hom}_C(X',X''),\tag{9.5.10.1}
+\]
+并注意，知道\Term{category}{范畴} $C',C''$ 及\Term{bifunctor}{双函子} $h$（后者可任意选取），便能在相差\Term{isomorphism}{同构}的意义下重建 $C$ 连同其\Term{full-subcategory}{满子范畴} $C'$。（与下文 9.7.1 比较。）给定 $h$ \Term{equivalence}{等价}于给定\Term{functor}{函子} $C''\to\widehat{C'}=\mathscr{H}om(C'^\circ,(\mathrm{Ens}))$，又\Term{equivalence}{等价}于（第 III 讲 1.2 和 1.7）给定\Term{continuous-functor}{连续函子}
+\[
+\sigma:\widehat{C''}\longrightarrow\widehat{C'},\tag{9.5.10.2}
+\]
+即（1.6）与小\Term{inductive-limit}{归纳极限}交换、或\Term{equivalence}{等价}地有\Term{right-adjoint}{右伴随}的\Term{functor}{函子}：
+\[
+\rho:\widehat{C'}\longrightarrow\widehat{C''}.\tag{9.5.10.3}
+\]
+证明 $\rho$ 正是与 $E=\widehat C$ 的\Term{open-subtopos}{开子拓扑斯} $\widehat{C'}$ 相联系的\Term{gluing-functor}{粘合函子}。
+
+c) 由 a)、b) 推出：若给定两个\Term{presheaf}{预层}\Term{category}{范畴}之间的\Term{gluing-functor}{粘合函子} (9.5.10.3)，从而给定\Term{glued-topos}{粘合拓扑斯} $E$，则下列条件\Term{equivalence}{等价}：
+
+(i) $E$ \Term{equivalence}{等价}于形如 $\widehat C$ 的\Term{topos}{拓扑斯}。
+
+(ii) \Term{functor}{函子} $\rho$ 与小\Term{product}{乘积}交换（或\Term{equivalence}{等价}地，它有\Term{left-adjoint}{左伴随} (9.5.10.2)）。
+\SourcePage{290}
+(iii) \Term{inclusion-morphism}{包含态射} $i:\widehat{C''}\to E$ 是“本质的”（essentiel），即 $i^*$ 与\Term{product}{乘积}交换，或\Term{equivalence}{等价}地 $i^*$ 有\Term{left-adjoint}{左伴随} $i_!$。
+
+在此情形，利用把 (9.5.10.2) \Term{restriction}{限制}于 $C''$ 所定义的\Term{bifunctor}{双函子} (9.5.10.1)，明确给出使 $E\approx\widehat C$ 成立的\Term{category}{范畴} $C$。
+
+d) 证明由两个\Term{punctual-topos}{点拓扑斯}\Term{gluing}{粘合}得到的\Term{topos}{拓扑斯}，未必\Term{equivalence}{等价}于形如 $\widehat C$ 的\Term{topos}{拓扑斯}。
+\end{SGAresult}
+\begin{SGAresult}{练习}{9.5.11}
+（从\Term{glued-topos}{粘合拓扑斯}到\Term{topos}{拓扑斯}的\Term{morphism}{态射}。）
+
+a) 设 $\rho\to\mathscr F$ 是两个\Term{category}{范畴}之间的\Term{functor}{函子}，$E=(\mathscr F,\mathscr U,\rho)$ 是 9.5.1 的“\Term{gluing}{粘合}”\Term{category}{范畴}，$F$ 是任意\Term{category}{范畴}。考虑\Term{functor}{函子} $f\mapsto\rho\circ f$：
+\[
+\overline\rho:\overline{\mathscr U}=\mathscr{H}om(F,\mathscr U)\longrightarrow\overline{\mathscr F}=\mathscr{H}om(F,\mathscr F),
+\]
+并定义\Term{equivalence-of-categories}{范畴等价}
+\[
+\mathscr{H}om(F,E)\xrightarrow{\sim}(\overline{\mathscr U},\overline{\mathscr F},\overline\rho).
+\]
+b) 设 $f:F\to E$ 是\Term{functor}{函子}，并考虑它与\Term{canonical}{典范}\Term{functor}{函子} $j^*:E\to\mathscr U$、$i^*:E\to\mathscr F$ 的复合。证明 $f$ 与某一指定类型的\Term{inductive-limit}{归纳极限}（假定在 $\mathscr U,\mathscr F$ 中\Term{representable-functor}{可表}，因而在 $E$ 中也\Term{representable-functor}{可表}）交换，当且仅当 $j^*f,i^*f$ 都与它们交换。证明：若 $\rho$ 与某一指定类型的\Term{projective-limit}{投射极限}交换（于是这种\Term{limit}{极限}在 $E$ 中\Term{representable-functor}{可表}），则 $f$ 与它们交换，当且仅当 $j^*f,i^*f$ 都如此。
+
+c) 现在假设 $\mathscr U,\mathscr F$ 是\Term{topos}{拓扑斯}，$\rho$ 是\Term{gluing-functor}{粘合函子}。设 $F$ 是\Term{topos}{拓扑斯}，$f:F\to E$ 是\Term{functor}{函子}。由 b) 推出：$f$ 是与某个\Term{morphism-of-topoi}{拓扑斯态射} $E\to F$ 相伴的\Term{inverse-image-functor}{逆像函子}，当且仅当\Term{functor}{函子} $j^*f:F\to\mathscr U$ 与 $i^*f:F\to\mathscr F$ 都如此。由此及 a) 推出，\Term{category}{范畴} $\mathscr{H}om_{\mathrm{top}}(E,F)$ 与三元组 $(f',f'',u)$ 的\Term{equivalence-of-categories}{范畴等价}，其中 $f'$（分别地 $f''$）是 $\mathscr{H}om_{\mathrm{top}}(\mathscr U,F)$（分别地 $\mathscr{H}om_{\mathrm{top}}(\mathscr F,F)$）的\Term{object}{对象}，$u:f''{}^*\to\rho\circ f'{}^*$ 是\Term{functor}{函子} $F\to\mathscr F$ 的\Term{homomorphism}{同态}：若 $f$ 是 $\mathscr{H}om_{\mathrm{top}}(E,F)$ 的\Term{object}{对象}，$(f',f'',u)$ 是相应三元组，则 $f'=f\circ j$、$f''=f\circ i$。
+
+d) 阐明在何种意义下可以说 c) 在\Term{topos}{拓扑斯}的某个 2-\Term{category}{范畴}中，给出了利用三元组 $(\mathscr U,\mathscr F,\rho)$ 对\Term{topos}{拓扑斯} $E$ 的相差\Term{equivalence}{等价}意义下的刻画。
+\end{SGAresult}
+\begin{SGAresult}{练习}{9.5.12}
+（两个\Term{topological-space}{拓扑空间}的\Term{gluing}{粘合}。）
+
+a) 设 $X$ 是\Term{topological-space}{拓扑空间}，$\rho:\operatorname{Top}(X)\to(\mathrm{Ens})=\operatorname{Top}(\mathrm{pt})$ 是\Term{gluing-functor}{粘合函子}，即（第 I 讲 8）\Term{pro-representable-functor}{pro-可表示函子}；设 $A\in\operatorname{Ob}\operatorname{Pro}(\operatorname{Top}(X))$ 是 pro-表示它的\Term{object}{对象}，$E$ 是由 $\rho$ \Term{gluing}{粘合}得到的\Term{topos}{拓扑斯}。证明 $E$ \Term{equivalence}{等价}于形如 $\operatorname{Top}(Y)$ 的\Term{topos}{拓扑斯}，当且仅当 $A$ \Term{isomorphism}{同构}于 $\operatorname{Pro}(\operatorname{Ouv}(X))$ 的一个\Term{object}{对象}。由此推出，若 $X$ \Term{nonempty}{非空}，则可以找到 $\rho$，使 $E$ 不\Term{equivalence}{等价}于任何形如 $\operatorname{Top}(Y)$ 的\Term{topos}{拓扑斯}。
+
+b) 更一般地，考虑\Term{gluing-functor}{粘合函子} $\rho:\operatorname{Top}(X)\to\operatorname{Top}(Y)$，其中 $X,Y$ 是两个\Term{topological-space}{拓扑空间}。由此\Term{derivation}{导出}映射
+\[
+\phi:X\longrightarrow\operatorname{Ob}\operatorname{Pro}(\operatorname{Top}(Y))
+\]
+\SourcePage{291}
+（这是 $X\to\operatorname{Ob}\operatorname{Point}(\operatorname{Top}(X))\to\operatorname{Ob}\operatorname{Pro}(\operatorname{Top}(X))$ (6.8.5) 与 $\rho$ 的 \Term{pro-adjoint}{pro-伴随函子} $\sigma$ 的复合。注意：对 $x\in X$，$\phi(x)$ 等同于由 $\rho$ 定义的\Term{gluing-sheaf}{粘合层} (9.6.4) 在 $x$ 的\Term{fiber}{纤维}。）证明：若 $E$ \Term{equivalence}{等价}于形如 $\operatorname{Top}(Z)$ 的\Term{topos}{拓扑斯}，则 $\phi$ 的值落在 $\operatorname{Pro}(\operatorname{Ouv}(Y))$ 的\Term{essential-image}{本质像}中。
+
+\textbf{问题。} 逆命题成立吗？
+\end{SGAresult}
+\SGAsection{9.6}{粘合层}
+我们在 9.5.4 已看到，给定一个带有\Term{open-object}{开对象} $U$ 的\Term{topos}{拓扑斯} $E$，本质上等于给定两个\Term{topos}{拓扑斯} $\mathscr U,\mathscr F$ 和一个\Term{gluing-functor}{粘合函子}
+\[
+\rho:\mathscr U\longrightarrow\mathscr F,\tag{9.6.1}
+\]
+即一个有 \Term{pro-adjoint}{pro-伴随函子}的\Term{functor}{函子}：
+\[
+\sigma:\operatorname{Pro}(\mathscr F)\longrightarrow\operatorname{Pro}(\mathscr U).\tag{9.6.2}
+\]
+根据关于 \Term{pro-adjoint}{pro-伴随函子}的综合论述（第 I 讲 8），知道\Term{functor}{函子} $\sigma$，或\Term{equivalence}{等价}地知道由 $\sigma$ 诱导的\Term{functor}{函子}
+\[
+\sigma_\circ:\mathscr F\longrightarrow\operatorname{Pro}(\mathscr U),\tag{9.6.3}
+\]
+就能在相差唯一\Term{isomorphism}{同构}的意义下确定\Term{functor}{函子} $\rho$（因而在相差\Term{equivalence-of-topoi}{拓扑斯等价}的意义下确定\Term{glued-topos}{粘合拓扑斯} $E=(\mathscr F,\mathscr U,\rho)$）。\Term{functor}{函子} $\sigma$ 由它与小\Term{filtered-projective-limit}{滤过投射极限}交换、且延拓\Term{functor}{函子} $\sigma_\circ$ 这两个性质，在相差唯一\Term{isomorphism}{同构}的意义下确定。另一方面，给定\Term{functor}{函子} (9.6.3) \Term{isomorphism}{同构}于一个 \Term{pro-adjoint}{pro-伴随函子}的充要条件显然是：对 $\mathscr U$ 的每个\Term{object}{对象} $X$，$\mathscr F$ 上的\Term{contravariant-functor}{反变函子}
+\[
+Y\longmapsto\operatorname{Hom}_{\operatorname{Pro}(\mathscr U)}(\sigma_\circ(Y),X)
+\]
+\Term{representable-functor}{可表}，或\Term{equivalence}{等价}地，它是 $\mathscr F$ 上相对于\Term{canonical-topology}{典范拓扑}的\Term{sheaf}{层}（1.1.2 (iii)）。立即看出，这也意味着相反\Term{functor}{函子}
+\[
+\sigma_\circ^\circ:\mathscr F^\circ\longrightarrow\operatorname{Pro}(\mathscr U)^\circ\subset\check{\mathscr U}=\mathscr{H}om(\mathscr U,(\mathrm{Ens}))\tag{9.6.4}
+\]
+是 $\mathscr F$ 上取值于 $\operatorname{Pro}(\mathscr U)^\circ$ 的\Term{sheaf}{层}（第 II 讲 6.1）。因此，给定\Term{gluing-functor}{粘合函子} (9.6.1)，也\Term{equivalence}{等价}于（相差\Term{isomorphism}{同构}地）给定 $\mathscr F$ 上取值于 $\operatorname{Pro}(\mathscr U)^\circ$ 的\Term{sheaf}{层}。这样与\Term{gluing-functor}{粘合函子}（或与 9.3 中的情形 $(E,U,\mathscr F)$）相联系的\Term{sheaf}{层}，称为所考虑的\Term{gluing-functor}{粘合函子} $\rho$（分别地，\Term{topos}{拓扑斯} $E$ 的\Term{open-object}{开对象} $U$）所\Term{correspondence}{对应}的\Term{gluing-sheaf}{粘合层}。
+
+\begin{SGAresult}{练习}{9.6.5}
+将 9.5.4 明确表述为两个 2-\Term{category}{范畴}之间的 2-\Term{equivalence}{等价}命题：一个 2-\Term{category}{范畴}由二元组 $(E,U)$ 构成，其中 $E$ 是\Term{topos}{拓扑斯}、$U$ 是其\Term{open-object}{开对象}；另一个 2-\Term{category}{范畴}由三元组 $(\mathscr U,\mathscr F,\rho)$ 构成，其中 $\mathscr U,\mathscr F$ 是\Term{topos}{拓扑斯}、$\rho:\mathscr U\to\mathscr F$ 是\Term{gluing-functor}{粘合函子}（所述 2-\Term{category}{范畴}的明确描述由读者负责）。给出这个命题的一个变式，使用三元组 $(\mathscr U,\mathscr F,\phi)$ 的 2-\Term{category}{范畴}，这里 $\phi$ 是 $\mathscr F$ 上取值于 $\operatorname{Pro}(\mathscr U)^\circ$ 的\Term{sheaf}{层}。
+\end{SGAresult}
+\SourcePage{292}
+\SGAsection{9.7}{粘合拓扑斯的点}
+\textbf{9.7.1.} 设 $C$ 是\Term{category}{范畴}，而
+\[
+u:D'\longrightarrow C,\qquad v:D''\longrightarrow C
+\]
+是两个\Term{fully-faithful-functor}{全忠实函子}，其\Term{essential-image}{本质像} $C',C''$ 满足
+\[
+\operatorname{Ob}C'\cap\operatorname{Ob}C''=\varnothing,\qquad
+\operatorname{Ob}C'\cup\operatorname{Ob}C''=\operatorname{Ob}C.
+\]
+再假设
+\[
+X'\in\operatorname{Ob}C',\ X''\in\operatorname{Ob}C''\ \Longrightarrow\ \operatorname{Hom}(X'',X')=\varnothing,
+\]
+或\Term{equivalence}{等价}地，
+\[
+\operatorname{Hom}(v(A''),u(A'))=\varnothing\quad\text{对 }A'\in\operatorname{Ob}D',\ A''\in\operatorname{Ob}D''.
+\]
+于是立即可见，知道\Term{category}{范畴} $C',C''$ 及\Term{functor}{函子}
+\[
+(X',X'')\longmapsto\operatorname{Hom}(X',X''):C'^\circ\times C''\longrightarrow(\mathrm{Ens}),
+\]
+便能在相差\Term{canonical}{典范}\Term{isomorphism}{同构}的意义下重建\Term{category}{范畴} $C$；同样，知道 $D',D''$ 和\Term{functor}{函子}
+\[
+(A',A'')\longmapsto\operatorname{Hom}(u(A'),v(A'')):D'^\circ\times D''\longrightarrow(\mathrm{Ens}),
+\]
+便能在相差\Term{equivalence}{等价}的意义下重建 $C$（这一\Term{equivalence}{等价}确定到唯一\Term{isomorphism}{同构}）。这一注记特别适用于下列命题所述的情形，并告诉我们：知道\Term{category}{范畴} $\operatorname{Point}(\mathscr U),\operatorname{Point}(\mathscr F)$，以及由\Term{gluing-functor}{粘合函子} $\rho:\mathscr U\to\mathscr F$ \Term{derivation}{导出}的某个\Term{functor}{函子}
+\[
+\operatorname{Point}(\mathscr U)^\circ\times\operatorname{Point}(\mathscr F)\longrightarrow(\mathrm{Ens}),
+\]
+便能在相差\Term{equivalence}{等价}的意义下确定\Term{category}{范畴} $\operatorname{Point}(E)$。
+
+\begin{SGAresult}{命题}{9.7.2}
+设 $E$ 是\Term{topos}{拓扑斯}，$U$ 是 $E$ 的\Term{open-object}{开对象}，$\mathscr U=E_{/U}$，而 $\mathscr F$ 是 $E$ 中与 $\mathscr U$ 互补的\Term{closed-subtopos}{闭子拓扑斯}。考虑由\Term{inclusion-morphism}{包含态射} $j:\mathscr U\to E$ 与 $i:\mathscr F\to E$ 诱导的\Term{functor}{函子} $p\mapsto p\circ j$ 与 $q\mapsto q\circ i$：
+\[
+u:\operatorname{Point}(\mathscr U)\longrightarrow\operatorname{Point}(E),\qquad
+v:\operatorname{Point}(\mathscr F)\longrightarrow\operatorname{Point}(E).\tag{9.7.2.1}
+\]
+有如下结论：
+
+a) 上述\Term{functor}{函子} $u,v$ \Term{fully-faithful-functor}{全忠实}，$E$ 的每个点恰属于二者之一的\Term{essential-image}{本质像}。
+
+b) 设 $p,q$ 是 $E$ 的两个点，$p$（分别地 $q$）属于 $u$（分别地 $v$）的\Term{essential-image}{本质像}。则
+\[
+\operatorname{Hom}(q,p)=\varnothing.\tag{9.7.2.2}
+\]
+\SourcePage{293}
+c) 设 $p$（分别地 $q$）是 $\mathscr U$（分别地 $\mathscr F$）的点。有关于 $(q,p)$ 为\Term{functor}{函子}性的\Term{isomorphism}{同构}
+\[
+\operatorname{Hom}(u(p),v(q))\simeq\operatorname{Hom}(\operatorname{Pro}(\rho)(p),q)\simeq\operatorname{Hom}(p,\sigma(q)),\tag{9.7.2.3}
+\]
+其中
+\[
+\sigma:\operatorname{Pro}(\mathscr F)\longrightarrow\operatorname{Pro}(\mathscr U)
+\]
+是\Term{gluing-functor}{粘合函子} $\rho:\mathscr U\to\mathscr F$ 的 \Term{pro-adjoint}{pro-伴随函子} (9.6.2)，而在这里
+\[
+\rho:\mathscr U\longrightarrow\mathscr F,
+\]
+并已把\Term{category}{范畴} $\operatorname{Point}(\mathscr U),\operatorname{Point}(\mathscr F)$ 分别与 $\operatorname{Pro}(\mathscr U),\operatorname{Pro}(\mathscr F)$ 的\Term{full-subcategory}{满子范畴}等同（在相差\Term{equivalence}{等价}的意义下）（6.8.5）。
+\end{SGAresult}
+\begin{proof}
+a) $u,v$ 的\Term{fully-faithful-functor}{全忠实}性是已知的 (9.1.4)。关于 $u,v$ \Term{essential-image}{本质像}的断言由判据 9.2.5 和 9.2.4 得到：它们判定一个点 $P\to E$ 何时在相差\Term{isomorphism}{同构}的意义下经 $\mathscr U$、分别地经 $\mathscr F$ \Term{resolution}{分解}；再注意到\Term{punctual-topos}{点拓扑斯} $P$ 仅有两个\Term{open-object}{开对象}，即 $P$ 的\Term{initial-object}{始对象}和\Term{final-object}{终对象}。
+
+b) 考虑到 a)，此断言意味着：若点 $p:P\to E$ 经 $\mathscr U$ \Term{resolution}{分解}，则满足 $\operatorname{Hom}(p',p)\ne\varnothing$ 的每个点 $p':P\to E$ 也如此。而若 $\alpha:p'\to p$，它就诱导 $p^*(U)\to p'^*(U)$，于是 $p^*(U)=e_P$ 蕴含 $p'^*(U)=e_P$，证毕。
+
+c) 将下述引理 9.7.2.4 应用于\Term{inclusion-morphism}{包含态射} $j:\mathscr U\to E$ 与 $i:\mathscr F\to E$，便得到一个在相差\Term{canonical}{典范}\Term{isomorphism}{同构}的意义下交换的\Term{functor}{函子}图：
+\[
+\begin{tikzcd}
+\operatorname{Point}(\mathscr U)\arrow[r,"u"]\arrow[d,hook]&\operatorname{Point}(E)\arrow[d,hook]&\operatorname{Point}(\mathscr G)\arrow[l,"v"']\arrow[d,hook]\\
+\operatorname{Pro}(\mathscr U)\arrow[r,"\operatorname{Pro}(j_*)"']&\operatorname{Pro}(E)&\operatorname{Pro}(\mathscr G)\arrow[l,"\operatorname{Pro}(i_*)"]
+\end{tikzcd}
+\]
+其中竖\Term{arrow}{箭头}表示\Term{canonical}{典范}的\Term{fully-faithful-functor}{全忠实函子} (6.8.5)。另一方面，因为 $i_*$ 有\Term{left-adjoint}{左伴随} $i^*$，$\operatorname{Pro}(i_*)$ 就有\Term{left-adjoint}{左伴随} $\operatorname{Pro}(i^*)$（1.8），最终得到\Term{functor}{函子}性\Term{isomorphism}{同构}
+\[
+\begin{aligned}
+\operatorname{Hom}(u(p),v(q))
+&\simeq\operatorname{Hom}_{\operatorname{Pro}(E)}(\operatorname{Pro}(j_*)(p),\operatorname{Pro}(i_*)(q))\\
+&\simeq\operatorname{Hom}_{\operatorname{Pro}(\mathscr F)}(\operatorname{Pro}(i^*)(\operatorname{Pro}(j_*)(p)),q)\\
+&\simeq\operatorname{Hom}_{\operatorname{Pro}(\mathscr F)}(\operatorname{Pro}(i^*j_*)(p),q).
+\end{aligned}
+\]
+这正是 (9.7.2.3) 的第一个公式；第二个公式由 $\sigma$ 是 $\rho$ 的 \Term{pro-adjoint}{pro-伴随函子}的定义便显然成立。这就在下述引理的前提下证明了 9.7.2。
+\end{proof}
+\SourcePage{294}
+\begin{SGAresult}{引理}{9.7.2.4}
+设 $f:F\to E$ 是\Term{morphism-of-topoi}{拓扑斯态射}。则\Term{functor}{函子}图
+\[
+\begin{tikzcd}
+\operatorname{Point}(F)\arrow[r,"p\mapsto f\circ p"]\arrow[d]&\operatorname{Point}(E)\arrow[d]\\
+\operatorname{Pro}(F)\arrow[r,"\operatorname{Pro}(f_*)"']&\operatorname{Pro}(E)
+\end{tikzcd}\tag{9.7.2.4.1}
+\]
+在相差\Term{canonical}{典范}\Term{isomorphism}{同构}的意义下交换（竖\Term{arrow}{箭头}表示\Term{fully-faithful-functor}{全忠实函子} 6.8.5）。
+\end{SGAresult}
+\begin{proof}
+从定义立即可作验证，留待读者。
+\end{proof}
+\begin{SGAresult}{推论}{9.7.3}
+设 $E$ 是有\Term{enough-points}{足够多点}的\Term{topos}{拓扑斯}，则 $E$ 的每个\Term{closed-subtopos}{闭子拓扑斯} $\mathscr F$ 也有\Term{enough-points}{足够多点}。更准确地，若 $(p_i)_{i\in I}$ 是 $E$ 的一个\Term{conservative-family-of-points}{保守点族}，则由子族 $(p_i)_{i\in J}$ 定义的 $\mathscr F$ 的点族是\Term{conservative-functor}{保守}的，这个子族由那些来自 $\mathscr F$ 的点的 $p_i$ 构成。（与 6.7.3、6.7.4 比较。）
+\end{SGAresult}
+\begin{proof}
+设 $f:X\to Y$ 是 $\mathscr F$ 的\Term{arrow}{箭头}，并由上述 $\mathscr F$ 的点所\Term{correspondence}{对应}的\Term{fiber-functor}{纤维函子}变为\Term{isomorphism}{同构}。因为 $i^*i_*\simeq\operatorname{id}_{\mathscr F}$，可见 $i_*(f):i_*(X)\to i_*(Y)$ 由 $i\in J$ 的 $p_i$ 所\Term{correspondence}{对应}的\Term{fiber-functor}{纤维函子}变为\Term{isomorphism}{同构}；对 $i\in I-J$ 的 $p_i$，即来自 $\mathscr U$ 的点，也有同样结论，因为 $j^*i_*$ 是取\Term{final-object}{终对象}为值的常值\Term{functor}{函子}。因此 $i_*(f)$ 是\Term{isomorphism}{同构}，因而 $f\simeq i^*i_*(f)$ 也是\Term{isomorphism}{同构}。
+\end{proof}
+\begin{SGAresult}{注记}{9.7.4}
+若 $E$ 是有\Term{enough-points}{足够多点}的\Term{topos}{拓扑斯}，则显然只要知道 $\operatorname{Point}(E)$ 的\Term{full-subcategory}{满子范畴} $\operatorname{Point}(E_{/U})$ 的\Term{essential-image}{本质像}，就能确定 $E$ 的\Term{open-object}{开对象} $U$；事实上，若 $C$ 是 $\operatorname{Point}(E)$ 的\Term{full-subcategory}{满子范畴}，并定义 $E$ 的一个\Term{conservative-family-of-points}{保守点族}，则甚至只需知道由 $C$ 中属于 $\operatorname{Point}(\mathscr U)$ \Term{essential-image}{本质像}的元素构成的\Term{subcategory}{子范畴} $C_{/U}$。由此及 9.7.2 a)，只要知道 $\operatorname{Point}(\mathscr F)$ 在 $\operatorname{Point}(E)$ 中的\Term{essential-image}{本质像}，甚至只知道该像与 $C$ 的交，就能确定 $E$ 的\Term{closed-subtopos}{闭子拓扑斯} $\mathscr F$。
+\end{SGAresult}
+\begin{SGAresult}{练习}{9.7.5}
+设 $E$ 是\Term{topos}{拓扑斯}。对 $E$ 的每个\Term{subtopos}{子拓扑斯} $F$，令 $P(F)$ 是 $\operatorname{Point}(E)$ 的\Term{subset}{子集}，由 $E$ 中那些经 $E$ \Term{resolution}{分解}的点的\Term{isomorphism-class}{同构类}构成。因此 $P(F)$ 与 $\operatorname{Point}(F)$ \Term{homeomorphism}{同胚}（9.1.8 c)）。证明：若 $F$ 是 $E$ 的开（分别地闭、\Term{locally-closed}{局部闭}（9.4.9））\Term{subtopos}{子拓扑斯}，则 $P(F)$ 是 $E$ 的开（分别地闭、\Term{locally-closed}{局部闭}）\Term{subset}{子集}。证明：当 $E$ 有\Term{enough-points}{足够多点}时，$E$ 的每个\Term{locally-closed-subtopos}{局部闭子拓扑斯}也如此，且映射 $F\mapsto P(F)$ 诱导 $E$ 的开（分别地闭、\Term{locally-closed}{局部闭}）\Term{subtopos}{子拓扑斯}\Term{set}{集合}与 $\operatorname{Point}(E)$ 的开（分别地闭、\Term{locally-closed}{局部闭}）\Term{subset}{子集}\Term{set}{集合}之间的\Term{bijection}{双射}。
+\SourcePage{295}
+将以上考虑推广到以 $\operatorname{Point}(E)$ 的任意子\Term{space}{空间} $X$ 代替 $\operatorname{Point}(E)$ 的情形，其中 $X$ \Term{correspondence}{对应}于 $E$ 的一个\Term{conservative-family-of-points}{保守点族}。
+\end{SGAresult}
+\SGAsection{9.8}{与拓扑空间相关的某些拓扑斯的补充}
+本节以练习的形式给出若干补充。建议读者浏览这些练习，以熟悉在各种经典类型的情形下的\Term{topos}{拓扑斯}观点。
+\begin{SGAresult}{练习}{9.8.1}
+（\Term{topological-space}{拓扑空间}上的\Term{sheaf}{层}的\Term{descent}{下降}。）设 $f:X\to Y$ 是属于 $\mathcal U$ 的\Term{topological-space}{拓扑空间}之间的\Term{continuous-map}{连续映射}，从而有\Term{functor}{函子}
+\[
+f^*:\operatorname{Top}(Y)\longrightarrow\operatorname{Top}(X).
+\]
+a) 下列条件\Term{equivalence}{等价}：
+
+(i) $f^*$ \Term{faithful-functor}{忠实}。
+
+(ii) $f^*$ \Term{conservative-functor}{保守}。
+
+(iii) $f(X)$ 是 $Y$ 的\Term{very-dense}{极稠密}\Term{subset}{子集}（EGA IV 10.1.3）。
+
+为此，$f$ 或 $f_{\mathrm{sob}}$ \Term{surjectivity}{满射}便已足够。给出一个例子，使 $f^*$ \Term{faithful-functor}{忠实}而 $f=f_{\mathrm{sob}}$ 不是\Term{surjectivity}{满射}（取 $X$ \Term{discrete}{离散}，$f$ \Term{injectivity}{单射}，$f(X)$ 为 $Y$ 的\Term{closed-point}{闭点}\Term{set}{集合}，而 $Y$ 是非\Term{discrete}{离散}的 Noether \Term{topological-space}{拓扑空间}）。再分别给出 $f_{\mathrm{sob}}$ \Term{surjectivity}{满射}而 $f$ 不\Term{surjectivity}{满射}、以及 $f$ \Term{surjectivity}{满射}而 $f_{\mathrm{sob}}$ 不\Term{surjectivity}{满射}的例子。
+
+b) 假设 $f(X)$ 在 $Y$ 中\Term{very-dense}{极稠密}，其\Term{topology}{拓扑}为 $X$ 的\Term{topology}{拓扑}的\Term{quotient-topology}{商拓扑}。证明 $(\mathrm{Esp})$ 的\Term{arrow}{箭头} $f^*$ 对变动\Term{space}{空间}上\Term{sheaf-of-sets}{集合层}的\Term{fibered-category}{纤维范畴}而言是\Term{descent-morphism}{下降态射}，即\Term{functor}{函子} $f^*$ 诱导一个从\Term{category}{范畴} $\operatorname{Top}(Y)$ 到 $\operatorname{Top}(X)$ 中带有相对于 $f:X\to Y$ 的\Term{descent-datum}{下降数据}的\Term{object}{对象}\Term{category}{范畴}的\Term{fully-faithful-functor}{全忠实函子}。（归结到 $f$ \Term{surjectivity}{满射}的情形，并仿照第 VIII 讲 9.1 在\Term{scheme}{概形}的\Term{etale-topology}{平展拓扑}背\Term{site}{景}下给出的推理。）给出逆命题。
+
+c) 假设 $f(X)$ 在 $Y$ 中\Term{very-dense}{极稠密}，其\Term{topology}{拓扑}为 $X$ 的\Term{topology}{拓扑}的\Term{quotient-topology}{商拓扑}，且 $f$ 的\Term{fiber}{纤维}\Term{connected}{连通}。证明\Term{functor}{函子} $f^*$ \Term{fully-faithful-functor}{全忠实}。（仿照 SGA 1 第 IX 讲 3.4 的推理。）至少在 $Y$ 的点是\Term{closed-point}{闭点}时，给出逆命题。
+
+d) 假设 $Y$ 是一族\Term{open-subset}{开集} $Y_i$ 的并，且 $X$ 在每个 $Y_i$ 上有\Term{section}{截面}。证明 $f$ 对变动\Term{topological-space}{拓扑空间}上\Term{sheaf-of-sets}{集合层}的\Term{fibered-category}{纤维范畴}而言是\Term{effective-descent-morphism}{有效下降态射}，即 c) 所考虑的\Term{functor}{函子}甚至是\Term{equivalence-of-categories}{范畴等价}。
+\end{SGAresult}
+\begin{SGAresult}{练习}{9.8.2}
+（\Term{topological-space}{拓扑空间}的\Term{quotient-topos}{商拓扑斯}。\Term{topological-etendue}{拓扑展域}。）
+
+a) 设
+\[
+\begin{tikzcd}
+X_2\arrow[r,shift left=1.2ex]\arrow[r]\arrow[r,shift right=1.2ex]&X_1\arrow[r,shift left,"p_1"]\arrow[r,shift right,"p_2"']&X_0
+\end{tikzcd}\tag{9.8.5.1}
+\]
+\SourcePage{296}
+是属于 $\mathcal U$ 的\Term{topological-space}{拓扑空间}\Term{category}{范畴} $(\mathrm{Esp})$ 中一个截断到 2 阶的\Term{semisimplicial-object}{半单纯对象}，于是由\Term{inverse-image-functor}{逆像函子}得到\Term{sheaf}{层}\Term{category}{范畴}的图
+\[
+\begin{tikzcd}
+\operatorname{Top}(X_0)\arrow[r,shift left,"p_1^*"]\arrow[r,shift right,"p_2^*"']&\operatorname{Top}(X_1)\arrow[r,shift left=1.2ex]\arrow[r]\arrow[r,shift right=1.2ex]&\operatorname{Top}(X_2).
+\end{tikzcd}
+\]
+（更准确地，这是\Term{standard-simplex}{标准单形} $\Delta_n$、$0\leq n\leq2$ 所成\Term{category}{范畴}上的\Term{cofibered-category}{余纤维范畴}。）证明这个图的 $\varprojlim$ \Term{category}{范畴}（即 $X_0$ 上带有相对于图 (9.8.6.1) 的\Term{descent-datum}{下降数据}的\Term{sheaf-of-sets}{集合层}\Term{category}{范畴}，也就是带有\Term{isomorphism}{同构} $p_1^*(F)\simeq p_2^*(F)$ 使得……）是一个 $\mathcal U$-\Term{topos}{拓扑斯} $T$。（关于\Term{topos}{拓扑斯}在 $\varprojlim$ 运算下\Term{stable}{稳定}的更一般命题，参见第 VI 讲。）定义\Term{morphism-of-topoi}{拓扑斯态射} $q:\operatorname{Top}(X_0)\to T$，并证明对每个 $\mathcal U$-\Term{topos}{拓扑斯} $E$，$\mathscr{H}om_{\mathrm{top}}(T,E)$ 通过 $q^*$ \Term{equivalence}{等价}于下列由 (9.8.2.1) \Term{derivation}{导出}的\Term{category}{范畴}图的 $\varprojlim$ \Term{category}{范畴}：
+\[
+\begin{tikzcd}[column sep=small]
+\mathscr{H}om_{\mathrm{top}}(\operatorname{Top}(X_0),E)\arrow[r,shift left]\arrow[r,shift right]&\mathscr{H}om_{\mathrm{top}}(\operatorname{Top}(X_1),E)\arrow[r,shift left=1.2ex]\arrow[r]\arrow[r,shift right=1.2ex]&\mathscr{H}om_{\mathrm{top}}(\operatorname{Top}(X_2),E).
+\end{tikzcd}
+\]
+b) 特别地，设 $R$ 是 $(\mathrm{Esp})$ 中\Term{object}{对象} $X$ 上的\Term{equivalence-relation}{等价关系}，即（第 I 讲 10）$X\times X$ 的\Term{subobject}{子对象} $R$（注意：包含映射 $R\hookrightarrow X\times X$ \Term{continuous}{连续}，但 $R$ 的\Term{topology}{拓扑}未必由 $X\times X$ 的\Term{topology}{拓扑}诱导），使得对 $(\mathrm{Esp})$ 的每个\Term{object}{对象} $Y$，$\operatorname{Hom}(Y,R)$ 是 $\operatorname{Hom}(Y,X)$ 中某个\Term{equivalence-relation}{等价关系}的图。由此得到形如 (9.8.2.1) 的图，其中 $X_0=X$、$X_1=R$、$X_2=(R,p_2)\times_X(R,p_1)$，而 $p_1,p_2$ 是 $R$ 到 $X$ 的两个\Term{projection}{投影}，从而得到\Term{topos}{拓扑斯}，记为 $\operatorname{Top}(X)/R$，或滥用记号写为 $\operatorname{Top}(X/R)$，甚至 $X/R$；它在 a) 阐明的意义下起着 $X$ 对 $R$ 取商的\Term{action}{作用}。假设 $R$ 的\Term{topology}{拓扑}由 $X\times X$ 的\Term{topology}{拓扑}诱导，并以 $X/R$ 表示通常的\Term{quotient-topological-space}{商拓扑空间}，若 $X$ 在 $X/R$ 上\Term{local-scheme}{局部}有\Term{section}{截面}，证明这时 $T$ \Term{equivalence}{等价}于 $\operatorname{Top}(X/R)$。（使用 9.8.1 d)。）
+
+c) 设 $H\to X$ 是\Term{topological-group}{拓扑群}的\Term{injectivity}{单射}\Term{morphism}{态射}，即 $(\mathrm{Esp})$ 中\Term{group-object}{群对象}的\Term{monomorphism}{单态射}，并令 $R$ 是它在 $X$ 中定义的\Term{equivalence-relation}{等价关系}，即 $R=H\times H$，$p_1=\operatorname{pr}_1$，而 $p_2$ 由 $H$ 通过\Term{left-translation}{左平移}在 $X$ 上的\Term{action}{作用}定义。证明 $R$ 的\Term{topology}{拓扑}由 $X\times X$ 的\Term{topology}{拓扑}诱导，当且仅当 $H$ 的\Term{topology}{拓扑}由 $X$ 的\Term{topology}{拓扑}诱导。给出此条件不满足而 $X/H$ 通常的\Term{quotient-topology}{商拓扑}为\Term{indiscrete-topology}{粗拓扑}的例子，其中 a) $H=\mathbb Z\times\mathbb Z$、$X=\mathbb R$，b) $H=\mathbb R$、$X=\mathbb T\times\mathbb T$，$\mathbb T=\mathbb R/\mathbb Z$（“\Term{torus}{环面}的测地线”）。证明所得的两个\Term{equivalence-of-topoi}{拓扑斯等价}，并且既不\Term{equivalence}{等价}于 $\operatorname{Top}(X/H)$（这是\Term{final-topos}{终拓扑斯}（2.2）），也不\Term{equivalence}{等价}于任何形如 $\operatorname{Top}(Y)$ 的\Term{topos}{拓扑斯}。
+
+d) 设 $G$ 是\Term{action}{作用}于\Term{topological-space}{拓扑空间} $X$ 的\Term{topological-group}{拓扑群}；由熟知的构造，得到\Term{semisimplicial-object}{半单纯对象}
+\[
+\begin{tikzcd}
+\cdots G\times G\times X\arrow[r,shift left=1.2ex]\arrow[r]\arrow[r,shift right=1.2ex]&G\times X\arrow[r,shift left]\arrow[r,shift right]&X.
+\end{tikzcd}
+\]
+\SourcePage{297}
+证明由 a) 得到的\Term{topos}{拓扑斯} $T$ 等同于如下\Term{category}{范畴}：\Term{object}{对象}是 $X$ 上方带有\Term{action}{作用}群 $G$ 的\Term{space}{空间} $X'$，使得 $X'\to X$ 是与 $G$ 的\Term{action}{作用}相容的\Term{local-homeomorphism}{局部同胚}。特别地，若 $G$ \Term{discrete}{离散}，就重新得到 2.3 的\Term{topos}{拓扑斯} $\operatorname{Top}(X,G)$。
+
+上述考虑说明了把\Term{topos}{拓扑斯} $T$ 记为 $\operatorname{Top}(X)/G$，甚至 $\operatorname{Top}(X/G)$ 或干脆 $X/G$ 的合理性。但须注意：当 $G$ 是\Term{discrete}{离散}群（为使想法具体）并\Term{proper}{固有}地\Term{action}{作用}于 $X$，从而通常的商\Term{space}{空间} $X/G$ 具有颇为合理的性质时，由 a) 中 $T$ 的\Term{universal-property}{泛性质}\Term{derivation}{导出}的自然\Term{morphism-of-topoi}{拓扑斯态射} $T\to\operatorname{Top}(X/G)$，只有在 $G$ \Term{free-action}{自由作用}、即无\Term{fixed-point}{不动点}、也就是 $G\times X\to X\times X$ 为\Term{monomorphism}{单态射}时才是\Term{equivalence-of-topoi}{拓扑斯等价}。因此，在“\Term{pre-equivalence-relation}{预等价关系}”（或 SGA 3 第 V 讲 1 意义下的“\Term{groupoid}{群胚}”）不是\Term{equivalence-relation}{等价关系}的情形，\Term{topos}{拓扑斯}意义下取商（或“精细取商”）一般不与通常的\Term{topology}{拓扑}取商（通过\Term{correspondence}{对应} $X\mapsto\operatorname{Top}(Y)$）相符。
+
+e) 设 $T$ 是 $\mathcal U$-\Term{topos}{拓扑斯}。证明下列条件\Term{equivalence}{等价}：
+
+(i) 存在 $T$ 的\Term{object}{对象}族 $(S_i)_{i\in I}$，\Term{covering}{覆盖} $E$ 的\Term{final-object}{终对象}，使得对每个 $i\in I$，\Term{induced-topos}{诱导拓扑斯} $T_{/S_1}$ \Term{equivalence}{等价}于形如 $\operatorname{Top}(X)$ 的\Term{topos}{拓扑斯}，其中 $X\in(\mathrm{Esp})$。
+
+(i') 存在 $S\in\operatorname{Ob}E$，\Term{covering}{覆盖}\Term{final-object}{终对象}，使\Term{induced-topos}{诱导拓扑斯} $T_{/S}$ \Term{equivalence}{等价}于形如 $\operatorname{Top}(X)$ 的\Term{topos}{拓扑斯}。
+
+(ii) 存在\Term{topological-space}{拓扑空间} $X$，以及 $X$ 中的\Term{etale}{平展}\Term{pre-equivalence-relation}{预等价关系} $R$（按\Term{category}{范畴} $(\mathrm{Esp})$ 的意义；所谓\Term{etale}{平展}，即 $p_1:R\to X$ 为\Term{local-homeomorphism}{局部同胚}），使得 $T$ \Term{equivalence}{等价}于 $\operatorname{Top}(X/R)$，记号如 b) 所述。
+
+这时称\Term{topos}{拓扑斯} $T$ \Term{local-scheme}{局部}是\Term{topological-space}{拓扑空间}，或称 $T$ 为\Term{topological-etendue}{拓扑展域}（étendue topologique）（在不致混淆时也简称\Term{etendue}{展域}）。
+
+f) 证明 a) 构造的\Term{topos}{拓扑斯} $T$ 有\Term{enough-points}{足够多点}，更准确地，它有一个由（小）\Term{set}{集合} $X_0$ 参数化的\Term{conservative-family-of-points}{保守点族}。特别地，每个\Term{etendue}{展域}都有小\Term{conservative-family-of-points}{保守点族}，因此有\Term{enough-points}{足够多点}。当\Term{etendue}{展域} $T$ 如 e) ii) 那样实现为 $\operatorname{Top}(X/R)$ 时，证明 $T$ 的每个点都\Term{isomorphism}{同构}于 $\operatorname{Top}(X)$ 的某个点的像，因此由 $X_{\mathrm{sob}}$ 的一个通常的点定义（当 $X$ \Term{sober-space}{本原}（sobre）时，也就是由 $X$ 的一个点定义）。
+
+g) 证明 2.3 的\Term{topos}{拓扑斯} $\operatorname{Top}(X/G)$ 是\Term{etendue}{展域}。（使用它在 d) 中的描述或 7.1.10 c)。）证明对每个 $x\in X$，由 $x$ 定义的 $\operatorname{Top}(X,G)=\operatorname{Top}(X)/G$ 的点的\Term{endomorphism}{自同态}\Term{monoid}{幺半群}，\Term{canonical}{典范}\Term{isomorphism}{同构}于 $x$ 的\Term{stabilizer-group}{稳定子群} $G_x$。特别地，\Term{etendue}{展域}的点可能有非\Term{trivial-bundle}{平凡}\Term{automorphism-group}{自同构群}。确定由\Term{space}{空间} $X$ 中的\Term{etale}{平展}\Term{pre-equivalence-relation}{预等价关系}所定义的\Term{etendue}{展域} $T$ 的 $\operatorname{Point}(J)$，
+\SourcePage{298}
+并证明 $T$ 的点的每个\Term{endomorphism}{自同态}都是\Term{automorphism}{自同构}。
+
+h) 设 $T$ 是\Term{topos}{拓扑斯}。证明下列条件\Term{equivalence}{等价}：
+
+i) 对 $T$ 的每个点 $p$，$p$ 的每个\Term{endomorphism}{自同态}（分别地每个\Term{automorphism}{自同构}）都是恒等\Term{morphism}{态射}。
+
+ii) 对每个有\Term{enough-points}{足够多点}的\Term{topos}{拓扑斯} $S$ 以及每个\Term{morphism-of-topoi}{拓扑斯态射} $f:S\to T$，$f$ 的每个\Term{endomorphism}{自同态}（分别地每个\Term{automorphism}{自同构}）都是恒等\Term{morphism}{态射}。
+
+同样证明下列条件\Term{equivalence}{等价}：
+
+i') 对 $T$ 的两个点 $p,q$，从 $p$ 到 $q$ 至多有一个\Term{morphism}{态射}。
+
+ii') 对从有\Term{enough-points}{足够多点}的\Term{topos}{拓扑斯} $S$ 到 $T$ 的两个\Term{morphism}{态射} $f,g:S\rightrightarrows T$，从 $f$ 到 $g$ 至多有一个\Term{morphism}{态射}。
+
+当后面这些条件满足时，称\Term{topos}{拓扑斯} $T$ \Term{pointwise-rigid-topos}{逐点刚性}（ponctuellement rigide），或简称\Term{rigid-topos}{刚性}。证明：若 $X$ 是带有\Term{etale}{平展}\Term{pre-equivalence-relation}{预等价关系} $R$ 的\Term{topological-space}{拓扑空间}，则商\Term{etendue}{展域} $T=\operatorname{Top}(X)/R$ \Term{rigid-topos}{刚性}，当且仅当 $R$ 是\Term{equivalence-relation}{等价关系}。
+
+i) 设 $(X,G)$ 是带有\Term{discrete}{离散}\Term{action}{作用}群的\Term{topological-space}{拓扑空间}，$H$ 是 $G$ 的\Term{normal-subgroup}{正规子群}，使得 $H$ 在 $X$ 上的诱导\Term{action}{作用}\Term{proper}{固有}且自由。令 $X'=X/H$、$G'=G/H$，于是 $G'$ 以显然的方式\Term{action}{作用}于 $X'$。证明由带\Term{action}{作用}\Term{space}{空间}的\Term{canonical}{典范}\Term{morphism}{态射} $(X,G)\to(X',G')$ (4.1.2) 诱导的\Term{morphism-of-topoi}{拓扑斯态射}
+\[
+\operatorname{Top}(X,G)\longrightarrow\operatorname{Top}(X',G')
+\]
+是\Term{equivalence-of-topoi}{拓扑斯等价}。
+
+证明\Term{topos}{拓扑斯} $\operatorname{Top}(X/G)$ 的\Term{open-object}{开对象}\Term{set}{集合}等同于 $X$ 中在 $G$ 的\Term{action}{作用}下\Term{stable}{稳定}的\Term{open-subset}{开集}\Term{set}{集合}，也等同于\Term{quotient-topological-space}{商拓扑空间} $X/G$ 的\Term{open-subset}{开集}\Term{set}{集合}。由此推出 $\operatorname{Top}(X/G)$ \Term{connected}{连通}，当且仅当 $X$ 的每个既开又闭并在 $G$ 的\Term{action}{作用}下\Term{stable}{稳定}的\Term{subset}{子集}，都是空集或等于 $X$。当 $X$ 的\Term{connected-component}{连通分支}为\Term{open-subset}{开集}时，$\operatorname{Top}(X,G)$ \Term{connected}{连通}，当且仅当 $G$ 在 $X$ 的\Term{connected-component}{连通分支}\Term{set}{集合} $\pi_0(X)$ 上传递\Term{action}{作用}；更一般地，$\pi_0(\operatorname{Top}(X))$（8.7 g)）是\Term{essentially-constant-object}{本质常值}的 \Term{pro-set}{pro-集合}，\Term{isomorphism}{同构}于\Term{quotient-set}{商集} $\pi_0(X)/G$。
+
+证明：若 $X$ \Term{locally-connected}{局部连通}且\Term{locally-simply-connected}{局部单连通}，而 $T=\operatorname{Top}(X,G)$ \Term{connected}{连通}，即 $G$ 在 $\pi_0(X)$ 上传递\Term{action}{作用}，那么在借助带\Term{action}{作用}\Term{space}{空间} $(X',G')$ 实现 $T$ 的所有方式中（其中某些方式见上文），有一种使得 $X'$ \Term{connected}{连通}且\Term{simply-connected}{单连通}，并且这种实现相差非唯一\Term{isomorphism}{同构}是唯一的。证明选取这样的 $(X',G')$ \Term{equivalence}{等价}于选取 $T$ 的\Term{final-object}{终对象}的一个“\Term{universal-covering}{万有覆盖}”，而 $G'$ \Term{isomorphism}{同构}于相对于此\Term{universal-covering}{万有覆盖}的群 $\pi_1(T)$（参见 2.7.5）。
+
+（提示：证明给定 $T$ 与某个 $\operatorname{Top}(X,G)$ 的\Term{equivalence}{等价}，等于给定
+\SourcePage{299}
+$T$ 中的一个 $G_T$-\Term{torsor}{挠子} $P$；并且若 $(X,G)$ 与 $P$ \Term{correspondence}{对应}，则有\Term{canonical}{典范}\Term{equivalence}{等价} $\operatorname{Top}(X)\simeq T_{/P}$。）
+
+由此得到 c) 最后一项断言的一个\Term{trivial-bundle}{平凡}证明。把那些\Term{equivalence}{等价}于 $\operatorname{Top}(X,G)$ 的\Term{topos}{拓扑斯} $T$ 刻画为如下\Term{etendue}{展域}：\Term{connected}{连通}、\Term{locally-connected}{局部连通}、\Term{locally-simply-connected}{局部单连通}，且 $T$ 的\Term{final-object}{终对象} $e_T$ 的\Term{universal-covering}{万有覆盖} $P$ 使\Term{induced-topos}{诱导拓扑斯} $T_{/P}$ \Term{equivalence}{等价}于形如 $\operatorname{Top}(X)$ 的\Term{topos}{拓扑斯}（或以简单的滥用说法，$T_{/P}$“是”\Term{topological-space}{拓扑空间}）；这里前述 $\operatorname{Top}(X,G)$ 中的 $G$ 是\Term{discrete}{离散}群，\Term{action}{作用}于\Term{locally-connected}{局部连通}且\Term{locally-simply-connected}{局部单连通}的\Term{topological-space}{拓扑空间}，并传递地置换其\Term{connected-component}{连通分支}。
+
+给出一个\Term{local-scheme}{局部}\Term{isomorphism}{同构}于 $\mathbb R$、\Term{connected}{连通}且\Term{simply-connected}{单连通}、却不是\Term{topological-space}{拓扑空间}的\Term{etendue}{展域}的例子。（取原点加倍的实直线 $\mathbb R$ 的\Term{universal-covering}{万有覆盖}。）
+
+j) 称\Term{ringed-topos}{赋环拓扑斯} $(T,\mathscr O_T)$（参见第 11 节）为\Term{differentiable-etendue}{可微展域}（分别地\Term{real-analytic-etendue}{实解析展域}、\Term{complex-analytic-etendue}{复解析展域}），若存在 $T$ 的\Term{object}{对象} $S_i$ \Term{covering}{覆盖}\Term{final-object}{终对象}，使诱导\Term{ringed-topos}{赋环拓扑斯} $(T_{/E},\mathscr O_T/E)$ \Term{equivalence}{等价}于由\Term{differentiable-manifold}{可微流形}连同其实值 $C^\infty$ 函数\Term{sheaf}{层}定义的\Term{ringed-topos}{赋环拓扑斯}（分别地由\Term{real-analytic-space}{实解析空间}定义的\Term{ringed-topos}{赋环拓扑斯}、由\Term{complex-analytic-space}{复解析空间}定义的\Term{ringed-topos}{赋环拓扑斯}）。给出这些\Term{ringed-topos}{赋环拓扑斯}的如同 e) ii) 那样的构造性描述（其中分别取 $X$ 为\Term{differentiable-manifold}{可微流形}、\Term{complex-analytic-space}{复解析空间}或\Term{real-analytic-space}{实解析空间}）。利用 c) 中所考虑的例子，给出这类\Term{ringed-topos}{赋环拓扑斯}中不\Term{equivalence}{等价}于由\Term{topological-space}{拓扑空间}所附随的\Term{ringed-topos}{赋环拓扑斯}的例子。
+\end{SGAresult}
+\begin{SGAresult}{练习}{9.8.3}
+（与\Term{local-equivalence-relation}{局部等价关系}及\Term{foliation}{叶状结构}相联系的\Term{topos}{拓扑斯}。）\footnote{这道练习写成仓促，核对不充分，故给出时保留一切意见。N. Saavedra 先生已经核对 a) 至 e) 部分。请读者把可能的意见告知我们。}
+设 $X$ 是\Term{topological-space}{拓扑空间}。
+
+a) 对 $X$ 的每个\Term{open-subset}{开集} $U$，令 $\operatorname{Quot}(U)$ 是 $U$ 中\Term{equivalence-relation}{等价关系}的\Term{set}{集合}；对\Term{open-subset}{开集} $V\subset U$，考虑自然映射 $\operatorname{Quot}(U)\to\operatorname{Quot}(V)$，从而得到 $X$ 上的\Term{presheaf}{预层} $\operatorname{Quot}_X$。设 $Q_X$ 或简记 $Q$ 是\Term{associated-sheaf}{伴随层}，而 $r$ 是 $Q$ 的一个\Term{section}{截面}（“$X$ 上的\Term{local-equivalence-relation}{局部等价关系}”）。由 $X$ 的\Term{open-subset}{开集} $U$ 中\Term{equivalence-relation}{等价关系}\Term{set}{集合} $\operatorname{Quot}(U)$ 上的\Term{order-relation}{序关系}，在\Term{presheaf}{预层} $\operatorname{Quot}$ 以及\Term{associated-sheaf}{伴随层} $Q$ 上\Term{derivation}{导出}一个序结构，即取值于\Term{ordered-set}{有序集}\Term{category}{范畴}的\Term{presheaf}{预层}、分别地\Term{sheaf}{层}的结构。
+
+b) 对 $X$ 上的每个\Term{equivalence-relation}{等价关系} $R$，考虑它定义的 $Q$ 的\Term{section}{截面} $\operatorname{loc}(R)$。设 $E(r)$ 是 $X$ 上满足 $\operatorname{loc}(R)$
+\SourcePage{300}
+比 $r$ 粗的\Term{equivalence-relation}{等价关系}的\Term{set}{集合}，令 $\operatorname{glob}(r)$ 是 $E(r)$ 的\Term{supremum}{上确界}\Term{equivalence-relation}{等价关系}（其图是 $R\in E(r)$ 的图的交）。设 $(U_x)_{x\in X}$ 是各 $x\in X$ 的一族\Term{open-neighborhood}{开邻域}，并对每个 $x\in X$，令 $R_x$ 是 $U_x$ 中在 $x$ 处的芽为 $r_x$ 的\Term{equivalence-relation}{等价关系}。对每族\Term{open-subset}{开集} $\mathscr V=(V_x)$，其中 $x\in X$、$x\in V_x\subset U_x$，令 $R_{\mathscr V}$ 是 $X$ 中由关系族 $R_x|V_x$ 生成的\Term{equivalence-relation}{等价关系}。证明：若 $\mathscr V'\leq\mathscr V$（意义显然），则 $R_{\mathscr V'}\geq R_{\mathscr V}$，且 $\operatorname{glob}(r)$ 是\Term{equivalence-relation}{等价关系} $R_{\mathscr V}$ 的递增\Term{filtered}{滤过}族的\Term{supremum}{上确界}。给出一个 $\operatorname{glob}(r)$ 不属于 $E(r)$ 的例子，即存在 $a\in X$，使得对 $a$ 的每个\Term{open-neighborhood}{开邻域} $W\subset U_a$，都存在 $\mathscr V=(V_x)$ 及 $W$ 的两个点 $y,z$，它们对于 $R_a$ \Term{equivalence}{等价}，却对于 $R_{\mathscr V}$ 不\Term{equivalence}{等价}。证明对每个 $R\in\operatorname{Quot}(X)$，都有 $\operatorname{glob}\operatorname{loc}(R)\geq R$。
+
+c) 若 $\operatorname{glob}(r)\in E(r)$，即 $\operatorname{loc}(\operatorname{glob}(r))\leq r$，则称 $r$ 是\Term{precoherent-local-relation}{预凝聚}（précohérente）\Term{local-equivalence-relation}{局部等价关系}；若对 $X$ 的每个\Term{open-subset}{开集} $U$，$r$ 在 $U$ 上的\Term{restriction}{限制}都是\Term{precoherent-local-relation}{预凝聚}的，则称 $r$ 是\Term{coherent}{凝聚}\Term{local-equivalence-relation}{局部等价关系}。若 $r$ \Term{coherent}{凝聚}，且 $r=\operatorname{loc}\operatorname{glob}(r)$，则称 $r$ \Term{globally-coherent-local-relation}{全局凝聚}。若 $r=\operatorname{loc}(R)$ \Term{coherent}{凝聚}，则称 $X$ 上的\Term{equivalence-relation}{等价关系} $R$ \Term{locally-coherent-relation}{局部凝聚}；若进一步有 $R=\operatorname{glob}(r)$，即 $R=\operatorname{glob}(\operatorname{loc}(R))$，则称 $R$ \Term{coherent}{凝聚}。证明 $X$ 上的\Term{globally-coherent-local-relation}{全局凝聚}\Term{equivalence-relation}{等价关系} $R$ 与 $X$ 上的\Term{coherent}{凝聚}\Term{equivalence-relation}{等价关系}通过 $r\mapsto\operatorname{glob}(r)$ 及 $R\mapsto\operatorname{loc}(R)$ 一一\Term{correspondence}{对应}。
+
+d) 证明 $r$ \Term{coherent}{凝聚}的一个充分条件是：对每个 $a\in X$ 以及 $a$ 的每个\Term{open-neighborhood}{开邻域} $W'\subset U_a$，都存在 $a$ 的\Term{open-neighborhood}{开邻域} $W\subset W'$，使 $R_a|W$ 的每个\Term{equivalence-class}{等价类}包含于 $R_a|W'$ 的某个\Term{equivalence-class}{等价类}的一个\Term{connected-component}{连通分支}中（特别地，只要存在 $a$ 的\Term{open-neighborhood}{开邻域}基本族 $W_a\subset U_a$，使诱导\Term{equivalence-relation}{等价关系} $R_a|W_a$ 的\Term{fiber}{纤维}\Term{connected}{连通}，就足够了）。（提示：归结到 $r$ 由某个 $R\in\operatorname{Quot}(X)$ 定义时证明\Term{precoherent-local-relation}{预凝聚}性，并注意在此情形，\Term{equivalence-relation}{等价关系} $R_{\mathscr V}$ 的\Term{fiber}{纤维}是 $R$ 的\Term{fiber}{纤维}中的相对\Term{open-subset}{开子集}，因而也是相对\Term{closed-subset}{闭子集}。）证明全局\Term{equivalence-relation}{等价关系} $R$ \Term{coherent}{凝聚}的一个充分条件是它\Term{locally-coherent-relation}{局部凝聚}且\Term{fiber}{纤维}\Term{connected}{连通}；若\Term{fiber}{纤维}为闭集，证明此条件也必要。给出一个\Term{fiber}{纤维}\Term{connected}{连通}且\Term{locally-connected}{局部连通}、但并不\Term{locally-coherent-relation}{局部凝聚}的\Term{equivalence-relation}{等价关系}的例子（？）。
+
+e) 设 $f:X'\to X$ 是\Term{continuous-map}{连续映射}。定义自然的\Term{presheaf}{预层}\Term{homomorphism}{同态} $f_*(\operatorname{Quot}_{X'})\to\operatorname{Quot}_X$，诱导\Term{sheaf}{层}\Term{homomorphism}{同态} $f_*(Q_{X'})\to Q_X$，从而得到 $f^*(Q_X)\to Q_{X'}$。若 $r$ 是 $X$ 上的\Term{local-equivalence-relation}{局部等价关系}，而 $r$ 的\Term{inverse-image}{逆像}是 $X'$ 上的粗\Term{local-equivalence-relation}{局部等价关系}，则称 $f$ 是相对于 $X$ 上\Term{local-equivalence-relation}{局部等价关系} $r$ 的“\Term{fiber-map}{纤维映射}”（application fibre）。对每个\Term{topological-space}{拓扑空间} $X'$，令 $\operatorname{Hom}_{\mathrm{fibr}}(X',X)$ 是那些相对于 $r$ 为\Term{fiber-map}{纤维映射}的从 $X'$ 到 $X$ 的\Term{continuous-map}{连续映射}的\Term{set}{集合}。证明对变动的 $X'$，这给出 $X'$ 的\Term{contravariant-functor}{反变函子}。
+\SourcePage{301}
+f) 假设 $r$ \Term{coherent}{凝聚}。证明上面的\Term{functor}{函子}由 $X$ 上方的一个\Term{topological-space}{拓扑空间} $X^r$ 表示。证明\Term{universal}{普适}\Term{fiber-map}{纤维映射} $\Phi:X^r\to X$ 是\Term{bijection}{双射}，且每个 $x\in X^r$ 都有\Term{open-neighborhood}{开邻域} $U$，使由 $\Phi$ 诱导的映射 $U\to X$ 是 $U$ 到其像的\Term{homeomorphism}{同胚}。证明 $X^r$ 的\Term{connected-component}{连通分支}是\Term{open-subset}{开集}，并经\Term{bijection}{双射} $\Phi$ \Term{correspondence}{对应}于\Term{equivalence-relation}{等价关系} $R=\operatorname{glob}(r)$ 的\Term{fiber}{纤维}。给出一个例子，使 $\Phi$ 在 $X^r$ 的\Term{connected-component}{连通分支}上的\Term{restriction}{限制}不诱导这些\Term{space}{空间}与其在 $X$ 中的像之间的\Term{homeomorphism}{同胚}。
+
+g) 称\Term{local-equivalence-relation}{局部等价关系} $r$ 为开的，若它是 $Q$ 的\Term{subsheaf}{子层} $Q_X^{\mathrm{ouv}}$ 的\Term{section}{截面}，该\Term{subsheaf}{子层}来自 $\operatorname{Quot}_X$ 的\Term{subpresheaf}{子预层} $\operatorname{Quot}_X^{\mathrm{ouv}}$，后者在 $X$ 的每个\Term{open-subset}{开集} $U$ 上的值是 $U$ 的开\Term{equivalence-relation}{等价关系}\Term{set}{集合}。称\Term{local-equivalence-relation}{局部等价关系} $r$ \Term{strictly-open-relation}{严格开}，若它\Term{coherent}{凝聚}且开，或\Term{equivalence}{等价}地，若它\Term{coherent}{凝聚}，且对 $X$ 的每个\Term{open-subset}{开集} $U$，$\operatorname{glob}(r|U)$ 是 $U$ 中的开\Term{equivalence-relation}{等价关系}。称 $X$ 中\Term{equivalence-relation}{等价关系} $R$ \Term{strictly-open-relation}{严格开}，若它\Term{coherent}{凝聚}，且 $\operatorname{loc}(R)$ 是\Term{strictly-open-relation}{严格开}的\Term{local-equivalence-relation}{局部等价关系}。证明假定为开的 $r$ \Term{strictly-open-relation}{严格开}的一个充分条件是满足 d) 考虑的条件；若 $r$ \Term{local-scheme}{局部}由\Term{fiber}{纤维}为闭集的某个 $R$ 定义，则该条件也必要。
+
+h) 设 $F$ 是 $X$ 上的\Term{sheaf-of-sets}{集合层}。对 $X$ 的每个\Term{open-subset}{开集} $U$，令 $\operatorname{Quot}(U,F)$ 是二元组的\Term{set}{集合}，其成员由 $U$ 中的\Term{equivalence-relation}{等价关系} $R_U$ 以及 $F|U$ 中的\Term{equivalence-relation}{等价关系} $R_{F|U}$ 构成（把 $F$ 看成 $X$ 上的\Term{etale-space}{平展空间}），使得\Term{structural-morphism}{结构态射} $p:F|U\to U$ 与\Term{equivalence-relation}{等价关系} $R_U,R_{F|U}$ 相容，且相应的\Term{topological-space}{拓扑空间}图
+\[
+\begin{tikzcd}
+F|U\arrow[r]\arrow[d,"p"']&(F|U)/R_{F|U}\arrow[d,"q"]\\
+U\arrow[r]&U/R_U
+\end{tikzcd}
+\]
+为\Term{cartesian-diagram}{笛卡尔图}，$q$ 为\Term{local-homeomorphism}{局部同胚}（因而 $F|U$ 等同于 $U/R_U$ 上的\Term{sheaf}{层} $(F|U)/R_{F|U}$ 的\Term{inverse-image}{逆像}）。证明随 $U$ 变动，$\operatorname{Quot}(U,F)$ 定义 $X$ 上的\Term{presheaf}{预层}，其\Term{associated-sheaf}{伴随层}记为 $Q(F/X)$。定义\Term{sheaf}{层}\Term{homomorphism}{同态} $Q(F/X)\to Q_X$。对 $Q_X$ 的一个给定\Term{section}{截面} $r$，称 $Q(F/X)$ 中位于此给定\Term{section}{截面} $r$ 上方的每个\Term{section}{截面}为\Term{sheaf}{层} $F$ 上的 $r$-结构。定义 $X$ 上 $r$-\Term{sheaf}{层}的\Term{category}{范畴} $\operatorname{Top}(X/r)$，并定义\Term{conservative-functor}{保守}且\Term{faithful-functor}{忠实}的\Term{functor}{函子}“遗忘 $r$-结构”：$\operatorname{Top}(X/r)\to\operatorname{Top}(X)$。证明 $\operatorname{Top}(X/r)$ 中\Term{finite-projective-limit}{有限投射极限}及\Term{finite}{有限}\Term{inductive-limit}{归纳极限}\Term{representable-functor}{可表}，且上述\Term{functor}{函子}与这些\Term{limit}{极限}交换。由此推出，$\operatorname{Top}(X/r)$ 中\Term{finite}{有限}和不交且\Term{universal}{普适}，而\Term{equivalence-relation}{等价关系}\Term{effective}{有效}且\Term{universal}{普适}。证明 $\operatorname{Top}(X/r)$ 有\Term{generating-family}{小生成族}。
+\SourcePage{302}
+给出一个 $r$ \Term{coherent}{凝聚}的例子，使 $\operatorname{Top}(X/r)$ 没有无限\Term{coproduct}{直和}（？），因此不是\Term{topos}{拓扑斯}。
+
+i) 设 $f:X\to Y$ 是与 $R=\operatorname{glob}(r)$ 相容的\Term{continuous-map}{连续映射}。定义\Term{functor}{函子}
+\[
+f_r^*:\operatorname{Top}(Y)\longrightarrow\operatorname{Top}(X/r),
+\]
+使其与包含\Term{functor}{函子} $\operatorname{Top}(X/r)\to\operatorname{Top}(X)$ 的复合为 $f^*$。证明：若 $r$ \Term{globally-coherent-local-relation}{全局凝聚}且\Term{strictly-open-relation}{严格开}（即 $R$ \Term{strictly-open-relation}{严格开}且 $r=\operatorname{loc}(R)$），且 $f$ 是\Term{canonical}{典范}映射 $X\to Y=X/R$，则 $f_r^*$ 是\Term{equivalence-of-categories}{范畴等价}，因而 $\operatorname{Top}(X/r)$ 是 $\mathcal U$-\Term{topos}{拓扑斯}，$\operatorname{Top}(X/r)\to\operatorname{Top}(X)$ 是某个\Term{morphism-of-topoi}{拓扑斯态射}的\Term{inverse-image-functor}{逆像函子}。
+
+j) 由 i) 推出：若 $r$ \Term{strictly-open-relation}{严格开}，则 $\operatorname{Top}(X/r)$ 是\Term{topos}{拓扑斯}，而包含\Term{functor}{函子} $\operatorname{Top}(X/r)\to\operatorname{Top}(X)$ 是相应于某个\Term{morphism-of-topoi}{拓扑斯态射}的\Term{inverse-image-functor}{逆像函子}：
+\[
+p:\operatorname{Top}(X)\longrightarrow\operatorname{Top}(X/r).
+\]
+k) 对带有\Term{strictly-open-relation}{严格开}\Term{local-equivalence-relation}{局部等价关系}的\Term{topological-space}{拓扑空间}所成二元组 $(X,r)$，定义\Term{topos}{拓扑斯} $\operatorname{Top}(X/r)$ 及上述\Term{morphism-of-topoi}{拓扑斯态射} $p$ 的\Term{functor}{函子}律。证明：若 $X'\to X$ 为\Term{local-homeomorphism}{局部同胚}，而 $r'$ 是 $r$ 在 $X'$ 中的\Term{inverse-image}{逆像}，则诱导\Term{morphism}{态射} $\operatorname{Top}(X'/r')\to\operatorname{Top}(X/r)$ \Term{equivalence}{等价}于\Term{localization-morphism}{局部化态射} $\operatorname{Top}(X/r)_{/E}\to\operatorname{Top}(X/r)$，其中 $E$ 是 $\operatorname{Top}(X/r)$ 的\Term{object}{对象}（确定到唯一\Term{isomorphism}{同构}）。$E$ \Term{covering}{覆盖} $\operatorname{Top}(X/r)$ 的\Term{final-object}{终对象}，当且仅当 $X'$ 在 $X$ 中的像对于 $R=\operatorname{glob}(r)$ 的\Term{saturation}{饱和}集等于 $X$。
+
+l) 由 k) 推出 $\operatorname{Top}(X/r)$ 是\Term{rigid-topos}{刚性}\Term{etendue}{展域}（9.8.2 b)）。证明：若 $X$ \Term{sober-space}{本原}，则 $\operatorname{Top}(X/r)$ 的点的\Term{isomorphism-class}{同构类}\Term{set}{集合}赋以\Term{canonical-topology}{典范拓扑}（\,）后，\Term{homeomorphism}{同胚}于\Term{quotient-topological-space}{商拓扑空间} $X/\operatorname{glob}(r)$；对来自 $X$ 的点 $x,x'$ 的 $\operatorname{Top}(X/r)$ 的两个点，从一个到另一个至多有一个\Term{morphism}{态射}；这样的\Term{morphism}{态射}存在，当且仅当 $x',x$ 分别模 $\operatorname{glob}(r)$ \Term{equivalence}{等价}于某些点 $x'_1,x_1$，使 $x_1$ 是 $x'_1$ 的\Term{generalization}{一般化}。
+
+m) 研究\Term{canonical-topology}{典范拓扑}斯\Term{morphism}{态射} $\operatorname{Top}(X)\to\operatorname{Top}(X/r)$，注意：对 $\operatorname{Top}(X/r)$ 中的每个\Term{object}{对象} $U$，若 $U$ 上的\Term{induced-topos}{诱导拓扑斯}“是”通常的\Term{topological-space}{拓扑空间}，则诱导\Term{morphism}{态射} $\operatorname{Top}(X)_{/p^*(U)}\to\operatorname{Top}(X/r)$“是”通常的\Term{topological-space}{拓扑空间}间的\Term{continuous-map}{连续映射} $X_U\to U$。证明映射 $X_U\to U$ 的\Term{fiber}{纤维}\Term{homeomorphism}{同胚}于 f) 中\Term{space}{空间} $X^r$ 的某些\Term{connected-component}{连通分支}。
+
+n) 设 $X$ 是带有\Term{foliation}{叶状结构}的\Term{differentiable-manifold}{可微流形}，即带有 $X$ 的\Term{tangent-sheaf}{切层}的一个\Term{local-scheme}{局部}为\Term{direct-summand}{直和因子}、且对括号运算\Term{stable}{稳定}的\Term{subsheaf}{子层} $F$。在 $X$ 上定义与\Term{foliation}{叶状结构}相联系的\Term{strictly-open-relation}{严格开}\Term{local-equivalence-relation}{局部等价关系}，并在\Term{quotient-topos}{商拓扑斯} $T=\operatorname{Top}(X/r)$ 上定义一个环，使它成为\Term{differentiable-etendue}{可微展域}（9.8.2 j)）。定义\Term{differentiable-etendue}{可微展域} $T$ 上的\Term{locally-free-module}{局部自由模}（也称 $T$ 上的\Term{differentiable-vector-bundle}{可微向量丛}）的\Term{category}{范畴}，与
+\SourcePage{303}
+$X$ 上带有相对于\Term{tangent-bundle}{切丛}中给定\Term{subbundle}{子丛} $F$ 的\Term{connection}{联络}的\Term{locally-free-module}{局部自由模}的\Term{category}{范畴}之间的\Term{equivalence}{等价}。在实解析和复解析情形给出相应变式。
+\end{SGAresult}
